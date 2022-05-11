@@ -2,5 +2,5 @@
 <area shape="rect" id="node2" href="$d6/de5/class_specimen.html#a05f29e21f3f1cd9a3f07f77d240f76bf" title="Specimen::GetAttr" alt="" coords="231,31,361,57"/>
 <area shape="rect" id="node3" href="$d6/de5/class_specimen.html#a8bb05dcd5e84d6083f58541d37a50199" title="Specimen::IsOK" alt="" coords="409,56,528,83"/>
 <area shape="rect" id="node4" href="$dc/d8f/class_node.html#ae833cd38c01571764ea3d88a31d44a0a" title="Node::GetElement" alt="" coords="576,5,707,32"/>
-<area shape="rect" id="node5" href="$de/dfe/_x_m_l_utilities_8cpp.html#ad47c65cc8945eb9144968a2364ba1566" title="is the specified XMLElement of specified type " alt="" coords="595,56,688,83"/>
+<area shape="rect" id="node5" href="$de/dfe/_x_m_l_utilities_8cpp.html#ad47c65cc8945eb9144968a2364ba1566" title="is the specified wxXmlNode of specified type " alt="" coords="595,56,688,83"/>
 </map>

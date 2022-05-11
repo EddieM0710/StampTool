@@ -29,6 +29,7 @@
 #include "Stamp.h"
 #include <wx/tokenzr.h>
 #include "CatalogData.h"
+#include "XMLUtilities.h"
 
 bool CSVData::ReadDataFile( wxString& filename )
 {
@@ -81,7 +82,7 @@ bool CSVData::ReadDataFile( wxString& filename )
 
 void CSVData::DoLoad( wxString& filename, wxXmlNode* catalogData )
 {
-    m_docRoot = catalogData;
+    m_nodeData = catalogData;
 
     ReadDataFile( filename );
 };
@@ -188,12 +189,12 @@ bool CSVData::ReadTextInStream( wxFileInputStream& file,
     bool status = false;
     bool valFound = false;
     int csvCol;
-
-    wxXmlNode* docRoot = m_docRoot;
+    bool endOfData = false;
+    wxXmlNode* docRoot = m_nodeData;
 
     if ( file.IsOk( ) )
     {
-        while ( !file.Eof( ) )
+        while ( !file.Eof( ) && !endOfData )
         {
             // read a line and parse it
             //	wxString inLine = text.ReadLine ( );
@@ -202,65 +203,74 @@ bool CSVData::ReadTextInStream( wxFileInputStream& file,
                 status = true;
                 // read a line and parse it
                 wxString line = text.ReadLine( );
-                m_lineCnt++;
-                FixUpLine( line );
-                if ( !file.Eof( ) )
+                if (line.length() > 0)
                 {
-                    // comma separated Variables on line; i, e, .csv file
-                    wxStringTokenizer tokenizer( line, "," );
-
-                    wxXmlNode* stampElement = new wxXmlNode( wxXML_ELEMENT_NODE, NodeNameStrings.Item( NT_Stamp ) );
-                    m_docRoot->AddChild(stampElement);
-                    Stamp* stampNode = new Stamp( stampElement );
-                    csvCol = 0;
-                    valFound = false;
-                    wxString valStr;
-                    wxString rest;
-                    while ( tokenizer.HasMoreTokens( ) )
+                    m_lineCnt++;
+                    FixUpLine( line );
+                    if ( !file.Eof( ) )
                     {
-                        // watch out for commas within quotes
-                        valStr = tokenizer.GetNextToken( );
-                        if ( valStr.StartsWith( wxT( "\"" ), &rest ) )
-                            valStr = rest;
-                        if ( valStr.EndsWith( wxT( "\"" ), &rest ) )
-                            valStr = rest;
-                        valStr.Replace( "{", ",", true );
+                        // comma separated Variables on line; i, e, .csv file
+                        wxStringTokenizer tokenizer( line, "," );
 
+                        wxXmlNode* stampElement = NewNode( docRoot,  NodeNameStrings.Item( NT_Stamp ) );
 
-                        DataTypes stampType = m_csvColMap[ csvCol ];
-                        if ( stampType > 0 )
+    //                    Stamp* stampNode = new Stamp( stampElement );
+                        csvCol = 0;
+                        valFound = false;
+                        wxString valStr;
+                        wxString rest;
+                        while ( tokenizer.HasMoreTokens( ) )
                         {
-                            stampNode->SetVal( stampType, valStr );
-                            if ( stampType == DT_Catalog_Codes )
-                            {
-                                stampNode->ProcessCatalogCodes( );
-                                /**
-                                 * @todo the id is becoming unnecessary.  Need to figure out how to handle it
-                                 *
-                                 **************************************************/
-                                wxString id;
-                                if ( GetIDNbr( valStr, id ) )
-                                {
-                                    stampNode->SetID( id );
-                                }
-                                stampNode->SetID( valStr );
-                            }
-                            valFound = true;
-                        }
-                        csvCol++;
-                    }
+                            // watch out for commas within quotes
+                            valStr = tokenizer.GetNextToken( );
+                            if ( valStr.StartsWith( wxT( "\"" ), &rest ) )
+                                valStr = rest;
+                            if ( valStr.EndsWith( wxT( "\"" ), &rest ) )
+                                valStr = rest;
+                            valStr.Replace( "{", ",", true );
 
-                    if ( valFound && ( stampNode->GetID( ).Length( ) > 0 ) )
-                    {
-                        docRoot->AddChild( stampElement );
+
+                            DataTypes stampType = m_csvColMap[ csvCol ];
+                            if ( stampType > 0 )
+                            {
+                                stampElement->AddAttribute(  DT_XMLDataNames[stampType], valStr );
+                                // stampNode->SetVal( stampType, valStr );
+                                // if ( stampType == DT_Catalog_Codes )
+                                // {
+                                //     stampNode->ProcessCatalogCodes( );
+                                //     /**
+                                //      * @todo the id is becoming unnecessary.  Need to figure out how to handle it
+                                //      *
+                                //      **************************************************/
+                                //     wxString id;
+                                //     if ( GetIDNbr( valStr, id ) )
+                                //     {
+                                //         stampNode->SetID( id );
+                                //     }
+                                //     stampNode->SetID( valStr );
+                                // }
+                                valFound = true;
+                            }
+                            csvCol++;
+                        }
+
+                        if ( valFound )//&& ( stampNode->GetID( ).Length( ) > 0 ) )
+                        {
+    //                        docRoot->AddChild( ( wxXmlNode* )stampElement );
+                        }
+                        else
+                        {
+        //                    delete stampNode;
+                        }
                     }
-                    else
-                    {
-                        delete stampNode;
-                    }
+                }
+                else
+                {
+                    endOfData = true;
                 }
             }
         }
+        XMLDumpNode( ( wxXmlNode* )docRoot, "" );
     }
     return status;
 };

@@ -12,7 +12,7 @@ var searchData=
   ['findstamp',['FindStamp',['../d5/dde/class_find_stamp.html',1,'FindStamp'],['../d5/dde/class_find_stamp.html#a19d88437d91f33859f95d0b5041a3429',1,'FindStamp::FindStamp()'],['../d5/dde/class_find_stamp.html#a325dbc7d7f6b0e08afc813acffcff95d',1,'FindStamp::FindStamp(wxWindow *parent, wxWindowID id=SYMBOL_FINDSTAMP_IDNAME, const wxString &amp;caption=SYMBOL_FINDSTAMP_TITLE, const wxPoint &amp;pos=SYMBOL_FINDSTAMP_POSITION, const wxSize &amp;size=SYMBOL_FINDSTAMP_SIZE, long style=SYMBOL_FINDSTAMP_STYLE)']]],
   ['findstamp_2ecpp',['FindStamp.cpp',['../da/dc6/_find_stamp_8cpp.html',1,'']]],
   ['findstamp_2eh',['FindStamp.h',['../d5/d85/_find_stamp_8h.html',1,'']]],
-  ['findtreeitemid',['FindTreeItemID',['../df/dc6/class_stamp_tree_ctrl.html#ac78df9811c70e1f4fe7d2e6937401340',1,'StampTreeCtrl::FindTreeItemID(XMLElement *node)'],['../df/dc6/class_stamp_tree_ctrl.html#a1393edaf884788f508338c1a13234fb7',1,'StampTreeCtrl::FindTreeItemID(XMLElement *node, wxTreeItemId id)']]],
+  ['findtreeitemid',['FindTreeItemID',['../df/dc6/class_stamp_tree_ctrl.html#ac78df9811c70e1f4fe7d2e6937401340',1,'StampTreeCtrl::FindTreeItemID(wxXmlNode *node)'],['../df/dc6/class_stamp_tree_ctrl.html#a1393edaf884788f508338c1a13234fb7',1,'StampTreeCtrl::FindTreeItemID(wxXmlNode *node, wxTreeItemId id)']]],
   ['first',['First',['../d5/d67/class_x_m_l_iterator.html#ac727791161ba9004889e6dec19798bfa',1,'XMLIterator']]],
   ['fixupline',['FixUpLine',['../da/d44/class_c_s_v_data.html#a8b4475bfb42b217c33523b87e4d3e1f4',1,'CSVData']]],
   ['formattype',['FormatType',['../df/dde/_defs_8h.html#a8dcd21376da83902acea50d9deeb5990',1,'Defs.h']]],

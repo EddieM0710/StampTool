@@ -19,8 +19,8 @@
 <area shape="rect" id="node15" href="$df/dc6/class_stamp_tree_ctrl.html#abadcd7ff69530cd204135356340ae796" title="StampTreeCtrl::OnContextMenu" alt="" coords="632,221,843,247"/>
 <area shape="rect" id="node16" href="$df/dc6/class_stamp_tree_ctrl.html#abae71004f79c6f514f05b788da001129" title="StampTreeCtrl::ShowMenu" alt="" coords="647,271,827,298"/>
 <area shape="rect" id="node17" href="$df/dc6/class_stamp_tree_ctrl.html#a02a7675b7c33247916890e126b1ecd1d" title="StampTreeCtrl::OnItemMenu" alt="" coords="891,271,1081,298"/>
-<area shape="rect" id="node19" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a072998100b7d0ba5e8aeac6dd6dfb31b" title="tinyxml2::XMLElement\l::ParseDeep" alt="" coords="415,309,570,351"/>
-<area shape="rect" id="node20" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#aeb556e0e2bed02a73a6c5aaf19759e9a" title="tinyxml2::XMLDocument\l::Parse" alt="" coords="409,375,576,416"/>
+<area shape="rect" id="node19" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a072998100b7d0ba5e8aeac6dd6dfb31b" title="tinyxml2::wxXmlNode\l::ParseDeep" alt="" coords="415,309,570,351"/>
+<area shape="rect" id="node20" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#aeb556e0e2bed02a73a6c5aaf19759e9a" title="tinyxml2::wxXmlDocument\l::Parse" alt="" coords="409,375,576,416"/>
 <area shape="rect" id="node21" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#a5f1d330fad44c52f3d265338dd2a6dc2" title="Load an XML file from disk. " alt="" coords="654,341,821,383"/>
 <area shape="rect" id="node22" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#af2b616169e6517182f6725f2498e9a01" title="Parse an XML file from a character string. " alt="" coords="654,407,821,448"/>
 </map>

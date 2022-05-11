@@ -103,6 +103,7 @@ public:
     wxSplitterWindow* m_primarySplitterWindow;
     wxCheckListBox* m_itemListBox;
     wxSplitterWindow* m_secondarySplitterWindow;
+    wxListBox* m_AECommnands;
     wxTextCtrl* m_richTextCtrl;
 ////@end AbumGeneratorDialog member variables
 };

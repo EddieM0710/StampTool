@@ -23,7 +23,7 @@
 #include <wx/txtstrm.h>
 #include <wx/wfstream.h>
 
-//
+ 
 
 #define MaxNbrCSVCols 30
 
@@ -142,7 +142,7 @@ public:
 private:
     wxArrayString m_csvColName;
     DataTypes m_csvColMap[ MaxNbrCSVCols ];
-    wxXmlNode* m_docRoot;
+    wxXmlNode* m_nodeData;
     int m_lineCnt;
 };
 

@@ -13,39 +13,39 @@
 <area shape="rect" id="node15" href="$d4/d65/classtinyxml2_1_1_x_m_l_unknown.html#ab73b48b819aa4b2ef3815dc2d7d20d5f" title="Make a copy of this node, but not its children. " alt="" coords="397,1403,559,1444"/>
 <area shape="rect" id="node16" href="$d4/d65/classtinyxml2_1_1_x_m_l_unknown.html#ac46767cd721d666e690a6231dfb618d1" title="Test if 2 nodes are the same, but don&#39;t test children. " alt="" coords="397,1468,559,1509"/>
 <area shape="rect" id="node17" href="$dc/d22/classtinyxml2_1_1_x_m_l_attribute.html#a6d5176260db00ea301c01af8457cd993" title="QueryIntValue interprets the attribute as an integer, and returns the value in the provided parameter..." alt="" coords="401,1533,555,1575"/>
-<area shape="rect" id="node19" href="$dc/d22/classtinyxml2_1_1_x_m_l_attribute.html#a48a7f3496f1415832e451bd8d09c9cb9" title="tinyxml2::XMLAttribute\l::QueryUnsignedValue" alt="" coords="401,1599,555,1640"/>
-<area shape="rect" id="node21" href="$dc/d22/classtinyxml2_1_1_x_m_l_attribute.html#a4e25344d6e4159026be34dbddf1dcac2" title="tinyxml2::XMLAttribute\l::QueryInt64Value" alt="" coords="401,1664,555,1705"/>
-<area shape="rect" id="node23" href="$dc/d22/classtinyxml2_1_1_x_m_l_attribute.html#af793c695e7ee65cf20b8010d38b1d157" title="tinyxml2::XMLAttribute\l::QueryUnsigned64Value" alt="" coords="395,1729,561,1771"/>
-<area shape="rect" id="node25" href="$dc/d22/classtinyxml2_1_1_x_m_l_attribute.html#a5f32e038954256f61c21ff20fd13a09c" title="tinyxml2::XMLAttribute\l::QueryBoolValue" alt="" coords="401,1795,555,1836"/>
-<area shape="rect" id="node27" href="$dc/d22/classtinyxml2_1_1_x_m_l_attribute.html#a049dea6449a6259b6cfed44a9427b607" title="tinyxml2::XMLAttribute\l::QueryFloatValue" alt="" coords="401,1860,555,1901"/>
-<area shape="rect" id="node29" href="$dc/d22/classtinyxml2_1_1_x_m_l_attribute.html#a2aa6e55e8ea03af0609cf6690bff79b9" title="tinyxml2::XMLAttribute\l::QueryDoubleValue" alt="" coords="401,1925,555,1967"/>
+<area shape="rect" id="node19" href="$dc/d22/classtinyxml2_1_1_x_m_l_attribute.html#a48a7f3496f1415832e451bd8d09c9cb9" title="tinyxml2::wxXmlAttribute\l::QueryUnsignedValue" alt="" coords="401,1599,555,1640"/>
+<area shape="rect" id="node21" href="$dc/d22/classtinyxml2_1_1_x_m_l_attribute.html#a4e25344d6e4159026be34dbddf1dcac2" title="tinyxml2::wxXmlAttribute\l::QueryInt64Value" alt="" coords="401,1664,555,1705"/>
+<area shape="rect" id="node23" href="$dc/d22/classtinyxml2_1_1_x_m_l_attribute.html#af793c695e7ee65cf20b8010d38b1d157" title="tinyxml2::wxXmlAttribute\l::QueryUnsigned64Value" alt="" coords="395,1729,561,1771"/>
+<area shape="rect" id="node25" href="$dc/d22/classtinyxml2_1_1_x_m_l_attribute.html#a5f32e038954256f61c21ff20fd13a09c" title="tinyxml2::wxXmlAttribute\l::QueryBoolValue" alt="" coords="401,1795,555,1836"/>
+<area shape="rect" id="node27" href="$dc/d22/classtinyxml2_1_1_x_m_l_attribute.html#a049dea6449a6259b6cfed44a9427b607" title="tinyxml2::wxXmlAttribute\l::QueryFloatValue" alt="" coords="401,1860,555,1901"/>
+<area shape="rect" id="node29" href="$dc/d22/classtinyxml2_1_1_x_m_l_attribute.html#a2aa6e55e8ea03af0609cf6690bff79b9" title="tinyxml2::wxXmlAttribute\l::QueryDoubleValue" alt="" coords="401,1925,555,1967"/>
 <area shape="rect" id="node31" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a0fa5bea0a4daf3ddd503dcabb823eba6" title="Convenience function for easy access to the text inside an element. " alt="" coords="401,684,555,725"/>
 <area shape="rect" id="node32" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a926357996bef633cb736e1a558419632" title="Convenience method to query the value of a child text node. " alt="" coords="401,240,555,281"/>
-<area shape="rect" id="node34" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a14d38aa4b5e18a46274a27425188a6a1" title="tinyxml2::XMLElement\l::QueryUnsignedText" alt="" coords="401,305,555,347"/>
-<area shape="rect" id="node36" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a120c538c8eead169e635dbc70fb226d8" title="tinyxml2::XMLElement\l::QueryInt64Text" alt="" coords="401,371,555,412"/>
-<area shape="rect" id="node38" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#ac2239b3bd172ad8f5b78d04d4236144b" title="tinyxml2::XMLElement\l::QueryUnsigned64Text" alt="" coords="398,436,558,477"/>
-<area shape="rect" id="node40" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a3fe5417d59eb8f5c4afe924b7d332736" title="tinyxml2::XMLElement\l::QueryBoolText" alt="" coords="401,501,555,543"/>
-<area shape="rect" id="node42" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a684679c99bb036a25652744cec6c4d96" title="tinyxml2::XMLElement\l::QueryDoubleText" alt="" coords="401,567,555,608"/>
-<area shape="rect" id="node44" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#afa332afedd93210daa6d44b88eb11e29" title="tinyxml2::XMLElement\l::QueryFloatText" alt="" coords="401,749,555,791"/>
+<area shape="rect" id="node34" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a14d38aa4b5e18a46274a27425188a6a1" title="tinyxml2::wxXmlNode\l::QueryUnsignedText" alt="" coords="401,305,555,347"/>
+<area shape="rect" id="node36" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a120c538c8eead169e635dbc70fb226d8" title="tinyxml2::wxXmlNode\l::QueryInt64Text" alt="" coords="401,371,555,412"/>
+<area shape="rect" id="node38" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#ac2239b3bd172ad8f5b78d04d4236144b" title="tinyxml2::wxXmlNode\l::QueryUnsigned64Text" alt="" coords="398,436,558,477"/>
+<area shape="rect" id="node40" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a3fe5417d59eb8f5c4afe924b7d332736" title="tinyxml2::wxXmlNode\l::QueryBoolText" alt="" coords="401,501,555,543"/>
+<area shape="rect" id="node42" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a684679c99bb036a25652744cec6c4d96" title="tinyxml2::wxXmlNode\l::QueryDoubleText" alt="" coords="401,567,555,608"/>
+<area shape="rect" id="node44" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#afa332afedd93210daa6d44b88eb11e29" title="tinyxml2::wxXmlNode\l::QueryFloatText" alt="" coords="401,749,555,791"/>
 <area shape="rect" id="node46" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#aafa2807a45b28fe096b29d76e6a13b7c" title="Make a copy of this node, but not its children. " alt="" coords="401,815,555,856"/>
 <area shape="rect" id="node47" href="$df/d27/classtinyxml2_1_1_x_m_l_printer.html#adc0e42b4f6fcb90a95630c79575d030b" title="tinyxml2::XMLPrinter\l::Visit" alt="" coords="406,880,550,921"/>
 <area shape="rect" id="node4" href="$d5/d71/class_persistent.html#a82c8ff341cce87299a814e970f542606" title="Destroy the Persistent object. " alt="" coords="843,662,999,689"/>
-<area shape="rect" id="node7" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a072998100b7d0ba5e8aeac6dd6dfb31b" title="tinyxml2::XMLElement\l::ParseDeep" alt="" coords="626,5,781,47"/>
-<area shape="rect" id="node8" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#aeb556e0e2bed02a73a6c5aaf19759e9a" title="tinyxml2::XMLDocument\l::Parse" alt="" coords="620,71,787,112"/>
+<area shape="rect" id="node7" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a072998100b7d0ba5e8aeac6dd6dfb31b" title="tinyxml2::wxXmlNode\l::ParseDeep" alt="" coords="626,5,781,47"/>
+<area shape="rect" id="node8" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#aeb556e0e2bed02a73a6c5aaf19759e9a" title="tinyxml2::wxXmlDocument\l::Parse" alt="" coords="620,71,787,112"/>
 <area shape="rect" id="node18" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a8a78bc1187c1c45ad89f2690eab567b1" title="Given an attribute name, QueryIntAttribute() returns XML_SUCCESS, XML_WRONG_ATTRIBUTE_TYPE if the con..." alt="" coords="626,1533,781,1575"/>
-<area shape="rect" id="node20" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a26fc84cbfba6769dafcfbf256c05e22f" title="tinyxml2::XMLElement\l::QueryUnsignedAttribute" alt="" coords="619,1599,788,1640"/>
-<area shape="rect" id="node22" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a7c0955d80b6f8d196744eacb0f6e90a8" title="tinyxml2::XMLElement\l::QueryInt64Attribute" alt="" coords="626,1664,781,1705"/>
-<area shape="rect" id="node24" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a13dd590b5d3958ce2ed79844aacd9405" title="tinyxml2::XMLElement\l::QueryUnsigned64Attribute" alt="" coords="612,1729,795,1771"/>
-<area shape="rect" id="node26" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a14c1bb77c39689838be01838d86ca872" title="tinyxml2::XMLElement\l::QueryBoolAttribute" alt="" coords="626,1795,781,1836"/>
-<area shape="rect" id="node28" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#acd5eeddf6002ef90806af794b9d9a5a5" title="tinyxml2::XMLElement\l::QueryFloatAttribute" alt="" coords="626,1860,781,1901"/>
-<area shape="rect" id="node30" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a5f0964e2dbd8e2ee7fce9beab689443c" title="tinyxml2::XMLElement\l::QueryDoubleAttribute" alt="" coords="626,1925,781,1967"/>
-<area shape="rect" id="node33" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a37b0636adebb8a1a1bc965f60824cb3e" title="tinyxml2::XMLElement\l::IntText" alt="" coords="626,240,781,281"/>
-<area shape="rect" id="node35" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a49bad014ffcc17b0b6119d5b2c97dfb5" title="tinyxml2::XMLElement\l::UnsignedText" alt="" coords="626,305,781,347"/>
-<area shape="rect" id="node37" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#aab6151f7e3b4c2c0a8234e262d7b6b8a" title="tinyxml2::XMLElement\l::Int64Text" alt="" coords="626,371,781,412"/>
-<area shape="rect" id="node39" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#af48c1023abbac1acdf4927c51c3a5f0c" title="tinyxml2::XMLElement\l::Unsigned64Text" alt="" coords="626,436,781,477"/>
-<area shape="rect" id="node41" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a68569f59f6382bcea7f5013ec59736d2" title="tinyxml2::XMLElement\l::BoolText" alt="" coords="626,501,781,543"/>
-<area shape="rect" id="node43" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a81b1ff0cf2f2cd09be8badc08b39a2b7" title="tinyxml2::XMLElement\l::DoubleText" alt="" coords="626,567,781,608"/>
-<area shape="rect" id="node45" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a45444eb21f99ca46101545992dc2e927" title="tinyxml2::XMLElement\l::FloatText" alt="" coords="626,749,781,791"/>
+<area shape="rect" id="node20" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a26fc84cbfba6769dafcfbf256c05e22f" title="tinyxml2::wxXmlNode\l::QueryUnsignedAttribute" alt="" coords="619,1599,788,1640"/>
+<area shape="rect" id="node22" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a7c0955d80b6f8d196744eacb0f6e90a8" title="tinyxml2::wxXmlNode\l::QueryInt64Attribute" alt="" coords="626,1664,781,1705"/>
+<area shape="rect" id="node24" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a13dd590b5d3958ce2ed79844aacd9405" title="tinyxml2::wxXmlNode\l::QueryUnsigned64Attribute" alt="" coords="612,1729,795,1771"/>
+<area shape="rect" id="node26" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a14c1bb77c39689838be01838d86ca872" title="tinyxml2::wxXmlNode\l::QueryBoolAttribute" alt="" coords="626,1795,781,1836"/>
+<area shape="rect" id="node28" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#acd5eeddf6002ef90806af794b9d9a5a5" title="tinyxml2::wxXmlNode\l::QueryFloatAttribute" alt="" coords="626,1860,781,1901"/>
+<area shape="rect" id="node30" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a5f0964e2dbd8e2ee7fce9beab689443c" title="tinyxml2::wxXmlNode\l::QueryDoubleAttribute" alt="" coords="626,1925,781,1967"/>
+<area shape="rect" id="node33" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a37b0636adebb8a1a1bc965f60824cb3e" title="tinyxml2::wxXmlNode\l::IntText" alt="" coords="626,240,781,281"/>
+<area shape="rect" id="node35" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a49bad014ffcc17b0b6119d5b2c97dfb5" title="tinyxml2::wxXmlNode\l::UnsignedText" alt="" coords="626,305,781,347"/>
+<area shape="rect" id="node37" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#aab6151f7e3b4c2c0a8234e262d7b6b8a" title="tinyxml2::wxXmlNode\l::Int64Text" alt="" coords="626,371,781,412"/>
+<area shape="rect" id="node39" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#af48c1023abbac1acdf4927c51c3a5f0c" title="tinyxml2::wxXmlNode\l::Unsigned64Text" alt="" coords="626,436,781,477"/>
+<area shape="rect" id="node41" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a68569f59f6382bcea7f5013ec59736d2" title="tinyxml2::wxXmlNode\l::BoolText" alt="" coords="626,501,781,543"/>
+<area shape="rect" id="node43" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a81b1ff0cf2f2cd09be8badc08b39a2b7" title="tinyxml2::wxXmlNode\l::DoubleText" alt="" coords="626,567,781,608"/>
+<area shape="rect" id="node45" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a45444eb21f99ca46101545992dc2e927" title="tinyxml2::wxXmlNode\l::FloatText" alt="" coords="626,749,781,791"/>
 <area shape="rect" id="node49" href="$de/d13/classtinyxml2_1_1_x_m_l_node.html#a363b6edbd6ebd55f8387d2b89f2b0921" title="Delete a child of this node. " alt="" coords="405,175,551,216"/>
 <area shape="rect" id="node50" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#ac1d6e2c7fcc1a660624ac4f68e96380d" title="Delete a node associated with this document. " alt="" coords="620,149,787,191"/>
 </map>

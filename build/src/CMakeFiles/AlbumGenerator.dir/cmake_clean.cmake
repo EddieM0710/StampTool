@@ -21,6 +21,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/AlbumGenerator.dir/XMLUtilities.cpp.o"
   "CMakeFiles/AlbumGenerator.dir/CSV.cpp.o"
   "CMakeFiles/AlbumGenerator.dir/MakeList.cpp.o"
+  "CMakeFiles/AlbumGenerator.dir/ArrayWrapper.cpp.o"
+  "CMakeFiles/AlbumGenerator.dir/ManageAECmdData.cpp.o"
   "CMakeFiles/AlbumGenerator.dir/AlbumTreeCtrl.cpp.o"
   "../AlbumGenerator.pdb"
   "../AlbumGenerator"

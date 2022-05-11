@@ -1,23 +1,23 @@
 <map id="tinyxml2::StrPair::SetStr" name="tinyxml2::StrPair::SetStr">
 <area shape="rect" id="node2" href="$de/d13/classtinyxml2_1_1_x_m_l_node.html#a09dd68cf9eae137579f6e50f36487513" title="Set the Value of an XML node. " alt="" coords="191,920,336,961"/>
-<area shape="rect" id="node18" href="$dc/d22/classtinyxml2_1_1_x_m_l_attribute.html#a406d2c4a13c7af99a65edb59dd9f7581" title="tinyxml2::XMLAttribute\l::SetAttribute" alt="" coords="186,1177,341,1219"/>
-<area shape="rect" id="node35" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#abffeba53b165f55f385ea7063a93bc95" title="tinyxml2::XMLDocument\l::SetError" alt="" coords="180,332,347,373"/>
+<area shape="rect" id="node18" href="$dc/d22/classtinyxml2_1_1_x_m_l_attribute.html#a406d2c4a13c7af99a65edb59dd9f7581" title="tinyxml2::wxXmlAttribute\l::SetAttribute" alt="" coords="186,1177,341,1219"/>
+<area shape="rect" id="node35" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#abffeba53b165f55f385ea7063a93bc95" title="tinyxml2::wxXmlDocument\l::SetError" alt="" coords="180,332,347,373"/>
 <area shape="rect" id="node3" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a1f9c2cd61b72af5ae708d37b7ad283ce" title="Convenience function for easy access to the text inside an element. " alt="" coords="635,920,790,961"/>
 <area shape="rect" id="node5" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#a386df0befd06aadb5e0cd21381aa955a" title="Create a new Comment associated with this Document. " alt="" coords="397,1116,564,1157"/>
 <area shape="rect" id="node8" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#acece5de77a0819f2341b08c1e1ed9987" title="Create a new Text associated with this Document. " alt="" coords="397,857,564,899"/>
 <area shape="rect" id="node12" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#ae519030c0262fa2daff8993681990e16" title="Create a new Declaration associated with this Document. " alt="" coords="397,724,564,765"/>
 <area shape="rect" id="node15" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#a4954f502c5fd7f49de54c3c0c99bb73d" title="Create a new Unknown associated with this Document. " alt="" coords="397,985,564,1027"/>
-<area shape="rect" id="node4" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#aeae8917b5ea6060b3c08d4e3d8d632d7" title="tinyxml2::XMLElement\l::SetText" alt="" coords="886,920,1041,961"/>
+<area shape="rect" id="node4" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#aeae8917b5ea6060b3c08d4e3d8d632d7" title="tinyxml2::wxXmlNode\l::SetText" alt="" coords="886,920,1041,961"/>
 <area shape="rect" id="node6" href="$d2/d6d/classtinyxml2_1_1_x_m_l_comment.html#adf5b5c0319351dcc339df098d11e8fb2" title="Make a copy of this node, but not its children. " alt="" coords="631,1181,794,1223"/>
-<area shape="rect" id="node7" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#aaed36d3a8082b083ec4f1de55ee68cc2" title="tinyxml2::XMLElement\l::InsertNewComment" alt="" coords="635,1116,790,1157"/>
+<area shape="rect" id="node7" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#aaed36d3a8082b083ec4f1de55ee68cc2" title="tinyxml2::wxXmlNode\l::InsertNewComment" alt="" coords="635,1116,790,1157"/>
 <area shape="rect" id="node9" href="$d3/d66/classtinyxml2_1_1_x_m_l_text.html#a86d265c93152726c8c6831e9594840e6" title="Make a copy of this node, but not its children. " alt="" coords="643,855,783,896"/>
-<area shape="rect" id="node10" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#ac30367a5e25ff30e178b56e0e1456d23" title="tinyxml2::XMLElement\l::InsertNewText" alt="" coords="635,789,790,831"/>
+<area shape="rect" id="node10" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#ac30367a5e25ff30e178b56e0e1456d23" title="tinyxml2::wxXmlNode\l::InsertNewText" alt="" coords="635,789,790,831"/>
 <area shape="rect" id="node11" href="$d5/d71/class_persistent.html#a6596ceefbc44503a356dcfacb09a311e" title="Save the persistent file. " alt="" coords="904,702,1023,729"/>
 <area shape="rect" id="node13" href="$d2/d89/classtinyxml2_1_1_x_m_l_declaration.html#ad9d60e6d2df75c13eb6bf7319985b747" title="Make a copy of this node, but not its children. " alt="" coords="627,724,799,765"/>
-<area shape="rect" id="node14" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a7f11671a928649add7e3e18de7adf84a" title="tinyxml2::XMLElement\l::InsertNewDeclaration" alt="" coords="635,659,791,700"/>
+<area shape="rect" id="node14" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a7f11671a928649add7e3e18de7adf84a" title="tinyxml2::wxXmlNode\l::InsertNewDeclaration" alt="" coords="635,659,791,700"/>
 <area shape="rect" id="node16" href="$d4/d65/classtinyxml2_1_1_x_m_l_unknown.html#ab73b48b819aa4b2ef3815dc2d7d20d5f" title="Make a copy of this node, but not its children. " alt="" coords="632,1051,793,1092"/>
-<area shape="rect" id="node17" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#afe6cfefb48f8fbcb29a790f2042b55a4" title="tinyxml2::XMLElement\l::InsertNewUnknown" alt="" coords="635,985,790,1027"/>
-<area shape="rect" id="node19" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a11943abf2d0831548c3790dd5d9f119c" title="tinyxml2::XMLElement\l::SetAttribute" alt="" coords="403,1396,558,1437"/>
+<area shape="rect" id="node17" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#afe6cfefb48f8fbcb29a790f2042b55a4" title="tinyxml2::wxXmlNode\l::InsertNewUnknown" alt="" coords="635,985,790,1027"/>
+<area shape="rect" id="node19" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a11943abf2d0831548c3790dd5d9f119c" title="tinyxml2::wxXmlNode\l::SetAttribute" alt="" coords="403,1396,558,1437"/>
 <area shape="rect" id="node20" href="$d9/d1f/class_classification.html#a82faf570ddd7d84d553068e046a0fdc3" title="Sets the node type to val. " alt="" coords="637,1378,788,1405"/>
 <area shape="rect" id="node21" href="$d6/de5/class_specimen.html#ae4c9eef147352273742bc35448baf76f" title="Specimen::SetAttr" alt="" coords="648,1429,777,1455"/>
 <area shape="rect" id="node24" href="$da/dd4/class_stamp.html#a15c2d249060c244dc2faf9e4c90d5baa" title="Stamp::SetAttr" alt="" coords="658,1479,767,1506"/>
@@ -39,13 +39,13 @@
 <area shape="rect" id="node41" href="$d2/d6d/classtinyxml2_1_1_x_m_l_comment.html#a3430281eed8d1023bafa9e633f44f509" title="tinyxml2::XMLComment\l::ParseDeep" alt="" coords="399,71,562,112"/>
 <area shape="rect" id="node42" href="$d2/d89/classtinyxml2_1_1_x_m_l_declaration.html#a42a2a36f4d78dc745063b79c16538b9b" title="tinyxml2::XMLDeclaration\l::ParseDeep" alt="" coords="395,136,567,177"/>
 <area shape="rect" id="node43" href="$d4/d65/classtinyxml2_1_1_x_m_l_unknown.html#aefc332cc1e6e25736f364d1e5eeb31fe" title="tinyxml2::XMLUnknown\l::ParseDeep" alt="" coords="400,201,561,243"/>
-<area shape="rect" id="node44" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a1e679b60e191ad79bfcefcd49ca66fa2" title="tinyxml2::XMLElement\l::ParseAttributes" alt="" coords="403,449,558,491"/>
+<area shape="rect" id="node44" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a1e679b60e191ad79bfcefcd49ca66fa2" title="tinyxml2::wxXmlNode\l::ParseAttributes" alt="" coords="403,449,558,491"/>
 <area shape="rect" id="node45" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#a2ebd4647a8af5fc6831b294ac26a150a" title="Load an XML file from disk. " alt="" coords="397,267,564,308"/>
 <area shape="rect" id="node48" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#a73ac416b4a2aa0952e841220eb3da18f" title="Save the XML file to disk. " alt="" coords="397,604,564,645"/>
-<area shape="rect" id="node49" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#a4d4aa7ec8e078ee6b449471e187d2d67" title="tinyxml2::XMLDocument\l::PushDepth" alt="" coords="397,332,564,373"/>
-<area shape="rect" id="node37" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a072998100b7d0ba5e8aeac6dd6dfb31b" title="tinyxml2::XMLElement\l::ParseDeep" alt="" coords="635,453,790,495"/>
-<area shape="rect" id="node38" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#aeb556e0e2bed02a73a6c5aaf19759e9a" title="tinyxml2::XMLDocument\l::Parse" alt="" coords="629,527,796,568"/>
+<area shape="rect" id="node49" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#a4d4aa7ec8e078ee6b449471e187d2d67" title="tinyxml2::wxXmlDocument\l::PushDepth" alt="" coords="397,332,564,373"/>
+<area shape="rect" id="node37" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a072998100b7d0ba5e8aeac6dd6dfb31b" title="tinyxml2::wxXmlNode\l::ParseDeep" alt="" coords="635,453,790,495"/>
+<area shape="rect" id="node38" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#aeb556e0e2bed02a73a6c5aaf19759e9a" title="tinyxml2::wxXmlDocument\l::Parse" alt="" coords="629,527,796,568"/>
 <area shape="rect" id="node46" href="$d5/d71/class_persistent.html#a1e6d550aa3f4595274acfa528fc0de02" title="Load the persistent file. " alt="" coords="654,277,771,303"/>
 <area shape="rect" id="node47" href="$d2/d63/class_stamp_manager_frame.html#ab4f27ac876c7ac01166890d6c9594ca9" title="StampManagerFrame::\lOnTestXMLClick" alt="" coords="635,211,790,252"/>
-<area shape="rect" id="node50" href="$d7/d35/classtinyxml2_1_1_x_m_l_document_1_1_depth_tracker.html#ac2782a163c2da773b84cb2c610b79bcb" title="tinyxml2::XMLDocument\l::DepthTracker::DepthTracker" alt="" coords="615,332,811,373"/>
+<area shape="rect" id="node50" href="$d7/d35/classtinyxml2_1_1_x_m_l_document_1_1_depth_tracker.html#ac2782a163c2da773b84cb2c610b79bcb" title="tinyxml2::wxXmlDocument\l::DepthTracker::DepthTracker" alt="" coords="615,332,811,373"/>
 </map>

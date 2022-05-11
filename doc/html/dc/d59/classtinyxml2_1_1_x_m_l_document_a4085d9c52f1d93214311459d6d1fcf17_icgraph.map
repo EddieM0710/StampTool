@@ -1,7 +1,7 @@
-<map id="tinyxml2::XMLDocument::ClearError" name="tinyxml2::XMLDocument::ClearError">
-<area shape="rect" id="node2" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#a65656b0b2cbc822708eb351504178aaf" title="tinyxml2::XMLDocument\l::Clear" alt="" coords="220,104,387,145"/>
+<map id="tinyxml2::wxXmlDocument::ClearError" name="tinyxml2::wxXmlDocument::ClearError">
+<area shape="rect" id="node2" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#a65656b0b2cbc822708eb351504178aaf" title="tinyxml2::wxXmlDocument\l::Clear" alt="" coords="220,104,387,145"/>
 <area shape="rect" id="node10" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#a8b95779479a0035acc67b3a61dfe1b74" title="Save the XML file to disk. " alt="" coords="220,169,387,211"/>
-<area shape="rect" id="node3" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#af37c47d8e2ba4b2fc81b21a77a32579b" title="tinyxml2::XMLDocument\l::~XMLDocument" alt="" coords="435,5,601,47"/>
+<area shape="rect" id="node3" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#af37c47d8e2ba4b2fc81b21a77a32579b" title="tinyxml2::wxXmlDocument\l::~wxXmlDocument" alt="" coords="435,5,601,47"/>
 <area shape="rect" id="node4" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#af592ffc91514e25a39664521ac83db45" title="Copies this document to a target document. " alt="" coords="435,71,601,112"/>
 <area shape="rect" id="node5" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#a2ebd4647a8af5fc6831b294ac26a150a" title="Load an XML file from disk. " alt="" coords="435,136,601,177"/>
 <area shape="rect" id="node9" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#af2b616169e6517182f6725f2498e9a01" title="Parse an XML file from a character string. " alt="" coords="435,201,601,243"/>

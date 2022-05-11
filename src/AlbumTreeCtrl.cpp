@@ -258,7 +258,7 @@ void AlbumTreeCtrl::LogEvent( const wxString& name, const wxTreeEvent& event )
     wxTreeItemId item = event.GetItem( );
     wxString text;
     if ( item.IsOk( ) )
-        text << '"' << GetItemText( item ).c_str( ) << '"';
+        text << '"' << GetItemText( item )  << '"';
     else
         text = "invalid item";
 }
@@ -459,9 +459,9 @@ wxTreeItemId AlbumTreeCtrl::AddChild( wxTreeItemId parent, wxXmlNode* child )
         else
         {
             //otherwise get the label
-            label =  child->GetAttribute( "Name" );;
-            icon = Icon_Folder;        
-        }
+            const wxXmlAttribute* attr = GetAttribute( child, "Name" );
+            label = attr->GetValue( );
+            icon = Icon_Folder;        }
     }
 
  
@@ -519,16 +519,16 @@ wxTreeItemId AlbumTreeCtrl::AddChild( wxTreeItemId parent, wxXmlNode* child )
 // {
 //     CatalogData* catalogData = GetCatalogData( );
 //     wxXmlDocument* doc = catalogData->GetDoc( );
-//     wxXmlNode* root = doc->RootElement( );
+//     wxXmlNode* root = doc->GetRoot( );
 
 //     DeleteAllItems( );
 
 //     wxXmlDocument* newDoc = new wxXmlDocument( );
-//     wxXmlNode* newRoot = newDoc->NewElement( NodeNameStrings[ NT_Catalog ] );
-//     const wxXmlAttribute* attr = root->FindAttribute( DT_DataNames[DT_Name] );
+//     wxXmlNode* newRoot = newDoc->NewNode( NodeNameStrings[ NT_Catalog ] );
+//     const wxXmlAttribute* attr = root->GetAttribute( DT_DataNames[DT_Name] );
 //     if ( attr ){
-//         const char* name = attr->Name( );
-//         const char* value = attr->Value( );
+//         const char* name = attr->GetName( );
+//         const char* value = attr->GetValue( );
 //         newRoot->SetAttribute( name, value );
 //         newDoc->InsertFirstChild( newRoot );
 //     }
@@ -636,7 +636,7 @@ wxArrayPtrVoid* AlbumTreeCtrl::MakeParentList( wxXmlNode* catalogData,
 //             childTypeStamp.SetElement( child );
 
 //             // figure out what the next sibling is because we may move child
-//             wxXmlNode* nextSibling = child->NextSiblingElement( );
+//             wxXmlNode* nextSibling = child->GetNext( );
 
 //             // only search a reasonable distance after the first one is found
 //             if ( count > 1 )
@@ -657,7 +657,7 @@ wxArrayPtrVoid* AlbumTreeCtrl::MakeParentList( wxXmlNode* catalogData,
 //                     && !series.Cmp( parentSeries ) )
 //                 {
 //                     count++;
-//                     parentTypeElement->InsertEndChild( child );
+//                     parentTypeElement->AddChild( child );
 //                     // this is a hack so the loop doesn't start at the beginning
 //                     // next time.
 //                     //                    start = child;

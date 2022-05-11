@@ -15,10 +15,10 @@
 
 #include "Defs.h"
 #include "Node.h"
-#include <wx/xml/xml.h>
+#include <tinyxml2.h>
 #include <wx/string.h>
 
-//
+ 
 
 
 
@@ -329,6 +329,12 @@ public:
      **************************************************/
     wxXmlNode* GetFirstChildSpecimen( );
 
+    /**
+     * @brief Get the next child element of Specimen type
+     * 
+     * @return wxXmlNode* 
+     **************************************************/
+    wxXmlNode* GetNextChildSpecimen( );
 
     /**
      * @brief Add any empty element of type CatalogCode
@@ -359,6 +365,13 @@ public:
      **************************************************/
     wxXmlNode* GetFirstChildCode( );
 
+    /**
+     * @brief Get the next child element with CatalogCode type
+     * 
+     * @param ele get the CatalogCode sibling after this one 
+     * @return wxXmlNode* 
+     **************************************************/
+    wxXmlNode* GetNextChildCode( wxXmlNode* ele );
 
     /**
      * @brief Get the CatalogCode for the input catalog code 

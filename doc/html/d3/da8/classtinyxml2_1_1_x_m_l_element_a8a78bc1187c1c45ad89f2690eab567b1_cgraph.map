@@ -1,4 +1,4 @@
-<map id="tinyxml2::XMLElement::QueryIntAttribute" name="tinyxml2::XMLElement::QueryIntAttribute">
+<map id="tinyxml2::wxXmlNode::QueryIntAttribute" name="tinyxml2::wxXmlNode::QueryIntAttribute">
 <area shape="rect" id="node2" href="$dc/d22/classtinyxml2_1_1_x_m_l_attribute.html#a6d5176260db00ea301c01af8457cd993" title="QueryIntValue interprets the attribute as an integer, and returns the value in the provided parameter..." alt="" coords="208,39,363,80"/>
 <area shape="rect" id="node3" href="$d6/db0/classtinyxml2_1_1_x_m_l_util.html#ad4df4023d11ee3fca9689c49b9707323" title="tinyxml2::XMLUtil::\lToInt" alt="" coords="416,5,551,47"/>
 <area shape="rect" id="node4" href="$de/d13/classtinyxml2_1_1_x_m_l_node.html#a0485e51c670e741884cfd8362274d680" title="The meaning of &#39;value&#39; changes for the specific type. " alt="" coords="411,71,556,112"/>

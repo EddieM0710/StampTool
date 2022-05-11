@@ -1,4 +1,4 @@
-<map id="tinyxml2::XMLAttribute::QueryIntValue" name="tinyxml2::XMLAttribute::QueryIntValue">
+<map id="tinyxml2::wxXmlAttribute::QueryIntValue" name="tinyxml2::wxXmlAttribute::QueryIntValue">
 <area shape="rect" id="node2" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a8a78bc1187c1c45ad89f2690eab567b1" title="Given an attribute name, QueryIntAttribute() returns XML_SUCCESS, XML_WRONG_ATTRIBUTE_TYPE if the con..." alt="" coords="208,5,363,47"/>
 <area shape="rect" id="node3" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a95a89b13bb14a2d4655e2b5b406c00d4" title="Given an attribute name, IntAttribute() returns the value of the attribute interpreted as an integer..." alt="" coords="411,5,565,47"/>
 </map>

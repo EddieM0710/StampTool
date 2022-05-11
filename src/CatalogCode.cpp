@@ -23,6 +23,7 @@
 
 #include "CatalogCode.h"
 #include <wx/strconv.h>
+#include "XMLUtilities.h"
 
 bool CatalogCode::IsOK( )
 {
@@ -37,8 +38,7 @@ void CatalogCode::SetAttr( CatalogCodeTypes type, wxString val )
 {
     if ( IsOK( ) )
     {
-        GetElement( )->DeleteAttribute(CC_CatalogCodeNames[ type ]);
-        GetElement( )->AddAttribute( CC_CatalogCodeNames[ type ] , val  );
+       SetAttribute( GetElement( ),  CC_CatalogCodeNames[ type ]  ,  val   );
     };
 }
 
@@ -46,7 +46,11 @@ wxString CatalogCode::GetAttr( CatalogCodeTypes type )
 {
     if ( IsOK( ) )
     {
-        return  GetElement( )->GetAttribute( CC_CatalogCodeNames[ type ] );
+        wxXmlAttribute *attr = GetAttribute( GetElement( ), CC_CatalogCodeNames[ type ] );
+        if ( attr )
+        {
+            return wxString::FromUTF8Unchecked( attr->GetName( ) );
+        }
     }
     return wxString( "" );
 }

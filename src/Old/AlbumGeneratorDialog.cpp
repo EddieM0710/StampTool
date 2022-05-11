@@ -110,6 +110,7 @@ void AlbumGeneratorDialog::Init()
     m_primarySplitterWindow = NULL;
     m_itemListBox = NULL;
     m_secondarySplitterWindow = NULL;
+    m_AECommnands = NULL;
     m_richTextCtrl = NULL;
 ////@end AlbumGeneratorDialog member initialisation
 }
@@ -141,8 +142,12 @@ void AlbumGeneratorDialog::CreateControls()
     m_secondarySplitterWindow = new wxSplitterWindow( m_primarySplitterWindow, ID_SECONDARYSPLITTERWINDOW, wxDefaultPosition, wxSize(100, 100), wxSP_3DBORDER|wxSP_3DSASH|wxNO_BORDER );
     m_secondarySplitterWindow->SetMinimumPaneSize(0);
 
+    wxArrayString m_AECommnandsStrings;
+    m_AECommnands = new wxListBox( m_secondarySplitterWindow, ID_AECMDLISTBOX, wxDefaultPosition, wxDefaultSize, m_AECommnandsStrings, wxLB_SINGLE );
+
     m_richTextCtrl = new wxTextCtrl( m_secondarySplitterWindow, ID_RICHTEXTTEXTCTRL, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE|wxTE_RICH|wxTE_RICH2 );
 
+    m_secondarySplitterWindow->SplitVertically(m_AECommnands, m_richTextCtrl, 100);
     m_primarySplitterWindow->SplitVertically(m_itemListBox, m_secondarySplitterWindow, 100);
     itemBoxSizer1->Add(m_primarySplitterWindow, 1, wxGROW|wxALL, 5);
 

@@ -1,7 +1,7 @@
 <map id="/sandbox/Development/StampManager/src/CharacteristicsPanel.cpp" name="/sandbox/Development/StampManager/src/CharacteristicsPanel.cpp">
 <area shape="rect" id="node4" href="$da/d28/_characteristics_panel_8h.html" title="Inherits from wxPanel. This class manages the widgets that display the physical characteristics of th..." alt="" coords="221,109,376,136"/>
 <area shape="rect" id="node11" href="$d8/dbc/_labeled_text_box_8h.html" title="LabeledTextBox.h" alt="" coords="355,184,482,211"/>
-<area shape="rect" id="node5" href="$d4/d67/_stamp_8h.html" title="This is a wrapper of an XMLElement for safe/convenient getting/putting. " alt="" coords="261,184,331,211"/>
+<area shape="rect" id="node5" href="$d4/d67/_stamp_8h.html" title="This is a wrapper of an wxXmlNode for safe/convenient getting/putting. " alt="" coords="261,184,331,211"/>
 <area shape="rect" id="node6" href="$df/dde/_defs_8h.html" title="Resting place for Global stuff. " alt="" coords="333,333,395,360"/>
 <area shape="rect" id="node9" href="$d1/d02/_node_8h.html" title="Node.h" alt="" coords="267,259,331,285"/>
 </map>

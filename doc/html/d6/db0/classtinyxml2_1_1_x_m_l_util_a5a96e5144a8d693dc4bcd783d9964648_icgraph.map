@@ -2,7 +2,7 @@
 <area shape="rect" id="node2" href="$de/dc1/classtinyxml2_1_1_str_pair.html#ad87e3d11330f5e689ba1e7e54c023b57" title="tinyxml2::StrPair::\lGetStr" alt="" coords="188,1161,315,1203"/>
 <area shape="rect" id="node3" href="$de/d13/classtinyxml2_1_1_x_m_l_node.html#a0485e51c670e741884cfd8362274d680" title="The meaning of &#39;value&#39; changes for the specific type. " alt="" coords="367,952,513,993"/>
 <area shape="rect" id="node7" href="$de/d13/classtinyxml2_1_1_x_m_l_node.html#a916e498914baecbc9a1f012352ef7c69" title="tinyxml2::XMLNode::\lParseDeep" alt="" coords="591,37,736,79"/>
-<area shape="rect" id="node37" href="$dc/d22/classtinyxml2_1_1_x_m_l_attribute.html#ab1c5cd993f836a771818ca408994b14e" title="tinyxml2::XMLAttribute\l::Value" alt="" coords="363,2171,517,2212"/>
+<area shape="rect" id="node37" href="$dc/d22/classtinyxml2_1_1_x_m_l_attribute.html#ab1c5cd993f836a771818ca408994b14e" title="tinyxml2::wxXmlAttribute\l::Value" alt="" coords="363,2171,517,2212"/>
 <area shape="rect" id="node49" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#ae97fff2402a0d01e0509c430b37996b3" title="Returns a &quot;long form&quot; error description. " alt="" coords="580,1788,747,1829"/>
 <area shape="rect" id="node4" href="$d5/d71/class_persistent.html#a1e6d550aa3f4595274acfa528fc0de02" title="Load the persistent file. " alt="" coords="835,1737,953,1763"/>
 <area shape="rect" id="node6" href="$d2/d63/class_stamp_manager_frame.html#ab4f27ac876c7ac01166890d6c9594ca9" title="StampManagerFrame::\lOnTestXMLClick" alt="" coords="817,1853,971,1895"/>
@@ -15,28 +15,28 @@
 <area shape="rect" id="node16" href="$d4/d65/classtinyxml2_1_1_x_m_l_unknown.html#ab73b48b819aa4b2ef3815dc2d7d20d5f" title="Make a copy of this node, but not its children. " alt="" coords="583,495,744,536"/>
 <area shape="rect" id="node17" href="$d4/d65/classtinyxml2_1_1_x_m_l_unknown.html#ac46767cd721d666e690a6231dfb618d1" title="Test if 2 nodes are the same, but don&#39;t test children. " alt="" coords="583,560,744,601"/>
 <area shape="rect" id="node18" href="$dc/d22/classtinyxml2_1_1_x_m_l_attribute.html#a6d5176260db00ea301c01af8457cd993" title="QueryIntValue interprets the attribute as an integer, and returns the value in the provided parameter..." alt="" coords="586,625,741,667"/>
-<area shape="rect" id="node20" href="$dc/d22/classtinyxml2_1_1_x_m_l_attribute.html#a48a7f3496f1415832e451bd8d09c9cb9" title="tinyxml2::XMLAttribute\l::QueryUnsignedValue" alt="" coords="586,887,741,928"/>
-<area shape="rect" id="node22" href="$dc/d22/classtinyxml2_1_1_x_m_l_attribute.html#a4e25344d6e4159026be34dbddf1dcac2" title="tinyxml2::XMLAttribute\l::QueryInt64Value" alt="" coords="586,691,741,732"/>
-<area shape="rect" id="node23" href="$dc/d22/classtinyxml2_1_1_x_m_l_attribute.html#af793c695e7ee65cf20b8010d38b1d157" title="tinyxml2::XMLAttribute\l::QueryUnsigned64Value" alt="" coords="580,756,747,797"/>
-<area shape="rect" id="node24" href="$dc/d22/classtinyxml2_1_1_x_m_l_attribute.html#a5f32e038954256f61c21ff20fd13a09c" title="tinyxml2::XMLAttribute\l::QueryBoolValue" alt="" coords="586,821,741,863"/>
-<area shape="rect" id="node25" href="$dc/d22/classtinyxml2_1_1_x_m_l_attribute.html#a049dea6449a6259b6cfed44a9427b607" title="tinyxml2::XMLAttribute\l::QueryFloatValue" alt="" coords="586,952,741,993"/>
-<area shape="rect" id="node26" href="$dc/d22/classtinyxml2_1_1_x_m_l_attribute.html#a2aa6e55e8ea03af0609cf6690bff79b9" title="tinyxml2::XMLAttribute\l::QueryDoubleValue" alt="" coords="586,1017,741,1059"/>
+<area shape="rect" id="node20" href="$dc/d22/classtinyxml2_1_1_x_m_l_attribute.html#a48a7f3496f1415832e451bd8d09c9cb9" title="tinyxml2::wxXmlAttribute\l::QueryUnsignedValue" alt="" coords="586,887,741,928"/>
+<area shape="rect" id="node22" href="$dc/d22/classtinyxml2_1_1_x_m_l_attribute.html#a4e25344d6e4159026be34dbddf1dcac2" title="tinyxml2::wxXmlAttribute\l::QueryInt64Value" alt="" coords="586,691,741,732"/>
+<area shape="rect" id="node23" href="$dc/d22/classtinyxml2_1_1_x_m_l_attribute.html#af793c695e7ee65cf20b8010d38b1d157" title="tinyxml2::wxXmlAttribute\l::QueryUnsigned64Value" alt="" coords="580,756,747,797"/>
+<area shape="rect" id="node24" href="$dc/d22/classtinyxml2_1_1_x_m_l_attribute.html#a5f32e038954256f61c21ff20fd13a09c" title="tinyxml2::wxXmlAttribute\l::QueryBoolValue" alt="" coords="586,821,741,863"/>
+<area shape="rect" id="node25" href="$dc/d22/classtinyxml2_1_1_x_m_l_attribute.html#a049dea6449a6259b6cfed44a9427b607" title="tinyxml2::wxXmlAttribute\l::QueryFloatValue" alt="" coords="586,952,741,993"/>
+<area shape="rect" id="node26" href="$dc/d22/classtinyxml2_1_1_x_m_l_attribute.html#a2aa6e55e8ea03af0609cf6690bff79b9" title="tinyxml2::wxXmlAttribute\l::QueryDoubleValue" alt="" coords="586,1017,741,1059"/>
 <area shape="rect" id="node27" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a0fa5bea0a4daf3ddd503dcabb823eba6" title="Convenience function for easy access to the text inside an element. " alt="" coords="586,1083,741,1124"/>
 <area shape="rect" id="node28" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a926357996bef633cb736e1a558419632" title="Convenience method to query the value of a child text node. " alt="" coords="586,1148,741,1189"/>
-<area shape="rect" id="node29" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a14d38aa4b5e18a46274a27425188a6a1" title="tinyxml2::XMLElement\l::QueryUnsignedText" alt="" coords="586,1213,741,1255"/>
-<area shape="rect" id="node30" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a120c538c8eead169e635dbc70fb226d8" title="tinyxml2::XMLElement\l::QueryInt64Text" alt="" coords="586,1279,741,1320"/>
-<area shape="rect" id="node31" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#ac2239b3bd172ad8f5b78d04d4236144b" title="tinyxml2::XMLElement\l::QueryUnsigned64Text" alt="" coords="583,1344,743,1385"/>
-<area shape="rect" id="node32" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a3fe5417d59eb8f5c4afe924b7d332736" title="tinyxml2::XMLElement\l::QueryBoolText" alt="" coords="586,1409,741,1451"/>
-<area shape="rect" id="node33" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a684679c99bb036a25652744cec6c4d96" title="tinyxml2::XMLElement\l::QueryDoubleText" alt="" coords="586,1475,741,1516"/>
-<area shape="rect" id="node34" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#afa332afedd93210daa6d44b88eb11e29" title="tinyxml2::XMLElement\l::QueryFloatText" alt="" coords="586,1540,741,1581"/>
+<area shape="rect" id="node29" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a14d38aa4b5e18a46274a27425188a6a1" title="tinyxml2::wxXmlNode\l::QueryUnsignedText" alt="" coords="586,1213,741,1255"/>
+<area shape="rect" id="node30" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a120c538c8eead169e635dbc70fb226d8" title="tinyxml2::wxXmlNode\l::QueryInt64Text" alt="" coords="586,1279,741,1320"/>
+<area shape="rect" id="node31" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#ac2239b3bd172ad8f5b78d04d4236144b" title="tinyxml2::wxXmlNode\l::QueryUnsigned64Text" alt="" coords="583,1344,743,1385"/>
+<area shape="rect" id="node32" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a3fe5417d59eb8f5c4afe924b7d332736" title="tinyxml2::wxXmlNode\l::QueryBoolText" alt="" coords="586,1409,741,1451"/>
+<area shape="rect" id="node33" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a684679c99bb036a25652744cec6c4d96" title="tinyxml2::wxXmlNode\l::QueryDoubleText" alt="" coords="586,1475,741,1516"/>
+<area shape="rect" id="node34" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#afa332afedd93210daa6d44b88eb11e29" title="tinyxml2::wxXmlNode\l::QueryFloatText" alt="" coords="586,1540,741,1581"/>
 <area shape="rect" id="node35" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#aafa2807a45b28fe096b29d76e6a13b7c" title="Make a copy of this node, but not its children. " alt="" coords="586,1605,741,1647"/>
 <area shape="rect" id="node36" href="$df/d27/classtinyxml2_1_1_x_m_l_printer.html#adc0e42b4f6fcb90a95630c79575d030b" title="tinyxml2::XMLPrinter\l::Visit" alt="" coords="591,1671,735,1712"/>
 <area shape="rect" id="node5" href="$d5/d71/class_persistent.html#a82c8ff341cce87299a814e970f542606" title="Destroy the Persistent object. " alt="" coords="1027,1737,1183,1763"/>
-<area shape="rect" id="node8" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a072998100b7d0ba5e8aeac6dd6dfb31b" title="tinyxml2::XMLElement\l::ParseDeep" alt="" coords="817,5,971,47"/>
-<area shape="rect" id="node9" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#aeb556e0e2bed02a73a6c5aaf19759e9a" title="tinyxml2::XMLDocument\l::Parse" alt="" coords="811,71,977,112"/>
+<area shape="rect" id="node8" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a072998100b7d0ba5e8aeac6dd6dfb31b" title="tinyxml2::wxXmlNode\l::ParseDeep" alt="" coords="817,5,971,47"/>
+<area shape="rect" id="node9" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#aeb556e0e2bed02a73a6c5aaf19759e9a" title="tinyxml2::wxXmlDocument\l::Parse" alt="" coords="811,71,977,112"/>
 <area shape="rect" id="node19" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a8a78bc1187c1c45ad89f2690eab567b1" title="Given an attribute name, QueryIntAttribute() returns XML_SUCCESS, XML_WRONG_ATTRIBUTE_TYPE if the con..." alt="" coords="817,625,971,667"/>
-<area shape="rect" id="node21" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a26fc84cbfba6769dafcfbf256c05e22f" title="tinyxml2::XMLElement\l::QueryUnsignedAttribute" alt="" coords="809,887,979,928"/>
-<area shape="rect" id="node38" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#adb8ae765f98d0c5037faec48deea78bc" title="tinyxml2::XMLElement\l::QueryStringAttribute" alt="" coords="586,2204,741,2245"/>
+<area shape="rect" id="node21" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a26fc84cbfba6769dafcfbf256c05e22f" title="tinyxml2::wxXmlNode\l::QueryUnsignedAttribute" alt="" coords="809,887,979,928"/>
+<area shape="rect" id="node38" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#adb8ae765f98d0c5037faec48deea78bc" title="tinyxml2::wxXmlNode\l::QueryStringAttribute" alt="" coords="586,2204,741,2245"/>
 <area shape="rect" id="node39" href="$d7/daf/class_merge_stamps_dialog.html#a1b9d8e0205bf2d57d5a709c6c2f12191" title="MergeStampsDialog::\lFindCurrentItemWithID" alt="" coords="815,2328,973,2369"/>
 <area shape="rect" id="node40" href="$d7/daf/class_merge_stamps_dialog.html#a3bdf8500ecb935f0066f2badfae0ef95" title="MergeStampsDialog::\lFindNextItem" alt="" coords="1031,2379,1179,2420"/>
 <area shape="rect" id="node41" href="$d6/de5/class_specimen.html#a05f29e21f3f1cd9a3f07f77d240f76bf" title="Specimen::GetAttr" alt="" coords="598,2386,729,2413"/>
@@ -47,5 +47,5 @@
 <area shape="rect" id="node46" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a48cf4a315cfbac7d74cd0d5ff2c5df51" title="Given an attribute name, Attribute() returns the value for the attribute of that name, or null if none exists. " alt="" coords="586,2269,741,2311"/>
 <area shape="rect" id="node47" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a61ffd7bf918a9db4aa6203d855ac5ec2" title="Test if 2 nodes are the same, but don&#39;t test children. " alt="" coords="586,2073,741,2115"/>
 <area shape="rect" id="node48" href="$df/d27/classtinyxml2_1_1_x_m_l_printer.html#a169b2509d8eabb70811b2bb8cfd1f5d1" title="tinyxml2::XMLPrinter\l::VisitEnter" alt="" coords="591,2139,735,2180"/>
-<area shape="rect" id="node50" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#a1d033945b42e125d933d6231e4571552" title="tinyxml2::XMLDocument\l::PrintError" alt="" coords="811,1788,977,1829"/>
+<area shape="rect" id="node50" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#a1d033945b42e125d933d6231e4571552" title="tinyxml2::wxXmlDocument\l::PrintError" alt="" coords="811,1788,977,1829"/>
 </map>

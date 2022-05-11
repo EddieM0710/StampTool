@@ -34,6 +34,7 @@ class wxTreeCtrl;
 class wxWindow;
 ////@end forward declarations
 class AlbumTreeCtrl;
+class ManageAECmdData;
 /*!
  * Control identifiers
  */
@@ -93,6 +94,7 @@ public:
     wxIcon GetIconResource( const wxString& name );
 ////@end AlbumSplitterWindow member function declarations
 
+    ManageAECmdData* GetAECmdDataMgr(){ return m_AECmdDataMgr;} ;
 
     /// Should we show tooltips?
     static bool ShowToolTips();
@@ -104,6 +106,7 @@ public:
     wxWindow* m_CmdDataTextCtrl;
     wxTextCtrl* m_richTextCtrl;
 ////@end AlbumSplitterWindow member variables
+ManageAECmdData* m_AECmdDataMgr ;
 };
 
 #endif

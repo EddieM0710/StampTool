@@ -1,6 +1,6 @@
 TODO List
 
-1 fix variable names so that XMLElement refs are called elements,
+1 fix variable names so that wxXmlNode refs are called elements,
 stamps, classifications, etc are called nodes. and Tree item references are called items.
 ?? mostly done. watch for needed changes
 

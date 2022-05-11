@@ -17,7 +17,7 @@
 #include "wx/xml/xml.h"
 #include <wx/string.h>
 
-//
+ 
 
 /**
  * @brief This is a wrapper of an wxXmlNode for

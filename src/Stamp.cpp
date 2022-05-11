@@ -51,7 +51,7 @@ void Stamp::SetAttr( DataTypes type, wxString val )
 {
     if ( IsOK( ) )
     {
-        this->GetElement( )->AddAttribute( DT_XMLDataNames[ type ], val  );
+        SetAttribute( GetElement( ), DT_XMLDataNames[ type ] , val );
     };
 }
 
@@ -62,7 +62,7 @@ wxString Stamp::GetAttr( DataTypes type )
         const wxXmlAttribute* attr  = GetAttribute( GetElement( ), DT_XMLDataNames[ type ] );
         if ( attr )
         {
-            return  attr->GetName( );
+            return wxString::FromUTF8Unchecked( attr->GetValue( ) );
         }
     }
     return wxString( "" );
@@ -234,7 +234,6 @@ void Stamp::SetCurrency( wxString val ) { SetAttr( DT_Currency, val ); };
 void Stamp::SetCountry( wxString val ) { SetAttr( DT_Country, val ); };
 void Stamp::SetColors( wxString val ) { SetAttr( DT_Colors, val ); };
 void Stamp::SetCatalogCodes( wxString val ) { SetAttr( DT_Catalog_Codes, val ); };
-//void Stamp::SetAttr( DataTypes type, wxString val );
 void Stamp::SetAccuracy( wxString val ) { SetAttr( DT_Accuracy, val ); };
 
 wxString Stamp::GetClassificationName( Stamp* stamp, NodeType type )
@@ -281,7 +280,7 @@ wxXmlNode* Stamp::AddSpecimen( )
     wxXmlNode* ele = GetElement( );
     if ( ele )
     {
-        wxXmlNode* node = NewNode( ele, NodeNameStrings[ NT_Specimen ] );
+        return NewNode( ele, NodeNameStrings[ NT_Specimen ] );
     }
     return ( wxXmlNode* )0;
 }
@@ -291,7 +290,7 @@ void Stamp::DeleteSpecimen( wxXmlNode* deleteThisNode )
     wxXmlNode* ele = GetElement( );
     if ( ele )
     {
-        ele->RemoveChild( deleteThisNode );
+        ele->RemoveChild(  deleteThisNode );
     }
 }
 
@@ -313,6 +312,15 @@ wxXmlNode* Stamp::GetFirstChildSpecimen( )
     if ( ele )
     {
         return FirstChildElement( ele, NodeNameStrings[ NT_Specimen ] );
+    }
+    return ( wxXmlNode* )0;
+}
+wxXmlNode* Stamp::GetNextChildSpecimen( )
+{
+    wxXmlNode* ele = GetElement( );
+    if ( ele )
+    {
+        return GetNext( ele, NodeNameStrings[ NT_Specimen ] );
     }
     return ( wxXmlNode* )0;
 }
@@ -360,7 +368,14 @@ wxXmlNode* Stamp::GetFirstChildCode( )
     return ( wxXmlNode* )0;
 }
 
-
+wxXmlNode* Stamp::GetNextChildCode( wxXmlNode* ele )
+{
+    if ( ele )
+    {
+        return GetNext( ele, NodeNameStrings[ NT_CatalogCode ] );
+    }
+    return ( wxXmlNode* )0;
+}
 
 wxXmlNode* Stamp::GetCodeForCatalog( const char* catalog )
 {
@@ -373,7 +388,7 @@ wxXmlNode* Stamp::GetCodeForCatalog( const char* catalog )
             const wxXmlAttribute* attr = GetAttribute( childCode, CC_CatalogCodeNames[ CC_Catalog ] );
             if ( attr )
             {
-                const char* code = attr->GetName( );
+                const char* code = attr->GetValue( );
                 if ( !strncmp( catalog, code, strlen( catalog ) ) )
                 {
                     return childCode;

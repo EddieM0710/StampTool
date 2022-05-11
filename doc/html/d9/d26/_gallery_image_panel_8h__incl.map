@@ -1,6 +1,6 @@
 <map id="/sandbox/Development/StampManager/src/GalleryImagePanel.h" name="/sandbox/Development/StampManager/src/GalleryImagePanel.h">
 <area shape="rect" id="node2" href="$df/dde/_defs_8h.html" title="Resting place for Global stuff. " alt="" coords="217,333,278,360"/>
 <area shape="rect" id="node5" href="$dd/d28/_stamp_tree_ctrl_8h.html" title="StampTreeCtrl.h" alt="" coords="159,109,277,136"/>
-<area shape="rect" id="node6" href="$d4/d67/_stamp_8h.html" title="This is a wrapper of an XMLElement for safe/convenient getting/putting. " alt="" coords="347,184,417,211"/>
+<area shape="rect" id="node6" href="$d4/d67/_stamp_8h.html" title="This is a wrapper of an wxXmlNode for safe/convenient getting/putting. " alt="" coords="347,184,417,211"/>
 <area shape="rect" id="node7" href="$d1/d02/_node_8h.html" title="Node.h" alt="" coords="281,259,345,285"/>
 </map>

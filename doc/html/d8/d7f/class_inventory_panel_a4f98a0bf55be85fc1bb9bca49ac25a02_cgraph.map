@@ -11,5 +11,5 @@
 <area shape="rect" id="node9" href="$d8/d7f/class_inventory_panel.html#a10e685f8a05074504d88cab3b7912f03" title="creates a new empty row in the grid " alt="" coords="726,299,889,326"/>
 <area shape="rect" id="node10" href="$d6/de5/class_specimen.html#ae4c9eef147352273742bc35448baf76f" title="Specimen::SetAttr" alt="" coords="982,299,1111,326"/>
 <area shape="rect" id="node11" href="$d6/de5/class_specimen.html#a8bb05dcd5e84d6083f58541d37a50199" title="Specimen::IsOK" alt="" coords="1211,400,1330,427"/>
-<area shape="rect" id="node12" href="$de/dfe/_x_m_l_utilities_8cpp.html#ad47c65cc8945eb9144968a2364ba1566" title="is the specified XMLElement of specified type " alt="" coords="1412,400,1505,427"/>
+<area shape="rect" id="node12" href="$de/dfe/_x_m_l_utilities_8cpp.html#ad47c65cc8945eb9144968a2364ba1566" title="is the specified wxXmlNode of specified type " alt="" coords="1412,400,1505,427"/>
 </map>

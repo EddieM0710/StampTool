@@ -1,9 +1,9 @@
 <map id="/sandbox/Development/StampManager/src/Node.h" name="/sandbox/Development/StampManager/src/Node.h">
 <area shape="rect" id="node2" href="$d2/d42/_catalog_code_8h.html" title="/sandbox/Development\l/StampManager/src/CatalogCode.h" alt="" coords="1885,95,2111,136"/>
 <area shape="rect" id="node8" href="$de/dfe/_x_m_l_utilities_8cpp.html" title="/sandbox/Development\l/StampManager/src/XMLUtilities.cpp" alt="" coords="2925,191,3161,233"/>
-<area shape="rect" id="node9" href="$d4/d67/_stamp_8h.html" title="This is a wrapper of an XMLElement for safe/convenient getting/putting. " alt="" coords="2135,95,2325,136"/>
-<area shape="rect" id="node35" href="$d5/d6d/_classification_8h.html" title="This is a wrapper of an XMLElement for safe/convenient getting/putting. " alt="" coords="3177,95,3408,136"/>
-<area shape="rect" id="node37" href="$dc/d95/_specimen_8h.html" title="This is a wrapper of an XMLElement for safe/convenient getting/putting. " alt="" coords="3704,95,3913,136"/>
+<area shape="rect" id="node9" href="$d4/d67/_stamp_8h.html" title="This is a wrapper of an wxXmlNode for safe/convenient getting/putting. " alt="" coords="2135,95,2325,136"/>
+<area shape="rect" id="node35" href="$d5/d6d/_classification_8h.html" title="This is a wrapper of an wxXmlNode for safe/convenient getting/putting. " alt="" coords="3177,95,3408,136"/>
+<area shape="rect" id="node37" href="$dc/d95/_specimen_8h.html" title="This is a wrapper of an wxXmlNode for safe/convenient getting/putting. " alt="" coords="3704,95,3913,136"/>
 <area shape="rect" id="node3" href="$d9/dec/_catalog_code_8cpp.html" title="/sandbox/Development\l/StampManager/src/CatalogCode.cpp" alt="" coords="5,191,247,233"/>
 <area shape="rect" id="node4" href="$d8/d5a/_catalog_code_panel_8cpp.html" title="/sandbox/Development\l/StampManager/src/CatalogCode\lPanel.cpp" alt="" coords="363,288,579,344"/>
 <area shape="rect" id="node5" href="$d3/d5b/_c_s_v_8cpp.html" title="This file contains the class that reads .csv files and loads them into an XML structure. " alt="" coords="2084,191,2277,233"/>

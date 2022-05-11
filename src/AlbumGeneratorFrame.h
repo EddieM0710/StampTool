@@ -40,7 +40,7 @@ class CatalogData;
 
 class ManageCatalogData;
 class CatalogDataTreeCtrl;
-
+class ManageAECmdData;
 /*!
  * Control identifiers
  */
@@ -271,7 +271,7 @@ class AlbumGeneratorFrame : public wxFrame
      // AlbumGeneratorFrame member variables
     AlbumGeneratorPanel *m_albumGeneratorPanel;
     ManageCatalogData* m_catalogDataManager;
-   // ManageAECmdData* m_AECmdDataManager;
+    ManageAECmdData* m_AECmdDataManager;
      // AlbumGeneratorFrame member variables
 
     // container data classification sort order

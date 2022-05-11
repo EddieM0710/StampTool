@@ -1,4 +1,4 @@
-<map id="tinyxml2::XMLElement::FindAttribute" name="tinyxml2::XMLElement::FindAttribute">
+<map id="tinyxml2::wxXmlNode::FindAttribute" name="tinyxml2::wxXmlNode::FindAttribute">
 <area shape="rect" id="node2" href="$d7/daf/class_merge_stamps_dialog.html#a1b9d8e0205bf2d57d5a709c6c2f12191" title="MergeStampsDialog::\lFindCurrentItemWithID" alt="" coords="467,250,625,291"/>
 <area shape="rect" id="node3" href="$d7/daf/class_merge_stamps_dialog.html#a3bdf8500ecb935f0066f2badfae0ef95" title="MergeStampsDialog::\lFindNextItem" alt="" coords="707,226,855,267"/>
 <area shape="rect" id="node11" href="$d6/de5/class_specimen.html#a05f29e21f3f1cd9a3f07f77d240f76bf" title="Specimen::GetAttr" alt="" coords="241,823,371,849"/>
@@ -44,8 +44,8 @@
 <area shape="rect" id="node42" href="$da/dd4/class_stamp.html#aebe3465fea3ec34b388089dc9616474b" title="Stamp::IsMultiple" alt="" coords="719,873,843,900"/>
 <area shape="rect" id="node45" href="$d0/d30/_stamp_data_8h.html#a015efca8a910f5734df65172c44f0c2c" title="AddStamp" alt="" coords="505,133,587,160"/>
 <area shape="rect" id="node48" href="$d2/d63/class_stamp_manager_frame.html#ab4f27ac876c7ac01166890d6c9594ca9" title="StampManagerFrame::\lOnTestXMLClick" alt="" coords="469,185,623,226"/>
-<area shape="rect" id="node49" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a1e679b60e191ad79bfcefcd49ca66fa2" title="tinyxml2::XMLElement\l::ParseAttributes" alt="" coords="469,43,623,85"/>
+<area shape="rect" id="node49" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a1e679b60e191ad79bfcefcd49ca66fa2" title="tinyxml2::wxXmlNode\l::ParseAttributes" alt="" coords="469,43,623,85"/>
 <area shape="rect" id="node46" href="$d7/daf/class_merge_stamps_dialog.html#a07fcec3e2dfe6751560b916b67c7f004" title="MergeStampsDialog::\lAddMissingItem" alt="" coords="707,161,855,202"/>
 <area shape="rect" id="node47" href="$d0/d30/_stamp_data_8h.html#ab2e5c8ba12d319d654272e52c187b583" title="SortData" alt="" coords="1219,109,1294,136"/>
-<area shape="rect" id="node50" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a072998100b7d0ba5e8aeac6dd6dfb31b" title="tinyxml2::XMLElement\l::ParseDeep" alt="" coords="704,43,859,85"/>
+<area shape="rect" id="node50" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a072998100b7d0ba5e8aeac6dd6dfb31b" title="tinyxml2::wxXmlNode\l::ParseDeep" alt="" coords="704,43,859,85"/>
 </map>

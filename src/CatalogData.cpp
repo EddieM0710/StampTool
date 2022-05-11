@@ -35,7 +35,7 @@
 
 #include "wx/xml/xml.h"
 
-//
+ 
 
 CatalogData::CatalogData(/* args */ )
 {
@@ -87,9 +87,8 @@ void CatalogData::LoadXML( wxString filename )
     }
     bool errCode = m_stampDoc->Load( filename );
 
-    if ( !errCode  )
+    if ( errCode  )
     {
-  
         std::cout << filename << " Load Failed.\n";
     }
     else
@@ -101,14 +100,35 @@ void CatalogData::LoadXML( wxString filename )
         {
             catalogData->SetName( filename.c_str());
         }
- 
+        /**
+         * @todo Remove this block
+         * This code is to process catalog codes to the new way i'm handling it.
+         * It will be unnecessary once all the XMLs i've generated get updated.
+         *
+         **************************************************/
+        wxXmlNode* root = m_stampDoc->GetRoot( );
+        XMLIterator* iterator = new XMLIterator( root );
+        wxXmlNode* item = iterator->First( );
+        Stamp stamp;
+
+        while ( item )
+        {
+            if ( IsNodeType( item, NT_Stamp ) )
+            {
+                stamp.SetElement( item );
+                stamp.ProcessCatalogCodes( );
+            }
+            wxString name = item->GetName( );
+
+            item = iterator->Next( );
+        }
     }
 
     GetSettings()->SetLastFile( filename );
     //Get the file global Prefs
     wxXmlNode* root = m_stampDoc->GetRoot( );
-    wxString name = root->GetName( );
-    if ( ! name.Cmp( NodeNameStrings[ NT_Catalog ] ) )
+    const char* name = root->GetName( );
+    if ( !strcmp( name, NodeNameStrings[ NT_Catalog ] ) )
     {
         Classification catalog( root );
         m_title = catalog.GetTitle( );
@@ -128,17 +148,16 @@ void CatalogData::LoadCSV( wxString filename )
     wxXmlNode* docRoot = m_stampDoc->GetRoot( );
     if ( !docRoot )
     {
-        docRoot = new wxXmlNode( wxXML_ELEMENT_NODE , NodeNameStrings[ NT_Catalog ] );
-        m_stampDoc->SetRoot(docRoot);
+        docRoot = NewNode( m_stampDoc, NodeNameStrings[ NT_Catalog ] );
     }
 
-    docRoot->AddAttribute( DT_DataNames[DT_Name], filename.char_str( ) );
+    SetAttribute( docRoot, DT_DataNames[DT_Name], filename   );
   
-    csv->DoLoad( filename, docRoot );
+    csv->DoLoad( filename, m_stampDoc->GetRoot( ) );
     delete csv;
 }
 
 // wxXmlNode *CatalogData::Root()
 // {
-//     return m_stampDoc->RootElement();
+//     return m_stampDoc->GetRoot();
 // };

@@ -1,4 +1,4 @@
-<map id="tinyxml2::XMLElement::InsertNewChildElement" name="tinyxml2::XMLElement::InsertNewChildElement">
+<map id="tinyxml2::wxXmlNode::InsertNewChildElement" name="tinyxml2::wxXmlNode::InsertNewChildElement">
 <area shape="rect" id="node2" href="$d5/d71/class_persistent.html#a6596ceefbc44503a356dcfacb09a311e" title="Save the persistent file. " alt="" coords="237,93,355,120"/>
 <area shape="rect" id="node9" href="$da/dd4/class_stamp.html#a62b49e6a8d5b039ae01da88bb06b9346" title="Stamp::AddSpecimen" alt="" coords="221,205,371,232"/>
 <area shape="rect" id="node17" href="$d0/d30/_stamp_data_8h.html#a015efca8a910f5734df65172c44f0c2c" title="AddStamp" alt="" coords="255,308,337,335"/>

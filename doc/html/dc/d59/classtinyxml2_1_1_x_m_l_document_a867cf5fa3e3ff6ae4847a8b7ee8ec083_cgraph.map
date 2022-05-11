@@ -1,4 +1,4 @@
-<map id="tinyxml2::XMLDocument::Print" name="tinyxml2::XMLDocument::Print">
+<map id="tinyxml2::wxXmlDocument::Print" name="tinyxml2::wxXmlDocument::Print">
 <area shape="rect" id="node2" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#ab7be651917a35ab1ff0e4e6d4e565cdf" title="Accept a hierarchical visit of the nodes in the TinyXML&#45;2 DOM. " alt="" coords="220,71,387,112"/>
 <area shape="rect" id="node3" href="$d7/dac/classtinyxml2_1_1_x_m_l_visitor.html#acb3c22fc5f60eb9db98f533f2761f67d" title="tinyxml2::XMLVisitor\l::VisitEnter" alt="" coords="436,5,579,47"/>
 <area shape="rect" id="node4" href="$de/d13/classtinyxml2_1_1_x_m_l_node.html#a79db9ef0fe014d27790f2218b87bcbb5" title="tinyxml2::XMLNode::\lNextSibling" alt="" coords="435,71,580,112"/>

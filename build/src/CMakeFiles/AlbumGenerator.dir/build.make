@@ -585,9 +585,57 @@ src/CMakeFiles/AlbumGenerator.dir/MakeList.cpp.o.provides: src/CMakeFiles/AlbumG
 src/CMakeFiles/AlbumGenerator.dir/MakeList.cpp.o.provides.build: src/CMakeFiles/AlbumGenerator.dir/MakeList.cpp.o
 
 
+src/CMakeFiles/AlbumGenerator.dir/ArrayWrapper.cpp.o: src/CMakeFiles/AlbumGenerator.dir/flags.make
+src/CMakeFiles/AlbumGenerator.dir/ArrayWrapper.cpp.o: ../src/ArrayWrapper.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/sandbox/Development/AlbumGenerator/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object src/CMakeFiles/AlbumGenerator.dir/ArrayWrapper.cpp.o"
+	cd /sandbox/Development/AlbumGenerator/build/src && /usr/bin/x86_64-linux-gnu-g++-7  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/AlbumGenerator.dir/ArrayWrapper.cpp.o -c /sandbox/Development/AlbumGenerator/src/ArrayWrapper.cpp
+
+src/CMakeFiles/AlbumGenerator.dir/ArrayWrapper.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/AlbumGenerator.dir/ArrayWrapper.cpp.i"
+	cd /sandbox/Development/AlbumGenerator/build/src && /usr/bin/x86_64-linux-gnu-g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /sandbox/Development/AlbumGenerator/src/ArrayWrapper.cpp > CMakeFiles/AlbumGenerator.dir/ArrayWrapper.cpp.i
+
+src/CMakeFiles/AlbumGenerator.dir/ArrayWrapper.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/AlbumGenerator.dir/ArrayWrapper.cpp.s"
+	cd /sandbox/Development/AlbumGenerator/build/src && /usr/bin/x86_64-linux-gnu-g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /sandbox/Development/AlbumGenerator/src/ArrayWrapper.cpp -o CMakeFiles/AlbumGenerator.dir/ArrayWrapper.cpp.s
+
+src/CMakeFiles/AlbumGenerator.dir/ArrayWrapper.cpp.o.requires:
+
+.PHONY : src/CMakeFiles/AlbumGenerator.dir/ArrayWrapper.cpp.o.requires
+
+src/CMakeFiles/AlbumGenerator.dir/ArrayWrapper.cpp.o.provides: src/CMakeFiles/AlbumGenerator.dir/ArrayWrapper.cpp.o.requires
+	$(MAKE) -f src/CMakeFiles/AlbumGenerator.dir/build.make src/CMakeFiles/AlbumGenerator.dir/ArrayWrapper.cpp.o.provides.build
+.PHONY : src/CMakeFiles/AlbumGenerator.dir/ArrayWrapper.cpp.o.provides
+
+src/CMakeFiles/AlbumGenerator.dir/ArrayWrapper.cpp.o.provides.build: src/CMakeFiles/AlbumGenerator.dir/ArrayWrapper.cpp.o
+
+
+src/CMakeFiles/AlbumGenerator.dir/ManageAECmdData.cpp.o: src/CMakeFiles/AlbumGenerator.dir/flags.make
+src/CMakeFiles/AlbumGenerator.dir/ManageAECmdData.cpp.o: ../src/ManageAECmdData.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/sandbox/Development/AlbumGenerator/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object src/CMakeFiles/AlbumGenerator.dir/ManageAECmdData.cpp.o"
+	cd /sandbox/Development/AlbumGenerator/build/src && /usr/bin/x86_64-linux-gnu-g++-7  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/AlbumGenerator.dir/ManageAECmdData.cpp.o -c /sandbox/Development/AlbumGenerator/src/ManageAECmdData.cpp
+
+src/CMakeFiles/AlbumGenerator.dir/ManageAECmdData.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/AlbumGenerator.dir/ManageAECmdData.cpp.i"
+	cd /sandbox/Development/AlbumGenerator/build/src && /usr/bin/x86_64-linux-gnu-g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /sandbox/Development/AlbumGenerator/src/ManageAECmdData.cpp > CMakeFiles/AlbumGenerator.dir/ManageAECmdData.cpp.i
+
+src/CMakeFiles/AlbumGenerator.dir/ManageAECmdData.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/AlbumGenerator.dir/ManageAECmdData.cpp.s"
+	cd /sandbox/Development/AlbumGenerator/build/src && /usr/bin/x86_64-linux-gnu-g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /sandbox/Development/AlbumGenerator/src/ManageAECmdData.cpp -o CMakeFiles/AlbumGenerator.dir/ManageAECmdData.cpp.s
+
+src/CMakeFiles/AlbumGenerator.dir/ManageAECmdData.cpp.o.requires:
+
+.PHONY : src/CMakeFiles/AlbumGenerator.dir/ManageAECmdData.cpp.o.requires
+
+src/CMakeFiles/AlbumGenerator.dir/ManageAECmdData.cpp.o.provides: src/CMakeFiles/AlbumGenerator.dir/ManageAECmdData.cpp.o.requires
+	$(MAKE) -f src/CMakeFiles/AlbumGenerator.dir/build.make src/CMakeFiles/AlbumGenerator.dir/ManageAECmdData.cpp.o.provides.build
+.PHONY : src/CMakeFiles/AlbumGenerator.dir/ManageAECmdData.cpp.o.provides
+
+src/CMakeFiles/AlbumGenerator.dir/ManageAECmdData.cpp.o.provides.build: src/CMakeFiles/AlbumGenerator.dir/ManageAECmdData.cpp.o
+
+
 src/CMakeFiles/AlbumGenerator.dir/AlbumTreeCtrl.cpp.o: src/CMakeFiles/AlbumGenerator.dir/flags.make
 src/CMakeFiles/AlbumGenerator.dir/AlbumTreeCtrl.cpp.o: ../src/AlbumTreeCtrl.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/sandbox/Development/AlbumGenerator/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object src/CMakeFiles/AlbumGenerator.dir/AlbumTreeCtrl.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/sandbox/Development/AlbumGenerator/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object src/CMakeFiles/AlbumGenerator.dir/AlbumTreeCtrl.cpp.o"
 	cd /sandbox/Development/AlbumGenerator/build/src && /usr/bin/x86_64-linux-gnu-g++-7  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/AlbumGenerator.dir/AlbumTreeCtrl.cpp.o -c /sandbox/Development/AlbumGenerator/src/AlbumTreeCtrl.cpp
 
 src/CMakeFiles/AlbumGenerator.dir/AlbumTreeCtrl.cpp.i: cmake_force
@@ -633,6 +681,8 @@ AlbumGenerator_OBJECTS = \
 "CMakeFiles/AlbumGenerator.dir/XMLUtilities.cpp.o" \
 "CMakeFiles/AlbumGenerator.dir/CSV.cpp.o" \
 "CMakeFiles/AlbumGenerator.dir/MakeList.cpp.o" \
+"CMakeFiles/AlbumGenerator.dir/ArrayWrapper.cpp.o" \
+"CMakeFiles/AlbumGenerator.dir/ManageAECmdData.cpp.o" \
 "CMakeFiles/AlbumGenerator.dir/AlbumTreeCtrl.cpp.o"
 
 # External object files for target AlbumGenerator
@@ -660,11 +710,12 @@ AlbumGenerator: src/CMakeFiles/AlbumGenerator.dir/CatalogData.cpp.o
 AlbumGenerator: src/CMakeFiles/AlbumGenerator.dir/XMLUtilities.cpp.o
 AlbumGenerator: src/CMakeFiles/AlbumGenerator.dir/CSV.cpp.o
 AlbumGenerator: src/CMakeFiles/AlbumGenerator.dir/MakeList.cpp.o
+AlbumGenerator: src/CMakeFiles/AlbumGenerator.dir/ArrayWrapper.cpp.o
+AlbumGenerator: src/CMakeFiles/AlbumGenerator.dir/ManageAECmdData.cpp.o
 AlbumGenerator: src/CMakeFiles/AlbumGenerator.dir/AlbumTreeCtrl.cpp.o
 AlbumGenerator: src/CMakeFiles/AlbumGenerator.dir/build.make
-AlbumGenerator: /sandbox/Applications/TinyXML2/build/libtinyxml2d.so
 AlbumGenerator: src/CMakeFiles/AlbumGenerator.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/sandbox/Development/AlbumGenerator/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Linking CXX executable ../AlbumGenerator"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/sandbox/Development/AlbumGenerator/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Linking CXX executable ../AlbumGenerator"
 	cd /sandbox/Development/AlbumGenerator/build/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/AlbumGenerator.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -694,6 +745,8 @@ src/CMakeFiles/AlbumGenerator.dir/requires: src/CMakeFiles/AlbumGenerator.dir/Ca
 src/CMakeFiles/AlbumGenerator.dir/requires: src/CMakeFiles/AlbumGenerator.dir/XMLUtilities.cpp.o.requires
 src/CMakeFiles/AlbumGenerator.dir/requires: src/CMakeFiles/AlbumGenerator.dir/CSV.cpp.o.requires
 src/CMakeFiles/AlbumGenerator.dir/requires: src/CMakeFiles/AlbumGenerator.dir/MakeList.cpp.o.requires
+src/CMakeFiles/AlbumGenerator.dir/requires: src/CMakeFiles/AlbumGenerator.dir/ArrayWrapper.cpp.o.requires
+src/CMakeFiles/AlbumGenerator.dir/requires: src/CMakeFiles/AlbumGenerator.dir/ManageAECmdData.cpp.o.requires
 src/CMakeFiles/AlbumGenerator.dir/requires: src/CMakeFiles/AlbumGenerator.dir/AlbumTreeCtrl.cpp.o.requires
 
 .PHONY : src/CMakeFiles/AlbumGenerator.dir/requires

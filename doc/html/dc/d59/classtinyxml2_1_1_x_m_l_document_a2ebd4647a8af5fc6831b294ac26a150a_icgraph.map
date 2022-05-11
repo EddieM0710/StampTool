@@ -1,4 +1,4 @@
-<map id="tinyxml2::XMLDocument::LoadFile" name="tinyxml2::XMLDocument::LoadFile">
+<map id="tinyxml2::wxXmlDocument::LoadFile" name="tinyxml2::wxXmlDocument::LoadFile">
 <area shape="rect" id="node2" href="$d5/d71/class_persistent.html#a1e6d550aa3f4595274acfa528fc0de02" title="Load the persistent file. " alt="" coords="239,5,356,32"/>
 <area shape="rect" id="node4" href="$d2/d63/class_stamp_manager_frame.html#ab4f27ac876c7ac01166890d6c9594ca9" title="StampManagerFrame::\lOnTestXMLClick" alt="" coords="220,57,375,98"/>
 <area shape="rect" id="node3" href="$d5/d71/class_persistent.html#a82c8ff341cce87299a814e970f542606" title="Destroy the Persistent object. " alt="" coords="423,5,579,32"/>

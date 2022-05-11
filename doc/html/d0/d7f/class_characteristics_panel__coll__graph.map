@@ -1,5 +1,5 @@
 <map id="CharacteristicsPanel" name="CharacteristicsPanel">
 <area shape="rect" id="node3" href="$d0/db0/class_labeled_text_box.html" title="LabeledTextBox" alt="" coords="46,81,162,108"/>
-<area shape="rect" id="node4" href="$da/dd4/class_stamp.html" title="This is a wrapper of an XMLElement for safe/convenient getting/putting. " alt="" coords="186,81,246,108"/>
+<area shape="rect" id="node4" href="$da/dd4/class_stamp.html" title="This is a wrapper of an wxXmlNode for safe/convenient getting/putting. " alt="" coords="186,81,246,108"/>
 <area shape="rect" id="node5" href="$dc/d8f/class_node.html" title="Node" alt="" coords="189,5,243,32"/>
 </map>

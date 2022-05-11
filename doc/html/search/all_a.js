@@ -81,7 +81,7 @@ var searchData=
   ['mo_5fmerge',['MO_Merge',['../df/dde/_defs_8h.html#a9554924df4acef47e23625f5c1e74816afbdf229f77413e448ed14d8a1f63cbf3',1,'Defs.h']]],
   ['mo_5fnbrtypes',['MO_NbrTypes',['../df/dde/_defs_8h.html#a9554924df4acef47e23625f5c1e74816a07698cccd25aee291d7bf414e6fdf4e3',1,'Defs.h']]],
   ['mo_5foverwrite',['MO_Overwrite',['../df/dde/_defs_8h.html#a9554924df4acef47e23625f5c1e74816aa098c471a0fba1ab1fe6d211561e67cf',1,'Defs.h']]],
-  ['movestamp',['MoveStamp',['../d6/d2a/_stamp_data_8cpp.html#a5e0f1cb075a461327abdf0505d0c55de',1,'MoveStamp(XMLElement *newParent, XMLElement *child):&#160;StampData.cpp'],['../d0/d30/_stamp_data_8h.html#a5e0f1cb075a461327abdf0505d0c55de',1,'MoveStamp(XMLElement *newParent, XMLElement *child):&#160;StampData.cpp']]],
+  ['movestamp',['MoveStamp',['../d6/d2a/_stamp_data_8cpp.html#a5e0f1cb075a461327abdf0505d0c55de',1,'MoveStamp(wxXmlNode *newParent, wxXmlNode *child):&#160;StampData.cpp'],['../d0/d30/_stamp_data_8h.html#a5e0f1cb075a461327abdf0505d0c55de',1,'MoveStamp(wxXmlNode *newParent, wxXmlNode *child):&#160;StampData.cpp']]],
   ['mp_5faddmissing',['MP_AddMissing',['../df/dde/_defs_8h.html#a2e6871b270e20e67937702574547695fa1d3384e782252dd943ad35af6a4ed43b',1,'Defs.h']]],
   ['mp_5faddmissingandoverwrite',['MP_AddMissingAndOverwrite',['../df/dde/_defs_8h.html#a2e6871b270e20e67937702574547695faab7442facf4d5979ab2ab30e77d8ddcc',1,'Defs.h']]],
   ['mp_5faddmissingandquery',['MP_AddMissingAndQuery',['../df/dde/_defs_8h.html#a2e6871b270e20e67937702574547695fa584ba0da451777a934cf2130f804dfa9',1,'Defs.h']]],

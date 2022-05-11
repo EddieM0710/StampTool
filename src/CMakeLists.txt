@@ -1,14 +1,13 @@
 
 configure_file( AlbumGeneratorConfig.h.in AlbumGeneratorConfig.h )
-find_package( wxWidgets COMPONENTS core base REQUIRED )
+find_package( wxWidgets COMPONENTS core base xml REQUIRED )
 
 
 set( CMAKE_RUNTIME_OUTPUT_DIRECTORY ${build_Directory} )
 
 include( "${wxWidgets_USE_FILE}" )
 
-include_directories( ${CMAKE_CURRENT_SOURCE_DIR}
-/sandbox/Applications/TinyXML2 )
+include_directories( ${CMAKE_CURRENT_SOURCE_DIR} )
 
 add_executable (AlbumGenerator 
     AlbumGeneratorApp.cpp
@@ -33,14 +32,14 @@ add_executable (AlbumGenerator
     XMLUtilities.cpp
     CSV.cpp 
     MakeList.cpp 
+    ArrayWrapper.cpp 
+    ManageAECmdData.cpp 
     AlbumTreeCtrl.cpp 
 )
 
 #link_directories( /sandbox/Applications/TinyXML2/build )
 
 target_link_libraries (AlbumGenerator LINK_PUBLIC 
-/sandbox/Applications/TinyXML2/build/libtinyxml2d.so
-    tinyxml2d
     curl
     ${wxWidgets_LIBRARIES}
     )

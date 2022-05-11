@@ -1,4 +1,4 @@
-<map id="tinyxml2::XMLElement::SetText" name="tinyxml2::XMLElement::SetText">
+<map id="tinyxml2::wxXmlNode::SetText" name="tinyxml2::wxXmlNode::SetText">
 <area shape="rect" id="node2" href="$de/d13/classtinyxml2_1_1_x_m_l_node.html#ae7dc225e1018cdd685f7563593a1fe08" title="tinyxml2::XMLNode::\lFirstChild" alt="" coords="219,5,364,47"/>
 <area shape="rect" id="node3" href="$de/d13/classtinyxml2_1_1_x_m_l_node.html#a41c55dab9162d1eb62db2008430e376b" title="tinyxml2::XMLNode::\lToText" alt="" coords="219,71,364,112"/>
 <area shape="rect" id="node4" href="$de/d13/classtinyxml2_1_1_x_m_l_node.html#a09dd68cf9eae137579f6e50f36487513" title="Set the Value of an XML node. " alt="" coords="423,144,568,185"/>
@@ -9,6 +9,6 @@
 <area shape="rect" id="node6" href="$de/dc1/classtinyxml2_1_1_str_pair.html#a1f82ec6b5bee35ee7466d8565e43b1de" title="tinyxml2::StrPair::\lSetStr" alt="" coords="636,159,763,200"/>
 <area shape="rect" id="node10" href="$de/d13/classtinyxml2_1_1_x_m_l_node.html#a0fd4d2e88fb22d46b5b1474b5b786e35" title="tinyxml2::XMLNode::\lInsertChildPreamble" alt="" coords="423,319,568,360"/>
 <area shape="rect" id="node11" href="$de/d13/classtinyxml2_1_1_x_m_l_node.html#a9546e242b6a4f232415befb1cfe0fdd4" title="tinyxml2::XMLNode::\lUnlink" alt="" coords="627,253,772,295"/>
-<area shape="rect" id="node12" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#a64dadb2de12e52538d0ff8ba38f323ec" title="tinyxml2::XMLDocument\l::MarkInUse" alt="" coords="616,319,783,360"/>
+<area shape="rect" id="node12" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#a64dadb2de12e52538d0ff8ba38f323ec" title="tinyxml2::wxXmlDocument\l::MarkInUse" alt="" coords="616,319,783,360"/>
 <area shape="rect" id="node13" href="$d8/d53/classtinyxml2_1_1_mem_pool.html#ac5804dd1387b2e4de5eef710076a0db1" title="tinyxml2::MemPool::\lSetTracked" alt="" coords="628,384,771,425"/>
 </map>

@@ -1,4 +1,4 @@
-<map id="tinyxml2::XMLDocument::CreateUnlinkedNode" name="tinyxml2::XMLDocument::CreateUnlinkedNode">
+<map id="tinyxml2::wxXmlDocument::CreateUnlinkedNode" name="tinyxml2::wxXmlDocument::CreateUnlinkedNode">
 <area shape="rect" id="node2" href="$d2/ddf/classtinyxml2_1_1_mem_pool_t.html#a54e4d9b343459ef1731314a99877ff35" title="tinyxml2::MemPoolT\l::ItemSize" alt="" coords="220,5,363,47"/>
 <area shape="rect" id="node3" href="$d2/ddf/classtinyxml2_1_1_mem_pool_t.html#a810fd2b0caf56b8b688e55f2768f96c7" title="tinyxml2::MemPoolT\l::Alloc" alt="" coords="220,71,363,112"/>
 </map>

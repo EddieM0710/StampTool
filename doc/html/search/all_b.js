@@ -5,7 +5,7 @@ var searchData=
   ['newstampdata',['NewStampData',['../d5/d9b/_defs_8cpp.html#a56d135df065c62eab40d2412bcde2f06',1,'NewStampData():&#160;Defs.cpp'],['../df/dde/_defs_8h.html#a334f14cd40fd73a45d0440658cf1eba2',1,'NewStampData(void):&#160;Defs.cpp']]],
   ['next',['Next',['../d5/d67/class_x_m_l_iterator.html#ae69af024f8149554a074378262a4c2a0',1,'XMLIterator']]],
   ['nextstatus',['NextStatus',['../d7/d13/_merge_stamps_dialog_8h.html#a92aff4a472420888f809377eb567c500',1,'MergeStampsDialog.h']]],
-  ['node',['Node',['../dc/d8f/class_node.html',1,'Node'],['../dc/d8f/class_node.html#ad7a34779cad45d997bfd6d3d8043c75f',1,'Node::Node()'],['../dc/d8f/class_node.html#a4e43d8a0cc8f9337ca2e0f4452d31596',1,'Node::Node(XMLElement *ele)']]],
+  ['node',['Node',['../dc/d8f/class_node.html',1,'Node'],['../dc/d8f/class_node.html#ad7a34779cad45d997bfd6d3d8043c75f',1,'Node::Node()'],['../dc/d8f/class_node.html#a4e43d8a0cc8f9337ca2e0f4452d31596',1,'Node::Node(wxXmlNode *ele)']]],
   ['node_2eh',['Node.h',['../d1/d02/_node_8h.html',1,'']]],
   ['nodenamestrings',['NodeNameStrings',['../d5/d9b/_defs_8cpp.html#a3dd39d552602dc0d3344a2b4d57b71df',1,'NodeNameStrings():&#160;Defs.cpp'],['../df/dde/_defs_8h.html#a3dd39d552602dc0d3344a2b4d57b71df',1,'NodeNameStrings():&#160;Defs.cpp']]],
   ['nodetype',['NodeType',['../df/dde/_defs_8h.html#acac9cbaeea226ed297804c012dc12b16',1,'Defs.h']]],

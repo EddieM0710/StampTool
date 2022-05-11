@@ -4,8 +4,8 @@
 <area shape="rect" id="node9" href="$dd/d28/_stamp_tree_ctrl_8h.html" title="StampTreeCtrl.h" alt="" coords="545,184,663,211"/>
 <area shape="rect" id="node15" href="$d0/d3e/_persistent_8h.html" title="Class to manage/read/write persistent parameters. " alt="" coords="913,184,1005,211"/>
 <area shape="rect" id="node17" href="$dd/d64/_stamp_manager_app_8h.html" title="This is the main instantiation class for the application. " alt="" coords="641,109,785,136"/>
-<area shape="rect" id="node10" href="$d4/d67/_stamp_8h.html" title="This is a wrapper of an XMLElement for safe/convenient getting/putting. " alt="" coords="686,259,757,285"/>
+<area shape="rect" id="node10" href="$d4/d67/_stamp_8h.html" title="This is a wrapper of an wxXmlNode for safe/convenient getting/putting. " alt="" coords="686,259,757,285"/>
 <area shape="rect" id="node11" href="$d1/d02/_node_8h.html" title="Node.h" alt="" coords="796,333,860,360"/>
 <area shape="rect" id="node19" href="$db/d71/_stamp_manager_frame_8h.html" title="This is the application main frame. " alt="" coords="730,184,889,211"/>
-<area shape="rect" id="node21" href="$d5/d6d/_classification_8h.html" title="This is a wrapper of an XMLElement for safe/convenient getting/putting. " alt="" coords="892,259,1004,285"/>
+<area shape="rect" id="node21" href="$d5/d6d/_classification_8h.html" title="This is a wrapper of an wxXmlNode for safe/convenient getting/putting. " alt="" coords="892,259,1004,285"/>
 </map>

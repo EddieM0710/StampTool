@@ -1,4 +1,4 @@
-<map id="tinyxml2::XMLElement::InsertNewComment" name="tinyxml2::XMLElement::InsertNewComment">
+<map id="tinyxml2::wxXmlNode::InsertNewComment" name="tinyxml2::wxXmlNode::InsertNewComment">
 <area shape="rect" id="node2" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#a386df0befd06aadb5e0cd21381aa955a" title="Create a new Comment associated with this Document. " alt="" coords="208,87,375,128"/>
 <area shape="rect" id="node6" href="$de/d13/classtinyxml2_1_1_x_m_l_node.html#ae3b422e98914d6002ca99bb1d2837103" title="Add a child node as the last (right) child. " alt="" coords="219,184,364,225"/>
 <area shape="rect" id="node3" href="$de/d13/classtinyxml2_1_1_x_m_l_node.html#a09dd68cf9eae137579f6e50f36487513" title="Set the Value of an XML node. " alt="" coords="423,71,568,112"/>
@@ -6,6 +6,6 @@
 <area shape="rect" id="node5" href="$de/dc1/classtinyxml2_1_1_str_pair.html#a1f82ec6b5bee35ee7466d8565e43b1de" title="tinyxml2::StrPair::\lSetStr" alt="" coords="636,71,763,112"/>
 <area shape="rect" id="node7" href="$de/d13/classtinyxml2_1_1_x_m_l_node.html#a0fd4d2e88fb22d46b5b1474b5b786e35" title="tinyxml2::XMLNode::\lInsertChildPreamble" alt="" coords="423,193,568,235"/>
 <area shape="rect" id="node8" href="$de/d13/classtinyxml2_1_1_x_m_l_node.html#a9546e242b6a4f232415befb1cfe0fdd4" title="tinyxml2::XMLNode::\lUnlink" alt="" coords="627,136,772,177"/>
-<area shape="rect" id="node9" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#a64dadb2de12e52538d0ff8ba38f323ec" title="tinyxml2::XMLDocument\l::MarkInUse" alt="" coords="616,201,783,243"/>
+<area shape="rect" id="node9" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#a64dadb2de12e52538d0ff8ba38f323ec" title="tinyxml2::wxXmlDocument\l::MarkInUse" alt="" coords="616,201,783,243"/>
 <area shape="rect" id="node10" href="$d8/d53/classtinyxml2_1_1_mem_pool.html#ac5804dd1387b2e4de5eef710076a0db1" title="tinyxml2::MemPool::\lSetTracked" alt="" coords="628,267,771,308"/>
 </map>

@@ -22,6 +22,7 @@
 #include "Settings.h"
 
 #include "AlbumGeneratorApp.h"
+#include "XMLUtilities.h"
 
 #include <iostream>
 #include <wx/dir.h>
@@ -29,9 +30,8 @@
 #include <wx/filename.h>
 #include <wx/utils.h> 
 #include "wx/xml/xml.h"
-#include "XMLUtilities.h"
 
-//
+ 
 
 wxDECLARE_APP( AlbumGeneratorApp );
 
@@ -145,75 +145,56 @@ void Settings::Save( )
     wxString fullPath = filename->GetFullPath( );
     wxXmlDocument doc;
 
-    wxXmlNode* persistent = new wxXmlNode( wxXML_ELEMENT_NODE , "Persistent" );
-    doc.SetRoot( persistent );
+    wxXmlNode* persistent = NewNode( &doc, "Persistent" );
 
-    wxXmlNode* child =  new wxXmlNode( wxXML_ELEMENT_NODE ,  "ImageDirectory" );
-    persistent->AddChild(child);
-    child->SetContent( GetImageDirectory( )  );
+    wxXmlNode* child = NewNode( persistent, "ImageDirectory" );
+    child->SetContent( GetImageDirectory( )   );
 
-    child = new wxXmlNode( wxXML_ELEMENT_NODE ,  "LastFile" );
+    child = NewNode( persistent, "LastFile" );
+    child->SetContent( GetLastFile( )   );
 
-    persistent->AddChild(child);
-    child->SetContent( GetLastFile( )  );
-
-    child = new wxXmlNode( wxXML_ELEMENT_NODE , "LoadLastFileAtStartUp" );
-    persistent->AddChild(child);
+    child = NewNode( persistent, "LoadLastFileAtStartUp" );
     child->SetContent( Bool2String( GetLoadLastFileAtStartUp( ) ) );
 
-    wxXmlNode* sortOrder = new wxXmlNode( wxXML_ELEMENT_NODE , "SortOrder" );
-    persistent->AddChild(sortOrder);
+    wxXmlNode* sortOrder = NewNode( persistent, "SortOrder" );
     wxArrayInt* sortOrderArray = GetSortOrder( );
     for ( int i = 0; i < sortOrderArray->Count( ); i++ )
     {
         if ( sortOrderArray->Item( i ) >= 0 )
         {
-            child = new wxXmlNode( wxXML_ELEMENT_NODE , "Classification" );
-            sortOrder->AddChild(child);
+            child = NewNode( sortOrder, "Classification" );
             child->SetContent( NodeNameStrings.Item( sortOrderArray->Item( i ) ) );
         }
     }
-    wxXmlNode* division = new wxXmlNode( wxXML_ELEMENT_NODE , "PeriodDivision" );
-    persistent->AddChild(division);
-    wxXmlNode* lowerDivision = new wxXmlNode( wxXML_ELEMENT_NODE , "LowerDivision" );
-    division->AddChild(lowerDivision);
-    lowerDivision->SetContent( GetLowerDivision( )  );
-    wxXmlNode* upperDivision = new wxXmlNode( wxXML_ELEMENT_NODE ,"UpperDivision" );
-    division->AddChild(upperDivision);
-    upperDivision->SetContent( GetUpperDivision( )  );
+    wxXmlNode* division = NewNode( persistent, "PeriodDivision" );
+    wxXmlNode* lowerDivision = NewNode( division, "LowerDivision" );
+    lowerDivision->SetContent( GetLowerDivision( )   );
+    wxXmlNode* upperDivision = NewNode( division, "UpperDivision" );
+    upperDivision->SetContent( GetUpperDivision( )   );
 
-    wxXmlNode* periods = new wxXmlNode( wxXML_ELEMENT_NODE, "Periods" );
-    persistent->AddChild(periods);
-
-    wxXmlNode* lowerPeriod = new wxXmlNode( wxXML_ELEMENT_NODE , "LowerPeriod" );
-    periods->AddChild(lowerPeriod);
-    lowerPeriod->SetContent( GetLowerPeriod( )  );
-
-    wxXmlNode* middlePeriod = new wxXmlNode( wxXML_ELEMENT_NODE ,"MiddlePeriod" );
-     periods->AddChild(middlePeriod);
-    middlePeriod->SetContent( GetMiddlePeriod( )  );
-
-    wxXmlNode* upperPeriod = new wxXmlNode( wxXML_ELEMENT_NODE , "UpperPeriod" );
-    periods->AddChild(upperPeriod);
-    upperPeriod->SetContent( GetUpperPeriod( )  );
+    wxXmlNode* periods = NewNode( persistent, "Periods" );
+    wxXmlNode* lowerPeriod = NewNode( periods, "LowerPeriod" );
+    lowerPeriod->SetContent( GetLowerPeriod( )   );
+    wxXmlNode* middlePeriod = NewNode( periods, "MiddlePeriod" );
+    middlePeriod->SetContent( GetMiddlePeriod( )   );
+    wxXmlNode* upperPeriod = NewNode( periods, "UpperPeriod" );
+    upperPeriod->SetContent( GetUpperPeriod( )   );
 
     wxArrayString* recentArray = GetRecentArray( );
     if ( !recentArray->IsEmpty( ) )
     {
-        wxXmlNode* recent = new wxXmlNode( wxXML_ELEMENT_NODE, "RecentFileList" );
-        periods->AddChild(recent);
+        wxXmlNode* recent = NewNode( persistent, "RecentFileList" );
         if ( recent )
         {
             for ( int i = 0; i < recentArray->Count( ); i++ )
             {
-                wxXmlNode* recentFile = new wxXmlNode( wxXML_ELEMENT_NODE, "File" );
-                recent->AddChild(recentFile);
+                wxXmlNode* recentFile = NewNode( recent, "File" );
                 recentFile->SetContent( recentArray->Item( i ) );
             }
         }
     }
 
-    child = new wxXmlNode( wxXML_ELEMENT_NODE, "NbrRecentPreference" );
+    child = NewNode( persistent, "NbrRecentPreference" );
     int nbr =  GetNbrRecentPreference( ) ;
     char str[20];
     sprintf( str, "%d", nbr);
@@ -230,10 +211,9 @@ void Settings::Load( )
     wxXmlDocument doc;
     bool errCode = doc.Load( fullPath  );
 
-    if ( !errCode  )
+    if ( errCode )
     {
- 
-        std::cout << fullPath << " Load Failed.\n";
+        std::cout << fullPath << "Load Failed.\n";
         // Loading the Persistent.xml file failed
         // add defaults here and return
         SetLoadLastFileAtStartUp( true );
@@ -258,10 +238,12 @@ void Settings::Load( )
         return;
 
     }
-   
+    wxString name = doc.GetRoot( )->GetName();
+
+    std::cout << name << "\n";
     wxXmlNode* root = doc.GetRoot( );
     // start processing the XML file
-    wxString name = root->GetName( );
+    name = root->GetName( );
 
     std::cout << name << "\n";
 
@@ -272,7 +254,7 @@ void Settings::Load( )
     wxXmlNode* sortOrder = FirstChildElement( root, "SortOrder" );
     if ( sortOrder )
     {
-        child = sortOrder->GetChildren( );
+        child = FirstChildElement( sortOrder, "Classification" );
         while ( child )
         {
             wxString name = child->GetContent( );
@@ -281,7 +263,7 @@ void Settings::Load( )
             {
                 sortOrderArray->Add( type );
             }
-            child = child->GetNext(  );
+            child = GetNext( child, "Classification" );
         }
     }
     for ( int i = sortOrderArray->Count( ); i < 5; i++ )
@@ -289,7 +271,7 @@ void Settings::Load( )
         sortOrderArray->Add( -1 );
     }
 
-    wxXmlNode* division = FirstChildElement (root, "PeriodDivision" );
+    wxXmlNode* division = FirstChildElement( root, "PeriodDivision" );
     if ( division )
     {
         wxXmlNode* lowerDivision = FirstChildElement( division, "LowerDivision" );
@@ -314,7 +296,7 @@ void Settings::Load( )
     wxXmlNode* periods = FirstChildElement( root, "Periods" );
     if ( periods )
     {
-        wxXmlNode* firstPeriod = FirstChildElement(periods, "LowerPeriod" );
+        wxXmlNode* firstPeriod = FirstChildElement( periods, "LowerPeriod" );
         if ( firstPeriod )
         {
             SetLowerPeriod( firstPeriod->GetContent( ) );
@@ -406,14 +388,14 @@ void Settings::Load( )
     }
  
     wxArrayString* recentArray = GetRecentArray( );
-    wxXmlNode* recent = FirstChildElement(root, "RecentFileList" );
+    wxXmlNode* recent = FirstChildElement( root, "RecentFileList" );
     if ( recent )
     {
-        wxXmlNode* recentFile = recent->GetChildren(  );
+        wxXmlNode* recentFile = FirstChildElement( recent, "File" );
         while ( recentFile )
         {
             recentArray->Add( recentFile->GetContent( ) );
-            recentFile = recent->GetNext(  );
+            recentFile = GetNext( recent, "File" );
         }
     }
 

@@ -23,6 +23,7 @@
 
 #include "CSV.h"
 #include "Classification.h"
+#include "XMLUtilities.h"
 
 
 bool Classification::IsOK( void )
@@ -45,8 +46,7 @@ void Classification::SetAttr( ClassificationTypes type, wxString val )
 {
     if ( IsOK( ) )
     {
-        GetElement( )->DeleteAttribute(CT_Names[ type ]);
-        GetElement( )->AddAttribute( CT_Names[ type ], val.char_str( ) );
+        SetAttribute( GetElement( ), CT_Names[ type ]  ,  val   );
     }
 }
 
@@ -54,7 +54,11 @@ wxString Classification::GetAttr( ClassificationTypes type )
 {
     if ( IsOK( ) )
     {
-         return  GetElement( )->GetAttribute( CT_Names[ type ] );
+        const wxXmlAttribute* attr = GetAttribute( GetElement( ), CT_Names[ type ] );
+        if ( attr)
+        {
+            return wxString( attr->GetValue( ) );
+        }
     }
     return wxString( "" );
 }

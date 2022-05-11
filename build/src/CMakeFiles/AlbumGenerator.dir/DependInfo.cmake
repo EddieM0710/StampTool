@@ -9,6 +9,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/sandbox/Development/AlbumGenerator/src/AlbumGeneratorPanel.cpp" "/sandbox/Development/AlbumGenerator/build/src/CMakeFiles/AlbumGenerator.dir/AlbumGeneratorPanel.cpp.o"
   "/sandbox/Development/AlbumGenerator/src/AlbumSplitterWindow.cpp" "/sandbox/Development/AlbumGenerator/build/src/CMakeFiles/AlbumGenerator.dir/AlbumSplitterWindow.cpp.o"
   "/sandbox/Development/AlbumGenerator/src/AlbumTreeCtrl.cpp" "/sandbox/Development/AlbumGenerator/build/src/CMakeFiles/AlbumGenerator.dir/AlbumTreeCtrl.cpp.o"
+  "/sandbox/Development/AlbumGenerator/src/ArrayWrapper.cpp" "/sandbox/Development/AlbumGenerator/build/src/CMakeFiles/AlbumGenerator.dir/ArrayWrapper.cpp.o"
   "/sandbox/Development/AlbumGenerator/src/CSV.cpp" "/sandbox/Development/AlbumGenerator/build/src/CMakeFiles/AlbumGenerator.dir/CSV.cpp.o"
   "/sandbox/Development/AlbumGenerator/src/CatalogCode.cpp" "/sandbox/Development/AlbumGenerator/build/src/CMakeFiles/AlbumGenerator.dir/CatalogCode.cpp.o"
   "/sandbox/Development/AlbumGenerator/src/CatalogData.cpp" "/sandbox/Development/AlbumGenerator/build/src/CMakeFiles/AlbumGenerator.dir/CatalogData.cpp.o"
@@ -18,6 +19,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/sandbox/Development/AlbumGenerator/src/Defs.cpp" "/sandbox/Development/AlbumGenerator/build/src/CMakeFiles/AlbumGenerator.dir/Defs.cpp.o"
   "/sandbox/Development/AlbumGenerator/src/LabeledTextBox.cpp" "/sandbox/Development/AlbumGenerator/build/src/CMakeFiles/AlbumGenerator.dir/LabeledTextBox.cpp.o"
   "/sandbox/Development/AlbumGenerator/src/MakeList.cpp" "/sandbox/Development/AlbumGenerator/build/src/CMakeFiles/AlbumGenerator.dir/MakeList.cpp.o"
+  "/sandbox/Development/AlbumGenerator/src/ManageAECmdData.cpp" "/sandbox/Development/AlbumGenerator/build/src/CMakeFiles/AlbumGenerator.dir/ManageAECmdData.cpp.o"
   "/sandbox/Development/AlbumGenerator/src/ManageCatalogData.cpp" "/sandbox/Development/AlbumGenerator/build/src/CMakeFiles/AlbumGenerator.dir/ManageCatalogData.cpp.o"
   "/sandbox/Development/AlbumGenerator/src/Persistent.cpp" "/sandbox/Development/AlbumGenerator/build/src/CMakeFiles/AlbumGenerator.dir/Persistent.cpp.o"
   "/sandbox/Development/AlbumGenerator/src/Settings.cpp" "/sandbox/Development/AlbumGenerator/build/src/CMakeFiles/AlbumGenerator.dir/Settings.cpp.o"
@@ -44,7 +46,6 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/usr/local/lib/wx/include/gtk3-unicode-3.1"
   "/usr/local/include/wx-3.1"
   "../src"
-  "/sandbox/Applications/TinyXML2"
   )
 
 # Targets to which this target links.

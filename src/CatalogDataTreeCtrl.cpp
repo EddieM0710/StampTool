@@ -258,7 +258,7 @@ void CatalogDataTreeCtrl::LogEvent( const wxString& name, const wxTreeEvent& eve
     wxTreeItemId item = event.GetItem( );
     wxString text;
     if ( item.IsOk( ) )
-        text << '"' << GetItemText( item ).c_str( ) << '"';
+        text << '"' << GetItemText( item )  << '"';
     else
         text = "invalid item";
 }
@@ -458,7 +458,8 @@ wxTreeItemId CatalogDataTreeCtrl::AddChild( wxTreeItemId parent, wxXmlNode* chil
         else
         {
             //otherwise get the label
-            label = child->GetAttribute( "Name" );
+            const wxXmlAttribute* attr = GetAttribute( child, "Name" );
+            label = attr->GetValue( );
             icon = Icon_Folder;        }
     }
 
@@ -515,19 +516,31 @@ void CatalogDataTreeCtrl::SortTree( wxTreeItemId parent )
 // Probably doint this because the sort order was changed.
 void CatalogDataTreeCtrl::ReSortTree( )
 {
-    CatalogData* catalogData = GetCatalogData( );
-    wxXmlDocument* doc = catalogData->GetDoc( );
-    wxXmlNode* root = doc->GetRoot( );
 
     DeleteAllItems( );
 
     wxXmlDocument* newDoc = new wxXmlDocument( );
+    wxXmlNode* newRoot = newDoc->GetRoot();
+    if ( !newRoot )
+    {
+        newRoot = NewNode( newDoc, NodeNameStrings[ NT_Catalog ] );
+    }
+    //newDoc->SetRoot( newRoot );
 
-    wxXmlNode* newRoot = new wxXmlNode( wxXML_ELEMENT_NODE , NodeNameStrings[ NT_Catalog ] );
-    newDoc->SetRoot(newRoot);
-    wxString value = root->GetAttribute( DT_DataNames[DT_Name] );
-    newRoot->AddAttribute(  DT_DataNames[DT_Name] , value );
+    CatalogData* catalogData = GetCatalogData( );
+    wxXmlDocument* doc = catalogData->GetDoc( );
+    wxXmlNode* root = doc->GetRoot( );
 
+    wxXmlAttribute* attr = GetAttribute( root, DT_DataNames[DT_Name] );
+    if ( attr ){
+        wxString name = attr->GetName( );
+        wxString value = attr->GetValue( );
+        SetAttribute( newRoot, name, value );
+    }
+    else
+    {
+        SetAttribute( newRoot, DT_DataNames[DT_Name], "" );
+    }
    
     SortData( newRoot, root );
     GetCatalogData( )->ReplaceDocument( newDoc );
@@ -538,6 +551,7 @@ void CatalogDataTreeCtrl::ReSortTree( )
 void CatalogDataTreeCtrl::LoadTree( )
 {
     wxXmlDocument* stampDoc = GetCatalogData( )->GetDoc( );
+ //   XMLDump( stampDoc );
     wxXmlNode* catalogData = stampDoc->GetRoot( );
     wxString name = catalogData->GetName( );
     // Create the root item
@@ -628,29 +642,39 @@ void CatalogDataTreeCtrl::StructureCatalogData( wxXmlNode* catalogData,
             // figure out what the next sibling is because we may move child
             wxXmlNode* nextSibling = child->GetNext( );
 
-            // only search a reasonable distance after the first one is found
-            if ( count > 1 )
+            if ( parentTypeElement != child )
             {
-                searchRange++;
-            }
-            // only look at children of childType
-            wxString format = childTypeStamp.GetFormat( );
-            if ( ( format == FT_FormatStrings[ childType ] )
-                || ( secondChildType
-                    && ( format == FT_FormatStrings[ secondChildType ] ) ) )
-            {
-                wxString issue = childTypeStamp.GetIssuedDate( );
-                wxString series = childTypeStamp.GetSeries( );
-                // if the issue date and the series match the parent assume
-                // that the child goes in the parent
-                if ( !issue.Cmp( parentIssue )
-                    && !series.Cmp( parentSeries ) )
+                // only search a reasonable distance after the first one is found
+                if ( count > 1 )
                 {
-                    count++;
-                    parentTypeElement->AddChild( child );
-                    // this is a hack so the loop doesn't start at the beginning
-                    // next time.
-                    //                    start = child;
+                    searchRange++;
+                }
+                // only look at children of childType
+                wxString format = childTypeStamp.GetFormat( );
+                if ( ( format == FT_FormatStrings[ childType ] )
+                    || ( secondChildType
+                        && ( format == FT_FormatStrings[ secondChildType ] ) ) )
+                {
+                    wxString issue = childTypeStamp.GetIssuedDate( );
+                    wxString series = childTypeStamp.GetSeries( );
+                    // if the issue date and the series match the parent assume
+                    // that the child goes in the parent
+                    if ( !issue.Cmp( parentIssue )
+                        && !series.Cmp( parentSeries ) )
+                    {
+                        count++;
+                        wxXmlNode* currParent = child->GetParent();
+                        if (currParent )
+                        {
+                            currParent->RemoveChild(child);
+                        }
+                        parentTypeElement->AddChild( child );
+                        
+
+                        // this is a hack so the loop doesn't start at the beginning
+                        // next time.
+                        //                    start = child;
+                    }
                 }
             }
             child = nextSibling;

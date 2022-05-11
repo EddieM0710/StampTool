@@ -3,7 +3,7 @@
 this is the developer info page
 @section Design
 
-The design of StampManager is really very straight forward. TinyXML-2 is used to read and write XML files containing all the stamp info. All the data is stored internally in this module, i.e., there are no classes in the SampManager code that store the stamp data. There are classes which wrap the XMLElement class to safely/conviently read and write the
+The design of StampManager is really very straight forward. TinyXML-2 is used to read and write XML files containing all the stamp info. All the data is stored internally in this module, i.e., there are no classes in the SampManager code that store the stamp data. There are classes which wrap the wxXmlNode class to safely/conviently read and write the
 data from the TinyXML-2 module. The bulk of the code is the wxWidget GUIs to display the data.
 
 

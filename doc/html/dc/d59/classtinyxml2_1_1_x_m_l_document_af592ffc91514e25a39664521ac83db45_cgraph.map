@@ -1,17 +1,17 @@
-<map id="tinyxml2::XMLDocument::DeepCopy" name="tinyxml2::XMLDocument::DeepCopy">
-<area shape="rect" id="node2" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#a65656b0b2cbc822708eb351504178aaf" title="tinyxml2::XMLDocument\l::Clear" alt="" coords="220,136,387,177"/>
+<map id="tinyxml2::wxXmlDocument::DeepCopy" name="tinyxml2::wxXmlDocument::DeepCopy">
+<area shape="rect" id="node2" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#a65656b0b2cbc822708eb351504178aaf" title="tinyxml2::wxXmlDocument\l::Clear" alt="" coords="220,136,387,177"/>
 <area shape="rect" id="node15" href="$de/d13/classtinyxml2_1_1_x_m_l_node.html#ae7dc225e1018cdd685f7563593a1fe08" title="tinyxml2::XMLNode::\lFirstChild" alt="" coords="231,311,376,352"/>
 <area shape="rect" id="node16" href="$de/d13/classtinyxml2_1_1_x_m_l_node.html#a79db9ef0fe014d27790f2218b87bcbb5" title="tinyxml2::XMLNode::\lNextSibling" alt="" coords="231,376,376,417"/>
 <area shape="rect" id="node17" href="$de/d13/classtinyxml2_1_1_x_m_l_node.html#ae3b422e98914d6002ca99bb1d2837103" title="Add a child node as the last (right) child. " alt="" coords="231,245,376,287"/>
 <area shape="rect" id="node3" href="$de/d13/classtinyxml2_1_1_x_m_l_node.html#a0360085cc54df5bff85d5c5da13afdce" title="Delete all the children of this node. " alt="" coords="445,136,591,177"/>
 <area shape="rect" id="node11" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#ac1d6e2c7fcc1a660624ac4f68e96380d" title="Delete a node associated with this document. " alt="" coords="435,201,601,243"/>
-<area shape="rect" id="node13" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#a34e6318e182e40e3cc4f4ba5d59ed9ed" title="tinyxml2::XMLDocument\l::Error" alt="" coords="435,5,601,47"/>
-<area shape="rect" id="node14" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#a4085d9c52f1d93214311459d6d1fcf17" title="tinyxml2::XMLDocument\l::ClearError" alt="" coords="435,71,601,112"/>
+<area shape="rect" id="node13" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#a34e6318e182e40e3cc4f4ba5d59ed9ed" title="tinyxml2::wxXmlDocument\l::Error" alt="" coords="435,5,601,47"/>
+<area shape="rect" id="node14" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#a4085d9c52f1d93214311459d6d1fcf17" title="tinyxml2::wxXmlDocument\l::ClearError" alt="" coords="435,71,601,112"/>
 <area shape="rect" id="node4" href="$de/d13/classtinyxml2_1_1_x_m_l_node.html#a363b6edbd6ebd55f8387d2b89f2b0921" title="Delete a child of this node. " alt="" coords="649,139,795,180"/>
 <area shape="rect" id="node5" href="$de/d13/classtinyxml2_1_1_x_m_l_node.html#a9546e242b6a4f232415befb1cfe0fdd4" title="tinyxml2::XMLNode::\lUnlink" alt="" coords="1252,139,1397,180"/>
 <area shape="rect" id="node6" href="$de/d13/classtinyxml2_1_1_x_m_l_node.html#ab0b21951f2343534c5c67f23dffdc7e6" title="tinyxml2::XMLNode::\lDeleteNode" alt="" coords="843,197,988,239"/>
 <area shape="rect" id="node7" href="$de/d13/classtinyxml2_1_1_x_m_l_node.html#a836e2966ed736fc3c94f70e12a2a3357" title="tinyxml2::XMLNode::\lToDocument" alt="" coords="1047,197,1193,239"/>
-<area shape="rect" id="node8" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#a64dadb2de12e52538d0ff8ba38f323ec" title="tinyxml2::XMLDocument\l::MarkInUse" alt="" coords="1037,315,1203,356"/>
+<area shape="rect" id="node8" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#a64dadb2de12e52538d0ff8ba38f323ec" title="tinyxml2::wxXmlDocument\l::MarkInUse" alt="" coords="1037,315,1203,356"/>
 <area shape="rect" id="node9" href="$de/d13/classtinyxml2_1_1_x_m_l_node.html#a8f41e898cdd4da4cdbb7f05b0c7d9f69" title="tinyxml2::XMLNode::\l~XMLNode" alt="" coords="1047,80,1193,121"/>
 <area shape="rect" id="node10" href="$d8/d53/classtinyxml2_1_1_mem_pool.html#a49e3bfac2cba2ebd6776b31e571f64f7" title="tinyxml2::MemPool::Free" alt="" coords="1036,263,1204,290"/>
 <area shape="rect" id="node12" href="$d8/d53/classtinyxml2_1_1_mem_pool.html#ac5804dd1387b2e4de5eef710076a0db1" title="tinyxml2::MemPool::\lSetTracked" alt="" coords="651,256,793,297"/>

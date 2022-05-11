@@ -40,7 +40,7 @@ void Specimen::SetAttr( ItemDataTypes type, wxString val )
 {
     if ( IsOK( ) )
     {
-        GetElement( )->AddAttribute( ItemDataNames[ type ],   val  );
+        SetAttribute( GetElement( ), ItemDataNames[ type ], val   );
     };
 }
 
@@ -48,7 +48,11 @@ wxString Specimen::GetAttr( ItemDataTypes type )
 {
     if ( IsOK( ) )
     {
-            return GetElement( )->GetAttribute( ItemDataNames[ type ] );
+        const wxXmlAttribute *attr = GetAttribute( GetElement( ), ItemDataNames[ type ] );
+        if ( attr )
+        {
+            return wxString::FromUTF8Unchecked( attr->GetValue( ) );
+        }
     }
     return wxString( "" );
 }

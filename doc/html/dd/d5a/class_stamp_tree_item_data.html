@@ -106,14 +106,14 @@ Collaboration diagram for StampTreeItemData:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aaaf824e6417206509b5834ac375cb81c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d5a/class_stamp_tree_item_data.html#aaaf824e6417206509b5834ac375cb81c">StampTreeItemData</a> (<a class="el" href="../../df/dde/_defs_8h.html#acac9cbaeea226ed297804c012dc12b16">NodeType</a> type, const wxString desc, XMLElement *ele=0)</td></tr>
+<tr class="memitem:aaaf824e6417206509b5834ac375cb81c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d5a/class_stamp_tree_item_data.html#aaaf824e6417206509b5834ac375cb81c">StampTreeItemData</a> (<a class="el" href="../../df/dde/_defs_8h.html#acac9cbaeea226ed297804c012dc12b16">NodeType</a> type, const wxString desc, wxXmlNode *ele=0)</td></tr>
 <tr class="memdesc:aaaf824e6417206509b5834ac375cb81c"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../dd/d5a/class_stamp_tree_item_data.html" title="data associated with each node in the tree ">StampTreeItemData</a> Constructor.  <a href="#aaaf824e6417206509b5834ac375cb81c">More...</a><br /></td></tr>
 <tr class="separator:aaaf824e6417206509b5834ac375cb81c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5aba9aeaf7d03594993909c2720beac0"><td class="memItemLeft" align="right" valign="top">wxString const  &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d5a/class_stamp_tree_item_data.html#a5aba9aeaf7d03594993909c2720beac0">GetDesc</a> () const</td></tr>
 <tr class="separator:a5aba9aeaf7d03594993909c2720beac0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac22cdaa8a598c2a41870de8a450d75aa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d5a/class_stamp_tree_item_data.html#ac22cdaa8a598c2a41870de8a450d75aa">SetElement</a> (XMLElement *ele)</td></tr>
+<tr class="memitem:ac22cdaa8a598c2a41870de8a450d75aa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d5a/class_stamp_tree_item_data.html#ac22cdaa8a598c2a41870de8a450d75aa">SetElement</a> (wxXmlNode *ele)</td></tr>
 <tr class="separator:ac22cdaa8a598c2a41870de8a450d75aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a518e8fbfa8fa11f33077d0cde75afbcf"><td class="memItemLeft" align="right" valign="top">XMLElement *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d5a/class_stamp_tree_item_data.html#a518e8fbfa8fa11f33077d0cde75afbcf">GetElement</a> (void)</td></tr>
+<tr class="memitem:a518e8fbfa8fa11f33077d0cde75afbcf"><td class="memItemLeft" align="right" valign="top">wxXmlNode *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d5a/class_stamp_tree_item_data.html#a518e8fbfa8fa11f33077d0cde75afbcf">GetElement</a> (void)</td></tr>
 <tr class="separator:a518e8fbfa8fa11f33077d0cde75afbcf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a456a790084cf4ea3fdfbce2f44c16b44"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d5a/class_stamp_tree_item_data.html#a456a790084cf4ea3fdfbce2f44c16b44">SetType</a> (<a class="el" href="../../df/dde/_defs_8h.html#acac9cbaeea226ed297804c012dc12b16">NodeType</a> type)</td></tr>
 <tr class="separator:a456a790084cf4ea3fdfbce2f44c16b44"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -122,7 +122,7 @@ Public Member Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>data associated with each node in the tree </p>
-<dl class="todo"><dt><b><a class="el" href="../../dd/da0/todo.html#_todo000010">Todo:</a></b></dt><dd>fix variable names so that XMLElement refs are called elements, stamps, classifications, etc are called nodes; and Tree item references are called items.</dd></dl>
+<dl class="todo"><dt><b><a class="el" href="../../dd/da0/todo.html#_todo000010">Todo:</a></b></dt><dd>fix variable names so that wxXmlNode refs are called elements, stamps, classifications, etc are called nodes; and Tree item references are called items.</dd></dl>
 <dl class="todo"><dt><b><a class="el" href="../../dd/da0/todo.html#_todo000011">Todo:</a></b></dt><dd>?? mostly done. watch for needed changes</dd></dl>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aaaf824e6417206509b5834ac375cb81c"></a>
@@ -149,7 +149,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">XMLElement *&#160;</td>
+          <td class="paramtype">wxXmlNode *&#160;</td>
           <td class="paramname"><em>ele</em> = <code>0</code>&#160;</td>
         </tr>
         <tr>
@@ -222,7 +222,7 @@ Here is the caller graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">XMLElement* StampTreeItemData::GetElement </td>
+          <td class="memname">wxXmlNode* StampTreeItemData::GetElement </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -235,7 +235,7 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>{XMLElement*} : </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>{wxXmlNode*} : </dd></dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -326,7 +326,7 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname">void StampTreeItemData::SetElement </td>
           <td>(</td>
-          <td class="paramtype">XMLElement *&#160;</td>
+          <td class="paramtype">wxXmlNode *&#160;</td>
           <td class="paramname"><em>ele</em></td><td>)</td>
           <td></td>
         </tr>

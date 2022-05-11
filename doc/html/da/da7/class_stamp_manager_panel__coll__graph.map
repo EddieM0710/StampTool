@@ -1,6 +1,6 @@
 <map id="StampManagerPanel" name="StampManagerPanel">
 <area shape="rect" id="node5" href="$d3/dff/class_description_panel.html" title="DescriptionPanel class declaration. " alt="" coords="46,81,167,108"/>
 <area shape="rect" id="node3" href="$df/dc6/class_stamp_tree_ctrl.html" title="Class to manage a wxTreeCtrl for Stamp. " alt="" coords="197,81,304,108"/>
-<area shape="rect" id="node6" href="$da/dd4/class_stamp.html" title="This is a wrapper of an XMLElement for safe/convenient getting/putting. " alt="" coords="329,81,389,108"/>
+<area shape="rect" id="node6" href="$da/dd4/class_stamp.html" title="This is a wrapper of an wxXmlNode for safe/convenient getting/putting. " alt="" coords="329,81,389,108"/>
 <area shape="rect" id="node7" href="$dc/d8f/class_node.html" title="Node" alt="" coords="332,5,385,32"/>
 </map>

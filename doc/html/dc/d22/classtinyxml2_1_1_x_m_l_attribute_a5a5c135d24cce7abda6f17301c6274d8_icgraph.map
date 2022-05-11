@@ -1,9 +1,9 @@
-<map id="tinyxml2::XMLAttribute::Name" name="tinyxml2::XMLAttribute::Name">
+<map id="tinyxml2::wxXmlAttribute::Name" name="tinyxml2::wxXmlAttribute::Name">
 <area shape="rect" id="node2" href="$df/dc6/class_stamp_tree_ctrl.html#abae9a15a5c9f33490ca9edaac65d5e94" title="StampTreeCtrl::ReSortTree" alt="" coords="208,56,391,83"/>
-<area shape="rect" id="node6" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a1e679b60e191ad79bfcefcd49ca66fa2" title="tinyxml2::XMLElement\l::ParseAttributes" alt="" coords="222,107,377,149"/>
+<area shape="rect" id="node6" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a1e679b60e191ad79bfcefcd49ca66fa2" title="tinyxml2::wxXmlNode\l::ParseAttributes" alt="" coords="222,107,377,149"/>
 <area shape="rect" id="node8" href="$df/d27/classtinyxml2_1_1_x_m_l_printer.html#a169b2509d8eabb70811b2bb8cfd1f5d1" title="tinyxml2::XMLPrinter\l::VisitEnter" alt="" coords="227,173,371,214"/>
 <area shape="rect" id="node3" href="$df/dc6/class_stamp_tree_ctrl.html#abadcd7ff69530cd204135356340ae796" title="StampTreeCtrl::OnContextMenu" alt="" coords="439,5,649,32"/>
 <area shape="rect" id="node4" href="$df/dc6/class_stamp_tree_ctrl.html#abae71004f79c6f514f05b788da001129" title="StampTreeCtrl::ShowMenu" alt="" coords="454,56,634,83"/>
 <area shape="rect" id="node5" href="$df/dc6/class_stamp_tree_ctrl.html#a02a7675b7c33247916890e126b1ecd1d" title="StampTreeCtrl::OnItemMenu" alt="" coords="697,56,888,83"/>
-<area shape="rect" id="node7" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a072998100b7d0ba5e8aeac6dd6dfb31b" title="tinyxml2::XMLElement\l::ParseDeep" alt="" coords="467,107,621,149"/>
+<area shape="rect" id="node7" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a072998100b7d0ba5e8aeac6dd6dfb31b" title="tinyxml2::wxXmlNode\l::ParseDeep" alt="" coords="467,107,621,149"/>
 </map>

@@ -344,5 +344,5 @@ CMAKE_UNAME:INTERNAL=/bin/uname
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
 //Details about finding wxWidgets
-FIND_PACKAGE_MESSAGE_DETAILS_wxWidgets:INTERNAL=[-L/usr/local/lib;-pthread;;;-lwx_gtk3u_core-3.1;-lwx_baseu-3.1][/usr/local/lib/wx/include/gtk3-unicode-3.1;/usr/local/include/wx-3.1][v3.1.4()]
+FIND_PACKAGE_MESSAGE_DETAILS_wxWidgets:INTERNAL=[-L/usr/local/lib;-pthread;;;-lwx_gtk3u_core-3.1;-lwx_baseu-3.1;-lwx_baseu_xml-3.1][/usr/local/lib/wx/include/gtk3-unicode-3.1;/usr/local/include/wx-3.1][v3.1.4()]
 

@@ -1,6 +1,6 @@
-<map id="tinyxml2::XMLElement::Unsigned64Attribute" name="tinyxml2::XMLElement::Unsigned64Attribute">
-<area shape="rect" id="node2" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a13dd590b5d3958ce2ed79844aacd9405" title="tinyxml2::XMLElement\l::QueryUnsigned64Attribute" alt="" coords="208,39,391,80"/>
-<area shape="rect" id="node3" href="$dc/d22/classtinyxml2_1_1_x_m_l_attribute.html#af793c695e7ee65cf20b8010d38b1d157" title="tinyxml2::XMLAttribute\l::QueryUnsigned64Value" alt="" coords="439,39,605,80"/>
+<map id="tinyxml2::wxXmlNode::Unsigned64Attribute" name="tinyxml2::wxXmlNode::Unsigned64Attribute">
+<area shape="rect" id="node2" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a13dd590b5d3958ce2ed79844aacd9405" title="tinyxml2::wxXmlNode\l::QueryUnsigned64Attribute" alt="" coords="208,39,391,80"/>
+<area shape="rect" id="node3" href="$dc/d22/classtinyxml2_1_1_x_m_l_attribute.html#af793c695e7ee65cf20b8010d38b1d157" title="tinyxml2::wxXmlAttribute\l::QueryUnsigned64Value" alt="" coords="439,39,605,80"/>
 <area shape="rect" id="node4" href="$d6/db0/classtinyxml2_1_1_x_m_l_util.html#ae1a49d5df42fbd5dbb36c2261f7e8aaf" title="tinyxml2::XMLUtil::\lToUnsigned64" alt="" coords="659,5,793,47"/>
 <area shape="rect" id="node5" href="$de/d13/classtinyxml2_1_1_x_m_l_node.html#a0485e51c670e741884cfd8362274d680" title="The meaning of &#39;value&#39; changes for the specific type. " alt="" coords="653,71,799,112"/>
 <area shape="rect" id="node6" href="$de/d13/classtinyxml2_1_1_x_m_l_node.html#a836e2966ed736fc3c94f70e12a2a3357" title="tinyxml2::XMLNode::\lToDocument" alt="" coords="847,37,992,79"/>

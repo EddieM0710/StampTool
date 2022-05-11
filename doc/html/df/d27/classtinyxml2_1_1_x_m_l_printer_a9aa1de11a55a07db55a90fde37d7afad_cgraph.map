@@ -1,5 +1,5 @@
 <map id="tinyxml2::XMLPrinter::VisitEnter" name="tinyxml2::XMLPrinter::VisitEnter">
-<area shape="rect" id="node2" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#a53e6c035b1b539563fef8c817fb30469" title="tinyxml2::XMLDocument\l::ProcessEntities" alt="" coords="197,5,364,47"/>
+<area shape="rect" id="node2" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#a53e6c035b1b539563fef8c817fb30469" title="tinyxml2::wxXmlDocument\l::ProcessEntities" alt="" coords="197,5,364,47"/>
 <area shape="rect" id="node3" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#a33fc5d159db873a179fa26338adb05bd" title="Returns true if this document has a leading Byte Order Mark of UTF8. " alt="" coords="197,71,364,112"/>
 <area shape="rect" id="node4" href="$df/d27/classtinyxml2_1_1_x_m_l_printer.html#a178c608ce8476043d5d6513819cde903" title="If streaming, write the BOM and declaration. " alt="" coords="209,136,353,177"/>
 <area shape="rect" id="node5" href="$df/d27/classtinyxml2_1_1_x_m_l_printer.html#aff363b7634a27538fd691ae62adbda63" title="tinyxml2::XMLPrinter\l::Write" alt="" coords="1035,187,1179,228"/>

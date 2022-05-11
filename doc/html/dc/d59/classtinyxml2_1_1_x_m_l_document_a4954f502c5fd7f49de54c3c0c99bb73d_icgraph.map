@@ -1,4 +1,4 @@
-<map id="tinyxml2::XMLDocument::NewUnknown" name="tinyxml2::XMLDocument::NewUnknown">
+<map id="tinyxml2::wxXmlDocument::NewUnknown" name="tinyxml2::wxXmlDocument::NewUnknown">
 <area shape="rect" id="node2" href="$d4/d65/classtinyxml2_1_1_x_m_l_unknown.html#ab73b48b819aa4b2ef3815dc2d7d20d5f" title="Make a copy of this node, but not its children. " alt="" coords="220,5,381,47"/>
-<area shape="rect" id="node3" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#afe6cfefb48f8fbcb29a790f2042b55a4" title="tinyxml2::XMLElement\l::InsertNewUnknown" alt="" coords="223,71,378,112"/>
+<area shape="rect" id="node3" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#afe6cfefb48f8fbcb29a790f2042b55a4" title="tinyxml2::wxXmlNode\l::InsertNewUnknown" alt="" coords="223,71,378,112"/>
 </map>

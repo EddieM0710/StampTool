@@ -1,7 +1,7 @@
 <map id="tinyxml2::XMLUtil::ToUnsigned" name="tinyxml2::XMLUtil::ToUnsigned">
-<area shape="rect" id="node2" href="$dc/d22/classtinyxml2_1_1_x_m_l_attribute.html#a48a7f3496f1415832e451bd8d09c9cb9" title="tinyxml2::XMLAttribute\l::QueryUnsignedValue" alt="" coords="188,5,343,47"/>
-<area shape="rect" id="node5" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a14d38aa4b5e18a46274a27425188a6a1" title="tinyxml2::XMLElement\l::QueryUnsignedText" alt="" coords="188,71,343,112"/>
-<area shape="rect" id="node3" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a26fc84cbfba6769dafcfbf256c05e22f" title="tinyxml2::XMLElement\l::QueryUnsignedAttribute" alt="" coords="391,5,560,47"/>
-<area shape="rect" id="node4" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#afea43a1d4aa33e3703ddee5fc9adc26c" title="tinyxml2::XMLElement\l::UnsignedAttribute" alt="" coords="608,5,763,47"/>
-<area shape="rect" id="node6" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a49bad014ffcc17b0b6119d5b2c97dfb5" title="tinyxml2::XMLElement\l::UnsignedText" alt="" coords="398,71,553,112"/>
+<area shape="rect" id="node2" href="$dc/d22/classtinyxml2_1_1_x_m_l_attribute.html#a48a7f3496f1415832e451bd8d09c9cb9" title="tinyxml2::wxXmlAttribute\l::QueryUnsignedValue" alt="" coords="188,5,343,47"/>
+<area shape="rect" id="node5" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a14d38aa4b5e18a46274a27425188a6a1" title="tinyxml2::wxXmlNode\l::QueryUnsignedText" alt="" coords="188,71,343,112"/>
+<area shape="rect" id="node3" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a26fc84cbfba6769dafcfbf256c05e22f" title="tinyxml2::wxXmlNode\l::QueryUnsignedAttribute" alt="" coords="391,5,560,47"/>
+<area shape="rect" id="node4" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#afea43a1d4aa33e3703ddee5fc9adc26c" title="tinyxml2::wxXmlNode\l::UnsignedAttribute" alt="" coords="608,5,763,47"/>
+<area shape="rect" id="node6" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a49bad014ffcc17b0b6119d5b2c97dfb5" title="tinyxml2::wxXmlNode\l::UnsignedText" alt="" coords="398,71,553,112"/>
 </map>

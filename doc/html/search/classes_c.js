@@ -1,11 +1,11 @@
 var searchData=
 [
-  ['xmlattribute',['XMLAttribute',['../dc/d22/classtinyxml2_1_1_x_m_l_attribute.html',1,'tinyxml2']]],
+  ['wxXmlAttribute',['wxXmlAttribute',['../dc/d22/classtinyxml2_1_1_x_m_l_attribute.html',1,'tinyxml2']]],
   ['xmlcomment',['XMLComment',['../d2/d6d/classtinyxml2_1_1_x_m_l_comment.html',1,'tinyxml2']]],
   ['xmlconsthandle',['XMLConstHandle',['../d3/dd0/classtinyxml2_1_1_x_m_l_const_handle.html',1,'tinyxml2']]],
   ['xmldeclaration',['XMLDeclaration',['../d2/d89/classtinyxml2_1_1_x_m_l_declaration.html',1,'tinyxml2']]],
-  ['xmldocument',['XMLDocument',['../dc/d59/classtinyxml2_1_1_x_m_l_document.html',1,'tinyxml2']]],
-  ['xmlelement',['XMLElement',['../d3/da8/classtinyxml2_1_1_x_m_l_element.html',1,'tinyxml2']]],
+  ['wxXmlDocument',['wxXmlDocument',['../dc/d59/classtinyxml2_1_1_x_m_l_document.html',1,'tinyxml2']]],
+  ['wxXmlNode',['wxXmlNode',['../d3/da8/classtinyxml2_1_1_x_m_l_element.html',1,'tinyxml2']]],
   ['xmlhandle',['XMLHandle',['../d9/d1e/classtinyxml2_1_1_x_m_l_handle.html',1,'tinyxml2']]],
   ['xmliterator',['XMLIterator',['../d5/d67/class_x_m_l_iterator.html',1,'']]],
   ['xmlnode',['XMLNode',['../de/d13/classtinyxml2_1_1_x_m_l_node.html',1,'tinyxml2']]],

@@ -1,4 +1,4 @@
-<map id="tinyxml2::XMLElement::Accept" name="tinyxml2::XMLElement::Accept">
+<map id="tinyxml2::wxXmlNode::Accept" name="tinyxml2::wxXmlNode::Accept">
 <area shape="rect" id="node2" href="$d7/dac/classtinyxml2_1_1_x_m_l_visitor.html#acb3c22fc5f60eb9db98f533f2761f67d" title="tinyxml2::XMLVisitor\l::VisitEnter" alt="" coords="209,5,352,47"/>
 <area shape="rect" id="node3" href="$de/d13/classtinyxml2_1_1_x_m_l_node.html#ae7dc225e1018cdd685f7563593a1fe08" title="tinyxml2::XMLNode::\lFirstChild" alt="" coords="208,71,353,112"/>
 <area shape="rect" id="node4" href="$de/d13/classtinyxml2_1_1_x_m_l_node.html#a79db9ef0fe014d27790f2218b87bcbb5" title="tinyxml2::XMLNode::\lNextSibling" alt="" coords="208,136,353,177"/>

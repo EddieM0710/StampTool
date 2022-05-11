@@ -1,4 +1,4 @@
-<map id="tinyxml2::XMLAttribute::QueryBoolValue" name="tinyxml2::XMLAttribute::QueryBoolValue">
+<map id="tinyxml2::wxXmlAttribute::QueryBoolValue" name="tinyxml2::wxXmlAttribute::QueryBoolValue">
 <area shape="rect" id="node2" href="$d6/db0/classtinyxml2_1_1_x_m_l_util.html#ae5b03e0a1ca5d42052a7ac540f7aa12a" title="tinyxml2::XMLUtil::\lToBool" alt="" coords="213,5,348,47"/>
 <area shape="rect" id="node3" href="$de/d13/classtinyxml2_1_1_x_m_l_node.html#a0485e51c670e741884cfd8362274d680" title="The meaning of &#39;value&#39; changes for the specific type. " alt="" coords="208,71,353,112"/>
 <area shape="rect" id="node4" href="$de/d13/classtinyxml2_1_1_x_m_l_node.html#a836e2966ed736fc3c94f70e12a2a3357" title="tinyxml2::XMLNode::\lToDocument" alt="" coords="401,37,547,79"/>

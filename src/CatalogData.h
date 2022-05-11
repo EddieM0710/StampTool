@@ -16,7 +16,7 @@
 #include "wx/xml/xml.h"
 #include <wx/string.h>
 
-//
+ 
 
 class CatalogData
 

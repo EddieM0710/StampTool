@@ -3,7 +3,7 @@
 <area shape="rect" id="node7" href="$d9/d23/_stamp_tree_ctrl_8cpp.html" title="/sandbox/Development\l/StampManager/src/StampTree\lCtrl.cpp" alt="" coords="2614,511,2818,567"/>
 <area shape="rect" id="node8" href="$de/dfe/_x_m_l_utilities_8cpp.html" title="/sandbox/Development\l/StampManager/src/XMLUtilities.cpp" alt="" coords="2393,310,2629,351"/>
 <area shape="rect" id="node9" href="$d1/d02/_node_8h.html" title="/sandbox/Development\l/StampManager/src/Node.h" alt="" coords="2389,102,2572,143"/>
-<area shape="rect" id="node10" href="$d4/d67/_stamp_8h.html" title="This is a wrapper of an XMLElement for safe/convenient getting/putting. " alt="" coords="2192,206,2382,247"/>
+<area shape="rect" id="node10" href="$d4/d67/_stamp_8h.html" title="This is a wrapper of an wxXmlNode for safe/convenient getting/putting. " alt="" coords="2192,206,2382,247"/>
 <area shape="rect" id="node12" href="$db/d5b/_description_panel_8cpp.html" title="/sandbox/Development\l/StampManager/src/Description\lPanel.cpp" alt="" coords="1561,407,1768,463"/>
 <area shape="rect" id="node15" href="$dd/d75/_description_panel_8h.html" title="/sandbox/Development\l/StampManager/src/Description\lPanel.h" alt="" coords="178,303,385,359"/>
 <area shape="rect" id="node22" href="$dd/ddb/_gallery_image_panel_8h.html" title="This class manages the display and context menu for the given image. " alt="" coords="288,407,505,463"/>
@@ -14,8 +14,8 @@
 <area shape="rect" id="node31" href="$d6/d2a/_stamp_data_8cpp.html" title="/sandbox/Development\l/StampManager/src/StampData.cpp" alt="" coords="4792,518,5022,559"/>
 <area shape="rect" id="node32" href="$dd/d80/_stamp_manager_app_8cpp.html" title="This is the main instantiation class for the application. " alt="" coords="4540,511,4768,567"/>
 <area shape="rect" id="node35" href="$dd/df3/_labeled_text_box_8cpp.html" title="/sandbox/Development\l/StampManager/src/LabeledText\lBox.cpp" alt="" coords="3964,303,4175,359"/>
-<area shape="rect" id="node36" href="$d5/d6d/_classification_8h.html" title="This is a wrapper of an XMLElement for safe/convenient getting/putting. " alt="" coords="3732,206,3962,247"/>
-<area shape="rect" id="node38" href="$dc/d95/_specimen_8h.html" title="This is a wrapper of an XMLElement for safe/convenient getting/putting. " alt="" coords="2648,206,2857,247"/>
+<area shape="rect" id="node36" href="$d5/d6d/_classification_8h.html" title="This is a wrapper of an wxXmlNode for safe/convenient getting/putting. " alt="" coords="3732,206,3962,247"/>
+<area shape="rect" id="node38" href="$dc/d95/_specimen_8h.html" title="This is a wrapper of an wxXmlNode for safe/convenient getting/putting. " alt="" coords="2648,206,2857,247"/>
 <area shape="rect" id="node40" href="$d8/dbc/_labeled_text_box_8h.html" title="/sandbox/Development\l/StampManager/src/LabeledText\lBox.h" alt="" coords="3496,199,3707,255"/>
 <area shape="rect" id="node41" href="$dc/d55/_c_s_v_8h.html" title="This file contains the class that reads .csv files and loads them into an XML structure. " alt="" coords="5068,206,5247,247"/>
 <area shape="rect" id="node42" href="$d5/d9b/_defs_8cpp.html" title="Resting place for Global stuff. " alt="" coords="5093,414,5286,455"/>

@@ -1,7 +1,7 @@
-<map id="tinyxml2::XMLElement::ClosingType" name="tinyxml2::XMLElement::ClosingType">
+<map id="tinyxml2::wxXmlNode::ClosingType" name="tinyxml2::wxXmlNode::ClosingType">
 <area shape="rect" id="node2" href="$de/d13/classtinyxml2_1_1_x_m_l_node.html#a916e498914baecbc9a1f012352ef7c69" title="tinyxml2::XMLNode::\lParseDeep" alt="" coords="208,39,353,80"/>
-<area shape="rect" id="node3" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a072998100b7d0ba5e8aeac6dd6dfb31b" title="tinyxml2::XMLElement\l::ParseDeep" alt="" coords="407,5,562,47"/>
-<area shape="rect" id="node4" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#aeb556e0e2bed02a73a6c5aaf19759e9a" title="tinyxml2::XMLDocument\l::Parse" alt="" coords="401,71,568,112"/>
+<area shape="rect" id="node3" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a072998100b7d0ba5e8aeac6dd6dfb31b" title="tinyxml2::wxXmlNode\l::ParseDeep" alt="" coords="407,5,562,47"/>
+<area shape="rect" id="node4" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#aeb556e0e2bed02a73a6c5aaf19759e9a" title="tinyxml2::wxXmlDocument\l::Parse" alt="" coords="401,71,568,112"/>
 <area shape="rect" id="node5" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#a5f1d330fad44c52f3d265338dd2a6dc2" title="Load an XML file from disk. " alt="" coords="616,37,783,79"/>
 <area shape="rect" id="node6" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#af2b616169e6517182f6725f2498e9a01" title="Parse an XML file from a character string. " alt="" coords="616,103,783,144"/>
 </map>

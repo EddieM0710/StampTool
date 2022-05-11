@@ -1,4 +1,4 @@
-<map id="tinyxml2::XMLElement::SetAttribute" name="tinyxml2::XMLElement::SetAttribute">
+<map id="tinyxml2::wxXmlNode::SetAttribute" name="tinyxml2::wxXmlNode::SetAttribute">
 <area shape="rect" id="node2" href="$d9/d1f/class_classification.html#a82faf570ddd7d84d553068e046a0fdc3" title="Sets the node type to val. " alt="" coords="231,86,381,113"/>
 <area shape="rect" id="node3" href="$d6/de5/class_specimen.html#ae4c9eef147352273742bc35448baf76f" title="Specimen::SetAttr" alt="" coords="241,137,371,163"/>
 <area shape="rect" id="node13" href="$da/dd4/class_stamp.html#a15c2d249060c244dc2faf9e4c90d5baa" title="Stamp::SetAttr" alt="" coords="251,249,361,275"/>

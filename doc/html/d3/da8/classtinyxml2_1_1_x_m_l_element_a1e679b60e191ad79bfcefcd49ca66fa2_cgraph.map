@@ -1,21 +1,21 @@
-<map id="tinyxml2::XMLElement::ParseAttributes" name="tinyxml2::XMLElement::ParseAttributes">
+<map id="tinyxml2::wxXmlNode::ParseAttributes" name="tinyxml2::wxXmlNode::ParseAttributes">
 <area shape="rect" id="node2" href="$d6/db0/classtinyxml2_1_1_x_m_l_util.html#ab626a194b3523a5ba8b9dbaa2a165202" title="tinyxml2::XMLUtil::\lSkipWhiteSpace" alt="" coords="439,5,573,47"/>
-<area shape="rect" id="node3" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#abffeba53b165f55f385ea7063a93bc95" title="tinyxml2::XMLDocument\l::SetError" alt="" coords="208,136,375,177"/>
-<area shape="rect" id="node7" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a63e057fb5baee1dd29f323cb85907b35" title="tinyxml2::XMLElement\l::Name" alt="" coords="214,201,369,243"/>
+<area shape="rect" id="node3" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#abffeba53b165f55f385ea7063a93bc95" title="tinyxml2::wxXmlDocument\l::SetError" alt="" coords="208,136,375,177"/>
+<area shape="rect" id="node7" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a63e057fb5baee1dd29f323cb85907b35" title="tinyxml2::wxXmlNode\l::Name" alt="" coords="214,201,369,243"/>
 <area shape="rect" id="node8" href="$d6/db0/classtinyxml2_1_1_x_m_l_util.html#abe106a69ac4d942a4381a4d9dfd0e0bd" title="tinyxml2::XMLUtil::\lIsNameStartChar" alt="" coords="224,267,359,308"/>
-<area shape="rect" id="node9" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a10e25b09c308a8658d2d6b464745bdc3" title="tinyxml2::XMLElement\l::CreateAttribute" alt="" coords="214,332,369,373"/>
-<area shape="rect" id="node10" href="$dc/d22/classtinyxml2_1_1_x_m_l_attribute.html#a4952364c1f0260c737ac3fcac756f5a5" title="tinyxml2::XMLAttribute\l::ParseDeep" alt="" coords="214,71,369,112"/>
-<area shape="rect" id="node12" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#a53e6c035b1b539563fef8c817fb30469" title="tinyxml2::XMLDocument\l::ProcessEntities" alt="" coords="208,397,375,439"/>
+<area shape="rect" id="node9" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a10e25b09c308a8658d2d6b464745bdc3" title="tinyxml2::wxXmlNode\l::CreateAttribute" alt="" coords="214,332,369,373"/>
+<area shape="rect" id="node10" href="$dc/d22/classtinyxml2_1_1_x_m_l_attribute.html#a4952364c1f0260c737ac3fcac756f5a5" title="tinyxml2::wxXmlAttribute\l::ParseDeep" alt="" coords="214,71,369,112"/>
+<area shape="rect" id="node12" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#a53e6c035b1b539563fef8c817fb30469" title="tinyxml2::wxXmlDocument\l::ProcessEntities" alt="" coords="208,397,375,439"/>
 <area shape="rect" id="node13" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a48cf4a315cfbac7d74cd0d5ff2c5df51" title="Given an attribute name, Attribute() returns the value for the attribute of that name, or null if none exists. " alt="" coords="214,463,369,504"/>
-<area shape="rect" id="node19" href="$dc/d22/classtinyxml2_1_1_x_m_l_attribute.html#a5a5c135d24cce7abda6f17301c6274d8" title="tinyxml2::XMLAttribute\l::Name" alt="" coords="214,580,369,621"/>
+<area shape="rect" id="node19" href="$dc/d22/classtinyxml2_1_1_x_m_l_attribute.html#a5a5c135d24cce7abda6f17301c6274d8" title="tinyxml2::wxXmlAttribute\l::Name" alt="" coords="214,580,369,621"/>
 <area shape="rect" id="node20" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#aebd45aa7118964c30b32fe12e944628a" title="Delete an attribute. " alt="" coords="429,560,583,601"/>
 <area shape="rect" id="node4" href="$de/dc1/classtinyxml2_1_1_str_pair.html#a80c1b3bd99bf62ae85c94a29ce537125" title="tinyxml2::StrPair::\lReset" alt="" coords="443,136,569,177"/>
-<area shape="rect" id="node5" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#a639f7c295c38dc5a4aafeb2fff93da03" title="tinyxml2::XMLDocument\l::ErrorIDToName" alt="" coords="423,201,589,243"/>
+<area shape="rect" id="node5" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#a639f7c295c38dc5a4aafeb2fff93da03" title="tinyxml2::wxXmlDocument\l::ErrorIDToName" alt="" coords="423,201,589,243"/>
 <area shape="rect" id="node6" href="$de/dc1/classtinyxml2_1_1_str_pair.html#a1f82ec6b5bee35ee7466d8565e43b1de" title="tinyxml2::StrPair::\lSetStr" alt="" coords="443,267,569,308"/>
 <area shape="rect" id="node11" href="$de/dc1/classtinyxml2_1_1_str_pair.html#a68e6999b7677fa711287ececb9ba317e" title="tinyxml2::StrPair::\lParseText" alt="" coords="443,71,569,112"/>
-<area shape="rect" id="node14" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a157750dac8037a316fd1af1a973dfa2c" title="tinyxml2::XMLElement\l::FindAttribute" alt="" coords="429,429,583,471"/>
+<area shape="rect" id="node14" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a157750dac8037a316fd1af1a973dfa2c" title="tinyxml2::wxXmlNode\l::FindAttribute" alt="" coords="429,429,583,471"/>
 <area shape="rect" id="node15" href="$d6/db0/classtinyxml2_1_1_x_m_l_util.html#acfcd287cacfd2533e1bc9ea4dfb56602" title="tinyxml2::XMLUtil::\lStringEqual" alt="" coords="637,429,772,471"/>
-<area shape="rect" id="node16" href="$dc/d22/classtinyxml2_1_1_x_m_l_attribute.html#ab1c5cd993f836a771818ca408994b14e" title="tinyxml2::XMLAttribute\l::Value" alt="" coords="429,495,583,536"/>
+<area shape="rect" id="node16" href="$dc/d22/classtinyxml2_1_1_x_m_l_attribute.html#ab1c5cd993f836a771818ca408994b14e" title="tinyxml2::wxXmlAttribute\l::Value" alt="" coords="429,495,583,536"/>
 <area shape="rect" id="node17" href="$de/dc1/classtinyxml2_1_1_str_pair.html#ad87e3d11330f5e689ba1e7e54c023b57" title="tinyxml2::StrPair::\lGetStr" alt="" coords="641,495,768,536"/>
 <area shape="rect" id="node18" href="$d6/db0/classtinyxml2_1_1_x_m_l_util.html#a5a96e5144a8d693dc4bcd783d9964648" title="tinyxml2::XMLUtil::\lGetCharacterRef" alt="" coords="820,495,955,536"/>
 </map>

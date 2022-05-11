@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['catalogcode',['CatalogCode',['../db/d46/class_catalog_code.html',1,'CatalogCode'],['../db/d46/class_catalog_code.html#abc0ec69700a46888db5ee319e93d9d4a',1,'CatalogCode::CatalogCode()'],['../db/d46/class_catalog_code.html#aed75319170c68877189be191e27cb1d6',1,'CatalogCode::CatalogCode(XMLElement *ele)']]],
+  ['catalogcode',['CatalogCode',['../db/d46/class_catalog_code.html',1,'CatalogCode'],['../db/d46/class_catalog_code.html#abc0ec69700a46888db5ee319e93d9d4a',1,'CatalogCode::CatalogCode()'],['../db/d46/class_catalog_code.html#aed75319170c68877189be191e27cb1d6',1,'CatalogCode::CatalogCode(wxXmlNode *ele)']]],
   ['catalogcode_2ecpp',['CatalogCode.cpp',['../d9/dec/_catalog_code_8cpp.html',1,'']]],
   ['catalogcode_2eh',['CatalogCode.h',['../d2/d42/_catalog_code_8h.html',1,'']]],
   ['catalogcodepanel',['CatalogCodePanel',['../de/d4d/class_catalog_code_panel.html',1,'CatalogCodePanel'],['../de/d4d/class_catalog_code_panel.html#ae7d1d1a188b377a7cdfb14baa6e57116',1,'CatalogCodePanel::CatalogCodePanel()'],['../de/d4d/class_catalog_code_panel.html#a7494a36200786a8f3a339cb849298d19',1,'CatalogCodePanel::CatalogCodePanel(wxWindow *parent, wxWindowID id=SYMBOL_CATALOGCODEPANEL_IDNAME, const wxPoint &amp;pos=SYMBOL_CATALOGCODEPANEL_POSITION, const wxSize &amp;size=SYMBOL_CATALOGCODEPANEL_SIZE, long style=SYMBOL_CATALOGCODEPANEL_STYLE)']]],
@@ -15,7 +15,7 @@ var searchData=
   ['characteristicspanel',['CharacteristicsPanel',['../d1/d7e/class_characteristics_panel.html',1,'CharacteristicsPanel'],['../d1/d7e/class_characteristics_panel.html#a8e765ec9dbb757aaddff83de93ea854e',1,'CharacteristicsPanel::CharacteristicsPanel(void)'],['../d1/d7e/class_characteristics_panel.html#af8116fe377176cfc8c198e8d9794a48b',1,'CharacteristicsPanel::CharacteristicsPanel(wxWindow *parent, wxWindowID id=SYMBOL_CHARACTERISTICSPANEL_IDNAME, const wxPoint &amp;pos=SYMBOL_CHARACTERISTICSPANEL_POSITION, const wxSize &amp;size=SYMBOL_CHARACTERISTICSPANEL_SIZE, long style=SYMBOL_CHARACTERISTICSPANEL_STYLE)']]],
   ['characteristicspanel_2ecpp',['CharacteristicsPanel.cpp',['../d7/d49/_characteristics_panel_8cpp.html',1,'']]],
   ['characteristicspanel_2eh',['CharacteristicsPanel.h',['../da/d28/_characteristics_panel_8h.html',1,'']]],
-  ['classification',['Classification',['../d9/d1f/class_classification.html',1,'Classification'],['../d9/d1f/class_classification.html#a6c758fcb39b02cff01d1998b26da9db1',1,'Classification::Classification(void)'],['../d9/d1f/class_classification.html#ab4a5ab78ce2b691fb0eb427751afb8fc',1,'Classification::Classification(XMLElement *node)']]],
+  ['classification',['Classification',['../d9/d1f/class_classification.html',1,'Classification'],['../d9/d1f/class_classification.html#a6c758fcb39b02cff01d1998b26da9db1',1,'Classification::Classification(void)'],['../d9/d1f/class_classification.html#ab4a5ab78ce2b691fb0eb427751afb8fc',1,'Classification::Classification(wxXmlNode *node)']]],
   ['classification_2ecpp',['Classification.cpp',['../d3/d09/_classification_8cpp.html',1,'']]],
   ['classification_2eh',['Classification.h',['../d5/d6d/_classification_8h.html',1,'']]],
   ['classificationtypes',['ClassificationTypes',['../df/dde/_defs_8h.html#a3647ee68f7f113ec240e49364fe0c1f1',1,'Defs.h']]],

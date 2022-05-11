@@ -22,6 +22,7 @@
 
 #include "AlbumGeneratorPanel.h"
 #include "ManageCatalogData.h"
+#include "ManageAECmdData.h"
 #include <wx/filefn.h>
 #include <wx/filename.h>
 #include <wx/log.h>
@@ -35,7 +36,7 @@
 #include "SortOrderDialog.h"
 #include "SettingsDialog.h"
 #include "CatalogData.h"
-
+//#include "AECmdData.h"
 #include "AlbumGeneratorFrame.h"
 #include "XMLUtilities.h"
 
@@ -217,7 +218,7 @@ void AlbumGeneratorFrame::CreateControls( )
         wxSize( 100, 100 ), wxSIMPLE_BORDER );
     itemGridSizer1->Add( m_albumGeneratorPanel, 1, wxGROW | wxALL, 0 );
     m_catalogDataManager = m_albumGeneratorPanel->GetCatalogDataManager();
-
+    m_AECmdDataManager = m_albumGeneratorPanel->GetAECmdDataManager();
 }
 
 /*
@@ -304,7 +305,7 @@ void AlbumGeneratorFrame::OnCSVImportClick( wxCommandEvent& event )
 
 void AlbumGeneratorFrame::OnAEImportClick( wxCommandEvent& event )
 {
- 
+    DoAEImport( );
 
     // wxEVT_COMMAND_MENU_SELECTED event handler for ID_IMPORT in
     // AlbumGeneratorFrame.
@@ -635,7 +636,7 @@ void AlbumGeneratorFrame::DoAEImport( )
         return;
     }
 
-  //  m_AECmdDataManager->LoadAEFile( filename );
+    m_AECmdDataManager->LoadAEFile( filename );
 
     Dirty = true;
 }
@@ -762,7 +763,7 @@ bool AlbumGeneratorFrame::GetFile( wxString newFile, wxString imageName )
     // const char* str =  (char*)imageName.ToAscii();
     URLName1 = URLName1.Format(
         "https://www.mysticstamp.com/pictures/stamps_default/USA-%s", newFile );
-    const char* ptr = URLName1.c_str( );
+    const char* ptr = URLName1 ;
     const char* ptr2 = URLName1.ToUTF8( );
     curl_easy_setopt( curl_handle, CURLOPT_URL, ptr );
 
@@ -776,7 +777,7 @@ bool AlbumGeneratorFrame::GetFile( wxString newFile, wxString imageName )
     curl_easy_setopt( curl_handle, CURLOPT_WRITEFUNCTION, write_data );
 
     /* open the file */
-    pagefile = fopen( imageName.c_str( ), "wb" );
+    pagefile = fopen( imageName , "wb" );
     if ( pagefile )
     {
         /* write the page body to this file handle */
@@ -804,18 +805,18 @@ void AlbumGeneratorFrame::OnLoadimagesmenuitemClick( wxCommandEvent& event )
 {
     // XMLIterator* parentIter = 0;
     // wxXmlDocument* doc = GetCatalogData( )->GetDoc( );
-    // wxXmlNode* parent = doc->RootElement( );
+    // wxXmlNode* parent = doc->GetRoot( );
     // XMLIterator* iterator = new XMLIterator( parent );
     // wxXmlNode* item = iterator->First( );
     // while ( item )
     // {
-    //     wxString name = item->Name( );
+    //     wxString name = item->GetName( );
     //     if ( !name.Cmp( "Stamp" ) )
     //     {
-    //         const wxXmlAttribute* attr = item->FindAttribute( "ID_Nbr" );
+    //         const wxXmlAttribute* attr = item->GetAttribute( "ID_Nbr" );
     //         if ( attr )
     //         {
-    //             const char* idStr = attr->Value( );
+    //             const char* idStr = attr->GetValue( );
     //             wxString id = idStr;
     //             int i = id.Find( " " );
     //             if ( i >= 0 )
@@ -823,9 +824,9 @@ void AlbumGeneratorFrame::OnLoadimagesmenuitemClick( wxCommandEvent& event )
     //                 wxString sp = " ";
     //                 wxString nullStr = "";
     //                 size_t size = id.Replace( sp, nullStr, true );
-    //                 item->SetAttribute( "ID_Nbr", id  );
+    //                 item->SetAttribute( "ID_Nbr", id   );
     //             }
-    //             std::cout << "Info: AlbumGeneratorFrame Loadimages " << attr->Value( )
+    //             std::cout << "Info: AlbumGeneratorFrame Loadimages " << attr->GetValue( )
     //                 << "\n";
     //             wxFileName fileName;
 
@@ -836,7 +837,7 @@ void AlbumGeneratorFrame::OnLoadimagesmenuitemClick( wxCommandEvent& event )
     //             //     wxMkdir(wxString("Art"));
     //             // }
     //             wxString str = GetCatalogData( )->GetImageDirectory( );
-    //             wxString imageName = wxString::Format( "%s/%s.jpg", str, attr->Value( ) );
+    //             wxString imageName = wxString::Format( "%s/%s.jpg", str, attr->GetValue( ) );
     //             fileName.Assign( imageName );
     //             std::cout << "Info: AlbumGeneratorFrame Loadimages "
     //                 << fileName.GetFullPath( ) << "\n";
@@ -864,75 +865,74 @@ void AlbumGeneratorFrame::OnLoadimagesmenuitemClick( wxCommandEvent& event )
 
 void AlbumGeneratorFrame::OnTestXMLClick( wxCommandEvent& event )
 {
-    // wxFileName* filename = new wxFileName(
-    //     GetSettings( )->GetWorkingDirectory( ), "XMLTest", "xml" );
-    // wxString fullPath = filename->GetFullPath( );
-    // wxXmlDocument doc;
-    // int errCode = doc.Load( fullPath );
+    wxFileName* filename = new wxFileName(
+        GetSettings( )->GetWorkingDirectory( ), "XMLTest", "xml" );
+    wxString fullPath = filename->GetFullPath( );
+    wxXmlDocument doc;
+    bool errCode = doc.Load( fullPath  );
 
-    // if ( !errCode )
-    // {
+    if ( errCode  )
+    {
+        
+        std::cout << fullPath << "Load Failed.\n";
+    }
 
-    //     std::cout << fullPath << "Load failed\n";
-    // }
+    wxXmlNode* root = doc.GetRoot( );
+    // start processing the XML file
+    wxString rootName = root->GetName( );
+    wxString child = GetAttribute( root, "Child" )->GetValue();
+    wxString id = GetAttributeValue(root , "id" );
+    std::cout << "Root Value: " << rootName << "  Child:" << child
+        << "  id:" << id << "\n";
+    std::cout << " Testing decending entire file\n";
+    std::cout << " ID numbers should be in order 1 thru 120\n";
 
+    XMLIterator* iter = new XMLIterator( root );
+    wxXmlNode* ele = iter->First( );
+    while ( ele )
+    {
+        wxString eleName = ele->GetName( );
+        child = GetAttributeValue(ele,  "Child" );
+        id = GetAttributeValue(ele,  "id" );
+        std::cout << eleName << "  Child:" << child << "  id:" << id << "\n";
+        ele = iter->Next( );
+    }
+    delete iter;
 
-    // wxXmlNode* root = doc.GetRoot( );
-    // // start processing the XML file
-    // wxString rootName = root->GetName( );
-    // wxString child = root->Attribute( "Child" );
-    // wxString id = root->Attribute( "id" );
-    // std::cout << "Root Value: " << rootName << "  Child:" << child
-    //     << "  id:" << id << "\n";
-    // std::cout << " Testing decending entire file\n";
-    // std::cout << " ID numbers should be in order 1 thru 120\n";
+    std::cout << " Testing No decend \n";
+    std::cout
+        << " first level is iterated and second level within each of those \n";
 
-    // XMLIterator* iter = new XMLIterator( root );
-    // wxXmlNode* ele = root->GetChildren( );
-    // while ( ele )
-    // {
-    //     wxString eleName = ele->GetName( );
+    iter = new XMLIterator( root, false );
+    ele = iter->First( );
+    while ( ele )
+    {
+        wxString name = ele->GetName( );
+        child = GetAttributeValue( ele, "Child" );
+        id = GetAttributeValue( ele, "id" );
+        std::cout << name << "  Child:" << child << "  id:" << id << "\n";
+        std::cout << "      Do next level only\n";
+        XMLIterator* iter2 = new XMLIterator( ele, false );
+        wxXmlNode* ele2 = iter2->First( );
+        while ( ele2 )
+        {
+            name = ele2->GetName( );
+            child = GetAttributeValue(ele2,  "Child" );
+            id = GetAttributeValue(ele2,  "id" );
+            std::cout << name << "        Child:" << child << "  id:" << id << "\n";
 
-    //     id = ele->GetAttribute( "id" );
-    //     std::cout << eleName << "  Child:" << child << "  id:" << id << "\n";
-    //     ele = ele->GetNext( );
-    // }
-    // delete iter;
+            ele2 = iter2->Next( );
+        }
+        ele = iter->Next( );
+    }
+    delete iter;
 
-    // std::cout << " Testing No decend \n";
-    // std::cout
-    //     << " first level is iterated and second level within each of those \n";
-
-    // iter = new XMLIterator( root, false );
-    // ele = iter->First( );
-    // while ( ele )
-    // {
-    //     name = ele->Name( );
-    //     child = ele->Attribute( "Child" );
-    //     id = ele->Attribute( "id" );
-    //     std::cout << name << "  Child:" << child << "  id:" << id << "\n";
-    //     std::cout << "      Do next level only\n";
-    //     XMLIterator* iter2 = new XMLIterator( ele, false );
-    //     wxXmlNode* ele2 = iter2->First( );
-    //     while ( ele2 )
-    //     {
-    //         name = ele2->Name( );
-    //         child = ele2->Attribute( "Child" );
-    //         id = ele2->Attribute( "id" );
-    //         std::cout << name << "        Child:" << child << "  id:" << id << "\n";
-
-    //         ele2 = iter2->Next( );
-    //     }
-    //     ele = iter->Next( );
-    // }
-    // delete iter;
-
-    // // wxEVT_COMMAND_MENU_SELECTED event handler for ID_TESTXMLMENUITEM
-    // // in AlbumGeneratorFrame.
-    // // Before editing this code, remove the block markers.
-    // event.Skip( );
-    // // wxEVT_COMMAND_MENU_SELECTED event handler for ID_TESTXMLMENUITEM in
-    // // AlbumGeneratorFrame.
+    // wxEVT_COMMAND_MENU_SELECTED event handler for ID_TESTXMLMENUITEM
+    // in AlbumGeneratorFrame.
+    // Before editing this code, remove the block markers.
+    event.Skip( );
+    // wxEVT_COMMAND_MENU_SELECTED event handler for ID_TESTXMLMENUITEM in
+    // AlbumGeneratorFrame.
 }
 
 
@@ -947,53 +947,53 @@ void AlbumGeneratorFrame::OnAlbumGenMenuItemClick( wxCommandEvent& event )
 
 void AlbumGeneratorFrame::OnCVSReportMenuItemClick( wxCommandEvent& event )
 {
-    // wxFileName imageFileName;
-    // imageFileName.SetPath( wxGetCwd( ) );
-    // imageFileName.AppendDir( wxT( "Art" ) );
-    // if ( !imageFileName.DirExists( ) )
-    // {
-    //     wxMkdir( wxString( "Art" ) );
-    // }
+    wxFileName imageFileName;
+    imageFileName.SetPath( wxGetCwd( ) );
+    imageFileName.AppendDir( wxT( "Art" ) );
+    if ( !imageFileName.DirExists( ) )
+    {
+        wxMkdir( wxString( "Art" ) );
+    }
 
-    // wxFileName filename( GetSettings( )->GetWorkingDirectory( ),
-    //     "CSVReport", "csv" );
+    wxFileName filename( GetSettings( )->GetWorkingDirectory( ),
+        "CSVReport", "csv" );
 
-    // wxString fullPath = filename.GetFullPath( );
+    wxString fullPath = filename.GetFullPath( );
 
-    // wxFileOutputStream l_file( fullPath );
+    wxFileOutputStream l_file( fullPath );
 
-    // if ( l_file.IsOk( ) )
-    // {
-    //     wxTextOutputStream text( l_file );
-    //     wxString id;
-    //     wxString link;
-    //     wxString imageName;
-    //     wxXmlDocument* doc = GetCatalogData( )->GetDoc( );
-    //     wxXmlNode* root = doc->GetRoot( );
-    //     XMLIterator* iter = new XMLIterator( root );
-    //     wxXmlNode* item = iter->First( );
-    //     while ( item )
-    //     {
-    //         wxString name = item->GetName( );
-    //         if ( !name.Cmp( NodeNameStrings[ NT_Stamp ] ) )
-    //         {
-    //             Stamp stamp( item );
-    //             id = stamp.GetID( );
-    //             link = stamp.GetLink( );
-    //             imageName = wxString::Format( "%s.jpg", id );
-    //             imageFileName.SetFullName( imageName );
-    //             if ( !imageFileName.FileExists( ) )
-    //             {
-    //                 if ( id.Len( ) > 0 && link.Len( ) > 0 )
-    //                 {
-    //                     text << id << ", " << link << "\n";
-    //                 }
-    //             }
-    //         }
-    //         item = iter->Next( );
-    //     }
-    //     l_file.Close( );
-    // }
+    if ( l_file.IsOk( ) )
+    {
+        wxTextOutputStream text( l_file );
+        wxString id;
+        wxString link;
+        wxString imageName;
+        wxXmlDocument* doc = GetCatalogData( )->GetDoc( );
+        wxXmlNode* root = doc->GetRoot( );
+        XMLIterator* iter = new XMLIterator( root );
+        wxXmlNode* item = iter->First( );
+        while ( item )
+        {
+            wxString name = item->GetName( );
+            if ( !name.Cmp( NodeNameStrings[ NT_Stamp ] ) )
+            {
+                Stamp stamp( item );
+                id = stamp.GetID( );
+                link = stamp.GetLink( );
+                imageName = wxString::Format( "%s.jpg", id );
+                imageFileName.SetFullName( imageName );
+                if ( !imageFileName.FileExists( ) )
+                {
+                    if ( id.Len( ) > 0 && link.Len( ) > 0 )
+                    {
+                        text << id << ", " << link << "\n";
+                    }
+                }
+            }
+            item = iter->Next( );
+        }
+        l_file.Close( );
+    }
     // wxEVT_COMMAND_MENU_SELECTED event handler for ID_MENUITEM in
     // AlbumGeneratorFrame.
     // Before editing this code, remove the block markers.

@@ -13,7 +13,7 @@
 <area shape="rect" id="node37" href="$d7/daf/class_merge_stamps_dialog.html#af3002d63bf0d005a7ceb3058bc9ecbc5" title="MergeStampsDialog::\lInitializeMerge" alt="" coords="463,917,611,958"/>
 <area shape="rect" id="node39" href="$d7/daf/class_merge_stamps_dialog.html#a3e94c16b06a2e268795c6d8cb97ba5ab" title="Used for two&#45;step panel construction. " alt="" coords="463,851,611,893"/>
 <area shape="rect" id="node12" href="$d5/d67/class_x_m_l_iterator.html#ac727791161ba9004889e6dec19798bfa" title="Returns the first child or Null. " alt="" coords="1359,687,1483,713"/>
-<area shape="rect" id="node13" href="$de/dfe/_x_m_l_utilities_8cpp.html#ad47c65cc8945eb9144968a2364ba1566" title="is the specified XMLElement of specified type " alt="" coords="930,477,1023,504"/>
+<area shape="rect" id="node13" href="$de/dfe/_x_m_l_utilities_8cpp.html#ad47c65cc8945eb9144968a2364ba1566" title="is the specified wxXmlNode of specified type " alt="" coords="930,477,1023,504"/>
 <area shape="rect" id="node14" href="$dc/d8f/class_node.html#acf8c0b4d1901ab855cd980308fd0fa56" title="Node::SetElement" alt="" coords="912,528,1041,555"/>
 <area shape="rect" id="node15" href="$da/dd4/class_stamp.html#a166efaff1b06626011e428bedaa71cc1" title=" " alt="" coords="877,259,1076,285"/>
 <area shape="rect" id="node24" href="$d5/d67/class_x_m_l_iterator.html#ae69af024f8149554a074378262a4c2a0" title="Successively returns the next child or Null if finished. " alt="" coords="1357,628,1484,655"/>

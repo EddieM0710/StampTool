@@ -93,15 +93,15 @@ $(document).ready(function(){initNavTree('d5/d67/class_x_m_l_iterator.html','../
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a55edcb3df8d45ce3f38429d1707d2280"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d67/class_x_m_l_iterator.html#a55edcb3df8d45ce3f38429d1707d2280">XMLIterator</a> (XMLElement *parent, bool decend=true)</td></tr>
+<tr class="memitem:a55edcb3df8d45ce3f38429d1707d2280"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d67/class_x_m_l_iterator.html#a55edcb3df8d45ce3f38429d1707d2280">XMLIterator</a> (wxXmlNode *parent, bool decend=true)</td></tr>
 <tr class="memdesc:a55edcb3df8d45ce3f38429d1707d2280"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../d5/d67/class_x_m_l_iterator.html">XMLIterator</a> - constructor for iterating an XML heirarchy.  <a href="#a55edcb3df8d45ce3f38429d1707d2280">More...</a><br /></td></tr>
 <tr class="separator:a55edcb3df8d45ce3f38429d1707d2280"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aede9a7367e126df4d1a538c5baa658bb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d67/class_x_m_l_iterator.html#aede9a7367e126df4d1a538c5baa658bb">~XMLIterator</a> ()</td></tr>
 <tr class="separator:aede9a7367e126df4d1a538c5baa658bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac727791161ba9004889e6dec19798bfa"><td class="memItemLeft" align="right" valign="top">XMLElement *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d67/class_x_m_l_iterator.html#ac727791161ba9004889e6dec19798bfa">First</a> ()</td></tr>
+<tr class="memitem:ac727791161ba9004889e6dec19798bfa"><td class="memItemLeft" align="right" valign="top">wxXmlNode *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d67/class_x_m_l_iterator.html#ac727791161ba9004889e6dec19798bfa">First</a> ()</td></tr>
 <tr class="memdesc:ac727791161ba9004889e6dec19798bfa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the first child or Null.  <a href="#ac727791161ba9004889e6dec19798bfa">More...</a><br /></td></tr>
 <tr class="separator:ac727791161ba9004889e6dec19798bfa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae69af024f8149554a074378262a4c2a0"><td class="memItemLeft" align="right" valign="top">XMLElement *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d67/class_x_m_l_iterator.html#ae69af024f8149554a074378262a4c2a0">Next</a> ()</td></tr>
+<tr class="memitem:ae69af024f8149554a074378262a4c2a0"><td class="memItemLeft" align="right" valign="top">wxXmlNode *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d67/class_x_m_l_iterator.html#ae69af024f8149554a074378262a4c2a0">Next</a> ()</td></tr>
 <tr class="memdesc:ae69af024f8149554a074378262a4c2a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Successively returns the next child or Null if finished.  <a href="#ae69af024f8149554a074378262a4c2a0">More...</a><br /></td></tr>
 <tr class="separator:ae69af024f8149554a074378262a4c2a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -115,7 +115,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">XMLIterator::XMLIterator </td>
           <td>(</td>
-          <td class="paramtype">XMLElement *&#160;</td>
+          <td class="paramtype">wxXmlNode *&#160;</td>
           <td class="paramname"><em>parent</em>, </td>
         </tr>
         <tr>
@@ -168,7 +168,7 @@ Public Member Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">XMLElement * XMLIterator::First </td>
+          <td class="memname">wxXmlNode * XMLIterator::First </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -177,7 +177,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Returns the first child or Null. </p>
-<dl class="section return"><dt>Returns</dt><dd>{XMLElement*} : </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>{wxXmlNode*} : </dd></dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -213,7 +213,7 @@ Here is the caller graph for this function:</div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">XMLElement * XMLIterator::Next </td>
+          <td class="memname">wxXmlNode * XMLIterator::Next </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -222,7 +222,7 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Successively returns the next child or Null if finished. </p>
-<dl class="section return"><dt>Returns</dt><dd>{XMLElement*} : </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>{wxXmlNode*} : </dd></dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">

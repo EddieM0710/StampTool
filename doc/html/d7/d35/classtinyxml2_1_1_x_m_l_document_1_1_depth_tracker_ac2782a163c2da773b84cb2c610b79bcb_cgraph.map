@@ -1,7 +1,7 @@
-<map id="tinyxml2::XMLDocument::DepthTracker::DepthTracker" name="tinyxml2::XMLDocument::DepthTracker::DepthTracker">
-<area shape="rect" id="node2" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#a4d4aa7ec8e078ee6b449471e187d2d67" title="tinyxml2::XMLDocument\l::PushDepth" alt="" coords="249,71,416,112"/>
-<area shape="rect" id="node3" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#abffeba53b165f55f385ea7063a93bc95" title="tinyxml2::XMLDocument\l::SetError" alt="" coords="464,71,631,112"/>
+<map id="tinyxml2::wxXmlDocument::DepthTracker::DepthTracker" name="tinyxml2::wxXmlDocument::DepthTracker::DepthTracker">
+<area shape="rect" id="node2" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#a4d4aa7ec8e078ee6b449471e187d2d67" title="tinyxml2::wxXmlDocument\l::PushDepth" alt="" coords="249,71,416,112"/>
+<area shape="rect" id="node3" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#abffeba53b165f55f385ea7063a93bc95" title="tinyxml2::wxXmlDocument\l::SetError" alt="" coords="464,71,631,112"/>
 <area shape="rect" id="node4" href="$de/dc1/classtinyxml2_1_1_str_pair.html#a80c1b3bd99bf62ae85c94a29ce537125" title="tinyxml2::StrPair::\lReset" alt="" coords="699,5,825,47"/>
-<area shape="rect" id="node5" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#a639f7c295c38dc5a4aafeb2fff93da03" title="tinyxml2::XMLDocument\l::ErrorIDToName" alt="" coords="679,71,845,112"/>
+<area shape="rect" id="node5" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#a639f7c295c38dc5a4aafeb2fff93da03" title="tinyxml2::wxXmlDocument\l::ErrorIDToName" alt="" coords="679,71,845,112"/>
 <area shape="rect" id="node6" href="$de/dc1/classtinyxml2_1_1_str_pair.html#a1f82ec6b5bee35ee7466d8565e43b1de" title="tinyxml2::StrPair::\lSetStr" alt="" coords="699,136,825,177"/>
 </map>

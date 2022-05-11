@@ -1,5 +1,5 @@
 <map id="tinyxml2::XMLUtil::IsNameStartChar" name="tinyxml2::XMLUtil::IsNameStartChar">
 <area shape="rect" id="node2" href="$de/dc1/classtinyxml2_1_1_str_pair.html#aa6d8998efceba41d87ec2300c70a6085" title="tinyxml2::StrPair::\lParseName" alt="" coords="202,5,329,47"/>
-<area shape="rect" id="node4" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a1e679b60e191ad79bfcefcd49ca66fa2" title="tinyxml2::XMLElement\l::ParseAttributes" alt="" coords="188,71,343,112"/>
-<area shape="rect" id="node3" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a072998100b7d0ba5e8aeac6dd6dfb31b" title="tinyxml2::XMLElement\l::ParseDeep" alt="" coords="391,39,545,80"/>
+<area shape="rect" id="node4" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a1e679b60e191ad79bfcefcd49ca66fa2" title="tinyxml2::wxXmlNode\l::ParseAttributes" alt="" coords="188,71,343,112"/>
+<area shape="rect" id="node3" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a072998100b7d0ba5e8aeac6dd6dfb31b" title="tinyxml2::wxXmlNode\l::ParseDeep" alt="" coords="391,39,545,80"/>
 </map>

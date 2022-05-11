@@ -6,5 +6,5 @@ CXX_FLAGS =  -pthread -g   -std=gnu++11
 
 CXX_DEFINES = -DWXUSINGDLL -D_FILE_OFFSET_BITS=64 -D__WXGTK__
 
-CXX_INCLUDES = -I/sandbox/Development/AlbumGenerator/src/gui -I/sandbox/Development/AlbumGenerator/src/data -isystem /usr/local/lib/wx/include/gtk3-unicode-3.1 -isystem /usr/local/include/wx-3.1 -I/sandbox/Development/AlbumGenerator/src -I/sandbox/Applications/TinyXML2 
+CXX_INCLUDES = -I/sandbox/Development/AlbumGenerator/src/gui -I/sandbox/Development/AlbumGenerator/src/data -isystem /usr/local/lib/wx/include/gtk3-unicode-3.1 -isystem /usr/local/include/wx-3.1 -I/sandbox/Development/AlbumGenerator/src 
 

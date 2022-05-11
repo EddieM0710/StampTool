@@ -21,6 +21,7 @@ namespace Layout { class AlbumData; };
 namespace Catalog { class CatalogData; };
 class CatalogTreeCtrl;
 class AlbumTreeCtrl;
+class DescriptionPanel;
 
 class GeneratorData
 {
@@ -58,14 +59,17 @@ public:
 
     inline CatalogTreeCtrl* GetCatalogTreeCtrl( ) { return m_catalogTreeCtrl; };
     inline AlbumTreeCtrl* GetAlbumTreeCtrl( ) { return m_AlbumTreeCtrl; };
-    void  SetCatalogTreeCtrl( CatalogTreeCtrl* treeCtrl ) { m_catalogTreeCtrl = treeCtrl; };
+    inline DescriptionPanel* GetDescriptionPanel(  ) { return m_descriptionPanel; };
+    void SetCatalogTreeCtrl( CatalogTreeCtrl* treeCtrl ) { m_catalogTreeCtrl = treeCtrl; };
     void SetAlbumTreeCtrl( AlbumTreeCtrl* treeCtrl ) { m_AlbumTreeCtrl = treeCtrl; };
+    void SetDescriptionPanel( DescriptionPanel* descriptionPanel ) { m_descriptionPanel = descriptionPanel; };
+
 private:
     Utils::StampList m_StampAlbumCatalogLink;
     Catalog::CatalogData* m_catalogData;
     Layout::AlbumData* m_albumData;
     CatalogTreeCtrl* m_catalogTreeCtrl;
     AlbumTreeCtrl* m_AlbumTreeCtrl;
-
+    DescriptionPanel* m_descriptionPanel;
 };
 #endif

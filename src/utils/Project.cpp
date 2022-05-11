@@ -26,11 +26,6 @@ namespace Utils {
             {
                 if ( LoadProject( filename ) )
                 {
-                    wxString catalogFilename = GetCatalogFilename( );
-                    m_generatorData.LoadCatalogData(catalogFilename);
-
-                    wxString albumFilename = GetAlbumFilename( );
-                    m_generatorData.LoadAlbumData( albumFilename );
                 }
             }
         }
@@ -146,6 +141,13 @@ namespace Utils {
             return false;
         }
         LoadAttributes( projectRoot );
+        
+        wxString catalogFilename = GetCatalogFilename( );
+        m_generatorData.LoadCatalogData(catalogFilename);
+
+        wxString albumFilename = GetAlbumFilename( );
+        m_generatorData.LoadAlbumData( albumFilename );
+
         return true;
     }
 

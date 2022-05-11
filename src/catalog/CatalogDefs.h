@@ -161,6 +161,8 @@ class CatalogData;
         CC_NbrTypes
     } CatalogCodeTypes;
 
+    extern const wxString CC_CatalogCodeNames[ CC_NbrTypes ];
+    
     /**
      * @enum PeriodType
      * @brief Enum defining the status of a given stamp.
@@ -168,8 +170,8 @@ class CatalogData;
      **************************************************/
     typedef enum
     {
-        ST_Checked = 0,
-        ST_Unchecked,
+        ST_Unchecked = 0,
+        ST_Checked,
         ST_NbrTypes
     } StatusType;
 

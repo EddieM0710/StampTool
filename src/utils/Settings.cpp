@@ -218,6 +218,26 @@ namespace Utils {
         }
     }
 
+    void Settings::SetDefaults()
+    {
+
+        if (m_sortOrder.Count() <= 0 )
+        {
+            m_sortOrder.Add( Catalog::NT_Period );
+            m_sortOrder.Add( Catalog::NT_Decade );
+            m_sortOrder.Add( Catalog::NT_Year );
+            m_sortOrder.Add( Catalog::NT_Emission );
+        }
+        if ( m_lowerDivision.IsEmpty() ) m_lowerDivision = "1950";
+        if ( m_upperDivision.IsEmpty() )m_upperDivision = "2000";
+        if ( m_lowerPeriod.IsEmpty() ) m_lowerPeriod = "Antique";
+        if ( m_middlePeriod.IsEmpty() ) m_middlePeriod = "Classical";
+        if ( m_upperPeriod.IsEmpty() ) m_upperPeriod = "Modern";
+        if ( m_countryID.IsEmpty() ) m_countryID = "US";
+        if ( m_catalogID.IsEmpty() ) m_catalogID = "SN";
+
+        if ( m_nbrRecentPreference <= 0 ) m_nbrRecentPreference = 0;;
+    }
     void Settings::Load( )
     {
         wxFileName* filename
@@ -236,17 +256,8 @@ namespace Utils {
             SetCatalogID( "" );
             SetCountryID( "" );
 
-            wxArrayInt* sortOrderArray = GetSortOrder( );
-            sortOrderArray->Add( Catalog::NT_Period );
-            sortOrderArray->Add( Catalog::NT_Decade );
-            sortOrderArray->Add( Catalog::NT_Year );
-            sortOrderArray->Add( Catalog::NT_Emission );
-            SetLowerDivision( "1950" );
-            SetUpperDivision( "2000" );
-            SetLowerPeriod( "Antique" );
-            SetMiddlePeriod( "Classical" );
-            SetUpperPeriod( "Modern" );
-            //  SetImageDirectory( "" );
+            SetDefaults();
+
             SetLastFile( "" );
             SetNbrRecentPreference( 4 );
 
@@ -341,6 +352,6 @@ namespace Utils {
 
         SetSettingValue( str, root, "LoadLastFileAtStartUp", "true" );
         m_loadLastFileAtStartUp = String2Bool( str );
-
+        SetDefaults();  
     }
 }

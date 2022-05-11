@@ -182,12 +182,15 @@ namespace Layout {
             if ( treeCtrl )
             {
                 Layout::LayoutNode* node = treeCtrl->GetSelectedNode( );
-                for ( AlbumNodeList::iterator it = node->BeginAlbumNodeList(); it != node->EndAlbumNodeList(); ++it )
+                if ( node )
                 {
-                    LayoutNode* child = ( LayoutNode* )( *it );
-                    if ( child->GetNodeType() == AT_Page )
+                    for ( AlbumNodeList::iterator it = node->BeginAlbumNodeList(); it != node->EndAlbumNodeList(); ++it )
                     {
-                        return child;
+                        LayoutNode* child = ( LayoutNode* )( *it );
+                        if ( child->GetNodeType() == AT_Page )
+                        {
+                            return child;
+                        }
                     }
                 }
             }

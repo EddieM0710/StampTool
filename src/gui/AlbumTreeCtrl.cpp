@@ -51,9 +51,9 @@
 #include "gui/StampDetailsDialog.h"
 #include "gui/IconDefs.h"
 
-/*
- * AlbumGenFrame type definition
- */
+ /*
+  * AlbumGenFrame type definition
+  */
 
 IMPLEMENT_CLASS( AlbumTreeCtrl, wxTreeCtrl );
 
@@ -240,31 +240,37 @@ Layout::Stamp* AlbumTreeCtrl::AddStamp( Layout::AlbumNode* node )
 Utils::StampLink* AlbumTreeCtrl::AppendStamp( wxTreeItemId catID )
 {
     wxTreeItemId currAlbumID = GetSelection( );
-    AlbumTreeItemData* data = ( AlbumTreeItemData* )GetItemData( currAlbumID );
-    Layout::AlbumNodeType type = data->GetType( );
-    if ( type == Layout::AT_Stamp || type == Layout::AT_Title )
+    if ( currAlbumID.IsOk( ) && catID.IsOk() )
     {
-        currAlbumID = GetItemParent( currAlbumID );
+        AlbumTreeItemData* data = ( AlbumTreeItemData* )GetItemData( currAlbumID );
+        Layout::AlbumNodeType type = data->GetType( );
+        if ( type == Layout::AT_Stamp || type == Layout::AT_Title )
+        {
+            currAlbumID = GetItemParent( currAlbumID );
+        }
+        data = ( AlbumTreeItemData* )GetItemData( currAlbumID );
+        Layout::AlbumNode* node = data->GetNodeElement( );
+        Layout::Stamp* newStamp = AddStamp( node );
+        if ( newStamp )
+        {
+            wxTreeItemId newStampID = newStamp->GetTreeItemId( );
+            wxXmlNode* catNode = ( ( CatalogDataTreeItemData* )GetCatalogTreeCtrl( )->GetItemData( catID ) )->GetNodeElement( );
+            wxString idText = catNode->GetAttribute( Catalog::DT_XMLDataNames[ Catalog::DT_ID_Nbr ] );
+            SetItemText( newStampID, idText );
+            newStamp->SetAttrStr( Layout::AT_ID, idText );
+            newStamp->SetAttrStr( Layout::AT_Name, catNode->GetAttribute( Catalog::DT_XMLDataNames[ Catalog::DT_Name ] ) );
+            newStamp->SetAttrStr( Layout::AT_Height, catNode->GetAttribute( Catalog::DT_XMLDataNames[ Catalog::DT_Height ] ) );
+            newStamp->SetAttrStr( Layout::AT_Width, catNode->GetAttribute( Catalog::DT_XMLDataNames[ Catalog::DT_Width ] ) );
+
+            Utils::StampList& stampList = GetGeneratorData( )->GetStampAlbumCatalogLink( );
+            Utils::StampLink* newLink = stampList.AddStamp( newStamp );
+            wxTreeItemId albumID = newStamp->GetTreeItemId( );
+            newLink->SetAlbumTreeID( albumID );
+            newLink->SetCatTreeID( catID );
+            Layout::AlbumNodeStatus status = newStamp->ValidateNode( );
+            SetItemBackgroundColour( albumID, ItemBackgroundColour[ status ] );
+        }
     }
-    data = ( AlbumTreeItemData* )GetItemData( currAlbumID );
-    Layout::AlbumNode* node = data->GetNodeElement( );
-    Layout::Stamp* newStamp = AddStamp( node );
-    wxTreeItemId newStampID = newStamp->GetTreeItemId();
-    wxXmlNode* catNode = ((CatalogDataTreeItemData*)GetCatalogTreeCtrl()->GetItemData(catID))->GetNodeElement();
-    wxString idText = catNode->GetAttribute(Catalog::DT_XMLDataNames[Catalog::DT_ID_Nbr]);
-    SetItemText(newStampID, idText );
-    newStamp->SetAttrStr(Layout::AT_ID, idText);
-    newStamp->SetAttrStr(Layout::AT_Name, catNode->GetAttribute(Catalog::DT_XMLDataNames[Catalog::DT_Name]));
-    newStamp->SetAttrStr(Layout::AT_Height, catNode->GetAttribute(Catalog::DT_XMLDataNames[Catalog::DT_Height]));
-    newStamp->SetAttrStr(Layout::AT_Width, catNode->GetAttribute(Catalog::DT_XMLDataNames[Catalog::DT_Width]));
- 
-    Utils::StampList& stampList = GetGeneratorData( )->GetStampAlbumCatalogLink( );
-    Utils::StampLink* newLink = stampList.AddStamp( newStamp );
-    wxTreeItemId albumID = newStamp->GetTreeItemId( );
-    newLink->SetAlbumTreeID( albumID );
-    newLink->SetCatTreeID( catID );
-    Layout::AlbumNodeStatus status = newStamp->ValidateNode( );
-    SetItemBackgroundColour( albumID, ItemBackgroundColour[ status ] );
 }
 
 
@@ -280,23 +286,23 @@ void AlbumTreeCtrl::CreateImageList( )
 //******************************************************
 void AlbumTreeCtrl::CreateStateImageList( bool del )
 {
-    AssignStateImageList( CreateAlbumStateImageList(  del ) );
+    AssignStateImageList( CreateAlbumStateImageList( del ) );
 }
 
 //******************************************************
-Layout::AlbumNode* AlbumTreeCtrl::GetStampNode(wxTreeItemId itemID)
+Layout::AlbumNode* AlbumTreeCtrl::GetStampNode( wxTreeItemId itemID )
 {
     AlbumTreeItemData* data = ( AlbumTreeItemData* )GetItemData( itemID );
-    Layout::AlbumNode* child = data->GetNodeElement();
+    Layout::AlbumNode* child = data->GetNodeElement( );
 }
-void AlbumTreeCtrl::DeleteItem( wxTreeItemId childID) 
+void AlbumTreeCtrl::DeleteItem( wxTreeItemId childID )
 {
-    wxTreeItemId parentID = GetItemParent(childID);
-    Layout::AlbumNode* child = GetStampNode(childID);
-    Layout::AlbumNode* parent = child->GetParent();
+    wxTreeItemId parentID = GetItemParent( childID );
+    Layout::AlbumNode* child = GetStampNode( childID );
+    Layout::AlbumNode* parent = child->GetParent( );
 
-    parent->DeleteChild(child);
-    this->DeleteChildren(childID);
+    parent->DeleteChild( child );
+    this->DeleteChildren( childID );
 }
 
 
@@ -735,7 +741,7 @@ void AlbumTreeCtrl::Validate( wxTreeItemId id )
 {
     if ( id.IsOk( ) )
     {
-        Layout::AlbumNode* node = GetStampNode( id);
+        Layout::AlbumNode* node = GetStampNode( id );
         Layout::AlbumNodeStatus status = node->ValidateNode( );
         SetItemBackgroundColour( id, ItemBackgroundColour[ status ] );
         SetValidateStatus( status );

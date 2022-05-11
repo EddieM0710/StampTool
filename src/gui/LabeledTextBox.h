@@ -160,6 +160,10 @@ public:
   };
   bool IsModified( ) { return m_value->IsModified( ); };
 
+  inline void SetLabel( wxString label ) 
+  {
+      m_label->SetLabel( label );
+  };
 
  private:
 

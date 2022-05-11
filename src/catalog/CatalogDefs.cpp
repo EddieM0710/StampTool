@@ -140,6 +140,9 @@ namespace Catalog {
         "Specimen" , 
         "CatalogCode"};
 
+const wxString CC_CatalogCodeNames[ CC_NbrTypes ]
+= { wxT( "ID" ), wxT( "Country" ), wxT( "Catalog" ), };
+
     void InitCatalogDefs( )
     {
 
@@ -158,9 +161,6 @@ namespace Catalog {
         = { wxT( "Type" ), wxT( "Condition" ), wxT( "Value" ), wxT( "Location" ),
             wxT( "Remarks" ) };
 
-
-    const wxString CC_CatalogCodeNames[ CC_NbrTypes ]
-        = { wxT( "ID" ), wxT( "Country" ), wxT( "Catalog" ), };
 
 
     CatalogNodeType FindCatalogNodeType( wxString name )

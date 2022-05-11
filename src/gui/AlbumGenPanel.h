@@ -31,6 +31,7 @@
 class CatalogPanel;
 class wxNotebook;
 class wxFlexGridSizer;
+class DescriptionPanel;
 //class AlbumGenDialog;
 
 //namespace Catalog { class Stamp;}
@@ -173,6 +174,7 @@ class AlbumGenPanel : public wxPanel
 //    Catalog::Stamp* m_stamp;
     wxTreeItemId m_currentItem;
     AlbumSplitterWindow* m_albumSplitterWindow;
+    DescriptionPanel* m_descriptionPanel;
 };
 
 #endif

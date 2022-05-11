@@ -20,8 +20,15 @@ add_library( GuiFiles SHARED
     AlbumImagePanel.cpp 
     CatalogPanel.cpp 
     CatalogTreeCtrl.cpp
+    CatalogCodePanel.cpp 
+    CharacteristicsPanel.cpp 
+    IdentificationPanel.cpp
+    ImagePanel.cpp
+    InventoryPanel.cpp
+    MiscellaneousDataPanel.cpp
     SortOrderDialog.cpp
     DefinePeriodsDialog.cpp
+    DescriptionPanel.cpp 
     IconDefs.cpp
     GeneratorData.cpp
     LabeledTextBox.cpp

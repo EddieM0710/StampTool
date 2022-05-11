@@ -46,46 +46,47 @@
 #include "gui/CatalogTreeCtrl.h"
 #include "utils/XMLUtilities.h"
 #include "gui/AlbumTreeCtrl.h"
+#include "gui/DescriptionPanel.h"
 
-// #include "art/StampBlack.xpm"
-// #include "art/StampBlue.xpm"
-// #include "art/StampBrown.xpm"
-// #include "art/StampGreen.xpm"
-// #include "art/StampPurple.xpm"
-// #include "art/StampRed.xpm"
-// #include "art/StampYellow.xpm"
+ // #include "art/StampBlack.xpm"
+ // #include "art/StampBlue.xpm"
+ // #include "art/StampBrown.xpm"
+ // #include "art/StampGreen.xpm"
+ // #include "art/StampPurple.xpm"
+ // #include "art/StampRed.xpm"
+ // #include "art/StampYellow.xpm"
 
-// #include "art/StampBlackBlock.xpm"
-// #include "art/StampBlueBlock.xpm"
-// #include "art/StampBrownBlock.xpm"
-// #include "art/StampGreenBlock.xpm"
-// #include "art/StampPurpleBlock.xpm"
-// #include "art/StampRedBlock.xpm"
-// #include "art/StampYellowBlock.xpm"
+ // #include "art/StampBlackBlock.xpm"
+ // #include "art/StampBlueBlock.xpm"
+ // #include "art/StampBrownBlock.xpm"
+ // #include "art/StampGreenBlock.xpm"
+ // #include "art/StampPurpleBlock.xpm"
+ // #include "art/StampRedBlock.xpm"
+ // #include "art/StampYellowBlock.xpm"
 
-// #include "art/StampBlackMiniSheet.xpm"
-// #include "art/StampBlueMiniSheet.xpm"
-// #include "art/StampBrownMiniSheet.xpm"
-// #include "art/StampGreenMiniSheet.xpm"
-// #include "art/StampPurpleMiniSheet.xpm"
-// #include "art/StampRedMiniSheet.xpm"
-// #include "art/StampYellowMiniSheet.xpm"
+ // #include "art/StampBlackMiniSheet.xpm"
+ // #include "art/StampBlueMiniSheet.xpm"
+ // #include "art/StampBrownMiniSheet.xpm"
+ // #include "art/StampGreenMiniSheet.xpm"
+ // #include "art/StampPurpleMiniSheet.xpm"
+ // #include "art/StampRedMiniSheet.xpm"
+ // #include "art/StampYellowMiniSheet.xpm"
 
-// #include "art/StampBlackSouvenirSheet.xpm"
-// #include "art/StampBlueSouvenirSheet.xpm"
-// #include "art/StampBrownSouvenirSheet.xpm"
-// #include "art/StampGreenSouvenirSheet.xpm"
-// #include "art/StampPurpleSouvenirSheet.xpm"
-// #include "art/StampRedSouvenirSheet.xpm"
-// #include "art/StampYellowSouvenirSheet.xpm"
-// #include "art/folder.xpm"
+ // #include "art/StampBlackSouvenirSheet.xpm"
+ // #include "art/StampBlueSouvenirSheet.xpm"
+ // #include "art/StampBrownSouvenirSheet.xpm"
+ // #include "art/StampGreenSouvenirSheet.xpm"
+ // #include "art/StampPurpleSouvenirSheet.xpm"
+ // #include "art/StampRedSouvenirSheet.xpm"
+ // #include "art/StampYellowSouvenirSheet.xpm"
+ // #include "art/folder.xpm"
 
-// #include "art/unchecked.xpm"
-// #include "art/checked.xpm"
+ // #include "art/unchecked.xpm"
+ // #include "art/checked.xpm"
 
-/*
- * AlbumGenFrame type definition
- */
+ /*
+  * AlbumGenFrame type definition
+  */
 
 IMPLEMENT_CLASS( CatalogTreeCtrl, wxTreeCtrl );
 
@@ -118,17 +119,17 @@ CatalogTreeCtrl::CatalogTreeCtrl( wxWindow* parent, const wxWindowID id,
     m_reverseSort = true;
 
     CreateImageList( );
-    CreateStateImageList(false);
+    CreateStateImageList( false );
 
 }
 
 void CatalogTreeCtrl::CreateImageList( )
 {
-    AssignImageList( CreateCatalogImageList() );
+    AssignImageList( CreateCatalogImageList( ) );
 }
-void CatalogTreeCtrl::CreateStateImageList(bool del)
+void CatalogTreeCtrl::CreateStateImageList( bool del )
 {
-    AssignStateImageList(CreateCatalogStateImageList( del) );
+    AssignStateImageList( CreateCatalogStateImageList( del ) );
 }
 
 int CatalogTreeCtrl::OnCompareItems( const wxTreeItemId& item1,
@@ -164,70 +165,65 @@ int CatalogTreeCtrl::OnCompareItems( const wxTreeItemId& item1,
 
 void CatalogTreeCtrl::AppendAlbumStamp( wxTreeItemId itemId )
 {
-    Utils::StampLink* link = GetAlbumTreeCtrl()->AppendStamp( itemId );
+    Utils::StampLink* link = GetAlbumTreeCtrl( )->AppendStamp( itemId );
     if ( link )
     {
-        wxXmlNode* element = GetStampNode( itemId);
+        wxXmlNode* element = GetStampNode( itemId );
         link->SetCatStamp( element );
         link->SetCatTreeID( itemId );
     }
 }
 
-wxXmlNode* CatalogTreeCtrl::GetStampNode(wxTreeItemId itemId)
+wxXmlNode* CatalogTreeCtrl::GetStampNode( wxTreeItemId itemId )
 {
-        CatalogDataTreeItemData* data = ( CatalogDataTreeItemData* )GetItemData( itemId );
-        wxXmlNode* element = data->GetNodeElement();
+    CatalogDataTreeItemData* data = ( CatalogDataTreeItemData* )GetItemData( itemId );
+    wxXmlNode* element = data->GetNodeElement( );
 }
 
-wxString CatalogTreeCtrl::GetStampID(wxTreeItemId itemId)
+wxString CatalogTreeCtrl::GetStampID( wxTreeItemId itemId )
 {
-    wxXmlNode* element = GetStampNode( itemId);
-    return element->GetAttribute(Catalog::DT_XMLDataNames[Catalog::DT_ID_Nbr]);
+    wxXmlNode* element = GetStampNode( itemId );
+    return element->GetAttribute( Catalog::DT_XMLDataNames[ Catalog::DT_ID_Nbr ] );
 }
 
-Utils::StampLink* CatalogTreeCtrl::GetStampLink(wxTreeItemId itemId)
+Utils::StampLink* CatalogTreeCtrl::GetStampLink( wxTreeItemId itemId )
 {
-    wxString id = GetStampID( itemId);
-    Utils::StampList& stampList = GetGeneratorData()->GetStampAlbumCatalogLink();
+    wxString id = GetStampID( itemId );
+    Utils::StampList& stampList = GetGeneratorData( )->GetStampAlbumCatalogLink( );
     Utils::StampLink* stampLink = stampList.GetStampLink( id );
     return stampLink;
 }
 
-void CatalogTreeCtrl::DeleteAlbumStamp(wxTreeItemId itemId)
+void CatalogTreeCtrl::DeleteAlbumStamp( wxTreeItemId itemId )
 {
-    Utils::StampLink* stampLink = GetStampLink( itemId);
+    Utils::StampLink* stampLink = GetStampLink( itemId );
     if ( stampLink )
     {
-        wxTreeItemId itemID = stampLink->GetAlbumtTreeID();
-        if ( itemID.IsOk() ) GetAlbumTreeCtrl()->DeleteItem( itemID );
+        wxTreeItemId itemID = stampLink->GetAlbumtTreeID( );
+        if ( itemID.IsOk( ) ) GetAlbumTreeCtrl( )->DeleteItem( itemID );
     }
 }
 
 void CatalogTreeCtrl::SetNextState( const wxTreeItemId& itemId )
 {
+
     wxXmlNode* element = GetStampNode( itemId );
     Catalog::Stamp* stamp = new Catalog::Stamp( element );
     if ( stamp->IsOK( ) )
     {
-        int status = stamp->GetStatusType( );
-        status++;
-        if ( status >= Catalog::ST_NbrTypes )
-        {
-            status = 0;
-        }
-        stamp->SetStatusType( ( Catalog::StatusType )status );
-        wxGetApp( ).GetFrame( )->UpdateStatus( );
         SetItemState( itemId, wxTREE_ITEMSTATE_NEXT );
-        int state = GetItemState(itemId);
-        if( state )
+        int state = GetItemState( itemId );
+        stamp->SetStatusType( ( Catalog::StatusType )state );
+        wxGetApp( ).GetFrame( )->UpdateStatus( );
+        if ( state )
         {
-            AppendAlbumStamp(itemId);
+            AppendAlbumStamp( itemId );
         }
         else
         {
-            DeleteAlbumStamp(itemId);
+            DeleteAlbumStamp( itemId );
         }
-   }
+    }
 }
 
 IconID CatalogTreeCtrl::GetIconId( Catalog::Stamp* stamp )
@@ -256,7 +252,7 @@ void CatalogTreeCtrl::LogEvent( const wxString& name, const wxTreeEvent& event )
     wxTreeItemId item = event.GetItem( );
     wxString text;
     if ( item.IsOk( ) )
-        text << '"' << GetItemText( item )  << '"';
+        text << '"' << GetItemText( item ) << '"';
     else
         text = "invalid item";
 }
@@ -318,8 +314,8 @@ void CatalogTreeCtrl::OnSelChanged( wxTreeEvent& event )
 {
     wxTreeItemId itemId = event.GetItem( );
     wxXmlNode* stamp = GetStampNode( itemId );
-//    wxGetApp( ).GetFrame( )->SetStamp( stamp );
-
+    //    wxGetApp( ).GetFrame( )->SetStamp( stamp );
+    GetGeneratorData( )->GetDescriptionPanel()->SetStamp(stamp);
     event.Skip( );
 }
 
@@ -388,7 +384,7 @@ void CatalogTreeCtrl::ShowMenu( wxTreeItemId id, const wxPoint& pt )
     {
     case CatalogDataTree_StructureStamps:
     {
-        wxXmlNode* stamp =GetStampNode( id );
+        wxXmlNode* stamp = GetStampNode( id );
         StructureStamp( stamp );
         ReSortTree( );
 
@@ -431,7 +427,7 @@ wxTreeItemId CatalogTreeCtrl::AddChild( wxTreeItemId parent, wxXmlNode* child )
     IconID icon;
 
     //if the child element is not a stamp
-    if ( !name.Cmp( Catalog::CatalogNodeNames[Catalog:: NT_Stamp ] ) )
+    if ( !name.Cmp( Catalog::CatalogNodeNames[ Catalog::NT_Stamp ] ) )
     {
         // then we add the appropriate icon and label
         Catalog::Stamp stamp( child );
@@ -444,7 +440,7 @@ wxTreeItemId CatalogTreeCtrl::AddChild( wxTreeItemId parent, wxXmlNode* child )
         // if it is a specimen or catalog code return because 
         // they don't go in the tree.
         if ( ( nodeType == Catalog::NT_Specimen )
-        || ( nodeType == Catalog::NT_CatalogCode ) )
+            || ( nodeType == Catalog::NT_CatalogCode ) )
         {
             return 0;
         }
@@ -453,11 +449,11 @@ wxTreeItemId CatalogTreeCtrl::AddChild( wxTreeItemId parent, wxXmlNode* child )
             //otherwise get the label
             const wxXmlAttribute* attr = Utils::GetAttribute( child, "Name" );
             label = attr->GetValue( );
-            icon = Icon_Folder;        
+            icon = Icon_Folder;
         }
     }
 
- 
+
     // create the item data and add it to the tree
     CatalogDataTreeItemData* itemData
         = new CatalogDataTreeItemData( nodeType, label, child );
@@ -469,20 +465,22 @@ wxTreeItemId CatalogTreeCtrl::AddChild( wxTreeItemId parent, wxXmlNode* child )
         Utils::StampLink* stampLink = GetStampLink( childID );
         if ( stampLink )
         {
-            stampLink->SetCatStamp(child); 
+            stampLink->SetCatStamp( child );
             stampLink->SetCatTreeID( childID );
-            SetItemState(childID, 1);  
+            SetItemState( childID, Catalog::ST_Checked );
+            Catalog::Stamp stamp(child);
+            stamp.SetStatus( Catalog::ST_StatusStrings[Catalog::ST_Checked]);
         }
-        else 
+        else
         {
-            SetItemState(childID, 0);  
+            SetItemState( childID, Catalog::ST_Unchecked );
         }
     }
     else
-    { 
+    {
         // not a stamp just add the appropriate image
         SetItemImage( childID, Icon_Folder );
-        SetItemState(childID, wxTREE_ITEMSTATE_NEXT);   
+        SetItemState( childID, wxTREE_ITEMSTATE_NEXT );
     }
 
     // now do it all again for this stamps children
@@ -523,7 +521,7 @@ void CatalogTreeCtrl::ReSortTree( )
     DeleteAllItems( );
 
     wxXmlDocument* newDoc = new wxXmlDocument( );
-    wxXmlNode* newRoot = newDoc->GetRoot();
+    wxXmlNode* newRoot = newDoc->GetRoot( );
     if ( !newRoot )
     {
         newRoot = Utils::NewNode( newDoc, Catalog::CatalogNodeNames[ Catalog::NT_Catalog ] );
@@ -534,17 +532,17 @@ void CatalogTreeCtrl::ReSortTree( )
     wxXmlDocument* doc = catalogData->GetDoc( );
     wxXmlNode* root = doc->GetRoot( );
 
-    wxXmlAttribute* attr = Utils::GetAttribute( root, Catalog::DT_DataNames[Catalog::DT_Name] );
-    if ( attr ){
+    wxXmlAttribute* attr = Utils::GetAttribute( root, Catalog::DT_DataNames[ Catalog::DT_Name ] );
+    if ( attr ) {
         wxString name = attr->GetName( );
         wxString value = attr->GetValue( );
         Utils::SetAttrStr( newRoot, name, value );
     }
     else
     {
-        Utils::SetAttrStr( newRoot, Catalog::DT_DataNames[Catalog::DT_Name], "" );
+        Utils::SetAttrStr( newRoot, Catalog::DT_DataNames[ Catalog::DT_Name ], "" );
     }
-   
+
     Catalog::SortData( newRoot, root );
     GetCatalogData( )->ReplaceDocument( newDoc );
     LoadTree( );
@@ -554,7 +552,7 @@ void CatalogTreeCtrl::ReSortTree( )
 void CatalogTreeCtrl::LoadTree( )
 {
     wxXmlDocument* stampDoc = GetCatalogData( )->GetDoc( );
- //   XMLDump( stampDoc );
+    //   XMLDump( stampDoc );
     wxXmlNode* catalogData = stampDoc->GetRoot( );
     wxString name = catalogData->GetName( );
     // Create the root item
@@ -602,7 +600,7 @@ void CatalogTreeCtrl::StructureStamp( wxXmlNode* catalogData )
     StructureCatalogData( catalogData, Catalog::FT_Booklet_Pane, Catalog::FT_Stamp, Catalog::FT_Se_tenant );
     StructureCatalogData( catalogData, Catalog::FT_Mini_Sheet, Catalog::FT_Stamp, Catalog::FT_Se_tenant );
     StructureCatalogData( catalogData, Catalog::FT_Souvenir_Sheet, Catalog::FT_Stamp, Catalog::FT_Se_tenant );
-    StructureCatalogData( catalogData, Catalog::FT_Mini_Sheet, Catalog::FT_Stamp,Catalog:: FT_Se_tenant );
+    StructureCatalogData( catalogData, Catalog::FT_Mini_Sheet, Catalog::FT_Stamp, Catalog::FT_Se_tenant );
     StructureCatalogData( catalogData, Catalog::FT_Booklet, Catalog::FT_Stamp, Catalog::FT_Booklet_Pane );
     SortTree( GetRootItem( ) );
 }
@@ -666,13 +664,13 @@ void CatalogTreeCtrl::StructureCatalogData( wxXmlNode* catalogData,
                         && !series.Cmp( parentSeries ) )
                     {
                         count++;
-                        wxXmlNode* currParent = child->GetParent();
-                        if (currParent )
+                        wxXmlNode* currParent = child->GetParent( );
+                        if ( currParent )
                         {
-                            currParent->RemoveChild(child);
+                            currParent->RemoveChild( child );
                         }
                         parentTypeElement->AddChild( child );
-                        
+
 
                         // this is a hack so the loop doesn't start at the beginning
                         // next time.
@@ -700,7 +698,7 @@ bool CatalogTreeCtrl::IsElement( wxTreeItemId item, wxString stampID )
 {
     CatalogDataTreeItemData* data = ( CatalogDataTreeItemData* )GetItemData( item );
     wxXmlNode* dataEle = data->GetNodeElement( );
-    wxString id = dataEle->GetAttribute(Catalog::DT_XMLDataNames[Catalog::DT_ID_Nbr]);
+    wxString id = dataEle->GetAttribute( Catalog::DT_XMLDataNames[ Catalog::DT_ID_Nbr ] );
     if ( stampID.Cmp( id ) )
     {
         return false;
@@ -791,4 +789,55 @@ wxTreeItemId CatalogTreeCtrl::FindFirstStampChild( wxTreeItemId id )
         child = GetNextChild( child, cookie );
     }
     return 0;
+}
+
+void CatalogTreeCtrl::SetStates( bool enable )
+{
+    wxTreeItemId id = GetRootItem( );
+    if ( id.IsOk( ) && enable )
+    {
+        EnableState( id );
+    }
+    else
+    {
+        DisableState( id );
+    }
+}
+
+void CatalogTreeCtrl::EnableState( wxTreeItemId id )
+{
+    CatalogDataTreeItemData* data = ( CatalogDataTreeItemData* )GetItemData( id );
+    if ( data->GetType( ) == Catalog::NT_Stamp )
+    {
+        wxXmlNode* node = data->GetNodeElement( );
+        wxString status = node->GetAttribute( Catalog::DT_XMLDataNames[ Catalog::DT_Status ] );
+        if ( status.Cmp( Catalog::ST_StatusStrings[ Catalog::ST_Checked ] ) )
+        {
+            SetItemState( id, Catalog::ST_Unchecked );
+        }
+        else
+        {
+            SetItemState( id, Catalog::ST_Checked );
+        }
+    }
+
+    wxTreeItemIdValue cookie;
+    wxTreeItemId child = GetFirstChild( id, cookie );
+    while ( child.IsOk( ) )
+    {
+        EnableState( child );
+        child = GetNextChild( id, cookie );
+    }
+}
+
+void CatalogTreeCtrl::DisableState( wxTreeItemId id )
+{
+    SetItemState( id, wxTREE_ITEMSTATE_NONE );
+    wxTreeItemIdValue cookie;
+    wxTreeItemId child = GetFirstChild( id, cookie );
+    while ( child.IsOk( ) )
+    {
+        DisableState( child );
+        child = GetNextChild( id, cookie );
+    }
 }

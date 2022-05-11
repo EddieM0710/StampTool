@@ -29,8 +29,8 @@
 
 #include "gui/CatalogPanel.h"
 
-
-
+#include "gui/DescriptionPanel.h"
+#include "gui/CatalogTreeCtrl.h"
 /*
  * IdentificationPanel type definition
  */
@@ -147,11 +147,20 @@ void AlbumGenPanel::CreateControls( )
    // m_albumSplitterWindow->SetSashPosition( 80 );
 
     m_notebook->AddPage( m_albumSplitterWindow, _( "Album" ) );
-  
+
+     m_descriptionPanel = new DescriptionPanel(
+        m_notebook, ID_DESCRIPTIONPANELFOREIGN, wxDefaultPosition,
+        wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
+    m_descriptionPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
+
+    m_notebook->AddPage( m_descriptionPanel, _( "Stamp" ) ); 
     itemSplitterWindow3->SplitVertically( m_mngCatalogData, m_notebook, 300 );
     itemBoxSizer2->Add( itemSplitterWindow3, 1, wxGROW | wxALL, 0 );
 
     // AlbumGenPanel content construction
+
+    GetGeneratorData( )->SetDescriptionPanel(m_descriptionPanel);
+
  }
 
 /*
@@ -200,6 +209,17 @@ void AlbumGenPanel::UpdateStatus( )
 
 void AlbumGenPanel::OnNotebookPageChanged( wxNotebookEvent& event )
 {
+    int sel = event.GetOldSelection();
+    wxWindow* oldPage = m_notebook->GetPage( sel );
+    if ( oldPage == m_descriptionPanel )
+    {
+        GetCatalogTreeCtrl()->SetStates(true);
+    }
+    else
+    {
+        GetCatalogTreeCtrl()->SetStates(false);
+    }
+
     // wxEVT_COMMAND_NOTEBOOK_PAGE_CHANGED event handler for ID_NOTEBOOK
    //in AlbumGenPanel.
    // Before editing this code, remove the block markers.

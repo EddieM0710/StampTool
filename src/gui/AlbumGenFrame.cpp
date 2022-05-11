@@ -173,7 +173,7 @@ void AlbumGenFrame::CreateControls( )
 
     wxMenuBar* menuBar = new wxMenuBar;
     m_fileMenu = new wxMenu;
-    m_fileMenu->Append( wxID_OPEN, _( "Open Data File" ), wxEmptyString, wxITEM_NORMAL );
+    m_fileMenu->Append( wxID_OPEN, _( "Open Project File" ), wxEmptyString, wxITEM_NORMAL );
     m_fileMenu->Append( wxID_SAVE, _( "Save Data File" ), wxEmptyString, wxITEM_NORMAL );
     m_fileMenu->Append( wxID_SAVEAS, _( "Save As" ), wxEmptyString, wxITEM_NORMAL );
     m_fileMenu->AppendSeparator( );
@@ -516,9 +516,9 @@ void AlbumGenFrame::Open( )
     wxFileName lastFile( GetSettings( )->GetLastFile( ) );
     lastFile.SetExt( "xml" );
     wxFileDialog openFileDialog(
-        this, _( "Open Stamp List XML file" ),
+        this, _( "Open Project XML file" ),
         lastFile.GetPath( ), lastFile.GetFullName( ),
-        "XML files (*.xml)|*.xml", wxFD_OPEN | wxFD_FILE_MUST_EXIST );
+        "Project XML files (*.prj.xml)|*.prj.xml", wxFD_OPEN | wxFD_FILE_MUST_EXIST );
     if ( openFileDialog.ShowModal( ) == wxID_CANCEL )
     {
         return; // the user changed idea...
@@ -534,6 +534,12 @@ void AlbumGenFrame::Open( )
         return;
     }
 
+    GetProject()->LoadProject( filename );
+    
+    m_albumPanel->LoadAlbumLayout( );
+
+    m_catalogPanel->InitCatalogData( );
+    m_catalogPanel->LoadCatalog( );
 
     // if ( mergeOverwriteQuery == MO_Overwrite )
     // {
@@ -1112,16 +1118,22 @@ void AlbumGenFrame::SetupRecentMenu( )
     }
     // then create all the new menuItems and bind them
     wxArrayString* recentList = GetSettings( )->GetRecentArray( );
+    int cnt = 0;
     for ( int i = 0; i < recentList->Count( ); i++ )
     {
         RecentListItem* listItem = new RecentListItem( );
         listItem->id = ID_RECENT + i + 1;
-        listItem->item = m_recentMenu->Append( listItem->id, recentList->Item( i ), wxEmptyString, wxITEM_NORMAL );
+        wxString item = recentList->Item( i );
+        if ( item.length() > 0)
+        {
+            cnt++;
+            listItem->item = m_recentMenu->Append( listItem->id, item, wxEmptyString, wxITEM_NORMAL );
 
-        Bind( wxEVT_MENU, &AlbumGenFrame::DoRecentSelection, this, listItem->id );
-        m_menuItemList.push_back( listItem );
+            Bind( wxEVT_MENU, &AlbumGenFrame::DoRecentSelection, this, listItem->id );
+            m_menuItemList.push_back( listItem );
+        }
     }
-    if ( recentList->Count( ) > 0 )
+    if ( cnt > 0 )
     {
         m_fileMenu->Enable( ID_RECENT, true );
     }

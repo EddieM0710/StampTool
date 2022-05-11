@@ -44,8 +44,7 @@ namespace Utils {
 
 
         void SetConfigurationDirectory( wxString val ) { m_configurationDirectory = val; m_dirty = true; };
-        void SetWorkingDirectory( wxString dir ) { m_workingDirectory = dir;  m_dirty = true; };
-        void SetImageDirectory( wxString val ) { m_imageDirectory = val; m_dirty = true; };
+        void SetWorkingDirectory( wxString dir ) { m_workingDirectory = dir;  m_dirty = true; };        void SetImageDirectory( wxString val ) { m_imageDirectory = val; m_dirty = true; };
         void SetCatalogID( wxString val ) { m_catalogID = val;  m_dirty = true; };
         void SetCountryID( wxString val ) { m_countryID = val; m_dirty = true; };
         void SetLoadLastFileAtStartUp( bool state = true ) { m_loadLastFileAtStartUp = state; };
@@ -97,7 +96,10 @@ namespace Utils {
         void SetNbrRecentPreference( int val ) { m_nbrRecentPreference = val; m_dirty = true; };
         int GetNbrRecentPreference( ) { return m_nbrRecentPreference; };
         void SetDirty( bool state = true ) { m_dirty = state; };
-        bool isDirty( ) { return m_dirty; }
+        bool isDirty( ) { return m_dirty; };
+        void SetDefaults();
+
+
     private:
         wxString m_lastFile;
         bool m_loadLastFileAtStartUp;

@@ -1,0 +1,24 @@
+/* XPM */
+static const char *const folder_xpm[] = {
+/* columns rows colors chars-per-pixel */
+"16 16 2 1",
+"X c #AA0AAA",
+". c #00A000",
+/* pixels */
+"................",
+"................",
+".XXXX...........",
+".XXXX...........",
+".XXXXXXXXXX.....",
+".XXXXXXXXXX.....",
+"..XXXXXXXXXX....",
+"..XXXXXXXXXX....",
+"...XXXXXXXXXX...",
+"...XXXXXXXXXX...",
+"...XXXXXXXXXX...",
+"....XXXXXXXXXX..",
+"....XXXXXXXXXX..",
+".....XXXXXXXXXX.",
+".....XXXXXXXXXX.",
+"................"
+};

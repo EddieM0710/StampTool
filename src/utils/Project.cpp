@@ -12,6 +12,8 @@
 #include "design/AlbumBase.h"
 #include "gui/CatalogTreeCtrl.h"
 #include "gui/DesignTreeCtrl.h"
+#include "odt/ODTDefs.h"
+#include "odt/Document.h"
 
 
 namespace Utils {
@@ -43,7 +45,6 @@ namespace Utils {
     void Project::SetODTDocument( ODT::Document* doc )
     {
         m_ODTDoc = doc; SetDirty( );
-        ;
     };
 
     wxString Project::GetOutputFilename( )
@@ -166,7 +167,7 @@ namespace Utils {
 
         LoadDesignTree( );
         LoadCatalogTree( );
-
+        InitODTDocument( );
     }
 
     void Project::LoadCatalogData( )
@@ -218,6 +219,11 @@ namespace Utils {
             }
             attr = attr->GetNext( );
         }
+    }
+    void Project::InitODTDocument()
+    {
+        ODT::Document* odtDoc = new ODT::Document();
+        SetODTDocument( odtDoc );
     }
 
     void Project::Save( )

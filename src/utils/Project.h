@@ -44,6 +44,7 @@ namespace Utils {
 
         bool LoadProject(  );
         void LoadData();
+        void InitODTDocument();
 
         void LoadAttributes( wxXmlNode* thisObject );
         void Save(  );

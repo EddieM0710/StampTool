@@ -64,20 +64,19 @@ class AlbumBase;
 
         wxString GetAttrStr( wxString name );
         wxString GetAttrStr( AlbumAttrType type );  
+
         double GetAttrDbl( AlbumAttrType type );  
         double GetAttrDbl( wxString name );
+
         void SetAttrStr( wxString name, wxString val );
         void SetAttrStr( AlbumAttrType type, wxString val );
         double SetAttrDbl( AlbumAttrType type, double val) ; 
+        
         int GetNbrAttr( ) { return m_attrArray.size( ); };
         Attribute* AttributeItem( int ndx ) { return m_attrArray.at( ndx ); };
 
 
         int GetNbrChildren( );
-
-//        AlbumBase* FindFirstChild( wxString name );
-//        AlbumBase* ChildItem( int ndx ) { return m_layoutChildArray.at( ndx ); };
-//        AlbumBase* FindChild( wxString name );
 
         void SetObjectName( wxString name ) { m_objectName = name; }
         wxString GetObjectName( ) { return m_objectName; }
@@ -85,17 +84,12 @@ class AlbumBase;
         void SetObjectText( wxString text ) { m_text = text; }
         wxString GetObjectText( ) { return m_text; }
     
-//        ChildList::iterator BeginChildList(){return  std::begin( m_layoutChildArray );};
-//        ChildList::iterator EndChildList(){return  std::end( m_layoutChildArray );};
-
         virtual wxXmlNode* Write( wxXmlNode* parent ) = 0;
 
         void DeleteChild( AlbumBase* node );
-        //void AddChild( AlbumBase* node );
 
         AlbumBase* GetParent();
        bool HasChildren();
-        //void SetParent(AlbumBase* parent){m_parent = parent;};
 
         wxTreeItemId GetTreeItemId(){return m_treeID;};
         void SetTreeItemId(wxTreeItemId id){m_treeID = id;};
@@ -120,13 +114,13 @@ class AlbumBase;
         bool LoadChildren( wxXmlNode* parent );
 
         bool Load( wxXmlNode* thisObject );
+
         wxString m_objectName;
         int m_nodeType;
         int m_lineNbr;
-        //AlbumBase* m_parent;
         wxTreeItemId m_treeID;
+
         protected:
-        //ChildList m_layoutChildArray;
         LayoutAttributeArray m_attrArray;
         wxString m_text;
         NodeStatus m_nodeValid;

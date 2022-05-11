@@ -187,9 +187,16 @@ void AlbumImagePanel::DrawBitmap( )
     //album->GetAttrDbl( Design::AT_Width );
     //wxSize ppi = wxGetDisplayPPI();
     //
-    double width = album->GetAttrDbl( Design::AT_PageWidth )*Design::PpMM.x;
-    double height = album->GetAttrDbl( Design::AT_PageHeight )*Design::PpMM.y;
-    std::cout << width << "  " << height << "\n";
+    double width = album->GetAttrDbl( Design::AT_PageWidth );
+    double height = album->GetAttrDbl( Design::AT_PageHeight );
+
+    std::cout << "Bitmap MM " << width << "  " << height << "\n";
+  
+    width = width*Design::PpMM.x * 2;
+    height = height*Design::PpMM.y;
+    
+    std::cout << "Bitmap pixels " << width << "  " << height << "\n";
+
     wxBitmap* bitmap = new wxBitmap( width, height );
     m_bitmap = *bitmap;
     wxMemoryDC dc;
@@ -207,7 +214,7 @@ void AlbumImagePanel::DrawBitmap( )
     dc.SelectObject(wxNullBitmap);
     m_bitmap.SaveFile( "Test.jpg",wxBITMAP_TYPE_JPEG );
     //    m_bitmap = image;
-    m_zoom = .9;
+    m_zoom = .4;
 
     int w = bitmap->GetWidth( ) * 2;
     int h = bitmap->GetHeight( ) * 2;
@@ -227,11 +234,11 @@ void AlbumImagePanel::DrawBitmap( )
 
 void AlbumImagePanel::OnResize( wxCommandEvent& WXUNUSED( event ) )
 {
-    // wxImage img( m_bitmap.ConvertToImage( ) );
+    wxImage img( m_bitmap.ConvertToImage( ) );
 
-    // const wxSize size = GetClientSize( );
-    // img.Rescale( size.x, size.y, wxIMAGE_QUALITY_HIGH );
-    // m_bitmap = wxBitmap( img );
+    const wxSize size = GetClientSize( );
+    img.Rescale( size.x, size.y, wxIMAGE_QUALITY_HIGH );
+    m_bitmap = wxBitmap( img );
 }
 
 /*
@@ -257,7 +264,7 @@ void AlbumImagePanel::OnZoom( wxCommandEvent& event )
     else if ( event.GetId( ) == wxID_ZOOM_OUT )
         m_zoom /= 1.2;
     else // wxID_ZOOM_100
-        m_zoom = .9;
+        m_zoom = .4;
     Refresh( );
 }
 
@@ -290,26 +297,12 @@ void AlbumImagePanel::OnPaint( wxPaintEvent& event )
     dc.Clear( );
 
 
-    // const wxSize size = GetClientSize( );
-    // double scale = 1.;
-    // int width = 8.5*25.4;
-    // int height = 11*25.4;
+    int width = 8.5*25.4;
+    int height = 11*25.4;
 
 
-    // /* init scrolled area size, scrolling speed, etc. */
-    // SetScrollbars( 1, 1, width*2, height*2, 0, 0 );
-
-    // if ( size.x < width )
-    // {
-    //     scale = ( double )size.x / ( double )width;
-    // }
-    // if ( size.y < ( height * scale ) )
-    // {
-    //     scale = ( double )size.y / ( ( double )height * scale ) * scale;
-    // }
-
-    // //dc.SetUserScale( scale * m_zoom, scale * m_zoom );
-
+    /* init scrolled area size, scrolling speed, etc. */
+ //   SetScrollbars( 1, 1, width*2, height*2, 0, 0 );
 
     const wxSize size = GetClientSize( );
     double scale = 1.;

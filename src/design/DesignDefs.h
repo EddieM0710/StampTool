@@ -70,11 +70,15 @@ namespace Design {
         AT_ShowTitle,
         AT_ShowId,
         AT_ShowFrame,
+        AT_TopContentPadding,
+        AT_BottomContentPadding,
+        AT_LeftContentPadding,
+        AT_RightContentPadding,
         AT_NbrAttrTypes,
         AT_NOTYPE
     } AlbumAttrType;
 
-    extern const char* AttrNameStrings[ AT_NbrAttrTypes ];
+extern const char* AttrNameStrings[ AT_NbrAttrTypes ] ;
 
     typedef enum
     {

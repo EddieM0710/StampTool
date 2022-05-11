@@ -27,10 +27,10 @@ namespace Design {
     {
         //double xPosUseableFrame = m_leftMargin;
         //double yPosUseableFrame = m_topMargin;
-        double pageFrameWidth = GetWidth( ) - m_leftMargin - m_rightMargin - .4;
-        double pageFrameHeight = GetHeight( ) - m_topMargin - m_bottomMargin - .4;
-        SetWidth( pageFrameWidth  );
-        SetHeight( pageFrameHeight  );
+        double pageFrameWidth = GetWidth( ) - m_leftMargin - m_rightMargin ;
+        double pageFrameHeight = GetHeight( ) - m_topMargin - m_bottomMargin ;
+        // SetWidth( pageFrameWidth  );
+        // SetHeight( pageFrameHeight  );
 
         int nbrRows = 0;
         int nbrCols = 0;
@@ -85,6 +85,7 @@ namespace Design {
 
         SetMinWidth( minWidth );
         SetMinHeight( minHeight );
+m_frame.WriteLayout( "Page::UpdateMinimumSize");
 
         if ( pageFrameWidth < minWidth )
         {
@@ -94,8 +95,7 @@ namespace Design {
         {
             ReportLayoutError( "UpdateMinimumSize", "Children too big for row", true );
         }
-WriteFrame("Page::UpdateMinimumSize",  GetObjectName(), "", &m_frame );
-
+    return true;
     }
 
 
@@ -123,23 +123,33 @@ WriteFrame("Page::UpdateMinimumSize",  GetObjectName(), "", &m_frame );
                 case AT_Row:
                 {
                     Row* row = ( Row* )child;
-                    row->SetWidth( GetWidth( ) );
-                    row->SetHeight( row->GetMinHeight( ) );
-                    if ( row->ShowTitle( ) )
+                    double leftPadding = 0;
+                    double rightPadding = 0;
+                    double topPadding = 0;
+                    double bottomPadding = 0;
+                    if ( 1)//row->GetShowFrame() ) 
                     {
-                        row->SetHeight( row->GetMinHeight( ) + GetTitleHeight() );
-                    }
-                    else
+                        leftPadding = row->GetLeftContentPadding();
+                        rightPadding = row->GetRightContentPadding();
+                        topPadding = row->GetTopContentPadding();
+                        bottomPadding = row->GetBottomContentPadding();
+                    }                    
+                    row->SetWidth( GetWidth( )  
+                    - leftPadding
+                    - rightPadding );
+                    row->SetHeight( row->GetMinHeight( ) + topPadding+bottomPadding );
+                    if ( row->GetShowTitle( ) )
                     {
-                        row->SetHeight( row->GetMinHeight( ) ) ;
+                        row->SetHeight( row->GetHeight( ) + GetTitleHeight() );
                     }
+
                     break;
                 }
                 case AT_Col:
                 {
                     Column* col = ( Column* )child;
                     col->SetWidth( GetMinWidth( ) );
-                    if ( col->ShowTitle( ) )
+                    if ( col->GetShowTitle( ) )
                     {
                         col->SetHeight( GetHeight( ) + GetTitleHeight() );
                     }
@@ -153,7 +163,7 @@ WriteFrame("Page::UpdateMinimumSize",  GetObjectName(), "", &m_frame );
             child->UpdateSizes( );
             childID = GetDesignTreeCtrl()->GetNextChild(parentID, cookie);
         }
-WriteFrame("Page::UpdateSizes",  GetObjectName(), "", &m_frame );
+m_frame.WriteLayout( "Page::UpdateSizes ");
 
    }
     void Page::UpdatePositions( )
@@ -174,7 +184,7 @@ WriteFrame("Page::UpdateSizes",  GetObjectName(), "", &m_frame );
         else // we are positioning them down the page
         {
             double totalExtraSpace =  GetHeight( ) - GetMinHeight() ;
-            if ( ShowTitle())
+            if ( GetShowTitle())
             {
                 totalExtraSpace -= GetTitleHeight();
             }
@@ -221,7 +231,7 @@ WriteFrame("Page::UpdateSizes",  GetObjectName(), "", &m_frame );
             }
             childID = GetDesignTreeCtrl()->GetNextChild(parentID, cookie);
         }
-WriteFrame("Page::UpdatePositions",  GetObjectName(), "", &m_frame );
+m_frame.WriteLayout( "Page::UpdatePositions ");
 
     }
     wxXmlNode* Page::Write( wxXmlNode* parent )
@@ -231,10 +241,10 @@ WriteFrame("Page::UpdatePositions",  GetObjectName(), "", &m_frame );
         Utils::AddComment( parent, "Page", "Inserting a new Page." );
 
         wxXmlNode* contentElement = ODT::ContentDoc( )->WriteFrame( parent,
-            GetXPos( ) + m_borderSize,
-            GetYPos( ) + m_borderSize,
-            GetWidth( ),
-            GetHeight( ),
+            GetXPos( ),
+            GetYPos( ),
+            GetWidth( ) - m_borderSize*2,
+            GetHeight( ) - m_borderSize*2,
             ODT::FrameNoBorder,
             ODT::TextAnchorParagraph );
 
@@ -279,7 +289,19 @@ WriteFrame("Page::UpdatePositions",  GetObjectName(), "", &m_frame );
 
         dc.SetPen(*wxBLACK_PEN);
 
-        m_frame.drawBorder( dc, x+GetAttrDbl( AT_LeftMargin ), y+GetAttrDbl( AT_TopMargin ) );
+        m_frame.drawBorder( dc, x, y );
+
+                    double leftPadding = 0;
+                    double rightPadding = 0;
+                    double topPadding = 0;
+                    double bottomPadding = 0;
+                    if ( 1)//row->GetShowFrame() ) 
+                    {
+                        leftPadding = GetLeftContentPadding();
+                        rightPadding = GetRightContentPadding();
+                        topPadding = GetTopContentPadding();
+                        bottomPadding = GetBottomContentPadding();
+                    }  
 
         wxTreeItemIdValue cookie;
         wxTreeItemId parentID = GetTreeItemId();
@@ -288,7 +310,7 @@ WriteFrame("Page::UpdatePositions",  GetObjectName(), "", &m_frame );
         {
             AlbumBaseType type = ( AlbumBaseType )GetDesignTreeCtrl()->GetItemType( childID );
             LayoutBase* child = ( LayoutBase* )GetDesignTreeCtrl()->GetItemNode( childID );
-            child->draw( dc, x+GetXPos()+.2, y+GetYPos()+.2 );
+            child->draw( dc, x+GetXPos()+leftPadding, y+GetYPos()+topPadding );
             childID = GetDesignTreeCtrl()->GetNextChild(parentID, cookie);
         }
     }

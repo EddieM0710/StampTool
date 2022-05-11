@@ -97,6 +97,7 @@ public:
 ////@end AlbumSplitterWindow member function declarations
 
     AlbumPanel* GetAlbumPanel(){ return m_albumPanel;} ;
+    void OnZoomsliderUpdated( wxCommandEvent& event );
 
     /// Should we show tooltips?
     static bool ShowToolTips();

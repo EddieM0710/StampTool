@@ -32,6 +32,7 @@ namespace Design {
         { 
             SetNodeType( AT_Row ); 
             SetObjectName( AlbumBaseNames[ GetNodeType() ] );
+            SetShowFrame(true);
         };
 
         /**
@@ -71,13 +72,11 @@ namespace Design {
 
         NodeStatus ValidateNode();
         void draw( wxDC &dc, double x, double y );
-        bool GetShowTitle(){ return String2Bool( GetAttrStr( AT_ShowTitle ) ); };
-        void SetShowTitle( bool val ){ SetAttrStr( AT_ShowTitle, Bool2String( val) ); };
-        bool GetShowFrame(){ return String2Bool( GetAttrStr( AT_ShowFrame ) ); };
-        void SetShowFrame( bool val ){ SetAttrStr( AT_ShowFrame, Bool2String( val ) ); };
         void Save( wxXmlNode* xmlNode );
 
     private:
+        bool m_showID;
+        bool m_showTitle;
 
     };
 

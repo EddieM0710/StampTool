@@ -48,6 +48,7 @@ IMPLEMENT_DYNAMIC_CLASS( AlbumSplitterWindow, wxPanel )
 BEGIN_EVENT_TABLE( AlbumSplitterWindow, wxPanel )
 
 ////@begin AlbumSplitterWindow event table entries
+EVT_SLIDER( ID_ALBUMZOOMSLIDER, AlbumSplitterWindow::OnZoomsliderUpdated )
 ////@end AlbumSplitterWindow event table entries
 
 END_EVENT_TABLE()
@@ -130,8 +131,6 @@ void AlbumSplitterWindow::CreateControls()
     m_secondarySplitterWindow->SetMinimumPaneSize(0);
     m_albumPanel = new AlbumPanel( m_secondarySplitterWindow, ID_SCROLLEDWINDOW, wxDefaultPosition, wxSize(100, 100), wxSUNKEN_BORDER|wxHSCROLL|wxVSCROLL );
 
-
-  
     wxPanel* itemPanel4 =
         new wxPanel( m_secondarySplitterWindow, ID_DESCRIPTIONPANEL, wxDefaultPosition,
             wxDefaultSize, wxTAB_TRAVERSAL );
@@ -152,7 +151,7 @@ void AlbumSplitterWindow::CreateControls()
     itemBoxSizer8->Add( itemStaticText9, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
     m_zoomSlider =
-        new wxSlider( itemPanel4, ID_ALBUMZOOMSLIDER, 100, 25, 300, wxDefaultPosition,
+        new wxSlider( itemPanel4, ID_ALBUMZOOMSLIDER, 50, 10, 100, wxDefaultPosition,
             wxDefaultSize, wxSL_HORIZONTAL );
     itemBoxSizer8->Add( m_zoomSlider, 1, wxGROW | wxALL, 0 );
 
@@ -207,3 +206,18 @@ wxIcon AlbumSplitterWindow::GetIconResource( const wxString& name )
 ////@end AlbumSplitterWindow icon retrieval
 }
 
+/*************************************************************/
+
+void AlbumSplitterWindow::OnZoomsliderUpdated( wxCommandEvent& event )
+{
+    int val = m_zoomSlider->GetValue( );
+    double zoom = ( double )val / 100.0;
+    m_albumImagePanel->SetZoom( zoom );
+
+    // wxEVT_COMMAND_SLIDER_UPDATED event handler for ID_SLIDER in
+    // DescriptionPanel.
+    // Before editing this code, remove the block markers.
+    event.Skip( );
+    // wxEVT_COMMAND_SLIDER_UPDATED event handler for ID_SLIDER in
+    // DescriptionPanel.
+}

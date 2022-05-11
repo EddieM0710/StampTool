@@ -10,7 +10,6 @@
  *
  **************************************************/
 
-
  // For compilers that support precompilation, includes "wx/wx.h".
 #include "wx/wxprec.h"
 
@@ -26,6 +25,8 @@
 #include "catalog/CatalogCode.h"
 #include "catalog/Classification.h"
 #include "utils/CSV.h"
+#include "utils/Settings.h"
+#include "Defs.h"
 #include "catalog/Stamp.h"
 #include <wx/tokenzr.h>
 #include "catalog/CatalogData.h"
@@ -93,6 +94,7 @@ namespace Utils {
     bool CSVData::GetIDNbr( wxString catCodes, wxString& id )
     {
         wxStringTokenizer tokenizer( catCodes, "," );
+        wxString codePrefix = GetSettings( )->GetCatCodePrefix();
 
         wxString valStr;
         wxString rest;
@@ -108,17 +110,29 @@ namespace Utils {
             valStr.Trim( );
             valStr.Trim( false );
 
-            wxString codePrefix = "Sn:US";//GetCatalogData( )->GetCatalogCodePrefix();
             if ( !codePrefix.Length( ) )
             {
 
                 if ( valStr.StartsWith( codePrefix, &rest ) )
                 {
-                    id = valStr.Mid( 6 );
+                    valStr.Replace( ":","_");
+                    valStr.Replace( " ","_");
+                    id = valStr;
                     return true;
                 }
-
             }
+        }
+        //couldn't find it; just get the first one.
+        tokenizer.Reinit( catCodes );
+        if ( tokenizer.HasMoreTokens( ) )
+        {
+            valStr = tokenizer.GetNextToken( );
+            valStr.Trim( );
+            valStr.Trim( false );
+            valStr.Replace( ":","_");
+            valStr.Replace( " ","_");
+            id = valStr;
+            return true;
         }
         return false;
     }
@@ -216,7 +230,7 @@ namespace Utils {
 
                             wxXmlNode* stampElement = NewNode( docRoot, Catalog::CatalogBaseNames[ Catalog::NT_Stamp ] );
 
-                            //                    Stamp* stampNode = new Stamp( stampElement );
+                            Catalog::Stamp* stampNode = new Catalog::Stamp( stampElement );
                             csvCol = 0;
                             valFound = false;
                             wxString valStr;
@@ -236,21 +250,17 @@ namespace Utils {
                                 if ( stampType > 0 )
                                 {
                                     Utils::SetAttrStr( stampElement, Catalog::DT_XMLDataNames[ stampType ], valStr );
-                                    // stampNode->SetVal( stampType, valStr );
-                                    // if ( stampType == DT_Catalog_Codes )
-                                    // {
-                                    //     stampNode->ProcessCatalogCodes( );
-                                    //     /**
-                                    //      * @todo the id is becoming unnecessary.  Need to figure out how to handle it
-                                    //      *
-                                    //      **************************************************/
-                                    //     wxString id;
-                                    //     if ( GetIDNbr( valStr, id ) )
-                                    //     {
-                                    //         stampNode->SetID( id );
-                                    //     }
-                                    //     stampNode->SetID( valStr );
-                                    // }
+        //                           Catalog::Stamp* stamp = new Catalog::Stamp();
+                                    if ( stampType == Catalog::DT_Catalog_Codes )
+                                    {
+                                        stampNode->ProcessCatalogCodes( );
+                                        wxString id;
+                                        if ( GetIDNbr( valStr, id ) )
+                                        {
+                                            stampNode->SetID( id );
+                                        }
+                                        stampNode->SetID( valStr );
+                                    }
                                     valFound = true;
                                 }
                                 csvCol++;

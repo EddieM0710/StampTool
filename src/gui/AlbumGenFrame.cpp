@@ -23,6 +23,8 @@
 #include "gui/AlbumGenPanel.h"
 #include "gui/CatalogPanel.h"
 #include "gui/DefinePeriodsDialog.h"
+#include "odt/ODTDefs.h"
+#include "odt/Document.h"
 #include <wx/filefn.h>
 #include <wx/filename.h>
 #include <wx/log.h>
@@ -74,6 +76,7 @@ EVT_MENU( ID_SAVECATALOG, AlbumGenFrame::OnSaveCatalogClick )
 EVT_MENU( ID_SAVEASPROJECT, AlbumGenFrame::OnSaveasProjectClick )
 EVT_MENU( ID_SAVEASDESIGN, AlbumGenFrame::OnSaveasDesignClick )
 EVT_MENU( ID_SAVEASCATALOG, AlbumGenFrame::OnSaveasCatalogClick )
+EVT_MENU( ID_GENERATEODT, AlbumGenFrame::OnGenerateODTClick )
 EVT_MENU( ID_CSVIMPORT, AlbumGenFrame::OnCSVImportClick )
 EVT_MENU( wxID_EXIT, AlbumGenFrame::OnExitClick )
 EVT_MENU( ID_TEXTSERCHMENUITEM, AlbumGenFrame::OnTextserchmenuitemClick )
@@ -177,6 +180,9 @@ void AlbumGenFrame::CreateControls( )
     m_saveAsMenu->Append( ID_SAVEASDESIGN, _( "Save Design File As" ), wxEmptyString, wxITEM_NORMAL );
     m_saveAsMenu->Append( ID_SAVEASCATALOG, _( "Save Catalog File As" ), wxEmptyString, wxITEM_NORMAL );
     m_fileMenu->Append( wxID_SAVEAS, _( "Save" ), m_saveAsMenu );
+
+    m_fileMenu->AppendSeparator( );
+    m_fileMenu->Append( ID_GENERATEODT, _( "Generate ODT Album" ), wxEmptyString, wxITEM_NORMAL );
 
     m_fileMenu->AppendSeparator( );
 
@@ -448,6 +454,11 @@ void AlbumGenFrame::OnSaveasCatalogClick( wxCommandEvent& event )
     event.Skip( );
 }
 
+void AlbumGenFrame::OnGenerateODTClick( wxCommandEvent& event )
+{
+    GenerateODTAlbum( );
+    event.Skip( );
+}
 
 void AlbumGenFrame::OnSettingsClick( wxCommandEvent& event )
 {
@@ -758,6 +769,14 @@ void AlbumGenFrame::SaveAsDesign( )
         SaveDesign( );
     }
 }
+void AlbumGenFrame::GenerateODTAlbum( )
+{
+    ODT::ODTDoc()->InitODTFiles( );
+    Design::GetAlbum()->MakeAlbum();
+    ODT::ODTDoc()->MakeDocument();
+
+}
+
 void AlbumGenFrame::SetupRecentMenu( )
 {
     // first clobber each of the current menuItems and unbind them.

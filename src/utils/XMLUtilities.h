@@ -127,7 +127,7 @@ namespace Utils {
      * @param nbr
      * @return char*
      **************************************************/
-    char* DoubleToInchString( char* str, double nbr );
+    char* DoubleToMMString( char* str, double nbr );
 
 
     char* IntToInchString( char* str, int nbr );

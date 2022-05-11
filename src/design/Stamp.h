@@ -17,6 +17,15 @@
 namespace Design {
 
 
+    typedef enum {
+        AT_InvalidImage = 0,
+        AT_InvalidHeight,
+        AT_InvalidWidth,
+        AT_NbrStampErrorTypes
+    }StampErrorType;
+    
+    extern const char* ErrorStrings[AT_NbrStampErrorTypes];
+
     /**
      * @class Stamp
      *
@@ -31,6 +40,7 @@ namespace Design {
     class Stamp : public LayoutBase
     {
     public:
+
         /**
          * @brief Construct a new Stamp object
          *
@@ -87,7 +97,10 @@ namespace Design {
         wxXmlNode* Write( wxXmlNode* parent );
 
         NodeStatus ValidateNode( );
-
+        void ClearError();
+        void SetError( StampErrorType type, NodeStatus status );
+        NodeStatus GetStatus();
+        
         void SetStampHeight( double val ) ;
         void SetStampHeight( wxString str ) ;
         double GetStampHeight( );
@@ -99,10 +112,11 @@ namespace Design {
         
         void draw( wxDC &dc, double x, double y );
         void Save( wxXmlNode* xmlNode );
-        bool GetShowTitle(){ return String2Bool( GetAttrStr( AT_ShowTitle ) ); };
-        void SetShowTitle( bool val ){ SetAttrStr( AT_ShowTitle, Bool2String( val) ); };
-        bool GetShowID(){ return String2Bool( GetAttrStr( AT_ShowId ) ); };
-        void SetShowID( bool val ){ SetAttrStr( AT_ShowId, Bool2String( val ) ); };
+        // bool GetShowTitle(){ return String2Bool( GetAttrStr( AT_ShowTitle ) ); };
+        // void SetShowTitle( bool val ){ SetAttrStr( AT_ShowTitle, Bool2String( val) ); };
+        // bool GetShowID(){ return String2Bool( GetAttrStr( AT_ShowId ) ); };
+        // void SetShowID( bool val ){ SetAttrStr( AT_ShowId, Bool2String( val ) ); };
+        wxImage* GetStampImage();
 
     private:
 
@@ -124,6 +138,11 @@ namespace Design {
          **************************************************/
         wxXmlNode* StampImageObject( wxXmlNode* parent );
 
+        bool GetShowTitle(){ return String2Bool( GetAttrStr( AT_ShowTitle ) ); };
+        void SetShowTitle( bool val ){ SetAttrStr( AT_ShowTitle, Bool2String( val) ); };
+
+        bool GetShowID(){ return String2Bool( GetAttrStr( AT_ShowId ) ); };
+        void SetShowID( bool val ){ SetAttrStr( AT_ShowId, Bool2String( val ) ); };
 
         /**
          * @brief The name of the stamp to display
@@ -139,6 +158,10 @@ namespace Design {
         // These parameters are all in inches.
         Frame m_stampFrame;
         Frame m_stampImageFrame;
+
+        NodeStatus m_error[AT_NbrStampErrorTypes];
+        bool m_showID;
+        bool m_showTitle;
 
 
     };

@@ -486,9 +486,9 @@ wxString GetTextStyleName( wxString& str )
     str = wxString::Format( "P%d", StyleNameIndex );
     return str;
 }
-char* DoubleToInchString( char* str, double nbr )
+char* DoubleToMMString( char* str, double nbr )
 {
-    sprintf( str, "%fin", nbr );
+    sprintf( str, "%fmm", nbr );
     return str;
 }
 

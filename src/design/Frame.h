@@ -44,11 +44,10 @@ namespace Design {
         double GetMinHeight( ) { return m_minHeight; };
         void SetMinHeight( double val ) { m_minHeight = val; };
 
+
     void draw( wxDC &dc, double x, double y )
     {
-
-// std::cout << "Frame::draw at (" << x <<" ,"<< y << ") x:" << GetXPos() << " y" << GetYPos()  << " w:" << 
-//             GetWidth()  <<" h:" << GetHeight() << "\n";
+WriteLayout( "Frame::draw at  ");
 
 
         wxRect rect( x+GetXPos( ), 
@@ -68,6 +67,7 @@ std::cout << "Frame::draw MM " << rect.x <<", "<< rect.y << ", " << rect.width <
     };
     void drawBorder( wxDC &dc, double x, double y )
     {
+WriteLayout( "Frame::drawBorder at  ");
 
         wxPen pen = dc.GetPen();
         pen.SetWidth(1);
@@ -76,6 +76,8 @@ std::cout << "Frame::draw MM " << rect.x <<", "<< rect.y << ", " << rect.width <
                     y+GetYPos( ), 
                     GetWidth( ), 
                     GetHeight( ));
+std::cout << "Frame::drawBorder MM " << rect.x <<", "<< rect.y << ", " << rect.width << " ," << rect.height  << " )\n";
+
 
         rect.x = rect.x*Design::PpMM.x;
         rect.y = rect.y*Design::PpMM.y; 
@@ -92,10 +94,10 @@ std::cout << "Frame::draw MM " << rect.x <<", "<< rect.y << ", " << rect.width <
         dc.DrawRectangle( rect );
     };
 
-    void WriteLayout( )
+    void WriteLayout( wxString str )
     {
-        std::cout << "  ( x:"
-            << GetXPos( ) << ", y:" << GetXPos( )
+        std::cout << str << " ( x:"
+            << GetXPos( ) << ", y:" << GetYPos( )
             << ", w:" << GetWidth( ) << ", h:" << GetHeight( )
             << ", minW:" << GetMinWidth( ) << ", minH:" << GetMinHeight( ) << " )\n";
     };

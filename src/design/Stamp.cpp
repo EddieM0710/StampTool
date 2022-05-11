@@ -14,6 +14,7 @@
 #include "odt/Document.h"
 #include "utils/XMLUtilities.h"
 #include "gui/DesignTreeCtrl.h"
+#include "art/NotFound.xpm"
 
 #include "catalog/CatalogData.h"
 #include "catalog/Stamp.h"
@@ -23,6 +24,10 @@ namespace Design {
 
     const double BorderAllowance = .2;
     const double ImagePercentOfActual = .75;
+    const char* StampErrorStrings[ AT_NbrStampErrorTypes ] = {
+        "Invalid Image Link",
+        "Invalid Height",
+        "Invalid Width" };
 
     void Stamp::CalcFrame( )
     {
@@ -178,21 +183,61 @@ namespace Design {
     NodeStatus Stamp::ValidateNode( )
     {
         NodeStatus status = AT_OK;
+
+        wxImage* image = GetStampImage( );
+        if ( image && !image->IsOk( ) )
+        {
+            SetError( AT_InvalidImage, AT_WARING );
+            status = AT_WARING;
+        }
         if ( GetHeight( ) <= 0.0 )
         {
-
-            std::cout << "Terminal leaf node must define the height.\n";
+            SetError( AT_InvalidHeight, AT_FATAL );
             status = AT_FATAL;
         }
         if ( GetWidth( ) <= 0.0 )
         {
-
-            std::cout << "Terminal leaf node must define the width.\n";
+            SetError( AT_InvalidWidth, AT_FATAL );
             status = AT_FATAL;
         }
         m_nodeValid = status;
         return status;
     }
+
+    void Stamp::ClearError( )
+    {
+        m_error[ AT_InvalidImage ] = AT_OK;
+        m_error[ AT_InvalidHeight ] = AT_OK;
+        m_error[ AT_InvalidWidth ] = AT_OK;
+    };
+
+    void Stamp::SetError( StampErrorType type, NodeStatus status )
+    {
+        m_error[ type ] = status;
+    };
+
+    NodeStatus Stamp::GetStatus( )
+    {
+        NodeStatus status = AT_OK;
+        if ( m_error[ AT_InvalidImage ] > status )
+        {
+            status = m_error[ AT_InvalidImage ];
+            if ( status == AT_FATAL )
+                return status;
+        }
+        if ( m_error[ AT_InvalidHeight ] > status )
+        {
+            status = m_error[ AT_InvalidHeight ];
+            if ( status == AT_FATAL )
+                return status;
+        }
+        if ( m_error[ AT_InvalidWidth ] > status )
+        {
+            status = m_error[ AT_InvalidWidth ];
+            if ( status == AT_FATAL )
+                return status;
+        }
+    };
 
     void Stamp::SetStampHeight( double val )
     {
@@ -242,10 +287,55 @@ namespace Design {
     {
         return m_stampFrame.GetWidth( );
     };
+
     wxString Stamp::GetStampWidthStr( )
     {
         return GetAttrStr( Design::AT_Width );
     };
+
+    wxImage* Stamp::GetStampImage( )
+    {
+
+        wxFileName fn;
+        wxImage* image;
+        bool fileOK = false;
+        wxString link = GetAttrStr( Design::AT_Link );
+        if ( !link.IsEmpty( ) )
+        {
+            fn.Assign( link );
+            if ( fn.FileExists( ) )
+            {
+                if ( !image->CanRead( link ) )
+                {
+                    fileOK = true;
+                }
+            }
+        }
+        if ( !fileOK )
+        {
+            link = GetAttrStr( AT_ID ) + ".jpg";
+            fn.SetFullName( link );
+            fn.SetPath( "/sandbox/Documents/Stamps/Art" );
+            link = fn.GetFullPath( );
+            if ( fn.FileExists( ) )
+            {
+                if ( image->CanRead( link ) )
+                {
+                    fileOK = true;
+                }
+            }
+        }
+        if ( fileOK )
+        {
+            image = new wxImage( link );
+        }
+        else
+        {
+            image = new wxImage( NotFound );
+        }
+
+        return image;
+    }
 
     void Stamp::draw( wxDC& dc, double x, double y )
     {
@@ -257,43 +347,23 @@ namespace Design {
         double xPos = x + GetXPos( );
         double yPos = y + GetYPos( );
         m_stampFrame.draw( dc, xPos, yPos );
-        //@@@@@@
 
-        wxString link = GetAttrStr( Design::AT_Link );
-
-        wxFileName fn;
-        fn.SetFullName( link );
-        fn.SetPath( "/sandbox/Documents/Stamps/Art" );
-        wxImage image = wxImage( fn.GetFullPath( ) );
-        if ( image.IsOk( ) )
+        wxImage* image = GetStampImage( );
+        if ( image && image->IsOk( ) )
         {
-    
-            double xPos1 = xPos + m_stampFrame.GetXPos( )+m_stampImageFrame.GetXPos( );
-            double yPos1 = yPos + m_stampFrame.GetYPos( )+m_stampImageFrame.GetYPos( );
-      //  wxSize size( m_stampImageFrame.GetWidth( ), m_stampImageFrame.GetHeight( ) );
-            image.Rescale( m_stampImageFrame.GetWidth( )* PpMM.x, m_stampImageFrame.GetHeight( )* PpMM.y );
-            wxBitmap bitmap = image;
-            //    const wxSize size = GetClientSize( );
-            // double scale = 1.;
-            // int width = bitmap.GetWidth( );
-            // int height = bitmap.GetHeight( );
 
-            // if ( m_stampImageFrame.GetWidth( ) * PpMM.x < width )
-            // {
-            //     scale = ( double )m_stampImageFrame.GetWidth( ) * PpMM.x / ( double )width;
-            // }
-            // if ( m_stampImageFrame.GetHeight( ) * PpMM.y < ( height * scale ) )
-            // {
-            //     scale = ( double )m_stampImageFrame.GetHeight( ) * PpMM.y / ( ( double )height * scale ) * scale;
-            // }
+            double xPos1 = xPos + m_stampFrame.GetXPos( ) + m_stampImageFrame.GetXPos( );
+            double yPos1 = yPos + m_stampFrame.GetYPos( ) + m_stampImageFrame.GetYPos( );
 
-            // dc.SetUserScale( scale, scale );
-            dc.DrawBitmap( bitmap, xPos1* PpMM.x, yPos1* PpMM.y,
-                // dc.DeviceToLogicalX((size.x - m_zoom*scale *
-                // m_bitmap.GetWidth()) / 2), dc.DeviceToLogicalY((size.y -
-                // m_zoom*scale * m_bitmap.GetHeight()) / 2),
-                true /* use mask */
-            );
+            image->Rescale( m_stampImageFrame.GetWidth( ) * PpMM.x, m_stampImageFrame.GetHeight( ) * PpMM.y );
+            wxBitmap bitmap = *image;
+
+            dc.DrawBitmap( bitmap, xPos1 * PpMM.x, yPos1 * PpMM.y, true );
+            if ( image )
+            {
+                delete image;
+            }
+
         }
         else
         {
@@ -303,21 +373,8 @@ namespace Design {
             m_stampImageFrame.draw( dc, xPos1, yPos1 );
         }
 
-
-        //@@@@@@@
-
-                // wxTreeItemIdValue cookie;
-                // wxTreeItemId parentID = GetTreeItemId();
-                // wxTreeItemId childID = GetDesignTreeCtrl()->GetFirstChild(parentID, cookie);
-                // while ( childID.IsOk( ) )
-                // {
-                //     AlbumBaseType type = ( AlbumBaseType )GetDesignTreeCtrl( )->GetItemType( childID );
-                //     LayoutBase* child = ( LayoutBase* )GetDesignTreeCtrl( )->GetItemNode( childID );
-                //     child->draw( dc, x + GetXPos( ), y + GetYPos( ) );
-                //     childID = GetDesignTreeCtrl( )->GetNextChild( parentID, cookie );
-                // }
-
     };
+
     void Stamp::Save( wxXmlNode* xmlNode )
     {
         SetAttribute( xmlNode, AT_ID );

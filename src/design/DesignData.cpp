@@ -116,175 +116,18 @@ namespace Design {
             return false;
         }
 
-        // wxXmlNode* albumBaseRoot = m_albumDoc->GetRoot( );
-        // wxString name = albumBaseRoot->GetName( );
-
-        // if ( name.Length( ) == 0 )
-        // {
-        //     albumBaseRoot->SetName( filename );
-        // }
-        // m_album = new Album( ( AlbumBase* )0, albumBaseRoot );
-        // if ( !m_album )
-        // {
-        //     return false;
-        // }
 
         SetDirty( false );
         return true;
     }
 
-    Row* DesignData::AddRow( wxTreeItemId parentId )
-    {
- //       LayoutBase* parent = node;
-        AlbumBaseType prevType = AT_None;
-        while ( parentId.IsOk() )
-        {
-            AlbumBaseType type = GetDesignTreeCtrl()->GetItemType( parentId );
-            if ( type == AT_Page )
-            {
-                // can't mix rows and cols as siblings
-                if ( prevType != AT_Col )
-                {
-                    break;
-                }
-            }
-            else if ( type == AT_Col )
-            {
-                break;
-            }
-            parentId =  GetDesignTreeCtrl()->GetItemParent( parentId );
-            prevType = type;
-        }
-        if ( parentId.IsOk() )
-        {
-            Row* newRow = new Row( ( wxXmlNode* )0 );
-            SetDirty( );
-            return newRow;
-        }
-        else
-        {
-            return  ( Row* )0;
-        }
-    }
-
-    Column* DesignData::AddCol( wxTreeItemId parentId )
-    {
-        //LayoutBase* parent = node;
-        AlbumBaseType prevType = AT_None;
-        while ( parentId.IsOk() )
-        {
-            AlbumBaseType type = GetDesignTreeCtrl()->GetItemType( parentId );
-            if ( type == AT_Page )
-            {
-                // can't mix rows and cols as siblings
-                if ( prevType != AT_Row )
-                {
-                    break;
-                }
-            }
-            else if ( type == AT_Row )
-            {
-                break;
-            }
-            parentId = GetDesignTreeCtrl()->GetItemParent( parentId );
-            prevType = type;
-        }
-        if ( parentId.IsOk() )
-        {
-            SetDirty( );
-            return new Column( ( wxXmlNode* )0 );
-        }
-        else
-        {
-            return  ( Column* )0;
-        }
-    }
-
-    Page* DesignData::AddPage(  wxTreeItemId parentId  )
-    {
-        //LayoutBase* parent = node;
-        while ( parentId.IsOk() )
-        {
-            AlbumBaseType type = GetDesignTreeCtrl()->GetItemType( parentId );
-            if ( type == AT_Album )
-            {
-                break;
-            }
-            parentId = GetDesignTreeCtrl()->GetItemParent( parentId );
-        }
-        if ( parentId.IsOk() )
-        {
-            SetDirty( );
-            return new Page( ( wxXmlNode* )0 );
-        }
-        else
-        {
-            return  ( Page* )0;
-        }
-    }
-
-    Stamp* DesignData::AddStamp( wxTreeItemId parentId )
-    {
-       // LayoutBase* parent = node;
-        while ( parentId.IsOk() )
-        {
-            AlbumBaseType type = GetDesignTreeCtrl()->GetItemType( parentId );
-            if ( type == AT_Col
-                || type == AT_Row )
-            {
-                break;
-            }
-            parentId = GetDesignTreeCtrl()->GetItemParent( parentId );
-        }
-        if ( parentId.IsOk() )
-        {
-            SetDirty( );
-            return new Stamp(( wxXmlNode* )0 );
-        }
-        else
-        {
-            return  ( Stamp* )0;
-        }
-
-    }
-    // Title* DesignData::AddTitle( LayoutBase* node )
-    // {
-    //     LayoutBase* parent = node;
-    //     while ( parent )
-    //     {
-    //         AlbumBaseType type = parent->GetNodeType( );
-    //         if ( type == AT_Col
-    //             || type == AT_Row
-    //             || type == AT_Page )
-    //         {
-    //             break;
-    //         }
-    //         parent = ( LayoutBase* )parent->GetParent( );
-    //     }
-    //     if ( parent )
-    //     {
-    //         SetDirty( );
-    //         return new Title( parent, ( wxXmlNode* )0 );
-    //     }
-    //     else
-    //     {
-    //         return  ( Title* )0;
-    //     }
-    // }
-
     AlbumBase* DesignData::GetPage( AlbumBase* node )
     {
-        while ( node )
-        {
-            if ( node->GetNodeType( ) == AT_Page )
-            {
-                return node;
-            }
-            node = node->GetParent( );
-        }
-        return ( AlbumBase* )0;
+        wxTreeItemId id = node->GetTreeItemId();
+        if ( id.IsOk() ) id = GetDesignTreeCtrl()->GetPage(id);
+        if ( id.IsOk() ) return GetDesignTreeCtrl()->GetItemNode(id);
+        return (AlbumBase*)0;
     }
-
 
     NodeStatus DesignData::ValidatePage( AlbumBase* node )
     {

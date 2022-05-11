@@ -34,8 +34,6 @@ namespace Design {
         wxTreeItemId childID = GetDesignTreeCtrl()->GetFirstChild(parentID, cookie);
         while ( childID.IsOk() )
         {
-
-           // AlbumBaseType type = ( AlbumBaseType )GetDesignTreeCtrl()->GetItemType( childID );
             LayoutBase* child = ( LayoutBase* )GetDesignTreeCtrl()->GetItemNode( childID );
             child->UpdateMinimumSize( );
             if ( child->GetMinHeight( ) > minHeight )
@@ -45,22 +43,31 @@ namespace Design {
             minWidth += child->GetMinWidth( );
             childID = GetDesignTreeCtrl()->GetNextChild(parentID, cookie);
         }
-        if ( ShowTitle() )
+        if ( GetShowTitle() )
         {
           minHeight += GetTitleHeight();  
         }
-        SetMinHeight( minHeight );
-        SetMinWidth( minWidth );
-WriteFrame("Row::UpdatePositions",  GetObjectName(), "", &m_frame );
+
+            double leftPadding = 0;
+            double rightPadding = 0;
+            double topPadding = 0;
+            double bottomPadding = 0;
+            if ( GetShowFrame() ) 
+            {
+                leftPadding = GetLeftContentPadding();
+                rightPadding = GetRightContentPadding();
+                topPadding = GetTopContentPadding();
+                bottomPadding = GetBottomContentPadding();
+            }      
+
+        SetMinHeight( minHeight + topPadding+bottomPadding );
+        SetMinWidth( minWidth + leftPadding+rightPadding );
+m_frame.WriteLayout( "Row::UpdatePositions ");
 
     }
 
     void Row::UpdateSizes( )
     {
-        // int nbrRows = 0;
-        // int nbrCols = 0;
-        // int nbrStamps = 0;
-        // ValidateChildType( nbrRows, nbrCols, nbrStamps );
 
         // Set the height and width of each child column
         // Stamps have fixed height and width
@@ -79,7 +86,7 @@ WriteFrame("Row::UpdatePositions",  GetObjectName(), "", &m_frame );
 
             childID = GetDesignTreeCtrl()->GetNextChild(parentID, cookie);
         }
-WriteFrame("Row::UpdateSizes",  GetObjectName(), "", &m_frame );
+m_frame.WriteLayout( "Row::UpdateSizes ");
     }
 
     // calculate the row layout based on child parameters
@@ -137,7 +144,7 @@ WriteFrame("Row::UpdateSizes",  GetObjectName(), "", &m_frame );
             childID = GetDesignTreeCtrl()->GetNextChild(parentID, cookie);
         }
 
-WriteFrame("Row::UpdatePositions",  GetObjectName(), "", &m_frame );
+m_frame.WriteLayout( "Row::UpdatePositions ");
 
     }
 
@@ -225,19 +232,29 @@ WriteFrame("Row::UpdatePositions",  GetObjectName(), "", &m_frame );
 
         dc.SetPen(*wxBLUE_PEN);
 
-
         m_frame.draw( dc, x, y );
+
+
+        double leftPadding = 0;
+        double topPadding = 0;
+        if ( GetShowFrame() ) 
+        {
+            leftPadding = GetLeftContentPadding();
+            topPadding = GetTopContentPadding();
+        }  
 
         wxTreeItemIdValue cookie;
         wxTreeItemId parentID = GetTreeItemId();
         wxTreeItemId childID = GetDesignTreeCtrl()->GetFirstChild(parentID, cookie);
         while ( childID.IsOk() )
         {
+            
             AlbumBaseType type = ( AlbumBaseType )GetDesignTreeCtrl()->GetItemType( childID );
             LayoutBase* child = ( LayoutBase* )GetDesignTreeCtrl()->GetItemNode( childID );
-            double xPos = x+GetXPos();
-            double yPos = y+GetYPos();
+            double xPos = x+GetXPos()+leftPadding;
+            double yPos = y+GetYPos()+topPadding;
             child->draw( dc, xPos, yPos );
+
             childID = GetDesignTreeCtrl()->GetNextChild(parentID, cookie);
         }
     }

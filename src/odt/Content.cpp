@@ -143,7 +143,7 @@ namespace ODT {
         Utils::SetAttrStr( graphicProperties, "style:horizontal-pos", "from-left" );
         Utils::SetAttrStr( graphicProperties, "style:horizontal-rel", "paragraph-content" );
         Utils::SetAttrStr( graphicProperties, "fo:padding", ".06in" );
-        Utils::SetAttrStr( graphicProperties, "fo:border", "0.0071in dashed #000000" );
+        Utils::SetAttrStr( graphicProperties, "fo:border", "0.0071in solid #000000" );
         Utils::SetAttrStr( graphicProperties, "style:shadow", "none" );
 
         //fr2 is no border
@@ -273,13 +273,13 @@ namespace ODT {
         Utils::SetAttrStr( drawFrame, "draw:style-name", drawStyleName );
         Utils::SetAttrStr( drawFrame, "draw:name", Utils::GetFrameName( str ) );
         Utils::SetAttrStr( drawFrame, "text:anchor-type", textAnchorType );
-        Utils::SetAttrStr( drawFrame, "svg:x", Utils::DoubleToInchString( str, xPos ) );
-        Utils::SetAttrStr( drawFrame, "svg:y", Utils::DoubleToInchString( str, yPos ) );
-        Utils::SetAttrStr( drawFrame, "svg:width", Utils::DoubleToInchString( str, width ) );
+        Utils::SetAttrStr( drawFrame, "svg:x", Utils::DoubleToMMString( str, xPos ) );
+        Utils::SetAttrStr( drawFrame, "svg:y", Utils::DoubleToMMString( str, yPos ) );
+        Utils::SetAttrStr( drawFrame, "svg:width", Utils::DoubleToMMString( str, width ) );
         Utils::SetAttrStr( drawFrame, "draw:z-index", Utils::GetZIndex( str ) );
 
         wxXmlNode* drawTextBox = Utils::AddNewNode( drawFrame, wxXML_ELEMENT_NODE, "draw:text-box" );
-        Utils::SetAttrStr(drawTextBox, "fo:min-height", Utils::DoubleToInchString( str, height ) );
+        Utils::SetAttrStr(drawTextBox, "fo:min-height", Utils::DoubleToMMString( str, height ) );
 
         wxXmlNode* drawTextBoxP = Utils::AddNewNode( drawTextBox, wxXML_ELEMENT_NODE, "text:p" );
         Utils::SetAttrStr( drawTextBoxP,"text:style-name", textStyleName );
@@ -302,10 +302,10 @@ namespace ODT {
         Utils::SetAttrStr( drawFrame, "draw:style-name", drawStyleName );
         Utils::SetAttrStr( drawFrame, "draw:name", Utils::GetFrameName( str ) );
         Utils::SetAttrStr( drawFrame, "text:anchor-type", textAnchorType );
-        Utils::SetAttrStr( drawFrame, "svg:x", Utils::DoubleToInchString( str, xPos ) );
-        Utils::SetAttrStr( drawFrame, "svg:y", Utils::DoubleToInchString( str, yPos ) );
-        Utils::SetAttrStr( drawFrame, "svg:width", Utils::DoubleToInchString( str, width ) );
-        Utils::SetAttrStr( drawFrame, "svg:height", Utils::DoubleToInchString( str, height ) );
+        Utils::SetAttrStr( drawFrame, "svg:x", Utils::DoubleToMMString( str, xPos ) );
+        Utils::SetAttrStr( drawFrame, "svg:y", Utils::DoubleToMMString( str, yPos ) );
+        Utils::SetAttrStr( drawFrame, "svg:width", Utils::DoubleToMMString( str, width ) );
+        Utils::SetAttrStr( drawFrame, "svg:height", Utils::DoubleToMMString( str, height ) );
         Utils::SetAttrStr( drawFrame, "draw:z-index", Utils::GetZIndex( str ) );
 
         wxXmlNode* drawTextBox = Utils::AddNewNode( drawFrame, wxXML_ELEMENT_NODE, "draw:text-box" );
@@ -332,10 +332,10 @@ namespace ODT {
         Utils::SetAttrStr( imageFrame, "draw:style-name", drawStyleName );
         Utils::SetAttrStr( imageFrame, "draw:name", Utils::GetImageName( str ) );
         Utils::SetAttrStr( imageFrame, "text:anchor-type", textAnchorType );
-        //    SetAttrStr( imageFrame, "svg:x", DoubleToInchString( str, xPos ) );
-        //    SetAttrStr( imageFrame, "svg:y", DoubleToInchString( str, yPos ) );
-        Utils::SetAttrStr( imageFrame, "svg:width", Utils::DoubleToInchString( str, width ) );
-        Utils::SetAttrStr( imageFrame, "svg:height", Utils::DoubleToInchString( str, height ) );
+        //    SetAttrStr( imageFrame, "svg:x", DoubleToMMString( str, xPos ) );
+        //    SetAttrStr( imageFrame, "svg:y", DoubleToMMString( str, yPos ) );
+        Utils::SetAttrStr( imageFrame, "svg:width", Utils::DoubleToMMString( str, width ) );
+        Utils::SetAttrStr( imageFrame, "svg:height", Utils::DoubleToMMString( str, height ) );
         Utils::SetAttrStr( imageFrame, "draw:z-index", Utils::GetZIndex( str ) );
 
         if ( !link.IsEmpty( ) )

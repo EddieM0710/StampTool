@@ -121,6 +121,9 @@ void StampDetailsDialog::Init( )
     m_validate = NULL;
     m_statusList = NULL;
     m_designTreeID = NULL;
+    m_idCheckbox = NULL;
+    m_titleCheckbox = NULL;
+
     ////@end StampDetailsDialog member initialisation
 }
 
@@ -142,13 +145,27 @@ void StampDetailsDialog::CreateControls( )
     wxBoxSizer* itemBoxSizer1 = new wxBoxSizer( wxHORIZONTAL );
     itemBoxSizer2->Add( itemBoxSizer1, 0, wxGROW | wxALL, 0 );
 
+    wxBoxSizer* itemBoxSizer4 = new wxBoxSizer(wxVERTICAL);
+    itemBoxSizer1->Add(itemBoxSizer4, 0, wxGROW|wxALL, 5);
+
     m_id = new LabeledTextBox( itemDialog1, ID_IDLABELTEXTBOX, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
     m_id->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
-    itemBoxSizer1->Add( m_id, 0, wxGROW | wxALL, 5 );
+    itemBoxSizer4->Add( m_id, 0, wxGROW | wxALL, 5 );
+
+    m_idCheckbox = new wxCheckBox( itemDialog1, ID_IDCHECKBOX, _("Show ID"), wxDefaultPosition, wxDefaultSize, 0 );
+    m_idCheckbox->SetValue(false);
+    itemBoxSizer4->Add(m_idCheckbox, 0, wxALIGN_LEFT|wxALL, 5);
+ 
+    wxBoxSizer* itemBoxSizer8 = new wxBoxSizer(wxVERTICAL);
+    itemBoxSizer1->Add(itemBoxSizer8, 1, wxGROW|wxALL, 5);
 
     m_name = new LabeledTextBox( itemDialog1, ID_NAMELABELEDTEXTBOX, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
     m_name->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
-    itemBoxSizer1->Add( m_name, 1, wxGROW | wxALL, 5 );
+    itemBoxSizer8->Add( m_name, 1, wxGROW | wxALL, 5 );
+
+    m_titleCheckbox = new wxCheckBox( itemDialog1, ID_TITLECHECKBOX, _("Show Title"), wxDefaultPosition, wxDefaultSize, 0 );
+    m_titleCheckbox->SetValue(false);
+    itemBoxSizer8->Add(m_titleCheckbox, 0, wxALIGN_LEFT|wxALL, 5);
 
     wxBoxSizer* itemBoxSizer3 = new wxBoxSizer( wxHORIZONTAL );
     itemBoxSizer2->Add( itemBoxSizer3, 0, wxGROW | wxALL, 0 );
@@ -255,26 +272,28 @@ void StampDetailsDialog::RefreshFromCatalog( )
     {
         DesignTreeItemData* data = ( DesignTreeItemData* )GetDesignTreeCtrl( )->GetItemData( m_designTreeID );
         Utils::StampLink* link = data->GetStampLink( );
-        wxTreeItemId catTreeID = link->GetCatTreeID( );
-        wxXmlNode* node = GetCatalogTreeCtrl( )->GetStampNode( catTreeID );
-
-        if ( node )
+        if ( link )
         {
-            Catalog::Stamp  stamp( node );
-            SetHeight( stamp.GetHeight( ) );
-            SetHeightModified();
-            SetWidth( stamp.GetWidth(  ) );
-            SetWidthModified();
-            SetName( stamp.GetName( ) );
-            SetNameModified();
-            SetID( stamp.GetID( ) );
-            SetIDModified();
-            wxString label ;
-            label = GetID() + " - " + GetName();
-            GetDesignTreeCtrl( )->SetItemText( m_designTreeID, label );
+            wxTreeItemId catTreeID = link->GetCatTreeID( );
+            wxXmlNode* node = GetCatalogTreeCtrl( )->GetStampNode( catTreeID );
+
+            if ( node )
+            {
+                Catalog::Stamp  stamp( node );
+                SetHeight( stamp.GetHeight( ) );
+                SetHeightModified();
+                SetWidth( stamp.GetWidth(  ) );
+                SetWidthModified();
+                SetName( stamp.GetName( ) );
+                SetNameModified();
+                SetID( stamp.GetID( ) );
+                SetIDModified();
+                wxString label ;
+                label = GetID() + " - " + GetName();
+                GetDesignTreeCtrl( )->SetItemText( m_designTreeID, label );
+            }
         }
     }
-
 }
 
 /*

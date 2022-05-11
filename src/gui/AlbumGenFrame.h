@@ -65,7 +65,7 @@ class AlbumPanel;
 #define ID_SAVEASPROJECT ID_ALBUMGENERATORFRAME+19
 #define ID_SAVEASDESIGN ID_ALBUMGENERATORFRAME+20
 #define ID_SAVEASCATALOG ID_ALBUMGENERATORFRAME+21
-
+#define ID_GENERATEODT ID_ALBUMGENERATORFRAME+22
 #define ID_ALBUMGENERATORPANELFOREIGN ID_ALBUMGENERATORPANEL
 #define SYMBOL_ALBUMGENERATORFRAME_STYLE                                         \
     wxDEFAULT_FRAME_STYLE | wxCAPTION | wxRESIZE_BORDER | wxSYSTEM_MENU        \
@@ -178,6 +178,8 @@ class AlbumGenFrame : public wxFrame
     void OnSaveasDesignClick( wxCommandEvent &event );
     void OnSaveasCatalogClick( wxCommandEvent &event );
 
+    void OnGenerateODTClick( wxCommandEvent &event );
+    
     // wxEVT_COMMAND_MENU_SELECTED event handler for ID_IMPORT
     void OnCSVImportClick( wxCommandEvent &event );
     void OnAEImportClick( wxCommandEvent &event );
@@ -262,6 +264,8 @@ class AlbumGenFrame : public wxFrame
     void InitLoad( );
     //void LinkAlbumToCat( Design::LayoutBase* child, Catalog::CatalogData* stampData );
    // void LinkNodes( Design::LayoutBase* child, Catalog::CatalogData* stampData  );
+
+    void GenerateODTAlbum( );
 
     void DoSortOrderDialog( );
 

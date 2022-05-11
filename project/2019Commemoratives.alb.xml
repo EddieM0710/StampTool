@@ -3,21 +3,18 @@
 <!-- This is the space to be filled by the background border image. -->
 <!-- The border size is the allowance made around the margines(above) -->
 <!-- and will define the useable page size. -->
-<Album Name="2019Commemoratives.odt" PageWidth="215.9" PageHeight="279.4" TopMargin="7.62" BottomMargin="7.62" RightMargin="7.62" LeftMargin="19.05" BorderFileName="box2.jpg" BorderSize="0">
+<Album Name="2019Commemoratives.odt" PageWidth="215.9" PageHeight="279.4" TopMargin="7.62" BottomMargin="7.62" RightMargin="7.62" LeftMargin="19.05" BorderFileName="box2.jpg" BorderSize="4">
   <Page Name="">
-    <Row Name="" ShowTitle="" ShowFrame="">
-      <Stamp ID="5339" Name="Love : Hearts Blossom" Width="23.5" Height="30.5" Link="5339.jpg" ShowTitle="" ShowId=""/>
-      <Stamp ID="5340" Name="Year of The Pig 2019" Width="40" Height="25" Link="5340.jpg" ShowTitle="" ShowId=""/>
-      <Stamp ID="5349" Name="Gregory Hines, American Actor" Width="25" Height="40" Link="5349.jpg" ShowTitle="" ShowId=""/>
-    </Row>
-    <Row Name="" ShowTitle="" ShowFrame="">
-      <Stamp ID="3190e" Name="Century - 1980's: Figure Skating" Width="40" Height="25" Link="" ShowTitle="" ShowId=""/>
-      <Stamp ID="3190f" Name="Century - 1980's: Cable TV" Width="25" Height="40" Link="" ShowTitle="" ShowId=""/>
+    <Row Name="" ShowTitle="" ShowFrame="true">
+      <Stamp ID="5338" Name="Hanukkah 2018" Width="23.5" Height="30.5" Link="" ShowTitle="" ShowId=""/>
+      <Stamp ID="5339" Name="Love : Hearts Blossom" Width="23.5" Height="30.5" Link="" ShowTitle="" ShowId=""/>
+      <Stamp ID="5340" Name="Year of The Pig 2019" Width="40" Height="25" Link="" ShowTitle="" ShowId=""/>
     </Row>
   </Page>
   <Page Name="">
-    <Row Name="" ShowTitle="" ShowFrame="">
-      <Stamp ID="5359a" Name="Cactus Flowers, booklet pane of 20 stamps" Width="60.3" Height="60.3" Link="5359a.jpg" ShowTitle="" ShowId=""/>
+    <Row Name="" ShowTitle="" ShowFrame="true">
+      <Stamp ID="5349" Name="Gregory Hines, American Actor" Width="25" Height="40" Link="" ShowTitle="" ShowId=""/>
+      <Stamp ID="5337" Name="Kwanzaa 2018" Width="23.5" Height="30.5" Link="" ShowTitle="" ShowId=""/>
     </Row>
   </Page>
 </Album>

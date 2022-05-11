@@ -48,6 +48,9 @@ class wxListCtrl;
 #define ID_REFRESHBUTTON 10005
 #define ID_VALIDATEBUTTON 10008
 #define ID_LISTCTRL 10006
+#define ID_IDCHECKBOX 10010
+#define ID_TITLECHECKBOX 10011
+
 #define SYMBOL_STAMPDETAILSDIALOG_STYLE wxCAPTION|wxRESIZE_BORDER|wxSYSTEM_MENU|wxCLOSE_BOX|wxTAB_TRAVERSAL
 #define SYMBOL_STAMPDETAILSDIALOG_TITLE _("StampDetailsDialog")
 #define SYMBOL_STAMPDETAILSDIALOG_IDNAME ID_STAMPDETAILSDIALOG
@@ -134,7 +137,12 @@ void RefreshFromCatalog();
     wxButton* m_validate;
     wxListCtrl* m_statusList;
     wxTreeItemId m_designTreeID;
+    wxCheckBox* m_idCheckbox;
+    wxCheckBox* m_titleCheckbox;
 ////@end StampDetailsDialog member variables
+
+
+
 };
 
 #endif

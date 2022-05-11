@@ -28,9 +28,10 @@ namespace Design {
 
 void LayoutBase::WriteFrame(wxString loc,  wxString name, wxString id, Frame* frame )
 {
-std::cout << loc <<" " << name <<" " << id ;
-std::cout << "  x:" << frame->GetXPos() << " y" << frame->GetYPos()  << " w:" << 
-            frame->GetWidth()  <<" h:" << frame->GetHeight() << "\n";
+// std::cout << loc <<" " << name <<" " << id ;
+// WriteLayout( "Frame::draw at  ");
+// std::cout << "  x:" << frame->GetXPos() << " y" << frame->GetYPos()  << " w:" << 
+//             frame->GetWidth()  <<" h:" << frame->GetHeight() << "\n";
 }
 
     void LayoutBase::UpdateTitleSize()
@@ -87,8 +88,8 @@ std::cout << "  x:" << frame->GetXPos() << " y" << frame->GetYPos()  << " w:" <<
   void LayoutBase::DumpLayout(  double x , double y  )
     {
         AlbumBaseType type = GetNodeType();
-        std::cout << GetObjectName() << "Pos (x:" << x << " y:" << y << ") ";
-        m_frame.WriteLayout( );
+        std::cout << GetObjectName() << " Pos (x:" << x << " y:" << y << ") ";
+        m_frame.WriteLayout(  GetObjectName() );
         wxTreeItemIdValue cookie;
         wxTreeItemId parentID = GetTreeItemId();
         wxTreeItemId childID = GetDesignTreeCtrl()->GetFirstChild(parentID, cookie);

@@ -21,33 +21,51 @@ namespace Design {
 
     bool Column::UpdateMinimumSize( )
     {
-
-
-
-        SetMinWidth( 0.0 );
-        SetMinHeight( 0.0 );
-
+        //Positioning down the col.
+        //The min width of the col is the size of the widest child 
+        //The min height is the sum of the min heights of the children. 
+        //plus the title if used
+        double minWidth = 0.0;
         double minHeight = 0.0;
+        UpdateTitleSize( );
+
         wxTreeItemIdValue cookie;
-        wxTreeItemId parentID = GetTreeItemId();
-        wxTreeItemId childID = GetDesignTreeCtrl()->GetFirstChild(parentID, cookie);
-        while ( childID.IsOk() )
+        wxTreeItemId parentID = GetTreeItemId( );
+        wxTreeItemId childID = GetDesignTreeCtrl( )->GetFirstChild( parentID, cookie );
+        while ( childID.IsOk( ) )
         {
-            AlbumBaseType type = ( AlbumBaseType )GetDesignTreeCtrl()->GetItemType( childID );
-            LayoutBase* child = ( LayoutBase* )GetDesignTreeCtrl()->GetItemNode( childID );
+            LayoutBase* child = ( LayoutBase* )GetDesignTreeCtrl( )->GetItemNode( childID );
 
             child->UpdateMinimumSize( );
 
-            if ( child->GetWidth( ) > GetMinWidth() )
+            if ( child->GetWidth( ) > GetMinWidth( ) )
             {
-                SetMinWidth( child->GetWidth( ) );
+                minWidth = child->GetWidth( ) ;
             }
             minHeight += child->GetHeight( );
-            childID = GetDesignTreeCtrl()->GetNextChild(parentID, cookie);
+            childID = GetDesignTreeCtrl( )->GetNextChild( parentID, cookie );
         }
         SetMinHeight( minHeight );
-    }
+        if ( GetShowTitle( ) )
+        {
+            minHeight += GetTitleHeight( );
+        }
 
+        double leftPadding = 0;
+        double rightPadding = 0;
+        double topPadding = 0;
+        double bottomPadding = 0;
+        if ( GetShowFrame( ) )
+        {
+            leftPadding = GetLeftContentPadding( );
+            rightPadding = GetRightContentPadding( );
+            topPadding = GetTopContentPadding( );
+            bottomPadding = GetBottomContentPadding( );
+        }
+
+        SetMinHeight( minHeight + topPadding + bottomPadding );
+        SetMinWidth( minWidth + leftPadding + rightPadding );
+    }
 
     void Column::UpdateSizes( )
     {
@@ -73,7 +91,7 @@ namespace Design {
             {
                 child->SetWidth( GetMinWidth( ) );
                 double minHeight = GetMinHeight();
-                if ( child->ShowTitle() )
+                if ( child->GetShowTitle() )
                 {
                     minHeight = GetTitleHeight();
                 }
@@ -105,7 +123,7 @@ namespace Design {
 
         double xPos = 0;
         double yPos = spacing;
-        if ( ShowTitle() ) yPos += GetTitleHeight();
+        if ( GetShowTitle() ) yPos += GetTitleHeight();
 
         wxTreeItemIdValue cookie;
         wxTreeItemId parentID = GetTreeItemId();
@@ -232,14 +250,26 @@ namespace Design {
     {
         m_frame.draw( dc, x, y );
 
+        double leftPadding = 0;
+        double topPadding = 0;
+        if ( GetShowFrame() ) 
+        {
+            leftPadding = GetLeftContentPadding();
+            topPadding = GetTopContentPadding();
+        }  
+
         wxTreeItemIdValue cookie;
         wxTreeItemId parentID = GetTreeItemId();
         wxTreeItemId childID = GetDesignTreeCtrl()->GetFirstChild(parentID, cookie);
         while ( childID.IsOk() )
         {
+            
             AlbumBaseType type = ( AlbumBaseType )GetDesignTreeCtrl()->GetItemType( childID );
             LayoutBase* child = ( LayoutBase* )GetDesignTreeCtrl()->GetItemNode( childID );
-            child->draw( dc, x+GetXPos(), y+GetYPos() );
+            double xPos = x+GetXPos()+leftPadding;
+            double yPos = y+GetYPos()+topPadding;
+            child->draw( dc, xPos, yPos );
+
             childID = GetDesignTreeCtrl()->GetNextChild(parentID, cookie);
         }
     }

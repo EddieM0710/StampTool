@@ -39,6 +39,11 @@ namespace Design {
          *
          **************************************************/
         LayoutBase( ) : AlbumBase( ) {
+            SetTopContentPadding( 1.5 ) ;
+            SetBottomContentPadding( 1.5 ) ;
+            SetLeftContentPadding( 1.5 ) ;
+            SetRightContentPadding( 1.5 ) ;
+
         };
 
         /**
@@ -47,6 +52,10 @@ namespace Design {
          * @param name
          **************************************************/
         LayoutBase( wxXmlNode* node ) : AlbumBase( node ) {
+            SetTopContentPadding( 2 ) ;
+            SetBottomContentPadding( 2 ) ;
+            SetLeftContentPadding( 2 ) ;
+            SetRightContentPadding( 2 ) ;
         };
 
 
@@ -70,11 +79,26 @@ namespace Design {
         double GetTitleHeight( ) { return m_titleSize.y; };
         double GetTitleWidth( ) { return m_titleSize.x; };
 
-        bool ShowTitle( ) { return m_showTitle; };
-        void SetShowTitle( bool show = false ) { m_showTitle = show; };
+        bool GetShowTitle(){ return String2Bool( GetAttrStr( AT_ShowTitle ) ); };
+        void SetShowTitle( bool val ){ SetAttrStr( AT_ShowTitle, Bool2String( val) ); };
 
-        bool ShowFrame( ) { return m_showFrame; };
-        void SetShowFram( bool show = false ) { m_showFrame = show; };
+        bool GetShowFrame(){ return String2Bool( GetAttrStr( AT_ShowFrame ) ); };
+        void SetShowFrame( bool val ){ SetAttrStr( AT_ShowFrame, Bool2String( val ) ); };
+
+        bool GetShowID(){ return String2Bool( GetAttrStr( AT_ShowId ) ); };
+        void SetShowID( bool val ){ SetAttrStr( AT_ShowId, Bool2String( val ) ); };
+
+        double GetTopContentPadding( ) { GetAttrDbl( AT_TopContentPadding ); };
+        void SetTopContentPadding(double val) { SetAttrDbl( AT_TopContentPadding, val ); };
+
+        double GetBottomContentPadding( ) { GetAttrDbl( AT_BottomContentPadding ); };
+        void SetBottomContentPadding(double val) { SetAttrDbl( AT_BottomContentPadding, val ); };
+
+        double GetLeftContentPadding( ) { GetAttrDbl( AT_LeftContentPadding ); };
+        void SetLeftContentPadding(double val) { SetAttrDbl( AT_LeftContentPadding, val ); };
+
+        double GetRightContentPadding( ) { GetAttrDbl( AT_RightContentPadding ); };
+        void SetRightContentPadding(double val) { SetAttrDbl( AT_RightContentPadding, val ); };
 
         void ValidateChildType( int& nbrRows, int& nbrCols, int& nbrStamps );
         void ReportLayoutError( wxString funct, wxString err, bool fatal = true );
@@ -108,8 +132,7 @@ namespace Design {
         Frame m_frame;
         wxString m_title;
         wxRealPoint m_titleSize;
-        bool m_showTitle;
-        bool m_showFrame;
+
     };
 }
 #endif

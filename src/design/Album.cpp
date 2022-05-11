@@ -86,24 +86,6 @@ namespace Design {
     bool Album::UpdateMinimumSize( )
     {
 
-        //initialize properties before any pages regardless of the order in the layout xml
-        // m_properties = (Properties*)FindFirstChild( "Properties" );
-        // if ( m_properties )
-        // {
-        //     m_properties->UpdateMinimumSize();
-        // }
-
-
-        // TitlePage* titlePage = ( TitlePage* )FindFirstChild( "TitlePage" );
-        // if ( titlePage )
-        // {
-        //     // set the layout parameters into the child
-        //     titlePage->SetXPos( 0.0 );
-        //     titlePage->SetYPos( 0.0 );
-        //     titlePage->SetWidth( GetWidth( ) );
-        //     titlePage->SetHeight( GetHeight( ) );
-        //     titlePage->UpdateMinimumSize( );
-        // }
         // set known child values
         wxTreeItemIdValue cookie;
         wxTreeItemId parentID = GetTreeItemId();
@@ -120,8 +102,8 @@ namespace Design {
                     //page->SetBorder( m_border );
                     page->SetXPos( 0.0 );
                     page->SetYPos( 0.0 );
-                    page->SetWidth( GetWidth( ) );
-                    page->SetHeight( GetHeight( ) );
+                    page->SetWidth( GetWidth( ) - GetRightMargin( ) - GetLeftMargin( ) );
+                    page->SetHeight( GetHeight( ) - GetTopMargin( ) - GetBottomMargin( ));
                     page->SetTopMargin( GetTopMargin( ) );
                     page->SetBottomMargin( GetBottomMargin( ) );
                     page->SetRightMargin( GetRightMargin( ) );
@@ -134,7 +116,6 @@ namespace Design {
                     break;
             }
             childID = GetDesignTreeCtrl()->GetNextChild(parentID, cookie);
-
         }
     }
 
@@ -185,9 +166,10 @@ namespace Design {
 
         bool firstPage = true;
 
-         wxTreeItemIdValue cookie;
+        wxTreeItemIdValue cookie;
         wxTreeItemId parentID = GetTreeItemId();
-        wxTreeItemId childID = GetDesignTreeCtrl()->GetFirstChild(parentID, cookie);        while ( childID.IsOk() )
+        wxTreeItemId childID = GetDesignTreeCtrl()->GetFirstChild(parentID, cookie); 
+        while ( childID.IsOk() )
         {
             int childType  = ( AlbumBaseType )GetDesignTreeCtrl()->GetItemType( childID );
             switch ( childType )
@@ -214,35 +196,14 @@ namespace Design {
                     page->Write( thePage );
                     break;
 
-                    childID = GetDesignTreeCtrl()->GetNextChild(parentID, cookie);
 
                 }
             
                 default:
-                // else if ( !childType.Cmp( "TitlePage" ) )
-                // {
-
-                //    // add the Text:p for this Page
-                //     thePage = 0;
-                //     if ( firstPage )
-                //     {
-                //         thePage = ContentDoc()->FindFirstPage();
-                //         if ( !thePage )
-                //         {
-                //             thePage = ContentDoc()->AddNewPage();
-                //         }
-                //     }
-                //     else
-                //     {
-                //         thePage = ContentDoc()->AddNewPage();
-                //     }
-
-                //     // set the layout parameters into the child
-                //     Page* page = (Page*)ChildItem( i );
-                //     page->Write( thePage );
-                // }
+   
                 break;
             }
+            childID = GetDesignTreeCtrl()->GetNextChild(parentID, cookie);
         }
     }
 
@@ -267,6 +228,7 @@ namespace Design {
         UpdateSizes( );
         UpdatePositions( );
         Write( ( wxXmlNode* )0 );
+        DumpLayout(   );
     }
 
     NodeStatus Album::ValidateNode()
@@ -298,8 +260,16 @@ namespace Design {
         SetAttribute( xmlNode, AT_BorderFileName );
         SetAttribute( xmlNode, AT_BorderSize );
     }
-    void Album::DumpLayout(   )
+    void Album::DumpLayout(  )
     {
+        std::cout << "Album Parms w:"  << GetAttrStr( AT_PageWidth )
+        << " h:"  <<  GetAttrStr( AT_PageHeight )
+        << " tm:"  <<  GetAttrStr( AT_TopMargin )
+        << " bm:"  <<  GetAttrStr( AT_BottomMargin )
+        << " rm:"  <<  GetAttrStr( AT_RightMargin )
+        << " lm:"  <<  GetAttrStr( AT_LeftMargin ) << "\n" ;
+ 
+
         wxTreeItemIdValue cookie;
         wxTreeItemId parentID = GetTreeItemId();
         wxTreeItemId childID = GetDesignTreeCtrl()->GetFirstChild(parentID, cookie);

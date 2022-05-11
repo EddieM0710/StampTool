@@ -54,18 +54,13 @@ namespace Design {
         Album* GetAlbum( ) { return m_album; };
         void SetAlbum( Album* album ) { m_album = album; };
 
-        Page* AddPage(  wxTreeItemId parentId );
-        Column* AddCol(  wxTreeItemId parentId );
-        Row* AddRow( wxTreeItemId parentId );
-        Stamp* AddStamp(  wxTreeItemId parentId );
-        Title* AddTitle(  wxTreeItemId parentId );
-
         void MakePage(LayoutBase* node);
 
         void SetDirty( bool state = true ) { m_dirty = state; };
         bool isDirty( ) { return m_dirty; };
 
         AlbumBase* GetPage( AlbumBase* node);
+        wxTreeItemId GetPage( wxTreeItemId id );
         NodeStatus ValidatePage( AlbumBase* node );
         AlbumBase* ValidateChildren( AlbumBase* node );
 

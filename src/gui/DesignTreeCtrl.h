@@ -69,13 +69,16 @@ public:
     DesignTreeItemData( Design::AlbumBaseType type, const wxString desc,
         Design::AlbumBase* ele = 0, Utils::StampLink* stampLink = 0)
     {
+        m_ok = 12345;
         m_type = type;
         m_desc = desc;
         m_element = ele;
         m_stampLink = stampLink;
     }
+
     DesignTreeItemData( DesignTreeItemData &data )
     {
+        m_ok = 12345;
         m_type = data.GetType( );
         m_desc = data.GetDesc();
         m_element = data.GetNodeElement();
@@ -94,7 +97,11 @@ public:
     void SetNodeElement( Design::AlbumBase* ele ) { m_element = ele; };
 
 
-
+    bool IsOk()
+    {
+        if (m_ok = 12345 )return true;
+        return false;
+    }
     /**
      *
      * @return {wxXmlNode*}    :
@@ -117,6 +124,7 @@ public:
     void SetStampLink( Utils::StampLink* link ) { m_stampLink = link; };
 
 private:
+    int m_ok;
     Design::AlbumBase* m_element;
     wxString m_desc;
     Design::AlbumBaseType m_type;
@@ -181,7 +189,7 @@ public:
      *
      * @param   event :
      **************************************************/
-    void OnContextMenu( wxContextMenuEvent& event );
+    //void OnContextMenu( wxContextMenuEvent& event );
 
     /**
      *
@@ -265,11 +273,13 @@ public:
     wxTreeItemId AddStampNodeToTree( wxTreeItemId parent, wxXmlNode* child );
 
 
-    void AddPage( wxTreeItemId node  );
-    Design::Stamp* AddStamp( wxTreeItemId node  );
-    void AddRow( wxTreeItemId node  );
-    void AddCol( wxTreeItemId node  );
+    void AddPageTreeItem( wxTreeItemId node  );
+    Design::Stamp* AddStampTreeItem( wxTreeItemId node  );
+    void AddRowTreeItem( wxTreeItemId node  );
+    void AddColTreeItem( wxTreeItemId node  );
     Utils::StampLink* AppendStamp( wxTreeItemId id );
+    wxTreeItemId GetPage( wxTreeItemId id );
+    void MakePage(wxTreeItemId id);
 
     /**
      *
@@ -355,6 +365,8 @@ public:
 
     Design::LayoutBase* GetSelectedNode( );
     void ShowStampDetails( wxTreeItemId id, Design::AlbumBase* node );
+    void ShowRowDetails( wxTreeItemId id, Design::AlbumBase* node );
+    void ShowColDetails( wxTreeItemId id, Design::AlbumBase* node );
     void Validate( wxTreeItemId id );
     void ValidateTree( );
     void SetValidateStatus( bool status );
@@ -388,6 +400,7 @@ private:
     bool m_reverseSort;         // flag for OnCompareItems
     wxTreeItemId m_draggedItem; // item being dragged right now
     wxColour m_defaultBackgroundColour;
+    wxTreeItemId m_currPageID;
     bool ValidateStatus;
     // NB: due to an ugly wxMSW hack you _must_ use wxDECLARE_DYNAMIC_CLASS();
     //     if you want your overloaded OnCompareItems() to be called.

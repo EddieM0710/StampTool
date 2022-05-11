@@ -110,7 +110,20 @@ namespace Utils {
         void SetDirty( bool state = true ) { m_dirty = state; };
         bool isDirty( ) { return m_dirty; };
         void SetDefaults();
- 
+        wxString GetCatCodePrefix()
+        {
+            wxString str = "";
+            if ( !m_countryID.IsEmpty() && !m_catalogID.IsEmpty() )
+            {
+                str = m_catalogID << ":" << m_countryID ;
+            }
+            else 
+            {
+                str = m_defaultCatalogID + ":" + m_defaultCountryID ;
+            }
+            return str;
+        };
+
     private:
         wxString m_lastFile;
         bool m_loadLastFileAtStartUp;
@@ -133,8 +146,8 @@ namespace Utils {
         const wxString m_defaultWorkingDirectory = "";
         const wxString m_defaultConfigurationDirectory = "";
         const wxString m_defaultImageDirectory = "";
-        const wxString m_defaultCountryID = "US";
-        const wxString m_defaultCatalogID = "SN";
+        const wxString m_defaultCountryID = "GB";
+        const wxString m_defaultCatalogID = "SG";
         wxArrayInt m_defaultSortOrder;
         const wxString m_defaultLowerDivision = "1950";
         const wxString m_defaultUpperDivision = "2000";

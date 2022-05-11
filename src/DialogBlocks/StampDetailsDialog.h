@@ -39,7 +39,9 @@ class wxListCtrl;
 ////@begin control identifiers
 #define ID_STAMPDETAILSDIALOG 10000
 #define ID_IDLABELTEXTBOX 10007
+#define ID_IDCHECKBOX 10003
 #define ID_NAMELABELEDTEXTBOX 10009
+#define ID_TITLECHECKBOX 10004
 #define ID_HEIGHTLABELEDTEXTBOX 10001
 #define ID_WIDTHLABELEDTEXTBOX 10002
 #define ID_REFRESHBUTTON 10005
@@ -106,7 +108,9 @@ public:
 
 ////@begin StampDetailsDialog member variables
     LabeledTextBox* m_id;
+    wxCheckBox* m_idCheckbox;
     LabeledTextBox* m_name;
+    wxCheckBox* m_titleCheckbox;
     LabeledTextBox* m_height;
     LabeledTextBox* m_width;
     wxButton* m_validate;

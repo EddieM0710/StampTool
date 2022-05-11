@@ -105,9 +105,14 @@ typedef std::vector<AlbumBase*> AlbumBaseList;
         void SetTreeItemId(wxTreeItemId id){m_treeID = id;};
 
 
-        virtual AlbumBaseStatus ValidateNode() = 0;
+        virtual NodeStatus ValidateNode() = 0;
         bool HasChildren(){ return !m_layoutChildArray.empty(); };
 
+        NodeStatus ValidateChildren( AlbumBase* node );
+        NodeStatus GetNodeStatus(){ return m_nodeValid;};
+        bool IsStatusOK(){ return ( m_nodeValid != AT_FATAL);};
+        void SetNodeStatus( NodeStatus status ){  m_nodeValid = status;};
+        
     private:
 
         bool LoadChildren( wxXmlNode* parent );
@@ -122,6 +127,7 @@ typedef std::vector<AlbumBase*> AlbumBaseList;
         AlbumBaseList m_layoutChildArray;
         LayoutAttributeArray m_attrArray;
         wxString m_text;
+        NodeStatus m_nodeValid;
    };
 }
 #endif

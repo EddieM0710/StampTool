@@ -233,7 +233,7 @@ public:
      * @param   stamp :
      * @return {IconID}       :
      **************************************************/
-    IconID GetIconId( Design::Stamp* stamp );
+    Design::IconID GetIconId( Design::Stamp* stamp );
 
     /**
      *

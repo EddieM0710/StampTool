@@ -58,8 +58,12 @@ namespace Catalog {
         return ( new CatalogData( ) );
     };
 
-    const wxString ST_StatusStrings[ ST_NbrTypes ]
+    const wxString ST_CheckedStatusStrings[ ST_NbrCheckedStatusTypes ]
         = { wxT( "Checked" ), wxT( "Unchecked" ) };
+
+    const wxString ST_InventoryStatusStrings[ ST_NbrInventoryStatusTypes ]
+        = { wxT( "None" ), wxT( "Missing"), wxT( "Ordered"), wxT( "Own"), wxT( "Own Variant" ), wxT( "Exclude" ) };
+
 
     const wxString FT_FormatStrings[ FT_NbrTypes ]
         = { wxT( "Unknown" ),
@@ -110,8 +114,8 @@ namespace Catalog {
         wxT( "Gum" ),         wxT( "Currency" ),      wxT( "FaceValue" ),
         wxT( "Print run" ),   wxT( "Variant" ),       wxT( "Score" ),
         wxT( "Accuracy" ),    wxT( "Colors" ),        wxT( "Themes" ),
-        wxT( "Description" ), wxT( "Link" ),          wxT( "Status" ),
-        wxT( "Background" )
+        wxT( "Description" ), wxT( "Link" ),          wxT( "Checked" ),
+        wxT( "Inventory" ), wxT( "Background" )
     };
 
     const wxString DT_XMLDataNames[ DT_NbrTypes ] = {
@@ -123,8 +127,8 @@ namespace Catalog {
         wxT( "Gum" ),         wxT( "Currency" ),      wxT( "FaceValue" ),
         wxT( "Print_run" ),   wxT( "Variant" ),       wxT( "Score" ),
         wxT( "Accuracy" ),    wxT( "Colors" ),        wxT( "Themes" ),
-        wxT( "Description" ), wxT( "Link" ),          wxT( "Status" ),
-        wxT( "Background" )
+        wxT( "Description" ), wxT( "Link" ),          wxT( "CheckedStatus" ),
+        wxT( "InventoryStatus" ),  wxT( "Background" )
     };
 
     wxString CatalogBaseNames[NT_NbrTypes] = {

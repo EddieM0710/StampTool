@@ -197,33 +197,41 @@ namespace Catalog {
         /**
          * @brief Get the Status Type object
          *
-         * @return StatusType
+         * @return CheckedStatusType
          **************************************************/
-        StatusType GetStatusType( );
+        CheckedStatusType GetCheckedStatusType( );
+        InventoryStatusType GetInventoryStatusType( );
 
         /**
          * @brief Get the Status object
          *
          * @return wxString
          **************************************************/
-        wxString GetStatus( ) { return GetAttr( DT_Status ); };
+        wxString GetCheckedStatus( ) { return GetAttr( DT_CheckedStatus ); };
+        wxString GetInventoryStatus( ) { return GetAttr( DT_InventoryStatus ); };
 
         /**
          * @brief Set the Status object
          *
          * @param val
          **************************************************/
-        void SetStatus( wxString val ) { SetAttr( DT_Status, val ); };
+        void SetCheckedStatus( wxString val ) { SetAttr( DT_CheckedStatus, val ); };
+        void SetInventoryStatus( wxString val ) { SetAttr( DT_InventoryStatus, val ); };
 
         /**
          * @brief Set the Status Type object
          *
          * @param type
          **************************************************/
-        void SetStatusType( StatusType type )
+        void SetCheckedStatusType( CheckedStatusType type )
         {
-            SetAttr( DT_Status, ST_StatusStrings[ type ] );
+            SetAttr( DT_CheckedStatus, ST_CheckedStatusStrings[ type ] );
         };
+        void SetInventoryStatusType( InventoryStatusType type )
+        {
+            SetAttr( DT_InventoryStatus, ST_InventoryStatusStrings[ type ] );
+        };
+
 
         /**
          * @brief Get the Background object

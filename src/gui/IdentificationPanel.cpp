@@ -25,7 +25,8 @@
 #include "Classification.h"
 #include "IdentificationPanel.h"
 #include "catalog/Stamp.h"
-
+#include "catalog/CatalogDefs.h"
+#include "gui/CatalogTreeCtrl.h"
 /*
  * IdentificationPanel type definition
  */
@@ -156,12 +157,12 @@ void IdentificationPanel::CreateControls( )
         5 );
 
     wxArrayString m_statusStrings;
-    m_statusStrings.Add( _( "None" ) );
-    m_statusStrings.Add( _( "Missing" ) );
-    m_statusStrings.Add( _( "Ordered" ) );
-    m_statusStrings.Add( _( "Own" ) );
-    m_statusStrings.Add( _( "Own Variant" ) );
-    m_statusStrings.Add( _( "Exclude" ) );
+    m_statusStrings.Add( Catalog::ST_InventoryStatusStrings[ Catalog::ST_None ] );
+    m_statusStrings.Add( Catalog::ST_InventoryStatusStrings[ Catalog::ST_Missing ] );
+    m_statusStrings.Add( Catalog::ST_InventoryStatusStrings[ Catalog::ST_Ordered] );
+    m_statusStrings.Add( Catalog::ST_InventoryStatusStrings[ Catalog::ST_Own] );
+    m_statusStrings.Add( Catalog::ST_InventoryStatusStrings[ Catalog::ST_OwnVariant] );
+    m_statusStrings.Add( Catalog::ST_InventoryStatusStrings[ Catalog::ST_Exclude] );
     m_status = new wxChoice( itemPanel1, ID_STATUSCHOICE, wxDefaultPosition,
         wxDefaultSize, m_statusStrings, 0 );
     m_status->SetStringSelection( _( "None" ) );
@@ -385,7 +386,7 @@ void IdentificationPanel::SetStamp( Catalog::Stamp* stamp )
         m_series->SetValue( m_stamp->GetAttr(  Catalog::DT_Series) );
         m_themes->SetValue( m_stamp->GetAttr(  Catalog::DT_Themes ));
         m_country->SetValue( m_stamp->GetAttr(  Catalog::DT_Country ) );
-        SetChoice( m_status, m_stamp->GetStatus( ) );
+        SetChoice( m_status, m_stamp->GetInventoryStatus( ) );
     }
 }
 
@@ -397,8 +398,9 @@ void IdentificationPanel::SetStamp( Catalog::Stamp* stamp )
 void IdentificationPanel::OnStatuschoiceSelected( wxCommandEvent& event )
 {
     wxString strSel = m_status->GetStringSelection( );
-    m_stamp->SetStatus( strSel );
-
+    m_stamp->SetInventoryStatus( strSel );
+    GetCatalogTreeCtrl()->SetInventoryStatusImage( );
+    
     // wxEVT_COMMAND_CHOICE_SELECTED event handler for ID_STATUSCHOICE
     // in IdentificationPanel.
     // Before editing this code, remove the block markers.
@@ -416,6 +418,6 @@ void IdentificationPanel::UpdateStatus( )
 {
     if ( m_stamp->IsOK( ) )
     {
-        SetChoice( m_status, m_stamp->GetStatus( ) );
+        SetChoice( m_status, m_stamp->GetInventoryStatus( ) );
     }
 }

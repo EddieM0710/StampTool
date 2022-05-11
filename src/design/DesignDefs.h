@@ -73,7 +73,7 @@ namespace Design {
         AT_OK = 0,
         AT_WARING,
         AT_FATAL 
-    } AlbumBaseStatus;
+    } NodeStatus;
 
     AlbumBaseType FindAlbumBaseType( wxString name );
 

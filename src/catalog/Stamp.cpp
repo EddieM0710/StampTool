@@ -71,18 +71,32 @@ namespace Catalog {
         return wxString( "" );
     }
 
-    StatusType Stamp::GetStatusType( )
+    CheckedStatusType Stamp::GetCheckedStatusType( )
     {
-        wxString status = GetAttr( DT_Status );
-        for ( int i = ST_Checked; i < ST_NbrTypes; i++ )
+        wxString status = GetAttr( DT_CheckedStatus );
+        for ( int i = ST_Checked; i < ST_NbrCheckedStatusTypes; i++ )
         {
-            wxString str = ST_StatusStrings[ i ];
-            if ( !status.CmpNoCase( ST_StatusStrings[ i ] ) )
+            wxString str = ST_CheckedStatusStrings[ i ];
+            if ( !status.CmpNoCase( ST_CheckedStatusStrings[ i ] ) )
             {
-                return ( StatusType )i;
+                return ( CheckedStatusType )i;
             }
         }
-        return ( StatusType )ST_Unchecked;
+        return ( CheckedStatusType )ST_Unchecked;
+    };
+
+    InventoryStatusType Stamp::GetInventoryStatusType( )
+    {
+        wxString status = GetAttr( DT_InventoryStatus );
+        for ( int i = ST_None; i < ST_NbrInventoryStatusTypes; i++ )
+        {
+            wxString str = ST_InventoryStatusStrings[ i ];
+            if ( !status.CmpNoCase( ST_InventoryStatusStrings[ i ] ) )
+            {
+                return ( InventoryStatusType )i;
+            }
+        }
+        return ( InventoryStatusType )ST_None;
     };
 
     FormatType Stamp::GetFormatType( )

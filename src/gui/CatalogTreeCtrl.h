@@ -226,14 +226,14 @@ public:
     /**
      *
      **************************************************/
-    void SetStatusImage( void );
+    void SetInventoryStatusImage( void );
 
     /**
      *
      * @param   stamp :
      * @return {IconID}       :
      **************************************************/
-    IconID GetIconId( Catalog::Stamp* stamp );
+     Catalog::IconID GetInventoryIconId( Catalog::Stamp* stamp );
 
     /**
      *

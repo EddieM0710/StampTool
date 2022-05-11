@@ -97,7 +97,7 @@ namespace Design {
         wxXmlNode* GetCatalogStamp( ) { return m_catalogStamp; };
         void SetCatalogStamp( wxXmlNode* node ) { m_catalogStamp = node; };
         
-        AlbumBaseStatus ValidateNode();
+        NodeStatus ValidateNode();
         
     private:
 

@@ -31,6 +31,7 @@
 #include "utils/XMLUtilities.h"
 #include "Defs.h"
 #include "design/DesignData.h"
+#include "design/AlbumBase.h"
 #include "design/Album.h"
 #include "design/Stamp.h"
 #include "design/Page.h"
@@ -256,5 +257,29 @@ namespace Design {
         {
             return  (Title*)0;
         }
+    }
+
+    AlbumBase* DesignData::GetPage( AlbumBase* node )
+    {
+        while ( node )
+        {
+            if ( node->GetNodeType() == AT_Page )
+            {
+                return node;
+            }
+            node = node->GetParent();
+        }
+        return (AlbumBase*)0;
+    }
+
+
+    NodeStatus DesignData::ValidatePage( AlbumBase* node )
+    {
+        Page* page = (Page*)GetPage(node);
+        if ( page )
+        {
+            return page->ValidateChildren( page );
+        }
+        return AT_FATAL;
     }
 }

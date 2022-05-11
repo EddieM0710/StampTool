@@ -38,9 +38,9 @@ namespace Design {
 
     }
 
-    AlbumBaseStatus TitlePage::ValidateNode()
+    NodeStatus TitlePage::ValidateNode()
      {
-        AlbumBaseStatus status = AT_OK;
+        NodeStatus status = AT_OK;
         if ( !HasChildren() )
         {
             if ( GetHeight() <= 0.0)
@@ -54,6 +54,7 @@ namespace Design {
                 status = AT_FATAL;
             }
         }
+        m_nodeValid = status;
         return status;
     }
 }

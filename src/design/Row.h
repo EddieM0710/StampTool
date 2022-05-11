@@ -69,7 +69,7 @@ namespace Design {
          **************************************************/
         wxXmlNode* Write( wxXmlNode* parent );
 
-        AlbumBaseStatus ValidateNode();
+        NodeStatus ValidateNode();
 
     private:
 

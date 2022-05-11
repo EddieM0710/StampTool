@@ -81,7 +81,7 @@ namespace Design {
 
         // Getters and Putters
 
-        AlbumBaseStatus ValidateNode();
+        NodeStatus ValidateNode();
 
 
     private:

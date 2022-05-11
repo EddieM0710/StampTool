@@ -232,9 +232,9 @@ namespace Design {
 
         return image;
     }
-    AlbumBaseStatus Stamp::ValidateNode()
+    NodeStatus Stamp::ValidateNode()
     {
-        AlbumBaseStatus status = AT_OK;
+        NodeStatus status = AT_OK;
         if ( GetHeight() <= 0.0)
         {
             std::cout << "Terminal leaf node must define the height.\n";
@@ -245,7 +245,7 @@ namespace Design {
             std::cout << "Terminal leaf node must define the width.\n";
             status = AT_FATAL;
         }
-        
+        m_nodeValid = status;
         return status;
     }
 

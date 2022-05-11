@@ -254,9 +254,9 @@ namespace Design {
         Write( ( wxXmlNode* )0 );
     }
 
-    AlbumBaseStatus Album::ValidateNode()
+    NodeStatus Album::ValidateNode()
     {
-        AlbumBaseStatus status = AT_OK;
+        NodeStatus status = AT_OK;
         if ( GetPageHeight() <= 0.0)
         {
             std::cout << "Must define the page height.\n";
@@ -267,6 +267,7 @@ namespace Design {
             std::cout << "Must define the page width.\n";
             status = AT_FATAL;
         }
+        m_nodeValid = status;
         return status;
     }
 }

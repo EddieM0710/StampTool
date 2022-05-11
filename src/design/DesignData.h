@@ -13,6 +13,7 @@
 #define DesignData_H
 
 #include "Defs.h"
+#include "design/DesignDefs.h"
 #include "wx/xml/xml.h"
 #include <wx/string.h>
 
@@ -27,6 +28,7 @@ namespace Design {
     class Stamp;
     class Title;
     class LayoutBase;
+    class AlbumBase;
 
     
     class DesignData
@@ -58,6 +60,10 @@ namespace Design {
 
         void SetDirty( bool state = true ) { m_dirty = state; };
         bool isDirty( ) { return m_dirty; };
+
+        AlbumBase* GetPage( AlbumBase* node);
+        NodeStatus ValidatePage( AlbumBase* node );
+        AlbumBase* ValidateChildren( AlbumBase* node );
 
     private:
         wxXmlDocument* m_albumDoc;

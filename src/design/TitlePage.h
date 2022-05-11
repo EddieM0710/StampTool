@@ -66,7 +66,7 @@ namespace Design {
 
         void UpdateSizes( );
 
-        AlbumBaseStatus ValidateNode();
+        NodeStatus ValidateNode();
 
     private:
         wxXmlNode* Write( wxXmlNode* parent )

@@ -41,23 +41,64 @@
 #include "art/unchecked.xpm"
 #include "art/checked.xpm"
 
+namespace Design {
+    typedef enum
+    {
+        Icon_Stamp = 0,
+        Icon_StampSelected,
+        Icon_StampBlock,
+        Icon_StampBlockSelected,
+        Icon_StampMiniSheet,
+        Icon_StampMiniSheetSelected,
+        Icon_StampSouvenirSheet,
+        Icon_StampSouvenirSheetSelected,
+        Icon_Folder
+    } IconID;
 
-typedef enum
+    extern Design::IconID AlbumImageSelection[ Design::AT_NbrAlbumTypes ][ Catalog::ST_NbrCheckedStatusTypes ];
+
+};
+namespace Catalog
 {
-    Icon_Stamp = 0,
-    Icon_StampSelected,
-    Icon_StampBlock,
-    Icon_StampBlockSelected,
-    Icon_StampMiniSheet,
-    Icon_StampMiniSheetSelected,
-    Icon_StampSouvenirSheet,
-    Icon_StampSouvenirSheetSelected,
-    Icon_Folder
-} IconID;
+    typedef enum
+    {
+        Icon_StampUnknown = 0,
+        Icon_Stamp = Icon_StampUnknown,
+        Icon_StampMissing,
+        Icon_StampSelected = Icon_StampMissing,
+        Icon_StampOrdered,
+        Icon_StampOwn,
+        Icon_StampOwnVariant,
+        Icon_StampExclude,
+        Icon_StampUnknownBlock,
+        Icon_StampBlock = Icon_StampUnknownBlock,
+        Icon_StampMissingBlock,
+        Icon_StampBlockSelected = Icon_StampMissingBlock,
+        Icon_StampOrderedBlock,
+        Icon_StampOwnBlock,
+        Icon_StampOwnVariantBlock,
+        Icon_StampExcludeBlock,
+        Icon_StampUnknownMiniSheet,
+        Icon_StampMiniSheet = Icon_StampUnknownMiniSheet,
+        Icon_StampMissingMiniSheet,
+        Icon_StampMiniSheetSelected = Icon_StampMissingMiniSheet,
+        Icon_StampOrderedMiniSheet,
+        Icon_StampOwnMiniSheet,
+        Icon_StampOwnVariantMiniSheet,
+        Icon_StampExcludeMiniSheet,
+        Icon_StampUnknownSouvenirSheet,
+        Icon_StampSouvenirSheet = Icon_StampUnknownSouvenirSheet,
+        Icon_StampMissingSouvenirSheet,
+        Icon_StampSouvenirSheetSelected = Icon_StampMissingSouvenirSheet,
+        Icon_StampOrderedSouvenirSheet,
+        Icon_StampOwnSouvenirSheet,
+        Icon_StampOwnVariantSouvenirSheet,
+        Icon_StampExcludeSouvenirSheet,
+        Icon_Folder
+    } IconID;
 
-extern IconID AlbumImageSelection[ Design::AT_NbrAlbumTypes ][ 2 ];
-extern IconID CatalogImageSelection[ Catalog::FT_NbrTypes ][ 2 ] ;
-
+extern Catalog::IconID CatalogImageSelection[ Catalog::FT_NbrTypes ][  Catalog::ST_NbrInventoryStatusTypes ] ;
+};
 wxImageList* CreateAlbumImageList( );
 wxImageList* CreateAlbumStateImageList( bool del );
 wxImageList* CreateCatalogImageList( );

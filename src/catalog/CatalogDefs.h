@@ -111,7 +111,8 @@ class CatalogData;
         DT_Themes,
         DT_Description,
         DT_Link,
-        DT_Status,
+        DT_CheckedStatus,
+        DT_InventoryStatus,
         DT_BackGround,
         DT_NbrTypes
     } DataTypes;
@@ -172,8 +173,19 @@ class CatalogData;
     {
         ST_Unchecked = 0,
         ST_Checked,
-        ST_NbrTypes
-    } StatusType;
+        ST_NbrCheckedStatusTypes
+    } CheckedStatusType;
+
+    typedef enum
+    {
+        ST_None = 0,
+        ST_Missing,
+        ST_Ordered,
+        ST_Own,
+        ST_OwnVariant,
+        ST_Exclude,
+        ST_NbrInventoryStatusTypes
+    } InventoryStatusType;
 
     /**
      * @enum FormatType
@@ -258,7 +270,8 @@ class CatalogData;
      * @brief Strings used for StatusTypes enum
      *
      **************************************************/
-    extern const wxString ST_StatusStrings[ ST_NbrTypes ];
+    extern const wxString ST_CheckedStatusStrings[ ST_NbrCheckedStatusTypes ];
+    extern const wxString ST_InventoryStatusStrings[ ST_NbrInventoryStatusTypes ];
 
     /**
      * @brief Ascii strings used for FormatTypes enum

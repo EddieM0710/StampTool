@@ -265,4 +265,20 @@ namespace Design {
         m_layoutChildArray.push_back(node);
     }
 
+    NodeStatus AlbumBase::ValidateChildren( AlbumBase* node )
+    {
+        if ( !node->IsStatusOK() )
+        {
+            return AT_FATAL;
+        }    
+        for ( AlbumBaseList::iterator it = std::begin(m_layoutChildArray ); it != std::end( m_layoutChildArray ); ++it )
+        {
+            AlbumBase* child = ( AlbumBase* )( *it );
+            if ( ValidateChildren( child ) == AT_FATAL )
+            {
+                return AT_FATAL;
+            }
+        }
+        return AT_OK;
+    }
 }

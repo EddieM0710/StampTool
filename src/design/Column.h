@@ -70,7 +70,7 @@ public:
      **************************************************/
     wxXmlNode* Write( wxXmlNode* parent );
         
-    AlbumBaseStatus ValidateNode();
+    NodeStatus ValidateNode();
 
 private:
 

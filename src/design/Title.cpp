@@ -57,9 +57,10 @@ namespace Design {
     }
 
         
-    AlbumBaseStatus Title::ValidateNode()
+    NodeStatus Title::ValidateNode()
     {
-        AlbumBaseStatus status = AT_OK;
+        NodeStatus status = AT_OK;
+        m_nodeValid = status;
 
 
         return status;

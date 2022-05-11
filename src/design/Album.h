@@ -170,7 +170,7 @@ namespace Design {
         void GetPageParameters( wxString& width, wxString& height, wxString& topMargin,
             wxString& bottomMargin, wxString& rightMargin, wxString& leftMargin );
 
-        AlbumBaseStatus ValidateNode();
+        NodeStatus ValidateNode();
 
     private:
 

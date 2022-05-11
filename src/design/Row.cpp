@@ -179,9 +179,9 @@ namespace Design {
         return frame;
     }
 
-    AlbumBaseStatus Row::ValidateNode()
+    NodeStatus Row::ValidateNode()
     {
-        AlbumBaseStatus status = AT_OK;
+        NodeStatus status = AT_OK;
         if ( !HasChildren() )
         {
             if ( GetHeight() <= 0.0)
@@ -195,6 +195,7 @@ namespace Design {
                 status = AT_FATAL;
             }
         }
+        m_nodeValid = status;
         return status;
     }
 }

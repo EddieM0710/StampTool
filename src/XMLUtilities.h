@@ -12,56 +12,53 @@
 #ifndef XMLIterator_H
 #define XMLIterator_H
 
-#include "tinyxml2.h"
+#include "wx/xml/xml.h"
 
-using namespace tinyxml2;
+//
+wxXmlNode* FirstChildElement( wxXmlNode* node, wxString name );
 
-// Class for iterating an XML heirarchy
-class XMLIterator
+bool IsNodeType( wxXmlNode* ele, NodeType type);
+void IDElement( wxXmlNode* ele );
+
+
+// NodeType FindNodeType(wxXmlNode *element);
+
+void AddStamp( wxXmlNode* child );
+void AddStamp( wxXmlNode* parent, wxXmlNode* child, int level = 0 );
+wxXmlNode* MoveStamp( wxXmlNode* newParent, wxXmlNode* child );
+void SortData( wxXmlNode* newRoot, wxXmlNode* child );
+
+wxXmlNode* NewNode (wxXmlNode* parent, wxString name )
 {
-  private:
-    XMLElement* m_parent;      // pointer to parent of current element
-    XMLElement* m_currElement; // pointer to the current element
-    XMLIterator* m_iterator;   // iterator for children of this element
-    bool m_decend;             // bool; true => iterate children
-    bool m_firstDone; // bool; true if First has been called; if not true Next
-                      // just returns null
+    return  new wxXmlNode( parent, wxXML_ELEMENT_NODE, name );
 
-  public:
-    /**
-     * XMLIterator - constructor for iterating an XML heirarchy
-     *
-     * @param   parent : is the xml element whose children will be
-     * iterated.
-     * @param   decend : false will iterate only the first level
-     * childeren. - true (default) will iterate  heirarchy
-     */
-    XMLIterator( XMLElement* parent, bool decend = true );
-    ~XMLIterator( );
+}
 
-    /**
-     * Returns the first child or Null
-     * @return {XMLElement*}  :
-     */
-    XMLElement* First( );
+wxXmlAttribute* GetAttribute( wxXmlNode* node, wxString attrName )
+{
+    wxXmlAttribute* attr = node->GetAttributes();
+    while (attr)
+    {
+        if ( !attr->GetName().Cmp( attrName ) )
+        {
+            return attr;
+        }
+        attr = attr->GetNext();
+    }
+}
 
-    /**
-     *  Successively returns the next child or Null if finished.
-     * @return {XMLElement*}  :
-     */
-    XMLElement* Next( );
-};
-
-bool IsNodeType( XMLElement* ele, NodeType type);
-void IDElement( XMLElement* ele );
-
-
-// NodeType FindNodeType(XMLElement *element);
-
-void AddStamp( XMLElement* child );
-void AddStamp( XMLElement* parent, XMLElement* child, int level = 0 );
-XMLElement* MoveStamp( XMLElement* newParent, XMLElement* child );
-void SortData( XMLElement* newRoot, XMLElement* child );
-
+wxXmlAttribute* SetAttribute( wxXmlNode* node, wxString name, wxString val)
+{
+    wxXmlAttribute* attr = GetAttribute( node, name);
+    if ( attr )
+    {
+        attr->SetValue(val);
+    }
+    else
+    {
+        attr = new wxXmlAttribute( name, val);
+        node->AddAttribute(attr);
+    }
+}
 
 #endif

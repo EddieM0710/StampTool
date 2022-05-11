@@ -29,7 +29,7 @@ bool Classification::IsOK( void )
 {
     if ( GetElement( ) )
     {
-        const char* name = GetElement( )->Name( );
+        const char* name = GetElement( )->GetName( );
         if ( !NodeNameStrings.Item( NT_Catalog ).Cmp( name )
             || !NodeNameStrings.Item( NT_Period ).Cmp( name )
             || !NodeNameStrings.Item( NT_Year ).Cmp( name )
@@ -45,8 +45,8 @@ void Classification::SetAttr( ClassificationTypes type, wxString val )
 {
     if ( IsOK( ) )
     {
-        GetElement( )->SetAttribute( CT_Names[ type ].char_str( ),
-            val.char_str( ) );
+        GetElement( )->DeleteAttribute(CT_Names[ type ]);
+        GetElement( )->AddAttribute( CT_Names[ type ], val.char_str( ) );
     }
 }
 
@@ -54,11 +54,7 @@ wxString Classification::GetAttr( ClassificationTypes type )
 {
     if ( IsOK( ) )
     {
-        const XMLAttribute* attr = GetElement( )->FindAttribute( CT_Names[ type ] );
-        if ( attr)
-        {
-            return wxString( attr->Value( ) );
-        }
+         return  GetElement( )->GetAttribute( CT_Names[ type ] );
     }
     return wxString( "" );
 }

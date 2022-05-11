@@ -32,112 +32,33 @@
 #include "Stamp.h"
 #include "XMLUtilities.h"
 
-#include "tinyxml2.h"
+#include "wx/xml/xml.h"
 
-using namespace tinyxml2;
+//
 
-XMLIterator::XMLIterator( XMLElement* parent, bool decend )
+
+wxXmlNode* FirstChildElement( wxXmlNode* node, wxString name )
 {
-    m_iterator = ( XMLIterator* )0;
-    m_parent = parent;
-    m_decend = decend;
-    m_currElement = 0;
-    m_firstDone = false;
-}
-
-XMLIterator::~XMLIterator( )
-{
-}
-
-XMLElement* XMLIterator::First( )
-{
-    m_firstDone = true;
-    // get the first child and save the location
-    m_currElement = m_parent->FirstChildElement( );
-
-    // if the currElement is null there is noting to iterate
-    if ( !m_currElement )
+    wxXmlNode* child = node->GetChildren();
+    while( child )
     {
-        return m_currElement;
-    }
-    if ( m_currElement->NoChildren( ) )
-    {
-        // if the currElement has no children return it and set its sibling as
-        // curr
-        XMLElement* retElement = m_currElement;
-
-        m_currElement = retElement->NextSiblingElement( );
-        return retElement;
-    }
-    else
-    {
-        // if it has children setup a next level iterator and return the
-        // currElement
-        XMLElement* retElement = m_currElement;
-        if ( m_decend )
+        if (!child->GetName().Cmp( name ) )
         {
-            m_iterator = new XMLIterator( m_currElement );
+            return child;
         }
-        m_currElement = retElement->NextSiblingElement( );
-        return retElement;
+        child = child->GetNext();
     }
+    return (wxXmlNode*)0;
 }
-XMLElement* XMLIterator::Next( )
-{
-    if ( !m_firstDone )
-    {
-        return First( );
-    }
-    // if there is an iterator defined then drill down to process
-    if ( m_iterator )
-    {
-        XMLElement* nextElement = m_iterator->Next( );
-        if ( nextElement )
-        {
-            return nextElement;
-        }
-        // if there is no next element then we are thru processing
-        // this elements children; go to the next one.
-
-        if ( m_iterator )
-        {
-            delete m_iterator;
-            m_iterator = 0;
-        }
-    }
-
-    if ( !m_currElement )
-    {
-        return m_currElement;
-    }
-
-    if ( m_currElement->NoChildren( ) )
-    {
-        XMLElement* retElement = m_currElement;
-        m_currElement = retElement->NextSiblingElement( );
-        return retElement;
-    }
-    else
-    {
-        XMLElement* retElement = m_currElement;
-        if ( m_decend )
-        {
-            m_iterator = new XMLIterator( m_currElement );
-        }
-        m_currElement = retElement->NextSiblingElement( );
-        return retElement;
-    }
-}
-
 
 /**
  * @brief cout a brief id of the xml node
  *
  * @param ele
  **************************************************/
-void IDElement( XMLElement* ele )
+void IDElement( wxXmlNode* ele )
 {
-    const char* name = ele->Name( );
+    const char* name = ele->GetName( );
     NodeType nodeType = FindNodeType( name );
 
     switch ( nodeType )
@@ -152,30 +73,30 @@ void IDElement( XMLElement* ele )
     case  NT_Condition:
     {
         Classification classification( ele );
-        std::cout << "XMLElement " << name << " label " << classification.GetLabel( ) << "\n";
+        std::cout << "wxXmlNode " << name << " label " << classification.GetLabel( ) << "\n";
         break;
     }
    case  NT_Stamp:
     {
         Stamp stamp( ele );
-        std::cout << "XMLElement " << name << "  ID" << stamp.GetID( ) << "  Name " << stamp.GetName( ) << "\n";
+        std::cout << "wxXmlNode " << name << "  ID" << stamp.GetID( ) << "  Name " << stamp.GetName( ) << "\n";
         break;
     }
    case  NT_Specimen:
     {
         Specimen item( ele );
-        std::cout << "XMLElement " << name << "  Type " << item.GetType( ) << "  Condition " << item.GetCondition( ) << "\n";
+        std::cout << "wxXmlNode " << name << "  Type " << item.GetType( ) << "  Condition " << item.GetCondition( ) << "\n";
         break;
     }
    case  NT_CatalogCode:
     {
         CatalogCode code( ele );
-        std::cout << "XMLElement " << name << "  Type " << code.GetCatalog( ) << "  ID " << code.GetID( ) << "\n";
+        std::cout << "wxXmlNode " << name << "  Type " << code.GetCatalog( ) << "  ID " << code.GetID( ) << "\n";
         break;
     }
     default:
     {
-        std::cout << "XMLElement " << name << "  Unknown \n";
+        std::cout << "wxXmlNode " << name << "  Unknown \n";
 
         break;
     }
@@ -184,43 +105,43 @@ void IDElement( XMLElement* ele )
 }
 
     /**
-     * @brief is the specified XMLElement of specified type
+     * @brief is the specified wxXmlNode of specified type
      *
      * @param ele  element of interest
      * @param type  element type
      * @return true  if a match
      **************************************************/
-    bool IsNodeType( XMLElement * ele, NodeType type )
+    bool IsNodeType( wxXmlNode * ele, NodeType type )
     {
-        return !NodeNameStrings.Item( type ).Cmp( ele->Value( ) );
+        return !NodeNameStrings.Item( type ).Cmp( ele->GetName( ) );
     }
 
 
-// NodeType FindNodeType(XMLElement *element)
-// {
-//     wxString name = element->Name();
+NodeType FindNodeType(wxXmlNode *element)
+{
+    wxString name = element->GetName();
 
-//     int cnt = NodeNameStrings.GetCount();
-//     for (int i = 0; i < cnt; i++)
-//     {
-//         if (!name.Cmp(NodeNameStrings.Item(i)))
-//         {
-//             return (NodeType)i;
-//         }
-//     }
-//     return (NodeType)-1;
-// };
+     int cnt = NodeNameStrings.GetCount();
+    for (int i = 0; i < cnt; i++)
+    {
+        if (!name.Cmp(NodeNameStrings.Item(i)))
+        {
+            return (NodeType)i;
+        }
+    }
+    return (NodeType)-1;
+};
 
-// void AddStamp(XMLElement *child)
+// void AddStamp(wxXmlNode *child)
 // {
 //     AddStamp(Root(), child);
 // }
 
-void AddStamp( XMLElement* parent, XMLElement* child, int level )
+void AddStamp( wxXmlNode* parent, wxXmlNode* child, int level )
 {
     level++;
-    wxString name = child->Name( );
-    wxString parentName = parent->Name( );
+    wxString name = child->GetName( );
+    wxString parentName = parent->GetName( );
     NodeType parentType = FindNodeType( parentName );
     //    std::cout << "AddStamp  ParentName:" << parentName
     //        << "  ParentType:" << NodeNameStrings[ parentType ]
@@ -235,7 +156,7 @@ void AddStamp( XMLElement* parent, XMLElement* child, int level )
             //            std::cout << "     InsertChild\n";
                         // if the sort type is not one of the classification node types
                         // then add it here. All stamps and their children get added here.
-            parent->InsertEndChild( child );
+            parent->AddChild( child );
             return;
         }
         else
@@ -244,15 +165,15 @@ void AddStamp( XMLElement* parent, XMLElement* child, int level )
             //                << "\n";
             wxString nodeName = NodeNameStrings[ sortType ];
             wxString name = stamp.GetClassificationName( &stamp, sortType );
-            const char* nameStr = name.fn_str( );
-            const char* nodeNameStr = nodeName.fn_str( );
+            const char* nameStr = name ;
+            const char* nodeNameStr = nodeName ;
             //             std::cout << "     Looking for " << nodeNameStr << " with Name "
             //                 << nameStr << "\n";
 
-            XMLElement* nextNode = parent->FirstChildElement( nodeNameStr );
+            wxXmlNode* nextNode = FirstChildElement( parent, nodeNameStr );
             while ( nextNode )
             {
-                const char* attr = nextNode->Attribute( "Name", nameStr );
+                wxXmlAttribute* attr = SetAttribute( nextNode, "Name", nameStr );
                 if ( attr )
                 {
                     //                    std::cout << "     Found it\n";
@@ -265,8 +186,8 @@ void AddStamp( XMLElement* parent, XMLElement* child, int level )
 //            std::cout << "     Adding it: " << nodeNameStr << " with Name "
 //                << nameStr << "\n";
 
-            nextNode = parent->InsertNewChildElement( nodeNameStr );
-            nextNode->SetAttribute( "Name", nameStr );
+            nextNode = NewNode( parent, nodeNameStr );
+            nextNode->AddAttribute( "Name", nameStr );
 
             AddStamp( nextNode, child, level );
             return;
@@ -274,54 +195,57 @@ void AddStamp( XMLElement* parent, XMLElement* child, int level )
     }
 }
 
-XMLElement* MoveStamp( XMLElement* newParent, XMLElement* child )
+wxXmlNode* MoveStamp( wxXmlNode* newParent, wxXmlNode* child )
 {
     if ( newParent == child )
     {
         // can't be a child of itself
-        return ( XMLElement* )0;
+        return ( wxXmlNode* )0;
     }
 
-    XMLElement* parent = newParent->Parent( )->ToElement( );
+    wxXmlNode* parent = newParent->GetParent( );
     while ( parent )
     {
         if ( child == parent )
         {
             // child can't be an ancestor of itself
-            return ( XMLElement* )0;
+            return ( wxXmlNode* )0;
         }
-        parent = parent->Parent( )->ToElement( );
+        parent = parent->GetParent( );
     }
     // Make a copy of the old child and insert it
-    XMLNode* newChildNode = child->DeepClone( ( XMLDocument* )0 );
-    XMLElement* newChild = newChildNode->ToElement( );
-    newParent->InsertEndChild( newChild );
+    wxXmlNode* newChildNode = new wxXmlNode( *child );
+    wxXmlNode* newChild = newChildNode;
+    newParent->AddChild( newChild );
 
-    parent = child->Parent( )->ToElement( );
-    parent->DeleteChild( child );
+    parent = child->GetParent( );
+    parent->RemoveChild( child );
     return newChild;
 }
 
-void SortData( XMLElement* newRoot, XMLElement* child )
+void SortData( wxXmlNode* newRoot, wxXmlNode* parent )
 {
+
+     wxXmlNode* child = parent->GetChildren( );
     while ( child )
     {
-        if ( !NodeNameStrings[ NT_Stamp ].Cmp( child->Name( ) ) )
+        if ( !NodeNameStrings[ NT_Stamp ].Cmp( child->GetName( ) ) )
         {
             // Make a copy of the old child in the new doc and insert it
-            XMLNode* newChildNode = child->DeepClone( ( XMLDocument* )newRoot->GetDocument( ) );
-            XMLElement* newChild = newChildNode->ToElement( );
-            AddStamp( newRoot, newChild );
+            wxXmlNode* newChildNode = new wxXmlNode( *child );
+            newRoot->AddChild( newChildNode );
+            AddStamp( newRoot, newChildNode );
         }
         else
         {
             // if this wasn't a stamp node we will just decend in the hierachy
-            if ( !child->NoChildren( ) )
+          
+            if ( !child->GetChildren( ) )
             {
-                SortData( newRoot, child->FirstChildElement( ) );
+                SortData( newRoot, child );
             }
         }
-        child = child->NextSiblingElement( );
+        child = child->GetNext( );
         ;
     }
 }

@@ -15,7 +15,7 @@
 
 #include "Defs.h"
 
-#include "tinyxml2.h"
+#include "wx/xml/xml.h"
 #include <wx/dynarray.h>
 #include <wx/filename.h>
 #include <wx/string.h>
@@ -23,7 +23,7 @@
 #include <wx/txtstrm.h>
 #include <wx/wfstream.h>
 
-using namespace tinyxml2;
+//
 
 #define MaxNbrCSVCols 30
 
@@ -137,12 +137,12 @@ public:
      * @param  filename file name to read
      * @param  nodeData toplevel XML node to store the data
      **************************************************/
-    void DoLoad( wxString& filename, XMLElement* nodeData );
+    void DoLoad( wxString& filename, wxXmlNode* nodeData );
 
 private:
     wxArrayString m_csvColName;
     DataTypes m_csvColMap[ MaxNbrCSVCols ];
-    XMLElement* m_nodeData;
+    wxXmlNode* m_docRoot;
     int m_lineCnt;
 };
 

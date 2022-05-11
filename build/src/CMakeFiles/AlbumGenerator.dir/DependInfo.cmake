@@ -4,13 +4,11 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/sandbox/Development/AlbumGenerator/src/AECmdData.cpp" "/sandbox/Development/AlbumGenerator/build/src/CMakeFiles/AlbumGenerator.dir/AECmdData.cpp.o"
   "/sandbox/Development/AlbumGenerator/src/AlbumGeneratorApp.cpp" "/sandbox/Development/AlbumGenerator/build/src/CMakeFiles/AlbumGenerator.dir/AlbumGeneratorApp.cpp.o"
   "/sandbox/Development/AlbumGenerator/src/AlbumGeneratorFrame.cpp" "/sandbox/Development/AlbumGenerator/build/src/CMakeFiles/AlbumGenerator.dir/AlbumGeneratorFrame.cpp.o"
   "/sandbox/Development/AlbumGenerator/src/AlbumGeneratorPanel.cpp" "/sandbox/Development/AlbumGenerator/build/src/CMakeFiles/AlbumGenerator.dir/AlbumGeneratorPanel.cpp.o"
   "/sandbox/Development/AlbumGenerator/src/AlbumSplitterWindow.cpp" "/sandbox/Development/AlbumGenerator/build/src/CMakeFiles/AlbumGenerator.dir/AlbumSplitterWindow.cpp.o"
   "/sandbox/Development/AlbumGenerator/src/AlbumTreeCtrl.cpp" "/sandbox/Development/AlbumGenerator/build/src/CMakeFiles/AlbumGenerator.dir/AlbumTreeCtrl.cpp.o"
-  "/sandbox/Development/AlbumGenerator/src/ArrayWrapper.cpp" "/sandbox/Development/AlbumGenerator/build/src/CMakeFiles/AlbumGenerator.dir/ArrayWrapper.cpp.o"
   "/sandbox/Development/AlbumGenerator/src/CSV.cpp" "/sandbox/Development/AlbumGenerator/build/src/CMakeFiles/AlbumGenerator.dir/CSV.cpp.o"
   "/sandbox/Development/AlbumGenerator/src/CatalogCode.cpp" "/sandbox/Development/AlbumGenerator/build/src/CMakeFiles/AlbumGenerator.dir/CatalogCode.cpp.o"
   "/sandbox/Development/AlbumGenerator/src/CatalogData.cpp" "/sandbox/Development/AlbumGenerator/build/src/CMakeFiles/AlbumGenerator.dir/CatalogData.cpp.o"
@@ -20,10 +18,8 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/sandbox/Development/AlbumGenerator/src/Defs.cpp" "/sandbox/Development/AlbumGenerator/build/src/CMakeFiles/AlbumGenerator.dir/Defs.cpp.o"
   "/sandbox/Development/AlbumGenerator/src/LabeledTextBox.cpp" "/sandbox/Development/AlbumGenerator/build/src/CMakeFiles/AlbumGenerator.dir/LabeledTextBox.cpp.o"
   "/sandbox/Development/AlbumGenerator/src/MakeList.cpp" "/sandbox/Development/AlbumGenerator/build/src/CMakeFiles/AlbumGenerator.dir/MakeList.cpp.o"
-  "/sandbox/Development/AlbumGenerator/src/ManageAECmdData.cpp" "/sandbox/Development/AlbumGenerator/build/src/CMakeFiles/AlbumGenerator.dir/ManageAECmdData.cpp.o"
   "/sandbox/Development/AlbumGenerator/src/ManageCatalogData.cpp" "/sandbox/Development/AlbumGenerator/build/src/CMakeFiles/AlbumGenerator.dir/ManageCatalogData.cpp.o"
   "/sandbox/Development/AlbumGenerator/src/Persistent.cpp" "/sandbox/Development/AlbumGenerator/build/src/CMakeFiles/AlbumGenerator.dir/Persistent.cpp.o"
-  "/sandbox/Development/AlbumGenerator/src/ReadAlbumEasyFile.cpp" "/sandbox/Development/AlbumGenerator/build/src/CMakeFiles/AlbumGenerator.dir/ReadAlbumEasyFile.cpp.o"
   "/sandbox/Development/AlbumGenerator/src/Settings.cpp" "/sandbox/Development/AlbumGenerator/build/src/CMakeFiles/AlbumGenerator.dir/Settings.cpp.o"
   "/sandbox/Development/AlbumGenerator/src/SettingsDialog.cpp" "/sandbox/Development/AlbumGenerator/build/src/CMakeFiles/AlbumGenerator.dir/SettingsDialog.cpp.o"
   "/sandbox/Development/AlbumGenerator/src/SortOrderDialog.cpp" "/sandbox/Development/AlbumGenerator/build/src/CMakeFiles/AlbumGenerator.dir/SortOrderDialog.cpp.o"

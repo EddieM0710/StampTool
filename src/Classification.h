@@ -1,7 +1,7 @@
 /**
  * @file Classification.h
  * @author Eddie Monroe ()
- * @brief This is a wrapper of an XMLElement for
+ * @brief This is a wrapper of an wxXmlNode for
  * safe/convenient getting/putting.
  * @version 0.1
  * @date 2021-02-25
@@ -14,13 +14,13 @@
 
 #include "Defs.h"
 #include "Node.h"
-#include "tinyxml2.h"
+#include "wx/xml/xml.h"
 #include <wx/string.h>
 
-using namespace tinyxml2;
+//
 
 /**
- * @brief This is a wrapper of an XMLElement for
+ * @brief This is a wrapper of an wxXmlNode for
  * safe/convenient getting/putting.
  * @see Node, Stamp, Specimen
  *
@@ -47,7 +47,7 @@ class Classification : public Node
      * @param  node ; must be set to a valid Classification
      * node type or this instance will be invalid.
      **************************************************/
-    Classification( XMLElement* node ) : Node( node )
+    Classification( wxXmlNode* node ) : Node( node )
     {
         if ( IsOK( ) )
         {

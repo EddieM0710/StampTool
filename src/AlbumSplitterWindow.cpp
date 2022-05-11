@@ -31,7 +31,7 @@
 ////@end XPM images
 
 #include "AlbumTreeCtrl.h"
-#include "ManageAECmdData.h"
+
 /*
  * AlbumSplitterWindow type definition
  */
@@ -129,7 +129,7 @@ void AlbumSplitterWindow::CreateControls()
 
     m_secondarySplitterWindow = new wxSplitterWindow( itemPanel1, ID_SECONDARYSPLITTERWINDOW, wxDefaultPosition, wxSize(100, 100), wxSP_3DBORDER|wxSP_3DSASH|wxNO_BORDER );
     m_secondarySplitterWindow->SetMinimumPaneSize(0);
-    m_AECmdDataMgr = new ManageAECmdData( m_secondarySplitterWindow, ID_SCROLLEDWINDOW, wxDefaultPosition, wxSize(100, 100), wxSUNKEN_BORDER|wxHSCROLL|wxVSCROLL );
+    //m_AECmdDataMgr = new ManageAECmdData( m_secondarySplitterWindow, ID_SCROLLEDWINDOW, wxDefaultPosition, wxSize(100, 100), wxSUNKEN_BORDER|wxHSCROLL|wxVSCROLL );
 
     // wxScrolledWindow* itemScrolledWindow2 = new wxScrolledWindow( m_secondarySplitterWindow, ID_SCROLLEDWINDOW, wxDefaultPosition, wxSize(100, 100), wxSUNKEN_BORDER|wxHSCROLL|wxVSCROLL );
     // itemScrolledWindow2->SetScrollbars(1, 1, 0, 0);
@@ -151,7 +151,7 @@ void AlbumSplitterWindow::CreateControls()
     //itemScrolledWindow2->FitInside();
     m_richTextCtrl = new wxTextCtrl( m_secondarySplitterWindow, ID_RICHTEXTTEXTCTRL, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE|wxTE_RICH|wxTE_RICH2 );
 
-    m_secondarySplitterWindow->SplitVertically(m_AECmdDataMgr, m_richTextCtrl, 100);
+  //  m_secondarySplitterWindow->SplitVertically(m_AECmdDataMgr, m_richTextCtrl, 100);
     itemBoxSizer1->Add(m_secondarySplitterWindow, 1, wxGROW|wxALL, 5);
 
 ////@end AlbumSplitterWindow content construction

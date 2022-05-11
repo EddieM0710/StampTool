@@ -33,10 +33,6 @@ add_executable (AlbumGenerator
     XMLUtilities.cpp
     CSV.cpp 
     MakeList.cpp 
-    ArrayWrapper.cpp 
-    AECmdData.cpp
-    ReadAlbumEasyFile.cpp 
-    ManageAECmdData.cpp 
     AlbumTreeCtrl.cpp 
 )
 

@@ -33,9 +33,9 @@
 #include "AlbumGeneratorApp.h"
 #include "XMLUtilities.h"
 
-#include "tinyxml2.h"
+#include "wx/xml/xml.h"
 
-using namespace tinyxml2;
+//
 
 CatalogData::CatalogData(/* args */ )
 {
@@ -55,13 +55,13 @@ bool CatalogData::IsOK( )
     }
     return false;
 }
-XMLDocument* CatalogData::NewDocument( )
+wxXmlDocument* CatalogData::NewDocument( )
 {
     delete m_stampDoc;
-    m_stampDoc = new XMLDocument( );
+    m_stampDoc = new wxXmlDocument( );
     return m_stampDoc;
 };
-XMLDocument* CatalogData::ReplaceDocument( XMLDocument* doc )
+wxXmlDocument* CatalogData::ReplaceDocument( wxXmlDocument* doc )
 {
     delete m_stampDoc;
     m_stampDoc = doc;
@@ -77,7 +77,7 @@ void CatalogData::SaveXML( wxString filename )
         wxRenameFile( filename, bakFile.GetFullName( ) );
     }
 
-    m_stampDoc->SaveFile( filename );
+    m_stampDoc->Save( filename );
 }
 void CatalogData::LoadXML( wxString filename )
 {
@@ -85,52 +85,30 @@ void CatalogData::LoadXML( wxString filename )
     {
          m_stampDoc = NewDocument( );
     }
-    int errCode = m_stampDoc->LoadFile( filename );
+    bool errCode = m_stampDoc->Load( filename );
 
-    if ( errCode != XML_SUCCESS )
+    if ( !errCode  )
     {
-        wxString errorStr = m_stampDoc->ErrorStr( );
-        std::cout << errorStr << "\n";
+  
+        std::cout << filename << " Load Failed.\n";
     }
     else
     {
-        m_stampDoc->RootElement( );
-        XMLElement* catalogData = m_stampDoc->RootElement( );
-        wxString name = catalogData->Name( );
+        wxXmlNode* catalogData = m_stampDoc->GetRoot( );
+        wxString name = catalogData->GetName( );
         
         if ( name.Length() == 0 )
         {
             catalogData->SetName( filename.c_str());
         }
-        /**
-         * @todo Remove this block
-         * This code is to process catalog codes to the new way i'm handling it.
-         * It will be unnecessary once all the XMLs i've generated get updated.
-         *
-         **************************************************/
-        XMLElement* root = m_stampDoc->RootElement( );
-        XMLIterator* iterator = new XMLIterator( root );
-        XMLElement* item = iterator->First( );
-        Stamp stamp;
-
-        while ( item )
-        {
-            if ( IsNodeType( item, NT_Stamp ) )
-            {
-                stamp.SetElement( item );
-                stamp.ProcessCatalogCodes( );
-            }
-            wxString name = item->Name( );
-
-            item = iterator->Next( );
-        }
+ 
     }
 
     GetSettings()->SetLastFile( filename );
     //Get the file global Prefs
-    XMLElement* root = m_stampDoc->RootElement( );
-    const char* name = root->Name( );
-    if ( !strcmp( name, NodeNameStrings[ NT_Catalog ] ) )
+    wxXmlNode* root = m_stampDoc->GetRoot( );
+    wxString name = root->GetName( );
+    if ( ! name.Cmp( NodeNameStrings[ NT_Catalog ] ) )
     {
         Classification catalog( root );
         m_title = catalog.GetTitle( );
@@ -147,20 +125,20 @@ void CatalogData::LoadCSV( wxString filename )
     }
 
     CSVData* csv = new CSVData( );
-    XMLElement* docRoot = m_stampDoc->RootElement( );
+    wxXmlNode* docRoot = m_stampDoc->GetRoot( );
     if ( !docRoot )
     {
-        docRoot = m_stampDoc->NewElement( NodeNameStrings[ NT_Catalog ] );
-        m_stampDoc->InsertFirstChild( docRoot );
+        docRoot = new wxXmlNode( wxXML_ELEMENT_NODE , NodeNameStrings[ NT_Catalog ] );
+        m_stampDoc->SetRoot(docRoot);
     }
 
-    docRoot->SetAttribute( DT_DataNames[DT_Name], filename.char_str( ) );
+    docRoot->AddAttribute( DT_DataNames[DT_Name], filename.char_str( ) );
   
-    csv->DoLoad( filename, m_stampDoc->RootElement( ) );
+    csv->DoLoad( filename, docRoot );
     delete csv;
 }
 
-// XMLElement *CatalogData::Root()
+// wxXmlNode *CatalogData::Root()
 // {
 //     return m_stampDoc->RootElement();
 // };

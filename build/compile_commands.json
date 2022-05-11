@@ -111,26 +111,6 @@
 },
 {
   "directory": "/sandbox/Development/AlbumGenerator/build/src",
-  "command": "/usr/bin/x86_64-linux-gnu-g++-7  -DWXUSINGDLL -D_FILE_OFFSET_BITS=64 -D__WXGTK__ -I/sandbox/Development/AlbumGenerator/src/gui -I/sandbox/Development/AlbumGenerator/src/data -isystem /usr/local/lib/wx/include/gtk3-unicode-3.1 -isystem /usr/local/include/wx-3.1 -I/sandbox/Development/AlbumGenerator/src -I/sandbox/Applications/TinyXML2   -pthread -g   -std=gnu++11 -o CMakeFiles/AlbumGenerator.dir/ArrayWrapper.cpp.o -c /sandbox/Development/AlbumGenerator/src/ArrayWrapper.cpp",
-  "file": "/sandbox/Development/AlbumGenerator/src/ArrayWrapper.cpp"
-},
-{
-  "directory": "/sandbox/Development/AlbumGenerator/build/src",
-  "command": "/usr/bin/x86_64-linux-gnu-g++-7  -DWXUSINGDLL -D_FILE_OFFSET_BITS=64 -D__WXGTK__ -I/sandbox/Development/AlbumGenerator/src/gui -I/sandbox/Development/AlbumGenerator/src/data -isystem /usr/local/lib/wx/include/gtk3-unicode-3.1 -isystem /usr/local/include/wx-3.1 -I/sandbox/Development/AlbumGenerator/src -I/sandbox/Applications/TinyXML2   -pthread -g   -std=gnu++11 -o CMakeFiles/AlbumGenerator.dir/AECmdData.cpp.o -c /sandbox/Development/AlbumGenerator/src/AECmdData.cpp",
-  "file": "/sandbox/Development/AlbumGenerator/src/AECmdData.cpp"
-},
-{
-  "directory": "/sandbox/Development/AlbumGenerator/build/src",
-  "command": "/usr/bin/x86_64-linux-gnu-g++-7  -DWXUSINGDLL -D_FILE_OFFSET_BITS=64 -D__WXGTK__ -I/sandbox/Development/AlbumGenerator/src/gui -I/sandbox/Development/AlbumGenerator/src/data -isystem /usr/local/lib/wx/include/gtk3-unicode-3.1 -isystem /usr/local/include/wx-3.1 -I/sandbox/Development/AlbumGenerator/src -I/sandbox/Applications/TinyXML2   -pthread -g   -std=gnu++11 -o CMakeFiles/AlbumGenerator.dir/ReadAlbumEasyFile.cpp.o -c /sandbox/Development/AlbumGenerator/src/ReadAlbumEasyFile.cpp",
-  "file": "/sandbox/Development/AlbumGenerator/src/ReadAlbumEasyFile.cpp"
-},
-{
-  "directory": "/sandbox/Development/AlbumGenerator/build/src",
-  "command": "/usr/bin/x86_64-linux-gnu-g++-7  -DWXUSINGDLL -D_FILE_OFFSET_BITS=64 -D__WXGTK__ -I/sandbox/Development/AlbumGenerator/src/gui -I/sandbox/Development/AlbumGenerator/src/data -isystem /usr/local/lib/wx/include/gtk3-unicode-3.1 -isystem /usr/local/include/wx-3.1 -I/sandbox/Development/AlbumGenerator/src -I/sandbox/Applications/TinyXML2   -pthread -g   -std=gnu++11 -o CMakeFiles/AlbumGenerator.dir/ManageAECmdData.cpp.o -c /sandbox/Development/AlbumGenerator/src/ManageAECmdData.cpp",
-  "file": "/sandbox/Development/AlbumGenerator/src/ManageAECmdData.cpp"
-},
-{
-  "directory": "/sandbox/Development/AlbumGenerator/build/src",
   "command": "/usr/bin/x86_64-linux-gnu-g++-7  -DWXUSINGDLL -D_FILE_OFFSET_BITS=64 -D__WXGTK__ -I/sandbox/Development/AlbumGenerator/src/gui -I/sandbox/Development/AlbumGenerator/src/data -isystem /usr/local/lib/wx/include/gtk3-unicode-3.1 -isystem /usr/local/include/wx-3.1 -I/sandbox/Development/AlbumGenerator/src -I/sandbox/Applications/TinyXML2   -pthread -g   -std=gnu++11 -o CMakeFiles/AlbumGenerator.dir/AlbumTreeCtrl.cpp.o -c /sandbox/Development/AlbumGenerator/src/AlbumTreeCtrl.cpp",
   "file": "/sandbox/Development/AlbumGenerator/src/AlbumTreeCtrl.cpp"
 }

@@ -19,9 +19,9 @@
 #include "Defs.h"
 #include "Node.h"
 
-#include "tinyxml2.h"
+#include "wx/xml/xml.h"
 
-using namespace tinyxml2;
+//
 
 
 
@@ -31,7 +31,7 @@ using namespace tinyxml2;
  **************************************************/
 
  /**
-  * @brief This is a wrapper of an XMLElement for
+  * @brief This is a wrapper of an wxXmlNode for
   * safe/convenient getting/putting.
   * @see Node, Stamp, CatalogCode, Specimen, Classification
   *
@@ -45,7 +45,7 @@ public:
         IsOK( );
     };
 
-    CatalogCode( XMLElement* ele ) : Node( ele )
+    CatalogCode( wxXmlNode* ele ) : Node( ele )
     {
         SetNodeType( NT_CatalogCode );
         IsOK( );
@@ -69,9 +69,9 @@ public:
      * @brief Fills the input vector with the code values and returns the element pointer for convenience
      * 
      * @param data   pointer to vector to fill
-     * @return XMLElement*   pointer to the element of this CatalogCode
+     * @return wxXmlNode*   pointer to the element of this CatalogCode
      **************************************************/
-    XMLElement* GetData( wxVector<wxVariant>* data );
+    wxXmlNode* GetData( wxVector<wxVariant>* data );
 
 
     wxString GetCatalog( );

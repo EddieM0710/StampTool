@@ -1,7 +1,7 @@
 /**
  * @file Stamp.h
  * @author Eddie Monroe ()
- * @brief This is a wrapper of an XMLElement for
+ * @brief This is a wrapper of an wxXmlNode for
  * safe/convenient getting/putting.
  * @version 0.1
  * @date 2021-02-25
@@ -15,10 +15,10 @@
 
 #include "Defs.h"
 #include "Node.h"
-#include <tinyxml2.h>
+#include <wx/xml/xml.h>
 #include <wx/string.h>
 
-using namespace tinyxml2;
+//
 
 
 
@@ -30,7 +30,7 @@ using namespace tinyxml2;
 
 
  /**
-  * @brief This is a wrapper of an XMLElement for
+  * @brief This is a wrapper of an wxXmlNode for
   * safe/convenient getting/putting.
   * @see Node, Classification, Specimen
   *
@@ -54,7 +54,7 @@ public:
  * 
  * @param stamp 
  **************************************************/
-    Stamp( XMLElement* stamp ) : Node( stamp )
+    Stamp( wxXmlNode* stamp ) : Node( stamp )
     {
         SetNodeType( NT_Stamp );
         IsOK( );
@@ -303,16 +303,16 @@ public:
     /**
      * @brief add an empty element of Specimen type
      * 
-     * @return XMLElement* 
+     * @return wxXmlNode* 
      **************************************************/
-    XMLElement* AddSpecimen( );
+    wxXmlNode* AddSpecimen( );
 
     /**
      * @brief delete the specified element
      * 
      * @param deleteThisNode 
      **************************************************/
-    void DeleteSpecimen( XMLElement* deleteThisNode );
+    void DeleteSpecimen( wxXmlNode* deleteThisNode );
 
     /**
      * @brief does this stamp have a child of Specimen type
@@ -325,30 +325,24 @@ public:
     /**
      * @brief Get the first child element of Specimen type
      * 
-     * @return XMLElement* 
+     * @return wxXmlNode* 
      **************************************************/
-    XMLElement* GetFirstChildSpecimen( );
+    wxXmlNode* GetFirstChildSpecimen( );
 
-    /**
-     * @brief Get the next child element of Specimen type
-     * 
-     * @return XMLElement* 
-     **************************************************/
-    XMLElement* GetNextChildSpecimen( );
 
     /**
      * @brief Add any empty element of type CatalogCode
      * 
-     * @return XMLElement* 
+     * @return wxXmlNode* 
      **************************************************/
-    XMLElement* AddCode( );
+    wxXmlNode* AddCode( );
 
     /**
      * @brief delete the specified element 
      * 
      * @param deleteThisNode 
      **************************************************/
-    void DeleteCode( XMLElement* deleteThisNode );
+    void DeleteCode( wxXmlNode* deleteThisNode );
 
     /**
      * @brief 
@@ -361,17 +355,10 @@ public:
     /**
      * @brief Get the first child element with CatalogCode type
      * 
-     * @return XMLElement* 
+     * @return wxXmlNode* 
      **************************************************/
-    XMLElement* GetFirstChildCode( );
+    wxXmlNode* GetFirstChildCode( );
 
-    /**
-     * @brief Get the next child element with CatalogCode type
-     * 
-     * @param ele get the CatalogCode sibling after this one 
-     * @return XMLElement* 
-     **************************************************/
-    XMLElement* GetNextChildCode( XMLElement* ele );
 
     /**
      * @brief Get the CatalogCode for the input catalog code 
@@ -381,9 +368,9 @@ public:
      * regardless of the catalog.
      * 
      * @param catalog 
-     * @return XMLElement* 
+     * @return wxXmlNode* 
      **************************************************/
-    XMLElement *GetCodeForCatalog( const char* catalog);
+    wxXmlNode *GetCodeForCatalog( const char* catalog);
 
     /**
      * @brief

@@ -49,7 +49,7 @@ class Classification;
 
 /**
  * 
- * @todo  fix variable names so that XMLElement refs are called elements,
+ * @todo  fix variable names so that wxXmlNode refs are called elements,
  * stamps, classifications, etc are called nodes;  and Tree item references are called items.
  * @todo  ?? mostly done. watch for needed changes
  * 
@@ -71,7 +71,7 @@ class CatalogDataTreeItemData : public wxTreeItemData
      * @param   ele :
      **************************************************/
     CatalogDataTreeItemData( NodeType type, const wxString desc,
-                       XMLElement* ele = 0 )
+                       wxXmlNode* ele = 0 )
     {
         m_type = type;
         m_desc = desc;
@@ -87,15 +87,15 @@ class CatalogDataTreeItemData : public wxTreeItemData
      *
      * @param  ele :
      ***************************************************/
-    void SetElement( XMLElement* ele ) { m_element = ele; };
+    void SetElement( wxXmlNode* ele ) { m_element = ele; };
 
 
 
     /**
      * 
-     * @return {XMLElement*}    : 
+     * @return {wxXmlNode*}    : 
      **************************************************/
-    XMLElement* GetElement( void ) { return m_element; };
+    wxXmlNode* GetElement( void ) { return m_element; };
 
     /**
      *
@@ -110,7 +110,7 @@ class CatalogDataTreeItemData : public wxTreeItemData
     NodeType GetType( ) { return m_type; };
 
   private:
-    XMLElement* m_element;
+    wxXmlNode* m_element;
     wxString m_desc;
     NodeType m_type;
 };
@@ -259,7 +259,7 @@ class CatalogDataTreeCtrl : public wxTreeCtrl
      * @param   child   :
      * @return {wxTreeItemId}        :
      **************************************************/
-    wxTreeItemId AddStampNodeToTree( wxTreeItemId parent, XMLElement* child );
+    wxTreeItemId AddStampNodeToTree( wxTreeItemId parent, wxXmlNode* child );
 
     /**
      *
@@ -267,7 +267,7 @@ class CatalogDataTreeCtrl : public wxTreeCtrl
      * @param  child   :
      * @return {wxTreeItemId}        :
      */
-    wxTreeItemId AddChild( wxTreeItemId parent, XMLElement* child );
+    wxTreeItemId AddChild( wxTreeItemId parent, wxXmlNode* child );
 
 
     /**
@@ -280,7 +280,7 @@ class CatalogDataTreeCtrl : public wxTreeCtrl
      * @param   catalogData :
      * @return {wxString}              :
      **************************************************/
-    wxString GetLabel( XMLElement* catalogData );
+    wxString GetLabel( wxXmlNode* catalogData );
 
     /**
      *
@@ -288,7 +288,7 @@ class CatalogDataTreeCtrl : public wxTreeCtrl
      * @param   node    :
      * @return {wxTreeItemId}        :
      **************************************************/
-    wxTreeItemId AddTreeNode( wxTreeItemId parent, XMLElement* node );
+    wxTreeItemId AddTreeNode( wxTreeItemId parent, wxXmlNode* node );
 
     /**
      *
@@ -305,7 +305,7 @@ class CatalogDataTreeCtrl : public wxTreeCtrl
      *
      * @param   catalogData :
      **************************************************/
-    void StructureStamp( XMLElement* catalogData );
+    void StructureStamp( wxXmlNode* catalogData );
 
 
     /**
@@ -315,7 +315,7 @@ class CatalogDataTreeCtrl : public wxTreeCtrl
      * @param  childType       : 
      * @param   secondChildType : 
      **************************************************/
-    void StructureCatalogData( XMLElement* catalogData, FormatType parentType,
+    void StructureCatalogData( wxXmlNode* catalogData, FormatType parentType,
                              FormatType childType,
                              FormatType secondChildType = FT_FormatUnknown );
 
@@ -326,7 +326,7 @@ class CatalogDataTreeCtrl : public wxTreeCtrl
      * @param   parentType : 
      * @return {wxArrayPtrVoid*}       : 
      **************************************************/
-    wxArrayPtrVoid* MakeParentList( XMLElement* catalogData,
+    wxArrayPtrVoid* MakeParentList( wxXmlNode* catalogData,
                                     FormatType parentType );
 
     /**
@@ -334,7 +334,7 @@ class CatalogDataTreeCtrl : public wxTreeCtrl
      * @param   node :
      * @return {wxTreeItemId}     :
      **************************************************/
-    wxTreeItemId FindTreeItemID( XMLElement* node );
+    wxTreeItemId FindTreeItemID( wxXmlNode* node );
 
     /**
      *
@@ -342,7 +342,7 @@ class CatalogDataTreeCtrl : public wxTreeCtrl
      * @param   id  :
      * @return {wxTreeItemId}     :
      **************************************************/
-    wxTreeItemId FindTreeItemID( XMLElement* node, wxTreeItemId id );
+    wxTreeItemId FindTreeItemID( wxXmlNode* node, wxTreeItemId id );
 
     /**
      *
@@ -350,7 +350,7 @@ class CatalogDataTreeCtrl : public wxTreeCtrl
      * @param   node  :
      * @return {bool}              :
      **************************************************/
-    bool IsElement( wxTreeItemId item, XMLElement* node );
+    bool IsElement( wxTreeItemId item, wxXmlNode* node );
 
     /**
      *
@@ -391,7 +391,7 @@ class CatalogDataTreeCtrl : public wxTreeCtrl
     wxDECLARE_DYNAMIC_CLASS( CatalogDataTreeCtrl );
     wxDECLARE_EVENT_TABLE( );
 
-    // XMLDocument *m_stampDoc;
+    // wxXmlDocument *m_stampDoc;
 };
 
 #endif

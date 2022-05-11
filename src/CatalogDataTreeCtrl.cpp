@@ -216,7 +216,7 @@ int CatalogDataTreeCtrl::OnCompareItems( const wxTreeItemId& item1,
 void CatalogDataTreeCtrl::SetNextState( const wxTreeItemId& itemId )
 {
     CatalogDataTreeItemData* item = ( CatalogDataTreeItemData* )GetItemData( itemId );
-    XMLElement* element = item->GetElement( );
+    wxXmlNode* element = item->GetElement( );
     Stamp* stamp = new Stamp( element );
     if ( stamp->IsOK( ) )
     {
@@ -242,7 +242,7 @@ void CatalogDataTreeCtrl::SetStatusImage( )
 {
     // wxTreeItemId itemId = GetFocusedItem( );
     // CatalogDataTreeItemData* item = ( CatalogDataTreeItemData* )GetItemData( itemId );
-    // XMLElement* element = item->GetElement( );
+    // wxXmlNode* element = item->GetElement( );
     // Stamp* stamp = new Stamp( element );
     // if ( stamp->IsOK( ) )
     // {
@@ -296,14 +296,14 @@ void CatalogDataTreeCtrl::OnEndDrag( wxTreeEvent& event )
     }
 
     CatalogDataTreeItemData* item = ( CatalogDataTreeItemData* )GetItemData( itemSrc );
-    XMLElement* srcElement = item->GetElement( );
+    wxXmlNode* srcElement = item->GetElement( );
     item = ( CatalogDataTreeItemData* )GetItemData( itemDst );
-    XMLElement* dstElement = item->GetElement( );
+    wxXmlNode* dstElement = item->GetElement( );
 
     // move the element
     // this means making a copy and deleting the old one so old pointers are
     // trash
-    XMLElement* newElement = MoveStamp( dstElement, srcElement );
+    wxXmlNode* newElement = MoveStamp( dstElement, srcElement );
 
     // now update the tree with the new one
     wxTreeItemId id = AddChild( itemDst, newElement );
@@ -322,7 +322,7 @@ void CatalogDataTreeCtrl::OnSelChanged( wxTreeEvent& event )
 {
     wxTreeItemId itemId = event.GetItem( );
     CatalogDataTreeItemData* item = ( CatalogDataTreeItemData* )GetItemData( itemId );
-    XMLElement* stamp = item->GetElement( );
+    wxXmlNode* stamp = item->GetElement( );
     wxGetApp( ).GetFrame( )->SetStamp( stamp );
 
     event.Skip( );
@@ -360,7 +360,7 @@ void CatalogDataTreeCtrl::OnContextMenu( wxContextMenuEvent& event )
         if ( id.IsOk( ) )
         {
             CatalogDataTreeItemData* data = ( CatalogDataTreeItemData* )GetItemData( id );
-            XMLElement* stamp = data->GetElement( );
+            wxXmlNode* stamp = data->GetElement( );
             StructureStamp( stamp );
         }
     }
@@ -395,7 +395,7 @@ void CatalogDataTreeCtrl::ShowMenu( wxTreeItemId id, const wxPoint& pt )
     case CatalogDataTree_StructureStamps:
     {
         CatalogDataTreeItemData* data = ( CatalogDataTreeItemData* )GetItemData( id );
-        XMLElement* stamp = data->GetElement( );
+        wxXmlNode* stamp = data->GetElement( );
         StructureStamp( stamp );
         ReSortTree( );
 
@@ -428,11 +428,11 @@ void CatalogDataTreeCtrl::OnItemRClick( wxTreeEvent& event )
     event.Skip( );
 }
 
-// AddChild adds XMLElement as a item in the tree.  It is recursively called to
+// AddChild adds wxXmlNode as a item in the tree.  It is recursively called to
 // create sort nodes as necessary to find the proper place for the child
-wxTreeItemId CatalogDataTreeCtrl::AddChild( wxTreeItemId parent, XMLElement* child )
+wxTreeItemId CatalogDataTreeCtrl::AddChild( wxTreeItemId parent, wxXmlNode* child )
 {
-    wxString name = child->Name( );
+    wxString name = child->GetName( );
     NodeType nodeType = FindNodeType( name );
     wxString label;
     IconID icon;
@@ -458,8 +458,7 @@ wxTreeItemId CatalogDataTreeCtrl::AddChild( wxTreeItemId parent, XMLElement* chi
         else
         {
             //otherwise get the label
-            const XMLAttribute* attr = child->FindAttribute( "Name" );
-            label = attr->Value( );
+            label = child->GetAttribute( "Name" );
             icon = Icon_Folder;        }
     }
 
@@ -483,13 +482,13 @@ wxTreeItemId CatalogDataTreeCtrl::AddChild( wxTreeItemId parent, XMLElement* chi
     }
 
     // now do it all again for this stamps children
-    XMLElement* grandChild = child->FirstChildElement( );
+    wxXmlNode* grandChild = child->GetChildren( );
     while ( grandChild )
     {
 
         // start adding child elements to it.
         AddChild( childID, grandChild );
-        grandChild = grandChild->NextSiblingElement( );
+        grandChild = grandChild->GetNext( );
     }
 
     return childID;
@@ -517,27 +516,19 @@ void CatalogDataTreeCtrl::SortTree( wxTreeItemId parent )
 void CatalogDataTreeCtrl::ReSortTree( )
 {
     CatalogData* catalogData = GetCatalogData( );
-    XMLDocument* doc = catalogData->GetDoc( );
-    XMLElement* root = doc->RootElement( );
+    wxXmlDocument* doc = catalogData->GetDoc( );
+    wxXmlNode* root = doc->GetRoot( );
 
     DeleteAllItems( );
 
-    XMLDocument* newDoc = new XMLDocument( );
-    XMLElement* newRoot = newDoc->NewElement( NodeNameStrings[ NT_Catalog ] );
-    const XMLAttribute* attr = root->FindAttribute( DT_DataNames[DT_Name] );
-    if ( attr ){
-        const char* name = attr->Name( );
-        const char* value = attr->Value( );
-        newRoot->SetAttribute( name, value );
-        newDoc->InsertFirstChild( newRoot );
-    }
-    else
-    {
-        newRoot->SetAttribute( DT_DataNames[DT_Name], "" );
-        newDoc->InsertFirstChild( newRoot );
-    }
+    wxXmlDocument* newDoc = new wxXmlDocument( );
 
+    wxXmlNode* newRoot = new wxXmlNode( wxXML_ELEMENT_NODE , NodeNameStrings[ NT_Catalog ] );
+    newDoc->SetRoot(newRoot);
+    wxString value = root->GetAttribute( DT_DataNames[DT_Name] );
+    newRoot->AddAttribute(  DT_DataNames[DT_Name] , value );
 
+   
     SortData( newRoot, root );
     GetCatalogData( )->ReplaceDocument( newDoc );
     LoadTree( );
@@ -546,31 +537,31 @@ void CatalogDataTreeCtrl::ReSortTree( )
 // basic load of the tree
 void CatalogDataTreeCtrl::LoadTree( )
 {
-    XMLDocument* stampDoc = GetCatalogData( )->GetDoc( );
-    XMLElement* catalogData = stampDoc->RootElement( );
-    wxString name = catalogData->Name( );
+    wxXmlDocument* stampDoc = GetCatalogData( )->GetDoc( );
+    wxXmlNode* catalogData = stampDoc->GetRoot( );
+    wxString name = catalogData->GetName( );
     // Create the root item
     CatalogDataTreeItemData* itemData
         = new CatalogDataTreeItemData( NT_Catalog, name, catalogData );
     wxTreeItemId rootID = AddRoot( name, Icon_Folder, 1, itemData );
 
-    XMLElement* child = catalogData->FirstChildElement( );
+    wxXmlNode* child = catalogData->GetChildren( );
     while ( child )
     {
         // start adding child elementss to it.
         AddChild( rootID, child );
-        child = child->NextSiblingElement( );
+        child = child->GetNext( );
     }
     SortTree( GetRootItem( ) );
 }
 
 // this makes a list of the children stamp elements that can have childrem
-wxArrayPtrVoid* CatalogDataTreeCtrl::MakeParentList( XMLElement* catalogData,
+wxArrayPtrVoid* CatalogDataTreeCtrl::MakeParentList( wxXmlNode* catalogData,
     FormatType parentType )
 {
     Stamp parentStamp;
     wxArrayPtrVoid* parentList = new wxArrayPtrVoid( );
-    XMLElement* child = catalogData->FirstChildElement( );
+    wxXmlNode* child = catalogData->GetChildren( );
     while ( child )
     {
         parentStamp.SetElement( child );
@@ -578,7 +569,7 @@ wxArrayPtrVoid* CatalogDataTreeCtrl::MakeParentList( XMLElement* catalogData,
         {
             parentList->Add( ( void* )child );
         }
-        child = child->NextSiblingElement( );
+        child = child->GetNext( );
     }
     return parentList;
 }
@@ -586,7 +577,7 @@ wxArrayPtrVoid* CatalogDataTreeCtrl::MakeParentList( XMLElement* catalogData,
 
 // this is an attempt to group the stamps;
 // i.e., an item of type stamp can be a child of an item SeTenent type.
-void CatalogDataTreeCtrl::StructureStamp( XMLElement* catalogData )
+void CatalogDataTreeCtrl::StructureStamp( wxXmlNode* catalogData )
 {
     StructureCatalogData( catalogData, FT_Se_tenant, FT_Stamp );
     StructureCatalogData( catalogData, FT_Stamp_with_Attached_Label, FT_Stamp );
@@ -599,7 +590,7 @@ void CatalogDataTreeCtrl::StructureStamp( XMLElement* catalogData )
     SortTree( GetRootItem( ) );
 }
 
-void CatalogDataTreeCtrl::StructureCatalogData( XMLElement* catalogData,
+void CatalogDataTreeCtrl::StructureCatalogData( wxXmlNode* catalogData,
     FormatType parentType,
     FormatType childType,
     FormatType secondChildType )
@@ -609,12 +600,12 @@ void CatalogDataTreeCtrl::StructureCatalogData( XMLElement* catalogData,
 
     // Make a list of all nodes that are of parentType
     wxArrayPtrVoid* parentTypeList = MakeParentList( catalogData, parentType );
-    XMLElement* child = catalogData->FirstChildElement( );
-    XMLElement* start = child;
+    wxXmlNode* child = catalogData->GetChildren( );
+    wxXmlNode* start = child;
     // now find all the stamps that go into each parent by comparing the issue date, series and face value
     for ( int i = 0; i < parentTypeList->GetCount( ); i++ )
     {
-        XMLElement* parentTypeElement = ( XMLElement* )parentTypeList->Item( i );
+        wxXmlNode* parentTypeElement = ( wxXmlNode* )parentTypeList->Item( i );
         parentTypeStamp.SetElement( parentTypeElement );
         wxString parentIssue = parentTypeStamp.GetIssuedDate( );
         wxString parentSeries = parentTypeStamp.GetSeries( );
@@ -628,14 +619,14 @@ void CatalogDataTreeCtrl::StructureCatalogData( XMLElement* catalogData,
         }
         long count = 0;
         long searchRange = 0;
-        XMLElement* child = start;
+        wxXmlNode* child = start;
         ;
         while ( child && ( searchRange < 105 ) && ( count < nbrStamps ) )
         {
             childTypeStamp.SetElement( child );
 
             // figure out what the next sibling is because we may move child
-            XMLElement* nextSibling = child->NextSiblingElement( );
+            wxXmlNode* nextSibling = child->GetNext( );
 
             // only search a reasonable distance after the first one is found
             if ( count > 1 )
@@ -656,7 +647,7 @@ void CatalogDataTreeCtrl::StructureCatalogData( XMLElement* catalogData,
                     && !series.Cmp( parentSeries ) )
                 {
                     count++;
-                    parentTypeElement->InsertEndChild( child );
+                    parentTypeElement->AddChild( child );
                     // this is a hack so the loop doesn't start at the beginning
                     // next time.
                     //                    start = child;
@@ -667,17 +658,17 @@ void CatalogDataTreeCtrl::StructureCatalogData( XMLElement* catalogData,
     }
 }
 
-bool CatalogDataTreeCtrl::IsElement( wxTreeItemId item, XMLElement* ele )
+bool CatalogDataTreeCtrl::IsElement( wxTreeItemId item, wxXmlNode* ele )
 {
     CatalogDataTreeItemData* data = ( CatalogDataTreeItemData* )GetItemData( item );
-    XMLElement* dataEle = data->GetElement( );
+    wxXmlNode* dataEle = data->GetElement( );
     if ( dataEle == ele )
     {
         return false;
     }
     return true;
 }
-wxTreeItemId CatalogDataTreeCtrl::FindTreeItemID( XMLElement* ele, wxTreeItemId id )
+wxTreeItemId CatalogDataTreeCtrl::FindTreeItemID( wxXmlNode* ele, wxTreeItemId id )
 
 {
     wxTreeItemIdValue cookie;
@@ -700,7 +691,7 @@ wxTreeItemId CatalogDataTreeCtrl::FindTreeItemID( XMLElement* ele, wxTreeItemId 
     }
     return 0;
 }
-wxTreeItemId CatalogDataTreeCtrl::FindTreeItemID( XMLElement* ele )
+wxTreeItemId CatalogDataTreeCtrl::FindTreeItemID( wxXmlNode* ele )
 {
     wxTreeItemId root = GetRootItem( );
     return FindTreeItemID( ele, root );

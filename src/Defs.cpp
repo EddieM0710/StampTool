@@ -26,7 +26,6 @@
 
 #include "Defs.h"
 #include "CatalogData.h"
-#include "AECmdData.h"
 #include "Settings.h"
 
 #include "Defs.h"
@@ -43,24 +42,13 @@ bool IsDirty(){return Dirty;};
  *
  */
 CatalogData* G_CatalogData;
-AECmdData* G_AECmdData;
 
 Settings* G_Settings;
 
 Settings* GetSettings( ) { return G_Settings; };
 
 CatalogData* GetCatalogData( void ) { return G_CatalogData; };
-AECmdData* GetAECmdData( void ) { return G_AECmdData; };
 
-AECmdData* SetAECmdData( AECmdData* aeCmdData )
-{
-    if ( aeCmdData != G_AECmdData )
-    {
-        delete G_AECmdData;
-        G_AECmdData = (AECmdData*)0;
-    }
-    G_AECmdData = aeCmdData;
-};
 
 CatalogData* SetCatalogData( CatalogData* catalogData )
 {
@@ -77,10 +65,10 @@ CatalogData* NewCatalogData( )
     return ( new CatalogData( ) );
 };
 
-AECmdData* NewAECmdData( )
-{
-    return ( new AECmdData( ) );
-};
+// AECmdData* NewAECmdData( )
+// {
+//     return ( new AECmdData( ) );
+// };
 
 
 const wxString ST_StatusStrings[ ST_NbrTypes ]
@@ -172,7 +160,7 @@ void InitDefs( )
 
 
 /**
- * @brief String name used for XMLElements.
+ * @brief String name used for wxXmlNodes.
  *
  */
 const wxString CT_Names[ CT_NbrTypes ] = { wxT( "Name" ),

@@ -349,7 +349,7 @@ extern const wxString CC_CatalogCodeNames[ CC_NbrTypes ];
 
 /**
  * @brief Ascii string for each node string.
- * @note This is the name used for the tree node; not the XMLElement node.
+ * @note This is the name used for the tree node; not the wxXmlNode node.
  * 
  **************************************************/
 extern wxArrayString NodeNameStrings;

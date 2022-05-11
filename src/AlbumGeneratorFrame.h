@@ -40,7 +40,7 @@ class CatalogData;
 
 class ManageCatalogData;
 class CatalogDataTreeCtrl;
-class ManageAECmdData;
+
 /*!
  * Control identifiers
  */
@@ -244,7 +244,7 @@ class AlbumGeneratorFrame : public wxFrame
     // Should we show tooltips?
     static bool ShowToolTips( );
 
-    void SetStamp( XMLElement *stamp );
+    void SetStamp( wxXmlNode *stamp );
     void UpdateStatus( );
 
     void DoCSVImport( );
@@ -263,15 +263,15 @@ class AlbumGeneratorFrame : public wxFrame
     int DoQueryMerge( int& mergeMethod  );
 
 
-    void GetSetupData( int &mergeProcedure, XMLElement **currItem,
-                       XMLElement **mergeItem );
+    void GetSetupData( int &mergeProcedure, wxXmlNode **currItem,
+                       wxXmlNode **mergeItem );
 //    CatalogDataTreeCtrl *GetCatalogDataTree( );
     int ImageGallery( );
 
      // AlbumGeneratorFrame member variables
     AlbumGeneratorPanel *m_albumGeneratorPanel;
     ManageCatalogData* m_catalogDataManager;
-    ManageAECmdData* m_AECmdDataManager;
+   // ManageAECmdData* m_AECmdDataManager;
      // AlbumGeneratorFrame member variables
 
     // container data classification sort order

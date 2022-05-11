@@ -79,9 +79,9 @@ bool CSVData::ReadDataFile( wxString& filename )
     return status;
 };
 
-void CSVData::DoLoad( wxString& filename, XMLElement* catalogData )
+void CSVData::DoLoad( wxString& filename, wxXmlNode* catalogData )
 {
-    m_nodeData = catalogData;
+    m_docRoot = catalogData;
 
     ReadDataFile( filename );
 };
@@ -189,8 +189,7 @@ bool CSVData::ReadTextInStream( wxFileInputStream& file,
     bool valFound = false;
     int csvCol;
 
-    XMLDocument* theDoc = m_nodeData->GetDocument( );
-    XMLElement* docRoot = theDoc->RootElement( );
+    wxXmlNode* docRoot = m_docRoot;
 
     if ( file.IsOk( ) )
     {
@@ -210,9 +209,8 @@ bool CSVData::ReadTextInStream( wxFileInputStream& file,
                     // comma separated Variables on line; i, e, .csv file
                     wxStringTokenizer tokenizer( line, "," );
 
-                    XMLElement* stampElement = theDoc->NewElement(
-                        NodeNameStrings.Item( NT_Stamp ) );
-
+                    wxXmlNode* stampElement = new wxXmlNode( wxXML_ELEMENT_NODE, NodeNameStrings.Item( NT_Stamp ) );
+                    m_docRoot->AddChild(stampElement);
                     Stamp* stampNode = new Stamp( stampElement );
                     csvCol = 0;
                     valFound = false;
@@ -254,7 +252,7 @@ bool CSVData::ReadTextInStream( wxFileInputStream& file,
 
                     if ( valFound && ( stampNode->GetID( ).Length( ) > 0 ) )
                     {
-                        docRoot->InsertEndChild( ( XMLNode* )stampElement );
+                        docRoot->AddChild( stampElement );
                     }
                     else
                     {

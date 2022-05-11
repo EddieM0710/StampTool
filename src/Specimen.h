@@ -1,7 +1,7 @@
 /**
  * @file Specimen.h
  * @author Eddie Monroe ()
- * @brief This is a wrapper of an XMLElement for
+ * @brief This is a wrapper of an wxXmlNode for
  * safe/convenient getting/putting.
  * @version 0.1
  * @date 2021-02-25
@@ -20,12 +20,12 @@
 #include "Defs.h"
 #include "Node.h"
 
-#include "tinyxml2.h"
+#include "wx/xml/xml.h"
 
-using namespace tinyxml2;
+//
 
 /**
- * @brief This is a wrapper of an XMLElement for
+ * @brief This is a wrapper of an wxXmlNode for
  * safe/convenient getting/putting.
  * @see Node, Stamp, Specimen
  *
@@ -39,7 +39,7 @@ class Specimen : public Node
         IsOK( );
     };
 
-    Specimen( XMLElement *ele ) : Node( ele )
+    Specimen( wxXmlNode *ele ) : Node( ele )
     {
         SetNodeType( NT_Specimen );
         IsOK( );
@@ -74,9 +74,9 @@ class Specimen : public Node
      * @brief Fills the input vector with the specimen values and returns the element pointer for convenience
      * 
      * @param data 
-     * @return XMLElement* 
+     * @return wxXmlNode* 
      **************************************************/
-    XMLElement *GetData( wxVector<wxVariant> *data );
+    wxXmlNode *GetData( wxVector<wxVariant> *data );
 
   private:
     bool m_OK;

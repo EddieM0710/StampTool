@@ -37,8 +37,8 @@ void CatalogCode::SetAttr( CatalogCodeTypes type, wxString val )
 {
     if ( IsOK( ) )
     {
-        GetElement( )->SetAttribute( CC_CatalogCodeNames[ type ].char_str( ),
-                                  val.fn_str( ) );
+        GetElement( )->DeleteAttribute(CC_CatalogCodeNames[ type ]);
+        GetElement( )->AddAttribute( CC_CatalogCodeNames[ type ] , val  );
     };
 }
 
@@ -46,12 +46,7 @@ wxString CatalogCode::GetAttr( CatalogCodeTypes type )
 {
     if ( IsOK( ) )
     {
-        const XMLAttribute *attr
-            = this->GetElement( )->FindAttribute( CC_CatalogCodeNames[ type ] );
-        if ( attr )
-        {
-            return wxString::FromUTF8Unchecked( attr->Value( ) );
-        }
+        return  GetElement( )->GetAttribute( CC_CatalogCodeNames[ type ] );
     }
     return wxString( "" );
 }
@@ -89,7 +84,7 @@ wxString CatalogCode::GetAttr( CatalogCodeTypes type )
     };
 
 
-XMLElement *CatalogCode::GetData( wxVector<wxVariant> *data )
+wxXmlNode *CatalogCode::GetData( wxVector<wxVariant> *data )
 {
     data->push_back( GetCatalog( ));
     data->push_back( GetCountry( ));

@@ -13,10 +13,10 @@
 #define CatalogData_H
 
 #include "Defs.h"
-#include "tinyxml2.h"
+#include "wx/xml/xml.h"
 #include <wx/string.h>
 
-using namespace tinyxml2;
+//
 
 class CatalogData
 
@@ -30,9 +30,9 @@ public:
     CatalogData( );
     ~CatalogData( );
     bool IsOK( );
-    XMLDocument* NewDocument( );
-    XMLDocument* ReplaceDocument( XMLDocument* doc );
-    XMLDocument* GetDoc( ) { return m_stampDoc; };
+    wxXmlDocument* NewDocument( );
+    wxXmlDocument* ReplaceDocument( wxXmlDocument* doc );
+    wxXmlDocument* GetDoc( ) { return m_stampDoc; };
     void SaveXML( wxString filename );
     void LoadXML( wxString filename );
     void LoadCSV( wxString filename );
@@ -42,7 +42,7 @@ public:
 
 private:
     /* data */
-    XMLDocument* m_stampDoc;
+    wxXmlDocument* m_stampDoc;
     wxString m_title;
 };
 

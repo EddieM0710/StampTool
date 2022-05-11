@@ -6,86 +6,6 @@
 
 #IncludeRegexTransform: 
 
-../src/AEItem.h
-tinyxml2.h
-../src/tinyxml2.h
-wx/string.h
--
-
-../src/ArrayWrapper.h
-AEItem.h
--
-vector
--
-
-/sandbox/Applications/TinyXML2/tinyxml2.h
-ctype.h
--
-limits.h
--
-stdio.h
--
-stdlib.h
--
-string.h
--
-stddef.h
--
-cctype
--
-climits
--
-cstdio
--
-cstdlib
--
-cstring
--
-stdint.h
--
-android/log.h
--
-assert.h
--
-
-/sandbox/Development/AlbumGenerator/src/AECmdData.cpp
-wx/wxprec.h
-/sandbox/Development/AlbumGenerator/src/wx/wxprec.h
-wx/wx.h
-/sandbox/Development/AlbumGenerator/src/wx/wx.h
-iostream
--
-wx/filename.h
--
-wx/string.h
--
-Classification.h
-/sandbox/Development/AlbumGenerator/src/Classification.h
-CSV.h
-/sandbox/Development/AlbumGenerator/src/CSV.h
-Defs.h
-/sandbox/Development/AlbumGenerator/src/Defs.h
-Settings.h
-/sandbox/Development/AlbumGenerator/src/Settings.h
-Stamp.h
-/sandbox/Development/AlbumGenerator/src/Stamp.h
-AECmdData.h
-/sandbox/Development/AlbumGenerator/src/AECmdData.h
-AlbumGeneratorApp.h
-/sandbox/Development/AlbumGenerator/src/AlbumGeneratorApp.h
-XMLUtilities.h
-/sandbox/Development/AlbumGenerator/src/XMLUtilities.h
-tinyxml2.h
-/sandbox/Development/AlbumGenerator/src/tinyxml2.h
-
-/sandbox/Development/AlbumGenerator/src/AECmdData.h
-Defs.h
-/sandbox/Development/AlbumGenerator/src/Defs.h
-tinyxml2.h
-/sandbox/Development/AlbumGenerator/src/tinyxml2.h
-wx/string.h
--
-
 /sandbox/Development/AlbumGenerator/src/AlbumGeneratorApp.cpp
 wx/wxprec.h
 /sandbox/Development/AlbumGenerator/src/wx/wxprec.h
@@ -113,8 +33,6 @@ AlbumGeneratorPanel.h
 /sandbox/Development/AlbumGenerator/src/AlbumGeneratorPanel.h
 ManageCatalogData.h
 /sandbox/Development/AlbumGenerator/src/ManageCatalogData.h
-ManageAECmdData.h
-/sandbox/Development/AlbumGenerator/src/ManageAECmdData.h
 wx/filefn.h
 -
 wx/filename.h
@@ -139,8 +57,6 @@ SettingsDialog.h
 /sandbox/Development/AlbumGenerator/src/SettingsDialog.h
 CatalogData.h
 /sandbox/Development/AlbumGenerator/src/CatalogData.h
-AECmdData.h
-/sandbox/Development/AlbumGenerator/src/AECmdData.h
 AlbumGeneratorFrame.h
 /sandbox/Development/AlbumGenerator/src/AlbumGeneratorFrame.h
 XMLUtilities.h
@@ -197,8 +113,6 @@ AlbumSplitterWindow.h
 /sandbox/Development/AlbumGenerator/src/AlbumSplitterWindow.h
 AlbumTreeCtrl.h
 /sandbox/Development/AlbumGenerator/src/AlbumTreeCtrl.h
-ManageAECmdData.h
-/sandbox/Development/AlbumGenerator/src/ManageAECmdData.h
 
 /sandbox/Development/AlbumGenerator/src/AlbumSplitterWindow.h
 wx/splitter.h
@@ -320,14 +234,6 @@ wx/treectrl.h
 wx/imaglist.h
 -
 
-/sandbox/Development/AlbumGenerator/src/ArrayWrapper.cpp
-
-/sandbox/Development/AlbumGenerator/src/ArrayWrapper.h
-AEItem.h
--
-vector
--
-
 /sandbox/Development/AlbumGenerator/src/CSV.cpp
 wx/wxprec.h
 /sandbox/Development/AlbumGenerator/src/wx/wxprec.h
@@ -351,8 +257,8 @@ CatalogData.h
 /sandbox/Development/AlbumGenerator/src/CSV.h
 Defs.h
 /sandbox/Development/AlbumGenerator/src/Defs.h
-tinyxml2.h
-/sandbox/Development/AlbumGenerator/src/tinyxml2.h
+wx/xml/xml.h
+/sandbox/Development/AlbumGenerator/src/wx/xml/xml.h
 wx/dynarray.h
 -
 wx/filename.h
@@ -385,8 +291,8 @@ Defs.h
 /sandbox/Development/AlbumGenerator/src/Defs.h
 Node.h
 /sandbox/Development/AlbumGenerator/src/Node.h
-tinyxml2.h
-/sandbox/Development/AlbumGenerator/src/tinyxml2.h
+wx/xml/xml.h
+/sandbox/Development/AlbumGenerator/src/wx/xml/xml.h
 
 /sandbox/Development/AlbumGenerator/src/CatalogData.cpp
 wx/wxprec.h
@@ -415,14 +321,14 @@ AlbumGeneratorApp.h
 /sandbox/Development/AlbumGenerator/src/AlbumGeneratorApp.h
 XMLUtilities.h
 /sandbox/Development/AlbumGenerator/src/XMLUtilities.h
-tinyxml2.h
-/sandbox/Development/AlbumGenerator/src/tinyxml2.h
+wx/xml/xml.h
+/sandbox/Development/AlbumGenerator/src/wx/xml/xml.h
 
 /sandbox/Development/AlbumGenerator/src/CatalogData.h
 Defs.h
 /sandbox/Development/AlbumGenerator/src/Defs.h
-tinyxml2.h
-/sandbox/Development/AlbumGenerator/src/tinyxml2.h
+wx/xml/xml.h
+/sandbox/Development/AlbumGenerator/src/wx/xml/xml.h
 wx/string.h
 -
 
@@ -555,8 +461,8 @@ Defs.h
 /sandbox/Development/AlbumGenerator/src/Defs.h
 Node.h
 /sandbox/Development/AlbumGenerator/src/Node.h
-tinyxml2.h
-/sandbox/Development/AlbumGenerator/src/tinyxml2.h
+wx/xml/xml.h
+/sandbox/Development/AlbumGenerator/src/wx/xml/xml.h
 wx/string.h
 -
 
@@ -583,8 +489,6 @@ Defs.h
 /sandbox/Development/AlbumGenerator/src/Defs.h
 CatalogData.h
 /sandbox/Development/AlbumGenerator/src/CatalogData.h
-AECmdData.h
-/sandbox/Development/AlbumGenerator/src/AECmdData.h
 Settings.h
 /sandbox/Development/AlbumGenerator/src/Settings.h
 Defs.h
@@ -628,32 +532,6 @@ Defs.h
 
 /sandbox/Development/AlbumGenerator/src/MakeList.h
 
-/sandbox/Development/AlbumGenerator/src/ManageAECmdData.cpp
-wx/wxprec.h
-/sandbox/Development/AlbumGenerator/src/wx/wxprec.h
-wx/wx.h
-/sandbox/Development/AlbumGenerator/src/wx/wx.h
-AlbumTreeCtrl.h
-/sandbox/Development/AlbumGenerator/src/AlbumTreeCtrl.h
-wx/imaglist.h
-/sandbox/Development/AlbumGenerator/src/wx/imaglist.h
-StaticItem.h
-/sandbox/Development/AlbumGenerator/src/StaticItem.h
-ManageAECmdData.h
-/sandbox/Development/AlbumGenerator/src/ManageAECmdData.h
-ReadAlbumEasyFile.h
-/sandbox/Development/AlbumGenerator/src/ReadAlbumEasyFile.h
-AECmdData.h
-/sandbox/Development/AlbumGenerator/src/AECmdData.h
-
-/sandbox/Development/AlbumGenerator/src/ManageAECmdData.h
-wx/treectrl.h
-/sandbox/Development/AlbumGenerator/src/wx/treectrl.h
-Defs.h
-/sandbox/Development/AlbumGenerator/src/Defs.h
-ArrayWrapper.h
-/sandbox/Development/AlbumGenerator/src/ArrayWrapper.h
-
 /sandbox/Development/AlbumGenerator/src/ManageCatalogData.cpp
 wx/wxprec.h
 /sandbox/Development/AlbumGenerator/src/wx/wxprec.h
@@ -677,8 +555,8 @@ CatalogData.h
 /sandbox/Development/AlbumGenerator/src/Node.h
 Defs.h
 /sandbox/Development/AlbumGenerator/src/Defs.h
-tinyxml2.h
-/sandbox/Development/AlbumGenerator/src/tinyxml2.h
+wx/xml/xml.h
+/sandbox/Development/AlbumGenerator/src/wx/xml/xml.h
 
 /sandbox/Development/AlbumGenerator/src/Persistent.cpp
 wx/wxprec.h
@@ -696,36 +574,6 @@ Persistent.h
 wx/dynarray.h
 -
 wx/string.h
--
-
-/sandbox/Development/AlbumGenerator/src/ReadAlbumEasyFile.cpp
-wx/wxprec.h
-/sandbox/Development/AlbumGenerator/src/wx/wxprec.h
-wx/wx.h
-/sandbox/Development/AlbumGenerator/src/wx/wx.h
-wx/arrstr.h
--
-wx/string.h
--
-ReadAlbumEasyFile.h
-/sandbox/Development/AlbumGenerator/src/ReadAlbumEasyFile.h
-tinyxml2.h
--
-
-/sandbox/Development/AlbumGenerator/src/ReadAlbumEasyFile.h
-tinyxml2.h
-/sandbox/Development/AlbumGenerator/src/tinyxml2.h
-wx/filename.h
--
-wx/string.h
--
-cstdio
--
-wx/txtstrm.h
--
-wx/wfstream.h
--
-ArrayWrapper.h
 -
 
 /sandbox/Development/AlbumGenerator/src/Settings.cpp
@@ -747,8 +595,10 @@ wx/filename.h
 -
 wx/utils.h
 -
-tinyxml2.h
-/sandbox/Development/AlbumGenerator/src/tinyxml2.h
+wx/xml/xml.h
+/sandbox/Development/AlbumGenerator/src/wx/xml/xml.h
+XMLUtilities.h
+/sandbox/Development/AlbumGenerator/src/XMLUtilities.h
 
 /sandbox/Development/AlbumGenerator/src/Settings.h
 wx/arrstr.h
@@ -809,8 +659,8 @@ Defs.h
 /sandbox/Development/AlbumGenerator/src/Defs.h
 Node.h
 /sandbox/Development/AlbumGenerator/src/Node.h
-tinyxml2.h
-/sandbox/Development/AlbumGenerator/src/tinyxml2.h
+wx/xml/xml.h
+/sandbox/Development/AlbumGenerator/src/wx/xml/xml.h
 
 /sandbox/Development/AlbumGenerator/src/Stamp.cpp
 wx/wxprec.h
@@ -829,13 +679,15 @@ wx/strconv.h
 -
 wx/tokenzr.h
 -
+XMLUtilities.h
+/sandbox/Development/AlbumGenerator/src/XMLUtilities.h
 
 /sandbox/Development/AlbumGenerator/src/Stamp.h
 Defs.h
 /sandbox/Development/AlbumGenerator/src/Defs.h
 Node.h
 /sandbox/Development/AlbumGenerator/src/Node.h
-tinyxml2.h
+wx/xml/xml.h
 -
 wx/string.h
 -
@@ -875,12 +727,12 @@ Stamp.h
 /sandbox/Development/AlbumGenerator/src/Stamp.h
 XMLUtilities.h
 /sandbox/Development/AlbumGenerator/src/XMLUtilities.h
-tinyxml2.h
-/sandbox/Development/AlbumGenerator/src/tinyxml2.h
+wx/xml/xml.h
+/sandbox/Development/AlbumGenerator/src/wx/xml/xml.h
 
 /sandbox/Development/AlbumGenerator/src/XMLUtilities.h
-tinyxml2.h
-/sandbox/Development/AlbumGenerator/src/tinyxml2.h
+wx/xml/xml.h
+/sandbox/Development/AlbumGenerator/src/wx/xml/xml.h
 
 /sandbox/Development/AlbumGenerator/src/art/StampBlack.xpm
 
@@ -3310,6 +3162,18 @@ wx/list.h
 wx/control.h
 /usr/local/include/wx-3.1/wx/wx/control.h
 
+/usr/local/include/wx-3.1/wx/textbuf.h
+wx/defs.h
+/usr/local/include/wx-3.1/wx/wx/defs.h
+wx/arrstr.h
+/usr/local/include/wx-3.1/wx/wx/arrstr.h
+wx/convauto.h
+/usr/local/include/wx-3.1/wx/wx/convauto.h
+wx/string.h
+/usr/local/include/wx-3.1/wx/wx/string.h
+wx/dynarray.h
+/usr/local/include/wx-3.1/wx/wx/dynarray.h
+
 /usr/local/include/wx-3.1/wx/textctrl.h
 wx/defs.h
 /usr/local/include/wx-3.1/wx/wx/defs.h
@@ -3927,6 +3791,20 @@ wx/msw/missing.h
 /usr/local/include/wx-3.1/wx/wx/msw/missing.h
 wx/wx.h
 /usr/local/include/wx-3.1/wx/wx/wx.h
+
+/usr/local/include/wx-3.1/wx/xml/xml.h
+wx/defs.h
+/usr/local/include/wx-3.1/wx/xml/wx/defs.h
+wx/string.h
+/usr/local/include/wx-3.1/wx/xml/wx/string.h
+wx/object.h
+/usr/local/include/wx-3.1/wx/xml/wx/object.h
+wx/list.h
+/usr/local/include/wx-3.1/wx/xml/wx/list.h
+wx/textbuf.h
+/usr/local/include/wx-3.1/wx/xml/wx/textbuf.h
+wx/versioninfo.h
+/usr/local/include/wx-3.1/wx/xml/wx/versioninfo.h
 
 /usr/local/include/wx-3.1/wx/xti.h
 wx/defs.h

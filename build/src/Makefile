@@ -125,33 +125,6 @@ AlbumGenerator/fast:
 	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f src/CMakeFiles/AlbumGenerator.dir/build.make src/CMakeFiles/AlbumGenerator.dir/build
 .PHONY : AlbumGenerator/fast
 
-AECmdData.o: AECmdData.cpp.o
-
-.PHONY : AECmdData.o
-
-# target to build an object file
-AECmdData.cpp.o:
-	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f src/CMakeFiles/AlbumGenerator.dir/build.make src/CMakeFiles/AlbumGenerator.dir/AECmdData.cpp.o
-.PHONY : AECmdData.cpp.o
-
-AECmdData.i: AECmdData.cpp.i
-
-.PHONY : AECmdData.i
-
-# target to preprocess a source file
-AECmdData.cpp.i:
-	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f src/CMakeFiles/AlbumGenerator.dir/build.make src/CMakeFiles/AlbumGenerator.dir/AECmdData.cpp.i
-.PHONY : AECmdData.cpp.i
-
-AECmdData.s: AECmdData.cpp.s
-
-.PHONY : AECmdData.s
-
-# target to generate assembly for a file
-AECmdData.cpp.s:
-	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f src/CMakeFiles/AlbumGenerator.dir/build.make src/CMakeFiles/AlbumGenerator.dir/AECmdData.cpp.s
-.PHONY : AECmdData.cpp.s
-
 AlbumGeneratorApp.o: AlbumGeneratorApp.cpp.o
 
 .PHONY : AlbumGeneratorApp.o
@@ -286,33 +259,6 @@ AlbumTreeCtrl.s: AlbumTreeCtrl.cpp.s
 AlbumTreeCtrl.cpp.s:
 	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f src/CMakeFiles/AlbumGenerator.dir/build.make src/CMakeFiles/AlbumGenerator.dir/AlbumTreeCtrl.cpp.s
 .PHONY : AlbumTreeCtrl.cpp.s
-
-ArrayWrapper.o: ArrayWrapper.cpp.o
-
-.PHONY : ArrayWrapper.o
-
-# target to build an object file
-ArrayWrapper.cpp.o:
-	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f src/CMakeFiles/AlbumGenerator.dir/build.make src/CMakeFiles/AlbumGenerator.dir/ArrayWrapper.cpp.o
-.PHONY : ArrayWrapper.cpp.o
-
-ArrayWrapper.i: ArrayWrapper.cpp.i
-
-.PHONY : ArrayWrapper.i
-
-# target to preprocess a source file
-ArrayWrapper.cpp.i:
-	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f src/CMakeFiles/AlbumGenerator.dir/build.make src/CMakeFiles/AlbumGenerator.dir/ArrayWrapper.cpp.i
-.PHONY : ArrayWrapper.cpp.i
-
-ArrayWrapper.s: ArrayWrapper.cpp.s
-
-.PHONY : ArrayWrapper.s
-
-# target to generate assembly for a file
-ArrayWrapper.cpp.s:
-	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f src/CMakeFiles/AlbumGenerator.dir/build.make src/CMakeFiles/AlbumGenerator.dir/ArrayWrapper.cpp.s
-.PHONY : ArrayWrapper.cpp.s
 
 CSV.o: CSV.cpp.o
 
@@ -557,33 +503,6 @@ MakeList.cpp.s:
 	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f src/CMakeFiles/AlbumGenerator.dir/build.make src/CMakeFiles/AlbumGenerator.dir/MakeList.cpp.s
 .PHONY : MakeList.cpp.s
 
-ManageAECmdData.o: ManageAECmdData.cpp.o
-
-.PHONY : ManageAECmdData.o
-
-# target to build an object file
-ManageAECmdData.cpp.o:
-	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f src/CMakeFiles/AlbumGenerator.dir/build.make src/CMakeFiles/AlbumGenerator.dir/ManageAECmdData.cpp.o
-.PHONY : ManageAECmdData.cpp.o
-
-ManageAECmdData.i: ManageAECmdData.cpp.i
-
-.PHONY : ManageAECmdData.i
-
-# target to preprocess a source file
-ManageAECmdData.cpp.i:
-	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f src/CMakeFiles/AlbumGenerator.dir/build.make src/CMakeFiles/AlbumGenerator.dir/ManageAECmdData.cpp.i
-.PHONY : ManageAECmdData.cpp.i
-
-ManageAECmdData.s: ManageAECmdData.cpp.s
-
-.PHONY : ManageAECmdData.s
-
-# target to generate assembly for a file
-ManageAECmdData.cpp.s:
-	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f src/CMakeFiles/AlbumGenerator.dir/build.make src/CMakeFiles/AlbumGenerator.dir/ManageAECmdData.cpp.s
-.PHONY : ManageAECmdData.cpp.s
-
 ManageCatalogData.o: ManageCatalogData.cpp.o
 
 .PHONY : ManageCatalogData.o
@@ -637,33 +556,6 @@ Persistent.s: Persistent.cpp.s
 Persistent.cpp.s:
 	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f src/CMakeFiles/AlbumGenerator.dir/build.make src/CMakeFiles/AlbumGenerator.dir/Persistent.cpp.s
 .PHONY : Persistent.cpp.s
-
-ReadAlbumEasyFile.o: ReadAlbumEasyFile.cpp.o
-
-.PHONY : ReadAlbumEasyFile.o
-
-# target to build an object file
-ReadAlbumEasyFile.cpp.o:
-	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f src/CMakeFiles/AlbumGenerator.dir/build.make src/CMakeFiles/AlbumGenerator.dir/ReadAlbumEasyFile.cpp.o
-.PHONY : ReadAlbumEasyFile.cpp.o
-
-ReadAlbumEasyFile.i: ReadAlbumEasyFile.cpp.i
-
-.PHONY : ReadAlbumEasyFile.i
-
-# target to preprocess a source file
-ReadAlbumEasyFile.cpp.i:
-	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f src/CMakeFiles/AlbumGenerator.dir/build.make src/CMakeFiles/AlbumGenerator.dir/ReadAlbumEasyFile.cpp.i
-.PHONY : ReadAlbumEasyFile.cpp.i
-
-ReadAlbumEasyFile.s: ReadAlbumEasyFile.cpp.s
-
-.PHONY : ReadAlbumEasyFile.s
-
-# target to generate assembly for a file
-ReadAlbumEasyFile.cpp.s:
-	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f src/CMakeFiles/AlbumGenerator.dir/build.make src/CMakeFiles/AlbumGenerator.dir/ReadAlbumEasyFile.cpp.s
-.PHONY : ReadAlbumEasyFile.cpp.s
 
 Settings.o: Settings.cpp.o
 
@@ -863,9 +755,6 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... AlbumGenerator"
 	@echo "... edit_cache"
-	@echo "... AECmdData.o"
-	@echo "... AECmdData.i"
-	@echo "... AECmdData.s"
 	@echo "... AlbumGeneratorApp.o"
 	@echo "... AlbumGeneratorApp.i"
 	@echo "... AlbumGeneratorApp.s"
@@ -881,9 +770,6 @@ help:
 	@echo "... AlbumTreeCtrl.o"
 	@echo "... AlbumTreeCtrl.i"
 	@echo "... AlbumTreeCtrl.s"
-	@echo "... ArrayWrapper.o"
-	@echo "... ArrayWrapper.i"
-	@echo "... ArrayWrapper.s"
 	@echo "... CSV.o"
 	@echo "... CSV.i"
 	@echo "... CSV.s"
@@ -911,18 +797,12 @@ help:
 	@echo "... MakeList.o"
 	@echo "... MakeList.i"
 	@echo "... MakeList.s"
-	@echo "... ManageAECmdData.o"
-	@echo "... ManageAECmdData.i"
-	@echo "... ManageAECmdData.s"
 	@echo "... ManageCatalogData.o"
 	@echo "... ManageCatalogData.i"
 	@echo "... ManageCatalogData.s"
 	@echo "... Persistent.o"
 	@echo "... Persistent.i"
 	@echo "... Persistent.s"
-	@echo "... ReadAlbumEasyFile.o"
-	@echo "... ReadAlbumEasyFile.i"
-	@echo "... ReadAlbumEasyFile.s"
 	@echo "... Settings.o"
 	@echo "... Settings.i"
 	@echo "... Settings.s"

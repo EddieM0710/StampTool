@@ -214,7 +214,9 @@ int StyleNameIndex = 0;
 
     wxXmlNode* NewNode( wxXmlNode* parent, wxString name )
     {
-        return  new wxXmlNode( parent, wxXML_ELEMENT_NODE, name );
+        wxXmlNode* newNode =  new wxXmlNode( 0, wxXML_ELEMENT_NODE, name );
+        parent->AddChild(newNode);
+        return newNode;
 
     }
 
@@ -335,19 +337,29 @@ int StyleNameIndex = 0;
         while ( child )
         {
             wxString nodeName = child->GetName( );
-            std::cout << level << nodeName << "  ";
-            wxXmlAttribute* attr = child->GetAttributes( );
-            while ( attr )
+
+            // dump everything except CatalogCodes
+            if ( nodeName.Cmp("CatalogCode") )
             {
-                wxString name = attr->GetName( );
-                wxString val = attr->GetValue( );
-                std::cout << name << ":" << val << " ";
-                attr = attr->GetNext( );
-            }
-            std::cout << "\n";
-            if ( child->GetChildren( ) )
-            {
-                XMLDumpNode( child, level );
+                std::cout << level << nodeName << "  ";
+
+                std::cout << GetAttrStr( child, Catalog::DT_XMLDataNames[ Catalog::DT_ID_Nbr ] ) ;
+                std::cout << "  " << GetAttrStr( child, Catalog::DT_XMLDataNames[ Catalog::DT_Name ] ) ;
+
+                // wxXmlAttribute* attr = child->GetAttributes( );
+                // while ( attr  )
+                // {
+                //     wxString name = attr->GetName( );
+                //     wxString val = attr->GetValue( );
+                //     std::cout << name << ":" << val << " ";
+                //     attr = attr->GetNext( );
+                // }
+
+                std::cout << "\n";
+                if ( child->GetChildren( ) )
+                {
+                    XMLDumpNode( child, level );
+                }
             }
             child = child->GetNext( );
         }

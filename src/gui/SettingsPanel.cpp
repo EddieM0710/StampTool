@@ -108,7 +108,7 @@ void SettingsPanel::Init()
 {
 ////@begin SettingsPanel member initialisation
     m_imageDirectory = NULL;
-    m_workingDirectory = NULL;
+    //m_workingDirectory = NULL;
     m_country = NULL;
     m_catalog = NULL;
     m_loadLastFileAtStartUp = NULL;
@@ -139,8 +139,8 @@ void SettingsPanel::CreateControls()
     wxBoxSizer* itemBoxSizer3 = new wxBoxSizer(wxHORIZONTAL);
     itemBoxSizer2->Add(itemBoxSizer3, 1, wxGROW|wxALL, 5);
 
-    m_workingDirectory = new LabeledTextBox( itemPanel1, ID_WORKINGDIRECTORYTEXTBOX, wxDefaultPosition, wxDefaultSize, wxSIMPLE_BORDER );
-    itemBoxSizer3->Add(m_workingDirectory, 1, wxGROW|wxALL, 5);
+    //m_workingDirectory = new LabeledTextBox( itemPanel1, ID_WORKINGDIRECTORYTEXTBOX, wxDefaultPosition, wxDefaultSize, wxSIMPLE_BORDER );
+    //itemBoxSizer3->Add(m_workingDirectory, 1, wxGROW|wxALL, 5);
 
     wxBoxSizer* itemBoxSizer7 = new wxBoxSizer(wxHORIZONTAL);
     itemBoxSizer2->Add(itemBoxSizer7, 1, wxGROW|wxALL, 5);

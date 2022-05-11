@@ -116,7 +116,7 @@ public:
 
 ////@begin SettingsDialog member variables
     wxTextCtrl* m_imageDirectory;
-    wxTextCtrl* m_workingDirectory;
+    //wxTextCtrl* m_workingDirectory;
     wxTextCtrl* m_country;
     wxTextCtrl* m_catalog;
     wxCheckBox* m_loadLastFileAtStartUp;

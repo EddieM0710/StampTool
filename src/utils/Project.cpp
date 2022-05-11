@@ -129,8 +129,8 @@ namespace Utils {
         }
 
         wxString cwd = projFile.GetPath( );
-        m_settings->SetWorkingDirectory( cwd );
-        wxFileName::SetCwd( cwd );
+        wxSetWorkingDirectory( cwd );
+        //wxFileName::SetCwd( cwd );
 //        m_projectFilename = projFile.GetFullPath( );
 
 

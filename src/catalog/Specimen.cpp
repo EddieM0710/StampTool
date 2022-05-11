@@ -53,7 +53,7 @@ namespace Catalog {
             const wxXmlAttribute* attr = Utils::GetAttribute( GetCatXMLNode( ), ItemDataNames[ type ] );
             if ( attr )
             {
-                return wxString::FromUTF8Unchecked( attr->GetValue( ) );
+                return attr->GetValue( );
             }
         }
         return wxString( "" );

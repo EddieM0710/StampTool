@@ -43,6 +43,7 @@ class LabeledTextBox;
 #define ID_EBAYBUTTON ID_MISCELLANEOUSDATA+6
 #define ID_NPMBUTTON ID_MISCELLANEOUSDATA+7
 #define ID_CATCODETEXTBOX ID_MISCELLANEOUSDATA+8
+#define ID_IMAGENAMETEXTBOX ID_MISCELLANEOUSDATA+9
 #define SYMBOL_MISCELLANEOUSDATAPANEL_STYLE wxTAB_TRAVERSAL
 #define SYMBOL_MISCELLANEOUSDATAPANEL_TITLE _( "MiscellaneousData" )
 #define SYMBOL_MISCELLANEOUSDATAPANEL_IDNAME ID_MISCELLANEOUSDATA
@@ -167,6 +168,7 @@ class MiscellaneousDataPanel : public wxPanel
     LabeledTextBox *m_accuracy;
     LabeledTextBox *m_link;
     LabeledTextBox *m_catCodes;
+    LabeledTextBox *m_imageName;
      // MiscellaneousDataPanel member variables
 };
 

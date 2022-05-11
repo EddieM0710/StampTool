@@ -30,6 +30,7 @@ enum
     CatalogDataTree_ResortTree
 };
 
+typedef std::vector<wxXmlNode*> wxXmlNodeArray;
 
 class Stamp;
 class Classification;
@@ -322,7 +323,7 @@ public:
      * @param   parentType :
      * @return {wxArrayPtrVoid*}       :
      **************************************************/
-    wxArrayPtrVoid* MakeParentList( wxXmlNode* catalogData,
+    wxXmlNodeArray* MakeParentList( wxXmlNode* catalogData,
         Catalog::FormatType parentType );
 
     /**
@@ -400,6 +401,7 @@ public:
     void EnableState( wxTreeItemId id );
     void DisableState( wxTreeItemId id );
     void SetStates( bool enable );
+    bool StrSame(wxString str1, wxString str2 );
 
 private:
 

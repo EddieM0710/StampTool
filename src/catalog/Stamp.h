@@ -291,10 +291,10 @@ namespace Catalog {
          **************************************************/
         wxString GetLabel( )
         {
-            wxString name = GetID( );
-            name.Append( "-" );
-            name.Append( GetName( ) );
-            return name;
+            wxString label = GetID( );
+            label.Append( " - " );
+            label.Append( GetName( ) );
+            return label;
         };
 
         /**
@@ -395,7 +395,7 @@ namespace Catalog {
          * @brief
          *
          **************************************************/
-        void ProcessCatalogCodes( );
+        void ProcessCatalogCodes( wxString catCodes);
 
 
     private:

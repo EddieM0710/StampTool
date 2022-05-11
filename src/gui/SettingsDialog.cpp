@@ -73,7 +73,7 @@ SettingsDialog::SettingsDialog( wxWindow* parent, wxWindowID id, const wxString&
     Init();
     Create(parent, id, caption, pos, size, style);
     m_imageDirectory->SetValue( GetSettings( )->GetImageDirectory( ));
-    m_workingDirectory->SetValue( GetSettings( )->GetWorkingDirectory( ));
+    //m_workingDirectory->SetValue( GetSettings( )->GetWorkingDirectory( ));
     m_country->SetValue( GetSettings( )->GetCountryID( ));
     m_catalog->SetValue( GetSettings( )->GetCatalogID( ));
     m_loadLastFileAtStartUp->SetValue( GetSettings( )->GetLoadLastFileAtStartUp( ));
@@ -122,7 +122,7 @@ void SettingsDialog::Init()
 {
 ////@begin SettingsDialog member initialisation
     m_imageDirectory = NULL;
-    m_workingDirectory = NULL;
+    //m_workingDirectory = NULL;
     m_country = NULL;
     m_catalog = NULL;
     m_loadLastFileAtStartUp = NULL;
@@ -160,8 +160,8 @@ void SettingsDialog::CreateControls()
     wxStaticText* itemStaticText3 = new wxStaticText( itemDialog1, wxID_STATIC, _("Working Directory"), wxDefaultPosition, wxDefaultSize, 0 );
     itemBoxSizer5->Add(itemStaticText3, 0, wxALIGN_CENTER_VERTICAL|wxLEFT|wxTOP|wxBOTTOM, 5);
 
-    m_workingDirectory = new wxTextCtrl( itemDialog1, ID_WORKINGDIRECTORYTEXTBOX, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
-    itemBoxSizer5->Add(m_workingDirectory, 1, wxGROW|wxALL, 5);
+    //m_workingDirectory = new wxTextCtrl( itemDialog1, ID_WORKINGDIRECTORYTEXTBOX, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+    //itemBoxSizer5->Add(m_workingDirectory, 1, wxGROW|wxALL, 5);
 
     wxBoxSizer* itemBoxSizer7 = new wxBoxSizer(wxHORIZONTAL);
     itemBoxSizer1->Add(itemBoxSizer7, 1, wxGROW|wxALL, 5);
@@ -348,12 +348,12 @@ void SettingsDialog::UpdateSettings()
         m_imageDirectory->SetModified( false );
     }
 
-    if ( m_workingDirectory->IsModified( ) )
-    {
-        GetSettings()->SetDirty();
-        GetSettings()->SetWorkingDirectory( m_workingDirectory->GetValue( ));
-        m_workingDirectory->SetModified( false );
-    }
+    // if ( m_workingDirectory->IsModified( ) )
+    // {
+    //     GetSettings()->SetDirty();
+    //     GetSettings()->SetWorkingDirectory( m_workingDirectory->GetValue( ));
+    //     m_workingDirectory->SetModified( false );
+    // }
 
     if ( m_country->IsModified( ) )
     {

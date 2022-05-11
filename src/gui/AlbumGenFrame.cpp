@@ -67,6 +67,9 @@ BEGIN_EVENT_TABLE( AlbumGenFrame, wxFrame )
 EVT_CLOSE( AlbumGenFrame::OnCloseWindow )
 EVT_ICONIZE( AlbumGenFrame::OnIconize )
 EVT_MAXIMIZE( AlbumGenFrame::OnMaximize )
+EVT_MENU( ID_NEWPROJECT, AlbumGenFrame::OnNewProjectClick )
+EVT_MENU( ID_NEWDESIGN, AlbumGenFrame::OnNewDesignClick )
+EVT_MENU( ID_NEWCATALOG, AlbumGenFrame::OnNewCatalogClick )
 EVT_MENU( ID_OPENPROJECT, AlbumGenFrame::OnOpenProjectClick )
 EVT_MENU( ID_OPENDESIGN, AlbumGenFrame::OnOpenDesignClick )
 EVT_MENU( ID_OPENCATALOG, AlbumGenFrame::OnOpenCatalogClick )
@@ -78,6 +81,7 @@ EVT_MENU( ID_SAVEASDESIGN, AlbumGenFrame::OnSaveasDesignClick )
 EVT_MENU( ID_SAVEASCATALOG, AlbumGenFrame::OnSaveasCatalogClick )
 EVT_MENU( ID_GENERATEODT, AlbumGenFrame::OnGenerateODTClick )
 EVT_MENU( ID_CSVIMPORT, AlbumGenFrame::OnCSVImportClick )
+//EVT_MENU( ID_MERGE, AlbumGenFrame::OnCSVImportClick )
 EVT_MENU( wxID_EXIT, AlbumGenFrame::OnExitClick )
 EVT_MENU( ID_TEXTSERCHMENUITEM, AlbumGenFrame::OnTextserchmenuitemClick )
 EVT_MENU( ID_SORTORDER, AlbumGenFrame::OnSortOrderClick )
@@ -163,30 +167,36 @@ void AlbumGenFrame::CreateControls( )
 
     wxMenuBar* menuBar = new wxMenuBar;
     m_fileMenu = new wxMenu;
-    m_openMenu = new wxMenu;
-    m_openMenu->Append( ID_OPENPROJECT, _( "Open Project File" ), wxEmptyString, wxITEM_NORMAL );
-    m_openMenu->Append( ID_OPENDESIGN, _( "Open Design File" ), wxEmptyString, wxITEM_NORMAL );
-    m_openMenu->Append( ID_OPENCATALOG, _( "Open Catalog File" ), wxEmptyString, wxITEM_NORMAL );
-    m_fileMenu->Append( wxID_OPEN, _( "Open" ), m_openMenu );
+    m_newMenu = new wxMenu;
+    m_fileMenu->Append( ID_NEWPROJECT, _( "New Project File" ), wxEmptyString, wxITEM_NORMAL );
+    m_fileMenu->Append( ID_OPENPROJECT, _( "Open Project File" ), wxEmptyString, wxITEM_NORMAL );
+    m_fileMenu->AppendSeparator( );
+    m_fileMenu->Append( ID_SAVEPROJECT, _( "Save Project File" ), wxEmptyString, wxITEM_NORMAL );
+    m_fileMenu->Append( ID_SAVEASPROJECT, _( "Save Project File As" ), wxEmptyString, wxITEM_NORMAL );
+    m_fileMenu->AppendSeparator( );
 
-    m_saveMenu = new wxMenu;
-    m_saveMenu->Append( ID_SAVEPROJECT, _( "Save Project File" ), wxEmptyString, wxITEM_NORMAL );
-    m_saveMenu->Append( ID_SAVEDESIGN, _( "Save Design File" ), wxEmptyString, wxITEM_NORMAL );
-    m_saveMenu->Append( ID_SAVECATALOG, _( "Save Catalog File" ), wxEmptyString, wxITEM_NORMAL );
-    m_fileMenu->Append( wxID_SAVE, _( "Save" ), m_saveMenu );
+    wxMenu* m_catalogMenu = new wxMenu;
+     
+    m_catalogMenu->Append( ID_NEWCATALOG, _( "New Catalog File" ), wxEmptyString, wxITEM_NORMAL );
+    m_catalogMenu->Append( ID_OPENCATALOG, _( "Open Catalog File" ), wxEmptyString, wxITEM_NORMAL );
+    m_catalogMenu->Append( ID_SAVECATALOG, _( "Save Catalog File" ), wxEmptyString, wxITEM_NORMAL );
+    m_catalogMenu->Append( ID_SAVEASCATALOG, _( "Save Catalog File As" ), wxEmptyString, wxITEM_NORMAL );
+    m_fileMenu->Append( ID_CATALOGMENU, _( "Catalog" ), m_catalogMenu );
 
-    m_saveAsMenu = new wxMenu;
-    m_saveAsMenu->Append( ID_SAVEASPROJECT, _( "Save Project File As" ), wxEmptyString, wxITEM_NORMAL );
-    m_saveAsMenu->Append( ID_SAVEASDESIGN, _( "Save Design File As" ), wxEmptyString, wxITEM_NORMAL );
-    m_saveAsMenu->Append( ID_SAVEASCATALOG, _( "Save Catalog File As" ), wxEmptyString, wxITEM_NORMAL );
-    m_fileMenu->Append( wxID_SAVEAS, _( "Save" ), m_saveAsMenu );
+
+    wxMenu* m_designMenu = new wxMenu;
+    m_designMenu->Append( ID_NEWDESIGN, _( "New Design File" ), wxEmptyString, wxITEM_NORMAL );
+    m_designMenu->Append( ID_OPENDESIGN, _( "Open Design File" ), wxEmptyString, wxITEM_NORMAL );
+    m_designMenu->Append( ID_SAVEDESIGN, _( "Save Design File" ), wxEmptyString, wxITEM_NORMAL );
+    m_designMenu->Append( ID_SAVEASDESIGN, _( "SaveAs Design File" ), wxEmptyString, wxITEM_NORMAL );
+    m_fileMenu->Append( ID_DESIGNMENU, _( "Design" ), m_designMenu );
 
     m_fileMenu->AppendSeparator( );
     m_fileMenu->Append( ID_GENERATEODT, _( "Generate ODT Album" ), wxEmptyString, wxITEM_NORMAL );
 
     m_fileMenu->AppendSeparator( );
 
-    m_fileMenu->Append( ID_IMPORT, _( "Import CSV" ), wxEmptyString, wxITEM_NORMAL );
+    m_fileMenu->Append( ID_CSVIMPORT, _( "Import CSV" ), wxEmptyString, wxITEM_NORMAL );
     m_fileMenu->Append( ID_MERGE, _( "Merge" ), wxEmptyString, wxITEM_NORMAL );
     m_fileMenu->AppendSeparator( );
     m_recentMenu = new wxMenu;
@@ -299,23 +309,15 @@ void AlbumGenFrame::DoRecentSelection( wxCommandEvent& event )
 
 void AlbumGenFrame::DoCSVImport( )
 {
-    // CatalogData* mergeCatalogData;
-    // int mergeMethod;
-    // int mergeOverwriteQuery = DoQueryMerge( mergeMethod );
-    // if ( mergeOverwriteQuery == MO_Cancel )
-    // {
-    //     return;
-    // }
+
     if ( IsDirty( ) )
     {
         // query whether to save first 
     }
 
-    wxFileName lastFile( GetSettings( )->GetLastFile( ) );
-    lastFile.SetExt( "csv" );
     wxFileDialog openFileDialog(
         this, _( "Open Colnect CSV file" ),
-        lastFile.GetPath( ), lastFile.GetFullName( ),
+        "", "",
         "CSV files (*.csv)|*.csv", wxFD_OPEN | wxFD_FILE_MUST_EXIST );
     if ( openFileDialog.ShowModal( ) == wxID_CANCEL )
     {
@@ -332,7 +334,7 @@ void AlbumGenFrame::DoCSVImport( )
         return;
     }
 
-    //    m_catalogPanel->LoadCatalogCSV( filename );
+    m_catalogPanel->LoadCatalogCSV( filename );
     Dirty = true;
 }
 
@@ -352,6 +354,25 @@ void AlbumGenFrame::DoDefinePeriodDialog( )
 }
 
 
+void AlbumGenFrame::OnNewProjectClick( wxCommandEvent& event )
+{
+    NewProject( );
+    event.Skip( );
+}
+
+void AlbumGenFrame::OnNewDesignClick( wxCommandEvent& event )
+{
+    NewDesign( );
+    event.Skip( );
+}
+void AlbumGenFrame::OnNewCatalogClick( wxCommandEvent& event )
+{
+    NewCatalog( );
+    event.Skip( );
+}
+
+
+
 void AlbumGenFrame::OnOpenProjectClick( wxCommandEvent& event )
 {
     OpenProject( );
@@ -368,7 +389,6 @@ void AlbumGenFrame::OnOpenCatalogClick( wxCommandEvent& event )
     OpenCatalog( );
     event.Skip( );
 }
-
 
 void AlbumGenFrame::OnSaveProjectClick( wxCommandEvent& event )
 {
@@ -510,6 +530,105 @@ void AlbumGenFrame::OnTextserchmenuitemClick( wxCommandEvent& event )
     event.Skip( );
 }
 
+void AlbumGenFrame::NewProject( )
+{
+
+    if ( IsDirty( ) )
+    {
+        // query whether to save first 
+        wxMessageDialog* dlg = new wxMessageDialog(
+            this,
+            wxT( "The current data has been changed but not saved. \n"\
+                "Select \"OK\" to close the file losing the changes.\n"\
+                "Or select \"Cancel\" to quit file open process.\n" ),
+            wxT( "Warning! Unsaved modifications.\n" ),
+            wxOK | wxCANCEL | wxCENTER );
+        int rsp = dlg->ShowModal( );
+        if ( rsp == wxID_CANCEL )
+        {
+            return;
+        }
+    };
+
+    wxFileDialog newFileDialog(
+        this, _( "New Project XML file" ),
+        wxGetCwd( ), "",
+        "Project XML files (*.prj.xml)|*.prj.xml", wxFD_OPEN | wxFD_CHANGE_DIR );
+    if ( newFileDialog.ShowModal( ) == wxID_CANCEL )
+    {
+        return; // the user changed idea...
+    }
+
+
+
+}
+
+
+void AlbumGenFrame::NewDesign( )
+{
+    if ( IsDirty( ) )
+    {
+        // query whether to save first 
+
+        wxMessageDialog* dlg = new wxMessageDialog(
+            this,
+            wxT( "The current data has been changed but not saved. \n"\
+                "Select \"OK\" to close the file losing the changes.\n"\
+                "Or select \"Cancel\" to quit file open process.\n" ),
+            wxT( "Warning! Unsaved modifications.\n" ),
+            wxOK | wxCANCEL | wxCENTER );
+        int rsp = dlg->ShowModal( );
+        if ( rsp == wxID_CANCEL )
+        {
+            return;
+        }
+    };
+
+    wxFileDialog newFileDialog(
+        this, _( "New Design XML file" ),
+        wxGetCwd( ), "",
+        "Project XML files (*.alb.xml)|*.alb.xml", wxFD_OPEN );
+    if ( newFileDialog.ShowModal( ) == wxID_CANCEL )
+    {
+        return; // the user changed idea...
+    }
+
+
+}
+
+
+
+void AlbumGenFrame::NewCatalog( )
+{
+
+
+    if ( IsDirty( ) )
+    {
+        // query whether to save first 
+        wxMessageDialog* dlg = new wxMessageDialog(
+            this,
+            wxT( "The current data has been changed but not saved. \n"\
+                "Select \"OK\" to close the file losing the changes.\n"\
+                "Or select \"Cancel\" to quit file open process.\n" ),
+            wxT( "Warning! Unsaved modifications.\n" ),
+            wxOK | wxCANCEL | wxCENTER );
+        int rsp = dlg->ShowModal( );
+        if ( rsp == wxID_CANCEL )
+        {
+            return;
+        }
+    };
+
+    wxFileDialog newFileDialog(
+        this, _( "New Catalog XML file" ),
+        wxGetCwd( ), "",
+        "Project XML files (*.cat.xml)|*.cat.xml", wxFD_OPEN  );
+    if ( newFileDialog.ShowModal( ) == wxID_CANCEL )
+    {
+        return; // the user changed idea...
+    }
+
+}
 
 void AlbumGenFrame::OpenProject( )
 {
@@ -535,7 +654,8 @@ void AlbumGenFrame::OpenProject( )
     wxFileDialog openFileDialog(
         this, _( "Open Project XML file" ),
         lastFile.GetPath( ), lastFile.GetFullName( ),
-        "Project XML files (*.prj.xml)|*.prj.xml", wxFD_OPEN | wxFD_FILE_MUST_EXIST );
+        "Project XML files (*.prj.xml)|*.prj.xml", 
+        wxFD_OPEN | wxFD_FILE_MUST_EXIST | wxFD_CHANGE_DIR );
     if ( openFileDialog.ShowModal( ) == wxID_CANCEL )
     {
         return; // the user changed idea...
@@ -722,7 +842,7 @@ void AlbumGenFrame::SaveAsProject( )
         wxFileDialog saveFileDialog(
             this, _( "Stamp List XML file" ),
             lastFile.GetPath( ), lastFile.GetFullName( ),
-            "XML files (*.prj.xml)|*.prj.xml", wxFD_SAVE );
+            "XML files (*.prj.xml)|*.prj.xml", wxFD_SAVE | wxFD_OVERWRITE_PROMPT );
         if ( saveFileDialog.ShowModal( ) == wxID_CANCEL )
             return;
 
@@ -741,7 +861,7 @@ void AlbumGenFrame::SaveAsCatalog( )
         wxFileDialog saveFileDialog(
             this, _( "Stamp List XML file" ),
             lastFile.GetPath( ), lastFile.GetFullName( ),
-            "XML files (*.cat.xml)|*.cat.xml", wxFD_SAVE );
+            "XML files (*.cat.xml)|*.cat.xml", wxFD_SAVE | wxFD_OVERWRITE_PROMPT );
         if ( saveFileDialog.ShowModal( ) == wxID_CANCEL )
             return;
 
@@ -760,7 +880,7 @@ void AlbumGenFrame::SaveAsDesign( )
         wxFileDialog saveFileDialog(
             this, _( "Stamp List XML file" ),
             lastFile.GetPath( ), lastFile.GetFullName( ),
-            "XML files (*.alb.xml)|*.alb.xml", wxFD_SAVE );
+            "XML files (*.alb.xml)|*.alb.xml", wxFD_SAVE | wxFD_OVERWRITE_PROMPT );
         if ( saveFileDialog.ShowModal( ) == wxID_CANCEL )
             return;
 

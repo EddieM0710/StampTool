@@ -465,7 +465,11 @@ void DescriptionPanel::SetStamp( wxXmlNode* stamp )
     }
     else
     {
-     imageFile =  wxString::Format( "%s/%s.jpg", dirName, fileName );
+        fileName = fileName.Trim(true);
+        fileName = fileName.Trim(false);
+        fileName.Replace(":","_");
+        fileName.Replace(" ","_");
+        imageFile =  wxString::Format( "%s/%s.jpg", dirName, fileName );
     }
     m_stampImage->SetBitmap( imageFile );
 }

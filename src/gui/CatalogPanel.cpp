@@ -244,7 +244,7 @@ void CatalogPanel::LoadCatalogCSV( wxString csvFilename )
         Catalog::CatalogData* catalogData = Catalog::NewCatalogData( );
         GetGeneratorData( )->SetCatalogData( catalogData );
 
-        catalogData->LoadCSV( csvFile.GetFullName() );
+        catalogData->LoadCSV( csvFile.GetFullPath() );
 
         LoadCatalogTree( );
     }

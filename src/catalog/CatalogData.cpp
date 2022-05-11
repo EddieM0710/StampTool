@@ -102,11 +102,21 @@ namespace Catalog {
             }
 
             wxString cwd = wxGetCwd( );
-            ok = m_stampDoc->Load( filename );
-        }
-        if ( !ok )
-        {
-            std::cout << filename << " Load Failed.\n";
+            //ok = m_stampDoc->Load( filename );
+            wxFileInputStream stream(filename);
+            if (!stream.IsOk())
+            {
+                wxStreamError err = stream.GetLastError();
+                std::cout  << "\n" << filename << " Stream Create Failed. Error:" << err << "\n\n";
+                ok = false;
+            }  
+            ok = m_stampDoc->Load(stream );
+            if (!ok)
+            {
+                wxStreamError err = stream.GetLastError();
+                std::cout << "\n" << filename << " Stream Load Failed. Error:" << err << "\n\n";
+                ok = false;
+            }           
         }
         else
         {

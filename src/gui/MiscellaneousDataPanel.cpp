@@ -114,6 +114,8 @@ void MiscellaneousDataPanel::Init( )
     m_accuracy = NULL;
     m_link = NULL;
     m_catCodes = NULL;
+    m_imageName = NULL;
+
      // MiscellaneousDataPanel member initialisation
 }
 
@@ -174,12 +176,17 @@ void MiscellaneousDataPanel::CreateControls( )
                                      wxDefaultPosition, wxDefaultSize, 0 );
     itemBoxSizer2->Add( m_catCodes, 0, wxGROW | wxALL, 0 );
 
+    m_imageName = new LabeledTextBox( itemPanel1, ID_IMAGENAMETEXTBOX,
+                                  wxDefaultPosition, wxDefaultSize, 0 );
+    itemBoxSizer2->Add( m_imageName, 0, wxGROW | wxALL, 0 );
+
      // MiscellaneousDataPanel content construction
 
         m_score->SetLabel( Catalog::DT_DataNames[Catalog::DT_Score] );
         m_accuracy->SetLabel( Catalog::DT_DataNames[Catalog::DT_Accuracy] );
         m_link->SetLabel( Catalog::DT_DataNames[Catalog::DT_Link] );
         m_catCodes->SetLabel( Catalog::DT_DataNames[Catalog::DT_Catalog_Codes] );
+        m_imageName->SetLabel( "Image Name" );
 
 }
 
@@ -227,6 +234,14 @@ void MiscellaneousDataPanel::SetStamp( Catalog::Stamp *stamp )
         m_accuracy->SetValue( m_stamp->GetAttr(Catalog::DT_Accuracy) );
         m_link->SetValue( m_stamp->GetAttr(Catalog::DT_Link) );
         m_catCodes->SetValue( m_stamp->GetAttr(Catalog::DT_Catalog_Codes) );
+        wxString id = m_stamp->GetAttr(Catalog::DT_ID_Nbr);
+        id = id.Trim(true);
+        id = id.Trim(false);
+        id.Replace(":","_");
+        id.Replace(" ","_");
+        id.Append(".jpg");        
+        m_imageName->SetValue( id );
+
         //       m_description->SetValue( m_stamp->GetDescription() );
     }
 }

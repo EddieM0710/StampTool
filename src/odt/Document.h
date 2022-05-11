@@ -244,7 +244,7 @@ namespace ODT {
          * @brief Class member.
          *
          **************************************************/
-        wxString m_workingDirectory;
+        //wxString m_workingDirectory;
     };
 }
 

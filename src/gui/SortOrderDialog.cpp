@@ -419,27 +419,27 @@ void SortOrderDialog::OnOkClick( wxCommandEvent &event )
 {
     wxArrayInt *sortOrder = GetSettings( )->GetSortOrder( );
 
-    if ( sortOrder->Item( 0 ) != m_firstSort->GetSelection( ) )
+    if (  sortOrder->Count( ) >= 1 && sortOrder->Item( 0 ) != m_firstSort->GetSelection( ) )
     {
     sortOrder->Item( 0 ) = m_firstSort->GetSelection( );
        GetSettings()->SetDirty();
     }
-    if ( sortOrder->Item( 1 ) != m_secondSort->GetSelection( ) )
+    if ( sortOrder->Count( ) >= 2 && sortOrder->Item( 1 ) != m_secondSort->GetSelection( ) )
     {
         sortOrder->Item( 1 ) = m_secondSort->GetSelection( );
         GetSettings()->SetDirty();
     }
-    if ( sortOrder->Item( 2 ) != m_thirdSort->GetSelection( ) )
+    if ( sortOrder->Count( ) >= 3 && sortOrder->Item( 2 ) != m_thirdSort->GetSelection( ) )
     {
         sortOrder->Item( 2 ) = m_thirdSort->GetSelection( );
         GetSettings()->SetDirty();
     }
-    if ( sortOrder->Item( 3 ) != m_forthSort->GetSelection( ) )
+    if ( sortOrder->Count( ) >= 4 && sortOrder->Item( 3 ) != m_forthSort->GetSelection( ) )
     {
         sortOrder->Item( 3 ) = m_forthSort->GetSelection( );
        GetSettings()->SetDirty();
     }
-    if ( sortOrder->Item( 4 ) != m_fifthSort->GetSelection( ) )
+    if ( sortOrder->Count( ) >= 5 && sortOrder->Item( 4 ) != m_fifthSort->GetSelection( ) )
     {
         sortOrder->Item( 4 ) = m_fifthSort->GetSelection( );
         GetSettings()->SetDirty();

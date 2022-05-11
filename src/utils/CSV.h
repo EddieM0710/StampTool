@@ -26,10 +26,11 @@
 //namespace Catalog { class DataTypes; };
    
 typedef std::vector<wxString> StringArray;
+typedef std::vector<Catalog::DataTypes> DataTypesArray;
 
 namespace Utils {
  
-#define MaxNbrCSVCols 30
+#define MaxNbrCSVCols 50
 
     /**
      * @brief read/write .csv files.
@@ -90,7 +91,7 @@ namespace Utils {
          *
          * @param  line :line to be fixed
          **************************************************/
-        void FixUpLine( wxString& line );
+        bool FixUpLine( wxString& line, int lineNbr );
 
         /**
          * @brief Read the csv file line by line.
@@ -144,8 +145,9 @@ namespace Utils {
         void DoLoad( wxString& filename, wxXmlNode* nodeData );
 
     private:
+        wxString m_filename;
         StringArray m_csvColName;
-        Catalog::DataTypes m_csvColMap[ MaxNbrCSVCols ];
+        DataTypesArray m_csvColMap;
         wxXmlNode* m_nodeData;
         int m_lineCnt;
     };

@@ -65,7 +65,8 @@ namespace Catalog {
             const wxXmlAttribute* attr = Utils::GetAttribute( GetCatXMLNode( ), DT_XMLDataNames[ type ] );
             if ( attr )
             {
-                return wxString::FromUTF8Unchecked( attr->GetValue( ) );
+                wxString str = attr->GetValue( ) ;
+                return str;
             }
         }
         return wxString( "" );
@@ -417,11 +418,10 @@ namespace Catalog {
     }
 
 
-    void Stamp::ProcessCatalogCodes( )
+    void Stamp::ProcessCatalogCodes(wxString catCodes )
     {
         if ( !HasChildCode( ) )
         {
-            wxString catCodes = GetCatalogCodes( );
             if ( catCodes.IsEmpty( ) )
             {
                 return;
@@ -434,14 +434,15 @@ namespace Catalog {
             while ( tokenizer.HasMoreTokens( ) )
             {
                 valStr = tokenizer.GetNextToken( );
+//std::cout << "Stamp::ProcessCatalogCodes>"<< valStr<<"<\n";
                 if ( valStr.StartsWith( wxT( "\"" ), &rest ) )
                     valStr = rest;
                 if ( valStr.EndsWith( wxT( "\"" ), &rest ) )
                     valStr = rest;
 
                 // "Mi:US 1, Sn:US 1b, Yt:US 1, Sg:US 1, Un:US 1b"
-                valStr.Trim( );
-                valStr.Trim( false );
+                valStr = valStr.Trim( );
+                valStr = valStr.Trim( false );
 
                 int pos = valStr.Find( ":" );
                 wxString catalog = valStr.Mid( 0, pos );
@@ -449,6 +450,8 @@ namespace Catalog {
                 pos = valStr.Find( " " );
                 wxString country = valStr.Mid( 0, pos );
                 wxString id = valStr.Mid( pos + 1 );
+
+//std::cout << "country>"<< country << "<  catalog>"<< catalog << "<  id>"<< id << "<\n";
 
                 wxXmlNode* catCodeElement = Utils::NewNode( GetCatXMLNode( ), CatalogBaseNames[ NT_CatalogCode ] );
 

@@ -22,6 +22,7 @@
 #endif
 
 #include <wx/arrimpl.cpp>
+#include <wx/msgdlg.h>
 #include "catalog/CatalogCode.h"
 #include "catalog/Classification.h"
 #include "utils/CSV.h"
@@ -31,12 +32,16 @@
 #include <wx/tokenzr.h>
 #include "catalog/CatalogData.h"
 #include "utils/XMLUtilities.h"
+#include "AlbumGenApp.h"
+
+wxDECLARE_APP( AlbumGenApp );
 
 namespace Utils {
 
     bool CSVData::ReadDataFile( wxString& filename )
     {
         bool status = false;
+        m_filename = filename;
 
         wxFileInputStream l_file( filename );
 
@@ -79,7 +84,15 @@ namespace Utils {
                 status = true;
             }
         }
-
+        if ( !status )
+        {
+            wxString caption = "CSV Load Error";
+            wxString message = wxString::Format( "Error tryng to load csv file %s.", m_filename );
+            wxMessageDialog* msg = new wxMessageDialog( wxGetApp( ).GetFrame( ),
+                message, caption, wxOK | wxCENTRE | wxICON_ERROR );
+            msg->ShowModal( );
+            msg->~wxMessageDialog( );
+        }
         return status;
     };
 
@@ -94,8 +107,8 @@ namespace Utils {
     bool CSVData::GetIDNbr( wxString catCodes, wxString& id )
     {
         wxStringTokenizer tokenizer( catCodes, "," );
-        wxString codePrefix = GetSettings( )->GetCatCodePrefix();
-
+        wxString codePrefix = GetSettings( )->GetCatCodePrefix( );
+        //std::cout << "GetIDNbr   codePrefix:>"<< codePrefix << " < catCodes:>" << catCodes << "<\n";
         wxString valStr;
         wxString rest;
         while ( tokenizer.HasMoreTokens( ) )
@@ -107,30 +120,33 @@ namespace Utils {
                 valStr = rest;
 
             // "Mi:US 1, Sn:US 1b, Yt:US 1, Sg:US 1, Un:US 1b"
-            valStr.Trim( );
-            valStr.Trim( false );
-
-            if ( !codePrefix.Length( ) )
+            valStr = valStr.Trim( );
+            valStr = valStr.Trim( false );
+            int len = codePrefix.Length( );
+            if ( len )
             {
-
-                if ( valStr.StartsWith( codePrefix, &rest ) )
+                int pos = valStr.Find( codePrefix );//               .StartsWith( codePrefix, &rest );
+                if ( pos != wxNOT_FOUND )
                 {
-                    valStr.Replace( ":","_");
-                    valStr.Replace( " ","_");
+                    valStr = valStr.substr( pos );
+                    valStr = valStr.Trim( );
+                    valStr = valStr.Trim( false );
+                    //std::cout << "GetIDNbr "<< catCodes << " found id >" << valStr << "<\n";
                     id = valStr;
                     return true;
                 }
+
             }
         }
-        //couldn't find it; just get the first one.
-        tokenizer.Reinit( catCodes );
-        if ( tokenizer.HasMoreTokens( ) )
+        //std::cout << "GetIDNbr "<< catCodes << " has no id with " << codePrefix << "\n";
+
+                //couldn't find it; just get the first one.
+        wxStringTokenizer tokenizer2( catCodes, "," );
+        if ( tokenizer2.HasMoreTokens( ) )
         {
-            valStr = tokenizer.GetNextToken( );
-            valStr.Trim( );
-            valStr.Trim( false );
-            valStr.Replace( ":","_");
-            valStr.Replace( " ","_");
+            valStr = tokenizer2.GetNextToken( );
+            valStr = valStr.Trim( );
+            valStr = valStr.Trim( false );
             id = valStr;
             return true;
         }
@@ -139,9 +155,9 @@ namespace Utils {
 
     void CSVData::MakeColMap( void )
     {
-        for ( int j = 0; j < MaxNbrCSVCols; j++ )
+        for ( int j = 0; j < NbrColNames( )+10; j++ )
         {
-            m_csvColMap[ j ] = ( Catalog::DataTypes )-1;
+            m_csvColMap.push_back( ( Catalog::DataTypes )-1 );
         }
         for ( int j = 0; j < NbrColNames( ); j++ )
         {
@@ -149,13 +165,13 @@ namespace Utils {
             {
                 if ( !Catalog::DT_DataNames[ i ].Cmp( GetColName( j ) ) )
                 {
-                    m_csvColMap[ j ] = ( Catalog::DataTypes )i;
+                    m_csvColMap.at(j)=( ( Catalog::DataTypes )i );
                     break;
                 }
             }
         }
     }
-    void CSVData::FixUpLine( wxString& line )
+    bool CSVData::FixUpLine( wxString& line, int lineNbr )
     {
         int curr = 0;
         int last = line.length( );
@@ -167,19 +183,22 @@ namespace Utils {
             firstQuote = line.find( "\"", curr );
             if ( firstQuote < 0 )
             {
-                return;
+                return true;
             }
             nextQuote = line.find_first_of( "\"", firstQuote + 1 );
             if ( nextQuote < 0 )
             {
                 // unmatched parens
                 // this means the csv is messed up
-                int a = 1;
-                while ( 1 )
-                {
-                    a = 1;
-                }
-                return;
+                //std::cout << "Format error in csv file at line number " << lineNbr << ".\n";
+                wxString caption = "CSV Format Error";
+                wxString message;
+                message = message.Format( "Format error in csv file %s at line number %d. \n\n%s", m_filename, lineNbr, line );
+                wxMessageDialog* msg = new wxMessageDialog( wxGetApp( ).GetFrame( ),
+                    message, caption, wxOK | wxCENTRE | wxICON_ERROR );
+                msg->ShowModal( );
+                msg->~wxMessageDialog( );
+                return false;
             }
             comma = line.find_first_of( ",", firstQuote );
             bool check_again = true;
@@ -197,6 +216,7 @@ namespace Utils {
             }
             curr = nextQuote + 1;
         }
+        return true;
     };
 
     bool CSVData::ReadTextInStream( wxFileInputStream& file,
@@ -222,8 +242,7 @@ namespace Utils {
                     if ( line.length( ) > 0 )
                     {
                         m_lineCnt++;
-                        FixUpLine( line );
-                        if ( !file.Eof( ) )
+                        if ( !file.Eof( ) && FixUpLine( line, m_lineCnt ) )
                         {
                             // comma separated Variables on line; i, e, .csv file
                             wxStringTokenizer tokenizer( line, "," );
@@ -245,27 +264,60 @@ namespace Utils {
                                     valStr = rest;
                                 valStr.Replace( "{", ",", true );
 
+                                //std::cout <<  "valStr:>"<< valStr<<"<; \n"   ;                                   
 
-                                Catalog::DataTypes stampType = m_csvColMap[ csvCol ];
+                                Catalog::DataTypes stampType = m_csvColMap.at( csvCol );
                                 if ( stampType > 0 )
                                 {
                                     Utils::SetAttrStr( stampElement, Catalog::DT_XMLDataNames[ stampType ], valStr );
-        //                           Catalog::Stamp* stamp = new Catalog::Stamp();
+                                    //                           Catalog::Stamp* stamp = new Catalog::Stamp();
+                                    wxString id = "";
                                     if ( stampType == Catalog::DT_Catalog_Codes )
                                     {
-                                        stampNode->ProcessCatalogCodes( );
-                                        wxString id;
+                                        //std::cout <<  "stampNode->ProcessCatalogCodes( "<< valStr<<" ); \n"   ;                                   
+                                        stampNode->ProcessCatalogCodes( valStr );
                                         if ( GetIDNbr( valStr, id ) )
                                         {
+                                            wxString codePrefix = GetSettings( )->GetCatCodePrefix( );
+                                            int pos = id.Find( "2502" );//               .StartsWith( codePrefix, &rest );
+                                            if ( pos != wxNOT_FOUND )
+                                            {
+                                                //                                                std::cout << "ID_Nbr>"<<valStr<<"<\n";
+
+                                            }
+
+                                            //std::cout <<  "stampNode->SetID( "<< id<<" ); \n"   ; 
                                             stampNode->SetID( id );
+                                            //std::cout <<  "stampNode->GetID( ); \n"   ; 
+                                            id = stampNode->GetID( );
+                                            //std::cout <<  "stampNode->GetID( ); returned >"<< id << "<\n"; 
+                                            if ( id.IsEmpty( ) )
+                                            {
+                                                std::cout << "ID_Nbr>" << valStr << "<\n";
+                                                int a = 0;
+                                            }
                                         }
-                                        stampNode->SetID( valStr );
+                                        else
+                                        {
+                                            //                                            std::cout << "ID_Nbr>"<<valStr<<"<\n";
+                                            stampNode->SetID( valStr );
+                                        }
                                     }
                                     valFound = true;
+
+
+
                                 }
                                 csvCol++;
                             }
-
+                            wxString id = stampNode->GetID( );
+                            id = id.Trim( );
+                            id = id.Trim( false );
+                            if ( id.IsEmpty( ) )
+                            {
+                                std::cout << "ID_Nbr>" << valStr << "<\n";
+                                int a = 0;
+                            }
                             if ( valFound )//&& ( stampNode->GetID( ).Length( ) > 0 ) )
                             {
                                 // docRoot->AddChild( ( wxXmlNode* )stampElement );
@@ -282,7 +334,8 @@ namespace Utils {
                     }
                 }
             }
-            XMLDumpNode( ( wxXmlNode* )docRoot, "" );
+
+            //            XMLDumpNode( ( wxXmlNode* )docRoot, "" );
         }
         return status;
     };

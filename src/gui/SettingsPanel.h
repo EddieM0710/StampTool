@@ -99,7 +99,7 @@ public:
 
 ////@begin SettingsPanel member variables
     LabeledTextBox* m_imageDirectory;
-    LabeledTextBox* m_workingDirectory;
+    //LabeledTextBox* m_workingDirectory;
     LabeledTextBox* m_country;
     LabeledTextBox* m_catalog;
     wxCheckBox* m_loadLastFileAtStartUp;

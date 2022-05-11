@@ -45,7 +45,7 @@ class AlbumPanel;
  * Control identifiers
  */
 
-#define ID_IMPORT ID_ALBUMGENERATORFRAME+1
+//#define ID_IMPORT ID_ALBUMGENERATORFRAME+1
 #define ID_TEXTSERCHMENUITEM ID_ALBUMGENERATORFRAME+2
 #define ID_SORTORDER ID_ALBUMGENERATORFRAME+3
 #define ID_ITEMVIEW ID_ALBUMGENERATORFRAME+4
@@ -66,6 +66,11 @@ class AlbumPanel;
 #define ID_SAVEASDESIGN ID_ALBUMGENERATORFRAME+20
 #define ID_SAVEASCATALOG ID_ALBUMGENERATORFRAME+21
 #define ID_GENERATEODT ID_ALBUMGENERATORFRAME+22
+#define ID_NEWPROJECT ID_ALBUMGENERATORFRAME+23
+#define ID_NEWDESIGN ID_ALBUMGENERATORFRAME+24
+#define ID_NEWCATALOG ID_ALBUMGENERATORFRAME+25
+#define ID_CATALOGMENU ID_ALBUMGENERATORFRAME+26
+#define ID_DESIGNMENU ID_ALBUMGENERATORFRAME+27
 #define ID_ALBUMGENERATORPANELFOREIGN ID_ALBUMGENERATORPANEL
 #define SYMBOL_ALBUMGENERATORFRAME_STYLE                                         \
     wxDEFAULT_FRAME_STYLE | wxCAPTION | wxRESIZE_BORDER | wxSYSTEM_MENU        \
@@ -163,6 +168,11 @@ class AlbumGenFrame : public wxFrame
     // wxEVT_MAXIMIZE event handler for ID_ALBUMGENERATORFRAME
     void OnMaximize( wxMaximizeEvent &event );
 
+   // wxEVT_COMMAND_MENU_SELECTED event handler for wxID_NEW
+    void OnNewProjectClick( wxCommandEvent &event );
+    void OnNewDesignClick( wxCommandEvent &event );
+    void OnNewCatalogClick( wxCommandEvent &event );
+
     // wxEVT_COMMAND_MENU_SELECTED event handler for wxID_OPEN
     void OnOpenProjectClick( wxCommandEvent &event );
     void OnOpenDesignClick( wxCommandEvent &event );
@@ -182,7 +192,7 @@ class AlbumGenFrame : public wxFrame
     
     // wxEVT_COMMAND_MENU_SELECTED event handler for ID_IMPORT
     void OnCSVImportClick( wxCommandEvent &event );
-    void OnAEImportClick( wxCommandEvent &event );
+ //   void OnAEImportClick( wxCommandEvent &event );
 
     // wxEVT_COMMAND_MENU_SELECTED event handler for wxID_REVERT_TO_SAVED
     void OnRevertToSavedClick( wxCommandEvent &event );
@@ -245,7 +255,10 @@ class AlbumGenFrame : public wxFrame
     void UpdateStatus( );
 
     void DoCSVImport( );
-  
+ 
+    void NewProject( );
+    void NewDesign( );
+    void NewCatalog( );
 
     void OpenProject( );
     void OpenDesign( );
@@ -287,6 +300,7 @@ class AlbumGenFrame : public wxFrame
     // container data classification sort order
     wxArrayInt m_sortOrder;
     wxMenu* m_fileMenu;
+    wxMenu* m_newMenu;
     wxMenu* m_openMenu;
     wxMenu* m_saveMenu;
     wxMenu* m_saveAsMenu;

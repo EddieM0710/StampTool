@@ -1,7 +1,0 @@
-<map id="StampTreeCtrl::MakeParentList" name="StampTreeCtrl::MakeParentList">
-<area shape="rect" id="node2" href="$dc/d8f/class_node.html#acf8c0b4d1901ab855cd980308fd0fa56" title="Node::SetElement" alt="" coords="261,5,390,32"/>
-<area shape="rect" id="node3" href="$db/d86/group___get.html#gac543e4ffc79ba4e544e1bb1392e77cf8" title="Get the stamp Format field. " alt="" coords="260,56,391,83"/>
-<area shape="rect" id="node4" href="$da/dd4/class_stamp.html#a905b950918480d0d4ed757717827fd0d" title="Get the Attr object. " alt="" coords="439,56,549,83"/>
-<area shape="rect" id="node5" href="$da/dd4/class_stamp.html#a3370745d7662600656a769099f11db43" title="Stamp::IsOK" alt="" coords="597,31,696,57"/>
-<area shape="rect" id="node6" href="$dc/d8f/class_node.html#ae833cd38c01571764ea3d88a31d44a0a" title="Node::GetElement" alt="" coords="744,56,875,83"/>
-</map>

@@ -1,6 +1,0 @@
-<map id="StampManagerPanel::SetGallery" name="StampManagerPanel::SetGallery">
-<area shape="rect" id="node2" href="$df/da8/class_stamp_manager_panel.html#a3488b8e3b88ce69b006d9800ea76e6e7" title="StampManagerPanel::\lSetStamp" alt="" coords="204,5,355,47"/>
-<area shape="rect" id="node4" href="$df/da8/class_stamp_manager_panel.html#a6f95dc3a7cd1c745d6e9203005b46e5e" title="StampManagerPanel::\lGetStampTree" alt="" coords="204,71,355,112"/>
-<area shape="rect" id="node3" href="$d2/d63/class_stamp_manager_frame.html#ad737b8f8e4f96ce8e370a1938bcdf6cb" title="StampManagerFrame::\lSetStamp" alt="" coords="403,5,557,47"/>
-<area shape="rect" id="node5" href="$d2/d63/class_stamp_manager_frame.html#a076fee6e1de632ed02903c9f0165cd08" title="StampManagerFrame::\lGetStampTree" alt="" coords="403,71,557,112"/>
-</map>

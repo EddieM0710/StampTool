@@ -1,8 +1,0 @@
-<map id="StampTreeCtrl::StructureStampData" name="StampTreeCtrl::StructureStampData">
-<area shape="rect" id="node2" href="$df/dc6/class_stamp_tree_ctrl.html#aefcd82b2165078e318a63e45e8946dc2" title="StampTreeCtrl::MakeParentList" alt="" coords="221,38,428,65"/>
-<area shape="rect" id="node3" href="$dc/d8f/class_node.html#a1716228f81b56703862b5825dff85029" title="Node::SetNode" alt="" coords="485,13,597,39"/>
-<area shape="rect" id="node4" href="$da/dd4/class_stamp.html#ac543e4ffc79ba4e544e1bb1392e77cf8" title="Stamp::GetFormat" alt="" coords="476,63,607,90"/>
-<area shape="rect" id="node5" href="$da/dd4/class_stamp.html#a7ea4a5aa1f2b88ff9294a4ca907e1597" title="Stamp::GetIssuedDate" alt="" coords="247,139,403,166"/>
-<area shape="rect" id="node6" href="$da/dd4/class_stamp.html#a6c4de153cd39a4a28a88b40f2f6f0a9a" title="Stamp::GetSeries" alt="" coords="261,190,388,217"/>
-<area shape="rect" id="node7" href="$da/dd4/class_stamp.html#a34b02e49e7ff903d92e57e550ac072e3" title="Stamp::GetFaceValue" alt="" coords="249,241,400,267"/>
-</map>

@@ -1,6 +1,0 @@
-<map id="CSVData::ReadDataFile" name="CSVData::ReadDataFile">
-<area shape="rect" id="node2" href="$da/d44/class_c_s_v_data.html#a779af7ebbe0f5c4516f8403da44f7c27" title="entry point of file read " alt="" coords="220,13,351,39"/>
-<area shape="rect" id="node3" href="$d8/d96/class_stamp_data.html#a456b6b2aae7023fecbf71d98702d71e1" title="StampData::LoadCSV" alt="" coords="399,13,551,39"/>
-<area shape="rect" id="node4" href="$d2/d63/class_stamp_manager_frame.html#a49a1c5f8bc8074530b5155b6a429b8ad" title="StampManagerFrame::\lDoCSVImport" alt="" coords="599,5,753,47"/>
-<area shape="rect" id="node5" href="$d2/d63/class_stamp_manager_frame.html#ab36ddcd9b3130528e6dfc6c31a8ff608" title="StampManagerFrame::\lOnImportClick" alt="" coords="801,5,956,47"/>
-</map>

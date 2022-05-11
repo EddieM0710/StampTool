@@ -1,8 +1,0 @@
-<map id="CSVData::GetColName" name="CSVData::GetColName">
-<area shape="rect" id="node2" href="$da/d44/class_c_s_v_data.html#ac3f73e86e8c56fa1bb3dc6d7b815e725" title="Create a map of csv col names to DataTypes (Defs.h) " alt="" coords="216,13,379,39"/>
-<area shape="rect" id="node3" href="$da/d44/class_c_s_v_data.html#a72e23094192f257184c507c713af0800" title="Opens the file for read and does appropriate initializations. " alt="" coords="427,13,593,39"/>
-<area shape="rect" id="node4" href="$da/d44/class_c_s_v_data.html#a779af7ebbe0f5c4516f8403da44f7c27" title="entry point of file read " alt="" coords="641,13,772,39"/>
-<area shape="rect" id="node5" href="$d8/d96/class_stamp_data.html#a456b6b2aae7023fecbf71d98702d71e1" title="StampData::LoadCSV" alt="" coords="820,13,972,39"/>
-<area shape="rect" id="node6" href="$d2/d63/class_stamp_manager_frame.html#a49a1c5f8bc8074530b5155b6a429b8ad" title="StampManagerFrame::\lDoCSVImport" alt="" coords="1020,5,1175,47"/>
-<area shape="rect" id="node7" href="$d2/d63/class_stamp_manager_frame.html#ab36ddcd9b3130528e6dfc6c31a8ff608" title="StampManagerFrame::\lOnImportClick" alt="" coords="1223,5,1377,47"/>
-</map>

@@ -1,8 +1,0 @@
-<map id="LabeledTextBox::SetStamp" name="LabeledTextBox::SetStamp">
-<area shape="rect" id="node2" href="$d1/d7e/class_characteristics_panel.html#a38e6c242b9368dbd84cc6c51520d0ff9" title="Initializes the CharacteristicsPanel with new stamp values. " alt="" coords="248,5,391,47"/>
-<area shape="rect" id="node6" href="$da/d71/class_identification_panel.html#abb24b10d45b080e02d7367f238b78146" title="Set the Stamp object. " alt="" coords="255,71,384,112"/>
-<area shape="rect" id="node7" href="$dc/dcc/class_miscellaneous_data_panel.html#a32e2e39e750beeb1eaad43bbfd6dd1d4" title="MiscellaneousDataPanel\l::SetStamp" alt="" coords="236,136,403,177"/>
-<area shape="rect" id="node3" href="$d3/dff/class_description_panel.html#a94cdec7589e3918fcf16e8f3c6d16a7f" title="Initializes the DescriptionPanel with new stamp values. " alt="" coords="451,78,637,105"/>
-<area shape="rect" id="node4" href="$df/da8/class_stamp_manager_panel.html#a3488b8e3b88ce69b006d9800ea76e6e7" title="StampManagerPanel::\lSetStamp" alt="" coords="685,71,836,112"/>
-<area shape="rect" id="node5" href="$d2/d63/class_stamp_manager_frame.html#ad737b8f8e4f96ce8e370a1938bcdf6cb" title="StampManagerFrame::\lSetStamp" alt="" coords="884,71,1039,112"/>
-</map>

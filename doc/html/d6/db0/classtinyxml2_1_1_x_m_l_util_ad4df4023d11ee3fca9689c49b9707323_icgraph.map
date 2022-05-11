@@ -1,7 +1,0 @@
-<map id="tinyxml2::XMLUtil::ToInt" name="tinyxml2::XMLUtil::ToInt">
-<area shape="rect" id="node2" href="$dc/d22/classtinyxml2_1_1_x_m_l_attribute.html#a6d5176260db00ea301c01af8457cd993" title="QueryIntValue interprets the attribute as an integer, and returns the value in the provided parameter..." alt="" coords="188,5,343,47"/>
-<area shape="rect" id="node5" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a926357996bef633cb736e1a558419632" title="Convenience method to query the value of a child text node. " alt="" coords="188,71,343,112"/>
-<area shape="rect" id="node3" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a8a78bc1187c1c45ad89f2690eab567b1" title="Given an attribute name, QueryIntAttribute() returns XML_SUCCESS, XML_WRONG_ATTRIBUTE_TYPE if the con..." alt="" coords="391,5,545,47"/>
-<area shape="rect" id="node4" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a95a89b13bb14a2d4655e2b5b406c00d4" title="Given an attribute name, IntAttribute() returns the value of the attribute interpreted as an integer..." alt="" coords="593,5,748,47"/>
-<area shape="rect" id="node6" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a37b0636adebb8a1a1bc965f60824cb3e" title="tinyxml2::wxXmlNode\l::IntText" alt="" coords="391,71,545,112"/>
-</map>

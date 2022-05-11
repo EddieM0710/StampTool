@@ -1,7 +1,0 @@
-<map id="CatalogCodePanel::AddRow" name="CatalogCodePanel::AddRow">
-<area shape="rect" id="node2" href="$da/dd4/class_stamp.html#aa744b430710c1aa07c077f547f57d38b" title="Add any empty element of type CatalogCode. " alt="" coords="487,5,609,32"/>
-<area shape="rect" id="node4" href="$de/d4d/class_catalog_code_panel.html#a085b6502100b8f0e497bed300598abec" title="creates a new empty row in the grid " alt="" coords="243,56,427,83"/>
-<area shape="rect" id="node3" href="$dc/d8f/class_node.html#ae833cd38c01571764ea3d88a31d44a0a" title="Node::GetElement" alt="" coords="853,56,984,83"/>
-<area shape="rect" id="node5" href="$db/d46/class_catalog_code.html#a5817fee4247cbc047948215b81d86174" title="CatalogCode::SetAttr" alt="" coords="475,56,621,83"/>
-<area shape="rect" id="node6" href="$db/d46/class_catalog_code.html#aa79bf8a85e6da03b26aed0aa25258207" title="CatalogCode::IsOK" alt="" coords="669,107,805,133"/>
-</map>

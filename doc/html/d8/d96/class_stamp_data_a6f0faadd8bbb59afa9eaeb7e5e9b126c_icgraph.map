@@ -1,7 +1,0 @@
-<map id="StampData::SaveXML" name="StampData::SaveXML">
-<area shape="rect" id="node2" href="$d2/d63/class_stamp_manager_frame.html#a1fa0f8efe08339e55e55343888a615e1" title="StampManagerFrame::\lSaveXML" alt="" coords="222,8,377,49"/>
-<area shape="rect" id="node5" href="$d2/d63/class_stamp_manager_frame.html#a547033ad4f67e856bff4c0965a1aa230" title="StampManagerFrame::Save" alt="" coords="207,75,392,102"/>
-<area shape="rect" id="node3" href="$d2/d63/class_stamp_manager_frame.html#a2e72a3eed68656cc8d76a4bd00e0397e" title="StampManagerFrame::\lSaveAs" alt="" coords="440,5,595,47"/>
-<area shape="rect" id="node4" href="$d2/d63/class_stamp_manager_frame.html#ac380a110dbbe57c96ab4dc2a21372c3f" title="StampManagerFrame::\lOnSaveasClick" alt="" coords="643,5,797,47"/>
-<area shape="rect" id="node6" href="$d2/d63/class_stamp_manager_frame.html#a55b7d24a585e1c2355f18f13227b17de" title="StampManagerFrame::\lOnSaveClick" alt="" coords="440,71,595,112"/>
-</map>

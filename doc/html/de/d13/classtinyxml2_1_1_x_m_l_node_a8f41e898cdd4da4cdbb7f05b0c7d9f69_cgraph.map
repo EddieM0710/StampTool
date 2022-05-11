@@ -1,9 +1,0 @@
-<map id="tinyxml2::XMLNode::~XMLNode" name="tinyxml2::XMLNode::~XMLNode">
-<area shape="rect" id="node2" href="$de/d13/classtinyxml2_1_1_x_m_l_node.html#a0360085cc54df5bff85d5c5da13afdce" title="Delete all the children of this node. " alt="" coords="199,51,344,92"/>
-<area shape="rect" id="node4" href="$de/d13/classtinyxml2_1_1_x_m_l_node.html#a9546e242b6a4f232415befb1cfe0fdd4" title="tinyxml2::XMLNode::\lUnlink" alt="" coords="585,5,731,47"/>
-<area shape="rect" id="node3" href="$de/d13/classtinyxml2_1_1_x_m_l_node.html#a363b6edbd6ebd55f8387d2b89f2b0921" title="Delete a child of this node. " alt="" coords="392,51,537,92"/>
-<area shape="rect" id="node5" href="$de/d13/classtinyxml2_1_1_x_m_l_node.html#ab0b21951f2343534c5c67f23dffdc7e6" title="tinyxml2::XMLNode::\lDeleteNode" alt="" coords="585,84,731,125"/>
-<area shape="rect" id="node6" href="$de/d13/classtinyxml2_1_1_x_m_l_node.html#a836e2966ed736fc3c94f70e12a2a3357" title="tinyxml2::XMLNode::\lToDocument" alt="" coords="790,19,935,60"/>
-<area shape="rect" id="node7" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#a64dadb2de12e52538d0ff8ba38f323ec" title="tinyxml2::wxXmlDocument\l::MarkInUse" alt="" coords="779,84,946,125"/>
-<area shape="rect" id="node8" href="$d8/d53/classtinyxml2_1_1_mem_pool.html#a49e3bfac2cba2ebd6776b31e571f64f7" title="tinyxml2::MemPool::Free" alt="" coords="779,150,947,177"/>
-</map>

@@ -1,6 +1,0 @@
-<map id="DescriptionPanel::OnDescriptionTextctrlTextUpdated" name="DescriptionPanel::OnDescriptionTextctrlTextUpdated">
-<area shape="rect" id="node2" href="$da/dd4/class_stamp.html#ae3db4cc61a24a8a743c9d0b8973b9546" title="Get the stamp Description field. " alt="" coords="265,31,420,57"/>
-<area shape="rect" id="node3" href="$da/dd4/class_stamp.html#a15c2d249060c244dc2faf9e4c90d5baa" title="Set the Attr object. " alt="" coords="468,31,577,57"/>
-<area shape="rect" id="node4" href="$da/dd4/class_stamp.html#a3370745d7662600656a769099f11db43" title="Stamp::IsOK" alt="" coords="625,5,724,32"/>
-<area shape="rect" id="node5" href="$dc/d8f/class_node.html#ae833cd38c01571764ea3d88a31d44a0a" title="Node::GetElement" alt="" coords="772,31,903,57"/>
-</map>

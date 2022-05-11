@@ -1,8 +1,0 @@
-<map id="MergeStampsDialog::OnRevertBitmapButtonClick" name="MergeStampsDialog::OnRevertBitmapButtonClick">
-<area shape="rect" id="node2" href="$d7/daf/class_merge_stamps_dialog.html#a5873b44393d5d00aa84c77139ae3b585" title="MergeStampsDialog::\lRevert" alt="" coords="240,82,388,123"/>
-<area shape="rect" id="node3" href="$da/dd4/class_stamp.html#a905b950918480d0d4ed757717827fd0d" title="Get the Attr object. " alt="" coords="455,31,565,57"/>
-<area shape="rect" id="node6" href="$d7/daf/class_merge_stamps_dialog.html#aa96aacf6a669f77915cb85cd37619dce" title="MergeStampsDialog::\lSetRightText" alt="" coords="436,82,584,123"/>
-<area shape="rect" id="node7" href="$d7/daf/class_merge_stamps_dialog.html#afd535182ea12486142b950ca3b952d78" title="MergeStampsDialog::\lSetLeftText" alt="" coords="436,147,584,189"/>
-<area shape="rect" id="node4" href="$da/dd4/class_stamp.html#a3370745d7662600656a769099f11db43" title="Stamp::IsOK" alt="" coords="632,5,731,32"/>
-<area shape="rect" id="node5" href="$dc/d8f/class_node.html#ae833cd38c01571764ea3d88a31d44a0a" title="Node::GetElement" alt="" coords="779,31,909,57"/>
-</map>

@@ -1,7 +1,0 @@
-<map id="tinyxml2::XMLUtil::ToBool" name="tinyxml2::XMLUtil::ToBool">
-<area shape="rect" id="node2" href="$dc/d22/classtinyxml2_1_1_x_m_l_attribute.html#a5f32e038954256f61c21ff20fd13a09c" title="tinyxml2::wxXmlAttribute\l::QueryBoolValue" alt="" coords="188,5,343,47"/>
-<area shape="rect" id="node5" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a3fe5417d59eb8f5c4afe924b7d332736" title="tinyxml2::wxXmlNode\l::QueryBoolText" alt="" coords="188,71,343,112"/>
-<area shape="rect" id="node3" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a14c1bb77c39689838be01838d86ca872" title="tinyxml2::wxXmlNode\l::QueryBoolAttribute" alt="" coords="391,5,545,47"/>
-<area shape="rect" id="node4" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a53eda26131e1ad1031ef8ec8adb51bd8" title="tinyxml2::wxXmlNode\l::BoolAttribute" alt="" coords="593,5,748,47"/>
-<area shape="rect" id="node6" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a68569f59f6382bcea7f5013ec59736d2" title="tinyxml2::wxXmlNode\l::BoolText" alt="" coords="391,71,545,112"/>
-</map>

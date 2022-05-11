@@ -1,8 +1,0 @@
-<map id="Specimen::GetData" name="Specimen::GetData">
-<area shape="rect" id="node2" href="$d6/de5/class_specimen.html#af83b4ac719f895d053d5777e4085d9a9" title="Specimen::GetType" alt="" coords="203,5,342,32"/>
-<area shape="rect" id="node3" href="$d6/de5/class_specimen.html#ad047d5ae91198eb1d1b0def645f53430" title="Specimen::GetCondition" alt="" coords="191,56,355,83"/>
-<area shape="rect" id="node4" href="$d6/de5/class_specimen.html#a7432ae1aea01f9bf59b64495a75b6378" title="Specimen::GetValue" alt="" coords="201,107,344,133"/>
-<area shape="rect" id="node5" href="$d6/de5/class_specimen.html#acd99f6bf01d735a3b034b2370a85bfa5" title="Specimen::GetLocation" alt="" coords="193,157,352,184"/>
-<area shape="rect" id="node6" href="$d6/de5/class_specimen.html#ad2433fd2425cb70fb502508c4a8d3a4b" title="Specimen::GetRemarks" alt="" coords="191,208,354,235"/>
-<area shape="rect" id="node7" href="$dc/d8f/class_node.html#ae833cd38c01571764ea3d88a31d44a0a" title="Node::GetElement" alt="" coords="207,259,338,285"/>
-</map>

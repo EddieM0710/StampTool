@@ -1,7 +1,0 @@
-<map id="StampTreeCtrl::GetIconId" name="StampTreeCtrl::GetIconId">
-<area shape="rect" id="node2" href="$da/dd4/class_stamp.html#adea3d1af7b9ce1addd9f755a43f9ca6c" title="Get the Status Type object. " alt="" coords="227,5,383,32"/>
-<area shape="rect" id="node6" href="$da/dd4/class_stamp.html#ac621233f82dac8f4104831fd819acdee" title="Get the Format Type object. " alt="" coords="225,56,384,83"/>
-<area shape="rect" id="node3" href="$da/dd4/class_stamp.html#a905b950918480d0d4ed757717827fd0d" title="Get the Attr object. " alt="" coords="432,31,543,57"/>
-<area shape="rect" id="node4" href="$da/dd4/class_stamp.html#a3370745d7662600656a769099f11db43" title="Stamp::IsOK" alt="" coords="591,5,689,32"/>
-<area shape="rect" id="node5" href="$dc/d8f/class_node.html#ae833cd38c01571764ea3d88a31d44a0a" title="Node::GetElement" alt="" coords="737,31,868,57"/>
-</map>

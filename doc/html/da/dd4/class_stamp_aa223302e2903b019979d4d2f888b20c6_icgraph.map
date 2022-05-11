@@ -1,7 +1,0 @@
-<map id="Stamp::GetNextChildSpecimen" name="Stamp::GetNextChildSpecimen">
-<area shape="rect" id="node2" href="$d8/d7f/class_inventory_panel.html#a4040f913950eba04b801630ed7856471" title="Load the grid with the inventory items. " alt="" coords="259,13,447,39"/>
-<area shape="rect" id="node3" href="$d8/d7f/class_inventory_panel.html#a4f98a0bf55be85fc1bb9bca49ac25a02" title="Set the Stamp object. " alt="" coords="495,13,669,39"/>
-<area shape="rect" id="node4" href="$d3/dff/class_description_panel.html#a94cdec7589e3918fcf16e8f3c6d16a7f" title="Initializes the DescriptionPanel with new stamp values. " alt="" coords="717,13,904,39"/>
-<area shape="rect" id="node5" href="$df/da8/class_stamp_manager_panel.html#a3488b8e3b88ce69b006d9800ea76e6e7" title="StampManagerPanel::\lSetStamp" alt="" coords="952,5,1103,47"/>
-<area shape="rect" id="node6" href="$d2/d63/class_stamp_manager_frame.html#ad737b8f8e4f96ce8e370a1938bcdf6cb" title="StampManagerFrame::\lSetStamp" alt="" coords="1151,5,1305,47"/>
-</map>

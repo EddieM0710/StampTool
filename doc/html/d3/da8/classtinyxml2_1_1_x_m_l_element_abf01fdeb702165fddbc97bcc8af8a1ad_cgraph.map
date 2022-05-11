@@ -1,9 +1,0 @@
-<map id="tinyxml2::wxXmlNode::InsertNewChildElement" name="tinyxml2::wxXmlNode::InsertNewChildElement">
-<area shape="rect" id="node2" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#a3c335a700a43d7c363a393142a23f234" title="Create a new Element associated with this Document. " alt="" coords="221,5,388,47"/>
-<area shape="rect" id="node4" href="$de/d13/classtinyxml2_1_1_x_m_l_node.html#ae3b422e98914d6002ca99bb1d2837103" title="Add a child node as the last (right) child. " alt="" coords="232,71,377,112"/>
-<area shape="rect" id="node3" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a97712009a530d8cb8a63bf705f02b4f1" title="tinyxml2::wxXmlNode\l::SetName" alt="" coords="436,5,591,47"/>
-<area shape="rect" id="node5" href="$de/d13/classtinyxml2_1_1_x_m_l_node.html#a0fd4d2e88fb22d46b5b1474b5b786e35" title="tinyxml2::XMLNode::\lInsertChildPreamble" alt="" coords="441,71,586,112"/>
-<area shape="rect" id="node6" href="$de/d13/classtinyxml2_1_1_x_m_l_node.html#a9546e242b6a4f232415befb1cfe0fdd4" title="tinyxml2::XMLNode::\lUnlink" alt="" coords="649,5,795,47"/>
-<area shape="rect" id="node7" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#a64dadb2de12e52538d0ff8ba38f323ec" title="tinyxml2::wxXmlDocument\l::MarkInUse" alt="" coords="639,71,805,112"/>
-<area shape="rect" id="node8" href="$d8/d53/classtinyxml2_1_1_mem_pool.html#ac5804dd1387b2e4de5eef710076a0db1" title="tinyxml2::MemPool::\lSetTracked" alt="" coords="651,136,793,177"/>
-</map>

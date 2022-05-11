@@ -1,7 +1,0 @@
-<map id="StampManagerFrame" name="StampManagerFrame">
-<area shape="rect" id="node3" href="$df/da8/class_stamp_manager_panel.html" title="StampManagerPanel is the main window class for the application, It contains a splitter window with th..." alt="" coords="179,171,322,197"/>
-<area shape="rect" id="node7" href="$d3/dff/class_description_panel.html" title="DescriptionPanel class declaration. " alt="" coords="46,81,167,108"/>
-<area shape="rect" id="node5" href="$df/dc6/class_stamp_tree_ctrl.html" title="Class to manage a wxTreeCtrl for Stamp. " alt="" coords="197,81,304,108"/>
-<area shape="rect" id="node8" href="$da/dd4/class_stamp.html" title="This is a wrapper of an wxXmlNode for safe/convenient getting/putting. " alt="" coords="362,81,422,108"/>
-<area shape="rect" id="node9" href="$dc/d8f/class_node.html" title="Node" alt="" coords="365,5,419,32"/>
-</map>

@@ -1,7 +1,0 @@
-<map id="StampData::LoadXML" name="StampData::LoadXML">
-<area shape="rect" id="node2" href="$d2/d63/class_stamp_manager_frame.html#a4466580d174c44e76c6bc77a2fe60698" title="StampManagerFrame::Open" alt="" coords="407,15,593,42"/>
-<area shape="rect" id="node4" href="$d2/d63/class_stamp_manager_frame.html#a83037efa7aa01467c0e7fe4d79ac816a" title="StampManagerFrame::\lLoadXML" alt="" coords="204,67,359,108"/>
-<area shape="rect" id="node3" href="$d2/d63/class_stamp_manager_frame.html#a4aa1a3255f7d55fdd75868f597ad119c" title="StampManagerFrame::\lOnOpenClick" alt="" coords="641,5,796,47"/>
-<area shape="rect" id="node5" href="$d2/d63/class_stamp_manager_frame.html#a4effdb9d3bd9fe974ae21a5a355567c3" title="StampManagerFrame::\lInitLoad" alt="" coords="423,68,577,109"/>
-<area shape="rect" id="node6" href="$d2/d63/class_stamp_manager_frame.html#abcc065c989df1e86ed53b047f27e1da7" title="Default Constructor a new StampManagerFrame object. " alt="" coords="641,71,796,112"/>
-</map>

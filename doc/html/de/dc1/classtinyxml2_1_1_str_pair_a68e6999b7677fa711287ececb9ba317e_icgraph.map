@@ -1,9 +1,0 @@
-<map id="tinyxml2::StrPair::ParseText" name="tinyxml2::StrPair::ParseText">
-<area shape="rect" id="node2" href="$d3/d66/classtinyxml2_1_1_x_m_l_text.html#af3b93344f1183482e1683f5922ac9c68" title="tinyxml2::XMLText::\lParseDeep" alt="" coords="196,5,336,47"/>
-<area shape="rect" id="node3" href="$d2/d6d/classtinyxml2_1_1_x_m_l_comment.html#a3430281eed8d1023bafa9e633f44f509" title="tinyxml2::XMLComment\l::ParseDeep" alt="" coords="185,71,347,112"/>
-<area shape="rect" id="node4" href="$d2/d89/classtinyxml2_1_1_x_m_l_declaration.html#a42a2a36f4d78dc745063b79c16538b9b" title="tinyxml2::XMLDeclaration\l::ParseDeep" alt="" coords="180,136,352,177"/>
-<area shape="rect" id="node5" href="$d4/d65/classtinyxml2_1_1_x_m_l_unknown.html#aefc332cc1e6e25736f364d1e5eeb31fe" title="tinyxml2::XMLUnknown\l::ParseDeep" alt="" coords="185,201,347,243"/>
-<area shape="rect" id="node6" href="$dc/d22/classtinyxml2_1_1_x_m_l_attribute.html#a4952364c1f0260c737ac3fcac756f5a5" title="tinyxml2::wxXmlAttribute\l::ParseDeep" alt="" coords="189,267,343,308"/>
-<area shape="rect" id="node7" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a1e679b60e191ad79bfcefcd49ca66fa2" title="tinyxml2::wxXmlNode\l::ParseAttributes" alt="" coords="400,267,555,308"/>
-<area shape="rect" id="node8" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a072998100b7d0ba5e8aeac6dd6dfb31b" title="tinyxml2::wxXmlNode\l::ParseDeep" alt="" coords="603,267,757,308"/>
-</map>

@@ -1,6 +1,0 @@
-<map id="CatalogCodePanel::InitNewCatCode" name="CatalogCodePanel::InitNewCatCode">
-<area shape="rect" id="node2" href="$da/dd4/class_stamp.html#aa744b430710c1aa07c077f547f57d38b" title="Add any empty element of type CatalogCode. " alt="" coords="439,5,561,32"/>
-<area shape="rect" id="node4" href="$db/d46/class_catalog_code.html#a5817fee4247cbc047948215b81d86174" title="CatalogCode::SetAttr" alt="" coords="237,56,384,83"/>
-<area shape="rect" id="node3" href="$dc/d8f/class_node.html#ae833cd38c01571764ea3d88a31d44a0a" title="Node::GetElement" alt="" coords="616,56,747,83"/>
-<area shape="rect" id="node5" href="$db/d46/class_catalog_code.html#aa79bf8a85e6da03b26aed0aa25258207" title="CatalogCode::IsOK" alt="" coords="432,107,568,133"/>
-</map>

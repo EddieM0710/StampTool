@@ -1,1 +1,0 @@
-/usr/bin/x86_64-linux-gnu-g++-7 -fPIC  -pthread -pthread -g  -shared -Wl,-soname,libUtils.so -o libUtils.so CMakeFiles/Utils.dir/CSV.cpp.o CMakeFiles/Utils.dir/Project.cpp.o CMakeFiles/Utils.dir/Settings.cpp.o CMakeFiles/Utils.dir/XMLUtilities.cpp.o  -L/usr/local/lib 

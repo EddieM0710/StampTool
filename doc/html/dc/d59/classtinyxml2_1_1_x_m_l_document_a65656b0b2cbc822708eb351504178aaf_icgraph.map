@@ -1,9 +1,0 @@
-<map id="tinyxml2::wxXmlDocument::Clear" name="tinyxml2::wxXmlDocument::Clear">
-<area shape="rect" id="node2" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#af37c47d8e2ba4b2fc81b21a77a32579b" title="tinyxml2::wxXmlDocument\l::~wxXmlDocument" alt="" coords="220,5,387,47"/>
-<area shape="rect" id="node3" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#af592ffc91514e25a39664521ac83db45" title="Copies this document to a target document. " alt="" coords="220,71,387,112"/>
-<area shape="rect" id="node4" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#a2ebd4647a8af5fc6831b294ac26a150a" title="Load an XML file from disk. " alt="" coords="220,136,387,177"/>
-<area shape="rect" id="node8" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#af2b616169e6517182f6725f2498e9a01" title="Parse an XML file from a character string. " alt="" coords="220,201,387,243"/>
-<area shape="rect" id="node5" href="$d5/d71/class_persistent.html#a1e6d550aa3f4595274acfa528fc0de02" title="Load the persistent file. " alt="" coords="453,114,571,141"/>
-<area shape="rect" id="node7" href="$d2/d63/class_stamp_manager_frame.html#ab4f27ac876c7ac01166890d6c9594ca9" title="StampManagerFrame::\lOnTestXMLClick" alt="" coords="435,165,589,207"/>
-<area shape="rect" id="node6" href="$d5/d71/class_persistent.html#a82c8ff341cce87299a814e970f542606" title="Destroy the Persistent object. " alt="" coords="637,114,793,141"/>
-</map>

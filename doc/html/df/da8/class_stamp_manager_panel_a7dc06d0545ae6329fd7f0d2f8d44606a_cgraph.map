@@ -1,8 +1,0 @@
-<map id="StampManagerPanel::UpdateStatus" name="StampManagerPanel::UpdateStatus">
-<area shape="rect" id="node2" href="$d3/dff/class_description_panel.html#a6ca41711e0ffcec59c3e6d10a4876eae" title="Update the Status display with the current statss of the selected stamp. " alt="" coords="204,57,375,98"/>
-<area shape="rect" id="node3" href="$da/d71/class_identification_panel.html#aac7e060fc3fa0753a7fcbe0b4d1e33e2" title=" " alt="" coords="423,57,552,98"/>
-<area shape="rect" id="node4" href="$da/dd4/class_stamp.html#a3370745d7662600656a769099f11db43" title="Stamp::IsOK" alt="" coords="615,5,714,32"/>
-<area shape="rect" id="node6" href="$da/d71/class_identification_panel.html#a57981e4c3dd8e68730e1bc599f347b0c" title="Set the Choice object. " alt="" coords="600,57,729,98"/>
-<area shape="rect" id="node7" href="$da/dd4/class_stamp.html#a98daf5052ce62271c63c575f4cdc7528" title="Get the Status object. " alt="" coords="601,123,728,149"/>
-<area shape="rect" id="node5" href="$dc/d8f/class_node.html#ae833cd38c01571764ea3d88a31d44a0a" title="Node::GetElement" alt="" coords="777,5,908,32"/>
-</map>

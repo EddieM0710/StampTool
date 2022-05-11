@@ -1,6 +1,0 @@
-<map id="CharacteristicsPanel::CharacteristicsPanel" name="CharacteristicsPanel::CharacteristicsPanel">
-<area shape="rect" id="node2" href="$d1/d7e/class_characteristics_panel.html#ade72f76d72fe82cfad38c2f58170fb09" title="Initialises member variables. " alt="" coords="204,5,347,47"/>
-<area shape="rect" id="node3" href="$d1/d7e/class_characteristics_panel.html#a49bbd56d34bf7ebd006889c6b85250dd" title="Used for two&#45;step panel construction. " alt="" coords="204,71,347,112"/>
-<area shape="rect" id="node4" href="$d1/d7e/class_characteristics_panel.html#aa8c4cbf0f5a7d4053914d7e8c8e57ccc" title="Creates the controls and sizers. " alt="" coords="395,71,537,112"/>
-<area shape="rect" id="node5" href="$d0/db0/class_labeled_text_box.html#adf215e082c53eda882e4b543f590b1b7" title="Set the Width object. " alt="" coords="585,78,764,105"/>
-</map>

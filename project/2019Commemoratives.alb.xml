@@ -12,8 +12,6 @@
         LeftMargin=".3"
         BorderFileName="box2.jpg" 
         BorderSize="0"
-        ImagePath ="DocFiles/DocPictures/" 
-        StampProperties="2019_a.csv" >
 	<Page>
 		<!-- A page should have one top column or row child. -->
  			<!-- the title element is optional. -->

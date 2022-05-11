@@ -1,9 +1,9 @@
 #include "utils/Project.h"
+#include "utils/Settings.h"
 #include "Defs.h"
 #include <iostream>
 #include "catalog/CatalogData.h"
 #include "album/AlbumData.h"
-
 
 namespace Utils {
 
@@ -11,6 +11,23 @@ namespace Utils {
     {
         InitDefs( );
         m_settings = new Settings( );
+        if ( m_settings->GetLoadLastFileAtStartUp())
+        {
+            wxString filename = m_settings->GetLastFile();
+            if ( filename.Len() > 0)
+            {
+                if( LoadProject( filename ))
+                {
+                    wxString catalogFilename = GetCatalogFilename();
+                    m_catalogData = Catalog::NewCatalogData( );
+                    m_catalogData->LoadXML( catalogFilename );
+                
+                    wxString albumFilename = GetAlbumFilename();
+                    m_albumData = Layout::NewAlbumData( );
+                    m_albumData->LoadXML( albumFilename );
+                }
+            }
+        }
     };
 
 
@@ -139,7 +156,7 @@ namespace Utils {
             }
             else if ( !name.Cmp( "ImagePath" ) )
             {
-                m_imagePath = val;
+                GetSettings()->SetImageDirectory( val );
             }
             else if ( !name.Cmp( "Catalog" ) )
             {

@@ -18,169 +18,175 @@
 
 namespace Layout {
 
-void Column::UpdateMinimumSize()
-{
-
-
-    Title* title = GetTitle();
-    if ( title )
+    void Column::UpdateMinimumSize( )
     {
-        title->UpdateMinimumSize();
-    }
 
-    SetMinWidth( 0.0 );
-    SetMinHeight( 0.0 );
 
-    for ( int i = 0; i < ObjectArrayCount(); i++ )
-    {
-        LayoutNode* childObject = (LayoutNode*)ChildItem( i );
-
-        childObject->UpdateMinimumSize();
-
-        if ( childObject->GetWidth() > m_minWidth )
+        Title* title = GetTitle( );
+        if ( title )
         {
-            m_minWidth = childObject->GetWidth();
+            title->UpdateMinimumSize( );
         }
-        m_minHeight += childObject->GetHeight();
-    }
 
-}
+        SetMinWidth( 0.0 );
+        SetMinHeight( 0.0 );
 
+        for ( AlbumNodeList::iterator it = std::begin( m_layoutChildArray ); it != std::end( m_layoutChildArray ); ++it )
+        {
+            LayoutNode* child = ( LayoutNode* )( *it );
 
-void Column::UpdateSizes()
-{
+            child->UpdateMinimumSize( );
 
-    int nbrRows = 0;
-    int nbrCols = 0;
-    int nbrStamps = 0;
-    ValidateChildType( nbrRows, nbrCols, nbrStamps );
+            if ( child->GetWidth( ) > m_minWidth )
+            {
+                m_minWidth = child->GetWidth( );
+            }
+            m_minHeight += child->GetHeight( );
+        }
 
-    Title* title =GetTitle();
-    double titleHeight = GetTitleHeight();
-    if ( title )
-    {
-        title->SetWidth(GetWidth());
-        title-> UpdatePositions();
     }
 
 
-    // Set the height and width of each child  column
-    // Stamps have fixed height and width
-    for ( int i = 0; i < ObjectArrayCount(); i++ )
+    void Column::UpdateSizes( )
     {
-        LayoutNode* item = (LayoutNode*)ChildItem( i );
-        wxString childType = item->GetObjectName();
-        if ( !childType.Cmp( "Row" ) )
+
+        int nbrRows = 0;
+        int nbrCols = 0;
+        int nbrStamps = 0;
+        ValidateChildType( nbrRows, nbrCols, nbrStamps );
+
+        Title* title = GetTitle( );
+        double titleHeight = GetTitleHeight( );
+        if ( title )
         {
-          
-            item->SetWidth( m_minWidth );
-            item->SetHeight( m_minHeight - titleHeight );
+            title->SetWidth( GetWidth( ) );
+            title->UpdatePositions( );
         }
-        item->UpdateSizes();
-    }
-}
 
 
-
-// calculate the column layout based on child parameters
-bool Column:: UpdatePositions()
-{
-    // go to the bottom of each child container object ( row, column, page) 
-    // and begin filling in position relative to the parent
-
-    int nbrRows = 0;
-    int nbrCols = 0;
-    int nbrStamps = 0;
-    ValidateChildType( nbrRows, nbrCols, nbrStamps );
-
-    // inital x/y pos within the row
-
-    double titleHeight = GetTitleHeight();
-
-
-    // this is a col so we are positioning children down the page
-    double spacing = (  GetHeight()  - m_minHeight ) / ( nbrRows + nbrStamps + 1 );
-
-    double xPos = 0;
-    double yPos = titleHeight + spacing;
-
-    for ( int i = 0; i < ObjectArrayCount(); i++ )
-    {
-        LayoutNode* item = (LayoutNode*)ChildItem( i );
-
-        item->UpdatePositions();
-   
-        wxString childType = item->GetObjectName();
-        if ( !childType.Cmp( "Row" ) )
+        // Set the height and width of each child  column
+        // Stamps have fixed height and width
+        for ( AlbumNodeList::iterator it = std::begin( m_layoutChildArray ); it != std::end( m_layoutChildArray ); ++it )
         {
-            Row* row = (Row*)ChildItem( i );
-            row->SetXPos( xPos );
-            row->SetYPos( yPos );
-            //calc position of next row
-            yPos +=  GetHeight() + spacing;
-        }
-        else if ( !childType.Cmp( "Stamp" ) )
-        {
- 
-            Stamp* stamp = (Stamp*)item;
+            LayoutNode* child = ( LayoutNode* )( *it );
+            AlbumNodeType childType = ( AlbumNodeType )child->GetNodeType( );
+            if ( childType == AT_Row )
+            {
 
-            // each stamp is positioned in the cell
-
-            double xBorder = ( m_width - stamp->GetWidth() ) / 2;
-            stamp->SetXPos( xPos + xBorder );
-            stamp->SetYPos( yPos );
-            // get xpos of next cell
-            yPos +=  stamp->GetHeight() + spacing;
+                child->SetWidth( m_minWidth );
+                child->SetHeight( m_minHeight - titleHeight );
+            }
+            child->UpdateSizes( );
         }
     }
 
-    return true;
-}
-
-// build the frame container for the column
-wxXmlNode* Column::Write( wxXmlNode* parent )
-{
-    Utils::AddComment(  parent, "Column", "Inserting a Column.");
-
-    double xPos = GetXPos();
-    double yPos = GetYPos();
-    double width = GetWidth();
-    double height = GetHeight(); // allow for caption
-
-    wxString drawStyleName = ODT::FrameNoBorder;
-    wxString textAnchorType = ODT::TextAnchorParagraph; // "page", "paragraph"
-    wxString textStyleName = ODT::NormalTextStyle;
-
-    wxXmlNode* frame = ODT::ContentDoc()->WriteFrame( parent, xPos,
-        yPos,
-        width,
-        height,
-        drawStyleName,  // fr1
-        textAnchorType ); // "page", "paragraph"
 
 
-    for ( int i = 0; i < ObjectArrayCount(); i++ )
+    // calculate the column layout based on child parameters
+    void Column::UpdatePositions( )
     {
-        wxString childType = ChildItem( i )->GetObjectName();
-        if ( !childType.Cmp( "Row" ) )
+        // go to the bottom of each child container object ( row, column, page) 
+        // and begin filling in position relative to the parent
+
+        int nbrRows = 0;
+        int nbrCols = 0;
+        int nbrStamps = 0;
+        ValidateChildType( nbrRows, nbrCols, nbrStamps );
+
+        // inital x/y pos within the row
+
+        double titleHeight = GetTitleHeight( );
+
+
+        // this is a col so we are positioning children down the page
+        double spacing = ( GetHeight( ) - m_minHeight ) / ( nbrRows + nbrStamps + 1 );
+
+        double xPos = 0;
+        double yPos = titleHeight + spacing;
+
+        for ( AlbumNodeList::iterator it = std::begin( m_layoutChildArray ); it != std::end( m_layoutChildArray ); ++it )
         {
-            // set the layout parameters into the child
-            Row* child = (Row*)ChildItem( i );
-            child->Write( frame );
-        }
-        else if ( !childType.Cmp( "Column" ) )
-        {
-            // set the layout parameters into the child
-            Column* child = (Column*)ChildItem( i );
-            child->Write( frame );
-        }
-        else if ( !childType.Cmp( "Stamp" ) )
-        {
-            // set the layout parameters into the child
-            Stamp* child = (Stamp*)ChildItem( i );
-            child->Write( frame );
+            LayoutNode* child = ( LayoutNode* )( *it );
+
+            child->UpdatePositions( );
+
+            AlbumNodeType childType = (AlbumNodeType)child->GetNodeType( );
+            switch ( childType )
+            {
+            case AT_Row:
+            {
+                Row* row = ( Row* )child;
+                row->SetXPos( xPos );
+                row->SetYPos( yPos );
+                //calc position of next row
+                yPos += GetHeight( ) + spacing;
+            }
+            case AT_Stamp:
+            {
+
+                Stamp* stamp = ( Stamp* )child;
+
+                // each stamp is positioned in the cell
+
+                double xBorder = ( m_width - stamp->GetWidth( ) ) / 2;
+                stamp->SetXPos( xPos + xBorder );
+                stamp->SetYPos( yPos );
+                // get xpos of next cell
+                yPos += stamp->GetHeight( ) + spacing;
+            }
+            }
         }
     }
-    return frame;
-}
+
+    // build the frame container for the column
+    wxXmlNode* Column::Write( wxXmlNode* parent )
+    {
+        Utils::AddComment( parent, "Column", "Inserting a Column." );
+
+        double xPos = GetXPos( );
+        double yPos = GetYPos( );
+        double width = GetWidth( );
+        double height = GetHeight( ); // allow for caption
+
+        wxString drawStyleName = ODT::FrameNoBorder;
+        wxString textAnchorType = ODT::TextAnchorParagraph; // "page", "paragraph"
+        wxString textStyleName = ODT::NormalTextStyle;
+
+        wxXmlNode* frame = ODT::ContentDoc( )->WriteFrame( parent, xPos,
+            yPos,
+            width,
+            height,
+            drawStyleName,  // fr1
+            textAnchorType ); // "page", "paragraph"
+
+
+        for ( AlbumNodeList::iterator it = std::begin( m_layoutChildArray ); it != std::end( m_layoutChildArray ); ++it )
+        {
+            LayoutNode* child = ( LayoutNode* )( *it );
+
+            AlbumNodeType childType = (AlbumNodeType)child->GetNodeType( );
+            switch ( childType )
+            {
+                case AT_Row:
+                {
+                    // set the layout parameters into the child
+                    Row* row = ( Row* )child;
+                    row->Write( frame );
+                }
+                case AT_Col:
+                {
+                // set the layout parameters into the child
+                Column* col = ( Column* )child;
+                col->Write( frame );
+                }
+                case AT_Stamp:
+                {
+                // set the layout parameters into the child
+                Stamp* stamp = ( Stamp* )child;
+                stamp->Write( frame );
+                }
+            }
+        }
+        return frame;
+    }
 }

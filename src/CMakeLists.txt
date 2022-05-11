@@ -32,6 +32,7 @@ target_link_libraries (AlbumGenerator LINK_PUBLIC
     AlbumFiles
     CatalogFiles  
     ODTFiles
+    Node.cpp 
     curl
     ${wxWidgets_LIBRARIES}
     )

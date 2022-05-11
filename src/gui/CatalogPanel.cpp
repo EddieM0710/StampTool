@@ -28,6 +28,7 @@
 ////@end includes
 
 #include "gui/CatalogPanel.h"
+#include <wx/filename.h>
 
 ////@begin XPM images
 ////@end XPM images
@@ -214,4 +215,34 @@ void CatalogPanel::LoadCatalogTree( )
 void CatalogPanel::ClearCatalogTree( )
 {
     m_listTree->DeleteAllItems( );
+}
+
+void CatalogPanel::LoadCatalog( wxString filename )
+{
+    ClearCatalogTree( );
+    LoadCatalogTree( );
+}
+void CatalogPanel::InitCatalogData()
+{
+        ClearCatalogTree( );
+}
+
+void CatalogPanel::LoadCatalogCSV( wxString csvFilename )
+{
+
+    ClearCatalogTree( );
+    wxFileName csvFile( csvFilename );
+    wxString ext = csvFile.GetExt( );
+    if ( !ext.CmpNoCase( "csv" ) )
+    {
+        wxFileName catalogFile = csvFile;
+        catalogFile.SetExt( "xml" );
+        GetProject( )->SetCatalogFilename( catalogFile.GetFullPath( ) );
+        Catalog::CatalogData* catalogData = Catalog::NewCatalogData( );
+        GetProject( )->SetCatalogData( catalogData );
+
+        catalogData->LoadCSV( csvFile.GetFullName() );
+
+        LoadCatalogTree( );
+    }
 }

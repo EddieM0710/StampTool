@@ -165,7 +165,7 @@ namespace Utils {
             if ( sortOrderArray->Item( i ) >= 0 )
             {
                 child = NewNode( sortOrder, "Classification" );
-                child->SetContent( CatalogNodeNames.Item( sortOrderArray->Item( i ) ) );
+                child->SetContent( Catalog::CatalogNodeNames[sortOrderArray->Item( i ) ] );
             }
         }
         wxXmlNode* division = NewNode( settings, "PeriodDivision" );
@@ -273,7 +273,7 @@ namespace Utils {
             while ( child )
             {
                 wxString name = child->GetNodeContent( );
-                Catalog::CatalogNodeType type = FindCatalogNodeType( name );
+                Catalog::CatalogNodeType type = Catalog::FindCatalogNodeType( name );
                 if ( type > -1 )
                 {
                     sortOrderArray->Add( type );

@@ -66,7 +66,7 @@ namespace Utils {
                         colStr = rest;
                     if ( colStr.EndsWith( wxT( "\"" ), &rest ) )
                         colStr = rest;
-                    m_csvColName.Add( colStr );
+                    m_csvColName.push_back( colStr );
                 }
             }
 
@@ -127,15 +127,15 @@ namespace Utils {
     {
         for ( int j = 0; j < MaxNbrCSVCols; j++ )
         {
-            m_csvColMap[ j ] = ( DataTypes )-1;
+            m_csvColMap[ j ] = ( Catalog::DataTypes )-1;
         }
         for ( int j = 0; j < NbrColNames( ); j++ )
         {
-            for ( int i = 0; i < DT_NbrTypes; i++ )
+            for ( int i = 0; i < Catalog::DT_NbrTypes; i++ )
             {
-                if ( !DT_DataNames[ i ].Cmp( GetColName( j ) ) )
+                if ( !Catalog::DT_DataNames[ i ].Cmp( GetColName( j ) ) )
                 {
-                    m_csvColMap[ j ] = ( DataTypes )i;
+                    m_csvColMap[ j ] = ( Catalog::DataTypes )i;
                     break;
                 }
             }
@@ -214,7 +214,7 @@ namespace Utils {
                             // comma separated Variables on line; i, e, .csv file
                             wxStringTokenizer tokenizer( line, "," );
 
-                            wxXmlNode* stampElement = NewNode( docRoot, CatalogNodeNames.Item( NT_Stamp ) );
+                            wxXmlNode* stampElement = NewNode( docRoot, Catalog::CatalogNodeNames[ Catalog::NT_Stamp ] );
 
                             //                    Stamp* stampNode = new Stamp( stampElement );
                             csvCol = 0;
@@ -232,10 +232,10 @@ namespace Utils {
                                 valStr.Replace( "{", ",", true );
 
 
-                                DataTypes stampType = m_csvColMap[ csvCol ];
+                                Catalog::DataTypes stampType = m_csvColMap[ csvCol ];
                                 if ( stampType > 0 )
                                 {
-                                    stampElement->SetAttribute( DT_XMLDataNames[ stampType ], valStr );
+                                    Utils::SetAttrStr( stampElement, Catalog::DT_XMLDataNames[ stampType ], valStr );
                                     // stampNode->SetVal( stampType, valStr );
                                     // if ( stampType == DT_Catalog_Codes )
                                     // {
@@ -258,11 +258,11 @@ namespace Utils {
 
                             if ( valFound )//&& ( stampNode->GetID( ).Length( ) > 0 ) )
                             {
-                                //                        docRoot->AddChild( ( wxXmlNode* )stampElement );
+                                // docRoot->AddChild( ( wxXmlNode* )stampElement );
                             }
                             else
                             {
-                                //                    delete stampNode;
+                                // delete stampNode;
                             }
                         }
                     }

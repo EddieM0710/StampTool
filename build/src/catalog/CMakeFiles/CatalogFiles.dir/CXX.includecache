@@ -16,6 +16,10 @@ gui/AlbumGenFrame.h
 wx/string.h
 -
 
+../src/Node.h
+wx/xml/xml.h
+../src/wx/xml/xml.h
+
 ../src/catalog/CatalogCode.h
 vector
 -
@@ -45,8 +49,10 @@ wx/string.h
 -
 
 ../src/catalog/CatalogNode.h
-CatalogDefs.h
-../src/catalog/CatalogDefs.h
+Node.h
+../src/catalog/Node.h
+catalog/CatalogDefs.h
+../src/catalog/catalog/CatalogDefs.h
 wx/xml/xml.h
 ../src/catalog/wx/xml/xml.h
 
@@ -71,8 +77,6 @@ wx/string.h
 ../src/gui/AlbumGenFrame.h
 wx/frame.h
 ../src/gui/wx/frame.h
-wx/dynarray.h
--
 vector
 -
 catalog/Classification.h
@@ -85,8 +89,6 @@ catalog/CatalogDefs.h
 ../src/utils/catalog/CatalogDefs.h
 wx/xml/xml.h
 ../src/utils/wx/xml/xml.h
-wx/dynarray.h
--
 wx/filename.h
 -
 wx/string.h
@@ -94,6 +96,8 @@ wx/string.h
 wx/txtstrm.h
 -
 wx/wfstream.h
+-
+vector
 -
 
 ../src/utils/Project.h
@@ -117,32 +121,22 @@ wx/xml/xml.h
 ../src/utils/XMLUtilities.h
 wx/xml/xml.h
 ../src/utils/wx/xml/xml.h
+catalog/CatalogDefs.h
+../src/utils/catalog/CatalogDefs.h
 
 /sandbox/Development/AlbumGenerator/src/catalog/CatalogCode.cpp
 wx/wxprec.h
 /sandbox/Development/AlbumGenerator/src/catalog/wx/wxprec.h
 wx/wx.h
 /sandbox/Development/AlbumGenerator/src/catalog/wx/wx.h
-CatalogCode.h
-/sandbox/Development/AlbumGenerator/src/catalog/CatalogCode.h
+catalog/CatalogCode.h
+/sandbox/Development/AlbumGenerator/src/catalog/catalog/CatalogCode.h
+Node.h
+/sandbox/Development/AlbumGenerator/src/catalog/Node.h
 wx/strconv.h
 -
 utils/XMLUtilities.h
 /sandbox/Development/AlbumGenerator/src/catalog/utils/XMLUtilities.h
-
-/sandbox/Development/AlbumGenerator/src/catalog/CatalogCode.h
-vector
--
-wx/dataview.h
--
-wx/string.h
--
-CatalogDefs.h
-/sandbox/Development/AlbumGenerator/src/catalog/CatalogDefs.h
-CatalogNode.h
-/sandbox/Development/AlbumGenerator/src/catalog/CatalogNode.h
-wx/xml/xml.h
-/sandbox/Development/AlbumGenerator/src/catalog/wx/xml/xml.h
 
 /sandbox/Development/AlbumGenerator/src/catalog/CatalogData.cpp
 wx/wxprec.h
@@ -203,8 +197,10 @@ wx/string.h
 -
 
 /sandbox/Development/AlbumGenerator/src/catalog/CatalogNode.h
-CatalogDefs.h
-/sandbox/Development/AlbumGenerator/src/catalog/CatalogDefs.h
+Node.h
+/sandbox/Development/AlbumGenerator/src/catalog/Node.h
+catalog/CatalogDefs.h
+/sandbox/Development/AlbumGenerator/src/catalog/catalog/CatalogDefs.h
 wx/xml/xml.h
 /sandbox/Development/AlbumGenerator/src/catalog/wx/xml/xml.h
 

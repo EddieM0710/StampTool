@@ -316,7 +316,7 @@ class CatalogData;
      * @note This is the name used for the tree node; not the wxXmlNode node.
      *
      **************************************************/
-    extern wxArrayString CatalogNodeNames;
+    extern  wxString CatalogNodeNames[NT_NbrTypes];
 
 
     extern  const wxString CT_Names[ CT_NbrTypes ];
@@ -388,7 +388,7 @@ class CatalogData;
     //             wxXmlNode* nextNode = FirstChildElement( parent, nodeNameStr );
     //             while ( nextNode )
     //             {
-    //                 wxXmlAttribute* attr = SetAttribute( nextNode, "Name", nameStr );
+    //                 wxXmlAttribute* attr = SetAttrStr( nextNode, "Name", nameStr );
     //                 if ( attr )
     //                 {
     //                     //                    std::cout << "     Found it\n";
@@ -402,7 +402,7 @@ class CatalogData;
     // //                << nameStr << "\n";
 
     //             nextNode = NewNode( parent, nodeNameStr );
-    //             nextNode->SetAttribute( "Name", nameStr );
+    //             nextNode->SetAttrStr( "Name", nameStr );
 
     //             AddStamp( nextNode, child, level );
     //             return;

@@ -24,10 +24,18 @@
 #include "wx/wx.h"
 #endif
 
-#include "AlbumData.h"
 #include "AlbumDefs.h"
+#include "AlbumData.h"
 #include "Defs.h"
 #include "utils/Project.h"
+#include "album/Album.h"
+#include "album/TitlePage.h"
+#include "album/Title.h"
+#include "album/Page.h"
+#include "album/Row.h"
+#include "album/Column.h"
+#include "album/Stamp.h"
+
 
 namespace Layout {
 
@@ -51,28 +59,44 @@ namespace Layout {
     };
 
 
-    wxArrayString AlbumNodeNames;
-
+        wxString AlbumNodeNames[AT_NbrAlbumTypes] = {
+                "Album",
+                "Page",
+                "Row",
+                "Col",
+                "Title",
+                "Stamp"  };
+    
+        const char* AttrNameStrings[ AT_NbrAttrTypes ] = {
+                "Name",
+                "PageWidth",
+                "PageHeight",
+                "TopMargin",
+                "BottomMargin",
+                "RightMargin",
+                "LeftMargin",
+                "BorderFileName",
+                "BorderSize",
+                "Height",
+                "Width",
+                "XPos",
+                "YPos",
+                "MinHeight",
+                "MinWidth",
+                "ID",
+                "Link" };
 
     void InitAlbumDefs( )
     {
-        AlbumNodeNames.Add( "Album" );
-        AlbumNodeNames.Add( "Page" );
-        AlbumNodeNames.Add( "Row" );
-        AlbumNodeNames.Add( "Col" );
-        AlbumNodeNames.Add( "Title" );
-        AlbumNodeNames.Add( "Stamp" );
-        AlbumNodeNames.Add( "NbrAlbumTypes" );
+
     }
 
     AlbumNodeType FindAlbumNodeType( wxString name )
     {
         wxString baseName;
-
-        int cnt = AlbumNodeNames.GetCount( );
-        for ( int i = 0; i < cnt; i++ )
+        for ( int i = 0; i < AT_NbrAlbumTypes; i++ )
         {
-            baseName = AlbumNodeNames.Item( i );
+            baseName = AlbumNodeNames[i];
             if ( !name.Cmp( baseName ) )
             {
                 return ( AlbumNodeType )i;
@@ -80,4 +104,55 @@ namespace Layout {
         }
         return ( AlbumNodeType )-1;
     };
+
+
+    // wxString GetAttribute( AlbumNodeType type )
+    // {
+    //     return Utils::GetAttrStr( GetNodeElement( ), AttrNameStrings[type]);
+    // }
+
+    // double GetAttributeDbl( AlbumNodeType type )
+    // {
+    //     return Utils::GetAttrDbl( GetNodeElement( ), AttrNameStrings[type] );
+    // }
+    //   void SetAttrStr( AlbumNodeType type, wxString val )
+    //     {
+    //         Utils::SetAttrStr( GetNodeElement( ), AttrNameStrings[type], val );
+    //     };
+    //   void SetAttrDbl( AlbumNodeType type, double val )
+    //     {
+    //         Utils::SetAttrDbl( GetNodeElement( ), AttrNameStrings[type], val );
+    //     };
+
+
+    void UpdateSizes( wxXmlNode* child )
+    {
+        wxString name = child->GetName( );
+        if ( name.Cmp( "Page" ) )
+        {
+            Page node( child );
+            node.UpdateSizes( );
+        }
+        else if ( name.Cmp( "Column" ) )
+        {
+            Column node( child );
+            node.UpdateSizes( );
+        }
+        else if ( name.Cmp( "Row" ) )
+        {
+            Row node( child );
+            node.UpdateSizes( );
+        }
+        else if ( name.Cmp( "Title" ) )
+        {
+            Title node( child );
+            node.UpdateSizes( );
+        }
+        else if ( name.Cmp( "TitlePage" ) )
+        {
+            TitlePage node( child );
+            node.UpdateSizes( );
+        }
+
+    }
 }

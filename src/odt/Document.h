@@ -39,7 +39,7 @@ namespace ODT {
          * @brief Construct a new Document object
          *
          **************************************************/
-        Document( DocumentManager* parent );
+        Document(  );
 
         /**
          * @brief Destroy the Document object
@@ -206,7 +206,7 @@ namespace ODT {
         Meta* MetaDoc( ) { return m_metaDoc; };
     private:
 
-        DocumentManager* m_parent;
+        //DocumentManager* m_parent;
         MimeType* m_mimeTypeDoc;
         /**
          * @brief Class member. Pointer to the odt content XMLDocumwnt.

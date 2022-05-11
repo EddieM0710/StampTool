@@ -9,8 +9,8 @@
  *
  **************************************************/
 
-#ifndef Stamp_h
-#define Stamp_h
+#ifndef Layout_Stamp_h
+#define Layout_Stamp_h
 
 #include "album/LayoutNode.h"
 
@@ -36,7 +36,7 @@ namespace Layout {
          *
          * @param parent
          **************************************************/
-        Stamp( AlbumNode* parent ) : LayoutNode( parent ) { SetObjectName( "Stamp" ); };
+        Stamp( wxXmlNode* parent ) : LayoutNode( parent ) { SetNodeType( AT_Stamp ); };
 
         /**
          * @brief Destroy the Stamp object
@@ -50,7 +50,7 @@ namespace Layout {
          * @return true
          * @return false
          **************************************************/
-        bool UpdatePositions( );
+        void UpdatePositions( );
 
         /**
         * @brief UpdateMinimumSize

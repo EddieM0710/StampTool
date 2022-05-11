@@ -13,7 +13,7 @@
 #define XMLIterator_H
 
 #include "wx/xml/xml.h"
-
+#include "catalog/CatalogDefs.h"
 class wxTextOutputStream;
 
 namespace Utils {
@@ -73,10 +73,11 @@ namespace Utils {
 
     wxXmlAttribute* GetAttribute( wxXmlNode* node, wxString attrName );
 
-    wxString  GetAttributeValue( wxXmlNode* node, wxString attrName );
+    wxString GetAttrStr( wxXmlNode* node, wxString attrName );
+    double GetAttrDbl( wxXmlNode* node, wxString attrName );
 
-    wxXmlAttribute* SetAttribute( wxXmlNode* node, wxString name, wxString val );
-
+    void SetAttrStr( wxXmlNode* node, wxString name, wxString val );
+    void SetAttrDbl( wxXmlNode* node, wxString name, double val );
     void XMLDump( wxXmlDocument* doc );
     void XMLDumpNode( wxXmlNode* node, wxString level );
 
@@ -92,54 +93,54 @@ namespace Utils {
     void SaveChild( wxTextOutputStream* text, wxXmlNode* node, wxString level );
     void SaveAttributes( wxTextOutputStream* text, wxXmlNode* node, wxString level );
 
-extern int zIndex;
-extern int frameIndex;
-extern int imageIndex;
+    extern int zIndex;
+    extern int frameIndex;
+    extern int imageIndex;
 
-/**
- * @brief get the next z index
- *
- * @param str
- * @return char*
- **************************************************/
-char* GetZIndex( char* str );
+    /**
+     * @brief get the next z index
+     *
+     * @param str
+     * @return char*
+     **************************************************/
+    char* GetZIndex( char* str );
 
-/**
- * @brief Get the  next Image Name index
- *
- * @param str
- * @return char*
- **************************************************/
-char* GetImageName( char* str );
+    /**
+     * @brief Get the  next Image Name index
+     *
+     * @param str
+     * @return char*
+     **************************************************/
+    char* GetImageName( char* str );
 
-/**
- * @brief Get the next Frame Name ndx
- *
- * @param str
- * @return char*
- **************************************************/
-char* GetFrameName( char* str );
+    /**
+     * @brief Get the next Frame Name ndx
+     *
+     * @param str
+     * @return char*
+     **************************************************/
+    char* GetFrameName( char* str );
 
-wxString GetTextStyleName( wxString& str );
-/**
- * @brief Get the next Draw Name inde
- *
- * @param str
- * @return char*
- **************************************************/
-char* GetDrawName( char* str );
+    wxString GetTextStyleName( wxString& str );
+    /**
+     * @brief Get the next Draw Name inde
+     *
+     * @param str
+     * @return char*
+     **************************************************/
+    char* GetDrawName( char* str );
 
-/**
- * @brief Convert a double to astring with an "indemenion attached"
- *
- * @param str
- * @param nbr
- * @return char*
- **************************************************/
-char* DoubleToInchString( char* str, double nbr );
+    /**
+     * @brief Convert a double to astring with an "indemenion attached"
+     *
+     * @param str
+     * @param nbr
+     * @return char*
+     **************************************************/
+    char* DoubleToInchString( char* str, double nbr );
 
 
-char* IntToInchString( char* str, int nbr );
+    char* IntToInchString( char* str, int nbr );
 
 }
 

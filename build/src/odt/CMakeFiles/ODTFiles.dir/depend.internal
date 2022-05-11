@@ -3,6 +3,7 @@
 
 src/odt/CMakeFiles/ODTFiles.dir/AutoStylesProp.cpp.o
  ../src/Defs.h
+ ../src/catalog/CatalogDefs.h
  ../src/odt/Content.h
  ../src/odt/ODTDefs.h
  ../src/utils/XMLUtilities.h
@@ -80,7 +81,9 @@ src/odt/CMakeFiles/ODTFiles.dir/AutoStylesProp.cpp.o
  /usr/local/lib/wx/include/gtk3-unicode-3.1/wx/setup.h
 src/odt/CMakeFiles/ODTFiles.dir/Content.cpp.o
  ../src/Defs.h
+ ../src/Node.h
  ../src/album/Album.h
+ ../src/album/AlbumDefs.h
  ../src/album/AlbumNode.h
  ../src/album/Attribute.h
  ../src/catalog/CatalogData.h
@@ -176,7 +179,10 @@ src/odt/CMakeFiles/ODTFiles.dir/Content.cpp.o
  /usr/local/lib/wx/include/gtk3-unicode-3.1/wx/setup.h
 src/odt/CMakeFiles/ODTFiles.dir/Document.cpp.o
  ../src/Defs.h
+ ../src/Node.h
  ../src/album/Album.h
+ ../src/album/AlbumData.h
+ ../src/album/AlbumDefs.h
  ../src/album/AlbumNode.h
  ../src/album/Attribute.h
  ../src/catalog/CatalogData.h
@@ -271,7 +277,9 @@ src/odt/CMakeFiles/ODTFiles.dir/Document.cpp.o
  /usr/local/lib/wx/include/gtk3-unicode-3.1/wx/setup.h
 src/odt/CMakeFiles/ODTFiles.dir/Manifest.cpp.o
  ../src/Defs.h
+ ../src/Node.h
  ../src/album/Album.h
+ ../src/album/AlbumDefs.h
  ../src/album/AlbumNode.h
  ../src/album/Attribute.h
  ../src/catalog/CatalogData.h
@@ -365,7 +373,9 @@ src/odt/CMakeFiles/ODTFiles.dir/Manifest.cpp.o
  /usr/local/lib/wx/include/gtk3-unicode-3.1/wx/setup.h
 src/odt/CMakeFiles/ODTFiles.dir/Meta.cpp.o
  ../src/Defs.h
+ ../src/Node.h
  ../src/album/Album.h
+ ../src/album/AlbumDefs.h
  ../src/album/AlbumNode.h
  ../src/album/Attribute.h
  ../src/catalog/CatalogData.h
@@ -540,7 +550,9 @@ src/odt/CMakeFiles/ODTFiles.dir/Mimetype.cpp.o
  /usr/local/lib/wx/include/gtk3-unicode-3.1/wx/setup.h
 src/odt/CMakeFiles/ODTFiles.dir/ODTDefs.cpp.o
  ../src/Defs.h
+ ../src/Node.h
  ../src/album/Album.h
+ ../src/album/AlbumDefs.h
  ../src/album/AlbumNode.h
  ../src/album/Attribute.h
  ../src/catalog/CatalogData.h
@@ -633,8 +645,12 @@ src/odt/CMakeFiles/ODTFiles.dir/ODTDefs.cpp.o
  /usr/local/lib/wx/include/gtk3-unicode-3.1/wx/setup.h
 src/odt/CMakeFiles/ODTFiles.dir/Settings.cpp.o
  ../src/Defs.h
+ ../src/catalog/CatalogData.h
+ ../src/catalog/CatalogDefs.h
  ../src/odt/ODTDefs.h
  ../src/odt/Settings.h
+ ../src/utils/Project.h
+ ../src/utils/Settings.h
  /sandbox/Development/AlbumGenerator/src/odt/Settings.cpp
  /usr/local/include/wx-3.1/wx/afterstd.h
  /usr/local/include/wx-3.1/wx/any.h
@@ -708,8 +724,10 @@ src/odt/CMakeFiles/ODTFiles.dir/Settings.cpp.o
  /usr/local/lib/wx/include/gtk3-unicode-3.1/wx/setup.h
 src/odt/CMakeFiles/ODTFiles.dir/Styles.cpp.o
  ../src/Defs.h
+ ../src/catalog/CatalogDefs.h
  ../src/odt/ODTDefs.h
  ../src/odt/Styles.h
+ ../src/utils/XMLUtilities.h
  /sandbox/Development/AlbumGenerator/src/odt/Styles.cpp
  /usr/local/include/wx-3.1/wx/afterstd.h
  /usr/local/include/wx-3.1/wx/any.h

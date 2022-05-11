@@ -87,7 +87,7 @@ class CatalogDataTreeItemData : public wxTreeItemData
      *
      * @param  ele :
      ***************************************************/
-    void SetElement( wxXmlNode* ele ) { m_element = ele; };
+    void SetNodeElement( wxXmlNode* ele ) { m_element = ele; };
 
 
 
@@ -95,7 +95,7 @@ class CatalogDataTreeItemData : public wxTreeItemData
      * 
      * @return {wxXmlNode*}    : 
      **************************************************/
-    wxXmlNode* GetElement( void ) { return m_element; };
+    wxXmlNode* GetNodeElement( void ) { return m_element; };
 
     /**
      *

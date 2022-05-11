@@ -49,29 +49,30 @@ namespace Layout {
         m_minWidth = 0.0;
         m_minHeight = 0.0;
 
-        for ( int i = 0; i < ObjectArrayCount( ); i++ )
+        for ( AlbumNodeList::iterator it = std::begin( m_layoutChildArray ); it != std::end( m_layoutChildArray ); ++it )
         {
-            LayoutNode* childObject = ( LayoutNode* )ChildItem( i );
+            LayoutNode* child = ( LayoutNode* )( *it );
+
             //layout everything except the title
-            if ( childObject->GetObjectName( ).Cmp( "Title" ) )
+            if ( child->GetNodeType( ) != AT_Title )
             {
-                childObject->UpdateMinimumSize( );
+                child->UpdateMinimumSize( );
 
                 if ( nbrCols > 0 )
                 {
-                    if ( childObject->GetMinHeight( ) > m_minHeight )
+                    if ( child->GetMinHeight( ) > m_minHeight )
                     {
-                        m_minHeight = childObject->GetMinHeight( );
+                        m_minHeight = child->GetMinHeight( );
                     }
-                    m_minWidth += childObject->GetMinWidth( );
+                    m_minWidth += child->GetMinWidth( );
                 }
                 else
                 {
-                    if ( childObject->GetMinWidth( ) > m_minWidth )
+                    if ( child->GetMinWidth( ) > m_minWidth )
                     {
-                        m_minWidth = childObject->GetMinWidth( );
+                        m_minWidth = child->GetMinWidth( );
                     }
-                    m_minHeight += childObject->GetMinHeight( );
+                    m_minHeight += child->GetMinHeight( );
                 }
             }
         }
@@ -108,30 +109,31 @@ namespace Layout {
             title->SetWidth( GetWidth( ) );
         }
         // Set the height and width of each child row or column
-        // Stamps have fixed height and width
-        for ( int i = 0; i < ObjectArrayCount( ); i++ )
+        for ( AlbumNodeList::iterator it = std::begin( m_layoutChildArray ); it != std::end( m_layoutChildArray ); ++it )
         {
-            LayoutNode* node = ( LayoutNode* )ChildItem( i );
-            wxString childType = node->GetObjectName( );
+            LayoutNode* node = ( LayoutNode* )( *it );
 
-            if ( !childType.Cmp( "Row" ) )
+            AlbumAttrType childType = ( AlbumAttrType )node->GetNodeType( );
+            switch ( childType )
+            {
+            case AT_Row:
             {
                 Row* row = ( Row* )node;
                 row->SetWidth( GetWidth( ) );
                 row->SetHeight( m_minHeight + titleHeight );
             }
-            else if ( !childType.Cmp( "Column" ) )
+            case AT_Col:
             {
                 Column* col = ( Column* )node;
                 col->SetWidth( m_minWidth );
                 col->SetHeight( GetHeight( ) - titleHeight );
             }
-
+            }
             node->UpdateSizes( );
         }
     }
 
-    bool Page::UpdatePositions( )
+    void Page::UpdatePositions( )
     {
         int nbrRows = 0;
         int nbrCols = 0;
@@ -163,32 +165,29 @@ namespace Layout {
         }
 
 
-        for ( int i = 0; i < ObjectArrayCount( ); i++ )
+        for ( AlbumNodeList::iterator it = std::begin( m_layoutChildArray ); it != std::end( m_layoutChildArray ); ++it )
         {
-
-            LayoutNode* item = ( LayoutNode* )ChildItem( i );
-            item->UpdatePositions( );
+            LayoutNode* node = ( LayoutNode* )( *it );
+            node->UpdatePositions( );
 
             //layout everything except the title
-            if ( item->GetObjectName( ).Cmp( "Title" ) )
+            if ( node->GetNodeType( ) != AT_Title )
             {
 
                 if ( nbrRows > 0 )
                 {
-                    item->SetXPos( 0 );
-                    item->SetYPos( yPos );
-                    yPos = yPos + spacing + item->GetHeight( );
+                    node->SetXPos( 0 );
+                    node->SetYPos( yPos );
+                    yPos = yPos + spacing + node->GetHeight( );
                 }
                 else if ( nbrCols > 0 || nbrStamps > 0 )
                 {
-                    item->SetXPos( xPos );
-                    item->SetYPos( 0 );
-                    xPos = xPos + spacing + item->GetWidth( );
+                    node->SetXPos( xPos );
+                    node->SetYPos( 0 );
+                    xPos = xPos + spacing + node->GetWidth( );
                 }
             }
-
         }
-        return true;
     }
     wxXmlNode* Page::Write( wxXmlNode* parent )
     {
@@ -204,10 +203,10 @@ namespace Layout {
             ODT::FrameNoBorder,
             ODT::TextAnchorParagraph );
 
-        // Add the Child rows or columns
-        for ( int i = 0; i < ObjectArrayCount( ); i++ )
+        for ( AlbumNodeList::iterator it = std::begin( m_layoutChildArray ); it != std::end( m_layoutChildArray ); ++it )
         {
-            ChildItem( i )->Write( parent );
+            LayoutNode* node = ( LayoutNode* )( *it );
+            node->Write( parent );
         }
 
         return contentElement;

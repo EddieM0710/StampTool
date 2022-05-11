@@ -16,22 +16,22 @@ namespace Layout {
 
     void TitlePage::UpdateMinimumSize( )
     {
-        for ( int i = 0; i < ObjectArrayCount( ); i++ )
+        for ( AlbumNodeList::iterator it = std::begin(m_layoutChildArray ); it != std::end( m_layoutChildArray ); ++it )
         {
-            LayoutNode* childItem = ( LayoutNode* )ChildItem( i );
-            childItem->UpdateMinimumSize( );
+            LayoutNode* child = ( LayoutNode* )( *it );;
+            child->UpdateMinimumSize( );
         }
     }
-    bool TitlePage::UpdatePositions( )
+    
+    void TitlePage::UpdatePositions( )
     {
         // go to the bottom of each child container object ( row, column, page) 
         // and begin filling in position relative to the parent
-        for ( int i = 0; i < ObjectArrayCount( ); i++ )
+        for ( AlbumNodeList::iterator it = std::begin(m_layoutChildArray ); it != std::end( m_layoutChildArray ); ++it )
         {
-            LayoutNode* childItem = ( LayoutNode* )ChildItem( i );
-            childItem->UpdatePositions( );
+            LayoutNode* child = ( LayoutNode* )( *it );
+            child->UpdatePositions( );
         }
-        return true;
     }
     void TitlePage::UpdateSizes( )
     {

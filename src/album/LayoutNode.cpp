@@ -22,15 +22,79 @@
 
 namespace Layout {
 
-
     //!*********************************************************
     // Procedure::Load
     // *********************************************************
+    double LayoutNode::GetXPos( )
+    {
+        return GetAttrDbl( AT_XPos );
+    };
+
+    void LayoutNode::SetXPos( double val )
+    {
+        SetAttrDbl( AT_XPos, val );
+    };
+
+
+    double LayoutNode::GetYPos( )
+    {
+        return GetAttrDbl( AT_YPos );
+    };
+
+
+    void LayoutNode::SetYPos( double val )
+    {
+        SetAttrDbl( AT_YPos, val );
+    };
+
+
+    double LayoutNode::GetWidth( )
+    {
+        return GetAttrDbl( AT_Width );
+    };
+
+
+    void LayoutNode::SetWidth( double val )
+    {
+        SetAttrDbl( AT_Width, val );
+    };
+
+    double LayoutNode::GetHeight( )
+    {
+        return GetAttrDbl( AT_Height );
+    };
+
+    void LayoutNode::SetHeight( double val )
+    {
+        SetAttrDbl( AT_Height, val );
+    };
+
+
+    double LayoutNode::GetMinWidth( )
+    {
+        return GetAttrDbl( AT_MinWidth );
+    };
+
+
+    void LayoutNode::SetMinWidth( double val )
+    {
+        SetAttrDbl( AT_MinWidth, val );
+    };
+
+    double LayoutNode::GetMinHeight( )
+    {
+        return GetAttrDbl( AT_MinHeight );
+    };
+
+    void LayoutNode::SetMinHeight( double val )
+    {
+        SetAttrDbl( AT_MinHeight, val );
+    };
 
     void LayoutNode::ReportLayoutError( wxString funct, wxString err, bool fatal )
     {
-        wxString funcStr = wxString::Format( "%s::%s", GetObjectName( ), funct );
-        wxString msgStr = wxString::Format( "InputLine: %d;  %s", GetLineNbr( ), err );
+        wxString funcStr = wxString::Format( "%s::%s", AttrNameStrings[ GetNodeType() ] , funct );
+        wxString msgStr = wxString::Format( "InputLine: %d;  %s", GetLineNumber( ), err );
         ReportError( funcStr, msgStr, fatal );
     }
 
@@ -40,21 +104,29 @@ namespace Layout {
         nbrRows = 0;
         nbrCols = 0;
         nbrStamps = 0;
-        for ( int i = 0; i < ObjectArrayCount( ); i++ )
+
+        for ( AlbumNodeList::iterator it = std::begin( m_layoutChildArray ); it != std::end( m_layoutChildArray ); ++it )
         {
-            wxString childType = ChildItem( i )->GetObjectName( );
-            if ( !childType.Cmp( "Row" ) )
+            LayoutNode* child = ( LayoutNode* )( *it );
+            AlbumNodeType childType = (AlbumNodeType)child->GetNodeType( );
+            switch ( childType )
             {
-                nbrRows++;
-            }
-            else if ( !childType.Cmp( "Column" ) )
-            {
-                nbrCols++;
-            }
-            else if ( !childType.Cmp( "Stamp" ) )
-            {
-                nbrStamps++;
-            }
+                case AT_Row:
+                {
+                    nbrRows++;
+                    break;
+                }
+                case AT_Col:
+                {
+                    nbrCols++;
+                    break;
+                }
+                case AT_Stamp:
+                {
+                    nbrStamps++;
+                    break;
+                }    
+            }        
         }
         if ( ( nbrRows > 0 ) && ( nbrCols > 0 ) )
         {
@@ -77,7 +149,7 @@ namespace Layout {
         Title* title = GetTitle( );
         if ( title )
         {
-            return title->GetAttrValDbl( "height" );
+            return title->GetAttrDbl( AT_Height );
         }
     }
 }

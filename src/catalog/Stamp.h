@@ -10,8 +10,8 @@
  *
  **************************************************/
 
-#ifndef Stamp_h
-#define Stamp_h
+#ifndef Catalog_Stamp_h
+#define Catalog_Stamp_h
 
 #include "catalog/CatalogDefs.h"
 #include "catalog/CatalogNode.h"
@@ -20,9 +20,6 @@
 
 
 namespace Catalog {
-
-
-
 
     /**
     * @todo 2 fix so the GetName  refers to the name of an element and GetTitle refers to the attribute of an element.

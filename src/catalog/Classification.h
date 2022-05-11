@@ -34,12 +34,12 @@ namespace Catalog {
          * @brief Construct a new Classification object
          *
          * @note This node is invalid until the node type is defined.
-         * @see CatalogNode::SetElement
+         * @see CatalogNode::SetNodeElement
          *
          **************************************************/
         Classification( void ) : CatalogNode( )
         {
-            SetElement( 0 );
+            SetNodeElement( 0 );
             SetCatalogNodeType( ( CatalogNodeType )-1 );
         }
 

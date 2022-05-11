@@ -9,37 +9,37 @@
  *
  **************************************************/
 
-#ifndef Node_h
-#define Node_h
+#ifndef CatalogNode_h
+#define CatalogNode_h
 
-#include "CatalogDefs.h"
+#include "Node.h"
+
+#include "catalog/CatalogDefs.h"
 #include "wx/xml/xml.h"
 
 
 namespace Catalog {
 
-
-    class CatalogNode
+    class CatalogNode : public Node
     {
     public:
-        CatalogNode( ) { SetElement( ( wxXmlNode* )0 ); };
+        CatalogNode( ) : Node(  ){};
 
-        CatalogNode( wxXmlNode* ele ) { SetElement( ele ); };
+        CatalogNode( wxXmlNode* ele ): Node(ele) { };
 
         ~CatalogNode( ) { };
 
-        void SetCatalogNodeType( CatalogNodeType type ) { m_nodeType = type; };
-        CatalogNodeType GetCatalogNodeType( ) { return m_nodeType; };
+        void SetCatalogNodeType( CatalogNodeType type ) { SetNodeType( (int)type); };
+        CatalogNodeType GetCatalogNodeType( ) { return (CatalogNodeType)GetNodeType(); };
 
-        wxXmlNode* GetElement( ) { return m_Element; };
-        void SetElement( wxXmlNode* node ) { m_Element = node; };
+      //  wxXmlNode* GetNodeElement( ) { return m_Element; };
+       // void SetNodeElement( wxXmlNode* node ) { m_Element = node; };
 
         virtual bool IsOK( ) = 0;
 
-
     private:
-        wxXmlNode* m_Element;
-        CatalogNodeType m_nodeType;
+     
+        
     };
 }
 #endif

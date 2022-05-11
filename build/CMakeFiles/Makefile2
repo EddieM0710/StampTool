@@ -96,10 +96,10 @@ src/preinstall: src/odt/preinstall
 
 # All Build rule for target.
 src/CMakeFiles/AlbumGenerator.dir/all: src/utils/CMakeFiles/Utils.dir/all
-src/CMakeFiles/AlbumGenerator.dir/all: src/catalog/CMakeFiles/CatalogFiles.dir/all
-src/CMakeFiles/AlbumGenerator.dir/all: src/odt/CMakeFiles/ODTFiles.dir/all
 src/CMakeFiles/AlbumGenerator.dir/all: src/gui/CMakeFiles/GuiFiles.dir/all
+src/CMakeFiles/AlbumGenerator.dir/all: src/catalog/CMakeFiles/CatalogFiles.dir/all
 src/CMakeFiles/AlbumGenerator.dir/all: src/album/CMakeFiles/AlbumFiles.dir/all
+src/CMakeFiles/AlbumGenerator.dir/all: src/odt/CMakeFiles/ODTFiles.dir/all
 	$(MAKE) -f src/CMakeFiles/AlbumGenerator.dir/build.make src/CMakeFiles/AlbumGenerator.dir/depend
 	$(MAKE) -f src/CMakeFiles/AlbumGenerator.dir/build.make src/CMakeFiles/AlbumGenerator.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/sandbox/Development/AlbumGenerator/build/CMakeFiles --progress-num=13,14,15 "Built target AlbumGenerator"

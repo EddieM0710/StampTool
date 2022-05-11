@@ -19,8 +19,9 @@
 
 namespace Layout {
 
-    class AlbumData
+    class Album;
 
+    class AlbumData
     {
     public:
 
@@ -37,13 +38,15 @@ namespace Layout {
         void SaveXML( wxString filename );
         void LoadXML( wxString filename );
 
-
-        wxString GetTitle( ) { return m_title; }
+        Album* GetAlbum( ) { return m_album; };
+        void SetAlbum( Album* album ) { m_album = album; };
+        wxString GetTitle( ) { return m_title; };
         void  SetTitle( wxString val ) { m_title = val; };
 
     private:
         /* data */
         wxXmlDocument* m_albumDoc;
+        Album* m_album;
         wxString m_title;
     };
 }

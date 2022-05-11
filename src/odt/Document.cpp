@@ -3,7 +3,8 @@
 #include <wx/filename.h>
 #include <wx/filefn.h>
 #include "album/AlbumData.h"
-//#include "DocumentManager.h"
+#include "utils/Project.h"
+#include "utils/Settings.h"
 
 #include <iostream>
 #include <fstream>
@@ -12,15 +13,14 @@
 namespace ODT {
 
     //***********************************
-    Document::Document( DocumentManager* parent )
+    Document::Document(  )
     {
-        m_parent = parent;
         m_workingDirectory = wxGetCwd( );
     };
 
     //**********************************
 
-    void Document::AddBorder( wxString filename )
+    void Document::AddBorder( wxString filename )    
     {
         wxString docImage = AddImageFile( filename );
         wxString width;
@@ -29,7 +29,8 @@ namespace ODT {
         wxString bottomMargin;
         wxString rightMargin;
         wxString leftMargin;
-        m_parent->GetAlbum( )->GetPageParameters( width, height, topMargin, bottomMargin, rightMargin, leftMargin );
+        Layout::Album *album = GetProject()->GetAlbumData( )->GetAlbum() ;
+        album->GetPageParameters( width, height, topMargin, bottomMargin, rightMargin, leftMargin );
         width.append( "in" );
         height.append( "in" );
         topMargin.append( "in" );
@@ -43,7 +44,8 @@ namespace ODT {
 
     wxString Document::AddImageFile( wxString filename )
     {
-        wxString imageLoc = m_parent->GetAlbum( )->GetImagePath( );
+        //Layout::AlbumData *albumData = Utils::GetProject()->GetAlbumData( ) ;
+        wxString imageLoc = Utils::GetProject()->GetSettings()->GetImagePath( );
         wxFileName inputImage( imageLoc, filename );
         bool status = inputImage.MakeAbsolute( m_workingDirectory );
         wxString i_cwd = inputImage.GetCwd( );
@@ -238,7 +240,7 @@ namespace ODT {
     bool Document::MakeODT( )
     {
         wxString workingDir = wxGetCwd( );
-        wxString doc = GetProject( )->GetOutputName( );
+        wxString doc = GetProject( )->GetOutputfilename( );
         //wxString doc = ODTDoc()->GetAlbum()->GetDocName();
         wxFileName* outputName = new wxFileName( doc );
         wxFileName outputZipName = *outputName;

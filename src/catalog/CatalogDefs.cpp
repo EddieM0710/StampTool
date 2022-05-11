@@ -136,22 +136,22 @@ namespace Catalog {
         wxT( "Background" )
     };
 
-    wxArrayString CatalogNodeNames;
-
+    wxString CatalogNodeNames[NT_NbrTypes] = {
+        "Catalog" , 
+        "Country" , 
+        "Period"  , 
+        "Decade" , 
+        "Year" , 
+        "Emission" , 
+        "Status" , 
+        "Condition" , 
+        "Stamp" , 
+        "Specimen" , 
+        "CatalogCode"};
 
     void InitCatalogDefs( )
     {
-        CatalogNodeNames.Add( "Catalog" );
-        CatalogNodeNames.Add( "Country" );
-        CatalogNodeNames.Add( "Period" );
-        CatalogNodeNames.Add( "Decade" );
-        CatalogNodeNames.Add( "Year" );
-        CatalogNodeNames.Add( "Emission" );
-        CatalogNodeNames.Add( "Status" );
-        CatalogNodeNames.Add( "Condition" );
-        CatalogNodeNames.Add( "Stamp" );
-        CatalogNodeNames.Add( "Specimen" );
-        CatalogNodeNames.Add( "CatalogCode" );
+
     }
 
 
@@ -176,10 +176,9 @@ namespace Catalog {
     {
         wxString baseName;
 
-        int cnt = CatalogNodeNames.GetCount( );
-        for ( int i = 0; i < cnt; i++ )
+        for ( int i = 0; i < NT_NbrTypes; i++ )
         {
-            baseName = CatalogNodeNames.Item( i );
+            baseName = CatalogNodeNames[i];
             if ( !name.Cmp( baseName ) )
             {
                 return ( CatalogNodeType )i;
@@ -251,7 +250,7 @@ namespace Catalog {
      **************************************************/
     bool IsCatalogNodeType( wxXmlNode* ele, CatalogNodeType type )
     {
-        return !CatalogNodeNames.Item( type ).Cmp( ele->GetName( ) );
+        return !CatalogNodeNames [type ].Cmp( ele->GetName( ) );
     }
 
 
@@ -303,7 +302,6 @@ namespace Catalog {
                 //                << "\n";
                 wxString nodeName = CatalogNodeNames[ sortType ];
                 wxString name = stamp.GetClassificationName( &stamp, sortType );
-                const char* nameStr = name;
                 const char* nodeNameStr = nodeName;
                 //             std::cout << "     Looking for " << nodeNameStr << " with Name "
                 //                 << nameStr << "\n";
@@ -311,12 +309,15 @@ namespace Catalog {
                 wxXmlNode* nextNode = Utils::FirstChildElement( parent, nodeNameStr );
                 while ( nextNode )
                 {
-                    wxXmlAttribute* attr = Utils::SetAttribute( nextNode, "Name", nameStr );
-                    if ( attr )
+                    wxString attr = Utils::GetAttrStr( nextNode, "Name" );
+                    if ( !attr.IsEmpty() )
                     {
-                        //                    std::cout << "     Found it\n";
+                        if ( !attr.Cmp( name) )
+                        {
+                        //   std::cout << "     Found it\n";
                         AddStamp( nextNode, child, level );
                         return;
+                        }
                     }
                     nextNode = nextNode->GetNext( );
                 }
@@ -325,7 +326,7 @@ namespace Catalog {
     //                << nameStr << "\n";
 
                 nextNode = Utils::NewNode( parent, nodeNameStr );
-                Utils::SetAttribute( nextNode, "Name", nameStr );
+                Utils::SetAttrStr( nextNode, "Name", name );
 
                 AddStamp( nextNode, child, level );
                 return;
@@ -371,7 +372,7 @@ namespace Catalog {
             {
                 // Make a copy of the old child in the new doc and insert it
                 wxXmlNode* newChildNode = new wxXmlNode( *child );
-                AddStamp( newRoot, newChildNode );
+                AddStamp( parent, newRoot, newChildNode );
             }
             else
             {
@@ -391,10 +392,9 @@ namespace Catalog {
     {
         wxString name = element->GetName( );
 
-        int cnt = CatalogNodeNames.GetCount( );
-        for ( int i = 0; i < cnt; i++ )
+        for ( int i = 0; i < NT_NbrTypes; i++ )
         {
-            if ( !name.Cmp( CatalogNodeNames.Item( i ) ) )
+            if ( !name.Cmp( CatalogNodeNames[ i ] ) )
             {
                 return ( CatalogNodeType )i;
             }

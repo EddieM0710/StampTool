@@ -29,17 +29,15 @@ namespace Layout {
 
         m_minWidth = 0.0;
         m_minHeight = 0.0;
-
-        for ( int i = 0; i < ObjectArrayCount( ); i++ )
+        for ( AlbumNodeList::iterator it = std::begin(m_layoutChildArray ); it != std::end( m_layoutChildArray ); ++it )
         {
-            LayoutNode* childObject = ( LayoutNode* )ChildItem( i );
-
-            childObject->UpdateMinimumSize( );
-            if ( childObject->GetMinHeight( ) > m_minHeight )
+            LayoutNode* child = ( LayoutNode* )( *it );
+            child->UpdateMinimumSize( );
+            if ( child->GetMinHeight( ) > m_minHeight )
             {
-                m_minHeight = childObject->GetMinHeight( );
+                m_minHeight = child->GetMinHeight( );
             }
-            m_minWidth += childObject->GetMinWidth( );
+            m_minWidth += child->GetMinWidth( );
         }
     }
 
@@ -56,27 +54,27 @@ namespace Layout {
         if ( title )
         {
             title->SetWidth( GetWidth( ) );
-            title->UpdatePositions( );
+            title->UpdateSizes( );
         }
 
         // Set the height and width of each child  column
         // Stamps have fixed height and width
-        for ( int i = 0; i < ObjectArrayCount( ); i++ )
+        for ( AlbumNodeList::iterator it = std::begin(m_layoutChildArray ); it != std::end( m_layoutChildArray ); ++it )
         {
-            LayoutNode* item = ( LayoutNode* )ChildItem( i );
-            wxString childType = item->GetObjectName( );
-            if ( !childType.Cmp( "Column" ) )
+            LayoutNode* child = ( LayoutNode* )( *it );
+            AlbumNodeType childType = (AlbumNodeType)child->GetNodeType( );
+            if (childType == AT_Col)
             {
-                item->SetWidth( m_minWidth );
-                item->SetHeight( m_minHeight + titleHeight );
+                child->SetWidth( m_minWidth );
+                child->SetHeight( m_minHeight + titleHeight );
             }
-            item->UpdateSizes( );
+            child->UpdateSizes( );
         }
 
     }
 
     // calculate the row layout based on child parameters
-    bool Row::UpdatePositions( )
+    void Row::UpdatePositions( )
     {
         // go to the bottom of each child container object ( row, column, page) 
         // and begin filling in position relative to the parent
@@ -96,37 +94,39 @@ namespace Layout {
         double xPos = spacing;
         double yPos = titleHeight;
 
-        for ( int i = 0; i < ObjectArrayCount( ); i++ )
+        for ( AlbumNodeList::iterator it = std::begin(m_layoutChildArray ); it != std::end( m_layoutChildArray ); ++it )
         {
-            LayoutNode* item = ( LayoutNode* )ChildItem( i );
+            LayoutNode* child = ( LayoutNode* )( *it );
 
-            item->UpdatePositions( );
+            child->UpdatePositions( );
 
-            wxString childType = item->GetObjectName( );
+            AlbumNodeType childType = (AlbumNodeType)child->GetNodeType( );
 
-            if ( !childType.Cmp( "Column" ) )
+            switch (childType)
             {
-                Column* col = ( Column* )ChildItem( i );
-                col->SetXPos( xPos );
-                col->SetYPos( yPos );
-                xPos += col->GetWidth( ) + spacing;
-            }
-            else if ( !childType.Cmp( "Stamp" ) )
-            {
+                case AT_Col:
+                {
+                    Column* col = ( Column* )child;
+                    col->SetXPos( xPos );
+                    col->SetYPos( yPos );
+                    xPos += col->GetWidth( ) + spacing;
+                }
+                case AT_Stamp:
+                {
 
-                Stamp* stamp = ( Stamp* )item;
+                    Stamp* stamp = ( Stamp* )child;
 
-                // each stamp is positioned in the cell
+                    // each stamp is positioned in the cell
 
-                double yBorder = ( m_height - stamp->GetHeight( ) ) / 2;
-                stamp->SetXPos( xPos );
-                stamp->SetYPos( yPos + yBorder );
-                // get xpos of next cell
-                xPos += stamp->GetWidth( ) + spacing;
+                    double yBorder = ( m_height - stamp->GetHeight( ) ) / 2;
+                    stamp->SetXPos( xPos );
+                    stamp->SetYPos( yPos + yBorder );
+                    // get xpos of next cell
+                    xPos += stamp->GetWidth( ) + spacing;
+                }
             }
         }
 
-        return true;
     }
 
     // build the frame container for the row
@@ -149,27 +149,31 @@ namespace Layout {
             drawStyleName,  // fr1
             textAnchorType ); // "page", "paragraph"
 
-        for ( int i = 0; i < ObjectArrayCount( ); i++ )
+        for ( AlbumNodeList::iterator it = std::begin(m_layoutChildArray ); it != std::end( m_layoutChildArray ); ++it )
         {
+            LayoutNode* child = ( LayoutNode* )( *it );
 
-            wxString childType = ChildItem( i )->GetObjectName( );
-            if ( !childType.Cmp( "Row" ) )
+            AlbumNodeType childType = (AlbumNodeType)child->GetNodeType( );
+            switch( childType)
             {
-                // set the layout parameters into the child
-                Row* child = ( Row* )ChildItem( i );
-                child->Write( frame );
-            }
-            else if ( !childType.Cmp( "Column" ) )
-            {
-                // set the layout parameters into the child
-                Column* child = ( Column* )ChildItem( i );
-                child->Write( frame );
-            }
-            else if ( !childType.Cmp( "Stamp" ) )
-            {
-                // set the layout parameters into the child
-                Stamp* child = ( Stamp* )ChildItem( i );
-                child->Write( frame );
+                case AT_Row:
+                {
+                    // set the layout parameters into the child
+                    Row* row = ( Row* )child;
+                    row->Write( frame );
+                }
+                case AT_Col:
+                {
+                    // set the layout parameters into the child
+                    Column* col = ( Column* )child;
+                    col->Write( frame );
+                }
+            case AT_Stamp:
+                {
+                    // set the layout parameters into the child
+                    Stamp*  stamp = ( Stamp* )child;
+                    stamp->Write( frame );
+                }
             }
         }
         return frame;

@@ -9,11 +9,11 @@
  *
  **************************************************/
 #include "odt/Styles.h"
-#include "DocumentManager.h"
+//#include "DocumentManager.h"
 #include <iostream>
 #include "Defs.h"
 #include "odt/ODTDefs.h"
-
+#include "utils/XMLUtilities.h"
  //***********************************
 
 namespace ODT {
@@ -63,19 +63,19 @@ namespace ODT {
             return false;
         }
 
-        SetAttribute( layoutProperties, "fo:page-width", width );
-        SetAttribute( layoutProperties, "fo:page-height", height );
-        SetAttribute( layoutProperties, "fo:margin-top", topMargin );
-        SetAttribute( layoutProperties, "fo:margin-bottom", bottomMargin );
-        SetAttribute( layoutProperties, "fo:margin-left", rightMargin );
-        SetAttribute( layoutProperties, "fo:margin-right", leftMargin );
-        SetAttribute( layoutProperties, "fo:background-color", "transparent" );
+        Utils::SetAttrStr( layoutProperties, "fo:page-width", width );
+        Utils::SetAttrStr( layoutProperties, "fo:page-height", height );
+        Utils::SetAttrStr( layoutProperties, "fo:margin-top", topMargin );
+        Utils::SetAttrStr( layoutProperties, "fo:margin-bottom", bottomMargin );
+        Utils::SetAttrStr( layoutProperties, "fo:margin-left", rightMargin );
+        Utils::SetAttrStr( layoutProperties, "fo:margin-right", leftMargin );
+       Utils:: SetAttrStr( layoutProperties, "fo:background-color", "transparent" );
 
-        wxXmlNode* backgroundImage = AddNewNode( layoutProperties, wxXML_ELEMENT_NODE, "style:background-image" );
-        SetAttribute( backgroundImage, "xlink:href", filename );
-        SetAttribute( backgroundImage, "xlink:type", "simple" );
-        SetAttribute( backgroundImage, "xlink:actuate", "onLoad" );
-        SetAttribute( backgroundImage, "style:repeat", "stretch" );
+        wxXmlNode* backgroundImage = Utils::AddNewNode( layoutProperties, wxXML_ELEMENT_NODE, "style:background-image" );
+        Utils::SetAttrStr( backgroundImage, "xlink:href", filename );
+        Utils::SetAttrStr( backgroundImage, "xlink:type", "simple" );
+        Utils::SetAttrStr( backgroundImage, "xlink:actuate", "onLoad" );
+        Utils::SetAttrStr( backgroundImage, "style:repeat", "stretch" );
 
     }
 
@@ -85,7 +85,7 @@ namespace ODT {
     wxXmlNode* Styles::FindOfficeStylesDrawFillImage( )
     {
         wxXmlNode* test = m_styles->GetRoot( );
-        wxXmlNode* styles = FirstChildElement( test, "office:styles" );
+        wxXmlNode* styles = Utils::FirstChildElement( test, "office:styles" );
         if ( !styles )
         {
             ReportError( "Styles::FindOfficeStylesDrawFillImage", "get office:styles failed", true );
@@ -93,7 +93,7 @@ namespace ODT {
         }
         wxString name( "draw:name" );
         wxString value( "bkgnd" );
-        wxXmlNode* drawFillImage = FindFirstChildWithPropertyofValue( styles, name, value );
+        wxXmlNode* drawFillImage = Utils::FindFirstChildWithPropertyofValue( styles, name, value );
         if ( !drawFillImage )
         {
             ReportError( "Styles::FindOfficeStylesDrawFillImage", "get draw:fill-image failed", true );
@@ -115,7 +115,7 @@ namespace ODT {
             ReportError( "Styles::FindAutomaticStylesLayoutProperties", "get office:document-styles failed", true );
             return ( wxXmlNode* )0;
         }
-        wxXmlNode* autoStyles = FirstChildElement( docStyles, "office:automatic-styles" );
+        wxXmlNode* autoStyles = Utils::FirstChildElement( docStyles, "office:automatic-styles" );
         if ( !autoStyles )
         {
             ReportError( "Styles::FindAutomaticStylesLayoutProperties", "get office:automatic-styles failed", true );
@@ -123,13 +123,13 @@ namespace ODT {
         }
         wxString name( "style:name" );
         wxString value( "Mpm1" );
-        wxXmlNode* stylePageLayout = FindFirstChildWithPropertyofValue( autoStyles, name, value );
+        wxXmlNode* stylePageLayout = Utils::FindFirstChildWithPropertyofValue( autoStyles, name, value );
         if ( !stylePageLayout )
         {
             ReportError( "Styles::FindAutomaticStylesLayoutProperties", "get stylePageLayout failed", true );
             return ( wxXmlNode* )0;
         }
-        wxXmlNode* stylePageLayoutProperties = FirstChildElement( stylePageLayout, "style:page-layout-properties" );
+        wxXmlNode* stylePageLayoutProperties = Utils::FirstChildElement( stylePageLayout, "style:page-layout-properties" );
         if ( !stylePageLayoutProperties )
         {
             ReportError( "Styles::FindAutomaticStylesLayoutProperties", "get stylePageLayoutPropertiess failed", true );
@@ -149,7 +149,7 @@ namespace ODT {
             ReportError( "Styles::FindOfficeStyles", "get office:document-styles failed", true );
             return ( wxXmlNode* )0;
         }
-        wxXmlNode* officeStyles = FirstChildElement( docStyles, "office:styles" );
+        wxXmlNode* officeStyles = Utils::FirstChildElement( docStyles, "office:styles" );
         if ( !officeStyles )
         {
             ReportError( "Styles::FindOfficeStyless", "get office:styles failed", true );
@@ -168,46 +168,46 @@ namespace ODT {
             return false;
         }
 
-        wxXmlNode* frame20Contents = AddNewNode( officeStyles, wxXML_ELEMENT_NODE, "style:style" );
-        SetAttribute( frame20Contents, "style:name", "Frame_20_contents" );
-        SetAttribute( frame20Contents, "style:display-name", "Frame contents" );
-        SetAttribute( frame20Contents, "style:family", "paragraph" );
-        SetAttribute( frame20Contents, "style:parent-style-name", "Text_20_body" );
-        SetAttribute( frame20Contents, "style:class", "extra" );
-        wxXmlNode* frame = AddNewNode( officeStyles, wxXML_ELEMENT_NODE, "style:style" );
-        SetAttribute( frame, "style:name", "Frame" );
-        SetAttribute( frame, "style:family", "graphic" );
-        wxXmlNode* graphicProperties = AddNewNode( frame, wxXML_ELEMENT_NODE, "style:graphic-properties" );
-        SetAttribute( graphicProperties, "text:anchor-type", "paragraph" );
-        SetAttribute( graphicProperties, "svg:x", "0in" );
-        SetAttribute( graphicProperties, "svg:y", "0in" );
-        SetAttribute( graphicProperties, "fo:margin-left", "0.0in" );
-        SetAttribute( graphicProperties, "fo:margin-right", "0.0in" );
-        SetAttribute( graphicProperties, "fo:margin-top", "0.0in" );
-        SetAttribute( graphicProperties, "fo:margin-bottom", "0.0in" );
-        SetAttribute( graphicProperties, "style:wrap", "parallel" );
-        SetAttribute( graphicProperties, "style:number-wrapped-paragraphs", "no-limit" );
-        SetAttribute( graphicProperties, "style:wrap-contour", "false" );
-        SetAttribute( graphicProperties, "style:vertical-pos", "top" );
-        SetAttribute( graphicProperties, "style:vertical-rel", "paragraph-content" );
-        SetAttribute( graphicProperties, "style:horizontal-pos", "center" );
-        SetAttribute( graphicProperties, "style:horizontal-rel", "paragraph-content" );
-        SetAttribute( graphicProperties, "fo:padding", "0.0591in" );
-        SetAttribute( graphicProperties, "fo:border", "0.0008in solid #000000" );
+        wxXmlNode* frame20Contents = Utils::AddNewNode( officeStyles, wxXML_ELEMENT_NODE, "style:style" );
+        Utils::SetAttrStr( frame20Contents, "style:name", "Frame_20_contents" );
+        Utils::SetAttrStr( frame20Contents, "style:display-name", "Frame contents" );
+        Utils::SetAttrStr( frame20Contents, "style:family", "paragraph" );
+        Utils::SetAttrStr( frame20Contents, "style:parent-style-name", "Text_20_body" );
+        Utils::SetAttrStr( frame20Contents, "style:class", "extra" );
+        wxXmlNode* frame = Utils::AddNewNode( officeStyles, wxXML_ELEMENT_NODE, "style:style" );
+        Utils::SetAttrStr( frame, "style:name", "Frame" );
+        Utils::SetAttrStr( frame, "style:family", "graphic" );
+        wxXmlNode* graphicProperties = Utils::AddNewNode( frame, wxXML_ELEMENT_NODE, "style:graphic-properties" );
+        Utils::SetAttrStr( graphicProperties, "text:anchor-type", "paragraph" );
+        Utils::SetAttrStr( graphicProperties, "svg:x", "0in" );
+        Utils::SetAttrStr( graphicProperties, "svg:y", "0in" );
+        Utils::SetAttrStr( graphicProperties, "fo:margin-left", "0.0in" );
+        Utils::SetAttrStr( graphicProperties, "fo:margin-right", "0.0in" );
+        Utils::SetAttrStr( graphicProperties, "fo:margin-top", "0.0in" );
+        Utils::SetAttrStr( graphicProperties, "fo:margin-bottom", "0.0in" );
+        Utils::SetAttrStr( graphicProperties, "style:wrap", "parallel" );
+        Utils::SetAttrStr( graphicProperties, "style:number-wrapped-paragraphs", "no-limit" );
+        Utils::SetAttrStr( graphicProperties, "style:wrap-contour", "false" );
+        Utils::SetAttrStr( graphicProperties, "style:vertical-pos", "top" );
+        Utils::SetAttrStr( graphicProperties, "style:vertical-rel", "paragraph-content" );
+        Utils::SetAttrStr( graphicProperties, "style:horizontal-pos", "center" );
+        Utils::SetAttrStr( graphicProperties, "style:horizontal-rel", "paragraph-content" );
+        Utils::SetAttrStr( graphicProperties, "fo:padding", "0.0591in" );
+        Utils::SetAttrStr( graphicProperties, "fo:border", "0.0008in solid #000000" );
 
-        frame = AddNewNode( officeStyles, wxXML_ELEMENT_NODE, "style:style" );
-        SetAttribute( frame, "style:name", "Graphics" );
-        SetAttribute( frame, "style:family", "graphic" );
-        graphicProperties = AddNewNode( frame, wxXML_ELEMENT_NODE, "style:graphic-properties" );
-        SetAttribute( graphicProperties, "text:anchor-type", "paragraph" );
+        frame = Utils::AddNewNode( officeStyles, wxXML_ELEMENT_NODE, "style:style" );
+        Utils::SetAttrStr( frame, "style:name", "Graphics" );
+        Utils::SetAttrStr( frame, "style:family", "graphic" );
+        graphicProperties = Utils::AddNewNode( frame, wxXML_ELEMENT_NODE, "style:graphic-properties" );
+        Utils::SetAttrStr( graphicProperties, "text:anchor-type", "paragraph" );
 
-        SetAttribute( graphicProperties, "svg:x", "0in" );
-        SetAttribute( graphicProperties, "svg:y", "0in" );
-        SetAttribute( graphicProperties, "style:wrap", "none" );
-        SetAttribute( graphicProperties, "style:vertical-pos", "top" );
-        SetAttribute( graphicProperties, "style:vertical-rel", "paragraph" );
-        SetAttribute( graphicProperties, " style:horizontal-pos", "center" );
-        SetAttribute( graphicProperties, "style:horizontal-rel", "paragraph" );
+        Utils::SetAttrStr( graphicProperties, "svg:x", "0in" );
+        Utils::SetAttrStr( graphicProperties, "svg:y", "0in" );
+        Utils::SetAttrStr( graphicProperties, "style:wrap", "none" );
+        Utils::SetAttrStr( graphicProperties, "style:vertical-pos", "top" );
+        Utils::SetAttrStr( graphicProperties, "style:vertical-rel", "paragraph" );
+        Utils::SetAttrStr( graphicProperties, " style:horizontal-pos", "center" );
+       Utils:: SetAttrStr( graphicProperties, "style:horizontal-rel", "paragraph" );
 
 
         //  <style:style style:name="Frame_20_contents" style:display-name="Frame contents" style:family="paragraph" style:parent-style-name="Text_20_body" style:class="extra"/>

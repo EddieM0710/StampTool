@@ -26,6 +26,29 @@ namespace ODT {
     extern  wxString TextAnchorParagraph;
     extern  wxString TextAnchorPage;
 
+typedef struct
+{
+    wxString ext;
+    wxString type;
+} MimeTypeDef;
+
+enum MimeTypes
+{
+    MT_Gif = 0,
+    MT_Jpeg,
+    MT_Jpg,
+    MT_Png,
+    MT_Svg,
+    MT_Tif,
+    MT_Tiff,
+    MT_Ico,
+    MT_Webp,
+    NbrMimeTypes,
+};
+
+extern MimeTypeDef mimeTypes[NbrMimeTypes];
+
+wxString GetMimeType( const wxString& str );
 
     wxXmlDocument* ContentXML( );
     wxXmlDocument* SettingsXML( );

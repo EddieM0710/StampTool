@@ -109,30 +109,9 @@ public:
 
     void ClearCatalogTree( );
 
-void LoadCatalog( wxString filename )
-{
-    GetProject()->GetCatalogData( )->LoadXML( filename );
-    ClearCatalogTree( );
-    LoadCatalogTree( );
-}
-void InitCatalogData()
-{
-        ClearCatalogTree( );
-        Catalog::CatalogData* catalogData = Catalog::NewCatalogData( );
-        GetProject()->SetCatalogData ( catalogData );
-}
-
-void LoadCatalogCSV( wxString filename )
-{
-
-    ClearCatalogTree( );
-    Catalog::CatalogData* catalogData = Catalog::NewCatalogData( );
-    GetProject()->SetCatalogData ( catalogData );
-    catalogData->LoadCSV( filename );   
-
-    LoadCatalogTree( );
-}
-
+void LoadCatalog( wxString filename );
+void InitCatalogData();
+void LoadCatalogCSV( wxString csvFilename );
     CatalogTreeCtrl* GetCatalogDataTree( ) { return m_listTree; };
 
  

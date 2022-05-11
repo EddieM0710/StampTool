@@ -1,6 +1,6 @@
 #include "odt/Settings.h"
-#include "util/Project.h"
-#include "util/Settings.h"
+#include "utils/Project.h"
+#include "utils/Settings.h"
 #include <iostream>
 #include "Defs.h"
 
@@ -9,7 +9,7 @@ namespace ODT {
     Settings::Settings( )
     {
         m_settings = new wxXmlDocument( );
-        wxString configDir = GetProject()->GetSettings()->GetConfigurationDirectory90
+        wxString configDir = GetProject()->GetSettings()->GetConfigurationDirectory();
         wxString settingsTemplate = configDir + "/template/settings.xml";
         if ( !m_settings->Load( settingsTemplate ) )
         {

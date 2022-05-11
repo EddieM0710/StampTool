@@ -217,7 +217,7 @@ int AlbumTreeCtrl::OnCompareItems( const wxTreeItemId& item1,
  void AlbumTreeCtrl::SetNextState( const wxTreeItemId& itemId )
  {
 //     AlbumTreeItemData* item = ( AlbumTreeItemData* )GetItemData( itemId );
-//     wxXmlNode* element = item->GetElement( );
+//     wxXmlNode* element = item->GetNodeElement( );
 //     Stamp* stamp = new Stamp( element );
 //     if ( stamp->IsOK( ) )
 //     {
@@ -243,7 +243,7 @@ void AlbumTreeCtrl::SetStatusImage( )
 {
      wxTreeItemId itemId = GetFocusedItem( );
     // AlbumTreeItemData* item = ( AlbumTreeItemData* )GetItemData( itemId );
-    // wxXmlNode* element = item->GetElement( );
+    // wxXmlNode* element = item->GetNodeElement( );
     // Stamp* stamp = new Stamp( element );
     // if ( stamp->IsOK( ) )
     // {
@@ -297,9 +297,9 @@ void AlbumTreeCtrl::OnEndDrag( wxTreeEvent& event )
     }
 
     AlbumTreeItemData* item = ( AlbumTreeItemData* )GetItemData( itemSrc );
-    wxXmlNode* srcElement = item->GetElement( );
+    wxXmlNode* srcElement = item->GetNodeElement( );
     item = ( AlbumTreeItemData* )GetItemData( itemDst );
-    wxXmlNode* dstElement = item->GetElement( );
+    wxXmlNode* dstElement = item->GetNodeElement( );
 
     // move the element
     // this means making a copy and deleting the old one so old pointers are
@@ -324,7 +324,7 @@ void AlbumTreeCtrl::OnSelChanged( wxTreeEvent& event )
 {
     wxTreeItemId itemId = event.GetItem( );
     AlbumTreeItemData* item = ( AlbumTreeItemData* )GetItemData( itemId );
-    wxXmlNode* stamp = item->GetElement( );
+    wxXmlNode* stamp = item->GetNodeElement( );
     wxGetApp( ).GetFrame( )->SetStamp( stamp );
 
     event.Skip( );
@@ -362,7 +362,7 @@ void AlbumTreeCtrl::OnContextMenu( wxContextMenuEvent& event )
     //     if ( id.IsOk( ) )
     //     {
     //         AlbumTreeItemData* data = ( AlbumTreeItemData* )GetItemData( id );
-    //         wxXmlNode* stamp = data->GetElement( );
+    //         wxXmlNode* stamp = data->GetNodeElement( );
     //         StructureStamp( stamp );
     //     }
     // }
@@ -397,7 +397,7 @@ void AlbumTreeCtrl::ShowMenu( wxTreeItemId id, const wxPoint& pt )
     // case CatalogDataTree_StructureStamps:
     // {
     //     AlbumTreeItemData* data = ( AlbumTreeItemData* )GetItemData( id );
-    //     wxXmlNode* stamp = data->GetElement( );
+    //     wxXmlNode* stamp = data->GetNodeElement( );
     //     StructureStamp( stamp );
     //     ReSortTree( );
 
@@ -530,12 +530,12 @@ wxTreeItemId AlbumTreeCtrl::AddChild( wxTreeItemId parent, wxXmlNode* child )
 //     if ( attr ){
 //         const char* name = attr->GetName( );
 //         const char* value = attr->GetValue( );
-//         newRoot->SetAttribute( name, value );
+//         newRoot->SetAttrStr( name, value );
 //         newDoc->InsertFirstChild( newRoot );
 //     }
 //     else
 //     {
-//         newRoot->SetAttribute( DT_DataNames[DT_Name], "" );
+//         newRoot->SetAttrStr( DT_DataNames[DT_Name], "" );
 //         newDoc->InsertFirstChild( newRoot );
 //     }
 
@@ -575,7 +575,7 @@ wxArrayPtrVoid* AlbumTreeCtrl::MakeParentList( wxXmlNode* catalogData,
     wxXmlNode* child = catalogData->GetChildren( );
     while ( child )
     {
-        parentStamp.SetElement( child );
+        parentStamp.SetNodeElement( child );
         if ( parentStamp.GetFormat( ) ==  Catalog::FT_FormatStrings[ parentType ] )
         {
             parentList->Add( ( void* )child );
@@ -617,7 +617,7 @@ wxArrayPtrVoid* AlbumTreeCtrl::MakeParentList( wxXmlNode* catalogData,
 //     for ( int i = 0; i < parentTypeList->GetCount( ); i++ )
 //     {
 //         wxXmlNode* parentTypeElement = ( wxXmlNode* )parentTypeList->Item( i );
-//         parentTypeStamp.SetElement( parentTypeElement );
+//         parentTypeStamp.SetNodeElement( parentTypeElement );
 //         wxString parentIssue = parentTypeStamp.GetIssuedDate( );
 //         wxString parentSeries = parentTypeStamp.GetSeries( );
 //         wxString parentFace = parentTypeStamp.GetFaceValue( );
@@ -634,7 +634,7 @@ wxArrayPtrVoid* AlbumTreeCtrl::MakeParentList( wxXmlNode* catalogData,
 //         ;
 //         while ( child && ( searchRange < 105 ) && ( count < nbrStamps ) )
 //         {
-//             childTypeStamp.SetElement( child );
+//             childTypeStamp.SetNodeElement( child );
 
 //             // figure out what the next sibling is because we may move child
 //             wxXmlNode* nextSibling = child->GetNext( );
@@ -672,7 +672,7 @@ wxArrayPtrVoid* AlbumTreeCtrl::MakeParentList( wxXmlNode* catalogData,
 bool AlbumTreeCtrl::IsElement( wxTreeItemId item, wxXmlNode* ele )
 {
     AlbumTreeItemData* data = ( AlbumTreeItemData* )GetItemData( item );
-    wxXmlNode* dataEle = data->GetElement( );
+    wxXmlNode* dataEle = data->GetNodeElement( );
     if ( dataEle == ele )
     {
         return false;

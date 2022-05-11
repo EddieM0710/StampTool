@@ -40,7 +40,42 @@ namespace ODT {
       "wxXML_DOCUMENT_FRAG_NODE",
       "wxXML_NOTATION_NODE",
       "wxXML_HTML_DOCUMENT_NODE" };
-      
+     
+
+MimeTypeDef mimeTypes[NbrMimeTypes] = {
+    {wxT( "gif" ), wxT( "image/gif" )},
+    {wxT( "jpeg" ), wxT( "image/jpeg" )},
+    {wxT( "jpg" ), wxT( "image/jpeg" )},
+    {wxT( "png" ), wxT( "image/png" )},
+    {wxT( "svg" ), wxT( "image/svg+xml" )},
+    {wxT( "tif" ), wxT( "image/tiff" )},
+    {wxT( "tiff" ), wxT( "image/tiff" )},
+    {wxT( "ico" ), wxT( "image/vnd.microsoft.icon" )},
+    {wxT( "webp" ), wxT( "image/webp" )} };
+ 
+wxString GetMimeType( const wxString& str )
+{
+    wxString volume;
+    wxString path;
+    wxString name;
+    wxString ext;
+    bool hasExt;
+
+    wxFileName::SplitPath( str, &volume, &path, &name, &ext, &hasExt );
+    if ( hasExt )
+    {
+        for ( int i = 0; i < NbrMimeTypes; i++ )
+        {
+            if ( !ext.Cmp( mimeTypes[i].ext ) )
+            {
+                return mimeTypes[i].type;
+            }
+        }
+    }
+    return (char*)0;
+}
+
+
     Document* ODTDoc(){ return GetProject()->GetODTDocument(); };
     void SetODTDocument( Document* doc ){ GetProject()->SetODTDocument( doc ); };
 

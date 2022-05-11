@@ -16,6 +16,10 @@ gui/AlbumGenFrame.h
 wx/string.h
 -
 
+../src/Node.h
+wx/xml/xml.h
+../src/wx/xml/xml.h
+
 ../src/album/AlbumData.h
 Defs.h
 ../src/album/Defs.h
@@ -53,8 +57,10 @@ wx/string.h
 -
 
 ../src/catalog/CatalogNode.h
-CatalogDefs.h
-../src/catalog/CatalogDefs.h
+Node.h
+../src/catalog/Node.h
+catalog/CatalogDefs.h
+../src/catalog/catalog/CatalogDefs.h
 wx/xml/xml.h
 ../src/catalog/wx/xml/xml.h
 
@@ -93,8 +99,6 @@ wx/string.h
 ../src/gui/AlbumGenFrame.h
 wx/frame.h
 ../src/gui/wx/frame.h
-wx/dynarray.h
--
 vector
 -
 catalog/Classification.h
@@ -107,8 +111,6 @@ catalog/CatalogDefs.h
 ../src/utils/catalog/CatalogDefs.h
 wx/xml/xml.h
 ../src/utils/wx/xml/xml.h
-wx/dynarray.h
--
 wx/filename.h
 -
 wx/string.h
@@ -116,6 +118,8 @@ wx/string.h
 wx/txtstrm.h
 -
 wx/wfstream.h
+-
+vector
 -
 
 ../src/utils/Project.h
@@ -139,6 +143,8 @@ wx/xml/xml.h
 ../src/utils/XMLUtilities.h
 wx/xml/xml.h
 ../src/utils/wx/xml/xml.h
+catalog/CatalogDefs.h
+../src/utils/catalog/CatalogDefs.h
 
 /sandbox/Development/AlbumGenerator/src/utils/CSV.cpp
 wx/wxprec.h
@@ -165,6 +171,8 @@ utils/XMLUtilities.h
 /sandbox/Development/AlbumGenerator/src/utils/Project.cpp
 utils/Project.h
 /sandbox/Development/AlbumGenerator/src/utils/utils/Project.h
+utils/Settings.h
+/sandbox/Development/AlbumGenerator/src/utils/utils/Settings.h
 Defs.h
 /sandbox/Development/AlbumGenerator/src/utils/Defs.h
 iostream

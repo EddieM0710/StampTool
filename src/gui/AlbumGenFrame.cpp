@@ -362,7 +362,7 @@ void AlbumGenFrame::OnSaveasClick( wxCommandEvent& event )
 
 void AlbumGenFrame::SetStamp( wxXmlNode* stamp )
 {
-    m_stamp->SetElement( stamp );
+    m_stamp->SetNodeElement( stamp );
     m_albumGeneratorPanel->SetStamp( m_stamp );
 }
 
@@ -826,7 +826,7 @@ void AlbumGenFrame::OnLoadimagesmenuitemClick( wxCommandEvent& event )
     //                 wxString sp = " ";
     //                 wxString nullStr = "";
     //                 size_t size = id.Replace( sp, nullStr, true );
-    //                 item->SetAttribute( "ID_Nbr", id   );
+    //                 item->SetAttrStr( "ID_Nbr", id   );
     //             }
     //             std::cout << "Info: AlbumGenFrame Loadimages " << attr->GetValue( )
     //                 << "\n";
@@ -883,7 +883,7 @@ void AlbumGenFrame::OnTestXMLClick( wxCommandEvent& event )
     // start processing the XML file
     wxString rootName = root->GetName( );
     wxString child = Utils::GetAttribute( root, "Child" )->GetValue();
-    wxString id = Utils::GetAttributeValue(root , "id" );
+    wxString id = Utils::GetAttrStr(root , "id" );
     std::cout << "Root Value: " << rootName << "  Child:" << child
         << "  id:" << id << "\n";
     std::cout << " Testing decending entire file\n";
@@ -894,8 +894,8 @@ void AlbumGenFrame::OnTestXMLClick( wxCommandEvent& event )
     while ( ele )
     {
         wxString eleName = ele->GetName( );
-        child = Utils::GetAttributeValue(ele,  "Child" );
-        id = Utils::GetAttributeValue(ele,  "id" );
+        child = Utils::GetAttrStr(ele,  "Child" );
+        id = Utils::GetAttrStr(ele,  "id" );
         std::cout << eleName << "  Child:" << child << "  id:" << id << "\n";
         ele = iter->Next( );
     }
@@ -910,8 +910,8 @@ void AlbumGenFrame::OnTestXMLClick( wxCommandEvent& event )
     while ( ele )
     {
         wxString name = ele->GetName( );
-        child = Utils::GetAttributeValue( ele, "Child" );
-        id = Utils::GetAttributeValue( ele, "id" );
+        child = Utils::GetAttrStr( ele, "Child" );
+        id = Utils::GetAttrStr( ele, "id" );
         std::cout << name << "  Child:" << child << "  id:" << id << "\n";
         std::cout << "      Do next level only\n";
         Utils::XMLIterator* iter2 = new Utils::XMLIterator( ele, false );
@@ -919,8 +919,8 @@ void AlbumGenFrame::OnTestXMLClick( wxCommandEvent& event )
         while ( ele2 )
         {
             name = ele2->GetName( );
-            child = Utils::GetAttributeValue(ele2,  "Child" );
-            id = Utils::GetAttributeValue(ele2,  "id" );
+            child = Utils::GetAttrStr(ele2,  "Child" );
+            id = Utils::GetAttrStr(ele2,  "id" );
             std::cout << name << "        Child:" << child << "  id:" << id << "\n";
 
             ele2 = iter2->Next( );

@@ -31,13 +31,13 @@ namespace Catalog {
 
     bool Classification::IsOK( void )
     {
-        if ( GetElement( ) )
+        if ( GetNodeElement( ) )
         {
-            const char* name = GetElement( )->GetName( );
-            if ( !CatalogNodeNames.Item( NT_Catalog ).Cmp( name )
-                || !CatalogNodeNames.Item( NT_Period ).Cmp( name )
-                || !CatalogNodeNames.Item( NT_Year ).Cmp( name )
-                || !CatalogNodeNames.Item( NT_Emission ).Cmp( name ) )
+            const char* name = GetNodeElement( )->GetName( );
+            if ( !CatalogNodeNames[ NT_Catalog ].Cmp( name )
+                || !CatalogNodeNames[ NT_Period ].Cmp( name )
+                || !CatalogNodeNames[ NT_Year ].Cmp( name )
+                || !CatalogNodeNames[ NT_Emission ].Cmp( name ) )
             {
                 return true;
             }
@@ -49,7 +49,7 @@ namespace Catalog {
     {
         if ( IsOK( ) )
         {
-            Utils::SetAttribute( GetElement( ), CT_Names[ type ], val );
+            Utils::SetAttrStr( GetNodeElement( ), CT_Names[ type ], val );
         }
     }
 
@@ -57,7 +57,7 @@ namespace Catalog {
     {
         if ( IsOK( ) )
         {
-            const wxXmlAttribute* attr = Utils::GetAttribute( GetElement( ), CT_Names[ type ] );
+            const wxXmlAttribute* attr = Utils::GetAttribute( GetNodeElement( ), CT_Names[ type ] );
             if ( attr )
             {
                 return wxString( attr->GetValue( ) );

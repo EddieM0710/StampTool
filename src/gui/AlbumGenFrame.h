@@ -21,7 +21,7 @@
 #include "wx/frame.h"
  
 
-#include <wx/dynarray.h>
+//#include <wx/dynarray.h>
 #include <vector>
 
 #include "catalog/Classification.h"

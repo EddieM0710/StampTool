@@ -31,7 +31,7 @@ namespace Layout {
          *
          * @param parent
          **************************************************/
-        Title( AlbumNode* parent ) : LayoutNode( parent ) { SetObjectName( "Title" ); };
+        Title( wxXmlNode* node ) : LayoutNode( node ) { SetNodeType( AT_Title ); };
 
         /**
          * @brief Destroy the Title object
@@ -46,7 +46,7 @@ namespace Layout {
          * @return true
          * @return false
          **************************************************/
-        bool UpdatePositions( );
+        void UpdatePositions( );
 
         /**
          * @brief UpdateMinimumSize drills down to the lowest layout object with an actual size

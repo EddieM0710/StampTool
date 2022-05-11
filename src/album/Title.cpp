@@ -16,7 +16,7 @@ namespace Layout {
 
     void  Title::UpdateMinimumSize( )
     {
-        double height = GetAttrValDbl( "height" );
+        double height = GetAttrDbl( AT_Height );
         double width = 1.;
         SetHeight( height );
         SetMinHeight( height );
@@ -27,12 +27,10 @@ namespace Layout {
     }
 
 
-    bool Title::UpdatePositions( )
+    void Title::UpdatePositions( )
     {
         SetXPos( 0 );
         SetYPos( 0 );
-
-        return true;
     }
 
     void Title::UpdateSizes( )
@@ -53,7 +51,7 @@ namespace Layout {
             ODT::TextAnchorParagraph,
             ODT::Bold18PtTextStyle );
         contentElement->SetType( wxXML_TEXT_NODE );
-        contentElement->SetContent( GetObjectText( ) );
+        contentElement->SetContent( parent->GetContent( ) );
 
         return contentElement;
     }

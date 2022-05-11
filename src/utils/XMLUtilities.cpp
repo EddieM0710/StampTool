@@ -269,7 +269,7 @@ int StyleNameIndex = 0;
         }
     }
 
-    wxString  GetAttributeValue( wxXmlNode* node, wxString attrName )
+    wxString  GetAttrStr( wxXmlNode* node, wxString attrName )
     {
         wxXmlAttribute* attr = GetAttribute( node, attrName );
         if ( attr )
@@ -279,7 +279,18 @@ int StyleNameIndex = 0;
         return ( wxString )"";
     }
 
-    wxXmlAttribute* SetAttribute( wxXmlNode* node, wxString name, wxString val )
+    double GetAttrDbl(  wxXmlNode* node, wxString attrName  )
+    {
+        double val;
+        wxString str = GetAttrStr( node, attrName );
+        if ( str.ToDouble( &val ) )
+        {
+            return val;
+        }
+        return 0.0;
+    }
+
+    void SetAttrStr( wxXmlNode* node, wxString name, wxString val )
     {
         wxXmlAttribute* attr = GetAttribute( node, name );
         if ( attr )
@@ -289,18 +300,23 @@ int StyleNameIndex = 0;
         else
         {
             attr = new wxXmlAttribute( name, val );
-            node->SetAttribute( attr );
+            node->AddAttribute( attr );
         }
     }
+    
+    void SetAttrDbl( wxXmlNode* node, wxString name, double val )
+    {
+        wxString str = wxString::Format( "%f", val );
+        SetAttrStr( node, name, str );
+    }
 
-
-// void SetAttribute( wxXmlNode* node, wxString name, wxString value )
+// void SetAttrStr( wxXmlNode* node, wxString name, wxString value )
 // {
 //     if ( node->HasAttribute( name ) )
 //     {
 //         node->DeleteAttribute( name );
 //     }
-//     node->SetAttribute( name, value );
+//     node->SetAttrStr( name, value );
 // }
 
 
@@ -434,9 +450,6 @@ int StyleNameIndex = 0;
 
     }
 
-
-
-Project* GetProject() { return G_Project; };
 
 
 char* GetZIndex( char* str )

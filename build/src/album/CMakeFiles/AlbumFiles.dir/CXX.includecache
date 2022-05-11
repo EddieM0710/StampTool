@@ -16,19 +16,31 @@ gui/AlbumGenFrame.h
 wx/string.h
 -
 
+../src/Node.h
+wx/xml/xml.h
+../src/wx/xml/xml.h
+
 ../src/album/Album.h
 album/AlbumNode.h
 ../src/album/album/AlbumNode.h
+album/AlbumDefs.h
+../src/album/album/AlbumDefs.h
 utils/Project.h
 ../src/album/utils/Project.h
+
+../src/album/AlbumDefs.h
+wx/string.h
+-
 
 ../src/album/AlbumNode.h
 wx/string.h
 -
-vector
--
 Defs.h
 ../src/album/Defs.h
+Node.h
+../src/album/Node.h
+album/AlbumDefs.h
+../src/album/album/AlbumDefs.h
 album/Attribute.h
 ../src/album/album/Attribute.h
 wx/xml/xml.h
@@ -39,10 +51,10 @@ cstring
 -
 
 ../src/album/Column.h
-album/AlbumNode.h
-../src/album/album/AlbumNode.h
 album/LayoutNode.h
 ../src/album/album/LayoutNode.h
+album/AlbumDefs.h
+../src/album/album/AlbumDefs.h
 
 ../src/album/LayoutNode.h
 wx/string.h
@@ -51,16 +63,12 @@ Defs.h
 ../src/album/Defs.h
 album/AlbumNode.h
 ../src/album/album/AlbumNode.h
-album/Attribute.h
-../src/album/album/Attribute.h
 utils/XMLUtilities.h
 ../src/album/utils/XMLUtilities.h
 wx/xml/xml.h
 -
 
 ../src/album/Page.h
-album/AlbumNode.h
-../src/album/album/AlbumNode.h
 album/LayoutNode.h
 ../src/album/album/LayoutNode.h
 
@@ -77,10 +85,10 @@ album/LayoutNode.h
 ../src/album/album/LayoutNode.h
 
 ../src/album/TitlePage.h
-album/AlbumNode.h
-../src/album/album/AlbumNode.h
 album/LayoutNode.h
 ../src/album/album/LayoutNode.h
+album/AlbumDefs.h
+../src/album/album/AlbumDefs.h
 
 ../src/catalog/CatalogData.h
 CatalogDefs.h
@@ -97,8 +105,10 @@ wx/string.h
 -
 
 ../src/catalog/CatalogNode.h
-CatalogDefs.h
-../src/catalog/CatalogDefs.h
+Node.h
+../src/catalog/Node.h
+catalog/CatalogDefs.h
+../src/catalog/catalog/CatalogDefs.h
 wx/xml/xml.h
 ../src/catalog/wx/xml/xml.h
 
@@ -123,8 +133,6 @@ wx/string.h
 ../src/gui/AlbumGenFrame.h
 wx/frame.h
 ../src/gui/wx/frame.h
-wx/dynarray.h
--
 vector
 -
 catalog/Classification.h
@@ -201,8 +209,6 @@ catalog/CatalogDefs.h
 ../src/utils/catalog/CatalogDefs.h
 wx/xml/xml.h
 ../src/utils/wx/xml/xml.h
-wx/dynarray.h
--
 wx/filename.h
 -
 wx/string.h
@@ -210,6 +216,8 @@ wx/string.h
 wx/txtstrm.h
 -
 wx/wfstream.h
+-
+vector
 -
 
 ../src/utils/Project.h
@@ -233,6 +241,8 @@ wx/xml/xml.h
 ../src/utils/XMLUtilities.h
 wx/xml/xml.h
 ../src/utils/wx/xml/xml.h
+catalog/CatalogDefs.h
+../src/utils/catalog/CatalogDefs.h
 
 /sandbox/Development/AlbumGenerator/src/album/Album.cpp
 album/Album.h
@@ -245,6 +255,8 @@ odt/Document.h
 /sandbox/Development/AlbumGenerator/src/album/odt/Document.h
 odt/ODTDefs.h
 /sandbox/Development/AlbumGenerator/src/album/odt/ODTDefs.h
+utils/XMLUtilities.h
+/sandbox/Development/AlbumGenerator/src/album/utils/XMLUtilities.h
 
 /sandbox/Development/AlbumGenerator/src/album/AlbumData.cpp
 wx/wxprec.h
@@ -289,24 +301,40 @@ wx/wxprec.h
 /sandbox/Development/AlbumGenerator/src/album/wx/wxprec.h
 wx/wx.h
 /sandbox/Development/AlbumGenerator/src/album/wx/wx.h
-AlbumData.h
-/sandbox/Development/AlbumGenerator/src/album/AlbumData.h
 AlbumDefs.h
 /sandbox/Development/AlbumGenerator/src/album/AlbumDefs.h
+AlbumData.h
+/sandbox/Development/AlbumGenerator/src/album/AlbumData.h
 Defs.h
 /sandbox/Development/AlbumGenerator/src/album/Defs.h
 utils/Project.h
 /sandbox/Development/AlbumGenerator/src/album/utils/Project.h
+album/Album.h
+/sandbox/Development/AlbumGenerator/src/album/album/Album.h
+album/TitlePage.h
+/sandbox/Development/AlbumGenerator/src/album/album/TitlePage.h
+album/Title.h
+/sandbox/Development/AlbumGenerator/src/album/album/Title.h
+album/Page.h
+/sandbox/Development/AlbumGenerator/src/album/album/Page.h
+album/Row.h
+/sandbox/Development/AlbumGenerator/src/album/album/Row.h
+album/Column.h
+/sandbox/Development/AlbumGenerator/src/album/album/Column.h
+album/Stamp.h
+/sandbox/Development/AlbumGenerator/src/album/album/Stamp.h
 
 /sandbox/Development/AlbumGenerator/src/album/AlbumDefs.h
 wx/string.h
 -
 
 /sandbox/Development/AlbumGenerator/src/album/AlbumNode.cpp
-AlbumNode.h
-/sandbox/Development/AlbumGenerator/src/album/AlbumNode.h
-wx/arrimpl.cpp
--
+wx/wxprec.h
+/sandbox/Development/AlbumGenerator/src/album/wx/wxprec.h
+wx/wx.h
+/sandbox/Development/AlbumGenerator/src/album/wx/wx.h
+album/AlbumNode.h
+/sandbox/Development/AlbumGenerator/src/album/album/AlbumNode.h
 album/TitlePage.h
 /sandbox/Development/AlbumGenerator/src/album/album/TitlePage.h
 album/Page.h
@@ -319,18 +347,6 @@ album/Column.h
 /sandbox/Development/AlbumGenerator/src/album/album/Column.h
 album/Stamp.h
 /sandbox/Development/AlbumGenerator/src/album/album/Stamp.h
-
-/sandbox/Development/AlbumGenerator/src/album/AlbumNode.h
-wx/string.h
--
-vector
--
-Defs.h
-/sandbox/Development/AlbumGenerator/src/album/Defs.h
-album/Attribute.h
-/sandbox/Development/AlbumGenerator/src/album/album/Attribute.h
-wx/xml/xml.h
--
 
 /sandbox/Development/AlbumGenerator/src/album/Column.cpp
 album/Column.h
@@ -371,8 +387,6 @@ Defs.h
 /sandbox/Development/AlbumGenerator/src/album/Defs.h
 album/AlbumNode.h
 /sandbox/Development/AlbumGenerator/src/album/album/AlbumNode.h
-album/Attribute.h
-/sandbox/Development/AlbumGenerator/src/album/album/Attribute.h
 utils/XMLUtilities.h
 /sandbox/Development/AlbumGenerator/src/album/utils/XMLUtilities.h
 wx/xml/xml.h
@@ -411,10 +425,16 @@ odt/Document.h
 /sandbox/Development/AlbumGenerator/src/album/Stamp.cpp
 album/Stamp.h
 /sandbox/Development/AlbumGenerator/src/album/album/Stamp.h
-StampData.h
-/sandbox/Development/AlbumGenerator/src/album/StampData.h
+odt/ODTDefs.h
+/sandbox/Development/AlbumGenerator/src/album/odt/ODTDefs.h
 odt/Document.h
 /sandbox/Development/AlbumGenerator/src/album/odt/Document.h
+utils/XMLUtilities.h
+/sandbox/Development/AlbumGenerator/src/album/utils/XMLUtilities.h
+catalog/CatalogData.h
+/sandbox/Development/AlbumGenerator/src/album/catalog/CatalogData.h
+catalog/Stamp.h
+/sandbox/Development/AlbumGenerator/src/album/catalog/Stamp.h
 
 /sandbox/Development/AlbumGenerator/src/album/Title.cpp
 album/Title.h
@@ -557,8 +577,6 @@ iterator
 -
 utility
 -
-
-/usr/local/include/wx-3.1/wx/arrimpl.cpp
 
 /usr/local/include/wx-3.1/wx/arrstr.h
 wx/defs.h

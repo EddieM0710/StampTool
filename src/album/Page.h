@@ -12,12 +12,10 @@
 #ifndef Page_H
 #define Page_H
 
-#include "album/AlbumNode.h"
 #include "album/LayoutNode.h"
 namespace Layout {
 
     class Title;
-
 
     /**
      * @brief Encapsulates the parameters of the page
@@ -26,7 +24,7 @@ namespace Layout {
     class Page : public LayoutNode
     {
     public:
-        Page( AlbumNode* parent ) : LayoutNode( parent ) { SetObjectName( "Page" ); };
+        Page( wxXmlNode* node ) : LayoutNode( node ) { SetNodeType( AT_Page ); };
         ~Page( ) {};
 
         /**
@@ -36,7 +34,7 @@ namespace Layout {
          * @return true - success
          * @return false - fail
          **************************************************/
-        bool UpdatePositions( );
+        void UpdatePositions( );
 
         /**
          * @brief UpdateMinimumSize

@@ -16,7 +16,7 @@
 
 #include "Defs.h"
 #include "album/AlbumNode.h"
-#include "album/Attribute.h"
+ //#include "album/Attribute.h"
 #include "utils/XMLUtilities.h"
 
 #include <wx/xml/xml.h>
@@ -40,12 +40,7 @@ namespace Layout {
          *
          **************************************************/
         LayoutNode( ) : AlbumNode( ) {
-            m_xPos = 0;
-            m_yPos = 0;
-            m_width = 0;
-            m_height = 0;
-            m_minWidth = 0;
-            m_minHeight = 0;
+            
         };
 
         /**
@@ -53,72 +48,67 @@ namespace Layout {
          *
          * @param name
          **************************************************/
-        LayoutNode( AlbumNode* parent ) : AlbumNode( parent ) {
-            m_xPos = 0;
-            m_yPos = 0;
-            m_width = 0;
-            m_height = 0;
-            m_minWidth = 0;
-            m_minHeight = 0;
+        LayoutNode( wxXmlNode* node ) : AlbumNode( node ) {
         };
 
 
         virtual wxXmlNode* Write( wxXmlNode* parent ) = 0;
+
         /**
          * @brief Gets the objects x position
          *
          * @return double
          **************************************************/
-        double GetXPos( ) { return m_xPos; };
+        double GetXPos( );
 
         /**
          * @brief Sets the objects x position
          *
          * @param val
          **************************************************/
-        void SetXPos( double val ) { m_xPos = val; };
+        void SetXPos( double val );
 
         /**
          * @brief Gets the objects y position
          *
          * @return double
          **************************************************/
-        double GetYPos( ) { return m_yPos; };
+        double GetYPos( ) ;
 
         /**
          * @brief  Sets the objects y position
          *
          * @param val
          **************************************************/
-        void SetYPos( double val ) { m_yPos = val; };
+        void SetYPos( double val );
 
         /**
          * @brief Gets the objects  width
          *
          * @return double
          **************************************************/
-        double GetWidth( ) { return m_width; };
+        double GetWidth( );
 
         /**
          * @brief  Sets the objects width
          *
          * @param val
          **************************************************/
-        void SetWidth( double val ) { m_width = val; };
+        void SetWidth( double val );
 
         /**
          * @brief Gets the objects height
          *
          * @return double
          **************************************************/
-        double GetHeight( ) { return m_height; };
+        double GetHeight( );
 
         /**
          * @brief  Sets the objects height
          *
          * @param val
          **************************************************/
-        void SetHeight( double val ) { m_height = val; };
+        void SetHeight( double val );
 
 
         /**
@@ -126,28 +116,28 @@ namespace Layout {
          *
          * @return double
          **************************************************/
-        double GetMinWidth( ) { return m_minWidth; };
+        double GetMinWidth( );
 
         /**
          * @brief  Sets the objects minimum width
          *
          * @param val
          **************************************************/
-        void SetMinWidth( double val ) { m_minWidth = val; };
+        void SetMinWidth( double val );
 
         /**
          * @brief Gets the objects minimum height
          *
          * @return double
          **************************************************/
-        double GetMinHeight( ) { return m_minHeight; };
+        double GetMinHeight( );
 
         /**
          * @brief  Sets the objects minimum height
          *
          * @param val
          **************************************************/
-        void SetMinHeight( double val ) { m_minHeight = val; };
+        void SetMinHeight( double val );
 
         void ValidateChildType( int& nbrRows, int& nbrCols, int& nbrStamps );
         void ReportLayoutError( wxString funct, wxString err, bool fatal = true );
@@ -160,7 +150,7 @@ namespace Layout {
          * @return true
          * @return false
          **************************************************/
-        virtual bool UpdatePositions( ) = 0;
+        virtual void UpdatePositions( ) = 0;
 
         /**
          * @brief UpdateMinimumSize

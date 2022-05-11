@@ -43,7 +43,7 @@ namespace ODT {
             style->SetFontSize( fontSize );
             style->SetCodeName( codeName );
             wxString str;
-            GetTextStyleName( str );
+            Utils::GetTextStyleName( str );
             style->SetTextStyleName( str );
             style->SetParentStyleName( parentStyleName );
             style->SetFoBreakBeforePage( foBreakBeforePage );
@@ -73,14 +73,14 @@ namespace ODT {
 
         //text hold 18pt
         wxXmlNode* P2 = Utils::AddNewNode( automaticStyles, wxXML_ELEMENT_NODE, "style:style" );
-        Utils::SetAttribute( P2, "style:name", style->GetTextStyleName( ) );
+        Utils::SetAttrStr( P2, "style:name", style->GetTextStyleName( ) );
 
-        Utils::SetAttribute( P2, "style:family", "paragraph" );
-        Utils::SetAttribute( P2, "style:parent-style-name", style->GetParentStyleName( ) );
+        Utils::SetAttrStr( P2, "style:family", "paragraph" );
+        Utils::SetAttrStr( P2, "style:parent-style-name", style->GetParentStyleName( ) );
         if ( style->GetFoBreakBeforePage( ) )
         {
             wxXmlNode* paragraphProperties = Utils::AddNewNode( P2, wxXML_ELEMENT_NODE, "style:paragraph-properties" );
-            Utils::SetAttribute( paragraphProperties, "fo:break-before", "page" );
+            Utils::SetAttrStr( paragraphProperties, "fo:break-before", "page" );
         }
         if ( !style->GetJustify( ).empty( )
             || style->GetFontSize( ) > 0
@@ -89,23 +89,23 @@ namespace ODT {
             wxXmlNode* paragraphProperties2 = Utils::AddNewNode( P2, wxXML_ELEMENT_NODE, "style:paragraph-properties" );
             if ( !style->GetJustify( ).empty( ) )
             {
-                Utils::SetAttribute( paragraphProperties2, "fo:text-align", "center" );
+                Utils::SetAttrStr( paragraphProperties2, "fo:text-align", "center" );
             }
-            Utils::SetAttribute( paragraphProperties2, "style:justify-single-word", "false" );
+            Utils::SetAttrStr( paragraphProperties2, "style:justify-single-word", "false" );
             wxXmlNode* styleTextProperties2 = Utils::AddNewNode( P2, wxXML_ELEMENT_NODE, "style:text-properties" );
             if ( style->GetBold( ) )
             {
-                Utils::SetAttribute( styleTextProperties2, "fo:font-weight", "bold" );
-                Utils::SetAttribute( styleTextProperties2, "style:font-weight-complex", "bold" );
-                Utils::SetAttribute( styleTextProperties2, "style:font-weight-asian", "bold" );
+                Utils::SetAttrStr( styleTextProperties2, "fo:font-weight", "bold" );
+                Utils::SetAttrStr( styleTextProperties2, "style:font-weight-complex", "bold" );
+                Utils::SetAttrStr( styleTextProperties2, "style:font-weight-asian", "bold" );
             }
             int fontSize = style->GetFontSize( );
             if ( fontSize > 0 )
             {
                 wxString size = wxString::Format( "%dpt", fontSize );
-                Utils::SetAttribute( styleTextProperties2, "fo:font-size", size );
-                Utils::SetAttribute( styleTextProperties2, "style:font-size-asian", size );
-                Utils::SetAttribute( styleTextProperties2, "style:font-size-complex", size );
+                Utils::SetAttrStr( styleTextProperties2, "fo:font-size", size );
+                Utils::SetAttrStr( styleTextProperties2, "style:font-size-asian", size );
+                Utils::SetAttrStr( styleTextProperties2, "style:font-size-complex", size );
             }
         }
     };

@@ -21,7 +21,8 @@
 #include "wx/wx.h"
 #endif
 
-#include "CatalogCode.h"
+#include "catalog/CatalogCode.h"
+#include "Node.h"
 #include <wx/strconv.h>
 #include "utils/XMLUtilities.h"
 
@@ -29,7 +30,7 @@ namespace Catalog {
 
     bool CatalogCode::IsOK( )
     {
-        if ( GetElement( ) )
+        if ( GetNodeElement( ) )
         {
             return true;
         }
@@ -40,7 +41,7 @@ namespace Catalog {
     {
         if ( IsOK( ) )
         {
-            Utils::SetAttribute( GetElement( ), CC_CatalogCodeNames[ type ], val );
+            Utils::SetAttrStr( GetNodeElement( ), CC_CatalogCodeNames[ type ], val );
         };
     }
 
@@ -48,7 +49,7 @@ namespace Catalog {
     {
         if ( IsOK( ) )
         {
-            wxXmlAttribute* attr = Utils::GetAttribute( GetElement( ), CC_CatalogCodeNames[ type ] );
+            wxXmlAttribute* attr = Utils::GetAttribute( GetNodeElement( ), CC_CatalogCodeNames[ type ] );
             if ( attr )
             {
                 return wxString::FromUTF8Unchecked( attr->GetName( ) );
@@ -95,6 +96,6 @@ namespace Catalog {
         data->push_back( GetCatalog( ) );
         data->push_back( GetCountry( ) );
         data->push_back( GetID( ) );
-        return GetElement( );
+        return GetNodeElement( );
     }
 }

@@ -106,7 +106,7 @@ namespace Layout {
             GetSettings( )->SetLastFile( filename );
             //Get the file global Prefs
             wxXmlNode* root = m_albumDoc->GetRoot( );
-            m_title = Utils::GetAttributeValue( root, "Name" );
+            m_title = Utils::GetAttrStr( root, "Name" );
         }
     }
 

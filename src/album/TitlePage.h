@@ -12,8 +12,8 @@
 #ifndef TitlePage_H
 #define TitlePage_H
 
-#include "album/AlbumNode.h"
 #include "album/LayoutNode.h" 
+#include "album/AlbumDefs.h"
 
 namespace Layout {
 
@@ -33,7 +33,7 @@ namespace Layout {
          *
          * @param parent
          **************************************************/
-        TitlePage( AlbumNode* parent ) : LayoutNode( parent ) { SetObjectName( "TitlePage" ); };
+        TitlePage( wxXmlNode* parent ) : LayoutNode( parent ) { SetNodeType( AT_TitlePage ); };
 
         /**
          * @brief Destroy the Title Page object
@@ -47,7 +47,7 @@ namespace Layout {
          * @return true
          * @return false
          **************************************************/
-        bool UpdatePositions( );
+        void UpdatePositions( );
 
         /**
          * @brief init drills down to the lowest layout object with an actual size

@@ -28,7 +28,7 @@ namespace Layout {
          *
          * @param parent
          **************************************************/
-        Row( AlbumNode* parent ) : LayoutNode( parent ) { SetObjectName( "Row" ); };
+        Row( wxXmlNode* parent ) : LayoutNode( parent ) { SetNodeType( AT_Row ); };
 
         /**
          * @brief Destroy the Row object
@@ -42,7 +42,7 @@ namespace Layout {
          * @return true
          * @return false
          **************************************************/
-        bool UpdatePositions( );
+        void UpdatePositions( );
 
         /**
         * @brief UpdateMinimumSize

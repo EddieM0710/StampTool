@@ -16,18 +16,19 @@
 #include "catalog/CatalogDefs.h"
 
 #include "wx/xml/xml.h"
-#include <wx/dynarray.h>
+//#include <wx/dynarray.h>
 #include <wx/filename.h>
 #include <wx/string.h>
 
 #include <wx/txtstrm.h>
 #include <wx/wfstream.h>
-
-namespace Catalog { class DataTypes; };
+#include <vector>
+//namespace Catalog { class DataTypes; };
+   
+typedef std::vector<wxString> StringArray;
 
 namespace Utils {
-
-
+ 
 #define MaxNbrCSVCols 30
 
     /**
@@ -55,7 +56,7 @@ namespace Utils {
          *
          * @return int   Return the number of columns
          **************************************************/
-        int NbrColNames( void ) { return m_csvColName.Count( ); };
+        int NbrColNames( void ) { return m_csvColName.size( ); };
 
         /**
          * @brief Get the Col Name object
@@ -63,7 +64,7 @@ namespace Utils {
          * @param  col ; index for the column number
          * @return wxString ; returns th column name
          **************************************************/
-        wxString GetColName( int col ) { return m_csvColName.Item( col ); };
+        wxString GetColName( int col ) { return m_csvColName.at( col ); };
 
         /**
          * @brief Adds a Col Name to the col string array
@@ -71,7 +72,7 @@ namespace Utils {
          * @param  name    the name of the new colun to add
          * @return size_t  the col index to which this string was assigned
          **************************************************/
-        size_t SetColName( wxString name ) { return m_csvColName.Add( name ); };
+        void SetColName( wxString name ) { return m_csvColName.push_back( name ); };
 
         /**
          * @brief Opens the file for read and does appropriate initializations
@@ -112,7 +113,7 @@ namespace Utils {
          * @param  colName : col name to search for.
          * @return int : index of colName; wxNOT_FOUND if not found
          **************************************************/
-        int FindCol( wxString& colName ) { m_csvColName.Index( colName ); };
+        //int FindCol( wxString& colName ) { m_csvColName.Index( colName ); };
 
         /**
          * @brief Create a map of csv col names to DataTypes (Defs.h)
@@ -143,7 +144,7 @@ namespace Utils {
         void DoLoad( wxString& filename, wxXmlNode* nodeData );
 
     private:
-        wxArrayString m_csvColName;
+        StringArray m_csvColName;
         Catalog::DataTypes m_csvColMap[ MaxNbrCSVCols ];
         wxXmlNode* m_nodeData;
         int m_lineCnt;

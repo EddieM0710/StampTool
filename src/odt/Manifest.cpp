@@ -30,8 +30,8 @@ namespace ODT {
         wxXmlNode* manifestRoot = m_manifest->GetRoot( );
         wxString name = manifestRoot->GetName( );
         wxXmlNode* fileEntry = Utils::AddNewNode( manifestRoot, wxXML_ELEMENT_NODE, "manifest:file-entry" );
-        Utils::SetAttribute( fileEntry, "manifest:full-path", fullPath );
-        Utils::SetAttribute( fileEntry, "manifest:media-type", mediaType );
+        Utils::SetAttrStr( fileEntry, "manifest:full-path", fullPath );
+        Utils::SetAttrStr( fileEntry, "manifest:media-type", mediaType );
     }
 
     bool Manifest::Save( )

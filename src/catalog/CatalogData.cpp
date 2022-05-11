@@ -135,7 +135,7 @@ namespace Catalog {
             docRoot = Utils::NewNode( m_stampDoc, CatalogNodeNames[ NT_Catalog ] );
         }
 
-        Utils::SetAttribute( docRoot, DT_DataNames[ DT_Name ], filename );
+        Utils::SetAttrStr( docRoot, DT_DataNames[ DT_Name ], filename );
 
         csv->DoLoad( filename, m_stampDoc->GetRoot( ) );
         delete csv;
@@ -145,4 +145,33 @@ namespace Catalog {
     // {
     //     return m_stampDoc->GetRoot();
     // };
+
+wxXmlNode* CatalogData::FindNodeWithPropertyAndValue( wxString property, wxString value )
+    {
+        return FindNodeWithPropertyAndValue( m_stampDoc->GetRoot(),  property,  value );
+    }
+
+  wxXmlNode* CatalogData::FindNodeWithPropertyAndValue( wxXmlNode* element, wxString property, wxString value )
+    {
+        wxString   	attr;
+        wxXmlNode* child = element->GetChildren();
+        while ( child )
+        {
+            if ( child->GetAttribute( property, &attr ) )
+            {
+                if ( !value.Cmp( attr ) )
+                {
+                    return child;
+                }
+            }
+            wxXmlNode* foundChild = FindNodeWithPropertyAndValue( child, property, value );
+            if ( foundChild )
+            {
+                return foundChild;
+            }
+            child = ( wxXmlNode* )child->GetNext( );
+        }
+        return ( wxXmlNode* )0;
+    }
+
 }

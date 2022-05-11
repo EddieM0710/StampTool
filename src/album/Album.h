@@ -13,6 +13,7 @@
 #define Album_H
 
 #include "album/AlbumNode.h"
+#include "album/AlbumDefs.h"
 #include "utils/Project.h"
 
 namespace Layout {
@@ -30,9 +31,9 @@ namespace Layout {
          * for holding all the objecs within the album
          *
          **************************************************/
-        Album( ) : AlbumNode( )
+        Album( wxXmlNode* node ) : AlbumNode( node )
         {
-            SetObjectName( "Album" );
+            SetNodeType( AT_Album );
         };
 
         /**
@@ -56,7 +57,7 @@ namespace Layout {
          * @return true
          * @return false
          **************************************************/
-        bool UpdatePositions( );
+        void UpdatePositions( );
 
         /**
          * @brief init drills down to the lowest layout object with an actual size
@@ -67,153 +68,93 @@ namespace Layout {
          **************************************************/
         void UpdateMinimumSize( );
 
-        bool UpdateSizes( );
+        void UpdateSizes( );
+        
+        wxXmlNode* Write( wxXmlNode* parent );
 
         /**
          * @brief Decends into each Album layout child performing its write to the content, styles, or images ODT XML
+         *  /**
+         * @brief sum of the height of child items; min height for this row
          *
          **************************************************/
-        wxXmlNode* Write( wxXmlNode* parent );
-
         /**
          * @brief Get the Width
          *
          * @return double
          **************************************************/
-        double GetWidth( )
-        {
-            return GetAttrValDbl( "PageWidth" );
-        };
+        double GetWidth( );
 
         /**
          * @brief Get the Height
          *
          * @return double
          **************************************************/
-        double GetHeight( )
-        {
-            GetAttrValDbl( "PageHeight" );
-        };
-
+        double GetHeight( );
 
         /**
          * @brief Get the Page Width
          *
          * @return double
          **************************************************/
-        double GetPageWidth( )
-        {
-            return GetAttrValDbl( "PageWidth" );
-        };
+        double GetPageWidth( );
 
         /**
          * @brief Get the Page Height
          *
          * @return double
          **************************************************/
-        double GetPageHeight( )
-        {
-            return GetAttrValDbl( "PageHeight" );
-        };
+        double GetPageHeight( );
 
         /**
          * @brief Get the Top Margin
          *
          * @return double
          **************************************************/
-        double GetTopMargin( )
-        {
-            return GetAttrValDbl( "TopMargin" );
-        };
+        double GetTopMargin( );
 
         /**
          * @brief Get the Bottom Margin
          *
          * @return double
          **************************************************/
-        double GetBottomMargin( )
-        {
-            return GetAttrValDbl( "BottomMargin" );
-        };
+        double GetBottomMargin( );
 
         /**
          * @brief Get the Right Margin
          *
          * @return double
          **************************************************/
-        double GetRightMargin( )
-        {
-            return GetAttrValDbl( "RightMargin" );
-        };
+        double GetRightMargin( );
 
         /**
          * @brief Get the Left Margin
          *
          * @return double
          **************************************************/
-        double GetLeftMargin( )
-        {
-            return GetAttrValDbl( "LeftMargin" );
-        };
-
-        /**
-         * @brief Get the Border Parameters
-         *
-         * @param size
-         * @param imageLink
-         * @return double
-         **************************************************/
-        double GetBorderParameters( double size, wxString& imageLink );
+        double GetLeftMargin( );
 
         /**
          * @brief Get the Border Size
          *
          * @return double
          **************************************************/
-        double GetBorderSize( )
-        {
-            return GetAttrValDbl( "BorderSize" );
-        };
+        double GetBorderSize( );
 
         /**
          * @brief Get the Border File Name
          *
          * @return wxString
          **************************************************/
-        wxString GetBorderFileName( )
-        {
-            return GetAttrVal( "BorderFileName" );
-        };
+        wxString GetBorderFileName( );
 
-        /**
-         * @brief Get the Stamp Properties
-         *
-         * @return wxString
-         **************************************************/
-        wxString GetStampProperties( )
-        {
-            return GetAttrVal( "StampProperties" );
-        };
-
-        /**
-         * @brief Get the Image Path
-         *
-         * @return wxString
-         **************************************************/
-        wxString GetImagePath( )
-        {
-            return GetAttrVal( "ImagePath" );
-        };
 
         /**
          * @brief Get the Doc Name
          *
          * @return wxString
          **************************************************/
-        wxString GetDocName( )
-        {
-            return GetAttrVal( "Name" );
-        };
+        wxString GetDocName( );
 
 
         /**

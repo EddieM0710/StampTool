@@ -12,8 +12,8 @@
 #ifndef Column_H
 #define Column_H
 
-#include "album/AlbumNode.h"
 #include "album/LayoutNode.h"
+#include "album/AlbumDefs.h"
 
 namespace Layout {
 
@@ -31,7 +31,7 @@ public:
      *
      * @param parent
      **************************************************/
-    Column( AlbumNode* parent ) : LayoutNode( parent ) { SetObjectName( "Column" ); };
+    Column( wxXmlNode* parent ) : LayoutNode( parent ) { SetNodeType( AT_Col ); };
 
     /**
      * @brief Destroy the Column object
@@ -46,7 +46,7 @@ public:
      * @return true
      * @return false
      **************************************************/
-    bool UpdatePositions();
+    void UpdatePositions();
 
     /**
      * @brief UpdateMinimumSize 

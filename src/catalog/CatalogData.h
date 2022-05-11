@@ -41,6 +41,8 @@ namespace Catalog {
 
         wxString GetTitle( ) { return m_title; }
         void  SetTitle( wxString val ) { m_title = val; };
+         wxXmlNode* FindNodeWithPropertyAndValue( wxXmlNode* element, wxString property, wxString value );
+        wxXmlNode* FindNodeWithPropertyAndValue( wxString property, wxString value );
 
     private:
         /* data */

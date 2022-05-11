@@ -3511,13 +3511,21 @@
             <long name="is-transient">0</long>
             <long name="locked">0</long>
             <long name="owns-file">1</long>
+            <string name="proxy-AlignH">"Centre"</string>
+            <string name="proxy-AlignV">"Centre"</string>
+            <long name="proxy-Border">5</long>
             <string name="proxy-Member variable name">""</string>
             <string name="proxy-Orientation">"Vertical"</string>
             <string name="proxy-Platform">"&lt;Any platform&gt;"</string>
+            <long name="proxy-Stretch factor">0</long>
             <bool name="proxy-wxADJUST_MINSIZE">0</bool>
+            <bool name="proxy-wxBOTTOM">1</bool>
             <bool name="proxy-wxFIXED_MINSIZE">0</bool>
+            <bool name="proxy-wxLEFT">1</bool>
             <bool name="proxy-wxRESERVE_SPACE_EVEN_IF_HIDDEN">0</bool>
+            <bool name="proxy-wxRIGHT">1</bool>
             <bool name="proxy-wxSHAPED">0</bool>
+            <bool name="proxy-wxTOP">1</bool>
             <string name="title">"wxBoxSizer V"</string>
             <long name="title-mode">0</long>
             <string name="type">"dialog-control-document"</string>
@@ -5978,13 +5986,21 @@
             <long name="is-transient">0</long>
             <long name="locked">0</long>
             <long name="owns-file">1</long>
+            <string name="proxy-AlignH">"Centre"</string>
+            <string name="proxy-AlignV">"Centre"</string>
+            <long name="proxy-Border">5</long>
             <string name="proxy-Member variable name">""</string>
             <string name="proxy-Orientation">"Horizontal"</string>
             <string name="proxy-Platform">"&lt;Any platform&gt;"</string>
+            <long name="proxy-Stretch factor">0</long>
             <bool name="proxy-wxADJUST_MINSIZE">0</bool>
+            <bool name="proxy-wxBOTTOM">1</bool>
             <bool name="proxy-wxFIXED_MINSIZE">0</bool>
+            <bool name="proxy-wxLEFT">1</bool>
             <bool name="proxy-wxRESERVE_SPACE_EVEN_IF_HIDDEN">0</bool>
+            <bool name="proxy-wxRIGHT">1</bool>
             <bool name="proxy-wxSHAPED">0</bool>
+            <bool name="proxy-wxTOP">1</bool>
             <string name="title">"wxBoxSizer H"</string>
             <long name="title-mode">0</long>
             <string name="type">"dialog-control-document"</string>
@@ -13422,7 +13438,7 @@
                 <string name="proxy-Id name">"ID_NAMELABELEDTEXTBOX"</string>
                 <long name="proxy-Id value">10009</long>
                 <string name="proxy-Implementation filename">""</string>
-                <string name="proxy-Member variable name">""</string>
+                <string name="proxy-Member variable name">"m_name"</string>
                 <string name="proxy-Name">""</string>
                 <string name="proxy-Platform">"&lt;Any platform&gt;"</string>
                 <bool name="proxy-Separate files">0</bool>
@@ -13525,7 +13541,7 @@
                 <string name="proxy-Id name">"ID_HEIGHTLABELEDTEXTBOX"</string>
                 <long name="proxy-Id value">10001</long>
                 <string name="proxy-Implementation filename">""</string>
-                <string name="proxy-Member variable name">""</string>
+                <string name="proxy-Member variable name">"m_height"</string>
                 <string name="proxy-Name">""</string>
                 <string name="proxy-Platform">"&lt;Any platform&gt;"</string>
                 <bool name="proxy-Separate files">0</bool>
@@ -13601,7 +13617,7 @@
                 <string name="proxy-Id name">"ID_WIDTHLABELEDTEXTBOX"</string>
                 <long name="proxy-Id value">10002</long>
                 <string name="proxy-Implementation filename">""</string>
-                <string name="proxy-Member variable name">""</string>
+                <string name="proxy-Member variable name">"m_width"</string>
                 <string name="proxy-Name">""</string>
                 <string name="proxy-Platform">"&lt;Any platform&gt;"</string>
                 <bool name="proxy-Separate files">0</bool>
@@ -13670,6 +13686,7 @@
               <string name="type">"dialog-control-document"</string>
               <document>
                 <string name="proxy-type">"wbButtonProxy"</string>
+                <string name="event-handler-0">"wxEVT_COMMAND_BUTTON_CLICKED|OnRefreshButtonClick|NONE||StampDetailsDialog"</string>
                 <string name="filename">""</string>
                 <string name="icon-name">"dialogcontrol"</string>
                 <string name="identifier">"itemButton7"</string>
@@ -13701,7 +13718,7 @@
                 <long name="proxy-Height">-1</long>
                 <string name="proxy-Help text">""</string>
                 <bool name="proxy-Hidden">0</bool>
-                <string name="proxy-Id name">"ID_BUTTON"</string>
+                <string name="proxy-Id name">"ID_REFRESHBUTTON"</string>
                 <long name="proxy-Id value">10005</long>
                 <string name="proxy-Implementation filename">""</string>
                 <string name="proxy-Label">"Refresh from Catalog"</string>
@@ -13731,7 +13748,7 @@
                 <bool name="proxy-wxWANTS_CHARS">0</bool>
                 <long name="proxy-X">-1</long>
                 <long name="proxy-Y">-1</long>
-                <string name="title">"wxButton: ID_BUTTON"</string>
+                <string name="title">"wxButton: ID_REFRESHBUTTON"</string>
                 <long name="title-mode">0</long>
                 <string name="type">"dialog-control-document"</string>
               </document>
@@ -13795,11 +13812,11 @@
                 <long name="proxy-Height">-1</long>
                 <string name="proxy-Help text">""</string>
                 <bool name="proxy-Hidden">0</bool>
-                <string name="proxy-Id name">"ID_BUTTON3"</string>
+                <string name="proxy-Id name">"ID_VALIDATEBUTTON"</string>
                 <long name="proxy-Id value">10008</long>
                 <string name="proxy-Implementation filename">""</string>
                 <string name="proxy-Label">"Validate"</string>
-                <string name="proxy-Member variable name">""</string>
+                <string name="proxy-Member variable name">"m_validate"</string>
                 <string name="proxy-Name">""</string>
                 <string name="proxy-Platform">"&lt;Any platform&gt;"</string>
                 <bool name="proxy-Separate files">0</bool>
@@ -13825,7 +13842,7 @@
                 <bool name="proxy-wxWANTS_CHARS">0</bool>
                 <long name="proxy-X">-1</long>
                 <long name="proxy-Y">-1</long>
-                <string name="title">"wxButton: ID_BUTTON3"</string>
+                <string name="title">"wxButton: ID_VALIDATEBUTTON"</string>
                 <long name="title-mode">0</long>
                 <string name="type">"dialog-control-document"</string>
               </document>
@@ -13892,7 +13909,7 @@
                 <string name="proxy-Id name">"ID_LISTCTRL"</string>
                 <long name="proxy-Id value">10006</long>
                 <string name="proxy-Implementation filename">""</string>
-                <string name="proxy-Member variable name">""</string>
+                <string name="proxy-Member variable name">"m_statusList"</string>
                 <string name="proxy-Name">""</string>
                 <string name="proxy-Platform">"&lt;Any platform&gt;"</string>
                 <bool name="proxy-Separate files">0</bool>
@@ -13970,6 +13987,7 @@
               <string name="type">"dialog-control-document"</string>
               <document>
                 <string name="proxy-type">"wbButtonProxy"</string>
+                <string name="event-handler-0">"wxEVT_COMMAND_BUTTON_CLICKED|OnCancelClick|NONE||StampDetailsDialog"</string>
                 <string name="filename">""</string>
                 <string name="icon-name">"dialogcontrol"</string>
                 <string name="identifier">"itemButton13"</string>
@@ -14037,6 +14055,7 @@
               </document>
               <document>
                 <string name="proxy-type">"wbButtonProxy"</string>
+                <string name="event-handler-0">"wxEVT_COMMAND_BUTTON_CLICKED|OnOkClick|NONE||StampDetailsDialog"</string>
                 <string name="filename">""</string>
                 <string name="icon-name">"dialogcontrol"</string>
                 <string name="identifier">"itemButton14"</string>

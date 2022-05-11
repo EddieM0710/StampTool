@@ -73,7 +73,7 @@ DefinePeriodsDialog::DefinePeriodsDialog( wxWindow* parent, wxWindowID id, const
     Init( );
     Create( parent, id, caption, pos, size, style );
     m_antiqueTextBox->SetValue( GetSettings( )->GetLowerPeriod( ) );
-    m_AntiqueYear->SetValue( GetSettings( )->GetUpperPeriod( ));
+    m_AntiqueYear->SetValue( GetSettings( )->GetLowerDivision( ));
     m_classicTextBox->SetValue( GetSettings( )->GetMiddlePeriod( ));
     m_modernTextBox->SetValue( GetSettings( )->GetUpperPeriod( ));
     m_modernYear->SetValue( GetSettings( )->GetUpperDivision( ));

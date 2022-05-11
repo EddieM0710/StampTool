@@ -35,7 +35,7 @@ namespace Catalog {
         wxXmlDocument* NewDocument( );
         wxXmlDocument* ReplaceDocument( wxXmlDocument* doc );
         wxXmlDocument* GetDoc( ) { return m_stampDoc; };
-        void SaveXML( wxString filename );
+        void Save( );
         void LoadXML(  wxString filename );
         void LoadCSV( wxString filename );
 
@@ -44,10 +44,15 @@ namespace Catalog {
          wxXmlNode* FindNodeWithPropertyAndValue( wxXmlNode* element, wxString property, wxString value );
         wxXmlNode* FindNodeWithPropertyAndValue( wxString property, wxString value );
 
+        void SetDirty( bool state = true ) { m_dirty = state; };
+        bool isDirty( ) { return m_dirty; };
+
     private:
         /* data */
         wxXmlDocument* m_stampDoc;
         wxString m_title;
+
+        bool m_dirty;
     };
 }
 #endif

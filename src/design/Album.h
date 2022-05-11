@@ -12,26 +12,26 @@
 #ifndef Album_H
 #define Album_H
 
-#include "album/AlbumNode.h"
-#include "album/AlbumDefs.h"
+#include "design/AlbumBase.h"
+#include "design/DesignDefs.h"
 #include "utils/Project.h"
 
-namespace Layout {
+namespace Design {
 
     /**
-     * @brief Album layout object; inherits from LayoutNode. This is the top  LayoutNode for holding all the objecs within the album
+     * @brief Album layout object; inherits from LayoutBase. This is the top  LayoutBase for holding all the objecs within the album
      *
      **************************************************/
-    class Album : public AlbumNode
+    class Album : public AlbumBase
     {
     public:
 
         /**
-         * @brief Construct a new Album object. The top layout LayoutNode
+         * @brief Construct a new Album object. The top layout LayoutBase
          * for holding all the objecs within the album
          *
          **************************************************/
-        Album( AlbumNode* parent, wxXmlNode* node ) : AlbumNode(  parent, node )
+        Album( AlbumBase* parent, wxXmlNode* node ) : AlbumBase(  parent, node )
         {
             SetNodeType( AT_Album );
         };
@@ -170,7 +170,7 @@ namespace Layout {
         void GetPageParameters( wxString& width, wxString& height, wxString& topMargin,
             wxString& bottomMargin, wxString& rightMargin, wxString& leftMargin );
 
-        AlbumNodeStatus ValidateNode();
+        AlbumBaseStatus ValidateNode();
 
     private:
 

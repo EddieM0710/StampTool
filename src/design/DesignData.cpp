@@ -1,5 +1,5 @@
 /**
- * @file AlbumData.cpp
+ * @file DesignData.cpp
  * @author Eddie Monroe ()
  * @brief
  * @version 0.1
@@ -30,28 +30,33 @@
 #include "utils/Settings.h"
 #include "utils/XMLUtilities.h"
 #include "Defs.h"
-#include "album/AlbumData.h"
-#include "album/Album.h"
-#include "album/Stamp.h"
-#include "album/Page.h"
-#include "album/Title.h"
-#include "album/Row.h"
-#include "album/Column.h"
+#include "design/DesignData.h"
+#include "design/Album.h"
+#include "design/Stamp.h"
+#include "design/Page.h"
+#include "design/Title.h"
+#include "design/Row.h"
+#include "design/Column.h"
 #include "AlbumGenApp.h"
 
-namespace Layout {
+namespace Design {
 
-    AlbumData::AlbumData(/* args */ )
+    DesignData::DesignData(/* args */ )
     {
         m_albumDoc = 0;
+        m_album = 0;
     }
 
-    AlbumData::~AlbumData( )
+    DesignData::~DesignData( )
     {
-        delete m_albumDoc;
+  
+        if ( m_albumDoc ) m_albumDoc->~wxXmlDocument();
+        if ( m_album ) delete m_album;
+        m_albumDoc = 0;
+        m_album = 0;
     }
 
-    bool AlbumData::IsOK( )
+    bool DesignData::IsOK( )
     {
         if ( m_albumDoc )
         {
@@ -59,31 +64,28 @@ namespace Layout {
         }
         return false;
     }
-    wxXmlDocument* AlbumData::NewDocument( )
+    wxXmlDocument* DesignData::NewDocument( )
     {
         delete m_albumDoc;
         m_albumDoc = new wxXmlDocument( );
         return m_albumDoc;
     };
-    // wxXmlDocument* AlbumData::ReplaceDocument( wxXmlDocument* doc )
-    // {
-    //     delete m_albumDoc;
-    //     m_albumDoc = doc;
-    //     return m_albumDoc;
-    // };
 
-    void AlbumData::SaveXML( wxString filename )
+
+    void DesignData::SaveXML( wxString filename )
     {
         if ( wxFileExists( filename ) )
         {
             wxFileName bakFile( filename );
             bakFile.SetExt( "bak" );
-            wxRenameFile( filename, bakFile.GetFullName( ) );
+            wxRenameFile( filename, bakFile.GetFullName( ), true );
         }
 
         m_albumDoc->Save( filename );
+        SetDirty(false);
     }
-    void AlbumData::LoadXML( wxString filename )
+
+    bool DesignData::LoadXML( wxString filename )
     {
         if ( !m_albumDoc )
         {
@@ -94,27 +96,33 @@ namespace Layout {
         if ( !ok )
         {
             std::cout << filename << " Load Failed.\n";
+            return false;
         }
-        else
-        {
-            wxXmlNode* albumData = m_albumDoc->GetRoot( );
-            wxString name = albumData->GetName( );
 
-            if ( name.Length( ) == 0 )
-            {
-                albumData->SetName( filename );
-            }
-            m_album = new Album( (AlbumNode*)0, albumData );
+        wxXmlNode* albumBaseRoot = m_albumDoc->GetRoot( );
+        wxString name = albumBaseRoot->GetName( );
+
+        if ( name.Length( ) == 0 )
+        {
+            albumBaseRoot->SetName( filename );
         }
+        m_album = new Album( (AlbumBase*)0, albumBaseRoot );
+        if ( !m_album )
+        {
+            return false;
+        }
+
+        SetDirty(false);
+        return true;
     }
 
-    Row* AlbumData::AddRow( LayoutNode* node )
+    Row* DesignData::AddRow( LayoutBase* node )
     {
-        LayoutNode* parent = node;
-        AlbumNodeType prevType = AT_None;
+        LayoutBase* parent = node;
+        AlbumBaseType prevType = AT_None;
         while ( parent )
         {
-            AlbumNodeType type = parent->GetNodeType( );
+            AlbumBaseType type = parent->GetNodeType( );
             if ( type == AT_Page )
             {
                 // can't mix rows and cols as siblings
@@ -127,28 +135,31 @@ namespace Layout {
             {
                 break;
             }
-            parent = ( LayoutNode* )parent->GetParent( );
+            parent = ( LayoutBase* )parent->GetParent( );
             prevType = type;
         }
         if ( parent )
         {
             Row* newRow = new Row( parent, ( wxXmlNode* )0 );
             parent->AddChild(newRow);
+            SetDirty();
             return newRow;
         }
         else
         {
             return  (Row*)0;
         }
+
+
     }
 
-    Column* AlbumData::AddCol( LayoutNode* node )
+    Column* DesignData::AddCol( LayoutBase* node )
     {
-        LayoutNode* parent = node;
-        AlbumNodeType prevType = AT_None;
+        LayoutBase* parent = node;
+        AlbumBaseType prevType = AT_None;
         while ( parent )
         {
-            AlbumNodeType type = parent->GetNodeType( );
+            AlbumBaseType type = parent->GetNodeType( );
             if ( type == AT_Page )
             {
                 // can't mix rows and cols as siblings
@@ -161,11 +172,12 @@ namespace Layout {
             {
                 break;
             }
-            parent = ( LayoutNode* )parent->GetParent( );
+            parent = ( LayoutBase* )parent->GetParent( );
             prevType = type;
         }
         if ( parent )
         {
+            SetDirty();
             return new Column( parent, ( wxXmlNode* )0 );
         }
         else
@@ -174,20 +186,21 @@ namespace Layout {
         }
     }
 
-    Page* AlbumData::AddPage( LayoutNode* node )
+    Page* DesignData::AddPage( LayoutBase* node )
     {
-        LayoutNode* parent = node;
+        LayoutBase* parent = node;
         while ( parent )
         {
-            AlbumNodeType type = parent->GetNodeType( );
+            AlbumBaseType type = parent->GetNodeType( );
             if ( type == AT_Album )
             {
                 break;
             }
-            parent = ( LayoutNode* )parent->GetParent( );
+            parent = ( LayoutBase* )parent->GetParent( );
         }
         if ( parent )
         {
+            SetDirty();
             return new Page( parent, ( wxXmlNode* )0 );
         }
         else
@@ -196,44 +209,47 @@ namespace Layout {
         }
     }
 
-    Stamp* AlbumData::AddStamp( LayoutNode* node )
+    Stamp* DesignData::AddStamp( LayoutBase* node )
     {
-        LayoutNode* parent = node;
+        LayoutBase* parent = node;
         while ( parent )
         {
-            AlbumNodeType type = parent->GetNodeType( );
+            AlbumBaseType type = parent->GetNodeType( );
             if ( type == AT_Col
                 || type == AT_Row )
             {
                 break;
             }
-            parent = ( LayoutNode* )parent->GetParent( );
+            parent = ( LayoutBase* )parent->GetParent( );
         }
         if ( parent )
         {
+            SetDirty();
             return new Stamp( parent, ( wxXmlNode* )0 );
         }
         else
         {
             return  (Stamp*)0;
         }
+
     }
-    Title* AlbumData::AddTitle( LayoutNode* node )
+    Title* DesignData::AddTitle( LayoutBase* node )
     {
-        LayoutNode* parent = node;
+        LayoutBase* parent = node;
         while ( parent )
         {
-            AlbumNodeType type = parent->GetNodeType( );
+            AlbumBaseType type = parent->GetNodeType( );
             if ( type == AT_Col
                 || type == AT_Row
                 || type == AT_Page )
             {
                 break;
             }
-            parent = ( LayoutNode* )parent->GetParent( );
+            parent = ( LayoutBase* )parent->GetParent( );
         }
         if ( parent )
         {
+            SetDirty();
             return new Title( parent, ( wxXmlNode* )0 );
         }
         else
@@ -241,6 +257,4 @@ namespace Layout {
             return  (Title*)0;
         }
     }
-
-
-    }
+}

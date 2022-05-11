@@ -16,7 +16,7 @@
   * Includes
   */
 #include "gui/GuiDefs.h"
-#include "album/LayoutNode.h"
+#include "design/LayoutBase.h"
   /*
    * Forward declarations
    */
@@ -179,7 +179,7 @@ public:
      **************************************************/
     void SetZoom( double zoom );
 
-void Draw( wxPaintDC &dc, Layout::LayoutNode* node, wxPoint pt);
+void Draw( wxPaintDC &dc, Design::LayoutBase* node, wxPoint pt);
 
 private:
     double m_pixelsPerIn;

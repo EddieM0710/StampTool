@@ -30,7 +30,7 @@
 
 
 
-IconID AlbumImageSelection[ Layout::AT_NbrAlbumTypes ][ 2 ] = {
+IconID AlbumImageSelection[ Design::AT_NbrAlbumTypes ][ 2 ] = {
     { Icon_Stamp, Icon_StampSelected }, //   FT_FormatUnknown = 0,
     { Icon_Stamp, Icon_StampSelected }, //   FT_Stamp,
     { Icon_StampBlock, Icon_StampBlockSelected }, //   FT_Se_tenant,

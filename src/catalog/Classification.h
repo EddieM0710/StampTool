@@ -13,7 +13,7 @@
 #define Classification_H
 
 #include "CatalogDefs.h"
-#include "CatalogNode.h"
+#include "CatalogBase.h"
 #include "wx/xml/xml.h"
 #include <wx/string.h>
 
@@ -24,23 +24,23 @@ namespace Catalog {
     /**
      * @brief This is a wrapper of an wxXmlNode for
      * safe/convenient getting/putting.
-     * @see CatalogNode, Stamp, Specimen
+     * @see CatalogBase, Stamp, Specimen
      *
      **************************************************/
-    class Classification : public CatalogNode
+    class Classification : public CatalogBase
     {
     public:
         /**
          * @brief Construct a new Classification object
          *
          * @note This node is invalid until the node type is defined.
-         * @see CatalogNode::SetNodeElement
+         * @see CatalogBase::SetCatNode
          *
          **************************************************/
-        Classification( void ) : CatalogNode( )
+        Classification( void ) : CatalogBase( )
         {
-            SetNodeElement( 0 );
-            SetNodeType( ( CatalogNodeType )-1 );
+            SetXMLCatNode( 0 );
+            SetNodeType( ( CatalogBaseType )-1 );
         }
 
         /**
@@ -49,7 +49,7 @@ namespace Catalog {
          * @param  node ; must be set to a valid Classification
          * node type or this instance will be invalid.
          **************************************************/
-        Classification( wxXmlNode* node ) : CatalogNode( node )
+        Classification( wxXmlNode* node ) : CatalogBase( node )
         {
             if ( IsOK( ) )
             {
@@ -57,7 +57,7 @@ namespace Catalog {
             }
             else
             {
-                SetNodeType( ( CatalogNodeType )-1 );
+                SetNodeType( ( CatalogBaseType )-1 );
             }
         };
 

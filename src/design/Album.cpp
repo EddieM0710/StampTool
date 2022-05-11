@@ -9,14 +9,14 @@
  *
  **************************************************/
 
-#include "album/Album.h"
-#include "album/TitlePage.h"
-#include "album/Page.h"
+#include "design/Album.h"
+#include "design/TitlePage.h"
+#include "design/Page.h"
 #include "odt/Document.h"
 #include "odt/ODTDefs.h"
 #include "utils/XMLUtilities.h"
 
-namespace Layout {
+namespace Design {
 
     double Album::GetWidth( )
     {
@@ -106,9 +106,9 @@ namespace Layout {
         // set known child values
 
 
-        for ( AlbumNodeList::iterator it = std::begin(m_layoutChildArray ); it != std::end( m_layoutChildArray ); ++it )
+        for ( AlbumBaseList::iterator it = std::begin(m_layoutChildArray ); it != std::end( m_layoutChildArray ); ++it )
         {
-            AlbumNodeType type = ( AlbumNodeType )( *it )->GetNodeType( );
+            AlbumBaseType type = ( AlbumBaseType )( *it )->GetNodeType( );
             switch ( type )
             {
                 case AT_Page:
@@ -142,11 +142,11 @@ namespace Layout {
         // go to the bottom of each child container object ( row, column, page)
         // and begin filling in position relative to the parent
 
-        for ( AlbumNodeList::iterator it = std::begin(m_layoutChildArray ); it != std::end( m_layoutChildArray ); ++it )
+        for ( AlbumBaseList::iterator it = std::begin(m_layoutChildArray ); it != std::end( m_layoutChildArray ); ++it )
         {
-            LayoutNode* child = ( LayoutNode* )( *it );
+            LayoutBase* child = ( LayoutBase* )( *it );
 
-            //  call each childs Layout function
+            //  call each childs Design function
             child->UpdateSizes(  );
         }
 
@@ -157,9 +157,9 @@ namespace Layout {
 
         // go to the bottom of each child container object ( row, column, page)
         // and begin filling in position relative to the parent
-        for ( AlbumNodeList::iterator it = std::begin(m_layoutChildArray ); it != std::end( m_layoutChildArray ); ++it )
+        for ( AlbumBaseList::iterator it = std::begin(m_layoutChildArray ); it != std::end( m_layoutChildArray ); ++it )
         {
-            LayoutNode* child = ( LayoutNode* )( *it );
+            LayoutBase* child = ( LayoutBase* )( *it );
 
             child->UpdatePositions( ) ;
         }
@@ -173,9 +173,9 @@ namespace Layout {
 
         bool firstPage = true;
 
-        for ( AlbumNodeList::iterator it = std::begin(m_layoutChildArray ); it != std::end( m_layoutChildArray ); ++it )
+        for ( AlbumBaseList::iterator it = std::begin(m_layoutChildArray ); it != std::end( m_layoutChildArray ); ++it )
         {
-            LayoutNode* child = ( LayoutNode* )( *it );
+            LayoutBase* child = ( LayoutBase* )( *it );
             int childType = child->GetNodeType( );
             switch ( childType )
             {
@@ -254,9 +254,9 @@ namespace Layout {
         Write( ( wxXmlNode* )0 );
     }
 
-    AlbumNodeStatus Album::ValidateNode()
+    AlbumBaseStatus Album::ValidateNode()
     {
-        AlbumNodeStatus status = AT_OK;
+        AlbumBaseStatus status = AT_OK;
         if ( GetPageHeight() <= 0.0)
         {
             std::cout << "Must define the page height.\n";

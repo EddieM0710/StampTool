@@ -73,16 +73,18 @@ namespace Catalog {
         return m_stampDoc;
     };
 
-    void CatalogData::SaveXML( wxString filename )
+    void CatalogData::Save( )
     {
-        GetProject( )->SetCatalogFilename( filename );
+        wxString filename = GetProject( )->GetCatalogFilename(  );
         if ( wxFileExists( filename ) )
         {
             wxFileName bakFile( filename );
             bakFile.SetExt( "bak" );
-            wxRenameFile( filename, bakFile.GetFullName( ) );
+            wxRenameFile( filename, bakFile.GetFullName( ), true );
         }
         m_stampDoc->Save( filename );
+        SetDirty(false);
+
     }
 
 
@@ -120,11 +122,13 @@ namespace Catalog {
         //Get the file global Prefs
         wxXmlNode* root = m_stampDoc->GetRoot( );
         const char* name = root->GetName( );
-        if ( !strcmp( name, CatalogNodeNames[ NT_Catalog ] ) )
+        if ( !strcmp( name, CatalogBaseNames[ NT_Catalog ] ) )
         {
             Classification catalog( root );
             m_title = catalog.GetTitle( );
         }
+
+        SetDirty(false);
     }
 
     void CatalogData::LoadCSV( wxString filename )
@@ -138,12 +142,13 @@ namespace Catalog {
         wxXmlNode* docRoot = m_stampDoc->GetRoot( );
         if ( !docRoot )
         {
-            docRoot = Utils::NewNode( m_stampDoc, CatalogNodeNames[ NT_Catalog ] );
+            docRoot = Utils::NewNode( m_stampDoc, CatalogBaseNames[ NT_Catalog ] );
         }
 
         Utils::SetAttrStr( docRoot, DT_DataNames[ DT_Name ], filename );
 
         csv->DoLoad( filename, m_stampDoc->GetRoot( ) );
+        SetDirty();
         delete csv;
     }
 

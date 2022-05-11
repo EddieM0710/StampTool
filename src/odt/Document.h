@@ -13,7 +13,7 @@
 
 
 #include <wx/xml/xml.h>
-#include "album/Album.h"
+#include "design/Album.h"
 #include "wx/string.h"
 #include <wx/zipstrm.h>
 #include "odt/Mimetype.h"
@@ -73,7 +73,7 @@ namespace ODT {
         /**
          * @brief Create all the parts for the ODT Document
          *
-         * @param albumNode
+         * @param albumBase
          * @return true
          * @return false
          **************************************************/

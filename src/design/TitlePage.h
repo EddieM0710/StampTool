@@ -12,20 +12,20 @@
 #ifndef TitlePage_H
 #define TitlePage_H
 
-#include "album/LayoutNode.h" 
-#include "album/AlbumDefs.h"
+#include "design/LayoutBase.h" 
+#include "design/DesignDefs.h"
 
-namespace Layout {
+namespace Design {
 
 
     //class Border;
 
     /**
-     * @brief TitlePage layout object; inherits from LayoutNode
+     * @brief TitlePage layout object; inherits from LayoutBase
      * @todo Nearly nothing in class TitlePage has been done.
      *
      **************************************************/
-    class TitlePage : public LayoutNode
+    class TitlePage : public LayoutBase
     {
     public:
         /**
@@ -33,10 +33,10 @@ namespace Layout {
          *
          * @param parent
          **************************************************/
-        TitlePage( AlbumNode* parent, wxXmlNode* node ) : LayoutNode( parent, node ) 
+        TitlePage( AlbumBase* parent, wxXmlNode* node ) : LayoutBase( parent, node ) 
         { 
             SetNodeType( AT_TitlePage ); 
-            SetObjectName( AlbumNodeNames[GetNodeType() ] );
+            SetObjectName( AlbumBaseNames[GetNodeType() ] );
             };
 
         /**
@@ -66,7 +66,7 @@ namespace Layout {
 
         void UpdateSizes( );
 
-        AlbumNodeStatus ValidateNode();
+        AlbumBaseStatus ValidateNode();
 
     private:
         wxXmlNode* Write( wxXmlNode* parent )

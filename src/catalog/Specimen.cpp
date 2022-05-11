@@ -28,9 +28,9 @@ namespace Catalog {
 
     bool Specimen::IsOK( )
     {
-        if ( GetNodeElement( ) )
+        if ( GetCatXMLNode( ) )
         {
-            if ( Catalog::IsCatalogNodeType( GetNodeElement( ), Catalog::NT_Specimen ) )
+            if ( Catalog::IsCatalogBaseType( GetCatXMLNode( ), Catalog::NT_Specimen ) )
             {
                 return true;
             }
@@ -42,7 +42,7 @@ namespace Catalog {
     {
         if ( IsOK( ) )
         {
-            Utils::SetAttrStr( GetNodeElement( ), ItemDataNames[ type ], val );
+            Utils::SetAttrStr( GetCatXMLNode( ), ItemDataNames[ type ], val );
         };
     }
 
@@ -50,7 +50,7 @@ namespace Catalog {
     {
         if ( IsOK( ) )
         {
-            const wxXmlAttribute* attr = Utils::GetAttribute( GetNodeElement( ), ItemDataNames[ type ] );
+            const wxXmlAttribute* attr = Utils::GetAttribute( GetCatXMLNode( ), ItemDataNames[ type ] );
             if ( attr )
             {
                 return wxString::FromUTF8Unchecked( attr->GetValue( ) );
@@ -66,6 +66,6 @@ namespace Catalog {
         data->push_back( GetValue( ) );
         data->push_back( GetLocation( ) );
         data->push_back( GetRemarks( ) );
-        return GetNodeElement( );
+        return GetCatXMLNode( );
     }
 }

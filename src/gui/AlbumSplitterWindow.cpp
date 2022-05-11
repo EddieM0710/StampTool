@@ -30,7 +30,7 @@
 ////@begin XPM images
 ////@end XPM images
 
-#include "gui/AlbumTreeCtrl.h"
+#include "gui/DesignTreeCtrl.h"
 #include "gui/AlbumPanel.h"
 #include "gui/AlbumImagePanel.h"
 /*

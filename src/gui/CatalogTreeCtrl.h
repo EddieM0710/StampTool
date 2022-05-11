@@ -17,7 +17,7 @@
 #include <wx/imaglist.h>
 #include "gui/IconDefs.h"
 
-#include "album/AlbumNode.h"
+#include "design/AlbumBase.h"
  /**
   *
   *  @brief menu and control ids
@@ -48,17 +48,17 @@ namespace Utils { class StampLink; }
   * data associated with each node in the tree
   *
   **************************************************/
-class CatalogDataTreeItemData : public wxTreeItemData
+class CatalogTreeItemData : public wxTreeItemData
 {
 public:
     /**
-     * @brief CatalogDataTreeItemData Constructor
+     * @brief CatalogTreeItemData Constructor
      *
      * @param   type    :
      * @param   desc    :
      * @param   ele :
      **************************************************/
-    CatalogDataTreeItemData( Catalog::CatalogNodeType type, const wxString desc,
+    CatalogTreeItemData( Catalog::CatalogBaseType type, const wxString desc,
         wxXmlNode* ele = 0 )
     {
         m_type = type;
@@ -75,7 +75,7 @@ public:
      *
      * @param  ele :
      ***************************************************/
-    void SetNodeElement( wxXmlNode* ele ) { m_element = ele; };
+    void SetCatNode( wxXmlNode* ele ) { m_element = ele; };
 
 
 
@@ -89,22 +89,22 @@ public:
      *
      * @param   type :
      **************************************************/
-    void SetType( Catalog::CatalogNodeType type ) { m_type = type; };
+    void SetType( Catalog::CatalogBaseType type ) { m_type = type; };
 
     /**
      *
-     * @return {CatalogNodeType}   :
+     * @return {CatalogBaseType}   :
      **************************************************/
-    Catalog::CatalogNodeType GetType( ) { return m_type; };
+    Catalog::CatalogBaseType GetType( ) { return m_type; };
 
-    Layout::AlbumNode* GetAlbumNode( ) { return m_AlbumNode; }
-    void SetAlbumNode( Layout::AlbumNode* node ) { m_AlbumNode = node; }
+    Utils::StampLink* GetStampLink( ) { return m_stampLink; }
+    void SetStampLink( Utils::StampLink* link ) { m_stampLink = link; }
 
 private:
     wxXmlNode* m_element;
     wxString m_desc;
-    Catalog::CatalogNodeType m_type;
-    Layout::AlbumNode* m_AlbumNode;
+    Catalog::CatalogBaseType m_type;
+    Utils::StampLink* m_stampLink;
 };
 
 /**
@@ -218,8 +218,9 @@ public:
      * @param  itemID :
      **************************************************/
     void SetNextState( const wxTreeItemId& itemID );
-    void AppendAlbumStamp( wxTreeItemId itemId );
+    Utils::StampLink* AppendAlbumStamp( wxTreeItemId itemId );
     void DeleteAlbumStamp( wxTreeItemId itemId );
+    void RemoveStampLink( wxTreeItemId itemId );
 
 
     /**
@@ -263,6 +264,7 @@ public:
      */
     wxTreeItemId AddChild( wxTreeItemId parent, wxXmlNode* child );
 
+    void ClearCatalogTree( );   
 
     /**
      *
@@ -394,7 +396,7 @@ public:
 
     wxXmlNode* GetStampNode( wxTreeItemId itemId );
     wxString GetStampID( wxTreeItemId itemId );
-    Utils::StampLink* GetStampLink( wxTreeItemId itemId );
+    Utils::StampLink* FindStampLink( wxTreeItemId itemId );
     void EnableState( wxTreeItemId id );
     void DisableState( wxTreeItemId id );
     void SetStates( bool enable );

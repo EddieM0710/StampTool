@@ -12,15 +12,15 @@
 #ifndef Row_H
 #define Row_H
 
-#include "album/LayoutNode.h"
+#include "design/LayoutBase.h"
 
-namespace Layout {
+namespace Design {
 
     /**
-     * @brief Row layout object; Inherits from LayoutNode.  The Row can contain Column or Stamp objects.
+     * @brief Row layout object; Inherits from LayoutBase.  The Row can contain Column or Stamp objects.
      *
      **************************************************/
-    class Row : public LayoutNode
+    class Row : public LayoutBase
     {
     public:
         /**
@@ -28,10 +28,10 @@ namespace Layout {
          *
          * @param parent
          **************************************************/
-        Row( AlbumNode* parent, wxXmlNode* node ) : LayoutNode( parent, node )
+        Row( AlbumBase* parent, wxXmlNode* node ) : LayoutBase( parent, node )
         { 
             SetNodeType( AT_Row ); 
-            SetObjectName( AlbumNodeNames[GetNodeType() ] );
+            SetObjectName( AlbumBaseNames[GetNodeType() ] );
         };
 
         /**
@@ -69,7 +69,7 @@ namespace Layout {
          **************************************************/
         wxXmlNode* Write( wxXmlNode* parent );
 
-        AlbumNodeStatus ValidateNode();
+        AlbumBaseStatus ValidateNode();
 
     private:
 

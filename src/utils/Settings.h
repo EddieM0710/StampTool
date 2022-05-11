@@ -43,16 +43,28 @@ namespace Utils {
         wxString GetUpperPeriod( ) { return m_upperPeriod; };
 
 
-        void SetConfigurationDirectory( wxString val ) { m_configurationDirectory = val; m_dirty = true; };
-        void SetWorkingDirectory( wxString dir ) { m_workingDirectory = dir;  m_dirty = true; };        void SetImageDirectory( wxString val ) { m_imageDirectory = val; m_dirty = true; };
-        void SetCatalogID( wxString val ) { m_catalogID = val;  m_dirty = true; };
-        void SetCountryID( wxString val ) { m_countryID = val; m_dirty = true; };
+        void SetConfigurationDirectory( wxString val ) { 
+            m_configurationDirectory = val; 
+            m_configurationDirectory.Trim();
+            m_dirty = true; };
+        void SetWorkingDirectory( wxString dir ) { m_workingDirectory = dir;  m_dirty = true; };        
+        void SetImageDirectory( wxString val ) { m_imageDirectory = val; 
+            m_configurationDirectory.Trim();m_dirty = true; };
+        void SetCatalogID( wxString val ) { m_catalogID = val;  
+            m_configurationDirectory.Trim();m_dirty = true; };
+        void SetCountryID( wxString val ) { m_countryID = val; 
+            m_configurationDirectory.Trim();m_dirty = true; };
         void SetLoadLastFileAtStartUp( bool state = true ) { m_loadLastFileAtStartUp = state; };
-        void SetLowerDivision( wxString val ) { m_lowerDivision = val;  m_dirty = true; };
-        void SetLowerPeriod( wxString val ) { m_lowerPeriod = val;  m_dirty = true; };
-        void SetMiddlePeriod( wxString val ) { m_middlePeriod = val; m_dirty = true; };
-        void SetUpperDivision( wxString val ) { m_upperDivision = val;  m_dirty = true; };
-        void SetUpperPeriod( wxString val ) { m_upperPeriod = val; m_dirty = true; };
+        void SetLowerDivision( wxString val ) { m_lowerDivision = val;  
+            m_configurationDirectory.Trim();m_dirty = true; };
+        void SetLowerPeriod( wxString val ) { m_lowerPeriod = val;  
+            m_configurationDirectory.Trim();m_dirty = true; };
+        void SetMiddlePeriod( wxString val ) { m_middlePeriod = val; 
+            m_configurationDirectory.Trim();m_dirty = true; };
+        void SetUpperDivision( wxString val ) { m_upperDivision = val;  
+            m_configurationDirectory.Trim();m_dirty = true; };
+        void SetUpperPeriod( wxString val ) { m_upperPeriod = val; 
+            m_configurationDirectory.Trim();m_dirty = true; };
 
         int GetNextSortClassification( int current );
 
@@ -98,8 +110,7 @@ namespace Utils {
         void SetDirty( bool state = true ) { m_dirty = state; };
         bool isDirty( ) { return m_dirty; };
         void SetDefaults();
-
-
+ 
     private:
         wxString m_lastFile;
         bool m_loadLastFileAtStartUp;
@@ -115,8 +126,23 @@ namespace Utils {
         wxString m_middlePeriod;
         wxString m_upperPeriod;
         wxArrayString m_recentFiles;
-
         int m_nbrRecentPreference;
+
+        const wxString m_defaultLastFile = "";
+        const bool m_defaultloadLastFileAtStartUp = true;
+        const wxString m_defaultWorkingDirectory = "";
+        const wxString m_defaultConfigurationDirectory = "";
+        const wxString m_defaultImageDirectory = "";
+        const wxString m_defaultCountryID = "US";
+        const wxString m_defaultCatalogID = "SN";
+        wxArrayInt m_defaultSortOrder;
+        const wxString m_defaultLowerDivision = "1950";
+        const wxString m_defaultUpperDivision = "2000";
+        const wxString m_defaultLowerPeriod = "Antique";
+        const wxString m_defaultMiddlePeriod = "Classical";
+        const wxString m_defaultUpperPeriod = "Modern";
+        //const wxArrayString m_defaultrecentFiles;
+        const int m_defaultNbrRecentPreference = 4;
         bool m_dirty;
     };
 }

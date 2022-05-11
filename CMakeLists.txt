@@ -12,7 +12,7 @@ set( build_Directory "${CMAKE_CURRENT_SOURCE_DIR}/build" )
 set( src_Directory "${CMAKE_CURRENT_SOURCE_DIR}/src" )
 set( AlbumGen_Source_Directory "${CMAKE_CURRENT_SOURCE_DIR}/src"  )
 set( AlbumGen_ODTFiles_Source_Directory "${CMAKE_CURRENT_SOURCE_DIR}/src/odt"  )
-set( AlbumGen_AlbumFiles_Source_Directory "${CMAKE_CURRENT_SOURCE_DIR}/src/album"  )
+set( AlbumGen_DesignFiles_Source_Directory "${CMAKE_CURRENT_SOURCE_DIR}/src/design"  )
 set( AlbumGen_CatalogFiles_Source_Directory "${CMAKE_CURRENT_SOURCE_DIR}/src/catalog"  )
 set( AlbumGen_GuiFiles_Source_Directory "${CMAKE_CURRENT_SOURCE_DIR}/src/gui"  )
 set( AlbumGen_UtilsFiles_Source_Directory "${CMAKE_CURRENT_SOURCE_DIR}/src/utils"  )
@@ -22,7 +22,7 @@ include_directories( ${AlbumGen_Source_Directory}
             ${AlbumGen_GuiFiles_Source_Directory} 
             ${AlbumGen_UtilsFiles_Source_Directory}
             ${AlbumGen_ODTFiles_Source_Directory}
-            ${AlbumGen_AlbumFiles_Source_Directory}
+            ${AlbumGen_DesignFiles_Source_Directory}
             ${AlbumGen_CatalogFiles_Source_Directory} ${WXWIN})
 
 add_subdirectory (src)

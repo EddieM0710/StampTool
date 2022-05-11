@@ -38,8 +38,13 @@ wxDECLARE_APP( AlbumGenApp );
 
 namespace Utils {
 
+
     Settings::Settings( )
     {
+            m_defaultSortOrder.Add( Catalog::NT_Period );
+            m_defaultSortOrder.Add( Catalog::NT_Decade );
+            m_defaultSortOrder.Add( Catalog::NT_Year );
+            m_defaultSortOrder.Add( Catalog::NT_Emission );
 
         wxString homeDir = wxGetHomeDir( );
         wxFileName* fileName = new wxFileName( homeDir, "" );
@@ -61,7 +66,7 @@ namespace Utils {
 
 
         Load( );
-        SetDirty( false );
+
     };
 
     int Settings::GetNextSortClassification( int current )
@@ -102,6 +107,7 @@ namespace Utils {
             frame->SetupRecentMenu( );
         }
         m_lastFile = file;
+        SetDirty();
     };
 
 
@@ -150,13 +156,19 @@ namespace Utils {
         wxXmlNode* settings = NewNode( &doc, "Settings" );
 
         wxXmlNode* child = NewNode( settings, "ImageDirectory" );
-        child->SetContent( GetImageDirectory( ) );
+        if ( child )
+        {
+            child = NewNode( child, "File" );
+            child->AddAttribute("Name", GetImageDirectory());
+        }
 
         child = NewNode( settings, "LastFile" );
-        child->SetContent( GetLastFile( ) );
-
-        child = NewNode( settings, "LoadLastFileAtStartUp" );
-        child->SetContent( Bool2String( GetLoadLastFileAtStartUp( ) ) );
+        if ( child )
+        {
+            child->AddAttribute( "LoadLastFileAtStartUp", Bool2String( GetLoadLastFileAtStartUp( )));
+            child = NewNode( child, "File" );
+            child->AddAttribute("Name", GetLastFile());
+        }
 
         wxXmlNode* sortOrder = NewNode( settings, "SortOrder" );
         wxArrayInt* sortOrderArray = GetSortOrder( );
@@ -165,44 +177,50 @@ namespace Utils {
             if ( sortOrderArray->Item( i ) >= 0 )
             {
                 child = NewNode( sortOrder, "Classification" );
-                child->SetContent( Catalog::CatalogNodeNames[sortOrderArray->Item( i ) ] );
+                child->AddAttribute( "Name", Catalog::CatalogBaseNames[sortOrderArray->Item( i ) ] );
             }
         }
+
         wxXmlNode* division = NewNode( settings, "PeriodDivision" );
-        wxXmlNode* lowerDivision = NewNode( division, "LowerDivision" );
-        lowerDivision->SetContent( GetLowerDivision( ) );
-        wxXmlNode* upperDivision = NewNode( division, "UpperDivision" );
-        upperDivision->SetContent( GetUpperDivision( ) );
+        if(division)
+        {
+            division->AddAttribute("LowerDivision", GetLowerDivision( ) );
+            division->AddAttribute("UpperDivision", GetUpperDivision( ) );
+        }
 
         wxXmlNode* periods = NewNode( settings, "Periods" );
-        wxXmlNode* lowerPeriod = NewNode( periods, "LowerPeriod" );
-        lowerPeriod->SetContent( GetLowerPeriod( ) );
-        wxXmlNode* middlePeriod = NewNode( periods, "MiddlePeriod" );
-        middlePeriod->SetContent( GetMiddlePeriod( ) );
-        wxXmlNode* upperPeriod = NewNode( periods, "UpperPeriod" );
-        upperPeriod->SetContent( GetUpperPeriod( ) );
+        if ( periods )
+        {
+            periods->AddAttribute("LowerPeriod", GetLowerPeriod( ) );
+            periods->AddAttribute("MiddlePeriod", GetMiddlePeriod( ) );
+            periods->AddAttribute("UpperPeriod", GetUpperPeriod( ) );
+        }
 
         wxArrayString* recentArray = GetRecentArray( );
-        if ( !recentArray->IsEmpty( ) )
+        wxXmlNode* recent = NewNode( settings, "RecentFileList" );
+        if ( recent )
         {
-            wxXmlNode* recent = NewNode( settings, "RecentFileList" );
-            if ( recent )
+            int nbr = GetNbrRecentPreference( );
+            char str[ 20 ];
+            sprintf( str, "%d", nbr );
+            recent->AddAttribute("NbrRecentPreference", str);
+
+            for ( int i = 0; i < recentArray->Count( ); i++ )
             {
-                for ( int i = 0; i < recentArray->Count( ); i++ )
-                {
-                    wxXmlNode* recentFile = NewNode( recent, "File" );
-                    recentFile->SetContent( recentArray->Item( i ) );
-                }
+                wxXmlNode* recentFile = NewNode( recent, "File" );
+                recentFile->AddAttribute("Name",  recentArray->Item( i ));
             }
         }
 
-        child = NewNode( settings, "NbrRecentPreference" );
-        int nbr = GetNbrRecentPreference( );
-        char str[ 20 ];
-        sprintf( str, "%d", nbr );
-        child->SetContent( str );
+        wxXmlNode* idPref = NewNode( settings, "IDPreference" );
+        if ( recent )
+        {
+            idPref->AddAttribute("CatalogID", m_catalogID);      
+            idPref->AddAttribute("CountryID", m_countryID);
+        }
         const char* file = fullPath.c_str( );
         doc.Save( file );
+        SetDirty(false);
     }
 
     void Settings::SetSettingValue( wxString& setting, wxXmlNode* parent, wxString childName, wxString defaultVal )
@@ -211,9 +229,15 @@ namespace Utils {
         if ( childNode )
         {
             setting = childNode->GetNodeContent( );
+            if ( setting.IsEmpty() ) 
+            {
+                SetDirty();
+                setting = defaultVal;                
+            }
         }
         else
         {
+            SetDirty();
             setting = defaultVal;
         }
     }
@@ -223,21 +247,55 @@ namespace Utils {
 
         if (m_sortOrder.Count() <= 0 )
         {
+            SetDirty();
             m_sortOrder.Add( Catalog::NT_Period );
             m_sortOrder.Add( Catalog::NT_Decade );
             m_sortOrder.Add( Catalog::NT_Year );
             m_sortOrder.Add( Catalog::NT_Emission );
         }
-        if ( m_lowerDivision.IsEmpty() ) m_lowerDivision = "1950";
-        if ( m_upperDivision.IsEmpty() )m_upperDivision = "2000";
-        if ( m_lowerPeriod.IsEmpty() ) m_lowerPeriod = "Antique";
-        if ( m_middlePeriod.IsEmpty() ) m_middlePeriod = "Classical";
-        if ( m_upperPeriod.IsEmpty() ) m_upperPeriod = "Modern";
-        if ( m_countryID.IsEmpty() ) m_countryID = "US";
-        if ( m_catalogID.IsEmpty() ) m_catalogID = "SN";
+        if ( m_lowerDivision.IsEmpty() ) 
+        {
+            SetDirty();
+            m_lowerDivision = m_defaultLowerDivision;
+        }
+        if ( m_upperDivision.IsEmpty() ) 
+        {
+            SetDirty();
+            m_upperDivision = m_defaultUpperDivision;
+        }
+        if ( m_lowerPeriod.IsEmpty() )  
+        {
+            SetDirty();
+            m_lowerPeriod = m_defaultLowerPeriod;
+        }
+        if ( m_middlePeriod.IsEmpty() )  
+        {
+            SetDirty();
+            m_middlePeriod = m_defaultMiddlePeriod;
+        }
+        if ( m_upperPeriod.IsEmpty() )  
+        {
+            SetDirty();
+            m_upperPeriod = m_defaultUpperPeriod;
+        }
+        if ( m_countryID.IsEmpty() )  
+        {
+            SetDirty();
+            m_countryID = m_defaultCountryID;
+        }
+        if ( m_catalogID.IsEmpty() )  
+        {
+            SetDirty();
+            m_catalogID = m_defaultCatalogID;
+        }
 
-        if ( m_nbrRecentPreference <= 0 ) m_nbrRecentPreference = 0;;
+        if ( m_nbrRecentPreference <= 0 )  
+        {
+            SetDirty();
+            m_nbrRecentPreference = m_defaultNbrRecentPreference;
+        }
     }
+
     void Settings::Load( )
     {
         wxFileName* filename
@@ -248,6 +306,7 @@ namespace Utils {
 
         if ( !ok )
         {
+            SetDirty();
             std::cout << fullPath << " Load Failed.\n";
             // Loading the ettings.xml file failed
             // add defaults here and return
@@ -260,7 +319,7 @@ namespace Utils {
 
             SetLastFile( "" );
             SetNbrRecentPreference( 4 );
-
+            Save();
             return;
 
         }
@@ -283,8 +342,8 @@ namespace Utils {
             child = FirstChildElement( sortOrder, "Classification" );
             while ( child )
             {
-                wxString name = child->GetNodeContent( );
-                Catalog::CatalogNodeType type = Catalog::FindCatalogNodeType( name );
+                wxString name = child->GetAttribute( "Name");
+                Catalog::CatalogBaseType type = Catalog::FindCatalogBaseType( name );
                 if ( type > -1 )
                 {
                     sortOrderArray->Add( type );
@@ -292,66 +351,102 @@ namespace Utils {
                 child = GetNext( child, "Classification" );
             }
         }
-        for ( int i = sortOrderArray->Count( ); i < 5; i++ )
-        {
-            sortOrderArray->Add( -1 );
-        }
 
         wxXmlNode* division = FirstChildElement( root, "PeriodDivision" );
         if ( division )
         {
-            SetSettingValue( m_lowerDivision, division, "LowerDivision", "1950" );
-            SetSettingValue( m_upperDivision, division, "UpperDivision", "2000" );
+            m_lowerDivision = division->GetAttribute( "LowerDivision");
+            if( m_lowerDivision.IsEmpty() )
+            {
+               m_lowerDivision = m_defaultLowerDivision; 
+            }
+            m_upperDivision = division->GetAttribute( "UpperDivision");
+            if( m_upperDivision.IsEmpty() )
+            {
+               m_upperDivision = m_defaultUpperDivision; 
+            }
         }
         wxXmlNode* periods = FirstChildElement( root, "Periods" );
         if ( periods )
         {
-            SetSettingValue( m_lowerPeriod, periods, "LowerPeriod", "Antique" );
-            SetSettingValue( m_middlePeriod, periods, "MiddlePeriod", "Classical" );
-            SetSettingValue( m_upperPeriod, periods, "UpperPeriod", "Modern" );
+            m_lowerPeriod = periods->GetAttribute( "LowerPeriod");
+            if( m_lowerPeriod.IsEmpty() )
+            {
+               m_lowerPeriod = m_defaultLowerPeriod; 
+            }
+            m_middlePeriod = periods->GetAttribute( "MiddlePeriod");
+            if( m_middlePeriod.IsEmpty() )
+            {
+               m_middlePeriod = m_defaultMiddlePeriod; 
+            }
+            m_upperPeriod = periods->GetAttribute( "UpperPeriod");
+            if( m_upperPeriod.IsEmpty() )
+            {
+               m_upperPeriod = m_defaultUpperPeriod; 
+            }
         }
-        SetSettingValue( m_lastFile, root, "LastFile", "" );
 
-        wxXmlNode* loadLastFile = FirstChildElement( root, "LoadLastFileAtStartUp" );
-        if ( loadLastFile )
+        wxXmlNode* lastFile = FirstChildElement( root, "LastFile" );
+        if ( lastFile )
         {
-            bool isTrue = !strcmp( loadLastFile->GetNodeContent( ), "true" );
+            wxString loadLastFile = lastFile->GetAttribute( "LoadLastFileAtStartUp");
+            bool isTrue = !loadLastFile.Cmp("true" );
             SetLoadLastFileAtStartUp( isTrue );
+
+            wxXmlNode* child = FirstChildElement( lastFile, "File" );
+            if ( child )
+            {
+                m_lastFile = child->GetAttribute("Name");
+            }
         }
-        else
-        {
-            SetLoadLastFileAtStartUp( true );
-        }
-        std::cout << "LastFile: " << GetLastFile( ) << "\n";
-        std::cout << "LoadLastFileAtStartUp: " << GetLoadLastFileAtStartUp( ) << "\n";
 
         SetSettingValue( m_imageDirectory, root, "ImageDirectory", "" );
 
-        SetSettingValue( m_catalogID, root, "CatalogID", "SN" );
-
-        SetSettingValue( m_countryID, root, "CountryID", "US" );
-
-        wxString str;
-        SetSettingValue( str, root, "NbrRecentPreference", "4" );
-        long nbr;
-        str.ToLong( &nbr );
-        m_nbrRecentPreference = nbr;
-
-        wxArrayString* recentArray = GetRecentArray( );
-        wxXmlNode* recent = FirstChildElement( root, "RecentFileList" );
-        if ( recent )
+        wxXmlNode* imageDirectory = FirstChildElement( root, "ImageDirectory" );
+        if ( imageDirectory )
         {
-            wxXmlNode* recentFile = FirstChildElement( recent, "File" );
-            while ( recentFile )
+
+            wxXmlNode* child = FirstChildElement( imageDirectory, "File" );
+            if ( child )
             {
-                recentArray->Add( recentFile->GetNodeContent( ) );
-                recentFile = GetNext( recent, "File" );
+                m_imageDirectory = child->GetAttribute("Name");
             }
         }
-        SetSettingValue( m_lastFile, root, "LastFile", "" );
 
-        SetSettingValue( str, root, "LoadLastFileAtStartUp", "true" );
-        m_loadLastFileAtStartUp = String2Bool( str );
+        wxXmlNode* idPref = FirstChildElement( root, "IDPreference" );
+        if ( idPref )
+        {
+            m_catalogID = idPref->GetAttribute( "CatalogID");
+            if( m_catalogID.IsEmpty() )
+            {
+               m_catalogID = m_defaultCatalogID; 
+            }
+            m_countryID = idPref->GetAttribute( "CountryID");
+            if( m_countryID.IsEmpty() )
+            {
+               m_countryID = m_defaultCountryID; 
+            }
+        }
+        wxArrayString* recentArray = GetRecentArray( );
+
+        wxXmlNode* recentList = FirstChildElement( root, "RecentFileList" );
+        if ( recentList )
+        {
+            wxString nbeRecentPref = recentList->GetAttribute( "NbrRecentPreference");
+            long nbr;
+            nbeRecentPref.ToLong( &nbr );
+            m_nbrRecentPreference = nbr;
+
+            child = FirstChildElement( recentList, "File" );
+            while ( child )
+            {
+                wxString name = child->GetAttribute( "Name");
+                recentArray->Add( name );
+                child = GetNext( child, "File" );
+            }
+        }
+
         SetDefaults();  
+        Save();
     }
 }

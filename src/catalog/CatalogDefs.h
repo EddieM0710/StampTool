@@ -43,7 +43,7 @@ class CatalogData;
 
 
     /**
-     * @enum CatalogNodeType
+     * @enum CatalogBaseType
      *
      * @brief Enum defining stamp node types.
      *
@@ -62,7 +62,7 @@ class CatalogData;
         NT_Specimen,
         NT_CatalogCode,
         NT_NbrTypes
-    } CatalogNodeType;
+    } CatalogBaseType;
 
     /**
      * @enum PeriodType
@@ -297,18 +297,18 @@ class CatalogData;
      * @note This is the name used for the tree node; not the wxXmlNode node.
      *
      **************************************************/
-    extern  wxString CatalogNodeNames[NT_NbrTypes];
+    extern  wxString CatalogBaseNames[NT_NbrTypes];
 
 
     extern  const wxString CT_Names[ CT_NbrTypes ];
 
     /**
-     * @brief Look thru all the CatalogNodeNames to find "name"
-     * and return the corresponding CatalogNodeType enum
+     * @brief Look thru all the CatalogBaseNames to find "name"
+     * and return the corresponding CatalogBaseType enum
      * @param   name : name of the node to find the Type of
-     * @return {CatalogNodeType}      :  enum or -1 if not found.
+     * @return {CatalogBaseType}      :  enum or -1 if not found.
      **************************************************/
-    CatalogNodeType FindCatalogNodeType( wxString name );
+    CatalogBaseType FindCatalogBaseType( wxString name );
 
     CatalogData* GetCatalogData( void );
 
@@ -323,10 +323,10 @@ class CatalogData;
      * @param type  element type
      * @return true  if a match
      **************************************************/
-    bool IsCatalogNodeType( wxXmlNode* ele, CatalogNodeType type );
+    bool IsCatalogBaseType( wxXmlNode* ele, CatalogBaseType type );
 
 
-    CatalogNodeType FindCatalogNodeType( wxXmlNode* element );
+    CatalogBaseType FindCatalogBaseType( wxXmlNode* element );
 
     // void AddStamp(wxXmlNode *child)
     // {
@@ -338,14 +338,14 @@ class CatalogData;
     //     level++;
     //     wxString name = child->GetName( );
     //     wxString parentName = parent->GetName( );
-    //     CatalogNodeType parentType = FindCatalogNodeType( parentName );
+    //     CatalogBaseType parentType = FindCatalogBaseType( parentName );
     //     //    std::cout << "AddStamp  ParentName:" << parentName
-    //     //        << "  ParentType:" << CatalogNodeNames[ parentType ]
+    //     //        << "  ParentType:" << CatalogBaseNames[ parentType ]
     //     //        << "  ChildName:" << name << "level" << level << "\n";
-    //     if ( name == CatalogNodeNames[ NT_Stamp ] )
+    //     if ( name == CatalogBaseNames[ NT_Stamp ] )
     //     {
     //         Stamp stamp( child );
-    //         CatalogNodeType sortType = ( CatalogNodeType )GetSettings( )->GetNextSortClassification(
+    //         CatalogBaseType sortType = ( CatalogBaseType )GetSettings( )->GetNextSortClassification(
     //             ( int )parentType );
     //         if ( ( sortType < NT_Catalog ) || ( sortType >= NT_Stamp ) )
     //         {
@@ -357,9 +357,9 @@ class CatalogData;
     //         }
     //         else
     //         {
-    //             //            std::cout << "     SortType: " << CatalogNodeNames[ sortType ]
+    //             //            std::cout << "     SortType: " << CatalogBaseNames[ sortType ]
     //             //                << "\n";
-    //             wxString nodeName = CatalogNodeNames[ sortType ];
+    //             wxString nodeName = CatalogBaseNames[ sortType ];
     //             wxString name = stamp.GetClassificationName( &stamp, sortType );
     //             const char* nameStr = name;
     //             const char* nodeNameStr = nodeName;
@@ -425,7 +425,7 @@ class CatalogData;
     //     wxXmlNode* child = parent->GetChildren( );
     //     while ( child )
     //     {
-    //         if ( !CatalogNodeNames[ NT_Stamp ].Cmp( child->GetName( ) ) )
+    //         if ( !CatalogBaseNames[ NT_Stamp ].Cmp( child->GetName( ) ) )
     //         {
     //             // Make a copy of the old child in the new doc and insert it
     //             wxXmlNode* newChildNode = new wxXmlNode( *child );

@@ -9,16 +9,16 @@
  *
  **************************************************/
 
-#include "album/TitlePage.h"
+#include "design/TitlePage.h"
 
-namespace Layout {
+namespace Design {
 
 
     void TitlePage::UpdateMinimumSize( )
     {
-        for ( AlbumNodeList::iterator it = std::begin(m_layoutChildArray ); it != std::end( m_layoutChildArray ); ++it )
+        for ( AlbumBaseList::iterator it = std::begin(m_layoutChildArray ); it != std::end( m_layoutChildArray ); ++it )
         {
-            LayoutNode* child = ( LayoutNode* )( *it );;
+            LayoutBase* child = ( LayoutBase* )( *it );;
             child->UpdateMinimumSize( );
         }
     }
@@ -27,9 +27,9 @@ namespace Layout {
     {
         // go to the bottom of each child container object ( row, column, page) 
         // and begin filling in position relative to the parent
-        for ( AlbumNodeList::iterator it = std::begin(m_layoutChildArray ); it != std::end( m_layoutChildArray ); ++it )
+        for ( AlbumBaseList::iterator it = std::begin(m_layoutChildArray ); it != std::end( m_layoutChildArray ); ++it )
         {
-            LayoutNode* child = ( LayoutNode* )( *it );
+            LayoutBase* child = ( LayoutBase* )( *it );
             child->UpdatePositions( );
         }
     }
@@ -38,9 +38,9 @@ namespace Layout {
 
     }
 
-    AlbumNodeStatus TitlePage::ValidateNode()
+    AlbumBaseStatus TitlePage::ValidateNode()
      {
-        AlbumNodeStatus status = AT_OK;
+        AlbumBaseStatus status = AT_OK;
         if ( !HasChildren() )
         {
             if ( GetHeight() <= 0.0)

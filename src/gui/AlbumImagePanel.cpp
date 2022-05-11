@@ -23,9 +23,9 @@
 
 #include "Defs.h"
 #include "AlbumImagePanel.h"
-#include "album/AlbumData.h"
-#include "album/AlbumDefs.h"
-#include "album/LayoutNode.h"
+#include "design/DesignData.h"
+#include "design/DesignDefs.h"
+#include "design/LayoutBase.h"
 #include "utils/Project.h"
 #include "wx/file.h"
 #include "wx/filename.h"
@@ -34,8 +34,8 @@
 #include <wx/treectrl.h>
 
 #include "art/NotFound.xpm"
-#include "album/LayoutNode.h"
-#include "gui/AlbumTreeCtrl.h"
+#include "design/LayoutBase.h"
+#include "gui/DesignTreeCtrl.h"
 
 /*
  * AlbumImagePanel type definition
@@ -262,14 +262,14 @@ void AlbumImagePanel::OnZoom( wxCommandEvent& event )
     Refresh( );
 }
 
-void AlbumImagePanel::Draw( wxPaintDC &dc, Layout::LayoutNode* node, wxPoint pt)
+void AlbumImagePanel::Draw( wxPaintDC &dc, Design::LayoutBase* node, wxPoint pt)
 {
     wxPoint newPoint( pt.x + node->GetXPos(), pt.y + node->GetYPos() );
     wxRect rect(pt.x, pt.y, node->GetWidth(), node->GetHeight() );
     dc.DrawRectangle(rect);
-    for ( Layout::AlbumNodeList::iterator it = node->BeginAlbumNodeList( ); it != node->EndAlbumNodeList(); ++it )
+    for ( Design::AlbumBaseList::iterator it = node->BeginAlbumBaseList( ); it != node->EndAlbumBaseList(); ++it )
     {
-        Layout::LayoutNode* child = ( Layout::LayoutNode* )( *it );
+        Design::LayoutBase* child = ( Design::LayoutBase* )( *it );
         Draw( dc, child, newPoint );
     }  
 }
@@ -284,7 +284,7 @@ void AlbumImagePanel::OnPaint( wxPaintEvent& event )
     DoPrepareDC( dc );
 
     dc.Clear( );
-    Layout::LayoutNode* pageNode = Layout::GetSelectedNodePage( );
+    Design::LayoutBase* pageNode = Design::GetSelectedNodePage( );
     if ( pageNode )
     {
         wxPoint pt( 0, 0 );

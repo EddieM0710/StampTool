@@ -12,15 +12,15 @@
 #ifndef Layout_Stamp_h
 #define Layout_Stamp_h
 
-#include "album/LayoutNode.h"
+#include "design/LayoutBase.h"
 
-namespace Layout {
+namespace Design {
 
 
     /**
      * @class Stamp
      *
-     * @brief Stamp layout object; Inherits from LayoutNode.
+     * @brief Stamp layout object; Inherits from LayoutBase.
      * The Object is built
      * up of 3 ODT objects. The outer object is the frame container
     *  for the stamp frame and the title text. The text is the only thing visible.
@@ -28,7 +28,7 @@ namespace Layout {
      * The 3rd one is embedded in the 2nd one and is the image of the object.
      *
      **************************************************/
-    class Stamp : public LayoutNode
+    class Stamp : public LayoutBase
     {
     public:
         /**
@@ -36,10 +36,10 @@ namespace Layout {
          *
          * @param parent
          **************************************************/
-        Stamp( AlbumNode* parent, wxXmlNode* node ) : LayoutNode( parent, node ) 
+        Stamp( AlbumBase* parent, wxXmlNode* node ) : LayoutBase( parent, node ) 
         {
              SetNodeType( AT_Stamp );
-            SetObjectName( AlbumNodeNames[GetNodeType() ] ); 
+            SetObjectName( AlbumBaseNames[GetNodeType() ] ); 
             };
 
         /**
@@ -97,7 +97,7 @@ namespace Layout {
         wxXmlNode* GetCatalogStamp( ) { return m_catalogStamp; };
         void SetCatalogStamp( wxXmlNode* node ) { m_catalogStamp = node; };
         
-        AlbumNodeStatus ValidateNode();
+        AlbumBaseStatus ValidateNode();
         
     private:
 

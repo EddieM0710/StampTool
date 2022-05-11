@@ -1,5 +1,5 @@
 /**
- * @file AlbumDefs.h
+ * @file DesignDefs.h
  * @author Eddie Monroe ()
  * @brief Resting place for Global stuff
  * @version 0.1
@@ -9,24 +9,24 @@
  *
  **************************************************/
 
-#ifndef AlbumDefs_H
-#define AlbumDefs_H
+#ifndef DesignDefs_H
+#define DesignDefs_H
 
 #include <wx/string.h>
 
-namespace Layout {
+namespace Design {
 
-    class AlbumData;
-    class LayoutNode;
+    class DesignData;
+    class LayoutBase;
     class Album;
     
     Album* GetAlbum( void );
 
-    AlbumData* GetAlbumData( void );
+    DesignData* GetDesignData( void );
 
-    AlbumData* SetAlbumData( AlbumData* albumData );
+    //DesignData* GetDesignData( DesignData* designData );
 
-    AlbumData* NewAlbumData( void );
+    DesignData* NewDesignData( void );
 
     typedef enum
     {
@@ -39,9 +39,9 @@ namespace Layout {
         AT_Stamp,
         AT_NbrAlbumTypes,
         AT_None = 999
-    } AlbumNodeType;
+    } AlbumBaseType;
 
-    extern wxString AlbumNodeNames[AT_NbrAlbumTypes];
+    extern wxString AlbumBaseNames[AT_NbrAlbumTypes];
 
     typedef enum
     {
@@ -62,7 +62,8 @@ namespace Layout {
         AT_MinWidth,
         AT_ID,
         AT_Link,
-        AT_NbrAttrTypes
+        AT_NbrAttrTypes,
+        AT_NOTYPE
     } AlbumAttrType;
 
     extern const char* AttrNameStrings[ AT_NbrAttrTypes ];
@@ -72,25 +73,25 @@ namespace Layout {
         AT_OK = 0,
         AT_WARING,
         AT_FATAL 
-    } AlbumNodeStatus;
+    } AlbumBaseStatus;
 
-    AlbumNodeType FindAlbumNodeType( wxString name );
+    AlbumBaseType FindAlbumBaseType( wxString name );
 
     /**
      * @brief Performs the initial instantiantion of all the sTart up data.
      *
      **************************************************/
-    void InitAlbumDefs( );
+    void InitDesignDefs( );
 
-    LayoutNode* GetSelectedNodePage( );
+    LayoutBase* GetSelectedNodePage( );
 
-   // LayoutNode* MakeNode( AlbumNodeType type, wxXmlNode* node );
+   // LayoutBase* MakeNode( AlbumBaseType type, wxXmlNode* node );
 
 
-    // wxString GetAttribute( AlbumNodeType type );
-    // double GetAttributeDbl( AlbumNodeType type );
-    // void SetAttrStr( AlbumNodeType type, wxString val );
-    // void SetAttrDbl( AlbumNodeType type, double val );
+    // wxString GetAttribute( AlbumBaseType type );
+    // double GetAttributeDbl( AlbumBaseType type );
+    // void SetAttrStr( AlbumBaseType type, wxString val );
+    // void SetAttrDbl( AlbumBaseType type, double val );
 
   
 

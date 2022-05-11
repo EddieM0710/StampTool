@@ -14,28 +14,34 @@
 
 #include "Defs.h"
 #include "catalog/CatalogData.h"
-#include "album/AlbumData.h"
+#include "design/DesignData.h"
 #include "utils/StampList.h"
 
-namespace Layout { class AlbumData; };
+namespace Design { class DesignData; };
 namespace Catalog { class CatalogData; };
 class CatalogTreeCtrl;
-class AlbumTreeCtrl;
+class DesignTreeCtrl;
 class DescriptionPanel;
 
 class GeneratorData
 {
 public:
- GeneratorData(){};
+ GeneratorData(){
+    m_catalogData = 0;
+    m_designData = 0;
+    m_catalogTreeCtrl = 0;
+    m_DesignTreeCtrl = 0;
+    m_descriptionPanel = 0;
+ };
  ~GeneratorData(){};
 
-    inline Utils::StampList& GetStampAlbumCatalogLink( ) { return m_StampAlbumCatalogLink; };
+    inline Utils::StampList* GetStampAlbumCatalogLink( ) { return &m_StampAlbumCatalogLink; };
 
     inline Catalog::CatalogData* GetCatalogData( ) { return m_catalogData; };
     void LoadCatalogData( wxString catalogFilename );
 
-    inline Layout::AlbumData* GetAlbumData( ) { return m_albumData; };
-    void LoadAlbumData( wxString albumFilename );
+    inline Design::DesignData* GetDesignData( ) { return m_designData; };
+    void LoadDesignData( wxString albumFilename );
 
     void SetCatalogData( Catalog::CatalogData* catalogData )
     {
@@ -47,29 +53,30 @@ public:
         m_catalogData = catalogData;
     };
 
-    void SetAlbumData( Layout::AlbumData* albumData )
-    {
-        if ( albumData != m_albumData )
-        {
-            delete m_albumData;
-            m_albumData = ( Layout::AlbumData* )0;
-        }
-        m_albumData = albumData;
-    };
+    // void SetDesignData( Design::DesignData* designData )
+    // {
+    //     if ( designData != m_designData )
+    //     {
+    //         delete m_designData;
+    //         m_designData = ( Design::DesignData* )0;
+    //     }
+    //     m_designData = designData;
+    // };
 
     inline CatalogTreeCtrl* GetCatalogTreeCtrl( ) { return m_catalogTreeCtrl; };
-    inline AlbumTreeCtrl* GetAlbumTreeCtrl( ) { return m_AlbumTreeCtrl; };
+    inline DesignTreeCtrl* GetDesignTreeCtrl( ) { return m_DesignTreeCtrl; };
     inline DescriptionPanel* GetDescriptionPanel(  ) { return m_descriptionPanel; };
     void SetCatalogTreeCtrl( CatalogTreeCtrl* treeCtrl ) { m_catalogTreeCtrl = treeCtrl; };
-    void SetAlbumTreeCtrl( AlbumTreeCtrl* treeCtrl ) { m_AlbumTreeCtrl = treeCtrl; };
+    void SetDesignTreeCtrl( DesignTreeCtrl* treeCtrl ) { m_DesignTreeCtrl = treeCtrl; };
     void SetDescriptionPanel( DescriptionPanel* descriptionPanel ) { m_descriptionPanel = descriptionPanel; };
+    Design::DesignData*  NewDesignData( void );
 
 private:
     Utils::StampList m_StampAlbumCatalogLink;
     Catalog::CatalogData* m_catalogData;
-    Layout::AlbumData* m_albumData;
+    Design::DesignData* m_designData;
     CatalogTreeCtrl* m_catalogTreeCtrl;
-    AlbumTreeCtrl* m_AlbumTreeCtrl;
+    DesignTreeCtrl* m_DesignTreeCtrl;
     DescriptionPanel* m_descriptionPanel;
 };
 #endif

@@ -3,7 +3,7 @@
 #define IconDefs_h
 
 #include "catalog/CatalogDefs.h"
-#include "album/AlbumDefs.h"
+#include "design/DesignDefs.h"
 
 #include "art/StampBlack.xpm"
 #include "art/StampBlue.xpm"
@@ -55,7 +55,7 @@ typedef enum
     Icon_Folder
 } IconID;
 
-extern IconID AlbumImageSelection[ Layout::AT_NbrAlbumTypes ][ 2 ];
+extern IconID AlbumImageSelection[ Design::AT_NbrAlbumTypes ][ 2 ];
 extern IconID CatalogImageSelection[ Catalog::FT_NbrTypes ][ 2 ] ;
 
 wxImageList* CreateAlbumImageList( );

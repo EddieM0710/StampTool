@@ -18,7 +18,7 @@
 #include <wx/string.h>
 
 #include "Defs.h"
-#include "CatalogNode.h"
+#include "CatalogBase.h"
 
 #include "wx/xml/xml.h"
 
@@ -29,19 +29,19 @@ namespace Catalog {
     /**
      * @brief This is a wrapper of an wxXmlNode for
      * safe/convenient getting/putting.
-     * @see CatalogNode, Stamp, Specimen
+     * @see CatalogBase, Stamp, Specimen
      *
      **************************************************/
-    class Specimen : public CatalogNode
+    class Specimen : public CatalogBase
     {
     public:
-        Specimen( ) : CatalogNode( )
+        Specimen( ) : CatalogBase( )
         {
             SetNodeType( NT_Specimen );
             IsOK( );
         };
 
-        Specimen( wxXmlNode* ele ) : CatalogNode( ele )
+        Specimen( wxXmlNode* ele ) : CatalogBase( ele )
         {
             SetNodeType( NT_Specimen );
             IsOK( );

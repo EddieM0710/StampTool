@@ -33,15 +33,15 @@ namespace Catalog {
 
     inline bool Stamp::IsOK( )
     {
-        wxXmlNode* ele = GetNodeElement( );
+        wxXmlNode* ele = GetCatXMLNode( );
         wxString str;
         if ( ele )
         {
             str = ele->GetName( );
-            str = CatalogNodeNames[ NT_Stamp ];
+            str = CatalogBaseNames[ NT_Stamp ];
         }
-        if ( GetNodeElement( )
-            && !CatalogNodeNames[ NT_Stamp ].Cmp( GetNodeElement( )->GetName( ) ) )
+        if ( GetCatXMLNode( )
+            && !CatalogBaseNames[ NT_Stamp ].Cmp( GetCatXMLNode( )->GetName( ) ) )
         {
             m_OK = true;
             return m_OK;
@@ -54,7 +54,7 @@ namespace Catalog {
     {
         if ( IsOK( ) )
         {
-            Utils::SetAttrStr( GetNodeElement( ), DT_XMLDataNames[ type ], val );
+            Utils::SetAttrStr( GetCatXMLNode( ), DT_XMLDataNames[ type ], val );
         };
     }
 
@@ -62,7 +62,7 @@ namespace Catalog {
     {
         if ( IsOK( ) )
         {
-            const wxXmlAttribute* attr = Utils::GetAttribute( GetNodeElement( ), DT_XMLDataNames[ type ] );
+            const wxXmlAttribute* attr = Utils::GetAttribute( GetCatXMLNode( ), DT_XMLDataNames[ type ] );
             if ( attr )
             {
                 return wxString::FromUTF8Unchecked( attr->GetValue( ) );
@@ -239,7 +239,7 @@ namespace Catalog {
     void Stamp::SetCatalogCodes( wxString val ) { SetAttr( DT_Catalog_Codes, val ); };
     void Stamp::SetAccuracy( wxString val ) { SetAttr( DT_Accuracy, val ); };
 
-    wxString Stamp::GetClassificationName( Stamp* stamp, CatalogNodeType type )
+    wxString Stamp::GetClassificationName( Stamp* stamp, CatalogBaseType type )
     {
         switch ( type )
         {
@@ -280,17 +280,17 @@ namespace Catalog {
 
     wxXmlNode* Stamp::AddSpecimen( )
     {
-        wxXmlNode* ele = GetNodeElement( );
+        wxXmlNode* ele = GetCatXMLNode( );
         if ( ele )
         {
-            return Utils::NewNode( ele, CatalogNodeNames[ NT_Specimen ] );
+            return Utils::NewNode( ele, CatalogBaseNames[ NT_Specimen ] );
         }
         return ( wxXmlNode* )0;
     }
 
     void Stamp::DeleteSpecimen( wxXmlNode* deleteThisNode )
     {
-        wxXmlNode* ele = GetNodeElement( );
+        wxXmlNode* ele = GetCatXMLNode( );
         if ( ele )
         {
             ele->RemoveChild( deleteThisNode );
@@ -299,10 +299,10 @@ namespace Catalog {
 
     bool Stamp::HasChildSpecimen( )
     {
-        wxXmlNode* ele = GetNodeElement( );
+        wxXmlNode* ele = GetCatXMLNode( );
         if ( ele )
         {
-            if ( Utils::FirstChildElement( ele, CatalogNodeNames[ NT_Specimen ] ) )
+            if ( Utils::FirstChildElement( ele, CatalogBaseNames[ NT_Specimen ] ) )
             {
                 return true;
             }
@@ -311,19 +311,19 @@ namespace Catalog {
     }
     wxXmlNode* Stamp::GetFirstChildSpecimen( )
     {
-        wxXmlNode* ele = GetNodeElement( );
+        wxXmlNode* ele = GetCatXMLNode( );
         if ( ele )
         {
-            return Utils::FirstChildElement( ele, CatalogNodeNames[ NT_Specimen ] );
+            return Utils::FirstChildElement( ele, CatalogBaseNames[ NT_Specimen ] );
         }
         return ( wxXmlNode* )0;
     }
     wxXmlNode* Stamp::GetNextChildSpecimen( )
     {
-        wxXmlNode* ele = GetNodeElement( );
+        wxXmlNode* ele = GetCatXMLNode( );
         if ( ele )
         {
-            return Utils::GetNext( ele, CatalogNodeNames[ NT_Specimen ] );
+            return Utils::GetNext( ele, CatalogBaseNames[ NT_Specimen ] );
         }
         return ( wxXmlNode* )0;
     }
@@ -331,17 +331,17 @@ namespace Catalog {
 
     wxXmlNode* Stamp::AddCode( )
     {
-        wxXmlNode* ele = GetNodeElement( );
+        wxXmlNode* ele = GetCatXMLNode( );
         if ( ele )
         {
-            return Utils::NewNode( ele, CatalogNodeNames[ NT_CatalogCode ] );
+            return Utils::NewNode( ele, CatalogBaseNames[ NT_CatalogCode ] );
         }
         return ( wxXmlNode* )0;
     }
 
     void Stamp::DeleteCode( wxXmlNode* deleteThisNode )
     {
-        wxXmlNode* ele = GetNodeElement( );
+        wxXmlNode* ele = GetCatXMLNode( );
         if ( ele )
         {
             ele->RemoveChild( deleteThisNode );
@@ -350,10 +350,10 @@ namespace Catalog {
 
     bool Stamp::HasChildCode( )
     {
-        wxXmlNode* ele = GetNodeElement( );
+        wxXmlNode* ele = GetCatXMLNode( );
         if ( ele )
         {
-            if ( Utils::FirstChildElement( ele, CatalogNodeNames[ NT_CatalogCode ] ) )
+            if ( Utils::FirstChildElement( ele, CatalogBaseNames[ NT_CatalogCode ] ) )
             {
                 return true;
             }
@@ -363,10 +363,10 @@ namespace Catalog {
 
     wxXmlNode* Stamp::GetFirstChildCode( )
     {
-        wxXmlNode* ele = GetNodeElement( );
+        wxXmlNode* ele = GetCatXMLNode( );
         if ( ele )
         {
-            return Utils::FirstChildElement( ele, CatalogNodeNames[ NT_CatalogCode ] );
+            return Utils::FirstChildElement( ele, CatalogBaseNames[ NT_CatalogCode ] );
         }
         return ( wxXmlNode* )0;
     }
@@ -375,17 +375,17 @@ namespace Catalog {
     {
         if ( ele )
         {
-            return Utils::GetNext( ele, CatalogNodeNames[ NT_CatalogCode ] );
+            return Utils::GetNext( ele, CatalogBaseNames[ NT_CatalogCode ] );
         }
         return ( wxXmlNode* )0;
     }
 
     wxXmlNode* Stamp::GetCodeForCatalog( const char* catalog )
     {
-        wxXmlNode* ele = GetNodeElement( );
+        wxXmlNode* ele = GetCatXMLNode( );
         if ( ele )
         {
-            wxXmlNode* childCode = Utils::FirstChildElement( ele, CatalogNodeNames[ NT_CatalogCode ] );
+            wxXmlNode* childCode = Utils::FirstChildElement( ele, CatalogBaseNames[ NT_CatalogCode ] );
             if ( childCode )
             {
                 const wxXmlAttribute* attr = Utils::GetAttribute( childCode, CC_CatalogCodeNames[ CC_Catalog ] );
@@ -436,7 +436,7 @@ namespace Catalog {
                 wxString country = valStr.Mid( 0, pos );
                 wxString id = valStr.Mid( pos + 1 );
 
-                wxXmlNode* catCodeElement = Utils::NewNode( GetNodeElement( ), CatalogNodeNames[ NT_CatalogCode ] );
+                wxXmlNode* catCodeElement = Utils::NewNode( GetCatXMLNode( ), CatalogBaseNames[ NT_CatalogCode ] );
 
                 CatalogCode* catCodeNode = new CatalogCode( catCodeElement );
                 catCodeNode->SetCatalog( catalog );

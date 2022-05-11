@@ -9,7 +9,7 @@
  *
  **************************************************/
 
-#include "album/Stamp.h"
+#include "design/Stamp.h"
 #include "odt/ODTDefs.h"
 #include "odt/Document.h"
 #include "utils/XMLUtilities.h"
@@ -17,7 +17,7 @@
 #include "catalog/CatalogData.h"
 #include "catalog/Stamp.h"
 
-namespace Layout {
+namespace Design {
 
 
     const double BorderAllowance = .2;
@@ -80,9 +80,9 @@ namespace Layout {
 
         //   m_imageLink = GetStampDataBase()->GetValue( S_Image, stampIndex);
 
-        for ( AlbumNodeList::iterator it = std::begin(m_layoutChildArray ); it != std::end( m_layoutChildArray ); ++it )
+        for ( AlbumBaseList::iterator it = std::begin(m_layoutChildArray ); it != std::end( m_layoutChildArray ); ++it )
         {
-            LayoutNode* child = ( LayoutNode* )( *it );
+            LayoutBase* child = ( LayoutBase* )( *it );
 
             child->UpdateMinimumSize( );
         }
@@ -100,7 +100,7 @@ namespace Layout {
         // // and begin filling in position relative to the parent
         // for ( int i = 0; i < ObjectArrayCount(); i++ )
         // {
-        //     LayoutNode* childItem = (LayoutNode*)ChildItem( i );
+        //     LayoutBase* childItem = (LayoutBase*)ChildItem( i );
         //     if ( !childItem-> UpdatePositions() )
         //     {
         //         return false;
@@ -232,9 +232,9 @@ namespace Layout {
 
         return image;
     }
-    AlbumNodeStatus Stamp::ValidateNode()
+    AlbumBaseStatus Stamp::ValidateNode()
     {
-        AlbumNodeStatus status = AT_OK;
+        AlbumBaseStatus status = AT_OK;
         if ( GetHeight() <= 0.0)
         {
             std::cout << "Terminal leaf node must define the height.\n";

@@ -26,7 +26,7 @@
 
 #include "Defs.h"
 #include "CatalogDefs.h"
-#include "AlbumDefs.h"
+#include "DesignDefs.h"
 #include "CatalogData.h"
 #include "Settings.h"
 #include "utils/Project.h"
@@ -59,16 +59,16 @@ inline Utils::Project* GetProject( )
 
 inline GeneratorData* GetGeneratorData(){ return GetProject()->GetGeneratorData();};
 
-Layout::AlbumData* GetAlbumData() { return GetGeneratorData()->GetAlbumData(); };
+Design::DesignData* GetDesignData() { return GetGeneratorData()->GetDesignData(); };
 Catalog::CatalogData* GetCatalogData() { return GetGeneratorData()->GetCatalogData(); };
 CatalogTreeCtrl* GetCatalogTreeCtrl(){ return GetGeneratorData()->GetCatalogTreeCtrl();};
-AlbumTreeCtrl* GetAlbumTreeCtrl( ){return GetGeneratorData()->GetAlbumTreeCtrl();};
+DesignTreeCtrl* GetDesignTreeCtrl( ){return GetGeneratorData()->GetDesignTreeCtrl();};
 
 
 void InitDefs( )
 {
     Catalog::InitCatalogDefs( );
-    Layout::InitAlbumDefs( );
+    Design::InitDesignDefs( );
 }
 
 void ReportError(  wxString funct, wxString msg, bool fatal )

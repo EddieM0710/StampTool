@@ -1,5 +1,5 @@
 /**
- * @file AlbumNode.cpp
+ * @file AlbumBase.cpp
  * @author Eddie Monroe
  * @brief
  * @version 0.1
@@ -18,18 +18,18 @@
 #include "wx/wx.h"
 #endif
 
-#include "album/AlbumNode.h"
+#include "design/AlbumBase.h"
 
-#include "album/TitlePage.h"
-#include "album/Page.h"
-#include "album/Title.h"
-#include "album/Row.h"
-#include "album/Column.h"
-#include "album/Stamp.h"
+#include "design/TitlePage.h"
+#include "design/Page.h"
+#include "design/Title.h"
+#include "design/Row.h"
+#include "design/Column.h"
+#include "design/Stamp.h"
 
-namespace Layout {
+namespace Design {
 
-    AlbumNode::AlbumNode(AlbumNode* parent, wxXmlNode* ele )
+    AlbumBase::AlbumBase(AlbumBase* parent, wxXmlNode* ele )
     {
         m_parent = parent;
         if( ele )
@@ -48,7 +48,7 @@ namespace Layout {
         }
     };
 
-    Attribute* AlbumNode::FindAttr( wxString name )
+    Attribute* AlbumBase::FindAttr( wxString name )
     {
         int cnt = m_attrArray.size( );
         for ( int i = 0; i < cnt; i++ )
@@ -62,7 +62,7 @@ namespace Layout {
         return ( Attribute* )0;
     };
 
-    bool AlbumNode::LoadAttributes( wxXmlNode* thisObject )
+    bool AlbumBase::LoadAttributes( wxXmlNode* thisObject )
     {
 
         const wxXmlAttribute* attr = thisObject->GetAttributes( );
@@ -76,7 +76,7 @@ namespace Layout {
         }
     }
 
-    wxString AlbumNode::GetAttrStr( wxString name )
+    wxString AlbumBase::GetAttrStr( wxString name )
     {
         Attribute* attr = FindAttr( name );
         if ( attr )
@@ -87,12 +87,12 @@ namespace Layout {
     }
 
 
-    wxString AlbumNode::GetAttrStr( AlbumAttrType type )
+    wxString AlbumBase::GetAttrStr( AlbumAttrType type )
     {
         return GetAttrStr( AttrNameStrings[ type ] );
     }
 
-    double AlbumNode::GetAttrDbl( wxString name )
+    double AlbumBase::GetAttrDbl( wxString name )
     {
         double val;
         wxString str = GetAttrStr( name );
@@ -104,18 +104,18 @@ namespace Layout {
         return 0.0;
     }
 
-    double AlbumNode::GetAttrDbl( AlbumAttrType type )
+    double AlbumBase::GetAttrDbl( AlbumAttrType type )
     {
         return GetAttrDbl( AttrNameStrings[ type ] );
     }
 
-    double AlbumNode::SetAttrDbl( AlbumAttrType type, double val )
+    double AlbumBase::SetAttrDbl( AlbumAttrType type, double val )
     {
         wxString str = wxString::Format( "%f", val );
         SetAttrStr( AttrNameStrings[ type ], str );
     }
 
-    void AlbumNode::SetAttrStr( wxString name, wxString val )
+    void AlbumBase::SetAttrStr( wxString name, wxString val )
     {
         Attribute* attr = FindAttr( name );
         if ( attr )
@@ -129,12 +129,12 @@ namespace Layout {
         }
     }
 
-    void AlbumNode::SetAttrStr( AlbumAttrType type, wxString val )
+    void AlbumBase::SetAttrStr( AlbumAttrType type, wxString val )
     {
         SetAttrStr( AttrNameStrings[ type ], val );
     }
 
-    AlbumNode* AlbumNode::FindFirstChild( wxString name )
+    AlbumBase* AlbumBase::FindFirstChild( wxString name )
     {
 
         for ( int i = 0; i < GetNbrChildren( ); i++ )
@@ -145,18 +145,18 @@ namespace Layout {
                 return ChildItem( i );
             }
         }
-        return ( AlbumNode* )0;
+        return ( AlbumBase* )0;
     }
 
     //!*********************************************************
     // Procedure::Load
     // *********************************************************
 
-    bool AlbumNode::Load( wxXmlNode* thisObject )
+    bool AlbumBase::Load( wxXmlNode* thisObject )
     {
         wxString name = thisObject->GetName( );
         SetObjectName( name );
-        m_nodeType = FindAlbumNodeType( name );
+        m_nodeType = FindAlbumBaseType( name );
         m_lineNbr = thisObject->GetLineNumber( );
         LoadAttributes( thisObject );
         m_text = thisObject->GetNodeContent( );
@@ -165,7 +165,7 @@ namespace Layout {
     }
 
 
-    bool AlbumNode::LoadChildren( wxXmlNode* thisObject )
+    bool AlbumBase::LoadChildren( wxXmlNode* thisObject )
     {
         wxXmlNode* child = thisObject->GetChildren( );
         wxString name;
@@ -219,7 +219,7 @@ namespace Layout {
     }
 
 
-    AlbumNode* AlbumNode::FindChild( wxString name )
+    AlbumBase* AlbumBase::FindChild( wxString name )
     {
         for ( int i = 0; i < GetNbrChildren( ); i++ )
         {
@@ -229,38 +229,38 @@ namespace Layout {
                 return ChildItem( i );
             }
         }
-        return ( AlbumNode* )0;
+        return ( AlbumBase* )0;
     }
 
-    void AlbumNode::DeleteChild( AlbumNode* node )
+    void AlbumBase::DeleteChild( AlbumBase* node )
     {
-        for ( AlbumNodeList::iterator it = std::begin(m_layoutChildArray ); it != std::end( m_layoutChildArray ); ++it )
+        for ( AlbumBaseList::iterator it = std::begin(m_layoutChildArray ); it != std::end( m_layoutChildArray ); ++it )
         {
-            AlbumNode* child = ( AlbumNode* )( *it );
+            AlbumBase* child = ( AlbumBase* )( *it );
             if ( child == node )
             {
                 m_layoutChildArray.erase(it);
-                node->~AlbumNode();
+                node->~AlbumBase();
             }
         }
     }
     
-    AlbumNode::~AlbumNode( )
+    AlbumBase::~AlbumBase( )
      { 
         for ( LayoutAttributeArray::iterator it = std::begin(m_attrArray ); it != std::end( m_attrArray ); ++it )
         {
             Attribute* child = ( Attribute* )( *it );
             child->~Attribute();
         }
-        for ( AlbumNodeList::iterator it = std::begin(m_layoutChildArray ); it != std::end( m_layoutChildArray ); ++it )
+        for ( AlbumBaseList::iterator it = std::begin(m_layoutChildArray ); it != std::end( m_layoutChildArray ); ++it )
         {
-            AlbumNode* child = ( AlbumNode* )( *it );
-            child->~AlbumNode();
+            AlbumBase* child = ( AlbumBase* )( *it );
+            child->~AlbumBase();
             m_layoutChildArray.erase(it);  
         }
     };
  
-    void AlbumNode::AddChild( AlbumNode* node )
+    void AlbumBase::AddChild( AlbumBase* node )
     {
         m_layoutChildArray.push_back(node);
     }

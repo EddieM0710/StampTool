@@ -47,22 +47,25 @@ class AlbumPanel;
 
 #define ID_IMPORT ID_ALBUMGENERATORFRAME+1
 #define ID_TEXTSERCHMENUITEM ID_ALBUMGENERATORFRAME+2
-#define ID_IMAGEGALERYMENUITEM ID_ALBUMGENERATORFRAME+3
-#define ID_MENUITEM ID_ALBUMGENERATORFRAME+4
+#define ID_SORTORDER ID_ALBUMGENERATORFRAME+3
+#define ID_ITEMVIEW ID_ALBUMGENERATORFRAME+4
+#define ID_DEFINEPERIOD ID_ALBUMGENERATORFRAME+5
+#define ID_RECENT ID_ALBUMGENERATORFRAME+6
+#define ID_RECENTMENU ID_ALBUMGENERATORFRAME+7
+#define ID_SETTINGS ID_ALBUMGENERATORFRAME+8
+#define ID_MERGE ID_ALBUMGENERATORFRAME+9
+#define ID_PREFERENCES  ID_ALBUMGENERATORFRAME+10
+#define ID_CSVIMPORT ID_ALBUMGENERATORFRAME+12
+#define ID_OPENPROJECT ID_ALBUMGENERATORFRAME+13
+#define ID_OPENDESIGN ID_ALBUMGENERATORFRAME+14
+#define ID_OPENCATALOG ID_ALBUMGENERATORFRAME+15
+#define ID_SAVEPROJECT ID_ALBUMGENERATORFRAME+16
+#define ID_SAVEDESIGN ID_ALBUMGENERATORFRAME+17
+#define ID_SAVECATALOG ID_ALBUMGENERATORFRAME+18
+#define ID_SAVEASPROJECT ID_ALBUMGENERATORFRAME+19
+#define ID_SAVEASDESIGN ID_ALBUMGENERATORFRAME+20
+#define ID_SAVEASCATALOG ID_ALBUMGENERATORFRAME+21
 
-#define ID_SORTORDER ID_ALBUMGENERATORFRAME+5
-#define ID_ITEMVIEW ID_ALBUMGENERATORFRAME+6
-#define ID_DEFINEPERIOD ID_ALBUMGENERATORFRAME+7
-#define ID_LOADIMAGESMENUITEM ID_ALBUMGENERATORFRAME+8
-#define ID_TESTXMLMENUITEM ID_ALBUMGENERATORFRAME+9
-#define ID_RECENT ID_ALBUMGENERATORFRAME+10
-#define ID_RECENTMENU ID_ALBUMGENERATORFRAME+19
-#define ID_SETTINGS ID_ALBUMGENERATORFRAME+20
-#define ID_MERGE ID_ALBUMGENERATORFRAME+21
-#define ID_PREFERENCES  ID_ALBUMGENERATORFRAME+22
-#define ID_ALBUMGENMENUITEM ID_ALBUMGENERATORFRAME+23
-#define ID_CSVIMPORT ID_ALBUMGENERATORFRAME+24
-#define ID_AEIMPORT ID_ALBUMGENERATORFRAME+25
 #define ID_ALBUMGENERATORPANELFOREIGN ID_ALBUMGENERATORPANEL
 #define SYMBOL_ALBUMGENERATORFRAME_STYLE                                         \
     wxDEFAULT_FRAME_STYLE | wxCAPTION | wxRESIZE_BORDER | wxSYSTEM_MENU        \
@@ -161,13 +164,19 @@ class AlbumGenFrame : public wxFrame
     void OnMaximize( wxMaximizeEvent &event );
 
     // wxEVT_COMMAND_MENU_SELECTED event handler for wxID_OPEN
-    void OnOpenClick( wxCommandEvent &event );
+    void OnOpenProjectClick( wxCommandEvent &event );
+    void OnOpenDesignClick( wxCommandEvent &event );
+    void OnOpenCatalogClick( wxCommandEvent &event );
 
     // wxEVT_COMMAND_MENU_SELECTED event handler for wxID_SAVE
-    void OnSaveClick( wxCommandEvent &event );
+    void OnSaveProjectClick( wxCommandEvent &event );
+    void OnSaveDesignClick( wxCommandEvent &event );
+    void OnSaveCatalogClick( wxCommandEvent &event );
 
     // wxEVT_COMMAND_MENU_SELECTED event handler for wxID_SAVEAS
-    void OnSaveasClick( wxCommandEvent &event );
+    void OnSaveasProjectClick( wxCommandEvent &event );
+    void OnSaveasDesignClick( wxCommandEvent &event );
+    void OnSaveasCatalogClick( wxCommandEvent &event );
 
     // wxEVT_COMMAND_MENU_SELECTED event handler for ID_IMPORT
     void OnCSVImportClick( wxCommandEvent &event );
@@ -182,12 +191,6 @@ class AlbumGenFrame : public wxFrame
     // wxEVT_COMMAND_MENU_SELECTED event handler for ID_TEXTSERCHMENUITEM
     void OnTextserchmenuitemClick( wxCommandEvent &event );
 
-    // wxEVT_COMMAND_MENU_SELECTED event handler for ID_IMAGEGALERYMENUITEM
-    void OnImagegalerymenuitemClick( wxCommandEvent &event );
-
-    // wxEVT_COMMAND_MENU_SELECTED event handler for ID_MENUITEM
-    void OnCVSReportMenuItemClick( wxCommandEvent &event );
-
     void OnAlbumGenMenuItemClick( wxCommandEvent& event );
 
     // wxEVT_COMMAND_MENU_SELECTED event handler for ID_SORTORDER
@@ -198,12 +201,6 @@ class AlbumGenFrame : public wxFrame
 
     // wxEVT_COMMAND_MENU_SELECTED event handler for ID_DEFINEPERIOD
     void OnDefineperiodClick( wxCommandEvent &event );
-
-    // wxEVT_COMMAND_MENU_SELECTED event handler for ID_LOADIMAGESMENUITEM
-    void OnLoadimagesmenuitemClick( wxCommandEvent &event );
-
-    // wxEVT_COMMAND_MENU_SELECTED event handler for ID_TESTXMLMENUITEM
-    void OnTestXMLClick( wxCommandEvent &event );
 
     // wxEVT_COMMAND_MENU_SELECTED event handler for ID_SETTINGS
     void OnSettingsClick( wxCommandEvent& event );
@@ -246,18 +243,27 @@ class AlbumGenFrame : public wxFrame
     void UpdateStatus( );
 
     void DoCSVImport( );
-    void ImportAlbumLayout( );
-    void Open( );
-    void Save( );
-    void SaveAs( );
+  
+
+    void OpenProject( );
+    void OpenDesign( );
+    void OpenCatalog( );
+
+    void SaveProject( );
+    void SaveDesign( );
+    void SaveCatalog( );
+
+    void SaveAsProject( );
+    void SaveAsDesign( );
+    void SaveAsCatalog( );
+
     void SaveCatalogXML( wxString filename );
     void LoadXML( wxString filename );
     void InitLoad( );
-    //void LinkAlbumToCat( Layout::LayoutNode* child, Catalog::CatalogData* stampData );
-   // void LinkNodes( Layout::LayoutNode* child, Catalog::CatalogData* stampData  );
+    //void LinkAlbumToCat( Design::LayoutBase* child, Catalog::CatalogData* stampData );
+   // void LinkNodes( Design::LayoutBase* child, Catalog::CatalogData* stampData  );
 
     void DoSortOrderDialog( );
-    bool GetFile( wxString newFile, wxString imageName );
 
     int QueryMerge( int &mergeMethod );
     int DoQueryMerge( int& mergeMethod  );
@@ -277,6 +283,9 @@ class AlbumGenFrame : public wxFrame
     // container data classification sort order
     wxArrayInt m_sortOrder;
     wxMenu* m_fileMenu;
+    wxMenu* m_openMenu;
+    wxMenu* m_saveMenu;
+    wxMenu* m_saveAsMenu;
     wxMenu* m_recentMenu;
     wxMenu* m_preferencesMenu;
     wxMenu* m_importMenu;

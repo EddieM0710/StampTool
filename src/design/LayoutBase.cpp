@@ -1,5 +1,5 @@
 /**
- * @file LayoutNode.cpp
+ * @file LayoutBase.cpp
  * @author Eddie Monroe
  * @brief
  * @version 0.1
@@ -9,106 +9,106 @@
  *
  **************************************************/
 
-#include "album/AlbumNode.h"
+#include "design/AlbumBase.h"
 
 
-#include "LayoutNode.h"
-#include "album/TitlePage.h"
-#include "album/Page.h"
-#include "album/Title.h"
-#include "album/Row.h"
-#include "album/Column.h"
-#include "album/Stamp.h"
+#include "LayoutBase.h"
+#include "design/TitlePage.h"
+#include "design/Page.h"
+#include "design/Title.h"
+#include "design/Row.h"
+#include "design/Column.h"
+#include "design/Stamp.h"
 
-namespace Layout {
+namespace Design {
 
     //!*********************************************************
     // Procedure::Load
     // *********************************************************
-    double LayoutNode::GetXPos( )
+    double LayoutBase::GetXPos( )
     {
         return GetAttrDbl( AT_XPos );
     };
 
-    void LayoutNode::SetXPos( double val )
+    void LayoutBase::SetXPos( double val )
     {
         SetAttrDbl( AT_XPos, val );
     };
 
 
-    double LayoutNode::GetYPos( )
+    double LayoutBase::GetYPos( )
     {
         return GetAttrDbl( AT_YPos );
     };
 
 
-    void LayoutNode::SetYPos( double val )
+    void LayoutBase::SetYPos( double val )
     {
         SetAttrDbl( AT_YPos, val );
     };
 
 
-    double LayoutNode::GetWidth( )
+    double LayoutBase::GetWidth( )
     {
         return GetAttrDbl( AT_Width );
     };
 
 
-    void LayoutNode::SetWidth( double val )
+    void LayoutBase::SetWidth( double val )
     {
         SetAttrDbl( AT_Width, val );
     };
 
-    double LayoutNode::GetHeight( )
+    double LayoutBase::GetHeight( )
     {
         return GetAttrDbl( AT_Height );
     };
 
-    void LayoutNode::SetHeight( double val )
+    void LayoutBase::SetHeight( double val )
     {
         SetAttrDbl( AT_Height, val );
     };
 
 
-    double LayoutNode::GetMinWidth( )
+    double LayoutBase::GetMinWidth( )
     {
         return GetAttrDbl( AT_MinWidth );
     };
 
 
-    void LayoutNode::SetMinWidth( double val )
+    void LayoutBase::SetMinWidth( double val )
     {
         SetAttrDbl( AT_MinWidth, val );
     };
 
-    double LayoutNode::GetMinHeight( )
+    double LayoutBase::GetMinHeight( )
     {
         return GetAttrDbl( AT_MinHeight );
     };
 
-    void LayoutNode::SetMinHeight( double val )
+    void LayoutBase::SetMinHeight( double val )
     {
         SetAttrDbl( AT_MinHeight, val );
     };
 
-    void LayoutNode::ReportLayoutError( wxString funct, wxString err, bool fatal )
+    void LayoutBase::ReportLayoutError( wxString funct, wxString err, bool fatal )
     {
         wxString funcStr = wxString::Format( "%s::%s", AttrNameStrings[ GetNodeType() ] , funct );
         wxString msgStr = wxString::Format( "InputLine: %d;  %s", GetLineNumber( ), err );
         ReportError( funcStr, msgStr, fatal );
     }
 
-    void LayoutNode::ValidateChildType( int& nbrRows, int& nbrCols, int& nbrStamps )
+    void LayoutBase::ValidateChildType( int& nbrRows, int& nbrCols, int& nbrStamps )
     {
         // count the number of rows/cols planned
         nbrRows = 0;
         nbrCols = 0;
         nbrStamps = 0;
 
-        for ( AlbumNodeList::iterator it = std::begin( m_layoutChildArray ); it != std::end( m_layoutChildArray ); ++it )
+        for ( AlbumBaseList::iterator it = std::begin( m_layoutChildArray ); it != std::end( m_layoutChildArray ); ++it )
         {
-            LayoutNode* child = ( LayoutNode* )( *it );
-            AlbumNodeType childType = (AlbumNodeType)child->GetNodeType( );
+            LayoutBase* child = ( LayoutBase* )( *it );
+            AlbumBaseType childType = (AlbumBaseType)child->GetNodeType( );
             switch ( childType )
             {
                 case AT_Row:
@@ -139,12 +139,12 @@ namespace Layout {
 
     }
 
-    Title* LayoutNode::GetTitle( )
+    Title* LayoutBase::GetTitle( )
     {
         return ( Title* )FindFirstChild( "Title" );
     }
 
-    double LayoutNode::GetTitleHeight( )
+    double LayoutBase::GetTitleHeight( )
     {
         Title* title = GetTitle( );
         if ( title )

@@ -33,7 +33,7 @@ class wxSplitterWindow;
 class wxTreeCtrl;
 class wxWindow;
 ////@end forward declarations
-class AlbumTreeCtrl;
+class DesignTreeCtrl;
 class AlbumPanel;
 class AlbumImagePanel;
 /*!

@@ -14,7 +14,7 @@
 #define Catalog_Stamp_h
 
 #include "catalog/CatalogDefs.h"
-#include "catalog/CatalogNode.h"
+#include "catalog/CatalogBase.h"
 #include <wx/string.h>
 
 
@@ -30,10 +30,10 @@ namespace Catalog {
      /**
       * @brief This is a wrapper of an wxXmlNode for
       * safe/convenient getting/putting.
-      * @see CatalogNode, Classification, Specimen
+      * @see CatalogBase, Classification, Specimen
       *
       **************************************************/
-    class Stamp : public CatalogNode
+    class Stamp : public CatalogBase
     {
     public:
 
@@ -41,7 +41,7 @@ namespace Catalog {
          * @brief Construct a new Stamp object
          *
          **************************************************/
-        Stamp( ) : CatalogNode( )
+        Stamp( ) : CatalogBase( )
         {
             SetNodeType( NT_Stamp );
             IsOK( );
@@ -52,7 +52,7 @@ namespace Catalog {
          *
          * @param stamp
          **************************************************/
-        Stamp( wxXmlNode* stamp ) : CatalogNode( stamp )
+        Stamp( wxXmlNode* stamp ) : CatalogBase( stamp )
         {
             SetNodeType( NT_Stamp );
             IsOK( );
@@ -296,7 +296,7 @@ namespace Catalog {
          * @param type
          * @return wxString
          **************************************************/
-        wxString GetClassificationName( Stamp* stamp, CatalogNodeType type );
+        wxString GetClassificationName( Stamp* stamp, CatalogBaseType type );
 
         /**
          * @brief add an empty element of Specimen type

@@ -29,6 +29,7 @@
 
 ////@begin forward declarations
 class LabeledTextBox;
+class wxListCtrl;
 ////@end forward declarations
 
 /*!
@@ -41,8 +42,8 @@ class LabeledTextBox;
 #define ID_NAMELABELEDTEXTBOX 10009
 #define ID_HEIGHTLABELEDTEXTBOX 10001
 #define ID_WIDTHLABELEDTEXTBOX 10002
-#define ID_BUTTON 10005
-#define ID_BUTTON3 10008
+#define ID_REFRESHBUTTON 10005
+#define ID_VALIDATEBUTTON 10008
 #define ID_LISTCTRL 10006
 #define SYMBOL_STAMPDETAILSDIALOG_STYLE wxCAPTION|wxRESIZE_BORDER|wxSYSTEM_MENU|wxCLOSE_BOX|wxTAB_TRAVERSAL
 #define SYMBOL_STAMPDETAILSDIALOG_TITLE _("StampDetailsDialog")
@@ -79,9 +80,20 @@ public:
     void CreateControls();
 
 ////@begin StampDetailsDialog event handler declarations
+
+    /// wxEVT_COMMAND_BUTTON_CLICKED event handler for ID_REFRESHBUTTON
+    void OnRefreshButtonClick( wxCommandEvent& event );
+
+    /// wxEVT_COMMAND_BUTTON_CLICKED event handler for wxID_CANCEL
+    void OnCancelClick( wxCommandEvent& event );
+
+    /// wxEVT_COMMAND_BUTTON_CLICKED event handler for wxID_OK
+    void OnOkClick( wxCommandEvent& event );
+
 ////@end StampDetailsDialog event handler declarations
 
 ////@begin StampDetailsDialog member function declarations
+
     /// Retrieves bitmap resources
     wxBitmap GetBitmapResource( const wxString& name );
 
@@ -94,6 +106,11 @@ public:
 
 ////@begin StampDetailsDialog member variables
     LabeledTextBox* m_id;
+    LabeledTextBox* m_name;
+    LabeledTextBox* m_height;
+    LabeledTextBox* m_width;
+    wxButton* m_validate;
+    wxListCtrl* m_statusList;
 ////@end StampDetailsDialog member variables
 };
 

@@ -14,7 +14,7 @@
 #include <cstring>
 #include <vector>
 
-namespace Layout {
+namespace Design {
 
  /**
   * @brief Container for a Name/Value pair.

@@ -28,10 +28,10 @@
 // #include "utils/XMLUtilities.h"
 
 
-//     wxString Node::GetNodeAttrStr( wxString name ){ return Utils::GetAttrStr( m_Element, name) ;};
-//     double Node::GetNodeAttrDbl( wxString name ){ return Utils::GetAttrDbl( m_Element, name );};
-//     void Node::SetNodeAttrStr( wxString name, wxString val ){ Utils::SetAttrStr( m_Element, name, val );};
-//     void Node::SetNodeAttrDbl( wxString name, double val){  Utils::SetAttrDbl( m_Element, name, val );};
+//     wxString Node::GetNodeAttrStr( wxString name ){ return Utils::GetAttrStr( m_catNode, name) ;};
+//     double Node::GetNodeAttrDbl( wxString name ){ return Utils::GetAttrDbl( m_catNode, name );};
+//     void Node::SetNodeAttrStr( wxString name, wxString val ){ Utils::SetAttrStr( m_catNode, name, val );};
+//     void Node::SetNodeAttrDbl( wxString name, double val){  Utils::SetAttrDbl( m_catNode, name, val );};
 
 
   

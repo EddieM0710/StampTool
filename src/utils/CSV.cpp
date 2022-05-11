@@ -214,7 +214,7 @@ namespace Utils {
                             // comma separated Variables on line; i, e, .csv file
                             wxStringTokenizer tokenizer( line, "," );
 
-                            wxXmlNode* stampElement = NewNode( docRoot, Catalog::CatalogNodeNames[ Catalog::NT_Stamp ] );
+                            wxXmlNode* stampElement = NewNode( docRoot, Catalog::CatalogBaseNames[ Catalog::NT_Stamp ] );
 
                             //                    Stamp* stampNode = new Stamp( stampElement );
                             csvCol = 0;

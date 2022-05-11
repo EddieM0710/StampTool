@@ -30,7 +30,7 @@
 #include "catalog/CatalogCode.h"
 #include "catalog/Classification.h"
 #include "Defs.h"
-#include "catalog/CatalogNode.h"
+#include "catalog/CatalogBase.h"
 #include "utils/Settings.h"
 #include "catalog/Specimen.h"
 #include "catalog/Stamp.h"
@@ -430,7 +430,7 @@ int StyleNameIndex = 0;
             wxString content = node->GetContent( );
             if ( !content.IsEmpty( ) || node->GetChildren( ) )
             {
-                *text << " >\n";
+                *text << ">";
                 if ( !content.IsEmpty( ) )
                 {
                     *text << levelStr << content << "\n";

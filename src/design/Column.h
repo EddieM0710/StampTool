@@ -12,16 +12,16 @@
 #ifndef Column_H
 #define Column_H
 
-#include "album/LayoutNode.h"
-#include "album/AlbumDefs.h"
+#include "design/LayoutBase.h"
+#include "design/DesignDefs.h"
 
-namespace Layout {
+namespace Design {
 
  /**
-  * @brief Column layout object; Inherits from LayoutNode.  The column can contain Row or Stamp objects.
+  * @brief Column layout object; Inherits from LayoutBase.  The column can contain Row or Stamp objects.
   *
   **************************************************/
-class Column : public LayoutNode
+class Column : public LayoutBase
 {
 public:
 
@@ -31,7 +31,7 @@ public:
      *
      * @param parent
      **************************************************/
-    Column( AlbumNode* parent, wxXmlNode* node ) : LayoutNode( parent, node ) { SetNodeType( AT_Col ); };
+    Column( AlbumBase* parent, wxXmlNode* node ) : LayoutBase( parent, node ) { SetNodeType( AT_Col ); };
 
     /**
      * @brief Destroy the Column object
@@ -70,7 +70,7 @@ public:
      **************************************************/
     wxXmlNode* Write( wxXmlNode* parent );
         
-    AlbumNodeStatus ValidateNode();
+    AlbumBaseStatus ValidateNode();
 
 private:
 

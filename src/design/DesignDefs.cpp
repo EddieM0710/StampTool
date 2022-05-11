@@ -24,59 +24,55 @@
 #include "wx/wx.h"
 #endif
 
-#include "AlbumDefs.h"
-#include "AlbumData.h"
+#include "DesignDefs.h"
+#include "DesignData.h"
 #include "Defs.h"
 #include "utils/Project.h"
-#include "album/Album.h"
-#include "album/TitlePage.h"
-#include "album/Title.h"
-#include "album/Page.h"
-#include "album/Row.h"
-#include "album/Column.h"
-#include "album/Stamp.h"
-#include "gui/AlbumTreeCtrl.h"
+#include "design/Album.h"
+#include "design/TitlePage.h"
+#include "design/Title.h"
+#include "design/Page.h"
+#include "design/Row.h"
+#include "design/Column.h"
+#include "design/Stamp.h"
+#include "gui/DesignTreeCtrl.h"
 #include "gui/GeneratorData.h"
 
-namespace Layout {
+namespace Design {
 
-    AlbumData* NewAlbumData( void )
-    {
-        return new AlbumData();
-    }
 
     Album* GetAlbum( void )
     {
-        AlbumData* albumData = GetAlbumData(  )  ;
-        if ( albumData )
+        DesignData* designData = GetDesignData(  )  ;
+        if ( designData )
         {
-            return albumData->GetAlbum();
+            return designData->GetAlbum();
         }
         return (Album*)0;
     }
 
 
-    AlbumData* GetAlbumData( void )
+    DesignData* GetDesignData( void )
     {
         GeneratorData* project = GetGeneratorData( );
         if ( project )
         {
-            return project->GetAlbumData( );
+            return project->GetDesignData( );
         }
-        return ( AlbumData* )0;
+        return ( DesignData* )0;
     };
 
-    AlbumData* SetAlbumData( AlbumData* albumData )
-    {
-        GeneratorData* project = GetGeneratorData( );
-        if ( project )
-        {
-            project->SetAlbumData( albumData );
-        }
-    };
+    // DesignData* SetDesignData( DesignData* designData )
+    // {
+    //     GeneratorData* project = GetGeneratorData( );
+    //     if ( project )
+    //     {
+    //         project->SetDesignData( designData );
+    //     }
+    // };
 
 
-        wxString AlbumNodeNames[AT_NbrAlbumTypes] = {
+        wxString AlbumBaseNames[AT_NbrAlbumTypes] = {
                 "Album",
                 "Page",
                 "Row",
@@ -104,40 +100,40 @@ namespace Layout {
                 "ID",
                 "Link" };
 
-    void InitAlbumDefs( )
+    void InitDesignDefs( )
     {
 
     }
 
-    AlbumNodeType FindAlbumNodeType( wxString name )
+    AlbumBaseType FindAlbumBaseType( wxString name )
     {
         wxString baseName;
         for ( int i = 0; i < AT_NbrAlbumTypes; i++ )
         {
-            baseName = AlbumNodeNames[i];
+            baseName = AlbumBaseNames[i];
             if ( !name.Cmp( baseName ) )
             {
-                return ( AlbumNodeType )i;
+                return ( AlbumBaseType )i;
             }
         }
-        return ( AlbumNodeType )-1;
+        return ( AlbumBaseType )-1;
     };
 
 
-    // wxString GetAttribute( AlbumNodeType type )
+    // wxString GetAttribute( AlbumBaseType type )
     // {
     //     return Utils::GetAttrStr( GetNodeElement( ), AttrNameStrings[type]);
     // }
 
-    // double GetAttributeDbl( AlbumNodeType type )
+    // double GetAttributeDbl( AlbumBaseType type )
     // {
     //     return Utils::GetAttrDbl( GetNodeElement( ), AttrNameStrings[type] );
     // }
-    //   void SetAttrStr( AlbumNodeType type, wxString val )
+    //   void SetAttrStr( AlbumBaseType type, wxString val )
     //     {
     //         Utils::SetAttrStr( GetNodeElement( ), AttrNameStrings[type], val );
     //     };
-    //   void SetAttrDbl( AlbumNodeType type, double val )
+    //   void SetAttrDbl( AlbumBaseType type, double val )
     //     {
     //         Utils::SetAttrDbl( GetNodeElement( ), AttrNameStrings[type], val );
     //     };
@@ -173,20 +169,20 @@ namespace Layout {
     //     }
 
     // }
-    LayoutNode* GetSelectedNodePage( )
+    LayoutBase* GetSelectedNodePage( )
     {
-        AlbumData* albumData = Layout::GetAlbumData( );
-        if ( albumData )
+        DesignData* designData = Design::GetDesignData( );
+        if ( designData )
         {
-            AlbumTreeCtrl* treeCtrl = GetAlbumTreeCtrl( );
+            DesignTreeCtrl* treeCtrl = GetDesignTreeCtrl( );
             if ( treeCtrl )
             {
-                Layout::LayoutNode* node = treeCtrl->GetSelectedNode( );
+                Design::LayoutBase* node = treeCtrl->GetSelectedNode( );
                 if ( node )
                 {
-                    for ( AlbumNodeList::iterator it = node->BeginAlbumNodeList(); it != node->EndAlbumNodeList(); ++it )
+                    for ( AlbumBaseList::iterator it = node->BeginAlbumBaseList(); it != node->EndAlbumBaseList(); ++it )
                     {
-                        LayoutNode* child = ( LayoutNode* )( *it );
+                        LayoutBase* child = ( LayoutBase* )( *it );
                         if ( child->GetNodeType() == AT_Page )
                         {
                             return child;
@@ -195,36 +191,36 @@ namespace Layout {
                 }
             }
         }
-        return (LayoutNode*)0;
+        return (LayoutBase*)0;
     }
 
 
-    // LayoutNode* MakeNode( AlbumNodeType type, wxXmlNode* node )
+    // LayoutBase* MakeNode( AlbumBaseType type, wxXmlNode* node )
     // {
-    //     LayoutNode* object = (LayoutNode*)0;
+    //     LayoutBase* object = (LayoutBase*)0;
     //     if ( type == AT_TitlePage )
     //     {
-    //         object = (LayoutNode*)new TitlePage( node);
+    //         object = (LayoutBase*)new TitlePage( node);
     //     }
     //     else if ( type == AT_Page )
     //     {
-    //         object = (LayoutNode*)new Page( node );
+    //         object = (LayoutBase*)new Page( node );
     //     }
     //     else if ( type == AT_Title )
     //     {
-    //         object = (LayoutNode*)new Title( node );
+    //         object = (LayoutBase*)new Title( node );
     //     }
     //     else if ( type == AT_Col )
     //     {
-    //         object = (LayoutNode*)new Column( node );
+    //         object = (LayoutBase*)new Column( node );
     //     }
     //     else if ( type == AT_Row )
     //     {
-    //         object = (LayoutNode*)new Row( node );
+    //         object = (LayoutBase*)new Row( node );
     //     }
     //     else if ( type == AT_Stamp )
     //     {
-    //         object = (LayoutNode*)new Stamp( node );
+    //         object = (LayoutBase*)new Stamp( node );
     //     }
     //     return object;
     // }

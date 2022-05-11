@@ -10,19 +10,18 @@ include_directories(  ${AlbumGen_Source_Directory}
 ${AlbumGen_GuiFiles_Source_Directory}
 ${AlbumGen_UtilsFiles_Source_Directory}
 ${AlbumGen_ODTFiles_Source_Directory}
-${AlbumGen_AlbumFiles_Source_Directory}
+${AlbumGen_DesignFiles_Source_Directory}
 ${AlbumGen_CatalogFiles_Source_Directory} ${WXWIN} )
 
 add_subdirectory (utils)
 add_subdirectory (gui)
 add_subdirectory (catalog)
-add_subdirectory (album)
+add_subdirectory (design)
 add_subdirectory (odt)
 
-add_executable (AlbumGenerator 
+add_executable ( AlbumGenerator 
     AlbumGenApp.cpp
     Defs.cpp
-    Node.cpp 
 )
 
 #link_directories( /sandbox/Applications/TinyXML2/build )
@@ -30,7 +29,7 @@ add_executable (AlbumGenerator
 target_link_libraries (AlbumGenerator LINK_PUBLIC 
     Utils
     GuiFiles  
-    AlbumFiles
+    DesignFiles
     CatalogFiles  
     ODTFiles
     curl

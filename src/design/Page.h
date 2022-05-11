@@ -12,8 +12,8 @@
 #ifndef Page_H
 #define Page_H
 
-#include "album/LayoutNode.h"
-namespace Layout {
+#include "design/LayoutBase.h"
+namespace Design {
 
     class Title;
 
@@ -21,13 +21,13 @@ namespace Layout {
      * @brief Encapsulates the parameters of the page
      *
      **************************************************/
-    class Page : public LayoutNode
+    class Page : public LayoutBase
     {
     public:
-        Page( AlbumNode* parent, wxXmlNode* node ) : LayoutNode(  parent, node ) 
+        Page( AlbumBase* parent, wxXmlNode* node ) : LayoutBase(  parent, node ) 
         { 
             SetNodeType( AT_Page );
-            SetObjectName( AlbumNodeNames[GetNodeType() ] );
+            SetObjectName( AlbumBaseNames[GetNodeType() ] );
              };
         ~Page( ) {};
 
@@ -130,7 +130,7 @@ namespace Layout {
          **************************************************/
         void SetBorderSize( double val ) { m_borderSize = val; };
 
-        AlbumNodeStatus ValidateNode();
+        AlbumBaseStatus ValidateNode();
 
     private:
 

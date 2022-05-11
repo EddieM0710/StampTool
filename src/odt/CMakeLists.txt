@@ -6,7 +6,7 @@ include_directories( $ ${AlbumGen_Source_Directory}
 ${AlbumGen_GuiFiles_Source_Directory}
 ${AlbumGen_UtilsFiles_Source_Directory}
 ${AlbumGen_ODTFiles_Source_Directory}
-${AlbumGen_AlbumFiles_Source_Directory}
+${AlbumGen_DesignFiles_Source_Directory}
 ${AlbumGen_CatalogFiles_Source_Directory} ${WXWIN})
 
 set( CMAKE_RUNTIME_OUTPUT_DIRECTORY ${build_Directory} )

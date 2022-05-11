@@ -9,13 +9,13 @@
  *
  **************************************************/
 
-#include "album/Row.h"
-#include "album/Column.h"
-#include "album/Stamp.h"
-#include "album/Title.h"
+#include "design/Row.h"
+#include "design/Column.h"
+#include "design/Stamp.h"
+#include "design/Title.h"
 #include "odt/Document.h"
 
-namespace Layout {
+namespace Design {
 
 
     void Row::UpdateMinimumSize( )
@@ -29,9 +29,9 @@ namespace Layout {
 
         m_minWidth = 0.0;
         m_minHeight = 0.0;
-        for ( AlbumNodeList::iterator it = std::begin(m_layoutChildArray ); it != std::end( m_layoutChildArray ); ++it )
+        for ( AlbumBaseList::iterator it = std::begin(m_layoutChildArray ); it != std::end( m_layoutChildArray ); ++it )
         {
-            LayoutNode* child = ( LayoutNode* )( *it );
+            LayoutBase* child = ( LayoutBase* )( *it );
             child->UpdateMinimumSize( );
             if ( child->GetMinHeight( ) > m_minHeight )
             {
@@ -59,10 +59,10 @@ namespace Layout {
 
         // Set the height and width of each child  column
         // Stamps have fixed height and width
-        for ( AlbumNodeList::iterator it = std::begin(m_layoutChildArray ); it != std::end( m_layoutChildArray ); ++it )
+        for ( AlbumBaseList::iterator it = std::begin(m_layoutChildArray ); it != std::end( m_layoutChildArray ); ++it )
         {
-            LayoutNode* child = ( LayoutNode* )( *it );
-            AlbumNodeType childType = (AlbumNodeType)child->GetNodeType( );
+            LayoutBase* child = ( LayoutBase* )( *it );
+            AlbumBaseType childType = (AlbumBaseType)child->GetNodeType( );
             if (childType == AT_Col)
             {
                 child->SetWidth( m_minWidth );
@@ -94,13 +94,13 @@ namespace Layout {
         double xPos = spacing;
         double yPos = titleHeight;
 
-        for ( AlbumNodeList::iterator it = std::begin(m_layoutChildArray ); it != std::end( m_layoutChildArray ); ++it )
+        for ( AlbumBaseList::iterator it = std::begin(m_layoutChildArray ); it != std::end( m_layoutChildArray ); ++it )
         {
-            LayoutNode* child = ( LayoutNode* )( *it );
+            LayoutBase* child = ( LayoutBase* )( *it );
 
             child->UpdatePositions( );
 
-            AlbumNodeType childType = (AlbumNodeType)child->GetNodeType( );
+            AlbumBaseType childType = (AlbumBaseType)child->GetNodeType( );
 
             switch (childType)
             {
@@ -149,11 +149,11 @@ namespace Layout {
             drawStyleName,  // fr1
             textAnchorType ); // "page", "paragraph"
 
-        for ( AlbumNodeList::iterator it = std::begin(m_layoutChildArray ); it != std::end( m_layoutChildArray ); ++it )
+        for ( AlbumBaseList::iterator it = std::begin(m_layoutChildArray ); it != std::end( m_layoutChildArray ); ++it )
         {
-            LayoutNode* child = ( LayoutNode* )( *it );
+            LayoutBase* child = ( LayoutBase* )( *it );
 
-            AlbumNodeType childType = (AlbumNodeType)child->GetNodeType( );
+            AlbumBaseType childType = (AlbumBaseType)child->GetNodeType( );
             switch( childType)
             {
                 case AT_Row:
@@ -179,9 +179,9 @@ namespace Layout {
         return frame;
     }
 
-    AlbumNodeStatus Row::ValidateNode()
+    AlbumBaseStatus Row::ValidateNode()
     {
-        AlbumNodeStatus status = AT_OK;
+        AlbumBaseStatus status = AT_OK;
         if ( !HasChildren() )
         {
             if ( GetHeight() <= 0.0)

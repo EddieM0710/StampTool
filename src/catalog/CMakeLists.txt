@@ -12,6 +12,7 @@ ${AlbumGen_CatalogFiles_Source_Directory} ${WXWIN} )
 set( CMAKE_RUNTIME_OUTPUT_DIRECTORY ${build_Directory} )
 add_library( CatalogFiles SHARED
 CatalogCode.cpp
+CatalogBase.cpp
 CatalogData.cpp
 CatalogDefs.cpp
 Classification.cpp 

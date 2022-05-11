@@ -2,7 +2,7 @@
 
 #include <wx/filename.h>
 #include <wx/filefn.h>
-#include "album/AlbumData.h"
+#include "design/DesignData.h"
 #include "utils/Project.h"
 #include "utils/Settings.h"
 
@@ -30,7 +30,7 @@ namespace ODT {
         wxString bottomMargin;
         wxString rightMargin;
         wxString leftMargin;
-        Layout::Album *album = GetAlbumData( )->GetAlbum() ;
+        Design::Album *album = GetDesignData( )->GetAlbum() ;
         album->GetPageParameters( width, height, topMargin, bottomMargin, rightMargin, leftMargin );
         width.append( "in" );
         height.append( "in" );
@@ -45,7 +45,7 @@ namespace ODT {
 
     wxString Document::AddImageFile( wxString filename )
     {
-        //Layout::AlbumData *albumData = Utils::GetProject()->GetAlbumData( ) ;
+        //Design::DesignData *designData = Utils::GetProject()->GetDesignData( ) ;
         wxString imageLoc = GetProject()->GetLSettings()->GetImageDirectory( );
         wxFileName inputImage( imageLoc, filename );
         bool status = inputImage.MakeAbsolute( m_workingDirectory );

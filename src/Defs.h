@@ -24,9 +24,9 @@ bool IsDirty();
 namespace Utils { class Project; };
 namespace Utils { class Settings; };
 class GeneratorData;
-class AlbumTreeCtrl;
+class DesignTreeCtrl;
 class CatalogTreeCtrl;
-namespace Layout { class AlbumData; };
+namespace Design { class DesignData; };
 namespace Catalog { class CatalogData;  };
 /**
  * @brief Get the Settings data 
@@ -38,10 +38,10 @@ Utils::Settings* GetSettings( );
 Utils::Project* GetProject( );
 
 GeneratorData* GetGeneratorData();
-Layout::AlbumData* GetAlbumData() ;
+Design::DesignData* GetDesignData() ;
 Catalog::CatalogData* GetCatalogData() ;
 CatalogTreeCtrl* GetCatalogTreeCtrl();
-AlbumTreeCtrl* GetAlbumTreeCtrl();
+DesignTreeCtrl* GetDesignTreeCtrl();
 
 /**
  * @brief  Returns Ascii "true" or "false" based on bool b

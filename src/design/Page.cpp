@@ -11,16 +11,16 @@
 
 #include "Defs.h"
 
-#include "album/Page.h"
-#include "album/Album.h"
-#include "album/Title.h"
-#include "album/Row.h"
-#include "album/Column.h"
-#include "album/Stamp.h"
-#include "album/AlbumData.h"
+#include "design/Page.h"
+#include "design/Album.h"
+#include "design/Title.h"
+#include "design/Row.h"
+#include "design/Column.h"
+#include "design/Stamp.h"
+#include "design/DesignData.h"
 #include "odt/Document.h"
-#include "gui/AlbumTreeCtrl.h"
-namespace Layout {
+#include "gui/DesignTreeCtrl.h"
+namespace Design {
 
 
     void Page::UpdateMinimumSize( )
@@ -50,9 +50,9 @@ namespace Layout {
         m_minWidth = 0.0;
         m_minHeight = 0.0;
 
-        for ( AlbumNodeList::iterator it = std::begin( m_layoutChildArray ); it != std::end( m_layoutChildArray ); ++it )
+        for ( AlbumBaseList::iterator it = std::begin( m_layoutChildArray ); it != std::end( m_layoutChildArray ); ++it )
         {
-            LayoutNode* child = ( LayoutNode* )( *it );
+            LayoutBase* child = ( LayoutBase* )( *it );
 
             //layout everything except the title
             if ( child->GetNodeType( ) != AT_Title )
@@ -110,9 +110,9 @@ namespace Layout {
             title->SetWidth( GetWidth( ) );
         }
         // Set the height and width of each child row or column
-        for ( AlbumNodeList::iterator it = std::begin( m_layoutChildArray ); it != std::end( m_layoutChildArray ); ++it )
+        for ( AlbumBaseList::iterator it = std::begin( m_layoutChildArray ); it != std::end( m_layoutChildArray ); ++it )
         {
-            LayoutNode* node = ( LayoutNode* )( *it );
+            LayoutBase* node = ( LayoutBase* )( *it );
 
             AlbumAttrType childType = ( AlbumAttrType )node->GetNodeType( );
             switch ( childType )
@@ -166,9 +166,9 @@ namespace Layout {
         }
 
 
-        for ( AlbumNodeList::iterator it = std::begin( m_layoutChildArray ); it != std::end( m_layoutChildArray ); ++it )
+        for ( AlbumBaseList::iterator it = std::begin( m_layoutChildArray ); it != std::end( m_layoutChildArray ); ++it )
         {
-            LayoutNode* node = ( LayoutNode* )( *it );
+            LayoutBase* node = ( LayoutBase* )( *it );
             node->UpdatePositions( );
 
             //layout everything except the title
@@ -204,18 +204,18 @@ namespace Layout {
             ODT::FrameNoBorder,
             ODT::TextAnchorParagraph );
 
-        for ( AlbumNodeList::iterator it = std::begin( m_layoutChildArray ); it != std::end( m_layoutChildArray ); ++it )
+        for ( AlbumBaseList::iterator it = std::begin( m_layoutChildArray ); it != std::end( m_layoutChildArray ); ++it )
         {
-            LayoutNode* node = ( LayoutNode* )( *it );
+            LayoutBase* node = ( LayoutBase* )( *it );
             node->Write( parent );
         }
 
         return contentElement;
     }
     
-    AlbumNodeStatus Page::ValidateNode()
+    AlbumBaseStatus Page::ValidateNode()
     {
-        AlbumNodeStatus status = AT_OK;
+        AlbumBaseStatus status = AT_OK;
         if ( !HasChildren() )
         {
             if ( GetHeight() <= 0.0)

@@ -27,9 +27,9 @@
 //         void SetNodeType( int type ) { m_nodeType = type; };
 //         int GetNodeType( ) { return m_nodeType; };
 
-//         wxXmlNode* GetNodeElement( ) { return m_Element; };
-//         void SetNodeElement( wxXmlNode* node ) { m_Element = node; };
-//         wxXmlNode* GetFirstChild( ) { return m_Element->GetChildren(); };
+//         wxXmlNode* GetNodeElement( ) { return m_catNode; };
+//         void SetNodeElement( wxXmlNode* node ) { m_catNode = node; };
+//         wxXmlNode* GetFirstChild( ) { return m_catNode->GetChildren(); };
         
 //          wxString GetNodeAttrStr( wxString name );
 //          double GetNodeAttrDbl( wxString name );
@@ -40,7 +40,7 @@
 //         virtual bool IsOK( ) ;
 
 //     private:
-//         wxXmlNode* m_Element;
+//         wxXmlNode* m_catNode;
 //         int m_nodeType;
 //     };
 

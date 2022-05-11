@@ -29,7 +29,7 @@
  */
 
 ////@begin forward declarations
-class AlbumTreeCtrl;
+class DesignTreeCtrl;
 class StaticItem;
 ////@end forward declarations
 class ReadAlbumEasyFile;
@@ -96,10 +96,10 @@ public:
 
     void LoadAEData( wxString filename );
 
-    AlbumTreeCtrl* GetAlbumTreeCtrl(){ return m_albumTreeCtrl; };
+    DesignTreeCtrl* GetDesignTreeCtrl(){ return m_designTreeCtrl; };
 
 ////@begin AlbumPanel member variables
-    AlbumTreeCtrl* m_albumTreeCtrl;
+    DesignTreeCtrl* m_designTreeCtrl;
 ////@end AlbumPanel member variables
  //ArrayWrapper* m_AEItemArray;
 };

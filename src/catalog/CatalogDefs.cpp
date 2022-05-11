@@ -127,7 +127,7 @@ namespace Catalog {
         wxT( "Background" )
     };
 
-    wxString CatalogNodeNames[NT_NbrTypes] = {
+    wxString CatalogBaseNames[NT_NbrTypes] = {
         "Catalog" , 
         "Country" , 
         "Period"  , 
@@ -163,19 +163,19 @@ const wxString CC_CatalogCodeNames[ CC_NbrTypes ]
 
 
 
-    CatalogNodeType FindCatalogNodeType( wxString name )
+    CatalogBaseType FindCatalogBaseType( wxString name )
     {
         wxString baseName;
 
         for ( int i = 0; i < NT_NbrTypes; i++ )
         {
-            baseName = CatalogNodeNames[i];
+            baseName = CatalogBaseNames[i];
             if ( !name.Cmp( baseName ) )
             {
-                return ( CatalogNodeType )i;
+                return ( CatalogBaseType )i;
             }
         }
-        return ( CatalogNodeType )-1;
+        return ( CatalogBaseType )-1;
     };
 
 
@@ -187,7 +187,7 @@ const wxString CC_CatalogCodeNames[ CC_NbrTypes ]
     // void IDElement( wxXmlNode* ele )
     // {
     //     const char* name = ele->GetName( );
-    //     Catalog::CatalogNodeType nodeType = FindCatalogNodeType( name );
+    //     Catalog::CatalogBaseType nodeType = FindCatalogBaseType( name );
 
     //     switch ( nodeType )
     //     {
@@ -239,25 +239,25 @@ const wxString CC_CatalogCodeNames[ CC_NbrTypes ]
      * @param type  element type
      * @return true  if a match
      **************************************************/
-    bool IsCatalogNodeType( wxXmlNode* ele, CatalogNodeType type )
+    bool IsCatalogBaseType( wxXmlNode* ele, CatalogBaseType type )
     {
-        return !CatalogNodeNames [type ].Cmp( ele->GetName( ) );
+        return !CatalogBaseNames [type ].Cmp( ele->GetName( ) );
     }
 
 
-    // CatalogNodeType FindCatalogNodeType( wxXmlNode* element )
+    // CatalogBaseType FindCatalogBaseType( wxXmlNode* element )
     // {
     //     wxString name = element->GetName( );
 
-    //     int cnt = CatalogNodeNames.GetCount( );
+    //     int cnt = CatalogBaseNames.GetCount( );
     //     for ( int i = 0; i < cnt; i++ )
     //     {
-    //         if ( !name.Cmp( CatalogNodeNames.Item( i ) ) )
+    //         if ( !name.Cmp( CatalogBaseNames.Item( i ) ) )
     //         {
-    //             return ( CatalogNodeType )i;
+    //             return ( CatalogBaseType )i;
     //         }
     //     }
-    //     return ( CatalogNodeType )-1;
+    //     return ( CatalogBaseType )-1;
     // };
 
     // void AddStamp(wxXmlNode *child)
@@ -270,14 +270,14 @@ const wxString CC_CatalogCodeNames[ CC_NbrTypes ]
         level++;
         wxString name = child->GetName( );
         wxString parentName = parent->GetName( );
-        CatalogNodeType parentType = FindCatalogNodeType( parentName );
+        CatalogBaseType parentType = FindCatalogBaseType( parentName );
         //    std::cout << "AddStamp  ParentName:" << parentName
-        //        << "  ParentType:" << CatalogNodeNames[ parentType ]
+        //        << "  ParentType:" << CatalogBaseNames[ parentType ]
         //        << "  ChildName:" << name << "level" << level << "\n";
-        if ( name == CatalogNodeNames[ NT_Stamp ] )
+        if ( name == CatalogBaseNames[ NT_Stamp ] )
         {
             Catalog::Stamp stamp( child );
-            Catalog::CatalogNodeType sortType = ( Catalog::CatalogNodeType )GetSettings( )->GetNextSortClassification(
+            Catalog::CatalogBaseType sortType = ( Catalog::CatalogBaseType )GetSettings( )->GetNextSortClassification(
                 ( int )parentType );
             if ( ( sortType < NT_Catalog ) || ( sortType >= NT_Stamp ) )
             {
@@ -289,9 +289,9 @@ const wxString CC_CatalogCodeNames[ CC_NbrTypes ]
             }
             else
             {
-                //            std::cout << "     SortType: " << CatalogNodeNames[ sortType ]
+                //            std::cout << "     SortType: " << CatalogBaseNames[ sortType ]
                 //                << "\n";
-                wxString nodeName = CatalogNodeNames[ sortType ];
+                wxString nodeName = CatalogBaseNames[ sortType ];
                 wxString name = stamp.GetClassificationName( &stamp, sortType );
                 const char* nodeNameStr = nodeName;
                 //             std::cout << "     Looking for " << nodeNameStr << " with Name "
@@ -359,7 +359,7 @@ const wxString CC_CatalogCodeNames[ CC_NbrTypes ]
         wxXmlNode* child = parent->GetChildren( );
         while ( child )
         {
-            if ( !CatalogNodeNames[ NT_Stamp ].Cmp( child->GetName( ) ) )
+            if ( !CatalogBaseNames[ NT_Stamp ].Cmp( child->GetName( ) ) )
             {
                 // Make a copy of the old child in the new doc and insert it
                 wxXmlNode* newChildNode = new wxXmlNode( *child );
@@ -379,17 +379,17 @@ const wxString CC_CatalogCodeNames[ CC_NbrTypes ]
         }
     }
 
-    CatalogNodeType FindCatalogNodeType( wxXmlNode* element )
+    CatalogBaseType FindCatalogBaseType( wxXmlNode* element )
     {
         wxString name = element->GetName( );
 
         for ( int i = 0; i < NT_NbrTypes; i++ )
         {
-            if ( !name.Cmp( CatalogNodeNames[ i ] ) )
+            if ( !name.Cmp( CatalogBaseNames[ i ] ) )
             {
-                return ( CatalogNodeType )i;
+                return ( CatalogBaseType )i;
             }
         }
-        return ( CatalogNodeType )-1;
+        return ( CatalogBaseType )-1;
     };
 }

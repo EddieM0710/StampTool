@@ -23,7 +23,7 @@
 #endif
 
 ////@begin includes
-#include "gui/AlbumTreeCtrl.h"
+#include "gui/DesignTreeCtrl.h"
 #include "wx/imaglist.h"
 #include "gui/StaticItem.h"
 ////@end includes
@@ -31,7 +31,7 @@
 #include "gui/AlbumPanel.h"
 #include "gui/GuiDefs.h"
 #include "gui/GeneratorData.h"
-//#include "AlbumData.h"
+//#include "DesignData.h"
 ////@begin XPM images
 ////@end XPM images
 
@@ -110,7 +110,7 @@ AlbumPanel::~AlbumPanel( )
 void AlbumPanel::Init( )
 {
     ////@begin AlbumPanel member initialisation
-    m_albumTreeCtrl = NULL;
+    m_designTreeCtrl = NULL;
     ////@end AlbumPanel member initialisation
 }
 
@@ -126,12 +126,12 @@ void AlbumPanel::CreateControls( )
     wxBoxSizer* itemBoxSizer1 = new wxBoxSizer( wxVERTICAL );
     itemPanel1->SetSizer( itemBoxSizer1 );
 
-    m_albumTreeCtrl = new AlbumTreeCtrl( itemPanel1, ID_ALBUMTREECTRL, wxDefaultPosition, wxSize( 100, 100 ), wxTR_HAS_BUTTONS |wxTR_FULL_ROW_HIGHLIGHT|wxTR_SINGLE|wxSUNKEN_BORDER|wxTR_DEFAULT_STYLE );
-    itemBoxSizer1->Add( m_albumTreeCtrl, 1, wxGROW | wxALL, 5 );
+    m_designTreeCtrl = new DesignTreeCtrl( itemPanel1, ID_DESIGNTREECTRL, wxDefaultPosition, wxSize( 100, 100 ), wxTR_HAS_BUTTONS |wxTR_FULL_ROW_HIGHLIGHT|wxTR_SINGLE|wxSUNKEN_BORDER|wxTR_DEFAULT_STYLE );
+    itemBoxSizer1->Add( m_designTreeCtrl, 1, wxGROW | wxALL, 5 );
 
  //   itemScrolledWindow1->FitInside( );
 
-    GetGeneratorData( )->SetAlbumTreeCtrl(m_albumTreeCtrl);
+    GetGeneratorData( )->SetDesignTreeCtrl(m_designTreeCtrl);
 }
 
 
@@ -172,7 +172,7 @@ wxIcon AlbumPanel::GetIconResource( const wxString& name )
 
 void AlbumPanel::LoadAlbumLayout( )
 {
-   m_albumTreeCtrl->LoadTree();
+   m_designTreeCtrl->LoadTree();
 }
 
 void AlbumPanel::LoadAEData( wxString filename )

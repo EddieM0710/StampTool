@@ -22,8 +22,60 @@
 
 #include "utils/StampList.h"
 #include "gui/CatalogTreeCtrl.h"
-#include "gui/AlbumTreeCtrl.h"
+#include "gui/DesignTreeCtrl.h"
+
 namespace Utils {
+    void StampLink::Clear( )
+    {
+        CatalogTreeCtrl* catTreeCtrl = GetCatalogTreeCtrl( );
+        if ( catTreeCtrl )
+        {
+            wxTreeItemId catID = GetCatTreeID( );
+            if ( catID.IsOk( ) )
+            {
+                CatalogTreeItemData* catData =
+                    ( CatalogTreeItemData* )catTreeCtrl->GetItemData( catID );
+                catData->SetStampLink( ( StampLink* )0 );
+            }
+        }
+        DesignTreeCtrl* designTreeCtrl = GetDesignTreeCtrl( );
+        if ( designTreeCtrl )
+        {
+            wxTreeItemId albumID = GetDesignTreeID( );
+            if ( albumID.IsOk( ) )
+            {
+                DesignTreeItemData* albumData =
+                    ( DesignTreeItemData* )designTreeCtrl->GetItemData( albumID );
+                albumData->SetStampLink( ( StampLink* )0 );
+            }
+        }
+    }
+
+    void StampList::Clear( )
+    {
+        CatalogTreeCtrl* catTreeCtrl = GetCatalogTreeCtrl( );
+        DesignTreeCtrl* designTreeCtrl = GetDesignTreeCtrl( );
+        if ( catTreeCtrl )
+        {
+            for ( int i = 0; i < m_list.size( ); i++ )
+            {
+                StampLink* link = ( StampLink* )m_list.at( i );
+                catTreeCtrl->RemoveStampLink( link->GetCatTreeID() );
+                link->Clear( );
+                delete link;
+            }
+            m_list.erase( std::begin( m_list ), std::end( m_list ) );
+        }
+    }
+    void StampList::ClearCatalogLinks()
+    {
+        for ( int i = 0; i < m_list.size( ); i++ )
+        {
+            StampLink* link = ( StampLink* )m_list.at( i );
+            link->SetCatTreeID( (wxTreeItemId)0 );
+        }
+    }
+
 
     int StampList::FindStamp( wxString stampID )
     {
@@ -38,7 +90,7 @@ namespace Utils {
         return -1;
     };
 
-    StampLink* StampList::GetStampLink( wxString stampID )
+    StampLink* StampList::FindStampLink( wxString stampID )
     {
         int pos = FindStamp( stampID );
         if ( pos >= 0 )
@@ -48,9 +100,9 @@ namespace Utils {
         return ( StampLink* )0;
     }
 
-    StampLink* StampList::AddStamp( Layout::Stamp* stamp )
+    StampLink* StampList::AddStamp( Design::Stamp* stamp )
     {
-        int pos = FindStamp( stamp->GetAttrStr( Layout::AT_ID ) );
+        int pos = FindStamp( stamp->GetAttrStr( Design::AT_ID ) );
 
         if ( pos >= 0 )
         {
@@ -80,30 +132,30 @@ namespace Utils {
         return false;
     }
 
-    void StampList::SetCatStamp( wxString stampID, wxXmlNode* catStamp )
+    void StampList::SetCatNode( wxString stampID, wxXmlNode* catStamp )
     {
         int pos = FindStamp( stampID );
         if ( pos >= 0 )
         {
-            m_list.at( pos )->SetCatStamp( catStamp );
+            m_list.at( pos )->SetCatNode( catStamp );
         }
     }
 
-    wxXmlNode* StampList::GetCatStamp( wxString stampID )
+    wxXmlNode* StampList::GetCatNode( wxString stampID )
     {
         int pos = FindStamp( stampID );
         if ( pos >= 0 )
         {
-            return m_list.at( pos )->GetCatStamp( );
+            return m_list.at( pos )->GetCatNode( );
         }
         return ( wxXmlNode* )0;
     }
-    void StampLink::Update( wxTreeItemId catID, wxTreeItemId albumID ) 
+    void StampLink::Update( wxTreeItemId catID, wxTreeItemId albumID )
     {
-        SetAlbumTreeID( albumID );
+        SetDesignTreeID( albumID );
         SetCatTreeID( catID );
-        CatalogTreeCtrl *treeCtrl = GetCatalogTreeCtrl( );
-        CatalogDataTreeItemData* data = (CatalogDataTreeItemData*)treeCtrl->GetItemData(catID);
-        SetCatStamp( data->GetNodeElement());
+        CatalogTreeCtrl* treeCtrl = GetCatalogTreeCtrl( );
+        CatalogTreeItemData* data = ( CatalogTreeItemData* )treeCtrl->GetItemData( catID );
+        SetCatNode( data->GetNodeElement( ) );
     }
 }

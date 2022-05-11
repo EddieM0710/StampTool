@@ -9,10 +9,10 @@
  *
  **************************************************/
 
-#include "album/Title.h"
+#include "design/Title.h"
 #include "odt/Document.h"
 
-namespace Layout {
+namespace Design {
 
     void  Title::UpdateMinimumSize( )
     {
@@ -57,9 +57,9 @@ namespace Layout {
     }
 
         
-    AlbumNodeStatus Title::ValidateNode()
+    AlbumBaseStatus Title::ValidateNode()
     {
-        AlbumNodeStatus status = AT_OK;
+        AlbumBaseStatus status = AT_OK;
 
 
         return status;

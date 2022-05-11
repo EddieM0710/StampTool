@@ -12,16 +12,16 @@
 #ifndef Title_H
 #define Title_H
 
-#include "album/LayoutNode.h"
+#include "design/LayoutBase.h"
 
-namespace Layout {
+namespace Design {
 
 
     /**
-     * @brief Layout for the page Title text box; Inherits from LayoutNode.
+     * @brief Design for the page Title text box; Inherits from LayoutBase.
      *
      **************************************************/
-    class Title : public LayoutNode
+    class Title : public LayoutBase
     {
 
     public:
@@ -31,10 +31,10 @@ namespace Layout {
          *
          * @param parent
          **************************************************/
-        Title( AlbumNode* parent, wxXmlNode* node ) : LayoutNode( parent,  node ) 
+        Title( AlbumBase* parent, wxXmlNode* node ) : LayoutBase( parent,  node ) 
         { 
             SetNodeType( AT_Title );
-            SetObjectName( AlbumNodeNames[GetNodeType() ] ); 
+            SetObjectName( AlbumBaseNames[GetNodeType() ] ); 
             };
 
         /**
@@ -45,7 +45,7 @@ namespace Layout {
 
         /**
          * @brief Calculate the layout parameters.
-         * @todo Title::Layout. This is not done. Neiter position or size are initialized.
+         * @todo Title::Design. This is not done. Neiter position or size are initialized.
          *
          * @return true
          * @return false
@@ -81,7 +81,7 @@ namespace Layout {
 
         // Getters and Putters
 
-        AlbumNodeStatus ValidateNode();
+        AlbumBaseStatus ValidateNode();
 
 
     private:

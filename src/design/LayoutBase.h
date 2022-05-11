@@ -1,5 +1,5 @@
 /**
- * @file Layoutlayout/AlbumNode.h
+ * @file Layoutlayout/AlbumBase.h
  * @author Eddie Monroe
  * @brief
  * @version 0.1
@@ -9,20 +9,20 @@
  *
  **************************************************/
 
-#ifndef LayoutNode_h
-#define LayoutNode_h
+#ifndef LayoutBase_h
+#define LayoutBase_h
 
 #include <wx/string.h>
 
 #include "Defs.h"
-#include "album/AlbumNode.h"
- //#include "album/Attribute.h"
+#include "design/AlbumBase.h"
+ //#include "design/Attribute.h"
 #include "utils/XMLUtilities.h"
 
 #include <wx/xml/xml.h>
  //using namespace tinyxml2;
 
-namespace Layout {
+namespace Design {
 
 
     class Title;
@@ -32,23 +32,23 @@ namespace Layout {
      * initialy loaded from the layout XML.
      *
      **************************************************/
-    class LayoutNode : public AlbumNode
+    class LayoutBase : public AlbumBase
     {
     public:
         /**
-         * @brief Unused; Construct a new Album Layout Object object
+         * @brief Unused; Construct a new Album Design Object object
          *
          **************************************************/
-        LayoutNode( ) : AlbumNode( ) {
+        LayoutBase( ) : AlbumBase( ) {
             
         };
 
         /**
-         * @brief Construct a new Album Layout Object
+         * @brief Construct a new Album Design Object
          *
          * @param name
          **************************************************/
-        LayoutNode( AlbumNode* parent, wxXmlNode* node ) : AlbumNode(  parent, node ) {
+        LayoutBase( AlbumBase* parent, wxXmlNode* node ) : AlbumBase(  parent, node ) {
         };
 
 

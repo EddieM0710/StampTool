@@ -22,9 +22,9 @@
 #endif
 
 
-#include "StampTreeCtrl.h"
+#include "CatalogDataTreeCtrl.h"
 #include "wx/imaglist.h"
-#include "AlbumGeneratorDialog.h"
+//#include "AlbumGeneratorDialog.h"
 
 #include "AlbumGeneratorPanel.h"
 
@@ -202,10 +202,10 @@ void AlbumGeneratorPanel::LoadAECmdTree( )
     m_albumSplitterWindow->LoadCmdTree( );
 }
 
-void AlbumGeneratorPanel::ClearAECmdTree( )
-{
-    m_albumSplitterWindow->ClearCmdTree( );
-}
+// void AlbumGeneratorPanel::ClearAECmdTree( )
+// {
+//     m_albumSplitterWindow->ClearCmdTree( );
+// }
 /*
  * wxEVT_COMMAND_NOTEBOOK_PAGE_CHANGED event handler for ID_NOTEBOOK
  */
@@ -232,6 +232,3 @@ void AlbumGeneratorPanel::OnTitleTextUpdated( wxCommandEvent& event )
     event.Skip();
 ////@end wxEVT_COMMAND_TEXT_UPDATED event handler for ID_TITLETEXTCTRL in AlbumGeneratorPanel. 
 }
-//void AlbumGeneratorPanel::LoadCatalog( wxString filename ){ m_mngCatalogData->LoadCatalog(filename); };
-//void AlbumGeneratorPanel::InitCatalogData(){m_mngCatalogData->InitCatalogData();};
-//void AlbumGeneratorPanel::LoadCatalogCSV( wxString filename ){m_mngCatalogData->LoadCatalogCSV( filename );};

@@ -94,6 +94,8 @@ public:
     wxIcon GetIconResource( const wxString& name );
 ////@end AlbumSplitterWindow member function declarations
 
+    ManageAECmdData* GetAECmdDataMgr(){ return m_AECmdDataMgr;} ;
+
     /// Should we show tooltips?
     static bool ShowToolTips();
     void ClearCmdTree( ) ;

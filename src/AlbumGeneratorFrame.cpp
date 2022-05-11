@@ -22,6 +22,7 @@
 
 #include "AlbumGeneratorPanel.h"
 #include "ManageCatalogData.h"
+#include "ManageAECmdData.h"
 #include <wx/filefn.h>
 #include <wx/filename.h>
 #include <wx/log.h>
@@ -217,6 +218,7 @@ void AlbumGeneratorFrame::CreateControls( )
         wxSize( 100, 100 ), wxSIMPLE_BORDER );
     itemGridSizer1->Add( m_albumGeneratorPanel, 1, wxGROW | wxALL, 0 );
     m_catalogDataManager = m_albumGeneratorPanel->GetCatalogDataManager();
+    m_AECmdDataManager = m_albumGeneratorPanel->GetAECmdDataManager();
 }
 
 /*
@@ -364,9 +366,9 @@ void AlbumGeneratorFrame::SetStamp( XMLElement* stamp )
 
 void AlbumGeneratorFrame::UpdateStatus( ) { m_albumGeneratorPanel->UpdateStatus( ); }
 
-// StampTreeCtrl* AlbumGeneratorFrame::GetStampTree( )
+// CatalogDataTreeCtrl* AlbumGeneratorFrame::GetCatalogDataTree( )
 // {
-//     return m_mngCatalogData->GetStampTree( );
+//     return m_mngCatalogData->GetCatalogDataTree( );
 // };
 
 // void AlbumGeneratorFrame::LoadTree(Catalog *catalogData)
@@ -634,13 +636,8 @@ void AlbumGeneratorFrame::DoAEImport( )
         return;
     }
 
+    m_AECmdDataManager->LoadAEFile( filename );
 
-    m_albumGeneratorPanel->ClearAECmdTree( );
-    AECmdData* aeCmdData = NewAECmdData( );
-    SetAECmdData( aeCmdData );
-    aeCmdData->LoadAEFile( filename );
-
-    m_albumGeneratorPanel->LoadAECmdTree( );
     Dirty = true;
 }
 

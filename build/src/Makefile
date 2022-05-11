@@ -179,33 +179,6 @@ AlbumGeneratorApp.cpp.s:
 	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f src/CMakeFiles/AlbumGenerator.dir/build.make src/CMakeFiles/AlbumGenerator.dir/AlbumGeneratorApp.cpp.s
 .PHONY : AlbumGeneratorApp.cpp.s
 
-AlbumGeneratorDialog.o: AlbumGeneratorDialog.cpp.o
-
-.PHONY : AlbumGeneratorDialog.o
-
-# target to build an object file
-AlbumGeneratorDialog.cpp.o:
-	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f src/CMakeFiles/AlbumGenerator.dir/build.make src/CMakeFiles/AlbumGenerator.dir/AlbumGeneratorDialog.cpp.o
-.PHONY : AlbumGeneratorDialog.cpp.o
-
-AlbumGeneratorDialog.i: AlbumGeneratorDialog.cpp.i
-
-.PHONY : AlbumGeneratorDialog.i
-
-# target to preprocess a source file
-AlbumGeneratorDialog.cpp.i:
-	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f src/CMakeFiles/AlbumGenerator.dir/build.make src/CMakeFiles/AlbumGenerator.dir/AlbumGeneratorDialog.cpp.i
-.PHONY : AlbumGeneratorDialog.cpp.i
-
-AlbumGeneratorDialog.s: AlbumGeneratorDialog.cpp.s
-
-.PHONY : AlbumGeneratorDialog.s
-
-# target to generate assembly for a file
-AlbumGeneratorDialog.cpp.s:
-	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f src/CMakeFiles/AlbumGenerator.dir/build.make src/CMakeFiles/AlbumGenerator.dir/AlbumGeneratorDialog.cpp.s
-.PHONY : AlbumGeneratorDialog.cpp.s
-
 AlbumGeneratorFrame.o: AlbumGeneratorFrame.cpp.o
 
 .PHONY : AlbumGeneratorFrame.o
@@ -421,6 +394,33 @@ CatalogData.s: CatalogData.cpp.s
 CatalogData.cpp.s:
 	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f src/CMakeFiles/AlbumGenerator.dir/build.make src/CMakeFiles/AlbumGenerator.dir/CatalogData.cpp.s
 .PHONY : CatalogData.cpp.s
+
+CatalogDataTreeCtrl.o: CatalogDataTreeCtrl.cpp.o
+
+.PHONY : CatalogDataTreeCtrl.o
+
+# target to build an object file
+CatalogDataTreeCtrl.cpp.o:
+	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f src/CMakeFiles/AlbumGenerator.dir/build.make src/CMakeFiles/AlbumGenerator.dir/CatalogDataTreeCtrl.cpp.o
+.PHONY : CatalogDataTreeCtrl.cpp.o
+
+CatalogDataTreeCtrl.i: CatalogDataTreeCtrl.cpp.i
+
+.PHONY : CatalogDataTreeCtrl.i
+
+# target to preprocess a source file
+CatalogDataTreeCtrl.cpp.i:
+	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f src/CMakeFiles/AlbumGenerator.dir/build.make src/CMakeFiles/AlbumGenerator.dir/CatalogDataTreeCtrl.cpp.i
+.PHONY : CatalogDataTreeCtrl.cpp.i
+
+CatalogDataTreeCtrl.s: CatalogDataTreeCtrl.cpp.s
+
+.PHONY : CatalogDataTreeCtrl.s
+
+# target to generate assembly for a file
+CatalogDataTreeCtrl.cpp.s:
+	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f src/CMakeFiles/AlbumGenerator.dir/build.make src/CMakeFiles/AlbumGenerator.dir/CatalogDataTreeCtrl.cpp.s
+.PHONY : CatalogDataTreeCtrl.cpp.s
 
 Classification.o: Classification.cpp.o
 
@@ -800,33 +800,6 @@ Stamp.cpp.s:
 	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f src/CMakeFiles/AlbumGenerator.dir/build.make src/CMakeFiles/AlbumGenerator.dir/Stamp.cpp.s
 .PHONY : Stamp.cpp.s
 
-StampTreeCtrl.o: StampTreeCtrl.cpp.o
-
-.PHONY : StampTreeCtrl.o
-
-# target to build an object file
-StampTreeCtrl.cpp.o:
-	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f src/CMakeFiles/AlbumGenerator.dir/build.make src/CMakeFiles/AlbumGenerator.dir/StampTreeCtrl.cpp.o
-.PHONY : StampTreeCtrl.cpp.o
-
-StampTreeCtrl.i: StampTreeCtrl.cpp.i
-
-.PHONY : StampTreeCtrl.i
-
-# target to preprocess a source file
-StampTreeCtrl.cpp.i:
-	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f src/CMakeFiles/AlbumGenerator.dir/build.make src/CMakeFiles/AlbumGenerator.dir/StampTreeCtrl.cpp.i
-.PHONY : StampTreeCtrl.cpp.i
-
-StampTreeCtrl.s: StampTreeCtrl.cpp.s
-
-.PHONY : StampTreeCtrl.s
-
-# target to generate assembly for a file
-StampTreeCtrl.cpp.s:
-	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f src/CMakeFiles/AlbumGenerator.dir/build.make src/CMakeFiles/AlbumGenerator.dir/StampTreeCtrl.cpp.s
-.PHONY : StampTreeCtrl.cpp.s
-
 StaticItem.o: StaticItem.cpp.o
 
 .PHONY : StaticItem.o
@@ -896,9 +869,6 @@ help:
 	@echo "... AlbumGeneratorApp.o"
 	@echo "... AlbumGeneratorApp.i"
 	@echo "... AlbumGeneratorApp.s"
-	@echo "... AlbumGeneratorDialog.o"
-	@echo "... AlbumGeneratorDialog.i"
-	@echo "... AlbumGeneratorDialog.s"
 	@echo "... AlbumGeneratorFrame.o"
 	@echo "... AlbumGeneratorFrame.i"
 	@echo "... AlbumGeneratorFrame.s"
@@ -923,6 +893,9 @@ help:
 	@echo "... CatalogData.o"
 	@echo "... CatalogData.i"
 	@echo "... CatalogData.s"
+	@echo "... CatalogDataTreeCtrl.o"
+	@echo "... CatalogDataTreeCtrl.i"
+	@echo "... CatalogDataTreeCtrl.s"
 	@echo "... Classification.o"
 	@echo "... Classification.i"
 	@echo "... Classification.s"
@@ -965,9 +938,6 @@ help:
 	@echo "... Stamp.o"
 	@echo "... Stamp.i"
 	@echo "... Stamp.s"
-	@echo "... StampTreeCtrl.o"
-	@echo "... StampTreeCtrl.i"
-	@echo "... StampTreeCtrl.s"
 	@echo "... StaticItem.o"
 	@echo "... StaticItem.i"
 	@echo "... StaticItem.s"

@@ -50,10 +50,15 @@ bool ReadAlbumEasyFile::GetCommand()
     std::cout << "cmd: " << cmd << "\n";
 
     m_item->SetCommand( cmd );
-
-    if ( m_pos >= m_buffer.Length() )
+    if ( m_pos == wxNOT_FOUND  )
     {
-
+        ReadLine();
+        m_state = SEARCH;
+    }
+    else if ( m_pos >= m_buffer.Length() )
+    {
+        ReadLine();
+        m_state = SEARCH;
     }
     else if ( m_buffer[m_pos] == '#' )
     {
@@ -164,10 +169,7 @@ wxString ReadAlbumEasyFile::GetSimpleString( wxString searchSet )
     }
     simpleString = GetSubString();
     m_pos = breakChar;
-    // if ( breakChar == wxNOT_FOUND  )
-    // {
-    //     ReadLine();
-    // }
+
     m_char = m_buffer[ m_pos ];
     return simpleString;
 }
@@ -321,10 +323,10 @@ bool ReadAlbumEasyFile::ProcessFile()
 
     while ( m_char != EOF )
     {
-        if ( m_lineNbr >= 90 )
-        {
-            continue;
-        }
+        // if ( m_lineNbr >= 90 )
+        // {
+        //     continue;
+        // }
 
         switch ( m_state )
         {
@@ -346,6 +348,7 @@ bool ReadAlbumEasyFile::ProcessFile()
         default:
             std::cout << "This is uncomfortable! We are i an unknown state!\n";
         }
+
         std::cout << stateNames[m_state] << " pos: " << m_pos << "  char: " << m_char << "\n";
 
 if(m_pos == -1 )

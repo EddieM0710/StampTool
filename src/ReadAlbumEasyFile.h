@@ -129,7 +129,7 @@ private:
     wxString m_buffer;
     int m_lineNbr;
     int m_pos;
-    char m_char;
+    wxChar m_char;
     int m_start;
     int m_end;
     ProcessState m_state;

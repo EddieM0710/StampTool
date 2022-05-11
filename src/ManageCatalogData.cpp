@@ -23,7 +23,7 @@
 #endif
 
 ////@begin includes
-#include "StampTreeCtrl.h"
+#include "CatalogDataTreeCtrl.h"
 #include "wx/imaglist.h"
 ////@end includes
 
@@ -140,7 +140,7 @@ void ManageCatalogData::CreateControls()
     wxBoxSizer* itemBoxSizer3 = new wxBoxSizer(wxHORIZONTAL);
     itemBoxSizer2->Add(itemBoxSizer3, 2, wxGROW|wxALL, 0);
 
-    m_listTree = new StampTreeCtrl( itemPanel1, ID_TREECTRL, wxDefaultPosition, wxDefaultSize, wxTR_HAS_BUTTONS |wxTR_FULL_ROW_HIGHLIGHT|wxTR_SINGLE|wxSUNKEN_BORDER|wxTR_DEFAULT_STYLE );
+    m_listTree = new CatalogDataTreeCtrl( itemPanel1, CatalogDataTree_Ctrl, wxDefaultPosition, wxDefaultSize, wxTR_HAS_BUTTONS |wxTR_FULL_ROW_HIGHLIGHT|wxTR_SINGLE|wxSUNKEN_BORDER|wxTR_DEFAULT_STYLE );
     itemBoxSizer3->Add(m_listTree, 2, wxGROW|wxALL, 0);
 
 ////@end ManageCatalogData content construction

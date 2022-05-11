@@ -100,16 +100,16 @@ wxDECLARE_APP( AlbumGeneratorApp );
 
 wxBEGIN_EVENT_TABLE( AlbumTreeCtrl, wxTreeCtrl )
 
-EVT_TREE_BEGIN_DRAG( StampTree_Ctrl, AlbumTreeCtrl::OnBeginDrag )
-EVT_TREE_END_DRAG( StampTree_Ctrl, AlbumTreeCtrl::OnEndDrag )
-EVT_TREE_SEL_CHANGED( StampTree_Ctrl, AlbumTreeCtrl::OnSelChanged )
-//EVT_TREE_STATE_IMAGE_CLICK( StampTree_Ctrl, AlbumTreeCtrl::OnItemStateClick )
+EVT_TREE_BEGIN_DRAG( CatalogDataTree_Ctrl, AlbumTreeCtrl::OnBeginDrag )
+EVT_TREE_END_DRAG( CatalogDataTree_Ctrl, AlbumTreeCtrl::OnEndDrag )
+EVT_TREE_SEL_CHANGED( CatalogDataTree_Ctrl, AlbumTreeCtrl::OnSelChanged )
+EVT_TREE_STATE_IMAGE_CLICK( CatalogDataTree_Ctrl, AlbumTreeCtrl::OnItemStateClick )
 EVT_CONTEXT_MENU( AlbumTreeCtrl::OnContextMenu )
 // EVT_TREE_ITEM_MENU is the preferred event for creating context menus
 // on a tree control, because it includes the point of the click or item,
 // meaning that no additional placement calculations are required.
-EVT_TREE_ITEM_MENU( StampTree_Ctrl, AlbumTreeCtrl::OnItemMenu )
-EVT_TREE_ITEM_RIGHT_CLICK( StampTree_Ctrl, AlbumTreeCtrl::OnItemRClick )
+EVT_TREE_ITEM_MENU( CatalogDataTree_Ctrl, AlbumTreeCtrl::OnItemMenu )
+EVT_TREE_ITEM_RIGHT_CLICK( CatalogDataTree_Ctrl, AlbumTreeCtrl::OnItemRClick )
 
 wxEND_EVENT_TABLE( )
 ;  // silly business; The above macro screws up the formatter
@@ -125,7 +125,7 @@ AlbumTreeCtrl::AlbumTreeCtrl( wxWindow* parent, const wxWindowID id,
     m_reverseSort = true;
 
     CreateImageList( );
-//    CreateStateImageList(false);
+    CreateStateImageList(false);
 
 }
 
@@ -158,30 +158,30 @@ void AlbumTreeCtrl::CreateImageList( )
 
     AssignImageList( images );
  }
-// void AlbumTreeCtrl::CreateStateImageList(bool del)
-// {
+void AlbumTreeCtrl::CreateStateImageList(bool del)
+{
 
 
-//     wxImageList *states;
-//     wxBusyCursor wait;
+    wxImageList *states;
+    wxBusyCursor wait;
 
   
-//         wxIcon icons[2];
-//         icons[0] = wxIcon(unchecked_xpm);
-//         icons[1] = wxIcon(checked_xpm);
+        wxIcon icons[2];
+        icons[0] = wxIcon(unchecked_xpm);
+        icons[1] = wxIcon(checked_xpm);
 
-//         int width  = icons[0].GetWidth();
-//         int height = icons[0].GetHeight();
+        int width  = icons[0].GetWidth();
+        int height = icons[0].GetHeight();
 
-//         // Make an state image list containing small icons
-//         states = new wxImageList(width, height, true);
+        // Make an state image list containing small icons
+        states = new wxImageList(width, height, true);
 
-//         for ( size_t i = 0; i < WXSIZEOF(icons); i++ )
-//             states->Add(icons[i]);
+        for ( size_t i = 0; i < WXSIZEOF(icons); i++ )
+            states->Add(icons[i]);
     
 
-//     AssignStateImageList(states);
-// }
+    AssignStateImageList(states);
+}
 
 int AlbumTreeCtrl::OnCompareItems( const wxTreeItemId& item1,
     const wxTreeItemId& item2 )
@@ -213,8 +213,8 @@ int AlbumTreeCtrl::OnCompareItems( const wxTreeItemId& item1,
     }
 }
 
-// void AlbumTreeCtrl::SetNextState( const wxTreeItemId& itemId )
-// {
+ void AlbumTreeCtrl::SetNextState( const wxTreeItemId& itemId )
+ {
 //     AlbumTreeItemData* item = ( AlbumTreeItemData* )GetItemData( itemId );
 //     XMLElement* element = item->GetElement( );
 //     Stamp* stamp = new Stamp( element );
@@ -228,9 +228,9 @@ int AlbumTreeCtrl::OnCompareItems( const wxTreeItemId& item1,
 //         }
 //         stamp->SetStatusType( ( StatusType )status );
 //         wxGetApp( ).GetFrame( )->UpdateStatus( );
-//         SetItemState( itemId, wxTREE_ITEMSTATE_NEXT );
+         SetItemState( itemId, wxTREE_ITEMSTATE_NEXT );
 //     }
-// }
+ }
 
 IconID AlbumTreeCtrl::GetIconId( Stamp* stamp )
 {
@@ -240,7 +240,7 @@ IconID AlbumTreeCtrl::GetIconId( Stamp* stamp )
 
 void AlbumTreeCtrl::SetStatusImage( )
 {
-    // wxTreeItemId itemId = GetFocusedItem( );
+     wxTreeItemId itemId = GetFocusedItem( );
     // AlbumTreeItemData* item = ( AlbumTreeItemData* )GetItemData( itemId );
     // XMLElement* element = item->GetElement( );
     // Stamp* stamp = new Stamp( element );
@@ -311,12 +311,13 @@ void AlbumTreeCtrl::OnEndDrag( wxTreeEvent& event )
     Delete( itemSrc );
 }
 
-// void AlbumTreeCtrl::OnItemStateClick( wxTreeEvent& event )
-// {
-//     // toggle item state
-//     wxTreeItemId itemId = event.GetItem( );
-//     SetNextState( itemId );
-// }
+void AlbumTreeCtrl::OnItemStateClick( wxTreeEvent& event )
+{
+    // toggle item state
+    wxTreeItemId itemId = event.GetItem( );
+
+    SetNextState( itemId );
+}
 
 void AlbumTreeCtrl::OnSelChanged( wxTreeEvent& event )
 {
@@ -354,7 +355,7 @@ void AlbumTreeCtrl::OnContextMenu( wxContextMenuEvent& event )
     wxPoint pt = event.GetPosition( );
 
     int id = event.GetId( );
-    // if ( id == StampTree_StructureStamps )
+    // if ( id == CatalogDataTree_StructureStamps )
     // {
     //     wxTreeItemId id = HitTest( pt );
     //     if ( id.IsOk( ) )
@@ -364,7 +365,7 @@ void AlbumTreeCtrl::OnContextMenu( wxContextMenuEvent& event )
     //         StructureStamp( stamp );
     //     }
     // }
-    // else if ( id == StampTree_ResortTree )
+    // else if ( id == CatalogDataTree_ResortTree )
     // {
     //     ReSortTree( );
     // }
@@ -385,14 +386,14 @@ void AlbumTreeCtrl::ShowMenu( wxTreeItemId id, const wxPoint& pt )
     }
 
     wxMenu menu( title );
-    menu.Append( StampTree_About, "&About" );
+    menu.Append( CatalogDataTree_About, "&About" );
     menu.AppendSeparator( );
 
-    menu.Append( StampTree_StructureStamps, "Re-Group Multiples" );
-    menu.Append( StampTree_ResortTree, "Re-Sort Tree" );
+    menu.Append( CatalogDataTree_StructureStamps, "Re-Group Multiples" );
+    menu.Append( CatalogDataTree_ResortTree, "Re-Sort Tree" );
     switch ( GetPopupMenuSelectionFromUser( menu ) )
     {
-    // case StampTree_StructureStamps:
+    // case CatalogDataTree_StructureStamps:
     // {
     //     AlbumTreeItemData* data = ( AlbumTreeItemData* )GetItemData( id );
     //     XMLElement* stamp = data->GetElement( );
@@ -407,7 +408,7 @@ void AlbumTreeCtrl::ShowMenu( wxTreeItemId id, const wxPoint& pt )
     //     }
     //     break;
     // }
-    // case StampTree_ResortTree:
+    // case CatalogDataTree_ResortTree:
     // {
     //     ReSortTree( );
     //     break;

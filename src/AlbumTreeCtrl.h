@@ -23,10 +23,10 @@
  **************************************************/ 
 enum
 {
-    StampTree_Quit = wxID_EXIT,
-    StampTree_About = wxID_ABOUT,
-    StampTree_StructureStamps,
-    StampTree_ResortTree
+    CatalogDataTree_Quit = wxID_EXIT,
+    CatalogDataTree_About = wxID_ABOUT,
+    CatalogDataTree_StructureStamps,
+    CatalogDataTree_ResortTree
 };
 
 
@@ -185,7 +185,7 @@ class AlbumTreeCtrl : public wxTreeCtrl
      *
      * @param   event :
      **************************************************/
-    //void OnItemStateClick( wxTreeEvent& event );
+    void OnItemStateClick( wxTreeEvent& event );
 
     /**
      *
@@ -202,7 +202,7 @@ class AlbumTreeCtrl : public wxTreeCtrl
     /**
      *
      **************************************************/
-   // void CreateStateImageList( bool del);
+    void CreateStateImageList( bool del);
     void CreateImageList( );
     
     /**
@@ -225,7 +225,7 @@ class AlbumTreeCtrl : public wxTreeCtrl
      *
      * @param  itemID :
      **************************************************/
-//    void SetNextState( const wxTreeItemId& itemID );
+    void SetNextState( const wxTreeItemId& itemID );
 
 
 

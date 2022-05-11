@@ -39,7 +39,8 @@ class wxButton;
 class CatalogData;
 
 class ManageCatalogData;
-class StampTreeCtrl;
+class CatalogDataTreeCtrl;
+class ManageAECmdData;
 /*!
  * Control identifiers
  */
@@ -47,7 +48,6 @@ class StampTreeCtrl;
  
 
 #define ID_IMPORT ID_ALBUMGENERATORFRAME+1
-#define ID_RECENT ID_ALBUMGENERATORFRAME+10
 #define ID_TEXTSERCHMENUITEM ID_ALBUMGENERATORFRAME+2
 #define ID_IMAGEGALERYMENUITEM ID_ALBUMGENERATORFRAME+3
 #define ID_MENUITEM ID_ALBUMGENERATORFRAME+4
@@ -237,7 +237,9 @@ class AlbumGeneratorFrame : public wxFrame
      * @return wxIcon null
      **************************************************/
     wxIcon GetIconResource( const wxString &name );
-     // AlbumGeneratorFrame member function declarations
+
+
+    // AlbumGeneratorFrame member function declarations
 
     // Should we show tooltips?
     static bool ShowToolTips( );
@@ -245,7 +247,6 @@ class AlbumGeneratorFrame : public wxFrame
     void SetStamp( XMLElement *stamp );
     void UpdateStatus( );
 
-    //    void LoadTree(Catalog* catalogData);
     void DoCSVImport( );
     void DoAEImport( );
     void Open( );
@@ -264,15 +265,16 @@ class AlbumGeneratorFrame : public wxFrame
 
     void GetSetupData( int &mergeProcedure, XMLElement **currItem,
                        XMLElement **mergeItem );
-//    StampTreeCtrl *GetStampTree( );
+//    CatalogDataTreeCtrl *GetCatalogDataTree( );
     int ImageGallery( );
 
      // AlbumGeneratorFrame member variables
     AlbumGeneratorPanel *m_albumGeneratorPanel;
     ManageCatalogData* m_catalogDataManager;
+    ManageAECmdData* m_AECmdDataManager;
      // AlbumGeneratorFrame member variables
-    // Persistent m_persistent;
-    // container data claAlbumGeneratorFramessification sort order
+
+    // container data classification sort order
     wxArrayInt m_sortOrder;
     wxMenu* m_fileMenu;
     wxMenu* m_recentMenu;

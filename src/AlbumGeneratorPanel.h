@@ -29,7 +29,7 @@
 class ManageCatalogData;
 class wxNotebook;
 class wxFlexGridSizer;
-class AlbumGeneratorDialog;
+//class AlbumGeneratorDialog;
 class Stamp;
 
 /*!
@@ -53,7 +53,7 @@ class Stamp;
 
 /**
  * @brief AlbumGeneratorPanel is the main window class for the application,
- * It contains a splitter window with the StampTreeCtrl on one side and a 
+ * It contains a splitter window with the CatalogDataTreeCtrl on one side and a 
  * wxNotebook on the other with the the DescriptionPanel and wxScrolledWindow m_galleryPage as pages.
  * m_galleryPage manages a list of GalleryImagePanel images. 
  * AlbumGeneratorPanel inherits from wxPanel.
@@ -156,17 +156,17 @@ class AlbumGeneratorPanel : public wxPanel
     void UpdateStatus( );
 
     void LoadAECmdTree( );
-    void ClearAECmdTree( );
+//    void ClearAECmdTree( );
     //void LoadCatalog( wxString filename );
     //void InitCatalogData();
     //void LoadCatalogCSV( wxString filename );
     ManageCatalogData* GetCatalogDataManager(){ return m_mngCatalogData;};
-
-   // StampTreeCtrl* GetStampTree( ) { return m_listTree; };
+    ManageAECmdData* GetAECmdDataManager(){ m_albumSplitterWindow->GetAECmdDataMgr();};
+   // CatalogDataTreeCtrl* GetCatalogDataTree( ) { return m_listTree; };
 
     // AlbumGeneratorPanel member variables
     wxNotebook* m_notebook;
-    AlbumGeneratorDialog* m_albumGenDialog;
+   // AlbumGeneratorDialog* m_albumGenDialog;
     wxFlexGridSizer* m_sizer;
     // AlbumGeneratorPanel member variables
     ManageCatalogData* m_mngCatalogData;

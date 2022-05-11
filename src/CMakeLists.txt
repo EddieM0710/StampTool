@@ -14,31 +14,30 @@ add_executable (AlbumGenerator
     AlbumGeneratorApp.cpp
     AlbumGeneratorFrame.cpp
     AlbumGeneratorPanel.cpp
-    SortOrderDialog.cpp
-    LabeledTextBox.cpp
-    CSV.cpp 
-    Classification.cpp 
-    Stamp.cpp
-    Specimen.cpp
-    CatalogCode.cpp
-    CatalogData.cpp
-    AECmdData.cpp
-    StampTreeCtrl.cpp
+    AlbumSplitterWindow.cpp 
+    Defs.cpp
     Persistent.cpp 
     Settings.cpp
     SettingsDialog.cpp
-    Defs.cpp
-    XMLUtilities.cpp
+    SortOrderDialog.cpp
     DefinePeriodsDialog.cpp
-    MakeList.cpp 
-    AlbumGeneratorDialog.cpp 
-    AlbumSplitterWindow.cpp 
-    AlbumTreeCtrl.cpp 
+    LabeledTextBox.cpp
     StaticItem.cpp 
-    ArrayWrapper.cpp 
-    ReadAlbumEasyFile.cpp 
+    Classification.cpp 
+    Stamp.cpp
+    Specimen.cpp
     ManageCatalogData.cpp 
+    CatalogDataTreeCtrl.cpp
+    CatalogCode.cpp
+    CatalogData.cpp
+    XMLUtilities.cpp
+    CSV.cpp 
+    MakeList.cpp 
+    ArrayWrapper.cpp 
+    AECmdData.cpp
+    ReadAlbumEasyFile.cpp 
     ManageAECmdData.cpp 
+    AlbumTreeCtrl.cpp 
 )
 
 #link_directories( /sandbox/Applications/TinyXML2/build )

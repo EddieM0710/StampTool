@@ -22,7 +22,8 @@
 ////@begin includes
 #include "wx/treectrl.h"
 ////@end includes
-
+#include "Defs.h"
+#include "ArrayWrapper.h"
 /*!
  * Forward declarations
  */
@@ -31,7 +32,7 @@
 class AlbumTreeCtrl;
 class StaticItem;
 ////@end forward declarations
-
+class ReadAlbumEasyFile;
 /*!
  * Control identifiers
  */
@@ -91,10 +92,15 @@ public:
     /// Should we show tooltips?
     static bool ShowToolTips();
 
+    void LoadAEFile( wxString filename );
+
+void LoadAEData( wxString filename );
+
 ////@begin ManageAECmdData member variables
     AlbumTreeCtrl* m_aeCmdTreeCtrl;
     StaticItem* m_CmdDataTextCtrl;
 ////@end ManageAECmdData member variables
+ ArrayWrapper* m_AEItemArray;
 };
 
 #endif

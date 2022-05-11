@@ -6,7 +6,6 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_CXX
   "/sandbox/Development/AlbumGenerator/src/AECmdData.cpp" "/sandbox/Development/AlbumGenerator/build/src/CMakeFiles/AlbumGenerator.dir/AECmdData.cpp.o"
   "/sandbox/Development/AlbumGenerator/src/AlbumGeneratorApp.cpp" "/sandbox/Development/AlbumGenerator/build/src/CMakeFiles/AlbumGenerator.dir/AlbumGeneratorApp.cpp.o"
-  "/sandbox/Development/AlbumGenerator/src/AlbumGeneratorDialog.cpp" "/sandbox/Development/AlbumGenerator/build/src/CMakeFiles/AlbumGenerator.dir/AlbumGeneratorDialog.cpp.o"
   "/sandbox/Development/AlbumGenerator/src/AlbumGeneratorFrame.cpp" "/sandbox/Development/AlbumGenerator/build/src/CMakeFiles/AlbumGenerator.dir/AlbumGeneratorFrame.cpp.o"
   "/sandbox/Development/AlbumGenerator/src/AlbumGeneratorPanel.cpp" "/sandbox/Development/AlbumGenerator/build/src/CMakeFiles/AlbumGenerator.dir/AlbumGeneratorPanel.cpp.o"
   "/sandbox/Development/AlbumGenerator/src/AlbumSplitterWindow.cpp" "/sandbox/Development/AlbumGenerator/build/src/CMakeFiles/AlbumGenerator.dir/AlbumSplitterWindow.cpp.o"
@@ -15,6 +14,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/sandbox/Development/AlbumGenerator/src/CSV.cpp" "/sandbox/Development/AlbumGenerator/build/src/CMakeFiles/AlbumGenerator.dir/CSV.cpp.o"
   "/sandbox/Development/AlbumGenerator/src/CatalogCode.cpp" "/sandbox/Development/AlbumGenerator/build/src/CMakeFiles/AlbumGenerator.dir/CatalogCode.cpp.o"
   "/sandbox/Development/AlbumGenerator/src/CatalogData.cpp" "/sandbox/Development/AlbumGenerator/build/src/CMakeFiles/AlbumGenerator.dir/CatalogData.cpp.o"
+  "/sandbox/Development/AlbumGenerator/src/CatalogDataTreeCtrl.cpp" "/sandbox/Development/AlbumGenerator/build/src/CMakeFiles/AlbumGenerator.dir/CatalogDataTreeCtrl.cpp.o"
   "/sandbox/Development/AlbumGenerator/src/Classification.cpp" "/sandbox/Development/AlbumGenerator/build/src/CMakeFiles/AlbumGenerator.dir/Classification.cpp.o"
   "/sandbox/Development/AlbumGenerator/src/DefinePeriodsDialog.cpp" "/sandbox/Development/AlbumGenerator/build/src/CMakeFiles/AlbumGenerator.dir/DefinePeriodsDialog.cpp.o"
   "/sandbox/Development/AlbumGenerator/src/Defs.cpp" "/sandbox/Development/AlbumGenerator/build/src/CMakeFiles/AlbumGenerator.dir/Defs.cpp.o"
@@ -29,7 +29,6 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/sandbox/Development/AlbumGenerator/src/SortOrderDialog.cpp" "/sandbox/Development/AlbumGenerator/build/src/CMakeFiles/AlbumGenerator.dir/SortOrderDialog.cpp.o"
   "/sandbox/Development/AlbumGenerator/src/Specimen.cpp" "/sandbox/Development/AlbumGenerator/build/src/CMakeFiles/AlbumGenerator.dir/Specimen.cpp.o"
   "/sandbox/Development/AlbumGenerator/src/Stamp.cpp" "/sandbox/Development/AlbumGenerator/build/src/CMakeFiles/AlbumGenerator.dir/Stamp.cpp.o"
-  "/sandbox/Development/AlbumGenerator/src/StampTreeCtrl.cpp" "/sandbox/Development/AlbumGenerator/build/src/CMakeFiles/AlbumGenerator.dir/StampTreeCtrl.cpp.o"
   "/sandbox/Development/AlbumGenerator/src/StaticItem.cpp" "/sandbox/Development/AlbumGenerator/build/src/CMakeFiles/AlbumGenerator.dir/StaticItem.cpp.o"
   "/sandbox/Development/AlbumGenerator/src/XMLUtilities.cpp" "/sandbox/Development/AlbumGenerator/build/src/CMakeFiles/AlbumGenerator.dir/XMLUtilities.cpp.o"
   )

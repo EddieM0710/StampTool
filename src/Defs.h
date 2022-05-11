@@ -32,7 +32,7 @@
 #define ID_MERGEDATAQUERY 10240
 #define ID_MERGESTAMPSDIALOG 10260
 #define ID_SORTORDERDIALOG 10280
-#define StampTree_Ctrl 10300
+#define CatalogDataTree_Ctrl 10300
 #define ID_CHARACTERISTICSPANEL 10320
 #define ID_SETTINGSDIALOG 10340
 #define MaxRecentEntries = 8

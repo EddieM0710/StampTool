@@ -30,7 +30,7 @@
  */
 
 ////@begin forward declarations
-class StampTreeCtrl;
+class CatalogDataTreeCtrl;
 ////@end forward declarations
 
 class Stamp;
@@ -132,13 +132,13 @@ void LoadCatalogCSV( wxString filename )
     LoadCatalogTree( );
 }
 
-    StampTreeCtrl* GetStampTree( ) { return m_listTree; };
+    CatalogDataTreeCtrl* GetCatalogDataTree( ) { return m_listTree; };
 
  
  
 ////@begin ManageCatalogData member variables
     wxTextCtrl* m_title;
-    StampTreeCtrl* m_listTree;
+    CatalogDataTreeCtrl* m_listTree;
 ////@end ManageCatalogData member variables
   
     wxTreeItemId m_draggedItem;

@@ -36,11 +36,11 @@ namespace Design {
          *
          * @param parent
          **************************************************/
-        Stamp( AlbumBase* parent, wxXmlNode* node ) : LayoutBase( parent, node ) 
+        Stamp( AlbumBase* parent, wxXmlNode* node ) : LayoutBase( parent, node )
         {
-             SetNodeType( AT_Stamp );
-            SetObjectName( AlbumBaseNames[GetNodeType() ] ); 
-            };
+            SetNodeType( AT_Stamp );
+            SetObjectName( AlbumBaseNames[ GetNodeType( ) ] );
+        };
 
         /**
          * @brief Destroy the Stamp object
@@ -64,7 +64,7 @@ namespace Design {
         * @return true
         * @return false
         **************************************************/
-        void UpdateMinimumSize( );
+        bool UpdateMinimumSize( );
 
         void UpdateSizes( );
 
@@ -80,33 +80,17 @@ namespace Design {
          **************************************************/
         wxXmlNode* Write( wxXmlNode* parent );
 
-        /**
-         * @brief Get the Frame Width
-         *
-         * @return double
-         **************************************************/
-        double GetFrameWidth( );
+        NodeStatus ValidateNode( );
 
-        /**
-         * @brief Get the Frame Height
-         *
-         * @return double
-         **************************************************/
-        double GetFrameHeight( );
+        void SetStampHeight( double val ) { m_stampHeight = val; m_stampFrame.SetHeight( val * 0.03937 ); };
+        double GetStampHeight( ) { return m_stampHeight; };
+        void SetStampWidth( double val ) { m_stampWidth = val; m_stampFrame.SetWidth( val * 0.03937 ); };
+        double GetStampWidth( ) { return m_stampWidth; };
+        
+        void draw( wxPaintDC &dc, int x, int y );
 
-        wxXmlNode* GetCatalogStamp( ) { return m_catalogStamp; };
-        void SetCatalogStamp( wxXmlNode* node ) { m_catalogStamp = node; };
-        
-        NodeStatus ValidateNode();
-        
     private:
 
-        /**
-         * @brief creates the ODT XML outside object frame of the object
-         *
-         * @param parent
-         * @return wxXmlNode*
-         **************************************************/
         wxXmlNode* StampObject( wxXmlNode* parent );
 
         /**
@@ -132,25 +116,24 @@ namespace Design {
          **************************************************/
         wxString m_name;
 
-        /**
-         * @brief Stamp image width
-         *
-         **************************************************/
-        double m_widthStampImage;
+        // The LayoutBase for this objects contains the frame parameters for the stamp Album object. 
+        // It is 10% Larger than the actual Stamp.
+        // The m_stampFrame has the parameters of the actual Stamp.
+        // The m_stampImageFrame has the parameters for the printed album image. 
+        // It is 10% smaller than the actual stamp.
+        // These parameters are all in inches.
+        Frame m_stampFrame;
+        Frame m_stampImageFrame;
 
-        /**
-         * @brief Stamp image height
-         *
-         **************************************************/
-        double m_heightStampImage;
+        // The Stamp height and width are in mm from the Stamp Catalog
+        double m_stampWidth;
+        double m_stampHeight;
 
         /**
          * @brief path to the stap image
          *
          **************************************************/
         wxString m_imageLink;
-
-        wxXmlNode* m_catalogStamp;
     };
 }
 #endif

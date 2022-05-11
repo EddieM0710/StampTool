@@ -29,7 +29,7 @@
 #include "utils/Settings.h"
 #include "utils/XMLUtilities.h"
 #include "Defs.h"
-#include "catalog/CatalogDefs.h"
+//#include "catalog/CatalogDefs.h"
 // #include "catalog/Speciman.h"
 #include "catalog/Stamp.h"
 // #include "catalog/Classification.h"
@@ -50,7 +50,7 @@ namespace Catalog {
     };
     void SetCatalogData( CatalogData* catalogData )
     {
-        GetGeneratorData()->SetCatalogData( catalogData );
+        GetGeneratorData( )->SetCatalogData( catalogData );
     };
 
     CatalogData* NewCatalogData( )
@@ -62,7 +62,7 @@ namespace Catalog {
         = { wxT( "Checked" ), wxT( "Unchecked" ) };
 
     const wxString ST_InventoryStatusStrings[ ST_NbrInventoryStatusTypes ]
-        = { wxT( "None" ), wxT( "Missing"), wxT( "Ordered"), wxT( "Own"), wxT( "Own Variant" ), wxT( "Exclude" ) };
+        = { wxT( "None" ), wxT( "Missing" ), wxT( "Ordered" ), wxT( "Own" ), wxT( "Own Variant" ), wxT( "Exclude" ) };
 
 
     const wxString FT_FormatStrings[ FT_NbrTypes ]
@@ -131,21 +131,21 @@ namespace Catalog {
         wxT( "InventoryStatus" ),  wxT( "Background" )
     };
 
-    wxString CatalogBaseNames[NT_NbrTypes] = {
-        "Catalog" , 
-        "Country" , 
-        "Period"  , 
-        "Decade" , 
-        "Year" , 
-        "Emission" , 
-        "Status" , 
-        "Condition" , 
-        "Stamp" , 
-        "Specimen" , 
-        "CatalogCode"};
+    wxString CatalogBaseNames[ NT_NbrTypes ] = {
+        "Catalog" ,
+        "Country" ,
+        "Period"  ,
+        "Decade" ,
+        "Year" ,
+        "Emission" ,
+        "Status" ,
+        "Condition" ,
+        "Stamp" ,
+        "Specimen" ,
+        "CatalogCode" };
 
-const wxString CC_CatalogCodeNames[ CC_NbrTypes ]
-= { wxT( "ID" ), wxT( "Country" ), wxT( "Catalog" ), };
+    const wxString CC_CatalogCodeNames[ CC_NbrTypes ]
+        = { wxT( "ID" ), wxT( "Country" ), wxT( "Catalog" ), };
 
     void InitCatalogDefs( )
     {
@@ -173,7 +173,7 @@ const wxString CC_CatalogCodeNames[ CC_NbrTypes ]
 
         for ( int i = 0; i < NT_NbrTypes; i++ )
         {
-            baseName = CatalogBaseNames[i];
+            baseName = CatalogBaseNames[ i ];
             if ( !name.Cmp( baseName ) )
             {
                 return ( CatalogBaseType )i;
@@ -245,7 +245,7 @@ const wxString CC_CatalogCodeNames[ CC_NbrTypes ]
      **************************************************/
     bool IsCatalogBaseType( wxXmlNode* ele, CatalogBaseType type )
     {
-        return !CatalogBaseNames [type ].Cmp( ele->GetName( ) );
+        return !CatalogBaseNames[ type ].Cmp( ele->GetName( ) );
     }
 
 
@@ -305,13 +305,13 @@ const wxString CC_CatalogCodeNames[ CC_NbrTypes ]
                 while ( nextNode )
                 {
                     wxString attr = Utils::GetAttrStr( nextNode, "Name" );
-                    if ( !attr.IsEmpty() )
+                    if ( !attr.IsEmpty( ) )
                     {
-                        if ( !attr.Cmp( name) )
+                        if ( !attr.Cmp( name ) )
                         {
-                        //   std::cout << "     Found it\n";
-                        AddStamp( nextNode, child, level );
-                        return;
+                            //   std::cout << "     Found it\n";
+                            AddStamp( nextNode, child, level );
+                            return;
                         }
                     }
                     nextNode = nextNode->GetNext( );

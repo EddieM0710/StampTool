@@ -66,7 +66,7 @@ namespace Design {
          * @return true
          * @return false
          **************************************************/
-        void UpdateMinimumSize( );
+        bool UpdateMinimumSize( );
 
         void UpdateSizes( );
         

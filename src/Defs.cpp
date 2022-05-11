@@ -63,7 +63,7 @@ Design::DesignData* GetDesignData() { return GetGeneratorData()->GetDesignData()
 Catalog::CatalogData* GetCatalogData() { return GetGeneratorData()->GetCatalogData(); };
 CatalogTreeCtrl* GetCatalogTreeCtrl(){ return GetGeneratorData()->GetCatalogTreeCtrl();};
 DesignTreeCtrl* GetDesignTreeCtrl( ){return GetGeneratorData()->GetDesignTreeCtrl();};
-
+AlbumImagePanel* GetAlbumImagePanel(){return GetGeneratorData()->GetAlbumImagePanel();};
 
 void InitDefs( )
 {

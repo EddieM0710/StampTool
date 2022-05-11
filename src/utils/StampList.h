@@ -43,9 +43,9 @@ namespace Utils {
         inline wxString GetID( ) { return m_albumStamp->GetAttrStr( Design::AT_ID ); };
         inline bool IsStamp( wxString id ) { return !id.Cmp( GetID( ) ); };
 
-        void Update(wxTreeItemId catID, wxTreeItemId albumID);
-   
-        void Clear(  );
+        void Update( wxTreeItemId catID, wxTreeItemId albumID );
+
+        void Clear( );
 
     private:
         StampLink( );
@@ -61,8 +61,8 @@ namespace Utils {
     class StampList
     {
     public:
-        StampList(){};
-        ~StampList(){Clear();};
+        StampList( ) {};
+        ~StampList( ) { Clear( ); };
 
         void Clear( );
         int FindStamp( wxString stampID );
@@ -72,7 +72,7 @@ namespace Utils {
         void SetCatNode( wxString stampID, wxXmlNode* catStamp );
         wxXmlNode* GetCatNode( wxString stampID );
         StampLink* FindStampLink( wxString stampID );
-        void ClearCatalogLinks();
+        void ClearCatalogLinks( );
     private:
         StampLinkList m_list;
     };

@@ -21,66 +21,30 @@ namespace Design {
 
 
     const double BorderAllowance = .2;
+    const double ImagePercentOfActual = .75;
 
 
-    void Stamp::UpdateMinimumSize( )
+    bool Stamp::UpdateMinimumSize( )
     {
-        // get this stamps id from the layout tree
-        wxString stampID =  GetAttrStr( AT_ID );
-        if ( stampID.Length( ) <= 0 )
+        if ( ValidateNode() == AT_FATAL )
         {
-            // Debug Message
-            // Stamp must have an "ID"
-            return;
+            return false;
         }
 
-        m_imageLink =  GetAttrStr( AT_Link );
-        if ( m_imageLink.Length( ) <= 0 )
-        {
-            // Debug Message
-            // Stamp must have a "Link" to an image
-            return;
-        }
-        Catalog::CatalogData *catalog = GetGeneratorData()->GetCatalogData( ) ;
-        if ( !catalog )
-        {
-            ReportLayoutError( "UpdateMinimumSize",  "Catalog Data Missing." );
-        }
-
-        // find the index into the StampData
-        wxXmlNode* stampNode =  catalog->FindNodeWithPropertyAndValue(  Catalog::DT_XMLDataNames[ Catalog::DT_ID_Nbr ], stampID );
-         if ( !stampNode )
-        {
-            wxString str;
-            str << "Stamp ID:" << stampID << "  Can't Find Stamp";
-            ReportLayoutError( "UpdateMinimumSize", str );
-        }
-
-       Catalog::Stamp stamp(stampNode);
- 
-        // populate what we should know now
-        m_name = stamp.GetName();
-
-        // my odt file was in inches when I started with it so i'm just converting the 
-        // height and width here for ease.  I probably need to convert everything to metric.
-
- 
-        stamp.GetWidth().ToDouble(&m_widthStampImage);
-        // convert to inches
-        m_widthStampImage = m_widthStampImage * 0.03937;
-
-        stamp.GetHeight().ToDouble(&m_heightStampImage);
-        // convert to inches
-        m_heightStampImage = m_heightStampImage * 0.03937;
-
-        SetWidth( m_widthStampImage * ( 1.0 + BorderAllowance ) );
-        SetHeight( m_heightStampImage * ( 1.0 + BorderAllowance ) + .4 );
+        SetWidth( m_stampFrame.GetWidth() * ( 1.0 + BorderAllowance ) );
+        SetHeight( m_stampFrame.GetHeight() * ( 1.0 + BorderAllowance ) + GetTitleHeight() );
         SetMinWidth( GetWidth( ) );
         SetMinHeight( GetHeight( ) );
-
+        m_stampFrame.SetXPos( ( GetWidth() - m_stampFrame.GetWidth() ) / 2 ); 
+        m_stampFrame.SetYPos( 0.0 ); 
+        m_stampImageFrame.SetWidth( m_stampFrame.GetWidth() * ImagePercentOfActual );
+        m_stampImageFrame.SetHeight( m_stampFrame.GetHeight() * ImagePercentOfActual );
+        m_stampImageFrame.SetXPos( ( m_stampFrame.GetWidth() - m_stampImageFrame.GetWidth() ) / 2 );
+        m_stampImageFrame.SetYPos( ( m_stampFrame.GetHeight() - m_stampImageFrame.GetHeight() ) / 2 );
+     
         //   m_imageLink = GetStampDataBase()->GetValue( S_Image, stampIndex);
 
-        for ( AlbumBaseList::iterator it = std::begin(m_layoutChildArray ); it != std::end( m_layoutChildArray ); ++it )
+        for ( ChildList::iterator it = BeginChildList(); it != EndChildList(); ++it )
         {
             LayoutBase* child = ( LayoutBase* )( *it );
 
@@ -149,7 +113,7 @@ namespace Design {
         // height has an extra .25in for the caption
         double xPos = GetXPos( );
         double yPos = GetYPos( );
-        double width = GetWidth( );
+        double width = GetWidth();
         double height = GetHeight( ); // allow for caption
 
         wxString drawStyleName = ODT::FrameNoBorder;
@@ -164,10 +128,10 @@ namespace Design {
     wxXmlNode* Stamp::StampFrameObject( wxXmlNode* parent )
     {
         Utils::AddComment( parent, "Stamp", "Inserting the Stamp Border." );
-        double xPos = BorderAllowance / 2;
-        double yPos = 0;
-        double width = m_widthStampImage;
-        double height = m_heightStampImage; // allow for caption
+        double xPos = m_stampFrame.GetXPos( );
+        double yPos = m_stampFrame.GetYPos( );
+        double width = m_stampFrame.GetWidth();
+        double height = m_stampFrame.GetHeight( ); // allow for caption
 
        // wxString drawStyleName = FrameWithBorder;
        // wxString textAnchorType = TextAnchorParagraph; // "page", "paragraph"
@@ -200,10 +164,10 @@ namespace Design {
         //wxString textAnchorType = TextAnchorParagraph; // "page", "paragraph"
 
         // the stamp image is actually 10% less than the actual stamp.
-        double width = m_widthStampImage * ( 1.0 - .25 );
-        double height = m_heightStampImage * ( 1.0 - .25 );
-        double xPos = ( m_widthStampImage - width ) / 2;
-        double yPos = 0;
+        double xPos = m_stampImageFrame.GetXPos( );
+        double yPos = m_stampImageFrame.GetYPos( );
+        double width = m_stampImageFrame.GetWidth();
+        double height = m_stampImageFrame.GetHeight( ); // allow for caption
 
         wxXmlNode* frame = ODT::ContentDoc( )->WriteFrameFixedSize( parent,
             xPos, yPos,
@@ -221,7 +185,7 @@ namespace Design {
 
         wxString stampID = Utils::GetAttrStr( parent, "ID" );
         // stampFrame->SetContent( stampID );
-        double idWidth = m_widthStampImage * .8;
+        double idWidth =  m_stampFrame.GetWidth() * .8;
         wxXmlNode* idNode = ODT::ContentDoc( )->WriteTextBox( parent,
             0, height,
             idWidth, .15,
@@ -247,6 +211,19 @@ namespace Design {
         }
         m_nodeValid = status;
         return status;
+    }
+
+    void Stamp::draw( wxPaintDC &dc, int x, int y )
+    {
+        m_frame.draw( dc, x, y );
+        m_stampFrame.draw( dc,  x+GetXPos(), y+GetYPos() );
+        m_stampImageFrame.draw( dc,  x+GetXPos()+m_stampFrame.GetXPos(), y+GetYPos()+m_stampFrame.GetYPos() );
+
+        for ( ChildList::iterator it = BeginChildList( ); it != EndChildList( ); ++it )
+        {
+            LayoutBase* child = ( LayoutBase* )( *it );
+            child->draw( dc, x+GetXPos(), y+GetYPos() );
+        }
     }
 
 }

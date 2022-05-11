@@ -23,7 +23,7 @@
 namespace Design {
 
 
-    void Page::UpdateMinimumSize( )
+    bool Page::UpdateMinimumSize( )
     {
         //double xPosUseableFrame = m_leftMargin;
         //double yPosUseableFrame = m_topMargin;
@@ -39,18 +39,11 @@ namespace Design {
         // count the number of rows/cols planned
 
 
-        Title* title = GetTitle( );
-        double titleHeight = GetTitleHeight( );
-        if ( title )
-        {
-            title->UpdateMinimumSize( );
-            title->SetWidth( pageFrameWidth );
-        }
 
-        m_minWidth = 0.0;
-        m_minHeight = 0.0;
+        double minWidth = 0.0;
+        double minHeight = 0.0;
 
-        for ( AlbumBaseList::iterator it = std::begin( m_layoutChildArray ); it != std::end( m_layoutChildArray ); ++it )
+        for ( ChildList::iterator it = BeginChildList( ); it != EndChildList( ); ++it )
         {
             LayoutBase* child = ( LayoutBase* )( *it );
 
@@ -61,28 +54,31 @@ namespace Design {
 
                 if ( nbrCols > 0 )
                 {
-                    if ( child->GetMinHeight( ) > m_minHeight )
+                    if ( child->GetMinHeight( ) > minHeight )
                     {
-                        m_minHeight = child->GetMinHeight( );
+                        minHeight = child->GetMinHeight( );
                     }
-                    m_minWidth += child->GetMinWidth( );
+                    minWidth += child->GetMinWidth( );
                 }
                 else
                 {
-                    if ( child->GetMinWidth( ) > m_minWidth )
+                    if ( child->GetMinWidth( ) > minWidth )
                     {
-                        m_minWidth = child->GetMinWidth( );
+                        minWidth = child->GetMinWidth( );
                     }
-                    m_minHeight += child->GetMinHeight( );
+                    minHeight += child->GetMinHeight( );
                 }
             }
         }
 
-        if ( pageFrameWidth < m_minWidth )
+        SetMinWidth( minWidth );
+        SetMinHeight( minHeight );
+
+        if ( pageFrameWidth < minWidth )
         {
             ReportLayoutError( "UpdateMinimumSize", "Children too big for row", true );
         }
-        if ( pageFrameHeight < m_minHeight )
+        if ( pageFrameHeight < minHeight )
         {
             ReportLayoutError( "UpdateMinimumSize", "Children too big for row", true );
         }
@@ -99,41 +95,48 @@ namespace Design {
         int nbrStamps = 0;
         ValidateChildType( nbrRows, nbrCols, nbrStamps );
 
-        // setup the titlenbrCols
-        Title* title = GetTitle( );
-        double titleHeight = GetTitleHeight( );
-        if ( title )
-        {
-            title->UpdateSizes( );
 
-            // the title can be as wide as this frame
-            title->SetWidth( GetWidth( ) );
-        }
         // Set the height and width of each child row or column
-        for ( AlbumBaseList::iterator it = std::begin( m_layoutChildArray ); it != std::end( m_layoutChildArray ); ++it )
+        for ( ChildList::iterator it = BeginChildList( ); it != EndChildList( ); ++it )
         {
             LayoutBase* node = ( LayoutBase* )( *it );
 
             AlbumAttrType childType = ( AlbumAttrType )node->GetNodeType( );
             switch ( childType )
             {
-            case AT_Row:
-            {
-                Row* row = ( Row* )node;
-                row->SetWidth( GetWidth( ) );
-                row->SetHeight( m_minHeight + titleHeight );
-            }
-            case AT_Col:
-            {
-                Column* col = ( Column* )node;
-                col->SetWidth( m_minWidth );
-                col->SetHeight( GetHeight( ) - titleHeight );
-            }
+                case AT_Row:
+                {
+                    Row* row = ( Row* )node;
+                    row->SetWidth( GetWidth( ) );
+                    row->SetHeight( GetMinHeight( ) );
+                    if ( row->ShowTitle( ) )
+                    {
+                        row->SetHeight( GetMinHeight( ) + GetTitleHeight() );
+                    }
+                    else
+                    {
+                        row->SetHeight( GetMinHeight( ) ) ;
+                    }
+                    break;
+                }
+                case AT_Col:
+                {
+                    Column* col = ( Column* )node;
+                    col->SetWidth( GetMinWidth( ) );
+                    if ( col->ShowTitle( ) )
+                    {
+                        col->SetHeight( GetHeight( ) + GetTitleHeight() );
+                    }
+                    else
+                    {
+                        col->SetHeight( GetHeight( ) );
+                    }
+                    break;
+                }
             }
             node->UpdateSizes( );
         }
     }
-
     void Page::UpdatePositions( )
     {
         int nbrRows = 0;
@@ -147,11 +150,16 @@ namespace Design {
         double spacing = 0;
         if ( nbrCols > 0 )
         {
-            spacing = ( GetWidth( ) - m_minWidth ) / ( nbrCols + nbrStamps + 1 );
+            spacing = ( GetWidth( ) - GetMinWidth() ) / ( nbrCols + nbrStamps + 1 );
         }
         else // we are positioning them down the page
         {
-            spacing = ( GetHeight( ) - titleHeight - m_minHeight ) / ( nbrRows + nbrStamps + 1 );
+            double totalExtraSpace =  GetHeight( ) - GetMinHeight() ;
+            if ( ShowTitle())
+            {
+                totalExtraSpace -= GetTitleHeight();
+            }
+            spacing = totalExtraSpace / ( nbrRows + nbrStamps + 1 );
         }
 
         double xPos = 0;
@@ -166,7 +174,7 @@ namespace Design {
         }
 
 
-        for ( AlbumBaseList::iterator it = std::begin( m_layoutChildArray ); it != std::end( m_layoutChildArray ); ++it )
+        for ( ChildList::iterator it = BeginChildList( ); it != EndChildList( ); ++it )
         {
             LayoutBase* node = ( LayoutBase* )( *it );
             node->UpdatePositions( );
@@ -204,7 +212,7 @@ namespace Design {
             ODT::FrameNoBorder,
             ODT::TextAnchorParagraph );
 
-        for ( AlbumBaseList::iterator it = std::begin( m_layoutChildArray ); it != std::end( m_layoutChildArray ); ++it )
+        for ( ChildList::iterator it = BeginChildList( ); it != EndChildList( ); ++it )
         {
             LayoutBase* node = ( LayoutBase* )( *it );
             node->Write( parent );
@@ -212,18 +220,18 @@ namespace Design {
 
         return contentElement;
     }
-    
-    NodeStatus Page::ValidateNode()
+
+    NodeStatus Page::ValidateNode( )
     {
         NodeStatus status = AT_OK;
-        if ( !HasChildren() )
+        if ( !HasChildren( ) )
         {
-            if ( GetHeight() <= 0.0)
+            if ( GetHeight( ) <= 0.0 )
             {
                 std::cout << "Terminal leaf node must define the height.\n";
                 status = AT_FATAL;
             }
-            if ( GetWidth() <= 0.0)
+            if ( GetWidth( ) <= 0.0 )
             {
                 std::cout << "Terminal leaf node must define the width.\n";
                 status = AT_FATAL;
@@ -231,5 +239,16 @@ namespace Design {
         }
         m_nodeValid = status;
         return status;
+    }
+
+    void Page::draw( wxPaintDC &dc, int x, int y )
+    {
+        m_frame.draw( dc, x, y );
+
+        for ( ChildList::iterator it = BeginChildList( ); it != EndChildList( ); ++it )
+        {
+            LayoutBase* child = ( LayoutBase* )( *it );
+            child->draw( dc, x+GetXPos(), y+GetYPos() );
+        }
     }
 }

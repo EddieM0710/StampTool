@@ -60,19 +60,19 @@ namespace Utils {
             for ( int i = 0; i < m_list.size( ); i++ )
             {
                 StampLink* link = ( StampLink* )m_list.at( i );
-                catTreeCtrl->RemoveStampLink( link->GetCatTreeID() );
+                catTreeCtrl->RemoveStampLink( link->GetCatTreeID( ) );
                 link->Clear( );
                 delete link;
             }
             m_list.erase( std::begin( m_list ), std::end( m_list ) );
         }
     }
-    void StampList::ClearCatalogLinks()
+    void StampList::ClearCatalogLinks( )
     {
         for ( int i = 0; i < m_list.size( ); i++ )
         {
             StampLink* link = ( StampLink* )m_list.at( i );
-            link->SetCatTreeID( (wxTreeItemId)0 );
+            link->SetCatTreeID( ( wxTreeItemId )0 );
         }
     }
 

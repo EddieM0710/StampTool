@@ -18,27 +18,28 @@
 namespace Design {
 
 
-    void Row::UpdateMinimumSize( )
+    bool Row::UpdateMinimumSize( )
     {
 
-        Title* title = GetTitle( );
-        if ( title )
-        {
-            title->UpdateMinimumSize( );
-        }
 
-        m_minWidth = 0.0;
-        m_minHeight = 0.0;
-        for ( AlbumBaseList::iterator it = std::begin(m_layoutChildArray ); it != std::end( m_layoutChildArray ); ++it )
+        double minWidth = 0.0;
+        double minHeight = 0.0;
+        for ( ChildList::iterator it = BeginChildList(); it != EndChildList(); ++it )
         {
             LayoutBase* child = ( LayoutBase* )( *it );
             child->UpdateMinimumSize( );
-            if ( child->GetMinHeight( ) > m_minHeight )
+            if ( child->GetMinHeight( ) > minHeight )
             {
-                m_minHeight = child->GetMinHeight( );
+                minHeight = child->GetMinHeight( );
             }
-            m_minWidth += child->GetMinWidth( );
+            minWidth += child->GetMinWidth( );
         }
+        if ( ShowTitle() )
+        {
+          minHeight += GetTitleHeight();  
+        }
+        SetMinHeight( minHeight );
+        SetMinWidth( minWidth );
     }
 
     void Row::UpdateSizes( )
@@ -49,24 +50,16 @@ namespace Design {
         int nbrStamps = 0;
         // ValidateChildType( nbrRows, nbrCols, nbrStamps );
 
-        Title* title = GetTitle( );
-        double titleHeight = GetTitleHeight( );
-        if ( title )
-        {
-            title->SetWidth( GetWidth( ) );
-            title->UpdateSizes( );
-        }
-
         // Set the height and width of each child  column
         // Stamps have fixed height and width
-        for ( AlbumBaseList::iterator it = std::begin(m_layoutChildArray ); it != std::end( m_layoutChildArray ); ++it )
+        for ( ChildList::iterator it = BeginChildList(); it != EndChildList(); ++it )
         {
             LayoutBase* child = ( LayoutBase* )( *it );
             AlbumBaseType childType = (AlbumBaseType)child->GetNodeType( );
             if (childType == AT_Col)
             {
-                child->SetWidth( m_minWidth );
-                child->SetHeight( m_minHeight + titleHeight );
+                child->SetWidth( GetMinWidth() );
+                child->SetHeight( GetMinHeight() );
             }
             child->UpdateSizes( );
         }
@@ -84,17 +77,15 @@ namespace Design {
         int nbrStamps = 0;
         ValidateChildType( nbrRows, nbrCols, nbrStamps );
 
-        double titleHeight = GetTitleHeight( );
-
 
         // this is a row so we are positioning children across the page
-        double spacing = ( GetWidth( ) - m_minWidth ) / ( nbrCols + nbrStamps + 1 );
+        double spacing = ( GetWidth( ) - GetMinWidth() ) / ( nbrCols + nbrStamps + 1 );
 
         // inital x/y pos within the row
         double xPos = spacing;
-        double yPos = titleHeight;
+        double yPos = GetTitleHeight();
 
-        for ( AlbumBaseList::iterator it = std::begin(m_layoutChildArray ); it != std::end( m_layoutChildArray ); ++it )
+        for ( ChildList::iterator it = BeginChildList(); it != EndChildList(); ++it )
         {
             LayoutBase* child = ( LayoutBase* )( *it );
 
@@ -110,6 +101,7 @@ namespace Design {
                     col->SetXPos( xPos );
                     col->SetYPos( yPos );
                     xPos += col->GetWidth( ) + spacing;
+                    break;
                 }
                 case AT_Stamp:
                 {
@@ -118,11 +110,12 @@ namespace Design {
 
                     // each stamp is positioned in the cell
 
-                    double yBorder = ( m_height - stamp->GetHeight( ) ) / 2;
+                    double yBorder = ( GetHeight( ) - stamp->GetHeight( ) ) / 2;
                     stamp->SetXPos( xPos );
                     stamp->SetYPos( yPos + yBorder );
                     // get xpos of next cell
                     xPos += stamp->GetWidth( ) + spacing;
+                    break;
                 }
             }
         }
@@ -149,7 +142,7 @@ namespace Design {
             drawStyleName,  // fr1
             textAnchorType ); // "page", "paragraph"
 
-        for ( AlbumBaseList::iterator it = std::begin(m_layoutChildArray ); it != std::end( m_layoutChildArray ); ++it )
+        for ( ChildList::iterator it = BeginChildList(); it != EndChildList(); ++it )
         {
             LayoutBase* child = ( LayoutBase* )( *it );
 
@@ -161,18 +154,21 @@ namespace Design {
                     // set the layout parameters into the child
                     Row* row = ( Row* )child;
                     row->Write( frame );
+                    break;
                 }
                 case AT_Col:
                 {
                     // set the layout parameters into the child
                     Column* col = ( Column* )child;
                     col->Write( frame );
+                    break;
                 }
             case AT_Stamp:
                 {
                     // set the layout parameters into the child
                     Stamp*  stamp = ( Stamp* )child;
                     stamp->Write( frame );
+                    break;
                 }
             }
         }
@@ -198,4 +194,16 @@ namespace Design {
         m_nodeValid = status;
         return status;
     }
+
+    void Row::draw( wxPaintDC &dc, int x, int y )
+    {
+        m_frame.draw( dc, x, y );
+
+        for ( ChildList::iterator it = BeginChildList( ); it != EndChildList( ); ++it )
+        {
+            LayoutBase* child = ( LayoutBase* )( *it );
+            child->draw( dc, x+GetXPos(), y+GetYPos() );
+        }
+    }
+
 }

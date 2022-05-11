@@ -267,7 +267,7 @@ void AlbumImagePanel::Draw( wxPaintDC &dc, Design::LayoutBase* node, wxPoint pt)
     wxPoint newPoint( pt.x + node->GetXPos(), pt.y + node->GetYPos() );
     wxRect rect(pt.x, pt.y, node->GetWidth(), node->GetHeight() );
     dc.DrawRectangle(rect);
-    for ( Design::AlbumBaseList::iterator it = node->BeginAlbumBaseList( ); it != node->EndAlbumBaseList(); ++it )
+    for ( Design::ChildList::iterator it = node->BeginChildList( ); it != node->EndChildList(); ++it )
     {
         Design::LayoutBase* child = ( Design::LayoutBase* )( *it );
         Draw( dc, child, newPoint );
@@ -287,33 +287,16 @@ void AlbumImagePanel::OnPaint( wxPaintEvent& event )
     Design::LayoutBase* pageNode = Design::GetSelectedNodePage( );
     if ( pageNode )
     {
-        wxPoint pt( 0, 0 );
-        Draw( dc, pageNode, pt );
+        pageNode->draw( dc, 0, 0  );
     }
-    // const wxSize size = GetClientSize( );
-    // double scale = 1.;
-    // int width = m_bitmap.GetWidth( );
-    // int height = m_bitmap.GetHeight( );
-    // if ( size.x < width )
-    // {
-    //     scale = ( double )size.x / ( double )width;
-    // }
-    // if ( size.y < ( height * scale ) )
-    // {
-    //     scale = ( double )size.y / ( ( double )height * scale ) * scale;
-    // }
-
-    // dc.SetUserScale( scale * m_zoom, scale * m_zoom );
-
-    // dc.DrawBitmap( m_bitmap, 0, 0,
-    //     // dc.DeviceToLogicalX((size.x - m_zoom*scale *
-    //     // m_bitmap.GetWidth()) / 2), dc.DeviceToLogicalY((size.y -
-    //     // m_zoom*scale * m_bitmap.GetHeight()) / 2),
-    //     true /* use mask */
-    // );
 }
 
-
+wxSize AlbumImagePanel::GetTextExtent(wxString text)
+{
+    wxPaintDC dc( this );
+    DoPrepareDC( dc );
+    return dc.GetTextExtent(text);
+}
 /*
  * wxEVT_CONTEXT_MENU event handler for ID_ALBUMIMAGEPANEL
  *

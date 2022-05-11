@@ -56,7 +56,7 @@ public:
      * @return true
      * @return false
      **************************************************/
-    void UpdateMinimumSize();
+    bool UpdateMinimumSize();
 
     void UpdateSizes();
 
@@ -71,6 +71,7 @@ public:
     wxXmlNode* Write( wxXmlNode* parent );
         
     NodeStatus ValidateNode();
+    void draw( wxPaintDC &dc, int x, int y );
 
 private:
 

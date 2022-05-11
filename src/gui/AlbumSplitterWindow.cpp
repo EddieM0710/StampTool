@@ -33,6 +33,7 @@
 #include "gui/DesignTreeCtrl.h"
 #include "gui/AlbumPanel.h"
 #include "gui/AlbumImagePanel.h"
+#include "gui/GeneratorData.h" 
 /*
  * AlbumSplitterWindow type definition
  */
@@ -140,6 +141,7 @@ void AlbumSplitterWindow::CreateControls()
     itemBoxSizer1->Add(m_secondarySplitterWindow, 1, wxGROW|wxALL, 5);
 
 ////@end AlbumSplitterWindow content construction
+    GetGeneratorData( )->SetAlbumImagePanel( m_albumImagePanel );
 }
 
 

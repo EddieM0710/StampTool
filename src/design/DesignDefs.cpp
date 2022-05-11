@@ -43,12 +43,12 @@ namespace Design {
 
     Album* GetAlbum( void )
     {
-        DesignData* designData = GetDesignData(  )  ;
+        DesignData* designData = GetDesignData( );
         if ( designData )
         {
-            return designData->GetAlbum();
+            return designData->GetAlbum( );
         }
-        return (Album*)0;
+        return ( Album* )0;
     }
 
 
@@ -72,33 +72,33 @@ namespace Design {
     // };
 
 
-        wxString AlbumBaseNames[AT_NbrAlbumTypes] = {
-                "Album",
-                "Page",
-                "Row",
-                "Col",
-                "Title",
-                "TitlePage",
-                "Stamp"  };
-    
-        const char* AttrNameStrings[ AT_NbrAttrTypes ] = {
-                "Name",
-                "PageWidth",
-                "PageHeight",
-                "TopMargin",
-                "BottomMargin",
-                "RightMargin",
-                "LeftMargin",
-                "BorderFileName",
-                "BorderSize",
-                "Height",
-                "Width",
-                "XPos",
-                "YPos",
-                "MinHeight",
-                "MinWidth",
-                "ID",
-                "Link" };
+    wxString AlbumBaseNames[ AT_NbrAlbumTypes ] = {
+            "Album",
+            "Page",
+            "Row",
+            "Col",
+            "Title",
+            "TitlePage",
+            "Stamp" };
+
+    const char* AttrNameStrings[ AT_NbrAttrTypes ] = {
+            "Name",
+            "PageWidth",
+            "PageHeight",
+            "TopMargin",
+            "BottomMargin",
+            "RightMargin",
+            "LeftMargin",
+            "BorderFileName",
+            "BorderSize",
+            "Height",
+            "Width",
+            "XPos",
+            "YPos",
+            "MinHeight",
+            "MinWidth",
+            "ID",
+            "Link" };
 
     void InitDesignDefs( )
     {
@@ -110,7 +110,7 @@ namespace Design {
         wxString baseName;
         for ( int i = 0; i < AT_NbrAlbumTypes; i++ )
         {
-            baseName = AlbumBaseNames[i];
+            baseName = AlbumBaseNames[ i ];
             if ( !name.Cmp( baseName ) )
             {
                 return ( AlbumBaseType )i;
@@ -177,21 +177,27 @@ namespace Design {
             DesignTreeCtrl* treeCtrl = GetDesignTreeCtrl( );
             if ( treeCtrl )
             {
-                Design::LayoutBase* node = treeCtrl->GetSelectedNode( );
-                if ( node )
+                wxTreeItemId id = treeCtrl->GetSelection();
+                if ( id.IsOk() )
                 {
-                    for ( AlbumBaseList::iterator it = node->BeginAlbumBaseList(); it != node->EndAlbumBaseList(); ++it )
+                    DesignTreeItemData* data = (DesignTreeItemData*)treeCtrl->GetItemData(id);
+                    while ( id.IsOk() && data )
                     {
-                        LayoutBase* child = ( LayoutBase* )( *it );
-                        if ( child->GetNodeType() == AT_Page )
+                        Design::AlbumBaseType type = data->GetType();
+                        if ( type == AT_Page)
                         {
-                            return child;
+                            return (LayoutBase*) data->GetNodeElement();
+                        }
+                        id = treeCtrl->GetItemParent(id);
+                        if ( id.IsOk() )
+                        {
+                            data = (DesignTreeItemData*)treeCtrl->GetItemData(id);
                         }
                     }
                 }
             }
         }
-        return (LayoutBase*)0;
+        return ( LayoutBase* )0;
     }
 
 

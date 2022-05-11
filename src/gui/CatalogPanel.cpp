@@ -28,6 +28,7 @@
 ////@end includes
 
 #include "gui/CatalogPanel.h"
+#include "Defs.h"
 #include <wx/filename.h>
 
 ////@begin XPM images

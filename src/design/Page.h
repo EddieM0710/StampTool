@@ -48,7 +48,7 @@ namespace Design {
          * @return true
          * @return false
          **************************************************/
-        void UpdateMinimumSize( );
+        bool UpdateMinimumSize( );
 
         void UpdateSizes( );
 
@@ -131,6 +131,8 @@ namespace Design {
         void SetBorderSize( double val ) { m_borderSize = val; };
 
         NodeStatus ValidateNode();
+        
+        void draw( wxPaintDC &dc, int x, int y );
 
     private:
 

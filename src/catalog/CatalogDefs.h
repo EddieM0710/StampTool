@@ -20,17 +20,17 @@ class wxXmlNode;
 
 namespace Catalog {
 
-class CatalogData;
+    class CatalogData;
 
-/**
- * @brief Get the Stamp Data object
- *
- * @return CatalogData* InitCatalogDefs
- * @brief Set the Stamp Data object
- *
- * @param  catalogData
- * @return CatalogData*
- **************************************************/
+    /**
+     * @brief Get the Stamp Data object
+     *
+     * @return CatalogData* InitCatalogDefs
+     * @brief Set the Stamp Data object
+     *
+     * @param  catalogData
+     * @return CatalogData*
+     **************************************************/
     void SetCatalogData( CatalogData* catalogData );
 
 
@@ -163,7 +163,7 @@ class CatalogData;
     } CatalogCodeTypes;
 
     extern const wxString CC_CatalogCodeNames[ CC_NbrTypes ];
-    
+
     /**
      * @enum PeriodType
      * @brief Enum defining the status of a given stamp.
@@ -310,7 +310,7 @@ class CatalogData;
      * @note This is the name used for the tree node; not the wxXmlNode node.
      *
      **************************************************/
-    extern  wxString CatalogBaseNames[NT_NbrTypes];
+    extern  wxString CatalogBaseNames[ NT_NbrTypes ];
 
 
     extern  const wxString CT_Names[ CT_NbrTypes ];
@@ -327,15 +327,15 @@ class CatalogData;
 
 
     void InitCatalogDefs( );
-   // void IDElement( wxXmlNode* ele );
+    // void IDElement( wxXmlNode* ele );
 
-    /**
-     * @brief is the specified wxXmlNode of specified type
-     *
-     * @param ele  element of interest
-     * @param type  element type
-     * @return true  if a match
-     **************************************************/
+     /**
+      * @brief is the specified wxXmlNode of specified type
+      *
+      * @param ele  element of interest
+      * @param type  element type
+      * @return true  if a match
+      **************************************************/
     bool IsCatalogBaseType( wxXmlNode* ele, CatalogBaseType type );
 
 

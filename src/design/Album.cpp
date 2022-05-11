@@ -82,7 +82,7 @@ namespace Design {
     };
 
 
-    void Album::UpdateMinimumSize( )
+    bool Album::UpdateMinimumSize( )
     {
 
         //initialize properties before any pages regardless of the order in the layout xml
@@ -106,7 +106,7 @@ namespace Design {
         // set known child values
 
 
-        for ( AlbumBaseList::iterator it = std::begin(m_layoutChildArray ); it != std::end( m_layoutChildArray ); ++it )
+        for ( ChildList::iterator it = BeginChildList(); it != EndChildList(); ++it )
         {
             AlbumBaseType type = ( AlbumBaseType )( *it )->GetNodeType( );
             switch ( type )
@@ -142,7 +142,7 @@ namespace Design {
         // go to the bottom of each child container object ( row, column, page)
         // and begin filling in position relative to the parent
 
-        for ( AlbumBaseList::iterator it = std::begin(m_layoutChildArray ); it != std::end( m_layoutChildArray ); ++it )
+        for ( ChildList::iterator it = BeginChildList(); it != EndChildList(); ++it )
         {
             LayoutBase* child = ( LayoutBase* )( *it );
 
@@ -157,7 +157,7 @@ namespace Design {
 
         // go to the bottom of each child container object ( row, column, page)
         // and begin filling in position relative to the parent
-        for ( AlbumBaseList::iterator it = std::begin(m_layoutChildArray ); it != std::end( m_layoutChildArray ); ++it )
+        for ( ChildList::iterator it = BeginChildList(); it != EndChildList(); ++it )
         {
             LayoutBase* child = ( LayoutBase* )( *it );
 
@@ -173,7 +173,7 @@ namespace Design {
 
         bool firstPage = true;
 
-        for ( AlbumBaseList::iterator it = std::begin(m_layoutChildArray ); it != std::end( m_layoutChildArray ); ++it )
+        for ( ChildList::iterator it = BeginChildList(); it != EndChildList(); ++it )
         {
             LayoutBase* child = ( LayoutBase* )( *it );
             int childType = child->GetNodeType( );

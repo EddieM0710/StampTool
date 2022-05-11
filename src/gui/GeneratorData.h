@@ -22,18 +22,19 @@ namespace Catalog { class CatalogData; };
 class CatalogTreeCtrl;
 class DesignTreeCtrl;
 class DescriptionPanel;
+class AlbumImagePanel;
 
 class GeneratorData
 {
 public:
- GeneratorData(){
-    m_catalogData = 0;
-    m_designData = 0;
-    m_catalogTreeCtrl = 0;
-    m_DesignTreeCtrl = 0;
-    m_descriptionPanel = 0;
- };
- ~GeneratorData(){};
+    GeneratorData( ) {
+        m_catalogData = 0;
+        m_designData = 0;
+        m_catalogTreeCtrl = 0;
+        m_designTreeCtrl = 0;
+        m_descriptionPanel = 0;
+    };
+    ~GeneratorData( ) {};
 
     inline Utils::StampList* GetStampAlbumCatalogLink( ) { return &m_StampAlbumCatalogLink; };
 
@@ -64,19 +65,22 @@ public:
     // };
 
     inline CatalogTreeCtrl* GetCatalogTreeCtrl( ) { return m_catalogTreeCtrl; };
-    inline DesignTreeCtrl* GetDesignTreeCtrl( ) { return m_DesignTreeCtrl; };
-    inline DescriptionPanel* GetDescriptionPanel(  ) { return m_descriptionPanel; };
+    inline DesignTreeCtrl* GetDesignTreeCtrl( ) { return m_designTreeCtrl; };
+    inline DescriptionPanel* GetDescriptionPanel( ) { return m_descriptionPanel; };
+    inline AlbumImagePanel* GetAlbumImagePanel( ) { return m_albumImagePanel; };
     void SetCatalogTreeCtrl( CatalogTreeCtrl* treeCtrl ) { m_catalogTreeCtrl = treeCtrl; };
-    void SetDesignTreeCtrl( DesignTreeCtrl* treeCtrl ) { m_DesignTreeCtrl = treeCtrl; };
+    void SetDesignTreeCtrl( DesignTreeCtrl* treeCtrl ) { m_designTreeCtrl = treeCtrl; };
     void SetDescriptionPanel( DescriptionPanel* descriptionPanel ) { m_descriptionPanel = descriptionPanel; };
-    Design::DesignData*  NewDesignData( void );
+    void SetAlbumImagePanel( AlbumImagePanel* albumImagePanel ) { m_albumImagePanel = albumImagePanel; };
+    Design::DesignData* NewDesignData( void );
 
 private:
     Utils::StampList m_StampAlbumCatalogLink;
     Catalog::CatalogData* m_catalogData;
     Design::DesignData* m_designData;
     CatalogTreeCtrl* m_catalogTreeCtrl;
-    DesignTreeCtrl* m_DesignTreeCtrl;
+    DesignTreeCtrl* m_designTreeCtrl;
+    AlbumImagePanel* m_albumImagePanel;
     DescriptionPanel* m_descriptionPanel;
 };
 #endif

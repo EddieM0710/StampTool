@@ -60,7 +60,7 @@ namespace Design {
          * @return true
          * @return false
          **************************************************/
-        void UpdateMinimumSize( );
+        bool UpdateMinimumSize( );
 
         /**
          * @brief Calculate the row layout based on child parameters

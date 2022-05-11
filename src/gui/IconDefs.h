@@ -97,11 +97,11 @@ namespace Catalog
         Icon_Folder
     } IconID;
 
-extern Catalog::IconID CatalogImageSelection[ Catalog::FT_NbrTypes ][  Catalog::ST_NbrInventoryStatusTypes ] ;
+    extern Catalog::IconID CatalogImageSelection[ Catalog::FT_NbrTypes ][ Catalog::ST_NbrInventoryStatusTypes ];
 };
 wxImageList* CreateAlbumImageList( );
 wxImageList* CreateAlbumStateImageList( bool del );
 wxImageList* CreateCatalogImageList( );
-wxImageList* CreateCatalogStateImageList(bool del);
+wxImageList* CreateCatalogStateImageList( bool del );
 
 #endif

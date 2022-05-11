@@ -120,6 +120,7 @@ public:
      * @param event   Contains information about command events
      **************************************************/
     void OnPaint( wxPaintEvent& event );
+    wxSize GetTextExtent(wxString text);
 
     /**
      * @brief wxEVT_CONTEXT_MENU event handler for ID_ALBUMIMAGEPANEL

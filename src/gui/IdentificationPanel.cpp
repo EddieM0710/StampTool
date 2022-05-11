@@ -398,9 +398,11 @@ void IdentificationPanel::SetStamp( Catalog::Stamp* stamp )
 void IdentificationPanel::OnStatuschoiceSelected( wxCommandEvent& event )
 {
     wxString strSel = m_status->GetStringSelection( );
-    m_stamp->SetInventoryStatus( strSel );
-    GetCatalogTreeCtrl()->SetInventoryStatusImage( );
-    
+    if ( m_stamp )
+    {
+        m_stamp->SetInventoryStatus( strSel );
+        GetCatalogTreeCtrl()->SetInventoryStatusImage( );
+    }
     // wxEVT_COMMAND_CHOICE_SELECTED event handler for ID_STATUSCHOICE
     // in IdentificationPanel.
     // Before editing this code, remove the block markers.

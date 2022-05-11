@@ -57,6 +57,7 @@ namespace Design {
         Row* AddRow( LayoutBase* node );
         Stamp* AddStamp( LayoutBase* node );
         Title* AddTitle( LayoutBase* node );
+        void MakePage(LayoutBase* node);
 
         void SetDirty( bool state = true ) { m_dirty = state; };
         bool isDirty( ) { return m_dirty; };

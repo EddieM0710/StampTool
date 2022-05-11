@@ -26,6 +26,7 @@ namespace Utils { class Settings; };
 class GeneratorData;
 class DesignTreeCtrl;
 class CatalogTreeCtrl;
+class AlbumImagePanel;
 namespace Design { class DesignData; };
 namespace Catalog { class CatalogData;  };
 /**
@@ -42,6 +43,7 @@ Design::DesignData* GetDesignData() ;
 Catalog::CatalogData* GetCatalogData() ;
 CatalogTreeCtrl* GetCatalogTreeCtrl();
 DesignTreeCtrl* GetDesignTreeCtrl();
+AlbumImagePanel* GetAlbumImagePanel();
 
 /**
  * @brief  Returns Ascii "true" or "false" based on bool b

@@ -96,16 +96,16 @@ DesignTreeCtrl::DesignTreeCtrl( wxWindow* parent, const wxWindowID id,
 
 //******************************************************
 
-wxString DesignTreeCtrl::MakeItemLabel ( wxTreeItemId id )
+wxString DesignTreeCtrl::MakeItemLabel( wxTreeItemId id )
 {
-    if (id.IsOk() )
+    if ( id.IsOk( ) )
     {
-        Design::AlbumBase * node = GetItemNode(id );
+        Design::AlbumBase* node = GetItemNode( id );
         if ( node )
-        {           
-            if ( GetItemType(id) == Design::AT_Stamp)
-            {   
-                    return node->GetAttrStr(Design::AT_ID) + " - " + node->GetAttrStr(Design::AT_Name) ;
+        {
+            if ( GetItemType( id ) == Design::AT_Stamp )
+            {
+                return node->GetAttrStr( Design::AT_ID ) + " - " + node->GetAttrStr( Design::AT_Name );
             }
             else
             {
@@ -114,7 +114,7 @@ wxString DesignTreeCtrl::MakeItemLabel ( wxTreeItemId id )
         }
     }
     return "";
- }
+}
 
 // AddChild adds wxXmlNode as a item in the tree.  It is recursively called to
 // create sort nodes as necessary to find the proper place for the child
@@ -154,7 +154,7 @@ wxTreeItemId DesignTreeCtrl::AddChild( wxTreeItemId parent, Design::AlbumBase* c
     {
         Utils::StampList* stampList = GetGeneratorData( )->GetStampAlbumCatalogLink( );
         Utils::StampLink* link = stampList->AddStamp( ( Design::Stamp* )child );
-        itemData->SetStampLink(link);
+        itemData->SetStampLink( link );
         //set the icon for the appropriate state
         SetItemImage( childID, icon );
         //       SetItemState( childID, 0 );
@@ -162,13 +162,13 @@ wxTreeItemId DesignTreeCtrl::AddChild( wxTreeItemId parent, Design::AlbumBase* c
     else
     {
         // not a stamp just add the appropriate image
-        itemData->SetStampLink(0);
+        itemData->SetStampLink( 0 );
         SetItemImage( childID, Design::Icon_Folder );
         //       SetItemState( childID, wxTREE_ITEMSTATE_NEXT );
     }
 
     // now do it all again for this stamps children
-    for ( Design::AlbumBaseList::iterator it = child->BeginAlbumBaseList( ); it != child->EndAlbumBaseList( ); ++it )
+    for ( Design::ChildList::iterator it = child->BeginChildList( ); it != child->EndChildList( ); ++it )
     {
         Design::LayoutBase* grandChild = ( Design::LayoutBase* )( *it );
         // start adding child elements to it.
@@ -260,12 +260,12 @@ Design::Stamp* DesignTreeCtrl::AddStamp( Design::AlbumBase* node )
 
 Utils::StampLink* DesignTreeCtrl::AppendStamp( wxTreeItemId catID )
 {
-    Utils::StampLink* newLink = (Utils::StampLink*)0;
+    Utils::StampLink* newLink = ( Utils::StampLink* )0;
     wxTreeItemId currAlbumID = GetSelection( );
-    if ( currAlbumID.IsOk( ) && catID.IsOk() )
+    if ( currAlbumID.IsOk( ) && catID.IsOk( ) )
     {
 
-        Design::AlbumBaseType type = GetItemType(currAlbumID );
+        Design::AlbumBaseType type = GetItemType( currAlbumID );
         if ( type == Design::AT_Stamp || type == Design::AT_Title )
         {
             currAlbumID = GetItemParent( currAlbumID );
@@ -287,7 +287,7 @@ Utils::StampLink* DesignTreeCtrl::AppendStamp( wxTreeItemId catID )
             Utils::StampList* stampList = GetGeneratorData( )->GetStampAlbumCatalogLink( );
             newLink = stampList->AddStamp( newStamp );
             wxTreeItemId albumID = newStamp->GetTreeItemId( );
-            DesignTreeItemData*  newStampData = ( DesignTreeItemData* )GetItemData( albumID );
+            DesignTreeItemData* newStampData = ( DesignTreeItemData* )GetItemData( albumID );
             newStampData->SetStampLink( newLink );
             newLink->SetDesignTreeID( albumID );
             newLink->SetCatTreeID( catID );
@@ -697,6 +697,8 @@ void DesignTreeCtrl::ShowMenu( wxTreeItemId id, const wxPoint& pt )
         if ( type == Design::AT_Stamp )
         {
             ShowStampDetails( id, node );
+            GetDesignData()->MakePage( (Design::LayoutBase*)node );
+
         }
         break;
 
@@ -723,7 +725,7 @@ void DesignTreeCtrl::ShowStampDetails( wxTreeItemId treeID, Design::AlbumBase* n
     wxString name = node->GetAttrStr( Design::AT_Name );
     stampDetailsDialog.SetName( name );
 
-    stampDetailsDialog.SetDesignTreeID(treeID);
+    stampDetailsDialog.SetDesignTreeID( treeID );
 
     if ( stampDetailsDialog.ShowModal( ) == wxID_CANCEL )
         return; // the user changed idea..
@@ -788,19 +790,44 @@ void DesignTreeCtrl::ResetValidateStatus( )
 {
     ValidateStatus = true;
 }
+
 bool DesignTreeCtrl::GetValidateStatus( )
 {
     return ValidateStatus;
 }
 
-    Design::AlbumBase* DesignTreeCtrl::GetItemNode( wxTreeItemId albumID ) { 
-        if ( albumID.IsOk( ) ) { return ( ( DesignTreeItemData* )GetItemData( albumID ) )->GetNodeElement( ); } return (Design::AlbumBase*)0;};
+Design::AlbumBase* DesignTreeCtrl::GetItemNode( wxTreeItemId albumID )
+{
+    if ( albumID.IsOk( ) )
+    {
+        return ( ( DesignTreeItemData* )GetItemData( albumID ) )->GetNodeElement( );
+    }
+    return ( Design::AlbumBase* )0;
+};
 
-    wxString DesignTreeCtrl::GetItemDesc( wxTreeItemId albumID ) {
-        if ( albumID.IsOk( ) ) {  return ( ( DesignTreeItemData* )GetItemData( albumID ) )->GetDesc( );}; return "";};
+wxString DesignTreeCtrl::GetItemDesc( wxTreeItemId albumID )
+{
+    if ( albumID.IsOk( ) )
+    {
+        return ( ( DesignTreeItemData* )GetItemData( albumID ) )->GetDesc( );
+    };
+    return "";
+};
 
-    Utils::StampLink* DesignTreeCtrl::GetItemStampLink( wxTreeItemId albumID ) { 
-        if ( albumID.IsOk( ) ) { return ( ( DesignTreeItemData* )GetItemData( albumID ) )->GetStampLink( ); } return (Utils::StampLink*)0;};
-  
-    Design::AlbumBaseType DesignTreeCtrl::GetItemType( wxTreeItemId albumID ) { 
-        if ( albumID.IsOk( ) ) { return ( ( DesignTreeItemData* )GetItemData( albumID ) )->GetType( ); } return (Design::AlbumBaseType)Design::AT_NOTYPE;};
+Utils::StampLink* DesignTreeCtrl::GetItemStampLink( wxTreeItemId albumID )
+{
+    if ( albumID.IsOk( ) )
+    {
+        return ( ( DesignTreeItemData* )GetItemData( albumID ) )->GetStampLink( );
+    }
+    return ( Utils::StampLink* )0;
+};
+
+Design::AlbumBaseType DesignTreeCtrl::GetItemType( wxTreeItemId albumID )
+{
+    if ( albumID.IsOk( ) )
+    {
+        return ( ( DesignTreeItemData* )GetItemData( albumID ) )->GetType( );
+    }
+    return ( Design::AlbumBaseType )Design::AT_NOTYPE;
+};

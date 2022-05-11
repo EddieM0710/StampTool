@@ -26,7 +26,9 @@
 #include "wx/xml/xml.h"
 
 #include "catalog/CatalogData.h"
+
 #include "Defs.h"
+
 #include "catalog/CatalogDefs.h"
 #include "catalog/Classification.h"
 #include "catalog/Stamp.h"
@@ -75,7 +77,7 @@ namespace Catalog {
 
     void CatalogData::Save( )
     {
-        wxString filename = GetProject( )->GetCatalogFilename(  );
+        wxString filename = GetProject( )->GetCatalogFilename( );
         if ( wxFileExists( filename ) )
         {
             wxFileName bakFile( filename );
@@ -83,7 +85,7 @@ namespace Catalog {
             wxRenameFile( filename, bakFile.GetFullName( ), true );
         }
         m_stampDoc->Save( filename );
-        SetDirty(false);
+        SetDirty( false );
 
     }
 
@@ -128,7 +130,7 @@ namespace Catalog {
             m_title = catalog.GetTitle( );
         }
 
-        SetDirty(false);
+        SetDirty( false );
     }
 
     void CatalogData::LoadCSV( wxString filename )
@@ -148,7 +150,7 @@ namespace Catalog {
         Utils::SetAttrStr( docRoot, DT_DataNames[ DT_Name ], filename );
 
         csv->DoLoad( filename, m_stampDoc->GetRoot( ) );
-        SetDirty();
+        SetDirty( );
         delete csv;
     }
 

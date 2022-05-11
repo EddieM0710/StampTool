@@ -14,7 +14,7 @@
 
 namespace Design {
 
-    void  Title::UpdateMinimumSize( )
+    bool  Title::UpdateMinimumSize( )
     {
         double height = GetAttrDbl( AT_Height );
         double width = 1.;
@@ -23,7 +23,6 @@ namespace Design {
         // default width is completely arbitrary at this point
         SetWidth( width );
         SetMinWidth( width );
-
     }
 
 

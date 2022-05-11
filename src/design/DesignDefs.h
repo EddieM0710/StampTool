@@ -93,7 +93,6 @@ namespace Design {
     // void SetAttrStr( AlbumBaseType type, wxString val );
     // void SetAttrDbl( AlbumBaseType type, double val );
 
-  
 
 }
 

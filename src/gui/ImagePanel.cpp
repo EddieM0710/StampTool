@@ -285,6 +285,8 @@ void ImagePanel::OnPaint( wxPaintEvent& event )
         // m_zoom*scale * m_bitmap.GetHeight()) / 2),
         true /* use mask */
     );
+
+
 }
 
 

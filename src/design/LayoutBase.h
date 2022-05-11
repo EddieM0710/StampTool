@@ -16,11 +16,10 @@
 
 #include "Defs.h"
 #include "design/AlbumBase.h"
- //#include "design/Attribute.h"
+#include "design/Frame.h"
 #include "utils/XMLUtilities.h"
 
 #include <wx/xml/xml.h>
- //using namespace tinyxml2;
 
 namespace Design {
 
@@ -40,7 +39,7 @@ namespace Design {
          *
          **************************************************/
         LayoutBase( ) : AlbumBase( ) {
-            
+
         };
 
         /**
@@ -48,101 +47,37 @@ namespace Design {
          *
          * @param name
          **************************************************/
-        LayoutBase( AlbumBase* parent, wxXmlNode* node ) : AlbumBase(  parent, node ) {
+        LayoutBase( AlbumBase* parent, wxXmlNode* node ) : AlbumBase( parent, node ) {
         };
 
 
         virtual wxXmlNode* Write( wxXmlNode* parent ) = 0;
 
-        /**
-         * @brief Gets the objects x position
-         *
-         * @return double
-         **************************************************/
-        double GetXPos( );
+        double GetXPos( ) { return m_frame.GetXPos( ) ;};
+        void SetXPos( double val ) { m_frame.SetXPos( val ); };
+        double GetYPos( ) { return m_frame.GetYPos( ); };
+        void SetYPos( double val ) { m_frame.SetYPos( val ); };
+        double GetWidth( ) { return m_frame.GetWidth( ) ;};
+        void SetWidth( double val ) { m_frame.SetWidth( val ); };
+        double GetHeight( ) { return m_frame.GetHeight( ); };
+        void SetHeight( double val ) { m_frame.SetHeight( val ); };
+        double GetMinWidth( ) { return m_frame.GetMinWidth( ); };
+        void SetMinWidth( double val ) { m_frame.SetMinWidth( val ); };
+        double GetMinHeight( ) { return m_frame.GetMinHeight( ); };
+        void SetMinHeight( double val ) { m_frame.SetMinHeight( val ); };
 
-        /**
-         * @brief Sets the objects x position
-         *
-         * @param val
-         **************************************************/
-        void SetXPos( double val );
+        wxString GetTitle( ) { return m_title; };
+        void SetTitle( wxString title ) { m_title = title; UpdateTitleSize();};
+        int GetTitleHeight( ) { return m_titleSize.GetY(); };       
 
-        /**
-         * @brief Gets the objects y position
-         *
-         * @return double
-         **************************************************/
-        double GetYPos( ) ;
+        bool ShowTitle( ) { return m_showTitle; };
+        void SetShowTitle( bool show = false ) { m_showTitle = show; };
 
-        /**
-         * @brief  Sets the objects y position
-         *
-         * @param val
-         **************************************************/
-        void SetYPos( double val );
-
-        /**
-         * @brief Gets the objects  width
-         *
-         * @return double
-         **************************************************/
-        double GetWidth( );
-
-        /**
-         * @brief  Sets the objects width
-         *
-         * @param val
-         **************************************************/
-        void SetWidth( double val );
-
-        /**
-         * @brief Gets the objects height
-         *
-         * @return double
-         **************************************************/
-        double GetHeight( );
-
-        /**
-         * @brief  Sets the objects height
-         *
-         * @param val
-         **************************************************/
-        void SetHeight( double val );
-
-
-        /**
-         * @brief Gets the objects minimum width
-         *
-         * @return double
-         **************************************************/
-        double GetMinWidth( );
-
-        /**
-         * @brief  Sets the objects minimum width
-         *
-         * @param val
-         **************************************************/
-        void SetMinWidth( double val );
-
-        /**
-         * @brief Gets the objects minimum height
-         *
-         * @return double
-         **************************************************/
-        double GetMinHeight( );
-
-        /**
-         * @brief  Sets the objects minimum height
-         *
-         * @param val
-         **************************************************/
-        void SetMinHeight( double val );
+        bool ShowFrame( ) { return m_showFrame; };
+        void SetShowFram( bool show = false ) { m_showFrame = show; };
 
         void ValidateChildType( int& nbrRows, int& nbrCols, int& nbrStamps );
         void ReportLayoutError( wxString funct, wxString err, bool fatal = true );
-
-
 
         /**
          * @brief Calculate the column layout based on child parameters
@@ -160,51 +95,18 @@ namespace Design {
          * @return true
          * @return false
          **************************************************/
-        virtual void UpdateMinimumSize( ) = 0;
+        virtual bool UpdateMinimumSize( ) = 0;
 
         virtual void UpdateSizes( ) = 0;
-
-        Title* GetTitle( );
-        double GetTitleHeight( );
-
+        virtual void draw( wxPaintDC &dc, int x, int y ) = 0;
+        void UpdateTitleSize();
 
     protected:
-
-        /**
-         * @brief position relative to parent container
-         *
-         **************************************************/
-        double m_xPos;
-
-        /**
-         * @brief  position relative to parent container
-         *
-         **************************************************/
-        double m_yPos;
-
-        /**
-         * @brief object width
-         *
-         **************************************************/
-        double m_width;
-
-        /**
-         * @brief object height
-         *
-         **************************************************/
-        double m_height;
-
-
-        // max width of child items; min width for this column
-        double m_minWidth;
-
-        /**
-         * @brief sum of the height of child items; min height for this row
-         *
-         **************************************************/
-        double m_minHeight;
-
-
+        Frame m_frame;
+        wxString m_title;
+        wxSize m_titleSize;
+        bool m_showTitle;
+        bool m_showFrame;
     };
 }
 #endif

@@ -28,7 +28,7 @@ namespace Design {
 
 class AlbumBase;
 
-typedef std::vector<AlbumBase*> AlbumBaseList;
+typedef std::vector<AlbumBase*> ChildList;
 
     /**
      * @brief Base class for all layout objects. The layout objects are
@@ -90,8 +90,8 @@ typedef std::vector<AlbumBase*> AlbumBaseList;
         void SetObjectText( wxString text ) { m_text = text; }
         wxString GetObjectText( ) { return m_text; }
     
-        AlbumBaseList::iterator BeginAlbumBaseList(){return  std::begin( m_layoutChildArray );};
-        AlbumBaseList::iterator EndAlbumBaseList(){return  std::end( m_layoutChildArray );};
+        ChildList::iterator BeginChildList(){return  std::begin( m_layoutChildArray );};
+        ChildList::iterator EndChildList(){return  std::end( m_layoutChildArray );};
 
         virtual wxXmlNode* Write( wxXmlNode* parent ) = 0;
 
@@ -124,7 +124,7 @@ typedef std::vector<AlbumBase*> AlbumBaseList;
         AlbumBase* m_parent;
         wxTreeItemId m_treeID;
         protected:
-        AlbumBaseList m_layoutChildArray;
+        ChildList m_layoutChildArray;
         LayoutAttributeArray m_attrArray;
         wxString m_text;
         NodeStatus m_nodeValid;

@@ -39,6 +39,7 @@
 #include "design/Row.h"
 #include "design/Column.h"
 #include "AlbumGenApp.h"
+#include "gui/AlbumImagePanel.h"
 
 namespace Design {
 
@@ -50,8 +51,8 @@ namespace Design {
 
     DesignData::~DesignData( )
     {
-  
-        if ( m_albumDoc ) m_albumDoc->~wxXmlDocument();
+
+        if ( m_albumDoc ) m_albumDoc->~wxXmlDocument( );
         if ( m_album ) delete m_album;
         m_albumDoc = 0;
         m_album = 0;
@@ -83,7 +84,7 @@ namespace Design {
         }
 
         m_albumDoc->Save( filename );
-        SetDirty(false);
+        SetDirty( false );
     }
 
     bool DesignData::LoadXML( wxString filename )
@@ -107,13 +108,13 @@ namespace Design {
         {
             albumBaseRoot->SetName( filename );
         }
-        m_album = new Album( (AlbumBase*)0, albumBaseRoot );
+        m_album = new Album( ( AlbumBase* )0, albumBaseRoot );
         if ( !m_album )
         {
             return false;
         }
 
-        SetDirty(false);
+        SetDirty( false );
         return true;
     }
 
@@ -127,7 +128,7 @@ namespace Design {
             if ( type == AT_Page )
             {
                 // can't mix rows and cols as siblings
-                if (prevType != AT_Col )
+                if ( prevType != AT_Col )
                 {
                     break;
                 }
@@ -142,13 +143,13 @@ namespace Design {
         if ( parent )
         {
             Row* newRow = new Row( parent, ( wxXmlNode* )0 );
-            parent->AddChild(newRow);
-            SetDirty();
+            parent->AddChild( newRow );
+            SetDirty( );
             return newRow;
         }
         else
         {
-            return  (Row*)0;
+            return  ( Row* )0;
         }
 
 
@@ -164,12 +165,12 @@ namespace Design {
             if ( type == AT_Page )
             {
                 // can't mix rows and cols as siblings
-                if (prevType != AT_Row )
+                if ( prevType != AT_Row )
                 {
                     break;
                 }
             }
-            else if (type == AT_Row )
+            else if ( type == AT_Row )
             {
                 break;
             }
@@ -178,12 +179,12 @@ namespace Design {
         }
         if ( parent )
         {
-            SetDirty();
+            SetDirty( );
             return new Column( parent, ( wxXmlNode* )0 );
         }
         else
         {
-            return  (Column*)0;
+            return  ( Column* )0;
         }
     }
 
@@ -201,12 +202,12 @@ namespace Design {
         }
         if ( parent )
         {
-            SetDirty();
+            SetDirty( );
             return new Page( parent, ( wxXmlNode* )0 );
         }
         else
         {
-            return  (Page*)0;
+            return  ( Page* )0;
         }
     }
 
@@ -225,61 +226,78 @@ namespace Design {
         }
         if ( parent )
         {
-            SetDirty();
+            SetDirty( );
             return new Stamp( parent, ( wxXmlNode* )0 );
         }
         else
         {
-            return  (Stamp*)0;
+            return  ( Stamp* )0;
         }
 
     }
-    Title* DesignData::AddTitle( LayoutBase* node )
-    {
-        LayoutBase* parent = node;
-        while ( parent )
-        {
-            AlbumBaseType type = parent->GetNodeType( );
-            if ( type == AT_Col
-                || type == AT_Row
-                || type == AT_Page )
-            {
-                break;
-            }
-            parent = ( LayoutBase* )parent->GetParent( );
-        }
-        if ( parent )
-        {
-            SetDirty();
-            return new Title( parent, ( wxXmlNode* )0 );
-        }
-        else
-        {
-            return  (Title*)0;
-        }
-    }
+    // Title* DesignData::AddTitle( LayoutBase* node )
+    // {
+    //     LayoutBase* parent = node;
+    //     while ( parent )
+    //     {
+    //         AlbumBaseType type = parent->GetNodeType( );
+    //         if ( type == AT_Col
+    //             || type == AT_Row
+    //             || type == AT_Page )
+    //         {
+    //             break;
+    //         }
+    //         parent = ( LayoutBase* )parent->GetParent( );
+    //     }
+    //     if ( parent )
+    //     {
+    //         SetDirty( );
+    //         return new Title( parent, ( wxXmlNode* )0 );
+    //     }
+    //     else
+    //     {
+    //         return  ( Title* )0;
+    //     }
+    // }
 
     AlbumBase* DesignData::GetPage( AlbumBase* node )
     {
         while ( node )
         {
-            if ( node->GetNodeType() == AT_Page )
+            if ( node->GetNodeType( ) == AT_Page )
             {
                 return node;
             }
-            node = node->GetParent();
+            node = node->GetParent( );
         }
-        return (AlbumBase*)0;
+        return ( AlbumBase* )0;
     }
 
 
     NodeStatus DesignData::ValidatePage( AlbumBase* node )
     {
-        Page* page = (Page*)GetPage(node);
+        Page* page = ( Page* )GetPage( node );
         if ( page )
         {
             return page->ValidateChildren( page );
         }
         return AT_FATAL;
     }
+
+    void DesignData::MakePage(LayoutBase* node)
+    {
+        Page* page = (Page*)GetPage( node );
+        if ( page )
+        {
+            bool ok = page->UpdateMinimumSize( );
+            if ( ok )
+            {
+                page->UpdateSizes( );
+                page->UpdatePositions( );
+                GetAlbumImagePanel()->Refresh( );
+            }
+        }
+
+    }
+
 }

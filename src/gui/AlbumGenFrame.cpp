@@ -98,9 +98,9 @@ AlbumGenFrame::AlbumGenFrame( )
 void AlbumGenFrame::InitLoad( )
 {
     if ( GetSettings( )->GetLoadLastFileAtStartUp( ) )
-    { 
-        GetProject()->LoadProject( );
-        GetProject()->LoadData( );
+    {
+        GetProject( )->LoadProject( );
+        GetProject( )->LoadData( );
     }
 }
 
@@ -143,7 +143,7 @@ AlbumGenFrame::~AlbumGenFrame( )
 
 void AlbumGenFrame::Init( )
 {
-//    m_stamp = new Catalog::Stamp( );
+    //    m_stamp = new Catalog::Stamp( );
     m_albumGeneratorPanel = NULL;
     m_catalogPanel = NULL;
 }
@@ -177,7 +177,7 @@ void AlbumGenFrame::CreateControls( )
     m_saveAsMenu->Append( ID_SAVEASDESIGN, _( "Save Design File As" ), wxEmptyString, wxITEM_NORMAL );
     m_saveAsMenu->Append( ID_SAVEASCATALOG, _( "Save Catalog File As" ), wxEmptyString, wxITEM_NORMAL );
     m_fileMenu->Append( wxID_SAVEAS, _( "Save" ), m_saveAsMenu );
-   
+
     m_fileMenu->AppendSeparator( );
 
     m_fileMenu->Append( ID_IMPORT, _( "Import CSV" ), wxEmptyString, wxITEM_NORMAL );
@@ -196,7 +196,7 @@ void AlbumGenFrame::CreateControls( )
     menuBar->Append( m_fileMenu, _( "File" ) );
     wxMenu* itemMenu3 = new wxMenu;
     itemMenu3->Append( ID_TEXTSERCHMENUITEM, _( "Text Search" ), wxEmptyString, wxITEM_NORMAL );
-   // itemMenu3->Append( ID_IMAGEGALERYMENUITEM, _( "Image Gallery" ), wxEmptyString, wxITEM_NORMAL );
+    // itemMenu3->Append( ID_IMAGEGALERYMENUITEM, _( "Image Gallery" ), wxEmptyString, wxITEM_NORMAL );
     menuBar->Append( itemMenu3, _( "Search" ) );
 
     wxMenu* itemMenu1 = new wxMenu;
@@ -221,10 +221,10 @@ void AlbumGenFrame::CreateControls( )
 }
 
 
-bool AlbumGenFrame::ShowToolTips( ) 
-{ 
-    return true; 
-    }
+bool AlbumGenFrame::ShowToolTips( )
+{
+    return true;
+}
 
 wxBitmap AlbumGenFrame::GetBitmapResource( const wxString& name )
 {
@@ -284,7 +284,7 @@ void AlbumGenFrame::DoRecentSelection( wxCommandEvent& event )
         return;
     }
 
-//    m_catalogPanel->LoadCatalog( );
+    //    m_catalogPanel->LoadCatalog( );
 
 
     event.Skip( );
@@ -326,7 +326,7 @@ void AlbumGenFrame::DoCSVImport( )
         return;
     }
 
-//    m_catalogPanel->LoadCatalogCSV( filename );
+    //    m_catalogPanel->LoadCatalogCSV( filename );
     Dirty = true;
 }
 
@@ -390,7 +390,7 @@ void AlbumGenFrame::OnCSVImportClick( wxCommandEvent& event )
 
 void AlbumGenFrame::OnExitClick( wxCommandEvent& event )
 {
-    Close();
+    Close( );
     event.Skip( );
 }
 
@@ -539,9 +539,9 @@ void AlbumGenFrame::OpenProject( )
         wxLogError( "Cannot open file '%s'.", filename );
         return;
     }
-    GetProject()->SetProjectFilename(filename);
-    GetProject()->LoadProject(  );
-    GetProject()->LoadData();
+    GetProject( )->SetProjectFilename( filename );
+    GetProject( )->LoadProject( );
+    GetProject( )->LoadData( );
 
 }
 
@@ -581,9 +581,9 @@ void AlbumGenFrame::OpenDesign( )
     // this can be done with e.g. wxWidgets input streams:
     wxString filename = openFileDialog.GetPath( );
 
-        GetProject()->SetDesignFilename( filename );
-        GetProject()->LoadDesignData(  );
-        GetProject()->LoadDesignTree();
+    GetProject( )->SetDesignFilename( filename );
+    GetProject( )->LoadDesignData( );
+    GetProject( )->LoadDesignTree( );
 
 }
 
@@ -623,9 +623,9 @@ void AlbumGenFrame::OpenCatalog( )
     // this can be done with e.g. wxWidgets input streams:
     wxString filename = openFileDialog.GetPath( );
 
-    GetProject()->SetCatalogFilename( filename );
-    GetProject()->LoadCatalogData( );
-    GetProject()->LoadCatalogTree();
+    GetProject( )->SetCatalogFilename( filename );
+    GetProject( )->LoadCatalogData( );
+    GetProject( )->LoadCatalogTree( );
 }
 
 
@@ -687,17 +687,17 @@ int AlbumGenFrame::QueryMerge( int& mergeMethod )
 
 void AlbumGenFrame::SaveProject( )
 {
-    GetProject()->Save( );
+    GetProject( )->Save( );
 }
 
 void AlbumGenFrame::SaveDesign( )
 {
-    GetDesignData()->SaveXML(GetProject()->GetDesignFilename());
+    GetDesignData( )->SaveXML( GetProject( )->GetDesignFilename( ) );
 }
 
 void AlbumGenFrame::SaveCatalog( )
 {
-    GetCatalogData()->Save();
+    GetCatalogData( )->Save( );
     SetDirty( false );
 
 }
@@ -716,8 +716,8 @@ void AlbumGenFrame::SaveAsProject( )
             return;
 
         wxString filename = saveFileDialog.GetPath( );
-        GetProject()->SetProjectFilename( filename );
-        GetProject()->Save();
+        GetProject( )->SetProjectFilename( filename );
+        GetProject( )->Save( );
     }
 }
 void AlbumGenFrame::SaveAsCatalog( )
@@ -725,7 +725,7 @@ void AlbumGenFrame::SaveAsCatalog( )
 
     if ( GetCatalogData( ) )
     {
-        wxFileName lastFile( GetProject( )->GetCatalogFilename() ) ;
+        wxFileName lastFile( GetProject( )->GetCatalogFilename( ) );
         lastFile.SetExt( "xml" );
         wxFileDialog saveFileDialog(
             this, _( "Stamp List XML file" ),
@@ -735,7 +735,7 @@ void AlbumGenFrame::SaveAsCatalog( )
             return;
 
         wxString filename = saveFileDialog.GetPath( );
-        GetProject()->SetCatalogFilename( filename );
+        GetProject( )->SetCatalogFilename( filename );
         SaveCatalog( );
     }
 }
@@ -754,8 +754,8 @@ void AlbumGenFrame::SaveAsDesign( )
             return;
 
         wxString filename = saveFileDialog.GetPath( );
-        GetProject()->SetDesignFilename( filename );
-        SaveDesign( );      
+        GetProject( )->SetDesignFilename( filename );
+        SaveDesign( );
     }
 }
 void AlbumGenFrame::SetupRecentMenu( )
@@ -780,7 +780,7 @@ void AlbumGenFrame::SetupRecentMenu( )
         RecentListItem* listItem = new RecentListItem( );
         listItem->id = ID_RECENT + i + 1;
         wxString item = recentList->Item( i );
-        if ( item.length() > 0)
+        if ( item.length( ) > 0 )
         {
             cnt++;
             listItem->item = m_recentMenu->Append( listItem->id, item, wxEmptyString, wxITEM_NORMAL );

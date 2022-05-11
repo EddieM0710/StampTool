@@ -22,6 +22,22 @@
 namespace Layout {
 
 
+    bool Page::ValidateNode()
+    {
+        bool status = true;
+        if ( GetHeight() <= 0.0)
+        {
+            std::cout << "Must define the page height.\n";
+            status = false;
+        }
+        if ( GetWidth() <= 0.0)
+        {
+            std::cout << "Must define the page width.\n";
+            status = false;
+        }
+        return status;
+    }
+
     void Page::UpdateMinimumSize( )
     {
         //double xPosUseableFrame = m_leftMargin;

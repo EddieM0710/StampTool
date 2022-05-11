@@ -164,7 +164,7 @@ class AlbumGenPanel : public wxPanel
     //void InitCatalogData();
     //void LoadCatalogCSV( wxString filename );
     CatalogPanel* GetCatalogPanel(){ return m_mngCatalogData;};
-    AlbumPanel* GetAECmdDataManager(){ m_albumSplitterWindow->GetAECmdDataMgr();};
+    AlbumPanel* GetAlbumPanel(){ m_albumSplitterWindow->GetAlbumPanel();};
    // CatalogTreeCtrl* GetCatalogDataTree( ) { return m_listTree; };
 
     // AlbumGenPanel member variables

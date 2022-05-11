@@ -129,6 +129,9 @@ namespace Layout {
          * @param val
          **************************************************/
         void SetBorderSize( double val ) { m_borderSize = val; };
+
+        bool ValidateNode();
+
     private:
 
 

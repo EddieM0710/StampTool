@@ -16,6 +16,7 @@
 #include "wx/xml/xml.h"
 #include <wx/string.h>
 
+class AlbumTreeCtrl;
 
 namespace Layout {
 
@@ -56,12 +57,14 @@ namespace Layout {
         Row* AddRow( LayoutNode* node );
         Stamp* AddStamp( LayoutNode* node );
         Title* AddTitle( LayoutNode* node );
-
+        AlbumTreeCtrl* GetAlbumTreeCtrl() { return m_albumTreeCtrl;};
+        void SetAlbumTreeCtrl( AlbumTreeCtrl* ctrl) {  m_albumTreeCtrl = ctrl;};
+        void Validate();
     private:
         /* data */
         wxXmlDocument* m_albumDoc;
         Album* m_album;
-//        wxString m_title;
+        AlbumTreeCtrl* m_albumTreeCtrl;
     };
 }
 #endif

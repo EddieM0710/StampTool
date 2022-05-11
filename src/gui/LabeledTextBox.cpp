@@ -29,7 +29,6 @@
  
  
 #include "Defs.h"
-#include "catalog/Stamp.h"
 
 /*
  * LabeledTextBox type definition
@@ -122,8 +121,8 @@ LabeledTextBox::~LabeledTextBox( )
 void LabeledTextBox::Init( )
 {
      // LabeledTextBox member initialisation
-    m_idLabel = NULL;
-    m_idText = NULL;
+    m_label = NULL;
+    m_value = NULL;
      // LabeledTextBox member initialisation
 }
 
@@ -143,13 +142,13 @@ void LabeledTextBox::CreateControls( )
     wxBoxSizer *itemBoxSizer1 = new wxBoxSizer( wxHORIZONTAL );
     itemPanel1->SetSizer( itemBoxSizer1 );
 
-    m_idLabel = new wxStaticText( itemPanel1, wxID_STATIC, _( "Static text" ),
+    m_label = new wxStaticText( itemPanel1, wxID_STATIC, _( "Static text" ),
                                   wxDefaultPosition, wxDefaultSize, 0 );
-    itemBoxSizer1->Add( m_idLabel, 0, wxALIGN_CENTER_VERTICAL | wxLEFT, 0 );
+    itemBoxSizer1->Add( m_label, 0, wxALIGN_CENTER_VERTICAL | wxLEFT, 0 );
 
-    m_idText = new wxTextCtrl( itemPanel1, ID_TEXTCTRL, wxEmptyString,
+    m_value = new wxTextCtrl( itemPanel1, ID_TEXTCTRL, wxEmptyString,
                                wxDefaultPosition, wxSize( -1, 26 ), 0 );
-    itemBoxSizer1->Add( m_idText, 1, wxGROW | wxLEFT | wxRIGHT, 4 );
+    itemBoxSizer1->Add( m_value, 1, wxGROW | wxLEFT | wxRIGHT, 4 );
 
      // LabeledTextBox content construction
 }
@@ -199,18 +198,16 @@ wxIcon LabeledTextBox::GetIconResource( const wxString &name )
 
 /*
  *
- * SetStamp( Stamp *stamp, DataTypes type )
+ * Setup( wxString label, wxString value )
  * 
  **************************************************/
 
-// void LabeledTextBox::SetStamp( Catalog::Stamp *stamp, Catalog::DataTypes type )
-// {
-//     m_stamp = stamp;
-//     m_type = type;
-//     m_idLabel->SetLabel( Catalog::DT_XMLDataNames[ type ] );
-//     m_idText->SetValue( stamp->GetAttr( type ) );
-//     m_idText->SetModified( false );
-// }
+void LabeledTextBox::Setup( wxString label, wxString value )
+{
+    m_label->SetLabelText(label);
+    m_value->SetValue(value);
+    m_value->SetModified( false );
+}
 
 /**
  * GetValue( )
@@ -219,7 +216,7 @@ wxIcon LabeledTextBox::GetIconResource( const wxString &name )
 
 wxString LabeledTextBox::GetValue( )
 {
-    return m_idText->GetValue( );
+    return m_value->GetValue( );
 };
 
 /*
@@ -230,11 +227,11 @@ wxString LabeledTextBox::GetValue( )
 
 void LabeledTextBox::OnTextctrlTextUpdated( wxCommandEvent &event )
 {
-    if ( m_idText->IsModified( ) )
+    if ( m_value->IsModified( ) )
     {
         SetDirty();
 //        m_stamp->SetAttr( m_type, m_idText->GetValue( ) );
-        m_idText->SetModified( false );
+        m_value->SetModified( false );
     }
      // wxEVT_COMMAND_TEXT_UPDATED event handler for ID_TEXTCTRL in
     //LabeledTextBox.

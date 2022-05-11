@@ -35,10 +35,28 @@
 #include "album/Row.h"
 #include "album/Column.h"
 #include "album/Stamp.h"
-
+#include "gui/AlbumTreeCtrl.h"
 
 namespace Layout {
 
+    bool ValidateStatus;
+
+    void SetValidateStatus( bool status )
+    { 
+        if ( ValidateStatus == true )
+        {
+           ValidateStatus = status;   
+        }
+    }
+
+    void ResetValidateStatus(  )
+    { 
+        ValidateStatus = true;  
+    }  
+    bool GetValidateStatus(  )
+    { 
+        return ValidateStatus;  
+    }  
     AlbumData* NewAlbumData( void )
     {
         return new AlbumData();
@@ -172,5 +190,25 @@ namespace Layout {
     //     }
 
     // }
-
+    LayoutNode* GetSelectedNodePage( )
+    {
+        AlbumData* albumData = Layout::GetAlbumData( );
+        if ( albumData )
+        {
+            AlbumTreeCtrl* treeCtrl = albumData->GetAlbumTreeCtrl( );
+            if ( treeCtrl )
+            {
+                Layout::LayoutNode* node = treeCtrl->GetSelectedNode( );
+                for ( AlbumNodeList::iterator it = node->BeginAlbumNodeList(); it != node->EndAlbumNodeList(); ++it )
+                {
+                    LayoutNode* child = ( LayoutNode* )( *it );
+                    if ( child->GetNodeType() == AT_Page )
+                    {
+                        return child;
+                    }
+                }
+            }
+        }
+        return (LayoutNode*)0;
+    }
 }

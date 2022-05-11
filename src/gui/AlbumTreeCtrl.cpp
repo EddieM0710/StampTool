@@ -47,7 +47,7 @@
 #include "gui/AlbumTreeCtrl.h"
 #include "utils/XMLUtilities.h"
 #include "utils/StampList.h"
-
+#include "gui/StampDetailsDialog.h"
 #include "art/StampBlack.xpm"
 #include "art/StampBlue.xpm"
 #include "art/StampBrown.xpm"
@@ -421,7 +421,7 @@ void AlbumTreeCtrl::OnContextMenu( wxContextMenuEvent& event )
     {
         AlbumTreeItemData* data = ( AlbumTreeItemData* )GetItemData( treeID );
         Layout::AlbumNode* node = data->GetNodeElement( );
-        Layout::AlbumData* albumData = GetProject()->GetAlbumData();
+        Layout::AlbumData* albumData = GetProject( )->GetAlbumData( );
         if ( id == AlbumDataTree_AddPage )
         {
 
@@ -433,7 +433,7 @@ void AlbumTreeCtrl::OnContextMenu( wxContextMenuEvent& event )
         else if ( id == AlbumDataTree_AddRow )
         {
 
-        Layout::Row* newRow = albumData->AddRow( (Layout::LayoutNode*)node );
+            Layout::Row* newRow = albumData->AddRow( ( Layout::LayoutNode* )node );
 
         }
         else if ( id == AlbumDataTree_AddStamp )
@@ -462,83 +462,127 @@ void AlbumTreeCtrl::ShowMenu( wxTreeItemId id, const wxPoint& pt )
         title = "Menu for no particular item";
     }
 
-    Layout::AlbumData* albumData = GetProject()->GetAlbumData();
+    Layout::AlbumData* albumData = GetProject( )->GetAlbumData( );
     AlbumTreeItemData* data = ( AlbumTreeItemData* )GetItemData( id );
     Layout::AlbumNode* node = data->GetNodeElement( );
     Layout::AlbumNodeType type = node->GetNodeType( );
     wxMenu menu( title );
-    wxMenu* addSubMenu = new wxMenu();
-    wxMenu deleteSubMenu("Delete");
+    wxMenu* addSubMenu = new wxMenu( );
+    wxMenu deleteSubMenu( "Delete" );
     menu.AppendSubMenu( addSubMenu, "Add Item" );
     menu.Append( AlbumDataTree_DeleteItem, "Delete Item" );
-    menu.Append( AlbumDataTree_EditDetails, "EditDetails" );  
+    menu.Append( AlbumDataTree_EditDetails, "EditDetails" );
     addSubMenu->Append( AlbumDataTree_AddPage, "Add Page" );
     addSubMenu->Append( AlbumDataTree_AddTitle, "Add Title" );
     addSubMenu->Append( AlbumDataTree_AddRow, "Add Row" );
     addSubMenu->Append( AlbumDataTree_AddCol, "Add Col" );
     addSubMenu->Append( AlbumDataTree_AddStamp, "Add Stamp" );
-    
+
     switch ( GetPopupMenuSelectionFromUser( menu ) )
     {
-        case AlbumDataTree_AddPage:
+    case AlbumDataTree_AddPage:
+    {
+        Layout::Page* newPage = albumData->AddPage( ( Layout::LayoutNode* )node );
+        if ( newPage )
         {
-            Layout::Page* newPage = albumData->AddPage( (Layout::LayoutNode*)node );
-            if ( newPage )
-            {
-                wxTreeItemId parentID = newPage->GetParent()->GetTreeItemId();
-                AlbumTreeItemData* itemData = new AlbumTreeItemData( Layout::AT_Page, "Page", newPage );
-                wxTreeItemId childID = AppendItem( parentID, "Page", Icon_Folder, -1, itemData );
-                newPage->SetTreeItemId( childID);
-                SetItemImage( childID, Icon_Folder );
-            }
+            wxTreeItemId parentID = newPage->GetParent( )->GetTreeItemId( );
+            AlbumTreeItemData* itemData = new AlbumTreeItemData( Layout::AT_Page, "Page", newPage );
+            wxTreeItemId childID = AppendItem( parentID, "Page", Icon_Folder, -1, itemData );
+            newPage->SetTreeItemId( childID );
+            SetItemImage( childID, Icon_Folder );
+        }
 
-            break;
-        }
-        case AlbumDataTree_AddCol:
-        {
-            Layout::Column* newCol = albumData->AddCol( (Layout::LayoutNode*)node );
-            if ( newCol )
-            {
-                wxTreeItemId parentID = newCol->GetParent()->GetTreeItemId();
-                AlbumTreeItemData* itemData = new AlbumTreeItemData( Layout::AT_Col, "Column", newCol );
-                wxTreeItemId childID = AppendItem( parentID, "Column", Icon_Folder, -1, itemData );
-                newCol->SetTreeItemId( childID);
-                SetItemImage( childID, Icon_Folder );
-            }
-
-            break;
-        }
-        case AlbumDataTree_AddRow:
-        {
-            Layout::Row* newRow = albumData->AddRow( (Layout::LayoutNode*)node );
-            if ( newRow )
-            {
-                wxTreeItemId parentID = newRow->GetParent()->GetTreeItemId();
-                AlbumTreeItemData* itemData = new AlbumTreeItemData( Layout::AT_Row, "Row", newRow );
-                wxTreeItemId childID = AppendItem( parentID, "Row", Icon_Folder, -1, itemData );
-                newRow->SetTreeItemId( childID);
-                SetItemImage( childID, Icon_Folder );
-            }
-            break;
-        }
-        case AlbumDataTree_AddStamp:
-        {
-            Layout::Stamp* newStamp = albumData->AddStamp( (Layout::LayoutNode*)node );
-            if ( newStamp )
-            {
-                wxTreeItemId parentID = newStamp->GetParent()->GetTreeItemId();
-                AlbumTreeItemData* itemData = new AlbumTreeItemData( Layout::AT_Row, "Stamp", newStamp );
-                wxTreeItemId childID = AppendItem( parentID, "Stamp", Icon_Folder, -1, itemData );
-                newStamp->SetTreeItemId( childID);
-                IconID icon = GetIconId( newStamp );
-                SetItemImage( childID, icon );
-            }
-            break;
-        }
-        default:
-            // Fall through.
-            break;
+        break;
     }
+    case AlbumDataTree_AddCol:
+    {
+        Layout::Column* newCol = albumData->AddCol( ( Layout::LayoutNode* )node );
+        if ( newCol )
+        {
+            wxTreeItemId parentID = newCol->GetParent( )->GetTreeItemId( );
+            AlbumTreeItemData* itemData = new AlbumTreeItemData( Layout::AT_Col, "Column", newCol );
+            wxTreeItemId childID = AppendItem( parentID, "Column", Icon_Folder, -1, itemData );
+            newCol->SetTreeItemId( childID );
+            SetItemImage( childID, Icon_Folder );
+        }
+
+        break;
+    }
+    case AlbumDataTree_AddRow:
+    {
+        Layout::Row* newRow = albumData->AddRow( ( Layout::LayoutNode* )node );
+        if ( newRow )
+        {
+            wxTreeItemId parentID = newRow->GetParent( )->GetTreeItemId( );
+            AlbumTreeItemData* itemData = new AlbumTreeItemData( Layout::AT_Row, "Row", newRow );
+            wxTreeItemId childID = AppendItem( parentID, "Row", Icon_Folder, -1, itemData );
+            newRow->SetTreeItemId( childID );
+            SetItemImage( childID, Icon_Folder );
+        }
+        break;
+    }
+    case AlbumDataTree_AddStamp:
+    {
+        Layout::Stamp* newStamp = albumData->AddStamp( ( Layout::LayoutNode* )node );
+        if ( newStamp )
+        {
+            wxTreeItemId parentID = newStamp->GetParent( )->GetTreeItemId( );
+            AlbumTreeItemData* itemData = new AlbumTreeItemData( Layout::AT_Row, "Stamp", newStamp );
+            wxTreeItemId childID = AppendItem( parentID, "Stamp", Icon_Folder, -1, itemData );
+            newStamp->SetTreeItemId( childID );
+            IconID icon = GetIconId( newStamp );
+            SetItemImage( childID, icon );
+        }
+        break;
+    }
+
+    case AlbumDataTree_EditDetails:
+    {
+        if ( type == Layout::AT_Stamp )
+        {  
+            ShowStampDetails( node );
+        }
+        break;
+
+    }
+    default:
+        // Fall through.
+        break;
+    }
+}
+void AlbumTreeCtrl::ShowStampDetails( Layout::AlbumNode* node )
+{
+
+    StampDetailsDialog stampDetailsDialog( this, 12345,
+        _( "View Edit Stamp Details" ) );
+    wxString height = node->GetAttrStr( Layout::AT_Height );
+    stampDetailsDialog.SetHeight(height);
+    wxString width = node->GetAttrStr( Layout::AT_Width );
+    stampDetailsDialog.SetWidth(width);
+    wxString id = node->GetAttrStr( Layout::AT_ID );
+    stampDetailsDialog.SetID(id);
+    wxString name = node->GetAttrStr( Layout::AT_Name );
+    stampDetailsDialog.SetName(name);
+    
+    if ( stampDetailsDialog.ShowModal( ) == wxID_CANCEL )
+        return; // the user changed idea..
+    if ( stampDetailsDialog.IsIDModified())
+    {
+        node->SetAttrStr(Layout::AT_ID, stampDetailsDialog.GetID());
+    }
+    if ( stampDetailsDialog.IsNameModified())
+    {
+        node->SetAttrStr(Layout::AT_Name,stampDetailsDialog.GetName());
+    }
+    if ( stampDetailsDialog.IsHeightModified())
+    {
+        node->SetAttrStr(Layout::AT_Height,stampDetailsDialog.GetHeight());
+    }
+    if ( stampDetailsDialog.IsWidthModified())
+    {
+        node->SetAttrStr(Layout::AT_Width,stampDetailsDialog.GetWidth());
+    }
+    node->ValidateNode();
 }
 
 void AlbumTreeCtrl::OnItemRClick( wxTreeEvent& event )
@@ -580,7 +624,7 @@ wxTreeItemId AlbumTreeCtrl::AddChild( wxTreeItemId parent, Layout::AlbumNode* ch
     // create the item data and add it to the tree
     AlbumTreeItemData* itemData = new AlbumTreeItemData( nodeType, label, child );
     wxTreeItemId childID = AppendItem( parent, label, icon, -1, itemData );
-    child->SetTreeItemId( childID);
+    child->SetTreeItemId( childID );
 
     if ( nodeType == Layout::AT_Stamp )
     {
@@ -659,7 +703,10 @@ wxTreeItemId AlbumTreeCtrl::AddChild( wxTreeItemId parent, Layout::AlbumNode* ch
 // basic load of the tree
 void AlbumTreeCtrl::LoadTree( )
 {
-    Layout::Album* album = GetProject( )->GetAlbumData( )->GetAlbum( );
+    Layout::AlbumData* albumData = GetProject( )->GetAlbumData( );
+    Layout::Album* album = albumData->GetAlbum( );
+    albumData->SetAlbumTreeCtrl( this );
+
     wxString name = album->GetAttrStr( Layout::AT_Name );
     // Create the root item
     AlbumTreeItemData* itemData
@@ -841,4 +888,15 @@ wxTreeItemId AlbumTreeCtrl::FindFirstStampChild( wxTreeItemId id )
         child = GetNextChild( child, cookie );
     }
     return 0;
+}
+
+Layout::LayoutNode* AlbumTreeCtrl::GetSelectedNode( )
+{
+    wxTreeItemId id = GetSelection( );
+    if ( id.IsOk( ) )
+    {
+        AlbumTreeItemData* itemData = ( AlbumTreeItemData* )GetItemData( id );
+        return ( Layout::LayoutNode* )itemData->GetNodeElement( );
+    }
+    return ( Layout::LayoutNode* )0;
 }

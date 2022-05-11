@@ -153,41 +153,41 @@ void GalleryImagePanel::CreateControls()
 
 
 /*
- * wxEVT_LEFT_UP event handler for ID_GALLERYIMAGEPANEL
+ * wxEVT_LEFT_UP event handler for ID_GALLERYALBUMIMAGEPANEL
  */
 
 void GalleryImagePanel::OnLeftUp( wxMouseEvent& event )
 {
-////@begin wxEVT_LEFT_UP event handler for ID_GALLERYIMAGEPANEL in GalleryImagePanel.
+////@begin wxEVT_LEFT_UP event handler for ID_GALLERYALBUMIMAGEPANEL in GalleryImagePanel.
     // Before editing this code, remove the block markers.
     event.Skip();
-////@end wxEVT_LEFT_UP event handler for ID_GALLERYIMAGEPANEL in GalleryImagePanel. 
+////@end wxEVT_LEFT_UP event handler for ID_GALLERYALBUMIMAGEPANEL in GalleryImagePanel. 
 }
 
 
 /*
- * wxEVT_LEFT_DCLICK event handler for ID_GALLERYIMAGEPANEL
+ * wxEVT_LEFT_DCLICK event handler for ID_GALLERYALBUMIMAGEPANEL
  */
 
 void GalleryImagePanel::OnLeftDClick( wxMouseEvent& event )
 {
-////@begin wxEVT_LEFT_DCLICK event handler for ID_GALLERYIMAGEPANEL in GalleryImagePanel.
+////@begin wxEVT_LEFT_DCLICK event handler for ID_GALLERYALBUMIMAGEPANEL in GalleryImagePanel.
     // Before editing this code, remove the block markers.
     event.Skip();
-////@end wxEVT_LEFT_DCLICK event handler for ID_GALLERYIMAGEPANEL in GalleryImagePanel. 
+////@end wxEVT_LEFT_DCLICK event handler for ID_GALLERYALBUMIMAGEPANEL in GalleryImagePanel. 
 }
 
 
 /*
- * wxEVT_CONTEXT_MENU event handler for ID_GALLERYIMAGEPANEL
+ * wxEVT_CONTEXT_MENU event handler for ID_GALLERYALBUMIMAGEPANEL
  */
 
 void GalleryImagePanel::OnContextMenu( wxContextMenuEvent& event )
 {
-////@begin wxEVT_CONTEXT_MENU event handler for ID_GALLERYIMAGEPANEL in GalleryImagePanel.
+////@begin wxEVT_CONTEXT_MENU event handler for ID_GALLERYALBUMIMAGEPANEL in GalleryImagePanel.
     // Before editing this code, remove the block markers.
     event.Skip();
-////@end wxEVT_CONTEXT_MENU event handler for ID_GALLERYIMAGEPANEL in GalleryImagePanel. 
+////@end wxEVT_CONTEXT_MENU event handler for ID_GALLERYALBUMIMAGEPANEL in GalleryImagePanel. 
 }
 
 

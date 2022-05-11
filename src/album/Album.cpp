@@ -253,4 +253,20 @@ namespace Layout {
         UpdatePositions( );
         Write( ( wxXmlNode* )0 );
     }
+
+    AlbumNodeStatus Album::ValidateNode()
+    {
+        AlbumNodeStatus status = AT_OK;
+        if ( GetPageHeight() <= 0.0)
+        {
+            std::cout << "Must define the page height.\n";
+            status = AT_FATAL;
+        }
+        if ( GetPageWidth() <= 0.0)
+        {
+            std::cout << "Must define the page width.\n";
+            status = AT_FATAL;
+        }
+        return false;
+    }
 }

@@ -139,7 +139,7 @@ public:
  * @param stamp 
  * @param type 
  **************************************************/
-//  void SetStamp( Catalog::Stamp* stamp, Catalog::DataTypes type );
+  void Setup( wxString label, wxString value );
 
 /**
  * @brief Get the value in the ctrl
@@ -153,16 +153,17 @@ public:
    * 
    * @param width 
    **************************************************/
-  void SetWidth( int width ) { m_idText->m_width = width; };
+  void SetValue( wxString value ) { m_value->SetValue( value ); };
+  wxString GetValue( ) { return m_value->GetValue( ); };
+    bool IsModified(){ return m_value->IsModified();};
 
  
  private:
 
-  wxStaticText* m_idLabel; ///< 
-  wxTextCtrl* m_idText; ///< 
+  wxStaticText* m_label; ///< 
   wxWindow* m_parent; ///< 
   wxWindowID m_id; ///< 
-  Catalog::Stamp* m_stamp; ///< 
+  wxTextCtrl* m_value; ///< 
 //  Catalog::DataTypes m_type; ///< 
 };
 

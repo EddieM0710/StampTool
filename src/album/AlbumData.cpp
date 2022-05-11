@@ -241,4 +241,10 @@ namespace Layout {
             return  (Title*)0;
         }
     }
+    void AlbumData::Validate()
+    {
+        ResetValidateStatus( );
+        m_album->Validate( );
     }
+
+}

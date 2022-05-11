@@ -249,4 +249,15 @@ namespace Layout {
         m_layoutChildArray.push_back(node);
     }
 
+    void Stamp::Validate()
+    {
+
+        SetValidateStatus( ValidateNode() );
+
+        for ( AlbumNodeList::iterator it = BeginAlbumNodeList(); it != EndAlbumNodeList(); ++it )
+        {
+            LayoutNode* child = ( LayoutNode* )( *it );
+            child->Validate();
+        }
+    }
 }

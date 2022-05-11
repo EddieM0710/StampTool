@@ -255,7 +255,7 @@ void AlbumGenFrame::CreateControls( )
         wxSize( 100, 100 ), wxSIMPLE_BORDER );
     itemGridSizer1->Add( m_albumGeneratorPanel, 1, wxGROW | wxALL, 0 );
     m_catalogPanel = m_albumGeneratorPanel->GetCatalogPanel( );
-    m_albumPanel = m_albumGeneratorPanel->GetAECmdDataManager( );
+    m_albumPanel = m_albumGeneratorPanel->GetAlbumPanel( );
 }
 
 /*

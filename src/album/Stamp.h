@@ -97,6 +97,8 @@ namespace Layout {
         wxXmlNode* GetCatalogStamp( ) { return m_catalogStamp; };
         void SetCatalogStamp( wxXmlNode* node ) { m_catalogStamp = node; };
         
+        bool ValidateNode();
+        
     private:
 
         /**

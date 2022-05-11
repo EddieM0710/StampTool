@@ -17,12 +17,14 @@ add_library( GuiFiles SHARED
     SettingsDialog.cpp
     AlbumTreeCtrl.cpp 
     AlbumPanel.cpp 
+    AlbumImagePanel.cpp 
     CatalogPanel.cpp 
     CatalogTreeCtrl.cpp
     SortOrderDialog.cpp
     DefinePeriodsDialog.cpp
     LabeledTextBox.cpp
     StaticItem.cpp 
+    StampDetailsDialog.cpp
 )
 
 

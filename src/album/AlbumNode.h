@@ -104,6 +104,9 @@ typedef std::vector<AlbumNode*> AlbumNodeList;
         wxTreeItemId GetTreeItemId(){return m_treeID;};
         void SetTreeItemId(wxTreeItemId id){m_treeID = id;};
 
+        void Validate();
+        virtual AlbumNodeStatus ValidateNode() = 0;
+
     private:
 
         bool LoadChildren( wxXmlNode* parent );

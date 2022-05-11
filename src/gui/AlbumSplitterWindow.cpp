@@ -32,6 +32,7 @@
 
 #include "gui/AlbumTreeCtrl.h"
 #include "gui/AlbumPanel.h"
+#include "gui/AlbumImagePanel.h"
 /*
  * AlbumSplitterWindow type definition
  */
@@ -103,9 +104,9 @@ void AlbumSplitterWindow::Init()
 {
 ////@begin AlbumSplitterWindow member initialisation
     m_secondarySplitterWindow = NULL;
-    m_albumTreeCtrl = NULL;
+//    m_albumTreeCtrl = NULL;
     m_CmdDataTextCtrl = NULL;
-    m_richTextCtrl = NULL;
+    m_albumImagePanel = NULL;
 ////@end AlbumSplitterWindow member initialisation
 }
 
@@ -129,7 +130,7 @@ void AlbumSplitterWindow::CreateControls()
 
     m_secondarySplitterWindow = new wxSplitterWindow( itemPanel1, ID_SECONDARYSPLITTERWINDOW, wxDefaultPosition, wxSize(100, 100), wxSP_3DBORDER|wxSP_3DSASH|wxNO_BORDER );
     m_secondarySplitterWindow->SetMinimumPaneSize(0);
-    m_AECmdDataMgr = new AlbumPanel( m_secondarySplitterWindow, ID_SCROLLEDWINDOW, wxDefaultPosition, wxSize(100, 100), wxSUNKEN_BORDER|wxHSCROLL|wxVSCROLL );
+    m_albumPanel = new AlbumPanel( m_secondarySplitterWindow, ID_SCROLLEDWINDOW, wxDefaultPosition, wxSize(100, 100), wxSUNKEN_BORDER|wxHSCROLL|wxVSCROLL );
 
     // wxScrolledWindow* itemScrolledWindow2 = new wxScrolledWindow( m_secondarySplitterWindow, ID_SCROLLEDWINDOW, wxDefaultPosition, wxSize(100, 100), wxSUNKEN_BORDER|wxHSCROLL|wxVSCROLL );
     // itemScrolledWindow2->SetScrollbars(1, 1, 0, 0);
@@ -149,9 +150,13 @@ void AlbumSplitterWindow::CreateControls()
     // itemBoxSizer4->Add(m_CmdDataTextCtrl, 1, wxGROW|wxALL, 5);
 
     //itemScrolledWindow2->FitInside();
-    m_richTextCtrl = new wxTextCtrl( m_secondarySplitterWindow, ID_RICHTEXTTEXTCTRL, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE|wxTE_RICH|wxTE_RICH2 );
+    m_albumImagePanel = 
+        new AlbumImagePanel( m_secondarySplitterWindow, ID_ALBUMALBUMIMAGEPANEL, wxDefaultPosition,
+            wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
+    m_albumImagePanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
+   // itemBoxSizer7->Add( m_albumImagePanel, 1, wxGROW | wxALL, 0 );
 
-    m_secondarySplitterWindow->SplitVertically(m_AECmdDataMgr, m_richTextCtrl, 200);
+    m_secondarySplitterWindow->SplitVertically(m_albumPanel, m_albumImagePanel, 200);
     itemBoxSizer1->Add(m_secondarySplitterWindow, 1, wxGROW|wxALL, 5);
 
 ////@end AlbumSplitterWindow content construction
@@ -195,10 +200,10 @@ wxIcon AlbumSplitterWindow::GetIconResource( const wxString& name )
 
 void AlbumSplitterWindow::ClearCmdTree( )
 {
-    m_albumTreeCtrl->DeleteAllItems( );
+    //->DeleteAllItems( );
 }
 
 void AlbumSplitterWindow::LoadCmdTree( )
 {
-    m_albumTreeCtrl->LoadTree( );
+//    m_albumTreeCtrl->LoadTree( );
 }

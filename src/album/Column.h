@@ -69,6 +69,8 @@ public:
      *
      **************************************************/
     wxXmlNode* Write( wxXmlNode* parent );
+        
+    void Validate();
 
 private:
 

@@ -37,4 +37,21 @@ namespace Layout {
     {
 
     }
+
+    bool TitlePage::ValidateNode()
+    {
+        bool status = true;
+        if ( GetHeight() <= 0.0)
+        {
+            std::cout << "Must define the height.\n";
+            status = false;
+        }
+        if ( GetWidth() <= 0.0)
+        {
+            std::cout << "Must define the width.\n";
+            status = false;
+        }
+
+        return status;
+    }
 }

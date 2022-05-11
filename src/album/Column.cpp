@@ -43,7 +43,6 @@ namespace Layout {
             }
             m_minHeight += child->GetHeight( );
         }
-
     }
 
 
@@ -188,5 +187,26 @@ namespace Layout {
             }
         }
         return frame;
+    }
+
+    void Column::Validate()
+    {
+        bool status = true;
+        if ( GetHeight() <= 0.0)
+        {
+            std::cout << "Must define the height.\n";
+            SetValidateStatus( false );
+        }
+        if ( GetWidth() <= 0.0)
+        {
+            std::cout << "Must define the width.\n";
+            SetValidateStatus( false );
+        }
+
+        for ( AlbumNodeList::iterator it = BeginAlbumNodeList(); it != EndAlbumNodeList(); ++it )
+        {
+            LayoutNode* child = ( LayoutNode* )( *it );
+            child->Validate();
+        }
     }
 }

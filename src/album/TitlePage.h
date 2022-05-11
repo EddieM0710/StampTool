@@ -66,6 +66,8 @@ namespace Layout {
 
         void UpdateSizes( );
 
+        bool ValidateNode();
+
     private:
         wxXmlNode* Write( wxXmlNode* parent )
         {

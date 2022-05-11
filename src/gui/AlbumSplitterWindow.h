@@ -35,6 +35,7 @@ class wxWindow;
 ////@end forward declarations
 class AlbumTreeCtrl;
 class AlbumPanel;
+class AlbumImagePanel;
 /*!
  * Control identifiers
  */
@@ -46,7 +47,7 @@ class AlbumPanel;
 #define ID_AECMDTREECTRL 10001
 #define ID_PANEL 10002
 #define ID_CDDATATEXTCTRL 10005
-#define ID_RICHTEXTTEXTCTRL 10004
+#define ID_ALBUMALBUMIMAGEPANEL 10004
 #define SYMBOL_ALBUMSPLITTERWINDOW_STYLE wxTAB_TRAVERSAL
 #define SYMBOL_ALBUMSPLITTERWINDOW_TITLE _("AlbumSplitterWindow")
 #define SYMBOL_ALBUMSPLITTERWINDOW_IDNAME ID_ALBUMSPLITTERWINDOW
@@ -94,7 +95,7 @@ public:
     wxIcon GetIconResource( const wxString& name );
 ////@end AlbumSplitterWindow member function declarations
 
-    AlbumPanel* GetAECmdDataMgr(){ return m_AECmdDataMgr;} ;
+    AlbumPanel* GetAlbumPanel(){ return m_albumPanel;} ;
 
     /// Should we show tooltips?
     static bool ShowToolTips();
@@ -103,11 +104,11 @@ public:
     void SetSashPosition( int pos ){ m_secondarySplitterWindow->SetSashPosition( pos ); };
 ////@begin AlbumSplitterWindow member variables
     wxSplitterWindow* m_secondarySplitterWindow;
-    AlbumTreeCtrl* m_albumTreeCtrl;
+//    AlbumTreeCtrl* m_albumTreeCtrl;
     wxWindow* m_CmdDataTextCtrl;
-    wxTextCtrl* m_richTextCtrl;
+    AlbumImagePanel* m_albumImagePanel;
 ////@end AlbumSplitterWindow member variables
-AlbumPanel* m_AECmdDataMgr ;
+AlbumPanel* m_albumPanel ;
 };
 
 #endif

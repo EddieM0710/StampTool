@@ -94,7 +94,9 @@ public:
 
     void LoadAlbumLayout( );
 
-void LoadAEData( wxString filename );
+    void LoadAEData( wxString filename );
+
+    AlbumTreeCtrl* GetAlbumTreeCtrl(){ return m_albumTreeCtrl; };
 
 ////@begin AlbumPanel member variables
     AlbumTreeCtrl* m_albumTreeCtrl;

@@ -378,6 +378,9 @@ class AlbumTreeCtrl : public wxTreeCtrl
 
   //  AlbumNode* MoveStamp( wxTreeItemId itemSrc, wxTreeItemId itemDst );
 
+    Layout::LayoutNode* GetSelectedNode( );
+    void ShowStampDetails( Layout::AlbumNode* node );
+
   private:
 
   /**

@@ -17,6 +17,7 @@
 namespace Layout {
 
     class AlbumData;
+    class LayoutNode;
     class Album;
     
     Album* GetAlbum( void );
@@ -66,6 +67,12 @@ namespace Layout {
 
     extern const char* AttrNameStrings[ AT_NbrAttrTypes ];
 
+    typedef enum
+    {
+        AT_OK = 0,
+        AT_WARING,
+        AT_FATAL 
+    } AlbumNodeStatus;
 
     AlbumNodeType FindAlbumNodeType( wxString name );
 
@@ -75,7 +82,13 @@ namespace Layout {
      **************************************************/
     void InitAlbumDefs( );
 
+    LayoutNode* GetSelectedNodePage( );
 
+
+    extern bool ValidateStatus;
+    void SetValidateStatus( bool status );
+    void ResetValidateStatus(  );
+    bool GetValidateStatus(  );
     // wxString GetAttribute( AlbumNodeType type );
     // double GetAttributeDbl( AlbumNodeType type );
     // void SetAttrStr( AlbumNodeType type, wxString val );

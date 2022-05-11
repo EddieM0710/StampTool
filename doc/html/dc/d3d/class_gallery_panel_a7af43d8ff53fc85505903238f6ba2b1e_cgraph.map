@@ -1,0 +1,5 @@
+<map id="GalleryPanel::GalleryPanel" name="GalleryPanel::GalleryPanel">
+<area shape="rect" id="node2" href="$dc/d3d/class_gallery_panel.html#a0f6dfc69d103181b738410ab34df37aa" title="Initialises member variables. " alt="" coords="242,5,365,32"/>
+<area shape="rect" id="node3" href="$dc/d3d/class_gallery_panel.html#ac89f59d8021dbeb96825f7389eb00ddc" title="Used for two&#45;step panel construction. " alt="" coords="232,56,375,83"/>
+<area shape="rect" id="node4" href="$dc/d3d/class_gallery_panel.html#afd502b5132fba12856cb01faa84999c5" title="Creates the controls and sizers. " alt="" coords="423,56,615,83"/>
+</map>

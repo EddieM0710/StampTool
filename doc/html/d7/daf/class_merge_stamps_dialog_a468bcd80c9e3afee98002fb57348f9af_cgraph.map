@@ -1,0 +1,15 @@
+<map id="MergeStampsDialog::Entry" name="MergeStampsDialog::Entry">
+<area shape="rect" id="node2" href="$d7/daf/class_merge_stamps_dialog.html#a875788c29ffadf929340c95d77575f11" title="MergeStampsDialog::\lOnLefttextctrlTextUpdated" alt="" coords="207,5,383,47"/>
+<area shape="rect" id="node3" href="$d7/daf/class_merge_stamps_dialog.html#ac06608388922f97b0e80e8a6c6d95e90" title="Retrieves bitmap resources. " alt="" coords="221,71,369,112"/>
+<area shape="rect" id="node4" href="$d7/daf/class_merge_stamps_dialog.html#a0bed7ca6ce8e7ab60a15177899abb95d" title="MergeStampsDialog::\lShowToolTips" alt="" coords="221,136,369,177"/>
+<area shape="rect" id="node5" href="$d7/daf/class_merge_stamps_dialog.html#ab1324941879db227121a6285830730a2" title="MergeStampsDialog::\lOnRevertBitmapButtonClick" alt="" coords="201,267,388,308"/>
+<area shape="rect" id="node12" href="$d7/daf/class_merge_stamps_dialog.html#af700406d811a0957a3a933fdcb9d0b98" title="MergeStampsDialog::\lOnCopyBitmapButtonClick" alt="" coords="205,201,384,243"/>
+<area shape="rect" id="node14" href="$d7/daf/class_merge_stamps_dialog.html#a7a6c223b3792f0dc14d862d068d87b5d" title="MergeStampsDialog::\lOnRighttextctrlTextUpdated" alt="" coords="202,332,387,373"/>
+<area shape="rect" id="node6" href="$d7/daf/class_merge_stamps_dialog.html#a5873b44393d5d00aa84c77139ae3b585" title="MergeStampsDialog::\lRevert" alt="" coords="436,267,584,308"/>
+<area shape="rect" id="node7" href="$da/dd4/class_stamp.html#a905b950918480d0d4ed757717827fd0d" title="Get the Attr object. " alt="" coords="651,267,761,294"/>
+<area shape="rect" id="node10" href="$d7/daf/class_merge_stamps_dialog.html#aa96aacf6a669f77915cb85cd37619dce" title="MergeStampsDialog::\lSetRightText" alt="" coords="632,201,780,243"/>
+<area shape="rect" id="node11" href="$d7/daf/class_merge_stamps_dialog.html#afd535182ea12486142b950ca3b952d78" title="MergeStampsDialog::\lSetLeftText" alt="" coords="632,319,780,360"/>
+<area shape="rect" id="node8" href="$da/dd4/class_stamp.html#a3370745d7662600656a769099f11db43" title="Stamp::IsOK" alt="" coords="828,293,927,319"/>
+<area shape="rect" id="node9" href="$dc/d8f/class_node.html#ae833cd38c01571764ea3d88a31d44a0a" title="Node::GetElement" alt="" coords="975,267,1105,294"/>
+<area shape="rect" id="node13" href="$d7/daf/class_merge_stamps_dialog.html#a925ac192e3c2a8b2e00edd93d8e744f7" title="MergeStampsDialog::\lCopyRight" alt="" coords="436,201,584,243"/>
+</map>

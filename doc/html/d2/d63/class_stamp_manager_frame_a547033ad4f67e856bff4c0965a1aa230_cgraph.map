@@ -1,0 +1,9 @@
+<map id="StampManagerFrame::Save" name="StampManagerFrame::Save">
+<area shape="rect" id="node2" href="$d5/d9b/_defs_8cpp.html#a5893aa85ee61399161375aded66f0d2f" title="Get the Stamp Data object. " alt="" coords="277,5,387,32"/>
+<area shape="rect" id="node3" href="$d5/d9b/_defs_8cpp.html#a69e502dd580f74bd18c06a8166217820" title="Get the Persistent object. " alt="" coords="281,56,383,83"/>
+<area shape="rect" id="node4" href="$d8/d96/class_stamp_data.html#a6f0faadd8bbb59afa9eaeb7e5e9b126c" title="StampData::SaveXML" alt="" coords="255,107,409,133"/>
+<area shape="rect" id="node5" href="$d5/d71/class_persistent.html#ab0edd3399b24447ab8c9281b2e000325" title="Set the Last Directory object. " alt="" coords="239,157,425,184"/>
+<area shape="rect" id="node6" href="$d5/d71/class_persistent.html#aa16e2e11bec1cd13d97706feb684eccb" title="Set the Last File object. " alt="" coords="255,208,409,235"/>
+<area shape="rect" id="node7" href="$d5/d71/class_persistent.html#a6596ceefbc44503a356dcfacb09a311e" title="Save the persistent file. " alt="" coords="273,259,391,285"/>
+<area shape="rect" id="node8" href="$df/dde/_defs_8h.html#ac069ffec99f21fb1e45e52d11ccff7a1" title="Returns Ascii &quot;true&quot; or &quot;false&quot; based on bool b. " alt="" coords="473,259,563,285"/>
+</map>

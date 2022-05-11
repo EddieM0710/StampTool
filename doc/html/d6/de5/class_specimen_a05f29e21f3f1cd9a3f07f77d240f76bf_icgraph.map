@@ -1,0 +1,8 @@
+<map id="Specimen::GetAttr" name="Specimen::GetAttr">
+<area shape="rect" id="node2" href="$d8/d7f/class_inventory_panel.html#a71c474ba9b209d8499e15a19d4a175f0" title="gets the item from the inventory list and populates the columns with it " alt="" coords="189,5,367,32"/>
+<area shape="rect" id="node3" href="$d8/d7f/class_inventory_panel.html#a4040f913950eba04b801630ed7856471" title="Load the grid with the inventory items. " alt="" coords="184,56,372,83"/>
+<area shape="rect" id="node4" href="$d8/d7f/class_inventory_panel.html#a4f98a0bf55be85fc1bb9bca49ac25a02" title="Set the Stamp object. " alt="" coords="420,56,595,83"/>
+<area shape="rect" id="node5" href="$d3/dff/class_description_panel.html#a94cdec7589e3918fcf16e8f3c6d16a7f" title="Initializes the DescriptionPanel with new stamp values. " alt="" coords="643,56,829,83"/>
+<area shape="rect" id="node6" href="$df/da8/class_stamp_manager_panel.html#a3488b8e3b88ce69b006d9800ea76e6e7" title="StampManagerPanel::\lSetStamp" alt="" coords="877,49,1028,90"/>
+<area shape="rect" id="node7" href="$d2/d63/class_stamp_manager_frame.html#ad737b8f8e4f96ce8e370a1938bcdf6cb" title="StampManagerFrame::\lSetStamp" alt="" coords="1076,49,1231,90"/>
+</map>

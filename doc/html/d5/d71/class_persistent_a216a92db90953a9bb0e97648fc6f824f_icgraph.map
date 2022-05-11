@@ -1,0 +1,18 @@
+<map id="Persistent::GetImageDirectory" name="Persistent::GetImageDirectory">
+<area shape="rect" id="node2" href="$d3/dff/class_description_panel.html#ab9b4aa4931e03bdaf25a329bb56a46bf" title="Creates the controls and sizers. " alt="" coords="266,5,434,47"/>
+<area shape="rect" id="node5" href="$d3/dff/class_description_panel.html#a94cdec7589e3918fcf16e8f3c6d16a7f" title="Initializes the DescriptionPanel with new stamp values. " alt="" coords="961,21,1148,47"/>
+<area shape="rect" id="node8" href="$d5/de8/class_gallery_image_panel.html#a2707d36218de8fb266a3ff80600cfa48" title="Loads all the images below item into the gallery. " alt="" coords="280,123,420,164"/>
+<area shape="rect" id="node17" href="$d2/d63/class_stamp_manager_frame.html#a1b1eaebcc62bdb6bec4ae0b7c88e4f0f" title="StampManagerFrame::\lOnLoadimagesmenuitemClick" alt="" coords="252,188,448,229"/>
+<area shape="rect" id="node3" href="$d3/dff/class_description_panel.html#ae4ded20075f8cf600af8d11b75b9342c" title="Used for two&#45;step panel construction. " alt="" coords="499,13,667,39"/>
+<area shape="rect" id="node4" href="$d3/dff/class_description_panel.html#aa05c1653748fcb6b416fac5773e0b0a0" title="Construct a new Description Panel object. " alt="" coords="719,5,913,47"/>
+<area shape="rect" id="node6" href="$df/da8/class_stamp_manager_panel.html#a3488b8e3b88ce69b006d9800ea76e6e7" title="StampManagerPanel::\lSetStamp" alt="" coords="1196,40,1347,81"/>
+<area shape="rect" id="node7" href="$d2/d63/class_stamp_manager_frame.html#ad737b8f8e4f96ce8e370a1938bcdf6cb" title="StampManagerFrame::\lSetStamp" alt="" coords="1395,40,1549,81"/>
+<area shape="rect" id="node9" href="$df/da8/class_stamp_manager_panel.html#a038e7adf972246632c6ab576eccdb509" title="StampManagerPanel::\lLoadImages" alt="" coords="508,123,659,164"/>
+<area shape="rect" id="node14" href="$dc/d3d/class_gallery_panel.html#a87ccaf43162ea4053ed0acd37eb59942" title="GalleryPanel::LoadImages" alt="" coords="496,214,671,241"/>
+<area shape="rect" id="node10" href="$df/da8/class_stamp_manager_panel.html#ad24a851599bdac6f03b02fde88afa8c6" title="StampManagerPanel::\lLoadGallery" alt="" coords="741,123,891,164"/>
+<area shape="rect" id="node12" href="$df/da8/class_stamp_manager_panel.html#a6f95dc3a7cd1c745d6e9203005b46e5e" title="StampManagerPanel::\lGetStampTree" alt="" coords="1196,131,1347,172"/>
+<area shape="rect" id="node11" href="$df/da8/class_stamp_manager_panel.html#a5c3512d3417150ef895bbb98daa6f717" title="StampManagerPanel::\lSetGallery" alt="" coords="979,72,1130,113"/>
+<area shape="rect" id="node13" href="$d2/d63/class_stamp_manager_frame.html#a076fee6e1de632ed02903c9f0165cd08" title="StampManagerFrame::\lGetStampTree" alt="" coords="1395,131,1549,172"/>
+<area shape="rect" id="node15" href="$dc/d3d/class_gallery_panel.html#a12b0afe49fb283144475566cc5646667" title="Clear the gallery and set up the call to recursive LoadImages. " alt="" coords="729,239,903,266"/>
+<area shape="rect" id="node16" href="$dc/d3d/class_gallery_panel.html#a376af0f25a7c6d568cbc14e376045706" title="GalleryPanel::SetGallery" alt="" coords="972,239,1137,266"/>
+</map>

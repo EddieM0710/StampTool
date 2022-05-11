@@ -1,0 +1,6 @@
+<map id="IdentificationPanel::OnEmissionchoiceSelected" name="IdentificationPanel::OnEmissionchoiceSelected">
+<area shape="rect" id="node2" href="$da/dd4/class_stamp.html#af7db2cbedb4947e970b7c39bb7b930e5" title="Get the stamp Emission field. " alt="" coords="244,31,387,57"/>
+<area shape="rect" id="node3" href="$da/dd4/class_stamp.html#a15c2d249060c244dc2faf9e4c90d5baa" title="Set the Attr object. " alt="" coords="435,31,544,57"/>
+<area shape="rect" id="node4" href="$da/dd4/class_stamp.html#a3370745d7662600656a769099f11db43" title="Stamp::IsOK" alt="" coords="592,5,691,32"/>
+<area shape="rect" id="node5" href="$dc/d8f/class_node.html#ae833cd38c01571764ea3d88a31d44a0a" title="Node::GetElement" alt="" coords="739,31,869,57"/>
+</map>

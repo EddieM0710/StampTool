@@ -1,0 +1,5 @@
+<map id="DescriptionPanel::OnLeaveWindow" name="DescriptionPanel::OnLeaveWindow">
+<area shape="rect" id="node2" href="$d3/dff/class_description_panel.html#ab9b4aa4931e03bdaf25a329bb56a46bf" title="Creates the controls and sizers. " alt="" coords="235,5,403,47"/>
+<area shape="rect" id="node3" href="$d3/dff/class_description_panel.html#ae4ded20075f8cf600af8d11b75b9342c" title="Used for two&#45;step panel construction. " alt="" coords="451,13,619,39"/>
+<area shape="rect" id="node4" href="$d3/dff/class_description_panel.html#aa05c1653748fcb6b416fac5773e0b0a0" title="Construct a new Description Panel object. " alt="" coords="667,5,861,47"/>
+</map>

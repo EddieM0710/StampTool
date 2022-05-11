@@ -1,0 +1,5 @@
+<map id="ImagePanel::ImagePanel" name="ImagePanel::ImagePanel">
+<area shape="rect" id="node2" href="$dc/d8f/class_image_panel.html#acff68fdd33a28bc7fe45ab0f4c18f1d3" title="Initialises member variables. " alt="" coords="232,5,349,32"/>
+<area shape="rect" id="node3" href="$dc/d8f/class_image_panel.html#aba53abdfced8f37b1f6fb927d86c941e" title="Used for two&#45;step panel construction. " alt="" coords="221,56,360,83"/>
+<area shape="rect" id="node4" href="$dc/d8f/class_image_panel.html#aed86cf082299d3dc666acc2e359f5635" title="Creates the controls and sizers. " alt="" coords="408,56,595,83"/>
+</map>

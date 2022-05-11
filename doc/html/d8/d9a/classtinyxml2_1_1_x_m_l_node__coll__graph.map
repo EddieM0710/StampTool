@@ -1,0 +1,13 @@
+<map id="tinyxml2::XMLNode" name="tinyxml2::XMLNode">
+<area shape="rect" id="node2" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html" title="A Document binds together all the functionality. " alt="" coords="1151,188,1317,215"/>
+<area shape="rect" id="node10" href="$d9/d6c/classtinyxml2_1_1_dyn_array.html" title="tinyxml2::DynArray\l\&lt; tinyxml2::XMLNode\l *, 10 \&gt;" alt="" coords="821,143,970,199"/>
+<area shape="rect" id="node3" href="$d2/ddf/classtinyxml2_1_1_mem_pool_t.html" title="tinyxml2::MemPoolT\l\&lt; sizeof(tinyxml2::XMLText) \&gt;" alt="" coords="796,223,995,265"/>
+<area shape="rect" id="node4" href="$d8/d53/classtinyxml2_1_1_mem_pool.html" title="tinyxml2::MemPool" alt="" coords="251,279,385,305"/>
+<area shape="rect" id="node9" href="$d2/ddf/classtinyxml2_1_1_mem_pool_t.html" title="tinyxml2::MemPoolT\l\&lt; sizeof(tinyxml2::XMLComment) \&gt;" alt="" coords="780,289,1011,330"/>
+<area shape="rect" id="node11" href="$d2/ddf/classtinyxml2_1_1_mem_pool_t.html" title="tinyxml2::MemPoolT\l\&lt; sizeof(tinyxml2::XMLElement) \&gt;" alt="" coords="785,518,1006,559"/>
+<area shape="rect" id="node12" href="$d2/ddf/classtinyxml2_1_1_mem_pool_t.html" title="tinyxml2::MemPoolT\l\&lt; sizeof(tinyxml2::XMLAttribute) \&gt;" alt="" coords="784,425,1007,466"/>
+<area shape="rect" id="node5" href="$d9/d6c/classtinyxml2_1_1_dyn_array.html" title="tinyxml2::DynArray\l\&lt; tinyxml2::MemPoolT\l::Block *, 10 \&gt;" alt="" coords="511,432,665,488"/>
+<area shape="rect" id="node6" href="$de/d00/structtinyxml2_1_1_mem_pool_t_1_1_block.html" title="tinyxml2::MemPoolT\l\&lt; ITEM_SIZE \&gt;::Block" alt="" coords="240,439,396,481"/>
+<area shape="rect" id="node7" href="$d7/d2e/uniontinyxml2_1_1_mem_pool_t_1_1_item.html" title="tinyxml2::MemPoolT\l\&lt; ITEM_SIZE \&gt;::Item" alt="" coords="5,439,155,481"/>
+<area shape="rect" id="node8" href="$de/dc1/classtinyxml2_1_1_str_pair.html" title="tinyxml2::StrPair" alt="" coords="259,15,377,41"/>
+</map>

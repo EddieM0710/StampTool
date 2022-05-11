@@ -1,0 +1,17 @@
+<map id="Stamp::GetClassificationName" name="Stamp::GetClassificationName">
+<area shape="rect" id="node2" href="$da/dd4/class_stamp.html#aad83babf008230b2b7ca53c4283d7cbe" title="Get the Period object. " alt="" coords="260,157,387,184"/>
+<area shape="rect" id="node3" href="$da/dd4/class_stamp.html#af3137edb808a0b4ef365efe0a7f801bc" title="Get the Year object. " alt="" coords="477,5,593,32"/>
+<area shape="rect" id="node14" href="$da/dd4/class_stamp.html#a48d7a6614518fbfe2d1ed32c0922e2a7" title="Get the Decade object. " alt="" coords="256,81,391,108"/>
+<area shape="rect" id="node15" href="$db/d86/group___get.html#ga2dcd233aec16358828ebbfc8ae41ab46" title="Get the stamp emission field. " alt="" coords="685,360,828,387"/>
+<area shape="rect" id="node16" href="$db/d86/group___get.html#ga47cc3be9e121df22a0556f9c5af9d3c9" title="Get the stamp country field. " alt="" coords="689,411,824,437"/>
+<area shape="rect" id="node8" href="$d5/d9b/_defs_8cpp.html#a69e502dd580f74bd18c06a8166217820" title="Get the Persistent object. " alt="" coords="483,56,586,83"/>
+<area shape="rect" id="node9" href="$d5/d71/class_persistent.html#a307050eec6bb31373d5c24f7d793d280" title="Persistent::GetLowerDivision" alt="" coords="439,107,631,133"/>
+<area shape="rect" id="node10" href="$d5/d71/class_persistent.html#a46a9f321454b6702008cc2af90c0bec8" title="Persistent::GetUpperDivision" alt="" coords="439,157,631,184"/>
+<area shape="rect" id="node11" href="$d5/d71/class_persistent.html#aec26204fbe5c7a2a63cce06ccac471c5" title="Persistent::GetLowerPeriod" alt="" coords="443,208,626,235"/>
+<area shape="rect" id="node12" href="$d5/d71/class_persistent.html#a452d68e678719ccabc8d889edbe7b39d" title="Persistent::GetUpperPeriod" alt="" coords="443,259,626,285"/>
+<area shape="rect" id="node13" href="$d5/d71/class_persistent.html#a5566beff264a23a877e3336e9bc66e64" title="Persistent::GetMiddlePeriod" alt="" coords="442,309,627,336"/>
+<area shape="rect" id="node4" href="$db/d86/group___get.html#ga7ea4a5aa1f2b88ff9294a4ca907e1597" title="Get the stamp Issue data field. " alt="" coords="679,157,835,184"/>
+<area shape="rect" id="node5" href="$da/dd4/class_stamp.html#a905b950918480d0d4ed757717827fd0d" title="Get the Attr object. " alt="" coords="883,360,993,387"/>
+<area shape="rect" id="node6" href="$da/dd4/class_stamp.html#a3370745d7662600656a769099f11db43" title="Stamp::IsOK" alt="" coords="1041,335,1140,361"/>
+<area shape="rect" id="node7" href="$dc/d8f/class_node.html#ae833cd38c01571764ea3d88a31d44a0a" title="Node::GetElement" alt="" coords="1188,360,1319,387"/>
+</map>

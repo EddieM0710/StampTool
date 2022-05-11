@@ -1,0 +1,5 @@
+<map id="FilterDialog::FilterDialog" name="FilterDialog::FilterDialog">
+<area shape="rect" id="node2" href="$d6/d1f/class_filter_dialog.html#a42a2b03317eb62a828e212bcfca42725" title="Initialises member variables. " alt="" coords="226,5,341,32"/>
+<area shape="rect" id="node3" href="$d6/d1f/class_filter_dialog.html#a2178439a8a6f1b5c31ec908729650294" title="Used for two&#45;step panel construction. " alt="" coords="216,56,351,83"/>
+<area shape="rect" id="node4" href="$d6/d1f/class_filter_dialog.html#a66c9cf785dd5c59b9f281f06af1f0499" title="Creates the controls and sizers. " alt="" coords="399,56,583,83"/>
+</map>

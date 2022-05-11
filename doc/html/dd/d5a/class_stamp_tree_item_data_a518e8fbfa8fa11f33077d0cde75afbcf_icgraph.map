@@ -1,0 +1,24 @@
+<map id="StampTreeItemData::GetElement" name="StampTreeItemData::GetElement">
+<area shape="rect" id="node2" href="$d5/de8/class_gallery_image_panel.html#ad8d323824f5de402836b329d8015e126" title="opens the corresponding Colnect stamp page in the default browser " alt="" coords="237,107,377,148"/>
+<area shape="rect" id="node3" href="$d5/de8/class_gallery_image_panel.html#a2707d36218de8fb266a3ff80600cfa48" title="Loads all the images below item into the gallery. " alt="" coords="237,172,377,213"/>
+<area shape="rect" id="node14" href="$df/dc6/class_stamp_tree_ctrl.html#a91614c526491fed1a513c81ac820e1f7" title="StampTreeCtrl::SetNextState" alt="" coords="209,238,404,265"/>
+<area shape="rect" id="node16" href="$df/dc6/class_stamp_tree_ctrl.html#ab44dbf227a61efe97401aeb1ba327985" title="StampTreeCtrl::SetStatus\lImage" alt="" coords="220,289,393,331"/>
+<area shape="rect" id="node17" href="$df/dc6/class_stamp_tree_ctrl.html#a05a8f407d9983142253b611a95b35e1e" title="StampTreeCtrl::OnEndDrag" alt="" coords="215,355,398,382"/>
+<area shape="rect" id="node18" href="$df/dc6/class_stamp_tree_ctrl.html#a71e983c365c058e9e39547e8488d7850" title="Event handler for tree item selection change. " alt="" coords="205,406,408,433"/>
+<area shape="rect" id="node19" href="$df/dc6/class_stamp_tree_ctrl.html#abadcd7ff69530cd204135356340ae796" title="StampTreeCtrl::OnContextMenu" alt="" coords="201,457,412,483"/>
+<area shape="rect" id="node20" href="$df/dc6/class_stamp_tree_ctrl.html#abae71004f79c6f514f05b788da001129" title="StampTreeCtrl::ShowMenu" alt="" coords="217,507,397,534"/>
+<area shape="rect" id="node22" href="$df/dc6/class_stamp_tree_ctrl.html#a7afdf41aadcc28e2192717930c2238a4" title="StampTreeCtrl::IsElement" alt="" coords="219,558,394,585"/>
+<area shape="rect" id="node4" href="$df/da8/class_stamp_manager_panel.html#a038e7adf972246632c6ab576eccdb509" title="StampManagerPanel::\lLoadImages" alt="" coords="488,113,639,155"/>
+<area shape="rect" id="node11" href="$dc/d3d/class_gallery_panel.html#a87ccaf43162ea4053ed0acd37eb59942" title="GalleryPanel::LoadImages" alt="" coords="476,179,651,206"/>
+<area shape="rect" id="node5" href="$df/da8/class_stamp_manager_panel.html#ad24a851599bdac6f03b02fde88afa8c6" title="StampManagerPanel::\lLoadGallery" alt="" coords="726,59,877,100"/>
+<area shape="rect" id="node9" href="$df/da8/class_stamp_manager_panel.html#a6f95dc3a7cd1c745d6e9203005b46e5e" title="StampManagerPanel::\lGetStampTree" alt="" coords="1149,71,1300,112"/>
+<area shape="rect" id="node6" href="$df/da8/class_stamp_manager_panel.html#a5c3512d3417150ef895bbb98daa6f717" title="StampManagerPanel::\lSetGallery" alt="" coords="943,8,1094,49"/>
+<area shape="rect" id="node7" href="$df/da8/class_stamp_manager_panel.html#a3488b8e3b88ce69b006d9800ea76e6e7" title="StampManagerPanel::\lSetStamp" alt="" coords="1149,5,1300,47"/>
+<area shape="rect" id="node8" href="$d2/d63/class_stamp_manager_frame.html#ad737b8f8e4f96ce8e370a1938bcdf6cb" title="StampManagerFrame::\lSetStamp" alt="" coords="1348,5,1503,47"/>
+<area shape="rect" id="node10" href="$d2/d63/class_stamp_manager_frame.html#a076fee6e1de632ed02903c9f0165cd08" title="StampManagerFrame::\lGetStampTree" alt="" coords="1348,71,1503,112"/>
+<area shape="rect" id="node12" href="$dc/d3d/class_gallery_panel.html#a12b0afe49fb283144475566cc5646667" title="Clear the gallery and set up the call to recursive LoadImages. " alt="" coords="715,179,888,206"/>
+<area shape="rect" id="node13" href="$dc/d3d/class_gallery_panel.html#a376af0f25a7c6d568cbc14e376045706" title="GalleryPanel::SetGallery" alt="" coords="936,179,1101,206"/>
+<area shape="rect" id="node15" href="$df/dc6/class_stamp_tree_ctrl.html#ab6433ad7161cc96d6c4acb04429aea51" title="StampTreeCtrl::OnItemState\lClick" alt="" coords="469,231,658,272"/>
+<area shape="rect" id="node21" href="$df/dc6/class_stamp_tree_ctrl.html#a02a7675b7c33247916890e126b1ecd1d" title="StampTreeCtrl::OnItemMenu" alt="" coords="468,507,659,534"/>
+<area shape="rect" id="node23" href="$df/dc6/class_stamp_tree_ctrl.html#a1393edaf884788f508338c1a13234fb7" title="StampTreeCtrl::FindTreeItemID" alt="" coords="460,558,667,585"/>
+</map>

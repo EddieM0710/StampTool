@@ -1,0 +1,5 @@
+<map id="Stamp::GetDescription" name="Stamp::GetDescription">
+<area shape="rect" id="node2" href="$d3/dff/class_description_panel.html#a94cdec7589e3918fcf16e8f3c6d16a7f" title="Initializes the DescriptionPanel with new stamp values. " alt="" coords="208,13,395,39"/>
+<area shape="rect" id="node3" href="$df/da8/class_stamp_manager_panel.html#a3488b8e3b88ce69b006d9800ea76e6e7" title="StampManagerPanel::\lSetStamp" alt="" coords="443,5,593,47"/>
+<area shape="rect" id="node4" href="$d2/d63/class_stamp_manager_frame.html#ad737b8f8e4f96ce8e370a1938bcdf6cb" title="StampManagerFrame::\lSetStamp" alt="" coords="641,5,796,47"/>
+</map>

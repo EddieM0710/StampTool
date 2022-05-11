@@ -1,0 +1,9 @@
+<map id="InventoryPanel::InitRow" name="InventoryPanel::InitRow">
+<area shape="rect" id="node2" href="$d8/d7f/class_inventory_panel.html#a53b719245fbebe86530c1af731f6a53f" title="Add an intery to the wxGrid. " alt="" coords="216,42,383,69"/>
+<area shape="rect" id="node3" href="$d8/d7f/class_inventory_panel.html#a4040f913950eba04b801630ed7856471" title="Load the grid with the inventory items. " alt="" coords="431,13,619,39"/>
+<area shape="rect" id="node8" href="$d8/d7f/class_inventory_panel.html#accc610c5cb0c75cad8918fa904a13831" title="shows context menu to add or remove inventory entries " alt="" coords="435,64,615,105"/>
+<area shape="rect" id="node4" href="$d8/d7f/class_inventory_panel.html#a4f98a0bf55be85fc1bb9bca49ac25a02" title="Set the Stamp object. " alt="" coords="667,13,841,39"/>
+<area shape="rect" id="node5" href="$d3/dff/class_description_panel.html#a94cdec7589e3918fcf16e8f3c6d16a7f" title="Initializes the DescriptionPanel with new stamp values. " alt="" coords="889,13,1076,39"/>
+<area shape="rect" id="node6" href="$df/da8/class_stamp_manager_panel.html#a3488b8e3b88ce69b006d9800ea76e6e7" title="StampManagerPanel::\lSetStamp" alt="" coords="1124,5,1275,47"/>
+<area shape="rect" id="node7" href="$d2/d63/class_stamp_manager_frame.html#ad737b8f8e4f96ce8e370a1938bcdf6cb" title="StampManagerFrame::\lSetStamp" alt="" coords="1323,5,1477,47"/>
+</map>

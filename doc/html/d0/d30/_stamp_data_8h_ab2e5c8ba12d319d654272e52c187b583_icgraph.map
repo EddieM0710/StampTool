@@ -1,0 +1,28 @@
+<map id="SortData" name="SortData">
+<area shape="rect" id="node2" href="$d8/d96/class_stamp_data.html#ab456234cac23121b813c21e1cab2362e" title="StampData::GetDoc" alt="" coords="128,225,269,251"/>
+<area shape="rect" id="node19" href="$df/dc6/class_stamp_tree_ctrl.html#abae9a15a5c9f33490ca9edaac65d5e94" title="StampTreeCtrl::ReSortTree" alt="" coords="561,374,744,401"/>
+<area shape="rect" id="node3" href="$d7/daf/class_merge_stamps_dialog.html#a07fcec3e2dfe6751560b916b67c7f004" title="MergeStampsDialog::\lAddMissingItem" alt="" coords="579,116,727,157"/>
+<area shape="rect" id="node12" href="$d7/daf/class_merge_stamps_dialog.html#a4106c4ce09747013a0409a76a63912c8" title="MergeStampsDialog::\lSetupIterators" alt="" coords="579,247,727,288"/>
+<area shape="rect" id="node14" href="$d7/daf/class_merge_stamps_dialog.html#a1b9d8e0205bf2d57d5a709c6c2f12191" title="MergeStampsDialog::\lFindCurrentItemWithID" alt="" coords="337,188,494,229"/>
+<area shape="rect" id="node17" href="$d2/d63/class_stamp_manager_frame.html#a1b1eaebcc62bdb6bec4ae0b7c88e4f0f" title="StampManagerFrame::\lOnLoadimagesmenuitemClick" alt="" coords="317,5,513,47"/>
+<area shape="rect" id="node18" href="$d2/d63/class_stamp_manager_frame.html#aaeacca2ba6223f52b5c41947cf61f086" title="StampManagerFrame::\lOnCVSReportMenuItemClick" alt="" coords="318,71,513,112"/>
+<area shape="rect" id="node23" href="$df/dc6/class_stamp_tree_ctrl.html#a688a953e0872cd7a82af5bf36ee50faf" title="StampTreeCtrl::LoadTree" alt="" coords="331,305,500,331"/>
+<area shape="rect" id="node4" href="$d7/daf/class_merge_stamps_dialog.html#ad59b57aeada9d58bb2058e44bbe7f98e" title="MergeStampsDialog::\lPerformNextAction" alt="" coords="823,116,971,157"/>
+<area shape="rect" id="node5" href="$d7/daf/class_merge_stamps_dialog.html#a3e94c16b06a2e268795c6d8cb97ba5ab" title="Used for two&#45;step panel construction. " alt="" coords="1072,131,1220,172"/>
+<area shape="rect" id="node11" href="$d7/daf/class_merge_stamps_dialog.html#a93003d8dddc4747a8f6b23b94d142e70" title="MergeStampsDialog::\lOnApplyClick" alt="" coords="1072,65,1220,107"/>
+<area shape="rect" id="node6" href="$d7/daf/class_merge_stamps_dialog.html#ac9ca29ffd24b706db64f807ae1e8611a" title="Default Constructor a new Gallery Image Panel object. " alt="" coords="1309,131,1457,172"/>
+<area shape="rect" id="node7" href="$d2/d63/class_stamp_manager_frame.html#a4466580d174c44e76c6bc77a2fe60698" title="StampManagerFrame::Open" alt="" coords="1289,287,1476,314"/>
+<area shape="rect" id="node9" href="$d2/d63/class_stamp_manager_frame.html#a49a1c5f8bc8074530b5155b6a429b8ad" title="StampManagerFrame::\lDoCSVImport" alt="" coords="1305,196,1460,237"/>
+<area shape="rect" id="node8" href="$d2/d63/class_stamp_manager_frame.html#a4aa1a3255f7d55fdd75868f597ad119c" title="StampManagerFrame::\lOnOpenClick" alt="" coords="1524,280,1679,321"/>
+<area shape="rect" id="node10" href="$d2/d63/class_stamp_manager_frame.html#ab36ddcd9b3130528e6dfc6c31a8ff608" title="StampManagerFrame::\lOnImportClick" alt="" coords="1524,196,1679,237"/>
+<area shape="rect" id="node13" href="$d7/daf/class_merge_stamps_dialog.html#af3002d63bf0d005a7ceb3058bc9ecbc5" title="MergeStampsDialog::\lInitializeMerge" alt="" coords="1072,196,1220,237"/>
+<area shape="rect" id="node15" href="$d7/daf/class_merge_stamps_dialog.html#a3bdf8500ecb935f0066f2badfae0ef95" title="MergeStampsDialog::\lFindNextItem" alt="" coords="579,181,727,223"/>
+<area shape="rect" id="node16" href="$d7/daf/class_merge_stamps_dialog.html#af80c3dc9c67cc721724399550f59aec3" title="MergeStampsDialog::\lOnIgnoreClick" alt="" coords="823,181,971,223"/>
+<area shape="rect" id="node20" href="$df/dc6/class_stamp_tree_ctrl.html#abadcd7ff69530cd204135356340ae796" title="StampTreeCtrl::OnContextMenu" alt="" coords="792,374,1003,401"/>
+<area shape="rect" id="node21" href="$df/dc6/class_stamp_tree_ctrl.html#abae71004f79c6f514f05b788da001129" title="StampTreeCtrl::ShowMenu" alt="" coords="807,426,987,453"/>
+<area shape="rect" id="node22" href="$df/dc6/class_stamp_tree_ctrl.html#a02a7675b7c33247916890e126b1ecd1d" title="StampTreeCtrl::OnItemMenu" alt="" coords="1051,430,1241,457"/>
+<area shape="rect" id="node24" href="$df/da8/class_stamp_manager_panel.html#acfd01081a83c40e17c9bd6454e861162" title="StampManagerPanel::\lLoadTree" alt="" coords="822,305,973,347"/>
+<area shape="rect" id="node25" href="$d2/d63/class_stamp_manager_frame.html#a83037efa7aa01467c0e7fe4d79ac816a" title="StampManagerFrame::\lLoadXML" alt="" coords="1069,364,1223,405"/>
+<area shape="rect" id="node26" href="$d2/d63/class_stamp_manager_frame.html#a4effdb9d3bd9fe974ae21a5a355567c3" title="StampManagerFrame::\lInitLoad" alt="" coords="1305,364,1460,405"/>
+<area shape="rect" id="node27" href="$d2/d63/class_stamp_manager_frame.html#abcc065c989df1e86ed53b047f27e1da7" title="Default Constructor a new StampManagerFrame object. " alt="" coords="1524,364,1679,405"/>
+</map>

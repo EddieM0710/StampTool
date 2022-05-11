@@ -1,0 +1,22 @@
+<Persistent>
+    <LastFile>USA_276-Stamp_Number_Commemorative_2000_2020.xml</LastFile>
+    <LastDirectory>/sandbox/Documents/Stamps/StampDumpsDivided</LastDirectory>
+    <LoadLastFileAtStartUp>true</LoadLastFileAtStartUp>
+    <ShowButtons>true</ShowButtons>
+    <ShowStates>true</ShowStates>
+    <ShowImages>true</ShowImages>
+    <SortOrder>
+        <Classification>Period</Classification>
+        <Classification>Year</Classification>
+        <Classification>Emission</Classification>
+    </SortOrder>
+    <PeriodDivision>
+        <LowerDivision>1940</LowerDivision>
+        <UpperDivision>1980</UpperDivision>
+    </PeriodDivision>
+    <Periods>
+        <FirstPeriod>Antique</FirstPeriod>
+        <MiddlePeriod>Classical</MiddlePeriod>
+        <UpperPeriod>Modern</UpperPeriod>
+    </Periods>
+</Persistent>

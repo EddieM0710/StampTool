@@ -1,0 +1,8 @@
+<map id="GalleryImagePanel::Create" name="GalleryImagePanel::Create">
+<area shape="rect" id="node2" href="$d5/de8/class_gallery_image_panel.html#a751fa19aab6c7ba0fc2e4b132613aab1" title="Creates the controls and sizers. " alt="" coords="193,104,333,145"/>
+<area shape="rect" id="node3" href="$d5/de8/class_gallery_image_panel.html#ade338b2d052621a0f57f2a7a7d597f63" title="wxEVT_LEFT_UP event handler for ID_GALLERYIMAGEPANEL " alt="" coords="381,5,521,47"/>
+<area shape="rect" id="node4" href="$d5/de8/class_gallery_image_panel.html#afbb92bd28c84125f20a521a6579ddbdf" title="wxEVT_LEFT_DCLICK event handler for ID_GALLERYIMAGEPANEL " alt="" coords="381,71,521,112"/>
+<area shape="rect" id="node5" href="$d5/de8/class_gallery_image_panel.html#aad54d39aeb5a62971ad6cf360481195e" title="wxEVT_CONTEXT_MENU event handler for ID_GALLERYIMAGEPANEL " alt="" coords="381,136,521,177"/>
+<area shape="rect" id="node7" href="$d5/de8/class_gallery_image_panel.html#ac1691213c0c45e2774bfb27734729caa" title="Retrieves bitmap resources. " alt="" coords="381,201,521,243"/>
+<area shape="rect" id="node6" href="$d5/de8/class_gallery_image_panel.html#aa0472eecc779a9c501b6771d6be891a9" title="Displays a context image for the gallery. " alt="" coords="569,136,709,177"/>
+</map>

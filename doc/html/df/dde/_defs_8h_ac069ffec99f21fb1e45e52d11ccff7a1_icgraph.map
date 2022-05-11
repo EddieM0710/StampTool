@@ -1,0 +1,9 @@
+<map id="Bool2String" name="Bool2String">
+<area shape="rect" id="node2" href="$d5/d71/class_persistent.html#a6596ceefbc44503a356dcfacb09a311e" title="Save the persistent file. " alt="" coords="143,64,261,91"/>
+<area shape="rect" id="node3" href="$d5/d71/class_persistent.html#a82c8ff341cce87299a814e970f542606" title="Destroy the Persistent object. " alt="" coords="324,5,480,32"/>
+<area shape="rect" id="node4" href="$d2/d63/class_stamp_manager_frame.html#a1fa0f8efe08339e55e55343888a615e1" title="StampManagerFrame::\lSaveXML" alt="" coords="325,57,479,98"/>
+<area shape="rect" id="node7" href="$d2/d63/class_stamp_manager_frame.html#a547033ad4f67e856bff4c0965a1aa230" title="StampManagerFrame::Save" alt="" coords="309,124,495,151"/>
+<area shape="rect" id="node5" href="$d2/d63/class_stamp_manager_frame.html#a2e72a3eed68656cc8d76a4bd00e0397e" title="StampManagerFrame::\lSaveAs" alt="" coords="543,54,697,95"/>
+<area shape="rect" id="node6" href="$d2/d63/class_stamp_manager_frame.html#ac380a110dbbe57c96ab4dc2a21372c3f" title="StampManagerFrame::\lOnSaveasClick" alt="" coords="745,54,900,95"/>
+<area shape="rect" id="node8" href="$d2/d63/class_stamp_manager_frame.html#a55b7d24a585e1c2355f18f13227b17de" title="StampManagerFrame::\lOnSaveClick" alt="" coords="543,119,697,161"/>
+</map>

@@ -1,0 +1,9 @@
+<map id="tinyxml2::XMLElement::InsertNewText" name="tinyxml2::XMLElement::InsertNewText">
+<area shape="rect" id="node2" href="$d5/d71/class_persistent.html#a6596ceefbc44503a356dcfacb09a311e" title="Save the persistent file. " alt="" coords="208,64,327,91"/>
+<area shape="rect" id="node3" href="$d5/d71/class_persistent.html#a82c8ff341cce87299a814e970f542606" title="Destroy the Persistent object. " alt="" coords="389,5,545,32"/>
+<area shape="rect" id="node4" href="$d2/d63/class_stamp_manager_frame.html#a1fa0f8efe08339e55e55343888a615e1" title="StampManagerFrame::\lSaveXML" alt="" coords="390,57,545,98"/>
+<area shape="rect" id="node7" href="$d2/d63/class_stamp_manager_frame.html#a547033ad4f67e856bff4c0965a1aa230" title="StampManagerFrame::Save" alt="" coords="375,124,560,151"/>
+<area shape="rect" id="node5" href="$d2/d63/class_stamp_manager_frame.html#a2e72a3eed68656cc8d76a4bd00e0397e" title="StampManagerFrame::\lSaveAs" alt="" coords="608,54,763,95"/>
+<area shape="rect" id="node6" href="$d2/d63/class_stamp_manager_frame.html#ac380a110dbbe57c96ab4dc2a21372c3f" title="StampManagerFrame::\lOnSaveasClick" alt="" coords="811,54,965,95"/>
+<area shape="rect" id="node8" href="$d2/d63/class_stamp_manager_frame.html#a55b7d24a585e1c2355f18f13227b17de" title="StampManagerFrame::\lOnSaveClick" alt="" coords="608,119,763,161"/>
+</map>

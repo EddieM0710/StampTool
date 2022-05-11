@@ -1,0 +1,21 @@
+<map id="tinyxml2::XMLNode::~XMLNode" name="tinyxml2::XMLNode::~XMLNode">
+<area shape="rect" id="node2" href="$de/d13/classtinyxml2_1_1_x_m_l_node.html#ab0b21951f2343534c5c67f23dffdc7e6" title="tinyxml2::XMLNode::\lDeleteNode" alt="" coords="199,195,344,236"/>
+<area shape="rect" id="node3" href="$de/d13/classtinyxml2_1_1_x_m_l_node.html#a363b6edbd6ebd55f8387d2b89f2b0921" title="Delete a child of this node. " alt="" coords="392,253,537,295"/>
+<area shape="rect" id="node16" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#ac1d6e2c7fcc1a660624ac4f68e96380d" title="Delete a node associated with this document. " alt="" coords="585,201,752,243"/>
+<area shape="rect" id="node17" href="$de/d13/classtinyxml2_1_1_x_m_l_node.html#a916e498914baecbc9a1f012352ef7c69" title="tinyxml2::XMLNode::\lParseDeep" alt="" coords="392,71,537,112"/>
+<area shape="rect" id="node4" href="$da/dd4/class_stamp.html#a703c2f95294c6f4cc477cbddb7f37b4d" title="Stamp::DeleteSpecimen" alt="" coords="587,318,751,345"/>
+<area shape="rect" id="node5" href="$d0/d30/_stamp_data_8h.html#a5e0f1cb075a461327abdf0505d0c55de" title="MoveStamp" alt="" coords="623,267,715,294"/>
+<area shape="rect" id="node7" href="$de/d13/classtinyxml2_1_1_x_m_l_node.html#a0360085cc54df5bff85d5c5da13afdce" title="Delete all the children of this node. " alt="" coords="596,136,741,177"/>
+<area shape="rect" id="node6" href="$df/dc6/class_stamp_tree_ctrl.html#a05a8f407d9983142253b611a95b35e1e" title="StampTreeCtrl::OnEndDrag" alt="" coords="800,267,983,294"/>
+<area shape="rect" id="node8" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#a65656b0b2cbc822708eb351504178aaf" title="tinyxml2::XMLDocument\l::Clear" alt="" coords="808,199,975,240"/>
+<area shape="rect" id="node15" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#af2b616169e6517182f6725f2498e9a01" title="Parse an XML file from a character string. " alt="" coords="1031,109,1197,151"/>
+<area shape="rect" id="node9" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#af37c47d8e2ba4b2fc81b21a77a32579b" title="tinyxml2::XMLDocument\l::~XMLDocument" alt="" coords="1031,175,1197,216"/>
+<area shape="rect" id="node10" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#af592ffc91514e25a39664521ac83db45" title="Copies this document to a target document. " alt="" coords="1031,240,1197,281"/>
+<area shape="rect" id="node11" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#a2ebd4647a8af5fc6831b294ac26a150a" title="Load an XML file from disk. " alt="" coords="1031,305,1197,347"/>
+<area shape="rect" id="node12" href="$d5/d71/class_persistent.html#a1e6d550aa3f4595274acfa528fc0de02" title="Load the persistent file. " alt="" coords="1264,283,1381,310"/>
+<area shape="rect" id="node14" href="$d2/d63/class_stamp_manager_frame.html#ab4f27ac876c7ac01166890d6c9594ca9" title="StampManagerFrame::\lOnTestXMLClick" alt="" coords="1245,335,1400,376"/>
+<area shape="rect" id="node13" href="$d5/d71/class_persistent.html#a82c8ff341cce87299a814e970f542606" title="Destroy the Persistent object. " alt="" coords="1448,283,1604,310"/>
+<area shape="rect" id="node18" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a072998100b7d0ba5e8aeac6dd6dfb31b" title="tinyxml2::XMLElement\l::ParseDeep" alt="" coords="591,5,746,47"/>
+<area shape="rect" id="node19" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#aeb556e0e2bed02a73a6c5aaf19759e9a" title="tinyxml2::XMLDocument\l::Parse" alt="" coords="585,71,752,112"/>
+<area shape="rect" id="node20" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#a5f1d330fad44c52f3d265338dd2a6dc2" title="Load an XML file from disk. " alt="" coords="808,27,975,68"/>
+</map>

@@ -1,0 +1,10 @@
+<map id="IdentificationPanel::SetStamp" name="IdentificationPanel::SetStamp">
+<area shape="rect" id="node2" href="$da/dd4/class_stamp.html#a3370745d7662600656a769099f11db43" title="Stamp::IsOK" alt="" coords="572,52,671,79"/>
+<area shape="rect" id="node4" href="$d0/db0/class_labeled_text_box.html#a65200d56aa344c6f80ba8c57c6063717" title="Set the Stamp object. " alt="" coords="183,44,365,71"/>
+<area shape="rect" id="node6" href="$da/d71/class_identification_panel.html#a57981e4c3dd8e68730e1bc599f347b0c" title="Set the Choice object. " alt="" coords="209,95,339,137"/>
+<area shape="rect" id="node7" href="$db/d86/group___get.html#ga2dcd233aec16358828ebbfc8ae41ab46" title="Get the stamp emission field. " alt="" coords="203,161,345,188"/>
+<area shape="rect" id="node8" href="$db/d86/group___get.html#gac543e4ffc79ba4e544e1bb1392e77cf8" title="Get the stamp Format field. " alt="" coords="209,212,339,239"/>
+<area shape="rect" id="node9" href="$da/dd4/class_stamp.html#a98daf5052ce62271c63c575f4cdc7528" title="Get the Status object. " alt="" coords="211,263,337,289"/>
+<area shape="rect" id="node3" href="$dc/d8f/class_node.html#ae833cd38c01571764ea3d88a31d44a0a" title="Node::GetElement" alt="" coords="719,77,849,104"/>
+<area shape="rect" id="node5" href="$da/dd4/class_stamp.html#a905b950918480d0d4ed757717827fd0d" title="Get the Attr object. " alt="" coords="413,103,524,129"/>
+</map>

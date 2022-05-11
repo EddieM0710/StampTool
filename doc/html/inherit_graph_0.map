@@ -1,0 +1,12 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node2" href="$de/d4d/class_catalog_code_panel.html" title="CatalogCodePanel" alt="" coords="143,5,274,32"/>
+<area shape="rect" id="node3" href="$d1/d7e/class_characteristics_panel.html" title="CharacteristicsPanel class declaration. " alt="" coords="137,56,280,83"/>
+<area shape="rect" id="node4" href="$d3/dff/class_description_panel.html" title="DescriptionPanel class declaration. " alt="" coords="148,107,269,133"/>
+<area shape="rect" id="node5" href="$d5/de8/class_gallery_image_panel.html" title="This class manages the display and context menu for the given image. " alt="" coords="143,157,275,184"/>
+<area shape="rect" id="node6" href="$dc/d3d/class_gallery_panel.html" title="Manage the scrolled window for the Gallery. " alt="" coords="161,208,257,235"/>
+<area shape="rect" id="node7" href="$da/d71/class_identification_panel.html" title="IdentificationPanel displays stamp data relative to the stamp identification. " alt="" coords="144,259,273,285"/>
+<area shape="rect" id="node8" href="$d8/d7f/class_inventory_panel.html" title="InventoryPanel" alt="" coords="154,309,263,336"/>
+<area shape="rect" id="node9" href="$d0/db0/class_labeled_text_box.html" title="LabeledTextBox" alt="" coords="151,360,267,387"/>
+<area shape="rect" id="node10" href="$dc/dcc/class_miscellaneous_data_panel.html" title="MiscellaneousDataPanel" alt="" coords="125,411,292,437"/>
+<area shape="rect" id="node11" href="$df/da8/class_stamp_manager_panel.html" title="StampManagerPanel is the main window class for the application, It contains a splitter window with th..." alt="" coords="137,461,280,488"/>
+</map>

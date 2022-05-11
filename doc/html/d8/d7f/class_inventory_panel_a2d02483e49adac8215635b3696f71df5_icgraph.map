@@ -1,0 +1,4 @@
+<map id="InventoryPanel::CreateControls" name="InventoryPanel::CreateControls">
+<area shape="rect" id="node2" href="$d8/d7f/class_inventory_panel.html#a7cd6ab37183ed589376bc77c67521042" title="Used for two&#45;step panel construction. " alt="" coords="259,13,415,39"/>
+<area shape="rect" id="node3" href="$d8/d7f/class_inventory_panel.html#ae4c2100070c0731f2bfe02c35bd60dd2" title="Construct a new InventoryPanel object. " alt="" coords="463,5,633,47"/>
+</map>

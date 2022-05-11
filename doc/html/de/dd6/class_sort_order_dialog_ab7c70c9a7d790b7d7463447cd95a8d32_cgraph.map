@@ -1,0 +1,8 @@
+<map id="SortOrderDialog::SortOrderDialog" name="SortOrderDialog::SortOrderDialog">
+<area shape="rect" id="node2" href="$de/dd6/class_sort_order_dialog.html#a19d20df507910b63f51855ff94dd7aa6" title="Initialises member variables. " alt="" coords="243,5,384,32"/>
+<area shape="rect" id="node3" href="$de/dd6/class_sort_order_dialog.html#acb02455ca276632778157d9ca0ee4fd6" title="Used for two&#45;step panel construction. " alt="" coords="232,56,395,83"/>
+<area shape="rect" id="node4" href="$de/dd6/class_sort_order_dialog.html#adc0be557ed14e122ba309aa1bc7cb39e" title="Creates the controls and sizers. " alt="" coords="443,56,653,83"/>
+<area shape="rect" id="node5" href="$d5/d9b/_defs_8cpp.html#a69e502dd580f74bd18c06a8166217820" title="Get the Persistent object. " alt="" coords="733,31,836,57"/>
+<area shape="rect" id="node6" href="$d5/d71/class_persistent.html#a34f0a58d7c55861d49de0388de01b1d1" title="Persistent::GetSortOrder" alt="" coords="701,81,868,108"/>
+<area shape="rect" id="node7" href="$d5/d71/class_persistent.html#af4eb28ec82a7a770bca1743f69309fc2" title="Persistent::GetNextSortClassification" alt="" coords="916,81,1157,108"/>
+</map>

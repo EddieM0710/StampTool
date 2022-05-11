@@ -1,0 +1,25 @@
+var _description_panel_8h =
+[
+    [ "DescriptionPanel", "d3/dff/class_description_panel.html", "d3/dff/class_description_panel" ],
+    [ "ID_BACKGROUNDPANEL1", "dd/d75/_description_panel_8h.html#aaf2b8386f090c911ff6eeaec6b40c98e", null ],
+    [ "ID_BKGNDSCROLLEDWINDOW", "dd/d75/_description_panel_8h.html#af6a8c69ccb25045cbf9ffb9f5c4854ad", null ],
+    [ "ID_BKGNDTEXTCTRL", "dd/d75/_description_panel_8h.html#aa5024495e5e93a5620d861d8b1dfb077", null ],
+    [ "ID_CATALOGCODEFOREIGN", "dd/d75/_description_panel_8h.html#a72b083bcc7302930768c2cbe854cddfe", null ],
+    [ "ID_CHARACTERISTICSWINDOW", "dd/d75/_description_panel_8h.html#a57fa72f20059863f585400cd1e29d38c", null ],
+    [ "ID_DESCRIPTIONLNOTEBOOK", "dd/d75/_description_panel_8h.html#aea7ee6f4906617c43ed6fe7d7203af21", null ],
+    [ "ID_DESCRIPTIONSCROLLEDWINDOW", "dd/d75/_description_panel_8h.html#a7f031ce3f5a22f501fec3e95942d3874", null ],
+    [ "ID_DESCRIPTIONSPLITTERWINDOW", "dd/d75/_description_panel_8h.html#abda19b84e78aeb5f9384ca27096568e2", null ],
+    [ "ID_DESCRIPTIONTEXTCTRL", "dd/d75/_description_panel_8h.html#a648ac304f9fd7374af0fc038b2730375", null ],
+    [ "ID_IDENTIFICATIONPANELFORIEGN", "dd/d75/_description_panel_8h.html#ada0307c2d09ffa43edda315a97a39b95", null ],
+    [ "ID_INVENTORYFOREIGN", "dd/d75/_description_panel_8h.html#a6d53cb1b44974cf9590ec246fef8996d", null ],
+    [ "ID_MISCELLANEOUSDATAFORIEGN", "dd/d75/_description_panel_8h.html#a94c95b1d07f873aabb937d1baef438c2", null ],
+    [ "ID_NOTEBOOKSPLITTERWINDOW", "dd/d75/_description_panel_8h.html#a9851f088a06451ca577be9953384765e", null ],
+    [ "ID_PANEL", "dd/d75/_description_panel_8h.html#af1fa24a9a4b87024dfe447531d355b47", null ],
+    [ "ID_STAMPIMAGEPANEL", "dd/d75/_description_panel_8h.html#abe90f79ff86dfbc205c4fc2f1e45e475", null ],
+    [ "ID_ZOOMSLIDER", "dd/d75/_description_panel_8h.html#a3b181374f819ea564833bb9753952127", null ],
+    [ "SYMBOL_DESCRIPTIONPANEL_IDNAME", "dd/d75/_description_panel_8h.html#ac39e5c177473492f87f394235e3414a7", null ],
+    [ "SYMBOL_DESCRIPTIONPANEL_POSITION", "dd/d75/_description_panel_8h.html#a433bbc15101327bb1d9f1dc0a2eca191", null ],
+    [ "SYMBOL_DESCRIPTIONPANEL_SIZE", "dd/d75/_description_panel_8h.html#add656a6b6c04710aa7e92fa173c236e7", null ],
+    [ "SYMBOL_DESCRIPTIONPANEL_STYLE", "dd/d75/_description_panel_8h.html#a4578aa2de5d80c47f69b1485e79a3bff", null ],
+    [ "SYMBOL_DESCRIPTIONPANEL_TITLE", "dd/d75/_description_panel_8h.html#a3f5229c394608d2b88f865099748196c", null ]
+];

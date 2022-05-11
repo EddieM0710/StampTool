@@ -1,0 +1,6 @@
+<map id="IdentificationPanel::UpdateStatus" name="IdentificationPanel::UpdateStatus">
+<area shape="rect" id="node2" href="$da/dd4/class_stamp.html#a3370745d7662600656a769099f11db43" title="Stamp::IsOK" alt="" coords="198,5,297,32"/>
+<area shape="rect" id="node4" href="$da/d71/class_identification_panel.html#a57981e4c3dd8e68730e1bc599f347b0c" title="Set the Choice object. " alt="" coords="183,57,312,98"/>
+<area shape="rect" id="node5" href="$da/dd4/class_stamp.html#a98daf5052ce62271c63c575f4cdc7528" title="Get the Status object. " alt="" coords="184,123,311,149"/>
+<area shape="rect" id="node3" href="$dc/d8f/class_node.html#ae833cd38c01571764ea3d88a31d44a0a" title="Node::GetElement" alt="" coords="360,5,491,32"/>
+</map>

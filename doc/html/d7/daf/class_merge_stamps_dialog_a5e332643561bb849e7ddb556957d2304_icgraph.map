@@ -1,0 +1,8 @@
+<map id="MergeStampsDialog::CreateControls" name="MergeStampsDialog::CreateControls">
+<area shape="rect" id="node2" href="$d7/daf/class_merge_stamps_dialog.html#a3e94c16b06a2e268795c6d8cb97ba5ab" title="Used for two&#45;step panel construction. " alt="" coords="201,64,349,105"/>
+<area shape="rect" id="node3" href="$d7/daf/class_merge_stamps_dialog.html#ac9ca29ffd24b706db64f807ae1e8611a" title="Default Constructor a new Gallery Image Panel object. " alt="" coords="417,5,565,47"/>
+<area shape="rect" id="node4" href="$d2/d63/class_stamp_manager_frame.html#a4466580d174c44e76c6bc77a2fe60698" title="StampManagerFrame::Open" alt="" coords="397,71,584,98"/>
+<area shape="rect" id="node6" href="$d2/d63/class_stamp_manager_frame.html#a49a1c5f8bc8074530b5155b6a429b8ad" title="StampManagerFrame::\lDoCSVImport" alt="" coords="413,124,568,165"/>
+<area shape="rect" id="node5" href="$d2/d63/class_stamp_manager_frame.html#a4aa1a3255f7d55fdd75868f597ad119c" title="StampManagerFrame::\lOnOpenClick" alt="" coords="632,61,787,103"/>
+<area shape="rect" id="node7" href="$d2/d63/class_stamp_manager_frame.html#ab36ddcd9b3130528e6dfc6c31a8ff608" title="StampManagerFrame::\lOnImportClick" alt="" coords="632,127,787,168"/>
+</map>

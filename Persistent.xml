@@ -1,0 +1,25 @@
+<Persistent>
+    <LastFile>/sandbox/Documents/Stamps/StampDumpsDivided/USA_276-Stamp_Number_Commemorative_2016.xml</LastFile>
+    <LoadLastFileAtStartUp>true</LoadLastFileAtStartUp>
+    <SortOrder>
+        <Classification>Period</Classification>
+        <Classification>Decade</Classification>
+        <Classification>Year</Classification>
+        <Classification>Emission</Classification>
+    </SortOrder>
+    <PeriodDivision>
+        <LowerDivision>1950</LowerDivision>
+        <UpperDivision>2000</UpperDivision>
+    </PeriodDivision>
+    <Periods>
+        <LowerPeriod>Antique</LowerPeriod>
+        <MiddlePeriod>Classical</MiddlePeriod>
+        <UpperPeriod>Modern</UpperPeriod>
+    </Periods>
+    <Recent>/sandbox/Documents/Stamps/StampDumpsDivided/USA_276-Stamp_Number_Commemorative_2016.xml
+    /sandbox/Documents/Stamps/StampDumpsDivided/USA_276-Stamp_Number_Commemorative_2015.xml
+    </Recent>
+    <RecentFile/>
+    <RecentFile/>
+    <NbrRecentPreference>4</NbrRecentPreference>
+</Persistent>

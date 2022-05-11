@@ -1,0 +1,5 @@
+<map id="CatalogCodePanel::ShowRow" name="CatalogCodePanel::ShowRow">
+<area shape="rect" id="node2" href="$db/d46/class_catalog_code.html#a6552096233815b25a6cc168304d87a6c" title="CatalogCode::GetAttr" alt="" coords="252,31,400,57"/>
+<area shape="rect" id="node3" href="$db/d46/class_catalog_code.html#aa79bf8a85e6da03b26aed0aa25258207" title="CatalogCode::IsOK" alt="" coords="448,5,584,32"/>
+<area shape="rect" id="node4" href="$dc/d8f/class_node.html#ae833cd38c01571764ea3d88a31d44a0a" title="Node::GetElement" alt="" coords="632,31,763,57"/>
+</map>

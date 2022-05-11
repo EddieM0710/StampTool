@@ -1,0 +1,10 @@
+<map id="CatalogCodePanel::OnContextPopup" name="CatalogCodePanel::OnContextPopup">
+<area shape="rect" id="node2" href="$de/d4d/class_catalog_code_panel.html#aaca0acb708b1c9868999be2412f0c499" title="Add an intery to the wxGrid. " alt="" coords="256,81,472,108"/>
+<area shape="rect" id="node3" href="$de/d4d/class_catalog_code_panel.html#af6fe02b0171a221648d9d9495cf23c03" title="creates a new empty catalog code " alt="" coords="527,45,711,86"/>
+<area shape="rect" id="node8" href="$de/d4d/class_catalog_code_panel.html#af12bc85ca3bcd60a914981b1ef7eb6c6" title="gets the item from the CatalogCode list and populates the columns with it " alt="" coords="520,111,719,137"/>
+<area shape="rect" id="node4" href="$da/dd4/class_stamp.html#aa744b430710c1aa07c077f547f57d38b" title="Add any empty element of type CatalogCode. " alt="" coords="969,5,1092,32"/>
+<area shape="rect" id="node6" href="$db/d46/class_catalog_code.html#a5817fee4247cbc047948215b81d86174" title="CatalogCode::SetAttr" alt="" coords="767,56,914,83"/>
+<area shape="rect" id="node5" href="$dc/d8f/class_node.html#ae833cd38c01571764ea3d88a31d44a0a" title="Node::GetElement" alt="" coords="1147,81,1277,108"/>
+<area shape="rect" id="node7" href="$db/d46/class_catalog_code.html#aa79bf8a85e6da03b26aed0aa25258207" title="CatalogCode::IsOK" alt="" coords="963,107,1099,133"/>
+<area shape="rect" id="node9" href="$db/d46/class_catalog_code.html#a6552096233815b25a6cc168304d87a6c" title="CatalogCode::GetAttr" alt="" coords="767,111,915,137"/>
+</map>

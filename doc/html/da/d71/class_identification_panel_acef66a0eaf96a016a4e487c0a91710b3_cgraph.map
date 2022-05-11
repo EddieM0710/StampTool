@@ -1,0 +1,6 @@
+<map id="IdentificationPanel::OnFormatchoiceSelected" name="IdentificationPanel::OnFormatchoiceSelected">
+<area shape="rect" id="node2" href="$da/dd4/class_stamp.html#a9528cbb31462c1c7d636ef88957a39c1" title="Get the stamp Format field. " alt="" coords="231,31,360,57"/>
+<area shape="rect" id="node3" href="$da/dd4/class_stamp.html#a15c2d249060c244dc2faf9e4c90d5baa" title="Set the Attr object. " alt="" coords="408,31,517,57"/>
+<area shape="rect" id="node4" href="$da/dd4/class_stamp.html#a3370745d7662600656a769099f11db43" title="Stamp::IsOK" alt="" coords="565,5,664,32"/>
+<area shape="rect" id="node5" href="$dc/d8f/class_node.html#ae833cd38c01571764ea3d88a31d44a0a" title="Node::GetElement" alt="" coords="712,31,843,57"/>
+</map>

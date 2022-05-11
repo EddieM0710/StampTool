@@ -1,0 +1,24 @@
+<map id="MergeStampsDialog::SetRightText" name="MergeStampsDialog::SetRightText">
+<area shape="rect" id="node2" href="$d7/daf/class_merge_stamps_dialog.html#a02e981a8eacdfed529f663392df3ab7f" title="MergeStampsDialog::\lClearStamp" alt="" coords="201,5,349,47"/>
+<area shape="rect" id="node12" href="$d7/daf/class_merge_stamps_dialog.html#a1abee4de94f941080f089dc08dcfe46c" title="MergeStampsDialog::\lLoadStamp" alt="" coords="201,71,349,112"/>
+<area shape="rect" id="node13" href="$d7/daf/class_merge_stamps_dialog.html#a5873b44393d5d00aa84c77139ae3b585" title="MergeStampsDialog::\lRevert" alt="" coords="201,136,349,177"/>
+<area shape="rect" id="node20" href="$d7/daf/class_merge_stamps_dialog.html#a925ac192e3c2a8b2e00edd93d8e744f7" title="MergeStampsDialog::\lCopyRight" alt="" coords="201,267,349,308"/>
+<area shape="rect" id="node3" href="$d7/daf/class_merge_stamps_dialog.html#ad59b57aeada9d58bb2058e44bbe7f98e" title="MergeStampsDialog::\lPerformNextAction" alt="" coords="417,5,565,47"/>
+<area shape="rect" id="node11" href="$d7/daf/class_merge_stamps_dialog.html#af80c3dc9c67cc721724399550f59aec3" title="MergeStampsDialog::\lOnIgnoreClick" alt="" coords="417,71,565,112"/>
+<area shape="rect" id="node4" href="$d7/daf/class_merge_stamps_dialog.html#a3e94c16b06a2e268795c6d8cb97ba5ab" title="Used for two&#45;step panel construction. " alt="" coords="1233,117,1381,159"/>
+<area shape="rect" id="node10" href="$d7/daf/class_merge_stamps_dialog.html#a93003d8dddc4747a8f6b23b94d142e70" title="MergeStampsDialog::\lOnApplyClick" alt="" coords="639,5,787,47"/>
+<area shape="rect" id="node5" href="$d7/daf/class_merge_stamps_dialog.html#ac9ca29ffd24b706db64f807ae1e8611a" title="Default Constructor a new Gallery Image Panel object. " alt="" coords="1449,59,1597,100"/>
+<area shape="rect" id="node6" href="$d2/d63/class_stamp_manager_frame.html#a4466580d174c44e76c6bc77a2fe60698" title="StampManagerFrame::Open" alt="" coords="1429,125,1616,151"/>
+<area shape="rect" id="node8" href="$d2/d63/class_stamp_manager_frame.html#a49a1c5f8bc8074530b5155b6a429b8ad" title="StampManagerFrame::\lDoCSVImport" alt="" coords="1445,177,1600,219"/>
+<area shape="rect" id="node7" href="$d2/d63/class_stamp_manager_frame.html#a4aa1a3255f7d55fdd75868f597ad119c" title="StampManagerFrame::\lOnOpenClick" alt="" coords="1664,115,1819,156"/>
+<area shape="rect" id="node9" href="$d2/d63/class_stamp_manager_frame.html#ab36ddcd9b3130528e6dfc6c31a8ff608" title="StampManagerFrame::\lOnImportClick" alt="" coords="1664,180,1819,221"/>
+<area shape="rect" id="node14" href="$d7/daf/class_merge_stamps_dialog.html#a3bbc98b6de91c11c991be8f79c7d24cc" title="MergeStampsDialog::\lRevertAll" alt="" coords="417,136,565,177"/>
+<area shape="rect" id="node16" href="$d7/daf/class_merge_stamps_dialog.html#ab1324941879db227121a6285830730a2" title="MergeStampsDialog::\lOnRevertBitmapButtonClick" alt="" coords="397,201,584,243"/>
+<area shape="rect" id="node15" href="$d7/daf/class_merge_stamps_dialog.html#ab05e4e3286fbf9758736dcbd3d771661" title="MergeStampsDialog::\lOnRevertAllButtonClick" alt="" coords="632,136,793,177"/>
+<area shape="rect" id="node17" href="$d7/daf/class_merge_stamps_dialog.html#a468bcd80c9e3afee98002fb57348f9af" title="MergeStampsDialog::\lEntry" alt="" coords="639,201,787,243"/>
+<area shape="rect" id="node18" href="$d7/daf/class_merge_stamps_dialog.html#a643e644883d5fbb9fdab269a553dd08a" title="MergeStampsDialog::\lSetupDialog" alt="" coords="841,183,989,224"/>
+<area shape="rect" id="node19" href="$d7/daf/class_merge_stamps_dialog.html#a5e332643561bb849e7ddb556957d2304" title="Creates the controls and sizers. " alt="" coords="1037,147,1185,188"/>
+<area shape="rect" id="node21" href="$d7/daf/class_merge_stamps_dialog.html#a0581f661c2be014ab46098a4d8f11bac" title="MergeStampsDialog::\lCopyAllRight" alt="" coords="417,332,565,373"/>
+<area shape="rect" id="node23" href="$d7/daf/class_merge_stamps_dialog.html#af700406d811a0957a3a933fdcb9d0b98" title="MergeStampsDialog::\lOnCopyBitmapButtonClick" alt="" coords="401,267,580,308"/>
+<area shape="rect" id="node22" href="$d7/daf/class_merge_stamps_dialog.html#ad1b12d03a2780ac5eceecb15cc51ddd4" title="MergeStampsDialog::\lOnCopyAllButtonClick" alt="" coords="636,332,789,373"/>
+</map>

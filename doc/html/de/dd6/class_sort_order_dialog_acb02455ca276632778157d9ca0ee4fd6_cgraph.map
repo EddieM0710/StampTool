@@ -1,0 +1,6 @@
+<map id="SortOrderDialog::Create" name="SortOrderDialog::Create">
+<area shape="rect" id="node2" href="$de/dd6/class_sort_order_dialog.html#adc0be557ed14e122ba309aa1bc7cb39e" title="Creates the controls and sizers. " alt="" coords="216,31,427,57"/>
+<area shape="rect" id="node3" href="$d5/d9b/_defs_8cpp.html#a69e502dd580f74bd18c06a8166217820" title="Get the Persistent object. " alt="" coords="507,5,609,32"/>
+<area shape="rect" id="node4" href="$d5/d71/class_persistent.html#a34f0a58d7c55861d49de0388de01b1d1" title="Persistent::GetSortOrder" alt="" coords="475,56,641,83"/>
+<area shape="rect" id="node5" href="$d5/d71/class_persistent.html#af4eb28ec82a7a770bca1743f69309fc2" title="Persistent::GetNextSortClassification" alt="" coords="689,56,931,83"/>
+</map>

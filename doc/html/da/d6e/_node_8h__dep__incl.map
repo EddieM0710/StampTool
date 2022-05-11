@@ -1,0 +1,39 @@
+<map id="/sandbox/Development/StampManager/src/Node.h" name="/sandbox/Development/StampManager/src/Node.h">
+<area shape="rect" id="node2" href="$d2/d42/_catalog_code_8h.html" title="/sandbox/Development\l/StampManager/src/CatalogCode.h" alt="" coords="1885,95,2111,136"/>
+<area shape="rect" id="node8" href="$de/dfe/_x_m_l_utilities_8cpp.html" title="/sandbox/Development\l/StampManager/src/XMLUtilities.cpp" alt="" coords="2925,191,3161,233"/>
+<area shape="rect" id="node9" href="$d4/d67/_stamp_8h.html" title="This is a wrapper of an XMLElement for safe/convenient getting/putting. " alt="" coords="2135,95,2325,136"/>
+<area shape="rect" id="node35" href="$d5/d6d/_classification_8h.html" title="This is a wrapper of an XMLElement for safe/convenient getting/putting. " alt="" coords="3177,95,3408,136"/>
+<area shape="rect" id="node37" href="$dc/d95/_specimen_8h.html" title="This is a wrapper of an XMLElement for safe/convenient getting/putting. " alt="" coords="3704,95,3913,136"/>
+<area shape="rect" id="node3" href="$d9/dec/_catalog_code_8cpp.html" title="/sandbox/Development\l/StampManager/src/CatalogCode.cpp" alt="" coords="5,191,247,233"/>
+<area shape="rect" id="node4" href="$d8/d5a/_catalog_code_panel_8cpp.html" title="/sandbox/Development\l/StampManager/src/CatalogCode\lPanel.cpp" alt="" coords="363,288,579,344"/>
+<area shape="rect" id="node5" href="$d3/d5b/_c_s_v_8cpp.html" title="This file contains the class that reads .csv files and loads them into an XML structure. " alt="" coords="2084,191,2277,233"/>
+<area shape="rect" id="node6" href="$d6/d11/_stamp_8cpp.html" title="/sandbox/Development\l/StampManager/src/Stamp.cpp" alt="" coords="322,191,525,233"/>
+<area shape="rect" id="node7" href="$d9/d23/_stamp_tree_ctrl_8cpp.html" title="/sandbox/Development\l/StampManager/src/StampTree\lCtrl.cpp" alt="" coords="2656,392,2860,448"/>
+<area shape="rect" id="node10" href="$d4/d29/_catalog_code_panel_8h.html" title="/sandbox/Development\l/StampManager/src/CatalogCode\lPanel.h" alt="" coords="549,184,765,240"/>
+<area shape="rect" id="node11" href="$db/d5b/_description_panel_8cpp.html" title="/sandbox/Development\l/StampManager/src/Description\lPanel.cpp" alt="" coords="1183,288,1389,344"/>
+<area shape="rect" id="node12" href="$da/d28/_characteristics_panel_8h.html" title="Inherits from wxPanel. This class manages the widgets that display the physical characteristics of th..." alt="" coords="1020,184,1248,240"/>
+<area shape="rect" id="node14" href="$dd/d75/_description_panel_8h.html" title="/sandbox/Development\l/StampManager/src/Description\lPanel.h" alt="" coords="789,184,996,240"/>
+<area shape="rect" id="node16" href="$d9/d99/_inventory_panel_8h.html" title="/sandbox/Development\l/StampManager/src/Inventory\lPanel.h" alt="" coords="2403,184,2598,240"/>
+<area shape="rect" id="node18" href="$d7/dab/_miscellaneous_data_panel_8h.html" title="/sandbox/Development\l/StampManager/src/Miscellaneous\lDataPanel.h" alt="" coords="1557,184,1780,240"/>
+<area shape="rect" id="node20" href="$dd/d28/_stamp_tree_ctrl_8h.html" title="/sandbox/Development\l/StampManager/src/StampTree\lCtrl.h" alt="" coords="1804,184,2008,240"/>
+<area shape="rect" id="node27" href="$db/d71/_stamp_manager_frame_8h.html" title="This is the application main frame. " alt="" coords="2623,184,2851,240"/>
+<area shape="rect" id="node30" href="$d6/d2a/_stamp_data_8cpp.html" title="/sandbox/Development\l/StampManager/src/StampData.cpp" alt="" coords="3408,399,3639,441"/>
+<area shape="rect" id="node32" href="$d4/d48/_merge_stamps_dialog_8cpp.html" title="/sandbox/Development\l/StampManager/src/MergeStamps\lDialog.cpp" alt="" coords="2417,288,2638,344"/>
+<area shape="rect" id="node33" href="$db/db5/_identification_panel_8cpp.html" title="IdentificationPanel displays Stamp data relative to the stamp identification. " alt="" coords="3185,184,3400,240"/>
+<area shape="rect" id="node34" href="$dd/df3/_labeled_text_box_8cpp.html" title="/sandbox/Development\l/StampManager/src/LabeledText\lBox.cpp" alt="" coords="1323,184,1534,240"/>
+<area shape="rect" id="node13" href="$d7/d49/_characteristics_panel_8cpp.html" title="/sandbox/Development\l/StampManager/src/Characteristics\lPanel.cpp" alt="" coords="931,288,1159,344"/>
+<area shape="rect" id="node15" href="$db/d0b/_stamp_manager_panel_8cpp.html" title="/sandbox/Development\l/StampManager/src/StampManager\lPanel.cpp" alt="" coords="1519,496,1747,552"/>
+<area shape="rect" id="node17" href="$d5/d17/_inventory_panel_8cpp.html" title="/sandbox/Development\l/StampManager/src/Inventory\lPanel.cpp" alt="" coords="2831,288,3026,344"/>
+<area shape="rect" id="node19" href="$d1/d24/_miscellaneous_data_panel_8cpp.html" title="/sandbox/Development\l/StampManager/src/Miscellaneous\lDataPanel.cpp" alt="" coords="1413,288,1636,344"/>
+<area shape="rect" id="node21" href="$dd/ddb/_gallery_image_panel_8h.html" title="This class manages the display and context menu for the given image. " alt="" coords="1884,288,2101,344"/>
+<area shape="rect" id="node23" href="$da/d88/_stamp_manager_panel_8h.html" title="/sandbox/Development\l/StampManager/src/StampManager\lPanel.h" alt="" coords="2163,392,2391,448"/>
+<area shape="rect" id="node25" href="$d2/d53/unused_gallery_panel_8cpp.html" title="/sandbox/Development\l/StampManager/src/unusedGallery\lPanel.cpp" alt="" coords="1916,392,2139,448"/>
+<area shape="rect" id="node26" href="$d5/db4/unused_gallery_panel_8h.html" title="/sandbox/Development\l/StampManager/src/unusedGallery\lPanel.h" alt="" coords="1669,392,1892,448"/>
+<area shape="rect" id="node22" href="$d8/d9a/_gallery_image_panel_8cpp.html" title="This class manages the display and context menu for the given image. " alt="" coords="2415,392,2632,448"/>
+<area shape="rect" id="node24" href="$d7/d68/_stamp_manager_frame_8cpp.html" title="This is the application main frame. " alt="" coords="3256,496,3484,552"/>
+<area shape="rect" id="node28" href="$dd/d64/_stamp_manager_app_8h.html" title="This is the main instantiation class for the application. " alt="" coords="3051,288,3279,344"/>
+<area shape="rect" id="node29" href="$d5/d27/_sort_order_dialog_8cpp.html" title="/sandbox/Development\l/StampManager/src/SortOrder\lDialog.cpp" alt="" coords="3136,392,3332,448"/>
+<area shape="rect" id="node31" href="$dd/d80/_stamp_manager_app_8cpp.html" title="This is the main instantiation class for the application. " alt="" coords="2884,392,3112,448"/>
+<area shape="rect" id="node36" href="$d3/d09/_classification_8cpp.html" title="/sandbox/Development\l/StampManager/src/Classification.cpp" alt="" coords="3476,191,3720,233"/>
+<area shape="rect" id="node38" href="$d8/d83/_specimen_8cpp.html" title="/sandbox/Development\l/StampManager/src/Specimen.cpp" alt="" coords="3947,191,4169,233"/>
+</map>

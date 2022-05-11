@@ -1,0 +1,5 @@
+/sandbox/Development/AlbumGenerator/build/CMakeFiles/rebuild_cache.dir
+/sandbox/Development/AlbumGenerator/build/CMakeFiles/edit_cache.dir
+/sandbox/Development/AlbumGenerator/build/src/CMakeFiles/rebuild_cache.dir
+/sandbox/Development/AlbumGenerator/build/src/CMakeFiles/AlbumGenerator.dir
+/sandbox/Development/AlbumGenerator/build/src/CMakeFiles/edit_cache.dir

@@ -1,0 +1,5 @@
+<map id="CSVData::DoLoad" name="CSVData::DoLoad">
+<area shape="rect" id="node2" href="$d8/d96/class_stamp_data.html#a456b6b2aae7023fecbf71d98702d71e1" title="StampData::LoadCSV" alt="" coords="184,13,336,39"/>
+<area shape="rect" id="node3" href="$d2/d63/class_stamp_manager_frame.html#a49a1c5f8bc8074530b5155b6a429b8ad" title="StampManagerFrame::\lDoCSVImport" alt="" coords="384,5,539,47"/>
+<area shape="rect" id="node4" href="$d2/d63/class_stamp_manager_frame.html#ab36ddcd9b3130528e6dfc6c31a8ff608" title="StampManagerFrame::\lOnImportClick" alt="" coords="587,5,741,47"/>
+</map>

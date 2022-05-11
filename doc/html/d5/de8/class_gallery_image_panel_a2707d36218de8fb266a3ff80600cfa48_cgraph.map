@@ -1,0 +1,11 @@
+<map id="GalleryImagePanel::Initialize" name="GalleryImagePanel::Initialize">
+<area shape="rect" id="node2" href="$dd/d5a/class_stamp_tree_item_data.html#a5792ea1d000657b1a7648f36f78665d6" title="StampTreeItemData::\lGetType" alt="" coords="219,5,367,47"/>
+<area shape="rect" id="node3" href="$dd/d5a/class_stamp_tree_item_data.html#a518e8fbfa8fa11f33077d0cde75afbcf" title="StampTreeItemData::\lGetElement" alt="" coords="219,71,367,112"/>
+<area shape="rect" id="node4" href="$db/d86/group___get.html#gabdeca8ce2b641043bc02d36da0be6c69" title="Get the stamp ID. " alt="" coords="241,137,344,163"/>
+<area shape="rect" id="node8" href="$db/d86/group___get.html#gae3f0fa14f495bb38f26331322d455d63" title="Get the stamp title field. " alt="" coords="231,187,355,214"/>
+<area shape="rect" id="node9" href="$d5/d9b/_defs_8cpp.html#a69e502dd580f74bd18c06a8166217820" title="Get the Persistent object. " alt="" coords="241,238,344,265"/>
+<area shape="rect" id="node10" href="$d5/d71/class_persistent.html#a216a92db90953a9bb0e97648fc6f824f" title="Persistent::GetImageDirectory" alt="" coords="193,289,392,315"/>
+<area shape="rect" id="node5" href="$da/dd4/class_stamp.html#a905b950918480d0d4ed757717827fd0d" title="Get the Attr object. " alt="" coords="440,162,551,189"/>
+<area shape="rect" id="node6" href="$da/dd4/class_stamp.html#a3370745d7662600656a769099f11db43" title="Stamp::IsOK" alt="" coords="599,137,697,163"/>
+<area shape="rect" id="node7" href="$dc/d8f/class_node.html#ae833cd38c01571764ea3d88a31d44a0a" title="Node::GetElement" alt="" coords="745,162,876,189"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="InventoryPanel::InventoryPanel" name="InventoryPanel::InventoryPanel">
+<area shape="rect" id="node2" href="$d8/d7f/class_inventory_panel.html#abb8d5cf4fab651908893acc55a460dae" title="Initialises member variables. " alt="" coords="235,5,369,32"/>
+<area shape="rect" id="node3" href="$d8/d7f/class_inventory_panel.html#a7cd6ab37183ed589376bc77c67521042" title="Used for two&#45;step panel construction. " alt="" coords="224,56,380,83"/>
+<area shape="rect" id="node4" href="$d8/d7f/class_inventory_panel.html#a2d02483e49adac8215635b3696f71df5" title="Creates the controls and sizers. " alt="" coords="428,56,633,83"/>
+</map>

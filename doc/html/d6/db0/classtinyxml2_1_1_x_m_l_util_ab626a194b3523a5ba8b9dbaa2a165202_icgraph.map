@@ -1,0 +1,11 @@
+<map id="tinyxml2::XMLUtil::SkipWhiteSpace" name="tinyxml2::XMLUtil::SkipWhiteSpace">
+<area shape="rect" id="node2" href="$de/dc1/classtinyxml2_1_1_str_pair.html#ade1469025e6b4cac74397a82a7429337" title="tinyxml2::StrPair::\lCollapseWhitespace" alt="" coords="200,5,343,47"/>
+<area shape="rect" id="node3" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#a25827d1bec509ad566a107e5853ed040" title="tinyxml2::XMLDocument\l::Identify" alt="" coords="188,123,355,164"/>
+<area shape="rect" id="node5" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a072998100b7d0ba5e8aeac6dd6dfb31b" title="tinyxml2::XMLElement\l::ParseDeep" alt="" coords="611,219,766,260"/>
+<area shape="rect" id="node6" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#aeb556e0e2bed02a73a6c5aaf19759e9a" title="tinyxml2::XMLDocument\l::Parse" alt="" coords="605,140,772,181"/>
+<area shape="rect" id="node9" href="$dc/d22/classtinyxml2_1_1_x_m_l_attribute.html#a4952364c1f0260c737ac3fcac756f5a5" title="tinyxml2::XMLAttribute\l::ParseDeep" alt="" coords="194,188,349,229"/>
+<area shape="rect" id="node10" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a1e679b60e191ad79bfcefcd49ca66fa2" title="tinyxml2::XMLElement\l::ParseAttributes" alt="" coords="403,219,557,260"/>
+<area shape="rect" id="node4" href="$de/d13/classtinyxml2_1_1_x_m_l_node.html#a916e498914baecbc9a1f012352ef7c69" title="tinyxml2::XMLNode::\lParseDeep" alt="" coords="407,147,553,188"/>
+<area shape="rect" id="node7" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#a5f1d330fad44c52f3d265338dd2a6dc2" title="Load an XML file from disk. " alt="" coords="820,107,987,148"/>
+<area shape="rect" id="node8" href="$dc/d59/classtinyxml2_1_1_x_m_l_document.html#af2b616169e6517182f6725f2498e9a01" title="Parse an XML file from a character string. " alt="" coords="820,172,987,213"/>
+</map>

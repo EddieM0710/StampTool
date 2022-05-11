@@ -1,0 +1,25 @@
+/* XPM */
+static const char *StampGreen[] = {
+/* columns rows colors chars-per-pixel */
+"16 16 2 1 ",
+"X c #A0FFA0",
+". c #00A000",
+/* pixels */
+//234567890123456
+"..XX..XXXX..XX..",//1
+"X..............X",//2
+"X..............X",//3
+"X....XXXXXX....X",//4
+"....XXXXXXXX....",//5
+"....XXX..XXX....",//6
+"X...XXX..XXX...X",//7
+"X...XXXXXXXX...X",//8
+"X...XXXXXXXX...X",//9
+"X...XXX..XXX...X",//10
+"....XXX..XXX....",//11
+"....XXXXXXXX....",//12
+"X....XXXXXX....X",//13
+"X..............X",//14
+"X..............X",//15
+"..XX..XXXX..XX.." //16
+};

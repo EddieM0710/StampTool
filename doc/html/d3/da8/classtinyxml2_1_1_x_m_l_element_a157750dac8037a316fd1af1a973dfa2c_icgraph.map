@@ -1,0 +1,51 @@
+<map id="tinyxml2::XMLElement::FindAttribute" name="tinyxml2::XMLElement::FindAttribute">
+<area shape="rect" id="node2" href="$d7/daf/class_merge_stamps_dialog.html#a1b9d8e0205bf2d57d5a709c6c2f12191" title="MergeStampsDialog::\lFindCurrentItemWithID" alt="" coords="467,250,625,291"/>
+<area shape="rect" id="node3" href="$d7/daf/class_merge_stamps_dialog.html#a3bdf8500ecb935f0066f2badfae0ef95" title="MergeStampsDialog::\lFindNextItem" alt="" coords="707,226,855,267"/>
+<area shape="rect" id="node11" href="$d6/de5/class_specimen.html#a05f29e21f3f1cd9a3f07f77d240f76bf" title="Specimen::GetAttr" alt="" coords="241,823,371,849"/>
+<area shape="rect" id="node16" href="$da/dd4/class_stamp.html#a905b950918480d0d4ed757717827fd0d" title="Stamp::GetAttr" alt="" coords="251,525,361,552"/>
+<area shape="rect" id="node33" href="$df/dc6/class_stamp_tree_ctrl.html#afa3b8f48f9dd40bb8d103b6fbc1ba81a" title="StampTreeCtrl::AddChild" alt="" coords="936,788,1104,815"/>
+<area shape="rect" id="node37" href="$df/dc6/class_stamp_tree_ctrl.html#abae9a15a5c9f33490ca9edaac65d5e94" title="StampTreeCtrl::ReSortTree" alt="" coords="1396,109,1579,136"/>
+<area shape="rect" id="node43" href="$d2/d63/class_stamp_manager_frame.html#a1b1eaebcc62bdb6bec4ae0b7c88e4f0f" title="StampManagerFrame::\lOnLoadimagesmenuitemClick" alt="" coords="208,975,404,1017"/>
+<area shape="rect" id="node44" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a48cf4a315cfbac7d74cd0d5ff2c5df51" title="Given an attribute name, Attribute() returns the value for the attribute of that name, or null if none exists. " alt="" coords="229,185,383,226"/>
+<area shape="rect" id="node4" href="$d7/daf/class_merge_stamps_dialog.html#ad59b57aeada9d58bb2058e44bbe7f98e" title="MergeStampsDialog::\lPerformNextAction" alt="" coords="946,278,1094,319"/>
+<area shape="rect" id="node10" href="$d7/daf/class_merge_stamps_dialog.html#af80c3dc9c67cc721724399550f59aec3" title="MergeStampsDialog::\lOnIgnoreClick" alt="" coords="946,343,1094,385"/>
+<area shape="rect" id="node5" href="$d7/daf/class_merge_stamps_dialog.html#a3e94c16b06a2e268795c6d8cb97ba5ab" title="MergeStampsDialog::\lCreate" alt="" coords="1413,431,1561,473"/>
+<area shape="rect" id="node9" href="$d7/daf/class_merge_stamps_dialog.html#a93003d8dddc4747a8f6b23b94d142e70" title="MergeStampsDialog::\lOnApplyClick" alt="" coords="1183,278,1331,319"/>
+<area shape="rect" id="node6" href="$d7/daf/class_merge_stamps_dialog.html#ad934ae26218a03f3d9fcc553419d8a96" title="MergeStampsDialog::\lMergeStampsDialog" alt="" coords="1658,397,1806,438"/>
+<area shape="rect" id="node7" href="$d2/d63/class_stamp_manager_frame.html#a4466580d174c44e76c6bc77a2fe60698" title="StampManagerFrame::Open" alt="" coords="1639,463,1825,489"/>
+<area shape="rect" id="node8" href="$d2/d63/class_stamp_manager_frame.html#a49a1c5f8bc8074530b5155b6a429b8ad" title="StampManagerFrame::\lDoCSVImport" alt="" coords="1655,514,1809,555"/>
+<area shape="rect" id="node12" href="$d8/d7f/class_inventory_panel.html#a71c474ba9b209d8499e15a19d4a175f0" title="InventoryPanel::ShowRow" alt="" coords="457,873,635,900"/>
+<area shape="rect" id="node13" href="$d8/d7f/class_inventory_panel.html#a4040f913950eba04b801630ed7856471" title="InventoryPanel::ShowStamp" alt="" coords="452,823,640,849"/>
+<area shape="rect" id="node14" href="$d8/d7f/class_inventory_panel.html#a4f98a0bf55be85fc1bb9bca49ac25a02" title="InventoryPanel::SetStamp" alt="" coords="694,1172,869,1199"/>
+<area shape="rect" id="node15" href="$d3/dff/class_description_panel.html#a94cdec7589e3918fcf16e8f3c6d16a7f" title="Initializes the DescriptionPanel with new stamp values. " alt="" coords="927,1080,1113,1107"/>
+<area shape="rect" id="node17" href="$d0/db0/class_labeled_text_box.html#a65200d56aa344c6f80ba8c57c6063717" title="LabeledTextBox::SetStamp" alt="" coords="455,772,637,799"/>
+<area shape="rect" id="node21" href="$d7/daf/class_merge_stamps_dialog.html#a1abee4de94f941080f089dc08dcfe46c" title="MergeStampsDialog::\lLoadStamp" alt="" coords="707,343,855,385"/>
+<area shape="rect" id="node22" href="$d7/daf/class_merge_stamps_dialog.html#a62f1e887dcff3cbb14bacf4abf54d437" title="MergeStampsDialog::\lAddMissingFields" alt="" coords="472,367,620,409"/>
+<area shape="rect" id="node23" href="$d7/daf/class_merge_stamps_dialog.html#a5873b44393d5d00aa84c77139ae3b585" title="MergeStampsDialog::\lRevert" alt="" coords="472,550,620,591"/>
+<area shape="rect" id="node26" href="$d7/daf/class_merge_stamps_dialog.html#a925ac192e3c2a8b2e00edd93d8e744f7" title="MergeStampsDialog::\lCopyRight" alt="" coords="472,485,620,526"/>
+<area shape="rect" id="node29" href="$da/dd4/class_stamp.html#adea3d1af7b9ce1addd9f755a43f9ca6c" title="Stamp::GetStatusType" alt="" coords="468,671,624,697"/>
+<area shape="rect" id="node41" href="$da/dd4/class_stamp.html#ac621233f82dac8f4104831fd819acdee" title="Stamp::GetFormatType" alt="" coords="467,721,625,748"/>
+<area shape="rect" id="node18" href="$d1/d7e/class_characteristics_panel.html#a38e6c242b9368dbd84cc6c51520d0ff9" title="Initializes the CharacteristicsPanel with new stamp values. " alt="" coords="710,975,853,1017"/>
+<area shape="rect" id="node19" href="$da/d71/class_identification_panel.html#abb24b10d45b080e02d7367f238b78146" title="IdentificationPanel\l::SetStamp" alt="" coords="717,1041,846,1082"/>
+<area shape="rect" id="node20" href="$dc/dcc/class_miscellaneous_data_panel.html#a32e2e39e750beeb1eaad43bbfd6dd1d4" title="MiscellaneousDataPanel\l::SetStamp" alt="" coords="698,1106,865,1147"/>
+<area shape="rect" id="node24" href="$d7/daf/class_merge_stamps_dialog.html#a3bbc98b6de91c11c991be8f79c7d24cc" title="MergeStampsDialog::\lRevertAll" alt="" coords="707,605,855,646"/>
+<area shape="rect" id="node25" href="$d7/daf/class_merge_stamps_dialog.html#ab1324941879db227121a6285830730a2" title="MergeStampsDialog::\lOnRevertBitmapButtonClick" alt="" coords="688,539,875,581"/>
+<area shape="rect" id="node27" href="$d7/daf/class_merge_stamps_dialog.html#a0581f661c2be014ab46098a4d8f11bac" title="MergeStampsDialog::\lCopyAllRight" alt="" coords="707,409,855,450"/>
+<area shape="rect" id="node28" href="$d7/daf/class_merge_stamps_dialog.html#af700406d811a0957a3a933fdcb9d0b98" title="MergeStampsDialog::\lOnCopyBitmapButtonClick" alt="" coords="692,474,871,515"/>
+<area shape="rect" id="node30" href="$df/dc6/class_stamp_tree_ctrl.html#a91614c526491fed1a513c81ac820e1f7" title="StampTreeCtrl::SetNextState" alt="" coords="923,671,1117,697"/>
+<area shape="rect" id="node31" href="$df/dc6/class_stamp_tree_ctrl.html#a3446e5c827c62a24ed4e19c3d3f15eff" title="StampTreeCtrl::GetIconId" alt="" coords="695,772,867,799"/>
+<area shape="rect" id="node32" href="$df/dc6/class_stamp_tree_ctrl.html#ab44dbf227a61efe97401aeb1ba327985" title="StampTreeCtrl::SetStatus\lImage" alt="" coords="933,722,1107,763"/>
+<area shape="rect" id="node34" href="$df/dc6/class_stamp_tree_ctrl.html#a05a8f407d9983142253b611a95b35e1e" title="StampTreeCtrl::OnEndDrag" alt="" coords="1165,651,1348,677"/>
+<area shape="rect" id="node35" href="$df/dc6/class_stamp_tree_ctrl.html#a688a953e0872cd7a82af5bf36ee50faf" title="StampTreeCtrl::LoadTree" alt="" coords="1172,701,1341,728"/>
+<area shape="rect" id="node36" href="$df/da8/class_stamp_manager_panel.html#acfd01081a83c40e17c9bd6454e861162" title="StampManagerPanel::\lLoadTree" alt="" coords="1412,514,1563,555"/>
+<area shape="rect" id="node38" href="$df/dc6/class_stamp_tree_ctrl.html#abadcd7ff69530cd204135356340ae796" title="StampTreeCtrl::OnContextMenu" alt="" coords="1627,84,1837,111"/>
+<area shape="rect" id="node39" href="$df/dc6/class_stamp_tree_ctrl.html#abae71004f79c6f514f05b788da001129" title="StampTreeCtrl::ShowMenu" alt="" coords="1642,135,1822,161"/>
+<area shape="rect" id="node40" href="$df/dc6/class_stamp_tree_ctrl.html#a02a7675b7c33247916890e126b1ecd1d" title="StampTreeCtrl::OnItemMenu" alt="" coords="1885,135,2076,161"/>
+<area shape="rect" id="node42" href="$da/dd4/class_stamp.html#aebe3465fea3ec34b388089dc9616474b" title="Stamp::IsMultiple" alt="" coords="719,873,843,900"/>
+<area shape="rect" id="node45" href="$d0/d30/_stamp_data_8h.html#a015efca8a910f5734df65172c44f0c2c" title="AddStamp" alt="" coords="505,133,587,160"/>
+<area shape="rect" id="node48" href="$d2/d63/class_stamp_manager_frame.html#ab4f27ac876c7ac01166890d6c9594ca9" title="StampManagerFrame::\lOnTestXMLClick" alt="" coords="469,185,623,226"/>
+<area shape="rect" id="node49" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a1e679b60e191ad79bfcefcd49ca66fa2" title="tinyxml2::XMLElement\l::ParseAttributes" alt="" coords="469,43,623,85"/>
+<area shape="rect" id="node46" href="$d7/daf/class_merge_stamps_dialog.html#a07fcec3e2dfe6751560b916b67c7f004" title="MergeStampsDialog::\lAddMissingItem" alt="" coords="707,161,855,202"/>
+<area shape="rect" id="node47" href="$d0/d30/_stamp_data_8h.html#ab2e5c8ba12d319d654272e52c187b583" title="SortData" alt="" coords="1219,109,1294,136"/>
+<area shape="rect" id="node50" href="$d3/da8/classtinyxml2_1_1_x_m_l_element.html#a072998100b7d0ba5e8aeac6dd6dfb31b" title="tinyxml2::XMLElement\l::ParseDeep" alt="" coords="704,43,859,85"/>
+</map>

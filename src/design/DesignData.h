@@ -16,6 +16,7 @@
 #include "design/DesignDefs.h"
 #include "wx/xml/xml.h"
 #include <wx/string.h>
+#include <wx/treebase.h>
 
 class DesignTreeCtrl;
 
@@ -47,16 +48,18 @@ namespace Design {
         wxXmlDocument* GetDoc( ) { return m_albumDoc; };
 
         void SaveXML( wxString filename );
+        void SaveDesignTree();
         bool LoadXML( wxString filename );
 
         Album* GetAlbum( ) { return m_album; };
         void SetAlbum( Album* album ) { m_album = album; };
 
-        Page* AddPage( LayoutBase* node );
-        Column* AddCol( LayoutBase* node );
-        Row* AddRow( LayoutBase* node );
-        Stamp* AddStamp( LayoutBase* node );
-        Title* AddTitle( LayoutBase* node );
+        Page* AddPage(  wxTreeItemId parentId );
+        Column* AddCol(  wxTreeItemId parentId );
+        Row* AddRow( wxTreeItemId parentId );
+        Stamp* AddStamp(  wxTreeItemId parentId );
+        Title* AddTitle(  wxTreeItemId parentId );
+
         void MakePage(LayoutBase* node);
 
         void SetDirty( bool state = true ) { m_dirty = state; };
@@ -65,6 +68,9 @@ namespace Design {
         AlbumBase* GetPage( AlbumBase* node);
         NodeStatus ValidatePage( AlbumBase* node );
         AlbumBase* ValidateChildren( AlbumBase* node );
+
+        void SaveNodeData ( wxTreeItemId treeItemId );
+        void UpdateAlbum( );
 
     private:
         wxXmlDocument* m_albumDoc;

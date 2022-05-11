@@ -11,6 +11,8 @@
 
 #include "design/AlbumBase.h"
 
+#include <iostream>
+
 
 #include "LayoutBase.h"
 #include "design/TitlePage.h"
@@ -20,12 +22,21 @@
 #include "design/Column.h"
 #include "design/Stamp.h"
 #include "gui/AlbumImagePanel.h"
+#include "gui/DesignTreeCtrl.h"
 
 namespace Design {
 
+void LayoutBase::WriteFrame(wxString loc,  wxString name, wxString id, Frame* frame )
+{
+std::cout << loc <<" " << name <<" " << id ;
+std::cout << "  x:" << frame->GetXPos() << " y" << frame->GetYPos()  << " w:" << 
+            frame->GetWidth()  <<" h:" << frame->GetHeight() << "\n";
+}
+
     void LayoutBase::UpdateTitleSize()
     {
-        GetAlbumImagePanel()->GetTextExtent(m_title);
+        m_titleSize = GetAlbumImagePanel()->GetTextExtent(m_title);
+         
     }
     void LayoutBase::ReportLayoutError( wxString funct, wxString err, bool fatal )
     {
@@ -41,11 +52,14 @@ namespace Design {
         nbrCols = 0;
         nbrStamps = 0;
 
-        for ( ChildList::iterator it = BeginChildList( ); it != EndChildList( ); ++it )
+        wxTreeItemIdValue cookie;
+        wxTreeItemId parentID = GetTreeItemId();
+        wxTreeItemId childID = GetDesignTreeCtrl()->GetFirstChild(parentID, cookie);
+        while ( childID.IsOk() )
         {
-            LayoutBase* child = ( LayoutBase* )( *it );
-            AlbumBaseType childType = ( AlbumBaseType )child->GetNodeType( );
-            switch ( childType )
+            AlbumBaseType type = ( AlbumBaseType )GetDesignTreeCtrl()->GetItemType( childID );
+            LayoutBase* child = ( LayoutBase* )GetDesignTreeCtrl()->GetItemNode( childID );
+            switch ( type )
             {
             case AT_Row:
             {
@@ -63,10 +77,33 @@ namespace Design {
                 break;
             }
             }
+            childID = GetDesignTreeCtrl()->GetNextChild(parentID, cookie);
         }
         if ( ( nbrRows > 0 ) && ( nbrCols > 0 ) )
         {
             ReportLayoutError( "ValidateChildType", "Only Rows or Columns are allowed as the children, not both" );
         }
     }
+  void LayoutBase::DumpLayout(  double x , double y  )
+    {
+        AlbumBaseType type = GetNodeType();
+        std::cout << GetObjectName() << "Pos (x:" << x << " y:" << y << ") ";
+        m_frame.WriteLayout( );
+        wxTreeItemIdValue cookie;
+        wxTreeItemId parentID = GetTreeItemId();
+        wxTreeItemId childID = GetDesignTreeCtrl()->GetFirstChild(parentID, cookie);
+        while ( childID.IsOk() )
+        {
+            AlbumBaseType type = ( AlbumBaseType )GetDesignTreeCtrl()->GetItemType( childID );
+            LayoutBase* child = ( LayoutBase* )GetDesignTreeCtrl()->GetItemNode( childID );
+
+            double xPos = x+GetXPos();
+            double yPos = y+GetYPos();
+          
+            child->DumpLayout( xPos, yPos  ); 
+
+            childID = GetDesignTreeCtrl()->GetNextChild(parentID, cookie);
+        }
+    }
+    
 }

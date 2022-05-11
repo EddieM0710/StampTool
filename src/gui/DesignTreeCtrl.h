@@ -67,11 +67,19 @@ public:
      * @param   ele :
      **************************************************/
     DesignTreeItemData( Design::AlbumBaseType type, const wxString desc,
-        Design::AlbumBase* ele = 0 )
+        Design::AlbumBase* ele = 0, Utils::StampLink* stampLink = 0)
     {
         m_type = type;
         m_desc = desc;
         m_element = ele;
+        m_stampLink = stampLink;
+    }
+    DesignTreeItemData( DesignTreeItemData &data )
+    {
+        m_type = data.GetType( );
+        m_desc = data.GetDesc();
+        m_element = data.GetNodeElement();
+        m_stampLink = data.GetStampLink( );
     }
     /**
      *
@@ -257,10 +265,10 @@ public:
     wxTreeItemId AddStampNodeToTree( wxTreeItemId parent, wxXmlNode* child );
 
 
-    void AddPage( Design::AlbumBase* node );
-    Design::Stamp* AddStamp( Design::AlbumBase* node );
-    void AddRow( Design::AlbumBase* node );
-    void AddCol( Design::AlbumBase* node );
+    void AddPage( wxTreeItemId node  );
+    Design::Stamp* AddStamp( wxTreeItemId node  );
+    void AddRow( wxTreeItemId node  );
+    void AddCol( wxTreeItemId node  );
     Utils::StampLink* AppendStamp( wxTreeItemId id );
 
     /**
@@ -269,7 +277,7 @@ public:
      * @param  child   :
      * @return {wxTreeItemId}        :
      */
-    wxTreeItemId AddChild( wxTreeItemId parent, Design::AlbumBase* child );
+    wxTreeItemId AddChild( wxTreeItemId parent, wxXmlNode* child );
 
 
     /**
@@ -359,6 +367,10 @@ public:
     Utils::StampLink* GetItemStampLink( wxTreeItemId albumID ) ;
     Design::AlbumBaseType GetItemType( wxTreeItemId albumID ) ; 
     wxString MakeItemLabel ( wxTreeItemId id );
+    void CopyItem(wxTreeItemId dstID, wxTreeItemId srcID);
+
+    void Save();
+    void SaveNodeData ( wxXmlNode* parent, wxTreeItemId treeItemId );
 
 
 

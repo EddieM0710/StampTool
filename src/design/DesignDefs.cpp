@@ -40,6 +40,12 @@
 
 namespace Design {
 
+    wxRealPoint  PpMM;    
+    
+    bool IsAlbumBaseTypeValid( AlbumBaseType type ) 
+    { 
+        return (type>=AT_Album && type < AT_NbrAlbumTypes );
+    };
 
     Album* GetAlbum( void )
     {
@@ -98,11 +104,17 @@ namespace Design {
             "MinHeight",
             "MinWidth",
             "ID",
-            "Link" };
+            "Link",
+            "ShowTitle",
+            "ShowId",
+            "ShowFrame"};
 
     void InitDesignDefs( )
     {
-
+    wxSize ppi = wxGetDisplayPPI();
+    std::cout << ppi.x << "  " << ppi.y << "\n";
+    PpMM.x = ppi.x/25.4;
+    PpMM.y = ppi.y/25.4;
     }
 
     AlbumBaseType FindAlbumBaseType( wxString name )
@@ -201,33 +213,37 @@ namespace Design {
     }
 
 
-    // LayoutBase* MakeNode( AlbumBaseType type, wxXmlNode* node )
-    // {
-    //     LayoutBase* object = (LayoutBase*)0;
-    //     if ( type == AT_TitlePage )
-    //     {
-    //         object = (LayoutBase*)new TitlePage( node);
-    //     }
-    //     else if ( type == AT_Page )
-    //     {
-    //         object = (LayoutBase*)new Page( node );
-    //     }
-    //     else if ( type == AT_Title )
-    //     {
-    //         object = (LayoutBase*)new Title( node );
-    //     }
-    //     else if ( type == AT_Col )
-    //     {
-    //         object = (LayoutBase*)new Column( node );
-    //     }
-    //     else if ( type == AT_Row )
-    //     {
-    //         object = (LayoutBase*)new Row( node );
-    //     }
-    //     else if ( type == AT_Stamp )
-    //     {
-    //         object = (LayoutBase*)new Stamp( node );
-    //     }
-    //     return object;
-    // }
+    AlbumBase* MakeNode( wxXmlNode* node )
+    {
+        wxString nodeName = node->GetName();
+        AlbumBaseType type = FindAlbumBaseType( nodeName );
+
+        AlbumBase* object = (AlbumBase*)0;
+
+        if ( type == AT_Album )
+        {
+            object = (AlbumBase*)new Album( node);
+        }
+        if ( type == AT_Page )
+        {
+            object = (AlbumBase*)new Page( node );
+        }
+        // else if ( type == AT_Title )
+        // {
+        //     object = (AlbumBase*)new Title( node );
+        // }
+        else if ( type == AT_Col )
+        {
+            object = (AlbumBase*)new Column( node );
+        }
+        else if ( type == AT_Row )
+        {
+            object = (AlbumBase*)new Row( node );
+        }
+        else if ( type == AT_Stamp )
+        {
+            object = (AlbumBase*)new Stamp( node );
+        }
+        return object;
+    }
 }

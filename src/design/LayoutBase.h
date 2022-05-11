@@ -39,7 +39,6 @@ namespace Design {
          *
          **************************************************/
         LayoutBase( ) : AlbumBase( ) {
-
         };
 
         /**
@@ -47,17 +46,17 @@ namespace Design {
          *
          * @param name
          **************************************************/
-        LayoutBase( AlbumBase* parent, wxXmlNode* node ) : AlbumBase( parent, node ) {
+        LayoutBase( wxXmlNode* node ) : AlbumBase( node ) {
         };
 
 
         virtual wxXmlNode* Write( wxXmlNode* parent ) = 0;
 
-        double GetXPos( ) { return m_frame.GetXPos( ) ;};
+        double GetXPos( ) { return m_frame.GetXPos( ); };
         void SetXPos( double val ) { m_frame.SetXPos( val ); };
         double GetYPos( ) { return m_frame.GetYPos( ); };
         void SetYPos( double val ) { m_frame.SetYPos( val ); };
-        double GetWidth( ) { return m_frame.GetWidth( ) ;};
+        double GetWidth( ) { return m_frame.GetWidth( ); };
         void SetWidth( double val ) { m_frame.SetWidth( val ); };
         double GetHeight( ) { return m_frame.GetHeight( ); };
         void SetHeight( double val ) { m_frame.SetHeight( val ); };
@@ -67,8 +66,9 @@ namespace Design {
         void SetMinHeight( double val ) { m_frame.SetMinHeight( val ); };
 
         wxString GetTitle( ) { return m_title; };
-        void SetTitle( wxString title ) { m_title = title; UpdateTitleSize();};
-        int GetTitleHeight( ) { return m_titleSize.GetY(); };       
+        void SetTitle( wxString title ) { m_title = title; UpdateTitleSize( ); };
+        double GetTitleHeight( ) { return m_titleSize.y; };
+        double GetTitleWidth( ) { return m_titleSize.x; };
 
         bool ShowTitle( ) { return m_showTitle; };
         void SetShowTitle( bool show = false ) { m_showTitle = show; };
@@ -98,13 +98,16 @@ namespace Design {
         virtual bool UpdateMinimumSize( ) = 0;
 
         virtual void UpdateSizes( ) = 0;
-        virtual void draw( wxPaintDC &dc, int x, int y ) = 0;
-        void UpdateTitleSize();
+        virtual void draw( wxDC& dc, double x, double y ) = 0;
+        void UpdateTitleSize( );
+        void WriteFrame( wxString loc, wxString name, wxString id, Frame* frame );
+        void DumpLayout( double x, double y );
+ 
 
     protected:
         Frame m_frame;
         wxString m_title;
-        wxSize m_titleSize;
+        wxRealPoint m_titleSize;
         bool m_showTitle;
         bool m_showFrame;
     };

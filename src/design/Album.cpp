@@ -15,6 +15,7 @@
 #include "odt/Document.h"
 #include "odt/ODTDefs.h"
 #include "utils/XMLUtilities.h"
+#include "gui/DesignTreeCtrl.h"
 
 namespace Design {
 
@@ -93,28 +94,29 @@ namespace Design {
         // }
 
 
-        TitlePage* titlePage = ( TitlePage* )FindFirstChild( "TitlePage" );
-        if ( titlePage )
-        {
-            // set the layout parameters into the child
-            titlePage->SetXPos( 0.0 );
-            titlePage->SetYPos( 0.0 );
-            titlePage->SetWidth( GetWidth( ) );
-            titlePage->SetHeight( GetHeight( ) );
-            titlePage->UpdateMinimumSize( );
-        }
+        // TitlePage* titlePage = ( TitlePage* )FindFirstChild( "TitlePage" );
+        // if ( titlePage )
+        // {
+        //     // set the layout parameters into the child
+        //     titlePage->SetXPos( 0.0 );
+        //     titlePage->SetYPos( 0.0 );
+        //     titlePage->SetWidth( GetWidth( ) );
+        //     titlePage->SetHeight( GetHeight( ) );
+        //     titlePage->UpdateMinimumSize( );
+        // }
         // set known child values
-
-
-        for ( ChildList::iterator it = BeginChildList(); it != EndChildList(); ++it )
+        wxTreeItemIdValue cookie;
+        wxTreeItemId parentID = GetTreeItemId();
+        wxTreeItemId childID = GetDesignTreeCtrl()->GetFirstChild(parentID, cookie);
+        while ( childID.IsOk() )
         {
-            AlbumBaseType type = ( AlbumBaseType )( *it )->GetNodeType( );
+            AlbumBaseType type = ( AlbumBaseType )GetDesignTreeCtrl()->GetItemType( childID );
             switch ( type )
             {
                 case AT_Page:
                 {
                     // set the layout parameters into the child
-                    Page* page = ( Page* )( *it );
+                    Page* page = ( Page* )GetDesignTreeCtrl()->GetItemNode( childID );
                     //page->SetBorder( m_border );
                     page->SetXPos( 0.0 );
                     page->SetYPos( 0.0 );
@@ -131,6 +133,7 @@ namespace Design {
                 default:
                     break;
             }
+            childID = GetDesignTreeCtrl()->GetNextChild(parentID, cookie);
 
         }
     }
@@ -142,12 +145,16 @@ namespace Design {
         // go to the bottom of each child container object ( row, column, page)
         // and begin filling in position relative to the parent
 
-        for ( ChildList::iterator it = BeginChildList(); it != EndChildList(); ++it )
+        wxTreeItemIdValue cookie;
+        wxTreeItemId parentID = GetTreeItemId();
+        wxTreeItemId childID = GetDesignTreeCtrl()->GetFirstChild(parentID, cookie);
+        while ( childID.IsOk() )
         {
-            LayoutBase* child = ( LayoutBase* )( *it );
+            LayoutBase* child = ( LayoutBase* )GetDesignTreeCtrl()->GetItemNode( childID );
 
             //  call each childs Design function
             child->UpdateSizes(  );
+            childID = GetDesignTreeCtrl()->GetNextChild(parentID, cookie);
         }
 
     }
@@ -157,11 +164,16 @@ namespace Design {
 
         // go to the bottom of each child container object ( row, column, page)
         // and begin filling in position relative to the parent
-        for ( ChildList::iterator it = BeginChildList(); it != EndChildList(); ++it )
+
+        wxTreeItemIdValue cookie;
+        wxTreeItemId parentID = GetTreeItemId();
+        wxTreeItemId childID = GetDesignTreeCtrl()->GetFirstChild(parentID, cookie);
+        while ( childID.IsOk() )
         {
-            LayoutBase* child = ( LayoutBase* )( *it );
+            LayoutBase* child = ( LayoutBase* )GetDesignTreeCtrl()->GetItemNode( childID );
 
             child->UpdatePositions( ) ;
+            childID = GetDesignTreeCtrl()->GetNextChild(parentID, cookie);
         }
     }
 
@@ -173,10 +185,11 @@ namespace Design {
 
         bool firstPage = true;
 
-        for ( ChildList::iterator it = BeginChildList(); it != EndChildList(); ++it )
+         wxTreeItemIdValue cookie;
+        wxTreeItemId parentID = GetTreeItemId();
+        wxTreeItemId childID = GetDesignTreeCtrl()->GetFirstChild(parentID, cookie);        while ( childID.IsOk() )
         {
-            LayoutBase* child = ( LayoutBase* )( *it );
-            int childType = child->GetNodeType( );
+            int childType  = ( AlbumBaseType )GetDesignTreeCtrl()->GetItemType( childID );
             switch ( childType )
             {
                 case AT_Page:
@@ -197,9 +210,11 @@ namespace Design {
                     }
                     firstPage = false;
                     // set the layout parameters into the child
-                    Page* page = ( Page* )child;
+                    Page* page = ( Page* )GetDesignTreeCtrl()->GetItemNode( childID );
                     page->Write( thePage );
                     break;
+
+                    childID = GetDesignTreeCtrl()->GetNextChild(parentID, cookie);
 
                 }
             
@@ -269,5 +284,31 @@ namespace Design {
         }
         m_nodeValid = status;
         return status;
+    }
+
+    void Album::Save( wxXmlNode* xmlNode )
+    {
+        SetAttribute( xmlNode, AT_Name );
+        SetAttribute( xmlNode, AT_PageWidth );
+        SetAttribute( xmlNode, AT_PageHeight );
+        SetAttribute( xmlNode, AT_TopMargin );
+        SetAttribute( xmlNode, AT_BottomMargin );
+        SetAttribute( xmlNode, AT_RightMargin );
+        SetAttribute( xmlNode, AT_LeftMargin );
+        SetAttribute( xmlNode, AT_BorderFileName );
+        SetAttribute( xmlNode, AT_BorderSize );
+    }
+    void Album::DumpLayout(   )
+    {
+        wxTreeItemIdValue cookie;
+        wxTreeItemId parentID = GetTreeItemId();
+        wxTreeItemId childID = GetDesignTreeCtrl()->GetFirstChild(parentID, cookie);
+        while ( childID.IsOk() )
+        {
+            LayoutBase* child = ( LayoutBase* )GetDesignTreeCtrl()->GetItemNode( childID );
+
+            child->DumpLayout(  0, 0  );
+            childID = GetDesignTreeCtrl()->GetNextChild(parentID, cookie);
+        }
     }
 }

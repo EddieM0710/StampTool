@@ -28,10 +28,10 @@ namespace Design {
          *
          * @param parent
          **************************************************/
-        Row( AlbumBase* parent, wxXmlNode* node ) : LayoutBase( parent, node )
+        Row(  wxXmlNode* node ) : LayoutBase( node )
         { 
             SetNodeType( AT_Row ); 
-            SetObjectName( AlbumBaseNames[GetNodeType() ] );
+            SetObjectName( AlbumBaseNames[ GetNodeType() ] );
         };
 
         /**
@@ -70,7 +70,12 @@ namespace Design {
         wxXmlNode* Write( wxXmlNode* parent );
 
         NodeStatus ValidateNode();
-        void draw( wxPaintDC &dc, int x, int y );
+        void draw( wxDC &dc, double x, double y );
+        bool GetShowTitle(){ return String2Bool( GetAttrStr( AT_ShowTitle ) ); };
+        void SetShowTitle( bool val ){ SetAttrStr( AT_ShowTitle, Bool2String( val) ); };
+        bool GetShowFrame(){ return String2Bool( GetAttrStr( AT_ShowFrame ) ); };
+        void SetShowFrame( bool val ){ SetAttrStr( AT_ShowFrame, Bool2String( val ) ); };
+        void Save( wxXmlNode* xmlNode );
 
     private:
 

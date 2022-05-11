@@ -31,7 +31,7 @@ namespace Design {
          *
          * @param parent
          **************************************************/
-        Title( AlbumBase* parent, wxXmlNode* node ) : LayoutBase( parent,  node ) 
+        Title(  wxXmlNode* node ) : LayoutBase( node ) 
         { 
             SetNodeType( AT_Title );
             SetObjectName( AlbumBaseNames[GetNodeType() ] ); 

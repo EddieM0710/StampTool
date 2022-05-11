@@ -40,6 +40,7 @@
 #include "design/Column.h"
 #include "AlbumGenApp.h"
 #include "gui/AlbumImagePanel.h"
+#include "gui/DesignTreeCtrl.h"
 
 namespace Design {
 
@@ -82,9 +83,23 @@ namespace Design {
             bakFile.SetExt( "bak" );
             wxRenameFile( filename, bakFile.GetFullName( ), true );
         }
-
+        SaveDesignTree();
         m_albumDoc->Save( filename );
         SetDirty( false );
+    }
+
+    void DesignData::SaveDesignTree()
+    {
+        wxTreeItemId albumID = GetDesignTreeCtrl()->GetRootItem();
+        Design::Album* album = (Design::Album*)GetDesignTreeCtrl()->GetItemNode(albumID);
+    
+        wxXmlNode* root = m_albumDoc->DetachRoot();
+        root->~wxXmlNode();
+         
+        wxXmlNode* xmlNode = Utils::NewNode( m_albumDoc, Design::AlbumBaseNames[Design::AT_Album] );
+        albumID = GetDesignTreeCtrl()->GetRootItem();
+        album->Save( xmlNode );    
+        GetDesignTreeCtrl()->SaveNodeData ( xmlNode, albumID );   
     }
 
     bool DesignData::LoadXML( wxString filename )
@@ -101,30 +116,30 @@ namespace Design {
             return false;
         }
 
-        wxXmlNode* albumBaseRoot = m_albumDoc->GetRoot( );
-        wxString name = albumBaseRoot->GetName( );
+        // wxXmlNode* albumBaseRoot = m_albumDoc->GetRoot( );
+        // wxString name = albumBaseRoot->GetName( );
 
-        if ( name.Length( ) == 0 )
-        {
-            albumBaseRoot->SetName( filename );
-        }
-        m_album = new Album( ( AlbumBase* )0, albumBaseRoot );
-        if ( !m_album )
-        {
-            return false;
-        }
+        // if ( name.Length( ) == 0 )
+        // {
+        //     albumBaseRoot->SetName( filename );
+        // }
+        // m_album = new Album( ( AlbumBase* )0, albumBaseRoot );
+        // if ( !m_album )
+        // {
+        //     return false;
+        // }
 
         SetDirty( false );
         return true;
     }
 
-    Row* DesignData::AddRow( LayoutBase* node )
+    Row* DesignData::AddRow( wxTreeItemId parentId )
     {
-        LayoutBase* parent = node;
+ //       LayoutBase* parent = node;
         AlbumBaseType prevType = AT_None;
-        while ( parent )
+        while ( parentId.IsOk() )
         {
-            AlbumBaseType type = parent->GetNodeType( );
+            AlbumBaseType type = GetDesignTreeCtrl()->GetItemType( parentId );
             if ( type == AT_Page )
             {
                 // can't mix rows and cols as siblings
@@ -137,13 +152,12 @@ namespace Design {
             {
                 break;
             }
-            parent = ( LayoutBase* )parent->GetParent( );
+            parentId =  GetDesignTreeCtrl()->GetItemParent( parentId );
             prevType = type;
         }
-        if ( parent )
+        if ( parentId.IsOk() )
         {
-            Row* newRow = new Row( parent, ( wxXmlNode* )0 );
-            parent->AddChild( newRow );
+            Row* newRow = new Row( ( wxXmlNode* )0 );
             SetDirty( );
             return newRow;
         }
@@ -151,17 +165,15 @@ namespace Design {
         {
             return  ( Row* )0;
         }
-
-
     }
 
-    Column* DesignData::AddCol( LayoutBase* node )
+    Column* DesignData::AddCol( wxTreeItemId parentId )
     {
-        LayoutBase* parent = node;
+        //LayoutBase* parent = node;
         AlbumBaseType prevType = AT_None;
-        while ( parent )
+        while ( parentId.IsOk() )
         {
-            AlbumBaseType type = parent->GetNodeType( );
+            AlbumBaseType type = GetDesignTreeCtrl()->GetItemType( parentId );
             if ( type == AT_Page )
             {
                 // can't mix rows and cols as siblings
@@ -174,13 +186,13 @@ namespace Design {
             {
                 break;
             }
-            parent = ( LayoutBase* )parent->GetParent( );
+            parentId = GetDesignTreeCtrl()->GetItemParent( parentId );
             prevType = type;
         }
-        if ( parent )
+        if ( parentId.IsOk() )
         {
             SetDirty( );
-            return new Column( parent, ( wxXmlNode* )0 );
+            return new Column( ( wxXmlNode* )0 );
         }
         else
         {
@@ -188,22 +200,22 @@ namespace Design {
         }
     }
 
-    Page* DesignData::AddPage( LayoutBase* node )
+    Page* DesignData::AddPage(  wxTreeItemId parentId  )
     {
-        LayoutBase* parent = node;
-        while ( parent )
+        //LayoutBase* parent = node;
+        while ( parentId.IsOk() )
         {
-            AlbumBaseType type = parent->GetNodeType( );
+            AlbumBaseType type = GetDesignTreeCtrl()->GetItemType( parentId );
             if ( type == AT_Album )
             {
                 break;
             }
-            parent = ( LayoutBase* )parent->GetParent( );
+            parentId = GetDesignTreeCtrl()->GetItemParent( parentId );
         }
-        if ( parent )
+        if ( parentId.IsOk() )
         {
             SetDirty( );
-            return new Page( parent, ( wxXmlNode* )0 );
+            return new Page( ( wxXmlNode* )0 );
         }
         else
         {
@@ -211,23 +223,23 @@ namespace Design {
         }
     }
 
-    Stamp* DesignData::AddStamp( LayoutBase* node )
+    Stamp* DesignData::AddStamp( wxTreeItemId parentId )
     {
-        LayoutBase* parent = node;
-        while ( parent )
+       // LayoutBase* parent = node;
+        while ( parentId.IsOk() )
         {
-            AlbumBaseType type = parent->GetNodeType( );
+            AlbumBaseType type = GetDesignTreeCtrl()->GetItemType( parentId );
             if ( type == AT_Col
                 || type == AT_Row )
             {
                 break;
             }
-            parent = ( LayoutBase* )parent->GetParent( );
+            parentId = GetDesignTreeCtrl()->GetItemParent( parentId );
         }
-        if ( parent )
+        if ( parentId.IsOk() )
         {
             SetDirty( );
-            return new Stamp( parent, ( wxXmlNode* )0 );
+            return new Stamp(( wxXmlNode* )0 );
         }
         else
         {
@@ -294,10 +306,22 @@ namespace Design {
             {
                 page->UpdateSizes( );
                 page->UpdatePositions( );
-                GetAlbumImagePanel()->Refresh( );
+                GetAlbumImagePanel()->DrawBitmap( );
             }
         }
+    }
 
+    void DesignData::UpdateAlbum( )
+    {
+        bool ok = m_album->UpdateMinimumSize( );
+       //if ( ok )
+        {
+            m_album->UpdateSizes( );
+            m_album->UpdatePositions( );
+            GetAlbumImagePanel()->DrawBitmap( );
+            m_album->DumpLayout(   );
+
+        }
     }
 
 }

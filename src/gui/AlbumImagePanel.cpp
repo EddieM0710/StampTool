@@ -24,6 +24,7 @@
 #include "Defs.h"
 #include "AlbumImagePanel.h"
 #include "design/DesignData.h"
+#include "design/Album.h"
 #include "design/DesignDefs.h"
 #include "design/LayoutBase.h"
 #include "utils/Project.h"
@@ -118,9 +119,9 @@ AlbumImagePanel::~AlbumImagePanel( )
 
 void AlbumImagePanel::Init( )
 {
-    wxRect displayPixels = wxGetClientDisplayRect();
-    wxSize displayMM = wxGetDisplaySize();
-    m_pixelsPerIn = (displayPixels.GetWidth()*25.4)/displayMM.GetWidth();
+    wxRect displayPixels = wxGetClientDisplayRect( );
+    wxSize displayMM = wxGetDisplaySize( );
+    m_pixelsPerIn = ( displayPixels.GetWidth( ) * 25.4 ) / displayMM.GetWidth( );
 
     //   this->SetScrollbars(10,10,1000,1000);
      // AlbumImagePanel member initialisation
@@ -180,38 +181,36 @@ wxIcon AlbumImagePanel::GetIconResource( const wxString& name )
  *
  **************************************************/
 
-void AlbumImagePanel::SetBitmap( wxString filename )
+void AlbumImagePanel::DrawBitmap( )
 {
-    wxImage image;
-    if ( filename.IsEmpty( ) )
+    Design::Album* album = GetDesignData( )->GetAlbum( );
+    //album->GetAttrDbl( Design::AT_Width );
+    //wxSize ppi = wxGetDisplayPPI();
+    //
+    double width = album->GetAttrDbl( Design::AT_PageWidth )*Design::PpMM.x;
+    double height = album->GetAttrDbl( Design::AT_PageHeight )*Design::PpMM.y;
+    std::cout << width << "  " << height << "\n";
+    wxBitmap* bitmap = new wxBitmap( width, height );
+    m_bitmap = *bitmap;
+    wxMemoryDC dc;
+    DoPrepareDC( dc );
+    //dc.SetMapMode( wxMM_METRIC );
+    dc.SelectObject( m_bitmap );
+    dc.Clear( );
+
+    Design::LayoutBase* pageNode = Design::GetSelectedNodePage( );
+    if ( pageNode )
     {
-        image = wxImage( NotFound );
-    }
-    else
-    {
-        wxFileName fn( filename );
-        if ( !fn.FileExists( ) )
-        {
-            image = wxImage( NotFound );
-        }
-        else
-        {
-            if ( !image.CanRead( filename ) )
-            {
-                image = wxImage( NotFound );
-            }
-            else
-            {
-                image = wxImage(filename);
-            }
-        }
+        pageNode->draw( dc, album->GetAttrDbl(Design::AT_LeftMargin), album->GetAttrDbl(Design::AT_TopMargin) );
     }
 
-//    m_bitmap = image;
+    dc.SelectObject(wxNullBitmap);
+    m_bitmap.SaveFile( "Test.jpg",wxBITMAP_TYPE_JPEG );
+    //    m_bitmap = image;
     m_zoom = .9;
 
-    int w = image.GetWidth( )*2;
-    int h = image.GetHeight( )*2;
+    int w = bitmap->GetWidth( ) * 2;
+    int h = bitmap->GetHeight( ) * 2;
 
     /* init scrolled area size, scrolling speed, etc. */
     SetScrollbars( 1, 1, w, h, 0, 0 );
@@ -262,16 +261,21 @@ void AlbumImagePanel::OnZoom( wxCommandEvent& event )
     Refresh( );
 }
 
-void AlbumImagePanel::Draw( wxPaintDC &dc, Design::LayoutBase* node, wxPoint pt)
+void AlbumImagePanel::Draw( wxDC& dc, Design::LayoutBase* node, wxPoint pt )
 {
-    wxPoint newPoint( pt.x + node->GetXPos(), pt.y + node->GetYPos() );
-    wxRect rect(pt.x, pt.y, node->GetWidth(), node->GetHeight() );
-    dc.DrawRectangle(rect);
-    for ( Design::ChildList::iterator it = node->BeginChildList( ); it != node->EndChildList(); ++it )
+    wxPoint newPoint( pt.x + node->GetXPos( ), pt.y + node->GetYPos( ) );
+    wxRect rect( pt.x, pt.y, node->GetWidth( ), node->GetHeight( ) );
+    dc.DrawRectangle( rect );
+
+    wxTreeItemIdValue cookie;
+    wxTreeItemId nodeID = node->GetTreeItemId( );
+    wxTreeItemId childID = GetDesignTreeCtrl( )->GetFirstChild( nodeID, cookie );
+    while ( childID.IsOk( ) )
     {
-        Design::LayoutBase* child = ( Design::LayoutBase* )( *it );
+        Design::LayoutBase* child = ( Design::LayoutBase* )GetDesignTreeCtrl( )->GetItemNode( childID );
         Draw( dc, child, newPoint );
-    }  
+        childID = GetDesignTreeCtrl( )->GetNextChild( nodeID, cookie );
+    }
 }
 /*
  * wxEVT_PAINT event handler for ID_ALBUMIMAGEPANEL
@@ -282,20 +286,66 @@ void AlbumImagePanel::OnPaint( wxPaintEvent& event )
 {
     wxPaintDC dc( this );
     DoPrepareDC( dc );
-
+    dc.SetMapMode( wxMM_METRIC );
     dc.Clear( );
-    Design::LayoutBase* pageNode = Design::GetSelectedNodePage( );
-    if ( pageNode )
+
+
+    // const wxSize size = GetClientSize( );
+    // double scale = 1.;
+    // int width = 8.5*25.4;
+    // int height = 11*25.4;
+
+
+    // /* init scrolled area size, scrolling speed, etc. */
+    // SetScrollbars( 1, 1, width*2, height*2, 0, 0 );
+
+    // if ( size.x < width )
+    // {
+    //     scale = ( double )size.x / ( double )width;
+    // }
+    // if ( size.y < ( height * scale ) )
+    // {
+    //     scale = ( double )size.y / ( ( double )height * scale ) * scale;
+    // }
+
+    // //dc.SetUserScale( scale * m_zoom, scale * m_zoom );
+
+
+    const wxSize size = GetClientSize( );
+    double scale = 1.;
+    if ( m_bitmap.IsOk( ) )
     {
-        pageNode->draw( dc, 0, 0  );
+        int width = m_bitmap.GetWidth( );
+        int height = m_bitmap.GetHeight( );
+        if ( size.x < width )
+        {
+            scale = ( double )size.x / ( double )width;
+        }
+        if ( size.y < ( height * scale ) )
+        {
+            scale = ( double )size.y / ( ( double )height * scale ) * scale;
+        }
+
+        dc.SetUserScale( scale * m_zoom, scale * m_zoom );
+
+        dc.DrawBitmap( m_bitmap, 0, 0,
+            // dc.DeviceToLogicalX((size.x - m_zoom*scale *
+            // m_bitmap.GetWidth()) / 2), dc.DeviceToLogicalY((size.y -
+            // m_zoom*scale * m_bitmap.GetHeight()) / 2),
+            true /* use mask */
+        );
     }
 }
 
-wxSize AlbumImagePanel::GetTextExtent(wxString text)
+wxRealPoint AlbumImagePanel::GetTextExtent( wxString text )
 {
-    wxPaintDC dc( this );
+    wxClientDC dc( this );
     DoPrepareDC( dc );
-    return dc.GetTextExtent(text);
+    wxSize size = dc.GetTextExtent( text );
+    wxRealPoint titleSize;
+    titleSize.x = size.x/Design::PpMM.x;
+    titleSize.y = size.y/Design::PpMM.y;
+    return titleSize;
 }
 /*
  * wxEVT_CONTEXT_MENU event handler for ID_ALBUMIMAGEPANEL

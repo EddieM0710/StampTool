@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- The margines are outside the normal printing area. -->
+<!-- This is the space to be filled by the background border image. -->
+<!-- The border size is the allowance made around the margines(above) -->
+<!-- and will define the useable page size. -->
+<Album Name="2019Commemoratives.odt" PageWidth="8.5" PageHeight="11" TopMargin=".3" BottomMargin=".3" RightMargin=".75" LeftMargin=".3" BorderFileName="box2.jpg" BorderSize="0">
+  <Page>
+    <!-- A page should have one top column or row child. -->
+    <!-- the title element is optional. -->
+    <!-- It is the Page title when in the top page child.- -->
+    <Title height=".4">This is the Page Title</Title>
+    <Row>
+      <Stamp ID="5339" Link="5339.jpg"/>
+      <Stamp ID="5340" Link="5340.jpg"/>
+      <Stamp ID="5349" Link="5349.jpg"/>
+    </Row>
+  </Page>
+  <Page>
+    <Row>
+      <Stamp ID="5359a" Link="5359a.jpg"/>
+        </Row>
+  </Page>
+</Album>

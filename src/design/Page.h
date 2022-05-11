@@ -13,6 +13,8 @@
 #define Page_H
 
 #include "design/LayoutBase.h"
+#include "design/Album.h"
+
 namespace Design {
 
     class Title;
@@ -24,11 +26,25 @@ namespace Design {
     class Page : public LayoutBase
     {
     public:
-        Page( AlbumBase* parent, wxXmlNode* node ) : LayoutBase(  parent, node ) 
-        { 
+        Page( wxXmlNode* node ) : LayoutBase( node )
+        {
             SetNodeType( AT_Page );
-            SetObjectName( AlbumBaseNames[GetNodeType() ] );
-             };
+            SetObjectName( AlbumBaseNames[ GetNodeType( ) ] );
+
+            Album* album = GetAlbum( );
+            if ( album )
+            {
+                SetXPos( 0.0 );
+                SetYPos( 0.0 );
+                SetWidth( album->GetWidth( ) );
+                SetHeight( album->GetHeight( ) );
+                SetTopMargin( album->GetTopMargin( ) );
+                SetBottomMargin( album->GetBottomMargin( ) );
+                SetRightMargin( album->GetRightMargin( ) );
+                SetLeftMargin( album->GetLeftMargin( ) );
+                SetBorderSize( album->GetBorderSize( ) );
+            }       
+        };
         ~Page( ) {};
 
         /**
@@ -130,9 +146,11 @@ namespace Design {
          **************************************************/
         void SetBorderSize( double val ) { m_borderSize = val; };
 
-        NodeStatus ValidateNode();
-        
-        void draw( wxPaintDC &dc, int x, int y );
+        NodeStatus ValidateNode( );
+
+        void draw( wxDC& dc, double x, double y );
+
+        void Save( wxXmlNode* parent );
 
     private:
 
@@ -167,7 +185,7 @@ namespace Design {
          *
          **************************************************/
         double m_borderSize;
-
+        Frame m_pageFrame;
     };
 }
 #endif

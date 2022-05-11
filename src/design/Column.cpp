@@ -15,6 +15,7 @@
 #include "design/Title.h"
 #include "odt/Document.h"
 #include "utils/XMLUtilities.h"
+#include "gui/DesignTreeCtrl.h"
 
 namespace Design {
 
@@ -27,10 +28,13 @@ namespace Design {
         SetMinHeight( 0.0 );
 
         double minHeight = 0.0;
-
-        for ( ChildList::iterator it = BeginChildList(); it != EndChildList(); ++it )
+        wxTreeItemIdValue cookie;
+        wxTreeItemId parentID = GetTreeItemId();
+        wxTreeItemId childID = GetDesignTreeCtrl()->GetFirstChild(parentID, cookie);
+        while ( childID.IsOk() )
         {
-            LayoutBase* child = ( LayoutBase* )( *it );
+            AlbumBaseType type = ( AlbumBaseType )GetDesignTreeCtrl()->GetItemType( childID );
+            LayoutBase* child = ( LayoutBase* )GetDesignTreeCtrl()->GetItemNode( childID );
 
             child->UpdateMinimumSize( );
 
@@ -39,6 +43,7 @@ namespace Design {
                 SetMinWidth( child->GetWidth( ) );
             }
             minHeight += child->GetHeight( );
+            childID = GetDesignTreeCtrl()->GetNextChild(parentID, cookie);
         }
         SetMinHeight( minHeight );
     }
@@ -56,9 +61,13 @@ namespace Design {
 
         // Set the height and width of each child  column
         // Stamps have fixed height and width
-        for ( ChildList::iterator it = BeginChildList( ); it != EndChildList(); ++it )
+        wxTreeItemIdValue cookie;
+        wxTreeItemId parentID = GetTreeItemId();
+        wxTreeItemId childID = GetDesignTreeCtrl()->GetFirstChild(parentID, cookie);
+        while ( childID.IsOk() )
         {
-            LayoutBase* child = ( LayoutBase* )( *it );
+            AlbumBaseType type = ( AlbumBaseType )GetDesignTreeCtrl()->GetItemType( childID );
+            LayoutBase* child = ( LayoutBase* )GetDesignTreeCtrl()->GetItemNode( childID );
             AlbumBaseType childType = ( AlbumBaseType )child->GetNodeType( );
             if ( childType == AT_Row )
             {
@@ -71,6 +80,7 @@ namespace Design {
                 child->SetHeight( minHeight );
             }
             child->UpdateSizes( );
+            childID = GetDesignTreeCtrl()->GetNextChild(parentID, cookie);
         }
     }
 
@@ -97,9 +107,13 @@ namespace Design {
         double yPos = spacing;
         if ( ShowTitle() ) yPos += GetTitleHeight();
 
-        for ( ChildList::iterator it = BeginChildList(); it != EndChildList(); ++it )
+        wxTreeItemIdValue cookie;
+        wxTreeItemId parentID = GetTreeItemId();
+        wxTreeItemId childID = GetDesignTreeCtrl()->GetFirstChild(parentID, cookie);
+        while ( childID.IsOk() )
         {
-            LayoutBase* child = ( LayoutBase* )( *it );
+            AlbumBaseType type = ( AlbumBaseType )GetDesignTreeCtrl()->GetItemType( childID );
+            LayoutBase* child = ( LayoutBase* )GetDesignTreeCtrl()->GetItemNode( childID );
 
             child->UpdatePositions( );
 
@@ -130,6 +144,7 @@ namespace Design {
                     break;
                 }
             }
+            childID = GetDesignTreeCtrl()->GetNextChild(parentID, cookie);
         }
     }
 
@@ -155,9 +170,13 @@ namespace Design {
             textAnchorType ); // "page", "paragraph"
 
 
-        for ( ChildList::iterator it = BeginChildList( ); it != EndChildList(); ++it )
+        wxTreeItemIdValue cookie;
+        wxTreeItemId parentID = GetTreeItemId();
+        wxTreeItemId childID = GetDesignTreeCtrl()->GetFirstChild(parentID, cookie);
+        while ( childID.IsOk() )
         {
-            LayoutBase* child = ( LayoutBase* )( *it );
+            AlbumBaseType type = ( AlbumBaseType )GetDesignTreeCtrl()->GetItemType( childID );
+            LayoutBase* child = ( LayoutBase* )GetDesignTreeCtrl()->GetItemNode( childID );
 
             AlbumBaseType childType = (AlbumBaseType)child->GetNodeType( );
             switch ( childType )
@@ -184,6 +203,7 @@ namespace Design {
                     break;
                 }
             }
+            childID = GetDesignTreeCtrl()->GetNextChild(parentID, cookie);
         }
         return frame;
     }
@@ -208,15 +228,26 @@ namespace Design {
         return status;
     }
 
-    void Column::draw( wxPaintDC &dc, int x, int y )
+    void Column::draw( wxDC &dc, double x, double y )
     {
         m_frame.draw( dc, x, y );
 
-        for ( ChildList::iterator it = BeginChildList( ); it != EndChildList( ); ++it )
+        wxTreeItemIdValue cookie;
+        wxTreeItemId parentID = GetTreeItemId();
+        wxTreeItemId childID = GetDesignTreeCtrl()->GetFirstChild(parentID, cookie);
+        while ( childID.IsOk() )
         {
-            LayoutBase* child = ( LayoutBase* )( *it );
+            AlbumBaseType type = ( AlbumBaseType )GetDesignTreeCtrl()->GetItemType( childID );
+            LayoutBase* child = ( LayoutBase* )GetDesignTreeCtrl()->GetItemNode( childID );
             child->draw( dc, x+GetXPos(), y+GetYPos() );
+            childID = GetDesignTreeCtrl()->GetNextChild(parentID, cookie);
         }
     }
 
+    void Column::Save( wxXmlNode* xmlNode  )
+    {
+        SetAttribute( xmlNode, AT_Name );
+        SetAttribute( xmlNode, AT_ShowTitle );
+        SetAttribute( xmlNode, AT_ShowFrame );
+    }
 }

@@ -48,6 +48,7 @@ class AlbumImagePanel;
 #define ID_PANEL 10002
 #define ID_CDDATATEXTCTRL 10005
 #define ID_ALBUMALBUMIMAGEPANEL 10004
+#define ID_ALBUMZOOMSLIDER 10006
 #define SYMBOL_ALBUMSPLITTERWINDOW_STYLE wxTAB_TRAVERSAL
 #define SYMBOL_ALBUMSPLITTERWINDOW_TITLE _("AlbumSplitterWindow")
 #define SYMBOL_ALBUMSPLITTERWINDOW_IDNAME ID_ALBUMSPLITTERWINDOW
@@ -104,7 +105,8 @@ public:
     wxSplitterWindow* m_secondarySplitterWindow;
     AlbumImagePanel* m_albumImagePanel;
 ////@end AlbumSplitterWindow member variables
-AlbumPanel* m_albumPanel ;
+    wxSlider* m_zoomSlider; ///< Pointer to image soom slider
+    AlbumPanel* m_albumPanel ;
 };
 
 #endif

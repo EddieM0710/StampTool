@@ -130,14 +130,41 @@ void AlbumSplitterWindow::CreateControls()
     m_secondarySplitterWindow->SetMinimumPaneSize(0);
     m_albumPanel = new AlbumPanel( m_secondarySplitterWindow, ID_SCROLLEDWINDOW, wxDefaultPosition, wxSize(100, 100), wxSUNKEN_BORDER|wxHSCROLL|wxVSCROLL );
 
+
+  
+    wxPanel* itemPanel4 =
+        new wxPanel( m_secondarySplitterWindow, ID_DESCRIPTIONPANEL, wxDefaultPosition,
+            wxDefaultSize, wxTAB_TRAVERSAL );
+    itemPanel4->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
+    wxBoxSizer* itemBoxSizer5 = new wxBoxSizer( wxVERTICAL );
+    itemPanel4->SetSizer( itemBoxSizer5 );
+
+    wxBoxSizer* itemBoxSizer6 = new wxBoxSizer( wxHORIZONTAL );
+    itemBoxSizer5->Add( itemBoxSizer6, 1, wxGROW | wxALL, 5 );
+    
+    wxBoxSizer* itemBoxSizer7 = new wxBoxSizer( wxVERTICAL );
+    itemBoxSizer6->Add( itemBoxSizer7, 1, wxGROW | wxALL, 5 );
+    wxBoxSizer* itemBoxSizer8 = new wxBoxSizer( wxHORIZONTAL );
+    itemBoxSizer7->Add( itemBoxSizer8, 0, wxGROW | wxALL, 0 );
+
+    wxStaticText* itemStaticText9 = new wxStaticText(
+        itemPanel4, wxID_STATIC, _( "Zoom" ), wxDefaultPosition, wxDefaultSize, 0 );
+    itemBoxSizer8->Add( itemStaticText9, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+
+    m_zoomSlider =
+        new wxSlider( itemPanel4, ID_ALBUMZOOMSLIDER, 100, 25, 300, wxDefaultPosition,
+            wxDefaultSize, wxSL_HORIZONTAL );
+    itemBoxSizer8->Add( m_zoomSlider, 1, wxGROW | wxALL, 0 );
+
     //itemScrolledWindow2->FitInside();
     m_albumImagePanel = 
-        new AlbumImagePanel( m_secondarySplitterWindow, ID_ALBUMALBUMIMAGEPANEL, wxDefaultPosition,
+        new AlbumImagePanel( itemPanel4, ID_ALBUMALBUMIMAGEPANEL, wxDefaultPosition,
             wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
     m_albumImagePanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
-   // itemBoxSizer7->Add( m_albumImagePanel, 1, wxGROW | wxALL, 0 );
+    itemBoxSizer7->Add( m_albumImagePanel, 1, wxGROW | wxALL, 0 );
 
-    m_secondarySplitterWindow->SplitVertically(m_albumPanel, m_albumImagePanel, 200);
+    m_secondarySplitterWindow->SplitVertically(m_albumPanel, itemPanel4, 200);
+
     itemBoxSizer1->Add(m_secondarySplitterWindow, 1, wxGROW|wxALL, 5);
 
 ////@end AlbumSplitterWindow content construction

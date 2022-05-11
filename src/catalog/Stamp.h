@@ -397,6 +397,7 @@ namespace Catalog {
          **************************************************/
         void ProcessCatalogCodes( );
 
+
     private:
         bool m_dataDirty[ DT_NbrTypes ];
         bool m_OK;

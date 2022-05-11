@@ -13,11 +13,14 @@
 #define DesignDefs_H
 
 #include <wx/string.h>
+#include "wx/xml/xml.h"
+#include <wx/gdicmn.h>
 
 namespace Design {
 
     class DesignData;
     class LayoutBase;
+    class AlbumBase;
     class Album;
     
     Album* GetAlbum( void );
@@ -40,7 +43,9 @@ namespace Design {
         AT_NbrAlbumTypes,
         AT_None = 999
     } AlbumBaseType;
-
+ 
+    bool IsAlbumBaseTypeValid( AlbumBaseType type ) ;
+    
     extern wxString AlbumBaseNames[AT_NbrAlbumTypes];
 
     typedef enum
@@ -62,6 +67,9 @@ namespace Design {
         AT_MinWidth,
         AT_ID,
         AT_Link,
+        AT_ShowTitle,
+        AT_ShowId,
+        AT_ShowFrame,
         AT_NbrAttrTypes,
         AT_NOTYPE
     } AlbumAttrType;
@@ -85,8 +93,9 @@ namespace Design {
 
     LayoutBase* GetSelectedNodePage( );
 
-   // LayoutBase* MakeNode( AlbumBaseType type, wxXmlNode* node );
+    AlbumBase* MakeNode( wxXmlNode* node );
 
+    extern wxRealPoint  PpMM;
 
     // wxString GetAttribute( AlbumBaseType type );
     // double GetAttributeDbl( AlbumBaseType type );

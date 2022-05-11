@@ -171,10 +171,12 @@ void DescriptionPanel::CreateControls( void )
 
     wxBoxSizer* itemBoxSizer6 = new wxBoxSizer( wxHORIZONTAL );
     itemBoxSizer5->Add( itemBoxSizer6, 1, wxGROW | wxALL, 5 );
+    
     wxBoxSizer* itemBoxSizer7 = new wxBoxSizer( wxVERTICAL );
     itemBoxSizer6->Add( itemBoxSizer7, 1, wxGROW | wxALL, 5 );
     wxBoxSizer* itemBoxSizer8 = new wxBoxSizer( wxHORIZONTAL );
     itemBoxSizer7->Add( itemBoxSizer8, 0, wxGROW | wxALL, 0 );
+
     wxStaticText* itemStaticText9 = new wxStaticText(
         itemPanel4, wxID_STATIC, _( "Zoom" ), wxDefaultPosition, wxDefaultSize, 0 );
     itemBoxSizer8->Add( itemStaticText9, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );

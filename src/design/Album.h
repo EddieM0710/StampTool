@@ -31,7 +31,7 @@ namespace Design {
          * for holding all the objecs within the album
          *
          **************************************************/
-        Album( AlbumBase* parent, wxXmlNode* node ) : AlbumBase(  parent, node )
+        Album(  wxXmlNode* node ) : AlbumBase( node )
         {
             SetNodeType( AT_Album );
         };
@@ -171,6 +171,8 @@ namespace Design {
             wxString& bottomMargin, wxString& rightMargin, wxString& leftMargin );
 
         NodeStatus ValidateNode();
+        void Save( wxXmlNode* xmlNode );
+        void DumpLayout(   );
 
     private:
 

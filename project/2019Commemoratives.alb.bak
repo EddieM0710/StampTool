@@ -1,31 +1,19 @@
-        <!-- The margines are outside the normal printing area. -->
-        <!-- This is the space to be filled by the background border image. -->
-        <!-- The border size is the allowance made around the margines(above) -->
-        <!-- and will define the useable page size. -->
-<Album 
-        Name="2019Commemoratives.odt"
-        PageWidth="8.5" 
-        PageHeight="11" 
-        TopMargin=".3" 
-        BottomMargin=".3" 
-        RightMargin=".75" 
-        LeftMargin=".3"
-        BorderFileName="box2.jpg" 
-        BorderSize="0" >
-	<Page>
-		<!-- A page should have one top column or row child. -->
- 			<!-- the title element is optional. -->
-			<!-- It is the Page title when in the top page child.- -->  
-        <Title height=".4" >This is the Page Title</Title>
-        <Row>  
-            <Stamp ID="5339" Link="5339.jpg"/>
-                <Stamp ID="5340" Link="5340.jpg"/>
-                <Stamp ID="5349" Link="5349.jpg"/>
-        </Row>
-	</Page>
-    <Page>
-       <Row>  
-            <Stamp ID="5359a" Link="5359a.jpg"/>>
-        </Row>
-     </Page>
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- The margines are outside the normal printing area. -->
+<!-- This is the space to be filled by the background border image. -->
+<!-- The border size is the allowance made around the margines(above) -->
+<!-- and will define the useable page size. -->
+<Album Name="2019Commemoratives.odt" PageWidth="215.9" PageHeight="279.4" TopMargin="7.62" BottomMargin="7.62" RightMargin="19.05" LeftMargin="7.62" BorderFileName="box2.jpg" BorderSize="0">
+  <Page Name="">
+    <Row Name="" ShowTitle="" ShowFrame="">
+      <Stamp ID="5339" Name="Love : Hearts Blossom" Width="23.5" Height="30.5" Link="5339.jpg" ShowTitle="" ShowId=""/>
+      <Stamp ID="5340" Name="Year of The Pig 2019" Width="40" Height="25" Link="5340.jpg" ShowTitle="" ShowId=""/>
+      <Stamp ID="5349" Name="Gregory Hines, American Actor" Width="25" Height="40" Link="5349.jpg" ShowTitle="" ShowId=""/>
+    </Row>
+  </Page>
+  <Page Name="">
+    <Row Name="" ShowTitle="" ShowFrame="">
+      <Stamp ID="5359a" Name="Cactus Flowers, booklet pane of 20 stamps" Width="60.3" Height="145.8" Link="5359a.jpg" ShowTitle="" ShowId=""/>
+    </Row>
+  </Page>
 </Album>

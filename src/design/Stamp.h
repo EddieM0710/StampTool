@@ -36,10 +36,15 @@ namespace Design {
          *
          * @param parent
          **************************************************/
-        Stamp( AlbumBase* parent, wxXmlNode* node ) : LayoutBase( parent, node )
+        Stamp(  wxXmlNode* node ) : LayoutBase( node )
         {
             SetNodeType( AT_Stamp );
             SetObjectName( AlbumBaseNames[ GetNodeType( ) ] );
+            wxString height = GetAttrStr( Design::AT_Height );
+            SetStampHeight( height ) ;
+            wxString width = GetAttrStr( Design::AT_Width );
+            SetStampWidth( width ) ;
+            CalcFrame();
         };
 
         /**
@@ -52,10 +57,7 @@ namespace Design {
          * @brief
          *
          * @return true
-         * @return false
-         **************************************************/
-        void UpdatePositions( );
-
+         * @return falseDesign::
         /**
         * @brief UpdateMinimumSize
         * Calculates the minimum Height and width of the object. It drills down to
@@ -65,10 +67,14 @@ namespace Design {
         * @return false
         **************************************************/
         bool UpdateMinimumSize( );
+        void CalcFrame();
 
         void UpdateSizes( );
 
+        void UpdatePositions( );
+
         /**
+         * 
          * @brief Builds the frame container for the stamp.  The Object is built
          * up of 3 objects. The outer object is the frame container
          * for the stamp frame and the title text. The text is the only thing visible.
@@ -82,12 +88,21 @@ namespace Design {
 
         NodeStatus ValidateNode( );
 
-        void SetStampHeight( double val ) { m_stampHeight = val; m_stampFrame.SetHeight( val * 0.03937 ); };
-        double GetStampHeight( ) { return m_stampHeight; };
-        void SetStampWidth( double val ) { m_stampWidth = val; m_stampFrame.SetWidth( val * 0.03937 ); };
-        double GetStampWidth( ) { return m_stampWidth; };
+        void SetStampHeight( double val ) ;
+        void SetStampHeight( wxString str ) ;
+        double GetStampHeight( );
+        wxString GetStampHeightStr( );
+        void SetStampWidth( double val );
+        void SetStampWidth( wxString str ) ;
+        double GetStampWidth( );
+        wxString GetStampWidthStr( ) ;
         
-        void draw( wxPaintDC &dc, int x, int y );
+        void draw( wxDC &dc, double x, double y );
+        void Save( wxXmlNode* xmlNode );
+        bool GetShowTitle(){ return String2Bool( GetAttrStr( AT_ShowTitle ) ); };
+        void SetShowTitle( bool val ){ SetAttrStr( AT_ShowTitle, Bool2String( val) ); };
+        bool GetShowID(){ return String2Bool( GetAttrStr( AT_ShowId ) ); };
+        void SetShowID( bool val ){ SetAttrStr( AT_ShowId, Bool2String( val ) ); };
 
     private:
 
@@ -114,7 +129,7 @@ namespace Design {
          * @brief The name of the stamp to display
          *
          **************************************************/
-        wxString m_name;
+//        wxString m_name;
 
         // The LayoutBase for this objects contains the frame parameters for the stamp Album object. 
         // It is 10% Larger than the actual Stamp.
@@ -125,15 +140,7 @@ namespace Design {
         Frame m_stampFrame;
         Frame m_stampImageFrame;
 
-        // The Stamp height and width are in mm from the Stamp Catalog
-        double m_stampWidth;
-        double m_stampHeight;
 
-        /**
-         * @brief path to the stap image
-         *
-         **************************************************/
-        wxString m_imageLink;
     };
 }
 #endif

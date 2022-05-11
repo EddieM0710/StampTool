@@ -10,16 +10,22 @@
  **************************************************/
 
 #include "design/TitlePage.h"
+#include "gui/DesignTreeCtrl.h"
 
 namespace Design {
 
 
     bool TitlePage::UpdateMinimumSize( )
     {
-        for ( ChildList::iterator it = BeginChildList(); it != EndChildList(); ++it )
+        wxTreeItemIdValue cookie;
+        wxTreeItemId parentID = GetTreeItemId();
+        wxTreeItemId childID = GetDesignTreeCtrl()->GetFirstChild(parentID, cookie);
+        while ( childID.IsOk() )
         {
-            LayoutBase* child = ( LayoutBase* )( *it );;
+            AlbumBaseType type = ( AlbumBaseType )GetDesignTreeCtrl()->GetItemType( childID );
+            LayoutBase* child = ( LayoutBase* )GetDesignTreeCtrl()->GetItemNode( childID );
             child->UpdateMinimumSize( );
+            childID = GetDesignTreeCtrl()->GetNextChild(parentID, cookie);
         }
     }
     
@@ -27,10 +33,15 @@ namespace Design {
     {
         // go to the bottom of each child container object ( row, column, page) 
         // and begin filling in position relative to the parent
-        for ( ChildList::iterator it = BeginChildList(); it != EndChildList(); ++it )
+        wxTreeItemIdValue cookie;
+        wxTreeItemId parentID = GetTreeItemId();
+        wxTreeItemId childID = GetDesignTreeCtrl()->GetFirstChild(parentID, cookie);
+        while ( childID.IsOk() )
         {
-            LayoutBase* child = ( LayoutBase* )( *it );
+            AlbumBaseType type = ( AlbumBaseType )GetDesignTreeCtrl()->GetItemType( childID );
+            LayoutBase* child = ( LayoutBase* )GetDesignTreeCtrl()->GetItemNode( childID );
             child->UpdatePositions( );
+            childID = GetDesignTreeCtrl()->GetNextChild(parentID, cookie);
         }
     }
     void TitlePage::UpdateSizes( )

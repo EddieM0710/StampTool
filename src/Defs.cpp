@@ -73,10 +73,10 @@ void InitDefs( )
 
 void ReportError(  wxString funct, wxString msg, bool fatal )
 {
-    if ( fatal )    
-    {
-        std::cout << "Fatal Error: " <<funct << " " << msg << " \n";
-        exit(1);
-    }
+    // if ( fatal )    
+    // {
+    //     std::cout << "Fatal Error: " <<funct << " " << msg << " \n";
+    //     exit(1);
+    // }
     std::cout << "Warning: " <<funct << " " << msg << " \n";
 }

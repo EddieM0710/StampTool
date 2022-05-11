@@ -26,12 +26,13 @@
 #include "design/Row.h"
 #include "design/Column.h"
 #include "design/Stamp.h"
+#include "gui/DesignTreeCtrl.h"
 
 namespace Design {
 
-    AlbumBase::AlbumBase( AlbumBase* parent, wxXmlNode* ele )
+    AlbumBase::AlbumBase( wxXmlNode* ele )
     {
-        m_parent = parent;
+//        m_parent = parent;
         if ( ele )
         {
             wxString name = ele->GetName( );
@@ -39,7 +40,7 @@ namespace Design {
             m_lineNbr = ele->GetLineNumber( );
             LoadAttributes( ele );
             m_text = ele->GetNodeContent( );
-            LoadChildren( ele );
+//            LoadChildren( ele );
         }
         else
         {
@@ -53,10 +54,11 @@ namespace Design {
         int cnt = m_attrArray.size( );
         for ( int i = 0; i < cnt; i++ )
         {
-            wxString attrName = m_attrArray.at( i )->GetName( );
+            Attribute* attr = m_attrArray.at( i );
+            wxString attrName = attr->GetName( );
             if ( !attrName.Cmp( name ) )
             {
-                return m_attrArray.at( i );
+                return attr;
             }
         }
         return ( Attribute* )0;
@@ -64,7 +66,6 @@ namespace Design {
 
     bool AlbumBase::LoadAttributes( wxXmlNode* thisObject )
     {
-
         const wxXmlAttribute* attr = thisObject->GetAttributes( );
         while ( attr )
         {
@@ -134,19 +135,19 @@ namespace Design {
         SetAttrStr( AttrNameStrings[ type ], val );
     }
 
-    AlbumBase* AlbumBase::FindFirstChild( wxString name )
-    {
+    // AlbumBase* AlbumBase::FindFirstChild( wxString name )
+    // {
 
-        for ( int i = 0; i < GetNbrChildren( ); i++ )
-        {
-            wxString childType = ChildItem( i )->GetObjectName( );
-            if ( !childType.Cmp( name ) )
-            {
-                return ChildItem( i );
-            }
-        }
-        return ( AlbumBase* )0;
-    }
+    //     for ( int i = 0; i < GetNbrChildren( ); i++ )
+    //     {
+    //         wxString childType = ChildItem( i )->GetObjectName( );
+    //         if ( !childType.Cmp( name ) )
+    //         {
+    //             return ChildItem( i );
+    //         }
+    //     }
+    //     return ( AlbumBase* )0;
+    // }
 
     //!*********************************************************
     // Procedure::Load
@@ -160,91 +161,91 @@ namespace Design {
         m_lineNbr = thisObject->GetLineNumber( );
         LoadAttributes( thisObject );
         m_text = thisObject->GetNodeContent( );
-        LoadChildren( thisObject );
+//        LoadChildren( thisObject );
         return true;
     }
 
 
-    bool AlbumBase::LoadChildren( wxXmlNode* thisObject )
-    {
-        wxXmlNode* child = thisObject->GetChildren( );
-        wxString name;
-        while ( child )
-        {
-            wxString objectType = child->GetName( );
-            // if ( objectType == "TitlePage" )
-            // {
-            //     //                std::cout << "TitlePage" << "\n";
-            //     TitlePage* object = new TitlePage( this, child );
-            //     m_layoutChildArray.push_back( object );
-            //     //                object->Load( child );
-            // }
-            // else 
-            if ( objectType == "Page" )
-            {
-                //                std::cout << "Page" << "\n";
-                Page* object = new Page( this, child );
-                m_layoutChildArray.push_back( object );
-                //                object->Load( child );
-            }
-            // else if ( objectType == "Title" )
-            // {
-            //     //                std::cout << "Title" << "\n";
-            //     Title* object = new Title( this, child );
-            //     m_layoutChildArray.push_back( object );
-            //     //                object->Load( child );
-            // }
-            else if ( objectType == "Column" )
-            {
-                //                std::cout << "Column" << "\n";
-                Column* object = new Column( this, child );
-                m_layoutChildArray.push_back( object );
-                //                object->Load( child );
-            }
-            else if ( objectType == "Row" )
-            {
-                //                std::cout << "Row" << "\n";
-                Row* object = new Row( this, child );
-                m_layoutChildArray.push_back( object );
-                //                object->Load( child );
-            }
-            else if ( objectType == "Stamp" )
-            {
-                //                std::cout << "Stamp" << "\n";
-                Stamp* object = new Stamp( this, child );
-                m_layoutChildArray.push_back( object );
-                //                object->Load( child );
-            }
-            child = ( wxXmlNode* )child->GetNext( );
-        }
-    }
+    // bool AlbumBase::LoadChildren( wxXmlNode* thisObject )
+    // {
+    //     wxXmlNode* child = thisObject->GetChildren( );
+    //     wxString name;
+    //     while ( child )
+    //     {
+    //         wxString objectType = child->GetName( );
+    //         // if ( objectType == "TitlePage" )
+    //         // {
+    //         //     //                std::cout << "TitlePage" << "\n";
+    //         //     TitlePage* object = new TitlePage( this, child );
+    //         //     m_layoutChildArray.push_back( object );
+    //         //     //                object->Load( child );
+    //         // }
+    //         // else 
+    //         if ( objectType == "Page" )
+    //         {
+    //             //                std::cout << "Page" << "\n";
+    //             Page* object = new Page( this, child );
+    //             m_layoutChildArray.push_back( object );
+    //             //                object->Load( child );
+    //         }
+    //         // else if ( objectType == "Title" )
+    //         // {
+    //         //     //                std::cout << "Title" << "\n";
+    //         //     Title* object = new Title( this, child );
+    //         //     m_layoutChildArray.push_back( object );
+    //         //     //                object->Load( child );
+    //         // }
+    //         else if ( objectType == "Column" )
+    //         {
+    //             //                std::cout << "Column" << "\n";
+    //             Column* object = new Column( this, child );
+    //             m_layoutChildArray.push_back( object );
+    //             //                object->Load( child );
+    //         }
+    //         else if ( objectType == "Row" )
+    //         {
+    //             //                std::cout << "Row" << "\n";
+    //             Row* object = new Row( this, child );
+    //             m_layoutChildArray.push_back( object );
+    //             //                object->Load( child );
+    //         }
+    //         else if ( objectType == "Stamp" )
+    //         {
+    //             //                std::cout << "Stamp" << "\n";
+    //             Stamp* object = new Stamp( this, child );
+    //             m_layoutChildArray.push_back( object );
+    //             //                object->Load( child );
+    //         }
+    //         child = ( wxXmlNode* )child->GetNext( );
+    //     }
+    // }
 
 
-    AlbumBase* AlbumBase::FindChild( wxString name )
-    {
-        for ( int i = 0; i < GetNbrChildren( ); i++ )
-        {
-            wxString childType = ChildItem( i )->GetObjectName( );
-            if ( !childType.Cmp( name ) )
-            {
-                return ChildItem( i );
-            }
-        }
-        return ( AlbumBase* )0;
-    }
+    // AlbumBase* AlbumBase::FindChild( wxString name )
+    // {
+    //     for ( int i = 0; i < GetNbrChildren( ); i++ )
+    //     {
+    //         wxString childType = ChildItem( i )->GetObjectName( );
+    //         if ( !childType.Cmp( name ) )
+    //         {
+    //             return ChildItem( i );
+    //         }
+    //     }
+    //     return ( AlbumBase* )0;
+    // }
 
-    void AlbumBase::DeleteChild( AlbumBase* node )
-    {
-        for ( ChildList::iterator it = BeginChildList( ); it != EndChildList( ); ++it )
-        {
-            AlbumBase* child = ( AlbumBase* )( *it );
-            if ( child == node )
-            {
-                m_layoutChildArray.erase( it );
-                node->~AlbumBase( );
-            }
-        }
-    }
+    // void AlbumBase::DeleteChild( AlbumBase* node )
+    // {
+    //     for ( ChildList::iterator it = BeginChildList( ); it != EndChildList( ); ++it )
+    //     {
+    //         AlbumBase* child = ( AlbumBase* )( *it );
+    //         if ( child == node )
+    //         {
+    //             m_layoutChildArray.erase( it );
+    //             node->~AlbumBase( );
+    //         }
+    //     }
+    // }
 
     AlbumBase::~AlbumBase( )
     {
@@ -253,18 +254,23 @@ namespace Design {
             Attribute* child = ( Attribute* )( *it );
             child->~Attribute( );
         }
-        for ( ChildList::iterator it = BeginChildList( ); it != EndChildList( ); ++it )
+        wxTreeItemIdValue cookie;
+        wxTreeItemId parentID = GetTreeItemId();
+        wxTreeItemId childID = GetDesignTreeCtrl()->GetFirstChild(parentID, cookie);        while ( childID.IsOk() )
         {
-            AlbumBase* child = ( AlbumBase* )( *it );
+            AlbumBaseType type = ( AlbumBaseType )GetDesignTreeCtrl()->GetItemType( childID );
+            AlbumBase* child = ( AlbumBase* )GetDesignTreeCtrl()->GetItemNode( childID );
+
             child->~AlbumBase( );
-            m_layoutChildArray.erase( it );
+//            m_layoutChildArray.erase( it );
+            childID = GetDesignTreeCtrl()->GetNextChild(childID, cookie);
         }
     };
 
-    void AlbumBase::AddChild( AlbumBase* node )
-    {
-        m_layoutChildArray.push_back( node );
-    }
+    // void AlbumBase::AddChild( AlbumBase* node )
+    // {
+    //     m_layoutChildArray.push_back( node );
+    // }
 
     NodeStatus AlbumBase::ValidateChildren( AlbumBase* node )
     {
@@ -272,14 +278,49 @@ namespace Design {
         {
             return AT_FATAL;
         }
-        for ( ChildList::iterator it = BeginChildList( ); it != EndChildList( ); ++it )
-        {
-            AlbumBase* child = ( AlbumBase* )( *it );
+        wxTreeItemIdValue cookie;
+        wxTreeItemId parentID = GetTreeItemId();
+        wxTreeItemId childID = GetDesignTreeCtrl()->GetFirstChild(parentID, cookie);        {
+            AlbumBaseType type = ( AlbumBaseType )GetDesignTreeCtrl()->GetItemType( childID );
+            LayoutBase* child = ( LayoutBase* )GetDesignTreeCtrl()->GetItemNode( childID );
             if ( ValidateChildren( child ) == AT_FATAL )
             {
                 return AT_FATAL;
             }
+
+            childID = GetDesignTreeCtrl()->GetNextChild(childID, cookie);
         }
         return AT_OK;
     }
+
+
+    int  AlbumBase::GetNbrChildren( ) {            
+        if( m_treeID.IsOk() )
+        {
+            return GetDesignTreeCtrl()->GetChildrenCount(m_treeID, false);;
+        }
+        return -1;
+    };
+
+    AlbumBase* AlbumBase::GetParent()
+    {
+        if( m_treeID.IsOk() )
+        {
+            wxTreeItemId parentID = GetDesignTreeCtrl()->GetItemParent(m_treeID);
+            if( parentID.IsOk() )
+            {
+                return GetDesignTreeCtrl()->GetItemNode(parentID);
+            }
+        }
+        return (AlbumBase*)0;
+    };       
+      
+    bool AlbumBase::HasChildren()
+    { 
+        if( m_treeID.IsOk() )
+        {
+            return GetDesignTreeCtrl()->HasChildren(m_treeID);
+        }
+        return false;
+    };
 }

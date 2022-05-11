@@ -171,7 +171,7 @@ Utils::StampLink* CatalogTreeCtrl::AppendAlbumStamp( wxTreeItemId itemId )
         CatalogTreeItemData* data = (CatalogTreeItemData*)GetItemData( itemId );
         data->SetStampLink(link);
         wxXmlNode* catNode = GetStampNode( itemId );
-        link->SetCatNode( catNode );
+       // link->SetCatNode( catNode );
         link->SetCatTreeID( itemId );
     }
     return link;
@@ -440,6 +440,8 @@ void CatalogTreeCtrl::OnItemRClick( wxTreeEvent& event )
 // create sort nodes as necessary to find the proper place for the child
 wxTreeItemId CatalogTreeCtrl::AddChild( wxTreeItemId parent, wxXmlNode* child )
 {
+    wxString stampID ;
+    wxString stampName ;
     wxString name = child->GetName( );
     Catalog::CatalogBaseType nodeType = Catalog::FindCatalogBaseType( name );
     wxString label;
@@ -452,6 +454,9 @@ wxTreeItemId CatalogTreeCtrl::AddChild( wxTreeItemId parent, wxXmlNode* child )
         Catalog::Stamp stamp( child );
         // stamp combines the stampID and its name to form a label
         label = stamp.GetLabel( );
+        stampID =  stamp.GetID();
+        bool ok = !stampID.Cmp( "5339");
+        stampName = stamp.GetName();
         icon = GetInventoryIconId( &stamp );
     }
     else
@@ -485,7 +490,7 @@ wxTreeItemId CatalogTreeCtrl::AddChild( wxTreeItemId parent, wxXmlNode* child )
         if ( stampLink )
         {
             itemData->SetStampLink( stampLink );
-            stampLink->SetCatNode( child );
+            //stampLink->SetCatNode( child );
             stampLink->SetCatTreeID( childID );
             SetItemState( childID, Catalog::ST_Checked );
             Catalog::Stamp stamp(child);
@@ -769,7 +774,7 @@ wxTreeItemId CatalogTreeCtrl::FindTreeItemID( wxXmlNode* ele, wxTreeItemId id )
                     return idFound;
                 }
             }
-            child = this->GetNextChild( child, cookie );
+            child = this->GetNextChild( id, cookie );
         }
     }
     return 0;
@@ -796,7 +801,7 @@ wxTreeItemId CatalogTreeCtrl::FindTreeItemID( wxString stampID, wxTreeItemId id 
                     return idFound;
                 }
             }
-            child = this->GetNextChild( child, cookie );
+            child = this->GetNextChild( id, cookie );
         }
     }
     return 0;
@@ -835,7 +840,7 @@ wxTreeItemId CatalogTreeCtrl::FindFirstStampChild( wxTreeItemId id )
                     return id;
                 }
             }
-            child = GetNextChild( child, cookie );
+            child = GetNextChild( id, cookie );
         }
     }
     return 0;

@@ -255,7 +255,9 @@ void StampDetailsDialog::RefreshFromCatalog( )
     {
         DesignTreeItemData* data = ( DesignTreeItemData* )GetDesignTreeCtrl( )->GetItemData( m_designTreeID );
         Utils::StampLink* link = data->GetStampLink( );
-        wxXmlNode* node = link->GetCatNode( );
+        wxTreeItemId catTreeID = link->GetCatTreeID( );
+        wxXmlNode* node = GetCatalogTreeCtrl( )->GetStampNode( catTreeID );
+
         if ( node )
         {
             Catalog::Stamp  stamp( node );

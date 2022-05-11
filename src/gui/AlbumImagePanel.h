@@ -120,7 +120,7 @@ public:
      * @param event   Contains information about command events
      **************************************************/
     void OnPaint( wxPaintEvent& event );
-    wxSize GetTextExtent(wxString text);
+    wxRealPoint GetTextExtent(wxString text);
 
     /**
      * @brief wxEVT_CONTEXT_MENU event handler for ID_ALBUMIMAGEPANEL
@@ -155,7 +155,7 @@ public:
      *
      * @param filename  fullname and path for the bitmap file
      **************************************************/
-    void SetBitmap( wxString filename );
+    void DrawBitmap(  );
 
 
     /**
@@ -180,11 +180,11 @@ public:
      **************************************************/
     void SetZoom( double zoom );
 
-void Draw( wxPaintDC &dc, Design::LayoutBase* node, wxPoint pt);
+void Draw( wxDC &dc, Design::LayoutBase* node, wxPoint pt);
 
 private:
     double m_pixelsPerIn;
-//    wxBitmap m_bitmap; ///< current bitmap to display
+    wxBitmap m_bitmap; ///< current bitmap to display
     double m_zoom; ///< current zoom factor
 };
 

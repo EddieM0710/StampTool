@@ -4,16 +4,18 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/sandbox/Dev_Bak/AlbumGenerator_22_02_25/src/GuiFiles/AlbumGeneratorFrame.cpp" "/sandbox/Dev_Bak/AlbumGenerator_22_02_25/build/src/GuiFiles/CMakeFiles/GuiFiles.dir/AlbumGeneratorFrame.cpp.o"
-  "/sandbox/Dev_Bak/AlbumGenerator_22_02_25/src/GuiFiles/AlbumGeneratorPanel.cpp" "/sandbox/Dev_Bak/AlbumGenerator_22_02_25/build/src/GuiFiles/CMakeFiles/GuiFiles.dir/AlbumGeneratorPanel.cpp.o"
-  "/sandbox/Dev_Bak/AlbumGenerator_22_02_25/src/GuiFiles/AlbumSplitterWindow.cpp" "/sandbox/Dev_Bak/AlbumGenerator_22_02_25/build/src/GuiFiles/CMakeFiles/GuiFiles.dir/AlbumSplitterWindow.cpp.o"
-  "/sandbox/Dev_Bak/AlbumGenerator_22_02_25/src/GuiFiles/AlbumTreeCtrl.cpp" "/sandbox/Dev_Bak/AlbumGenerator_22_02_25/build/src/GuiFiles/CMakeFiles/GuiFiles.dir/AlbumTreeCtrl.cpp.o"
-  "/sandbox/Dev_Bak/AlbumGenerator_22_02_25/src/GuiFiles/CatalogDataTreeCtrl.cpp" "/sandbox/Dev_Bak/AlbumGenerator_22_02_25/build/src/GuiFiles/CMakeFiles/GuiFiles.dir/CatalogDataTreeCtrl.cpp.o"
-  "/sandbox/Dev_Bak/AlbumGenerator_22_02_25/src/GuiFiles/DefinePeriodsDialog.cpp" "/sandbox/Dev_Bak/AlbumGenerator_22_02_25/build/src/GuiFiles/CMakeFiles/GuiFiles.dir/DefinePeriodsDialog.cpp.o"
-  "/sandbox/Dev_Bak/AlbumGenerator_22_02_25/src/GuiFiles/LabeledTextBox.cpp" "/sandbox/Dev_Bak/AlbumGenerator_22_02_25/build/src/GuiFiles/CMakeFiles/GuiFiles.dir/LabeledTextBox.cpp.o"
-  "/sandbox/Dev_Bak/AlbumGenerator_22_02_25/src/GuiFiles/SettingsDialog.cpp" "/sandbox/Dev_Bak/AlbumGenerator_22_02_25/build/src/GuiFiles/CMakeFiles/GuiFiles.dir/SettingsDialog.cpp.o"
-  "/sandbox/Dev_Bak/AlbumGenerator_22_02_25/src/GuiFiles/SortOrderDialog.cpp" "/sandbox/Dev_Bak/AlbumGenerator_22_02_25/build/src/GuiFiles/CMakeFiles/GuiFiles.dir/SortOrderDialog.cpp.o"
-  "/sandbox/Dev_Bak/AlbumGenerator_22_02_25/src/GuiFiles/StaticItem.cpp" "/sandbox/Dev_Bak/AlbumGenerator_22_02_25/build/src/GuiFiles/CMakeFiles/GuiFiles.dir/StaticItem.cpp.o"
+  "/sandbox/Development/AlbumGenerator/src/GuiFiles/AlbumGenFrame.cpp" "/sandbox/Development/AlbumGenerator/build/src/GuiFiles/CMakeFiles/GuiFiles.dir/AlbumGenFrame.cpp.o"
+  "/sandbox/Development/AlbumGenerator/src/GuiFiles/AlbumGenPanel.cpp" "/sandbox/Development/AlbumGenerator/build/src/GuiFiles/CMakeFiles/GuiFiles.dir/AlbumGenPanel.cpp.o"
+  "/sandbox/Development/AlbumGenerator/src/GuiFiles/AlbumPanel.cpp" "/sandbox/Development/AlbumGenerator/build/src/GuiFiles/CMakeFiles/GuiFiles.dir/AlbumPanel.cpp.o"
+  "/sandbox/Development/AlbumGenerator/src/GuiFiles/AlbumSplitterWindow.cpp" "/sandbox/Development/AlbumGenerator/build/src/GuiFiles/CMakeFiles/GuiFiles.dir/AlbumSplitterWindow.cpp.o"
+  "/sandbox/Development/AlbumGenerator/src/GuiFiles/AlbumTreeCtrl.cpp" "/sandbox/Development/AlbumGenerator/build/src/GuiFiles/CMakeFiles/GuiFiles.dir/AlbumTreeCtrl.cpp.o"
+  "/sandbox/Development/AlbumGenerator/src/GuiFiles/CatalogPanel.cpp" "/sandbox/Development/AlbumGenerator/build/src/GuiFiles/CMakeFiles/GuiFiles.dir/CatalogPanel.cpp.o"
+  "/sandbox/Development/AlbumGenerator/src/GuiFiles/CatalogTreeCtrl.cpp" "/sandbox/Development/AlbumGenerator/build/src/GuiFiles/CMakeFiles/GuiFiles.dir/CatalogTreeCtrl.cpp.o"
+  "/sandbox/Development/AlbumGenerator/src/GuiFiles/DefinePeriodsDialog.cpp" "/sandbox/Development/AlbumGenerator/build/src/GuiFiles/CMakeFiles/GuiFiles.dir/DefinePeriodsDialog.cpp.o"
+  "/sandbox/Development/AlbumGenerator/src/GuiFiles/LabeledTextBox.cpp" "/sandbox/Development/AlbumGenerator/build/src/GuiFiles/CMakeFiles/GuiFiles.dir/LabeledTextBox.cpp.o"
+  "/sandbox/Development/AlbumGenerator/src/GuiFiles/SettingsDialog.cpp" "/sandbox/Development/AlbumGenerator/build/src/GuiFiles/CMakeFiles/GuiFiles.dir/SettingsDialog.cpp.o"
+  "/sandbox/Development/AlbumGenerator/src/GuiFiles/SortOrderDialog.cpp" "/sandbox/Development/AlbumGenerator/build/src/GuiFiles/CMakeFiles/GuiFiles.dir/SortOrderDialog.cpp.o"
+  "/sandbox/Development/AlbumGenerator/src/GuiFiles/StaticItem.cpp" "/sandbox/Development/AlbumGenerator/build/src/GuiFiles/CMakeFiles/GuiFiles.dir/StaticItem.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

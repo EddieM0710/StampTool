@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /sandbox/Dev_Bak/AlbumGenerator_22_02_25
+CMAKE_SOURCE_DIR = /sandbox/Development/AlbumGenerator
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /sandbox/Dev_Bak/AlbumGenerator_22_02_25/build
+CMAKE_BINARY_DIR = /sandbox/Development/AlbumGenerator/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /sandbox/Dev_Bak/AlbumGenerator_22_02_25/build/CMakeFiles /sandbox/Dev_Bak/AlbumGenerator_22_02_25/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /sandbox/Development/AlbumGenerator/build/CMakeFiles /sandbox/Development/AlbumGenerator/build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /sandbox/Dev_Bak/AlbumGenerator_22_02_25/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /sandbox/Development/AlbumGenerator/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -124,6 +124,19 @@ AlbumGenerator/fast:
 .PHONY : AlbumGenerator/fast
 
 #=============================================================================
+# Target rules for targets named Utils
+
+# Build rule for target.
+Utils: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Utils
+.PHONY : Utils
+
+# fast build rule for target.
+Utils/fast:
+	$(MAKE) -f src/utils/CMakeFiles/Utils.dir/build.make src/utils/CMakeFiles/Utils.dir/build
+.PHONY : Utils/fast
+
+#=============================================================================
 # Target rules for targets named GuiFiles
 
 # Build rule for target.
@@ -133,8 +146,47 @@ GuiFiles: cmake_check_build_system
 
 # fast build rule for target.
 GuiFiles/fast:
-	$(MAKE) -f src/GuiFiles/CMakeFiles/GuiFiles.dir/build.make src/GuiFiles/CMakeFiles/GuiFiles.dir/build
+	$(MAKE) -f src/gui/CMakeFiles/GuiFiles.dir/build.make src/gui/CMakeFiles/GuiFiles.dir/build
 .PHONY : GuiFiles/fast
+
+#=============================================================================
+# Target rules for targets named CatalogFiles
+
+# Build rule for target.
+CatalogFiles: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 CatalogFiles
+.PHONY : CatalogFiles
+
+# fast build rule for target.
+CatalogFiles/fast:
+	$(MAKE) -f src/catalog/CMakeFiles/CatalogFiles.dir/build.make src/catalog/CMakeFiles/CatalogFiles.dir/build
+.PHONY : CatalogFiles/fast
+
+#=============================================================================
+# Target rules for targets named AlbumFiles
+
+# Build rule for target.
+AlbumFiles: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 AlbumFiles
+.PHONY : AlbumFiles
+
+# fast build rule for target.
+AlbumFiles/fast:
+	$(MAKE) -f src/album/CMakeFiles/AlbumFiles.dir/build.make src/album/CMakeFiles/AlbumFiles.dir/build
+.PHONY : AlbumFiles/fast
+
+#=============================================================================
+# Target rules for targets named ODTFiles
+
+# Build rule for target.
+ODTFiles: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ODTFiles
+.PHONY : ODTFiles
+
+# fast build rule for target.
+ODTFiles/fast:
+	$(MAKE) -f src/odt/CMakeFiles/ODTFiles.dir/build.make src/odt/CMakeFiles/ODTFiles.dir/build
+.PHONY : ODTFiles/fast
 
 # Help Target
 help:
@@ -145,7 +197,11 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... AlbumGenerator"
+	@echo "... Utils"
 	@echo "... GuiFiles"
+	@echo "... CatalogFiles"
+	@echo "... AlbumFiles"
+	@echo "... ODTFiles"
 .PHONY : help
 
 

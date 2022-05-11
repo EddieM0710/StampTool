@@ -6,34 +6,32 @@ set( CMAKE_RUNTIME_OUTPUT_DIRECTORY ${build_Directory} )
 
 include( "${wxWidgets_USE_FILE}" )
 
-include_directories( ${AlbumGen_Source_Directory} 
-            ${AlbumGen_GuiFiles_Source_Directory}
-            ${AlbumGen_DocFiles_Source_Directory}
-            ${AlbumGen_LayoutFiles_Source_Directory} ${WXWIN})
+include_directories(  ${AlbumGen_Source_Directory} 
+${AlbumGen_GuiFiles_Source_Directory}
+${AlbumGen_UtilsFiles_Source_Directory}
+${AlbumGen_ODTFiles_Source_Directory}
+${AlbumGen_AlbumFiles_Source_Directory}
+${AlbumGen_CatalogFiles_Source_Directory} ${WXWIN} )
 
-add_subdirectory (GuiFiles)
+add_subdirectory (utils)
+add_subdirectory (gui)
+add_subdirectory (catalog)
+add_subdirectory (album)
+add_subdirectory (odt)
 
 add_executable (AlbumGenerator 
-    AlbumGeneratorApp.cpp
+    AlbumGenApp.cpp
     Defs.cpp
-    Settings.cpp
-    Classification.cpp 
-    Stamp.cpp
-    Specimen.cpp
-    ManageCatalogData.cpp 
-    CatalogCode.cpp
-    CatalogData.cpp
-    XMLUtilities.cpp
-    CSV.cpp 
-    MakeList.cpp 
-    ArrayWrapper.cpp 
-    ManageAECmdData.cpp 
 )
 
 #link_directories( /sandbox/Applications/TinyXML2/build )
 
 target_link_libraries (AlbumGenerator LINK_PUBLIC 
-    GuiFiles    
+    Utils
+    GuiFiles  
+    AlbumFiles
+    CatalogFiles  
+    ODTFiles
     curl
     ${wxWidgets_LIBRARIES}
     )

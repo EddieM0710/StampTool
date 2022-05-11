@@ -1,4 +1,4 @@
-# Install script for directory: /sandbox/Dev_Bak/AlbumGenerator_22_02_25/src/GuiFiles
+# Install script for directory: /sandbox/Development/AlbumGenerator/src/GuiFiles
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

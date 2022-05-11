@@ -54,28 +54,40 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /sandbox/Dev_Bak/AlbumGenerator_22_02_25
+CMAKE_SOURCE_DIR = /sandbox/Development/AlbumGenerator
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /sandbox/Dev_Bak/AlbumGenerator_22_02_25/build
+CMAKE_BINARY_DIR = /sandbox/Development/AlbumGenerator/build
 
 #=============================================================================
 # Directory level rules for directory src
 
 # Convenience name for "all" pass in the directory.
 src/all: src/CMakeFiles/AlbumGenerator.dir/all
-src/all: src/GuiFiles/all
+src/all: src/utils/all
+src/all: src/gui/all
+src/all: src/catalog/all
+src/all: src/album/all
+src/all: src/odt/all
 
 .PHONY : src/all
 
 # Convenience name for "clean" pass in the directory.
 src/clean: src/CMakeFiles/AlbumGenerator.dir/clean
-src/clean: src/GuiFiles/clean
+src/clean: src/utils/clean
+src/clean: src/gui/clean
+src/clean: src/catalog/clean
+src/clean: src/album/clean
+src/clean: src/odt/clean
 
 .PHONY : src/clean
 
 # Convenience name for "preinstall" pass in the directory.
-src/preinstall: src/GuiFiles/preinstall
+src/preinstall: src/utils/preinstall
+src/preinstall: src/gui/preinstall
+src/preinstall: src/catalog/preinstall
+src/preinstall: src/album/preinstall
+src/preinstall: src/odt/preinstall
 
 .PHONY : src/preinstall
 
@@ -83,10 +95,14 @@ src/preinstall: src/GuiFiles/preinstall
 # Target rules for target src/CMakeFiles/AlbumGenerator.dir
 
 # All Build rule for target.
-src/CMakeFiles/AlbumGenerator.dir/all: src/GuiFiles/CMakeFiles/GuiFiles.dir/all
+src/CMakeFiles/AlbumGenerator.dir/all: src/utils/CMakeFiles/Utils.dir/all
+src/CMakeFiles/AlbumGenerator.dir/all: src/catalog/CMakeFiles/CatalogFiles.dir/all
+src/CMakeFiles/AlbumGenerator.dir/all: src/odt/CMakeFiles/ODTFiles.dir/all
+src/CMakeFiles/AlbumGenerator.dir/all: src/gui/CMakeFiles/GuiFiles.dir/all
+src/CMakeFiles/AlbumGenerator.dir/all: src/album/CMakeFiles/AlbumFiles.dir/all
 	$(MAKE) -f src/CMakeFiles/AlbumGenerator.dir/build.make src/CMakeFiles/AlbumGenerator.dir/depend
 	$(MAKE) -f src/CMakeFiles/AlbumGenerator.dir/build.make src/CMakeFiles/AlbumGenerator.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/sandbox/Dev_Bak/AlbumGenerator_22_02_25/build/CMakeFiles --progress-num= "Built target AlbumGenerator"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/sandbox/Development/AlbumGenerator/build/CMakeFiles --progress-num=13,14,15 "Built target AlbumGenerator"
 .PHONY : src/CMakeFiles/AlbumGenerator.dir/all
 
 # Include target in all.
@@ -96,9 +112,9 @@ all: src/CMakeFiles/AlbumGenerator.dir/all
 
 # Build rule for subdir invocation for target.
 src/CMakeFiles/AlbumGenerator.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /sandbox/Dev_Bak/AlbumGenerator_22_02_25/build/CMakeFiles 11
+	$(CMAKE_COMMAND) -E cmake_progress_start /sandbox/Development/AlbumGenerator/build/CMakeFiles 50
 	$(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/AlbumGenerator.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /sandbox/Dev_Bak/AlbumGenerator_22_02_25/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /sandbox/Development/AlbumGenerator/build/CMakeFiles 0
 .PHONY : src/CMakeFiles/AlbumGenerator.dir/rule
 
 # Convenience name for target.
@@ -117,57 +133,277 @@ clean: src/CMakeFiles/AlbumGenerator.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Directory level rules for directory src/GuiFiles
+# Directory level rules for directory src/utils
 
 # Convenience name for "all" pass in the directory.
-src/GuiFiles/all: src/GuiFiles/CMakeFiles/GuiFiles.dir/all
+src/utils/all: src/utils/CMakeFiles/Utils.dir/all
 
-.PHONY : src/GuiFiles/all
+.PHONY : src/utils/all
 
 # Convenience name for "clean" pass in the directory.
-src/GuiFiles/clean: src/GuiFiles/CMakeFiles/GuiFiles.dir/clean
+src/utils/clean: src/utils/CMakeFiles/Utils.dir/clean
 
-.PHONY : src/GuiFiles/clean
+.PHONY : src/utils/clean
 
 # Convenience name for "preinstall" pass in the directory.
-src/GuiFiles/preinstall:
+src/utils/preinstall:
 
-.PHONY : src/GuiFiles/preinstall
+.PHONY : src/utils/preinstall
 
 #=============================================================================
-# Target rules for target src/GuiFiles/CMakeFiles/GuiFiles.dir
+# Target rules for target src/utils/CMakeFiles/Utils.dir
 
 # All Build rule for target.
-src/GuiFiles/CMakeFiles/GuiFiles.dir/all:
-	$(MAKE) -f src/GuiFiles/CMakeFiles/GuiFiles.dir/build.make src/GuiFiles/CMakeFiles/GuiFiles.dir/depend
-	$(MAKE) -f src/GuiFiles/CMakeFiles/GuiFiles.dir/build.make src/GuiFiles/CMakeFiles/GuiFiles.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/sandbox/Dev_Bak/AlbumGenerator_22_02_25/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11 "Built target GuiFiles"
-.PHONY : src/GuiFiles/CMakeFiles/GuiFiles.dir/all
+src/utils/CMakeFiles/Utils.dir/all:
+	$(MAKE) -f src/utils/CMakeFiles/Utils.dir/build.make src/utils/CMakeFiles/Utils.dir/depend
+	$(MAKE) -f src/utils/CMakeFiles/Utils.dir/build.make src/utils/CMakeFiles/Utils.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/sandbox/Development/AlbumGenerator/build/CMakeFiles --progress-num=46,47,48,49,50 "Built target Utils"
+.PHONY : src/utils/CMakeFiles/Utils.dir/all
 
 # Include target in all.
-all: src/GuiFiles/CMakeFiles/GuiFiles.dir/all
+all: src/utils/CMakeFiles/Utils.dir/all
 
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-src/GuiFiles/CMakeFiles/GuiFiles.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /sandbox/Dev_Bak/AlbumGenerator_22_02_25/build/CMakeFiles 11
-	$(MAKE) -f CMakeFiles/Makefile2 src/GuiFiles/CMakeFiles/GuiFiles.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /sandbox/Dev_Bak/AlbumGenerator_22_02_25/build/CMakeFiles 0
-.PHONY : src/GuiFiles/CMakeFiles/GuiFiles.dir/rule
+src/utils/CMakeFiles/Utils.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /sandbox/Development/AlbumGenerator/build/CMakeFiles 5
+	$(MAKE) -f CMakeFiles/Makefile2 src/utils/CMakeFiles/Utils.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /sandbox/Development/AlbumGenerator/build/CMakeFiles 0
+.PHONY : src/utils/CMakeFiles/Utils.dir/rule
 
 # Convenience name for target.
-GuiFiles: src/GuiFiles/CMakeFiles/GuiFiles.dir/rule
+Utils: src/utils/CMakeFiles/Utils.dir/rule
+
+.PHONY : Utils
+
+# clean rule for target.
+src/utils/CMakeFiles/Utils.dir/clean:
+	$(MAKE) -f src/utils/CMakeFiles/Utils.dir/build.make src/utils/CMakeFiles/Utils.dir/clean
+.PHONY : src/utils/CMakeFiles/Utils.dir/clean
+
+# clean rule for target.
+clean: src/utils/CMakeFiles/Utils.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Directory level rules for directory src/gui
+
+# Convenience name for "all" pass in the directory.
+src/gui/all: src/gui/CMakeFiles/GuiFiles.dir/all
+
+.PHONY : src/gui/all
+
+# Convenience name for "clean" pass in the directory.
+src/gui/clean: src/gui/CMakeFiles/GuiFiles.dir/clean
+
+.PHONY : src/gui/clean
+
+# Convenience name for "preinstall" pass in the directory.
+src/gui/preinstall:
+
+.PHONY : src/gui/preinstall
+
+#=============================================================================
+# Target rules for target src/gui/CMakeFiles/GuiFiles.dir
+
+# All Build rule for target.
+src/gui/CMakeFiles/GuiFiles.dir/all:
+	$(MAKE) -f src/gui/CMakeFiles/GuiFiles.dir/build.make src/gui/CMakeFiles/GuiFiles.dir/depend
+	$(MAKE) -f src/gui/CMakeFiles/GuiFiles.dir/build.make src/gui/CMakeFiles/GuiFiles.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/sandbox/Development/AlbumGenerator/build/CMakeFiles --progress-num=23,24,25,26,27,28,29,30,31,32,33,34,35 "Built target GuiFiles"
+.PHONY : src/gui/CMakeFiles/GuiFiles.dir/all
+
+# Include target in all.
+all: src/gui/CMakeFiles/GuiFiles.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+src/gui/CMakeFiles/GuiFiles.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /sandbox/Development/AlbumGenerator/build/CMakeFiles 13
+	$(MAKE) -f CMakeFiles/Makefile2 src/gui/CMakeFiles/GuiFiles.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /sandbox/Development/AlbumGenerator/build/CMakeFiles 0
+.PHONY : src/gui/CMakeFiles/GuiFiles.dir/rule
+
+# Convenience name for target.
+GuiFiles: src/gui/CMakeFiles/GuiFiles.dir/rule
 
 .PHONY : GuiFiles
 
 # clean rule for target.
-src/GuiFiles/CMakeFiles/GuiFiles.dir/clean:
-	$(MAKE) -f src/GuiFiles/CMakeFiles/GuiFiles.dir/build.make src/GuiFiles/CMakeFiles/GuiFiles.dir/clean
-.PHONY : src/GuiFiles/CMakeFiles/GuiFiles.dir/clean
+src/gui/CMakeFiles/GuiFiles.dir/clean:
+	$(MAKE) -f src/gui/CMakeFiles/GuiFiles.dir/build.make src/gui/CMakeFiles/GuiFiles.dir/clean
+.PHONY : src/gui/CMakeFiles/GuiFiles.dir/clean
 
 # clean rule for target.
-clean: src/GuiFiles/CMakeFiles/GuiFiles.dir/clean
+clean: src/gui/CMakeFiles/GuiFiles.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Directory level rules for directory src/catalog
+
+# Convenience name for "all" pass in the directory.
+src/catalog/all: src/catalog/CMakeFiles/CatalogFiles.dir/all
+
+.PHONY : src/catalog/all
+
+# Convenience name for "clean" pass in the directory.
+src/catalog/clean: src/catalog/CMakeFiles/CatalogFiles.dir/clean
+
+.PHONY : src/catalog/clean
+
+# Convenience name for "preinstall" pass in the directory.
+src/catalog/preinstall:
+
+.PHONY : src/catalog/preinstall
+
+#=============================================================================
+# Target rules for target src/catalog/CMakeFiles/CatalogFiles.dir
+
+# All Build rule for target.
+src/catalog/CMakeFiles/CatalogFiles.dir/all:
+	$(MAKE) -f src/catalog/CMakeFiles/CatalogFiles.dir/build.make src/catalog/CMakeFiles/CatalogFiles.dir/depend
+	$(MAKE) -f src/catalog/CMakeFiles/CatalogFiles.dir/build.make src/catalog/CMakeFiles/CatalogFiles.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/sandbox/Development/AlbumGenerator/build/CMakeFiles --progress-num=16,17,18,19,20,21,22 "Built target CatalogFiles"
+.PHONY : src/catalog/CMakeFiles/CatalogFiles.dir/all
+
+# Include target in all.
+all: src/catalog/CMakeFiles/CatalogFiles.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+src/catalog/CMakeFiles/CatalogFiles.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /sandbox/Development/AlbumGenerator/build/CMakeFiles 7
+	$(MAKE) -f CMakeFiles/Makefile2 src/catalog/CMakeFiles/CatalogFiles.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /sandbox/Development/AlbumGenerator/build/CMakeFiles 0
+.PHONY : src/catalog/CMakeFiles/CatalogFiles.dir/rule
+
+# Convenience name for target.
+CatalogFiles: src/catalog/CMakeFiles/CatalogFiles.dir/rule
+
+.PHONY : CatalogFiles
+
+# clean rule for target.
+src/catalog/CMakeFiles/CatalogFiles.dir/clean:
+	$(MAKE) -f src/catalog/CMakeFiles/CatalogFiles.dir/build.make src/catalog/CMakeFiles/CatalogFiles.dir/clean
+.PHONY : src/catalog/CMakeFiles/CatalogFiles.dir/clean
+
+# clean rule for target.
+clean: src/catalog/CMakeFiles/CatalogFiles.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Directory level rules for directory src/album
+
+# Convenience name for "all" pass in the directory.
+src/album/all: src/album/CMakeFiles/AlbumFiles.dir/all
+
+.PHONY : src/album/all
+
+# Convenience name for "clean" pass in the directory.
+src/album/clean: src/album/CMakeFiles/AlbumFiles.dir/clean
+
+.PHONY : src/album/clean
+
+# Convenience name for "preinstall" pass in the directory.
+src/album/preinstall:
+
+.PHONY : src/album/preinstall
+
+#=============================================================================
+# Target rules for target src/album/CMakeFiles/AlbumFiles.dir
+
+# All Build rule for target.
+src/album/CMakeFiles/AlbumFiles.dir/all:
+	$(MAKE) -f src/album/CMakeFiles/AlbumFiles.dir/build.make src/album/CMakeFiles/AlbumFiles.dir/depend
+	$(MAKE) -f src/album/CMakeFiles/AlbumFiles.dir/build.make src/album/CMakeFiles/AlbumFiles.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/sandbox/Development/AlbumGenerator/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12 "Built target AlbumFiles"
+.PHONY : src/album/CMakeFiles/AlbumFiles.dir/all
+
+# Include target in all.
+all: src/album/CMakeFiles/AlbumFiles.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+src/album/CMakeFiles/AlbumFiles.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /sandbox/Development/AlbumGenerator/build/CMakeFiles 12
+	$(MAKE) -f CMakeFiles/Makefile2 src/album/CMakeFiles/AlbumFiles.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /sandbox/Development/AlbumGenerator/build/CMakeFiles 0
+.PHONY : src/album/CMakeFiles/AlbumFiles.dir/rule
+
+# Convenience name for target.
+AlbumFiles: src/album/CMakeFiles/AlbumFiles.dir/rule
+
+.PHONY : AlbumFiles
+
+# clean rule for target.
+src/album/CMakeFiles/AlbumFiles.dir/clean:
+	$(MAKE) -f src/album/CMakeFiles/AlbumFiles.dir/build.make src/album/CMakeFiles/AlbumFiles.dir/clean
+.PHONY : src/album/CMakeFiles/AlbumFiles.dir/clean
+
+# clean rule for target.
+clean: src/album/CMakeFiles/AlbumFiles.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Directory level rules for directory src/odt
+
+# Convenience name for "all" pass in the directory.
+src/odt/all: src/odt/CMakeFiles/ODTFiles.dir/all
+
+.PHONY : src/odt/all
+
+# Convenience name for "clean" pass in the directory.
+src/odt/clean: src/odt/CMakeFiles/ODTFiles.dir/clean
+
+.PHONY : src/odt/clean
+
+# Convenience name for "preinstall" pass in the directory.
+src/odt/preinstall:
+
+.PHONY : src/odt/preinstall
+
+#=============================================================================
+# Target rules for target src/odt/CMakeFiles/ODTFiles.dir
+
+# All Build rule for target.
+src/odt/CMakeFiles/ODTFiles.dir/all:
+	$(MAKE) -f src/odt/CMakeFiles/ODTFiles.dir/build.make src/odt/CMakeFiles/ODTFiles.dir/depend
+	$(MAKE) -f src/odt/CMakeFiles/ODTFiles.dir/build.make src/odt/CMakeFiles/ODTFiles.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/sandbox/Development/AlbumGenerator/build/CMakeFiles --progress-num=36,37,38,39,40,41,42,43,44,45 "Built target ODTFiles"
+.PHONY : src/odt/CMakeFiles/ODTFiles.dir/all
+
+# Include target in all.
+all: src/odt/CMakeFiles/ODTFiles.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+src/odt/CMakeFiles/ODTFiles.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /sandbox/Development/AlbumGenerator/build/CMakeFiles 10
+	$(MAKE) -f CMakeFiles/Makefile2 src/odt/CMakeFiles/ODTFiles.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /sandbox/Development/AlbumGenerator/build/CMakeFiles 0
+.PHONY : src/odt/CMakeFiles/ODTFiles.dir/rule
+
+# Convenience name for target.
+ODTFiles: src/odt/CMakeFiles/ODTFiles.dir/rule
+
+.PHONY : ODTFiles
+
+# clean rule for target.
+src/odt/CMakeFiles/ODTFiles.dir/clean:
+	$(MAKE) -f src/odt/CMakeFiles/ODTFiles.dir/build.make src/odt/CMakeFiles/ODTFiles.dir/clean
+.PHONY : src/odt/CMakeFiles/ODTFiles.dir/clean
+
+# clean rule for target.
+clean: src/odt/CMakeFiles/ODTFiles.dir/clean
 
 .PHONY : clean
 

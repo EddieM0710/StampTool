@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /sandbox/Dev_Bak/AlbumGenerator_22_02_25
+CMAKE_SOURCE_DIR = /sandbox/Development/AlbumGenerator
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /sandbox/Dev_Bak/AlbumGenerator_22_02_25/build
+CMAKE_BINARY_DIR = /sandbox/Development/AlbumGenerator/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,14 +80,14 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /sandbox/Dev_Bak/AlbumGenerator_22_02_25/build && $(CMAKE_COMMAND) -E cmake_progress_start /sandbox/Dev_Bak/AlbumGenerator_22_02_25/build/CMakeFiles /sandbox/Dev_Bak/AlbumGenerator_22_02_25/build/src/GuiFiles/CMakeFiles/progress.marks
-	cd /sandbox/Dev_Bak/AlbumGenerator_22_02_25/build && $(MAKE) -f CMakeFiles/Makefile2 src/GuiFiles/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /sandbox/Dev_Bak/AlbumGenerator_22_02_25/build/CMakeFiles 0
+	cd /sandbox/Development/AlbumGenerator/build && $(CMAKE_COMMAND) -E cmake_progress_start /sandbox/Development/AlbumGenerator/build/CMakeFiles /sandbox/Development/AlbumGenerator/build/src/GuiFiles/CMakeFiles/progress.marks
+	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f CMakeFiles/Makefile2 src/GuiFiles/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /sandbox/Development/AlbumGenerator/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /sandbox/Dev_Bak/AlbumGenerator_22_02_25/build && $(MAKE) -f CMakeFiles/Makefile2 src/GuiFiles/clean
+	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f CMakeFiles/Makefile2 src/GuiFiles/clean
 .PHONY : clean
 
 # The main clean target
@@ -97,22 +97,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /sandbox/Dev_Bak/AlbumGenerator_22_02_25/build && $(MAKE) -f CMakeFiles/Makefile2 src/GuiFiles/preinstall
+	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f CMakeFiles/Makefile2 src/GuiFiles/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /sandbox/Dev_Bak/AlbumGenerator_22_02_25/build && $(MAKE) -f CMakeFiles/Makefile2 src/GuiFiles/preinstall
+	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f CMakeFiles/Makefile2 src/GuiFiles/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /sandbox/Dev_Bak/AlbumGenerator_22_02_25/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /sandbox/Development/AlbumGenerator/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 src/GuiFiles/CMakeFiles/GuiFiles.dir/rule:
-	cd /sandbox/Dev_Bak/AlbumGenerator_22_02_25/build && $(MAKE) -f CMakeFiles/Makefile2 src/GuiFiles/CMakeFiles/GuiFiles.dir/rule
+	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f CMakeFiles/Makefile2 src/GuiFiles/CMakeFiles/GuiFiles.dir/rule
 .PHONY : src/GuiFiles/CMakeFiles/GuiFiles.dir/rule
 
 # Convenience name for target.
@@ -122,62 +122,89 @@ GuiFiles: src/GuiFiles/CMakeFiles/GuiFiles.dir/rule
 
 # fast build rule for target.
 GuiFiles/fast:
-	cd /sandbox/Dev_Bak/AlbumGenerator_22_02_25/build && $(MAKE) -f src/GuiFiles/CMakeFiles/GuiFiles.dir/build.make src/GuiFiles/CMakeFiles/GuiFiles.dir/build
+	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f src/GuiFiles/CMakeFiles/GuiFiles.dir/build.make src/GuiFiles/CMakeFiles/GuiFiles.dir/build
 .PHONY : GuiFiles/fast
 
-AlbumGeneratorFrame.o: AlbumGeneratorFrame.cpp.o
+AlbumGenFrame.o: AlbumGenFrame.cpp.o
 
-.PHONY : AlbumGeneratorFrame.o
-
-# target to build an object file
-AlbumGeneratorFrame.cpp.o:
-	cd /sandbox/Dev_Bak/AlbumGenerator_22_02_25/build && $(MAKE) -f src/GuiFiles/CMakeFiles/GuiFiles.dir/build.make src/GuiFiles/CMakeFiles/GuiFiles.dir/AlbumGeneratorFrame.cpp.o
-.PHONY : AlbumGeneratorFrame.cpp.o
-
-AlbumGeneratorFrame.i: AlbumGeneratorFrame.cpp.i
-
-.PHONY : AlbumGeneratorFrame.i
-
-# target to preprocess a source file
-AlbumGeneratorFrame.cpp.i:
-	cd /sandbox/Dev_Bak/AlbumGenerator_22_02_25/build && $(MAKE) -f src/GuiFiles/CMakeFiles/GuiFiles.dir/build.make src/GuiFiles/CMakeFiles/GuiFiles.dir/AlbumGeneratorFrame.cpp.i
-.PHONY : AlbumGeneratorFrame.cpp.i
-
-AlbumGeneratorFrame.s: AlbumGeneratorFrame.cpp.s
-
-.PHONY : AlbumGeneratorFrame.s
-
-# target to generate assembly for a file
-AlbumGeneratorFrame.cpp.s:
-	cd /sandbox/Dev_Bak/AlbumGenerator_22_02_25/build && $(MAKE) -f src/GuiFiles/CMakeFiles/GuiFiles.dir/build.make src/GuiFiles/CMakeFiles/GuiFiles.dir/AlbumGeneratorFrame.cpp.s
-.PHONY : AlbumGeneratorFrame.cpp.s
-
-AlbumGeneratorPanel.o: AlbumGeneratorPanel.cpp.o
-
-.PHONY : AlbumGeneratorPanel.o
+.PHONY : AlbumGenFrame.o
 
 # target to build an object file
-AlbumGeneratorPanel.cpp.o:
-	cd /sandbox/Dev_Bak/AlbumGenerator_22_02_25/build && $(MAKE) -f src/GuiFiles/CMakeFiles/GuiFiles.dir/build.make src/GuiFiles/CMakeFiles/GuiFiles.dir/AlbumGeneratorPanel.cpp.o
-.PHONY : AlbumGeneratorPanel.cpp.o
+AlbumGenFrame.cpp.o:
+	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f src/GuiFiles/CMakeFiles/GuiFiles.dir/build.make src/GuiFiles/CMakeFiles/GuiFiles.dir/AlbumGenFrame.cpp.o
+.PHONY : AlbumGenFrame.cpp.o
 
-AlbumGeneratorPanel.i: AlbumGeneratorPanel.cpp.i
+AlbumGenFrame.i: AlbumGenFrame.cpp.i
 
-.PHONY : AlbumGeneratorPanel.i
+.PHONY : AlbumGenFrame.i
 
 # target to preprocess a source file
-AlbumGeneratorPanel.cpp.i:
-	cd /sandbox/Dev_Bak/AlbumGenerator_22_02_25/build && $(MAKE) -f src/GuiFiles/CMakeFiles/GuiFiles.dir/build.make src/GuiFiles/CMakeFiles/GuiFiles.dir/AlbumGeneratorPanel.cpp.i
-.PHONY : AlbumGeneratorPanel.cpp.i
+AlbumGenFrame.cpp.i:
+	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f src/GuiFiles/CMakeFiles/GuiFiles.dir/build.make src/GuiFiles/CMakeFiles/GuiFiles.dir/AlbumGenFrame.cpp.i
+.PHONY : AlbumGenFrame.cpp.i
 
-AlbumGeneratorPanel.s: AlbumGeneratorPanel.cpp.s
+AlbumGenFrame.s: AlbumGenFrame.cpp.s
 
-.PHONY : AlbumGeneratorPanel.s
+.PHONY : AlbumGenFrame.s
 
 # target to generate assembly for a file
-AlbumGeneratorPanel.cpp.s:
-	cd /sandbox/Dev_Bak/AlbumGenerator_22_02_25/build && $(MAKE) -f src/GuiFiles/CMakeFiles/GuiFiles.dir/build.make src/GuiFiles/CMakeFiles/GuiFiles.dir/AlbumGeneratorPanel.cpp.s
-.PHONY : AlbumGeneratorPanel.cpp.s
+AlbumGenFrame.cpp.s:
+	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f src/GuiFiles/CMakeFiles/GuiFiles.dir/build.make src/GuiFiles/CMakeFiles/GuiFiles.dir/AlbumGenFrame.cpp.s
+.PHONY : AlbumGenFrame.cpp.s
+
+AlbumGenPanel.o: AlbumGenPanel.cpp.o
+
+.PHONY : AlbumGenPanel.o
+
+# target to build an object file
+AlbumGenPanel.cpp.o:
+	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f src/GuiFiles/CMakeFiles/GuiFiles.dir/build.make src/GuiFiles/CMakeFiles/GuiFiles.dir/AlbumGenPanel.cpp.o
+.PHONY : AlbumGenPanel.cpp.o
+
+AlbumGenPanel.i: AlbumGenPanel.cpp.i
+
+.PHONY : AlbumGenPanel.i
+
+# target to preprocess a source file
+AlbumGenPanel.cpp.i:
+	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f src/GuiFiles/CMakeFiles/GuiFiles.dir/build.make src/GuiFiles/CMakeFiles/GuiFiles.dir/AlbumGenPanel.cpp.i
+.PHONY : AlbumGenPanel.cpp.i
+
+AlbumGenPanel.s: AlbumGenPanel.cpp.s
+
+.PHONY : AlbumGenPanel.s
+
+# target to generate assembly for a file
+AlbumGenPanel.cpp.s:
+	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f src/GuiFiles/CMakeFiles/GuiFiles.dir/build.make src/GuiFiles/CMakeFiles/GuiFiles.dir/AlbumGenPanel.cpp.s
+.PHONY : AlbumGenPanel.cpp.s
+
+AlbumPanel.o: AlbumPanel.cpp.o
+
+.PHONY : AlbumPanel.o
+
+# target to build an object file
+AlbumPanel.cpp.o:
+	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f src/GuiFiles/CMakeFiles/GuiFiles.dir/build.make src/GuiFiles/CMakeFiles/GuiFiles.dir/AlbumPanel.cpp.o
+.PHONY : AlbumPanel.cpp.o
+
+AlbumPanel.i: AlbumPanel.cpp.i
+
+.PHONY : AlbumPanel.i
+
+# target to preprocess a source file
+AlbumPanel.cpp.i:
+	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f src/GuiFiles/CMakeFiles/GuiFiles.dir/build.make src/GuiFiles/CMakeFiles/GuiFiles.dir/AlbumPanel.cpp.i
+.PHONY : AlbumPanel.cpp.i
+
+AlbumPanel.s: AlbumPanel.cpp.s
+
+.PHONY : AlbumPanel.s
+
+# target to generate assembly for a file
+AlbumPanel.cpp.s:
+	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f src/GuiFiles/CMakeFiles/GuiFiles.dir/build.make src/GuiFiles/CMakeFiles/GuiFiles.dir/AlbumPanel.cpp.s
+.PHONY : AlbumPanel.cpp.s
 
 AlbumSplitterWindow.o: AlbumSplitterWindow.cpp.o
 
@@ -185,7 +212,7 @@ AlbumSplitterWindow.o: AlbumSplitterWindow.cpp.o
 
 # target to build an object file
 AlbumSplitterWindow.cpp.o:
-	cd /sandbox/Dev_Bak/AlbumGenerator_22_02_25/build && $(MAKE) -f src/GuiFiles/CMakeFiles/GuiFiles.dir/build.make src/GuiFiles/CMakeFiles/GuiFiles.dir/AlbumSplitterWindow.cpp.o
+	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f src/GuiFiles/CMakeFiles/GuiFiles.dir/build.make src/GuiFiles/CMakeFiles/GuiFiles.dir/AlbumSplitterWindow.cpp.o
 .PHONY : AlbumSplitterWindow.cpp.o
 
 AlbumSplitterWindow.i: AlbumSplitterWindow.cpp.i
@@ -194,7 +221,7 @@ AlbumSplitterWindow.i: AlbumSplitterWindow.cpp.i
 
 # target to preprocess a source file
 AlbumSplitterWindow.cpp.i:
-	cd /sandbox/Dev_Bak/AlbumGenerator_22_02_25/build && $(MAKE) -f src/GuiFiles/CMakeFiles/GuiFiles.dir/build.make src/GuiFiles/CMakeFiles/GuiFiles.dir/AlbumSplitterWindow.cpp.i
+	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f src/GuiFiles/CMakeFiles/GuiFiles.dir/build.make src/GuiFiles/CMakeFiles/GuiFiles.dir/AlbumSplitterWindow.cpp.i
 .PHONY : AlbumSplitterWindow.cpp.i
 
 AlbumSplitterWindow.s: AlbumSplitterWindow.cpp.s
@@ -203,7 +230,7 @@ AlbumSplitterWindow.s: AlbumSplitterWindow.cpp.s
 
 # target to generate assembly for a file
 AlbumSplitterWindow.cpp.s:
-	cd /sandbox/Dev_Bak/AlbumGenerator_22_02_25/build && $(MAKE) -f src/GuiFiles/CMakeFiles/GuiFiles.dir/build.make src/GuiFiles/CMakeFiles/GuiFiles.dir/AlbumSplitterWindow.cpp.s
+	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f src/GuiFiles/CMakeFiles/GuiFiles.dir/build.make src/GuiFiles/CMakeFiles/GuiFiles.dir/AlbumSplitterWindow.cpp.s
 .PHONY : AlbumSplitterWindow.cpp.s
 
 AlbumTreeCtrl.o: AlbumTreeCtrl.cpp.o
@@ -212,7 +239,7 @@ AlbumTreeCtrl.o: AlbumTreeCtrl.cpp.o
 
 # target to build an object file
 AlbumTreeCtrl.cpp.o:
-	cd /sandbox/Dev_Bak/AlbumGenerator_22_02_25/build && $(MAKE) -f src/GuiFiles/CMakeFiles/GuiFiles.dir/build.make src/GuiFiles/CMakeFiles/GuiFiles.dir/AlbumTreeCtrl.cpp.o
+	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f src/GuiFiles/CMakeFiles/GuiFiles.dir/build.make src/GuiFiles/CMakeFiles/GuiFiles.dir/AlbumTreeCtrl.cpp.o
 .PHONY : AlbumTreeCtrl.cpp.o
 
 AlbumTreeCtrl.i: AlbumTreeCtrl.cpp.i
@@ -221,7 +248,7 @@ AlbumTreeCtrl.i: AlbumTreeCtrl.cpp.i
 
 # target to preprocess a source file
 AlbumTreeCtrl.cpp.i:
-	cd /sandbox/Dev_Bak/AlbumGenerator_22_02_25/build && $(MAKE) -f src/GuiFiles/CMakeFiles/GuiFiles.dir/build.make src/GuiFiles/CMakeFiles/GuiFiles.dir/AlbumTreeCtrl.cpp.i
+	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f src/GuiFiles/CMakeFiles/GuiFiles.dir/build.make src/GuiFiles/CMakeFiles/GuiFiles.dir/AlbumTreeCtrl.cpp.i
 .PHONY : AlbumTreeCtrl.cpp.i
 
 AlbumTreeCtrl.s: AlbumTreeCtrl.cpp.s
@@ -230,35 +257,62 @@ AlbumTreeCtrl.s: AlbumTreeCtrl.cpp.s
 
 # target to generate assembly for a file
 AlbumTreeCtrl.cpp.s:
-	cd /sandbox/Dev_Bak/AlbumGenerator_22_02_25/build && $(MAKE) -f src/GuiFiles/CMakeFiles/GuiFiles.dir/build.make src/GuiFiles/CMakeFiles/GuiFiles.dir/AlbumTreeCtrl.cpp.s
+	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f src/GuiFiles/CMakeFiles/GuiFiles.dir/build.make src/GuiFiles/CMakeFiles/GuiFiles.dir/AlbumTreeCtrl.cpp.s
 .PHONY : AlbumTreeCtrl.cpp.s
 
-CatalogDataTreeCtrl.o: CatalogDataTreeCtrl.cpp.o
+CatalogPanel.o: CatalogPanel.cpp.o
 
-.PHONY : CatalogDataTreeCtrl.o
+.PHONY : CatalogPanel.o
 
 # target to build an object file
-CatalogDataTreeCtrl.cpp.o:
-	cd /sandbox/Dev_Bak/AlbumGenerator_22_02_25/build && $(MAKE) -f src/GuiFiles/CMakeFiles/GuiFiles.dir/build.make src/GuiFiles/CMakeFiles/GuiFiles.dir/CatalogDataTreeCtrl.cpp.o
-.PHONY : CatalogDataTreeCtrl.cpp.o
+CatalogPanel.cpp.o:
+	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f src/GuiFiles/CMakeFiles/GuiFiles.dir/build.make src/GuiFiles/CMakeFiles/GuiFiles.dir/CatalogPanel.cpp.o
+.PHONY : CatalogPanel.cpp.o
 
-CatalogDataTreeCtrl.i: CatalogDataTreeCtrl.cpp.i
+CatalogPanel.i: CatalogPanel.cpp.i
 
-.PHONY : CatalogDataTreeCtrl.i
+.PHONY : CatalogPanel.i
 
 # target to preprocess a source file
-CatalogDataTreeCtrl.cpp.i:
-	cd /sandbox/Dev_Bak/AlbumGenerator_22_02_25/build && $(MAKE) -f src/GuiFiles/CMakeFiles/GuiFiles.dir/build.make src/GuiFiles/CMakeFiles/GuiFiles.dir/CatalogDataTreeCtrl.cpp.i
-.PHONY : CatalogDataTreeCtrl.cpp.i
+CatalogPanel.cpp.i:
+	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f src/GuiFiles/CMakeFiles/GuiFiles.dir/build.make src/GuiFiles/CMakeFiles/GuiFiles.dir/CatalogPanel.cpp.i
+.PHONY : CatalogPanel.cpp.i
 
-CatalogDataTreeCtrl.s: CatalogDataTreeCtrl.cpp.s
+CatalogPanel.s: CatalogPanel.cpp.s
 
-.PHONY : CatalogDataTreeCtrl.s
+.PHONY : CatalogPanel.s
 
 # target to generate assembly for a file
-CatalogDataTreeCtrl.cpp.s:
-	cd /sandbox/Dev_Bak/AlbumGenerator_22_02_25/build && $(MAKE) -f src/GuiFiles/CMakeFiles/GuiFiles.dir/build.make src/GuiFiles/CMakeFiles/GuiFiles.dir/CatalogDataTreeCtrl.cpp.s
-.PHONY : CatalogDataTreeCtrl.cpp.s
+CatalogPanel.cpp.s:
+	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f src/GuiFiles/CMakeFiles/GuiFiles.dir/build.make src/GuiFiles/CMakeFiles/GuiFiles.dir/CatalogPanel.cpp.s
+.PHONY : CatalogPanel.cpp.s
+
+CatalogTreeCtrl.o: CatalogTreeCtrl.cpp.o
+
+.PHONY : CatalogTreeCtrl.o
+
+# target to build an object file
+CatalogTreeCtrl.cpp.o:
+	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f src/GuiFiles/CMakeFiles/GuiFiles.dir/build.make src/GuiFiles/CMakeFiles/GuiFiles.dir/CatalogTreeCtrl.cpp.o
+.PHONY : CatalogTreeCtrl.cpp.o
+
+CatalogTreeCtrl.i: CatalogTreeCtrl.cpp.i
+
+.PHONY : CatalogTreeCtrl.i
+
+# target to preprocess a source file
+CatalogTreeCtrl.cpp.i:
+	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f src/GuiFiles/CMakeFiles/GuiFiles.dir/build.make src/GuiFiles/CMakeFiles/GuiFiles.dir/CatalogTreeCtrl.cpp.i
+.PHONY : CatalogTreeCtrl.cpp.i
+
+CatalogTreeCtrl.s: CatalogTreeCtrl.cpp.s
+
+.PHONY : CatalogTreeCtrl.s
+
+# target to generate assembly for a file
+CatalogTreeCtrl.cpp.s:
+	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f src/GuiFiles/CMakeFiles/GuiFiles.dir/build.make src/GuiFiles/CMakeFiles/GuiFiles.dir/CatalogTreeCtrl.cpp.s
+.PHONY : CatalogTreeCtrl.cpp.s
 
 DefinePeriodsDialog.o: DefinePeriodsDialog.cpp.o
 
@@ -266,7 +320,7 @@ DefinePeriodsDialog.o: DefinePeriodsDialog.cpp.o
 
 # target to build an object file
 DefinePeriodsDialog.cpp.o:
-	cd /sandbox/Dev_Bak/AlbumGenerator_22_02_25/build && $(MAKE) -f src/GuiFiles/CMakeFiles/GuiFiles.dir/build.make src/GuiFiles/CMakeFiles/GuiFiles.dir/DefinePeriodsDialog.cpp.o
+	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f src/GuiFiles/CMakeFiles/GuiFiles.dir/build.make src/GuiFiles/CMakeFiles/GuiFiles.dir/DefinePeriodsDialog.cpp.o
 .PHONY : DefinePeriodsDialog.cpp.o
 
 DefinePeriodsDialog.i: DefinePeriodsDialog.cpp.i
@@ -275,7 +329,7 @@ DefinePeriodsDialog.i: DefinePeriodsDialog.cpp.i
 
 # target to preprocess a source file
 DefinePeriodsDialog.cpp.i:
-	cd /sandbox/Dev_Bak/AlbumGenerator_22_02_25/build && $(MAKE) -f src/GuiFiles/CMakeFiles/GuiFiles.dir/build.make src/GuiFiles/CMakeFiles/GuiFiles.dir/DefinePeriodsDialog.cpp.i
+	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f src/GuiFiles/CMakeFiles/GuiFiles.dir/build.make src/GuiFiles/CMakeFiles/GuiFiles.dir/DefinePeriodsDialog.cpp.i
 .PHONY : DefinePeriodsDialog.cpp.i
 
 DefinePeriodsDialog.s: DefinePeriodsDialog.cpp.s
@@ -284,7 +338,7 @@ DefinePeriodsDialog.s: DefinePeriodsDialog.cpp.s
 
 # target to generate assembly for a file
 DefinePeriodsDialog.cpp.s:
-	cd /sandbox/Dev_Bak/AlbumGenerator_22_02_25/build && $(MAKE) -f src/GuiFiles/CMakeFiles/GuiFiles.dir/build.make src/GuiFiles/CMakeFiles/GuiFiles.dir/DefinePeriodsDialog.cpp.s
+	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f src/GuiFiles/CMakeFiles/GuiFiles.dir/build.make src/GuiFiles/CMakeFiles/GuiFiles.dir/DefinePeriodsDialog.cpp.s
 .PHONY : DefinePeriodsDialog.cpp.s
 
 LabeledTextBox.o: LabeledTextBox.cpp.o
@@ -293,7 +347,7 @@ LabeledTextBox.o: LabeledTextBox.cpp.o
 
 # target to build an object file
 LabeledTextBox.cpp.o:
-	cd /sandbox/Dev_Bak/AlbumGenerator_22_02_25/build && $(MAKE) -f src/GuiFiles/CMakeFiles/GuiFiles.dir/build.make src/GuiFiles/CMakeFiles/GuiFiles.dir/LabeledTextBox.cpp.o
+	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f src/GuiFiles/CMakeFiles/GuiFiles.dir/build.make src/GuiFiles/CMakeFiles/GuiFiles.dir/LabeledTextBox.cpp.o
 .PHONY : LabeledTextBox.cpp.o
 
 LabeledTextBox.i: LabeledTextBox.cpp.i
@@ -302,7 +356,7 @@ LabeledTextBox.i: LabeledTextBox.cpp.i
 
 # target to preprocess a source file
 LabeledTextBox.cpp.i:
-	cd /sandbox/Dev_Bak/AlbumGenerator_22_02_25/build && $(MAKE) -f src/GuiFiles/CMakeFiles/GuiFiles.dir/build.make src/GuiFiles/CMakeFiles/GuiFiles.dir/LabeledTextBox.cpp.i
+	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f src/GuiFiles/CMakeFiles/GuiFiles.dir/build.make src/GuiFiles/CMakeFiles/GuiFiles.dir/LabeledTextBox.cpp.i
 .PHONY : LabeledTextBox.cpp.i
 
 LabeledTextBox.s: LabeledTextBox.cpp.s
@@ -311,7 +365,7 @@ LabeledTextBox.s: LabeledTextBox.cpp.s
 
 # target to generate assembly for a file
 LabeledTextBox.cpp.s:
-	cd /sandbox/Dev_Bak/AlbumGenerator_22_02_25/build && $(MAKE) -f src/GuiFiles/CMakeFiles/GuiFiles.dir/build.make src/GuiFiles/CMakeFiles/GuiFiles.dir/LabeledTextBox.cpp.s
+	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f src/GuiFiles/CMakeFiles/GuiFiles.dir/build.make src/GuiFiles/CMakeFiles/GuiFiles.dir/LabeledTextBox.cpp.s
 .PHONY : LabeledTextBox.cpp.s
 
 SettingsDialog.o: SettingsDialog.cpp.o
@@ -320,7 +374,7 @@ SettingsDialog.o: SettingsDialog.cpp.o
 
 # target to build an object file
 SettingsDialog.cpp.o:
-	cd /sandbox/Dev_Bak/AlbumGenerator_22_02_25/build && $(MAKE) -f src/GuiFiles/CMakeFiles/GuiFiles.dir/build.make src/GuiFiles/CMakeFiles/GuiFiles.dir/SettingsDialog.cpp.o
+	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f src/GuiFiles/CMakeFiles/GuiFiles.dir/build.make src/GuiFiles/CMakeFiles/GuiFiles.dir/SettingsDialog.cpp.o
 .PHONY : SettingsDialog.cpp.o
 
 SettingsDialog.i: SettingsDialog.cpp.i
@@ -329,7 +383,7 @@ SettingsDialog.i: SettingsDialog.cpp.i
 
 # target to preprocess a source file
 SettingsDialog.cpp.i:
-	cd /sandbox/Dev_Bak/AlbumGenerator_22_02_25/build && $(MAKE) -f src/GuiFiles/CMakeFiles/GuiFiles.dir/build.make src/GuiFiles/CMakeFiles/GuiFiles.dir/SettingsDialog.cpp.i
+	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f src/GuiFiles/CMakeFiles/GuiFiles.dir/build.make src/GuiFiles/CMakeFiles/GuiFiles.dir/SettingsDialog.cpp.i
 .PHONY : SettingsDialog.cpp.i
 
 SettingsDialog.s: SettingsDialog.cpp.s
@@ -338,7 +392,7 @@ SettingsDialog.s: SettingsDialog.cpp.s
 
 # target to generate assembly for a file
 SettingsDialog.cpp.s:
-	cd /sandbox/Dev_Bak/AlbumGenerator_22_02_25/build && $(MAKE) -f src/GuiFiles/CMakeFiles/GuiFiles.dir/build.make src/GuiFiles/CMakeFiles/GuiFiles.dir/SettingsDialog.cpp.s
+	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f src/GuiFiles/CMakeFiles/GuiFiles.dir/build.make src/GuiFiles/CMakeFiles/GuiFiles.dir/SettingsDialog.cpp.s
 .PHONY : SettingsDialog.cpp.s
 
 SortOrderDialog.o: SortOrderDialog.cpp.o
@@ -347,7 +401,7 @@ SortOrderDialog.o: SortOrderDialog.cpp.o
 
 # target to build an object file
 SortOrderDialog.cpp.o:
-	cd /sandbox/Dev_Bak/AlbumGenerator_22_02_25/build && $(MAKE) -f src/GuiFiles/CMakeFiles/GuiFiles.dir/build.make src/GuiFiles/CMakeFiles/GuiFiles.dir/SortOrderDialog.cpp.o
+	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f src/GuiFiles/CMakeFiles/GuiFiles.dir/build.make src/GuiFiles/CMakeFiles/GuiFiles.dir/SortOrderDialog.cpp.o
 .PHONY : SortOrderDialog.cpp.o
 
 SortOrderDialog.i: SortOrderDialog.cpp.i
@@ -356,7 +410,7 @@ SortOrderDialog.i: SortOrderDialog.cpp.i
 
 # target to preprocess a source file
 SortOrderDialog.cpp.i:
-	cd /sandbox/Dev_Bak/AlbumGenerator_22_02_25/build && $(MAKE) -f src/GuiFiles/CMakeFiles/GuiFiles.dir/build.make src/GuiFiles/CMakeFiles/GuiFiles.dir/SortOrderDialog.cpp.i
+	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f src/GuiFiles/CMakeFiles/GuiFiles.dir/build.make src/GuiFiles/CMakeFiles/GuiFiles.dir/SortOrderDialog.cpp.i
 .PHONY : SortOrderDialog.cpp.i
 
 SortOrderDialog.s: SortOrderDialog.cpp.s
@@ -365,7 +419,7 @@ SortOrderDialog.s: SortOrderDialog.cpp.s
 
 # target to generate assembly for a file
 SortOrderDialog.cpp.s:
-	cd /sandbox/Dev_Bak/AlbumGenerator_22_02_25/build && $(MAKE) -f src/GuiFiles/CMakeFiles/GuiFiles.dir/build.make src/GuiFiles/CMakeFiles/GuiFiles.dir/SortOrderDialog.cpp.s
+	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f src/GuiFiles/CMakeFiles/GuiFiles.dir/build.make src/GuiFiles/CMakeFiles/GuiFiles.dir/SortOrderDialog.cpp.s
 .PHONY : SortOrderDialog.cpp.s
 
 StaticItem.o: StaticItem.cpp.o
@@ -374,7 +428,7 @@ StaticItem.o: StaticItem.cpp.o
 
 # target to build an object file
 StaticItem.cpp.o:
-	cd /sandbox/Dev_Bak/AlbumGenerator_22_02_25/build && $(MAKE) -f src/GuiFiles/CMakeFiles/GuiFiles.dir/build.make src/GuiFiles/CMakeFiles/GuiFiles.dir/StaticItem.cpp.o
+	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f src/GuiFiles/CMakeFiles/GuiFiles.dir/build.make src/GuiFiles/CMakeFiles/GuiFiles.dir/StaticItem.cpp.o
 .PHONY : StaticItem.cpp.o
 
 StaticItem.i: StaticItem.cpp.i
@@ -383,7 +437,7 @@ StaticItem.i: StaticItem.cpp.i
 
 # target to preprocess a source file
 StaticItem.cpp.i:
-	cd /sandbox/Dev_Bak/AlbumGenerator_22_02_25/build && $(MAKE) -f src/GuiFiles/CMakeFiles/GuiFiles.dir/build.make src/GuiFiles/CMakeFiles/GuiFiles.dir/StaticItem.cpp.i
+	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f src/GuiFiles/CMakeFiles/GuiFiles.dir/build.make src/GuiFiles/CMakeFiles/GuiFiles.dir/StaticItem.cpp.i
 .PHONY : StaticItem.cpp.i
 
 StaticItem.s: StaticItem.cpp.s
@@ -392,7 +446,7 @@ StaticItem.s: StaticItem.cpp.s
 
 # target to generate assembly for a file
 StaticItem.cpp.s:
-	cd /sandbox/Dev_Bak/AlbumGenerator_22_02_25/build && $(MAKE) -f src/GuiFiles/CMakeFiles/GuiFiles.dir/build.make src/GuiFiles/CMakeFiles/GuiFiles.dir/StaticItem.cpp.s
+	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f src/GuiFiles/CMakeFiles/GuiFiles.dir/build.make src/GuiFiles/CMakeFiles/GuiFiles.dir/StaticItem.cpp.s
 .PHONY : StaticItem.cpp.s
 
 # Help Target
@@ -404,21 +458,27 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... GuiFiles"
 	@echo "... edit_cache"
-	@echo "... AlbumGeneratorFrame.o"
-	@echo "... AlbumGeneratorFrame.i"
-	@echo "... AlbumGeneratorFrame.s"
-	@echo "... AlbumGeneratorPanel.o"
-	@echo "... AlbumGeneratorPanel.i"
-	@echo "... AlbumGeneratorPanel.s"
+	@echo "... AlbumGenFrame.o"
+	@echo "... AlbumGenFrame.i"
+	@echo "... AlbumGenFrame.s"
+	@echo "... AlbumGenPanel.o"
+	@echo "... AlbumGenPanel.i"
+	@echo "... AlbumGenPanel.s"
+	@echo "... AlbumPanel.o"
+	@echo "... AlbumPanel.i"
+	@echo "... AlbumPanel.s"
 	@echo "... AlbumSplitterWindow.o"
 	@echo "... AlbumSplitterWindow.i"
 	@echo "... AlbumSplitterWindow.s"
 	@echo "... AlbumTreeCtrl.o"
 	@echo "... AlbumTreeCtrl.i"
 	@echo "... AlbumTreeCtrl.s"
-	@echo "... CatalogDataTreeCtrl.o"
-	@echo "... CatalogDataTreeCtrl.i"
-	@echo "... CatalogDataTreeCtrl.s"
+	@echo "... CatalogPanel.o"
+	@echo "... CatalogPanel.i"
+	@echo "... CatalogPanel.s"
+	@echo "... CatalogTreeCtrl.o"
+	@echo "... CatalogTreeCtrl.i"
+	@echo "... CatalogTreeCtrl.s"
 	@echo "... DefinePeriodsDialog.o"
 	@echo "... DefinePeriodsDialog.i"
 	@echo "... DefinePeriodsDialog.s"
@@ -445,6 +505,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /sandbox/Dev_Bak/AlbumGenerator_22_02_25/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /sandbox/Development/AlbumGenerator/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

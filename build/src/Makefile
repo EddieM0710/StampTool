@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /sandbox/Dev_Bak/AlbumGenerator_22_02_25
+CMAKE_SOURCE_DIR = /sandbox/Development/AlbumGenerator
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /sandbox/Dev_Bak/AlbumGenerator_22_02_25/build
+CMAKE_BINARY_DIR = /sandbox/Development/AlbumGenerator/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,14 +80,14 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /sandbox/Dev_Bak/AlbumGenerator_22_02_25/build && $(CMAKE_COMMAND) -E cmake_progress_start /sandbox/Dev_Bak/AlbumGenerator_22_02_25/build/CMakeFiles /sandbox/Dev_Bak/AlbumGenerator_22_02_25/build/src/CMakeFiles/progress.marks
-	cd /sandbox/Dev_Bak/AlbumGenerator_22_02_25/build && $(MAKE) -f CMakeFiles/Makefile2 src/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /sandbox/Dev_Bak/AlbumGenerator_22_02_25/build/CMakeFiles 0
+	cd /sandbox/Development/AlbumGenerator/build && $(CMAKE_COMMAND) -E cmake_progress_start /sandbox/Development/AlbumGenerator/build/CMakeFiles /sandbox/Development/AlbumGenerator/build/src/CMakeFiles/progress.marks
+	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f CMakeFiles/Makefile2 src/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /sandbox/Development/AlbumGenerator/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /sandbox/Dev_Bak/AlbumGenerator_22_02_25/build && $(MAKE) -f CMakeFiles/Makefile2 src/clean
+	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f CMakeFiles/Makefile2 src/clean
 .PHONY : clean
 
 # The main clean target
@@ -97,22 +97,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /sandbox/Dev_Bak/AlbumGenerator_22_02_25/build && $(MAKE) -f CMakeFiles/Makefile2 src/preinstall
+	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f CMakeFiles/Makefile2 src/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /sandbox/Dev_Bak/AlbumGenerator_22_02_25/build && $(MAKE) -f CMakeFiles/Makefile2 src/preinstall
+	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f CMakeFiles/Makefile2 src/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /sandbox/Dev_Bak/AlbumGenerator_22_02_25/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /sandbox/Development/AlbumGenerator/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 src/CMakeFiles/AlbumGenerator.dir/rule:
-	cd /sandbox/Dev_Bak/AlbumGenerator_22_02_25/build && $(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/AlbumGenerator.dir/rule
+	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/AlbumGenerator.dir/rule
 .PHONY : src/CMakeFiles/AlbumGenerator.dir/rule
 
 # Convenience name for target.
@@ -122,8 +122,62 @@ AlbumGenerator: src/CMakeFiles/AlbumGenerator.dir/rule
 
 # fast build rule for target.
 AlbumGenerator/fast:
-	cd /sandbox/Dev_Bak/AlbumGenerator_22_02_25/build && $(MAKE) -f src/CMakeFiles/AlbumGenerator.dir/build.make src/CMakeFiles/AlbumGenerator.dir/build
+	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f src/CMakeFiles/AlbumGenerator.dir/build.make src/CMakeFiles/AlbumGenerator.dir/build
 .PHONY : AlbumGenerator/fast
+
+AlbumGenApp.o: AlbumGenApp.cpp.o
+
+.PHONY : AlbumGenApp.o
+
+# target to build an object file
+AlbumGenApp.cpp.o:
+	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f src/CMakeFiles/AlbumGenerator.dir/build.make src/CMakeFiles/AlbumGenerator.dir/AlbumGenApp.cpp.o
+.PHONY : AlbumGenApp.cpp.o
+
+AlbumGenApp.i: AlbumGenApp.cpp.i
+
+.PHONY : AlbumGenApp.i
+
+# target to preprocess a source file
+AlbumGenApp.cpp.i:
+	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f src/CMakeFiles/AlbumGenerator.dir/build.make src/CMakeFiles/AlbumGenerator.dir/AlbumGenApp.cpp.i
+.PHONY : AlbumGenApp.cpp.i
+
+AlbumGenApp.s: AlbumGenApp.cpp.s
+
+.PHONY : AlbumGenApp.s
+
+# target to generate assembly for a file
+AlbumGenApp.cpp.s:
+	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f src/CMakeFiles/AlbumGenerator.dir/build.make src/CMakeFiles/AlbumGenerator.dir/AlbumGenApp.cpp.s
+.PHONY : AlbumGenApp.cpp.s
+
+Defs.o: Defs.cpp.o
+
+.PHONY : Defs.o
+
+# target to build an object file
+Defs.cpp.o:
+	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f src/CMakeFiles/AlbumGenerator.dir/build.make src/CMakeFiles/AlbumGenerator.dir/Defs.cpp.o
+.PHONY : Defs.cpp.o
+
+Defs.i: Defs.cpp.i
+
+.PHONY : Defs.i
+
+# target to preprocess a source file
+Defs.cpp.i:
+	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f src/CMakeFiles/AlbumGenerator.dir/build.make src/CMakeFiles/AlbumGenerator.dir/Defs.cpp.i
+.PHONY : Defs.cpp.i
+
+Defs.s: Defs.cpp.s
+
+.PHONY : Defs.s
+
+# target to generate assembly for a file
+Defs.cpp.s:
+	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f src/CMakeFiles/AlbumGenerator.dir/build.make src/CMakeFiles/AlbumGenerator.dir/Defs.cpp.s
+.PHONY : Defs.cpp.s
 
 # Help Target
 help:
@@ -134,6 +188,12 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... AlbumGenerator"
 	@echo "... edit_cache"
+	@echo "... AlbumGenApp.o"
+	@echo "... AlbumGenApp.i"
+	@echo "... AlbumGenApp.s"
+	@echo "... Defs.o"
+	@echo "... Defs.i"
+	@echo "... Defs.s"
 .PHONY : help
 
 
@@ -145,6 +205,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /sandbox/Dev_Bak/AlbumGenerator_22_02_25/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /sandbox/Development/AlbumGenerator/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

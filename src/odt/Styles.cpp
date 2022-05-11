@@ -13,7 +13,9 @@
 #include <iostream>
 #include "Defs.h"
 #include "odt/ODTDefs.h"
+#include "odt/Document.h"
 #include "utils/XMLUtilities.h"
+#include "utils/Settings.h"
  //***********************************
 
 namespace ODT {
@@ -21,7 +23,7 @@ namespace ODT {
     Styles::Styles( )
     {
         m_styles = new wxXmlDocument( );
-        wxString configDir = GetDocManager( )->GetConfigDirectory( );
+        wxString configDir = GetSettings( )->GetConfigurationDirectory( );
         wxString stylesTemplate = configDir + "/template/styles.xml";
         if ( !m_styles->Load( stylesTemplate ) )
         {
@@ -40,7 +42,7 @@ namespace ODT {
     bool Styles::Save( )
     {
         wxString str = ODTDoc( )->MakeAbsolute( "styles.xml" );
-        ::Save( m_styles, str );
+        m_styles->Save( str );
 
         //     std::cout << "dump Styles output\n";
         //  dump(m_styles);
@@ -56,7 +58,6 @@ namespace ODT {
         wxString& rightMargin,
         wxString& leftMargin )
     {
-
         wxXmlNode* layoutProperties = FindAutomaticStylesLayoutProperties( );
         if ( !layoutProperties )
         {
@@ -69,7 +70,7 @@ namespace ODT {
         Utils::SetAttrStr( layoutProperties, "fo:margin-bottom", bottomMargin );
         Utils::SetAttrStr( layoutProperties, "fo:margin-left", rightMargin );
         Utils::SetAttrStr( layoutProperties, "fo:margin-right", leftMargin );
-       Utils:: SetAttrStr( layoutProperties, "fo:background-color", "transparent" );
+        Utils:: SetAttrStr( layoutProperties, "fo:background-color", "transparent" );
 
         wxXmlNode* backgroundImage = Utils::AddNewNode( layoutProperties, wxXML_ELEMENT_NODE, "style:background-image" );
         Utils::SetAttrStr( backgroundImage, "xlink:href", filename );

@@ -33,21 +33,21 @@ namespace Layout {
         ~AlbumData( );
         bool IsOK( );
         wxXmlDocument* NewDocument( );
-        wxXmlDocument* ReplaceDocument( wxXmlDocument* doc );
+//        wxXmlDocument* ReplaceDocument( wxXmlDocument* doc );
         wxXmlDocument* GetDoc( ) { return m_albumDoc; };
         void SaveXML( wxString filename );
         void LoadXML( wxString filename );
 
         Album* GetAlbum( ) { return m_album; };
         void SetAlbum( Album* album ) { m_album = album; };
-        wxString GetTitle( ) { return m_title; };
-        void  SetTitle( wxString val ) { m_title = val; };
+//        wxString GetTitle( ) { return m_title; };
+//        void  SetTitle( wxString val ) { m_title = val; };
 
     private:
         /* data */
         wxXmlDocument* m_albumDoc;
         Album* m_album;
-        wxString m_title;
+//        wxString m_title;
     };
 }
 #endif

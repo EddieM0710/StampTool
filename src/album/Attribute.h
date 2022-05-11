@@ -12,6 +12,7 @@
 #ifndef Attribute_H
 #define Attribute_H
 #include <cstring>
+#include <vector>
 
 namespace Layout {
 

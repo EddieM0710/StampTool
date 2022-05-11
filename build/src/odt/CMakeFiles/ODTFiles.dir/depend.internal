@@ -81,7 +81,6 @@ src/odt/CMakeFiles/ODTFiles.dir/AutoStylesProp.cpp.o
  /usr/local/lib/wx/include/gtk3-unicode-3.1/wx/setup.h
 src/odt/CMakeFiles/ODTFiles.dir/Content.cpp.o
  ../src/Defs.h
- ../src/Node.h
  ../src/album/Album.h
  ../src/album/AlbumDefs.h
  ../src/album/AlbumNode.h
@@ -179,7 +178,6 @@ src/odt/CMakeFiles/ODTFiles.dir/Content.cpp.o
  /usr/local/lib/wx/include/gtk3-unicode-3.1/wx/setup.h
 src/odt/CMakeFiles/ODTFiles.dir/Document.cpp.o
  ../src/Defs.h
- ../src/Node.h
  ../src/album/Album.h
  ../src/album/AlbumData.h
  ../src/album/AlbumDefs.h
@@ -196,6 +194,7 @@ src/odt/CMakeFiles/ODTFiles.dir/Document.cpp.o
  ../src/odt/Settings.h
  ../src/odt/Styles.h
  ../src/utils/Project.h
+ ../src/utils/Settings.h
  /sandbox/Development/AlbumGenerator/src/odt/Document.cpp
  /usr/local/include/wx-3.1/wx/afterstd.h
  /usr/local/include/wx-3.1/wx/any.h
@@ -253,6 +252,7 @@ src/odt/CMakeFiles/ODTFiles.dir/Document.cpp.o
  /usr/local/include/wx-3.1/wx/thread.h
  /usr/local/include/wx-3.1/wx/tls.h
  /usr/local/include/wx-3.1/wx/translation.h
+ /usr/local/include/wx-3.1/wx/txtstrm.h
  /usr/local/include/wx-3.1/wx/typeinfo.h
  /usr/local/include/wx-3.1/wx/types.h
  /usr/local/include/wx-3.1/wx/unichar.h
@@ -277,7 +277,6 @@ src/odt/CMakeFiles/ODTFiles.dir/Document.cpp.o
  /usr/local/lib/wx/include/gtk3-unicode-3.1/wx/setup.h
 src/odt/CMakeFiles/ODTFiles.dir/Manifest.cpp.o
  ../src/Defs.h
- ../src/Node.h
  ../src/album/Album.h
  ../src/album/AlbumDefs.h
  ../src/album/AlbumNode.h
@@ -293,6 +292,7 @@ src/odt/CMakeFiles/ODTFiles.dir/Manifest.cpp.o
  ../src/odt/Styles.h
  ../src/utils/Project.h
  ../src/utils/Settings.h
+ ../src/utils/XMLUtilities.h
  /sandbox/Development/AlbumGenerator/src/odt/Document.h
  /sandbox/Development/AlbumGenerator/src/odt/Manifest.cpp
  /usr/local/include/wx-3.1/wx/afterstd.h
@@ -373,7 +373,6 @@ src/odt/CMakeFiles/ODTFiles.dir/Manifest.cpp.o
  /usr/local/lib/wx/include/gtk3-unicode-3.1/wx/setup.h
 src/odt/CMakeFiles/ODTFiles.dir/Meta.cpp.o
  ../src/Defs.h
- ../src/Node.h
  ../src/album/Album.h
  ../src/album/AlbumDefs.h
  ../src/album/AlbumNode.h
@@ -550,7 +549,6 @@ src/odt/CMakeFiles/ODTFiles.dir/Mimetype.cpp.o
  /usr/local/lib/wx/include/gtk3-unicode-3.1/wx/setup.h
 src/odt/CMakeFiles/ODTFiles.dir/ODTDefs.cpp.o
  ../src/Defs.h
- ../src/Node.h
  ../src/album/Album.h
  ../src/album/AlbumDefs.h
  ../src/album/AlbumNode.h
@@ -645,16 +643,27 @@ src/odt/CMakeFiles/ODTFiles.dir/ODTDefs.cpp.o
  /usr/local/lib/wx/include/gtk3-unicode-3.1/wx/setup.h
 src/odt/CMakeFiles/ODTFiles.dir/Settings.cpp.o
  ../src/Defs.h
+ ../src/album/Album.h
+ ../src/album/AlbumDefs.h
+ ../src/album/AlbumNode.h
+ ../src/album/Attribute.h
  ../src/catalog/CatalogData.h
  ../src/catalog/CatalogDefs.h
+ ../src/odt/Content.h
+ ../src/odt/Document.h
+ ../src/odt/Manifest.h
+ ../src/odt/Meta.h
+ ../src/odt/Mimetype.h
  ../src/odt/ODTDefs.h
  ../src/odt/Settings.h
+ ../src/odt/Styles.h
  ../src/utils/Project.h
  ../src/utils/Settings.h
  /sandbox/Development/AlbumGenerator/src/odt/Settings.cpp
  /usr/local/include/wx-3.1/wx/afterstd.h
  /usr/local/include/wx-3.1/wx/any.h
  /usr/local/include/wx-3.1/wx/anystr.h
+ /usr/local/include/wx-3.1/wx/archive.h
  /usr/local/include/wx-3.1/wx/arrstr.h
  /usr/local/include/wx-3.1/wx/beforestd.h
  /usr/local/include/wx-3.1/wx/buffer.h
@@ -672,6 +681,9 @@ src/odt/CMakeFiles/ODTFiles.dir/Settings.cpp.o
  /usr/local/include/wx-3.1/wx/dynarray.h
  /usr/local/include/wx-3.1/wx/except.h
  /usr/local/include/wx-3.1/wx/features.h
+ /usr/local/include/wx-3.1/wx/file.h
+ /usr/local/include/wx-3.1/wx/filefn.h
+ /usr/local/include/wx-3.1/wx/filename.h
  /usr/local/include/wx-3.1/wx/flags.h
  /usr/local/include/wx-3.1/wx/fontenc.h
  /usr/local/include/wx-3.1/wx/generic/logg.h
@@ -694,6 +706,7 @@ src/odt/CMakeFiles/ODTFiles.dir/Settings.cpp.o
  /usr/local/include/wx-3.1/wx/scopedptr.h
  /usr/local/include/wx-3.1/wx/scopeguard.h
  /usr/local/include/wx-3.1/wx/strconv.h
+ /usr/local/include/wx-3.1/wx/stream.h
  /usr/local/include/wx-3.1/wx/string.h
  /usr/local/include/wx-3.1/wx/stringimpl.h
  /usr/local/include/wx-3.1/wx/stringops.h
@@ -721,17 +734,32 @@ src/odt/CMakeFiles/ODTFiles.dir/Settings.cpp.o
  /usr/local/include/wx-3.1/wx/xtihandler.h
  /usr/local/include/wx-3.1/wx/xtiprop.h
  /usr/local/include/wx-3.1/wx/xtitypes.h
+ /usr/local/include/wx-3.1/wx/zipstrm.h
  /usr/local/lib/wx/include/gtk3-unicode-3.1/wx/setup.h
 src/odt/CMakeFiles/ODTFiles.dir/Styles.cpp.o
  ../src/Defs.h
+ ../src/album/Album.h
+ ../src/album/AlbumDefs.h
+ ../src/album/AlbumNode.h
+ ../src/album/Attribute.h
+ ../src/catalog/CatalogData.h
  ../src/catalog/CatalogDefs.h
+ ../src/odt/Content.h
+ ../src/odt/Document.h
+ ../src/odt/Manifest.h
+ ../src/odt/Meta.h
+ ../src/odt/Mimetype.h
  ../src/odt/ODTDefs.h
+ ../src/odt/Settings.h
  ../src/odt/Styles.h
+ ../src/utils/Project.h
+ ../src/utils/Settings.h
  ../src/utils/XMLUtilities.h
  /sandbox/Development/AlbumGenerator/src/odt/Styles.cpp
  /usr/local/include/wx-3.1/wx/afterstd.h
  /usr/local/include/wx-3.1/wx/any.h
  /usr/local/include/wx-3.1/wx/anystr.h
+ /usr/local/include/wx-3.1/wx/archive.h
  /usr/local/include/wx-3.1/wx/arrstr.h
  /usr/local/include/wx-3.1/wx/beforestd.h
  /usr/local/include/wx-3.1/wx/buffer.h
@@ -749,6 +777,9 @@ src/odt/CMakeFiles/ODTFiles.dir/Styles.cpp.o
  /usr/local/include/wx-3.1/wx/dynarray.h
  /usr/local/include/wx-3.1/wx/except.h
  /usr/local/include/wx-3.1/wx/features.h
+ /usr/local/include/wx-3.1/wx/file.h
+ /usr/local/include/wx-3.1/wx/filefn.h
+ /usr/local/include/wx-3.1/wx/filename.h
  /usr/local/include/wx-3.1/wx/flags.h
  /usr/local/include/wx-3.1/wx/fontenc.h
  /usr/local/include/wx-3.1/wx/generic/logg.h
@@ -771,6 +802,7 @@ src/odt/CMakeFiles/ODTFiles.dir/Styles.cpp.o
  /usr/local/include/wx-3.1/wx/scopedptr.h
  /usr/local/include/wx-3.1/wx/scopeguard.h
  /usr/local/include/wx-3.1/wx/strconv.h
+ /usr/local/include/wx-3.1/wx/stream.h
  /usr/local/include/wx-3.1/wx/string.h
  /usr/local/include/wx-3.1/wx/stringimpl.h
  /usr/local/include/wx-3.1/wx/stringops.h
@@ -798,4 +830,5 @@ src/odt/CMakeFiles/ODTFiles.dir/Styles.cpp.o
  /usr/local/include/wx-3.1/wx/xtihandler.h
  /usr/local/include/wx-3.1/wx/xtiprop.h
  /usr/local/include/wx-3.1/wx/xtitypes.h
+ /usr/local/include/wx-3.1/wx/zipstrm.h
  /usr/local/lib/wx/include/gtk3-unicode-3.1/wx/setup.h

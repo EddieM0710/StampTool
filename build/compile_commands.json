@@ -10,6 +10,11 @@
   "file": "/sandbox/Development/AlbumGenerator/src/Defs.cpp"
 },
 {
+  "directory": "/sandbox/Development/AlbumGenerator/build/src",
+  "command": "/usr/bin/x86_64-linux-gnu-g++-7  -DWXUSINGDLL -D_FILE_OFFSET_BITS=64 -D__WXGTK__ -I/sandbox/Development/AlbumGenerator/src -I/sandbox/Development/AlbumGenerator/src/gui -I/sandbox/Development/AlbumGenerator/src/utils -I/sandbox/Development/AlbumGenerator/src/odt -I/sandbox/Development/AlbumGenerator/src/album -I/sandbox/Development/AlbumGenerator/src/catalog -I/sandbox/Applications/wxWidgets-3.1.4 -isystem /usr/local/lib/wx/include/gtk3-unicode-3.1 -isystem /usr/local/include/wx-3.1   -pthread -g   -std=gnu++11 -o CMakeFiles/AlbumGenerator.dir/Node.cpp.o -c /sandbox/Development/AlbumGenerator/src/Node.cpp",
+  "file": "/sandbox/Development/AlbumGenerator/src/Node.cpp"
+},
+{
   "directory": "/sandbox/Development/AlbumGenerator/build/src/utils",
   "command": "/usr/bin/x86_64-linux-gnu-g++-7  -DUtils_EXPORTS -DWXUSINGDLL -D_FILE_OFFSET_BITS=64 -D__WXGTK__ -I/sandbox/Development/AlbumGenerator/src -I/sandbox/Development/AlbumGenerator/src/gui -I/sandbox/Development/AlbumGenerator/src/utils -I/sandbox/Development/AlbumGenerator/src/odt -I/sandbox/Development/AlbumGenerator/src/album -I/sandbox/Development/AlbumGenerator/src/catalog -I/sandbox/Applications/wxWidgets-3.1.4 -isystem /usr/local/lib/wx/include/gtk3-unicode-3.1 -isystem /usr/local/include/wx-3.1   -pthread -pthread -g -fPIC   -std=gnu++11 -o CMakeFiles/Utils.dir/CSV.cpp.o -c /sandbox/Development/AlbumGenerator/src/utils/CSV.cpp",
   "file": "/sandbox/Development/AlbumGenerator/src/utils/CSV.cpp"

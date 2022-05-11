@@ -30,7 +30,7 @@ namespace Catalog {
     {
         if ( GetNodeElement( ) )
         {
-            if ( Utils::IsCatalogNodeType( GetNodeElement( ), Catalog::NT_Specimen ) )
+            if ( Catalog::IsCatalogNodeType( GetNodeElement( ), Catalog::NT_Specimen ) )
             {
                 return true;
             }

@@ -54,7 +54,7 @@ namespace Utils {
         wxXmlNode* Next( );
     };
 
-    bool IsCatalogNodeType( wxXmlNode* ele, Catalog::CatalogNodeType type );
+    //bool IsCatalogNodeType( wxXmlNode* ele, Catalog::CatalogNodeType type );
     void IDElement( wxXmlNode* ele );
 
 

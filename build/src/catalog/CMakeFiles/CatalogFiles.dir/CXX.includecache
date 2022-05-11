@@ -17,8 +17,6 @@ wx/string.h
 -
 
 ../src/Node.h
-wx/xml/xml.h
-../src/wx/xml/xml.h
 
 ../src/catalog/CatalogCode.h
 vector
@@ -49,8 +47,6 @@ wx/string.h
 -
 
 ../src/catalog/CatalogNode.h
-Node.h
-../src/catalog/Node.h
 catalog/CatalogDefs.h
 ../src/catalog/catalog/CatalogDefs.h
 wx/xml/xml.h
@@ -197,8 +193,6 @@ wx/string.h
 -
 
 /sandbox/Development/AlbumGenerator/src/catalog/CatalogNode.h
-Node.h
-/sandbox/Development/AlbumGenerator/src/catalog/Node.h
 catalog/CatalogDefs.h
 /sandbox/Development/AlbumGenerator/src/catalog/catalog/CatalogDefs.h
 wx/xml/xml.h

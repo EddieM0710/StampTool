@@ -37,13 +37,13 @@ namespace Catalog {
     public:
         Specimen( ) : CatalogNode( )
         {
-            SetCatalogNodeType( NT_Specimen );
+            SetNodeType( NT_Specimen );
             IsOK( );
         };
 
         Specimen( wxXmlNode* ele ) : CatalogNode( ele )
         {
-            SetCatalogNodeType( NT_Specimen );
+            SetNodeType( NT_Specimen );
             IsOK( );
         };
 

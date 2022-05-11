@@ -16,10 +16,6 @@ gui/AlbumGenFrame.h
 wx/string.h
 -
 
-../src/Node.h
-wx/xml/xml.h
-../src/wx/xml/xml.h
-
 ../src/album/Album.h
 album/AlbumNode.h
 ../src/album/album/AlbumNode.h
@@ -35,10 +31,10 @@ wx/string.h
 ../src/album/AlbumNode.h
 wx/string.h
 -
+vector
+-
 Defs.h
 ../src/album/Defs.h
-Node.h
-../src/album/Node.h
 album/AlbumDefs.h
 ../src/album/album/AlbumDefs.h
 album/Attribute.h
@@ -48,6 +44,8 @@ wx/xml/xml.h
 
 ../src/album/Attribute.h
 cstring
+-
+vector
 -
 
 ../src/album/Column.h
@@ -105,8 +103,6 @@ wx/string.h
 -
 
 ../src/catalog/CatalogNode.h
-Node.h
-../src/catalog/Node.h
 catalog/CatalogDefs.h
 ../src/catalog/catalog/CatalogDefs.h
 wx/xml/xml.h

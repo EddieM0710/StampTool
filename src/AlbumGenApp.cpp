@@ -102,7 +102,7 @@ bool AlbumGenApp::OnInit( )
     wxImage::AddHandler( new wxGIFHandler );
 #endif
 
-    m_project = new Project();;
+    m_project = new Utils::Project();;
 
     m_frame = new AlbumGenFrame( NULL );
     m_frame->SetupRecentMenu( );    

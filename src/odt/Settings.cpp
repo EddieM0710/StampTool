@@ -1,4 +1,5 @@
 #include "odt/Settings.h"
+#include "odt/Document.h"
 #include "utils/Project.h"
 #include "utils/Settings.h"
 #include <iostream>

@@ -83,15 +83,20 @@ namespace Catalog {
         }
         m_stampDoc->Save( filename );
     }
-    void CatalogData::LoadXML( wxString filename )
+    void CatalogData::LoadXML( wxString filename)
     {
-        GetProject( )->SetCatalogFilename( filename );
-        if ( !m_stampDoc )
+        
+        bool ok = false;
+        if ( filename.length() > 0 )
         {
-            m_stampDoc = NewDocument( );
-        }
-        bool ok = m_stampDoc->Load( filename );
+            if ( !m_stampDoc )
+            {
+                m_stampDoc = NewDocument( );
+            }
 
+            wxString cwd = wxGetCwd( ) ;
+            ok = m_stampDoc->Load( filename );
+        }
         if ( !ok )
         {
             std::cout << filename << " Load Failed.\n";
@@ -108,7 +113,7 @@ namespace Catalog {
 
         }
 
-        GetSettings( )->SetLastFile( filename );
+       // GetSettings( )->SetLastFile( filename );
         //Get the file global Prefs
         wxXmlNode* root = m_stampDoc->GetRoot( );
         const char* name = root->GetName( );

@@ -59,7 +59,7 @@ namespace Utils {
             SetConfigurationDirectory( fileName->GetFullPath( ) );
         }
 
-        SetWorkingDirectory( wxGetCwd( ) );
+
         Load( );
         SetDirty( false );
     };

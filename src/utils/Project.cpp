@@ -3,7 +3,9 @@
 #include "Defs.h"
 #include <iostream>
 #include "catalog/CatalogData.h"
+#include "album/AlbumDefs.h"
 #include "album/AlbumData.h"
+#include <wx/filename.h>
 
 namespace Utils {
 
@@ -14,8 +16,10 @@ namespace Utils {
         if ( m_settings->GetLoadLastFileAtStartUp())
         {
             wxString filename = m_settings->GetLastFile();
-            if ( filename.Len() > 0)
+
+            if ( wxFileExists( filename ))
             {
+
                 if( LoadProject( filename ))
                 {
                     wxString catalogFilename = GetCatalogFilename();
@@ -119,13 +123,43 @@ namespace Utils {
         m_albumData = albumData;
     };
 
+wxString Project::MakeFile( wxString filename)
+{
+    wxFileName newFile(filename);
+    if ( !newFile.IsAbsolute() )
+    {
+        newFile.MakeAbsolute();
+    }
+    return newFile.GetFullPath();
+}
+
     bool Project::LoadProject( wxString filename )
     {
-        m_projectFilename = filename;
+        wxFileName projFile(filename);
+        if ( projFile.FileExists() )
+        {
+            if ( !projFile.IsAbsolute() )
+            {
+                projFile.MakeAbsolute();
+            }
+        }
+        else
+        {
+            //setup new files
+            return false;
+        }
 
+        wxString cwd = projFile.GetPath();
+        m_settings->SetWorkingDirectory( cwd );
+        wxFileName::SetCwd( cwd ) ;	
+        m_projectFilename = projFile.GetFullPath();
+
+
+        m_ProjectDoc = new wxXmlDocument();
         if ( !m_ProjectDoc->Load( m_projectFilename ) )
         {
             ReportError( "Project::Load", "error loading Prokect xml file.", true );
+            return false;
         }
 
         wxXmlNode* projectRoot = m_ProjectDoc->GetRoot( );
@@ -135,32 +169,36 @@ namespace Utils {
             std::cout << "Initial node must be <Project>"
                 << "\n";
             std::cout << "Found \"" << name << "\" instead.\n";
+            return false;
         }
         LoadAttributes( projectRoot );
+        return true;
     }
 
     bool Project::LoadAttributes( wxXmlNode* thisObject )
     {
         const wxXmlAttribute* attr = thisObject->GetAttributes( );
+        wxFileName filename;
         while ( attr )
         {
             wxString name = attr->GetName( );
             wxString val = attr->GetValue( );
+
             if ( !name.Cmp( "OutputName" ) )
             {
-                m_outputFilename = val;
+                m_outputFilename = MakeFile( val );
             }
             else if ( !name.Cmp( "Album" ) )
             {
-                m_albumFilename = val;
+                m_albumFilename = MakeFile( val );
             }
             else if ( !name.Cmp( "ImagePath" ) )
             {
-                GetSettings()->SetImageDirectory( val );
+                GetSettings()->SetImageDirectory(  MakeFile( val ) );
             }
             else if ( !name.Cmp( "Catalog" ) )
             {
-                m_catalogFilename = val;
+                m_catalogFilename = MakeFile( val );
             }
             attr = attr->GetNext( );
         }

@@ -41,25 +41,25 @@ void SetDirty( bool state ) { Dirty = state; };
 bool IsDirty( ) { return Dirty; };
 
 
-Settings* GetSettings( )
+Utils::Settings* GetSettings( )
 {
-    Project* project = GetProject( );
+    Utils::Project* project = GetProject( );
     if ( project )
     {
         return project->GetSettings( );
     }
-    return ( Settings* )0;
+    return ( Utils::Settings* )0;
 };
 
-Project* GetProject( )
+Utils::Project* GetProject( )
 {
     return wxGetApp( ).GetProject( );
 }
 
 void InitDefs( )
 {
-    InitCatalogDefs( );
-    InitAlbumDefs( );
+    Catalog::InitCatalogDefs( );
+    Layout::InitAlbumDefs( );
 }
 
 void ReportError(  wxString funct, wxString msg, bool fatal )

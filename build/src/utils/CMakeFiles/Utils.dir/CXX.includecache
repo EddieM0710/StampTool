@@ -16,15 +16,15 @@ gui/AlbumGenFrame.h
 wx/string.h
 -
 
-../src/Node.h
-wx/xml/xml.h
-../src/wx/xml/xml.h
-
 ../src/album/AlbumData.h
 Defs.h
 ../src/album/Defs.h
 wx/xml/xml.h
 ../src/album/wx/xml/xml.h
+wx/string.h
+-
+
+../src/album/AlbumDefs.h
 wx/string.h
 -
 
@@ -57,8 +57,6 @@ wx/string.h
 -
 
 ../src/catalog/CatalogNode.h
-Node.h
-../src/catalog/Node.h
 catalog/CatalogDefs.h
 ../src/catalog/catalog/CatalogDefs.h
 wx/xml/xml.h
@@ -179,8 +177,12 @@ iostream
 -
 catalog/CatalogData.h
 /sandbox/Development/AlbumGenerator/src/utils/catalog/CatalogData.h
+album/AlbumDefs.h
+/sandbox/Development/AlbumGenerator/src/utils/album/AlbumDefs.h
 album/AlbumData.h
 /sandbox/Development/AlbumGenerator/src/utils/album/AlbumData.h
+wx/filename.h
+-
 
 /sandbox/Development/AlbumGenerator/src/utils/Settings.cpp
 wx/wxprec.h

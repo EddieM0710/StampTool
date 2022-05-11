@@ -7,31 +7,31 @@
  * 
  * @copyright Copyright (c) 2022
  * 
- **************************************************/
+//  **************************************************/
 
- // For compilers that support precompilation, includes "wx/wx.h".
-#include "wx/wxprec.h"
+//  // For compilers that support precompilation, includes "wx/wx.h".
+// #include "wx/wxprec.h"
 
-#ifdef __BORLANDC__
-#pragma hdrstop
-#endif
+// #ifdef __BORLANDC__
+// #pragma hdrstop
+// #endif
 
-#ifdef __BORLANDC__
-#pragma hdrstop
-#endif
+// #ifdef __BORLANDC__
+// #pragma hdrstop
+// #endif
 
-#ifndef WX_PRECOMP
-#include "wx/wx.h"
-#endif
+// #ifndef WX_PRECOMP
+// #include "wx/wx.h"
+// #endif
 
-#include "Node.h"
-#include "utils/XMLUtilities.h"
+// #include "Node.h"
+// #include "utils/XMLUtilities.h"
 
 
-    wxString Node::GetNodeAttrStr( wxString name ){ return Utils::GetAttrStr( m_Element, name) ;};
-    double Node::GetNodeAttrDbl( wxString name ){ return Utils::GetAttrDbl( m_Element, name );};
-    void Node::SetNodeAttrStr( wxString name, wxString val ){ Utils::SetAttrStr( m_Element, name, val );};
-    double Node::SetNodeAttrDbl( wxString name, double val){ return Utils::SetAttrDbl( m_Element, name, val );};
+//     wxString Node::GetNodeAttrStr( wxString name ){ return Utils::GetAttrStr( m_Element, name) ;};
+//     double Node::GetNodeAttrDbl( wxString name ){ return Utils::GetAttrDbl( m_Element, name );};
+//     void Node::SetNodeAttrStr( wxString name, wxString val ){ Utils::SetAttrStr( m_Element, name, val );};
+//     void Node::SetNodeAttrDbl( wxString name, double val){  Utils::SetAttrDbl( m_Element, name, val );};
 
 
   

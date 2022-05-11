@@ -22,6 +22,7 @@ add_subdirectory (odt)
 add_executable (AlbumGenerator 
     AlbumGenApp.cpp
     Defs.cpp
+    Node.cpp 
 )
 
 #link_directories( /sandbox/Applications/TinyXML2/build )
@@ -32,7 +33,6 @@ target_link_libraries (AlbumGenerator LINK_PUBLIC
     AlbumFiles
     CatalogFiles  
     ODTFiles
-    Node.cpp 
     curl
     ${wxWidgets_LIBRARIES}
     )

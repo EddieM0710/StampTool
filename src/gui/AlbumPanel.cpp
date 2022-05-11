@@ -29,7 +29,7 @@
 ////@end includes
 
 #include "gui/AlbumPanel.h"
-#include "AlbumData.h"
+//#include "AlbumData.h"
 ////@begin XPM images
 ////@end XPM images
 

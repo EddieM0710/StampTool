@@ -80,7 +80,6 @@ src/odt/CMakeFiles/ODTFiles.dir/AutoStylesProp.cpp.o: /usr/local/include/wx-3.1/
 src/odt/CMakeFiles/ODTFiles.dir/AutoStylesProp.cpp.o: /usr/local/lib/wx/include/gtk3-unicode-3.1/wx/setup.h
 
 src/odt/CMakeFiles/ODTFiles.dir/Content.cpp.o: ../src/Defs.h
-src/odt/CMakeFiles/ODTFiles.dir/Content.cpp.o: ../src/Node.h
 src/odt/CMakeFiles/ODTFiles.dir/Content.cpp.o: ../src/album/Album.h
 src/odt/CMakeFiles/ODTFiles.dir/Content.cpp.o: ../src/album/AlbumDefs.h
 src/odt/CMakeFiles/ODTFiles.dir/Content.cpp.o: ../src/album/AlbumNode.h
@@ -178,7 +177,6 @@ src/odt/CMakeFiles/ODTFiles.dir/Content.cpp.o: /usr/local/include/wx-3.1/wx/zips
 src/odt/CMakeFiles/ODTFiles.dir/Content.cpp.o: /usr/local/lib/wx/include/gtk3-unicode-3.1/wx/setup.h
 
 src/odt/CMakeFiles/ODTFiles.dir/Document.cpp.o: ../src/Defs.h
-src/odt/CMakeFiles/ODTFiles.dir/Document.cpp.o: ../src/Node.h
 src/odt/CMakeFiles/ODTFiles.dir/Document.cpp.o: ../src/album/Album.h
 src/odt/CMakeFiles/ODTFiles.dir/Document.cpp.o: ../src/album/AlbumData.h
 src/odt/CMakeFiles/ODTFiles.dir/Document.cpp.o: ../src/album/AlbumDefs.h
@@ -195,6 +193,7 @@ src/odt/CMakeFiles/ODTFiles.dir/Document.cpp.o: ../src/odt/ODTDefs.h
 src/odt/CMakeFiles/ODTFiles.dir/Document.cpp.o: ../src/odt/Settings.h
 src/odt/CMakeFiles/ODTFiles.dir/Document.cpp.o: ../src/odt/Styles.h
 src/odt/CMakeFiles/ODTFiles.dir/Document.cpp.o: ../src/utils/Project.h
+src/odt/CMakeFiles/ODTFiles.dir/Document.cpp.o: ../src/utils/Settings.h
 src/odt/CMakeFiles/ODTFiles.dir/Document.cpp.o: ../src/odt/Document.cpp
 src/odt/CMakeFiles/ODTFiles.dir/Document.cpp.o: /usr/local/include/wx-3.1/wx/afterstd.h
 src/odt/CMakeFiles/ODTFiles.dir/Document.cpp.o: /usr/local/include/wx-3.1/wx/any.h
@@ -252,6 +251,7 @@ src/odt/CMakeFiles/ODTFiles.dir/Document.cpp.o: /usr/local/include/wx-3.1/wx/tex
 src/odt/CMakeFiles/ODTFiles.dir/Document.cpp.o: /usr/local/include/wx-3.1/wx/thread.h
 src/odt/CMakeFiles/ODTFiles.dir/Document.cpp.o: /usr/local/include/wx-3.1/wx/tls.h
 src/odt/CMakeFiles/ODTFiles.dir/Document.cpp.o: /usr/local/include/wx-3.1/wx/translation.h
+src/odt/CMakeFiles/ODTFiles.dir/Document.cpp.o: /usr/local/include/wx-3.1/wx/txtstrm.h
 src/odt/CMakeFiles/ODTFiles.dir/Document.cpp.o: /usr/local/include/wx-3.1/wx/typeinfo.h
 src/odt/CMakeFiles/ODTFiles.dir/Document.cpp.o: /usr/local/include/wx-3.1/wx/types.h
 src/odt/CMakeFiles/ODTFiles.dir/Document.cpp.o: /usr/local/include/wx-3.1/wx/unichar.h
@@ -276,7 +276,6 @@ src/odt/CMakeFiles/ODTFiles.dir/Document.cpp.o: /usr/local/include/wx-3.1/wx/zip
 src/odt/CMakeFiles/ODTFiles.dir/Document.cpp.o: /usr/local/lib/wx/include/gtk3-unicode-3.1/wx/setup.h
 
 src/odt/CMakeFiles/ODTFiles.dir/Manifest.cpp.o: ../src/Defs.h
-src/odt/CMakeFiles/ODTFiles.dir/Manifest.cpp.o: ../src/Node.h
 src/odt/CMakeFiles/ODTFiles.dir/Manifest.cpp.o: ../src/album/Album.h
 src/odt/CMakeFiles/ODTFiles.dir/Manifest.cpp.o: ../src/album/AlbumDefs.h
 src/odt/CMakeFiles/ODTFiles.dir/Manifest.cpp.o: ../src/album/AlbumNode.h
@@ -292,6 +291,7 @@ src/odt/CMakeFiles/ODTFiles.dir/Manifest.cpp.o: ../src/odt/Settings.h
 src/odt/CMakeFiles/ODTFiles.dir/Manifest.cpp.o: ../src/odt/Styles.h
 src/odt/CMakeFiles/ODTFiles.dir/Manifest.cpp.o: ../src/utils/Project.h
 src/odt/CMakeFiles/ODTFiles.dir/Manifest.cpp.o: ../src/utils/Settings.h
+src/odt/CMakeFiles/ODTFiles.dir/Manifest.cpp.o: ../src/utils/XMLUtilities.h
 src/odt/CMakeFiles/ODTFiles.dir/Manifest.cpp.o: ../src/odt/Document.h
 src/odt/CMakeFiles/ODTFiles.dir/Manifest.cpp.o: ../src/odt/Manifest.cpp
 src/odt/CMakeFiles/ODTFiles.dir/Manifest.cpp.o: /usr/local/include/wx-3.1/wx/afterstd.h
@@ -372,7 +372,6 @@ src/odt/CMakeFiles/ODTFiles.dir/Manifest.cpp.o: /usr/local/include/wx-3.1/wx/zip
 src/odt/CMakeFiles/ODTFiles.dir/Manifest.cpp.o: /usr/local/lib/wx/include/gtk3-unicode-3.1/wx/setup.h
 
 src/odt/CMakeFiles/ODTFiles.dir/Meta.cpp.o: ../src/Defs.h
-src/odt/CMakeFiles/ODTFiles.dir/Meta.cpp.o: ../src/Node.h
 src/odt/CMakeFiles/ODTFiles.dir/Meta.cpp.o: ../src/album/Album.h
 src/odt/CMakeFiles/ODTFiles.dir/Meta.cpp.o: ../src/album/AlbumDefs.h
 src/odt/CMakeFiles/ODTFiles.dir/Meta.cpp.o: ../src/album/AlbumNode.h
@@ -549,7 +548,6 @@ src/odt/CMakeFiles/ODTFiles.dir/Mimetype.cpp.o: /usr/local/include/wx-3.1/wx/xti
 src/odt/CMakeFiles/ODTFiles.dir/Mimetype.cpp.o: /usr/local/lib/wx/include/gtk3-unicode-3.1/wx/setup.h
 
 src/odt/CMakeFiles/ODTFiles.dir/ODTDefs.cpp.o: ../src/Defs.h
-src/odt/CMakeFiles/ODTFiles.dir/ODTDefs.cpp.o: ../src/Node.h
 src/odt/CMakeFiles/ODTFiles.dir/ODTDefs.cpp.o: ../src/album/Album.h
 src/odt/CMakeFiles/ODTFiles.dir/ODTDefs.cpp.o: ../src/album/AlbumDefs.h
 src/odt/CMakeFiles/ODTFiles.dir/ODTDefs.cpp.o: ../src/album/AlbumNode.h
@@ -644,16 +642,27 @@ src/odt/CMakeFiles/ODTFiles.dir/ODTDefs.cpp.o: /usr/local/include/wx-3.1/wx/zips
 src/odt/CMakeFiles/ODTFiles.dir/ODTDefs.cpp.o: /usr/local/lib/wx/include/gtk3-unicode-3.1/wx/setup.h
 
 src/odt/CMakeFiles/ODTFiles.dir/Settings.cpp.o: ../src/Defs.h
+src/odt/CMakeFiles/ODTFiles.dir/Settings.cpp.o: ../src/album/Album.h
+src/odt/CMakeFiles/ODTFiles.dir/Settings.cpp.o: ../src/album/AlbumDefs.h
+src/odt/CMakeFiles/ODTFiles.dir/Settings.cpp.o: ../src/album/AlbumNode.h
+src/odt/CMakeFiles/ODTFiles.dir/Settings.cpp.o: ../src/album/Attribute.h
 src/odt/CMakeFiles/ODTFiles.dir/Settings.cpp.o: ../src/catalog/CatalogData.h
 src/odt/CMakeFiles/ODTFiles.dir/Settings.cpp.o: ../src/catalog/CatalogDefs.h
+src/odt/CMakeFiles/ODTFiles.dir/Settings.cpp.o: ../src/odt/Content.h
+src/odt/CMakeFiles/ODTFiles.dir/Settings.cpp.o: ../src/odt/Document.h
+src/odt/CMakeFiles/ODTFiles.dir/Settings.cpp.o: ../src/odt/Manifest.h
+src/odt/CMakeFiles/ODTFiles.dir/Settings.cpp.o: ../src/odt/Meta.h
+src/odt/CMakeFiles/ODTFiles.dir/Settings.cpp.o: ../src/odt/Mimetype.h
 src/odt/CMakeFiles/ODTFiles.dir/Settings.cpp.o: ../src/odt/ODTDefs.h
 src/odt/CMakeFiles/ODTFiles.dir/Settings.cpp.o: ../src/odt/Settings.h
+src/odt/CMakeFiles/ODTFiles.dir/Settings.cpp.o: ../src/odt/Styles.h
 src/odt/CMakeFiles/ODTFiles.dir/Settings.cpp.o: ../src/utils/Project.h
 src/odt/CMakeFiles/ODTFiles.dir/Settings.cpp.o: ../src/utils/Settings.h
 src/odt/CMakeFiles/ODTFiles.dir/Settings.cpp.o: ../src/odt/Settings.cpp
 src/odt/CMakeFiles/ODTFiles.dir/Settings.cpp.o: /usr/local/include/wx-3.1/wx/afterstd.h
 src/odt/CMakeFiles/ODTFiles.dir/Settings.cpp.o: /usr/local/include/wx-3.1/wx/any.h
 src/odt/CMakeFiles/ODTFiles.dir/Settings.cpp.o: /usr/local/include/wx-3.1/wx/anystr.h
+src/odt/CMakeFiles/ODTFiles.dir/Settings.cpp.o: /usr/local/include/wx-3.1/wx/archive.h
 src/odt/CMakeFiles/ODTFiles.dir/Settings.cpp.o: /usr/local/include/wx-3.1/wx/arrstr.h
 src/odt/CMakeFiles/ODTFiles.dir/Settings.cpp.o: /usr/local/include/wx-3.1/wx/beforestd.h
 src/odt/CMakeFiles/ODTFiles.dir/Settings.cpp.o: /usr/local/include/wx-3.1/wx/buffer.h
@@ -671,6 +680,9 @@ src/odt/CMakeFiles/ODTFiles.dir/Settings.cpp.o: /usr/local/include/wx-3.1/wx/dli
 src/odt/CMakeFiles/ODTFiles.dir/Settings.cpp.o: /usr/local/include/wx-3.1/wx/dynarray.h
 src/odt/CMakeFiles/ODTFiles.dir/Settings.cpp.o: /usr/local/include/wx-3.1/wx/except.h
 src/odt/CMakeFiles/ODTFiles.dir/Settings.cpp.o: /usr/local/include/wx-3.1/wx/features.h
+src/odt/CMakeFiles/ODTFiles.dir/Settings.cpp.o: /usr/local/include/wx-3.1/wx/file.h
+src/odt/CMakeFiles/ODTFiles.dir/Settings.cpp.o: /usr/local/include/wx-3.1/wx/filefn.h
+src/odt/CMakeFiles/ODTFiles.dir/Settings.cpp.o: /usr/local/include/wx-3.1/wx/filename.h
 src/odt/CMakeFiles/ODTFiles.dir/Settings.cpp.o: /usr/local/include/wx-3.1/wx/flags.h
 src/odt/CMakeFiles/ODTFiles.dir/Settings.cpp.o: /usr/local/include/wx-3.1/wx/fontenc.h
 src/odt/CMakeFiles/ODTFiles.dir/Settings.cpp.o: /usr/local/include/wx-3.1/wx/generic/logg.h
@@ -693,6 +705,7 @@ src/odt/CMakeFiles/ODTFiles.dir/Settings.cpp.o: /usr/local/include/wx-3.1/wx/rtt
 src/odt/CMakeFiles/ODTFiles.dir/Settings.cpp.o: /usr/local/include/wx-3.1/wx/scopedptr.h
 src/odt/CMakeFiles/ODTFiles.dir/Settings.cpp.o: /usr/local/include/wx-3.1/wx/scopeguard.h
 src/odt/CMakeFiles/ODTFiles.dir/Settings.cpp.o: /usr/local/include/wx-3.1/wx/strconv.h
+src/odt/CMakeFiles/ODTFiles.dir/Settings.cpp.o: /usr/local/include/wx-3.1/wx/stream.h
 src/odt/CMakeFiles/ODTFiles.dir/Settings.cpp.o: /usr/local/include/wx-3.1/wx/string.h
 src/odt/CMakeFiles/ODTFiles.dir/Settings.cpp.o: /usr/local/include/wx-3.1/wx/stringimpl.h
 src/odt/CMakeFiles/ODTFiles.dir/Settings.cpp.o: /usr/local/include/wx-3.1/wx/stringops.h
@@ -720,17 +733,32 @@ src/odt/CMakeFiles/ODTFiles.dir/Settings.cpp.o: /usr/local/include/wx-3.1/wx/xti
 src/odt/CMakeFiles/ODTFiles.dir/Settings.cpp.o: /usr/local/include/wx-3.1/wx/xtihandler.h
 src/odt/CMakeFiles/ODTFiles.dir/Settings.cpp.o: /usr/local/include/wx-3.1/wx/xtiprop.h
 src/odt/CMakeFiles/ODTFiles.dir/Settings.cpp.o: /usr/local/include/wx-3.1/wx/xtitypes.h
+src/odt/CMakeFiles/ODTFiles.dir/Settings.cpp.o: /usr/local/include/wx-3.1/wx/zipstrm.h
 src/odt/CMakeFiles/ODTFiles.dir/Settings.cpp.o: /usr/local/lib/wx/include/gtk3-unicode-3.1/wx/setup.h
 
 src/odt/CMakeFiles/ODTFiles.dir/Styles.cpp.o: ../src/Defs.h
+src/odt/CMakeFiles/ODTFiles.dir/Styles.cpp.o: ../src/album/Album.h
+src/odt/CMakeFiles/ODTFiles.dir/Styles.cpp.o: ../src/album/AlbumDefs.h
+src/odt/CMakeFiles/ODTFiles.dir/Styles.cpp.o: ../src/album/AlbumNode.h
+src/odt/CMakeFiles/ODTFiles.dir/Styles.cpp.o: ../src/album/Attribute.h
+src/odt/CMakeFiles/ODTFiles.dir/Styles.cpp.o: ../src/catalog/CatalogData.h
 src/odt/CMakeFiles/ODTFiles.dir/Styles.cpp.o: ../src/catalog/CatalogDefs.h
+src/odt/CMakeFiles/ODTFiles.dir/Styles.cpp.o: ../src/odt/Content.h
+src/odt/CMakeFiles/ODTFiles.dir/Styles.cpp.o: ../src/odt/Document.h
+src/odt/CMakeFiles/ODTFiles.dir/Styles.cpp.o: ../src/odt/Manifest.h
+src/odt/CMakeFiles/ODTFiles.dir/Styles.cpp.o: ../src/odt/Meta.h
+src/odt/CMakeFiles/ODTFiles.dir/Styles.cpp.o: ../src/odt/Mimetype.h
 src/odt/CMakeFiles/ODTFiles.dir/Styles.cpp.o: ../src/odt/ODTDefs.h
+src/odt/CMakeFiles/ODTFiles.dir/Styles.cpp.o: ../src/odt/Settings.h
 src/odt/CMakeFiles/ODTFiles.dir/Styles.cpp.o: ../src/odt/Styles.h
+src/odt/CMakeFiles/ODTFiles.dir/Styles.cpp.o: ../src/utils/Project.h
+src/odt/CMakeFiles/ODTFiles.dir/Styles.cpp.o: ../src/utils/Settings.h
 src/odt/CMakeFiles/ODTFiles.dir/Styles.cpp.o: ../src/utils/XMLUtilities.h
 src/odt/CMakeFiles/ODTFiles.dir/Styles.cpp.o: ../src/odt/Styles.cpp
 src/odt/CMakeFiles/ODTFiles.dir/Styles.cpp.o: /usr/local/include/wx-3.1/wx/afterstd.h
 src/odt/CMakeFiles/ODTFiles.dir/Styles.cpp.o: /usr/local/include/wx-3.1/wx/any.h
 src/odt/CMakeFiles/ODTFiles.dir/Styles.cpp.o: /usr/local/include/wx-3.1/wx/anystr.h
+src/odt/CMakeFiles/ODTFiles.dir/Styles.cpp.o: /usr/local/include/wx-3.1/wx/archive.h
 src/odt/CMakeFiles/ODTFiles.dir/Styles.cpp.o: /usr/local/include/wx-3.1/wx/arrstr.h
 src/odt/CMakeFiles/ODTFiles.dir/Styles.cpp.o: /usr/local/include/wx-3.1/wx/beforestd.h
 src/odt/CMakeFiles/ODTFiles.dir/Styles.cpp.o: /usr/local/include/wx-3.1/wx/buffer.h
@@ -748,6 +776,9 @@ src/odt/CMakeFiles/ODTFiles.dir/Styles.cpp.o: /usr/local/include/wx-3.1/wx/dlimp
 src/odt/CMakeFiles/ODTFiles.dir/Styles.cpp.o: /usr/local/include/wx-3.1/wx/dynarray.h
 src/odt/CMakeFiles/ODTFiles.dir/Styles.cpp.o: /usr/local/include/wx-3.1/wx/except.h
 src/odt/CMakeFiles/ODTFiles.dir/Styles.cpp.o: /usr/local/include/wx-3.1/wx/features.h
+src/odt/CMakeFiles/ODTFiles.dir/Styles.cpp.o: /usr/local/include/wx-3.1/wx/file.h
+src/odt/CMakeFiles/ODTFiles.dir/Styles.cpp.o: /usr/local/include/wx-3.1/wx/filefn.h
+src/odt/CMakeFiles/ODTFiles.dir/Styles.cpp.o: /usr/local/include/wx-3.1/wx/filename.h
 src/odt/CMakeFiles/ODTFiles.dir/Styles.cpp.o: /usr/local/include/wx-3.1/wx/flags.h
 src/odt/CMakeFiles/ODTFiles.dir/Styles.cpp.o: /usr/local/include/wx-3.1/wx/fontenc.h
 src/odt/CMakeFiles/ODTFiles.dir/Styles.cpp.o: /usr/local/include/wx-3.1/wx/generic/logg.h
@@ -770,6 +801,7 @@ src/odt/CMakeFiles/ODTFiles.dir/Styles.cpp.o: /usr/local/include/wx-3.1/wx/rtti.
 src/odt/CMakeFiles/ODTFiles.dir/Styles.cpp.o: /usr/local/include/wx-3.1/wx/scopedptr.h
 src/odt/CMakeFiles/ODTFiles.dir/Styles.cpp.o: /usr/local/include/wx-3.1/wx/scopeguard.h
 src/odt/CMakeFiles/ODTFiles.dir/Styles.cpp.o: /usr/local/include/wx-3.1/wx/strconv.h
+src/odt/CMakeFiles/ODTFiles.dir/Styles.cpp.o: /usr/local/include/wx-3.1/wx/stream.h
 src/odt/CMakeFiles/ODTFiles.dir/Styles.cpp.o: /usr/local/include/wx-3.1/wx/string.h
 src/odt/CMakeFiles/ODTFiles.dir/Styles.cpp.o: /usr/local/include/wx-3.1/wx/stringimpl.h
 src/odt/CMakeFiles/ODTFiles.dir/Styles.cpp.o: /usr/local/include/wx-3.1/wx/stringops.h
@@ -797,5 +829,6 @@ src/odt/CMakeFiles/ODTFiles.dir/Styles.cpp.o: /usr/local/include/wx-3.1/wx/xtict
 src/odt/CMakeFiles/ODTFiles.dir/Styles.cpp.o: /usr/local/include/wx-3.1/wx/xtihandler.h
 src/odt/CMakeFiles/ODTFiles.dir/Styles.cpp.o: /usr/local/include/wx-3.1/wx/xtiprop.h
 src/odt/CMakeFiles/ODTFiles.dir/Styles.cpp.o: /usr/local/include/wx-3.1/wx/xtitypes.h
+src/odt/CMakeFiles/ODTFiles.dir/Styles.cpp.o: /usr/local/include/wx-3.1/wx/zipstrm.h
 src/odt/CMakeFiles/ODTFiles.dir/Styles.cpp.o: /usr/local/lib/wx/include/gtk3-unicode-3.1/wx/setup.h
 

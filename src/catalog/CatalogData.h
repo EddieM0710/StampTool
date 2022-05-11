@@ -36,7 +36,7 @@ namespace Catalog {
         wxXmlDocument* ReplaceDocument( wxXmlDocument* doc );
         wxXmlDocument* GetDoc( ) { return m_stampDoc; };
         void SaveXML( wxString filename );
-        void LoadXML( wxString filename );
+        void LoadXML(  wxString filename );
         void LoadCSV( wxString filename );
 
         wxString GetTitle( ) { return m_title; }

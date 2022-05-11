@@ -49,11 +49,11 @@ public:
   virtual int OnExit( );
 
   AlbumGenFrame* GetFrame( ) { return m_frame; };
-  Project* GetProject(){ return m_project; };
+  Utils::Project* GetProject(){ return m_project; };
   
 private:
   AlbumGenFrame* m_frame;
-  Project* m_project;
+  Utils::Project* m_project;
 };
 
 #endif

@@ -12,36 +12,36 @@
 #ifndef Node_h
 #define Node_h
 
-#include "wx/xml/xml.h"
+// #include "wx/xml/xml.h"
 
 
-    class Node
-    {
-    public:
-        Node( ) { SetNodeElement( ( wxXmlNode* )0 ); };
+//     class Node
+//     {
+//     public:
+//         Node( ) { SetNodeElement( ( wxXmlNode* )0 ); };
 
-        Node( wxXmlNode* ele ) { SetNodeElement( ele ); };
+//         Node( wxXmlNode* ele ) { SetNodeElement( ele ); };
 
-        ~Node( ) { };
+//         ~Node( ) { };
 
-        void SetNodeType( int type ) { m_nodeType = type; };
-        int GetNodeType( ) { return m_nodeType; };
+//         void SetNodeType( int type ) { m_nodeType = type; };
+//         int GetNodeType( ) { return m_nodeType; };
 
-        wxXmlNode* GetNodeElement( ) { return m_Element; };
-        void SetNodeElement( wxXmlNode* node ) { m_Element = node; };
-        wxXmlNode* GetFirstChild( ) { return m_Element->GetChildren(); };
+//         wxXmlNode* GetNodeElement( ) { return m_Element; };
+//         void SetNodeElement( wxXmlNode* node ) { m_Element = node; };
+//         wxXmlNode* GetFirstChild( ) { return m_Element->GetChildren(); };
         
-         wxString GetNodeAttrStr( wxString name );
-         double GetNodeAttrDbl( wxString name );
-         void SetNodeAttrStr( wxString name, wxString val );
-         double SetNodeAttrDbl( wxString name, double val );
+//          wxString GetNodeAttrStr( wxString name );
+//          double GetNodeAttrDbl( wxString name );
+//          void SetNodeAttrStr( wxString name, wxString val );
+//          void SetNodeAttrDbl( wxString name, double val );
 
 
-        virtual bool IsOK( ) ;
+//         virtual bool IsOK( ) ;
 
-    private:
-        wxXmlNode* m_Element;
-        int m_nodeType;
-    };
+//     private:
+//         wxXmlNode* m_Element;
+//         int m_nodeType;
+//     };
 
 #endif

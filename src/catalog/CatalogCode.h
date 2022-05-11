@@ -43,13 +43,13 @@ namespace Catalog {
     public:
         CatalogCode( ) : CatalogNode( )
         {
-            SetCatalogNodeType( NT_CatalogCode );
+            SetNodeType( NT_CatalogCode );
             IsOK( );
         };
 
         CatalogCode( wxXmlNode* ele ) : CatalogNode( ele )
         {
-            SetCatalogNodeType( NT_CatalogCode );
+            SetNodeType( NT_CatalogCode );
             IsOK( );
         };
 

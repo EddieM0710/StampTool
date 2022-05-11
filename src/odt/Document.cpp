@@ -9,6 +9,7 @@
 #include <iostream>
 #include <fstream>
 #include <wx/wfstream.h>
+#include <wx/txtstrm.h>
 
 namespace ODT {
 
@@ -45,7 +46,7 @@ namespace ODT {
     wxString Document::AddImageFile( wxString filename )
     {
         //Layout::AlbumData *albumData = Utils::GetProject()->GetAlbumData( ) ;
-        wxString imageLoc = Utils::GetProject()->GetSettings()->GetImagePath( );
+        wxString imageLoc = ::GetSettings()->GetImageDirectory( );
         wxFileName inputImage( imageLoc, filename );
         bool status = inputImage.MakeAbsolute( m_workingDirectory );
         wxString i_cwd = inputImage.GetCwd( );
@@ -240,7 +241,7 @@ namespace ODT {
     bool Document::MakeODT( )
     {
         wxString workingDir = wxGetCwd( );
-        wxString doc = GetProject( )->GetOutputfilename( );
+        wxString doc = GetProject( )->GetOutputFilename( );
         //wxString doc = ODTDoc()->GetAlbum()->GetDocName();
         wxFileName* outputName = new wxFileName( doc );
         wxFileName outputZipName = *outputName;

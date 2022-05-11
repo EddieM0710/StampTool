@@ -1,5 +1,6 @@
 #include "utils/Project.h"
 #include "utils/Settings.h"
+#include "utils/XMLUtilities.h"
 #include "odt/Manifest.h"
 #include "Document.h"
 #include <iostream>
@@ -12,14 +13,13 @@ namespace ODT {
     Manifest::Manifest( )
     {
         m_manifest = new wxXmlDocument( );
-        wxString configDir = GetProject( )->GetSettings()->GetConfigurationDirectory( );
+        wxString configDir = GetSettings()->GetConfigurationDirectory( );
         wxString manifestTemplate = configDir + "/template/META-INF/manifest.xml";
         if ( !m_manifest->Load( manifestTemplate ) )
         {
             // debug message
             ReportError( "Document::GetManifest", "get Manifest failed", true );
         }
-
     }
 
     //***********************************

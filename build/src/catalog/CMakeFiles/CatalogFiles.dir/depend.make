@@ -272,7 +272,6 @@ src/catalog/CMakeFiles/CatalogFiles.dir/CatalogCode.cpp.o: /usr/local/lib/wx/inc
 
 src/catalog/CMakeFiles/CatalogFiles.dir/CatalogData.cpp.o: ../src/AlbumGenApp.h
 src/catalog/CMakeFiles/CatalogFiles.dir/CatalogData.cpp.o: ../src/Defs.h
-src/catalog/CMakeFiles/CatalogFiles.dir/CatalogData.cpp.o: ../src/Node.h
 src/catalog/CMakeFiles/CatalogFiles.dir/CatalogData.cpp.o: ../src/catalog/CatalogData.h
 src/catalog/CMakeFiles/CatalogFiles.dir/CatalogData.cpp.o: ../src/catalog/CatalogDefs.h
 src/catalog/CMakeFiles/CatalogFiles.dir/CatalogData.cpp.o: ../src/catalog/CatalogNode.h
@@ -536,7 +535,6 @@ src/catalog/CMakeFiles/CatalogFiles.dir/CatalogData.cpp.o: /usr/local/include/wx
 src/catalog/CMakeFiles/CatalogFiles.dir/CatalogData.cpp.o: /usr/local/lib/wx/include/gtk3-unicode-3.1/wx/setup.h
 
 src/catalog/CMakeFiles/CatalogFiles.dir/CatalogDefs.cpp.o: ../src/Defs.h
-src/catalog/CMakeFiles/CatalogFiles.dir/CatalogDefs.cpp.o: ../src/Node.h
 src/catalog/CMakeFiles/CatalogFiles.dir/CatalogDefs.cpp.o: ../src/catalog/CatalogData.h
 src/catalog/CMakeFiles/CatalogFiles.dir/CatalogDefs.cpp.o: ../src/catalog/CatalogDefs.h
 src/catalog/CMakeFiles/CatalogFiles.dir/CatalogDefs.cpp.o: ../src/catalog/CatalogNode.h
@@ -793,7 +791,6 @@ src/catalog/CMakeFiles/CatalogFiles.dir/CatalogDefs.cpp.o: /usr/local/include/wx
 src/catalog/CMakeFiles/CatalogFiles.dir/CatalogDefs.cpp.o: /usr/local/include/wx-3.1/wx/xtitypes.h
 src/catalog/CMakeFiles/CatalogFiles.dir/CatalogDefs.cpp.o: /usr/local/lib/wx/include/gtk3-unicode-3.1/wx/setup.h
 
-src/catalog/CMakeFiles/CatalogFiles.dir/Classification.cpp.o: ../src/Node.h
 src/catalog/CMakeFiles/CatalogFiles.dir/Classification.cpp.o: ../src/catalog/CatalogDefs.h
 src/catalog/CMakeFiles/CatalogFiles.dir/Classification.cpp.o: ../src/utils/CSV.h
 src/catalog/CMakeFiles/CatalogFiles.dir/Classification.cpp.o: ../src/utils/XMLUtilities.h
@@ -1053,7 +1050,6 @@ src/catalog/CMakeFiles/CatalogFiles.dir/Classification.cpp.o: /usr/local/include
 src/catalog/CMakeFiles/CatalogFiles.dir/Classification.cpp.o: /usr/local/lib/wx/include/gtk3-unicode-3.1/wx/setup.h
 
 src/catalog/CMakeFiles/CatalogFiles.dir/Specimen.cpp.o: ../src/Defs.h
-src/catalog/CMakeFiles/CatalogFiles.dir/Specimen.cpp.o: ../src/Node.h
 src/catalog/CMakeFiles/CatalogFiles.dir/Specimen.cpp.o: ../src/catalog/CatalogDefs.h
 src/catalog/CMakeFiles/CatalogFiles.dir/Specimen.cpp.o: ../src/utils/XMLUtilities.h
 src/catalog/CMakeFiles/CatalogFiles.dir/Specimen.cpp.o: ../src/catalog/CatalogNode.h
@@ -1323,7 +1319,6 @@ src/catalog/CMakeFiles/CatalogFiles.dir/Specimen.cpp.o: /usr/local/include/wx-3.
 src/catalog/CMakeFiles/CatalogFiles.dir/Specimen.cpp.o: /usr/local/lib/wx/include/gtk3-unicode-3.1/wx/setup.h
 
 src/catalog/CMakeFiles/CatalogFiles.dir/Stamp.cpp.o: ../src/Defs.h
-src/catalog/CMakeFiles/CatalogFiles.dir/Stamp.cpp.o: ../src/Node.h
 src/catalog/CMakeFiles/CatalogFiles.dir/Stamp.cpp.o: ../src/catalog/CatalogCode.h
 src/catalog/CMakeFiles/CatalogFiles.dir/Stamp.cpp.o: ../src/catalog/CatalogDefs.h
 src/catalog/CMakeFiles/CatalogFiles.dir/Stamp.cpp.o: ../src/catalog/CatalogNode.h

@@ -1,6 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/AlbumGenerator.dir/AlbumGenApp.cpp.o"
   "CMakeFiles/AlbumGenerator.dir/Defs.cpp.o"
+  "CMakeFiles/AlbumGenerator.dir/Node.cpp.o"
   "../AlbumGenerator.pdb"
   "../AlbumGenerator"
 )

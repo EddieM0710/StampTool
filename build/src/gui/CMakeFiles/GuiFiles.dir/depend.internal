@@ -3,7 +3,6 @@
 
 src/gui/CMakeFiles/GuiFiles.dir/AlbumGenFrame.cpp.o
  ../src/Defs.h
- ../src/Node.h
  ../src/catalog/CatalogData.h
  ../src/catalog/CatalogDefs.h
  ../src/catalog/CatalogNode.h
@@ -288,7 +287,6 @@ src/gui/CMakeFiles/GuiFiles.dir/AlbumGenFrame.cpp.o
  /usr/local/lib/wx/include/gtk3-unicode-3.1/wx/setup.h
 src/gui/CMakeFiles/GuiFiles.dir/AlbumGenPanel.cpp.o
  ../src/Defs.h
- ../src/Node.h
  ../src/catalog/CatalogData.h
  ../src/catalog/CatalogDefs.h
  ../src/catalog/CatalogNode.h
@@ -562,8 +560,6 @@ src/gui/CMakeFiles/GuiFiles.dir/AlbumGenPanel.cpp.o
  /usr/local/lib/wx/include/gtk3-unicode-3.1/wx/setup.h
 src/gui/CMakeFiles/GuiFiles.dir/AlbumPanel.cpp.o
  ../src/Defs.h
- ../src/Node.h
- ../src/album/AlbumData.h
  ../src/catalog/CatalogDefs.h
  ../src/catalog/CatalogNode.h
  ../src/catalog/Stamp.h
@@ -826,7 +822,6 @@ src/gui/CMakeFiles/GuiFiles.dir/AlbumPanel.cpp.o
  /usr/local/lib/wx/include/gtk3-unicode-3.1/wx/setup.h
 src/gui/CMakeFiles/GuiFiles.dir/AlbumSplitterWindow.cpp.o
  ../src/Defs.h
- ../src/Node.h
  ../src/catalog/CatalogDefs.h
  ../src/catalog/CatalogNode.h
  ../src/catalog/Stamp.h
@@ -1092,7 +1087,6 @@ src/gui/CMakeFiles/GuiFiles.dir/AlbumSplitterWindow.cpp.o
 src/gui/CMakeFiles/GuiFiles.dir/AlbumTreeCtrl.cpp.o
  ../src/AlbumGenApp.h
  ../src/Defs.h
- ../src/Node.h
  ../src/art/StampBlack.xpm
  ../src/art/StampBlackBlock.xpm
  ../src/art/StampBlackMiniSheet.xpm
@@ -1406,7 +1400,6 @@ src/gui/CMakeFiles/GuiFiles.dir/AlbumTreeCtrl.cpp.o
  /usr/local/lib/wx/include/gtk3-unicode-3.1/wx/setup.h
 src/gui/CMakeFiles/GuiFiles.dir/CatalogPanel.cpp.o
  ../src/Defs.h
- ../src/Node.h
  ../src/catalog/CatalogData.h
  ../src/catalog/CatalogDefs.h
  ../src/catalog/CatalogNode.h
@@ -1671,7 +1664,6 @@ src/gui/CMakeFiles/GuiFiles.dir/CatalogPanel.cpp.o
 src/gui/CMakeFiles/GuiFiles.dir/CatalogTreeCtrl.cpp.o
  ../src/AlbumGenApp.h
  ../src/Defs.h
- ../src/Node.h
  ../src/art/StampBlack.xpm
  ../src/art/StampBlackBlock.xpm
  ../src/art/StampBlackMiniSheet.xpm
@@ -2237,7 +2229,6 @@ src/gui/CMakeFiles/GuiFiles.dir/DefinePeriodsDialog.cpp.o
  /usr/local/lib/wx/include/gtk3-unicode-3.1/wx/setup.h
 src/gui/CMakeFiles/GuiFiles.dir/LabeledTextBox.cpp.o
  ../src/Defs.h
- ../src/Node.h
  ../src/catalog/CatalogDefs.h
  ../src/catalog/CatalogNode.h
  ../src/catalog/Stamp.h
@@ -2746,7 +2737,6 @@ src/gui/CMakeFiles/GuiFiles.dir/SettingsDialog.cpp.o
 src/gui/CMakeFiles/GuiFiles.dir/SortOrderDialog.cpp.o
  ../src/AlbumGenApp.h
  ../src/Defs.h
- ../src/Node.h
  ../src/catalog/CatalogDefs.h
  ../src/catalog/CatalogNode.h
  ../src/catalog/Classification.h

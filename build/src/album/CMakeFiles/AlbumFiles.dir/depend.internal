@@ -3,7 +3,6 @@
 
 src/album/CMakeFiles/AlbumFiles.dir/Album.cpp.o
  ../src/Defs.h
- ../src/Node.h
  ../src/album/Album.h
  ../src/album/AlbumDefs.h
  ../src/album/AlbumNode.h
@@ -103,7 +102,6 @@ src/album/CMakeFiles/AlbumFiles.dir/Album.cpp.o
 src/album/CMakeFiles/AlbumFiles.dir/AlbumData.cpp.o
  ../src/AlbumGenApp.h
  ../src/Defs.h
- ../src/Node.h
  ../src/catalog/CatalogDefs.h
  ../src/catalog/CatalogNode.h
  ../src/catalog/Classification.h
@@ -366,7 +364,6 @@ src/album/CMakeFiles/AlbumFiles.dir/AlbumData.cpp.o
  /usr/local/lib/wx/include/gtk3-unicode-3.1/wx/setup.h
 src/album/CMakeFiles/AlbumFiles.dir/AlbumDefs.cpp.o
  ../src/Defs.h
- ../src/Node.h
  ../src/album/Album.h
  ../src/album/AlbumDefs.h
  ../src/album/AlbumNode.h
@@ -634,7 +631,6 @@ src/album/CMakeFiles/AlbumFiles.dir/AlbumDefs.cpp.o
  /usr/local/lib/wx/include/gtk3-unicode-3.1/wx/setup.h
 src/album/CMakeFiles/AlbumFiles.dir/AlbumNode.cpp.o
  ../src/Defs.h
- ../src/Node.h
  ../src/album/AlbumDefs.h
  ../src/album/AlbumNode.h
  ../src/album/Attribute.h
@@ -897,7 +893,6 @@ src/album/CMakeFiles/AlbumFiles.dir/AlbumNode.cpp.o
  /usr/local/lib/wx/include/gtk3-unicode-3.1/wx/setup.h
 src/album/CMakeFiles/AlbumFiles.dir/Column.cpp.o
  ../src/Defs.h
- ../src/Node.h
  ../src/album/Album.h
  ../src/album/AlbumDefs.h
  ../src/album/AlbumNode.h
@@ -998,7 +993,6 @@ src/album/CMakeFiles/AlbumFiles.dir/Column.cpp.o
  /usr/local/lib/wx/include/gtk3-unicode-3.1/wx/setup.h
 src/album/CMakeFiles/AlbumFiles.dir/LayoutNode.cpp.o
  ../src/Defs.h
- ../src/Node.h
  ../src/album/AlbumDefs.h
  ../src/album/AlbumNode.h
  ../src/album/Attribute.h
@@ -1085,7 +1079,6 @@ src/album/CMakeFiles/AlbumFiles.dir/LayoutNode.cpp.o
  /usr/local/lib/wx/include/gtk3-unicode-3.1/wx/setup.h
 src/album/CMakeFiles/AlbumFiles.dir/Page.cpp.o
  ../src/Defs.h
- ../src/Node.h
  ../src/album/Album.h
  ../src/album/AlbumDefs.h
  ../src/album/AlbumNode.h
@@ -1187,7 +1180,6 @@ src/album/CMakeFiles/AlbumFiles.dir/Page.cpp.o
  /usr/local/lib/wx/include/gtk3-unicode-3.1/wx/setup.h
 src/album/CMakeFiles/AlbumFiles.dir/Row.cpp.o
  ../src/Defs.h
- ../src/Node.h
  ../src/album/Album.h
  ../src/album/AlbumDefs.h
  ../src/album/AlbumNode.h
@@ -1288,7 +1280,6 @@ src/album/CMakeFiles/AlbumFiles.dir/Row.cpp.o
  /usr/local/lib/wx/include/gtk3-unicode-3.1/wx/setup.h
 src/album/CMakeFiles/AlbumFiles.dir/Stamp.cpp.o
  ../src/Defs.h
- ../src/Node.h
  ../src/album/Album.h
  ../src/album/AlbumDefs.h
  ../src/album/AlbumNode.h
@@ -1388,7 +1379,6 @@ src/album/CMakeFiles/AlbumFiles.dir/Stamp.cpp.o
  /usr/local/lib/wx/include/gtk3-unicode-3.1/wx/setup.h
 src/album/CMakeFiles/AlbumFiles.dir/Title.cpp.o
  ../src/Defs.h
- ../src/Node.h
  ../src/album/Album.h
  ../src/album/AlbumDefs.h
  ../src/album/AlbumNode.h
@@ -1486,7 +1476,6 @@ src/album/CMakeFiles/AlbumFiles.dir/Title.cpp.o
  /usr/local/lib/wx/include/gtk3-unicode-3.1/wx/setup.h
 src/album/CMakeFiles/AlbumFiles.dir/TitlePage.cpp.o
  ../src/Defs.h
- ../src/Node.h
  ../src/album/AlbumDefs.h
  ../src/album/AlbumNode.h
  ../src/album/Attribute.h

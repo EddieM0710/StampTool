@@ -46,6 +46,7 @@ namespace Utils {
 
         bool LoadProject( wxString filename );
         bool LoadAttributes( wxXmlNode* thisObject );
+        wxString MakeFile( wxString filename);
 
 
     private:

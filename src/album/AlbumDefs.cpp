@@ -39,6 +39,22 @@
 
 namespace Layout {
 
+    AlbumData* NewAlbumData( void )
+    {
+        return new AlbumData();
+    }
+
+    Album* GetAlbum( void )
+    {
+        AlbumData* albumData = GetAlbumData(  )  ;
+        if ( albumData )
+        {
+            return albumData->GetAlbum();
+        }
+        return (Album*)0;
+    }
+
+
     AlbumData* GetAlbumData( void )
     {
         Utils::Project* project = GetProject( );

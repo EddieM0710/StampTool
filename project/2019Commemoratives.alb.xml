@@ -11,7 +11,7 @@
         RightMargin=".75" 
         LeftMargin=".3"
         BorderFileName="box2.jpg" 
-        BorderSize="0"
+        BorderSize="0" >
 	<Page>
 		<!-- A page should have one top column or row child. -->
  			<!-- the title element is optional. -->

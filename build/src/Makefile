@@ -179,6 +179,33 @@ Defs.cpp.s:
 	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f src/CMakeFiles/AlbumGenerator.dir/build.make src/CMakeFiles/AlbumGenerator.dir/Defs.cpp.s
 .PHONY : Defs.cpp.s
 
+Node.o: Node.cpp.o
+
+.PHONY : Node.o
+
+# target to build an object file
+Node.cpp.o:
+	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f src/CMakeFiles/AlbumGenerator.dir/build.make src/CMakeFiles/AlbumGenerator.dir/Node.cpp.o
+.PHONY : Node.cpp.o
+
+Node.i: Node.cpp.i
+
+.PHONY : Node.i
+
+# target to preprocess a source file
+Node.cpp.i:
+	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f src/CMakeFiles/AlbumGenerator.dir/build.make src/CMakeFiles/AlbumGenerator.dir/Node.cpp.i
+.PHONY : Node.cpp.i
+
+Node.s: Node.cpp.s
+
+.PHONY : Node.s
+
+# target to generate assembly for a file
+Node.cpp.s:
+	cd /sandbox/Development/AlbumGenerator/build && $(MAKE) -f src/CMakeFiles/AlbumGenerator.dir/build.make src/CMakeFiles/AlbumGenerator.dir/Node.cpp.s
+.PHONY : Node.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -194,6 +221,9 @@ help:
 	@echo "... Defs.o"
 	@echo "... Defs.i"
 	@echo "... Defs.s"
+	@echo "... Node.o"
+	@echo "... Node.i"
+	@echo "... Node.s"
 .PHONY : help
 
 

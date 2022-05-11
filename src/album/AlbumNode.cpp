@@ -48,25 +48,9 @@ namespace Layout {
     // //     return ( Attribute* )0;
     // // };
 
-
-    // wxString AlbumNode::GetAttrStr( AlbumAttrType type )
-    // {
-    //     return GetAttrStr( AttrNameStrings[ type ] );
-    // }
-
-    // double AlbumNode::GetAttrDbl( AlbumAttrType type )
-    // {
-    //     return Node::GetAttrDbl(  AttrNameStrings[ type ] );
-    // }
-
     // void AlbumNode::SetNodeAttrStr( AlbumAttrType type, wxString val )
     // { 
     //     Node::SetNodeAttrStr( AttrNameStrings[ type ], val );
-    // }
-
-    // double AlbumNode::SetAttrDbl( AlbumAttrType type, double val)
-    // {
-    //     Node::SetAttrDbl( AttrNameStrings[ type ], val );
     // }
 
     // // double AlbumNode::GetAttrValDbl( wxString name )
@@ -185,6 +169,7 @@ namespace Layout {
             LoadAttributes( ele );
             m_text = ele->GetNodeContent( );
          };
+
     Attribute* AlbumNode::FindAttr( wxString name )
     {
         int cnt = m_attrArray.size( );
@@ -199,6 +184,20 @@ namespace Layout {
         return ( Attribute* )0;
     };
 
+    bool AlbumNode::LoadAttributes( wxXmlNode* thisObject )
+    {
+
+        const wxXmlAttribute* attr = thisObject->GetAttributes( );
+        while ( attr )
+        {
+            const char* name = attr->GetName( );
+            const char* val = attr->GetValue( );
+            Attribute* attribute = new Attribute( name, val );
+            m_attrArray.push_back( attribute );
+            attr = attr->GetNext( );
+        }
+    }
+
     wxString AlbumNode::GetAttrStr( wxString name )
     {
         Attribute* attr = FindAttr( name );
@@ -207,6 +206,12 @@ namespace Layout {
             return attr->GetValue( );
         }
         return wxString( "" );
+    }
+
+
+    wxString AlbumNode::GetAttrStr( AlbumAttrType type )
+    {
+        return GetAttrStr( AttrNameStrings[ type ] );
     }
 
     double AlbumNode::GetAttrDbl( wxString name )
@@ -219,6 +224,36 @@ namespace Layout {
             return val;
         }
         return 0.0;
+    }
+
+    double AlbumNode::GetAttrDbl( AlbumAttrType type )
+    {
+        return GetAttrDbl(  AttrNameStrings[ type ] );
+    }
+
+    double AlbumNode::SetAttrDbl( AlbumAttrType type, double val)
+    {
+        wxString str = wxString::Format( "%f", val );
+        SetAttrStr(  AttrNameStrings[ type ], str );
+    }
+
+    void AlbumNode::SetAttrStr( wxString name, wxString val )
+    {
+        Attribute* attr = FindAttr( name );
+        if ( attr )
+        {
+            attr->SetValue( val );
+        }
+        else
+        {
+            attr = new Attribute( name, val );
+            m_attrArray.push_back( attr );   
+        }
+    }
+
+    void AlbumNode::SetAttrStr( AlbumAttrType type, wxString val )
+    {
+        SetAttrStr( AttrNameStrings[ type ], val );
     }
 
     AlbumNode* AlbumNode::FindFirstChild( wxString name )
@@ -251,19 +286,6 @@ namespace Layout {
         return true;
     }
 
-    bool AlbumNode::LoadAttributes( wxXmlNode* thisObject )
-    {
-
-        const wxXmlAttribute* attr = thisObject->GetAttributes( );
-        while ( attr )
-        {
-            const char* name = attr->GetName( );
-            const char* val = attr->GetValue( );
-            Attribute* attribute = new Attribute( name, val );
-            m_attrArray.push_back( attribute );
-            attr = attr->GetNext( );
-        }
-    }
 
     bool AlbumNode::LoadChildren( wxXmlNode* thisObject )
     {

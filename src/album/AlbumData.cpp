@@ -62,12 +62,12 @@ namespace Layout {
         m_albumDoc = new wxXmlDocument( );
         return m_albumDoc;
     };
-    wxXmlDocument* AlbumData::ReplaceDocument( wxXmlDocument* doc )
-    {
-        delete m_albumDoc;
-        m_albumDoc = doc;
-        return m_albumDoc;
-    };
+    // wxXmlDocument* AlbumData::ReplaceDocument( wxXmlDocument* doc )
+    // {
+    //     delete m_albumDoc;
+    //     m_albumDoc = doc;
+    //     return m_albumDoc;
+    // };
 
     void AlbumData::SaveXML( wxString filename )
     {
@@ -102,11 +102,10 @@ namespace Layout {
                 albumData->SetName( filename );
             }
 
-
-            GetSettings( )->SetLastFile( filename );
+ //           GetSettings( )->SetLastFile( filename );
             //Get the file global Prefs
-            wxXmlNode* root = m_albumDoc->GetRoot( );
-            m_title = Utils::GetAttrStr( root, "Name" );
+//            wxXmlNode* root = m_albumDoc->GetRoot( );
+//            m_title = Utils::GetAttrStr( root, "Name" );
         }
     }
 

@@ -17,12 +17,15 @@
 namespace Layout {
 
     class AlbumData;
+    class Album;
+    
+    Album* GetAlbum( void );
 
     AlbumData* GetAlbumData( void );
 
-    AlbumData* SetAlbumData( AlbumData* catalogData );
+    AlbumData* SetAlbumData( AlbumData* albumData );
 
-    AlbumData* NewAECmdData( void );
+    AlbumData* NewAlbumData( void );
 
     typedef enum
     {

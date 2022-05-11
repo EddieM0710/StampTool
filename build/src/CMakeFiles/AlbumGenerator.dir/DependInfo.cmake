@@ -6,6 +6,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_CXX
   "/sandbox/Development/AlbumGenerator/src/AlbumGenApp.cpp" "/sandbox/Development/AlbumGenerator/build/src/CMakeFiles/AlbumGenerator.dir/AlbumGenApp.cpp.o"
   "/sandbox/Development/AlbumGenerator/src/Defs.cpp" "/sandbox/Development/AlbumGenerator/build/src/CMakeFiles/AlbumGenerator.dir/Defs.cpp.o"
+  "/sandbox/Development/AlbumGenerator/src/Node.cpp" "/sandbox/Development/AlbumGenerator/build/src/CMakeFiles/AlbumGenerator.dir/Node.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

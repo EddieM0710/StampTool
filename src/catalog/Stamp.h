@@ -43,7 +43,7 @@ namespace Catalog {
          **************************************************/
         Stamp( ) : CatalogNode( )
         {
-            SetCatalogNodeType( NT_Stamp );
+            SetNodeType( NT_Stamp );
             IsOK( );
         };
 
@@ -54,7 +54,7 @@ namespace Catalog {
          **************************************************/
         Stamp( wxXmlNode* stamp ) : CatalogNode( stamp )
         {
-            SetCatalogNodeType( NT_Stamp );
+            SetNodeType( NT_Stamp );
             IsOK( );
         };
 

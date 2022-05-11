@@ -372,7 +372,7 @@ namespace Catalog {
             {
                 // Make a copy of the old child in the new doc and insert it
                 wxXmlNode* newChildNode = new wxXmlNode( *child );
-                AddStamp( parent, newRoot, newChildNode );
+                AddStamp( child, newChildNode, 0 );
             }
             else
             {

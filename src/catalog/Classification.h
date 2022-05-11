@@ -40,7 +40,7 @@ namespace Catalog {
         Classification( void ) : CatalogNode( )
         {
             SetNodeElement( 0 );
-            SetCatalogNodeType( ( CatalogNodeType )-1 );
+            SetNodeType( ( CatalogNodeType )-1 );
         }
 
         /**
@@ -53,11 +53,11 @@ namespace Catalog {
         {
             if ( IsOK( ) )
             {
-                SetCatalogNodeType( GetCatalogNodeType( ) );
+                SetNodeType( GetNodeType( ) );
             }
             else
             {
-                SetCatalogNodeType( ( CatalogNodeType )-1 );
+                SetNodeType( ( CatalogNodeType )-1 );
             }
         };
 

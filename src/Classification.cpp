@@ -31,10 +31,10 @@ bool Classification::IsOK( void )
     if ( GetElement( ) )
     {
         const char* name = GetElement( )->GetName( );
-        if ( !NodeNameStrings.Item( NT_Catalog ).Cmp( name )
-            || !NodeNameStrings.Item( NT_Period ).Cmp( name )
-            || !NodeNameStrings.Item( NT_Year ).Cmp( name )
-            || !NodeNameStrings.Item( NT_Emission ).Cmp( name ) )
+        if ( !CatalogNodeNames.Item( NT_Catalog ).Cmp( name )
+            || !CatalogNodeNames.Item( NT_Period ).Cmp( name )
+            || !CatalogNodeNames.Item( NT_Year ).Cmp( name )
+            || !CatalogNodeNames.Item( NT_Emission ).Cmp( name ) )
         {
             return true;
         }

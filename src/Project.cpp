@@ -33,17 +33,17 @@ bool Project::LoadAttributes( wxXmlNode* thisObject )
         {
             m_outputName = val;
         }
-        else if ( !name.Cmp( "Layout" ) )
+        else if ( !name.Cmp( "Album" ) )
         {
-            m_layout = val;
+            m_album = val;
         }
         else if ( !name.Cmp( "ImagePath" ) )
         {
             m_imagePath = val;
         }
-        else if ( !name.Cmp( "StampProperties" ) )
+        else if ( !name.Cmp( "Catalog" ) )
         {
-            m_stampProperties = val;
+            m_catalog = val;
         }
         attr = attr->GetNext();
     }

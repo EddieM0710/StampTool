@@ -8,13 +8,19 @@
 class Project
 {
 public:
-    Project() {};
+    Project() 
+    {
+        InitDefs( );
+        m_settings = new Settings( );
+        Load();
+
+    };
     ~Project() {};
 
     wxString GetOutputName() { return m_outputName; };
-    wxString GetLayout() { return m_layout; };
+    wxString GetAlbum() { return m_album; };
     wxString GetImagePath() { return m_imagePath; };
-    wxString GetStampProperties() { return m_stampProperties; };
+    wxString GetCatalogs() { return m_catalog; };
 
     bool Load( wxString filename );
     bool LoadAttributes( wxXmlNode* thisObject );
@@ -24,8 +30,11 @@ private:
     wxXmlDocument m_ProjectDoc;
     wxString m_filename;
     wxString m_outputName;
-    wxString m_layout;
+    wxString m_album;
     wxString m_imagePath;
-    wxString m_stampProperties;
+    wxString m_catalog;
+    CatalogData* m_catalogData;
+    AlbumData* m_albumData;
+    Settings* m_settings;
 };
 #endif

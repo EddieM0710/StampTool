@@ -26,8 +26,8 @@ class Node
 
     ~Node( ){ };
 
-    void SetNodeType( NodeType type ) { m_nodeType = type; };
-    NodeType GetNodeType( ) { return m_nodeType; };
+    void SetCatalogNodeType( CatalogNodeType type ) { m_nodeType = type; };
+    CatalogNodeType GetCatalogNodeType( ) { return m_nodeType; };
 
     wxXmlNode *GetElement( ) { return m_Element; };
     void SetElement( wxXmlNode *node ) { m_Element = node; };
@@ -37,7 +37,7 @@ class Node
 
   private:
     wxXmlNode *m_Element;
-    NodeType m_nodeType;
+    CatalogNodeType m_nodeType;
 };
 
 #endif

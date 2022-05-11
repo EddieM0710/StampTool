@@ -45,7 +45,7 @@ public:
  **************************************************/
     Stamp( ) : Node( )
     {
-        SetNodeType( NT_Stamp );
+        SetCatalogNodeType( NT_Stamp );
         IsOK( );
     };
 
@@ -56,7 +56,7 @@ public:
  **************************************************/
     Stamp( wxXmlNode* stamp ) : Node( stamp )
     {
-        SetNodeType( NT_Stamp );
+        SetCatalogNodeType( NT_Stamp );
         IsOK( );
     };
 
@@ -298,7 +298,7 @@ public:
      * @param type 
      * @return wxString 
      **************************************************/
-    wxString GetClassificationName( Stamp* stamp, NodeType type );
+    wxString GetClassificationName( Stamp* stamp, CatalogNodeType type );
 
     /**
      * @brief add an empty element of Specimen type

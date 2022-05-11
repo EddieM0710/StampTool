@@ -51,7 +51,7 @@ class XMLIterator
     wxXmlNode* Next( );
 };
 
-bool IsNodeType( wxXmlNode* ele, NodeType type);
+bool IsCatalogNodeType( wxXmlNode* ele, CatalogNodeType type);
 void IDElement( wxXmlNode* ele );
 
 

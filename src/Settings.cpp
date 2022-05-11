@@ -140,39 +140,38 @@ void Settings::AddRecent( wxString filename )
 
 void Settings::Save( )
 {
-    wxFileName* filename
-        = new wxFileName( GetConfigurationDirectory( ), "Persistent", "xml" );
+    wxFileName* filename  = new wxFileName( GetConfigurationDirectory( ), "Settings", "xml" );
     wxString fullPath = filename->GetFullPath( );
     wxXmlDocument doc;
 
-    wxXmlNode* persistent = NewNode( &doc, "Persistent" );
+    wxXmlNode* settings = NewNode( &doc, "Settings" );
 
-    wxXmlNode* child = NewNode( persistent, "ImageDirectory" );
+    wxXmlNode* child = NewNode( settings, "ImageDirectory" );
     child->SetContent( GetImageDirectory( )   );
 
-    child = NewNode( persistent, "LastFile" );
+    child = NewNode( settings, "LastFile" );
     child->SetContent( GetLastFile( )   );
 
-    child = NewNode( persistent, "LoadLastFileAtStartUp" );
+    child = NewNode( settings, "LoadLastFileAtStartUp" );
     child->SetContent( Bool2String( GetLoadLastFileAtStartUp( ) ) );
 
-    wxXmlNode* sortOrder = NewNode( persistent, "SortOrder" );
+    wxXmlNode* sortOrder = NewNode( settings, "SortOrder" );
     wxArrayInt* sortOrderArray = GetSortOrder( );
     for ( int i = 0; i < sortOrderArray->Count( ); i++ )
     {
         if ( sortOrderArray->Item( i ) >= 0 )
         {
             child = NewNode( sortOrder, "Classification" );
-            child->SetContent( NodeNameStrings.Item( sortOrderArray->Item( i ) ) );
+            child->SetContent( CatalogNodeNames.Item( sortOrderArray->Item( i ) ) );
         }
     }
-    wxXmlNode* division = NewNode( persistent, "PeriodDivision" );
+    wxXmlNode* division = NewNode( settings, "PeriodDivision" );
     wxXmlNode* lowerDivision = NewNode( division, "LowerDivision" );
     lowerDivision->SetContent( GetLowerDivision( )   );
     wxXmlNode* upperDivision = NewNode( division, "UpperDivision" );
     upperDivision->SetContent( GetUpperDivision( )   );
 
-    wxXmlNode* periods = NewNode( persistent, "Periods" );
+    wxXmlNode* periods = NewNode( settings, "Periods" );
     wxXmlNode* lowerPeriod = NewNode( periods, "LowerPeriod" );
     lowerPeriod->SetContent( GetLowerPeriod( )   );
     wxXmlNode* middlePeriod = NewNode( periods, "MiddlePeriod" );
@@ -183,7 +182,7 @@ void Settings::Save( )
     wxArrayString* recentArray = GetRecentArray( );
     if ( !recentArray->IsEmpty( ) )
     {
-        wxXmlNode* recent = NewNode( persistent, "RecentFileList" );
+        wxXmlNode* recent = NewNode( settings, "RecentFileList" );
         if ( recent )
         {
             for ( int i = 0; i < recentArray->Count( ); i++ )
@@ -194,7 +193,7 @@ void Settings::Save( )
         }
     }
 
-    child = NewNode( persistent, "NbrRecentPreference" );
+    child = NewNode( settings, "NbrRecentPreference" );
     int nbr =  GetNbrRecentPreference( ) ;
     char str[20];
     sprintf( str, "%d", nbr);
@@ -203,18 +202,31 @@ void Settings::Save( )
     doc.Save( file );
 }
 
+void Settings::SetSettingValue( wxString& setting, wxXmlNode* parent, wxString childName, wxString defaultVal)
+{
+    wxXmlNode* childNode = FirstChildElement( parent, childName );
+    if ( childNode )
+    {
+        setting =  childNode->GetNodeContent( ) ;
+    }
+    else
+    {
+        setting = defaultVal;
+    }
+}
+
 void Settings::Load( )
 {
     wxFileName* filename
-        = new wxFileName( GetConfigurationDirectory( ), "Persistent", "xml" );
+        = new wxFileName( GetConfigurationDirectory( ), "Settings", "xml" );
     wxString fullPath = filename->GetFullPath( );
     wxXmlDocument doc;
-    bool errCode = doc.Load( fullPath  );
+    bool ok = doc.Load( fullPath  );
 
-    if ( errCode )
+    if ( !ok )
     {
-        std::cout << fullPath << "Load Failed.\n";
-        // Loading the Persistent.xml file failed
+        std::cout << fullPath << " Load Failed.\n";
+        // Loading the ettings.xml file failed
         // add defaults here and return
         SetLoadLastFileAtStartUp( true );
         SetImageDirectory( "" ) ;
@@ -257,8 +269,8 @@ void Settings::Load( )
         child = FirstChildElement( sortOrder, "Classification" );
         while ( child )
         {
-            wxString name = child->GetContent( );
-            NodeType type = FindNodeType( name );
+            wxString name = child->GetNodeContent( );
+            CatalogNodeType type = FindCatalogNodeType( name );
             if ( type > -1 )
             {
                 sortOrderArray->Add( type );
@@ -274,69 +286,22 @@ void Settings::Load( )
     wxXmlNode* division = FirstChildElement( root, "PeriodDivision" );
     if ( division )
     {
-        wxXmlNode* lowerDivision = FirstChildElement( division, "LowerDivision" );
-        if ( lowerDivision )
-        {
-            SetLowerDivision( lowerDivision->GetContent( ) );
-        }
-        else
-        {
-            SetLowerDivision( "1950" );
-        }
-        wxXmlNode* upperDivision = FirstChildElement( division, "UpperDivision" );
-        if ( upperDivision )
-        {
-            SetUpperDivision( upperDivision->GetContent( ) );
-        }
-        else
-        {
-            SetUpperDivision( "2000" );
-        }
+        SetSettingValue( m_lowerDivision, division, "LowerDivision", "1950");
+        SetSettingValue( m_upperDivision, division, "UpperDivision", "2000");
     }
     wxXmlNode* periods = FirstChildElement( root, "Periods" );
     if ( periods )
     {
-        wxXmlNode* firstPeriod = FirstChildElement( periods, "LowerPeriod" );
-        if ( firstPeriod )
-        {
-            SetLowerPeriod( firstPeriod->GetContent( ) );
-        }
-        else
-        {
-            SetLowerPeriod( "Antique" );
-        }
-        wxXmlNode* middlePeriod = FirstChildElement( periods, "MiddlePeriod" );
-        if ( middlePeriod )
-        {
-            SetMiddlePeriod( middlePeriod->GetContent( ) );
-        }
-        else
-        {
-            SetMiddlePeriod( "Classical" );
-        }
-        wxXmlNode* upperPeriod = FirstChildElement( periods, "UpperPeriod" );
-        if ( upperPeriod )
-        {
-            SetUpperPeriod( upperPeriod->GetContent( ) );
-        }
-        else
-        {
-            SetUpperPeriod( "Modern" );
-        }
+        SetSettingValue( m_lowerPeriod, periods, "LowerPeriod", "Antique");
+        SetSettingValue( m_middlePeriod, periods, "MiddlePeriod", "Classical");
+        SetSettingValue( m_upperPeriod, periods, "UpperPeriod", "Modern");
     }
-    wxXmlNode* lastFile = FirstChildElement( root, "LastFile" );
-    if ( lastFile )
-    {
-        SetLastFile( lastFile->GetContent( ) );
-    }
-    else
-    {
-        SetLastFile( "" );
-    }
+    SetSettingValue( m_lastFile, root, "LastFile", "");
+
     wxXmlNode* loadLastFile = FirstChildElement( root, "LoadLastFileAtStartUp" );
     if ( loadLastFile )
     {
-        bool isTrue = !strcmp(loadLastFile->GetContent( ),"true"); 
+        bool isTrue = !strcmp(loadLastFile->GetNodeContent( ),"true"); 
         SetLoadLastFileAtStartUp( isTrue );
     }
     else
@@ -345,47 +310,18 @@ void Settings::Load( )
     }
     std::cout << "LastFile: " << GetLastFile( ) << "\n";
     std::cout << "LoadLastFileAtStartUp: " << GetLoadLastFileAtStartUp( ) << "\n";
+    
+    SetSettingValue( m_imageDirectory, root, "ImageDirectory", "");
 
-    wxXmlNode* imageDirectory = FirstChildElement( root, "ImageDirectory" );
-    if ( imageDirectory )
-    {
-        SetImageDirectory( imageDirectory->GetContent( ) );
-    }
-    else
-    {
-        SetImageDirectory( "" );
-    }      
+    SetSettingValue( m_catalogID, root, "CatalogID", "SN");
 
-    wxXmlNode* catalogID = FirstChildElement( root, "CatalogID" );
-    if ( catalogID )
-    {
+    SetSettingValue( m_countryID, root, "CountryID", "US");
 
-        SetCatalogID( catalogID->GetContent( ) );
-    }
-    else
-    {
-        SetCatalogID( "SN" );
-    }      
-
-    wxXmlNode* countryID = FirstChildElement( root, "CountryID" );
-    if ( countryID )
-    {
-
-        SetCountryID( countryID->GetContent( ) );
-    }
-    else
-    {
-        SetCountryID( "US" );
-    }      
-
-    child = FirstChildElement( root, "NbrRecentPreference" );
-    if ( child )
-    {
-        wxString str = child->GetContent( );
-        long nbr;
-        str.ToLong(&nbr);
-        SetNbrRecentPreference( nbr );
-    }
+    wxString str;
+    SetSettingValue( str, root, "NbrRecentPreference", "4");
+    long nbr;
+    str.ToLong(&nbr);
+    m_nbrRecentPreference = nbr;
  
     wxArrayString* recentArray = GetRecentArray( );
     wxXmlNode* recent = FirstChildElement( root, "RecentFileList" );
@@ -394,28 +330,13 @@ void Settings::Load( )
         wxXmlNode* recentFile = FirstChildElement( recent, "File" );
         while ( recentFile )
         {
-            recentArray->Add( recentFile->GetContent( ) );
+            recentArray->Add( recentFile->GetNodeContent( ) );
             recentFile = GetNext( recent, "File" );
         }
     }
+    SetSettingValue( m_lastFile, root, "LastFile", "");
 
-   child = FirstChildElement( root, "LastFile" );
-    if ( child )
-    {
-        SetLastFile( child->GetContent( ) );
-    }
-    else
-    {
-        // it would be a strange case if there were no last 
-        // file but were recent files. However the SetLastFile()
-        // calls the frame to setup the recent menu so call it.
-        SetLastFile( "" );
-    }
-
-    child = FirstChildElement( root, "LoadLastFileAtStartUp" );
-    if ( child )
-    {
-        SetLoadLastFileAtStartUp( String2Bool( child->GetContent( ) ) );
-    }
+    SetSettingValue( str, root, "LoadLastFileAtStartUp", "true");
+    m_loadLastFileAtStartUp = String2Bool( str ) ;
 
 }

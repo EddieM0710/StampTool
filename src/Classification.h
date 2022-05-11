@@ -38,7 +38,7 @@ class Classification : public Node
     Classification( void ) : Node( )
     {
         SetElement( 0 );
-        SetNodeType( (NodeType)-1 );
+        SetCatalogNodeType( (CatalogNodeType)-1 );
     }
 
     /**
@@ -51,11 +51,11 @@ class Classification : public Node
     {
         if ( IsOK( ) )
         {
-            SetNodeType( GetNodeType( ) );
+            SetCatalogNodeType( GetCatalogNodeType( ) );
         }
         else
         {
-            SetNodeType( (NodeType)-1 );
+            SetCatalogNodeType( (CatalogNodeType)-1 );
         }
     };
     

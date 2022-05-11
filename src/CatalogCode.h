@@ -41,13 +41,13 @@ class CatalogCode : public Node
 public:
     CatalogCode( ) : Node( )
     {
-        SetNodeType( NT_CatalogCode );
+        SetCatalogNodeType( NT_CatalogCode );
         IsOK( );
     };
 
     CatalogCode( wxXmlNode* ele ) : Node( ele )
     {
-        SetNodeType( NT_CatalogCode );
+        SetCatalogNodeType( NT_CatalogCode );
         IsOK( );
     };
 

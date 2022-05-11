@@ -1,5 +1,8 @@
-/sandbox/Development/AlbumGenerator/build/CMakeFiles/rebuild_cache.dir
-/sandbox/Development/AlbumGenerator/build/CMakeFiles/edit_cache.dir
-/sandbox/Development/AlbumGenerator/build/src/CMakeFiles/rebuild_cache.dir
-/sandbox/Development/AlbumGenerator/build/src/CMakeFiles/AlbumGenerator.dir
-/sandbox/Development/AlbumGenerator/build/src/CMakeFiles/edit_cache.dir
+/sandbox/Dev_Bak/AlbumGenerator_22_02_25/build/CMakeFiles/rebuild_cache.dir
+/sandbox/Dev_Bak/AlbumGenerator_22_02_25/build/CMakeFiles/edit_cache.dir
+/sandbox/Dev_Bak/AlbumGenerator_22_02_25/build/src/CMakeFiles/rebuild_cache.dir
+/sandbox/Dev_Bak/AlbumGenerator_22_02_25/build/src/CMakeFiles/AlbumGenerator.dir
+/sandbox/Dev_Bak/AlbumGenerator_22_02_25/build/src/CMakeFiles/edit_cache.dir
+/sandbox/Dev_Bak/AlbumGenerator_22_02_25/build/src/GuiFiles/CMakeFiles/rebuild_cache.dir
+/sandbox/Dev_Bak/AlbumGenerator_22_02_25/build/src/GuiFiles/CMakeFiles/GuiFiles.dir
+/sandbox/Dev_Bak/AlbumGenerator_22_02_25/build/src/GuiFiles/CMakeFiles/edit_cache.dir

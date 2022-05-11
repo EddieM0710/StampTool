@@ -205,7 +205,7 @@ wxXmlNode* GetNext( wxXmlNode* node, wxString name )
 void IDElement( wxXmlNode* ele )
 {
     const char* name = ele->GetName( );
-    NodeType nodeType = FindNodeType( name );
+    CatalogNodeType nodeType = FindCatalogNodeType( name );
 
     switch ( nodeType )
     {
@@ -257,25 +257,25 @@ void IDElement( wxXmlNode* ele )
      * @param type  element type
      * @return true  if a match
      **************************************************/
-    bool IsNodeType( wxXmlNode * ele, NodeType type )
+    bool IsCatalogNodeType( wxXmlNode * ele, CatalogNodeType type )
     {
-        return !NodeNameStrings.Item( type ).Cmp( ele->GetName( ) );
+        return !CatalogNodeNames.Item( type ).Cmp( ele->GetName( ) );
     }
 
 
-NodeType FindNodeType(wxXmlNode *element)
+CatalogNodeType FindCatalogNodeType(wxXmlNode *element)
 {
     wxString name = element->GetName();
 
-     int cnt = NodeNameStrings.GetCount();
+     int cnt = CatalogNodeNames.GetCount();
     for (int i = 0; i < cnt; i++)
     {
-        if (!name.Cmp(NodeNameStrings.Item(i)))
+        if (!name.Cmp(CatalogNodeNames.Item(i)))
         {
-            return (NodeType)i;
+            return (CatalogNodeType)i;
         }
     }
-    return (NodeType)-1;
+    return (CatalogNodeType)-1;
 };
 
 // void AddStamp(wxXmlNode *child)
@@ -288,14 +288,14 @@ void AddStamp( wxXmlNode* parent, wxXmlNode* child, int level )
     level++;
     wxString name = child->GetName( );
     wxString parentName = parent->GetName( );
-    NodeType parentType = FindNodeType( parentName );
+    CatalogNodeType parentType = FindCatalogNodeType( parentName );
     //    std::cout << "AddStamp  ParentName:" << parentName
-    //        << "  ParentType:" << NodeNameStrings[ parentType ]
+    //        << "  ParentType:" << CatalogNodeNames[ parentType ]
     //        << "  ChildName:" << name << "level" << level << "\n";
-    if ( name == NodeNameStrings[ NT_Stamp ] )
+    if ( name == CatalogNodeNames[ NT_Stamp ] )
     {
         Stamp stamp( child );
-        NodeType sortType = ( NodeType )GetSettings( )->GetNextSortClassification(
+        CatalogNodeType sortType = ( CatalogNodeType )GetSettings( )->GetNextSortClassification(
             ( int )parentType );
         if ( ( sortType < NT_Catalog ) || ( sortType >= NT_Stamp ) )
         {
@@ -307,9 +307,9 @@ void AddStamp( wxXmlNode* parent, wxXmlNode* child, int level )
         }
         else
         {
-            //            std::cout << "     SortType: " << NodeNameStrings[ sortType ]
+            //            std::cout << "     SortType: " << CatalogNodeNames[ sortType ]
             //                << "\n";
-            wxString nodeName = NodeNameStrings[ sortType ];
+            wxString nodeName = CatalogNodeNames[ sortType ];
             wxString name = stamp.GetClassificationName( &stamp, sortType );
             const char* nameStr = name ;
             const char* nodeNameStr = nodeName ;
@@ -375,7 +375,7 @@ void SortData( wxXmlNode* newRoot, wxXmlNode* parent )
      wxXmlNode* child = parent->GetChildren( );
     while ( child )
     {
-        if ( !NodeNameStrings[ NT_Stamp ].Cmp( child->GetName( ) ) )
+        if ( !CatalogNodeNames[ NT_Stamp ].Cmp( child->GetName( ) ) )
         {
             // Make a copy of the old child in the new doc and insert it
             wxXmlNode* newChildNode = new wxXmlNode(  *child );

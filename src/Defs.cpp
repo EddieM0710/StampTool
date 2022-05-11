@@ -44,6 +44,7 @@ bool IsDirty(){return Dirty;};
  */
 CatalogData* G_CatalogData;
 
+
 Settings* G_Settings;
 
 Settings* GetSettings( ) { return G_Settings; };
@@ -146,23 +147,32 @@ const wxString DT_XMLDataNames[ DT_NbrTypes ] = {
     wxT( "Background" )
 };
 
-wxArrayString NodeNameStrings;
+wxArrayString CatalogNodeNames;
+wxArrayString AlbumNodeNames;
+
 
 void InitDefs( )
 {
-    NodeNameStrings.Add( "Catalog" );
-    NodeNameStrings.Add( "Country" );
-    NodeNameStrings.Add( "Period" );
-    NodeNameStrings.Add( "Decade" );
-    NodeNameStrings.Add( "Year" );
-    NodeNameStrings.Add( "Emission" );
-    NodeNameStrings.Add( "Status" );
-    NodeNameStrings.Add( "Condition" );
-    NodeNameStrings.Add( "Stamp" );
-    NodeNameStrings.Add( "Specimen" );
-    NodeNameStrings.Add( "CatalogCode" );
+    CatalogNodeNames.Add( "Catalog" );
+    CatalogNodeNames.Add( "Country" );
+    CatalogNodeNames.Add( "Period" );
+    CatalogNodeNames.Add( "Decade" );
+    CatalogNodeNames.Add( "Year" );
+    CatalogNodeNames.Add( "Emission" );
+    CatalogNodeNames.Add( "Status" );
+    CatalogNodeNames.Add( "Condition" );
+    CatalogNodeNames.Add( "Stamp" );
+    CatalogNodeNames.Add( "Specimen" );
+    CatalogNodeNames.Add( "CatalogCode" );
 
-    G_Settings = new Settings( );
+     AlbumNodeNames.Add( "Album" );
+     AlbumNodeNames.Add( "Page" );
+     AlbumNodeNames.Add( "Row" );
+     AlbumNodeNames.Add( "Col" );
+     AlbumNodeNames.Add( "Title" );
+     AlbumNodeNames.Add( "Stamp" );
+     AlbumNodeNames.Add( "NbrAlbumTypes" );
+
 }
 
 
@@ -182,18 +192,34 @@ const wxString CC_CatalogCodeNames[ CC_NbrTypes ]
 = { wxT( "ID" ), wxT( "Country" ), wxT( "Catalog" ), };
 
 
-NodeType FindNodeType( wxString name )
+CatalogNodeType FindCatalogNodeType( wxString name )
 {
     wxString baseName;
 
-    int cnt = NodeNameStrings.GetCount( );
+    int cnt = CatalogNodeNames.GetCount( );
     for ( int i = 0; i < cnt; i++ )
     {
-        baseName = NodeNameStrings.Item( i );
+        baseName = CatalogNodeNames.Item( i );
         if ( !name.Cmp( baseName ) )
         {
-            return ( NodeType )i;
+            return ( CatalogNodeType )i;
         }
     }
-    return ( NodeType )-1;
+    return ( CatalogNodeType )-1;
+};
+
+AlbumNodeType FindAlbumNodeType( wxString name )
+{
+    wxString baseName;
+
+    int cnt =AlbumNodeNames.GetCount( );
+    for ( int i = 0; i < cnt; i++ )
+    {
+        baseName = AlbumNodeNames.Item( i );
+        if ( !name.Cmp( baseName ) )
+        {
+            return ( AlbumNodeType )i;
+        }
+    }
+    return ( AlbumNodeType )-1;
 };

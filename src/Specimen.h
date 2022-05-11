@@ -35,13 +35,13 @@ class Specimen : public Node
   public:
     Specimen( ) : Node( )
     {
-        SetNodeType( NT_Specimen );
+        SetCatalogNodeType( NT_Specimen );
         IsOK( );
     };
 
     Specimen( wxXmlNode *ele ) : Node( ele )
     {
-        SetNodeType( NT_Specimen );
+        SetCatalogNodeType( NT_Specimen );
         IsOK( );
     };
 

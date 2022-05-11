@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /sandbox/Development/AlbumGenerator
+CMAKE_SOURCE_DIR = /sandbox/Dev_Bak/AlbumGenerator_22_02_25
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /sandbox/Development/AlbumGenerator/build
+CMAKE_BINARY_DIR = /sandbox/Dev_Bak/AlbumGenerator_22_02_25/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /sandbox/Development/AlbumGenerator/build/CMakeFiles /sandbox/Development/AlbumGenerator/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /sandbox/Dev_Bak/AlbumGenerator_22_02_25/build/CMakeFiles /sandbox/Dev_Bak/AlbumGenerator_22_02_25/build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /sandbox/Development/AlbumGenerator/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /sandbox/Dev_Bak/AlbumGenerator_22_02_25/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -123,6 +123,19 @@ AlbumGenerator/fast:
 	$(MAKE) -f src/CMakeFiles/AlbumGenerator.dir/build.make src/CMakeFiles/AlbumGenerator.dir/build
 .PHONY : AlbumGenerator/fast
 
+#=============================================================================
+# Target rules for targets named GuiFiles
+
+# Build rule for target.
+GuiFiles: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 GuiFiles
+.PHONY : GuiFiles
+
+# fast build rule for target.
+GuiFiles/fast:
+	$(MAKE) -f src/GuiFiles/CMakeFiles/GuiFiles.dir/build.make src/GuiFiles/CMakeFiles/GuiFiles.dir/build
+.PHONY : GuiFiles/fast
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -132,6 +145,7 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... AlbumGenerator"
+	@echo "... GuiFiles"
 .PHONY : help
 
 

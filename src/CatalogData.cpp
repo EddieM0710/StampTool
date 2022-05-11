@@ -85,9 +85,9 @@ void CatalogData::LoadXML( wxString filename )
     {
          m_stampDoc = NewDocument( );
     }
-    bool errCode = m_stampDoc->Load( filename );
+    bool ok = m_stampDoc->Load( filename );
 
-    if ( errCode  )
+    if ( !ok  )
     {
         std::cout << filename << " Load Failed.\n";
     }
@@ -113,7 +113,7 @@ void CatalogData::LoadXML( wxString filename )
 
         while ( item )
         {
-            if ( IsNodeType( item, NT_Stamp ) )
+            if ( IsCatalogNodeType( item, NT_Stamp ) )
             {
                 stamp.SetElement( item );
                 stamp.ProcessCatalogCodes( );
@@ -128,7 +128,7 @@ void CatalogData::LoadXML( wxString filename )
     //Get the file global Prefs
     wxXmlNode* root = m_stampDoc->GetRoot( );
     const char* name = root->GetName( );
-    if ( !strcmp( name, NodeNameStrings[ NT_Catalog ] ) )
+    if ( !strcmp( name, CatalogNodeNames[ NT_Catalog ] ) )
     {
         Classification catalog( root );
         m_title = catalog.GetTitle( );
@@ -148,7 +148,7 @@ void CatalogData::LoadCSV( wxString filename )
     wxXmlNode* docRoot = m_stampDoc->GetRoot( );
     if ( !docRoot )
     {
-        docRoot = NewNode( m_stampDoc, NodeNameStrings[ NT_Catalog ] );
+        docRoot = NewNode( m_stampDoc, CatalogNodeNames[ NT_Catalog ] );
     }
 
     SetAttribute( docRoot, DT_DataNames[DT_Name], filename   );

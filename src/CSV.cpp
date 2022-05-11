@@ -212,7 +212,7 @@ bool CSVData::ReadTextInStream( wxFileInputStream& file,
                         // comma separated Variables on line; i, e, .csv file
                         wxStringTokenizer tokenizer( line, "," );
 
-                        wxXmlNode* stampElement = NewNode( docRoot,  NodeNameStrings.Item( NT_Stamp ) );
+                        wxXmlNode* stampElement = NewNode( docRoot,  CatalogNodeNames.Item( NT_Stamp ) );
 
     //                    Stamp* stampNode = new Stamp( stampElement );
                         csvCol = 0;

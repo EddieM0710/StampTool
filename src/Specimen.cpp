@@ -28,7 +28,7 @@ bool Specimen::IsOK( )
 {
     if ( GetElement( ) )
     {
-        if ( IsNodeType( GetElement( ), NT_Specimen ) )
+        if ( IsCatalogNodeType( GetElement( ), NT_Specimen ) )
         {
             return true;
         }

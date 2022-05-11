@@ -14,6 +14,7 @@
 
 #include <wx/arrstr.h>
 #include <wx/string.h>
+#include "wx/xml/xml.h"
 
  /**
   * @brief Settings for the application
@@ -39,19 +40,21 @@ public:
     wxString GetUpperPeriod( ) { return m_upperPeriod; };
 
 
-    void SetConfigurationDirectory( wxString val ) { m_configurationDirectory = val; };
-    void SetWorkingDirectory( wxString dir ) { m_workingDirectory = dir; };
-    void SetImageDirectory( wxString val ) { m_imageDirectory = val; };
-    void SetCatalogID( wxString val ) { m_catalogID = val; };
-    void SetCountryID( wxString val ) { m_countryID = val; };
-    void SetLoadLastFileAtStartUp( bool state = true ) { m_loadLastFileAtStartUp = state; };
-    void SetLowerDivision( wxString val ) { m_lowerDivision = val; };
-    void SetLowerPeriod( wxString val ) { m_lowerPeriod = val; };
-    void SetMiddlePeriod( wxString val ) { m_middlePeriod = val; };
-    void SetUpperDivision( wxString val ) { m_upperDivision = val; };
-    void SetUpperPeriod( wxString val ) { m_upperPeriod = val; };
+    void SetConfigurationDirectory( wxString val ) { m_configurationDirectory = val; m_dirty=true;  };
+    void SetWorkingDirectory( wxString dir ) { m_workingDirectory = dir;  m_dirty=true; };
+    void SetImageDirectory( wxString val ) { m_imageDirectory = val; m_dirty=true;  };
+    void SetCatalogID( wxString val ) { m_catalogID = val;  m_dirty=true; };
+    void SetCountryID( wxString val ) { m_countryID = val; m_dirty=true;  };
+    void SetLoadLastFileAtStartUp( bool state = true ) { m_loadLastFileAtStartUp = state;   };
+    void SetLowerDivision( wxString val ) { m_lowerDivision = val;  m_dirty=true; };
+    void SetLowerPeriod( wxString val ) { m_lowerPeriod = val;  m_dirty=true; };
+    void SetMiddlePeriod( wxString val ) { m_middlePeriod = val; m_dirty=true;  };
+    void SetUpperDivision( wxString val ) { m_upperDivision = val;  m_dirty=true; };
+    void SetUpperPeriod( wxString val ) { m_upperPeriod = val; m_dirty=true;  };
 
     int GetNextSortClassification( int current );
+
+void SetSettingValue( wxString& setting, wxXmlNode* parent, wxString childName, wxString defaultVal);
 
 
     /**
@@ -74,13 +77,13 @@ public:
      * @param  dir path of the last used directory
      */
     /**
-     * @brief Load the persistent file
+     * @brief Load the settings file
      *
      */
     void Load( );
 
     /**
-     * @brief  Save the persistent file
+     * @brief  Save the settings file
      *
      */
     void Save( );
@@ -88,7 +91,7 @@ public:
 
     void AddRecent( wxString filename );
     wxArrayString* GetRecentArray( ) { return &m_recentFiles; };
-    void SetNbrRecentPreference( int val ) { m_nbrRecentPreference = val; };
+    void SetNbrRecentPreference( int val ) { m_nbrRecentPreference = val; m_dirty=true; };
     int GetNbrRecentPreference( ) { return m_nbrRecentPreference; };
     void SetDirty(bool state=true){m_dirty=state;};
     bool isDirty(){return m_dirty;}

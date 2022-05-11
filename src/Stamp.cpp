@@ -35,10 +35,10 @@ inline bool Stamp::IsOK( )
     if ( ele )
     {
         str = ele->GetName( );
-        str = NodeNameStrings.Item( NT_Stamp );
+        str = CatalogNodeNames.Item( NT_Stamp );
     }
     if ( GetElement( )
-        && !NodeNameStrings.Item( NT_Stamp ).Cmp( GetElement( )->GetName( ) ) )
+        && !CatalogNodeNames.Item( NT_Stamp ).Cmp( GetElement( )->GetName( ) ) )
     {
         m_OK = true;
         return m_OK;
@@ -236,7 +236,7 @@ void Stamp::SetColors( wxString val ) { SetAttr( DT_Colors, val ); };
 void Stamp::SetCatalogCodes( wxString val ) { SetAttr( DT_Catalog_Codes, val ); };
 void Stamp::SetAccuracy( wxString val ) { SetAttr( DT_Accuracy, val ); };
 
-wxString Stamp::GetClassificationName( Stamp* stamp, NodeType type )
+wxString Stamp::GetClassificationName( Stamp* stamp, CatalogNodeType type )
 {
     switch ( type )
     {
@@ -280,7 +280,7 @@ wxXmlNode* Stamp::AddSpecimen( )
     wxXmlNode* ele = GetElement( );
     if ( ele )
     {
-        return NewNode( ele, NodeNameStrings[ NT_Specimen ] );
+        return NewNode( ele, CatalogNodeNames[ NT_Specimen ] );
     }
     return ( wxXmlNode* )0;
 }
@@ -299,7 +299,7 @@ bool Stamp::HasChildSpecimen( )
     wxXmlNode* ele = GetElement( );
     if ( ele )
     {
-        if ( FirstChildElement( ele, NodeNameStrings[ NT_Specimen ] ) )
+        if ( FirstChildElement( ele, CatalogNodeNames[ NT_Specimen ] ) )
         {
             return true;
         }
@@ -311,7 +311,7 @@ wxXmlNode* Stamp::GetFirstChildSpecimen( )
     wxXmlNode* ele = GetElement( );
     if ( ele )
     {
-        return FirstChildElement( ele, NodeNameStrings[ NT_Specimen ] );
+        return FirstChildElement( ele, CatalogNodeNames[ NT_Specimen ] );
     }
     return ( wxXmlNode* )0;
 }
@@ -320,7 +320,7 @@ wxXmlNode* Stamp::GetNextChildSpecimen( )
     wxXmlNode* ele = GetElement( );
     if ( ele )
     {
-        return GetNext( ele, NodeNameStrings[ NT_Specimen ] );
+        return GetNext( ele, CatalogNodeNames[ NT_Specimen ] );
     }
     return ( wxXmlNode* )0;
 }
@@ -331,7 +331,7 @@ wxXmlNode* Stamp::AddCode( )
     wxXmlNode* ele = GetElement( );
     if ( ele )
     {
-        return NewNode( ele, NodeNameStrings[ NT_CatalogCode ] );
+        return NewNode( ele, CatalogNodeNames[ NT_CatalogCode ] );
     }
     return ( wxXmlNode* )0;
 }
@@ -350,7 +350,7 @@ bool Stamp::HasChildCode( )
     wxXmlNode* ele = GetElement( );
     if ( ele )
     {
-        if ( FirstChildElement( ele, NodeNameStrings[ NT_CatalogCode ] ) )
+        if ( FirstChildElement( ele, CatalogNodeNames[ NT_CatalogCode ] ) )
         {
             return true;
         }
@@ -363,7 +363,7 @@ wxXmlNode* Stamp::GetFirstChildCode( )
     wxXmlNode* ele = GetElement( );
     if ( ele )
     {
-        return FirstChildElement( ele, NodeNameStrings[ NT_CatalogCode ] );
+        return FirstChildElement( ele, CatalogNodeNames[ NT_CatalogCode ] );
     }
     return ( wxXmlNode* )0;
 }
@@ -372,7 +372,7 @@ wxXmlNode* Stamp::GetNextChildCode( wxXmlNode* ele )
 {
     if ( ele )
     {
-        return GetNext( ele, NodeNameStrings[ NT_CatalogCode ] );
+        return GetNext( ele, CatalogNodeNames[ NT_CatalogCode ] );
     }
     return ( wxXmlNode* )0;
 }
@@ -382,7 +382,7 @@ wxXmlNode* Stamp::GetCodeForCatalog( const char* catalog )
     wxXmlNode* ele = GetElement( );
     if ( ele )
     {
-        wxXmlNode* childCode = FirstChildElement( ele, NodeNameStrings[ NT_CatalogCode ] );
+        wxXmlNode* childCode = FirstChildElement( ele, CatalogNodeNames[ NT_CatalogCode ] );
         if ( childCode )
         {
             const wxXmlAttribute* attr = GetAttribute( childCode, CC_CatalogCodeNames[ CC_Catalog ] );
@@ -433,7 +433,7 @@ void Stamp::ProcessCatalogCodes(  )
             wxString country = valStr.Mid( 0, pos );
             wxString id = valStr.Mid( pos + 1 );
 
-            wxXmlNode* catCodeElement = NewNode( GetElement( ), NodeNameStrings.Item( NT_CatalogCode ) );
+            wxXmlNode* catCodeElement = NewNode( GetElement( ), CatalogNodeNames.Item( NT_CatalogCode ) );
 
             CatalogCode * catCodeNode = new CatalogCode( catCodeElement );
             catCodeNode->SetCatalog( catalog );

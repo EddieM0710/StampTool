@@ -102,7 +102,7 @@ inline const bool String2Bool( wxString str )
 };
 
 /**
- * @enum NodeType
+ * @enum CatalogNodeType
  * 
  * @brief Enum defining stamp node types.
  *
@@ -121,7 +121,18 @@ typedef enum
     NT_Specimen,
     NT_CatalogCode,
     NT_NbrTypes
-} NodeType;
+} CatalogNodeType;
+
+typedef enum
+{
+    AT_Album = 0,
+    AT_Page,
+    AT_Row,
+    AT_Col,
+    AT_Title,
+    AT_Stamp,
+    AT_NbrAlbumTypes
+} AlbumNodeType;
 
 /**
  * @enum PeriodType
@@ -352,18 +363,20 @@ extern const wxString CC_CatalogCodeNames[ CC_NbrTypes ];
  * @note This is the name used for the tree node; not the wxXmlNode node.
  * 
  **************************************************/
-extern wxArrayString NodeNameStrings;
+extern wxArrayString CatalogNodeNames;
 
 
 extern  const wxString CT_Names[ CT_NbrTypes ];
 
 /**
- * @brief Look thru all the NodeNameStrings to find "name"
- * and return the corresponding NodeType enum
+ * @brief Look thru all the CatalogNodeNames to find "name"
+ * and return the corresponding CatalogNodeType enum
  * @param   name : name of the node to find the Type of
- * @return {NodeType}      :  enum or -1 if not found.
+ * @return {CatalogNodeType}      :  enum or -1 if not found.
  **************************************************/
-NodeType FindNodeType( wxString name );
+CatalogNodeType FindCatalogNodeType( wxString name );
+
+AlbumNodeType FindAlbumNodeType( wxString name );
 
 /**
  * @brief Performs the initial instantiantion of all the sTart up data.

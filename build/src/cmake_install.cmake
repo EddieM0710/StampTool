@@ -1,4 +1,4 @@
-# Install script for directory: /sandbox/Development/AlbumGenerator/src
+# Install script for directory: /sandbox/Dev_Bak/AlbumGenerator_22_02_25/src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -35,5 +35,11 @@ endif()
 # Is this installation the result of a crosscompile?
 if(NOT DEFINED CMAKE_CROSSCOMPILING)
   set(CMAKE_CROSSCOMPILING "FALSE")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for each subdirectory.
+  include("/sandbox/Dev_Bak/AlbumGenerator_22_02_25/build/src/GuiFiles/cmake_install.cmake")
+
 endif()
 

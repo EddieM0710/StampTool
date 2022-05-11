@@ -133,18 +133,18 @@ void StampDetailsDialog::CreateControls( )
     m_id->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
     itemBoxSizer1->Add( m_id, 0, wxGROW | wxALL, 5 );
 
-    LabeledTextBox* m_name = new LabeledTextBox( itemDialog1, ID_NAMELABELEDTEXTBOX, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
+     m_name = new LabeledTextBox( itemDialog1, ID_NAMELABELEDTEXTBOX, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
     m_name->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
     itemBoxSizer1->Add( m_name, 1, wxGROW | wxALL, 5 );
 
     wxBoxSizer* itemBoxSizer3 = new wxBoxSizer( wxHORIZONTAL );
     itemBoxSizer2->Add( itemBoxSizer3, 0, wxGROW | wxALL, 0 );
 
-    LabeledTextBox* m_height = new LabeledTextBox( itemDialog1, ID_HEIGHTLABELEDTEXTBOX, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
+    m_height = new LabeledTextBox( itemDialog1, ID_HEIGHTLABELEDTEXTBOX, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
     m_height->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
     itemBoxSizer3->Add( m_height, 1, wxGROW | wxALL, 5 );
 
-    LabeledTextBox* m_width = new LabeledTextBox( itemDialog1, ID_WIDTHLABELEDTEXTBOX, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
+    m_width = new LabeledTextBox( itemDialog1, ID_WIDTHLABELEDTEXTBOX, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
     m_width->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
     itemBoxSizer3->Add( m_width, 1, wxGROW | wxALL, 5 );
 
@@ -212,3 +212,16 @@ wxIcon StampDetailsDialog::GetIconResource( const wxString& name )
     return wxNullIcon;
     ////@end StampDetailsDialog icon retrieval
 }
+
+void StampDetailsDialog::SetHeight(wxString height){m_height->SetValue(height);};
+void StampDetailsDialog::SetWidth(wxString width){m_width->SetValue(width);};
+void StampDetailsDialog::SetID(wxString id){m_id->SetValue(id);};
+void StampDetailsDialog::SetName(wxString name){m_name->SetValue(name);};
+wxString StampDetailsDialog::GetHeight( ){return m_height->GetValue();};
+wxString StampDetailsDialog::GetWidth( ){return m_width->GetValue();};
+wxString StampDetailsDialog::GetID( ){return m_id->GetValue();};
+wxString StampDetailsDialog::GetName( ){return m_name->GetValue();};
+bool StampDetailsDialog::IsNameModified(){return m_name->IsModified();};
+bool StampDetailsDialog::IsIDModified(){return m_id->IsModified();};
+bool StampDetailsDialog::IsHeightModified(){return m_height->IsModified();};
+bool StampDetailsDialog::IsWidthModified(){return m_width->IsModified();};

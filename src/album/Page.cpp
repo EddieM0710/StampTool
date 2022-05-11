@@ -17,26 +17,11 @@
 #include "album/Row.h"
 #include "album/Column.h"
 #include "album/Stamp.h"
+#include "album/AlbumData.h"
 #include "odt/Document.h"
-
+#include "gui/AlbumTreeCtrl.h"
 namespace Layout {
 
-
-    bool Page::ValidateNode()
-    {
-        bool status = true;
-        if ( GetHeight() <= 0.0)
-        {
-            std::cout << "Must define the page height.\n";
-            status = false;
-        }
-        if ( GetWidth() <= 0.0)
-        {
-            std::cout << "Must define the page width.\n";
-            status = false;
-        }
-        return status;
-    }
 
     void Page::UpdateMinimumSize( )
     {
@@ -226,5 +211,25 @@ namespace Layout {
         }
 
         return contentElement;
+    }
+    
+    AlbumNodeStatus Page::ValidateNode()
+    {
+        AlbumNodeStatus status = AT_OK;
+        if ( !HasChildren() )
+        {
+            if ( GetHeight() <= 0.0)
+            {
+                std::cout << "Terminal leaf node must define the height.\n";
+                status = AT_FATAL;
+            }
+            if ( GetWidth() <= 0.0)
+            {
+                std::cout << "Terminal leaf node must define the width.\n";
+                status = AT_FATAL;
+            }
+        }
+
+        return status;
     }
 }

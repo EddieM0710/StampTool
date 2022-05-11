@@ -45,6 +45,7 @@ typedef std::vector<AlbumNode*> AlbumNodeList;
          **************************************************/
         AlbumNode( ) {  };
 
+        ~AlbumNode( );
 
         /**
          * @brief Construct a new Album Layout Object
@@ -104,15 +105,15 @@ typedef std::vector<AlbumNode*> AlbumNodeList;
         wxTreeItemId GetTreeItemId(){return m_treeID;};
         void SetTreeItemId(wxTreeItemId id){m_treeID = id;};
 
-        void Validate();
+
         virtual AlbumNodeStatus ValidateNode() = 0;
+        bool HasChildren(){ return !m_layoutChildArray.empty(); };
 
     private:
 
         bool LoadChildren( wxXmlNode* parent );
 
         bool Load( wxXmlNode* thisObject );
-
         wxString m_objectName;
         int m_nodeType;
         int m_lineNbr;

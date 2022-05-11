@@ -267,6 +267,6 @@ namespace Layout {
             std::cout << "Must define the page width.\n";
             status = AT_FATAL;
         }
-        return false;
+        return status;
     }
 }

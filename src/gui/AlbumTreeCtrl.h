@@ -1,12 +1,12 @@
 /**
  * @file gui/AlbumTreeCtrl.h
  * @author Eddie Monroe ()
- * @brief 
+ * @brief
  * @version 0.1
  * @date 2021-02-25
- * 
+ *
  * @copyright Copyright (c) 2021
- * 
+ *
  **************************************************/
 
 #ifndef AlbumTreeCtrl_H
@@ -18,12 +18,13 @@
 #include "album/AlbumDefs.h"
 #include <wx/treectrl.h>
 #include <wx/imaglist.h>
+#include <wx/colour.h>
+#include "gui/IconDefs.h"
 
-
-/**
- * 
- *  @brief menu and control ids
- **************************************************/ 
+ /**
+  *
+  *  @brief menu and control ids
+  **************************************************/
 enum
 {
     AlbumDataTree_Quit = wxID_EXIT,
@@ -37,40 +38,27 @@ enum
     AlbumDataTree_EditDetails,
 };
 
-
-typedef enum
-{
-    Icon_Stamp = 0,
-    Icon_StampSelected,
-    Icon_StampBlock,
-    Icon_StampBlockSelected,
-    Icon_StampMiniSheet,
-    Icon_StampMiniSheetSelected,
-    Icon_StampSouvenirSheet,
-    Icon_StampSouvenirSheetSelected,
-    Icon_Folder
-} IconID;
-
 class Stamp;
 class Classification;
+namespace Utils { class StampLink;};
 
 
 /**
- * 
+ *
  * @todo  fix variable names so that wxXmlNode refs are called elements,
  * stamps, classifications, etc are called nodes;  and Tree item references are called items.
  * @todo  ?? mostly done. watch for needed changes
- * 
- **************************************************/
-
-
-/**
- * data associated with each node in the tree
  *
  **************************************************/
+
+
+ /**
+  * data associated with each node in the tree
+  *
+  **************************************************/
 class AlbumTreeItemData : public wxTreeItemData
 {
-  public:
+public:
     /**
      * @brief AlbumTreeItemData Constructor
      *
@@ -79,7 +67,7 @@ class AlbumTreeItemData : public wxTreeItemData
      * @param   ele :
      **************************************************/
     AlbumTreeItemData( Layout::AlbumNodeType type, const wxString desc,
-                       Layout::AlbumNode* ele = 0 )
+        Layout::AlbumNode* ele = 0 )
     {
         m_type = type;
         m_desc = desc;
@@ -100,8 +88,8 @@ class AlbumTreeItemData : public wxTreeItemData
 
 
     /**
-     * 
-     * @return {wxXmlNode*}    : 
+     *
+     * @return {wxXmlNode*}    :
      **************************************************/
     Layout::AlbumNode* GetNodeElement( void ) { return m_element; };
 
@@ -117,7 +105,7 @@ class AlbumTreeItemData : public wxTreeItemData
      **************************************************/
     Layout::AlbumNodeType GetType( ) { return m_type; };
 
-  private:
+private:
     Layout::AlbumNode* m_element;
     wxString m_desc;
     Layout::AlbumNodeType m_type;
@@ -125,19 +113,19 @@ class AlbumTreeItemData : public wxTreeItemData
 
 /**
  * @brief Class to manage a wxTreeCtrl for Stamp
- * 
+ *
  **************************************************/
 class AlbumTreeCtrl : public wxTreeCtrl
 {
     //    DECLARE_DYNAMIC_CLASS( AlbumTreeCtrl )
     //    DECLARE_EVENT_TABLE()
 
-  public:
+public:
 
-  /**
-   * @brief Construct a new Stamp Tree Ctrl object
-   * 
-   **************************************************/
+    /**
+     * @brief Construct a new Stamp Tree Ctrl object
+     *
+     **************************************************/
     AlbumTreeCtrl( ) {}
 
     /**
@@ -150,24 +138,28 @@ class AlbumTreeCtrl : public wxTreeCtrl
      * @param   style       :
      **************************************************/
     AlbumTreeCtrl( wxWindow* parent, const wxWindowID id, const wxPoint& pos,
-                   const wxSize& size, long style );
+        const wxSize& size, long style );
 
     /**
-     * ~AlbumTreeCtrl 
-     * 
+     * ~AlbumTreeCtrl
+     *
      **************************************************/
     virtual ~AlbumTreeCtrl( void ) {}
 
+
+    void DeleteItem( wxTreeItemId id) ;
+    Layout::AlbumNode* GetStampNode(wxTreeItemId itemID);
+
     /**
-     * 
-     * @param   event : 
+     *
+     * @param   event :
      **************************************************/
     void OnBeginDrag( wxTreeEvent& event );
 
     /**
-     * @brief 
-     * 
-    * @param   event : 
+     * @brief
+     *
+    * @param   event :
     **************************************************/
     void OnEndDrag( wxTreeEvent& event );
 
@@ -210,9 +202,9 @@ class AlbumTreeCtrl : public wxTreeCtrl
     /**
      *
      **************************************************/
-    void CreateStateImageList( bool del);
+    void CreateStateImageList( bool del );
     void CreateImageList( );
-    
+
     /**
      *
      **************************************************/
@@ -223,16 +215,16 @@ class AlbumTreeCtrl : public wxTreeCtrl
      * @param   item :
      * @param   reverse      :
      **************************************************/
-    // void DoSortChildren( const wxTreeItemId& item, bool reverse = true )
-    // {
-    //     m_reverseSort = reverse;
-    //     wxTreeCtrl::SortChildren( item );
-    // };
+     // void DoSortChildren( const wxTreeItemId& item, bool reverse = true )
+     // {
+     //     m_reverseSort = reverse;
+     //     wxTreeCtrl::SortChildren( item );
+     // };
 
-    /**
-     *
-     * @param  itemID :
-     **************************************************/
+     /**
+      *
+      * @param  itemID :
+      **************************************************/
     void SetNextState( const wxTreeItemId& itemID );
 
 
@@ -267,26 +259,33 @@ class AlbumTreeCtrl : public wxTreeCtrl
      **************************************************/
     wxTreeItemId AddStampNodeToTree( wxTreeItemId parent, wxXmlNode* child );
 
+
+    void AddPage( Layout::AlbumNode* node );
+    Layout::Stamp* AddStamp( Layout::AlbumNode* node );
+    void AddRow( Layout::AlbumNode* node );
+    void AddCol( Layout::AlbumNode* node );
+    Utils::StampLink* AppendStamp( wxTreeItemId id );
+
     /**
      *
      * @param   parent :
      * @param  child   :
      * @return {wxTreeItemId}        :
      */
-    wxTreeItemId AddChild( wxTreeItemId parent,  Layout::AlbumNode* child );
+    wxTreeItemId AddChild( wxTreeItemId parent, Layout::AlbumNode* child );
 
 
     /**
-     * 
+     *
      **************************************************/
-    void LoadTree(void );
+    void LoadTree( void );
 
     /**
      *
      * @param   catalogData :
      * @return {wxString}              :
      **************************************************/
-    wxString GetLabel(  Layout::AlbumNode* catalogData );
+    wxString GetLabel( Layout::AlbumNode* catalogData );
 
     /**
      *
@@ -300,40 +299,40 @@ class AlbumTreeCtrl : public wxTreeCtrl
      *
      * @param   parent :
      **************************************************/
-//    void SortTree( wxTreeItemId parent );
+     //    void SortTree( wxTreeItemId parent );
 
-    /**
-     *
-     **************************************************/
-//    void ReSortTree( );
+         /**
+          *
+          **************************************************/
+          //    void ReSortTree( );
 
-    /**
-     *
-     * @param   catalogData :
-     **************************************************/
-//    void StructureStamp( wxXmlNode* catalogData );
-
-
-    /**
-     * StructureCatalogData 
-     * @param   catalogData      : 
-     * @param  parentType      : 
-     * @param  childType       : 
-     * @param   secondChildType : 
-     **************************************************/
-    // void StructureCatalogData( wxXmlNode* catalogData, FormatType parentType,
-    //                          FormatType childType,
-    //                          FormatType secondChildType = FT_FormatUnknown );
+              /**
+               *
+               * @param   catalogData :
+               **************************************************/
+               //    void StructureStamp( wxXmlNode* catalogData );
 
 
-    /**
-     * 
-     * @param   catalogData : 
-     * @param   parentType : 
-     * @return {wxArrayPtrVoid*}       : 
-     **************************************************/
+                   /**
+                    * StructureCatalogData
+                    * @param   catalogData      :
+                    * @param  parentType      :
+                    * @param  childType       :
+                    * @param   secondChildType :
+                    **************************************************/
+                    // void StructureCatalogData( wxXmlNode* catalogData, FormatType parentType,
+                    //                          FormatType childType,
+                    //                          FormatType secondChildType = FT_FormatUnknown );
+
+
+                    /**
+                     *
+                     * @param   catalogData :
+                     * @param   parentType :
+                     * @return {wxArrayPtrVoid*}       :
+                     **************************************************/
     wxArrayPtrVoid* MakeParentList( Layout::LayoutNode* catalogData,
-                                    Catalog::FormatType parentType );
+        Catalog::FormatType parentType );
 
     /**
      *
@@ -367,34 +366,39 @@ class AlbumTreeCtrl : public wxTreeCtrl
 
 
     /**
-     * @brief 
-     * 
-     * @param  i1 
-     * @param  i2 
-     * @return int 
+     * @brief
+     *
+     * @param  i1
+     * @param  i2
+     * @return int
      **************************************************/
     virtual int OnCompareItems( const wxTreeItemId& i1,
-                                const wxTreeItemId& i2 ) wxOVERRIDE;
+        const wxTreeItemId& i2 ) wxOVERRIDE;
 
-  //  AlbumNode* MoveStamp( wxTreeItemId itemSrc, wxTreeItemId itemDst );
+    //  AlbumNode* MoveStamp( wxTreeItemId itemSrc, wxTreeItemId itemDst );
 
     Layout::LayoutNode* GetSelectedNode( );
     void ShowStampDetails( Layout::AlbumNode* node );
+    void Validate( wxTreeItemId id );
+    void ValidateTree( );
+    void SetValidateStatus( bool status );
+    void ResetValidateStatus( );
+    bool GetValidateStatus( );
+private:
 
-  private:
-
-  /**
-   * @brief 
-   * 
-   * @param  name 
-   * @param  event 
-   **************************************************/
+    /**
+     * @brief
+     *
+     * @param  name
+     * @param  event
+     **************************************************/
     void LogEvent( const wxString& name, const wxTreeEvent& event );
 
     int m_imageSize;            // current size of images
     bool m_reverseSort;         // flag for OnCompareItems
     wxTreeItemId m_draggedItem; // item being dragged right now
-
+    wxColour m_defaultBackgroundColour;
+    bool ValidateStatus;
     // NB: due to an ugly wxMSW hack you _must_ use wxDECLARE_DYNAMIC_CLASS();
     //     if you want your overloaded OnCompareItems() to be called.
     //     OTOH, if you don't want it you may omit the next line - this will

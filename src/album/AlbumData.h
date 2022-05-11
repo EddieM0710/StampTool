@@ -57,14 +57,13 @@ namespace Layout {
         Row* AddRow( LayoutNode* node );
         Stamp* AddStamp( LayoutNode* node );
         Title* AddTitle( LayoutNode* node );
-        AlbumTreeCtrl* GetAlbumTreeCtrl() { return m_albumTreeCtrl;};
-        void SetAlbumTreeCtrl( AlbumTreeCtrl* ctrl) {  m_albumTreeCtrl = ctrl;};
-        void Validate();
+//        AlbumTreeCtrl* GetAlbumTreeCtrl() { return m_albumTreeCtrl;};
+//        void SetAlbumTreeCtrl( AlbumTreeCtrl* ctrl) {  m_albumTreeCtrl = ctrl;};
     private:
         /* data */
         wxXmlDocument* m_albumDoc;
         Album* m_album;
-        AlbumTreeCtrl* m_albumTreeCtrl;
+//        AlbumTreeCtrl* m_albumTreeCtrl;
     };
 }
 #endif

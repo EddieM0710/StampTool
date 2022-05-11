@@ -30,7 +30,7 @@ namespace ODT {
         wxString bottomMargin;
         wxString rightMargin;
         wxString leftMargin;
-        Layout::Album *album = GetProject()->GetAlbumData( )->GetAlbum() ;
+        Layout::Album *album = GetAlbumData( )->GetAlbum() ;
         album->GetPageParameters( width, height, topMargin, bottomMargin, rightMargin, leftMargin );
         width.append( "in" );
         height.append( "in" );
@@ -46,7 +46,7 @@ namespace ODT {
     wxString Document::AddImageFile( wxString filename )
     {
         //Layout::AlbumData *albumData = Utils::GetProject()->GetAlbumData( ) ;
-        wxString imageLoc = ::GetSettings()->GetImageDirectory( );
+        wxString imageLoc = GetProject()->GetLSettings()->GetImageDirectory( );
         wxFileName inputImage( imageLoc, filename );
         bool status = inputImage.MakeAbsolute( m_workingDirectory );
         wxString i_cwd = inputImage.GetCwd( );

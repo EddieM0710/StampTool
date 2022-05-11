@@ -104,9 +104,6 @@ void AlbumSplitterWindow::Init()
 {
 ////@begin AlbumSplitterWindow member initialisation
     m_secondarySplitterWindow = NULL;
-//    m_albumTreeCtrl = NULL;
-    m_CmdDataTextCtrl = NULL;
-    m_albumImagePanel = NULL;
 ////@end AlbumSplitterWindow member initialisation
 }
 
@@ -131,23 +128,6 @@ void AlbumSplitterWindow::CreateControls()
     m_secondarySplitterWindow = new wxSplitterWindow( itemPanel1, ID_SECONDARYSPLITTERWINDOW, wxDefaultPosition, wxSize(100, 100), wxSP_3DBORDER|wxSP_3DSASH|wxNO_BORDER );
     m_secondarySplitterWindow->SetMinimumPaneSize(0);
     m_albumPanel = new AlbumPanel( m_secondarySplitterWindow, ID_SCROLLEDWINDOW, wxDefaultPosition, wxSize(100, 100), wxSUNKEN_BORDER|wxHSCROLL|wxVSCROLL );
-
-    // wxScrolledWindow* itemScrolledWindow2 = new wxScrolledWindow( m_secondarySplitterWindow, ID_SCROLLEDWINDOW, wxDefaultPosition, wxSize(100, 100), wxSUNKEN_BORDER|wxHSCROLL|wxVSCROLL );
-    // itemScrolledWindow2->SetScrollbars(1, 1, 0, 0);
-    // wxBoxSizer* itemBoxSizer3 = new wxBoxSizer(wxVERTICAL);
-    // itemScrolledWindow2->SetSizer(itemBoxSizer3);
-
-    // m_albumTreeCtrl = new AlbumTreeCtrl( itemScrolledWindow2, ID_AECMDTREECTRL, wxDefaultPosition, wxSize(100, 100), wxTR_SINGLE );
-    // itemBoxSizer3->Add(m_albumTreeCtrl, 1, wxGROW|wxALL, 5);
-
-    // wxPanel* itemPanel5 = new wxPanel( itemScrolledWindow2, ID_PANEL, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER|wxTAB_TRAVERSAL );
-    // itemPanel5->SetExtraStyle(wxWS_EX_VALIDATE_RECURSIVELY);
-    // itemBoxSizer3->Add(itemPanel5, 1, wxGROW|wxALL, 5);
-    // wxBoxSizer* itemBoxSizer4 = new wxBoxSizer(wxVERTICAL);
-    // itemPanel5->SetSizer(itemBoxSizer4);
-
-    // m_CmdDataTextCtrl = new wxWindow( itemPanel5, ID_CDDATATEXTCTRL, wxDefaultPosition, wxSize(100, 100), wxSIMPLE_BORDER );
-    // itemBoxSizer4->Add(m_CmdDataTextCtrl, 1, wxGROW|wxALL, 5);
 
     //itemScrolledWindow2->FitInside();
     m_albumImagePanel = 
@@ -198,12 +178,3 @@ wxIcon AlbumSplitterWindow::GetIconResource( const wxString& name )
 ////@end AlbumSplitterWindow icon retrieval
 }
 
-void AlbumSplitterWindow::ClearCmdTree( )
-{
-    //->DeleteAllItems( );
-}
-
-void AlbumSplitterWindow::LoadCmdTree( )
-{
-//    m_albumTreeCtrl->LoadTree( );
-}

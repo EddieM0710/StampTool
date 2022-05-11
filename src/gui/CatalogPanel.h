@@ -114,15 +114,13 @@ public:
     void LoadCatalog( );
     void InitCatalogData();
     void LoadCatalogCSV( wxString csvFilename );
-    CatalogTreeCtrl* GetCatalogDataTree( ) { return m_listTree; };
+    CatalogTreeCtrl* GetCatalogTree( ) { return m_catalogTreeCtrl; };
 
  
  
 
-////@begin CatalogPanel member variables
     wxTextCtrl* m_title;
-    CatalogTreeCtrl* m_listTree;
-////@end CatalogPanel member variables
+    CatalogTreeCtrl* m_catalogTreeCtrl;
   
     wxTreeItemId m_draggedItem;
     

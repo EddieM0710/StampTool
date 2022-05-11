@@ -69,7 +69,7 @@ namespace Layout {
          **************************************************/
         wxXmlNode* Write( wxXmlNode* parent );
 
-        bool ValidateNode();
+        AlbumNodeStatus ValidateNode();
 
     private:
 

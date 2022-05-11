@@ -21,6 +21,8 @@
 #endif
 
 #include "utils/StampList.h"
+#include "gui/CatalogTreeCtrl.h"
+#include "gui/AlbumTreeCtrl.h"
 namespace Utils {
 
     int StampList::FindStamp( wxString stampID )
@@ -96,5 +98,12 @@ namespace Utils {
         }
         return ( wxXmlNode* )0;
     }
-
+    void StampLink::Update( wxTreeItemId catID, wxTreeItemId albumID ) 
+    {
+        SetAlbumTreeID( albumID );
+        SetCatTreeID( catID );
+        CatalogTreeCtrl *treeCtrl = GetCatalogTreeCtrl( );
+        CatalogDataTreeItemData* data = (CatalogDataTreeItemData*)treeCtrl->GetItemData(catID);
+        SetCatStamp( data->GetNodeElement());
+    }
 }

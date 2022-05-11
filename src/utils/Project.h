@@ -3,14 +3,9 @@
 
 #include "wx/string.h"
 #include <wx/xml/xml.h>
-
-#include "Defs.h"
-#include "catalog/CatalogData.h"
-#include "utils/StampList.h"
+#include "gui/GeneratorData.h"
 
 namespace ODT { class Document; };
-namespace Layout { class AlbumData;};
-namespace Catalog { class CatalogData;};
 
 namespace Utils {
 
@@ -35,19 +30,13 @@ namespace Utils {
         wxString GetCatalogFilename( );
         void SetCatalogFilename( wxString catalogFilename );
 
-        Settings* GetSettings( );
+        Settings* GetLSettings( );
         void SetSettings( Settings* settings );
-
-        Catalog::CatalogData* GetCatalogData( );
-        void SetCatalogData(  Catalog::CatalogData* catalogData );
-        Layout::AlbumData* GetAlbumData( );
-        void SetAlbumData( Layout::AlbumData* albumData );
 
         bool LoadProject( wxString filename );
         bool LoadAttributes( wxXmlNode* thisObject );
         wxString MakeFile( wxString filename);
-
-        StampList& GetStampAlbumCatalogLink(){ return m_StampAlbumCatalogLink; };
+        inline GeneratorData* GetGeneratorData(){ return &m_generatorData; };
 
     private:
         wxXmlDocument* m_ProjectDoc;
@@ -57,11 +46,10 @@ namespace Utils {
         wxString m_albumFilename;
         wxString m_imagePath;
         wxString m_catalogFilename;
-        Catalog::CatalogData* m_catalogData;
-        Layout::AlbumData* m_albumData;
         Settings* m_settings;
-        StampList m_StampAlbumCatalogLink;
+        GeneratorData m_generatorData;
         bool m_dirty;
+
     };
 }
 #endif

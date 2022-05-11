@@ -10,7 +10,7 @@ namespace ODT {
     Settings::Settings( )
     {
         m_settings = new wxXmlDocument( );
-        wxString configDir = GetProject()->GetSettings()->GetConfigurationDirectory();
+        wxString configDir = GetProject()->GetLSettings()->GetConfigurationDirectory();
         wxString settingsTemplate = configDir + "/template/settings.xml";
         if ( !m_settings->Load( settingsTemplate ) )
         {

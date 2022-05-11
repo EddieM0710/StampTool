@@ -156,14 +156,14 @@ namespace ODT {
          *
          * @return wxXmlDocument*
          **************************************************/
-        wxXmlDocument* GetMeta( );
+       // wxXmlDocument* GetMeta( );
 
         /**
          * @brief Get the Settings object
          *
          * @return wxXmlDocument*
          **************************************************/
-        wxXmlDocument* GetSettings( );
+       // wxXmlDocument* GetSettings( );
 
         /**
          * @brief

@@ -153,11 +153,14 @@ public:
    * 
    * @param width 
    **************************************************/
-  void SetValue( wxString value ) { m_value->SetValue( value ); };
-  wxString GetValue( ) { return m_value->GetValue( ); };
-    bool IsModified(){ return m_value->IsModified();};
+  void SetValue( wxString value ) 
+  {
+      m_value->SetValue( value );
+      m_value->SetModified( false );
+  };
+  bool IsModified( ) { return m_value->IsModified( ); };
 
- 
+
  private:
 
   wxStaticText* m_label; ///< 

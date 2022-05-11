@@ -29,6 +29,7 @@
  
  
 #include "Defs.h"
+#include "catalog/Stamp.h"
 
 /*
  * LabeledTextBox type definition
@@ -231,7 +232,7 @@ void LabeledTextBox::OnTextctrlTextUpdated( wxCommandEvent &event )
     {
         SetDirty();
 //        m_stamp->SetAttr( m_type, m_idText->GetValue( ) );
-        m_value->SetModified( false );
+        m_value->SetModified( true );
     }
      // wxEVT_COMMAND_TEXT_UPDATED event handler for ID_TEXTCTRL in
     //LabeledTextBox.

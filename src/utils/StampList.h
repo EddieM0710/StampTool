@@ -42,6 +42,10 @@ namespace Utils {
 
         inline wxString GetID( ) { return m_albumStamp->GetAttrStr( Layout::AT_ID ); };
         inline bool IsStamp( wxString id ) { return !id.Cmp( GetID( ) ); };
+
+        void Update(wxTreeItemId catID, wxTreeItemId albumID);
+
+
     private:
         StampLink( );
         wxTreeItemId m_albumTreeID;

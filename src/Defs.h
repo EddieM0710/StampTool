@@ -23,8 +23,11 @@ void SetDirty( bool state = true);
 bool IsDirty();
 namespace Utils { class Project; };
 namespace Utils { class Settings; };
-
-
+class GeneratorData;
+class AlbumTreeCtrl;
+class CatalogTreeCtrl;
+namespace Layout { class AlbumData; };
+namespace Catalog { class CatalogData;  };
 /**
  * @brief Get the Settings data 
  * 
@@ -33,6 +36,12 @@ namespace Utils { class Settings; };
 Utils::Settings* GetSettings( );
 
 Utils::Project* GetProject( );
+
+GeneratorData* GetGeneratorData();
+Layout::AlbumData* GetAlbumData() ;
+Catalog::CatalogData* GetCatalogData() ;
+CatalogTreeCtrl* GetCatalogTreeCtrl();
+AlbumTreeCtrl* GetAlbumTreeCtrl();
 
 /**
  * @brief  Returns Ascii "true" or "false" based on bool b

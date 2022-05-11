@@ -13,7 +13,7 @@ namespace ODT {
     Manifest::Manifest( )
     {
         m_manifest = new wxXmlDocument( );
-        wxString configDir = GetSettings()->GetConfigurationDirectory( );
+        wxString configDir = GetProject()->GetLSettings()->GetConfigurationDirectory( );
         wxString manifestTemplate = configDir + "/template/META-INF/manifest.xml";
         if ( !m_manifest->Load( manifestTemplate ) )
         {

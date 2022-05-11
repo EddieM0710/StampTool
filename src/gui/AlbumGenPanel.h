@@ -158,14 +158,10 @@ class AlbumGenPanel : public wxPanel
 //    void SetStamp( Catalog::Stamp* stamp );
     void UpdateStatus( );
 
-    void LoadAECmdTree( );
-//    void ClearAECmdTree( );
-    //void LoadCatalog( wxString filename );
-    //void InitCatalogData();
-    //void LoadCatalogCSV( wxString filename );
+
     CatalogPanel* GetCatalogPanel(){ return m_mngCatalogData;};
     AlbumPanel* GetAlbumPanel(){ m_albumSplitterWindow->GetAlbumPanel();};
-   // CatalogTreeCtrl* GetCatalogDataTree( ) { return m_listTree; };
+   // * GetCatalogTree( ) { return m_catalogTreeCtrl; };
 
     // AlbumGenPanel member variables
     wxNotebook* m_notebook;

@@ -240,24 +240,29 @@ namespace Layout {
             if ( child == node )
             {
                 m_layoutChildArray.erase(it);
+                node->~AlbumNode();
             }
         }
     }
-
+    
+    AlbumNode::~AlbumNode( )
+     { 
+        for ( LayoutAttributeArray::iterator it = std::begin(m_attrArray ); it != std::end( m_attrArray ); ++it )
+        {
+            Attribute* child = ( Attribute* )( *it );
+            child->~Attribute();
+        }
+        for ( AlbumNodeList::iterator it = std::begin(m_layoutChildArray ); it != std::end( m_layoutChildArray ); ++it )
+        {
+            AlbumNode* child = ( AlbumNode* )( *it );
+            child->~AlbumNode();
+            m_layoutChildArray.erase(it);  
+        }
+    };
+ 
     void AlbumNode::AddChild( AlbumNode* node )
     {
         m_layoutChildArray.push_back(node);
     }
 
-    void Stamp::Validate()
-    {
-
-        SetValidateStatus( ValidateNode() );
-
-        for ( AlbumNodeList::iterator it = BeginAlbumNodeList(); it != EndAlbumNodeList(); ++it )
-        {
-            LayoutNode* child = ( LayoutNode* )( *it );
-            child->Validate();
-        }
-    }
 }

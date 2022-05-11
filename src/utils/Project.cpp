@@ -1,8 +1,8 @@
 #include <iostream>
 #include <wx/filename.h>
-
-#include "utils/Project.h"
 #include "Defs.h"
+#include "utils/Project.h"
+
 
 #include "utils/Settings.h"
 
@@ -24,16 +24,13 @@ namespace Utils {
 
             if ( wxFileExists( filename ) )
             {
-
                 if ( LoadProject( filename ) )
                 {
                     wxString catalogFilename = GetCatalogFilename( );
-                    m_catalogData = Catalog::NewCatalogData( );
-                    m_catalogData->LoadXML( catalogFilename );
+                    m_generatorData.LoadCatalogData(catalogFilename);
 
                     wxString albumFilename = GetAlbumFilename( );
-                    m_albumData = Layout::NewAlbumData( );
-                    m_albumData->LoadXML( albumFilename );
+                    m_generatorData.LoadAlbumData( albumFilename );
                 }
             }
         }
@@ -80,22 +77,13 @@ namespace Utils {
         return m_catalogFilename;
     };
 
-    Settings* Project::GetSettings( )
+    Settings* Project::GetLSettings( )
     {
         return  m_settings;
     };
     void Project::SetSettings( Settings* settings )
     {
         m_settings = settings;
-    };
-
-    Catalog::CatalogData* Project::GetCatalogData( )
-    {
-        return m_catalogData;
-    };
-    Layout::AlbumData* Project::GetAlbumData( )
-    {
-        return m_albumData;
     };
 
 
@@ -108,25 +96,6 @@ namespace Utils {
         }
     };
 
-    void Project::SetCatalogData( Catalog::CatalogData* catalogData )
-    {
-        if ( catalogData != m_catalogData )
-        {
-            delete m_catalogData;
-            m_catalogData = ( Catalog::CatalogData* )0;
-        }
-        m_catalogData = catalogData;
-    };
-
-    void Project::SetAlbumData( Layout::AlbumData* albumData )
-    {
-        if ( albumData != m_albumData )
-        {
-            delete m_albumData;
-            m_albumData = ( Layout::AlbumData* )0;
-        }
-        m_albumData = albumData;
-    };
 
     wxString Project::MakeFile( wxString filename )
     {
@@ -199,7 +168,7 @@ namespace Utils {
             }
             else if ( !name.Cmp( "ImagePath" ) )
             {
-                GetSettings( )->SetImageDirectory( MakeFile( val ) );
+                GetLSettings( )->SetImageDirectory( MakeFile( val ) );
             }
             else if ( !name.Cmp( "Catalog" ) )
             {

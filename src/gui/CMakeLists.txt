@@ -22,6 +22,8 @@ add_library( GuiFiles SHARED
     CatalogTreeCtrl.cpp
     SortOrderDialog.cpp
     DefinePeriodsDialog.cpp
+    IconDefs.cpp
+    GeneratorData.cpp
     LabeledTextBox.cpp
     StaticItem.cpp 
     StampDetailsDialog.cpp

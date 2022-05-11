@@ -81,7 +81,7 @@ namespace Layout {
 
         // Getters and Putters
 
-        bool ValidateNode();
+        AlbumNodeStatus ValidateNode();
 
 
     private:

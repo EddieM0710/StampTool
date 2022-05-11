@@ -110,7 +110,7 @@ void CatalogPanel::Init()
 {
 ////@begin CatalogPanel member initialisation
     m_title = NULL;
-    m_listTree = NULL;
+    m_catalogTreeCtrl = NULL;
 ////@end CatalogPanel member initialisation
 }
 
@@ -141,10 +141,12 @@ void CatalogPanel::CreateControls()
     wxBoxSizer* itemBoxSizer3 = new wxBoxSizer(wxHORIZONTAL);
     itemBoxSizer2->Add(itemBoxSizer3, 2, wxGROW|wxALL, 0);
 
-    m_listTree = new CatalogTreeCtrl( itemPanel1, ID_CATALOGTREECTRL, wxDefaultPosition, wxDefaultSize, wxTR_HAS_BUTTONS |wxTR_FULL_ROW_HIGHLIGHT|wxTR_SINGLE|wxSUNKEN_BORDER|wxTR_DEFAULT_STYLE );
-    itemBoxSizer3->Add(m_listTree, 2, wxGROW|wxALL, 0);
+    m_catalogTreeCtrl = new CatalogTreeCtrl( itemPanel1, ID_CATALOGTREECTRL, wxDefaultPosition, wxDefaultSize, wxTR_HAS_BUTTONS |wxTR_FULL_ROW_HIGHLIGHT|wxTR_SINGLE|wxSUNKEN_BORDER|wxTR_DEFAULT_STYLE );
+    itemBoxSizer3->Add(m_catalogTreeCtrl, 2, wxGROW|wxALL, 0);
 
 ////@end CatalogPanel content construction
+    GetGeneratorData( )->SetCatalogTreeCtrl(m_catalogTreeCtrl);
+
 }
 
 
@@ -209,12 +211,12 @@ void CatalogPanel::UpdateStatus( )
 
 void CatalogPanel::LoadCatalogTree( )
 {
-    m_listTree->LoadTree( );
+    m_catalogTreeCtrl->LoadTree( );
 }
 
 void CatalogPanel::ClearCatalogTree( )
 {
-    m_listTree->DeleteAllItems( );
+    m_catalogTreeCtrl->DeleteAllItems( );
 }
 
 void CatalogPanel::LoadCatalog( )
@@ -239,7 +241,7 @@ void CatalogPanel::LoadCatalogCSV( wxString csvFilename )
         catalogFile.SetExt( "xml" );
         GetProject( )->SetCatalogFilename( catalogFile.GetFullPath( ) );
         Catalog::CatalogData* catalogData = Catalog::NewCatalogData( );
-        GetProject( )->SetCatalogData( catalogData );
+        GetGeneratorData( )->SetCatalogData( catalogData );
 
         catalogData->LoadCSV( csvFile.GetFullName() );
 

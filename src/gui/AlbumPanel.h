@@ -100,7 +100,6 @@ public:
 
 ////@begin AlbumPanel member variables
     AlbumTreeCtrl* m_albumTreeCtrl;
-    StaticItem* m_CmdDataTextCtrl;
 ////@end AlbumPanel member variables
  //ArrayWrapper* m_AEItemArray;
 };

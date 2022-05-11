@@ -46,20 +46,11 @@ namespace Catalog {
 
     CatalogData* GetCatalogData( void )
     {
-        Utils::Project* project = GetProject( );
-        if ( project )
-        {
-            return project->GetCatalogData( );
-        }
-        return ( CatalogData* )0;
+        return GetCatalogData( );
     };
     void SetCatalogData( CatalogData* catalogData )
     {
-        Utils::Project* project = GetProject( );
-        if ( project )
-        {
-            project->SetCatalogData( catalogData );
-        }
+        GetGeneratorData()->SetCatalogData( catalogData );
     };
 
     CatalogData* NewCatalogData( )
@@ -286,7 +277,7 @@ namespace Catalog {
         if ( name == CatalogNodeNames[ NT_Stamp ] )
         {
             Catalog::Stamp stamp( child );
-            Catalog::CatalogNodeType sortType = ( Catalog::CatalogNodeType )GetProject()->GetSettings( )->GetNextSortClassification(
+            Catalog::CatalogNodeType sortType = ( Catalog::CatalogNodeType )GetSettings( )->GetNextSortClassification(
                 ( int )parentType );
             if ( ( sortType < NT_Catalog ) || ( sortType >= NT_Stamp ) )
             {

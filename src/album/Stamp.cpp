@@ -41,7 +41,7 @@ namespace Layout {
             // Stamp must have a "Link" to an image
             return;
         }
-        Catalog::CatalogData *catalog = GetProject()->GetCatalogData( ) ;
+        Catalog::CatalogData *catalog = GetGeneratorData()->GetCatalogData( ) ;
         if ( !catalog )
         {
             ReportLayoutError( "UpdateMinimumSize",  "Catalog Data Missing." );
@@ -232,21 +232,21 @@ namespace Layout {
 
         return image;
     }
-
-
-    bool Stamp::ValidateNode()
+    AlbumNodeStatus Stamp::ValidateNode()
     {
-        bool status = true;
+        AlbumNodeStatus status = AT_OK;
         if ( GetHeight() <= 0.0)
         {
-            std::cout << "Must define the height.\n";
-            status = false;
+            std::cout << "Terminal leaf node must define the height.\n";
+            status = AT_FATAL;
         }
         if ( GetWidth() <= 0.0)
         {
-            std::cout << "Must define the width.\n";
-            status = false;
+            std::cout << "Terminal leaf node must define the width.\n";
+            status = AT_FATAL;
         }
+        
         return status;
     }
+
 }

@@ -31,6 +31,7 @@
 #include "Settings.h"
 #include "utils/Project.h"
 #include "AlbumGenApp.h"
+#include "gui/GeneratorData.h"
 
 
 wxDECLARE_APP( AlbumGenApp );
@@ -46,15 +47,23 @@ Utils::Settings* GetSettings( )
     Utils::Project* project = GetProject( );
     if ( project )
     {
-        return project->GetSettings( );
+        return project->GetLSettings( );
     }
     return ( Utils::Settings* )0;
 };
 
-Utils::Project* GetProject( )
+inline Utils::Project* GetProject( )
 {
     return wxGetApp( ).GetProject( );
 }
+
+inline GeneratorData* GetGeneratorData(){ return GetProject()->GetGeneratorData();};
+
+Layout::AlbumData* GetAlbumData() { return GetGeneratorData()->GetAlbumData(); };
+Catalog::CatalogData* GetCatalogData() { return GetGeneratorData()->GetCatalogData(); };
+CatalogTreeCtrl* GetCatalogTreeCtrl(){ return GetGeneratorData()->GetCatalogTreeCtrl();};
+AlbumTreeCtrl* GetAlbumTreeCtrl( ){return GetGeneratorData()->GetAlbumTreeCtrl();};
+
 
 void InitDefs( )
 {

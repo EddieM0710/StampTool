@@ -43,6 +43,7 @@ namespace Layout {
             }
             m_minHeight += child->GetHeight( );
         }
+
     }
 
 
@@ -189,24 +190,22 @@ namespace Layout {
         return frame;
     }
 
-    void Column::Validate()
+    AlbumNodeStatus Column::ValidateNode()
     {
-        bool status = true;
-        if ( GetHeight() <= 0.0)
+        AlbumNodeStatus status = AT_OK;
+        if ( !HasChildren() )
         {
-            std::cout << "Must define the height.\n";
-            SetValidateStatus( false );
+            if ( GetHeight() <= 0.0)
+            {
+                std::cout << "Terminal leaf node must define the height.\n";
+                status = AT_FATAL;
+            }
+            if ( GetWidth() <= 0.0)
+            {
+                std::cout << "Terminal leaf node must define the width.\n";
+                status = AT_FATAL;
+            }
         }
-        if ( GetWidth() <= 0.0)
-        {
-            std::cout << "Must define the width.\n";
-            SetValidateStatus( false );
-        }
-
-        for ( AlbumNodeList::iterator it = BeginAlbumNodeList(); it != EndAlbumNodeList(); ++it )
-        {
-            LayoutNode* child = ( LayoutNode* )( *it );
-            child->Validate();
-        }
+        return status;
     }
 }

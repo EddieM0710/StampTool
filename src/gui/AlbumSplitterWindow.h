@@ -99,13 +99,9 @@ public:
 
     /// Should we show tooltips?
     static bool ShowToolTips();
-    void ClearCmdTree( ) ;
-    void LoadCmdTree();
     void SetSashPosition( int pos ){ m_secondarySplitterWindow->SetSashPosition( pos ); };
 ////@begin AlbumSplitterWindow member variables
     wxSplitterWindow* m_secondarySplitterWindow;
-//    AlbumTreeCtrl* m_albumTreeCtrl;
-    wxWindow* m_CmdDataTextCtrl;
     AlbumImagePanel* m_albumImagePanel;
 ////@end AlbumSplitterWindow member variables
 AlbumPanel* m_albumPanel ;

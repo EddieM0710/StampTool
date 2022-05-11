@@ -84,11 +84,9 @@ namespace Layout {
 
     LayoutNode* GetSelectedNodePage( );
 
+   // LayoutNode* MakeNode( AlbumNodeType type, wxXmlNode* node );
 
-    extern bool ValidateStatus;
-    void SetValidateStatus( bool status );
-    void ResetValidateStatus(  );
-    bool GetValidateStatus(  );
+
     // wxString GetAttribute( AlbumNodeType type );
     // double GetAttributeDbl( AlbumNodeType type );
     // void SetAttrStr( AlbumNodeType type, wxString val );

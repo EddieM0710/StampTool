@@ -22,7 +22,6 @@
 #endif
 
 
-#include "gui/CatalogTreeCtrl.h"
 #include "wx/imaglist.h"
 //#include "AlbumGenDialog.h"
 
@@ -189,25 +188,12 @@ wxIcon AlbumGenPanel::GetIconResource( const wxString& name )
     return wxNullIcon;
     // AlbumGenPanel icon retrieval
 }
-// void AlbumGenPanel::SetStamp( Catalog::Stamp* stamp )
-// {
-//     m_stamp = stamp;
-// //    SetGallery( );
-// }
+
 
 void AlbumGenPanel::UpdateStatus( )
 {
 }
 
-void AlbumGenPanel::LoadAECmdTree( )
-{
-    m_albumSplitterWindow->LoadCmdTree( );
-}
-
-// void AlbumGenPanel::ClearAECmdTree( )
-// {
-//     m_albumSplitterWindow->ClearCmdTree( );
-// }
 /*
  * wxEVT_COMMAND_NOTEBOOK_PAGE_CHANGED event handler for ID_NOTEBOOK
  */

@@ -45,7 +45,7 @@
 #include "album/AlbumNode.h"
 #include "album/Album.h"
 #include "album/Stamp.h"
-#include "gui/CatalogTreeCtrl.h"
+
 #include <curl/curl.h>
 
 /*
@@ -105,42 +105,13 @@ void AlbumGenFrame::InitLoad( )
         m_catalogPanel->InitCatalogData( );
         m_catalogPanel->LoadCatalog( );
 
-        Layout::Album* album = GetProject( )->GetAlbumData( )->GetAlbum( );
-        Catalog::CatalogData* stampData = GetProject( )->GetCatalogData( );
+       // Layout::Album* album = GetProject( )->GetAlbumData( )->GetAlbum( );
+       // Catalog::CatalogData* stampData = GetProject( )->GetCatalogData( );
        // LinkAlbumToCat( album, stampData );
     }
 }
 
 
-
-// void AlbumGenFrame::LinkNodes(Layout::LayoutNode* child, Catalog::CatalogData* stampData  )
-// {           
-//     if ( child->GetNodeType( ) == Layout::AT_Stamp )
-//     {
-//         Layout::Stamp* albumStamp = ( Layout::Stamp* )child;
-//         wxString id = albumStamp->GetAttrStr( Layout::AT_ID );
-//         wxXmlNode* catStamp = stampData->FindNodeWithPropertyAndValue(
-//             Catalog::DT_XMLDataNames[ Catalog::DT_ID_Nbr ], id );
-//         CatalogTreeCtrl* treeCtrl = m_catalogPanel->GetCatalogDataTree( );
-//         wxTreeItemId catTreeID = treeCtrl->FindTreeItemID( id );
-//         treeCtrl->SetItemState( catTreeID, 1 );
-//         CatalogDataTreeItemData* item = ( CatalogDataTreeItemData* )treeCtrl->GetItemData( catTreeID );
-//         item->SetAlbumNode( albumStamp );
-//         albumStamp->SetCatalogStamp( catStamp );
-//     }
-// }
-// void AlbumGenFrame::LinkAlbumToCat(Layout::LayoutNode* child, Catalog::CatalogData* stampData )
-// {
-//     for ( Layout::AlbumNodeList::iterator it = child->BeginAlbumNodeList( ); it != child->EndAlbumNodeList( ); ++it )
-//     {
-//         Layout::AlbumNode* child =( *it );
-//         if ( child->GetNodeType( ) == Layout::AT_Stamp )
-//         {
-//             LinkNodes( (Layout::LayoutNode* )child, stampData );
-//         }
-//         LinkAlbumToCat( (Layout::LayoutNode* )child, stampData );
-//     }
-// }
 
 AlbumGenFrame::AlbumGenFrame( wxWindow* parent, wxWindowID id,
     const wxString& caption,
@@ -395,28 +366,13 @@ void AlbumGenFrame::OnSaveasClick( wxCommandEvent& event )
     // AlbumGenFrame.
 }
 
-// void AlbumGenFrame::SetStamp( wxXmlNode* stamp )
-// {
-//     m_stamp->SetNodeElement( stamp );
-//     m_albumGeneratorPanel->SetStamp( m_stamp );
-// }
 
 void AlbumGenFrame::UpdateStatus( ) { m_albumGeneratorPanel->UpdateStatus( ); }
 
-// CatalogTreeCtrl* AlbumGenFrame::GetCatalogDataTree( )
-// {
-//     return m_mngCatalogData->GetCatalogDataTree( );
-// };
-
-// void AlbumGenFrame::LoadTree(Catalog *catalogData)
-// {
-//     m_selectionPanel->ClearTree();
-//     m_selectionPanel->LoadTree(catalogData);
-// }
 
 void AlbumGenFrame::SaveCatalogXML( wxString filename )
 {
-    GetProject( )->GetCatalogData( )->SaveXML( filename );
+    GetCatalogData( )->SaveXML( filename );
 
     SetDirty( false );
 
@@ -427,7 +383,7 @@ void AlbumGenFrame::SaveCatalogXML( wxString filename )
 
 void AlbumGenFrame::Save( )
 {
-    if ( GetProject( )->GetCatalogData( ) )
+    if ( GetCatalogData( ) )
         // if (m_stampData && Dirty)
     {
         wxFileName filename( GetSettings( )->GetLastFile( ) );
@@ -440,7 +396,7 @@ void AlbumGenFrame::Save( )
 void AlbumGenFrame::SaveAs( )
 {
 
-    if ( GetProject( )->GetCatalogData( ) )
+    if ( GetCatalogData( ) )
     {
         wxFileName lastFile( GetSettings( )->GetLastFile( ) );
         lastFile.SetExt( "xml" );
@@ -465,7 +421,7 @@ int AlbumGenFrame::DoQueryMerge( int& mergeMethod )
     wxXmlNode* docRoot = 0;
     int mergeOverwriteQuery;
 
-    Catalog::CatalogData* catalogData = GetProject( )->GetCatalogData( );
+    Catalog::CatalogData* catalogData = GetCatalogData( );
     if ( catalogData )
     {
         mergeOverwriteQuery = QueryMerge( mergeMethod );
@@ -1005,7 +961,7 @@ void AlbumGenFrame::OnCVSReportMenuItemClick( wxCommandEvent& event )
         wxString id;
         wxString link;
         wxString imageName;
-        wxXmlDocument* doc = GetProject( )->GetCatalogData( )->GetDoc( );
+        wxXmlDocument* doc = GetCatalogData( )->GetDoc( );
         wxXmlNode* root = doc->GetRoot( );
         Utils::XMLIterator* iter = new Utils::XMLIterator( root );
         wxXmlNode* item = iter->First( );

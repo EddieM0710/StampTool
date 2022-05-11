@@ -169,7 +169,7 @@ namespace Layout {
          **************************************************/
         void GetPageParameters( wxString& width, wxString& height, wxString& topMargin,
             wxString& bottomMargin, wxString& rightMargin, wxString& leftMargin );
-    
+
         AlbumNodeStatus ValidateNode();
 
     private:

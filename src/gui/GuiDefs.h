@@ -1,5 +1,5 @@
 /**
- * @file GuiDefa.h
+ * @file GuiDefs.h
  * @author Eddie Monroe
  * @brief 
  * @version 0.1

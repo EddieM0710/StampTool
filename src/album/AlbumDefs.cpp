@@ -36,27 +36,10 @@
 #include "album/Column.h"
 #include "album/Stamp.h"
 #include "gui/AlbumTreeCtrl.h"
+#include "gui/GeneratorData.h"
 
 namespace Layout {
 
-    bool ValidateStatus;
-
-    void SetValidateStatus( bool status )
-    { 
-        if ( ValidateStatus == true )
-        {
-           ValidateStatus = status;   
-        }
-    }
-
-    void ResetValidateStatus(  )
-    { 
-        ValidateStatus = true;  
-    }  
-    bool GetValidateStatus(  )
-    { 
-        return ValidateStatus;  
-    }  
     AlbumData* NewAlbumData( void )
     {
         return new AlbumData();
@@ -75,7 +58,7 @@ namespace Layout {
 
     AlbumData* GetAlbumData( void )
     {
-        Utils::Project* project = GetProject( );
+        GeneratorData* project = GetGeneratorData( );
         if ( project )
         {
             return project->GetAlbumData( );
@@ -85,7 +68,7 @@ namespace Layout {
 
     AlbumData* SetAlbumData( AlbumData* albumData )
     {
-        Utils::Project* project = GetProject( );
+        GeneratorData* project = GetGeneratorData( );
         if ( project )
         {
             project->SetAlbumData( albumData );
@@ -195,7 +178,7 @@ namespace Layout {
         AlbumData* albumData = Layout::GetAlbumData( );
         if ( albumData )
         {
-            AlbumTreeCtrl* treeCtrl = albumData->GetAlbumTreeCtrl( );
+            AlbumTreeCtrl* treeCtrl = GetAlbumTreeCtrl( );
             if ( treeCtrl )
             {
                 Layout::LayoutNode* node = treeCtrl->GetSelectedNode( );
@@ -211,4 +194,35 @@ namespace Layout {
         }
         return (LayoutNode*)0;
     }
+
+
+    // LayoutNode* MakeNode( AlbumNodeType type, wxXmlNode* node )
+    // {
+    //     LayoutNode* object = (LayoutNode*)0;
+    //     if ( type == AT_TitlePage )
+    //     {
+    //         object = (LayoutNode*)new TitlePage( node);
+    //     }
+    //     else if ( type == AT_Page )
+    //     {
+    //         object = (LayoutNode*)new Page( node );
+    //     }
+    //     else if ( type == AT_Title )
+    //     {
+    //         object = (LayoutNode*)new Title( node );
+    //     }
+    //     else if ( type == AT_Col )
+    //     {
+    //         object = (LayoutNode*)new Column( node );
+    //     }
+    //     else if ( type == AT_Row )
+    //     {
+    //         object = (LayoutNode*)new Row( node );
+    //     }
+    //     else if ( type == AT_Stamp )
+    //     {
+    //         object = (LayoutNode*)new Stamp( node );
+    //     }
+    //     return object;
+    // }
 }

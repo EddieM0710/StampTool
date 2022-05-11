@@ -130,7 +130,7 @@ namespace Layout {
          **************************************************/
         void SetBorderSize( double val ) { m_borderSize = val; };
 
-        bool ValidateNode();
+        AlbumNodeStatus ValidateNode();
 
     private:
 

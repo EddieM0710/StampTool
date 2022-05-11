@@ -15,6 +15,7 @@
 #include "catalog/Stamp.h"
 #include <wx/treectrl.h>
 #include <wx/imaglist.h>
+#include "gui/IconDefs.h"
 
 #include "album/AlbumNode.h"
 /**
@@ -30,22 +31,9 @@ enum
 };
 
 
-typedef enum
-{
-    Icon_Stamp = 0,
-    Icon_StampSelected,
-    Icon_StampBlock,
-    Icon_StampBlockSelected,
-    Icon_StampMiniSheet,
-    Icon_StampMiniSheetSelected,
-    Icon_StampSouvenirSheet,
-    Icon_StampSouvenirSheetSelected,
-    Icon_Folder
-} IconID;
-
 class Stamp;
 class Classification;
-
+namespace Utils { class StampLink; }
 
 /**
  * 
@@ -230,6 +218,8 @@ class CatalogTreeCtrl : public wxTreeCtrl
      * @param  itemID :
      **************************************************/
     void SetNextState( const wxTreeItemId& itemID );
+    void AppendAlbumStamp(wxTreeItemId itemId);
+    void DeleteAlbumStamp(wxTreeItemId itemId);
 
    
     /**
@@ -400,6 +390,11 @@ class CatalogTreeCtrl : public wxTreeCtrl
      **************************************************/
     virtual int OnCompareItems( const wxTreeItemId& i1,
                                 const wxTreeItemId& i2 ) wxOVERRIDE;
+
+
+wxXmlNode* GetStampNode(wxTreeItemId itemId);
+wxString GetStampID(wxTreeItemId itemId);
+Utils::StampLink* GetStampLink(wxTreeItemId itemId);
 
   private:
 

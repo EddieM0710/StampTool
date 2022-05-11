@@ -179,18 +179,21 @@ namespace Layout {
         return frame;
     }
 
-    bool Row::ValidateNode()
+    AlbumNodeStatus Row::ValidateNode()
     {
-        bool status = true;
-        if ( GetHeight() <= 0.0)
+        AlbumNodeStatus status = AT_OK;
+        if ( !HasChildren() )
         {
-            std::cout << "Must define the height.\n";
-            status = false;
-        }
-        if ( GetWidth() <= 0.0)
-        {
-            std::cout << "Must define the width.\n";
-            status = false;
+            if ( GetHeight() <= 0.0)
+            {
+                std::cout << "Terminal leaf node must define the height.\n";
+                status = AT_FATAL;
+            }
+            if ( GetWidth() <= 0.0)
+            {
+                std::cout << "Terminal leaf node must define the width.\n";
+                status = AT_FATAL;
+            }
         }
         return status;
     }

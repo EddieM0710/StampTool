@@ -265,7 +265,7 @@ class AlbumGenFrame : public wxFrame
 
     void GetSetupData( int &mergeProcedure, wxXmlNode **currItem,
                        wxXmlNode **mergeItem );
-//    CatalogTreeCtrl *GetCatalogDataTree( );
+
     int ImageGallery( );
 
      // AlbumGenFrame member variables

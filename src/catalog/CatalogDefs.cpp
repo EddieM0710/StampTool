@@ -277,7 +277,7 @@ namespace Catalog {
         CatalogBaseType parentType = FindCatalogBaseType( parentName );
         //    std::cout << "AddStamp  ParentName:" << parentName
         //        << "  ParentType:" << CatalogBaseNames[ parentType ]
-        //        << "  ChildName:" << name << "level" << level << "\n";
+        //        << "  ChildName:" << childName << "  level" << level << "\n";
         if ( childName == CatalogBaseNames[ NT_Stamp ] )
         {
             Catalog::Stamp stamp( child );
@@ -286,21 +286,26 @@ namespace Catalog {
                     ( int )parentType );
             if ( ( sortType < NT_Catalog ) || ( sortType >= NT_Stamp ) )
             {
-                            // std::cout << "     InsertChild\n";
-                            // if the sort type is not one of the classification node types
-                            // then add it here. All stamps and their children get added here.
+                wxString id = stamp.GetID();
+                long a;
+                int pos;
+                pos = id.find(' ');
+                id = id.substr(pos);
+                id.ToLong(&a);
+                //std::cout << "     InsertChild "<< " id:" << id << "  Name:" << stamp.GetName() << "\n";
+                
+                // if the sort type is not one of the classification node types
+                // then add it here. All stamps and their children get added here.
                 parent->AddChild( child );
                 return;
             }
             else
             {
-                        //    std::cout << "     SortType: " << CatalogBaseNames[ sortType ]
-                        //        << "\n";
+//                std::cout << "     SortType: " << CatalogBaseNames[ sortType ]  << "\n";
                 wxString nodeName = CatalogBaseNames[ sortType ];
                 wxString name = stamp.GetClassificationName( &stamp, sortType );
                 const char* nodeNameStr = nodeName;
-                            // std::cout << "     Looking for " << nodeNameStr << " with Name "
-                            //     << name << "\n";
+//                std::cout << "     Looking for " << nodeNameStr << " with Name " << name << "\n";
 
                 wxXmlNode* nextNode = Utils::FirstChildElement( parent, nodeNameStr );
                 while ( nextNode )
@@ -310,7 +315,7 @@ namespace Catalog {
                     {
                         if ( !attr.Cmp( name ) )
                         {
-                            //    std::cout << "     Found it\n";
+//                            std::cout << "     Found it \n";
                             AddStamp( nextNode, child, level );
                             return;
                         }
@@ -319,7 +324,7 @@ namespace Catalog {
                 }
                 // couldn't find it so add it
             //    std::cout << "     Adding it: " << nodeNameStr << " with Name "
-                //    << name << "\n";
+            //        << name << "\n";
 
                 nextNode = Utils::NewNode( parent, nodeNameStr );
                 Utils::SetAttrStr( nextNode, "Name", name );
@@ -360,10 +365,15 @@ namespace Catalog {
 
     void SortData( wxXmlNode* newRoot, wxXmlNode* parent )
     {
+        // wxString name = parent->GetAttribute(DT_XMLDataNames[ DT_Name ]);
+        // std::cout << "SortData   Parent Name:" << name << "\n";
 
         wxXmlNode* child = parent->GetChildren( );
         while ( child )
         {
+            // wxString name = child->GetAttribute(DT_XMLDataNames[ DT_Name ]);
+            // std::cout << "SortData   child Name:" << name << "\n";
+
             if ( !CatalogBaseNames[ NT_Stamp ].Cmp( child->GetName( ) ) )
             {
                 // Make a copy of the old child in the new doc and insert it
@@ -372,12 +382,7 @@ namespace Catalog {
             }
             else
             {
-                // if this wasn't a stamp node we will just decend in the hierachy
-                wxXmlNode* grandchild = child->GetChildren( );
-                if ( grandchild )
-                {
-                    SortData( newRoot, grandchild );
-                }
+                SortData( newRoot, child);
             }
             child = child->GetNext( );
             ;

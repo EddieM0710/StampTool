@@ -657,20 +657,19 @@ void CatalogTreeCtrl::StructureCatalogData( wxXmlNode* catalogData,
     Catalog::FormatType childType,
     Catalog::FormatType secondChildType )
 {
-   // Catalog::Stamp childTypeStamp;
-   // Catalog::Stamp parentTypeStamp;
-    wxXmlNode* child = catalogData->GetChildren( );
-
+   // Catalog::Stamp childStamp;
+   // Catalog::Stamp parentStamp;
+ 
     // Make a list of all nodes that are of parentType
-    wxXmlNodeArray* parentTypeList = MakeParentList( catalogData, parentType );
+    wxXmlNodeArray* parentList = MakeParentList( catalogData, parentType );
     // now find all the stamps that go into each parent by comparing the issue date, series and face value
-    for ( int i = 0; i < parentTypeList->size( ); i++ )
+    for ( int i = 0; i < parentList->size( ); i++ )
     {
-        wxXmlNode* parentTypeElement = ( wxXmlNode* )parentTypeList->at( i );
-        Catalog::Stamp* parentTypeStamp = new Catalog::Stamp( parentTypeElement );
-        wxString parentIssue = parentTypeStamp->GetIssuedDate( );
-        wxString parentSeries = parentTypeStamp->GetSeries( );
-        wxString parentFace = parentTypeStamp->GetFaceValue( );
+        wxXmlNode* parentNode = ( wxXmlNode* )parentList->at( i );
+        Catalog::Stamp* parentStamp = new Catalog::Stamp( parentNode );
+        wxString parentIssue = parentStamp->GetIssuedDate( );
+        wxString parentSeries = parentStamp->GetSeries( );
+        wxString parentFace = parentStamp->GetFaceValue( );
         long nbrStamps;
         parentFace.ToLong( &nbrStamps );
         if ( nbrStamps <= 0 )
@@ -681,14 +680,16 @@ void CatalogTreeCtrl::StructureCatalogData( wxXmlNode* catalogData,
         long count = 0;
         long searchRange = 0;
 
-        while ( child && ( searchRange < 105 ) && ( count < nbrStamps ) )
+        wxXmlNode* childNode = catalogData->GetChildren( );
+
+        while ( childNode && ( searchRange < 105 ) && ( count < nbrStamps ) )
         {
-            Catalog::Stamp* childTypeStamp = new Catalog::Stamp( child );
+            Catalog::Stamp* childStamp = new Catalog::Stamp( childNode );
 
-            // figure out what the next sibling is because we may move child
-            wxXmlNode* nextSibling = child->GetNext( );
+            // figure out what the next sibling is because we may move childNode
+            wxXmlNode* nextSibling = childNode->GetNext( );
 
-            if ( parentTypeElement != child )
+            if ( parentNode != childNode )
             {
                 // only search a reasonable distance after the first one is found
                 if ( count > 1 )
@@ -696,25 +697,30 @@ void CatalogTreeCtrl::StructureCatalogData( wxXmlNode* catalogData,
                     searchRange++;
                 }
                 // only look at children of childType
-                wxString format = childTypeStamp->GetFormat( );
+                wxString format = childStamp->GetFormat( );
                     if ( ( format == Catalog::FT_FormatStrings[ childType ] )
                     || ( secondChildType
                             && ( format == Catalog::FT_FormatStrings[ secondChildType ] ) ) )
                 {
-                    wxString issue = childTypeStamp->GetIssuedDate( );
-                    wxString series = childTypeStamp->GetSeries( );
+                    wxString issue = childStamp->GetIssuedDate( );
+                    wxString series = childStamp->GetSeries( );
                     // if the issue date and the series match the parent assume
-                    // that the child goes in the parent
+                    // that the childNode goes in the parent
                     if ( !issue.Cmp( parentIssue )
                         && !series.Cmp( parentSeries ) )
                     {
                         count++;
-                        catalogData->RemoveChild( child );
-                        parentTypeElement->AddChild( child );
+                        //catalogData->RemoveChild( childNode );
+                        wxXmlNode* currParent = childNode->GetParent( );
+                        if ( currParent )
+                        {
+                            currParent->RemoveChild( childNode );
+                        }
+                        parentNode->AddChild( childNode );
                     }
                 }
             }
-            child = nextSibling;
+            childNode = nextSibling;
         }
     }
 }

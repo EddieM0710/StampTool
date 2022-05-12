@@ -363,6 +363,40 @@ namespace Catalog {
         return newChild;
     }
 
+    wxXmlNode* InsertStamp( wxXmlNode* sibling, wxXmlNode* child, bool after )
+    {
+        if ( sibling == child )
+        {
+            // can't be a child of itself
+            return ( wxXmlNode* )0;
+        }
+
+        // Make a copy of the old child and insert it
+        wxXmlNode* newChildNode = new wxXmlNode( *child );
+        wxXmlNode* newChild = newChildNode;
+        wxXmlNode* parent = sibling->GetParent();
+
+        if ( after )
+        {
+            if ( !parent->InsertChildAfter( newChild, sibling ) )
+            {
+                return ( wxXmlNode* )0;;
+            }
+        }
+        else
+        {
+            if ( !parent->InsertChild( newChild, sibling ) )
+            {
+                return ( wxXmlNode* )0;;
+            }
+        }
+
+        wxXmlNode* previousParent = child->GetParent( );
+        previousParent->RemoveChild( child );
+        return newChild;
+    }
+
+
     void SortData( wxXmlNode* newRoot, wxXmlNode* parent )
     {
         // wxString name = parent->GetAttribute(DT_XMLDataNames[ DT_Name ]);

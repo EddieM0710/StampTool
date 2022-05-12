@@ -405,6 +405,7 @@ namespace Catalog {
     // }
 
     wxXmlNode* MoveStamp( wxXmlNode* newParent, wxXmlNode* child );
+    wxXmlNode* InsertStamp( wxXmlNode* sibling, wxXmlNode* child, bool after = true);
     // {
     //     if ( newParent == child )
     //     {

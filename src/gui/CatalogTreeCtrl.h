@@ -27,7 +27,12 @@ enum
     CatalogDataTree_Quit = wxID_EXIT,
     CatalogDataTree_About = wxID_ABOUT,
     CatalogDataTree_StructureStamps,
-    CatalogDataTree_ResortTree
+    CatalogDataTree_ResortTree,
+    CatalogDataTree_Colnect,
+    CatalogDataTree_Before,
+    CatalogDataTree_After,
+    CatalogDataTree_AsChild,
+    CatalogDataTree_Cancel
 };
 
 typedef std::vector<wxXmlNode*> wxXmlNodeArray;
@@ -155,6 +160,7 @@ public:
     * @param   event :
     **************************************************/
     void OnEndDrag( wxTreeEvent& event );
+    void ShowDropMenu( wxTreeItemId itemSrc, wxTreeItemId itemDst  );
 
     /**
      *
@@ -264,6 +270,7 @@ public:
      * @return {wxTreeItemId}        :
      */
     wxTreeItemId AddChild( wxTreeItemId parent, wxXmlNode* child );
+    wxTreeItemId InsertChild( wxTreeItemId parent, wxXmlNode* child, bool after = true );
 
     void ClearCatalogTree( );   
 
@@ -297,6 +304,7 @@ public:
      *
      **************************************************/
     void ReSortTree( );
+    void GoToColnect( wxTreeItemId id );
 
     /**
      *

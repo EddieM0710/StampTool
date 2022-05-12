@@ -29,6 +29,7 @@
 #include "wx/menu.h"
 #include "wx/renderer.h"
 #include "wx/wupdlock.h"
+#include <wx/clipbrd.h>
 
 #include "Defs.h"
 #include "gui/GuiDefs.h"
@@ -98,7 +99,7 @@ EVT_TREE_BEGIN_DRAG( ID_CATALOGTREECTRL, CatalogTreeCtrl::OnBeginDrag )
 EVT_TREE_END_DRAG( ID_CATALOGTREECTRL, CatalogTreeCtrl::OnEndDrag )
 EVT_TREE_SEL_CHANGED( ID_CATALOGTREECTRL, CatalogTreeCtrl::OnSelChanged )
 EVT_TREE_STATE_IMAGE_CLICK( ID_CATALOGTREECTRL, CatalogTreeCtrl::OnItemStateClick )
-EVT_CONTEXT_MENU( CatalogTreeCtrl::OnContextMenu )
+//EVT_CONTEXT_MENU( CatalogTreeCtrl::OnContextMenu )
 // EVT_TREE_ITEM_MENU is the preferred event for creating context menus
 // on a tree control, because it includes the point of the click or item,
 // meaning that no additional placement calculations are required.
@@ -295,7 +296,8 @@ void CatalogTreeCtrl::OnBeginDrag( wxTreeEvent& event )
 
 void CatalogTreeCtrl::OnEndDrag( wxTreeEvent& event )
 {
-    wxTreeItemId itemSrc = m_draggedItem, itemDst = event.GetItem( );
+    wxTreeItemId itemSrc = m_draggedItem; 
+    wxTreeItemId itemDst = event.GetItem( );
     m_draggedItem = ( wxTreeItemId )0l;
 
     if ( itemSrc == itemDst )
@@ -307,19 +309,92 @@ void CatalogTreeCtrl::OnEndDrag( wxTreeEvent& event )
     {
         return;
     }
+    ShowDropMenu(  itemSrc,  itemDst );
 
-    wxXmlNode* srcElement = GetStampNode( itemSrc );
-    wxXmlNode* dstElement = GetStampNode( itemDst );
+}
 
-    // move the element
-    // this means making a copy and deleting the old one so old pointers are
-    // trash
-    wxXmlNode* newElement = Catalog::MoveStamp( dstElement, srcElement );
+void CatalogTreeCtrl::ShowDropMenu( wxTreeItemId itemSrc, wxTreeItemId itemDst  )
+{
+    wxString title;
+    if ( !itemSrc.IsOk( ) || !itemDst.IsOk( ) )
+    {
+        return;
+    }
 
-    // now update the tree with the new one
-    wxTreeItemId id = AddChild( itemDst, newElement );
-    SelectItem( itemDst );
-    Delete( itemSrc );
+    title << "Drop Item " << GetItemText( itemSrc );
+
+    wxMenu menu( title );
+    wxString label = "Insert Before " + GetItemText( itemDst );
+    menu.Append( CatalogDataTree_Before, label );
+    label = "Insert After " + GetItemText( itemDst );
+    menu.Append( CatalogDataTree_After, label );
+    label = "Insert as Child of " + GetItemText( itemDst );
+    menu.Append( CatalogDataTree_AsChild, label );
+    menu.Append( CatalogDataTree_Cancel, "Cancel Drag" );
+
+    switch ( GetPopupMenuSelectionFromUser( menu ) )
+    {
+    case CatalogDataTree_Before:
+    {
+
+        wxXmlNode* srcElement = GetStampNode( itemSrc );
+        wxXmlNode* dstElement = GetStampNode( itemDst );
+
+        // move the element
+        // this means making a copy and deleting the old one so old pointers are
+        // trash
+        wxXmlNode* newElement = Catalog::InsertStamp( dstElement, srcElement, false );
+
+        // now update the tree with the new one
+        wxTreeItemId id = InsertChild( itemDst, newElement, false );
+        //wxTreeItemId id = AddChild( itemDst, newElement );
+        SelectItem( itemDst );
+        Delete( itemSrc );
+
+        break;
+    }
+    case CatalogDataTree_After:
+    {
+
+        wxXmlNode* srcElement = GetStampNode( itemSrc );
+        wxXmlNode* dstElement = GetStampNode( itemDst );
+
+        // move the element
+        // this means making a copy and deleting the old one so old pointers are
+        // trash
+        wxXmlNode* newElement = Catalog::InsertStamp( dstElement, srcElement, true );
+
+        // now update the tree with the new one
+        wxTreeItemId id = InsertChild( itemDst, newElement, true );
+        //wxTreeItemId id = AddChild( itemDst, newElement );
+        SelectItem( itemDst );
+        Delete( itemSrc );
+
+        break;
+    }
+    case CatalogDataTree_AsChild:
+    {
+
+        wxXmlNode* srcElement = GetStampNode( itemSrc );
+        wxXmlNode* dstElement = GetStampNode( itemDst );
+
+        // move the element
+        // this means making a copy and deleting the old one so old pointers are
+        // trash
+        wxXmlNode* newElement = Catalog::MoveStamp( dstElement, srcElement );
+
+        // now update the tree with the new one
+        wxTreeItemId id = AddChild( itemDst, newElement );
+        SelectItem( itemDst );
+        Delete( itemSrc );
+        break;
+    }
+    case CatalogDataTree_Cancel:
+    {
+
+        break;
+    }
+    }
 }
 
 void CatalogTreeCtrl::OnItemStateClick( wxTreeEvent& event )
@@ -359,27 +434,27 @@ void CatalogTreeCtrl::DoTreeContextSelection( )
 {
 }
 
-void CatalogTreeCtrl::OnContextMenu( wxContextMenuEvent& event )
-{
-    wxPoint pt = event.GetPosition( );
+// void CatalogTreeCtrl::OnContextMenu( wxContextMenuEvent& event )
+// {
+//     wxPoint pt = event.GetPosition( );
 
-    int id = event.GetId( );
-    if ( id == CatalogDataTree_StructureStamps )
-    {
-        wxTreeItemId id = HitTest( pt );
-        if ( id.IsOk( ) )
-        {
-            wxXmlNode* stamp = GetStampNode( id );
-            StructureStamp( stamp );
-        }
-    }
-    else if ( id == CatalogDataTree_ResortTree )
-    {
-        ReSortTree( );
-    }
+//     int id = event.GetId( );
+//     if ( id == CatalogDataTree_StructureStamps )
+//     {
+//         wxTreeItemId id = HitTest( pt );
+//         if ( id.IsOk( ) )
+//         {
+//             wxXmlNode* stamp = GetStampNode( id );
+//             StructureStamp( stamp );
+//         }
+//     }
+//     else if ( id == CatalogDataTree_ResortTree )
+//     {
+//         ReSortTree( );
+//     }
 
-    event.Skip( );
-}
+//     event.Skip( );
+// }
 
 void CatalogTreeCtrl::ShowMenu( wxTreeItemId id, const wxPoint& pt )
 {
@@ -396,6 +471,11 @@ void CatalogTreeCtrl::ShowMenu( wxTreeItemId id, const wxPoint& pt )
     wxMenu menu( title );
     menu.Append( CatalogDataTree_About, "&About" );
     menu.AppendSeparator( );
+    menu.Append( CatalogDataTree_Colnect, "GoTo Colnect" );
+    menu.AppendSeparator( );
+ //   menu.Append( CatalogDataTree_Move, "Move" );
+ //   menu.Append( CatalogDataTree_Delete, "Delete" );
+
 
     menu.Append( CatalogDataTree_StructureStamps, "Re-Group Multiples" );
     menu.Append( CatalogDataTree_ResortTree, "Re-Sort Tree" );
@@ -420,9 +500,44 @@ void CatalogTreeCtrl::ShowMenu( wxTreeItemId id, const wxPoint& pt )
         ReSortTree( );
         break;
     }
+    case CatalogDataTree_Colnect:
+    {
+        GoToColnect( id );
+        break;
+    }
     default:
         // Fall through.
         break;
+    }
+}
+void CatalogTreeCtrl::GoToColnect( wxTreeItemId id )
+{
+CatalogTreeItemData* data = (CatalogTreeItemData*)GetItemData(id);
+    wxXmlNode* node = data->GetNodeElement();
+    if ( node )
+    {
+        wxString nodeName = node->GetName( );
+        if (!nodeName.Cmp(Catalog::CatalogBaseNames[Catalog::NT_Stamp]))
+        {
+            Catalog::Stamp stamp(node);
+            wxString stampID = stamp.GetID();
+            stampID = stampID.Trim(true);
+            stampID = stampID.Trim(false);
+            stampID.Replace(":","_");
+            stampID.Replace(" ","_");
+            if (wxTheClipboard->Open())
+            {
+                // This data objects are held by the clipboard,
+                // so do not delete them in the app.
+                wxTheClipboard->SetData( new wxTextDataObject(stampID) );
+                wxTheClipboard->Close();
+            }     
+
+            wxString link = stamp.GetLink();
+            wxString cmd = wxString::Format( "/usr/bin/firefox --new-tab %s", link );
+            system( cmd.fn_str( ) );
+        }
+            
     }
 }
 
@@ -434,6 +549,110 @@ void CatalogTreeCtrl::OnItemRClick( wxTreeEvent& event )
     CatalogTreeItemData* item = ( CatalogTreeItemData* )GetItemData( itemId );
 
     event.Skip( );
+}
+
+// AddChild adds wxXmlNode as a item in the tree.  It is recursively called to
+// create sort nodes as necessary to find the proper place for the child
+wxTreeItemId CatalogTreeCtrl::InsertChild( wxTreeItemId sibling, wxXmlNode* child, bool after )
+{
+    //wxString stampID ;
+    //wxString stampName ;
+    wxString name = child->GetName( );
+    Catalog::CatalogBaseType nodeType = Catalog::FindCatalogBaseType( name );
+    wxString label;
+    Catalog::IconID icon;
+
+    //if the child element is not a stamp
+    if ( !name.Cmp( Catalog::CatalogBaseNames[ Catalog::NT_Stamp ] ) )
+    {
+        // then we add the appropriate icon and label
+        Catalog::Stamp stamp( child );
+        // stamp combines the stampID and its name to form a label
+        label = stamp.GetLabel( );
+        //stampID =  stamp.GetID();
+        //bool ok = !stampID.Cmp( "5339");
+        //stampName = stamp.GetName();
+        icon = GetInventoryIconId( &stamp );
+    }
+    else
+    {
+        // if it is a specimen or catalog code return because 
+        // they don't go in the tree.
+        if ( ( nodeType == Catalog::NT_Specimen )
+            || ( nodeType == Catalog::NT_CatalogCode ) )
+        {
+            return 0;
+        }
+        else
+        {
+            //otherwise get the label
+            const wxXmlAttribute* attr = Utils::GetAttribute( child, "Name" );
+            label = attr->GetValue( );
+            icon = Catalog::Icon_Folder;
+        }
+    }
+
+
+    // create the item data and add it to the tree
+    CatalogTreeItemData* itemData
+        = new CatalogTreeItemData( nodeType, label, child );
+    wxTreeItemIdValue cookie; 
+    wxTreeItemId parent = GetItemParent(sibling) ;
+    wxTreeItemId  childID ;
+    if ( after )
+    {
+        // insert after sibling
+        childID = InsertItem( parent, sibling, label, icon, -1, itemData );
+    } 
+    else
+    {
+        wxTreeItemId prevSibling = GetPrevSibling ( sibling );
+        if ( prevSibling.IsOk() )
+        {
+            childID = InsertItem( parent, prevSibling, label, icon, -1, itemData );
+        }
+        else
+        {
+           childID = InsertItem( parent, 0, label, icon, -1, itemData ) ;
+        }
+    }
+    if ( nodeType == Catalog::NT_Stamp )
+    {
+        //set the icon for the appropriate state
+        Utils::StampLink* stampLink = FindStampLink( childID );
+        if ( stampLink )
+        {
+            itemData->SetStampLink( stampLink );
+            //stampLink->SetCatNode( child );
+            stampLink->SetCatTreeID( childID );
+            SetItemState( childID, Catalog::ST_Checked );
+            Catalog::Stamp stamp(child);
+            stamp.SetCheckedStatus( Catalog::ST_CheckedStatusStrings[Catalog::ST_Checked]);
+        }
+        else
+        {
+            itemData->SetStampLink( 0 );
+            SetItemState( childID, Catalog::ST_Unchecked );
+        }
+    }
+    else
+    { 
+        // not a stamp just add the appropriate image
+        SetItemImage( childID, Catalog::Icon_Folder );
+        SetItemState( childID, wxTREE_ITEMSTATE_NEXT );
+    }
+
+    // now do it all again for this stamps children
+    wxXmlNode* grandChild = child->GetChildren( );
+    while ( grandChild )
+    {
+
+        // start adding child elements to it.
+        AddChild( childID, grandChild );
+        grandChild = grandChild->GetNext( );
+    }
+
+    return childID;
 }
 
 // AddChild adds wxXmlNode as a item in the tree.  It is recursively called to

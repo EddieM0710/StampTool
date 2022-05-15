@@ -76,8 +76,8 @@ wxString GetMimeType( const wxString& str )
 }
 
 
-    Document* ODTDoc(){ return GetProject()->GetODTDocument(); };
-    void SetODTDocument( Document* doc ){ GetProject()->SetODTDocument( doc ); };
+    Document* ODTDoc(){ return GetGeneratorData()->GetODTDocument(); };
+    void SetODTDocument( Document* doc ){ GetGeneratorData()->SetODTDocument( doc ); };
 
     wxXmlDocument* ContentXML( ) { return ODTDoc( )->ContentXML( ); };
     wxXmlDocument* SettingsXML( ) { return ODTDoc( )->SettingsXML( ); };

@@ -133,7 +133,7 @@ private:
 };
 
 /**
- * @brief Class to manage a wxTreeCtrl for Stamp
+ * @brief Tree for displaying Album design
  *
  **************************************************/
 class DesignTreeCtrl : public wxTreeCtrl
@@ -291,7 +291,7 @@ public:
 
 
     /**
-     *
+     * Load the Design tree with current xml document
      **************************************************/
     void LoadTree( void );
 

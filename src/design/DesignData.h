@@ -31,7 +31,7 @@ namespace Design {
     class LayoutBase;
     class AlbumBase;
 
-    
+    // class that contains all the data for the Album design
     class DesignData
     {
     public:
@@ -44,8 +44,14 @@ namespace Design {
         ~DesignData( );
         bool IsOK( );
 
-        wxXmlDocument* NewDocument( );
+        // create new DesignData xml wxXmlDocument
+        wxXmlDocument* NewDesignDocument( );
+
+        // Get the DesignData xml Doc
         wxXmlDocument* GetDoc( ) { return m_albumDoc; };
+
+        // create a new design document with default data
+        void LoadDefaultDocument();
 
         void SaveXML( wxString filename );
         void SaveDesignTree();
@@ -56,7 +62,7 @@ namespace Design {
 
         void MakePage(LayoutBase* node);
 
-        void SetDirty( bool state = true ) { m_dirty = state; };
+        void SetDirty( bool state = true );
         bool isDirty( ) { return m_dirty; };
 
         AlbumBase* GetPage( AlbumBase* node);

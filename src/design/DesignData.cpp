@@ -44,12 +44,16 @@
 
 namespace Design {
 
+
+    //(((((((((((((((((((((((-)))))))))))))))))))))))    
+
     DesignData::DesignData(/* args */ )
     {
         m_albumDoc = 0;
         m_album = 0;
     }
 
+    //(((((((((((((((((((((((-)))))))))))))))))))))))  
     DesignData::~DesignData( )
     {
 
@@ -59,6 +63,7 @@ namespace Design {
         m_album = 0;
     }
 
+    //(((((((((((((((((((((((-)))))))))))))))))))))))  
     bool DesignData::IsOK( )
     {
         if ( m_albumDoc )
@@ -67,7 +72,43 @@ namespace Design {
         }
         return false;
     }
-    wxXmlDocument* DesignData::NewDocument( )
+
+
+    // Set the design to dirty
+    //(((((((((((((((((((((((-)))))))))))))))))))))))    
+    void DesignData::SetDirty( bool state )
+    {
+        m_dirty = state;
+        if ( m_dirty )
+        {
+            GetProject( )->SetDirty( true );
+        }
+    }
+
+
+void DesignData::LoadDefaultDocument()
+{
+    wxXmlDocument* newDocument = DesignData::NewDesignDocument( );
+    wxXmlNode* root = new wxXmlNode( wxXML_ELEMENT_NODE, "Album" );
+    newDocument->SetRoot( root );
+    root->AddAttribute(AttrNameStrings[ AT_Name ], "");
+    root->AddAttribute(AttrNameStrings[ AT_PageWidth ], "215.9");
+    root->AddAttribute(AttrNameStrings[ AT_PageHeight ], "279.4");
+    root->AddAttribute(AttrNameStrings[ AT_TopMargin ], "7.62");
+    root->AddAttribute(AttrNameStrings[ AT_BottomMargin ], "7.62");
+    root->AddAttribute(AttrNameStrings[ AT_RightMargin ], "7.62");
+    root->AddAttribute(AttrNameStrings[ AT_LeftMargin ], "19.05");
+    root->AddAttribute(AttrNameStrings[ AT_BorderSize ], "4");
+
+    Album* album = new Album(root);
+    SetAlbum( album ) ;
+    wxXmlNode* pageNode = new wxXmlNode( wxXML_ELEMENT_NODE, AlbumBaseNames[AT_Page]);
+    Page* page = (Page*)new Page( pageNode );
+}
+
+
+    //(((((((((((((((((((((((-)))))))))))))))))))))))  
+    wxXmlDocument* DesignData::NewDesignDocument( )
     {
         delete m_albumDoc;
         m_albumDoc = new wxXmlDocument( );
@@ -75,6 +116,8 @@ namespace Design {
     };
 
 
+    // Save the DesignData to an xml file 
+    //(((((((((((((((((((((((-)))))))))))))))))))))))  
     void DesignData::SaveXML( wxString filename )
     {
         if ( wxFileExists( filename ) )
@@ -88,6 +131,8 @@ namespace Design {
         SetDirty( false );
     }
 
+    // transferrs the DesignData tree to an xml file
+    //(((((((((((((((((((((((-)))))))))))))))))))))))  
     void DesignData::SaveDesignTree()
     {
         wxTreeItemId albumID = GetDesignTreeCtrl()->GetRootItem();
@@ -102,11 +147,13 @@ namespace Design {
         GetDesignTreeCtrl()->SaveNodeData ( xmlNode, albumID );   
     }
 
+    // loads an xml file into memory
+    //(((((((((((((((((((((((-)))))))))))))))))))))))  
     bool DesignData::LoadXML( wxString filename )
     {
         if ( !m_albumDoc )
         {
-            m_albumDoc = NewDocument( );
+            m_albumDoc = NewDesignDocument( );
         }
         bool ok = m_albumDoc->Load( filename );
 
@@ -121,6 +168,8 @@ namespace Design {
         return true;
     }
 
+    // Gets the page of the selected design given node
+    //(((((((((((((((((((((((-)))))))))))))))))))))))  
     AlbumBase* DesignData::GetPage( AlbumBase* node )
     {
         wxTreeItemId id = node->GetTreeItemId();
@@ -129,6 +178,7 @@ namespace Design {
         return (AlbumBase*)0;
     }
 
+    //(((((((((((((((((((((((-)))))))))))))))))))))))  
     NodeStatus DesignData::ValidatePage( AlbumBase* node )
     {
         Page* page = ( Page* )GetPage( node );
@@ -139,6 +189,7 @@ namespace Design {
         return AT_FATAL;
     }
 
+    //(((((((((((((((((((((((-)))))))))))))))))))))))  
     void DesignData::MakePage(LayoutBase* node)
     {
         Page* page = (Page*)GetPage( node );
@@ -154,6 +205,7 @@ namespace Design {
         }
     }
 
+    //(((((((((((((((((((((((-)))))))))))))))))))))))  
     void DesignData::UpdateAlbum( )
     {
         bool ok = m_album->UpdateMinimumSize( );

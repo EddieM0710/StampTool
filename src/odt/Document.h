@@ -238,13 +238,6 @@ namespace ODT {
          *
          **************************************************/
         Styles* m_stylesDoc;
-
-
-        /**
-         * @brief Class member.
-         *
-         **************************************************/
-        //wxString m_workingDirectory;
     };
 }
 

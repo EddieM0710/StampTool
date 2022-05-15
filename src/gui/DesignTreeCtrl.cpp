@@ -76,7 +76,7 @@ wxEND_EVENT_TABLE( )
 
 // DesignTreeCtrl implementation
 
-//******************************************************
+//(((((((((((((((((((((((-)))))))))))))))))))))))
 
 wxColour ItemBackgroundColour[ 3 ] = { wxNullColour, *wxYELLOW, *wxRED };
 
@@ -93,7 +93,7 @@ DesignTreeCtrl::DesignTreeCtrl( wxWindow* parent, const wxWindowID id,
     ItemBackgroundColour[ Design::AT_OK ] = GetBackgroundColour( );
 }
 
-//******************************************************
+//(((((((((((((((((((((((-)))))))))))))))))))))))
 
 wxString DesignTreeCtrl::MakeItemLabel( wxTreeItemId id )
 {
@@ -321,7 +321,7 @@ Utils::StampLink* DesignTreeCtrl::AppendStamp( wxTreeItemId catID )
 }
 
 
-//******************************************************
+//(((((((((((((((((((((((-)))))))))))))))))))))))
 
 void DesignTreeCtrl::CreateImageList( )
 {
@@ -330,7 +330,7 @@ void DesignTreeCtrl::CreateImageList( )
 }
 
 
-//******************************************************
+//(((((((((((((((((((((((-)))))))))))))))))))))))
 
 void DesignTreeCtrl::CreateStateImageList( bool del )
 {
@@ -338,7 +338,7 @@ void DesignTreeCtrl::CreateStateImageList( bool del )
 }
 
 
-//******************************************************
+//(((((((((((((((((((((((-)))))))))))))))))))))))
 
 void DesignTreeCtrl::DeleteItem( wxTreeItemId childID )
 {
@@ -351,7 +351,7 @@ void DesignTreeCtrl::DeleteItem( wxTreeItemId childID )
 }
 
 
-//******************************************************
+//(((((((((((((((((((((((-)))))))))))))))))))))))
 
 wxTreeItemId DesignTreeCtrl::FindTreeItemID( Design::AlbumBase* ele, wxTreeItemId id )
 {
@@ -375,7 +375,7 @@ wxTreeItemId DesignTreeCtrl::FindTreeItemID( Design::AlbumBase* ele, wxTreeItemI
     }
     return 0;
 }
-//******************************************************
+//(((((((((((((((((((((((-)))))))))))))))))))))))
 
 wxTreeItemId DesignTreeCtrl::FindTreeItemID( Design::AlbumBase* ele )
 {
@@ -383,7 +383,7 @@ wxTreeItemId DesignTreeCtrl::FindTreeItemID( Design::AlbumBase* ele )
     return FindTreeItemID( ele, root );
 }
 
-//******************************************************
+//(((((((((((((((((((((((-)))))))))))))))))))))))
 
 wxTreeItemId DesignTreeCtrl::FindFirstStampChild( wxTreeItemId id )
 {
@@ -409,7 +409,7 @@ wxTreeItemId DesignTreeCtrl::FindFirstStampChild( wxTreeItemId id )
     return 0;
 }
 
-//******************************************************
+//(((((((((((((((((((((((-)))))))))))))))))))))))
 
 Design::LayoutBase* DesignTreeCtrl::GetSelectedNode( )
 {
@@ -422,7 +422,7 @@ Design::LayoutBase* DesignTreeCtrl::GetSelectedNode( )
     return ( Design::LayoutBase* )0;
 }
 
-//******************************************************
+//(((((((((((((((((((((((-)))))))))))))))))))))))
 
 
 Design::IconID DesignTreeCtrl::GetIconId( Design::Stamp* stamp )
@@ -431,7 +431,7 @@ Design::IconID DesignTreeCtrl::GetIconId( Design::Stamp* stamp )
     return Design::AlbumImageSelection[ format ][ 0 ];
 }
 
-//******************************************************
+//(((((((((((((((((((((((-)))))))))))))))))))))))
 
 void DesignTreeCtrl::LogEvent( const wxString& name, const wxTreeEvent& event )
 {
@@ -442,7 +442,7 @@ void DesignTreeCtrl::LogEvent( const wxString& name, const wxTreeEvent& event )
     else
         text = "invalid item";
 }
-//******************************************************
+//(((((((((((((((((((((((-)))))))))))))))))))))))
 
 
 
@@ -455,9 +455,8 @@ bool DesignTreeCtrl::IsElement( wxTreeItemId item, Design::AlbumBase* ele )
     }
     return true;
 }
-//******************************************************
+//(((((((((((((((((((((((-)))))))))))))))))))))))
 
-// basic load of the tree
 void DesignTreeCtrl::LoadTree( )
 {
     wxXmlDocument* doc = GetDesignData( )->GetDoc( );
@@ -471,7 +470,7 @@ void DesignTreeCtrl::LoadTree( )
     ExpandAll( );
 }
 
-//******************************************************
+//(((((((((((((((((((((((-)))))))))))))))))))))))
 
 void DesignTreeCtrl::OnBeginDrag( wxTreeEvent& event )
 {
@@ -490,7 +489,7 @@ void DesignTreeCtrl::OnBeginDrag( wxTreeEvent& event )
     }
 }
 
-//******************************************************
+//(((((((((((((((((((((((-)))))))))))))))))))))))
 
 
 void DesignTreeCtrl::OnEndDrag( wxTreeEvent& event )
@@ -564,7 +563,7 @@ void DesignTreeCtrl::CopyItem( wxTreeItemId dstID, wxTreeItemId srcID )
         child = GetNextChild( srcID, cookie );
     }
 }
-//******************************************************
+//(((((((((((((((((((((((-)))))))))))))))))))))))
 
 void DesignTreeCtrl::OnItemStateClick( wxTreeEvent& event )
 {
@@ -574,7 +573,7 @@ void DesignTreeCtrl::OnItemStateClick( wxTreeEvent& event )
     //    SetNextState( itemId );
 }
 
-//******************************************************
+//(((((((((((((((((((((((-)))))))))))))))))))))))
 
 void DesignTreeCtrl::OnSelChanged( wxTreeEvent& event )
 {
@@ -592,7 +591,7 @@ void DesignTreeCtrl::OnSelChanged( wxTreeEvent& event )
     event.Skip( );
 }
 
-//******************************************************
+//(((((((((((((((((((((((-)))))))))))))))))))))))
 
 void DesignTreeCtrl::OnItemMenu( wxTreeEvent& event )
 {
@@ -607,7 +606,7 @@ void DesignTreeCtrl::OnItemMenu( wxTreeEvent& event )
     event.Skip( );
 }
 
-//******************************************************
+//(((((((((((((((((((((((-)))))))))))))))))))))))
 
 int DesignTreeCtrl::OnCompareItems( const wxTreeItemId& item1,
     const wxTreeItemId& item2 )
@@ -639,7 +638,7 @@ int DesignTreeCtrl::OnCompareItems( const wxTreeItemId& item1,
     }
 }
 
-//******************************************************
+//(((((((((((((((((((((((-)))))))))))))))))))))))
 
 void DesignTreeCtrl::OnItemRClick( wxTreeEvent& event )
 {
@@ -651,7 +650,7 @@ void DesignTreeCtrl::OnItemRClick( wxTreeEvent& event )
     event.Skip( );
 }
 
-//******************************************************
+//(((((((((((((((((((((((-)))))))))))))))))))))))
 
 void DesignTreeCtrl::ShowMenu( wxTreeItemId id, const wxPoint& pt )
 {
@@ -781,7 +780,7 @@ void DesignTreeCtrl::ShowMenu( wxTreeItemId id, const wxPoint& pt )
     }
 }
 
-//******************************************************
+//(((((((((((((((((((((((-)))))))))))))))))))))))
 
 void DesignTreeCtrl::ShowStampDetails( wxTreeItemId treeID, Design::AlbumBase* node )
 {
@@ -960,7 +959,7 @@ Design::AlbumBaseType DesignTreeCtrl::GetItemType( wxTreeItemId albumID )
 };
 
 
-
+// iterate thru the tree and save all data to XML doc
 void DesignTreeCtrl::SaveNodeData( wxXmlNode* parent, wxTreeItemId treeItemId )
 {
     wxTreeItemIdValue cookie;

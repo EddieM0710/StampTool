@@ -12,23 +12,23 @@
 #include "design/AlbumBase.h"
 #include "gui/CatalogTreeCtrl.h"
 #include "gui/DesignTreeCtrl.h"
-#include "odt/ODTDefs.h"
-#include "odt/Document.h"
 
 
 namespace Utils {
 
+//(((((((((((((((((((((((-)))))))))))))))))))))))
     Project::Project( )
     {
         InitDefs( );
-        m_settings = new Settings( );
-        if ( m_settings->GetLoadLastFileAtStartUp( ) )
+        Settings* settings = new Settings( );
+        GetGeneratorData()->SetSettings( settings );
+        if ( settings->GetLoadLastFileAtStartUp( ) )
         {
-            m_projectFilename = m_settings->GetLastFile( );
+            m_projectFilename = settings->GetLastFile( );
 
             // if ( wxFileExists( filename ) )
             // {
-            //     if ( LoadProject( filename ) )
+            //     if ( LoadProjectXML( filename ) )
             //     {
             //     }
             // }
@@ -37,57 +37,56 @@ namespace Utils {
         SetDirty( false );
     };
 
+    
+    
+    //(((((((((((((((((((((((-)))))))))))))))))))))))
 
-    ODT::Document* Project::GetODTDocument( )
+    wxString Project::GetODTOutputFilename( )
     {
-        return m_ODTDoc;
+        return m_ODTOutputFilename;
     };
-    void Project::SetODTDocument( ODT::Document* doc )
+    
+    //(((((((((((((((((((((((-))))))))))))))))))))))) 
+       
+    void Project::SetODTOutputFilename( wxString outputFilename )
     {
-        m_ODTDoc = doc; SetDirty( );
+        m_ODTOutputFilename = outputFilename; m_dirty = true;
     };
-
-    wxString Project::GetOutputFilename( )
-    {
-        return m_outputFilename;
-    };
-    void Project::SetOutputFilename( wxString outputFilename )
-    {
-        m_outputFilename = outputFilename; m_dirty = true;
-    };
+    
+    //(((((((((((((((((((((((-)))))))))))))))))))))))
 
     wxString Project::GetDesignFilename( )
     {
         return m_designFilename;
     };
+    
+    //(((((((((((((((((((((((-)))))))))))))))))))))))
+
     void Project::SetDesignFilename( wxString albumFilename )
     {
         m_designFilename = albumFilename;
         m_dirty = true;
     };
+        
+    //(((((((((((((((((((((((-)))))))))))))))))))))))
     wxString Project::GetImagePath( )
     {
         return m_imagePath;
     };
+        
+    //(((((((((((((((((((((((-)))))))))))))))))))))))
     void Project::SetImagePath( wxString imagePath )
     {
         m_imagePath = imagePath; SetDirty( );
     };
+        
+    //(((((((((((((((((((((((-)))))))))))))))))))))))
     wxString Project::GetCatalogFilename( )
     {
         return m_catalogFilename;
     };
-
-    Settings* Project::GetLSettings( )
-    {
-        return  m_settings;
-    };
-    void Project::SetSettings( Settings* settings )
-    {
-        m_settings = settings;
-    };
-
-
+ 
+    //(((((((((((((((((((((((-)))))))))))))))))))))))
     void Project::SetCatalogFilename( wxString catalogFilename )
     {
         if ( m_catalogFilename.Cmp( catalogFilename ) )
@@ -96,12 +95,15 @@ namespace Utils {
             SetDirty( );
         }
     };
+        
+    //(((((((((((((((((((((((-)))))))))))))))))))))))
     void Project::SetProjectFilename(wxString name ) 
     {  
         m_projectFilename = name; 
         GetSettings( )->SetLastFile( m_projectFilename );
     };
-
+    
+    //(((((((((((((((((((((((-)))))))))))))))))))))))
     wxString Project::MakeFileAbsolute( wxString filename )
     {
         wxFileName newFile( filename );
@@ -112,7 +114,10 @@ namespace Utils {
         return newFile.GetFullPath( );
     }
 
-    bool Project::LoadProject(  )
+    
+    
+    //(((((((((((((((((((((((-)))))))))))))))))))))))
+    bool Project::LoadProjectXML(  )
     {
         wxFileName projFile( m_projectFilename );
         if ( projFile.FileExists( ) )
@@ -130,8 +135,6 @@ namespace Utils {
 
         wxString cwd = projFile.GetPath( );
         wxSetWorkingDirectory( cwd );
-        //wxFileName::SetCwd( cwd );
-//        m_projectFilename = projFile.GetFullPath( );
 
 
         m_ProjectDoc = new wxXmlDocument( );
@@ -154,44 +157,13 @@ namespace Utils {
 
         GetSettings( )->SetLastFile( m_projectFilename );
 
-//        LoadData();
-
         SetDirty( false );
         return true;
     }
 
-    void Project::LoadData()
-    {
-        LoadCatalogData( );
-        LoadDesignData( );
-
-        LoadDesignTree( );
-        LoadCatalogTree( );
-        InitODTDocument( );
-    }
-
-    void Project::LoadCatalogData( )
-    {
-        wxString catalogFilename = GetCatalogFilename( );
-        m_generatorData.LoadCatalogData( catalogFilename );
-    }
-
-    void Project::LoadCatalogTree( )
-    {
-        GetCatalogTreeCtrl( )->LoadTree( );
-    }
-
-    void Project::LoadDesignData( )
-    {
-        wxString albumFilename = GetDesignFilename( );
-        m_generatorData.LoadDesignData( albumFilename );
-    }
-
-    void Project::LoadDesignTree( )
-    {
-        GetDesignTreeCtrl( )->LoadTree( );
-    }
-
+  
+    
+    //(((((((((((((((((((((((-)))))))))))))))))))))))
     void Project::LoadAttributes( wxXmlNode* thisObject )
     {
         const wxXmlAttribute* attr = thisObject->GetAttributes( );
@@ -203,7 +175,7 @@ namespace Utils {
 
             if ( !name.Cmp( "OutputName" ) )
             {
-                m_outputFilename = MakeFileAbsolute( val );
+                m_ODTOutputFilename = MakeFileAbsolute( val );
             }
             else if ( !name.Cmp( "Album" ) )
             {
@@ -211,7 +183,7 @@ namespace Utils {
             }
             else if ( !name.Cmp( "ImagePath" ) )
             {
-                GetLSettings( )->SetImageDirectory( MakeFileAbsolute( val ) );
+                GetSettings( )->SetImageDirectory( MakeFileAbsolute( val ) );
             }
             else if ( !name.Cmp( "Catalog" ) )
             {
@@ -220,12 +192,9 @@ namespace Utils {
             attr = attr->GetNext( );
         }
     }
-    void Project::InitODTDocument()
-    {
-        ODT::Document* odtDoc = new ODT::Document();
-        SetODTDocument( odtDoc );
-    }
-
+    
+    
+    //(((((((((((((((((((((((-)))))))))))))))))))))))
     void Project::Save( )
     {
 
@@ -242,7 +211,7 @@ namespace Utils {
         m_ProjectDoc = new wxXmlDocument(  );
         wxXmlNode* root = new wxXmlNode( wxXML_ELEMENT_NODE, "Project" );
 
-        root->AddAttribute( "OutputName", m_outputFilename );
+        root->AddAttribute( "OutputName", m_ODTOutputFilename );
         root->AddAttribute( "Album", m_designFilename );
         root->AddAttribute( "ImagePath", m_imagePath );
         root->AddAttribute( "Catalog", m_catalogFilename );

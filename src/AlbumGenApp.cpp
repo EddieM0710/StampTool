@@ -31,7 +31,7 @@
 #endif
 
 #include "Defs.h"
-#include "utils/Project.h"
+#include "gui/GeneratorData.h"
 #include "AlbumGenApp.h"
 
 /*
@@ -101,8 +101,6 @@ bool AlbumGenApp::OnInit( )
 #if wxUSE_GIF
     wxImage::AddHandler( new wxGIFHandler );
 #endif
-
-    m_project = new Utils::Project();
 
     m_frame = new AlbumGenFrame( NULL );
     m_frame->SetupRecentMenu( );    

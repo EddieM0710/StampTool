@@ -13,9 +13,14 @@
 #define Defs_H
 
 #include <wx/string.h>
+//#include "gui/GeneratorData.h"
+class GeneratorData;
+
 //#include "utils/Settings.h"
 //#include "utils/Project.h"
 #define MaxRecentEntries = 8
+
+extern GeneratorData* m_generatorData;
 
 extern bool Dirty;
 

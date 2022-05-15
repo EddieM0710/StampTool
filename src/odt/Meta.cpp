@@ -10,7 +10,7 @@ namespace ODT {
     Meta::Meta( )
     {
         m_meta = new wxXmlDocument( );
-        wxString configDir = GetProject( )->GetLSettings()->GetConfigurationDirectory( );
+        wxString configDir = GetGeneratorData( )->GetSettings()->GetConfigurationDirectory( );
         wxString metaTemplate = configDir + "/template/meta.xml";
         if ( !m_meta->Load( metaTemplate ) )
         {

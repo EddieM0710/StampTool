@@ -48,7 +48,7 @@
 #include "design/Album.h"
 #include "design/Stamp.h"
 
-#include <curl/curl.h>
+//#include <curl/curl.h>
 
 /*
  * AlbumGenFrame type definition
@@ -106,8 +106,8 @@ void AlbumGenFrame::InitLoad( )
 {
     if ( GetSettings( )->GetLoadLastFileAtStartUp( ) )
     {
-        GetProject( )->LoadProject( );
-        GetProject( )->LoadData( );
+        GetProject( )->LoadProjectXML( );
+        GetGeneratorData( )->LoadData( );
     }
 }
 
@@ -563,7 +563,7 @@ void AlbumGenFrame::NewProject( )
 
 }
 
-
+//GUI interface for creating new design
 void AlbumGenFrame::NewDesign( )
 {
     if ( IsDirty( ) )
@@ -592,7 +592,12 @@ void AlbumGenFrame::NewDesign( )
     {
         return; // the user changed idea...
     }
-
+    GetProject()->SetDesignFilename("");
+    GetProject()->SetODTOutputFilename( "" );
+    GetGeneratorData()->LoadDefaultDesignData();
+    GetGeneratorData()->LoadDesignTree( );
+    GetProject()->SetDirty(false);
+    SetDirty();
 
 }
 
@@ -628,6 +633,11 @@ void AlbumGenFrame::NewCatalog( )
         return; // the user changed idea...
     }
 
+    GetCatalogData()->NewCatalog();
+    GetProject()->SetCatalogFilename("");
+    GetGeneratorData()->LoadCatalogTree( );
+    GetProject()->SetDirty();
+    SetDirty();
 }
 
 void AlbumGenFrame::OpenProject( )
@@ -671,8 +681,8 @@ void AlbumGenFrame::OpenProject( )
         return;
     }
     GetProject( )->SetProjectFilename( filename );
-    GetProject( )->LoadProject( );
-    GetProject( )->LoadData( );
+    GetProject( )->LoadProjectXML( );
+    GetGeneratorData( )->LoadData( );
 
 }
 
@@ -713,8 +723,8 @@ void AlbumGenFrame::OpenDesign( )
     wxString filename = openFileDialog.GetPath( );
 
     GetProject( )->SetDesignFilename( filename );
-    GetProject( )->LoadDesignData( );
-    GetProject( )->LoadDesignTree( );
+    GetGeneratorData( )->LoadDesignData( );
+    GetGeneratorData( )->LoadDesignTree( );
 
 }
 
@@ -755,8 +765,8 @@ void AlbumGenFrame::OpenCatalog( )
     wxString filename = openFileDialog.GetPath( );
 
     GetProject( )->SetCatalogFilename( filename );
-    GetProject( )->LoadCatalogData( );
-    GetProject( )->LoadCatalogTree( );
+    GetGeneratorData( )->LoadCatalogData( );
+    GetGeneratorData( )->LoadCatalogTree( );
 }
 
 

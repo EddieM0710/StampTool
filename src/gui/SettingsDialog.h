@@ -37,7 +37,6 @@
 ////@begin control identifiers
 //#define ID_SETTINGSDIALOG 10000
 #define ID_IMAGEDIRECTORTEXTBOX 11001
-#define ID_WORKINGDIRECTORYTEXTBOX 11002
 #define ID_COUNTRYTEXTBOX 11003
 #define ID_CATALOGTEXTBOX 11004
 #define ID_OPENLASTCHECKBOX 11005
@@ -81,9 +80,6 @@ public:
     /// wxEVT_COMMAND_TEXT_UPDATED event handler for ID_IMAGEDIRECTORTEXTBOX
     void OnImagedirectortextboxTextUpdated( wxCommandEvent& event );
 
-    /// wxEVT_COMMAND_TEXT_UPDATED event handler for ID_WORKINGDIRECTORYTEXTBOX
-    void OnWorkingdirectorytextboxTextUpdated( wxCommandEvent& event );
-
     /// wxEVT_COMMAND_TEXT_UPDATED event handler for ID_COUNTRYTEXTBOX
     void OnCountrytextboxTextUpdated( wxCommandEvent& event );
 
@@ -116,7 +112,6 @@ public:
 
 ////@begin SettingsDialog member variables
     wxTextCtrl* m_imageDirectory;
-    //wxTextCtrl* m_workingDirectory;
     wxTextCtrl* m_country;
     wxTextCtrl* m_catalog;
     wxCheckBox* m_loadLastFileAtStartUp;

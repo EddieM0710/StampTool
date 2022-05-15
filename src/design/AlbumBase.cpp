@@ -197,7 +197,7 @@ namespace Design {
         wxTreeItemId childID = GetDesignTreeCtrl()->GetFirstChild(parentID, cookie);        {
             AlbumBaseType type = ( AlbumBaseType )GetDesignTreeCtrl()->GetItemType( childID );
             LayoutBase* child = ( LayoutBase* )GetDesignTreeCtrl()->GetItemNode( childID );
-            if ( ValidateChildren( child ) == AT_FATAL )
+            if ( ValidateChildren( (AlbumBase*)child ) == AT_FATAL )
             {
                 return AT_FATAL;
             }

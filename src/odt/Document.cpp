@@ -16,7 +16,6 @@ namespace ODT {
     //***********************************
     Document::Document(  )
     {
-        //m_workingDirectory = wxGetCwd( );
     };
 
     //**********************************
@@ -46,7 +45,7 @@ namespace ODT {
     wxString Document::AddImageFile( wxString filename )
     {
         //Design::DesignData *designData = Utils::GetProject()->GetDesignData( ) ;
-        wxString imageLoc = GetProject()->GetLSettings()->GetImageDirectory( );
+        wxString imageLoc = GetGeneratorData()->GetSettings()->GetImageDirectory( );
         wxFileName inputImage( imageLoc, filename );
         bool status = inputImage.MakeAbsolute( );
         wxString i_cwd = inputImage.GetCwd( );
@@ -241,7 +240,7 @@ namespace ODT {
     bool Document::MakeODT( )
     {
         wxString workingDir = wxGetCwd( );
-        wxString doc = GetProject( )->GetOutputFilename( );
+        wxString doc = GetProject( )->GetODTOutputFilename( );
         //wxString doc = ODTDoc()->GetAlbum()->GetDocName();
         wxFileName* outputName = new wxFileName( doc );
         wxFileName outputZipName = *outputName;

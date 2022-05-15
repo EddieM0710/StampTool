@@ -29,7 +29,7 @@
 #include "utils/Settings.h"
 #include "utils/XMLUtilities.h"
 #include "Defs.h"
-//#include "catalog/CatalogDefs.h"
+#include "catalog/CatalogData.h"
 // #include "catalog/Speciman.h"
 #include "catalog/Stamp.h"
 // #include "catalog/Classification.h"

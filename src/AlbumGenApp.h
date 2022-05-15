@@ -19,41 +19,40 @@
 
 #include "gui/AlbumGenFrame.h"
 
-class Project;
+class GeneratorData;
 
-  /**
-   * @brief AlbumGenApp class declaration.
-   * @details This is the main instantiation class for the application.  It
-   * inherits from wxApp.
-   */
+/**
+ * @brief AlbumGenApp class declaration.
+ * @details This is the main instantiation class for the application.  It
+ * inherits from wxApp.
+ */
 class AlbumGenApp : public wxApp {
-  DECLARE_CLASS( AlbumGenApp )
-  DECLARE_EVENT_TABLE( )
+    DECLARE_CLASS( AlbumGenApp )
+    DECLARE_EVENT_TABLE( )
 
 public:
-  // Constructor
-  AlbumGenApp( );
+    // Constructor
+    AlbumGenApp( );
 
-  /**
-   * @brief   Initialises member variables
-   *
-   **************************************************/
-  void Init( );
+    /**
+     * @brief   Initialises member variables
+     *
+     **************************************************/
+    void Init( );
 
-  // Initialises the application
-  virtual bool OnInit( );
+    // Initialises the application
+    virtual bool OnInit( );
 
-  /**
-   * @brief Cleanup for AlbumGenApp. Called on exit.
-   */
-  virtual int OnExit( );
+    /**
+     * @brief Cleanup for AlbumGenApp. Called on exit.
+     */
+    virtual int OnExit( );
 
-  AlbumGenFrame* GetFrame( ) { return m_frame; };
-  Utils::Project* GetProject(){ return m_project; };
-  
+    AlbumGenFrame* GetFrame( ) { return m_frame; };
+
 private:
-  AlbumGenFrame* m_frame;
-  Utils::Project* m_project;
+    AlbumGenFrame* m_frame;
+
 };
 
 #endif

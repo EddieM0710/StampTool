@@ -25,33 +25,41 @@ namespace Catalog {
     {
     public:
 
-        /**
-         * @brief Construct a new Catalog Data object
-         *
-         */
         CatalogData( );
         ~CatalogData( );
         bool IsOK( );
+
+        // Create a Catalog xml doc
         wxXmlDocument* NewDocument( );
+
+        // Delete the current Catalog xml doc and replace with new doc
         wxXmlDocument* ReplaceDocument( wxXmlDocument* doc );
+
+        // Get the Catalog XML doc
         wxXmlDocument* GetDoc( ) { return m_stampDoc; };
+
+        //Create and load a new Catalog xml Doc
+        void NewCatalog();
+
         void Save( );
-        void LoadXML(  wxString filename );
+        // Load Catalog xml file
+        void LoadXML( wxString filename );
+
+        // Load Catalog csv file
         void LoadCSV( wxString filename );
 
         wxString GetTitle( ) { return m_title; }
-        void  SetTitle( wxString val ) { m_title = val; };
-         wxXmlNode* FindNodeWithPropertyAndValue( wxXmlNode* element, wxString property, wxString value );
+        void SetTitle( wxString val ) { m_title = val; };
+
+        wxXmlNode* FindNodeWithPropertyAndValue( wxXmlNode* element, wxString property, wxString value );
         wxXmlNode* FindNodeWithPropertyAndValue( wxString property, wxString value );
 
-        void SetDirty( bool state = true ) { m_dirty = state; };
+        void SetDirty( bool state = true );
         bool isDirty( ) { return m_dirty; };
 
     private:
-        /* data */
         wxXmlDocument* m_stampDoc;
         wxString m_title;
-
         bool m_dirty;
     };
 }

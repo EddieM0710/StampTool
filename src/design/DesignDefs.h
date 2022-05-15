@@ -29,7 +29,7 @@ namespace Design {
 
     //DesignData* GetDesignData( DesignData* designData );
 
-    DesignData* NewDesignData( void );
+    //DesignData* NewDesignData( void );
 
     typedef enum
     {

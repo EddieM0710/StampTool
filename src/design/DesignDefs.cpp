@@ -38,6 +38,7 @@
 #include "gui/DesignTreeCtrl.h"
 #include "gui/GeneratorData.h"
 
+// namespace for all Album design 
 namespace Design {
 
     wxRealPoint  PpMM;    

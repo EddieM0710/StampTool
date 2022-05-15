@@ -41,14 +41,6 @@ class Stamp;
 class Classification;
 namespace Utils { class StampLink; }
 
-/**
- *
- * @todo  fix variable names so that wxXmlNode refs are called elements,
- * stamps, classifications, etc are called nodes;  and Tree item references are called items.
- * @todo  ?? mostly done. watch for needed changes
- *
- **************************************************/
-
 
  /**
   * data associated with each node in the tree
@@ -57,13 +49,7 @@ namespace Utils { class StampLink; }
 class CatalogTreeItemData : public wxTreeItemData
 {
 public:
-    /**
-     * @brief CatalogTreeItemData Constructor
-     *
-     * @param   type    :
-     * @param   desc    :
-     * @param   ele :
-     **************************************************/
+
     CatalogTreeItemData( Catalog::CatalogBaseType type, const wxString desc,
         wxXmlNode* ele = 0 )
     {
@@ -71,36 +57,13 @@ public:
         m_desc = desc;
         m_element = ele;
     }
-    /**
-     *
-     * @return {wxString}   :
-     **************************************************/
+
     wxString const& GetDesc( ) const { return m_desc; };
-
-    /**
-     *
-     * @param  ele :
-     ***************************************************/
     void SetCatNode( wxXmlNode* ele ) { m_element = ele; };
-
-
-
-    /**
-     *
-     * @return {wxXmlNode*}    :
-     **************************************************/
     wxXmlNode* GetNodeElement( void ) { return m_element; };
 
-    /**
-     *
-     * @param   type :
-     **************************************************/
     void SetType( Catalog::CatalogBaseType type ) { m_type = type; };
 
-    /**
-     *
-     * @return {CatalogBaseType}   :
-     **************************************************/
     Catalog::CatalogBaseType GetType( ) { return m_type; };
 
     Utils::StampLink* GetStampLink( ) { return m_stampLink; }
@@ -130,275 +93,76 @@ public:
      **************************************************/
     CatalogTreeCtrl( ) {}
 
-    /**
-     * CatalogTreeCtrl Constructor
-     *
-     * @param   parent :
-     * @param   id    :
-     * @param   pos      :
-     * @param   size      :
-     * @param   style       :
-     **************************************************/
+    
     CatalogTreeCtrl( wxWindow* parent, const wxWindowID id, const wxPoint& pos,
         const wxSize& size, long style );
 
-    /**
-     * ~CatalogTreeCtrl
-     *
-     **************************************************/
     virtual ~CatalogTreeCtrl( void ) {}
 
-    /**
-     *
-     * @param   event :
-     **************************************************/
     void OnBeginDrag( wxTreeEvent& event );
-
-    /**
-     * @brief
-     *
-    * @param   event :
-    **************************************************/
     void OnEndDrag( wxTreeEvent& event );
     void ShowDropMenu( wxTreeItemId itemSrc, wxTreeItemId itemDst  );
 
-    /**
-     *
-     * @param   event :
-     **************************************************/
-    void OnContextMenu( wxContextMenuEvent& event );
 
-    /**
-     *
-     * @param  event :
-     *******************************************bool del*******/
     void OnItemMenu( wxTreeEvent& event );
-
-    /**
-     * @brief Event handler for tree item selection change
-     * @param   event :
-     **************************************************/
     void OnSelChanged( wxTreeEvent& event );
-
-    /**
-     *
-     * @param   event :
-     **************************************************/
     void OnItemStateClick( wxTreeEvent& event );
-
-    /**
-     *
-     * @param   event :
-     **************************************************/
     void OnItemRClick( wxTreeEvent& event );
-
-    /**
-     *
-     * @param   event :
-     **************************************************/
     void OnItemContextMenu( wxTreeEvent& event );
-
-    /**
-     *
-     **************************************************/
     void CreateStateImageList( bool del );
     void CreateImageList( );
-
-    /**
-     *
-     **************************************************/
     void DoTreeContextSelection( );
-
-    /**
-     *
-     * @param   item :
-     * @param   reverse      :
-     **************************************************/
     void DoSortChildren( const wxTreeItemId& item, bool reverse = true )
     {
         m_reverseSort = reverse;
         wxTreeCtrl::SortChildren( item );
     };
 
-    /**
-     *
-     * @param  itemID :
-     **************************************************/
     void SetNextState( const wxTreeItemId& itemID );
     Utils::StampLink* AppendAlbumStamp( wxTreeItemId itemId );
     void DeleteAlbumStamp( wxTreeItemId itemId );
     void RemoveStampLink( wxTreeItemId itemId );
 
 
-    /**
-     *
-     **************************************************/
     void SetInventoryStatusImage( void );
-
-    /**
-     *
-     * @param   stamp :
-     * @return {IconID}       :
-     **************************************************/
-     Catalog::IconID GetInventoryIconId( Catalog::Stamp* stamp );
-
-    /**
-     *
-     * @param   id :
-     * @param   pt      :
-     **************************************************/
+    Catalog::IconID GetInventoryIconId( Catalog::Stamp* stamp );
     void ShowMenu( wxTreeItemId id, const wxPoint& pt );
 
-    /**
-     *
-     * @return {int}            :
-     **************************************************/
     int ImageSize( void ) const { return m_imageSize; };
 
-    /**
-     *
-     * @param   parent :
-     * @param   child   :
-     * @return {wxTreeItemId}        :
-     **************************************************/
     wxTreeItemId AddStampNodeToTree( wxTreeItemId parent, wxXmlNode* child );
-
-    /**
-     *
-     * @param   parent :
-     * @param  child   :
-     * @return {wxTreeItemId}        :
-     */
     wxTreeItemId AddChild( wxTreeItemId parent, wxXmlNode* child );
     wxTreeItemId InsertChild( wxTreeItemId parent, wxXmlNode* child, bool after = true );
 
     void ClearCatalogTree( );   
-
-    /**
-     *
-     **************************************************/
     void LoadTree( void );
-
-    /**
-     *
-     * @param   catalogData :
-     * @return {wxString}              :
-     **************************************************/
     wxString GetLabel( wxXmlNode* catalogData );
 
-    /**
-     *
-     * @param   parent :
-     * @param   node    :
-     * @return {wxTreeItemId}        :
-     **************************************************/
     wxTreeItemId AddTreeNode( wxTreeItemId parent, wxXmlNode* node );
-
-    /**
-     *
-     * @param   parent :
-     **************************************************/
     void SortTree( wxTreeItemId parent );
-
-    /**
-     *
-     **************************************************/
     void ReSortTree( );
     void GoToColnect( wxTreeItemId id );
 
-    /**
-     *
-     * @param   catalogData :
-     **************************************************/
     void StructureStamp( wxXmlNode* catalogData );
 
-
-    /**
-     * StructureCatalogData
-     * @param   catalogData      :
-     * @param  parentType      :
-     * @param  childType       :
-     * @param   secondChildType :
-     **************************************************/
     void StructureCatalogData( wxXmlNode* catalogData, Catalog::FormatType parentType,
         Catalog::FormatType childType,
         Catalog::FormatType secondChildType = Catalog::FT_FormatUnknown );
 
-
-    /**
-     *
-     * @param   catalogData :
-     * @param   parentType :
-     * @return {wxArrayPtrVoid*}       :
-     **************************************************/
     wxXmlNodeArray* MakeParentList( wxXmlNode* catalogData,
         Catalog::FormatType parentType );
 
-    /**
-     *
-     * @param   node :
-     * @return {wxTreeItemId}     :
-     **************************************************/
     wxTreeItemId FindTreeItemID( wxXmlNode* node );
 
-    /**
-     *
-     * @param   node :
-     * @param   id  :
-     * @return {wxTreeItemId}     :
-     **************************************************/
     wxTreeItemId FindTreeItemID( wxXmlNode* node, wxTreeItemId id );
 
-    /**
-     *
-     * @param   item :
-     * @param   node  :
-     * @return {bool}              :
-     **************************************************/
     bool IsElement( wxTreeItemId item, wxXmlNode* node );
-
-
-
-    /**
-     *
-     * @param   node :
-     * @return {wxTreeItemId}     :
-     **************************************************/
     wxTreeItemId FindTreeItemID( wxString stampID );
 
-    /**
-     *
-     * @param   node :
-     * @param   id  :
-     * @return {wxTreeItemId}     :
-     **************************************************/
     wxTreeItemId FindTreeItemID( wxString stampID, wxTreeItemId id );
-
-    /**
-     *
-     * @param   item :
-     * @param   node  :
-     * @return {bool}              :
-     **************************************************/
     bool IsElement( wxTreeItemId item, wxString stampID );
-
-
-
-    /**
-     *
-     * @param   id :
-     * @return {wxTreeItemId}    :
-     **************************************************/
     wxTreeItemId FindFirstStampChild( wxTreeItemId id );
 
-
-    /**
-     * @brief
-     *
-     * @param  i1
-     * @param  i2
-     * @return int
-     **************************************************/
     virtual int OnCompareItems( const wxTreeItemId& i1,
         const wxTreeItemId& i2 ) wxOVERRIDE;
 
@@ -413,12 +177,6 @@ public:
 
 private:
 
-    /**
-     * @brief
-     *
-     * @param  name
-     * @param  event
-     **************************************************/
     void LogEvent( const wxString& name, const wxTreeEvent& event );
 
     int m_imageSize;            // current size of images
@@ -431,8 +189,6 @@ private:
     //     make default (alphabetical) sorting much faster under wxMSW.
     wxDECLARE_DYNAMIC_CLASS( CatalogTreeCtrl );
     wxDECLARE_EVENT_TABLE( );
-
-    // wxXmlDocument *m_stampDoc;
 };
 
 #endif

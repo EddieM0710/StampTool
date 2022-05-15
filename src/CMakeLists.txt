@@ -31,7 +31,6 @@ target_link_libraries (AlbumGenerator LINK_PUBLIC
     GuiFiles  
     DesignFiles
     CatalogFiles  
-    ODTFiles
-    curl
+    ODTFiles    
     ${wxWidgets_LIBRARIES}
     )

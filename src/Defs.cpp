@@ -31,7 +31,6 @@
 #include "Settings.h"
 #include "utils/Project.h"
 #include "AlbumGenApp.h"
-#include "gui/GeneratorData.h"
 
 
 wxDECLARE_APP( AlbumGenApp );
@@ -41,23 +40,22 @@ bool Dirty = false;
 void SetDirty( bool state ) { Dirty = state; };
 bool IsDirty( ) { return Dirty; };
 
+// global declaration of application data 
+GeneratorData* m_generatorData;
 
 Utils::Settings* GetSettings( )
 {
-    Utils::Project* project = GetProject( );
-    if ( project )
-    {
-        return project->GetLSettings( );
-    }
-    return ( Utils::Settings* )0;
+
+    return m_generatorData->GetSettings( );
+
 };
 
 inline Utils::Project* GetProject( )
 {
-    return wxGetApp( ).GetProject( );
+    return m_generatorData->GetProject( );
 }
 
-inline GeneratorData* GetGeneratorData(){ return GetProject()->GetGeneratorData();};
+inline GeneratorData* GetGeneratorData(){ return m_generatorData;};
 
 Design::DesignData* GetDesignData() { return GetGeneratorData()->GetDesignData(); };
 Catalog::CatalogData* GetCatalogData() { return GetGeneratorData()->GetCatalogData(); };

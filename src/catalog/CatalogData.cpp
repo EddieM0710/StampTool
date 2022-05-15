@@ -24,6 +24,7 @@
 #include <wx/filename.h>
 #include <wx/string.h>
 #include "wx/xml/xml.h"
+#include <wx/msgdlg.h>
 
 #include "catalog/CatalogData.h"
 
@@ -37,20 +38,27 @@
 #include "utils/Settings.h"
 #include "utils/Project.h"
 #include "utils/XMLUtilities.h"
-
 #include "AlbumGenApp.h"
 
+wxDECLARE_APP( AlbumGenApp );
+
 namespace Catalog {
+
+    //(((((((((((((((((((((((-)))))))))))))))))))))))
 
     CatalogData::CatalogData(/* args */ )
     {
         m_stampDoc = 0;
     }
 
+    //(((((((((((((((((((((((-)))))))))))))))))))))))
+
     CatalogData::~CatalogData( )
     {
         delete m_stampDoc;
     }
+
+    //(((((((((((((((((((((((-)))))))))))))))))))))))
 
     bool CatalogData::IsOK( )
     {
@@ -61,6 +69,18 @@ namespace Catalog {
         return false;
     }
 
+    //(((((((((((((((((((((((-)))))))))))))))))))))))   
+
+    void CatalogData::SetDirty( bool state )
+    {
+        m_dirty = state;
+        if ( m_dirty )
+        {
+            GetProject( )->SetDirty( true );
+        }
+    }
+     //(((((((((((((((((((((((-)))))))))))))))))))))))
+
     wxXmlDocument* CatalogData::NewDocument( )
     {
         delete m_stampDoc;
@@ -68,12 +88,16 @@ namespace Catalog {
         return m_stampDoc;
     };
 
+    //(((((((((((((((((((((((-)))))))))))))))))))))))
+
     wxXmlDocument* CatalogData::ReplaceDocument( wxXmlDocument* doc )
     {
         delete m_stampDoc;
         m_stampDoc = doc;
         return m_stampDoc;
     };
+
+    //(((((((((((((((((((((((-)))))))))))))))))))))))
 
     void CatalogData::Save( )
     {
@@ -86,9 +110,18 @@ namespace Catalog {
         }
         m_stampDoc->Save( filename );
         SetDirty( false );
-
     }
+    
+    //(((((((((((((((((((((((-)))))))))))))))))))))))
 
+    void CatalogData::NewCatalog()
+    {     
+        m_stampDoc = NewDocument( );
+        wxXmlNode* root = new wxXmlNode( wxXML_ELEMENT_NODE, "Catalog" );
+        m_stampDoc->SetRoot( root );
+    }
+    
+    //(((((((((((((((((((((((-)))))))))))))))))))))))
 
     void CatalogData::LoadXML( wxString filename )
     {
@@ -103,20 +136,27 @@ namespace Catalog {
 
             wxString cwd = wxGetCwd( );
             //ok = m_stampDoc->Load( filename );
-            wxFileInputStream stream(filename);
-            if (!stream.IsOk())
+            wxFileInputStream stream( filename );
+            if ( !stream.IsOk( ) )
             {
-                wxStreamError err = stream.GetLastError();
-                std::cout  << "\n" << filename << " Stream Create Failed. Error:" << err << "\n\n";
-                ok = false;
-            }  
-            ok = m_stampDoc->Load(stream );
-            if (!ok)
+            wxString txt = wxString::Format( "%s Stream Create Failed. Error: %s.\n\n", filename, stream.GetLastError( ) );
+                wxMessageDialog* dlg = new wxMessageDialog(
+                    wxGetApp( ).GetFrame( ), txt,
+                    wxT( "Warning! Stream Create Failed.\n" ),
+                    wxOK | wxCANCEL | wxCENTER );
+                int rsp = dlg->ShowModal( );
+                return;
+            }
+            if ( !m_stampDoc->Load( stream ) )
             {
-                wxStreamError err = stream.GetLastError();
-                std::cout << "\n" << filename << " Stream Load Failed. Error:" << err << "\n\n";
-                ok = false;
-            }           
+            wxString txt = wxString::Format( "\n%s Stream  Failed. Error: %s.\n\n", filename, stream.GetLastError( ) );
+                wxMessageDialog* dlg = new wxMessageDialog(
+                    wxGetApp( ).GetFrame( ), txt,
+                    wxT( "Warning! Stream Create Failed.\n" ),
+                    wxOK | wxCANCEL | wxCENTER );
+                int rsp = dlg->ShowModal( );
+                return;
+            }
         }
         else
         {
@@ -127,7 +167,6 @@ namespace Catalog {
             {
                 catalogData->SetName( filename );
             }
-
         }
 
 
@@ -142,6 +181,8 @@ namespace Catalog {
 
         SetDirty( false );
     }
+
+    //(((((((((((((((((((((((-)))))))))))))))))))))))
 
     void CatalogData::LoadCSV( wxString filename )
     {
@@ -165,10 +206,14 @@ namespace Catalog {
     }
 
 
+    //(((((((((((((((((((((((-)))))))))))))))))))))))
+
     wxXmlNode* CatalogData::FindNodeWithPropertyAndValue( wxString property, wxString value )
     {
         return FindNodeWithPropertyAndValue( m_stampDoc->GetRoot( ), property, value );
     }
+
+    //(((((((((((((((((((((((-)))))))))))))))))))))))
 
     wxXmlNode* CatalogData::FindNodeWithPropertyAndValue( wxXmlNode* element, wxString property, wxString value )
     {

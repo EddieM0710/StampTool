@@ -12,18 +12,22 @@
 #ifndef GeneratorData_h
 #define GeneratorData_h
 
-#include "Defs.h"
-#include "catalog/CatalogData.h"
-#include "design/DesignData.h"
 #include "utils/StampList.h"
 
+namespace ODT { class Document; };
 namespace Design { class DesignData; };
 namespace Catalog { class CatalogData; };
+namespace Utils { class Project; };
+namespace Utils { class Settings; };
+
 class CatalogTreeCtrl;
 class DesignTreeCtrl;
 class DescriptionPanel;
 class AlbumImagePanel;
 
+
+
+// Links to all the data and controls needed for Album design
 class GeneratorData
 {
 public:
@@ -42,17 +46,32 @@ public:
     void LoadCatalogData( wxString catalogFilename );
 
     inline Design::DesignData* GetDesignData( ) { return m_designData; };
-    void LoadDesignData( wxString albumFilename );
 
-    void SetCatalogData( Catalog::CatalogData* catalogData )
-    {
-        if ( catalogData != m_catalogData )
-        {
-            delete m_catalogData;
-            m_catalogData = ( Catalog::CatalogData* )0;
-        }
-        m_catalogData = catalogData;
-    };
+   
+        // creates a new DesignData instance and loads default data
+        void LoadDefaultDesignData(  );
+
+        //creates a new DesignData instance and loads a file
+        void LoadDesignData();
+
+        //Load the Design tree with current xml document
+        void LoadDesignTree();
+        
+        // Load the catalog data from xml file
+        void LoadCatalogData();
+        
+        //Load the xml datainto the tree
+        void LoadCatalogTree();
+
+        //Load the Catalog and Design data and trees
+        void LoadData();
+
+        void InitODTDocument();
+
+        // Load last Project file at startup if enabled
+        void InitLoad();
+
+    void SetCatalogData( Catalog::CatalogData* catalogData );
 
     // void SetDesignData( Design::DesignData* designData )
     // {
@@ -63,6 +82,14 @@ public:
     //     }
     //     m_designData = designData;
     // };
+
+    ODT::Document* GetODTDocument( );
+    void SetODTDocument( ODT::Document* doc );
+
+    Utils::Settings* GetSettings( );
+    void SetSettings( Utils::Settings* settings );
+    Utils::Project* GetProject( );
+    void SetProject( Utils::Project* settings );
 
     inline CatalogTreeCtrl* GetCatalogTreeCtrl( ) { return m_catalogTreeCtrl; };
     inline DesignTreeCtrl* GetDesignTreeCtrl( ) { return m_designTreeCtrl; };
@@ -75,9 +102,14 @@ public:
     Design::DesignData* NewDesignData( void );
 
 private:
+
+    Utils::Settings* m_settings;
+    Utils::Project* m_project;
     Utils::StampList m_StampAlbumCatalogLink;
     Catalog::CatalogData* m_catalogData;
     Design::DesignData* m_designData;
+    ODT::Document* m_ODTDoc;
+
     CatalogTreeCtrl* m_catalogTreeCtrl;
     DesignTreeCtrl* m_designTreeCtrl;
     AlbumImagePanel* m_albumImagePanel;

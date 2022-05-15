@@ -37,7 +37,6 @@ class LabeledTextBox;
 ////@begin control identifiers
 #define ID_SETTINGSPANEL 10000
 #define ID_IMAGEDIRECTORTEXTBOX 11001
-#define ID_WORKINGDIRECTORYTEXTBOX 11002
 #define ID_COUNTRYTEXTBOX 11003
 #define ID_CATALOGTEXTBOX 11004
 #define ID_OPENLASTCHECKBOX 11005
@@ -99,7 +98,6 @@ public:
 
 ////@begin SettingsPanel member variables
     LabeledTextBox* m_imageDirectory;
-    //LabeledTextBox* m_workingDirectory;
     LabeledTextBox* m_country;
     LabeledTextBox* m_catalog;
     wxCheckBox* m_loadLastFileAtStartUp;

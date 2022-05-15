@@ -21,13 +21,13 @@
 #include "catalog/CatalogData.h"
 
 
-//(((((((((((((((((((((((-----------)))))))))))))))))))))))
+//********************(-----------***************
 Utils::Settings* GeneratorData::GetSettings( )
 {
     return  m_settings;
 };
 
-//((((((((((((((((((-----------))))))))))))))))))))))))
+//***************-----------***************
 void GeneratorData::SetSettings( Utils::Settings* settings )
 {
     m_settings = settings;
@@ -35,14 +35,14 @@ void GeneratorData::SetSettings( Utils::Settings* settings )
 
 
 
-//(((((((((((((((((((((((-----------)))))))))))))))))))))))
+//********************(-----------***************
 
 Utils::Project* GeneratorData::GetProject( )
 {
     return  m_project;
 };
 
-//((((((((((((((((((-----------))))))))))))))))))))))))
+//***************-----------***************
 
 void GeneratorData::SetProject( Utils::Project* project )
 {
@@ -101,7 +101,7 @@ void GeneratorData::LoadData( )
     InitODTDocument( );
 }
 
-////(((((((((((((((((((((((-)))))))))))))))))))))))
+////*****
 
 void GeneratorData::LoadCatalogData( )
 {
@@ -140,7 +140,7 @@ ODT::Document* GeneratorData::GetODTDocument( )
     return m_ODTDoc;
 };
 
-//(((((((((((((((((((((((-)))))))))))))))))))))))
+//*****
 
 void GeneratorData::SetODTDocument( ODT::Document* doc )
 {

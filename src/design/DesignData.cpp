@@ -45,7 +45,7 @@
 namespace Design {
 
 
-    //(((((((((((((((((((((((-)))))))))))))))))))))))    
+    //*****    
 
     DesignData::DesignData(/* args */ )
     {
@@ -53,7 +53,7 @@ namespace Design {
         m_album = 0;
     }
 
-    //(((((((((((((((((((((((-)))))))))))))))))))))))  
+    //*****  
     DesignData::~DesignData( )
     {
 
@@ -63,7 +63,7 @@ namespace Design {
         m_album = 0;
     }
 
-    //(((((((((((((((((((((((-)))))))))))))))))))))))  
+    //*****  
     bool DesignData::IsOK( )
     {
         if ( m_albumDoc )
@@ -75,7 +75,7 @@ namespace Design {
 
 
     // Set the design to dirty
-    //(((((((((((((((((((((((-)))))))))))))))))))))))    
+    //*****    
     void DesignData::SetDirty( bool state )
     {
         m_dirty = state;
@@ -107,7 +107,7 @@ void DesignData::LoadDefaultDocument()
 }
 
 
-    //(((((((((((((((((((((((-)))))))))))))))))))))))  
+    //*****  
     wxXmlDocument* DesignData::NewDesignDocument( )
     {
         delete m_albumDoc;
@@ -117,7 +117,7 @@ void DesignData::LoadDefaultDocument()
 
 
     // Save the DesignData to an xml file 
-    //(((((((((((((((((((((((-)))))))))))))))))))))))  
+    //*****  
     void DesignData::SaveXML( wxString filename )
     {
         if ( wxFileExists( filename ) )
@@ -132,7 +132,7 @@ void DesignData::LoadDefaultDocument()
     }
 
     // transferrs the DesignData tree to an xml file
-    //(((((((((((((((((((((((-)))))))))))))))))))))))  
+    //*****  
     void DesignData::SaveDesignTree()
     {
         wxTreeItemId albumID = GetDesignTreeCtrl()->GetRootItem();
@@ -148,7 +148,7 @@ void DesignData::LoadDefaultDocument()
     }
 
     // loads an xml file into memory
-    //(((((((((((((((((((((((-)))))))))))))))))))))))  
+    //*****  
     bool DesignData::LoadXML( wxString filename )
     {
         if ( !m_albumDoc )
@@ -169,7 +169,7 @@ void DesignData::LoadDefaultDocument()
     }
 
     // Gets the page of the selected design given node
-    //(((((((((((((((((((((((-)))))))))))))))))))))))  
+    //*****  
     AlbumBase* DesignData::GetPage( AlbumBase* node )
     {
         wxTreeItemId id = node->GetTreeItemId();
@@ -178,7 +178,7 @@ void DesignData::LoadDefaultDocument()
         return (AlbumBase*)0;
     }
 
-    //(((((((((((((((((((((((-)))))))))))))))))))))))  
+    //*****  
     NodeStatus DesignData::ValidatePage( AlbumBase* node )
     {
         Page* page = ( Page* )GetPage( node );
@@ -189,7 +189,7 @@ void DesignData::LoadDefaultDocument()
         return AT_FATAL;
     }
 
-    //(((((((((((((((((((((((-)))))))))))))))))))))))  
+    //*****  
     void DesignData::MakePage(LayoutBase* node)
     {
         Page* page = (Page*)GetPage( node );
@@ -205,7 +205,7 @@ void DesignData::LoadDefaultDocument()
         }
     }
 
-    //(((((((((((((((((((((((-)))))))))))))))))))))))  
+    //*****  
     void DesignData::UpdateAlbum( )
     {
         bool ok = m_album->UpdateMinimumSize( );

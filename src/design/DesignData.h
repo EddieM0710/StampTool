@@ -51,26 +51,26 @@ namespace Design {
         wxXmlDocument* GetDoc( ) { return m_albumDoc; };
 
         // create a new design document with default data
-        void LoadDefaultDocument();
+        void LoadDefaultDocument( );
 
         void SaveXML( wxString filename );
-        void SaveDesignTree();
+        void SaveDesignTree( );
         bool LoadXML( wxString filename );
 
         Album* GetAlbum( ) { return m_album; };
         void SetAlbum( Album* album ) { m_album = album; };
 
-        void MakePage(LayoutBase* node);
+        void MakePage( LayoutBase* node );
 
         void SetDirty( bool state = true );
         bool isDirty( ) { return m_dirty; };
 
-        AlbumBase* GetPage( AlbumBase* node);
+        AlbumBase* GetPage( AlbumBase* node );
         wxTreeItemId GetPage( wxTreeItemId id );
         NodeStatus ValidatePage( AlbumBase* node );
         AlbumBase* ValidateChildren( AlbumBase* node );
 
-        void SaveNodeData ( wxTreeItemId treeItemId );
+        void SaveNodeData( wxTreeItemId treeItemId );
         void UpdateAlbum( );
 
     private:

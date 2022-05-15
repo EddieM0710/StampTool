@@ -1,27 +1,54 @@
+/**
+ * @file Project.cpp
+ * @author Eddie Monroe (you@domain.com)
+ * @brief
+ * @version 0.1
+ * @date 2021-02-24
+ *
+ * @copyright Copyright (c) 2021
+ *
+ */
+
+ // For compilers that support precompilation, includes "wx/wx.h".
+#include "wx/wxprec.h"
+
+#ifdef __BORLANDC__
+#pragma hdrstop
+#endif
+
+#ifdef __BORLANDC__
+#pragma hdrstop
+#endif
+
+#ifndef WX_PRECOMP
+#include "wx/wx.h"
+#endif
+
 #include <iostream>
 #include <wx/filename.h>
-#include "Defs.h"
+
+
 #include "utils/Project.h"
 
-
+#include "Defs.h"
 #include "utils/Settings.h"
 
 #include "catalog/CatalogData.h"
 #include "design/DesignDefs.h"
 #include "design/DesignData.h"
 #include "design/AlbumBase.h"
+
 #include "gui/CatalogTreeCtrl.h"
 #include "gui/DesignTreeCtrl.h"
 
 
 namespace Utils {
 
-//(((((((((((((((((((((((-)))))))))))))))))))))))
     Project::Project( )
     {
         InitDefs( );
         Settings* settings = new Settings( );
-        GetGeneratorData()->SetSettings( settings );
+        GetGeneratorData( )->SetSettings( settings );
         if ( settings->GetLoadLastFileAtStartUp( ) )
         {
             m_projectFilename = settings->GetLastFile( );
@@ -35,58 +62,62 @@ namespace Utils {
         }
 
         SetDirty( false );
-    };
+    }
 
-    
-    
-    //(((((((((((((((((((((((-)))))))))))))))))))))))
+
+
+    //*****
 
     wxString Project::GetODTOutputFilename( )
     {
         return m_ODTOutputFilename;
-    };
-    
-    //(((((((((((((((((((((((-))))))))))))))))))))))) 
-       
+    }
+
+    //***** 
+
     void Project::SetODTOutputFilename( wxString outputFilename )
     {
-        m_ODTOutputFilename = outputFilename; m_dirty = true;
-    };
-    
-    //(((((((((((((((((((((((-)))))))))))))))))))))))
+        m_ODTOutputFilename = outputFilename;
+        m_dirty = true;
+    }
+
 
     wxString Project::GetDesignFilename( )
     {
         return m_designFilename;
     };
-    
-    //(((((((((((((((((((((((-)))))))))))))))))))))))
+
+    //*****
 
     void Project::SetDesignFilename( wxString albumFilename )
     {
         m_designFilename = albumFilename;
         m_dirty = true;
     };
-        
-    //(((((((((((((((((((((((-)))))))))))))))))))))))
+
+    //*****
+
     wxString Project::GetImagePath( )
     {
         return m_imagePath;
     };
-        
-    //(((((((((((((((((((((((-)))))))))))))))))))))))
+
+    //*****
+
     void Project::SetImagePath( wxString imagePath )
     {
         m_imagePath = imagePath; SetDirty( );
     };
-        
-    //(((((((((((((((((((((((-)))))))))))))))))))))))
+
+    //*****
+
     wxString Project::GetCatalogFilename( )
     {
         return m_catalogFilename;
     };
- 
-    //(((((((((((((((((((((((-)))))))))))))))))))))))
+
+    //*****
+
     void Project::SetCatalogFilename( wxString catalogFilename )
     {
         if ( m_catalogFilename.Cmp( catalogFilename ) )
@@ -95,15 +126,17 @@ namespace Utils {
             SetDirty( );
         }
     };
-        
-    //(((((((((((((((((((((((-)))))))))))))))))))))))
-    void Project::SetProjectFilename(wxString name ) 
-    {  
-        m_projectFilename = name; 
+
+    //*****
+
+    void Project::SetProjectFilename( wxString name )
+    {
+        m_projectFilename = name;
         GetSettings( )->SetLastFile( m_projectFilename );
     };
-    
-    //(((((((((((((((((((((((-)))))))))))))))))))))))
+
+    //*****
+
     wxString Project::MakeFileAbsolute( wxString filename )
     {
         wxFileName newFile( filename );
@@ -114,10 +147,11 @@ namespace Utils {
         return newFile.GetFullPath( );
     }
 
-    
-    
-    //(((((((((((((((((((((((-)))))))))))))))))))))))
-    bool Project::LoadProjectXML(  )
+
+
+    //*****
+
+    bool Project::LoadProjectXML( )
     {
         wxFileName projFile( m_projectFilename );
         if ( projFile.FileExists( ) )
@@ -161,9 +195,10 @@ namespace Utils {
         return true;
     }
 
-  
-    
-    //(((((((((((((((((((((((-)))))))))))))))))))))))
+
+
+    //*****
+
     void Project::LoadAttributes( wxXmlNode* thisObject )
     {
         const wxXmlAttribute* attr = thisObject->GetAttributes( );
@@ -192,9 +227,10 @@ namespace Utils {
             attr = attr->GetNext( );
         }
     }
-    
-    
-    //(((((((((((((((((((((((-)))))))))))))))))))))))
+
+
+    //*****
+
     void Project::Save( )
     {
 
@@ -208,7 +244,7 @@ namespace Utils {
         {
             delete m_ProjectDoc;
         }
-        m_ProjectDoc = new wxXmlDocument(  );
+        m_ProjectDoc = new wxXmlDocument( );
         wxXmlNode* root = new wxXmlNode( wxXML_ELEMENT_NODE, "Project" );
 
         root->AddAttribute( "OutputName", m_ODTOutputFilename );

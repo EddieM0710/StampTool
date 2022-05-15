@@ -71,7 +71,7 @@ namespace Utils {
 
     };
 
-    //(((((((((((((((((((((((-)))))))))))))))))))))))    
+    //*****    
     void Settings::SetDirty( bool state )
     {
         m_dirty = state;
@@ -81,7 +81,7 @@ namespace Utils {
         }
     }
 
-    //(((((((((((((((((((((((-)))))))))))))))))))))))    
+    //*****    
     int Settings::GetNextSortClassification( int current )
     {
         if ( current == 0 )
@@ -111,7 +111,7 @@ namespace Utils {
         return -1;
     }
 
-    //(((((((((((((((((((((((-)))))))))))))))))))))))    
+    //*****    
     void Settings::SetLastFile( wxString file )
     {
         AddRecent( m_lastFile );
@@ -125,7 +125,7 @@ namespace Utils {
     };
 
 
-    //(((((((((((((((((((((((-))))))))))))))))))))))) 
+    //***** 
     void Settings::AddRecent( wxString filename )
     {
         if ( !filename.IsEmpty( ) ) // add an empty file
@@ -162,7 +162,7 @@ namespace Utils {
         }
     }
 
-    //(((((((((((((((((((((((-))))))))))))))))))))))) 
+    //***** 
     void Settings::Save( )
     {
         wxFileName* filename = new wxFileName( GetConfigurationDirectory( ), "Settings", "xml" );
@@ -181,7 +181,7 @@ namespace Utils {
         child = NewNode( settings, "LastFile" );
         if ( child )
         {
-            child->AddAttribute( "LoadLastFileAtStartUp", Bool2String( GetLoadLastFileAtStartUp( )));
+            child->AddAttribute( "LoadLastFileAtStartUp", Bool2String( GetLoadLastFileAtStartUp( ) ) );
             child = NewNode( child, "File" );
             child->AddAttribute("Name", GetLastFile());
         }
@@ -239,7 +239,7 @@ namespace Utils {
         SetDirty(false);
     }
 
-    //(((((((((((((((((((((((-))))))))))))))))))))))) 
+    //***** 
     void Settings::SetSettingValue( wxString& setting, wxXmlNode* parent, wxString childName, wxString defaultVal )
     {
         wxXmlNode* childNode = FirstChildElement( parent, childName );
@@ -259,7 +259,7 @@ namespace Utils {
         }
     }
 
-    //(((((((((((((((((((((((-))))))))))))))))))))))) 
+    //***** 
     void Settings::SetDefaults()
     {
 
@@ -314,7 +314,7 @@ namespace Utils {
         }
     }
 
-    //(((((((((((((((((((((((-))))))))))))))))))))))) 
+    //***** 
     void Settings::Load( )
     {
         wxFileName* filename

@@ -706,7 +706,8 @@ void AlbumGenFrame::OpenDesign( )
         {
             return;
         }
-    };
+    }
+
     wxFileName lastFile( GetProject( )->GetDesignFilename( ) );
     lastFile.SetExt( "xml" );
     wxFileDialog openFileDialog(

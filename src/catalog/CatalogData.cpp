@@ -44,21 +44,21 @@ wxDECLARE_APP( AlbumGenApp );
 
 namespace Catalog {
 
-    //(((((((((((((((((((((((-)))))))))))))))))))))))
+    //*****
 
     CatalogData::CatalogData(/* args */ )
     {
         m_stampDoc = 0;
     }
 
-    //(((((((((((((((((((((((-)))))))))))))))))))))))
+    //*****
 
     CatalogData::~CatalogData( )
     {
         delete m_stampDoc;
     }
 
-    //(((((((((((((((((((((((-)))))))))))))))))))))))
+    //*****
 
     bool CatalogData::IsOK( )
     {
@@ -69,7 +69,7 @@ namespace Catalog {
         return false;
     }
 
-    //(((((((((((((((((((((((-)))))))))))))))))))))))   
+    //*****   
 
     void CatalogData::SetDirty( bool state )
     {
@@ -79,7 +79,7 @@ namespace Catalog {
             GetProject( )->SetDirty( true );
         }
     }
-     //(((((((((((((((((((((((-)))))))))))))))))))))))
+     //*****
 
     wxXmlDocument* CatalogData::NewDocument( )
     {
@@ -88,7 +88,7 @@ namespace Catalog {
         return m_stampDoc;
     };
 
-    //(((((((((((((((((((((((-)))))))))))))))))))))))
+    //*****
 
     wxXmlDocument* CatalogData::ReplaceDocument( wxXmlDocument* doc )
     {
@@ -97,7 +97,7 @@ namespace Catalog {
         return m_stampDoc;
     };
 
-    //(((((((((((((((((((((((-)))))))))))))))))))))))
+    //*****
 
     void CatalogData::Save( )
     {
@@ -112,7 +112,7 @@ namespace Catalog {
         SetDirty( false );
     }
     
-    //(((((((((((((((((((((((-)))))))))))))))))))))))
+    //*****
 
     void CatalogData::NewCatalog()
     {     
@@ -121,7 +121,7 @@ namespace Catalog {
         m_stampDoc->SetRoot( root );
     }
     
-    //(((((((((((((((((((((((-)))))))))))))))))))))))
+    //*****
 
     void CatalogData::LoadXML( wxString filename )
     {
@@ -182,7 +182,7 @@ namespace Catalog {
         SetDirty( false );
     }
 
-    //(((((((((((((((((((((((-)))))))))))))))))))))))
+    //*****
 
     void CatalogData::LoadCSV( wxString filename )
     {
@@ -206,14 +206,14 @@ namespace Catalog {
     }
 
 
-    //(((((((((((((((((((((((-)))))))))))))))))))))))
+    //*****
 
     wxXmlNode* CatalogData::FindNodeWithPropertyAndValue( wxString property, wxString value )
     {
         return FindNodeWithPropertyAndValue( m_stampDoc->GetRoot( ), property, value );
     }
 
-    //(((((((((((((((((((((((-)))))))))))))))))))))))
+    //*****
 
     wxXmlNode* CatalogData::FindNodeWithPropertyAndValue( wxXmlNode* element, wxString property, wxString value )
     {

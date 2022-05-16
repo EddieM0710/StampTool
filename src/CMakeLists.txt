@@ -27,10 +27,10 @@ add_executable ( AlbumGenerator
 #link_directories( /sandbox/Applications/TinyXML2/build )
 
 target_link_libraries (AlbumGenerator LINK_PUBLIC 
-    Utils
-    GuiFiles  
+     GuiFiles  
     DesignFiles
     CatalogFiles  
     ODTFiles    
+    Utils
     ${wxWidgets_LIBRARIES}
     )

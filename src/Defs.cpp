@@ -50,7 +50,7 @@ Utils::Settings* GetSettings( )
 
 };
 
-inline Utils::Project* GetProject( )
+Utils::Project* GetProject( )
 {
     return m_generatorData->GetProject( );
 }

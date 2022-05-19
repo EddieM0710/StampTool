@@ -103,30 +103,14 @@ public:
     /// Should we show tooltips?
     static bool ShowToolTips();
 
-    void SetStamp( Stamp* stamp );
-    
-    void UpdateStatus( );
-
-    void LoadCatalogTree( );
-
-    void ClearCatalogTree( );
-
-    void LoadCatalog( );
     void InitCatalogData();
-    void LoadCatalogCSV( wxString csvFilename );
     CatalogTreeCtrl* GetCatalogTree( ) { return m_catalogTreeCtrl; };
 
- 
- 
 
     wxTextCtrl* m_title;
     CatalogTreeCtrl* m_catalogTreeCtrl;
   
     wxTreeItemId m_draggedItem;
-    
-    Stamp* m_stamp;
-    
-    wxTreeItemId m_currentItem;
 
 };
 

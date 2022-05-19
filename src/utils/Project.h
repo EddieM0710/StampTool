@@ -7,11 +7,15 @@
 
 namespace Utils {
 
+    Project* NewProjectInstance();
+
     class Project
     {
     public:
         Project( );
-        ~Project( ) {};
+        ~Project( ) { if ( m_ProjectDoc ) { delete m_ProjectDoc; } };
+        
+        void InitProject();
 
         wxString GetProjectFilename( ) { return m_projectFilename; };
         void SetProjectFilename( wxString name );

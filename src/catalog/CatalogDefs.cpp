@@ -44,19 +44,14 @@ namespace Catalog {
 
 
 
-    CatalogData* GetCatalogData( void )
-    {
-        return GetCatalogData( );
-    };
-    void SetCatalogData( CatalogData* catalogData )
-    {
-        GetGeneratorData( )->SetCatalogData( catalogData );
-    };
-
-    CatalogData* NewCatalogData( )
-    {
-        return ( new CatalogData( ) );
-    };
+    // CatalogData* GetCatalogData( void )
+    // {
+    //     return  GetGeneratorData( )->GetCatalogData( );
+    // };
+    // void SetCatalogData( CatalogData* catalogData )
+    // {
+    //     GetGeneratorData( )->SetCatalogData( catalogData );
+    // };
 
     const wxString ST_CheckedStatusStrings[ ST_NbrCheckedStatusTypes ]
         = { wxT( "Checked" ), wxT( "Unchecked" ) };

@@ -334,7 +334,8 @@ void AlbumGenFrame::DoCSVImport( )
         return;
     }
 
-    m_catalogPanel->LoadCatalogCSV( filename );
+    GetGeneratorData()->ReadCatalogCSV( filename );
+    GetGeneratorData()->LoadCatalogTree( );
     Dirty = true;
 }
 
@@ -549,15 +550,7 @@ void AlbumGenFrame::NewProject( )
             return;
         }
     };
-
-    wxFileDialog newFileDialog(
-        this, _( "New Project XML file" ),
-        wxGetCwd( ), "",
-        "Project XML files (*.prj.xml)|*.prj.xml", wxFD_OPEN | wxFD_CHANGE_DIR );
-    if ( newFileDialog.ShowModal( ) == wxID_CANCEL )
-    {
-        return; // the user changed idea...
-    }
+    GetGeneratorData()->FileNewProject();
 
 
 
@@ -583,20 +576,7 @@ void AlbumGenFrame::NewDesign( )
             return;
         }
     };
-
-    wxFileDialog newFileDialog(
-        this, _( "New Design XML file" ),
-        wxGetCwd( ), "",
-        "Project XML files (*.alb.xml)|*.alb.xml", wxFD_OPEN );
-    if ( newFileDialog.ShowModal( ) == wxID_CANCEL )
-    {
-        return; // the user changed idea...
-    }
-    GetProject()->SetDesignFilename("");
-    GetProject()->SetODTOutputFilename( "" );
-    GetGeneratorData()->LoadDefaultDesignData();
-    GetGeneratorData()->LoadDesignTree( );
-    GetProject()->SetDirty(false);
+    GetGeneratorData()->LoadNewDesign();
     SetDirty();
 
 }
@@ -624,19 +604,7 @@ void AlbumGenFrame::NewCatalog( )
         }
     };
 
-    wxFileDialog newFileDialog(
-        this, _( "New Catalog XML file" ),
-        wxGetCwd( ), "",
-        "Project XML files (*.cat.xml)|*.cat.xml", wxFD_OPEN  );
-    if ( newFileDialog.ShowModal( ) == wxID_CANCEL )
-    {
-        return; // the user changed idea...
-    }
-
-    GetCatalogData()->NewCatalog();
-    GetProject()->SetCatalogFilename("");
-    GetGeneratorData()->LoadCatalogTree( );
-    GetProject()->SetDirty();
+    GetGeneratorData()->LoadNewCatalog();
     SetDirty();
 }
 
@@ -680,17 +648,14 @@ void AlbumGenFrame::OpenProject( )
         wxLogError( "Cannot open file '%s'.", filename );
         return;
     }
-    GetProject( )->SetProjectFilename( filename );
-    GetProject( )->LoadProjectXML( );
-    GetGeneratorData( )->LoadData( );
+
+    GetGeneratorData( )->FileOpenProject( filename);
 
 }
 
 
 void AlbumGenFrame::OpenDesign( )
 {
-
-
     if ( IsDirty( ) )
     {
         // query whether to save first 
@@ -724,7 +689,7 @@ void AlbumGenFrame::OpenDesign( )
     wxString filename = openFileDialog.GetPath( );
 
     GetProject( )->SetDesignFilename( filename );
-    GetGeneratorData( )->LoadDesignData( );
+    GetGeneratorData( )->ReadDesignFile( );
     GetGeneratorData( )->LoadDesignTree( );
 
 }
@@ -766,7 +731,7 @@ void AlbumGenFrame::OpenCatalog( )
     wxString filename = openFileDialog.GetPath( );
 
     GetProject( )->SetCatalogFilename( filename );
-    GetGeneratorData( )->LoadCatalogData( );
+    GetGeneratorData( )->ReadCatalogFile( );
     GetGeneratorData( )->LoadCatalogTree( );
 }
 
@@ -829,7 +794,23 @@ int AlbumGenFrame::QueryMerge( int& mergeMethod )
 
 void AlbumGenFrame::SaveProject( )
 {
-    GetProject( )->Save( );
+    wxString filename = GetProject()->GetProjectFilename();
+    wxFileName file(filename);
+    wxString name = file.GetName();
+    if ( !name.Cmp( "unnamed.prj"))
+    {
+        file.SetExt( ".prj.xml" );
+        wxFileDialog saveFileDialog(
+            this, _( "AlbumGenerator Project XML file" ),
+            file.GetPath( ), file.GetFullName( ),
+            "XML files (*.prj.xml)|*.prj.xml", wxFD_SAVE | wxFD_OVERWRITE_PROMPT );
+        if ( saveFileDialog.ShowModal( ) == wxID_CANCEL )
+            return;
+
+        wxString filename = saveFileDialog.GetPath( );
+        GetProject( )->SetProjectFilename( filename );
+        GetProject( )->Save( );   
+    } 
 }
 
 void AlbumGenFrame::SaveDesign( )
@@ -851,7 +832,7 @@ void AlbumGenFrame::SaveAsProject( )
         wxFileName lastFile( GetSettings( )->GetLastFile( ) );
         lastFile.SetExt( "xml" );
         wxFileDialog saveFileDialog(
-            this, _( "Stamp List XML file" ),
+            this, _( "AlbumGenerator Project XML file" ),
             lastFile.GetPath( ), lastFile.GetFullName( ),
             "XML files (*.prj.xml)|*.prj.xml", wxFD_SAVE | wxFD_OVERWRITE_PROMPT );
         if ( saveFileDialog.ShowModal( ) == wxID_CANCEL )

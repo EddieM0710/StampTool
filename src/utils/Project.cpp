@@ -44,27 +44,22 @@
 
 namespace Utils {
 
-    Project::Project( )
+    Project* NewProjectInstance()
     {
-        InitDefs( );
-        Settings* settings = new Settings( );
-        GetGeneratorData( )->SetSettings( settings );
-        if ( settings->GetLoadLastFileAtStartUp( ) )
-        {
-            m_projectFilename = settings->GetLastFile( );
-
-            // if ( wxFileExists( filename ) )
-            // {
-            //     if ( LoadProjectXML( filename ) )
-            //     {
-            //     }
-            // }
-        }
-
-        SetDirty( false );
+        Project* project = new Project();
+        project->InitProject();
+        return project;
     }
 
+    Project::Project( )
+    {
 
+    }
+    void Project::InitProject()
+    {
+        InitDefs( );
+        SetDirty( false );
+    }
 
     //*****
 

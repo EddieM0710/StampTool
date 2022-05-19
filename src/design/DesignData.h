@@ -42,6 +42,7 @@ namespace Design {
          */
         DesignData( );
         ~DesignData( );
+        DesignData* InitDesignData();
         bool IsOK( );
 
         // create new DesignData xml wxXmlDocument
@@ -79,5 +80,9 @@ namespace Design {
 
         bool m_dirty;
     };
+
+
+    DesignData* NewDesignDataInstance();
+
 }
 #endif

@@ -22,24 +22,24 @@ namespace Catalog {
 
     class CatalogData;
 
-    /**
-     * @brief Get the Stamp Data object
-     *
-     * @return CatalogData* InitCatalogDefs
-     * @brief Set the Stamp Data object
-     *
-     * @param  catalogData
-     * @return CatalogData*
-     **************************************************/
-    void SetCatalogData( CatalogData* catalogData );
+    // /**
+    //  * @brief Get the Stamp Data object
+    //  *
+    //  * @return CatalogData* InitCatalogDefs
+    //  * @brief Set the Stamp Data object
+    //  *
+    //  * @param  catalogData
+    //  * @return CatalogData*
+    //  **************************************************/
+    // void SetCatalogData( CatalogData* catalogData );
 
 
-    /**
-     * @brief Create a new CatalogData file
-     *
-     * @return CatalogData*
-     **************************************************/
-    CatalogData* NewCatalogData( void );
+    // /**
+    //  * @brief Create a new CatalogData file
+    //  *
+    //  * @return CatalogData*
+    //  **************************************************/
+    // CatalogData* NewCatalogData( void );
 
 
     /**

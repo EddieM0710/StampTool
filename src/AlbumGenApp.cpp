@@ -60,6 +60,7 @@ END_EVENT_TABLE( )
 ;  // silly business; The above macro screws up the formatter
 ;
 
+
 /*
  * Constructor for AlbumGenApp
  */
@@ -101,6 +102,9 @@ bool AlbumGenApp::OnInit( )
 #if wxUSE_GIF
     wxImage::AddHandler( new wxGIFHandler );
 #endif
+
+    m_generatorData = NewGeneratorDataInstance();
+    m_generatorData->InitGeneratorData();
 
     m_frame = new AlbumGenFrame( NULL );
     m_frame->SetupRecentMenu( );    

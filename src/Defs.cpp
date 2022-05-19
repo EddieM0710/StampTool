@@ -46,16 +46,16 @@ GeneratorData* m_generatorData;
 Utils::Settings* GetSettings( )
 {
 
-    return m_generatorData->GetSettings( );
+    return wxGetApp( ).GetGeneratorDate()->GetSettings( );
 
 };
 
 Utils::Project* GetProject( )
 {
-    return m_generatorData->GetProject( );
+    return wxGetApp( ).GetGeneratorDate()->GetProject( );
 }
 
-inline GeneratorData* GetGeneratorData(){ return m_generatorData;};
+inline GeneratorData* GetGeneratorData(){ return wxGetApp( ).GetGeneratorDate();};
 
 Design::DesignData* GetDesignData() { return GetGeneratorData()->GetDesignData(); };
 Catalog::CatalogData* GetCatalogData() { return GetGeneratorData()->GetCatalogData(); };

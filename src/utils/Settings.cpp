@@ -40,8 +40,18 @@ wxDECLARE_APP( AlbumGenApp );
 
 namespace Utils {
 
+Settings* NewSettingsInstance()
+{
+    Settings* settings = new Settings();
+    settings->InitSettings();
+    return settings;
+}
 
     Settings::Settings( )
+    {
+    };
+
+    void Settings::InitSettings()
     {
             m_defaultSortOrder.Add( Catalog::NT_Period );
             m_defaultSortOrder.Add( Catalog::NT_Decade );
@@ -70,14 +80,13 @@ namespace Utils {
         Load( );
 
     };
-
     //*****    
     void Settings::SetDirty( bool state )
     {
         m_dirty = state;
         if ( m_dirty )
         {
-            GetProject( )->SetDirty( true );
+            GetGeneratorData( )->SetDirty( true );
         }
     }
 

@@ -49,9 +49,13 @@ public:
     virtual int OnExit( );
 
     AlbumGenFrame* GetFrame( ) { return m_frame; };
+    GeneratorData* GetGeneratorDate(){ return m_generatorData;};
 
 private:
     AlbumGenFrame* m_frame;
+
+    // global declaration of application data 
+    GeneratorData* m_generatorData;
 
 };
 

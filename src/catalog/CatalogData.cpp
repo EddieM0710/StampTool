@@ -44,7 +44,10 @@ wxDECLARE_APP( AlbumGenApp );
 
 namespace Catalog {
 
-    //*****
+    CatalogData* NewCatalogDataInstance()
+    {
+        return new CatalogData();
+    }
 
     CatalogData::CatalogData(/* args */ )
     {
@@ -76,7 +79,7 @@ namespace Catalog {
         m_dirty = state;
         if ( m_dirty )
         {
-            GetProject( )->SetDirty( true );
+            GetGeneratorData( )->SetDirty( true );
         }
     }
      //*****
@@ -176,7 +179,7 @@ namespace Catalog {
         if ( !strcmp( name, CatalogBaseNames[ NT_Catalog ] ) )
         {
             Classification catalog( root );
-            m_title = catalog.GetTitle( );
+  //          m_title = catalog.GetTitle( );
         }
 
         SetDirty( false );

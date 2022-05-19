@@ -48,8 +48,8 @@ namespace Catalog {
         // Load Catalog csv file
         void LoadCSV( wxString filename );
 
-        wxString GetTitle( ) { return m_title; }
-        void SetTitle( wxString val ) { m_title = val; };
+       // wxString GetTitle( ) { return m_title; }
+       // void SetTitle( wxString val ) { m_title = val; };
 
         wxXmlNode* FindNodeWithPropertyAndValue( wxXmlNode* element, wxString property, wxString value );
         wxXmlNode* FindNodeWithPropertyAndValue( wxString property, wxString value );
@@ -59,8 +59,11 @@ namespace Catalog {
 
     private:
         wxXmlDocument* m_stampDoc;
-        wxString m_title;
+      //  wxString m_title;
         bool m_dirty;
     };
+    
+    CatalogData* NewCatalogDataInstance();
+
 }
 #endif

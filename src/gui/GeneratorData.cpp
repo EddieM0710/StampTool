@@ -20,68 +20,175 @@
 #include "design/DesignData.h"
 #include "catalog/CatalogData.h"
 
-
-//********************(-----------***************
-Utils::Settings* GeneratorData::GetSettings( )
+GeneratorData* NewGeneratorDataInstance()
 {
-    return  m_settings;
+   return new GeneratorData();
+}
+
+GeneratorData::GeneratorData( ) {
+    m_catalogData = 0;
+    m_designData = 0;
+    m_catalogTreeCtrl = 0;
+    m_designTreeCtrl = 0;
+    m_descriptionPanel = 0;
+    m_project = 0;
+    m_settings = 0;
 };
 
-//***************-----------***************
-void GeneratorData::SetSettings( Utils::Settings* settings )
+void GeneratorData::InitGeneratorData()
 {
-    m_settings = settings;
-};
+        m_catalogData = 0;
+        m_designData = 0;
+        m_catalogTreeCtrl = 0;
+        m_designTreeCtrl = 0;
+        m_descriptionPanel = 0;
+        SetProject( Utils::NewProjectInstance());
 
+        m_settings = Utils::NewSettingsInstance( );
 
-
-//********************(-----------***************
-
-Utils::Project* GeneratorData::GetProject( )
-{
-    return  m_project;
-};
-
-//***************-----------***************
-
-void GeneratorData::SetProject( Utils::Project* project )
-{
-    m_project = project;
-};
-
-    void GeneratorData::SetCatalogData( Catalog::CatalogData* catalogData )
-    {
-        if ( catalogData != m_catalogData )
+        if ( m_settings->GetLoadLastFileAtStartUp( ) )
         {
-            m_catalogData->~CatalogData();
-            m_catalogData = ( Catalog::CatalogData* )0;
-        }
-        m_catalogData = catalogData;
-    };
+            m_project->SetProjectFilename( m_settings->GetLastFile( ) );
 
-void GeneratorData::LoadCatalogData( wxString catalogFilename )
+            // if ( wxFileExists( filename ) )
+            // {
+            //     if ( LoadProjectXML( filename ) )
+            //     {
+            //     }
+            // }
+        }
+}
+
+void GeneratorData::SetProject( Utils::Project* project ) 
+{ 
+    if ( m_project ) 
+    {
+        m_project->~Project();
+    }
+    m_project = project; 
+};
+
+
+
+void GeneratorData::FileNewProject()
 {
-    m_catalogData = Catalog::NewCatalogData( );
-    m_catalogData->LoadXML( catalogFilename );
+    LoadNewDesign();
+    LoadNewCatalog();
+}
+
+// Load the Catalog and Design data then populate trees
+void GeneratorData::LoadData( )
+{
+    ReadCatalogFile( );
+    LoadCatalogTree( );
+    ReadDesignFile( );
+    LoadDesignTree( );
+    InitODTDocument( );
+}
+
+void GeneratorData::FileOpenProject(wxString filename)
+{
+    m_project->SetProjectFilename( filename );
+    m_project->LoadProjectXML( );
+    LoadData( );
+}
+
+void GeneratorData::FileSaveProject( )
+{
+}
+
+void GeneratorData::FileSaveAsProject( wxString filename )
+{
+    m_project->SetProjectFilename( filename );
+    FileSaveProject( );
+}
+
+Catalog::CatalogData* GeneratorData::NewCatalogData( )
+{
+    if ( m_catalogData )
+    {
+        m_catalogData->~CatalogData();
+        m_catalogTreeCtrl->ClearCatalogTree();
+    }
+    m_catalogData = Catalog::NewCatalogDataInstance();
+    return m_catalogData;
+};
+
+// void GeneratorData::LoadCatalogXML( wxString catalogFilename )
+// {
+// }
+
+////*****
+
+void GeneratorData::ReadCatalogFile( )
+{
+    NewCatalogData( );
+    m_catalogData->LoadXML( m_project->GetCatalogFilename() );
+}
+
+
+void GeneratorData::ReadCatalogCSV( wxString csvFilename )
+{
+    wxFileName csvFile( csvFilename );
+    wxString ext = csvFile.GetExt( );
+    if ( !ext.CmpNoCase( "csv" ) )
+    {
+        wxFileName catalogFile = csvFile;
+        catalogFile.SetExt( "cat.xml" );
+
+        m_project->SetCatalogFilename( catalogFile.GetFullPath( ) );
+
+        NewCatalogData( );
+        m_catalogData->LoadCSV( csvFile.GetFullPath() );
+
+    }
+}
+
+void GeneratorData::LoadCatalogTree( )
+{
+    GetCatalogTreeCtrl( )->LoadTree( );
+}
+
+void GeneratorData::LoadNewCatalog( )
+{
+    Catalog::NewCatalogDataInstance();
+    m_project->SetCatalogFilename("unnamed.cat.xml");
+    LoadCatalogTree( );
+    SetDirty();
+}
+Design::DesignData* GeneratorData::FileOpenDesign( wxString filename )
+{
+    m_project->SetDesignFilename( filename );
+    ReadDesignFile( );
+    LoadDesignTree( );
 }
 
 Design::DesignData* GeneratorData::NewDesignData( void )
 {
-
     if ( m_designData )
     {
         delete m_designData;
 
-        Utils::StampList* stampList = GetStampAlbumCatalogLink( );
-        DesignTreeCtrl* designTree = GetDesignTreeCtrl( );
-        designTree->DeleteAllItems( );
-        stampList->Clear( );
+        m_designTreeCtrl->DeleteAllItems( );
+        m_StampAlbumCatalogLink.Clear( );
     }
-    m_designData = new Design::DesignData( );
+    m_designData = Design::NewDesignDataInstance( );
     return m_designData;
 }
 
 
+void GeneratorData::ReadDesignFile( )
+{
+    NewDesignData( );
+    wxString albumFilename = m_project->GetDesignFilename( );
+    m_designData->LoadXML( albumFilename );
+}
+
+
+void GeneratorData::LoadDesignTree( )
+{
+    GetDesignTreeCtrl( )->LoadTree( );
+}
 
 void GeneratorData::LoadDefaultDesignData( )
 {
@@ -89,45 +196,15 @@ void GeneratorData::LoadDefaultDesignData( )
     m_designData->LoadDefaultDocument( );
 }
 
-
-// Load the Catalog and design data then populate trees
-void GeneratorData::LoadData( )
+void GeneratorData::LoadNewDesign( )
 {
-    LoadCatalogData( );
-    LoadDesignData( );
-
+    m_project->SetDesignFilename("unnamed.alb.xml");
+    m_project->SetODTOutputFilename( "unnamed.odt" );
+    LoadDefaultDesignData();
     LoadDesignTree( );
-    LoadCatalogTree( );
-    InitODTDocument( );
+    SetDirty(false);
 }
 
-////*****
-
-void GeneratorData::LoadCatalogData( )
-{
-    wxString catalogFilename = m_project->GetCatalogFilename( );
-    LoadCatalogData( catalogFilename );
-}
-
-
-
-void GeneratorData::LoadCatalogTree( )
-{
-    GetCatalogTreeCtrl( )->LoadTree( );
-}
-
-
-void GeneratorData::LoadDesignData( )
-{
-    NewDesignData( );
-    wxString albumFilename = m_project->GetDesignFilename( );
-    m_designData->LoadXML( albumFilename );
-}
-
-void GeneratorData::LoadDesignTree( )
-{
-    GetDesignTreeCtrl( )->LoadTree( );
-}
 
 void GeneratorData::InitODTDocument( )
 {

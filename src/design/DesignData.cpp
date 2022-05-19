@@ -44,6 +44,12 @@
 
 namespace Design {
 
+DesignData* NewDesignDataInstance()
+{
+    DesignData* designData = new DesignData();
+    designData->InitDesignData();
+    return designData;
+}
 
     //*****    
 
@@ -51,6 +57,11 @@ namespace Design {
     {
         m_albumDoc = 0;
         m_album = 0;
+    }
+    DesignData* DesignData::InitDesignData()
+    { 
+        m_albumDoc = 0;
+        m_album = 0; 
     }
 
     //*****  
@@ -81,7 +92,7 @@ namespace Design {
         m_dirty = state;
         if ( m_dirty )
         {
-            GetProject( )->SetDirty( true );
+            GetGeneratorData( )->SetDirty( true );
         }
     }
 

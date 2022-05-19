@@ -19,6 +19,10 @@
 
 namespace Utils {
 
+class Settings;
+
+    Settings* NewSettingsInstance();
+
     /**
      * @brief Settings for the application
      *
@@ -28,6 +32,9 @@ namespace Utils {
     public:
         Settings( );
         ~Settings( ) {};
+
+        void InitSettings();
+
         wxString GetConfigurationDirectory( ) { return m_configurationDirectory; };
         wxString GetImageDirectory( ) { return m_imageDirectory; };
         wxString GetCatalogID( ) { return m_catalogID; };

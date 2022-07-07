@@ -22,7 +22,8 @@
 
 #include "InventoryPanel.h"
 #include "Specimen.h"
-
+#include "Defs.h"
+#include "utils/Settings.h"
 /*
  * InventoryPanel type definition
  */
@@ -166,6 +167,8 @@ void InventoryPanel::CreateControls( )
     attr = new wxGridCellAttr( );
     attr->SetEditor( new wxGridCellChoiceEditor( 3, choices3, true ) );
     m_grid->SetColAttr( Catalog::IDT_Location, attr );
+
+    SetDataEditable( GetSettings( )->IsCatalogDataEditable( ) );
 
     m_grid->Refresh( );
 
@@ -320,25 +323,28 @@ void InventoryPanel::ShowStamp( )
 
 void InventoryPanel::OnContextMenu( wxContextMenuEvent& event )
 {
-    wxPoint point = event.GetPosition( );
-    // If from keyboard
-    if ( ( point.x == -1 ) && ( point.y == -1 ) )
-    {
-        wxSize size = GetSize( );
-        point.x = size.x / 2;
-        point.y = size.y / 2;
-    }
-    else
-    {
-        point = ScreenToClient( point );
-    }
-    wxMenu menu;
-    menu.Append( wxID_ANY, wxString::Format( "Menu1" ) );
-    menu.Append( wxIDAddItem, "Add Item" );
-    menu.Append( wxIDDeleteItem, "Delete Item" );
 
-    PopupMenu( &menu, point.x, point.y );
+    if ( GetSettings( )->IsCatalogDataEditable( ) )
+    {
+        wxPoint point = event.GetPosition( );
+        // If from keyboard
+        if ( ( point.x == -1 ) && ( point.y == -1 ) )
+        {
+            wxSize size = GetSize( );
+            point.x = size.x / 2;
+            point.y = size.y / 2;
+        }
+        else
+        {
+            point = ScreenToClient( point );
+        }
+        wxMenu menu;
+        menu.Append( wxID_ANY, wxString::Format( "Menu1" ) );
+        menu.Append( wxIDAddItem, "Add Item" );
+        menu.Append( wxIDDeleteItem, "Delete Item" );
 
+        PopupMenu( &menu, point.x, point.y );
+    }
     // wxEVT_CONTEXT_MENU event handler for ID_INVENTORYLISTCTRL in
     // InventoryPanel.
     // Before editing this code, remove the block markers.
@@ -389,4 +395,9 @@ void InventoryPanel::OnContextPopup( wxCommandEvent& event )
         break;
     }
     }
+}
+
+void InventoryPanel::SetDataEditable( bool val )
+{
+    m_grid->EnableEditing( val );
 }

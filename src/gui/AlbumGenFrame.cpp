@@ -393,18 +393,18 @@ void AlbumGenFrame::OnOpenCatalogClick( wxCommandEvent& event )
 
 void AlbumGenFrame::OnSaveProjectClick( wxCommandEvent& event )
 {
-    SaveProject( );
+    GetGeneratorData()->FileSaveProject( );
     event.Skip( );
 }
 
 void AlbumGenFrame::OnSaveDesignClick( wxCommandEvent& event )
 {
-    SaveDesign( );
+    GetGeneratorData()->FileSaveDesign( );
     event.Skip( );
 }
 void AlbumGenFrame::OnSaveCatalogClick( wxCommandEvent& event )
 {
-    SaveCatalog( );
+    GetGeneratorData()->FileSaveCatalog( );
     event.Skip( );
 }
 
@@ -632,7 +632,7 @@ void AlbumGenFrame::OpenProject( )
     wxFileDialog openFileDialog(
         this, _( "Open Project XML file" ),
         lastFile.GetPath( ), lastFile.GetFullName( ),
-        "Project XML files (*.prj.xml)|*.prj.xml", 
+        "Project XML files (*.prj.xml)|*.prj.xml|All XML(&.xml)|*.xml", 
         wxFD_OPEN | wxFD_FILE_MUST_EXIST | wxFD_CHANGE_DIR );
     if ( openFileDialog.ShowModal( ) == wxID_CANCEL )
     {
@@ -678,7 +678,7 @@ void AlbumGenFrame::OpenDesign( )
     wxFileDialog openFileDialog(
         this, _( "Open Design XML file" ),
         lastFile.GetPath( ), lastFile.GetFullName( ),
-        "Project XML files (*.alb.xml)|*.alb.xml", wxFD_OPEN | wxFD_FILE_MUST_EXIST );
+        "Project XML files (*.alb.xml)|*.alb.xml|All XML(&.xml)|*.xml", wxFD_OPEN | wxFD_FILE_MUST_EXIST );
     if ( openFileDialog.ShowModal( ) == wxID_CANCEL )
     {
         return; // the user changed idea...
@@ -688,17 +688,13 @@ void AlbumGenFrame::OpenDesign( )
     // this can be done with e.g. wxWidgets input streams:
     wxString filename = openFileDialog.GetPath( );
 
-    GetProject( )->SetDesignFilename( filename );
-    GetGeneratorData( )->ReadDesignFile( );
-    GetGeneratorData( )->LoadDesignTree( );
+    GetGeneratorData( )->FileOpenDesign( filename );
 
 }
 
 
 void AlbumGenFrame::OpenCatalog( )
 {
-
-
     if ( IsDirty( ) )
     {
         // query whether to save first 
@@ -720,7 +716,7 @@ void AlbumGenFrame::OpenCatalog( )
     wxFileDialog openFileDialog(
         this, _( "Open Catalog XML file" ),
         lastFile.GetPath( ), lastFile.GetFullName( ),
-        "Project XML files (*.cat.xml)|*.cat.xml", wxFD_OPEN | wxFD_FILE_MUST_EXIST );
+        "Catalog XML files (*.cat.xml)|*.cat.xml|All XML(&.xml)|*.xml", wxFD_OPEN | wxFD_FILE_MUST_EXIST );
     if ( openFileDialog.ShowModal( ) == wxID_CANCEL )
     {
         return; // the user changed idea...
@@ -730,9 +726,7 @@ void AlbumGenFrame::OpenCatalog( )
     // this can be done with e.g. wxWidgets input streams:
     wxString filename = openFileDialog.GetPath( );
 
-    GetProject( )->SetCatalogFilename( filename );
-    GetGeneratorData( )->ReadCatalogFile( );
-    GetGeneratorData( )->LoadCatalogTree( );
+    GetGeneratorData( )->FileOpenCatalog( filename );
 }
 
 
@@ -792,38 +786,24 @@ int AlbumGenFrame::QueryMerge( int& mergeMethod )
 
 
 
-void AlbumGenFrame::SaveProject( )
-{
-    wxString filename = GetProject()->GetProjectFilename();
-    wxFileName file(filename);
-    wxString name = file.GetName();
-    if ( !name.Cmp( "unnamed.prj"))
-    {
-        file.SetExt( ".prj.xml" );
-        wxFileDialog saveFileDialog(
-            this, _( "AlbumGenerator Project XML file" ),
-            file.GetPath( ), file.GetFullName( ),
-            "XML files (*.prj.xml)|*.prj.xml", wxFD_SAVE | wxFD_OVERWRITE_PROMPT );
-        if ( saveFileDialog.ShowModal( ) == wxID_CANCEL )
-            return;
 
-        wxString filename = saveFileDialog.GetPath( );
-        GetProject( )->SetProjectFilename( filename );
-        GetProject( )->Save( );   
-    } 
-}
 
-void AlbumGenFrame::SaveDesign( )
-{
-    GetDesignData( )->SaveXML( GetProject( )->GetDesignFilename( ) );
-}
 
-void AlbumGenFrame::SaveCatalog( )
-{
-    GetCatalogData( )->Save( );
-    SetDirty( false );
 
-}
+
+
+
+// void AlbumGenFrame::SaveDesign( )
+// {
+//     GetDesignData( )->SaveXML( GetProject( )->GetDesignFilename( ) );
+// }
+
+// void AlbumGenFrame::SaveCatalog( )
+// {
+//     GetCatalogData( )->Save( );
+//     SetDirty( false );
+
+// }
 void AlbumGenFrame::SaveAsProject( )
 {
 
@@ -839,8 +819,7 @@ void AlbumGenFrame::SaveAsProject( )
             return;
 
         wxString filename = saveFileDialog.GetPath( );
-        GetProject( )->SetProjectFilename( filename );
-        GetProject( )->Save( );
+        GetGeneratorData( )->FileSaveAsProject( filename );
     }
 }
 void AlbumGenFrame::SaveAsCatalog( )
@@ -858,8 +837,7 @@ void AlbumGenFrame::SaveAsCatalog( )
             return;
 
         wxString filename = saveFileDialog.GetPath( );
-        GetProject( )->SetCatalogFilename( filename );
-        SaveCatalog( );
+        GetGeneratorData()->FileSaveAsCatalog( filename );
     }
 }
 void AlbumGenFrame::SaveAsDesign( )
@@ -877,8 +855,7 @@ void AlbumGenFrame::SaveAsDesign( )
             return;
 
         wxString filename = saveFileDialog.GetPath( );
-        GetProject( )->SetDesignFilename( filename );
-        SaveDesign( );
+        GetGeneratorData()->FileSaveAsDesign( filename );
     }
 }
 void AlbumGenFrame::GenerateODTAlbum( )

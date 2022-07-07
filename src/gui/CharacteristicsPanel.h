@@ -163,6 +163,11 @@ class CharacteristicsPanel : public wxPanel
      */
     void SetStamp( Catalog::Stamp* stamp );
 
+    void UpdateStampValue ( Catalog::DataTypes dt, LabeledTextBox* textBox );
+
+    void OnTextctrlTextUpdated( wxCommandEvent& event );
+    void SetDataEditable( bool val );
+
      // CharacteristicsPanel member variables
     LabeledTextBox* m_faceValue; ///< widget to display Face Value
     LabeledTextBox* m_currency;  ///< widget to display Currency

@@ -51,6 +51,7 @@ namespace Design {
         {
             return false;
         }
+        return true;
     }
 
     void Stamp::UpdateSizes( )
@@ -190,12 +191,12 @@ namespace Design {
             SetError( AT_InvalidImage, AT_WARING );
             status = AT_WARING;
         }
-        if ( GetHeight( ) <= 0.0 )
+        if ( GetHeight( ) <= 0.01 )
         {
             SetError( AT_InvalidHeight, AT_FATAL );
             status = AT_FATAL;
         }
-        if ( GetWidth( ) <= 0.0 )
+        if ( GetWidth( ) <= 0.01 )
         {
             SetError( AT_InvalidWidth, AT_FATAL );
             status = AT_FATAL;
@@ -354,6 +355,12 @@ namespace Design {
 
             double xPos1 = xPos + m_stampFrame.GetXPos( ) + m_stampImageFrame.GetXPos( );
             double yPos1 = yPos + m_stampFrame.GetYPos( ) + m_stampImageFrame.GetYPos( );
+if (m_stampImageFrame.GetWidth( ) <= 0.01 ||
+m_stampImageFrame.GetHeight( )<=  0.01 )
+{
+    int a = 0;
+}
+
 
             image->Rescale( m_stampImageFrame.GetWidth( ) * PpMM.x, m_stampImageFrame.GetHeight( ) * PpMM.y );
             wxBitmap bitmap = *image;

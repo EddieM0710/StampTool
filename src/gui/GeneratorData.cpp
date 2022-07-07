@@ -95,6 +95,7 @@ void GeneratorData::FileOpenProject(wxString filename)
 
 void GeneratorData::FileSaveProject( )
 {
+    m_project->Save( );   
 }
 
 void GeneratorData::FileSaveAsProject( wxString filename )
@@ -162,6 +163,12 @@ Design::DesignData* GeneratorData::FileOpenDesign( wxString filename )
     ReadDesignFile( );
     LoadDesignTree( );
 }
+Design::DesignData* GeneratorData::FileOpenCatalog( wxString filename )
+{
+    m_project->SetCatalogFilename( filename );
+    ReadCatalogFile( );
+    LoadCatalogTree( );
+}
 
 Design::DesignData* GeneratorData::NewDesignData( void )
 {
@@ -205,6 +212,27 @@ void GeneratorData::LoadNewDesign( )
     SetDirty(false);
 }
 
+void GeneratorData::FileSaveDesign( )
+{    
+    m_designData->SaveXML( GetProject( )->GetDesignFilename( ) );
+};
+
+void GeneratorData::FileSaveAsDesign( wxString filename )
+{    
+    m_project->SetDesignFilename( filename );
+    FileSaveDesign( );
+};
+
+    void GeneratorData::FileSaveAsCatalog( wxString filename )
+    {
+        m_project->SetCatalogFilename( filename );
+        FileSaveCatalog( );
+    }
+    
+    void GeneratorData::FileSaveCatalog( )
+    {
+        m_catalogData->Save( );
+    }
 
 void GeneratorData::InitODTDocument( )
 {

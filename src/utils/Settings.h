@@ -88,7 +88,10 @@ class Settings;
             }
             return str;
         };
-
+        bool IsCatalogDataEditable(){ return m_catalogDataEditable; };
+        void SetCatalogDataEditable( bool val = true ){ m_catalogDataEditable = val; };
+        bool IsCatalogDataEditableByDefault(){ return m_catalogDataEditableDefault; };
+        void SetCatalogDataEditableDefault( bool val = true ){ m_catalogDataEditableDefault = val; };
     private:
         wxString m_lastFile;
         bool m_loadLastFileAtStartUp;
@@ -104,6 +107,8 @@ class Settings;
         wxString m_upperPeriod;
         wxArrayString m_recentFiles;
         int m_nbrRecentPreference;
+        bool m_catalogDataEditable;
+        bool m_catalogDataEditableDefault;
 
         const wxString m_defaultLastFile = "";
         const bool m_defaultloadLastFileAtStartUp = true;

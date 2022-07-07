@@ -22,7 +22,8 @@
 
 #include "gui/CharacteristicsPanel.h"
 #include "gui/LabeledTextBox.h"
-
+#include "Defs.h"
+#include "utils/Settings.h"
 /*
  * CharacteristicsPanel type definition
  */
@@ -38,6 +39,7 @@ BEGIN_EVENT_TABLE( CharacteristicsPanel, wxPanel )
 
 // CharacteristicsPanel event table entries
 // CharacteristicsPanel event table entries
+EVT_TEXT( ID_LABELEDTEXTBOX_TEXTCTRL, CharacteristicsPanel::OnTextctrlTextUpdated )
 
 END_EVENT_TABLE( )
 ;  // silly business; The above macro screws up the formatter
@@ -204,6 +206,9 @@ void CharacteristicsPanel::CreateControls( void )
     m_colors->SetLabel( "Colors" );
     m_printing->SetLabel( "Printing" );
     m_printRun->SetLabel( "Print Run" );
+
+    SetDataEditable( GetSettings()->IsCatalogDataEditable() );
+
 }
 
 /*
@@ -259,4 +264,95 @@ void CharacteristicsPanel::SetStamp( Catalog::Stamp* stamp )
         m_currency->SetValue( m_stamp->GetAttr(Catalog::DT_Currency ));
         m_expiryDate->SetValue( m_stamp->GetAttr(Catalog::DT_Expiry_date ));
     }
+}
+
+
+void CharacteristicsPanel::UpdateStampValue( Catalog::DataTypes dt, LabeledTextBox* textBox  )
+{
+    if ( textBox->IsModified( ) )
+    {
+        wxString val = textBox->GetValue( );
+        m_stamp->SetAttr( dt, val );
+        textBox->SetModified( false );
+    }
+}
+
+void CharacteristicsPanel::OnTextctrlTextUpdated( wxCommandEvent& event )
+{
+  void* eventObject = event.GetClientData( );
+    if ( eventObject == m_printing )
+    {
+        UpdateStampValue( Catalog::DT_Printing, m_printing );
+    }
+    else if ( eventObject == m_printRun )
+    {
+        UpdateStampValue( Catalog::DT_Print_run, m_printRun );
+    }
+    else if ( eventObject == m_variant )
+    {
+        UpdateStampValue( Catalog::DT_Variant, m_variant );
+    }
+    else if ( eventObject == m_height )
+    {
+        UpdateStampValue( Catalog::DT_Variant, m_height );
+    }
+    else if ( eventObject == m_width )
+    {
+        UpdateStampValue( Catalog::DT_Width, m_width );
+    }
+    else if ( eventObject == m_paper )
+    {
+        UpdateStampValue( Catalog::DT_Paper, m_paper );
+    }
+    else if ( eventObject == m_watermark )
+    {
+        UpdateStampValue( Catalog::DT_Watermark, m_watermark );
+    }
+    else if ( eventObject == m_perforation )
+    {
+        UpdateStampValue( Catalog::DT_Perforation, m_perforation );
+    }
+    else if ( eventObject == m_gum )
+    {
+        UpdateStampValue( Catalog::DT_Gum, m_gum );
+    }
+    else if ( eventObject == m_colors )
+    {
+        UpdateStampValue( Catalog::DT_Colors, m_colors );
+    }
+    else if ( eventObject == m_faceValue )
+    {
+        UpdateStampValue( Catalog::DT_FaceValue, m_faceValue );
+    }
+    else if ( eventObject == m_currency )
+    {
+        UpdateStampValue( Catalog::DT_Currency, m_currency );
+    }
+    else if ( eventObject == m_expiryDate )
+    {
+        UpdateStampValue( Catalog::DT_Expiry_date, m_expiryDate );
+    }
+    // wxEVT_COMMAND_CHOICE_SELECTED event handler for ID_EMISSIONCHOICE
+    // in IdentificationPanel.
+    // Before editing this code, remove the block markers.
+    event.Skip( );
+    // wxEVT_COMMAND_CHOICE_SELECTED event handler for ID_EMISSIONCHOICE
+    // in IdentificationPanel.
+}
+
+void CharacteristicsPanel::SetDataEditable( bool val )
+{
+     m_faceValue->SetEditable(val);
+     m_currency->SetEditable(val);
+     m_height->SetEditable(val);
+     m_width->SetEditable(val);
+     m_perforation->SetEditable(val);
+     m_watermark->SetEditable(val);
+     m_gum->SetEditable(val);
+     m_variant->SetEditable(val);
+     m_colors->SetEditable(val);
+     m_paper->SetEditable(val);
+     m_printing->SetEditable(val);
+     m_printRun->SetEditable(val);
+     m_expiryDate->SetEditable(val);
 }

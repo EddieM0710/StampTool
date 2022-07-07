@@ -306,6 +306,19 @@ Utils::StampLink* DesignTreeCtrl::AppendStamp( wxTreeItemId catID )
             newStamp->SetAttrStr( Design::AT_Name, catNode->GetAttribute( Catalog::DT_XMLDataNames[ Catalog::DT_Name ] ) );
             newStamp->SetAttrStr( Design::AT_Height, catNode->GetAttribute( Catalog::DT_XMLDataNames[ Catalog::DT_Height ] ) );
             newStamp->SetAttrStr( Design::AT_Width, catNode->GetAttribute( Catalog::DT_XMLDataNames[ Catalog::DT_Width ] ) );
+
+            wxString height = newStamp->GetAttrStr( Design::AT_Height );
+            newStamp->SetStampHeight( height ) ;
+            wxString width = newStamp->GetAttrStr( Design::AT_Width );
+            newStamp->SetStampWidth( width ) ;
+
+                // stamp combines the stampID and its name to form a label
+                wxString label = newStamp->GetAttrStr( Design::AT_ID );
+                wxString title = newStamp->GetAttrStr( Design::AT_Name );
+                label += " - " + title;
+                this->SetItemText( newStampID, label );
+
+
             Utils::StampList* stampList = GetGeneratorData( )->GetStampAlbumCatalogLink( );
             newLink = stampList->AddStamp( idText );
             wxTreeItemId albumID = newStamp->GetTreeItemId( );

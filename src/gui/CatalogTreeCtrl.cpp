@@ -424,7 +424,8 @@ void CatalogTreeCtrl::ShowMenu( wxTreeItemId id, const wxPoint& pt )
     menu.Append( CatalogDataTree_Colnect, "GoTo Colnect" );
     menu.AppendSeparator( );
     //   menu.Append( CatalogDataTree_Move, "Move" );
-    //   menu.Append( CatalogDataTree_Delete, "Delete" );
+    menu.Append( CatalogDataTree_Delete, "Delete Stamp" );
+    menu.Append( CatalogDataTree_Add, "Add New Stamp" );
 
 
     menu.Append( CatalogDataTree_StructureStamps, "Re-Group Multiples" );
@@ -455,9 +456,50 @@ void CatalogTreeCtrl::ShowMenu( wxTreeItemId id, const wxPoint& pt )
         GoToColnect( id );
         break;
     }
+    case CatalogDataTree_Delete:
+    {
+        DeleteStamp( id );
+        break;
+    }   
+    case CatalogDataTree_Add:
+    {
+        AddStamp( id );
+        break;
+    }
     default:
         // Fall through.
         break;
+    }
+}
+
+//*****
+void CatalogTreeCtrl::AddStamp( wxTreeItemId id )
+{
+}
+//*****
+void CatalogTreeCtrl::DeleteStamp( wxTreeItemId id )
+{
+    CatalogTreeItemData* data = ( CatalogTreeItemData* )GetItemData( id );
+    wxXmlNode* node = data->GetNodeElement( );
+    if ( data && data->GetType( ) == Catalog::NT_Stamp )
+    {
+        wxString txt = wxString::Format( "Delete Stamp %s?\n\n", GetItemText( id ) );
+        wxMessageDialog* dlg = new wxMessageDialog(
+            wxGetApp( ).GetFrame( ), txt,
+            wxT( "Warning! Stamp will be deleted.\ No undo available.n" ),
+            wxOK | wxCANCEL | wxCENTER );
+        int rsp = dlg->ShowModal( );
+        if ( rsp == wxOK )
+        {
+            wxXmlNode* parent = node->GetParent();
+            parent->RemoveChild( node );
+            Utils::StampLink* stampLink = FindStampLink( id );
+            if ( stampLink )
+            {
+                stampLink->SetCatTreeID( 0 );
+            }       
+            Delete( id );
+        }
     }
 }
 

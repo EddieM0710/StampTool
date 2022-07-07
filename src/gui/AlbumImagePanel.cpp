@@ -206,7 +206,7 @@ void AlbumImagePanel::DrawBitmap( )
     dc.Clear( );
 
     Design::LayoutBase* pageNode = Design::GetSelectedNodePage( );
-    if ( pageNode )
+    if ( pageNode && pageNode->IsStatusOK() )
     {
         pageNode->draw( dc, album->GetAttrDbl(Design::AT_LeftMargin), album->GetAttrDbl(Design::AT_TopMargin) );
     }

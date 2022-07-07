@@ -23,12 +23,9 @@
 
  
 #include "LabeledTextBox.h"
- 
-
 #include "MiscellaneousDataPanel.h"
-
- 
- 
+#include "Defs.h"
+#include "utils/Settings.h"
 
 /*
  * MiscellaneousDataPanel type definition
@@ -188,6 +185,8 @@ void MiscellaneousDataPanel::CreateControls( )
         m_catCodes->SetLabel( Catalog::DT_DataNames[Catalog::DT_Catalog_Codes] );
         m_imageName->SetLabel( "Image Name" );
 
+    SetDataEditable( GetSettings()->IsCatalogDataEditable() );
+
 }
 
 /*
@@ -311,4 +310,14 @@ void MiscellaneousDataPanel::OneBayButtonClick( wxCommandEvent &event )
     event.Skip( );
      // wxEVT_COMMAND_BUTTON_CLICKED event handler for ID_EBAYBUTTON in
     //MiscellaneousData.
+}
+
+void MiscellaneousDataPanel::SetDataEditable( bool val )
+{
+    m_score->SetEditable(val);;
+    m_accuracy->SetEditable(val);;
+    m_link->SetEditable(val);;
+    m_catCodes->SetEditable(val);;
+    m_imageName->SetEditable(val);;
+
 }

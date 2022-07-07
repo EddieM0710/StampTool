@@ -24,6 +24,8 @@
 #include "CatalogCode.h"
 #include "catalog/CatalogDefs.h"
 #include "XMLUtilities.h"
+#include "Defs.h"
+#include "utils/Settings.h"
 
 /*
  * CatalogCodePanel type definition
@@ -147,6 +149,8 @@ void CatalogCodePanel::CreateControls( )
     {
         m_grid->SetColLabelValue( i, Catalog::CC_CatalogCodeNames[ i ] );
     }
+    
+    SetDataEditable( GetSettings()->IsCatalogDataEditable() );
 
     m_grid->Refresh( );
 
@@ -303,25 +307,27 @@ void CatalogCodePanel::ShowStamp( )
 
 void CatalogCodePanel::OnContextMenu( wxContextMenuEvent& event )
 {
-    wxPoint point = event.GetPosition( );
-    // If from keyboard
-    if ( ( point.x == -1 ) && ( point.y == -1 ) )
+    if ( GetSettings()->IsCatalogDataEditable() )
     {
-        wxSize size = GetSize( );
-        point.x = size.x / 2;
-        point.y = size.y / 2;
-    }
-    else
-    {
-        point = ScreenToClient( point );
-    }
-    wxMenu menu;
-    menu.Append( wxID_ANY, wxString::Format( "Menu1" ) );
-    menu.Append( wxIDAddItem, "Add Item" );
-    menu.Append( wxIDDeleteItem, "Delete Item" );
+        wxPoint point = event.GetPosition( );
+        // If from keyboard
+        if ( ( point.x == -1 ) && ( point.y == -1 ) )
+        {
+            wxSize size = GetSize( );
+            point.x = size.x / 2;
+            point.y = size.y / 2;
+        }
+        else
+        {
+            point = ScreenToClient( point );
+        }
+        wxMenu menu;
+        menu.Append( wxID_ANY, wxString::Format( "Menu1" ) );
+        menu.Append( wxIDAddItem, "Add Item" );
+        menu.Append( wxIDDeleteItem, "Delete Item" );
 
-    PopupMenu( &menu, point.x, point.y );
-
+        PopupMenu( &menu, point.x, point.y );
+    }
     event.Skip( );
 }
 
@@ -363,4 +369,9 @@ void CatalogCodePanel::OnContextPopup( wxCommandEvent& event )
         break;
     }
     }
+}
+
+void CatalogCodePanel::SetDataEditable( bool val )
+{
+     m_grid->EnableEditing( val );
 }

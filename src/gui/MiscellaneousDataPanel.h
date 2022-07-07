@@ -159,6 +159,8 @@ class MiscellaneousDataPanel : public wxPanel
 
     void ShowStamp( );
     void SetStamp( Catalog::Stamp *stamp );
+    void SetDataEditable( bool val );
+
     //void SetLabel( wxWindowID id, wxString val );
 
     Catalog::Stamp *m_stamp;

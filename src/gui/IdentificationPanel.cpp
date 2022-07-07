@@ -22,11 +22,15 @@
 
 #include "LabeledTextBox.h"
 
+#include "Defs.h"
+#include "utils/Settings.h"
 #include "Classification.h"
 #include "IdentificationPanel.h"
 #include "catalog/Stamp.h"
 #include "catalog/CatalogDefs.h"
 #include "gui/CatalogTreeCtrl.h"
+#include "gui/GeneratorData.h"
+#include "gui/DescriptionPanel.h"
 /*
  * IdentificationPanel type definition
  */
@@ -46,9 +50,18 @@ EVT_CHOICE( ID_EMISSIONCHOICE, IdentificationPanel::OnEmissionchoiceSelected )
 EVT_CHOICE( ID_FORMATCHOICE, IdentificationPanel::OnFormatchoiceSelected )
 // IdentificationPanel event table entries
 
+EVT_TEXT( ID_LABELEDTEXTBOX_TEXTCTRL, IdentificationPanel::OnTextctrlTextUpdated )
+
+EVT_CHECKBOX( ID_EDITCHECKBOX, IdentificationPanel::OnEditCheckBox)
+
 END_EVENT_TABLE( )
 ; // silly business; The above macro screws up the formatter
 
+
+// void Test(wxCommandEvent& event )
+// {
+
+// }
 /*
  * IdentificationPanel constructors
  *
@@ -140,6 +153,11 @@ void IdentificationPanel::CreateControls( )
     wxBoxSizer* itemBoxSizer2 = new wxBoxSizer( wxVERTICAL );
     itemPanel1->SetSizer( itemBoxSizer2 );
 
+
+    m_editCheckbox = new wxCheckBox( itemPanel1, ID_EDITCHECKBOX, _("Edit"), wxDefaultPosition, wxDefaultSize, 0 );
+    m_editCheckbox->SetValue(false);
+    itemBoxSizer2->Add(m_editCheckbox, 0, wxALIGN_LEFT|wxALL, 5);
+
     wxBoxSizer* itemBoxSizer1 = new wxBoxSizer( wxHORIZONTAL );
     itemBoxSizer2->Add( itemBoxSizer1, 0, wxALIGN_CENTER_HORIZONTAL | wxALL,
         2 );
@@ -194,7 +212,7 @@ void IdentificationPanel::CreateControls( )
     m_emissionStrings.Add( _( "Illegal" ) );
     m_emissionStrings.Add( _( "Insured Letter" ) );
     m_emissionStrings.Add( _( "Military" ) );
-    m_emissionStrings.Add( _( "Newspaper" ) );
+    m_emissionStrings.Add( _( "NewsClassificationpaper" ) );
     m_emissionStrings.Add( _( "Official" ) );
     m_emissionStrings.Add( _( "Parcel Post" ) );
     m_emissionStrings.Add( _( "Personal Delivery" ) );
@@ -266,6 +284,8 @@ void IdentificationPanel::CreateControls( )
     m_series->SetLabel( "Series" );
     m_status->SetLabel( "Status" );
     m_country->SetLabel( "Country" );
+
+    SetDataEditable( GetSettings()->IsCatalogDataEditable() );
 }
 
 /*
@@ -306,6 +326,47 @@ wxIcon IdentificationPanel::GetIconResource( const wxString& name )
     // IdentificationPanel icon retrieval
 }
 
+void IdentificationPanel::UpdateStampValue( Catalog::DataTypes dt, LabeledTextBox* textBox  )
+{
+    if ( textBox->IsModified( ) )
+    {
+        wxString val = textBox->GetValue( );
+        m_stamp->SetAttr( dt, val );
+        textBox->SetModified( false );
+    }
+}
+
+void IdentificationPanel::OnTextctrlTextUpdated( wxCommandEvent& event )
+{
+    void* eventObject = event.GetClientData( );
+    if ( eventObject == m_ID )
+    {
+        UpdateStampValue( Catalog::DT_ID_Nbr, m_ID );
+    }
+    else if ( eventObject == m_series )
+    {
+        UpdateStampValue( Catalog::DT_Series, m_series );
+    }
+    else if ( eventObject == m_themes )
+    {
+        UpdateStampValue( Catalog::DT_Themes, m_themes );
+    }
+    else if ( eventObject == m_country )
+    {
+        UpdateStampValue( Catalog::DT_Country, m_country );
+    }
+    else if ( eventObject == m_name )
+    {
+        UpdateStampValue( Catalog::DT_Name, m_name );
+    }
+
+    // wxEVT_COMMAND_CHOICE_SELECTED event handler for ID_EMISSIONCHOICE
+    // in IdentificationPanel.
+    // Before editing this code, remove the block markers.
+    event.Skip( );
+    // wxEVT_COMMAND_CHOICE_SELECTED event handler for ID_EMISSIONCHOICE
+    // in IdentificationPanel.
+}
 /*
  * wxEVT_COMMAND_CHOICE_SELECTED event handler for ID_EMISSIONCHOICE
  *
@@ -378,17 +439,39 @@ void IdentificationPanel::SetStamp( Catalog::Stamp* stamp )
     m_stamp = stamp;
     if ( m_stamp->IsOK( ) )
     {
-        m_ID->SetValue( m_stamp->GetAttr(  Catalog::DT_ID_Nbr)  );
-        m_name->SetValue( m_stamp->GetAttr(  Catalog::DT_Name) );
+        m_ID->ChangeValue( m_stamp->GetAttr(  Catalog::DT_ID_Nbr)  );
+        m_name->ChangeValue( m_stamp->GetAttr(  Catalog::DT_Name) );
         m_issueDate->SetValue( m_stamp->GetAttr(  Catalog::DT_Issued_on) );
         SetChoice( m_emission, m_stamp->GetEmission( ) );
         SetChoice( m_format, m_stamp->GetFormat( ) );
-        m_series->SetValue( m_stamp->GetAttr(  Catalog::DT_Series) );
-        m_themes->SetValue( m_stamp->GetAttr(  Catalog::DT_Themes ));
-        m_country->SetValue( m_stamp->GetAttr(  Catalog::DT_Country ) );
+        m_series->ChangeValue( m_stamp->GetAttr(  Catalog::DT_Series) );
+        m_themes->ChangeValue( m_stamp->GetAttr(  Catalog::DT_Themes ));
+        m_country->ChangeValue( m_stamp->GetAttr(  Catalog::DT_Country ) );
         SetChoice( m_status, m_stamp->GetInventoryStatus( ) );
     }
 }
+
+void IdentificationPanel::SetDataEditable( bool val )
+{
+        m_issueDate->SetEditable(val);
+        m_emission->Enable(val);
+        m_format->Enable(val);
+        m_themes->SetEditable(val);
+        m_ID->SetEditable(val);
+        m_name->SetEditable(val);
+        m_series->SetEditable(val);
+       // m_status->Enable(val);
+        m_country->SetEditable(val);
+}
+
+void IdentificationPanel::OnEditCheckBox(wxCommandEvent& event)
+{
+    bool val = m_editCheckbox->GetValue();
+    GetSettings()->SetCatalogDataEditable( val );
+    GetGeneratorData( )->GetDescriptionPanel( )->SetDataEditable( val );
+    event.Skip( );
+}
+
 
 /*
  * wxEVT_COMMAND_CHOICE_SELECTED event handler for ID_STATUSCHOICE

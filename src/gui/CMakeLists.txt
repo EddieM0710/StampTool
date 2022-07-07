@@ -36,6 +36,7 @@ add_library( GuiFiles SHARED
     StampDetailsDialog.cpp
     RowDetailsDialog.cpp 
     ColDetailsDialog.cpp 
+    NewStampDialog.cpp 
 )
 
 

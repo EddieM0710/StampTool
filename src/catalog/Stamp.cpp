@@ -65,7 +65,7 @@ namespace Catalog {
             const wxXmlAttribute* attr = Utils::GetAttribute( GetCatXMLNode( ), DT_XMLDataNames[ type ] );
             if ( attr )
             {
-                wxString str = attr->GetValue( ) ;
+                wxString str = attr->GetValue( );
                 return str;
             }
         }
@@ -418,7 +418,7 @@ namespace Catalog {
     }
 
 
-    void Stamp::ProcessCatalogCodes(wxString catCodes )
+    void Stamp::ProcessCatalogCodes( wxString catCodes )
     {
         if ( !HasChildCode( ) )
         {
@@ -434,7 +434,7 @@ namespace Catalog {
             while ( tokenizer.HasMoreTokens( ) )
             {
                 valStr = tokenizer.GetNextToken( );
-//std::cout << "Stamp::ProcessCatalogCodes>"<< valStr<<"<\n";
+                //std::cout << "Stamp::ProcessCatalogCodes>"<< valStr<<"<\n";
                 if ( valStr.StartsWith( wxT( "\"" ), &rest ) )
                     valStr = rest;
                 if ( valStr.EndsWith( wxT( "\"" ), &rest ) )
@@ -451,7 +451,7 @@ namespace Catalog {
                 wxString country = valStr.Mid( 0, pos );
                 wxString id = valStr.Mid( pos + 1 );
 
-//std::cout << "country>"<< country << "<  catalog>"<< catalog << "<  id>"<< id << "<\n";
+                //std::cout << "country>"<< country << "<  catalog>"<< catalog << "<  id>"<< id << "<\n";
 
                 wxXmlNode* catCodeElement = Utils::NewNode( GetCatXMLNode( ), CatalogBaseNames[ NT_CatalogCode ] );
 

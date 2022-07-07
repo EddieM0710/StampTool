@@ -347,6 +347,8 @@ Settings* NewSettingsInstance()
 
             SetLastFile( "" );
             SetNbrRecentPreference( 4 );
+            SetCatalogDataEditable();
+            SetCatalogDataEditableDefault();
             Save();
             return;
 
@@ -439,6 +441,15 @@ Settings* NewSettingsInstance()
             {
                 m_imageDirectory = child->GetAttribute("Name");
             }
+        }
+
+        wxXmlNode* stampDataEdit = FirstChildElement( root, "StampDataEdit" );
+        if ( stampDataEdit )
+        {
+            wxString defaultVal = stampDataEdit->GetAttribute( "Default");
+            bool isTrue = !defaultVal.Cmp("true" );
+            SetCatalogDataEditable( isTrue );
+            SetCatalogDataEditableDefault( isTrue );
         }
 
         wxXmlNode* idPref = FirstChildElement( root, "IDPreference" );

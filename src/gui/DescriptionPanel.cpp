@@ -118,7 +118,7 @@ DescriptionPanel::~DescriptionPanel( void )
 void DescriptionPanel::Init( void )
 {
     // DescriptionPanel member initialisation
-    m_identifictionPanel = NULL;
+    m_identificationPanel = NULL;
     m_zoomSlider = NULL;
     m_stampImage = NULL;
     m_inventoryPanel = NULL;
@@ -158,7 +158,7 @@ void DescriptionPanel::CreateControls( void )
     itemSplitterWindow2->SetMinimumPaneSize( 100 );
     itemSplitterWindow2->SetSashGravity( 0.2 );
 
-    m_identifictionPanel = new IdentificationPanel(
+    m_identificationPanel = new IdentificationPanel(
         itemSplitterWindow2, ID_IDENTIFICATIONPANELFORIEGN, wxDefaultPosition,
         wxDefaultSize, 0 );
 
@@ -192,7 +192,7 @@ void DescriptionPanel::CreateControls( void )
     m_stampImage->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
     itemBoxSizer7->Add( m_stampImage, 1, wxGROW | wxALL, 0 );
 
-    itemSplitterWindow2->SplitVertically( m_identifictionPanel, itemPanel4, 250 );
+    itemSplitterWindow2->SplitVertically( m_identificationPanel, itemPanel4, 250 );
     wxNotebook* itemNotebook12 =
         new wxNotebook( itemSplitterWindow1, ID_DESCRIPTIONLNOTEBOOK,
             wxDefaultPosition, wxDefaultSize, wxBK_DEFAULT );
@@ -274,6 +274,9 @@ void DescriptionPanel::CreateControls( void )
         wxMouseEventHandler( DescriptionPanel::OnLeaveWindow ),
         NULL, this );
     // DescriptionPanel content construction
+    m_bkgndText->SetEditable( GetSettings()->IsCatalogDataEditable()  );
+    m_description->SetEditable( GetSettings()->IsCatalogDataEditable()  );
+
 
     // display a random image until one is selected
     wxString filename;
@@ -367,7 +370,7 @@ wxIcon DescriptionPanel::GetIconResource( const wxString& name )
 
 void DescriptionPanel::UpdateStatus( void )
 {
-    m_identifictionPanel->UpdateStatus( );
+    m_identificationPanel->UpdateStatus( );
 }
 
 /*
@@ -435,6 +438,8 @@ void DescriptionPanel::OnDescriptionTextctrlTextUpdated( wxCommandEvent& event )
     // in DescriptionPanel.
 }
 
+
+
 /*
  *
  * initializes the DescriptionPanel with new stamp values
@@ -453,7 +458,7 @@ void DescriptionPanel::SetStamp( wxXmlNode* stamp )
     m_inventoryPanel->SetStamp( m_stamp );
     m_catalogCodePanel->SetStamp( m_stamp );
     m_characteristicsPanel->SetStamp( m_stamp );
-    m_identifictionPanel->SetStamp( m_stamp );
+    m_identificationPanel->SetStamp( m_stamp );
     m_miscellaneousDataPanel->SetStamp( m_stamp );
 
     wxString dirName = GetSettings( )->GetImageDirectory( );
@@ -472,4 +477,15 @@ void DescriptionPanel::SetStamp( wxXmlNode* stamp )
         imageFile =  wxString::Format( "%s/%s.jpg", dirName, fileName );
     }
     m_stampImage->SetBitmap( imageFile );
+}
+
+void DescriptionPanel::SetDataEditable( bool val )
+{
+    m_inventoryPanel->SetDataEditable( val );
+    m_catalogCodePanel->SetDataEditable( val );
+    m_characteristicsPanel->SetDataEditable( val );
+    m_identificationPanel->SetDataEditable( val );
+    m_miscellaneousDataPanel->SetDataEditable( val );
+    m_bkgndText->SetEditable( val );
+    m_description->SetEditable( val );
 }

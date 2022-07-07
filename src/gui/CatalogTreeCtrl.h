@@ -28,6 +28,8 @@ enum
     CatalogDataTree_About = wxID_ABOUT,
     CatalogDataTree_StructureStamps,
     CatalogDataTree_ResortTree,
+    CatalogDataTree_Delete,
+    CatalogDataTree_Add,
     CatalogDataTree_Colnect,
     CatalogDataTree_Before,
     CatalogDataTree_After,
@@ -142,6 +144,8 @@ public:
     void SortTree( wxTreeItemId parent );
     void ReSortTree( );
     void GoToColnect( wxTreeItemId id );
+    void AddStamp( wxTreeItemId id );
+    void DeleteStamp( wxTreeItemId id );
 
     void StructureStamp( wxXmlNode* catalogData );
 

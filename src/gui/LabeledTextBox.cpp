@@ -21,12 +21,7 @@
 #include "wx/wx.h"
 #endif
 
- 
- 
-
 #include "gui/LabeledTextBox.h"
-
- 
  
 #include "Defs.h"
 #include "catalog/Stamp.h"
@@ -44,7 +39,7 @@ IMPLEMENT_DYNAMIC_CLASS( LabeledTextBox, wxPanel )
 
 BEGIN_EVENT_TABLE( LabeledTextBox, wxPanel )
 
-EVT_TEXT( ID_TEXTCTRL, LabeledTextBox::OnTextctrlTextUpdated )
+EVT_TEXT( ID_LABELEDTEXTBOX_TEXTCTRL, LabeledTextBox::OnTextctrlTextUpdated )
 
 END_EVENT_TABLE( )
 ;  // silly business; The above macro screws up the formatter
@@ -65,7 +60,6 @@ LabeledTextBox::LabeledTextBox( )
  * LabeledTextBox constructors
  *
  **************************************************/
-
 
 LabeledTextBox::LabeledTextBox( wxWindow *parent, wxWindowID id,
                                 const wxPoint &pos, const wxSize &size,
@@ -145,14 +139,19 @@ void LabeledTextBox::CreateControls( )
 
     m_label = new wxStaticText( itemPanel1, wxID_STATIC, _( "Static text" ),
                                   wxDefaultPosition, wxDefaultSize, 0 );
+
     itemBoxSizer1->Add( m_label, 0, wxALIGN_CENTER_VERTICAL | wxLEFT, 0 );
 
-    m_value = new wxTextCtrl( itemPanel1, ID_TEXTCTRL, wxEmptyString,
+    m_value = new wxTextCtrl( itemPanel1, ID_LABELEDTEXTBOX_TEXTCTRL, wxEmptyString,
                                wxDefaultPosition, wxSize( -1, 26 ), 0 );
+
+    m_value->SetEditable( false );
+
     itemBoxSizer1->Add( m_value, 1, wxGROW | wxLEFT | wxRIGHT, 4 );
 
      // LabeledTextBox content construction
 }
+
 
 /*
  *
@@ -197,6 +196,10 @@ wxIcon LabeledTextBox::GetIconResource( const wxString &name )
      // LabeledTextBox icon retrieval
 }
 
+void LabeledTextBox::SetEditable( bool value )
+{
+       m_value->SetEditable( value );
+}
 /*
  *
  * Setup( wxString label, wxString value )
@@ -222,22 +225,25 @@ wxString LabeledTextBox::GetValue( )
 
 /*
  *
- * wxEVT_COMMAND_TEXT_UPDATED event handler for ID_TEXTCTRL
+ * wxEVT_COMMAND_TEXT_UPDATED event handler for ID_LABELEDTEXTBOX_TEXTCTRL
  *
  **************************************************/
 
 void LabeledTextBox::OnTextctrlTextUpdated( wxCommandEvent &event )
 {
+    event.SetClientData( (void*)this);
     if ( m_value->IsModified( ) )
     {
+       // m_value->GetBackgroundColour();
+       // m_value->SetBackgroundColour();
         SetDirty();
 //        m_stamp->SetAttr( m_type, m_idText->GetValue( ) );
         m_value->SetModified( true );
     }
-     // wxEVT_COMMAND_TEXT_UPDATED event handler for ID_TEXTCTRL in
+     // wxEVT_COMMAND_TEXT_UPDATED event handler for ID_LABELEDTEXTBOX_TEXTCTRL in
     //LabeledTextBox.
     // Before editing this code, remove the block markers.
     event.Skip( );
-     // wxEVT_COMMAND_TEXT_UPDATED event handler for ID_TEXTCTRL in
+     // wxEVT_COMMAND_TEXT_UPDATED event handler for ID_LABELEDTEXTBOX_TEXTCTRL in
     //LabeledTextBox.
 }

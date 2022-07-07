@@ -167,6 +167,7 @@ public:
    * @param stamp  set the currently displayed stamp to this
    **************************************************/
   void SetStamp( Catalog::Stamp* stamp );
+  void SetDataEditable( bool val );
 
   /**
    * @brief shows context menu to add or remove inventory entries

@@ -51,6 +51,7 @@ public:
     inline Design::DesignData* GetDesignData( ) { return m_designData; };
 
     Design::DesignData* FileOpenDesign( wxString filename );
+    Design::DesignData* FileOpenCatalog( wxString filename );
 
     /**
      * @brief Create a new empty DesignData instance and clear tree
@@ -120,6 +121,12 @@ public:
 
     // @brief Perform File-SaveAs for Project
     void FileSaveAsProject( wxString filename );
+  
+    void FileSaveAsDesign( wxString filename );
+    void FileSaveDesign( );
+ 
+    void FileSaveAsCatalog( wxString filename );
+    void FileSaveCatalog( );
 
     void InitODTDocument( );
 

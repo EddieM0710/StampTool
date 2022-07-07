@@ -18,6 +18,7 @@
   */
 #include "gui/GuiDefs.h"
 
+#include <wx/event.h> 
 
   /*
    * Forward declarations
@@ -27,7 +28,7 @@ namespace Catalog { class Stamp; };
 /*
  * Control identifiers
  */
-#define ID_TEXTCTRL ID_LABLEDTEXTBOX+1
+#define ID_LABELEDTEXTBOX_TEXTCTRL ID_LABLEDTEXTBOX+1
 #define SYMBOL_LABELEDTEXTBOX_STYLE wxTAB_TRAVERSAL
 #define SYMBOL_LABELEDTEXTBOX_TITLE _( "LabledTextBox" )
 #define SYMBOL_LABELEDTEXTBOX_IDNAME ID_LABLEDTEXTBOX
@@ -37,7 +38,34 @@ namespace Catalog { class Stamp; };
  /*
   * LabeledTextBox class declaration
   */
+typedef void (MyFunct)( wxCommandEvent &event );
 
+/* -----------------------------------------------------------------
+ * @brief A static text and a textctrl in a horizontal sizer.
+ * To add a event handler in the parent class for modified text in the textctrl member add a single event handler  
+ * for event in the event table.
+ *   EVT_TEXT( ID_LABLEDTEXTBOX+1, IdentificationPanel::MyLabeledTextBoxUpdated )
+ *  
+ * void IdentificationPanel::OnTextctrlTextUpdated( wxCommandEvent& event )
+ * {
+ *  void* eventObject = event.GetClientData( );
+ *  if ( eventObject == pointer_to_LabeledTextBox )
+ *     {
+ *        UpdateValue(  pointer_to_LabeledTextBox );
+ *     }
+ *  event.Skip( );
+ * }
+ * 
+ * void UpdateValue(  LabeledTextBox* pointer_to_LabeledTextBox  )
+ * {
+ *    if ( pointer_to_LabeledTextBox->IsModified( ) )
+ *    {
+ *        wxString val = pointer_to_LabeledTextBox->GetValue( );
+ *        //save the value to the right place
+ *        pointer_to_LabeledTextBox->SetModified( false );
+ *    }
+ * }
+ */
 class LabeledTextBox : public wxPanel
 {
     DECLARE_DYNAMIC_CLASS( LabeledTextBox )
@@ -52,13 +80,7 @@ public:
      **************************************************/
     LabeledTextBox( );
 
-    /**
-     * @brief Construct a new LabeledTextBox object
-     *
-     * @param  parent	The parent window.
-     * @param  id	An identifier for the panel. wxID_ANY is taken to mean a default.
-     * @param  pos	The panel position. The value wxDefaultPosition indicates a default position, chosen by either the windowing system or wxWidgets, depending on platform.
-     * @param  size	The panel size. The value wxDefaultSize indicates a default size, chosen by either the windowing system or wxWidgets, depending on platform.
+    /**typedefze	The panel size. The value wxDefaultSize indicates a default size, chosen by either the windowing system or wxWidgets, depending on platform.
      * @param  style	The window style.
      * @see wxPanel.
      **************************************************/
@@ -106,7 +128,8 @@ public:
 
     // LabeledTextBox event handler declarations
 
-   // wxEVT_COMMAND_TEXT_UPDATED event handler for ID_TEXTCTRL
+
+   // wxEVT_COMMAND_TEXT_UPDATED event handler for ID_LABELEDTEXTBOX_TEXTCTRL
     void OnTextctrlTextUpdated( wxCommandEvent& event );
 
     /**
@@ -158,12 +181,20 @@ public:
         m_value->SetValue( value );
         m_value->SetModified( true );
     };
+    void ChangeValue( wxString value )
+    {
+        m_value->ChangeValue( value );
+        m_value->SetModified( false );
+    };
     bool IsModified( ) { return m_value->IsModified( ); };
     void SetModified( bool state = true ) { m_value->SetModified( state ); };
     inline void SetLabel( wxString label )
     {
         m_label->SetLabel( label );
     };
+    
+    void SetEditable( bool value );
+
 
 private:
 

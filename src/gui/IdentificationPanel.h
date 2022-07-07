@@ -34,7 +34,9 @@ namespace Catalog {class Stamp;}
 #define ID_ISSUEDTEXTBOX ID_IDENTIFICATIONPANEL + 6
 #define ID_SERIESTEXTBOX ID_IDENTIFICATIONPANEL + 7
 #define ID_THEMETEXTBOX ID_IDENTIFICATIONPANEL + 8
-#define ID_COUNTRYTEXTBOX ID_IDENTIFICATIONPANEL + 9
+#define ID_THEMETEXTBOXUPDATED ID_IDENTIFICATIONPANEL + 9
+#define ID_COUNTRYTEXTBOX ID_IDENTIFICATIONPANEL + 10
+#define ID_EDITCHECKBOX  ID_IDENTIFICATIONPANEL + 11
 #define SYMBOL_IDENTIFICATIONPANEL_STYLE wxTAB_TRAVERSAL
 #define SYMBOL_IDENTIFICATIONPANEL_TITLE _("IdentificationPanel")
 #define SYMBOL_IDENTIFICATIONPANEL_IDNAME ID_IDENTIFICATIONPANEL
@@ -128,6 +130,11 @@ public:
    **************************************************/
   void OnFormatchoiceSelected( wxCommandEvent& event );
 
+//void OnThemeUpdated( wxCommandEvent &event );
+void OnTextctrlTextUpdated( wxCommandEvent& event );
+void OnEditCheckBox(wxCommandEvent& event);
+void SetDataEditable( bool val = true );
+
   // IdentificationPanel member function declarations
 
   /**
@@ -174,7 +181,8 @@ public:
    *
    * @param stamp
    **************************************************/
-  void SetStamp( Catalog::Stamp* stamp );
+    void SetStamp( Catalog::Stamp* stamp );
+    void UpdateStampValue ( Catalog::DataTypes dt, LabeledTextBox* textBox );
 
   /**
    * @brief
@@ -183,6 +191,7 @@ public:
   void UpdateStatus( );
 
 private:
+  wxCheckBox *m_editCheckbox;
   LabeledTextBox* m_ID;        ///< ID display
   wxChoice* m_status;          ///< Stamp Status wxChoice
   LabeledTextBox* m_name;      ///< Stamp Name display

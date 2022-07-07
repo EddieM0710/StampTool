@@ -212,6 +212,8 @@ public:
      **************************************************/
     void SetStamp(  wxXmlNode* stamp );
 
+    void SetDataEditable( bool val );
+
     /**
      * @brief Update the Status display with the current statss of the selected stamp
      *
@@ -219,7 +221,7 @@ public:
     void UpdateStatus( void );
 private:
     // DescriptionPanel member variables
-    IdentificationPanel* m_identifictionPanel; ///< Pointer to IdentificationPanel
+    IdentificationPanel* m_identificationPanel; ///< Pointer to IdentificationPanel
     wxSlider* m_zoomSlider; ///< Pointer to image soom slider
     ImagePanel* m_stampImage; ///< Pointer to stamp image
     InventoryPanel* m_inventoryPanel; ///< Pointer to InventoryPanel

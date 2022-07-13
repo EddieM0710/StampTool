@@ -22,7 +22,7 @@
  
  
 #include "gui/GuiDefs.h"
-#include "catalog/Stamp.h"
+#include "catalog/Entry.h"
 
 /*!
  * Forward declarations
@@ -161,7 +161,7 @@ class CharacteristicsPanel : public wxPanel
      * @brief Initializes the CharacteristicsPanel with new stamp values
      * @param  stamp :
      */
-    void SetStamp( Catalog::Stamp* stamp );
+    void SetStamp( Catalog::Entry* stamp );
 
     void UpdateStampValue ( Catalog::DataTypes dt, LabeledTextBox* textBox );
 
@@ -185,7 +185,7 @@ class CharacteristicsPanel : public wxPanel
      // CharacteristicsPanel member variables
 
     // pointer to current stamp
-    Catalog::Stamp* m_stamp; ///< pointer to the currently displayed stamp
+    Catalog::Entry* m_stamp; ///< pointer to the currently displayed stamp
 };
 
 #endif

@@ -22,7 +22,7 @@
 #include "wx/splitter.h"
 #include <wx/slider.h>
 
-#include "catalog/Stamp.h"
+#include "catalog/Entry.h"
 #include "Defs.h"
 #include "gui/GuiDefs.h"
   /*
@@ -232,7 +232,7 @@ private:
     wxTextCtrl* m_bkgndText; ///< Pointer to background wxTextCtrl
     // DescriptionPanel member variables
 
-    Catalog::Stamp* m_stamp; ///< Pointer to currently displayed stamp
+    Catalog::Entry* m_stamp; ///< Pointer to currently displayed stamp
 };
 
 #endif

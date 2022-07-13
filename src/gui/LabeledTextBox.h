@@ -23,7 +23,7 @@
   /*
    * Forward declarations
    */
-namespace Catalog { class Stamp; };
+namespace Catalog { class Entry; };
 
 /*
  * Control identifiers

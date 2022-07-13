@@ -21,7 +21,7 @@
 
 // includes
 // includes
-#include "catalog/Stamp.h"
+#include "catalog/Entry.h"
 
 /*!
  * Forward declarations
@@ -111,7 +111,7 @@ public:
 
     void UpdateStamp();
 void SetChoice( wxChoice* ctrl, wxString str );
-void SetStamp( Catalog::Stamp* stamp );
+void SetStamp( Catalog::Entry* stamp );
 
 
 // NewStampDialog member variables
@@ -125,7 +125,7 @@ void SetStamp( Catalog::Stamp* stamp );
     LabeledTextBox* m_catNbr;
     LabeledTextBox* m_width;
     LabeledTextBox* m_height;
-    Catalog::Stamp* m_stamp;              ///< Pointer to currently displayed stamp
+    Catalog::Entry* m_stamp;              ///< Pointer to currently displayed stamp
 
 // NewStampDialog member variables
 };

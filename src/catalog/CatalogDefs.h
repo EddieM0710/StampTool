@@ -23,10 +23,10 @@ namespace Catalog {
     class CatalogData;
 
     // /**
-    //  * @brief Get the Stamp Data object
+    //  * @brief Get the Entry Data object
     //  *
     //  * @return CatalogData* InitCatalogDefs
-    //  * @brief Set the Stamp Data object
+    //  * @brief Set the Entry Data object
     //  *
     //  * @param  catalogData
     //  * @return CatalogData*
@@ -45,7 +45,7 @@ namespace Catalog {
     /**
      * @enum CatalogBaseType
      *
-     * @brief Enum defining stamp node types.
+     * @brief Enum defining Entry node types.
      *
      **************************************************/
     typedef enum
@@ -58,7 +58,7 @@ namespace Catalog {
         NT_Emission,
         NT_Status,
         NT_Condition,
-        NT_Stamp,
+        NT_Entry,
         NT_Specimen,
         NT_CatalogCode,
         NT_NbrTypes
@@ -80,7 +80,7 @@ namespace Catalog {
 
     /**
     * @enum DataTypes
-     * @brief Enum defining data types; i.e., fields in a stamp.
+     * @brief Enum defining data types; i.e., fields in a entry.
      *
      **************************************************/
     typedef enum
@@ -151,7 +151,7 @@ namespace Catalog {
     /**
      * @brief Enum defining catalog code data types;
      *
-     * This represents data for catalog code stamp.
+     * This represents data for catalog code entry.
      *
      **************************************************/
     typedef enum
@@ -166,7 +166,7 @@ namespace Catalog {
 
     /**
      * @enum PeriodType
-     * @brief Enum defining the status of a given stamp.
+     * @brief Enum defining the status of a given entry.
      *
      **************************************************/
     typedef enum
@@ -189,7 +189,7 @@ namespace Catalog {
 
     /**
      * @enum FormatType
-     * @brief Enum defining the format of a stamp.
+     * @brief Enum defining the format of a entry.
      *
      **************************************************/
     typedef enum
@@ -341,30 +341,30 @@ namespace Catalog {
 
     CatalogBaseType FindCatalogBaseType( wxXmlNode* element );
 
-    // void AddStamp(wxXmlNode *child)
+    // void AddEntry(wxXmlNode *child)
     // {
-    //     AddStamp(Root(), child);
+    //     AddEntry(Root(), child);
     // }
 
-    void AddStamp( wxXmlNode* parent, wxXmlNode* child, int level );
+    void AddEntry( wxXmlNode* parent, wxXmlNode* child, int level );
     // {
     //     level++;
     //     wxString name = child->GetName( );
     //     wxString parentName = parent->GetName( );
     //     CatalogBaseType parentType = FindCatalogBaseType( parentName );
-    //     //    std::cout << "AddStamp  ParentName:" << parentName
+    //     //    std::cout << "AddEntry  ParentName:" << parentName
     //     //        << "  ParentType:" << CatalogBaseNames[ parentType ]
     //     //        << "  ChildName:" << name << "level" << level << "\n";
-    //     if ( name == CatalogBaseNames[ NT_Stamp ] )
+    //     if ( name == CatalogBaseNames[ NT_Entry ] )
     //     {
-    //         Stamp stamp( child );
+    //         Entry entry( child );
     //         CatalogBaseType sortType = ( CatalogBaseType )GetSettings( )->GetNextSortClassification(
     //             ( int )parentType );
-    //         if ( ( sortType < NT_Catalog ) || ( sortType >= NT_Stamp ) )
+    //         if ( ( sortType < NT_Catalog ) || ( sortType >= NT_Entry ) )
     //         {
     //             //            std::cout << "     InsertChild\n";
     //                         // if the sort type is not one of the classification node types
-    //                         // then add it here. All stamps and their children get added here.
+    //                         // then add it here. All entrys and their children get added here.
     //             parent->AddChild( child );
     //             return;
     //         }
@@ -373,7 +373,7 @@ namespace Catalog {
     //             //            std::cout << "     SortType: " << CatalogBaseNames[ sortType ]
     //             //                << "\n";
     //             wxString nodeName = CatalogBaseNames[ sortType ];
-    //             wxString name = stamp.GetClassificationName( &stamp, sortType );
+    //             wxString name = entry.GetClassificationName( &entry, sortType );
     //             const char* nameStr = name;
     //             const char* nodeNameStr = nodeName;
     //             //             std::cout << "     Looking for " << nodeNameStr << " with Name "
@@ -386,7 +386,7 @@ namespace Catalog {
     //                 if ( attr )
     //                 {
     //                     //                    std::cout << "     Found it\n";
-    //                     AddStamp( nextNode, child, level );
+    //                     AddEntry( nextNode, child, level );
     //                     return;
     //                 }
     //                 nextNode = nextNode->GetNext( );
@@ -398,14 +398,14 @@ namespace Catalog {
     //             nextNode = NewNode( parent, nodeNameStr );
     //             nextNode->SetAttrStr( "Name", nameStr );
 
-    //             AddStamp( nextNode, child, level );
+    //             AddEntry( nextNode, child, level );
     //             return;
     //         }
     //     }
     // }
 
-    wxXmlNode* MoveStamp( wxXmlNode* newParent, wxXmlNode* child );
-    wxXmlNode* InsertStamp( wxXmlNode* sibling, wxXmlNode* child, bool after = true);
+    wxXmlNode* MoveEntry( wxXmlNode* newParent, wxXmlNode* child );
+    wxXmlNode* InsertEntry( wxXmlNode* sibling, wxXmlNode* child, bool after = true);
     // {
     //     if ( newParent == child )
     //     {
@@ -439,15 +439,15 @@ namespace Catalog {
     //     wxXmlNode* child = parent->GetChildren( );
     //     while ( child )
     //     {
-    //         if ( !CatalogBaseNames[ NT_Stamp ].Cmp( child->GetName( ) ) )
+    //         if ( !CatalogBaseNames[ NT_Entry ].Cmp( child->GetName( ) ) )
     //         {
     //             // Make a copy of the old child in the new doc and insert it
     //             wxXmlNode* newChildNode = new wxXmlNode( *child );
-    //             AddStamp( newRoot, newChildNode );
+    //             AddEntry( newRoot, newChildNode );
     //         }
     //         else
     //         {
-    //             // if this wasn't a stamp node we will just decend in the hierachy
+    //             // if this wasn't a entry node we will just decend in the hierachy
 
     //             if ( !child->GetChildren( ) )
     //             {

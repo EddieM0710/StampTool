@@ -105,7 +105,7 @@ MiscellaneousDataPanel::~MiscellaneousDataPanel( )
 
 void MiscellaneousDataPanel::Init( )
 {
-    m_stamp = new Catalog::Stamp( );
+    m_stamp = new Catalog::Entry( );
      // MiscellaneousDataPanel member initialisation
     m_score = NULL;
     m_accuracy = NULL;
@@ -224,7 +224,7 @@ wxIcon MiscellaneousDataPanel::GetIconResource( const wxString &name )
      // MiscellaneousDataPanel icon retrieval
 }
 
-void MiscellaneousDataPanel::SetStamp( Catalog::Stamp *stamp )
+void MiscellaneousDataPanel::SetStamp( Catalog::Entry *stamp )
 {
     m_stamp = stamp;
     if ( m_stamp->IsOK( ) )

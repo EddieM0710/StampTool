@@ -1,5 +1,5 @@
 /**
- * @file Stamp.cpp
+ * @file Entry.cpp
  * @author Eddie Monroe ()
  * @brief
  * @version 0.1
@@ -23,7 +23,7 @@
 #include "catalog/CatalogCode.h"
 #include "Defs.h"
 #include "Settings.h"
-#include "catalog/Stamp.h"
+#include "catalog/Entry.h"
 #include <wx/datetime.h>
 #include <wx/strconv.h>
 #include <wx/tokenzr.h>
@@ -31,17 +31,17 @@
 
 namespace Catalog {
 
-    bool Stamp::IsOK( )
+    bool Entry::IsOK( )
     {
         wxXmlNode* ele = GetCatXMLNode( );
         wxString str;
         if ( ele )
         {
             str = ele->GetName( );
-            str = CatalogBaseNames[ NT_Stamp ];
+            str = CatalogBaseNames[ NT_Entry ];
         }
         if ( GetCatXMLNode( )
-            && !CatalogBaseNames[ NT_Stamp ].Cmp( GetCatXMLNode( )->GetName( ) ) )
+            && !CatalogBaseNames[ NT_Entry ].Cmp( GetCatXMLNode( )->GetName( ) ) )
         {
             m_OK = true;
             return m_OK;
@@ -50,7 +50,7 @@ namespace Catalog {
         return m_OK;
     };
 
-    void Stamp::SetAttr( DataTypes type, wxString val )
+    void Entry::SetAttr( DataTypes type, wxString val )
     {
         if ( IsOK( ) )
         {
@@ -58,7 +58,7 @@ namespace Catalog {
         };
     }
 
-    wxString Stamp::GetAttr( DataTypes type )
+    wxString Entry::GetAttr( DataTypes type )
     {
         if ( IsOK( ) )
         {
@@ -72,7 +72,7 @@ namespace Catalog {
         return wxString( "" );
     }
 
-    CheckedStatusType Stamp::GetCheckedStatusType( )
+    CheckedStatusType Entry::GetCheckedStatusType( )
     {
         wxString status = GetAttr( DT_CheckedStatus );
         for ( int i = ST_Checked; i < ST_NbrCheckedStatusTypes; i++ )
@@ -86,7 +86,7 @@ namespace Catalog {
         return ( CheckedStatusType )ST_Unchecked;
     };
 
-    InventoryStatusType Stamp::GetInventoryStatusType( )
+    InventoryStatusType Entry::GetInventoryStatusType( )
     {
         wxString status = GetAttr( DT_InventoryStatus );
         for ( int i = ST_None; i < ST_NbrInventoryStatusTypes; i++ )
@@ -100,7 +100,7 @@ namespace Catalog {
         return ( InventoryStatusType )ST_None;
     };
 
-    FormatType Stamp::GetFormatType( )
+    FormatType Entry::GetFormatType( )
     {
         wxString format = GetAttr( DT_Format );
         for ( int i = FT_FormatUnknown; i < FT_NbrTypes; i++ )
@@ -114,7 +114,7 @@ namespace Catalog {
         return ( FormatType )FT_FormatUnknown;
     }
 
-    DataTypes Stamp::FindDataType( wxString name )
+    DataTypes Entry::FindDataType( wxString name )
     {
         for ( int i = DT_ID_Nbr; i < DT_NbrTypes; i++ )
         {
@@ -126,7 +126,7 @@ namespace Catalog {
         return ( DataTypes )-1;
     }
 
-    bool Stamp::IsMultiple( )
+    bool Entry::IsMultiple( )
     {
         FormatType format = GetFormatType( );
         if ( format == FT_Se_tenant || format == FT_Mini_Sheet
@@ -138,7 +138,7 @@ namespace Catalog {
         return false;
     }
 
-    wxString Stamp::GetYear( )
+    wxString Entry::GetYear( )
     {
         wxDateTime dt;
         wxString dateStr = GetIssuedDate( );
@@ -154,7 +154,7 @@ namespace Catalog {
         return wxString( "Unknown" );
     }
 
-    wxString Stamp::GetDecade( )
+    wxString Entry::GetDecade( )
     {
         wxString year = GetYear( );
         if ( !year.Cmp( "Unknown" ) )
@@ -170,7 +170,7 @@ namespace Catalog {
         return decade;
     }
 
-    wxString Stamp::GetPeriod( )
+    wxString Entry::GetPeriod( )
     {
         wxString year = GetYear( );
         if ( !year.Cmp( "Unknown" ) )
@@ -199,83 +199,83 @@ namespace Catalog {
             return GetSettings( )->GetMiddlePeriod( );
         }
     }
-    wxString Stamp::GetID( ) { return GetAttr( DT_ID_Nbr ); };
+    wxString Entry::GetID( ) { return GetAttr( DT_ID_Nbr ); };
 
-    wxString Stamp::GetName( ) { return GetAttr( DT_Name ); };
+    wxString Entry::GetName( ) { return GetAttr( DT_Name ); };
 
-    wxString Stamp::GetCountry( ) { return GetAttr( DT_Country ); };
-    wxString Stamp::GetSeries( ) { return GetAttr( DT_Series ); };
-    wxString Stamp::GetCatalogCodes( ) { return GetAttr( DT_Catalog_Codes ); };
-    wxString Stamp::GetIssuedDate( ) { return GetAttr( DT_Issued_on ); };
-    wxString Stamp::GetExpiryDate( ) { return GetAttr( DT_Expiry_date ); };
-    wxString Stamp::GetWidth( ) { return GetAttr( DT_Width ); };
-    wxString Stamp::GetHeight( ) { return GetAttr( DT_Height ); };
-    wxString Stamp::GetPaper( ) { return GetAttr( DT_Paper ); };
-    wxString Stamp::GetWatermark( ) { return GetAttr( DT_Watermark ); };
-    wxString Stamp::GetEmission( ) { return GetAttr( DT_Emission ); };
-    wxString Stamp::GetFormat( ) { return GetAttr( DT_Format ); };
-    wxString Stamp::GetVariant( ) { return GetAttr( DT_Variant ); };
-    wxString Stamp::GetThemes( ) { return GetAttr( DT_Themes ); };
-    wxString Stamp::GetScore( ) { return GetAttr( DT_Score ); };
-    wxString Stamp::GetPrintRun( ) { return GetAttr( DT_Print_run ); };
-    wxString Stamp::GetPrinting( ) { return GetAttr( DT_Printing ); };
-    wxString Stamp::GetPerforation( ) { return GetAttr( DT_Perforation ); };
-    wxString Stamp::GetLink( ) { return GetAttr( DT_Link ); };
-    wxString Stamp::GetGum( ) { return GetAttr( DT_Gum ); };
-    wxString Stamp::GetFaceValue( ) { return GetAttr( DT_FaceValue ); };
-    wxString Stamp::GetDescription( ) { return GetAttr( DT_Description ); };
-    wxString Stamp::GetCurrency( ) { return GetAttr( DT_Currency ); };
-    wxString Stamp::GetColors( ) { return GetAttr( DT_Colors ); };
-    wxString Stamp::GetAccuracy( ) { return GetAttr( DT_Accuracy ); };
-    void Stamp::SetWidth( wxString val ) { SetAttr( DT_Width, val ); };
-    void Stamp::SetWatermark( wxString val ) { SetAttr( DT_Watermark, val ); };
-    void Stamp::SetVariant( wxString val ) { SetAttr( DT_Variant, val ); };
-    void Stamp::SetThemes( wxString val ) { SetAttr( DT_Themes, val ); };
-    void Stamp::SetSeries( wxString val ) { SetAttr( DT_Series, val ); };
-    void Stamp::SetScore( wxString val ) { SetAttr( DT_Score, val ); };
-    void Stamp::SetPrintRun( wxString val ) { SetAttr( DT_Print_run, val ); };
-    void Stamp::SetPrinting( wxString val ) { SetAttr( DT_Printing, val ); };
-    void Stamp::SetPerforation( wxString val ) { SetAttr( DT_Perforation, val ); };
-    void Stamp::SetPaper( wxString val ) { SetAttr( DT_Paper, val ); };
-    void Stamp::SetName( wxString val ) { SetAttr( DT_Name, val ); };
-    void Stamp::SetLink( wxString val ) { SetAttr( DT_Link, val ); };
-    void Stamp::SetIssuedDate( wxString val ) { SetAttr( DT_Issued_on, val ); };
-    void Stamp::SetID( wxString val ) { SetAttr( DT_ID_Nbr, val ); };
-    void Stamp::SetHeight( wxString val ) { SetAttr( DT_Height, val ); };
-    void Stamp::SetGum( wxString val ) { SetAttr( DT_Gum, val ); };
-    void Stamp::SetFormat( wxString val ) { SetAttr( DT_Format, val ); };
-    void Stamp::SetFaceValue( wxString val ) { SetAttr( DT_FaceValue, val ); };
-    void Stamp::SetExpiryDate( wxString val ) { SetAttr( DT_Expiry_date, val ); };
-    void Stamp::SetEmission( wxString val ) { SetAttr( DT_Emission, val ); };
-    void Stamp::SetDescription( wxString val ) { SetAttr( DT_Description, val ); };
-    void Stamp::SetCurrency( wxString val ) { SetAttr( DT_Currency, val ); };
-    void Stamp::SetCountry( wxString val ) { SetAttr( DT_Country, val ); };
-    void Stamp::SetColors( wxString val ) { SetAttr( DT_Colors, val ); };
-    void Stamp::SetCatalogCodes( wxString val ) { SetAttr( DT_Catalog_Codes, val ); };
-    void Stamp::SetAccuracy( wxString val ) { SetAttr( DT_Accuracy, val ); };
+    wxString Entry::GetCountry( ) { return GetAttr( DT_Country ); };
+    wxString Entry::GetSeries( ) { return GetAttr( DT_Series ); };
+    wxString Entry::GetCatalogCodes( ) { return GetAttr( DT_Catalog_Codes ); };
+    wxString Entry::GetIssuedDate( ) { return GetAttr( DT_Issued_on ); };
+    wxString Entry::GetExpiryDate( ) { return GetAttr( DT_Expiry_date ); };
+    wxString Entry::GetWidth( ) { return GetAttr( DT_Width ); };
+    wxString Entry::GetHeight( ) { return GetAttr( DT_Height ); };
+    wxString Entry::GetPaper( ) { return GetAttr( DT_Paper ); };
+    wxString Entry::GetWatermark( ) { return GetAttr( DT_Watermark ); };
+    wxString Entry::GetEmission( ) { return GetAttr( DT_Emission ); };
+    wxString Entry::GetFormat( ) { return GetAttr( DT_Format ); };
+    wxString Entry::GetVariant( ) { return GetAttr( DT_Variant ); };
+    wxString Entry::GetThemes( ) { return GetAttr( DT_Themes ); };
+    wxString Entry::GetScore( ) { return GetAttr( DT_Score ); };
+    wxString Entry::GetPrintRun( ) { return GetAttr( DT_Print_run ); };
+    wxString Entry::GetPrinting( ) { return GetAttr( DT_Printing ); };
+    wxString Entry::GetPerforation( ) { return GetAttr( DT_Perforation ); };
+    wxString Entry::GetLink( ) { return GetAttr( DT_Link ); };
+    wxString Entry::GetGum( ) { return GetAttr( DT_Gum ); };
+    wxString Entry::GetFaceValue( ) { return GetAttr( DT_FaceValue ); };
+    wxString Entry::GetDescription( ) { return GetAttr( DT_Description ); };
+    wxString Entry::GetCurrency( ) { return GetAttr( DT_Currency ); };
+    wxString Entry::GetColors( ) { return GetAttr( DT_Colors ); };
+    wxString Entry::GetAccuracy( ) { return GetAttr( DT_Accuracy ); };
+    void Entry::SetWidth( wxString val ) { SetAttr( DT_Width, val ); };
+    void Entry::SetWatermark( wxString val ) { SetAttr( DT_Watermark, val ); };
+    void Entry::SetVariant( wxString val ) { SetAttr( DT_Variant, val ); };
+    void Entry::SetThemes( wxString val ) { SetAttr( DT_Themes, val ); };
+    void Entry::SetSeries( wxString val ) { SetAttr( DT_Series, val ); };
+    void Entry::SetScore( wxString val ) { SetAttr( DT_Score, val ); };
+    void Entry::SetPrintRun( wxString val ) { SetAttr( DT_Print_run, val ); };
+    void Entry::SetPrinting( wxString val ) { SetAttr( DT_Printing, val ); };
+    void Entry::SetPerforation( wxString val ) { SetAttr( DT_Perforation, val ); };
+    void Entry::SetPaper( wxString val ) { SetAttr( DT_Paper, val ); };
+    void Entry::SetName( wxString val ) { SetAttr( DT_Name, val ); };
+    void Entry::SetLink( wxString val ) { SetAttr( DT_Link, val ); };
+    void Entry::SetIssuedDate( wxString val ) { SetAttr( DT_Issued_on, val ); };
+    void Entry::SetID( wxString val ) { SetAttr( DT_ID_Nbr, val ); };
+    void Entry::SetHeight( wxString val ) { SetAttr( DT_Height, val ); };
+    void Entry::SetGum( wxString val ) { SetAttr( DT_Gum, val ); };
+    void Entry::SetFormat( wxString val ) { SetAttr( DT_Format, val ); };
+    void Entry::SetFaceValue( wxString val ) { SetAttr( DT_FaceValue, val ); };
+    void Entry::SetExpiryDate( wxString val ) { SetAttr( DT_Expiry_date, val ); };
+    void Entry::SetEmission( wxString val ) { SetAttr( DT_Emission, val ); };
+    void Entry::SetDescription( wxString val ) { SetAttr( DT_Description, val ); };
+    void Entry::SetCurrency( wxString val ) { SetAttr( DT_Currency, val ); };
+    void Entry::SetCountry( wxString val ) { SetAttr( DT_Country, val ); };
+    void Entry::SetColors( wxString val ) { SetAttr( DT_Colors, val ); };
+    void Entry::SetCatalogCodes( wxString val ) { SetAttr( DT_Catalog_Codes, val ); };
+    void Entry::SetAccuracy( wxString val ) { SetAttr( DT_Accuracy, val ); };
 
-    wxString Stamp::GetClassificationName( Stamp* stamp, CatalogBaseType type )
+    wxString Entry::GetClassificationName( Entry* entry, CatalogBaseType type )
     {
         switch ( type )
         {
         case NT_Period:
         {
-            return stamp->GetPeriod( );
+            return entry->GetPeriod( );
             break;
         }
         case NT_Decade:
         {
-            return stamp->GetDecade( );
+            return entry->GetDecade( );
             break;
         }
         case NT_Year:
         {
-            return stamp->GetYear( );
+            return entry->GetYear( );
             break;
         }
         case NT_Emission:
         {
-            return stamp->GetEmission( );
+            return entry->GetEmission( );
             break;
         }
         case NT_Catalog:
@@ -285,7 +285,7 @@ namespace Catalog {
         }
         case NT_Country:
         {
-            return stamp->GetCountry( );
+            return entry->GetCountry( );
             break;
         }
         default:
@@ -293,7 +293,7 @@ namespace Catalog {
         }
     }
 
-    wxXmlNode* Stamp::AddSpecimen( )
+    wxXmlNode* Entry::AddSpecimen( )
     {
         wxXmlNode* ele = GetCatXMLNode( );
         if ( ele )
@@ -303,7 +303,7 @@ namespace Catalog {
         return ( wxXmlNode* )0;
     }
 
-    void Stamp::DeleteSpecimen( wxXmlNode* deleteThisNode )
+    void Entry::DeleteSpecimen( wxXmlNode* deleteThisNode )
     {
         wxXmlNode* ele = GetCatXMLNode( );
         if ( ele )
@@ -312,7 +312,7 @@ namespace Catalog {
         }
     }
 
-    bool Stamp::HasChildSpecimen( )
+    bool Entry::HasChildSpecimen( )
     {
         wxXmlNode* ele = GetCatXMLNode( );
         if ( ele )
@@ -324,7 +324,7 @@ namespace Catalog {
         }
         return false;
     }
-    wxXmlNode* Stamp::GetFirstChildSpecimen( )
+    wxXmlNode* Entry::GetFirstChildSpecimen( )
     {
         wxXmlNode* ele = GetCatXMLNode( );
         if ( ele )
@@ -333,7 +333,7 @@ namespace Catalog {
         }
         return ( wxXmlNode* )0;
     }
-    wxXmlNode* Stamp::GetNextChildSpecimen( )
+    wxXmlNode* Entry::GetNextChildSpecimen( )
     {
         wxXmlNode* ele = GetCatXMLNode( );
         if ( ele )
@@ -344,7 +344,7 @@ namespace Catalog {
     }
 
 
-    wxXmlNode* Stamp::AddCode( )
+    wxXmlNode* Entry::AddCode( )
     {
         wxXmlNode* ele = GetCatXMLNode( );
         if ( ele )
@@ -354,7 +354,7 @@ namespace Catalog {
         return ( wxXmlNode* )0;
     }
 
-    void Stamp::DeleteCode( wxXmlNode* deleteThisNode )
+    void Entry::DeleteCode( wxXmlNode* deleteThisNode )
     {
         wxXmlNode* ele = GetCatXMLNode( );
         if ( ele )
@@ -363,7 +363,7 @@ namespace Catalog {
         }
     }
 
-    bool Stamp::HasChildCode( )
+    bool Entry::HasChildCode( )
     {
         wxXmlNode* ele = GetCatXMLNode( );
         if ( ele )
@@ -376,7 +376,7 @@ namespace Catalog {
         return false;
     }
 
-    wxXmlNode* Stamp::GetFirstChildCode( )
+    wxXmlNode* Entry::GetFirstChildCode( )
     {
         wxXmlNode* ele = GetCatXMLNode( );
         if ( ele )
@@ -386,7 +386,7 @@ namespace Catalog {
         return ( wxXmlNode* )0;
     }
 
-    wxXmlNode* Stamp::GetNextChildCode( wxXmlNode* ele )
+    wxXmlNode* Entry::GetNextChildCode( wxXmlNode* ele )
     {
         if ( ele )
         {
@@ -395,7 +395,7 @@ namespace Catalog {
         return ( wxXmlNode* )0;
     }
 
-    wxXmlNode* Stamp::GetCodeForCatalog( const char* catalog )
+    wxXmlNode* Entry::GetCodeForCatalog( const char* catalog )
     {
         wxXmlNode* ele = GetCatXMLNode( );
         if ( ele )
@@ -418,7 +418,7 @@ namespace Catalog {
     }
 
 
-    void Stamp::ProcessCatalogCodes( wxString catCodes )
+    void Entry::ProcessCatalogCodes( wxString catCodes )
     {
         if ( !HasChildCode( ) )
         {
@@ -434,7 +434,7 @@ namespace Catalog {
             while ( tokenizer.HasMoreTokens( ) )
             {
                 valStr = tokenizer.GetNextToken( );
-                //std::cout << "Stamp::ProcessCatalogCodes>"<< valStr<<"<\n";
+                //std::cout << "Entry::ProcessCatalogCodes>"<< valStr<<"<\n";
                 if ( valStr.StartsWith( wxT( "\"" ), &rest ) )
                     valStr = rest;
                 if ( valStr.EndsWith( wxT( "\"" ), &rest ) )

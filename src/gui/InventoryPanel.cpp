@@ -274,7 +274,7 @@ wxIcon InventoryPanel::GetIconResource( const wxString& name )
  *
  **************************************************/
 
-void InventoryPanel::SetStamp( Catalog::Stamp* stamp )
+void InventoryPanel::SetStamp( Catalog::Entry* stamp )
 {
     m_stamp = stamp;
     ShowStamp( );

@@ -21,7 +21,7 @@
 #include "wx/grid.h"
 
 
-#include "catalog/Stamp.h"
+#include "catalog/Entry.h"
 #include <vector>
 #include <wx/dataview.h>
 #include "gui/GuiDefs.h"
@@ -159,14 +159,14 @@ public:
      * @brief Load the grid with the CatalogCode items
      *
      **************************************************/
-    void ShowStamp( );
+    void ShowEntry( );
 
     /**
-     * @brief Set the Stamp object
+     * @brief Set the Entry object
      *
-     * @param stamp  set the currently displayed stamp to this
+     * @param entry  set the currently displayed entry to this
      **************************************************/
-    void SetStamp( Catalog::Stamp* stamp );
+    void SetStamp( Catalog::Entry* entry );
 
     void SetDataEditable( bool val );
 
@@ -200,7 +200,7 @@ public:
 private:
 
     wxGrid* m_grid;  ///< wxGrid to display item entries
-    Catalog::Stamp* m_stamp; ///< pointer to the currently displayed stamp 
+    Catalog::Entry* m_entry; ///< pointer to the currently displayed entry 
     std::vector<wxXmlNode*> m_catCodeList;  ///< list containing each of the entries
 };
 

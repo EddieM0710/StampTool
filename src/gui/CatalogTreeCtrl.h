@@ -12,7 +12,7 @@
 #ifndef CatalogTreeCtrl_H
 #define CatalogTreeCtrl_H
 
-#include "catalog/Stamp.h"
+#include "catalog/Entry.h"
 #include <wx/treectrl.h>
 #include <wx/imaglist.h>
 #include "gui/IconDefs.h"
@@ -127,7 +127,7 @@ public:
 
 
     void SetInventoryStatusImage( void );
-    Catalog::IconID GetInventoryIconId( Catalog::Stamp* stamp );
+    Catalog::IconID GetInventoryIconId( Catalog::Entry* stamp );
     void ShowMenu( wxTreeItemId id, const wxPoint& pt );
 
     int ImageSize( void ) const { return m_imageSize; };
@@ -144,10 +144,10 @@ public:
     void SortTree( wxTreeItemId parent );
     void ReSortTree( );
     void GoToColnect( wxTreeItemId id );
-    void AddStamp( wxTreeItemId id );
-    void DeleteStamp( wxTreeItemId id );
+    void AddEntry( wxTreeItemId id );
+    void DeleteEntry( wxTreeItemId id );
 
-    void StructureStamp( wxXmlNode* catalogData );
+    void StructureEntry( wxXmlNode* catalogData );
 
     void StructureCatalogData( wxXmlNode* catalogData, Catalog::FormatType parentType,
         Catalog::FormatType childType,
@@ -165,14 +165,14 @@ public:
 
     wxTreeItemId FindTreeItemID( wxString stampID, wxTreeItemId id );
     bool IsElement( wxTreeItemId item, wxString stampID );
-    wxTreeItemId FindFirstStampChild( wxTreeItemId id );
+    wxTreeItemId FindFirstEntryChild( wxTreeItemId id );
 
     virtual int OnCompareItems( const wxTreeItemId& i1,
         const wxTreeItemId& i2 ) wxOVERRIDE;
 
 
-    wxXmlNode* GetStampNode( wxTreeItemId itemId );
-    wxString GetStampID( wxTreeItemId itemId );
+    wxXmlNode* GetEntryNode( wxTreeItemId itemId );
+    wxString GetEntryID( wxTreeItemId itemId );
     Utils::StampLink* FindStampLink( wxTreeItemId itemId );
     void EnableState( wxTreeItemId id );
     void DisableState( wxTreeItemId id );

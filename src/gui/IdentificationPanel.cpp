@@ -26,7 +26,7 @@
 #include "utils/Settings.h"
 #include "Classification.h"
 #include "IdentificationPanel.h"
-#include "catalog/Stamp.h"
+#include "catalog/Entry.h"
 #include "catalog/CatalogDefs.h"
 #include "gui/CatalogTreeCtrl.h"
 #include "gui/GeneratorData.h"
@@ -434,7 +434,7 @@ void IdentificationPanel::SetChoice( wxChoice* ctrl, int ndx )
  *
  **************************************************/
 
-void IdentificationPanel::SetStamp( Catalog::Stamp* stamp )
+void IdentificationPanel::SetStamp( Catalog::Entry* stamp )
 {
     m_stamp = stamp;
     if ( m_stamp->IsOK( ) )

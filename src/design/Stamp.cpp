@@ -18,7 +18,7 @@
 #include "gui/DescriptionPanel.h"
 
 #include "catalog/CatalogData.h"
-#include "catalog/Stamp.h"
+#include "catalog/Entry.h"
 #include "Defs.h"
 
 namespace Design {

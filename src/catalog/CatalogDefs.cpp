@@ -31,7 +31,7 @@
 #include "Defs.h"
 #include "catalog/CatalogData.h"
 // #include "catalog/Speciman.h"
-#include "catalog/Stamp.h"
+#include "catalog/Entry.h"
 // #include "catalog/Classification.h"
 // #include "CatalogCode.h"
 
@@ -62,14 +62,14 @@ namespace Catalog {
 
     const wxString FT_FormatStrings[ FT_NbrTypes ]
         = { wxT( "Unknown" ),
-            wxT( "Stamp" ),
+            wxT( "Entry" ),
             wxT( "Se-tenant" ),
             wxT( "Mini Sheet" ),
             wxT( "Souvenir Sheet" ),
             wxT( "Booklet" ),
             wxT( "Booklet Pane" ),
             wxT( "Gutter Pair" ),
-            wxT( "Stamp with Attached Label" ),
+            wxT( "Entry with Attached Label" ),
             wxT( "Tete-Beche" ) };
 
     const wxString ET_EmissionStrings[ ET_NbrTypes ]
@@ -135,7 +135,7 @@ namespace Catalog {
         "Emission" ,
         "Status" ,
         "Condition" ,
-        "Stamp" ,
+        "Entry" ,
         "Specimen" ,
         "CatalogCode" };
 
@@ -203,10 +203,10 @@ namespace Catalog {
     //         std::cout << "wxXmlNode " << name << " label " << classification.GetLabel( ) << "\n";
     //         break;
     //     }
-    //     case  NT_Stamp:
+    //     case  NT_Entry:
     //     {
-    //         Stamp stamp( ele );
-    //         std::cout << "wxXmlNode " << name << "  ID" << stamp.GetID( ) << "  Name " << stamp.GetName( ) << "\n";
+    //         Entry entry( ele );
+    //         std::cout << "wxXmlNode " << name << "  ID" << entry.GetID( ) << "  Name " << entry.GetName( ) << "\n";
     //         break;
     //     }
     //     case  NT_Specimen:
@@ -259,38 +259,38 @@ namespace Catalog {
     //     return ( CatalogBaseType )-1;
     // };
 
-    // void AddStamp(wxXmlNode *child)
+    // void AddEntry(wxXmlNode *child)
     // {
-    //     AddStamp(Root(), child);
+    //     AddEntry(Root(), child);
     // }
 
-    void AddStamp( wxXmlNode* parent, wxXmlNode* child, int level )
+    void AddEntry( wxXmlNode* parent, wxXmlNode* child, int level )
     {
         level++;
         wxString childName = child->GetName( );
         wxString parentName = parent->GetName( );
         CatalogBaseType parentType = FindCatalogBaseType( parentName );
-        //    std::cout << "AddStamp  ParentName:" << parentName
+        //    std::cout << "AddEntry  ParentName:" << parentName
         //        << "  ParentType:" << CatalogBaseNames[ parentType ]
         //        << "  ChildName:" << childName << "  level" << level << "\n";
-        if ( childName == CatalogBaseNames[ NT_Stamp ] )
+        if ( childName == CatalogBaseNames[ NT_Entry ] )
         {
-            Catalog::Stamp stamp( child );
+            Catalog::Entry entry( child );
             Catalog::CatalogBaseType sortType =
                 ( Catalog::CatalogBaseType )GetSettings( )->GetNextSortClassification(
                     ( int )parentType );
-            if ( ( sortType < NT_Catalog ) || ( sortType >= NT_Stamp ) )
+            if ( ( sortType < NT_Catalog ) || ( sortType >= NT_Entry ) )
             {
-                wxString id = stamp.GetID();
+                wxString id = entry.GetID();
                 long a;
                 int pos;
                 pos = id.find(' ');
                 id = id.substr(pos);
                 id.ToLong(&a);
-                //std::cout << "     InsertChild "<< " id:" << id << "  Name:" << stamp.GetName() << "\n";
+                //std::cout << "     InsertChild "<< " id:" << id << "  Name:" << entry.GetName() << "\n";
                 
                 // if the sort type is not one of the classification node types
-                // then add it here. All stamps and their children get added here.
+                // then add it here. All entrys and their children get added here.
                 parent->AddChild( child );
                 return;
             }
@@ -298,7 +298,7 @@ namespace Catalog {
             {
 //                std::cout << "     SortType: " << CatalogBaseNames[ sortType ]  << "\n";
                 wxString nodeName = CatalogBaseNames[ sortType ];
-                wxString name = stamp.GetClassificationName( &stamp, sortType );
+                wxString name = entry.GetClassificationName( &entry, sortType );
                 const char* nodeNameStr = nodeName;
 //                std::cout << "     Looking for " << nodeNameStr << " with Name " << name << "\n";
 
@@ -311,7 +311,7 @@ namespace Catalog {
                         if ( !attr.Cmp( name ) )
                         {
 //                            std::cout << "     Found it \n";
-                            AddStamp( nextNode, child, level );
+                            AddEntry( nextNode, child, level );
                             return;
                         }
                     }
@@ -324,13 +324,13 @@ namespace Catalog {
                 nextNode = Utils::NewNode( parent, nodeNameStr );
                 Utils::SetAttrStr( nextNode, "Name", name );
 
-                AddStamp( nextNode, child, level );
+                AddEntry( nextNode, child, level );
                 return;
             }
         }
     }
 
-    wxXmlNode* MoveStamp( wxXmlNode* newParent, wxXmlNode* child )
+    wxXmlNode* MoveEntry( wxXmlNode* newParent, wxXmlNode* child )
     {
         if ( newParent == child )
         {
@@ -358,7 +358,7 @@ namespace Catalog {
         return newChild;
     }
 
-    wxXmlNode* InsertStamp( wxXmlNode* sibling, wxXmlNode* child, bool after )
+    wxXmlNode* InsertEntry( wxXmlNode* sibling, wxXmlNode* child, bool after )
     {
         if ( sibling == child )
         {
@@ -403,11 +403,11 @@ namespace Catalog {
             // wxString name = child->GetAttribute(DT_XMLDataNames[ DT_Name ]);
             // std::cout << "SortData   child Name:" << name << "\n";
 
-            if ( !CatalogBaseNames[ NT_Stamp ].Cmp( child->GetName( ) ) )
+            if ( !CatalogBaseNames[ NT_Entry ].Cmp( child->GetName( ) ) )
             {
                 // Make a copy of the old child in the new doc and insert it
                 wxXmlNode* newChildNode = new wxXmlNode( *child );
-                AddStamp( newRoot, newChildNode, 0 );
+                AddEntry( newRoot, newChildNode, 0 );
             }
             else
             {

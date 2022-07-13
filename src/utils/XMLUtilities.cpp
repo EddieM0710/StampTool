@@ -33,7 +33,7 @@
 #include "catalog/CatalogBase.h"
 #include "utils/Settings.h"
 #include "catalog/Specimen.h"
-#include "catalog/Stamp.h"
+#include "catalog/Entry.h"
 #include "utils/XMLUtilities.h"
 
 

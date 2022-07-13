@@ -21,7 +21,7 @@
       */
 
 class LabeledTextBox;
-namespace Catalog {class Stamp;}
+namespace Catalog {class Entry;}
 
 /*
  * Control identifiers
@@ -181,7 +181,7 @@ void SetDataEditable( bool val = true );
    *
    * @param stamp
    **************************************************/
-    void SetStamp( Catalog::Stamp* stamp );
+    void SetStamp( Catalog::Entry* stamp );
     void UpdateStampValue ( Catalog::DataTypes dt, LabeledTextBox* textBox );
 
   /**
@@ -201,7 +201,7 @@ private:
   LabeledTextBox* m_series;    ///< Stamp Series display
   LabeledTextBox* m_themes;    ///< Stamp Theme display
   LabeledTextBox* m_country;   ///< Stamp Country display
-  Catalog::Stamp* m_stamp;              ///< Pointer to currently displayed stamp
+  Catalog::Entry* m_stamp;              ///< Pointer to currently displayed stamp
 };
 
 #endif

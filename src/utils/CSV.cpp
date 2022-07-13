@@ -28,7 +28,7 @@
 #include "utils/CSV.h"
 #include "utils/Settings.h"
 #include "Defs.h"
-#include "catalog/Stamp.h"
+#include "catalog/Entry.h"
 #include <wx/tokenzr.h>
 #include "catalog/CatalogData.h"
 #include "utils/XMLUtilities.h"
@@ -76,7 +76,7 @@ namespace Utils {
                 }
             }
 
-            // figure out how to map the csv file data to the stamp array
+            // figure out how to map the csv file data to the entry array
             MakeColMap( );
 
             if ( ReadTextInStream( l_file, text ) )
@@ -247,9 +247,9 @@ namespace Utils {
                             // comma separated Variables on line; i, e, .csv file
                             wxStringTokenizer tokenizer( line, "," );
 
-                            wxXmlNode* stampElement = NewNode( docRoot, Catalog::CatalogBaseNames[ Catalog::NT_Stamp ] );
+                            wxXmlNode* entryElement = NewNode( docRoot, Catalog::CatalogBaseNames[ Catalog::NT_Entry ] );
 
-                            Catalog::Stamp* stampNode = new Catalog::Stamp( stampElement );
+                            Catalog::Entry* entryNode = new Catalog::Entry( entryElement );
                             csvCol = 0;
                             valFound = false;
                             wxString valStr;
@@ -266,16 +266,16 @@ namespace Utils {
 
                                 //std::cout <<  "valStr:>"<< valStr<<"<; \n"   ;                                   
 
-                                Catalog::DataTypes stampType = m_csvColMap.at( csvCol );
-                                if ( stampType > 0 )
+                                Catalog::DataTypes entryType = m_csvColMap.at( csvCol );
+                                if ( entryType > 0 )
                                 {
-                                    Utils::SetAttrStr( stampElement, Catalog::DT_XMLDataNames[ stampType ], valStr );
-                                    //                           Catalog::Stamp* stamp = new Catalog::Stamp();
+                                    Utils::SetAttrStr( entryElement, Catalog::DT_XMLDataNames[ entryType ], valStr );
+                                    //                           Catalog::Entry* entry = new Catalog::Entry();
                                     wxString id = "";
-                                    if ( stampType == Catalog::DT_Catalog_Codes )
+                                    if ( entryType == Catalog::DT_Catalog_Codes )
                                     {
-                                        //std::cout <<  "stampNode->ProcessCatalogCodes( "<< valStr<<" ); \n"   ;                                   
-                                        stampNode->ProcessCatalogCodes( valStr );
+                                        //std::cout <<  "entryNode->ProcessCatalogCodes( "<< valStr<<" ); \n"   ;                                   
+                                        entryNode->ProcessCatalogCodes( valStr );
                                         if ( GetIDNbr( valStr, id ) )
                                         {
                                             wxString codePrefix = GetSettings( )->GetCatCodePrefix( );
@@ -286,11 +286,11 @@ namespace Utils {
 
                                             }
 
-                                            //std::cout <<  "stampNode->SetID( "<< id<<" ); \n"   ; 
-                                            stampNode->SetID( id );
-                                            //std::cout <<  "stampNode->GetID( ); \n"   ; 
-                                            id = stampNode->GetID( );
-                                            //std::cout <<  "stampNode->GetID( ); returned >"<< id << "<\n"; 
+                                            //std::cout <<  "entryNode->SetID( "<< id<<" ); \n"   ; 
+                                            entryNode->SetID( id );
+                                            //std::cout <<  "entryNode->GetID( ); \n"   ; 
+                                            id = entryNode->GetID( );
+                                            //std::cout <<  "entryNode->GetID( ); returned >"<< id << "<\n"; 
                                             if ( id.IsEmpty( ) )
                                             {
                                                 std::cout << "ID_Nbr>" << valStr << "<\n";
@@ -300,7 +300,7 @@ namespace Utils {
                                         else
                                         {
                                             //                                            std::cout << "ID_Nbr>"<<valStr<<"<\n";
-                                            stampNode->SetID( valStr );
+                                            entryNode->SetID( valStr );
                                         }
                                     }
                                     valFound = true;
@@ -310,7 +310,7 @@ namespace Utils {
                                 }
                                 csvCol++;
                             }
-                            wxString id = stampNode->GetID( );
+                            wxString id = entryNode->GetID( );
                             id = id.Trim( );
                             id = id.Trim( false );
                             if ( id.IsEmpty( ) )
@@ -318,13 +318,13 @@ namespace Utils {
                                 std::cout << "ID_Nbr>" << valStr << "<\n";
                                 int a = 0;
                             }
-                            if ( valFound )//&& ( stampNode->GetID( ).Length( ) > 0 ) )
+                            if ( valFound )//&& ( entryNode->GetID( ).Length( ) > 0 ) )
                             {
-                                // docRoot->AddChild( ( wxXmlNode* )stampElement );
+                                // docRoot->AddChild( ( wxXmlNode* )entryElement );
                             }
                             else
                             {
-                                // delete stampNode;
+                                // delete entryNode;
                             }
                         }
                     }

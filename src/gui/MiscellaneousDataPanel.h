@@ -20,7 +20,7 @@
  
  
 
-#include "catalog/Stamp.h"
+#include "catalog/Entry.h"
 
 /*!
  * Forward declarations
@@ -158,12 +158,12 @@ class MiscellaneousDataPanel : public wxPanel
     static bool ShowToolTips( );
 
     void ShowStamp( );
-    void SetStamp( Catalog::Stamp *stamp );
+    void SetStamp( Catalog::Entry *stamp );
     void SetDataEditable( bool val );
 
     //void SetLabel( wxWindowID id, wxString val );
 
-    Catalog::Stamp *m_stamp;
+    Catalog::Entry *m_stamp;
 
      // MiscellaneousDataPanel member variables
     LabeledTextBox *m_score;

@@ -10,8 +10,8 @@
  *
  **************************************************/
 
-#ifndef Catalog_Stamp_h
-#define Catalog_Stamp_h
+#ifndef Catalog_Entry_h
+#define Catalog_Entry_h
 
 #include "catalog/CatalogDefs.h"
 #include "catalog/CatalogBase.h"
@@ -33,36 +33,36 @@ namespace Catalog {
       * @see CatalogBase, Classification, Specimen
       *
       **************************************************/
-    class Stamp : public CatalogBase
+    class Entry : public CatalogBase
     {
     public:
 
         /**
-         * @brief Construct a new Stamp object
+         * @brief Construct a new Entry object
          *
          **************************************************/
-        Stamp( ) : CatalogBase( )
+        Entry( ) : CatalogBase( )
         {
-            SetNodeType( NT_Stamp );
+            SetNodeType( NT_Entry );
             IsOK( );
         };
 
         /**
-         * @brief Construct a new Stamp object
+         * @brief Construct a new Entry object
          *
-         * @param stamp
+         * @param entry
          **************************************************/
-        Stamp( wxXmlNode* stamp ) : CatalogBase( stamp )
+        Entry( wxXmlNode* entry ) : CatalogBase( entry )
         {
-            SetNodeType( NT_Stamp );
+            SetNodeType( NT_Entry );
             IsOK( );
         };
 
         /**
-         * @brief Destroy the Stamp object
+         * @brief Destroy the Entry object
          *
          **************************************************/
-        ~Stamp( ) { };
+        ~Entry( ) { };
 
         /**
          * @brief
@@ -73,39 +73,39 @@ namespace Catalog {
         bool IsOK( );
 
         /**
-         * @defgroup Get Stamp field
-         * @brief Retrieves the value of the attribute of the stamp
+         * @defgroup Get Entry field
+         * @brief Retrieves the value of the attribute of the entry
          *
          * @return wxString  wxString representation of the field
          * @{
          **************************************************/
 
-        wxString GetAccuracy( ); ///< Get the stamp Accuracy field
-        wxString GetCatalogCodes( ); ///< Get the stamp Catalog Codes field
-        wxString GetColors( ); ///< Get the stamp Colors field
-        wxString GetCountry( ); ///< Get the stamp country field
-        wxString GetCurrency( ); ///< Get the stamp Currency field
-        wxString GetDescription( ); ///< Get the stamp Description field
-        wxString GetEmission( ); ///< Get the stamp emission field
-        wxString GetExpiryDate( ); ///< Get the stamp Expiry Date field 
-        wxString GetFaceValue( ); ///< Get the stamp FaceValue field
-        wxString GetFormat( ); ///< Get the stamp Format field 
-        wxString GetGum( ); ///< Get the stamp Gum field
-        wxString GetHeight( ); ///< Get the stamp height field 
-        wxString GetID( ); ///< Get the stamp ID
-        wxString GetIssuedDate( ); ///< Get the stamp Issue data field 
-        wxString GetLink( ); ///< Get the stamp Link field
-        wxString GetName( ); ///< Get the stamp title field
-        wxString GetPaper( ); ///< Get the stamp paper field
-        wxString GetPerforation( ); ///< Get the stamp Perforation field
-        wxString GetPrinting( ); ///< Get the stamp Printing field
-        wxString GetPrintRun( ); ///< Get the stamp PrintRun field
-        wxString GetScore( ); ///< Get the stamp Score field
-        wxString GetSeries( ); ///< Get the stamp series field
-        wxString GetThemes( ); ///< Get the stamp Themes field
-        wxString GetVariant( ); ///< Get the stamp Variant field
-        wxString GetWatermark( ); ///< Get the stamp Watermark field 
-        wxString GetWidth( ); ///< Get the stamp Width field
+        wxString GetAccuracy( ); ///< Get the entry Accuracy field
+        wxString GetCatalogCodes( ); ///< Get the entry Catalog Codes field
+        wxString GetColors( ); ///< Get the entry Colors field
+        wxString GetCountry( ); ///< Get the entry country field
+        wxString GetCurrency( ); ///< Get the entry Currency field
+        wxString GetDescription( ); ///< Get the entry Description field
+        wxString GetEmission( ); ///< Get the entry emission field
+        wxString GetExpiryDate( ); ///< Get the entry Expiry Date field 
+        wxString GetFaceValue( ); ///< Get the entry FaceValue field
+        wxString GetFormat( ); ///< Get the entry Format field 
+        wxString GetGum( ); ///< Get the entry Gum field
+        wxString GetHeight( ); ///< Get the entry height field 
+        wxString GetID( ); ///< Get the entry ID
+        wxString GetIssuedDate( ); ///< Get the entry Issue data field 
+        wxString GetLink( ); ///< Get the entry Link field
+        wxString GetName( ); ///< Get the entry title field
+        wxString GetPaper( ); ///< Get the entry paper field
+        wxString GetPerforation( ); ///< Get the entry Perforation field
+        wxString GetPrinting( ); ///< Get the entry Printing field
+        wxString GetPrintRun( ); ///< Get the entry PrintRun field
+        wxString GetScore( ); ///< Get the entry Score field
+        wxString GetSeries( ); ///< Get the entry series field
+        wxString GetThemes( ); ///< Get the entry Themes field
+        wxString GetVariant( ); ///< Get the entry Variant field
+        wxString GetWatermark( ); ///< Get the entry Watermark field 
+        wxString GetWidth( ); ///< Get the entry Width field
 
     /**@}*/
 
@@ -143,37 +143,37 @@ namespace Catalog {
 
         /**
          * @defgroup
-         * @brief Sets the value of the appropriate attribute of the stamp
+         * @brief Sets the value of the appropriate attribute of the entry
          *
          * @param val  the value to set the attribute to.
          * @{
          **************************************************/
-        void SetAccuracy( wxString val ); ///< Get the stamp Accuracy field 
-        void SetCatalogCodes( wxString val ); ///< Get the stamp CatalogCodes field 
-        void SetColors( wxString val ); ///< Get the stamp Colors field 
-        void SetCountry( wxString val ); ///< Get the stamp Country field 
-        void SetCurrency( wxString val ); ///< Get the stamp Currency field 
-        void SetDescription( wxString val ); ///< Get the stamp Description field 
-        void SetEmission( wxString val ); ///< Get the stamp Emission field 
-        void SetExpiryDate( wxString val ); ///< Get the stamp ExpiryDate field 
-        void SetFaceValue( wxString val ); ///< Get the stamp FaceValue field 
-        void SetFormat( wxString val ); ///< Get the stamp Format field 
-        void SetGum( wxString val ); ///< Get the stamp Gum field 
-        void SetHeight( wxString val ); ///< Get the stamp Height field 
-        void SetID( wxString val ); ///< Get the stamp ID field 
-        void SetIssuedDate( wxString val ); ///< Get the stamp IssuedDate field 
-        void SetLink( wxString val ); ///< Get the stamp Link field 
-        void SetName( wxString val ); ///< Get the stamp Name field 
-        void SetPaper( wxString val ); ///< Get the stamp Paper field 
-        void SetPerforation( wxString val ); ///< Get the stamp Perforation field 
-        void SetPrinting( wxString val ); ///< Get the stamp Printing field ; 
-        void SetPrintRun( wxString val ); ///< Get the stamp PrintRun field 
-        void SetScore( wxString val ); ///< Get the stamp Score field 
-        void SetSeries( wxString val ); ///< Get the stamp Series field 
-        void SetThemes( wxString val ); ///< Get the stamp Themes field 
-        void SetVariant( wxString val ); ///< Get the stamp Variant field 
-        void SetWatermark( wxString val ); ///< Get the stamp Watermark field 
-        void SetWidth( wxString val ); ///< Get the stamp Width field 
+        void SetAccuracy( wxString val ); ///< Get the entry Accuracy field 
+        void SetCatalogCodes( wxString val ); ///< Get the entry CatalogCodes field 
+        void SetColors( wxString val ); ///< Get the entry Colors field 
+        void SetCountry( wxString val ); ///< Get the entry Country field 
+        void SetCurrency( wxString val ); ///< Get the entry Currency field 
+        void SetDescription( wxString val ); ///< Get the entry Description field 
+        void SetEmission( wxString val ); ///< Get the entry Emission field 
+        void SetExpiryDate( wxString val ); ///< Get the entry ExpiryDate field 
+        void SetFaceValue( wxString val ); ///< Get the entry FaceValue field 
+        void SetFormat( wxString val ); ///< Get the entry Format field 
+        void SetGum( wxString val ); ///< Get the entry Gum field 
+        void SetHeight( wxString val ); ///< Get the entry Height field 
+        void SetID( wxString val ); ///< Get the entry ID field 
+        void SetIssuedDate( wxString val ); ///< Get the entry IssuedDate field 
+        void SetLink( wxString val ); ///< Get the entry Link field 
+        void SetName( wxString val ); ///< Get the entry Name field 
+        void SetPaper( wxString val ); ///< Get the entry Paper field 
+        void SetPerforation( wxString val ); ///< Get the entry Perforation field 
+        void SetPrinting( wxString val ); ///< Get the entry Printing field ; 
+        void SetPrintRun( wxString val ); ///< Get the entry PrintRun field 
+        void SetScore( wxString val ); ///< Get the entry Score field 
+        void SetSeries( wxString val ); ///< Get the entry Series field 
+        void SetThemes( wxString val ); ///< Get the entry Themes field 
+        void SetVariant( wxString val ); ///< Get the entry Variant field 
+        void SetWatermark( wxString val ); ///< Get the entry Watermark field 
+        void SetWidth( wxString val ); ///< Get the entry Width field 
 
         /*@}*/
 
@@ -300,11 +300,11 @@ namespace Catalog {
         /**
          * @brief Get the Classification Name object
          *
-         * @param stamp
+         * @param entry
          * @param type
          * @return wxString
          **************************************************/
-        wxString GetClassificationName( Stamp* stamp, CatalogBaseType type );
+        wxString GetClassificationName( Entry* entry, CatalogBaseType type );
 
         /**
          * @brief add an empty element of Specimen type
@@ -321,7 +321,7 @@ namespace Catalog {
         void DeleteSpecimen( wxXmlNode* deleteThisNode );
 
         /**
-         * @brief does this stamp have a child of Specimen type
+         * @brief does this entry have a child of Specimen type
          *
          * @return true
          * @return false

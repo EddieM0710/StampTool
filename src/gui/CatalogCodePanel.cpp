@@ -164,7 +164,7 @@ void CatalogCodePanel::CreateControls( )
 
 wxXmlNode* CatalogCodePanel::InitNewCatCode( )
 {
-    wxXmlNode* ele = m_stamp->AddCode( );
+    wxXmlNode* ele = m_entry->AddCode( );
     Catalog::CatalogCode catCode( ele );
     for ( int col = 0; col < Catalog::CC_NbrTypes; col++ )
     {
@@ -180,7 +180,7 @@ wxXmlNode* CatalogCodePanel::InitNewCatCode( )
 
 int CatalogCodePanel::AddNewRow( )
 {
-    if ( m_stamp )
+    if ( m_entry )
     {
         int cnt = m_grid->GetNumberRows( );
         m_grid->InsertRows( cnt, 1 );
@@ -251,25 +251,25 @@ wxIcon CatalogCodePanel::GetIconResource( const wxString& name )
 
 /*
  *
- *SetStamp
+ *SetEntry
  *
  **************************************************/
 
-void CatalogCodePanel::SetStamp( Catalog::Stamp* stamp )
+void CatalogCodePanel::SetStamp( Catalog::Entry* entry )
 {
-    m_stamp = stamp;
-    ShowStamp( );
+    m_entry = entry;
+    ShowEntry( );
 }
 
 
 /*
- * ShowStamp
+ * ShowEntry
  *
  **************************************************/
 
-void CatalogCodePanel::ShowStamp( )
+void CatalogCodePanel::ShowEntry( )
 {
-    // new stamp to show; clean up the grid
+    // new entry to show; clean up the grid
     int row = m_grid->GetNumberRows( );
     m_grid->ClearGrid( );
     if ( row > 0 )
@@ -279,14 +279,14 @@ void CatalogCodePanel::ShowStamp( )
     m_catCodeList.clear( );
     row = m_grid->GetNumberRows( );  // better be 0 at this point
 
-    // if the stamp is valid
-    if ( m_stamp && m_stamp->IsOK( ) )
+    // if the entry is valid
+    if ( m_entry && m_entry->IsOK( ) )
     {
         //and if it has catalog codes
-        if ( m_stamp->HasChildCode( ) )
+        if ( m_entry->HasChildCode( ) )
         {
             // loop through the codes and add them to the grid
-            wxXmlNode* ele = m_stamp->GetFirstChildCode( );
+            wxXmlNode* ele = m_entry->GetFirstChildCode( );
             while ( ele )
             {
                 m_grid->InsertRows( row, 1 );
@@ -294,7 +294,7 @@ void CatalogCodePanel::ShowStamp( )
 
                 ShowRow( row );
                 row++;
-                ele = m_stamp->GetNextChildCode( ele );
+                ele = m_entry->GetNextChildCode( ele );
             }
         }
     }

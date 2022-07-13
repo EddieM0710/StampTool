@@ -245,7 +245,7 @@ wxIcon CharacteristicsPanel::GetIconResource( const wxString& name )
 }
 
 // initializes the CharacteristicsPanel with new stamp values
-void CharacteristicsPanel::SetStamp( Catalog::Stamp* stamp )
+void CharacteristicsPanel::SetStamp( Catalog::Entry* stamp )
 {
     m_stamp = stamp;
     if ( m_stamp->IsOK( ) )

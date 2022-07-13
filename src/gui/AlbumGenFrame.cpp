@@ -32,7 +32,7 @@
 
 #include "utils/CSV.h"
 #include "catalog/Classification.h"
-#include "catalog/Stamp.h"
+#include "catalog/Entry.h"
 #include "Defs.h"
 #include "Settings.h"
 #include "utils/Project.h"

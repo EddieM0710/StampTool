@@ -16,7 +16,7 @@ CatalogBase.cpp
 CatalogData.cpp
 CatalogDefs.cpp
 Classification.cpp 
-Stamp.cpp
+Entry.cpp
 Specimen.cpp
 )
 

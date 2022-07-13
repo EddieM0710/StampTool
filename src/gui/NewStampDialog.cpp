@@ -398,7 +398,7 @@ void NewStampDialog::SetChoice( wxChoice* ctrl, wxString str )
  *
  **************************************************/
 
-void NewStampDialog::SetStamp( Catalog::Stamp* stamp )
+void NewStampDialog::SetStamp( Catalog::Entry* stamp )
 {
     m_stamp = stamp;
     if ( m_stamp->IsOK( ) )

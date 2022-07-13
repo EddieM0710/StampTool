@@ -275,11 +275,11 @@ void StampDetailsDialog::RefreshFromCatalog( )
         if ( link )
         {
             wxTreeItemId catTreeID = link->GetCatTreeID( );
-            wxXmlNode* node = GetCatalogTreeCtrl( )->GetStampNode( catTreeID );
+            wxXmlNode* node = GetCatalogTreeCtrl( )->GetEntryNode( catTreeID );
 
             if ( node )
             {
-                Catalog::Stamp  stamp( node );
+                Catalog::Entry  stamp( node );
                 SetHeight( stamp.GetHeight( ) );
                 SetHeightModified();
                 SetWidth( stamp.GetWidth(  ) );

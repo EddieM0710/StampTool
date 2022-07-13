@@ -24,7 +24,7 @@
 #include "gui/LabeledTextBox.h"
  
 #include "Defs.h"
-#include "catalog/Stamp.h"
+#include "catalog/Entry.h"
 
 /*
  * LabeledTextBox type definition

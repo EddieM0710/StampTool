@@ -450,7 +450,7 @@ void DescriptionPanel::SetStamp( wxXmlNode* stamp )
     {
         delete m_stamp;
     }
-    m_stamp = new Catalog::Stamp(stamp);
+    m_stamp = new Catalog::Entry(stamp);
     m_bkgndText->ChangeValue( m_stamp->GetBackground( ) );
     m_description->ChangeValue( m_stamp->GetDescription( ) );
 

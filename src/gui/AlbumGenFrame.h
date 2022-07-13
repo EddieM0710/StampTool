@@ -25,7 +25,7 @@
 #include <vector>
 
 //#include "catalog/Classification.h"
-//#include "catalog/Stamp.h"
+//#include "catalog/Entry.h"
 
 //#include <wx/dnd.h>
 /*!

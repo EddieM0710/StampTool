@@ -15,9 +15,11 @@
 #include "utils/XMLUtilities.h"
 #include "gui/DesignTreeCtrl.h"
 #include "art/NotFound.xpm"
+#include "gui/DescriptionPanel.h"
 
 #include "catalog/CatalogData.h"
 #include "catalog/Stamp.h"
+#include "Defs.h"
 
 namespace Design {
 
@@ -128,7 +130,7 @@ namespace Design {
 
         wxXmlNode* idNode = ODT::ContentDoc( )->WriteTextBox( parent,
             0, height,
-            width, .4,
+            width, 4,
             ODT::FrameCenteredFromTopNoBorder,  // fr1
             ODT::TextAnchorParagraph, // "page", "paragraph"
             ODT::Normal10PtTextStyle,
@@ -160,20 +162,23 @@ namespace Design {
             ODT::FrameCenteredAtTopNoBorder,
             ODT::TextAnchorParagraph );
 
+        
 
-        wxString link = GetAttrStr( AT_Link );
+        wxString stampID = GetAttrStr( Design::AT_ID );
+
+        wxString link = GetGeneratorData( )->GetImageFilename( stampID );
 
         wxXmlNode* image = ODT::ContentDoc( )->WriteImage( frame,
             0, 0,
             width, height,
             ODT::FrameWithImage, ODT::TextAnchorParagraph, ODT::Frame20Content, link );
 
-        wxString stampID = Utils::GetAttrStr( parent, "ID" );
-        // stampFrame->SetContent( stampID );
+        //frame->SetContent( stampID );
+
         double idWidth = m_stampFrame.GetWidth( ) * .8;
         wxXmlNode* idNode = ODT::ContentDoc( )->WriteTextBox( parent,
             0, height,
-            idWidth, .15,
+            idWidth, 4,
             ODT::FrameCenteredFromTopNoBorder,  // fr1
             ODT::TextAnchorParagraph, // "page", "paragraph"
             ODT::Normal8PtTextStyle,
@@ -298,37 +303,30 @@ namespace Design {
     {
 
         wxFileName fn;
+        wxString filename;
         wxImage* image;
         bool fileOK = false;
-        wxString link = GetAttrStr( Design::AT_Link );
-        if ( !link.IsEmpty( ) )
+        wxString fileID = GetAttrStr( Design::AT_ID );
+        if ( fileID.IsEmpty( ) )
         {
-            fn.Assign( link );
+            fileOK = false;
+        }
+        else
+        {
+            filename = GetGeneratorData( )->GetImageFilename( fileID );
+            fn.Assign( filename );
+            wxString fullpath = fn.GetFullPath();
             if ( fn.FileExists( ) )
             {
-                if ( !image->CanRead( link ) )
+                if ( image->CanRead( filename ) )
                 {
                     fileOK = true;
                 }
             }
-        }
-        if ( !fileOK )
-        {
-            link = GetAttrStr( AT_ID ) + ".jpg";
-            fn.SetFullName( link );
-            fn.SetPath( "/sandbox/Documents/Stamps/Art" );
-            link = fn.GetFullPath( );
-            if ( fn.FileExists( ) )
-            {
-                if ( image->CanRead( link ) )
-                {
-                    fileOK = true;
-                }
-            }
-        }
+           }
         if ( fileOK )
         {
-            image = new wxImage( link );
+            image = new wxImage( filename );
         }
         else
         {
@@ -341,10 +339,10 @@ namespace Design {
     void Stamp::draw( wxDC& dc, double x, double y )
     {
 
-        dc.SetPen( *wxRED_PEN );
+        dc.SetPen( *wxTRANSPARENT_PEN );
         m_frame.draw( dc, x, y );
 
-        dc.SetPen( *wxYELLOW_PEN );
+        dc.SetPen( *wxBLACK_PEN );
         double xPos = x + GetXPos( );
         double yPos = y + GetYPos( );
         m_stampFrame.draw( dc, xPos, yPos );
@@ -353,16 +351,20 @@ namespace Design {
         if ( image && image->IsOk( ) )
         {
 
+            //double xPos1 = xPos + m_stampFrame.GetXPos( ) + m_stampImageFrame.GetXPos( );
+            //double yPos1 = yPos + m_stampFrame.GetYPos( ) + m_stampImageFrame.GetYPos( );
             double xPos1 = xPos + m_stampFrame.GetXPos( ) + m_stampImageFrame.GetXPos( );
-            double yPos1 = yPos + m_stampFrame.GetYPos( ) + m_stampImageFrame.GetYPos( );
-if (m_stampImageFrame.GetWidth( ) <= 0.01 ||
-m_stampImageFrame.GetHeight( )<=  0.01 )
-{
-    int a = 0;
-}
+            double yPos1 = yPos + m_stampFrame.GetYPos( ) ;
+            double height = m_stampImageFrame.GetHeight( );
+            double width = m_stampImageFrame.GetWidth( );
+            if ( width <= 0.01 || height <=  0.01 )
+            {
+                height = 10;
+                width = 10;
+            }
 
-
-            image->Rescale( m_stampImageFrame.GetWidth( ) * PpMM.x, m_stampImageFrame.GetHeight( ) * PpMM.y );
+         
+            image->Rescale( width * PpMM.x, height * PpMM.y );
             wxBitmap bitmap = *image;
 
             dc.DrawBitmap( bitmap, xPos1 * PpMM.x, yPos1 * PpMM.y, true );
@@ -370,7 +372,6 @@ m_stampImageFrame.GetHeight( )<=  0.01 )
             {
                 delete image;
             }
-
         }
         else
         {
@@ -380,8 +381,146 @@ m_stampImageFrame.GetHeight( )<=  0.01 )
             m_stampImageFrame.draw( dc, xPos1, yPos1 );
         }
 
+       // DrawTitle(dc, xPos, yPos + m_stampFrame.GetHeight() );
+
+        //if ( m_showID )
+        //{
+            double xPos2 = xPos + m_stampFrame.GetXPos( ) + m_stampImageFrame.GetXPos( );
+            
+            double yPos2 = yPos + m_stampFrame.GetYPos( ) + m_stampImageFrame.GetHeight( );
+            DrawID( dc, xPos2, yPos2  );
+
+
+        //}
     };
 
+
+    void Stamp::DrawID( wxDC& dc, double x, double y  )
+    {
+        wxFont* font = new wxFont( *wxSMALL_FONT );
+        font->SetPointSize( 8 );   
+        dc.SetFont( *font );
+        wxString id = GetAttrStr( AT_ID ); 
+        id.Trim();
+        id.Trim(false);
+        int pos = id.First(' ');
+        id = id.Mid(pos+1);
+        m_idTextExtent = dc.GetTextExtent(id);
+        x = x + ( m_stampImageFrame.GetWidth( ) - m_idTextExtent.GetX()/PpMM.x )/2;
+        dc.DrawText ( id, x * PpMM.x, y * PpMM.y );
+        delete font;
+    }
+
+    void Stamp::DrawTitle( wxDC& dc, double x, double y  )
+    {
+        wxFont* font = new wxFont( *wxNORMAL_FONT );
+        dc.SetFont( *font );
+        wxString id = GetAttrStr( AT_Name ); 
+        id.Trim();
+        id.Trim(false);
+        int len = id.length();
+        double width = m_stampFrame.GetWidth( ) * PpMM.x;
+        if( len > 0 )
+        {
+            wxSize ext = dc.GetTextExtent(id); 
+            if ( ext.x < width )
+            {
+                // if it fits print it
+                x = x + ( m_stampFrame.GetWidth( ) - ext.GetX()/PpMM.x )/2;
+                dc.DrawText ( id, x * PpMM.x, y * PpMM.y );
+            }
+            else 
+            {
+                // break the line up at word breaks; look for a space
+                int start = 0;
+                int pos = start;
+                int origPos = start;
+                
+                wxString currStr = id;
+                wxString workingStr = id;
+
+                pos = workingStr.find(' ', pos); 
+
+                while( len > 0 )
+                {
+                    if ( pos == wxNOT_FOUND )
+                    {
+                        // no space for break so print it.
+                        x = x + ( m_stampFrame.GetWidth( ) - ext.GetX()/PpMM.x )/2;
+                        dc.DrawText ( id, x * PpMM.x, y * PpMM.y );
+                        len = 0;
+                    }   
+                    else
+                    {   
+                        // found a space so break into multiple lines
+                        // Add words until length exceeded
+                        workingStr = id.Mid(start,pos) ;
+                        
+                        wxSize ext = dc.GetTextExtent(workingStr); 
+                        if ( ext.x/PpMM.x > width )
+                        {
+                            // it won't fit; decide what to do
+                            if ( start == origPos )
+                            {
+                                // the distance to the first space was bigger than the size of the stamp so print it
+                                // i.e., a really big word or little stamp
+                                x = x + ( m_stampFrame.GetWidth( ) - ext.GetX()/PpMM.x )/2;
+                                currStr = id.Mid(start,pos);
+                                dc.DrawText ( currStr, x * PpMM.x, y * PpMM.y ); 
+                                workingStr = id.Mid(pos+1); 
+                                workingStr.Trim();
+                                workingStr.Trim(false);
+                                len = workingStr.length();
+                                start = pos+1; 
+                                origPos = pos+1;   
+                                pos = id.find( ' ', start);                                                     
+                            }
+                            else
+                            {
+                                // backup to previous try
+                                workingStr = workingStr.Mid( start, origPos );
+                                pos = origPos;
+                                wxSize ext = dc.GetTextExtent(workingStr); 
+                                x = x + ( m_stampFrame.GetWidth( ) - ext.GetX()/PpMM.x )/2;
+                                currStr = id.Mid(start,pos);
+                                dc.DrawText ( currStr, x * PpMM.x, y * PpMM.y ); 
+                                workingStr = id.Mid(pos+1); 
+                                workingStr.Trim();
+                                workingStr.Trim(false);
+                                len = workingStr.length();
+                                start = pos+1; 
+                                origPos = pos+1;   
+                                pos = id.find( ' ', start);  
+
+                            }
+                        }
+                        else
+                        {
+                            // the word will fit; can another word fit?
+                            origPos = pos;
+                            pos = id.find( ' ', pos+1 );
+                            if( pos == wxNOT_FOUND)
+                            {
+                                // no space for break so print it.
+                                x = x + ( m_stampFrame.GetWidth( ) - ext.GetX()/PpMM.x )/2;
+                                dc.DrawText ( workingStr, x * PpMM.x, y * PpMM.y );
+                                workingStr.Empty(); 
+                                len = 0;
+                            }             
+                        }   
+                    }
+                }          
+            }
+        }
+        delete font;
+    }
+    // wxClientDC dc( this );
+    // DoPrepareDC( dc );
+    // wxSize size = dc.GetTextExtent( text );
+    // wxRealPoint titleSize;
+    // titleSize.x = size.x/Design::PpMM.x;
+    // titleSize.y = size.y/Design::PpMM.y;
+    // return titleSize;
     void Stamp::Save( wxXmlNode* xmlNode )
     {
         SetAttribute( xmlNode, AT_ID );

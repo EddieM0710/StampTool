@@ -48,6 +48,7 @@
 #include "utils/XMLUtilities.h"
 #include "gui/DesignTreeCtrl.h"
 #include "gui/DescriptionPanel.h"
+#include "gui/NewStampDialog.h"
 
 
 IMPLEMENT_CLASS( CatalogTreeCtrl, wxTreeCtrl );
@@ -475,6 +476,8 @@ void CatalogTreeCtrl::ShowMenu( wxTreeItemId id, const wxPoint& pt )
 //*****
 void CatalogTreeCtrl::AddStamp( wxTreeItemId id )
 {
+        NewStampDialog newStampDialog( this, 12345, _( "Add New Stamp" ) );
+        if ( newStampDialog.ShowModal( ) == wxID_CANCEL ) return; // the user changed idea..
 }
 //*****
 void CatalogTreeCtrl::DeleteStamp( wxTreeItemId id )
@@ -816,25 +819,28 @@ void CatalogTreeCtrl::ClearCatalogTree( )
 void CatalogTreeCtrl::LoadTree( )
 {
     ClearCatalogTree( );
-
-    wxXmlDocument* stampDoc = GetCatalogData( )->GetDoc( );
-    //   XMLDump( stampDoc );
-    wxXmlNode* catalogData = stampDoc->GetRoot( );
-    wxString name = catalogData->GetName( );
-    // Create the root item
-    CatalogTreeItemData* itemData
-        = new CatalogTreeItemData( Catalog::NT_Catalog, name, catalogData );
-    wxTreeItemId rootID = AddRoot( name, Catalog::Icon_Folder, 1, itemData );
-
-    wxXmlNode* child = catalogData->GetChildren( );
-    while ( child )
+    Catalog::CatalogData* catalogData = GetCatalogData( );
+    if ( catalogData )
     {
-        // start adding child elementss to it.
-        AddChild( rootID, child );
-        child = child->GetNext( );
+        wxXmlDocument* stampDoc = GetCatalogData( )->GetDoc( );
+        //   XMLDump( stampDoc );
+        wxXmlNode* catalogData = stampDoc->GetRoot( );
+        wxString name = catalogData->GetName( );
+        // Create the root item
+        CatalogTreeItemData* itemData
+            = new CatalogTreeItemData( Catalog::NT_Catalog, name, catalogData );
+        wxTreeItemId rootID = AddRoot( name, Catalog::Icon_Folder, 1, itemData );
+
+        wxXmlNode* child = catalogData->GetChildren( );
+        while ( child )
+        {
+            // start adding child elementss to it.
+            AddChild( rootID, child );
+            child = child->GetNext( );
+        }
+        SortTree( GetRootItem( ) );
+        ExpandAll( );
     }
-    SortTree( GetRootItem( ) );
-    ExpandAll( );
 }
 
 //*****

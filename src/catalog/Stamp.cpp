@@ -31,7 +31,7 @@
 
 namespace Catalog {
 
-    inline bool Stamp::IsOK( )
+    bool Stamp::IsOK( )
     {
         wxXmlNode* ele = GetCatXMLNode( );
         wxString str;

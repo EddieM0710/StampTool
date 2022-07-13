@@ -20,7 +20,7 @@
 
 #include "wx/notebook.h"
 #include "wx/splitter.h"
-
+#include <wx/slider.h>
 
 #include "catalog/Stamp.h"
 #include "Defs.h"

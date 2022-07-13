@@ -260,3 +260,25 @@ void GeneratorData::InitLoad( )
         LoadData( );
     }
 }
+
+
+wxString GeneratorData::GetImageFilename( wxString stampId )
+{
+
+    wxString dirName = GetSettings( )->GetImageDirectory( );
+    wxString fileName = stampId ;
+    wxString imageFile;
+    if ( dirName.IsEmpty() || fileName.IsEmpty() )
+    {
+        imageFile = "";
+    }
+    else
+    {
+        fileName = fileName.Trim(true);
+        fileName = fileName.Trim(false);
+        fileName.Replace(":","_");
+        fileName.Replace(" ","_");
+        imageFile =  wxString::Format( "%s/%s.jpg", dirName, fileName );
+    }    
+    return imageFile;
+}

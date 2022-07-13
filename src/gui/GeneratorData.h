@@ -178,6 +178,7 @@ public:
     void SetDesignTreeCtrl( DesignTreeCtrl* treeCtrl ) { m_designTreeCtrl = treeCtrl; };
     void SetDescriptionPanel( DescriptionPanel* descriptionPanel ) { m_descriptionPanel = descriptionPanel; };
     void SetAlbumImagePanel( AlbumImagePanel* albumImagePanel ) { m_albumImagePanel = albumImagePanel; };
+    wxString GetImageFilename( wxString stampId );
 
     void SetDirty( bool state = true ) { m_dirty = state; };
     // Is project dirty?

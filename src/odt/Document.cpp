@@ -45,14 +45,14 @@ namespace ODT {
     wxString Document::AddImageFile( wxString filename )
     {
         //Design::DesignData *designData = Utils::GetProject()->GetDesignData( ) ;
-        wxString imageLoc = GetGeneratorData()->GetSettings()->GetImageDirectory( );
-        wxFileName inputImage( imageLoc, filename );
+        //wxString imageLoc = GetGeneratorData()->GetSettings()->GetImageDirectory( );
+        wxFileName inputImage(  filename );
         bool status = inputImage.MakeAbsolute( );
         wxString i_cwd = inputImage.GetCwd( );
 
         wxString i_fullPath = inputImage.GetFullPath( );
 
-        wxFileName docImage( "Pictures", filename );
+        wxFileName docImage( "Pictures", inputImage.GetFullName() );
         wxString d_cwd = docImage.GetCwd( );
 
         wxString d_fullPath = docImage.GetFullPath( );

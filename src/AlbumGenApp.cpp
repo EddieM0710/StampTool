@@ -107,7 +107,7 @@ bool AlbumGenApp::OnInit( )
     m_generatorData->InitGeneratorData();
 
     m_frame = new AlbumGenFrame( NULL );
-    m_frame->SetupRecentMenu( );    
+  //  m_frame->SetupRecentMenu( );    
     m_frame->InitLoad( );
 
     m_frame->Show( true );

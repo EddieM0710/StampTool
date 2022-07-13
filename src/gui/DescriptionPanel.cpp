@@ -32,6 +32,7 @@
 #include "MiscellaneousDataPanel.h"
 #include "Settings.h"
 #include "Stamp.h"
+#include "GeneratorData.h"
 #include "CatalogData.h"
 
 /*
@@ -438,8 +439,6 @@ void DescriptionPanel::OnDescriptionTextctrlTextUpdated( wxCommandEvent& event )
     // in DescriptionPanel.
 }
 
-
-
 /*
  *
  * initializes the DescriptionPanel with new stamp values
@@ -461,21 +460,7 @@ void DescriptionPanel::SetStamp( wxXmlNode* stamp )
     m_identificationPanel->SetStamp( m_stamp );
     m_miscellaneousDataPanel->SetStamp( m_stamp );
 
-    wxString dirName = GetSettings( )->GetImageDirectory( );
-    wxString fileName = m_stamp->GetID( ) ;
-    wxString imageFile;
-    if ( dirName.IsEmpty() || fileName.IsEmpty() )
-    {
-        imageFile = "";
-    }
-    else
-    {
-        fileName = fileName.Trim(true);
-        fileName = fileName.Trim(false);
-        fileName.Replace(":","_");
-        fileName.Replace(" ","_");
-        imageFile =  wxString::Format( "%s/%s.jpg", dirName, fileName );
-    }
+    wxString imageFile = GetGeneratorData( )->GetImageFilename( m_stamp->GetID( ) );
     m_stampImage->SetBitmap( imageFile );
 }
 

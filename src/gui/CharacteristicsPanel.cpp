@@ -294,7 +294,7 @@ void CharacteristicsPanel::OnTextctrlTextUpdated( wxCommandEvent& event )
     }
     else if ( eventObject == m_height )
     {
-        UpdateStampValue( Catalog::DT_Variant, m_height );
+        UpdateStampValue( Catalog::DT_Height, m_height );
     }
     else if ( eventObject == m_width )
     {

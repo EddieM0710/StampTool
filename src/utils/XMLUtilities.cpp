@@ -215,7 +215,7 @@ int StyleNameIndex = 0;
     wxXmlNode* NewNode( wxXmlNode* parent, wxString name )
     {
         wxXmlNode* newNode =  new wxXmlNode( 0, wxXML_ELEMENT_NODE, name );
-        parent->AddChild(newNode);
+       // parent->AddChild(newNode);
         return newNode;
 
     }

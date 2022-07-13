@@ -111,6 +111,9 @@ namespace Design {
         wxString GetStampWidthStr( ) ;
         
         void draw( wxDC &dc, double x, double y );
+        void DrawID( wxDC& dc, double x, double y  );
+        void DrawTitle( wxDC& dc, double x, double y  );
+
         void Save( wxXmlNode* xmlNode );
         // bool GetShowTitle(){ return String2Bool( GetAttrStr( AT_ShowTitle ) ); };
         // void SetShowTitle( bool val ){ SetAttrStr( AT_ShowTitle, Bool2String( val) ); };
@@ -161,6 +164,8 @@ namespace Design {
 
         NodeStatus m_error[AT_NbrStampErrorTypes];
         bool m_showID;
+        wxSize m_idTextExtent;
+        wxSize m_titleTextExtent;
         bool m_showTitle;
 
 

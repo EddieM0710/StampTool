@@ -199,8 +199,8 @@ void AlbumGenFrame::CreateControls( )
     m_fileMenu->Append( ID_CSVIMPORT, _( "Import CSV" ), wxEmptyString, wxITEM_NORMAL );
     m_fileMenu->Append( ID_MERGE, _( "Merge" ), wxEmptyString, wxITEM_NORMAL );
     m_fileMenu->AppendSeparator( );
-    m_recentMenu = new wxMenu;
-    m_fileMenu->Append( ID_RECENT, _( "Recent" ), m_recentMenu );
+  //  m_recentMenu = new wxMenu;
+  //  m_fileMenu->Append( ID_RECENT, _( "Recent" ), m_recentMenu );
     m_fileMenu->AppendSeparator( );
     m_preferencesMenu = new wxMenu;
     m_preferencesMenu->Append( ID_DEFINEPERIOD, _( "Define Period" ), wxEmptyString, wxITEM_NORMAL );
@@ -208,6 +208,7 @@ void AlbumGenFrame::CreateControls( )
     m_preferencesMenu->Append( ID_SORTORDER, _( "Sort Order" ), wxEmptyString, wxITEM_NORMAL );
     m_fileMenu->Append( ID_PREFERENCES, _( "Preferences" ), m_preferencesMenu );
     m_fileMenu->AppendSeparator( );
+    
     m_fileMenu->Append( wxID_EXIT, _( "Exit" ), wxEmptyString, wxITEM_NORMAL );
     menuBar->Append( m_fileMenu, _( "File" ) );
     wxMenu* itemMenu3 = new wxMenu;
@@ -868,43 +869,43 @@ void AlbumGenFrame::GenerateODTAlbum( )
 
 void AlbumGenFrame::SetupRecentMenu( )
 {
-    // first clobber each of the current menuItems and unbind them.
-    if ( m_menuItemList.size( ) > 0 )
-    {
-        for ( int i = 0; i < m_menuItemList.size( ); i++ )
-        {
-            RecentListItem* item = m_menuItemList[ i ];
-            bool val = Unbind( wxEVT_MENU, &AlbumGenFrame::DoRecentSelection, this, item->id );
-            m_recentMenu->Delete( item->item );
-            //  item->item->~wxMenuItem( );
-        }
-        m_menuItemList.clear( ); // then clobber the list
-    }
-    // then create all the new menuItems and bind them
-    wxArrayString* recentList = GetSettings( )->GetRecentArray( );
-    int cnt = 0;
-    for ( int i = 0; i < recentList->Count( ); i++ )
-    {
-        RecentListItem* listItem = new RecentListItem( );
-        listItem->id = ID_RECENT + i + 1;
-        wxString item = recentList->Item( i );
-        if ( item.length( ) > 0 )
-        {
-            cnt++;
-            listItem->item = m_recentMenu->Append( listItem->id, item, wxEmptyString, wxITEM_NORMAL );
+    // // first clobber each of the current menuItems and unbind them.
+    // if ( m_menuItemList.size( ) > 0 )
+    // {
+    //     for ( int i = 0; i < m_menuItemList.size( ); i++ )
+    //     {
+    //         RecentListItem* item = m_menuItemList[ i ];
+    //         bool val = Unbind( wxEVT_MENU, &AlbumGenFrame::DoRecentSelection, this, item->id );
+    //         m_recentMenu->Delete( item->item );
+    //         //  item->item->~wxMenuItem( );
+    //     }
+    //     m_menuItemList.clear( ); // then clobber the list
+    // }
+    // // then create all the new menuItems and bind them
+    // wxArrayString* recentList = GetSettings( )->GetRecentArray( );
+    // int cnt = 0;
+    // for ( int i = 0; i < recentList->Count( ); i++ )
+    // {
+    //     RecentListItem* listItem = new RecentListItem( );
+    //     listItem->id = ID_RECENT + i + 1;
+    //     wxString item = recentList->Item( i );
+    //     if ( item.length( ) > 0 )
+    //     {
+    //         cnt++;
+    //         listItem->item = m_recentMenu->Append( listItem->id, item, wxEmptyString, wxITEM_NORMAL );
 
-            Bind( wxEVT_MENU, &AlbumGenFrame::DoRecentSelection, this, listItem->id );
-            m_menuItemList.push_back( listItem );
-        }
-    }
-    if ( cnt > 0 )
-    {
-        m_fileMenu->Enable( ID_RECENT, true );
-    }
-    else
-    {
-        m_fileMenu->Enable( ID_RECENT, false );
-    }
+    //         Bind( wxEVT_MENU, &AlbumGenFrame::DoRecentSelection, this, listItem->id );
+    //         m_menuItemList.push_back( listItem );
+    //     }
+    // }
+    // if ( cnt > 0 )
+    // {
+    //     m_fileMenu->Enable( ID_RECENT, true );
+    // }
+    // else
+    // {
+    //     m_fileMenu->Enable( ID_RECENT, false );
+    // }
 }
 
 

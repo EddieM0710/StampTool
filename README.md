@@ -6,7 +6,9 @@ Current State:<br>
 It is in an early state of developmet but is starting to be useable. That means there is still a lot to implement, and has had very little testing except for main paths.
 
 Development Environment:<br>
-    C++,<br>
-    WxWidgets 3.2,<br>
-    VSCode,<br>
-    Dialog Blocks <http://www.dialogblocks.com/><br>
+<ul>
+    <li>C++,<br>
+    <li>WxWidgets 3.2,<br>
+    <li>VSCode,<br>
+    <li>Dialog Blocks <http://www.dialogblocks.com/><br>
+    <ul>

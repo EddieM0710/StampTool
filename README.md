@@ -2,7 +2,7 @@
 
 This is an application for maintaining an inventory and want list of stamps and visually creating a stamp album. It is designed to be cross platform but, as of now, has only been run on Linux Mint.
 
-The intention is that this App will be completely free. The input data is not propritary, the output is Open Office text document file (.odt) which can be read and printed with open source software, and the development environment tools and libraries are open source. Even the input data ia freely available.
+The intention is that this App will be completely free. The input data is not propritary, the output is Open Office text document file (.odt) which can be read and printed with open source software, and the development environment tools and libraries are open source.
 
 The app can import its catalog data from a commma seperated variable (.csv) file. I wrote the cav import to read Colnect export files for my list generation but the desires for additionally functionality exploded and I never got to the list. As a minimum it needs a csv file with the id, stamp name, height and width. or you can manually enter everything. Intermediate files are in XML for readability. The output is an OpenOffice .odt file which is readable and modifiable by Open Office and (I think) by MSWord.
 

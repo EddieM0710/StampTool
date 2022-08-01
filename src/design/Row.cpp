@@ -16,6 +16,8 @@
 #include "odt/Document.h"
 #include "gui/DesignTreeCtrl.h"
 #include <wx/pen.h>
+#include "gui/AlbumImagePanel.h"
+#include "gui/GuiUtils.h"
 
 namespace Design {
 
@@ -28,7 +30,7 @@ namespace Design {
         //The min width is the sum of the min widths of the children. 
         double minWidth = 0.0;
         double minHeight = 0.0;
-        UpdateTitleSize();
+//        UpdateTitleSize();
         wxTreeItemIdValue cookie;
         wxTreeItemId parentID = GetTreeItemId();
         wxTreeItemId childID = GetDesignTreeCtrl()->GetFirstChild(parentID, cookie);
@@ -45,24 +47,30 @@ namespace Design {
         }
         if ( GetShowTitle() )
         {
-          minHeight += GetTitleHeight();  
+            
+            wxFont* titleFont = new wxFont( *wxNORMAL_FONT );
+            titleFont->SetPointSize( 8 ); 
+            UpdateTitleSize( minWidth, titleFont);
+            delete titleFont;
+            minHeight += GetTitleHeight();  
         }
 
-            double leftPadding = 0;
-            double rightPadding = 0;
-            double topPadding = 0;
-            double bottomPadding = 0;
-            if ( GetShowFrame() ) 
-            {
-                leftPadding = GetLeftContentPadding();
-                rightPadding = GetRightContentPadding();
-                topPadding = GetTopContentPadding();
-                bottomPadding = GetBottomContentPadding();
-            }      
+        double leftPadding = 0;
+        double rightPadding = 0;
+        double topPadding = 0;
+        double bottomPadding = 0;
+        if ( GetShowFrame() ) 
+        {
+            leftPadding = GetLeftContentPadding();
+            rightPadding = GetRightContentPadding();
+            topPadding = GetTopContentPadding();
+            bottomPadding = GetBottomContentPadding();
+        }      
 
         SetMinHeight( minHeight + topPadding+bottomPadding );
         SetMinWidth( minWidth + leftPadding+rightPadding );
-m_frame.WriteLayout( "Row::UpdatePositions ");
+
+        // m_frame.WriteLayout( "Row::UpdatePositions ");
 
     }
 
@@ -86,7 +94,7 @@ m_frame.WriteLayout( "Row::UpdatePositions ");
 
             childID = GetDesignTreeCtrl()->GetNextChild(parentID, cookie);
         }
-m_frame.WriteLayout( "Row::UpdateSizes ");
+        // m_frame.WriteLayout( "Row::UpdateSizes ");
     }
 
     // calculate the row layout based on child parameters
@@ -144,7 +152,7 @@ m_frame.WriteLayout( "Row::UpdateSizes ");
             childID = GetDesignTreeCtrl()->GetNextChild(parentID, cookie);
         }
 
-m_frame.WriteLayout( "Row::UpdatePositions ");
+        // m_frame.WriteLayout( "Row::UpdatePositions ");
 
     }
 
@@ -228,21 +236,26 @@ m_frame.WriteLayout( "Row::UpdatePositions ");
 
     void Row::draw( wxDC &dc, double x, double y )
     {
-        std::cout << "Row::draw x:" << x << " y:" << y <<"\n" ;
-
-        dc.SetPen(*wxBLUE_PEN);
-
-        m_frame.draw( dc, x, y );
-
-
         double leftPadding = 0;
         double topPadding = 0;
+        dc.SetPen( *wxTRANSPARENT_PEN );
         if ( GetShowFrame() ) 
         {
+            dc.SetPen(*wxBLACK_PEN);
             leftPadding = GetLeftContentPadding();
             topPadding = GetTopContentPadding();
         }  
+ 
+        m_frame.draw( dc, x, y );
 
+        if ( GetShowTitle())
+        {
+            RealPoint pos( x, y );
+            RealSize size( GetWidth(), m_titleSize.y  );
+            DrawTitle(dc, m_title, pos, size );
+            y = y + m_titleSize.y ;
+        }
+        
         wxTreeItemIdValue cookie;
         wxTreeItemId parentID = GetTreeItemId();
         wxTreeItemId childID = GetDesignTreeCtrl()->GetFirstChild(parentID, cookie);

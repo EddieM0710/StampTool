@@ -211,7 +211,10 @@ void DesignData::LoadDefaultDocument()
             {
                 page->UpdateSizes( );
                 page->UpdatePositions( );
-                GetAlbumImagePanel()->DrawBitmap( );
+                GetAlbumImagePanel()->Refresh( );
+
+                //GetAlbumImagePanel( )->Refresh();
+
             }
         }
     }
@@ -224,7 +227,8 @@ void DesignData::LoadDefaultDocument()
         {
             m_album->UpdateSizes( );
             m_album->UpdatePositions( );
-            GetAlbumImagePanel()->DrawBitmap( );
+            GetAlbumImagePanel()->Refresh( );
+
             m_album->DumpLayout(   );
 
         }

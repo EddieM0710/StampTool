@@ -20,17 +20,17 @@
 #include "design/DesignData.h"
 #include "odt/Document.h"
 #include "gui/DesignTreeCtrl.h"
+#include "gui/GuiUtils.h"
 namespace Design {
 
 
     bool Page::UpdateMinimumSize( )
     {
-        //double xPosUseableFrame = m_leftMargin;
-        //double yPosUseableFrame = m_topMargin;
-        double pageFrameWidth = GetWidth( ) - m_leftMargin - m_rightMargin ;
-        double pageFrameHeight = GetHeight( ) - m_topMargin - m_bottomMargin ;
-        // SetWidth( pageFrameWidth  );
-        // SetHeight( pageFrameHeight  );
+
+        m_pageFrame.SetXPos( GetXPos( ) ); 
+        m_pageFrame.SetYPos( GetYPos( ) ); 
+        m_pageFrame.SetWidth( GetWidth( ) );
+        m_pageFrame.SetHeight ( GetHeight( ));
 
         int nbrRows = 0;
         int nbrCols = 0;
@@ -80,22 +80,23 @@ namespace Design {
 
             childID = GetDesignTreeCtrl()->GetNextChild(parentID, cookie);
 
-
         }
 
         SetMinWidth( minWidth );
         SetMinHeight( minHeight );
-m_frame.WriteLayout( "Page::UpdateMinimumSize");
 
-        if ( pageFrameWidth < minWidth )
+        // m_frame.WriteLayout( "Page::UpdateMinimumSize");
+
+        if ( m_pageFrame.GetWidth() < minWidth )
         {
             ReportLayoutError( "UpdateMinimumSize", "Children too big for row", true );
         }
-        if ( pageFrameHeight < minHeight )
+        if ( m_pageFrame.GetHeight() < minHeight )
         {
             ReportLayoutError( "UpdateMinimumSize", "Children too big for row", true );
         }
-    return true;
+        
+        return true;
     }
 
 
@@ -140,7 +141,7 @@ m_frame.WriteLayout( "Page::UpdateMinimumSize");
                     row->SetHeight( row->GetMinHeight( ) + topPadding+bottomPadding );
                     if ( row->GetShowTitle( ) )
                     {
-                        row->SetHeight( row->GetHeight( ) + GetTitleHeight() );
+                        row->SetHeight( row->GetHeight( ) + row->GetTitleHeight() );
                     }
 
                     break;
@@ -163,9 +164,9 @@ m_frame.WriteLayout( "Page::UpdateMinimumSize");
             child->UpdateSizes( );
             childID = GetDesignTreeCtrl()->GetNextChild(parentID, cookie);
         }
-m_frame.WriteLayout( "Page::UpdateSizes ");
+        //m_frame.WriteLayout( "Page::UpdateSizes ");
+    }
 
-   }
     void Page::UpdatePositions( )
     {
         int nbrRows = 0;
@@ -231,9 +232,9 @@ m_frame.WriteLayout( "Page::UpdateSizes ");
             }
             childID = GetDesignTreeCtrl()->GetNextChild(parentID, cookie);
         }
-m_frame.WriteLayout( "Page::UpdatePositions ");
-
+        //m_frame.WriteLayout( "Page::UpdatePositions ");
     }
+
     wxXmlNode* Page::Write( wxXmlNode* parent )
     {
         // Add the Page frame
@@ -258,7 +259,6 @@ m_frame.WriteLayout( "Page::UpdatePositions ");
             child->Write( parent );
             childID = GetDesignTreeCtrl()->GetNextChild(parentID, cookie);
         }
-
         return contentElement;
     }
 
@@ -285,11 +285,11 @@ m_frame.WriteLayout( "Page::UpdatePositions ");
     void Page::draw( wxDC &dc, double x, double y )
     {
 
-        std::cout << "Page::draw x:" << x << " y:" << y <<"\n" ;
-
         dc.SetPen(*wxBLACK_PEN);
 
-        m_frame.drawBorder( dc, x, y );
+            drawBorder( dc, x, y, 
+            m_pageFrame.GetWidth(), 
+            m_pageFrame.GetHeight());
 
                     double leftPadding = 0;
                     double rightPadding = 0;

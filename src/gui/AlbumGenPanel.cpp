@@ -31,6 +31,7 @@
 
 #include "gui/DescriptionPanel.h"
 #include "gui/CatalogTreeCtrl.h"
+#include "gui/GuiUtils.h"
 /*
  * IdentificationPanel type definition
  */
@@ -42,21 +43,21 @@ IMPLEMENT_DYNAMIC_CLASS( AlbumGenPanel, wxPanel )
  * AlbumGenPanel event table definition
  */
 
-    BEGIN_EVENT_TABLE( AlbumGenPanel, wxPanel )
+BEGIN_EVENT_TABLE( AlbumGenPanel, wxPanel )
 
-    // AlbumGenPanel event table entries
-    EVT_NOTEBOOK_PAGE_CHANGED( ID_NOTEBOOK, AlbumGenPanel::OnNotebookPageChanged )
-    EVT_TEXT( ID_TITLETEXTCTRL, AlbumGenPanel::OnTitleTextUpdated )
-    // AlbumGenPanel event table entries
+// AlbumGenPanel event table entries
+EVT_NOTEBOOK_PAGE_CHANGED( ID_NOTEBOOK, AlbumGenPanel::OnNotebookPageChanged )
+EVT_TEXT( ID_TITLETEXTCTRL, AlbumGenPanel::OnTitleTextUpdated )
+// AlbumGenPanel event table entries
 
-    END_EVENT_TABLE( )
+END_EVENT_TABLE( )
 ;  // silly business; The above macro screws up the formatter
 
     /*
      * AlbumGenPanel constructors
      */
 
-    AlbumGenPanel::AlbumGenPanel( )
+AlbumGenPanel::AlbumGenPanel( )
 {
     Init( );
 }
@@ -130,12 +131,11 @@ void AlbumGenPanel::CreateControls( )
         itemPanel1, ID_SPLITTERWINDOW, wxDefaultPosition, wxDefaultSize,
         wxSP_3DBORDER | wxSP_3DSASH | wxNO_BORDER );
     itemSplitterWindow3->SetMinimumPaneSize( 20 );
-    //itemSplitterWindow3->SetSashGravity( 0.2 );
-    //itemSplitterWindow3->SetSashPosition( 80 );
 
-     m_mngCatalogData = new  CatalogPanel(  itemSplitterWindow3, ID_PANEL1, 
-         wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL);
-    
+
+    m_mngCatalogData = new  CatalogPanel( itemSplitterWindow3, ID_PANEL1,
+        wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
+
     m_notebook
         = new wxNotebook( itemSplitterWindow3, ID_NOTEBOOK, wxDefaultPosition,
             wxDefaultSize, wxBK_DEFAULT );
@@ -144,24 +144,23 @@ void AlbumGenPanel::CreateControls( )
         m_notebook, ID_ALBUMSPLITTERWINDOWFOREIGN, wxDefaultPosition,
         wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
     m_albumSplitterWindow->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
-   // m_albumSplitterWindow->SetSashPosition( 80 );
 
     m_notebook->AddPage( m_albumSplitterWindow, _( "Album" ) );
 
-     m_descriptionPanel = new DescriptionPanel(
+    m_descriptionPanel = new DescriptionPanel(
         m_notebook, ID_DESCRIPTIONPANELFOREIGN, wxDefaultPosition,
         wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
     m_descriptionPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
 
-    m_notebook->AddPage( m_descriptionPanel, _( "Stamp" ) ); 
+    m_notebook->AddPage( m_descriptionPanel, _( "Stamp" ) );
     itemSplitterWindow3->SplitVertically( m_mngCatalogData, m_notebook, 300 );
     itemBoxSizer2->Add( itemSplitterWindow3, 1, wxGROW | wxALL, 0 );
 
     // AlbumGenPanel content construction
 
-    GetGeneratorData( )->SetDescriptionPanel(m_descriptionPanel);
+    GetGeneratorData( )->SetDescriptionPanel( m_descriptionPanel );
 
- }
+}
 
 /*
  * Should we show tooltips?
@@ -209,15 +208,15 @@ void AlbumGenPanel::UpdateStatus( )
 
 void AlbumGenPanel::OnNotebookPageChanged( wxNotebookEvent& event )
 {
-    int sel = event.GetOldSelection();
+    int sel = event.GetOldSelection( );
     wxWindow* oldPage = m_notebook->GetPage( sel );
     if ( oldPage == m_descriptionPanel )
     {
-        GetCatalogTreeCtrl()->SetStates(true);
+        GetCatalogTreeCtrl( )->SetStates( true );
     }
     else
     {
-        GetCatalogTreeCtrl()->SetStates(false);
+        GetCatalogTreeCtrl( )->SetStates( false );
     }
 
     // wxEVT_COMMAND_NOTEBOOK_PAGE_CHANGED event handler for ID_NOTEBOOK
@@ -235,8 +234,8 @@ void AlbumGenPanel::OnNotebookPageChanged( wxNotebookEvent& event )
 
 void AlbumGenPanel::OnTitleTextUpdated( wxCommandEvent& event )
 {
-////@begin wxEVT_COMMAND_TEXT_UPDATED event handler for ID_TITLETEXTCTRL in AlbumGenPanel.
-    // Before editing this code, remove the block markers.
-    event.Skip();
-////@end wxEVT_COMMAND_TEXT_UPDATED event handler for ID_TITLETEXTCTRL in AlbumGenPanel. 
+    ////@begin wxEVT_COMMAND_TEXT_UPDATED event handler for ID_TITLETEXTCTRL in AlbumGenPanel.
+        // Before editing this code, remove the block markers.
+    event.Skip( );
+    ////@end wxEVT_COMMAND_TEXT_UPDATED event handler for ID_TITLETEXTCTRL in AlbumGenPanel. 
 }

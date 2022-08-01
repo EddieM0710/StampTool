@@ -18,7 +18,8 @@
 namespace Design {
 
     /**
-     * @brief Column layout object; Inherits from LayoutBase.  The column can contain Row or Stamp objects.
+     * @brief Column layout object; Inherits from LayoutBase.  
+     * The column can contain Row or Stamp objects.
      *
      **************************************************/
     class Column : public LayoutBase
@@ -71,12 +72,16 @@ namespace Design {
         wxXmlNode* Write( wxXmlNode* parent );
 
         NodeStatus ValidateNode( );
+        /*
+         * @brief draw object on screen
+         *
+         * @param dc current device context
+         * @param x position in MM
+         * @param y position in MM
+         */
         void draw( wxDC& dc, double x, double y );
-        bool GetShowTitle( ) { return String2Bool( GetAttrStr( AT_ShowTitle ) ); };
-        void SetShowTitle( bool val ) { SetAttrStr( AT_ShowTitle, Bool2String( val ) ); };
-        bool GetShowFrame( ) { return String2Bool( GetAttrStr( AT_ShowFrame ) ); };
-        void SetShowFrame( bool val ) { SetAttrStr( AT_ShowFrame, Bool2String( val ) ); };
-        void Save( wxXmlNode* xmlNode  );
+
+        void Save( wxXmlNode* xmlNode );
 
     private:
 

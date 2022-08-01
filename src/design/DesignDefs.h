@@ -70,6 +70,7 @@ namespace Design {
         AT_ShowTitle,
         AT_ShowId,
         AT_ShowFrame,
+        AT_ShowImage,
         AT_TopContentPadding,
         AT_BottomContentPadding,
         AT_LeftContentPadding,
@@ -99,12 +100,10 @@ extern const char* AttrNameStrings[ AT_NbrAttrTypes ] ;
 
     AlbumBase* MakeNode( wxXmlNode* node );
 
+    // Conversion factor to convert from Pixels to MM. 
+    // Screen units are in pixels. Album Design elements are in mm.
     extern wxRealPoint  PpMM;
 
-    // wxString GetAttribute( AlbumBaseType type );
-    // double GetAttributeDbl( AlbumBaseType type );
-    // void SetAttrStr( AlbumBaseType type, wxString val );
-    // void SetAttrDbl( AlbumBaseType type, double val );
 
 
 }

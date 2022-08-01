@@ -16,6 +16,10 @@
 #include "odt/Document.h"
 #include "utils/XMLUtilities.h"
 #include "gui/DesignTreeCtrl.h"
+#include <wx/pen.h>
+#include "gui/AlbumImagePanel.h"
+#include "gui/GuiUtils.h"
+
 
 namespace Design {
 
@@ -27,7 +31,6 @@ namespace Design {
         //plus the title if used
         double minWidth = 0.0;
         double minHeight = 0.0;
-        UpdateTitleSize( );
 
         wxTreeItemIdValue cookie;
         wxTreeItemId parentID = GetTreeItemId( );
@@ -40,7 +43,7 @@ namespace Design {
 
             if ( child->GetWidth( ) > GetMinWidth( ) )
             {
-                minWidth = child->GetWidth( ) ;
+                minWidth = child->GetWidth( );
             }
             minHeight += child->GetHeight( );
             childID = GetDesignTreeCtrl( )->GetNextChild( parentID, cookie );
@@ -48,6 +51,11 @@ namespace Design {
         SetMinHeight( minHeight );
         if ( GetShowTitle( ) )
         {
+
+            wxFont* titleFont = new wxFont( *wxNORMAL_FONT );
+            titleFont->SetPointSize( 8 );
+            UpdateTitleSize( minWidth, titleFont );
+            delete titleFont;
             minHeight += GetTitleHeight( );
         }
 
@@ -80,25 +88,25 @@ namespace Design {
         // Set the height and width of each child  column
         // Stamps have fixed height and width
         wxTreeItemIdValue cookie;
-        wxTreeItemId parentID = GetTreeItemId();
-        wxTreeItemId childID = GetDesignTreeCtrl()->GetFirstChild(parentID, cookie);
-        while ( childID.IsOk() )
+        wxTreeItemId parentID = GetTreeItemId( );
+        wxTreeItemId childID = GetDesignTreeCtrl( )->GetFirstChild( parentID, cookie );
+        while ( childID.IsOk( ) )
         {
-            AlbumBaseType type = ( AlbumBaseType )GetDesignTreeCtrl()->GetItemType( childID );
-            LayoutBase* child = ( LayoutBase* )GetDesignTreeCtrl()->GetItemNode( childID );
+            AlbumBaseType type = ( AlbumBaseType )GetDesignTreeCtrl( )->GetItemType( childID );
+            LayoutBase* child = ( LayoutBase* )GetDesignTreeCtrl( )->GetItemNode( childID );
             AlbumBaseType childType = ( AlbumBaseType )child->GetNodeType( );
             if ( childType == AT_Row )
             {
                 child->SetWidth( GetMinWidth( ) );
-                double minHeight = GetMinHeight();
-                if ( child->GetShowTitle() )
+                double minHeight = GetMinHeight( );
+                if ( child->GetShowTitle( ) )
                 {
-                    minHeight = GetTitleHeight();
+                    minHeight = GetTitleHeight( );
                 }
                 child->SetHeight( minHeight );
             }
             child->UpdateSizes( );
-            childID = GetDesignTreeCtrl()->GetNextChild(parentID, cookie);
+            childID = GetDesignTreeCtrl( )->GetNextChild( parentID, cookie );
         }
     }
 
@@ -119,50 +127,50 @@ namespace Design {
 
 
         // this is a col so we are positioning children down the page
-        double spacing = ( GetHeight( ) - GetMinHeight() ) / ( nbrRows + nbrStamps + 1 );
+        double spacing = ( GetHeight( ) - GetMinHeight( ) ) / ( nbrRows + nbrStamps + 1 );
 
         double xPos = 0;
         double yPos = spacing;
-        if ( GetShowTitle() ) yPos += GetTitleHeight();
+        if ( GetShowTitle( ) ) yPos += GetTitleHeight( );
 
         wxTreeItemIdValue cookie;
-        wxTreeItemId parentID = GetTreeItemId();
-        wxTreeItemId childID = GetDesignTreeCtrl()->GetFirstChild(parentID, cookie);
-        while ( childID.IsOk() )
+        wxTreeItemId parentID = GetTreeItemId( );
+        wxTreeItemId childID = GetDesignTreeCtrl( )->GetFirstChild( parentID, cookie );
+        while ( childID.IsOk( ) )
         {
-            AlbumBaseType type = ( AlbumBaseType )GetDesignTreeCtrl()->GetItemType( childID );
-            LayoutBase* child = ( LayoutBase* )GetDesignTreeCtrl()->GetItemNode( childID );
+            AlbumBaseType type = ( AlbumBaseType )GetDesignTreeCtrl( )->GetItemType( childID );
+            LayoutBase* child = ( LayoutBase* )GetDesignTreeCtrl( )->GetItemNode( childID );
 
             child->UpdatePositions( );
 
-            AlbumBaseType childType = (AlbumBaseType)child->GetNodeType( );
+            AlbumBaseType childType = ( AlbumBaseType )child->GetNodeType( );
             switch ( childType )
             {
-                case AT_Row:
-                {
-                    Row* row = ( Row* )child;
-                    row->SetXPos( xPos );
-                    row->SetYPos( yPos );
-                    //calc position of next row
-                    yPos += GetHeight( ) + spacing;
-                    break;
-                }
-                case AT_Stamp:
-                {
-
-                    Stamp* stamp = ( Stamp* )child;
-
-                    // each stamp is positioned in the cell
-
-                    double xBorder = ( GetWidth() - stamp->GetWidth( ) ) / 2;
-                    stamp->SetXPos( xPos + xBorder );
-                    stamp->SetYPos( yPos );
-                    // get xpos of next cell
-                    yPos += stamp->GetHeight( ) + spacing;
-                    break;
-                }
+            case AT_Row:
+            {
+                Row* row = ( Row* )child;
+                row->SetXPos( xPos );
+                row->SetYPos( yPos );
+                //calc position of next row
+                yPos += GetHeight( ) + spacing;
+                break;
             }
-            childID = GetDesignTreeCtrl()->GetNextChild(parentID, cookie);
+            case AT_Stamp:
+            {
+
+                Stamp* stamp = ( Stamp* )child;
+
+                // each stamp is positioned in the cell
+
+                double xBorder = ( GetWidth( ) - stamp->GetWidth( ) ) / 2;
+                stamp->SetXPos( xPos + xBorder );
+                stamp->SetYPos( yPos );
+                // get xpos of next cell
+                yPos += stamp->GetHeight( ) + spacing;
+                break;
+            }
+            }
+            childID = GetDesignTreeCtrl( )->GetNextChild( parentID, cookie );
         }
     }
 
@@ -189,54 +197,54 @@ namespace Design {
 
 
         wxTreeItemIdValue cookie;
-        wxTreeItemId parentID = GetTreeItemId();
-        wxTreeItemId childID = GetDesignTreeCtrl()->GetFirstChild(parentID, cookie);
-        while ( childID.IsOk() )
+        wxTreeItemId parentID = GetTreeItemId( );
+        wxTreeItemId childID = GetDesignTreeCtrl( )->GetFirstChild( parentID, cookie );
+        while ( childID.IsOk( ) )
         {
-            AlbumBaseType type = ( AlbumBaseType )GetDesignTreeCtrl()->GetItemType( childID );
-            LayoutBase* child = ( LayoutBase* )GetDesignTreeCtrl()->GetItemNode( childID );
+            AlbumBaseType type = ( AlbumBaseType )GetDesignTreeCtrl( )->GetItemType( childID );
+            LayoutBase* child = ( LayoutBase* )GetDesignTreeCtrl( )->GetItemNode( childID );
 
-            AlbumBaseType childType = (AlbumBaseType)child->GetNodeType( );
+            AlbumBaseType childType = ( AlbumBaseType )child->GetNodeType( );
             switch ( childType )
             {
-                case AT_Row:
-                {
-                    // set the layout parameters into the child
-                    Row* row = ( Row* )child;
-                    row->Write( frame );
-                    break;
-                }
-                case AT_Col:
-                {
-                    // set the layout parameters into the child
-                    Column* col = ( Column* )child;
-                    col->Write( frame );
-                    break;
-                }
-                case AT_Stamp:
-                {
-                    // set the layout parameters into the child
-                    Stamp* stamp = ( Stamp* )child;
-                    stamp->Write( frame );
-                    break;
-                }
+            case AT_Row:
+            {
+                // set the layout parameters into the child
+                Row* row = ( Row* )child;
+                row->Write( frame );
+                break;
             }
-            childID = GetDesignTreeCtrl()->GetNextChild(parentID, cookie);
+            case AT_Col:
+            {
+                // set the layout parameters into the child
+                Column* col = ( Column* )child;
+                col->Write( frame );
+                break;
+            }
+            case AT_Stamp:
+            {
+                // set the layout parameters into the child
+                Stamp* stamp = ( Stamp* )child;
+                stamp->Write( frame );
+                break;
+            }
+            }
+            childID = GetDesignTreeCtrl( )->GetNextChild( parentID, cookie );
         }
         return frame;
     }
 
-    NodeStatus Column::ValidateNode()
+    NodeStatus Column::ValidateNode( )
     {
         NodeStatus status = AT_OK;
-        if ( !HasChildren() )
+        if ( !HasChildren( ) )
         {
-            if ( GetHeight() <= 0.0)
+            if ( GetHeight( ) <= 0.0 )
             {
                 std::cout << "Terminal leaf node must define the height.\n";
                 status = AT_FATAL;
             }
-            if ( GetWidth() <= 0.0)
+            if ( GetWidth( ) <= 0.0 )
             {
                 std::cout << "Terminal leaf node must define the width.\n";
                 status = AT_FATAL;
@@ -246,35 +254,46 @@ namespace Design {
         return status;
     }
 
-    void Column::draw( wxDC &dc, double x, double y )
+    void Column::draw( wxDC& dc, double x, double y )
     {
-        m_frame.draw( dc, x, y );
-
         double leftPadding = 0;
         double topPadding = 0;
-        if ( GetShowFrame() ) 
+        dc.SetPen( *wxTRANSPARENT_PEN );
+        if ( GetShowFrame( ) )
         {
-            leftPadding = GetLeftContentPadding();
-            topPadding = GetTopContentPadding();
-        }  
+            dc.SetPen( *wxBLACK_PEN );
+            leftPadding = GetLeftContentPadding( );
+            topPadding = GetTopContentPadding( );
+        }
+
+        m_frame.draw( dc, x, y );
+
+        if ( GetShowTitle( ) )
+        {
+            RealPoint pos( x, y );
+            RealSize size( GetWidth( ), m_titleSize.y );
+            //wxRect rect( pos, size );
+            DrawTitle( dc, m_title, pos, size );
+            y = y + m_titleSize.y;
+        }
 
         wxTreeItemIdValue cookie;
-        wxTreeItemId parentID = GetTreeItemId();
-        wxTreeItemId childID = GetDesignTreeCtrl()->GetFirstChild(parentID, cookie);
-        while ( childID.IsOk() )
+        wxTreeItemId parentID = GetTreeItemId( );
+        wxTreeItemId childID = GetDesignTreeCtrl( )->GetFirstChild( parentID, cookie );
+        while ( childID.IsOk( ) )
         {
-            
-            AlbumBaseType type = ( AlbumBaseType )GetDesignTreeCtrl()->GetItemType( childID );
-            LayoutBase* child = ( LayoutBase* )GetDesignTreeCtrl()->GetItemNode( childID );
-            double xPos = x+GetXPos()+leftPadding;
-            double yPos = y+GetYPos()+topPadding;
+
+            AlbumBaseType type = ( AlbumBaseType )GetDesignTreeCtrl( )->GetItemType( childID );
+            LayoutBase* child = ( LayoutBase* )GetDesignTreeCtrl( )->GetItemNode( childID );
+            double xPos = x + GetXPos( ) + leftPadding;
+            double yPos = y + GetYPos( ) + topPadding;
             child->draw( dc, xPos, yPos );
 
-            childID = GetDesignTreeCtrl()->GetNextChild(parentID, cookie);
+            childID = GetDesignTreeCtrl( )->GetNextChild( parentID, cookie );
         }
     }
 
-    void Column::Save( wxXmlNode* xmlNode  )
+    void Column::Save( wxXmlNode* xmlNode )
     {
         SetAttribute( xmlNode, AT_Name );
         SetAttribute( xmlNode, AT_ShowTitle );

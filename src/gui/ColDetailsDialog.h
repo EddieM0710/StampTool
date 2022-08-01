@@ -19,9 +19,9 @@
  * Includes
  */
 
-////@begin includes
+// includes
 #include "wx/listctrl.h"
-////@end includes
+// includes
 
 #include "gui/DesignTreeCtrl.h"
 
@@ -29,16 +29,16 @@
  * Forward declarations
  */
 
-////@begin forward declarations
+// forward declarations
 class LabeledTextBox;
 class wxListCtrl;
-////@end forward declarations
+// forward declarations
 
 /*!
  * Control identifiers
  */
 
-////@begin control identifiers
+// control identifiers
 #define ID_COLDETAILSDIALOG 10000
 #define ID_NAMELABELEDTEXTBOX 10009
 #define ID_COLTITLECHECKBOX 10004
@@ -49,7 +49,7 @@ class wxListCtrl;
 #define SYMBOL_COLDETAILSDIALOG_IDNAME ID_COLDETAILSDIALOG
 #define SYMBOL_COLDETAILSDIALOG_SIZE wxSize(400, 300)
 #define SYMBOL_COLDETAILSDIALOG_POSITION wxDefaultPosition
-////@end control identifiers
+// control identifiers
 
 
 /*!
@@ -78,35 +78,42 @@ public:
     /// Creates the controls and sizers
     void CreateControls();
 
-////@begin ColDetailsDialog event handler declarations
+// ColDetailsDialog event handler declarations
 
     /// wxEVT_COMMAND_BUTTON_CLICKED event handler for wxID_OK
     void OnOkClick( wxCommandEvent& event );
 
-////@end ColDetailsDialog event handler declarations
+// ColDetailsDialog event handler declarations
 
-////@begin ColDetailsDialog member function declarations
+// ColDetailsDialog member function declarations
 
     /// Retrieves bitmap resources
     wxBitmap GetBitmapResource( const wxString& name );
 
     /// Retrieves icon resources
     wxIcon GetIconResource( const wxString& name );
-////@end ColDetailsDialog member function declarations
+// ColDetailsDialog member function declarations
 
     /// Should we show tooltips?
     static bool ShowToolTips();
     void SetNameModified( bool state ) ;
     void SetDesignTreeID(wxTreeItemId id );
     bool IsNameModified( ) ;
+
+    void SetShowTitle( bool state = false );
+    void SetShowFrame( bool state = false );
+    bool GetShowTitle();
+    bool GetShowFrame();
+
+
     wxTreeItemId m_designTreeID;
-////@begin ColDetailsDialog member variables
+// ColDetailsDialog member variables
     LabeledTextBox* m_name;
     wxCheckBox* m_titleCheckbox;
     wxCheckBox* m_frameCheckbox;
     wxListCtrl* m_statusList;
 
-////@end ColDetailsDialog member variables
+// ColDetailsDialog member variables
 };
 
 #endif

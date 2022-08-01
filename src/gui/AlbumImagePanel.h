@@ -46,10 +46,10 @@ enum
  * @brief This is the class that manages the image displayed on the DescriptionPanel.
  *
  **************************************************/
-class AlbumImagePanel: public wxScrolledWindow
+class AlbumImagePanel : public wxScrolledWindow
 {
     DECLARE_DYNAMIC_CLASS( AlbumImagePanel )
-    DECLARE_EVENT_TABLE( )
+        DECLARE_EVENT_TABLE( )
 
 public:
     // Constructors
@@ -120,7 +120,11 @@ public:
      * @param event   Contains information about command events
      **************************************************/
     void OnPaint( wxPaintEvent& event );
-    wxRealPoint GetTextExtent(wxString text);
+
+    wxRealPoint GetLogicalTextExtent( wxString text, wxFont font );
+
+    void MakeMultiLine( wxString& text, wxFont font, double width );
+
 
     /**
      * @brief wxEVT_CONTEXT_MENU event handler for ID_ALBUMIMAGEPANEL
@@ -145,17 +149,12 @@ public:
      * @return wxIcon null
      **************************************************/
     wxIcon GetIconResource( const wxString& name );
+
+
     // AlbumImagePanel member function declarations
 
     // Should we show tooltips?
     static bool ShowToolTips( );
-
-    /**
-     * @brief Set the Bitmap
-     *
-     * @param filename  fullname and path for the bitmap file
-     **************************************************/
-    void DrawBitmap(  );
 
 
     /**
@@ -180,12 +179,13 @@ public:
      **************************************************/
     void SetZoom( double zoom );
 
-void Draw( wxDC &dc, Design::LayoutBase* node, wxPoint pt);
+    void Draw( wxDC& dc, Design::LayoutBase* node, wxPoint pt );
 
 private:
     double m_pixelsPerIn;
     wxBitmap m_bitmap; ///< current bitmap to display
     double m_zoom; ///< current zoom factor
+    bool m_once;
 };
 
 #endif

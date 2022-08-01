@@ -109,6 +109,7 @@ namespace Design {
             "ShowTitle",
             "ShowId",
             "ShowFrame",
+            "ShowImage",
             "TopContentPadding",
             "BottomContentPadding",
             "LeftContentPadding",
@@ -116,11 +117,9 @@ namespace Design {
 
     void InitDesignDefs( )
     {
-    wxSize ppi = wxGetDisplayPPI();
-    std::cout << "PpI x:" << ppi.x << "  y:" << ppi.y << "\n";
-    PpMM.x = ppi.x/25.4;
-    PpMM.y = ppi.y/25.4;
-    std::cout << "PpMM x:" << PpMM.x << "  y:" << PpMM.y << "\n";
+        wxSize ppi = wxGetDisplayPPI( );
+        PpMM.x = ppi.x / 25.4;
+        PpMM.y = ppi.y / 25.4;
     }
 
     AlbumBaseType FindAlbumBaseType( wxString name )

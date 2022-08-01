@@ -26,19 +26,18 @@
 
 namespace Design {
 
-void LayoutBase::WriteFrame(wxString loc,  wxString name, wxString id, Frame* frame )
-{
-// std::cout << loc <<" " << name <<" " << id ;
-// WriteLayout( "Frame::draw at  ");
-// std::cout << "  x:" << frame->GetXPos() << " y" << frame->GetYPos()  << " w:" << 
-//             frame->GetWidth()  <<" h:" << frame->GetHeight() << "\n";
-}
 
-    void LayoutBase::UpdateTitleSize()
+    void LayoutBase::UpdateTitleSize( double width, wxFont* font )
     {
-        m_titleSize = GetAlbumImagePanel()->GetTextExtent(m_title);
-         
+        wxString text = m_title;
+
+        // first break into lines if necessary
+        GetAlbumImagePanel( )->MakeMultiLine( text, *font, width );
+
+        // then get the actual multi line text extent
+        m_titleSize = GetAlbumImagePanel( )->GetLogicalTextExtent( text, *font );
     }
+
     void LayoutBase::ReportLayoutError( wxString funct, wxString err, bool fatal )
     {
         wxString funcStr = wxString::Format( "%s::%s", AttrNameStrings[ GetNodeType( ) ], funct );
@@ -54,12 +53,12 @@ void LayoutBase::WriteFrame(wxString loc,  wxString name, wxString id, Frame* fr
         nbrStamps = 0;
 
         wxTreeItemIdValue cookie;
-        wxTreeItemId parentID = GetTreeItemId();
-        wxTreeItemId childID = GetDesignTreeCtrl()->GetFirstChild(parentID, cookie);
-        while ( childID.IsOk() )
+        wxTreeItemId parentID = GetTreeItemId( );
+        wxTreeItemId childID = GetDesignTreeCtrl( )->GetFirstChild( parentID, cookie );
+        while ( childID.IsOk( ) )
         {
-            AlbumBaseType type = ( AlbumBaseType )GetDesignTreeCtrl()->GetItemType( childID );
-            LayoutBase* child = ( LayoutBase* )GetDesignTreeCtrl()->GetItemNode( childID );
+            AlbumBaseType type = ( AlbumBaseType )GetDesignTreeCtrl( )->GetItemType( childID );
+            LayoutBase* child = ( LayoutBase* )GetDesignTreeCtrl( )->GetItemNode( childID );
             switch ( type )
             {
             case AT_Row:
@@ -78,33 +77,34 @@ void LayoutBase::WriteFrame(wxString loc,  wxString name, wxString id, Frame* fr
                 break;
             }
             }
-            childID = GetDesignTreeCtrl()->GetNextChild(parentID, cookie);
+            childID = GetDesignTreeCtrl( )->GetNextChild( parentID, cookie );
         }
         if ( ( nbrRows > 0 ) && ( nbrCols > 0 ) )
         {
             ReportLayoutError( "ValidateChildType", "Only Rows or Columns are allowed as the children, not both" );
         }
     }
-  void LayoutBase::DumpLayout(  double x , double y  )
+
+
+    void LayoutBase::DumpLayout( double x, double y )
     {
-        AlbumBaseType type = GetNodeType();
-        std::cout << GetObjectName() << " Pos (x:" << x << " y:" << y << ") ";
-        m_frame.WriteLayout(  GetObjectName() );
+        AlbumBaseType type = GetNodeType( );
+        std::cout << GetObjectName( ) << " Pos (x:" << x << " y:" << y << ") ";
+        m_frame.WriteLayout( GetObjectName( ) );
         wxTreeItemIdValue cookie;
-        wxTreeItemId parentID = GetTreeItemId();
-        wxTreeItemId childID = GetDesignTreeCtrl()->GetFirstChild(parentID, cookie);
-        while ( childID.IsOk() )
+        wxTreeItemId parentID = GetTreeItemId( );
+        wxTreeItemId childID = GetDesignTreeCtrl( )->GetFirstChild( parentID, cookie );
+        while ( childID.IsOk( ) )
         {
-            AlbumBaseType type = ( AlbumBaseType )GetDesignTreeCtrl()->GetItemType( childID );
-            LayoutBase* child = ( LayoutBase* )GetDesignTreeCtrl()->GetItemNode( childID );
+            AlbumBaseType type = ( AlbumBaseType )GetDesignTreeCtrl( )->GetItemType( childID );
+            LayoutBase* child = ( LayoutBase* )GetDesignTreeCtrl( )->GetItemNode( childID );
 
-            double xPos = x+GetXPos();
-            double yPos = y+GetYPos();
-          
-            child->DumpLayout( xPos, yPos  ); 
+            double xPos = x + GetXPos( );
+            double yPos = y + GetYPos( );
 
-            childID = GetDesignTreeCtrl()->GetNextChild(parentID, cookie);
+            child->DumpLayout( xPos, yPos );
+
+            childID = GetDesignTreeCtrl( )->GetNextChild( parentID, cookie );
         }
     }
-    
 }

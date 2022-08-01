@@ -247,7 +247,6 @@ void AlbumImagePanel::OnPaint( wxPaintEvent& event )
         dc.Clear( );
         Design::InitDesignDefs( );
 
-        SetUserScale( dc );
         Design::Album* album = GetDesignData( )->GetAlbum( );
 
         double width = album->GetAttrDbl( Design::AT_PageWidth ) * Design::PpMM.x;
@@ -324,10 +323,9 @@ wxRealPoint AlbumImagePanel::GetLogicalTextExtent( wxString text, wxFont font )
     dc.SetFont( font );
     dc.SetMapMode( wxMM_METRIC );
     DoPrepareDC( dc );
-    SetUserScale( dc );
+    
 
     wxSize size = dc.GetMultiLineTextExtent( text );
-    //wxSize logExt = dc.DeviceToLogicalRel( size );
 
     wxRealPoint textSize;
     // convert the size from Device units to Metric

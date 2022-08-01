@@ -32,7 +32,8 @@ namespace Design {
         { 
             SetNodeType( AT_Row ); 
             SetObjectName( AlbumBaseNames[ GetNodeType() ] );
-            SetShowFrame(true);
+            SetShowFrame(false);
+            SetShowTitle(false);
         };
 
         /**
@@ -71,12 +72,20 @@ namespace Design {
         wxXmlNode* Write( wxXmlNode* parent );
 
         NodeStatus ValidateNode();
+
+        /* 
+         * @brief draw object on screen
+         * 
+         * @param dc current device context
+         * @param x position in MM
+         * @param y position in MM
+         */
         void draw( wxDC &dc, double x, double y );
         void Save( wxXmlNode* xmlNode );
 
     private:
-        bool m_showID;
-        bool m_showTitle;
+    //    bool m_showID;
+    //    bool m_showTitle;
 
     };
 

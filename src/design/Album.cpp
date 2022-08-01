@@ -100,8 +100,8 @@ namespace Design {
                     // set the layout parameters into the child
                     Page* page = ( Page* )GetDesignTreeCtrl()->GetItemNode( childID );
                     //page->SetBorder( m_border );
-                    page->SetXPos( 0.0 );
-                    page->SetYPos( 0.0 );
+                    page->SetXPos( 0);//GetRightMargin( ) );
+                    page->SetYPos( 0);// GetTopMargin( ) );
                     page->SetWidth( GetWidth( ) - GetRightMargin( ) - GetLeftMargin( ) );
                     page->SetHeight( GetHeight( ) - GetTopMargin( ) - GetBottomMargin( ));
                     page->SetTopMargin( GetTopMargin( ) );

@@ -22,7 +22,7 @@ add_library( DesignFiles SHARED
     Row.cpp 
     Column.cpp 
     Stamp.cpp
-
+    Frame.cpp
 )
 
 

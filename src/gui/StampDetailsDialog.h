@@ -114,10 +114,16 @@ void SetWidth(wxString width);
 void SetID(wxString id);
 void SetName(wxString name);
 void SetDesignTreeID ( wxTreeItemId id );
+void SetShowID( bool state = false);
+void SetShowTitle(bool state = false);
 wxString GetHeight( );
 wxString GetWidth( );
 wxString GetID( );
 wxString GetName( );
+
+bool GetShowID();
+bool GetShowTitle();
+
 bool IsNameModified();
 bool IsIDModified();
 bool IsHeightModified();

@@ -218,3 +218,7 @@ void RowDetailsDialog::OnOkClick( wxCommandEvent& event )
 void RowDetailsDialog::SetNameModified( bool state ) { m_name->SetModified( state ); };
 void RowDetailsDialog::SetDesignTreeID(wxTreeItemId id ){ if ( id.IsOk() ) m_designTreeID = id;};
 bool RowDetailsDialog::IsNameModified( ) { return m_name->IsModified( ); };
+void RowDetailsDialog::SetShowTitle( bool state ) { m_titleCheckbox->SetValue(state); };
+void RowDetailsDialog::SetShowFrame( bool state ) { m_frameCheckbox->SetValue(state); };
+bool RowDetailsDialog::GetShowTitle(){ return m_titleCheckbox->IsChecked();};;
+bool RowDetailsDialog::GetShowFrame(){ return m_frameCheckbox->IsChecked();};

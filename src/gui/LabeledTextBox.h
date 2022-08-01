@@ -66,6 +66,8 @@ typedef void (MyFunct)( wxCommandEvent &event );
  *    }
  * }
  */
+
+
 class LabeledTextBox : public wxPanel
 {
     DECLARE_DYNAMIC_CLASS( LabeledTextBox )

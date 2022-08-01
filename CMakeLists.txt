@@ -1,6 +1,6 @@
 cmake_minimum_required( VERSION 3.10 )
 
-#set(CMAKE_VERBOSE_MAKEFILE ON)
+# set(CMAKE_VERBOSE_MAKEFILE ON)
 
 # set the project name
 project( AlbumGen VERSION 1.0 )
@@ -17,7 +17,7 @@ set( AlbumGen_CatalogFiles_Source_Directory "${CMAKE_CURRENT_SOURCE_DIR}/src/cat
 set( AlbumGen_GuiFiles_Source_Directory "${CMAKE_CURRENT_SOURCE_DIR}/src/gui"  )
 set( AlbumGen_UtilsFiles_Source_Directory "${CMAKE_CURRENT_SOURCE_DIR}/src/utils"  )
 
-set( WXWIN /sandbox/Applications/wxWidgets-3.1.4 )
+set( WXWIN /sandbox/Applications/wxWidgets-3.2.0/gtk-build/lib )
 include_directories( ${AlbumGen_Source_Directory} 
             ${AlbumGen_GuiFiles_Source_Directory} 
             ${AlbumGen_UtilsFiles_Source_Directory}

@@ -49,7 +49,6 @@ END_EVENT_TABLE( )
  * LabeledTextBox constructors
  *
  **************************************************/
-
 LabeledTextBox::LabeledTextBox( )
 {
     Init( );
@@ -60,7 +59,6 @@ LabeledTextBox::LabeledTextBox( )
  * LabeledTextBox constructors
  *
  **************************************************/
-
 LabeledTextBox::LabeledTextBox( wxWindow *parent, wxWindowID id,
                                 const wxPoint &pos, const wxSize &size,
                                 long style )
@@ -76,7 +74,6 @@ LabeledTextBox::LabeledTextBox( wxWindow *parent, wxWindowID id,
  *  LabledTextBox creator
  *
  **************************************************/
-
 bool LabeledTextBox::Create( wxWindow *parent, wxWindowID id,
                              const wxPoint &pos, const wxSize &size,
                              long style )
@@ -100,7 +97,6 @@ bool LabeledTextBox::Create( wxWindow *parent, wxWindowID id,
  * LabeledTextBox destructor
  *
  **************************************************/
-
 LabeledTextBox::~LabeledTextBox( )
 {
      // LabeledTextBox destruction
@@ -112,13 +108,12 @@ LabeledTextBox::~LabeledTextBox( )
  * Member initialisation
  *
  **************************************************/
-
 void LabeledTextBox::Init( )
 {
      // LabeledTextBox member initialisation
     m_label = NULL;
     m_value = NULL;
-     // LabeledTextBox member initialisation
+    // LabeledTextBox member initialisation
 }
 
 /*
@@ -126,8 +121,6 @@ void LabeledTextBox::Init( )
  * Control creation for LabledTextBox
  *
   **************************************************/
-
-
 void LabeledTextBox::CreateControls( )
 {
      // LabeledTextBox content construction
@@ -149,7 +142,10 @@ void LabeledTextBox::CreateControls( )
 
     itemBoxSizer1->Add( m_value, 1, wxGROW | wxLEFT | wxRIGHT, 4 );
 
-     // LabeledTextBox content construction
+    // LabeledTextBox content construction
+
+    SetEditable( true );
+
 }
 
 
@@ -158,7 +154,6 @@ void LabeledTextBox::CreateControls( )
  * Should we show tooltips?
  *
  **************************************************/
-
 bool LabeledTextBox::ShowToolTips( )
 {
     return true;
@@ -169,8 +164,6 @@ bool LabeledTextBox::ShowToolTips( )
  * Get bitmap resources
  *
  **************************************************/
-
-
 wxBitmap LabeledTextBox::GetBitmapResource( const wxString &name )
 {
     // Bitmap retrieval
@@ -186,7 +179,6 @@ wxBitmap LabeledTextBox::GetBitmapResource( const wxString &name )
  * GetIconResource( const wxString &name )
  *
  **************************************************/
-
 wxIcon LabeledTextBox::GetIconResource( const wxString &name )
 {
     // Icon retrieval

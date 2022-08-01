@@ -99,6 +99,12 @@ public:
     void SetNameModified( bool state ) ;
     void SetDesignTreeID(wxTreeItemId id );
     bool IsNameModified( ) ;
+    void SetShowTitle( bool state = false );
+    void SetShowFrame( bool state = false );
+    bool GetShowTitle();
+    bool GetShowFrame();
+
+
     wxTreeItemId m_designTreeID;
 ////@begin RowDetailsDialog member variables
     LabeledTextBox* m_name;

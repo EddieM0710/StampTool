@@ -145,27 +145,27 @@ void StampDetailsDialog::CreateControls( )
     wxBoxSizer* itemBoxSizer1 = new wxBoxSizer( wxHORIZONTAL );
     itemBoxSizer2->Add( itemBoxSizer1, 0, wxGROW | wxALL, 0 );
 
-    wxBoxSizer* itemBoxSizer4 = new wxBoxSizer(wxVERTICAL);
-    itemBoxSizer1->Add(itemBoxSizer4, 0, wxGROW|wxALL, 5);
+    wxBoxSizer* itemBoxSizer4 = new wxBoxSizer( wxVERTICAL );
+    itemBoxSizer1->Add( itemBoxSizer4, 0, wxGROW | wxALL, 5 );
 
     m_id = new LabeledTextBox( itemDialog1, ID_IDLABELTEXTBOX, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
     m_id->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
     itemBoxSizer4->Add( m_id, 0, wxGROW | wxALL, 5 );
 
-    m_idCheckbox = new wxCheckBox( itemDialog1, ID_IDCHECKBOX, _("Show ID"), wxDefaultPosition, wxDefaultSize, 0 );
-    m_idCheckbox->SetValue(false);
-    itemBoxSizer4->Add(m_idCheckbox, 0, wxALIGN_LEFT|wxALL, 5);
- 
-    wxBoxSizer* itemBoxSizer8 = new wxBoxSizer(wxVERTICAL);
-    itemBoxSizer1->Add(itemBoxSizer8, 1, wxGROW|wxALL, 5);
+    m_idCheckbox = new wxCheckBox( itemDialog1, ID_IDCHECKBOX, _( "Show ID" ), wxDefaultPosition, wxDefaultSize, 0 );
+    m_idCheckbox->SetValue( false );
+    itemBoxSizer4->Add( m_idCheckbox, 0, wxALIGN_LEFT | wxALL, 5 );
+
+    wxBoxSizer* itemBoxSizer8 = new wxBoxSizer( wxVERTICAL );
+    itemBoxSizer1->Add( itemBoxSizer8, 1, wxGROW | wxALL, 5 );
 
     m_name = new LabeledTextBox( itemDialog1, ID_NAMELABELEDTEXTBOX, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
     m_name->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
     itemBoxSizer8->Add( m_name, 1, wxGROW | wxALL, 5 );
 
-    m_titleCheckbox = new wxCheckBox( itemDialog1, ID_TITLECHECKBOX, _("Show Title"), wxDefaultPosition, wxDefaultSize, 0 );
-    m_titleCheckbox->SetValue(false);
-    itemBoxSizer8->Add(m_titleCheckbox, 0, wxALIGN_LEFT|wxALL, 5);
+    m_titleCheckbox = new wxCheckBox( itemDialog1, ID_TITLECHECKBOX, _( "Show Title" ), wxDefaultPosition, wxDefaultSize, 0 );
+    m_titleCheckbox->SetValue( false );
+    itemBoxSizer8->Add( m_titleCheckbox, 0, wxALIGN_LEFT | wxALL, 5 );
 
     wxBoxSizer* itemBoxSizer3 = new wxBoxSizer( wxHORIZONTAL );
     itemBoxSizer2->Add( itemBoxSizer3, 0, wxGROW | wxALL, 0 );
@@ -248,29 +248,125 @@ wxIcon StampDetailsDialog::GetIconResource( const wxString& name )
     ////@end StampDetailsDialog icon retrieval
 }
 
-void StampDetailsDialog::SetHeight( wxString height ) { m_height->SetValue( height ); m_height->SetModified( false );};
-void StampDetailsDialog::SetWidth( wxString width ) { m_width->SetValue( width ); m_width->SetModified( false ); };
-void StampDetailsDialog::SetID( wxString id ) { m_id->SetValue( id ); m_id->SetModified( false ); };
-void StampDetailsDialog::SetName( wxString name ) { m_name->SetValue( name ); m_name->SetModified( false ); };
-wxString StampDetailsDialog::GetHeight( ) { return m_height->GetValue( ); };
-wxString StampDetailsDialog::GetWidth( ) { return m_width->GetValue( ); };
-wxString StampDetailsDialog::GetID( ) { return m_id->GetValue( ); };
-wxString StampDetailsDialog::GetName( ) { return m_name->GetValue( ); };
-bool StampDetailsDialog::IsNameModified( ) { return m_name->IsModified( ); };
-bool StampDetailsDialog::IsIDModified( ) { return m_id->IsModified( ); };
-bool StampDetailsDialog::IsHeightModified( ) { return m_height->IsModified( ); };
-bool StampDetailsDialog::IsWidthModified( ) { return m_width->IsModified( ); };
-void StampDetailsDialog::SetHeightModified( bool state ) { m_height->SetModified( state ); };
-void StampDetailsDialog::SetWidthModified( bool state ) {  m_width->SetModified( state ); };
-void StampDetailsDialog::SetIDModified( bool state ) { m_id->SetModified( state ); };
-void StampDetailsDialog::SetNameModified( bool state ) { m_name->SetModified( state ); };
-void StampDetailsDialog::SetDesignTreeID(wxTreeItemId id ){ if ( id.IsOk() ) m_designTreeID = id;};
+void StampDetailsDialog::SetHeight( wxString height )
+{
+    m_height->SetValue( height );
+    m_height->SetModified( false );
+}
+
+void StampDetailsDialog::SetWidth( wxString width )
+{
+    m_width->SetValue( width );
+    m_width->SetModified( false );
+}
+
+void StampDetailsDialog::SetID( wxString id )
+{
+
+    m_id->SetValue( id );
+    m_id->SetModified( false );
+}
+
+void StampDetailsDialog::SetName( wxString name ) 
+{
+    m_name->SetValue( name );
+    m_name->SetModified( false );
+}
+
+void StampDetailsDialog::SetShowID( bool state ) 
+{
+    m_idCheckbox->SetValue( state );
+}
+
+void StampDetailsDialog::SetShowTitle( bool state ) 
+{
+    m_titleCheckbox->SetValue( state );
+}
+
+void StampDetailsDialog::SetDesignTreeID( wxTreeItemId id ) 
+{
+    if ( id.IsOk( ) ) 
+        m_designTreeID = id;
+}
+
+
+wxString StampDetailsDialog::GetHeight( ) 
+{
+    return m_height->GetValue( );
+}
+
+wxString StampDetailsDialog::GetWidth( ) 
+{
+    return m_width->GetValue( );
+}
+
+wxString StampDetailsDialog::GetID( ) 
+{
+    return m_id->GetValue( );
+}
+
+wxString StampDetailsDialog::GetName( ) 
+{
+    return m_name->GetValue( );
+}
+
+bool StampDetailsDialog::GetShowID( ) 
+{
+    return m_idCheckbox->IsChecked( );
+}
+
+bool StampDetailsDialog::GetShowTitle( ) 
+{
+    return m_titleCheckbox->IsChecked( );
+}
+
+bool StampDetailsDialog::IsNameModified( ) 
+{
+    return m_name->IsModified( );
+}
+
+bool StampDetailsDialog::IsIDModified( ) 
+{
+    return m_id->IsModified( );
+}
+
+bool StampDetailsDialog::IsHeightModified( ) 
+{
+    return m_height->IsModified( );
+}
+
+bool StampDetailsDialog::IsWidthModified( ) 
+{
+    return m_width->IsModified( );
+}
+
+void StampDetailsDialog::SetHeightModified( bool state ) 
+{
+    m_height->SetModified( state );
+}
+
+void StampDetailsDialog::SetWidthModified( bool state ) 
+{
+    m_width->SetModified( state );
+}
+
+void StampDetailsDialog::SetIDModified( bool state ) 
+{
+    m_id->SetModified( state );
+}
+
+void StampDetailsDialog::SetNameModified( bool state ) 
+{
+    m_name->SetModified( state );
+}
+
 
 void StampDetailsDialog::RefreshFromCatalog( )
 {
     if ( m_designTreeID.IsOk( ) )
     {
         DesignTreeItemData* data = ( DesignTreeItemData* )GetDesignTreeCtrl( )->GetItemData( m_designTreeID );
+
         Utils::StampLink* link = data->GetStampLink( );
         if ( link )
         {
@@ -281,15 +377,15 @@ void StampDetailsDialog::RefreshFromCatalog( )
             {
                 Catalog::Entry  stamp( node );
                 SetHeight( stamp.GetHeight( ) );
-                SetHeightModified();
-                SetWidth( stamp.GetWidth(  ) );
-                SetWidthModified();
+                SetHeightModified( );
+                SetWidth( stamp.GetWidth( ) );
+                SetWidthModified( );
                 SetName( stamp.GetName( ) );
-                SetNameModified();
+                SetNameModified( );
                 SetID( stamp.GetID( ) );
-                SetIDModified();
-                wxString label ;
-                label = GetID() + " - " + GetName();
+                SetIDModified( );
+                wxString label;
+                label = GetID( ) + " - " + GetName( );
                 GetDesignTreeCtrl( )->SetItemText( m_designTreeID, label );
             }
         }
@@ -302,7 +398,7 @@ void StampDetailsDialog::RefreshFromCatalog( )
 
 void StampDetailsDialog::OnRefreshButtonClick( wxCommandEvent& event )
 {
-    RefreshFromCatalog();
+    RefreshFromCatalog( );
     ////@begin wxEVT_COMMAND_BUTTON_CLICKED event handler for ID_BUTTON in StampDetailsDialog.
         // Before editing this code, remove the block markers.
     event.Skip( );

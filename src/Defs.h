@@ -14,6 +14,8 @@
 
 #include <wx/string.h>
 //#include "gui/GeneratorData.h"
+#include <wx/gdicmn.h>
+
 class GeneratorData;
 
 //#include "utils/Settings.h"
@@ -49,6 +51,31 @@ Catalog::CatalogData* GetCatalogData() ;
 CatalogTreeCtrl* GetCatalogTreeCtrl();
 DesignTreeCtrl* GetDesignTreeCtrl();
 AlbumImagePanel* GetAlbumImagePanel();
+
+#define RealPoint wxRealPoint  
+#define RealSize wxRealPoint 
+class RealRect
+{
+    public:
+    RealRect( RealPoint posR, RealPoint sizeR ) { pos = posR; size = sizeR; };
+    RealRect( double x, double y, double width, double height ) { SetPosition(x,y), SetSize(width,height);; };
+    RealPoint GetPosition( ) { return pos; };
+    RealPoint GetSize( ) { return size; };
+    void SetPosition( double x, double y) { pos.x = x; pos.y = y;};
+    void SetPosition( RealPoint posR ) { pos = posR; };
+    void SetSize( double width, double height) { size.x = width; size.y = height;};
+    void SetSize( RealPoint sizeR ) { size = sizeR; };
+    double GetX( ) { return pos.x; };
+    double GetY( ) { return pos.y; };
+    double GetHeight( ) { return size.x; };
+    double GetWidth( ) { return size.y; };
+    void SetX( double x ) { pos.x = x; };
+    void SetY( double y ) { pos.y = y; };
+    void SetWidth( double width ) { pos.x = width; };
+    void SetHeight( double height ) { pos.y = height; };
+    RealPoint pos;
+    RealPoint size;
+};
 
 /**
  * @brief  Returns Ascii "true" or "false" based on bool b

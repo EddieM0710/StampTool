@@ -50,6 +50,9 @@ namespace Design {
         {
             SetNodeType( AT_Stamp );
             SetObjectName( AlbumBaseNames[ GetNodeType( ) ] );
+            m_title = GetAttrStr( Design::AT_Name );
+            SetShowID(true);
+            SetShowTitle(true);
             wxString height = GetAttrStr( Design::AT_Height );
             SetStampHeight( height ) ;
             wxString width = GetAttrStr( Design::AT_Width );
@@ -109,10 +112,19 @@ namespace Design {
         void SetStampWidth( wxString str ) ;
         double GetStampWidth( );
         wxString GetStampWidthStr( ) ;
-        
+
+        /* 
+         * @brief draw object on screen
+         * 
+         * @param dc current device context
+         * @param x position in MM from page top
+         * @param y position in MM from page left 
+         */        
         void draw( wxDC &dc, double x, double y );
         void DrawID( wxDC& dc, double x, double y  );
-        void DrawTitle( wxDC& dc, double x, double y  );
+        //void DrawTitle( wxDC&, wxRect rect  );
+        //void MakeMultiLine(  wxDC& dc, wxString text, double width  );
+//        void UpdateTitleSize( double width );
 
         void Save( wxXmlNode* xmlNode );
         // bool GetShowTitle(){ return String2Bool( GetAttrStr( AT_ShowTitle ) ); };
@@ -120,6 +132,12 @@ namespace Design {
         // bool GetShowID(){ return String2Bool( GetAttrStr( AT_ShowId ) ); };
         // void SetShowID( bool val ){ SetAttrStr( AT_ShowId, Bool2String( val ) ); };
         wxImage* GetStampImage();
+
+        // bool GetShowTitle(){ return String2Bool( GetAttrStr( AT_ShowTitle ) ); };
+        // void SetShowTitle( bool val ){ SetAttrStr( AT_ShowTitle, Bool2String( val) ); };
+
+        // bool GetShowID(){ return String2Bool( GetAttrStr( AT_ShowId ) ); };
+        // void SetShowID( bool val ){ SetAttrStr( AT_ShowId, Bool2String( val ) ); };
 
     private:
 
@@ -141,12 +159,6 @@ namespace Design {
          **************************************************/
         wxXmlNode* StampImageObject( wxXmlNode* parent );
 
-        bool GetShowTitle(){ return String2Bool( GetAttrStr( AT_ShowTitle ) ); };
-        void SetShowTitle( bool val ){ SetAttrStr( AT_ShowTitle, Bool2String( val) ); };
-
-        bool GetShowID(){ return String2Bool( GetAttrStr( AT_ShowId ) ); };
-        void SetShowID( bool val ){ SetAttrStr( AT_ShowId, Bool2String( val ) ); };
-
         /**
          * @brief The name of the stamp to display
          *
@@ -158,9 +170,10 @@ namespace Design {
         // The m_stampFrame has the parameters of the actual Stamp.
         // The m_stampImageFrame has the parameters for the printed album image. 
         // It is 10% smaller than the actual stamp.
-        // These parameters are all in inches.
+        // These parameters are all in MM.
         Frame m_stampFrame;
         Frame m_stampImageFrame;
+        //Title m_title;
 
         NodeStatus m_error[AT_NbrStampErrorTypes];
         bool m_showID;

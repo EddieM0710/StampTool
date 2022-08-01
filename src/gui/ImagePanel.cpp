@@ -22,6 +22,7 @@
 #endif
 
 #include "Defs.h"
+#include "design/DesignDefs.h"
 #include "ImagePanel.h"
 //#include "Persistent.h"
 #include "wx/file.h"
@@ -264,6 +265,8 @@ void ImagePanel::OnPaint( wxPaintEvent& event )
 
     dc.Clear( );
 
+    Design::InitDesignDefs( );
+
     const wxSize size = GetClientSize( );
     double scale = 1.;
     int width = m_bitmap.GetWidth( );
@@ -278,6 +281,7 @@ void ImagePanel::OnPaint( wxPaintEvent& event )
     }
 
     dc.SetUserScale( scale * m_zoom, scale * m_zoom );
+   // GetAlbumImagePanel( )->Refresh();
 
     dc.DrawBitmap( m_bitmap, 0, 0,
         // dc.DeviceToLogicalX((size.x - m_zoom*scale *

@@ -22,6 +22,7 @@ add_library( GuiFiles SHARED
     CatalogTreeCtrl.cpp
     CatalogCodePanel.cpp 
     CharacteristicsPanel.cpp 
+    GuiUtils.cpp
     IdentificationPanel.cpp
     ImagePanel.cpp
     InventoryPanel.cpp

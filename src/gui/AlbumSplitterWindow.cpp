@@ -98,7 +98,7 @@ AlbumSplitterWindow::~AlbumSplitterWindow()
 }
 
 
-/*//
+
 
 void AlbumSplitterWindow::Init()
 {

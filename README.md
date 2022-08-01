@@ -10,7 +10,7 @@ but is starting to be useable. That means there is still a lot to implement,
 and very little testing except for main paths.
 
 Development Environment: 
-C++
-WxWidgets 3.2
-VSCode
+C++, 
+WxWidgets 3.2, 
+VSCode, 
 Dialog Blocks

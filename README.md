@@ -1,5 +1,7 @@
 # AlbumGenerator
 
+<p>Be aware that this code is under active development. There is no documentation yet and is complex enough that it would be difficult to use right now. I will be documenting the build process and environment as soon as possible. if you are a seasoned C++ programmer and are still interested in helping just let me know. 
+
 <p>This is an application for maintaining an inventory and want list of stamps and visually creating a stamp album. It is designed to be cross platform but, as of now, has only been run on Linux Mint.
 </p>
 <p>The intention is that this App will be completely free. The input data is not propritary, the output is Open Office text document file (.odt) which can be read and printed with open source software, and the development environment tools and libraries are open source.

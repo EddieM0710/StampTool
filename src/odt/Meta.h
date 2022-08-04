@@ -19,6 +19,7 @@
  * AlbumGenerator. If not, see <https://www.gnu.org/licenses/>.
  * 
  */
+#ifndef Meta_h
 #define Meta_h
 
 #include "odt/ODTDefs.h"

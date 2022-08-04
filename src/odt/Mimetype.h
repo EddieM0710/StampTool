@@ -19,6 +19,7 @@
  * AlbumGenerator. If not, see <https://www.gnu.org/licenses/>.
  * 
  */
+#ifndef MimeType_h
 #define MimeType_h
 
 #include "odt/ODTDefs.h"

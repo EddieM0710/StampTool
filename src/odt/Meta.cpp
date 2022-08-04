@@ -19,6 +19,9 @@
  * AlbumGenerator. If not, see <https://www.gnu.org/licenses/>.
  * 
  */
+#include "odt/Meta.h"
+#include "odt/ODTDefs.h"
+#include "odt/Document.h"
 #include "utils/Project.h"
 #include "utils/Settings.h"
 #include <iostream>

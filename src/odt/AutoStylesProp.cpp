@@ -23,6 +23,7 @@
  */
 #include "Defs.h"
 #include "odt/Content.h"
+#include "odt/AutoStylesProp.h"
 #include "utils/XMLUtilities.h"
 
 namespace ODT {

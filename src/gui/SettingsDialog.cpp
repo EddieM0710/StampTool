@@ -254,6 +254,7 @@ wxIcon SettingsDialog::GetIconResource( const wxString& name )
 void SettingsDialog::OnImagedirectortextboxTextUpdated( wxCommandEvent& event )
 {
 
+    m_dirty = true;
 
 // wxEVT_COMMAND_TEXT_UPDATED event handler for ID_IMAGEDIRECTORTEXTBOX in SettingsDialog.
     // Before editing this code, remove the block markers.
@@ -269,6 +270,8 @@ void SettingsDialog::OnImagedirectortextboxTextUpdated( wxCommandEvent& event )
 void SettingsDialog::OnCountrytextboxTextUpdated( wxCommandEvent& event )
 {
 
+    m_dirty = true;
+
 // wxEVT_COMMAND_TEXT_UPDATED event handler for ID_COUNTRYTEXTBOX in SettingsDialog.
     // Before editing this code, remove the block markers.
     event.Skip();
@@ -282,6 +285,8 @@ void SettingsDialog::OnCountrytextboxTextUpdated( wxCommandEvent& event )
 
 void SettingsDialog::OnCatalogtextboxTextUpdated( wxCommandEvent& event )
 {
+
+    m_dirty = true;
 
 // wxEVT_COMMAND_TEXT_UPDATED event handler for ID_CATALOGTEXTBOX in SettingsDialog.
     // Before editing this code, remove the block markers.
@@ -297,6 +302,8 @@ void SettingsDialog::OnCatalogtextboxTextUpdated( wxCommandEvent& event )
 void SettingsDialog::OnOpenlastcheckboxClick( wxCommandEvent& event )
 {
 
+    m_dirty = true;
+
 // wxEVT_COMMAND_CHECKBOX_CLICKED event handler for ID_OPENLASTCHECKBOX in SettingsDialog.
     // Before editing this code, remove the block markers.
     event.Skip();
@@ -310,6 +317,8 @@ void SettingsDialog::OnOpenlastcheckboxClick( wxCommandEvent& event )
 
 void SettingsDialog::OnRecentsizetextctrlTextUpdated( wxCommandEvent& event )
 {
+
+    m_dirty = true;
 
 // wxEVT_COMMAND_TEXT_UPDATED event handler for ID_RECENTSIZETEXTCTRL in SettingsDialog.
     // Before editing this code, remove the block markers.

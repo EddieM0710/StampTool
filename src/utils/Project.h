@@ -19,6 +19,7 @@
  * AlbumGenerator. If not, see <https://www.gnu.org/licenses/>.
  * 
  */
+#ifndef Project_h
 #define Project_h
 
 #include "wx/string.h"

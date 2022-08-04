@@ -19,6 +19,7 @@
  * AlbumGenerator. If not, see <https://www.gnu.org/licenses/>.
  * 
  */
+#ifndef ODTDefs_h
 #define ODTDefs_h
 #include <wx/xml/xml.h>
 #include "Defs.h"

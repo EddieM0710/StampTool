@@ -120,8 +120,8 @@ void MiscellaneousDataPanel::Init( )
 {
     m_stamp = new Catalog::Entry( );
      // MiscellaneousDataPanel member initialisation
-    m_score = NULL;
-    m_accuracy = NULL;
+//$    m_score = NULL;
+//$    m_accuracy = NULL;
     m_link = NULL;
     m_catCodes = NULL;
     m_imageName = NULL;
@@ -145,15 +145,15 @@ void MiscellaneousDataPanel::CreateControls( )
     wxBoxSizer *itemBoxSizer3 = new wxBoxSizer( wxHORIZONTAL );
     itemBoxSizer2->Add( itemBoxSizer3, 0, wxGROW | wxALL, 0 );
 
-    m_score = new LabeledTextBox( itemPanel1, ID_SCORETEXTBOX,
-                                  wxDefaultPosition, wxDefaultSize, 0 );
-    itemBoxSizer3->Add( m_score, 0, wxGROW | wxALL, 0 );
+    //$ m_score = new LabeledTextBox( itemPanel1, ID_SCORETEXTBOX,
+    //$                               wxDefaultPosition, wxDefaultSize, 0 );
+    //$ itemBoxSizer3->Add( m_score, 0, wxGROW | wxALL, 0 );
 
-    itemBoxSizer3->Add( 5, 5, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+    //$ itemBoxSizer3->Add( 5, 5, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
-    m_accuracy = new LabeledTextBox( itemPanel1, ID_ACCURACYTEXTBOX,
-                                     wxDefaultPosition, wxDefaultSize, 0 );
-    itemBoxSizer3->Add( m_accuracy, 0, wxGROW | wxALL, 0 );
+    //$ m_accuracy = new LabeledTextBox( itemPanel1, ID_ACCURACYTEXTBOX,
+    //$                                  wxDefaultPosition, wxDefaultSize, 0 );
+    //$ itemBoxSizer3->Add( m_accuracy, 0, wxGROW | wxALL, 0 );
 
     m_link = new LabeledTextBox( itemPanel1, ID_LINKTEXTBOX, wxDefaultPosition,
                                  wxDefaultSize, 0 );
@@ -192,8 +192,8 @@ void MiscellaneousDataPanel::CreateControls( )
 
      // MiscellaneousDataPanel content construction
 
-        m_score->SetLabel( Catalog::DT_DataNames[Catalog::DT_Score] );
-        m_accuracy->SetLabel( Catalog::DT_DataNames[Catalog::DT_Accuracy] );
+//$        m_score->SetLabel( Catalog::DT_DataNames[Catalog::DT_Score] );
+//$        m_accuracy->SetLabel( Catalog::DT_DataNames[Catalog::DT_Accuracy] );
         m_link->SetLabel( Catalog::DT_DataNames[Catalog::DT_Link] );
         m_catCodes->SetLabel( Catalog::DT_DataNames[Catalog::DT_Catalog_Codes] );
         m_imageName->SetLabel( "Image Name" );
@@ -242,8 +242,8 @@ void MiscellaneousDataPanel::SetStamp( Catalog::Entry *stamp )
     m_stamp = stamp;
     if ( m_stamp->IsOK( ) )
     {
-        m_score->SetValue( m_stamp->GetAttr(Catalog::DT_Score) );
-        m_accuracy->SetValue( m_stamp->GetAttr(Catalog::DT_Accuracy) );
+//$        m_score->SetValue( m_stamp->GetAttr(Catalog::DT_Score) );
+//$        m_accuracy->SetValue( m_stamp->GetAttr(Catalog::DT_Accuracy) );
         m_link->SetValue( m_stamp->GetAttr(Catalog::DT_Link) );
         m_catCodes->SetValue( m_stamp->GetAttr(Catalog::DT_Catalog_Codes) );
         wxString id = m_stamp->GetAttr(Catalog::DT_ID_Nbr);
@@ -327,8 +327,8 @@ void MiscellaneousDataPanel::OneBayButtonClick( wxCommandEvent &event )
 
 void MiscellaneousDataPanel::SetDataEditable( bool val )
 {
-    m_score->SetEditable(val);;
-    m_accuracy->SetEditable(val);;
+//$    m_score->SetEditable(val);;
+ //$   m_accuracy->SetEditable(val);;
     m_link->SetEditable(val);;
     m_catCodes->SetEditable(val);;
     m_imageName->SetEditable(val);;

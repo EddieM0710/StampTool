@@ -138,8 +138,8 @@ void DescriptionPanel::Init( void )
     m_inventoryPanel = NULL;
     m_characteristicsPanel = NULL;
     m_miscellaneousDataPanel = NULL;
-    m_description = NULL;
-    m_bkgndText = NULL;
+//$    m_description = NULL;
+//$    m_bkgndText = NULL;
     // DescriptionPanel member initialisation
     m_stamp = NULL;
 }
@@ -229,67 +229,67 @@ void DescriptionPanel::CreateControls( void )
 
     itemNotebook12->AddPage( m_characteristicsPanel, _( "Characteristics" ) );
 
-    m_miscellaneousDataPanel = new MiscellaneousDataPanel(
+     m_miscellaneousDataPanel = new MiscellaneousDataPanel(
         itemNotebook12, ID_MISCELLANEOUSDATAFORIEGN, wxDefaultPosition,
         wxDefaultSize, wxSIMPLE_BORDER | wxTAB_TRAVERSAL );
-    m_miscellaneousDataPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
+     m_miscellaneousDataPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
 
-    itemNotebook12->AddPage( m_miscellaneousDataPanel, _( "Miscellaneous" ) );
+     itemNotebook12->AddPage( m_miscellaneousDataPanel, _( "Miscellaneous" ) );
 
-    wxScrolledWindow* itemScrolledWindow1 = new wxScrolledWindow(
-        itemNotebook12, ID_DESCRIPTIONSCROLLEDWINDOW, wxDefaultPosition,
-        wxDefaultSize, wxSIMPLE_BORDER | wxHSCROLL | wxVSCROLL );
-    itemScrolledWindow1->SetScrollbars( 1, 1, 0, 0 );
-    wxBoxSizer* itemBoxSizer4 = new wxBoxSizer( wxHORIZONTAL );
-    itemScrolledWindow1->SetSizer( itemBoxSizer4 );
+//$     wxScrolledWindow* itemScrolledWindow1 = new wxScrolledWindow(
+//$         itemNotebook12, ID_DESCRIPTIONSCROLLEDWINDOW, wxDefaultPosition,
+//$         wxDefaultSize, wxSIMPLE_BORDER | wxHSCROLL | wxVSCROLL );
+//$     itemScrolledWindow1->SetScrollbars( 1, 1, 0, 0 );
+//$     wxBoxSizer* itemBoxSizer4 = new wxBoxSizer( wxHORIZONTAL );
+//$     itemScrolledWindow1->SetSizer( itemBoxSizer4 );
 
-    wxBoxSizer* itemBoxSizer9 = new wxBoxSizer( wxVERTICAL );
-    itemBoxSizer4->Add( itemBoxSizer9, 1, wxGROW | wxALL, 0 );
-    m_description =
-        new wxTextCtrl( itemScrolledWindow1, ID_DESCRIPTIONTEXTCTRL, wxEmptyString,
-            wxDefaultPosition, wxSize( -1, 100 ), wxTE_MULTILINE );
-    itemBoxSizer9->Add( m_description, 1, wxGROW | wxALL, 0 );
+//$     wxBoxSizer* itemBoxSizer9 = new wxBoxSizer( wxVERTICAL );
+//$     itemBoxSizer4->Add( itemBoxSizer9, 1, wxGROW | wxALL, 0 );
+//$     m_description =
+//$        new wxTextCtrl( itemScrolledWindow1, ID_DESCRIPTIONTEXTCTRL, wxEmptyString,
+//$            wxDefaultPosition, wxSize( -1, 100 ), wxTE_MULTILINE );
+//$      itemBoxSizer9->Add( m_description, 1, wxGROW | wxALL, 0 );
 
-    itemScrolledWindow1->FitInside( );
-    itemNotebook12->AddPage( itemScrolledWindow1, _( "Description" ) );
+//$      itemScrolledWindow1->FitInside( );
+//$      itemNotebook12->AddPage( itemScrolledWindow1, _( "Description" ) );
 
-    wxPanel* itemPanel16 =
-        new wxPanel( itemNotebook12, ID_BACKGROUNDPANEL1, wxDefaultPosition,
-            wxDefaultSize, wxSIMPLE_BORDER | wxTAB_TRAVERSAL );
-    itemPanel16->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
-    wxBoxSizer* itemBoxSizer17 = new wxBoxSizer( wxVERTICAL );
-    itemPanel16->SetSizer( itemBoxSizer17 );
+    //$ wxPanel* itemPanel16 =
+    //$     new wxPanel( itemNotebook12, ID_BACKGROUNDPANEL1, wxDefaultPosition,
+    //$         wxDefaultSize, wxSIMPLE_BORDER | wxTAB_TRAVERSAL );
+    //$ itemPanel16->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
+    //$ wxBoxSizer* itemBoxSizer17 = new wxBoxSizer( wxVERTICAL );
+    //$ itemPanel16->SetSizer( itemBoxSizer17 );
 
-    wxScrolledWindow* itemScrolledWindow19 = new wxScrolledWindow(
-        itemPanel16, ID_BKGNDSCROLLEDWINDOW, wxDefaultPosition, wxSize( 100, -1 ),
-        wxSUNKEN_BORDER | wxHSCROLL | wxVSCROLL );
-    itemBoxSizer17->Add( itemScrolledWindow19, 1, wxGROW | wxALL, 0 );
-    itemScrolledWindow19->SetScrollbars( 1, 1, 0, 0 );
-    wxBoxSizer* itemBoxSizer20 = new wxBoxSizer( wxHORIZONTAL );
-    itemScrolledWindow19->SetSizer( itemBoxSizer20 );
+    //$ wxScrolledWindow* itemScrolledWindow19 = new wxScrolledWindow(
+    //$     itemPanel16, ID_BKGNDSCROLLEDWINDOW, wxDefaultPosition, wxSize( 100, -1 ),
+    //$     wxSUNKEN_BORDER | wxHSCROLL | wxVSCROLL );
+    //$ itemBoxSizer17->Add( itemScrolledWindow19, 1, wxGROW | wxALL, 0 );
+    //$ itemScrolledWindow19->SetScrollbars( 1, 1, 0, 0 );
+    //$ wxBoxSizer* itemBoxSizer20 = new wxBoxSizer( wxHORIZONTAL );
+    //$ itemScrolledWindow19->SetSizer( itemBoxSizer20 );
 
-    wxBoxSizer* itemBoxSizer21 = new wxBoxSizer( wxVERTICAL );
-    itemBoxSizer20->Add( itemBoxSizer21, 1, wxGROW | wxALL, 0 );
-    m_bkgndText =
-        new wxTextCtrl( itemScrolledWindow19, ID_BKGNDTEXTCTRL, wxEmptyString,
-            wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE );
-    itemBoxSizer21->Add( m_bkgndText, 1, wxGROW | wxALL, 5 );
+    //$ wxBoxSizer* itemBoxSizer21 = new wxBoxSizer( wxVERTICAL );
+    //$ itemBoxSizer20->Add( itemBoxSizer21, 1, wxGROW | wxALL, 0 );
+    //$ m_bkgndText =
+    //$     new wxTextCtrl( itemScrolledWindow19, ID_BKGNDTEXTCTRL, wxEmptyString,
+    //$         wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE );
+    //$ itemBoxSizer21->Add( m_bkgndText, 1, wxGROW | wxALL, 5 );
 
-    itemScrolledWindow19->FitInside( );
+    //$ itemScrolledWindow19->FitInside( );
 
-    itemNotebook12->AddPage( itemPanel16, _( "Background" ) );
+    //$ itemNotebook12->AddPage( itemPanel16, _( "Background" ) );
 
     itemSplitterWindow1->SplitHorizontally( itemSplitterWindow2, itemNotebook12,
         200 );
     itemBoxSizer3->Add( itemSplitterWindow1, 1, wxGROW | wxALL, 5 );
 
     // Connect events and objects
-    m_bkgndText->Connect( ID_BKGNDTEXTCTRL, wxEVT_LEAVE_WINDOW,
-        wxMouseEventHandler( DescriptionPanel::OnLeaveWindow ),
-        NULL, this );
+//$    m_bkgndText->Connect( ID_BKGNDTEXTCTRL, wxEVT_LEAVE_WINDOW,
+//$        wxMouseEventHandler( DescriptionPanel::OnLeaveWindow ),
+//$        NULL, this );
     // DescriptionPanel content construction
-    m_bkgndText->SetEditable( GetSettings()->IsCatalogDataEditable()  );
-    m_description->SetEditable( GetSettings()->IsCatalogDataEditable()  );
+ //$     m_bkgndText->SetEditable( GetSettings()->IsCatalogDataEditable()  );
+  //$    m_description->SetEditable( GetSettings()->IsCatalogDataEditable()  );
 
 
     // display a random image until one is selected
@@ -415,13 +415,13 @@ void DescriptionPanel::OnZoomsliderUpdated( wxCommandEvent& event )
 
 void DescriptionPanel::OnBkGndTextUpdated( wxCommandEvent& event )
 {
-    if ( m_bkgndText->IsModified( ) )
-    {
-        wxSize i = m_bkgndText->GetMaxClientSize( );
-        wxString strSel = m_bkgndText->GetValue( );
-        m_stamp->SetBackground( strSel );
-        m_bkgndText->SetModified( false );
-    }
+    //$ if ( m_bkgndText->IsModified( ) )
+    //$ {
+    //$     wxSize i = m_bkgndText->GetMaxClientSize( );
+    //$     wxString strSel = m_bkgndText->GetValue( );
+    //$     m_stamp->SetBackground( strSel );
+    //$     m_bkgndText->SetModified( false );
+    //$ }
 
     // wxEVT_COMMAND_TEXT_UPDATED event handler for ID_BKGNDTEXTCTRL in
     // DescriptionPanel.
@@ -437,13 +437,13 @@ void DescriptionPanel::OnBkGndTextUpdated( wxCommandEvent& event )
 
 void DescriptionPanel::OnDescriptionTextctrlTextUpdated( wxCommandEvent& event )
 {
-    if ( m_description->IsModified( ) )
-    {
-        wxSize i = m_description->GetMaxClientSize( );
-        wxString strSel = m_description->GetValue( );
-        m_stamp->SetDescription( strSel );
-        m_description->SetModified( false );
-    }
+    //$ if ( m_description->IsModified( ) )
+    //$ {
+    //$     wxSize i = m_description->GetMaxClientSize( );
+    //$     wxString strSel = m_description->GetValue( );
+    //$     m_stamp->SetDescription( strSel );
+    //$     m_description->SetModified( false );
+    //$ }
     // wxEVT_COMMAND_TEXT_UPDATED event handler for
     // ID_DESCRIPTIONTEXTCTRL in DescriptionPanel.
     // Before editing this code, remove the block markers.
@@ -464,8 +464,8 @@ void DescriptionPanel::SetStamp( wxXmlNode* stamp )
         delete m_stamp;
     }
     m_stamp = new Catalog::Entry(stamp);
-    m_bkgndText->ChangeValue( m_stamp->GetBackground( ) );
-    m_description->ChangeValue( m_stamp->GetDescription( ) );
+//$    m_bkgndText->ChangeValue( m_stamp->GetBackground( ) );
+//$    m_description->ChangeValue( m_stamp->GetDescription( ) );
 
     m_inventoryPanel->SetStamp( m_stamp );
     m_catalogCodePanel->SetStamp( m_stamp );
@@ -484,6 +484,6 @@ void DescriptionPanel::SetDataEditable( bool val )
     m_characteristicsPanel->SetDataEditable( val );
     m_identificationPanel->SetDataEditable( val );
     m_miscellaneousDataPanel->SetDataEditable( val );
-    m_bkgndText->SetEditable( val );
-    m_description->SetEditable( val );
+//$    m_bkgndText->SetEditable( val );
+//$    m_description->SetEditable( val );
 }

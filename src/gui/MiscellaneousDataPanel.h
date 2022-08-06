@@ -179,12 +179,12 @@ class MiscellaneousDataPanel : public wxPanel
     Catalog::Entry *m_stamp;
 
      // MiscellaneousDataPanel member variables
-    LabeledTextBox *m_score;
-    LabeledTextBox *m_accuracy;
+ //$   LabeledTextBox *m_score;
+  //$   LabeledTextBox *m_accuracy;
     LabeledTextBox *m_link;
     LabeledTextBox *m_catCodes;
     LabeledTextBox *m_imageName;
-     // MiscellaneousDataPanel member variables
+    // MiscellaneousDataPanel member variables
 };
 
 #endif

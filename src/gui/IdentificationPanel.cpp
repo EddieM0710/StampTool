@@ -147,7 +147,7 @@ void IdentificationPanel::Init( )
     m_format = NULL;
     m_issueDate = NULL;
     m_series = NULL;
-    m_themes = NULL;
+//$    m_themes = NULL;
     m_country = NULL;
     // IdentificationPanel member initialisation
 }
@@ -275,9 +275,9 @@ void IdentificationPanel::CreateControls( )
         wxDefaultPosition, wxDefaultSize, 0 );
     itemBoxSizer2->Add( m_series, 0, wxGROW | wxALL, 2 );
 
-    m_themes = new LabeledTextBox( itemPanel1, ID_THEMETEXTBOX,
-        wxDefaultPosition, wxDefaultSize, 0 );
-    itemBoxSizer2->Add( m_themes, 0, wxGROW | wxALL, 2 );
+    //$ m_themes = new LabeledTextBox( itemPanel1, ID_THEMETEXTBOX,
+    //$     wxDefaultPosition, wxDefaultSize, 0 );
+    //$ itemBoxSizer2->Add( m_themes, 0, wxGROW | wxALL, 2 );
 
     m_country = new LabeledTextBox( itemPanel1, ID_COUNTRYTEXTBOX,
         wxDefaultPosition, wxDefaultSize, 0 );
@@ -289,7 +289,7 @@ void IdentificationPanel::CreateControls( )
     m_issueDate->SetLabel( "Issue Date" );
     m_emission->SetLabel( "Emission" );
     m_format->SetLabel( "Format" );
-    m_themes->SetLabel( "Themes" );
+ //$     m_themes->SetLabel( "Themes" );
     m_ID->SetLabel( "ID" );
     m_name->SetLabel( "Name" );
     // m_ID->SetID(m_stamp.GetID());
@@ -360,10 +360,10 @@ void IdentificationPanel::OnTextctrlTextUpdated( wxCommandEvent& event )
     {
         UpdateStampValue( Catalog::DT_Series, m_series );
     }
-    else if ( eventObject == m_themes )
-    {
-        UpdateStampValue( Catalog::DT_Themes, m_themes );
-    }
+//$    else if ( eventObject == m_themes )
+//$    {
+//$        UpdateStampValue( Catalog::DT_Themes, m_themes );
+//$    }
     else if ( eventObject == m_country )
     {
         UpdateStampValue( Catalog::DT_Country, m_country );
@@ -458,7 +458,7 @@ void IdentificationPanel::SetStamp( Catalog::Entry* stamp )
         SetChoice( m_emission, m_stamp->GetEmission( ) );
         SetChoice( m_format, m_stamp->GetFormat( ) );
         m_series->ChangeValue( m_stamp->GetAttr(  Catalog::DT_Series) );
-        m_themes->ChangeValue( m_stamp->GetAttr(  Catalog::DT_Themes ));
+//$        m_themes->ChangeValue( m_stamp->GetAttr(  Catalog::DT_Themes ));
         m_country->ChangeValue( m_stamp->GetAttr(  Catalog::DT_Country ) );
         SetChoice( m_status, m_stamp->GetInventoryStatus( ) );
     }
@@ -469,7 +469,7 @@ void IdentificationPanel::SetDataEditable( bool val )
         m_issueDate->SetEditable(val);
         m_emission->Enable(val);
         m_format->Enable(val);
-        m_themes->SetEditable(val);
+//$        m_themes->SetEditable(val);
         m_ID->SetEditable(val);
         m_name->SetEditable(val);
         m_series->SetEditable(val);

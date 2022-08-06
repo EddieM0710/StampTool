@@ -241,8 +241,8 @@ private:
     CatalogCodePanel* m_catalogCodePanel; ///< Pointer to CatalogCodePanel
     CharacteristicsPanel* m_characteristicsPanel; ///< Pointer to CharacteristicsPanel
     MiscellaneousDataPanel* m_miscellaneousDataPanel; ///< Pointer to MiscellaneousDataPanel
-    wxTextCtrl* m_description; ///< Pointer to description wxTextCtrl
-    wxTextCtrl* m_bkgndText; ///< Pointer to background wxTextCtrl
+ //$     wxTextCtrl* m_description; ///< Pointer to description wxTextCtrl
+ //$     wxTextCtrl* m_bkgndText; ///< Pointer to background wxTextCtrl
     // DescriptionPanel member variables
 
     Catalog::Entry* m_stamp; ///< Pointer to currently displayed stamp

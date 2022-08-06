@@ -169,19 +169,19 @@ class CharacteristicsPanel : public wxPanel
     void SetDataEditable( bool val );
 
      // CharacteristicsPanel member variables
-    LabeledTextBox* m_faceValue; ///< widget to display Face Value
-    LabeledTextBox* m_currency;  ///< widget to display Currency
+//$    LabeledTextBox* m_faceValue; ///< widget to display Face Value
+//$    LabeledTextBox* m_currency;  ///< widget to display Currency
     LabeledTextBox* m_height;  ///< widget to display stamp height
     LabeledTextBox* m_width;  ///< widget to display stamp width
-    LabeledTextBox* m_perforation; ///< widget to display perforation count
-    LabeledTextBox* m_watermark; ///< widget to display discription of stamp watermark
-    LabeledTextBox* m_gum;  ///< widget to display stamp gum
-    LabeledTextBox* m_variant; ///< widget to display stamp variant
-    LabeledTextBox* m_colors; ///< widget to display colors
-    LabeledTextBox* m_paper;  ///< widget to display stamp colors
-    LabeledTextBox* m_printing; ///< widget to display printing
-    LabeledTextBox* m_printRun;  ///< widget to display print run size
-    LabeledTextBox* m_expiryDate; ///< widget to display expiration date of stamp
+//$    LabeledTextBox* m_perforation; ///< widget to display perforation count
+//$    LabeledTextBox* m_watermark; ///< widget to display discription of stamp watermark
+//$    LabeledTextBox* m_gum;  ///< widget to display stamp gum
+//$    LabeledTextBox* m_variant; ///< widget to display stamp variant
+//$    LabeledTextBox* m_colors; ///< widget to display colors
+//$    LabeledTextBox* m_paper;  ///< widget to display stamp colors
+//$    LabeledTextBox* m_printing; ///< widget to display printing
+//$    LabeledTextBox* m_printRun;  ///< widget to display print run size
+//$    LabeledTextBox* m_expiryDate; ///< widget to display expiration date of stamp
      // CharacteristicsPanel member variables
 
     // pointer to current stamp

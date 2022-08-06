@@ -212,7 +212,7 @@ private:
   wxChoice* m_format;          ///<  Stamp Format wxChoice
   LabeledTextBox* m_issueDate; ///< Stamp Issue date display
   LabeledTextBox* m_series;    ///< Stamp Series display
-  LabeledTextBox* m_themes;    ///< Stamp Theme display
+  //$  LabeledTextBox* m_themes;    ///< Stamp Theme display
   LabeledTextBox* m_country;   ///< Stamp Country display
   Catalog::Entry* m_stamp;              ///< Pointer to currently displayed stamp
 };

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Album Name="" PageWidth="215.9" PageHeight="279.4" TopMargin="7.62" BottomMargin="7.62" RightMargin="7.62" LeftMargin="19.05" BorderFileName="" BorderSize="4">
+  <Page Name="">
+    <Row Name="" ShowTitle="false" ShowFrame="false">
+      <Stamp ID="Yt:VA 1838" Name="Pope Francis with Lamb" Width="30" Height="40" Link="" ShowTitle="true" ShowId="true"/>
+      <Stamp ID="Yt:VA 1839" Name="Pope Francis with Dove" Width="30" Height="40" Link="" ShowTitle="true" ShowId="true"/>
+      <Stamp ID="Yt:VA 1840" Name="Pope Francis with Dog" Width="30" Height="40" Link="" ShowTitle="true" ShowId="true"/>
+      <Stamp ID="Yt:VA 1841" Name="Pope Francis with Black Panther Cub" Width="30" Height="40" Link="" ShowTitle="true" ShowId="true"/>
+    </Row>
+  </Page>
+</Album>

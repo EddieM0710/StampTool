@@ -1,305 +1,297 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Catalog Name="/sandbox/Development/AlbumGeneratorDocuments/Projects/Vatican/2020/en_stamps_csv_list_country_95-Vatican_City_year_2020.csv">
-  <Period Name="Modern">
-    <Decade Name="2020s">
-      <Year Name="2020">
-        <Emission Name="Commemorative">
-          <Entry Name="Pope Francis with Lamb" Country="Vatican City" Series="The 8th Year of the Pontificate of Pope Francis" Catalog_Codes="Mi:VA 1985, Sn:VA 1735, Yt:VA 1838, Sg:VA 1899, WAD:VA003.20, Un:VA 1853" ID_Nbr="Yt:VA 1838" Issued_on="2020-02-14" Expiry_date="" Width="30" Height="40" Watermark="" Format="Stamp" Emission="Commemorative" Perforation="comb&lt;i&gt; 13¼ x 13&lt;/i&gt;" Printing="Offset lithography" Paper="" Gum="" Currency="€ - Euro" FaceValue="1.10" Print_run="120000" Variant="" Score="75.41" Accuracy="Medium" Colors="Multicolor" Themes="Famous People,Sheep,Religion,Popes,Animals (Fauna),Clergy" Description="" Link="https://colnect.com/stamps/stamp/942490" CheckedStatus="Unchecked">
-            <CatalogCode Catalog="Mi" Country="VA" ID="1985"/>
-            <CatalogCode Catalog="Sn" Country="VA" ID="1735"/>
-            <CatalogCode Catalog="Yt" Country="VA" ID="1838"/>
-            <CatalogCode Catalog="Sg" Country="VA" ID="1899"/>
-            <CatalogCode Catalog="WAD" Country="VA003.20" ID="VA003.20"/>
-            <CatalogCode Catalog="Un" Country="VA" ID="1853"/>
-          </Entry>
-          <Entry Name="Pope Francis with Dove" Country="Vatican City" Series="The 8th Year of the Pontificate of Pope Francis" Catalog_Codes="Mi:VA 1986, Sn:VA 1736, Yt:VA 1839, Sg:VA 1900, WAD:VA004.20, Un:VA 1854" ID_Nbr="Yt:VA 1839" Issued_on="2020-02-14" Expiry_date="" Width="30" Height="40" Watermark="" Format="Stamp" Emission="Commemorative" Perforation="comb&lt;i&gt; 13¼ x 13&lt;/i&gt;" Printing="Offset lithography" Paper="" Gum="" Currency="€ - Euro" FaceValue="1.15" Print_run="120000" Variant="" Score="71.06" Accuracy="Medium" Colors="Multicolor" Themes="Famous People,Religion,Peace Doves,Popes,Animals (Fauna),Clergy" Description="" Link="https://colnect.com/stamps/stamp/942491" CheckedStatus="Unchecked">
-            <CatalogCode Catalog="Mi" Country="VA" ID="1986"/>
-            <CatalogCode Catalog="Sn" Country="VA" ID="1736"/>
-            <CatalogCode Catalog="Yt" Country="VA" ID="1839"/>
-            <CatalogCode Catalog="Sg" Country="VA" ID="1900"/>
-            <CatalogCode Catalog="WAD" Country="VA004.20" ID="VA004.20"/>
-            <CatalogCode Catalog="Un" Country="VA" ID="1854"/>
-          </Entry>
-          <Entry Name="Pope Francis with Dog" Country="Vatican City" Series="The 8th Year of the Pontificate of Pope Francis" Catalog_Codes="Mi:VA 1987, Sn:VA 1737, Yt:VA 1840, Sg:VA 1901, WAD:VA005.20, Un:VA 1855" ID_Nbr="Yt:VA 1840" Issued_on="2020-02-14" Expiry_date="" Width="30" Height="40" Watermark="" Format="Stamp" Emission="Commemorative" Perforation="comb&lt;i&gt; 13¼ x 13&lt;/i&gt;" Printing="Offset lithography" Paper="" Gum="" Currency="€ - Euro" FaceValue="2.40" Print_run="120000" Variant="" Score="78.09" Accuracy="Medium" Colors="Multicolor" Themes="Famous People,Dogs,Religion,Popes,Animals (Fauna),Clergy" Description="" Link="https://colnect.com/stamps/stamp/942492" CheckedStatus="Unchecked">
-            <CatalogCode Catalog="Mi" Country="VA" ID="1987"/>
-            <CatalogCode Catalog="Sn" Country="VA" ID="1737"/>
-            <CatalogCode Catalog="Yt" Country="VA" ID="1840"/>
-            <CatalogCode Catalog="Sg" Country="VA" ID="1901"/>
-            <CatalogCode Catalog="WAD" Country="VA005.20" ID="VA005.20"/>
-            <CatalogCode Catalog="Un" Country="VA" ID="1855"/>
-          </Entry>
-          <Entry Name="Pope Francis with Black Panther Cub" Country="Vatican City" Series="The 8th Year of the Pontificate of Pope Francis" Catalog_Codes="Mi:VA 1988, Sn:VA 1738, Yt:VA 1841, Sg:VA 1902, WAD:VA006.20, Un:VA 1856" ID_Nbr="Yt:VA 1841" Issued_on="2020-02-14" Expiry_date="" Width="30" Height="40" Watermark="" Format="Stamp" Emission="Commemorative" Perforation="comb&lt;i&gt; 13¼ x 13&lt;/i&gt;" Printing="Offset lithography" Paper="" Gum="" Currency="€ - Euro" FaceValue="3" Print_run="120000" Variant="" Score="76.18" Accuracy="Medium" Colors="Multicolor" Themes="Famous People,Religion,Popes,Animals (Fauna),Clergy,Wild Cats" Description="" Link="https://colnect.com/stamps/stamp/942493" CheckedStatus="Unchecked">
-            <CatalogCode Catalog="Mi" Country="VA" ID="1988"/>
-            <CatalogCode Catalog="Sn" Country="VA" ID="1738"/>
-            <CatalogCode Catalog="Yt" Country="VA" ID="1841"/>
-            <CatalogCode Catalog="Sg" Country="VA" ID="1902"/>
-            <CatalogCode Catalog="WAD" Country="VA006.20" ID="VA006.20"/>
-            <CatalogCode Catalog="Un" Country="VA" ID="1856"/>
-          </Entry>
-          <Entry Name="1750th Birthday Anniversary of St. Nicholas of Myra" Country="Vatican City" Series="" Catalog_Codes="Mi:VA 1989, Sn:VA 1734, Yt:VA 1843, Sg:VA 1903, WAD:VA007.20, Un:VA 1858" ID_Nbr="Yt:VA 1843" Issued_on="2020-02-14" Expiry_date="" Width="34" Height="56" Watermark="" Format="Stamp" Emission="Commemorative" Perforation="comb&lt;i&gt; 12¾&lt;/i&gt;" Printing="Offset lithography" Paper="" Gum="" Currency="€ - Euro" FaceValue="1.15" Print_run="50000" Variant="" Score="77.05" Accuracy="Medium" Colors="Multicolor" Themes="Saints,Anniversaries and Jubilees" Description="" Link="https://colnect.com/stamps/stamp/942494" CheckedStatus="Unchecked">
-            <CatalogCode Catalog="Mi" Country="VA" ID="1989"/>
-            <CatalogCode Catalog="Sn" Country="VA" ID="1734"/>
-            <CatalogCode Catalog="Yt" Country="VA" ID="1843"/>
-            <CatalogCode Catalog="Sg" Country="VA" ID="1903"/>
-            <CatalogCode Catalog="WAD" Country="VA007.20" ID="VA007.20"/>
-            <CatalogCode Catalog="Un" Country="VA" ID="1858"/>
-          </Entry>
-          <Entry Name="50th Anniversary of Earth Day" Country="Vatican City" Series="50th Anniversary of Earth Day" Catalog_Codes="Mi:VA 1990, Sn:VA 1739a, Yt:VA 1845, WAD:VA008.20, Un:VA 1851" ID_Nbr="Yt:VA 1845" Issued_on="2020-02-14" Expiry_date="" Width="41" Height="30.5" Watermark="" Format="Stamp" Emission="Commemorative" Perforation="frame&lt;i&gt; 13½ x 13¾&lt;/i&gt;" Printing="Offset lithography" Paper="" Gum="" Currency="€ - Euro" FaceValue="0.30" Print_run="40000" Variant="" Score="86.99" Accuracy="Low" Colors="Multicolor" Themes="Environment Protection,Anniversaries and Jubilees" Description="stamp from souvenir sheet" Link="https://colnect.com/stamps/stamp/942499" CheckedStatus="Unchecked">
-            <CatalogCode Catalog="Mi" Country="VA" ID="1990"/>
-            <CatalogCode Catalog="Sn" Country="VA" ID="1739a"/>
-            <CatalogCode Catalog="Yt" Country="VA" ID="1845"/>
-            <CatalogCode Catalog="WAD" Country="VA008.20" ID="VA008.20"/>
-            <CatalogCode Catalog="Un" Country="VA" ID="1851"/>
-          </Entry>
-          <Entry Name="50th Anniversary of Earth Day" Country="Vatican City" Series="50th Anniversary of Earth Day" Catalog_Codes="Mi:VA 1991, Sn:VA 1739b, Yt:VA 1846, WAD:VA009.20, Un:VA 1852" ID_Nbr="Yt:VA 1846" Issued_on="2020-02-14" Expiry_date="" Width="41" Height="30.5" Watermark="" Format="Stamp" Emission="Commemorative" Perforation="frame&lt;i&gt; 13¾ x 13½&lt;/i&gt;" Printing="Offset lithography" Paper="" Gum="" Currency="€ - Euro" FaceValue="1.10" Print_run="40000" Variant="" Score="87.28" Accuracy="Low" Colors="Multicolor" Themes="Ships,Environment Protection,Sailing Ships,Anniversaries and Jubilees" Description="stamp from souvenir sheet" Link="https://colnect.com/stamps/stamp/942500" CheckedStatus="Unchecked">
-            <CatalogCode Catalog="Mi" Country="VA" ID="1991"/>
-            <CatalogCode Catalog="Sn" Country="VA" ID="1739b"/>
-            <CatalogCode Catalog="Yt" Country="VA" ID="1846"/>
-            <CatalogCode Catalog="WAD" Country="VA009.20" ID="VA009.20"/>
-            <CatalogCode Catalog="Un" Country="VA" ID="1852"/>
-          </Entry>
-          <Entry Name="Ascension of Christ, Alessia Babrow" Country="Vatican City" Series="Easter 2020" Catalog_Codes="Mi:VA 1992, Sn:VA 1733, Yt:VA 1842, Sg:VA 1904, WAD:VA001.20, Un:VA 1857" ID_Nbr="Yt:VA 1842" Issued_on="2020-02-14" Expiry_date="" Width="30" Height="40" Watermark="" Format="Stamp" Emission="Commemorative" Perforation="&lt;i&gt;13¼ x 13&lt;/i&gt;" Printing="Offset lithography" Paper="" Gum="" Currency="€ - Euro" FaceValue="1.15" Print_run="80000" Variant="" Score="73.27" Accuracy="Medium" Colors="Multicolor" Themes="Easter" Description="" Link="https://colnect.com/stamps/stamp/942495" CheckedStatus="Unchecked">
-            <CatalogCode Catalog="Mi" Country="VA" ID="1992"/>
-            <CatalogCode Catalog="Sn" Country="VA" ID="1733"/>
-            <CatalogCode Catalog="Yt" Country="VA" ID="1842"/>
-            <CatalogCode Catalog="Sg" Country="VA" ID="1904"/>
-            <CatalogCode Catalog="WAD" Country="VA001.20" ID="VA001.20"/>
-            <CatalogCode Catalog="Un" Country="VA" ID="1857"/>
-          </Entry>
-          <Entry Name="250th Anniversary of Death of Giambattista Tiepolo" Country="Vatican City" Series="" Catalog_Codes="Mi:VA 1993, Sn:VA 1732, Yt:VA 1844, Sg:VA 1898, WAD:VA002.20, Un:VA 1859" ID_Nbr="Yt:VA 1844" Issued_on="2020-02-14" Expiry_date="" Width="30" Height="40" Watermark="" Format="Stamp" Emission="Commemorative" Perforation="comb&lt;i&gt; 13¾ x 14&lt;/i&gt;" Printing="Offset lithography" Paper="" Gum="" Currency="€ - Euro" FaceValue="1.10" Print_run="160000" Variant="" Score="80.44" Accuracy="Medium" Colors="Multicolor" Themes="Art,Frescos,Anniversaries and Jubilees" Description="Issued in panes of four with decorative margin" Link="https://colnect.com/stamps/stamp/942496">
-            <CatalogCode Catalog="Mi" Country="VA" ID="1993"/>
-            <CatalogCode Catalog="Sn" Country="VA" ID="1732"/>
-            <CatalogCode Catalog="Yt" Country="VA" ID="1844"/>
-            <CatalogCode Catalog="Sg" Country="VA" ID="1898"/>
-            <CatalogCode Catalog="WAD" Country="VA002.20" ID="VA002.20"/>
-            <CatalogCode Catalog="Un" Country="VA" ID="1859"/>
-          </Entry>
-          <Entry Name="250th Anniversary of Death of Giambattista Tiepolo" Country="Vatican City" Series="" Catalog_Codes="Mi:VA 1993KB, Un:VA 1859MF" ID_Nbr="Mi:VA 1993KB" Issued_on="2020-02-14" Expiry_date="" Width="130" Height="100" Watermark="" Format="Mini Sheet" Emission="Commemorative" Perforation="comb&lt;i&gt; 13¾ x 14&lt;/i&gt;" Printing="Offset lithography" Paper="" Gum="" Currency="€ - Euro" FaceValue="4*1.10" Print_run="40000" Variant="" Score="80.21" Accuracy="Low" Colors="Multicolor" Themes="Art,Frescos,Anniversaries and Jubilees" Description="Sacrifice of Isaac; Fresco from the Palazzo Patriarcale, Udine; by Giovanni Battista Tiepolo (1696–1770), Venetian painter" Link="https://colnect.com/stamps/stamp/942497">
-            <CatalogCode Catalog="Mi" Country="VA" ID="1993KB"/>
-            <CatalogCode Catalog="Un" Country="VA" ID="1859MF"/>
-          </Entry>
-          <Entry Name="100th Death Anniversary of St. Teresa of Jesus de los Andes" Country="Vatican City" Series="" Catalog_Codes="Mi:VA 1994, Sn:VA 1741, Yt:VA 1847, Sg:VA 1909, WAD:VA012.20" ID_Nbr="Yt:VA 1847" Issued_on="2020-06-23" Expiry_date="" Width="30.5" Height="41" Watermark="" Format="Stamp" Emission="Commemorative" Perforation="comb&lt;i&gt; 13¾ x 13½&lt;/i&gt;" Printing="Offset lithography" Paper="" Gum="" Currency="€ - Euro" FaceValue="2.40" Print_run="50000" Variant="" Score="75.95" Accuracy="Low" Colors="Multicolor" Themes="Saints,Women,Anniversaries and Jubilees" Description="St. Teresa de los Andes, actually Juana de los Sagrados Corazones Fernández Solar (1900–1920), Carmelite" Link="https://colnect.com/stamps/stamp/971210" CheckedStatus="Unchecked">
-            <CatalogCode Catalog="Mi" Country="VA" ID="1994"/>
-            <CatalogCode Catalog="Sn" Country="VA" ID="1741"/>
-            <CatalogCode Catalog="Yt" Country="VA" ID="1847"/>
-            <CatalogCode Catalog="Sg" Country="VA" ID="1909"/>
-            <CatalogCode Catalog="WAD" Country="VA012.20" ID="VA012.20"/>
-          </Entry>
-          <Entry Name="Sixth Century Map of Colonia Iulia" Country="Vatican City" Series="Europa (C.E.P.T.) 2020 - Ancient Postal Routes" Catalog_Codes="Mi:VA 1995, Sn:VA 1742, Yt:VA 1848, Sg:VA 1905, WAD:VA010.20, Un:VA 1861" ID_Nbr="Yt:VA 1848" Issued_on="2020-06-23" Expiry_date="" Width="40" Height="30" Watermark="" Format="Stamp" Emission="Commemorative" Perforation="comb&lt;i&gt; 13 x 13¼&lt;/i&gt;" Printing="Offset lithography" Paper="" Gum="" Currency="€ - Euro" FaceValue="1.10" Print_run="45000" Variant="" Score="73.46" Accuracy="Medium" Colors="Multicolor" Themes="Maps,City Walls,Fortresses / Strongholds,C.E.P.T. / Europe" Description="" Link="https://colnect.com/stamps/stamp/971211">
-            <CatalogCode Catalog="Mi" Country="VA" ID="1995"/>
-            <CatalogCode Catalog="Sn" Country="VA" ID="1742"/>
-            <CatalogCode Catalog="Yt" Country="VA" ID="1848"/>
-            <CatalogCode Catalog="Sg" Country="VA" ID="1905"/>
-            <CatalogCode Catalog="WAD" Country="VA010.20" ID="VA010.20"/>
-            <CatalogCode Catalog="Un" Country="VA" ID="1861"/>
-          </Entry>
-          <Entry Name="Sixth Century Map of Colonia Axernias" Country="Vatican City" Series="Europa (C.E.P.T.) 2020 - Ancient Postal Routes" Catalog_Codes="Mi:VA 1996, Sn:VA 1743, Yt:VA 1849, Sg:VA 1906, WAD:VA011.20, Un:VA 1862" ID_Nbr="Yt:VA 1849" Issued_on="2020-06-23" Expiry_date="" Width="40" Height="30" Watermark="" Format="Stamp" Emission="Commemorative" Perforation="comb&lt;i&gt; 13 x 13¼&lt;/i&gt;" Printing="Offset lithography" Paper="" Gum="" Currency="€ - Euro" FaceValue="1.15" Print_run="45000" Variant="" Score="73.08" Accuracy="Medium" Colors="Multicolor" Themes="Maps,City Walls,Fortresses / Strongholds,C.E.P.T. / Europe" Description="" Link="https://colnect.com/stamps/stamp/971212">
-            <CatalogCode Catalog="Mi" Country="VA" ID="1996"/>
-            <CatalogCode Catalog="Sn" Country="VA" ID="1743"/>
-            <CatalogCode Catalog="Yt" Country="VA" ID="1849"/>
-            <CatalogCode Catalog="Sg" Country="VA" ID="1906"/>
-            <CatalogCode Catalog="WAD" Country="VA011.20" ID="VA011.20"/>
-            <CatalogCode Catalog="Un" Country="VA" ID="1862"/>
-          </Entry>
-          <Entry Name="International Year of Plant Health" Country="Vatican City" Series="" Catalog_Codes="Mi:VA 1997, Sn:VA 1740, Yt:VA 1850, Sg:VA 1908, WAD:VA013.20, Un:VA 1860" ID_Nbr="Yt:VA 1850" Issued_on="2020-06-23" Expiry_date="" Width="30.5" Height="41" Watermark="" Format="Stamp" Emission="Commemorative" Perforation="comb&lt;i&gt; 13¾ x 13½&lt;/i&gt;" Printing="Offset lithography" Paper="" Gum="" Currency="€ - Euro" FaceValue="1.15" Print_run="45000" Variant="" Score="74.73" Accuracy="Low" Colors="Multicolor" Themes="Trees,Famous People,Popes,Environment Protection,Men,International Years,Clergy" Description="Pope Francis and Catholicos Karekin II watering tree" Link="https://colnect.com/stamps/stamp/971213">
-            <CatalogCode Catalog="Mi" Country="VA" ID="1997"/>
-            <CatalogCode Catalog="Sn" Country="VA" ID="1740"/>
-            <CatalogCode Catalog="Yt" Country="VA" ID="1850"/>
-            <CatalogCode Catalog="Sg" Country="VA" ID="1908"/>
-            <CatalogCode Catalog="WAD" Country="VA013.20" ID="VA013.20"/>
-            <CatalogCode Catalog="Un" Country="VA" ID="1860"/>
-          </Entry>
-          <Entry Name="Transfiguration (Detail), Raphael" Country="Vatican City" Series="500th Death Anniversary of Raphael (1483-1520)" Catalog_Codes="Mi:VA 1998, Sn:VA 1744a, Yt:VA 1851, WAD:VA014.20, Un:VA 1863" ID_Nbr="Yt:VA 1851" Issued_on="2020-06-23" Expiry_date="" Width="40" Height="30" Watermark="" Format="Stamp" Emission="Commemorative" Perforation="frame&lt;i&gt; 13 x 13¼&lt;/i&gt;" Printing="Offset lithography" Paper="" Gum="" Currency="€ - Euro" FaceValue="1.10" Print_run="45000" Variant="" Score="86.8" Accuracy="Low" Colors="Multicolor" Themes="Art" Description="stamp from souvenir sheet" Link="https://colnect.com/stamps/stamp/971215">
-            <CatalogCode Catalog="Mi" Country="VA" ID="1998"/>
-            <CatalogCode Catalog="Sn" Country="VA" ID="1744a"/>
-            <CatalogCode Catalog="Yt" Country="VA" ID="1851"/>
-            <CatalogCode Catalog="WAD" Country="VA014.20" ID="VA014.20"/>
-            <CatalogCode Catalog="Un" Country="VA" ID="1863"/>
-          </Entry>
-          <Entry Name="Self-portrait, Raphael" Country="Vatican City" Series="500th Death Anniversary of Raphael (1483-1520)" Catalog_Codes="Mi:VA 1999, Sn:VA 1744b, Yt:VA 1852, WAD:VA015.20, Un:VA 1864" ID_Nbr="Yt:VA 1852" Issued_on="2020-06-23" Expiry_date="" Width="40" Height="30" Watermark="" Format="Stamp" Emission="Commemorative" Perforation="frame&lt;i&gt; 13¼ x 13&lt;/i&gt;" Printing="Offset lithography" Paper="" Gum="" Currency="€ - Euro" FaceValue="1.15" Print_run="45000" Variant="" Score="86.8" Accuracy="Low" Colors="Multicolor" Themes="Art,Artists,Anniversaries and Jubilees" Description="stamp from souvenir sheet" Link="https://colnect.com/stamps/stamp/971216">
-            <CatalogCode Catalog="Mi" Country="VA" ID="1999"/>
-            <CatalogCode Catalog="Sn" Country="VA" ID="1744b"/>
-            <CatalogCode Catalog="Yt" Country="VA" ID="1852"/>
-            <CatalogCode Catalog="WAD" Country="VA015.20" ID="VA015.20"/>
-            <CatalogCode Catalog="Un" Country="VA" ID="1864"/>
-          </Entry>
-          <Entry Name="100th Anniversary of the Appointment of Ephrem the Syrian" Country="Vatican City" Series="" Catalog_Codes="Mi:VA 2000, Sn:VA 1745, Yt:VA 1853, Sg:VA 1911, WAD:VA019.20" ID_Nbr="Yt:VA 1853" Issued_on="2020-09-10" Expiry_date="" Width="30.5" Height="41" Watermark="" Format="Stamp" Emission="Commemorative" Perforation="comb&lt;i&gt; 13¾ x 13½&lt;/i&gt;" Printing="Offset lithography" Paper="" Gum="" Currency="€ - Euro" FaceValue="1.15" Print_run="51000" Variant="" Score="74.61" Accuracy="Low" Colors="Multicolor" Themes="Religion,Saints,Theologians,Literary People (Poets and Writers)" Description="100th Anniversary of the Appointment of Ephrem the Syrian (306–373) as Doctor of the Church" Link="https://colnect.com/stamps/stamp/990789">
-            <CatalogCode Catalog="Mi" Country="VA" ID="2000"/>
-            <CatalogCode Catalog="Sn" Country="VA" ID="1745"/>
-            <CatalogCode Catalog="Yt" Country="VA" ID="1853"/>
-            <CatalogCode Catalog="Sg" Country="VA" ID="1911"/>
-            <CatalogCode Catalog="WAD" Country="VA019.20" ID="VA019.20"/>
-          </Entry>
-          <Entry Name="Sailing Vessel at Sea" Country="Vatican City" Series="100th Anniversary of the Apostolate of the Sea" Catalog_Codes="Mi:VA 2001, Sn:VA 1747a, Yt:VA 1854, WAD:VA017.20" ID_Nbr="Yt:VA 1854" Issued_on="2020-09-10" Expiry_date="" Width="40" Height="30" Watermark="" Format="Stamp" Emission="Commemorative" Perforation="frame&lt;i&gt; 14 x 13¼&lt;/i&gt;" Printing="Offset lithography" Paper="" Gum="" Currency="€ - Euro" FaceValue="1.10" Print_run="45000" Variant="" Score="85.41" Accuracy="Low" Colors="Multicolor" Themes="Ships,Religion,Sailing Ships,Christian" Description="stamp from souvenir sheet" Link="https://colnect.com/stamps/stamp/990791">
-            <CatalogCode Catalog="Mi" Country="VA" ID="2001"/>
-            <CatalogCode Catalog="Sn" Country="VA" ID="1747a"/>
-            <CatalogCode Catalog="Yt" Country="VA" ID="1854"/>
-            <CatalogCode Catalog="WAD" Country="VA017.20" ID="VA017.20"/>
-          </Entry>
-          <Entry Name="Madonna and Child" Country="Vatican City" Series="100th Anniversary of the Apostolate of the Sea" Catalog_Codes="Mi:VA 2002, Sn:VA 1747b, Yt:VA 1855, WAD:VA018.20" ID_Nbr="Yt:VA 1855" Issued_on="2020-09-10" Expiry_date="" Width="30" Height="40" Watermark="" Format="Stamp" Emission="Commemorative" Perforation="frame&lt;i&gt; 13¼ x 14&lt;/i&gt;" Printing="Offset lithography" Paper="" Gum="" Currency="€ - Euro" FaceValue="1.15" Print_run="45000" Variant="" Score="85.86" Accuracy="Low" Colors="Multicolor" Themes="Religion,Christian" Description="stamp from souvenir sheet" Link="https://colnect.com/stamps/stamp/990792">
-            <CatalogCode Catalog="Mi" Country="VA" ID="2002"/>
-            <CatalogCode Catalog="Sn" Country="VA" ID="1747b"/>
-            <CatalogCode Catalog="Yt" Country="VA" ID="1855"/>
-            <CatalogCode Catalog="WAD" Country="VA018.20" ID="VA018.20"/>
-          </Entry>
-          <Entry Name="50th Anniversary of Diplomatic Relations with Ivory Coast" Country="Vatican City" Series="" Catalog_Codes="Mi:VA 2003, Sn:VA 1746, Yt:VA 1856, Sg:VA 1912, WAD:VA016.20" ID_Nbr="Yt:VA 1856" Issued_on="2020-09-10" Expiry_date="" Width="41" Height="30.5" Watermark="" Format="Stamp" Emission="Commemorative" Perforation="comb&lt;i&gt; 13½ x 13¾&lt;/i&gt;" Printing="Offset lithography" Paper="" Gum="" Currency="€ - Euro" FaceValue="2.40" Print_run="67000" Variant="" Score="75.8" Accuracy="Low" Colors="Multicolor" Themes="Heads of State,Famous People,Religion,Politicians,Popes,Diplomacy,Clergy,Churches - Cathedrals - Basilicas - Chapels" Description="Pope Francis with President of the Ivory Coast Alassane Ouattara; Notre-Dame-de-la-Paix basilica, Yamoussoukro" Link="https://colnect.com/stamps/stamp/990788">
-            <CatalogCode Catalog="Mi" Country="VA" ID="2003"/>
-            <CatalogCode Catalog="Sn" Country="VA" ID="1746"/>
-            <CatalogCode Catalog="Yt" Country="VA" ID="1856"/>
-            <CatalogCode Catalog="Sg" Country="VA" ID="1912"/>
-            <CatalogCode Catalog="WAD" Country="VA016.20" ID="VA016.20"/>
-          </Entry>
-          <Entry Name="Public Security Inspectorate" Country="Vatican City" Series="75th Anniversary of the Vatican Public Security Inspectorate" Catalog_Codes="Mi:VA 2004, Yt:VA 1857, Sg:VA 1913, WAD:VA020.20" ID_Nbr="Yt:VA 1857" Issued_on="2020-09-28" Expiry_date="" Width="40" Height="30" Watermark="" Format="Stamp" Emission="Commemorative" Perforation="&lt;i&gt;11¼&lt;/i&gt;" Printing="Offset lithography" Paper="" Gum="Self-Adhesive" Currency="€ - Euro" FaceValue="1.10" Print_run="" Variant="" Score="69.28" Accuracy="Low" Colors="Multicolor" Themes="Police,Anniversaries and Jubilees" Description="" Link="https://colnect.com/stamps/stamp/1085756">
-            <CatalogCode Catalog="Mi" Country="VA" ID="2004"/>
-            <CatalogCode Catalog="Yt" Country="VA" ID="1857"/>
-            <CatalogCode Catalog="Sg" Country="VA" ID="1913"/>
-            <CatalogCode Catalog="WAD" Country="VA020.20" ID="VA020.20"/>
-          </Entry>
-          <Entry Name="Public Security Inspectorate" Country="Vatican City" Series="75th Anniversary of the Vatican Public Security Inspectorate" Catalog_Codes="Mi:VA 2004KB" ID_Nbr="Mi:VA 2004KB" Issued_on="2020-09-28" Expiry_date="" Width="160" Height="210" Watermark="" Format="Mini Sheet" Emission="Commemorative" Perforation="&lt;i&gt;11¼&lt;/i&gt;" Printing="Offset lithography" Paper="" Gum="Self-Adhesive" Currency="€ - Euro" FaceValue="10*1.10" Print_run="8000" Variant="" Score="81.25" Accuracy="Very Low" Colors="Multicolor" Themes="Police,Anniversaries and Jubilees" Description="" Link="https://colnect.com/stamps/stamp/1095390">
-            <CatalogCode Catalog="Mi" Country="VA" ID="2004KB"/>
-          </Entry>
-          <Entry Name="Saint Pope John Paul II, Birth Centenary" Country="Vatican City" Series="" Catalog_Codes="Mi:VA 2005, Sn:VA 1749, Yt:VA 1858, Sg:VA 1914, WAD:VA021.20" ID_Nbr="Yt:VA 1858" Issued_on="2020-10-16" Expiry_date="" Width="43" Height="31.25" Watermark="" Format="Stamp" Emission="Commemorative" Perforation="&lt;i&gt;14¼ x 13¾&lt;/i&gt;" Printing="Offset lithography" Paper="" Gum="" Currency="€ - Euro" FaceValue="1.15" Print_run="216000" Variant="" Score="78.78" Accuracy="Low" Colors="Multicolor" Themes="Famous People,Religion,Saints,Popes,Clergy,Joint Issues" Description="Issued in panes of six stamps and six decorative labels." Link="https://colnect.com/stamps/stamp/1001569">
-            <CatalogCode Catalog="Mi" Country="VA" ID="2005"/>
-            <CatalogCode Catalog="Sn" Country="VA" ID="1749"/>
-            <CatalogCode Catalog="Yt" Country="VA" ID="1858"/>
-            <CatalogCode Catalog="Sg" Country="VA" ID="1914"/>
-            <CatalogCode Catalog="WAD" Country="VA021.20" ID="VA021.20"/>
-          </Entry>
-          <Entry Name="Saint Pope John Paul II, Birth Centenary" Country="Vatican City" Series="" Catalog_Codes="Mi:VA 2005KB" ID_Nbr="Mi:VA 2005KB" Issued_on="2020-10-16" Expiry_date="" Width="170" Height="150" Watermark="" Format="Mini Sheet" Emission="Commemorative" Perforation="" Printing="Offset lithography" Paper="" Gum="" Currency="€ - Euro" FaceValue="6*1.15" Print_run="36000" Variant="" Score="62.74" Accuracy="Very Low" Colors="Multicolor" Themes="Saints,Popes" Description="" Link="https://colnect.com/stamps/stamp/1056071">
-            <CatalogCode Catalog="Mi" Country="VA" ID="2005KB"/>
-          </Entry>
-          <Entry Name="Pope Francis and the Holy Light of Bethlehem" Country="Vatican City" Series="Christmas 2020" Catalog_Codes="Mi:VA 2006, Sn:VA 1755, Yt:VA 1865, WAD:VA028.20, Un:VA 1876" ID_Nbr="Yt:VA 1865" Issued_on="2020-11-10" Expiry_date="" Width="30" Height="40" Watermark="" Format="Stamp" Emission="Commemorative" Perforation="comb&lt;i&gt; 13¼ x 14&lt;/i&gt;" Printing="Offset lithography" Paper="" Gum="" Currency="€ - Euro" FaceValue="1.10" Print_run="130000" Variant="1012159" Score="76.29" Accuracy="Low" Colors="Multicolor" Themes="Famous People,Christmas,Religion,Popes,Clergy,Joint Issues,Churches - Cathedrals - Basilicas - Chapels" Description="Issued in panes of 10" Link="https://colnect.com/stamps/stamp/1012159">
-            <CatalogCode Catalog="Mi" Country="VA" ID="2006"/>
-            <CatalogCode Catalog="Sn" Country="VA" ID="1755"/>
-            <CatalogCode Catalog="Yt" Country="VA" ID="1865"/>
-            <CatalogCode Catalog="WAD" Country="VA028.20" ID="VA028.20"/>
-            <CatalogCode Catalog="Un" Country="VA" ID="1876"/>
-          </Entry>
-          <Entry Name="Baby Jesus and Church of the Nativity, Bethlehem" Country="Vatican City" Series="Christmas 2020" Catalog_Codes="Mi:VA 2007, Sn:VA 1756, Yt:VA 1866, WAD:VA029.20, Un:VA 1877" ID_Nbr="Yt:VA 1866" Issued_on="2020-11-10" Expiry_date="" Width="30" Height="40" Watermark="" Format="Stamp" Emission="Commemorative" Perforation="comb&lt;i&gt; 13¼ x 14&lt;/i&gt;" Printing="Offset lithography" Paper="" Gum="" Currency="€ - Euro" FaceValue="1.15" Print_run="130000" Variant="1012160" Score="75.8" Accuracy="Low" Colors="Multicolor" Themes="Christmas,Joint Issues,Churches - Cathedrals - Basilicas - Chapels" Description="Issued in panes of 10" Link="https://colnect.com/stamps/stamp/1012160">
-            <CatalogCode Catalog="Mi" Country="VA" ID="2007"/>
-            <CatalogCode Catalog="Sn" Country="VA" ID="1756"/>
-            <CatalogCode Catalog="Yt" Country="VA" ID="1866"/>
-            <CatalogCode Catalog="WAD" Country="VA029.20" ID="VA029.20"/>
-            <CatalogCode Catalog="Un" Country="VA" ID="1877"/>
-          </Entry>
-          <Entry Name="Christmas 2020" Country="Vatican City" Series="" Catalog_Codes="Mi:VA 2008, Sn:VA 1757a, Yt:VA 1867, Sg:VA 1917, WAD:VA030.20" ID_Nbr="Yt:VA 1867" Issued_on="2020-11-10" Expiry_date="" Width="34.5" Height="50" Watermark="" Format="Stamp" Emission="Commemorative" Perforation="&lt;i&gt;13¼ x 14&lt;/i&gt;" Printing="Offset lithography" Paper="" Gum="" Currency="€ - Euro" FaceValue="1.10" Print_run="130000" Variant="1012159" Score="79.83" Accuracy="Low" Colors="Multicolor" Themes="Famous People,Christmas,Religion,Popes,Clergy" Description="Stamp from souvenir sheet, with additional silver printing detail" Link="https://colnect.com/stamps/stamp/1056930">
-            <CatalogCode Catalog="Mi" Country="VA" ID="2008"/>
-            <CatalogCode Catalog="Sn" Country="VA" ID="1757a"/>
-            <CatalogCode Catalog="Yt" Country="VA" ID="1867"/>
-            <CatalogCode Catalog="Sg" Country="VA" ID="1917"/>
-            <CatalogCode Catalog="WAD" Country="VA030.20" ID="VA030.20"/>
-          </Entry>
-          <Entry Name="Christmas 2020" Country="Vatican City" Series="" Catalog_Codes="Mi:VA 2009, Sn:VA 1757b, Yt:VA 1868, Sg:VA 1918, WAD:VA031.20" ID_Nbr="Yt:VA 1868" Issued_on="2020-11-10" Expiry_date="" Width="34.5" Height="50" Watermark="" Format="Stamp" Emission="Commemorative" Perforation="&lt;i&gt;13¼ x 14&lt;/i&gt;" Printing="Offset lithography" Paper="" Gum="" Currency="€ - Euro" FaceValue="1.15" Print_run="130000" Variant="1012160" Score="79.47" Accuracy="Low" Colors="Multicolor" Themes="Christmas" Description="Stamp from souvenir sheet, with additional silver printing detail" Link="https://colnect.com/stamps/stamp/1056931">
-            <CatalogCode Catalog="Mi" Country="VA" ID="2009"/>
-            <CatalogCode Catalog="Sn" Country="VA" ID="1757b"/>
-            <CatalogCode Catalog="Yt" Country="VA" ID="1868"/>
-            <CatalogCode Catalog="Sg" Country="VA" ID="1918"/>
-            <CatalogCode Catalog="WAD" Country="VA031.20" ID="VA031.20"/>
-          </Entry>
-          <Entry Name="Journeys of Pope Francis in 2019" Country="Vatican City" Series="" Catalog_Codes="Mi:VA 2010, Yt:VA 1862, WAD:VA024.20, Un:VA 1875" ID_Nbr="Yt:VA 1862" Issued_on="2020-11-10" Expiry_date="" Width="40" Height="60" Watermark="" Format="Stamp" Emission="Commemorative" Perforation="&lt;i&gt;13¼ x 13½&lt;/i&gt;" Printing="Offset lithography" Paper="" Gum="" Currency="€ - Euro" FaceValue="3" Print_run="35000" Variant="" Score="85.71" Accuracy="Low" Colors="Multicolor" Themes="Coats of Arms,Seals (Emblems)" Description="stamp from souvenir sheet" Link="https://colnect.com/stamps/stamp/1012157">
-            <CatalogCode Catalog="Mi" Country="VA" ID="2010"/>
-            <CatalogCode Catalog="Yt" Country="VA" ID="1862"/>
-            <CatalogCode Catalog="WAD" Country="VA024.20" ID="VA024.20"/>
-            <CatalogCode Catalog="Un" Country="VA" ID="1875"/>
-          </Entry>
-          <Entry Name="250th Birth Anniversary of Ludwig van Beethoven (1770-1827)" Country="Vatican City" Series="" Catalog_Codes="Mi:VA 2011, Sn:VA 1752, Yt:VA 1861, Sg:VA 1920, WAD:VA027.20, Un:VA 1874" ID_Nbr="Yt:VA 1861" Issued_on="2020-11-10" Expiry_date="" Width="40" Height="30" Watermark="" Format="Stamp" Emission="Commemorative" Perforation="&lt;i&gt;13¼ x 13&lt;/i&gt;" Printing="Offset lithography" Paper="" Gum="" Currency="€ - Euro" FaceValue="1.15" Print_run="125000" Variant="" Score="74.82" Accuracy="Low" Colors="Multicolor" Themes="Famous People,Music,Moon,Composers,Anniversaries and Jubilees" Description="Issued in panes of four    Music shown is the opening notes of the first movement of Piano Sonata No. 14 (Moonlight)" Link="https://colnect.com/stamps/stamp/1012155">
-            <CatalogCode Catalog="Mi" Country="VA" ID="2011"/>
-            <CatalogCode Catalog="Sn" Country="VA" ID="1752"/>
-            <CatalogCode Catalog="Yt" Country="VA" ID="1861"/>
-            <CatalogCode Catalog="Sg" Country="VA" ID="1920"/>
-            <CatalogCode Catalog="WAD" Country="VA027.20" ID="VA027.20"/>
-            <CatalogCode Catalog="Un" Country="VA" ID="1874"/>
-          </Entry>
-          <Entry Name="250th Birth Anniversary of Ludwig van Beethoven (1770-1827)" Country="Vatican City" Series="" Catalog_Codes="Mi:VA 2011KB" ID_Nbr="Mi:VA 2011KB" Issued_on="2020-11-10" Expiry_date="" Width="135" Height="115" Watermark="" Format="Mini Sheet" Emission="Commemorative" Perforation="&lt;i&gt;13¼ x 13&lt;/i&gt;" Printing="Offset lithography" Paper="" Gum="" Currency="€ - Euro" FaceValue="4*1.15" Print_run="31250" Variant="" Score="72.74" Accuracy="Very Low" Colors="Multicolor" Themes="Famous People,Composers" Description="" Link="https://colnect.com/stamps/stamp/1095387">
-            <CatalogCode Catalog="Mi" Country="VA" ID="2011KB"/>
-          </Entry>
-          <Entry Name="Flag of Council of Europe" Country="Vatican City" Series="Vatican City-European Union Relations, 50th Anniversary" Catalog_Codes="Mi:VA 2012, Sn:VA 1754a, Yt:VA 1859, WAD:VA022.20, Un:VA 1878" ID_Nbr="Yt:VA 1859" Issued_on="2020-11-10" Expiry_date="" Width="30" Height="40" Watermark="" Format="Stamp" Emission="Commemorative" Perforation="&lt;i&gt;13 x 13¼&lt;/i&gt;" Printing="Offset lithography" Paper="" Gum="" Currency="€ - Euro" FaceValue="1.15" Print_run="35000" Variant="" Score="85.71" Accuracy="Low" Colors="Multicolor" Themes="Flags,Council of Europe,Diplomacy" Description="stamp from souvenir sheet" Link="https://colnect.com/stamps/stamp/1012153">
-            <CatalogCode Catalog="Mi" Country="VA" ID="2012"/>
-            <CatalogCode Catalog="Sn" Country="VA" ID="1754a"/>
-            <CatalogCode Catalog="Yt" Country="VA" ID="1859"/>
-            <CatalogCode Catalog="WAD" Country="VA022.20" ID="VA022.20"/>
-            <CatalogCode Catalog="Un" Country="VA" ID="1878"/>
-          </Entry>
-          <Entry Name="Flags of Vatican City and European Union" Country="Vatican City" Series="Vatican City-European Union Relations, 50th Anniversary" Catalog_Codes="Mi:VA 2013, Sn:VA 1754b, Yt:VA 1860, WAD:VA023.20, Un:VA 1879" ID_Nbr="Yt:VA 1860" Issued_on="2020-11-10" Expiry_date="" Width="30" Height="40" Watermark="" Format="Stamp" Emission="Commemorative" Perforation="&lt;i&gt;13 x 13¼&lt;/i&gt;" Printing="Offset lithography" Paper="" Gum="" Currency="€ - Euro" FaceValue="1.15" Print_run="35000" Variant="" Score="86.57" Accuracy="Low" Colors="Multicolor" Themes="Flags,European Union,Diplomacy" Description="stamp from souvenir sheet" Link="https://colnect.com/stamps/stamp/1012154">
-            <CatalogCode Catalog="Mi" Country="VA" ID="2013"/>
-            <CatalogCode Catalog="Sn" Country="VA" ID="1754b"/>
-            <CatalogCode Catalog="Yt" Country="VA" ID="1860"/>
-            <CatalogCode Catalog="WAD" Country="VA023.20" ID="VA023.20"/>
-            <CatalogCode Catalog="Un" Country="VA" ID="1879"/>
-          </Entry>
-          <Entry Name="900th anniversary of the basilica of Volterra" Country="Vatican City" Series="" Catalog_Codes="Mi:VA 2014, Yt:VA 1863, Sg:VA 1916, WAD:VA026.20" ID_Nbr="Yt:VA 1863" Issued_on="2020-11-10" Expiry_date="" Width="48" Height="30" Watermark="" Format="Stamp" Emission="Commemorative" Perforation="&lt;i&gt;11&lt;/i&gt;" Printing="Offset lithography" Paper="" Gum="Self-Adhesive" Currency="€ - Euro" FaceValue="1.10" Print_run="120000" Variant="" Score="64.52" Accuracy="Low" Colors="Multicolor" Themes="Churches - Cathedrals - Basilicas - Chapels" Description="" Link="https://colnect.com/stamps/stamp/1056073">
-            <CatalogCode Catalog="Mi" Country="VA" ID="2014"/>
-            <CatalogCode Catalog="Yt" Country="VA" ID="1863"/>
-            <CatalogCode Catalog="Sg" Country="VA" ID="1916"/>
-            <CatalogCode Catalog="WAD" Country="VA026.20" ID="VA026.20"/>
-          </Entry>
-          <Entry Name="900th anniversary of the basilica of Volterra" Country="Vatican City" Series="" Catalog_Codes="Mi:VA 2014KB" ID_Nbr="Mi:VA 2014KB" Issued_on="2020-11-10" Expiry_date="" Width="170" Height="260" Watermark="" Format="Mini Sheet" Emission="Commemorative" Perforation="&lt;i&gt;11&lt;/i&gt;" Printing="Offset lithography" Paper="" Gum="Self-Adhesive" Currency="€ - Euro" FaceValue="10*1.10" Print_run="12000" Variant="" Score="80.43" Accuracy="Very Low" Colors="Multicolor" Themes="Churches - Cathedrals - Basilicas - Chapels" Description="" Link="https://colnect.com/stamps/stamp/1095389">
-            <CatalogCode Catalog="Mi" Country="VA" ID="2014KB"/>
-          </Entry>
-          <Entry Name="Basilica of Aquileia" Country="Vatican City" Series="" Catalog_Codes="Mi:VA 2015, Yt:VA 1864, Sg:VA 1915, WAD:VA025.20, Un:VA 1872" ID_Nbr="Yt:VA 1864" Issued_on="2020-11-10" Expiry_date="" Width="40" Height="48" Watermark="" Format="Stamp" Emission="Commemorative" Perforation="&lt;i&gt;13 x 13¼&lt;/i&gt;" Printing="Photogravure" Paper="" Gum="" Currency="€ - Euro" FaceValue="1.10" Print_run="110000" Variant="" Score="69.25" Accuracy="Low" Colors="Multicolor" Themes="Joint Issues,Churches - Cathedrals - Basilicas - Chapels" Description="" Link="https://colnect.com/stamps/stamp/1012158">
-            <CatalogCode Catalog="Mi" Country="VA" ID="2015"/>
-            <CatalogCode Catalog="Yt" Country="VA" ID="1864"/>
-            <CatalogCode Catalog="Sg" Country="VA" ID="1915"/>
-            <CatalogCode Catalog="WAD" Country="VA025.20" ID="VA025.20"/>
-            <CatalogCode Catalog="Un" Country="VA" ID="1872"/>
-          </Entry>
-          <Entry Name="Basilica of Aquileia" Country="Vatican City" Series="" Catalog_Codes="Mi:VA 2015KB" ID_Nbr="Mi:VA 2015KB" Issued_on="2020-11-10" Expiry_date="" Width="240" Height="160" Watermark="" Format="Mini Sheet" Emission="Commemorative" Perforation="&lt;i&gt;13 x 13¼&lt;/i&gt;" Printing="Photogravure" Paper="" Gum="" Currency="€ - Euro" FaceValue="10*1.10" Print_run="11000" Variant="" Score="76.52" Accuracy="Very Low" Colors="Multicolor" Themes="Churches - Cathedrals - Basilicas - Chapels" Description="" Link="https://colnect.com/stamps/stamp/1095388">
-            <CatalogCode Catalog="Mi" Country="VA" ID="2015KB"/>
-          </Entry>
-          <Entry Name="50th Anniversary of Earth Day" Country="Vatican City" Series="50th Anniversary of Earth Day" Catalog_Codes="Mi:VA BL64, Sn:VA 1739, Yt:VA F1845, Sg:VA MS1897, WAD:VA008MS.20, Un:VA BF101" ID_Nbr="Yt:VA F1845" Issued_on="2020-02-14" Expiry_date="" Width="138" Height="96" Watermark="" Format="Souvenir Sheet" Emission="Commemorative" Perforation="Various" Printing="Offset lithography" Paper="" Gum="" Currency="€ - Euro" FaceValue="1.40" Print_run="40000" Variant="" Score="75.19" Accuracy="Medium" Colors="Multicolor" Themes="Ships,Birds,Butterflies,Environment Protection,Sailing Ships,Anniversaries and Jubilees" Description="" Link="https://colnect.com/stamps/stamp/942498">
-            <CatalogCode Catalog="Mi" Country="VA" ID="BL64"/>
-            <CatalogCode Catalog="Sn" Country="VA" ID="1739"/>
-            <CatalogCode Catalog="Yt" Country="VA" ID="F1845"/>
-            <CatalogCode Catalog="Sg" Country="VA" ID="MS1897"/>
-            <CatalogCode Catalog="WAD" Country="VA008MS.20" ID="VA008MS.20"/>
-            <CatalogCode Catalog="Un" Country="VA" ID="BF101"/>
-          </Entry>
-          <Entry Name="Transfiguration, Raphael" Country="Vatican City" Series="500th Death Anniversary of Raphael (1483-1520)" Catalog_Codes="Mi:VA BL65, Sn:VA 1744, Yt:VA F1851, Sg:VA MS1907, WAD:VA014MS.20, Un:VA BF103" ID_Nbr="Yt:VA F1851" Issued_on="2020-06-23" Expiry_date="" Width="93.5" Height="129.5" Watermark="" Format="Souvenir Sheet" Emission="Commemorative" Perforation="Various" Printing="Offset lithography" Paper="" Gum="" Currency="€ - Euro" FaceValue="2.25" Print_run="45000" Variant="" Score="72.8" Accuracy="Low" Colors="Multicolor" Themes="Biblical Accounts,Religion,Angels,Art,Apostles,Artists,Christian,Anniversaries and Jubilees" Description="The Transfiguration is the last painting by the Italian High Renaissance master Raphael. Commissioned by Cardinal Giulio de Medici, the later Pope Clement VII (1523–1534), and conceived as an altarpiece for the Narbonne Cathedral in France, Raphael worked on it until his death in 1520." Link="https://colnect.com/stamps/stamp/971214">
-            <CatalogCode Catalog="Mi" Country="VA" ID="BL65"/>
-            <CatalogCode Catalog="Sn" Country="VA" ID="1744"/>
-            <CatalogCode Catalog="Yt" Country="VA" ID="F1851"/>
-            <CatalogCode Catalog="Sg" Country="VA" ID="MS1907"/>
-            <CatalogCode Catalog="WAD" Country="VA014MS.20" ID="VA014MS.20"/>
-            <CatalogCode Catalog="Un" Country="VA" ID="BF103"/>
-          </Entry>
-          <Entry Name="Apostolate of the Sea, Centenary" Country="Vatican City" Series="100th Anniversary of the Apostolate of the Sea" Catalog_Codes="Mi:VA BL66, Sn:VA 1747, Yt:VA F1854, Sg:VA MS1910, WAD:VA017MS.20" ID_Nbr="Yt:VA F1854" Issued_on="2020-09-10" Expiry_date="" Width="" Height="" Watermark="" Format="Souvenir Sheet" Emission="Commemorative" Perforation="Various" Printing="Offset lithography" Paper="" Gum="" Currency="€ - Euro" FaceValue="2.25" Print_run="45000" Variant="" Score="72.9" Accuracy="Low" Colors="Multicolor" Themes="Ships,Religion,Sailing Ships,Christian" Description="" Link="https://colnect.com/stamps/stamp/990790">
-            <CatalogCode Catalog="Mi" Country="VA" ID="BL66"/>
-            <CatalogCode Catalog="Sn" Country="VA" ID="1747"/>
-            <CatalogCode Catalog="Yt" Country="VA" ID="F1854"/>
-            <CatalogCode Catalog="Sg" Country="VA" ID="MS1910"/>
-            <CatalogCode Catalog="WAD" Country="VA017MS.20" ID="VA017MS.20"/>
-          </Entry>
-          <Entry Name="Christmas 2020" Country="Vatican City" Series="Christmas 2020" Catalog_Codes="Mi:VA BL67, Sn:VA 1757, Yt:VA F1867, Sg:VA MS1919, WAD:VA030MS.20, Un:VA BF105" ID_Nbr="Yt:VA F1867" Issued_on="2020-11-10" Expiry_date="" Width="110" Height="95" Watermark="" Format="Souvenir Sheet" Emission="Commemorative" Perforation="" Printing="Offset lithography" Paper="" Gum="" Currency="€ - Euro" FaceValue="2.25" Print_run="55000" Variant="" Score="67.36" Accuracy="Low" Colors="Multicolor" Themes="Christmas,Joint Issues,Churches - Cathedrals - Basilicas - Chapels" Description="" Link="https://colnect.com/stamps/stamp/1012161">
-            <CatalogCode Catalog="Mi" Country="VA" ID="BL67"/>
-            <CatalogCode Catalog="Sn" Country="VA" ID="1757"/>
-            <CatalogCode Catalog="Yt" Country="VA" ID="F1867"/>
-            <CatalogCode Catalog="Sg" Country="VA" ID="MS1919"/>
-            <CatalogCode Catalog="WAD" Country="VA030MS.20" ID="VA030MS.20"/>
-            <CatalogCode Catalog="Un" Country="VA" ID="BF105"/>
-          </Entry>
-          <Entry Name="Journeys of Pope Francis in 2019" Country="Vatican City" Series="" Catalog_Codes="Mi:VA BL68, Sn:VA 1753, Yt:VA F1862, Sg:VA MS1922, WAD:VA024MS.20, Un:VA BF104" ID_Nbr="Yt:VA F1862" Issued_on="2020-11-10" Expiry_date="" Width="140.5" Height="123" Watermark="" Format="Souvenir Sheet" Emission="Commemorative" Perforation="&lt;i&gt;13¼ x 13½&lt;/i&gt;" Printing="Offset lithography" Paper="" Gum="" Currency="€ - Euro" FaceValue="3" Print_run="35000" Variant="" Score="66.05" Accuracy="Low" Colors="Multicolor" Themes="Coats of Arms,Seals (Emblems)" Description="Souvenir sheet containing one stamp and seven labels" Link="https://colnect.com/stamps/stamp/1012156">
-            <CatalogCode Catalog="Mi" Country="VA" ID="BL68"/>
-            <CatalogCode Catalog="Sn" Country="VA" ID="1753"/>
-            <CatalogCode Catalog="Yt" Country="VA" ID="F1862"/>
-            <CatalogCode Catalog="Sg" Country="VA" ID="MS1922"/>
-            <CatalogCode Catalog="WAD" Country="VA024MS.20" ID="VA024MS.20"/>
-            <CatalogCode Catalog="Un" Country="VA" ID="BF104"/>
-          </Entry>
-          <Entry Name="Vatican City-European Union Relations, 50th Anniversary" Country="Vatican City" Series="Vatican City-European Union Relations, 50th Anniversary" Catalog_Codes="Mi:VA BL69, Sn:VA 1754, Yt:VA F1859, Sg:VA MS1921, WAD:VA022MS.20, Un:VA BF106" ID_Nbr="Yt:VA F1859" Issued_on="2020-11-10" Expiry_date="" Width="140" Height="107.25" Watermark="" Format="Souvenir Sheet" Emission="Commemorative" Perforation="&lt;i&gt;13 x 13¼&lt;/i&gt;" Printing="Offset lithography" Paper="" Gum="" Currency="€ - Euro" FaceValue="2.30" Print_run="35000" Variant="" Score="67.5" Accuracy="Low" Colors="Multicolor" Themes="Flags,European Union,Council of Europe,Diplomacy" Description="" Link="https://colnect.com/stamps/stamp/1012152">
-            <CatalogCode Catalog="Mi" Country="VA" ID="BL69"/>
-            <CatalogCode Catalog="Sn" Country="VA" ID="1754"/>
-            <CatalogCode Catalog="Yt" Country="VA" ID="F1859"/>
-            <CatalogCode Catalog="Sg" Country="VA" ID="MS1921"/>
-            <CatalogCode Catalog="WAD" Country="VA022MS.20" ID="VA022MS.20"/>
-            <CatalogCode Catalog="Un" Country="VA" ID="BF106"/>
-          </Entry>
-          <Entry Name="Christmas 2020" Country="Vatican City" Series="" Catalog_Codes="Mi:VA MH29, Yt:VA C1865, Sg:VA SB29" ID_Nbr="Yt:VA C1865" Issued_on="2020-11-10" Expiry_date="" Width="100" Height="100" Watermark="" Format="Booklet" Emission="Commemorative" Perforation="" Printing="Offset lithography" Paper="" Gum="" Currency="€ - Euro" FaceValue="4.50" Print_run="26000" Variant="" Score="67.69" Accuracy="Very Low" Colors="Multicolor" Themes="Christmas" Description="" Link="https://colnect.com/stamps/stamp/1056072">
-            <CatalogCode Catalog="Mi" Country="VA" ID="MH29"/>
-            <CatalogCode Catalog="Yt" Country="VA" ID="C1865"/>
-            <CatalogCode Catalog="Sg" Country="VA" ID="SB29"/>
-          </Entry>
-        </Emission>
-      </Year>
-    </Decade>
-  </Period>
+  <Entry Name="Pope Francis with Lamb" Country="Vatican City" Series="The 8th Year of the Pontificate of Pope Francis" Catalog_Codes="Mi:VA 1985, Sn:VA 1735, Yt:VA 1838, Sg:VA 1899, WAD:VA003.20, Un:VA 1853" ID_Nbr="Yt:VA 1838" Issued_on="2020-02-14" Expiry_date="" Width="30" Height="40" Watermark="" Format="Stamp" Emission="Commemorative" Perforation="comb&lt;i&gt; 13¼ x 13&lt;/i&gt;" Printing="Offset lithography" Paper="" Gum="" Currency="€ - Euro" FaceValue="1.10" Print_run="120000" Variant="" Score="75.41" Accuracy="Medium" Colors="Multicolor" Themes="Famous People,Sheep,Religion,Popes,Animals (Fauna),Clergy" Description="" Link="https://colnect.com/stamps/stamp/942490" CheckedStatus="Unchecked">
+    <CatalogCode Catalog="Mi" Country="VA" ID="1985"/>
+    <CatalogCode Catalog="Sn" Country="VA" ID="1735"/>
+    <CatalogCode Catalog="Yt" Country="VA" ID="1838"/>
+    <CatalogCode Catalog="Sg" Country="VA" ID="1899"/>
+    <CatalogCode Catalog="WAD" Country="VA003.20" ID="VA003.20"/>
+    <CatalogCode Catalog="Un" Country="VA" ID="1853"/>
+  </Entry>
+  <Entry Name="Pope Francis with Dove" Country="Vatican City" Series="The 8th Year of the Pontificate of Pope Francis" Catalog_Codes="Mi:VA 1986, Sn:VA 1736, Yt:VA 1839, Sg:VA 1900, WAD:VA004.20, Un:VA 1854" ID_Nbr="Yt:VA 1839" Issued_on="2020-02-14" Expiry_date="" Width="30" Height="40" Watermark="" Format="Stamp" Emission="Commemorative" Perforation="comb&lt;i&gt; 13¼ x 13&lt;/i&gt;" Printing="Offset lithography" Paper="" Gum="" Currency="€ - Euro" FaceValue="1.15" Print_run="120000" Variant="" Score="71.06" Accuracy="Medium" Colors="Multicolor" Themes="Famous People,Religion,Peace Doves,Popes,Animals (Fauna),Clergy" Description="" Link="https://colnect.com/stamps/stamp/942491" CheckedStatus="Unchecked">
+    <CatalogCode Catalog="Mi" Country="VA" ID="1986"/>
+    <CatalogCode Catalog="Sn" Country="VA" ID="1736"/>
+    <CatalogCode Catalog="Yt" Country="VA" ID="1839"/>
+    <CatalogCode Catalog="Sg" Country="VA" ID="1900"/>
+    <CatalogCode Catalog="WAD" Country="VA004.20" ID="VA004.20"/>
+    <CatalogCode Catalog="Un" Country="VA" ID="1854"/>
+  </Entry>
+  <Entry Name="Pope Francis with Dog" Country="Vatican City" Series="The 8th Year of the Pontificate of Pope Francis" Catalog_Codes="Mi:VA 1987, Sn:VA 1737, Yt:VA 1840, Sg:VA 1901, WAD:VA005.20, Un:VA 1855" ID_Nbr="Yt:VA 1840" Issued_on="2020-02-14" Expiry_date="" Width="30" Height="40" Watermark="" Format="Stamp" Emission="Commemorative" Perforation="comb&lt;i&gt; 13¼ x 13&lt;/i&gt;" Printing="Offset lithography" Paper="" Gum="" Currency="€ - Euro" FaceValue="2.40" Print_run="120000" Variant="" Score="78.09" Accuracy="Medium" Colors="Multicolor" Themes="Famous People,Dogs,Religion,Popes,Animals (Fauna),Clergy" Description="" Link="https://colnect.com/stamps/stamp/942492" CheckedStatus="Unchecked">
+    <CatalogCode Catalog="Mi" Country="VA" ID="1987"/>
+    <CatalogCode Catalog="Sn" Country="VA" ID="1737"/>
+    <CatalogCode Catalog="Yt" Country="VA" ID="1840"/>
+    <CatalogCode Catalog="Sg" Country="VA" ID="1901"/>
+    <CatalogCode Catalog="WAD" Country="VA005.20" ID="VA005.20"/>
+    <CatalogCode Catalog="Un" Country="VA" ID="1855"/>
+  </Entry>
+  <Entry Name="Pope Francis with Black Panther Cub" Country="Vatican City" Series="The 8th Year of the Pontificate of Pope Francis" Catalog_Codes="Mi:VA 1988, Sn:VA 1738, Yt:VA 1841, Sg:VA 1902, WAD:VA006.20, Un:VA 1856" ID_Nbr="Yt:VA 1841" Issued_on="2020-02-14" Expiry_date="" Width="30" Height="40" Watermark="" Format="Stamp" Emission="Commemorative" Perforation="comb&lt;i&gt; 13¼ x 13&lt;/i&gt;" Printing="Offset lithography" Paper="" Gum="" Currency="€ - Euro" FaceValue="3" Print_run="120000" Variant="" Score="76.18" Accuracy="Medium" Colors="Multicolor" Themes="Famous People,Religion,Popes,Animals (Fauna),Clergy,Wild Cats" Description="" Link="https://colnect.com/stamps/stamp/942493" CheckedStatus="Unchecked">
+    <CatalogCode Catalog="Mi" Country="VA" ID="1988"/>
+    <CatalogCode Catalog="Sn" Country="VA" ID="1738"/>
+    <CatalogCode Catalog="Yt" Country="VA" ID="1841"/>
+    <CatalogCode Catalog="Sg" Country="VA" ID="1902"/>
+    <CatalogCode Catalog="WAD" Country="VA006.20" ID="VA006.20"/>
+    <CatalogCode Catalog="Un" Country="VA" ID="1856"/>
+  </Entry>
+  <Entry Name="1750th Birthday Anniversary of St. Nicholas of Myra" Country="Vatican City" Series="" Catalog_Codes="Mi:VA 1989, Sn:VA 1734, Yt:VA 1843, Sg:VA 1903, WAD:VA007.20, Un:VA 1858" ID_Nbr="Yt:VA 1843" Issued_on="2020-02-14" Expiry_date="" Width="34" Height="56" Watermark="" Format="Stamp" Emission="Commemorative" Perforation="comb&lt;i&gt; 12¾&lt;/i&gt;" Printing="Offset lithography" Paper="" Gum="" Currency="€ - Euro" FaceValue="1.15" Print_run="50000" Variant="" Score="77.05" Accuracy="Medium" Colors="Multicolor" Themes="Saints,Anniversaries and Jubilees" Description="" Link="https://colnect.com/stamps/stamp/942494" CheckedStatus="Unchecked">
+    <CatalogCode Catalog="Mi" Country="VA" ID="1989"/>
+    <CatalogCode Catalog="Sn" Country="VA" ID="1734"/>
+    <CatalogCode Catalog="Yt" Country="VA" ID="1843"/>
+    <CatalogCode Catalog="Sg" Country="VA" ID="1903"/>
+    <CatalogCode Catalog="WAD" Country="VA007.20" ID="VA007.20"/>
+    <CatalogCode Catalog="Un" Country="VA" ID="1858"/>
+  </Entry>
+  <Entry Name="50th Anniversary of Earth Day" Country="Vatican City" Series="50th Anniversary of Earth Day" Catalog_Codes="Mi:VA 1990, Sn:VA 1739a, Yt:VA 1845, WAD:VA008.20, Un:VA 1851" ID_Nbr="Yt:VA 1845" Issued_on="2020-02-14" Expiry_date="" Width="41" Height="30.5" Watermark="" Format="Stamp" Emission="Commemorative" Perforation="frame&lt;i&gt; 13½ x 13¾&lt;/i&gt;" Printing="Offset lithography" Paper="" Gum="" Currency="€ - Euro" FaceValue="0.30" Print_run="40000" Variant="" Score="86.99" Accuracy="Low" Colors="Multicolor" Themes="Environment Protection,Anniversaries and Jubilees" Description="stamp from souvenir sheet" Link="https://colnect.com/stamps/stamp/942499" CheckedStatus="Unchecked">
+    <CatalogCode Catalog="Mi" Country="VA" ID="1990"/>
+    <CatalogCode Catalog="Sn" Country="VA" ID="1739a"/>
+    <CatalogCode Catalog="Yt" Country="VA" ID="1845"/>
+    <CatalogCode Catalog="WAD" Country="VA008.20" ID="VA008.20"/>
+    <CatalogCode Catalog="Un" Country="VA" ID="1851"/>
+  </Entry>
+  <Entry Name="50th Anniversary of Earth Day" Country="Vatican City" Series="50th Anniversary of Earth Day" Catalog_Codes="Mi:VA 1991, Sn:VA 1739b, Yt:VA 1846, WAD:VA009.20, Un:VA 1852" ID_Nbr="Yt:VA 1846" Issued_on="2020-02-14" Expiry_date="" Width="41" Height="30.5" Watermark="" Format="Stamp" Emission="Commemorative" Perforation="frame&lt;i&gt; 13¾ x 13½&lt;/i&gt;" Printing="Offset lithography" Paper="" Gum="" Currency="€ - Euro" FaceValue="1.10" Print_run="40000" Variant="" Score="87.28" Accuracy="Low" Colors="Multicolor" Themes="Ships,Environment Protection,Sailing Ships,Anniversaries and Jubilees" Description="stamp from souvenir sheet" Link="https://colnect.com/stamps/stamp/942500" CheckedStatus="Unchecked">
+    <CatalogCode Catalog="Mi" Country="VA" ID="1991"/>
+    <CatalogCode Catalog="Sn" Country="VA" ID="1739b"/>
+    <CatalogCode Catalog="Yt" Country="VA" ID="1846"/>
+    <CatalogCode Catalog="WAD" Country="VA009.20" ID="VA009.20"/>
+    <CatalogCode Catalog="Un" Country="VA" ID="1852"/>
+  </Entry>
+  <Entry Name="Ascension of Christ, Alessia Babrow" Country="Vatican City" Series="Easter 2020" Catalog_Codes="Mi:VA 1992, Sn:VA 1733, Yt:VA 1842, Sg:VA 1904, WAD:VA001.20, Un:VA 1857" ID_Nbr="Yt:VA 1842" Issued_on="2020-02-14" Expiry_date="" Width="30" Height="40" Watermark="" Format="Stamp" Emission="Commemorative" Perforation="&lt;i&gt;13¼ x 13&lt;/i&gt;" Printing="Offset lithography" Paper="" Gum="" Currency="€ - Euro" FaceValue="1.15" Print_run="80000" Variant="" Score="73.27" Accuracy="Medium" Colors="Multicolor" Themes="Easter" Description="" Link="https://colnect.com/stamps/stamp/942495" CheckedStatus="Unchecked">
+    <CatalogCode Catalog="Mi" Country="VA" ID="1992"/>
+    <CatalogCode Catalog="Sn" Country="VA" ID="1733"/>
+    <CatalogCode Catalog="Yt" Country="VA" ID="1842"/>
+    <CatalogCode Catalog="Sg" Country="VA" ID="1904"/>
+    <CatalogCode Catalog="WAD" Country="VA001.20" ID="VA001.20"/>
+    <CatalogCode Catalog="Un" Country="VA" ID="1857"/>
+  </Entry>
+  <Entry Name="250th Anniversary of Death of Giambattista Tiepolo" Country="Vatican City" Series="" Catalog_Codes="Mi:VA 1993, Sn:VA 1732, Yt:VA 1844, Sg:VA 1898, WAD:VA002.20, Un:VA 1859" ID_Nbr="Yt:VA 1844" Issued_on="2020-02-14" Expiry_date="" Width="30" Height="40" Watermark="" Format="Stamp" Emission="Commemorative" Perforation="comb&lt;i&gt; 13¾ x 14&lt;/i&gt;" Printing="Offset lithography" Paper="" Gum="" Currency="€ - Euro" FaceValue="1.10" Print_run="160000" Variant="" Score="80.44" Accuracy="Medium" Colors="Multicolor" Themes="Art,Frescos,Anniversaries and Jubilees" Description="Issued in panes of four with decorative margin" Link="https://colnect.com/stamps/stamp/942496">
+    <CatalogCode Catalog="Mi" Country="VA" ID="1993"/>
+    <CatalogCode Catalog="Sn" Country="VA" ID="1732"/>
+    <CatalogCode Catalog="Yt" Country="VA" ID="1844"/>
+    <CatalogCode Catalog="Sg" Country="VA" ID="1898"/>
+    <CatalogCode Catalog="WAD" Country="VA002.20" ID="VA002.20"/>
+    <CatalogCode Catalog="Un" Country="VA" ID="1859"/>
+  </Entry>
+  <Entry Name="250th Anniversary of Death of Giambattista Tiepolo" Country="Vatican City" Series="" Catalog_Codes="Mi:VA 1993KB, Un:VA 1859MF" ID_Nbr="Mi:VA 1993KB" Issued_on="2020-02-14" Expiry_date="" Width="130" Height="100" Watermark="" Format="Mini Sheet" Emission="Commemorative" Perforation="comb&lt;i&gt; 13¾ x 14&lt;/i&gt;" Printing="Offset lithography" Paper="" Gum="" Currency="€ - Euro" FaceValue="4*1.10" Print_run="40000" Variant="" Score="80.21" Accuracy="Low" Colors="Multicolor" Themes="Art,Frescos,Anniversaries and Jubilees" Description="Sacrifice of Isaac; Fresco from the Palazzo Patriarcale, Udine; by Giovanni Battista Tiepolo (1696–1770), Venetian painter" Link="https://colnect.com/stamps/stamp/942497">
+    <CatalogCode Catalog="Mi" Country="VA" ID="1993KB"/>
+    <CatalogCode Catalog="Un" Country="VA" ID="1859MF"/>
+  </Entry>
+  <Entry Name="100th Death Anniversary of St. Teresa of Jesus de los Andes" Country="Vatican City" Series="" Catalog_Codes="Mi:VA 1994, Sn:VA 1741, Yt:VA 1847, Sg:VA 1909, WAD:VA012.20" ID_Nbr="Yt:VA 1847" Issued_on="2020-06-23" Expiry_date="" Width="30.5" Height="41" Watermark="" Format="Stamp" Emission="Commemorative" Perforation="comb&lt;i&gt; 13¾ x 13½&lt;/i&gt;" Printing="Offset lithography" Paper="" Gum="" Currency="€ - Euro" FaceValue="2.40" Print_run="50000" Variant="" Score="75.95" Accuracy="Low" Colors="Multicolor" Themes="Saints,Women,Anniversaries and Jubilees" Description="St. Teresa de los Andes, actually Juana de los Sagrados Corazones Fernández Solar (1900–1920), Carmelite" Link="https://colnect.com/stamps/stamp/971210" CheckedStatus="Unchecked">
+    <CatalogCode Catalog="Mi" Country="VA" ID="1994"/>
+    <CatalogCode Catalog="Sn" Country="VA" ID="1741"/>
+    <CatalogCode Catalog="Yt" Country="VA" ID="1847"/>
+    <CatalogCode Catalog="Sg" Country="VA" ID="1909"/>
+    <CatalogCode Catalog="WAD" Country="VA012.20" ID="VA012.20"/>
+  </Entry>
+  <Entry Name="Sixth Century Map of Colonia Iulia" Country="Vatican City" Series="Europa (C.E.P.T.) 2020 - Ancient Postal Routes" Catalog_Codes="Mi:VA 1995, Sn:VA 1742, Yt:VA 1848, Sg:VA 1905, WAD:VA010.20, Un:VA 1861" ID_Nbr="Yt:VA 1848" Issued_on="2020-06-23" Expiry_date="" Width="40" Height="30" Watermark="" Format="Stamp" Emission="Commemorative" Perforation="comb&lt;i&gt; 13 x 13¼&lt;/i&gt;" Printing="Offset lithography" Paper="" Gum="" Currency="€ - Euro" FaceValue="1.10" Print_run="45000" Variant="" Score="73.46" Accuracy="Medium" Colors="Multicolor" Themes="Maps,City Walls,Fortresses / Strongholds,C.E.P.T. / Europe" Description="" Link="https://colnect.com/stamps/stamp/971211">
+    <CatalogCode Catalog="Mi" Country="VA" ID="1995"/>
+    <CatalogCode Catalog="Sn" Country="VA" ID="1742"/>
+    <CatalogCode Catalog="Yt" Country="VA" ID="1848"/>
+    <CatalogCode Catalog="Sg" Country="VA" ID="1905"/>
+    <CatalogCode Catalog="WAD" Country="VA010.20" ID="VA010.20"/>
+    <CatalogCode Catalog="Un" Country="VA" ID="1861"/>
+  </Entry>
+  <Entry Name="Sixth Century Map of Colonia Axernias" Country="Vatican City" Series="Europa (C.E.P.T.) 2020 - Ancient Postal Routes" Catalog_Codes="Mi:VA 1996, Sn:VA 1743, Yt:VA 1849, Sg:VA 1906, WAD:VA011.20, Un:VA 1862" ID_Nbr="Yt:VA 1849" Issued_on="2020-06-23" Expiry_date="" Width="40" Height="30" Watermark="" Format="Stamp" Emission="Commemorative" Perforation="comb&lt;i&gt; 13 x 13¼&lt;/i&gt;" Printing="Offset lithography" Paper="" Gum="" Currency="€ - Euro" FaceValue="1.15" Print_run="45000" Variant="" Score="73.08" Accuracy="Medium" Colors="Multicolor" Themes="Maps,City Walls,Fortresses / Strongholds,C.E.P.T. / Europe" Description="" Link="https://colnect.com/stamps/stamp/971212">
+    <CatalogCode Catalog="Mi" Country="VA" ID="1996"/>
+    <CatalogCode Catalog="Sn" Country="VA" ID="1743"/>
+    <CatalogCode Catalog="Yt" Country="VA" ID="1849"/>
+    <CatalogCode Catalog="Sg" Country="VA" ID="1906"/>
+    <CatalogCode Catalog="WAD" Country="VA011.20" ID="VA011.20"/>
+    <CatalogCode Catalog="Un" Country="VA" ID="1862"/>
+  </Entry>
+  <Entry Name="International Year of Plant Health" Country="Vatican City" Series="" Catalog_Codes="Mi:VA 1997, Sn:VA 1740, Yt:VA 1850, Sg:VA 1908, WAD:VA013.20, Un:VA 1860" ID_Nbr="Yt:VA 1850" Issued_on="2020-06-23" Expiry_date="" Width="30.5" Height="41" Watermark="" Format="Stamp" Emission="Commemorative" Perforation="comb&lt;i&gt; 13¾ x 13½&lt;/i&gt;" Printing="Offset lithography" Paper="" Gum="" Currency="€ - Euro" FaceValue="1.15" Print_run="45000" Variant="" Score="74.73" Accuracy="Low" Colors="Multicolor" Themes="Trees,Famous People,Popes,Environment Protection,Men,International Years,Clergy" Description="Pope Francis and Catholicos Karekin II watering tree" Link="https://colnect.com/stamps/stamp/971213">
+    <CatalogCode Catalog="Mi" Country="VA" ID="1997"/>
+    <CatalogCode Catalog="Sn" Country="VA" ID="1740"/>
+    <CatalogCode Catalog="Yt" Country="VA" ID="1850"/>
+    <CatalogCode Catalog="Sg" Country="VA" ID="1908"/>
+    <CatalogCode Catalog="WAD" Country="VA013.20" ID="VA013.20"/>
+    <CatalogCode Catalog="Un" Country="VA" ID="1860"/>
+  </Entry>
+  <Entry Name="Transfiguration (Detail), Raphael" Country="Vatican City" Series="500th Death Anniversary of Raphael (1483-1520)" Catalog_Codes="Mi:VA 1998, Sn:VA 1744a, Yt:VA 1851, WAD:VA014.20, Un:VA 1863" ID_Nbr="Yt:VA 1851" Issued_on="2020-06-23" Expiry_date="" Width="40" Height="30" Watermark="" Format="Stamp" Emission="Commemorative" Perforation="frame&lt;i&gt; 13 x 13¼&lt;/i&gt;" Printing="Offset lithography" Paper="" Gum="" Currency="€ - Euro" FaceValue="1.10" Print_run="45000" Variant="" Score="86.8" Accuracy="Low" Colors="Multicolor" Themes="Art" Description="stamp from souvenir sheet" Link="https://colnect.com/stamps/stamp/971215">
+    <CatalogCode Catalog="Mi" Country="VA" ID="1998"/>
+    <CatalogCode Catalog="Sn" Country="VA" ID="1744a"/>
+    <CatalogCode Catalog="Yt" Country="VA" ID="1851"/>
+    <CatalogCode Catalog="WAD" Country="VA014.20" ID="VA014.20"/>
+    <CatalogCode Catalog="Un" Country="VA" ID="1863"/>
+  </Entry>
+  <Entry Name="Self-portrait, Raphael" Country="Vatican City" Series="500th Death Anniversary of Raphael (1483-1520)" Catalog_Codes="Mi:VA 1999, Sn:VA 1744b, Yt:VA 1852, WAD:VA015.20, Un:VA 1864" ID_Nbr="Yt:VA 1852" Issued_on="2020-06-23" Expiry_date="" Width="40" Height="30" Watermark="" Format="Stamp" Emission="Commemorative" Perforation="frame&lt;i&gt; 13¼ x 13&lt;/i&gt;" Printing="Offset lithography" Paper="" Gum="" Currency="€ - Euro" FaceValue="1.15" Print_run="45000" Variant="" Score="86.8" Accuracy="Low" Colors="Multicolor" Themes="Art,Artists,Anniversaries and Jubilees" Description="stamp from souvenir sheet" Link="https://colnect.com/stamps/stamp/971216">
+    <CatalogCode Catalog="Mi" Country="VA" ID="1999"/>
+    <CatalogCode Catalog="Sn" Country="VA" ID="1744b"/>
+    <CatalogCode Catalog="Yt" Country="VA" ID="1852"/>
+    <CatalogCode Catalog="WAD" Country="VA015.20" ID="VA015.20"/>
+    <CatalogCode Catalog="Un" Country="VA" ID="1864"/>
+  </Entry>
+  <Entry Name="100th Anniversary of the Appointment of Ephrem the Syrian" Country="Vatican City" Series="" Catalog_Codes="Mi:VA 2000, Sn:VA 1745, Yt:VA 1853, Sg:VA 1911, WAD:VA019.20" ID_Nbr="Yt:VA 1853" Issued_on="2020-09-10" Expiry_date="" Width="30.5" Height="41" Watermark="" Format="Stamp" Emission="Commemorative" Perforation="comb&lt;i&gt; 13¾ x 13½&lt;/i&gt;" Printing="Offset lithography" Paper="" Gum="" Currency="€ - Euro" FaceValue="1.15" Print_run="51000" Variant="" Score="74.61" Accuracy="Low" Colors="Multicolor" Themes="Religion,Saints,Theologians,Literary People (Poets and Writers)" Description="100th Anniversary of the Appointment of Ephrem the Syrian (306–373) as Doctor of the Church" Link="https://colnect.com/stamps/stamp/990789">
+    <CatalogCode Catalog="Mi" Country="VA" ID="2000"/>
+    <CatalogCode Catalog="Sn" Country="VA" ID="1745"/>
+    <CatalogCode Catalog="Yt" Country="VA" ID="1853"/>
+    <CatalogCode Catalog="Sg" Country="VA" ID="1911"/>
+    <CatalogCode Catalog="WAD" Country="VA019.20" ID="VA019.20"/>
+  </Entry>
+  <Entry Name="Sailing Vessel at Sea" Country="Vatican City" Series="100th Anniversary of the Apostolate of the Sea" Catalog_Codes="Mi:VA 2001, Sn:VA 1747a, Yt:VA 1854, WAD:VA017.20" ID_Nbr="Yt:VA 1854" Issued_on="2020-09-10" Expiry_date="" Width="40" Height="30" Watermark="" Format="Stamp" Emission="Commemorative" Perforation="frame&lt;i&gt; 14 x 13¼&lt;/i&gt;" Printing="Offset lithography" Paper="" Gum="" Currency="€ - Euro" FaceValue="1.10" Print_run="45000" Variant="" Score="85.41" Accuracy="Low" Colors="Multicolor" Themes="Ships,Religion,Sailing Ships,Christian" Description="stamp from souvenir sheet" Link="https://colnect.com/stamps/stamp/990791">
+    <CatalogCode Catalog="Mi" Country="VA" ID="2001"/>
+    <CatalogCode Catalog="Sn" Country="VA" ID="1747a"/>
+    <CatalogCode Catalog="Yt" Country="VA" ID="1854"/>
+    <CatalogCode Catalog="WAD" Country="VA017.20" ID="VA017.20"/>
+  </Entry>
+  <Entry Name="Madonna and Child" Country="Vatican City" Series="100th Anniversary of the Apostolate of the Sea" Catalog_Codes="Mi:VA 2002, Sn:VA 1747b, Yt:VA 1855, WAD:VA018.20" ID_Nbr="Yt:VA 1855" Issued_on="2020-09-10" Expiry_date="" Width="30" Height="40" Watermark="" Format="Stamp" Emission="Commemorative" Perforation="frame&lt;i&gt; 13¼ x 14&lt;/i&gt;" Printing="Offset lithography" Paper="" Gum="" Currency="€ - Euro" FaceValue="1.15" Print_run="45000" Variant="" Score="85.86" Accuracy="Low" Colors="Multicolor" Themes="Religion,Christian" Description="stamp from souvenir sheet" Link="https://colnect.com/stamps/stamp/990792">
+    <CatalogCode Catalog="Mi" Country="VA" ID="2002"/>
+    <CatalogCode Catalog="Sn" Country="VA" ID="1747b"/>
+    <CatalogCode Catalog="Yt" Country="VA" ID="1855"/>
+    <CatalogCode Catalog="WAD" Country="VA018.20" ID="VA018.20"/>
+  </Entry>
+  <Entry Name="50th Anniversary of Diplomatic Relations with Ivory Coast" Country="Vatican City" Series="" Catalog_Codes="Mi:VA 2003, Sn:VA 1746, Yt:VA 1856, Sg:VA 1912, WAD:VA016.20" ID_Nbr="Yt:VA 1856" Issued_on="2020-09-10" Expiry_date="" Width="41" Height="30.5" Watermark="" Format="Stamp" Emission="Commemorative" Perforation="comb&lt;i&gt; 13½ x 13¾&lt;/i&gt;" Printing="Offset lithography" Paper="" Gum="" Currency="€ - Euro" FaceValue="2.40" Print_run="67000" Variant="" Score="75.8" Accuracy="Low" Colors="Multicolor" Themes="Heads of State,Famous People,Religion,Politicians,Popes,Diplomacy,Clergy,Churches - Cathedrals - Basilicas - Chapels" Description="Pope Francis with President of the Ivory Coast Alassane Ouattara; Notre-Dame-de-la-Paix basilica, Yamoussoukro" Link="https://colnect.com/stamps/stamp/990788">
+    <CatalogCode Catalog="Mi" Country="VA" ID="2003"/>
+    <CatalogCode Catalog="Sn" Country="VA" ID="1746"/>
+    <CatalogCode Catalog="Yt" Country="VA" ID="1856"/>
+    <CatalogCode Catalog="Sg" Country="VA" ID="1912"/>
+    <CatalogCode Catalog="WAD" Country="VA016.20" ID="VA016.20"/>
+  </Entry>
+  <Entry Name="Public Security Inspectorate" Country="Vatican City" Series="75th Anniversary of the Vatican Public Security Inspectorate" Catalog_Codes="Mi:VA 2004, Yt:VA 1857, Sg:VA 1913, WAD:VA020.20" ID_Nbr="Yt:VA 1857" Issued_on="2020-09-28" Expiry_date="" Width="40" Height="30" Watermark="" Format="Stamp" Emission="Commemorative" Perforation="&lt;i&gt;11¼&lt;/i&gt;" Printing="Offset lithography" Paper="" Gum="Self-Adhesive" Currency="€ - Euro" FaceValue="1.10" Print_run="" Variant="" Score="69.28" Accuracy="Low" Colors="Multicolor" Themes="Police,Anniversaries and Jubilees" Description="" Link="https://colnect.com/stamps/stamp/1085756">
+    <CatalogCode Catalog="Mi" Country="VA" ID="2004"/>
+    <CatalogCode Catalog="Yt" Country="VA" ID="1857"/>
+    <CatalogCode Catalog="Sg" Country="VA" ID="1913"/>
+    <CatalogCode Catalog="WAD" Country="VA020.20" ID="VA020.20"/>
+  </Entry>
+  <Entry Name="Public Security Inspectorate" Country="Vatican City" Series="75th Anniversary of the Vatican Public Security Inspectorate" Catalog_Codes="Mi:VA 2004KB" ID_Nbr="Mi:VA 2004KB" Issued_on="2020-09-28" Expiry_date="" Width="160" Height="210" Watermark="" Format="Mini Sheet" Emission="Commemorative" Perforation="&lt;i&gt;11¼&lt;/i&gt;" Printing="Offset lithography" Paper="" Gum="Self-Adhesive" Currency="€ - Euro" FaceValue="10*1.10" Print_run="8000" Variant="" Score="81.25" Accuracy="Very Low" Colors="Multicolor" Themes="Police,Anniversaries and Jubilees" Description="" Link="https://colnect.com/stamps/stamp/1095390">
+    <CatalogCode Catalog="Mi" Country="VA" ID="2004KB"/>
+  </Entry>
+  <Entry Name="Saint Pope John Paul II, Birth Centenary" Country="Vatican City" Series="" Catalog_Codes="Mi:VA 2005, Sn:VA 1749, Yt:VA 1858, Sg:VA 1914, WAD:VA021.20" ID_Nbr="Yt:VA 1858" Issued_on="2020-10-16" Expiry_date="" Width="43" Height="31.25" Watermark="" Format="Stamp" Emission="Commemorative" Perforation="&lt;i&gt;14¼ x 13¾&lt;/i&gt;" Printing="Offset lithography" Paper="" Gum="" Currency="€ - Euro" FaceValue="1.15" Print_run="216000" Variant="" Score="78.78" Accuracy="Low" Colors="Multicolor" Themes="Famous People,Religion,Saints,Popes,Clergy,Joint Issues" Description="Issued in panes of six stamps and six decorative labels." Link="https://colnect.com/stamps/stamp/1001569">
+    <CatalogCode Catalog="Mi" Country="VA" ID="2005"/>
+    <CatalogCode Catalog="Sn" Country="VA" ID="1749"/>
+    <CatalogCode Catalog="Yt" Country="VA" ID="1858"/>
+    <CatalogCode Catalog="Sg" Country="VA" ID="1914"/>
+    <CatalogCode Catalog="WAD" Country="VA021.20" ID="VA021.20"/>
+  </Entry>
+  <Entry Name="Saint Pope John Paul II, Birth Centenary" Country="Vatican City" Series="" Catalog_Codes="Mi:VA 2005KB" ID_Nbr="Mi:VA 2005KB" Issued_on="2020-10-16" Expiry_date="" Width="170" Height="150" Watermark="" Format="Mini Sheet" Emission="Commemorative" Perforation="" Printing="Offset lithography" Paper="" Gum="" Currency="€ - Euro" FaceValue="6*1.15" Print_run="36000" Variant="" Score="62.74" Accuracy="Very Low" Colors="Multicolor" Themes="Saints,Popes" Description="" Link="https://colnect.com/stamps/stamp/1056071">
+    <CatalogCode Catalog="Mi" Country="VA" ID="2005KB"/>
+  </Entry>
+  <Entry Name="Pope Francis and the Holy Light of Bethlehem" Country="Vatican City" Series="Christmas 2020" Catalog_Codes="Mi:VA 2006, Sn:VA 1755, Yt:VA 1865, WAD:VA028.20, Un:VA 1876" ID_Nbr="Yt:VA 1865" Issued_on="2020-11-10" Expiry_date="" Width="30" Height="40" Watermark="" Format="Stamp" Emission="Commemorative" Perforation="comb&lt;i&gt; 13¼ x 14&lt;/i&gt;" Printing="Offset lithography" Paper="" Gum="" Currency="€ - Euro" FaceValue="1.10" Print_run="130000" Variant="1012159" Score="76.29" Accuracy="Low" Colors="Multicolor" Themes="Famous People,Christmas,Religion,Popes,Clergy,Joint Issues,Churches - Cathedrals - Basilicas - Chapels" Description="Issued in panes of 10" Link="https://colnect.com/stamps/stamp/1012159">
+    <CatalogCode Catalog="Mi" Country="VA" ID="2006"/>
+    <CatalogCode Catalog="Sn" Country="VA" ID="1755"/>
+    <CatalogCode Catalog="Yt" Country="VA" ID="1865"/>
+    <CatalogCode Catalog="WAD" Country="VA028.20" ID="VA028.20"/>
+    <CatalogCode Catalog="Un" Country="VA" ID="1876"/>
+  </Entry>
+  <Entry Name="Baby Jesus and Church of the Nativity, Bethlehem" Country="Vatican City" Series="Christmas 2020" Catalog_Codes="Mi:VA 2007, Sn:VA 1756, Yt:VA 1866, WAD:VA029.20, Un:VA 1877" ID_Nbr="Yt:VA 1866" Issued_on="2020-11-10" Expiry_date="" Width="30" Height="40" Watermark="" Format="Stamp" Emission="Commemorative" Perforation="comb&lt;i&gt; 13¼ x 14&lt;/i&gt;" Printing="Offset lithography" Paper="" Gum="" Currency="€ - Euro" FaceValue="1.15" Print_run="130000" Variant="1012160" Score="75.8" Accuracy="Low" Colors="Multicolor" Themes="Christmas,Joint Issues,Churches - Cathedrals - Basilicas - Chapels" Description="Issued in panes of 10" Link="https://colnect.com/stamps/stamp/1012160">
+    <CatalogCode Catalog="Mi" Country="VA" ID="2007"/>
+    <CatalogCode Catalog="Sn" Country="VA" ID="1756"/>
+    <CatalogCode Catalog="Yt" Country="VA" ID="1866"/>
+    <CatalogCode Catalog="WAD" Country="VA029.20" ID="VA029.20"/>
+    <CatalogCode Catalog="Un" Country="VA" ID="1877"/>
+  </Entry>
+  <Entry Name="Christmas 2020" Country="Vatican City" Series="" Catalog_Codes="Mi:VA 2008, Sn:VA 1757a, Yt:VA 1867, Sg:VA 1917, WAD:VA030.20" ID_Nbr="Yt:VA 1867" Issued_on="2020-11-10" Expiry_date="" Width="34.5" Height="50" Watermark="" Format="Stamp" Emission="Commemorative" Perforation="&lt;i&gt;13¼ x 14&lt;/i&gt;" Printing="Offset lithography" Paper="" Gum="" Currency="€ - Euro" FaceValue="1.10" Print_run="130000" Variant="1012159" Score="79.83" Accuracy="Low" Colors="Multicolor" Themes="Famous People,Christmas,Religion,Popes,Clergy" Description="Stamp from souvenir sheet, with additional silver printing detail" Link="https://colnect.com/stamps/stamp/1056930">
+    <CatalogCode Catalog="Mi" Country="VA" ID="2008"/>
+    <CatalogCode Catalog="Sn" Country="VA" ID="1757a"/>
+    <CatalogCode Catalog="Yt" Country="VA" ID="1867"/>
+    <CatalogCode Catalog="Sg" Country="VA" ID="1917"/>
+    <CatalogCode Catalog="WAD" Country="VA030.20" ID="VA030.20"/>
+  </Entry>
+  <Entry Name="Christmas 2020" Country="Vatican City" Series="" Catalog_Codes="Mi:VA 2009, Sn:VA 1757b, Yt:VA 1868, Sg:VA 1918, WAD:VA031.20" ID_Nbr="Yt:VA 1868" Issued_on="2020-11-10" Expiry_date="" Width="34.5" Height="50" Watermark="" Format="Stamp" Emission="Commemorative" Perforation="&lt;i&gt;13¼ x 14&lt;/i&gt;" Printing="Offset lithography" Paper="" Gum="" Currency="€ - Euro" FaceValue="1.15" Print_run="130000" Variant="1012160" Score="79.47" Accuracy="Low" Colors="Multicolor" Themes="Christmas" Description="Stamp from souvenir sheet, with additional silver printing detail" Link="https://colnect.com/stamps/stamp/1056931">
+    <CatalogCode Catalog="Mi" Country="VA" ID="2009"/>
+    <CatalogCode Catalog="Sn" Country="VA" ID="1757b"/>
+    <CatalogCode Catalog="Yt" Country="VA" ID="1868"/>
+    <CatalogCode Catalog="Sg" Country="VA" ID="1918"/>
+    <CatalogCode Catalog="WAD" Country="VA031.20" ID="VA031.20"/>
+  </Entry>
+  <Entry Name="Journeys of Pope Francis in 2019" Country="Vatican City" Series="" Catalog_Codes="Mi:VA 2010, Yt:VA 1862, WAD:VA024.20, Un:VA 1875" ID_Nbr="Yt:VA 1862" Issued_on="2020-11-10" Expiry_date="" Width="40" Height="60" Watermark="" Format="Stamp" Emission="Commemorative" Perforation="&lt;i&gt;13¼ x 13½&lt;/i&gt;" Printing="Offset lithography" Paper="" Gum="" Currency="€ - Euro" FaceValue="3" Print_run="35000" Variant="" Score="85.71" Accuracy="Low" Colors="Multicolor" Themes="Coats of Arms,Seals (Emblems)" Description="stamp from souvenir sheet" Link="https://colnect.com/stamps/stamp/1012157">
+    <CatalogCode Catalog="Mi" Country="VA" ID="2010"/>
+    <CatalogCode Catalog="Yt" Country="VA" ID="1862"/>
+    <CatalogCode Catalog="WAD" Country="VA024.20" ID="VA024.20"/>
+    <CatalogCode Catalog="Un" Country="VA" ID="1875"/>
+  </Entry>
+  <Entry Name="250th Birth Anniversary of Ludwig van Beethoven (1770-1827)" Country="Vatican City" Series="" Catalog_Codes="Mi:VA 2011, Sn:VA 1752, Yt:VA 1861, Sg:VA 1920, WAD:VA027.20, Un:VA 1874" ID_Nbr="Yt:VA 1861" Issued_on="2020-11-10" Expiry_date="" Width="40" Height="30" Watermark="" Format="Stamp" Emission="Commemorative" Perforation="&lt;i&gt;13¼ x 13&lt;/i&gt;" Printing="Offset lithography" Paper="" Gum="" Currency="€ - Euro" FaceValue="1.15" Print_run="125000" Variant="" Score="74.82" Accuracy="Low" Colors="Multicolor" Themes="Famous People,Music,Moon,Composers,Anniversaries and Jubilees" Description="Issued in panes of four    Music shown is the opening notes of the first movement of Piano Sonata No. 14 (Moonlight)" Link="https://colnect.com/stamps/stamp/1012155">
+    <CatalogCode Catalog="Mi" Country="VA" ID="2011"/>
+    <CatalogCode Catalog="Sn" Country="VA" ID="1752"/>
+    <CatalogCode Catalog="Yt" Country="VA" ID="1861"/>
+    <CatalogCode Catalog="Sg" Country="VA" ID="1920"/>
+    <CatalogCode Catalog="WAD" Country="VA027.20" ID="VA027.20"/>
+    <CatalogCode Catalog="Un" Country="VA" ID="1874"/>
+  </Entry>
+  <Entry Name="250th Birth Anniversary of Ludwig van Beethoven (1770-1827)" Country="Vatican City" Series="" Catalog_Codes="Mi:VA 2011KB" ID_Nbr="Mi:VA 2011KB" Issued_on="2020-11-10" Expiry_date="" Width="135" Height="115" Watermark="" Format="Mini Sheet" Emission="Commemorative" Perforation="&lt;i&gt;13¼ x 13&lt;/i&gt;" Printing="Offset lithography" Paper="" Gum="" Currency="€ - Euro" FaceValue="4*1.15" Print_run="31250" Variant="" Score="72.74" Accuracy="Very Low" Colors="Multicolor" Themes="Famous People,Composers" Description="" Link="https://colnect.com/stamps/stamp/1095387">
+    <CatalogCode Catalog="Mi" Country="VA" ID="2011KB"/>
+  </Entry>
+  <Entry Name="Flag of Council of Europe" Country="Vatican City" Series="Vatican City-European Union Relations, 50th Anniversary" Catalog_Codes="Mi:VA 2012, Sn:VA 1754a, Yt:VA 1859, WAD:VA022.20, Un:VA 1878" ID_Nbr="Yt:VA 1859" Issued_on="2020-11-10" Expiry_date="" Width="30" Height="40" Watermark="" Format="Stamp" Emission="Commemorative" Perforation="&lt;i&gt;13 x 13¼&lt;/i&gt;" Printing="Offset lithography" Paper="" Gum="" Currency="€ - Euro" FaceValue="1.15" Print_run="35000" Variant="" Score="85.71" Accuracy="Low" Colors="Multicolor" Themes="Flags,Council of Europe,Diplomacy" Description="stamp from souvenir sheet" Link="https://colnect.com/stamps/stamp/1012153">
+    <CatalogCode Catalog="Mi" Country="VA" ID="2012"/>
+    <CatalogCode Catalog="Sn" Country="VA" ID="1754a"/>
+    <CatalogCode Catalog="Yt" Country="VA" ID="1859"/>
+    <CatalogCode Catalog="WAD" Country="VA022.20" ID="VA022.20"/>
+    <CatalogCode Catalog="Un" Country="VA" ID="1878"/>
+  </Entry>
+  <Entry Name="Flags of Vatican City and European Union" Country="Vatican City" Series="Vatican City-European Union Relations, 50th Anniversary" Catalog_Codes="Mi:VA 2013, Sn:VA 1754b, Yt:VA 1860, WAD:VA023.20, Un:VA 1879" ID_Nbr="Yt:VA 1860" Issued_on="2020-11-10" Expiry_date="" Width="30" Height="40" Watermark="" Format="Stamp" Emission="Commemorative" Perforation="&lt;i&gt;13 x 13¼&lt;/i&gt;" Printing="Offset lithography" Paper="" Gum="" Currency="€ - Euro" FaceValue="1.15" Print_run="35000" Variant="" Score="86.57" Accuracy="Low" Colors="Multicolor" Themes="Flags,European Union,Diplomacy" Description="stamp from souvenir sheet" Link="https://colnect.com/stamps/stamp/1012154">
+    <CatalogCode Catalog="Mi" Country="VA" ID="2013"/>
+    <CatalogCode Catalog="Sn" Country="VA" ID="1754b"/>
+    <CatalogCode Catalog="Yt" Country="VA" ID="1860"/>
+    <CatalogCode Catalog="WAD" Country="VA023.20" ID="VA023.20"/>
+    <CatalogCode Catalog="Un" Country="VA" ID="1879"/>
+  </Entry>
+  <Entry Name="900th anniversary of the basilica of Volterra" Country="Vatican City" Series="" Catalog_Codes="Mi:VA 2014, Yt:VA 1863, Sg:VA 1916, WAD:VA026.20" ID_Nbr="Yt:VA 1863" Issued_on="2020-11-10" Expiry_date="" Width="48" Height="30" Watermark="" Format="Stamp" Emission="Commemorative" Perforation="&lt;i&gt;11&lt;/i&gt;" Printing="Offset lithography" Paper="" Gum="Self-Adhesive" Currency="€ - Euro" FaceValue="1.10" Print_run="120000" Variant="" Score="64.52" Accuracy="Low" Colors="Multicolor" Themes="Churches - Cathedrals - Basilicas - Chapels" Description="" Link="https://colnect.com/stamps/stamp/1056073">
+    <CatalogCode Catalog="Mi" Country="VA" ID="2014"/>
+    <CatalogCode Catalog="Yt" Country="VA" ID="1863"/>
+    <CatalogCode Catalog="Sg" Country="VA" ID="1916"/>
+    <CatalogCode Catalog="WAD" Country="VA026.20" ID="VA026.20"/>
+  </Entry>
+  <Entry Name="900th anniversary of the basilica of Volterra" Country="Vatican City" Series="" Catalog_Codes="Mi:VA 2014KB" ID_Nbr="Mi:VA 2014KB" Issued_on="2020-11-10" Expiry_date="" Width="170" Height="260" Watermark="" Format="Mini Sheet" Emission="Commemorative" Perforation="&lt;i&gt;11&lt;/i&gt;" Printing="Offset lithography" Paper="" Gum="Self-Adhesive" Currency="€ - Euro" FaceValue="10*1.10" Print_run="12000" Variant="" Score="80.43" Accuracy="Very Low" Colors="Multicolor" Themes="Churches - Cathedrals - Basilicas - Chapels" Description="" Link="https://colnect.com/stamps/stamp/1095389">
+    <CatalogCode Catalog="Mi" Country="VA" ID="2014KB"/>
+  </Entry>
+  <Entry Name="Basilica of Aquileia" Country="Vatican City" Series="" Catalog_Codes="Mi:VA 2015, Yt:VA 1864, Sg:VA 1915, WAD:VA025.20, Un:VA 1872" ID_Nbr="Yt:VA 1864" Issued_on="2020-11-10" Expiry_date="" Width="40" Height="48" Watermark="" Format="Stamp" Emission="Commemorative" Perforation="&lt;i&gt;13 x 13¼&lt;/i&gt;" Printing="Photogravure" Paper="" Gum="" Currency="€ - Euro" FaceValue="1.10" Print_run="110000" Variant="" Score="69.25" Accuracy="Low" Colors="Multicolor" Themes="Joint Issues,Churches - Cathedrals - Basilicas - Chapels" Description="" Link="https://colnect.com/stamps/stamp/1012158">
+    <CatalogCode Catalog="Mi" Country="VA" ID="2015"/>
+    <CatalogCode Catalog="Yt" Country="VA" ID="1864"/>
+    <CatalogCode Catalog="Sg" Country="VA" ID="1915"/>
+    <CatalogCode Catalog="WAD" Country="VA025.20" ID="VA025.20"/>
+    <CatalogCode Catalog="Un" Country="VA" ID="1872"/>
+  </Entry>
+  <Entry Name="Basilica of Aquileia" Country="Vatican City" Series="" Catalog_Codes="Mi:VA 2015KB" ID_Nbr="Mi:VA 2015KB" Issued_on="2020-11-10" Expiry_date="" Width="240" Height="160" Watermark="" Format="Mini Sheet" Emission="Commemorative" Perforation="&lt;i&gt;13 x 13¼&lt;/i&gt;" Printing="Photogravure" Paper="" Gum="" Currency="€ - Euro" FaceValue="10*1.10" Print_run="11000" Variant="" Score="76.52" Accuracy="Very Low" Colors="Multicolor" Themes="Churches - Cathedrals - Basilicas - Chapels" Description="" Link="https://colnect.com/stamps/stamp/1095388">
+    <CatalogCode Catalog="Mi" Country="VA" ID="2015KB"/>
+  </Entry>
+  <Entry Name="50th Anniversary of Earth Day" Country="Vatican City" Series="50th Anniversary of Earth Day" Catalog_Codes="Mi:VA BL64, Sn:VA 1739, Yt:VA F1845, Sg:VA MS1897, WAD:VA008MS.20, Un:VA BF101" ID_Nbr="Yt:VA F1845" Issued_on="2020-02-14" Expiry_date="" Width="138" Height="96" Watermark="" Format="Souvenir Sheet" Emission="Commemorative" Perforation="Various" Printing="Offset lithography" Paper="" Gum="" Currency="€ - Euro" FaceValue="1.40" Print_run="40000" Variant="" Score="75.19" Accuracy="Medium" Colors="Multicolor" Themes="Ships,Birds,Butterflies,Environment Protection,Sailing Ships,Anniversaries and Jubilees" Description="" Link="https://colnect.com/stamps/stamp/942498">
+    <CatalogCode Catalog="Mi" Country="VA" ID="BL64"/>
+    <CatalogCode Catalog="Sn" Country="VA" ID="1739"/>
+    <CatalogCode Catalog="Yt" Country="VA" ID="F1845"/>
+    <CatalogCode Catalog="Sg" Country="VA" ID="MS1897"/>
+    <CatalogCode Catalog="WAD" Country="VA008MS.20" ID="VA008MS.20"/>
+    <CatalogCode Catalog="Un" Country="VA" ID="BF101"/>
+  </Entry>
+  <Entry Name="Transfiguration, Raphael" Country="Vatican City" Series="500th Death Anniversary of Raphael (1483-1520)" Catalog_Codes="Mi:VA BL65, Sn:VA 1744, Yt:VA F1851, Sg:VA MS1907, WAD:VA014MS.20, Un:VA BF103" ID_Nbr="Yt:VA F1851" Issued_on="2020-06-23" Expiry_date="" Width="93.5" Height="129.5" Watermark="" Format="Souvenir Sheet" Emission="Commemorative" Perforation="Various" Printing="Offset lithography" Paper="" Gum="" Currency="€ - Euro" FaceValue="2.25" Print_run="45000" Variant="" Score="72.8" Accuracy="Low" Colors="Multicolor" Themes="Biblical Accounts,Religion,Angels,Art,Apostles,Artists,Christian,Anniversaries and Jubilees" Description="The Transfiguration is the last painting by the Italian High Renaissance master Raphael. Commissioned by Cardinal Giulio de Medici, the later Pope Clement VII (1523–1534), and conceived as an altarpiece for the Narbonne Cathedral in France, Raphael worked on it until his death in 1520." Link="https://colnect.com/stamps/stamp/971214">
+    <CatalogCode Catalog="Mi" Country="VA" ID="BL65"/>
+    <CatalogCode Catalog="Sn" Country="VA" ID="1744"/>
+    <CatalogCode Catalog="Yt" Country="VA" ID="F1851"/>
+    <CatalogCode Catalog="Sg" Country="VA" ID="MS1907"/>
+    <CatalogCode Catalog="WAD" Country="VA014MS.20" ID="VA014MS.20"/>
+    <CatalogCode Catalog="Un" Country="VA" ID="BF103"/>
+  </Entry>
+  <Entry Name="Apostolate of the Sea, Centenary" Country="Vatican City" Series="100th Anniversary of the Apostolate of the Sea" Catalog_Codes="Mi:VA BL66, Sn:VA 1747, Yt:VA F1854, Sg:VA MS1910, WAD:VA017MS.20" ID_Nbr="Yt:VA F1854" Issued_on="2020-09-10" Expiry_date="" Width="" Height="" Watermark="" Format="Souvenir Sheet" Emission="Commemorative" Perforation="Various" Printing="Offset lithography" Paper="" Gum="" Currency="€ - Euro" FaceValue="2.25" Print_run="45000" Variant="" Score="72.9" Accuracy="Low" Colors="Multicolor" Themes="Ships,Religion,Sailing Ships,Christian" Description="" Link="https://colnect.com/stamps/stamp/990790">
+    <CatalogCode Catalog="Mi" Country="VA" ID="BL66"/>
+    <CatalogCode Catalog="Sn" Country="VA" ID="1747"/>
+    <CatalogCode Catalog="Yt" Country="VA" ID="F1854"/>
+    <CatalogCode Catalog="Sg" Country="VA" ID="MS1910"/>
+    <CatalogCode Catalog="WAD" Country="VA017MS.20" ID="VA017MS.20"/>
+  </Entry>
+  <Entry Name="Christmas 2020" Country="Vatican City" Series="Christmas 2020" Catalog_Codes="Mi:VA BL67, Sn:VA 1757, Yt:VA F1867, Sg:VA MS1919, WAD:VA030MS.20, Un:VA BF105" ID_Nbr="Yt:VA F1867" Issued_on="2020-11-10" Expiry_date="" Width="110" Height="95" Watermark="" Format="Souvenir Sheet" Emission="Commemorative" Perforation="" Printing="Offset lithography" Paper="" Gum="" Currency="€ - Euro" FaceValue="2.25" Print_run="55000" Variant="" Score="67.36" Accuracy="Low" Colors="Multicolor" Themes="Christmas,Joint Issues,Churches - Cathedrals - Basilicas - Chapels" Description="" Link="https://colnect.com/stamps/stamp/1012161">
+    <CatalogCode Catalog="Mi" Country="VA" ID="BL67"/>
+    <CatalogCode Catalog="Sn" Country="VA" ID="1757"/>
+    <CatalogCode Catalog="Yt" Country="VA" ID="F1867"/>
+    <CatalogCode Catalog="Sg" Country="VA" ID="MS1919"/>
+    <CatalogCode Catalog="WAD" Country="VA030MS.20" ID="VA030MS.20"/>
+    <CatalogCode Catalog="Un" Country="VA" ID="BF105"/>
+  </Entry>
+  <Entry Name="Journeys of Pope Francis in 2019" Country="Vatican City" Series="" Catalog_Codes="Mi:VA BL68, Sn:VA 1753, Yt:VA F1862, Sg:VA MS1922, WAD:VA024MS.20, Un:VA BF104" ID_Nbr="Yt:VA F1862" Issued_on="2020-11-10" Expiry_date="" Width="140.5" Height="123" Watermark="" Format="Souvenir Sheet" Emission="Commemorative" Perforation="&lt;i&gt;13¼ x 13½&lt;/i&gt;" Printing="Offset lithography" Paper="" Gum="" Currency="€ - Euro" FaceValue="3" Print_run="35000" Variant="" Score="66.05" Accuracy="Low" Colors="Multicolor" Themes="Coats of Arms,Seals (Emblems)" Description="Souvenir sheet containing one stamp and seven labels" Link="https://colnect.com/stamps/stamp/1012156">
+    <CatalogCode Catalog="Mi" Country="VA" ID="BL68"/>
+    <CatalogCode Catalog="Sn" Country="VA" ID="1753"/>
+    <CatalogCode Catalog="Yt" Country="VA" ID="F1862"/>
+    <CatalogCode Catalog="Sg" Country="VA" ID="MS1922"/>
+    <CatalogCode Catalog="WAD" Country="VA024MS.20" ID="VA024MS.20"/>
+    <CatalogCode Catalog="Un" Country="VA" ID="BF104"/>
+  </Entry>
+  <Entry Name="Vatican City-European Union Relations, 50th Anniversary" Country="Vatican City" Series="Vatican City-European Union Relations, 50th Anniversary" Catalog_Codes="Mi:VA BL69, Sn:VA 1754, Yt:VA F1859, Sg:VA MS1921, WAD:VA022MS.20, Un:VA BF106" ID_Nbr="Yt:VA F1859" Issued_on="2020-11-10" Expiry_date="" Width="140" Height="107.25" Watermark="" Format="Souvenir Sheet" Emission="Commemorative" Perforation="&lt;i&gt;13 x 13¼&lt;/i&gt;" Printing="Offset lithography" Paper="" Gum="" Currency="€ - Euro" FaceValue="2.30" Print_run="35000" Variant="" Score="67.5" Accuracy="Low" Colors="Multicolor" Themes="Flags,European Union,Council of Europe,Diplomacy" Description="" Link="https://colnect.com/stamps/stamp/1012152">
+    <CatalogCode Catalog="Mi" Country="VA" ID="BL69"/>
+    <CatalogCode Catalog="Sn" Country="VA" ID="1754"/>
+    <CatalogCode Catalog="Yt" Country="VA" ID="F1859"/>
+    <CatalogCode Catalog="Sg" Country="VA" ID="MS1921"/>
+    <CatalogCode Catalog="WAD" Country="VA022MS.20" ID="VA022MS.20"/>
+    <CatalogCode Catalog="Un" Country="VA" ID="BF106"/>
+  </Entry>
+  <Entry Name="Christmas 2020" Country="Vatican City" Series="" Catalog_Codes="Mi:VA MH29, Yt:VA C1865, Sg:VA SB29" ID_Nbr="Yt:VA C1865" Issued_on="2020-11-10" Expiry_date="" Width="100" Height="100" Watermark="" Format="Booklet" Emission="Commemorative" Perforation="" Printing="Offset lithography" Paper="" Gum="" Currency="€ - Euro" FaceValue="4.50" Print_run="26000" Variant="" Score="67.69" Accuracy="Very Low" Colors="Multicolor" Themes="Christmas" Description="" Link="https://colnect.com/stamps/stamp/1056072">
+    <CatalogCode Catalog="Mi" Country="VA" ID="MH29"/>
+    <CatalogCode Catalog="Yt" Country="VA" ID="C1865"/>
+    <CatalogCode Catalog="Sg" Country="VA" ID="SB29"/>
+  </Entry>
 </Catalog>

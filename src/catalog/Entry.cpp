@@ -40,6 +40,7 @@
 #include <wx/datetime.h>
 #include <wx/strconv.h>
 #include <wx/tokenzr.h>
+#include <cstdio>
 #include "utils/XMLUtilities.h"
 
 namespace Catalog {
@@ -156,12 +157,30 @@ namespace Catalog {
         wxDateTime dt;
         wxString dateStr = GetIssuedDate( );
         wxString::const_iterator end;
-        if ( ( dt.ParseFormat( dateStr, "%Y-%m-%d", &end ) )
-            || ( dt.ParseFormat( dateStr, "%Y", &end ) )
-            || ( dt.ParseFormat( dateStr, "%Y-%m", &end ) ) )
+         wxDateTime dateDef = wxDateTime::Today();
+        if ( dt.ParseFormat( dateStr, "%Y-%m-%d", dateDef, &end ) )
         {
             int year = dt.GetYear( );
-            wxString yearStr = wxString::Format( "%d", year );
+            char str[40];
+            sprintf(str, "%d", year );
+            wxString yearStr = str;
+            return yearStr;            
+        }
+        else if (  dt.ParseFormat( dateStr, "%Y", dateDef, &end )  )
+        {
+            int year = dt.GetYear( );
+            char str[40];
+            sprintf(str, "%d", year );
+            wxString yearStr = str;
+            return yearStr;            
+
+        }
+        else if ( dt.ParseFormat( dateStr, "%Y-%m", dateDef, &end ) ) 
+        {
+            int year = dt.GetYear( );
+            char str[40];
+            sprintf(str, "%d", year );
+            wxString yearStr = str;
             return yearStr;
         }
         return wxString( "Unknown" );

@@ -140,6 +140,7 @@ namespace Catalog {
     };
 
     wxString CatalogBaseNames[ NT_NbrTypes ] = {
+        "None",
         "Catalog" ,
         "Country" ,
         "Period"  ,
@@ -153,7 +154,7 @@ namespace Catalog {
         "CatalogCode" };
 
     const wxString CC_CatalogCodeNames[ CC_NbrTypes ]
-        = { wxT( "ID" ), wxT( "Country" ), wxT( "Catalog" ), };
+        = { wxT( "ID" ), wxT( "Country" ), wxT( "Catalog" ) };
 
     void InitCatalogDefs( )
     {
@@ -280,12 +281,18 @@ namespace Catalog {
     void AddEntry( wxXmlNode* parent, wxXmlNode* child, int level )
     {
         level++;
+
+    
         wxString childName = child->GetName( );
         wxString parentName = parent->GetName( );
         CatalogBaseType parentType = FindCatalogBaseType( parentName );
-        //    std::cout << "AddEntry  ParentName:" << parentName
-        //        << "  ParentType:" << CatalogBaseNames[ parentType ]
-        //        << "  ChildName:" << childName << "  level" << level << "\n";
+           std::cout << "AddEntry  ParentName:" << parentName
+               << "  ParentType:" << CatalogBaseNames[ parentType ]
+               << "  ChildName:" << childName << "  level" << level << "\n";
+        if ( level > 6 )
+        {
+             std::cout << "Infinite loop\n";
+        }
         if ( childName == CatalogBaseNames[ NT_Entry ] )
         {
             Catalog::Entry entry( child );
@@ -300,7 +307,7 @@ namespace Catalog {
                 pos = id.find(' ');
                 id = id.substr(pos);
                 id.ToLong(&a);
-                //std::cout << "     InsertChild "<< " id:" << id << "  Name:" << entry.GetName() << "\n";
+                std::cout << "     InsertChild "<< " id:" << id << "  Name:" << entry.GetName() << "\n";
                 
                 // if the sort type is not one of the classification node types
                 // then add it here. All entrys and their children get added here.
@@ -309,11 +316,11 @@ namespace Catalog {
             }
             else
             {
-//                std::cout << "     SortType: " << CatalogBaseNames[ sortType ]  << "\n";
+                std::cout << "     SortType: " << CatalogBaseNames[ sortType ]  << "\n";
                 wxString nodeName = CatalogBaseNames[ sortType ];
                 wxString name = entry.GetClassificationName( &entry, sortType );
                 const char* nodeNameStr = nodeName;
-//                std::cout << "     Looking for " << nodeNameStr << " with Name " << name << "\n";
+                std::cout << "     Looking for " << nodeNameStr << " with Name " << name << "\n";
 
                 wxXmlNode* nextNode = Utils::FirstChildElement( parent, nodeNameStr );
                 while ( nextNode )
@@ -323,7 +330,7 @@ namespace Catalog {
                     {
                         if ( !attr.Cmp( name ) )
                         {
-//                            std::cout << "     Found it \n";
+                            std::cout << "     Found it \n";
                             AddEntry( nextNode, child, level );
                             return;
                         }
@@ -331,10 +338,11 @@ namespace Catalog {
                     nextNode = nextNode->GetNext( );
                 }
                 // couldn't find it so add it
-            //    std::cout << "     Adding it: " << nodeNameStr << " with Name "
-            //        << name << "\n";
+                std::cout << "     Adding it: " << nodeNameStr << " with Name "
+                    << name << "\n";
 
                 nextNode = Utils::NewNode( parent, nodeNameStr );
+                nextNode->SetParent(parent);
                 Utils::SetAttrStr( nextNode, "Name", name );
 
                 AddEntry( nextNode, child, level );
@@ -407,14 +415,14 @@ namespace Catalog {
 
     void SortData( wxXmlNode* newRoot, wxXmlNode* parent )
     {
-        // wxString name = parent->GetAttribute(DT_XMLDataNames[ DT_Name ]);
-        // std::cout << "SortData   Parent Name:" << name << "\n";
+         wxString name = parent->GetAttribute(DT_XMLDataNames[ DT_Name ]);
+         std::cout << "SortData   Parent Name:" << name << "\n";
 
         wxXmlNode* child = parent->GetChildren( );
         while ( child )
         {
-            // wxString name = child->GetAttribute(DT_XMLDataNames[ DT_Name ]);
-            // std::cout << "SortData   child Name:" << name << "\n";
+             wxString name = child->GetAttribute(DT_XMLDataNames[ DT_Name ]);
+             std::cout << "SortData   child Name:" << name << "\n";
 
             if ( !CatalogBaseNames[ NT_Entry ].Cmp( child->GetName( ) ) )
             {

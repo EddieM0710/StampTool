@@ -109,17 +109,24 @@ int CatalogTreeCtrl::OnCompareItems( const wxTreeItemId& item1,
     }
     else
     {
-        wxString id1 = itemData1->GetDesc( );
-        wxString id2 = itemData2->GetDesc( );
+        if ( type1 == NT_Entry )
+        {
 
-        int val = id1.Cmp( id2 );
-        if ( m_reverseSort )
-        {
-            return val * -1;
         }
-        else
+        else 
         {
-            return val;
+            wxString id1 = itemData1->GetDesc( );
+            wxString id2 = itemData2->GetDesc( );
+
+            int val = id1.Cmp( id2 );
+            if ( m_reverseSort )
+            {
+                return val * -1;
+            }
+            else
+            {
+                return val;
+            }
         }
     }
 }

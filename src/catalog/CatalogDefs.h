@@ -63,7 +63,8 @@ namespace Catalog {
      **************************************************/
     typedef enum
     {
-        NT_Catalog = 0,
+        NT_None = 0,
+        NT_Catalog,
         NT_Country,
         NT_Period,
         NT_Decade,

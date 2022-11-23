@@ -231,6 +231,7 @@ int StyleNameIndex = 0;
         if ( parent )
         {
             parent->AddChild(newNode);
+            newNode->SetParent(parent);
         }
         return newNode;
 

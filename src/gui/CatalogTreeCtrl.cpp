@@ -109,7 +109,7 @@ int CatalogTreeCtrl::OnCompareItems( const wxTreeItemId& item1,
     }
     else
     {
-        if ( type1 == NT_Entry )
+        if ( type1 == Catalog::NT_Entry )
         {
 
         }

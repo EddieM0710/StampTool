@@ -35,6 +35,7 @@ add_library( GuiFiles SHARED
     LabeledTextBox.cpp
     StaticItem.cpp 
     StampDetailsDialog.cpp
+    AlbumDetailsDialog.cpp
     RowDetailsDialog.cpp 
     ColDetailsDialog.cpp 
     NewStampDialog.cpp 

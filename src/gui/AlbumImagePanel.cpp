@@ -351,6 +351,9 @@ wxRealPoint AlbumImagePanel::GetLogicalTextExtent( wxString text, wxFont font )
 void AlbumImagePanel::MakeMultiLine( wxString& text, wxFont font, double width )
 {
 
+    //adjust the with down just a bit to allow for text conversion
+    width = width * .95;
+
     wxClientDC  dc( this );// = this->GetDC();
     dc.SetMapMode( wxMM_METRIC );
     dc.SetFont( font );

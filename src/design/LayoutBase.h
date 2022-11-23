@@ -244,7 +244,7 @@ namespace Design {
         virtual void UpdateSizes( ) = 0;
 
         /* 
-         * @brief Caluclate the size in MM necessary for the title
+         * @brief Calculate the size in MM necessary for the title
          * 
          * @param width the max width of the title
          * @param font font to be used for writing

@@ -694,7 +694,7 @@ void DesignTreeCtrl::ShowMenu( wxTreeItemId id, const wxPoint& pt )
         wxMenu deleteSubMenu( "Delete" );
         menu.AppendSubMenu( addSubMenu, "Add Item" );
         menu.Append( DesignTree_DeleteItem, "Delete Item" );
-        menu.Append( DesignTree_EditDetails, "EditDetails" );
+        menu.Append( DesignTree_EditDetails, "Edit Details" );
         wxMenuItem* addPageItem = addSubMenu->Append( DesignTree_AddPage, "Add Page" );
         wxMenuItem* addRowItem = addSubMenu->Append( DesignTree_AddRow, "Add Row" );
         wxMenuItem* addColItem = addSubMenu->Append( DesignTree_AddCol, "Add Column" );

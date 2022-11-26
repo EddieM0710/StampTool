@@ -31,74 +31,13 @@
 
 namespace Design {
 
- 
-    // build the frame container for the font
-    wxXmlNode* Font::Write( wxXmlNode* parent )
-    {
-        Utils::AddComment( parent, "Font", "Inserting a Font." );
-
-        double xPos = GetXPos( );
-        double yPos = GetYPos( );
-        double width = GetWidth( );
-        double height = GetHeight( ); // allow for caption
-
-        wxString drawStyleName = ODT::FrameNoBorder;
-        wxString textAnchorType = ODT::TextAnchorParagraph; // "page", "paragraph"
-        wxString textStyleName = ODT::NormalTextStyle;
-
-        wxXmlNode* frame = ODT::ContentDoc( )->WriteFrame( parent, xPos,
-            yPos,
-            width,
-            height,
-            drawStyleName,  // fr1
-            textAnchorType ); // "page", "paragraph"
-
-
-        wxTreeItemIdValue cookie;
-        wxTreeItemId parentID = GetTreeItemId( );
-        wxTreeItemId childID = GetDesignTreeCtrl( )->GetFirstChild( parentID, cookie );
-        while ( childID.IsOk( ) )
-        {
-            AlbumBaseType type = ( AlbumBaseType )GetDesignTreeCtrl( )->GetItemType( childID );
-            LayoutBase* child = ( LayoutBase* )GetDesignTreeCtrl( )->GetItemNode( childID );
-
-            AlbumBaseType childType = ( AlbumBaseType )child->GetNodeType( );
-            switch ( childType )
-            {
-            case AT_Row:
-            {
-                // set the layout parameters into the child
-                Row* row = ( Row* )child;
-                row->Write( frame );
-                break;
-            }
-            case AT_Col:
-            {
-                // set the layout parameters into the child
-                Font* col = ( Font* )child;
-                col->Write( frame );
-                break;
-            }
-            case AT_Stamp:
-            {
-                // set the layout parameters into the child
-                Stamp* stamp = ( Stamp* )child;
-                stamp->Write( frame );
-                break;
-            }
-            }
-            childID = GetDesignTreeCtrl( )->GetNextChild( parentID, cookie );
-        }
-        return frame;
-    }
-
 
     void Font::Save( wxXmlNode* xmlNode )
     {
         if ( !m_type.compare("Default"))
         {
-        SetAttribute( xmlNode, Design::FT_Type );
-        SetAttribute( xmlNode, Design::FT_Name );
+        SetAttribute( xmlNode, Design::AT_FontType );
+        SetAttribute( xmlNode, Design::AT_FontName );
         }
 
     }

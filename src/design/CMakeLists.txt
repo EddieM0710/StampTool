@@ -13,6 +13,7 @@ set( CMAKE_RUNTIME_OUTPUT_DIRECTORY ${build_Directory} )
 add_library( DesignFiles SHARED
     DesignData.cpp 
     DesignDefs.cpp 
+    XMLBase.cpp
     AlbumBase.cpp
     LayoutBase.cpp
     Album.cpp 

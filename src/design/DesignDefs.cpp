@@ -99,15 +99,10 @@ namespace Design {
             "Col",
             "Title",
             "TitlePage",
-            "Stamp" };
+            "Stamp",
+            "Font" };
 
-    const char* AttrFontStrings [ FT_NbrAttrTypes ] = {
-        "Name",
-        "Family",
-        "Size",
-        "Weight",
-        "Color",
-        "Style"};
+   
    
 
     const char* AttrNameStrings[ AT_NbrAttrTypes ] = {
@@ -135,7 +130,13 @@ namespace Design {
             "TopContentPadding",
             "BottomContentPadding",
             "LeftContentPadding",
-            "RightContentPadding"};
+            "RightContentPadding",
+            "FontName",
+            "Family",
+            "Size",
+            "Weight",
+            "Color",
+            "Style"};
 
     void InitDesignDefs( )
     {

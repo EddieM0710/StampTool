@@ -26,6 +26,7 @@
 #define Font_H
 
 #include "design/DesignDefs.h"
+#include "design/XMLBase.h"
 
 namespace Design {
 
@@ -33,7 +34,7 @@ namespace Design {
      * @brief Font layout object; In
      *
      **************************************************/
-    class Font : public LayoutBase
+    class Font : public XMLBase
     {
     public:
 
@@ -43,7 +44,7 @@ namespace Design {
          *
          * @param parent
          **************************************************/
-        Font( wxXmlNode* node ){ SetNodeType( AT_Font ); };
+        Font( wxXmlNode* node ){ SetNodeType( Design::AT_Font ); };
 
         /**
          * @brief Destroy the Font object
@@ -55,13 +56,6 @@ namespace Design {
 
         // build the frame container for the font
 
-        /**
-         * @brief Decends into each child layout object performing its write to the content, styles, or images ODT XML
-         *
-         **************************************************/
-        wxXmlNode* Write( wxXmlNode* parent );
-
-
         void Save( wxXmlNode* xmlNode );
 
     private:
@@ -71,7 +65,7 @@ namespace Design {
         wxString m_size;
         wxString m_weight;
         wxString m_color;
-        wxString m_style,
+        wxString m_style;
 
     };
 }

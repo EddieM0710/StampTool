@@ -53,6 +53,7 @@ namespace Design {
         AT_Title,
         AT_TitlePage,
         AT_Stamp,
+        AT_Font,
         AT_NbrAlbumTypes,
         AT_None = 999
     } AlbumBaseType;
@@ -88,26 +89,18 @@ namespace Design {
         AT_BottomContentPadding,
         AT_LeftContentPadding,
         AT_RightContentPadding,
-
+        AT_FontType,
+        AT_FontName,
+        AT_FontFamily,
+        AT_FontSize,
+        AT_FontWeight,
+        AT_FontColor,
+        AT_FontStyle,
         AT_NbrAttrTypes,
         AT_NOTYPE
     } AlbumAttrType;
 
 extern const char* AttrNameStrings[ AT_NbrAttrTypes ] ;
-
-    typedef enum
-    {
-        FT_Type = 0,
-        FT_Name,
-        FT_Family,
-        FT_Size,
-        FT_Weight,
-        FT_Color,
-        FT_Style,
-        FT_NbrAttrTypes
-    } FontAttrType;
-extern const char* AttrFontStrings[ FT_NbrAttrTypes ] ;
-
 
 
     typedef enum

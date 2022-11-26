@@ -45,7 +45,7 @@ namespace Utils {
         DesignTreeCtrl* designTreeCtrl = GetDesignTreeCtrl( );
         DesignTreeItemData* data = (DesignTreeItemData*)designTreeCtrl->GetItemData(m_designTreeID);
         Design::AlbumBase* node = data->GetNodeElement();
-        wxString id = node->GetAttrStr(Design::AT_ID);
+        wxString id = node->GetAttrStr(Design::AT_CatNbr);
         return id; 
     };
     

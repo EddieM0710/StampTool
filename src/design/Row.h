@@ -97,8 +97,8 @@ namespace Design {
         void Save( wxXmlNode* xmlNode );
 
     private:
-    //    bool m_showID;
-    //    bool m_showTitle;
+        bool m_showCatNbr;
+        bool m_showTitle;
 
     };
 

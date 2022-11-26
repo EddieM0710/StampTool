@@ -37,26 +37,52 @@ namespace Design {
         return GetAttrDbl( AT_PageWidth  );
     };
 
+
+
     double Album::GetHeight( )
     {
         return GetAttrDbl(  AT_PageHeight  );
     };
 
+
+
     double Album::GetPageWidth( )
     {
         return GetAttrDbl(  AT_PageWidth );
     };
-
+    wxString Album::GetPageWidthStr( )
+    {
+        return GetAttrStr( Design::AT_PageWidth );
+    };
+    void Album::SetPageWidth( wxString str )
+    {
+        return SetAttrStr( Design::AT_PageWidth, str);
+    };
 
     double Album::GetPageHeight( )
     {
         return GetAttrDbl( AT_PageHeight  );
     };
-
+    wxString Album::GetPageHeightStr( )
+    {
+        return GetAttrStr( Design::AT_PageHeight );
+    };
+    void Album::SetPageHeight( wxString str )
+    {
+        return SetAttrStr( Design::AT_PageHeight, str);
+    };
 
     double Album::GetTopMargin( )
     {
         return GetAttrDbl( AT_TopMargin  );
+    };
+    wxString Album::GetTopMarginStr( )
+    {
+        return GetAttrStr( Design::AT_TopMargin );
+    };
+    void Album::SetTopMargin( wxString str )
+    {
+        return SetAttrStr( Design::AT_TopMargin, str);
     };
 
 
@@ -64,23 +90,54 @@ namespace Design {
     {
         return GetAttrDbl(  AT_BottomMargin  );
     };
+    wxString Album::GetBottomMarginStr( )
+    {
+        return GetAttrStr( Design::AT_BottomMargin );
+    };
+    void Album::SetBottomMargin( wxString str )
+    {
+        return SetAttrStr( Design::AT_BottomMargin, str);
+    };
 
 
     double Album::GetRightMargin( )
     {
         return GetAttrDbl(  AT_RightMargin  );
     };
-
+    wxString Album::GetRightMarginStr( )
+    {
+        return GetAttrStr( Design::AT_RightMargin );
+    };
+    void Album::SetRightMargin( wxString str )
+    {
+        return SetAttrStr( Design::AT_RightMargin, str);
+    };
 
     double Album::GetLeftMargin( )
     {
         return GetAttrDbl( AT_LeftMargin );
+    };
+    wxString Album::GetLeftMarginStr( )
+    {
+        return GetAttrStr( Design::AT_LeftMargin );
+    };
+    void Album::SetLeftMargin( wxString str )
+    {
+        return SetAttrStr( Design::AT_LeftMargin, str);
     };
 
 
     double Album::GetBorderSize( )
     {
         return GetAttrDbl(  AT_BorderSize );
+    };
+    wxString Album::GetBorderSizeStr( )
+    {
+        return GetAttrStr( Design::AT_BorderSize );
+    };
+    void Album::SetBorderSize( wxString str )
+    {
+        return SetAttrStr( Design::AT_BorderSize, str);
     };
 
     wxString  Album::GetBorderFileName( )
@@ -94,7 +151,10 @@ namespace Design {
     {
         return  GetAttrStr( "Name" );
     };
-
+    void Album::SetDocName( wxString str )
+    {
+        return SetAttrStr( Design::AT_Name, str);
+    };
 
     bool Album::UpdateMinimumSize( )
     {
@@ -273,6 +333,11 @@ namespace Design {
         SetAttribute( xmlNode, AT_BorderFileName );
         SetAttribute( xmlNode, AT_BorderSize );
     }
+
+// <PageParameters PageWidth="215.9" PageHeight="279.4" TopMargin="7.62" BottomMargin="7.62" RightMargin="7.62" LeftMargin="19.05" BorderFileName="" BorderSize="4"/>
+//   <Font Family="" Style="" Size="" Weight="" Color="" Underline="" />
+
+  
     void Album::DumpLayout(  )
     {
         std::cout << "Album Parms w:"  << GetAttrStr( AT_PageWidth )

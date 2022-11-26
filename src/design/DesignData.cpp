@@ -201,7 +201,7 @@ void DesignData::LoadDefaultDocument()
     }
 
     //*****  
-    void DesignData::MakePage(LayoutBase* node)
+    void DesignData::MakePage(Design::LayoutBase* node)
     {
         Page* page = (Page*)GetPage( node );
         if ( page )
@@ -212,9 +212,6 @@ void DesignData::LoadDefaultDocument()
                 page->UpdateSizes( );
                 page->UpdatePositions( );
                 GetAlbumImagePanel()->Refresh( );
-
-                //GetAlbumImagePanel( )->Refresh();
-
             }
         }
     }

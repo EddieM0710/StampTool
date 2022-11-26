@@ -94,7 +94,7 @@ void drawBorder( wxDC& dc, double x, double y, double w, double h )
     pen.SetWidth( 1 );
     dc.SetPen( pen );
 
-    std::cout << "Border Width:" << w << "  Height:" << h << "\n";
+    //std::cout << "Border Width:" << w << "  Height:" << h << "\n";
 
     DrawRectangle( dc, x, y, w, h );
     DrawRectangle( dc, x + 2, y + 2, w - 4, h - 4 );

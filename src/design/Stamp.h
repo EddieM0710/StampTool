@@ -64,7 +64,7 @@ namespace Design {
             SetNodeType( AT_Stamp );
             SetObjectName( AlbumBaseNames[ GetNodeType( ) ] );
             m_title = GetAttrStr( Design::AT_Name );
-            SetShowID(true);
+            SetShowCatNbr(true);
             SetShowTitle(true);
             wxString height = GetAttrStr( Design::AT_Height );
             SetStampHeight( height ) ;
@@ -140,17 +140,17 @@ namespace Design {
 //        void UpdateTitleSize( double width );
 
         void Save( wxXmlNode* xmlNode );
-        // bool GetShowTitle(){ return String2Bool( GetAttrStr( AT_ShowTitle ) ); };
-        // void SetShowTitle( bool val ){ SetAttrStr( AT_ShowTitle, Bool2String( val) ); };
-        // bool GetShowID(){ return String2Bool( GetAttrStr( AT_ShowId ) ); };
-        // void SetShowID( bool val ){ SetAttrStr( AT_ShowId, Bool2String( val ) ); };
+        bool GetShowTitle(){ return String2Bool( GetAttrStr( AT_ShowTitle ) ); };
+        void SetShowTitle( bool val ){ SetAttrStr( AT_ShowTitle, Bool2String( val) ); };
+        bool GetShowCatNbr(){ return String2Bool( GetAttrStr( AT_ShowId ) ); };
+        void SetShowCatNbr( bool val ){ SetAttrStr( AT_ShowId, Bool2String( val ) ); };
         wxImage* GetStampImage();
 
-        // bool GetShowTitle(){ return String2Bool( GetAttrStr( AT_ShowTitle ) ); };
-        // void SetShowTitle( bool val ){ SetAttrStr( AT_ShowTitle, Bool2String( val) ); };
+        bool GetShowTitle(){ return String2Bool( GetAttrStr( AT_ShowTitle ) ); };
+        void SetShowTitle( bool val ){ SetAttrStr( AT_ShowTitle, Bool2String( val) ); };
 
-        // bool GetShowID(){ return String2Bool( GetAttrStr( AT_ShowId ) ); };
-        // void SetShowID( bool val ){ SetAttrStr( AT_ShowId, Bool2String( val ) ); };
+        bool GetShowCatNbr(){ return String2Bool( GetAttrStr( AT_ShowId ) ); };
+        void SetShowCatNbr( bool val ){ SetAttrStr( AT_ShowId, Bool2String( val ) ); };
 
     private:
 
@@ -189,7 +189,7 @@ namespace Design {
         //Title m_title;
 
         NodeStatus m_error[AT_NbrStampErrorTypes];
-        bool m_showID;
+        bool m_showCatNbr;
         wxSize m_idTextExtent;
         wxSize m_titleTextExtent;
         bool m_showTitle;

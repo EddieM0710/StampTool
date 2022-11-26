@@ -74,7 +74,7 @@ namespace Design {
         Album* GetAlbum( ) { return m_album; };
         void SetAlbum( Album* album ) { m_album = album; };
 
-        void MakePage( LayoutBase* node );
+        void MakePage( Design::LayoutBase* node );
 
         void SetDirty( bool state = true );
         bool isDirty( ) { return m_dirty; };

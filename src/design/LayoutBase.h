@@ -201,11 +201,11 @@ namespace Design {
         bool GetShowFrame(){ return String2Bool( GetAttrStr( AT_ShowFrame ) ); };
         void SetShowFrame( bool val ){ SetAttrStr( AT_ShowFrame, Bool2String( val ) ); };
 
-        bool GetShowImage(){ return String2Bool( GetAttrStr( AT_ShowImage ) ); };
-        void SetShowImage( bool val ){ SetAttrStr( AT_ShowImage, Bool2String( val ) ); };
+//        bool GetShowImage(){ return String2Bool( GetAttrStr( AT_ShowImage ) ); };
+//        void SetShowImage( bool val ){ SetAttrStr( AT_ShowImage, Bool2String( val ) ); };
 
-        bool GetShowID(){ return String2Bool( GetAttrStr( AT_ShowId ) ); };
-        void SetShowID( bool val ){ SetAttrStr( AT_ShowId, Bool2String( val ) ); };
+        bool GetShowCatNbr(){ return String2Bool( GetAttrStr( AT_ShowCatNbr ) ); };
+        void SetShowCatNbr( bool val ){ SetAttrStr( AT_ShowCatNbr, Bool2String( val ) ); };
 
 
         double GetTopContentPadding( ) { GetAttrDbl( AT_TopContentPadding ); };

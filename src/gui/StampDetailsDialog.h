@@ -57,7 +57,7 @@ class wxListCtrl;
 #define ID_REFRESHBUTTON 10005
 #define ID_VALIDATEBUTTON 10008
 #define ID_LISTCTRL 10006
-#define ID_IDCHECKBOX 10010
+#define ID_CATNBRCHECKBOX 10010
 #define ID_TITLECHECKBOX 10011
 
 #define SYMBOL_STAMPDETAILSDIALOG_STYLE wxCAPTION|wxRESIZE_BORDER|wxSYSTEM_MENU|wxCLOSE_BOX|wxTAB_TRAVERSAL
@@ -120,17 +120,17 @@ public:
     static bool ShowToolTips();
 void SetHeight(wxString height);
 void SetWidth(wxString width);
-void SetID(wxString id);
+void SetCatNbr(wxString catNbr);
 void SetName(wxString name);
 void SetDesignTreeID ( wxTreeItemId id );
-void SetShowID( bool state = false);
+void SetShowCatNbr( bool state = false);
 void SetShowTitle(bool state = false);
 wxString GetHeight( );
 wxString GetWidth( );
-wxString GetID( );
+wxString GetCatNbr( );
 wxString GetName( );
 
-bool GetShowID();
+bool GetShowCatNbr();
 bool GetShowTitle();
 
 bool IsNameModified();
@@ -139,20 +139,20 @@ bool IsHeightModified();
 bool IsWidthModified();
 void SetHeightModified( bool state = true );
 void SetWidthModified( bool state = true );
-void SetIDModified( bool state = true );
+void SetCatNbrModified( bool state = true );
 void SetNameModified( bool state = true );
 void RefreshFromCatalog();
 
 
 // StampDetailsDialog member variables
-    LabeledTextBox* m_id;
+    LabeledTextBox* m_catNbr;
     LabeledTextBox* m_name;
     LabeledTextBox* m_height;
     LabeledTextBox* m_width;
     wxButton* m_validate;
     wxListCtrl* m_statusList;
     wxTreeItemId m_designTreeID;
-    wxCheckBox* m_idCheckbox;
+    wxCheckBox* m_catNbrCheckbox;
     wxCheckBox* m_titleCheckbox;
 // StampDetailsDialog member variables
 

@@ -57,6 +57,10 @@ class wxListCtrl;
 #define ID_REFRESHBUTTON 10005
 #define ID_VALIDATEBUTTON 10008
 #define ID_LISTCTRL 10006
+#define ID_CATNBRDEFAULTCHECKBOX 10012
+#define ID_STAMPTITLEDEFAULTCHECKBOX 10013
+#define ID_ROWCOLTITLEDEFAULTCHECKBOX 10014
+#define ID_FRAMEDEFAULTCHECKBOX 10015
 #define SYMBOL_ALBUMDETAILSDIALOG_STYLE wxCAPTION|wxRESIZE_BORDER|wxSYSTEM_MENU|wxCLOSE_BOX|wxTAB_TRAVERSAL
 #define SYMBOL_ALBUMDETAILSDIALOG_TITLE _("AlbumDetailsDialog")
 #define SYMBOL_ALBUMDETAILSDIALOG_IDNAME ID_ALBUMDETAILSDIALOG
@@ -106,6 +110,55 @@ public:
 
     /// Should we show tooltips?
     static bool ShowToolTips();
+void SetName( wxString name );
+void SetPageHeight( wxString height );
+void SetPageWidth( wxString width );
+void SetTopMargin( wxString margin );
+void SetBottomMargin( wxString margin );
+void SetLeftMargin( wxString margin );
+void SetRightMargin( wxString margin );
+void SetBorderSize( wxString size );
+void SetShowCatNbr( bool state);
+void SetShowStampTitle( bool state);
+
+wxString GetName( );
+wxString GetPageHeight( ) ;
+wxString GetPageWidth(   );
+wxString GetTopMargin( );
+wxString GetBottomMargin( );
+wxString GetLeftMargin(  );
+wxString GetRightMargin( );
+wxString GetBorderSize( );
+bool GetShowCatNbr( );
+bool GetShowStampTitle( );
+
+bool IsNameModified( );
+bool IsPageHeightModified( ) ;
+bool IsPageWidthModified(   );
+bool IsTopMarginModified( );
+bool IsBottomMarginModified( );
+bool IsLeftMarginModified(  );
+bool IsRightMarginModified( );
+bool IsBorderSizeModified( );
+//bool IsShowCatNbrModified( );
+//bool IsShowStampTitleModified( );
+
+
+
+void SetNameModified( bool state ) ;
+void SetPageHeightModified( bool state ) ;
+void SetPageWidthModified( bool state );
+void SetTopMarginModified( bool state );
+void SetBottomMarginModified( bool state );
+void SetLeftMarginModified( bool state );
+void SetRightMarginModified( bool state );
+void SetBorderSizeModified( bool state );
+//void SetShowCatNbrModified( bool state );
+//void SetShowStampTitleModified( bool state );
+
+void OnOkClick( wxCommandEvent& event );
+void OnCancelClick( wxCommandEvent& event );
+
 
 //// AlbumDetailsDialog member variables
     LabeledTextBox* m_name;
@@ -116,7 +169,11 @@ public:
     LabeledTextBox* m_rightMargin;
     LabeledTextBox* m_leftMargin;
     LabeledTextBox* m_borderSize;
-    wxButton* m_validate;
+
+wxCheckBox* m_catNbrCheckbox;
+wxCheckBox* m_stampTitleCheckbox;
+   
+wxButton* m_validate;
     wxListCtrl* m_statusList;
 //// AlbumDetailsDialog member variables
 };

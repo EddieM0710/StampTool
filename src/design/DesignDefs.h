@@ -78,21 +78,37 @@ namespace Design {
         AT_YPos,
         AT_MinHeight,
         AT_MinWidth,
-        AT_ID,
+        AT_CatNbr,
         AT_Link,
         AT_ShowTitle,
-        AT_ShowId,
+        AT_ShowCatNbr,
         AT_ShowFrame,
         AT_ShowImage,
         AT_TopContentPadding,
         AT_BottomContentPadding,
         AT_LeftContentPadding,
         AT_RightContentPadding,
+
         AT_NbrAttrTypes,
         AT_NOTYPE
     } AlbumAttrType;
 
 extern const char* AttrNameStrings[ AT_NbrAttrTypes ] ;
+
+    typedef enum
+    {
+        FT_Type = 0,
+        FT_Name,
+        FT_Family,
+        FT_Size,
+        FT_Weight,
+        FT_Color,
+        FT_Style,
+        FT_NbrAttrTypes
+    } FontAttrType;
+extern const char* AttrFontStrings[ FT_NbrAttrTypes ] ;
+
+
 
     typedef enum
     {

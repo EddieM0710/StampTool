@@ -97,6 +97,16 @@ public:
         m_element = data.GetNodeElement();
         m_stampLink = data.GetStampLink( );
     }
+
+    ~DesignTreeItemData()
+    {
+        m_ok = 0;
+        m_type = Design::AT_None;
+        m_desc = "";
+        m_element = 0;
+        m_stampLink = 0;
+    }
+
     /**
      *
      * @return {wxString}   :
@@ -377,6 +387,7 @@ public:
     //  AlbumBase* MoveStamp( wxTreeItemId itemSrc, wxTreeItemId itemDst );
 
     Design::LayoutBase* GetSelectedNode( );
+    void ShowAlbumDetails( wxTreeItemId treeID, Design::AlbumBase* node );
     void ShowStampDetails( wxTreeItemId id, Design::AlbumBase* node );
     void ShowRowDetails( wxTreeItemId id, Design::AlbumBase* node );
     void ShowColDetails( wxTreeItemId id, Design::AlbumBase* node );

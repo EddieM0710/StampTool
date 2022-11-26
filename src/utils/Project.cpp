@@ -226,7 +226,8 @@ namespace Utils {
             }
             else if ( !name.Cmp( "ImagePath" ) )
             {
-                GetSettings( )->SetImageDirectory( MakeFileAbsolute( val ) );
+                m_imagePath =  MakeFileAbsolute( val ) ;
+                GetSettings( )->SetImageDirectory( m_imagePath );
             }
             else if ( !name.Cmp( "Catalog" ) )
             {

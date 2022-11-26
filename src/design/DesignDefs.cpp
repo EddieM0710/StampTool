@@ -101,6 +101,15 @@ namespace Design {
             "TitlePage",
             "Stamp" };
 
+    const char* AttrFontStrings [ FT_NbrAttrTypes ] = {
+        "Name",
+        "Family",
+        "Size",
+        "Weight",
+        "Color",
+        "Style"};
+   
+
     const char* AttrNameStrings[ AT_NbrAttrTypes ] = {
             "Name",
             "PageWidth",
@@ -117,10 +126,10 @@ namespace Design {
             "YPos",
             "MinHeight",
             "MinWidth",
-            "ID",
+            "CatNbr",
             "Link",
             "ShowTitle",
-            "ShowId",
+            "ShowCatNbr",
             "ShowFrame",
             "ShowImage",
             "TopContentPadding",
@@ -214,7 +223,18 @@ namespace Design {
                     while ( id.IsOk() && data )
                     {
                         Design::AlbumBaseType type = data->GetType();
-                        if ( type == AT_Page)
+                        if ( type == Design::AT_Album )
+                        {
+                            wxTreeItemIdValue cookie;
+                            wxTreeItemId childID = treeCtrl->GetFirstChild( id, cookie);
+                            if ( childID.IsOk() )
+                            {
+                                Design::AlbumBaseType childType = treeCtrl->GetItemType( childID );
+                                data = (DesignTreeItemData*)treeCtrl->GetItemData(childID);
+                                return (LayoutBase*) data->GetNodeElement();
+                            }
+                        }
+                        else if ( type == AT_Page)
                         {
                             return (LayoutBase*) data->GetNodeElement();
                         }

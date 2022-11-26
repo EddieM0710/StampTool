@@ -183,7 +183,7 @@ namespace Design {
 
 
 
-        wxString stampID = GetAttrStr( Design::AT_ID );
+        wxString stampID = GetAttrStr( Design::AT_CatNbr );
 
         wxString link = GetGeneratorData( )->GetImageFilename( stampID );
 
@@ -327,7 +327,7 @@ namespace Design {
         wxString filename;
         wxImage* image;
         bool fileOK = false;
-        wxString fileID = GetAttrStr( Design::AT_ID );
+        wxString fileID = GetAttrStr( Design::AT_CatNbr );
         if ( fileID.IsEmpty( ) )
         {
             fileOK = false;
@@ -409,7 +409,7 @@ namespace Design {
 
         DrawTitle( dc, m_title, pos, size );
 
-        if ( m_showID )
+        if ( m_showCatNbr )
         {
         double xPos2 = xPos + m_stampFrame.GetXPos( ) + m_stampImageFrame.GetXPos( );
 
@@ -426,7 +426,7 @@ namespace Design {
         wxFont* font = new wxFont( *wxNORMAL_FONT );
         font->SetPointSize( 8 );
         dc.SetFont( *font );
-        wxString id = GetAttrStr( AT_ID );
+        wxString id = GetAttrStr( AT_CatNbr );
         id.Trim( );
         id.Trim( false );
         int pos = id.First( ' ' );
@@ -445,13 +445,13 @@ namespace Design {
 
     void Stamp::Save( wxXmlNode* xmlNode )
     {
-        SetAttribute( xmlNode, AT_ID );
+        SetAttribute( xmlNode, AT_CatNbr );
         SetAttribute( xmlNode, AT_Name );
         SetAttribute( xmlNode, AT_Width );
         SetAttribute( xmlNode, AT_Height );
         SetAttribute( xmlNode, AT_Link );
         SetAttribute( xmlNode, AT_ShowTitle );
-        SetAttribute( xmlNode, AT_ShowId );
+        SetAttribute( xmlNode, AT_ShowCatNbr );
     }
 
 }

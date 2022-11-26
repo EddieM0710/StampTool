@@ -28,7 +28,7 @@
 #include "design/AlbumBase.h"
 #include "design/DesignDefs.h"
 #include "utils/Project.h"
-
+#include <wx/font.h>
 namespace Design {
 
     /**
@@ -105,12 +105,15 @@ namespace Design {
          **************************************************/
         double GetHeight( );
 
+
         /**
          * @brief Get the Page Width
          *
          * @return double
          **************************************************/
         double GetPageWidth( );
+        wxString GetPageWidthStr( );
+        void SetPageWidth( wxString str );
 
         /**
          * @brief Get the Page Height
@@ -118,6 +121,8 @@ namespace Design {
          * @return double
          **************************************************/
         double GetPageHeight( );
+        wxString GetPageHeightStr( );
+        void SetPageHeight( wxString str );
 
         /**
          * @brief Get the Top Margin
@@ -125,6 +130,8 @@ namespace Design {
          * @return double
          **************************************************/
         double GetTopMargin( );
+        wxString GetTopMarginStr();
+        void SetTopMargin( wxString str );
 
         /**
          * @brief Get the Bottom Margin
@@ -132,6 +139,8 @@ namespace Design {
          * @return double
          **************************************************/
         double GetBottomMargin( );
+        wxString GetBottomMarginStr();
+        void SetBottomMargin( wxString str );
 
         /**
          * @brief Get the Right Margin
@@ -139,6 +148,8 @@ namespace Design {
          * @return double
          **************************************************/
         double GetRightMargin( );
+        wxString GetRightMarginStr();
+        void SetRightMargin( wxString str );
 
         /**
          * @brief Get the Left Margin
@@ -146,6 +157,8 @@ namespace Design {
          * @return double
          **************************************************/
         double GetLeftMargin( );
+        wxString GetLeftMarginStr();
+        void SetLeftMargin( wxString str );
 
         /**
          * @brief Get the Border Size
@@ -153,6 +166,8 @@ namespace Design {
          * @return double
          **************************************************/
         double GetBorderSize( );
+        wxString GetBorderSizeStr();
+        void SetBorderSize( wxString str );
 
         /**
          * @brief Get the Border File Name
@@ -168,6 +183,7 @@ namespace Design {
          * @return wxString
          **************************************************/
         wxString GetDocName( );
+        void SetDocName( wxString str );
 
 
         /**
@@ -188,6 +204,8 @@ namespace Design {
         void DumpLayout(   );
 
     private:
+        wxFont* m_defaultTitleFont;
+        wxFont* m_defaultCatNbrFont;
 
     };
 }

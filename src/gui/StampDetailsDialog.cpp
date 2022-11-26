@@ -125,14 +125,14 @@ StampDetailsDialog::~StampDetailsDialog( )
 void StampDetailsDialog::Init( )
 {
     // StampDetailsDialog member initialisation
-    m_id = NULL;
+    m_catNbr = NULL;
     m_name = NULL;
     m_height = NULL;
     m_width = NULL;
     m_validate = NULL;
     m_statusList = NULL;
     m_designTreeID = NULL;
-    m_idCheckbox = NULL;
+    m_catNbrCheckbox = NULL;
     m_titleCheckbox = NULL;
 
     // StampDetailsDialog member initialisation
@@ -158,13 +158,13 @@ void StampDetailsDialog::CreateControls( )
     wxBoxSizer* itemBoxSizer4 = new wxBoxSizer( wxVERTICAL );
     itemBoxSizer1->Add( itemBoxSizer4, 0, wxGROW | wxALL, 5 );
 
-    m_id = new LabeledTextBox( itemDialog1, ID_IDLABELTEXTBOX, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
-    m_id->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
-    itemBoxSizer4->Add( m_id, 0, wxGROW | wxALL, 5 );
+    m_catNbr = new LabeledTextBox( itemDialog1, ID_IDLABELTEXTBOX, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
+    m_catNbr->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
+    itemBoxSizer4->Add( m_catNbr, 0, wxGROW | wxALL, 5 );
 
-    m_idCheckbox = new wxCheckBox( itemDialog1, ID_IDCHECKBOX, _( "Show ID" ), wxDefaultPosition, wxDefaultSize, 0 );
-    m_idCheckbox->SetValue( false );
-    itemBoxSizer4->Add( m_idCheckbox, 0, wxALIGN_LEFT | wxALL, 5 );
+    m_catNbrCheckbox = new wxCheckBox( itemDialog1, ID_CATNBRCHECKBOX, _( "Show ID" ), wxDefaultPosition, wxDefaultSize, 0 );
+    m_catNbrCheckbox->SetValue( false );
+    itemBoxSizer4->Add( m_catNbrCheckbox, 0, wxALIGN_LEFT | wxALL, 5 );
 
     wxBoxSizer* itemBoxSizer8 = new wxBoxSizer( wxVERTICAL );
     itemBoxSizer1->Add( itemBoxSizer8, 1, wxGROW | wxALL, 5 );
@@ -216,7 +216,7 @@ void StampDetailsDialog::CreateControls( )
 
     // StampDetailsDialog content construction
 
-    m_id->SetLabel( "ID" );
+    m_catNbr->SetLabel( "Catalog Nbr" );
     m_name->SetLabel( "Name" );;
     m_height->SetLabel( "Height" );;
     m_width->SetLabel( "Width" );;
@@ -270,11 +270,11 @@ void StampDetailsDialog::SetWidth( wxString width )
     m_width->SetModified( false );
 }
 
-void StampDetailsDialog::SetID( wxString id )
+void StampDetailsDialog::SetCatNbr( wxString catNbr )
 {
 
-    m_id->SetValue( id );
-    m_id->SetModified( false );
+    m_catNbr->SetValue( catNbr );
+    m_catNbr->SetModified( false );
 }
 
 void StampDetailsDialog::SetName( wxString name ) 
@@ -283,9 +283,9 @@ void StampDetailsDialog::SetName( wxString name )
     m_name->SetModified( false );
 }
 
-void StampDetailsDialog::SetShowID( bool state ) 
+void StampDetailsDialog::SetShowCatNbr( bool state ) 
 {
-    m_idCheckbox->SetValue( state );
+    m_catNbrCheckbox->SetValue( state );
 }
 
 void StampDetailsDialog::SetShowTitle( bool state ) 
@@ -310,9 +310,9 @@ wxString StampDetailsDialog::GetWidth( )
     return m_width->GetValue( );
 }
 
-wxString StampDetailsDialog::GetID( ) 
+wxString StampDetailsDialog::GetCatNbr( ) 
 {
-    return m_id->GetValue( );
+    return m_catNbr->GetValue( );
 }
 
 wxString StampDetailsDialog::GetName( ) 
@@ -320,9 +320,9 @@ wxString StampDetailsDialog::GetName( )
     return m_name->GetValue( );
 }
 
-bool StampDetailsDialog::GetShowID( ) 
+bool StampDetailsDialog::GetShowCatNbr( ) 
 {
-    return m_idCheckbox->IsChecked( );
+    return m_catNbrCheckbox->IsChecked( );
 }
 
 bool StampDetailsDialog::GetShowTitle( ) 
@@ -337,7 +337,7 @@ bool StampDetailsDialog::IsNameModified( )
 
 bool StampDetailsDialog::IsIDModified( ) 
 {
-    return m_id->IsModified( );
+    return m_catNbr->IsModified( );
 }
 
 bool StampDetailsDialog::IsHeightModified( ) 
@@ -360,9 +360,9 @@ void StampDetailsDialog::SetWidthModified( bool state )
     m_width->SetModified( state );
 }
 
-void StampDetailsDialog::SetIDModified( bool state ) 
+void StampDetailsDialog::SetCatNbrModified( bool state ) 
 {
-    m_id->SetModified( state );
+    m_catNbr->SetModified( state );
 }
 
 void StampDetailsDialog::SetNameModified( bool state ) 
@@ -392,10 +392,10 @@ void StampDetailsDialog::RefreshFromCatalog( )
                 SetWidthModified( );
                 SetName( stamp.GetName( ) );
                 SetNameModified( );
-                SetID( stamp.GetID( ) );
-                SetIDModified( );
+                SetCatNbr( stamp.GetID( ) );
+                SetCatNbrModified( );
                 wxString label;
-                label = GetID( ) + " - " + GetName( );
+                label = GetCatNbr( ) + " - " + GetName( );
                 GetDesignTreeCtrl( )->SetItemText( m_designTreeID, label );
             }
         }

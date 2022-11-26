@@ -26,7 +26,12 @@
 #include "wx/imaglist.h"
 ////@end includes
 
-#include "AlbumDetailsDialog.h"
+#include "gui/AlbumDetailsDialog.h"
+#include "gui/LabeledTextBox.h"
+#include "gui/CatalogTreeCtrl.h"
+#include "utils/StampList.h"
+#include "Defs.h"
+#include "wx/treectrl.h"
 
 ////@begin XPM images
 
@@ -48,6 +53,8 @@ BEGIN_EVENT_TABLE( AlbumDetailsDialog, wxDialog )
 
 ////@begin AlbumDetailsDialog event table entries
 ////@end AlbumDetailsDialog event table entries
+    EVT_BUTTON( wxID_CANCEL, AlbumDetailsDialog::OnCancelClick )
+    EVT_BUTTON( wxID_OK, AlbumDetailsDialog::OnOkClick )
 
 END_EVENT_TABLE()
 
@@ -182,6 +189,27 @@ void AlbumDetailsDialog::CreateControls()
     m_borderSize->SetExtraStyle(wxWS_EX_VALIDATE_RECURSIVELY);
     itemBoxSizer3->Add(m_borderSize, 1, wxGROW|wxALL, 5);
 
+
+    wxBoxSizer* itemBoxSizer20 = new wxBoxSizer(wxHORIZONTAL);
+    itemBoxSizer1->Add(itemBoxSizer20, 0, wxALIGN_CENTER_HORIZONTAL|wxALL, 0);
+
+    m_catNbrCheckbox = new wxCheckBox( itemDialog1, ID_CATNBRDEFAULTCHECKBOX, _( "Show Catalog Nbr" ), wxDefaultPosition, wxDefaultSize, 0 );
+    m_catNbrCheckbox->SetValue( true );
+    itemBoxSizer20->Add( m_catNbrCheckbox, 0, wxALIGN_LEFT | wxALL, 5 );
+
+    m_stampTitleCheckbox = new wxCheckBox( itemDialog1, ID_STAMPTITLEDEFAULTCHECKBOX, _( "Show StampTitle" ), wxDefaultPosition, wxDefaultSize, 0 );
+    m_stampTitleCheckbox->SetValue( true );
+    itemBoxSizer20->Add( m_stampTitleCheckbox, 0, wxALIGN_LEFT | wxALL, 5 );
+
+
+    // m_rowColTitleCheckbox = new wxCheckBox( itemDialog1, ID_ROWCOLTITLEDEFAULTCHECKBOX, _( "Show Row/Col Title" ), wxDefaultPosition, wxDefaultSize, 0 );
+    // m_rowColTitleCheckbox->SetValue( false );
+    // itemBoxSizer20->Add( m_rowColTitleCheckbox, 0, wxALIGN_LEFT | wxALL, 5 );
+
+    // m_frameCheckbox = new wxCheckBox( itemDialog1, ID_FRAMEDEFAULTCHECKBOX, _( "Show Layout Frames" ), wxDefaultPosition, wxDefaultSize, 0 );
+    // m_frameCheckbox->SetValue( false );
+    // itemBoxSizer20->Add( m_frameCheckbox, 0, wxALIGN_LEFT | wxALL, 5 );
+
     wxBoxSizer* itemBoxSizer13 = new wxBoxSizer(wxHORIZONTAL);
     itemBoxSizer1->Add(itemBoxSizer13, 0, wxALIGN_CENTER_HORIZONTAL|wxALL, 0);
 
@@ -209,6 +237,18 @@ void AlbumDetailsDialog::CreateControls()
     itemBoxSizer19->Add(itemButton21, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
 
 ////@end AlbumDetailsDialog content construction
+
+
+ 
+    m_name->SetLabel( "Name" );
+    m_height->SetLabel( "Page Height" );
+    m_width->SetLabel( "Page Name" );
+    m_topMargin->SetLabel( "Top Margin" );
+    m_bottomMargin->SetLabel( "Bottom Margin" );
+    m_rightMargin->SetLabel( "Right Margin" );
+    m_leftMargin->SetLabel( "Left Margin" );
+    m_borderSize->SetLabel( "Border Size" );
+
 }
 
 
@@ -246,3 +286,211 @@ wxIcon AlbumDetailsDialog::GetIconResource( const wxString& name )
     return wxNullIcon;
 ////@end AlbumDetailsDialog icon retrieval
 }
+
+void AlbumDetailsDialog::SetName( wxString name )
+{
+    m_name->SetValue( name );
+    m_name->SetModified( false );
+}
+void AlbumDetailsDialog::SetPageHeight( wxString height )
+{
+    m_height->SetValue( height );
+    m_height->SetModified( false );
+}
+void AlbumDetailsDialog::SetPageWidth( wxString width )
+{
+    m_width->SetValue( width );
+    m_width->SetModified( false );
+}
+void AlbumDetailsDialog::SetTopMargin( wxString topMargin )
+{
+    m_topMargin->SetValue( topMargin );
+    m_topMargin->SetModified( false );
+}
+void AlbumDetailsDialog::SetBottomMargin( wxString bottomMargin )
+{
+    m_bottomMargin->SetValue( bottomMargin );
+    m_bottomMargin->SetModified( false );
+}
+void AlbumDetailsDialog::SetLeftMargin( wxString leftMargin )
+{
+    m_leftMargin->SetValue( leftMargin );
+    m_leftMargin->SetModified( false );
+}
+void AlbumDetailsDialog::SetRightMargin( wxString rightMargin )
+{
+    m_rightMargin->SetValue( rightMargin );
+    m_rightMargin->SetModified( false );
+}
+void AlbumDetailsDialog::SetBorderSize( wxString borderSize )
+{
+    m_borderSize->SetValue( borderSize );
+    m_borderSize->SetModified( false );
+}
+
+wxString AlbumDetailsDialog::GetName( )
+{
+    return m_name->GetValue( );
+}
+wxString AlbumDetailsDialog::GetPageHeight( ) 
+{
+    return m_height->GetValue( );
+}
+wxString AlbumDetailsDialog::GetPageWidth(   )
+{
+    return m_width->GetValue( );
+}
+wxString AlbumDetailsDialog::GetTopMargin( )
+{
+    return m_topMargin->GetValue( );
+}
+wxString AlbumDetailsDialog::GetBottomMargin( )
+{
+    return m_bottomMargin->GetValue( );
+}
+wxString AlbumDetailsDialog::GetLeftMargin(  )
+{
+    return m_leftMargin->GetValue( );
+}
+wxString AlbumDetailsDialog::GetRightMargin( )
+{
+    return m_rightMargin->GetValue( );
+}
+wxString AlbumDetailsDialog::GetBorderSize( )
+{
+    return m_borderSize->GetValue( );
+}
+
+
+bool AlbumDetailsDialog::IsNameModified( ) 
+{
+    return m_name->IsModified( );
+}
+
+
+bool AlbumDetailsDialog::IsPageHeightModified( )
+{
+    return m_height->IsModified( );
+}
+bool AlbumDetailsDialog::IsPageWidthModified(   )
+{
+    return m_width->IsModified( );
+}
+bool AlbumDetailsDialog::IsTopMarginModified( )
+{
+    return m_topMargin->IsModified( );
+}
+bool AlbumDetailsDialog::IsBottomMarginModified( )
+{
+    return m_bottomMargin->IsModified( );
+}
+bool AlbumDetailsDialog::IsLeftMarginModified(  )
+{
+    return m_leftMargin->IsModified( );
+}
+bool AlbumDetailsDialog::IsRightMarginModified( )
+{
+    return m_rightMargin->IsModified( );
+}
+bool AlbumDetailsDialog::IsBorderSizeModified( )
+{
+    return m_borderSize->IsModified( );
+}
+
+void AlbumDetailsDialog::SetNameModified( bool state ) 
+{
+    m_name->SetModified( state );
+}
+
+void AlbumDetailsDialog::SetPageHeightModified( bool state ) 
+{
+    m_height->SetModified( state );
+}
+
+void AlbumDetailsDialog::SetPageWidthModified( bool state ) 
+{
+    m_width->SetModified( state );
+}
+
+void AlbumDetailsDialog::SetTopMarginModified( bool state ) 
+{
+    m_topMargin->SetModified( state );
+}
+
+void AlbumDetailsDialog::SetBottomMarginModified( bool state ) 
+{
+    m_bottomMargin->SetModified( state );
+}
+
+void AlbumDetailsDialog::SetLeftMarginModified( bool state ) 
+{
+    m_leftMargin->SetModified( state );
+}
+
+void AlbumDetailsDialog::SetRightMarginModified( bool state ) 
+{
+    m_rightMargin->SetModified( state );
+}
+
+void AlbumDetailsDialog::SetBorderSizeModified( bool state ) 
+{
+    m_borderSize->SetModified( state );
+}
+void AlbumDetailsDialog::SetShowCatNbr( bool state)
+{
+    m_catNbrCheckbox->SetValue( state );
+}
+void AlbumDetailsDialog::SetShowStampTitle( bool state)
+{
+    m_stampTitleCheckbox->SetValue( state );
+}
+bool AlbumDetailsDialog::GetShowCatNbr( )
+{
+    return m_catNbrCheckbox->IsChecked( );
+}
+bool AlbumDetailsDialog::GetShowStampTitle( )
+{
+    return m_stampTitleCheckbox->GetValue( );
+}
+// bool AlbumDetailsDialog::IsShowCatNbrModified( )
+// {
+//     return m_catNbrCheckbox->IsModified( );
+// }
+// bool AlbumDetailsDialog::IsShowStampTitleModified( )
+// {
+//     return m_stampTitleCheckbox->IsModified( );
+// }
+// void AlbumDetailsDialog::SetShowCatNbrModified( bool state ) 
+// {
+//     m_catNbrCheckbox->SetModified( state );
+// }
+// void AlbumDetailsDialog::SetShowStampTitleModified( bool state ) 
+// {
+//     m_stampTitleCheckbox->SetModified( state );
+// }
+
+/*
+ * wxEVT_COMMAND_BUTTON_CLICKED event handler for wxID_CANCEL
+ */
+
+void AlbumDetailsDialog::OnCancelClick( wxCommandEvent& event )
+{
+    // wxEVT_COMMAND_BUTTON_CLICKED event handler for wxID_CANCEL in StampDetailsDialog.
+        // Before editing this code, remove the block markers.
+    event.Skip( );
+    // wxEVT_COMMAND_BUTTON_CLICKED event handler for wxID_CANCEL in StampDetailsDialog. 
+}
+
+
+/*
+ * wxEVT_COMMAND_BUTTON_CLICKED event handler for wxID_OK
+ */
+
+void AlbumDetailsDialog::OnOkClick( wxCommandEvent& event )
+{
+    // wxEVT_COMMAND_BUTTON_CLICKED event handler for wxID_OK in StampDetailsDialog.
+        // Before editing this code, remove the block markers.
+    event.Skip( );
+    // wxEVT_COMMAND_BUTTON_CLICKED event handler for wxID_OK in StampDetailsDialog. 
+}
+

@@ -1,7 +1,7 @@
 /**
  * @file ImagePanel.h
  * @author Eddie Monroe ()
- * @brief This is the class that manages the image displayed on the DescriptionPanel.
+ * @brief This is the class that manages the image displayed on the StampDescriptionPanel.
  * @version 0.1
  * @date 2021-02-25
  *
@@ -54,7 +54,7 @@ enum
 };
 
 /**
- * @brief This is the class that manages the image displayed on the DescriptionPanel.
+ * @brief This is the class that manages the image displayed on the StampDescriptionPanel.
  *
  **************************************************/
 class ImagePanel: public wxScrolledWindow

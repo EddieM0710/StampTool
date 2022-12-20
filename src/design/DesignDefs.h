@@ -28,6 +28,7 @@
 #include <wx/string.h>
 #include "wx/xml/xml.h"
 #include <wx/gdicmn.h>
+#include <wx/font.h>
 
 namespace Design {
 
@@ -90,18 +91,21 @@ namespace Design {
         AT_LeftContentPadding,
         AT_RightContentPadding,
         AT_FontType,
-        AT_FontName,
-        AT_FontFamily,
-        AT_FontSize,
-        AT_FontWeight,
+//        AT_FontName,
+//        AT_FontFamily,
+        AT_NativeFontString,
+//        AT_FontSize,
+//        AT_FontWeight,
         AT_FontColor,
-        AT_FontStyle,
+//        AT_FontStyle,
         AT_NbrAttrTypes,
         AT_NOTYPE
     } AlbumAttrType;
 
 extern const char* AttrNameStrings[ AT_NbrAttrTypes ] ;
 
+
+    AlbumAttrType FindAlbumAttrType( wxString name );
 
     typedef enum
     {
@@ -126,6 +130,72 @@ extern const char* AttrNameStrings[ AT_NbrAttrTypes ] ;
     // Screen units are in pixels. Album Design elements are in mm.
     extern wxRealPoint  PpMM;
 
+    
+    const static int UnknownFontVal = -1;
+
+    typedef enum { 
+        AT_UnspecifiedFontType, 
+        AT_TextFontType, 
+        AT_TitleFontType, 
+        AT_CatNbrFontType,
+        AT_NbrFontUsageTypes
+    } AT_FontUsageType;
+
+    extern wxString AT_FontUsageTypeStrings[ AT_NbrFontUsageTypes ];
+
+    AT_FontUsageType FindFontUsageType( wxString name );
+
+    typedef enum  {
+        AT_Default,
+        AT_Decorative,
+        AT_Roman,
+        AT_Script,
+        AT_Swiss,
+        AT_Modern,
+        AT_Teletype,
+        AT_NbrFontFamilies
+    }AT_FontFamilyType;
+
+    bool IsOK(AT_FontFamilyType type);
+    extern wxFontFamily AT_FontFamilyMap[ AT_NbrFontFamilies ];
+    extern wxString AT_FontFamilyStrings[ AT_NbrFontFamilies ];
+    AT_FontFamilyType GetATFamily(wxFontFamily wxVal ) ;
+    AT_FontFamilyType GetFamilyFromStr( wxString family );
+
+
+    typedef enum {
+        AT_Unknown = -1,
+        AT_Normal,
+        AT_Italic,
+        AT_Slant,
+        AT_Max,
+        AT_NbrFontStyles
+    } AT_FontStyleType;
+
+    bool IsOK(AT_FontStyleType type);
+    extern wxFontStyle AT_FontStyleMap[ AT_NbrFontStyles ];
+    extern wxString AT_FontStyleStrings[ AT_NbrFontStyles ];
+    AT_FontStyleType GetATStyle( wxFontStyle wxVal );
+
+    typedef enum  {
+        AT_InvalidWeight,
+        AT_ThinWeight,
+        AT_ExtraLightWeight,
+        AT_LightWeight,
+        AT_NormalWeight,
+        AT_MediumWeight,
+        AT_SemiBoldWeight,
+        AT_BoldWeight,
+        AT_ExtraBoldWeight,
+        AT_HeavyWeight,
+        AT_ExtraHeavyWeight,
+        AT_NbrFontWeights
+    }AT_FontWeightType;
+
+    bool IsOK(AT_FontWeightType type);
+    extern wxFontWeight AT_FontWeightMap[ AT_NbrFontWeights ];
+    extern wxString AT_FontWeightStrings[ AT_NbrFontWeights ];
+    AT_FontWeightType GetATWeight( wxFontWeight wxVal );
 
 
 }

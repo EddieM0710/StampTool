@@ -47,7 +47,6 @@ namespace Design {
             m_lineNbr = ele->GetLineNumber( );
             LoadAttributes( ele );
             m_text = ele->GetNodeContent( );
-//            LoadChildren( ele );
         }
         else
         {

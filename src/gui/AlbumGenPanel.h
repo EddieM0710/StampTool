@@ -35,7 +35,7 @@
 
 #include "gui/GuiDefs.h"
 
-#include "gui/AlbumSplitterWindow.h"
+#include "gui/AlbumDesignPanel.h"
 //#include "CatalogDefs.h"
 /*!
  * Forward declarations
@@ -44,7 +44,8 @@
 class CatalogPanel;
 class wxNotebook;
 class wxFlexGridSizer;
-class DescriptionPanel;
+class StampDescriptionPanel;
+class GenerateList;
 //class AlbumGenDialog;
 
 //namespace Catalog { class Stamp;}
@@ -62,6 +63,7 @@ class DescriptionPanel;
 #define ID_TITLETEXTCTRL ID_ALBUMGENERATORPANEL + 7
 #define ID_ALBUMGENERATOR ID_ALBUMGENERATORPANEL + 8
 #define ID_ALBUMSPLITTERWINDOWFOREIGN ID_ALBUMGENERATORPANEL + 9
+#define ID_GENERTELISTFOREIGN ID_ALBUMGENERATORPANEL + 10
 #define SYMBOL_ALBUMGENERATORPANEL_STYLE wxTAB_TRAVERSAL
 #define SYMBOL_ALBUMGENERATORPANEL_TITLE _( "AlbumGenPanel" )
 //#define SYMBOL_ALBUMGENERATORPANEL_IDNAME ID_ALBUMGENERATORPANEL
@@ -71,7 +73,7 @@ class DescriptionPanel;
 /**
  * @brief AlbumGenPanel is the main window class for the application,
  * It contains a splitter window with the CatalogTreeCtrl on one side and a 
- * wxNotebook on the other with the the DescriptionPanel and wxScrolledWindow m_galleryPage as pages.
+ * wxNotebook on the other with the the StampDescriptionPanel and wxScrolledWindow m_galleryPage as pages.
  * m_galleryPage manages a list of GalleryImagePanel images. 
  * AlbumGenPanel inherits from wxPanel.
  */
@@ -140,6 +142,8 @@ class AlbumGenPanel : public wxPanel
 
     // AlbumGenPanel event handler declarations
 
+    bool ShouldShowStates();
+
     // wxEVT_COMMAND_NOTEBOOK_PAGE_CHANGED event handler for ID_NOTEBOOK
     void OnNotebookPageChanged( wxNotebookEvent& event );
 
@@ -174,7 +178,7 @@ class AlbumGenPanel : public wxPanel
 
 
     CatalogPanel* GetCatalogPanel(){ return m_mngCatalogData;};
-    AlbumPanel* GetAlbumPanel(){ m_albumSplitterWindow->GetAlbumPanel();};
+    AlbumDesignTreePanel* GetAlbumDesignTreePanel(){ m_albumDesignPanel->GetAlbumDesignTreePanel();};
    // * GetCatalogTree( ) { return m_catalogTreeCtrl; };
 
     // AlbumGenPanel member variables
@@ -186,8 +190,9 @@ class AlbumGenPanel : public wxPanel
     wxTreeItemId m_draggedItem;
 //    Catalog::Stamp* m_stamp;
     wxTreeItemId m_currentItem;
-    AlbumSplitterWindow* m_albumSplitterWindow;
-    DescriptionPanel* m_descriptionPanel;
+    AlbumDesignPanel* m_albumDesignPanel;
+    StampDescriptionPanel* m_stampDescriptionPanel;
+    GenerateList* m_generateListPanel;
 };
 
 #endif

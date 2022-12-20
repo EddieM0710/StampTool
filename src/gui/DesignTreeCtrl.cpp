@@ -488,14 +488,16 @@ void DesignTreeCtrl::LoadTree( )
 {
     wxXmlDocument* doc = GetDesignData( )->GetDoc( );
     wxXmlNode* docRoot = doc->GetRoot( );
+    if ( docRoot)
+    {
+        AddChild( 0, docRoot );
+        GetDesignData( )->UpdateAlbum( );
+        wxTreeItemId id = FindFirstStampChild( GetRootItem( ) );
+        if ( id.IsOk( ) ) SelectItem( id );
+        GetAlbumImagePanel( )->Refresh( );
 
-    AddChild( 0, docRoot );
-    GetDesignData( )->UpdateAlbum( );
-    wxTreeItemId id = FindFirstStampChild( GetRootItem( ) );
-    if ( id.IsOk( ) ) SelectItem( id );
-    GetAlbumImagePanel( )->Refresh( );
-
-    ExpandAll( );
+        ExpandAll( );
+    }
 }
 
 //*****

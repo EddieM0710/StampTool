@@ -31,23 +31,26 @@
 
 namespace Design {
 
-    class AlbumBase;
+    //   class AlbumBase;
 
-    //typedef std::vector<AlbumBase*> ChildList;
+       //typedef std::vector<AlbumBase*> ChildList;
 
-        /**
-         * @brief Base class for all layout objects. The layout objects are
-         * initialy loaded from the layout XML.
-         *
-         **************************************************/
-    class AlbumBase : public XMLBase
+           /**
+            * @brief Base class for all layout objects. The layout objects are
+            * initialy loaded from the layout XML.
+            *
+            **************************************************/
+    class AlbumBase: public XMLBase
     {
     public:
         /**
          * @brief Unused; Construct a new Album Design Object object
          *
          **************************************************/
-        AlbumBase( ) {  };
+        AlbumBase( )
+        {
+
+        };
 
         ~AlbumBase( );
 

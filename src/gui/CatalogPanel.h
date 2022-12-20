@@ -32,6 +32,7 @@
 // includes
 #include "wx/treectrl.h"
 // includes
+#include <wx/tglbtn.h>
 
 #include "Defs.h"
 #include "gui/GuiDefs.h"
@@ -56,6 +57,10 @@ class Stamp;
 #define ID_CATALOGDATAPANEL 10000
 #define ID_TEXTCTRL 10007
 #define ID_TREECTRL 10010
+#define ID_NEXTBUTTON 11010
+#define ID_CHECKLISTBOX 11011
+#define ID_SEARCHSTRINGTEXTCTRL 11012
+#define ID_TOGGLEBUTTON 11013
 #define SYMBOL_CATALOGDATAPANEL_STYLE wxTAB_TRAVERSAL
 #define SYMBOL_CATALOGDATAPANEL_TITLE _("CatalogPanel")
 #define SYMBOL_CATALOGDATAPANEL_IDNAME ID_CATALOGDATAPANEL
@@ -99,6 +104,8 @@ public:
     /// wxEVT_COMMAND_TEXT_UPDATED event handler for ID_TEXTCTRL
     void OnTextctrlTextUpdated( wxCommandEvent& event );
 
+    void OnTogglebuttonClick( wxCommandEvent& event );
+
 // CatalogPanel event handler declarations
 
 // CatalogPanel member function declarations
@@ -121,7 +128,9 @@ public:
     CatalogTreeCtrl* m_catalogTreeCtrl;
   
     wxTreeItemId m_draggedItem;
-
+    wxBoxSizer* m_searchSizer;
+    wxBoxSizer* m_catPanelSizer;
+    wxToggleButton* m_toggleButton;
 };
 
 #endif

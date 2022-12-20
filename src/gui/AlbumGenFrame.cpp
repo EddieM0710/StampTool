@@ -49,7 +49,7 @@
 #include "Defs.h"
 #include "Settings.h"
 #include "utils/Project.h"
-#include "gui/AlbumPanel.h"
+#include "gui/AlbumDesignTreePanel.h"
 #include "gui/SortOrderDialog.h"
 #include "gui/SettingsDialog.h"
 #include "catalog/CatalogData.h"
@@ -247,7 +247,7 @@ void AlbumGenFrame::CreateControls( )
         wxSize( 100, 100 ), wxSIMPLE_BORDER );
     itemGridSizer1->Add( m_albumGeneratorPanel, 1, wxGROW | wxALL, 0 );
     m_catalogPanel = m_albumGeneratorPanel->GetCatalogPanel( );
-    m_albumPanel = m_albumGeneratorPanel->GetAlbumPanel( );
+    m_albumDesignTreePanel = m_albumGeneratorPanel->GetAlbumDesignTreePanel( );
 }
 
 

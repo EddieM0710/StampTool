@@ -1,5 +1,5 @@
 
-find_package( wxWidgets COMPONENTS core base REQUIRED )
+find_package( wxWidgets COMPONENTS core base generic REQUIRED )
 include( "${wxWidgets_USE_FILE}")
 
 include_directories(  ${AlbumGen_Source_Directory} 
@@ -13,10 +13,10 @@ set( CMAKE_RUNTIME_OUTPUT_DIRECTORY ${build_Directory} )
 add_library( GuiFiles SHARED
     AlbumGenFrame.cpp
     AlbumGenPanel.cpp
-    AlbumSplitterWindow.cpp 
+    AlbumDesignPanel.cpp 
     SettingsDialog.cpp
     DesignTreeCtrl.cpp 
-    AlbumPanel.cpp 
+    AlbumDesignTreePanel.cpp 
     AlbumImagePanel.cpp 
     CatalogPanel.cpp 
     CatalogTreeCtrl.cpp
@@ -29,9 +29,11 @@ add_library( GuiFiles SHARED
     MiscellaneousDataPanel.cpp
     SortOrderDialog.cpp
     DefinePeriodsDialog.cpp
-    DescriptionPanel.cpp 
+    StampDescriptionPanel.cpp 
     IconDefs.cpp
     GeneratorData.cpp
+    GenerateList.cpp
+    GenerateListSettings.cpp
     LabeledTextBox.cpp
     StaticItem.cpp 
     StampDetailsDialog.cpp

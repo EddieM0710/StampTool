@@ -259,6 +259,16 @@ namespace Catalog {
     wxString Entry::GetCurrency( ) { return GetAttr( DT_Currency ); };
     wxString Entry::GetColors( ) { return GetAttr( DT_Colors ); };
     wxString Entry::GetAccuracy( ) { return GetAttr( DT_Accuracy ); };
+    wxString Entry::GetInventoryStatus( )
+    { 
+        wxString status = GetAttr( DT_InventoryStatus );
+        if ( status.IsEmpty() )
+        {
+            return ST_InventoryStatusStrings[ST_None];
+        }
+        return status;
+    }
+
     void Entry::SetWidth( wxString val ) { SetAttr( DT_Width, val ); };
     void Entry::SetWatermark( wxString val ) { SetAttr( DT_Watermark, val ); };
     void Entry::SetVariant( wxString val ) { SetAttr( DT_Variant, val ); };

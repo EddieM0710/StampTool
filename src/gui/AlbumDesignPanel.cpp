@@ -37,44 +37,44 @@
 #include "wx/imaglist.h"
 // includes
 
-#include "gui/AlbumSplitterWindow.h"
+#include "gui/AlbumDesignPanel.h"
 // XPM images
 // XPM images
 
 #include "gui/DesignTreeCtrl.h"
-#include "gui/AlbumPanel.h"
+#include "gui/AlbumDesignTreePanel.h"
 #include "gui/AlbumImagePanel.h"
 #include "gui/GeneratorData.h" 
 /*
- * AlbumSplitterWindow type definition
+ * AlbumDesignPanel type definition
  */
 
-IMPLEMENT_DYNAMIC_CLASS( AlbumSplitterWindow, wxPanel )
+IMPLEMENT_DYNAMIC_CLASS( AlbumDesignPanel, wxPanel )
 
 
 /*
- * AlbumSplitterWindow event table definition
+ * AlbumDesignPanel event table definition
  */
 
-BEGIN_EVENT_TABLE( AlbumSplitterWindow, wxPanel )
+BEGIN_EVENT_TABLE( AlbumDesignPanel, wxPanel )
 
-// AlbumSplitterWindow event table entries
-EVT_SLIDER( ID_ALBUMZOOMSLIDER, AlbumSplitterWindow::OnZoomsliderUpdated )
-// AlbumSplitterWindow event table entries
+// AlbumDesignPanel event table entries
+EVT_SLIDER( ID_ALBUMZOOMSLIDER, AlbumDesignPanel::OnZoomsliderUpdated )
+// AlbumDesignPanel event table entries
 
 END_EVENT_TABLE()
 
 
 /*
- * AlbumSplitterWindow constructors
+ * AlbumDesignPanel constructors
  */
 
-AlbumSplitterWindow::AlbumSplitterWindow()
+AlbumDesignPanel::AlbumDesignPanel()
 {
     Init();
 }
 
-AlbumSplitterWindow::AlbumSplitterWindow( wxWindow* parent, wxWindowID id, const wxPoint& pos, const wxSize& size, long style )
+AlbumDesignPanel::AlbumDesignPanel( wxWindow* parent, wxWindowID id, const wxPoint& pos, const wxSize& size, long style )
 {
     Init();
     Create(parent, id, pos, size, style);
@@ -85,37 +85,37 @@ AlbumSplitterWindow::AlbumSplitterWindow( wxWindow* parent, wxWindowID id, const
  * AlbumSplitterWiindow creator
  */
 
-bool AlbumSplitterWindow::Create( wxWindow* parent, wxWindowID id, const wxPoint& pos, const wxSize& size, long style )
+bool AlbumDesignPanel::Create( wxWindow* parent, wxWindowID id, const wxPoint& pos, const wxSize& size, long style )
 {
-// AlbumSplitterWindow creation
+// AlbumDesignPanel creation
     SetExtraStyle(wxWS_EX_VALIDATE_RECURSIVELY);
     wxPanel::Create( parent, id, pos, size, style );
 
     CreateControls();
     Centre();
-// AlbumSplitterWindow creation
+// AlbumDesignPanel creation
     return true;
 }
 
 
 /*
- * AlbumSplitterWindow destructor
+ * AlbumDesignPanel destructor
  */
 
-AlbumSplitterWindow::~AlbumSplitterWindow()
+AlbumDesignPanel::~AlbumDesignPanel()
 {
-// AlbumSplitterWindow destruction
-// AlbumSplitterWindow destruction
+// AlbumDesignPanel destruction
+// AlbumDesignPanel destruction
 }
 
 
 
 
-void AlbumSplitterWindow::Init()
+void AlbumDesignPanel::Init()
 {
-// AlbumSplitterWindow member initialisation
+// AlbumDesignPanel member initialisation
     m_secondarySplitterWindow = NULL;
-// AlbumSplitterWindow member initialisation
+// AlbumDesignPanel member initialisation
 }
 
 
@@ -123,11 +123,11 @@ void AlbumSplitterWindow::Init()
  * Control creation for AlbumSplitterWiindow
  */
 
-void AlbumSplitterWindow::CreateControls()
+void AlbumDesignPanel::CreateControls()
 {    
-// AlbumSplitterWindow content construction
+// AlbumDesignPanel content construction
 
-    AlbumSplitterWindow* itemPanel1 = this;
+    AlbumDesignPanel* itemPanel1 = this;
 
     wxBoxSizer* itemBoxSizer2 = new wxBoxSizer(wxVERTICAL);
     itemPanel1->SetSizer(itemBoxSizer2);
@@ -137,7 +137,7 @@ void AlbumSplitterWindow::CreateControls()
 
     m_secondarySplitterWindow = new wxSplitterWindow( itemPanel1, ID_SECONDARYSPLITTERWINDOW, wxDefaultPosition, wxSize(100, 100), wxSP_3DBORDER|wxSP_3DSASH|wxNO_BORDER );
     m_secondarySplitterWindow->SetMinimumPaneSize(0);
-    m_albumPanel = new AlbumPanel( m_secondarySplitterWindow, ID_SCROLLEDWINDOW, wxDefaultPosition, wxSize(100, 100), wxSUNKEN_BORDER|wxHSCROLL|wxVSCROLL );
+    m_albumDesignTreePanel = new AlbumDesignTreePanel( m_secondarySplitterWindow, ID_SCROLLEDWINDOW, wxDefaultPosition, wxSize(100, 100), wxSUNKEN_BORDER|wxHSCROLL|wxVSCROLL );
 
     wxPanel* itemPanel4 =
         new wxPanel( m_secondarySplitterWindow, ID_DESCRIPTIONPANEL, wxDefaultPosition,
@@ -169,11 +169,11 @@ void AlbumSplitterWindow::CreateControls()
     m_albumImagePanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
     itemBoxSizer7->Add( m_albumImagePanel, 1, wxGROW | wxALL, 0 );
 
-    m_secondarySplitterWindow->SplitVertically(m_albumPanel, itemPanel4, 200);
+    m_secondarySplitterWindow->SplitVertically(m_albumDesignTreePanel, itemPanel4, 200);
 
     itemBoxSizer1->Add(m_secondarySplitterWindow, 1, wxGROW|wxALL, 5);
 
-// AlbumSplitterWindow content construction
+// AlbumDesignPanel content construction
     GetGeneratorData( )->SetAlbumImagePanel( m_albumImagePanel );
 }
 
@@ -182,7 +182,7 @@ void AlbumSplitterWindow::CreateControls()
  * Should we show tooltips?
  */
 
-bool AlbumSplitterWindow::ShowToolTips()
+bool AlbumDesignPanel::ShowToolTips()
 {
     return true;
 }
@@ -191,40 +191,40 @@ bool AlbumSplitterWindow::ShowToolTips()
  * Get bitmap resources
  */
 
-wxBitmap AlbumSplitterWindow::GetBitmapResource( const wxString& name )
+wxBitmap AlbumDesignPanel::GetBitmapResource( const wxString& name )
 {
     // Bitmap retrieval
-// AlbumSplitterWindow bitmap retrieval
+// AlbumDesignPanel bitmap retrieval
     wxUnusedVar(name);
     return wxNullBitmap;
-// AlbumSplitterWindow bitmap retrieval
+// AlbumDesignPanel bitmap retrieval
 }
 
 /*
  * Get icon resources
  */
 
-wxIcon AlbumSplitterWindow::GetIconResource( const wxString& name )
+wxIcon AlbumDesignPanel::GetIconResource( const wxString& name )
 {
     // Icon retrieval
-// AlbumSplitterWindow icon retrieval
+// AlbumDesignPanel icon retrieval
     wxUnusedVar(name);
     return wxNullIcon;
-// AlbumSplitterWindow icon retrieval
+// AlbumDesignPanel icon retrieval
 }
 
 /*************************************************************/
 
-void AlbumSplitterWindow::OnZoomsliderUpdated( wxCommandEvent& event )
+void AlbumDesignPanel::OnZoomsliderUpdated( wxCommandEvent& event )
 {
     int val = m_zoomSlider->GetValue( );
     double zoom = ( double )val / 100.0;
     m_albumImagePanel->SetZoom( zoom );
 
     // wxEVT_COMMAND_SLIDER_UPDATED event handler for ID_SLIDER in
-    // DescriptionPanel.
+    // StampDescriptionPanel.
     // Before editing this code, remove the block markers.
     event.Skip( );
     // wxEVT_COMMAND_SLIDER_UPDATED event handler for ID_SLIDER in
-    // DescriptionPanel.
+    // StampDescriptionPanel.
 }

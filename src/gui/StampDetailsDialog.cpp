@@ -43,6 +43,7 @@
 #include "utils/StampList.h"
 #include "Defs.h"
 #include "wx/treectrl.h"
+#include <wx/fontpicker.h>
 
 // XPM images
 // XPM images
@@ -204,6 +205,14 @@ void StampDetailsDialog::CreateControls( )
 
     m_statusList = new wxListCtrl( itemDialog1, ID_LISTCTRL, wxDefaultPosition, wxSize( 100, 100 ), wxLC_REPORT | wxLC_NO_HEADER );
     itemBoxSizer10->Add( m_statusList, 2, wxGROW | wxALL, 5 );
+
+    wxBoxSizer* itemBoxSizer14 = new wxBoxSizer( wxHORIZONTAL );
+    itemBoxSizer1->Add( itemBoxSizer14, 2, wxGROW | wxALL, 5 );
+
+wxFontPickerCtrl* m_fontPicker = new wxFontPickerCtrl(itemDialog1, 12345, 
+*wxNORMAL_FONT, wxDefaultPosition, 
+wxDefaultSize, wxFNTP_DEFAULT_STYLE);
+itemBoxSizer14->Add(m_fontPicker, 2, wxGROW | wxALL, 5 );
 
     wxBoxSizer* itemBoxSizer12 = new wxBoxSizer( wxHORIZONTAL );
     itemBoxSizer2->Add( itemBoxSizer12, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 0 );

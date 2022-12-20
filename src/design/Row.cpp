@@ -37,7 +37,8 @@ namespace Design {
 
     bool Row::UpdateMinimumSize( )
     {
-        //Positioning across the row.
+          m_frame.WriteLayout( "Row::UpdateMinimumSize <");
+       //Positioning across the row.
         //The min height of the row is the size of the tallest child 
         //plus the title if used
         //The min width is the sum of the min widths of the children. 
@@ -83,12 +84,13 @@ namespace Design {
         SetMinHeight( minHeight + topPadding+bottomPadding );
         SetMinWidth( minWidth + leftPadding+rightPadding );
 
-        // m_frame.WriteLayout( "Row::UpdatePositions ");
+         m_frame.WriteLayout( "Row::UpdateMinimumSize >");
 
     }
 
     void Row::UpdateSizes( )
     {
+        m_frame.WriteLayout( "Row::UpdateSizes <");
 
         // Set the height and width of each child column
         // Stamps have fixed height and width
@@ -107,12 +109,14 @@ namespace Design {
 
             childID = GetDesignTreeCtrl()->GetNextChild(parentID, cookie);
         }
-        // m_frame.WriteLayout( "Row::UpdateSizes ");
+        m_frame.WriteLayout( "Row::UpdateSizes >");
+
     }
 
     // calculate the row layout based on child parameters
     void Row::UpdatePositions( )
     {
+        m_frame.WriteLayout( "Row::UpdatePositions <");
         // go to the bottom of each child container object ( row, column, page) 
         // and begin filling in position relative to the parent
 
@@ -165,7 +169,7 @@ namespace Design {
             childID = GetDesignTreeCtrl()->GetNextChild(parentID, cookie);
         }
 
-        // m_frame.WriteLayout( "Row::UpdatePositions ");
+        m_frame.WriteLayout( "Row::UpdatePositions ");
 
     }
 

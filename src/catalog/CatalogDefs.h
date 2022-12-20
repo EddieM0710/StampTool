@@ -201,6 +201,8 @@ namespace Catalog {
         ST_NbrInventoryStatusTypes
     } InventoryStatusType;
 
+    InventoryStatusType FindStatusType( wxString name );
+
     /**
      * @enum FormatType
      * @brief Enum defining the format of a entry.
@@ -220,6 +222,8 @@ namespace Catalog {
         FT_Tete_Beche,
         FT_NbrTypes
     } FormatType;
+
+    FormatType FindFormatType( wxString name );
 
     typedef enum
     {
@@ -250,9 +254,11 @@ namespace Catalog {
         ET_SemiPostal,
         ET_WarTax,
         ET_NbrTypes
-    } EmissionStrings;
+    } EmissionType;
 
     extern const wxString ET_EmissionStrings[ ET_NbrTypes ];
+
+    EmissionType FindEmissionType( wxString name );
 
     /**
      * @enum MergeOverwriteQuery

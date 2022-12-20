@@ -26,9 +26,18 @@
 #define Album_H
 
 #include "design/AlbumBase.h"
+;
 #include "design/DesignDefs.h"
+;
 #include "utils/Project.h"
+;
+#include "utils/Settings.h"
+;
 #include <wx/font.h>
+;
+#include "design/FontInfo.h"
+;
+
 namespace Design {
 
     /**
@@ -47,8 +56,13 @@ namespace Design {
         Album(  wxXmlNode* node ) : AlbumBase( node )
         {
             SetNodeType( AT_Album );
-        };
+            m_defaultTitleFont = -1;
+            m_defaultCatNbrFont = -1;
+            m_defaultTextFont = -1;
+            InitFonts( node );
 
+        };
+  
         /**
          * @brief Destroy the Album object
          *
@@ -203,10 +217,55 @@ namespace Design {
         void Save( wxXmlNode* xmlNode );
         void DumpLayout(   );
 
-    private:
-        wxFont* m_defaultTitleFont;
-        wxFont* m_defaultCatNbrFont;
+        FontInfo* FindFontInfo( wxFont* font, wxColor color );
+        int GetDefaultTileFontNdx ( )
+        {
+            return m_defaultTitleFont;
+        };
+        int GetDefaultCatNbrFontNdx ( )
+        {
+            return m_defaultCatNbrFont;
+        }
+        int GetDefaultTextFontNdx ( )
+        {
+            return m_defaultTextFont;
+        }
+        bool IsValidFontNdx(int ndx )
+        {
+            if ( (ndx >= 0) && (ndx < m_fontList.size()))
+            {
+                return true;
+            }
+            return false;
+        }
+        wxFont* GetFont( int ndx )
+        {
+            if( IsValidFontNdx( ndx ) )
+            {
+                return GetFontInfo( ndx )->GetFont();
+            }
+        };
 
+        void InitFonts( wxXmlNode* node );
+        int FindFont( wxFont* font, wxColor color );
+        int FindFont( FontInfo* info );
+  
+        FontInfo* GetFontInfo( int ndx );
+        FontList& GetFontList()
+        {
+            return m_fontList;
+        }
+        int AddNewFont(  wxString nativeDesc, wxString color );
+
+    private:
+        // index of title font in FontList
+        int m_defaultTitleFont;
+        // index of catalog number font in FontList
+        int m_defaultCatNbrFont;
+        // index of catalog number font in FontList
+        int m_defaultTextFont;
+                
+        FontList m_fontList;
     };
 }
 #endif

@@ -1,5 +1,5 @@
 /**
- * @file Layoutlayout/AlbumBase.h
+ * @file layout/LayoutBase.h
  * @author Eddie Monroe
  * @brief
  * @version 0.1
@@ -65,10 +65,10 @@ namespace Design {
          * @param name
          **************************************************/
         LayoutBase( wxXmlNode* node ) : AlbumBase( node ) {
-            SetTopContentPadding( 2 ) ;
-            SetBottomContentPadding( 2 ) ;
-            SetLeftContentPadding( 2 ) ;
-            SetRightContentPadding( 2 ) ;
+            SetTopContentPadding( 4 ) ;
+            SetBottomContentPadding( 4 ) ;
+            SetLeftContentPadding( 4 ) ;
+            SetRightContentPadding( 4 ) ;
         };
 
         /* 
@@ -253,7 +253,14 @@ namespace Design {
 
         //void WriteFrame( wxString loc, wxString name, wxString id, Frame* frame );
         void DumpLayout( double x, double y );
- 
+
+wxXmlNode* GetTitleFont( wxXmlNode* node, wxString name )
+{
+           wxTreeItemId ctrlID = GetTreeItemId( ) ;
+//    GetDesignTreeCtrl()->GetItemData( ctrlID );
+    }
+
+ //wxXmlNode* FirstChildElement( wxXmlNode* node, wxString name );
 
     protected:
         Frame m_frame;

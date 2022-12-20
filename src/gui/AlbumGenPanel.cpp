@@ -42,7 +42,8 @@
 
 #include "gui/CatalogPanel.h"
 
-#include "gui/DescriptionPanel.h"
+#include "gui/StampDescriptionPanel.h"
+#include "gui/GenerateList.h"
 #include "gui/CatalogTreeCtrl.h"
 #include "gui/GuiUtils.h"
 /*
@@ -153,25 +154,30 @@ void AlbumGenPanel::CreateControls( )
         = new wxNotebook( itemSplitterWindow3, ID_NOTEBOOK, wxDefaultPosition,
             wxDefaultSize, wxBK_DEFAULT );
 
-    m_albumSplitterWindow = new AlbumSplitterWindow(
+    m_albumDesignPanel = new AlbumDesignPanel(
         m_notebook, ID_ALBUMSPLITTERWINDOWFOREIGN, wxDefaultPosition,
         wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
-    m_albumSplitterWindow->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
+    m_albumDesignPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
 
-    m_notebook->AddPage( m_albumSplitterWindow, _( "Album" ) );
+    m_notebook->AddPage( m_albumDesignPanel, _( "Album" ) );
 
-    m_descriptionPanel = new DescriptionPanel(
+    m_stampDescriptionPanel = new StampDescriptionPanel(
         m_notebook, ID_DESCRIPTIONPANELFOREIGN, wxDefaultPosition,
         wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
-    m_descriptionPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
+    m_stampDescriptionPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
 
-    m_notebook->AddPage( m_descriptionPanel, _( "Stamp" ) );
+    m_notebook->AddPage( m_stampDescriptionPanel, _( "Stamp" ) );
     itemSplitterWindow3->SplitVertically( m_mngCatalogData, m_notebook, 300 );
     itemBoxSizer2->Add( itemSplitterWindow3, 1, wxGROW | wxALL, 0 );
 
+    m_generateListPanel = new GenerateList( m_notebook, ID_GENERTELISTFOREIGN, wxDefaultPosition,
+        wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL  );
+
+    m_notebook->AddPage( m_generateListPanel, _( "List" ) );
+
     // AlbumGenPanel content construction
 
-    GetGeneratorData( )->SetDescriptionPanel( m_descriptionPanel );
+    GetGeneratorData( )->SetDescriptionPanel( m_stampDescriptionPanel );
 
 }
 
@@ -215,15 +221,26 @@ void AlbumGenPanel::UpdateStatus( )
 {
 }
 
+bool AlbumGenPanel::ShouldShowStates()
+{
+
+    if ( m_notebook->GetPage( m_notebook->GetSelection() ) == m_albumDesignPanel )
+    {
+        return true;
+    }
+    return false;
+}
 /*
  * wxEVT_COMMAND_NOTEBOOK_PAGE_CHANGED event handler for ID_NOTEBOOK
  */
 
 void AlbumGenPanel::OnNotebookPageChanged( wxNotebookEvent& event )
 {
-    int sel = event.GetOldSelection( );
-    wxWindow* oldPage = m_notebook->GetPage( sel );
-    if ( oldPage == m_descriptionPanel )
+    // int sel = event.GetOldSelection( );
+    // event.GetSelection();
+    
+    // wxWindow* oldPage = m_notebook->GetPage( sel );
+    if ( ShouldShowStates() )
     {
         GetCatalogTreeCtrl( )->SetStates( true );
     }

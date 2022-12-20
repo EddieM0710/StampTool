@@ -72,10 +72,23 @@ namespace Catalog {
     const wxString ST_InventoryStatusStrings[ ST_NbrInventoryStatusTypes ]
         = { wxT( "None" ), wxT( "Missing" ), wxT( "Ordered" ), wxT( "Own" ), wxT( "Own Variant" ), wxT( "Exclude" ) };
 
+    InventoryStatusType FindStatusType( wxString name )
+    {
+        wxString baseName;
+        for ( int i = 0; i < ST_NbrInventoryStatusTypes; i++ )
+        {
+            baseName = ST_InventoryStatusStrings[ i ];
+            if ( !name.Cmp( baseName ) )
+            {
+                return ( InventoryStatusType )i;
+            }
+        }
+        return ( InventoryStatusType )-1;
+    };
 
     const wxString FT_FormatStrings[ FT_NbrTypes ]
         = { wxT( "Unknown" ),
-            wxT( "Entry" ),
+            wxT( "Stamp" ),
             wxT( "Se-tenant" ),
             wxT( "Mini Sheet" ),
             wxT( "Souvenir Sheet" ),
@@ -84,6 +97,21 @@ namespace Catalog {
             wxT( "Gutter Pair" ),
             wxT( "Entry with Attached Label" ),
             wxT( "Tete-Beche" ) };
+
+
+    FormatType FindFormatType( wxString name )
+    {
+        wxString baseName;
+        for ( int i = 0; i < FT_NbrTypes; i++ )
+        {
+            baseName = FT_FormatStrings[ i ];
+            if ( !name.Cmp( baseName ) )
+            {
+                return ( FormatType )i;
+            }
+        }
+        return ( FormatType )-1;
+    };
 
     const wxString ET_EmissionStrings[ ET_NbrTypes ]
         = { wxT( "Unknown" ),
@@ -112,6 +140,22 @@ namespace Catalog {
             wxT( "Registration" ),
             wxT( "Semi-Postal" ),
             wxT( "War Tax" ) };
+
+
+
+    EmissionType FindEmissionType( wxString name )
+    {
+        wxString baseName;
+        for ( int i = 0; i < ET_NbrTypes; i++ )
+        {
+            baseName = ET_EmissionStrings[ i ];
+            if ( !name.Cmp( baseName ) )
+            {
+                return ( EmissionType )i;
+            }
+        }
+        return ( EmissionType )-1;
+    };
 
     const wxString DT_DataNames[ DT_NbrTypes ] = {
         wxT( "ID Nbr" ),      wxT( "Name" ),          wxT( "Country" ),

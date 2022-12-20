@@ -38,6 +38,8 @@ namespace Design {
 
     bool Column::UpdateMinimumSize( )
     {
+        m_frame.WriteLayout( "Col::UpdateMinimumSizes <");
+
         //Positioning down the col.
         //The min width of the col is the size of the widest child 
         //The min height is the sum of the min heights of the children. 
@@ -86,10 +88,12 @@ namespace Design {
 
         SetMinHeight( minHeight + topPadding + bottomPadding );
         SetMinWidth( minWidth + leftPadding + rightPadding );
+        m_frame.WriteLayout( "Col::UpdateMinimumSizes >");
     }
 
     void Column::UpdateSizes( )
     {
+        m_frame.WriteLayout( "Col::UpdateSizes <");
 
         int nbrRows = 0;
         int nbrCols = 0;
@@ -121,6 +125,8 @@ namespace Design {
             child->UpdateSizes( );
             childID = GetDesignTreeCtrl( )->GetNextChild( parentID, cookie );
         }
+        m_frame.WriteLayout( "Col::UpdateSizes >");
+
     }
 
 
@@ -128,6 +134,7 @@ namespace Design {
     // calculate the column layout based on child parameters
     void Column::UpdatePositions( )
     {
+        m_frame.WriteLayout( "Col::UpdatePositions <");
         // go to the bottom of each child container object ( row, column, page) 
         // and begin filling in position relative to the parent
 
@@ -185,6 +192,8 @@ namespace Design {
             }
             childID = GetDesignTreeCtrl( )->GetNextChild( parentID, cookie );
         }
+        m_frame.WriteLayout( "Col::UpdatePositions >");
+
     }
 
     // build the frame container for the column

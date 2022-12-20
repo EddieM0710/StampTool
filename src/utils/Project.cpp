@@ -66,7 +66,7 @@ namespace Utils {
 
     Project::Project( )
     {
-
+        m_ProjectDoc = (wxXmlDocument*)0;
     }
     void Project::InitProject()
     {

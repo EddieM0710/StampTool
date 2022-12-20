@@ -72,5 +72,18 @@ namespace Design {
             << GetXPos( ) << ", y:" << GetYPos( )
             << ", w:" << GetWidth( ) << ", h:" << GetHeight( )
             << ", minW:" << GetMinWidth( ) << ", minH:" << GetMinHeight( ) << " )\n";
+ 
+        if ((GetXPos()< 0)||(GetYPos()< 0))
+        {
+            std::cout << "invalid position\n";
+        }
+        if ((GetWidth()< 0)||(GetHeight()< 0))
+        {
+            std::cout << "invalid Size\n";
+        }
+        if ((GetMinHeight()< 0)||(GetMinWidth()< 0))
+        {
+            std::cout << "invalid Height/width\n";
+        }
     };
 }

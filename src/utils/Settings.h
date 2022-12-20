@@ -60,6 +60,12 @@ class Settings;
         wxArrayInt* GetSortOrder( ) { return &m_sortOrder; };
         wxString GetUpperDivision( ) { return m_upperDivision; };
         wxString GetUpperPeriod( ) { return m_upperPeriod; };
+        wxString GetCatNbrFontString( ) { return m_catNbrFontString;};
+        wxString GetCatNbrColorString( ) { return  m_catNbrColorString;};
+        wxString GetTitleFontString( ) { return m_titleFontString;};
+        wxString GetTitleColorString( ) { return m_titleColorString;};
+        wxString GetTextFontString( ) { return m_textFontString;};
+        wxString GetTextColorString( ) { return m_textColorString;};
 
         void SetConfigurationDirectory( wxString val ) { m_configurationDirectory = val.Trim( ); m_dirty = true; };
         void SetImageDirectory( wxString val ) { m_imageDirectory = val.Trim( );m_dirty = true; };
@@ -71,6 +77,13 @@ class Settings;
         void SetMiddlePeriod( wxString val ) { m_middlePeriod = val.Trim( );m_dirty = true; };
         void SetUpperDivision( wxString val ) { m_upperDivision = val.Trim( );m_dirty = true; };
         void SetUpperPeriod( wxString val ) { m_upperPeriod = m_configurationDirectory.Trim( );m_dirty = true; };
+        void SetCatNbrFontString( wxString val ) { m_catNbrFontString = val.Trim( );m_dirty = true; };
+        void SetCatNbrColorString( wxString val ) { m_catNbrColorString = val.Trim( );m_dirty = true; };
+        void SetTitleFontString( wxString val ) { m_titleFontString = val.Trim( );m_dirty = true; };
+        void SetTitleColorString( wxString val ) { m_titleColorString = val.Trim( );m_dirty = true; };
+        void SetTextFontString( wxString val ) { m_textFontString = val.Trim( );m_dirty = true; };
+        void SetTextColorString( wxString val ) { m_textColorString = val.Trim( );m_dirty = true; };
+
 
         int GetNextSortClassification( int current );
         void SetSettingValue( wxString& setting, wxXmlNode* parent, wxString childName, wxString defaultVal );
@@ -118,6 +131,12 @@ class Settings;
         wxString m_lowerPeriod;
         wxString m_middlePeriod;
         wxString m_upperPeriod;
+        wxString m_catNbrFontString;
+        wxString m_catNbrColorString;
+        wxString m_titleFontString;
+        wxString m_titleColorString;
+        wxString m_textFontString;
+        wxString m_textColorString;
         wxArrayString m_recentFiles;
         int m_nbrRecentPreference;
         bool m_catalogDataEditable;
@@ -135,6 +154,12 @@ class Settings;
         const wxString m_defaultLowerPeriod = "Antique";
         const wxString m_defaultMiddlePeriod = "Classical";
         const wxString m_defaultUpperPeriod = "Modern";
+
+        //const wxString m_defaultTitleFont = "Serif 12";
+        //const wxString m_defaultTextFont = "Serif 10";
+        //const wxString m_defaultCatNbrFont = "Serif 8";
+        const wxString m_defaultFontColor = "BLACK";
+
         //const wxArrayString m_defaultrecentFiles;
         const int m_defaultNbrRecentPreference = 4;
         bool m_dirty;

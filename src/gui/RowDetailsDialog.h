@@ -34,6 +34,9 @@
 // includes
 
 #include "gui/DesignTreeCtrl.h"
+#include <wx/fontpicker.h>
+#include <wx/clrpicker.h>
+
 
 /*!
  * Forward declarations
@@ -54,6 +57,8 @@ class wxListCtrl;
 #define ID_ROWTITLECHECKBOX 10004
 #define ID_FRAMECHECKBOX 10006
 #define ID_LISTCTRL 10006
+#define ID_DEFAULTFONTBUTTON 10007
+#define ID_ROWNAMEPANEL 10008
 #define SYMBOL_ROWDETAILSDIALOG_STYLE wxCAPTION|wxRESIZE_BORDER|wxSYSTEM_MENU|wxCLOSE_BOX|wxTAB_TRAVERSAL
 #define SYMBOL_ROWDETAILSDIALOG_TITLE _("Row Details Dialog")
 #define SYMBOL_ROWDETAILSDIALOG_IDNAME ID_ROWDETAILSDIALOG
@@ -121,6 +126,8 @@ public:
     wxCheckBox* m_titleCheckbox;
     wxCheckBox* m_frameCheckbox;
     wxListCtrl* m_statusList;
+    wxFontPickerCtrl* m_titleFontPicker;
+    wxColourPickerCtrl* m_titleColorPicker;
 // RowDetailsDialog member variables
 };
 

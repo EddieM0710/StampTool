@@ -119,6 +119,7 @@ namespace Catalog {
         wxString GetVariant( ); ///< Get the entry Variant field
         wxString GetWatermark( ); ///< Get the entry Watermark field 
         wxString GetWidth( ); ///< Get the entry Width field
+        wxString GetInventoryStatus( );
 
     /**@}*/
 
@@ -221,7 +222,7 @@ namespace Catalog {
          * @return wxString
          **************************************************/
         wxString GetCheckedStatus( ) { return GetAttr( DT_CheckedStatus ); };
-        wxString GetInventoryStatus( ) { return GetAttr( DT_InventoryStatus ); };
+       // wxString GetInventoryStatus( ) { return GetAttr( DT_InventoryStatus ); };
 
         /**
          * @brief Set the Status object

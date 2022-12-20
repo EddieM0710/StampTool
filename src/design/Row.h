@@ -96,6 +96,11 @@ namespace Design {
         void draw( wxDC &dc, double x, double y );
         void Save( wxXmlNode* xmlNode );
 
+        // returns the index into FontList
+        int GetTitleFont()
+        {
+//            if ( getch)
+        }
     private:
         bool m_showCatNbr;
         bool m_showTitle;

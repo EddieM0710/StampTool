@@ -104,6 +104,10 @@ class XMLBase;
         virtual void Save( wxXmlNode* xmlNode) = 0;
 
 
+void GetChild()
+{
+    
+}
 
     private:
 
@@ -120,5 +124,6 @@ class XMLBase;
         wxString m_text;
         NodeStatus m_nodeValid;
    };
+
 }
 #endif

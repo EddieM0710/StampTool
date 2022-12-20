@@ -1,5 +1,5 @@
 /**
- * @file DescriptionPanel.cpp
+ * @file StampDescriptionPanel.cpp
  * @author Eddie Monroe ()
  * @brief
  * @version 0.1
@@ -38,7 +38,7 @@
 #include "CatalogCodePanel.h"
 #include "CharacteristicsPanel.h"
 #include "Defs.h"
-#include "DescriptionPanel.h"
+#include "StampDescriptionPanel.h"
 #include "IdentificationPanel.h"
 #include "ImagePanel.h"
 #include "InventoryPanel.h"
@@ -49,36 +49,36 @@
 #include "CatalogData.h"
 
 /*
- * DescriptionPanel type definition
+ * StampDescriptionPanel type definition
  */
-IMPLEMENT_DYNAMIC_CLASS( DescriptionPanel, wxPanel )
+IMPLEMENT_DYNAMIC_CLASS( StampDescriptionPanel, wxPanel )
 ; // silly business; The above macro screws up the formatter but the semicolon fixes it
 
 /*
- * DescriptionPanel event table definition
+ * StampDescriptionPanel event table definition
  */
 
-BEGIN_EVENT_TABLE( DescriptionPanel, wxPanel )
+BEGIN_EVENT_TABLE( StampDescriptionPanel, wxPanel )
 
-// DescriptionPanel event table entries
-EVT_SLIDER( ID_ZOOMSLIDER, DescriptionPanel::OnZoomsliderUpdated )
-EVT_TEXT( ID_DESCRIPTIONTEXTCTRL, DescriptionPanel::OnDescriptionTextctrlTextUpdated )
-EVT_TEXT( ID_BKGNDTEXTCTRL, DescriptionPanel::OnBkGndTextUpdated )
-EVT_TEXT_MAXLEN( ID_BKGNDTEXTCTRL, DescriptionPanel::OnBkgndtextctrlMaxLen )
-// DescriptionPanel event table entries
+// StampDescriptionPanel event table entries
+EVT_SLIDER( ID_ZOOMSLIDER, StampDescriptionPanel::OnZoomsliderUpdated )
+EVT_TEXT( ID_DESCRIPTIONTEXTCTRL, StampDescriptionPanel::OnDescriptionTextctrlTextUpdated )
+EVT_TEXT( ID_BKGNDTEXTCTRL, StampDescriptionPanel::OnBkGndTextUpdated )
+EVT_TEXT_MAXLEN( ID_BKGNDTEXTCTRL, StampDescriptionPanel::OnBkgndtextctrlMaxLen )
+// StampDescriptionPanel event table entries
 
 END_EVENT_TABLE( )
 ;  // silly business; The above macro screws up the formatter
 
 /*
-* DescriptionPanel constructors
+* StampDescriptionPanel constructors
 */
 
-DescriptionPanel::DescriptionPanel( void ) { Init( ); }
+StampDescriptionPanel::StampDescriptionPanel( void ) { Init( ); }
 
 /****************************************************/
 
-DescriptionPanel::DescriptionPanel( wxWindow* parent, wxWindowID id,
+StampDescriptionPanel::StampDescriptionPanel( wxWindow* parent, wxWindowID id,
     const wxPoint& pos, const wxSize& size,
     long style )
 {
@@ -87,14 +87,14 @@ DescriptionPanel::DescriptionPanel( wxWindow* parent, wxWindowID id,
 }
 
 /*
- * DescriptionPanel creator
+ * StampDescriptionPanel creator
  ***************************************************************/
 
-bool DescriptionPanel::Create( wxWindow* parent, wxWindowID id,
+bool StampDescriptionPanel::Create( wxWindow* parent, wxWindowID id,
     const wxPoint& pos, const wxSize& size,
     long style )
 {
-    // DescriptionPanel creation
+    // StampDescriptionPanel creation
     SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
     wxPanel::Create( parent, id, pos, size, style );
 
@@ -111,27 +111,27 @@ bool DescriptionPanel::Create( wxWindow* parent, wxWindowID id,
     if ( FindWindow( ID_DESCRIPTIONSPLITTERWINDOW ) )
         ( ( wxSplitterWindow* )FindWindow( ID_DESCRIPTIONSPLITTERWINDOW ) )
         ->SetSashPosition( 250 );
-    // DescriptionPanel creation
+    // StampDescriptionPanel creation
     return true;
 }
 
 /*
- * DescriptionPanel destructor
+ * StampDescriptionPanel destructor
  ***************************************************************/
 
-DescriptionPanel::~DescriptionPanel( void )
+StampDescriptionPanel::~StampDescriptionPanel( void )
 {
-    // DescriptionPanel destruction
-    // DescriptionPanel destruction
+    // StampDescriptionPanel destruction
+    // StampDescriptionPanel destruction
 }
 
 /*
  * Member initialisation
  ***************************************************************/
 
-void DescriptionPanel::Init( void )
+void StampDescriptionPanel::Init( void )
 {
-    // DescriptionPanel member initialisation
+    // StampDescriptionPanel member initialisation
     m_identificationPanel = NULL;
     m_zoomSlider = NULL;
     m_stampImage = NULL;
@@ -140,19 +140,19 @@ void DescriptionPanel::Init( void )
     m_miscellaneousDataPanel = NULL;
 //$    m_description = NULL;
 //$    m_bkgndText = NULL;
-    // DescriptionPanel member initialisation
+    // StampDescriptionPanel member initialisation
     m_stamp = NULL;
 }
 
 /*
- * Control creation for DescriptionPanel
+ * Control creation for StampDescriptionPanel
  ***************************************************************/
 
-void DescriptionPanel::CreateControls( void )
+void StampDescriptionPanel::CreateControls( void )
 {
-    // DescriptionPanel content construction
+    // StampDescriptionPanel content construction
 
-    DescriptionPanel* itemPanel1 = this;
+    StampDescriptionPanel* itemPanel1 = this;
 
     wxBoxSizer* itemBoxSizer2 = new wxBoxSizer( wxHORIZONTAL );
     itemPanel1->SetSizer( itemBoxSizer2 );
@@ -285,9 +285,9 @@ void DescriptionPanel::CreateControls( void )
 
     // Connect events and objects
 //$    m_bkgndText->Connect( ID_BKGNDTEXTCTRL, wxEVT_LEAVE_WINDOW,
-//$        wxMouseEventHandler( DescriptionPanel::OnLeaveWindow ),
+//$        wxMouseEventHandler( StampDescriptionPanel::OnLeaveWindow ),
 //$        NULL, this );
-    // DescriptionPanel content construction
+    // StampDescriptionPanel content construction
  //$     m_bkgndText->SetEditable( GetSettings()->IsCatalogDataEditable()  );
   //$    m_description->SetEditable( GetSettings()->IsCatalogDataEditable()  );
 
@@ -313,14 +313,14 @@ void DescriptionPanel::CreateControls( void )
  * wxEVT_COMMAND_TEXT_MAXLEN event handler for ID_BKGNDTEXTCTRL
  ***************************************************************/
 
-void DescriptionPanel::OnBkgndtextctrlMaxLen( wxCommandEvent& event )
+void StampDescriptionPanel::OnBkgndtextctrlMaxLen( wxCommandEvent& event )
 {
     // wxEVT_COMMAND_TEXT_MAXLEN event handler for ID_BKGNDTEXTCTRL in
-    // DescriptionPanel.
+    // StampDescriptionPanel.
     // Before editing this code, remove the block markers.
     event.Skip( );
     // wxEVT_COMMAND_TEXT_MAXLEN event handler for ID_BKGNDTEXTCTRL in
-    // DescriptionPanel.
+    // StampDescriptionPanel.
 }
 
 /*
@@ -329,14 +329,14 @@ void DescriptionPanel::OnBkgndtextctrlMaxLen( wxCommandEvent& event )
  * wxEVT_LEAVE_WINDOW event handler for ID_BKGNDTEXTCTRL
  ***************************************************************/
 
-void DescriptionPanel::OnLeaveWindow( wxMouseEvent& event )
+void StampDescriptionPanel::OnLeaveWindow( wxMouseEvent& event )
 {
     // wxEVT_LEAVE_WINDOW event handler for ID_BKGNDTEXTCTRL in
-    // DescriptionPanel.
+    // StampDescriptionPanel.
     // Before editing this code, remove the block markers.
     event.Skip( );
     // wxEVT_LEAVE_WINDOW event handler for ID_BKGNDTEXTCTRL in
-    // DescriptionPanel.
+    // StampDescriptionPanel.
 }
 
 /*
@@ -345,7 +345,7 @@ void DescriptionPanel::OnLeaveWindow( wxMouseEvent& event )
  * Should we show tooltips?
  ***************************************************************/
 
-bool DescriptionPanel::ShowToolTips( void ) { return true; }
+bool StampDescriptionPanel::ShowToolTips( void ) { return true; }
 
 /*
  *
@@ -353,13 +353,13 @@ bool DescriptionPanel::ShowToolTips( void ) { return true; }
  * Get bitmap resources
  ***************************************************************/
 
-wxBitmap DescriptionPanel::GetBitmapResource( const wxString& name )
+wxBitmap StampDescriptionPanel::GetBitmapResource( const wxString& name )
 {
     // Bitmap retrieval
-    // DescriptionPanel bitmap retrieval
+    // StampDescriptionPanel bitmap retrieval
     wxUnusedVar( name );
     return wxNullBitmap;
-    // DescriptionPanel bitmap retrieval
+    // StampDescriptionPanel bitmap retrieval
 }
 
 /*
@@ -368,13 +368,13 @@ wxBitmap DescriptionPanel::GetBitmapResource( const wxString& name )
  * Get icon resources
  ***************************************************************/
 
-wxIcon DescriptionPanel::GetIconResource( const wxString& name )
+wxIcon StampDescriptionPanel::GetIconResource( const wxString& name )
 {
     // Icon retrieval
-    // DescriptionPanel icon retrieval
+    // StampDescriptionPanel icon retrieval
     wxUnusedVar( name );
     return wxNullIcon;
-    // DescriptionPanel icon retrieval
+    // StampDescriptionPanel icon retrieval
 }
 
 /*
@@ -382,7 +382,7 @@ wxIcon DescriptionPanel::GetIconResource( const wxString& name )
  *
  ***************************************************************/
 
-void DescriptionPanel::UpdateStatus( void )
+void StampDescriptionPanel::UpdateStatus( void )
 {
     m_identificationPanel->UpdateStatus( );
 }
@@ -393,18 +393,18 @@ void DescriptionPanel::UpdateStatus( void )
  *
  ***************************************************************/
 
-void DescriptionPanel::OnZoomsliderUpdated( wxCommandEvent& event )
+void StampDescriptionPanel::OnZoomsliderUpdated( wxCommandEvent& event )
 {
     int val = m_zoomSlider->GetValue( );
     double zoom = ( double )val / 100.0;
     m_stampImage->SetZoom( zoom );
 
     // wxEVT_COMMAND_SLIDER_UPDATED event handler for ID_SLIDER in
-    // DescriptionPanel.
+    // StampDescriptionPanel.
     // Before editing this code, remove the block markers.
     event.Skip( );
     // wxEVT_COMMAND_SLIDER_UPDATED event handler for ID_SLIDER in
-    // DescriptionPanel.
+    // StampDescriptionPanel.
 }
 
 /*
@@ -413,7 +413,7 @@ void DescriptionPanel::OnZoomsliderUpdated( wxCommandEvent& event )
  * wxEVT_COMMAND_TEXT_UPDATED event handler for ID_BKGNDTEXTCTRL
  ***************************************************************/
 
-void DescriptionPanel::OnBkGndTextUpdated( wxCommandEvent& event )
+void StampDescriptionPanel::OnBkGndTextUpdated( wxCommandEvent& event )
 {
     //$ if ( m_bkgndText->IsModified( ) )
     //$ {
@@ -424,18 +424,18 @@ void DescriptionPanel::OnBkGndTextUpdated( wxCommandEvent& event )
     //$ }
 
     // wxEVT_COMMAND_TEXT_UPDATED event handler for ID_BKGNDTEXTCTRL in
-    // DescriptionPanel.
+    // StampDescriptionPanel.
     // Before editing this code, remove the block markers.
     event.Skip( );
     // wxEVT_COMMAND_TEXT_UPDATED event handler for ID_BKGNDTEXTCTRL in
-    // DescriptionPanel.
+    // StampDescriptionPanel.
 }
 
 /*
  * wxEVT_COMMAND_TEXT_UPDATED event handler for ID_DESCRIPTIONTEXTCTRL
  ***************************************************************/
 
-void DescriptionPanel::OnDescriptionTextctrlTextUpdated( wxCommandEvent& event )
+void StampDescriptionPanel::OnDescriptionTextctrlTextUpdated( wxCommandEvent& event )
 {
     //$ if ( m_description->IsModified( ) )
     //$ {
@@ -445,19 +445,19 @@ void DescriptionPanel::OnDescriptionTextctrlTextUpdated( wxCommandEvent& event )
     //$     m_description->SetModified( false );
     //$ }
     // wxEVT_COMMAND_TEXT_UPDATED event handler for
-    // ID_DESCRIPTIONTEXTCTRL in DescriptionPanel.
+    // ID_DESCRIPTIONTEXTCTRL in StampDescriptionPanel.
     // Before editing this code, remove the block markers.
     event.Skip( );
     // wxEVT_COMMAND_TEXT_UPDATED event handler for ID_DESCRIPTIONTEXTCTRL
-    // in DescriptionPanel.
+    // in StampDescriptionPanel.
 }
 
 /*
  *
- * initializes the DescriptionPanel with new stamp values
+ * initializes the StampDescriptionPanel with new stamp values
  ***************************************************************/
 
-void DescriptionPanel::SetStamp( wxXmlNode* stamp )
+void StampDescriptionPanel::SetStamp( wxXmlNode* stamp )
 {
     if (m_stamp)
     {
@@ -477,7 +477,7 @@ void DescriptionPanel::SetStamp( wxXmlNode* stamp )
     m_stampImage->SetBitmap( imageFile );
 }
 
-void DescriptionPanel::SetDataEditable( bool val )
+void StampDescriptionPanel::SetDataEditable( bool val )
 {
     m_inventoryPanel->SetDataEditable( val );
     m_catalogCodePanel->SetDataEditable( val );

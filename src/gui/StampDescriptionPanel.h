@@ -1,5 +1,5 @@
 /**
- * @file DescriptionPanel.h
+ * @file StampDescriptionPanel.h
  * @author Eddie Monroe ()
  * @brief
  * @version 0.1
@@ -78,16 +78,16 @@ class MiscellaneousDataPanel;
 
 
  /**
-  * @brief DescriptionPanel class declaration.
+  * @brief StampDescriptionPanel class declaration.
   * @details This panel contains ImagePanel to display the stamp, An
   * IdentificationPanel to display the ID info and a wxNotebook that manages the
   * InventoryPanel, the CharacteristicsPanel,the MiscellaneousDataPanel and pages for
   * displaying discription and background info. This class inherits from wxPanel.
   *
   **************************************************/
-class DescriptionPanel: public wxPanel
+class StampDescriptionPanel: public wxPanel
 {
-    DECLARE_DYNAMIC_CLASS( DescriptionPanel )
+    DECLARE_DYNAMIC_CLASS( StampDescriptionPanel )
     DECLARE_EVENT_TABLE( )
 
 public:
@@ -95,7 +95,7 @@ public:
      * @brief Default Constructor for a new Description Panel object
      *
      **************************************************/
-    DescriptionPanel( void );
+    StampDescriptionPanel( void );
 
 
     /**
@@ -108,7 +108,7 @@ public:
      * @param  style	The window style.
      * @see wxPanel.
      **************************************************/
-    DescriptionPanel( wxWindow* parent,
+    StampDescriptionPanel( wxWindow* parent,
         wxWindowID id = SYMBOL_DESCRIPTIONPANEL_IDNAME,
         const wxPoint& pos = SYMBOL_DESCRIPTIONPANEL_POSITION,
         const wxSize& size = SYMBOL_DESCRIPTIONPANEL_SIZE,
@@ -136,7 +136,7 @@ public:
      * @brief Destroy the Description Panel object
      *
      **************************************************/
-    ~DescriptionPanel( void );
+    ~StampDescriptionPanel( void );
 
 
     /**
@@ -151,7 +151,7 @@ public:
      **************************************************/
     void CreateControls( void );
 
-    // DescriptionPanel event handler declarations
+    // StampDescriptionPanel event handler declarations
 
 
    /**
@@ -189,9 +189,9 @@ public:
      **************************************************/
     void OnLeaveWindow( wxMouseEvent& event );
 
-    // DescriptionPanel event handler declarations
+    // StampDescriptionPanel event handler declarations
 
-    // DescriptionPanel member function declarations
+    // StampDescriptionPanel member function declarations
 
    /**
     * @brief Retrieves bitmap resources
@@ -209,7 +209,7 @@ public:
      **************************************************/
     wxIcon GetIconResource( const wxString& name );
 
-    // DescriptionPanel member function declarations
+    // StampDescriptionPanel member function declarations
 
    /**
     * @brief Should we show tooltips?
@@ -220,7 +220,7 @@ public:
 
 
     /**
-     * @brief Initializes the DescriptionPanel with new stamp values
+     * @brief Initializes the StampDescriptionPanel with new stamp values
      * @param stamp   pointer to current atamp
      **************************************************/
     void SetStamp(  wxXmlNode* stamp );
@@ -233,7 +233,7 @@ public:
      **************************************************/
     void UpdateStatus( void );
 private:
-    // DescriptionPanel member variables
+    // StampDescriptionPanel member variables
     IdentificationPanel* m_identificationPanel; ///< Pointer to IdentificationPanel
     wxSlider* m_zoomSlider; ///< Pointer to image soom slider
     ImagePanel* m_stampImage; ///< Pointer to stamp image
@@ -243,7 +243,7 @@ private:
     MiscellaneousDataPanel* m_miscellaneousDataPanel; ///< Pointer to MiscellaneousDataPanel
  //$     wxTextCtrl* m_description; ///< Pointer to description wxTextCtrl
  //$     wxTextCtrl* m_bkgndText; ///< Pointer to background wxTextCtrl
-    // DescriptionPanel member variables
+    // StampDescriptionPanel member variables
 
     Catalog::Entry* m_stamp; ///< Pointer to currently displayed stamp
 };

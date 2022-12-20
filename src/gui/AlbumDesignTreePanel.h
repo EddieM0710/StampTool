@@ -1,5 +1,5 @@
 /* 
- * @file AlbumPanel.h
+ * @file AlbumDesignTreePanel.h
  * @author Eddie Monroe 
  * @brief 
  * @version 0.1
@@ -61,24 +61,24 @@ class ReadAlbumEasyFile;
 
 
 /*!
- * AlbumPanel class declaration
+ * AlbumDesignTreePanel class declaration
  */
 
-class AlbumPanel: public wxPanel
+class AlbumDesignTreePanel: public wxPanel
 {    
-    DECLARE_DYNAMIC_CLASS( AlbumPanel )
+    DECLARE_DYNAMIC_CLASS( AlbumDesignTreePanel )
     DECLARE_EVENT_TABLE()
 
 public:
     /// Constructors
-    AlbumPanel();
-    AlbumPanel( wxWindow* parent, wxWindowID id = SYMBOL_MANAGEAECMDDATA_IDNAME, const wxPoint& pos = SYMBOL_MANAGEAECMDDATA_POSITION, const wxSize& size = SYMBOL_MANAGEAECMDDATA_SIZE, long style = SYMBOL_MANAGEAECMDDATA_STYLE );
+    AlbumDesignTreePanel();
+    AlbumDesignTreePanel( wxWindow* parent, wxWindowID id = SYMBOL_MANAGEAECMDDATA_IDNAME, const wxPoint& pos = SYMBOL_MANAGEAECMDDATA_POSITION, const wxSize& size = SYMBOL_MANAGEAECMDDATA_SIZE, long style = SYMBOL_MANAGEAECMDDATA_STYLE );
 
     /// Creation
     bool Create( wxWindow* parent, wxWindowID id = SYMBOL_MANAGEAECMDDATA_IDNAME, const wxPoint& pos = SYMBOL_MANAGEAECMDDATA_POSITION, const wxSize& size = SYMBOL_MANAGEAECMDDATA_SIZE, long style = SYMBOL_MANAGEAECMDDATA_STYLE );
 
     /// Destructor
-    ~AlbumPanel();
+    ~AlbumDesignTreePanel();
 
     /// Initialises member variables
     void Init();
@@ -86,18 +86,18 @@ public:
     /// Creates the controls and sizers
     void CreateControls();
 
-// AlbumPanel event handler declarations
+// AlbumDesignTreePanel event handler declarations
 
-// AlbumPanel event handler declarations
+// AlbumDesignTreePanel event handler declarations
 
-// AlbumPanel member function declarations
+// AlbumDesignTreePanel member function declarations
 
     /// Retrieves bitmap resources
     wxBitmap GetBitmapResource( const wxString& name );
 
     /// Retrieves icon resources
     wxIcon GetIconResource( const wxString& name );
-// AlbumPanel member function declarations
+// AlbumDesignTreePanel member function declarations
 
     /// Should we show tooltips?
     static bool ShowToolTips();
@@ -108,9 +108,9 @@ public:
 
     DesignTreeCtrl* GetDesignTreeCtrl(){ return m_designTreeCtrl; };
 
-// AlbumPanel member variables
+// AlbumDesignTreePanel member variables
     DesignTreeCtrl* m_designTreeCtrl;
-// AlbumPanel member variables
+// AlbumDesignTreePanel member variables
  //ArrayWrapper* m_AEItemArray;
 };
 

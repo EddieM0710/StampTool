@@ -526,4 +526,5 @@ char* IntToInchString( char* str, int nbr )
     sprintf( str, "%din", nbr );
     return str;
 }
+
 }

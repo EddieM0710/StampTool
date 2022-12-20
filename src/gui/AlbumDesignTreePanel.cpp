@@ -1,5 +1,5 @@
 /* 
- * @file AlbumPanel.h
+ * @file AlbumDesignTreePanel.h
  * @author Eddie Monroe 
  * @brief 
  * @version 0.1
@@ -39,7 +39,7 @@
 #include "gui/StaticItem.h"
 // includes
 
-#include "gui/AlbumPanel.h"
+#include "gui/AlbumDesignTreePanel.h"
 #include "gui/GuiDefs.h"
 #include "gui/GeneratorData.h"
 //#include "DesignData.h"
@@ -48,34 +48,34 @@
 
 
 /*
- * AlbumPanel type definition
+ * AlbumDesignTreePanel type definition
  */
 
-IMPLEMENT_DYNAMIC_CLASS( AlbumPanel, wxPanel )
+IMPLEMENT_DYNAMIC_CLASS( AlbumDesignTreePanel, wxPanel )
 
 
 /*
- * AlbumPanel event table definition
+ * AlbumDesignTreePanel event table definition
  */
 
-    BEGIN_EVENT_TABLE( AlbumPanel, wxPanel )
+    BEGIN_EVENT_TABLE( AlbumDesignTreePanel, wxPanel )
 
-    // AlbumPanel event table entries
-    // AlbumPanel event table entries
+    // AlbumDesignTreePanel event table entries
+    // AlbumDesignTreePanel event table entries
 
     END_EVENT_TABLE( )
 
 
     /*
-     * AlbumPanel constructors
+     * AlbumDesignTreePanel constructors
      */
 
-    AlbumPanel::AlbumPanel( )
+    AlbumDesignTreePanel::AlbumDesignTreePanel( )
 {
     Init( );
 }
 
-AlbumPanel::AlbumPanel( wxWindow* parent, wxWindowID id, const wxPoint& pos, const wxSize& size, long style )
+AlbumDesignTreePanel::AlbumDesignTreePanel( wxWindow* parent, wxWindowID id, const wxPoint& pos, const wxSize& size, long style )
 {
     Init( );
     Create( parent, id, pos, size, style );
@@ -83,12 +83,12 @@ AlbumPanel::AlbumPanel( wxWindow* parent, wxWindowID id, const wxPoint& pos, con
 
 
 /*
- * AlbumPanel creator
+ * AlbumDesignTreePanel creator
  */
 
-bool AlbumPanel::Create( wxWindow* parent, wxWindowID id, const wxPoint& pos, const wxSize& size, long style )
+bool AlbumDesignTreePanel::Create( wxWindow* parent, wxWindowID id, const wxPoint& pos, const wxSize& size, long style )
 {
-    // AlbumPanel creation
+    // AlbumDesignTreePanel creation
     SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
     wxPanel::Create( parent, id, pos, size, style );
 
@@ -98,19 +98,19 @@ bool AlbumPanel::Create( wxWindow* parent, wxWindowID id, const wxPoint& pos, co
         GetSizer( )->SetSizeHints( this );
     }
     Centre( );
-    // AlbumPanel creation
+    // AlbumDesignTreePanel creation
     return true;
 }
 
 
 /*
- * AlbumPanel destructor
+ * AlbumDesignTreePanel destructor
  */
 
-AlbumPanel::~AlbumPanel( )
+AlbumDesignTreePanel::~AlbumDesignTreePanel( )
 {
-    // AlbumPanel destruction
-    // AlbumPanel destruction
+    // AlbumDesignTreePanel destruction
+    // AlbumDesignTreePanel destruction
 }
 
 
@@ -118,21 +118,21 @@ AlbumPanel::~AlbumPanel( )
  * Member initialisation
  */
 
-void AlbumPanel::Init( )
+void AlbumDesignTreePanel::Init( )
 {
-    // AlbumPanel member initialisation
+    // AlbumDesignTreePanel member initialisation
     m_designTreeCtrl = NULL;
-    // AlbumPanel member initialisation
+    // AlbumDesignTreePanel member initialisation
 }
 
 
 /*
- * Control creation for AlbumPanel
+ * Control creation for AlbumDesignTreePanel
  */
 
-void AlbumPanel::CreateControls( )
+void AlbumDesignTreePanel::CreateControls( )
 {
-    AlbumPanel* itemPanel1 = this;
+    AlbumDesignTreePanel* itemPanel1 = this;
 
     wxBoxSizer* itemBoxSizer1 = new wxBoxSizer( wxVERTICAL );
     itemPanel1->SetSizer( itemBoxSizer1 );
@@ -150,7 +150,7 @@ void AlbumPanel::CreateControls( )
  * Should we show tooltips?
  */
 
-bool AlbumPanel::ShowToolTips( )
+bool AlbumDesignTreePanel::ShowToolTips( )
 {
     return true;
 }
@@ -159,34 +159,34 @@ bool AlbumPanel::ShowToolTips( )
  * Get bitmap resources
  */
 
-wxBitmap AlbumPanel::GetBitmapResource( const wxString& name )
+wxBitmap AlbumDesignTreePanel::GetBitmapResource( const wxString& name )
 {
     // Bitmap retrieval
-// AlbumPanel bitmap retrieval
+// AlbumDesignTreePanel bitmap retrieval
     wxUnusedVar( name );
     return wxNullBitmap;
-    // AlbumPanel bitmap retrieval
+    // AlbumDesignTreePanel bitmap retrieval
 }
 
 /*
  * Get icon resources
  */
 
-wxIcon AlbumPanel::GetIconResource( const wxString& name )
+wxIcon AlbumDesignTreePanel::GetIconResource( const wxString& name )
 {
     // Icon retrieval
-// AlbumPanel icon retrieval
+// AlbumDesignTreePanel icon retrieval
     wxUnusedVar( name );
     return wxNullIcon;
-    // AlbumPanel icon retrieval
+    // AlbumDesignTreePanel icon retrieval
 }
 
-void AlbumPanel::LoadAlbumLayout( )
+void AlbumDesignTreePanel::LoadAlbumLayout( )
 {
    m_designTreeCtrl->LoadTree();
 }
 
-void AlbumPanel::LoadAEData( wxString filename )
+void AlbumDesignTreePanel::LoadAEData( wxString filename )
 {
 
 }

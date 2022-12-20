@@ -39,6 +39,7 @@ namespace Design {
 
     bool Page::UpdateMinimumSize( )
     {
+        m_frame.WriteLayout( "Page::UpdateMinimumSize <");
 
         m_pageFrame.SetXPos( GetXPos( ) ); 
         m_pageFrame.SetYPos( GetYPos( ) ); 
@@ -108,13 +109,15 @@ namespace Design {
         {
             ReportLayoutError( "UpdateMinimumSize", "Children too big for row", true );
         }
-        
+        m_frame.WriteLayout( "Page::UpdateMinimumSize >");
+
         return true;
     }
 
 
     void Page::UpdateSizes( )
     {
+        m_frame.WriteLayout( "Page::UpdateSizes <");
 
         //figure out how many rows or cols there are to calculate the child spacing
         int nbrRows = 0;
@@ -177,11 +180,13 @@ namespace Design {
             child->UpdateSizes( );
             childID = GetDesignTreeCtrl()->GetNextChild(parentID, cookie);
         }
-        //m_frame.WriteLayout( "Page::UpdateSizes ");
+        m_frame.WriteLayout( "Page::UpdateSizes >");
     }
 
     void Page::UpdatePositions( )
     {
+                m_frame.WriteLayout( "Page::UpdatePositions <");
+
         int nbrRows = 0;
         int nbrCols = 0;
         int nbrStamps = 0;
@@ -245,7 +250,7 @@ namespace Design {
             }
             childID = GetDesignTreeCtrl()->GetNextChild(parentID, cookie);
         }
-        //m_frame.WriteLayout( "Page::UpdatePositions ");
+        m_frame.WriteLayout( "Page::UpdatePositions >");
     }
 
     wxXmlNode* Page::Write( wxXmlNode* parent )

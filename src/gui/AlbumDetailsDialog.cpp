@@ -32,7 +32,8 @@
 #include "utils/StampList.h"
 #include "Defs.h"
 #include "wx/treectrl.h"
-
+#include <wx/fontdlg.h>
+#include <wx/fontdata.h>
 ////@begin XPM images
 
 ////@end XPM images
@@ -55,7 +56,8 @@ BEGIN_EVENT_TABLE( AlbumDetailsDialog, wxDialog )
 ////@end AlbumDetailsDialog event table entries
     EVT_BUTTON( wxID_CANCEL, AlbumDetailsDialog::OnCancelClick )
     EVT_BUTTON( wxID_OK, AlbumDetailsDialog::OnOkClick )
-
+    EVT_BUTTON( ID_NBRDEFAULTFONTBUTTON, AlbumDetailsDialog::OnNbrDefaultClick )
+    EVT_BUTTON( ID_TITLEDEFAULTFONTBUTTON, AlbumDetailsDialog::OnTitleDefaultClick )
 END_EVENT_TABLE()
 
 
@@ -148,6 +150,65 @@ void AlbumDetailsDialog::CreateControls()
     m_name = new LabeledTextBox( itemDialog1, ID_NAMELABELEDTEXTBOX, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER|wxTAB_TRAVERSAL );
     m_name->SetExtraStyle(wxWS_EX_VALIDATE_RECURSIVELY);
     itemBoxSizer2->Add(m_name, 1, wxALIGN_CENTER_VERTICAL|wxALL, 5);
+
+//default id font
+    wxPanel* itemPanel1 = new wxPanel( itemDialog1, ID_TITLEFONTPANEL, wxDefaultPosition, wxDefaultSize, wxSIMPLE_BORDER|wxTAB_TRAVERSAL );
+    itemPanel1->SetExtraStyle(wxWS_EX_VALIDATE_RECURSIVELY);
+    itemBoxSizer1->Add(itemPanel1, 0, wxGROW|wxALL, 5);
+
+    wxBoxSizer* itemBoxSizer6 = new wxBoxSizer(wxVERTICAL);
+    itemPanel1->SetSizer(itemBoxSizer6);
+
+    wxBoxSizer* itemBoxSizer11 = new wxBoxSizer(wxHORIZONTAL);
+    itemBoxSizer6->Add(itemBoxSizer11, 0, wxGROW|wxALL, 5);
+
+    wxStaticText* itemStaticText12 = new wxStaticText( itemPanel1, wxID_STATIC, _("Default Catalog Nbr Font"), wxDefaultPosition, wxDefaultSize, 0 );
+    itemBoxSizer11->Add(itemStaticText12, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
+
+    m_catNbrFontPicker = new wxFontPickerCtrl(itemPanel1, 12345, 
+    *wxNORMAL_FONT, wxDefaultPosition, 
+    wxDefaultSize, wxFNTP_DEFAULT_STYLE);
+    itemBoxSizer11->Add(m_catNbrFontPicker, 5, wxGROW | wxALL, 5 );
+
+    m_catNbrColorPicker = new wxColourPickerCtrl( itemPanel1, 12346,
+		*wxBLACK, wxDefaultPosition, 
+        wxDefaultSize,  wxCLRP_DEFAULT_STYLE ); 	
+    itemBoxSizer11->Add(m_catNbrColorPicker, 1, wxGROW | wxALL, 5 );
+
+    wxButton* itemButton13 = new wxButton( itemPanel1, ID_NBRDEFAULTFONTBUTTON, _("Default"), wxDefaultPosition, wxDefaultSize, 0 );
+    itemBoxSizer11->Add(itemButton13, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
+
+
+
+//default title font
+    wxPanel* itemPanel2 = new wxPanel( itemDialog1, ID_TITLEFONTPANEL, wxDefaultPosition, wxDefaultSize, wxSIMPLE_BORDER|wxTAB_TRAVERSAL );
+    itemPanel2->SetExtraStyle(wxWS_EX_VALIDATE_RECURSIVELY);
+    itemBoxSizer1->Add(itemPanel2, 0, wxGROW|wxALL, 5);
+
+    wxBoxSizer* itemBoxSizer60 = new wxBoxSizer(wxVERTICAL);
+    itemPanel2->SetSizer(itemBoxSizer60);
+
+    wxBoxSizer* itemBoxSizer110 = new wxBoxSizer(wxHORIZONTAL);
+    itemBoxSizer60->Add(itemBoxSizer110, 0, wxGROW|wxALL, 5);
+
+    wxStaticText* itemStaticText120 = new wxStaticText( itemPanel2, wxID_STATIC, _("Default Title Font"), wxDefaultPosition, wxDefaultSize, 0 );
+    itemBoxSizer110->Add(itemStaticText120, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
+
+    m_titleFontPicker = new wxFontPickerCtrl(itemPanel2, 12345, 
+    *wxNORMAL_FONT, wxDefaultPosition, 
+    wxDefaultSize, wxFNTP_DEFAULT_STYLE);
+    itemBoxSizer110->Add(m_titleFontPicker, 5, wxGROW | wxALL, 5 );
+
+    m_titleColorPicker = new wxColourPickerCtrl( itemPanel2, 12346,
+		*wxBLACK, wxDefaultPosition, 
+        wxDefaultSize,  wxCLRP_DEFAULT_STYLE ); 	
+    itemBoxSizer110->Add(m_titleColorPicker, 1, wxGROW | wxALL, 5 );
+
+    wxButton* itemButton130 = new wxButton( itemPanel2, ID_TITLEDEFAULTFONTBUTTON, _("Default"), wxDefaultPosition, wxDefaultSize, 0 );
+    itemBoxSizer110->Add(itemButton130, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
+
+
+
 
     wxBoxSizer* itemBoxSizer4 = new wxBoxSizer(wxHORIZONTAL);
     itemBoxSizer1->Add(itemBoxSizer4, 0, wxGROW|wxALL, 0);
@@ -481,7 +542,72 @@ void AlbumDetailsDialog::OnCancelClick( wxCommandEvent& event )
     // wxEVT_COMMAND_BUTTON_CLICKED event handler for wxID_CANCEL in StampDetailsDialog. 
 }
 
+void AlbumDetailsDialog::OnNbrDefaultClick( wxCommandEvent& event )
+{
+    wxFontData data;
+    wxFont myfont = *wxNORMAL_FONT;
+    myfont.SetFamily(wxFONTFAMILY_ROMAN);
+    wxFont myfont2 = *wxNORMAL_FONT;
+    myfont2.SetFamily(wxFONTFAMILY_ROMAN);
 
+    if ( myfont == myfont2 )
+    {
+        wxFontFamily family= myfont.GetFamily();
+    }
+
+    wxColour myColor;
+    {
+            const wxNativeFontInfo* nativeFontInfo = myfont.GetNativeFontInfo () ;
+        wxFontFamily family= myfont.GetFamily();
+        wxFontWeight weight = myfont.GetWeight();
+        int size = myfont.GetPointSize();
+        wxString face = myfont.GetFaceName();
+        wxString nativeFontInfoDesc = myfont.GetNativeFontInfoDesc 	( 		) ;	
+        wxString familyName = myfont.GetFamilyString();
+        wxFontStyle style = myfont.GetStyle();
+        myfont2.SetWeight(wxFONTWEIGHT_BOLD);
+    if ( myfont == myfont2 )
+    {
+        family= myfont.GetFamily();
+    }
+        myfont2.SetWeight(weight);
+    if ( myfont == myfont2 )
+    {
+        family= myfont.GetFamily();
+    }
+    }
+
+    data.SetInitialFont( myfont);
+   // data.SetColour(canvasTextColour);
+    wxFontDialog dialog((wxWindow *)this, data);
+    if (dialog.ShowModal() == wxID_OK)
+    {
+        wxFontData retData = dialog.GetFontData();
+        myfont = retData.GetChosenFont();
+        const wxNativeFontInfo* nativeFontInfo = myfont.GetNativeFontInfo () ;
+        myColor = retData.GetColour();
+        wxFontFamily family= myfont.GetFamily();
+        wxFontWeight weight = myfont.GetWeight();
+        int size = myfont.GetPointSize();
+        wxString face = myfont.GetFaceName();
+        wxString nativeFontInfoDesc = myfont.GetNativeFontInfoDesc 	( 		) ;	
+        wxString familyName = myfont.GetFamilyString();
+        wxFontStyle style = myfont.GetStyle();
+       
+    }
+
+    // wxEVT_COMMAND_BUTTON_CLICKED event handler for wxID_CANCEL in StampDetailsDialog.
+        // Before editing this code, remove the block markers.
+    event.Skip( );
+    // wxEVT_COMMAND_BUTTON_CLICKED event handler for wxID_CANCEL in StampDetailsDialog. 
+}
+void AlbumDetailsDialog::OnTitleDefaultClick( wxCommandEvent& event )
+{
+    // wxEVT_COMMAND_BUTTON_CLICKED event handler for wxID_CANCEL in StampDetailsDialog.
+        // Before editing this code, remove the block markers.
+    event.Skip( );
+    // wxEVT_COMMAND_BUTTON_CLICKED event handler for wxID_CANCEL in StampDetailsDialog. 
+}
 /*
  * wxEVT_COMMAND_BUTTON_CLICKED event handler for wxID_OK
  */

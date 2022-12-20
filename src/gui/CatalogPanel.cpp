@@ -60,6 +60,7 @@ BEGIN_EVENT_TABLE( CatalogPanel, wxPanel )
 
 // CatalogPanel event table entries
     EVT_TEXT( ID_TEXTCTRL, CatalogPanel::OnTextctrlTextUpdated )
+    EVT_TOGGLEBUTTON( ID_TOGGLEBUTTON, CatalogPanel::OnTogglebuttonClick )
 // CatalogPanel event table entries
 
 END_EVENT_TABLE()
@@ -135,27 +136,56 @@ void CatalogPanel::CreateControls()
 
     CatalogPanel* itemPanel1 = this;
 
-    wxBoxSizer* itemBoxSizer2 = new wxBoxSizer(wxVERTICAL);
-    itemPanel1->SetSizer(itemBoxSizer2);
+    m_catPanelSizer = new wxBoxSizer(wxVERTICAL);
+    itemPanel1->SetSizer(m_catPanelSizer);
 
     wxBoxSizer* itemBoxSizer1 = new wxBoxSizer(wxHORIZONTAL);
-    itemBoxSizer2->Add(itemBoxSizer1, 0, wxGROW|wxALL, 0);
+    m_catPanelSizer->Add(itemBoxSizer1, 0, wxGROW|wxALL, 0);
 
     wxStaticText* itemStaticText2 = new wxStaticText( itemPanel1, wxID_STATIC, _("Title"), wxDefaultPosition, wxDefaultSize, 0 );
     itemBoxSizer1->Add(itemStaticText2, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
 
     m_title = new wxTextCtrl( itemPanel1, ID_TEXTCTRL, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
-    itemBoxSizer1->Add(m_title, 0, wxGROW|wxALL, 0);
+    itemBoxSizer1->Add(m_title, 1, wxGROW|wxALL, 0);
+
+    m_toggleButton = new wxToggleButton( itemPanel1, ID_TOGGLEBUTTON, _("Search"), wxDefaultPosition, wxDefaultSize, 0 );
+    m_toggleButton->SetValue(false);
+    itemBoxSizer1->Add(m_toggleButton, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
+
+
+    m_searchSizer = new wxBoxSizer(wxHORIZONTAL);
+    m_catPanelSizer->Add(m_searchSizer, 0, wxGROW|wxALL, 5);
+    wxBoxSizer* itemBoxSizer8 = new wxBoxSizer(wxVERTICAL);
+    m_searchSizer->Add(itemBoxSizer8, 1, wxGROW|wxALL, 5);
+    wxButton* itemButton9 = new wxButton( itemPanel1, ID_NEXTBUTTON, _("Next"), wxDefaultPosition, wxDefaultSize, 0 );
+    itemBoxSizer8->Add(itemButton9, 0, wxALIGN_CENTER_HORIZONTAL|wxALL, 5);
+
+    wxBoxSizer* itemBoxSizer10 = new wxBoxSizer(wxHORIZONTAL);
+    itemBoxSizer8->Add(itemBoxSizer10, 1, wxGROW|wxALL, 5);
+    wxStaticText* itemStaticText11 = new wxStaticText( itemPanel1, wxID_STATIC, _("Search\nString"), wxDefaultPosition, wxDefaultSize, 0 );
+    itemBoxSizer10->Add(itemStaticText11, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
+
+    wxTextCtrl* itemTextCtrl12 = new wxTextCtrl( itemPanel1, ID_SEARCHSTRINGTEXTCTRL, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+    itemBoxSizer10->Add(itemTextCtrl12, 2, wxGROW|wxALL, 5);
+
+    wxArrayString itemCheckListBox13Strings;
+    itemCheckListBox13Strings.Add(_("Titles"));
+    itemCheckListBox13Strings.Add(_("Series"));
+    itemCheckListBox13Strings.Add(_("Themes"));
+    wxCheckListBox* itemCheckListBox13 = new wxCheckListBox( itemPanel1, ID_CHECKLISTBOX, wxDefaultPosition, wxDefaultSize, itemCheckListBox13Strings, wxLB_SINGLE );
+    m_searchSizer->Add(itemCheckListBox13, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
+
 
     wxBoxSizer* itemBoxSizer3 = new wxBoxSizer(wxHORIZONTAL);
-    itemBoxSizer2->Add(itemBoxSizer3, 2, wxGROW|wxALL, 0);
+    m_catPanelSizer->Add(itemBoxSizer3, 2, wxGROW|wxALL, 0);
 
     m_catalogTreeCtrl = new CatalogTreeCtrl( itemPanel1, ID_CATALOGTREECTRL, wxDefaultPosition, wxDefaultSize, wxTR_HAS_BUTTONS |wxTR_FULL_ROW_HIGHLIGHT|wxTR_SINGLE|wxSUNKEN_BORDER|wxTR_DEFAULT_STYLE );
     itemBoxSizer3->Add(m_catalogTreeCtrl, 2, wxGROW|wxALL, 0);
 
 // CatalogPanel content construction
     GetGeneratorData( )->SetCatalogTreeCtrl(m_catalogTreeCtrl);
-
+    m_searchSizer->Show(false);
+    m_catPanelSizer->Layout();
 }
 
 
@@ -208,3 +238,27 @@ void CatalogPanel::OnTextctrlTextUpdated( wxCommandEvent& event )
 }
 
 
+
+
+/*
+ * wxEVT_COMMAND_CHECKBOX_CLICKED event handler for ID_TOGGLEBUTTON
+ */
+
+void CatalogPanel::OnTogglebuttonClick( wxCommandEvent& event )
+{
+    if ( m_toggleButton->GetValue( ) )
+    {
+        m_searchSizer->Show(true);
+        //m_searchSizer->Hide( m_catPanelSizer, true );
+    }
+    else
+    {
+        m_searchSizer->Show(false);
+    //    m_searchSizer->Hide( m_catPanelSizer, false );
+    }
+    m_catPanelSizer->Layout ();
+////@begin wxEVT_COMMAND_CHECKBOX_CLICKED event handler for ID_TOGGLEBUTTON in StampManagerPanel.
+    // Before editing this code, remove the block markers.
+    event.Skip();
+////@end wxEVT_COMMAND_CHECKBOX_CLICKED event handler for ID_TOGGLEBUTTON in StampManagerPanel. 
+}

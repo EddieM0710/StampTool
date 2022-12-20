@@ -40,11 +40,13 @@
 #include "design/Column.h"
 #include "design/Stamp.h"
 #include "gui/DesignTreeCtrl.h"
+#include "utils/Settings.h"
 
 namespace Design {
 
     AlbumBase::AlbumBase( wxXmlNode* ele ) : XMLBase(ele)
     {
+ //       GetSettings()->
     }
 
     AlbumBase::~AlbumBase( )

@@ -53,7 +53,7 @@ class wxButton;
 
 class CatalogPanel;
 //class CatalogTreeCtrl;
-class AlbumPanel;
+class AlbumDesignTreePanel;
 /*!
  * Control identifiers
  */
@@ -214,9 +214,7 @@ class AlbumGenFrame : public wxFrame
     void OnExitClick( wxCommandEvent &event );
 
     // wxEVT_COMMAND_MENU_SELECTED event handler for ID_TEXTSERCHMENUITEM
-    void OnTextserchmenuitemClick( wxCommandEvent &event );
-
-    void OnAlbumGenMenuItemClick( wxCommandEvent& event );
+    void OnTextserchmenuitemClick( wxCommandEvent& event );
 
     // wxEVT_COMMAND_MENU_SELECTED event handler for ID_SORTORDER
     void OnSortOrderClick( wxCommandEvent &event );
@@ -303,11 +301,13 @@ class AlbumGenFrame : public wxFrame
                        wxXmlNode **mergeItem );
 
     int ImageGallery( );
+    
+     AlbumGenPanel *GetAlbumGenPanel(){ return m_albumGeneratorPanel;}
 
      // AlbumGenFrame member variables
     AlbumGenPanel *m_albumGeneratorPanel;
     CatalogPanel* m_catalogPanel;
-    AlbumPanel* m_albumPanel;
+    AlbumDesignTreePanel* m_albumDesignTreePanel;
      // AlbumGenFrame member variables
 
     // container data classification sort order

@@ -207,6 +207,42 @@ Settings* NewSettingsInstance()
             child = NewNode( child, "File" );
             child->AddAttribute("Name", GetLastFile());
         }
+    
+        wxXmlNode* fonts = NewNode( settings, "Fonts" );
+        if ( fonts )
+        {        
+            child = NewNode( fonts,  Design::AlbumBaseNames[ Design::AT_Font] );
+            if ( child )
+            {
+                child->AddAttribute(  wxString(Design::AttrNameStrings[Design::AT_FontType]), 
+                                     wxString(Design::AT_FontUsageTypeStrings[ Design::AT_CatNbrFontType ]) );
+                child->AddAttribute(  wxString(Design::AttrNameStrings[Design::AT_NativeFontString]),
+                                     wxString(m_catNbrFontString ));
+                child->AddAttribute( wxString(Design::AttrNameStrings[Design::AT_FontColor]), 
+                                     wxString(m_catNbrColorString) );
+            }
+
+            child = NewNode( fonts,  Design::AlbumBaseNames[ Design::AT_Font] );
+            if ( child )
+            {
+                child->AddAttribute(  wxString(Design::AttrNameStrings[Design::AT_FontType]), 
+                                     wxString(Design::AT_FontUsageTypeStrings[ Design::AT_TitleFontType ]) );
+                child->AddAttribute( wxString(Design::AttrNameStrings[Design::AT_NativeFontString]), 
+                                     wxString(m_titleFontString) );
+                child->AddAttribute( wxString(Design::AttrNameStrings[Design::AT_FontColor]), 
+                                     wxString(m_titleColorString ));
+            }
+            child = NewNode( fonts,  Design::AlbumBaseNames[ Design::AT_Font] );
+            if ( child )
+            {
+                child->AddAttribute(  wxString(Design::AttrNameStrings[Design::AT_FontType]), 
+                                     wxString(Design::AT_FontUsageTypeStrings[ Design::AT_TextFontType ] ));
+                child->AddAttribute(  wxString(Design::AttrNameStrings[Design::AT_NativeFontString]),
+                                     wxString(m_textFontString ));
+                child->AddAttribute( wxString(Design::AttrNameStrings[Design::AT_FontColor]),
+                                     wxString(m_textColorString ));
+            }
+        }
 
         wxXmlNode* sortOrder = NewNode( settings, "SortOrder" );
         wxArrayInt* sortOrderArray = GetSortOrder( );
@@ -258,6 +294,7 @@ Settings* NewSettingsInstance()
         }
         const char* file = fullPath.c_str( );
         doc.Save( file );
+        // Utils::Save(  &doc, file );
         SetDirty(false);
     }
 
@@ -333,6 +370,53 @@ Settings* NewSettingsInstance()
         {
             SetDirty();
             m_nbrRecentPreference = m_defaultNbrRecentPreference;
+        }
+            
+        wxFont font(*wxNORMAL_FONT);
+
+        if ( m_catNbrFontString.IsEmpty() )  
+        {
+            SetDirty();
+            font.SetWeight(wxFONTWEIGHT_THIN);
+            font.SetStyle(wxFONTSTYLE_ITALIC);
+            font.SetPointSize(8);
+            m_catNbrFontString = font.GetNativeFontInfoUserDesc();
+        }
+
+        if ( m_catNbrColorString.IsEmpty() )  
+        {
+            SetDirty();
+            m_catNbrColorString = m_defaultFontColor;
+        }
+
+        if ( m_titleFontString.IsEmpty() )  
+        {
+            SetDirty();
+            font.SetWeight(wxFONTWEIGHT_BOLD);
+            font.SetStyle(wxFONTSTYLE_NORMAL);
+            font.SetPointSize(12);
+            m_titleFontString = font.GetNativeFontInfoUserDesc();
+        }
+
+        if ( m_titleColorString.IsEmpty() )  
+        {
+            SetDirty();
+            m_titleColorString = m_defaultFontColor;
+        }
+  
+        if ( m_textFontString.IsEmpty() )  
+        {
+            SetDirty();
+            font.SetWeight(wxFONTWEIGHT_NORMAL);
+            font.SetStyle(wxFONTSTYLE_NORMAL);
+            font.SetPointSize(10);
+            m_textFontString = font.GetNativeFontInfoUserDesc();
+        }
+
+        if ( m_textColorString.IsEmpty() )  
+        {
+            SetDirty();
+            m_textColorString = m_defaultFontColor;
         }
     }
 
@@ -498,6 +582,38 @@ Settings* NewSettingsInstance()
             }
         }
 
+        wxXmlNode* fonts = FirstChildElement( root, "Fonts" );
+        if ( fonts )
+        {
+            child = FirstChildElement( fonts, Design::AlbumBaseNames[ Design::AT_Font ] );
+            while ( child )
+            {
+                wxString name = child->GetAttribute( Design::AttrNameStrings[ Design::AT_FontType ] );
+                Design::AT_FontUsageType type = Design::FindFontUsageType( name );
+                if ( type == Design::AT_CatNbrFontType )
+                {
+                    name = child->GetAttribute( Design::AttrNameStrings[ Design::AT_NativeFontString ] );
+                    SetCatNbrFontString( name );
+                    name = child->GetAttribute( Design::AttrNameStrings[ Design::AT_FontColor ] );
+                    SetCatNbrColorString( name );
+                }
+                else if ( type == Design::AT_TitleFontType )
+                {
+                    name = child->GetAttribute( Design::AttrNameStrings[ Design::AT_NativeFontString ] );
+                    SetTitleFontString( name );
+                    name = child->GetAttribute( Design::AttrNameStrings[ Design::AT_FontColor ] );
+                    SetTitleColorString( name );
+                }
+                else if ( type == Design::AT_TextFontType )
+                {
+                    name = child->GetAttribute( Design::AttrNameStrings[ Design::AT_NativeFontString ] );
+                    SetTextFontString( name );
+                    name = child->GetAttribute( Design::AttrNameStrings[ Design::AT_FontColor ] );
+                    SetTextColorString( name );
+                }
+                child = GetNext( child, Design::AlbumBaseNames[ Design::AT_Font ] );
+            }
+        }
         SetDefaults();  
         Save();
     }

@@ -43,7 +43,7 @@
 #include "catalog/CatalogDefs.h"
 #include "gui/CatalogTreeCtrl.h"
 #include "gui/GeneratorData.h"
-#include "gui/DescriptionPanel.h"
+#include "gui/StampDescriptionPanel.h"
 /*
  * IdentificationPanel type definition
  */
@@ -147,7 +147,7 @@ void IdentificationPanel::Init( )
     m_format = NULL;
     m_issueDate = NULL;
     m_series = NULL;
-//$    m_themes = NULL;
+   m_themes = NULL;
     m_country = NULL;
     // IdentificationPanel member initialisation
 }
@@ -212,32 +212,37 @@ void IdentificationPanel::CreateControls( )
         0 );
 
     wxArrayString m_emissionStrings;
-    m_emissionStrings.Add( _( "Unknown" ) );
-    m_emissionStrings.Add( _( "Commemorative" ) );
-    m_emissionStrings.Add( _( "Definitive" ) );
-    m_emissionStrings.Add( _( "Hunting Permit" ) );
-    m_emissionStrings.Add( _( "Revenue" ) );
-    m_emissionStrings.Add( _( "Air Post" ) );
-    m_emissionStrings.Add( _( "Air Post Official" ) );
-    m_emissionStrings.Add( _( "Air Post Semi-Postal" ) );
-    m_emissionStrings.Add( _( "ATM labels" ) );
-    m_emissionStrings.Add( _( "Cinderella" ) );
-    m_emissionStrings.Add( _( "Illegal" ) );
-    m_emissionStrings.Add( _( "Insured Letter" ) );
-    m_emissionStrings.Add( _( "Military" ) );
-    m_emissionStrings.Add( _( "NewsClassificationpaper" ) );
-    m_emissionStrings.Add( _( "Official" ) );
-    m_emissionStrings.Add( _( "Parcel Post" ) );
-    m_emissionStrings.Add( _( "Personal Delivery" ) );
-    m_emissionStrings.Add( _( "Personalized" ) );
-    m_emissionStrings.Add( _( "Postage Due" ) );
-    m_emissionStrings.Add( _( "Postal Tax" ) );
-    m_emissionStrings.Add( _( "Precancelled" ) );
-    m_emissionStrings.Add( _( "Private" ) );
-    m_emissionStrings.Add( _( "Regional" ) );
-    m_emissionStrings.Add( _( "Registration" ) );
-    m_emissionStrings.Add( _( "Semi-Postal" ) );
-    m_emissionStrings.Add( _( "War Tax" ) );
+    for ( int i = 0; i < Catalog::ET_NbrTypes; i++ ) 
+    {
+        m_emissionStrings.Add( _( Catalog::ET_EmissionStrings[ i ] ) );
+    }    
+
+    // m_emissionStrings.Add( _( "Unknown" ) );
+    // m_emissionStrings.Add( _( "Commemorative" ) );
+    // m_emissionStrings.Add( _( "Definitive" ) );
+    // m_emissionStrings.Add( _( "Hunting Permit" ) );
+    // m_emissionStrings.Add( _( "Revenue" ) );
+    // m_emissionStrings.Add( _( "Air Post" ) );
+    // m_emissionStrings.Add( _( "Air Post Official" ) );
+    // m_emissionStrings.Add( _( "Air Post Semi-Postal" ) );
+    // m_emissionStrings.Add( _( "ATM labels" ) );
+    // m_emissionStrings.Add( _( "Cinderella" ) );
+    // m_emissionStrings.Add( _( "Illegal" ) );
+    // m_emissionStrings.Add( _( "Insured Letter" ) );
+    // m_emissionStrings.Add( _( "Military" ) );
+    // m_emissionStrings.Add( _( "NewsClassificationpaper" ) );
+    // m_emissionStrings.Add( _( "Official" ) );
+    // m_emissionStrings.Add( _( "Parcel Post" ) );
+    // m_emissionStrings.Add( _( "Personal Delivery" ) );
+    // m_emissionStrings.Add( _( "Personalized" ) );
+    // m_emissionStrings.Add( _( "Postage Due" ) );
+    // m_emissionStrings.Add( _( "Postal Tax" ) );
+    // m_emissionStrings.Add( _( "Precancelled" ) );
+    // m_emissionStrings.Add( _( "Private" ) );
+    // m_emissionStrings.Add( _( "Regional" ) );
+    // m_emissionStrings.Add( _( "Registration" ) );
+    // m_emissionStrings.Add( _( "Semi-Postal" ) );
+    // m_emissionStrings.Add( _( "War Tax" ) );
     m_emission = new wxChoice( itemPanel1, ID_EMISSIONCHOICE, wxDefaultPosition,
         wxDefaultSize, m_emissionStrings, 0 );
     m_emission->SetStringSelection( _( "Unknown" ) );
@@ -275,9 +280,9 @@ void IdentificationPanel::CreateControls( )
         wxDefaultPosition, wxDefaultSize, 0 );
     itemBoxSizer2->Add( m_series, 0, wxGROW | wxALL, 2 );
 
-    //$ m_themes = new LabeledTextBox( itemPanel1, ID_THEMETEXTBOX,
-    //$     wxDefaultPosition, wxDefaultSize, 0 );
-    //$ itemBoxSizer2->Add( m_themes, 0, wxGROW | wxALL, 2 );
+    m_themes = new LabeledTextBox( itemPanel1, ID_THEMETEXTBOX,
+        wxDefaultPosition, wxDefaultSize, 0 );
+    itemBoxSizer2->Add( m_themes, 0, wxGROW | wxALL, 2 );
 
     m_country = new LabeledTextBox( itemPanel1, ID_COUNTRYTEXTBOX,
         wxDefaultPosition, wxDefaultSize, 0 );
@@ -289,7 +294,7 @@ void IdentificationPanel::CreateControls( )
     m_issueDate->SetLabel( "Issue Date" );
     m_emission->SetLabel( "Emission" );
     m_format->SetLabel( "Format" );
- //$     m_themes->SetLabel( "Themes" );
+    m_themes->SetLabel( "Themes" );
     m_ID->SetLabel( "ID" );
     m_name->SetLabel( "Name" );
     // m_ID->SetID(m_stamp.GetID());
@@ -360,10 +365,10 @@ void IdentificationPanel::OnTextctrlTextUpdated( wxCommandEvent& event )
     {
         UpdateStampValue( Catalog::DT_Series, m_series );
     }
-//$    else if ( eventObject == m_themes )
-//$    {
-//$        UpdateStampValue( Catalog::DT_Themes, m_themes );
-//$    }
+    else if ( eventObject == m_themes )
+    {
+        UpdateStampValue( Catalog::DT_Themes, m_themes );
+    }
     else if ( eventObject == m_country )
     {
         UpdateStampValue( Catalog::DT_Country, m_country );
@@ -458,7 +463,7 @@ void IdentificationPanel::SetStamp( Catalog::Entry* stamp )
         SetChoice( m_emission, m_stamp->GetEmission( ) );
         SetChoice( m_format, m_stamp->GetFormat( ) );
         m_series->ChangeValue( m_stamp->GetAttr(  Catalog::DT_Series) );
-//$        m_themes->ChangeValue( m_stamp->GetAttr(  Catalog::DT_Themes ));
+        m_themes->ChangeValue( m_stamp->GetAttr(  Catalog::DT_Themes ));
         m_country->ChangeValue( m_stamp->GetAttr(  Catalog::DT_Country ) );
         SetChoice( m_status, m_stamp->GetInventoryStatus( ) );
     }
@@ -469,7 +474,7 @@ void IdentificationPanel::SetDataEditable( bool val )
         m_issueDate->SetEditable(val);
         m_emission->Enable(val);
         m_format->Enable(val);
-//$        m_themes->SetEditable(val);
+        m_themes->SetEditable(val);
         m_ID->SetEditable(val);
         m_name->SetEditable(val);
         m_series->SetEditable(val);

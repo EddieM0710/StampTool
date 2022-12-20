@@ -32,7 +32,8 @@
 // includes
 
 #include "gui/DesignTreeCtrl.h"
-
+#include <wx/fontpicker.h>
+#include <wx/clrpicker.h>
 /*!
  * Forward declarations
  */
@@ -61,6 +62,9 @@ class wxListCtrl;
 #define ID_STAMPTITLEDEFAULTCHECKBOX 10013
 #define ID_ROWCOLTITLEDEFAULTCHECKBOX 10014
 #define ID_FRAMEDEFAULTCHECKBOX 10015
+#define ID_NBRDEFAULTFONTBUTTON 10016
+#define ID_TITLEDEFAULTFONTBUTTON 10017
+#define ID_TITLEFONTPANEL 10018
 #define SYMBOL_ALBUMDETAILSDIALOG_STYLE wxCAPTION|wxRESIZE_BORDER|wxSYSTEM_MENU|wxCLOSE_BOX|wxTAB_TRAVERSAL
 #define SYMBOL_ALBUMDETAILSDIALOG_TITLE _("AlbumDetailsDialog")
 #define SYMBOL_ALBUMDETAILSDIALOG_IDNAME ID_ALBUMDETAILSDIALOG
@@ -158,6 +162,8 @@ void SetBorderSizeModified( bool state );
 
 void OnOkClick( wxCommandEvent& event );
 void OnCancelClick( wxCommandEvent& event );
+void OnNbrDefaultClick( wxCommandEvent& event );
+void OnTitleDefaultClick( wxCommandEvent& event );
 
 
 //// AlbumDetailsDialog member variables
@@ -172,7 +178,11 @@ void OnCancelClick( wxCommandEvent& event );
 
 wxCheckBox* m_catNbrCheckbox;
 wxCheckBox* m_stampTitleCheckbox;
-   
+    wxFontPickerCtrl* m_titleFontPicker;
+    wxColourPickerCtrl* m_titleColorPicker;
+    wxFontPickerCtrl* m_catNbrFontPicker;
+    wxColourPickerCtrl* m_catNbrColorPicker;
+
 wxButton* m_validate;
     wxListCtrl* m_statusList;
 //// AlbumDetailsDialog member variables

@@ -33,6 +33,8 @@
 #include "design/DesignData.h"
 #include "catalog/CatalogData.h"
 
+#include <wx/log.h>
+
 GeneratorData* NewGeneratorDataInstance()
 {
    return new GeneratorData();
@@ -43,7 +45,7 @@ GeneratorData::GeneratorData( ) {
     m_designData = 0;
     m_catalogTreeCtrl = 0;
     m_designTreeCtrl = 0;
-    m_descriptionPanel = 0;
+    m_stampDescriptionPanel = 0;
     m_project = 0;
     m_settings = 0;
 };
@@ -54,7 +56,7 @@ void GeneratorData::InitGeneratorData()
         m_designData = 0;
         m_catalogTreeCtrl = 0;
         m_designTreeCtrl = 0;
-        m_descriptionPanel = 0;
+        m_stampDescriptionPanel = 0;
         SetProject( Utils::NewProjectInstance());
 
         m_settings = Utils::NewSettingsInstance( );
@@ -85,6 +87,7 @@ void GeneratorData::SetProject( Utils::Project* project )
 
 void GeneratorData::FileNewProject()
 {
+    m_project->SetProjectFilename("unnamed.prj.xml");
     LoadNewDesign();
     LoadNewCatalog();
 }
@@ -92,6 +95,7 @@ void GeneratorData::FileNewProject()
 // Load the Catalog and Design data then populate trees
 void GeneratorData::LoadData( )
 {
+    bool state = wxLog::IsEnabled( ) 	;
     ReadCatalogFile( );
     LoadCatalogTree( );
     ReadDesignFile( );

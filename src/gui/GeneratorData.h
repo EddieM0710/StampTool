@@ -35,7 +35,7 @@ namespace Utils { class Settings; };
 
 class CatalogTreeCtrl;
 class DesignTreeCtrl;
-class DescriptionPanel;
+class StampDescriptionPanel;
 class AlbumImagePanel;
 
 GeneratorData* NewGeneratorDataInstance( );
@@ -183,13 +183,13 @@ public:
     /* -----------------------------------------------------------------
      * @brief Get the Description Panel object
      * 
-     * @return DescriptionPanel* 
+     * @return StampDescriptionPanel* 
      */
-    inline DescriptionPanel* GetDescriptionPanel( ) { return m_descriptionPanel; };
+    inline StampDescriptionPanel* GetDescriptionPanel( ) { return m_stampDescriptionPanel; };
     inline AlbumImagePanel* GetAlbumImagePanel( ) { return m_albumImagePanel; };
     void SetCatalogTreeCtrl( CatalogTreeCtrl* treeCtrl ) { m_catalogTreeCtrl = treeCtrl; };
     void SetDesignTreeCtrl( DesignTreeCtrl* treeCtrl ) { m_designTreeCtrl = treeCtrl; };
-    void SetDescriptionPanel( DescriptionPanel* descriptionPanel ) { m_descriptionPanel = descriptionPanel; };
+    void SetDescriptionPanel( StampDescriptionPanel* descriptionPanel ) { m_stampDescriptionPanel = descriptionPanel; };
     void SetAlbumImagePanel( AlbumImagePanel* albumImagePanel ) { m_albumImagePanel = albumImagePanel; };
     wxString GetImageFilename( wxString stampId );
 
@@ -209,7 +209,7 @@ private:
     CatalogTreeCtrl* m_catalogTreeCtrl;
     DesignTreeCtrl* m_designTreeCtrl;
     AlbumImagePanel* m_albumImagePanel;
-    DescriptionPanel* m_descriptionPanel;
+    StampDescriptionPanel* m_stampDescriptionPanel;
     bool m_dirty;
 };
 #endif

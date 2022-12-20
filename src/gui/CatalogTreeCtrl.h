@@ -43,6 +43,13 @@ class Stamp;
 class Classification;
 namespace Utils { class StampLink; }
 
+typedef enum {
+    CompareInvalid,
+    CompareEqual,
+    CompareLess,
+    CompareGreater
+}ComparisonResultType;
+
 
  /**
   * data associated with each node in the tree
@@ -125,17 +132,21 @@ public:
     void DeleteAlbumStamp( wxTreeItemId itemId );
     void RemoveStampLink( wxTreeItemId itemId );
 
-
+    Catalog::Entry* GetNewEntry( wxTreeItemId itemId );
     void SetInventoryStatusImage( void );
     Catalog::IconID GetInventoryIconId( Catalog::Entry* stamp );
     void ShowMenu( wxTreeItemId id, const wxPoint& pt );
 
     int ImageSize( void ) const { return m_imageSize; };
+    void XMLDumpNode(  wxTreeItemId item, wxString str  );
 
     wxTreeItemId AddStampNodeToTree( wxTreeItemId parent, wxXmlNode* child );
     wxTreeItemId AddChild( wxTreeItemId parent, wxXmlNode* child );
     wxTreeItemId InsertChild( wxTreeItemId parent, wxXmlNode* child, bool after = true );
-
+    CatalogTreeItemData* CreateChildData( wxXmlNode* child, 
+                        wxString& label, 
+                        Catalog::IconID& icon,
+                        Catalog::CatalogBaseType& nodeType );
     void ClearCatalogTree( );   
     void LoadTree( void );
     wxString GetLabel( wxXmlNode* catalogData );
@@ -166,6 +177,8 @@ public:
     wxTreeItemId FindTreeItemID( wxString stampID, wxTreeItemId id );
     bool IsElement( wxTreeItemId item, wxString stampID );
     wxTreeItemId FindFirstEntryChild( wxTreeItemId id );
+
+    ComparisonResultType CompareDates(wxString date1,wxString date2 );
 
     virtual int OnCompareItems( const wxTreeItemId& i1,
         const wxTreeItemId& i2 ) wxOVERRIDE;

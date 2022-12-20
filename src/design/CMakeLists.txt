@@ -19,6 +19,7 @@ add_library( DesignFiles SHARED
     Album.cpp 
     Page.cpp 
     Font.cpp 
+    FontInfo.cpp
     Title.cpp 
     TitlePage.cpp
     Row.cpp 

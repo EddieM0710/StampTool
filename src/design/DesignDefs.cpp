@@ -131,12 +131,15 @@ namespace Design {
             "BottomContentPadding",
             "LeftContentPadding",
             "RightContentPadding",
-            "FontName",
-            "Family",
-            "Size",
-            "Weight",
+            "FontType",
+//            "FontName",
+//            "Family",
+            "NativeFontString",
+//            "Size",
+//            "Weight",
             "Color",
-            "Style"};
+//            "Style"
+            };
 
     void InitDesignDefs( )
     {
@@ -159,6 +162,34 @@ namespace Design {
         return ( AlbumBaseType )-1;
     };
 
+
+    AlbumAttrType FindAlbumAttrType( wxString name )
+    {
+        wxString attrName;
+        for ( int i = 0; i < AT_NbrAttrTypes; i++ )
+        {
+            attrName = AlbumBaseNames[ i ];
+            if ( !name.Cmp( attrName ) )
+            {
+                return ( AlbumAttrType )i;
+            }
+        }
+        return ( AlbumAttrType )-1;
+    };
+
+    AT_FontUsageType FindFontUsageType( wxString name )
+    {
+        wxString usageStr;
+        for ( int i = 0; i < AT_NbrFontUsageTypes; i++ )
+        {
+            usageStr = AT_FontUsageTypeStrings[ i ];
+            if ( !name.Cmp( usageStr ) )
+            {
+                return ( AT_FontUsageType )i;
+            }
+        }
+        return ( AT_FontUsageType )-1;
+    };
 
     // wxString GetAttribute( AlbumBaseType type )
     // {
@@ -284,5 +315,143 @@ namespace Design {
             object = (AlbumBase*)new Stamp( node );
         }
         return object;
+    }
+    wxString AT_FontUsageTypeStrings[ AT_NbrFontUsageTypes ] = {
+        "Unspecified",
+        "Text",
+        "Title",
+        "CatNbr"
+    };
+
+
+    wxFontFamily AT_FontFamilyMap[ AT_NbrFontFamilies ] =
+    {
+        wxFONTFAMILY_DEFAULT,
+        wxFONTFAMILY_DECORATIVE,
+        wxFONTFAMILY_ROMAN,
+        wxFONTFAMILY_SCRIPT,
+        wxFONTFAMILY_SWISS,
+        wxFONTFAMILY_MODERN,
+        wxFONTFAMILY_TELETYPE
+    };
+
+
+    wxString AT_FontFamilyStrings[ AT_NbrFontFamilies ] =
+    {
+        "Decorative",
+        "Roman",
+        "Script",
+        "Swiss",
+        "Modern",
+        "Teletype"
+    };
+    bool IsOK(AT_FontFamilyType type)
+    {
+        return ( ( type >= AT_Default ) && (type < AT_NbrFontFamilies));
+    }
+
+    AT_FontFamilyType GetATFamily( wxFontFamily wxVal )
+    {
+        for ( int i = 0; i < AT_NbrFontFamilies; i++ )
+        {
+            if ( AT_FontFamilyMap[ i ] == wxVal )
+            {
+                return ( AT_FontFamilyType )i;
+            }
+        }
+        return ( AT_FontFamilyType )UnknownFontVal;
+    };
+
+    AT_FontFamilyType GetFamilyFromStr( wxString family )
+    {        
+        for ( int i = 0; i < AT_NbrFontFamilies; i++ )
+        {
+            if ( !AT_FontFamilyStrings[ i ].compare(family) )
+            {
+                return ( AT_FontFamilyType )i;
+            }
+        }
+        return ( AT_FontFamilyType )UnknownFontVal;
+    }
+
+    wxFontStyle AT_FontStyleMap[ AT_NbrFontStyles ] =
+    {
+        wxFONTSTYLE_NORMAL,
+        wxFONTSTYLE_ITALIC,
+        wxFONTSTYLE_SLANT,
+        wxFONTSTYLE_MAX
+    };
+
+    wxString AT_FontStyleStrings[ AT_NbrFontStyles ] =
+    {
+        "Normal",
+        "Italic",
+        "Slant",
+        "Max",
+    };
+
+    AT_FontStyleType GetATStyle( wxFontStyle wxVal )
+    {
+        for ( int i = 0; i < AT_NbrFontStyles; i++ )
+        {
+            if ( AT_FontStyleMap[ i ] == wxVal )
+            {
+                return ( AT_FontStyleType )i;
+            }
+        }
+        return ( AT_FontStyleType )UnknownFontVal;
+    };
+
+    bool IsOK(AT_FontStyleType type) 
+    {
+        return ( ( type >= AT_Normal ) && (type < AT_NbrFontStyles));
+    }
+
+    wxFontWeight AT_FontWeightMap[ AT_NbrFontWeights ] =
+    {
+        wxFONTWEIGHT_INVALID,
+        wxFONTWEIGHT_THIN,
+        wxFONTWEIGHT_EXTRALIGHT,
+        wxFONTWEIGHT_LIGHT,
+        wxFONTWEIGHT_NORMAL,
+        wxFONTWEIGHT_MEDIUM,
+        wxFONTWEIGHT_SEMIBOLD,
+        wxFONTWEIGHT_BOLD,
+        wxFONTWEIGHT_EXTRABOLD,
+        wxFONTWEIGHT_HEAVY,
+        wxFONTWEIGHT_EXTRAHEAVY
+    };
+
+
+    wxString AT_FontWeightStrings[ AT_NbrFontWeights ] =
+    {
+        "Invalid",
+        "Thin",
+        "ExtraLight",
+        "Light",
+        "Normal",
+        "Medium",
+        "SemiBold",
+        "Bold",
+        "ExtraBold",
+        "Heavy",
+        "ExtraHeavy"
+    };
+
+    AT_FontWeightType GetATWeight( wxFontWeight wxVal )
+    {
+        for ( int i = 0; i < AT_NbrFontWeights; i++ )
+        {
+            if ( AT_FontWeightMap[ i ] == wxVal )
+            {
+                return ( AT_FontWeightType )i;
+            }
+        }
+        return ( AT_FontWeightType )UnknownFontVal;
+    };
+    
+    bool IsOK(AT_FontWeightType type)
+    {
+        return ( ( type >= AT_ThinWeight ) && (type < AT_NbrFontWeights));
     }
 }

@@ -39,7 +39,7 @@
 #include "MiscellaneousDataPanel.h"
 #include "Defs.h"
 #include "utils/Settings.h"
-
+#include <wx/clipbrd.h>
 /*
  * MiscellaneousDataPanel type definition
  */
@@ -268,9 +268,19 @@ void MiscellaneousDataPanel::ShowStamp( )
 
 void MiscellaneousDataPanel::OnColnectButtonClick( wxCommandEvent &event )
 {
+    if (wxTheClipboard->Open())
+    {
+        // This data objects are held by the clipboard,
+        // so do not delete them in the app.
+        wxString imageName = m_imageName->GetValue( );
+        int pos = imageName.Find(".jpg");
+        imageName = imageName.Mid(0,pos);
+        wxTheClipboard->SetData( new wxTextDataObject( imageName ) );
+        wxTheClipboard->Close();
+    }
     wxString link = m_link->GetValue( );
-    wxString cmd = wxString::Format( "/usr/bin/firefox --new-tab %s", link );
-    system( cmd.fn_str( ) );
+    wxString cmd = wxString::Format( "/usr/bin/firefox --new-tab %s &", link );
+    system( cmd.fn_str( )  );
      // wxEVT_COMMAND_BUTTON_CLICKED event handler for ID_GOBUTTON in
     //MiscellaneousData.
     // Before editing this code, remove the block markers.

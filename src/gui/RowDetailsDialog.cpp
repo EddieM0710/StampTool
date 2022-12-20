@@ -139,23 +139,71 @@ void RowDetailsDialog::CreateControls()
     wxBoxSizer* itemBoxSizer2 = new wxBoxSizer(wxVERTICAL);
     itemDialog1->SetSizer(itemBoxSizer2);
 
-    wxBoxSizer* itemBoxSizer1 = new wxBoxSizer(wxHORIZONTAL);
-    itemBoxSizer2->Add(itemBoxSizer1, 0, wxGROW|wxALL, 0);
 
-    m_name = new LabeledTextBox( itemDialog1, ID_NAMELABELEDTEXTBOX, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER|wxTAB_TRAVERSAL );
+    wxPanel* itemPanel2 = new wxPanel( itemDialog1, ID_ROWNAMEPANEL, wxDefaultPosition, wxDefaultSize, wxSIMPLE_BORDER|wxTAB_TRAVERSAL );
+    itemPanel2->SetExtraStyle(wxWS_EX_VALIDATE_RECURSIVELY);
+    itemBoxSizer2->Add(itemPanel2, 0, wxGROW|wxALL, 5);
+
+    wxBoxSizer* itemBoxSizer6 = new wxBoxSizer(wxVERTICAL);
+    itemPanel2->SetSizer(itemBoxSizer6);
+
+    wxBoxSizer* itemBoxSizer7 = new wxBoxSizer(wxHORIZONTAL);
+    itemBoxSizer6->Add(itemBoxSizer7, 0, wxGROW|wxALL, 0);
+
+    m_name = new LabeledTextBox( itemPanel2, ID_NAMELABELEDTEXTBOX, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER|wxTAB_TRAVERSAL );
     m_name->SetExtraStyle(wxWS_EX_VALIDATE_RECURSIVELY);
-    itemBoxSizer1->Add(m_name, 1, wxGROW|wxALL, 5);
+    itemBoxSizer7->Add(m_name, 1, wxGROW|wxALL, 5);
 
-    wxBoxSizer* itemBoxSizer3 = new wxBoxSizer(wxHORIZONTAL);
-    itemBoxSizer2->Add(itemBoxSizer3, 0, wxALIGN_CENTER_HORIZONTAL|wxALL, 5);
-
-    m_titleCheckbox = new wxCheckBox( itemDialog1, ID_ROWTITLECHECKBOX, _("Show Title"), wxDefaultPosition, wxDefaultSize, 0 );
+    m_titleCheckbox = new wxCheckBox( itemPanel2, ID_ROWTITLECHECKBOX, _("Show Title"), wxDefaultPosition, wxDefaultSize, 0 );
     m_titleCheckbox->SetValue(false);
-    itemBoxSizer3->Add(m_titleCheckbox, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
+    itemBoxSizer7->Add(m_titleCheckbox, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
 
-    m_frameCheckbox = new wxCheckBox( itemDialog1, ID_FRAMECHECKBOX, _("Show Frame"), wxDefaultPosition, wxDefaultSize, 0 );
+    m_frameCheckbox = new wxCheckBox( itemPanel2, ID_FRAMECHECKBOX, _("Show Frame"), wxDefaultPosition, wxDefaultSize, 0 );
     m_frameCheckbox->SetValue(false);
-    itemBoxSizer3->Add(m_frameCheckbox, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
+    itemBoxSizer7->Add(m_frameCheckbox, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
+
+    wxBoxSizer* itemBoxSizer11 = new wxBoxSizer(wxHORIZONTAL);
+    itemBoxSizer6->Add(itemBoxSizer11, 0, wxGROW|wxALL, 5);
+
+    wxStaticText* itemStaticText12 = new wxStaticText( itemPanel2, wxID_STATIC, _("Title Font"), wxDefaultPosition, wxDefaultSize, 0 );
+    itemBoxSizer11->Add(itemStaticText12, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
+
+    m_titleFontPicker = new wxFontPickerCtrl(itemPanel2, 12345, 
+    *wxNORMAL_FONT, wxDefaultPosition, 
+    wxDefaultSize, wxFNTP_DEFAULT_STYLE);
+    itemBoxSizer11->Add(m_titleFontPicker, 5, wxGROW | wxALL, 5 );
+
+    m_titleColorPicker = new wxColourPickerCtrl( itemPanel2, 12346,
+		*wxBLACK, wxDefaultPosition, 
+        wxDefaultSize,  wxCLRP_DEFAULT_STYLE ); 	
+    itemBoxSizer11->Add(m_titleColorPicker, 1, wxGROW | wxALL, 5 );
+
+    wxButton* itemButton13 = new wxButton( itemPanel2, ID_DEFAULTFONTBUTTON, _("Default"), wxDefaultPosition, wxDefaultSize, 0 );
+    itemBoxSizer11->Add(itemButton13, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
+
+
+
+
+
+
+
+    // wxBoxSizer* itemBoxSizer1 = new wxBoxSizer(wxHORIZONTAL);
+    // itemBoxSizer2->Add(itemBoxSizer1, 0, wxGROW|wxALL, 0);
+
+    // m_name = new LabeledTextBox( itemDialog1, ID_NAMELABELEDTEXTBOX, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER|wxTAB_TRAVERSAL );
+    // m_name->SetExtraStyle(wxWS_EX_VALIDATE_RECURSIVELY);
+    // itemBoxSizer1->Add(m_name, 1, wxGROW|wxALL, 5);
+
+    // wxBoxSizer* itemBoxSizer3 = new wxBoxSizer(wxHORIZONTAL);
+    // itemBoxSizer2->Add(itemBoxSizer3, 0, wxALIGN_CENTER_HORIZONTAL|wxALL, 5);
+
+    // m_titleCheckbox = new wxCheckBox( itemDialog1, ID_ROWTITLECHECKBOX, _("Show Title"), wxDefaultPosition, wxDefaultSize, 0 );
+    // m_titleCheckbox->SetValue(false);
+    // itemBoxSizer3->Add(m_titleCheckbox, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
+
+    // m_frameCheckbox = new wxCheckBox( itemDialog1, ID_FRAMECHECKBOX, _("Show Frame"), wxDefaultPosition, wxDefaultSize, 0 );
+    // m_frameCheckbox->SetValue(false);
+    // itemBoxSizer3->Add(m_frameCheckbox, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
 
     wxBoxSizer* itemBoxSizer4 = new wxBoxSizer(wxHORIZONTAL);
     itemBoxSizer2->Add(itemBoxSizer4, 2, wxGROW|wxALL, 5);

@@ -47,6 +47,8 @@
 #include "gui/GeneratorData.h"
 #include "AlbumGenApp.h"
 
+#include <wx/log.h>
+
 /*
  * Application instance implementation
  */
@@ -102,6 +104,8 @@ bool AlbumGenApp::OnInit( )
     // AlbumGenApp initialisation
    // Remove the comment markers above and below this block
    // to make permanent changes to the code.
+
+    wxLog::EnableLogging ( true );
 
 #if wxUSE_XPM
     wxImage::AddHandler( new wxXPMHandler );

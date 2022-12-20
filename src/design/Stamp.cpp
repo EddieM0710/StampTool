@@ -30,7 +30,7 @@
 #include "gui/DesignTreeCtrl.h"
 #include "gui/AlbumImagePanel.h"
 #include "art/NotFound.xpm"
-#include "gui/DescriptionPanel.h"
+#include "gui/StampDescriptionPanel.h"
 
 #include "catalog/CatalogData.h"
 #include "catalog/Entry.h"
@@ -49,6 +49,7 @@ namespace Design {
 
     void Stamp::CalcFrame( )
     {
+        m_frame.WriteLayout( "Stamp::CalcFrame <");
         SetWidth( m_stampFrame.GetWidth( ) * ( 1.0 + BorderAllowance ) );
         wxFont titleFont( *wxNORMAL_FONT );
         titleFont.SetPointSize( 10 );;
@@ -63,11 +64,15 @@ namespace Design {
         m_stampImageFrame.SetHeight( m_stampFrame.GetHeight( ) * ImagePercentOfActual );
         m_stampImageFrame.SetXPos( ( m_stampFrame.GetWidth( ) - m_stampImageFrame.GetWidth( ) ) / 2 );
         m_stampImageFrame.SetYPos( ( m_stampFrame.GetHeight( ) - m_stampImageFrame.GetHeight( ) ) / 2 );
+        m_frame.WriteLayout( "Stamp::CalcFrame >");
     }
 
     bool Stamp::UpdateMinimumSize( )
     {
+        m_frame.WriteLayout( "Stamp::UpdateMinimumSize <");
         CalcFrame( );
+        m_frame.WriteLayout( "Stamp::UpdateMinimumSize >");
+
         if ( ValidateNode( ) == AT_FATAL )
         {
             return false;
@@ -77,11 +82,12 @@ namespace Design {
 
     void Stamp::UpdateSizes( )
     {
+                m_frame.WriteLayout( "Stamp::UpdateSizes <>");
     }
 
     void Stamp::UpdatePositions( )
     {
-
+        m_frame.WriteLayout( "Stamp::UpdatePositions <>");
     }
 
     // build the frame container for the stamp
@@ -360,8 +366,8 @@ namespace Design {
     void Stamp::draw( wxDC& dc, double x, double y )
     {
         //Draw the outer frame transparent
-        dc.SetPen( *wxRED_PEN );
-        m_frame.draw( dc, x, y );
+        //dc.SetPen( *wxRedPen );
+        //m_frame.draw( dc, x, y );
 
         dc.SetPen( *wxBLACK_PEN );
 

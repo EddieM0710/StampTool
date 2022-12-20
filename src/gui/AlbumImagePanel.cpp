@@ -261,36 +261,38 @@ void AlbumImagePanel::OnPaint( wxPaintEvent& event )
         Design::InitDesignDefs( );
 
         Design::Album* album = GetDesignData( )->GetAlbum( );
-
-        double width = album->GetAttrDbl( Design::AT_PageWidth ) * Design::PpMM.x;
-        double height = album->GetAttrDbl( Design::AT_PageHeight ) * Design::PpMM.y;
-
-        /* init scrolled area size, scrolling speed, etc. */
-        if ( m_once == false )
+        if ( album )
         {
-            m_once = true;
-            SetScrollbars( Design::PpMM.x, Design::PpMM.y, width * 2, height * 2, 0, 0 );
-        }
-        const wxSize size = GetClientSize( );
-        double scale = 1.;
+            double width = album->GetAttrDbl( Design::AT_PageWidth ) * Design::PpMM.x;
+            double height = album->GetAttrDbl( Design::AT_PageHeight ) * Design::PpMM.y;
 
-        if ( size.x < width )
-        {
-            scale = ( double )size.x / ( double )width;
-        }
-        if ( size.y < ( height * scale ) )
-        {
-            scale = ( double )size.y / ( ( double )height * scale ) * scale;
-        }
+            /* init scrolled area size, scrolling speed, etc. */
+            if ( m_once == false )
+            {
+                m_once = true;
+                SetScrollbars( Design::PpMM.x, Design::PpMM.y, width * 2, height * 2, 0, 0 );
+            }
+            const wxSize size = GetClientSize( );
+            double scale = 1.;
 
-        dc.SetUserScale( scale * m_zoom, scale * m_zoom );
+            if ( size.x < width )
+            {
+                scale = ( double )size.x / ( double )width;
+            }
+            if ( size.y < ( height * scale ) )
+            {
+                scale = ( double )size.y / ( ( double )height * scale ) * scale;
+            }
 
-        dc.DrawRectangle( 0, 0, width, height );
+            dc.SetUserScale( scale * m_zoom, scale * m_zoom );
 
-        Design::LayoutBase* pageNode = Design::GetSelectedNodePage( );
-        if ( pageNode && pageNode->IsStatusOK( ) )
-        {
-            pageNode->draw( dc, album->GetAttrDbl( Design::AT_LeftMargin ), album->GetAttrDbl( Design::AT_TopMargin ) );
+            dc.DrawRectangle( 0, 0, width, height );
+
+            Design::LayoutBase* pageNode = Design::GetSelectedNodePage( );
+            if ( pageNode && pageNode->IsStatusOK( ) )
+            {
+                pageNode->draw( dc, album->GetAttrDbl( Design::AT_LeftMargin ), album->GetAttrDbl( Design::AT_TopMargin ) );
+            }
         }
     }
 }

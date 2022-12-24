@@ -6,18 +6,18 @@
  * @date 2021-02-25
  *
  * @copyright Copyright (c) 2021
- * 
+ *
  * This file is part of AlbumGenerator.
  *
- * AlbumGenerator is free software: you can redistribute it and/or modify it under the 
- * terms of the GNU General Public License as published by the Free Software Foundation, 
+ * AlbumGenerator is free software: you can redistribute it and/or modify it under the
+ * terms of the GNU General Public License as published by the Free Software Foundation,
  * either version 3 of the License, or any later version.
  *
- * AlbumGenerator is distributed in the hope that it will be useful, but WITHOUT ANY 
- * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+ * AlbumGenerator is distributed in the hope that it will be useful, but WITHOUT ANY
+ * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
- * You should have received a copy of the GNU General Public License along with 
+ * You should have received a copy of the GNU General Public License along with
  * AlbumGenerator. If not, see <https://www.gnu.org/licenses/>.
  *
  **************************************************/
@@ -27,56 +27,35 @@
 
 #include "wx/xml/xml.h"
 #include <wx/string.h>
+#include <vector>
 
-#include "CatalogDefs.h"
+#include "Defs.h"
 
+#include "catalog/CatalogDefs.h"
+#include "catalog/CatalogVolumeData.h"
 
 namespace Catalog {
 
+class CatalogVolumeData;
 
     class CatalogData
     {
     public:
 
-        CatalogData( );
+        CatalogData( ){ m_catalogVolumeDataNdx = -1; };
         ~CatalogData( );
         bool IsOK( );
-
-        // Create a Catalog xml doc
-        wxXmlDocument* NewDocument( );
-
-        // Delete the current Catalog xml doc and replace with new doc
-        wxXmlDocument* ReplaceDocument( wxXmlDocument* doc );
-
-        // Get the Catalog XML doc
-        wxXmlDocument* GetDoc( ) { return m_stampDoc; };
-
-        //Create and load a new Catalog xml Doc
-        void NewCatalog();
-
-        void Save( );
-        // Load Catalog xml file
-        void LoadXML( wxString filename );
-
-        // Load Catalog csv file
-        void LoadCSV( wxString filename );
-
-       // wxString GetTitle( ) { return m_title; }
-       // void SetTitle( wxString val ) { m_title = val; };
-
-        wxXmlNode* FindNodeWithPropertyAndValue( wxXmlNode* element, wxString property, wxString value );
-        wxXmlNode* FindNodeWithPropertyAndValue( wxString property, wxString value );
-
-        void SetDirty( bool state = true );
-        bool isDirty( ) { return m_dirty; };
-
+        Catalog::CatalogVolumeData* NewCatalogVolumeData( );
+        Catalog::CatalogVolumeData* GetCatalogVolumeData( );
+        void LoadCatalogVolumes();
+        wxArrayString& GetVolumeNameStrings() {return m_volumeNameStrings;};
+        void SetCatalogVolumeDataNdx( int i);
     private:
-        wxXmlDocument* m_stampDoc;
-      //  wxString m_title;
-        bool m_dirty;
-    };
-    
-    CatalogData* NewCatalogDataInstance();
+        Catalog::CatalogVolumeDataArray m_catalogArray;
+        int m_catalogVolumeDataNdx;
+        wxArrayString m_volumeNameStrings;
 
+
+    };
 }
 #endif

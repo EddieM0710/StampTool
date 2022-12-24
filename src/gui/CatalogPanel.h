@@ -21,8 +21,8 @@
  * AlbumGenerator. If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef _CATALOGDATAPANEL_H_
-#define _CATALOGDATAPANEL_H_
+#ifndef _CATALOGVOLUMEDATAPANEL_H_
+#define _CATALOGVOLUMEDATAPANEL_H_
 
 
 /*!
@@ -38,7 +38,7 @@
 #include "gui/GuiDefs.h"
 
 #include "utils/Project.h"
-#include "CatalogData.h"
+#include "CatalogVolumeData.h"
 /*!
  * Forward declarations
  */
@@ -54,18 +54,19 @@ class Stamp;
  */
 
 // control identifiers
-#define ID_CATALOGDATAPANEL 10000
+#define ID_CATALOGVOLUMEDATAPANEL 10000
 #define ID_TEXTCTRL 10007
 #define ID_TREECTRL 10010
 #define ID_NEXTBUTTON 11010
 #define ID_CHECKLISTBOX 11011
 #define ID_SEARCHSTRINGTEXTCTRL 11012
 #define ID_TOGGLEBUTTON 11013
-#define SYMBOL_CATALOGDATAPANEL_STYLE wxTAB_TRAVERSAL
-#define SYMBOL_CATALOGDATAPANEL_TITLE _("CatalogPanel")
-#define SYMBOL_CATALOGDATAPANEL_IDNAME ID_CATALOGDATAPANEL
-#define SYMBOL_CATALOGDATAPANEL_SIZE wxSize(400, 300)
-#define SYMBOL_CATALOGDATAPANEL_POSITION wxDefaultPosition
+#define ID_VOLUMECHOICE 11014
+#define SYMBOL_CATALOGVOLUMEDATAPANEL_STYLE wxTAB_TRAVERSAL
+#define SYMBOL_CATALOGVOLUMEDATAPANEL_TITLE _("CatalogPanel")
+#define SYMBOL_CATALOGVOLUMEDATAPANEL_IDNAME ID_CATALOGVOLUMEDATAPANEL
+#define SYMBOL_CATALOGVOLUMEDATAPANEL_SIZE wxSize(400, 300)
+#define SYMBOL_CATALOGVOLUMEDATAPANEL_POSITION wxDefaultPosition
 // control identifiers
 
 
@@ -82,13 +83,13 @@ public:
     /// Constructors
     CatalogPanel();
     CatalogPanel( wxWindow* parent, 
-    wxWindowID id = SYMBOL_CATALOGDATAPANEL_IDNAME, 
-    const wxPoint& pos = SYMBOL_CATALOGDATAPANEL_POSITION, 
-    const wxSize& size = SYMBOL_CATALOGDATAPANEL_SIZE, 
-    long style = SYMBOL_CATALOGDATAPANEL_STYLE );
+    wxWindowID id = SYMBOL_CATALOGVOLUMEDATAPANEL_IDNAME, 
+    const wxPoint& pos = SYMBOL_CATALOGVOLUMEDATAPANEL_POSITION, 
+    const wxSize& size = SYMBOL_CATALOGVOLUMEDATAPANEL_SIZE, 
+    long style = SYMBOL_CATALOGVOLUMEDATAPANEL_STYLE );
 
     /// Creation
-    bool Create( wxWindow* parent, wxWindowID id = SYMBOL_CATALOGDATAPANEL_IDNAME, const wxPoint& pos = SYMBOL_CATALOGDATAPANEL_POSITION, const wxSize& size = SYMBOL_CATALOGDATAPANEL_SIZE, long style = SYMBOL_CATALOGDATAPANEL_STYLE );
+    bool Create( wxWindow* parent, wxWindowID id = SYMBOL_CATALOGVOLUMEDATAPANEL_IDNAME, const wxPoint& pos = SYMBOL_CATALOGVOLUMEDATAPANEL_POSITION, const wxSize& size = SYMBOL_CATALOGVOLUMEDATAPANEL_SIZE, long style = SYMBOL_CATALOGVOLUMEDATAPANEL_STYLE );
 
     /// Destructor
     ~CatalogPanel();
@@ -106,6 +107,8 @@ public:
 
     void OnTogglebuttonClick( wxCommandEvent& event );
 
+    void OnVolumeChoiceSelected( wxCommandEvent& event );
+
 // CatalogPanel event handler declarations
 
 // CatalogPanel member function declarations
@@ -120,11 +123,22 @@ public:
     /// Should we show tooltips?
     static bool ShowToolTips();
 
-    void InitCatalogData();
+    void InitCatalogVolumeData( );
     CatalogTreeCtrl* GetCatalogTree( ) { return m_catalogTreeCtrl; };
 
+    void SetVolumeListStrings( wxArrayString& choices )
+    {
+        m_volumeListCtrl->Clear( );
+        m_volumeListCtrl->Append( choices );
+    };
 
-    wxTextCtrl* m_title;
+    void SetVolumeListSelection( int i )
+    {
+        m_volumeListCtrl->SetSelection( i );
+    };
+
+   // wxTextCtrl* m_title;
+    wxChoice* m_volumeListCtrl;
     CatalogTreeCtrl* m_catalogTreeCtrl;
   
     wxTreeItemId m_draggedItem;
@@ -134,4 +148,4 @@ public:
 };
 
 #endif
-    // _CATALOGDATAPANEL_H_
+    // _CATALOGVOLUMEDATAPANEL_H_

@@ -61,6 +61,7 @@ BEGIN_EVENT_TABLE( CatalogPanel, wxPanel )
 // CatalogPanel event table entries
     EVT_TEXT( ID_TEXTCTRL, CatalogPanel::OnTextctrlTextUpdated )
     EVT_TOGGLEBUTTON( ID_TOGGLEBUTTON, CatalogPanel::OnTogglebuttonClick )
+    EVT_CHOICE( ID_VOLUMECHOICE, CatalogPanel::OnVolumeChoiceSelected )
 // CatalogPanel event table entries
 
 END_EVENT_TABLE()
@@ -121,7 +122,7 @@ CatalogPanel::~CatalogPanel()
 void CatalogPanel::Init()
 {
 // CatalogPanel member initialisation
-    m_title = NULL;
+   // m_title = NULL;
     m_catalogTreeCtrl = NULL;
 // CatalogPanel member initialisation
 }
@@ -142,11 +143,16 @@ void CatalogPanel::CreateControls()
     wxBoxSizer* itemBoxSizer1 = new wxBoxSizer(wxHORIZONTAL);
     m_catPanelSizer->Add(itemBoxSizer1, 0, wxGROW|wxALL, 0);
 
-    wxStaticText* itemStaticText2 = new wxStaticText( itemPanel1, wxID_STATIC, _("Title"), wxDefaultPosition, wxDefaultSize, 0 );
+    wxStaticText* itemStaticText2 = new wxStaticText( itemPanel1, wxID_STATIC, _("Volume"), wxDefaultPosition, wxDefaultSize, 0 );
     itemBoxSizer1->Add(itemStaticText2, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
 
-    m_title = new wxTextCtrl( itemPanel1, ID_TEXTCTRL, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
-    itemBoxSizer1->Add(m_title, 1, wxGROW|wxALL, 0);
+    //m_title = new wxTextCtrl( itemPanel1, ID_TEXTCTRL, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+    //itemBoxSizer1->Add(m_title, 1, wxGROW|wxALL, 0);
+//m_volumeListCtrlStrings.
+//GetGeneratorData()->GetVolumeNameStrings();
+    m_volumeListCtrl = new wxChoice( itemPanel1, ID_VOLUMECHOICE, wxDefaultPosition, wxSize(-1, -1), GetGeneratorData()->GetVolumeNameStrings(), wxLB_HSCROLL );
+    itemBoxSizer1->Add(m_volumeListCtrl, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
+
 
     m_toggleButton = new wxToggleButton( itemPanel1, ID_TOGGLEBUTTON, _("Search"), wxDefaultPosition, wxDefaultSize, 0 );
     m_toggleButton->SetValue(false);
@@ -261,4 +267,23 @@ void CatalogPanel::OnTogglebuttonClick( wxCommandEvent& event )
     // Before editing this code, remove the block markers.
     event.Skip();
 ////@end wxEVT_COMMAND_CHECKBOX_CLICKED event handler for ID_TOGGLEBUTTON in StampManagerPanel. 
+}
+
+void CatalogPanel::OnVolumeChoiceSelected( wxCommandEvent& event )
+{
+    int sel = m_volumeListCtrl->GetSelection();
+
+    GetGeneratorData()->GetCatalogData()->SetCatalogVolumeDataNdx(sel);
+    // wxString strSel = m_status->GetStringSelection( );
+    // if ( m_stamp )
+    // {
+    //     m_stamp->SetInventoryStatus( strSel );
+    //     GetCatalogTreeCtrl()->SetInventoryStatusImage( );
+    // }
+    // wxEVT_COMMAND_CHOICE_SELECTED event handler for ID_STATUSCHOICE
+    // in IdentificationPanel.
+    // Before editing this code, remove the block markers.
+    event.Skip( );
+    // wxEVT_COMMAND_CHOICE_SELECTED event handler for ID_STATUSCHOICE in
+    // IdentificationPanel.
 }

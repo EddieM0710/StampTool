@@ -114,10 +114,10 @@ class Settings;
             }
             return str;
         };
-        bool IsCatalogDataEditable(){ return m_catalogDataEditable; };
-        void SetCatalogDataEditable( bool val = true ){ m_catalogDataEditable = val; };
-        bool IsCatalogDataEditableByDefault(){ return m_catalogDataEditableDefault; };
-        void SetCatalogDataEditableDefault( bool val = true ){ m_catalogDataEditableDefault = val; };
+        bool IsCatalogVolumeDataEditable(){ return m_catalogVolumeDataEditable; };
+        void SetCatalogVolumeDataEditable( bool val = true ){ m_catalogVolumeDataEditable = val; };
+        bool IsCatalogVolumeDataEditableByDefault(){ return m_catalogVolumeDataEditableDefault; };
+        void SetCatalogVolumeDataEditableDefault( bool val = true ){ m_catalogVolumeDataEditableDefault = val; };
     private:
         wxString m_lastFile;
         bool m_loadLastFileAtStartUp;
@@ -139,8 +139,8 @@ class Settings;
         wxString m_textColorString;
         wxArrayString m_recentFiles;
         int m_nbrRecentPreference;
-        bool m_catalogDataEditable;
-        bool m_catalogDataEditableDefault;
+        bool m_catalogVolumeDataEditable;
+        bool m_catalogVolumeDataEditableDefault;
 
         const wxString m_defaultLastFile = "";
         const bool m_defaultloadLastFileAtStartUp = true;

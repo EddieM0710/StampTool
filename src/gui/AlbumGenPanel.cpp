@@ -147,19 +147,11 @@ void AlbumGenPanel::CreateControls( )
     itemSplitterWindow3->SetMinimumPaneSize( 20 );
 
 
-    m_mngCatalogData = new  CatalogPanel( itemSplitterWindow3, ID_PANEL1,
+    m_mngCatalogVolumeData = new  CatalogPanel( itemSplitterWindow3, ID_PANEL1,
         wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
-
     m_notebook
         = new wxNotebook( itemSplitterWindow3, ID_NOTEBOOK, wxDefaultPosition,
             wxDefaultSize, wxBK_DEFAULT );
-
-    m_albumDesignPanel = new AlbumDesignPanel(
-        m_notebook, ID_ALBUMSPLITTERWINDOWFOREIGN, wxDefaultPosition,
-        wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
-    m_albumDesignPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
-
-    m_notebook->AddPage( m_albumDesignPanel, _( "Album" ) );
 
     m_stampDescriptionPanel = new StampDescriptionPanel(
         m_notebook, ID_DESCRIPTIONPANELFOREIGN, wxDefaultPosition,
@@ -167,8 +159,15 @@ void AlbumGenPanel::CreateControls( )
     m_stampDescriptionPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
 
     m_notebook->AddPage( m_stampDescriptionPanel, _( "Stamp" ) );
-    itemSplitterWindow3->SplitVertically( m_mngCatalogData, m_notebook, 300 );
+    itemSplitterWindow3->SplitVertically( m_mngCatalogVolumeData, m_notebook, 600 );
     itemBoxSizer2->Add( itemSplitterWindow3, 1, wxGROW | wxALL, 0 );
+
+    m_albumDesignPanel = new AlbumDesignPanel(
+        m_notebook, ID_ALBUMSPLITTERWINDOWFOREIGN, wxDefaultPosition,
+        wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
+    m_albumDesignPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
+
+    m_notebook->AddPage( m_albumDesignPanel, _( "Album" ) );
 
     m_generateListPanel = new GenerateList( m_notebook, ID_GENERTELISTFOREIGN, wxDefaultPosition,
         wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL  );

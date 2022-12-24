@@ -32,7 +32,7 @@
 #include "art/NotFound.xpm"
 #include "gui/StampDescriptionPanel.h"
 
-#include "catalog/CatalogData.h"
+#include "catalog/CatalogVolumeData.h"
 #include "catalog/Entry.h"
 #include "Defs.h"
 #include "gui/GuiUtils.h"

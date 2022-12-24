@@ -79,6 +79,8 @@ namespace Utils {
         wxString m_designFilename;
         wxString m_imagePath;
         wxString m_catalogFilename;
+        wxString m_defaultCountryID;
+        wxString m_defaultCatalogCode;
         bool m_dirty;
 
     };

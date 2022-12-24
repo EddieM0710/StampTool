@@ -35,7 +35,7 @@ class GeneratorData;
 //#include "utils/Project.h"
 #define MaxRecentEntries = 8
 
-extern GeneratorData* m_generatorData;
+//extern GeneratorData* m_generatorData;
 
 extern bool Dirty;
 
@@ -48,11 +48,11 @@ class DesignTreeCtrl;
 class CatalogTreeCtrl;
 class AlbumImagePanel;
 namespace Design { class DesignData; };
-namespace Catalog { class CatalogData;  };
+namespace Catalog { class CatalogVolumeData;  };
 /**
  * @brief Get the Settings data 
  * 
- * @return CatalogData* 
+ * @return CatalogVolumeData* 
  **************************************************/
 Utils::Settings* GetSettings( );
 
@@ -60,7 +60,7 @@ Utils::Project* GetProject( );
 
 GeneratorData* GetGeneratorData();
 Design::DesignData* GetDesignData() ;
-Catalog::CatalogData* GetCatalogData() ;
+Catalog::CatalogVolumeData* GetCatalogVolumeData() ;
 CatalogTreeCtrl* GetCatalogTreeCtrl();
 DesignTreeCtrl* GetDesignTreeCtrl();
 AlbumImagePanel* GetAlbumImagePanel();

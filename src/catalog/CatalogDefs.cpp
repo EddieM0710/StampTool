@@ -42,7 +42,7 @@
 #include "utils/Settings.h"
 #include "utils/XMLUtilities.h"
 #include "Defs.h"
-#include "catalog/CatalogData.h"
+#include "catalog/CatalogVolumeData.h"
 // #include "catalog/Speciman.h"
 #include "catalog/Entry.h"
 // #include "catalog/Classification.h"
@@ -51,19 +51,19 @@
 namespace Catalog {
 
     /**
-     * @brief Global pointer to CatalogData data object
+     * @brief Global pointer to CatalogVolumeData data object
      *
      */
 
 
 
-    // CatalogData* GetCatalogData( void )
+    // CatalogVolumeData* GetCatalogVolumeData( void )
     // {
-    //     return  GetGeneratorData( )->GetCatalogData( );
+    //     return  GetGeneratorData( )->GetCatalogVolumeData( );
     // };
-    // void SetCatalogData( CatalogData* catalogData )
+    // void SetCatalogVolumeData( CatalogVolumeData* catalogVolumeData )
     // {
-    //     GetGeneratorData( )->SetCatalogData( catalogData );
+    //     GetGeneratorData( )->SetCatalogVolumeData( catalogVolumeData );
     // };
 
     const wxString ST_CheckedStatusStrings[ ST_NbrCheckedStatusTypes ]

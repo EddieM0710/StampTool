@@ -207,7 +207,7 @@ void CharacteristicsPanel::CreateControls( void )
 //$    m_printing->SetLabel( "Printing" );
 //$    m_printRun->SetLabel( "Print Run" );
 
-    SetDataEditable( GetSettings()->IsCatalogDataEditable() );
+    SetDataEditable( GetSettings()->IsCatalogVolumeDataEditable() );
 
 }
 

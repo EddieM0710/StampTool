@@ -150,7 +150,7 @@ void CatalogCodePanel::CreateControls( )
         m_grid->SetColLabelValue( i, Catalog::CC_CatalogCodeNames[ i ] );
     }
     
-    SetDataEditable( GetSettings()->IsCatalogDataEditable() );
+    SetDataEditable( GetSettings()->IsCatalogVolumeDataEditable() );
 
     m_grid->Refresh( );
 
@@ -307,7 +307,7 @@ void CatalogCodePanel::ShowEntry( )
 
 void CatalogCodePanel::OnContextMenu( wxContextMenuEvent& event )
 {
-    if ( GetSettings()->IsCatalogDataEditable() )
+    if ( GetSettings()->IsCatalogVolumeDataEditable() )
     {
         wxPoint point = event.GetPosition( );
         // If from keyboard

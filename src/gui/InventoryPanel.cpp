@@ -181,7 +181,7 @@ void InventoryPanel::CreateControls( )
     attr->SetEditor( new wxGridCellChoiceEditor( 3, choices3, true ) );
     m_grid->SetColAttr( Catalog::IDT_Location, attr );
 
-    SetDataEditable( GetSettings( )->IsCatalogDataEditable( ) );
+    SetDataEditable( GetSettings( )->IsCatalogVolumeDataEditable( ) );
 
     m_grid->Refresh( );
 
@@ -337,7 +337,7 @@ void InventoryPanel::ShowStamp( )
 void InventoryPanel::OnContextMenu( wxContextMenuEvent& event )
 {
 
-    if ( GetSettings( )->IsCatalogDataEditable( ) )
+    if ( GetSettings( )->IsCatalogVolumeDataEditable( ) )
     {
         wxPoint point = event.GetPosition( );
         // If from keyboard

@@ -177,7 +177,7 @@ class AlbumGenPanel : public wxPanel
     void UpdateStatus( );
 
 
-    CatalogPanel* GetCatalogPanel(){ return m_mngCatalogData;};
+    CatalogPanel* GetCatalogPanel(){ return m_mngCatalogVolumeData;};
     AlbumDesignTreePanel* GetAlbumDesignTreePanel(){ m_albumDesignPanel->GetAlbumDesignTreePanel();};
    // * GetCatalogTree( ) { return m_catalogTreeCtrl; };
 
@@ -186,7 +186,7 @@ class AlbumGenPanel : public wxPanel
    // AlbumGenDialog* m_albumGenDialog;
     wxFlexGridSizer* m_sizer;
     // AlbumGenPanel member variables
-    CatalogPanel* m_mngCatalogData;
+    CatalogPanel* m_mngCatalogVolumeData;
     wxTreeItemId m_draggedItem;
 //    Catalog::Stamp* m_stamp;
     wxTreeItemId m_currentItem;

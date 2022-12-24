@@ -40,7 +40,7 @@
 #include "Defs.h"
 #include "CatalogDefs.h"
 #include "DesignDefs.h"
-#include "CatalogData.h"
+#include "CatalogVolumeData.h"
 #include "Settings.h"
 #include "utils/Project.h"
 #include "AlbumGenApp.h"
@@ -54,7 +54,7 @@ void SetDirty( bool state ) { Dirty = state; };
 bool IsDirty( ) { return Dirty; };
 
 // global declaration of application data 
-GeneratorData* m_generatorData;
+//GeneratorData* m_generatorData;
 
 Utils::Settings* GetSettings( )
 {
@@ -71,7 +71,15 @@ Utils::Project* GetProject( )
 inline GeneratorData* GetGeneratorData(){ return wxGetApp( ).GetGeneratorDate();};
 
 Design::DesignData* GetDesignData() { return GetGeneratorData()->GetDesignData(); };
-Catalog::CatalogData* GetCatalogData() { return GetGeneratorData()->GetCatalogData(); };
+Catalog::CatalogVolumeData* GetCatalogVolumeData() 
+{ 
+    GeneratorData* genData = GetGeneratorData();
+    if ( genData )
+    {
+        return genData->GetCatalogVolumeData(); 
+    }
+    return (Catalog::CatalogVolumeData*)0;
+    };
 CatalogTreeCtrl* GetCatalogTreeCtrl(){ return GetGeneratorData()->GetCatalogTreeCtrl();};
 DesignTreeCtrl* GetDesignTreeCtrl( ){return GetGeneratorData()->GetDesignTreeCtrl();};
 AlbumImagePanel* GetAlbumImagePanel(){return GetGeneratorData()->GetAlbumImagePanel();};

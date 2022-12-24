@@ -444,8 +444,8 @@ Settings* NewSettingsInstance()
 
             SetLastFile( "" );
             SetNbrRecentPreference( 4 );
-            SetCatalogDataEditable();
-            SetCatalogDataEditableDefault();
+            SetCatalogVolumeDataEditable();
+            SetCatalogVolumeDataEditableDefault();
             Save();
             return;
 
@@ -545,8 +545,8 @@ Settings* NewSettingsInstance()
         {
             wxString defaultVal = stampDataEdit->GetAttribute( "Default");
             bool isTrue = !defaultVal.Cmp("true" );
-            SetCatalogDataEditable( isTrue );
-            SetCatalogDataEditableDefault( isTrue );
+            SetCatalogVolumeDataEditable( isTrue );
+            SetCatalogVolumeDataEditableDefault( isTrue );
         }
 
         wxXmlNode* idPref = FirstChildElement( root, "IDPreference" );

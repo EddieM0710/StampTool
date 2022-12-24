@@ -320,10 +320,10 @@ public:
 
     /**
      *
-     * @param   catalogData :
+     * @param   catalogVolumeData :
      * @return {wxString}              :
      **************************************************/
-    wxString GetLabel( Design::AlbumBase* catalogData );
+    wxString GetLabel( Design::AlbumBase* catalogVolumeData );
 
     /**
      *
@@ -336,11 +336,11 @@ public:
 
                     /**
                      *
-                     * @param   catalogData :
+                     * @param   catalogVolumeData :
                      * @param   parentType :
                      * @return {wxArrayPtrVoid*}       :
                      **************************************************/
-    wxArrayPtrVoid* MakeParentList( Design::LayoutBase* catalogData,
+    wxArrayPtrVoid* MakeParentList( Design::LayoutBase* catalogVolumeData,
         Catalog::FormatType parentType );
 
     /**

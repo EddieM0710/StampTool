@@ -26,10 +26,12 @@
 #define GeneratorData_h
 
 #include "utils/StampList.h"
+#include "catalog/CatalogData.h"
+#include "catalog/CatalogVolumeData.h"
 
 namespace ODT { class Document; };
 namespace Design { class DesignData; };
-namespace Catalog { class CatalogData; };
+namespace Catalog { class CatalogVolumeData; };
 namespace Utils { class Project; };
 namespace Utils { class Settings; };
 
@@ -59,7 +61,7 @@ public:
  * @brief 
  * 
  **************************************************/
-    void LoadCatalogXML( wxString catalogFilename );
+   // void LoadCatalogXML( wxString catalogFilename );
 
     inline Design::DesignData* GetDesignData( ) { return m_designData; };
 
@@ -99,13 +101,21 @@ public:
      */
     void LoadNewDesign( );
 
-    inline Catalog::CatalogData* GetCatalogData( ) { return m_catalogData; };
+    inline Catalog::CatalogVolumeData* GetCatalogVolumeData( ) 
+    { return m_catalogData.GetCatalogVolumeData( );};
+
+    wxArrayString& GetVolumeNameStrings()
+    {
+        return m_catalogData.GetVolumeNameStrings();
+    }
+
+    Catalog::CatalogData* GetCatalogData( ){ return &m_catalogData; };
 
     /** ****************************************
      * @brief Load the catalog data from xml file
      * 
      */
-    void ReadCatalogFile( );
+    void LoadCatalogVolumeFiles( );
 
     //Load a csv catalog.
     void ReadCatalogCSV( wxString csvFilename );
@@ -146,8 +156,8 @@ public:
     // Load last Project file at startup if enabled
     void InitLoad( );
 
-    // Creates a new CatalogData. Deletes current one to prevent memory leaks.
-    Catalog::CatalogData* NewCatalogData( );
+    // Creates a new CatalogVolumeData. Deletes current one to prevent memory leaks.
+    Catalog::CatalogVolumeData* NewCatalogVolumeData( );
 
     /**
      *
@@ -202,7 +212,8 @@ private:
     Utils::Settings* m_settings;
     Utils::Project* m_project;
     Utils::StampList m_StampAlbumCatalogLink;
-    Catalog::CatalogData* m_catalogData;
+    Catalog::CatalogData m_catalogData;
+   // int m_catalogVolumeDataNdx;
     Design::DesignData* m_designData;
     ODT::Document* m_ODTDoc;
 

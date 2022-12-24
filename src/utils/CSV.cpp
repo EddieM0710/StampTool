@@ -43,7 +43,7 @@
 #include "Defs.h"
 #include "catalog/Entry.h"
 #include <wx/tokenzr.h>
-#include "catalog/CatalogData.h"
+#include "catalog/CatalogVolumeData.h"
 #include "utils/XMLUtilities.h"
 #include "AlbumGenApp.h"
 
@@ -109,9 +109,9 @@ namespace Utils {
         return status;
     };
 
-    void CSVData::DoLoad( wxString& filename, wxXmlNode* catalogData )
+    void CSVData::DoLoad( wxString& filename, wxXmlNode* catalogVolumeData )
     {
-        m_nodeData = catalogData;
+        m_nodeData = catalogVolumeData;
 
         ReadDataFile( filename );
     };

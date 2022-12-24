@@ -28,7 +28,7 @@
 #include "GenerateList.h"
 #include "GenerateListSettings.h"
 #include "catalog/CatalogDefs.h"
-#include "catalog/CatalogData.h"
+#include "catalog/CatalogVolumeData.h"
 #include "catalog/Entry.h"
 #include "Defs.h"
 #include "utils/XMLUtilities.h"
@@ -331,14 +331,12 @@ void GenerateList::UpdateGrid()
     int nbrRows = m_gridCtrl->GetNumberRows();
     if ( nbrRows > 0 ) m_gridCtrl->DeleteRows( 0, nbrRows );
     int row = 0;
-    Catalog::CatalogData* catalogData = GetCatalogData( );
-    if ( catalogData )
+    Catalog::CatalogVolumeData* catalogVolumeData = GetCatalogVolumeData( );
+    if ( catalogVolumeData )
     {
-        wxXmlDocument* entryDoc = catalogData->GetDoc( );
-        //   XMLDump( entryDoc );
+        wxXmlDocument* entryDoc = catalogVolumeData->GetDoc( );
         wxXmlNode* root = entryDoc->GetRoot( );
 
-        //wxXmlNode* child = root->GetChildren( );
 
         if ( root )
         {

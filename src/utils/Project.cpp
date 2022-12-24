@@ -46,7 +46,7 @@
 #include "Defs.h"
 #include "utils/Settings.h"
 
-#include "catalog/CatalogData.h"
+#include "catalog/CatalogVolumeData.h"
 #include "design/DesignDefs.h"
 #include "design/DesignData.h"
 #include "design/AlbumBase.h"
@@ -196,6 +196,34 @@ namespace Utils {
             return false;
         }
         LoadAttributes( projectRoot );
+        wxXmlNode* output = FirstChildElement( projectRoot, "Output" );
+        if ( output )
+        {
+            m_ODTOutputFilename = output->GetAttribute( "Filename" );
+        }
+        
+        wxXmlNode* album = FirstChildElement( projectRoot, "Album" );
+        if ( album )
+        {
+            m_designFilename = album->GetAttribute( "Filename" );
+        }
+        wxXmlNode* imagePath = FirstChildElement( projectRoot, "ImagePath" );
+        if ( imagePath )
+        {
+            m_imagePath = imagePath->GetAttribute( "Name" );
+        }
+        wxXmlNode* catalog = FirstChildElement( projectRoot, "Catalog" );
+        if ( catalog ) 
+        {
+            wxXmlNode* volume = FirstChildElement( catalog, "Volume" );
+            while ( volume )
+            {
+                wxString name = volume->GetAttribute( "FileName" );
+                Catalog::CatalogVolumeData* volumeData = GetGeneratorData()->NewCatalogVolumeData( );
+                volumeData->SetVolumeFilename( name );
+                volume = volume->GetNext( );            
+            }
+        }
 
         GetSettings( )->SetLastFile( m_projectFilename );
 
@@ -232,6 +260,14 @@ namespace Utils {
             else if ( !name.Cmp( "Catalog" ) )
             {
                 m_catalogFilename = MakeFileAbsolute( val );
+            }
+            else if ( !name.Cmp( "Country" ) )
+            {
+                m_defaultCountryID = val ;
+            }            
+            else if ( !name.Cmp( "CatalogCode" ) )
+            {
+                m_defaultCatalogCode = val ;
             }
             attr = attr->GetNext( );
         }

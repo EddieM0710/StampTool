@@ -24,17 +24,17 @@
   **************************************************/
 enum
 {
-    CatalogDataTree_Quit = wxID_EXIT,
-    CatalogDataTree_About = wxID_ABOUT,
-    CatalogDataTree_StructureStamps,
-    CatalogDataTree_ResortTree,
-    CatalogDataTree_Delete,
-    CatalogDataTree_Add,
-    CatalogDataTree_Colnect,
-    CatalogDataTree_Before,
-    CatalogDataTree_After,
-    CatalogDataTree_AsChild,
-    CatalogDataTree_Cancel
+    CatalogVolumeDataTree_Quit = wxID_EXIT,
+    CatalogVolumeDataTree_About = wxID_ABOUT,
+    CatalogVolumeDataTree_StructureStamps,
+    CatalogVolumeDataTree_ResortTree,
+    CatalogVolumeDataTree_Delete,
+    CatalogVolumeDataTree_Add,
+    CatalogVolumeDataTree_Colnect,
+    CatalogVolumeDataTree_Before,
+    CatalogVolumeDataTree_After,
+    CatalogVolumeDataTree_AsChild,
+    CatalogVolumeDataTree_Cancel
 };
 
 typedef std::vector<wxXmlNode*> wxXmlNodeArray;
@@ -149,7 +149,7 @@ public:
                         Catalog::CatalogBaseType& nodeType );
     void ClearCatalogTree( );   
     void LoadTree( void );
-    wxString GetLabel( wxXmlNode* catalogData );
+    wxString GetLabel( wxXmlNode* catalogVolumeData );
 
     wxTreeItemId AddTreeNode( wxTreeItemId parent, wxXmlNode* node );
     void SortTree( wxTreeItemId parent );
@@ -158,13 +158,13 @@ public:
     void AddEntry( wxTreeItemId id );
     void DeleteEntry( wxTreeItemId id );
 
-    void StructureEntry( wxXmlNode* catalogData );
+    void StructureEntry( wxXmlNode* catalogVolumeData );
 
-    void StructureCatalogData( wxXmlNode* catalogData, Catalog::FormatType parentType,
+    void StructureCatalogVolumeData( wxXmlNode* catalogVolumeData, Catalog::FormatType parentType,
         Catalog::FormatType childType,
         Catalog::FormatType secondChildType = Catalog::FT_FormatUnknown );
 
-    wxXmlNodeArray* MakeParentList( wxXmlNode* catalogData,
+    wxXmlNodeArray* MakeParentList( wxXmlNode* catalogVolumeData,
         Catalog::FormatType parentType );
 
     wxTreeItemId FindTreeItemID( wxXmlNode* node );

@@ -6,18 +6,18 @@
  * @date 2021-02-25
  *
  * @copyright Copyright (c) 2021
- * 
+ *
  * This file is part of AlbumGenerator.
  *
- * AlbumGenerator is free software: you can redistribute it and/or modify it under the 
- * terms of the GNU General Public License as published by the Free Software Foundation, 
+ * AlbumGenerator is free software: you can redistribute it and/or modify it under the
+ * terms of the GNU General Public License as published by the Free Software Foundation,
  * either version 3 of the License, or any later version.
  *
- * AlbumGenerator is distributed in the hope that it will be useful, but WITHOUT ANY 
- * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+ * AlbumGenerator is distributed in the hope that it will be useful, but WITHOUT ANY
+ * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
- * You should have received a copy of the GNU General Public License along with 
+ * You should have received a copy of the GNU General Public License along with
  * AlbumGenerator. If not, see <https://www.gnu.org/licenses/>.
  *
  **************************************************/
@@ -33,225 +33,95 @@
 #include "wx/wx.h"
 #endif
 
-#include <iostream>
+// #include <iostream>
 #include <wx/filename.h>
-#include <wx/string.h>
-#include "wx/xml/xml.h"
-#include <wx/msgdlg.h>
+// #include <wx/string.h>
+// #include "wx/xml/xml.h"
+// #include <wx/msgdlg.h>
 
 #include "catalog/CatalogData.h"
+#include "gui/CatalogPanel.h"
+
 
 #include "Defs.h"
 
-#include "catalog/CatalogDefs.h"
-#include "catalog/Classification.h"
-#include "catalog/Entry.h"
+// #include "catalog/CatalogDefs.h"
+// #include "catalog/Classification.h"
+// #include "catalog/Entry.h"
 
-#include "utils/CSV.h"
-#include "utils/Settings.h"
-#include "utils/Project.h"
-#include "utils/XMLUtilities.h"
+// #include "utils/CSV.h"
+// #include "utils/Settings.h"
+// #include "utils/Project.h"
+// #include "utils/XMLUtilities.h"
 #include "AlbumGenApp.h"
+#include "gui/GeneratorData.h"
 
 wxDECLARE_APP( AlbumGenApp );
 
 namespace Catalog {
 
-    CatalogData* NewCatalogDataInstance()
+    Catalog::CatalogVolumeData* CatalogData::NewCatalogVolumeData( )
     {
-        return new CatalogData();
-    }
-
-    CatalogData::CatalogData(/* args */ )
-    {
-        m_stampDoc = 0;
-    }
-
-    //*****
-
-    CatalogData::~CatalogData( )
-    {
-        delete m_stampDoc;
-    }
-
-    //*****
-
-    bool CatalogData::IsOK( )
-    {
-        if ( m_stampDoc )
-        {
-            return true;
-        }
-        return false;
-    }
-
-    //*****   
-
-    void CatalogData::SetDirty( bool state )
-    {
-        m_dirty = state;
-        if ( m_dirty )
-        {
-            GetGeneratorData( )->SetDirty( true );
-        }
-    }
-     //*****
-
-    wxXmlDocument* CatalogData::NewDocument( )
-    {
-        delete m_stampDoc;
-        m_stampDoc = new wxXmlDocument( );
-        return m_stampDoc;
+        Catalog::CatalogVolumeData* catalogVolumeData = Catalog::NewCatalogVolumeDataInstance( );
+        m_catalogArray.push_back( catalogVolumeData );
+        m_catalogVolumeDataNdx = m_catalogArray.size( ) - 1;
+        return catalogVolumeData;
     };
 
-    //*****
-
-    wxXmlDocument* CatalogData::ReplaceDocument( wxXmlDocument* doc )
+    Catalog::CatalogVolumeData* CatalogData::GetCatalogVolumeData( )
     {
-        delete m_stampDoc;
-        m_stampDoc = doc;
-        return m_stampDoc;
+        if ( m_catalogVolumeDataNdx >= 0 )
+        {
+        return m_catalogArray.at( m_catalogVolumeDataNdx );
+        }
+        return (Catalog::CatalogVolumeData*)0;
     };
 
-    //*****
+int wayToSort(Catalog::CatalogVolumeData* vol1, Catalog::CatalogVolumeData* vol2) 
+{ 
+    wxString name1 = vol1->GetVolumeName();
+    wxString name2 = vol2->GetVolumeName();
+    return name1.compare(name2); 
+}
 
-    void CatalogData::Save( )
+    void CatalogData::LoadCatalogVolumes( )
     {
-        wxString filename = GetProject( )->GetCatalogFilename( );
-        if ( wxFileExists( filename ) )
+        for ( Catalog::CatalogVolumeDataArray::iterator it = std::begin( m_catalogArray );
+            it != std::end( m_catalogArray );
+            ++it )
         {
-            wxFileName bakFile( filename );
-            bakFile.SetExt( "bak" );
-            wxRenameFile( filename, bakFile.GetFullName( ), true );
-        }
-        m_stampDoc->Save( filename );
-        SetDirty( false );
-    }
-    
-    //*****
-
-    void CatalogData::NewCatalog()
-    {     
-        m_stampDoc = NewDocument( );
-        wxXmlNode* root = new wxXmlNode( wxXML_ELEMENT_NODE, "Catalog" );
-        m_stampDoc->SetRoot( root );
-    }
-    
-    //*****
-
-    void CatalogData::LoadXML( wxString filename )
-    {
-
-        bool ok = false;
-        if ( filename.length( ) > 0 )
-        {
-            if ( !m_stampDoc )
+            Catalog::CatalogVolumeData* volume = ( Catalog::CatalogVolumeData* )( *it );
+            volume->LoadXML( );
+            wxString name = volume->GetVolumeName();
+            if ( name.IsEmpty() )
             {
-                m_stampDoc = NewDocument( );
-            }
-
-            wxString cwd = wxGetCwd( );
-            //ok = m_stampDoc->Load( filename );
-            wxFileInputStream stream( filename );
-            if ( !stream.IsOk( ) )
-            {
-            wxString txt = wxString::Format( "%s Stream Create Failed. Error: %s.\n\n", filename, stream.GetLastError( ) );
-                wxMessageDialog* dlg = new wxMessageDialog(
-                    wxGetApp( ).GetFrame( ), txt,
-                    wxT( "Warning! Stream Create Failed.\n" ),
-                    wxOK | wxCANCEL | wxCENTER );
-                int rsp = dlg->ShowModal( );
-                return;
-            }
-            if ( !m_stampDoc->Load( stream ) )
-            {
-            wxString txt = wxString::Format( "\n%s Stream  Failed. Error: %s.\n\n", filename, stream.GetLastError( ) );
-                wxMessageDialog* dlg = new wxMessageDialog(
-                    wxGetApp( ).GetFrame( ), txt,
-                    wxT( "Warning! Stream Create Failed.\n" ),
-                    wxOK | wxCANCEL | wxCENTER );
-                int rsp = dlg->ShowModal( );
-                return;
-            }
-        }
-        else
-        {
-            wxXmlNode* catalogData = m_stampDoc->GetRoot( );
-            wxString name = catalogData->GetName( );
-
-            if ( name.Length( ) == 0 )
-            {
-                catalogData->SetName( filename );
+                name = volume->GetVolumeFilename();
+                wxFileName fn(name);
+                volume->SetVolumeName(fn.GetName());
             }
         }
 
-
-        //Get the file global Prefs
-        wxXmlNode* root = m_stampDoc->GetRoot( );
-        const char* name = root->GetName( );
-        if ( !strcmp( name, CatalogBaseNames[ NT_Catalog ] ) )
+        if (m_catalogArray.size() > 1 )
         {
-            Classification catalog( root );
-  //          m_title = catalog.GetTitle( );
+            sort(m_catalogArray.begin(), m_catalogArray.end(), wayToSort);
         }
-
-        SetDirty( false );
-    }
-
-    //*****
-
-    void CatalogData::LoadCSV( wxString filename )
-    {
-        if ( !m_stampDoc )
+        m_volumeNameStrings.Clear();
+        for ( Catalog::CatalogVolumeDataArray::iterator it = std::begin( m_catalogArray );
+            it != std::end( m_catalogArray );
+            ++it )
         {
-            NewDocument( );
+            Catalog::CatalogVolumeData* volume = ( Catalog::CatalogVolumeData* )( *it );
+            m_volumeNameStrings.Add( volume->GetVolumeName() );
         }
+        CatalogPanel* catPanel = wxGetApp().GetFrame()->GetCatalogPanel();
+        catPanel->SetVolumeListStrings( m_volumeNameStrings );
+        m_catalogVolumeDataNdx = 0;
+        catPanel->SetVolumeListSelection(m_catalogVolumeDataNdx);
 
-        Utils::CSVData* csv = new Utils::CSVData( );
-        wxXmlNode* docRoot = m_stampDoc->GetRoot( );
-        if ( !docRoot )
-        {
-            docRoot = Utils::NewNode( m_stampDoc, CatalogBaseNames[ NT_Catalog ] );
-        }
+    };
 
-        Utils::SetAttrStr( docRoot, DT_DataNames[ DT_Name ], filename );
-
-        csv->DoLoad( filename, m_stampDoc->GetRoot( ) );
-        SetDirty( );
-        delete csv;
-    }
-
-
-    //*****
-
-    wxXmlNode* CatalogData::FindNodeWithPropertyAndValue( wxString property, wxString value )
-    {
-        return FindNodeWithPropertyAndValue( m_stampDoc->GetRoot( ), property, value );
-    }
-
-    //*****
-
-    wxXmlNode* CatalogData::FindNodeWithPropertyAndValue( wxXmlNode* element, wxString property, wxString value )
-    {
-        wxString   	attr;
-        wxXmlNode* child = element->GetChildren( );
-        while ( child )
-        {
-            if ( child->GetAttribute( property, &attr ) )
-            {
-                if ( !value.Cmp( attr ) )
-                {
-                    return child;
-                }
-            }
-            wxXmlNode* foundChild = FindNodeWithPropertyAndValue( child, property, value );
-            if ( foundChild )
-            {
-                return foundChild;
-            }
-            child = ( wxXmlNode* )child->GetNext( );
-        }
-        return ( wxXmlNode* )0;
-    }
-
+    void CatalogData::SetCatalogVolumeDataNdx( int i ) {
+        m_catalogVolumeDataNdx = i;
+        GetGeneratorData( )->LoadCatalogTree( );
+    };
 }

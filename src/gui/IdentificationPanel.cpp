@@ -303,7 +303,7 @@ void IdentificationPanel::CreateControls( )
     m_status->SetLabel( "Status" );
     m_country->SetLabel( "Country" );
 
-    SetDataEditable( GetSettings()->IsCatalogDataEditable() );
+    SetDataEditable( GetSettings()->IsCatalogVolumeDataEditable() );
 }
 
 /*
@@ -485,7 +485,7 @@ void IdentificationPanel::SetDataEditable( bool val )
 void IdentificationPanel::OnEditCheckBox(wxCommandEvent& event)
 {
     bool val = m_editCheckbox->GetValue();
-    GetSettings()->SetCatalogDataEditable( val );
+    GetSettings()->SetCatalogVolumeDataEditable( val );
     GetGeneratorData( )->GetDescriptionPanel( )->SetDataEditable( val );
     event.Skip( );
 }

@@ -52,7 +52,7 @@
 #include "gui/AlbumDesignTreePanel.h"
 #include "gui/SortOrderDialog.h"
 #include "gui/SettingsDialog.h"
-#include "catalog/CatalogData.h"
+#include "catalog/CatalogVolumeData.h"
 #include "gui/AlbumGenFrame.h"
 #include "utils/XMLUtilities.h"
 #include "design/DesignDefs.h"
@@ -181,27 +181,23 @@ void AlbumGenFrame::CreateControls( )
     wxMenuBar* menuBar = new wxMenuBar;
     m_fileMenu = new wxMenu;
     m_newMenu = new wxMenu;
-    m_fileMenu->Append( ID_NEWPROJECT, _( "New Project File" ), wxEmptyString, wxITEM_NORMAL );
-    m_fileMenu->Append( ID_OPENPROJECT, _( "Open Project File" ), wxEmptyString, wxITEM_NORMAL );
+    m_fileMenu->Append( ID_NEWPROJECT, _( "New" ), "New Project", wxITEM_NORMAL );
+    m_fileMenu->Append( ID_OPENPROJECT, _( "Open" ), wxEmptyString, wxITEM_NORMAL );
     m_fileMenu->AppendSeparator( );
-    m_fileMenu->Append( ID_SAVEPROJECT, _( "Save Project File" ), wxEmptyString, wxITEM_NORMAL );
-    m_fileMenu->Append( ID_SAVEASPROJECT, _( "Save Project File As" ), wxEmptyString, wxITEM_NORMAL );
+    m_fileMenu->Append( ID_SAVEPROJECT, _( "Save" ), wxEmptyString, wxITEM_NORMAL );
+    m_fileMenu->Append( ID_SAVEASPROJECT, _( "Save As" ), wxEmptyString, wxITEM_NORMAL );
     m_fileMenu->AppendSeparator( );
 
-    wxMenu* m_catalogMenu = new wxMenu;
-     
+    wxMenu* m_catalogMenu = new wxMenu;    
     m_catalogMenu->Append( ID_NEWCATALOG, _( "New Catalog File" ), wxEmptyString, wxITEM_NORMAL );
-    m_catalogMenu->Append( ID_OPENCATALOG, _( "Open Catalog File" ), wxEmptyString, wxITEM_NORMAL );
-    m_catalogMenu->Append( ID_SAVECATALOG, _( "Save Catalog File" ), wxEmptyString, wxITEM_NORMAL );
-    m_catalogMenu->Append( ID_SAVEASCATALOG, _( "Save Catalog File As" ), wxEmptyString, wxITEM_NORMAL );
+    m_catalogMenu->Append( ID_CSVIMPORT, _( "Create Catalog from CSV" ), wxEmptyString, wxITEM_NORMAL );
+    m_catalogMenu->Append( ID_OPENCATALOG, _( "Add Catalog File" ), wxEmptyString, wxITEM_NORMAL );
     m_fileMenu->Append( ID_CATALOGMENU, _( "Catalog" ), m_catalogMenu );
 
 
     wxMenu* m_designMenu = new wxMenu;
     m_designMenu->Append( ID_NEWDESIGN, _( "New Design File" ), wxEmptyString, wxITEM_NORMAL );
     m_designMenu->Append( ID_OPENDESIGN, _( "Open Design File" ), wxEmptyString, wxITEM_NORMAL );
-    m_designMenu->Append( ID_SAVEDESIGN, _( "Save Design File" ), wxEmptyString, wxITEM_NORMAL );
-    m_designMenu->Append( ID_SAVEASDESIGN, _( "SaveAs Design File" ), wxEmptyString, wxITEM_NORMAL );
     m_fileMenu->Append( ID_DESIGNMENU, _( "Design" ), m_designMenu );
 
     m_fileMenu->AppendSeparator( );
@@ -209,11 +205,7 @@ void AlbumGenFrame::CreateControls( )
 
     m_fileMenu->AppendSeparator( );
 
-    m_fileMenu->Append( ID_CSVIMPORT, _( "Import CSV" ), wxEmptyString, wxITEM_NORMAL );
-    m_fileMenu->Append( ID_MERGE, _( "Merge" ), wxEmptyString, wxITEM_NORMAL );
-    m_fileMenu->AppendSeparator( );
-  //  m_recentMenu = new wxMenu;
-  //  m_fileMenu->Append( ID_RECENT, _( "Recent" ), m_recentMenu );
+
     m_fileMenu->AppendSeparator( );
     m_preferencesMenu = new wxMenu;
     m_preferencesMenu->Append( ID_DEFINEPERIOD, _( "Define Period" ), wxEmptyString, wxITEM_NORMAL );
@@ -226,14 +218,8 @@ void AlbumGenFrame::CreateControls( )
     menuBar->Append( m_fileMenu, _( "File" ) );
     wxMenu* itemMenu3 = new wxMenu;
     itemMenu3->Append( ID_TEXTSERCHMENUITEM, _( "Text Search" ), wxEmptyString, wxITEM_NORMAL );
-    // itemMenu3->Append( ID_IMAGEGALERYMENUITEM, _( "Image Gallery" ), wxEmptyString, wxITEM_NORMAL );
     menuBar->Append( itemMenu3, _( "Search" ) );
 
-    wxMenu* itemMenu1 = new wxMenu;
-    itemMenu1->Append( ID_SORTORDER, _( "Sort Order" ), wxEmptyString, wxITEM_NORMAL );
-    itemMenu1->Append( ID_ITEMVIEW, _( "Item View" ), wxEmptyString, wxITEM_NORMAL );
-    itemMenu1->Append( ID_DEFINEPERIOD, _( "Define Period" ), wxEmptyString, wxITEM_NORMAL );
-    menuBar->Append( itemMenu1, _( "Setup" ) );
     wxMenu* itemMenu7 = new wxMenu;
     itemMenu7->Append( wxID_ABOUT, _( "About" ), wxEmptyString, wxITEM_NORMAL );
     menuBar->Append( itemMenu7, _( "Help" ) );
@@ -250,6 +236,10 @@ void AlbumGenFrame::CreateControls( )
     m_albumDesignTreePanel = m_albumGeneratorPanel->GetAlbumDesignTreePanel( );
 }
 
+CatalogPanel* AlbumGenFrame::GetCatalogPanel( )
+{
+    return m_albumGeneratorPanel->GetCatalogPanel( );
+}
 
 bool AlbumGenFrame::ShowToolTips( )
 {
@@ -279,8 +269,8 @@ int AlbumGenFrame::DoQueryMerge( int& mergeMethod )
     wxXmlNode* docRoot = 0;
     int mergeOverwriteQuery;
 
-    Catalog::CatalogData* catalogData = GetCatalogData( );
-    if ( catalogData )
+    Catalog::CatalogVolumeData* catalogVolumeData = GetCatalogVolumeData( );
+    if ( catalogVolumeData )
     {
         mergeOverwriteQuery = QueryMerge( mergeMethod );
     }
@@ -814,14 +804,14 @@ int AlbumGenFrame::QueryMerge( int& mergeMethod )
 
 // void AlbumGenFrame::SaveCatalog( )
 // {
-//     GetCatalogData( )->Save( );
+//     GetCatalogVolumeData( )->Save( );
 //     SetDirty( false );
 
 // }
 void AlbumGenFrame::SaveAsProject( )
 {
 
-    if ( GetCatalogData( ) )
+    if ( GetCatalogVolumeData( ) )
     {
         wxFileName lastFile( GetSettings( )->GetLastFile( ) );
         lastFile.SetExt( "xml" );
@@ -839,7 +829,7 @@ void AlbumGenFrame::SaveAsProject( )
 void AlbumGenFrame::SaveAsCatalog( )
 {
 
-    if ( GetCatalogData( ) )
+    if ( GetCatalogVolumeData( ) )
     {
         wxFileName lastFile( GetProject( )->GetCatalogFilename( ) );
         lastFile.SetExt( "xml" );
@@ -857,7 +847,7 @@ void AlbumGenFrame::SaveAsCatalog( )
 void AlbumGenFrame::SaveAsDesign( )
 {
 
-    if ( GetCatalogData( ) )
+    if ( GetCatalogVolumeData( ) )
     {
         wxFileName lastFile( GetProject( )->GetDesignFilename( ) );
         lastFile.SetExt( "xml" );

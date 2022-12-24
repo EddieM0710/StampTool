@@ -46,7 +46,7 @@
 #include "Settings.h"
 #include "Stamp.h"
 #include "GeneratorData.h"
-#include "CatalogData.h"
+#include "CatalogVolumeData.h"
 
 /*
  * StampDescriptionPanel type definition
@@ -105,13 +105,6 @@ bool StampDescriptionPanel::Create( wxWindow* parent, wxWindowID id,
     }
     Centre( );
 
-    if ( FindWindow( ID_NOTEBOOKSPLITTERWINDOW ) )
-        ( ( wxSplitterWindow* )FindWindow( ID_NOTEBOOKSPLITTERWINDOW ) )
-        ->SetSashPosition( 200 );
-    if ( FindWindow( ID_DESCRIPTIONSPLITTERWINDOW ) )
-        ( ( wxSplitterWindow* )FindWindow( ID_DESCRIPTIONSPLITTERWINDOW ) )
-        ->SetSashPosition( 250 );
-    // StampDescriptionPanel creation
     return true;
 }
 
@@ -152,92 +145,142 @@ void StampDescriptionPanel::CreateControls( void )
 {
     // StampDescriptionPanel content construction
 
-    StampDescriptionPanel* itemPanel1 = this;
+    StampDescriptionPanel* thisPanel = this;
 
-    wxBoxSizer* itemBoxSizer2 = new wxBoxSizer( wxHORIZONTAL );
-    itemPanel1->SetSizer( itemBoxSizer2 );
+    wxBoxSizer* topVerticalSizer = new wxBoxSizer(wxVERTICAL);
+    thisPanel->SetSizer(topVerticalSizer);
 
-    wxBoxSizer* itemBoxSizer3 = new wxBoxSizer( wxVERTICAL );
-    itemBoxSizer2->Add( itemBoxSizer3, 3, wxGROW | wxALL, 0 );
+    wxBoxSizer* topHorizontalSizer = new wxBoxSizer(wxHORIZONTAL);
+    topVerticalSizer->Add(topHorizontalSizer, 1, wxGROW|wxALL, 5);
 
-    wxSplitterWindow* itemSplitterWindow1 = new wxSplitterWindow(
-        itemPanel1, ID_NOTEBOOKSPLITTERWINDOW, wxDefaultPosition,
+    wxSplitterWindow* horizontalSplitterWindow = new wxSplitterWindow(
+        thisPanel, ID_HORIZONTALLITTERWINDOW, wxDefaultPosition,
         wxSize( 100, 100 ), wxSP_3DBORDER | wxSP_3DSASH | wxNO_BORDER );
-    itemSplitterWindow1->SetMinimumPaneSize( 100 );
-    itemSplitterWindow1->SetSashGravity( 0.2 );
+        horizontalSplitterWindow->SetSashPosition( 500 );
+    horizontalSplitterWindow->SetMinimumPaneSize( 100 );
+    horizontalSplitterWindow->SetSashGravity( 0.2 );
 
-    wxSplitterWindow* itemSplitterWindow2 = new wxSplitterWindow(
-        itemSplitterWindow1, ID_DESCRIPTIONSPLITTERWINDOW, wxDefaultPosition,
-        wxSize( 100, 100 ), wxSP_3DBORDER | wxSP_3DSASH | wxNO_BORDER );
-    itemSplitterWindow2->SetMinimumPaneSize( 100 );
-    itemSplitterWindow2->SetSashGravity( 0.2 );
+
+    wxPanel* stampAndImagePanel = new wxPanel( horizontalSplitterWindow, ID_HORIZONTALPLITTERWINDOW, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER|wxTAB_TRAVERSAL );
+    stampAndImagePanel->SetExtraStyle(wxWS_EX_VALIDATE_RECURSIVELY);
+   
+    wxBoxSizer* stampAndImageHorizontalSizer = new wxBoxSizer(wxHORIZONTAL);
+    stampAndImagePanel->SetSizer(stampAndImageHorizontalSizer);
+
+    wxBoxSizer* stampAndImageVerticalSizer = new wxBoxSizer(wxVERTICAL);
+    stampAndImageHorizontalSizer->Add(stampAndImageVerticalSizer, 1, wxGROW|wxALL, 5);
+   
+    wxSplitterWindow* stampAndImageVerticalSplitterWindow = new wxSplitterWindow(
+        stampAndImagePanel, ID_DESCRIPTIONSPLITTERWINDOW, wxDefaultPosition,
+        wxSize( 200, 200 ), wxSP_3DBORDER | wxSP_3DSASH | wxNO_BORDER );
+        stampAndImageVerticalSplitterWindow->SetSashPosition( 800 );
+    stampAndImageVerticalSplitterWindow->SetMinimumPaneSize( 100 );
+    stampAndImageVerticalSplitterWindow->SetSashGravity( 0.2 );
+
 
     m_identificationPanel = new IdentificationPanel(
-        itemSplitterWindow2, ID_IDENTIFICATIONPANELFORIEGN, wxDefaultPosition,
+        stampAndImageVerticalSplitterWindow, 
+        ID_IDENTIFICATIONPANELFORIEGN, wxDefaultPosition,
         wxDefaultSize, 0 );
+        
 
-    wxPanel* itemPanel4 =
-        new wxPanel( itemSplitterWindow2, ID_DESCRIPTIONPANEL, wxDefaultPosition,
+    wxBoxSizer* identificationPanelHorizontalSizer = new wxBoxSizer(wxHORIZONTAL);
+    m_identificationPanel->SetSizer(identificationPanelHorizontalSizer);
+
+    wxBoxSizer* identificationPanelVerticalSizer = new wxBoxSizer(wxVERTICAL);
+        
+    identificationPanelHorizontalSizer->Add(identificationPanelVerticalSizer, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
+
+
+
+
+
+    wxPanel* StampImagePanel = new wxPanel( stampAndImageVerticalSplitterWindow, 
+        ID_DESCRIPTIONPANEL, wxDefaultPosition,
             wxDefaultSize, wxTAB_TRAVERSAL );
-    itemPanel4->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
-    wxBoxSizer* itemBoxSizer5 = new wxBoxSizer( wxVERTICAL );
-    itemPanel4->SetSizer( itemBoxSizer5 );
+    StampImagePanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
 
-    wxBoxSizer* itemBoxSizer6 = new wxBoxSizer( wxHORIZONTAL );
-    itemBoxSizer5->Add( itemBoxSizer6, 1, wxGROW | wxALL, 5 );
+
+    wxBoxSizer* stampImageVerticalSizer = new wxBoxSizer( wxVERTICAL );
+    StampImagePanel->SetSizer( stampImageVerticalSizer );
+
+    wxBoxSizer* stampImageHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
+    stampImageVerticalSizer->Add( stampImageHorizontalSizer, 0, wxGROW | wxALL, 5 );
     
-    wxBoxSizer* itemBoxSizer7 = new wxBoxSizer( wxVERTICAL );
-    itemBoxSizer6->Add( itemBoxSizer7, 1, wxGROW | wxALL, 5 );
-    wxBoxSizer* itemBoxSizer8 = new wxBoxSizer( wxHORIZONTAL );
-    itemBoxSizer7->Add( itemBoxSizer8, 0, wxGROW | wxALL, 0 );
 
-    wxStaticText* itemStaticText9 = new wxStaticText(
-        itemPanel4, wxID_STATIC, _( "Zoom" ), wxDefaultPosition, wxDefaultSize, 0 );
-    itemBoxSizer8->Add( itemStaticText9, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+    wxStaticText* zoomStaticText = new wxStaticText(
+        StampImagePanel, wxID_STATIC, _( "Zoom" ), wxDefaultPosition, wxDefaultSize, 0 );
+    stampImageHorizontalSizer->Add( zoomStaticText, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
     m_zoomSlider =
-        new wxSlider( itemPanel4, ID_ZOOMSLIDER, 100, 25, 300, wxDefaultPosition,
+        new wxSlider( StampImagePanel, ID_ZOOMSLIDER, 100, 25, 300, wxDefaultPosition,
             wxDefaultSize, wxSL_HORIZONTAL );
-    itemBoxSizer8->Add( m_zoomSlider, 1, wxGROW | wxALL, 0 );
+    stampImageHorizontalSizer->Add( m_zoomSlider, 0, wxGROW | wxALL, 0 );
 
     m_stampImage =
-        new ImagePanel( itemPanel4, ID_STAMPIMAGEPANEL, wxDefaultPosition,
+        new ImagePanel( StampImagePanel, ID_STAMPIMAGEPANEL, wxDefaultPosition,
             wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
     m_stampImage->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
-    itemBoxSizer7->Add( m_stampImage, 1, wxGROW | wxALL, 0 );
+    stampImageVerticalSizer->Add( m_stampImage, 1, wxGROW | wxALL, 0 );
 
-    itemSplitterWindow2->SplitVertically( m_identificationPanel, itemPanel4, 250 );
-    wxNotebook* itemNotebook12 =
-        new wxNotebook( itemSplitterWindow1, ID_DESCRIPTIONLNOTEBOOK,
+
+
+    stampAndImageVerticalSplitterWindow->SplitVertically(m_identificationPanel, StampImagePanel, 300);
+    stampAndImageVerticalSizer->Add(stampAndImageVerticalSplitterWindow, 1, wxGROW|wxALL, 5);
+
+
+
+    wxPanel* notebookPanel = new wxPanel( horizontalSplitterWindow, ID_NOTEBOOKPANEL, 
+        wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER|wxTAB_TRAVERSAL );
+    notebookPanel->SetExtraStyle(wxWS_EX_VALIDATE_RECURSIVELY);
+    
+    wxBoxSizer* notebookPanelVerticalSizer = new wxBoxSizer(wxVERTICAL);
+    notebookPanel->SetSizer(notebookPanelVerticalSizer);
+
+    wxBoxSizer* notebookPanelHorizontalSizer = new wxBoxSizer(wxHORIZONTAL);
+    notebookPanelVerticalSizer->Add(notebookPanelHorizontalSizer, 1, wxGROW|wxALL, 5);
+
+
+
+    wxNotebook* descriptionNotebook =
+        new wxNotebook( notebookPanel, ID_DESCRIPTIONLNOTEBOOK,
             wxDefaultPosition, wxDefaultSize, wxBK_DEFAULT );
 
     m_inventoryPanel =
-        new InventoryPanel( itemNotebook12, ID_INVENTORYPANEL, wxDefaultPosition,
+        new InventoryPanel( descriptionNotebook, ID_INVENTORYPANEL, wxDefaultPosition,
             wxSize( 100, 100 ), wxSIMPLE_BORDER );
 
-    itemNotebook12->AddPage( m_inventoryPanel, _( "Inventory" ) );
+    descriptionNotebook->AddPage( m_inventoryPanel, _( "Inventory" ) );
+
+
 
     m_catalogCodePanel =
-        new CatalogCodePanel( itemNotebook12, ID_CATALOGCODEPANEL, wxDefaultPosition,
+        new CatalogCodePanel( descriptionNotebook, ID_CATALOGCODEPANEL, wxDefaultPosition,
             wxSize( 100, 100 ), wxSIMPLE_BORDER );
 
-    itemNotebook12->AddPage( m_catalogCodePanel, _( "Catalog Codes" ) );
+    descriptionNotebook->AddPage( m_catalogCodePanel, _( "Catalog Codes" ) );
+
+
 
     m_characteristicsPanel = new CharacteristicsPanel(
-        itemNotebook12, ID_CHARACTERISTICSWINDOW, wxDefaultPosition,
+        descriptionNotebook, ID_CHARACTERISTICSWINDOW, wxDefaultPosition,
         wxSize( 100, 100 ), wxSIMPLE_BORDER );
 
-    itemNotebook12->AddPage( m_characteristicsPanel, _( "Characteristics" ) );
+    descriptionNotebook->AddPage( m_characteristicsPanel, _( "Characteristics" ) );
 
      m_miscellaneousDataPanel = new MiscellaneousDataPanel(
-        itemNotebook12, ID_MISCELLANEOUSDATAFORIEGN, wxDefaultPosition,
+        descriptionNotebook, ID_MISCELLANEOUSDATAFORIEGN, wxDefaultPosition,
         wxDefaultSize, wxSIMPLE_BORDER | wxTAB_TRAVERSAL );
      m_miscellaneousDataPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
 
-     itemNotebook12->AddPage( m_miscellaneousDataPanel, _( "Miscellaneous" ) );
+     descriptionNotebook->AddPage( m_miscellaneousDataPanel, _( "Miscellaneous" ) );
+
+
+
+    notebookPanelHorizontalSizer->Add(descriptionNotebook, 1, wxGROW|wxALL, 5);
 
 //$     wxScrolledWindow* itemScrolledWindow1 = new wxScrolledWindow(
-//$         itemNotebook12, ID_DESCRIPTIONSCROLLEDWINDOW, wxDefaultPosition,
+//$         descriptionNotebook, ID_DESCRIPTIONSCROLLEDWINDOW, wxDefaultPosition,
 //$         wxDefaultSize, wxSIMPLE_BORDER | wxHSCROLL | wxVSCROLL );
 //$     itemScrolledWindow1->SetScrollbars( 1, 1, 0, 0 );
 //$     wxBoxSizer* itemBoxSizer4 = new wxBoxSizer( wxHORIZONTAL );
@@ -251,10 +294,10 @@ void StampDescriptionPanel::CreateControls( void )
 //$      itemBoxSizer9->Add( m_description, 1, wxGROW | wxALL, 0 );
 
 //$      itemScrolledWindow1->FitInside( );
-//$      itemNotebook12->AddPage( itemScrolledWindow1, _( "Description" ) );
+//$      descriptionNotebook->AddPage( itemScrolledWindow1, _( "Description" ) );
 
     //$ wxPanel* itemPanel16 =
-    //$     new wxPanel( itemNotebook12, ID_BACKGROUNDPANEL1, wxDefaultPosition,
+    //$     new wxPanel( descriptionNotebook, ID_BACKGROUNDPANEL1, wxDefaultPosition,
     //$         wxDefaultSize, wxSIMPLE_BORDER | wxTAB_TRAVERSAL );
     //$ itemPanel16->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
     //$ wxBoxSizer* itemBoxSizer17 = new wxBoxSizer( wxVERTICAL );
@@ -277,24 +320,35 @@ void StampDescriptionPanel::CreateControls( void )
 
     //$ itemScrolledWindow19->FitInside( );
 
-    //$ itemNotebook12->AddPage( itemPanel16, _( "Background" ) );
+    //$ descriptionNotebook->AddPage( itemPanel16, _( "Background" ) );
 
-    itemSplitterWindow1->SplitHorizontally( itemSplitterWindow2, itemNotebook12,
-        200 );
-    itemBoxSizer3->Add( itemSplitterWindow1, 1, wxGROW | wxALL, 5 );
+
+    horizontalSplitterWindow->SplitHorizontally(stampAndImagePanel, notebookPanel, 800);
+    topHorizontalSizer->Add(horizontalSplitterWindow, 1, wxGROW|wxALL, 5);
+
+
+    //stampAndImageVerticalSplitterWindow->SplitVertically( m_identificationPanel, StampImagePanel, 400 );
+    
+    // wxNotebook* descriptionNotebook =
+    //     new wxNotebook( horizontalSplitterWindow, ID_DESCRIPTIONLNOTEBOOK,
+    //         wxDefaultPosition, wxDefaultSize, wxBK_DEFAULT );
+
+    // horizontalSplitterWindow->SplitHorizontally( stampAndImageVerticalSplitterWindow, descriptionNotebook, 800 );
+    // horizontalSplitterWindow->SetSashPosition( 600 );
+    // topVerticalSizer->Add( horizontalSplitterWindow, 3, wxGROW | wxALL, 5 );
 
     // Connect events and objects
 //$    m_bkgndText->Connect( ID_BKGNDTEXTCTRL, wxEVT_LEAVE_WINDOW,
 //$        wxMouseEventHandler( StampDescriptionPanel::OnLeaveWindow ),
 //$        NULL, this );
     // StampDescriptionPanel content construction
- //$     m_bkgndText->SetEditable( GetSettings()->IsCatalogDataEditable()  );
-  //$    m_description->SetEditable( GetSettings()->IsCatalogDataEditable()  );
+ //$     m_bkgndText->SetEditable( GetSettings()->IsCatalogVolumeDataEditable()  );
+  //$    m_description->SetEditable( GetSettings()->IsCatalogVolumeDataEditable()  );
 
 
     // display a random image until one is selected
     wxString filename;
-    if (  GetCatalogData( ) )
+    if (  GetCatalogVolumeData( ) )
     {
         filename = GetSettings( )->GetImageDirectory( );
         filename.Append( "/4503.jpg" );

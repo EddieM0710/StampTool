@@ -33,26 +33,26 @@ class wxXmlNode;
 
 namespace Catalog {
 
-    class CatalogData;
+    class CatalogVolumeData;
 
     // /**
     //  * @brief Get the Entry Data object
     //  *
-    //  * @return CatalogData* InitCatalogDefs
+    //  * @return CatalogVolumeData* InitCatalogDefs
     //  * @brief Set the Entry Data object
     //  *
-    //  * @param  catalogData
-    //  * @return CatalogData*
+    //  * @param  catalogVolumeData
+    //  * @return CatalogVolumeData*
     //  **************************************************/
-    // void SetCatalogData( CatalogData* catalogData );
+    // void SetCatalogVolumeData( CatalogVolumeData* catalogVolumeData );
 
 
     // /**
-    //  * @brief Create a new CatalogData file
+    //  * @brief Create a new CatalogVolumeData file
     //  *
-    //  * @return CatalogData*
+    //  * @return CatalogVolumeData*
     //  **************************************************/
-    // CatalogData* NewCatalogData( void );
+    // CatalogVolumeData* NewCatalogVolumeData( void );
 
 
     /**
@@ -343,7 +343,7 @@ namespace Catalog {
      **************************************************/
     CatalogBaseType FindCatalogBaseType( wxString name );
 
-    CatalogData* GetCatalogData( void );
+    CatalogVolumeData* GetCatalogVolumeData( void );
 
 
     void InitCatalogDefs( );

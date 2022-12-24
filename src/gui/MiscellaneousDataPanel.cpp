@@ -198,7 +198,7 @@ void MiscellaneousDataPanel::CreateControls( )
         m_catCodes->SetLabel( Catalog::DT_DataNames[Catalog::DT_Catalog_Codes] );
         m_imageName->SetLabel( "Image Name" );
 
-    SetDataEditable( GetSettings()->IsCatalogDataEditable() );
+    SetDataEditable( GetSettings()->IsCatalogVolumeDataEditable() );
 
 }
 

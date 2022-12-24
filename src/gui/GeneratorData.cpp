@@ -31,7 +31,7 @@
 #include "odt/ODTDefs.h"
 #include "odt/Document.h"
 #include "design/DesignData.h"
-#include "catalog/CatalogData.h"
+#include "catalog/CatalogVolumeData.h"
 
 #include <wx/log.h>
 
@@ -41,7 +41,7 @@ GeneratorData* NewGeneratorDataInstance()
 }
 
 GeneratorData::GeneratorData( ) {
-    m_catalogData = 0;
+
     m_designData = 0;
     m_catalogTreeCtrl = 0;
     m_designTreeCtrl = 0;
@@ -52,7 +52,6 @@ GeneratorData::GeneratorData( ) {
 
 void GeneratorData::InitGeneratorData()
 {
-        m_catalogData = 0;
         m_designData = 0;
         m_catalogTreeCtrl = 0;
         m_designTreeCtrl = 0;
@@ -96,7 +95,7 @@ void GeneratorData::FileNewProject()
 void GeneratorData::LoadData( )
 {
     bool state = wxLog::IsEnabled( ) 	;
-    ReadCatalogFile( );
+    LoadCatalogVolumeFiles( );
     LoadCatalogTree( );
     ReadDesignFile( );
     LoadDesignTree( );
@@ -121,15 +120,14 @@ void GeneratorData::FileSaveAsProject( wxString filename )
     FileSaveProject( );
 }
 
-Catalog::CatalogData* GeneratorData::NewCatalogData( )
+Catalog::CatalogVolumeData* GeneratorData::NewCatalogVolumeData( )
 {
-    if ( m_catalogData )
+    if ( m_catalogTreeCtrl )
     {
-        m_catalogData->~CatalogData();
         m_catalogTreeCtrl->ClearCatalogTree();
     }
-    m_catalogData = Catalog::NewCatalogDataInstance();
-    return m_catalogData;
+
+    return m_catalogData.NewCatalogVolumeData();
 };
 
 // void GeneratorData::LoadCatalogXML( wxString catalogFilename )
@@ -138,10 +136,9 @@ Catalog::CatalogData* GeneratorData::NewCatalogData( )
 
 ////*****
 
-void GeneratorData::ReadCatalogFile( )
+void GeneratorData::LoadCatalogVolumeFiles( )
 {
-    NewCatalogData( );
-    m_catalogData->LoadXML( m_project->GetCatalogFilename() );
+    m_catalogData.LoadCatalogVolumes();
 }
 
 
@@ -156,8 +153,8 @@ void GeneratorData::ReadCatalogCSV( wxString csvFilename )
 
         m_project->SetCatalogFilename( catalogFile.GetFullPath( ) );
 
-        NewCatalogData( );
-        m_catalogData->LoadCSV( csvFile.GetFullPath() );
+        Catalog::CatalogVolumeData* catalogVolumeData = NewCatalogVolumeData( );
+        catalogVolumeData->LoadCSV( csvFile.GetFullPath() );
 
     }
 }
@@ -169,7 +166,7 @@ void GeneratorData::LoadCatalogTree( )
 
 void GeneratorData::LoadNewCatalog( )
 {
-    Catalog::NewCatalogDataInstance();
+    Catalog::NewCatalogVolumeDataInstance();
     m_project->SetCatalogFilename("unnamed.cat.xml");
     LoadCatalogTree( );
     SetDirty();
@@ -183,7 +180,7 @@ Design::DesignData* GeneratorData::FileOpenDesign( wxString filename )
 Design::DesignData* GeneratorData::FileOpenCatalog( wxString filename )
 {
     m_project->SetCatalogFilename( filename );
-    ReadCatalogFile( );
+    LoadCatalogVolumeFiles( );
     LoadCatalogTree( );
 }
 
@@ -248,7 +245,7 @@ void GeneratorData::FileSaveAsDesign( wxString filename )
     
     void GeneratorData::FileSaveCatalog( )
     {
-        m_catalogData->Save( );
+        GetCatalogVolumeData( )->Save( );
     }
 
 void GeneratorData::InitODTDocument( )

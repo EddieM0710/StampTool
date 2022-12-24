@@ -4,37 +4,37 @@
  * @brief This is the application main frame.
  * @version 0.1
  * @date 2021-02-25
- * 
+ *
  * @copyright Copyright (c) 2021
- * 
+ *
  * This file is part of AlbumGenerator.
  *
- * AlbumGenerator is free software: you can redistribute it and/or modify it under the 
- * terms of the GNU General Public License as published by the Free Software Foundation, 
+ * AlbumGenerator is free software: you can redistribute it and/or modify it under the
+ * terms of the GNU General Public License as published by the Free Software Foundation,
  * either version 3 of the License, or any later version.
  *
- * AlbumGenerator is distributed in the hope that it will be useful, but WITHOUT ANY 
- * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+ * AlbumGenerator is distributed in the hope that it will be useful, but WITHOUT ANY
+ * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
- * You should have received a copy of the GNU General Public License along with 
+ * You should have received a copy of the GNU General Public License along with
  * AlbumGenerator. If not, see <https://www.gnu.org/licenses/>.
- * 
+ *
  **************************************************/
 
 
 #ifndef _ALBUMGENERATORFRAME_H_
 #define _ALBUMGENERATORFRAME_H_
 
-/*!
- * Includes
- */
+ /*!
+  * Includes
+  */
 
- 
+
 #include "wx/frame.h"
- 
+
 #include "gui/GuiDefs.h"
-//#include <wx/dynarray.h>
+  //#include <wx/dynarray.h>
 #include <vector>
 
 //#include "catalog/Classification.h"
@@ -44,12 +44,12 @@
 /*!
  * Forward declarations
  */
-//namespace Catalog { class Stamp; };
- 
+ //namespace Catalog { class Stamp; };
+
 class AlbumGenPanel;
- 
+
 class wxButton;
-////class CatalogData;
+////class CatalogVolumeData;
 
 class CatalogPanel;
 //class CatalogTreeCtrl;
@@ -58,7 +58,7 @@ class AlbumDesignTreePanel;
  * Control identifiers
  */
 
-//#define ID_IMPORT ID_ALBUMGENERATORFRAME+1
+ //#define ID_IMPORT ID_ALBUMGENERATORFRAME+1
 #define ID_TEXTSERCHMENUITEM ID_ALBUMGENERATORFRAME+2
 #define ID_SORTORDER ID_ALBUMGENERATORFRAME+3
 #define ID_ITEMVIEW ID_ALBUMGENERATORFRAME+4
@@ -90,140 +90,140 @@ class AlbumDesignTreePanel;
         | wxMINIMIZE_BOX | wxMAXIMIZE_BOX | wxCLOSE_BOX
 #define SYMBOL_ALBUMGENERATORFRAME_TITLE _( "AlbumGenFrame" )
 #define SYMBOL_ALBUMGENERATORFRAME_IDNAME ID_ALBUMGENERATORFRAME
-#define SYMBOL_ALBUMGENERATORFRAME_SIZE wxSize( 1200, 600 )
+#define SYMBOL_ALBUMGENERATORFRAME_SIZE wxSize( 1800, 1200 )
 #define SYMBOL_ALBUMGENERATORFRAME_POSITION wxDefaultPosition
- 
+
 /**
  * @todo rework main menu
- * 
+ *
  **************************************************/
 
 
-/**
- * @brief  This is the application main frame.
- * @details This class contains the main menu and main window, AlbumGenPanel. 
- * It inherits from wxFrame.
- * 
- */
-class AlbumGenFrame : public wxFrame
+ /**
+  * @brief  This is the application main frame.
+  * @details This class contains the main menu and main window, AlbumGenPanel.
+  * It inherits from wxFrame.
+  *
+  */
+class AlbumGenFrame: public wxFrame
 {
     DECLARE_CLASS( AlbumGenFrame )
-    DECLARE_EVENT_TABLE( )
+        DECLARE_EVENT_TABLE( )
 
-  public:
+public:
     // Constructors
     /**
      * @brief Default Constructor a new AlbumGenFrame object
      * @details Must be used in conjunction with Create.
-     * 
+     *
      **************************************************/
     AlbumGenFrame( );
 
     /**
      * @brief Construct a new AlbumGenFrame object
-     * 
+     *
      * @param  parent	The parent window.
      * @param  id	An identifier for the panel. wxID_ANY is taken to mean a default.
      * @param  pos	The panel position. The value wxDefaultPosition indicates a default position, chosen by either the windowing system or wxWidgets, depending on platform.
      * @param  size	The panel size. The value wxDefaultSize indicates a default size, chosen by either the windowing system or wxWidgets, depending on platform.
-     * @param  style	The window style. 
+     * @param  style	The window style.
      * @see wxPanel.
      **************************************************/
-    AlbumGenFrame( wxWindow *parent,
-                       wxWindowID id = SYMBOL_ALBUMGENERATORFRAME_IDNAME,
-                       const wxString &caption = SYMBOL_ALBUMGENERATORFRAME_TITLE,
-                       const wxPoint &pos = SYMBOL_ALBUMGENERATORFRAME_POSITION,
-                       const wxSize &size = SYMBOL_ALBUMGENERATORFRAME_SIZE,
-                       long style = SYMBOL_ALBUMGENERATORFRAME_STYLE );
+    AlbumGenFrame( wxWindow* parent,
+        wxWindowID id = SYMBOL_ALBUMGENERATORFRAME_IDNAME,
+        const wxString& caption = SYMBOL_ALBUMGENERATORFRAME_TITLE,
+        const wxPoint& pos = SYMBOL_ALBUMGENERATORFRAME_POSITION,
+        const wxSize& size = SYMBOL_ALBUMGENERATORFRAME_SIZE,
+        long style = SYMBOL_ALBUMGENERATORFRAME_STYLE );
 
     /**
      * @brief  Used for two-step panel construction.
      * Use with default constructor.
-     * 
+     *
      * @param  parent	The parent window.
      * @param  id	An identifier for the panel. wxID_ANY is taken to mean a default.
      * @param  pos	The panel position. The value wxDefaultPosition indicates a default position, chosen by either the windowing system or wxWidgets, depending on platform.
      * @param  size	The panel size. The value wxDefaultSize indicates a default size, chosen by either the windowing system or wxWidgets, depending on platform.
-     * @param  style	The window style. 
-     * @return bool 
-     * 
+     * @param  style	The window style.
+     * @return bool
+     *
      **************************************************/
-    bool Create( wxWindow *parent,
-                 wxWindowID id = SYMBOL_ALBUMGENERATORFRAME_IDNAME,
-                 const wxString &caption = SYMBOL_ALBUMGENERATORFRAME_TITLE,
-                 const wxPoint &pos = SYMBOL_ALBUMGENERATORFRAME_POSITION,
-                 const wxSize &size = SYMBOL_ALBUMGENERATORFRAME_SIZE,
-                 long style = SYMBOL_ALBUMGENERATORFRAME_STYLE );
+    bool Create( wxWindow* parent,
+        wxWindowID id = SYMBOL_ALBUMGENERATORFRAME_IDNAME,
+        const wxString& caption = SYMBOL_ALBUMGENERATORFRAME_TITLE,
+        const wxPoint& pos = SYMBOL_ALBUMGENERATORFRAME_POSITION,
+        const wxSize& size = SYMBOL_ALBUMGENERATORFRAME_SIZE,
+        long style = SYMBOL_ALBUMGENERATORFRAME_STYLE );
 
     // Destructor
     ~AlbumGenFrame( );
 
     /**
      * @brief   Initialises member variables
-     * 
+     *
      **************************************************/
     void Init( );
 
     /**
      * @brief Creates the controls and sizers
-     * 
+     *
      **************************************************/
     void CreateControls( );
 
-     // AlbumGenFrame event handler declarations
+    // AlbumGenFrame event handler declarations
 
-    // wxEVT_CLOSE_WINDOW event handler for ID_ALBUMGENERATORFRAME
-    void OnCloseWindow( wxCloseEvent &event );
+   // wxEVT_CLOSE_WINDOW event handler for ID_ALBUMGENERATORFRAME
+    void OnCloseWindow( wxCloseEvent& event );
 
     // wxEVT_ICONIZE event handler for ID_ALBUMGENERATORFRAME
-    void OnIconize( wxIconizeEvent &event );
+    void OnIconize( wxIconizeEvent& event );
 
     // wxEVT_MAXIMIZE event handler for ID_ALBUMGENERATORFRAME
-    void OnMaximize( wxMaximizeEvent &event );
+    void OnMaximize( wxMaximizeEvent& event );
 
-   // wxEVT_COMMAND_MENU_SELECTED event handler for wxID_NEW
-    void OnNewProjectClick( wxCommandEvent &event );
-    void OnNewDesignClick( wxCommandEvent &event );
-    void OnNewCatalogClick( wxCommandEvent &event );
+    // wxEVT_COMMAND_MENU_SELECTED event handler for wxID_NEW
+    void OnNewProjectClick( wxCommandEvent& event );
+    void OnNewDesignClick( wxCommandEvent& event );
+    void OnNewCatalogClick( wxCommandEvent& event );
 
     // wxEVT_COMMAND_MENU_SELECTED event handler for wxID_OPEN
-    void OnOpenProjectClick( wxCommandEvent &event );
-    void OnOpenDesignClick( wxCommandEvent &event );
-    void OnOpenCatalogClick( wxCommandEvent &event );
+    void OnOpenProjectClick( wxCommandEvent& event );
+    void OnOpenDesignClick( wxCommandEvent& event );
+    void OnOpenCatalogClick( wxCommandEvent& event );
 
     // wxEVT_COMMAND_MENU_SELECTED event handler for wxID_SAVE
-    void OnSaveProjectClick( wxCommandEvent &event );
-    void OnSaveDesignClick( wxCommandEvent &event );
-    void OnSaveCatalogClick( wxCommandEvent &event );
+    void OnSaveProjectClick( wxCommandEvent& event );
+    void OnSaveDesignClick( wxCommandEvent& event );
+    void OnSaveCatalogClick( wxCommandEvent& event );
 
     // wxEVT_COMMAND_MENU_SELECTED event handler for wxID_SAVEAS
-    void OnSaveasProjectClick( wxCommandEvent &event );
-    void OnSaveasDesignClick( wxCommandEvent &event );
-    void OnSaveasCatalogClick( wxCommandEvent &event );
+    void OnSaveasProjectClick( wxCommandEvent& event );
+    void OnSaveasDesignClick( wxCommandEvent& event );
+    void OnSaveasCatalogClick( wxCommandEvent& event );
 
-    void OnGenerateODTClick( wxCommandEvent &event );
-    
+    void OnGenerateODTClick( wxCommandEvent& event );
+
     // wxEVT_COMMAND_MENU_SELECTED event handler for ID_IMPORT
-    void OnCSVImportClick( wxCommandEvent &event );
- //   void OnAEImportClick( wxCommandEvent &event );
+    void OnCSVImportClick( wxCommandEvent& event );
+    //   void OnAEImportClick( wxCommandEvent &event );
 
-    // wxEVT_COMMAND_MENU_SELECTED event handler for wxID_REVERT_TO_SAVED
-    void OnRevertToSavedClick( wxCommandEvent &event );
+       // wxEVT_COMMAND_MENU_SELECTED event handler for wxID_REVERT_TO_SAVED
+    void OnRevertToSavedClick( wxCommandEvent& event );
 
     // wxEVT_COMMAND_MENU_SELECTED event handler for wxID_EXIT
-    void OnExitClick( wxCommandEvent &event );
+    void OnExitClick( wxCommandEvent& event );
 
     // wxEVT_COMMAND_MENU_SELECTED event handler for ID_TEXTSERCHMENUITEM
     void OnTextserchmenuitemClick( wxCommandEvent& event );
 
     // wxEVT_COMMAND_MENU_SELECTED event handler for ID_SORTORDER
-    void OnSortOrderClick( wxCommandEvent &event );
+    void OnSortOrderClick( wxCommandEvent& event );
 
     // wxEVT_COMMAND_MENU_SELECTED event handler for ID_ITEMVIEW
-    void OnItemviewClick( wxCommandEvent &event );
+    void OnItemviewClick( wxCommandEvent& event );
 
     // wxEVT_COMMAND_MENU_SELECTED event handler for ID_DEFINEPERIOD
-    void OnDefineperiodClick( wxCommandEvent &event );
+    void OnDefineperiodClick( wxCommandEvent& event );
 
     // wxEVT_COMMAND_MENU_SELECTED event handler for ID_SETTINGS
     void OnSettingsClick( wxCommandEvent& event );
@@ -231,30 +231,30 @@ class AlbumGenFrame : public wxFrame
     // wxEVT_COMMAND_MENU_SELECTED event handler for ID_MERGE
     void OnMergeClick( wxCommandEvent& event );
 
-    void SetupRecentMenu(  );
-    void DoRecentSelection(wxCommandEvent& event);
+    void SetupRecentMenu( );
+    void DoRecentSelection( wxCommandEvent& event );
     void OnRecentmenuUpdate( wxUpdateUIEvent& event );
-    void DoDefinePeriodDialog();
-    void DoSettingsDialog();
-     // AlbumGenFrame event handler declarations
+    void DoDefinePeriodDialog( );
+    void DoSettingsDialog( );
+    // AlbumGenFrame event handler declarations
 
-     // AlbumGenFrame member function declarations
+    // AlbumGenFrame member function declarations
 
-    /**
-     * @brief Retrieves bitmap resources
-     * 
-     * @param  name (autogenerated. Dummy.)
-     * @return wxBitmap null
-     **************************************************/
-    wxBitmap GetBitmapResource( const wxString &name );
+   /**
+    * @brief Retrieves bitmap resources
+    *
+    * @param  name (autogenerated. Dummy.)
+    * @return wxBitmap null
+    **************************************************/
+    wxBitmap GetBitmapResource( const wxString& name );
 
     /**
      * @brief Get the Icon Resource objectRetrieves icon resources
-     * 
+     *
      * @param  name (autogenerated. Dummy.)
      * @return wxIcon null
      **************************************************/
-    wxIcon GetIconResource( const wxString &name );
+    wxIcon GetIconResource( const wxString& name );
 
 
     // AlbumGenFrame member function declarations
@@ -266,7 +266,7 @@ class AlbumGenFrame : public wxFrame
     void UpdateStatus( );
 
     void DoCSVImport( );
- 
+
     void NewProject( );
     void NewDesign( );
     void NewCatalog( );
@@ -284,33 +284,34 @@ class AlbumGenFrame : public wxFrame
     void SaveAsCatalog( );
 
     void SaveCatalogXML( wxString filename );
-    void LoadXML( wxString filename );
+    // void LoadXML( wxString filename );
     void InitLoad( );
-    //void LinkAlbumToCat( Design::LayoutBase* child, Catalog::CatalogData* stampData );
-   // void LinkNodes( Design::LayoutBase* child, Catalog::CatalogData* stampData  );
+    //void LinkAlbumToCat( Design::LayoutBase* child, Catalog::CatalogVolumeData* stampData );
+   // void LinkNodes( Design::LayoutBase* child, Catalog::CatalogVolumeData* stampData  );
 
     void GenerateODTAlbum( );
 
     void DoSortOrderDialog( );
 
-    int QueryMerge( int &mergeMethod );
-    int DoQueryMerge( int& mergeMethod  );
+    int QueryMerge( int& mergeMethod );
+    int DoQueryMerge( int& mergeMethod );
 
 
-    void GetSetupData( int &mergeProcedure, wxXmlNode **currItem,
-                       wxXmlNode **mergeItem );
+    void GetSetupData( int& mergeProcedure, wxXmlNode** currItem,
+        wxXmlNode** mergeItem );
 
     int ImageGallery( );
-    
-     AlbumGenPanel *GetAlbumGenPanel(){ return m_albumGeneratorPanel;}
 
-     // AlbumGenFrame member variables
-    AlbumGenPanel *m_albumGeneratorPanel;
+    AlbumGenPanel* GetAlbumGenPanel( ) { return m_albumGeneratorPanel; }
+    CatalogPanel* GetCatalogPanel( );
+
+    // AlbumGenFrame member variables
+    AlbumGenPanel* m_albumGeneratorPanel;
     CatalogPanel* m_catalogPanel;
     AlbumDesignTreePanel* m_albumDesignTreePanel;
-     // AlbumGenFrame member variables
+    // AlbumGenFrame member variables
 
-    // container data classification sort order
+   // container data classification sort order
     wxArrayInt m_sortOrder;
     wxMenu* m_fileMenu;
     wxMenu* m_newMenu;

@@ -78,22 +78,27 @@ namespace ODT {
 
         wxString d_fullPath = docImage.GetFullPath( );
         std::cout << "d_cwd:" << d_cwd << " d_fullPath:" << d_fullPath << "\n";
+d_fullPath = ODTDoc()->GetPicturesDir() + inputImage.GetFullName();
 
-        wxCopyFile( inputImage.GetFullPath( ), docImage.GetFullPath( ) );
+        bool state = wxCopyFile( inputImage.GetFullPath( ), d_fullPath );
+        
+      //  wxCopyFile( inputImage.GetFullPath( ), docImage.GetFullPath( ) );
         ManifestDoc( )->AddManifestFileEntry( docImage.GetFullPath( ), GetMimeType( filename ) );
         return docImage.GetFullPath( );
     }
 
     //***********************************
 
-    bool Document::AddODTFile( wxZipOutputStream& zip, wxString f )
+    bool Document::AddODTFile( wxZipOutputStream& zip, wxString inputFileName, wxString zippedFileName)
     {
 
-        zip.PutNextEntry( f );
+
+
+        zip.PutNextEntry( zippedFileName );
 
         char buf[ 4096 ];
 
-        wxFileInputStream l_file( f );
+        wxFileInputStream l_file( inputFileName );
         //   zip << l_file;
         if ( l_file.IsOk( ) )
         {
@@ -168,70 +173,88 @@ namespace ODT {
     bool Document::CreateTempDocumentDirectory( )
     {
 
-        if ( !wxSetWorkingDirectory( "/tmp" ) )
-        {
-            // unable to set working director to /tmp
-            ReportError( "Document::CreateTempDocumentDirectory", "unable to set working director to /tmp" );
-
-            return false;
-        }
         wxString workingDir = wxGetCwd( );
-        if ( !wxDirExists( ".StampAlbumGen" ) )
+
+        wxFileName m_tmpDir(".tmp/");
+        m_tmpDir.MakeRelativeTo(workingDir);
+        std::cout << "m_tmpDir " << m_tmpDir.GetFullPath() << "\n";
+        if ( !m_tmpDir.DirExists(  ) )
         {
-            if ( !wxFileName::Mkdir( ".StampAlbumGen" ) )
+            if ( !m_tmpDir.Mkdir(  ) )
             {
                 //Unable to create Temp .StampAlbumGen Directory
                 ReportError( "Document::CreateTempDocumentDirectory", "Unable to create Temp .StampAlbumGen Directory" );
                 return false;
             }
         }
-        if ( !wxSetWorkingDirectory( ".StampAlbumGen" ) )
+
+        m_stampAlbumGen = m_tmpDir;
+        m_stampAlbumGen.AppendDir( "StampAlbumGen" );
+        std::cout << "m_stampAlbumGen " << m_stampAlbumGen.GetFullPath() << "\n";
+        if (  !m_stampAlbumGen.DirExists(  )  )
         {
-            // unable to set working directory to /tmp/.StampAlbumGen
-            ReportError( "Document::CreateTempDocumentDirectory", "unable to set working directory to /tmp/.StampAlbumGen" );
-            return false;
+            if ( !m_stampAlbumGen.Mkdir(  ) )
+            {            
+                // unable to set working directory to /tmp/.StampAlbumGen
+                ReportError( "Document::CreateTempDocumentDirectory", "unable to set working directory to /tmp/.StampAlbumGen" );
+                return false;
+            }
         }
-        if ( wxDirExists( "DocFiles" ) )
+
+        m_docFiles = m_stampAlbumGen;
+        m_docFiles.AppendDir( "DocFiles" );
+        std::cout << "m_docFiles " << m_docFiles.GetFullPath() << "\n";
+        if ( m_docFiles.DirExists( ) )
         {
             //if DocFiles exists then clobber it to get rid of extraneous stuff
-            if ( !wxFileName::Rmdir( "DocFiles", wxPATH_RMDIR_RECURSIVE ) )
+            if ( !m_docFiles.Rmdir( wxPATH_RMDIR_RECURSIVE ) )
             {
                 // unable to remove /tmp/.StampAlbumGen/DocFiles
                 ReportError( "Document::CreateTempDocumentDirectory", "unable to remove /tmp/.StampAlbumGen/DocFiles" );
                 return false;
             }
         }
-        if ( !wxFileName::Mkdir( "DocFiles" ) )
+        if ( !m_docFiles.Mkdir(  ) )
         {
             //Unable to create TempFile Directory
             ReportError( "Document::CreateTempDocumentDirectory", "Unable to create TempFile Directory" );
             return 0;
         }
-        if ( !wxSetWorkingDirectory( "DocFiles" ) )
-        {
-            //Unable to set Working directory to /tmp/.StampAlbumGen/DocFiles
-            ReportError( "Document::CreateTempDocumentDirectory", "Unable to set Working directory to /tmp/.StampAlbumGen/DocFiles" );
-            return 0;
-        }
-        if ( !wxFileName::Mkdir( "Thumbnails" ) )
+
+        m_thumbnailsDir = m_docFiles;
+        m_thumbnailsDir.AppendDir("Thumbnails");
+        std::cout << "m_thumbnailsDir " << m_thumbnailsDir.GetFullPath() << "\n";
+        wxString str = m_thumbnailsDir.GetFullPath();
+        if ( !m_thumbnailsDir.Mkdir(  ) )
         {
             //Unable to create Temp Thumbnails Directory
             ReportError( "Document::CreateTempDocumentDirectory", "Unable to create Temp Thumbnails Directory" );
             return 0;
         }
-        if ( !wxFileName::Mkdir( "META-INF" ) )
+
+        m_metaInfDir = m_docFiles;
+        m_metaInfDir.AppendDir("META-INF");
+        std::cout << "m_metaInfDir " << m_metaInfDir.GetFullPath() << "\n";
+        if ( !m_metaInfDir.Mkdir( ) )
         {
             //Unable to create Temp META-INF Directory
             ReportError( "Document::CreateTempDocumentDirectory", "Unable to create Temp META-INF Directory" );
             return 0;
         }
-        if ( !wxFileName::Mkdir( "Configurations2" ) )
+
+        m_configurations2Dir = m_docFiles;
+        m_configurations2Dir.AppendDir("Configurations2");
+        if ( !m_configurations2Dir.Mkdir( ) )
         {
             //Unable to create Temp Configurations2 Directory
             ReportError( "Document::CreateTempDocumentDirectory", "Unable to create Temp Configurations2 Directory" );
             return 0;
         }
-        if ( !wxFileName::Mkdir( "Pictures" ) )
+
+        m_picturesDir = m_docFiles;
+        m_picturesDir.AppendDir("Pictures");
+        std::cout << "m_picturesDir " << m_picturesDir.GetFullPath() << "\n";
+        if ( !m_picturesDir.Mkdir(  ) )
         {
             //Unable to create Temp Pictures Directory
             ReportError( "Document::CreateTempDocumentDirectory", "Unable to create Temp Pictures Directory" );
@@ -246,10 +269,12 @@ namespace ODT {
     int Document::GetFileList( wxArrayString& fileArray, wxString searchStr, int flag )
     {
         fileArray.Clear( );
+ 
         wxString f = wxFindFirstFile( searchStr, flag );
         while ( f.Length( ) > 0 )
         {
-            fileArray.Add( f );
+            wxFileName filename(f);
+            fileArray.Add( filename.GetFullPath() );
             f = wxFindNextFile( );
         }
         return fileArray.Count( );
@@ -261,8 +286,8 @@ namespace ODT {
     bool Document::MakeODT( )
     {
         wxString workingDir = wxGetCwd( );
-        wxString doc = GetProject( )->GetODTOutputFilename( );
-        //wxString doc = ODTDoc()->GetAlbum()->GetDocName();
+        //wxString doc = GetProject( )->GetODTOutputFilename( );
+        wxString doc = ODTDoc()->GetAlbum()->GetDocName();
         wxFileName* outputName = new wxFileName( doc );
         wxFileName outputZipName = *outputName;
         outputZipName.SetExt( wxT( "zip" ) );
@@ -274,24 +299,35 @@ namespace ODT {
         wxArrayString fileArray;
 
         // Save files first
-        int nbrFiles = GetFileList( fileArray, wxT( "*" ), wxFILE );
+        wxString docFilesDir = GetDocFilesDir() ;
+        int nbrFiles = GetFileList( fileArray, docFilesDir, wxFILE );
         for ( int i = 0; i < nbrFiles; i++ )
         {
-            AddODTFile( zip, fileArray.Item( i ) );
+                    wxFileName zipName(fileArray.Item( j ));
+                    zipName.MakeRelativeTo( docFilesDir );
+                    AddODTFile( zip, fileArray.Item( i ), zipName.GetFullPath()  );
         }
 
+        //then zip the directories
         wxArrayString dirArray;
-        int nbrDirs = GetFileList( dirArray, wxT( "*" ), wxDIR );
+        int nbrDirs = GetFileList( dirArray, docFilesDir, wxDIR );
+
         for ( int i = 0; i < nbrDirs; i++ )
         {
+
             wxString str = dirArray.Item( i ) + sep + wxT( "*.*" );
-            zip.PutNextDirEntry( dirArray.Item( i ) );
+            wxFileName zipName( dirArray.Item( i )  );
+            zipName.MakeRelativeTo(docFilesDir);
+            zip.PutNextDirEntry( zipName.GetFullPath() );
             nbrFiles = GetFileList( fileArray, str, wxFILE );
             if ( nbrFiles > 0 )
             {
                 for ( int j = 0; j < nbrFiles; j++ )
                 {
-                    AddODTFile( zip, fileArray.Item( j ) );
+
+                    wxFileName zipName(fileArray.Item( j ));
+                    zipName.MakeRelativeTo( docFilesDir );
+                    AddODTFile( zip, fileArray.Item( j ), zipName.GetFullPath() );
                 }
             }
         }

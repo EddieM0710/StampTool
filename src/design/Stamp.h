@@ -140,13 +140,16 @@ namespace Design {
 //        void UpdateTitleSize( double width );
 
         void Save( wxXmlNode* xmlNode );
-            wxImage* GetStampImage();
+        wxImage* GetStampImage();
 
         bool GetShowTitle(){ return String2Bool( GetAttrStr( AT_ShowTitle ) ); };
         void SetShowTitle( bool val ){ SetAttrStr( AT_ShowTitle, Bool2String( val) ); };
 
         bool GetShowCatNbr(){ return String2Bool( GetAttrStr( AT_ShowCatNbr ) ); };
         void SetShowCatNbr( bool val ){ SetAttrStr( AT_ShowCatNbr, Bool2String( val ) ); };
+        
+//        wxString GetImageFilename(){ return m_imageFilename; };
+//        void SetImageFilename(wxString str ){  m_imageFilename = str; };
 
     private:
 
@@ -189,7 +192,7 @@ namespace Design {
         wxSize m_idTextExtent;
         wxSize m_titleTextExtent;
         bool m_showTitle;
-
+        wxString m_imageFilename;
 
     };
 }

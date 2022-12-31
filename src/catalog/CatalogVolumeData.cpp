@@ -35,6 +35,7 @@
 
 #include <iostream>
 #include <wx/filename.h>
+#include <wx/filefn.h>
 #include <wx/string.h>
 #include "wx/xml/xml.h"
 #include <wx/msgdlg.h>
@@ -117,7 +118,8 @@ namespace Catalog {
 
     void CatalogVolumeData::Save( )
     {
-        wxString filename = GetProject( )->GetCatalogFilename( );
+        wxString filename = m_volumeFilename;
+      //  GetProject( )->GetCatalogFilename( );
         if ( wxFileExists( filename ) )
         {
             wxFileName bakFile( filename );
@@ -136,7 +138,41 @@ namespace Catalog {
         wxXmlNode* root = new wxXmlNode( wxXML_ELEMENT_NODE, "Catalog" );
         m_stampDoc->SetRoot( root );
     }
-    
+    wxString CatalogVolumeData::GetImagePath()
+    {
+         wxString filename = "";
+            if ( m_stampDoc && m_stampDoc->IsOk() )
+            {
+                wxXmlNode* root = m_stampDoc->GetRoot();
+                if ( root )
+                {
+                    wxString volFilename = GetVolumeFilename(); 
+                    wxFileName fn( volFilename ) ;
+                    wxString str = fn.GetPath() ;
+                    filename = Utils::GetAttrStr( root, "ImagePath" );
+                    wxFileName fn2( filename );
+                    fn.GetPath();
+                    fn2.AppendDir( fn.GetPath() );
+                    filename = fn2.GetFullPath();
+                    return filename;
+                }
+            }
+        return filename;
+    };
+
+    void CatalogVolumeData::SetImagePath(wxString str)
+    {
+        if ( m_stampDoc && m_stampDoc->IsOk() )
+        {
+            wxXmlNode* root = m_stampDoc->GetRoot();
+            if ( root )
+            {
+                wxFileName filename = str;
+                filename.MakeRelativeTo( GetVolumeFilename() );
+                Utils::SetAttrStr( root, "ImagePath", filename.GetFullPath() );
+            }
+        }
+    }    
     //*****
 
     void CatalogVolumeData::LoadXML(  )
@@ -155,7 +191,7 @@ namespace Catalog {
             wxFileInputStream stream( m_volumeFilename );
             if ( !stream.IsOk( ) )
             {
-            wxString txt = wxString::Format( "%s Stream Create Failed. Error: %s.\n\n", m_volumeFilename, stream.GetLastError( ) );
+            wxString txt = wxString::Format( "%s Stream Create Failed.\n\n", m_volumeFilename );
                 wxMessageDialog* dlg = new wxMessageDialog(
                     wxGetApp( ).GetFrame( ), txt,
                     wxT( "Warning! Stream Create Failed.\n" ),
@@ -255,4 +291,154 @@ namespace Catalog {
         return ( wxXmlNode* )0;
     }
 
+    // resort the tree with the new sort order data.
+    // Probably doint this because the sort order was changed.
+    void CatalogVolumeData::ReSortTree( )
+    {
+        wxXmlDocument* newDoc = new wxXmlDocument( );
+        wxXmlNode* newRoot = newDoc->GetRoot( );
+        if ( !newRoot )
+        {
+            newRoot = Utils::NewNode( newDoc, Catalog::CatalogBaseNames[ Catalog::NT_Catalog ] );
+        }
+        //newDoc->SetRoot( newRoot );
+
+        wxXmlDocument* doc = m_stampDoc;
+        wxXmlNode* root = doc->GetRoot( );
+
+        wxXmlAttribute* attr = Utils::GetAttribute( root, Catalog::DT_DataNames[ Catalog::DT_Name ] );
+        if ( attr ) {
+            wxString name = attr->GetName( );
+            wxString value = attr->GetValue( );
+            Utils::SetAttrStr( newRoot, name, value );
+        }
+        else
+        {
+            Utils::SetAttrStr( newRoot, Catalog::DT_DataNames[ Catalog::DT_Name ], "" );
+        }
+
+        Catalog::SortData( newRoot, root );
+
+        //GetCatalogVolumeData( )->
+        ReplaceDocument( newDoc );
+
+    }
+
+    //*****
+    // this makes a list of the children entry elements that can have childrem
+    Utils::wxXmlNodeArray* CatalogVolumeData::MakeParentList(  Catalog::FormatType parentType )
+    {
+        //Catalog::Entry parentEntry;
+        wxXmlNode* node = m_stampDoc->GetRoot( );
+
+        Utils::wxXmlNodeArray* parentList = new  Utils::wxXmlNodeArray( );
+        wxXmlNode* child = node->GetChildren( );
+        while ( child )
+        {
+            Catalog::Entry parentEntry( child );
+            if ( parentEntry.GetFormat( ) == Catalog::FT_FormatStrings[ parentType ] )
+            {
+                //            std::cout << parentEntry.GetFormat( ) << " " << parentEntry.GetID() << "\n";
+                parentList->push_back( child );
+            }
+            child = child->GetNext( );
+        }
+        return parentList;
+    }
+
+
+    //*****
+    // this is an attempt to group the entrys;
+    // i.e., an item of type entry can be a child of an item SeTenent type.
+    void CatalogVolumeData::ReGroupMultiples( )
+    {
+        StructureCatalogVolumeData( Catalog::FT_Se_tenant, Catalog::FT_Stamp );
+        StructureCatalogVolumeData( Catalog::FT_Gutter_Pair, Catalog::FT_Stamp );
+        StructureCatalogVolumeData( Catalog::FT_Booklet_Pane, Catalog::FT_Stamp, Catalog::FT_Se_tenant );
+        StructureCatalogVolumeData( Catalog::FT_Mini_Sheet, Catalog::FT_Stamp, Catalog::FT_Se_tenant );
+        StructureCatalogVolumeData( Catalog::FT_Souvenir_Sheet, Catalog::FT_Stamp, Catalog::FT_Se_tenant );
+        StructureCatalogVolumeData( Catalog::FT_Mini_Sheet, Catalog::FT_Stamp, Catalog::FT_Se_tenant );
+        StructureCatalogVolumeData( Catalog::FT_Booklet, Catalog::FT_Stamp, Catalog::FT_Booklet_Pane );
+
+    }
+
+    //*****
+    // this looks through the xml tree and makes related entries of childType a child of the parent type
+    void CatalogVolumeData::StructureCatalogVolumeData( Catalog::FormatType parentType,
+        Catalog::FormatType childType,
+        Catalog::FormatType secondChildType )
+    {
+        // Make a list of all nodes that are of parentType
+        wxXmlNode* node = m_stampDoc->GetRoot( );
+        Utils::wxXmlNodeArray* parentList = MakeParentList( parentType );
+
+        // now find all the entrys that go into each parent by comparing the issue date, series and face value
+        for ( int i = 0; i < parentList->size( ); i++ )
+        {
+            wxXmlNode* parentNode = ( wxXmlNode* )parentList->at( i );
+            Catalog::Entry* parentEntry = new Catalog::Entry( parentNode );
+            wxString parentIssue = parentEntry->GetIssuedDate( );
+            wxString parentSeries = parentEntry->GetSeries( );
+            wxString parentFace = parentEntry->GetFaceValue( );
+            wxString id = parentEntry->GetID( );
+            //       std::cout << "Looking for children of " << id << " "<< parentIssue << "  series:"<<parentSeries<<"  face:" <<parentFace <<"\n";
+            long nbrEntrys;
+            parentFace.ToLong( &nbrEntrys );
+            if ( nbrEntrys <= 0 )
+            {
+                // if we can't figure out the face then assume a setenant is no bigger than 50 entrys
+                nbrEntrys = 50;
+            }
+            long count = 0;
+            long searchRange = 0;
+
+            wxXmlNode* childNode = node->GetChildren( );
+
+            while ( childNode && ( searchRange < 1005 ) && ( count < nbrEntrys ) )
+            {
+                Catalog::Entry* childEntry = new Catalog::Entry( childNode );
+
+                // figure out what the next sibling is because we may move childNode
+                wxXmlNode* nextSibling = childNode->GetNext( );
+
+                if ( parentNode != childNode )
+                {
+                    // only search a reasonable distance after the first one is found
+                    if ( count > 1 )
+                    {
+                        searchRange++;
+                    }
+                    // only look at children of childType
+                    wxString format = childEntry->GetFormat( );
+                    if ( ( format == Catalog::FT_FormatStrings[ childType ] )
+                        || ( secondChildType
+                            && ( format == Catalog::FT_FormatStrings[ secondChildType ] ) ) )
+                    {
+                        wxString issue = childEntry->GetIssuedDate( );
+                        wxString series = childEntry->GetSeries( );
+                        // if the issue date and the series match the parent assume
+                        // that the childNode goes in the parent
+                        if ( !issue.Cmp( parentIssue )
+                            && !series.Cmp( parentSeries ) )
+                        {
+                            //                        std::cout << childEntry->GetID() << " should be a child of "<<parentEntry->GetID() <<"\n";
+                                                    //remove it from the old place
+                            count++;
+                            wxXmlNode* currParent = childNode->GetParent( );
+                            if ( currParent )
+                            {
+                                //                           Catalog::Entry currParentEntry( currParent );
+                               //                            std::cout << "Removing "<< childEntry->GetID() << " from" << currParentEntry.GetID() <<"\n";
+                                currParent->RemoveChild( childNode );
+                            }
+                            //and add it to new place
+                            parentNode->AddChild( childNode );
+                            //                        std::cout << "Adding "<< childEntry->GetID() << " to" << parentEntry->GetID() <<"\n";                       
+                        }
+                    }
+                }
+                childNode = nextSibling;
+            }
+        }
+    }
 }

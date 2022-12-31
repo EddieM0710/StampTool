@@ -177,30 +177,30 @@ int CatalogTreeCtrl::OnCompareItems( const wxTreeItemId& item1,
                if ( ( result == CompareInvalid ) || ( result == CompareEqual ) )
                {
                 int val = series1.Cmp( series2 );
-                    if ( !val )
-                    {
-                        int val = id1.Cmp( id2 );
-                        if ( !val )
-                        {
-                            std::cout << "(" << id1 << " " << date1 << ") = (" << id2 << " " << date2 << ")\n";
-                        }   
-                        else if ( val < 0 )
-                        {
-                            std::cout << "(" << id1 << " " << date1 << ") < (" << id2 << " " << date2 << ")\n";
-                        }
-                        else 
-                        {
-                            std::cout << "(" << id1 << " " << date1 << ") > (" << id2 << " " << date2 << ")\n";
-                        }
-                    }
-                    else if ( val < 0 )
-                    {
-                        std::cout << "(" << id1 << " " << date1 << ") < (" << id2 << " " << date2 << ")\n";
-                    }
-                    else 
-                    {
-                        std::cout << "(" << id1 << " " << date1 << ") > (" << id2 << " " << date2 << ")\n";
-                    }
+                    // if ( !val )
+                    // {
+                    //     int val = id1.Cmp( id2 );
+                    //     if ( !val )
+                    //     {
+                    //         std::cout << "(" << id1 << " " << date1 << ") = (" << id2 << " " << date2 << ")\n";
+                    //     }   
+                    //     else if ( val < 0 )
+                    //     {
+                    //         std::cout << "(" << id1 << " " << date1 << ") < (" << id2 << " " << date2 << ")\n";
+                    //     }
+                    //     else 
+                    //     {
+                    //         std::cout << "(" << id1 << " " << date1 << ") > (" << id2 << " " << date2 << ")\n";
+                    //     }
+                    // }
+                    // else if ( val < 0 )
+                    // {
+                    //     std::cout << "(" << id1 << " " << date1 << ") < (" << id2 << " " << date2 << ")\n";
+                    // }
+                    // else 
+                    // {
+                    //     std::cout << "(" << id1 << " " << date1 << ") > (" << id2 << " " << date2 << ")\n";
+                    // }
 
                 //    if ( m_reverseSort )
                 //    {
@@ -214,7 +214,7 @@ int CatalogTreeCtrl::OnCompareItems( const wxTreeItemId& item1,
                 }
                 else if ( result == CompareLess )
                 {
-                    std::cout << "(" << id1 << " " << date1 << ") < (" << id2 << " " << date2 << ")\n";
+                 //   std::cout << "(" << id1 << " " << date1 << ") < (" << id2 << " " << date2 << ")\n";
                 //    if ( m_reverseSort )
                 //    {
                         return -1;
@@ -231,7 +231,7 @@ int CatalogTreeCtrl::OnCompareItems( const wxTreeItemId& item1,
                 // }
                 else
                 {
-                    std::cout << "(" << id1 << " " << date1 << ") > (" << id2 << " " << date2 << ")\n";
+                //    std::cout << "(" << id1 << " " << date1 << ") > (" << id2 << " " << date2 << ")\n";
                 //    if ( m_reverseSort )
                 //    {
                 //        return -1;
@@ -429,16 +429,17 @@ void CatalogTreeCtrl::ShowDropMenu( wxTreeItemId itemSrc, wxTreeItemId itemDst )
 
     wxMenu menu( title );
     wxString label = "Insert Before " + GetItemText( itemDst );
-    menu.Append( CatalogVolumeDataTree_Before, label );
+    menu.Append( CatalogDataTree_Before, label );
     label = "Insert After " + GetItemText( itemDst );
-    menu.Append( CatalogVolumeDataTree_After, label );
+    menu.Append( CatalogDataTree_After, label );
     label = "Insert as Child of " + GetItemText( itemDst );
-    menu.Append( CatalogVolumeDataTree_AsChild, label );
-    menu.Append( CatalogVolumeDataTree_Cancel, "Cancel Drag" );
+    menu.Append( CatalogDataTree_AsChild, label );
+    menu.Append( CatalogDataTree_Cancel, "Cancel Drag" );
+
 
     switch ( GetPopupMenuSelectionFromUser( menu ) )
     {
-    case CatalogVolumeDataTree_Before:
+    case CatalogDataTree_Before:
     {
 
         wxXmlNode* srcElement = GetEntryNode( itemSrc );
@@ -457,7 +458,7 @@ void CatalogTreeCtrl::ShowDropMenu( wxTreeItemId itemSrc, wxTreeItemId itemDst )
 
         break;
     }
-    case CatalogVolumeDataTree_After:
+    case CatalogDataTree_After:
     {
 
         wxXmlNode* srcElement = GetEntryNode( itemSrc );
@@ -476,7 +477,7 @@ void CatalogTreeCtrl::ShowDropMenu( wxTreeItemId itemSrc, wxTreeItemId itemDst )
 
         break;
     }
-    case CatalogVolumeDataTree_AsChild:
+    case CatalogDataTree_AsChild:
     {
 
         wxXmlNode* srcElement = GetEntryNode( itemSrc );
@@ -493,7 +494,7 @@ void CatalogTreeCtrl::ShowDropMenu( wxTreeItemId itemSrc, wxTreeItemId itemDst )
         Delete( itemSrc );
         break;
     }
-    case CatalogVolumeDataTree_Cancel:
+    case CatalogDataTree_Cancel:
     {
 
         break;
@@ -541,36 +542,136 @@ void CatalogTreeCtrl::DoTreeContextSelection( )
 //*****
 void CatalogTreeCtrl::ShowMenu( wxTreeItemId id, const wxPoint& pt )
 {
+
     wxString title;
-    if ( id.IsOk( ) )
+
+    wxMenu menu;
+    if ( !id.IsOk( ) )
     {
-        title << "Menu for " << GetItemText( id );
+        
     }
     else
     {
-        title = "Menu for no particular item";
+        //title = "Menu for no particular item";
+        CatalogTreeItemData* data = ( CatalogTreeItemData* )GetItemData( id );
+        wxXmlNode* node = data->GetNodeElement( );
+        if ( data && data->GetType( ) == Catalog::NT_Entry )    
+        {
+           wxMenu* inventoryMenu = new wxMenu( );
+
+            inventoryMenu->Append( CatalogDataTree_InventoryStatusNone, "None");
+            inventoryMenu->Append( CatalogDataTree_InventoryStatusMissing, "Missing");
+            inventoryMenu->Append( CatalogDataTree_InventoryStatusOrdered, "Ordered");
+            inventoryMenu->Append(  CatalogDataTree_InventoryStatusOwn, "Own");
+            inventoryMenu->Append( CatalogDataTree_InventoryStatusOwnVariant, "OwnVariant");
+            inventoryMenu->Append( CatalogDataTree_InventoryStatusExclude, "Exclude");
+            menu.Append( CatalogDataTree_Inventory, "Inventory Status", inventoryMenu );
+            menu.AppendSeparator( );
+            menu.Append( CatalogDataTree_Colnect, "GoTo Colnect" );
+            menu.AppendSeparator( ); 
+            menu.Append( CatalogDataTree_Delete, "Delete Entry" );
+            menu.Append( CatalogDataTree_Add, "Add New Entry" );
+        }
+        else
+        {
+            menu.AppendSeparator( );
+            menu.Append( CatalogDataTree_Colnect, "GoTo Colnect" );
+            menu.AppendSeparator( );
+            menu.Append( CatalogDataTree_StructureStamps, "Re-Group Multiples" );
+            menu.Append( CatalogDataTree_ResortTree, "Re-Sort Tree" );            
+        }
     }
 
-    wxMenu menu( title );
-    menu.Append( CatalogVolumeDataTree_About, "&About" );
-    menu.AppendSeparator( );
-    menu.Append( CatalogVolumeDataTree_Colnect, "GoTo Colnect" );
-    menu.AppendSeparator( );
-    //   menu.Append( CatalogVolumeDataTree_Move, "Move" );
-    menu.Append( CatalogVolumeDataTree_Delete, "Delete Entry" );
-    menu.Append( CatalogVolumeDataTree_Add, "Add New Entry" );
-
-
-    menu.Append( CatalogVolumeDataTree_StructureStamps, "Re-Group Multiples" );
-    menu.Append( CatalogVolumeDataTree_ResortTree, "Re-Sort Tree" );
     switch ( GetPopupMenuSelectionFromUser( menu ) )
     {
-    case CatalogVolumeDataTree_StructureStamps:
+    case CatalogDataTree_Inventory:
+    case CatalogDataTree_InventoryStatusNone:{
+        Catalog::InventoryStatusType newType = Catalog::ST_None;
+        Catalog::Entry* entry = new Catalog::Entry( GetEntryNode( id ) );
+        Catalog::InventoryStatusType type = entry->GetInventoryStatusType( );
+        if ( type != newType )
+        {
+            entry->SetInventoryStatusType( newType );
+            SetInventoryStatusImage( );
+            wxGetApp( ).GetFrame( )->UpdateStatus( );
+        }}
+        break;
+    case CatalogDataTree_InventoryStatusMissing:{
+        Catalog::InventoryStatusType newType = Catalog::ST_Missing;
+        Catalog::Entry* entry = new Catalog::Entry( GetEntryNode( id ) );
+        Catalog::InventoryStatusType type = entry->GetInventoryStatusType( );
+        if ( type != newType )
+        {
+            entry->SetInventoryStatusType( newType );
+            SetInventoryStatusImage( );
+            wxGetApp( ).GetFrame( )->UpdateStatus( );
+
+        }}
+        break;
+
+    case CatalogDataTree_InventoryStatusOrdered:{
+        Catalog::InventoryStatusType newType = Catalog::ST_Ordered;
+        Catalog::Entry* entry = new Catalog::Entry( GetEntryNode( id ) );
+        Catalog::InventoryStatusType type = entry->GetInventoryStatusType( );
+        if ( type != newType )
+        {
+            entry->SetInventoryStatusType( newType );
+            SetInventoryStatusImage( );
+            wxGetApp( ).GetFrame( )->UpdateStatus( );
+
+        }}
+        break;
+
+    case CatalogDataTree_InventoryStatusOwn:{
+        Catalog::InventoryStatusType newType = Catalog::ST_Own;
+        Catalog::Entry* entry = new Catalog::Entry( GetEntryNode( id ) );
+        Catalog::InventoryStatusType type = entry->GetInventoryStatusType( );
+        if ( type != newType )
+        {
+            entry->SetInventoryStatusType( newType );
+            SetInventoryStatusImage( );
+            wxGetApp( ).GetFrame( )->UpdateStatus( );
+
+        }}
+        break;
+
+    case CatalogDataTree_InventoryStatusOwnVariant:{
+        Catalog::InventoryStatusType newType = Catalog::ST_OwnVariant;
+        Catalog::Entry* entry = new Catalog::Entry( GetEntryNode( id ) );
+        Catalog::InventoryStatusType type = entry->GetInventoryStatusType( );
+        if ( type != newType )
+        {
+            entry->SetInventoryStatusType( newType );
+            SetInventoryStatusImage( );
+            wxGetApp( ).GetFrame( )->UpdateStatus( );
+
+        }}
+        break;
+
+    case CatalogDataTree_InventoryStatusExclude:{
+        Catalog::InventoryStatusType newType = Catalog::ST_Exclude;
+        Catalog::Entry* entry = new Catalog::Entry( GetEntryNode( id ) );
+        Catalog::InventoryStatusType type = entry->GetInventoryStatusType( );
+        if ( type != newType )
+        {
+            entry->SetInventoryStatusType( newType );
+            SetInventoryStatusImage( );
+            wxGetApp( ).GetFrame( )->UpdateStatus( );
+
+        }}
+        break;
+        // m_statusStrings.Add( Catalog::ST_InventoryStatusStrings[ Catalog::ST_None ] );
+        // m_statusStrings.Add( Catalog::ST_InventoryStatusStrings[ Catalog::ST_Missing ] );
+        // m_statusStrings.Add( Catalog::ST_InventoryStatusStrings[ Catalog::ST_Ordered] );
+        // m_statusStrings.Add( Catalog::ST_InventoryStatusStrings[ Catalog::ST_Own] );
+        // m_statusStrings.Add( Catalog::ST_InventoryStatusStrings[ Catalog::ST_OwnVariant] );
+        // m_statusStrings.Add( Catalog::ST_InventoryStatusStrings[ Catalog::ST_Exclude] );
+
+    case CatalogDataTree_StructureStamps:
     {
         wxXmlNode* entry = GetEntryNode( id );
 
-
-        StructureEntry( entry );
+        GetCatalogVolumeData( )->ReGroupMultiples( );
         ReSortTree( );
 
         wxTreeItemId newID = FindTreeItemID( entry );
@@ -581,22 +682,22 @@ void CatalogTreeCtrl::ShowMenu( wxTreeItemId id, const wxPoint& pt )
         }
         break;
     }
-    case CatalogVolumeDataTree_ResortTree:
+    case CatalogDataTree_ResortTree:
     {
         ReSortTree( );
         break;
     }
-    case CatalogVolumeDataTree_Colnect:
+    case CatalogDataTree_Colnect:
     {
         GoToColnect( id );
         break;
     }
-    case CatalogVolumeDataTree_Delete:
+    case CatalogDataTree_Delete:
     {
         DeleteEntry( id );
         break;
     }
-    case CatalogVolumeDataTree_Add:
+    case CatalogDataTree_Add:
     {
         AddEntry( id );
         break;
@@ -605,6 +706,7 @@ void CatalogTreeCtrl::ShowMenu( wxTreeItemId id, const wxPoint& pt )
         // Fall through.
         break;
     }
+
 }
 
 //*****
@@ -906,52 +1008,22 @@ void CatalogTreeCtrl::SortTree( wxTreeItemId parent )
     {
               CatalogTreeItemData* data = ( CatalogTreeItemData* )GetItemData( parent );
                wxString str = data->GetDesc();
-               std::cout << " SortChildren for "<<str << "\n";
+//               std::cout << " SortChildren for "<<str << "\n";
         SortChildren( parent );
     }
 }
 
 //*****
 //Delete the tree and resort it with the new sort order data.
-// Probably doint this because the sort order was changed.
+// Probably doing this because the sort order was changed.
 void CatalogTreeCtrl::ReSortTree( )
 {
-    // if (m_reverseSort)
-    // {
-    //     std::cout << "m_reverseSort = true;\n";
-    // }
-    // else        
-    // {
-    //     std::cout << "m_reverseSort = false;\n";
-    // }
+
     ClearCatalogTree( );
 
-    wxXmlDocument* newDoc = new wxXmlDocument( );
-    wxXmlNode* newRoot = newDoc->GetRoot( );
-    if ( !newRoot )
-    {
-        newRoot = Utils::NewNode( newDoc, Catalog::CatalogBaseNames[ Catalog::NT_Catalog ] );
-    }
-    //newDoc->SetRoot( newRoot );
-
     Catalog::CatalogVolumeData* catalogVolumeData = GetCatalogVolumeData( );
-    wxXmlDocument* doc = catalogVolumeData->GetDoc( );
-    wxXmlNode* root = doc->GetRoot( );
+    catalogVolumeData->ReSortTree();
 
-    wxXmlAttribute* attr = Utils::GetAttribute( root, Catalog::DT_DataNames[ Catalog::DT_Name ] );
-    if ( attr ) {
-        wxString name = attr->GetName( );
-        wxString value = attr->GetValue( );
-        Utils::SetAttrStr( newRoot, name, value );
-    }
-    else
-    {
-        Utils::SetAttrStr( newRoot, Catalog::DT_DataNames[ Catalog::DT_Name ], "" );
-    }
-
-    Catalog::SortData( newRoot, root );
-
-    GetCatalogVolumeData( )->ReplaceDocument( newDoc );
     LoadTree( );
 }
 
@@ -994,121 +1066,6 @@ void CatalogTreeCtrl::LoadTree( )
     }
 }
 
-//*****
-// this makes a list of the children entry elements that can have childrem
-wxXmlNodeArray* CatalogTreeCtrl::MakeParentList( wxXmlNode* catalogVolumeData,
-    Catalog::FormatType parentType )
-{
-    //Catalog::Entry parentEntry;
-    wxXmlNodeArray* parentList = new wxXmlNodeArray( );
-    wxXmlNode* child = catalogVolumeData->GetChildren( );
-    while ( child )
-    {
-        Catalog::Entry parentEntry( child );
-        if ( parentEntry.GetFormat( ) == Catalog::FT_FormatStrings[ parentType ] )
-        {
-//            std::cout << parentEntry.GetFormat( ) << " " << parentEntry.GetID() << "\n";
-            parentList->push_back( child );
-        }
-        child = child->GetNext( );
-    }
-    return parentList;
-}
-
-
-//*****
-// this is an attempt to group the entrys;
-// i.e., an item of type entry can be a child of an item SeTenent type.
-void CatalogTreeCtrl::StructureEntry( wxXmlNode* catalogVolumeData )
-{
-    StructureCatalogVolumeData( catalogVolumeData, Catalog::FT_Se_tenant, Catalog::FT_Stamp );
-    StructureCatalogVolumeData( catalogVolumeData, Catalog::FT_Gutter_Pair, Catalog::FT_Stamp );
-    StructureCatalogVolumeData( catalogVolumeData, Catalog::FT_Booklet_Pane, Catalog::FT_Stamp, Catalog::FT_Se_tenant );
-    StructureCatalogVolumeData( catalogVolumeData, Catalog::FT_Mini_Sheet, Catalog::FT_Stamp, Catalog::FT_Se_tenant );
-    StructureCatalogVolumeData( catalogVolumeData, Catalog::FT_Souvenir_Sheet, Catalog::FT_Stamp, Catalog::FT_Se_tenant );
-    StructureCatalogVolumeData( catalogVolumeData, Catalog::FT_Mini_Sheet, Catalog::FT_Stamp, Catalog::FT_Se_tenant );
-    StructureCatalogVolumeData( catalogVolumeData, Catalog::FT_Booklet, Catalog::FT_Stamp, Catalog::FT_Booklet_Pane );
-    SortTree( GetRootItem( ) );
-}
-
-//*****
-// this looks through the xml tree and makes related entries of childType a child of the parent type
-void CatalogTreeCtrl::StructureCatalogVolumeData( wxXmlNode* catalogVolumeData,
-    Catalog::FormatType parentType,
-    Catalog::FormatType childType,
-    Catalog::FormatType secondChildType )
-{
-    // Make a list of all nodes that are of parentType
-    wxXmlNodeArray* parentList = MakeParentList( catalogVolumeData, parentType );
-    // now find all the entrys that go into each parent by comparing the issue date, series and face value
-    for ( int i = 0; i < parentList->size( ); i++ )
-    {
-        wxXmlNode* parentNode = ( wxXmlNode* )parentList->at( i );
-        Catalog::Entry* parentEntry = new Catalog::Entry( parentNode );
-        wxString parentIssue = parentEntry->GetIssuedDate( );
-        wxString parentSeries = parentEntry->GetSeries( );
-        wxString parentFace = parentEntry->GetFaceValue( );
-        wxString id = parentEntry->GetID();
- //       std::cout << "Looking for children of " << id << " "<< parentIssue << "  series:"<<parentSeries<<"  face:" <<parentFace <<"\n";
-        long nbrEntrys;
-        parentFace.ToLong( &nbrEntrys );
-        if ( nbrEntrys <= 0 )
-        {
-            // if we can't figure out the face then assume a setenant is no bigger than 50 entrys
-            nbrEntrys = 50;
-        }
-        long count = 0;
-        long searchRange = 0;
-
-        wxXmlNode* childNode = catalogVolumeData->GetChildren( );
-
-        while ( childNode && ( searchRange < 1005 ) && ( count < nbrEntrys ) )
-        {
-            Catalog::Entry* childEntry = new Catalog::Entry( childNode );
-
-            // figure out what the next sibling is because we may move childNode
-            wxXmlNode* nextSibling = childNode->GetNext( );
-
-            if ( parentNode != childNode )
-            {
-                // only search a reasonable distance after the first one is found
-                if ( count > 1 )
-                {
-                    searchRange++;
-                }
-                // only look at children of childType
-                wxString format = childEntry->GetFormat( );
-                if ( ( format == Catalog::FT_FormatStrings[ childType ] )
-                    || ( secondChildType
-                        && ( format == Catalog::FT_FormatStrings[ secondChildType ] ) ) )
-                {
-                    wxString issue = childEntry->GetIssuedDate( );
-                    wxString series = childEntry->GetSeries( );
-                    // if the issue date and the series match the parent assume
-                    // that the childNode goes in the parent
-                    if ( !issue.Cmp( parentIssue )
-                        && !series.Cmp( parentSeries ) )
-                    {
-//                        std::cout << childEntry->GetID() << " should be a child of "<<parentEntry->GetID() <<"\n";
-                        //remove it from the old place
-                        count++;
-                        wxXmlNode* currParent = childNode->GetParent( );
-                        if ( currParent )
-                        {
- //                           Catalog::Entry currParentEntry( currParent );
-//                            std::cout << "Removing "<< childEntry->GetID() << " from" << currParentEntry.GetID() <<"\n";
-                            currParent->RemoveChild( childNode );
-                        }
-                        //and add it to new place
-                        parentNode->AddChild( childNode );
-//                        std::cout << "Adding "<< childEntry->GetID() << " to" << parentEntry->GetID() <<"\n";                       
-                    }
-                }
-            }
-            childNode = nextSibling;
-        }
-    }
-}
 void CatalogTreeCtrl::XMLDumpNode(  wxTreeItemId item, wxString str  )
 {
 

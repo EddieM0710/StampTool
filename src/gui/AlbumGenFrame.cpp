@@ -646,6 +646,7 @@ void AlbumGenFrame::OpenProject( )
     // proceed loading the file chosen by the user;
     // this can be done with e.g. wxWidgets input streams:
     wxString filename = openFileDialog.GetPath( );
+
     wxFileInputStream input_stream( filename );
     if ( !input_stream.IsOk( ) )
     {
@@ -715,22 +716,22 @@ void AlbumGenFrame::OpenCatalog( )
             return;
         }
     };
-    wxFileName lastFile( GetProject( )->GetCatalogFilename( ) );
-    lastFile.SetExt( "xml" );
-    wxFileDialog openFileDialog(
-        this, _( "Open Catalog XML file" ),
-        lastFile.GetPath( ), lastFile.GetFullName( ),
-        "Catalog XML files (*.cat.xml)|*.cat.xml|All XML(&.xml)|*.xml", wxFD_OPEN | wxFD_FILE_MUST_EXIST );
-    if ( openFileDialog.ShowModal( ) == wxID_CANCEL )
-    {
-        return; // the user changed idea...
-    }
+    // wxFileName lastFile( GetProject( )->GetCatalogFilename( ) );
+    // lastFile.SetExt( "xml" );
+    // wxFileDialog openFileDialog(
+    //     this, _( "Open Catalog XML file" ),
+    //     lastFile.GetPath( ), lastFile.GetFullName( ),
+    //     "Catalog XML files (*.cat.xml)|*.cat.xml|All XML(&.xml)|*.xml", wxFD_OPEN | wxFD_FILE_MUST_EXIST );
+    // if ( openFileDialog.ShowModal( ) == wxID_CANCEL )
+    // {
+    //     return; // the user changed idea...
+    // }
 
     // proceed loading the file chosen by the user;
     // this can be done with e.g. wxWidgets input streams:
-    wxString filename = openFileDialog.GetPath( );
+   // wxString filename = openFileDialog.GetPath( );
 
-    GetGeneratorData( )->FileOpenCatalog( filename );
+  //  GetGeneratorData( )->FileOpenCatalog( filename );
 }
 
 
@@ -829,20 +830,20 @@ void AlbumGenFrame::SaveAsProject( )
 void AlbumGenFrame::SaveAsCatalog( )
 {
 
-    if ( GetCatalogVolumeData( ) )
-    {
-        wxFileName lastFile( GetProject( )->GetCatalogFilename( ) );
-        lastFile.SetExt( "xml" );
-        wxFileDialog saveFileDialog(
-            this, _( "Stamp List XML file" ),
-            lastFile.GetPath( ), lastFile.GetFullName( ),
-            "XML files (*.cat.xml)|*.cat.xml", wxFD_SAVE | wxFD_OVERWRITE_PROMPT );
-        if ( saveFileDialog.ShowModal( ) == wxID_CANCEL )
-            return;
+    // if ( GetCatalogVolumeData( ) )
+    // {
+    //     wxFileName lastFile( GetProject( )->GetCatalogFilename( ) );
+    //     lastFile.SetExt( "xml" );
+    //     wxFileDialog saveFileDialog(
+    //         this, _( "Stamp List XML file" ),
+    //         lastFile.GetPath( ), lastFile.GetFullName( ),
+    //         "XML files (*.cat.xml)|*.cat.xml", wxFD_SAVE | wxFD_OVERWRITE_PROMPT );
+    //     if ( saveFileDialog.ShowModal( ) == wxID_CANCEL )
+    //         return;
 
-        wxString filename = saveFileDialog.GetPath( );
-        GetGeneratorData()->FileSaveAsCatalog( filename );
-    }
+    //     wxString filename = saveFileDialog.GetPath( );
+    //     GetGeneratorData()->FileSaveAsCatalog( filename );
+    // }
 }
 void AlbumGenFrame::SaveAsDesign( )
 {

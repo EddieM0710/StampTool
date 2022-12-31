@@ -418,12 +418,12 @@ namespace Design {
         NodeStatus status = AT_OK;
         if ( GetPageHeight( ) <= 0.0 )
         {
-            std::cout << "Must define the page height.\n";
+//            std::cout << "Must define the page height.\n";
             status = AT_FATAL;
         }
         if ( GetPageWidth( ) <= 0.0 )
         {
-            std::cout << "Must define the page width.\n";
+//            std::cout << "Must define the page width.\n";
             status = AT_FATAL;
         }
         m_nodeValid = status;
@@ -441,6 +441,9 @@ namespace Design {
         SetAttribute( xmlNode, AT_LeftMargin );
         SetAttribute( xmlNode, AT_BorderFileName );
         SetAttribute( xmlNode, AT_BorderSize );
+        SetAttribute( xmlNode, AT_FontType );
+        SetAttribute( xmlNode, AT_NativeFontString );
+        SetAttribute( xmlNode, AT_FontColor );
     }
 
     // <PageParameters PageWidth="215.9" PageHeight="279.4" TopMargin="7.62" BottomMargin="7.62" RightMargin="7.62" LeftMargin="19.05" BorderFileName="" BorderSize="4"/>

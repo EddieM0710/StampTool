@@ -178,6 +178,10 @@ void StampDetailsDialog::CreateControls( )
     m_titleCheckbox->SetValue( false );
     itemBoxSizer8->Add( m_titleCheckbox, 0, wxALIGN_LEFT | wxALL, 5 );
 
+    m_imagePath = new LabeledTextBox( itemDialog1, ID_IMAGEPATHLABELEDTEXTBOX, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
+    m_imagePath->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
+    itemBoxSizer2->Add( m_imagePath, 0, wxGROW | wxALL, 5 );
+
     wxBoxSizer* itemBoxSizer3 = new wxBoxSizer( wxHORIZONTAL );
     itemBoxSizer2->Add( itemBoxSizer3, 0, wxGROW | wxALL, 0 );
 
@@ -226,9 +230,10 @@ itemBoxSizer14->Add(m_fontPicker, 2, wxGROW | wxALL, 5 );
     // StampDetailsDialog content construction
 
     m_catNbr->SetLabel( "Catalog Nbr" );
-    m_name->SetLabel( "Name" );;
-    m_height->SetLabel( "Height" );;
-    m_width->SetLabel( "Width" );;
+    m_name->SetLabel( "Name" );
+    m_height->SetLabel( "Height" );
+    m_width->SetLabel( "Width" );
+    m_imagePath->SetLabel( "ImageName" );
 }
 
 
@@ -273,6 +278,11 @@ void StampDetailsDialog::SetHeight( wxString height )
     m_height->SetModified( false );
 }
 
+void StampDetailsDialog::SetImageFilename( wxString path )
+{
+    m_imagePath->SetValue( path );
+    m_height->SetModified( false );
+}
 void StampDetailsDialog::SetWidth( wxString width )
 {
     m_width->SetValue( width );
@@ -309,6 +319,10 @@ void StampDetailsDialog::SetDesignTreeID( wxTreeItemId id )
 }
 
 
+wxString StampDetailsDialog::GetImageFilename( ) 
+{
+    return m_imagePath->GetValue( );
+}
 wxString StampDetailsDialog::GetHeight( ) 
 {
     return m_height->GetValue( );
@@ -394,6 +408,7 @@ void StampDetailsDialog::RefreshFromCatalog( )
 
             if ( node )
             {
+                Catalog::CatalogVolumeData* catalogVolumeData = GetCatalogVolumeData( );
                 Catalog::Entry  stamp( node );
                 SetHeight( stamp.GetHeight( ) );
                 SetHeightModified( );

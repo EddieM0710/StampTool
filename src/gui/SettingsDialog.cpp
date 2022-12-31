@@ -81,7 +81,7 @@ SettingsDialog::SettingsDialog( wxWindow* parent, wxWindowID id, const wxString&
 {
     Init();
     Create(parent, id, caption, pos, size, style);
-    m_imageDirectory->SetValue( GetSettings( )->GetImageDirectory( ));
+    //m_imageDirectory->SetValue( GetSettings( )->GetImageDirectory( ));
     m_country->SetValue( GetSettings( )->GetCountryID( ));
     m_catalog->SetValue( GetSettings( )->GetCatalogID( ));
     m_loadLastFileAtStartUp->SetValue( GetSettings( )->GetLoadLastFileAtStartUp( ));
@@ -342,7 +342,7 @@ void SettingsDialog::UpdateSettings()
     if ( m_imageDirectory->IsModified( ) )
     {
         GetSettings()->SetDirty();
-        GetSettings()->SetImageDirectory( m_imageDirectory->GetValue( ));
+        //GetSettings()->SetImageDirectory( m_imageDirectory->GetValue( ));
         m_imageDirectory->SetModified( false );
     }
 

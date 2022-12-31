@@ -47,7 +47,7 @@ namespace ODT {
         //     dump(m_settings);
         // std::cout << "***********************************************\n";
 
-        wxString str = ODTDoc( )->MakeAbsolute( "settings.xml" );
+        wxString str = ODTDoc( )->GetDocFilesDir() + "/settings.xml";
         if ( !m_settings->Save( str ) )
         {
             ReportError( "Settings::Save", "Failed to save Settings", true );

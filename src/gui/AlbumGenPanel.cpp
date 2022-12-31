@@ -218,6 +218,7 @@ wxIcon AlbumGenPanel::GetIconResource( const wxString& name )
 
 void AlbumGenPanel::UpdateStatus( )
 {
+    m_stampDescriptionPanel->UpdateStatus();
 }
 
 bool AlbumGenPanel::ShouldShowStates()

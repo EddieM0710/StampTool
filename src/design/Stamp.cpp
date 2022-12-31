@@ -191,7 +191,7 @@ namespace Design {
 
         wxString stampID = GetAttrStr( Design::AT_CatNbr );
 
-        wxString link = GetGeneratorData( )->GetImageFilename( stampID );
+        wxString link = GetAttrStr( Design::AT_ImageName );
 
         wxXmlNode* image = ODT::ContentDoc( )->WriteImage( frame,
             0, 0,
@@ -328,7 +328,7 @@ namespace Design {
 
     wxImage* Stamp::GetStampImage( )
     {
-
+ 
         wxFileName fn;
         wxString filename;
         wxImage* image;
@@ -340,9 +340,13 @@ namespace Design {
         }
         else
         {
-            filename = GetGeneratorData( )->GetImageFilename( fileID );
+            wxString imageName = GetAttrStr( AT_ImageName );  
+            filename = imageName;//GetGeneratorData( )->GetImageFilename( fileID );
             fn.Assign( filename );
             wxString fullpath = fn.GetFullPath( );
+            wxFileName fn3 = fn;
+            fn3.MakeAbsolute();
+            wxString str = fn3.GetFullPath();
             if ( fn.FileExists( ) )
             {
                 if ( image->CanRead( filename ) )
@@ -458,6 +462,7 @@ namespace Design {
         SetAttribute( xmlNode, AT_Link );
         SetAttribute( xmlNode, AT_ShowTitle );
         SetAttribute( xmlNode, AT_ShowCatNbr );
+        SetAttribute( xmlNode, AT_ImageName );
     }
 
 }

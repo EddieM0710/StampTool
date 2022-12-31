@@ -98,6 +98,7 @@ namespace Design {
 //        AT_FontWeight,
         AT_FontColor,
 //        AT_FontStyle,
+        AT_ImageName,
         AT_NbrAttrTypes,
         AT_NOTYPE
     } AlbumAttrType;

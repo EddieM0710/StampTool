@@ -56,7 +56,7 @@ namespace ODT {
 
     bool Manifest::Save( )
     {
-        wxString str = ODTDoc( )->MakeAbsolute( "META-INF/manifest.xml" );
+        wxString str = ODTDoc( )->GetMetaInf()+"/manifest.xml" ;
         if ( !m_manifest->Save( str ) )
         {
             ReportError( "Manifest::Save", "ODT Manifest failed to save", true );

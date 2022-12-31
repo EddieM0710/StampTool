@@ -26,6 +26,7 @@
 #define XMLIterator_H
 
 #include "wx/xml/xml.h"
+#include <vector>
 
 #include "catalog/CatalogDefs.h"
 
@@ -70,6 +71,8 @@ namespace Utils {
     };
 
     void IDElement( wxXmlNode* ele );
+
+    typedef std::vector<wxXmlNode*> wxXmlNodeArray;
 
     wxXmlNode* NewNode( wxXmlNode* parent, wxString name );
     wxXmlNode* NewNode( wxXmlDocument* parent, wxString name );

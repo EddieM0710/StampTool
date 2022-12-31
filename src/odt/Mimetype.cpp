@@ -21,8 +21,10 @@
  */
 
 #include "odt/Mimetype.h"
+#include "odt/Document.h"
 #include <iostream>
 #include "Defs.h"
+#include "ODTDefs.h"
 #include <wx/wfstream.h>
 #include <wx/txtstrm.h>
 #include "wx/string.h"
@@ -41,7 +43,8 @@ namespace ODT {
 
         bool status = false;
 
-        wxFileOutputStream l_file( "mimetype" );
+        wxString str = ODTDoc( )->GetDocFilesDir() + "/mimetype";
+       wxFileOutputStream l_file( str );
 
         if ( l_file.IsOk( ) )
         {

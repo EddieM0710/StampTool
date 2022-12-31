@@ -139,6 +139,7 @@ namespace Design {
 //            "Weight",
             "Color",
 //            "Style"
+            "ImageName"
             };
 
     void InitDesignDefs( )

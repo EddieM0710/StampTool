@@ -49,7 +49,7 @@ class Settings;
         void InitSettings();
 
         wxString GetConfigurationDirectory( ) { return m_configurationDirectory; };
-        wxString GetImageDirectory( ) { return m_imageDirectory; };
+        //wxString GetImageDirectory( ) { return m_imageDirectory; };
         wxString GetCatalogID( ) { return m_catalogID; };
         wxString GetCountryID( ) { return m_countryID; };
 
@@ -68,7 +68,7 @@ class Settings;
         wxString GetTextColorString( ) { return m_textColorString;};
 
         void SetConfigurationDirectory( wxString val ) { m_configurationDirectory = val.Trim( ); m_dirty = true; };
-        void SetImageDirectory( wxString val ) { m_imageDirectory = val.Trim( );m_dirty = true; };
+        //void SetImageDirectory( wxString val ) { m_imageDirectory = val.Trim( );m_dirty = true; };
         void SetCatalogID( wxString val ) { m_catalogID = val.Trim( );m_dirty = true; };
         void SetCountryID( wxString val ) { m_countryID = val.Trim( );m_dirty = true; };
         void SetLoadLastFileAtStartUp( bool state = true ) { m_loadLastFileAtStartUp = state; };
@@ -122,7 +122,7 @@ class Settings;
         wxString m_lastFile;
         bool m_loadLastFileAtStartUp;
         wxString m_configurationDirectory;
-        wxString m_imageDirectory;
+    //    wxString m_imageDirectory;
         wxString m_countryID;
         wxString m_catalogID;
         wxArrayInt m_sortOrder;

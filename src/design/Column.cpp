@@ -263,12 +263,12 @@ namespace Design {
         {
             if ( GetHeight( ) <= 0.0 )
             {
-                std::cout << "Terminal leaf node must define the height.\n";
+//                std::cout << "Terminal leaf node must define the height.\n";
                 status = AT_FATAL;
             }
             if ( GetWidth( ) <= 0.0 )
             {
-                std::cout << "Terminal leaf node must define the width.\n";
+//                std::cout << "Terminal leaf node must define the width.\n";
                 status = AT_FATAL;
             }
         }

@@ -44,7 +44,7 @@ namespace ODT {
     //***********************************
     bool Meta::Save( )
     {
-        wxString str = ODTDoc( )->MakeAbsolute( "meta.xml" );
+        wxString str = ODTDoc( )->GetDocFilesDir() +  "/meta.xml" ;
         if ( !m_meta->Save( str ) )
         {
             ReportError( "Meta::Save", " Mata save file failed", true );

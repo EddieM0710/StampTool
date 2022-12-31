@@ -120,6 +120,17 @@ int wayToSort(Catalog::CatalogVolumeData* vol1, Catalog::CatalogVolumeData* vol2
 
     };
 
+    void CatalogData::SaveCatalogVolumes( )
+    {
+        for ( Catalog::CatalogVolumeDataArray::iterator it = std::begin( m_catalogArray );
+            it != std::end( m_catalogArray );
+            ++it )
+        {
+            Catalog::CatalogVolumeData* volume = ( Catalog::CatalogVolumeData* )( *it );
+            volume->Save( );
+        }
+    };
+
     void CatalogData::SetCatalogVolumeDataNdx( int i ) {
         m_catalogVolumeDataNdx = i;
         GetGeneratorData( )->LoadCatalogTree( );

@@ -98,8 +98,7 @@ class XMLBase;
         NodeStatus GetNodeStatus(){ return m_nodeValid;};
         bool IsStatusOK(){ return ( m_nodeValid != AT_FATAL);};
         void SetNodeStatus( NodeStatus status ){  m_nodeValid = status;};
-        void SetAttribute( wxXmlNode* xmlNode, AlbumAttrType type )
-            { Utils::SetAttrStr( xmlNode, AttrNameStrings[type], GetAttrStr( type ) );};
+        void SetAttribute( wxXmlNode* xmlNode, AlbumAttrType type );
 
         virtual void Save( wxXmlNode* xmlNode) = 0;
 

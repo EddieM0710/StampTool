@@ -51,8 +51,13 @@ namespace Utils {
         wxString GetImagePath( );
         void SetImagePath( wxString imagePath );
 
-        wxString GetCatalogFilename( );
+        //wxString GetCatalogFilename( );
         void SetCatalogFilename( wxString catalogFilename );
+
+        wxString GetProjectCountryID( ){ return m_defaultCountryID; };
+        void SetProjectCountryID( wxString str ){ m_defaultCountryID = str; };
+        wxString GetProjectCatalogCode( ){ return m_defaultCatalogCode; };
+        void SetProjectCatalogCode( wxString str ){ m_defaultCatalogCode = str; };
 
         // Load the Project xml file
         bool LoadProjectXML( );

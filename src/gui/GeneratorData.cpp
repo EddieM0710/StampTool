@@ -245,7 +245,7 @@ void GeneratorData::FileSaveAsDesign( wxString filename )
     
     void GeneratorData::FileSaveCatalog( )
     {
-        GetCatalogVolumeData( )->Save( );
+        m_catalogData.SaveCatalogVolumes( );
     }
 
 void GeneratorData::InitODTDocument( )
@@ -279,7 +279,7 @@ void GeneratorData::InitLoad( )
 wxString GeneratorData::GetImageFilename( wxString stampId )
 {
 
-    wxString dirName = GetSettings( )->GetImageDirectory( );
+    wxString dirName = GetCatalogVolumeData()->GetImagePath( );
     wxString fileName = stampId ;
     wxString imageFile;
     if ( dirName.IsEmpty() || fileName.IsEmpty() )

@@ -193,14 +193,14 @@ Settings* NewSettingsInstance()
 
         wxXmlNode* settings = NewNode( &doc, "Settings" );
 
-        wxXmlNode* child = NewNode( settings, "ImageDirectory" );
-        if ( child )
-        {
-            child = NewNode( child, "File" );
-            child->AddAttribute("Name", GetImageDirectory());
-        }
+        // wxXmlNode* child = NewNode( settings, "ImageDirectory" );
+        // if ( child )
+        // {
+        //     child = NewNode( child, "File" );
+        //     child->AddAttribute("Name", GetImageDirectory());
+        // }
 
-        child = NewNode( settings, "LastFile" );
+        wxXmlNode* child = NewNode( settings, "LastFile" );
         if ( child )
         {
             child->AddAttribute( "LoadLastFileAtStartUp", Bool2String( GetLoadLastFileAtStartUp( ) ) );
@@ -436,7 +436,7 @@ Settings* NewSettingsInstance()
             // Loading the ettings.xml file failed
             // add defaults here and return
             SetLoadLastFileAtStartUp( true );
-            SetImageDirectory( "" );
+            //SetImageDirectory( "" );
             SetCatalogID( "" );
             SetCountryID( "" );
 
@@ -527,18 +527,18 @@ Settings* NewSettingsInstance()
             }
         }
 
-        SetSettingValue( m_imageDirectory, root, "ImageDirectory", "" );
+        //SetSettingValue( m_imageDirectory, root, "ImageDirectory", "" );
 
-        wxXmlNode* imageDirectory = FirstChildElement( root, "ImageDirectory" );
-        if ( imageDirectory )
-        {
+        // wxXmlNode* imageDirectory = FirstChildElement( root, "ImageDirectory" );
+        // if ( imageDirectory )
+        // {
 
-            wxXmlNode* child = FirstChildElement( imageDirectory, "File" );
-            if ( child )
-            {
-                m_imageDirectory = child->GetAttribute("Name");
-            }
-        }
+        //     wxXmlNode* child = FirstChildElement( imageDirectory, "File" );
+        //     if ( child )
+        //     {
+        //         m_imageDirectory = child->GetAttribute("Name");
+        //     }
+        // }
 
         wxXmlNode* stampDataEdit = FirstChildElement( root, "StampDataEdit" );
         if ( stampDataEdit )

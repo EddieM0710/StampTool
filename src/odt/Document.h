@@ -194,7 +194,7 @@ namespace ODT {
          * @return true
          * @return false
          **************************************************/
-        bool AddODTFile( wxZipOutputStream& zip, wxString f );
+        bool AddODTFile( wxZipOutputStream& zip, wxString f, wxString baseDir );
 
         /**
          * @brief Get the File List object
@@ -217,7 +217,24 @@ namespace ODT {
         Styles* StylesDoc( ) { return m_stylesDoc; };
         Manifest* ManifestDoc( ) { return m_manifestDoc; };
         Meta* MetaDoc( ) { return m_metaDoc; };
+        wxString GetTmpDir(){ return m_tmpDir.GetFullPath();};
+        wxString GetStampGenDir(){ return m_stampAlbumGen.GetFullPath();};
+        wxString GetDocFilesDir(){ return m_docFiles.GetFullPath();};
+        wxString GetThumbnailsDir(){ return m_thumbnailsDir.GetFullPath();};
+        wxString GetMetaInf(){ return m_metaInfDir.GetFullPath();};;
+        wxString GetConfigurationsDir(){ return m_configurations2Dir.GetFullPath();};
+        wxString GetPicturesDir(){ return m_picturesDir.GetFullPath();};
+
+
     private:
+
+        wxFileName m_tmpDir;
+        wxFileName m_stampAlbumGen;
+        wxFileName m_docFiles;
+        wxFileName m_thumbnailsDir;
+        wxFileName m_metaInfDir;
+        wxFileName m_configurations2Dir;
+        wxFileName m_picturesDir;
 
         //DocumentManager* m_parent;
         MimeType* m_mimeTypeDoc;

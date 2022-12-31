@@ -6,18 +6,18 @@
  * @date 2021-02-24
  *
  * @copyright Copyright (c) 2021
- * 
+ *
  * This file is part of AlbumGenerator.
  *
- * AlbumGenerator is free software: you can redistribute it and/or modify it under the 
- * terms of the GNU General Public License as published by the Free Software Foundation, 
+ * AlbumGenerator is free software: you can redistribute it and/or modify it under the
+ * terms of the GNU General Public License as published by the Free Software Foundation,
  * either version 3 of the License, or any later version.
  *
- * AlbumGenerator is distributed in the hope that it will be useful, but WITHOUT ANY 
- * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+ * AlbumGenerator is distributed in the hope that it will be useful, but WITHOUT ANY
+ * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
- * You should have received a copy of the GNU General Public License along with 
+ * You should have received a copy of the GNU General Public License along with
  * AlbumGenerator. If not, see <https://www.gnu.org/licenses/>.
  *
  */
@@ -38,14 +38,16 @@
 #endif
 
 #include <iostream>
+#include <vector>
 #include <wx/filename.h>
-
+#include <wx/filefn.h> 
 
 #include "utils/Project.h"
 
 #include "Defs.h"
 #include "utils/Settings.h"
 
+#include "catalog/CatalogData.h"
 #include "catalog/CatalogVolumeData.h"
 #include "design/DesignDefs.h"
 #include "design/DesignData.h"
@@ -57,18 +59,18 @@
 
 namespace Utils {
 
-    Project* NewProjectInstance()
+    Project* NewProjectInstance( )
     {
-        Project* project = new Project();
-        project->InitProject();
+        Project* project = new Project( );
+        project->InitProject( );
         return project;
     }
 
     Project::Project( )
     {
-        m_ProjectDoc = (wxXmlDocument*)0;
+        m_ProjectDoc = ( wxXmlDocument* )0;
     }
-    void Project::InitProject()
+    void Project::InitProject( )
     {
         InitDefs( );
         SetDirty( false );
@@ -119,10 +121,10 @@ namespace Utils {
 
     //*****
 
-    wxString Project::GetCatalogFilename( )
-    {
-        return m_catalogFilename;
-    };
+    // wxString Project::GetCatalogFilename( )
+    // {
+    //     return m_catalogFilename;
+    // };
 
     //*****
 
@@ -162,6 +164,16 @@ namespace Utils {
     bool Project::LoadProjectXML( )
     {
         wxFileName projFile( m_projectFilename );
+        wxString str;
+
+        projFile.DirName( str );
+
+        // std::cout << "LoadProjectXML Dir Name " << str << "\n";
+
+        // std::cout << "LoadProjectXML Full Name " << projFile.GetFullName( ) << "\n";
+        // std::cout << "LoadProjectXML Full Path " << projFile.GetFullPath( ) << "\n";
+
+
         if ( projFile.FileExists( ) )
         {
             if ( !projFile.IsAbsolute( ) )
@@ -177,7 +189,6 @@ namespace Utils {
 
         wxString cwd = projFile.GetPath( );
         wxSetWorkingDirectory( cwd );
-
 
         m_ProjectDoc = new wxXmlDocument( );
         if ( !m_ProjectDoc->Load( m_projectFilename ) )
@@ -196,16 +207,16 @@ namespace Utils {
             return false;
         }
         LoadAttributes( projectRoot );
-        wxXmlNode* output = FirstChildElement( projectRoot, "Output" );
+        wxXmlNode* output = FirstChildElement( projectRoot, "OutputName" );
         if ( output )
         {
-            m_ODTOutputFilename = output->GetAttribute( "Filename" );
+            m_ODTOutputFilename = output->GetAttribute( "FileName" );
         }
-        
+
         wxXmlNode* album = FirstChildElement( projectRoot, "Album" );
         if ( album )
         {
-            m_designFilename = album->GetAttribute( "Filename" );
+            m_designFilename = album->GetAttribute( "FileName" );
         }
         wxXmlNode* imagePath = FirstChildElement( projectRoot, "ImagePath" );
         if ( imagePath )
@@ -213,18 +224,31 @@ namespace Utils {
             m_imagePath = imagePath->GetAttribute( "Name" );
         }
         wxXmlNode* catalog = FirstChildElement( projectRoot, "Catalog" );
-        if ( catalog ) 
+        if ( catalog )
         {
             wxXmlNode* volume = FirstChildElement( catalog, "Volume" );
             while ( volume )
             {
                 wxString name = volume->GetAttribute( "FileName" );
-                Catalog::CatalogVolumeData* volumeData = GetGeneratorData()->NewCatalogVolumeData( );
-                volumeData->SetVolumeFilename( name );
-                volume = volume->GetNext( );            
+                Catalog::CatalogVolumeData* volumeData = GetGeneratorData( )->NewCatalogVolumeData( );
+
+                wxFileName catFile( name );
+
+                if ( catFile.IsAbsolute( ) )
+                {
+                    catFile.MakeRelativeTo( cwd );
+                }
+                volumeData->SetVolumeFilename( catFile.GetFullPath( ) );
+
+                std::cout << "LoadProjectXML cat Full Path " << catFile.GetFullPath( ) << "\n";
+                std::cout << "LoadProjectXML cat Full Name " << catFile.GetFullName( ) << "\n";
+
+
+                volume = volume->GetNext( );
             }
         }
 
+        GetGeneratorData( )->FileOpenDesign( m_designFilename );
         GetSettings( )->SetLastFile( m_projectFilename );
 
         SetDirty( false );
@@ -254,8 +278,8 @@ namespace Utils {
             }
             else if ( !name.Cmp( "ImagePath" ) )
             {
-                m_imagePath =  MakeFileAbsolute( val ) ;
-                GetSettings( )->SetImageDirectory( m_imagePath );
+                //m_imagePath = MakeFileAbsolute( val );
+                //GetSettings( )->SetImageDirectory( m_imagePath );
             }
             else if ( !name.Cmp( "Catalog" ) )
             {
@@ -263,11 +287,11 @@ namespace Utils {
             }
             else if ( !name.Cmp( "Country" ) )
             {
-                m_defaultCountryID = val ;
-            }            
+                m_defaultCountryID = val;
+            }
             else if ( !name.Cmp( "CatalogCode" ) )
             {
-                m_defaultCatalogCode = val ;
+                m_defaultCatalogCode = val;
             }
             attr = attr->GetNext( );
         }
@@ -291,15 +315,44 @@ namespace Utils {
         }
         m_ProjectDoc = new wxXmlDocument( );
         wxXmlNode* root = new wxXmlNode( wxXML_ELEMENT_NODE, "Project" );
+        root->AddAttribute( "Country", GetProjectCountryID( ) );
+        root->AddAttribute( "CatalogCode", GetProjectCatalogCode( ) );
 
-        root->AddAttribute( "OutputName", m_ODTOutputFilename );
-        root->AddAttribute( "Album", m_designFilename );
-        root->AddAttribute( "ImagePath", m_imagePath );
-        root->AddAttribute( "Catalog", m_catalogFilename );
+        wxXmlNode* newNode = NewNode( root, "OutputName" );
+        newNode->AddAttribute( "FileName", m_ODTOutputFilename );
 
+        newNode = NewNode( root, "Album" );
+        newNode->AddAttribute( "FileName", m_designFilename );
+
+        newNode = NewNode( root, "ImagePath" );
+        newNode->AddAttribute( "Name", m_imagePath );
+
+        newNode = NewNode( root, "Catalog" );
+        //Catalog::CatalogVolumeData* volumeData = 
+        Catalog::CatalogData* catalogData = GetGeneratorData( )->GetCatalogData( );
+        Catalog::CatalogVolumeDataArray* catalogArray = catalogData->GetCatalogArray();
+
+        for ( Catalog::CatalogVolumeDataArray::iterator it = std::begin( *catalogArray );
+            it != std::end( *catalogArray );
+            ++it )
+        {
+            Catalog::CatalogVolumeData* volume = ( Catalog::CatalogVolumeData* )( *it );
+            wxString filename = volume->GetVolumeFilename();
+            wxString cwd = wxGetCwd( );
+ //           std::cout << "Project::Save cwd " << cwd << "\n";
+            wxFileName volFile( filename );
+            volFile.MakeRelativeTo( cwd );
+            wxXmlNode* newVolume = NewNode( newNode, "Volume" );
+            newVolume->AddAttribute( "FileName", volFile.GetFullPath() );
+//            std::cout << "Project::Save GetFullName " << volFile.GetFullName() << "\n";
+//            std::cout << "Project::Save GetFullPath " << volFile.GetFullPath() << "\n";
+        }
         m_ProjectDoc->SetRoot( root );
 
         m_ProjectDoc->Save( m_projectFilename );
+
+        GetGeneratorData()->FileSaveCatalog();
+        GetGeneratorData()->FileSaveDesign();
 
         SetDirty( false );
     }

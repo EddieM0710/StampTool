@@ -131,37 +131,47 @@ void DesignData::LoadDefaultDocument()
     //*****  
     void DesignData::SaveXML( wxString filename )
     {
-        if ( wxFileExists( filename ) )
+        if ( m_albumDoc )
         {
-            wxFileName bakFile( filename );
-            bakFile.SetExt( "bak" );
-            wxRenameFile( filename, bakFile.GetFullName( ), true );
+            if ( wxFileExists( filename ) )
+            {
+                wxFileName bakFile( filename );
+                bakFile.SetExt( "bak" );
+                wxRenameFile( filename, bakFile.GetFullName( ), true );
+            }
+            SaveDesignTree();
+            m_albumDoc->Save( filename );
+            SetDirty( false );
         }
-        SaveDesignTree();
-        m_albumDoc->Save( filename );
-        SetDirty( false );
     }
 
     // transferrs the DesignData tree to an xml file
     //*****  
     void DesignData::SaveDesignTree()
     {
-        wxTreeItemId albumID = GetDesignTreeCtrl()->GetRootItem();
-        Design::Album* album = (Design::Album*)GetDesignTreeCtrl()->GetItemNode(albumID);
-    
-        wxXmlNode* root = m_albumDoc->DetachRoot();
-        root->~wxXmlNode();
-         
-        wxXmlNode* xmlNode = Utils::NewNode( m_albumDoc, Design::AlbumBaseNames[Design::AT_Album] );
-        albumID = GetDesignTreeCtrl()->GetRootItem();
-        album->Save( xmlNode );    
-        GetDesignTreeCtrl()->SaveNodeData ( xmlNode, albumID );   
+        if ( m_albumDoc )
+        {
+            wxTreeItemId albumID = GetDesignTreeCtrl()->GetRootItem();
+            Design::Album* album = (Design::Album*)GetDesignTreeCtrl()->GetItemNode(albumID);
+        
+            wxXmlNode* root = m_albumDoc->DetachRoot();
+            root->~wxXmlNode();
+            
+            wxXmlNode* xmlNode = Utils::NewNode( m_albumDoc, Design::AlbumBaseNames[Design::AT_Album] );
+            albumID = GetDesignTreeCtrl()->GetRootItem();
+            album->Save( xmlNode );    
+            GetDesignTreeCtrl()->SaveNodeData ( xmlNode, albumID );  
+        }
     }
 
     // loads an xml file into memory
     //*****  
     bool DesignData::LoadXML( wxString filename )
     {
+        if ( !wxFileExists( filename ) )
+        {
+            return false;
+        }
         if ( !m_albumDoc )
         {
             m_albumDoc = NewDesignDocument( );

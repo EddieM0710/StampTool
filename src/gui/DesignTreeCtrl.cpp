@@ -228,6 +228,8 @@ void DesignTreeCtrl::AddPageTreeItem( wxTreeItemId parentID )
         wxTreeItemId childID = AppendItem( parentID, "Page", Design::Icon_Folder, -1, itemData );
         newPage->SetTreeItemId( childID );
         SetItemImage( childID, Design::Icon_Folder );
+        Expand(childID);
+        SelectItem(childID);
         Design::NodeStatus status = newPage->ValidateNode( );
         SetItemBackgroundColour( childID, ItemBackgroundColour[ status ] );
     }
@@ -244,7 +246,8 @@ void DesignTreeCtrl::AddColTreeItem( wxTreeItemId parentID )
         wxTreeItemId childID = AppendItem( parentID, "Column", Design::Icon_Folder, -1, itemData );
         newCol->SetTreeItemId( childID );
         SetItemImage( childID, Design::Icon_Folder );
-        Design::NodeStatus status = newCol->ValidateNode( );
+        Expand(childID);
+        SelectItem(childID);        Design::NodeStatus status = newCol->ValidateNode( );
         SetItemBackgroundColour( childID, ItemBackgroundColour[ status ] );
         status = newCol->ValidateNode( );
         SetItemBackgroundColour( parentID, ItemBackgroundColour[ status ] );
@@ -262,7 +265,8 @@ void DesignTreeCtrl::AddRowTreeItem( wxTreeItemId parentID )
         wxTreeItemId childID = AppendItem( parentID, "Row", Design::Icon_Folder, -1, itemData );
         newRow->SetTreeItemId( childID );
         SetItemImage( childID, Design::Icon_Folder );
-
+        Expand(childID);
+        SelectItem(childID);
         Design::NodeStatus status = newRow->ValidateNode( );
         SetItemBackgroundColour( childID, ItemBackgroundColour[ status ] );
 
@@ -283,7 +287,8 @@ Design::Stamp* DesignTreeCtrl::AddStampTreeItem( wxTreeItemId parentID )
         newStamp->SetTreeItemId( childID );
         Design::IconID icon = GetIconId( newStamp );
         SetItemImage( childID, icon );
-
+        Expand(childID);
+        SelectItem(childID);
         Design::NodeStatus status = newStamp->ValidateNode( );
         SetItemBackgroundColour( childID, ItemBackgroundColour[ status ] );
 
@@ -314,12 +319,31 @@ Utils::StampLink* DesignTreeCtrl::AppendStamp( wxTreeItemId catID )
         {
             wxTreeItemId newStampID = newStamp->GetTreeItemId( );
             wxXmlNode* catNode = ( ( CatalogTreeItemData* )GetCatalogTreeCtrl( )->GetItemData( catID ) )->GetNodeElement( );
+            wxXmlNode* parent = catNode->GetParent();
+            wxString imageFile = "";
+            while ( parent )
+            {
+                if ( !parent->GetName().compare( "Catalog") )
+                {
+                    imageFile = parent->GetAttribute( "ImagePath" ) ;
+                }
+                parent = parent->GetParent();
+            }
             wxString idText = catNode->GetAttribute( Catalog::DT_XMLDataNames[ Catalog::DT_ID_Nbr ] );
             SetItemText( newStampID, idText );
+            wxString id = idText;
+            id = id.Trim(true);
+            id = id.Trim(false);
+            id.Replace(":","_");
+            id.Replace(" ","_");
+            id.Append(".jpg");        
+            imageFile.Append("/");
+            imageFile.Append(id);
             newStamp->SetAttrStr( Design::AT_CatNbr, idText );
             newStamp->SetAttrStr( Design::AT_Name, catNode->GetAttribute( Catalog::DT_XMLDataNames[ Catalog::DT_Name ] ) );
             newStamp->SetAttrStr( Design::AT_Height, catNode->GetAttribute( Catalog::DT_XMLDataNames[ Catalog::DT_Height ] ) );
             newStamp->SetAttrStr( Design::AT_Width, catNode->GetAttribute( Catalog::DT_XMLDataNames[ Catalog::DT_Width ] ) );
+            newStamp->SetAttrStr( Design::AT_ImageName, imageFile ) ;
 
             wxString height = newStamp->GetAttrStr( Design::AT_Height );
             newStamp->SetStampHeight( height );
@@ -487,16 +511,19 @@ bool DesignTreeCtrl::IsElement( wxTreeItemId item, Design::AlbumBase* ele )
 void DesignTreeCtrl::LoadTree( )
 {
     wxXmlDocument* doc = GetDesignData( )->GetDoc( );
-    wxXmlNode* docRoot = doc->GetRoot( );
-    if ( docRoot)
+    if ( doc && doc->IsOk() )
     {
-        AddChild( 0, docRoot );
-        GetDesignData( )->UpdateAlbum( );
-        wxTreeItemId id = FindFirstStampChild( GetRootItem( ) );
-        if ( id.IsOk( ) ) SelectItem( id );
-        GetAlbumImagePanel( )->Refresh( );
+        wxXmlNode* docRoot = doc->GetRoot( );
+        if ( docRoot)
+        {
+            AddChild( 0, docRoot );
+            GetDesignData( )->UpdateAlbum( );
+            wxTreeItemId id = FindFirstStampChild( GetRootItem( ) );
+            if ( id.IsOk( ) ) SelectItem( id );
+            GetAlbumImagePanel( )->Refresh( );
 
-        ExpandAll( );
+            ExpandAll( );
+        }
     }
 }
 
@@ -614,8 +641,9 @@ void DesignTreeCtrl::OnSelChanged( wxTreeEvent& event )
     {
  //       if ( pageId != m_currPageID )
         {
-    if ( m_currPageID.IsOk( ) ) std::cout << "m_currPageID >" << GetItemText(m_currPageID) << "<\n";
-            std::cout << "pageId >" << GetItemText(pageId) << "<\n";
+//    if ( m_currPageID.IsOk( ) ) 
+//    std::cout << "m_currPageID >" << GetItemText(m_currPageID) << "<\n";
+//            std::cout << "pageId >" << GetItemText(pageId) << "<\n";
             m_currPageID = pageId;
             MakePage( pageId );
         }

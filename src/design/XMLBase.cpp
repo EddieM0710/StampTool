@@ -82,6 +82,11 @@ namespace Design {
             attr = attr->GetNext( );
         }
     }
+    
+    void XMLBase::SetAttribute( wxXmlNode* xmlNode, AlbumAttrType type )
+    {
+        Utils::SetAttrStr( xmlNode, AttrNameStrings[ type ], GetAttrStr( type ) );
+    };
 
     wxString XMLBase::GetAttrStr( wxString name )
     {

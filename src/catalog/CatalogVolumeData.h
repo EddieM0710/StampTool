@@ -63,6 +63,16 @@ namespace Catalog {
         // Load Catalog csv file
         void LoadCSV( wxString filename );
 
+        void ReSortTree( );
+
+        Utils::wxXmlNodeArray* MakeParentList( Catalog::FormatType parentType );
+
+        void StructureCatalogVolumeData( Catalog::FormatType parentType,
+                        Catalog::FormatType childType,
+                        Catalog::FormatType secondChildType = Catalog::FT_FormatUnknown );
+
+        void ReGroupMultiples( );
+
        // wxString GetTitle( ) { return m_title; }
        // void SetTitle( wxString val ) { m_title = val; };
 
@@ -84,6 +94,10 @@ namespace Catalog {
         wxXmlNode* root = m_stampDoc->GetRoot();
         Utils::SetAttrStr( root, "Name", str );
     };
+
+    wxString GetImagePath();
+    void SetImagePath(wxString str);    
+    
     private:
         wxString m_volumeFilename;
         wxXmlDocument* m_stampDoc;

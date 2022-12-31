@@ -59,7 +59,7 @@ class wxListCtrl;
 #define ID_LISTCTRL 10006
 #define ID_CATNBRCHECKBOX 10010
 #define ID_TITLECHECKBOX 10011
-
+#define ID_IMAGEPATHLABELEDTEXTBOX 10012
 #define SYMBOL_STAMPDETAILSDIALOG_STYLE wxCAPTION|wxRESIZE_BORDER|wxSYSTEM_MENU|wxCLOSE_BOX|wxTAB_TRAVERSAL
 #define SYMBOL_STAMPDETAILSDIALOG_TITLE _("StampDetailsDialog")
 #define SYMBOL_STAMPDETAILSDIALOG_IDNAME ID_STAMPDETAILSDIALOG
@@ -118,6 +118,7 @@ public:
 
     /// Should we show tooltips?
     static bool ShowToolTips();
+void SetImageFilename(wxString filename);
 void SetHeight(wxString height);
 void SetWidth(wxString width);
 void SetCatNbr(wxString catNbr);
@@ -125,6 +126,7 @@ void SetName(wxString name);
 void SetDesignTreeID ( wxTreeItemId id );
 void SetShowCatNbr( bool state = false);
 void SetShowTitle(bool state = false);
+wxString GetImageFilename( );
 wxString GetHeight( );
 wxString GetWidth( );
 wxString GetCatNbr( );
@@ -147,6 +149,7 @@ void RefreshFromCatalog();
 // StampDetailsDialog member variables
     LabeledTextBox* m_catNbr;
     LabeledTextBox* m_name;
+    LabeledTextBox* m_imagePath;
     LabeledTextBox* m_height;
     LabeledTextBox* m_width;
     wxButton* m_validate;
@@ -154,6 +157,7 @@ void RefreshFromCatalog();
     wxTreeItemId m_designTreeID;
     wxCheckBox* m_catNbrCheckbox;
     wxCheckBox* m_titleCheckbox;
+
 // StampDetailsDialog member variables
 
 

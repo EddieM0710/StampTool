@@ -4278,3 +4278,7 @@ build/src/gui/CMakeFiles/GuiFiles.dir/AlbumDetailsDialog.cpp.o
 src/gui/StampManager.pjd.bak
 USA_2019.cat.bak
 USA_2019.prj.bak
+build/src/catalog/CMakeFiles/CatalogFiles.dir/CatalogVolumeData.cpp.o
+build/src/design/CMakeFiles/DesignFiles.dir/Font.cpp.o
+build/src/design/CMakeFiles/DesignFiles.dir/XMLBase.cpp.o
+build/src/gui/CMakeFiles/GuiFiles.dir/AlbumDetailsDialog.cpp.o

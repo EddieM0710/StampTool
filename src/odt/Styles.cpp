@@ -54,7 +54,7 @@ namespace ODT {
 
     bool Styles::Save( )
     {
-        wxString str = ODTDoc( )->MakeAbsolute( "styles.xml" );
+        wxString str = ODTDoc( )->GetDocFilesDir()+ "/styles.xml";
         m_styles->Save( str );
 
         //     std::cout << "dump Styles output\n";

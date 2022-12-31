@@ -47,9 +47,12 @@ class CatalogVolumeData;
         bool IsOK( );
         Catalog::CatalogVolumeData* NewCatalogVolumeData( );
         Catalog::CatalogVolumeData* GetCatalogVolumeData( );
+        void SaveCatalogVolumes();
         void LoadCatalogVolumes();
         wxArrayString& GetVolumeNameStrings() {return m_volumeNameStrings;};
         void SetCatalogVolumeDataNdx( int i);
+        Catalog::CatalogVolumeDataArray* GetCatalogArray(){ return &m_catalogArray; };
+
     private:
         Catalog::CatalogVolumeDataArray m_catalogArray;
         int m_catalogVolumeDataNdx;

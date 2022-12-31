@@ -400,7 +400,7 @@ namespace ODT {
     {
         std::cout << "*************************************************\n";
 
-        wxString str = ODT::ODTDoc( )->MakeAbsolute( "content.xml" );
+        wxString str = ODT::ODTDoc( )->GetDocFilesDir()+"/content.xml" ;
         // if ( !
         Utils::Save( m_content, str );
         // {

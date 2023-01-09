@@ -38,7 +38,7 @@
  * Forward declarations
  */
 
-// forward declarations
+ // forward declarations
 class LabeledTextBox;
 class wxListCtrl;
 // forward declarations
@@ -65,6 +65,10 @@ class wxListCtrl;
 #define ID_NBRDEFAULTFONTBUTTON 10016
 #define ID_TITLEDEFAULTFONTBUTTON 10017
 #define ID_TITLEFONTPANEL 10018
+#define ID_ALBUMLAYOUTTEXTCTRL 10020
+#define ID_ALBUMLAYOUTPANEL 10021
+#define ID_ALBUMNOTEBOOK 10022
+#define ID_ALBUMNAMEPANEL 10023
 #define SYMBOL_ALBUMDETAILSDIALOG_STYLE wxCAPTION|wxRESIZE_BORDER|wxSYSTEM_MENU|wxCLOSE_BOX|wxTAB_TRAVERSAL
 #define SYMBOL_ALBUMDETAILSDIALOG_TITLE _("AlbumDetailsDialog")
 #define SYMBOL_ALBUMDETAILSDIALOG_IDNAME ID_ALBUMDETAILSDIALOG
@@ -78,95 +82,95 @@ class wxListCtrl;
 //
 
 class AlbumDetailsDialog: public wxDialog
-{    
+{
     DECLARE_DYNAMIC_CLASS( AlbumDetailsDialog )
-    DECLARE_EVENT_TABLE()
+        DECLARE_EVENT_TABLE( )
 
 public:
     /// Constructors
-    AlbumDetailsDialog();
+    AlbumDetailsDialog( );
     AlbumDetailsDialog( wxWindow* parent, wxWindowID id = SYMBOL_ALBUMDETAILSDIALOG_IDNAME, const wxString& caption = SYMBOL_ALBUMDETAILSDIALOG_TITLE, const wxPoint& pos = SYMBOL_ALBUMDETAILSDIALOG_POSITION, const wxSize& size = SYMBOL_ALBUMDETAILSDIALOG_SIZE, long style = SYMBOL_ALBUMDETAILSDIALOG_STYLE );
 
     /// Creation
     bool Create( wxWindow* parent, wxWindowID id = SYMBOL_ALBUMDETAILSDIALOG_IDNAME, const wxString& caption = SYMBOL_ALBUMDETAILSDIALOG_TITLE, const wxPoint& pos = SYMBOL_ALBUMDETAILSDIALOG_POSITION, const wxSize& size = SYMBOL_ALBUMDETAILSDIALOG_SIZE, long style = SYMBOL_ALBUMDETAILSDIALOG_STYLE );
 
     /// Destructor
-    ~AlbumDetailsDialog();
+    ~AlbumDetailsDialog( );
 
     /// Initialises member variables
-    void Init();
+    void Init( );
 
     /// Creates the controls and sizers
-    void CreateControls();
+    void CreateControls( );
 
-//// AlbumDetailsDialog event handler declarations
+    //// AlbumDetailsDialog event handler declarations
 
-//// AlbumDetailsDialog event handler declarations
+    //// AlbumDetailsDialog event handler declarations
 
-//// AlbumDetailsDialog member function declarations
+    //// AlbumDetailsDialog member function declarations
 
-    /// Retrieves bitmap resources
+        /// Retrieves bitmap resources
     wxBitmap GetBitmapResource( const wxString& name );
 
     /// Retrieves icon resources
     wxIcon GetIconResource( const wxString& name );
-//// AlbumDetailsDialog member function declarations
+    //// AlbumDetailsDialog member function declarations
 
-    /// Should we show tooltips?
-    static bool ShowToolTips();
-void SetName( wxString name );
-void SetPageHeight( wxString height );
-void SetPageWidth( wxString width );
-void SetTopMargin( wxString margin );
-void SetBottomMargin( wxString margin );
-void SetLeftMargin( wxString margin );
-void SetRightMargin( wxString margin );
-void SetBorderSize( wxString size );
-void SetShowCatNbr( bool state);
-void SetShowStampTitle( bool state);
+        /// Should we show tooltips?
+    static bool ShowToolTips( );
+    void SetName( wxString name );
+    void SetPageHeight( wxString height );
+    void SetPageWidth( wxString width );
+    void SetTopMargin( wxString margin );
+    void SetBottomMargin( wxString margin );
+    void SetLeftMargin( wxString margin );
+    void SetRightMargin( wxString margin );
+    void SetBorderSize( wxString size );
+    void SetShowCatNbr( bool state );
+    void SetShowStampTitle( bool state );
 
-wxString GetName( );
-wxString GetPageHeight( ) ;
-wxString GetPageWidth(   );
-wxString GetTopMargin( );
-wxString GetBottomMargin( );
-wxString GetLeftMargin(  );
-wxString GetRightMargin( );
-wxString GetBorderSize( );
-bool GetShowCatNbr( );
-bool GetShowStampTitle( );
+    wxString GetName( );
+    wxString GetPageHeight( );
+    wxString GetPageWidth( );
+    wxString GetTopMargin( );
+    wxString GetBottomMargin( );
+    wxString GetLeftMargin( );
+    wxString GetRightMargin( );
+    wxString GetBorderSize( );
+    bool GetShowCatNbr( );
+    bool GetShowStampTitle( );
 
-bool IsNameModified( );
-bool IsPageHeightModified( ) ;
-bool IsPageWidthModified(   );
-bool IsTopMarginModified( );
-bool IsBottomMarginModified( );
-bool IsLeftMarginModified(  );
-bool IsRightMarginModified( );
-bool IsBorderSizeModified( );
-//bool IsShowCatNbrModified( );
-//bool IsShowStampTitleModified( );
-
-
-
-void SetNameModified( bool state ) ;
-void SetPageHeightModified( bool state ) ;
-void SetPageWidthModified( bool state );
-void SetTopMarginModified( bool state );
-void SetBottomMarginModified( bool state );
-void SetLeftMarginModified( bool state );
-void SetRightMarginModified( bool state );
-void SetBorderSizeModified( bool state );
-//void SetShowCatNbrModified( bool state );
-//void SetShowStampTitleModified( bool state );
-
-void OnOkClick( wxCommandEvent& event );
-void OnCancelClick( wxCommandEvent& event );
-void OnNbrDefaultClick( wxCommandEvent& event );
-void OnTitleDefaultClick( wxCommandEvent& event );
+    bool IsNameModified( );
+    bool IsPageHeightModified( );
+    bool IsPageWidthModified( );
+    bool IsTopMarginModified( );
+    bool IsBottomMarginModified( );
+    bool IsLeftMarginModified( );
+    bool IsRightMarginModified( );
+    bool IsBorderSizeModified( );
+    //bool IsShowCatNbrModified( );
+    //bool IsShowStampTitleModified( );
 
 
-//// AlbumDetailsDialog member variables
+
+    void SetNameModified( bool state );
+    void SetPageHeightModified( bool state );
+    void SetPageWidthModified( bool state );
+    void SetTopMarginModified( bool state );
+    void SetBottomMarginModified( bool state );
+    void SetLeftMarginModified( bool state );
+    void SetRightMarginModified( bool state );
+    void SetBorderSizeModified( bool state );
+    //void SetShowCatNbrModified( bool state );
+    //void SetShowStampTitleModified( bool state );
+
+    void OnOkClick( wxCommandEvent& event );
+    void OnCancelClick( wxCommandEvent& event );
+    void OnNbrDefaultClick( wxCommandEvent& event );
+    void OnTitleDefaultClick( wxCommandEvent& event );
+
+
+    //// AlbumDetailsDialog member variables
     LabeledTextBox* m_name;
     LabeledTextBox* m_height;
     LabeledTextBox* m_width;
@@ -176,17 +180,18 @@ void OnTitleDefaultClick( wxCommandEvent& event );
     LabeledTextBox* m_leftMargin;
     LabeledTextBox* m_borderSize;
 
-wxCheckBox* m_catNbrCheckbox;
-wxCheckBox* m_stampTitleCheckbox;
+    wxCheckBox* m_catNbrCheckbox;
+    wxCheckBox* m_stampTitleCheckbox;
     wxFontPickerCtrl* m_titleFontPicker;
     wxColourPickerCtrl* m_titleColorPicker;
     wxFontPickerCtrl* m_catNbrFontPicker;
     wxColourPickerCtrl* m_catNbrColorPicker;
 
-wxButton* m_validate;
+    wxButton* m_validate;
     wxListCtrl* m_statusList;
-//// AlbumDetailsDialog member variables
+
+    //// AlbumDetailsDialog member variables
 };
 
 #endif
-    // _ALBUMDETAILSDIALOG_H_
+// _ALBUMDETAILSDIALOG_H_

@@ -301,6 +301,8 @@ public:
     void AddRowTreeItem( wxTreeItemId node  );
     void AddColTreeItem( wxTreeItemId node  );
     Utils::StampLink* AppendStamp( wxTreeItemId id );
+    wxString GetImageFullPath( wxTreeItemId catID );
+
     wxTreeItemId GetPage( wxTreeItemId id );
     void MakePage(wxTreeItemId id);
 
@@ -389,6 +391,7 @@ public:
     Design::LayoutBase* GetSelectedNode( );
     void ShowAlbumDetails( wxTreeItemId treeID, Design::AlbumBase* node );
     void ShowStampDetails( wxTreeItemId id, Design::AlbumBase* node );
+    void ShowPageDetails( wxTreeItemId treeID, Design::AlbumBase* node );
     void ShowRowDetails( wxTreeItemId id, Design::AlbumBase* node );
     void ShowColDetails( wxTreeItemId id, Design::AlbumBase* node );
     void Validate( wxTreeItemId id );

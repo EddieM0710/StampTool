@@ -282,8 +282,8 @@ namespace Design {
                 // set the layout parameters into the child
                 Page* page = ( Page* )GetDesignTreeCtrl( )->GetItemNode( childID );
                 //page->SetBorder( m_border );
-                page->SetXPos( 0 );//GetRightMargin( ) );
-                page->SetYPos( 0 );// GetTopMargin( ) );
+                page->SetXPos( GetRightMargin( ) );
+                page->SetYPos( GetTopMargin( ) );
                 page->SetWidth( GetWidth( ) - GetRightMargin( ) - GetLeftMargin( ) );
                 page->SetHeight( GetHeight( ) - GetTopMargin( ) - GetBottomMargin( ) );
                 page->SetTopMargin( GetTopMargin( ) );
@@ -410,7 +410,7 @@ namespace Design {
         UpdateSizes( );
         UpdatePositions( );
         Write( ( wxXmlNode* )0 );
-        DumpLayout( );
+//        DumpLayout( );
     }
 
     NodeStatus Album::ValidateNode( )

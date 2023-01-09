@@ -172,6 +172,8 @@ namespace Design {
 
         void Save( wxXmlNode* parent );
 
+        void ReportLayout(  );
+
     private:
 
 
@@ -205,7 +207,7 @@ namespace Design {
          *
          **************************************************/
         double m_borderSize;
-        Frame m_pageFrame;
+
     };
 }
 #endif

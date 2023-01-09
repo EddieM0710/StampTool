@@ -6,18 +6,18 @@
  * @date 2022-02-04
  *
  * @copyright Copyright (c) 2022
- * 
+ *
  * This file is part of AlbumGenerator.
  *
- * AlbumGenerator is free software: you can redistribute it and/or modify it under the 
- * terms of the GNU General Public License as published by the Free Software Foundation, 
+ * AlbumGenerator is free software: you can redistribute it and/or modify it under the
+ * terms of the GNU General Public License as published by the Free Software Foundation,
  * either version 3 of the License, or any later version.
  *
- * AlbumGenerator is distributed in the hope that it will be useful, but WITHOUT ANY 
- * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+ * AlbumGenerator is distributed in the hope that it will be useful, but WITHOUT ANY
+ * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
- * You should have received a copy of the GNU General Public License along with 
+ * You should have received a copy of the GNU General Public License along with
  * AlbumGenerator. If not, see <https://www.gnu.org/licenses/>.
  *
  **************************************************/
@@ -38,7 +38,7 @@ namespace Design {
 
     bool Column::UpdateMinimumSize( )
     {
-        m_frame.WriteLayout( "Col::UpdateMinimumSizes <");
+        m_frame.WriteLayout( "Col::UpdateMinimumSizes <" );
 
         //Positioning down the col.
         //The min width of the col is the size of the widest child 
@@ -88,12 +88,12 @@ namespace Design {
 
         SetMinHeight( minHeight + topPadding + bottomPadding );
         SetMinWidth( minWidth + leftPadding + rightPadding );
-        m_frame.WriteLayout( "Col::UpdateMinimumSizes >");
+        m_frame.WriteLayout( "Col::UpdateMinimumSizes >" );
     }
 
     void Column::UpdateSizes( )
     {
-        m_frame.WriteLayout( "Col::UpdateSizes <");
+        m_frame.WriteLayout( "Col::UpdateSizes <" );
 
         int nbrRows = 0;
         int nbrCols = 0;
@@ -125,7 +125,7 @@ namespace Design {
             child->UpdateSizes( );
             childID = GetDesignTreeCtrl( )->GetNextChild( parentID, cookie );
         }
-        m_frame.WriteLayout( "Col::UpdateSizes >");
+        m_frame.WriteLayout( "Col::UpdateSizes >" );
 
     }
 
@@ -134,7 +134,7 @@ namespace Design {
     // calculate the column layout based on child parameters
     void Column::UpdatePositions( )
     {
-        m_frame.WriteLayout( "Col::UpdatePositions <");
+        m_frame.WriteLayout( "Col::UpdatePositions <" );
         // go to the bottom of each child container object ( row, column, page) 
         // and begin filling in position relative to the parent
 
@@ -192,7 +192,7 @@ namespace Design {
             }
             childID = GetDesignTreeCtrl( )->GetNextChild( parentID, cookie );
         }
-        m_frame.WriteLayout( "Col::UpdatePositions >");
+        m_frame.WriteLayout( "Col::UpdatePositions >" );
 
     }
 
@@ -261,14 +261,21 @@ namespace Design {
         NodeStatus status = AT_OK;
         if ( !HasChildren( ) )
         {
+            GetErrorArray( )->Empty( );
             if ( GetHeight( ) <= 0.0 )
             {
-//                std::cout << "Terminal leaf node must define the height.\n";
+                wxString str;
+                str.Format( "Terminal leaf node must define the height. height:>>%7.2f<< \n", GetHeight( ) );
+                GetErrorArray( )->Add( str );
+                std::cout << "Terminal leaf node must define the height.\n";
                 status = AT_FATAL;
             }
             if ( GetWidth( ) <= 0.0 )
             {
-//                std::cout << "Terminal leaf node must define the width.\n";
+                wxString str;
+                str.Format( "Terminal leaf node must define the width. width:>>%7.2f<< \n", GetWidth( ) );
+                GetErrorArray( )->Add( str );
+                //                std::cout << "Terminal leaf node must define the width.\n";
                 status = AT_FATAL;
             }
         }
@@ -289,6 +296,7 @@ namespace Design {
         }
 
         m_frame.draw( dc, x, y );
+        SetClientDimensions( dc, x, y, GetWidth(), GetHeight());
 
         if ( GetShowTitle( ) )
         {
@@ -321,4 +329,10 @@ namespace Design {
         SetAttribute( xmlNode, AT_ShowTitle );
         SetAttribute( xmlNode, AT_ShowFrame );
     }
+
+    void Column::ReportLayout(  )
+    {
+        std::cout << "Layout for Column " << "\n ";
+        ReportLayoutFrame(  ) ;  
+    };
 }

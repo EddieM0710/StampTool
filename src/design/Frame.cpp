@@ -65,13 +65,20 @@ namespace Design {
         DrawRectangle( dc, x + GetXPos( ), y + GetYPos( ), GetWidth( ), GetHeight( ) );
     };
 
+    wxString Frame::ReportLayout( wxString indent )
+    { 
+        wxString str = wxString::Format( "%sFrame  xPos:%7.2f  yPos:%7.2f     width:%7.2f  height:%7.2f\n",
+        indent, GetXPos( ), GetYPos( ),  GetWidth( ), GetHeight( ));
+        std::cout << str;
+        return str ;
+    }
 
     void Frame::WriteLayout( wxString str )
     {
-        // std::cout << str << " ( x:"
-        //     << GetXPos( ) << ", y:" << GetYPos( )
-        //     << ", w:" << GetWidth( ) << ", h:" << GetHeight( )
-        //     << ", minW:" << GetMinWidth( ) << ", minH:" << GetMinHeight( ) << " )\n";
+        std::cout << str << " Pos("
+            << GetXPos( ) << ", " << GetYPos( )
+            << ") , Size(" << GetWidth( ) << ", " << GetHeight( )
+            << "), MinSize(" << GetMinWidth( ) << "," << GetMinHeight( ) << ")\n";
  
         if ((GetXPos()< 0)||(GetYPos()< 0))
         {

@@ -1,23 +1,23 @@
-/* 
+/*
  * @file RowDetailsDialog.h
- * @author Eddie Monroe 
- * @brief 
+ * @author Eddie Monroe
+ * @brief
  * @version 0.1
  * @date 2022-04-29
  *
- * @copyright Copyright (c) 2022 
- * 
+ * @copyright Copyright (c) 2022
+ *
  * This file is part of AlbumGenerator.
  *
- * AlbumGenerator is free software: you can redistribute it and/or modify it under the 
- * terms of the GNU General Public License as published by the Free Software Foundation, 
+ * AlbumGenerator is free software: you can redistribute it and/or modify it under the
+ * terms of the GNU General Public License as published by the Free Software Foundation,
  * either version 3 of the License, or any later version.
  *
- * AlbumGenerator is distributed in the hope that it will be useful, but WITHOUT ANY 
- * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+ * AlbumGenerator is distributed in the hope that it will be useful, but WITHOUT ANY
+ * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
- * You should have received a copy of the GNU General Public License along with 
+ * You should have received a copy of the GNU General Public License along with
  * AlbumGenerator. If not, see <https://www.gnu.org/licenses/>.
  */
 
@@ -25,11 +25,11 @@
 #define _ROWDETAILSDIALOG_H_
 
 
-/*!
- * Includes
- */
+ /*!
+  * Includes
+  */
 
-// includes
+  // includes
 #include "wx/listctrl.h"
 // includes
 
@@ -42,7 +42,7 @@
  * Forward declarations
  */
 
-// forward declarations
+ // forward declarations
 class LabeledTextBox;
 class wxListCtrl;
 // forward declarations
@@ -51,7 +51,7 @@ class wxListCtrl;
  * Control identifiers
  */
 
-// control identifiers
+ // control identifiers
 #define ID_ROWDETAILSDIALOG 10000
 #define ID_NAMELABELEDTEXTBOX 10009
 #define ID_ROWTITLECHECKBOX 10004
@@ -59,6 +59,9 @@ class wxListCtrl;
 #define ID_LISTCTRL 10006
 #define ID_DEFAULTFONTBUTTON 10007
 #define ID_ROWNAMEPANEL 10008
+#define ID_ROWLAYOUTPANEL 10020
+#define ID_ROWLAYOUTTEXTCTRL 10021
+#define ID_ROWNOTEBOOK 10022
 #define SYMBOL_ROWDETAILSDIALOG_STYLE wxCAPTION|wxRESIZE_BORDER|wxSYSTEM_MENU|wxCLOSE_BOX|wxTAB_TRAVERSAL
 #define SYMBOL_ROWDETAILSDIALOG_TITLE _("Row Details Dialog")
 #define SYMBOL_ROWDETAILSDIALOG_IDNAME ID_ROWDETAILSDIALOG
@@ -72,64 +75,66 @@ class wxListCtrl;
  */
 
 class RowDetailsDialog: public wxDialog
-{    
+{
     DECLARE_DYNAMIC_CLASS( RowDetailsDialog )
-    DECLARE_EVENT_TABLE()
+        DECLARE_EVENT_TABLE( )
 
 public:
     /// Constructors
-    RowDetailsDialog();
+    RowDetailsDialog( );
     RowDetailsDialog( wxWindow* parent, wxWindowID id = SYMBOL_ROWDETAILSDIALOG_IDNAME, const wxString& caption = SYMBOL_ROWDETAILSDIALOG_TITLE, const wxPoint& pos = SYMBOL_ROWDETAILSDIALOG_POSITION, const wxSize& size = SYMBOL_ROWDETAILSDIALOG_SIZE, long style = SYMBOL_ROWDETAILSDIALOG_STYLE );
 
     /// Creation
     bool Create( wxWindow* parent, wxWindowID id = SYMBOL_ROWDETAILSDIALOG_IDNAME, const wxString& caption = SYMBOL_ROWDETAILSDIALOG_TITLE, const wxPoint& pos = SYMBOL_ROWDETAILSDIALOG_POSITION, const wxSize& size = SYMBOL_ROWDETAILSDIALOG_SIZE, long style = SYMBOL_ROWDETAILSDIALOG_STYLE );
 
     /// Destructor
-    ~RowDetailsDialog();
+    ~RowDetailsDialog( );
 
     /// Initialises member variables
-    void Init();
+    void Init( );
 
     /// Creates the controls and sizers
-    void CreateControls();
+    void CreateControls( );
 
-// RowDetailsDialog event handler declarations
+    // RowDetailsDialog event handler declarations
 
-    /// wxEVT_COMMAND_BUTTON_CLICKED event handler for wxID_OK
+        /// wxEVT_COMMAND_BUTTON_CLICKED event handler for wxID_OK
     void OnOkClick( wxCommandEvent& event );
 
-// RowDetailsDialog event handler declarations
+    // RowDetailsDialog event handler declarations
 
-// RowDetailsDialog member function declarations
+    // RowDetailsDialog member function declarations
 
-    /// Retrieves bitmap resources
+        /// Retrieves bitmap resources
     wxBitmap GetBitmapResource( const wxString& name );
 
     /// Retrieves icon resources
     wxIcon GetIconResource( const wxString& name );
-// RowDetailsDialog member function declarations
+    // RowDetailsDialog member function declarations
 
-    /// Should we show tooltips?
-    static bool ShowToolTips();
-    void SetNameModified( bool state ) ;
-    void SetDesignTreeID(wxTreeItemId id );
-    bool IsNameModified( ) ;
+        /// Should we show tooltips?
+    static bool ShowToolTips( );
+    void SetNameModified( bool state );
+    void SetDesignTreeID( wxTreeItemId id );
+    bool IsNameModified( );
     void SetShowTitle( bool state = false );
     void SetShowFrame( bool state = false );
-    bool GetShowTitle();
-    bool GetShowFrame();
+    bool GetShowTitle( );
+    bool GetShowFrame( );
+
 
 
     wxTreeItemId m_designTreeID;
-// RowDetailsDialog member variables
+    // RowDetailsDialog member variables
     LabeledTextBox* m_name;
     wxCheckBox* m_titleCheckbox;
     wxCheckBox* m_frameCheckbox;
     wxListCtrl* m_statusList;
     wxFontPickerCtrl* m_titleFontPicker;
     wxColourPickerCtrl* m_titleColorPicker;
-// RowDetailsDialog member variables
+    // RowDetailsDialog member variables
+
 };
 
 #endif
-    // _ROWDETAILSDIALOG_H_
+// _ROWDETAILSDIALOG_H_

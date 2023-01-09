@@ -123,7 +123,7 @@ namespace Design {
 
     double XMLBase::SetAttrDbl( AlbumAttrType type, double val )
     {
-        wxString str = wxString::Format( "%f", val );
+        wxString str = wxString::Format( "%7.2f", val );
         SetAttrStr( AttrNameStrings[ type ], str );
     }
 

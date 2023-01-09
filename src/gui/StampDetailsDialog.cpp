@@ -1,28 +1,28 @@
 /**
  * @file StampDetailsDialog.cpp
  * @author Eddie Monroe ()
- * @brief 
+ * @brief
  * @version 0.1
  * @date 2022-03-27
- * 
+ *
  * @copyright Copyright (c) 2021
- * 
+ *
  * This file is part of AlbumGenerator.
  *
- * AlbumGenerator is free software: you can redistribute it and/or modify it under the 
- * terms of the GNU General Public License as published by the Free Software Foundation, 
+ * AlbumGenerator is free software: you can redistribute it and/or modify it under the
+ * terms of the GNU General Public License as published by the Free Software Foundation,
  * either version 3 of the License, or any later version.
  *
- * AlbumGenerator is distributed in the hope that it will be useful, but WITHOUT ANY 
- * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+ * AlbumGenerator is distributed in the hope that it will be useful, but WITHOUT ANY
+ * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
- * You should have received a copy of the GNU General Public License along with 
+ * You should have received a copy of the GNU General Public License along with
  * AlbumGenerator. If not, see <https://www.gnu.org/licenses/>.
- * 
+ *
  **************************************************/
 
-// For compilers that support precompilation, includes "wx/wx.h".
+ // For compilers that support precompilation, includes "wx/wx.h".
 #include "wx/wxprec.h"
 
 #ifdef __BORLANDC__
@@ -36,6 +36,7 @@
 // includes
 #include "wx/imaglist.h"
 // includes
+#include "wx/notebook.h"
 
 #include "gui/StampDetailsDialog.h"
 #include "gui/LabeledTextBox.h"
@@ -148,86 +149,88 @@ void StampDetailsDialog::CreateControls( )
 {
     // StampDetailsDialog content construction
 
-    StampDetailsDialog* itemDialog1 = this;
+    StampDetailsDialog* theDialog = this;
 
-    wxBoxSizer* itemBoxSizer2 = new wxBoxSizer( wxVERTICAL );
-    itemDialog1->SetSizer( itemBoxSizer2 );
+    wxBoxSizer* theDialogVerticalSizer = new wxBoxSizer( wxVERTICAL );
+    theDialog->SetSizer( theDialogVerticalSizer );
 
-    wxBoxSizer* itemBoxSizer1 = new wxBoxSizer( wxHORIZONTAL );
-    itemBoxSizer2->Add( itemBoxSizer1, 0, wxGROW | wxALL, 0 );
+    wxBoxSizer* theDialogHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
+    theDialogVerticalSizer->Add( theDialogHorizontalSizer, 0, wxGROW | wxALL, 0 );
 
-    wxBoxSizer* itemBoxSizer4 = new wxBoxSizer( wxVERTICAL );
-    itemBoxSizer1->Add( itemBoxSizer4, 0, wxGROW | wxALL, 5 );
+    wxBoxSizer* detailsVerticalSizer = new wxBoxSizer( wxVERTICAL );
 
-    m_catNbr = new LabeledTextBox( itemDialog1, ID_IDLABELTEXTBOX, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
+    m_catNbr = new LabeledTextBox( theDialog/*detailsPanel*/, ID_IDLABELTEXTBOX, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
     m_catNbr->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
-    itemBoxSizer4->Add( m_catNbr, 0, wxGROW | wxALL, 5 );
+    detailsVerticalSizer->Add( m_catNbr, 0, wxGROW | wxALL, 5 );
 
-    m_catNbrCheckbox = new wxCheckBox( itemDialog1, ID_CATNBRCHECKBOX, _( "Show ID" ), wxDefaultPosition, wxDefaultSize, 0 );
+    m_catNbrCheckbox = new wxCheckBox( theDialog/*detailsPanel*/, ID_CATNBRCHECKBOX, _( "Show ID" ), wxDefaultPosition, wxDefaultSize, 0 );
     m_catNbrCheckbox->SetValue( false );
-    itemBoxSizer4->Add( m_catNbrCheckbox, 0, wxALIGN_LEFT | wxALL, 5 );
+    detailsVerticalSizer->Add( m_catNbrCheckbox, 0, wxALIGN_LEFT | wxALL, 5 );
 
     wxBoxSizer* itemBoxSizer8 = new wxBoxSizer( wxVERTICAL );
-    itemBoxSizer1->Add( itemBoxSizer8, 1, wxGROW | wxALL, 5 );
+    detailsVerticalSizer->Add( itemBoxSizer8, 1, wxGROW | wxALL, 5 );
 
-    m_name = new LabeledTextBox( itemDialog1, ID_NAMELABELEDTEXTBOX, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
+    m_name = new LabeledTextBox( theDialog/*detailsPanel*/, ID_NAMELABELEDTEXTBOX, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
     m_name->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
     itemBoxSizer8->Add( m_name, 1, wxGROW | wxALL, 5 );
 
-    m_titleCheckbox = new wxCheckBox( itemDialog1, ID_TITLECHECKBOX, _( "Show Title" ), wxDefaultPosition, wxDefaultSize, 0 );
+    m_titleCheckbox = new wxCheckBox( theDialog/*detailsPanel*/, ID_TITLECHECKBOX, _( "Show Title" ), wxDefaultPosition, wxDefaultSize, 0 );
     m_titleCheckbox->SetValue( false );
     itemBoxSizer8->Add( m_titleCheckbox, 0, wxALIGN_LEFT | wxALL, 5 );
 
-    m_imagePath = new LabeledTextBox( itemDialog1, ID_IMAGEPATHLABELEDTEXTBOX, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
+    m_imagePath = new LabeledTextBox( theDialog/*detailsPanel*/, ID_IMAGEPATHLABELEDTEXTBOX, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
     m_imagePath->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
-    itemBoxSizer2->Add( m_imagePath, 0, wxGROW | wxALL, 5 );
+    detailsVerticalSizer->Add( m_imagePath, 0, wxGROW | wxALL, 5 );
 
     wxBoxSizer* itemBoxSizer3 = new wxBoxSizer( wxHORIZONTAL );
-    itemBoxSizer2->Add( itemBoxSizer3, 0, wxGROW | wxALL, 0 );
+    detailsVerticalSizer->Add( itemBoxSizer3, 0, wxGROW | wxALL, 0 );
 
-    m_height = new LabeledTextBox( itemDialog1, ID_HEIGHTLABELEDTEXTBOX, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
+    m_height = new LabeledTextBox( theDialog/*detailsPanel*/, ID_HEIGHTLABELEDTEXTBOX, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
     m_height->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
     itemBoxSizer3->Add( m_height, 1, wxGROW | wxALL, 5 );
 
-    m_width = new LabeledTextBox( itemDialog1, ID_WIDTHLABELEDTEXTBOX, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
+    m_width = new LabeledTextBox( theDialog/*detailsPanel*/, ID_WIDTHLABELEDTEXTBOX, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
     m_width->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
     itemBoxSizer3->Add( m_width, 1, wxGROW | wxALL, 5 );
 
     wxBoxSizer* itemBoxSizer6 = new wxBoxSizer( wxHORIZONTAL );
-    itemBoxSizer2->Add( itemBoxSizer6, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 0 );
+    detailsVerticalSizer->Add( itemBoxSizer6, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 0 );
 
-    wxButton* itemButton7 = new wxButton( itemDialog1, ID_REFRESHBUTTON, _( "Refresh from Catalog" ), wxDefaultPosition, wxDefaultSize, 0 );
+    wxButton* itemButton7 = new wxButton( theDialog/*detailsPanel*/, ID_REFRESHBUTTON, _( "Refresh from Catalog" ), wxDefaultPosition, wxDefaultSize, 0 );
     itemBoxSizer6->Add( itemButton7, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
     itemBoxSizer6->Add( 5, 5, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
-    m_validate = new wxButton( itemDialog1, ID_VALIDATEBUTTON, _( "Validate" ), wxDefaultPosition, wxDefaultSize, 0 );
+    m_validate = new wxButton( theDialog/*detailsPanel*/, ID_VALIDATEBUTTON, _( "Validate" ), wxDefaultPosition, wxDefaultSize, 0 );
     itemBoxSizer6->Add( m_validate, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
     wxBoxSizer* itemBoxSizer10 = new wxBoxSizer( wxHORIZONTAL );
-    itemBoxSizer2->Add( itemBoxSizer10, 2, wxGROW | wxALL, 5 );
+    detailsVerticalSizer->Add( itemBoxSizer10, 2, wxGROW | wxALL, 5 );
 
-    m_statusList = new wxListCtrl( itemDialog1, ID_LISTCTRL, wxDefaultPosition, wxSize( 100, 100 ), wxLC_REPORT | wxLC_NO_HEADER );
+    m_statusList = new wxListCtrl( theDialog/*detailsPanel*/, ID_LISTCTRL, wxDefaultPosition, wxSize( 100, 100 ), wxLC_REPORT | wxLC_NO_HEADER );
     itemBoxSizer10->Add( m_statusList, 2, wxGROW | wxALL, 5 );
 
     wxBoxSizer* itemBoxSizer14 = new wxBoxSizer( wxHORIZONTAL );
-    itemBoxSizer1->Add( itemBoxSizer14, 2, wxGROW | wxALL, 5 );
+    detailsVerticalSizer->Add( itemBoxSizer14, 2, wxGROW | wxALL, 5 );
 
-wxFontPickerCtrl* m_fontPicker = new wxFontPickerCtrl(itemDialog1, 12345, 
-*wxNORMAL_FONT, wxDefaultPosition, 
-wxDefaultSize, wxFNTP_DEFAULT_STYLE);
-itemBoxSizer14->Add(m_fontPicker, 2, wxGROW | wxALL, 5 );
+    wxFontPickerCtrl* m_fontPicker = new wxFontPickerCtrl( theDialog/*detailsPanel*/, 12345,
+        *wxNORMAL_FONT, wxDefaultPosition,
+        wxDefaultSize, wxFNTP_DEFAULT_STYLE );
+    itemBoxSizer14->Add( m_fontPicker, 2, wxGROW | wxALL, 5 );
 
-    wxBoxSizer* itemBoxSizer12 = new wxBoxSizer( wxHORIZONTAL );
-    itemBoxSizer2->Add( itemBoxSizer12, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 0 );
+    //<<error list ctrls
 
-    wxButton* itemButton13 = new wxButton( itemDialog1, wxID_CANCEL, _( "Cancel" ), wxDefaultPosition, wxDefaultSize, 0 );
-    itemBoxSizer12->Add( itemButton13, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+    //>>dialog Ctrl buttons
+    wxBoxSizer* dialogCtrlButtonSizer = new wxBoxSizer( wxHORIZONTAL );
+    theDialogVerticalSizer->Add( dialogCtrlButtonSizer, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 0 );
 
-    wxButton* itemButton14 = new wxButton( itemDialog1, wxID_OK, _( "OK" ), wxDefaultPosition, wxDefaultSize, 0 );
-    itemBoxSizer12->Add( itemButton14, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+    wxButton* cancelButton = new wxButton( theDialog, wxID_CANCEL, _( "Cancel" ), wxDefaultPosition, wxDefaultSize, 0 );
+    dialogCtrlButtonSizer->Add( cancelButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
-    // StampDetailsDialog content construction
+    wxButton* okButton = new wxButton( theDialog, wxID_OK, _( "OK" ), wxDefaultPosition, wxDefaultSize, 0 );
+    dialogCtrlButtonSizer->Add( okButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+    //>>dialog Ctrl buttons  
+
 
     m_catNbr->SetLabel( "Catalog Nbr" );
     m_name->SetLabel( "Name" );
@@ -296,99 +299,99 @@ void StampDetailsDialog::SetCatNbr( wxString catNbr )
     m_catNbr->SetModified( false );
 }
 
-void StampDetailsDialog::SetName( wxString name ) 
+void StampDetailsDialog::SetName( wxString name )
 {
     m_name->SetValue( name );
     m_name->SetModified( false );
 }
 
-void StampDetailsDialog::SetShowCatNbr( bool state ) 
+void StampDetailsDialog::SetShowCatNbr( bool state )
 {
     m_catNbrCheckbox->SetValue( state );
 }
 
-void StampDetailsDialog::SetShowTitle( bool state ) 
+void StampDetailsDialog::SetShowTitle( bool state )
 {
     m_titleCheckbox->SetValue( state );
 }
 
-void StampDetailsDialog::SetDesignTreeID( wxTreeItemId id ) 
+void StampDetailsDialog::SetDesignTreeID( wxTreeItemId id )
 {
-    if ( id.IsOk( ) ) 
+    if ( id.IsOk( ) )
         m_designTreeID = id;
 }
 
 
-wxString StampDetailsDialog::GetImageFilename( ) 
+wxString StampDetailsDialog::GetImageFilename( )
 {
     return m_imagePath->GetValue( );
 }
-wxString StampDetailsDialog::GetHeight( ) 
+wxString StampDetailsDialog::GetHeight( )
 {
     return m_height->GetValue( );
 }
 
-wxString StampDetailsDialog::GetWidth( ) 
+wxString StampDetailsDialog::GetWidth( )
 {
     return m_width->GetValue( );
 }
 
-wxString StampDetailsDialog::GetCatNbr( ) 
+wxString StampDetailsDialog::GetCatNbr( )
 {
     return m_catNbr->GetValue( );
 }
 
-wxString StampDetailsDialog::GetName( ) 
+wxString StampDetailsDialog::GetName( )
 {
     return m_name->GetValue( );
 }
 
-bool StampDetailsDialog::GetShowCatNbr( ) 
+bool StampDetailsDialog::GetShowCatNbr( )
 {
     return m_catNbrCheckbox->IsChecked( );
 }
 
-bool StampDetailsDialog::GetShowTitle( ) 
+bool StampDetailsDialog::GetShowTitle( )
 {
     return m_titleCheckbox->IsChecked( );
 }
 
-bool StampDetailsDialog::IsNameModified( ) 
+bool StampDetailsDialog::IsNameModified( )
 {
     return m_name->IsModified( );
 }
 
-bool StampDetailsDialog::IsIDModified( ) 
+bool StampDetailsDialog::IsIDModified( )
 {
     return m_catNbr->IsModified( );
 }
 
-bool StampDetailsDialog::IsHeightModified( ) 
+bool StampDetailsDialog::IsHeightModified( )
 {
     return m_height->IsModified( );
 }
 
-bool StampDetailsDialog::IsWidthModified( ) 
+bool StampDetailsDialog::IsWidthModified( )
 {
     return m_width->IsModified( );
 }
 
-void StampDetailsDialog::SetHeightModified( bool state ) 
+void StampDetailsDialog::SetHeightModified( bool state )
 {
     m_height->SetModified( state );
 }
 
-void StampDetailsDialog::SetWidthModified( bool state ) 
+void StampDetailsDialog::SetWidthModified( bool state )
 {
     m_width->SetModified( state );
 }
 
-void StampDetailsDialog::SetCatNbrModified( bool state ) 
+void StampDetailsDialog::SetCatNbrModified( bool state )
 {
     m_catNbr->SetModified( state );
 }
 
-void StampDetailsDialog::SetNameModified( bool state ) 
+void StampDetailsDialog::SetNameModified( bool state )
 {
     m_name->SetModified( state );
 }

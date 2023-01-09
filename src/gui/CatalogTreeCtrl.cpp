@@ -30,6 +30,7 @@
 #include "wx/renderer.h"
 #include "wx/wupdlock.h"
 #include <wx/clipbrd.h>
+#include <wx/filename.h>
 
 #include "Defs.h"
 #include "gui/GuiDefs.h"
@@ -256,8 +257,6 @@ Utils::StampLink* CatalogTreeCtrl::AppendAlbumStamp( wxTreeItemId itemId )
     {
         CatalogTreeItemData* data = ( CatalogTreeItemData* )GetItemData( itemId );
         data->SetStampLink( link );
-        //        wxXmlNode* catNode = GetEntryNode( itemId );
-                // link->SetCatNode( catNode );
         link->SetCatTreeID( itemId );
     }
     return link;
@@ -275,17 +274,12 @@ wxXmlNode* CatalogTreeCtrl::GetEntryNode( wxTreeItemId itemId )
     return node;
 }
 
-//*****
-wxString CatalogTreeCtrl::GetEntryID( wxTreeItemId itemId )
-{
-    wxXmlNode* element = GetEntryNode( itemId );
-    return element->GetAttribute( Catalog::DT_XMLDataNames[ Catalog::DT_ID_Nbr ] );
-}
+
 
 //*****
 Utils::StampLink* CatalogTreeCtrl::FindStampLink( wxTreeItemId itemId )
 {
-    wxString id = GetEntryID( itemId );
+    wxString id = GetIdText( itemId );
     Utils::StampList* stampList = GetGeneratorData( )->GetStampAlbumCatalogLink( );
     Utils::StampLink* stampLink = stampList->FindStampLink( id );
     return stampLink;
@@ -1099,9 +1093,7 @@ bool CatalogTreeCtrl::IsElement( wxTreeItemId item, wxString entryID )
 {
     if ( item.IsOk( ) )
     {
-        CatalogTreeItemData* data = ( CatalogTreeItemData* )GetItemData( item );
-        wxXmlNode* dataEle = data->GetNodeElement( );
-        wxString id = dataEle->GetAttribute( Catalog::DT_XMLDataNames[ Catalog::DT_ID_Nbr ] );
+        wxString id = GetAttribute( item, Catalog::DT_XMLDataNames[ Catalog::DT_ID_Nbr ] );
         if ( entryID.Cmp( id ) )
         {
             return false;
@@ -1264,5 +1256,46 @@ void CatalogTreeCtrl::DisableState( wxTreeItemId id )
             DisableState( child );
             child = GetNextChild( id, cookie );
         }
+    }
+}
+wxString CatalogTreeCtrl::GetIdText(  wxTreeItemId catID  )
+{
+    wxXmlNode* catNode = GetEntryNode( catID );    
+    wxString idText = "";
+    if ( catNode )
+    {
+        idText = catNode->GetAttribute( Catalog::DT_XMLDataNames[ Catalog::DT_ID_Nbr ] );
+    }
+    return idText;
+}
+
+wxString CatalogTreeCtrl::GetAttribute(  wxTreeItemId catID, wxString name )
+{          
+    return GetEntryNode(catID)->GetAttribute( name );
+}
+wxString CatalogTreeCtrl::GetImageFullName( wxTreeItemId catID )
+{
+    if ( catID.IsOk( ) )
+    {
+        CatalogTreeItemData* itemData =  ( CatalogTreeItemData* )GetCatalogTreeCtrl( )->GetItemData( catID ) ;
+        wxString* imageFullName = itemData->GetImageFullName();
+        if ( !imageFullName )
+        {
+            Catalog::CatalogVolumeData* volData = GetGeneratorData()->GetCatalogVolumeData();
+            wxString catFilename = volData->GetVolumeFilename();
+            wxString imageFile = volData->GetImagePath();;
+
+            wxString id = GetAttribute( catID, Catalog::DT_XMLDataNames[ Catalog::DT_ID_Nbr ] );
+
+            id = id.Trim(true);
+            id = id.Trim(false);
+            id.Replace(":","_");
+            id.Replace(" ","_");
+            id.Append(".jpg");        
+
+            imageFullName = new wxString( wxFileName( catFilename ).GetFullPath() +"/"+imageFile+ "/"+id);
+            itemData->SetImageFullName(imageFullName);
+        }
+        return *imageFullName;
     }
 }

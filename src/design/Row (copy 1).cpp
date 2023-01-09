@@ -261,6 +261,7 @@ namespace Design {
 
     void Row::draw( wxDC &dc, double x, double y )
     {
+        std::cout << "Row\n";
         double leftPadding = 0;
         double topPadding = 0;
         dc.SetPen( *wxTRANSPARENT_PEN );
@@ -271,12 +272,9 @@ namespace Design {
             topPadding = GetTopContentPadding();
         }  
 dc.SetPen(*wxBLUE_PEN);
-      
-        SetClientDimensions( dc, x+GetXPos(), y+GetYPos(), GetWidth(), GetHeight());
 
         m_frame.draw( dc, x, y );
 
-     
         if ( GetShowTitle())
         {
             RealPoint pos( x, y );
@@ -287,7 +285,15 @@ dc.SetPen(*wxBLUE_PEN);
 
         double xPos = x+GetXPos()+leftPadding;
         double yPos = y+GetYPos()+topPadding;
-   
+
+        wxPoint pnt(xPos,yPos) ;
+        wxSize sizPnt( GetWidth(), GetHeight() ) ;
+
+        AlbumImagePanel* imagePanel = GetGeneratorData()->GetAlbumImagePanel( ) ;
+        wxPoint scrolledPnt = imagePanel->CalcScrolledPosition( pnt ) ;
+        wxPoint unscrolledPnt = imagePanel->CalcUnscrolledPosition( pnt ) ;
+        SetClientDimensions( scrolledPnt.x, scrolledPnt.y, sizPnt.x, sizPnt.y);
+        
         wxTreeItemIdValue cookie;
         wxTreeItemId parentID = GetTreeItemId();
         wxTreeItemId childID = GetDesignTreeCtrl()->GetFirstChild(parentID, cookie);

@@ -82,7 +82,7 @@ namespace Design {
 
     void Stamp::UpdateSizes( )
     {
-        m_frame.WriteLayout( "Stamp::UpdateSizes <>");
+                m_frame.WriteLayout( "Stamp::UpdateSizes <>");
     }
 
     void Stamp::UpdatePositions( )
@@ -215,29 +215,20 @@ namespace Design {
     NodeStatus Stamp::ValidateNode( )
     {
         NodeStatus status = AT_OK;
-        wxString str;
+
         wxImage* image = GetStampImage( );
         if ( image && !image->IsOk( ) )
         {
-            str.Format("Invalid Stamp Image.\n" );
-            GetErrorArray()->Add( str );
-            std::cout << str;
             SetError( AT_InvalidImage, AT_WARING );
             status = AT_WARING;
         }
         if ( GetHeight( ) <= 0.01 )
         {
-            str.Format("Invalid Stamp Height.\n" );
-            GetErrorArray()->Add( str );
-            std::cout << str;
             SetError( AT_InvalidHeight, AT_FATAL );
             status = AT_FATAL;
         }
         if ( GetWidth( ) <= 0.01 )
         {
-            str.Format("Invalid Stamp Sidth.\n" );
-            GetErrorArray()->Add( str );
-            std::cout << str;
             SetError( AT_InvalidWidth, AT_FATAL );
             status = AT_FATAL;
         }
@@ -378,12 +369,19 @@ namespace Design {
 
     void Stamp::draw( wxDC& dc, double x, double y )
     {
+        wxPoint pnt(x+GetXPos(), y+GetYPos() ) ;
+        wxPoint pnt1 = dc.LogicalToDevice( pnt )  ;      
+        wxSize sizPnt( GetWidth(), GetHeight() ) ;
 
+        AlbumImagePanel* imagePanel = GetGeneratorData()->GetAlbumImagePanel( ) ;
+        wxPoint scrolledPnt = imagePanel->CalcScrolledPosition( pnt1 ) ;
+        wxPoint unscrolledPnt = imagePanel->CalcUnscrolledPosition( pnt1 ) ;
+std::cout << "Stamp Pos unscrolled (" << unscrolledPnt.x <<", "<< unscrolledPnt.y <<")  scrolled ("
+<< scrolledPnt.x <<", "<< scrolledPnt.y <<")\n"; 
+        SetClientDimensions( scrolledPnt.x, scrolledPnt.y, sizPnt.x, sizPnt.y);
 
         //Draw the outer frame transparent
         dc.SetPen( *wxRED_PEN );
-//         std::cout << "       Stamp ";      
-        SetClientDimensions( dc, x + GetXPos( ), y + GetYPos( ), GetMinWidth(), GetMinHeight());
         m_frame.draw( dc, x, y );
 
     

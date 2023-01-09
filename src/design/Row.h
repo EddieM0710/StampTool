@@ -101,6 +101,8 @@ namespace Design {
         {
 //            if ( getch)
         }
+        void ReportLayout(  );
+
     private:
         bool m_showCatNbr;
         bool m_showTitle;

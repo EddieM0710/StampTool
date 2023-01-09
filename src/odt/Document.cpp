@@ -286,8 +286,8 @@ d_fullPath = ODTDoc()->GetPicturesDir() + inputImage.GetFullName();
     bool Document::MakeODT( )
     {
         wxString workingDir = wxGetCwd( );
-        //wxString doc = GetProject( )->GetODTOutputFilename( );
-        wxString doc = ODTDoc()->GetAlbum()->GetDocName();
+        wxString doc = GetProject( )->GetODTOutputFilename( );
+        //wxString doc = ODTDoc()->GetAlbum()->GetDocName();
         wxFileName* outputName = new wxFileName( doc );
         wxFileName outputZipName = *outputName;
         outputZipName.SetExt( wxT( "zip" ) );
@@ -303,7 +303,7 @@ d_fullPath = ODTDoc()->GetPicturesDir() + inputImage.GetFullName();
         int nbrFiles = GetFileList( fileArray, docFilesDir, wxFILE );
         for ( int i = 0; i < nbrFiles; i++ )
         {
-                    wxFileName zipName(fileArray.Item( j ));
+                    wxFileName zipName(fileArray.Item( i ));
                     zipName.MakeRelativeTo( docFilesDir );
                     AddODTFile( zip, fileArray.Item( i ), zipName.GetFullPath()  );
         }

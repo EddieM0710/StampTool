@@ -134,6 +134,8 @@ public:
      **************************************************/
     void OnPaint( wxPaintEvent& event );
 
+    void OnLeftDown( wxMouseEvent& event );
+
     wxRealPoint GetLogicalTextExtent( wxString text, wxFont font );
 
     void MakeMultiLine( wxString& text, wxFont font, double width );

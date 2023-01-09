@@ -67,6 +67,7 @@ BEGIN_EVENT_TABLE( AlbumImagePanel, wxPanel )
 
 // AlbumImagePanel event table entries
 EVT_PAINT( AlbumImagePanel::OnPaint )
+EVT_LEFT_DOWN( AlbumImagePanel::OnLeftDown )
 EVT_CONTEXT_MENU( AlbumImagePanel::OnContextMenu )
 EVT_MENU( ID_RESIZE, AlbumImagePanel::OnResize )
 EVT_MENU( wxID_ZOOM_IN, AlbumImagePanel::OnZoom )
@@ -251,6 +252,7 @@ void AlbumImagePanel::Draw( wxDC& dc, Design::LayoutBase* node, wxPoint pt )
 void AlbumImagePanel::OnPaint( wxPaintEvent& event )
 {
 
+//std::cout << "OnPaint\n";
     Design::DesignData* designData = GetDesignData( );
     if ( designData )
     {
@@ -279,12 +281,16 @@ void AlbumImagePanel::OnPaint( wxPaintEvent& event )
             {
                 scale = ( double )size.x / ( double )width;
             }
+            //double scaledHeight = 
             if ( size.y < ( height * scale ) )
             {
-                scale = ( double )size.y / ( ( double )height * scale ) * scale;
+                scale = ( double )size.y / (( ( double )height * scale ) * scale);
             }
 
             dc.SetUserScale( scale * m_zoom, scale * m_zoom );
+            //  int xScroll = -1*GetScrollPos(wxHORIZONTAL);
+            //  int yScroll = -1*GetScrollPos(wxVERTICAL);
+            //  dc.SetDeviceOrigin( xScroll/scale, yScroll/scale );
 
             dc.DrawRectangle( 0, 0, width, height );
 
@@ -302,16 +308,69 @@ void AlbumImagePanel::OnPaint( wxPaintEvent& event )
 
 
 /*
+ * wxEVT_RIGHT_DOWN event handler for ID_IMAGEPANEL
+ */
+
+void AlbumImagePanel::OnLeftDown( wxMouseEvent& event )
+{
+    // screenpt = event.GetLogicalPosition( );
+    wxPoint //screenpt 
+    clientpt = event.GetPosition( );
+    //wxPoint clientpt = ScreenToClient( screenpt );
+
+    Design::LayoutBase* pageNode = Design::GetSelectedNodePage( );
+
+    if (pageNode )
+    {
+        Design::LayoutBase* item = pageNode->FindObjectByPos( clientpt.x, clientpt.y );
+        if( item )
+        {
+            wxTreeItemId newID = item->GetTreeItemId();
+            GetDesignTreeCtrl( )->SelectItem( newID );
+        }
+    }
+////@begin wxEVT_RIGHT_DOWN event handler for ID_IMAGEPANEL in ImagePanel.
+    // Before editing this code, remove the block markers.
+    event.Skip();
+////@end wxEVT_RIGHT_DOWN event handler for ID_IMAGEPANEL in ImagePanel. 
+}
+
+
+
+/*
  * wxEVT_CONTEXT_MENU event handler for ID_ALBUMIMAGEPANEL
  *
  **************************************************/
 
 void AlbumImagePanel::OnContextMenu( wxContextMenuEvent& event )
 {
-    wxPoint screenpt = event.GetPosition( );
-    wxPoint clientpt = ScreenToClient( clientpt );
 
-    wxMenu menu( "Image Menu" );
+    wxPoint screenpt = event.GetPosition( );
+    wxPoint clientpt = ScreenToClient( screenpt );
+//wxPoint unscrolledPnt = CalcUnscrolledPosition( clientpt ) ;	
+
+//    wxString str = wxString::Format( "point (%i, %i)",unscrolledPnt.x, unscrolledPnt.y );
+
+
+    Design::LayoutBase* pageNode = Design::GetSelectedNodePage( );
+
+    wxString name = "";
+
+    if (pageNode )
+    {
+ //       pageNode->DumpObjectLayout();
+        Design::LayoutBase* item = pageNode->FindObjectByPos( clientpt.x, clientpt.y );
+        if( item )
+        {
+            Design::AlbumBaseType type = item->GetNodeType();
+            name = Design::AlbumBaseNames[type];
+ //           std::cout << "\n\nOnContextMenu Found Point in " << name << "\n";
+
+            wxTreeItemId newID = item->GetTreeItemId();
+            GetDesignTreeCtrl( )->SelectItem( newID );
+        }
+    }
+    wxMenu menu( name );
 
     menu.Append( ID_RESIZE, "&Fit to window\tCtrl-F" );
     menu.Append( wxID_ZOOM_IN, "Zoom &in\tCtrl-+" );

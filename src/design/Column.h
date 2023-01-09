@@ -96,6 +96,8 @@ namespace Design {
 
         void Save( wxXmlNode* xmlNode );
 
+        void ReportLayout(  );
+
     private:
 
 

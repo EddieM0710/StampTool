@@ -102,7 +102,7 @@ namespace Design {
     void LayoutBase::DumpLayout( double x, double y )
     {
         AlbumBaseType type = GetNodeType( );
-        std::cout << GetObjectName( ) << " Pos (x:" << x << " y:" << y << ") ";
+        std::cout << GetObjectName( ) << " Pos (x:" << x << " y:" << y << ") \n";
         m_frame.WriteLayout( GetObjectName( ) );
         wxTreeItemIdValue cookie;
         wxTreeItemId parentID = GetTreeItemId( );
@@ -119,5 +119,136 @@ namespace Design {
 
             childID = GetDesignTreeCtrl( )->GetNextChild( parentID, cookie );
         }
+    }
+
+
+    void LayoutBase::ReportLayoutFrame( wxString indent )
+    {
+        m_frame.ReportLayout( indent ) ;
+        wxString str = wxString::Format( "%sTitle Size: width:%7.2f  height:%7.2f \n",indent, m_titleSize.x, m_titleSize.y);
+        std::cout << "\n"<<indent<<"Client Dimensions ";
+        m_clientDimensions.ReportLayout( indent  );
+    };
+
+    void LayoutBase::DumpObjectLayout(  wxString indent )
+    {
+        indent += "    ";                        
+        Design::AlbumBaseType type = GetNodeType();
+        wxString name = Design::AlbumBaseNames[type];
+        std::cout << "\n"<<indent <<name<<" Pos("<< m_clientDimensions.GetXPos() 
+                <<", "<< m_clientDimensions.GetYPos()
+                <<") Size("<< m_clientDimensions.GetWidth() <<", "<<m_clientDimensions.GetHeight()<<")\n";
+    
+        wxTreeItemId thisID = GetTreeItemId();
+        wxTreeItemIdValue cookie;
+        wxTreeItemId childID = GetDesignTreeCtrl( )->GetFirstChild( thisID, cookie );
+        while ( childID.IsOk( ) )
+        {
+            AlbumBaseType type = ( AlbumBaseType )GetDesignTreeCtrl( )->GetItemType( childID );
+            LayoutBase* child = ( LayoutBase* )GetDesignTreeCtrl( )->GetItemNode( childID );
+            //layout everything except the title
+            if ( type != AT_Title )
+            {
+                child->DumpObjectLayout( indent );
+            }
+            childID = GetDesignTreeCtrl( )->GetNextChild( thisID, cookie );
+        }
+
+    }
+
+    LayoutBase* LayoutBase::FindObjectByPos(  double x, double y, wxString indent )
+    {
+        indent += "    ";                        
+        Design::AlbumBaseType type = GetNodeType();
+        wxString name = Design::AlbumBaseNames[type];
+//        std::cout << "\n"<<indent <<name<<" FindObjectByPos ("<< x <<", "<<y<<")\n"<<indent<<"Client Dimensions";
+//        m_clientDimensions.ReportLayout(indent);
+        if ( IsInClient( x, y, indent ) )
+        {
+            wxTreeItemId thisID = GetTreeItemId();
+            wxTreeItemIdValue cookie;
+            wxTreeItemId childID = GetDesignTreeCtrl( )->GetFirstChild( thisID, cookie );
+            while ( childID.IsOk( ) )
+            {
+                AlbumBaseType type = ( AlbumBaseType )GetDesignTreeCtrl( )->GetItemType( childID );
+                LayoutBase* child = ( LayoutBase* )GetDesignTreeCtrl( )->GetItemNode( childID );
+                //layout everything except the title
+                if ( type != AT_Title )
+                {
+                    LayoutBase* foundChild = child->FindObjectByPos( x,  y, indent );
+                    if ( foundChild )
+                    {
+                        Design::AlbumBaseType type = foundChild->GetNodeType();
+//                        wxString name = Design::AlbumBaseNames[type];
+//                        std::cout << indent <<"Found " << name << "\n";
+
+                        return foundChild;
+                    }  
+                }
+                childID = GetDesignTreeCtrl( )->GetNextChild( thisID, cookie );
+            }
+
+            return this;
+        }
+        return (LayoutBase*) 0;
+    }
+
+    // void LayoutBase::SetClientDimensions( Frame *frame )
+    // {
+    //     m_clientDimensions.SetXPos( frame->GetXPos() *  Design::PpMM.x);
+    //     m_clientDimensions.SetYPos( frame->GetYPos() *  Design::PpMM.y);
+    //     m_clientDimensions.SetHeight( frame->GetHeight() *  Design::PpMM.y);
+    //     m_clientDimensions.SetWidth( frame->GetWidth() *  Design::PpMM.x);
+    //     m_clientDimensions.SetMinHeight( frame->GetMinHeight() *  Design::PpMM.y);
+    //     m_clientDimensions.SetMinWidth( frame->GetMinWidth() *  Design::PpMM.x);
+    // };
+
+    void LayoutBase::SetClientDimensions( wxDC &dc, double x, double y, double width, double height, double minWidth, double minHeight )
+    {
+//std::cout << "pos (" << x <<", "<< y <<")  size ("<< width <<", "<< height << ")\n";
+        wxPoint pnt = dc.LogicalToDevice( x* Design::PpMM.x, y* Design::PpMM.y );
+        wxSize size = dc.LogicalToDeviceRel( width* Design::PpMM.x, height* Design::PpMM.y);
+        wxSize minSize = dc.LogicalToDeviceRel( minWidth* Design::PpMM.x, minHeight* Design::PpMM.y);
+
+//std::cout << "           pos (" << pnt.x <<", "<< pnt.y <<")  size ("<< size.GetX() <<", "<< size.GetY() << ")\n";
+
+        m_clientDimensions.SetXPos( pnt.x );
+        m_clientDimensions.SetYPos( pnt.y );
+        m_clientDimensions.SetHeight( size.y);
+        m_clientDimensions.SetWidth( size.x);
+        m_clientDimensions.SetMinHeight( minSize.y );
+        m_clientDimensions.SetMinWidth( minSize.x );
+    };
+
+    bool LayoutBase::IsInClient(  double x, double y , wxString indent)
+    {
+        Design::AlbumBaseType type = GetNodeType();
+        wxString name = AlbumBaseNames[type];
+        double minx = m_clientDimensions.GetXPos();
+        double maxx = minx + m_clientDimensions.GetWidth();
+        double miny = m_clientDimensions.GetYPos();
+        double maxy = miny + m_clientDimensions.GetHeight();
+
+        if ( x > minx && x < maxx  )
+        {
+            if ( y > miny  && y < maxy )
+            {
+                
+//                std::cout << indent<<"Found Point (" << x << ", "<< y << ") in " << name << "\n";
+//                ReportLayoutFrame(indent);
+                return true;
+            }
+            else
+            {
+//                std::cout  << indent<< name << " Failed y" << y << " min:" << miny << " max:"<< maxy << "\n";
+
+            }
+        }
+        else 
+        {
+//                std::cout << indent<< name << " Failed x" << x << " min:" << minx  << " max:"<< maxx << "\n";
+
+        }
+        return false;
     }
 }

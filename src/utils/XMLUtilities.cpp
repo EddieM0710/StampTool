@@ -326,7 +326,7 @@ int StyleNameIndex = 0;
     
     void SetAttrDbl( wxXmlNode* node, wxString name, double val )
     {
-        wxString str = wxString::Format( "%f", val );
+        wxString str = wxString::Format( "%7.2f", val );
         SetAttrStr( node, name, str );
     }
 
@@ -517,7 +517,7 @@ wxString GetTextStyleName( wxString& str )
 }
 char* DoubleToMMString( char* str, double nbr )
 {
-    sprintf( str, "%fmm", nbr );
+    sprintf( str, "%7.2fmm", nbr );
     return str;
 }
 

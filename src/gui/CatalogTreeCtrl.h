@@ -71,8 +71,9 @@ public:
         m_type = type;
         m_desc = desc;
         m_element = ele;
+        m_imageFullPath = 0;
     }
-
+    ~CatalogTreeItemData( ) { if ( m_imageFullPath ) delete m_imageFullPath; }
     wxString const& GetDesc( ) const { return m_desc; };
     void SetCatNode( wxXmlNode* ele ) { m_element = ele; };
     wxXmlNode* GetNodeElement( void ) { return m_element; };
@@ -84,11 +85,14 @@ public:
     Utils::StampLink* GetStampLink( ) { return m_stampLink; }
     void SetStampLink( Utils::StampLink* link ) { m_stampLink = link; }
 
+    wxString* GetImageFullName(){ return m_imageFullPath;};
+    void SetImageFullName(wxString* str ){ m_imageFullPath = str;};
 private:
     wxXmlNode* m_element;
     wxString m_desc;
     Catalog::CatalogBaseType m_type;
     Utils::StampLink* m_stampLink;
+    wxString* m_imageFullPath;
 };
 
 /**
@@ -174,6 +178,11 @@ public:
     wxTreeItemId FindTreeItemID( wxString stampID, wxTreeItemId id );
     bool IsElement( wxTreeItemId item, wxString stampID );
     wxTreeItemId FindFirstEntryChild( wxTreeItemId id );
+
+    wxString GetImageFullName( wxTreeItemId catID );
+    wxString GetIdText( wxTreeItemId catID );
+    wxXmlNode* GetNode(  wxTreeItemId catID );       
+    wxString GetAttribute(  wxTreeItemId catID, wxString name );
 
     ComparisonResultType CompareDates(wxString date1,wxString date2 );
 

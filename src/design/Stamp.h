@@ -151,6 +151,8 @@ namespace Design {
 //        wxString GetImageFilename(){ return m_imageFilename; };
 //        void SetImageFilename(wxString str ){  m_imageFilename = str; };
 
+        void  ReportLayout(  );
+
     private:
 
         wxXmlNode* StampObject( wxXmlNode* parent );
@@ -176,6 +178,7 @@ namespace Design {
          *
          **************************************************/
 //        wxString m_name;
+
 
         // The LayoutBase for this objects contains the frame parameters for the stamp Album object. 
         // It is 10% Larger than the actual Stamp.

@@ -84,12 +84,13 @@ namespace Design {
 
         virtual void Save( wxXmlNode* xmlNode ) = 0;
 
-
+        wxArrayString* GetErrorArray(){ return &m_errorArray;};
+  
 
     private:
 
         wxTreeItemId m_treeID;
-
+        wxArrayString m_errorArray;
     protected:
 
     };

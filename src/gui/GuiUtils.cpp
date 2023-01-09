@@ -79,12 +79,14 @@ wxSize LogicalToDeviceRel( wxDC& dc, double x, double y )
 
 void DrawRectangle( wxDC& dc, double x, double y, double width, double height )
 {
-    wxPoint pt = dc.LogicalToDevice( x, y );
-    wxSize size = dc.LogicalToDeviceRel( width, height );
+    //wxPoint pt = dc.LogicalToDevice( x, y );
+    //wxSize size = dc.LogicalToDeviceRel( width, height );
     //   wxSize devicePos = GetAlbumImagePanel( )->LogicalToDeviceRel( dc, x, y );
     //   wxSize deviceSize = GetAlbumImagePanel( )->LogicalToDeviceRel( dc, width, height );
     //   dc.DrawRectangle( devicePos.x, devicePos.y, deviceSize.x, deviceSize.y );
-    dc.DrawRectangle( x * Design::PpMM.x, y * Design::PpMM.y, width * Design::PpMM.y, height * Design::PpMM.y );
+    // std::cout << "DrawRec pos("<< x * Design::PpMM.x << ", " << y * Design::PpMM.y << ") size ("
+    // << width * Design::PpMM.x << ", "<< height * Design::PpMM.y<<")\n";
+    dc.DrawRectangle( x * Design::PpMM.x, y * Design::PpMM.y, width * Design::PpMM.x, height * Design::PpMM.y );
     //dc.DrawRectangle( pt.x, pt.y, size.x, size.y );
 };
 

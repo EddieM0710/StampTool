@@ -27,6 +27,7 @@
 
 #include "wx/graphics.h"
 #include <wx/dcclient.h>
+#include "wx/textctrl.h"
 
 
 namespace Design {
@@ -61,6 +62,9 @@ namespace Design {
     //void DrawRectangle( wxDC &dc, double x, double y, double width, double height );
      
     //void drawBorder( wxDC &dc, double x, double y );
+
+    wxString ReportLayout(  wxString indent= "" );
+
     void WriteLayout( wxString str );
     protected:
 

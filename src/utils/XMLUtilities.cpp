@@ -517,7 +517,7 @@ wxString GetTextStyleName( wxString& str )
 }
 char* DoubleToMMString( char* str, double nbr )
 {
-    sprintf( str, "%7.2fmm", nbr );
+    sprintf( str, "%fmm", nbr );
     return str;
 }
 

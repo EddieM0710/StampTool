@@ -39,4 +39,8 @@ void DrawLabel( wxDC& dc, const wxString& text,
         RealSize size,
 		int  	alignment = wxALIGN_LEFT|wxALIGN_TOP,
 		int  	indexAccel = -1  );
+
+void DrawImage( wxDC& dc, wxString fileName, double x, double y, double w, double h );
+wxImage* GetImageFromFilename( wxString filename );
+       
 #endif

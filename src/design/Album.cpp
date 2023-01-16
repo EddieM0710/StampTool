@@ -282,7 +282,8 @@ namespace Design {
                 // set the layout parameters into the child
                 Page* page = ( Page* )GetDesignTreeCtrl( )->GetItemNode( childID );
                 //page->SetBorder( m_border );
-                page->SetXPos( GetRightMargin( ) );
+                // the page frame takes into account the margins, the border is within this
+                page->SetXPos( GetLeftMargin( ) );
                 page->SetYPos( GetTopMargin( ) );
                 page->SetWidth( GetWidth( ) - GetRightMargin( ) - GetLeftMargin( ) );
                 page->SetHeight( GetHeight( ) - GetTopMargin( ) - GetBottomMargin( ) );
@@ -291,6 +292,7 @@ namespace Design {
                 page->SetRightMargin( GetRightMargin( ) );
                 page->SetLeftMargin( GetLeftMargin( ) );
                 page->SetBorderSize( GetBorderSize( ) );
+                page->SetBorderFilename( GetBorderFileName() );
                 page->UpdateMinimumSize( );
                 break;
             }
@@ -347,7 +349,7 @@ namespace Design {
         wxXmlNode* thePage = 0;
 
         bool firstPage = true;
-
+//        ODT::StylesDoc()->AddBackgroundImage(  GetBorderFileName() );
         wxTreeItemIdValue cookie;
         wxTreeItemId parentID = GetTreeItemId( );
         wxTreeItemId childID = GetDesignTreeCtrl( )->GetFirstChild( parentID, cookie );
@@ -406,9 +408,11 @@ namespace Design {
 
     void Album::MakeAlbum( )
     {
+
         UpdateMinimumSize( );
         UpdateSizes( );
         UpdatePositions( );
+        ODT::ODTDoc()->InitODTFiles( );
         Write( ( wxXmlNode* )0 );
 //        DumpLayout( );
     }

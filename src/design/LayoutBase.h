@@ -52,10 +52,10 @@ namespace Design {
          *
          **************************************************/
         LayoutBase( ): AlbumBase( ) {
-            SetTopContentPadding( 1.5 );
-            SetBottomContentPadding( 1.5 );
-            SetLeftContentPadding( 1.5 );
-            SetRightContentPadding( 1.5 );
+            SetTopContentPadding( 0 );
+            SetBottomContentPadding( 0 );
+            SetLeftContentPadding( 0 );
+            SetRightContentPadding( 0 );
 
         };
 
@@ -65,10 +65,10 @@ namespace Design {
          * @param name
          **************************************************/
         LayoutBase( wxXmlNode* node ): AlbumBase( node ) {
-            SetTopContentPadding( 4 );
-            SetBottomContentPadding( 4 );
-            SetLeftContentPadding( 4 );
-            SetRightContentPadding( 4 );
+            SetTopContentPadding( 0 );
+            SetBottomContentPadding( 0 );
+            SetLeftContentPadding( 0 );
+            SetRightContentPadding( 0 );
         };
 
         /*
@@ -263,15 +263,15 @@ namespace Design {
         void ReportLayoutFrame( wxString indent = "" );
 
         //wxXmlNode* FirstChildElement( wxXmlNode* node, wxString name );
-  
-       void DumpObjectLayout(  wxString indent = "" );
-       LayoutBase* FindObjectByPos(  double x, double y, wxString indent = "" );
+
+        void DumpObjectLayout( wxString indent = "" );
+        LayoutBase* FindObjectByPos( double x, double y, wxString indent = "" );
 
         //void SetClientDimensions( Frame *frame );
 
-        void SetClientDimensions( wxDC &dc, double x, double y, double width = 0.0, double height= 0.0, double minWidth = 0.0, double minHeight= 0.0 );
+        void SetClientDimensions( wxDC& dc, double x, double y, double width = 0.0, double height = 0.0, double minWidth = 0.0, double minHeight = 0.0 );
 
-        bool IsInClient(  double x, double y, wxString indent = "");
+        bool IsInClient( double x, double y, wxString indent = "" );
 
     protected:
         Frame m_frame;

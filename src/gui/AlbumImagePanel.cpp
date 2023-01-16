@@ -297,7 +297,8 @@ void AlbumImagePanel::OnPaint( wxPaintEvent& event )
             Design::LayoutBase* pageNode = Design::GetSelectedNodePage( );
             if ( pageNode && pageNode->IsStatusOK( ) )
             {
-                pageNode->draw( dc, album->GetAttrDbl( Design::AT_LeftMargin ), album->GetAttrDbl( Design::AT_TopMargin ) );
+                //pageNode->draw( dc, album->GetAttrDbl( Design::AT_LeftMargin ), album->GetAttrDbl( Design::AT_TopMargin ) );
+                pageNode->draw( dc, 0, 0 );
             }
         }
     }

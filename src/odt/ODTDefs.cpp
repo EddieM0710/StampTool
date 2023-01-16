@@ -37,11 +37,15 @@ namespace ODT {
     wxString Bold18PtTextStyle;
     wxString Normal8PtTextStyle;
     wxString Normal10PtTextStyle;
-    wxString FrameWithBorder = "fr1";
-    wxString FrameNoBorder = "fr2";
+    wxString BackgroundFrame = "fr1"; 
+    wxString FrameWithBackgroundImage = "fr2";
     wxString FrameWithImage = "fr3";
-    wxString FrameCenteredAtTopNoBorder = "fr4";
-    wxString FrameCenteredFromTopNoBorder = "fr5";
+    wxString FrameNoBorder = "fr4";
+    wxString FrameWithBorder = "fr5";
+    wxString FrameCenteredAtTopNoBorder = "fr6";
+ //   wxString FramePositionedFromLeftNoBorder = "fr5";
+ //
+ //   wxString PageFrame = "fr7";
     wxString TextAnchorParagraph = "paragraph";
     wxString TextAnchorPage = "page";
 

@@ -156,7 +156,7 @@ namespace Design {
         wxXmlNode* idNode = ODT::ContentDoc( )->WriteTextBox( parent,
             0, height,
             width, m_titleSize.y,
-            ODT::FrameCenteredFromTopNoBorder,  // fr1
+            ODT::FrameNoBorder,  // fr2
             ODT::TextAnchorParagraph, // "page", "paragraph"
             ODT::Normal10PtTextStyle,
             "10", GetAttrStr( AT_Name ) );
@@ -169,7 +169,7 @@ namespace Design {
     {
         Utils::AddComment( parent, "Stamp", "Inserting the Stamp Image." );
 
-        // <draw:frame draw:style-name="fr2" draw:name="Frame5" text:anchor-type="paragraph" svg:x="0.05in" svg:y="0.05in" svg:width="0.9252in" draw:z-index="4">
+        // <draw:frame draw:style-name="fr1" draw:name="Frame5" text:anchor-type="paragraph" svg:x="0.05in" svg:y="0.05in" svg:width="0.9252in" draw:z-index="4">
         //     <draw:text-box fo:min-height="1.2008in">
 
         //wxString drawStyleName = FrameCenteredAtTopNoBorder;
@@ -180,6 +180,7 @@ namespace Design {
         double yPos = m_stampImageFrame.GetYPos( );
         double width = m_stampImageFrame.GetWidth( );
         double height = m_stampImageFrame.GetHeight( ); // allow for caption
+
 
         wxXmlNode* frame = ODT::ContentDoc( )->WriteFrameFixedSize( parent,
             xPos, yPos,
@@ -205,7 +206,7 @@ namespace Design {
         wxXmlNode* idNode = ODT::ContentDoc( )->WriteTextBox( parent,
             0, height,
             idWidth, 4,
-            ODT::FrameCenteredFromTopNoBorder,  // fr1
+            ODT::FrameNoBorder,  // fr2
             ODT::TextAnchorParagraph, // "page", "paragraph"
             ODT::Normal8PtTextStyle,
             "8", stampID );

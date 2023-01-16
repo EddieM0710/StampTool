@@ -113,7 +113,7 @@ namespace ODT {
             double yPos,
             double width,
             double height,
-            const char* drawStyleName,  // fr1
+            const char* drawStyleName,  // fr2
             const char* textAnchorType, // "page", "paragraph"
             const char* textStyleName = Frame20Content );
         /**
@@ -133,7 +133,7 @@ namespace ODT {
             double yPos,
             double width,
             double height,
-            const char* drawStyleName,  // fr1
+            const char* drawStyleName,  // fr2
             const char* textAnchorType, // "page", "paragraph"
             const char* textStyleName = Frame20Content );
         /**
@@ -155,7 +155,7 @@ namespace ODT {
             double yPos,
             double width,
             double height,
-            wxString& drawStyleName,  // fr1
+            wxString& drawStyleName,  // fr2
             wxString& textAnchorType, // "page", "paragraph"
             wxString& textStyleName,   // "P1"
             wxString& link );
@@ -164,12 +164,13 @@ namespace ODT {
             double yPos,
             double width,
             double height,
-            wxString& drawStyleName,  // fr1
+            wxString& drawStyleName,  // fr2
             wxString& textAnchorType, // "page", "paragraph"
             wxString& textStyleName,
             wxString point,
             wxString text );
 
+        bool AddPageBackgroundFrameStyles( wxString drawName );
         bool AddPageFrameStyles( );
 
         bool Save( );

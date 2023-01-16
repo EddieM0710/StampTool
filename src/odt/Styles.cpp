@@ -6,23 +6,23 @@
  * @date 2022-02-08
  *
  * @copyright Copyright (c) 2022
- * 
+ *
  * This file is part of AlbumGenerator.
  *
- * AlbumGenerator is free software: you can redistribute it and/or modify it under the 
- * terms of the GNU General Public License as published by the Free Software Foundation, 
+ * AlbumGenerator is free software: you can redistribute it and/or modify it under the
+ * terms of the GNU General Public License as published by the Free Software Foundation,
  * either version 3 of the License, or any later version.
  *
- * AlbumGenerator is distributed in the hope that it will be useful, but WITHOUT ANY 
- * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+ * AlbumGenerator is distributed in the hope that it will be useful, but WITHOUT ANY
+ * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
- * You should have received a copy of the GNU General Public License along with 
+ * You should have received a copy of the GNU General Public License along with
  * AlbumGenerator. If not, see <https://www.gnu.org/licenses/>.
  *
  **************************************************/
 #include "odt/Styles.h"
-//#include "DocumentManager.h"
+ //#include "DocumentManager.h"
 #include <iostream>
 #include "Defs.h"
 #include "odt/ODTDefs.h"
@@ -54,7 +54,7 @@ namespace ODT {
 
     bool Styles::Save( )
     {
-        wxString str = ODTDoc( )->GetDocFilesDir()+ "/styles.xml";
+        wxString str = ODTDoc( )->GetDocFilesDir( ) + "/styles.xml";
         m_styles->Save( str );
 
         //     std::cout << "dump Styles output\n";
@@ -83,7 +83,7 @@ namespace ODT {
         Utils::SetAttrStr( layoutProperties, "fo:margin-bottom", bottomMargin );
         Utils::SetAttrStr( layoutProperties, "fo:margin-left", rightMargin );
         Utils::SetAttrStr( layoutProperties, "fo:margin-right", leftMargin );
-        Utils:: SetAttrStr( layoutProperties, "fo:background-color", "transparent" );
+        Utils::SetAttrStr( layoutProperties, "fo:background-color", "transparent" );
 
         wxXmlNode* backgroundImage = Utils::AddNewNode( layoutProperties, wxXML_ELEMENT_NODE, "style:background-image" );
         Utils::SetAttrStr( backgroundImage, "xlink:href", filename );
@@ -96,7 +96,7 @@ namespace ODT {
     //***********************************
 
 
-    wxXmlNode* Styles::FindOfficeStylesDrawFillImage( )
+    wxXmlNode* Styles::FindOfficeStylesDrawFillImage( wxString value )
     {
         wxXmlNode* test = m_styles->GetRoot( );
         wxXmlNode* styles = Utils::FirstChildElement( test, "office:styles" );
@@ -106,7 +106,6 @@ namespace ODT {
             return ( wxXmlNode* )0;
         }
         wxString name( "draw:name" );
-        wxString value( "bkgnd" );
         wxXmlNode* drawFillImage = Utils::FindFirstChildWithPropertyofValue( styles, name, value );
         if ( !drawFillImage )
         {
@@ -166,7 +165,7 @@ namespace ODT {
         wxXmlNode* officeStyles = Utils::FirstChildElement( docStyles, "office:styles" );
         if ( !officeStyles )
         {
-            ReportError( "Styles::FindOfficeStyless", "get office:styles failed", true );
+            ReportError( "Styles::FindOfficeStyles", "get office:styles failed", true );
             return ( wxXmlNode* )0;
         }
         return officeStyles;
@@ -186,7 +185,7 @@ namespace ODT {
         Utils::SetAttrStr( frame20Contents, "style:name", "Frame_20_contents" );
         Utils::SetAttrStr( frame20Contents, "style:display-name", "Frame contents" );
         Utils::SetAttrStr( frame20Contents, "style:family", "paragraph" );
-        Utils::SetAttrStr( frame20Contents, "style:parent-style-name", "Text_20_body" );
+        Utils::SetAttrStr( frame20Contents, "style:parent-style-name", "Standard" );
         Utils::SetAttrStr( frame20Contents, "style:class", "extra" );
         wxXmlNode* frame = Utils::AddNewNode( officeStyles, wxXML_ELEMENT_NODE, "style:style" );
         Utils::SetAttrStr( frame, "style:name", "Frame" );
@@ -206,34 +205,58 @@ namespace ODT {
         Utils::SetAttrStr( graphicProperties, "style:vertical-rel", "paragraph-content" );
         Utils::SetAttrStr( graphicProperties, "style:horizontal-pos", "center" );
         Utils::SetAttrStr( graphicProperties, "style:horizontal-rel", "paragraph-content" );
-        Utils::SetAttrStr( graphicProperties, "fo:padding", "0.0591in" );
-        Utils::SetAttrStr( graphicProperties, "fo:border", "0.0008in solid #000000" );
-
-        frame = Utils::AddNewNode( officeStyles, wxXML_ELEMENT_NODE, "style:style" );
-        Utils::SetAttrStr( frame, "style:name", "Graphics" );
-        Utils::SetAttrStr( frame, "style:family", "graphic" );
-        graphicProperties = Utils::AddNewNode( frame, wxXML_ELEMENT_NODE, "style:graphic-properties" );
-        Utils::SetAttrStr( graphicProperties, "text:anchor-type", "paragraph" );
-
-        Utils::SetAttrStr( graphicProperties, "svg:x", "0in" );
-        Utils::SetAttrStr( graphicProperties, "svg:y", "0in" );
-        Utils::SetAttrStr( graphicProperties, "style:wrap", "none" );
-        Utils::SetAttrStr( graphicProperties, "style:vertical-pos", "top" );
-        Utils::SetAttrStr( graphicProperties, "style:vertical-rel", "paragraph" );
-        Utils::SetAttrStr( graphicProperties, " style:horizontal-pos", "center" );
-       Utils:: SetAttrStr( graphicProperties, "style:horizontal-rel", "paragraph" );
+        Utils::SetAttrStr( graphicProperties, "fo:padding", "1.5mm" );
+        Utils::SetAttrStr( graphicProperties, "fo:border", "0.06mm solid #000000" );
 
 
-        //  <style:style style:name="Frame_20_contents" style:display-name="Frame contents" style:family="paragraph" style:parent-style-name="Text_20_body" style:class="extra"/>
-        //   <style:style style:name="Frame" style:family="graphic">
-        //    <style:graphic-properties text:anchor-type="paragraph" svg:x="0in" svg:y="0in" fo:margin-left="0.0791in" fo:margin-right="0.0791in" fo:margin-top="0.0791in" fo:margin-bottom="0.0791in" style:wrap="parallel" style:number-wrapped-paragraphs="no-limit" style:wrap-contour="false" style:vertical-pos="top" style:vertical-rel="paragraph-content" style:horizontal-pos="center" style:horizontal-rel="paragraph-content" fo:padding="0.0591in" fo:border="0.0008in solid #000000"/>
-        //   </style:style>
+        //     frame = Utils::AddNewNode( officeStyles, wxXML_ELEMENT_NODE, "style:style" );
+        //     Utils::SetAttrStr( frame, "style:name", "Graphics" );
+        //     Utils::SetAttrStr( frame, "style:family", "graphic" );
+        //     graphicProperties = Utils::AddNewNode( frame, wxXML_ELEMENT_NODE, "style:graphic-properties" );
+        //     Utils::SetAttrStr( graphicProperties, "text:anchor-type", "paragraph" );
 
-        // <style:style style:name="Graphics" style:family="graphic">
-        //     <style:graphic-properties text:anchor-type="paragraph" svg:x="0in" svg:y="0in" style:wrap="none" style:vertical-pos="top" style:vertical-rel="paragraph" style:horizontal-pos="center" style:horizontal-rel="paragraph"/>
-        // </style:style>
+        //     Utils::SetAttrStr( graphicProperties, "svg:x", "0in" );
+        //     Utils::SetAttrStr( graphicProperties, "svg:y", "0in" );
+        //     Utils::SetAttrStr( graphicProperties, "style:wrap", "none" );
+        //     Utils::SetAttrStr( graphicProperties, "style:vertical-pos", "top" );
+        //     Utils::SetAttrStr( graphicProperties, "style:vertical-rel", "paragraph" );
+        //     Utils::SetAttrStr( graphicProperties, " style:horizontal-pos", "center" );
+        //    Utils:: SetAttrStr( graphicProperties, "style:horizontal-rel", "paragraph" );
+
+
 
         return true;
     }
+    wxString Styles::AddBackgroundImage( wxString link )
+    {
 
+        wxFileName inputImage( link );
+        wxString str = inputImage.GetFullName();
+        wxString drawName = inputImage.GetName( );
+        wxFileName picImage( "Pictures", str );
+        wxString  destFullPath = ODT::ODTDoc( )->GetPicturesDir( ) + str;
+
+        bool state = wxCopyFile( inputImage.GetFullPath( ), destFullPath );
+        ODT::StylesDoc( )->AddDrawFillImage( drawName, picImage.GetFullPath( ), "simple", "embed", "onLoad" );
+        return drawName;
+    }
+
+    // AddDrawFillImage( "box2", "Pictures/box2.jpg", "simple", "embed", "onLoad");
+    bool Styles::AddDrawFillImage( wxString drawName, wxString xlinkHref, wxString xlinkType, wxString xlinkShow, wxString xlinkActuate )
+    {
+
+        wxXmlNode* officeStyles = FindOfficeStyles( );
+        if ( !officeStyles )
+        {
+            return false;
+        }
+
+        wxXmlNode* frame20Contents = Utils::AddNewNode( officeStyles, wxXML_ELEMENT_NODE, "draw:fill-image" );
+        Utils::SetAttrStr( frame20Contents, "draw:name", drawName );
+        Utils::SetAttrStr( frame20Contents, "xlink:href", xlinkHref );
+        Utils::SetAttrStr( frame20Contents, "xlink:type", xlinkType );
+        Utils::SetAttrStr( frame20Contents, "xlink:show", xlinkShow );
+        Utils::SetAttrStr( frame20Contents, "xlink:actuate", xlinkActuate );
+        return true;
+    }
 }

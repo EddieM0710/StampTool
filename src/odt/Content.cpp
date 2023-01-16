@@ -103,13 +103,76 @@ namespace ODT {
         }
         return automaticStyles;
     }
+    
+    bool Content::AddPageBackgroundFrameStyles( wxString drawName )
+    {
+        wxXmlNode* automaticStyles = FindOfficAutomaticStyles( );
+       Utils::AddComment( automaticStyles, BackgroundFrame, "BackgroundFrame" );
+
+
+        //fr1 BackgroundFrame
+        wxXmlNode* fr1 = Utils::AddNewNode( automaticStyles, wxXML_ELEMENT_NODE, "style:style" );
+            Utils::SetAttrStr( fr1, "style:name", BackgroundFrame );
+            Utils::SetAttrStr( fr1, "style:family", "graphic" );
+            Utils::SetAttrStr( fr1, "style:parent-style-name", "Frame" );
+        wxXmlNode* graphicProperties1 = Utils::AddNewNode( fr1, wxXML_ELEMENT_NODE, "style:graphic-properties" );
+            Utils::SetAttrStr( graphicProperties1, "style:wrap", "parallel" ); 
+            Utils::SetAttrStr( graphicProperties1, "style:number-wrapped-paragraphs", "no-limit" ); 
+            Utils::SetAttrStr( graphicProperties1, "style:vertical-pos", "from-top" );
+            Utils::SetAttrStr( graphicProperties1, "style:vertical-rel", "paragraph-content" );
+            Utils::SetAttrStr( graphicProperties1, "style:horizontal-pos", "from-left" );
+            Utils::SetAttrStr( graphicProperties1, "style:horizontal-rel", "paragraph-content" );
+
+        wxXmlNode* backgroundImageNode = StylesDoc()->FindOfficeStylesDrawFillImage( drawName );
+        char emptyString[12] = "";
+        wxString link = backgroundImageNode->GetAttribute( "xlink:href" );
+
+
+       Utils::AddComment( automaticStyles, FrameWithBackgroundImage, "FrameWithBackgroundImage" );
+        wxXmlNode* fr2 = Utils::AddNewNode( automaticStyles, wxXML_ELEMENT_NODE, "style:style" );
+            Utils::SetAttrStr( fr2, "style:name", FrameWithBackgroundImage );
+            Utils::SetAttrStr( fr2, "style:family", "graphic" );
+            Utils::SetAttrStr( fr2, "style:parent-style-name", "Frame" );
+
+        wxXmlNode* graphicProperties2 = Utils::AddNewNode( fr2, wxXML_ELEMENT_NODE, "style:graphic-properties" );
+            Utils::SetAttrStr( graphicProperties2, "style:wrap", "parallel" );
+            Utils::SetAttrStr( graphicProperties2, "fo:margin-left", "0mm" ); 
+            Utils::SetAttrStr( graphicProperties2, "fo:margin-right", "0mm" ); 
+            Utils::SetAttrStr( graphicProperties2, "fo:margin-top", "0mm" ); 
+            Utils::SetAttrStr( graphicProperties2, "fo:margin-bottom", "0mm" ); 
+            Utils::SetAttrStr( graphicProperties2, "style:wrap", "run-through" ); 
+            Utils::SetAttrStr( graphicProperties2, "style:number-wrapped-paragraphs", "no-limit"  );
+            Utils::SetAttrStr( graphicProperties2, "style:vertical-pos", "from-top"  );
+            Utils::SetAttrStr( graphicProperties2, "style:vertical-rel", "paragraph-content"  );
+            Utils::SetAttrStr( graphicProperties2, "style:horizontal-pos", "from-left"  );
+            Utils::SetAttrStr( graphicProperties2, "style:horizontal-rel", "paragraph-content"  );
+            Utils::SetAttrStr( graphicProperties2, "draw:fill", "bitmap"  );
+            Utils::SetAttrStr( graphicProperties2, "draw:fill-image-name", drawName  );
+            Utils::SetAttrStr( graphicProperties2, "style:repeat", "stretch"  );
+            Utils::SetAttrStr( graphicProperties2, "draw:fill-image-ref-point-x", "0%" ); 
+            Utils::SetAttrStr( graphicProperties2, "draw:fill-image-ref-point-y", "0%" ); 
+            Utils::SetAttrStr( graphicProperties2, "draw:fill-image-ref-point", "center" );
+            Utils::SetAttrStr( graphicProperties2, "fo:padding", "0mm" ); 
+            Utils::SetAttrStr( graphicProperties2, "fo:border", "none" ); 
+            Utils::SetAttrStr( graphicProperties2, "draw:wrap-influence-on-position", "once-concurrent" ); 
+            Utils::SetAttrStr( graphicProperties2, "loext:allow-overlap", "true" );
+            //Utils::SetAttrStr( graphicProperties2, "loext:rel-width-rel", "paragraph"  );
+            //Utils::SetAttrStr( graphicProperties2, "loext:rel-height-rel", "paragraph" );
+
+        wxXmlNode* backgroundImage2 = Utils::AddNewNode( graphicProperties2, wxXML_ELEMENT_NODE, "style:background-image" );
+                Utils::SetAttrStr( backgroundImage2, "xlink:href", link  );
+                Utils::SetAttrStr( backgroundImage2, "xlink:type", "simple"  );
+                Utils::SetAttrStr( backgroundImage2, "xlink:actuate", "onLoad"  );
+                Utils::SetAttrStr( backgroundImage2, "style:repeat", "stretch" );
+       
+
+    }
     //***********************************
     bool Content::AddPageFrameStyles( )
     {
         AutoStylesProp* styles = new AutoStylesProp( );
         styles->DefinePrimaryTextStyles( );
         styles->WriteAll( );
-
 
         wxXmlNode* automaticStyles = FindOfficAutomaticStyles( );
         // // normal paragraph
@@ -152,65 +215,69 @@ namespace ODT {
         // SetAttrStr( styleTextProperties2, "style:font-size-asian", "8pt"  );
         // SetAttrStr( styleTextProperties2, "style:font-size-complex", "8pt" ); 
 
+        // <style:style style:name="fr2" style:family="graphic" style:parent-style-name="Frame">
+        //     <style:graphic-properties style:wrap="parallel" 
+        //     style:number-wrapped-paragraphs="no-limit" 
+        //     style:vertical-pos="from-top" 
+        //     style:vertical-rel="paragraph" 
+        //     style:horizontal-pos="from-left" 
+        //     style:horizontal-rel="paragraph"/>
+        // </style:style>
+        // <style:style style:name="fr1" style:family="graphic" style:parent-style-name="Frame">
+        //     <style:graphic-properties style:wrap="parallel" style:number-wrapped-paragraphs="no-limit" style:vertical-pos="from-top" style:vertical-rel="paragraph" style:horizontal-pos="from-left" style:horizontal-rel="paragraph" draw:fill="bitmap" draw:fill-image-name="box2" style:repeat="stretch" draw:fill-image-ref-point-x="0%" draw:fill-image-ref-point-y="0%" draw:fill-image-ref-point="center">
+        //         <style:background-image xlink:href="Pictures/1000000000000258000003584C04905AFB17BB5E.jpg" xlink:type="simple" xlink:actuate="onLoad" style:repeat="stretch"/>
+        //     </style:graphic-properties>
+        // </style:style>
 
+         
+       Utils::AddComment( automaticStyles, FrameWithBorder, "FrameWithBorder" );
 
-        //fr1 is for frame with border
-        wxXmlNode* fr1 = Utils::AddNewNode( automaticStyles, wxXML_ELEMENT_NODE, "style:style" );
-        Utils::SetAttrStr( fr1, "style:name", FrameWithBorder );
-        Utils::SetAttrStr( fr1, "style:family", "graphic" );
-        Utils::SetAttrStr( fr1, "style:parent-style-name", "Frame" );
-        wxXmlNode* graphicProperties = Utils::AddNewNode( fr1, wxXML_ELEMENT_NODE, "style:graphic-properties" );
-        Utils::SetAttrStr( graphicProperties, "style:vertical-pos", "from-top" );
-        Utils::SetAttrStr( graphicProperties, "style:vertical-rel", "paragraph-content" );
-        Utils::SetAttrStr( graphicProperties, "style:horizontal-pos", "from-left" );
-        Utils::SetAttrStr( graphicProperties, "style:horizontal-rel", "paragraph-content" );
-        Utils::SetAttrStr( graphicProperties, "fo:padding", ".06in" );
-        Utils::SetAttrStr( graphicProperties, "fo:border", "0.0071in solid #000000" );
-        Utils::SetAttrStr( graphicProperties, "style:shadow", "none" );
+        //fr6 is for frame with border
+        wxXmlNode* fr6 = Utils::AddNewNode( automaticStyles, wxXML_ELEMENT_NODE, "style:style" );
+        Utils::SetAttrStr( fr6, "style:name", FrameWithBorder );
+        Utils::SetAttrStr( fr6, "style:family", "graphic" );
+        Utils::SetAttrStr( fr6, "style:parent-style-name", "Frame" );
+        wxXmlNode* graphicProperties6 = Utils::AddNewNode( fr6, wxXML_ELEMENT_NODE, "style:graphic-properties" );
+        Utils::SetAttrStr( graphicProperties6, "style:vertical-pos", "from-top" );
+        Utils::SetAttrStr( graphicProperties6, "style:vertical-rel", "paragraph-content" );
+        Utils::SetAttrStr( graphicProperties6, "style:horizontal-pos", "from-left" );
+        Utils::SetAttrStr( graphicProperties6, "style:horizontal-rel", "paragraph-content" );
+        //Utils::SetAttrStr( graphicProperties6, "draw:opacity", "0%" ); 
+        Utils::SetAttrStr( graphicProperties6, "fo:padding", ".06in" );
+        Utils::SetAttrStr( graphicProperties6, "fo:border", "0.0071in solid #000000" );
+        Utils::SetAttrStr( graphicProperties6, "style:shadow", "none" );
+        Utils::SetAttrStr( graphicProperties6, "draw:shadow-opacity", "100%");
 
-        //fr2 is no border
-        wxXmlNode* fr2 = Utils::AddNewNode( automaticStyles, wxXML_ELEMENT_NODE, "style:style" );
-        Utils::SetAttrStr( fr2, "style:name", FrameNoBorder );
-        Utils::SetAttrStr( fr2, "style:family", "graphic" );
-        Utils::SetAttrStr( fr2, "style:parent-style-name", "Frame" );
-        wxXmlNode* graphicProperties2 = Utils::AddNewNode( fr2, wxXML_ELEMENT_NODE, "style:graphic-properties" );
-        Utils::SetAttrStr( graphicProperties2, "style:vertical-pos", "from-top" );
-        Utils::SetAttrStr( graphicProperties2, "style:vertical-rel", "paragraph-content" );
-        Utils::SetAttrStr( graphicProperties2, "style:horizontal-pos", "from-left" );
-        Utils::SetAttrStr( graphicProperties2, "style:horizontal-rel", "paragraph-conten" );
-        Utils::SetAttrStr( graphicProperties2, "fo:padding", "0in" );
-        Utils::SetAttrStr( graphicProperties2, "fo:border", "none" );
-        Utils::SetAttrStr( graphicProperties2, "style:shadow", "none" );
+        // Utils::AddComment( automaticStyles, "fr3", "FrameWithImage" );
 
+        // wxXmlNode* fr3 = Utils::AddNewNode( automaticStyles, wxXML_ELEMENT_NODE, "style:style" );
+        // Utils::SetAttrStr( fr3, "style:name", FrameWithImage );
+        // Utils::SetAttrStr( fr3, "style:family", "graphic" );
+        // Utils::SetAttrStr( fr3, "style:parent-style-name", "Graphics" );
+        // wxXmlNode* graphicProperties3 = Utils::AddNewNode( fr3, wxXML_ELEMENT_NODE, "style:graphic-properties" );
 
+        // Utils::SetAttrStr( graphicProperties3, "style:vertical-pos", "from-top" );
+        // Utils::SetAttrStr( graphicProperties3, "style:vertical-rel", "paragraph-content" );
+        // Utils::SetAttrStr( graphicProperties3, "style:horizontal-pos", "from-left" );
+        // Utils::SetAttrStr( graphicProperties3, "style:horizontal-rel", "paragraph-content" );
+        // // SetAttrStr( graphicProperties3, "fo:background-color", "transparent" ); 
+        // // SetAttrStr( graphicProperties3, "style:background-transparency", "100%" );
+        // // SetAttrStr( graphicProperties3, "style:shadow", "none"  );
+        // Utils::SetAttrStr( graphicProperties3, "style:mirror", "none" );
+        // Utils::SetAttrStr( graphicProperties3, "fo:clip", "rect(0in, 0in, 0in, 0in)" );
+        // Utils::SetAttrStr( graphicProperties3, "draw:luminance", "0%" );
+        // Utils::SetAttrStr( graphicProperties3, "draw:contrast", "0%" );
+        // Utils::SetAttrStr( graphicProperties3, "draw:red", "0%" );
+        // Utils::SetAttrStr( graphicProperties3, "draw:green", "0%" );
+        // Utils::SetAttrStr( graphicProperties3, "draw:blue", "0%" );
+        // Utils::SetAttrStr( graphicProperties3, "draw:gamma", "100%" );
+        // Utils::SetAttrStr( graphicProperties3, "draw:color-inversion", "false" );
+        // Utils::SetAttrStr( graphicProperties3, "draw:image-opacity", "100%" );
+        // Utils::SetAttrStr( graphicProperties3, "draw:color-mode", "standard" );
 
-        wxXmlNode* fr3 = Utils::AddNewNode( automaticStyles, wxXML_ELEMENT_NODE, "style:style" );
-        Utils::SetAttrStr( fr3, "style:name", FrameWithImage );
-        Utils::SetAttrStr( fr3, "style:family", "graphic" );
-        Utils::SetAttrStr( fr3, "style:parent-style-name", "Graphics" );
-        wxXmlNode* graphicProperties3 = Utils::AddNewNode( fr3, wxXML_ELEMENT_NODE, "style:graphic-properties" );
+        Utils::AddComment( automaticStyles, FrameCenteredAtTopNoBorder, "FrameCenteredAtTopNoBorder" );
 
-        Utils::SetAttrStr( graphicProperties3, "style:vertical-pos", "center" );
-        Utils::SetAttrStr( graphicProperties3, "style:vertical-rel", "paragraph-content" );
-        Utils::SetAttrStr( graphicProperties3, "style:horizontal-pos", "center" );
-        Utils::SetAttrStr( graphicProperties3, "style:horizontal-rel", "paragraph-content" );
-        // SetAttrStr( graphicProperties3, "fo:background-color", "transparent" ); 
-        // SetAttrStr( graphicProperties3, "style:background-transparency", "100%" );
-        // SetAttrStr( graphicProperties3, "style:shadow", "none"  );
-        Utils::SetAttrStr( graphicProperties3, "style:mirror", "none" );
-        Utils::SetAttrStr( graphicProperties3, "fo:clip", "rect(0in, 0in, 0in, 0in)" );
-        Utils::SetAttrStr( graphicProperties3, "draw:luminance", "0%" );
-        Utils::SetAttrStr( graphicProperties3, "draw:contrast", "0%" );
-        Utils::SetAttrStr( graphicProperties3, "draw:red", "0%" );
-        Utils::SetAttrStr( graphicProperties3, "draw:green", "0%" );
-        Utils::SetAttrStr( graphicProperties3, "draw:blue", "0%" );
-        Utils::SetAttrStr( graphicProperties3, "draw:gamma", "100%" );
-        Utils::SetAttrStr( graphicProperties3, "draw:color-inversion", "false" );
-        Utils::SetAttrStr( graphicProperties3, "draw:image-opacity", "100%" );
-        Utils::SetAttrStr( graphicProperties3, "draw:color-mode", "standard" );
-
-
-        //fr2 is centered at top with no border
+        //fr4 is centered at top with no border
         wxXmlNode* fr4 = Utils::AddNewNode( automaticStyles, wxXML_ELEMENT_NODE, "style:style" );
         Utils::SetAttrStr( fr4, "style:name", FrameCenteredAtTopNoBorder );
         Utils::SetAttrStr( fr4, "style:family", "graphic" );
@@ -219,25 +286,64 @@ namespace ODT {
         Utils::SetAttrStr( graphicProperties4, "style:vertical-pos", "top" );
         Utils::SetAttrStr( graphicProperties4, "style:vertical-rel", "paragraph-content" );
         Utils::SetAttrStr( graphicProperties4, "style:horizontal-pos", "center" );
-        Utils::SetAttrStr( graphicProperties4, "style:horizontal-rel", "paragraph-conten" );
+        Utils::SetAttrStr( graphicProperties4, "style:horizontal-rel", "paragraph-content" );
         Utils::SetAttrStr( graphicProperties4, "fo:padding", "0in" );
         Utils::SetAttrStr( graphicProperties4, "fo:border", "none" );
         Utils::SetAttrStr( graphicProperties4, "style:shadow", "none" );
+        Utils::SetAttrStr( graphicProperties4, "draw:shadow-opacity", "100%");
+
+        Utils::AddComment( automaticStyles, FrameNoBorder, "FrameNoBorder" );
 
         wxXmlNode* fr5 = Utils::AddNewNode( automaticStyles, wxXML_ELEMENT_NODE, "style:style" );
-        Utils::SetAttrStr( fr5, "style:name", FrameCenteredFromTopNoBorder );
+        Utils::SetAttrStr( fr5, "style:name", FrameNoBorder );
         Utils::SetAttrStr( fr5, "style:family", "graphic" );
         Utils::SetAttrStr( fr5, "style:parent-style-name", "Frame" );
         wxXmlNode* graphicProperties5 =  Utils::AddNewNode( fr5, wxXML_ELEMENT_NODE, "style:graphic-properties" );
         Utils::SetAttrStr( graphicProperties5, "style:vertical-pos", "from-top" );
         Utils::SetAttrStr( graphicProperties5, "style:vertical-rel", "paragraph-content" );
-        Utils::SetAttrStr( graphicProperties5, "style:horizontal-pos", "center" );
-        Utils::SetAttrStr( graphicProperties5, "style:horizontal-rel", "paragraph-conten" );
+        Utils::SetAttrStr( graphicProperties5, "style:horizontal-pos", "from-left" );
+        Utils::SetAttrStr( graphicProperties5, "style:horizontal-rel", "paragraph-content" );
         Utils::SetAttrStr( graphicProperties5, "fo:padding", "0in" );
         Utils::SetAttrStr( graphicProperties5, "fo:border", "none" );
         Utils::SetAttrStr( graphicProperties5, "style:shadow", "none" );
 
+        // <style:style style:name="fr2" style:family="graphic" style:parent-style-name="Frame">
+        //     <style:graphic-properties 
+        //     style:wrap="parallel" 
+        //     style:number-wrapped-paragraphs="no-limit" 
+        //     style:vertical-pos="from-top" 
+        //     style:vertical-rel="paragraph-content" 
+        //     style:horizontal-pos="from-left" 
+        //     style:horizontal-rel="paragraph-content" 
+        //     draw:fill="bitmap" 
+        //     draw:fill-image-name="box2" 
+        //     style:repeat="stretch" 
+        //     draw:fill-image-ref-point-x="0%" 
+        //     draw:fill-image-ref-point-y="0%" 
+        //     draw:fill-image-ref-point="center" 
+        //     loext:rel-width-rel="paragraph" 
+        //     loext:rel-height-rel="paragraph">
+        //  <style:background-image xlink:href="Pictures/1000000000000258000003584C04905AFB17BB5E.jpg" 
+        //         xlink:type="simple" 
+        //         xlink:actuate="onLoad" 
+        //         style:repeat="stretch"/>
+        //fr2 is a frame with a background image
 
+        // //fr7 is a frame with a background image
+        // wxXmlNode* fr7 = Utils::AddNewNode( automaticStyles, wxXML_ELEMENT_NODE, "style:style" );
+        //     Utils::SetAttrStr( fr7, "style:name", PageFrame );
+        //     Utils::SetAttrStr( fr7, "style:family", "graphic" );
+        //     Utils::SetAttrStr( fr7, "style:parent-style-name", "Frame" );
+        // wxXmlNode* graphicProperties7 = Utils::AddNewNode( fr7, wxXML_ELEMENT_NODE, "style:graphic-properties" );
+        //     Utils::SetAttrStr( graphicProperties7, "style:wrap", "parallel" );
+        //     Utils::SetAttrStr( graphicProperties7, "style:wrap", "parallel" ); 
+        //     Utils::SetAttrStr( graphicProperties7, "style:number-wrapped-paragraphs", "no-limit" ); 
+        //     Utils::SetAttrStr( graphicProperties7, "style:vertical-pos", "from-top" ); 
+        //     Utils::SetAttrStr( graphicProperties7, "style:vertical-rel", "paragraph" ); 
+        //     Utils::SetAttrStr( graphicProperties7, "style:horizontal-pos", "from-left" ); 
+        //     Utils::SetAttrStr( graphicProperties7, "style:horizontal-rel", "paragraph" );
+
+ 
     }
     wxXmlNode* Content::FindOfficeText( )
     {
@@ -285,7 +391,7 @@ namespace ODT {
         double yPos,
         double width,
         double height,
-        const char* drawStyleName,  // fr1
+        const char* drawStyleName,  // fr2
         const char* textAnchorType,  // "page", "paragraph"
         const char* textStyleName )
     {
@@ -314,7 +420,7 @@ namespace ODT {
         double yPos,
         double width,
         double height,
-        const char* drawStyleName,  // fr1
+        const char* drawStyleName,  // fr2
         const char* textAnchorType,  // "page", "paragraph"
         const char* textStyleName )
     {
@@ -344,7 +450,7 @@ namespace ODT {
         double yPos,
         double width,
         double height,
-        wxString& drawStyleName,  // fr1
+        wxString& drawStyleName,  // fr2
         wxString& textAnchorType, // "page", "paragraph"
         wxString& textStyleName,   // "P1"
         wxString& link )
@@ -369,7 +475,7 @@ namespace ODT {
             Utils::SetAttrStr( image, "xlink:type", "simple" );
             Utils::SetAttrStr( image, "xlink:show", "embed" );
             Utils::SetAttrStr( image, "xlink:actuate", "onLoad" );
-            Utils::SetAttrStr( image, "loext:mime-type", ODT::GetMimeType( link ) );
+            Utils::SetAttrStr( image, "draw:mime-type", ODT::GetMimeType( link ) );
         }
         return imageFrame;
     }
@@ -379,7 +485,7 @@ namespace ODT {
         double yPos,
         double width,
         double height,
-        wxString& drawStyleName,  // fr1
+        wxString& drawStyleName,  // fr2
         wxString& textAnchorType, // "page", "paragraph"
         wxString& textStyleName,
         wxString point,

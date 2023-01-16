@@ -214,7 +214,7 @@ namespace Design {
             yPos,
             width,
             height,
-            drawStyleName,  // fr1
+            drawStyleName,  // fr2
             textAnchorType ); // "page", "paragraph"
 
 

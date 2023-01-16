@@ -151,7 +151,7 @@ public:
     void FileSaveAsCatalog( wxString filename );
     void FileSaveCatalog( );
 
-    void InitODTDocument( );
+    void CreateODTDocument( );
 
     // Load last Project file at startup if enabled
     void InitLoad( );

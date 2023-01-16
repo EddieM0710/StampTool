@@ -62,29 +62,27 @@ namespace ODT {
     }
 
     //***********************************
-
     wxString Document::AddImageFile( wxString filename )
     {
-        //Design::DesignData *designData = Utils::GetProject()->GetDesignData( ) ;
-        //wxString imageLoc = GetGeneratorData()->GetSettings()->GetImageDirectory( );
+
         wxFileName inputImage(  filename );
-        bool status = inputImage.MakeAbsolute( );
-        wxString i_cwd = inputImage.GetCwd( );
 
-        wxString i_fullPath = inputImage.GetFullPath( );
+        wxFileName destImage( "Pictures", inputImage.GetFullName() );
+    //    std::cout << " destImage.GetFullPath( ):" << destImage.GetFullPath( ) << "\n";
+    //    std::cout << " inputImage.GetFullName():" << inputImage.GetFullName() << "\n";
+    //    std::cout << " ODTDoc()->GetPicturesDir():" << ODTDoc()->GetPicturesDir() << "\n";
 
-        wxFileName docImage( "Pictures", inputImage.GetFullName() );
-        wxString d_cwd = docImage.GetCwd( );
+        wxString destFullPath = ODTDoc()->GetPicturesDir() + inputImage.GetFullName();
+    //    std::cout << " destFullPath:" << destFullPath << "\n";
 
-        wxString d_fullPath = docImage.GetFullPath( );
-        std::cout << "d_cwd:" << d_cwd << " d_fullPath:" << d_fullPath << "\n";
-d_fullPath = ODTDoc()->GetPicturesDir() + inputImage.GetFullName();
-
-        bool state = wxCopyFile( inputImage.GetFullPath( ), d_fullPath );
+        bool state = wxCopyFile( inputImage.GetFullPath( ), destFullPath );
         
-      //  wxCopyFile( inputImage.GetFullPath( ), docImage.GetFullPath( ) );
-        ManifestDoc( )->AddManifestFileEntry( docImage.GetFullPath( ), GetMimeType( filename ) );
-        return docImage.GetFullPath( );
+      //  wxCopyFile( inputImage.GetFullPath( ), destImage.GetFullPath( ) );
+        ManifestDoc( )->AddManifestFileEntry( destImage.GetFullPath( ), GetMimeType( filename ) );
+
+        //StylesDoc()->AddDrawFillImage( inputImage.GetFullName(), destImage.GetFullPath( ), "simple", "embed", "onLoad");
+
+        return destImage.GetFullPath( );
     }
 
     //***********************************
@@ -137,7 +135,10 @@ d_fullPath = ODTDoc()->GetPicturesDir() + inputImage.GetFullName();
         {
             if ( CreateDocFiles( ) )
             {
+                wxString drawName = StylesDoc()->AddBackgroundImage( GetDesignData()->GetAlbum()->GetBorderFileName() );
+                ContentDoc( )->AddPageBackgroundFrameStyles( drawName );
                 ContentDoc( )->AddPageFrameStyles( );
+
                 //            AddBorder( m_parent->GetAlbum()->GetBorderFileName() );
                 return true;
             }

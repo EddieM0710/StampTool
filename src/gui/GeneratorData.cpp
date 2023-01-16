@@ -99,7 +99,7 @@ void GeneratorData::LoadData( )
     LoadCatalogTree( );
     ReadDesignFile( );
     LoadDesignTree( );
-    InitODTDocument( );
+    CreateODTDocument( );
 }
 
 void GeneratorData::FileOpenProject(wxString filename)
@@ -228,7 +228,10 @@ void GeneratorData::LoadNewDesign( )
 
 void GeneratorData::FileSaveDesign( )
 {    
-    m_designData->SaveXML( GetProject( )->GetDesignFilename( ) );
+    if ( m_designData )
+    {
+        m_designData->SaveXML( GetProject( )->GetDesignFilename( ) );
+    }
 };
 
 void GeneratorData::FileSaveAsDesign( wxString filename )
@@ -248,7 +251,7 @@ void GeneratorData::FileSaveAsDesign( wxString filename )
         m_catalogData.SaveCatalogVolumes( );
     }
 
-void GeneratorData::InitODTDocument( )
+void GeneratorData::CreateODTDocument( )
 {
     ODT::Document* odtDoc = new ODT::Document( );
     SetODTDocument( odtDoc );

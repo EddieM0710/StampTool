@@ -44,12 +44,12 @@
 
 namespace Design {
 
-DesignData* NewDesignDataInstance()
-{
-    DesignData* designData = new DesignData();
-    designData->InitDesignData();
-    return designData;
-}
+    DesignData* NewDesignDataInstance( )
+    {
+        DesignData* designData = new DesignData( );
+        designData->InitDesignData( );
+        return designData;
+    }
 
     //*****    
 
@@ -58,10 +58,10 @@ DesignData* NewDesignDataInstance()
         m_albumDoc = 0;
         m_album = 0;
     }
-    DesignData* DesignData::InitDesignData()
-    { 
+    DesignData* DesignData::InitDesignData( )
+    {
         m_albumDoc = 0;
-        m_album = 0; 
+        m_album = 0;
     }
 
     //*****  
@@ -97,25 +97,25 @@ DesignData* NewDesignDataInstance()
     }
 
 
-void DesignData::LoadDefaultDocument()
-{
-    wxXmlDocument* newDocument = DesignData::NewDesignDocument( );
-    wxXmlNode* root = new wxXmlNode( wxXML_ELEMENT_NODE, "Album" );
-    newDocument->SetRoot( root );
-    root->AddAttribute(AttrNameStrings[ AT_Name ], "");
-    root->AddAttribute(AttrNameStrings[ AT_PageWidth ], "215.9");
-    root->AddAttribute(AttrNameStrings[ AT_PageHeight ], "279.4");
-    root->AddAttribute(AttrNameStrings[ AT_TopMargin ], "7.62");
-    root->AddAttribute(AttrNameStrings[ AT_BottomMargin ], "7.62");
-    root->AddAttribute(AttrNameStrings[ AT_RightMargin ], "7.62");
-    root->AddAttribute(AttrNameStrings[ AT_LeftMargin ], "19.05");
-    root->AddAttribute(AttrNameStrings[ AT_BorderSize ], "4");
+    void DesignData::LoadDefaultDocument( )
+    {
+        wxXmlDocument* newDocument = DesignData::NewDesignDocument( );
+        wxXmlNode* root = new wxXmlNode( wxXML_ELEMENT_NODE, "Album" );
+        newDocument->SetRoot( root );
+        root->AddAttribute( AttrNameStrings[ AT_Name ], "" );
+        root->AddAttribute( AttrNameStrings[ AT_PageWidth ], "215.9" );
+        root->AddAttribute( AttrNameStrings[ AT_PageHeight ], "279.4" );
+        root->AddAttribute( AttrNameStrings[ AT_TopMargin ], "7.62" );
+        root->AddAttribute( AttrNameStrings[ AT_BottomMargin ], "7.62" );
+        root->AddAttribute( AttrNameStrings[ AT_RightMargin ], "7.62" );
+        root->AddAttribute( AttrNameStrings[ AT_LeftMargin ], "19.05" );
+        root->AddAttribute( AttrNameStrings[ AT_BorderSize ], "4" );
 
-    Album* album = new Album(root);
-    SetAlbum( album ) ;
-    wxXmlNode* pageNode = new wxXmlNode( wxXML_ELEMENT_NODE, AlbumBaseNames[AT_Page]);
-    Page* page = (Page*)new Page( pageNode );
-}
+        Album* album = new Album( root );
+        SetAlbum( album );
+        wxXmlNode* pageNode = new wxXmlNode( wxXML_ELEMENT_NODE, AlbumBaseNames[ AT_Page ] );
+        Page* page = ( Page* )new Page( pageNode );
+    }
 
 
     //*****  
@@ -139,7 +139,7 @@ void DesignData::LoadDefaultDocument()
                 bakFile.SetExt( "bak" );
                 wxRenameFile( filename, bakFile.GetFullName( ), true );
             }
-            SaveDesignTree();
+            SaveDesignTree( );
             m_albumDoc->Save( filename );
             SetDirty( false );
         }
@@ -147,20 +147,20 @@ void DesignData::LoadDefaultDocument()
 
     // transferrs the DesignData tree to an xml file
     //*****  
-    void DesignData::SaveDesignTree()
+    void DesignData::SaveDesignTree( )
     {
         if ( m_albumDoc )
         {
-            wxTreeItemId albumID = GetDesignTreeCtrl()->GetRootItem();
-            Design::Album* album = (Design::Album*)GetDesignTreeCtrl()->GetItemNode(albumID);
-        
-            wxXmlNode* root = m_albumDoc->DetachRoot();
-            root->~wxXmlNode();
-            
-            wxXmlNode* xmlNode = Utils::NewNode( m_albumDoc, Design::AlbumBaseNames[Design::AT_Album] );
-            albumID = GetDesignTreeCtrl()->GetRootItem();
-            album->Save( xmlNode );    
-            GetDesignTreeCtrl()->SaveNodeData ( xmlNode, albumID );  
+            wxTreeItemId albumID = GetDesignTreeCtrl( )->GetRootItem( );
+            Design::Album* album = ( Design::Album* )GetDesignTreeCtrl( )->GetItemNode( albumID );
+
+            wxXmlNode* root = m_albumDoc->DetachRoot( );
+            root->~wxXmlNode( );
+
+            wxXmlNode* xmlNode = Utils::NewNode( m_albumDoc, Design::AlbumBaseNames[ Design::AT_Album ] );
+            albumID = GetDesignTreeCtrl( )->GetRootItem( );
+            album->Save( xmlNode );
+            GetDesignTreeCtrl( )->SaveNodeData( xmlNode, albumID );
         }
     }
 
@@ -193,10 +193,10 @@ void DesignData::LoadDefaultDocument()
     //*****  
     AlbumBase* DesignData::GetPage( AlbumBase* node )
     {
-        wxTreeItemId id = node->GetTreeItemId();
-        if ( id.IsOk() ) id = GetDesignTreeCtrl()->GetPage(id);
-        if ( id.IsOk() ) return GetDesignTreeCtrl()->GetItemNode(id);
-        return (AlbumBase*)0;
+        wxTreeItemId id = node->GetTreeItemId( );
+        if ( id.IsOk( ) ) id = GetDesignTreeCtrl( )->GetPage( id );
+        if ( id.IsOk( ) ) return GetDesignTreeCtrl( )->GetItemNode( id );
+        return ( AlbumBase* )0;
     }
 
     //*****  
@@ -211,9 +211,9 @@ void DesignData::LoadDefaultDocument()
     }
 
     //*****  
-    void DesignData::MakePage(Design::LayoutBase* node)
+    void DesignData::MakePage( Design::LayoutBase* node )
     {
-        Page* page = (Page*)GetPage( node );
+        Page* page = ( Page* )GetPage( node );
         if ( page )
         {
             bool ok = page->UpdateMinimumSize( );
@@ -221,7 +221,7 @@ void DesignData::LoadDefaultDocument()
             {
                 page->UpdateSizes( );
                 page->UpdatePositions( );
-                GetAlbumImagePanel()->Refresh( );
+                GetAlbumImagePanel( )->Refresh( );
             }
         }
     }
@@ -230,13 +230,13 @@ void DesignData::LoadDefaultDocument()
     void DesignData::UpdateAlbum( )
     {
         bool ok = m_album->UpdateMinimumSize( );
-       //if ( ok )
+        //if ( ok )
         {
             m_album->UpdateSizes( );
             m_album->UpdatePositions( );
-            GetAlbumImagePanel()->Refresh( );
+            GetAlbumImagePanel( )->Refresh( );
 
-            m_album->DumpLayout(   );
+            m_album->DumpLayout( );
 
         }
     }

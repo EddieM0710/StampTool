@@ -148,6 +148,7 @@ namespace Catalog {
                 {
                     wxString volFilename = GetVolumeFilename(); 
                     wxFileName fn( volFilename ) ;
+                    fn.MakeAbsolute();
                     wxString str = fn.GetPath() ;
                     filename = Utils::GetAttrStr( root, "ImagePath" );
                     wxFileName fn2( filename );

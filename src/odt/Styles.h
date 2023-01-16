@@ -72,7 +72,7 @@ namespace ODT {
          *
          * @return wxXmlNode*
          **************************************************/
-        wxXmlNode* FindOfficeStylesDrawFillImage( );
+        wxXmlNode* FindOfficeStylesDrawFillImage( wxString value );
 
         /**
          * @brief Adds the necessary styles to office:styles
@@ -85,6 +85,14 @@ namespace ODT {
         bool Save( );
 
         wxXmlDocument* StylesXML( ) { return m_styles; };
+        bool AddDrawFillImage(
+            wxString drawName,
+            wxString xlinkHref,
+            wxString xlinkType,
+            wxString xlinkShow,
+            wxString xlinkActuate);
+        wxString AddBackgroundImage( wxString link );
+
 
     private:
         wxXmlDocument* m_styles;

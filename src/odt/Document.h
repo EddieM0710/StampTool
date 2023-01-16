@@ -102,7 +102,7 @@ namespace ODT {
         void AddBorder( wxString filename );
 
         /**
-         * @brief Copies an image file to the ODT picturesdirectory and makes an entry in the manifest file.
+         * @brief Copies an image file to the ODT pictures directory and makes an entry in the manifest file.
          *
          * @param filename
          * @return wxString

@@ -32,10 +32,11 @@
 #include "wx/log.h"
 #include "wx/wx.h"
 #endif
-
+#include "wx/filename.h"
 #include "gui/GuiUtils.h"
 #include "design/DesignDefs.h"
 #include "gui/AlbumImagePanel.h"
+#include "art/NotFound.xpm"
 
 
 void DrawLabel( wxDC& dc, const wxString& text,
@@ -90,14 +91,60 @@ void DrawRectangle( wxDC& dc, double x, double y, double width, double height )
     //dc.DrawRectangle( pt.x, pt.y, size.x, size.y );
 };
 
-void drawBorder( wxDC& dc, double x, double y, double w, double h )
+
+
+    wxImage* GetImageFromFilename( wxString filename )
+    {
+ 
+        wxFileName fn;
+        wxImage* image;
+        bool fileOK = false;
+
+        fn.Assign( filename );
+        wxString fullpath = fn.GetFullPath( );
+        wxFileName fn3 = fn;
+        fn3.MakeAbsolute();
+        wxString str = fn3.GetFullPath();
+        if ( fn.FileExists( ) )
+        {
+            if ( image->CanRead( filename ) )
+            {
+                fileOK = true;
+            }
+        }
+        if ( fileOK )
+        {
+            image = new wxImage( filename );
+        }
+        else
+        {
+            image = new wxImage( NotFound );
+        }
+
+        return image;
+    }
+
+void DrawImage( wxDC& dc, wxString fileName, double x, double y, double w, double h )
 {
-    wxPen pen = dc.GetPen( );
-    pen.SetWidth( 1 );
-    dc.SetPen( pen );
+    wxImage* image = GetImageFromFilename( fileName );
+    if ( image && image->IsOk( ) )
+    {
+        //Draw the stamp image
 
-    //std::cout << "Border Width:" << w << "  Height:" << h << "\n";
+        if ( w <= 0.01 || h <= 0.01 )
+        {
+            h = 10;
+            w = 10;
+        }
 
-    DrawRectangle( dc, x, y, w, h );
-    DrawRectangle( dc, x + 2, y + 2, w - 4, h - 4 );
+        image->Rescale( w * Design::PpMM.x, h * Design::PpMM.y );
+        wxBitmap bitmap = *image;
+
+        dc.DrawBitmap( bitmap, x * Design::PpMM.x, y * Design::PpMM.y, true );
+        if ( image )
+        {
+            delete image;
+        }
+    }
+
 };

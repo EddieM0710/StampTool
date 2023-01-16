@@ -174,6 +174,9 @@ namespace Design {
 
         void ReportLayout(  );
 
+    wxString GetBorderFileName(){ return m_borderFileName;}
+    void SetBorderFilename( wxString str ){ m_borderFileName = str; };
+
     private:
 
 
@@ -208,6 +211,7 @@ namespace Design {
          **************************************************/
         double m_borderSize;
 
+wxString m_borderFileName;
     };
 }
 #endif

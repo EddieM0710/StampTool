@@ -41,9 +41,12 @@ namespace ODT {
     extern  wxString Normal10PtTextStyle;
     extern  wxString FrameWithBorder;
     extern  wxString FrameNoBorder;
+    extern  wxString BackgroundFrame; 
     extern  wxString FrameWithImage;
     extern  wxString FrameCenteredAtTopNoBorder;
-    extern  wxString FrameCenteredFromTopNoBorder;
+    extern  wxString FramePositionedFromLeftNoBorder;
+    extern  wxString FrameWithBackgroundImage;
+    extern  wxString PageFrame;
     extern  wxString TextAnchorParagraph;
     extern  wxString TextAnchorPage;
 

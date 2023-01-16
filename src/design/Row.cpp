@@ -176,6 +176,7 @@ namespace Design {
     // build the frame container for the row
     wxXmlNode* Row::Write( wxXmlNode* parent )
     {
+        
         Utils::AddComment( parent, "Row", "Inserting a Row." );
         double xPos = GetXPos( );
         double yPos = GetYPos( );
@@ -190,7 +191,7 @@ namespace Design {
             yPos,
             width,
             height,
-            drawStyleName,  // fr1
+            drawStyleName,  // fr2
             textAnchorType ); // "page", "paragraph"
 
         wxTreeItemIdValue cookie;

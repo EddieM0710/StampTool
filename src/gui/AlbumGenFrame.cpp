@@ -865,10 +865,12 @@ void AlbumGenFrame::SaveAsDesign( )
 }
 void AlbumGenFrame::GenerateODTAlbum( )
 {
-    ODT::ODTDoc()->InitODTFiles( );
-    Design::GetAlbum()->MakeAlbum();
-    ODT::ODTDoc()->MakeDocument();
-
+    Design::Album* album = Design::GetAlbum();
+    if ( album )
+    {
+        Design::GetAlbum()->MakeAlbum();
+        ODT::ODTDoc()->MakeDocument();
+    }
 }
 
 void AlbumGenFrame::SetupRecentMenu( )

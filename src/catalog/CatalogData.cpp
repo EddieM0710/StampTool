@@ -68,11 +68,23 @@ namespace Catalog {
         return catalogVolumeData;
     };
 
+    bool CatalogData::ClearCatalogArray()
+    {
+        while( !m_catalogArray.empty() )
+        {
+            CatalogVolumeData* data = m_catalogArray.back();
+            delete data;
+            m_catalogArray.pop_back();
+        }
+    }   
     Catalog::CatalogVolumeData* CatalogData::GetCatalogVolumeData( )
     {
         if ( m_catalogVolumeDataNdx >= 0 )
         {
-        return m_catalogArray.at( m_catalogVolumeDataNdx );
+            if ( !m_catalogArray.empty() ) 
+            {
+                return m_catalogArray.at( m_catalogVolumeDataNdx );
+            }
         }
         return (Catalog::CatalogVolumeData*)0;
     };
@@ -86,6 +98,7 @@ int wayToSort(Catalog::CatalogVolumeData* vol1, Catalog::CatalogVolumeData* vol2
 
     void CatalogData::LoadCatalogVolumes( )
     {
+
         for ( Catalog::CatalogVolumeDataArray::iterator it = std::begin( m_catalogArray );
             it != std::end( m_catalogArray );
             ++it )
@@ -93,7 +106,7 @@ int wayToSort(Catalog::CatalogVolumeData* vol1, Catalog::CatalogVolumeData* vol2
             Catalog::CatalogVolumeData* volume = ( Catalog::CatalogVolumeData* )( *it );
             volume->LoadXML( );
             wxString name = volume->GetVolumeName();
-            if ( name.IsEmpty() )
+            if ( !name.IsEmpty() )
             {
                 name = volume->GetVolumeFilename();
                 wxFileName fn(name);

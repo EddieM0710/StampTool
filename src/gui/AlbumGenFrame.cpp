@@ -40,6 +40,7 @@
 #include "odt/Document.h"
 #include <wx/filefn.h>
 #include <wx/filename.h>
+#include <wx/filedlg.h> 
 #include <wx/log.h>
 #include <wx/wfstream.h>
 
@@ -60,6 +61,7 @@
 #include "design/AlbumBase.h"
 #include "design/Album.h"
 #include "design/Stamp.h"
+#include "gui/FileCreateDialog.h"
 
 //#include <curl/curl.h>
 
@@ -334,12 +336,15 @@ void AlbumGenFrame::DoCSVImport( )
     wxFileInputStream input_stream( filename );
     if ( !input_stream.IsOk( ) )
     {
-        wxLogError( "Cannot open file '%s'.", filename );
+        wxLogError( "DoCSVImport: Cannot open file '%s'.", filename );
         return;
     }
 
-    GetGeneratorData()->ReadCatalogCSV( filename );
-    GetGeneratorData()->LoadCatalogTree( );
+    if ( GetGeneratorData()->ReadCatalogCSV( filename ))
+    {
+        GetCatalogVolumeData( )->EditDetailsDialog( this );
+        GetGeneratorData()->LoadCatalogTree( );
+    }    
     Dirty = true;
 }
 
@@ -421,6 +426,7 @@ void AlbumGenFrame::OnCSVImportClick( wxCommandEvent& event )
 
 void AlbumGenFrame::OnExitClick( wxCommandEvent& event )
 {
+    GetSettings()->Save();
     Close( );
     event.Skip( );
 }
@@ -553,8 +559,23 @@ void AlbumGenFrame::NewProject( )
         {
             return;
         }
-    };
-    GetGeneratorData()->FileNewProject();
+    }
+ 
+    FileCreateDialog fileDialog( this, 12355, _("Select the Filename and Directory for the Project file.")  );
+    wxGetCwd();
+    fileDialog.SetDefaultDirectory(wxGetCwd());
+    fileDialog.SetDefaultFilename( _("unnamed.prj.xml")); 
+    fileDialog.SetWildCard( _("Project files (*.prj.xml)|*.prj.xml"));
+
+    if (  fileDialog.ShowModal() == wxID_CANCEL )
+    {
+        return;
+    }
+    wxString dir = fileDialog.GetDir();
+    wxSetWorkingDirectory(dir);
+
+
+    GetGeneratorData()->FileNewProject(fileDialog.GetFile());
 
 
 
@@ -580,7 +601,21 @@ void AlbumGenFrame::NewDesign( )
             return;
         }
     };
-    GetGeneratorData()->LoadNewDesign();
+     
+    FileCreateDialog fileDialog( this, 12355, _("Select the Filename and Directory for the Design file.")  );
+    wxGetCwd();
+    fileDialog.SetDefaultDirectory(wxGetCwd());
+    fileDialog.SetDefaultFilename( _("unnamed.alb.xml")); 
+    fileDialog.SetWildCard( _("Design files (*.alb.xml)|*.alb.xml"));
+
+    if (  fileDialog.ShowModal() == wxID_CANCEL )
+    {
+        return;
+    }
+    wxString cwd = wxGetCwd();
+    wxFileName designFile( fileDialog.GetPath() );
+    designFile.MakeRelativeTo(cwd);
+    GetGeneratorData()->LoadNewDesign( designFile.GetFullPath() );
     SetDirty();
 
 }
@@ -607,8 +642,22 @@ void AlbumGenFrame::NewCatalog( )
             return;
         }
     };
+     
+    FileCreateDialog fileDialog( this, 12355, _("Select the Filename and Directory for the Design file.")  );
+    wxGetCwd();
+    fileDialog.SetDefaultDirectory(wxGetCwd());
+    fileDialog.SetDefaultFilename( _("unnamed.alb.xml")); 
+    fileDialog.SetWildCard( _("Design files (*.alb.xml)|*.alb.xml"));
 
-    GetGeneratorData()->LoadNewCatalog();
+    if (  fileDialog.ShowModal() == wxID_CANCEL )
+    {
+        return;
+    }
+        wxString cwd = wxGetCwd();
+    wxFileName catFile( fileDialog.GetPath() );
+    catFile.MakeRelativeTo(cwd);
+
+    GetGeneratorData()->LoadNewCatalog( catFile.GetFullPath() );
     SetDirty();
 }
 
@@ -812,8 +861,8 @@ int AlbumGenFrame::QueryMerge( int& mergeMethod )
 void AlbumGenFrame::SaveAsProject( )
 {
 
-    if ( GetCatalogVolumeData( ) )
-    {
+    //if ( GetCatalogVolumeData( ) )
+    //{
         wxFileName lastFile( GetSettings( )->GetLastFile( ) );
         lastFile.SetExt( "xml" );
         wxFileDialog saveFileDialog(
@@ -825,7 +874,7 @@ void AlbumGenFrame::SaveAsProject( )
 
         wxString filename = saveFileDialog.GetPath( );
         GetGeneratorData( )->FileSaveAsProject( filename );
-    }
+    //}
 }
 void AlbumGenFrame::SaveAsCatalog( )
 {

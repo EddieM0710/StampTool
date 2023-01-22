@@ -41,6 +41,7 @@
 #include "Settings.h"
 #include "gui/SortOrderDialog.h"
 #include "AlbumGenApp.h"
+#include "catalog/CatalogDefs.h"
 
  
  
@@ -261,7 +262,7 @@ void SortOrderDialog::CreateControls( )
     }
     else
     {
-        m_firstSort->SetSelection( 0 );
+        m_firstSort->SetSelection( Catalog::NT_None );
     }
 
     m_secondSort->Set( m_sortStrings );
@@ -271,7 +272,7 @@ void SortOrderDialog::CreateControls( )
     }
     else
     {
-        m_secondSort->SetSelection( 0 );
+        m_secondSort->SetSelection( Catalog::NT_None  );
     }
 
     m_thirdSort->Set( m_sortStrings );
@@ -281,7 +282,7 @@ void SortOrderDialog::CreateControls( )
     }
     else
     {
-        m_thirdSort->SetSelection( 0 );
+        m_thirdSort->SetSelection( Catalog::NT_None  );
     }
 
     m_forthSort->Set( m_sortStrings );
@@ -291,7 +292,7 @@ void SortOrderDialog::CreateControls( )
     }
     else
     {
-        m_forthSort->SetSelection( 0 );
+        m_forthSort->SetSelection( Catalog::NT_None  );
     }
 
     m_fifthSort->Set( m_sortStrings );
@@ -301,7 +302,7 @@ void SortOrderDialog::CreateControls( )
     }
     else
     {
-        m_fifthSort->SetSelection( 0 );
+        m_fifthSort->SetSelection( Catalog::NT_None  );
     }
 }
 

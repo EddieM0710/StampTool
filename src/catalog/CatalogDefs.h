@@ -63,8 +63,7 @@ namespace Catalog {
      **************************************************/
     typedef enum
     {
-        NT_None = 0,
-        NT_Catalog,
+        NT_Catalog = 0,
         NT_Country,
         NT_Period,
         NT_Decade,
@@ -75,6 +74,7 @@ namespace Catalog {
         NT_Entry,
         NT_Specimen,
         NT_CatalogCode,
+        NT_None,
         NT_NbrTypes
     } CatalogBaseType;
 
@@ -361,123 +361,14 @@ namespace Catalog {
 
     CatalogBaseType FindCatalogBaseType( wxXmlNode* element );
 
-    // void AddEntry(wxXmlNode *child)
-    // {
-    //     AddEntry(Root(), child);
-    // }
-
     void AddEntry( wxXmlNode* parent, wxXmlNode* child, int level );
-    // {
-    //     level++;
-    //     wxString name = child->GetName( );
-    //     wxString parentName = parent->GetName( );
-    //     CatalogBaseType parentType = FindCatalogBaseType( parentName );
-    //     //    std::cout << "AddEntry  ParentName:" << parentName
-    //     //        << "  ParentType:" << CatalogBaseNames[ parentType ]
-    //     //        << "  ChildName:" << name << "level" << level << "\n";
-    //     if ( name == CatalogBaseNames[ NT_Entry ] )
-    //     {
-    //         Entry entry( child );
-    //         CatalogBaseType sortType = ( CatalogBaseType )GetSettings( )->GetNextSortClassification(
-    //             ( int )parentType );
-    //         if ( ( sortType < NT_Catalog ) || ( sortType >= NT_Entry ) )
-    //         {
-    //             //            std::cout << "     InsertChild\n";
-    //                         // if the sort type is not one of the classification node types
-    //                         // then add it here. All entrys and their children get added here.
-    //             parent->AddChild( child );
-    //             return;
-    //         }
-    //         else
-    //         {
-    //             //            std::cout << "     SortType: " << CatalogBaseNames[ sortType ]
-    //             //                << "\n";
-    //             wxString nodeName = CatalogBaseNames[ sortType ];
-    //             wxString name = entry.GetClassificationName( &entry, sortType );
-    //             const char* nameStr = name;
-    //             const char* nodeNameStr = nodeName;
-    //             //             std::cout << "     Looking for " << nodeNameStr << " with Name "
-    //             //                 << nameStr << "\n";
-
-    //             wxXmlNode* nextNode = FirstChildElement( parent, nodeNameStr );
-    //             while ( nextNode )
-    //             {
-    //                 wxXmlAttribute* attr = SetAttrStr( nextNode, "Name", nameStr );
-    //                 if ( attr )
-    //                 {
-    //                     //                    std::cout << "     Found it\n";
-    //                     AddEntry( nextNode, child, level );
-    //                     return;
-    //                 }
-    //                 nextNode = nextNode->GetNext( );
-    //             }
-    //             // couldn't find it so add it
-    // //            std::cout << "     Adding it: " << nodeNameStr << " with Name "
-    // //                << nameStr << "\n";
-
-    //             nextNode = NewNode( parent, nodeNameStr );
-    //             nextNode->SetAttrStr( "Name", nameStr );
-
-    //             AddEntry( nextNode, child, level );
-    //             return;
-    //         }
-    //     }
-    // }
-
+  
     wxXmlNode* MoveEntry( wxXmlNode* newParent, wxXmlNode* child );
     wxXmlNode* InsertEntry( wxXmlNode* sibling, wxXmlNode* child, bool after = true);
-    // {
-    //     if ( newParent == child )
-    //     {
-    //         // can't be a child of itself
-    //         return ( wxXmlNode* )0;
-    //     }
 
-    //     wxXmlNode* parent = newParent->GetParent( );
-    //     while ( parent )
-    //     {
-    //         if ( child == parent )
-    //         {
-    //             // child can't be an ancestor of itself
-    //             return ( wxXmlNode* )0;
-    //         }
-    //         parent = parent->GetParent( );
-    //     }
-    //     // Make a copy of the old child and insert it
-    //     wxXmlNode* newChildNode = new wxXmlNode( *child );
-    //     wxXmlNode* newChild = newChildNode;
-    //     newParent->AddChild( newChild );
-
-    //     parent = child->GetParent( );
-    //     parent->RemoveChild( child );
-    //     return newChild;
-    // }
 
     void SortData( wxXmlNode* newRoot, wxXmlNode* parent );
-    // {
 
-    //     wxXmlNode* child = parent->GetChildren( );
-    //     while ( child )
-    //     {
-    //         if ( !CatalogBaseNames[ NT_Entry ].Cmp( child->GetName( ) ) )
-    //         {
-    //             // Make a copy of the old child in the new doc and insert it
-    //             wxXmlNode* newChildNode = new wxXmlNode( *child );
-    //             AddEntry( newRoot, newChildNode );
-    //         }
-    //         else
-    //         {
-    //             // if this wasn't a entry node we will just decend in the hierachy
-
-    //             if ( !child->GetChildren( ) )
-    //             {
-    //                 SortData( newRoot, child );
-    //             }
-    //         }
-    //         child = child->GetNext( );
-    //         ;
-    //     }
-    // }
 
 }
 

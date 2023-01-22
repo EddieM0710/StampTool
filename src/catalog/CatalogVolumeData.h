@@ -61,7 +61,7 @@ namespace Catalog {
         void LoadXML( );
 
         // Load Catalog csv file
-        void LoadCSV( wxString filename );
+        bool LoadCSV( wxString filename );
 
         void ReSortTree( );
 
@@ -87,16 +87,24 @@ namespace Catalog {
     wxString GetVolumeName()
     {
         wxXmlNode* root = m_stampDoc->GetRoot();
-        return Utils::GetAttrStr(root,"Name");
+        if ( root )
+        {
+            return Utils::GetAttrStr(root,"Name");
+        }
+        return "";
     };
     void SetVolumeName( wxString str )
     {
         wxXmlNode* root = m_stampDoc->GetRoot();
-        Utils::SetAttrStr( root, "Name", str );
+        if ( root )
+        {
+            Utils::SetAttrStr( root, "Name", str );
+        }
     };
 
-    wxString GetImagePath();
+    wxString GetCatalogVolumeImagePath();
     void SetImagePath(wxString str);    
+    void EditDetailsDialog(  wxWindow* parent);
     
     private:
         wxString m_volumeFilename;

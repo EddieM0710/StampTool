@@ -109,11 +109,11 @@ namespace Utils {
         return status;
     };
 
-    void CSVData::DoLoad( wxString& filename, wxXmlNode* catalogVolumeData )
+    bool CSVData::DoLoad( wxString& filename, wxXmlNode* catalogVolumeData )
     {
         m_nodeData = catalogVolumeData;
 
-        ReadDataFile( filename );
+        return ReadDataFile( filename );
     };
 
 

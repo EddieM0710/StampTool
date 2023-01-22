@@ -28,6 +28,7 @@ enum
     CatalogDataTree_About = wxID_ABOUT,
     CatalogDataTree_StructureStamps,
     CatalogDataTree_ResortTree,
+    CatalogDataTree_EditDetails,
     CatalogDataTree_Delete,
     CatalogDataTree_Add,
     CatalogDataTree_Colnect,
@@ -167,6 +168,7 @@ public:
     void GoToColnect( wxTreeItemId id );
     void AddEntry( wxTreeItemId id );
     void DeleteEntry( wxTreeItemId id );
+    void EditDetailsDialog();
 
     wxTreeItemId FindTreeItemID( wxXmlNode* node );
 

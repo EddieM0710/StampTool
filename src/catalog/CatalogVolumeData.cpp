@@ -6,18 +6,18 @@
  * @date 2021-02-25
  *
  * @copyright Copyright (c) 2021
- * 
+ *
  * This file is part of AlbumGenerator.
  *
- * AlbumGenerator is free software: you can redistribute it and/or modify it under the 
- * terms of the GNU General Public License as published by the Free Software Foundation, 
+ * AlbumGenerator is free software: you can redistribute it and/or modify it under the
+ * terms of the GNU General Public License as published by the Free Software Foundation,
  * either version 3 of the License, or any later version.
  *
- * AlbumGenerator is distributed in the hope that it will be useful, but WITHOUT ANY 
- * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+ * AlbumGenerator is distributed in the hope that it will be useful, but WITHOUT ANY
+ * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
- * You should have received a copy of the GNU General Public License along with 
+ * You should have received a copy of the GNU General Public License along with
  * AlbumGenerator. If not, see <https://www.gnu.org/licenses/>.
  *
  **************************************************/
@@ -53,14 +53,15 @@
 #include "utils/Project.h"
 #include "utils/XMLUtilities.h"
 #include "AlbumGenApp.h"
+#include "gui/VolumeDetailsDialog.h"
 
 wxDECLARE_APP( AlbumGenApp );
 
 namespace Catalog {
 
-    CatalogVolumeData* NewCatalogVolumeDataInstance()
+    CatalogVolumeData* NewCatalogVolumeDataInstance( )
     {
-        return new CatalogVolumeData();
+        return new CatalogVolumeData( );
     }
 
     CatalogVolumeData::CatalogVolumeData(/* args */ )
@@ -96,7 +97,7 @@ namespace Catalog {
             GetGeneratorData( )->SetDirty( true );
         }
     }
-     //*****
+    //*****
 
     wxXmlDocument* CatalogVolumeData::NewDocument( )
     {
@@ -119,7 +120,6 @@ namespace Catalog {
     void CatalogVolumeData::Save( )
     {
         wxString filename = m_volumeFilename;
-      //  GetProject( )->GetCatalogFilename( );
         if ( wxFileExists( filename ) )
         {
             wxFileName bakFile( filename );
@@ -129,54 +129,45 @@ namespace Catalog {
         m_stampDoc->Save( filename );
         SetDirty( false );
     }
-    
-    //*****
 
-    void CatalogVolumeData::NewCatalog()
-    {     
+    //*****catalogData
+
+    void CatalogVolumeData::NewCatalog( )
+    {
         m_stampDoc = NewDocument( );
         wxXmlNode* root = new wxXmlNode( wxXML_ELEMENT_NODE, "Catalog" );
         m_stampDoc->SetRoot( root );
     }
-    wxString CatalogVolumeData::GetImagePath()
+    wxString CatalogVolumeData::GetCatalogVolumeImagePath( )
     {
-         wxString filename = "";
-            if ( m_stampDoc && m_stampDoc->IsOk() )
+        wxString filename = "";
+        if ( m_stampDoc && m_stampDoc->IsOk( ) )
+        {
+            wxXmlNode* root = m_stampDoc->GetRoot( );
+            if ( root )
             {
-                wxXmlNode* root = m_stampDoc->GetRoot();
-                if ( root )
-                {
-                    wxString volFilename = GetVolumeFilename(); 
-                    wxFileName fn( volFilename ) ;
-                    fn.MakeAbsolute();
-                    wxString str = fn.GetPath() ;
-                    filename = Utils::GetAttrStr( root, "ImagePath" );
-                    wxFileName fn2( filename );
-                    fn.GetPath();
-                    fn2.AppendDir( fn.GetPath() );
-                    filename = fn2.GetFullPath();
-                    return filename;
-                }
+                filename = Utils::GetAttrStr( root, "ImagePath" );
+
+                return filename;
             }
+        }
         return filename;
     };
 
-    void CatalogVolumeData::SetImagePath(wxString str)
+    void CatalogVolumeData::SetImagePath( wxString str )
     {
-        if ( m_stampDoc && m_stampDoc->IsOk() )
+        if ( m_stampDoc && m_stampDoc->IsOk( ) )
         {
-            wxXmlNode* root = m_stampDoc->GetRoot();
+            wxXmlNode* root = m_stampDoc->GetRoot( );
             if ( root )
             {
-                wxFileName filename = str;
-                filename.MakeRelativeTo( GetVolumeFilename() );
-                Utils::SetAttrStr( root, "ImagePath", filename.GetFullPath() );
+                Utils::SetAttrStr( root, "ImagePath", str );
             }
         }
-    }    
+    }
     //*****
 
-    void CatalogVolumeData::LoadXML(  )
+    void CatalogVolumeData::LoadXML( )
     {
 
         bool ok = false;
@@ -192,7 +183,7 @@ namespace Catalog {
             wxFileInputStream stream( m_volumeFilename );
             if ( !stream.IsOk( ) )
             {
-            wxString txt = wxString::Format( "%s Stream Create Failed.\n\n", m_volumeFilename );
+                wxString txt = wxString::Format( "%s Stream Create Failed.\n\n", m_volumeFilename );
                 wxMessageDialog* dlg = new wxMessageDialog(
                     wxGetApp( ).GetFrame( ), txt,
                     wxT( "Warning! Stream Create Failed.\n" ),
@@ -202,7 +193,7 @@ namespace Catalog {
             }
             if ( !m_stampDoc->Load( stream ) )
             {
-            wxString txt = wxString::Format( "\n%s Stream  Failed. Error: %s.\n\n", m_volumeFilename, stream.GetLastError( ) );
+                wxString txt = wxString::Format( "\n%s Stream  Failed. Error: %s.\n\n", m_volumeFilename, stream.GetLastError( ) );
                 wxMessageDialog* dlg = new wxMessageDialog(
                     wxGetApp( ).GetFrame( ), txt,
                     wxT( "Warning! Stream Load Failed.\n" ),
@@ -214,31 +205,28 @@ namespace Catalog {
         else
         {
             // this creates an empty document
-            wxXmlNode* catalogVolumeData = m_stampDoc->GetRoot( );
-            wxString name = catalogVolumeData->GetName( );
-
-            if ( name.Length( ) == 0 )
+            if ( !m_stampDoc )
             {
-                catalogVolumeData->SetName( m_volumeFilename );
+                m_stampDoc = NewDocument( );
+            }
+            wxXmlNode* catalogVolumeData = m_stampDoc->GetRoot( );
+            if ( catalogVolumeData )
+            {
+                wxString name = catalogVolumeData->GetName( );
+
+                if ( name.Length( ) == 0 )
+                {
+                    catalogVolumeData->SetName( m_volumeFilename );
+                }
             }
         }
-
-
-//         //Get the file global Prefs
-//         wxXmlNode* root = m_stampDoc->GetRoot( );
-//         const char* name = root->GetName( );
-//         if ( !strcmp( name, CatalogBaseNames[ NT_Catalog ] ) )
-//         {
-//             Classification catalog( root );
-//   //          m_title = catalog.GetTitle( );
-//         }
 
         SetDirty( false );
     }
 
     //*****
 
-    void CatalogVolumeData::LoadCSV( wxString filename )
+    bool CatalogVolumeData::LoadCSV( wxString filename )
     {
         if ( !m_stampDoc )
         {
@@ -251,12 +239,16 @@ namespace Catalog {
         {
             docRoot = Utils::NewNode( m_stampDoc, CatalogBaseNames[ NT_Catalog ] );
         }
+        wxFileName name( filename );
+        Utils::SetAttrStr( docRoot, "Name", name.GetName( ) );
+        // name.MakeRelativeTo(".");
+        Utils::SetAttrStr( docRoot, "ImagePath", "" );//name.GetPath() );
 
-        Utils::SetAttrStr( docRoot, DT_DataNames[ DT_Name ], filename );
-
-        csv->DoLoad( filename, m_stampDoc->GetRoot( ) );
+        bool status = false;
+        status = csv->DoLoad( filename, m_stampDoc->GetRoot( ) );
         SetDirty( );
         delete csv;
+        return status;
     }
 
 
@@ -302,7 +294,6 @@ namespace Catalog {
         {
             newRoot = Utils::NewNode( newDoc, Catalog::CatalogBaseNames[ Catalog::NT_Catalog ] );
         }
-        //newDoc->SetRoot( newRoot );
 
         wxXmlDocument* doc = m_stampDoc;
         wxXmlNode* root = doc->GetRoot( );
@@ -318,16 +309,26 @@ namespace Catalog {
             Utils::SetAttrStr( newRoot, Catalog::DT_DataNames[ Catalog::DT_Name ], "" );
         }
 
+        attr = Utils::GetAttribute( root, "ImagePath" );
+        if ( attr ) {
+            wxString name = attr->GetName( );
+            wxString value = attr->GetValue( );
+            Utils::SetAttrStr( newRoot, name, value );
+        }
+        else
+        {
+            Utils::SetAttrStr( newRoot, "ImagePath", "" );
+        }
+
         Catalog::SortData( newRoot, root );
 
-        //GetCatalogVolumeData( )->
         ReplaceDocument( newDoc );
 
     }
 
     //*****
     // this makes a list of the children entry elements that can have childrem
-    Utils::wxXmlNodeArray* CatalogVolumeData::MakeParentList(  Catalog::FormatType parentType )
+    Utils::wxXmlNodeArray* CatalogVolumeData::MakeParentList( Catalog::FormatType parentType )
     {
         //Catalog::Entry parentEntry;
         wxXmlNode* node = m_stampDoc->GetRoot( );
@@ -422,14 +423,10 @@ namespace Catalog {
                         if ( !issue.Cmp( parentIssue )
                             && !series.Cmp( parentSeries ) )
                         {
-                            //                        std::cout << childEntry->GetID() << " should be a child of "<<parentEntry->GetID() <<"\n";
-                                                    //remove it from the old place
                             count++;
                             wxXmlNode* currParent = childNode->GetParent( );
                             if ( currParent )
                             {
-                                //                           Catalog::Entry currParentEntry( currParent );
-                               //                            std::cout << "Removing "<< childEntry->GetID() << " from" << currParentEntry.GetID() <<"\n";
                                 currParent->RemoveChild( childNode );
                             }
                             //and add it to new place
@@ -442,4 +439,23 @@ namespace Catalog {
             }
         }
     }
+    void CatalogVolumeData::EditDetailsDialog( wxWindow* parent )
+    {
+        VolumeDetailsDialog volumeDetailsDialog( parent, 12346,
+            _( "View Edit Catalog Details" ) );
+
+        volumeDetailsDialog.SetImagePath( GetCatalogVolumeImagePath( ) );
+        volumeDetailsDialog.SetName( GetVolumeName( ) );
+
+
+        if ( volumeDetailsDialog.ShowModal( ) == wxID_CANCEL )
+            return; // the user changed idea..
+
+        if ( volumeDetailsDialog.IsNameModified( ) )
+        {
+            SetImagePath( volumeDetailsDialog.GetImagePath( ) );
+            SetVolumeName( volumeDetailsDialog.GetName( ) );
+        }
+    }
+
 }

@@ -224,25 +224,38 @@ namespace Utils {
             m_imagePath = imagePath->GetAttribute( "Name" );
         }
         wxXmlNode* catalog = FirstChildElement( projectRoot, "Catalog" );
+        Catalog::CatalogData* catalogData = GetGeneratorData( )->GetCatalogData( );
+        
+        catalogData->ClearCatalogArray();
         if ( catalog )
         {
             wxXmlNode* volume = FirstChildElement( catalog, "Volume" );
             while ( volume )
             {
                 wxString name = volume->GetAttribute( "FileName" );
-                Catalog::CatalogVolumeData* volumeData = GetGeneratorData( )->NewCatalogVolumeData( );
 
                 wxFileName catFile( name );
 
-                if ( catFile.IsAbsolute( ) )
+                if ( catFile.FileExists() )
                 {
-                    catFile.MakeRelativeTo( cwd );
+ 
+                    if ( catFile.IsAbsolute( ) )
+                    {
+                        catFile.MakeRelativeTo( cwd );
+                    }
+
+                    Catalog::CatalogVolumeData* volumeData = GetGeneratorData( )->NewCatalogVolumeData( );
+                   
+                    volumeData->SetVolumeFilename( catFile.GetFullPath( ) );
+
+                    std::cout << "LoadProjectXML cat Full Path " << catFile.GetFullPath( ) << "\n";
+                    std::cout << "LoadProjectXML cat Full Name " << catFile.GetFullName( ) << "\n";
                 }
-                volumeData->SetVolumeFilename( catFile.GetFullPath( ) );
+                else
+                { 
+                    std::cout << "LoadProjectXML file doesnt exist: " << catFile.GetFullPath( ) << "\n";
 
-                std::cout << "LoadProjectXML cat Full Path " << catFile.GetFullPath( ) << "\n";
-                std::cout << "LoadProjectXML cat Full Name " << catFile.GetFullName( ) << "\n";
-
+                }
 
                 volume = volume->GetNext( );
             }

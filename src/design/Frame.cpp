@@ -75,10 +75,10 @@ namespace Design {
 
     void Frame::WriteLayout( wxString str )
     {
-        std::cout << str << " Pos("
-            << GetXPos( ) << ", " << GetYPos( )
-            << ") , Size(" << GetWidth( ) << ", " << GetHeight( )
-            << "), MinSize(" << GetMinWidth( ) << "," << GetMinHeight( ) << ")\n";
+        // std::cout << str << " Pos("
+        //     << GetXPos( ) << ", " << GetYPos( )
+        //     << ") , Size(" << GetWidth( ) << ", " << GetHeight( )
+        //     << "), MinSize(" << GetMinWidth( ) << "," << GetMinHeight( ) << ")\n";
  
         if ((GetXPos()< 0)||(GetYPos()< 0))
         {

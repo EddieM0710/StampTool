@@ -174,10 +174,10 @@ int CatalogTreeCtrl::OnCompareItems( const wxTreeItemId& item1,
                 wxString id2 = itemData2->GetDesc( );
                 wxString series2 = entry2.GetSeries( );
 
-               ComparisonResultType result = CompareDates( date1, date2 );
-               if ( ( result == CompareInvalid ) || ( result == CompareEqual ) )
-               {
-                int val = series1.Cmp( series2 );
+                ComparisonResultType result = CompareDates( date1, date2 );
+                if ( ( result == CompareInvalid ) || ( result == CompareEqual ) )
+                {
+                    int val = series1.Cmp( series2 );
                     // if ( !val )
                     // {
                     //     int val = id1.Cmp( id2 );
@@ -205,20 +205,20 @@ int CatalogTreeCtrl::OnCompareItems( const wxTreeItemId& item1,
 
                 //    if ( m_reverseSort )
                 //    {
-                        return val;
-                //    }
-                //    else
-                //    {
-                //        return val * -1;
-                //    }
+                    return val;
+                    //    }
+                    //    else
+                    //    {
+                    //        return val * -1;
+                    //    }
 
                 }
                 else if ( result == CompareLess )
                 {
-                 //   std::cout << "(" << id1 << " " << date1 << ") < (" << id2 << " " << date2 << ")\n";
-                //    if ( m_reverseSort )
-                //    {
-                        return -1;
+                    //   std::cout << "(" << id1 << " " << date1 << ") < (" << id2 << " " << date2 << ")\n";
+                   //    if ( m_reverseSort )
+                   //    {
+                    return -1;
                     // }
                     // else
                     // {
@@ -232,15 +232,15 @@ int CatalogTreeCtrl::OnCompareItems( const wxTreeItemId& item1,
                 // }
                 else
                 {
-                //    std::cout << "(" << id1 << " " << date1 << ") > (" << id2 << " " << date2 << ")\n";
-                //    if ( m_reverseSort )
-                //    {
-                //        return -1;
-                //    }
-                 //   else
-                //    {
-                        return 1;
-                //    }
+                    //    std::cout << "(" << id1 << " " << date1 << ") > (" << id2 << " " << date2 << ")\n";
+                    //    if ( m_reverseSort )
+                    //    {
+                    //        return -1;
+                    //    }
+                     //   else
+                    //    {
+                    return 1;
+                    //    }
                 }
             }
         }
@@ -542,27 +542,27 @@ void CatalogTreeCtrl::ShowMenu( wxTreeItemId id, const wxPoint& pt )
     wxMenu menu;
     if ( !id.IsOk( ) )
     {
-        
+
     }
     else
     {
         //title = "Menu for no particular item";
         CatalogTreeItemData* data = ( CatalogTreeItemData* )GetItemData( id );
         wxXmlNode* node = data->GetNodeElement( );
-        if ( data && data->GetType( ) == Catalog::NT_Entry )    
+        if ( data && data->GetType( ) == Catalog::NT_Entry )
         {
-           wxMenu* inventoryMenu = new wxMenu( );
+            wxMenu* inventoryMenu = new wxMenu( );
 
-            inventoryMenu->Append( CatalogDataTree_InventoryStatusNone, "None");
-            inventoryMenu->Append( CatalogDataTree_InventoryStatusMissing, "Missing");
-            inventoryMenu->Append( CatalogDataTree_InventoryStatusOrdered, "Ordered");
-            inventoryMenu->Append(  CatalogDataTree_InventoryStatusOwn, "Own");
-            inventoryMenu->Append( CatalogDataTree_InventoryStatusOwnVariant, "OwnVariant");
-            inventoryMenu->Append( CatalogDataTree_InventoryStatusExclude, "Exclude");
+            inventoryMenu->Append( CatalogDataTree_InventoryStatusNone, "None" );
+            inventoryMenu->Append( CatalogDataTree_InventoryStatusMissing, "Missing" );
+            inventoryMenu->Append( CatalogDataTree_InventoryStatusOrdered, "Ordered" );
+            inventoryMenu->Append( CatalogDataTree_InventoryStatusOwn, "Own" );
+            inventoryMenu->Append( CatalogDataTree_InventoryStatusOwnVariant, "OwnVariant" );
+            inventoryMenu->Append( CatalogDataTree_InventoryStatusExclude, "Exclude" );
             menu.Append( CatalogDataTree_Inventory, "Inventory Status", inventoryMenu );
             menu.AppendSeparator( );
             menu.Append( CatalogDataTree_Colnect, "GoTo Colnect" );
-            menu.AppendSeparator( ); 
+            menu.AppendSeparator( );
             menu.Append( CatalogDataTree_Delete, "Delete Entry" );
             menu.Append( CatalogDataTree_Add, "Add New Entry" );
         }
@@ -572,14 +572,16 @@ void CatalogTreeCtrl::ShowMenu( wxTreeItemId id, const wxPoint& pt )
             menu.Append( CatalogDataTree_Colnect, "GoTo Colnect" );
             menu.AppendSeparator( );
             menu.Append( CatalogDataTree_StructureStamps, "Re-Group Multiples" );
-            menu.Append( CatalogDataTree_ResortTree, "Re-Sort Tree" );            
+            menu.Append( CatalogDataTree_ResortTree, "Re-Sort Tree" );
+            menu.Append( CatalogDataTree_EditDetails, "Edit Catalog Details" );
         }
     }
 
     switch ( GetPopupMenuSelectionFromUser( menu ) )
     {
     case CatalogDataTree_Inventory:
-    case CatalogDataTree_InventoryStatusNone:{
+    case CatalogDataTree_InventoryStatusNone:
+    {
         Catalog::InventoryStatusType newType = Catalog::ST_None;
         Catalog::Entry* entry = new Catalog::Entry( GetEntryNode( id ) );
         Catalog::InventoryStatusType type = entry->GetInventoryStatusType( );
@@ -588,9 +590,11 @@ void CatalogTreeCtrl::ShowMenu( wxTreeItemId id, const wxPoint& pt )
             entry->SetInventoryStatusType( newType );
             SetInventoryStatusImage( );
             wxGetApp( ).GetFrame( )->UpdateStatus( );
-        }}
-        break;
-    case CatalogDataTree_InventoryStatusMissing:{
+        }
+    }
+    break;
+    case CatalogDataTree_InventoryStatusMissing:
+    {
         Catalog::InventoryStatusType newType = Catalog::ST_Missing;
         Catalog::Entry* entry = new Catalog::Entry( GetEntryNode( id ) );
         Catalog::InventoryStatusType type = entry->GetInventoryStatusType( );
@@ -600,10 +604,12 @@ void CatalogTreeCtrl::ShowMenu( wxTreeItemId id, const wxPoint& pt )
             SetInventoryStatusImage( );
             wxGetApp( ).GetFrame( )->UpdateStatus( );
 
-        }}
-        break;
+        }
+    }
+    break;
 
-    case CatalogDataTree_InventoryStatusOrdered:{
+    case CatalogDataTree_InventoryStatusOrdered:
+    {
         Catalog::InventoryStatusType newType = Catalog::ST_Ordered;
         Catalog::Entry* entry = new Catalog::Entry( GetEntryNode( id ) );
         Catalog::InventoryStatusType type = entry->GetInventoryStatusType( );
@@ -613,10 +619,12 @@ void CatalogTreeCtrl::ShowMenu( wxTreeItemId id, const wxPoint& pt )
             SetInventoryStatusImage( );
             wxGetApp( ).GetFrame( )->UpdateStatus( );
 
-        }}
-        break;
+        }
+    }
+    break;
 
-    case CatalogDataTree_InventoryStatusOwn:{
+    case CatalogDataTree_InventoryStatusOwn:
+    {
         Catalog::InventoryStatusType newType = Catalog::ST_Own;
         Catalog::Entry* entry = new Catalog::Entry( GetEntryNode( id ) );
         Catalog::InventoryStatusType type = entry->GetInventoryStatusType( );
@@ -626,10 +634,12 @@ void CatalogTreeCtrl::ShowMenu( wxTreeItemId id, const wxPoint& pt )
             SetInventoryStatusImage( );
             wxGetApp( ).GetFrame( )->UpdateStatus( );
 
-        }}
-        break;
+        }
+    }
+    break;
 
-    case CatalogDataTree_InventoryStatusOwnVariant:{
+    case CatalogDataTree_InventoryStatusOwnVariant:
+    {
         Catalog::InventoryStatusType newType = Catalog::ST_OwnVariant;
         Catalog::Entry* entry = new Catalog::Entry( GetEntryNode( id ) );
         Catalog::InventoryStatusType type = entry->GetInventoryStatusType( );
@@ -639,10 +649,12 @@ void CatalogTreeCtrl::ShowMenu( wxTreeItemId id, const wxPoint& pt )
             SetInventoryStatusImage( );
             wxGetApp( ).GetFrame( )->UpdateStatus( );
 
-        }}
-        break;
+        }
+    }
+    break;
 
-    case CatalogDataTree_InventoryStatusExclude:{
+    case CatalogDataTree_InventoryStatusExclude:
+    {
         Catalog::InventoryStatusType newType = Catalog::ST_Exclude;
         Catalog::Entry* entry = new Catalog::Entry( GetEntryNode( id ) );
         Catalog::InventoryStatusType type = entry->GetInventoryStatusType( );
@@ -652,14 +664,15 @@ void CatalogTreeCtrl::ShowMenu( wxTreeItemId id, const wxPoint& pt )
             SetInventoryStatusImage( );
             wxGetApp( ).GetFrame( )->UpdateStatus( );
 
-        }}
-        break;
-        // m_statusStrings.Add( Catalog::ST_InventoryStatusStrings[ Catalog::ST_None ] );
-        // m_statusStrings.Add( Catalog::ST_InventoryStatusStrings[ Catalog::ST_Missing ] );
-        // m_statusStrings.Add( Catalog::ST_InventoryStatusStrings[ Catalog::ST_Ordered] );
-        // m_statusStrings.Add( Catalog::ST_InventoryStatusStrings[ Catalog::ST_Own] );
-        // m_statusStrings.Add( Catalog::ST_InventoryStatusStrings[ Catalog::ST_OwnVariant] );
-        // m_statusStrings.Add( Catalog::ST_InventoryStatusStrings[ Catalog::ST_Exclude] );
+        }
+    }
+    break;
+    // m_statusStrings.Add( Catalog::ST_InventoryStatusStrings[ Catalog::ST_None ] );
+    // m_statusStrings.Add( Catalog::ST_InventoryStatusStrings[ Catalog::ST_Missing ] );
+    // m_statusStrings.Add( Catalog::ST_InventoryStatusStrings[ Catalog::ST_Ordered] );
+    // m_statusStrings.Add( Catalog::ST_InventoryStatusStrings[ Catalog::ST_Own] );
+    // m_statusStrings.Add( Catalog::ST_InventoryStatusStrings[ Catalog::ST_OwnVariant] );
+    // m_statusStrings.Add( Catalog::ST_InventoryStatusStrings[ Catalog::ST_Exclude] );
 
     case CatalogDataTree_StructureStamps:
     {
@@ -674,35 +687,59 @@ void CatalogTreeCtrl::ShowMenu( wxTreeItemId id, const wxPoint& pt )
             Expand( newID );
             SelectItem( newID );
         }
-        break;
     }
+    break;
     case CatalogDataTree_ResortTree:
     {
         ReSortTree( );
-        break;
     }
+    break;
+    case CatalogDataTree_EditDetails:
+    {
+        GetCatalogVolumeData( )->EditDetailsDialog( this );
+    }
+    break;
+
+
     case CatalogDataTree_Colnect:
     {
         GoToColnect( id );
-        break;
     }
+    break;
     case CatalogDataTree_Delete:
     {
         DeleteEntry( id );
-        break;
     }
+    break;
     case CatalogDataTree_Add:
     {
         AddEntry( id );
-        break;
     }
+    break;
     default:
         // Fall through.
         break;
     }
-
 }
+// void CatalogTreeCtrl::EditDetailsDialog( )
+// {
+//     VolumeDetailsDialog volumeDetailsDialog( this, 12345,
+//         _( "View Edit Catalog Details" ) );
 
+//     Catalog::CatalogVolumeData* volData = GetCatalogVolumeData( );
+//     volumeDetailsDialog.SetImagePath( volData->GetImagePath( ) );
+//     volumeDetailsDialog.SetName( volData->GetVolumeName( ) ) ;
+
+
+//     if ( volumeDetailsDialog.ShowModal( ) == wxID_CANCEL )
+//         return; // the user changed idea..
+
+//     if ( volumeDetailsDialog.IsNameModified( ) )
+//     {
+//     volData->SetImagePath( volumeDetailsDialog.GetImagePath() );
+//     volData->SetVolumeName( volumeDetailsDialog.GetName() ) ;
+//     }
+// }
 //*****
 void CatalogTreeCtrl::AddEntry( wxTreeItemId id )
 {
@@ -1000,9 +1037,9 @@ void CatalogTreeCtrl::SortTree( wxTreeItemId parent )
     }
     if ( this->HasChildren( parent ) )
     {
-              CatalogTreeItemData* data = ( CatalogTreeItemData* )GetItemData( parent );
-               wxString str = data->GetDesc();
-//               std::cout << " SortChildren for "<<str << "\n";
+        CatalogTreeItemData* data = ( CatalogTreeItemData* )GetItemData( parent );
+        wxString str = data->GetDesc( );
+        //               std::cout << " SortChildren for "<<str << "\n";
         SortChildren( parent );
     }
 }
@@ -1016,7 +1053,7 @@ void CatalogTreeCtrl::ReSortTree( )
     ClearCatalogTree( );
 
     Catalog::CatalogVolumeData* catalogVolumeData = GetCatalogVolumeData( );
-    catalogVolumeData->ReSortTree();
+    catalogVolumeData->ReSortTree( );
 
     LoadTree( );
 }
@@ -1060,16 +1097,16 @@ void CatalogTreeCtrl::LoadTree( )
     }
 }
 
-void CatalogTreeCtrl::XMLDumpNode(  wxTreeItemId item, wxString str  )
+void CatalogTreeCtrl::XMLDumpNode( wxTreeItemId item, wxString str )
 {
 
     if ( !item.IsOk( ) )
     {
-        return ;
+        return;
     }
     CatalogTreeItemData* data = ( CatalogTreeItemData* )GetItemData( item );
     wxXmlNode* ele = data->GetNodeElement( );
-    Utils::XMLDumpNode( ele,str );
+    Utils::XMLDumpNode( ele, str );
 }
 //*****
 bool CatalogTreeCtrl::IsElement( wxTreeItemId item, wxXmlNode* ele )
@@ -1258,9 +1295,9 @@ void CatalogTreeCtrl::DisableState( wxTreeItemId id )
         }
     }
 }
-wxString CatalogTreeCtrl::GetIdText(  wxTreeItemId catID  )
+wxString CatalogTreeCtrl::GetIdText( wxTreeItemId catID )
 {
-    wxXmlNode* catNode = GetEntryNode( catID );    
+    wxXmlNode* catNode = GetEntryNode( catID );
     wxString idText = "";
     if ( catNode )
     {
@@ -1269,32 +1306,32 @@ wxString CatalogTreeCtrl::GetIdText(  wxTreeItemId catID  )
     return idText;
 }
 
-wxString CatalogTreeCtrl::GetAttribute(  wxTreeItemId catID, wxString name )
-{          
-    return GetEntryNode(catID)->GetAttribute( name );
+wxString CatalogTreeCtrl::GetAttribute( wxTreeItemId catID, wxString name )
+{
+    return GetEntryNode( catID )->GetAttribute( name );
 }
 wxString CatalogTreeCtrl::GetImageFullName( wxTreeItemId catID )
 {
     if ( catID.IsOk( ) )
     {
-        CatalogTreeItemData* itemData =  ( CatalogTreeItemData* )GetCatalogTreeCtrl( )->GetItemData( catID ) ;
-        wxString* imageFullName = itemData->GetImageFullName();
+        CatalogTreeItemData* itemData = ( CatalogTreeItemData* )GetCatalogTreeCtrl( )->GetItemData( catID );
+        wxString* imageFullName = itemData->GetImageFullName( );
         if ( !imageFullName )
         {
-            Catalog::CatalogVolumeData* volData = GetGeneratorData()->GetCatalogVolumeData();
-            wxString catFilename = volData->GetVolumeFilename();
-            wxString imageFile = volData->GetImagePath();;
+            Catalog::CatalogVolumeData* volData = GetGeneratorData( )->GetCatalogVolumeData( );
+            wxString catFilename = volData->GetVolumeFilename( );
+            wxString imageFile = volData->GetCatalogVolumeImagePath( );;
 
             wxString id = GetAttribute( catID, Catalog::DT_XMLDataNames[ Catalog::DT_ID_Nbr ] );
 
-            id = id.Trim(true);
-            id = id.Trim(false);
-            id.Replace(":","_");
-            id.Replace(" ","_");
-            id.Append(".jpg");        
+            id = id.Trim( true );
+            id = id.Trim( false );
+            id.Replace( ":", "_" );
+            id.Replace( " ", "_" );
+            id.Append( ".jpg" );
 
-            imageFullName = new wxString( wxFileName( catFilename ).GetFullPath() +"/"+imageFile+ "/"+id);
-            itemData->SetImageFullName(imageFullName);
+            imageFullName = new wxString( wxFileName( catFilename ).GetFullPath( ) + "/" + imageFile + "/" + id );
+            itemData->SetImageFullName( imageFullName );
         }
         return *imageFullName;
     }

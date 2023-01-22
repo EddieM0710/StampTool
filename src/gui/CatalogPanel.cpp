@@ -146,12 +146,9 @@ void CatalogPanel::CreateControls()
     wxStaticText* itemStaticText2 = new wxStaticText( itemPanel1, wxID_STATIC, _("Volume"), wxDefaultPosition, wxDefaultSize, 0 );
     itemBoxSizer1->Add(itemStaticText2, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
 
-    //m_title = new wxTextCtrl( itemPanel1, ID_TEXTCTRL, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
-    //itemBoxSizer1->Add(m_title, 1, wxGROW|wxALL, 0);
-//m_volumeListCtrlStrings.
-//GetGeneratorData()->GetVolumeNameStrings();
+ 
     m_volumeListCtrl = new wxChoice( itemPanel1, ID_VOLUMECHOICE, wxDefaultPosition, wxSize(-1, -1), GetGeneratorData()->GetVolumeNameStrings(), wxLB_HSCROLL );
-    itemBoxSizer1->Add(m_volumeListCtrl, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
+    itemBoxSizer1->Add(m_volumeListCtrl, 1, wxGROW|wxALL, 5);
 
 
     m_toggleButton = new wxToggleButton( itemPanel1, ID_TOGGLEBUTTON, _("Search"), wxDefaultPosition, wxDefaultSize, 0 );

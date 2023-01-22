@@ -157,33 +157,42 @@ void StampDetailsDialog::CreateControls( )
     wxBoxSizer* theDialogHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
     theDialogVerticalSizer->Add( theDialogHorizontalSizer, 0, wxGROW | wxALL, 0 );
 
-    wxBoxSizer* detailsVerticalSizer = new wxBoxSizer( wxVERTICAL );
+   // wxBoxSizer* detailsVerticalSizer = new wxBoxSizer( wxVERTICAL );
+   // theDialogVerticalSizer->Add( detailsVerticalSizer, 0, wxGROW | wxALL, 5 );
 
     m_catNbr = new LabeledTextBox( theDialog/*detailsPanel*/, ID_IDLABELTEXTBOX, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
     m_catNbr->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
-    detailsVerticalSizer->Add( m_catNbr, 0, wxGROW | wxALL, 5 );
+    theDialogVerticalSizer->Add( m_catNbr, 0, wxGROW | wxALL, 5 );
 
-    m_catNbrCheckbox = new wxCheckBox( theDialog/*detailsPanel*/, ID_CATNBRCHECKBOX, _( "Show ID" ), wxDefaultPosition, wxDefaultSize, 0 );
-    m_catNbrCheckbox->SetValue( false );
-    detailsVerticalSizer->Add( m_catNbrCheckbox, 0, wxALIGN_LEFT | wxALL, 5 );
-
-    wxBoxSizer* itemBoxSizer8 = new wxBoxSizer( wxVERTICAL );
-    detailsVerticalSizer->Add( itemBoxSizer8, 1, wxGROW | wxALL, 5 );
+    //wxBoxSizer* itemBoxSizer8 = new wxBoxSizer( wxVERTICAL );
+    //detailsVerticalSizer->Add( itemBoxSizer8, 1, wxGROW | wxALL, 5 );
 
     m_name = new LabeledTextBox( theDialog/*detailsPanel*/, ID_NAMELABELEDTEXTBOX, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
     m_name->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
-    itemBoxSizer8->Add( m_name, 1, wxGROW | wxALL, 5 );
+    theDialogVerticalSizer->Add( m_name, 1, wxGROW | wxALL, 5 );
+
+    wxBoxSizer* checkBoxHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
+    theDialogVerticalSizer->Add( checkBoxHorizontalSizer, 0, wxGROW | wxALL, 0 );
+ 
+    m_catNbrCheckbox = new wxCheckBox( theDialog/*detailsPanel*/, ID_CATNBRCHECKBOX, _( "Show ID" ), wxDefaultPosition, wxDefaultSize, 0 );
+    m_catNbrCheckbox->SetValue( false );
+    checkBoxHorizontalSizer->Add( m_catNbrCheckbox, 0, wxALIGN_LEFT | wxALL, 5 );
 
     m_titleCheckbox = new wxCheckBox( theDialog/*detailsPanel*/, ID_TITLECHECKBOX, _( "Show Title" ), wxDefaultPosition, wxDefaultSize, 0 );
     m_titleCheckbox->SetValue( false );
-    itemBoxSizer8->Add( m_titleCheckbox, 0, wxALIGN_LEFT | wxALL, 5 );
+    checkBoxHorizontalSizer->Add( m_titleCheckbox, 0, wxALIGN_LEFT | wxALL, 5 );
+
+    wxFontPickerCtrl* m_fontPicker = new wxFontPickerCtrl( theDialog/*detailsPanel*/, 12345,
+        *wxNORMAL_FONT, wxDefaultPosition,
+        wxDefaultSize, wxFNTP_DEFAULT_STYLE );
+    theDialogVerticalSizer->Add( m_fontPicker, 1, wxGROW | wxALL, 5 );
 
     m_imagePath = new LabeledTextBox( theDialog/*detailsPanel*/, ID_IMAGEPATHLABELEDTEXTBOX, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
     m_imagePath->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
-    detailsVerticalSizer->Add( m_imagePath, 0, wxGROW | wxALL, 5 );
+    theDialogVerticalSizer->Add( m_imagePath, 0, wxGROW | wxALL, 5 );
 
     wxBoxSizer* itemBoxSizer3 = new wxBoxSizer( wxHORIZONTAL );
-    detailsVerticalSizer->Add( itemBoxSizer3, 0, wxGROW | wxALL, 0 );
+    theDialogVerticalSizer->Add( itemBoxSizer3, 0, wxGROW | wxALL, 0 );
 
     m_height = new LabeledTextBox( theDialog/*detailsPanel*/, ID_HEIGHTLABELEDTEXTBOX, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
     m_height->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
@@ -194,7 +203,7 @@ void StampDetailsDialog::CreateControls( )
     itemBoxSizer3->Add( m_width, 1, wxGROW | wxALL, 5 );
 
     wxBoxSizer* itemBoxSizer6 = new wxBoxSizer( wxHORIZONTAL );
-    detailsVerticalSizer->Add( itemBoxSizer6, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 0 );
+    theDialogVerticalSizer->Add( itemBoxSizer6, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 0 );
 
     wxButton* itemButton7 = new wxButton( theDialog/*detailsPanel*/, ID_REFRESHBUTTON, _( "Refresh from Catalog" ), wxDefaultPosition, wxDefaultSize, 0 );
     itemBoxSizer6->Add( itemButton7, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
@@ -205,18 +214,13 @@ void StampDetailsDialog::CreateControls( )
     itemBoxSizer6->Add( m_validate, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
     wxBoxSizer* itemBoxSizer10 = new wxBoxSizer( wxHORIZONTAL );
-    detailsVerticalSizer->Add( itemBoxSizer10, 2, wxGROW | wxALL, 5 );
+    theDialogVerticalSizer->Add( itemBoxSizer10, 2, wxGROW | wxALL, 5 );
 
     m_statusList = new wxListCtrl( theDialog/*detailsPanel*/, ID_LISTCTRL, wxDefaultPosition, wxSize( 100, 100 ), wxLC_REPORT | wxLC_NO_HEADER );
     itemBoxSizer10->Add( m_statusList, 2, wxGROW | wxALL, 5 );
 
-    wxBoxSizer* itemBoxSizer14 = new wxBoxSizer( wxHORIZONTAL );
-    detailsVerticalSizer->Add( itemBoxSizer14, 2, wxGROW | wxALL, 5 );
-
-    wxFontPickerCtrl* m_fontPicker = new wxFontPickerCtrl( theDialog/*detailsPanel*/, 12345,
-        *wxNORMAL_FONT, wxDefaultPosition,
-        wxDefaultSize, wxFNTP_DEFAULT_STYLE );
-    itemBoxSizer14->Add( m_fontPicker, 2, wxGROW | wxALL, 5 );
+    //wxBoxSizer* itemBoxSizer14 = new wxBoxSizer( wxHORIZONTAL );
+    //detailsVerticalSizer->Add( itemBoxSizer14, 2, wxGROW | wxALL, 5 );
 
     //<<error list ctrls
 

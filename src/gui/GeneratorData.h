@@ -99,7 +99,7 @@ public:
      * @brief Load a new unnamed Design with default data
      * 
      */
-    void LoadNewDesign( );
+    void LoadNewDesign( wxString designFileName  );
 
     inline Catalog::CatalogVolumeData* GetCatalogVolumeData( ) 
     { return m_catalogData.GetCatalogVolumeData( );};
@@ -118,19 +118,19 @@ public:
     void LoadCatalogVolumeFiles( );
 
     //Load a csv catalog.
-    void ReadCatalogCSV( wxString csvFilename );
+    bool ReadCatalogCSV( wxString csvFilename );
 
     //Load the xml data into the tree
      void LoadCatalogTree( );
 
     //Load a new unnamed empty catalog 
-    void LoadNewCatalog( );
+    void LoadNewCatalog( wxString catFile );
 
     //Load the Catalog and Design data and trees
     void LoadData( );
 
     // Load a new Project
-    void FileNewProject();
+    void FileNewProject( wxString prjName );
 
     /** ****************************************
      * @brief Read the project file and load the Catalog and Design
@@ -202,6 +202,7 @@ public:
     void SetDescriptionPanel( StampDescriptionPanel* descriptionPanel ) { m_stampDescriptionPanel = descriptionPanel; };
     void SetAlbumImagePanel( AlbumImagePanel* albumImagePanel ) { m_albumImagePanel = albumImagePanel; };
     wxString GetImageFilename( wxString stampId );
+    wxString GetImagePath();
 
     void SetDirty( bool state = true ) { m_dirty = state; };
     // Is project dirty?

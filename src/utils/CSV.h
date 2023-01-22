@@ -155,7 +155,7 @@ namespace Utils {
          * @param  filename file name to read
          * @param  nodeData toplevel XML node to store the data
          **************************************************/
-        void DoLoad( wxString& filename, wxXmlNode* nodeData );
+        bool DoLoad( wxString& filename, wxXmlNode* nodeData );
 
     private:
         wxString m_filename;

@@ -84,11 +84,14 @@ void GeneratorData::SetProject( Utils::Project* project )
 
 
 
-void GeneratorData::FileNewProject()
+void GeneratorData::FileNewProject( wxString prjName )
 {
-    m_project->SetProjectFilename("unnamed.prj.xml");
-    LoadNewDesign();
-    LoadNewCatalog();
+    m_project->SetProjectFilename( prjName );
+    wxString lastFile = wxGetCwd();
+    lastFile += "/" + prjName;
+    GetSettings()->SetLastFile(lastFile);
+    //LoadNewDesign();
+   // LoadNewCatalog();
 }
 
 // Load the Catalog and Design data then populate trees
@@ -105,18 +108,25 @@ void GeneratorData::LoadData( )
 void GeneratorData::FileOpenProject(wxString filename)
 {
     m_project->SetProjectFilename( filename );
+    wxString lastFile = wxGetCwd();
+    lastFile += "/" + filename;
+    GetSettings()->SetLastFile(lastFile);
     m_project->LoadProjectXML( );
     LoadData( );
 }
 
 void GeneratorData::FileSaveProject( )
 {
+    m_settings->Save();
     m_project->Save( );   
 }
 
 void GeneratorData::FileSaveAsProject( wxString filename )
 {
     m_project->SetProjectFilename( filename );
+    wxString lastFile = wxGetCwd();
+    lastFile += "/" + filename;
+    GetSettings()->SetLastFile(lastFile);
     FileSaveProject( );
 }
 
@@ -142,7 +152,7 @@ void GeneratorData::LoadCatalogVolumeFiles( )
 }
 
 
-void GeneratorData::ReadCatalogCSV( wxString csvFilename )
+bool GeneratorData::ReadCatalogCSV( wxString csvFilename )
 {
     wxFileName csvFile( csvFilename );
     wxString ext = csvFile.GetExt( );
@@ -154,8 +164,9 @@ void GeneratorData::ReadCatalogCSV( wxString csvFilename )
         m_project->SetCatalogFilename( catalogFile.GetFullPath( ) );
 
         Catalog::CatalogVolumeData* catalogVolumeData = NewCatalogVolumeData( );
-        catalogVolumeData->LoadCSV( csvFile.GetFullPath() );
 
+        catalogVolumeData->SetVolumeFilename( catalogFile.GetFullPath( ) );
+        return catalogVolumeData->LoadCSV( csvFile.GetFullPath() );
     }
 }
 
@@ -164,10 +175,10 @@ void GeneratorData::LoadCatalogTree( )
     GetCatalogTreeCtrl( )->LoadTree( );
 }
 
-void GeneratorData::LoadNewCatalog( )
+void GeneratorData::LoadNewCatalog( wxString catFile )
 {
     Catalog::NewCatalogVolumeDataInstance();
-    m_project->SetCatalogFilename("unnamed.cat.xml");
+    m_project->SetCatalogFilename( catFile );
     LoadCatalogTree( );
     SetDirty();
 }
@@ -217,10 +228,16 @@ void GeneratorData::LoadDefaultDesignData( )
     m_designData->LoadDefaultDocument( );
 }
 
-void GeneratorData::LoadNewDesign( )
+void GeneratorData::LoadNewDesign( wxString designFileName  )
 {
-    m_project->SetDesignFilename("unnamed.alb.xml");
-    m_project->SetODTOutputFilename( "unnamed.odt" );
+    m_project->SetDesignFilename(designFileName);
+   // wxFileName file( designFileName );
+   // wxString name = file.GetName();
+    int pos = designFileName.find_first_of(".");
+    wxString odtName = designFileName.Mid( 0, pos );
+    odtName += ".odt";
+    m_project->SetODTOutputFilename( odtName );
+
     LoadDefaultDesignData();
     LoadDesignTree( );
     SetDirty(false);
@@ -278,14 +295,27 @@ void GeneratorData::InitLoad( )
     }
 }
 
+wxString GeneratorData::GetImagePath()
+{
+    wxString volFilename = GetCatalogVolumeData()->GetVolumeFilename();
+    wxFileName fn(volFilename);
+    fn.ClearExt();
+    fn.SetName("");
+    wxString dirName = GetCatalogVolumeData()->GetCatalogVolumeImagePath( );
+    if ( !dirName.IsEmpty() )
+    {
+        fn.AppendDir(dirName);
+    }    
+    return fn.GetPath();
+}
 
 wxString GeneratorData::GetImageFilename( wxString stampId )
 {
 
-    wxString dirName = GetCatalogVolumeData()->GetImagePath( );
+    wxString artPath = GetImagePath();
     wxString fileName = stampId ;
     wxString imageFile;
-    if ( dirName.IsEmpty() || fileName.IsEmpty() )
+    if ( artPath.IsEmpty() || fileName.IsEmpty() )
     {
         imageFile = "";
     }
@@ -295,7 +325,11 @@ wxString GeneratorData::GetImageFilename( wxString stampId )
         fileName = fileName.Trim(false);
         fileName.Replace(":","_");
         fileName.Replace(" ","_");
-        imageFile =  wxString::Format( "%s/%s.jpg", dirName, fileName );
+        wxFileName fn;
+        fn.SetPath( artPath );
+        fn.SetName(fileName);
+        fn.SetExt("jpg");
+        imageFile = fn.GetFullPath();// wxString::Format( "%s/%s.jpg", dirName, fileName );
     }    
     return imageFile;
 }

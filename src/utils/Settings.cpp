@@ -106,6 +106,12 @@ Settings* NewSettingsInstance()
     //*****    
     int Settings::GetNextSortClassification( int current )
     {
+        // for ( int i = 0; i < m_sortOrder.GetCount( ); i++ )
+        // {
+        //     int item = m_sortOrder.Item( i );
+        //     std::cout <<  Catalog::CatalogBaseNames[ item ] << "  ";
+        // }
+        // std::cout << "\n";
         if ( current == 0 )
         {
             return m_sortOrder.Item( 0 );
@@ -125,12 +131,12 @@ Settings* NewSettingsInstance()
                 else
                 {
                     // oops, that was the last one
-                    return -1;
+                    return Catalog::NT_None;
                 }
             }
         }
         // apparently no sorting is going on.
-        return -1;
+        return Catalog::NT_None;
     }
 
     //*****    
@@ -524,6 +530,8 @@ Settings* NewSettingsInstance()
             if ( child )
             {
                 m_lastFile = child->GetAttribute("Name");
+                wxFileName lf( m_lastFile );
+                wxSetWorkingDirectory( lf.GetPath() );
             }
         }
 

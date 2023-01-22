@@ -40,7 +40,9 @@ add_library( GuiFiles SHARED
     AlbumDetailsDialog.cpp
     PageDetailsDialog.cpp
     RowDetailsDialog.cpp 
+    VolumeDetailsDialog.cpp
     ColDetailsDialog.cpp 
+    FileCreateDialog.cpp
     NewStampDialog.cpp 
 )
 

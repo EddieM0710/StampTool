@@ -1,24 +1,24 @@
 /**
  * @file ImagePanel.cpp
- * @author Eddie Monroe ()
+ * @author Eddie Monroe ( )
  * @brief
  * @version 0.1
  * @date 2021-02-25
  *
- * @copyright Copyright (c) 2021
+ * @copyright Copyright ( c ) 2021
  * 
- * This file is part of AlbumGenerator.
+ * This file is part of StampTool.
  *
- * AlbumGenerator is free software: you can redistribute it and/or modify it under the 
+ * StampTool is free software: you can redistribute it and/or modify it under the 
  * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
- * AlbumGenerator is distributed in the hope that it will be useful, but WITHOUT ANY 
+ * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY 
  * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License along with 
- * AlbumGenerator. If not, see <https://www.gnu.org/licenses/>.
+ * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
  **************************************************/
 
@@ -73,7 +73,7 @@ END_EVENT_TABLE( )
  **************************************************/
 
 ImagePanel::ImagePanel( )
-{
+{ 
     Init( );
 }
 
@@ -82,9 +82,9 @@ ImagePanel::ImagePanel( )
  *
  **************************************************/
 
-ImagePanel::ImagePanel( wxWindow* parent, wxWindowID id, const wxPoint& pos,
+ImagePanel::ImagePanel( wxWindow* parent, wxWindowID id, const wxPoint& pos, 
     const wxSize& size, long style )
-{
+{ 
     Init( );
     Create( parent, id, pos, size, style );
 }
@@ -94,9 +94,9 @@ ImagePanel::ImagePanel( wxWindow* parent, wxWindowID id, const wxPoint& pos,
  *
  **************************************************/
 
-bool ImagePanel::Create( wxWindow* parent, wxWindowID id, const wxPoint& pos,
+bool ImagePanel::Create( wxWindow* parent, wxWindowID id, const wxPoint& pos, 
     const wxSize& size, long style )
-{
+{ 
     // ImagePanel creation
     SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
     wxScrolledWindow::Create( parent, id, pos, size, style );
@@ -113,7 +113,7 @@ bool ImagePanel::Create( wxWindow* parent, wxWindowID id, const wxPoint& pos,
  **************************************************/
 
 ImagePanel::~ImagePanel( )
-{
+{ 
     // ImagePanel destruction
     // ImagePanel destruction
 }
@@ -124,8 +124,8 @@ ImagePanel::~ImagePanel( )
  **************************************************/
 
 void ImagePanel::Init( )
-{
-    //   this->SetScrollbars(10,10,1000,1000);
+{ 
+    //   this->SetScrollbars( 10, 10, 1000, 1000 );
      // ImagePanel member initialisation
      // ImagePanel member initialisation
 }
@@ -136,7 +136,7 @@ void ImagePanel::Init( )
  **************************************************/
 
 void ImagePanel::CreateControls( )
-{
+{ 
 
 }
 
@@ -146,7 +146,7 @@ void ImagePanel::CreateControls( )
  **************************************************/
 
 bool ImagePanel::ShowToolTips( )
-{
+{ 
     return true;
 }
 
@@ -156,7 +156,7 @@ bool ImagePanel::ShowToolTips( )
  **************************************************/
 
 wxBitmap ImagePanel::GetBitmapResource( const wxString& name )
-{
+{ 
     // Bitmap retrieval
      // ImagePanel bitmap retrieval
     wxUnusedVar( name );
@@ -170,7 +170,7 @@ wxBitmap ImagePanel::GetBitmapResource( const wxString& name )
  **************************************************/
 
 wxIcon ImagePanel::GetIconResource( const wxString& name )
-{
+{ 
     // Icon retrieval
      // ImagePanel icon retrieval
     wxUnusedVar( name );
@@ -184,28 +184,28 @@ wxIcon ImagePanel::GetIconResource( const wxString& name )
  **************************************************/
 
 void ImagePanel::SetBitmap( wxString filename )
-{
+{ 
     wxImage image;
     if ( filename.IsEmpty( ) )
-    {
+    { 
         image = wxImage( NotFound );
     }
     else
-    {
+    { 
         wxFileName fn( filename );
         if ( !fn.FileExists( ) )
-        {
+        { 
             image = wxImage( NotFound );
         }
         else
-        {
+        { 
             if ( !image.CanRead( filename ) )
-            {
+            { 
                 image = wxImage( NotFound );
             }
             else
-            {
-                image = wxImage(filename);
+            { 
+                image = wxImage( filename );
             }
         }
     }
@@ -219,7 +219,7 @@ void ImagePanel::SetBitmap( wxString filename )
     /* init scrolled area size, scrolling speed, etc. */
     SetScrollbars( 1, 1, w, h, 0, 0 );
 
-    // SetClientSize(m_bitmap.GetWidth(), m_bitmap.GetHeight());
+    // SetClientSize( m_bitmap.GetWidth( ), m_bitmap.GetHeight( ) );
     Refresh( );
     Show( );
 }
@@ -230,7 +230,7 @@ void ImagePanel::SetBitmap( wxString filename )
  **************************************************/
 
 void ImagePanel::OnResize( wxCommandEvent& WXUNUSED( event ) )
-{
+{ 
     wxImage img( m_bitmap.ConvertToImage( ) );
 
     const wxSize size = GetClientSize( );
@@ -244,7 +244,7 @@ void ImagePanel::OnResize( wxCommandEvent& WXUNUSED( event ) )
  **************************************************/
 
 void ImagePanel::SetZoom( double zoom )
-{
+{ 
     m_zoom = zoom;
     Refresh( );
 }
@@ -255,7 +255,7 @@ void ImagePanel::SetZoom( double zoom )
  **************************************************/
 
 void ImagePanel::OnZoom( wxCommandEvent& event )
-{
+{ 
     if ( event.GetId( ) == wxID_ZOOM_IN )
         m_zoom *= 1.2;
     else if ( event.GetId( ) == wxID_ZOOM_OUT )
@@ -272,7 +272,7 @@ void ImagePanel::OnZoom( wxCommandEvent& event )
  **************************************************/
 
 void ImagePanel::OnPaint( wxPaintEvent& event )
-{
+{ 
     wxPaintDC dc( this );
     DoPrepareDC( dc );
 
@@ -285,21 +285,21 @@ void ImagePanel::OnPaint( wxPaintEvent& event )
     int width = m_bitmap.GetWidth( );
     int height = m_bitmap.GetHeight( );
     if ( size.x < width )
-    {
+    { 
         scale = ( double )size.x / ( double )width;
     }
     if ( size.y < ( height * scale ) )
-    {
+    { 
         scale = ( double )size.y / ( ( double )height * scale ) * scale;
     }
 
     dc.SetUserScale( scale * m_zoom, scale * m_zoom );
-   // GetAlbumImagePanel( )->Refresh();
+   // GetAlbumImagePanel( )->Refresh( );
 
-    dc.DrawBitmap( m_bitmap, 0, 0,
-        // dc.DeviceToLogicalX((size.x - m_zoom*scale *
-        // m_bitmap.GetWidth()) / 2), dc.DeviceToLogicalY((size.y -
-        // m_zoom*scale * m_bitmap.GetHeight()) / 2),
+    dc.DrawBitmap( m_bitmap, 0, 0, 
+        // dc.DeviceToLogicalX( ( size.x - m_zoom*scale *
+        // m_bitmap.GetWidth( ) ) / 2 ), dc.DeviceToLogicalY( ( size.y -
+        // m_zoom*scale * m_bitmap.GetHeight( ) ) / 2 ), 
         true /* use mask */
     );
 
@@ -313,13 +313,13 @@ void ImagePanel::OnPaint( wxPaintEvent& event )
  **************************************************/
 
 void ImagePanel::OnContextMenu( wxContextMenuEvent& event )
-{
+{ 
     wxPoint screenpt = event.GetPosition( );
     wxPoint clientpt = ScreenToClient( clientpt );
 
-    // wxLogMessage("OnItemMenu for item \"%s\" at screen coords (%i, %i)",
-    //              item ? item->GetDesc() : wxString("unknown"), screenpt.x,
-    //              screenpt.y);
+    // wxLogMessage( "OnItemMenu for item \"%s\" at screen coords ( %i, %i )", 
+    //              item ? item->GetDesc( ) : wxString( "unknown" ), screenpt.x, 
+    //              screenpt.y );
 
     wxMenu menu( "Image Menu" );
 

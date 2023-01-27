@@ -1,24 +1,24 @@
 /**
  * @file Defs.cpp
- * @author Eddie Monroe (you@domain.com)
+ * @author Eddie Monroe ( you@domain.com )
  * @brief Resting place for Global stuff
  * @version 0.1
  * @date 2021-02-24
  *
- * @copyright Copyright (c) 2021
+ * @copyright Copyright ( c ) 2021
  * 
- * This file is part of AlbumGenerator.
+ * This file is part of StampTool.
  *
- * AlbumGenerator is free software: you can redistribute it and/or modify it under the 
+ * StampTool is free software: you can redistribute it and/or modify it under the 
  * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
- * AlbumGenerator is distributed in the hope that it will be useful, but WITHOUT ANY 
+ * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY 
  * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License along with 
- * AlbumGenerator. If not, see <https://www.gnu.org/licenses/>.
+ * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
  */
 
@@ -40,13 +40,13 @@
 #include "Defs.h"
 #include "CatalogDefs.h"
 #include "DesignDefs.h"
-#include "CatalogVolumeData.h"
+#include "CatalogSectionData.h"
 #include "Settings.h"
 #include "utils/Project.h"
-#include "AlbumGenApp.h"
+#include "StampToolApp.h"
 
 
-wxDECLARE_APP( AlbumGenApp );
+wxDECLARE_APP( StampToolApp );
 
 bool Dirty = false;
 
@@ -54,48 +54,48 @@ void SetDirty( bool state ) { Dirty = state; };
 bool IsDirty( ) { return Dirty; };
 
 // global declaration of application data 
-//GeneratorData* m_generatorData;
+//ToolData* m_toolData;
 
 Utils::Settings* GetSettings( )
-{
+{ 
 
-    return wxGetApp( ).GetGeneratorDate()->GetSettings( );
+    return wxGetApp( ).GetToolDate( )->GetSettings( );
 
 };
 
 Utils::Project* GetProject( )
-{
-    return wxGetApp( ).GetGeneratorDate()->GetProject( );
+{ 
+    return wxGetApp( ).GetToolDate( )->GetProject( );
 }
 
-inline GeneratorData* GetGeneratorData(){ return wxGetApp( ).GetGeneratorDate();};
+inline ToolData* GetToolData( ){ return wxGetApp( ).GetToolDate( ); };
 
-Design::DesignData* GetDesignData() { return GetGeneratorData()->GetDesignData(); };
-Catalog::CatalogVolumeData* GetCatalogVolumeData() 
+Design::DesignData* GetDesignData( ) { return GetToolData( )->GetDesignData( ); };
+Catalog::CatalogSectionData* GetCatalogSectionData( ) 
 { 
-    GeneratorData* genData = GetGeneratorData();
+    ToolData* genData = GetToolData( );
     if ( genData )
-    {
-        return genData->GetCatalogVolumeData(); 
+    { 
+        return genData->GetCatalogSectionData( ); 
     }
-    return (Catalog::CatalogVolumeData*)0;
+    return ( Catalog::CatalogSectionData* )0;
     };
-CatalogTreeCtrl* GetCatalogTreeCtrl(){ return GetGeneratorData()->GetCatalogTreeCtrl();};
-DesignTreeCtrl* GetDesignTreeCtrl( ){return GetGeneratorData()->GetDesignTreeCtrl();};
-AlbumImagePanel* GetAlbumImagePanel(){return GetGeneratorData()->GetAlbumImagePanel();};
+CatalogTreeCtrl* GetCatalogTreeCtrl( ){ return GetToolData( )->GetCatalogTreeCtrl( ); };
+DesignTreeCtrl* GetDesignTreeCtrl( ){ return GetToolData( )->GetDesignTreeCtrl( ); };
+AlbumImagePanel* GetAlbumImagePanel( ){ return GetToolData( )->GetAlbumImagePanel( ); };
 
 void InitDefs( )
-{
+{ 
     Catalog::InitCatalogDefs( );
     Design::InitDesignDefs( );
 }
 
 void ReportError(  wxString funct, wxString msg, bool fatal )
-{
-    // if ( fatal )    
-    // {
-    //     std::cout << "Fatal Error: " <<funct << " " << msg << " \n";
-    //     exit(1);
-    // }
-    std::cout << "Warning: " <<funct << " " << msg << " \n";
+{ 
+    wxString status = "";
+    if ( fatal )    
+    { 
+        status = "fatal";
+    }
+    wxLogDebug( "Warning: %s %s %s\n",funct, msg, status);
 }

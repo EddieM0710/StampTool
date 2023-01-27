@@ -5,20 +5,20 @@
  * @version 0.1
  * @date 2022-01-19
  *
- * @copyright Copyright (c) 2022
+ * @copyright Copyright ( c ) 2022
  *
- * This file is part of AlbumGenerator.
+ * This file is part of StampTool.
  *
- * AlbumGenerator is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * StampTool is free software: you can redistribute it and/or modify it under the
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
- * AlbumGenerator is distributed in the hope that it will be useful, but WITHOUT ANY
+ * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
  * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License along with
- * AlbumGenerator. If not, see <https://www.gnu.org/licenses/>.
+ * StampTool. If not, see <https://www.gnu.org/licenses/>.
  */
 
  // For compilers that support precompilation, includes "wx/wx.h".
@@ -69,12 +69,12 @@ END_EVENT_TABLE( )
  */
 
     ColDetailsDialog::ColDetailsDialog( )
-{
+{ 
     Init( );
 }
 
 ColDetailsDialog::ColDetailsDialog( wxWindow* parent, wxWindowID id, const wxString& caption, const wxPoint& pos, const wxSize& size, long style )
-{
+{ 
     Init( );
     Create( parent, id, caption, pos, size, style );
 }
@@ -85,14 +85,14 @@ ColDetailsDialog::ColDetailsDialog( wxWindow* parent, wxWindowID id, const wxStr
  */
 
 bool ColDetailsDialog::Create( wxWindow* parent, wxWindowID id, const wxString& caption, const wxPoint& pos, const wxSize& size, long style )
-{
+{ 
     // ColDetailsDialog creation
     SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY | wxWS_EX_BLOCK_EVENTS );
     wxDialog::Create( parent, id, caption, pos, size, style );
 
     CreateControls( );
     if ( GetSizer( ) )
-    {
+    { 
         GetSizer( )->SetSizeHints( this );
     }
     Centre( );
@@ -106,7 +106,7 @@ bool ColDetailsDialog::Create( wxWindow* parent, wxWindowID id, const wxString& 
  */
 
 ColDetailsDialog::~ColDetailsDialog( )
-{
+{ 
     // ColDetailsDialog destruction
     // ColDetailsDialog destruction
 }
@@ -117,7 +117,7 @@ ColDetailsDialog::~ColDetailsDialog( )
  */
 
 void ColDetailsDialog::Init( )
-{
+{ 
     // ColDetailsDialog member initialisation
     m_name = NULL;
     m_titleCheckbox = NULL;
@@ -132,7 +132,7 @@ void ColDetailsDialog::Init( )
  */
 
 void ColDetailsDialog::CreateControls( )
-{
+{ 
 
     ColDetailsDialog* detailsPanel = this;
 
@@ -145,8 +145,8 @@ void ColDetailsDialog::CreateControls( )
     //     wxNotebook* itemNotebook3 = new wxNotebook( detailsPanel, ID_COLNOTEBOOK, wxDefaultPosition, wxDefaultSize, wxBK_DEFAULT );
 
     // //>> details panel
-    //     wxPanel* detailsPanel = new wxPanel( itemNotebook3, ID_COLNAMEPANEL, wxDefaultPosition, wxDefaultSize, wxSIMPLE_BORDER|wxTAB_TRAVERSAL );
-    //     detailsPanel->SetExtraStyle(wxWS_EX_VALIDATE_RECURSIVELY);
+    //     wxPanel* detailsPanel = new wxPanel( itemNotebook3, ID_COLNAMEPANEL, wxDefaultPosition, wxDefaultSize, wxSIMPLE_BORDER | wxTAB_TRAVERSAL );
+    //     detailsPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
 
     wxBoxSizer* detailsVerticalSizer = new wxBoxSizer( wxVERTICAL );
     detailsPanel->SetSizer( detailsVerticalSizer );
@@ -175,13 +175,13 @@ void ColDetailsDialog::CreateControls( )
     wxStaticText* TitleFontStatic = new wxStaticText( detailsPanel, wxID_STATIC, _( "Title Font" ), wxDefaultPosition, wxDefaultSize, 0 );
     SecondRowHorizontalSizer->Add( TitleFontStatic, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
-    m_titleFontPicker = new wxFontPickerCtrl( detailsPanel, 12345,
-        *wxNORMAL_FONT, wxDefaultPosition,
+    m_titleFontPicker = new wxFontPickerCtrl( detailsPanel, 12345, 
+        *wxNORMAL_FONT, wxDefaultPosition, 
         wxDefaultSize, wxFNTP_DEFAULT_STYLE );
     SecondRowHorizontalSizer->Add( m_titleFontPicker, 5, wxGROW | wxALL, 5 );
 
-    m_titleColorPicker = new wxColourPickerCtrl( detailsPanel, 12346,
-        *wxBLACK, wxDefaultPosition,
+    m_titleColorPicker = new wxColourPickerCtrl( detailsPanel, 12346, 
+        *wxBLACK, wxDefaultPosition, 
         wxDefaultSize, wxCLRP_DEFAULT_STYLE );
     SecondRowHorizontalSizer->Add( m_titleColorPicker, 1, wxGROW | wxALL, 5 );
 
@@ -219,7 +219,7 @@ void ColDetailsDialog::CreateControls( )
  */
 
 bool ColDetailsDialog::ShowToolTips( )
-{
+{ 
     return true;
 }
 
@@ -228,7 +228,7 @@ bool ColDetailsDialog::ShowToolTips( )
  */
 
 wxBitmap ColDetailsDialog::GetBitmapResource( const wxString& name )
-{
+{ 
     // Bitmap retrieval
 // ColDetailsDialog bitmap retrieval
     wxUnusedVar( name );
@@ -241,7 +241,7 @@ wxBitmap ColDetailsDialog::GetBitmapResource( const wxString& name )
  */
 
 wxIcon ColDetailsDialog::GetIconResource( const wxString& name )
-{
+{ 
     // Icon retrieval
 // ColDetailsDialog icon retrieval
     wxUnusedVar( name );
@@ -255,7 +255,7 @@ wxIcon ColDetailsDialog::GetIconResource( const wxString& name )
  */
 
 void ColDetailsDialog::OnOkClick( wxCommandEvent& event )
-{
+{ 
     // wxEVT_COMMAND_BUTTON_CLICKED event handler for wxID_OK in ColDetailsDialog.
         // Before editing this code, remove the block markers.
     event.Skip( );

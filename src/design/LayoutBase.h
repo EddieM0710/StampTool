@@ -5,20 +5,20 @@
  * @version 0.1
  * @date 2022-02-04
  *
- * @copyright Copyright (c) 2022
+ * @copyright Copyright ( c ) 2022
  *
- * This file is part of AlbumGenerator.
+ * This file is part of StampTool.
  *
- * AlbumGenerator is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * StampTool is free software: you can redistribute it and/or modify it under the
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
- * AlbumGenerator is distributed in the hope that it will be useful, but WITHOUT ANY
+ * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
  * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License along with
- * AlbumGenerator. If not, see <https://www.gnu.org/licenses/>.
+ * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
  **************************************************/
 
@@ -34,7 +34,7 @@
 
 #include <wx/xml/xml.h>
 
-namespace Design {
+namespace Design { 
 
 
     class Title;
@@ -45,13 +45,13 @@ namespace Design {
      *
      **************************************************/
     class LayoutBase: public AlbumBase
-    {
+    { 
     public:
         /**
          * @brief Unused; Construct a new Album Design Object object
          *
          **************************************************/
-        LayoutBase( ): AlbumBase( ) {
+        LayoutBase( ): AlbumBase( ) { 
             SetTopContentPadding( 0 );
             SetBottomContentPadding( 0 );
             SetLeftContentPadding( 0 );
@@ -64,7 +64,7 @@ namespace Design {
          *
          * @param name
          **************************************************/
-        LayoutBase( wxXmlNode* node ): AlbumBase( node ) {
+        LayoutBase( wxXmlNode* node ): AlbumBase( node ) { 
             SetTopContentPadding( 0 );
             SetBottomContentPadding( 0 );
             SetLeftContentPadding( 0 );
@@ -201,23 +201,23 @@ namespace Design {
         bool GetShowFrame( ) { return String2Bool( GetAttrStr( AT_ShowFrame ) ); };
         void SetShowFrame( bool val ) { SetAttrStr( AT_ShowFrame, Bool2String( val ) ); };
 
-        //        bool GetShowImage(){ return String2Bool( GetAttrStr( AT_ShowImage ) ); };
+        //        bool GetShowImage( ){ return String2Bool( GetAttrStr( AT_ShowImage ) ); };
         //        void SetShowImage( bool val ){ SetAttrStr( AT_ShowImage, Bool2String( val ) ); };
 
         bool GetShowCatNbr( ) { return String2Bool( GetAttrStr( AT_ShowCatNbr ) ); };
         void SetShowCatNbr( bool val ) { SetAttrStr( AT_ShowCatNbr, Bool2String( val ) ); };
 
 
-        double GetTopContentPadding( ) { GetAttrDbl( AT_TopContentPadding ); };
+        double GetTopContentPadding( ) { return GetAttrDbl( AT_TopContentPadding ); };
         void SetTopContentPadding( double val ) { SetAttrDbl( AT_TopContentPadding, val ); };
 
-        double GetBottomContentPadding( ) { GetAttrDbl( AT_BottomContentPadding ); };
+        double GetBottomContentPadding( ) { return GetAttrDbl( AT_BottomContentPadding ); };
         void SetBottomContentPadding( double val ) { SetAttrDbl( AT_BottomContentPadding, val ); };
 
-        double GetLeftContentPadding( ) { GetAttrDbl( AT_LeftContentPadding ); };
+        double GetLeftContentPadding( ) { return GetAttrDbl( AT_LeftContentPadding ); };
         void SetLeftContentPadding( double val ) { SetAttrDbl( AT_LeftContentPadding, val ); };
 
-        double GetRightContentPadding( ) { GetAttrDbl( AT_RightContentPadding ); };
+        double GetRightContentPadding( ) { return GetAttrDbl( AT_RightContentPadding ); };
         void SetRightContentPadding( double val ) { SetAttrDbl( AT_RightContentPadding, val ); };
 
         void ValidateChildType( int& nbrRows, int& nbrCols, int& nbrStamps );
@@ -255,9 +255,10 @@ namespace Design {
         void DumpLayout( double x, double y );
 
         wxXmlNode* GetTitleFont( wxXmlNode* node, wxString name )
-        {
+        { 
             wxTreeItemId ctrlID = GetTreeItemId( );
-            //    GetDesignTreeCtrl()->GetItemData( ctrlID );
+            //    GetDesignTreeCtrl( )->GetItemData( ctrlID );
+            return (wxXmlNode*)0; 
         }
 
         void ReportLayoutFrame( wxString indent = "" );

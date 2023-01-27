@@ -5,20 +5,20 @@
  * @version 0.1
  * @date 2022-01-22
  *
- * @copyright Copyright (c) 2021  
+ * @copyright Copyright ( c ) 2021  
  * 
- * This file is part of AlbumGenerator.
+ * This file is part of StampTool.
  *
- * AlbumGenerator is free software: you can redistribute it and/or modify it under the 
+ * StampTool is free software: you can redistribute it and/or modify it under the 
  * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
- * AlbumGenerator is distributed in the hope that it will be useful, but WITHOUT ANY 
+ * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY 
  * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License along with 
- * AlbumGenerator. If not, see <https://www.gnu.org/licenses/>.
+ * StampTool. If not, see <https://www.gnu.org/licenses/>.
  */
 
 
@@ -41,7 +41,7 @@
 
 #include "gui/AlbumDesignTreePanel.h"
 #include "gui/GuiDefs.h"
-#include "gui/GeneratorData.h"
+#include "gui/ToolData.h"
 //#include "DesignData.h"
 // XPM images
 // XPM images
@@ -71,12 +71,12 @@ IMPLEMENT_DYNAMIC_CLASS( AlbumDesignTreePanel, wxPanel )
      */
 
     AlbumDesignTreePanel::AlbumDesignTreePanel( )
-{
+{ 
     Init( );
 }
 
 AlbumDesignTreePanel::AlbumDesignTreePanel( wxWindow* parent, wxWindowID id, const wxPoint& pos, const wxSize& size, long style )
-{
+{ 
     Init( );
     Create( parent, id, pos, size, style );
 }
@@ -87,14 +87,14 @@ AlbumDesignTreePanel::AlbumDesignTreePanel( wxWindow* parent, wxWindowID id, con
  */
 
 bool AlbumDesignTreePanel::Create( wxWindow* parent, wxWindowID id, const wxPoint& pos, const wxSize& size, long style )
-{
+{ 
     // AlbumDesignTreePanel creation
     SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
     wxPanel::Create( parent, id, pos, size, style );
 
     CreateControls( );
     if ( GetSizer( ) )
-    {
+    { 
         GetSizer( )->SetSizeHints( this );
     }
     Centre( );
@@ -108,7 +108,7 @@ bool AlbumDesignTreePanel::Create( wxWindow* parent, wxWindowID id, const wxPoin
  */
 
 AlbumDesignTreePanel::~AlbumDesignTreePanel( )
-{
+{ 
     // AlbumDesignTreePanel destruction
     // AlbumDesignTreePanel destruction
 }
@@ -119,7 +119,7 @@ AlbumDesignTreePanel::~AlbumDesignTreePanel( )
  */
 
 void AlbumDesignTreePanel::Init( )
-{
+{ 
     // AlbumDesignTreePanel member initialisation
     m_designTreeCtrl = NULL;
     // AlbumDesignTreePanel member initialisation
@@ -131,18 +131,18 @@ void AlbumDesignTreePanel::Init( )
  */
 
 void AlbumDesignTreePanel::CreateControls( )
-{
+{ 
     AlbumDesignTreePanel* itemPanel1 = this;
 
     wxBoxSizer* itemBoxSizer1 = new wxBoxSizer( wxVERTICAL );
     itemPanel1->SetSizer( itemBoxSizer1 );
 
-    m_designTreeCtrl = new DesignTreeCtrl( itemPanel1, ID_DESIGNTREECTRL, wxDefaultPosition, wxSize( 100, 100 ), wxTR_HAS_BUTTONS |wxTR_FULL_ROW_HIGHLIGHT|wxTR_SINGLE|wxSUNKEN_BORDER|wxTR_DEFAULT_STYLE );
+    m_designTreeCtrl = new DesignTreeCtrl( itemPanel1, ID_DESIGNTREECTRL, wxDefaultPosition, wxSize( 100, 100 ), wxTR_HAS_BUTTONS | wxTR_FULL_ROW_HIGHLIGHT | wxTR_SINGLE | wxSUNKEN_BORDER | wxTR_DEFAULT_STYLE );
     itemBoxSizer1->Add( m_designTreeCtrl, 1, wxGROW | wxALL, 5 );
 
  //   itemScrolledWindow1->FitInside( );
 
-    GetGeneratorData( )->SetDesignTreeCtrl(m_designTreeCtrl);
+    GetToolData( )->SetDesignTreeCtrl( m_designTreeCtrl );
 }
 
 
@@ -151,7 +151,7 @@ void AlbumDesignTreePanel::CreateControls( )
  */
 
 bool AlbumDesignTreePanel::ShowToolTips( )
-{
+{ 
     return true;
 }
 
@@ -160,7 +160,7 @@ bool AlbumDesignTreePanel::ShowToolTips( )
  */
 
 wxBitmap AlbumDesignTreePanel::GetBitmapResource( const wxString& name )
-{
+{ 
     // Bitmap retrieval
 // AlbumDesignTreePanel bitmap retrieval
     wxUnusedVar( name );
@@ -173,7 +173,7 @@ wxBitmap AlbumDesignTreePanel::GetBitmapResource( const wxString& name )
  */
 
 wxIcon AlbumDesignTreePanel::GetIconResource( const wxString& name )
-{
+{ 
     // Icon retrieval
 // AlbumDesignTreePanel icon retrieval
     wxUnusedVar( name );
@@ -182,11 +182,11 @@ wxIcon AlbumDesignTreePanel::GetIconResource( const wxString& name )
 }
 
 void AlbumDesignTreePanel::LoadAlbumLayout( )
-{
-   m_designTreeCtrl->LoadTree();
+{ 
+   m_designTreeCtrl->LoadTree( );
 }
 
 void AlbumDesignTreePanel::LoadAEData( wxString filename )
-{
+{ 
 
 }

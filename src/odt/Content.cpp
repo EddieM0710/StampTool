@@ -5,22 +5,25 @@
  * @version 0.1
  * @date 2022-08-01
  * 
- * @copyright Copyright (c) 2022
+ * @copyright Copyright ( c ) 2022
  * 
- * This file is part of AlbumGenerator.
+ * This file is part of StampTool.
  *
- * AlbumGenerator is free software: you can redistribute it and/or modify it under the 
+ * StampTool is free software: you can redistribute it and/or modify it under the 
  * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
- * AlbumGenerator is distributed in the hope that it will be useful, but WITHOUT ANY 
+ * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY 
  * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License along with 
- * AlbumGenerator. If not, see <https://www.gnu.org/licenses/>.
+ * StampTool. If not, see <https://www.gnu.org/licenses/>.
  * 
  */
+
+#include <wx/sstream.h>
+
 #include "utils/Project.h"
 #include "utils/Settings.h"
 #include "utils/XMLUtilities.h"
@@ -30,19 +33,21 @@
 #include "odt/Document.h"
 
 #include "AutoStylesProp.h"
-//***********************************
+#include "odt/Template.h"
 
-namespace ODT {
+//***********************************
+namespace ODT { 
 
     Content::Content( )
-    {
+    { 
         m_content = new wxXmlDocument( );
+        wxStringInputStream textStream( ODT::ContentTemplate );
 
-        wxString configDir = GetSettings()->GetConfigurationDirectory();
+        //wxString configDir = GetSettings( )->GetConfigurationDirectory( );
         //GetDocManager( )->GetConfigDirectory( );
-        wxString contentTemplate = configDir + "/template/content.xml";
-        if ( !m_content->Load( contentTemplate ) )
-        {
+        //wxString contentTemplate = configDir + "/template/content.xml";
+        if ( !m_content->Load( textStream ) )
+        { 
             // debug message
             ReportError( "Content::GetContent", "get Content failed", true );
         }
@@ -50,10 +55,10 @@ namespace ODT {
     }
 
     wxXmlNode* Content::FindOfficeBody( )
-    {
+    { 
         wxXmlNode* root = FindOfficeContentRoot( );
         if ( !root )
-        {
+        { 
             // No root!
             ReportError( "Content::FindOfficeBody", "No content root found.", true );
             return ( wxXmlNode* )0;
@@ -61,7 +66,7 @@ namespace ODT {
 
         wxXmlNode* officeBody = Utils::FirstChildElement( root, "office:body" );
         if ( !officeBody )
-        {
+        { 
             // No Body!
             ReportError( "Content::FindOfficeBody", "No office:body found.", true );
             return ( wxXmlNode* )0;
@@ -71,9 +76,9 @@ namespace ODT {
 
 
     wxXmlNode* Content::FindOfficeContentRoot( )
-    {
+    { 
         if ( !m_content )
-        {
+        { 
             // Content doc not initialized
             ReportError( "Content::FindOfficeContentRoot", "Content doc not initialized", true );
             return ( wxXmlNode* )0;
@@ -81,7 +86,7 @@ namespace ODT {
 
         wxXmlNode* root = m_content->GetRoot( );
         if ( !root )
-        {
+        { 
             // Content doc not initialized
             ReportError( "Content::FindOfficeContentRoot", "root not found", true );
             return ( wxXmlNode* )0;
@@ -90,13 +95,13 @@ namespace ODT {
     }
 
     wxXmlNode* Content::FindOfficAutomaticStyles( )
-    {
+    { 
 
         wxXmlNode* root = FindOfficeContentRoot( );
 
         wxXmlNode* automaticStyles = Utils::FirstChildElement( root, "office:automatic-styles" );
         if ( !automaticStyles )
-        {
+        { 
             // No Body!
             ReportError( "Content::FindOfficAutomaticStyles", "No office:automatic-styles found.", true );
             return ( wxXmlNode* )0;
@@ -105,7 +110,7 @@ namespace ODT {
     }
     
     bool Content::AddPageBackgroundFrameStyles( wxString drawName )
-    {
+    { 
         wxXmlNode* automaticStyles = FindOfficAutomaticStyles( );
        Utils::AddComment( automaticStyles, BackgroundFrame, "BackgroundFrame" );
 
@@ -123,8 +128,8 @@ namespace ODT {
             Utils::SetAttrStr( graphicProperties1, "style:horizontal-pos", "from-left" );
             Utils::SetAttrStr( graphicProperties1, "style:horizontal-rel", "paragraph-content" );
 
-        wxXmlNode* backgroundImageNode = StylesDoc()->FindOfficeStylesDrawFillImage( drawName );
-        char emptyString[12] = "";
+        wxXmlNode* backgroundImageNode = StylesDoc( )->FindOfficeStylesDrawFillImage( drawName );
+        char emptyString[ 12 ] = "";
         wxString link = backgroundImageNode->GetAttribute( "xlink:href" );
 
 
@@ -164,12 +169,12 @@ namespace ODT {
                 Utils::SetAttrStr( backgroundImage2, "xlink:type", "simple"  );
                 Utils::SetAttrStr( backgroundImage2, "xlink:actuate", "onLoad"  );
                 Utils::SetAttrStr( backgroundImage2, "style:repeat", "stretch" );
-       
+       return true;
 
     }
     //***********************************
     bool Content::AddPageFrameStyles( )
-    {
+    { 
         AutoStylesProp* styles = new AutoStylesProp( );
         styles->DefinePrimaryTextStyles( );
         styles->WriteAll( );
@@ -215,17 +220,17 @@ namespace ODT {
         // SetAttrStr( styleTextProperties2, "style:font-size-asian", "8pt"  );
         // SetAttrStr( styleTextProperties2, "style:font-size-complex", "8pt" ); 
 
-        // <style:style style:name="fr2" style:family="graphic" style:parent-style-name="Frame">
-        //     <style:graphic-properties style:wrap="parallel" 
-        //     style:number-wrapped-paragraphs="no-limit" 
-        //     style:vertical-pos="from-top" 
-        //     style:vertical-rel="paragraph" 
-        //     style:horizontal-pos="from-left" 
-        //     style:horizontal-rel="paragraph"/>
+        // <style:style style:name = "fr2" style:family = "graphic" style:parent-style-name = "Frame">
+        //     <style:graphic-properties style:wrap = "parallel" 
+        //     style:number-wrapped-paragraphs = "no-limit" 
+        //     style:vertical-pos = "from-top" 
+        //     style:vertical-rel = "paragraph" 
+        //     style:horizontal-pos = "from-left" 
+        //     style:horizontal-rel = "paragraph"/>
         // </style:style>
-        // <style:style style:name="fr1" style:family="graphic" style:parent-style-name="Frame">
-        //     <style:graphic-properties style:wrap="parallel" style:number-wrapped-paragraphs="no-limit" style:vertical-pos="from-top" style:vertical-rel="paragraph" style:horizontal-pos="from-left" style:horizontal-rel="paragraph" draw:fill="bitmap" draw:fill-image-name="box2" style:repeat="stretch" draw:fill-image-ref-point-x="0%" draw:fill-image-ref-point-y="0%" draw:fill-image-ref-point="center">
-        //         <style:background-image xlink:href="Pictures/1000000000000258000003584C04905AFB17BB5E.jpg" xlink:type="simple" xlink:actuate="onLoad" style:repeat="stretch"/>
+        // <style:style style:name = "fr1" style:family = "graphic" style:parent-style-name = "Frame">
+        //     <style:graphic-properties style:wrap = "parallel" style:number-wrapped-paragraphs = "no-limit" style:vertical-pos = "from-top" style:vertical-rel = "paragraph" style:horizontal-pos = "from-left" style:horizontal-rel = "paragraph" draw:fill = "bitmap" draw:fill-image-name = "box2" style:repeat = "stretch" draw:fill-image-ref-point-x = "0%" draw:fill-image-ref-point-y = "0%" draw:fill-image-ref-point = "center">
+        //         <style:background-image xlink:href = "Pictures/1000000000000258000003584C04905AFB17BB5E.jpg" xlink:type = "simple" xlink:actuate = "onLoad" style:repeat = "stretch"/>
         //     </style:graphic-properties>
         // </style:style>
 
@@ -246,7 +251,7 @@ namespace ODT {
         Utils::SetAttrStr( graphicProperties6, "fo:padding", ".06in" );
         Utils::SetAttrStr( graphicProperties6, "fo:border", "0.0071in solid #000000" );
         Utils::SetAttrStr( graphicProperties6, "style:shadow", "none" );
-        Utils::SetAttrStr( graphicProperties6, "draw:shadow-opacity", "100%");
+        Utils::SetAttrStr( graphicProperties6, "draw:shadow-opacity", "100%" );
 
         // Utils::AddComment( automaticStyles, "fr3", "FrameWithImage" );
 
@@ -264,7 +269,7 @@ namespace ODT {
         // // SetAttrStr( graphicProperties3, "style:background-transparency", "100%" );
         // // SetAttrStr( graphicProperties3, "style:shadow", "none"  );
         // Utils::SetAttrStr( graphicProperties3, "style:mirror", "none" );
-        // Utils::SetAttrStr( graphicProperties3, "fo:clip", "rect(0in, 0in, 0in, 0in)" );
+        // Utils::SetAttrStr( graphicProperties3, "fo:clip", "rect( 0in, 0in, 0in, 0in )" );
         // Utils::SetAttrStr( graphicProperties3, "draw:luminance", "0%" );
         // Utils::SetAttrStr( graphicProperties3, "draw:contrast", "0%" );
         // Utils::SetAttrStr( graphicProperties3, "draw:red", "0%" );
@@ -290,7 +295,7 @@ namespace ODT {
         Utils::SetAttrStr( graphicProperties4, "fo:padding", "0in" );
         Utils::SetAttrStr( graphicProperties4, "fo:border", "none" );
         Utils::SetAttrStr( graphicProperties4, "style:shadow", "none" );
-        Utils::SetAttrStr( graphicProperties4, "draw:shadow-opacity", "100%");
+        Utils::SetAttrStr( graphicProperties4, "draw:shadow-opacity", "100%" );
 
         Utils::AddComment( automaticStyles, FrameNoBorder, "FrameNoBorder" );
 
@@ -307,26 +312,26 @@ namespace ODT {
         Utils::SetAttrStr( graphicProperties5, "fo:border", "none" );
         Utils::SetAttrStr( graphicProperties5, "style:shadow", "none" );
 
-        // <style:style style:name="fr2" style:family="graphic" style:parent-style-name="Frame">
+        // <style:style style:name = "fr2" style:family = "graphic" style:parent-style-name = "Frame">
         //     <style:graphic-properties 
-        //     style:wrap="parallel" 
-        //     style:number-wrapped-paragraphs="no-limit" 
-        //     style:vertical-pos="from-top" 
-        //     style:vertical-rel="paragraph-content" 
-        //     style:horizontal-pos="from-left" 
-        //     style:horizontal-rel="paragraph-content" 
-        //     draw:fill="bitmap" 
-        //     draw:fill-image-name="box2" 
-        //     style:repeat="stretch" 
-        //     draw:fill-image-ref-point-x="0%" 
-        //     draw:fill-image-ref-point-y="0%" 
-        //     draw:fill-image-ref-point="center" 
-        //     loext:rel-width-rel="paragraph" 
-        //     loext:rel-height-rel="paragraph">
-        //  <style:background-image xlink:href="Pictures/1000000000000258000003584C04905AFB17BB5E.jpg" 
-        //         xlink:type="simple" 
-        //         xlink:actuate="onLoad" 
-        //         style:repeat="stretch"/>
+        //     style:wrap = "parallel" 
+        //     style:number-wrapped-paragraphs = "no-limit" 
+        //     style:vertical-pos = "from-top" 
+        //     style:vertical-rel = "paragraph-content" 
+        //     style:horizontal-pos = "from-left" 
+        //     style:horizontal-rel = "paragraph-content" 
+        //     draw:fill = "bitmap" 
+        //     draw:fill-image-name = "box2" 
+        //     style:repeat = "stretch" 
+        //     draw:fill-image-ref-point-x = "0%" 
+        //     draw:fill-image-ref-point-y = "0%" 
+        //     draw:fill-image-ref-point = "center" 
+        //     loext:rel-width-rel = "paragraph" 
+        //     loext:rel-height-rel = "paragraph">
+        //  <style:background-image xlink:href = "Pictures/1000000000000258000003584C04905AFB17BB5E.jpg" 
+        //         xlink:type = "simple" 
+        //         xlink:actuate = "onLoad" 
+        //         style:repeat = "stretch"/>
         //fr2 is a frame with a background image
 
         // //fr7 is a frame with a background image
@@ -343,25 +348,25 @@ namespace ODT {
         //     Utils::SetAttrStr( graphicProperties7, "style:horizontal-pos", "from-left" ); 
         //     Utils::SetAttrStr( graphicProperties7, "style:horizontal-rel", "paragraph" );
 
- 
+    return true;
     }
     wxXmlNode* Content::FindOfficeText( )
-    {
+    { 
         wxXmlNode* officeBody = FindOfficeBody( );
         wxXmlNode* officeText = Utils::FirstChildElement( officeBody, "office:text" );
         if ( !officeText )
-        {
+        { 
             // NoBody
             ReportError( "Document::FindOfficeText", "No office:text found;", true );
         }
         return officeText;
     }
     //***********************************
-    //<office:text text:use-soft-page-breaks="true">
+    //<office:text text:use-soft-page-breaks = "true">
     //***********************************
 
     bool Content::EnableSoftPageBreak( )
-    {
+    { 
 
         wxXmlNode* officeText = FindOfficeText( );
         Utils::SetAttrStr( officeText, "text:use-soft-page-breaks", "true" );
@@ -371,30 +376,30 @@ namespace ODT {
 
 
     wxXmlNode* Content::AddNewPage( )
-    {
+    { 
         EnableSoftPageBreak( );
         wxXmlNode* officeText = FindOfficeText( );
         wxXmlNode* textP = Utils::AddNewNode( officeText, wxXML_ELEMENT_NODE, "text:p" );
         Utils::SetAttrStr( textP, "text:style-name", NormalTextStyle );
-        //    <text:p text:style-name="P1">
+        //    <text:p text:style-name = "P1">
         return textP;
     }
 
     wxXmlNode* Content::FindFirstPage( )
-    {
+    { 
         wxXmlNode* officeText = FindOfficeText( );
         wxXmlNode* textP = Utils::FirstChildElement( officeText, "text:p" );
         return textP;
     }
 
-    wxXmlNode* Content::WriteFrame( wxXmlNode* parent, double xPos,
-        double yPos,
-        double width,
-        double height,
+    wxXmlNode* Content::WriteFrame( wxXmlNode* parent, double xPos, 
+        double yPos, 
+        double width, 
+        double height, 
         const char* drawStyleName,  // fr2
         const char* textAnchorType,  // "page", "paragraph"
         const char* textStyleName )
-    {
+    { 
 
         char str[ 20 ];
         wxXmlNode* drawFrame = Utils::AddNewNode( parent, wxXML_ELEMENT_NODE, "draw:frame" );
@@ -407,23 +412,23 @@ namespace ODT {
         Utils::SetAttrStr( drawFrame, "draw:z-index", Utils::GetZIndex( str ) );
 
         wxXmlNode* drawTextBox = Utils::AddNewNode( drawFrame, wxXML_ELEMENT_NODE, "draw:text-box" );
-        Utils::SetAttrStr(drawTextBox, "fo:min-height", Utils::DoubleToMMString( str, height ) );
+        Utils::SetAttrStr( drawTextBox, "fo:min-height", Utils::DoubleToMMString( str, height ) );
 
         wxXmlNode* drawTextBoxP = Utils::AddNewNode( drawTextBox, wxXML_ELEMENT_NODE, "text:p" );
-        Utils::SetAttrStr( drawTextBoxP,"text:style-name", textStyleName );
+        Utils::SetAttrStr( drawTextBoxP, "text:style-name", textStyleName );
         // return child element for content
         return drawTextBoxP;
     }
 
 
-    wxXmlNode* Content::WriteFrameFixedSize( wxXmlNode* parent, double xPos,
-        double yPos,
-        double width,
-        double height,
+    wxXmlNode* Content::WriteFrameFixedSize( wxXmlNode* parent, double xPos, 
+        double yPos, 
+        double width, 
+        double height, 
         const char* drawStyleName,  // fr2
         const char* textAnchorType,  // "page", "paragraph"
         const char* textStyleName )
-    {
+    { 
 
         char str[ 20 ];
         wxXmlNode* drawFrame = Utils::AddNewNode( parent, wxXML_ELEMENT_NODE, "draw:frame" );
@@ -446,15 +451,15 @@ namespace ODT {
     //***********************************
 
 
-    wxXmlNode* Content::WriteImage( wxXmlNode* parent, double xPos,
-        double yPos,
-        double width,
-        double height,
+    wxXmlNode* Content::WriteImage( wxXmlNode* parent, double xPos, 
+        double yPos, 
+        double width, 
+        double height, 
         wxString& drawStyleName,  // fr2
         wxString& textAnchorType, // "page", "paragraph"
         wxString& textStyleName,   // "P1"
         wxString& link )
-    {
+    { 
         char str[ 20 ];
         wxXmlNode* imageFrame = Utils::AddNewNode( parent, wxXML_ELEMENT_NODE, "draw:frame" );
         Utils::SetAttrStr( imageFrame, "draw:style-name", drawStyleName );
@@ -467,7 +472,7 @@ namespace ODT {
         Utils::SetAttrStr( imageFrame, "draw:z-index", Utils::GetZIndex( str ) );
 
         if ( !link.IsEmpty( ) )
-        {
+        { 
             wxXmlNode* image = Utils::AddNewNode( imageFrame, wxXML_ELEMENT_NODE, "draw:image " );
 
             wxString fullPath = ODT::ODTDoc( )->AddImageFile( link );
@@ -481,37 +486,37 @@ namespace ODT {
     }
 
     //***********************************
-    wxXmlNode* Content::WriteTextBox( wxXmlNode* parent, double xPos,
-        double yPos,
-        double width,
-        double height,
+    wxXmlNode* Content::WriteTextBox( wxXmlNode* parent, double xPos, 
+        double yPos, 
+        double width, 
+        double height, 
         wxString& drawStyleName,  // fr2
         wxString& textAnchorType, // "page", "paragraph"
-        wxString& textStyleName,
-        wxString point,
+        wxString& textStyleName, 
+        wxString point, 
         wxString text )
-    {
+    { 
 
-        wxXmlNode* stampFrame = ContentDoc( )->WriteFrameFixedSize( parent,
-            xPos, yPos,
-            width, height,
+        wxXmlNode* stampFrame = ContentDoc( )->WriteFrameFixedSize( parent, 
+            xPos, yPos, 
+            width, height, 
             drawStyleName, textAnchorType, textStyleName );
         stampFrame->SetContent( text );
-
+        return stampFrame;
     }
 
 
 
     bool Content::Save( )
-    {
+    { 
         std::cout << "*************************************************\n";
 
-        wxString str = ODT::ODTDoc( )->GetDocFilesDir()+"/content.xml" ;
+        wxString str = ODT::ODTDoc( )->GetDocFilesDir( )+"/content.xml" ;
         // if ( !
         Utils::Save( m_content, str );
-        // {
-        //     ReportError( "Content::SaveFiles", "Failed to save content xml" ,true) ;
+        // { 
+        //     ReportError( "Content::SaveFiles", "Failed to save content xml" , true ) ;
         // }
-        //     return true;
+        return true;
     }
 }

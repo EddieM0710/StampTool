@@ -1,29 +1,29 @@
 /**
- * @file CatalogVolumeData.h
- * @author Eddie Monroe ()
+ * @file CatalogSectionData.h
+ * @author Eddie Monroe ( )
  * @brief
  * @version 0.1
  * @date 2021-02-25
  *
- * @copyright Copyright (c) 2021
+ * @copyright Copyright ( c ) 2021
  * 
- * This file is part of AlbumGenerator.
+ * This file is part of StampTool.
  *
- * AlbumGenerator is free software: you can redistribute it and/or modify it under the 
+ * StampTool is free software: you can redistribute it and/or modify it under the 
  * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
- * AlbumGenerator is distributed in the hope that it will be useful, but WITHOUT ANY 
+ * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY 
  * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License along with 
- * AlbumGenerator. If not, see <https://www.gnu.org/licenses/>.
+ * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
  **************************************************/
 
-#ifndef CatalogVolumeData_H
-#define CatalogVolumeData_H
+#ifndef CatalogSectionData_H
+#define CatalogSectionData_H
 
 #include "wx/xml/xml.h"
 #include <wx/string.h>
@@ -33,15 +33,15 @@
 #include "utils/XMLUtilities.h"
 
 
-namespace Catalog {
+namespace Catalog { 
 
 
-    class CatalogVolumeData
-    {
+    class CatalogSectionData
+    { 
     public:
 
-        CatalogVolumeData( );
-        ~CatalogVolumeData( );
+        CatalogSectionData( );
+        ~CatalogSectionData( );
         bool IsOK( );
 
         // Create a Catalog xml doc
@@ -54,7 +54,7 @@ namespace Catalog {
         wxXmlDocument* GetDoc( ) { return m_stampDoc; };
 
         //Create and load a new Catalog xml Doc
-        void NewCatalog();
+        void NewCatalog( );
 
         void Save( );
         // Load Catalog xml file
@@ -67,8 +67,8 @@ namespace Catalog {
 
         Utils::wxXmlNodeArray* MakeParentList( Catalog::FormatType parentType );
 
-        void StructureCatalogVolumeData( Catalog::FormatType parentType,
-                        Catalog::FormatType childType,
+        void StructureCatalogSectionData( Catalog::FormatType parentType, 
+                        Catalog::FormatType childType, 
                         Catalog::FormatType secondChildType = Catalog::FT_FormatUnknown );
 
         void ReGroupMultiples( );
@@ -82,39 +82,39 @@ namespace Catalog {
         void SetDirty( bool state = true );
         bool isDirty( ) { return m_dirty; };
 
-    void SetVolumeFilename( wxString name ){ m_volumeFilename = name;};
-    wxString GetVolumeFilename( ){ return m_volumeFilename;};
-    wxString GetVolumeName()
-    {
-        wxXmlNode* root = m_stampDoc->GetRoot();
+    void SetSectionFilename( wxString name ){ m_sectionFilename = name; };
+    wxString GetSectionFilename( ){ return m_sectionFilename; };
+    wxString GetSectionName( )
+    { 
+        wxXmlNode* root = m_stampDoc->GetRoot( );
         if ( root )
-        {
-            return Utils::GetAttrStr(root,"Name");
+        { 
+            return Utils::GetAttrStr( root, "Name" );
         }
         return "";
     };
-    void SetVolumeName( wxString str )
-    {
-        wxXmlNode* root = m_stampDoc->GetRoot();
+    void SetSectionName( wxString str )
+    { 
+        wxXmlNode* root = m_stampDoc->GetRoot( );
         if ( root )
-        {
+        { 
             Utils::SetAttrStr( root, "Name", str );
         }
     };
 
-    wxString GetCatalogVolumeImagePath();
-    void SetImagePath(wxString str);    
-    void EditDetailsDialog(  wxWindow* parent);
+    wxString GetCatalogSectionImagePath( );
+    void SetImagePath( wxString str );    
+    void EditDetailsDialog(  wxWindow* parent );
     
     private:
-        wxString m_volumeFilename;
+        wxString m_sectionFilename;
         wxXmlDocument* m_stampDoc;
       //  wxString m_title;
         bool m_dirty;
     };
     
-    CatalogVolumeData* NewCatalogVolumeDataInstance();
-    typedef std::vector<CatalogVolumeData*> CatalogVolumeDataArray;
+    CatalogSectionData* NewCatalogSectionDataInstance( );
+    typedef std::vector<CatalogSectionData*> CatalogSectionDataArray;
 
 }
 #endif

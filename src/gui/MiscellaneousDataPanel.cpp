@@ -1,24 +1,24 @@
 /**
  * @file MiscellaneousDataPanel.cpp
- * @author Eddie Monroe ()
+ * @author Eddie Monroe ( )
  * @brief 
  * @version 0.1
  * @date 2021-02-25
  * 
- * @copyright Copyright (c) 2021
+ * @copyright Copyright ( c ) 2021
  * 
- * This file is part of AlbumGenerator.
+ * This file is part of StampTool.
  *
- * AlbumGenerator is free software: you can redistribute it and/or modify it under the 
+ * StampTool is free software: you can redistribute it and/or modify it under the 
  * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
- * AlbumGenerator is distributed in the hope that it will be useful, but WITHOUT ANY 
+ * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY 
  * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License along with 
- * AlbumGenerator. If not, see <https://www.gnu.org/licenses/>.
+ * StampTool. If not, see <https://www.gnu.org/licenses/>.
  * 
  **************************************************/
 
@@ -68,14 +68,14 @@ END_EVENT_TABLE( )
  */
 
 MiscellaneousDataPanel::MiscellaneousDataPanel( )
-{
+{ 
     Init( );
 }
 
-MiscellaneousDataPanel::MiscellaneousDataPanel( wxWindow *parent, wxWindowID id,
-                                                const wxPoint &pos,
+MiscellaneousDataPanel::MiscellaneousDataPanel( wxWindow *parent, wxWindowID id, 
+                                                const wxPoint &pos, 
                                                 const wxSize &size, long style )
-{
+{ 
     Init( );
     Create( parent, id, pos, size, style );
 }
@@ -84,17 +84,17 @@ MiscellaneousDataPanel::MiscellaneousDataPanel( wxWindow *parent, wxWindowID id,
  * MiscellaneousData creator
  */
 
-bool MiscellaneousDataPanel::Create( wxWindow *parent, wxWindowID id,
-                                     const wxPoint &pos, const wxSize &size,
+bool MiscellaneousDataPanel::Create( wxWindow *parent, wxWindowID id, 
+                                     const wxPoint &pos, const wxSize &size, 
                                      long style )
-{
+{ 
      // MiscellaneousDataPanel creation
     SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
     wxPanel::Create( parent, id, pos, size, style );
 
     CreateControls( );
     if ( GetSizer( ) )
-    {
+    { 
         GetSizer( )->SetSizeHints( this );
     }
     Centre( );
@@ -107,7 +107,7 @@ bool MiscellaneousDataPanel::Create( wxWindow *parent, wxWindowID id,
  */
 
 MiscellaneousDataPanel::~MiscellaneousDataPanel( )
-{
+{ 
      // MiscellaneousDataPanel destruction
      // MiscellaneousDataPanel destruction
 }
@@ -117,7 +117,7 @@ MiscellaneousDataPanel::~MiscellaneousDataPanel( )
  */
 
 void MiscellaneousDataPanel::Init( )
-{
+{ 
     m_stamp = new Catalog::Entry( );
      // MiscellaneousDataPanel member initialisation
 //$    m_score = NULL;
@@ -134,7 +134,7 @@ void MiscellaneousDataPanel::Init( )
  */
 
 void MiscellaneousDataPanel::CreateControls( )
-{
+{ 
      // MiscellaneousDataPanel content construction
 
     MiscellaneousDataPanel *itemPanel1 = this;
@@ -145,17 +145,17 @@ void MiscellaneousDataPanel::CreateControls( )
     wxBoxSizer *itemBoxSizer3 = new wxBoxSizer( wxHORIZONTAL );
     itemBoxSizer2->Add( itemBoxSizer3, 0, wxGROW | wxALL, 0 );
 
-    //$ m_score = new LabeledTextBox( itemPanel1, ID_SCORETEXTBOX,
+    //$ m_score = new LabeledTextBox( itemPanel1, ID_SCORETEXTBOX, 
     //$                               wxDefaultPosition, wxDefaultSize, 0 );
     //$ itemBoxSizer3->Add( m_score, 0, wxGROW | wxALL, 0 );
 
     //$ itemBoxSizer3->Add( 5, 5, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
-    //$ m_accuracy = new LabeledTextBox( itemPanel1, ID_ACCURACYTEXTBOX,
+    //$ m_accuracy = new LabeledTextBox( itemPanel1, ID_ACCURACYTEXTBOX, 
     //$                                  wxDefaultPosition, wxDefaultSize, 0 );
     //$ itemBoxSizer3->Add( m_accuracy, 0, wxGROW | wxALL, 0 );
 
-    m_link = new LabeledTextBox( itemPanel1, ID_LINKTEXTBOX, wxDefaultPosition,
+    m_link = new LabeledTextBox( itemPanel1, ID_LINKTEXTBOX, wxDefaultPosition, 
                                  wxDefaultSize, 0 );
     itemBoxSizer2->Add( m_link, 0, wxGROW | wxALL, 0 );
 
@@ -163,42 +163,42 @@ void MiscellaneousDataPanel::CreateControls( )
     itemBoxSizer2->Add( itemBoxSizer8, 0, wxGROW | wxALL, 5 );
 
     wxButton *itemButton9
-        = new wxButton( itemPanel1, ID_MYSTICBUTTON, _( "Mystic" ),
+        = new wxButton( itemPanel1, ID_MYSTICBUTTON, _( "Mystic" ), 
                         wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT );
     itemBoxSizer8->Add( itemButton9, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
     wxButton *itemButton10
-        = new wxButton( itemPanel1, ID_COLNECTBUTTON, _( "Colnect" ),
+        = new wxButton( itemPanel1, ID_COLNECTBUTTON, _( "Colnect" ), 
                         wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT );
     itemBoxSizer8->Add( itemButton10, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
     wxButton *itemButton11
-        = new wxButton( itemPanel1, ID_EBAYBUTTON, _( "eBay" ),
+        = new wxButton( itemPanel1, ID_EBAYBUTTON, _( "eBay" ), 
                         wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT );
     itemBoxSizer8->Add( itemButton11, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
     wxButton *itemButton12
-        = new wxButton( itemPanel1, ID_NPMBUTTON, _( "NPM" ), wxDefaultPosition,
+        = new wxButton( itemPanel1, ID_NPMBUTTON, _( "NPM" ), wxDefaultPosition, 
                         wxDefaultSize, wxBU_EXACTFIT );
     itemBoxSizer8->Add( itemButton12, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
-    m_catCodes = new LabeledTextBox( itemPanel1, ID_CATCODETEXTBOX,
+    m_catCodes = new LabeledTextBox( itemPanel1, ID_CATCODETEXTBOX, 
                                      wxDefaultPosition, wxDefaultSize, 0 );
     itemBoxSizer2->Add( m_catCodes, 0, wxGROW | wxALL, 0 );
 
-    m_imageName = new LabeledTextBox( itemPanel1, ID_IMAGENAMETEXTBOX,
+    m_imageName = new LabeledTextBox( itemPanel1, ID_IMAGENAMETEXTBOX, 
                                   wxDefaultPosition, wxDefaultSize, 0 );
     itemBoxSizer2->Add( m_imageName, 0, wxGROW | wxALL, 0 );
 
      // MiscellaneousDataPanel content construction
 
-//$        m_score->SetLabel( Catalog::DT_DataNames[Catalog::DT_Score] );
-//$        m_accuracy->SetLabel( Catalog::DT_DataNames[Catalog::DT_Accuracy] );
-        m_link->SetLabel( Catalog::DT_DataNames[Catalog::DT_Link] );
-        m_catCodes->SetLabel( Catalog::DT_DataNames[Catalog::DT_Catalog_Codes] );
+//$        m_score->SetLabel( Catalog::DT_DataNames[ Catalog::DT_Score ] );
+//$        m_accuracy->SetLabel( Catalog::DT_DataNames[ Catalog::DT_Accuracy ] );
+        m_link->SetLabel( Catalog::DT_DataNames[ Catalog::DT_Link ] );
+        m_catCodes->SetLabel( Catalog::DT_DataNames[ Catalog::DT_Catalog_Codes ] );
         m_imageName->SetLabel( "Image Name" );
 
-    SetDataEditable( GetSettings()->IsCatalogVolumeDataEditable() );
+    SetDataEditable( GetSettings( )->IsCatalogSectionDataEditable( ) );
 
 }
 
@@ -207,7 +207,7 @@ void MiscellaneousDataPanel::CreateControls( )
  */
 
 bool MiscellaneousDataPanel::ShowToolTips( )
-{
+{ 
     return true;
 }
 
@@ -216,7 +216,7 @@ bool MiscellaneousDataPanel::ShowToolTips( )
  */
 
 wxBitmap MiscellaneousDataPanel::GetBitmapResource( const wxString &name )
-{
+{ 
     // Bitmap retrieval
      // MiscellaneousDataPanel bitmap retrieval
     wxUnusedVar( name );
@@ -229,7 +229,7 @@ wxBitmap MiscellaneousDataPanel::GetBitmapResource( const wxString &name )
  */
 
 wxIcon MiscellaneousDataPanel::GetIconResource( const wxString &name )
-{
+{ 
     // Icon retrieval
      // MiscellaneousDataPanel icon retrieval
     wxUnusedVar( name );
@@ -238,28 +238,28 @@ wxIcon MiscellaneousDataPanel::GetIconResource( const wxString &name )
 }
 
 void MiscellaneousDataPanel::SetStamp( Catalog::Entry *stamp )
-{
+{ 
     m_stamp = stamp;
     if ( m_stamp->IsOK( ) )
-    {
-//$        m_score->SetValue( m_stamp->GetAttr(Catalog::DT_Score) );
-//$        m_accuracy->SetValue( m_stamp->GetAttr(Catalog::DT_Accuracy) );
-        m_link->SetValue( m_stamp->GetAttr(Catalog::DT_Link) );
-        m_catCodes->SetValue( m_stamp->GetAttr(Catalog::DT_Catalog_Codes) );
-        wxString id = m_stamp->GetAttr(Catalog::DT_ID_Nbr);
-        id = id.Trim(true);
-        id = id.Trim(false);
-        id.Replace(":","_");
-        id.Replace(" ","_");
-        id.Append(".jpg");        
+    { 
+//$        m_score->SetValue( m_stamp->GetAttr( Catalog::DT_Score ) );
+//$        m_accuracy->SetValue( m_stamp->GetAttr( Catalog::DT_Accuracy ) );
+        m_link->SetValue( m_stamp->GetAttr( Catalog::DT_Link ) );
+        m_catCodes->SetValue( m_stamp->GetAttr( Catalog::DT_Catalog_Codes ) );
+        wxString id = m_stamp->GetAttr( Catalog::DT_ID_Nbr );
+        id = id.Trim( true );
+        id = id.Trim( false );
+        id.Replace( ":", "_" );
+        id.Replace( " ", "_" );
+        id.Append( ".jpg" );        
         m_imageName->SetValue( id );
 
-        //       m_description->SetValue( m_stamp->GetDescription() );
+        //       m_description->SetValue( m_stamp->GetDescription( ) );
     }
 }
 
 void MiscellaneousDataPanel::ShowStamp( )
-{
+{ 
 }
 
 /*
@@ -267,16 +267,16 @@ void MiscellaneousDataPanel::ShowStamp( )
  */
 
 void MiscellaneousDataPanel::OnColnectButtonClick( wxCommandEvent &event )
-{
-    if (wxTheClipboard->Open())
-    {
-        // This data objects are held by the clipboard,
+{ 
+    if ( wxTheClipboard->Open( ) )
+    { 
+        // This data objects are held by the clipboard, 
         // so do not delete them in the app.
         wxString imageName = m_imageName->GetValue( );
-        int pos = imageName.Find(".jpg");
-        imageName = imageName.Mid(0,pos);
+        int pos = imageName.Find( ".jpg" );
+        imageName = imageName.Mid( 0, pos );
         wxTheClipboard->SetData( new wxTextDataObject( imageName ) );
-        wxTheClipboard->Close();
+        wxTheClipboard->Close( );
     }
     wxString link = m_link->GetValue( );
     wxString cmd = wxString::Format( "/usr/bin/firefox --new-tab %s &", link );
@@ -294,7 +294,7 @@ void MiscellaneousDataPanel::OnColnectButtonClick( wxCommandEvent &event )
  */
 
 void MiscellaneousDataPanel::OnMysticButtonClick( wxCommandEvent &event )
-{
+{ 
      // wxEVT_COMMAND_BUTTON_CLICKED event handler for ID_BUTTON in
     //MiscellaneousData.
     // Before editing this code, remove the block markers.
@@ -308,7 +308,7 @@ void MiscellaneousDataPanel::OnMysticButtonClick( wxCommandEvent &event )
  */
 
 void MiscellaneousDataPanel::OnNPMButtonClick( wxCommandEvent &event )
-{
+{ 
      // wxEVT_COMMAND_BUTTON_CLICKED event handler for ID_NPMBUTTON in
     //MiscellaneousData.
     // Before editing this code, remove the block markers.
@@ -322,11 +322,11 @@ void MiscellaneousDataPanel::OnNPMButtonClick( wxCommandEvent &event )
  */
 
 void MiscellaneousDataPanel::OneBayButtonClick( wxCommandEvent &event )
-{
-    //     wxString link = m_link->GetValue();
-    //     wxString cmd = wxString::Format( "/usr/bin/firefox --new-tab %s",
-    //     link); system ( cmd.fn_str() );
-    // "https://www.ebay.com/sch/i.html?_from=R40&_nkw=us+stamps+%s&_sacat=261&LH_TitleDesc=0&_osacat=261&_odkw=us+stamps"
+{ 
+    //     wxString link = m_link->GetValue( );
+    //     wxString cmd = wxString::Format( "/usr/bin/firefox --new-tab %s", 
+    //     link ); system ( cmd.fn_str( ) );
+    // "https://www.ebay.com/sch/i.html?_from = R40&_nkw = us+stamps+%s&_sacat = 261&LH_TitleDesc = 0&_osacat = 261&_odkw = us+stamps"
      // wxEVT_COMMAND_BUTTON_CLICKED event handler for ID_EBAYBUTTON in
     //MiscellaneousData.
     // Before editing this code, remove the block markers.
@@ -336,11 +336,11 @@ void MiscellaneousDataPanel::OneBayButtonClick( wxCommandEvent &event )
 }
 
 void MiscellaneousDataPanel::SetDataEditable( bool val )
-{
-//$    m_score->SetEditable(val);;
- //$   m_accuracy->SetEditable(val);;
-    m_link->SetEditable(val);;
-    m_catCodes->SetEditable(val);;
-    m_imageName->SetEditable(val);;
+{ 
+//$    m_score->SetEditable( val );;
+ //$   m_accuracy->SetEditable( val );;
+    m_link->SetEditable( val );;
+    m_catCodes->SetEditable( val );;
+    m_imageName->SetEditable( val );;
 
 }

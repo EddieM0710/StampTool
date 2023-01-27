@@ -5,20 +5,20 @@
  * @version 0.1
  * @date 2021-03-05
  *
- * @copyright Copyright (c) 2021
+ * @copyright Copyright ( c ) 2021
  * 
- * This file is part of AlbumGenerator.
+ * This file is part of StampTool.
  *
- * AlbumGenerator is free software: you can redistribute it and/or modify it under the 
+ * StampTool is free software: you can redistribute it and/or modify it under the 
  * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
- * AlbumGenerator is distributed in the hope that it will be useful, but WITHOUT ANY 
+ * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY 
  * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License along with 
- * AlbumGenerator. If not, see <https://www.gnu.org/licenses/>.
+ * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
  **************************************************/
 
@@ -30,23 +30,23 @@
 #include "wx/xml/xml.h"
 
 
-namespace Utils {
+namespace Utils { 
 
 class Settings;
 
-    Settings* NewSettingsInstance();
+    Settings* NewSettingsInstance( );
 
     /**
      * @brief Settings for the application
      *
      **************************************************/
     class Settings
-    {
+    { 
     public:
         Settings( );
-        ~Settings( ) {};
+        ~Settings( ) { };
 
-        void InitSettings();
+        void InitSettings( );
 
         wxString GetConfigurationDirectory( ) { return m_configurationDirectory; };
         //wxString GetImageDirectory( ) { return m_imageDirectory; };
@@ -60,12 +60,12 @@ class Settings;
         wxArrayInt* GetSortOrder( ) { return &m_sortOrder; };
         wxString GetUpperDivision( ) { return m_upperDivision; };
         wxString GetUpperPeriod( ) { return m_upperPeriod; };
-        wxString GetCatNbrFontString( ) { return m_catNbrFontString;};
-        wxString GetCatNbrColorString( ) { return  m_catNbrColorString;};
-        wxString GetTitleFontString( ) { return m_titleFontString;};
-        wxString GetTitleColorString( ) { return m_titleColorString;};
-        wxString GetTextFontString( ) { return m_textFontString;};
-        wxString GetTextColorString( ) { return m_textColorString;};
+        wxString GetCatNbrFontString( ) { return m_catNbrFontString; };
+        wxString GetCatNbrColorString( ) { return  m_catNbrColorString; };
+        wxString GetTitleFontString( ) { return m_titleFontString; };
+        wxString GetTitleColorString( ) { return m_titleColorString; };
+        wxString GetTextFontString( ) { return m_textFontString; };
+        wxString GetTextColorString( ) { return m_textColorString; };
 
         void SetConfigurationDirectory( wxString val ) { m_configurationDirectory = val.Trim( ); m_dirty = true; };
         //void SetImageDirectory( wxString val ) { m_imageDirectory = val.Trim( );m_dirty = true; };
@@ -102,22 +102,22 @@ class Settings;
         bool isDirty( ) { return m_dirty; };
         void SetDefaults( );
         wxString GetCatCodePrefix( )
-        {
+        { 
             wxString str = "";
             if ( !m_countryID.IsEmpty( ) && !m_catalogID.IsEmpty( ) )
-            {
+            { 
                 str = m_catalogID + ":" + m_countryID;
             }
             else
-            {
+            { 
                 str = m_defaultCatalogID + ":" + m_defaultCountryID;
             }
             return str;
         };
-        bool IsCatalogVolumeDataEditable(){ return m_catalogVolumeDataEditable; };
-        void SetCatalogVolumeDataEditable( bool val = true ){ m_catalogVolumeDataEditable = val; };
-        bool IsCatalogVolumeDataEditableByDefault(){ return m_catalogVolumeDataEditableDefault; };
-        void SetCatalogVolumeDataEditableDefault( bool val = true ){ m_catalogVolumeDataEditableDefault = val; };
+        bool IsCatalogSectionDataEditable( ){ return m_catalogSectionDataEditable; };
+        void SetCatalogSectionDataEditable( bool val = true ){ m_catalogSectionDataEditable = val; };
+        bool IsCatalogSectionDataEditableByDefault( ){ return m_catalogSectionDataEditableDefault; };
+        void SetCatalogSectionDataEditableDefault( bool val = true ){ m_catalogSectionDataEditableDefault = val; };
     private:
         wxString m_lastFile;
         bool m_loadLastFileAtStartUp;
@@ -139,8 +139,8 @@ class Settings;
         wxString m_textColorString;
         wxArrayString m_recentFiles;
         int m_nbrRecentPreference;
-        bool m_catalogVolumeDataEditable;
-        bool m_catalogVolumeDataEditableDefault;
+        bool m_catalogSectionDataEditable;
+        bool m_catalogSectionDataEditableDefault;
 
         const wxString m_defaultLastFile = "";
         const bool m_defaultloadLastFileAtStartUp = true;

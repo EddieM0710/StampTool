@@ -5,20 +5,20 @@
  * @version 0.1
  * @date 2022-02-04
  *
- * @copyright Copyright (c) 2022
+ * @copyright Copyright ( c ) 2022
  * 
- * This file is part of AlbumGenerator.
+ * This file is part of StampTool.
  *
- * AlbumGenerator is free software: you can redistribute it and/or modify it under the 
+ * StampTool is free software: you can redistribute it and/or modify it under the 
  * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
- * AlbumGenerator is distributed in the hope that it will be useful, but WITHOUT ANY 
+ * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY 
  * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License along with 
- * AlbumGenerator. If not, see <https://www.gnu.org/licenses/>.
+ * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
  **************************************************/
 
@@ -28,7 +28,7 @@
 #include "design/LayoutBase.h" 
 #include "design/DesignDefs.h"
 
-namespace Design {
+namespace Design { 
 
 
     //class Border;
@@ -39,7 +39,7 @@ namespace Design {
      *
      **************************************************/
     class TitlePage : public LayoutBase
-    {
+    { 
     public:
         /**
          * @brief Construct a new Title Page object
@@ -49,14 +49,14 @@ namespace Design {
         TitlePage(  wxXmlNode* node ) : LayoutBase( node ) 
         { 
             SetNodeType( AT_TitlePage ); 
-            SetObjectName( AlbumBaseNames[GetNodeType() ] );
+            SetObjectName( AlbumBaseNames[ GetNodeType( ) ] );
             };
 
         /**
          * @brief Destroy the Title Page object
          *
          **************************************************/
-        ~TitlePage( ) {};
+        ~TitlePage( ) { };
 
         /**
          * @brief Calculate the layout parameters
@@ -74,16 +74,16 @@ namespace Design {
          * @return false
          **************************************************/
         bool UpdateMinimumSize( );
-        //wxXmlNode *Write(wxXmlNode *parent){};
+        //wxXmlNode *Write( wxXmlNode *parent ){ };
 
 
         void UpdateSizes( );
 
-        NodeStatus ValidateNode();
+        NodeStatus ValidateNode( );
 
     private:
         wxXmlNode* Write( wxXmlNode* parent )
-        {
+        { 
             return ( wxXmlNode* )0;
         };
 

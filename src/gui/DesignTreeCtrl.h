@@ -1,24 +1,24 @@
 /**
  * @file gui/DesignTreeCtrl.h
- * @author Eddie Monroe ()
+ * @author Eddie Monroe ( )
  * @brief
  * @version 0.1
  * @date 2021-02-25
  *
- * @copyright Copyright (c) 2021
+ * @copyright Copyright ( c ) 2021
  * 
- * This file is part of AlbumGenerator.
+ * This file is part of StampTool.
  *
- * AlbumGenerator is free software: you can redistribute it and/or modify it under the 
+ * StampTool is free software: you can redistribute it and/or modify it under the 
  * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
- * AlbumGenerator is distributed in the hope that it will be useful, but WITHOUT ANY 
+ * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY 
  * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License along with 
- * AlbumGenerator. If not, see <https://www.gnu.org/licenses/>.
+ * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
  **************************************************/
 
@@ -39,26 +39,26 @@
   *  @brief menu and control ids
   **************************************************/
 enum
-{
-    DesignTree_Quit = wxID_EXIT,
-    DesignTree_About = wxID_ABOUT,
-    DesignTree_AddPage,
-    DesignTree_AddCol,
-    DesignTree_AddRow,
-    DesignTree_AddStamp,
-    DesignTree_AddTitle,
-    DesignTree_DeleteItem,
-    DesignTree_EditDetails,
+{ 
+    DesignTree_Quit = wxID_EXIT, 
+    DesignTree_About = wxID_ABOUT, 
+    DesignTree_AddPage, 
+    DesignTree_AddCol, 
+    DesignTree_AddRow, 
+    DesignTree_AddStamp, 
+    DesignTree_AddTitle, 
+    DesignTree_DeleteItem, 
+    DesignTree_EditDetails, 
 };
 
 class Stamp;
 class Classification;
-namespace Utils { class StampLink;};
+namespace Utils { class StampLink; };
 
 
 /**
  *
- * @todo  fix variable names so that wxXmlNode refs are called elements,
+ * @todo  fix variable names so that wxXmlNode refs are called elements, 
  * stamps, classifications, etc are called nodes;  and Tree item references are called items.
  * @todo  ?? mostly done. watch for needed changes
  *
@@ -70,7 +70,7 @@ namespace Utils { class StampLink;};
   *
   **************************************************/
 class DesignTreeItemData : public wxTreeItemData
-{
+{ 
 public:
     /**
      * @brief DesignTreeItemData Constructor
@@ -79,9 +79,9 @@ public:
      * @param   desc    :
      * @param   ele :
      **************************************************/
-    DesignTreeItemData( Design::AlbumBaseType type, const wxString desc,
-        Design::AlbumBase* ele = 0, Utils::StampLink* stampLink = 0)
-    {
+    DesignTreeItemData( Design::AlbumBaseType type, const wxString desc, 
+        Design::AlbumBase* ele = 0, Utils::StampLink* stampLink = 0 )
+    { 
         m_ok = 12345;
         m_type = type;
         m_desc = desc;
@@ -90,16 +90,16 @@ public:
     }
 
     DesignTreeItemData( DesignTreeItemData &data )
-    {
+    { 
         m_ok = 12345;
         m_type = data.GetType( );
-        m_desc = data.GetDesc();
-        m_element = data.GetNodeElement();
+        m_desc = data.GetDesc( );
+        m_element = data.GetNodeElement( );
         m_stampLink = data.GetStampLink( );
     }
 
-    ~DesignTreeItemData()
-    {
+    ~DesignTreeItemData( )
+    { 
         m_ok = 0;
         m_type = Design::AT_None;
         m_desc = "";
@@ -109,7 +109,7 @@ public:
 
     /**
      *
-     * @return {wxString}   :
+     * @return { wxString| :
      **************************************************/
     wxString const& GetDesc( ) const { return m_desc; };
 
@@ -120,14 +120,14 @@ public:
     void SetNodeElement( Design::AlbumBase* ele ) { m_element = ele; };
 
 
-    bool IsOk()
-    {
-        if (m_ok = 12345 )return true;
+    bool IsOk( )
+    { 
+        if ( m_ok = 12345 )return true;
         return false;
     }
     /**
      *
-     * @return {wxXmlNode*}    :
+     * @return { wxXmlNode*|  :
      **************************************************/
     Design::AlbumBase* GetNodeElement( void ) { return m_element; };
 
@@ -139,7 +139,7 @@ public:
 
     /**
      *
-     * @return {CatalogBaseType}   :
+     * @return { CatalogBaseType| :
      **************************************************/
     Design::AlbumBaseType GetType( ) { return m_type; };
 
@@ -160,9 +160,9 @@ private:
  *
  **************************************************/
 class DesignTreeCtrl : public wxTreeCtrl
-{
+{ 
     //    DECLARE_DYNAMIC_CLASS( DesignTreeCtrl )
-    //    DECLARE_EVENT_TABLE()
+    //    DECLARE_EVENT_TABLE( )
 
 public:
 
@@ -170,7 +170,7 @@ public:
      * @brief Construct a new Stamp Tree Ctrl object
      *
      **************************************************/
-    DesignTreeCtrl( ) {}
+    DesignTreeCtrl( ) { }
 
     /**
      * DesignTreeCtrl Constructor
@@ -181,19 +181,19 @@ public:
      * @param   size      :
      * @param   style       :
      **************************************************/
-    DesignTreeCtrl( wxWindow* parent, const wxWindowID id, const wxPoint& pos,
+    DesignTreeCtrl( wxWindow* parent, const wxWindowID id, const wxPoint& pos, 
         const wxSize& size, long style );
 
     /**
      * ~DesignTreeCtrl
      *
      **************************************************/
-    virtual ~DesignTreeCtrl( void ) {}
+    virtual ~DesignTreeCtrl( void ) { }
 
 
-    void DeleteItem( wxTreeItemId id) ;
+    void DeleteItem( wxTreeItemId id ) ;
     
-    Design::AlbumBase* GetStampNode(wxTreeItemId itemID);
+    Design::AlbumBase* GetStampNode( wxTreeItemId itemID );
 
     /**
      *
@@ -270,7 +270,7 @@ public:
     /**
      *
      * @param   stamp :
-     * @return {IconID}       :
+     * @return { IconID|     :
      **************************************************/
     Design::IconID GetIconId( Design::Stamp* stamp );
 
@@ -283,7 +283,7 @@ public:
 
     /**
      *
-     * @return {int}            :
+     * @return { int|          :
      **************************************************/
     int ImageSize( void ) const { return m_imageSize; };
 
@@ -291,7 +291,7 @@ public:
      *
      * @param   parent :
      * @param   child   :
-     * @return {wxTreeItemId}        :
+     * @return { wxTreeItemId|      :
      **************************************************/
     wxTreeItemId AddStampNodeToTree( wxTreeItemId parent, wxXmlNode* child );
 
@@ -304,13 +304,13 @@ public:
     wxString GetImageFullPath( wxTreeItemId catID );
 
     wxTreeItemId GetPage( wxTreeItemId id );
-    void MakePage(wxTreeItemId id);
+    void MakePage( wxTreeItemId id );
 
     /**
      *
      * @param   parent :
      * @param  child   :
-     * @return {wxTreeItemId}        :
+     * @return { wxTreeItemId|      :
      */
     wxTreeItemId AddChild( wxTreeItemId parent, wxXmlNode* child );
 
@@ -322,33 +322,33 @@ public:
 
     /**
      *
-     * @param   catalogVolumeData :
-     * @return {wxString}              :
+     * @param   catalogSectionData :
+     * @return { wxString|            :
      **************************************************/
-    wxString GetLabel( Design::AlbumBase* catalogVolumeData );
+    wxString GetLabel( Design::AlbumBase* catalogSectionData );
 
     /**
      *
      * @param   parent :
      * @param   node    :
-     * @return {wxTreeItemId}        :
+     * @return { wxTreeItemId|      :
      **************************************************/
     wxTreeItemId AddTreeNode( wxTreeItemId parent, Design::LayoutBase** node );
 
 
                     /**
                      *
-                     * @param   catalogVolumeData :
+                     * @param   catalogSectionData :
                      * @param   parentType :
-                     * @return {wxArrayPtrVoid*}       :
+                     * @return { wxArrayPtrVoid*|     :
                      **************************************************/
-    wxArrayPtrVoid* MakeParentList( Design::LayoutBase* catalogVolumeData,
+    wxArrayPtrVoid* MakeParentList( Design::LayoutBase* catalogSectionData, 
         Catalog::FormatType parentType );
 
     /**
      *
      * @param   node :
-     * @return {wxTreeItemId}     :
+     * @return { wxTreeItemId|   :
      **************************************************/
     wxTreeItemId FindTreeItemID( Design::AlbumBase* node );
 
@@ -356,7 +356,7 @@ public:
      *
      * @param   node :
      * @param   id  :
-     * @return {wxTreeItemId}     :
+     * @return { wxTreeItemId|   :
      **************************************************/
     wxTreeItemId FindTreeItemID( Design::AlbumBase* node, wxTreeItemId id );
 
@@ -364,14 +364,14 @@ public:
      *
      * @param   item :
      * @param   node  :
-     * @return {bool}              :
+     * @return { bool|            :
      **************************************************/
     bool IsElement( wxTreeItemId item, Design::AlbumBase* node );
 
     /**
      *
      * @param   id :
-     * @return {wxTreeItemId}    :
+     * @return { wxTreeItemId|  :
      **************************************************/
     wxTreeItemId FindFirstStampChild( wxTreeItemId id );
 
@@ -383,7 +383,7 @@ public:
      * @param  i2
      * @return int
      **************************************************/
-    virtual int OnCompareItems( const wxTreeItemId& i1,
+    virtual int OnCompareItems( const wxTreeItemId& i1, 
         const wxTreeItemId& i2 ) wxOVERRIDE;
 
     //  AlbumBase* MoveStamp( wxTreeItemId itemSrc, wxTreeItemId itemDst );
@@ -406,9 +406,9 @@ public:
     Utils::StampLink* GetItemStampLink( wxTreeItemId albumID ) ;
     Design::AlbumBaseType GetItemType( wxTreeItemId albumID ) ; 
     wxString MakeItemLabel ( wxTreeItemId id );
-    void CopyItem(wxTreeItemId dstID, wxTreeItemId srcID);
+    void CopyItem( wxTreeItemId dstID, wxTreeItemId srcID );
 
-    void Save();
+    void Save( );
     void SaveNodeData ( wxXmlNode* parent, wxTreeItemId treeItemId );
 
 
@@ -429,10 +429,10 @@ private:
     wxColour m_defaultBackgroundColour;
     wxTreeItemId m_currPageID;
     bool ValidateStatus;
-    // NB: due to an ugly wxMSW hack you _must_ use wxDECLARE_DYNAMIC_CLASS();
-    //     if you want your overloaded OnCompareItems() to be called.
+    // NB: due to an ugly wxMSW hack you _must_ use wxDECLARE_DYNAMIC_CLASS( );
+    //     if you want your overloaded OnCompareItems( ) to be called.
     //     OTOH, if you don't want it you may omit the next line - this will
-    //     make default (alphabetical) sorting much faster under wxMSW.
+    //     make default ( alphabetical ) sorting much faster under wxMSW.
     wxDECLARE_DYNAMIC_CLASS( DesignTreeCtrl );
     wxDECLARE_EVENT_TABLE( );
 

@@ -5,47 +5,55 @@
  * @version 0.1
  * @date 2022-02-08
  *
- * @copyright Copyright (c) 2022
+ * @copyright Copyright ( c ) 2022
  *
- * This file is part of AlbumGenerator.
+ * This file is part of StampTool.
  *
- * AlbumGenerator is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * StampTool is free software: you can redistribute it and/or modify it under the
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
- * AlbumGenerator is distributed in the hope that it will be useful, but WITHOUT ANY
+ * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
  * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License along with
- * AlbumGenerator. If not, see <https://www.gnu.org/licenses/>.
+ * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
  **************************************************/
 #include "odt/Styles.h"
  //#include "DocumentManager.h"
 #include <iostream>
+
+#include <wx/sstream.h>
+
 #include "Defs.h"
 #include "odt/ODTDefs.h"
 #include "odt/Document.h"
 #include "utils/XMLUtilities.h"
 #include "utils/Settings.h"
+
+#include "odt/Template.h"
+
  //***********************************
 
-namespace ODT {
+namespace ODT { 
 
     Styles::Styles( )
-    {
+    { 
         m_styles = new wxXmlDocument( );
-        wxString configDir = GetSettings( )->GetConfigurationDirectory( );
-        wxString stylesTemplate = configDir + "/template/styles.xml";
-        if ( !m_styles->Load( stylesTemplate ) )
-        {
+
+        wxStringInputStream textStream( ODT::StylesTemplate );
+       // wxString configDir = GetSettings( )->GetConfigurationDirectory( );
+       // wxString stylesTemplate = configDir + "/template/styles.xml";
+        if ( !m_styles->Load( textStream ) )
+        { 
             ReportError( "Styles::Styles", "Styles xml failed to load", true );
         }
 
         AddFrameStyles( );
         //     std::cout << "dump Styles input\n";
-        //  dump(m_styles);
+        //  dump( m_styles );
         // std::cout << "***********************************************\n";
 
     }
@@ -53,27 +61,27 @@ namespace ODT {
     //***********************************
 
     bool Styles::Save( )
-    {
+    { 
         wxString str = ODTDoc( )->GetDocFilesDir( ) + "/styles.xml";
         m_styles->Save( str );
 
         //     std::cout << "dump Styles output\n";
-        //  dump(m_styles);
+        //  dump( m_styles );
         // std::cout << "***********************************************\n";
 
         return true;
     }
 
-    bool Styles::AddBorderStyle( wxString filename, wxString& width,
-        wxString& height,
-        wxString& topMargin,
-        wxString& bottomMargin,
-        wxString& rightMargin,
+    bool Styles::AddBorderStyle( wxString filename, wxString& width, 
+        wxString& height, 
+        wxString& topMargin, 
+        wxString& bottomMargin, 
+        wxString& rightMargin, 
         wxString& leftMargin )
-    {
+    { 
         wxXmlNode* layoutProperties = FindAutomaticStylesLayoutProperties( );
         if ( !layoutProperties )
-        {
+        { 
             return false;
         }
 
@@ -90,25 +98,25 @@ namespace ODT {
         Utils::SetAttrStr( backgroundImage, "xlink:type", "simple" );
         Utils::SetAttrStr( backgroundImage, "xlink:actuate", "onLoad" );
         Utils::SetAttrStr( backgroundImage, "style:repeat", "stretch" );
-
+        return true;
     }
 
     //***********************************
 
 
     wxXmlNode* Styles::FindOfficeStylesDrawFillImage( wxString value )
-    {
+    { 
         wxXmlNode* test = m_styles->GetRoot( );
         wxXmlNode* styles = Utils::FirstChildElement( test, "office:styles" );
         if ( !styles )
-        {
+        { 
             ReportError( "Styles::FindOfficeStylesDrawFillImage", "get office:styles failed", true );
             return ( wxXmlNode* )0;
         }
         wxString name( "draw:name" );
         wxXmlNode* drawFillImage = Utils::FindFirstChildWithPropertyofValue( styles, name, value );
         if ( !drawFillImage )
-        {
+        { 
             ReportError( "Styles::FindOfficeStylesDrawFillImage", "get draw:fill-image failed", true );
             return ( wxXmlNode* )0;
         }
@@ -120,17 +128,17 @@ namespace ODT {
 
     // drill down StylesDoc xml to find the layout properties
     wxXmlNode* Styles::FindAutomaticStylesLayoutProperties( )
-    {
+    { 
         // this 
         wxXmlNode* docStyles = m_styles->GetRoot( );
         if ( !docStyles )
-        {
+        { 
             ReportError( "Styles::FindAutomaticStylesLayoutProperties", "get office:document-styles failed", true );
             return ( wxXmlNode* )0;
         }
         wxXmlNode* autoStyles = Utils::FirstChildElement( docStyles, "office:automatic-styles" );
         if ( !autoStyles )
-        {
+        { 
             ReportError( "Styles::FindAutomaticStylesLayoutProperties", "get office:automatic-styles failed", true );
             return ( wxXmlNode* )0;
         }
@@ -138,13 +146,13 @@ namespace ODT {
         wxString value( "Mpm1" );
         wxXmlNode* stylePageLayout = Utils::FindFirstChildWithPropertyofValue( autoStyles, name, value );
         if ( !stylePageLayout )
-        {
+        { 
             ReportError( "Styles::FindAutomaticStylesLayoutProperties", "get stylePageLayout failed", true );
             return ( wxXmlNode* )0;
         }
         wxXmlNode* stylePageLayoutProperties = Utils::FirstChildElement( stylePageLayout, "style:page-layout-properties" );
         if ( !stylePageLayoutProperties )
-        {
+        { 
             ReportError( "Styles::FindAutomaticStylesLayoutProperties", "get stylePageLayoutPropertiess failed", true );
             return ( wxXmlNode* )0;
         }
@@ -154,17 +162,17 @@ namespace ODT {
 
     // drill down StylesDoc xml to find the office:styles
     wxXmlNode* Styles::FindOfficeStyles( )
-    {
+    { 
         // this 
         wxXmlNode* docStyles = m_styles->GetRoot( );
         if ( !docStyles )
-        {
+        { 
             ReportError( "Styles::FindOfficeStyles", "get office:document-styles failed", true );
             return ( wxXmlNode* )0;
         }
         wxXmlNode* officeStyles = Utils::FirstChildElement( docStyles, "office:styles" );
         if ( !officeStyles )
-        {
+        { 
             ReportError( "Styles::FindOfficeStyles", "get office:styles failed", true );
             return ( wxXmlNode* )0;
         }
@@ -173,11 +181,11 @@ namespace ODT {
     }
 
     bool Styles::AddFrameStyles( )
-    {
+    { 
 
         wxXmlNode* officeStyles = FindOfficeStyles( );
         if ( !officeStyles )
-        {
+        { 
             return false;
         }
 
@@ -228,10 +236,10 @@ namespace ODT {
         return true;
     }
     wxString Styles::AddBackgroundImage( wxString link )
-    {
+    { 
 
         wxFileName inputImage( link );
-        wxString str = inputImage.GetFullName();
+        wxString str = inputImage.GetFullName( );
         wxString drawName = inputImage.GetName( );
         wxFileName picImage( "Pictures", str );
         wxString  destFullPath = ODT::ODTDoc( )->GetPicturesDir( ) + str;
@@ -241,13 +249,13 @@ namespace ODT {
         return drawName;
     }
 
-    // AddDrawFillImage( "box2", "Pictures/box2.jpg", "simple", "embed", "onLoad");
+    // AddDrawFillImage( "box2", "Pictures/box2.jpg", "simple", "embed", "onLoad" );
     bool Styles::AddDrawFillImage( wxString drawName, wxString xlinkHref, wxString xlinkType, wxString xlinkShow, wxString xlinkActuate )
-    {
+    { 
 
         wxXmlNode* officeStyles = FindOfficeStyles( );
         if ( !officeStyles )
-        {
+        { 
             return false;
         }
 

@@ -5,20 +5,20 @@
  * @version 0.1
  * @date 2022-02-04
  *
- * @copyright Copyright (c) 2022
+ * @copyright Copyright ( c ) 2022
  * 
- * This file is part of AlbumGenerator.
+ * This file is part of StampTool.
  *
- * AlbumGenerator is free software: you can redistribute it and/or modify it under the 
+ * StampTool is free software: you can redistribute it and/or modify it under the 
  * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
- * AlbumGenerator is distributed in the hope that it will be useful, but WITHOUT ANY 
+ * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY 
  * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License along with 
- * AlbumGenerator. If not, see <https://www.gnu.org/licenses/>.
+ * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
  **************************************************/
 
@@ -27,14 +27,14 @@
 
 #include "design/LayoutBase.h"
 
-namespace Design {
+namespace Design { 
 
     /**
      * @brief Row layout object; Inherits from LayoutBase.  The Row can contain Column or Stamp objects.
      *
      **************************************************/
     class Row : public LayoutBase
-    {
+    { 
     public:
         /**
          * @brief Construct a new Row object
@@ -44,16 +44,16 @@ namespace Design {
         Row(  wxXmlNode* node ) : LayoutBase( node )
         { 
             SetNodeType( AT_Row ); 
-            SetObjectName( AlbumBaseNames[ GetNodeType() ] );
-            SetShowFrame(false);
-            SetShowTitle(false);
+            SetObjectName( AlbumBaseNames[ GetNodeType( ) ] );
+            SetShowFrame( false );
+            SetShowTitle( false );
         };
 
         /**
          * @brief Destroy the Row object
          *
          **************************************************/
-        ~Row( ) {};
+        ~Row( ) { };
 
         /**
          * @brief Calculate the row layout based on child parameters
@@ -84,7 +84,7 @@ namespace Design {
          **************************************************/
         wxXmlNode* Write( wxXmlNode* parent );
 
-        NodeStatus ValidateNode();
+        NodeStatus ValidateNode( );
 
         /* 
          * @brief draw object on screen
@@ -97,9 +97,10 @@ namespace Design {
         void Save( wxXmlNode* xmlNode );
 
         // returns the index into FontList
-        int GetTitleFont()
-        {
-//            if ( getch)
+        int GetTitleFont( )
+        { 
+//            if ( getch )
+            return 0;
         }
         void ReportLayout(  );
 

@@ -5,18 +5,18 @@
  * @version 0.1
  * @date 2022-08-01
  * 
- * This file is part of AlbumGenerator.
+ * This file is part of StampTool.
  * 
- * AlbumGenerator is free software: you can redistribute it and/or modify it under the
+ * StampTool is free software: you can redistribute it and/or modify it under the
  * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  * 
- * AlbumGenerator is distributed in the hope that it will be useful, but WITHOUT ANY 
+ * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY 
  * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License along with 
- * AlbumGenerator. If not, see <https://www.gnu.org/licenses/>.
+ * StampTool. If not, see <https://www.gnu.org/licenses/>.
  * 
  */
 #ifndef ODTDefs_h
@@ -24,7 +24,7 @@
 #include <wx/xml/xml.h>
 #include "Defs.h"
 
-namespace ODT {
+namespace ODT { 
 
     class Document;
     class Content;
@@ -51,26 +51,26 @@ namespace ODT {
     extern  wxString TextAnchorPage;
 
 typedef struct
-{
+{ 
     wxString ext;
     wxString type;
 } MimeTypeDef;
 
 enum MimeTypes
-{
-    MT_Gif = 0,
-    MT_Jpeg,
-    MT_Jpg,
-    MT_Png,
-    MT_Svg,
-    MT_Tif,
-    MT_Tiff,
-    MT_Ico,
-    MT_Webp,
-    NbrMimeTypes,
+{ 
+    MT_Gif = 0, 
+    MT_Jpeg, 
+    MT_Jpg, 
+    MT_Png, 
+    MT_Svg, 
+    MT_Tif, 
+    MT_Tiff, 
+    MT_Ico, 
+    MT_Webp, 
+    NbrMimeTypes, 
 };
 
-extern MimeTypeDef mimeTypes[NbrMimeTypes];
+extern MimeTypeDef mimeTypes[ NbrMimeTypes ];
 
 wxString GetMimeType( const wxString& str );
 
@@ -85,7 +85,7 @@ wxString GetMimeType( const wxString& str );
     Styles* StylesDoc( );
     Manifest* ManifestDoc( );
     Meta* MetaDoc( );
-    Document* ODTDoc();
+    Document* ODTDoc( );
     void SetODTDocument( Document* doc );
 }
 #endif

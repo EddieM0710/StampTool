@@ -5,20 +5,20 @@
  * @version 0.1
  * @date 2022-02-04
  *
- * @copyright Copyright (c) 2022
+ * @copyright Copyright ( c ) 2022
  * 
- * This file is part of AlbumGenerator.
+ * This file is part of StampTool.
  *
- * AlbumGenerator is free software: you can redistribute it and/or modify it under the 
+ * StampTool is free software: you can redistribute it and/or modify it under the 
  * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
- * AlbumGenerator is distributed in the hope that it will be useful, but WITHOUT ANY 
+ * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY 
  * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License along with 
- * AlbumGenerator. If not, see <https://www.gnu.org/licenses/>.
+ * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
  **************************************************/
 
@@ -27,10 +27,10 @@
 #include "design/Frame.h"
 #include "gui/GuiUtils.h"
 
-namespace Design {
+namespace Design { 
 
     Frame::Frame( )
-    {
+    { 
         m_xPos = 0;
         m_yPos = 0;
         m_width = 0;
@@ -38,7 +38,7 @@ namespace Design {
         m_minWidth = 0;
         m_minHeight = 0;
     };
-    Frame::~Frame( ) {};
+    Frame::~Frame( ) { };
 
     double Frame::GetXPos( ) { return m_xPos; };
     void Frame::SetXPos( double val ) { m_xPos = val; };
@@ -61,35 +61,35 @@ namespace Design {
      * @param y position in MM
      */
     void Frame::draw( wxDC& dc, double x, double y )
-    {
+    { 
         DrawRectangle( dc, x + GetXPos( ), y + GetYPos( ), GetWidth( ), GetHeight( ) );
     };
 
     wxString Frame::ReportLayout( wxString indent )
     { 
-        wxString str = wxString::Format( "%sFrame  xPos:%7.2f  yPos:%7.2f     width:%7.2f  height:%7.2f\n",
-        indent, GetXPos( ), GetYPos( ),  GetWidth( ), GetHeight( ));
+        wxString str = wxString::Format( "%sFrame  xPos:%7.2f  yPos:%7.2f     width:%7.2f  height:%7.2f\n", 
+        indent, GetXPos( ), GetYPos( ),  GetWidth( ), GetHeight( ) );
         std::cout << str;
         return str ;
     }
 
     void Frame::WriteLayout( wxString str )
-    {
-        // std::cout << str << " Pos("
+    { 
+        // std::cout << str << " Pos( "
         //     << GetXPos( ) << ", " << GetYPos( )
-        //     << ") , Size(" << GetWidth( ) << ", " << GetHeight( )
-        //     << "), MinSize(" << GetMinWidth( ) << "," << GetMinHeight( ) << ")\n";
+        //     << " ) , Size( " << GetWidth( ) << ", " << GetHeight( )
+        //     << " ), MinSize( " << GetMinWidth( ) << ", " << GetMinHeight( ) << " )\n";
  
-        if ((GetXPos()< 0)||(GetYPos()< 0))
-        {
+        if ( ( GetXPos( )< 0 ) || ( GetYPos( )< 0 ) )
+        { 
             std::cout << "invalid position\n";
         }
-        if ((GetWidth()< 0)||(GetHeight()< 0))
-        {
+        if ( ( GetWidth( )< 0 ) || ( GetHeight( )< 0 ) )
+        { 
             std::cout << "invalid Size\n";
         }
-        if ((GetMinHeight()< 0)||(GetMinWidth()< 0))
-        {
+        if ( ( GetMinHeight( )< 0 ) || ( GetMinWidth( )< 0 ) )
+        { 
             std::cout << "invalid Height/width\n";
         }
     };

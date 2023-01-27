@@ -5,20 +5,20 @@
  * @version 0.1
  * @date 2022-04-29
  *
- * @copyright Copyright (c) 2022
+ * @copyright Copyright ( c ) 2022
  *
- * This file is part of AlbumGenerator.
+ * This file is part of StampTool.
  *
- * AlbumGenerator is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * StampTool is free software: you can redistribute it and/or modify it under the
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
- * AlbumGenerator is distributed in the hope that it will be useful, but WITHOUT ANY
+ * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
  * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License along with
- * AlbumGenerator. If not, see <https://www.gnu.org/licenses/>.
+ * StampTool. If not, see <https://www.gnu.org/licenses/>.
  */
 
  // For compilers that support precompilation, includes "wx/wx.h".
@@ -66,12 +66,12 @@ IMPLEMENT_DYNAMIC_CLASS( RowDetailsDialog, wxDialog )
  */
 
 RowDetailsDialog::RowDetailsDialog( )
-{
+{ 
     Init( );
 }
 
 RowDetailsDialog::RowDetailsDialog( wxWindow* parent, wxWindowID id, const wxString& caption, const wxPoint& pos, const wxSize& size, long style )
-{
+{ 
     Init( );
     Create( parent, id, caption, pos, size, style );
 }
@@ -82,14 +82,14 @@ RowDetailsDialog::RowDetailsDialog( wxWindow* parent, wxWindowID id, const wxStr
  */
 
 bool RowDetailsDialog::Create( wxWindow* parent, wxWindowID id, const wxString& caption, const wxPoint& pos, const wxSize& size, long style )
-{
+{ 
     // RowDetailsDialog creation
     SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY | wxWS_EX_BLOCK_EVENTS );
     wxDialog::Create( parent, id, caption, pos, size, style );
 
     CreateControls( );
     if ( GetSizer( ) )
-    {
+    { 
         GetSizer( )->SetSizeHints( this );
     }
     Centre( );
@@ -103,7 +103,7 @@ bool RowDetailsDialog::Create( wxWindow* parent, wxWindowID id, const wxString& 
  */
 
 RowDetailsDialog::~RowDetailsDialog( )
-{
+{ 
     // RowDetailsDialog destruction
     // RowDetailsDialog destruction
 }
@@ -114,7 +114,7 @@ RowDetailsDialog::~RowDetailsDialog( )
  */
 
 void RowDetailsDialog::Init( )
-{
+{ 
     // RowDetailsDialog member initialisation
     m_name = NULL;
     m_titleCheckbox = NULL;
@@ -129,7 +129,7 @@ void RowDetailsDialog::Init( )
  */
 
 void RowDetailsDialog::CreateControls( )
-{
+{ 
     // RowDetailsDialog content construction
 
     RowDetailsDialog* theDialog = this;
@@ -164,13 +164,13 @@ void RowDetailsDialog::CreateControls( )
     wxStaticText* TitleFontStatic = new wxStaticText( theDialog, wxID_STATIC, _( "Title Font" ), wxDefaultPosition, wxDefaultSize, 0 );
     SecondRowHorizontalSizer->Add( TitleFontStatic, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
-    m_titleFontPicker = new wxFontPickerCtrl( theDialog, 12345,
-        *wxNORMAL_FONT, wxDefaultPosition,
+    m_titleFontPicker = new wxFontPickerCtrl( theDialog, 12345, 
+        *wxNORMAL_FONT, wxDefaultPosition, 
         wxDefaultSize, wxFNTP_DEFAULT_STYLE );
     SecondRowHorizontalSizer->Add( m_titleFontPicker, 5, wxGROW | wxALL, 5 );
 
-    m_titleColorPicker = new wxColourPickerCtrl( theDialog, 12346,
-        *wxBLACK, wxDefaultPosition,
+    m_titleColorPicker = new wxColourPickerCtrl( theDialog, 12346, 
+        *wxBLACK, wxDefaultPosition, 
         wxDefaultSize, wxCLRP_DEFAULT_STYLE );
     SecondRowHorizontalSizer->Add( m_titleColorPicker, 1, wxGROW | wxALL, 5 );
 
@@ -206,7 +206,7 @@ void RowDetailsDialog::CreateControls( )
  */
 
 bool RowDetailsDialog::ShowToolTips( )
-{
+{ 
     return true;
 }
 
@@ -215,7 +215,7 @@ bool RowDetailsDialog::ShowToolTips( )
  */
 
 wxBitmap RowDetailsDialog::GetBitmapResource( const wxString& name )
-{
+{ 
     // Bitmap retrieval
 // RowDetailsDialog bitmap retrieval
     wxUnusedVar( name );
@@ -228,7 +228,7 @@ wxBitmap RowDetailsDialog::GetBitmapResource( const wxString& name )
  */
 
 wxIcon RowDetailsDialog::GetIconResource( const wxString& name )
-{
+{ 
     // Icon retrieval
 // RowDetailsDialog icon retrieval
     wxUnusedVar( name );
@@ -242,7 +242,7 @@ wxIcon RowDetailsDialog::GetIconResource( const wxString& name )
  */
 
 void RowDetailsDialog::OnOkClick( wxCommandEvent& event )
-{
+{ 
     // wxEVT_COMMAND_BUTTON_CLICKED event handler for wxID_OK in RowDetailsDialog.
         // Before editing this code, remove the block markers.
     event.Skip( );

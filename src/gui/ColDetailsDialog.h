@@ -5,20 +5,20 @@
  * @version 0.1
  * @date 2022-03-29
  *
- * @copyright Copyright (c) 2022
+ * @copyright Copyright ( c ) 2022
  *
- * This file is part of AlbumGenerator.
+ * This file is part of StampTool.
  *
- * AlbumGenerator is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * StampTool is free software: you can redistribute it and/or modify it under the
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
- * AlbumGenerator is distributed in the hope that it will be useful, but WITHOUT ANY
+ * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
  * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License along with
- * AlbumGenerator. If not, see <https://www.gnu.org/licenses/>.
+ * StampTool. If not, see <https://www.gnu.org/licenses/>.
  */
 
 #ifndef _COLDETAILSDIALOG_H_
@@ -60,10 +60,10 @@ class wxListCtrl;
 #define ID_COLDEFAULTFONTBUTTON 10022
 #define ID_COLLAYOUTPANEL 10023
 #define ID_COLLAYOUTTEXTCTRL 10024
-#define SYMBOL_COLDETAILSDIALOG_STYLE wxCAPTION|wxRESIZE_BORDER|wxSYSTEM_MENU|wxCLOSE_BOX|wxTAB_TRAVERSAL
-#define SYMBOL_COLDETAILSDIALOG_TITLE _("Col Details Dialog")
+#define SYMBOL_COLDETAILSDIALOG_STYLE wxCAPTION | wxRESIZE_BORDER | wxSYSTEM_MENU | wxCLOSE_BOX | wxTAB_TRAVERSAL
+#define SYMBOL_COLDETAILSDIALOG_TITLE _( "Col Details Dialog" )
 #define SYMBOL_COLDETAILSDIALOG_IDNAME ID_COLDETAILSDIALOG
-#define SYMBOL_COLDETAILSDIALOG_SIZE wxSize(400, 300)
+#define SYMBOL_COLDETAILSDIALOG_SIZE wxSize( 400, 300 )
 #define SYMBOL_COLDETAILSDIALOG_POSITION wxDefaultPosition
 // control identifiers
 
@@ -73,7 +73,7 @@ class wxListCtrl;
  */
 
 class ColDetailsDialog: public wxDialog
-{
+{ 
     DECLARE_DYNAMIC_CLASS( ColDetailsDialog )
         DECLARE_EVENT_TABLE( )
 

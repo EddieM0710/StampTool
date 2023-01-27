@@ -1,24 +1,24 @@
 /**
  * @file InventoryPanel.cpp
- * @author Eddie Monroe ()
+ * @author Eddie Monroe ( )
  * @brief
  * @version 0.1
  * @date 2021-02-25
  *
- * @copyright Copyright (c) 2021
+ * @copyright Copyright ( c ) 2021
  * 
- * This file is part of AlbumGenerator.
+ * This file is part of StampTool.
  *
- * AlbumGenerator is free software: you can redistribute it and/or modify it under the 
+ * StampTool is free software: you can redistribute it and/or modify it under the 
  * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
- * AlbumGenerator is distributed in the hope that it will be useful, but WITHOUT ANY 
+ * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY 
  * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License along with 
- * AlbumGenerator. If not, see <https://www.gnu.org/licenses/>.
+ * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
  **************************************************/
 
@@ -77,10 +77,10 @@ InventoryPanel::InventoryPanel( ) { Init( ); }
  *
  **************************************************/
 
-InventoryPanel::InventoryPanel( wxWindow* parent, wxWindowID id,
-    const wxPoint& pos, const wxSize& size,
+InventoryPanel::InventoryPanel( wxWindow* parent, wxWindowID id, 
+    const wxPoint& pos, const wxSize& size, 
     long style )
-{
+{ 
     Init( );
     Create( parent, id, pos, size, style );
 }
@@ -91,9 +91,9 @@ InventoryPanel::InventoryPanel( wxWindow* parent, wxWindowID id,
  *
  **************************************************/
 
-bool InventoryPanel::Create( wxWindow* parent, wxWindowID id, const wxPoint& pos,
+bool InventoryPanel::Create( wxWindow* parent, wxWindowID id, const wxPoint& pos, 
     const wxSize& size, long style )
-{
+{ 
     // InventoryPanel creation
     SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
     wxPanel::Create( parent, id, pos, size, style );
@@ -111,7 +111,7 @@ bool InventoryPanel::Create( wxWindow* parent, wxWindowID id, const wxPoint& pos
  **************************************************/
 
 InventoryPanel::~InventoryPanel( )
-{
+{ 
 
 }
 
@@ -122,7 +122,7 @@ InventoryPanel::~InventoryPanel( )
  **************************************************/
 
 void InventoryPanel::Init( )
-{
+{ 
     // InventoryPanel member initialisation
     m_grid = NULL;
     // InventoryPanel member initialisation
@@ -135,7 +135,7 @@ void InventoryPanel::Init( )
  **************************************************/
 
 void InventoryPanel::CreateControls( )
-{
+{ 
     // InventoryPanel content construction
 
     InventoryPanel* itemPanel1 = this;
@@ -146,7 +146,7 @@ void InventoryPanel::CreateControls( )
     wxBoxSizer* itemBoxSizer2 = new wxBoxSizer( wxVERTICAL );
     itemBoxSizer1->Add( itemBoxSizer2, 1, wxGROW | wxALL, 5 );
 
-    m_grid = new wxGrid( itemPanel1, ID_INVENTORYGRID, wxDefaultPosition, wxSize( 200, 150 ),
+    m_grid = new wxGrid( itemPanel1, ID_INVENTORYGRID, wxDefaultPosition, wxSize( 200, 150 ), 
         wxHSCROLL | wxVSCROLL );
     m_grid->SetDefaultColSize( 100 );
     m_grid->SetDefaultRowSize( 25 );
@@ -156,32 +156,32 @@ void InventoryPanel::CreateControls( )
     itemBoxSizer2->Add( m_grid, 1, wxGROW | wxALL, 5 );
 
     // Connect events and objects
-    //    m_grid->Connect(ID_INVENTORYGRID, wxEVT_CONTEXT_MENU,
-    //    wxContextMenuEventHandler(InventoryPanel::OnContextMenu), NULL, this);
+    //    m_grid->Connect( ID_INVENTORYGRID, wxEVT_CONTEXT_MENU, 
+    //    wxContextMenuEventHandler( InventoryPanel::OnContextMenu ), NULL, this );
     // InventoryPanel content construction
     for ( int i = 0; i < Catalog::IDT_NbrTypes; i++ )
-    {
+    { 
         m_grid->SetColLabelValue( i, Catalog::ItemDataNames[ i ] );
     }
-    wxString choices[ 5 ] = { wxT( "Mint" ), wxT( "MNH" ), wxT( "Unused" ), wxT( "Used" ),
+    wxString choices[ 5 ] = { wxT( "Mint" ), wxT( "MNH" ), wxT( "Unused" ), wxT( "Used" ), 
                            wxT( "OG" ) }; // Make table strings
     wxGridCellAttr* attr = new wxGridCellAttr( );
     attr->SetEditor( new wxGridCellChoiceEditor( 5, choices, true ) );
     m_grid->SetColAttr( Catalog::IDT_Type, attr );
 
-    wxString choices2[ 5 ] = { wxT( "VF" ), wxT( "F" ), wxT( "VG" ), wxT( "G" ),
+    wxString choices2[ 5 ] = { wxT( "VF" ), wxT( "F" ), wxT( "VG" ), wxT( "G" ), 
                             wxT( "P" ) }; // Make table strings
     attr = new wxGridCellAttr( );
     attr->SetEditor( new wxGridCellChoiceEditor( 5, choices2, true ) );
     m_grid->SetColAttr( Catalog::IDT_Condition, attr );
 
-    wxString choices3[ 3 ] = { wxT( "Album" ), wxT( "Stock Book" ),
+    wxString choices3[ 3 ] = { wxT( "Album" ), wxT( "Stock Book" ), 
                             wxT( "File Box" ) }; // Make table strings
     attr = new wxGridCellAttr( );
     attr->SetEditor( new wxGridCellChoiceEditor( 3, choices3, true ) );
     m_grid->SetColAttr( Catalog::IDT_Location, attr );
 
-    SetDataEditable( GetSettings( )->IsCatalogVolumeDataEditable( ) );
+    SetDataEditable( GetSettings( )->IsCatalogSectionDataEditable( ) );
 
     m_grid->Refresh( );
 
@@ -194,11 +194,11 @@ void InventoryPanel::CreateControls( )
  **************************************************/
 
 void InventoryPanel::InitRow( int row )
-{
+{ 
     wxXmlNode* ele = m_specimenList[ row ];
     Catalog::Specimen specimen( ele );
     for ( int i = 0; i < Catalog::IDT_NbrTypes; i++ )
-    {
+    { 
         specimen.SetAttr( ( Catalog::ItemDataTypes )i, "" );
         m_grid->SetCellValue( row, i, "" );
     }
@@ -210,9 +210,9 @@ void InventoryPanel::InitRow( int row )
  **************************************************/
 
 int InventoryPanel::AddRow( )
-{
+{ 
     if ( m_stamp )
-    {
+    { 
         int cnt = m_grid->GetNumberRows( );
         m_grid->InsertRows( cnt, 1 );
 
@@ -230,11 +230,11 @@ int InventoryPanel::AddRow( )
  **************************************************/
 
 void InventoryPanel::ShowRow( int row )
-{
+{ 
     wxXmlNode* ele = m_specimenList[ row ];
     Catalog::Specimen specimen( ele );
     for ( int i = 0; i < Catalog::IDT_NbrTypes; i++ )
-    {
+    { 
         wxString str = specimen.GetAttr( ( Catalog::ItemDataTypes )i );
         m_grid->SetCellValue( row, i, str );
     }
@@ -247,7 +247,7 @@ void InventoryPanel::ShowRow( int row )
  **************************************************/
 
 bool InventoryPanel::ShowToolTips( )
-{
+{ 
     return true;
 }
 
@@ -258,7 +258,7 @@ bool InventoryPanel::ShowToolTips( )
  **************************************************/
 
 wxBitmap InventoryPanel::GetBitmapResource( const wxString& name )
-{
+{ 
     // Bitmap retrieval
     // InventoryPanel bitmap retrieval
     wxUnusedVar( name );
@@ -273,7 +273,7 @@ wxBitmap InventoryPanel::GetBitmapResource( const wxString& name )
  **************************************************/
 
 wxIcon InventoryPanel::GetIconResource( const wxString& name )
-{
+{ 
     // Icon retrieval
     // InventoryPanel icon retrieval
     wxUnusedVar( name );
@@ -288,7 +288,7 @@ wxIcon InventoryPanel::GetIconResource( const wxString& name )
  **************************************************/
 
 void InventoryPanel::SetStamp( Catalog::Entry* stamp )
-{
+{ 
     m_stamp = stamp;
     ShowStamp( );
 }
@@ -299,7 +299,7 @@ void InventoryPanel::SetStamp( Catalog::Entry* stamp )
  **************************************************/
 
 void InventoryPanel::ShowStamp( )
-{
+{ 
     int cnt = m_grid->GetNumberRows( );
     m_grid->ClearGrid( );
     if ( cnt > 0 )
@@ -309,17 +309,17 @@ void InventoryPanel::ShowStamp( )
     int size = m_specimenList.size( );
     int row = 0;
     if ( m_stamp && m_stamp->IsOK( ) )
-    {
+    { 
         if ( m_stamp->HasChildSpecimen( ) )
-        {
+        { 
             wxXmlNode* ele = m_stamp->GetFirstChildSpecimen( );
             while ( ele )
-            {
+            { 
                 AddRow( );
                 m_specimenList.push_back( ele );
                 Catalog::Specimen specimen( ele );
                 for ( int i = 0; i < Catalog::IDT_NbrTypes; i++ )
-                {
+                { 
                     wxString str = specimen.GetAttr( ( Catalog::ItemDataTypes )i );
                     m_grid->SetCellValue( row, i, str );
                 }
@@ -335,20 +335,20 @@ void InventoryPanel::ShowStamp( )
  **************************************************/
 
 void InventoryPanel::OnContextMenu( wxContextMenuEvent& event )
-{
+{ 
 
-    if ( GetSettings( )->IsCatalogVolumeDataEditable( ) )
-    {
+    if ( GetSettings( )->IsCatalogSectionDataEditable( ) )
+    { 
         wxPoint point = event.GetPosition( );
         // If from keyboard
         if ( ( point.x == -1 ) && ( point.y == -1 ) )
-        {
+        { 
             wxSize size = GetSize( );
             point.x = size.x / 2;
             point.y = size.y / 2;
         }
         else
-        {
+        { 
             point = ScreenToClient( point );
         }
         wxMenu menu;
@@ -371,7 +371,7 @@ void InventoryPanel::OnContextMenu( wxContextMenuEvent& event )
  **************************************************/
 
 void InventoryPanel::OnCellChanged( wxGridEvent& event )
-{
+{ 
     int col = event.GetCol( );
     int row = event.GetRow( );
     wxString str = m_grid->GetCellValue( row, col );
@@ -394,23 +394,23 @@ void InventoryPanel::OnCellChanged( wxGridEvent& event )
  **************************************************/
 
 void InventoryPanel::OnContextPopup( wxCommandEvent& event )
-{
+{ 
     int id = event.GetId( );
     switch ( id )
-    {
+    { 
     case wxIDAddItem:
-    {
+    { 
         AddRow( );
         break;
     }
     case wxIDDeleteItem:
-    {
+    { 
         break;
     }
     }
 }
 
 void InventoryPanel::SetDataEditable( bool val )
-{
+{ 
     m_grid->EnableEditing( val );
 }

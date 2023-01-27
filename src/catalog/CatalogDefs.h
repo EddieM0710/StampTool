@@ -1,24 +1,24 @@
 /**
  * @file CatalogDefs.h
- * @author Eddie Monroe ()
+ * @author Eddie Monroe ( )
  * @brief Resting place for Global stuff
  * @version 0.1
  * @date 2021-02-24
  *
- * @copyright Copyright (c) 2021
+ * @copyright Copyright ( c ) 2021
  * 
- * This file is part of AlbumGenerator.
+ * This file is part of StampTool.
  *
- * AlbumGenerator is free software: you can redistribute it and/or modify it under the 
+ * StampTool is free software: you can redistribute it and/or modify it under the 
  * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
- * AlbumGenerator is distributed in the hope that it will be useful, but WITHOUT ANY 
+ * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY 
  * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License along with 
- * AlbumGenerator. If not, see <https://www.gnu.org/licenses/>.
+ * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
  **************************************************/
 
@@ -31,28 +31,28 @@
 
 class wxXmlNode;
 
-namespace Catalog {
+namespace Catalog { 
 
-    class CatalogVolumeData;
+    class CatalogSectionData;
 
     // /**
     //  * @brief Get the Entry Data object
     //  *
-    //  * @return CatalogVolumeData* InitCatalogDefs
+    //  * @return CatalogSectionData* InitCatalogDefs
     //  * @brief Set the Entry Data object
     //  *
-    //  * @param  catalogVolumeData
-    //  * @return CatalogVolumeData*
+    //  * @param  catalogSectionData
+    //  * @return CatalogSectionData*
     //  **************************************************/
-    // void SetCatalogVolumeData( CatalogVolumeData* catalogVolumeData );
+    // void SetCatalogSectionData( CatalogSectionData* catalogSectionData );
 
 
     // /**
-    //  * @brief Create a new CatalogVolumeData file
+    //  * @brief Create a new CatalogSectionData file
     //  *
-    //  * @return CatalogVolumeData*
+    //  * @return CatalogSectionData*
     //  **************************************************/
-    // CatalogVolumeData* NewCatalogVolumeData( void );
+    // CatalogSectionData* NewCatalogSectionData( void );
 
 
     /**
@@ -62,19 +62,19 @@ namespace Catalog {
      *
      **************************************************/
     typedef enum
-    {
-        NT_Catalog = 0,
-        NT_Country,
-        NT_Period,
-        NT_Decade,
-        NT_Year,
-        NT_Emission,
-        NT_Status,
-        NT_Condition,
-        NT_Entry,
-        NT_Specimen,
-        NT_CatalogCode,
-        NT_None,
+    { 
+        NT_Catalog = 0, 
+        NT_Country, 
+        NT_Period, 
+        NT_Decade, 
+        NT_Year, 
+        NT_Emission, 
+        NT_Status, 
+        NT_Condition, 
+        NT_Entry, 
+        NT_Specimen, 
+        NT_CatalogCode, 
+        NT_None, 
         NT_NbrTypes
     } CatalogBaseType;
 
@@ -82,13 +82,13 @@ namespace Catalog {
      * @enum PeriodType
      *
      *  @brief Enum defining periods --
-     *  PT_Antique, PT_Classical, PT_Modern,
+     *  PT_Antique, PT_Classical, PT_Modern, 
      **************************************************/
     typedef enum
-    {
-        PT_Antique,
-        PT_Classical,
-        PT_Modern,
+    { 
+        PT_Antique, 
+        PT_Classical, 
+        PT_Modern, 
         PT_NbrTypes
     } PeriodType;
 
@@ -98,36 +98,36 @@ namespace Catalog {
      *
      **************************************************/
     typedef enum
-    {
-        DT_ID_Nbr = 0,
-        DT_Name,
-        DT_Country,
-        DT_Series,
-        DT_Catalog_Codes,
-        DT_Issued_on,
-        DT_Expiry_date,
-        DT_Width,
-        DT_Height,
-        DT_Paper,
-        DT_Watermark,
-        DT_Emission,
-        DT_Format,
-        DT_Perforation,
-        DT_Printing,
-        DT_Gum,
-        DT_Currency,
-        DT_FaceValue,
-        DT_Print_run,
-        DT_Variant,
-        DT_Score,
-        DT_Accuracy,
-        DT_Colors,
-        DT_Themes,
-        DT_Description,
-        DT_Link,
-        DT_CheckedStatus,
-        DT_InventoryStatus,
-        DT_BackGround,
+    { 
+        DT_ID_Nbr = 0, 
+        DT_Name, 
+        DT_Country, 
+        DT_Series, 
+        DT_Catalog_Codes, 
+        DT_Issued_on, 
+        DT_Expiry_date, 
+        DT_Width, 
+        DT_Height, 
+        DT_Paper, 
+        DT_Watermark, 
+        DT_Emission, 
+        DT_Format, 
+        DT_Perforation, 
+        DT_Printing, 
+        DT_Gum, 
+        DT_Currency, 
+        DT_FaceValue, 
+        DT_Print_run, 
+        DT_Variant, 
+        DT_Score, 
+        DT_Accuracy, 
+        DT_Colors, 
+        DT_Themes, 
+        DT_Description, 
+        DT_Link, 
+        DT_CheckedStatus, 
+        DT_InventoryStatus, 
+        DT_BackGround, 
         DT_NbrTypes
     } DataTypes;
 
@@ -139,10 +139,10 @@ namespace Catalog {
      *
      **************************************************/
     typedef enum
-    {
-        CT_Title = 0,
-        CT_PreferredCatalog,
-        CT_ImageDirectory,
+    { 
+        CT_Title = 0, 
+        CT_PreferredCatalog, 
+        CT_ImageDirectory, 
         CT_NbrTypes
     } ClassificationTypes;
 
@@ -154,12 +154,12 @@ namespace Catalog {
      *
      **************************************************/
     typedef enum
-    {
-        IDT_Type,
-        IDT_Condition,
-        IDT_Value,
-        IDT_Location,
-        IDT_Remarks,
+    { 
+        IDT_Type, 
+        IDT_Condition, 
+        IDT_Value, 
+        IDT_Location, 
+        IDT_Remarks, 
         IDT_NbrTypes
     } ItemDataTypes;
     /**
@@ -169,10 +169,10 @@ namespace Catalog {
      *
      **************************************************/
     typedef enum
-    {
-        CC_ID,
-        CC_Country,
-        CC_Catalog,
+    { 
+        CC_ID, 
+        CC_Country, 
+        CC_Catalog, 
         CC_NbrTypes
     } CatalogCodeTypes;
 
@@ -184,20 +184,20 @@ namespace Catalog {
      *
      **************************************************/
     typedef enum
-    {
-        ST_Unchecked = 0,
-        ST_Checked,
+    { 
+        ST_Unchecked = 0, 
+        ST_Checked, 
         ST_NbrCheckedStatusTypes
     } CheckedStatusType;
 
     typedef enum
-    {
-        ST_None = 0,
-        ST_Missing,
-        ST_Ordered,
-        ST_Own,
-        ST_OwnVariant,
-        ST_Exclude,
+    { 
+        ST_None = 0, 
+        ST_Missing, 
+        ST_Ordered, 
+        ST_Own, 
+        ST_OwnVariant, 
+        ST_Exclude, 
         ST_NbrInventoryStatusTypes
     } InventoryStatusType;
 
@@ -209,50 +209,50 @@ namespace Catalog {
      *
      **************************************************/
     typedef enum
-    {
-        FT_FormatUnknown = 0,
-        FT_Stamp,
-        FT_Se_tenant,
-        FT_Mini_Sheet,
-        FT_Souvenir_Sheet,
-        FT_Booklet,
-        FT_Booklet_Pane,
-        FT_Gutter_Pair,
-        FT_Stamp_with_Attached_Label,
-        FT_Tete_Beche,
+    { 
+        FT_FormatUnknown = 0, 
+        FT_Stamp, 
+        FT_Se_tenant, 
+        FT_Mini_Sheet, 
+        FT_Souvenir_Sheet, 
+        FT_Booklet, 
+        FT_Booklet_Pane, 
+        FT_Gutter_Pair, 
+        FT_Stamp_with_Attached_Label, 
+        FT_Tete_Beche, 
         FT_NbrTypes
     } FormatType;
 
     FormatType FindFormatType( wxString name );
 
     typedef enum
-    {
-        ET_Unknown = 0,
-        ET_Commemorative,
-        ET_Definitive,
-        ET_HuntingPermit,
-        ET_Revenue,
-        ET_AirPost,
-        ET_AirPostOfficial,
-        ET_AirPostSemiPostal,
-        ET_ATMlabels,
-        ET_Cinderella,
-        ET_Illegal,
-        ET_InsuredLetter,
-        ET_Military,
-        ET_Newspaper,
-        ET_Official,
-        ET_ParcelPost,
-        ET_PersonalDelivery,
-        ET_Personalized,
-        ET_PostageDue,
-        ET_PostalTax,
-        ET_Precancelled,
-        ET_Private,
-        ET_Regional,
-        ET_Registration,
-        ET_SemiPostal,
-        ET_WarTax,
+    { 
+        ET_Unknown = 0, 
+        ET_Commemorative, 
+        ET_Definitive, 
+        ET_HuntingPermit, 
+        ET_Revenue, 
+        ET_AirPost, 
+        ET_AirPostOfficial, 
+        ET_AirPostSemiPostal, 
+        ET_ATMlabels, 
+        ET_Cinderella, 
+        ET_Illegal, 
+        ET_InsuredLetter, 
+        ET_Military, 
+        ET_Newspaper, 
+        ET_Official, 
+        ET_ParcelPost, 
+        ET_PersonalDelivery, 
+        ET_Personalized, 
+        ET_PostageDue, 
+        ET_PostalTax, 
+        ET_Precancelled, 
+        ET_Private, 
+        ET_Regional, 
+        ET_Registration, 
+        ET_SemiPostal, 
+        ET_WarTax, 
         ET_NbrTypes
     } EmissionType;
 
@@ -265,10 +265,10 @@ namespace Catalog {
      * @brief Enum for specifying file load process.
      **************************************************/
     typedef enum
-    {
-        MO_Cancel = 0,
-        MO_Merge,
-        MO_Overwrite,
+    { 
+        MO_Cancel = 0, 
+        MO_Merge, 
+        MO_Overwrite, 
         MO_NbrTypes
     } MergeOverwriteQuery;
 
@@ -277,12 +277,12 @@ namespace Catalog {
      * @brief Enum specifying merge process
      **************************************************/
     typedef enum
-    {
-        MP_AddMissing = 0,
-        MP_AddMissingEntriesAndFields,
-        MP_AddMissingAndOverwrite,
-        MP_AddMissingAndQuery,
-        MP_QueryAll,
+    { 
+        MP_AddMissing = 0, 
+        MP_AddMissingEntriesAndFields, 
+        MP_AddMissingAndOverwrite, 
+        MP_AddMissingAndQuery, 
+        MP_QueryAll, 
         MP_NbrTypes
     } MergeProcedure;
 
@@ -339,11 +339,11 @@ namespace Catalog {
      * @brief Look thru all the CatalogBaseNames to find "name"
      * and return the corresponding CatalogBaseType enum
      * @param   name : name of the node to find the Type of
-     * @return {CatalogBaseType}      :  enum or -1 if not found.
+     * @return { CatalogBaseType|    :  enum or -1 if not found.
      **************************************************/
     CatalogBaseType FindCatalogBaseType( wxString name );
 
-    CatalogVolumeData* GetCatalogVolumeData( void );
+    CatalogSectionData* GetCatalogSectionData( void );
 
 
     void InitCatalogDefs( );
@@ -364,7 +364,7 @@ namespace Catalog {
     void AddEntry( wxXmlNode* parent, wxXmlNode* child, int level );
   
     wxXmlNode* MoveEntry( wxXmlNode* newParent, wxXmlNode* child );
-    wxXmlNode* InsertEntry( wxXmlNode* sibling, wxXmlNode* child, bool after = true);
+    wxXmlNode* InsertEntry( wxXmlNode* sibling, wxXmlNode* child, bool after = true );
 
 
     void SortData( wxXmlNode* newRoot, wxXmlNode* parent );

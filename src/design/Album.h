@@ -5,20 +5,20 @@
  * @version 0.1
  * @date 2022-02-02
  *
- * @copyright Copyright (c) 2022
+ * @copyright Copyright ( c ) 2022
  * 
- * This file is part of AlbumGenerator.
+ * This file is part of StampTool.
  *
- * AlbumGenerator is free software: you can redistribute it and/or modify it under the 
+ * StampTool is free software: you can redistribute it and/or modify it under the 
  * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
- * AlbumGenerator is distributed in the hope that it will be useful, but WITHOUT ANY 
+ * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY 
  * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License along with 
- * AlbumGenerator. If not, see <https://www.gnu.org/licenses/>.
+ * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
  **************************************************/
 
@@ -38,14 +38,14 @@
 #include "design/FontInfo.h"
 ;
 
-namespace Design {
+namespace Design { 
 
     /**
      * @brief Album layout object; inherits from LayoutBase. This is the top  LayoutBase for holding all the objecs within the album
      *
      **************************************************/
     class Album : public AlbumBase
-    {
+    { 
     public:
 
         /**
@@ -54,7 +54,7 @@ namespace Design {
          *
          **************************************************/
         Album(  wxXmlNode* node ) : AlbumBase( node )
-        {
+        { 
             SetNodeType( AT_Album );
             m_defaultTitleFont = -1;
             m_defaultCatNbrFont = -1;
@@ -67,7 +67,7 @@ namespace Design {
          * @brief Destroy the Album object
          *
          **************************************************/
-        ~Album( ) {};
+        ~Album( ) { };
 
         /**
          * @brief calculate the layout and update all the odt files based on tht.
@@ -78,7 +78,7 @@ namespace Design {
 
         /**
          * @brief  Does the layout for each child. Goes to the bottom
-         * of each child container object ( row, column, page)
+         * of each child container object ( row, column, page )
          * and begin filling in position relative to the parent
          *
          * @return true
@@ -144,7 +144,7 @@ namespace Design {
          * @return double
          **************************************************/
         double GetTopMargin( );
-        wxString GetTopMarginStr();
+        wxString GetTopMarginStr( );
         void SetTopMargin( wxString str );
 
         /**
@@ -153,7 +153,7 @@ namespace Design {
          * @return double
          **************************************************/
         double GetBottomMargin( );
-        wxString GetBottomMarginStr();
+        wxString GetBottomMarginStr( );
         void SetBottomMargin( wxString str );
 
         /**
@@ -162,7 +162,7 @@ namespace Design {
          * @return double
          **************************************************/
         double GetRightMargin( );
-        wxString GetRightMarginStr();
+        wxString GetRightMarginStr( );
         void SetRightMargin( wxString str );
 
         /**
@@ -171,7 +171,7 @@ namespace Design {
          * @return double
          **************************************************/
         double GetLeftMargin( );
-        wxString GetLeftMarginStr();
+        wxString GetLeftMarginStr( );
         void SetLeftMargin( wxString str );
 
         /**
@@ -180,7 +180,7 @@ namespace Design {
          * @return double
          **************************************************/
         double GetBorderSize( );
-        wxString GetBorderSizeStr();
+        wxString GetBorderSizeStr( );
         void SetBorderSize( wxString str );
 
         /**
@@ -210,40 +210,41 @@ namespace Design {
          * @param rightMargin
          * @param leftMargin
          **************************************************/
-        void GetPageParameters( wxString& width, wxString& height, wxString& topMargin,
+        void GetPageParameters( wxString& width, wxString& height, wxString& topMargin, 
             wxString& bottomMargin, wxString& rightMargin, wxString& leftMargin );
 
-        NodeStatus ValidateNode();
+        NodeStatus ValidateNode( );
         void Save( wxXmlNode* xmlNode );
         void DumpLayout(   );
 
         FontInfo* FindFontInfo( wxFont* font, wxColor color );
         int GetDefaultTileFontNdx ( )
-        {
+        { 
             return m_defaultTitleFont;
         };
         int GetDefaultCatNbrFontNdx ( )
-        {
+        { 
             return m_defaultCatNbrFont;
         }
         int GetDefaultTextFontNdx ( )
-        {
+        { 
             return m_defaultTextFont;
         }
-        bool IsValidFontNdx(int ndx )
-        {
-            if ( (ndx >= 0) && (ndx < m_fontList.size()))
-            {
+        bool IsValidFontNdx( int ndx )
+        { 
+            if ( ( ndx >= 0 ) && ( ndx < m_fontList.size( ) ) )
+            { 
                 return true;
             }
             return false;
         }
         wxFont* GetFont( int ndx )
-        {
+        { 
             if( IsValidFontNdx( ndx ) )
-            {
-                return GetFontInfo( ndx )->GetFont();
+            { 
+                return GetFontInfo( ndx )->GetFont( );
             }
+            return (wxFont*)0;
         };
 
         void InitFonts( wxXmlNode* node );
@@ -251,8 +252,8 @@ namespace Design {
         int FindFont( FontInfo* info );
   
         FontInfo* GetFontInfo( int ndx );
-        FontList& GetFontList()
-        {
+        FontList& GetFontList( )
+        { 
             return m_fontList;
         }
         int AddNewFont(  wxString nativeDesc, wxString color );

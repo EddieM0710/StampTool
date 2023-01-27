@@ -5,20 +5,20 @@
  * @version 0.1
  * @date 2022-02-04
  *
- * @copyright Copyright (c) 2022
+ * @copyright Copyright ( c ) 2022
  * 
- * This file is part of AlbumGenerator.
+ * This file is part of StampTool.
  *
- * AlbumGenerator is free software: you can redistribute it and/or modify it under the 
+ * StampTool is free software: you can redistribute it and/or modify it under the 
  * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
- * AlbumGenerator is distributed in the hope that it will be useful, but WITHOUT ANY 
+ * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY 
  * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License along with 
- * AlbumGenerator. If not, see <https://www.gnu.org/licenses/>.
+ * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
  **************************************************/
 
@@ -27,17 +27,17 @@
 
 #include "design/LayoutBase.h"
 
-namespace Design {
+namespace Design { 
 
 
-    typedef enum {
-        AT_InvalidImage = 0,
-        AT_InvalidHeight,
-        AT_InvalidWidth,
+    typedef enum { 
+        AT_InvalidImage = 0, 
+        AT_InvalidHeight, 
+        AT_InvalidWidth, 
         AT_NbrStampErrorTypes
     }StampErrorType;
     
-    extern const char* ErrorStrings[AT_NbrStampErrorTypes];
+    extern const char* ErrorStrings[ AT_NbrStampErrorTypes ];
 
     /**
      * @class Stamp
@@ -51,7 +51,7 @@ namespace Design {
      *
      **************************************************/
     class Stamp : public LayoutBase
-    {
+    { 
     public:
 
         /**
@@ -60,24 +60,24 @@ namespace Design {
          * @param parent
          **************************************************/
         Stamp(  wxXmlNode* node ) : LayoutBase( node )
-        {
+        { 
             SetNodeType( AT_Stamp );
             SetObjectName( AlbumBaseNames[ GetNodeType( ) ] );
             m_title = GetAttrStr( Design::AT_Name );
-            SetShowCatNbr(true);
-            SetShowTitle(true);
+            SetShowCatNbr( true );
+            SetShowTitle( true );
             wxString height = GetAttrStr( Design::AT_Height );
             SetStampHeight( height ) ;
             wxString width = GetAttrStr( Design::AT_Width );
             SetStampWidth( width ) ;
-            CalcFrame();
+            CalcFrame( );
         };
 
         /**
          * @brief Destroy the Stamp object
          *
          **************************************************/
-        ~Stamp( ) {};
+        ~Stamp( ) { };
 
         /**
          * @brief
@@ -93,7 +93,7 @@ namespace Design {
         * @return false
         **************************************************/
         bool UpdateMinimumSize( );
-        void CalcFrame();
+        void CalcFrame( );
 
         void UpdateSizes( );
 
@@ -113,9 +113,9 @@ namespace Design {
         wxXmlNode* Write( wxXmlNode* parent );
 
         NodeStatus ValidateNode( );
-        void ClearError();
+        void ClearError( );
         void SetError( StampErrorType type, NodeStatus status );
-        NodeStatus GetStatus();
+        NodeStatus GetStatus( );
         
         void SetStampHeight( double val ) ;
         void SetStampHeight( wxString str ) ;
@@ -140,16 +140,16 @@ namespace Design {
 //        void UpdateTitleSize( double width );
 
         void Save( wxXmlNode* xmlNode );
-        wxImage* GetStampImage();
+        wxImage* GetStampImage( );
 
-        bool GetShowTitle(){ return String2Bool( GetAttrStr( AT_ShowTitle ) ); };
-        void SetShowTitle( bool val ){ SetAttrStr( AT_ShowTitle, Bool2String( val) ); };
+        bool GetShowTitle( ){ return String2Bool( GetAttrStr( AT_ShowTitle ) ); };
+        void SetShowTitle( bool val ){ SetAttrStr( AT_ShowTitle, Bool2String( val ) ); };
 
-        bool GetShowCatNbr(){ return String2Bool( GetAttrStr( AT_ShowCatNbr ) ); };
+        bool GetShowCatNbr( ){ return String2Bool( GetAttrStr( AT_ShowCatNbr ) ); };
         void SetShowCatNbr( bool val ){ SetAttrStr( AT_ShowCatNbr, Bool2String( val ) ); };
         
-//        wxString GetImageFilename(){ return m_imageFilename; };
-//        void SetImageFilename(wxString str ){  m_imageFilename = str; };
+//        wxString GetImageFilename( ){ return m_imageFilename; };
+//        void SetImageFilename( wxString str ){  m_imageFilename = str; };
 
         void  ReportLayout(  );
 
@@ -190,7 +190,7 @@ namespace Design {
         Frame m_stampImageFrame;
         //Title m_title;
 
-        NodeStatus m_error[AT_NbrStampErrorTypes];
+        NodeStatus m_error[ AT_NbrStampErrorTypes ];
         bool m_showCatNbr;
         wxSize m_idTextExtent;
         wxSize m_titleTextExtent;

@@ -1,11 +1,11 @@
 /**
  * @file DesignData.cpp
- * @author Eddie Monroe ()
+ * @author Eddie Monroe ( )
  * @brief
  * @version 0.1
  * @date 2021-02-25
  *
- * @copyright Copyright (c) 2021
+ * @copyright Copyright ( c ) 2021
  *
  **************************************************/
 
@@ -38,14 +38,14 @@
 #include "design/Title.h"
 #include "design/Row.h"
 #include "design/Column.h"
-#include "AlbumGenApp.h"
+#include "StampToolApp.h"
 #include "gui/AlbumImagePanel.h"
 #include "gui/DesignTreeCtrl.h"
 
-namespace Design {
+namespace Design { 
 
     DesignData* NewDesignDataInstance( )
-    {
+    { 
         DesignData* designData = new DesignData( );
         designData->InitDesignData( );
         return designData;
@@ -53,20 +53,21 @@ namespace Design {
 
     //*****    
 
-    DesignData::DesignData(/* args */ )
-    {
+    DesignData::DesignData( /* args */ )
+    { 
         m_albumDoc = 0;
         m_album = 0;
     }
     DesignData* DesignData::InitDesignData( )
-    {
+    { 
         m_albumDoc = 0;
         m_album = 0;
+        return (DesignData* )0;
     }
 
     //*****  
     DesignData::~DesignData( )
-    {
+    { 
 
         if ( m_albumDoc ) m_albumDoc->~wxXmlDocument( );
         if ( m_album ) delete m_album;
@@ -76,9 +77,9 @@ namespace Design {
 
     //*****  
     bool DesignData::IsOK( )
-    {
+    { 
         if ( m_albumDoc )
-        {
+        { 
             return true;
         }
         return false;
@@ -88,17 +89,17 @@ namespace Design {
     // Set the design to dirty
     //*****    
     void DesignData::SetDirty( bool state )
-    {
+    { 
         m_dirty = state;
         if ( m_dirty )
-        {
-            GetGeneratorData( )->SetDirty( true );
+        { 
+            GetToolData( )->SetDirty( true );
         }
     }
 
 
     void DesignData::LoadDefaultDocument( )
-    {
+    { 
         wxXmlDocument* newDocument = DesignData::NewDesignDocument( );
         wxXmlNode* root = new wxXmlNode( wxXML_ELEMENT_NODE, "Album" );
         newDocument->SetRoot( root );
@@ -120,7 +121,7 @@ namespace Design {
 
     //*****  
     wxXmlDocument* DesignData::NewDesignDocument( )
-    {
+    { 
         delete m_albumDoc;
         m_albumDoc = new wxXmlDocument( );
         return m_albumDoc;
@@ -130,11 +131,11 @@ namespace Design {
     // Save the DesignData to an xml file 
     //*****  
     void DesignData::SaveXML( wxString filename )
-    {
+    { 
         if ( m_albumDoc )
-        {
+        { 
             if ( wxFileExists( filename ) )
-            {
+            { 
                 wxFileName bakFile( filename );
                 bakFile.SetExt( "bak" );
                 wxRenameFile( filename, bakFile.GetFullName( ), true );
@@ -145,12 +146,12 @@ namespace Design {
         }
     }
 
-    // transferrs the DesignData tree to an xml file
+    // transfers the DesignData tree to an xml file
     //*****  
     void DesignData::SaveDesignTree( )
-    {
+    { 
         if ( m_albumDoc )
-        {
+        { 
             wxTreeItemId albumID = GetDesignTreeCtrl( )->GetRootItem( );
             Design::Album* album = ( Design::Album* )GetDesignTreeCtrl( )->GetItemNode( albumID );
 
@@ -167,19 +168,19 @@ namespace Design {
     // loads an xml file into memory
     //*****  
     bool DesignData::LoadXML( wxString filename )
-    {
+    { 
         if ( !wxFileExists( filename ) )
-        {
+        { 
             return false;
         }
         if ( !m_albumDoc )
-        {
+        { 
             m_albumDoc = NewDesignDocument( );
         }
         bool ok = m_albumDoc->Load( filename );
 
         if ( !ok )
-        {
+        { 
             std::cout << filename << " Load Failed.\n";
             return false;
         }
@@ -192,7 +193,7 @@ namespace Design {
     // Gets the page of the selected design given node
     //*****  
     AlbumBase* DesignData::GetPage( AlbumBase* node )
-    {
+    { 
         wxTreeItemId id = node->GetTreeItemId( );
         if ( id.IsOk( ) ) id = GetDesignTreeCtrl( )->GetPage( id );
         if ( id.IsOk( ) ) return GetDesignTreeCtrl( )->GetItemNode( id );
@@ -201,10 +202,10 @@ namespace Design {
 
     //*****  
     NodeStatus DesignData::ValidatePage( AlbumBase* node )
-    {
+    { 
         Page* page = ( Page* )GetPage( node );
         if ( page )
-        {
+        { 
             return page->ValidateChildren( page );
         }
         return AT_FATAL;
@@ -212,13 +213,13 @@ namespace Design {
 
     //*****  
     void DesignData::MakePage( Design::LayoutBase* node )
-    {
+    { 
         Page* page = ( Page* )GetPage( node );
         if ( page )
-        {
+        { 
             bool ok = page->UpdateMinimumSize( );
             if ( ok )
-            {
+            { 
                 page->UpdateSizes( );
                 page->UpdatePositions( );
                 GetAlbumImagePanel( )->Refresh( );
@@ -228,15 +229,15 @@ namespace Design {
 
     //*****  
     void DesignData::UpdateAlbum( )
-    {
+    { 
         bool ok = m_album->UpdateMinimumSize( );
         //if ( ok )
-        {
+        { 
             m_album->UpdateSizes( );
             m_album->UpdatePositions( );
             GetAlbumImagePanel( )->Refresh( );
 
-            m_album->DumpLayout( );
+//            m_album->DumpLayout( );
 
         }
     }

@@ -5,20 +5,20 @@
  * @version 0.1
  * @date 2022-02-02
  *
- * @copyright Copyright (c) 2022
+ * @copyright Copyright ( c ) 2022
  * 
- * This file is part of AlbumGenerator.
+ * This file is part of StampTool.
  *
- * AlbumGenerator is free software: you can redistribute it and/or modify it under the 
+ * StampTool is free software: you can redistribute it and/or modify it under the 
  * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
- * AlbumGenerator is distributed in the hope that it will be useful, but WITHOUT ANY 
+ * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY 
  * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License along with 
- * AlbumGenerator. If not, see <https://www.gnu.org/licenses/>.
+ * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
  **************************************************/
 
@@ -28,7 +28,7 @@
 #include "design/LayoutBase.h"
 #include "design/Album.h"
 
-namespace Design {
+namespace Design { 
 
     class Title;
 
@@ -37,16 +37,16 @@ namespace Design {
      *
      **************************************************/
     class Page : public LayoutBase
-    {
+    { 
     public:
         Page( wxXmlNode* node ) : LayoutBase( node )
-        {
+        { 
             SetNodeType( AT_Page );
             SetObjectName( AlbumBaseNames[ GetNodeType( ) ] );
 
             Album* album = GetAlbum( );
             if ( album )
-            {
+            { 
                 SetXPos( 0.0 );
                 SetYPos( 0.0 );
                 SetWidth( album->GetWidth( ) );
@@ -56,13 +56,13 @@ namespace Design {
                 SetRightMargin( album->GetRightMargin( ) );
                 SetLeftMargin( album->GetLeftMargin( ) );
                 SetBorderSize( album->GetBorderSize( ) );
-            }       
+            }    
         };
-        ~Page( ) {};
+        ~Page( ) { };
 
         /**
          * @brief Perform the layout for the page.
-         * Go to the bottom of each child container object ( row, column, page)
+         * Go to the bottom of each child container object ( row, column, page )
          * and begin filling in position relative to the parent
          * @return true - success
          * @return false - fail
@@ -174,7 +174,7 @@ namespace Design {
 
         void ReportLayout(  );
 
-    wxString GetBorderFileName(){ return m_borderFileName;}
+    wxString GetBorderFileName( ){ return m_borderFileName; }
     void SetBorderFilename( wxString str ){ m_borderFileName = str; };
 
     private:

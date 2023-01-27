@@ -5,20 +5,20 @@
  * @version 0.1
  * @date 2022-01-22
  *
- * @copyright Copyright (c) 2021  
+ * @copyright Copyright ( c ) 2021  
  * 
- * This file is part of AlbumGenerator.
+ * This file is part of StampTool.
  *
- * AlbumGenerator is free software: you can redistribute it and/or modify it under the 
+ * StampTool is free software: you can redistribute it and/or modify it under the 
  * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
- * AlbumGenerator is distributed in the hope that it will be useful, but WITHOUT ANY 
+ * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY 
  * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License along with 
- * AlbumGenerator. If not, see <https://www.gnu.org/licenses/>.
+ * StampTool. If not, see <https://www.gnu.org/licenses/>.
  */
 
 #ifndef _ALBUMPANEL_H_
@@ -53,9 +53,9 @@ class ReadAlbumEasyFile;
 #define ID_SCROLLEDWINDOW 10003
 #define ID_CMDDATATEXTCTRL 10005
 #define SYMBOL_MANAGEAECMDDATA_STYLE wxTAB_TRAVERSAL
-#define SYMBOL_MANAGEAECMDDATA_TITLE _("AlbumPanel")
+#define SYMBOL_MANAGEAECMDDATA_TITLE _( "AlbumPanel" )
 #define SYMBOL_MANAGEAECMDDATA_IDNAME ID_MANAGEAECMDDATA
-#define SYMBOL_MANAGEAECMDDATA_SIZE wxSize(400, 300)
+#define SYMBOL_MANAGEAECMDDATA_SIZE wxSize( 400, 300 )
 #define SYMBOL_MANAGEAECMDDATA_POSITION wxDefaultPosition
 // control identifiers
 
@@ -67,24 +67,24 @@ class ReadAlbumEasyFile;
 class AlbumDesignTreePanel: public wxPanel
 {    
     DECLARE_DYNAMIC_CLASS( AlbumDesignTreePanel )
-    DECLARE_EVENT_TABLE()
+    DECLARE_EVENT_TABLE( )
 
 public:
     /// Constructors
-    AlbumDesignTreePanel();
+    AlbumDesignTreePanel( );
     AlbumDesignTreePanel( wxWindow* parent, wxWindowID id = SYMBOL_MANAGEAECMDDATA_IDNAME, const wxPoint& pos = SYMBOL_MANAGEAECMDDATA_POSITION, const wxSize& size = SYMBOL_MANAGEAECMDDATA_SIZE, long style = SYMBOL_MANAGEAECMDDATA_STYLE );
 
     /// Creation
     bool Create( wxWindow* parent, wxWindowID id = SYMBOL_MANAGEAECMDDATA_IDNAME, const wxPoint& pos = SYMBOL_MANAGEAECMDDATA_POSITION, const wxSize& size = SYMBOL_MANAGEAECMDDATA_SIZE, long style = SYMBOL_MANAGEAECMDDATA_STYLE );
 
     /// Destructor
-    ~AlbumDesignTreePanel();
+    ~AlbumDesignTreePanel( );
 
     /// Initialises member variables
-    void Init();
+    void Init( );
 
     /// Creates the controls and sizers
-    void CreateControls();
+    void CreateControls( );
 
 // AlbumDesignTreePanel event handler declarations
 
@@ -100,13 +100,13 @@ public:
 // AlbumDesignTreePanel member function declarations
 
     /// Should we show tooltips?
-    static bool ShowToolTips();
+    static bool ShowToolTips( );
 
     void LoadAlbumLayout( );
 
     void LoadAEData( wxString filename );
 
-    DesignTreeCtrl* GetDesignTreeCtrl(){ return m_designTreeCtrl; };
+    DesignTreeCtrl* GetDesignTreeCtrl( ){ return m_designTreeCtrl; };
 
 // AlbumDesignTreePanel member variables
     DesignTreeCtrl* m_designTreeCtrl;

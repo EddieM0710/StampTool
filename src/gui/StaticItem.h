@@ -5,20 +5,20 @@
  * @version 0.1
  * @date 2022-01-21
  *
- * @copyright Copyright (c) 2022  
+ * @copyright Copyright ( c ) 2022  
  * 
- * This file is part of AlbumGenerator.
+ * This file is part of StampTool.
  *
- * AlbumGenerator is free software: you can redistribute it and/or modify it under the 
+ * StampTool is free software: you can redistribute it and/or modify it under the 
  * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
- * AlbumGenerator is distributed in the hope that it will be useful, but WITHOUT ANY 
+ * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY 
  * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License along with 
- * AlbumGenerator. If not, see <https://www.gnu.org/licenses/>.
+ * StampTool. If not, see <https://www.gnu.org/licenses/>.
  */
 #ifndef _STATICITEM_H_
 #define _STATICITEM_H_
@@ -48,9 +48,9 @@
 #define wxID_COLONSTATIC 10031
 #define wxID_VALSTATIC 10029
 #define SYMBOL_STATICITEM_STYLE wxTAB_TRAVERSAL
-#define SYMBOL_STATICITEM_TITLE _("StaticItem")
+#define SYMBOL_STATICITEM_TITLE _( "StaticItem" )
 #define SYMBOL_STATICITEM_IDNAME ID_STATICITEM
-#define SYMBOL_STATICITEM_SIZE wxSize(400, 300)
+#define SYMBOL_STATICITEM_SIZE wxSize( 400, 300 )
 #define SYMBOL_STATICITEM_POSITION wxDefaultPosition
 // control identifiers
 
@@ -62,24 +62,24 @@
 class StaticItem: public wxPanel
 {    
     DECLARE_DYNAMIC_CLASS( StaticItem )
-    DECLARE_EVENT_TABLE()
+    DECLARE_EVENT_TABLE( )
 
 public:
     /// Constructors
-    StaticItem();
+    StaticItem( );
     StaticItem( wxWindow* parent, wxWindowID id = SYMBOL_STATICITEM_IDNAME, const wxPoint& pos = SYMBOL_STATICITEM_POSITION, const wxSize& size = SYMBOL_STATICITEM_SIZE, long style = SYMBOL_STATICITEM_STYLE );
 
     /// Creation
     bool Create( wxWindow* parent, wxWindowID id = SYMBOL_STATICITEM_IDNAME, const wxPoint& pos = SYMBOL_STATICITEM_POSITION, const wxSize& size = SYMBOL_STATICITEM_SIZE, long style = SYMBOL_STATICITEM_STYLE );
 
     /// Destructor
-    ~StaticItem();
+    ~StaticItem( );
 
     /// Initialises member variables
-    void Init();
+    void Init( );
 
     /// Creates the controls and sizers
-    void CreateControls();
+    void CreateControls( );
 
 // StaticItem event handler declarations
 
@@ -98,7 +98,7 @@ public:
 // StaticItem member function declarations
 
     /// Should we show tooltips?
-    static bool ShowToolTips();
+    static bool ShowToolTips( );
 
 // StaticItem member variables
     wxStaticText* m_title;

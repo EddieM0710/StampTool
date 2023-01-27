@@ -1,25 +1,25 @@
 /**
  * @file CSV.h
- * @author Eddie Monroe ()
+ * @author Eddie Monroe ( )
  * @brief This file contains the class that reads .csv files
  * and loads them into an XML structure.
  * @version 0.1
  * @date 2021-02-25
  *
- * @copyright Copyright (c) 2021
+ * @copyright Copyright ( c ) 2021
  * 
- * This file is part of AlbumGenerator.
+ * This file is part of StampTool.
  *
- * AlbumGenerator is free software: you can redistribute it and/or modify it under the 
+ * StampTool is free software: you can redistribute it and/or modify it under the 
  * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
- * AlbumGenerator is distributed in the hope that it will be useful, but WITHOUT ANY 
+ * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY 
  * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License along with 
- * AlbumGenerator. If not, see <https://www.gnu.org/licenses/>.
+ * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
  **************************************************/
 
@@ -41,7 +41,7 @@
 typedef std::vector<wxString> StringArray;
 typedef std::vector<Catalog::DataTypes> DataTypesArray;
 
-namespace Utils {
+namespace Utils { 
  
 #define MaxNbrCSVCols 50
 
@@ -50,7 +50,7 @@ namespace Utils {
      *
      **************************************************/
     class CSVData
-    {
+    { 
     public:
 
         /**
@@ -130,13 +130,13 @@ namespace Utils {
         //int FindCol( wxString& colName ) { m_csvColName.Index( colName ); };
 
         /**
-         * @brief Create a map of csv col names to DataTypes (Defs.h)
+         * @brief Create a map of csv col names to DataTypes ( Defs.h )
          *
          **************************************************/
         void MakeColMap( void );
 
         /**
-         * @brief looks through the stamp catalog codes (DT_Catalog_Codes)
+         * @brief looks through the stamp catalog codes ( DT_Catalog_Codes )
          * and returns the ID for a stamp number entry that starts "Sn:US".
          *
          * @details this needs to be modified to return the id for any given

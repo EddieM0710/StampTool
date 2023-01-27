@@ -1,51 +1,51 @@
 /**
- * @file gui/AlbumGenApp.h
- * @author Eddie Monroe ()
+ * @file gui/StampToolApp.h
+ * @author Eddie Monroe ( )
  * @brief This is the main instantiation class for the application
  * @version 0.1
  * @date 2021-02-25
  *
- * @copyright Copyright (c) 2021
+ * @copyright Copyright ( c ) 2021
  * 
- * This file is part of AlbumGenerator.
+ * This file is part of StampTool.
  *
- * AlbumGenerator is free software: you can redistribute it and/or modify it under the 
+ * StampTool is free software: you can redistribute it and/or modify it under the 
  * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
- * AlbumGenerator is distributed in the hope that it will be useful, but WITHOUT ANY 
+ * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY 
  * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License along with 
- * AlbumGenerator. If not, see <https://www.gnu.org/licenses/>.
+ * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
  **************************************************/
 
-#ifndef _ALBUMGENERATORAPP_H_
-#define _ALBUMGENERATORAPP_H_
+#ifndef _STAMPTOOLAPP_H_
+#define _STAMPTOOLAPP_H_
 
  /*
   * Includes
   */
 #include "wx/image.h"
 
-#include "gui/AlbumGenFrame.h"
+#include "gui/StampToolFrame.h"
 
-class GeneratorData;
+class ToolData;
 
 /**
- * @brief AlbumGenApp class declaration.
+ * @brief StampToolApp class declaration.
  * @details This is the main instantiation class for the application.  It
  * inherits from wxApp.
  */
-class AlbumGenApp : public wxApp {
-    DECLARE_CLASS( AlbumGenApp )
+class StampToolApp : public wxApp { 
+    DECLARE_CLASS( StampToolApp )
     DECLARE_EVENT_TABLE( )
 
 public:
     // Constructor
-    AlbumGenApp( );
+    StampToolApp( );
 
     /**
      * @brief   Initialises member variables
@@ -57,20 +57,20 @@ public:
     virtual bool OnInit( );
 
     /**
-     * @brief Cleanup for AlbumGenApp. Called on exit.
+     * @brief Cleanup for StampToolApp. Called on exit.
      */
     virtual int OnExit( );
 
-    AlbumGenFrame* GetFrame( ) { return m_frame; };
-    GeneratorData* GetGeneratorDate(){ return m_generatorData;};
+    StampToolFrame* GetFrame( ) { return m_frame; };
+    ToolData* GetToolDate( ){ return m_toolData; };
 
 private:
-    AlbumGenFrame* m_frame;
+    StampToolFrame* m_frame;
 
     // global declaration of application data 
-    GeneratorData* m_generatorData;
+    ToolData* m_toolData;
 
 };
 
 #endif
-// _ALBUMGENERATORAPP_H_
+// _STAMPTOOLAPP_H_

@@ -1,24 +1,24 @@
 /**
- * @file AlbumGenPanel.cpp
- * @author Eddie Monroe ()
+ * @file StampToolPanel.cpp
+ * @author Eddie Monroe ( )
  * @brief
  * @version 0.1
  * @date 2021-02-25
  *
- * @copyright Copyright (c) 2021
+ * @copyright Copyright ( c ) 2021
  * 
- * This file is part of AlbumGenerator.
+ * This file is part of StampTool.
  *
- * AlbumGenerator is free software: you can redistribute it and/or modify it under the 
+ * StampTool is free software: you can redistribute it and/or modify it under the 
  * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
- * AlbumGenerator is distributed in the hope that it will be useful, but WITHOUT ANY 
+ * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY 
  * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License along with 
- * AlbumGenerator. If not, see <https://www.gnu.org/licenses/>.
+ * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
  **************************************************/
 
@@ -36,9 +36,9 @@
 
 
 #include "wx/imaglist.h"
-//#include "AlbumGenDialog.h"
+//#include "StampToolDialog.h"
 
-#include "gui/AlbumGenPanel.h"
+#include "gui/StampToolPanel.h"
 
 #include "gui/CatalogPanel.h"
 
@@ -50,90 +50,90 @@
  * IdentificationPanel type definition
  */
 
-IMPLEMENT_DYNAMIC_CLASS( AlbumGenPanel, wxPanel )
+IMPLEMENT_DYNAMIC_CLASS( StampToolPanel, wxPanel )
 ; // silly business; The above macro screws up the formatter
 
 /*
- * AlbumGenPanel event table definition
+ * StampToolPanel event table definition
  */
 
-BEGIN_EVENT_TABLE( AlbumGenPanel, wxPanel )
+BEGIN_EVENT_TABLE( StampToolPanel, wxPanel )
 
-// AlbumGenPanel event table entries
-EVT_NOTEBOOK_PAGE_CHANGED( ID_NOTEBOOK, AlbumGenPanel::OnNotebookPageChanged )
-EVT_TEXT( ID_TITLETEXTCTRL, AlbumGenPanel::OnTitleTextUpdated )
-// AlbumGenPanel event table entries
+// StampToolPanel event table entries
+EVT_NOTEBOOK_PAGE_CHANGED( ID_NOTEBOOK, StampToolPanel::OnNotebookPageChanged )
+EVT_TEXT( ID_TITLETEXTCTRL, StampToolPanel::OnTitleTextUpdated )
+// StampToolPanel event table entries
 
 END_EVENT_TABLE( )
 ;  // silly business; The above macro screws up the formatter
 
     /*
-     * AlbumGenPanel constructors
+     * StampToolPanel constructors
      */
 
-AlbumGenPanel::AlbumGenPanel( )
-{
+StampToolPanel::StampToolPanel( )
+{ 
     Init( );
 }
 
-AlbumGenPanel::AlbumGenPanel( wxWindow* parent, wxWindowID id,
-    const wxPoint& pos, const wxSize& size,
+StampToolPanel::StampToolPanel( wxWindow* parent, wxWindowID id, 
+    const wxPoint& pos, const wxSize& size, 
     long style )
-{
+{ 
     Init( );
     Create( parent, id, pos, size, style );
 }
 
 /*
- * AlbumGenPanel creator
+ * StampToolPanel creator
  */
 
-bool AlbumGenPanel::Create( wxWindow* parent, wxWindowID id,
-    const wxPoint& pos, const wxSize& size,
+bool StampToolPanel::Create( wxWindow* parent, wxWindowID id, 
+    const wxPoint& pos, const wxSize& size, 
     long style )
-{
-    // AlbumGenPanel creation
+{ 
+    // StampToolPanel creation
     SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
     wxPanel::Create( parent, id, pos, size, style );
 
     CreateControls( );
     Centre( );
-    // AlbumGenPanel creation
+    // StampToolPanel creation
     return true;
 }
 
 /*
- * AlbumGenPanel destructor
+ * StampToolPanel destructor
  */
 
-AlbumGenPanel::~AlbumGenPanel( )
-{
-    // AlbumGenPanel destruction
-    // AlbumGenPanel destruction
+StampToolPanel::~StampToolPanel( )
+{ 
+    // StampToolPanel destruction
+    // StampToolPanel destruction
 }
 
 /*
  * Member initialisation
  */
 
-void AlbumGenPanel::Init( )
-{
-    // AlbumGenPanel member initialisation
+void StampToolPanel::Init( )
+{ 
+    // StampToolPanel member initialisation
 
     m_notebook = NULL;
     m_sizer = NULL;
-    // AlbumGenPanel member initialisation
+    // StampToolPanel member initialisation
 }
 
 /*
- * Control creation for AlbumGenPanel
+ * Control creation for StampToolPanel
  */
 
-void AlbumGenPanel::CreateControls( )
-{
-    // AlbumGenPanel content construction
+void StampToolPanel::CreateControls( )
+{ 
+    // StampToolPanel content construction
 
-    AlbumGenPanel* itemPanel1 = this;
+    StampToolPanel* itemPanel1 = this;
 
     wxBoxSizer* itemBoxSizer1 = new wxBoxSizer( wxVERTICAL );
     itemPanel1->SetSizer( itemBoxSizer1 );
@@ -141,42 +141,42 @@ void AlbumGenPanel::CreateControls( )
     wxBoxSizer* itemBoxSizer2 = new wxBoxSizer( wxHORIZONTAL );
     itemBoxSizer1->Add( itemBoxSizer2, 1, wxGROW | wxALL, 0 );
 
-    wxSplitterWindow* itemSplitterWindow3 = new wxSplitterWindow(
-        itemPanel1, ID_SPLITTERWINDOW, wxDefaultPosition, wxDefaultSize,
+    wxSplitterWindow* itemSplitterWindow3 = new wxSplitterWindow( 
+        itemPanel1, ID_SPLITTERWINDOW, wxDefaultPosition, wxDefaultSize, 
         wxSP_3DBORDER | wxSP_3DSASH | wxNO_BORDER );
     itemSplitterWindow3->SetMinimumPaneSize( 20 );
 
 
-    m_mngCatalogVolumeData = new  CatalogPanel( itemSplitterWindow3, ID_PANEL1,
+    m_mngCatalogSectionData = new  CatalogPanel( itemSplitterWindow3, ID_PANEL1, 
         wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
     m_notebook
-        = new wxNotebook( itemSplitterWindow3, ID_NOTEBOOK, wxDefaultPosition,
+        = new wxNotebook( itemSplitterWindow3, ID_NOTEBOOK, wxDefaultPosition, 
             wxDefaultSize, wxBK_DEFAULT );
 
-    m_stampDescriptionPanel = new StampDescriptionPanel(
-        m_notebook, ID_DESCRIPTIONPANELFOREIGN, wxDefaultPosition,
+    m_stampDescriptionPanel = new StampDescriptionPanel( 
+        m_notebook, ID_DESCRIPTIONPANELFOREIGN, wxDefaultPosition, 
         wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
     m_stampDescriptionPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
 
     m_notebook->AddPage( m_stampDescriptionPanel, _( "Stamp" ) );
-    itemSplitterWindow3->SplitVertically( m_mngCatalogVolumeData, m_notebook, 600 );
+    itemSplitterWindow3->SplitVertically( m_mngCatalogSectionData, m_notebook, 600 );
     itemBoxSizer2->Add( itemSplitterWindow3, 1, wxGROW | wxALL, 0 );
 
-    m_albumDesignPanel = new AlbumDesignPanel(
-        m_notebook, ID_ALBUMSPLITTERWINDOWFOREIGN, wxDefaultPosition,
+    m_albumDesignPanel = new AlbumDesignPanel( 
+        m_notebook, ID_ALBUMSPLITTERWINDOWFOREIGN, wxDefaultPosition, 
         wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
     m_albumDesignPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
 
     m_notebook->AddPage( m_albumDesignPanel, _( "Album" ) );
 
-    m_generateListPanel = new GenerateList( m_notebook, ID_GENERTELISTFOREIGN, wxDefaultPosition,
+    m_generateListPanel = new GenerateList( m_notebook, ID_GENERTELISTFOREIGN, wxDefaultPosition, 
         wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL  );
 
     m_notebook->AddPage( m_generateListPanel, _( "List" ) );
 
-    // AlbumGenPanel content construction
+    // StampToolPanel content construction
 
-    GetGeneratorData( )->SetDescriptionPanel( m_stampDescriptionPanel );
+    GetToolData( )->SetDescriptionPanel( m_stampDescriptionPanel );
 
 }
 
@@ -184,8 +184,8 @@ void AlbumGenPanel::CreateControls( )
  * Should we show tooltips?
  */
 
-bool AlbumGenPanel::ShowToolTips( )
-{
+bool StampToolPanel::ShowToolTips( )
+{ 
     return true;
 }
 
@@ -193,39 +193,39 @@ bool AlbumGenPanel::ShowToolTips( )
  * Get bitmap resources
  */
 
-wxBitmap AlbumGenPanel::GetBitmapResource( const wxString& name )
-{
+wxBitmap StampToolPanel::GetBitmapResource( const wxString& name )
+{ 
     // Bitmap retrieval
-     // AlbumGenPanel bitmap retrieval
+     // StampToolPanel bitmap retrieval
     wxUnusedVar( name );
     return wxNullBitmap;
-    // AlbumGenPanel bitmap retrieval
+    // StampToolPanel bitmap retrieval
 }
 
 /*
  * Get icon resources
  */
 
-wxIcon AlbumGenPanel::GetIconResource( const wxString& name )
-{
+wxIcon StampToolPanel::GetIconResource( const wxString& name )
+{ 
     // Icon retrieval
-     // AlbumGenPanel icon retrieval
+     // StampToolPanel icon retrieval
     wxUnusedVar( name );
     return wxNullIcon;
-    // AlbumGenPanel icon retrieval
+    // StampToolPanel icon retrieval
 }
 
 
-void AlbumGenPanel::UpdateStatus( )
-{
-    m_stampDescriptionPanel->UpdateStatus();
+void StampToolPanel::UpdateStatus( )
+{ 
+    m_stampDescriptionPanel->UpdateStatus( );
 }
 
-bool AlbumGenPanel::ShouldShowStates()
-{
+bool StampToolPanel::ShouldShowStates( )
+{ 
 
-    if ( m_notebook->GetPage( m_notebook->GetSelection() ) == m_albumDesignPanel )
-    {
+    if ( m_notebook->GetPage( m_notebook->GetSelection( ) ) == m_albumDesignPanel )
+    { 
         return true;
     }
     return false;
@@ -234,27 +234,27 @@ bool AlbumGenPanel::ShouldShowStates()
  * wxEVT_COMMAND_NOTEBOOK_PAGE_CHANGED event handler for ID_NOTEBOOK
  */
 
-void AlbumGenPanel::OnNotebookPageChanged( wxNotebookEvent& event )
-{
+void StampToolPanel::OnNotebookPageChanged( wxNotebookEvent& event )
+{ 
     // int sel = event.GetOldSelection( );
-    // event.GetSelection();
+    // event.GetSelection( );
     
     // wxWindow* oldPage = m_notebook->GetPage( sel );
-    if ( ShouldShowStates() )
-    {
+    if ( ShouldShowStates( ) )
+    { 
         GetCatalogTreeCtrl( )->SetStates( true );
     }
     else
-    {
+    { 
         GetCatalogTreeCtrl( )->SetStates( false );
     }
 
     // wxEVT_COMMAND_NOTEBOOK_PAGE_CHANGED event handler for ID_NOTEBOOK
-   //in AlbumGenPanel.
+   //in StampToolPanel.
    // Before editing this code, remove the block markers.
     event.Skip( );
     // wxEVT_COMMAND_NOTEBOOK_PAGE_CHANGED event handler for ID_NOTEBOOK
-   //in AlbumGenPanel.
+   //in StampToolPanel.
 }
 
 
@@ -262,10 +262,10 @@ void AlbumGenPanel::OnNotebookPageChanged( wxNotebookEvent& event )
  * wxEVT_COMMAND_TEXT_UPDATED event handler for ID_TITLETEXTCTRL
  */
 
-void AlbumGenPanel::OnTitleTextUpdated( wxCommandEvent& event )
-{
-    // wxEVT_COMMAND_TEXT_UPDATED event handler for ID_TITLETEXTCTRL in AlbumGenPanel.
+void StampToolPanel::OnTitleTextUpdated( wxCommandEvent& event )
+{ 
+    // wxEVT_COMMAND_TEXT_UPDATED event handler for ID_TITLETEXTCTRL in StampToolPanel.
         // Before editing this code, remove the block markers.
     event.Skip( );
-    // wxEVT_COMMAND_TEXT_UPDATED event handler for ID_TITLETEXTCTRL in AlbumGenPanel. 
+    // wxEVT_COMMAND_TEXT_UPDATED event handler for ID_TITLETEXTCTRL in StampToolPanel. 
 }

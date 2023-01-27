@@ -5,20 +5,20 @@
  * @version 0.1
  * @date 2022-01-11
  *
- * @copyright Copyright (c) 2021  
+ * @copyright Copyright ( c ) 2021  
  * 
- * This file is part of AlbumGenerator.
+ * This file is part of StampTool.
  *
- * AlbumGenerator is free software: you can redistribute it and/or modify it under the 
+ * StampTool is free software: you can redistribute it and/or modify it under the 
  * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
- * AlbumGenerator is distributed in the hope that it will be useful, but WITHOUT ANY 
+ * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY 
  * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License along with 
- * AlbumGenerator. If not, see <https://www.gnu.org/licenses/>.
+ * StampTool. If not, see <https://www.gnu.org/licenses/>.
  */
 
 #ifndef _DEFINEPERIODSDIALOG_H_
@@ -50,10 +50,10 @@
 #define ID_CLASSIC 10005
 #define ID_MODERN 10008
 #define ID_MODERNYEAR 10009
-#define SYMBOL_DEFINEPERIODSDIALOG_STYLE wxCAPTION|wxRESIZE_BORDER|wxSYSTEM_MENU|wxCLOSE_BOX|wxTAB_TRAVERSAL
-#define SYMBOL_DEFINEPERIODSDIALOG_TITLE _("DefinePeriods")
+#define SYMBOL_DEFINEPERIODSDIALOG_STYLE wxCAPTION | wxRESIZE_BORDER | wxSYSTEM_MENU | wxCLOSE_BOX | wxTAB_TRAVERSAL
+#define SYMBOL_DEFINEPERIODSDIALOG_TITLE _( "DefinePeriods" )
 #define SYMBOL_DEFINEPERIODSDIALOG_IDNAME ID_DEFINEPERIODS
-#define SYMBOL_DEFINEPERIODSDIALOG_SIZE wxSize(400, 300)
+#define SYMBOL_DEFINEPERIODSDIALOG_SIZE wxSize( 400, 300 )
 #define SYMBOL_DEFINEPERIODSDIALOG_POSITION wxDefaultPosition
 // control identifiers
 
@@ -65,24 +65,24 @@
 class DefinePeriodsDialog: public wxDialog
 {    
     DECLARE_DYNAMIC_CLASS( DefinePeriodsDialog )
-    DECLARE_EVENT_TABLE()
+    DECLARE_EVENT_TABLE( )
 
 public:
     /// Constructors
-    DefinePeriodsDialog();
+    DefinePeriodsDialog( );
     DefinePeriodsDialog( wxWindow* parent, wxWindowID id = SYMBOL_DEFINEPERIODSDIALOG_IDNAME, const wxString& caption = SYMBOL_DEFINEPERIODSDIALOG_TITLE, const wxPoint& pos = SYMBOL_DEFINEPERIODSDIALOG_POSITION, const wxSize& size = SYMBOL_DEFINEPERIODSDIALOG_SIZE, long style = SYMBOL_DEFINEPERIODSDIALOG_STYLE );
 
     /// Creation
     bool Create( wxWindow* parent, wxWindowID id = SYMBOL_DEFINEPERIODSDIALOG_IDNAME, const wxString& caption = SYMBOL_DEFINEPERIODSDIALOG_TITLE, const wxPoint& pos = SYMBOL_DEFINEPERIODSDIALOG_POSITION, const wxSize& size = SYMBOL_DEFINEPERIODSDIALOG_SIZE, long style = SYMBOL_DEFINEPERIODSDIALOG_STYLE );
 
     /// Destructor
-    ~DefinePeriodsDialog();
+    ~DefinePeriodsDialog( );
 
     /// Initialises member variables
-    void Init();
+    void Init( );
 
     /// Creates the controls and sizers
-    void CreateControls();
+    void CreateControls( );
 
 // DefinePeriodsDialog event handler declarations
 
@@ -119,7 +119,7 @@ public:
 // DefinePeriodsDialog member function declarations
 
     /// Should we show tooltips?
-    static bool ShowToolTips();
+    static bool ShowToolTips( );
     bool IsDirty( ) { return m_dirty; };
 
 // DefinePeriodsDialog member variables

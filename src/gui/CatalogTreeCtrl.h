@@ -1,11 +1,11 @@
 /**
  * @file gui/CatalogTreeCtrl.h
- * @author Eddie Monroe ()
+ * @author Eddie Monroe ( )
  * @brief
  * @version 0.1
  * @date 2021-02-25
  *
- * @copyright Copyright (c) 2021
+ * @copyright Copyright ( c ) 2021
  *
  **************************************************/
 
@@ -23,25 +23,25 @@
   *  @brief menu and control ids
   **************************************************/
 enum
-{
-    CatalogDataTree_Quit = wxID_EXIT,
-    CatalogDataTree_About = wxID_ABOUT,
-    CatalogDataTree_StructureStamps,
-    CatalogDataTree_ResortTree,
-    CatalogDataTree_EditDetails,
-    CatalogDataTree_Delete,
-    CatalogDataTree_Add,
-    CatalogDataTree_Colnect,
-    CatalogDataTree_Before,
-    CatalogDataTree_After,
-    CatalogDataTree_AsChild,
-    CatalogDataTree_Cancel,
-    CatalogDataTree_Inventory,
-    CatalogDataTree_InventoryStatusNone,
-    CatalogDataTree_InventoryStatusMissing,
-    CatalogDataTree_InventoryStatusOrdered,
-    CatalogDataTree_InventoryStatusOwn,
-    CatalogDataTree_InventoryStatusOwnVariant,
+{ 
+    CatalogDataTree_Quit = wxID_EXIT, 
+    CatalogDataTree_About = wxID_ABOUT, 
+    CatalogDataTree_StructureStamps, 
+    CatalogDataTree_ResortTree, 
+    CatalogDataTree_EditDetails, 
+    CatalogDataTree_Delete, 
+    CatalogDataTree_Add, 
+    CatalogDataTree_Colnect, 
+    CatalogDataTree_Before, 
+    CatalogDataTree_After, 
+    CatalogDataTree_AsChild, 
+    CatalogDataTree_Cancel, 
+    CatalogDataTree_Inventory, 
+    CatalogDataTree_InventoryStatusNone, 
+    CatalogDataTree_InventoryStatusMissing, 
+    CatalogDataTree_InventoryStatusOrdered, 
+    CatalogDataTree_InventoryStatusOwn, 
+    CatalogDataTree_InventoryStatusOwnVariant, 
     CatalogDataTree_InventoryStatusExclude
 };
 
@@ -50,10 +50,10 @@ class Stamp;
 class Classification;
 namespace Utils { class StampLink; }
 
-typedef enum {
-    CompareInvalid,
-    CompareEqual,
-    CompareLess,
+typedef enum { 
+    CompareInvalid, 
+    CompareEqual, 
+    CompareLess, 
     CompareGreater
 }ComparisonResultType;
 
@@ -63,12 +63,12 @@ typedef enum {
   *
   **************************************************/
 class CatalogTreeItemData : public wxTreeItemData
-{
+{ 
 public:
 
-    CatalogTreeItemData( Catalog::CatalogBaseType type, const wxString desc,
+    CatalogTreeItemData( Catalog::CatalogBaseType type, const wxString desc, 
         wxXmlNode* ele = 0 )
-    {
+    { 
         m_type = type;
         m_desc = desc;
         m_element = ele;
@@ -86,8 +86,8 @@ public:
     Utils::StampLink* GetStampLink( ) { return m_stampLink; }
     void SetStampLink( Utils::StampLink* link ) { m_stampLink = link; }
 
-    wxString* GetImageFullName(){ return m_imageFullPath;};
-    void SetImageFullName(wxString* str ){ m_imageFullPath = str;};
+    wxString* GetImageFullName( ){ return m_imageFullPath; };
+    void SetImageFullName( wxString* str ){ m_imageFullPath = str; };
 private:
     wxXmlNode* m_element;
     wxString m_desc;
@@ -101,9 +101,9 @@ private:
  *
  **************************************************/
 class CatalogTreeCtrl : public wxTreeCtrl
-{
+{ 
     //    DECLARE_DYNAMIC_CLASS( CatalogTreeCtrl )
-    //    DECLARE_EVENT_TABLE()
+    //    DECLARE_EVENT_TABLE( )
 
 public:
 
@@ -111,13 +111,13 @@ public:
      * @brief Construct a new Stamp Tree Ctrl object
      *
      **************************************************/
-    CatalogTreeCtrl( ) {}
+    CatalogTreeCtrl( ) { }
 
     
-    CatalogTreeCtrl( wxWindow* parent, const wxWindowID id, const wxPoint& pos,
+    CatalogTreeCtrl( wxWindow* parent, const wxWindowID id, const wxPoint& pos, 
         const wxSize& size, long style );
 
-    virtual ~CatalogTreeCtrl( void ) {}
+    virtual ~CatalogTreeCtrl( void ) { }
 
     void OnBeginDrag( wxTreeEvent& event );
     void OnEndDrag( wxTreeEvent& event );
@@ -133,7 +133,7 @@ public:
     void CreateImageList( );
     void DoTreeContextSelection( );
     void DoSortChildren( const wxTreeItemId& item, bool reverse = true )
-    {
+    { 
         m_reverseSort = reverse;
         wxTreeCtrl::SortChildren( item );
     };
@@ -156,11 +156,11 @@ public:
     wxTreeItemId InsertChild( wxTreeItemId parent, wxXmlNode* child, bool after = true );
     CatalogTreeItemData* CreateChildData( wxXmlNode* child, 
                         wxString& label, 
-                        Catalog::IconID& icon,
+                        Catalog::IconID& icon, 
                         Catalog::CatalogBaseType& nodeType );
     void ClearCatalogTree( );   
     void LoadTree( void );
-    wxString GetLabel( wxXmlNode* catalogVolumeData );
+    wxString GetLabel( wxXmlNode* catalogSectionData );
 
     wxTreeItemId AddTreeNode( wxTreeItemId parent, wxXmlNode* node );
     void SortTree( wxTreeItemId parent );
@@ -168,7 +168,7 @@ public:
     void GoToColnect( wxTreeItemId id );
     void AddEntry( wxTreeItemId id );
     void DeleteEntry( wxTreeItemId id );
-    void EditDetailsDialog();
+    void EditDetailsDialog( );
 
     wxTreeItemId FindTreeItemID( wxXmlNode* node );
 
@@ -186,9 +186,9 @@ public:
     wxXmlNode* GetNode(  wxTreeItemId catID );       
     wxString GetAttribute(  wxTreeItemId catID, wxString name );
 
-    ComparisonResultType CompareDates(wxString date1,wxString date2 );
+    ComparisonResultType CompareDates( wxString date1, wxString date2 );
 
-    virtual int OnCompareItems( const wxTreeItemId& i1,
+    virtual int OnCompareItems( const wxTreeItemId& i1, 
         const wxTreeItemId& i2 ) wxOVERRIDE;
 
 
@@ -198,7 +198,7 @@ public:
     void EnableState( wxTreeItemId id );
     void DisableState( wxTreeItemId id );
     void SetStates( bool enable );
-    bool StrSame(wxString str1, wxString str2 );
+    bool StrSame( wxString str1, wxString str2 );
 
 private:
 
@@ -208,10 +208,10 @@ private:
     bool m_reverseSort;         // flag for OnCompareItems
     wxTreeItemId m_draggedItem; // item being dragged right now
 
-    // NB: due to an ugly wxMSW hack you _must_ use wxDECLARE_DYNAMIC_CLASS();
-    //     if you want your overloaded OnCompareItems() to be called.
+    // NB: due to an ugly wxMSW hack you _must_ use wxDECLARE_DYNAMIC_CLASS( );
+    //     if you want your overloaded OnCompareItems( ) to be called.
     //     OTOH, if you don't want it you may omit the next line - this will
-    //     make default (alphabetical) sorting much faster under wxMSW.
+    //     make default ( alphabetical ) sorting much faster under wxMSW.
     wxDECLARE_DYNAMIC_CLASS( CatalogTreeCtrl );
     wxDECLARE_EVENT_TABLE( );
 };

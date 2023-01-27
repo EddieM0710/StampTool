@@ -5,20 +5,20 @@
  * @version 0.1
  * @date 2022-03-23
  *
- * @copyright Copyright (c) 2022
+ * @copyright Copyright ( c ) 2022
  * 
- * This file is part of AlbumGenerator.
+ * This file is part of StampTool.
  *
- * AlbumGenerator is free software: you can redistribute it and/or modify it under the 
+ * StampTool is free software: you can redistribute it and/or modify it under the 
  * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
- * AlbumGenerator is distributed in the hope that it will be useful, but WITHOUT ANY 
+ * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY 
  * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License along with 
- * AlbumGenerator. If not, see <https://www.gnu.org/licenses/>.
+ * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
  **************************************************/
 
@@ -37,15 +37,15 @@
 #include "gui/CatalogTreeCtrl.h"
 #include "gui/DesignTreeCtrl.h"
 
-namespace Utils {
+namespace Utils { 
 
 
     wxString StampLink::GetID( ) 
     { 
         DesignTreeCtrl* designTreeCtrl = GetDesignTreeCtrl( );
-        DesignTreeItemData* data = (DesignTreeItemData*)designTreeCtrl->GetItemData(m_designTreeID);
-        Design::AlbumBase* node = data->GetNodeElement();
-        wxString id = node->GetAttrStr(Design::AT_CatNbr);
+        DesignTreeItemData* data = ( DesignTreeItemData* )designTreeCtrl->GetItemData( m_designTreeID );
+        Design::AlbumBase* node = data->GetNodeElement( );
+        wxString id = node->GetAttrStr( Design::AT_CatNbr );
         return id; 
     };
     
@@ -55,25 +55,25 @@ namespace Utils {
     };
 
     void StampLink::Clear( )
-    {
+    { 
         CatalogTreeCtrl* catTreeCtrl = GetCatalogTreeCtrl( );
         if ( catTreeCtrl )
-        {
+        { 
             wxTreeItemId catID = GetCatTreeID( );
             if ( catID.IsOk( ) )
-            {
-                CatalogTreeItemData* catData =
+            { 
+                CatalogTreeItemData* catData = 
                     ( CatalogTreeItemData* )catTreeCtrl->GetItemData( catID );
                 catData->SetStampLink( ( StampLink* )0 );
             }
         }
         DesignTreeCtrl* designTreeCtrl = GetDesignTreeCtrl( );
         if ( designTreeCtrl )
-        {
+        { 
             wxTreeItemId albumID = GetDesignTreeID( );
             if ( albumID.IsOk( ) )
-            {
-                DesignTreeItemData* albumData =
+            { 
+                DesignTreeItemData* albumData = 
                     ( DesignTreeItemData* )designTreeCtrl->GetItemData( albumID );
                 albumData->SetStampLink( ( StampLink* )0 );
             }
@@ -81,13 +81,13 @@ namespace Utils {
     }
 
     void StampList::Clear( )
-    {
+    { 
         CatalogTreeCtrl* catTreeCtrl = GetCatalogTreeCtrl( );
         DesignTreeCtrl* designTreeCtrl = GetDesignTreeCtrl( );
         if ( catTreeCtrl )
-        {
+        { 
             for ( int i = 0; i < m_list.size( ); i++ )
-            {
+            { 
                 StampLink* link = ( StampLink* )m_list.at( i );
                 catTreeCtrl->RemoveStampLink( link->GetCatTreeID( ) );
                 link->Clear( );
@@ -97,9 +97,9 @@ namespace Utils {
         }
     }
     void StampList::ClearCatalogLinks( )
-    {
+    { 
         for ( int i = 0; i < m_list.size( ); i++ )
-        {
+        { 
             StampLink* link = ( StampLink* )m_list.at( i );
             link->SetCatTreeID( ( wxTreeItemId )0 );
         }
@@ -107,14 +107,14 @@ namespace Utils {
 
 
     int StampList::FindStamp( wxString stampID )
-    {
-        if( !stampID.IsEmpty() )
-        {
+    { 
+        if( !stampID.IsEmpty( ) )
+        { 
             for ( int i = 0; i < m_list.size( ); i++ )
-            {
+            { 
                 StampLink* link = ( StampLink* )m_list.at( i );
                 if ( link->IsStamp( stampID ) )
-                {
+                { 
                     return i;
                 }
             }
@@ -123,21 +123,21 @@ namespace Utils {
     };
 
     StampLink* StampList::FindStampLink( wxString stampID )
-    {
+    { 
         int pos = FindStamp( stampID );
         if ( pos >= 0 )
-        {
+        { 
             return m_list.at( pos );
         }
         return ( StampLink* )0;
     }
 
     StampLink* StampList::AddStamp( wxString stampId )
-    {
+    { 
         int pos = FindStamp( stampId );
 
         if ( pos >= 0 )
-        {
+        { 
             return m_list.at( pos );
         }
         StampLink* stampLink = new StampLink( );
@@ -146,18 +146,18 @@ namespace Utils {
     };
 
     void StampList::SetCatTreeID( wxString stampID, wxTreeItemId treeID )
-    {
+    { 
         int pos = FindStamp( stampID );
         if ( pos >= 0 )
-        {
+        { 
             m_list.at( pos )->SetCatTreeID( treeID );
         }
     }
     bool StampList::GetCatTreeID( wxString stampID, wxTreeItemId& treeID )
-    {
+    { 
         int pos = FindStamp( stampID );
         if ( pos >= 0 )
-        {
+        { 
             treeID = m_list.at( pos )->GetCatTreeID( );
             return treeID.IsOk( );
         }
@@ -165,25 +165,25 @@ namespace Utils {
     }
 
     // void StampList::SetCatNode( wxString stampID, wxXmlNode* catStamp )
-    // {
+    // { 
     //     int pos = FindStamp( stampID );
     //     if ( pos >= 0 )
-    //     {
+    //     { 
     //         m_list.at( pos )->SetCatNode( catStamp );
     //     }
     // }
 
     // wxXmlNode* StampList::GetCatNode( wxString stampID )
-    // {
+    // { 
     //     int pos = FindStamp( stampID );
     //     if ( pos >= 0 )
-    //     {
+    //     { 
     //         return m_list.at( pos )->GetCatNode( );
     //     }
     //     return ( wxXmlNode* )0;
     // }
     void StampLink::Update( wxTreeItemId catID, wxTreeItemId albumID )
-    {
+    { 
         SetDesignTreeID( albumID );
         SetCatTreeID( catID );
         // CatalogTreeCtrl* treeCtrl = GetCatalogTreeCtrl( );

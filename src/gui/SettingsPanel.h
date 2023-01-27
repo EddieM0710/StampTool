@@ -5,20 +5,20 @@
  * @version 0.1
  * @date 2022-01-12
  *
- * @copyright Copyright (c) 2022  
+ * @copyright Copyright ( c ) 2022  
  * 
- * This file is part of AlbumGenerator.
+ * This file is part of StampTool.
  *
- * AlbumGenerator is free software: you can redistribute it and/or modify it under the 
+ * StampTool is free software: you can redistribute it and/or modify it under the 
  * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
- * AlbumGenerator is distributed in the hope that it will be useful, but WITHOUT ANY 
+ * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY 
  * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License along with 
- * AlbumGenerator. If not, see <https://www.gnu.org/licenses/>.
+ * StampTool. If not, see <https://www.gnu.org/licenses/>.
  */
 
 #ifndef _SETTINGSPANEL_H_
@@ -51,9 +51,9 @@ class LabeledTextBox;
 #define ID_CATALOGTEXTBOX 11004
 #define ID_OPENLASTCHECKBOX 11005
 #define SYMBOL_SETTINGSPANEL_STYLE wxTAB_TRAVERSAL
-#define SYMBOL_SETTINGSPANEL_TITLE _("SettingsPanel")
+#define SYMBOL_SETTINGSPANEL_TITLE _( "SettingsPanel" )
 #define SYMBOL_SETTINGSPANEL_IDNAME ID_SETTINGSPANEL
-#define SYMBOL_SETTINGSPANEL_SIZE wxSize(400, 200)
+#define SYMBOL_SETTINGSPANEL_SIZE wxSize( 400, 200 )
 #define SYMBOL_SETTINGSPANEL_POSITION wxDefaultPosition
 // control identifiers
 
@@ -65,24 +65,24 @@ class LabeledTextBox;
 class SettingsPanel: public wxPanel
 {    
     DECLARE_DYNAMIC_CLASS( SettingsPanel )
-    DECLARE_EVENT_TABLE()
+    DECLARE_EVENT_TABLE( )
 
 public:
     /// Constructors
-    SettingsPanel();
+    SettingsPanel( );
     SettingsPanel( wxWindow* parent, wxWindowID id = SYMBOL_SETTINGSPANEL_IDNAME, const wxPoint& pos = SYMBOL_SETTINGSPANEL_POSITION, const wxSize& size = SYMBOL_SETTINGSPANEL_SIZE, long style = SYMBOL_SETTINGSPANEL_STYLE );
 
     /// Creation
     bool Create( wxWindow* parent, wxWindowID id = SYMBOL_SETTINGSPANEL_IDNAME, const wxPoint& pos = SYMBOL_SETTINGSPANEL_POSITION, const wxSize& size = SYMBOL_SETTINGSPANEL_SIZE, long style = SYMBOL_SETTINGSPANEL_STYLE );
 
     /// Destructor
-    ~SettingsPanel();
+    ~SettingsPanel( );
 
     /// Initialises member variables
-    void Init();
+    void Init( );
 
     /// Creates the controls and sizers
-    void CreateControls();
+    void CreateControls( );
 
 // SettingsPanel event handler declarations
 
@@ -104,7 +104,7 @@ public:
 // SettingsPanel member function declarations
 
     /// Should we show tooltips?
-    static bool ShowToolTips();
+    static bool ShowToolTips( );
 
 // SettingsPanel member variables
     LabeledTextBox* m_imageDirectory;

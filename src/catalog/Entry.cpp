@@ -1,24 +1,24 @@
 /**
  * @file Entry.cpp
- * @author Eddie Monroe ()
+ * @author Eddie Monroe ( )
  * @brief
  * @version 0.1
  * @date 2021-02-25
  *
- * @copyright Copyright (c) 2021
+ * @copyright Copyright ( c ) 2021
  * 
- * This file is part of AlbumGenerator.
+ * This file is part of StampTool.
  *
- * AlbumGenerator is free software: you can redistribute it and/or modify it under the 
+ * StampTool is free software: you can redistribute it and/or modify it under the 
  * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
- * AlbumGenerator is distributed in the hope that it will be useful, but WITHOUT ANY 
+ * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY 
  * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License along with 
- * AlbumGenerator. If not, see <https://www.gnu.org/licenses/>.
+ * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
  **************************************************/
 
@@ -43,20 +43,20 @@
 #include <cstdio>
 #include "utils/XMLUtilities.h"
 
-namespace Catalog {
+namespace Catalog { 
 
     bool Entry::IsOK( )
-    {
+    { 
         wxXmlNode* ele = GetCatXMLNode( );
         wxString str;
         if ( ele )
-        {
+        { 
             str = ele->GetName( );
             str = CatalogBaseNames[ NT_Entry ];
         }
         if ( GetCatXMLNode( )
             && !CatalogBaseNames[ NT_Entry ].Cmp( GetCatXMLNode( )->GetName( ) ) )
-        {
+        { 
             m_OK = true;
             return m_OK;
         }
@@ -65,20 +65,20 @@ namespace Catalog {
     };
 
     void Entry::SetAttr( DataTypes type, wxString val )
-    {
+    { 
         if ( IsOK( ) )
-        {
+        { 
             Utils::SetAttrStr( GetCatXMLNode( ), DT_XMLDataNames[ type ], val );
         };
     }
 
     wxString Entry::GetAttr( DataTypes type )
-    {
+    { 
         if ( IsOK( ) )
-        {
+        { 
             const wxXmlAttribute* attr = Utils::GetAttribute( GetCatXMLNode( ), DT_XMLDataNames[ type ] );
             if ( attr )
-            {
+            { 
                 wxString str = attr->GetValue( );
                 return str;
             }
@@ -87,13 +87,13 @@ namespace Catalog {
     }
 
     CheckedStatusType Entry::GetCheckedStatusType( )
-    {
+    { 
         wxString status = GetAttr( DT_CheckedStatus );
         for ( int i = ST_Checked; i < ST_NbrCheckedStatusTypes; i++ )
-        {
+        { 
             wxString str = ST_CheckedStatusStrings[ i ];
             if ( !status.CmpNoCase( ST_CheckedStatusStrings[ i ] ) )
-            {
+            { 
                 return ( CheckedStatusType )i;
             }
         }
@@ -101,13 +101,13 @@ namespace Catalog {
     };
 
     InventoryStatusType Entry::GetInventoryStatusType( )
-    {
+    { 
         wxString status = GetAttr( DT_InventoryStatus );
         for ( int i = ST_None; i < ST_NbrInventoryStatusTypes; i++ )
-        {
+        { 
             wxString str = ST_InventoryStatusStrings[ i ];
             if ( !status.CmpNoCase( ST_InventoryStatusStrings[ i ] ) )
-            {
+            { 
                 return ( InventoryStatusType )i;
             }
         }
@@ -115,13 +115,13 @@ namespace Catalog {
     };
 
     FormatType Entry::GetFormatType( )
-    {
+    { 
         wxString format = GetAttr( DT_Format );
         for ( int i = FT_FormatUnknown; i < FT_NbrTypes; i++ )
-        {
+        { 
             wxString str = FT_FormatStrings[ i ];
             if ( !format.CmpNoCase( FT_FormatStrings[ i ] ) )
-            {
+            { 
                 return ( FormatType )i;
             }
         }
@@ -129,11 +129,11 @@ namespace Catalog {
     }
 
     DataTypes Entry::FindDataType( wxString name )
-    {
+    { 
         for ( int i = DT_ID_Nbr; i < DT_NbrTypes; i++ )
-        {
+        { 
             if ( !name.Cmp( DT_XMLDataNames[ i ] ) )
-            {
+            { 
                 return ( DataTypes )i;
             }
         }
@@ -141,45 +141,45 @@ namespace Catalog {
     }
 
     bool Entry::IsMultiple( )
-    {
+    { 
         FormatType format = GetFormatType( );
         if ( format == FT_Se_tenant || format == FT_Mini_Sheet
             || format == FT_Souvenir_Sheet || format == FT_Booklet
             || format == FT_Booklet_Pane )
-        {
+        { 
             return true;
         }
         return false;
     }
 
     wxString Entry::GetYear( )
-    {
+    { 
         wxDateTime dt;
         wxString dateStr = GetIssuedDate( );
         wxString::const_iterator end;
-         wxDateTime dateDef = wxDateTime::Today();
+         wxDateTime dateDef = wxDateTime::Today( );
         if ( dt.ParseFormat( dateStr, "%Y-%m-%d", dateDef, &end ) )
-        {
+        { 
             int year = dt.GetYear( );
-            char str[40];
-            sprintf(str, "%d", year );
+            char str[ 40 ];
+            sprintf( str, "%d", year );
             wxString yearStr = str;
             return yearStr;            
         }
         else if (  dt.ParseFormat( dateStr, "%Y", dateDef, &end )  )
-        {
+        { 
             int year = dt.GetYear( );
-            char str[40];
-            sprintf(str, "%d", year );
+            char str[ 40 ];
+            sprintf( str, "%d", year );
             wxString yearStr = str;
             return yearStr;            
 
         }
         else if ( dt.ParseFormat( dateStr, "%Y-%m", dateDef, &end ) ) 
-        {
+        { 
             int year = dt.GetYear( );
-            char str[40];
-            sprintf(str, "%d", year );
+            char str[ 40 ];
+            sprintf( str, "%d", year );
             wxString yearStr = str;
             return yearStr;
         }
@@ -187,10 +187,10 @@ namespace Catalog {
     }
 
     wxString Entry::GetDecade( )
-    {
+    { 
         wxString year = GetYear( );
         if ( !year.Cmp( "Unknown" ) )
-        {
+        { 
             return year;
         }
 
@@ -203,10 +203,10 @@ namespace Catalog {
     }
 
     wxString Entry::GetPeriod( )
-    {
+    { 
         wxString year = GetYear( );
         if ( !year.Cmp( "Unknown" ) )
-        {
+        { 
             return year;
         }
         double yd;
@@ -219,15 +219,15 @@ namespace Catalog {
         wxString upperDivisionStr = GetSettings( )->GetUpperDivision( );
         upperDivisionStr.ToLong( &upperDivision );
         if ( yd < lowerDivision )
-        {
+        { 
             return GetSettings( )->GetLowerPeriod( );
         }
         else if ( yd >= upperDivision )
-        {
+        { 
             return GetSettings( )->GetUpperPeriod( );
         }
         else
-        {
+        { 
             return GetSettings( )->GetMiddlePeriod( );
         }
     }
@@ -262,9 +262,9 @@ namespace Catalog {
     wxString Entry::GetInventoryStatus( )
     { 
         wxString status = GetAttr( DT_InventoryStatus );
-        if ( status.IsEmpty() )
-        {
-            return ST_InventoryStatusStrings[ST_None];
+        if ( status.IsEmpty( ) )
+        { 
+            return ST_InventoryStatusStrings[ ST_None ];
         }
         return status;
     }
@@ -297,36 +297,36 @@ namespace Catalog {
     void Entry::SetAccuracy( wxString val ) { SetAttr( DT_Accuracy, val ); };
 
     wxString Entry::GetClassificationName( Entry* entry, CatalogBaseType type )
-    {
+    { 
         switch ( type )
-        {
+        { 
         case NT_Period:
-        {
+        { 
             return entry->GetPeriod( );
             break;
         }
         case NT_Decade:
-        {
+        { 
             return entry->GetDecade( );
             break;
         }
         case NT_Year:
-        {
+        { 
             return entry->GetYear( );
             break;
         }
         case NT_Emission:
-        {
+        { 
             return entry->GetEmission( );
             break;
         }
         case NT_Catalog:
-        {
+        { 
             return "Catalog";
             break;
         }
         case NT_Country:
-        {
+        { 
             return entry->GetCountry( );
             break;
         }
@@ -336,50 +336,50 @@ namespace Catalog {
     }
 
     wxXmlNode* Entry::AddSpecimen( )
-    {
+    { 
         wxXmlNode* ele = GetCatXMLNode( );
         if ( ele )
-        {
+        { 
             return Utils::NewNode( ele, CatalogBaseNames[ NT_Specimen ] );
         }
         return ( wxXmlNode* )0;
     }
 
     void Entry::DeleteSpecimen( wxXmlNode* deleteThisNode )
-    {
+    { 
         wxXmlNode* ele = GetCatXMLNode( );
         if ( ele )
-        {
+        { 
             ele->RemoveChild( deleteThisNode );
         }
     }
 
     bool Entry::HasChildSpecimen( )
-    {
+    { 
         wxXmlNode* ele = GetCatXMLNode( );
         if ( ele )
-        {
+        { 
             if ( Utils::FirstChildElement( ele, CatalogBaseNames[ NT_Specimen ] ) )
-            {
+            { 
                 return true;
             }
         }
         return false;
     }
     wxXmlNode* Entry::GetFirstChildSpecimen( )
-    {
+    { 
         wxXmlNode* ele = GetCatXMLNode( );
         if ( ele )
-        {
+        { 
             return Utils::FirstChildElement( ele, CatalogBaseNames[ NT_Specimen ] );
         }
         return ( wxXmlNode* )0;
     }
     wxXmlNode* Entry::GetNextChildSpecimen( )
-    {
+    { 
         wxXmlNode* ele = GetCatXMLNode( );
         if ( ele )
-        {
+        { 
             return Utils::GetNext( ele, CatalogBaseNames[ NT_Specimen ] );
         }
         return ( wxXmlNode* )0;
@@ -387,31 +387,31 @@ namespace Catalog {
 
 
     wxXmlNode* Entry::AddCode( )
-    {
+    { 
         wxXmlNode* ele = GetCatXMLNode( );
         if ( ele )
-        {
+        { 
             return Utils::NewNode( ele, CatalogBaseNames[ NT_CatalogCode ] );
         }
         return ( wxXmlNode* )0;
     }
 
     void Entry::DeleteCode( wxXmlNode* deleteThisNode )
-    {
+    { 
         wxXmlNode* ele = GetCatXMLNode( );
         if ( ele )
-        {
+        { 
             ele->RemoveChild( deleteThisNode );
         }
     }
 
     bool Entry::HasChildCode( )
-    {
+    { 
         wxXmlNode* ele = GetCatXMLNode( );
         if ( ele )
-        {
+        { 
             if ( Utils::FirstChildElement( ele, CatalogBaseNames[ NT_CatalogCode ] ) )
-            {
+            { 
                 return true;
             }
         }
@@ -419,38 +419,38 @@ namespace Catalog {
     }
 
     wxXmlNode* Entry::GetFirstChildCode( )
-    {
+    { 
         wxXmlNode* ele = GetCatXMLNode( );
         if ( ele )
-        {
+        { 
             return Utils::FirstChildElement( ele, CatalogBaseNames[ NT_CatalogCode ] );
         }
         return ( wxXmlNode* )0;
     }
 
     wxXmlNode* Entry::GetNextChildCode( wxXmlNode* ele )
-    {
+    { 
         if ( ele )
-        {
+        { 
             return Utils::GetNext( ele, CatalogBaseNames[ NT_CatalogCode ] );
         }
         return ( wxXmlNode* )0;
     }
 
     wxXmlNode* Entry::GetCodeForCatalog( const char* catalog )
-    {
+    { 
         wxXmlNode* ele = GetCatXMLNode( );
         if ( ele )
-        {
+        { 
             wxXmlNode* childCode = Utils::FirstChildElement( ele, CatalogBaseNames[ NT_CatalogCode ] );
             if ( childCode )
-            {
+            { 
                 const wxXmlAttribute* attr = Utils::GetAttribute( childCode, CC_CatalogCodeNames[ CC_Catalog ] );
                 if ( attr )
-                {
+                { 
                     const char* code = attr->GetValue( );
                     if ( !strncmp( catalog, code, strlen( catalog ) ) )
-                    {
+                    { 
                         return childCode;
                     }
                 }
@@ -461,20 +461,20 @@ namespace Catalog {
 
 
     void Entry::ProcessCatalogCodes( wxString catCodes )
-    {
+    { 
         if ( !HasChildCode( ) )
-        {
+        { 
             if ( catCodes.IsEmpty( ) )
-            {
+            { 
                 return;
             }
 
-            wxStringTokenizer tokenizer( catCodes, "," );
+            wxStringTokenizer tokenizer( catCodes, ", " );
 
             wxString valStr;
             wxString rest;
             while ( tokenizer.HasMoreTokens( ) )
-            {
+            { 
                 valStr = tokenizer.GetNextToken( );
                 //std::cout << "Entry::ProcessCatalogCodes>"<< valStr<<"<\n";
                 if ( valStr.StartsWith( wxT( "\"" ), &rest ) )

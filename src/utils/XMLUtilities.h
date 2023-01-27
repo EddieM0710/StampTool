@@ -1,24 +1,24 @@
 /**
  * @file XMLUtilities.h
- * @author Eddie Monroe ()
+ * @author Eddie Monroe ( )
  * @brief
  * @version 0.1
  * @date 2021-02-25
  *
- * @copyright Copyright (c) 2021
+ * @copyright Copyright ( c ) 2021
  * 
- * This file is part of AlbumGenerator.
+ * This file is part of StampTool.
  *
- * AlbumGenerator is free software: you can redistribute it and/or modify it under the 
+ * StampTool is free software: you can redistribute it and/or modify it under the 
  * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
- * AlbumGenerator is distributed in the hope that it will be useful, but WITHOUT ANY 
+ * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY 
  * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License along with 
- * AlbumGenerator. If not, see <https://www.gnu.org/licenses/>.
+ * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
  **************************************************/
 
@@ -32,16 +32,16 @@
 
 class wxTextOutputStream;
 
-namespace Utils {
+namespace Utils { 
 
     // Class for iterating an XML heirarchy
     class XMLIterator
-    {
+    { 
     private:
         wxXmlNode* m_parent;      // pointer to parent of current element
         wxXmlNode* m_currElement; // pointer to the current element
         XMLIterator* m_iterator;   // iterator for children of this element
-        bool m_decend;             // bool; true => iterate children
+        bool m_decend;             // bool; true = > iterate children
         bool m_firstDone; // bool; true if First has been called; if not true Next
                           // just returns null
 
@@ -52,20 +52,20 @@ namespace Utils {
          * @param   parent : is the xml element whose children will be
          * iterated.
          * @param   decend : false will iterate only the first level
-         * childeren. - true (default) will iterate  heirarchy
+         * childeren. - true ( default ) will iterate  heirarchy
          */
         XMLIterator( wxXmlNode* parent, bool decend = true );
         ~XMLIterator( );
 
         /**
          * Returns the first child or Null
-         * @return {wxXmlNode*}  :
+         * @return { wxXmlNode*}  :
          */
         wxXmlNode* First( );
 
         /**
          *  Successively returns the next child or Null if finished.
-         * @return {wxXmlNode*}  :
+         * @return { wxXmlNode*} :
          */
         wxXmlNode* Next( );
     };

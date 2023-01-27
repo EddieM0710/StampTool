@@ -1,25 +1,25 @@
 /**
  * @file Stamp.h
- * @author Eddie Monroe ()
+ * @author Eddie Monroe ( )
  * @brief This is a wrapper of an wxXmlNode for
  * safe/convenient getting/putting.
  * @version 0.1
  * @date 2021-02-25
  *
- * @copyright Copyright (c) 2021
+ * @copyright Copyright ( c ) 2021
  * 
- * This file is part of AlbumGenerator.
+ * This file is part of StampTool.
  *
- * AlbumGenerator is free software: you can redistribute it and/or modify it under the 
+ * StampTool is free software: you can redistribute it and/or modify it under the 
  * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
- * AlbumGenerator is distributed in the hope that it will be useful, but WITHOUT ANY 
+ * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY 
  * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License along with 
- * AlbumGenerator. If not, see <https://www.gnu.org/licenses/>.
+ * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
  **************************************************/
 
@@ -32,7 +32,7 @@
 
 
 
-namespace Catalog {
+namespace Catalog { 
 
     /**
     * @todo 2 fix so the GetName  refers to the name of an element and GetTitle refers to the attribute of an element.
@@ -47,7 +47,7 @@ namespace Catalog {
       *
       **************************************************/
     class Entry : public CatalogBase
-    {
+    { 
     public:
 
         /**
@@ -55,7 +55,7 @@ namespace Catalog {
          *
          **************************************************/
         Entry( ) : CatalogBase( )
-        {
+        { 
             SetNodeType( NT_Entry );
             IsOK( );
         };
@@ -66,7 +66,7 @@ namespace Catalog {
          * @param entry
          **************************************************/
         Entry( wxXmlNode* entry ) : CatalogBase( entry )
-        {
+        { 
             SetNodeType( NT_Entry );
             IsOK( );
         };
@@ -90,7 +90,7 @@ namespace Catalog {
          * @brief Retrieves the value of the attribute of the entry
          *
          * @return wxString  wxString representation of the field
-         * @{
+         * @{ 
          **************************************************/
 
         wxString GetAccuracy( ); ///< Get the entry Accuracy field
@@ -145,7 +145,7 @@ namespace Catalog {
          * @param type
          * @return wxString
          **************************************************/
-        wxString GetVal( DataTypes type ) { GetAttr( type ); };
+        wxString GetVal( DataTypes type ) { return GetAttr( type ); };
 
         /**
          * @brief Set the Val object
@@ -160,7 +160,7 @@ namespace Catalog {
          * @brief Sets the value of the appropriate attribute of the entry
          *
          * @param val  the value to set the attribute to.
-         * @{
+         * @{ 
          **************************************************/
         void SetAccuracy( wxString val ); ///< Get the entry Accuracy field 
         void SetCatalogCodes( wxString val ); ///< Get the entry CatalogCodes field 
@@ -204,7 +204,7 @@ namespace Catalog {
          * @param type
          **************************************************/
         void SetFormatType( FormatType type )
-        {
+        { 
             SetAttr( DT_Format, FT_FormatStrings[ type ] );
         };
 
@@ -238,11 +238,11 @@ namespace Catalog {
          * @param type
          **************************************************/
         void SetCheckedStatusType( CheckedStatusType type )
-        {
+        { 
             SetAttr( DT_CheckedStatus, ST_CheckedStatusStrings[ type ] );
         };
         void SetInventoryStatusType( InventoryStatusType type )
-        {
+        { 
             SetAttr( DT_InventoryStatus, ST_InventoryStatusStrings[ type ] );
         };
 
@@ -304,7 +304,7 @@ namespace Catalog {
          * @return wxString
          **************************************************/
         wxString GetLabel( )
-        {
+        { 
             wxString label = GetID( );
             label.Append( " - " );
             label.Append( GetName( ) );
@@ -409,7 +409,7 @@ namespace Catalog {
          * @brief
          *
          **************************************************/
-        void ProcessCatalogCodes( wxString catCodes);
+        void ProcessCatalogCodes( wxString catCodes );
 
 
     private:

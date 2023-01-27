@@ -5,20 +5,20 @@
  * @version 0.1
  * @date 2022-02-02
  *
- * @copyright Copyright (c) 2022
+ * @copyright Copyright ( c ) 2022
  * 
- * This file is part of AlbumGenerator.
+ * This file is part of StampTool.
  *
- * AlbumGenerator is free software: you can redistribute it and/or modify it under the 
+ * StampTool is free software: you can redistribute it and/or modify it under the 
  * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
- * AlbumGenerator is distributed in the hope that it will be useful, but WITHOUT ANY 
+ * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY 
  * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License along with 
- * AlbumGenerator. If not, see <https://www.gnu.org/licenses/>.
+ * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
  **************************************************/
 #ifndef Document_h
@@ -36,7 +36,7 @@
 #include "odt/Settings.h"
 #include "odt/Styles.h"
 
-namespace ODT {
+namespace ODT { 
 
     class DocumentManager;
 
@@ -45,7 +45,7 @@ namespace ODT {
      *
      **************************************************/
     class Document
-    {
+    { 
     public:
 
         /**
@@ -58,10 +58,10 @@ namespace ODT {
          * @brief Destroy the Document object
          *
          **************************************************/
-        ~Document( ) {};
+        ~Document( ) { };
 
         /**
-         * @brief Create a Temp Document Directory object. created at /Temp/.StampAlbumGen
+         * @brief Create a Temp Document Directory object. created at /Temp/.StampStampTool
          *
          * @return true
          * @return false
@@ -217,19 +217,19 @@ namespace ODT {
         Styles* StylesDoc( ) { return m_stylesDoc; };
         Manifest* ManifestDoc( ) { return m_manifestDoc; };
         Meta* MetaDoc( ) { return m_metaDoc; };
-        wxString GetTmpDir(){ return m_tmpDir.GetFullPath();};
-        wxString GetStampGenDir(){ return m_stampAlbumGen.GetFullPath();};
-        wxString GetDocFilesDir(){ return m_docFiles.GetFullPath();};
-        wxString GetThumbnailsDir(){ return m_thumbnailsDir.GetFullPath();};
-        wxString GetMetaInf(){ return m_metaInfDir.GetFullPath();};;
-        wxString GetConfigurationsDir(){ return m_configurations2Dir.GetFullPath();};
-        wxString GetPicturesDir(){ return m_picturesDir.GetFullPath();};
+        wxString GetTmpDir( ){ return m_tmpDir.GetFullPath( ); };
+        wxString GetStampGenDir( ){ return m_stampStampTool.GetFullPath( ); };
+        wxString GetDocFilesDir( ){ return m_docFiles.GetFullPath( ); };
+        wxString GetThumbnailsDir( ){ return m_thumbnailsDir.GetFullPath( ); };
+        wxString GetMetaInf( ){ return m_metaInfDir.GetFullPath( ); };;
+        wxString GetConfigurationsDir( ){ return m_configurations2Dir.GetFullPath( ); };
+        wxString GetPicturesDir( ){ return m_picturesDir.GetFullPath( ); };
 
 
     private:
 
         wxFileName m_tmpDir;
-        wxFileName m_stampAlbumGen;
+        wxFileName m_stampStampTool;
         wxFileName m_docFiles;
         wxFileName m_thumbnailsDir;
         wxFileName m_metaInfDir;

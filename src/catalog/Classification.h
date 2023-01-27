@@ -1,25 +1,25 @@
 /**
  * @file Classification.h
- * @author Eddie Monroe ()
+ * @author Eddie Monroe ( )
  * @brief This is a wrapper of an wxXmlNode for
  * safe/convenient getting/putting.
  * @version 0.1
  * @date 2021-02-25
  *
- * @copyright Copyright (c) 2021
+ * @copyright Copyright ( c ) 2021
  * 
- * This file is part of AlbumGenerator.
+ * This file is part of StampTool.
  *
- * AlbumGenerator is free software: you can redistribute it and/or modify it under the 
+ * StampTool is free software: you can redistribute it and/or modify it under the 
  * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
- * AlbumGenerator is distributed in the hope that it will be useful, but WITHOUT ANY 
+ * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY 
  * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License along with 
- * AlbumGenerator. If not, see <https://www.gnu.org/licenses/>.
+ * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
  **************************************************/
 #ifndef Classification_H
@@ -32,7 +32,7 @@
 
 
 
-namespace Catalog {
+namespace Catalog { 
 
     /**
      * @brief This is a wrapper of an wxXmlNode for
@@ -41,7 +41,7 @@ namespace Catalog {
      *
      **************************************************/
     class Classification : public CatalogBase
-    {
+    { 
     public:
         /**
          * @brief Construct a new Classification object
@@ -51,7 +51,7 @@ namespace Catalog {
          *
          **************************************************/
         Classification( void ) : CatalogBase( )
-        {
+        { 
             SetXMLCatNode( 0 );
             SetNodeType( ( CatalogBaseType )-1 );
         }
@@ -63,13 +63,13 @@ namespace Catalog {
          * node type or this instance will be invalid.
          **************************************************/
         Classification( wxXmlNode* node ) : CatalogBase( node )
-        {
+        { 
             if ( IsOK( ) )
-            {
+            { 
                 SetNodeType( GetNodeType( ) );
             }
             else
-            {
+            { 
                 SetNodeType( ( CatalogBaseType )-1 );
             }
         };
@@ -92,7 +92,7 @@ namespace Catalog {
         /**
          * @brief Gets the XML attribute value of this node type.
          *
-         * @param  type   a valid data type (DataTypes)
+         * @param  type   a valid data type ( DataTypes )
          * @return wxString   the value of this type or "" if none.
          **************************************************/
         wxString GetAttr( ClassificationTypes type );
@@ -100,7 +100,7 @@ namespace Catalog {
         /**
          * @brief Sets the node type to val.
          *
-         * This is actually setting an XML attribute of this node to type=val.
+         * This is actually setting an XML attribute of this node to type = val.
          *
          * @param type   a valid data type
          * @param val   the string to be associated with this type
@@ -113,7 +113,7 @@ namespace Catalog {
          * @param  type   a valid data type
          * @return wxString  the value of this type or "" if none.
          **************************************************/
-        wxString GetVal( ClassificationTypes type ) { GetAttr( type ); };
+        wxString GetVal( ClassificationTypes type ) { return GetAttr( type ); };
 
         /**
          * @brief Set the Val object

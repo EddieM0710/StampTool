@@ -5,20 +5,20 @@
  * @version 0.1
  * @date 2022-02-04
  *
- * @copyright Copyright (c) 2022
+ * @copyright Copyright ( c ) 2022
  * 
- * This file is part of AlbumGenerator.
+ * This file is part of StampTool.
  *
- * AlbumGenerator is free software: you can redistribute it and/or modify it under the 
+ * StampTool is free software: you can redistribute it and/or modify it under the 
  * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
- * AlbumGenerator is distributed in the hope that it will be useful, but WITHOUT ANY 
+ * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY 
  * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License along with 
- * AlbumGenerator. If not, see <https://www.gnu.org/licenses/>.
+ * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
  **************************************************/
 
@@ -30,7 +30,7 @@
 #include "Defs.h"
 #include "gui/AlbumImagePanel.h"
 
-namespace Design {
+namespace Design { 
 
 
     /**
@@ -38,7 +38,7 @@ namespace Design {
      *
      **************************************************/
     class Title 
-    {
+    { 
 
     public:
 
@@ -56,30 +56,30 @@ namespace Design {
          * @brief Destroy the Title object
          *
          **************************************************/
-        ~Title( ) {};
-        wxString GetTitle() { return m_title; };
-        void SetTitle(wxString str ) {  m_title = str; };
-        void SetWidth( double w ){ m_titleRect.SetWidth(w); };
-        void  SetFont( wxFont *font ){ m_font = font;};
-        wxFont* GetFont(){ return m_font;};
+        ~Title( ) { };
+        wxString GetTitle( ) { return m_title; };
+        void SetTitle( wxString str ) {  m_title = str; };
+        void SetWidth( double w ){ m_titleRect.SetWidth( w ); };
+        void  SetFont( wxFont *font ){ m_font = font; };
+        wxFont* GetFont( ){ return m_font; };
     
     void draw( wxDC& dc  )
-    {
+    { 
         wxString id;
-        wxFont font(*m_font);
+        wxFont font( *m_font );
 
         id = m_title;
-        id.Trim();
-        id.Trim(false);
-        GetAlbumImagePanel( )->MakeMultiLine( id, font, m_titleRect.GetWidth() );
-        font.SetPointSize(6);
+        id.Trim( );
+        id.Trim( false );
+        GetAlbumImagePanel( )->MakeMultiLine( id, font, m_titleRect.GetWidth( ) );
+        font.SetPointSize( 6 );
         dc.SetFont( font );
-        dc.DrawLabel(id, m_titleRect, wxALIGN_CENTER_HORIZONTAL );
+        dc.DrawLabel( id, m_titleRect, wxALIGN_CENTER_HORIZONTAL );
 
     };
 
     // void UpdateTitle( double width, wxFont font )
-    // {
+    // { 
     //     m_multiLineTitle = m_title;
 
     //     // first break into lines if necessary

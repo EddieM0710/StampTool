@@ -1,30 +1,30 @@
 /**
- * @file gui/AlbumGenFrame.h
- * @author Eddie Monroe ()
+ * @file gui/StampToolFrame.h
+ * @author Eddie Monroe ( )
  * @brief This is the application main frame.
  * @version 0.1
  * @date 2021-02-25
  *
- * @copyright Copyright (c) 2021
+ * @copyright Copyright ( c ) 2021
  *
- * This file is part of AlbumGenerator.
+ * This file is part of StampTool.
  *
- * AlbumGenerator is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * StampTool is free software: you can redistribute it and/or modify it under the
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
- * AlbumGenerator is distributed in the hope that it will be useful, but WITHOUT ANY
+ * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
  * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License along with
- * AlbumGenerator. If not, see <https://www.gnu.org/licenses/>.
+ * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
  **************************************************/
 
 
-#ifndef _ALBUMGENERATORFRAME_H_
-#define _ALBUMGENERATORFRAME_H_
+#ifndef _STAMPTOOLFRAME_H_
+#define _STAMPTOOLFRAME_H_
 
  /*!
   * Includes
@@ -46,10 +46,10 @@
  */
  //namespace Catalog { class Stamp; };
 
-class AlbumGenPanel;
+class StampToolPanel;
 
 class wxButton;
-////class CatalogVolumeData;
+////class CatalogSectionData;
 
 class CatalogPanel;
 //class CatalogTreeCtrl;
@@ -58,40 +58,40 @@ class AlbumDesignTreePanel;
  * Control identifiers
  */
 
- //#define ID_IMPORT ID_ALBUMGENERATORFRAME+1
-#define ID_TEXTSERCHMENUITEM ID_ALBUMGENERATORFRAME+2
-#define ID_SORTORDER ID_ALBUMGENERATORFRAME+3
-#define ID_ITEMVIEW ID_ALBUMGENERATORFRAME+4
-#define ID_DEFINEPERIOD ID_ALBUMGENERATORFRAME+5
-#define ID_RECENT ID_ALBUMGENERATORFRAME+6
-#define ID_RECENTMENU ID_ALBUMGENERATORFRAME+7
-#define ID_SETTINGS ID_ALBUMGENERATORFRAME+8
-#define ID_MERGE ID_ALBUMGENERATORFRAME+9
-#define ID_PREFERENCES  ID_ALBUMGENERATORFRAME+10
-#define ID_CSVIMPORT ID_ALBUMGENERATORFRAME+12
-#define ID_OPENPROJECT ID_ALBUMGENERATORFRAME+13
-#define ID_OPENDESIGN ID_ALBUMGENERATORFRAME+14
-#define ID_OPENCATALOG ID_ALBUMGENERATORFRAME+15
-#define ID_SAVEPROJECT ID_ALBUMGENERATORFRAME+16
-#define ID_SAVEDESIGN ID_ALBUMGENERATORFRAME+17
-#define ID_SAVECATALOG ID_ALBUMGENERATORFRAME+18
-#define ID_SAVEASPROJECT ID_ALBUMGENERATORFRAME+19
-#define ID_SAVEASDESIGN ID_ALBUMGENERATORFRAME+20
-#define ID_SAVEASCATALOG ID_ALBUMGENERATORFRAME+21
-#define ID_GENERATEODT ID_ALBUMGENERATORFRAME+22
-#define ID_NEWPROJECT ID_ALBUMGENERATORFRAME+23
-#define ID_NEWDESIGN ID_ALBUMGENERATORFRAME+24
-#define ID_NEWCATALOG ID_ALBUMGENERATORFRAME+25
-#define ID_CATALOGMENU ID_ALBUMGENERATORFRAME+26
-#define ID_DESIGNMENU ID_ALBUMGENERATORFRAME+27
-#define ID_ALBUMGENERATORPANELFOREIGN ID_ALBUMGENERATORPANEL
-#define SYMBOL_ALBUMGENERATORFRAME_STYLE                                         \
+ //#define ID_IMPORT ID_STAMPTOOLFRAME+1
+#define ID_TEXTSERCHMENUITEM ID_STAMPTOOLFRAME+2
+#define ID_SORTORDER ID_STAMPTOOLFRAME+3
+#define ID_ITEMVIEW ID_STAMPTOOLFRAME+4
+#define ID_DEFINEPERIOD ID_STAMPTOOLFRAME+5
+#define ID_RECENT ID_STAMPTOOLFRAME+6
+#define ID_RECENTMENU ID_STAMPTOOLFRAME+7
+#define ID_SETTINGS ID_STAMPTOOLFRAME+8
+#define ID_MERGE ID_STAMPTOOLFRAME+9
+#define ID_PREFERENCES  ID_STAMPTOOLFRAME+10
+#define ID_CSVIMPORT ID_STAMPTOOLFRAME+12
+#define ID_OPENPROJECT ID_STAMPTOOLFRAME+13
+#define ID_OPENDESIGN ID_STAMPTOOLFRAME+14
+#define ID_OPENCATALOG ID_STAMPTOOLFRAME+15
+#define ID_SAVEPROJECT ID_STAMPTOOLFRAME+16
+#define ID_SAVEDESIGN ID_STAMPTOOLFRAME+17
+#define ID_SAVECATALOG ID_STAMPTOOLFRAME+18
+#define ID_SAVEASPROJECT ID_STAMPTOOLFRAME+19
+#define ID_SAVEASDESIGN ID_STAMPTOOLFRAME+20
+#define ID_SAVEASCATALOG ID_STAMPTOOLFRAME+21
+#define ID_GENERATEODT ID_STAMPTOOLFRAME+22
+#define ID_NEWPROJECT ID_STAMPTOOLFRAME+23
+#define ID_NEWDESIGN ID_STAMPTOOLFRAME+24
+#define ID_NEWCATALOG ID_STAMPTOOLFRAME+25
+#define ID_CATALOGMENU ID_STAMPTOOLFRAME+26
+#define ID_DESIGNMENU ID_STAMPTOOLFRAME+27
+#define ID_STAMPTOOLPANELFOREIGN ID_STAMPTOOLPANEL
+#define SYMBOL_STAMPTOOLFRAME_STYLE                                         \
     wxDEFAULT_FRAME_STYLE | wxCAPTION | wxRESIZE_BORDER | wxSYSTEM_MENU        \
         | wxMINIMIZE_BOX | wxMAXIMIZE_BOX | wxCLOSE_BOX
-#define SYMBOL_ALBUMGENERATORFRAME_TITLE _( "AlbumGenFrame" )
-#define SYMBOL_ALBUMGENERATORFRAME_IDNAME ID_ALBUMGENERATORFRAME
-#define SYMBOL_ALBUMGENERATORFRAME_SIZE wxSize( 1800, 1200 )
-#define SYMBOL_ALBUMGENERATORFRAME_POSITION wxDefaultPosition
+#define SYMBOL_STAMPTOOLFRAME_TITLE _( "StampToolFrame" )
+#define SYMBOL_STAMPTOOLFRAME_IDNAME ID_STAMPTOOLFRAME
+#define SYMBOL_STAMPTOOLFRAME_SIZE wxSize( 1800, 1200 )
+#define SYMBOL_STAMPTOOLFRAME_POSITION wxDefaultPosition
 
 /**
  * @todo rework main menu
@@ -101,26 +101,26 @@ class AlbumDesignTreePanel;
 
  /**
   * @brief  This is the application main frame.
-  * @details This class contains the main menu and main window, AlbumGenPanel.
+  * @details This class contains the main menu and main window, StampToolPanel.
   * It inherits from wxFrame.
   *
   */
-class AlbumGenFrame: public wxFrame
-{
-    DECLARE_CLASS( AlbumGenFrame )
+class StampToolFrame: public wxFrame
+{ 
+    DECLARE_CLASS( StampToolFrame )
         DECLARE_EVENT_TABLE( )
 
 public:
     // Constructors
     /**
-     * @brief Default Constructor a new AlbumGenFrame object
+     * @brief Default Constructor a new StampToolFrame object
      * @details Must be used in conjunction with Create.
      *
      **************************************************/
-    AlbumGenFrame( );
+    StampToolFrame( );
 
     /**
-     * @brief Construct a new AlbumGenFrame object
+     * @brief Construct a new StampToolFrame object
      *
      * @param  parent	The parent window.
      * @param  id	An identifier for the panel. wxID_ANY is taken to mean a default.
@@ -129,12 +129,12 @@ public:
      * @param  style	The window style.
      * @see wxPanel.
      **************************************************/
-    AlbumGenFrame( wxWindow* parent,
-        wxWindowID id = SYMBOL_ALBUMGENERATORFRAME_IDNAME,
-        const wxString& caption = SYMBOL_ALBUMGENERATORFRAME_TITLE,
-        const wxPoint& pos = SYMBOL_ALBUMGENERATORFRAME_POSITION,
-        const wxSize& size = SYMBOL_ALBUMGENERATORFRAME_SIZE,
-        long style = SYMBOL_ALBUMGENERATORFRAME_STYLE );
+    StampToolFrame( wxWindow* parent, 
+        wxWindowID id = SYMBOL_STAMPTOOLFRAME_IDNAME, 
+        const wxString& caption = SYMBOL_STAMPTOOLFRAME_TITLE, 
+        const wxPoint& pos = SYMBOL_STAMPTOOLFRAME_POSITION, 
+        const wxSize& size = SYMBOL_STAMPTOOLFRAME_SIZE, 
+        long style = SYMBOL_STAMPTOOLFRAME_STYLE );
 
     /**
      * @brief  Used for two-step panel construction.
@@ -148,15 +148,15 @@ public:
      * @return bool
      *
      **************************************************/
-    bool Create( wxWindow* parent,
-        wxWindowID id = SYMBOL_ALBUMGENERATORFRAME_IDNAME,
-        const wxString& caption = SYMBOL_ALBUMGENERATORFRAME_TITLE,
-        const wxPoint& pos = SYMBOL_ALBUMGENERATORFRAME_POSITION,
-        const wxSize& size = SYMBOL_ALBUMGENERATORFRAME_SIZE,
-        long style = SYMBOL_ALBUMGENERATORFRAME_STYLE );
+    bool Create( wxWindow* parent, 
+        wxWindowID id = SYMBOL_STAMPTOOLFRAME_IDNAME, 
+        const wxString& caption = SYMBOL_STAMPTOOLFRAME_TITLE, 
+        const wxPoint& pos = SYMBOL_STAMPTOOLFRAME_POSITION, 
+        const wxSize& size = SYMBOL_STAMPTOOLFRAME_SIZE, 
+        long style = SYMBOL_STAMPTOOLFRAME_STYLE );
 
     // Destructor
-    ~AlbumGenFrame( );
+    ~StampToolFrame( );
 
     /**
      * @brief   Initialises member variables
@@ -170,15 +170,15 @@ public:
      **************************************************/
     void CreateControls( );
 
-    // AlbumGenFrame event handler declarations
+    // StampToolFrame event handler declarations
 
-   // wxEVT_CLOSE_WINDOW event handler for ID_ALBUMGENERATORFRAME
+   // wxEVT_CLOSE_WINDOW event handler for ID_STAMPTOOLFRAME
     void OnCloseWindow( wxCloseEvent& event );
 
-    // wxEVT_ICONIZE event handler for ID_ALBUMGENERATORFRAME
+    // wxEVT_ICONIZE event handler for ID_STAMPTOOLFRAME
     void OnIconize( wxIconizeEvent& event );
 
-    // wxEVT_MAXIMIZE event handler for ID_ALBUMGENERATORFRAME
+    // wxEVT_MAXIMIZE event handler for ID_STAMPTOOLFRAME
     void OnMaximize( wxMaximizeEvent& event );
 
     // wxEVT_COMMAND_MENU_SELECTED event handler for wxID_NEW
@@ -236,14 +236,14 @@ public:
     void OnRecentmenuUpdate( wxUpdateUIEvent& event );
     void DoDefinePeriodDialog( );
     void DoSettingsDialog( );
-    // AlbumGenFrame event handler declarations
+    // StampToolFrame event handler declarations
 
-    // AlbumGenFrame member function declarations
+    // StampToolFrame member function declarations
 
    /**
     * @brief Retrieves bitmap resources
     *
-    * @param  name (autogenerated. Dummy.)
+    * @param  name ( autogenerated. Dummy. )
     * @return wxBitmap null
     **************************************************/
     wxBitmap GetBitmapResource( const wxString& name );
@@ -251,13 +251,13 @@ public:
     /**
      * @brief Get the Icon Resource objectRetrieves icon resources
      *
-     * @param  name (autogenerated. Dummy.)
+     * @param  name ( autogenerated. Dummy. )
      * @return wxIcon null
      **************************************************/
     wxIcon GetIconResource( const wxString& name );
 
 
-    // AlbumGenFrame member function declarations
+    // StampToolFrame member function declarations
 
     // Should we show tooltips?
     static bool ShowToolTips( );
@@ -286,8 +286,8 @@ public:
     void SaveCatalogXML( wxString filename );
     // void LoadXML( wxString filename );
     void InitLoad( );
-    //void LinkAlbumToCat( Design::LayoutBase* child, Catalog::CatalogVolumeData* stampData );
-   // void LinkNodes( Design::LayoutBase* child, Catalog::CatalogVolumeData* stampData  );
+    //void LinkAlbumToCat( Design::LayoutBase* child, Catalog::CatalogSectionData* stampData );
+   // void LinkNodes( Design::LayoutBase* child, Catalog::CatalogSectionData* stampData  );
 
     void GenerateODTAlbum( );
 
@@ -297,19 +297,19 @@ public:
     int DoQueryMerge( int& mergeMethod );
 
 
-    void GetSetupData( int& mergeProcedure, wxXmlNode** currItem,
+    void GetSetupData( int& mergeProcedure, wxXmlNode** currItem, 
         wxXmlNode** mergeItem );
 
     int ImageGallery( );
 
-    AlbumGenPanel* GetAlbumGenPanel( ) { return m_albumGeneratorPanel; }
+    StampToolPanel* GetStampToolPanel( ) { return m_stampToolPanel; }
     CatalogPanel* GetCatalogPanel( );
 
-    // AlbumGenFrame member variables
-    AlbumGenPanel* m_albumGeneratorPanel;
+    // StampToolFrame member variables
+    StampToolPanel* m_stampToolPanel;
     CatalogPanel* m_catalogPanel;
     AlbumDesignTreePanel* m_albumDesignTreePanel;
-    // AlbumGenFrame member variables
+    // StampToolFrame member variables
 
    // container data classification sort order
     wxArrayInt m_sortOrder;
@@ -321,7 +321,7 @@ public:
     wxMenu* m_recentMenu;
     wxMenu* m_preferencesMenu;
     wxMenu* m_importMenu;
-    typedef struct {
+    typedef struct { 
         wxMenuItem* item;
         int id;
     } RecentListItem;
@@ -330,4 +330,4 @@ public:
 };
 
 #endif
-// _ALBUMGENERATORFRAME_H_
+// _STAMPTOOLFRAME_H_

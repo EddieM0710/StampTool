@@ -5,24 +5,24 @@
  * @version 0.1
  * @date 2022-01-22
  *
- * @copyright Copyright (c) 2021  
+ * @copyright Copyright ( c ) 2021  
  * 
- * This file is part of AlbumGenerator.
+ * This file is part of StampTool.
  *
- * AlbumGenerator is free software: you can redistribute it and/or modify it under the 
+ * StampTool is free software: you can redistribute it and/or modify it under the 
  * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
- * AlbumGenerator is distributed in the hope that it will be useful, but WITHOUT ANY 
+ * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY 
  * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License along with 
- * AlbumGenerator. If not, see <https://www.gnu.org/licenses/>.
+ * StampTool. If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef _CATALOGVOLUMEDATAPANEL_H_
-#define _CATALOGVOLUMEDATAPANEL_H_
+#ifndef _CATALOGSECTIONDATAPANEL_H_
+#define _CATALOGSECTIONDATAPANEL_H_
 
 
 /*!
@@ -38,7 +38,7 @@
 #include "gui/GuiDefs.h"
 
 #include "utils/Project.h"
-#include "CatalogVolumeData.h"
+#include "CatalogSectionData.h"
 /*!
  * Forward declarations
  */
@@ -54,19 +54,19 @@ class Stamp;
  */
 
 // control identifiers
-#define ID_CATALOGVOLUMEDATAPANEL 10000
+#define ID_CATALOGSECTIONDATAPANEL 10000
 #define ID_TEXTCTRL 10007
 #define ID_TREECTRL 10010
 #define ID_NEXTBUTTON 11010
 #define ID_CHECKLISTBOX 11011
 #define ID_SEARCHSTRINGTEXTCTRL 11012
 #define ID_TOGGLEBUTTON 11013
-#define ID_VOLUMECHOICE 11014
-#define SYMBOL_CATALOGVOLUMEDATAPANEL_STYLE wxTAB_TRAVERSAL
-#define SYMBOL_CATALOGVOLUMEDATAPANEL_TITLE _("CatalogPanel")
-#define SYMBOL_CATALOGVOLUMEDATAPANEL_IDNAME ID_CATALOGVOLUMEDATAPANEL
-#define SYMBOL_CATALOGVOLUMEDATAPANEL_SIZE wxSize(400, 300)
-#define SYMBOL_CATALOGVOLUMEDATAPANEL_POSITION wxDefaultPosition
+#define ID_SECTIONCHOICE 11014
+#define SYMBOL_CATALOGSECTIONDATAPANEL_STYLE wxTAB_TRAVERSAL
+#define SYMBOL_CATALOGSECTIONDATAPANEL_TITLE _( "CatalogPanel" )
+#define SYMBOL_CATALOGSECTIONDATAPANEL_IDNAME ID_CATALOGSECTIONDATAPANEL
+#define SYMBOL_CATALOGSECTIONDATAPANEL_SIZE wxSize( 400, 300 )
+#define SYMBOL_CATALOGSECTIONDATAPANEL_POSITION wxDefaultPosition
 // control identifiers
 
 
@@ -77,28 +77,28 @@ class Stamp;
 class CatalogPanel: public wxPanel
 {    
     DECLARE_DYNAMIC_CLASS( CatalogPanel )
-    DECLARE_EVENT_TABLE()
+    DECLARE_EVENT_TABLE( )
 
 public:
     /// Constructors
-    CatalogPanel();
+    CatalogPanel( );
     CatalogPanel( wxWindow* parent, 
-    wxWindowID id = SYMBOL_CATALOGVOLUMEDATAPANEL_IDNAME, 
-    const wxPoint& pos = SYMBOL_CATALOGVOLUMEDATAPANEL_POSITION, 
-    const wxSize& size = SYMBOL_CATALOGVOLUMEDATAPANEL_SIZE, 
-    long style = SYMBOL_CATALOGVOLUMEDATAPANEL_STYLE );
+    wxWindowID id = SYMBOL_CATALOGSECTIONDATAPANEL_IDNAME, 
+    const wxPoint& pos = SYMBOL_CATALOGSECTIONDATAPANEL_POSITION, 
+    const wxSize& size = SYMBOL_CATALOGSECTIONDATAPANEL_SIZE, 
+    long style = SYMBOL_CATALOGSECTIONDATAPANEL_STYLE );
 
     /// Creation
-    bool Create( wxWindow* parent, wxWindowID id = SYMBOL_CATALOGVOLUMEDATAPANEL_IDNAME, const wxPoint& pos = SYMBOL_CATALOGVOLUMEDATAPANEL_POSITION, const wxSize& size = SYMBOL_CATALOGVOLUMEDATAPANEL_SIZE, long style = SYMBOL_CATALOGVOLUMEDATAPANEL_STYLE );
+    bool Create( wxWindow* parent, wxWindowID id = SYMBOL_CATALOGSECTIONDATAPANEL_IDNAME, const wxPoint& pos = SYMBOL_CATALOGSECTIONDATAPANEL_POSITION, const wxSize& size = SYMBOL_CATALOGSECTIONDATAPANEL_SIZE, long style = SYMBOL_CATALOGSECTIONDATAPANEL_STYLE );
 
     /// Destructor
-    ~CatalogPanel();
+    ~CatalogPanel( );
 
     /// Initialises member variables
-    void Init();
+    void Init( );
 
     /// Creates the controls and sizers
-    void CreateControls();
+    void CreateControls( );
 
 // CatalogPanel event handler declarations
 
@@ -107,7 +107,7 @@ public:
 
     void OnTogglebuttonClick( wxCommandEvent& event );
 
-    void OnVolumeChoiceSelected( wxCommandEvent& event );
+    void OnSectionChoiceSelected( wxCommandEvent& event );
 
 // CatalogPanel event handler declarations
 
@@ -121,24 +121,24 @@ public:
 // CatalogPanel member function declarations
 
     /// Should we show tooltips?
-    static bool ShowToolTips();
+    static bool ShowToolTips( );
 
-    void InitCatalogVolumeData( );
+    void InitCatalogSectionData( );
     CatalogTreeCtrl* GetCatalogTree( ) { return m_catalogTreeCtrl; };
 
-    void SetVolumeListStrings( wxArrayString& choices )
-    {
-        m_volumeListCtrl->Clear( );
-        m_volumeListCtrl->Append( choices );
+    void SetSectionListStrings( wxArrayString& choices )
+    { 
+        m_sectionListCtrl->Clear( );
+        m_sectionListCtrl->Append( choices );
     };
 
-    void SetVolumeListSelection( int i )
-    {
-        m_volumeListCtrl->SetSelection( i );
+    void SetSectionListSelection( int i )
+    { 
+        m_sectionListCtrl->SetSelection( i );
     };
 
    // wxTextCtrl* m_title;
-    wxChoice* m_volumeListCtrl;
+    wxChoice* m_sectionListCtrl;
     CatalogTreeCtrl* m_catalogTreeCtrl;
   
     wxTreeItemId m_draggedItem;
@@ -148,4 +148,4 @@ public:
 };
 
 #endif
-    // _CATALOGVOLUMEDATAPANEL_H_
+    // _CATALOGSECTIONDATAPANEL_H_

@@ -1,24 +1,24 @@
 /**
  * @file CatalogData.cpp
- * @author Eddie Monroe ()
+ * @author Eddie Monroe ( )
  * @brief
  * @version 0.1
  * @date 2021-02-25
  *
- * @copyright Copyright (c) 2021
+ * @copyright Copyright ( c ) 2021
  *
- * This file is part of AlbumGenerator.
+ * This file is part of StampTool.
  *
- * AlbumGenerator is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * StampTool is free software: you can redistribute it and/or modify it under the
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
- * AlbumGenerator is distributed in the hope that it will be useful, but WITHOUT ANY
+ * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
  * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License along with
- * AlbumGenerator. If not, see <https://www.gnu.org/licenses/>.
+ * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
  **************************************************/
 
@@ -53,99 +53,100 @@
 // #include "utils/Settings.h"
 // #include "utils/Project.h"
 // #include "utils/XMLUtilities.h"
-#include "AlbumGenApp.h"
-#include "gui/GeneratorData.h"
+#include "StampToolApp.h"
+#include "gui/ToolData.h"
 
-wxDECLARE_APP( AlbumGenApp );
+wxDECLARE_APP( StampToolApp );
 
-namespace Catalog {
+namespace Catalog { 
 
-    Catalog::CatalogVolumeData* CatalogData::NewCatalogVolumeData( )
-    {
-        Catalog::CatalogVolumeData* catalogVolumeData = Catalog::NewCatalogVolumeDataInstance( );
-        m_catalogArray.push_back( catalogVolumeData );
-        m_catalogVolumeDataNdx = m_catalogArray.size( ) - 1;
-        return catalogVolumeData;
+    Catalog::CatalogSectionData* CatalogData::NewCatalogSectionData( )
+    { 
+        Catalog::CatalogSectionData* catalogSectionData = Catalog::NewCatalogSectionDataInstance( );
+        m_catalogArray.push_back( catalogSectionData );
+        m_catalogSectionDataNdx = m_catalogArray.size( ) - 1;
+        return catalogSectionData;
     };
 
-    bool CatalogData::ClearCatalogArray()
-    {
-        while( !m_catalogArray.empty() )
-        {
-            CatalogVolumeData* data = m_catalogArray.back();
+    bool CatalogData::ClearCatalogArray( )
+    { 
+        while( !m_catalogArray.empty( ) )
+        { 
+            CatalogSectionData* data = m_catalogArray.back( );
             delete data;
-            m_catalogArray.pop_back();
+            m_catalogArray.pop_back( );
         }
-    }   
-    Catalog::CatalogVolumeData* CatalogData::GetCatalogVolumeData( )
-    {
-        if ( m_catalogVolumeDataNdx >= 0 )
-        {
-            if ( !m_catalogArray.empty() ) 
-            {
-                return m_catalogArray.at( m_catalogVolumeDataNdx );
+        return true;
+    } 
+    Catalog::CatalogSectionData* CatalogData::GetCatalogSectionData( )
+    { 
+        if ( m_catalogSectionDataNdx >= 0 )
+        { 
+            if ( !m_catalogArray.empty( ) ) 
+            { 
+                return m_catalogArray.at( m_catalogSectionDataNdx );
             }
         }
-        return (Catalog::CatalogVolumeData*)0;
+        return ( Catalog::CatalogSectionData* )0;
     };
 
-int wayToSort(Catalog::CatalogVolumeData* vol1, Catalog::CatalogVolumeData* vol2) 
+int wayToSort( Catalog::CatalogSectionData* sect1, Catalog::CatalogSectionData* sect2 ) 
 { 
-    wxString name1 = vol1->GetVolumeName();
-    wxString name2 = vol2->GetVolumeName();
-    return name1.compare(name2); 
+    wxString name1 = sect1->GetSectionName( );
+    wxString name2 = sect2->GetSectionName( );
+    return name1.compare( name2 ); 
 }
 
-    void CatalogData::LoadCatalogVolumes( )
-    {
+    void CatalogData::LoadCatalogSections( )
+    { 
 
-        for ( Catalog::CatalogVolumeDataArray::iterator it = std::begin( m_catalogArray );
+        for ( Catalog::CatalogSectionDataArray::iterator it = std::begin( m_catalogArray );
             it != std::end( m_catalogArray );
             ++it )
-        {
-            Catalog::CatalogVolumeData* volume = ( Catalog::CatalogVolumeData* )( *it );
-            volume->LoadXML( );
-            wxString name = volume->GetVolumeName();
-            if ( !name.IsEmpty() )
-            {
-                name = volume->GetVolumeFilename();
-                wxFileName fn(name);
-                volume->SetVolumeName(fn.GetName());
+        { 
+            Catalog::CatalogSectionData* section = ( Catalog::CatalogSectionData* )( *it );
+            section->LoadXML( );
+            wxString name = section->GetSectionName( );
+            if ( !name.IsEmpty( ) )
+            { 
+                name = section->GetSectionFilename( );
+                wxFileName fn( name );
+                section->SetSectionName( fn.GetName( ) );
             }
         }
 
-        if (m_catalogArray.size() > 1 )
-        {
-            sort(m_catalogArray.begin(), m_catalogArray.end(), wayToSort);
+        if ( m_catalogArray.size( ) > 1 )
+        { 
+            sort( m_catalogArray.begin( ), m_catalogArray.end( ), wayToSort );
         }
-        m_volumeNameStrings.Clear();
-        for ( Catalog::CatalogVolumeDataArray::iterator it = std::begin( m_catalogArray );
+        m_sectionNameStrings.Clear( );
+        for ( Catalog::CatalogSectionDataArray::iterator it = std::begin( m_catalogArray );
             it != std::end( m_catalogArray );
             ++it )
-        {
-            Catalog::CatalogVolumeData* volume = ( Catalog::CatalogVolumeData* )( *it );
-            m_volumeNameStrings.Add( volume->GetVolumeName() );
+        { 
+            Catalog::CatalogSectionData* section = ( Catalog::CatalogSectionData* )( *it );
+            m_sectionNameStrings.Add( section->GetSectionName( ) );
         }
-        CatalogPanel* catPanel = wxGetApp().GetFrame()->GetCatalogPanel();
-        catPanel->SetVolumeListStrings( m_volumeNameStrings );
-        m_catalogVolumeDataNdx = 0;
-        catPanel->SetVolumeListSelection(m_catalogVolumeDataNdx);
+        CatalogPanel* catPanel = wxGetApp( ).GetFrame( )->GetCatalogPanel( );
+        catPanel->SetSectionListStrings( m_sectionNameStrings );
+        m_catalogSectionDataNdx = 0;
+        catPanel->SetSectionListSelection( m_catalogSectionDataNdx );
 
     };
 
-    void CatalogData::SaveCatalogVolumes( )
-    {
-        for ( Catalog::CatalogVolumeDataArray::iterator it = std::begin( m_catalogArray );
+    void CatalogData::SaveCatalogSections( )
+    { 
+        for ( Catalog::CatalogSectionDataArray::iterator it = std::begin( m_catalogArray );
             it != std::end( m_catalogArray );
             ++it )
-        {
-            Catalog::CatalogVolumeData* volume = ( Catalog::CatalogVolumeData* )( *it );
-            volume->Save( );
+        { 
+            Catalog::CatalogSectionData* section = ( Catalog::CatalogSectionData* )( *it );
+            section->Save( );
         }
     };
 
-    void CatalogData::SetCatalogVolumeDataNdx( int i ) {
-        m_catalogVolumeDataNdx = i;
-        GetGeneratorData( )->LoadCatalogTree( );
+    void CatalogData::SetCatalogSectionDataNdx( int i ) { 
+        m_catalogSectionDataNdx = i;
+        GetToolData( )->LoadCatalogTree( );
     };
 }

@@ -5,20 +5,20 @@
  * @version 0.1
  * @date 2022-08-01
  * 
- * @copyright Copyright (c) 2022
+ * @copyright Copyright ( c ) 2022
  * 
- * This file is part of AlbumGenerator.
+ * This file is part of StampTool.
  *
- * AlbumGenerator is free software: you can redistribute it and/or modify it under the 
+ * StampTool is free software: you can redistribute it and/or modify it under the 
  * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
- * AlbumGenerator is distributed in the hope that it will be useful, but WITHOUT ANY 
+ * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY 
  * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License along with 
- * AlbumGenerator. If not, see <https://www.gnu.org/licenses/>.
+ * StampTool. If not, see <https://www.gnu.org/licenses/>.
  * 
  */
 #ifndef IconDefs_h
@@ -63,17 +63,17 @@
 #include "art/unchecked.xpm"
 #include "art/checked.xpm"
 
-namespace Design {
+namespace Design { 
     typedef enum
-    {
-        Icon_Stamp = 0,
-        Icon_StampSelected,
-        Icon_StampBlock,
-        Icon_StampBlockSelected,
-        Icon_StampMiniSheet,
-        Icon_StampMiniSheetSelected,
-        Icon_StampSouvenirSheet,
-        Icon_StampSouvenirSheetSelected,
+    { 
+        Icon_Stamp = 0, 
+        Icon_StampSelected, 
+        Icon_StampBlock, 
+        Icon_StampBlockSelected, 
+        Icon_StampMiniSheet, 
+        Icon_StampMiniSheetSelected, 
+        Icon_StampSouvenirSheet, 
+        Icon_StampSouvenirSheetSelected, 
         Icon_Folder
     } IconID;
 
@@ -81,41 +81,41 @@ namespace Design {
 
 };
 namespace Catalog
-{
+{ 
     typedef enum
-    {
-        Icon_StampUnknown = 0,
-        Icon_Stamp = Icon_StampUnknown,
-        Icon_StampMissing,
-        Icon_StampSelected = Icon_StampMissing,
-        Icon_StampOrdered,
-        Icon_StampOwn,
-        Icon_StampOwnVariant,
-        Icon_StampExclude,
-        Icon_StampUnknownBlock,
-        Icon_StampBlock = Icon_StampUnknownBlock,
-        Icon_StampMissingBlock,
-        Icon_StampBlockSelected = Icon_StampMissingBlock,
-        Icon_StampOrderedBlock,
-        Icon_StampOwnBlock,
-        Icon_StampOwnVariantBlock,
-        Icon_StampExcludeBlock,
-        Icon_StampUnknownMiniSheet,
-        Icon_StampMiniSheet = Icon_StampUnknownMiniSheet,
-        Icon_StampMissingMiniSheet,
-        Icon_StampMiniSheetSelected = Icon_StampMissingMiniSheet,
-        Icon_StampOrderedMiniSheet,
-        Icon_StampOwnMiniSheet,
-        Icon_StampOwnVariantMiniSheet,
-        Icon_StampExcludeMiniSheet,
-        Icon_StampUnknownSouvenirSheet,
-        Icon_StampSouvenirSheet = Icon_StampUnknownSouvenirSheet,
-        Icon_StampMissingSouvenirSheet,
-        Icon_StampSouvenirSheetSelected = Icon_StampMissingSouvenirSheet,
-        Icon_StampOrderedSouvenirSheet,
-        Icon_StampOwnSouvenirSheet,
-        Icon_StampOwnVariantSouvenirSheet,
-        Icon_StampExcludeSouvenirSheet,
+    { 
+        Icon_StampUnknown = 0, 
+        Icon_Stamp = Icon_StampUnknown, 
+        Icon_StampMissing, 
+        Icon_StampSelected = Icon_StampMissing, 
+        Icon_StampOrdered, 
+        Icon_StampOwn, 
+        Icon_StampOwnVariant, 
+        Icon_StampExclude, 
+        Icon_StampUnknownBlock, 
+        Icon_StampBlock = Icon_StampUnknownBlock, 
+        Icon_StampMissingBlock, 
+        Icon_StampBlockSelected = Icon_StampMissingBlock, 
+        Icon_StampOrderedBlock, 
+        Icon_StampOwnBlock, 
+        Icon_StampOwnVariantBlock, 
+        Icon_StampExcludeBlock, 
+        Icon_StampUnknownMiniSheet, 
+        Icon_StampMiniSheet = Icon_StampUnknownMiniSheet, 
+        Icon_StampMissingMiniSheet, 
+        Icon_StampMiniSheetSelected = Icon_StampMissingMiniSheet, 
+        Icon_StampOrderedMiniSheet, 
+        Icon_StampOwnMiniSheet, 
+        Icon_StampOwnVariantMiniSheet, 
+        Icon_StampExcludeMiniSheet, 
+        Icon_StampUnknownSouvenirSheet, 
+        Icon_StampSouvenirSheet = Icon_StampUnknownSouvenirSheet, 
+        Icon_StampMissingSouvenirSheet, 
+        Icon_StampSouvenirSheetSelected = Icon_StampMissingSouvenirSheet, 
+        Icon_StampOrderedSouvenirSheet, 
+        Icon_StampOwnSouvenirSheet, 
+        Icon_StampOwnVariantSouvenirSheet, 
+        Icon_StampExcludeSouvenirSheet, 
         Icon_Folder
     } IconID;
 

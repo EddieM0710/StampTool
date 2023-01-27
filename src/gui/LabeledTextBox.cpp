@@ -1,24 +1,24 @@
 /**
  * @file LabeledTextBox.cpp
- * @author Eddie Monroe ()
+ * @author Eddie Monroe ( )
  * @brief 
  * @version 0.1
  * @date 2021-02-25
  * 
- * @copyright Copyright (c) 2021
+ * @copyright Copyright ( c ) 2021
  * 
- * This file is part of AlbumGenerator.
+ * This file is part of StampTool.
  *
- * AlbumGenerator is free software: you can redistribute it and/or modify it under the 
+ * StampTool is free software: you can redistribute it and/or modify it under the 
  * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
- * AlbumGenerator is distributed in the hope that it will be useful, but WITHOUT ANY 
+ * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY 
  * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License along with 
- * AlbumGenerator. If not, see <https://www.gnu.org/licenses/>.
+ * StampTool. If not, see <https://www.gnu.org/licenses/>.
  * 
  **************************************************/
 
@@ -63,7 +63,7 @@ END_EVENT_TABLE( )
  *
  **************************************************/
 LabeledTextBox::LabeledTextBox( )
-{
+{ 
     Init( );
 }
 
@@ -72,10 +72,10 @@ LabeledTextBox::LabeledTextBox( )
  * LabeledTextBox constructors
  *
  **************************************************/
-LabeledTextBox::LabeledTextBox( wxWindow *parent, wxWindowID id,
-                                const wxPoint &pos, const wxSize &size,
+LabeledTextBox::LabeledTextBox( wxWindow *parent, wxWindowID id, 
+                                const wxPoint &pos, const wxSize &size, 
                                 long style )
-{
+{ 
     m_parent = parent;
     m_id = id;
     Init( );
@@ -87,17 +87,17 @@ LabeledTextBox::LabeledTextBox( wxWindow *parent, wxWindowID id,
  *  LabledTextBox creator
  *
  **************************************************/
-bool LabeledTextBox::Create( wxWindow *parent, wxWindowID id,
-                             const wxPoint &pos, const wxSize &size,
+bool LabeledTextBox::Create( wxWindow *parent, wxWindowID id, 
+                             const wxPoint &pos, const wxSize &size, 
                              long style )
-{
+{ 
      // LabeledTextBox creation
     SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
     wxPanel::Create( parent, id, pos, size, style );
 
     CreateControls( );
     if ( GetSizer( ) )
-    {
+    { 
         GetSizer( )->SetSizeHints( this );
     }
     Centre( );
@@ -111,7 +111,7 @@ bool LabeledTextBox::Create( wxWindow *parent, wxWindowID id,
  *
  **************************************************/
 LabeledTextBox::~LabeledTextBox( )
-{
+{ 
      // LabeledTextBox destruction
      // LabeledTextBox destruction
 }
@@ -122,7 +122,7 @@ LabeledTextBox::~LabeledTextBox( )
  *
  **************************************************/
 void LabeledTextBox::Init( )
-{
+{ 
      // LabeledTextBox member initialisation
     m_label = NULL;
     m_value = NULL;
@@ -135,7 +135,7 @@ void LabeledTextBox::Init( )
  *
   **************************************************/
 void LabeledTextBox::CreateControls( )
-{
+{ 
      // LabeledTextBox content construction
 
     LabeledTextBox *itemPanel1 = this;
@@ -143,12 +143,12 @@ void LabeledTextBox::CreateControls( )
     wxBoxSizer *itemBoxSizer1 = new wxBoxSizer( wxHORIZONTAL );
     itemPanel1->SetSizer( itemBoxSizer1 );
 
-    m_label = new wxStaticText( itemPanel1, wxID_STATIC, _( "Static text" ),
+    m_label = new wxStaticText( itemPanel1, wxID_STATIC, _( "Static text" ), 
                                   wxDefaultPosition, wxDefaultSize, 0 );
 
     itemBoxSizer1->Add( m_label, 0, wxALIGN_CENTER_VERTICAL | wxLEFT, 0 );
 
-    m_value = new wxTextCtrl( itemPanel1, ID_LABELEDTEXTBOX_TEXTCTRL, wxEmptyString,
+    m_value = new wxTextCtrl( itemPanel1, ID_LABELEDTEXTBOX_TEXTCTRL, wxEmptyString, 
                                wxDefaultPosition, wxSize( -1, 26 ), 0 );
 
     m_value->SetEditable( false );
@@ -168,7 +168,7 @@ void LabeledTextBox::CreateControls( )
  *
  **************************************************/
 bool LabeledTextBox::ShowToolTips( )
-{
+{ 
     return true;
 }
 
@@ -178,7 +178,7 @@ bool LabeledTextBox::ShowToolTips( )
  *
  **************************************************/
 wxBitmap LabeledTextBox::GetBitmapResource( const wxString &name )
-{
+{ 
     // Bitmap retrieval
      // LabeledTextBox bitmap retrieval
     wxUnusedVar( name );
@@ -193,7 +193,7 @@ wxBitmap LabeledTextBox::GetBitmapResource( const wxString &name )
  *
  **************************************************/
 wxIcon LabeledTextBox::GetIconResource( const wxString &name )
-{
+{ 
     // Icon retrieval
      // LabeledTextBox icon retrieval
     wxUnusedVar( name );
@@ -202,7 +202,7 @@ wxIcon LabeledTextBox::GetIconResource( const wxString &name )
 }
 
 void LabeledTextBox::SetEditable( bool value )
-{
+{ 
        m_value->SetEditable( value );
 }
 /*
@@ -212,9 +212,9 @@ void LabeledTextBox::SetEditable( bool value )
  **************************************************/
 
 void LabeledTextBox::Setup( wxString label, wxString value )
-{
-    m_label->SetLabelText(label);
-    m_value->SetValue(value);
+{ 
+    m_label->SetLabelText( label );
+    m_value->SetValue( value );
     m_value->SetModified( false );
 }
 
@@ -224,7 +224,7 @@ void LabeledTextBox::Setup( wxString label, wxString value )
  **************************************************/
 
 wxString LabeledTextBox::GetValue( )
-{
+{ 
     return m_value->GetValue( );
 };
 
@@ -235,13 +235,13 @@ wxString LabeledTextBox::GetValue( )
  **************************************************/
 
 void LabeledTextBox::OnTextctrlTextUpdated( wxCommandEvent &event )
-{
-    event.SetClientData( (void*)this);
+{ 
+    event.SetClientData( ( void* )this );
     if ( m_value->IsModified( ) )
-    {
-       // m_value->GetBackgroundColour();
-       // m_value->SetBackgroundColour();
-        SetDirty();
+    { 
+       // m_value->GetBackgroundColour( );
+       // m_value->SetBackgroundColour( );
+        SetDirty( );
 //        m_stamp->SetAttr( m_type, m_idText->GetValue( ) );
         m_value->SetModified( true );
     }

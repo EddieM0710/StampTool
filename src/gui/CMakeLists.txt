@@ -1,18 +1,17 @@
 
-find_package( wxWidgets COMPONENTS core base generic REQUIRED )
 include( "${wxWidgets_USE_FILE}")
 
-include_directories(  ${AlbumGen_Source_Directory} 
-${AlbumGen_GuiFiles_Source_Directory}
-${AlbumGen_UtilsFiles_Source_Directory}
-${AlbumGen_ODTFiles_Source_Directory}
-${AlbumGen_DesignFiles_Source_Directory}
-${AlbumGen_CatalogFiles_Source_Directory} ${WXWIN} )
+include_directories(  ${StampTool_Source_Directory} 
+${StampTool_GuiFiles_Source_Directory}
+${StampTool_UtilsFiles_Source_Directory}
+${StampTool_ODTFiles_Source_Directory}
+${StampTool_DesignFiles_Source_Directory}
+${StampTool_CatalogFiles_Source_Directory} )
 
 set( CMAKE_RUNTIME_OUTPUT_DIRECTORY ${build_Directory} )
 add_library( GuiFiles SHARED
-    AlbumGenFrame.cpp
-    AlbumGenPanel.cpp
+    StampToolFrame.cpp
+    StampToolPanel.cpp
     AlbumDesignPanel.cpp 
     SettingsDialog.cpp
     DesignTreeCtrl.cpp 
@@ -31,7 +30,7 @@ add_library( GuiFiles SHARED
     DefinePeriodsDialog.cpp
     StampDescriptionPanel.cpp 
     IconDefs.cpp
-    GeneratorData.cpp
+    ToolData.cpp
     GenerateList.cpp
     GenerateListSettings.cpp
     LabeledTextBox.cpp
@@ -40,7 +39,7 @@ add_library( GuiFiles SHARED
     AlbumDetailsDialog.cpp
     PageDetailsDialog.cpp
     RowDetailsDialog.cpp 
-    VolumeDetailsDialog.cpp
+    SectionDetailsDialog.cpp
     ColDetailsDialog.cpp 
     FileCreateDialog.cpp
     NewStampDialog.cpp 

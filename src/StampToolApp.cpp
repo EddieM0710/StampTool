@@ -1,24 +1,24 @@
 /**
- * @file AlbumGenApp.cpp
- * @author Eddie Monroe ()
+ * @file StampToolApp.cpp
+ * @author Eddie Monroe ( )
  * @brief This is the main instantiation class for the application
  * @version 0.1
  * @date 2021-02-25
  *
- * @copyright Copyright (c) 2021
+ * @copyright Copyright ( c ) 2021
  * 
- * This file is part of AlbumGenerator.
+ * This file is part of StampTool.
  *
- * AlbumGenerator is free software: you can redistribute it and/or modify it under the 
+ * StampTool is free software: you can redistribute it and/or modify it under the 
  * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
- * AlbumGenerator is distributed in the hope that it will be useful, but WITHOUT ANY 
+ * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY 
  * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License along with 
- * AlbumGenerator. If not, see <https://www.gnu.org/licenses/>.
+ * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
  **************************************************/
 
@@ -42,34 +42,35 @@
 #ifndef WX_PRECOMP
 #include "wx/wx.h"
 #endif
-
+#include <iostream>
 #include "Defs.h"
-#include "gui/GeneratorData.h"
-#include "AlbumGenApp.h"
+#include "gui/ToolData.h"
+#include "StampToolApp.h"
 
 #include <wx/log.h>
+
 
 /*
  * Application instance implementation
  */
 
  // implement app
-IMPLEMENT_APP( AlbumGenApp )
+IMPLEMENT_APP( StampToolApp )
 // implement app
 
 /*
- * AlbumGenApp type definition
+ * StampToolApp type definition
  */
-    IMPLEMENT_CLASS( AlbumGenApp, wxApp )
+    IMPLEMENT_CLASS( StampToolApp, wxApp )
     ;
 /*
- * AlbumGenApp event table definition
+ * StampToolApp event table definition
  */
 
-BEGIN_EVENT_TABLE( AlbumGenApp, wxApp )
+BEGIN_EVENT_TABLE( StampToolApp, wxApp )
 
-// AlbumGenApp event table entries
-// AlbumGenApp event table entries
+// StampToolApp event table entries
+// StampToolApp event table entries
 
 END_EVENT_TABLE( )
 ;  // silly business; The above macro screws up the formatter
@@ -77,11 +78,11 @@ END_EVENT_TABLE( )
 
 
 /*
- * Constructor for AlbumGenApp
+ * Constructor for StampToolApp
  */
 
-AlbumGenApp::AlbumGenApp( )
-{
+StampToolApp::StampToolApp( )
+{ 
     Init( );
 }
 
@@ -89,23 +90,25 @@ AlbumGenApp::AlbumGenApp( )
  * Member initialisation
  */
 
-void AlbumGenApp::Init( )
-{
-    // AlbumGenApp member initialisation
-    // AlbumGenApp member initialisation
+void StampToolApp::Init( )
+{ 
+    // StampToolApp member initialisation
+    // StampToolApp member initialisation
 }
 
 /*
- * Initialisation for AlbumGenApp
+ * Initialisation for StampToolApp
  */
 
-bool AlbumGenApp::OnInit( )
-{
-    // AlbumGenApp initialisation
+bool StampToolApp::OnInit( )
+{ 
+    // StampToolApp initialisation
    // Remove the comment markers above and below this block
    // to make permanent changes to the code.
 
     wxLog::EnableLogging ( true );
+   // wxLog* logger = new wxLogStream(&std::cout);
+   // wxLog::SetActiveTarget(logger);
 
 #if wxUSE_XPM
     wxImage::AddHandler( new wxXPMHandler );
@@ -120,26 +123,26 @@ bool AlbumGenApp::OnInit( )
     wxImage::AddHandler( new wxGIFHandler );
 #endif
 
-    m_generatorData = NewGeneratorDataInstance();
-    m_generatorData->InitGeneratorData();
+    m_toolData = NewToolDataInstance( );
+    m_toolData->InitToolData( );
 
-    m_frame = new AlbumGenFrame( NULL );
+    m_frame = new StampToolFrame( NULL );
   //  m_frame->SetupRecentMenu( );    
     m_frame->InitLoad( );
 
     m_frame->Show( true );
-    // AlbumGenApp initialisation
+    // StampToolApp initialisation
 
     return true;
 }
 
 /*
- * Cleanup for AlbumGenApp
+ * Cleanup for StampToolApp
  */
 
-int AlbumGenApp::OnExit( )
-{
-    // AlbumGenApp cleanup
+int StampToolApp::OnExit( )
+{ 
+    // StampToolApp cleanup
     return wxApp::OnExit( );
-    // AlbumGenApp cleanup
+    // StampToolApp cleanup
 }

@@ -1,29 +1,29 @@
 /**
- * @file GeneratorData.h
+ * @file ToolData.h
  * @author Eddie Monroe
  * @brief
  * @version 0.1
  * @date 2022-03-31
  *
- * @copyright Copyright (c) 2022
+ * @copyright Copyright ( c ) 2022
  * 
- * This file is part of AlbumGenerator.
+ * This file is part of StampTool.
  *
- * AlbumGenerator is free software: you can redistribute it and/or modify it under the 
+ * StampTool is free software: you can redistribute it and/or modify it under the 
  * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
- * AlbumGenerator is distributed in the hope that it will be useful, but WITHOUT ANY 
+ * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY 
  * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License along with 
- * AlbumGenerator. If not, see <https://www.gnu.org/licenses/>.
+ * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
  **************************************************/
 
-#ifndef GeneratorData_h
-#define GeneratorData_h
+#ifndef ToolData_h
+#define ToolData_h
 
 #include "utils/StampList.h"
 #include "catalog/CatalogData.h"
@@ -40,15 +40,15 @@ class DesignTreeCtrl;
 class StampDescriptionPanel;
 class AlbumImagePanel;
 
-GeneratorData* NewGeneratorDataInstance( );
+ToolData* NewToolDataInstance( );
 
 // Links to all the data and controls needed for Album design
-class GeneratorData
-{
+class ToolData
+{ 
 public:
-    GeneratorData( );
-    ~GeneratorData( ) {};
-    void InitGeneratorData( );
+    ToolData( );
+    ~ToolData( ) { };
+    void InitToolData( );
 
 /** **************************************************
  * @brief Get the Stamp Album Catalog Link object
@@ -102,11 +102,11 @@ public:
     void LoadNewDesign( wxString designFileName  );
 
     inline Catalog::CatalogSectionData* GetCatalogSectionData( ) 
-    { return m_catalogData.GetCatalogSectionData( );};
+    { return m_catalogData.GetCatalogSectionData( ); };
 
-    wxArrayString& GetSectionNameStrings()
-    {
-        return m_catalogData.GetSectionNameStrings();
+    wxArrayString& GetSectionNameStrings( )
+    { 
+        return m_catalogData.GetSectionNameStrings( );
     }
 
     Catalog::CatalogData* GetCatalogData( ){ return &m_catalogData; };
@@ -137,7 +137,7 @@ public:
      * 
      * @param filename 
      */
-    void FileOpenProject(wxString filename);
+    void FileOpenProject( wxString filename );
 
     // @brief Perform File-Save for Project
     void FileSaveProject( );
@@ -202,7 +202,7 @@ public:
     void SetDescriptionPanel( StampDescriptionPanel* descriptionPanel ) { m_stampDescriptionPanel = descriptionPanel; };
     void SetAlbumImagePanel( AlbumImagePanel* albumImagePanel ) { m_albumImagePanel = albumImagePanel; };
     wxString GetImageFilename( wxString stampId );
-    wxString GetImagePath();
+    wxString GetImagePath( );
 
     void SetDirty( bool state = true ) { m_dirty = state; };
     // Is project dirty?

@@ -5,20 +5,20 @@
  * @version 0.1
  * @date 2022-01-19
  *
- * @copyright Copyright (c) 2021  
+ * @copyright Copyright ( c ) 2021  
  * 
- * This file is part of AlbumGenerator.
+ * This file is part of StampTool.
  *
- * AlbumGenerator is free software: you can redistribute it and/or modify it under the 
+ * StampTool is free software: you can redistribute it and/or modify it under the 
  * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
- * AlbumGenerator is distributed in the hope that it will be useful, but WITHOUT ANY 
+ * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY 
  * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License along with 
- * AlbumGenerator. If not, see <https://www.gnu.org/licenses/>.
+ * StampTool. If not, see <https://www.gnu.org/licenses/>.
  */
 
 #ifndef _ALBUMSPLITTERWIINDOW_H_
@@ -51,7 +51,7 @@ class AlbumImagePanel;
  */
 
 // control identifiers
-#define ID_ALBUMGENPANEL 10000
+#define ID_STAMPTOOLDESIGNPANEL 10000
 #define ID_SECONDARYSPLITTERWINDOW 13005
 #define ID_SCROLLEDWINDOW 10003
 #define ID_AECMDTREECTRL 10001
@@ -59,11 +59,11 @@ class AlbumImagePanel;
 #define ID_CDDATATEXTCTRL 10005
 #define ID_ALBUMALBUMIMAGEPANEL 10004
 #define ID_ALBUMZOOMSLIDER 10006
-#define SYMBOL_ALBUMGENPANEL_STYLE wxTAB_TRAVERSAL
-#define SYMBOL_ALBUMGENPANEL_TITLE _("AlbumGenPanel")
-#define SYMBOL_ALBUMGENPANEL_IDNAME ID_ALBUMGENPANEL
-#define SYMBOL_ALBUMGENPANEL_SIZE wxSize(400, 300)
-#define SYMBOL_ALBUMGENPANEL_POSITION wxDefaultPosition
+#define SYMBOL_STAMPTOOLDESIGNPANEL_STYLE wxTAB_TRAVERSAL
+#define SYMBOL_STAMPTOOLDESIGNPANEL_TITLE _( "StampToolPanel" )
+#define SYMBOL_STAMPTOOLDESIGNPANEL_IDNAME ID_STAMPTOOLDESIGNPANEL
+#define SYMBOL_STAMPTOOLDESIGNPANEL_SIZE wxSize( 400, 300 )
+#define SYMBOL_STAMPTOOLDESIGNPANEL_POSITION wxDefaultPosition
 // control identifiers
 
 
@@ -74,24 +74,24 @@ class AlbumImagePanel;
 class AlbumDesignPanel: public wxPanel
 {    
     DECLARE_DYNAMIC_CLASS( AlbumDesignPanel )
-    DECLARE_EVENT_TABLE()
+    DECLARE_EVENT_TABLE( )
 
 public:
     /// Constructors
-    AlbumDesignPanel();
-    AlbumDesignPanel( wxWindow* parent, wxWindowID id = SYMBOL_ALBUMGENPANEL_IDNAME, const wxPoint& pos = SYMBOL_ALBUMGENPANEL_POSITION, const wxSize& size = SYMBOL_ALBUMGENPANEL_SIZE, long style = SYMBOL_ALBUMGENPANEL_STYLE );
+    AlbumDesignPanel( );
+    AlbumDesignPanel( wxWindow* parent, wxWindowID id = SYMBOL_STAMPTOOLDESIGNPANEL_IDNAME, const wxPoint& pos = SYMBOL_STAMPTOOLDESIGNPANEL_POSITION, const wxSize& size = SYMBOL_STAMPTOOLDESIGNPANEL_SIZE, long style = SYMBOL_STAMPTOOLDESIGNPANEL_STYLE );
 
     /// Creation
-    bool Create( wxWindow* parent, wxWindowID id = SYMBOL_ALBUMGENPANEL_IDNAME, const wxPoint& pos = SYMBOL_ALBUMGENPANEL_POSITION, const wxSize& size = SYMBOL_ALBUMGENPANEL_SIZE, long style = SYMBOL_ALBUMGENPANEL_STYLE );
+    bool Create( wxWindow* parent, wxWindowID id = SYMBOL_STAMPTOOLDESIGNPANEL_IDNAME, const wxPoint& pos = SYMBOL_STAMPTOOLDESIGNPANEL_POSITION, const wxSize& size = SYMBOL_STAMPTOOLDESIGNPANEL_SIZE, long style = SYMBOL_STAMPTOOLDESIGNPANEL_STYLE );
 
     /// Destructor
-    ~AlbumDesignPanel();
+    ~AlbumDesignPanel( );
 
     /// Initialises member variables
-    void Init();
+    void Init( );
 
     /// Creates the controls and sizers
-    void CreateControls();
+    void CreateControls( );
 
 // AlbumDesignPanel event handler declarations
 
@@ -106,11 +106,11 @@ public:
     wxIcon GetIconResource( const wxString& name );
 // AlbumDesignPanel member function declarations
 
-    AlbumDesignTreePanel* GetAlbumDesignTreePanel(){ return m_albumDesignTreePanel;} ;
+    AlbumDesignTreePanel* GetAlbumDesignTreePanel( ){ return m_albumDesignTreePanel; } ;
     void OnZoomsliderUpdated( wxCommandEvent& event );
 
     /// Should we show tooltips?
-    static bool ShowToolTips();
+    static bool ShowToolTips( );
     void SetSashPosition( int pos ){ m_secondarySplitterWindow->SetSashPosition( pos ); };
 // AlbumDesignPanel member variables
     wxSplitterWindow* m_secondarySplitterWindow;

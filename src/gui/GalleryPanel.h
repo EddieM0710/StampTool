@@ -5,20 +5,20 @@
  * @version 0.1
  * @date 2022-02-21
  *
- * @copyright Copyright (c) 2021  
+ * @copyright Copyright ( c ) 2021  
  * 
- * This file is part of AlbumGenerator.
+ * This file is part of StampTool.
  *
- * AlbumGenerator is free software: you can redistribute it and/or modify it under the 
+ * StampTool is free software: you can redistribute it and/or modify it under the 
  * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
- * AlbumGenerator is distributed in the hope that it will be useful, but WITHOUT ANY 
+ * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY 
  * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License along with 
- * AlbumGenerator. If not, see <https://www.gnu.org/licenses/>.
+ * StampTool. If not, see <https://www.gnu.org/licenses/>.
  */
 
 #ifndef _GALLERYPANEL_H_
@@ -48,9 +48,9 @@ class wxGridSizer;
 #define ID_GALLERYPANEL 10000
 #define ID_IMAGEGALLERYSCROLLEDWINDOW 10001
 #define SYMBOL_GALLERYPANEL_STYLE wxTAB_TRAVERSAL
-#define SYMBOL_GALLERYPANEL_TITLE _("GalleryPanel")
+#define SYMBOL_GALLERYPANEL_TITLE _( "GalleryPanel" )
 #define SYMBOL_GALLERYPANEL_IDNAME ID_GALLERYPANEL
-#define SYMBOL_GALLERYPANEL_SIZE wxSize(400, 300)
+#define SYMBOL_GALLERYPANEL_SIZE wxSize( 400, 300 )
 #define SYMBOL_GALLERYPANEL_POSITION wxDefaultPosition
 // control identifiers
 
@@ -62,24 +62,24 @@ class wxGridSizer;
 class GalleryPanel: public wxPanel
 {    
     DECLARE_DYNAMIC_CLASS( GalleryPanel )
-    DECLARE_EVENT_TABLE()
+    DECLARE_EVENT_TABLE( )
 
 public:
     /// Constructors
-    GalleryPanel();
+    GalleryPanel( );
     GalleryPanel( wxWindow* parent, wxWindowID id = SYMBOL_GALLERYPANEL_IDNAME, const wxPoint& pos = SYMBOL_GALLERYPANEL_POSITION, const wxSize& size = SYMBOL_GALLERYPANEL_SIZE, long style = SYMBOL_GALLERYPANEL_STYLE );
 
     /// Creation
     bool Create( wxWindow* parent, wxWindowID id = SYMBOL_GALLERYPANEL_IDNAME, const wxPoint& pos = SYMBOL_GALLERYPANEL_POSITION, const wxSize& size = SYMBOL_GALLERYPANEL_SIZE, long style = SYMBOL_GALLERYPANEL_STYLE );
 
     /// Destructor
-    ~GalleryPanel();
+    ~GalleryPanel( );
 
     /// Initialises member variables
-    void Init();
+    void Init( );
 
     /// Creates the controls and sizers
-    void CreateControls();
+    void CreateControls( );
 
 // GalleryPanel event handler declarations
 // GalleryPanel event handler declarations
@@ -93,7 +93,7 @@ public:
 // GalleryPanel member function declarations
 
     /// Should we show tooltips?
-    static bool ShowToolTips();
+    static bool ShowToolTips( );
 
 // GalleryPanel member variables
     wxScrolledWindow* m_scrolledWindow;

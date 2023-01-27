@@ -1,24 +1,24 @@
 /**
  * @file StampDetailsDialog.cpp
- * @author Eddie Monroe ()
+ * @author Eddie Monroe ( )
  * @brief
  * @version 0.1
  * @date 2022-03-27
  *
- * @copyright Copyright (c) 2021
+ * @copyright Copyright ( c ) 2021
  *
- * This file is part of AlbumGenerator.
+ * This file is part of StampTool.
  *
- * AlbumGenerator is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * StampTool is free software: you can redistribute it and/or modify it under the
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
- * AlbumGenerator is distributed in the hope that it will be useful, but WITHOUT ANY
+ * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
  * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License along with
- * AlbumGenerator. If not, see <https://www.gnu.org/licenses/>.
+ * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
  **************************************************/
 
@@ -77,12 +77,12 @@ IMPLEMENT_DYNAMIC_CLASS( StampDetailsDialog, wxDialog )
      */
 
     StampDetailsDialog::StampDetailsDialog( )
-{
+{ 
     Init( );
 }
 
 StampDetailsDialog::StampDetailsDialog( wxWindow* parent, wxWindowID id, const wxString& caption, const wxPoint& pos, const wxSize& size, long style )
-{
+{ 
     Init( );
     Create( parent, id, caption, pos, size, style );
 }
@@ -93,14 +93,14 @@ StampDetailsDialog::StampDetailsDialog( wxWindow* parent, wxWindowID id, const w
  */
 
 bool StampDetailsDialog::Create( wxWindow* parent, wxWindowID id, const wxString& caption, const wxPoint& pos, const wxSize& size, long style )
-{
+{ 
     // StampDetailsDialog creation
     SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY | wxWS_EX_BLOCK_EVENTS );
     wxDialog::Create( parent, id, caption, pos, size, style );
 
     CreateControls( );
     if ( GetSizer( ) )
-    {
+    { 
         GetSizer( )->SetSizeHints( this );
     }
     Centre( );
@@ -114,7 +114,7 @@ bool StampDetailsDialog::Create( wxWindow* parent, wxWindowID id, const wxString
  */
 
 StampDetailsDialog::~StampDetailsDialog( )
-{
+{ 
     // StampDetailsDialog destruction
     // StampDetailsDialog destruction
 }
@@ -125,7 +125,7 @@ StampDetailsDialog::~StampDetailsDialog( )
  */
 
 void StampDetailsDialog::Init( )
-{
+{ 
     // StampDetailsDialog member initialisation
     m_catNbr = NULL;
     m_name = NULL;
@@ -146,7 +146,7 @@ void StampDetailsDialog::Init( )
  */
 
 void StampDetailsDialog::CreateControls( )
-{
+{ 
     // StampDetailsDialog content construction
 
     StampDetailsDialog* theDialog = this;
@@ -182,8 +182,8 @@ void StampDetailsDialog::CreateControls( )
     m_titleCheckbox->SetValue( false );
     checkBoxHorizontalSizer->Add( m_titleCheckbox, 0, wxALIGN_LEFT | wxALL, 5 );
 
-    wxFontPickerCtrl* m_fontPicker = new wxFontPickerCtrl( theDialog/*detailsPanel*/, 12345,
-        *wxNORMAL_FONT, wxDefaultPosition,
+    wxFontPickerCtrl* m_fontPicker = new wxFontPickerCtrl( theDialog/*detailsPanel*/, 12345, 
+        *wxNORMAL_FONT, wxDefaultPosition, 
         wxDefaultSize, wxFNTP_DEFAULT_STYLE );
     theDialogVerticalSizer->Add( m_fontPicker, 1, wxGROW | wxALL, 5 );
 
@@ -249,7 +249,7 @@ void StampDetailsDialog::CreateControls( )
  */
 
 bool StampDetailsDialog::ShowToolTips( )
-{
+{ 
     return true;
 }
 
@@ -258,7 +258,7 @@ bool StampDetailsDialog::ShowToolTips( )
  */
 
 wxBitmap StampDetailsDialog::GetBitmapResource( const wxString& name )
-{
+{ 
     // Bitmap retrieval
 // StampDetailsDialog bitmap retrieval
     wxUnusedVar( name );
@@ -271,7 +271,7 @@ wxBitmap StampDetailsDialog::GetBitmapResource( const wxString& name )
  */
 
 wxIcon StampDetailsDialog::GetIconResource( const wxString& name )
-{
+{ 
     // Icon retrieval
 // StampDetailsDialog icon retrieval
     wxUnusedVar( name );
@@ -280,142 +280,148 @@ wxIcon StampDetailsDialog::GetIconResource( const wxString& name )
 }
 
 void StampDetailsDialog::SetHeight( wxString height )
-{
+{ 
     m_height->SetValue( height );
     m_height->SetModified( false );
 }
 
 void StampDetailsDialog::SetImageFilename( wxString path )
-{
+{ 
     m_imagePath->SetValue( path );
     m_height->SetModified( false );
 }
 void StampDetailsDialog::SetWidth( wxString width )
-{
+{ 
     m_width->SetValue( width );
     m_width->SetModified( false );
 }
 
 void StampDetailsDialog::SetCatNbr( wxString catNbr )
-{
+{ 
 
     m_catNbr->SetValue( catNbr );
     m_catNbr->SetModified( false );
 }
 
 void StampDetailsDialog::SetName( wxString name )
-{
+{ 
     m_name->SetValue( name );
     m_name->SetModified( false );
 }
 
 void StampDetailsDialog::SetShowCatNbr( bool state )
-{
+{ 
     m_catNbrCheckbox->SetValue( state );
 }
 
 void StampDetailsDialog::SetShowTitle( bool state )
-{
+{ 
     m_titleCheckbox->SetValue( state );
 }
 
 void StampDetailsDialog::SetDesignTreeID( wxTreeItemId id )
-{
+{ 
     if ( id.IsOk( ) )
+    {
         m_designTreeID = id;
+        DesignTreeItemData* data = ( DesignTreeItemData* )GetDesignTreeCtrl( )->GetItemData( m_designTreeID );
+        Design::Stamp* stamp = (Design::Stamp*)data->GetNodeElement();
+        wxArrayString* errors = stamp->GetErrorArray( );
+        
+    }
 }
 
 
 wxString StampDetailsDialog::GetImageFilename( )
-{
+{ 
     return m_imagePath->GetValue( );
 }
 wxString StampDetailsDialog::GetHeight( )
-{
+{ 
     return m_height->GetValue( );
 }
 
 wxString StampDetailsDialog::GetWidth( )
-{
+{ 
     return m_width->GetValue( );
 }
 
 wxString StampDetailsDialog::GetCatNbr( )
-{
+{ 
     return m_catNbr->GetValue( );
 }
 
 wxString StampDetailsDialog::GetName( )
-{
+{ 
     return m_name->GetValue( );
 }
 
 bool StampDetailsDialog::GetShowCatNbr( )
-{
+{ 
     return m_catNbrCheckbox->IsChecked( );
 }
 
 bool StampDetailsDialog::GetShowTitle( )
-{
+{ 
     return m_titleCheckbox->IsChecked( );
 }
 
 bool StampDetailsDialog::IsNameModified( )
-{
+{ 
     return m_name->IsModified( );
 }
 
 bool StampDetailsDialog::IsIDModified( )
-{
+{ 
     return m_catNbr->IsModified( );
 }
 
 bool StampDetailsDialog::IsHeightModified( )
-{
+{ 
     return m_height->IsModified( );
 }
 
 bool StampDetailsDialog::IsWidthModified( )
-{
+{ 
     return m_width->IsModified( );
 }
 
 void StampDetailsDialog::SetHeightModified( bool state )
-{
+{ 
     m_height->SetModified( state );
 }
 
 void StampDetailsDialog::SetWidthModified( bool state )
-{
+{ 
     m_width->SetModified( state );
 }
 
 void StampDetailsDialog::SetCatNbrModified( bool state )
-{
+{ 
     m_catNbr->SetModified( state );
 }
 
 void StampDetailsDialog::SetNameModified( bool state )
-{
+{ 
     m_name->SetModified( state );
 }
 
 
 void StampDetailsDialog::RefreshFromCatalog( )
-{
+{ 
     if ( m_designTreeID.IsOk( ) )
-    {
+    { 
         DesignTreeItemData* data = ( DesignTreeItemData* )GetDesignTreeCtrl( )->GetItemData( m_designTreeID );
 
         Utils::StampLink* link = data->GetStampLink( );
         if ( link )
-        {
+        { 
             wxTreeItemId catTreeID = link->GetCatTreeID( );
             wxXmlNode* node = GetCatalogTreeCtrl( )->GetEntryNode( catTreeID );
 
             if ( node )
-            {
-                Catalog::CatalogVolumeData* catalogVolumeData = GetCatalogVolumeData( );
+            { 
+                Catalog::CatalogSectionData* catalogSectionData = GetCatalogSectionData( );
                 Catalog::Entry  stamp( node );
                 SetHeight( stamp.GetHeight( ) );
                 SetHeightModified( );
@@ -438,7 +444,7 @@ void StampDetailsDialog::RefreshFromCatalog( )
  */
 
 void StampDetailsDialog::OnRefreshButtonClick( wxCommandEvent& event )
-{
+{ 
     RefreshFromCatalog( );
     // wxEVT_COMMAND_BUTTON_CLICKED event handler for ID_BUTTON in StampDetailsDialog.
         // Before editing this code, remove the block markers.
@@ -452,7 +458,7 @@ void StampDetailsDialog::OnRefreshButtonClick( wxCommandEvent& event )
  */
 
 void StampDetailsDialog::OnCancelClick( wxCommandEvent& event )
-{
+{ 
     // wxEVT_COMMAND_BUTTON_CLICKED event handler for wxID_CANCEL in StampDetailsDialog.
         // Before editing this code, remove the block markers.
     event.Skip( );
@@ -465,7 +471,7 @@ void StampDetailsDialog::OnCancelClick( wxCommandEvent& event )
  */
 
 void StampDetailsDialog::OnOkClick( wxCommandEvent& event )
-{
+{ 
     // wxEVT_COMMAND_BUTTON_CLICKED event handler for wxID_OK in StampDetailsDialog.
         // Before editing this code, remove the block markers.
     event.Skip( );

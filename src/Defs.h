@@ -1,24 +1,24 @@
 /**
  * @file Defs.h
- * @author Eddie Monroe ()
+ * @author Eddie Monroe ( )
  * @brief Resting place for Global stuff
  * @version 0.1
  * @date 2021-02-24
  *
- * @copyright Copyright (c) 2021
+ * @copyright Copyright ( c ) 2021
  * 
- * This file is part of AlbumGenerator.
+ * This file is part of StampTool.
  *
- * AlbumGenerator is free software: you can redistribute it and/or modify it under the 
+ * StampTool is free software: you can redistribute it and/or modify it under the 
  * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
- * AlbumGenerator is distributed in the hope that it will be useful, but WITHOUT ANY 
+ * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY 
  * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License along with 
- * AlbumGenerator. If not, see <https://www.gnu.org/licenses/>.
+ * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
  **************************************************/
 
@@ -26,57 +26,57 @@
 #define Defs_H
 
 #include <wx/string.h>
-//#include "gui/GeneratorData.h"
+//#include "gui/ToolData.h"
 #include <wx/gdicmn.h>
 
-class GeneratorData;
+class ToolData;
 
 //#include "utils/Settings.h"
 //#include "utils/Project.h"
 #define MaxRecentEntries = 8
 
-//extern GeneratorData* m_generatorData;
+//extern ToolData* m_toolData;
 
 extern bool Dirty;
 
-void SetDirty( bool state = true);
-bool IsDirty();
+void SetDirty( bool state = true );
+bool IsDirty( );
 namespace Utils { class Project; };
 namespace Utils { class Settings; };
-class GeneratorData;
+class ToolData;
 class DesignTreeCtrl;
 class CatalogTreeCtrl;
 class AlbumImagePanel;
 namespace Design { class DesignData; };
-namespace Catalog { class CatalogVolumeData;  };
+namespace Catalog { class CatalogSectionData;  };
 /**
  * @brief Get the Settings data 
  * 
- * @return CatalogVolumeData* 
+ * @return CatalogSectionData* 
  **************************************************/
 Utils::Settings* GetSettings( );
 
 Utils::Project* GetProject( );
 
-GeneratorData* GetGeneratorData();
-Design::DesignData* GetDesignData() ;
-Catalog::CatalogVolumeData* GetCatalogVolumeData() ;
-CatalogTreeCtrl* GetCatalogTreeCtrl();
-DesignTreeCtrl* GetDesignTreeCtrl();
-AlbumImagePanel* GetAlbumImagePanel();
+ToolData* GetToolData( );
+Design::DesignData* GetDesignData( ) ;
+Catalog::CatalogSectionData* GetCatalogSectionData( ) ;
+CatalogTreeCtrl* GetCatalogTreeCtrl( );
+DesignTreeCtrl* GetDesignTreeCtrl( );
+AlbumImagePanel* GetAlbumImagePanel( );
 
 #define RealPoint wxRealPoint  
 #define RealSize wxRealPoint 
 class RealRect
-{
+{ 
     public:
     RealRect( RealPoint posR, RealPoint sizeR ) { pos = posR; size = sizeR; };
-    RealRect( double x, double y, double width, double height ) { SetPosition(x,y), SetSize(width,height);; };
+    RealRect( double x, double y, double width, double height ) { SetPosition( x, y ), SetSize( width, height );; };
     RealPoint GetPosition( ) { return pos; };
     RealPoint GetSize( ) { return size; };
-    void SetPosition( double x, double y) { pos.x = x; pos.y = y;};
+    void SetPosition( double x, double y ) { pos.x = x; pos.y = y; };
     void SetPosition( RealPoint posR ) { pos = posR; };
-    void SetSize( double width, double height) { size.x = width; size.y = height;};
+    void SetSize( double width, double height ) { size.x = width; size.y = height; };
     void SetSize( RealPoint sizeR ) { size = sizeR; };
     double GetX( ) { return pos.x; };
     double GetY( ) { return pos.y; };
@@ -97,7 +97,7 @@ class RealRect
  * @return const wxString
  **************************************************/
 inline const wxString Bool2String( bool b )
-{
+{ 
     return b ? "true" : "false";
 };
 
@@ -106,10 +106,10 @@ inline const wxString Bool2String( bool b )
  *
  * @param  str
  * @return true  if str == "true"
- * @return false   if str == "false" ( or anything else)
+ * @return false   if str == "false" ( or anything else )
  **************************************************/
 inline const bool String2Bool( wxString str )
-{
+{ 
     return str.CmpNoCase( "true" ) ? false : true;
 };
 

@@ -5,20 +5,20 @@
  * @version 0.1
  * @date 2022-01-11
  *
- * @copyright Copyright (c) 2022  
+ * @copyright Copyright ( c ) 2022  
  * 
- * This file is part of AlbumGenerator.
+ * This file is part of StampTool.
  *
- * AlbumGenerator is free software: you can redistribute it and/or modify it under the 
+ * StampTool is free software: you can redistribute it and/or modify it under the 
  * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
- * AlbumGenerator is distributed in the hope that it will be useful, but WITHOUT ANY 
+ * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY 
  * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License along with 
- * AlbumGenerator. If not, see <https://www.gnu.org/licenses/>.
+ * StampTool. If not, see <https://www.gnu.org/licenses/>.
  */
 
 // For compilers that support precompilation, includes "wx/wx.h".
@@ -66,27 +66,27 @@ BEGIN_EVENT_TABLE( DefinePeriodsDialog, wxDialog )
     EVT_BUTTON( wxID_OK, DefinePeriodsDialog::OnOkClick )
 // DefinePeriodsDialog event table entries
 
-END_EVENT_TABLE()
+END_EVENT_TABLE( )
 
 
 /*
  * DefinePeriodsDialog constructors
  */
 
-DefinePeriodsDialog::DefinePeriodsDialog()
-{
-    Init();
+DefinePeriodsDialog::DefinePeriodsDialog( )
+{ 
+    Init( );
 }
 
 DefinePeriodsDialog::DefinePeriodsDialog( wxWindow* parent, wxWindowID id, const wxString& caption, const wxPoint& pos, const wxSize& size, long style )
-{
+{ 
     Init( );
     Create( parent, id, caption, pos, size, style );
     m_antiqueTextBox->SetValue( GetSettings( )->GetLowerPeriod( ) );
-    m_AntiqueYear->SetValue( GetSettings( )->GetLowerDivision( ));
-    m_classicTextBox->SetValue( GetSettings( )->GetMiddlePeriod( ));
-    m_modernTextBox->SetValue( GetSettings( )->GetUpperPeriod( ));
-    m_modernYear->SetValue( GetSettings( )->GetUpperDivision( ));
+    m_AntiqueYear->SetValue( GetSettings( )->GetLowerDivision( ) );
+    m_classicTextBox->SetValue( GetSettings( )->GetMiddlePeriod( ) );
+    m_modernTextBox->SetValue( GetSettings( )->GetUpperPeriod( ) );
+    m_modernYear->SetValue( GetSettings( )->GetUpperDivision( ) );
 
 }
 
@@ -96,17 +96,17 @@ DefinePeriodsDialog::DefinePeriodsDialog( wxWindow* parent, wxWindowID id, const
  */
 
 bool DefinePeriodsDialog::Create( wxWindow* parent, wxWindowID id, const wxString& caption, const wxPoint& pos, const wxSize& size, long style )
-{
+{ 
 // DefinePeriodsDialog creation
-    SetExtraStyle(wxWS_EX_VALIDATE_RECURSIVELY|wxWS_EX_BLOCK_EVENTS);
+    SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY | wxWS_EX_BLOCK_EVENTS );
     wxDialog::Create( parent, id, caption, pos, size, style );
 
-    CreateControls();
-    if (GetSizer())
-    {
-        GetSizer()->SetSizeHints(this);
+    CreateControls( );
+    if ( GetSizer( ) )
+    { 
+        GetSizer( )->SetSizeHints( this );
     }
-    Centre();
+    Centre( );
 // DefinePeriodsDialog creation
     return true;
 }
@@ -116,8 +116,8 @@ bool DefinePeriodsDialog::Create( wxWindow* parent, wxWindowID id, const wxStrin
  * DefinePeriodsDialog destructor
  */
 
-DefinePeriodsDialog::~DefinePeriodsDialog()
-{
+DefinePeriodsDialog::~DefinePeriodsDialog( )
+{ 
 // DefinePeriodsDialog destruction
 // DefinePeriodsDialog destruction
 }
@@ -127,8 +127,8 @@ DefinePeriodsDialog::~DefinePeriodsDialog()
  * Member initialisation
  */
 
-void DefinePeriodsDialog::Init()
-{
+void DefinePeriodsDialog::Init( )
+{ 
 // DefinePeriodsDialog member initialisation
     m_antiqueTextBox = NULL;
     m_AntiqueYear = NULL;
@@ -143,64 +143,64 @@ void DefinePeriodsDialog::Init()
  * Control creation for DefinePeriodsDialog
  */
 
-void DefinePeriodsDialog::CreateControls()
+void DefinePeriodsDialog::CreateControls( )
 {    
 // DefinePeriodsDialog content construction
 
     DefinePeriodsDialog* itemDialog1 = this;
 
-    wxBoxSizer* itemBoxSizer2 = new wxBoxSizer(wxVERTICAL);
-    itemDialog1->SetSizer(itemBoxSizer2);
+    wxBoxSizer* itemBoxSizer2 = new wxBoxSizer( wxVERTICAL );
+    itemDialog1->SetSizer( itemBoxSizer2 );
 
-    wxBoxSizer* itemBoxSizer1 = new wxBoxSizer(wxHORIZONTAL);
-    itemBoxSizer2->Add(itemBoxSizer1, 0, wxALIGN_LEFT|wxALL, 5);
+    wxBoxSizer* itemBoxSizer1 = new wxBoxSizer( wxHORIZONTAL );
+    itemBoxSizer2->Add( itemBoxSizer1, 0, wxALIGN_LEFT | wxALL, 5 );
 
-    wxStaticText* itemStaticText2 = new wxStaticText( itemDialog1, wxID_STATIC, _("First Period"), wxDefaultPosition, wxDefaultSize, 0 );
-    itemBoxSizer1->Add(itemStaticText2, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
+    wxStaticText* itemStaticText2 = new wxStaticText( itemDialog1, wxID_STATIC, _( "First Period" ), wxDefaultPosition, wxDefaultSize, 0 );
+    itemBoxSizer1->Add( itemStaticText2, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
-    m_antiqueTextBox = new wxTextCtrl( itemDialog1, ID_ANTIQUE, _("Antique"), wxDefaultPosition, wxDefaultSize, 0 );
-    itemBoxSizer1->Add(m_antiqueTextBox, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
+    m_antiqueTextBox = new wxTextCtrl( itemDialog1, ID_ANTIQUE, _( "Antique" ), wxDefaultPosition, wxDefaultSize, 0 );
+    itemBoxSizer1->Add( m_antiqueTextBox, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
-    wxStaticText* itemStaticText4 = new wxStaticText( itemDialog1, wxID_STATIC, _("before "), wxDefaultPosition, wxDefaultSize, 0 );
-    itemBoxSizer1->Add(itemStaticText4, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
+    wxStaticText* itemStaticText4 = new wxStaticText( itemDialog1, wxID_STATIC, _( "before " ), wxDefaultPosition, wxDefaultSize, 0 );
+    itemBoxSizer1->Add( itemStaticText4, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
-    m_AntiqueYear = new wxTextCtrl( itemDialog1, ID_ANTIQUEYEAR, _("1920"), wxDefaultPosition, wxDefaultSize, 0 );
-    itemBoxSizer1->Add(m_AntiqueYear, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
+    m_AntiqueYear = new wxTextCtrl( itemDialog1, ID_ANTIQUEYEAR, _( "1920" ), wxDefaultPosition, wxDefaultSize, 0 );
+    itemBoxSizer1->Add( m_AntiqueYear, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
-    wxBoxSizer* itemBoxSizer6 = new wxBoxSizer(wxHORIZONTAL);
-    itemBoxSizer2->Add(itemBoxSizer6, 0, wxALIGN_LEFT|wxALL, 5);
+    wxBoxSizer* itemBoxSizer6 = new wxBoxSizer( wxHORIZONTAL );
+    itemBoxSizer2->Add( itemBoxSizer6, 0, wxALIGN_LEFT | wxALL, 5 );
 
-    wxStaticText* itemStaticText7 = new wxStaticText( itemDialog1, wxID_STATIC, _("Second Period"), wxDefaultPosition, wxDefaultSize, 0 );
-    itemBoxSizer6->Add(itemStaticText7, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
+    wxStaticText* itemStaticText7 = new wxStaticText( itemDialog1, wxID_STATIC, _( "Second Period" ), wxDefaultPosition, wxDefaultSize, 0 );
+    itemBoxSizer6->Add( itemStaticText7, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
-    m_classicTextBox = new wxTextCtrl( itemDialog1, ID_CLASSIC, _("Classic"), wxDefaultPosition, wxDefaultSize, 0 );
-    itemBoxSizer6->Add(m_classicTextBox, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
+    m_classicTextBox = new wxTextCtrl( itemDialog1, ID_CLASSIC, _( "Classic" ), wxDefaultPosition, wxDefaultSize, 0 );
+    itemBoxSizer6->Add( m_classicTextBox, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
-    wxBoxSizer* itemBoxSizer9 = new wxBoxSizer(wxHORIZONTAL);
-    itemBoxSizer2->Add(itemBoxSizer9, 0, wxALIGN_LEFT|wxALL, 5);
+    wxBoxSizer* itemBoxSizer9 = new wxBoxSizer( wxHORIZONTAL );
+    itemBoxSizer2->Add( itemBoxSizer9, 0, wxALIGN_LEFT | wxALL, 5 );
 
-    wxStaticText* itemStaticText10 = new wxStaticText( itemDialog1, wxID_STATIC, _("Last Period"), wxDefaultPosition, wxDefaultSize, 0 );
-    itemBoxSizer9->Add(itemStaticText10, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
+    wxStaticText* itemStaticText10 = new wxStaticText( itemDialog1, wxID_STATIC, _( "Last Period" ), wxDefaultPosition, wxDefaultSize, 0 );
+    itemBoxSizer9->Add( itemStaticText10, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
-    m_modernTextBox = new wxTextCtrl( itemDialog1, ID_MODERN, _("Modern"), wxDefaultPosition, wxDefaultSize, 0 );
-    itemBoxSizer9->Add(m_modernTextBox, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
+    m_modernTextBox = new wxTextCtrl( itemDialog1, ID_MODERN, _( "Modern" ), wxDefaultPosition, wxDefaultSize, 0 );
+    itemBoxSizer9->Add( m_modernTextBox, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
-    wxStaticText* itemStaticText12 = new wxStaticText( itemDialog1, wxID_STATIC, _("after"), wxDefaultPosition, wxDefaultSize, 0 );
-    itemBoxSizer9->Add(itemStaticText12, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
+    wxStaticText* itemStaticText12 = new wxStaticText( itemDialog1, wxID_STATIC, _( "after" ), wxDefaultPosition, wxDefaultSize, 0 );
+    itemBoxSizer9->Add( itemStaticText12, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
-    m_modernYear = new wxTextCtrl( itemDialog1, ID_MODERNYEAR, _("1960"), wxDefaultPosition, wxDefaultSize, 0 );
-    itemBoxSizer9->Add(m_modernYear, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
+    m_modernYear = new wxTextCtrl( itemDialog1, ID_MODERNYEAR, _( "1960" ), wxDefaultPosition, wxDefaultSize, 0 );
+    itemBoxSizer9->Add( m_modernYear, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
-    wxBoxSizer* itemBoxSizer14 = new wxBoxSizer(wxHORIZONTAL);
-    itemBoxSizer2->Add(itemBoxSizer14, 0, wxALIGN_CENTER_HORIZONTAL|wxALL, 5);
+    wxBoxSizer* itemBoxSizer14 = new wxBoxSizer( wxHORIZONTAL );
+    itemBoxSizer2->Add( itemBoxSizer14, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 5 );
 
-    wxButton* itemButton15 = new wxButton( itemDialog1, wxID_CANCEL, _("Cancel"), wxDefaultPosition, wxDefaultSize, 0 );
-    itemBoxSizer14->Add(itemButton15, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
+    wxButton* itemButton15 = new wxButton( itemDialog1, wxID_CANCEL, _( "Cancel" ), wxDefaultPosition, wxDefaultSize, 0 );
+    itemBoxSizer14->Add( itemButton15, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
-    itemBoxSizer14->Add(5, 5, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
+    itemBoxSizer14->Add( 5, 5, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
-    wxButton* itemButton17 = new wxButton( itemDialog1, wxID_OK, _("OK"), wxDefaultPosition, wxDefaultSize, 0 );
-    itemBoxSizer14->Add(itemButton17, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
+    wxButton* itemButton17 = new wxButton( itemDialog1, wxID_OK, _( "OK" ), wxDefaultPosition, wxDefaultSize, 0 );
+    itemBoxSizer14->Add( itemButton17, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
 // DefinePeriodsDialog content construction
 }
@@ -211,11 +211,11 @@ void DefinePeriodsDialog::CreateControls()
  */
 
 void DefinePeriodsDialog::OnAntiqueTextUpdated( wxCommandEvent& event )
-{
+{ 
 
 // wxEVT_COMMAND_TEXT_UPDATED event handler for ID_ANTIQUE in DefinePeriodsDialog.
     // Before editing this code, remove the block markers.
-    event.Skip();
+    event.Skip( );
 // wxEVT_COMMAND_TEXT_UPDATED event handler for ID_ANTIQUE in DefinePeriodsDialog. 
 }
 
@@ -225,11 +225,11 @@ void DefinePeriodsDialog::OnAntiqueTextUpdated( wxCommandEvent& event )
  */
 
 void DefinePeriodsDialog::OnAntiqueYearTextUpdated( wxCommandEvent& event )
-{
+{ 
 
 // wxEVT_COMMAND_TEXT_UPDATED event handler for ID_ANTIQUEYEAR in DefinePeriodsDialog.
     // Before editing this code, remove the block markers.
-    event.Skip();
+    event.Skip( );
 // wxEVT_COMMAND_TEXT_UPDATED event handler for ID_ANTIQUEYEAR in DefinePeriodsDialog. 
 }
 
@@ -239,11 +239,11 @@ void DefinePeriodsDialog::OnAntiqueYearTextUpdated( wxCommandEvent& event )
  */
 
 void DefinePeriodsDialog::OnClassicTextUpdated( wxCommandEvent& event )
-{
+{ 
 
 // wxEVT_COMMAND_TEXT_UPDATED event handler for ID_CLASSIC in DefinePeriodsDialog.
     // Before editing this code, remove the block markers.
-    event.Skip();
+    event.Skip( );
 // wxEVT_COMMAND_TEXT_UPDATED event handler for ID_CLASSIC in DefinePeriodsDialog. 
 }
 
@@ -253,11 +253,11 @@ void DefinePeriodsDialog::OnClassicTextUpdated( wxCommandEvent& event )
  */
 
 void DefinePeriodsDialog::OnModernTextUpdated( wxCommandEvent& event )
-{
+{ 
  
 // wxEVT_COMMAND_TEXT_UPDATED event handler for ID_MODERN in DefinePeriodsDialog.
     // Before editing this code, remove the block markers.
-    event.Skip();
+    event.Skip( );
 // wxEVT_COMMAND_TEXT_UPDATED event handler for ID_MODERN in DefinePeriodsDialog. 
 }
 
@@ -267,11 +267,11 @@ void DefinePeriodsDialog::OnModernTextUpdated( wxCommandEvent& event )
  */
 
 void DefinePeriodsDialog::OnModernYearTextUpdated( wxCommandEvent& event )
-{
+{ 
  
 // wxEVT_COMMAND_TEXT_UPDATED event handler for ID_MODERNYEAR in DefinePeriodsDialog.
     // Before editing this code, remove the block markers.
-    event.Skip();
+    event.Skip( );
 // wxEVT_COMMAND_TEXT_UPDATED event handler for ID_MODERNYEAR in DefinePeriodsDialog. 
 }
 
@@ -281,10 +281,10 @@ void DefinePeriodsDialog::OnModernYearTextUpdated( wxCommandEvent& event )
  */
 
 void DefinePeriodsDialog::OnCancelClick( wxCommandEvent& event )
-{
+{ 
 // wxEVT_COMMAND_BUTTON_CLICKED event handler for wxID_CANCEL in DefinePeriodsDialog.
     // Before editing this code, remove the block markers.
-    event.Skip();
+    event.Skip( );
 // wxEVT_COMMAND_BUTTON_CLICKED event handler for wxID_CANCEL in DefinePeriodsDialog. 
 }
 
@@ -294,46 +294,46 @@ void DefinePeriodsDialog::OnCancelClick( wxCommandEvent& event )
  */
 
 void DefinePeriodsDialog::OnOkClick( wxCommandEvent& event )
-{
+{ 
     if ( m_antiqueTextBox->IsModified( ) )
-    {
-        GetSettings()->SetDirty();
-        GetSettings()->SetLowerPeriod( m_antiqueTextBox->GetValue( ));
+    { 
+        GetSettings( )->SetDirty( );
+        GetSettings( )->SetLowerPeriod( m_antiqueTextBox->GetValue( ) );
         m_antiqueTextBox->SetModified( false );
     }
     if ( m_AntiqueYear->IsModified( ) )
-    {
-        GetSettings()->SetDirty();
-        GetSettings()->SetLowerDivision( m_AntiqueYear->GetValue( ));
+    { 
+        GetSettings( )->SetDirty( );
+        GetSettings( )->SetLowerDivision( m_AntiqueYear->GetValue( ) );
         m_AntiqueYear->SetModified( false );
     }
    if ( m_modernTextBox->IsModified( ) )
-    {
-        GetSettings()->SetDirty();
-        GetSettings()->SetUpperPeriod( m_modernTextBox->GetValue( ));
+    { 
+        GetSettings( )->SetDirty( );
+        GetSettings( )->SetUpperPeriod( m_modernTextBox->GetValue( ) );
         m_modernTextBox->SetModified( false );
     }
     if ( m_classicTextBox->IsModified( ) )
-    {
-        GetSettings()->SetDirty();
-        GetSettings()->SetMiddlePeriod( m_classicTextBox->GetValue( ));
+    { 
+        GetSettings( )->SetDirty( );
+        GetSettings( )->SetMiddlePeriod( m_classicTextBox->GetValue( ) );
         m_classicTextBox->SetModified( false );
     }
    if ( m_modernYear->IsModified( ) )
-    {
-        GetSettings()->SetDirty();
-        GetSettings()->SetUpperDivision( m_modernYear->GetValue( ));
+    { 
+        GetSettings( )->SetDirty( );
+        GetSettings( )->SetUpperDivision( m_modernYear->GetValue( ) );
         m_modernYear->SetModified( false );
     }
-if( GetSettings()->isDirty())  
-    GetSettings()->Save( );
+if( GetSettings( )->isDirty( ) )  
+    GetSettings( )->Save( );
 
 
 
 
 // wxEVT_COMMAND_BUTTON_CLICKED event handler for wxID_OK in DefinePeriodsDialog.
     // Before editing this code, remove the block markers.
-    event.Skip();
+    event.Skip( );
 // wxEVT_COMMAND_BUTTON_CLICKED event handler for wxID_OK in DefinePeriodsDialog. 
 }
 
@@ -342,8 +342,8 @@ if( GetSettings()->isDirty())
  * Should we show tooltips?
  */
 
-bool DefinePeriodsDialog::ShowToolTips()
-{
+bool DefinePeriodsDialog::ShowToolTips( )
+{ 
     return true;
 }
 
@@ -352,10 +352,10 @@ bool DefinePeriodsDialog::ShowToolTips()
  */
 
 wxBitmap DefinePeriodsDialog::GetBitmapResource( const wxString& name )
-{
+{ 
     // Bitmap retrieval
 // DefinePeriodsDialog bitmap retrieval
-    wxUnusedVar(name);
+    wxUnusedVar( name );
     return wxNullBitmap;
 // DefinePeriodsDialog bitmap retrieval
 }
@@ -365,10 +365,10 @@ wxBitmap DefinePeriodsDialog::GetBitmapResource( const wxString& name )
  */
 
 wxIcon DefinePeriodsDialog::GetIconResource( const wxString& name )
-{
+{ 
     // Icon retrieval
 // DefinePeriodsDialog icon retrieval
-    wxUnusedVar(name);
+    wxUnusedVar( name );
     return wxNullIcon;
 // DefinePeriodsDialog icon retrieval
 }

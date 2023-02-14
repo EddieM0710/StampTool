@@ -46,12 +46,10 @@ namespace Design {
 
     AlbumBase::AlbumBase( wxXmlNode* ele ) : XMLBase( ele )
     { 
- //       GetSettings( )->
     }
 
     AlbumBase::~AlbumBase( )
     { 
-    
         wxTreeItemIdValue cookie;
         wxTreeItemId parentID = GetTreeItemId( );
         wxTreeItemId childID = GetDesignTreeCtrl( )->GetFirstChild( parentID, cookie );        while ( childID.IsOk( ) )

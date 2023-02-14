@@ -5,7 +5,6 @@ include( "${wxWidgets_USE_FILE}")
 include_directories(  ${StampTool_Source_Directory} 
 ${StampTool_GuiFiles_Source_Directory}
 ${StampTool_UtilsFiles_Source_Directory}
-${StampTool_ODTFiles_Source_Directory}
 ${StampTool_AlbumFiles_Source_Directory}
 ${StampTool_CatalogFiles_Source_Directory} )
 

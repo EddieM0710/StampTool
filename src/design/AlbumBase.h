@@ -63,7 +63,7 @@ namespace Design {
 
         int GetNbrChildren( );
 
-        virtual wxXmlNode* Write( wxXmlNode* parent ) = 0;
+//        virtual wxXmlNode* Write( wxXmlNode* parent ) = 0;
 
         void DeleteChild( AlbumBase* node );
 

@@ -196,7 +196,7 @@ void StampDescriptionPanel::CreateControls( void )
 
 
     wxPanel* StampImagePanel = new wxPanel( stampAndImageVerticalSplitterWindow, 
-        ID_DESCRIPTIONPANEL, wxDefaultPosition, 
+        ID_STAMPDESCRIPTIONPANEL, wxDefaultPosition, 
         wxDefaultSize, wxTAB_TRAVERSAL );
     StampImagePanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
 

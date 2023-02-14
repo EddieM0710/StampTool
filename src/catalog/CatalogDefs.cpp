@@ -166,7 +166,7 @@ namespace Catalog {
         wxT( "Gum" ),         wxT( "Currency" ),      wxT( "FaceValue" ), 
         wxT( "Print run" ),   wxT( "Variant" ),       wxT( "Score" ), 
         wxT( "Accuracy" ),    wxT( "Colors" ),        wxT( "Themes" ), 
-        wxT( "Description" ), wxT( "Link" ),          wxT( "Checked" ), 
+        wxT( "Description" ), wxT( "Link" ),       //   wxT( "Checked" ), 
         wxT( "Inventory" ), wxT( "Background" )
     };
 
@@ -179,7 +179,7 @@ namespace Catalog {
         wxT( "Gum" ),         wxT( "Currency" ),      wxT( "FaceValue" ), 
         wxT( "Print_run" ),   wxT( "Variant" ),       wxT( "Score" ), 
         wxT( "Accuracy" ),    wxT( "Colors" ),        wxT( "Themes" ), 
-        wxT( "Description" ), wxT( "Link" ),          wxT( "CheckedStatus" ), 
+        wxT( "Description" ), wxT( "Link" ),        //  wxT( "CheckedStatus" ), 
         wxT( "InventoryStatus" ),  wxT( "Background" )
     };
 

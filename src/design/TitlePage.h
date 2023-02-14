@@ -82,10 +82,10 @@ namespace Design {
         NodeStatus ValidateNode( );
 
     private:
-        wxXmlNode* Write( wxXmlNode* parent )
-        { 
-            return ( wxXmlNode* )0;
-        };
+        // wxXmlNode* Write( wxXmlNode* parent )
+        // { 
+        //     return ( wxXmlNode* )0;
+        // };
 
     };
 }

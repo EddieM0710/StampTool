@@ -32,15 +32,9 @@
 #include "wx/wx.h"
 #endif
 
-// includes
+
 #include "LabeledTextBox.h"
-// includes
-
 #include "NewStampDialog.h"
-
-// XPM images
-// XPM images
-
 
 /*
  * NewStampDialog type definition

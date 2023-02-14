@@ -17,13 +17,11 @@
   * Includes
   */
 
-
-#include "wx/grid.h"
-
-
-#include "catalog/Entry.h"
 #include <vector>
 #include <wx/dataview.h>
+#include "wx/grid.h"
+
+#include "catalog/Entry.h"
 #include "gui/GuiDefs.h"
   /*!
    * Forward declarations
@@ -37,27 +35,27 @@ class wxGrid;
  * Control identifiers
  */
 
-
-#define ID_GRID ID_CATALOGCODEPANEL+1
 #define SYMBOL_CATALOGCODEPANEL_STYLE wxTAB_TRAVERSAL
 #define SYMBOL_CATALOGCODEPANEL_TITLE _( "CatalogCode" )
 #define SYMBOL_CATALOGCODEPANEL_IDNAME ID_CATALOGCODEPANEL
 #define SYMBOL_CATALOGCODEPANEL_SIZE wxSize( 800, 200 )
 #define SYMBOL_CATALOGCODEPANEL_POSITION wxDefaultPosition
 
-
-#define ID_LISTCTRL ID_CATALOGCODEPANEL+2
-
  /*!
   * CatalogCodePanel class declaration
   */
 
-class CatalogCodePanel : public wxPanel
-{ 
+class CatalogCodePanel: public wxPanel
+{
     DECLARE_DYNAMIC_CLASS( CatalogCodePanel )
         DECLARE_EVENT_TABLE( )
 
 public:
+    enum  CatalogCodePanelGuiDefs
+    {
+        ID_GRID = ID_CATALOGCODEPANEL + 1,
+    };
+    
     // Constructors
     /**
      * @brief Default Constructor a new CatalogCodePanel object
@@ -76,10 +74,10 @@ public:
      * @param  style	The window style.
      * @see wxPanel.
      **************************************************/
-    CatalogCodePanel( wxWindow* parent, 
-        wxWindowID id = SYMBOL_CATALOGCODEPANEL_IDNAME, 
-        const wxPoint& pos = SYMBOL_CATALOGCODEPANEL_POSITION, 
-        const wxSize& size = SYMBOL_CATALOGCODEPANEL_SIZE, 
+    CatalogCodePanel( wxWindow* parent,
+        wxWindowID id = SYMBOL_CATALOGCODEPANEL_IDNAME,
+        const wxPoint& pos = SYMBOL_CATALOGCODEPANEL_POSITION,
+        const wxSize& size = SYMBOL_CATALOGCODEPANEL_SIZE,
         long style = SYMBOL_CATALOGCODEPANEL_STYLE );
 
     /**
@@ -94,9 +92,9 @@ public:
      * @return bool
      *
      **************************************************/
-    bool Create( wxWindow* parent, wxWindowID id = SYMBOL_CATALOGCODEPANEL_IDNAME, 
-        const wxPoint& pos = SYMBOL_CATALOGCODEPANEL_POSITION, 
-        const wxSize& size = SYMBOL_CATALOGCODEPANEL_SIZE, 
+    bool Create( wxWindow* parent, wxWindowID id = SYMBOL_CATALOGCODEPANEL_IDNAME,
+        const wxPoint& pos = SYMBOL_CATALOGCODEPANEL_POSITION,
+        const wxSize& size = SYMBOL_CATALOGCODEPANEL_SIZE,
         long style = SYMBOL_CATALOGCODEPANEL_STYLE );
 
     // Destructor

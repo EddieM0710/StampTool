@@ -21,17 +21,14 @@
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
  **************************************************/
+#include <wx/gdicmn.h>
 
 #include "design/Album.h"
 #include "design/FontInfo.h"
 #include "design/TitlePage.h"
 #include "design/Page.h"
-#include "odt/Document.h"
-#include "odt/ODTDefs.h"
 #include "utils/XMLUtilities.h"
 #include "gui/DesignTreeCtrl.h"
- //#include "utils/XMLUtilities.h"
-#include <wx/gdicmn.h>
 
 namespace Design { 
 
@@ -343,56 +340,6 @@ namespace Design {
         }
     }
 
-    wxXmlNode* Album::Write( wxXmlNode* parent )
-    { 
-
-        // The text:p, i.e., content holder, for this Page
-        wxXmlNode* thePage = 0;
-
-        bool firstPage = true;
-//        ODT::StylesDoc( )->AddBackgroundImage(  GetBorderFileName( ) );
-        wxTreeItemIdValue cookie;
-        wxTreeItemId parentID = GetTreeItemId( );
-        wxTreeItemId childID = GetDesignTreeCtrl( )->GetFirstChild( parentID, cookie );
-        while ( childID.IsOk( ) )
-        { 
-            int childType = ( AlbumBaseType )GetDesignTreeCtrl( )->GetItemType( childID );
-            switch ( childType )
-            { 
-            case AT_Page:
-            { 
-                // add the Text:p for this Page
-                thePage = 0;
-                if ( firstPage )
-                { 
-                    thePage = ODT::ContentDoc( )->FindFirstPage( );
-                    if ( !thePage )
-                    { 
-                        thePage = ODT::ContentDoc( )->AddNewPage( );
-                    }
-                }
-                else
-                { 
-                    thePage = ODT::ContentDoc( )->AddNewPage( );
-                }
-                firstPage = false;
-                // set the layout parameters into the child
-                Page* page = ( Page* )GetDesignTreeCtrl( )->GetItemNode( childID );
-                page->Write( thePage );
-                break;
-
-
-            }
-
-            default:
-
-                break;
-            }
-            childID = GetDesignTreeCtrl( )->GetNextChild( parentID, cookie );
-        }
-        return thePage;
-    }
-
     void Album::GetPageParameters( wxString& width, 
         wxString& height, 
         wxString& topMargin, 
@@ -408,14 +355,43 @@ namespace Design {
         leftMargin = GetAttrStr( AT_LeftMargin );
     };
 
-    void Album::MakeAlbum( )
+
+    void Album::DrawPDF(  )
+    {
+         Design::InitDesignDefs( Design::DD_PDF );
+        // The text:p, i.e., content holder, for this Page
+        double width = GetAttrDbl( AT_PageWidth );
+        double height = GetAttrDbl( AT_PageHeight );
+        wxPdfDocument* pdfDoc = new wxPdfDocument( wxPORTRAIT, width, height);
+
+    wxPdfArrayDouble dash5;
+    wxPdfLineStyle style5(0.25, wxPDF_LINECAP_BUTT, wxPDF_LINEJOIN_MITER, dash5, 0., wxColour(0, 0, 0));
+    pdfDoc->SetLineStyle(style5);
+
+        wxTreeItemIdValue cookie;
+        wxTreeItemId parentID = GetTreeItemId( );
+        wxTreeItemId childID = GetDesignTreeCtrl( )->GetFirstChild( parentID, cookie );
+        while ( childID.IsOk( ) )
+        { 
+            int childType = ( AlbumBaseType )GetDesignTreeCtrl( )->GetItemType( childID );
+
+            pdfDoc->AddPage();
+            // set the layout parameters into the child
+            Page* page = ( Page* )GetDesignTreeCtrl( )->GetItemNode( childID );
+            page->DrawPDF( pdfDoc, width, height );
+            childID = GetDesignTreeCtrl( )->GetNextChild( parentID, cookie );
+        }
+        pdfDoc->SaveAsFile( "test.pdf" );
+    }
+
+    void Album::MakePDFAlbum( )
     { 
 
         UpdateMinimumSize( );
         UpdateSizes( );
         UpdatePositions( );
-        ODT::ODTDoc( )->InitODTFiles( );
-        Write( ( wxXmlNode* )0 );
+
+        DrawPDF( );
 //        DumpLayout( );
     }
 

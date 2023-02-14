@@ -41,8 +41,8 @@ namespace Utils {
         wxString GetProjectFilename( ) { return m_projectFilename; };
         void SetProjectFilename( wxString name );
 
-        wxString GetODTOutputFilename( );
-        void SetODTOutputFilename( wxString outputFilename );
+        wxString GetOutputFilename( );
+        void SetOutputFilename( wxString outputFilename );
 
         wxString GetDesignFilename( );
         void SetDesignFilename( wxString albumFilename );;
@@ -80,7 +80,7 @@ namespace Utils {
     private:
         wxXmlDocument* m_ProjectDoc;
         wxString m_projectFilename;
-        wxString m_ODTOutputFilename;
+        wxString m_outputFilename;
         wxString m_designFilename;
         wxString m_imagePath;
         wxString m_catalogFilename;

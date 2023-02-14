@@ -31,9 +31,9 @@
 #include "design/Column.h"
 #include "design/Stamp.h"
 #include "design/DesignData.h"
-#include "odt/Document.h"
 #include "gui/DesignTreeCtrl.h"
 #include "gui/GuiUtils.h"
+
 namespace Design { 
 
 
@@ -113,7 +113,7 @@ namespace Design {
             if ( GetHeight( ) <= 0.0 )
             { 
                 wxString str;
-                str.Format( "Terminal leaf node must define the height. height:>>%7.2f<< \n", GetHeight( ) );
+                str = wxString::Format( "Terminal leaf node must define the height. height:>>%7.2f<< \n", GetHeight( ) );
                 GetErrorArray( )->Add( str );
                 std::cout << "Terminal leaf node must define the height.\n";
                 status = AT_FATAL;
@@ -121,7 +121,7 @@ namespace Design {
             if ( GetWidth( ) <= 0.0 )
             { 
                 wxString str;
-                str.Format( "Terminal leaf node must define the width. width:>>%7.2f<< \n", GetWidth( ) );
+                str = wxString::Format( "Terminal leaf node must define the width. width:>>%7.2f<< \n", GetWidth( ) );
                 GetErrorArray( )->Add( str );
                 std::cout << "Terminal leaf node must define the width.\n";
                 status = AT_FATAL;
@@ -130,7 +130,7 @@ namespace Design {
         if ( GetWidth( ) < GetMinWidth( ) )
         { 
             wxString str;
-            str.Format( "Children too big for page. width:%7.2f  min width:%7.2f\n", GetWidth( ), GetMinWidth( ) );
+            str = wxString::Format( "Children too big for page. width:%7.2f  min width:%7.2f\n", GetWidth( ), GetMinWidth( ) );
             GetErrorArray( )->Add( str );
             ReportLayoutError( "UpdateMinimumSize", "Children too big for page", true );
         }
@@ -138,7 +138,7 @@ namespace Design {
         if ( GetHeight( ) < GetMinHeight( ) )
         { 
             wxString str;
-            str.Format( "Children too big for page. height:%7.2f  min height:%7.2f\n", GetHeight( ), GetMinHeight( ) );
+            str = wxString::Format( "Children too big for page. height:%7.2f  min height:%7.2f\n", GetHeight( ), GetMinHeight( ) );
             GetErrorArray( )->Add( str );
             ReportLayoutError( "UpdateMinimumSize", "Children too big for page", true );
         }
@@ -282,34 +282,41 @@ namespace Design {
         m_frame.WriteLayout( "Page::UpdatePositions >" );
     }
 
-    wxXmlNode* Page::Write( wxXmlNode* parent )
+
+    void Page::UpdateLayout( )
+    {
+        UpdateMinimumSize( );
+        UpdateSizes( );
+        UpdatePositions( );
+    }
+
+
+    void Page::DrawPDF( wxPdfDocument* doc, double x, double y )
     { 
-        // Add the Page frame
-        // set the frame for the page parameters
-        Utils::AddComment( parent, "Page", "Inserting a new Page." );
 
-        wxXmlNode* contentElement = ODT::ContentDoc( )->WriteFrame( parent, 
-            GetXPos( ), 
-            GetYPos( ), 
+        wxString borderName = GetBorderFileName( );
+        double xPos = GetLeftMargin( );
+        double yPos = GetTopMargin( );
+
+
+        DrawImagePDF( doc, borderName, xPos, yPos, 
             GetWidth( ), 
-            GetHeight( ), 
-            ODT::FrameWithBackgroundImage, 
-            ODT::TextAnchorParagraph );
+            GetHeight( ) );
 
-        wxString link = GetBorderFileName( );
+        double leftPadding = 0;
+        double rightPadding = 0;
+        double topPadding = 0;
+        double bottomPadding = 0;
+        if ( 1 )//row->GetShowFrame( ) ) 
+        { 
+            leftPadding = GetLeftContentPadding( );
+            rightPadding = GetRightContentPadding( );
+            topPadding = GetTopContentPadding( );
+            bottomPadding = GetBottomContentPadding( );
+        }
         
-         wxString docImage = ODT::ODTDoc( )->AddImageFile( link );
-
-
-        wxXmlNode* backgroundFrame = ODT::ContentDoc( )->WriteFrame( contentElement, 
-            GetBorderSize( ), 
-            GetBorderSize( ), 
-            GetWidth( )-2*GetBorderSize( ), 
-            GetHeight( )-2*GetBorderSize( ), 
-            ODT::FrameNoBorder, 
-            ODT::TextAnchorParagraph );
-
-
+        xPos = xPos + GetBorderSize( );
+        yPos = yPos + GetBorderSize( );
         wxTreeItemIdValue cookie;
         wxTreeItemId parentID = GetTreeItemId( );
         wxTreeItemId childID = GetDesignTreeCtrl( )->GetFirstChild( parentID, cookie );
@@ -317,14 +324,12 @@ namespace Design {
         { 
             AlbumBaseType type = ( AlbumBaseType )GetDesignTreeCtrl( )->GetItemType( childID );
             LayoutBase* child = ( LayoutBase* )GetDesignTreeCtrl( )->GetItemNode( childID );
-            child->Write( backgroundFrame );
+            child->DrawPDF( doc, xPos + leftPadding, yPos + topPadding );
             childID = GetDesignTreeCtrl( )->GetNextChild( parentID, cookie );
         }
-        return contentElement;
     }
-
-
-    void Page::draw( wxDC& dc, double x, double y )
+    
+    void Page::Draw( wxDC& dc, double x, double y )
     { 
 
         dc.SetPen( *wxBLACK_PEN );
@@ -362,7 +367,7 @@ namespace Design {
         { 
             AlbumBaseType type = ( AlbumBaseType )GetDesignTreeCtrl( )->GetItemType( childID );
             LayoutBase* child = ( LayoutBase* )GetDesignTreeCtrl( )->GetItemNode( childID );
-            child->draw( dc, xPos + leftPadding, yPos + topPadding );
+            child->Draw( dc, xPos + leftPadding, yPos + topPadding );
             childID = GetDesignTreeCtrl( )->GetNextChild( parentID, cookie );
         }
     }

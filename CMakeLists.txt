@@ -11,7 +11,6 @@ set( CMAKE_CXX_STANDARD_REQUIRED True )
 set( build_Directory "${CMAKE_CURRENT_SOURCE_DIR}/build" )
 set( src_Directory "${CMAKE_CURRENT_SOURCE_DIR}/src" )
 set( StampTool_Source_Directory "${CMAKE_CURRENT_SOURCE_DIR}/src"  )
-set( StampTool_ODTFiles_Source_Directory "${CMAKE_CURRENT_SOURCE_DIR}/src/odt"  )
 set( StampTool_DesignFiles_Source_Directory "${CMAKE_CURRENT_SOURCE_DIR}/src/design"  )
 set( StampTool_CatalogFiles_Source_Directory "${CMAKE_CURRENT_SOURCE_DIR}/src/catalog"  )
 set( StampTool_GuiFiles_Source_Directory "${CMAKE_CURRENT_SOURCE_DIR}/src/gui"  )
@@ -20,7 +19,6 @@ set( StampTool_UtilsFiles_Source_Directory "${CMAKE_CURRENT_SOURCE_DIR}/src/util
 include_directories( ${StampTool_Source_Directory} 
             ${StampTool_GuiFiles_Source_Directory} 
             ${StampTool_UtilsFiles_Source_Directory}
-            ${StampTool_ODTFiles_Source_Directory}
             ${StampTool_DesignFiles_Source_Directory}
             ${StampTool_CatalogFiles_Source_Directory})
 

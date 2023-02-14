@@ -140,7 +140,7 @@ void AlbumDesignPanel::CreateControls( )
     m_albumDesignTreePanel = new AlbumDesignTreePanel( m_secondarySplitterWindow, ID_SCROLLEDWINDOW, wxDefaultPosition, wxSize( 100, 100 ), wxSUNKEN_BORDER | wxHSCROLL | wxVSCROLL );
 
     wxPanel* itemPanel4 = 
-        new wxPanel( m_secondarySplitterWindow, ID_DESCRIPTIONPANEL, wxDefaultPosition, 
+        new wxPanel( m_secondarySplitterWindow, ID_STAMPDESCRIPTIONPANEL, wxDefaultPosition, 
             wxDefaultSize, wxTAB_TRAVERSAL );
     itemPanel4->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
     wxBoxSizer* itemBoxSizer5 = new wxBoxSizer( wxVERTICAL );

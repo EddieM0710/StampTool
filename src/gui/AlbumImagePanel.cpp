@@ -46,11 +46,14 @@
 #include "wx/graphics.h"
 #include "wx/image.h"
 #include <wx/treectrl.h>
+#include <wx/pdfdc.h>
+#include <wx/pdfdocument.h>
 
 #include "art/NotFound.xpm"
 #include "design/LayoutBase.h"
 #include "gui/DesignTreeCtrl.h"
 #include "gui/GuiUtils.h"
+
 
 /*
  * AlbumImagePanel type definition
@@ -260,19 +263,19 @@ void AlbumImagePanel::OnPaint( wxPaintEvent& event )
         DoPrepareDC( dc );
         dc.SetMapMode( wxMM_METRIC );
         dc.Clear( );
-        Design::InitDesignDefs( );
+        Design::InitDesignDefs(  );
 
         Design::Album* album = GetDesignData( )->GetAlbum( );
         if ( album )
         { 
-            double width = album->GetAttrDbl( Design::AT_PageWidth ) * Design::PpMM.x;
-            double height = album->GetAttrDbl( Design::AT_PageHeight ) * Design::PpMM.y;
+            double width = album->GetAttrDbl( Design::AT_PageWidth ) * Design::ScaleFactor.x;
+            double height = album->GetAttrDbl( Design::AT_PageHeight ) * Design::ScaleFactor.y;
 
             /* init scrolled area size, scrolling speed, etc. */
             if ( m_once == false )
             { 
                 m_once = true;
-                SetScrollbars( Design::PpMM.x, Design::PpMM.y, width * 2, height * 2, 0, 0 );
+                SetScrollbars( Design::ScaleFactor.x, Design::ScaleFactor.y, width * 2, height * 2, 0, 0 );
             }
             const wxSize size = GetClientSize( );
             double scale = 1.;
@@ -297,14 +300,51 @@ void AlbumImagePanel::OnPaint( wxPaintEvent& event )
             Design::LayoutBase* pageNode = Design::GetSelectedNodePage( );
             if ( pageNode && pageNode->IsStatusOK( ) )
             { 
-                //pageNode->draw( dc, album->GetAttrDbl( Design::AT_LeftMargin ), album->GetAttrDbl( Design::AT_TopMargin ) );
-                pageNode->draw( dc, 0, 0 );
+                //pageNode->Draw( dc, album->GetAttrDbl( Design::AT_LeftMargin ), album->GetAttrDbl( Design::AT_TopMargin ) );
+                pageNode->Draw( dc, 0, 0 );
             }
         }
     }
 }
 
 
+// void AlbumImagePanel::PaintPDF( wxPdfDocument* pdfDoc )
+// { 
+
+// //std::cout << "OnPaint\n";
+//     Design::DesignData* designData = GetDesignData( );
+//     if ( designData )
+//     { 
+//         Design::InitDesignDefs( Design::DD_PDF );
+//         Design::Album* album = GetDesignData( )->GetAlbum( );
+//         if ( album )
+//         { 
+//             double width = album->GetAttrDbl( Design::AT_PageWidth );
+//             double height = album->GetAttrDbl( Design::AT_PageHeight );
+ 
+//             wxPdfDC dc( pdfDoc,  width, height );
+//             DoPrepareDC( dc );
+//             dc.SetMapMode( wxMM_METRIC );
+//             dc.SetMapModeStyle(wxPDF_MAPMODESTYLE_STANDARD);
+
+//             dc.Clear( );
+
+//             //dc.SetUserScale( 1, 1 );
+
+//            // dc.DrawRectangle( 0, 0, width, height );
+
+//             pdfDoc->AddPage();
+
+//             Design::LayoutBase* pageNode = Design::GetSelectedNodePage( );
+//             if ( pageNode && pageNode->IsStatusOK( ) )
+//             { 
+//                 //pageNode->Draw( dc, album->GetAttrDbl( Design::AT_LeftMargin ), album->GetAttrDbl( Design::AT_TopMargin ) );
+//                 pageNode->DrawPDF( pdfDoc, 0, 0 );
+//             }
+//             pdfDoc->SaveAsFile( "test.pdf" );
+//         }
+//     }
+// }
 
 
 
@@ -404,8 +444,8 @@ wxRealPoint AlbumImagePanel::GetLogicalTextExtent( wxString text, wxFont font )
 
     wxRealPoint textSize;
     // convert the size from Device units to Metric
-    textSize.x = size.x / Design::PpMM.x;
-    textSize.y = size.y / Design::PpMM.y;
+    textSize.x = size.x / Design::ScaleFactor.x;
+    textSize.y = size.y / Design::ScaleFactor.y;
     return textSize;
 }
 
@@ -430,7 +470,7 @@ void AlbumImagePanel::MakeMultiLine( wxString& text, wxFont font, double width )
     { 
         wxSize ext = dc.GetTextExtent( text );
         wxSize logExt = dc.DeviceToLogicalRel( ext );
-        if ( ext.x < width * Design::PpMM.x )
+        if ( ext.x < width * Design::ScaleFactor.x )
         { 
             // if it fits print it
             //all done
@@ -463,7 +503,7 @@ void AlbumImagePanel::MakeMultiLine( wxString& text, wxFont font, double width )
 
                     wxSize ext = dc.GetTextExtent( workingStr );
                     wxSize logExt = dc.DeviceToLogicalRel( ext );
-                    if ( ext.x > width * Design::PpMM.x )
+                    if ( ext.x > width * Design::ScaleFactor.x )
                     { 
                         // it won't fit; decide what to do
                         if ( start == origPos )

@@ -221,7 +221,7 @@ namespace Catalog {
          *
          * @return wxString
          **************************************************/
-        wxString GetCheckedStatus( ) { return GetAttr( DT_CheckedStatus ); };
+        //wxString GetCheckedStatus( ) { return GetAttr( DT_CheckedStatus ); };
        // wxString GetInventoryStatus( ) { return GetAttr( DT_InventoryStatus ); };
 
         /**
@@ -229,18 +229,18 @@ namespace Catalog {
          *
          * @param val
          **************************************************/
-        void SetCheckedStatus( wxString val ) { SetAttr( DT_CheckedStatus, val ); };
+        //void SetCheckedStatus( wxString val ) { SetAttr( DT_CheckedStatus, val ); };
         void SetInventoryStatus( wxString val ) { SetAttr( DT_InventoryStatus, val ); };
 
         /**
          * @brief Set the Status Type object
          *
          * @param type
-         **************************************************/
-        void SetCheckedStatusType( CheckedStatusType type )
-        { 
-            SetAttr( DT_CheckedStatus, ST_CheckedStatusStrings[ type ] );
-        };
+        //  **************************************************/
+        // void SetCheckedStatusType( CheckedStatusType type )
+        // { 
+        //     SetAttr( DT_CheckedStatus, ST_CheckedStatusStrings[ type ] );
+        // };
         void SetInventoryStatusType( InventoryStatusType type )
         { 
             SetAttr( DT_InventoryStatus, ST_InventoryStatusStrings[ type ] );

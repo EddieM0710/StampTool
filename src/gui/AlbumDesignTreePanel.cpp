@@ -33,11 +33,11 @@
 #include "wx/wx.h"
 #endif
 
-// includes
+
 #include "gui/DesignTreeCtrl.h"
 #include "wx/imaglist.h"
-#include "gui/StaticItem.h"
-// includes
+//#include "gui/StaticItem.h"
+
 
 #include "gui/AlbumDesignTreePanel.h"
 #include "gui/GuiDefs.h"

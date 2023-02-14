@@ -33,17 +33,17 @@
 #include "wx/wx.h"
 #endif
 
-#include "LabeledTextBox.h"
-
 #include "Defs.h"
-#include "utils/Settings.h"
-#include "Classification.h"
-#include "IdentificationPanel.h"
-#include "catalog/Entry.h"
-#include "catalog/CatalogDefs.h"
+#include "gui/LabeledTextBox.h"
+#include "gui/IdentificationPanel.h"
 #include "gui/CatalogTreeCtrl.h"
 #include "gui/ToolData.h"
 #include "gui/StampDescriptionPanel.h"
+#include "utils/Settings.h"
+#include "catalog/Classification.h"
+#include "catalog/Entry.h"
+#include "catalog/CatalogDefs.h"
+
 /*
  * IdentificationPanel type definition
  */
@@ -63,7 +63,12 @@ EVT_CHOICE( ID_EMISSIONCHOICE, IdentificationPanel::OnEmissionchoiceSelected )
 EVT_CHOICE( ID_FORMATCHOICE, IdentificationPanel::OnFormatchoiceSelected )
 // IdentificationPanel event table entries
 
-EVT_TEXT( ID_LABELEDTEXTBOX_TEXTCTRL, IdentificationPanel::OnTextctrlTextUpdated )
+EVT_TEXT( ID_ISSUEDTEXTBOX, IdentificationPanel::OnTextctrlTextUpdated )
+EVT_TEXT( ID_SERIESTEXTBOX, IdentificationPanel::OnTextctrlTextUpdated )
+EVT_TEXT( ID_THEMETEXTBOX, IdentificationPanel::OnTextctrlTextUpdated )
+EVT_TEXT( ID_COUNTRYTEXTBOX, IdentificationPanel::OnTextctrlTextUpdated )
+EVT_TEXT( ID_NAMELABELEDTEXTBOX, IdentificationPanel::OnTextctrlTextUpdated )
+EVT_TEXT( ID_IDLABELEDTEXTBOX, IdentificationPanel::OnTextctrlTextUpdated )
 
 EVT_CHECKBOX( ID_EDITCHECKBOX, IdentificationPanel::OnEditCheckBox )
 
@@ -502,7 +507,7 @@ void IdentificationPanel::OnStatuschoiceSelected( wxCommandEvent& event )
     if ( m_stamp )
     { 
         m_stamp->SetInventoryStatus( strSel );
-        GetCatalogTreeCtrl( )->SetInventoryStatusImage( );
+        GetCatalogPageTreeCtrl( )->SetInventoryStatusImage( );
     }
     // wxEVT_COMMAND_CHOICE_SELECTED event handler for ID_STATUSCHOICE
     // in IdentificationPanel.

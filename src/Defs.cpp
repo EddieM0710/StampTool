@@ -80,14 +80,15 @@ Catalog::CatalogSectionData* GetCatalogSectionData( )
     }
     return ( Catalog::CatalogSectionData* )0;
     };
-CatalogTreeCtrl* GetCatalogTreeCtrl( ){ return GetToolData( )->GetCatalogTreeCtrl( ); };
+CatalogTreeCtrl* GetCatalogPageTreeCtrl( ){ return GetToolData( )->GetCatalogPageTreeCtrl( ); };
+CatalogTreeCtrl* GetAlbumPageTreeCtrl( ){ return GetToolData( )->GetAlbumPageTreeCtrl( ); };
 DesignTreeCtrl* GetDesignTreeCtrl( ){ return GetToolData( )->GetDesignTreeCtrl( ); };
 AlbumImagePanel* GetAlbumImagePanel( ){ return GetToolData( )->GetAlbumImagePanel( ); };
 
 void InitDefs( )
 { 
     Catalog::InitCatalogDefs( );
-    Design::InitDesignDefs( );
+    Design::InitDesignDefs( Design::DD_Display );
 }
 
 void ReportError(  wxString funct, wxString msg, bool fatal )

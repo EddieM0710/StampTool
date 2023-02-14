@@ -158,18 +158,18 @@ void CatalogPanel::CreateControls( )
 
     m_searchSizer = new wxBoxSizer( wxHORIZONTAL );
     m_catPanelSizer->Add( m_searchSizer, 0, wxGROW | wxALL, 5 );
-    wxBoxSizer* itemBoxSizer8 = new wxBoxSizer( wxVERTICAL );
-    m_searchSizer->Add( itemBoxSizer8, 1, wxGROW | wxALL, 5 );
+    wxBoxSizer* searchVerticalSizer = new wxBoxSizer( wxVERTICAL );
+    m_searchSizer->Add( searchVerticalSizer, 1, wxGROW | wxALL, 5 );
     wxButton* itemButton9 = new wxButton( itemPanel1, ID_NEXTBUTTON, _( "Next" ), wxDefaultPosition, wxDefaultSize, 0 );
-    itemBoxSizer8->Add( itemButton9, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 5 );
+    searchVerticalSizer->Add( itemButton9, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 5 );
 
-    wxBoxSizer* itemBoxSizer10 = new wxBoxSizer( wxHORIZONTAL );
-    itemBoxSizer8->Add( itemBoxSizer10, 1, wxGROW | wxALL, 5 );
+    wxBoxSizer* searchHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
+    searchVerticalSizer->Add( searchHorizontalSizer, 1, wxGROW | wxALL, 5 );
     wxStaticText* itemStaticText11 = new wxStaticText( itemPanel1, wxID_STATIC, _( "Search\nString" ), wxDefaultPosition, wxDefaultSize, 0 );
-    itemBoxSizer10->Add( itemStaticText11, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+    searchHorizontalSizer->Add( itemStaticText11, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
     wxTextCtrl* itemTextCtrl12 = new wxTextCtrl( itemPanel1, ID_SEARCHSTRINGTEXTCTRL, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
-    itemBoxSizer10->Add( itemTextCtrl12, 2, wxGROW | wxALL, 5 );
+    searchHorizontalSizer->Add( itemTextCtrl12, 2, wxGROW | wxALL, 5 );
 
     wxArrayString itemCheckListBox13Strings;
     itemCheckListBox13Strings.Add( _( "Titles" ) );
@@ -179,15 +179,14 @@ void CatalogPanel::CreateControls( )
     m_searchSizer->Add( itemCheckListBox13, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
 
-    wxBoxSizer* itemBoxSizer3 = new wxBoxSizer( wxHORIZONTAL );
-    m_catPanelSizer->Add( itemBoxSizer3, 2, wxGROW | wxALL, 0 );
+    wxBoxSizer* catTreeHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
+    m_catPanelSizer->Add( catTreeHorizontalSizer, 2, wxGROW | wxALL, 0 );
 
     m_catalogTreeCtrl = new CatalogTreeCtrl( itemPanel1, ID_CATALOGTREECTRL, wxDefaultPosition, wxDefaultSize, wxTR_HAS_BUTTONS | wxTR_FULL_ROW_HIGHLIGHT | wxTR_SINGLE | wxSUNKEN_BORDER | wxTR_DEFAULT_STYLE );
-    itemBoxSizer3->Add( m_catalogTreeCtrl, 2, wxGROW | wxALL, 0 );
+    catTreeHorizontalSizer->Add( m_catalogTreeCtrl, 2, wxGROW | wxALL, 0 );
 
 // CatalogPanel content construction
-    GetToolData( )->SetCatalogTreeCtrl( m_catalogTreeCtrl );
-    m_searchSizer->Show( false );
+   m_searchSizer->Show( false );
     m_catPanelSizer->Layout( );
 }
 

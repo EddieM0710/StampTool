@@ -25,7 +25,10 @@
 #ifndef Layout_Stamp_h
 #define Layout_Stamp_h
 
+#include <wx/pdfdocument.h>
+
 #include "design/LayoutBase.h"
+#include "utils/DebugString.h"
 
 namespace Design { 
 
@@ -44,7 +47,7 @@ namespace Design {
      *
      * @brief Stamp layout object; Inherits from LayoutBase.
      * The Object is built
-     * up of 3 ODT objects. The outer object is the frame container
+     * up of 3 Oobjects. The outer object is the frame container
     *  for the stamp frame and the title text. The text is the only thing visible.
      * The next is embedded in it and is tthe visible frame for the stamp.
      * The 3rd one is embedded in the 2nd one and is the image of the object.
@@ -110,7 +113,7 @@ namespace Design {
          * @param parent
          * @return wxXmlNode*
          **************************************************/
-        wxXmlNode* Write( wxXmlNode* parent );
+//        wxXmlNode* Write( wxXmlNode* parent );
 
         NodeStatus ValidateNode( );
         void ClearError( );
@@ -127,21 +130,24 @@ namespace Design {
         wxString GetStampWidthStr( ) ;
 
         /* 
-         * @brief draw object on screen
+         * @brief Draw object on screen
          * 
          * @param dc current device context
          * @param x position in MM from page top
          * @param y position in MM from page left 
          */        
-        void draw( wxDC &dc, double x, double y );
+        void Draw( wxDC &dc, double x, double y );
+        void DrawPDF( wxPdfDocument* doc, double x, double y );
+
         void DrawID( wxDC& dc, double x, double y  );
+        void DrawIDPDF( wxPdfDocument* doc, double x, double y );
         //void DrawTitle( wxDC&, wxRect rect  );
         //void MakeMultiLine(  wxDC& dc, wxString text, double width  );
 //        void UpdateTitleSize( double width );
 
         void Save( wxXmlNode* xmlNode );
         wxImage* GetStampImage( );
-
+        wxString GetStampImageFilename( );
         bool GetShowTitle( ){ return String2Bool( GetAttrStr( AT_ShowTitle ) ); };
         void SetShowTitle( bool val ){ SetAttrStr( AT_ShowTitle, Bool2String( val ) ); };
 
@@ -151,34 +157,17 @@ namespace Design {
 //        wxString GetImageFilename( ){ return m_imageFilename; };
 //        void SetImageFilename( wxString str ){  m_imageFilename = str; };
 
-        void  ReportLayout(  );
+        void ReportLayout(  );
+
+        void DumpStamp( wxTextCtrl* positionTextCtrl );
 
     private:
-
-        wxXmlNode* StampObject( wxXmlNode* parent );
-
-        /**
-         * @brief Creates ODT XML frame for the Stamp object
-         *
-         * @param parent
-         * @return wxXmlNode*
-         **************************************************/
-        wxXmlNode* StampFrameObject( wxXmlNode* parent );
-
-        /**
-         * @brief Creates the ODT XML image object
-         *
-         * @param parent
-         * @return wxXmlNode*
-         **************************************************/
-        wxXmlNode* StampImageObject( wxXmlNode* parent );
 
         /**
          * @brief The name of the stamp to display
          *
          **************************************************/
 //        wxString m_name;
-
 
         // The LayoutBase for this objects contains the frame parameters for the stamp Album object. 
         // It is 10% Larger than the actual Stamp.
@@ -196,6 +185,7 @@ namespace Design {
         wxSize m_titleTextExtent;
         bool m_showTitle;
         wxString m_imageFilename;
+        DebugString m_debugString;
 
     };
 }

@@ -195,20 +195,20 @@ namespace Design {
 
     // void LayoutBase::SetClientDimensions( Frame *frame )
     // { 
-    //     m_clientDimensions.SetXPos( frame->GetXPos( ) *  Design::PpMM.x );
-    //     m_clientDimensions.SetYPos( frame->GetYPos( ) *  Design::PpMM.y );
-    //     m_clientDimensions.SetHeight( frame->GetHeight( ) *  Design::PpMM.y );
-    //     m_clientDimensions.SetWidth( frame->GetWidth( ) *  Design::PpMM.x );
-    //     m_clientDimensions.SetMinHeight( frame->GetMinHeight( ) *  Design::PpMM.y );
-    //     m_clientDimensions.SetMinWidth( frame->GetMinWidth( ) *  Design::PpMM.x );
+    //     m_clientDimensions.SetXPos( frame->GetXPos( ) *  Design::ScaleFactor.x );
+    //     m_clientDimensions.SetYPos( frame->GetYPos( ) *  Design::ScaleFactor.y );
+    //     m_clientDimensions.SetHeight( frame->GetHeight( ) *  Design::ScaleFactor.y );
+    //     m_clientDimensions.SetWidth( frame->GetWidth( ) *  Design::ScaleFactor.x );
+    //     m_clientDimensions.SetMinHeight( frame->GetMinHeight( ) *  Design::ScaleFactor.y );
+    //     m_clientDimensions.SetMinWidth( frame->GetMinWidth( ) *  Design::ScaleFactor.x );
     // };
 
     void LayoutBase::SetClientDimensions( wxDC &dc, double x, double y, double width, double height, double minWidth, double minHeight )
     { 
 //std::cout << "pos ( " << x <<", "<< y <<" )  size ( "<< width <<", "<< height << " )\n";
-        wxPoint pnt = dc.LogicalToDevice( x* Design::PpMM.x, y* Design::PpMM.y );
-        wxSize size = dc.LogicalToDeviceRel( width* Design::PpMM.x, height* Design::PpMM.y );
-        wxSize minSize = dc.LogicalToDeviceRel( minWidth* Design::PpMM.x, minHeight* Design::PpMM.y );
+        wxPoint pnt = dc.LogicalToDevice( x* Design::ScaleFactor.x, y* Design::ScaleFactor.y );
+        wxSize size = dc.LogicalToDeviceRel( width* Design::ScaleFactor.x, height* Design::ScaleFactor.y );
+        wxSize minSize = dc.LogicalToDeviceRel( minWidth* Design::ScaleFactor.x, minHeight* Design::ScaleFactor.y );
 
 //std::cout << "           pos ( " << pnt.x <<", "<< pnt.y <<" )  size ( "<< size.GetX( ) <<", "<< size.GetY( ) << " )\n";
 

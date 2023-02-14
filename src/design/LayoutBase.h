@@ -34,6 +34,8 @@
 
 #include <wx/xml/xml.h>
 
+class  wxPdfDocument;
+
 namespace Design { 
 
 
@@ -71,22 +73,8 @@ namespace Design {
             SetRightContentPadding( 0 );
         };
 
-        /*
-         * @brief Write the object data to the ODT file.
-         *
-         * @param parent object to contain this object
-         * @return wxXmlNode*  the node of the object that can contain othr objects
-         */
-        virtual wxXmlNode* Write( wxXmlNode* parent ) = 0;
-
-        /*
-         * @brief Draw object on screen
-         *
-         * @param dc current device context
-         * @param x position in MM
-         * @param y position in MM
-         */
-        virtual void draw( wxDC& dc, double x, double y ) = 0;
+        virtual void DrawPDF( wxPdfDocument* doc, double x, double y ) = 0;
+        virtual void Draw( wxDC& dc, double x, double y ) = 0;
         /*
          * @brief Get Layout element position within parent element
          *
@@ -273,7 +261,10 @@ namespace Design {
         void SetClientDimensions( wxDC& dc, double x, double y, double width = 0.0, double height = 0.0, double minWidth = 0.0, double minHeight = 0.0 );
 
         bool IsInClient( double x, double y, wxString indent = "" );
-
+        wxString DumpFrame(  )
+        {
+            return m_frame.LayoutString( );
+        };
     protected:
         Frame m_frame;
         Frame m_clientDimensions;

@@ -1,25 +1,25 @@
 /**
  * @file IconDefs.cpp
  * @author Eddie Monroe
- * @brief 
+ * @brief
  * @version 0.1
  * @date 2022-04-01
- * 
+ *
  * @copyright Copyright ( c ) 2022
- * 
+ *
  * This file is part of StampTool.
  *
- * StampTool is free software: you can redistribute it and/or modify it under the 
- * terms of the GNU General Public License as published by the Free Software Foundation, 
+ * StampTool is free software: you can redistribute it and/or modify it under the
+ * terms of the GNU General Public License as published by the Free Software Foundation,
  * either version 3 of the License, or any later version.
  *
- * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY 
- * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+ * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
+ * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
- * You should have received a copy of the GNU General Public License along with 
+ * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
- * 
+ *
  **************************************************/
 
 #include "wx/wxprec.h"
@@ -41,16 +41,19 @@
 
 #include "gui/IconDefs.h"
 
-namespace Design 
-{ 
-Design::IconID AlbumImageSelection[ Design::AT_NbrAlbumTypes ][ Catalog::ST_NbrCheckedStatusTypes ] = { 
-    { Design::Icon_Stamp, Design::Icon_StampSelected }, //   FT_FormatUnknown = 0, 
-    { Design::Icon_Stamp, Design::Icon_StampSelected }, //   FT_Stamp, 
-    { Design::Icon_StampBlock, Design::Icon_StampBlockSelected }, //   FT_Se_tenant, 
-    { Design::Icon_StampMiniSheet, Design::Icon_StampMiniSheetSelected }, //   FT_Mini_Sheet, 
-    { Design::Icon_StampSouvenirSheet, Design::Icon_StampSouvenirSheetSelected }, //   FT_Souvenir_Sheet, 
-    { Design::Icon_StampMiniSheet, Design::Icon_StampMiniSheetSelected }, //   FT_Booklet, 
-    { Design::Icon_StampMiniSheet, Design::Icon_StampMiniSheetSelected } }; //   FT_Tete_Beche, 
+namespace Design
+{
+
+
+
+    Design::IconID AlbumImageSelection[ Design::AT_NbrAlbumTypes ][ Catalog::ST_NbrCheckedStatusTypes ] = {
+        { Design::Icon_Stamp, Design::Icon_StampSelected }, //   FT_FormatUnknown = 0, 
+        { Design::Icon_Stamp, Design::Icon_StampSelected }, //   FT_Stamp, 
+        { Design::Icon_StampBlock, Design::Icon_StampBlockSelected }, //   FT_Se_tenant, 
+        { Design::Icon_StampMiniSheet, Design::Icon_StampMiniSheetSelected }, //   FT_Mini_Sheet, 
+        { Design::Icon_StampSouvenirSheet, Design::Icon_StampSouvenirSheetSelected }, //   FT_Souvenir_Sheet, 
+        { Design::Icon_StampMiniSheet, Design::Icon_StampMiniSheetSelected }, //   FT_Booklet, 
+        { Design::Icon_StampMiniSheet, Design::Icon_StampMiniSheetSelected } }; //   FT_Tete_Beche, 
 }
 // IconID CatalogImageSelection[ Catalog::FT_NbrTypes ][ 2 ] = { 
 //     { Icon_Stamp, Icon_StampSelected }, //   FT_FormatUnknown = 0, 
@@ -65,45 +68,48 @@ Design::IconID AlbumImageSelection[ Design::AT_NbrAlbumTypes ][ Catalog::ST_NbrC
 //     { Icon_StampBlock, Icon_StampBlockSelected } }; //   FT_Tete_Beche, 
 
 namespace Catalog
-{ 
-Catalog::IconID CatalogImageSelection[ Catalog::FT_NbrTypes ][ Catalog::ST_NbrInventoryStatusTypes   ] = { 
-    { Catalog::Icon_StampUnknown, Catalog::Icon_StampMissing, Catalog::Icon_StampOrdered, Catalog::Icon_StampOwn, 
-      Catalog::Icon_StampOwnVariant, Catalog::Icon_StampExclude }, //   FT_FormatUnknown = 0, 
-    { Catalog::Icon_StampUnknown, Catalog::Icon_StampMissing, Catalog::Icon_StampOrdered, Catalog::Icon_StampOwn, 
-      Catalog::Icon_StampOwnVariant, Catalog::Icon_StampExclude }, //   FT_Stamp, 
-    { Catalog::Icon_StampUnknownBlock, Catalog::Icon_StampMissingBlock, Catalog::Icon_StampOrderedBlock, 
-      Catalog::Icon_StampOwnBlock, Catalog::Icon_StampOwnVariantBlock, 
-      Catalog::Icon_StampExcludeBlock }, //   FT_Se_tenant, 
-    { Catalog::Icon_StampUnknownMiniSheet, Catalog::Icon_StampMissingMiniSheet, 
-      Catalog::Icon_StampOrderedMiniSheet, Catalog::Icon_StampOwnMiniSheet, 
-      Catalog::Icon_StampOwnVariantMiniSheet, 
-      Catalog::Icon_StampExcludeMiniSheet }, //   FT_Mini_Sheet, 
-    { Catalog::Icon_StampUnknownSouvenirSheet, Catalog::Icon_StampMissingSouvenirSheet, 
-      Catalog::Icon_StampOrderedSouvenirSheet, Catalog::Icon_StampOwnSouvenirSheet, 
-      Catalog::Icon_StampOwnVariantSouvenirSheet, 
-      Catalog::Icon_StampExcludeSouvenirSheet }, //   FT_Souvenir_Sheet, 
-    { Catalog::Icon_StampUnknownMiniSheet, Catalog::Icon_StampMissingMiniSheet, 
-      Catalog::Icon_StampOrderedMiniSheet, Catalog::Icon_StampOwnMiniSheet, 
-      Catalog::Icon_StampOwnVariantMiniSheet, 
-      Catalog::Icon_StampExcludeMiniSheet }, //   FT_Booklet, 
-    { Catalog::Icon_StampUnknownMiniSheet, Catalog::Icon_StampMissingMiniSheet, 
-      Catalog::Icon_StampOrderedMiniSheet, Catalog::Icon_StampOwnMiniSheet, 
-      Catalog::Icon_StampOwnVariantMiniSheet, 
-      Catalog::Icon_StampExcludeMiniSheet }, //   FT_Booklet_Pane, 
-    { Catalog::Icon_StampUnknownBlock, Catalog::Icon_StampMissingBlock, Catalog::Icon_StampOrderedBlock, 
-      Catalog::Icon_StampOwnBlock, Catalog::Icon_StampOwnVariantBlock, 
-      Catalog::Icon_StampExcludeBlock }, //   FT_Gutter_Pair, 
-    { Catalog::Icon_StampUnknownSouvenirSheet, Catalog::Icon_StampMissingSouvenirSheet, 
-      Catalog::Icon_StampOrderedSouvenirSheet, Catalog::Icon_StampOwnSouvenirSheet, 
-      Catalog::Icon_StampOwnVariantSouvenirSheet, 
-      Catalog::Icon_StampExcludeSouvenirSheet }, //    FT_Stamp_with_Attached_Label, 
-    { Catalog::Icon_StampUnknownBlock, Catalog::Icon_StampMissingBlock, Catalog::Icon_StampOrderedBlock, 
-      Catalog::Icon_StampOwnBlock, Catalog::Icon_StampOwnVariantBlock, 
-      Catalog::Icon_StampExcludeBlock } }; //   FT_Tete_Beche, 
+{
+
+
+    Catalog::IconID CatalogImageSelection[ Catalog::FT_NbrTypes ][ Catalog::ST_NbrInventoryStatusTypes ] = {
+        { Catalog::Icon_StampUnknown, Catalog::Icon_StampMissing, Catalog::Icon_StampOrdered, Catalog::Icon_StampOwn,
+          Catalog::Icon_StampOwnVariant, Catalog::Icon_StampExclude }, //   FT_FormatUnknown = 0, 
+        { Catalog::Icon_StampUnknown, Catalog::Icon_StampMissing, Catalog::Icon_StampOrdered, Catalog::Icon_StampOwn,
+          Catalog::Icon_StampOwnVariant, Catalog::Icon_StampExclude }, //   FT_Stamp, 
+        { Catalog::Icon_StampUnknownBlock, Catalog::Icon_StampMissingBlock, Catalog::Icon_StampOrderedBlock,
+          Catalog::Icon_StampOwnBlock, Catalog::Icon_StampOwnVariantBlock,
+          Catalog::Icon_StampExcludeBlock }, //   FT_Se_tenant, 
+        { Catalog::Icon_StampUnknownMiniSheet, Catalog::Icon_StampMissingMiniSheet,
+          Catalog::Icon_StampOrderedMiniSheet, Catalog::Icon_StampOwnMiniSheet,
+          Catalog::Icon_StampOwnVariantMiniSheet,
+          Catalog::Icon_StampExcludeMiniSheet }, //   FT_Mini_Sheet, 
+        { Catalog::Icon_StampUnknownSouvenirSheet, Catalog::Icon_StampMissingSouvenirSheet,
+          Catalog::Icon_StampOrderedSouvenirSheet, Catalog::Icon_StampOwnSouvenirSheet,
+          Catalog::Icon_StampOwnVariantSouvenirSheet,
+          Catalog::Icon_StampExcludeSouvenirSheet }, //   FT_Souvenir_Sheet, 
+        { Catalog::Icon_StampUnknownMiniSheet, Catalog::Icon_StampMissingMiniSheet,
+          Catalog::Icon_StampOrderedMiniSheet, Catalog::Icon_StampOwnMiniSheet,
+          Catalog::Icon_StampOwnVariantMiniSheet,
+          Catalog::Icon_StampExcludeMiniSheet }, //   FT_Booklet, 
+        { Catalog::Icon_StampUnknownMiniSheet, Catalog::Icon_StampMissingMiniSheet,
+          Catalog::Icon_StampOrderedMiniSheet, Catalog::Icon_StampOwnMiniSheet,
+          Catalog::Icon_StampOwnVariantMiniSheet,
+          Catalog::Icon_StampExcludeMiniSheet }, //   FT_Booklet_Pane, 
+        { Catalog::Icon_StampUnknownBlock, Catalog::Icon_StampMissingBlock, Catalog::Icon_StampOrderedBlock,
+          Catalog::Icon_StampOwnBlock, Catalog::Icon_StampOwnVariantBlock,
+          Catalog::Icon_StampExcludeBlock }, //   FT_Gutter_Pair, 
+        { Catalog::Icon_StampUnknownSouvenirSheet, Catalog::Icon_StampMissingSouvenirSheet,
+          Catalog::Icon_StampOrderedSouvenirSheet, Catalog::Icon_StampOwnSouvenirSheet,
+          Catalog::Icon_StampOwnVariantSouvenirSheet,
+          Catalog::Icon_StampExcludeSouvenirSheet }, //    FT_Stamp_with_Attached_Label, 
+        { Catalog::Icon_StampUnknownBlock, Catalog::Icon_StampMissingBlock, Catalog::Icon_StampOrderedBlock,
+          Catalog::Icon_StampOwnBlock, Catalog::Icon_StampOwnVariantBlock,
+          Catalog::Icon_StampExcludeBlock } }; //   FT_Tete_Beche, 
 };
 
+
 wxImageList* CreateAlbumImageList( )
-{ 
+{
     wxImageList* images;
     wxBusyCursor wait;
 
@@ -125,14 +131,14 @@ wxImageList* CreateAlbumImageList( )
     images = new wxImageList( width, height, true );
 
     for ( size_t i = 0; i < WXSIZEOF( icons ); i++ )
-    { 
+    {
         images->Add( icons[ i ] );
     }
-return images;
+    return images;
 }
 
-wxImageList* CreateAlbumStateImageList( bool del )
-{ 
+wxImageList* CreateAlbumStateImageList( )
+{
     wxImageList* states;
     wxBusyCursor wait;
 
@@ -153,7 +159,7 @@ wxImageList* CreateAlbumStateImageList( bool del )
 }
 
 wxImageList* CreateCatalogImageList( )
-{ 
+{
     wxImageList* images;
     wxBusyCursor wait;
     const int nbrIcons = 25;
@@ -191,31 +197,31 @@ wxImageList* CreateCatalogImageList( )
     images = new wxImageList( width, height, true );
 
     for ( size_t i = 0; i < nbrIcons; i++ )
-    { 
+    {
         images->Add( icons[ i ] );
     }
 
-    return images ;
+    return images;
 }
 
-wxImageList* CreateCatalogStateImageList( bool del )
-{ 
-    wxImageList *states;
+wxImageList* CreateCatalogStateImageList( )
+{
+    wxImageList* states;
     wxBusyCursor wait;
 
-        wxIcon icons[ 2 ];
-        icons[ 0 ] = wxIcon( unchecked_xpm );
-        icons[ 1 ] = wxIcon( checked_xpm );
+    wxIcon icons[ 2 ];
+    icons[ 0 ] = wxIcon( unchecked_xpm );
+    icons[ 1 ] = wxIcon( checked_xpm );
 
-        int width  = icons[ 0 ].GetWidth( );
-        int height = icons[ 0 ].GetHeight( );
+    int width = icons[ 0 ].GetWidth( );
+    int height = icons[ 0 ].GetHeight( );
 
-        // Make an state image list containing small icons
-        states = new wxImageList( width, height, true );
+    // Make an state image list containing small icons
+    states = new wxImageList( width, height, true );
 
-        for ( size_t i = 0; i < WXSIZEOF( icons ); i++ )
-            states->Add( icons[ i ] );
-    
+    for ( size_t i = 0; i < WXSIZEOF( icons ); i++ )
+        states->Add( icons[ i ] );
+
 
     return states;
 }

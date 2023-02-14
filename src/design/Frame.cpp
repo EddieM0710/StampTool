@@ -54,43 +54,59 @@ namespace Design {
     void Frame::SetMinHeight( double val ) { m_minHeight = val; };
 
     /*
-     * @brief draw object on screen
+     * @brief Draw object on screen
      *
      * @param dc current device context
      * @param x position in MM
      * @param y position in MM
      */
-    void Frame::draw( wxDC& dc, double x, double y )
+    void Frame::Draw( wxDC& dc, double x, double y )
     { 
         DrawRectangle( dc, x + GetXPos( ), y + GetYPos( ), GetWidth( ), GetHeight( ) );
     };
+    void Frame::DrawPDF( wxPdfDocument* doc, double x, double y )
+    { 
+        DrawRectanglePDF( doc, x + GetXPos( ), y + GetYPos( ), GetWidth( ), GetHeight( ) );
+    };
 
+    wxString Frame::LayoutString( )
+    {
+ //        str = wxString::Format( " \n \n Frame  xPos:%7.2f  yPos:%7.2f\n     width:%7.2f  height:%7.2f\n     MinWidth:%7.2f  MinHeight:%7.2f\n", 
+ //        GetXPos( ), GetYPos( ),  GetWidth( ), GetHeight( ), GetMinWidth(), GetMinHeight());
+       wxString str;
+       str << " Frame Pos( "
+             << GetXPos( ) << ", " << GetYPos( )
+             << " ) , Size( " << GetWidth( ) << ", " << GetHeight( )
+             << " ), MinSize( " << GetMinWidth( ) << ", " << GetMinHeight( ) << " )\n";
+ 
+ 
+        return str;
+    }
     wxString Frame::ReportLayout( wxString indent )
     { 
-        wxString str = wxString::Format( "%sFrame  xPos:%7.2f  yPos:%7.2f     width:%7.2f  height:%7.2f\n", 
-        indent, GetXPos( ), GetYPos( ),  GetWidth( ), GetHeight( ) );
+        wxString str;
+        str << LayoutString( );
         std::cout << str;
         return str ;
     }
 
-    void Frame::WriteLayout( wxString str )
+    wxString Frame::WriteLayout( wxString prefix )
     { 
-        // std::cout << str << " Pos( "
-        //     << GetXPos( ) << ", " << GetYPos( )
-        //     << " ) , Size( " << GetWidth( ) << ", " << GetHeight( )
-        //     << " ), MinSize( " << GetMinWidth( ) << ", " << GetMinHeight( ) << " )\n";
- 
+        wxString str; 
+        str << prefix;
         if ( ( GetXPos( )< 0 ) || ( GetYPos( )< 0 ) )
         { 
-            std::cout << "invalid position\n";
+            str << "invalid position\n";
         }
         if ( ( GetWidth( )< 0 ) || ( GetHeight( )< 0 ) )
         { 
-            std::cout << "invalid Size\n";
+            str << "invalid Size\n";
         }
         if ( ( GetMinHeight( )< 0 ) || ( GetMinWidth( )< 0 ) )
         { 
-            std::cout << "invalid Height/width\n";
+            str << "invalid Height/width\n";
         }
+        std::cout << str;
+        return str;
     };
 }

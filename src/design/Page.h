@@ -25,8 +25,12 @@
 #ifndef Page_H
 #define Page_H
 
+#include <wx/pdfdocument.h>
+
+
 #include "design/LayoutBase.h"
 #include "design/Album.h"
+#include "utils/DebugString.h"
 
 namespace Design { 
 
@@ -81,13 +85,15 @@ namespace Design {
 
         void UpdateSizes( );
 
+        void UpdateLayout( );
+
         /**
          * @brief Appends the xml for this page
          *
          * @param parent  expected to be the office:text of the office:body
          * @return wxXmlNode*
          **************************************************/
-        wxXmlNode* Write( wxXmlNode* parent );
+//        wxXmlNode* Write( wxXmlNode* parent );
 
         /**
          * @brief Get the Top Margin object
@@ -162,13 +168,14 @@ namespace Design {
         NodeStatus ValidateNode( );
 
         /* 
-         * @brief draw object on screen
+         * @brief Draw object on screen
          * 
          * @param dc current device context
          * @param x position in MM
          * @param y position in MM
          */
-        void draw( wxDC& dc, double x, double y );
+        void Draw( wxDC& dc, double x, double y );
+        void DrawPDF( wxPdfDocument* doc, double x, double y );
 
         void Save( wxXmlNode* parent );
 
@@ -211,7 +218,9 @@ namespace Design {
          **************************************************/
         double m_borderSize;
 
-wxString m_borderFileName;
+        wxString m_borderFileName;
+        DebugString m_debugString;
+
     };
 }
 #endif

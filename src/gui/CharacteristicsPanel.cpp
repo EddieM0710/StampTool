@@ -20,9 +20,9 @@
 #include "wx/wx.h"
 #endif
 
+#include "Defs.h"
 #include "gui/CharacteristicsPanel.h"
 #include "gui/LabeledTextBox.h"
-#include "Defs.h"
 #include "utils/Settings.h"
 /*
  * CharacteristicsPanel type definition
@@ -38,8 +38,8 @@ IMPLEMENT_DYNAMIC_CLASS( CharacteristicsPanel, wxPanel )
 BEGIN_EVENT_TABLE( CharacteristicsPanel, wxPanel )
 
 // CharacteristicsPanel event table entries
-// CharacteristicsPanel event table entries
-EVT_TEXT( ID_LABELEDTEXTBOX_TEXTCTRL, CharacteristicsPanel::OnTextctrlTextUpdated )
+EVT_TEXT( ID_HEIGHTEXTBOX, CharacteristicsPanel::OnTextctrlTextUpdated )
+EVT_TEXT( ID_WIDTHTEXTBOX, CharacteristicsPanel::OnTextctrlTextUpdated )
 
 END_EVENT_TABLE( )
 ;  // silly business; The above macro screws up the formatter

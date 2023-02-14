@@ -83,15 +83,6 @@ namespace Design {
          **************************************************/
         void UpdateSizes( );
 
-        /**
-         * @brief Write the ODT XML to the contents.
-         * @todo Title::Write This is old and needs to be reworked
-         *
-         * @param parent
-         * @return wxXmlNode*
-         **************************************************/
-        wxXmlNode* Write( wxXmlNode* parent );
-
         // Getters and Putters
 
         NodeStatus ValidateNode( );

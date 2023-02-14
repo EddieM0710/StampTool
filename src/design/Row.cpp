@@ -21,14 +21,13 @@
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
  **************************************************/
+#include <wx/pen.h>
 
 #include "design/Row.h"
 #include "design/Column.h"
 #include "design/Stamp.h"
 #include "design/Title.h"
-#include "odt/Document.h"
 #include "gui/DesignTreeCtrl.h"
-#include <wx/pen.h>
 #include "gui/AlbumImagePanel.h"
 #include "gui/GuiUtils.h"
 
@@ -173,65 +172,6 @@ namespace Design {
 
     }
 
-    // build the frame container for the row
-    wxXmlNode* Row::Write( wxXmlNode* parent )
-    { 
-        
-        Utils::AddComment( parent, "Row", "Inserting a Row." );
-        double xPos = GetXPos( );
-        double yPos = GetYPos( );
-        double width = GetWidth( );
-        double height = GetHeight( ); // allow for caption
-
-        wxString drawStyleName = ODT::FrameNoBorder;
-        wxString textAnchorType = ODT::TextAnchorParagraph; // "page", "paragraph"
-        wxString textStyleName = ODT::NormalTextStyle;
-
-        wxXmlNode* frame = ODT::ContentDoc( )->WriteFrame( parent, xPos, 
-            yPos, 
-            width, 
-            height, 
-            drawStyleName,  // fr2
-            textAnchorType ); // "page", "paragraph"
-
-        wxTreeItemIdValue cookie;
-        wxTreeItemId parentID = GetTreeItemId( );
-        wxTreeItemId childID = GetDesignTreeCtrl( )->GetFirstChild( parentID, cookie );
-        while ( childID.IsOk( ) )
-        { 
-            AlbumBaseType type = ( AlbumBaseType )GetDesignTreeCtrl( )->GetItemType( childID );
-            LayoutBase* child = ( LayoutBase* )GetDesignTreeCtrl( )->GetItemNode( childID );
-
-            AlbumBaseType childType = ( AlbumBaseType )child->GetNodeType( );
-            switch( childType )
-            { 
-                case AT_Row:
-                { 
-                    // set the layout parameters into the child
-                    Row* row = ( Row* )child;
-                    row->Write( frame );
-                    break;
-                }
-                case AT_Col:
-                { 
-                    // set the layout parameters into the child
-                    Column* col = ( Column* )child;
-                    col->Write( frame );
-                    break;
-                }
-            case AT_Stamp:
-                { 
-                    // set the layout parameters into the child
-                    Stamp*  stamp = ( Stamp* )child;
-                    stamp->Write( frame );
-                    break;
-                }
-            }
-            childID = GetDesignTreeCtrl( )->GetNextChild( parentID, cookie );
-        }
-        return frame;
-    }
-
     NodeStatus Row::ValidateNode( )
     { 
 
@@ -242,25 +182,63 @@ namespace Design {
             if ( GetHeight( ) <= 0.0 )
             { 
                 wxString str;
-                str.Format( "Terminal leaf node must define the height. height:>>%7.2f<< \n", GetHeight( ) );
+                str = wxString::Format( "Terminal leaf node must define the height. height:>>%7.2f<< \n", GetHeight( ) );
                 GetErrorArray( )->Add( str );
-                std::cout << "Terminal leaf node must define the height.\n";
+                m_debugString.Append( str ); 
                 status = AT_FATAL;
             }
             if ( GetWidth( ) <= 0.0 )
             { 
                 wxString str;
-                str.Format( "Terminal leaf node must define the height. width:>>%7.2f<< \n", GetWidth( ) );
+                str = wxString::Format( "Terminal leaf node must define the height. width:>>%7.2f<< \n", GetWidth( ) );
                 GetErrorArray( )->Add( str );
-                std::cout << "Terminal leaf node must define the width.\n";
+                m_debugString.Append( str ); 
                 status = AT_FATAL;
             }
         }
+
         m_nodeValid = status;
         return status;
     }
 
-    void Row::draw( wxDC &dc, double x, double y )
+    void Row::DrawPDF( wxPdfDocument* doc, double x, double y )
+    {
+        double leftPadding = 0;
+        double topPadding = 0;
+        if ( GetShowFrame( ) ) 
+        { 
+            leftPadding = GetLeftContentPadding( );
+            topPadding = GetTopContentPadding( );
+             m_frame.DrawPDF( doc, x, y );
+        } 
+//m_frame.DrawPDF( doc, x, y );
+      
+        if ( GetShowTitle( ) )
+        { 
+            RealPoint pos( x, y );
+            RealSize size( GetWidth( ), m_titleSize.y  );
+//            DrawTitlePDF( doc, m_title, pos, size );
+            y = y + m_titleSize.y ;
+        }
+
+        double xPos = x+GetXPos( )+leftPadding;
+        double yPos = y+GetYPos( )+topPadding;
+   
+        wxTreeItemIdValue cookie;
+        wxTreeItemId parentID = GetTreeItemId( );
+        wxTreeItemId childID = GetDesignTreeCtrl( )->GetFirstChild( parentID, cookie );
+        while ( childID.IsOk( ) )
+        { 
+            
+            AlbumBaseType type = ( AlbumBaseType )GetDesignTreeCtrl( )->GetItemType( childID );
+            LayoutBase* child = ( LayoutBase* )GetDesignTreeCtrl( )->GetItemNode( childID );
+            child->DrawPDF( doc, xPos, yPos );
+
+            childID = GetDesignTreeCtrl( )->GetNextChild( parentID, cookie );
+        }
+    };
+
+    void Row::Draw( wxDC &dc, double x, double y )
     { 
         double leftPadding = 0;
         double topPadding = 0;
@@ -271,11 +249,11 @@ namespace Design {
             leftPadding = GetLeftContentPadding( );
             topPadding = GetTopContentPadding( );
         } 
-dc.SetPen( *wxBLUE_PEN );
+//dc.SetPen( *wxBLUE_PEN );
       
         SetClientDimensions( dc, x+GetXPos( ), y+GetYPos( ), GetWidth( ), GetHeight( ) );
 
-        m_frame.draw( dc, x, y );
+        m_frame.Draw( dc, x, y );
 
      
         if ( GetShowTitle( ) )
@@ -297,7 +275,7 @@ dc.SetPen( *wxBLUE_PEN );
             
             AlbumBaseType type = ( AlbumBaseType )GetDesignTreeCtrl( )->GetItemType( childID );
             LayoutBase* child = ( LayoutBase* )GetDesignTreeCtrl( )->GetItemNode( childID );
-            child->draw( dc, xPos, yPos );
+            child->Draw( dc, xPos, yPos );
 
             childID = GetDesignTreeCtrl( )->GetNextChild( parentID, cookie );
         }

@@ -127,10 +127,13 @@ int wayToSort( Catalog::CatalogSectionData* sect1, Catalog::CatalogSectionData* 
             Catalog::CatalogSectionData* section = ( Catalog::CatalogSectionData* )( *it );
             m_sectionNameStrings.Add( section->GetSectionName( ) );
         }
-        CatalogPanel* catPanel = wxGetApp( ).GetFrame( )->GetCatalogPanel( );
+        CatalogPanel* catPanel = wxGetApp( ).GetFrame( )->GetCatalogPagePanel( );
+        CatalogPanel* albPanel = wxGetApp( ).GetFrame( )->GetAlbumPagePanel( );
         catPanel->SetSectionListStrings( m_sectionNameStrings );
+        albPanel->SetSectionListStrings( m_sectionNameStrings );
         m_catalogSectionDataNdx = 0;
         catPanel->SetSectionListSelection( m_catalogSectionDataNdx );
+        albPanel->SetSectionListSelection( m_catalogSectionDataNdx );
 
     };
 

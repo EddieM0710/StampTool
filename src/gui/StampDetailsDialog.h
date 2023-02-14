@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation, 
+ * terms of the GNU General Public License as published by the Free Software Foundation,
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -28,18 +28,16 @@
   * Includes
   */
 
-
-  // includes
 #include "wx/listctrl.h"
-// includes
 
 #include "gui/DesignTreeCtrl.h"
+#include "gui/GuiDefs.h"
 
-/*!
- * Forward declarations
- */
+  /*!
+   * Forward declarations
+   */
 
- // forward declarations
+   // forward declarations
 class LabeledTextBox;
 class wxListCtrl;
 // forward declarations
@@ -49,21 +47,7 @@ class wxListCtrl;
  */
 
  // control identifiers
-#define ID_STAMPDETAILSDIALOG 10000
-#define ID_IDLABELTEXTBOX 10007
-#define ID_NAMELABELEDTEXTBOX 10009
-#define ID_HEIGHTLABELEDTEXTBOX 10001
-#define ID_WIDTHLABELEDTEXTBOX 10002
-#define ID_REFRESHBUTTON 10005
-#define ID_VALIDATEBUTTON 10008
-#define ID_LISTCTRL 10006
-#define ID_CATNBRCHECKBOX 10010
-#define ID_TITLECHECKBOX 10011
-#define ID_IMAGEPATHLABELEDTEXTBOX 10012
-#define ID_STAMPNOTEBOOK 10020
-#define ID_STAMPNAMEPANEL 10021
-#define ID_STAMPLAYOUTPANEL 10022
-#define ID_STAMPLAYOUTTEXTCTRL 10024
+
 #define SYMBOL_STAMPDETAILSDIALOG_STYLE wxCAPTION | wxRESIZE_BORDER | wxSYSTEM_MENU | wxCLOSE_BOX | wxTAB_TRAVERSAL
 #define SYMBOL_STAMPDETAILSDIALOG_TITLE _( "StampDetailsDialog" )
 #define SYMBOL_STAMPDETAILSDIALOG_IDNAME ID_STAMPDETAILSDIALOG
@@ -77,11 +61,32 @@ class wxListCtrl;
  */
 
 class StampDetailsDialog: public wxDialog
-{ 
+{
     DECLARE_DYNAMIC_CLASS( StampDetailsDialog )
         DECLARE_EVENT_TABLE( )
 
 public:
+
+    enum StampDetailsDialogGuiDefs {
+        ID_IDLABELTEXTBOX = ID_STAMPDETAILSDIALOG,
+        ID_NAMELABELEDTEXTBOX1,
+        ID_HEIGHTLABELEDTEXTBOX,
+        ID_WIDTHLABELEDTEXTBOX,
+        ID_REFRESHBUTTON,
+        ID_VALIDATEBUTTON,
+        ID_LISTCTRL,
+        ID_CATNBRCHECKBOX,
+        ID_TITLECHECKBOX,
+        ID_IMAGEPATHLABELEDTEXTBOX,
+        ID_STAMPNOTEBOOK,
+        ID_STAMPNAMEPANEL,
+        ID_STAMPLAYOUTPANEL,
+        ID_STAMPLAYOUTTEXTCTRL,
+        ID_NOTEBOOK,
+        ID_NOTEBOOKDETAILSPANEL,
+        ID_NOTEBOOKPOSITIONPANEL,
+        ID_POSITIONTEXTCTRL
+    };
     /// Constructors
     StampDetailsDialog( );
     StampDetailsDialog( wxWindow* parent, wxWindowID id = SYMBOL_STAMPDETAILSDIALOG_IDNAME, const wxString& caption = SYMBOL_STAMPDETAILSDIALOG_TITLE, const wxPoint& pos = SYMBOL_STAMPDETAILSDIALOG_POSITION, const wxSize& size = SYMBOL_STAMPDETAILSDIALOG_SIZE, long style = SYMBOL_STAMPDETAILSDIALOG_STYLE );
@@ -157,11 +162,11 @@ public:
     LabeledTextBox* m_height;
     LabeledTextBox* m_width;
     wxButton* m_validate;
-    wxListCtrl* m_statusList;
+    wxListBox* m_statusList;
     wxTreeItemId m_designTreeID;
     wxCheckBox* m_catNbrCheckbox;
     wxCheckBox* m_titleCheckbox;
-
+    wxTextCtrl* positionTextCtrl;
     // StampDetailsDialog member variables
 
 

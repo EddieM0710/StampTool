@@ -18,6 +18,7 @@
 /*!
  * Includes
  */
+#include "gui/GuiDefs.h"
 
 ////@begin includes
 ////@end includes
@@ -34,8 +35,7 @@
  */
 
 ////@begin control identifiers
-#define ID_FILECREATEDIALOG 10000
-#define ID_TEXTCTRL2 10001
+
 #define SYMBOL_FILECREATEDIALOG_STYLE wxCAPTION | wxRESIZE_BORDER | wxSYSTEM_MENU | wxCLOSE_BOX | wxTAB_TRAVERSAL
 #define SYMBOL_FILECREATEDIALOG_TITLE _( "Select file and directory" )
 #define SYMBOL_FILECREATEDIALOG_IDNAME ID_FILECREATEDIALOG
@@ -54,6 +54,11 @@ class FileCreateDialog: public wxDialog
     DECLARE_EVENT_TABLE( )
 
 public:
+
+    // enum FileCreateDialogGuiDefs
+    // {
+    // };
+
     /// Constructors
     FileCreateDialog( );
     FileCreateDialog( wxWindow* parent, wxWindowID id = SYMBOL_FILECREATEDIALOG_IDNAME, const wxString& caption = SYMBOL_FILECREATEDIALOG_TITLE, const wxPoint& pos = SYMBOL_FILECREATEDIALOG_POSITION, const wxSize& size = SYMBOL_FILECREATEDIALOG_SIZE, long style = SYMBOL_FILECREATEDIALOG_STYLE );

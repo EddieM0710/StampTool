@@ -26,6 +26,7 @@
 #define Title_H
 
 #include <wx/string.h>
+#include <wx/pdfdocument.h>
 
 #include "Defs.h"
 #include "gui/AlbumImagePanel.h"
@@ -62,8 +63,21 @@ namespace Design {
         void SetWidth( double w ){ m_titleRect.SetWidth( w ); };
         void  SetFont( wxFont *font ){ m_font = font; };
         wxFont* GetFont( ){ return m_font; };
-    
-    void draw( wxDC& dc  )
+        void drawPDF( wxPdfDocument* doc, double x, double y )
+        {
+        wxString id;
+        wxFont font( *m_font );
+
+        id = m_title;
+        id.Trim( );
+        id.Trim( false );
+        GetAlbumImagePanel( )->MakeMultiLine( id, font, m_titleRect.GetWidth( ) );
+        //font.SetPointSize( 6 );
+        //dc.SetFont( font );
+//        doc->Write( id, m_titleRect, wxALIGN_CENTER_HORIZONTAL );            
+        };
+   
+    void Draw( wxDC& dc  )
     { 
         wxString id;
         wxFont font( *m_font );
@@ -115,7 +129,7 @@ namespace Design {
     wxRealPoint m_titleTextExtent;
     /* 
      * @brief Bounding rect for the title; 
-     * i.e., the ODT frame which tht title should be written to
+     * i.e., the frame which tht title should be written to
      * 
      */
     wxRect m_titleRect;

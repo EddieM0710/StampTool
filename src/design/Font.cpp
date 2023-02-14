@@ -21,13 +21,12 @@
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
  **************************************************/
+#include <wx/pen.h>
 
 #include "design/Font.h"
-#include "odt/Document.h"
 #include "utils/XMLUtilities.h"
-#include <wx/pen.h>
 #include "gui/GuiUtils.h"
-
+#include "design/Album.h"
 
 namespace Design { 
 

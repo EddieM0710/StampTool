@@ -6,18 +6,18 @@
  * @date 2021-02-25
  *
  * @copyright Copyright ( c ) 2021
- * 
+ *
  * This file is part of StampTool.
  *
- * StampTool is free software: you can redistribute it and/or modify it under the 
- * terms of the GNU General Public License as published by the Free Software Foundation, 
+ * StampTool is free software: you can redistribute it and/or modify it under the
+ * terms of the GNU General Public License as published by the Free Software Foundation,
  * either version 3 of the License, or any later version.
  *
- * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY 
- * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+ * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
+ * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
- * You should have received a copy of the GNU General Public License along with 
+ * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
  **************************************************/
@@ -30,14 +30,14 @@
   * Includes
   */
 
-
 #include "wx/notebook.h"
 #include "wx/splitter.h"
 #include <wx/slider.h>
 
-#include "catalog/Entry.h"
 #include "Defs.h"
+#include "catalog/Entry.h"
 #include "gui/GuiDefs.h"
+
   /*
    * Forward declarations
    */
@@ -53,26 +53,9 @@ class MiscellaneousDataPanel;
  * Control identifiers
  */
 
-#define ID_HORIZONTALLITTERWINDOW ID_DESCRIPTIONPANEL+1
-#define ID_DESCRIPTIONSPLITTERWINDOW ID_DESCRIPTIONPANEL+2
-#define ID_IDENTIFICATIONPANELFORIEGN ID_DESCRIPTIONPANEL+3
-#define ID_HORIZONTALPLITTERWINDOW ID_DESCRIPTIONPANEL+4
-#define ID_ZOOMSLIDER ID_DESCRIPTIONPANEL+5
-#define ID_STAMPIMAGEPANEL ID_DESCRIPTIONPANEL+6
-#define ID_DESCRIPTIONLNOTEBOOK ID_DESCRIPTIONPANEL+7
-#define ID_INVENTORYFOREIGN ID_DESCRIPTIONPANEL+8
-#define ID_CATALOGCODEFOREIGN ID_DESCRIPTIONPANEL+8
-#define ID_CHARACTERISTICSWINDOW ID_DESCRIPTIONPANEL+9
-#define ID_MISCELLANEOUSDATAFORIEGN ID_DESCRIPTIONPANEL+10
-#define ID_DESCRIPTIONSCROLLEDWINDOW ID_DESCRIPTIONPANEL+11
-#define ID_DESCRIPTIONTEXTCTRL ID_DESCRIPTIONPANEL+12
-#define ID_BACKGROUNDPANEL1 ID_DESCRIPTIONPANEL+13
-#define ID_BKGNDSCROLLEDWINDOW ID_DESCRIPTIONPANEL+14
-#define ID_BKGNDTEXTCTRL ID_DESCRIPTIONPANEL+15
-#define ID_NOTEBOOKPANEL  ID_DESCRIPTIONPANEL+16
 #define SYMBOL_DESCRIPTIONPANEL_STYLE wxTAB_TRAVERSAL
 #define SYMBOL_DESCRIPTIONPANEL_TITLE _( "DescriptionPanel" )
-#define SYMBOL_DESCRIPTIONPANEL_IDNAME ID_DESCRIPTIONPANEL
+#define SYMBOL_DESCRIPTIONPANEL_IDNAME ID_STAMPDESCRIPTIONPANEL
 #define SYMBOL_DESCRIPTIONPANEL_SIZE wxDefaultSize
 #define SYMBOL_DESCRIPTIONPANEL_POSITION wxDefaultPosition
 
@@ -87,11 +70,33 @@ class MiscellaneousDataPanel;
   *
   **************************************************/
 class StampDescriptionPanel: public wxPanel
-{ 
+{
     DECLARE_DYNAMIC_CLASS( StampDescriptionPanel )
-    DECLARE_EVENT_TABLE( )
+        DECLARE_EVENT_TABLE( )
 
 public:
+
+    enum StampDescriptionPanelGuiDefs {
+        ID_HORIZONTALLITTERWINDOW = ID_STAMPDESCRIPTIONPANEL + 1,
+        ID_DESCRIPTIONSPLITTERWINDOW,
+        ID_IDENTIFICATIONPANELFORIEGN,
+        ID_HORIZONTALPLITTERWINDOW,
+        ID_ZOOMSLIDER,
+        ID_STAMPIMAGEPANEL,
+        ID_DESCRIPTIONLNOTEBOOK,
+        ID_INVENTORYFOREIGN,
+        ID_CATALOGCODEFOREIGN,
+        ID_CHARACTERISTICSWINDOW,
+        ID_MISCELLANEOUSDATAFORIEGN,
+        ID_DESCRIPTIONSCROLLEDWINDOW,
+        ID_DESCRIPTIONTEXTCTRL,
+        ID_BACKGROUNDPANEL1,
+        ID_BKGNDSCROLLEDWINDOW,
+        ID_BKGNDTEXTCTRL,
+        ID_NOTEBOOKPANEL
+    };
+
+
     /**
      * @brief Default Constructor for a new Description Panel object
      *
@@ -109,10 +114,10 @@ public:
      * @param  style	The window style.
      * @see wxPanel.
      **************************************************/
-    StampDescriptionPanel( wxWindow* parent, 
-        wxWindowID id = SYMBOL_DESCRIPTIONPANEL_IDNAME, 
-        const wxPoint& pos = SYMBOL_DESCRIPTIONPANEL_POSITION, 
-        const wxSize& size = SYMBOL_DESCRIPTIONPANEL_SIZE, 
+    StampDescriptionPanel( wxWindow* parent,
+        wxWindowID id = SYMBOL_DESCRIPTIONPANEL_IDNAME,
+        const wxPoint& pos = SYMBOL_DESCRIPTIONPANEL_POSITION,
+        const wxSize& size = SYMBOL_DESCRIPTIONPANEL_SIZE,
         long style = SYMBOL_DESCRIPTIONPANEL_STYLE );
 
     /**
@@ -127,10 +132,10 @@ public:
      * @return bool
      *
      **************************************************/
-    bool Create( wxWindow* parent, 
-        wxWindowID id = SYMBOL_DESCRIPTIONPANEL_IDNAME, 
-        const wxPoint& pos = SYMBOL_DESCRIPTIONPANEL_POSITION, 
-        const wxSize& size = SYMBOL_DESCRIPTIONPANEL_SIZE, 
+    bool Create( wxWindow* parent,
+        wxWindowID id = SYMBOL_DESCRIPTIONPANEL_IDNAME,
+        const wxPoint& pos = SYMBOL_DESCRIPTIONPANEL_POSITION,
+        const wxSize& size = SYMBOL_DESCRIPTIONPANEL_SIZE,
         long style = SYMBOL_DESCRIPTIONPANEL_STYLE );
 
     /**
@@ -224,7 +229,7 @@ public:
      * @brief Initializes the StampDescriptionPanel with new stamp values
      * @param stamp   pointer to current atamp
      **************************************************/
-    void SetStamp(  wxXmlNode* stamp );
+    void SetStamp( wxXmlNode* stamp );
 
     void SetDataEditable( bool val );
 
@@ -242,9 +247,9 @@ private:
     CatalogCodePanel* m_catalogCodePanel; ///< Pointer to CatalogCodePanel
     CharacteristicsPanel* m_characteristicsPanel; ///< Pointer to CharacteristicsPanel
     MiscellaneousDataPanel* m_miscellaneousDataPanel; ///< Pointer to MiscellaneousDataPanel
- //$     wxTextCtrl* m_description; ///< Pointer to description wxTextCtrl
- //$     wxTextCtrl* m_bkgndText; ///< Pointer to background wxTextCtrl
-    // StampDescriptionPanel member variables
+    //$     wxTextCtrl* m_description; ///< Pointer to description wxTextCtrl
+    //$     wxTextCtrl* m_bkgndText; ///< Pointer to background wxTextCtrl
+       // StampDescriptionPanel member variables
 
     Catalog::Entry* m_stamp; ///< Pointer to currently displayed stamp
 };

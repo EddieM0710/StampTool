@@ -39,7 +39,7 @@
 
 #include "gui/RowDetailsDialog.h"
 #include "gui/LabeledTextBox.h"
-
+#include "design/Row.h"
 
 /*
  * RowDetailsDialog type definition
@@ -139,53 +139,86 @@ void RowDetailsDialog::CreateControls( )
 
     wxBoxSizer* theDialogHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
     theDialogVerticalSizer->Add( theDialogHorizontalSizer, 1, wxGROW | wxALL, 0 );
-
-    //>> first row ctrls
-    wxBoxSizer* firstRowHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
-    theDialogVerticalSizer->Add( firstRowHorizontalSizer, 0, wxGROW | wxALL, 0 );
+    
+    wxBoxSizer* nameHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
+    theDialogVerticalSizer->Add( nameHorizontalSizer, 0, wxGROW | wxALL, 0 );
 
     m_name = new LabeledTextBox( theDialog, ID_NAMELABELEDTEXTBOX, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
     m_name->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
-    firstRowHorizontalSizer->Add( m_name, 1, wxGROW | wxALL, 5 );
+    nameHorizontalSizer->Add( m_name, 1, wxGROW | wxALL, 5 );
 
+    wxBoxSizer* notebookHorizontalSizer = new wxBoxSizer(wxHORIZONTAL);
+    theDialogVerticalSizer->Add(notebookHorizontalSizer, 2, wxGROW|wxALL, 5);
 
-    m_titleCheckbox = new wxCheckBox( theDialog, ID_ROWTITLECHECKBOX, _( "Show Title" ), wxDefaultPosition, wxDefaultSize, 0 );
+    wxNotebook* notebook = new wxNotebook( theDialog, ID_NOTEBOOK, wxDefaultPosition, wxDefaultSize, wxBK_DEFAULT );
+
+    wxPanel* notebookDetailsPanel = new wxPanel( notebook, ID_NOTEBOOKDETAILSPANEL, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER|wxTAB_TRAVERSAL );
+    notebookDetailsPanel->SetExtraStyle(wxWS_EX_VALIDATE_RECURSIVELY);
+
+    wxBoxSizer* detailsVerticalSizer = new wxBoxSizer(wxVERTICAL);
+    notebookDetailsPanel->SetSizer(detailsVerticalSizer);
+    
+
+    //>> first row ctrls
+    wxBoxSizer* firstRowHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
+    detailsVerticalSizer->Add( firstRowHorizontalSizer, 0, wxGROW | wxALL, 0 );
+
+    m_titleCheckbox = new wxCheckBox( notebookDetailsPanel, ID_ROWTITLECHECKBOX, _( "Show Title" ), wxDefaultPosition, wxDefaultSize, 0 );
     m_titleCheckbox->SetValue( false );
     firstRowHorizontalSizer->Add( m_titleCheckbox, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
-    m_frameCheckbox = new wxCheckBox( theDialog, ID_FRAMECHECKBOX, _( "Show Frame" ), wxDefaultPosition, wxDefaultSize, 0 );
+    m_frameCheckbox = new wxCheckBox( notebookDetailsPanel, ID_FRAMECHECKBOX, _( "Show Frame" ), wxDefaultPosition, wxDefaultSize, 0 );
     m_frameCheckbox->SetValue( false );
     firstRowHorizontalSizer->Add( m_frameCheckbox, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
-    //>> first row ctrls
+
     //>>second row ctrls
     wxBoxSizer* SecondRowHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
-    theDialogVerticalSizer->Add( SecondRowHorizontalSizer, 0, wxGROW | wxALL, 5 );
+    detailsVerticalSizer->Add( SecondRowHorizontalSizer, 0, wxGROW | wxALL, 5 );
 
-    wxStaticText* TitleFontStatic = new wxStaticText( theDialog, wxID_STATIC, _( "Title Font" ), wxDefaultPosition, wxDefaultSize, 0 );
+    wxStaticText* TitleFontStatic = new wxStaticText( notebookDetailsPanel, wxID_STATIC, _( "Title Font" ), wxDefaultPosition, wxDefaultSize, 0 );
     SecondRowHorizontalSizer->Add( TitleFontStatic, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
-    m_titleFontPicker = new wxFontPickerCtrl( theDialog, 12345, 
+    m_titleFontPicker = new wxFontPickerCtrl( notebookDetailsPanel, 12345, 
         *wxNORMAL_FONT, wxDefaultPosition, 
         wxDefaultSize, wxFNTP_DEFAULT_STYLE );
     SecondRowHorizontalSizer->Add( m_titleFontPicker, 5, wxGROW | wxALL, 5 );
 
-    m_titleColorPicker = new wxColourPickerCtrl( theDialog, 12346, 
+    m_titleColorPicker = new wxColourPickerCtrl( notebookDetailsPanel, 12346, 
         *wxBLACK, wxDefaultPosition, 
         wxDefaultSize, wxCLRP_DEFAULT_STYLE );
     SecondRowHorizontalSizer->Add( m_titleColorPicker, 1, wxGROW | wxALL, 5 );
 
-    wxButton* defaultButton = new wxButton( theDialog, ID_DEFAULTFONTBUTTON, _( "Default" ), wxDefaultPosition, wxDefaultSize, 0 );
+    wxButton* defaultButton = new wxButton( notebookDetailsPanel, ID_DEFAULTFONTBUTTON, _( "Default" ), wxDefaultPosition, wxDefaultSize, 0 );
     SecondRowHorizontalSizer->Add( defaultButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
 
     //>>error list ctrls
-
     wxBoxSizer* errorListSizer = new wxBoxSizer( wxHORIZONTAL );
-    theDialogVerticalSizer->Add( errorListSizer, 2, wxGROW | wxALL, 5 );
+    detailsVerticalSizer->Add( errorListSizer, 2, wxGROW | wxALL, 5 );
 
-    m_statusList = new wxListCtrl( theDialog, ID_LISTCTRL, wxDefaultPosition, wxSize( 100, 100 ), wxLC_REPORT | wxLC_EDIT_LABELS | wxSIMPLE_BORDER );
+    wxArrayString m_statusListStrings;
+    m_statusList = new wxListBox( notebookDetailsPanel, ID_LISTCTRL, wxDefaultPosition, wxDefaultSize, m_statusListStrings, wxLB_SINGLE );
     errorListSizer->Add( m_statusList, 2, wxGROW | wxALL, 5 );
     //<<error list ctrls
+
+    notebook->AddPage(notebookDetailsPanel, _("Details"));
+
+    wxPanel* notebookPositionPanel = new wxPanel( notebook, ID_NOTEBOOKPOSITIONPANEL, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER|wxTAB_TRAVERSAL );
+    notebookPositionPanel->SetExtraStyle(wxWS_EX_VALIDATE_RECURSIVELY);
+
+    wxBoxSizer* positionVerticalSizer = new wxBoxSizer(wxVERTICAL);
+    notebookPositionPanel->SetSizer(positionVerticalSizer);
+
+    wxBoxSizer* positionHorizontalSizer = new wxBoxSizer(wxHORIZONTAL);
+    positionVerticalSizer->Add(positionHorizontalSizer, 1, wxGROW|wxALL, 0);
+    
+    positionTextCtrl = new wxTextCtrl( notebookPositionPanel, ID_POSITIONTEXTCTRL, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE | wxVSCROLL|wxALWAYS_SHOW_SB|wxTE_RICH2  );
+    positionTextCtrl->Clear( );
+    positionHorizontalSizer->Add( positionTextCtrl, 1, wxGROW|wxALL, 0);
+
+    notebook->AddPage(notebookPositionPanel, _("Position"));
+
+    notebookHorizontalSizer->Add(notebook, 2, wxGROW|wxALL, 5);
 
     //>>dialog Ctrl buttons
     wxBoxSizer* dialogCtrlButtonSizer = new wxBoxSizer( wxHORIZONTAL );
@@ -250,7 +283,24 @@ void RowDetailsDialog::OnOkClick( wxCommandEvent& event )
 }
 
 void RowDetailsDialog::SetNameModified( bool state ) { m_name->SetModified( state ); };
-void RowDetailsDialog::SetDesignTreeID( wxTreeItemId id ) { if ( id.IsOk( ) ) m_designTreeID = id; };
+void RowDetailsDialog::SetDesignTreeID( wxTreeItemId id ) 
+{ 
+    if ( id.IsOk( ) ) 
+    {
+        m_designTreeID = id;
+        DesignTreeItemData* data = ( DesignTreeItemData* )GetDesignTreeCtrl( )->GetItemData( m_designTreeID );
+        Design::Row* row = (Design::Row*)data->GetNodeElement();
+        wxArrayString* errors = row->GetErrorArray( );
+        positionTextCtrl->AlwaysShowScrollbars();
+        positionTextCtrl->WriteText(row->DumpFrame( ));
+        positionTextCtrl->ShowPosition( 0 );
+
+        if ( !errors->IsEmpty() )
+        {
+            m_statusList->InsertItems( *errors, 0 );
+        }
+    }
+ };
 bool RowDetailsDialog::IsNameModified( ) { return m_name->IsModified( ); };
 void RowDetailsDialog::SetShowTitle( bool state ) { m_titleCheckbox->SetValue( state ); };
 void RowDetailsDialog::SetShowFrame( bool state ) { m_frameCheckbox->SetValue( state ); };

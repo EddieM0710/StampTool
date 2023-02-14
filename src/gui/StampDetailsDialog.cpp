@@ -167,62 +167,97 @@ void StampDetailsDialog::CreateControls( )
     //wxBoxSizer* itemBoxSizer8 = new wxBoxSizer( wxVERTICAL );
     //detailsVerticalSizer->Add( itemBoxSizer8, 1, wxGROW | wxALL, 5 );
 
-    m_name = new LabeledTextBox( theDialog/*detailsPanel*/, ID_NAMELABELEDTEXTBOX, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
+    m_name = new LabeledTextBox( theDialog/*detailsPanel*/, ID_NAMELABELEDTEXTBOX1, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
     m_name->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
-    theDialogVerticalSizer->Add( m_name, 1, wxGROW | wxALL, 5 );
+    theDialogVerticalSizer->Add( m_name, 0, wxGROW | wxALL, 5 );
+
+    wxBoxSizer* notebookHorizontalSizer = new wxBoxSizer(wxHORIZONTAL);
+    theDialogVerticalSizer->Add(notebookHorizontalSizer, 2, wxGROW|wxALL, 5);
+
+    wxNotebook* notebook = new wxNotebook( theDialog, ID_NOTEBOOK, wxDefaultPosition, wxDefaultSize, wxBK_DEFAULT );
+
+    wxPanel* notebookDetailsPanel = new wxPanel( notebook, ID_NOTEBOOKDETAILSPANEL, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER|wxTAB_TRAVERSAL );
+    notebookDetailsPanel->SetExtraStyle(wxWS_EX_VALIDATE_RECURSIVELY);
+
+    wxBoxSizer* detailsVerticalSizer = new wxBoxSizer(wxVERTICAL);
+    notebookDetailsPanel->SetSizer(detailsVerticalSizer);
 
     wxBoxSizer* checkBoxHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
-    theDialogVerticalSizer->Add( checkBoxHorizontalSizer, 0, wxGROW | wxALL, 0 );
+    detailsVerticalSizer->Add( checkBoxHorizontalSizer, 0, wxGROW | wxALL, 0 );
  
-    m_catNbrCheckbox = new wxCheckBox( theDialog/*detailsPanel*/, ID_CATNBRCHECKBOX, _( "Show ID" ), wxDefaultPosition, wxDefaultSize, 0 );
+    m_catNbrCheckbox = new wxCheckBox( notebookDetailsPanel/*detailsPanel*/, ID_CATNBRCHECKBOX, _( "Show ID" ), wxDefaultPosition, wxDefaultSize, 0 );
     m_catNbrCheckbox->SetValue( false );
     checkBoxHorizontalSizer->Add( m_catNbrCheckbox, 0, wxALIGN_LEFT | wxALL, 5 );
 
-    m_titleCheckbox = new wxCheckBox( theDialog/*detailsPanel*/, ID_TITLECHECKBOX, _( "Show Title" ), wxDefaultPosition, wxDefaultSize, 0 );
+    m_titleCheckbox = new wxCheckBox( notebookDetailsPanel/*detailsPanel*/, ID_TITLECHECKBOX, _( "Show Title" ), wxDefaultPosition, wxDefaultSize, 0 );
     m_titleCheckbox->SetValue( false );
     checkBoxHorizontalSizer->Add( m_titleCheckbox, 0, wxALIGN_LEFT | wxALL, 5 );
 
-    wxFontPickerCtrl* m_fontPicker = new wxFontPickerCtrl( theDialog/*detailsPanel*/, 12345, 
+    wxFontPickerCtrl* m_fontPicker = new wxFontPickerCtrl( notebookDetailsPanel/*detailsPanel*/, 12345, 
         *wxNORMAL_FONT, wxDefaultPosition, 
         wxDefaultSize, wxFNTP_DEFAULT_STYLE );
-    theDialogVerticalSizer->Add( m_fontPicker, 1, wxGROW | wxALL, 5 );
+    detailsVerticalSizer->Add( m_fontPicker, 1, wxGROW | wxALL, 5 );
 
-    m_imagePath = new LabeledTextBox( theDialog/*detailsPanel*/, ID_IMAGEPATHLABELEDTEXTBOX, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
+    m_imagePath = new LabeledTextBox( notebookDetailsPanel/*detailsPanel*/, ID_IMAGEPATHLABELEDTEXTBOX, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
     m_imagePath->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
-    theDialogVerticalSizer->Add( m_imagePath, 0, wxGROW | wxALL, 5 );
+    detailsVerticalSizer->Add( m_imagePath, 0, wxGROW | wxALL, 5 );
 
     wxBoxSizer* itemBoxSizer3 = new wxBoxSizer( wxHORIZONTAL );
-    theDialogVerticalSizer->Add( itemBoxSizer3, 0, wxGROW | wxALL, 0 );
+    detailsVerticalSizer->Add( itemBoxSizer3, 0, wxGROW | wxALL, 0 );
 
-    m_height = new LabeledTextBox( theDialog/*detailsPanel*/, ID_HEIGHTLABELEDTEXTBOX, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
+    m_height = new LabeledTextBox( notebookDetailsPanel/*detailsPanel*/, ID_HEIGHTLABELEDTEXTBOX, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
     m_height->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
     itemBoxSizer3->Add( m_height, 1, wxGROW | wxALL, 5 );
 
-    m_width = new LabeledTextBox( theDialog/*detailsPanel*/, ID_WIDTHLABELEDTEXTBOX, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
+    m_width = new LabeledTextBox( notebookDetailsPanel/*detailsPanel*/, ID_WIDTHLABELEDTEXTBOX, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
     m_width->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
     itemBoxSizer3->Add( m_width, 1, wxGROW | wxALL, 5 );
 
     wxBoxSizer* itemBoxSizer6 = new wxBoxSizer( wxHORIZONTAL );
-    theDialogVerticalSizer->Add( itemBoxSizer6, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 0 );
+    detailsVerticalSizer->Add( itemBoxSizer6, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 0 );
 
-    wxButton* itemButton7 = new wxButton( theDialog/*detailsPanel*/, ID_REFRESHBUTTON, _( "Refresh from Catalog" ), wxDefaultPosition, wxDefaultSize, 0 );
+    wxButton* itemButton7 = new wxButton( notebookDetailsPanel/*detailsPanel*/, ID_REFRESHBUTTON, _( "Refresh from Catalog" ), wxDefaultPosition, wxDefaultSize, 0 );
     itemBoxSizer6->Add( itemButton7, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
     itemBoxSizer6->Add( 5, 5, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
-    m_validate = new wxButton( theDialog/*detailsPanel*/, ID_VALIDATEBUTTON, _( "Validate" ), wxDefaultPosition, wxDefaultSize, 0 );
+    m_validate = new wxButton( notebookDetailsPanel/*detailsPanel*/, ID_VALIDATEBUTTON, _( "Validate" ), wxDefaultPosition, wxDefaultSize, 0 );
     itemBoxSizer6->Add( m_validate, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
     wxBoxSizer* itemBoxSizer10 = new wxBoxSizer( wxHORIZONTAL );
-    theDialogVerticalSizer->Add( itemBoxSizer10, 2, wxGROW | wxALL, 5 );
+    detailsVerticalSizer->Add( itemBoxSizer10, 2, wxGROW | wxALL, 5 );
 
-    m_statusList = new wxListCtrl( theDialog/*detailsPanel*/, ID_LISTCTRL, wxDefaultPosition, wxSize( 100, 100 ), wxLC_REPORT | wxLC_NO_HEADER );
+
+    wxArrayString m_statusListStrings;
+    m_statusList = new wxListBox( notebookDetailsPanel, ID_LISTCTRL, wxDefaultPosition, wxDefaultSize, m_statusListStrings, wxLB_SINGLE );
+
+
+    //m_statusList = new wxListBox( theDialog/*detailsPanel*/, ID_LISTCTRL, wxDefaultPosition, wxSize( 100, 100 ), wxLC_REPORT | wxLC_NO_HEADER );
     itemBoxSizer10->Add( m_statusList, 2, wxGROW | wxALL, 5 );
 
     //wxBoxSizer* itemBoxSizer14 = new wxBoxSizer( wxHORIZONTAL );
     //detailsVerticalSizer->Add( itemBoxSizer14, 2, wxGROW | wxALL, 5 );
 
     //<<error list ctrls
+
+    notebook->AddPage(notebookDetailsPanel, _("Details"));
+
+    wxPanel* notebookPositionPanel = new wxPanel( notebook, ID_NOTEBOOKPOSITIONPANEL, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER|wxTAB_TRAVERSAL );
+    notebookPositionPanel->SetExtraStyle(wxWS_EX_VALIDATE_RECURSIVELY);
+
+    wxBoxSizer* positionVerticalSizer = new wxBoxSizer(wxVERTICAL);
+    notebookPositionPanel->SetSizer(positionVerticalSizer);
+
+    wxBoxSizer* positionHorizontalSizer = new wxBoxSizer(wxHORIZONTAL);
+    positionVerticalSizer->Add(positionHorizontalSizer, 1, wxGROW|wxALL, 0);
+    
+    positionTextCtrl = new wxTextCtrl( notebookPositionPanel, ID_POSITIONTEXTCTRL, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE | wxVSCROLL|wxALWAYS_SHOW_SB|wxTE_RICH2  );
+    //positionTextCtrl->Clear( );
+    positionHorizontalSizer->Add( positionTextCtrl, 1, wxGROW|wxALL, 0);
+
+    notebook->AddPage(notebookPositionPanel, _("Position"));
+
+    notebookHorizontalSizer->Add(notebook, 2, wxGROW|wxALL, 5);
 
     //>>dialog Ctrl buttons
     wxBoxSizer* dialogCtrlButtonSizer = new wxBoxSizer( wxHORIZONTAL );
@@ -319,18 +354,25 @@ void StampDetailsDialog::SetShowTitle( bool state )
     m_titleCheckbox->SetValue( state );
 }
 
-void StampDetailsDialog::SetDesignTreeID( wxTreeItemId id )
+void StampDetailsDialog::SetDesignTreeID( wxTreeItemId id ) 
 { 
-    if ( id.IsOk( ) )
+    if ( id.IsOk( ) ) 
     {
         m_designTreeID = id;
         DesignTreeItemData* data = ( DesignTreeItemData* )GetDesignTreeCtrl( )->GetItemData( m_designTreeID );
         Design::Stamp* stamp = (Design::Stamp*)data->GetNodeElement();
         wxArrayString* errors = stamp->GetErrorArray( );
-        
-    }
-}
+        positionTextCtrl->AlwaysShowScrollbars();
+        stamp->DumpStamp( positionTextCtrl );
+        positionTextCtrl->ShowPosition( 0 );
 
+        if ( !errors->IsEmpty() )
+        {
+            m_statusList->InsertItems( *errors, 0 );
+        }
+        positionTextCtrl->ShowPosition( 0 );
+    }
+ };
 
 wxString StampDetailsDialog::GetImageFilename( )
 { 
@@ -417,7 +459,7 @@ void StampDetailsDialog::RefreshFromCatalog( )
         if ( link )
         { 
             wxTreeItemId catTreeID = link->GetCatTreeID( );
-            wxXmlNode* node = GetCatalogTreeCtrl( )->GetEntryNode( catTreeID );
+            wxXmlNode* node = GetAlbumPageTreeCtrl( )->GetEntryNode( catTreeID );
 
             if ( node )
             { 
@@ -477,4 +519,3 @@ void StampDetailsDialog::OnOkClick( wxCommandEvent& event )
     event.Skip( );
     // wxEVT_COMMAND_BUTTON_CLICKED event handler for wxID_OK in StampDetailsDialog. 
 }
-

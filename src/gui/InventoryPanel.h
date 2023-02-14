@@ -6,18 +6,18 @@
  * @date 2021-02-25
  *
  * @copyright Copyright ( c ) 2021
- * 
+ *
  * This file is part of StampTool.
  *
- * StampTool is free software: you can redistribute it and/or modify it under the 
- * terms of the GNU General Public License as published by the Free Software Foundation, 
+ * StampTool is free software: you can redistribute it and/or modify it under the
+ * terms of the GNU General Public License as published by the Free Software Foundation,
  * either version 3 of the License, or any later version.
  *
- * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY 
- * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+ * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
+ * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
- * You should have received a copy of the GNU General Public License along with 
+ * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
  **************************************************/
@@ -30,13 +30,12 @@
   * Includes
   */
 
-
+#include <vector>
 #include "wx/grid.h"
+#include <wx/dataview.h>
 
 
 #include "catalog/Entry.h"
-#include <vector>
-#include <wx/dataview.h>
 #include "gui/GuiDefs.h"
   /*!
    * Forward declarations
@@ -51,7 +50,6 @@ class wxGrid;
  */
 
 
-#define ID_INVENTORYGRID ID_INVENTORYPANEL+1
 #define SYMBOL_INVENTORYPANEL_STYLE wxTAB_TRAVERSAL
 #define SYMBOL_INVENTORYPANEL_TITLE _( "Inventory" )
 #define SYMBOL_INVENTORYPANEL_IDNAME ID_INVENTORYPANEL
@@ -66,155 +64,161 @@ class wxGrid;
   */
 
 class InventoryPanel: public wxPanel
-{ 
-  DECLARE_DYNAMIC_CLASS( InventoryPanel )
-  DECLARE_EVENT_TABLE( )
+{
+    DECLARE_DYNAMIC_CLASS( InventoryPanel )
+        DECLARE_EVENT_TABLE( )
 
 public:
-  // Constructors
-  /**
-   * @brief Default Constructor a new InventoryPanel object
-   * @details Must be used in conjunction with Create.
-   *
-   **************************************************/
-  InventoryPanel( );
-
-  /**
-   * @brief Construct a new InventoryPanel object
-   *
-   * @param  parent	The parent window.
-   * @param  id	An identifier for the panel. wxID_ANY is taken to mean a default.
-   * @param  pos	The panel position. The value wxDefaultPosition indicates a default position, chosen by either the windowing system or wxWidgets, depending on platform.
-   * @param  size	The panel size. The value wxDefaultSize indicates a default size, chosen by either the windowing system or wxWidgets, depending on platform.
-   * @param  style	The window style.
-   * @see wxPanel.
-   **************************************************/
-  InventoryPanel( wxWindow* parent, 
-    wxWindowID id = SYMBOL_INVENTORYPANEL_IDNAME, 
-    const wxPoint& pos = SYMBOL_INVENTORYPANEL_POSITION, 
-    const wxSize& size = SYMBOL_INVENTORYPANEL_SIZE, 
-    long style = SYMBOL_INVENTORYPANEL_STYLE );
-
-  /**
-   * @brief  Used for two-step panel construction.
-   * Use with default constructor.
-   *
-   * @param  parent	The parent window.
-   * @param  id	An identifier for the panel. wxID_ANY is taken to mean a default.
-   * @param  pos	The panel position. The value wxDefaultPosition indicates a default position, chosen by either the windowing system or wxWidgets, depending on platform.
-   * @param  size	The panel size. The value wxDefaultSize indicates a default size, chosen by either the windowing system or wxWidgets, depending on platform.
-   * @param  style	The window style.
-   * @return bool
-   *
-   **************************************************/
-  bool Create( wxWindow* parent, wxWindowID id = SYMBOL_INVENTORYPANEL_IDNAME, 
-    const wxPoint& pos = SYMBOL_INVENTORYPANEL_POSITION, 
-    const wxSize& size = SYMBOL_INVENTORYPANEL_SIZE, 
-    long style = SYMBOL_INVENTORYPANEL_STYLE );
-
-  // Destructor
-  ~InventoryPanel( );
-
-  /**
-   * @brief   Initialises member variables
-   *
-   **************************************************/
-  void Init( );
-
-  /**
-   * @brief Creates the controls and sizers
-   *
-   **************************************************/
-  void CreateControls( );
+    enum InventoryPanelGuiDefs
+    {
+        ID_INVENTORYGRID = ID_INVENTORYPANEL + 1
+    };
 
 
-  /**
-   * @brief wxEVT_CONTEXT_MENU event handler for ID_INVENTORYPANEL
-   *
-   * @param event  Contains information about context menu events
-   **************************************************/
-  void OnContextMenu( wxContextMenuEvent& event );
+    // Constructors
+    /**
+     * @brief Default Constructor a new InventoryPanel object
+     * @details Must be used in conjunction with Create.
+     *
+     **************************************************/
+    InventoryPanel( );
+
+    /**
+     * @brief Construct a new InventoryPanel object
+     *
+     * @param  parent	The parent window.
+     * @param  id	An identifier for the panel. wxID_ANY is taken to mean a default.
+     * @param  pos	The panel position. The value wxDefaultPosition indicates a default position, chosen by either the windowing system or wxWidgets, depending on platform.
+     * @param  size	The panel size. The value wxDefaultSize indicates a default size, chosen by either the windowing system or wxWidgets, depending on platform.
+     * @param  style	The window style.
+     * @see wxPanel.
+     **************************************************/
+    InventoryPanel( wxWindow* parent,
+        wxWindowID id = SYMBOL_INVENTORYPANEL_IDNAME,
+        const wxPoint& pos = SYMBOL_INVENTORYPANEL_POSITION,
+        const wxSize& size = SYMBOL_INVENTORYPANEL_SIZE,
+        long style = SYMBOL_INVENTORYPANEL_STYLE );
+
+    /**
+     * @brief  Used for two-step panel construction.
+     * Use with default constructor.
+     *
+     * @param  parent	The parent window.
+     * @param  id	An identifier for the panel. wxID_ANY is taken to mean a default.
+     * @param  pos	The panel position. The value wxDefaultPosition indicates a default position, chosen by either the windowing system or wxWidgets, depending on platform.
+     * @param  size	The panel size. The value wxDefaultSize indicates a default size, chosen by either the windowing system or wxWidgets, depending on platform.
+     * @param  style	The window style.
+     * @return bool
+     *
+     **************************************************/
+    bool Create( wxWindow* parent, wxWindowID id = SYMBOL_INVENTORYPANEL_IDNAME,
+        const wxPoint& pos = SYMBOL_INVENTORYPANEL_POSITION,
+        const wxSize& size = SYMBOL_INVENTORYPANEL_SIZE,
+        long style = SYMBOL_INVENTORYPANEL_STYLE );
+
+    // Destructor
+    ~InventoryPanel( );
+
+    /**
+     * @brief   Initialises member variables
+     *
+     **************************************************/
+    void Init( );
+
+    /**
+     * @brief Creates the controls and sizers
+     *
+     **************************************************/
+    void CreateControls( );
 
 
-  /**
-   * @brief wxEVT_GRID_CELL_CHANGED event handler for ID_GRID
-   *
-   * @param event   Contains information about grid events
-   **************************************************/
-  void OnCellChanged( wxGridEvent& event );
+    /**
+     * @brief wxEVT_CONTEXT_MENU event handler for ID_INVENTORYPANEL
+     *
+     * @param event  Contains information about context menu events
+     **************************************************/
+    void OnContextMenu( wxContextMenuEvent& event );
 
 
-  /**
-   * @brief Retrieves bitmap resources
-   *
-   * @param  name ( autogenerated. Dummy. )
-   * @return wxBitmap null
-   **************************************************/
-  wxBitmap GetBitmapResource( const wxString& name );
+    /**
+     * @brief wxEVT_GRID_CELL_CHANGED event handler for ID_GRID
+     *
+     * @param event   Contains information about grid events
+     **************************************************/
+    void OnCellChanged( wxGridEvent& event );
 
-  /**
-   * @brief Get the Icon Resource objectRetrieves icon resources
-   *
-   * @param  name ( autogenerated. Dummy. )
-   * @return wxIcon null
-   **************************************************/
-  wxIcon GetIconResource( const wxString& name );
-  // InventoryPanel member function declarations
 
- /**
-  * @brief Should we show tooltips?
-  *
-  * @return bool ( autogenerated. Dummy. Always true )
-  **************************************************/
-  static bool ShowToolTips( );
+    /**
+     * @brief Retrieves bitmap resources
+     *
+     * @param  name ( autogenerated. Dummy. )
+     * @return wxBitmap null
+     **************************************************/
+    wxBitmap GetBitmapResource( const wxString& name );
 
-  /**
-   * @brief Load the grid with the inventory items
-   *
-   **************************************************/
-  void ShowStamp( );
+    /**
+     * @brief Get the Icon Resource objectRetrieves icon resources
+     *
+     * @param  name ( autogenerated. Dummy. )
+     * @return wxIcon null
+     **************************************************/
+    wxIcon GetIconResource( const wxString& name );
+    // InventoryPanel member function declarations
 
-  /**
-   * @brief Set the Stamp object
-   *
-   * @param stamp  set the currently displayed stamp to this
-   **************************************************/
-  void SetStamp( Catalog::Entry* stamp );
-  void SetDataEditable( bool val );
+   /**
+    * @brief Should we show tooltips?
+    *
+    * @return bool ( autogenerated. Dummy. Always true )
+    **************************************************/
+    static bool ShowToolTips( );
 
-  /**
-   * @brief shows context menu to add or remove inventory entries
-   *
-   * @param event   Contains information about command events
-   **************************************************/
-  void OnContextPopup( wxCommandEvent& event );
+    /**
+     * @brief Load the grid with the inventory items
+     *
+     **************************************************/
+    void ShowStamp( );
 
-  /**
-   * @brief Add an intery to the wxGrid
-   *
-   * @return int index of the new row
-   **************************************************/
-  int AddRow( );
+    /**
+     * @brief Set the Stamp object
+     *
+     * @param stamp  set the currently displayed stamp to this
+     **************************************************/
+    void SetStamp( Catalog::Entry* stamp );
+    void SetDataEditable( bool val );
 
-  /**
-   * @brief creates a new empty row in the grid
-   *
-   * @param row Row to updata
-   **************************************************/
-  void InitRow( int row );
+    /**
+     * @brief shows context menu to add or remove inventory entries
+     *
+     * @param event   Contains information about command events
+     **************************************************/
+    void OnContextPopup( wxCommandEvent& event );
 
-  /**
-   * @brief gets the item from the inventory list and populates the columns with it
-   *
-   * @param row index of row to populate
-   **************************************************/
-  void ShowRow( int row );
+    /**
+     * @brief Add an intery to the wxGrid
+     *
+     * @return int index of the new row
+     **************************************************/
+    int AddRow( );
+
+    /**
+     * @brief creates a new empty row in the grid
+     *
+     * @param row Row to updata
+     **************************************************/
+    void InitRow( int row );
+
+    /**
+     * @brief gets the item from the inventory list and populates the columns with it
+     *
+     * @param row index of row to populate
+     **************************************************/
+    void ShowRow( int row );
 
 private:
 
-  wxGrid* m_grid;  ///< wxGrid to display item entries
-  Catalog::Entry* m_stamp; ///< pointer to the currently displayed stamp 
-  std::vector<wxXmlNode*> m_specimenList;  ///< list containing each of the entries
+    wxGrid* m_grid;  ///< wxGrid to display item entries
+    Catalog::Entry* m_stamp; ///< pointer to the currently displayed stamp 
+    std::vector<wxXmlNode*> m_specimenList;  ///< list containing each of the entries
 };
 
 #endif

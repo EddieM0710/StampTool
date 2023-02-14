@@ -21,19 +21,18 @@
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
  **************************************************/
+#include <wx/log.h>
 
-#include "gui/ToolData.h" 
 #include "catalog/CatalogDefs.h"
+#include "catalog/CatalogSectionData.h"
 #include "gui/DesignTreeCtrl.h"
 #include "gui/CatalogTreeCtrl.h"
+#include "gui/ToolData.h" 
 #include "utils/Settings.h"
 #include "utils/Project.h"
-#include "odt/ODTDefs.h"
-#include "odt/Document.h"
-#include "design/DesignData.h"
-#include "catalog/CatalogSectionData.h"
 
-#include <wx/log.h>
+#include "design/DesignData.h"
+
 
 ToolData* NewToolDataInstance( )
 { 
@@ -43,7 +42,8 @@ ToolData* NewToolDataInstance( )
 ToolData::ToolData( ) { 
 
     m_designData = 0;
-    m_catalogTreeCtrl = 0;
+    m_catalogPageTreeCtrl = 0;
+    m_albumPageTreeCtrl = 0;
     m_designTreeCtrl = 0;
     m_stampDescriptionPanel = 0;
     m_project = 0;
@@ -53,7 +53,8 @@ ToolData::ToolData( ) {
 void ToolData::InitToolData( )
 { 
         m_designData = 0;
-        m_catalogTreeCtrl = 0;
+        m_catalogPageTreeCtrl = 0;
+        m_albumPageTreeCtrl = 0;
         m_designTreeCtrl = 0;
         m_stampDescriptionPanel = 0;
         SetProject( Utils::NewProjectInstance( ) );
@@ -102,7 +103,6 @@ void ToolData::LoadData( )
     LoadCatalogTree( );
     ReadDesignFile( );
     LoadDesignTree( );
-    CreateODTDocument( );
 }
 
 void ToolData::FileOpenProject( wxString filename )
@@ -132,9 +132,13 @@ void ToolData::FileSaveAsProject( wxString filename )
 
 Catalog::CatalogSectionData* ToolData::NewCatalogSectionData( )
 { 
-    if ( m_catalogTreeCtrl )
+    if ( m_catalogPageTreeCtrl )
     { 
-        m_catalogTreeCtrl->ClearCatalogTree( );
+        m_catalogPageTreeCtrl->ClearCatalogTree( );
+    }
+    if ( m_albumPageTreeCtrl )
+    { 
+        m_albumPageTreeCtrl->ClearCatalogTree( );
     }
 
     return m_catalogData.NewCatalogSectionData( );
@@ -173,7 +177,8 @@ bool ToolData::ReadCatalogCSV( wxString csvFilename )
 
 void ToolData::LoadCatalogTree( )
 { 
-    GetCatalogTreeCtrl( )->LoadTree( );
+    GetCatalogPageTreeCtrl( )->LoadTree( );
+    GetAlbumPageTreeCtrl( )->LoadTree( );
 }
 
 void ToolData::LoadNewCatalog( wxString catFile )
@@ -234,12 +239,6 @@ void ToolData::LoadDefaultDesignData( )
 void ToolData::LoadNewDesign( wxString designFileName  )
 { 
     m_project->SetDesignFilename( designFileName );
-   // wxFileName file( designFileName );
-   // wxString name = file.GetName( );
-    int pos = designFileName.find_first_of( "." );
-    wxString odtName = designFileName.Mid( 0, pos );
-    odtName += ".odt";
-    m_project->SetODTOutputFilename( odtName );
 
     LoadDefaultDesignData( );
     LoadDesignTree( );
@@ -271,23 +270,6 @@ void ToolData::FileSaveAsDesign( wxString filename )
         m_catalogData.SaveCatalogSections( );
     }
 
-void ToolData::CreateODTDocument( )
-{ 
-    ODT::Document* odtDoc = new ODT::Document( );
-    SetODTDocument( odtDoc );
-}
-
-ODT::Document* ToolData::GetODTDocument( )
-{ 
-    return m_ODTDoc;
-};
-
-//*****
-
-void ToolData::SetODTDocument( ODT::Document* doc )
-{ 
-    m_ODTDoc = doc; SetDirty( );
-};
 
 void ToolData::InitLoad( )
 { 

@@ -28,6 +28,7 @@
 #include "wx/graphics.h"
 #include <wx/dcclient.h>
 #include "wx/textctrl.h"
+#include <wx/pdfdocument.h>
 
 
 namespace Design { 
@@ -52,20 +53,22 @@ namespace Design {
         void SetMinHeight( double val );
 
         /* 
-         * @brief draw object on screen
+         * @brief Draw object on screen
          * 
          * @param dc current device context
          * @param x position in MM
          * @param y position in MM
          */
-    void draw( wxDC &dc, double x, double y );
+    void Draw( wxDC &dc, double x, double y );
+    void DrawPDF( wxPdfDocument* doc, double x, double y );
     //void DrawRectangle( wxDC &dc, double x, double y, double width, double height );
      
     //void drawBorder( wxDC &dc, double x, double y );
 
     wxString ReportLayout(  wxString indent = "" );
+    wxString LayoutString( );
 
-    void WriteLayout( wxString str );
+    wxString WriteLayout( wxString prefix );
     protected:
 
         double m_xPos;

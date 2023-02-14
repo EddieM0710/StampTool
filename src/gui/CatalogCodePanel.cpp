@@ -301,7 +301,7 @@ void CatalogCodePanel::ShowEntry( )
 }
 
 /*
- * wxEVT_CONTEXT_MENU event handler for ID_LISTCTRL
+ * wxEVT_CONTEXT_MENU event handler
  *
  **************************************************/
 

@@ -86,19 +86,19 @@ namespace Catalog {
         return wxString( "" );
     }
 
-    CheckedStatusType Entry::GetCheckedStatusType( )
-    { 
-        wxString status = GetAttr( DT_CheckedStatus );
-        for ( int i = ST_Checked; i < ST_NbrCheckedStatusTypes; i++ )
-        { 
-            wxString str = ST_CheckedStatusStrings[ i ];
-            if ( !status.CmpNoCase( ST_CheckedStatusStrings[ i ] ) )
-            { 
-                return ( CheckedStatusType )i;
-            }
-        }
-        return ( CheckedStatusType )ST_Unchecked;
-    };
+    // CheckedStatusType Entry::GetCheckedStatusType( )
+    // { 
+    //     wxString status = GetAttr( DT_CheckedStatus );
+    //     for ( int i = ST_Checked; i < ST_NbrCheckedStatusTypes; i++ )
+    //     { 
+    //         wxString str = ST_CheckedStatusStrings[ i ];
+    //         if ( !status.CmpNoCase( ST_CheckedStatusStrings[ i ] ) )
+    //         { 
+    //             return ( CheckedStatusType )i;
+    //         }
+    //     }
+    //     return ( CheckedStatusType )ST_Unchecked;
+    // };
 
     InventoryStatusType Entry::GetInventoryStatusType( )
     { 

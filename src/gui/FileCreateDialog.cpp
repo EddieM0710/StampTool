@@ -139,7 +139,7 @@ void FileCreateDialog::CreateControls( )
     wxBoxSizer* itemBoxSizer1 = new wxBoxSizer( wxHORIZONTAL );
     itemBoxSizer2->Add( itemBoxSizer1, 0, wxGROW | wxALL, 5 );
 
-    m_fileCtrl = new wxFileCtrl( this, 12456, m_defaultDirectory, m_defaultFilename, m_wildCard, wxFD_SAVE );
+    m_fileCtrl = new wxFileCtrl( this, ID_FILECREATEDIALOG, m_defaultDirectory, m_defaultFilename, m_wildCard, wxFD_SAVE );
     itemBoxSizer2->Add( m_fileCtrl, 1, wxGROW | wxALL, 5 );
 
     wxBoxSizer* itemBoxSizer3 = new wxBoxSizer( wxHORIZONTAL );

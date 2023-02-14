@@ -4,7 +4,6 @@ include( "${wxWidgets_USE_FILE}")
 include_directories(  ${StampTool_Source_Directory} 
 ${StampTool_GuiFiles_Source_Directory}
 ${StampTool_UtilsFiles_Source_Directory}
-${StampTool_ODTFiles_Source_Directory}
 ${StampTool_DesignFiles_Source_Directory}
 ${StampTool_CatalogFiles_Source_Directory} )
 
@@ -13,36 +12,37 @@ add_library( GuiFiles SHARED
     StampToolFrame.cpp
     StampToolPanel.cpp
     AlbumDesignPanel.cpp 
-    SettingsDialog.cpp
-    DesignTreeCtrl.cpp 
     AlbumDesignTreePanel.cpp 
+    AlbumDetailsDialog.cpp
     AlbumImagePanel.cpp 
+    CatalogCodePanel.cpp 
     CatalogPanel.cpp 
     CatalogTreeCtrl.cpp
-    CatalogCodePanel.cpp 
     CharacteristicsPanel.cpp 
+    ColDetailsDialog.cpp 
+    DefinePeriodsDialog.cpp
+    DesignTreeCtrl.cpp 
+    FileCreateDialog.cpp
+    GenerateList.cpp
+    GenerateListSettings.cpp
     GuiUtils.cpp
+    IconDefs.cpp
     IdentificationPanel.cpp
     ImagePanel.cpp
     InventoryPanel.cpp
-    MiscellaneousDataPanel.cpp
-    SortOrderDialog.cpp
-    DefinePeriodsDialog.cpp
-    StampDescriptionPanel.cpp 
-    IconDefs.cpp
-    ToolData.cpp
-    GenerateList.cpp
-    GenerateListSettings.cpp
     LabeledTextBox.cpp
-    StaticItem.cpp 
-    StampDetailsDialog.cpp
-    AlbumDetailsDialog.cpp
+    MiscellaneousDataPanel.cpp
+    NewStampDialog.cpp 
     PageDetailsDialog.cpp
     RowDetailsDialog.cpp 
     SectionDetailsDialog.cpp
-    ColDetailsDialog.cpp 
-    FileCreateDialog.cpp
-    NewStampDialog.cpp 
+    SettingsDialog.cpp
+    SortOrderDialog.cpp
+    StampDescriptionPanel.cpp 
+    StampDetailsDialog.cpp
+#    StaticItem.cpp 
+    ToolData.cpp
+
 )
 
 

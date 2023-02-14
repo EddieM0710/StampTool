@@ -21,15 +21,14 @@
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
  **************************************************/
+#include <wx/pen.h>
 
 #include "design/Column.h"
 #include "design/Row.h"
 #include "design/Stamp.h"
 #include "design/Title.h"
-#include "odt/Document.h"
 #include "utils/XMLUtilities.h"
 #include "gui/DesignTreeCtrl.h"
-#include <wx/pen.h>
 #include "gui/AlbumImagePanel.h"
 #include "gui/GuiUtils.h"
 
@@ -38,8 +37,7 @@ namespace Design {
 
     bool Column::UpdateMinimumSize( )
     { 
-        m_frame.WriteLayout( "Col::UpdateMinimumSizes <" );
-
+        
         //Positioning down the col.
         //The min width of the col is the size of the widest child 
         //The min height is the sum of the min heights of the children. 
@@ -88,7 +86,7 @@ namespace Design {
 
         SetMinHeight( minHeight + topPadding + bottomPadding );
         SetMinWidth( minWidth + leftPadding + rightPadding );
-        m_frame.WriteLayout( "Col::UpdateMinimumSizes >" );
+        m_debugString.Append( m_frame.WriteLayout( "Col::UpdateMinimumSizes " ) );
         return true;
     }
 
@@ -126,7 +124,7 @@ namespace Design {
             child->UpdateSizes( );
             childID = GetDesignTreeCtrl( )->GetNextChild( parentID, cookie );
         }
-        m_frame.WriteLayout( "Col::UpdateSizes >" );
+        m_debugString.Append( m_frame.WriteLayout( "Col::UpdateSizes >" ) );
 
     }
 
@@ -135,7 +133,6 @@ namespace Design {
     // calculate the column layout based on child parameters
     void Column::UpdatePositions( )
     { 
-        m_frame.WriteLayout( "Col::UpdatePositions <" );
         // go to the bottom of each child container object ( row, column, page ) 
         // and begin filling in position relative to the parent
 
@@ -193,69 +190,10 @@ namespace Design {
             }
             childID = GetDesignTreeCtrl( )->GetNextChild( parentID, cookie );
         }
-        m_frame.WriteLayout( "Col::UpdatePositions >" );
+        m_debugString.Append( m_frame.WriteLayout( "Col::UpdatePositions >" ) );
 
     }
 
-    // build the frame container for the column
-    wxXmlNode* Column::Write( wxXmlNode* parent )
-    { 
-        Utils::AddComment( parent, "Column", "Inserting a Column." );
-
-        double xPos = GetXPos( );
-        double yPos = GetYPos( );
-        double width = GetWidth( );
-        double height = GetHeight( ); // allow for caption
-
-        wxString drawStyleName = ODT::FrameNoBorder;
-        wxString textAnchorType = ODT::TextAnchorParagraph; // "page", "paragraph"
-        wxString textStyleName = ODT::NormalTextStyle;
-
-        wxXmlNode* frame = ODT::ContentDoc( )->WriteFrame( parent, xPos, 
-            yPos, 
-            width, 
-            height, 
-            drawStyleName,  // fr2
-            textAnchorType ); // "page", "paragraph"
-
-
-        wxTreeItemIdValue cookie;
-        wxTreeItemId parentID = GetTreeItemId( );
-        wxTreeItemId childID = GetDesignTreeCtrl( )->GetFirstChild( parentID, cookie );
-        while ( childID.IsOk( ) )
-        { 
-            AlbumBaseType type = ( AlbumBaseType )GetDesignTreeCtrl( )->GetItemType( childID );
-            LayoutBase* child = ( LayoutBase* )GetDesignTreeCtrl( )->GetItemNode( childID );
-
-            AlbumBaseType childType = ( AlbumBaseType )child->GetNodeType( );
-            switch ( childType )
-            { 
-            case AT_Row:
-            { 
-                // set the layout parameters into the child
-                Row* row = ( Row* )child;
-                row->Write( frame );
-                break;
-            }
-            case AT_Col:
-            { 
-                // set the layout parameters into the child
-                Column* col = ( Column* )child;
-                col->Write( frame );
-                break;
-            }
-            case AT_Stamp:
-            { 
-                // set the layout parameters into the child
-                Stamp* stamp = ( Stamp* )child;
-                stamp->Write( frame );
-                break;
-            }
-            }
-            childID = GetDesignTreeCtrl( )->GetNextChild( parentID, cookie );
-        }
-        return frame;
-    }
 
     NodeStatus Column::ValidateNode( )
     { 
@@ -268,7 +206,7 @@ namespace Design {
                 wxString str;
                 str.Format( "Terminal leaf node must define the height. height:>>%7.2f<< \n", GetHeight( ) );
                 GetErrorArray( )->Add( str );
-                std::cout << "Terminal leaf node must define the height.\n";
+                m_debugString.Append( str );
                 status = AT_FATAL;
             }
             if ( GetWidth( ) <= 0.0 )
@@ -276,6 +214,7 @@ namespace Design {
                 wxString str;
                 str.Format( "Terminal leaf node must define the width. width:>>%7.2f<< \n", GetWidth( ) );
                 GetErrorArray( )->Add( str );
+                m_debugString.Append( str );
                 //                std::cout << "Terminal leaf node must define the width.\n";
                 status = AT_FATAL;
             }
@@ -284,7 +223,7 @@ namespace Design {
         return status;
     }
 
-    void Column::draw( wxDC& dc, double x, double y )
+    void Column::Draw( wxDC& dc, double x, double y )
     { 
         double leftPadding = 0;
         double topPadding = 0;
@@ -296,7 +235,7 @@ namespace Design {
             topPadding = GetTopContentPadding( );
         }
 
-        m_frame.draw( dc, x, y );
+        m_frame.Draw( dc, x, y );
         SetClientDimensions( dc, x, y, GetWidth( ), GetHeight( ) );
 
         if ( GetShowTitle( ) )
@@ -318,7 +257,7 @@ namespace Design {
             LayoutBase* child = ( LayoutBase* )GetDesignTreeCtrl( )->GetItemNode( childID );
             double xPos = x + GetXPos( ) + leftPadding;
             double yPos = y + GetYPos( ) + topPadding;
-            child->draw( dc, xPos, yPos );
+            child->Draw( dc, xPos, yPos );
 
             childID = GetDesignTreeCtrl( )->GetNextChild( parentID, cookie );
         }

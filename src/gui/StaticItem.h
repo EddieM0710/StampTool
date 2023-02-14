@@ -28,8 +28,7 @@
  * Includes
  */
 
-// includes
-// includes
+#include "gui/GuiDefs.h"
 
 /*!
  * Forward declarations
@@ -43,10 +42,9 @@
  */
 
 // control identifiers
-#define ID_STATICITEM 10000
-#define wxID_TITLESTATIC 10030
-#define wxID_COLONSTATIC 10031
-#define wxID_VALSTATIC 10029
+#define wxID_TITLESTATIC ID_STATICITEM+1
+#define wxID_COLONSTATIC ID_STATICITEM+2
+#define wxID_VALSTATIC ID_STATICITEM+3
 #define SYMBOL_STATICITEM_STYLE wxTAB_TRAVERSAL
 #define SYMBOL_STATICITEM_TITLE _( "StaticItem" )
 #define SYMBOL_STATICITEM_IDNAME ID_STATICITEM

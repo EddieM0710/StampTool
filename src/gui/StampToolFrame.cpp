@@ -33,35 +33,40 @@
 #include "wx/wx.h"
 #endif
 
-#include "gui/StampToolPanel.h"
-#include "gui/CatalogPanel.h"
-#include "gui/DefinePeriodsDialog.h"
-#include "odt/ODTDefs.h"
-#include "odt/Document.h"
+
+
 #include <wx/filefn.h>
 #include <wx/filename.h>
 #include <wx/filedlg.h> 
 #include <wx/log.h>
 #include <wx/wfstream.h>
 
-#include "utils/CSV.h"
-#include "catalog/Classification.h"
-#include "catalog/Entry.h"
 #include "Defs.h"
 #include "Settings.h"
-#include "utils/Project.h"
+
+#include "gui/StampToolPanel.h"
+#include "gui/CatalogPanel.h"
+#include "gui/DefinePeriodsDialog.h"
 #include "gui/AlbumDesignTreePanel.h"
 #include "gui/SortOrderDialog.h"
 #include "gui/SettingsDialog.h"
-#include "catalog/CatalogSectionData.h"
+#include "gui/FileCreateDialog.h"
 #include "gui/StampToolFrame.h"
+#include "gui/AlbumImagePanel.h"
+
+#include "utils/Project.h"
+#include "utils/CSV.h"
 #include "utils/XMLUtilities.h"
+#include "catalog/Classification.h"
+#include "catalog/Entry.h"
+#include "catalog/CatalogSectionData.h"
+
+
 #include "design/DesignDefs.h"
 #include "design/DesignData.h"
 #include "design/AlbumBase.h"
 #include "design/Album.h"
 #include "design/Stamp.h"
-#include "gui/FileCreateDialog.h"
 
 //#include <curl/curl.h>
 
@@ -94,9 +99,8 @@ EVT_MENU( ID_SAVECATALOG, StampToolFrame::OnSaveCatalogClick )
 EVT_MENU( ID_SAVEASPROJECT, StampToolFrame::OnSaveasProjectClick )
 EVT_MENU( ID_SAVEASDESIGN, StampToolFrame::OnSaveasDesignClick )
 EVT_MENU( ID_SAVEASCATALOG, StampToolFrame::OnSaveasCatalogClick )
-EVT_MENU( ID_GENERATEODT, StampToolFrame::OnGenerateODTClick )
+EVT_MENU( ID_GENERATEPDF, StampToolFrame::OnGeneratePDFClick )
 EVT_MENU( ID_CSVIMPORT, StampToolFrame::OnCSVImportClick )
-//EVT_MENU( ID_MERGE, StampToolFrame::OnCSVImportClick )
 EVT_MENU( wxID_EXIT, StampToolFrame::OnExitClick )
 EVT_MENU( ID_TEXTSERCHMENUITEM, StampToolFrame::OnTextserchmenuitemClick )
 EVT_MENU( ID_SORTORDER, StampToolFrame::OnSortOrderClick )
@@ -167,7 +171,7 @@ void StampToolFrame::Init( )
 { 
     //    m_stamp = new Catalog::Stamp( );
     m_stampToolPanel = NULL;
-    m_catalogPanel = NULL;
+    m_catalogPagePanel = NULL;
 }
 
 /*
@@ -203,7 +207,7 @@ void StampToolFrame::CreateControls( )
     m_fileMenu->Append( ID_DESIGNMENU, _( "Design" ), m_designMenu );
 
     m_fileMenu->AppendSeparator( );
-    m_fileMenu->Append( ID_GENERATEODT, _( "Generate ODT Album" ), wxEmptyString, wxITEM_NORMAL );
+    m_fileMenu->Append( ID_GENERATEPDF, _( "Generate PDF Album" ), wxEmptyString, wxITEM_NORMAL );
 
     m_fileMenu->AppendSeparator( );
 
@@ -234,13 +238,19 @@ void StampToolFrame::CreateControls( )
         itemFrame1, ID_STAMPTOOLPANELFOREIGN, wxDefaultPosition, 
         wxSize( 100, 100 ), wxSIMPLE_BORDER );
     itemGridSizer1->Add( m_stampToolPanel, 1, wxGROW | wxALL, 0 );
-    m_catalogPanel = m_stampToolPanel->GetCatalogPanel( );
+    m_catalogPagePanel = m_stampToolPanel->GetCatalogPagePanel( );
+    m_albumPagePanel = m_stampToolPanel->GetAlbumPagePanel( );
     m_albumDesignTreePanel = m_stampToolPanel->GetAlbumDesignTreePanel( );
 }
 
-CatalogPanel* StampToolFrame::GetCatalogPanel( )
+CatalogPanel* StampToolFrame::GetCatalogPagePanel( )
 { 
-    return m_stampToolPanel->GetCatalogPanel( );
+    return m_stampToolPanel->GetCatalogPagePanel( );
+}
+
+CatalogPanel* StampToolFrame::GetAlbumPagePanel( )
+{ 
+    return m_stampToolPanel->GetAlbumPagePanel( );
 }
 
 bool StampToolFrame::ShowToolTips( )
@@ -350,8 +360,7 @@ void StampToolFrame::DoCSVImport( )
 
 void StampToolFrame::DoDefinePeriodDialog( )
 { 
-    DefinePeriodsDialog definePeriodsDialog( this, ID_DEFINEPERIODS, 
-        _( "Define Periods Order" ) );
+    DefinePeriodsDialog definePeriodsDialog( this, ID_DEFINEPERIODSDIALOG,  _( "Define Periods Order" ) );
 
     if ( definePeriodsDialog.ShowModal( ) == wxID_CANCEL )
         return; // the user changed idea..
@@ -485,12 +494,11 @@ void StampToolFrame::OnSaveasCatalogClick( wxCommandEvent& event )
     event.Skip( );
 }
 
-void StampToolFrame::OnGenerateODTClick( wxCommandEvent& event )
-{ 
-    GenerateODTAlbum( );
-    event.Skip( );
+void StampToolFrame::OnGeneratePDFClick( wxCommandEvent& event )
+{
+    //AlbumImagePanel*
+     GetDesignData()->GetAlbum( )->MakePDFAlbum();
 }
-
 void StampToolFrame::OnSettingsClick( wxCommandEvent& event )
 { 
     DoSettingsDialog( );
@@ -912,15 +920,6 @@ void StampToolFrame::SaveAsDesign( )
 
         wxString filename = saveFileDialog.GetPath( );
         GetToolData( )->FileSaveAsDesign( filename );
-    }
-}
-void StampToolFrame::GenerateODTAlbum( )
-{ 
-    Design::Album* album = Design::GetAlbum( );
-    if ( album )
-    { 
-        Design::GetAlbum( )->MakeAlbum( );
-        ODT::ODTDoc( )->MakeDocument( );
     }
 }
 

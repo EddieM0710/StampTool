@@ -116,12 +116,18 @@ extern const char* AttrNameStrings[ AT_NbrAttrTypes ] ;
     } NodeStatus;
 
     AlbumBaseType FindAlbumBaseType( wxString name );
+typedef enum
+{
+    DD_Display,
+    DD_PDF
+} ScaleClient;
+
 
     /**
      * @brief Performs the initial instantiantion of all the sTart up data.
      *
      **************************************************/
-    void InitDesignDefs( );
+    void InitDesignDefs( ScaleClient client = DD_Display);
 
     LayoutBase* GetSelectedNodePage( );
 
@@ -129,7 +135,7 @@ extern const char* AttrNameStrings[ AT_NbrAttrTypes ] ;
 
     // Conversion factor to convert from Pixels to MM. 
     // Screen units are in pixels. Album Design elements are in mm.
-    extern wxRealPoint  PpMM;
+    extern wxRealPoint  ScaleFactor;
 
     
     const static int UnknownFontVal = -1;

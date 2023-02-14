@@ -125,7 +125,7 @@ namespace Catalog {
         DT_Themes, 
         DT_Description, 
         DT_Link, 
-        DT_CheckedStatus, 
+//        DT_CheckedStatus, 
         DT_InventoryStatus, 
         DT_BackGround, 
         DT_NbrTypes

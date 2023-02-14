@@ -70,10 +70,11 @@ namespace Design {
         ~Album( ) { };
 
         /**
-         * @brief calculate the layout and update all the odt files based on tht.
+         * @brief calculate the layout and update all the pdf files based on tht.
          *
          **************************************************/
-        void MakeAlbum( );
+        void MakePDFAlbum( );
+        void DrawPDF( );
 
 
         /**
@@ -97,14 +98,7 @@ namespace Design {
 
         void UpdateSizes( );
         
-        wxXmlNode* Write( wxXmlNode* parent );
-
-        /**
-         * @brief Decends into each Album layout child performing its write to the content, styles, or images ODT XML
-         *  /**
-         * @brief sum of the height of child items; min height for this row
-         *
-         **************************************************/
+ 
         /**
          * @brief Get the Width
          *

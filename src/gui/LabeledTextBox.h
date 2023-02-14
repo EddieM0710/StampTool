@@ -6,18 +6,18 @@
  * @date 2021-02-25
  *
  * @copyright Copyright ( c ) 2021
- * 
+ *
  * This file is part of StampTool.
  *
- * StampTool is free software: you can redistribute it and/or modify it under the 
- * terms of the GNU General Public License as published by the Free Software Foundation, 
+ * StampTool is free software: you can redistribute it and/or modify it under the
+ * terms of the GNU General Public License as published by the Free Software Foundation,
  * either version 3 of the License, or any later version.
  *
- * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY 
- * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+ * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
+ * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
- * You should have received a copy of the GNU General Public License along with 
+ * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
  **************************************************/
@@ -29,9 +29,10 @@
  /*
   * Includes
   */
-#include "gui/GuiDefs.h"
 
 #include <wx/event.h> 
+
+#include "gui/GuiDefs.h"
 
   /*
    * Forward declarations
@@ -41,52 +42,30 @@ namespace Catalog { class Entry; };
 /*
  * Control identifiers
  */
-#define ID_LABELEDTEXTBOX_TEXTCTRL ID_LABLEDTEXTBOX+1
 #define SYMBOL_LABELEDTEXTBOX_STYLE wxTAB_TRAVERSAL
 #define SYMBOL_LABELEDTEXTBOX_TITLE _( "LabledTextBox" )
-#define SYMBOL_LABELEDTEXTBOX_IDNAME ID_LABLEDTEXTBOX
+#define SYMBOL_LABELEDTEXTBOX_IDNAME ID_LABELEDTEXTBOX
 #define SYMBOL_LABELEDTEXTBOX_SIZE wxDefaultSize
 #define SYMBOL_LABELEDTEXTBOX_POSITION wxDefaultPosition
 
  /*
   * LabeledTextBox class declaration
   */
-typedef void ( MyFunct )( wxCommandEvent &event );
-
-/* -----------------------------------------------------------------
- * @brief A static text and a textctrl in a horizontal sizer.
- * To add a event handler in the parent class for modified text in the textctrl member add a single event handler  
- * for event in the event table.
- *   EVT_TEXT( ID_LABLEDTEXTBOX+1, IdentificationPanel::MyLabeledTextBoxUpdated )
- *  
- * void IdentificationPanel::OnTextctrlTextUpdated( wxCommandEvent& event )
- * { 
- *  void* eventObject = event.GetClientData( );
- *  if ( eventObject == pointer_to_LabeledTextBox )
- *     { 
- *        UpdateValue(  pointer_to_LabeledTextBox );
- *     }
- *  event.Skip( );
- * }
- * 
- * void UpdateValue(  LabeledTextBox* pointer_to_LabeledTextBox  )
- * { 
- *    if ( pointer_to_LabeledTextBox->IsModified( ) )
- *    { 
- *        wxString val = pointer_to_LabeledTextBox->GetValue( );
- *        //save the value to the right place
- *        pointer_to_LabeledTextBox->SetModified( false );
- *    }
- * }
- */
+typedef void ( MyFunct )( wxCommandEvent& event );
 
 
-class LabeledTextBox : public wxPanel
-{ 
+
+class LabeledTextBox: public wxPanel
+{
     DECLARE_DYNAMIC_CLASS( LabeledTextBox )
-    DECLARE_EVENT_TABLE( )
+        DECLARE_EVENT_TABLE( )
 
 public:
+    enum LabeledTextBoxGuiDefs
+    {
+        ID_LABELEDTEXTBOX_TEXTCTRL = ID_LABELEDTEXTBOX + 1
+    };
+
     // Constructors
     /**
      * @brief Default Constructor a new LabeledTextBox object
@@ -99,10 +78,10 @@ public:
      * @param  style	The window style.
      * @see wxPanel.
      **************************************************/
-    LabeledTextBox( wxWindow* parent, 
-        wxWindowID id = SYMBOL_LABELEDTEXTBOX_IDNAME, 
-        const wxPoint& pos = SYMBOL_LABELEDTEXTBOX_POSITION, 
-        const wxSize& size = SYMBOL_LABELEDTEXTBOX_SIZE, 
+    LabeledTextBox( wxWindow* parent,
+        wxWindowID id = SYMBOL_LABELEDTEXTBOX_IDNAME,
+        const wxPoint& pos = SYMBOL_LABELEDTEXTBOX_POSITION,
+        const wxSize& size = SYMBOL_LABELEDTEXTBOX_SIZE,
         long style = SYMBOL_LABELEDTEXTBOX_STYLE );
 
     /**
@@ -117,9 +96,9 @@ public:
      * @return bool
      *
      **************************************************/
-    bool Create( wxWindow* parent, wxWindowID id = SYMBOL_LABELEDTEXTBOX_IDNAME, 
-        const wxPoint& pos = SYMBOL_LABELEDTEXTBOX_POSITION, 
-        const wxSize& size = SYMBOL_LABELEDTEXTBOX_SIZE, 
+    bool Create( wxWindow* parent, wxWindowID id = SYMBOL_LABELEDTEXTBOX_IDNAME,
+        const wxPoint& pos = SYMBOL_LABELEDTEXTBOX_POSITION,
+        const wxSize& size = SYMBOL_LABELEDTEXTBOX_SIZE,
         long style = SYMBOL_LABELEDTEXTBOX_STYLE );
 
     // Destructor
@@ -192,22 +171,22 @@ public:
      * @param width
      **************************************************/
     void SetValue( wxString value )
-    { 
+    {
         m_value->SetValue( value );
         m_value->SetModified( true );
     };
     void ChangeValue( wxString value )
-    { 
+    {
         m_value->ChangeValue( value );
         m_value->SetModified( false );
     };
     bool IsModified( ) { return m_value->IsModified( ); };
     void SetModified( bool state = true ) { m_value->SetModified( state ); };
     inline void SetLabel( wxString label )
-    { 
+    {
         m_label->SetLabel( label );
     };
-    
+
     void SetEditable( bool value );
 
 
@@ -217,7 +196,7 @@ private:
     wxWindow* m_parent; ///< 
     wxWindowID m_id; ///< 
     wxTextCtrl* m_value; ///< 
-  //  Catalog::DataTypes m_type; ///< 
+    //  Catalog::DataTypes m_type; ///< 
 };
 
 #endif

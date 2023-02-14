@@ -25,8 +25,11 @@
 #ifndef Column_H
 #define Column_H
 
+#include <wx/pdfdocument.h>
+
 #include "design/LayoutBase.h"
 #include "design/DesignDefs.h"
+#include "utils/DebugString.h"
 
 namespace Design { 
 
@@ -78,21 +81,17 @@ namespace Design {
 
         // build the frame container for the column
 
-        /**
-         * @brief Decends into each child layout object performing its write to the content, styles, or images ODT XML
-         *
-         **************************************************/
-        wxXmlNode* Write( wxXmlNode* parent );
 
         NodeStatus ValidateNode( );
         /*
-         * @brief draw object on screen
+         * @brief Draw object on screen
          *
          * @param dc current device context
          * @param x position in MM
          * @param y position in MM
          */
-        void draw( wxDC& dc, double x, double y );
+        void Draw( wxDC& dc, double x, double y );
+        void DrawPDF( wxPdfDocument* doc, double x, double y ){};
 
         void Save( wxXmlNode* xmlNode );
 
@@ -100,6 +99,7 @@ namespace Design {
 
     private:
 
+        DebugString m_debugString;
 
     };
 }

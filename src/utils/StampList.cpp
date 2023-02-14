@@ -40,13 +40,23 @@
 namespace Utils { 
 
 
-    wxString StampLink::GetID( ) 
-    { 
+    wxString StampLink::GetID( )
+    {
+        wxString id = "";
         DesignTreeCtrl* designTreeCtrl = GetDesignTreeCtrl( );
-        DesignTreeItemData* data = ( DesignTreeItemData* )designTreeCtrl->GetItemData( m_designTreeID );
-        Design::AlbumBase* node = data->GetNodeElement( );
-        wxString id = node->GetAttrStr( Design::AT_CatNbr );
-        return id; 
+        if ( designTreeCtrl && m_designTreeID.IsOk() )
+        {
+            DesignTreeItemData* data = ( DesignTreeItemData* )designTreeCtrl->GetItemData( m_designTreeID );
+            if ( data && data->IsOk() ) 
+            {
+                Design::AlbumBase* node = data->GetNodeElement( );
+                if ( node ) 
+                {
+                    wxString id = node->GetAttrStr( Design::AT_CatNbr );
+                }
+            }
+        }
+        return id;
     };
     
     bool StampLink::IsStamp( wxString id ) 
@@ -56,7 +66,7 @@ namespace Utils {
 
     void StampLink::Clear( )
     { 
-        CatalogTreeCtrl* catTreeCtrl = GetCatalogTreeCtrl( );
+        CatalogTreeCtrl* catTreeCtrl = GetAlbumPageTreeCtrl( );
         if ( catTreeCtrl )
         { 
             wxTreeItemId catID = GetCatTreeID( );
@@ -82,7 +92,7 @@ namespace Utils {
 
     void StampList::Clear( )
     { 
-        CatalogTreeCtrl* catTreeCtrl = GetCatalogTreeCtrl( );
+        CatalogTreeCtrl* catTreeCtrl = GetAlbumPageTreeCtrl( );
         DesignTreeCtrl* designTreeCtrl = GetDesignTreeCtrl( );
         if ( catTreeCtrl )
         { 
@@ -182,6 +192,8 @@ namespace Utils {
     //     }
     //     return ( wxXmlNode* )0;
     // }
+
+    
     void StampLink::Update( wxTreeItemId catID, wxTreeItemId albumID )
     { 
         SetDesignTreeID( albumID );

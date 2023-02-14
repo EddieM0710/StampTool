@@ -167,12 +167,12 @@ void AlbumDetailsDialog::CreateControls( )
     wxStaticText* itemStaticText12 = new wxStaticText( theDialog, wxID_STATIC, _( "Default Catalog Nbr Font" ), wxDefaultPosition, wxDefaultSize, 0 );
     itemBoxSizer11->Add( itemStaticText12, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
-    m_catNbrFontPicker = new wxFontPickerCtrl( theDialog, 12345, 
+    m_catNbrFontPicker = new wxFontPickerCtrl( theDialog, ID_CATNBRFONTPICKER,
         *wxNORMAL_FONT, wxDefaultPosition, 
         wxDefaultSize, wxFNTP_DEFAULT_STYLE );
     itemBoxSizer11->Add( m_catNbrFontPicker, 5, wxGROW | wxALL, 5 );
 
-    m_catNbrColorPicker = new wxColourPickerCtrl( theDialog, 12346, 
+    m_catNbrColorPicker = new wxColourPickerCtrl( theDialog, ID_CATNBCOLORPICKER, 
         *wxBLACK, wxDefaultPosition, 
         wxDefaultSize, wxCLRP_DEFAULT_STYLE );
     itemBoxSizer11->Add( m_catNbrColorPicker, 1, wxGROW | wxALL, 5 );
@@ -194,12 +194,12 @@ void AlbumDetailsDialog::CreateControls( )
     wxStaticText* itemStaticText120 = new wxStaticText( itemPanel2, wxID_STATIC, _( "Default Title Font" ), wxDefaultPosition, wxDefaultSize, 0 );
     itemBoxSizer110->Add( itemStaticText120, 0, wxGROW | wxALL, 5 );
 
-    m_titleFontPicker = new wxFontPickerCtrl( itemPanel2, 12345, 
+    m_titleFontPicker = new wxFontPickerCtrl( itemPanel2, ID_TITLEFONTPICKER, 
         *wxNORMAL_FONT, wxDefaultPosition, 
         wxDefaultSize, wxFNTP_DEFAULT_STYLE );
     itemBoxSizer110->Add( m_titleFontPicker, 5, wxGROW | wxALL, 5 );
 
-    m_titleColorPicker = new wxColourPickerCtrl( itemPanel2, 12346, 
+    m_titleColorPicker = new wxColourPickerCtrl( itemPanel2, ID_TITLECOLORPICKER, 
         *wxBLACK, wxDefaultPosition, 
         wxDefaultSize, wxCLRP_DEFAULT_STYLE );
     itemBoxSizer110->Add( m_titleColorPicker, 1, wxGROW | wxALL, 5 );
@@ -210,11 +210,11 @@ void AlbumDetailsDialog::CreateControls( )
     wxBoxSizer* itemBoxSizer4 = new wxBoxSizer( wxHORIZONTAL );
     theDialogVerticalSizer->Add( itemBoxSizer4, 0, wxGROW | wxALL, 0 );
 
-    m_height = new LabeledTextBox( theDialog, ID_HEIGHTLABELEDTEXTBOX, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
+    m_height = new LabeledTextBox( theDialog, ID_HEIGHTLABELEDTEXTBOX123, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
     m_height->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
     itemBoxSizer4->Add( m_height, 1, wxGROW | wxALL, 5 );
 
-    m_width = new LabeledTextBox( theDialog, ID_WIDTHLABELEDTEXTBOX, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
+    m_width = new LabeledTextBox( theDialog, ID_WIDTHLABELEDTEXTBOX123, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
     m_width->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
     itemBoxSizer4->Add( m_width, 1, wxGROW | wxALL, 5 );
 
@@ -262,18 +262,18 @@ void AlbumDetailsDialog::CreateControls( )
     wxBoxSizer* itemBoxSizer13 = new wxBoxSizer( wxHORIZONTAL );
     theDialogVerticalSizer->Add( itemBoxSizer13, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 0 );
 
-    wxButton* itemButton14 = new wxButton( theDialog, ID_REFRESHBUTTON, _( "Refresh from Catalog" ), wxDefaultPosition, wxDefaultSize, 0 );
+    wxButton* itemButton14 = new wxButton( theDialog, ID_REFRESHBUTTON123, _( "Refresh from Catalog" ), wxDefaultPosition, wxDefaultSize, 0 );
     itemBoxSizer13->Add( itemButton14, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
     itemBoxSizer13->Add( 5, 5, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
-    m_validate = new wxButton( theDialog, ID_VALIDATEBUTTON, _( "Validate" ), wxDefaultPosition, wxDefaultSize, 0 );
+    m_validate = new wxButton( theDialog, ID_VALIDATEBUTTON123, _( "Validate" ), wxDefaultPosition, wxDefaultSize, 0 );
     itemBoxSizer13->Add( m_validate, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
     wxBoxSizer* itemBoxSizer17 = new wxBoxSizer( wxHORIZONTAL );
     theDialogVerticalSizer->Add( itemBoxSizer17, 2, wxGROW | wxALL, 5 );
 
-    m_statusList = new wxListCtrl( theDialog, ID_LISTCTRL, wxDefaultPosition, wxSize( 100, 100 ), wxLC_REPORT | wxLC_EDIT_LABELS | wxSIMPLE_BORDER );
+    m_statusList = new wxListCtrl( theDialog, ID_LISTCTRL123, wxDefaultPosition, wxSize( 100, 100 ), wxLC_REPORT | wxLC_EDIT_LABELS | wxSIMPLE_BORDER );
     itemBoxSizer17->Add( m_statusList, 2, wxGROW | wxALL, 5 );
 
     //>>dialog Ctrl buttons

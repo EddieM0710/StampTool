@@ -30,17 +30,11 @@
   * Includes
   */
 
-
+#include <vector>
 #include "wx/frame.h"
 
 #include "gui/GuiDefs.h"
-  //#include <wx/dynarray.h>
-#include <vector>
 
-//#include "catalog/Classification.h"
-//#include "catalog/Entry.h"
-
-//#include <wx/dnd.h>
 /*!
  * Forward declarations
  */
@@ -58,33 +52,36 @@ class AlbumDesignTreePanel;
  * Control identifiers
  */
 
- //#define ID_IMPORT ID_STAMPTOOLFRAME+1
-#define ID_TEXTSERCHMENUITEM ID_STAMPTOOLFRAME+2
-#define ID_SORTORDER ID_STAMPTOOLFRAME+3
-#define ID_ITEMVIEW ID_STAMPTOOLFRAME+4
-#define ID_DEFINEPERIOD ID_STAMPTOOLFRAME+5
-#define ID_RECENT ID_STAMPTOOLFRAME+6
-#define ID_RECENTMENU ID_STAMPTOOLFRAME+7
-#define ID_SETTINGS ID_STAMPTOOLFRAME+8
-#define ID_MERGE ID_STAMPTOOLFRAME+9
-#define ID_PREFERENCES  ID_STAMPTOOLFRAME+10
-#define ID_CSVIMPORT ID_STAMPTOOLFRAME+12
-#define ID_OPENPROJECT ID_STAMPTOOLFRAME+13
-#define ID_OPENDESIGN ID_STAMPTOOLFRAME+14
-#define ID_OPENCATALOG ID_STAMPTOOLFRAME+15
-#define ID_SAVEPROJECT ID_STAMPTOOLFRAME+16
-#define ID_SAVEDESIGN ID_STAMPTOOLFRAME+17
-#define ID_SAVECATALOG ID_STAMPTOOLFRAME+18
-#define ID_SAVEASPROJECT ID_STAMPTOOLFRAME+19
-#define ID_SAVEASDESIGN ID_STAMPTOOLFRAME+20
-#define ID_SAVEASCATALOG ID_STAMPTOOLFRAME+21
-#define ID_GENERATEODT ID_STAMPTOOLFRAME+22
-#define ID_NEWPROJECT ID_STAMPTOOLFRAME+23
-#define ID_NEWDESIGN ID_STAMPTOOLFRAME+24
-#define ID_NEWCATALOG ID_STAMPTOOLFRAME+25
-#define ID_CATALOGMENU ID_STAMPTOOLFRAME+26
-#define ID_DESIGNMENU ID_STAMPTOOLFRAME+27
-#define ID_STAMPTOOLPANELFOREIGN ID_STAMPTOOLPANEL
+
+enum {
+ ID_TEXTSERCHMENUITEM = ID_STAMPTOOLFRAME,
+ ID_SORTORDER,
+ ID_ITEMVIEW,
+ ID_DEFINEPERIOD ,
+ ID_RECENT,
+ ID_RECENTMENU,
+ ID_SETTINGS,
+ ID_MERGE,
+ ID_PREFERENCES ,
+ ID_CSVIMPORT,
+ ID_OPENPROJECT,
+ ID_OPENDESIGN,
+ ID_OPENCATALOG,
+ ID_SAVEPROJECT,
+ ID_SAVEDESIGN,
+ ID_SAVECATALOG,
+ ID_SAVEASPROJECT ,
+ ID_SAVEASDESIGN ,
+ ID_SAVEASCATALOG,
+ ID_NEWPROJECT,
+ ID_NEWDESIGN,
+ ID_NEWCATALOG,
+ ID_CATALOGMENU,
+ ID_GENERATEPDF,
+ ID_DESIGNMENU,
+ ID_STAMPTOOLPANELFOREIGN = ID_STAMPTOOLPANEL
+};
+
 #define SYMBOL_STAMPTOOLFRAME_STYLE                                         \
     wxDEFAULT_FRAME_STYLE | wxCAPTION | wxRESIZE_BORDER | wxSYSTEM_MENU        \
         | wxMINIMIZE_BOX | wxMAXIMIZE_BOX | wxCLOSE_BOX
@@ -201,7 +198,7 @@ public:
     void OnSaveasDesignClick( wxCommandEvent& event );
     void OnSaveasCatalogClick( wxCommandEvent& event );
 
-    void OnGenerateODTClick( wxCommandEvent& event );
+    void OnGeneratePDFClick( wxCommandEvent& event );
 
     // wxEVT_COMMAND_MENU_SELECTED event handler for ID_IMPORT
     void OnCSVImportClick( wxCommandEvent& event );
@@ -289,7 +286,7 @@ public:
     //void LinkAlbumToCat( Design::LayoutBase* child, Catalog::CatalogSectionData* stampData );
    // void LinkNodes( Design::LayoutBase* child, Catalog::CatalogSectionData* stampData  );
 
-    void GenerateODTAlbum( );
+    //void ( );
 
     void DoSortOrderDialog( );
 
@@ -303,11 +300,12 @@ public:
     int ImageGallery( );
 
     StampToolPanel* GetStampToolPanel( ) { return m_stampToolPanel; }
-    CatalogPanel* GetCatalogPanel( );
-
+    CatalogPanel* GetAlbumPagePanel( );
+    CatalogPanel* GetCatalogPagePanel( );
     // StampToolFrame member variables
     StampToolPanel* m_stampToolPanel;
-    CatalogPanel* m_catalogPanel;
+    CatalogPanel* m_catalogPagePanel;
+    CatalogPanel* m_albumPagePanel;
     AlbumDesignTreePanel* m_albumDesignTreePanel;
     // StampToolFrame member variables
 

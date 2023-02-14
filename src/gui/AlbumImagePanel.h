@@ -133,6 +133,7 @@ public:
      * @param event   Contains information about command events
      **************************************************/
     void OnPaint( wxPaintEvent& event );
+    void PaintPDF( );
 
     void OnLeftDown( wxMouseEvent& event );
 

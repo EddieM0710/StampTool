@@ -49,6 +49,10 @@ enum
     DesignTree_AddTitle, 
     DesignTree_DeleteItem, 
     DesignTree_EditDetails, 
+    DesignTree_Before, 
+    DesignTree_After, 
+    DesignTree_AsChild, 
+    DesignTree_Cancel 
 };
 
 class Stamp;
@@ -82,7 +86,7 @@ public:
     DesignTreeItemData( Design::AlbumBaseType type, const wxString desc, 
         Design::AlbumBase* ele = 0, Utils::StampLink* stampLink = 0 )
     { 
-        m_ok = 12345;
+        m_ok = 0x12345;
         m_type = type;
         m_desc = desc;
         m_element = ele;
@@ -91,7 +95,7 @@ public:
 
     DesignTreeItemData( DesignTreeItemData &data )
     { 
-        m_ok = 12345;
+        m_ok = 0x12345;
         m_type = data.GetType( );
         m_desc = data.GetDesc( );
         m_element = data.GetNodeElement( );
@@ -122,7 +126,7 @@ public:
 
     bool IsOk( )
     { 
-        if ( m_ok = 12345 )return true;
+        if ( m_ok == 0x12345 )return true;
         return false;
     }
     /**
@@ -170,7 +174,7 @@ public:
      * @brief Construct a new Stamp Tree Ctrl object
      *
      **************************************************/
-    DesignTreeCtrl( ) { }
+    DesignTreeCtrl( ) { m_OK = 0x12345; }
 
     /**
      * DesignTreeCtrl Constructor
@@ -188,7 +192,7 @@ public:
      * ~DesignTreeCtrl
      *
      **************************************************/
-    virtual ~DesignTreeCtrl( void ) { }
+    virtual ~DesignTreeCtrl( void ) { m_OK = 0; }
 
 
     void DeleteItem( wxTreeItemId id ) ;
@@ -207,6 +211,8 @@ public:
     * @param   event :
     **************************************************/
     void OnEndDrag( wxTreeEvent& event );
+
+    void ShowDropMenu( wxTreeItemId itemSrc, wxTreeItemId itemDst, bool asChild = false );
 
     /**
      *
@@ -247,8 +253,10 @@ public:
     /**
      *
      **************************************************/
-    void CreateStateImageList( bool del );
+    void CreateStateImageList( );
     void CreateImageList( );
+    void UpdateStampList( );
+    void UpdateStampList( wxTreeItemId &treeItemId );
 
     /**
      *
@@ -302,6 +310,7 @@ public:
     void AddColTreeItem( wxTreeItemId node  );
     Utils::StampLink* AppendStamp( wxTreeItemId id );
     wxString GetImageFullPath( wxTreeItemId catID );
+    void UpdateItemPageLayout( wxTreeItemId id )  ; 
 
     wxTreeItemId GetPage( wxTreeItemId id );
     void MakePage( wxTreeItemId id );
@@ -407,6 +416,7 @@ public:
     Design::AlbumBaseType GetItemType( wxTreeItemId albumID ) ; 
     wxString MakeItemLabel ( wxTreeItemId id );
     void CopyItem( wxTreeItemId dstID, wxTreeItemId srcID );
+    void MoveItem( wxTreeItemId itemSrc, wxTreeItemId itemDst );
 
     void Save( );
     void SaveNodeData ( wxXmlNode* parent, wxTreeItemId treeItemId );
@@ -414,7 +424,7 @@ public:
 
 
 private:
-
+    int m_OK;
     /**
      * @brief
      *

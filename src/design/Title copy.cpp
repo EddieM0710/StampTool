@@ -23,7 +23,6 @@
  **************************************************/
 
 #include "design/Title.h"
-#include "odt/Document.h"
 
 namespace Design { 
 
@@ -48,24 +47,6 @@ namespace Design {
     void Title::UpdateSizes( )
     { 
 
-    }
-
-    wxXmlNode* Title::Write( wxXmlNode* parent )
-    { 
-        Utils::AddComment( parent, "Title", "Insert a title here." );
-
-        wxXmlNode* contentElement = ODT::ContentDoc( )->WriteFrame( parent, 
-            GetXPos( ), 
-            GetYPos( ), 
-            GetWidth( ), 
-            GetHeight( ), 
-            ODT::FrameNoBorder, 
-            ODT::TextAnchorParagraph, 
-            ODT::Bold18PtTextStyle );
-        contentElement->SetType( wxXML_TEXT_NODE );
-        contentElement->SetContent( parent->GetContent( ) );
-
-        return contentElement;
     }
 
         

@@ -23,7 +23,6 @@
  **************************************************/
 
 #include "design/Title.h"
-#include "odt/Document.h"
 
 namespace Design { 
 

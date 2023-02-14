@@ -39,6 +39,20 @@
 #include "art/NotFound.xpm"
 
 
+ 
+void DrawLabelPDF( wxPdfDocument* doc, const wxString& text, 
+    RealPoint pos, 
+    RealSize size, 
+    int   	alignment, 
+    int  	border,
+    bool fill )
+{ 
+    doc->SetXY( pos.x, pos.y );
+    doc->Write( 2, text );
+ //   doc->Cell(size.x, size.y, text, border, 0, alignment, fill );
+
+}
+
 void DrawLabel( wxDC& dc, const wxString& text, 
     RealPoint pos, 
     RealSize size, 
@@ -47,11 +61,11 @@ void DrawLabel( wxDC& dc, const wxString& text,
 { 
     // wxSize devicePos = LogicalToDeviceRel( dc, pos.x, pos.y );
     // wxSize deviceSize = LogicalToDeviceRel( dc, size.x, size.y );
-    // double tx = pos.x * Design::PpMM.x;
-    // double ty = pos.y * Design::PpMM.y;
+    // double tx = pos.x * Design::ScaleFactor.x;
+    // double ty = pos.y * Design::ScaleFactor.y;
 
     //wxRect rect( devicePos.x, devicePos.y , deviceSize.x, deviceSize.y );
-    wxRect rect( pos.x * Design::PpMM.x, pos.y * Design::PpMM.y, size.x * Design::PpMM.x, size.y * Design::PpMM.y );
+    wxRect rect( pos.x * Design::ScaleFactor.x, pos.y * Design::ScaleFactor.y, size.x * Design::ScaleFactor.x, size.y * Design::ScaleFactor.y );
     dc.DrawLabel( text, rect, wxALIGN_CENTER_HORIZONTAL );
 }
 
@@ -69,6 +83,60 @@ void DrawTitle( wxDC& dc, wxString title, RealPoint pos, RealSize size )
     DrawLabel( dc, id, pos, size, wxALIGN_CENTER_HORIZONTAL );
 
 }
+  double GetHeightChars(double pt)
+  {
+    double height = 100;
+    // Array matching character sizes and line heights
+    static const int nTable = 10;
+    static const double cTable[nTable] = { 6, 7,   8, 9, 10, 11, 12, 13, 14, 15 };
+    static const double hTable[nTable] = { 2, 2.5, 3, 4,  5,  6,  7,  8,  9, 10 };
+    int i;
+    for (i = 0; i < nTable; i++)
+    {
+      if (pt == cTable[i])
+      {
+        height = hTable[i];
+        break;
+      }
+    }
+    return height;
+  }
+
+double GetMultiLineTextHeight( wxString text,  wxFont* font, double width )
+{
+    double lineHeight = GetHeightChars( font->GetPointSize( ) );
+    text.Trim( );
+    text.Trim( false );  
+    wxPdfDocument doc;
+    doc.SetFont( *font );
+    doc.SetXY( 0, 0 );
+    doc.MultiCell( width, lineHeight, text, 0, wxPDF_ALIGN_CENTER ); 
+    return doc.GetY();   
+}
+
+void DrawTitlePDF( wxPdfDocument* doc, wxString title, RealPoint pos, RealSize size )
+{ 
+    wxString id;
+    wxFont font( *wxNORMAL_FONT );
+    font.SetPointSize( 10 );
+    doc->SetFont( font );
+    id = title;
+    id.Trim( );
+    id.Trim( false );
+
+    wxPdfFont pdfFont = doc->GetCurrentFont();
+ //   pdfFont.GetStringWidth{ id };
+    
+    //GetAlbumImagePanel( )->MakeMultiLine( id, font, size.x );
+    doc->SetXY( pos.x, pos.y );
+
+    double lineHeight = GetHeightChars(10);
+
+    doc->MultiCell(size.x, lineHeight, id, 0, wxPDF_ALIGN_CENTER); 
+    double y = doc->GetY();   
+    double x = doc->GetX();   
+    std::cout << id << "  h " << lineHeight << " pos(" << pos.x <<", "<<pos.y<<")  new pos(" << x <<", "<<y<<")  size(" << size.x <<", "<<size.y<<") new size (" << x-pos.x <<", "<< y-pos.y <<") \n"; 
+}
 
 wxSize LogicalToDeviceRel( wxDC& dc, double x, double y )
 { 
@@ -78,6 +146,11 @@ wxSize LogicalToDeviceRel( wxDC& dc, double x, double y )
     return size;
 }
 
+void DrawRectanglePDF( wxPdfDocument* doc, double x, double y, double width, double height )
+{ 
+        doc->Rect( x, y, width, height, wxPDF_STYLE_DRAW );
+}
+
 void DrawRectangle( wxDC& dc, double x, double y, double width, double height )
 { 
     //wxPoint pt = dc.LogicalToDevice( x, y );
@@ -85,9 +158,9 @@ void DrawRectangle( wxDC& dc, double x, double y, double width, double height )
     //   wxSize devicePos = GetAlbumImagePanel( )->LogicalToDeviceRel( dc, x, y );
     //   wxSize deviceSize = GetAlbumImagePanel( )->LogicalToDeviceRel( dc, width, height );
     //   dc.DrawRectangle( devicePos.x, devicePos.y, deviceSize.x, deviceSize.y );
-    // std::cout << "DrawRec pos( "<< x * Design::PpMM.x << ", " << y * Design::PpMM.y << " ) size ( "
-    // << width * Design::PpMM.x << ", "<< height * Design::PpMM.y<<" )\n";
-    dc.DrawRectangle( x * Design::PpMM.x, y * Design::PpMM.y, width * Design::PpMM.x, height * Design::PpMM.y );
+    // std::cout << "DrawRec pos( "<< x * Design::ScaleFactor.x << ", " << y * Design::ScaleFactor.y << " ) size ( "
+    // << width * Design::ScaleFactor.x << ", "<< height * Design::ScaleFactor.y<<" )\n";
+    dc.DrawRectangle( x * Design::ScaleFactor.x, y * Design::ScaleFactor.y, width * Design::ScaleFactor.x, height * Design::ScaleFactor.y );
     //dc.DrawRectangle( pt.x, pt.y, size.x, size.y );
 };
 
@@ -124,6 +197,13 @@ void DrawRectangle( wxDC& dc, double x, double y, double width, double height )
         return image;
     }
 
+void DrawImagePDF( wxPdfDocument* doc, wxString fileName, double x, double y, double w, double h )
+{ 
+
+      // Draw jpeg image
+    doc->Image(fileName, x, y, w, h);
+  
+}
 void DrawImage( wxDC& dc, wxString fileName, double x, double y, double w, double h )
 { 
     wxImage* image = GetImageFromFilename( fileName );
@@ -137,10 +217,10 @@ void DrawImage( wxDC& dc, wxString fileName, double x, double y, double w, doubl
             w = 10;
         }
 
-        image->Rescale( w * Design::PpMM.x, h * Design::PpMM.y );
+        image->Rescale( w * Design::ScaleFactor.x, h * Design::ScaleFactor.y );
         wxBitmap bitmap = *image;
 
-        dc.DrawBitmap( bitmap, x * Design::PpMM.x, y * Design::PpMM.y, true );
+        dc.DrawBitmap( bitmap, x * Design::ScaleFactor.x, y * Design::ScaleFactor.y, true );
         if ( image )
         { 
             delete image;

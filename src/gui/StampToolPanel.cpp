@@ -135,39 +135,58 @@ void StampToolPanel::CreateControls( )
 
     StampToolPanel* itemPanel1 = this;
 
-    wxBoxSizer* itemBoxSizer1 = new wxBoxSizer( wxVERTICAL );
-    itemPanel1->SetSizer( itemBoxSizer1 );
+    wxBoxSizer* panelVerticalBoxSizer = new wxBoxSizer( wxVERTICAL );
+    itemPanel1->SetSizer( panelVerticalBoxSizer );
 
-    wxBoxSizer* itemBoxSizer2 = new wxBoxSizer( wxHORIZONTAL );
-    itemBoxSizer1->Add( itemBoxSizer2, 1, wxGROW | wxALL, 0 );
+    wxBoxSizer* panelHorizontalBoxSizer = new wxBoxSizer( wxHORIZONTAL );
+    panelVerticalBoxSizer->Add( panelHorizontalBoxSizer, 1, wxGROW | wxALL, 0 );
 
-    wxSplitterWindow* itemSplitterWindow3 = new wxSplitterWindow( 
-        itemPanel1, ID_SPLITTERWINDOW, wxDefaultPosition, wxDefaultSize, 
-        wxSP_3DBORDER | wxSP_3DSASH | wxNO_BORDER );
-    itemSplitterWindow3->SetMinimumPaneSize( 20 );
-
-
-    m_mngCatalogSectionData = new  CatalogPanel( itemSplitterWindow3, ID_PANEL1, 
-        wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
     m_notebook
-        = new wxNotebook( itemSplitterWindow3, ID_NOTEBOOK, wxDefaultPosition, 
+        = new wxNotebook( itemPanel1, ID_NOTEBOOK, wxDefaultPosition, 
             wxDefaultSize, wxBK_DEFAULT );
 
+    panelHorizontalBoxSizer->Add( m_notebook, 1, wxGROW | wxALL, 0 );
+
+    m_catalogNotebookPage = new wxSplitterWindow( 
+        m_notebook, ID_CATALOGSPLITTERWINDOW, wxDefaultPosition, wxDefaultSize, 
+        wxSP_3DBORDER | wxSP_3DSASH | wxNO_BORDER );
+    m_catalogNotebookPage->SetMinimumPaneSize( 20 );
+
+    m_catalogTreePanel = new CatalogPanel( m_catalogNotebookPage, ID_CATALOGPAGE, 
+        wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
+    
+        GetToolData( )->SetCatalogPageTreeCtrl( m_catalogTreePanel->GetCatalogTree() );
+        m_catalogTreePanel->GetCatalogTree()->SetStates( false );
+
     m_stampDescriptionPanel = new StampDescriptionPanel( 
-        m_notebook, ID_DESCRIPTIONPANELFOREIGN, wxDefaultPosition, 
+        m_catalogNotebookPage, ID_DESCRIPTIONPANELFOREIGN, wxDefaultPosition, 
         wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
     m_stampDescriptionPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
 
-    m_notebook->AddPage( m_stampDescriptionPanel, _( "Stamp" ) );
-    itemSplitterWindow3->SplitVertically( m_mngCatalogSectionData, m_notebook, 600 );
-    itemBoxSizer2->Add( itemSplitterWindow3, 1, wxGROW | wxALL, 0 );
+    m_catalogNotebookPage->SplitVertically( m_catalogTreePanel, m_stampDescriptionPanel, 600 );
+ //   panelHorizontalBoxSizer->Add( catalogSplitterWindow, 1, wxGROW | wxALL, 0 );
+
+    m_notebook->AddPage( m_catalogNotebookPage, _( "Catalog" ) );
+
+
+    m_albumNotebookPage = new wxSplitterWindow( 
+        m_notebook, ID_DESIGNSPLITTERWINDOW, wxDefaultPosition, wxDefaultSize, 
+        wxSP_3DBORDER | wxSP_3DSASH | wxNO_BORDER );
+    m_albumNotebookPage->SetMinimumPaneSize( 20 );
+
+    m_albumTreePanel = new  CatalogPanel( m_albumNotebookPage, ID_DESIGNPAGE, 
+        wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
+        GetToolData( )->SetAlbumPageTreeCtrl( m_albumTreePanel->GetCatalogTree() );
+        m_albumTreePanel->GetCatalogTree()->SetStates( true );
 
     m_albumDesignPanel = new AlbumDesignPanel( 
-        m_notebook, ID_ALBUMSPLITTERWINDOWFOREIGN, wxDefaultPosition, 
+        m_albumNotebookPage, ID_ALBUMSPLITTERWINDOWFOREIGN, wxDefaultPosition, 
         wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
     m_albumDesignPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
 
-    m_notebook->AddPage( m_albumDesignPanel, _( "Album" ) );
+    m_albumNotebookPage->SplitVertically( m_albumTreePanel, m_albumDesignPanel, 600 );
+
+    m_notebook->AddPage( m_albumNotebookPage, _( "Album" ) );
 
     m_generateListPanel = new GenerateList( m_notebook, ID_GENERTELISTFOREIGN, wxDefaultPosition, 
         wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL  );
@@ -223,11 +242,15 @@ void StampToolPanel::UpdateStatus( )
 
 bool StampToolPanel::ShouldShowStates( )
 { 
-
-    if ( m_notebook->GetPage( m_notebook->GetSelection( ) ) == m_albumDesignPanel )
-    { 
+// int sel = m_notebook->GetSelection( ) ;
+// wxWindow* page = m_notebook->GetPage(sel );
+// std::cout << "sel=" << sel << " page=" << page << " m_albumNotebookPage" << m_albumNotebookPage<<"\n";
+    if ( m_notebook->GetPage( m_notebook->GetSelection( ) ) == m_albumNotebookPage )
+    {    
+        //std::cout << "ShowStates on\n";
         return true;
     }
+    //std::cout << "ShowStates off\n";
     return false;
 }
 /*
@@ -236,19 +259,25 @@ bool StampToolPanel::ShouldShowStates( )
 
 void StampToolPanel::OnNotebookPageChanged( wxNotebookEvent& event )
 { 
-    // int sel = event.GetOldSelection( );
-    // event.GetSelection( );
-    
-    // wxWindow* oldPage = m_notebook->GetPage( sel );
+ int sel = m_notebook->GetSelection( ) ;
+
+wxWindow* page = m_notebook->GetPage( sel );
+std::cout << "sel=" << sel << " page=" << page << " m_albumNotebookPage" << m_albumNotebookPage<<"\n";
+
+
+std::cout << "sel=" << sel ;   
     if ( ShouldShowStates( ) )
     { 
-        GetCatalogTreeCtrl( )->SetStates( true );
+ std::cout << "  albumTree states on \n";          
+        m_albumTreePanel->GetCatalogTree()->SetStates( true );
+        m_albumTreePanel->GetCatalogTree()->LoadTree();
     }
     else
     { 
-        GetCatalogTreeCtrl( )->SetStates( false );
+ std::cout << "  catalogTree states off \n";          
+        m_catalogTreePanel->GetCatalogTree()->SetStates( false );
+        m_catalogTreePanel->GetCatalogTree()->LoadTree();
     }
-
     // wxEVT_COMMAND_NOTEBOOK_PAGE_CHANGED event handler for ID_NOTEBOOK
    //in StampToolPanel.
    // Before editing this code, remove the block markers.

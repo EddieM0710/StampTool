@@ -76,21 +76,7 @@ namespace Utils {
         SetDirty( false );
     }
 
-    //*****
-
-    wxString Project::GetODTOutputFilename( )
-    { 
-        return m_ODTOutputFilename;
-    }
-
     //***** 
-
-    void Project::SetODTOutputFilename( wxString outputFilename )
-    { 
-        m_ODTOutputFilename = outputFilename;
-        m_dirty = true;
-    }
-
 
     wxString Project::GetDesignFilename( )
     { 
@@ -207,11 +193,7 @@ namespace Utils {
             return false;
         }
         LoadAttributes( projectRoot );
-        wxXmlNode* output = FirstChildElement( projectRoot, "OutputName" );
-        if ( output )
-        { 
-            m_ODTOutputFilename = output->GetAttribute( "FileName" );
-        }
+
 
         wxXmlNode* album = FirstChildElement( projectRoot, "Album" );
         if ( album )
@@ -287,7 +269,7 @@ namespace Utils {
 
             if ( !name.Cmp( "OutputName" ) )
             { 
-                m_ODTOutputFilename = MakeFileAbsolute( val );
+ //               m_ODTOutputFilename = MakeFileAbsolute( val );
             }
             else if ( !name.Cmp( "Album" ) )
             { 
@@ -336,7 +318,7 @@ namespace Utils {
         root->AddAttribute( "CatalogCode", GetProjectCatalogCode( ) );
 
         wxXmlNode* newNode = NewNode( root, "OutputName" );
-        newNode->AddAttribute( "FileName", m_ODTOutputFilename );
+ //       newNode->AddAttribute( "FileName", m_outputFilename );
 
         newNode = NewNode( root, "Album" );
         newNode->AddAttribute( "FileName", m_designFilename );

@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation, 
+ * terms of the GNU General Public License as published by the Free Software Foundation,
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -32,10 +32,11 @@
   // includes
 #include "wx/listctrl.h"
 // includes
-
-#include "gui/DesignTreeCtrl.h"
 #include <wx/fontpicker.h>
 #include <wx/clrpicker.h>
+
+#include "gui/DesignTreeCtrl.h"
+#include "gui/GuiDefs.h"
 
 
 /*!
@@ -52,16 +53,7 @@ class wxListCtrl;
  */
 
  // control identifiers
-#define ID_ROWDETAILSDIALOG 10000
-#define ID_NAMELABELEDTEXTBOX 10009
-#define ID_ROWTITLECHECKBOX 10004
-#define ID_FRAMECHECKBOX 10006
-#define ID_LISTCTRL 10006
-#define ID_DEFAULTFONTBUTTON 10007
-#define ID_ROWNAMEPANEL 10008
-#define ID_ROWLAYOUTPANEL 10020
-#define ID_ROWLAYOUTTEXTCTRL 10021
-#define ID_ROWNOTEBOOK 10022
+
 #define SYMBOL_ROWDETAILSDIALOG_STYLE wxCAPTION | wxRESIZE_BORDER | wxSYSTEM_MENU | wxCLOSE_BOX | wxTAB_TRAVERSAL
 #define SYMBOL_ROWDETAILSDIALOG_TITLE _( "Row Details Dialog" )
 #define SYMBOL_ROWDETAILSDIALOG_IDNAME ID_ROWDETAILSDIALOG
@@ -75,11 +67,28 @@ class wxListCtrl;
  */
 
 class RowDetailsDialog: public wxDialog
-{ 
+{
     DECLARE_DYNAMIC_CLASS( RowDetailsDialog )
         DECLARE_EVENT_TABLE( )
 
 public:
+    enum RowDetailsDialogGuiDefs {
+
+        ID_NAMELABELEDTEXTBOX = ID_ROWDETAILSDIALOG,
+        ID_ROWTITLECHECKBOX,
+        ID_FRAMECHECKBOX,
+        ID_LISTCTRL,
+        ID_DEFAULTFONTBUTTON,
+        ID_ROWNAMEPANEL,
+        ID_ROWLAYOUTPANEL,
+        ID_ROWLAYOUTTEXTCTRL,
+        ID_ROWNOTEBOOK,
+        ID_NOTEBOOK,
+        ID_NOTEBOOKPOSITIONPANEL,
+        ID_NOTEBOOKDETAILSPANEL,
+        ID_POSITIONTEXTCTRL
+    };
+
     /// Constructors
     RowDetailsDialog( );
     RowDetailsDialog( wxWindow* parent, wxWindowID id = SYMBOL_ROWDETAILSDIALOG_IDNAME, const wxString& caption = SYMBOL_ROWDETAILSDIALOG_TITLE, const wxPoint& pos = SYMBOL_ROWDETAILSDIALOG_POSITION, const wxSize& size = SYMBOL_ROWDETAILSDIALOG_SIZE, long style = SYMBOL_ROWDETAILSDIALOG_STYLE );
@@ -129,9 +138,10 @@ public:
     LabeledTextBox* m_name;
     wxCheckBox* m_titleCheckbox;
     wxCheckBox* m_frameCheckbox;
-    wxListCtrl* m_statusList;
+    wxListBox* m_statusList;
     wxFontPickerCtrl* m_titleFontPicker;
     wxColourPickerCtrl* m_titleColorPicker;
+    wxTextCtrl* positionTextCtrl;
     // RowDetailsDialog member variables
 
 };

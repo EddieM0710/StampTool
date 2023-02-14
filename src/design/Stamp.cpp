@@ -22,20 +22,20 @@
  *
  **************************************************/
 
+#include "Defs.h"
+
 #include "design/Stamp.h"
 #include "design/Title.h"
-#include "odt/ODTDefs.h"
-#include "odt/Document.h"
+
 #include "utils/XMLUtilities.h"
 #include "gui/DesignTreeCtrl.h"
 #include "gui/AlbumImagePanel.h"
-#include "art/NotFound.xpm"
 #include "gui/StampDescriptionPanel.h"
+#include "gui/GuiUtils.h"
 
 #include "catalog/CatalogSectionData.h"
 #include "catalog/Entry.h"
-#include "Defs.h"
-#include "gui/GuiUtils.h"
+#include "art/NotFound.xpm"
 
 namespace Design { 
 
@@ -90,129 +90,6 @@ namespace Design {
         m_frame.WriteLayout( "Stamp::UpdatePositions <>" );
     }
 
-    // build the frame container for the stamp
-    wxXmlNode* Stamp::Write( wxXmlNode* parent )
-    { 
-        Utils::AddComment( parent, "Stamp", "Inserting a Stamp." );
-        // the Object is built up of 3 objects. The outer object is the frame container 
-    // for the stamp frame and the title text. The text is the only thing visible. 
-    // The next is embedded in it and is tthe visible frame for the stamp.
-    // The 3rd one is embedded in the 2nd one and is the image of the object.
-    //
-    // I need to make the stamp image optional if the image is not available.
-        wxXmlNode* stampObjChild = StampObject( parent );
-        if ( stampObjChild )
-        { 
-            wxXmlNode* stampFrameObj = StampFrameObject( stampObjChild );
-            if ( stampFrameObj )
-            { 
-                wxXmlNode* stampImageObj = StampImageObject( stampFrameObj );
-                if ( stampImageObj )
-                { 
-                    //    stampObjChild->SetContent( m_name );
-                    //    return stampImageObj;
-                }
-            }
-        }
-        return ( wxXmlNode* )0;
-    }
-
-
-    wxXmlNode* Stamp::StampObject( wxXmlNode* parent )
-    { 
-        Utils::AddComment( parent, "Stamp", "Inserting ouside Frame of Stamp." );
-        // the outside object width and height is 10% larger than the stamp
-        // height has an extra .25in for the caption
-        double xPos = GetXPos( );
-        double yPos = GetYPos( );
-        double width = GetWidth( );
-        double height = GetHeight( ); // allow for caption
-
-        wxString drawStyleName = ODT::FrameNoBorder;
-        wxString textAnchorType = ODT::TextAnchorParagraph; // "page", "paragraph"
-
-        return ODT::ContentDoc( )->WriteFrame( parent, 
-            xPos, yPos, 
-            width, height, 
-            drawStyleName, textAnchorType ); // "page", "paragraph"
-    }
-
-    wxXmlNode* Stamp::StampFrameObject( wxXmlNode* parent )
-    { 
-        Utils::AddComment( parent, "Stamp", "Inserting the Stamp Border." );
-        double xPos = m_stampFrame.GetXPos( );
-        double yPos = m_stampFrame.GetYPos( );
-        double width = m_stampFrame.GetWidth( );
-        double height = m_stampFrame.GetHeight( ); // allow for caption
-
-        // wxString drawStyleName = FrameWithBorder;
-        // wxString textAnchorType = TextAnchorParagraph; // "page", "paragraph"
-
-        wxXmlNode* stampFrame = ODT::ContentDoc( )->WriteFrameFixedSize( parent, 
-            xPos, yPos, 
-            width, height, 
-            ODT::FrameWithBorder, ODT::TextAnchorParagraph, ODT::Normal8PtTextStyle );
-
-        wxXmlNode* idNode = ODT::ContentDoc( )->WriteTextBox( parent, 
-            0, height, 
-            width, m_titleSize.y, 
-            ODT::FrameNoBorder,  // fr2
-            ODT::TextAnchorParagraph, // "page", "paragraph"
-            ODT::Normal10PtTextStyle, 
-            "10", GetAttrStr( AT_Name ) );
-
-        return stampFrame;
-
-    }
-
-    wxXmlNode* Stamp::StampImageObject( wxXmlNode* parent )
-    { 
-        Utils::AddComment( parent, "Stamp", "Inserting the Stamp Image." );
-
-        // <draw:frame draw:style-name = "fr1" draw:name = "Frame5" text:anchor-type = "paragraph" svg:x = "0.05in" svg:y = "0.05in" svg:width = "0.9252in" draw:z-index = "4">
-        //     <draw:text-box fo:min-height = "1.2008in">
-
-        //wxString drawStyleName = FrameCenteredAtTopNoBorder;
-        //wxString textAnchorType = TextAnchorParagraph; // "page", "paragraph"
-
-        // the stamp image is actually 10% less than the actual stamp.
-        double xPos = m_stampImageFrame.GetXPos( );
-        double yPos = m_stampImageFrame.GetYPos( );
-        double width = m_stampImageFrame.GetWidth( );
-        double height = m_stampImageFrame.GetHeight( ); // allow for caption
-
-
-        wxXmlNode* frame = ODT::ContentDoc( )->WriteFrameFixedSize( parent, 
-            xPos, yPos, 
-            width, height, 
-            ODT::FrameCenteredAtTopNoBorder, 
-            ODT::TextAnchorParagraph );
-
-
-
-        wxString stampID = GetAttrStr( Design::AT_CatNbr );
-
-        wxString link = GetAttrStr( Design::AT_ImageName );
-
-        wxXmlNode* image = ODT::ContentDoc( )->WriteImage( frame, 
-            0, 0, 
-            width, height, 
-            ODT::FrameWithImage, ODT::TextAnchorParagraph, ODT::Frame20Content, link );
-
-        int pos = stampID.First( ' ' );
-        stampID = stampID.Mid( pos + 1 );
-
-        double idWidth = m_stampFrame.GetWidth( ) * .8;
-        wxXmlNode* idNode = ODT::ContentDoc( )->WriteTextBox( parent, 
-            0, height, 
-            idWidth, 4, 
-            ODT::FrameNoBorder,  // fr2
-            ODT::TextAnchorParagraph, // "page", "paragraph"
-            ODT::Normal8PtTextStyle, 
-            "8", stampID );
-
-        return image;
-    }
     NodeStatus Stamp::ValidateNode( )
     { 
         NodeStatus status = AT_OK;
@@ -220,7 +97,7 @@ namespace Design {
         wxImage* image = GetStampImage( );
         if ( image && !image->IsOk( ) )
         { 
-            str.Format( "Invalid Stamp Image.\n" );
+            str = wxString::Format( "Invalid Stamp Image.\n" );
             GetErrorArray( )->Add( str );
             std::cout << str;
             SetError( AT_InvalidImage, AT_WARING );
@@ -228,7 +105,7 @@ namespace Design {
         }
         if ( GetHeight( ) <= 0.01 )
         { 
-            str.Format( "Invalid Stamp Height.\n" );
+            str = wxString::Format( "Invalid Stamp Height.\n" );
             GetErrorArray( )->Add( str );
             std::cout << str;
             SetError( AT_InvalidHeight, AT_FATAL );
@@ -236,7 +113,7 @@ namespace Design {
         }
         if ( GetWidth( ) <= 0.01 )
         { 
-            str.Format( "Invalid Stamp Width.\n" );
+            str = wxString::Format( "Invalid Stamp Width.\n" );
             GetErrorArray( )->Add( str );
             std::cout << str;
             SetError( AT_InvalidWidth, AT_FATAL );
@@ -339,9 +216,8 @@ namespace Design {
         return GetAttrStr( Design::AT_Width );
     };
 
-    wxImage* Stamp::GetStampImage( )
+    wxString Stamp::GetStampImageFilename( )
     { 
- 
         wxFileName fn;
         wxString filename;
         wxImage* image;
@@ -370,17 +246,80 @@ namespace Design {
         }
         if ( fileOK )
         { 
-            image = new wxImage( filename );
+            return filename ;
         }
         else
         { 
+            return "" ;
+        }
+    }
+    wxImage* Stamp::GetStampImage( )
+    { 
+        wxString filename = GetStampImageFilename( );
+        wxImage* image ;
+        if (filename.IsEmpty())
+        {
             image = new wxImage( NotFound );
         }
-
+        else 
+        {
+            image = new wxImage( filename );
+        }
         return image;
     }
 
-    void Stamp::draw( wxDC& dc, double x, double y )
+    void Stamp::DrawPDF( wxPdfDocument* doc, double x, double y )
+    {
+ 
+
+        //Draw the outer frame transparent
+        m_frame.DrawPDF( doc, x, y );
+
+        //Draw the Stamp frame
+        double xInnerPos = x + GetXPos( );
+        double yInnerPos = y + GetYPos( );
+
+        m_stampFrame.DrawPDF( doc, xInnerPos, yInnerPos );
+        
+        double xImagePos = xInnerPos + m_stampFrame.GetXPos( ) + m_stampImageFrame.GetXPos( );
+        double yImagePos = yInnerPos + m_stampFrame.GetYPos( );
+
+        wxString filename = GetStampImageFilename( );
+
+        if ( !filename.IsEmpty( ) )
+        { 
+            //Draw the stamp image
+
+            double height = m_stampImageFrame.GetHeight( );
+            double width = m_stampImageFrame.GetWidth( );
+            if ( width <= 0.01 || height <= 0.01 )
+            { 
+                height = 10;
+                width = 10;
+            }
+
+            DrawImagePDF( doc, filename, xImagePos,  yImagePos + 1, width, height );
+        }
+        else
+        { 
+            // Draw missing image frame transparent
+            //m_stampImageFrame.DrawPDF( dc, xImagePos, yImagePos );
+        }
+
+        RealPoint pos( xInnerPos, ( yInnerPos + m_stampFrame.GetHeight( ) ) );
+        RealSize size( GetWidth( ), GetHeight( )- m_stampFrame.GetHeight( ) );
+
+        DrawTitlePDF( doc, m_title, pos, size );
+
+        if ( m_showCatNbr )
+        {            
+        double xIDPos = xInnerPos + m_stampFrame.GetXPos( ) + m_stampImageFrame.GetXPos( );
+        double yIDPos = yImagePos + m_stampImageFrame.GetHeight( );
+        DrawIDPDF( doc, xIDPos, yIDPos );
+        }       
+    }
+
+    void Stamp::Draw( wxDC& dc, double x, double y )
     { 
 
 
@@ -388,16 +327,16 @@ namespace Design {
         dc.SetPen( *wxRED_PEN );
 //         std::cout << "       Stamp ";      
         SetClientDimensions( dc, x + GetXPos( ), y + GetYPos( ), GetMinWidth( ), GetMinHeight( ) );
-        m_frame.draw( dc, x, y );
+        m_frame.Draw( dc, x, y );
 
     
         dc.SetPen( *wxBLACK_PEN );
 
-        //draw the Stamp frame
+        //Draw the Stamp frame
         double xPos = x + GetXPos( );
         double yPos = y + GetYPos( );
 
-        m_stampFrame.draw( dc, xPos, yPos );
+        m_stampFrame.Draw( dc, xPos, yPos );
 
         wxImage* image = GetStampImage( );
         if ( image && image->IsOk( ) )
@@ -414,10 +353,10 @@ namespace Design {
                 width = 10;
             }
 
-            image->Rescale( width * PpMM.x, height * PpMM.y );
+            image->Rescale( width * ScaleFactor.x, height * ScaleFactor.y );
             wxBitmap bitmap = *image;
 
-            dc.DrawBitmap( bitmap, xPos1 * PpMM.x, ( yPos1 * PpMM.y )+1, true );
+            dc.DrawBitmap( bitmap, xPos1 * ScaleFactor.x, ( yPos1 * ScaleFactor.y )+1, true );
             if ( image )
             { 
                 delete image;
@@ -425,11 +364,11 @@ namespace Design {
         }
         else
         { 
-            // draw missing image frame transparent
+            // Draw missing image frame transparent
             dc.SetPen( *wxGREEN_PEN );
             double xPos1 = xPos + m_stampFrame.GetXPos( );
             double yPos1 = yPos + m_stampFrame.GetYPos( );
-            m_stampImageFrame.draw( dc, xPos1, yPos1 );
+            m_stampImageFrame.Draw( dc, xPos1, yPos1 );
         }
 
         RealPoint pos( xPos, ( yPos + m_stampFrame.GetHeight( ) ) );
@@ -457,19 +396,44 @@ namespace Design {
         wxString id = GetAttrStr( AT_CatNbr );
         id.Trim( );
         id.Trim( false );
-        int pos = id.First( ' ' );
-        id = id.Mid( pos + 1 );
+        int ndx = id.First( ' ' );
+        id = id.Mid( ndx + 1 );
         wxSize ext = dc.GetTextExtent( id );
-        wxSize  m_idTextExtent( ext.x/Design::PpMM.x, ext.y/Design::PpMM.y );
+        wxSize  m_idTextExtent( ext.x/Design::ScaleFactor.x, ext.y/Design::ScaleFactor.y );
 
         x = x + ( m_stampImageFrame.GetWidth( ) - m_idTextExtent.x ) / 2;
 
-        dc.DrawText( id, x*PpMM.x, y*PpMM.y );
+        dc.DrawText( id, x*ScaleFactor.x, y*ScaleFactor.y );
         dc.SetFont( currFont );
 
         delete font;
     }
 
+
+
+    void Stamp::DrawIDPDF( wxPdfDocument* doc, double x, double y )
+    { 
+        wxFont font( *wxNORMAL_FONT );
+        font.SetPointSize(8);
+        font.SetStyle(wxFONTSTYLE_NORMAL);
+        doc->SetFont( font );
+        wxPdfFont pdfFont = doc->GetCurrentFont();
+ 
+
+        wxPdfFontDescription desc = pdfFont.GetDescription();
+        double textHeight = font.GetPointSize() * .26;
+
+        wxString id = GetAttrStr( AT_CatNbr );
+        id.Trim( );
+        id.Trim( false );
+        int ndx = id.First( ' ' );
+        id = id.Mid( ndx + 1 );
+
+        double idXmargin = ( m_stampImageFrame.GetWidth( ) - doc->GetStringWidth( id ) ) / 2.;
+        RealPoint pos( x + idXmargin, y ) ;
+        RealSize size( doc->GetStringWidth( id ), textHeight ); 
+        DrawLabelPDF( doc, id, pos, size );
+    }
 
     void Stamp::Save( wxXmlNode* xmlNode )
     { 
@@ -495,6 +459,11 @@ namespace Design {
         m_stampImageFrame.ReportLayout(  );
     };
 
-
+    void Stamp::DumpStamp( wxTextCtrl* ctrl )
+    {
+        *ctrl << DumpFrame(  );
+        *ctrl << m_stampFrame.LayoutString( );
+        *ctrl << m_stampImageFrame.LayoutString( );
+    }
 
 }

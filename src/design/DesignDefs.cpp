@@ -54,7 +54,7 @@
 // namespace for all Album design 
 namespace Design { 
 
-    wxRealPoint  PpMM;    
+    wxRealPoint  ScaleFactor;    
     
     bool IsAlbumBaseTypeValid( AlbumBaseType type ) 
     { 
@@ -142,11 +142,20 @@ namespace Design {
             "ImageName"
             };
 
-    void InitDesignDefs( )
+    void InitDesignDefs( ScaleClient client )
     { 
+
+        if ( client == DD_PDF)
+        {
+            ScaleFactor.x = 1.0;
+            ScaleFactor.y = 1.0;
+        }
+        else //if ( client == DD_Display)
+        {
         wxSize ppi = wxGetDisplayPPI( );
-        PpMM.x = ppi.x / 25.4;
-        PpMM.y = ppi.y / 25.4;
+        ScaleFactor.x = ppi.x / 25.4;
+        ScaleFactor.y = ppi.y / 25.4;
+        }
     }
 
     AlbumBaseType FindAlbumBaseType( wxString name )

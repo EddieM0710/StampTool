@@ -61,7 +61,8 @@ Utils::Project* GetProject( );
 ToolData* GetToolData( );
 Design::DesignData* GetDesignData( ) ;
 Catalog::CatalogSectionData* GetCatalogSectionData( ) ;
-CatalogTreeCtrl* GetCatalogTreeCtrl( );
+CatalogTreeCtrl* GetCatalogPageTreeCtrl( );
+CatalogTreeCtrl* GetAlbumPageTreeCtrl( );
 DesignTreeCtrl* GetDesignTreeCtrl( );
 AlbumImagePanel* GetAlbumImagePanel( );
 

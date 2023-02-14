@@ -33,15 +33,14 @@
 #ifndef WX_PRECOMP
 #include "wx/wx.h"
 #endif
-
-#include "Defs.h"
-#include "design/DesignDefs.h"
-#include "ImagePanel.h"
-//#include "Persistent.h"
 #include "wx/file.h"
 #include "wx/filename.h"
 #include "wx/graphics.h"
 #include "wx/image.h"
+
+#include "Defs.h"
+#include "design/DesignDefs.h"
+#include "gui/ImagePanel.h"
 #include "art/NotFound.xpm"
 
 /*
@@ -278,7 +277,7 @@ void ImagePanel::OnPaint( wxPaintEvent& event )
 
     dc.Clear( );
 
-    Design::InitDesignDefs( );
+    Design::InitDesignDefs( Design::DD_Display );
 
     const wxSize size = GetClientSize( );
     double scale = 1.;

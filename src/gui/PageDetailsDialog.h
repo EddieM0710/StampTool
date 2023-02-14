@@ -26,6 +26,7 @@
 #include "gui/DesignTreeCtrl.h"
 #include <wx/fontpicker.h>
 #include <wx/clrpicker.h>
+#include "gui/GuiDefs.h"
 
 /*!
  * Forward declarations
@@ -41,21 +42,25 @@ class wxListCtrl;
  */
 
  //// control identifiers
-#define ID_PAGEDETAILSDIALOG 10000
-#define ID_PANEL1 10012
-#define ID_PAGENAMELABELEDTEXTBOX 10001
-#define ID_SHOWTITLECHECKBOX 10002
-#define ID_SHOWFRAMECHECKBOX 10006
-#define ID_DEFAULTBUTTON 10013
-//#define ID_NAMELABELEDTEXTBOX2 10009
-#define ID_CHECKBOX1 10003
-#define ID_ERRORLISTCTRL 10006
-#define ID_NOTEBOOK 10020
-#define ID_DETAILSPANEL 10021
-#define ID_TITLEFONTPICKERSTATIC 10023
-//#define ID_DETAILSPANEL 10024
-#define ID_LAYOUTPANEL 10025
-#define ID_LAYOUTTEXTCTRL 10026
+// //#define ID_PAGEDETAILSDIALOG 10000
+// #define ID_NOTEBOOKPOSITIONPANEL 10012
+// #define ID_PAGENAMELABELEDTEXTBOX 10001
+// #define ID_SHOWTITLECHECKBOX 10002
+// #define ID_SHOWFRAMECHECKBOX 10006
+// #define ID_DEFAULTBUTTON 10013
+// //#define ID_NAMELABELEDTEXTBOX2 10009
+// #define ID_CHECKBOX1 10003
+// #define ID_ERRORLISTCTRL 10006
+// #define ID_NOTEBOOK 10020
+// #define ID_DETAILSPANEL 10021
+// #define ID_TITLEFONTPICKERSTATIC 10023
+// //#define ID_DETAILSPANEL 10024
+// #define ID_LAYOUTPANEL 10025
+// #define ID_LAYOUTTEXTCTRL 10026
+// #define ID_NOTEBOOKPOSITIONPANEL 10029
+// #define ID_TEXTCTRL1 10030
+// #define ID_NOTEBOOK 10027
+// #define ID_NOTEBOOKDETAILSPANEL 10028
 #define SYMBOL_PAGEDETAILSDIALOG_STYLE wxCAPTION | wxRESIZE_BORDER | wxSYSTEM_MENU | wxCLOSE_BOX | wxTAB_TRAVERSAL
 #define SYMBOL_PAGEDETAILSDIALOG_TITLE _( "PageDetailsDialog" )
 #define SYMBOL_PAGEDETAILSDIALOG_IDNAME ID_PAGEDETAILSDIALOG
@@ -69,11 +74,29 @@ class wxListCtrl;
  */
 
 class PageDetailsDialog: public wxDialog
-{ 
+{
     DECLARE_DYNAMIC_CLASS( PageDetailsDialog )
         DECLARE_EVENT_TABLE( )
 
 public:
+
+    enum PageDetailsDialogGuiDefs {
+        //#define  10000
+        ID_NOTEBOOKPOSITIONPANEL = ID_PAGEDETAILSDIALOG + 1,
+        ID_PAGENAMELABELEDTEXTBOX,
+        ID_SHOWTITLECHECKBOX,
+        ID_SHOWFRAMECHECKBOX,
+        ID_DEFAULTBUTTON,
+        ID_ERRORLISTCTRL,
+        ID_NOTEBOOK,
+        ID_DETAILSPANEL,
+        ID_TITLEFONTPICKERSTATIC,
+        ID_LAYOUTPANEL,
+        ID_LAYOUTTEXTCTRL,
+        ID_POSITIONTEXTCTRL,
+        ID_NOTEBOOKDETAILSPANEL
+    };
+
     /// Constructors
     PageDetailsDialog( );
     PageDetailsDialog( wxWindow* parent, wxWindowID id = SYMBOL_PAGEDETAILSDIALOG_IDNAME, const wxString& caption = SYMBOL_PAGEDETAILSDIALOG_TITLE, const wxPoint& pos = SYMBOL_PAGEDETAILSDIALOG_POSITION, const wxSize& size = SYMBOL_PAGEDETAILSDIALOG_SIZE, long style = SYMBOL_PAGEDETAILSDIALOG_STYLE );
@@ -109,22 +132,24 @@ public:
     void OnOkClick( wxCommandEvent& event );
 
     void SetNameModified( bool state );
-    void SetDesignTreeID( wxTreeItemId id );
     bool IsNameModified( );
     void SetShowTitle( bool state = false );
     void SetShowFrame( bool state = false );
     bool GetShowTitle( );
     bool GetShowFrame( );
+    //void SetStatusList(wxArrayString* errorArray );
+    void SetDesignTreeID( wxTreeItemId id );
 
 private:
     //// PageDetailsDialog member variables
     LabeledTextBox* m_name;
     wxCheckBox* m_titleCheckbox;
     wxCheckBox* m_frameCheckbox;
-    wxListCtrl* m_statusList;
+    wxListBox* m_statusList;
     ////  PageDetailsDialog member variables
     wxTreeItemId m_designTreeID;
     wxColourPickerCtrl* m_titleColorPicker;
+    wxTextCtrl* positionTextCtrl;
 
 };
 

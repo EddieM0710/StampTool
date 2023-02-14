@@ -29,7 +29,6 @@
 #include "catalog/CatalogData.h"
 #include "catalog/CatalogSectionData.h"
 
-namespace ODT { class Document; };
 namespace Design { class DesignData; };
 namespace Catalog { class CatalogSectionData; };
 namespace Utils { class Project; };
@@ -151,24 +150,11 @@ public:
     void FileSaveAsCatalog( wxString filename );
     void FileSaveCatalog( );
 
-    void CreateODTDocument( );
-
     // Load last Project file at startup if enabled
     void InitLoad( );
 
     // Creates a new CatalogSectionData. Deletes current one to prevent memory leaks.
     Catalog::CatalogSectionData* NewCatalogSectionData( );
-
-    /**
-     *
-     * @brief
-     *
-     * @return ODT::Document*
-     */
-    ODT::Document* GetODTDocument( );
-
-
-    void SetODTDocument( ODT::Document* doc );
 
 
     Utils::Settings* GetSettings( ) { return m_settings; };
@@ -181,7 +167,8 @@ public:
      * 
      * @return CatalogTreeCtrl* 
      */
-    inline CatalogTreeCtrl* GetCatalogTreeCtrl( ) { return m_catalogTreeCtrl; };
+    inline CatalogTreeCtrl* GetCatalogPageTreeCtrl( ) { return m_catalogPageTreeCtrl; };
+    inline CatalogTreeCtrl* GetAlbumPageTreeCtrl( ) { return m_albumPageTreeCtrl; };
     
     /** ****************************************
      * @brief Get the Design Tree Ctrl object
@@ -197,7 +184,8 @@ public:
      */
     inline StampDescriptionPanel* GetDescriptionPanel( ) { return m_stampDescriptionPanel; };
     inline AlbumImagePanel* GetAlbumImagePanel( ) { return m_albumImagePanel; };
-    void SetCatalogTreeCtrl( CatalogTreeCtrl* treeCtrl ) { m_catalogTreeCtrl = treeCtrl; };
+    void SetCatalogPageTreeCtrl( CatalogTreeCtrl* treeCtrl ) { m_catalogPageTreeCtrl = treeCtrl; };
+    void SetAlbumPageTreeCtrl( CatalogTreeCtrl* treeCtrl ) { m_albumPageTreeCtrl = treeCtrl; };
     void SetDesignTreeCtrl( DesignTreeCtrl* treeCtrl ) { m_designTreeCtrl = treeCtrl; };
     void SetDescriptionPanel( StampDescriptionPanel* descriptionPanel ) { m_stampDescriptionPanel = descriptionPanel; };
     void SetAlbumImagePanel( AlbumImagePanel* albumImagePanel ) { m_albumImagePanel = albumImagePanel; };
@@ -216,9 +204,9 @@ private:
     Catalog::CatalogData m_catalogData;
    // int m_catalogSectionDataNdx;
     Design::DesignData* m_designData;
-    ODT::Document* m_ODTDoc;
 
-    CatalogTreeCtrl* m_catalogTreeCtrl;
+    CatalogTreeCtrl* m_catalogPageTreeCtrl;
+    CatalogTreeCtrl* m_albumPageTreeCtrl;
     DesignTreeCtrl* m_designTreeCtrl;
     AlbumImagePanel* m_albumImagePanel;
     StampDescriptionPanel* m_stampDescriptionPanel;

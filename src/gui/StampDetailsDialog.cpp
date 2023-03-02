@@ -193,7 +193,7 @@ void StampDetailsDialog::CreateControls( )
     m_titleCheckbox->SetValue( false );
     checkBoxHorizontalSizer->Add( m_titleCheckbox, 0, wxALIGN_LEFT | wxALL, 5 );
 
-    wxFontPickerCtrl* m_fontPicker = new wxFontPickerCtrl( notebookDetailsPanel/*detailsPanel*/, 12345, 
+    m_fontPicker = new wxFontPickerCtrl( notebookDetailsPanel/*detailsPanel*/, 12345, 
         *wxNORMAL_FONT, wxDefaultPosition, 
         wxDefaultSize, wxFNTP_DEFAULT_STYLE );
     detailsVerticalSizer->Add( m_fontPicker, 1, wxGROW | wxALL, 5 );
@@ -459,7 +459,7 @@ void StampDetailsDialog::RefreshFromCatalog( )
         if ( link )
         { 
             wxTreeItemId catTreeID = link->GetCatTreeID( );
-            wxXmlNode* node = GetAlbumPageTreeCtrl( )->GetEntryNode( catTreeID );
+            wxXmlNode* node = GetAlbumPageTreeCtrl( )->GetItemNode( catTreeID );
 
             if ( node )
             { 

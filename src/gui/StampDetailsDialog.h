@@ -167,6 +167,7 @@ public:
     wxCheckBox* m_catNbrCheckbox;
     wxCheckBox* m_titleCheckbox;
     wxTextCtrl* positionTextCtrl;
+    wxFontPickerCtrl* m_fontPicker;
     // StampDetailsDialog member variables
 
 

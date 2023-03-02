@@ -146,7 +146,12 @@ namespace Design {
                 return true;
             }
             return false;
-        }
+        };
+    void GetPointSize()
+    {
+        m_font->GetPointSize();
+    }
+
     private:
 
         wxFont* m_font;

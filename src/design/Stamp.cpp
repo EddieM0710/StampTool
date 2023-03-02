@@ -26,6 +26,7 @@
 
 #include "design/Stamp.h"
 #include "design/Title.h"
+#include "design/Album.h"
 
 #include "utils/XMLUtilities.h"
 #include "gui/DesignTreeCtrl.h"
@@ -198,7 +199,6 @@ namespace Design {
 
     void Stamp::SetStampWidth( wxString str )
     { 
-        ;
         SetAttrStr( Design::AT_Width, str );
         double val;
         bool ok = str.ToDouble( &val );
@@ -413,15 +413,30 @@ namespace Design {
 
     void Stamp::DrawIDPDF( wxPdfDocument* doc, double x, double y )
     { 
-        wxFont font( *wxNORMAL_FONT );
-        font.SetPointSize(8);
-        font.SetStyle(wxFONTSTYLE_NORMAL);
-        doc->SetFont( font );
+
+        Design::Album* album = GetAlbum( );
+        wxFont *font;
+        if ( album )
+        {
+            wxFont *defFont = album->GetFont(  album->GetDefaultCatNbrFontNdx( ) );
+            if ( defFont )
+            {
+                font = new wxFont( *defFont );
+            }
+        }
+
+        if ( !font )
+        {
+            font = new wxFont( *wxNORMAL_FONT );
+            font->SetPointSize(8);
+            font->SetStyle(wxFONTSTYLE_NORMAL);
+        }
+        doc->SetFont( *font );
         wxPdfFont pdfFont = doc->GetCurrentFont();
  
 
         wxPdfFontDescription desc = pdfFont.GetDescription();
-        double textHeight = font.GetPointSize() * .26;
+        double textHeight = font->GetPointSize() * .26;
 
         wxString id = GetAttrStr( AT_CatNbr );
         id.Trim( );
@@ -433,6 +448,7 @@ namespace Design {
         RealPoint pos( x + idXmargin, y ) ;
         RealSize size( doc->GetStringWidth( id ), textHeight ); 
         DrawLabelPDF( doc, id, pos, size );
+        delete font;
     }
 
     void Stamp::Save( wxXmlNode* xmlNode )

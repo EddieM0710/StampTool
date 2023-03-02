@@ -15,6 +15,7 @@
 #include <wx/treectrl.h>
 #include <wx/imaglist.h>
 #include "gui/IconDefs.h"
+#include "gui/GuiUtils.h"
 #include "catalog/Entry.h"
 #include "design/AlbumBase.h"
  /**
@@ -49,13 +50,6 @@ class Stamp;
 class Classification;
 namespace Utils { class StampLink; }
 
-typedef enum {
-    CompareInvalid,
-    CompareEqual,
-    CompareLess,
-    CompareGreater
-}ComparisonResultType;
-
 
 /**
  * data associated with each node in the tree
@@ -72,8 +66,13 @@ public:
         m_desc = desc;
         m_element = ele;
         m_imageFullPath = 0;
-    }
-    ~CatalogTreeItemData( ) { if ( m_imageFullPath ) delete m_imageFullPath; }
+        m_ok = 12345;
+    };
+    ~CatalogTreeItemData( ) 
+    { 
+        m_ok=0;
+        if ( m_imageFullPath ) delete m_imageFullPath; 
+    };
     wxString const& GetDesc( ) const { return m_desc; };
     void SetCatNode( wxXmlNode* ele ) { m_element = ele; };
     wxXmlNode* GetNodeElement( void ) { return m_element; };
@@ -93,7 +92,96 @@ public:
     {
         m_isChecked = state;
     };
+    bool IsOK()
+    {
+        if ( m_ok ==12345 )
+        {
+            return true;
+        }
+        return false;
+    };
+
+
+    int Cmp( CatalogTreeItemData* itemData2 )
+    {
+
+        Catalog::CatalogBaseType type2 = itemData2->GetType( );
+
+        if ( m_type != type2 )
+        {
+            return ( int )m_type - ( int )type2;
+        }
+        else
+        {
+            // they are the same type
+            if ( m_type == Catalog::NT_Entry )
+            {
+                // they are both entries
+
+                Catalog::Entry entry1( m_element );
+                wxString date1 = entry1.GetIssuedDate( );
+                wxString id1 = m_desc;
+                wxString series1 = entry1.GetSeries( );
+                wxXmlNode* node2 = itemData2->GetNodeElement( );
+                Catalog::Entry entry2( node2 );
+                wxString date2 = entry2.GetIssuedDate( );
+                wxString id2 = itemData2->GetDesc( );
+                wxString series2 = entry2.GetSeries( );
+
+                ComparisonResultType result = CompareDates( date1, date2 );
+                if ( ( result == CompareInvalid ) || ( result == CompareEqual ) )
+                {
+                    int val = series1.Cmp( series2 );
+
+
+                    //    if ( m_reverseSort )
+                    //    { 
+                    return val;
+                    //    }
+                    //    else
+                    //    { 
+                    //        return val * -1;
+                    //    }
+
+                }
+                else if ( result == CompareLess )
+                {
+                    //    if ( m_reverseSort )
+                    //    { 
+                    return -1;
+                    // }
+                    // else
+                    // { 
+                    //     return 1;
+                    // }
+                }
+                // else if ( result == CompareEqual )
+                // { 
+                //     return 0;
+                //}
+                else
+                {
+                    //    if ( m_reverseSort )
+                    //    { 
+                    //        return -1;
+                    //    }
+                        //   else
+                    //    { 
+                    return 1;
+                    //    }
+                }
+            }
+            return -1;
+        }
+    };
+
+
+
+
+
+
 private:
+    double m_ok;
     wxXmlNode* m_element;
     wxString m_desc;
     Catalog::CatalogBaseType m_type;
@@ -379,30 +467,30 @@ public:
     /*
      * @brief Get the full filename of the image
      *
-     * @param catID
+     * @param catTreeID
      * @return wxString
      */
-    wxString GetImageFullName( wxTreeItemId catID );
+    wxString GetImageFullName( wxTreeItemId catTreeID );
 
     /*
      * @brief Get the entry id of the stamp. This is typically a catalog id.
      *
-     * @param catID
+     * @param catTreeID
      * @return wxString
      */
-    wxString GetIdText( wxTreeItemId catID );
+    wxString GetIdText( wxTreeItemId catTreeID );
 
 
-    // wxXmlNode* GetNode( wxTreeItemId catID );
+    // wxXmlNode* GetNode( wxTreeItemId catTreeID );
 
      /*
-      * @brief Get the  value of the Attribute named name from item catId
+      * @brief Get the  value of the Attribute named name from item catTreeID
       *
-      * @param catID
+      * @param catTreeID
       * @param name
       * @return wxString
       */
-    wxString GetAttribute( wxTreeItemId catID, wxString name );
+    wxString GetAttribute( wxTreeItemId catTreeID, wxString name );
 
     /*
      * @brief An attempt to compare two date strings
@@ -430,7 +518,7 @@ public:
      * @param itemId
      * @return wxXmlNode*
      */
-    wxXmlNode* GetEntryNode( wxTreeItemId itemId );
+    //wxXmlNode* GetEntryNode( wxTreeItemId itemId );
 
     //wxString GetEntryID( wxTreeItemId itemId );
 
@@ -439,13 +527,13 @@ public:
     /* 
      * @brief If this tree id item is catalg entry id IDNbr then set the link
      * 
-     * @param catID 
+     * @param catTreeID 
      * @param link 
      * @param IDNbr 
      */
-    void SetCatalogLink( wxTreeItemId catID, Utils::StampLink* link, wxString IDNbr );
+    void SetCatalogLink( wxTreeItemId catTreeID, Utils::StampLink* link, wxString IDNbr );
 
-    void UpdateStamp( Stamp* newStamp, wxTreeItemId catID );
+    void UpdateStamp( Stamp* newStamp, wxTreeItemId catTreeID );
 
     /*
      * @brief Enables the check box on all the tree items
@@ -470,6 +558,157 @@ public:
      */
     void SetStates( bool enable );
     bool StrSame( wxString str1, wxString str2 );
+
+    void DumpTree( );
+    void DumpTree( wxTreeItemId id );
+    void PrintTreeNodeData( wxTreeItemId id );
+
+    wxString GetItemDesc( wxTreeItemId id )
+    {
+        if ( id.IsOk( ) )
+        {
+            CatalogTreeItemData* data = ( CatalogTreeItemData* )GetItemData( id );
+            if ( data )
+            {
+                return data->GetDesc( );
+            }
+        }
+        return "";
+    };
+
+    // wxString const& SetItemDesc( wxTreeItemId id, wxString desc )
+    // {
+    //     if ( id.IsOk( ) )
+    //     {
+    //         CatalogTreeItemData* data = ( CatalogTreeItemData* )GetItemData( id );
+    //         if ( data )
+    //         {
+    //             data->SetDesc( desc );
+    //         }
+    //     }
+    // };
+    void SetItemNode( wxTreeItemId id, wxXmlNode* ele ) 
+    { 
+        if ( id.IsOk( ) )
+        {
+            CatalogTreeItemData* data = ( CatalogTreeItemData* )GetItemData( id );
+            if ( data )
+            {
+                data->SetCatNode( ele );
+            }
+        }   
+    };
+    wxXmlNode* GetItemNode( wxTreeItemId id )
+    {
+        if ( id.IsOk( ) )
+        {
+            CatalogTreeItemData* data = ( CatalogTreeItemData* )GetItemData( id );
+            if ( data )
+            {
+                return data->GetNodeElement( );
+            }
+        }
+        return (wxXmlNode*)0;
+    };
+
+    void SetType( wxTreeItemId id, Catalog::CatalogBaseType type ) 
+    { 
+        if ( id.IsOk( ) )
+        {
+            CatalogTreeItemData* data = ( CatalogTreeItemData* )GetItemData( id );
+            if ( data )
+            {
+                return data->SetType( type );
+            }
+        }
+    };
+
+    Catalog::CatalogBaseType GetItemType( wxTreeItemId id )
+    {
+        if ( id.IsOk( ) )
+        {
+            CatalogTreeItemData* data = ( CatalogTreeItemData* )GetItemData( id );
+            if ( data )
+            {
+                return data->GetType( );
+            }
+        }
+        return Catalog::CatalogBaseType::NT_None;;
+    };
+
+
+    Utils::StampLink* GetItemStampLink( wxTreeItemId id )
+    {
+        if ( id.IsOk( ) )
+        {
+            CatalogTreeItemData* data = ( CatalogTreeItemData* )GetItemData( id );
+            if ( data )
+            {
+                return data->GetStampLink( );
+            }
+        }
+        return (Utils::StampLink*)0;
+    };
+    void SetItemStampLink( wxTreeItemId id, Utils::StampLink* link ) 
+    { 
+        if ( id.IsOk( ) )
+        {
+            CatalogTreeItemData* data = ( CatalogTreeItemData* )GetItemData( id );
+            if ( data )
+            {
+                data->SetStampLink( link );
+            }
+        }
+    };
+
+    wxString* GetItemImageFullName( wxTreeItemId id )
+    {
+        if ( id.IsOk( ) )
+        {
+            CatalogTreeItemData* data = ( CatalogTreeItemData* )GetItemData( id );
+            if ( data )
+            {
+                return data->GetImageFullName( );
+            }
+        }
+        return (wxString*)0;
+    };
+    void SetItemImageFullName( wxTreeItemId id, wxString* str ) 
+    {
+        if ( id.IsOk( ) )
+        {
+            CatalogTreeItemData* data = ( CatalogTreeItemData* )GetItemData( id );
+            if ( data )
+            {
+                data->SetImageFullName( str );
+            }
+        }
+    };
+
+    bool IsItemChecked( wxTreeItemId id )
+    {
+        if ( id.IsOk( ) )
+        {
+            CatalogTreeItemData* data = ( CatalogTreeItemData* )GetItemData( id );
+            if ( data )
+            {
+                return data->IsChecked( );
+            }
+        }
+        return false;
+    };
+    void SetItemChecked( wxTreeItemId id, bool state = true )
+    {
+        if ( id.IsOk( ) )
+        {
+            CatalogTreeItemData* data = ( CatalogTreeItemData* )GetItemData( id );
+            if ( data )
+            {
+                data->SetChecked( state );
+            }
+        }
+    };
+
 
 private:
 

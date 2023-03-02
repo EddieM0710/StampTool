@@ -69,11 +69,11 @@ namespace Utils {
         CatalogTreeCtrl* catTreeCtrl = GetAlbumPageTreeCtrl( );
         if ( catTreeCtrl )
         { 
-            wxTreeItemId catID = GetCatTreeID( );
-            if ( catID.IsOk( ) )
+            wxTreeItemId catTreeID = GetCatTreeID( );
+            if ( catTreeID.IsOk( ) )
             { 
                 CatalogTreeItemData* catData = 
-                    ( CatalogTreeItemData* )catTreeCtrl->GetItemData( catID );
+                    ( CatalogTreeItemData* )catTreeCtrl->GetItemData( catTreeID );
                 catData->SetStampLink( ( StampLink* )0 );
             }
         }
@@ -194,12 +194,12 @@ namespace Utils {
     // }
 
     
-    void StampLink::Update( wxTreeItemId catID, wxTreeItemId albumID )
+    void StampLink::Update( wxTreeItemId catTreeID, wxTreeItemId albumID )
     { 
         SetDesignTreeID( albumID );
-        SetCatTreeID( catID );
+        SetCatTreeID( catTreeID );
         // CatalogTreeCtrl* treeCtrl = GetCatalogTreeCtrl( );
-        // CatalogTreeItemData* data = ( CatalogTreeItemData* )treeCtrl->GetItemData( catID );
+        // CatalogTreeItemData* data = ( CatalogTreeItemData* )treeCtrl->GetItemData( catTreeID );
         // SetCatNode( data->GetNodeElement( ) );
     }
 }

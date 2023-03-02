@@ -323,6 +323,7 @@ namespace Catalog {
         Catalog::SortData( newRoot, root );
 
         ReplaceDocument( newDoc );
+        // Utils::XMLDump( newDoc );
 
     }
 
@@ -340,7 +341,7 @@ namespace Catalog {
             Catalog::Entry parentEntry( child );
             if ( parentEntry.GetFormat( ) == Catalog::FT_FormatStrings[ parentType ] )
             { 
-                //            std::cout << parentEntry.GetFormat( ) << " " << parentEntry.GetID( ) << "\n";
+ //   std::cout << parentEntry.GetFormat( ) << " " << parentEntry.GetID( ) << "\n";
                 parentList->push_back( child );
             }
             child = child->GetNext( );
@@ -383,7 +384,7 @@ namespace Catalog {
             wxString parentSeries = parentEntry->GetSeries( );
             wxString parentFace = parentEntry->GetFaceValue( );
             wxString id = parentEntry->GetID( );
-            //       std::cout << "Looking for children of " << id << " "<< parentIssue << "  series:"<<parentSeries<<"  face:" <<parentFace <<"\n";
+            // std::cout << "Looking for children of " << id << " "<< parentIssue << "  series:"<<parentSeries<<"  face:" <<parentFace <<"\n";
             long nbrEntrys;
             parentFace.ToLong( &nbrEntrys );
             if ( nbrEntrys <= 0 )
@@ -431,7 +432,7 @@ namespace Catalog {
                             }
                             //and add it to new place
                             parentNode->AddChild( childNode );
-                            //                        std::cout << "Adding "<< childEntry->GetID( ) << " to" << parentEntry->GetID( ) <<"\n";                       
+                        // std::cout << "Adding "<< childEntry->GetID( ) << " to" << parentEntry->GetID( ) <<"\n";                       
                         }
                     }
                 }

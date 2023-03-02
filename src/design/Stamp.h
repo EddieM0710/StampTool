@@ -75,6 +75,18 @@ namespace Design {
             SetStampWidth( width ) ;
             CalcFrame( );
         };
+        
+        Stamp(  ) : LayoutBase(  )
+        { 
+            SetNodeType( AT_Stamp );
+            SetObjectName( AlbumBaseNames[ AT_Stamp ] );
+            m_title = "New Stamp";
+            SetShowCatNbr( true );
+            SetShowTitle( true );
+            SetStampHeight( "10.0" ) ;
+            SetStampWidth( "10.0" ) ;
+            CalcFrame( );
+        };
 
         /**
          * @brief Destroy the Stamp object

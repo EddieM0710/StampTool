@@ -262,19 +262,19 @@ void StampToolPanel::OnNotebookPageChanged( wxNotebookEvent& event )
  int sel = m_notebook->GetSelection( ) ;
 
 wxWindow* page = m_notebook->GetPage( sel );
-std::cout << "sel=" << sel << " page=" << page << " m_albumNotebookPage" << m_albumNotebookPage<<"\n";
+    // std::cout << "sel=" << sel << " page=" << page << " m_albumNotebookPage" << m_albumNotebookPage<<"\n";
 
 
-std::cout << "sel=" << sel ;   
+    // std::cout << "sel=" << sel ;   
     if ( ShouldShowStates( ) )
     { 
- std::cout << "  albumTree states on \n";          
+    //std::cout << "  albumTree states on \n";          
         m_albumTreePanel->GetCatalogTree()->SetStates( true );
         m_albumTreePanel->GetCatalogTree()->LoadTree();
     }
     else
     { 
- std::cout << "  catalogTree states off \n";          
+        //std::cout << "  catalogTree states off \n";          
         m_catalogTreePanel->GetCatalogTree()->SetStates( false );
         m_catalogTreePanel->GetCatalogTree()->LoadTree();
     }

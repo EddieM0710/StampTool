@@ -351,12 +351,14 @@ int StyleNameIndex = 0;
     { 
         level += "  ";
         wxXmlNode* child = node->GetChildren( );
-
         while ( child )
         { 
+            wxXmlNodeType type = child->GetType();
             wxString nodeName = child->GetName( );
 
+//std::cout << level << "XMLDumpNode child nodeName " << nodeName << "\n";
             // dump everything except CatalogCodes
+//            if ( !nodeName.Cmp( "Entry" ) )
             if ( nodeName.Cmp( "CatalogCode" ) )
             { 
                 std::cout << level << nodeName << "  ";
@@ -364,14 +366,14 @@ int StyleNameIndex = 0;
                 std::cout << GetAttrStr( child, Catalog::DT_XMLDataNames[ Catalog::DT_ID_Nbr ] ) ;
                 std::cout << "  " << GetAttrStr( child, Catalog::DT_XMLDataNames[ Catalog::DT_Name ] ) ;
 
-                // wxXmlAttribute* attr = child->GetAttributes( );
-                // while ( attr  )
-                // { 
-                //     wxString name = attr->GetName( );
-                //     wxString val = attr->GetValue( );
-                //     std::cout << name << ":" << val << " ";
-                //     attr = attr->GetNext( );
-                // }
+                wxXmlAttribute* attr = child->GetAttributes( );
+                while ( attr  )
+                { 
+                    wxString name = attr->GetName( );
+                    wxString val = attr->GetValue( );
+                    std::cout << level << "   " << name << ":" << val << "\n";
+                    attr = attr->GetNext( );
+                }
 
                 std::cout << "\n";
                 if ( child->GetChildren( ) )
@@ -437,7 +439,7 @@ int StyleNameIndex = 0;
         wxXmlAttribute* attr = node->GetAttributes( );
         while ( attr )
         { 
-            *text << " " << attr->GetName( ) << " = \"" << attr->GetValue( ) << "\"";
+            *text << " " << attr->GetName( ) << "=\"" << attr->GetValue( ) << "\"";
             attr = attr->GetNext( );
         }
     }
@@ -448,13 +450,13 @@ int StyleNameIndex = 0;
         wxXmlNodeType type = node->GetType( );
         if ( type == wxXML_COMMENT_NODE )
         { 
-            *text << "<!-- " << node->GetName( ) << "   " << node->GetContent( ) << "-->\n";
+            *text << "<!--" << node->GetName( ) << "   " << node->GetContent( ) << "-->\n";
         }
         else
         { 
-            wxString levelStr = level + "  ";
+            wxString levelStr = level + "   ";
             wxString name = node->GetName( );
-            *text << levelStr << "<" << name << " ";
+            *text << levelStr << "<" << name << "  ";
 
             SaveAttributes( text, node, levelStr );
             wxString content = node->GetContent( );

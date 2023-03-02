@@ -99,49 +99,49 @@ void CatalogTreeCtrl::CreateStateImageList( )
     AssignStateImageList( CreateCatalogStateImageList(  ) );
 }
 
-ComparisonResultType CatalogTreeCtrl::CompareDates( wxString date1, wxString date2 )
-{ 
-    wxDateTime dt1;
-    wxDateTime dt2;
-    wxString::const_iterator end;
-    if ( !dt1.ParseFormat( date1, "%Y-%m-%d", &end ) )
-    { 
-        if ( !dt1.ParseFormat( date1, "%Y", &end ) )
-        { 
-            if ( !dt1.ParseFormat( date1, "%Y-%m", &end ) )
-            { 
-                return CompareInvalid;
-            }
-        }
-    }
-    if ( !dt2.ParseFormat( date2, "%Y-%m-%d", &end ) )
-    { 
-        if ( !dt2.ParseFormat( date2, "%Y", &end ) )
-        { 
-            if ( !dt2.ParseFormat( date2, "%Y-%m", &end ) )
-            { 
-                return CompareInvalid;
-            }
-        }
-    }
-    if ( !dt1.IsValid( ) || !dt2.IsValid( ) )
-    { 
-        return CompareInvalid;
-    }
+// ComparisonResultType CatalogTreeCtrl::CompareDates( wxString date1, wxString date2 )
+// { 
+//     wxDateTime dt1;
+//     wxDateTime dt2;
+//     wxString::const_iterator end;
+//     if ( !dt1.ParseFormat( date1, "%Y-%m-%d", &end ) )
+//     { 
+//         if ( !dt1.ParseFormat( date1, "%Y", &end ) )
+//         { 
+//             if ( !dt1.ParseFormat( date1, "%Y-%m", &end ) )
+//             { 
+//                 return CompareInvalid;
+//             }
+//         }
+//     }
+//     if ( !dt2.ParseFormat( date2, "%Y-%m-%d", &end ) )
+//     { 
+//         if ( !dt2.ParseFormat( date2, "%Y", &end ) )
+//         { 
+//             if ( !dt2.ParseFormat( date2, "%Y-%m", &end ) )
+//             { 
+//                 return CompareInvalid;
+//             }
+//         }
+//     }
+//     if ( !dt1.IsValid( ) || !dt2.IsValid( ) )
+//     { 
+//         return CompareInvalid;
+//     }
 
-    if ( dt1.IsSameDate( dt2 ) )
-    { 
-        return CompareEqual;
-    }
-    else if ( dt1.IsEarlierThan( dt2 ) )
-    { 
-        return CompareLess;
-    }
-    else
-    { 
-        return CompareGreater;
-    }
-}
+//     if ( dt1.IsSameDate( dt2 ) )
+//     { 
+//         return CompareEqual;
+//     }
+//     else if ( dt1.IsEarlierThan( dt2 ) )
+//     { 
+//         return CompareLess;
+//     }
+//     else
+//     { 
+//         return CompareGreater;
+//     }
+// }
 
 //*****
 
@@ -151,105 +151,13 @@ int CatalogTreeCtrl::OnCompareItems( const wxTreeItemId& item1,
     if ( item1.IsOk( ) && item2.IsOk( ) )
     { 
         CatalogTreeItemData* itemData1 = ( CatalogTreeItemData* )GetItemData( item1 );
-        Catalog::CatalogBaseType type1 = itemData1->GetType( );
+        //Catalog::CatalogBaseType type1 = itemData1->GetType( );
 
         CatalogTreeItemData* itemData2 = ( CatalogTreeItemData* )GetItemData( item2 );
-        Catalog::CatalogBaseType type2 = itemData2->GetType( );
-
-        if ( type1 != type2 )
-        { 
-            return ( int )type1 - ( int )type2;
-        }
-        else
-        { 
-            // they are the same type
-            if ( type1 == Catalog::NT_Entry )
-            { 
-                // they are both entries
-
-                wxXmlNode* node1 = itemData1->GetNodeElement( );
-                Catalog::Entry entry1( node1 );
-                wxString date1 = entry1.GetIssuedDate( );
-                wxString id1 = itemData1->GetDesc( );
-                wxString series1 = entry1.GetSeries( );
-                wxXmlNode* node2 = itemData2->GetNodeElement( );
-                Catalog::Entry entry2( node2 );
-                wxString date2 = entry2.GetIssuedDate( );
-                wxString id2 = itemData2->GetDesc( );
-                wxString series2 = entry2.GetSeries( );
-
-                ComparisonResultType result = CompareDates( date1, date2 );
-                if ( ( result == CompareInvalid ) || ( result == CompareEqual ) )
-                { 
-                    int val = series1.Cmp( series2 );
-                    // if ( !val )
-                    // { 
-                    //     int val = id1.Cmp( id2 );
-                    //     if ( !val )
-                    //     { 
-                    //         std::cout << "( " << id1 << " " << date1 << " ) = ( " << id2 << " " << date2 << " )\n";
-                    //     | 
-                    //     else if ( val < 0 )
-                    //     { 
-                    //         std::cout << "( " << id1 << " " << date1 << " ) < ( " << id2 << " " << date2 << " )\n";
-                    //     }
-                    //     else 
-                    //     { 
-                    //         std::cout << "( " << id1 << " " << date1 << " ) > ( " << id2 << " " << date2 << " )\n";
-                    //     }
-                    // }
-                    // else if ( val < 0 )
-                    // { 
-                    //     std::cout << "( " << id1 << " " << date1 << " ) < ( " << id2 << " " << date2 << " )\n";
-                    // }
-                    // else 
-                    // { 
-                    //     std::cout << "( " << id1 << " " << date1 << " ) > ( " << id2 << " " << date2 << " )\n";
-                    // }
-
-                //    if ( m_reverseSort )
-                //    { 
-                    return val;
-                    //    }
-                    //    else
-                    //    { 
-                    //        return val * -1;
-                    //    }
-
-                }
-                else if ( result == CompareLess )
-                { 
-                    //   std::cout << "( " << id1 << " " << date1 << " ) < ( " << id2 << " " << date2 << " )\n";
-                   //    if ( m_reverseSort )
-                   //    { 
-                    return -1;
-                    // }
-                    // else
-                    // { 
-                    //     return 1;
-                    // }
-                }
-                // else if ( result == CompareEqual )
-                // { 
-                //     std::cout << "( " << id1 << " " << date1 << " ) = ( " << id2 << " " << date2 << " )\n";
-                //     return 0;
-                // }
-                else
-                { 
-                    //    std::cout << "( " << id1 << " " << date1 << " ) > ( " << id2 << " " << date2 << " )\n";
-                    //    if ( m_reverseSort )
-                    //    { 
-                    //        return -1;
-                    //    }
-                     //   else
-                    //    { 
-                    return 1;
-                    //    }
-                }
-            }
-        }
+        //Catalog::CatalogBaseType type2 = itemData2->GetType( );
+        return itemData1->Cmp( itemData2 );
     }
-    return 0;
+    return -1;
 }
 
 
@@ -260,59 +168,40 @@ Utils::StampLink* CatalogTreeCtrl::AppendAlbumStamp( wxTreeItemId itemId )
     Utils::StampLink* link = GetDesignTreeCtrl( )->AppendStamp( itemId );
     if ( link )
     { 
-        CatalogTreeItemData* data = ( CatalogTreeItemData* )GetItemData( itemId );
-        data->SetStampLink( link );
+        SetItemStampLink( itemId, link );
         link->SetCatTreeID( itemId );
     }
     return link;
 }
 
-//*****
 
-wxXmlNode* CatalogTreeCtrl::GetEntryNode( wxTreeItemId itemId )
-{ 
-    wxXmlNode* node = 0;
-    if ( itemId.IsOk( ) )
-    { 
-        CatalogTreeItemData* data = ( CatalogTreeItemData* )GetItemData( itemId );
-        node = data->GetNodeElement( );
-    }
-    return node;
-}
 
-void CatalogTreeCtrl::SetCatalogLink( wxTreeItemId catID, Utils::StampLink* link, wxString IDNbr )
+void CatalogTreeCtrl::SetCatalogLink( wxTreeItemId catTreeID, Utils::StampLink* link, wxString IDNbr )
 {
-    // find the catdata for this link
-    CatalogTreeItemData* catData = ( CatalogTreeItemData* )GetItemData( catID );
-    if ( catData )
+ 
+    //Get the catalog stamp id
+    wxXmlNode* ele = GetItemNode(catTreeID);
+    if ( ele )
     {
-        //Get the catalog stamp id
-        wxXmlNode* ele = catData->GetNodeElement();
-        if ( ele )
+        wxString catIDNbr = ele->GetAttribute( Catalog::DT_XMLDataNames[ Catalog::DT_ID_Nbr ] );
+        if ( !catIDNbr.Cmp( IDNbr ) )
         {
-            wxString catIDNbr = ele->GetAttribute( Catalog::DT_XMLDataNames[ Catalog::DT_ID_Nbr ] );
-            if ( !catIDNbr.Cmp( IDNbr ) )
-            {
-                link->SetCatTreeID( catID ); 
-                catData->SetStampLink( link );
-                catData->SetChecked();
-            }
-            else
-            {
-                link->SetCatTreeID( 0 ); 
-                catData->SetStampLink( 0 );
-            }
+            link->SetCatTreeID( catTreeID ); 
+            SetItemStampLink( catTreeID, link );
+            SetItemChecked( catTreeID );
         }
         else
         {
             link->SetCatTreeID( 0 ); 
-            catData->SetStampLink( 0 );
+            SetItemStampLink( catTreeID, 0 );
         }
     }
     else
     {
         link->SetCatTreeID( 0 ); 
+        SetItemStampLink( catTreeID, 0 );
     }
+ 
 
 }
 
@@ -330,8 +219,7 @@ Utils::StampLink* CatalogTreeCtrl::FindStampLink( wxTreeItemId itemId )
 
 void CatalogTreeCtrl::DeleteAlbumStamp( wxTreeItemId itemId )
 { 
-    CatalogTreeItemData* data = ( CatalogTreeItemData* )GetItemData( itemId );
-    Utils::StampLink* stampLink = data->GetStampLink( );
+    Utils::StampLink* stampLink = GetItemStampLink( itemId );
     if ( stampLink )
     { 
         wxTreeItemId itemID = stampLink->GetDesignTreeID( );
@@ -343,11 +231,7 @@ void CatalogTreeCtrl::DeleteAlbumStamp( wxTreeItemId itemId )
 
 void CatalogTreeCtrl::RemoveStampLink( wxTreeItemId itemId )
 { 
-    if ( itemId.IsOk( ) )
-    { 
-        CatalogTreeItemData* data = ( CatalogTreeItemData* )GetItemData( itemId );
-        data->SetStampLink( 0 );
-    }
+    SetItemStampLink( itemId, 0 );
 }
 
 
@@ -355,14 +239,13 @@ void CatalogTreeCtrl::RemoveStampLink( wxTreeItemId itemId )
 
 void CatalogTreeCtrl::SetNextState( const wxTreeItemId& itemId )
 { 
-    wxXmlNode* element = GetEntryNode( itemId );
+    wxXmlNode* element = GetItemNode( itemId );
     Catalog::Entry* entry = new Catalog::Entry( element );
     if ( entry->IsOK( ) )
     { 
         SetItemState( itemId, wxTREE_ITEMSTATE_NEXT );
         int state = GetItemState( itemId );
-        CatalogTreeItemData* data = (CatalogTreeItemData*)GetItemData( itemId );
-        data->SetChecked( state );
+        SetItemChecked( itemId, state );
         wxGetApp( ).GetFrame( )->UpdateStatus( );
         if ( state )
         { 
@@ -390,9 +273,7 @@ Catalog::IconID CatalogTreeCtrl::GetInventoryIconId( Catalog::Entry* entry )
 
 Catalog::Entry* CatalogTreeCtrl::GetNewEntry( wxTreeItemId itemId )
 { 
-    CatalogTreeItemData* item = ( CatalogTreeItemData* )GetItemData( itemId );
-    wxXmlNode* element = item->GetNodeElement( );
-    return new Catalog::Entry( element );
+    return new Catalog::Entry( GetItemNode( itemId ) );
 }
 //*****
 
@@ -487,8 +368,8 @@ void CatalogTreeCtrl::ShowDropMenu( wxTreeItemId itemSrc, wxTreeItemId itemDst )
     case CatalogDataTree_Before:
     { 
 
-        wxXmlNode* srcElement = GetEntryNode( itemSrc );
-        wxXmlNode* dstElement = GetEntryNode( itemDst );
+        wxXmlNode* srcElement = GetItemNode( itemSrc );
+        wxXmlNode* dstElement = GetItemNode( itemDst );
 
         // move the element
         // this means making a copy and deleting the old one so old pointers are
@@ -506,8 +387,8 @@ void CatalogTreeCtrl::ShowDropMenu( wxTreeItemId itemSrc, wxTreeItemId itemDst )
     case CatalogDataTree_After:
     { 
 
-        wxXmlNode* srcElement = GetEntryNode( itemSrc );
-        wxXmlNode* dstElement = GetEntryNode( itemDst );
+        wxXmlNode* srcElement = GetItemNode( itemSrc );
+        wxXmlNode* dstElement = GetItemNode( itemDst );
 
         // move the element
         // this means making a copy and deleting the old one so old pointers are
@@ -525,8 +406,8 @@ void CatalogTreeCtrl::ShowDropMenu( wxTreeItemId itemSrc, wxTreeItemId itemDst )
     case CatalogDataTree_AsChild:
     { 
 
-        wxXmlNode* srcElement = GetEntryNode( itemSrc );
-        wxXmlNode* dstElement = GetEntryNode( itemDst );
+        wxXmlNode* srcElement = GetItemNode( itemSrc );
+        wxXmlNode* dstElement = GetItemNode( itemDst );
 
         // move the element
         // this means making a copy and deleting the old one so old pointers are
@@ -561,8 +442,7 @@ void CatalogTreeCtrl::OnItemStateClick( wxTreeEvent& event )
 void CatalogTreeCtrl::OnSelChanged( wxTreeEvent& event )
 { 
     wxTreeItemId itemId = event.GetItem( );
-    wxXmlNode* entry = GetEntryNode( itemId );
-    //    wxGetApp( ).GetFrame( )->SetEntry( entry );
+    wxXmlNode* entry = GetItemNode( itemId );
     GetToolData( )->GetDescriptionPanel( )->SetStamp( entry );
     event.Skip( );
 }
@@ -574,7 +454,6 @@ void CatalogTreeCtrl::OnItemMenu( wxTreeEvent& event )
     wxTreeItemId itemId = event.GetItem( );
     wxCHECK_RET( itemId.IsOk( ), "should have a valid item" );
 
-    CatalogTreeItemData* item = ( CatalogTreeItemData* )GetItemData( itemId );
     wxPoint clientpt = event.GetPoint( );
     wxPoint screenpt = ClientToScreen( clientpt );
 
@@ -598,9 +477,8 @@ void CatalogTreeCtrl::ShowMenu( wxTreeItemId id, const wxPoint& pt )
     else
     { 
         //title = "Menu for no particular item";
-        CatalogTreeItemData* data = ( CatalogTreeItemData* )GetItemData( id );
-        wxXmlNode* node = data->GetNodeElement( );
-        if ( data && data->GetType( ) == Catalog::NT_Entry )
+        wxXmlNode* node = GetItemNode( id );
+        if ( GetItemType( id ) == Catalog::NT_Entry )
         { 
             wxMenu* inventoryMenu = new wxMenu( );
 
@@ -634,7 +512,7 @@ void CatalogTreeCtrl::ShowMenu( wxTreeItemId id, const wxPoint& pt )
     case CatalogDataTree_InventoryStatusNone:
     { 
         Catalog::InventoryStatusType newType = Catalog::ST_None;
-        Catalog::Entry* entry = new Catalog::Entry( GetEntryNode( id ) );
+        Catalog::Entry* entry = new Catalog::Entry( GetItemNode( id ) );
         Catalog::InventoryStatusType type = entry->GetInventoryStatusType( );
         if ( type != newType )
         { 
@@ -647,7 +525,7 @@ void CatalogTreeCtrl::ShowMenu( wxTreeItemId id, const wxPoint& pt )
     case CatalogDataTree_InventoryStatusMissing:
     { 
         Catalog::InventoryStatusType newType = Catalog::ST_Missing;
-        Catalog::Entry* entry = new Catalog::Entry( GetEntryNode( id ) );
+        Catalog::Entry* entry = new Catalog::Entry( GetItemNode( id ) );
         Catalog::InventoryStatusType type = entry->GetInventoryStatusType( );
         if ( type != newType )
         { 
@@ -662,7 +540,7 @@ void CatalogTreeCtrl::ShowMenu( wxTreeItemId id, const wxPoint& pt )
     case CatalogDataTree_InventoryStatusOrdered:
     { 
         Catalog::InventoryStatusType newType = Catalog::ST_Ordered;
-        Catalog::Entry* entry = new Catalog::Entry( GetEntryNode( id ) );
+        Catalog::Entry* entry = new Catalog::Entry( GetItemNode( id ) );
         Catalog::InventoryStatusType type = entry->GetInventoryStatusType( );
         if ( type != newType )
         { 
@@ -677,7 +555,7 @@ void CatalogTreeCtrl::ShowMenu( wxTreeItemId id, const wxPoint& pt )
     case CatalogDataTree_InventoryStatusOwn:
     { 
         Catalog::InventoryStatusType newType = Catalog::ST_Own;
-        Catalog::Entry* entry = new Catalog::Entry( GetEntryNode( id ) );
+        Catalog::Entry* entry = new Catalog::Entry( GetItemNode( id ) );
         Catalog::InventoryStatusType type = entry->GetInventoryStatusType( );
         if ( type != newType )
         { 
@@ -692,7 +570,7 @@ void CatalogTreeCtrl::ShowMenu( wxTreeItemId id, const wxPoint& pt )
     case CatalogDataTree_InventoryStatusOwnVariant:
     { 
         Catalog::InventoryStatusType newType = Catalog::ST_OwnVariant;
-        Catalog::Entry* entry = new Catalog::Entry( GetEntryNode( id ) );
+        Catalog::Entry* entry = new Catalog::Entry( GetItemNode( id ) );
         Catalog::InventoryStatusType type = entry->GetInventoryStatusType( );
         if ( type != newType )
         { 
@@ -707,7 +585,7 @@ void CatalogTreeCtrl::ShowMenu( wxTreeItemId id, const wxPoint& pt )
     case CatalogDataTree_InventoryStatusExclude:
     { 
         Catalog::InventoryStatusType newType = Catalog::ST_Exclude;
-        Catalog::Entry* entry = new Catalog::Entry( GetEntryNode( id ) );
+        Catalog::Entry* entry = new Catalog::Entry( GetItemNode( id ) );
         Catalog::InventoryStatusType type = entry->GetInventoryStatusType( );
         if ( type != newType )
         { 
@@ -727,7 +605,7 @@ void CatalogTreeCtrl::ShowMenu( wxTreeItemId id, const wxPoint& pt )
 
     case CatalogDataTree_StructureStamps:
     { 
-        wxXmlNode* entry = GetEntryNode( id );
+        wxXmlNode* entry = GetItemNode( id );
 
         GetCatalogSectionData( )->ReGroupMultiples( );
         ReSortTree( );
@@ -804,9 +682,8 @@ void CatalogTreeCtrl::AddEntry( wxTreeItemId id )
 
 void CatalogTreeCtrl::DeleteEntry( wxTreeItemId id )
 { 
-    CatalogTreeItemData* data = ( CatalogTreeItemData* )GetItemData( id );
-    wxXmlNode* node = data->GetNodeElement( );
-    if ( data && data->GetType( ) == Catalog::NT_Entry )
+    wxXmlNode* node = GetItemNode( id );
+    if ( GetItemType( id ) == Catalog::NT_Entry )
     { 
         wxString txt = wxString::Format( "Delete Entry %s?\n\n", GetItemText( id ) );
         wxMessageDialog* dlg = new wxMessageDialog( 
@@ -832,8 +709,7 @@ void CatalogTreeCtrl::DeleteEntry( wxTreeItemId id )
 
 void CatalogTreeCtrl::GoToColnect( wxTreeItemId id )
 { 
-    CatalogTreeItemData* data = ( CatalogTreeItemData* )GetItemData( id );
-    wxXmlNode* node = data->GetNodeElement( );
+    wxXmlNode* node = GetItemNode( id );
     if ( node )
     { 
         wxString nodeName = node->GetName( );
@@ -961,18 +837,17 @@ wxTreeItemId CatalogTreeCtrl::InsertChild( wxTreeItemId sibling, wxXmlNode* chil
         // if there is a stamplink then set the stamplink data and the item state as checked
 
         Utils::StampLink* stampLink = FindStampLink( childID );
-        CatalogTreeItemData* data = (CatalogTreeItemData*)GetItemData( childID );
         if ( stampLink )
         { 
             itemData->SetStampLink( stampLink );
             stampLink->SetCatTreeID( childID );
             SetItemState( childID, Catalog::ST_Checked );
             // and the entry as checked
-            data->SetChecked( true );
+            itemData->SetChecked( true );
         }
         else
         { 
-            data->SetChecked( false );
+            itemData->SetChecked( false );
             itemData->SetStampLink( 0 );
             SetItemState( childID, Catalog::ST_Unchecked );
         }
@@ -1028,7 +903,6 @@ wxTreeItemId CatalogTreeCtrl::AddChild( wxTreeItemId parent, wxXmlNode* child )
 
         // if there is a stamplink then set the stamplink data and the item state as checked
         Utils::StampLink* stampLink = FindStampLink( childID );
-        CatalogTreeItemData* data = (CatalogTreeItemData*)GetItemData( childID );
         if ( stampLink )
         { 
             itemData->SetStampLink( stampLink );
@@ -1037,11 +911,11 @@ wxTreeItemId CatalogTreeCtrl::AddChild( wxTreeItemId parent, wxXmlNode* child )
 
             // and the entry as checked
 
-            data->SetChecked( true );
+            itemData->SetChecked( true );
         }
         else
         { 
-            data->SetChecked( false );
+            itemData->SetChecked( false );
             itemData->SetStampLink( 0 );
             SetItemState( childID, Catalog::ST_Unchecked );
         }
@@ -1082,10 +956,7 @@ void CatalogTreeCtrl::SortTree( wxTreeItemId parent )
     wxTreeItemIdValue cookie;
     wxTreeItemId childItem = GetFirstChild( parent, cookie );
     while ( childItem.IsOk( ) )
-    { 
-        //        CatalogTreeItemData* data = ( CatalogTreeItemData* )GetItemData( childItem );
-        //        wxString str = data->GetDesc( );
-        //        std::cout << str << "\n";
+    {  
 
         if ( GetChildrenCount( childItem, false ) >= 1 )
         { 
@@ -1096,9 +967,6 @@ void CatalogTreeCtrl::SortTree( wxTreeItemId parent )
     }
     if ( this->HasChildren( parent ) )
     { 
-        CatalogTreeItemData* data = ( CatalogTreeItemData* )GetItemData( parent );
-        wxString str = data->GetDesc( );
-        //               std::cout << " SortChildren for "<<str << "\n";
         SortChildren( parent );
     }
 }
@@ -1166,27 +1034,23 @@ void CatalogTreeCtrl::XMLDumpNode( wxTreeItemId item, wxString str )
     { 
         return;
     }
-    CatalogTreeItemData* data = ( CatalogTreeItemData* )GetItemData( item );
-    wxXmlNode* ele = data->GetNodeElement( );
+    wxXmlNode* ele = GetItemNode( item );
     Utils::XMLDumpNode( ele, str );
 }
 //*****
 
 
 bool CatalogTreeCtrl::IsElement( wxTreeItemId item, wxXmlNode* ele )
-{ 
-    if ( !item.IsOk( ) )
-    { 
-        return false;
+{
+    if ( item.IsOk( ) )
+    {
+        wxXmlNode* dataEle = GetItemNode( item );
+        if ( dataEle == ele )
+        {
+            return true;
+        }
     }
-
-    CatalogTreeItemData* data = ( CatalogTreeItemData* )GetItemData( item );
-    wxXmlNode* dataEle = data->GetNodeElement( );
-    if ( dataEle != ele )
-    { 
-        return false;
-    }
-    return true;
+    return false;
 }
 
 //*****
@@ -1196,12 +1060,12 @@ bool CatalogTreeCtrl::IsElement( wxTreeItemId item, wxString entryID )
     if ( item.IsOk( ) )
     { 
         wxString id = GetAttribute( item, Catalog::DT_XMLDataNames[ Catalog::DT_ID_Nbr ] );
-        if ( entryID.Cmp( id ) )
+        if ( !entryID.Cmp( id ) )
         { 
-            return false;
+            return true;
         }
     }
-    return true;
+    return false;
 }
 
 //*****
@@ -1237,6 +1101,7 @@ wxTreeItemId CatalogTreeCtrl::FindTreeItemID( wxXmlNode* ele, wxTreeItemId id )
 
 wxTreeItemId CatalogTreeCtrl::FindTreeItemID( wxString entryID, wxTreeItemId id )
 { 
+    // std::cout << "FindTreeItemID entryID " << entryID << "\n";
     if ( id.IsOk( ) )
     { 
         wxTreeItemIdValue cookie;
@@ -1247,7 +1112,7 @@ wxTreeItemId CatalogTreeCtrl::FindTreeItemID( wxString entryID, wxTreeItemId id 
             { 
                 return child;
             }
-            if ( this->HasChildren( child ) )
+            if ( HasChildren( child ) )
             { 
                 wxTreeItemId idFound = FindTreeItemID( entryID, child );
                 if ( idFound )
@@ -1255,7 +1120,7 @@ wxTreeItemId CatalogTreeCtrl::FindTreeItemID( wxString entryID, wxTreeItemId id 
                     return idFound;
                 }
             }
-            child = this->GetNextChild( id, cookie );
+            child = GetNextChild( id, cookie );
         }
     }
     return 0;
@@ -1274,7 +1139,13 @@ wxTreeItemId CatalogTreeCtrl::FindTreeItemID( wxXmlNode* ele )
 wxTreeItemId CatalogTreeCtrl::FindTreeItemID( wxString entryID )
 { 
     wxTreeItemId root = GetRootItem( );
-    return FindTreeItemID( entryID, root );
+    if ( root.IsOk( ) )
+    {
+        // wxString title = GetItemText( root );
+        // std::cout << "FindTreeItemID root title" << title <<"\n";
+        return FindTreeItemID( entryID, root );
+    }
+    return ( wxTreeItemId)0;
 }
 
 //*****
@@ -1287,8 +1158,7 @@ wxTreeItemId CatalogTreeCtrl::FindFirstEntryChild( wxTreeItemId id )
         wxTreeItemId child = GetFirstChild( id, cookie );
         while ( child )
         { 
-            CatalogTreeItemData* data = ( CatalogTreeItemData* )GetItemData( child );
-            if ( data->GetType( ) == Catalog::NT_Entry )
+            if ( GetItemType( child ) == Catalog::NT_Entry )
             { 
                 return child;
             }
@@ -1327,11 +1197,9 @@ void CatalogTreeCtrl::EnableState( wxTreeItemId id )
 { 
     if ( id.IsOk( ) )
     { 
-        CatalogTreeItemData* data = ( CatalogTreeItemData* )GetItemData( id );
-        if ( data->GetType( ) == Catalog::NT_Entry )
+        if ( GetItemType( id ) == Catalog::NT_Entry )
         { 
-            wxXmlNode* node = data->GetNodeElement( );
-            if ( data->IsChecked() )
+            if ( IsItemChecked( id ) )
             { 
                 SetItemState( id, Catalog::ST_Checked );
             }
@@ -1367,9 +1235,11 @@ void CatalogTreeCtrl::DisableState( wxTreeItemId id )
         }
     }
 }
-wxString CatalogTreeCtrl::GetIdText( wxTreeItemId catID )
+
+
+wxString CatalogTreeCtrl::GetIdText( wxTreeItemId catTreeID )
 { 
-    wxXmlNode* catNode = GetEntryNode( catID );
+    wxXmlNode* catNode = GetItemNode( catTreeID );
     wxString idText = "";
     if ( catNode )
     { 
@@ -1378,23 +1248,31 @@ wxString CatalogTreeCtrl::GetIdText( wxTreeItemId catID )
     return idText;
 }
 
-wxString CatalogTreeCtrl::GetAttribute( wxTreeItemId catID, wxString name )
+wxString CatalogTreeCtrl::GetAttribute( wxTreeItemId catTreeID, wxString name )
 { 
-    return GetEntryNode( catID )->GetAttribute( name );
+    // std::cout << "CatalogTreeCtrl::GetAttribute  catTreeID=" << catTreeID << "  name=" << name << "\n";
+    if ( !catTreeID.IsOk() ) return "";
+    wxXmlNode* node = GetItemNode( catTreeID );
+    if ( node )
+    {
+        wxString val = node->GetAttribute( name );
+        return val;
+    }
+    return "";
 }
-wxString CatalogTreeCtrl::GetImageFullName( wxTreeItemId catID )
+
+wxString CatalogTreeCtrl::GetImageFullName( wxTreeItemId catTreeID )
 { 
-    if ( catID.IsOk( ) )
+    if ( catTreeID.IsOk( ) )
     { 
-        CatalogTreeItemData* itemData = ( CatalogTreeItemData* )this->GetItemData( catID );
-        wxString* imageFullName = itemData->GetImageFullName( );
+        wxString* imageFullName = GetItemImageFullName( catTreeID );
         if ( !imageFullName )
         { 
             Catalog::CatalogSectionData* sectData = GetToolData( )->GetCatalogSectionData( );
             wxString catFilename = sectData->GetSectionFilename( );
             wxString imageFile = sectData->GetCatalogSectionImagePath( );;
 
-            wxString id = GetAttribute( catID, Catalog::DT_XMLDataNames[ Catalog::DT_ID_Nbr ] );
+            wxString id = GetAttribute( catTreeID, Catalog::DT_XMLDataNames[ Catalog::DT_ID_Nbr ] );
 
             id = id.Trim( true );
             id = id.Trim( false );
@@ -1403,10 +1281,49 @@ wxString CatalogTreeCtrl::GetImageFullName( wxTreeItemId catID )
             id.Append( ".jpg" );
 
             imageFullName = new wxString( wxFileName( catFilename ).GetFullPath( ) + "/" + imageFile + "/" + id );
-            itemData->SetImageFullName( imageFullName );
+            SetItemImageFullName( catTreeID, imageFullName );
         }
         return *imageFullName;
     }
     return "";
 }
 
+void CatalogTreeCtrl::DumpTree( )
+{
+wxTreeItemId id = this->GetRootItem();
+DumpTree( id );
+}
+void CatalogTreeCtrl::PrintTreeNodeData( wxTreeItemId id )
+{
+    if ( id.IsOk( ) )
+    {
+        wxString title = GetItemText( id );
+        std::cout << "title"<< title << " : ";
+
+        wxXmlNode* node = GetItemNode( id );
+        if ( node )
+        {
+            wxString nodeName = node->GetName();
+            std::cout << "nodeName"<< nodeName << "\n";
+        }
+        else 
+        {
+            std::cout << " No wxXmlNode\n";
+            
+        }
+    }
+}
+void CatalogTreeCtrl::DumpTree( wxTreeItemId id )
+{
+    if ( id.IsOk( ) )
+    {    
+        PrintTreeNodeData( id );
+        wxTreeItemIdValue cookie;
+        wxTreeItemId child = GetFirstChild( id, cookie );
+        while ( child.IsOk( ) )
+        { 
+            DumpTree( child );
+            child = GetNextChild( id, cookie );
+        }
+    }
+}

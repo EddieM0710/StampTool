@@ -263,10 +263,10 @@ void RowDetailsDialog::SetDesignTreeID( wxTreeItemId id )
         if ( !errors->IsEmpty() )
         {
             m_statusList->InsertItems( *errors, 0 );
-for ( int i = 0 ; i < errors->Count(); i++)
-{
-    std::cout << errors->Item(i) << "\n";
-}
+            // for ( int i = 0 ; i < errors->Count(); i++)
+            // {
+            //     std::cout << errors->Item(i) << "\n";
+            // }
 
         }
     }

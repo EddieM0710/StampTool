@@ -187,9 +187,8 @@ namespace Utils {
         wxString name = projectRoot->GetName( );
         if ( name.Cmp( "Project" ) )
         { 
-            std::cout << "Initial node must be <Project>"
-                << "\n";
-            std::cout << "Found \"" << name << "\" instead.\n";
+            // std::cout << "Initial node must be <Project>" << "\n";
+            // std::cout << "Found \"" << name << "\" instead.\n";
             return false;
         }
         LoadAttributes( projectRoot );

@@ -438,7 +438,7 @@ Settings* NewSettingsInstance( )
         if ( !ok )
         { 
             SetDirty( );
-            std::cout << fullPath << " Load Failed.\n";
+            std::cout << fullPath << " Settings::Load Failed.\n";
             // Loading the ettings.xml file failed
             // add defaults here and return
             SetLoadLastFileAtStartUp( true );
@@ -458,12 +458,12 @@ Settings* NewSettingsInstance( )
         }
         wxString name = doc.GetRoot( )->GetName( );
 
-////        std::cout << name << "\n";
+        // std::cout << name << "\n";
         wxXmlNode* root = doc.GetRoot( );
         // start processing the XML file
         name = root->GetName( );
 
-//        std::cout << name << "\n";
+        // std::cout << name << "\n";
 
         wxXmlNode* child;
 

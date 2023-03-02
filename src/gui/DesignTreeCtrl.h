@@ -115,7 +115,7 @@ public:
      *
      * @return { wxString| :
      **************************************************/
-    wxString const& GetDesc( ) const { return m_desc; };
+    wxString GetDesc( ) const { return m_desc; };
 
     /**
      *
@@ -126,6 +126,7 @@ public:
 
     bool IsOk( )
     { 
+        this->m_ok;
         if ( m_ok == 0x12345 )return true;
         return false;
     }
@@ -305,11 +306,12 @@ public:
 
 
     void AddPageTreeItem( wxTreeItemId node  );
-    Design::Stamp* AddStampTreeItem( wxTreeItemId node  );
+    Design::Stamp* CreateNewStamp( wxTreeItemId catTreeID );
+    Design::Stamp* AddStampTreeItem( wxTreeItemId node, Design::Stamp* stamp  );
     void AddRowTreeItem( wxTreeItemId node  );
     void AddColTreeItem( wxTreeItemId node  );
     Utils::StampLink* AppendStamp( wxTreeItemId id );
-    wxString GetImageFullPath( wxTreeItemId catID );
+    wxString GetImageFullPath( wxTreeItemId catTreeID );
     void UpdateItemPageLayout( wxTreeItemId id )  ; 
 
     wxTreeItemId GetPage( wxTreeItemId id );
@@ -413,6 +415,7 @@ public:
     Design::AlbumBase* GetItemNode( wxTreeItemId albumID ) ;
     wxString GetItemDesc( wxTreeItemId albumID ) ;
     Utils::StampLink* GetItemStampLink( wxTreeItemId albumID ) ;
+    void SetItemStampLink( wxTreeItemId albumID, Utils::StampLink* link );
     Design::AlbumBaseType GetItemType( wxTreeItemId albumID ) ; 
     wxString MakeItemLabel ( wxTreeItemId id );
     void CopyItem( wxTreeItemId dstID, wxTreeItemId srcID );

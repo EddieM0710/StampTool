@@ -469,7 +469,7 @@ namespace Catalog {
                 return;
             }
 
-            wxStringTokenizer tokenizer( catCodes, ", " );
+            wxStringTokenizer tokenizer( catCodes, "," );
 
             wxString valStr;
             wxString rest;

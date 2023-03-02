@@ -5,7 +5,12 @@ find_package( wxWidgets COMPONENTS core base xml pdfdoc REQUIRED )
 set( CMAKE_RUNTIME_OUTPUT_DIRECTORY ${build_Directory} )
 
 include( "${wxWidgets_USE_FILE}" )
+message ( "-------${wxWidgets_INCLUDE_DIRS}")
+message("-----CMAKE_RUNTIME_OUTPUT_DIRECTORY ${build_Directory}")
 
+message( "${wxWidgets_LIBRARIES} ")
+message ( "-------wxWidgets_LIBRARIES ${wxWidgets_LIBRARIES}")
+message ( "-------WXPDFDOC  ${WXPDFDOC}" )
 include_directories(  ${StampTool_Source_Directory} 
 ${StampTool_GuiFiles_Source_Directory}
 ${StampTool_UtilsFiles_Source_Directory}
@@ -26,7 +31,8 @@ target_link_libraries (StampTool LINK_PUBLIC
      GuiFiles  
     DesignFiles
     CatalogFiles  
-   
     Utils
     ${wxWidgets_LIBRARIES}
     )
+
+    

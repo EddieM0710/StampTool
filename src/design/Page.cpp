@@ -295,6 +295,7 @@ namespace Design {
     { 
 
         wxString borderName = GetBorderFileName( );
+
         double xPos = GetLeftMargin( );
         double yPos = GetTopMargin( );
 

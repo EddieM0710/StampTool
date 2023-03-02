@@ -334,7 +334,7 @@ void StampToolFrame::DoCSVImport( )
     wxFileDialog openFileDialog( 
         this, _( "Open Colnect CSV file" ), 
         "", "", 
-        "CSV files ( *.csv ) | *.csv", wxFD_OPEN | wxFD_FILE_MUST_EXIST );
+        "CSV files (*.csv)|*.csv", wxFD_OPEN | wxFD_FILE_MUST_EXIST );
     if ( openFileDialog.ShowModal( ) == wxID_CANCEL )
     { 
         return; // the user changed idea...

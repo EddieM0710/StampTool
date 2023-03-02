@@ -106,11 +106,11 @@ class Settings;
             wxString str = "";
             if ( !m_countryID.IsEmpty( ) && !m_catalogID.IsEmpty( ) )
             { 
-                str = m_catalogID + ":" + m_countryID;
+                str = m_countryID + ":" + m_catalogID;
             }
             else
             { 
-                str = m_defaultCatalogID + ":" + m_defaultCountryID;
+                str = m_defaultCountryID + ":" + m_defaultCatalogID;
             }
             return str;
         };

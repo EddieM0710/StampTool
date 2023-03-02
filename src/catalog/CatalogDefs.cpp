@@ -330,9 +330,9 @@ namespace Catalog {
         wxString childName = child->GetName( );
         wxString parentName = parent->GetName( );
         CatalogBaseType parentType = FindCatalogBaseType( parentName );
-           std::cout << "AddEntry  ParentName:" << parentName
-               << "  ParentType:" << CatalogBaseNames[ parentType ]
-               << "  ChildName:" << childName << "  level" << level << "\n";
+        //    std::cout << "AddEntry  ParentName:" << parentName
+        //        << "  ParentType:" << CatalogBaseNames[ parentType ]
+        //        << "  ChildName:" << childName << "  level" << level << "\n";
         if ( level > 6 )
         { 
              std::cout << "Infinite loop\n";
@@ -460,13 +460,13 @@ namespace Catalog {
     void SortData( wxXmlNode* destNode, wxXmlNode* parent )
     { 
          wxString name = parent->GetAttribute( DT_XMLDataNames[ DT_Name ] );
-         std::cout << "SortData   Parent Name:" << name << "\n";
+//         std::cout << "SortData   Parent Name:" << name << "\n";
 
         wxXmlNode* child = parent->GetChildren( );
         while ( child )
         { 
              wxString name = child->GetAttribute( DT_XMLDataNames[ DT_Name ] );
-             std::cout << "SortData   child Name:" << name << "\n";
+//             std::cout << "SortData   child Name:" << name << "\n";
 
             if ( !CatalogBaseNames[ NT_Entry ].Cmp( child->GetName( ) ) )
             { 

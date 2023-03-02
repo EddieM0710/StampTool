@@ -33,6 +33,13 @@
 #include "Defs.h"
 #include "gui/GuiDefs.h"
 
+typedef enum {
+    CompareInvalid,
+    CompareEqual,
+    CompareLess,
+    CompareGreater
+}ComparisonResultType;
+
 void drawBorder( wxDC& dc,
     double x, double y,
     double width, double height );
@@ -82,5 +89,7 @@ void DrawImage( wxDC& dc, wxString fileName,
     double w, double h );
 
 wxImage* GetImageFromFilename( wxString filename );
+
+ComparisonResultType CompareDates( wxString date1, wxString date2 );
 
 #endif

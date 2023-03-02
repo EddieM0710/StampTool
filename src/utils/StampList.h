@@ -62,6 +62,7 @@ namespace Utils {
          * 
          * @param id 
          */
+
         inline void SetDesignTreeID( wxTreeItemId id ) { m_designTreeID = id; };
 
 //        inline Design::Stamp* GetAlbumStamp( ) { return m_albumStamp; };
@@ -87,10 +88,10 @@ namespace Utils {
   /* 
    * @brief set cat and album tre ids
    * 
-   * @param catID 
+   * @param catTreeID 
    * @param albumID 
    */
-        void Update( wxTreeItemId catID, wxTreeItemId albumID );
+        void Update( wxTreeItemId catTreeID, wxTreeItemId albumID );
 
         /* 
          * @brief sets the pointers to the link held by the cat tree and the Album tree to 0.
@@ -188,6 +189,20 @@ namespace Utils {
          * 
          */
         void ClearCatalogLinks( );
+
+        void DeleteLink( StampLink* link )
+        {
+             // Erase all even numbers
+            for (std::vector<StampLink*>::iterator it = m_list.begin( ); it != m_list.end( ); )
+            {
+                if (*it  == link )
+                {
+                    m_list.erase( it );
+                    return;
+                }
+                it++;
+            }
+        };
 
     private:
         StampLinkList m_list;

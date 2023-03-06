@@ -466,24 +466,7 @@ src/gui/CMakeFiles/GuiFiles.dir/CatalogPanel.cpp.o: \
  /sandbox/Development/AlbumGenerator/src/art/folder.xpm \
  /sandbox/Development/AlbumGenerator/src/art/unchecked.xpm \
  /sandbox/Development/AlbumGenerator/src/art/checked.xpm \
- /sandbox/Development/AlbumGenerator/src/catalog/Entry.h \
- /sandbox/Development/AlbumGenerator/src/catalog/CatalogBase.h \
- /sandbox/Development/AlbumGenerator/src/design/AlbumBase.h \
- /sandbox/Development/AlbumGenerator/src/design/XMLBase.h \
- /sandbox/Development/AlbumGenerator/src/Defs.h \
- /sandbox/Development/AlbumGenerator/src/design/Attribute.h \
- /usr/include/c++/11/cstring \
- /sandbox/Development/AlbumGenerator/src/utils/XMLUtilities.h \
- /sandbox/Development/AlbumGenerator/src/gui/CatalogPanel.h \
- /usr/local/include/wx-3.2/wx/tglbtn.h \
- /usr/local/include/wx-3.2/wx/gtk/tglbtn.h \
- /sandbox/Development/AlbumGenerator/src/gui/GuiDefs.h \
- /sandbox/Development/AlbumGenerator/src/utils/Project.h \
- /sandbox/Development/AlbumGenerator/src/gui/ToolData.h \
- /sandbox/Development/AlbumGenerator/src/utils/StampList.h \
- /sandbox/Development/AlbumGenerator/src/design/LayoutBase.h \
- /sandbox/Development/AlbumGenerator/src/design/Frame.h \
- /usr/local/include/wx-3.2/wx/graphics.h \
+ /sandbox/Development/AlbumGenerator/src/gui/GuiUtils.h \
  /usr/local/include/wx/pdfdocument.h \
  /usr/local/include/wx-3.2/wx/mstream.h /usr/local/include/wx/pdfdocdef.h \
  /usr/local/include/wx/pdfarraytypes.h \
@@ -493,7 +476,29 @@ src/gui/CMakeFiles/GuiFiles.dir/CatalogPanel.cpp.o: \
  /usr/local/include/wx-3.2/wx/filename.h \
  /usr/local/include/wx-3.2/wx/file.h /usr/local/include/wx/pdflinestyle.h \
  /usr/local/include/wx/pdflinks.h /usr/local/include/wx/pdfproperties.h \
- /usr/local/include/wx/pdfdoc_version.h \
+ /usr/local/include/wx/pdfdoc_version.h /usr/local/include/wx/pdffont.h \
+ /usr/local/include/wx/pdffontdescription.h \
+ /sandbox/Development/AlbumGenerator/src/Defs.h \
+ /sandbox/Development/AlbumGenerator/src/gui/GuiDefs.h \
+ /sandbox/Development/AlbumGenerator/src/catalog/Entry.h \
+ /sandbox/Development/AlbumGenerator/src/catalog/CatalogBase.h \
+ /sandbox/Development/AlbumGenerator/src/design/AlbumBase.h \
+ /sandbox/Development/AlbumGenerator/src/design/XMLBase.h \
+ /sandbox/Development/AlbumGenerator/src/design/Attribute.h \
+ /usr/include/c++/11/cstring \
+ /sandbox/Development/AlbumGenerator/src/utils/XMLUtilities.h \
+ /sandbox/Development/AlbumGenerator/src/design/FontInfo.h \
+ /sandbox/Development/AlbumGenerator/src/design/Font.h \
+ /sandbox/Development/AlbumGenerator/src/design/DesignData.h \
+ /sandbox/Development/AlbumGenerator/src/gui/CatalogPanel.h \
+ /usr/local/include/wx-3.2/wx/tglbtn.h \
+ /usr/local/include/wx-3.2/wx/gtk/tglbtn.h \
+ /sandbox/Development/AlbumGenerator/src/utils/Project.h \
+ /sandbox/Development/AlbumGenerator/src/gui/ToolData.h \
+ /sandbox/Development/AlbumGenerator/src/utils/StampList.h \
+ /sandbox/Development/AlbumGenerator/src/design/LayoutBase.h \
+ /sandbox/Development/AlbumGenerator/src/design/Frame.h \
+ /usr/local/include/wx-3.2/wx/graphics.h \
  /sandbox/Development/AlbumGenerator/src/design/Stamp.h \
  /sandbox/Development/AlbumGenerator/src/utils/DebugString.h \
  /sandbox/Development/AlbumGenerator/src/catalog/CatalogData.h \

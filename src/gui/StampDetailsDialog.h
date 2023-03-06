@@ -32,6 +32,7 @@
 
 #include "gui/DesignTreeCtrl.h"
 #include "gui/GuiDefs.h"
+#include <wx/fontpicker.h>
 
   /*!
    * Forward declarations

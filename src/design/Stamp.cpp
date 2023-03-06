@@ -64,7 +64,17 @@ namespace Design {
         m_stampImageFrame.SetWidth( m_stampFrame.GetWidth( ) * ImagePercentOfActual );
         m_stampImageFrame.SetHeight( m_stampFrame.GetHeight( ) * ImagePercentOfActual );
         m_stampImageFrame.SetXPos( ( m_stampFrame.GetWidth( ) - m_stampImageFrame.GetWidth( ) ) / 2 );
-        m_stampImageFrame.SetYPos( ( m_stampFrame.GetHeight( ) - m_stampImageFrame.GetHeight( ) ) / 2 );
+        if( GetShowCatNbr( ) )
+        {
+            wxFont *font = GetCatNbrFont();
+            double textHeight = font->GetPointSize() * .26;
+            double yOffset = ( m_stampFrame.GetHeight( ) - m_stampImageFrame.GetHeight( ) - textHeight ) / 2 ;
+            m_stampImageFrame.SetYPos( yOffset );
+        }
+        else 
+        {
+            m_stampImageFrame.SetYPos( ( m_stampFrame.GetHeight( ) - m_stampImageFrame.GetHeight( ) ) / 2 );
+        }
 //        m_frame.WriteLayout( "Stamp::CalcFrame >" );
     }
 
@@ -389,10 +399,11 @@ namespace Design {
 
     void Stamp::DrawID( wxDC& dc, double x, double y )
     { 
+
         wxFont currFont = dc.GetFont( );
-        wxFont* font = new wxFont( *wxNORMAL_FONT );
-        font->SetPointSize( 8 );
-        dc.SetFont( *font );
+        wxFont* catFont = GetCatNbrFont();
+        wxFont font( *catFont );
+        dc.SetFont( font );
         wxString id = GetAttrStr( AT_CatNbr );
         id.Trim( );
         id.Trim( false );
@@ -406,7 +417,7 @@ namespace Design {
         dc.DrawText( id, x*ScaleFactor.x, y*ScaleFactor.y );
         dc.SetFont( currFont );
 
-        delete font;
+        //delete font;
     }
 
 
@@ -414,29 +425,10 @@ namespace Design {
     void Stamp::DrawIDPDF( wxPdfDocument* doc, double x, double y )
     { 
 
-        Design::Album* album = GetAlbum( );
-        wxFont *font;
-        if ( album )
-        {
-            wxFont *defFont = album->GetFont(  album->GetDefaultCatNbrFontNdx( ) );
-            if ( defFont )
-            {
-                font = new wxFont( *defFont );
-            }
-        }
-
-        if ( !font )
-        {
-            font = new wxFont( *wxNORMAL_FONT );
-            font->SetPointSize(8);
-            font->SetStyle(wxFONTSTYLE_NORMAL);
-        }
+        wxFont *font = GetCatNbrFont();
+        double textHeight = font->GetPointSize() * .26;
         doc->SetFont( *font );
         wxPdfFont pdfFont = doc->GetCurrentFont();
- 
-
-        wxPdfFontDescription desc = pdfFont.GetDescription();
-        double textHeight = font->GetPointSize() * .26;
 
         wxString id = GetAttrStr( AT_CatNbr );
         id.Trim( );
@@ -448,7 +440,7 @@ namespace Design {
         RealPoint pos( x + idXmargin, y ) ;
         RealSize size( doc->GetStringWidth( id ), textHeight ); 
         DrawLabelPDF( doc, id, pos, size );
-        delete font;
+//        delete font;
     }
 
     void Stamp::Save( wxXmlNode* xmlNode )

@@ -36,8 +36,10 @@ namespace Design {
     class LayoutBase;
     class AlbumBase;
     class Album;
+    class FontList;
     
     Album* GetAlbum( void );
+    FontList* GetFontList( void );
 
     DesignData* GetDesignData( void );
 

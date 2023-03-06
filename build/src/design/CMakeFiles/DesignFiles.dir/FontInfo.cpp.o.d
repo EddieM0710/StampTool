@@ -255,6 +255,7 @@ src/design/CMakeFiles/DesignFiles.dir/FontInfo.cpp.o: \
  /sandbox/Development/AlbumGenerator/src/utils/XMLUtilities.h \
  /sandbox/Development/AlbumGenerator/src/catalog/CatalogDefs.h \
  /sandbox/Development/AlbumGenerator/src/design/Font.h \
+ /sandbox/Development/AlbumGenerator/src/utils/Settings.h \
  /sandbox/Development/AlbumGenerator/src/gui/GuiUtils.h \
  /usr/local/include/wx/pdfdocument.h \
  /usr/local/include/wx-3.2/wx/mstream.h /usr/local/include/wx/pdfdocdef.h \

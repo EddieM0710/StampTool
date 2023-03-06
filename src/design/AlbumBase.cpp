@@ -31,6 +31,7 @@
 #include "wx/wx.h"
 #endif
 
+#include "design/DesignDefs.h"
 #include "design/AlbumBase.h"
 
 #include "design/TitlePage.h"
@@ -39,14 +40,11 @@
 #include "design/Row.h"
 #include "design/Column.h"
 #include "design/Stamp.h"
+#include "design/FontInfo.h"
 #include "gui/DesignTreeCtrl.h"
 #include "utils/Settings.h"
 
 namespace Design { 
-
-    AlbumBase::AlbumBase( wxXmlNode* ele ) : XMLBase( ele )
-    { 
-    }
 
     AlbumBase::~AlbumBase( )
     { 
@@ -114,4 +112,85 @@ namespace Design {
         }
         return false;
     };
+
+        wxFont* AlbumBase::GetTitleFont()
+        {
+            if ( Design::GetFontList()->IsValidFontNdx( m_titleFont ) )
+            {
+                return Design::GetFontList()->GetFont( m_titleFont ); 
+            }
+            return Design::GetFontList()->GetFont( GetAlbum()->GetDefaultTitleFontNdx( ) );
+        }
+
+        wxFont* AlbumBase::GetTextFont()
+        {
+            if ( Design::GetFontList()->IsValidFontNdx( m_textFont  ) )
+            {
+                return Design::GetFontList()->GetFont( m_textFont ); 
+            }
+            return Design::GetFontList()->GetFont( GetAlbum()->GetDefaultTextFontNdx());
+        }
+
+        wxFont* AlbumBase::GetCatNbrFont()
+        {
+            if ( Design::GetFontList()->IsValidFontNdx( m_catNbrFont ) )
+            {
+                return Design::GetFontList()->GetFont( m_catNbrFont ); 
+            }
+            return Design::GetFontList()->GetFont( GetAlbum()->GetDefaultCatNbrFontNdx( ) );
+        }
+
+    void AlbumBase::LoadFonts( wxXmlNode* node )
+    { 
+        wxXmlNode* fonts = Utils::FirstChildElement( node, "Fonts" );
+        if ( fonts )
+        { 
+            wxXmlNode* child = Utils::FirstChildElement( fonts, Design::AlbumBaseNames[ Design::AT_Font ] );
+            while ( child )
+            { 
+                wxString nativeFontString;
+                wxString color;
+                Design::AT_FontUsageType type = GetFontList()->Load( child, nativeFontString, color );
+                if ( type == Design::AT_CatNbrFontType )
+                { 
+                    if ( nativeFontString.IsEmpty( ) )
+                    {
+                        nativeFontString = GetSettings( )->GetCatNbrFontString( );
+                    }
+                    if ( color.IsEmpty( ) )
+                    {
+                        color = GetSettings( )->GetCatNbrColorString( );
+                    }
+                    m_catNbrFont = GetFontList()->AddNewFont( nativeFontString, color );
+                }
+                else if ( type == Design::AT_TitleFontType )
+                { 
+                    if ( nativeFontString.IsEmpty( ) )
+                    {
+                        nativeFontString = GetSettings( )->GetTitleFontString( );
+                    }
+                    if ( color.IsEmpty( ) )
+                    {
+                        color = GetSettings( )->GetTitleColorString( );
+                    }
+                    m_titleFont = GetFontList()->AddNewFont( nativeFontString, color );
+                }
+                else if ( type == Design::AT_TextFontType )
+                { 
+                    if ( nativeFontString.IsEmpty( ) )
+                    {
+                        nativeFontString = GetSettings( )->GetTextFontString( );
+                    }
+                    if ( color.IsEmpty( ) )
+                    {
+                        color = GetSettings( )->GetTextColorString( );
+                    }
+                    m_textFont = GetFontList()->AddNewFont( nativeFontString, color );
+
+                }
+                child = Utils::GetNext( child, Design::AlbumBaseNames[ Design::AT_Font ] );
+            }
+        }
+    }
+
 }

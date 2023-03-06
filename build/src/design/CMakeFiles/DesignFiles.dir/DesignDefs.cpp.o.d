@@ -427,6 +427,13 @@ src/design/CMakeFiles/DesignFiles.dir/DesignDefs.cpp.o: \
  /sandbox/Development/AlbumGenerator/src/design/DesignData.h \
  /sandbox/Development/AlbumGenerator/src/Defs.h \
  /sandbox/Development/AlbumGenerator/src/design/DesignDefs.h \
+ /sandbox/Development/AlbumGenerator/src/design/FontInfo.h \
+ /sandbox/Development/AlbumGenerator/src/design/XMLBase.h \
+ /sandbox/Development/AlbumGenerator/src/design/Attribute.h \
+ /usr/include/c++/11/cstring \
+ /sandbox/Development/AlbumGenerator/src/utils/XMLUtilities.h \
+ /sandbox/Development/AlbumGenerator/src/catalog/CatalogDefs.h \
+ /sandbox/Development/AlbumGenerator/src/design/Font.h \
  /usr/local/include/wx-3.2/wx/treebase.h \
  /usr/local/include/wx-3.2/wx/itemid.h \
  /sandbox/Development/AlbumGenerator/src/utils/Project.h \
@@ -440,11 +447,7 @@ src/design/CMakeFiles/DesignFiles.dir/DesignDefs.cpp.o: \
  /usr/local/include/wx-3.2/wx/generic/treectlg.h \
  /sandbox/Development/AlbumGenerator/src/design/LayoutBase.h \
  /sandbox/Development/AlbumGenerator/src/design/AlbumBase.h \
- /sandbox/Development/AlbumGenerator/src/design/XMLBase.h \
- /sandbox/Development/AlbumGenerator/src/design/Attribute.h \
- /usr/include/c++/11/cstring \
- /sandbox/Development/AlbumGenerator/src/utils/XMLUtilities.h \
- /sandbox/Development/AlbumGenerator/src/catalog/CatalogDefs.h \
+ /sandbox/Development/AlbumGenerator/src/design/DesignData.h \
  /sandbox/Development/AlbumGenerator/src/design/Frame.h \
  /usr/local/include/wx-3.2/wx/graphics.h \
  /usr/local/include/wx/pdfdocument.h \
@@ -464,8 +467,6 @@ src/design/CMakeFiles/DesignFiles.dir/DesignDefs.cpp.o: \
  /sandbox/Development/AlbumGenerator/src/catalog/CatalogDefs.h \
  /sandbox/Development/AlbumGenerator/src/design/Album.h \
  /sandbox/Development/AlbumGenerator/src/utils/Settings.h \
- /sandbox/Development/AlbumGenerator/src/design/FontInfo.h \
- /sandbox/Development/AlbumGenerator/src/design/Font.h \
  /sandbox/Development/AlbumGenerator/src/design/TitlePage.h \
  /sandbox/Development/AlbumGenerator/src/design/Title.h \
  /sandbox/Development/AlbumGenerator/src/gui/AlbumImagePanel.h \

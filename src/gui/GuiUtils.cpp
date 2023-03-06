@@ -37,7 +37,7 @@
 #include "design/DesignDefs.h"
 #include "gui/AlbumImagePanel.h"
 #include "art/NotFound.xpm"
-#include "art/fleur_di_lis.xpm"
+#include "art/fleur_di_lis3.xpm"
 
 
 void DrawLabelPDF( wxPdfDocument* doc, const wxString& text,

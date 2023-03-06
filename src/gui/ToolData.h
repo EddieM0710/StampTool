@@ -54,7 +54,10 @@ public:
  * 
  * @return Utils::StampList* 
  **************************************************/
-    inline Utils::StampList* GetStampAlbumCatalogLink( ) { return &m_StampAlbumCatalogLink; };
+    inline Utils::StampList* GetStampAlbumCatalogLink( ) 
+    { 
+        return &m_StampAlbumCatalogLink; 
+        };
 
 /** **************************************************
  * @brief 
@@ -151,7 +154,7 @@ public:
     void FileSaveCatalog( );
 
     // Load last Project file at startup if enabled
-    void InitLoad( );
+    //void InitLoad( );
 
     // Creates a new CatalogSectionData. Deletes current one to prevent memory leaks.
     Catalog::CatalogSectionData* NewCatalogSectionData( );

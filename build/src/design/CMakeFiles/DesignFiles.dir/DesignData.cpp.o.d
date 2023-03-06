@@ -438,12 +438,15 @@ src/design/CMakeFiles/DesignFiles.dir/DesignData.cpp.o: \
  /sandbox/Development/AlbumGenerator/src/Defs.h \
  /sandbox/Development/AlbumGenerator/src/design/DesignData.h \
  /sandbox/Development/AlbumGenerator/src/design/DesignDefs.h \
+ /sandbox/Development/AlbumGenerator/src/design/FontInfo.h \
+ /sandbox/Development/AlbumGenerator/src/design/XMLBase.h \
+ /sandbox/Development/AlbumGenerator/src/design/Attribute.h \
+ /usr/include/c++/11/cstring \
+ /sandbox/Development/AlbumGenerator/src/design/Font.h \
  /usr/local/include/wx-3.2/wx/treebase.h \
  /usr/local/include/wx-3.2/wx/itemid.h \
  /sandbox/Development/AlbumGenerator/src/design/AlbumBase.h \
- /sandbox/Development/AlbumGenerator/src/design/XMLBase.h \
- /sandbox/Development/AlbumGenerator/src/design/Attribute.h \
- /usr/include/c++/11/cstring /usr/local/include/wx-3.2/wx/treectrl.h \
+ /usr/local/include/wx-3.2/wx/treectrl.h \
  /usr/local/include/wx-3.2/wx/systhemectrl.h \
  /usr/local/include/wx-3.2/wx/withimages.h \
  /usr/local/include/wx-3.2/wx/imaglist.h \
@@ -469,8 +472,6 @@ src/design/CMakeFiles/DesignFiles.dir/DesignData.cpp.o: \
  /sandbox/Development/AlbumGenerator/src/utils/DebugString.h \
  /sandbox/Development/AlbumGenerator/src/catalog/CatalogData.h \
  /sandbox/Development/AlbumGenerator/src/catalog/CatalogSectionData.h \
- /sandbox/Development/AlbumGenerator/src/design/FontInfo.h \
- /sandbox/Development/AlbumGenerator/src/design/Font.h \
  /sandbox/Development/AlbumGenerator/src/design/Page.h \
  /sandbox/Development/AlbumGenerator/src/design/Title.h \
  /sandbox/Development/AlbumGenerator/src/gui/AlbumImagePanel.h \

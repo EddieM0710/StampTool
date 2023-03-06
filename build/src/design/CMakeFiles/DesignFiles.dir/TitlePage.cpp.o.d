@@ -221,8 +221,17 @@ src/design/CMakeFiles/DesignFiles.dir/TitlePage.cpp.o: \
  /usr/include/c++/11/cstring \
  /sandbox/Development/AlbumGenerator/src/utils/XMLUtilities.h \
  /sandbox/Development/AlbumGenerator/src/catalog/CatalogDefs.h \
- /usr/local/include/wx-3.2/wx/treectrl.h \
- /usr/local/include/wx-3.2/wx/control.h \
+ /sandbox/Development/AlbumGenerator/src/design/FontInfo.h \
+ /sandbox/Development/AlbumGenerator/src/design/Font.h \
+ /usr/local/include/wx-3.2/wx/colour.h \
+ /usr/local/include/wx-3.2/wx/variant.h \
+ /usr/local/include/wx-3.2/wx/longlong.h /usr/include/c++/11/limits \
+ /usr/local/include/wx-3.2/wx/datetime.h \
+ /usr/local/include/wx-3.2/wx/anystr.h /usr/local/include/wx-3.2/wx/any.h \
+ /usr/local/include/wx-3.2/wx/typeinfo.h \
+ /usr/local/include/wx-3.2/wx/gtk/colour.h \
+ /sandbox/Development/AlbumGenerator/src/design/DesignData.h \
+ /usr/local/include/wx-3.2/wx/treebase.h \
  /usr/local/include/wx-3.2/wx/window.h \
  /usr/local/include/wx-3.2/wx/event.h \
  /usr/local/include/wx-3.2/wx/clntdata.h \
@@ -245,19 +254,11 @@ src/design/CMakeFiles/DesignFiles.dir/TitlePage.cpp.o: \
  /usr/local/include/wx-3.2/wx/meta/implicitconversion.h \
  /usr/local/include/wx-3.2/wx/mousestate.h \
  /usr/local/include/wx-3.2/wx/kbdstate.h \
- /usr/local/include/wx-3.2/wx/longlong.h /usr/include/c++/11/limits \
  /usr/local/include/wx-3.2/wx/platinfo.h \
  /usr/local/include/wx-3.2/wx/thread.h \
  /usr/local/include/wx-3.2/wx/tracker.h \
- /usr/local/include/wx-3.2/wx/typeinfo.h \
- /usr/local/include/wx-3.2/wx/any.h \
- /usr/local/include/wx-3.2/wx/datetime.h \
- /usr/local/include/wx-3.2/wx/anystr.h \
- /usr/local/include/wx-3.2/wx/variant.h \
  /usr/local/include/wx-3.2/wx/meta/convertible.h \
  /usr/local/include/wx-3.2/wx/meta/removeref.h \
- /usr/local/include/wx-3.2/wx/colour.h \
- /usr/local/include/wx-3.2/wx/gtk/colour.h \
  /usr/local/include/wx-3.2/wx/region.h \
  /usr/local/include/wx-3.2/wx/gtk/region.h \
  /usr/local/include/wx-3.2/wx/intl.h \
@@ -274,9 +275,10 @@ src/design/CMakeFiles/DesignFiles.dir/TitlePage.cpp.o: \
  /usr/local/include/wx-3.2/wx/gtk/accel.h \
  /usr/local/include/wx-3.2/wx/generic/accel.h \
  /usr/local/include/wx-3.2/wx/gtk/window.h \
- /usr/local/include/wx-3.2/wx/gtk/control.h \
- /usr/local/include/wx-3.2/wx/treebase.h \
  /usr/local/include/wx-3.2/wx/itemid.h \
+ /usr/local/include/wx-3.2/wx/treectrl.h \
+ /usr/local/include/wx-3.2/wx/control.h \
+ /usr/local/include/wx-3.2/wx/gtk/control.h \
  /usr/local/include/wx-3.2/wx/textctrl.h \
  /usr/local/include/wx-3.2/wx/textentry.h \
  /usr/local/include/wx-3.2/wx/gtk/textentry.h \

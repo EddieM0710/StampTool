@@ -29,6 +29,7 @@
 
 #include "Defs.h"
 #include "design/AlbumBase.h"
+#include "design/DesignData.h"
 #include "design/Frame.h"
 #include "utils/XMLUtilities.h"
 
@@ -58,7 +59,6 @@ namespace Design {
             SetBottomContentPadding( 0 );
             SetLeftContentPadding( 0 );
             SetRightContentPadding( 0 );
-
         };
 
         /**
@@ -242,12 +242,12 @@ namespace Design {
         //void WriteFrame( wxString loc, wxString name, wxString id, Frame* frame );
         void DumpLayout( double x, double y );
 
-        wxXmlNode* GetTitleFont( wxXmlNode* node, wxString name )
-        { 
-            wxTreeItemId ctrlID = GetTreeItemId( );
-            //    GetDesignTreeCtrl( )->GetItemData( ctrlID );
-            return (wxXmlNode*)0; 
-        }
+        // wxXmlNode* GetTitleFont( wxXmlNode* node, wxString name )
+        // { 
+        //     wxTreeItemId ctrlID = GetTreeItemId( );
+        //     //    GetDesignTreeCtrl( )->GetItemData( ctrlID );
+        //     return (wxXmlNode*)0; 
+        // }
 
         void ReportLayoutFrame( wxString indent = "" );
 
@@ -265,12 +265,13 @@ namespace Design {
         {
             return m_frame.LayoutString( );
         };
+
     protected:
         Frame m_frame;
         Frame m_clientDimensions;
         wxString m_title;
         RealSize m_titleSize;
-
+ 
     };
 }
 #endif

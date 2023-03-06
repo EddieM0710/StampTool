@@ -23,6 +23,7 @@
  **************************************************/
 #include <wx/gdicmn.h>
 
+#include "design/DesignData.h"
 #include "design/Album.h"
 #include "design/FontInfo.h"
 #include "design/TitlePage.h"
@@ -33,110 +34,6 @@
 namespace Design { 
 
 
-    void Album::InitFonts( wxXmlNode* node )
-    { 
-        wxString defaultCatNbrFont = GetSettings( )->GetCatNbrFontString( );
-        wxString defaultCatNbrColor = GetSettings( )->GetCatNbrColorString( );
-
-        wxString defaultTextFont = GetSettings( )->GetTextFontString( );
-        wxString defaultTextColor = GetSettings( )->GetTextColorString( );
-
-        wxString defaultTitleFont = GetSettings( )->GetTitleFontString( );
-        wxString defaultTitleColor = GetSettings( )->GetTitleColorString( );
-
-        wxXmlNode* fonts = Utils::FirstChildElement( node, "Fonts" );
-        if ( fonts )
-        { 
-            wxXmlNode* child = Utils::FirstChildElement( fonts, Design::AlbumBaseNames[ Design::AT_Font ] );
-            while ( child )
-            { 
-                wxString name = child->GetAttribute( Design::AttrNameStrings[ Design::AT_FontType ] );
-                Design::AT_FontUsageType type = Design::FindFontUsageType( name );
-                if ( type == Design::AT_CatNbrFontType )
-                { 
-                    name = child->GetAttribute( Design::AttrNameStrings[ Design::AT_NativeFontString ] );
-                    if( !name.IsEmpty( ) )
-                    { 
-                        defaultCatNbrFont = name ;
-                    }
-                    name = child->GetAttribute( Design::AttrNameStrings[ Design::AT_FontColor ] );
-                    if( !name.IsEmpty( ) )
-                    { 
-                        defaultCatNbrColor = name ;
-                    }
-                    m_defaultCatNbrFont = AddNewFont( defaultCatNbrFont, defaultCatNbrColor );
-                }
-                else if ( type == Design::AT_TitleFontType )
-                { 
-                    name = child->GetAttribute( Design::AttrNameStrings[ Design::AT_NativeFontString ] );
-                    if( !name.IsEmpty( ) )
-                    { 
-                        defaultTitleFont = name ;
-                    }
-                    name = child->GetAttribute( Design::AttrNameStrings[ Design::AT_FontColor ] );
-                    if( !name.IsEmpty( ) )
-                    { 
-                        defaultTitleColor = name ;
-                    }
-                    m_defaultTitleFont = AddNewFont( defaultTitleFont, defaultTitleColor );
-                }
-                else if ( type == Design::AT_TextFontType )
-                { 
-                    name = child->GetAttribute( Design::AttrNameStrings[ Design::AT_NativeFontString ] );
-                    if( !name.IsEmpty( ) )
-                    { 
-                        defaultTextFont = name ;
-                    }
-                    name = child->GetAttribute( Design::AttrNameStrings[ Design::AT_FontColor ] );
-                    if( !name.IsEmpty( ) )
-                    { 
-                        defaultTextColor = name ;
-                    }
-                    m_defaultTextFont = AddNewFont( defaultTextFont, defaultTextColor );
-                }
-                child = Utils::GetNext( child, Design::AlbumBaseNames[ Design::AT_Font ] );
-            }
-        }
-    }
-
-    int Album::AddNewFont(  wxString nativeDesc, wxString colorStr )
-    { 
-        wxFont* font = new wxFont( nativeDesc );
-        if ( !font->IsOk( ) )
-        { 
-            delete font;
-            font = new wxFont( *wxNORMAL_FONT );
-        }
-        FontInfo* info = new FontInfo( );
-        info->SetFont( font );
-        wxColor color = wxTheColourDatabase->Find( colorStr );
-        info->SetColor( color );
-        int ndx = FindFont( info );
-        if ( IsValidFontNdx( ndx ) )
-        { 
-            return ndx;
-        }
-        else
-        { 
-            m_fontList.push_back( info );
-            return m_fontList.size( );
-        }
-    }
-    int Album::FindFont( FontInfo* info )
-    { 
-        return FindFont( info->GetFont( ), info->GetColor( ) );
-    }
-
-    int Album::FindFont( wxFont* font, wxColor color )
-    { 
-        for ( int i = 0; i < m_fontList.size( ); i++ )
-        { 
-            if ( ( *font == *( m_fontList.at( i )->GetFont( ) ) )
-                && ( color == m_fontList.at( i )->GetColor( ) ) )
-                return i;
-        }
-        return -1;
-    }
 
     double Album::GetWidth( )
     { 
@@ -455,31 +352,4 @@ namespace Design {
     }
 
 
-    FontInfo* Album::GetFontInfo( int index )
-    { 
-        if ( index < m_fontList.size( ) )
-        { 
-            return m_fontList.at( index );
-        }
-        return ( FontInfo* )0;
-    };
-
-    wxFont* GetFont( int index )
-    { 
-        return (wxFont*)0;
-    }
-
-    FontInfo* Album::FindFontInfo( wxFont* font, wxColor color )
-    { 
-        FontInfo* fontInfo = ( FontInfo* )0;
-        for ( int i = 0; i < m_fontList.size( ); i++ )
-        { 
-            fontInfo = m_fontList.at( i );
-            if ( fontInfo->IsEqual( font, color ) )
-            { 
-                return fontInfo;
-            }
-        }
-        return fontInfo;
-    };
 }

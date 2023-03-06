@@ -76,7 +76,7 @@ namespace Design {
             CalcFrame( );
         };
         
-        Stamp(  ) : LayoutBase(  )
+        Stamp(  ) : LayoutBase( (wxXmlNode*)0 )
         { 
             SetNodeType( AT_Stamp );
             SetObjectName( AlbumBaseNames[ AT_Stamp ] );
@@ -172,7 +172,6 @@ namespace Design {
         void ReportLayout(  );
 
         void DumpStamp( wxTextCtrl* positionTextCtrl );
-
     private:
 
         /**

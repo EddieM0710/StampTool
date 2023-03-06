@@ -255,29 +255,8 @@ src/design/CMakeFiles/DesignFiles.dir/Font.cpp.o: \
  /sandbox/Development/AlbumGenerator/src/utils/XMLUtilities.h \
  /sandbox/Development/AlbumGenerator/src/catalog/CatalogDefs.h \
  /sandbox/Development/AlbumGenerator/src/design/FontInfo.h \
- /sandbox/Development/AlbumGenerator/src/gui/GuiUtils.h \
- /usr/local/include/wx/pdfdocument.h \
- /usr/local/include/wx-3.2/wx/mstream.h /usr/local/include/wx/pdfdocdef.h \
- /usr/local/include/wx/pdfarraytypes.h \
- /usr/local/include/wx/pdfarraydouble.h /usr/local/include/wx/pdfcolour.h \
- /usr/local/include/wx/pdfencrypt.h /usr/local/include/wx/pdfimage.h \
- /usr/local/include/wx-3.2/wx/filesys.h \
- /usr/local/include/wx-3.2/wx/filename.h \
- /usr/local/include/wx-3.2/wx/intl.h \
- /usr/local/include/wx-3.2/wx/localedefs.h \
- /usr/local/include/wx-3.2/wx/translation.h \
- /usr/local/include/wx-3.2/wx/language.h \
- /usr/local/include/wx-3.2/wx/scopedptr.h \
- /usr/local/include/wx-3.2/wx/checkeddelete.h \
- /usr/local/include/wx-3.2/wx/file.h /usr/local/include/wx/pdflinestyle.h \
- /usr/local/include/wx/pdflinks.h /usr/local/include/wx/pdfproperties.h \
- /usr/local/include/wx/pdfdoc_version.h /usr/local/include/wx/pdffont.h \
- /usr/local/include/wx/pdffontdescription.h \
- /sandbox/Development/AlbumGenerator/src/gui/GuiDefs.h \
- /sandbox/Development/AlbumGenerator/src/design/Album.h \
- /sandbox/Development/AlbumGenerator/src/design/AlbumBase.h \
- /usr/local/include/wx-3.2/wx/treectrl.h \
- /usr/local/include/wx-3.2/wx/control.h \
+ /sandbox/Development/AlbumGenerator/src/design/DesignData.h \
+ /usr/local/include/wx-3.2/wx/treebase.h \
  /usr/local/include/wx-3.2/wx/window.h \
  /usr/local/include/wx-3.2/wx/event.h \
  /usr/local/include/wx-3.2/wx/clntdata.h \
@@ -294,6 +273,12 @@ src/design/CMakeFiles/DesignFiles.dir/Font.cpp.o: \
  /usr/local/include/wx-3.2/wx/meta/removeref.h \
  /usr/local/include/wx-3.2/wx/region.h \
  /usr/local/include/wx-3.2/wx/gtk/region.h \
+ /usr/local/include/wx-3.2/wx/intl.h \
+ /usr/local/include/wx-3.2/wx/localedefs.h \
+ /usr/local/include/wx-3.2/wx/translation.h \
+ /usr/local/include/wx-3.2/wx/language.h \
+ /usr/local/include/wx-3.2/wx/scopedptr.h \
+ /usr/local/include/wx-3.2/wx/checkeddelete.h \
  /usr/local/include/wx-3.2/wx/validate.h \
  /usr/local/include/wx-3.2/wx/windowid.h \
  /usr/local/include/wx-3.2/wx/palette.h \
@@ -302,9 +287,25 @@ src/design/CMakeFiles/DesignFiles.dir/Font.cpp.o: \
  /usr/local/include/wx-3.2/wx/gtk/accel.h \
  /usr/local/include/wx-3.2/wx/generic/accel.h \
  /usr/local/include/wx-3.2/wx/gtk/window.h \
- /usr/local/include/wx-3.2/wx/gtk/control.h \
- /usr/local/include/wx-3.2/wx/treebase.h \
  /usr/local/include/wx-3.2/wx/itemid.h \
+ /sandbox/Development/AlbumGenerator/src/gui/GuiUtils.h \
+ /usr/local/include/wx/pdfdocument.h \
+ /usr/local/include/wx-3.2/wx/mstream.h /usr/local/include/wx/pdfdocdef.h \
+ /usr/local/include/wx/pdfarraytypes.h \
+ /usr/local/include/wx/pdfarraydouble.h /usr/local/include/wx/pdfcolour.h \
+ /usr/local/include/wx/pdfencrypt.h /usr/local/include/wx/pdfimage.h \
+ /usr/local/include/wx-3.2/wx/filesys.h \
+ /usr/local/include/wx-3.2/wx/filename.h \
+ /usr/local/include/wx-3.2/wx/file.h /usr/local/include/wx/pdflinestyle.h \
+ /usr/local/include/wx/pdflinks.h /usr/local/include/wx/pdfproperties.h \
+ /usr/local/include/wx/pdfdoc_version.h /usr/local/include/wx/pdffont.h \
+ /usr/local/include/wx/pdffontdescription.h \
+ /sandbox/Development/AlbumGenerator/src/gui/GuiDefs.h \
+ /sandbox/Development/AlbumGenerator/src/design/Album.h \
+ /sandbox/Development/AlbumGenerator/src/design/AlbumBase.h \
+ /usr/local/include/wx-3.2/wx/treectrl.h \
+ /usr/local/include/wx-3.2/wx/control.h \
+ /usr/local/include/wx-3.2/wx/gtk/control.h \
  /usr/local/include/wx-3.2/wx/textctrl.h \
  /usr/local/include/wx-3.2/wx/textentry.h \
  /usr/local/include/wx-3.2/wx/gtk/textentry.h \

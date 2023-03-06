@@ -92,7 +92,7 @@ namespace Design {
 
         void Save( wxXmlNode* xmlNode );
 
-        // returns the index into FontList
+        // returns the index into FontArray
         int GetTitleFont( )
         { 
 //            if ( getch )

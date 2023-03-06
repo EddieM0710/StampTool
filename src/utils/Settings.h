@@ -66,7 +66,9 @@ class Settings;
         wxString GetTitleColorString( ) { return m_titleColorString; };
         wxString GetTextFontString( ) { return m_textFontString; };
         wxString GetTextColorString( ) { return m_textColorString; };
-
+        int GetDefaultTitleFontNdx() { return m_defaultTitleFontNdx; };
+        int GetDefaultTextFontNdx() { return m_defaultTextFontNdx; };
+        int GetDefaultCatNbrFontNdx() { return m_defaultCatNbrFontNdx; };
         void SetConfigurationDirectory( wxString val ) { m_configurationDirectory = val.Trim( ); m_dirty = true; };
         //void SetImageDirectory( wxString val ) { m_imageDirectory = val.Trim( );m_dirty = true; };
         void SetCatalogID( wxString val ) { m_catalogID = val.Trim( );m_dirty = true; };
@@ -83,7 +85,9 @@ class Settings;
         void SetTitleColorString( wxString val ) { m_titleColorString = val.Trim( );m_dirty = true; };
         void SetTextFontString( wxString val ) { m_textFontString = val.Trim( );m_dirty = true; };
         void SetTextColorString( wxString val ) { m_textColorString = val.Trim( );m_dirty = true; };
-
+        void SetDefaultTitleFontNdx( int ndx ) { m_defaultTitleFontNdx = ndx; };
+        void SetDefaultTextFontNdx( int ndx ) { m_defaultTextFontNdx = ndx; };
+        void SetDefaultCatNbrFontNdx( int ndx ) { m_defaultCatNbrFontNdx = ndx; };
 
         int GetNextSortClassification( int current );
         void SetSettingValue( wxString& setting, wxXmlNode* parent, wxString childName, wxString defaultVal );
@@ -155,9 +159,9 @@ class Settings;
         const wxString m_defaultMiddlePeriod = "Classical";
         const wxString m_defaultUpperPeriod = "Modern";
 
-        //const wxString m_defaultTitleFont = "Serif 12";
-        //const wxString m_defaultTextFont = "Serif 10";
-        //const wxString m_defaultCatNbrFont = "Serif 8";
+        int m_defaultTitleFontNdx;
+        int m_defaultTextFontNdx;
+        int m_defaultCatNbrFontNdx;
         const wxString m_defaultFontColor = "BLACK";
 
         //const wxArrayString m_defaultrecentFiles;

@@ -272,8 +272,10 @@ src/design/CMakeFiles/DesignFiles.dir/Row.cpp.o: \
  /usr/include/c++/11/cstring \
  /sandbox/Development/AlbumGenerator/src/utils/XMLUtilities.h \
  /sandbox/Development/AlbumGenerator/src/catalog/CatalogDefs.h \
- /usr/local/include/wx-3.2/wx/treectrl.h \
- /usr/local/include/wx-3.2/wx/control.h \
+ /sandbox/Development/AlbumGenerator/src/design/FontInfo.h \
+ /sandbox/Development/AlbumGenerator/src/design/Font.h \
+ /sandbox/Development/AlbumGenerator/src/design/DesignData.h \
+ /usr/local/include/wx-3.2/wx/treebase.h \
  /usr/local/include/wx-3.2/wx/window.h \
  /usr/local/include/wx-3.2/wx/event.h \
  /usr/local/include/wx-3.2/wx/clntdata.h \
@@ -298,9 +300,10 @@ src/design/CMakeFiles/DesignFiles.dir/Row.cpp.o: \
  /usr/local/include/wx-3.2/wx/gtk/accel.h \
  /usr/local/include/wx-3.2/wx/generic/accel.h \
  /usr/local/include/wx-3.2/wx/gtk/window.h \
- /usr/local/include/wx-3.2/wx/gtk/control.h \
- /usr/local/include/wx-3.2/wx/treebase.h \
  /usr/local/include/wx-3.2/wx/itemid.h \
+ /usr/local/include/wx-3.2/wx/treectrl.h \
+ /usr/local/include/wx-3.2/wx/control.h \
+ /usr/local/include/wx-3.2/wx/gtk/control.h \
  /usr/local/include/wx-3.2/wx/textctrl.h \
  /usr/local/include/wx-3.2/wx/textentry.h \
  /usr/local/include/wx-3.2/wx/gtk/textentry.h \

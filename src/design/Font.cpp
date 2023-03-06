@@ -24,6 +24,7 @@
 #include <wx/pen.h>
 
 #include "design/Font.h"
+#include "design/DesignData.h"
 #include "utils/XMLUtilities.h"
 #include "gui/GuiUtils.h"
 #include "design/Album.h"
@@ -116,7 +117,7 @@ namespace Design {
         //     }
         //     if ( m_fontNdx )
         //     { 
-        //         FontInfo* info = GetAlbum( )->GetFontList( ).at( m_fontNdx );
+        //         FontInfo* info = GetAlbum( )->GetFontArray( ).at( m_fontNdx );
         //         AT_FontFamilyType type = info->GetFamily( );
         //         if ( type != UnknownFontVal )
         //         { 
@@ -128,7 +129,7 @@ namespace Design {
 void Font::SetNativeFontString( wxString nativeFontString )
 { 
         wxFont* font = new wxFont( nativeFontString );
-        wxFont* currFont = GetAlbum( )->GetFont( m_fontNdx );
+        wxFont* currFont = GetDesignData( )->GetFont( m_fontNdx );
         if( nativeFontString.compare( currFont->GetNativeFontInfoDesc( ) ) )
         { 
 
@@ -139,9 +140,9 @@ void Font::SetNativeFontString( wxString nativeFontString )
 
 wxFont* Font::GetFont( )
 { 
-    if ( ( m_fontNdx >= 0 ) && ( m_fontNdx < GetAlbum( )->GetFontList( ).size( ) ) )
+    if ( ( m_fontNdx >= 0 ) && ( m_fontNdx < GetDesignData( )->GetFontArray( ).size( ) ) )
     {       
-        FontInfo* info =  GetAlbum( )->GetFontInfo( m_fontNdx );
+        FontInfo* info =  GetDesignData( )->GetFontInfo( m_fontNdx );
         if ( info )
         { 
             return info->GetFont( );
@@ -151,7 +152,7 @@ wxFont* Font::GetFont( )
 }
 wxString Font::GetNativeFontString(  )
 {    
-        FontInfo* info =  GetAlbum( )->GetFontInfo( m_fontNdx );
+        FontInfo* info =  GetDesignData( )->GetFontInfo( m_fontNdx );
         if ( info )
         { 
             wxFont* font = info->GetFont( );

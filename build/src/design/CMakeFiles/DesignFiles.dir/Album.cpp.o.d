@@ -197,30 +197,37 @@ src/design/CMakeFiles/DesignFiles.dir/Album.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h \
  /usr/include/x86_64-linux-gnu/bits/mathcalls.h \
  /usr/include/x86_64-linux-gnu/bits/iscanonical.h \
- /sandbox/Development/AlbumGenerator/src/design/Album.h \
- /sandbox/Development/AlbumGenerator/src/design/AlbumBase.h \
- /sandbox/Development/AlbumGenerator/src/design/XMLBase.h \
- /usr/include/c++/11/vector /usr/include/c++/11/bits/stl_uninitialized.h \
- /usr/include/c++/11/bits/stl_vector.h \
- /usr/include/c++/11/bits/stl_bvector.h \
- /usr/include/c++/11/bits/vector.tcc \
+ /sandbox/Development/AlbumGenerator/src/design/DesignData.h \
  /sandbox/Development/AlbumGenerator/src/Defs.h \
  /sandbox/Development/AlbumGenerator/src/design/DesignDefs.h \
  /usr/local/include/wx-3.2/wx/xml/xml.h \
  /usr/local/include/wx-3.2/wx/textbuf.h \
  /usr/local/include/wx-3.2/wx/arrstr.h \
- /usr/local/include/wx-3.2/wx/dynarray.h \
+ /usr/local/include/wx-3.2/wx/dynarray.h /usr/include/c++/11/vector \
+ /usr/include/c++/11/bits/stl_uninitialized.h \
+ /usr/include/c++/11/bits/stl_vector.h \
+ /usr/include/c++/11/bits/stl_bvector.h \
+ /usr/include/c++/11/bits/vector.tcc \
  /usr/local/include/wx-3.2/wx/convauto.h \
  /usr/local/include/wx-3.2/wx/versioninfo.h \
  /usr/local/include/wx-3.2/wx/font.h \
  /usr/local/include/wx-3.2/wx/gdiobj.h \
  /usr/local/include/wx-3.2/wx/gtk/font.h \
+ /sandbox/Development/AlbumGenerator/src/design/FontInfo.h \
+ /sandbox/Development/AlbumGenerator/src/design/XMLBase.h \
  /sandbox/Development/AlbumGenerator/src/design/Attribute.h \
  /usr/include/c++/11/cstring \
  /sandbox/Development/AlbumGenerator/src/utils/XMLUtilities.h \
  /sandbox/Development/AlbumGenerator/src/catalog/CatalogDefs.h \
- /usr/local/include/wx-3.2/wx/treectrl.h \
- /usr/local/include/wx-3.2/wx/control.h \
+ /sandbox/Development/AlbumGenerator/src/design/Font.h \
+ /usr/local/include/wx-3.2/wx/colour.h \
+ /usr/local/include/wx-3.2/wx/variant.h \
+ /usr/local/include/wx-3.2/wx/longlong.h /usr/include/c++/11/limits \
+ /usr/local/include/wx-3.2/wx/datetime.h \
+ /usr/local/include/wx-3.2/wx/anystr.h /usr/local/include/wx-3.2/wx/any.h \
+ /usr/local/include/wx-3.2/wx/typeinfo.h \
+ /usr/local/include/wx-3.2/wx/gtk/colour.h \
+ /usr/local/include/wx-3.2/wx/treebase.h \
  /usr/local/include/wx-3.2/wx/window.h \
  /usr/local/include/wx-3.2/wx/event.h \
  /usr/local/include/wx-3.2/wx/clntdata.h \
@@ -243,19 +250,11 @@ src/design/CMakeFiles/DesignFiles.dir/Album.cpp.o: \
  /usr/local/include/wx-3.2/wx/meta/implicitconversion.h \
  /usr/local/include/wx-3.2/wx/mousestate.h \
  /usr/local/include/wx-3.2/wx/kbdstate.h \
- /usr/local/include/wx-3.2/wx/longlong.h /usr/include/c++/11/limits \
  /usr/local/include/wx-3.2/wx/platinfo.h \
  /usr/local/include/wx-3.2/wx/thread.h \
  /usr/local/include/wx-3.2/wx/tracker.h \
- /usr/local/include/wx-3.2/wx/typeinfo.h \
- /usr/local/include/wx-3.2/wx/any.h \
- /usr/local/include/wx-3.2/wx/datetime.h \
- /usr/local/include/wx-3.2/wx/anystr.h \
- /usr/local/include/wx-3.2/wx/variant.h \
  /usr/local/include/wx-3.2/wx/meta/convertible.h \
  /usr/local/include/wx-3.2/wx/meta/removeref.h \
- /usr/local/include/wx-3.2/wx/colour.h \
- /usr/local/include/wx-3.2/wx/gtk/colour.h \
  /usr/local/include/wx-3.2/wx/region.h \
  /usr/local/include/wx-3.2/wx/gtk/region.h \
  /usr/local/include/wx-3.2/wx/intl.h \
@@ -272,9 +271,12 @@ src/design/CMakeFiles/DesignFiles.dir/Album.cpp.o: \
  /usr/local/include/wx-3.2/wx/gtk/accel.h \
  /usr/local/include/wx-3.2/wx/generic/accel.h \
  /usr/local/include/wx-3.2/wx/gtk/window.h \
- /usr/local/include/wx-3.2/wx/gtk/control.h \
- /usr/local/include/wx-3.2/wx/treebase.h \
  /usr/local/include/wx-3.2/wx/itemid.h \
+ /sandbox/Development/AlbumGenerator/src/design/Album.h \
+ /sandbox/Development/AlbumGenerator/src/design/AlbumBase.h \
+ /usr/local/include/wx-3.2/wx/treectrl.h \
+ /usr/local/include/wx-3.2/wx/control.h \
+ /usr/local/include/wx-3.2/wx/gtk/control.h \
  /usr/local/include/wx-3.2/wx/textctrl.h \
  /usr/local/include/wx-3.2/wx/textentry.h \
  /usr/local/include/wx-3.2/wx/gtk/textentry.h \
@@ -348,8 +350,6 @@ src/design/CMakeFiles/DesignFiles.dir/Album.cpp.o: \
  /sandbox/Development/AlbumGenerator/src/catalog/CatalogSectionData.h \
  /sandbox/Development/AlbumGenerator/src/catalog/CatalogDefs.h \
  /sandbox/Development/AlbumGenerator/src/utils/Settings.h \
- /sandbox/Development/AlbumGenerator/src/design/FontInfo.h \
- /sandbox/Development/AlbumGenerator/src/design/Font.h \
  /sandbox/Development/AlbumGenerator/src/design/TitlePage.h \
  /sandbox/Development/AlbumGenerator/src/design/Page.h \
  /sandbox/Development/AlbumGenerator/src/gui/DesignTreeCtrl.h \

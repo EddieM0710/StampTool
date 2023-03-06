@@ -449,6 +449,9 @@ src/gui/CMakeFiles/GuiFiles.dir/DesignTreeCtrl.cpp.o: \
  /usr/include/c++/11/cstring \
  /sandbox/Development/AlbumGenerator/src/utils/XMLUtilities.h \
  /sandbox/Development/AlbumGenerator/src/catalog/CatalogDefs.h \
+ /sandbox/Development/AlbumGenerator/src/design/FontInfo.h \
+ /sandbox/Development/AlbumGenerator/src/design/Font.h \
+ /sandbox/Development/AlbumGenerator/src/design/DesignData.h \
  /sandbox/Development/AlbumGenerator/src/design/Frame.h \
  /usr/local/include/wx-3.2/wx/graphics.h \
  /usr/local/include/wx/pdfdocument.h \
@@ -467,11 +470,8 @@ src/gui/CMakeFiles/GuiFiles.dir/DesignTreeCtrl.cpp.o: \
  /sandbox/Development/AlbumGenerator/src/catalog/CatalogDefs.h \
  /sandbox/Development/AlbumGenerator/src/StampToolApp.h \
  /sandbox/Development/AlbumGenerator/src/gui/StampToolFrame.h \
- /sandbox/Development/AlbumGenerator/src/design/DesignData.h \
  /sandbox/Development/AlbumGenerator/src/design/Album.h \
  /sandbox/Development/AlbumGenerator/src/utils/Settings.h \
- /sandbox/Development/AlbumGenerator/src/design/FontInfo.h \
- /sandbox/Development/AlbumGenerator/src/design/Font.h \
  /sandbox/Development/AlbumGenerator/src/design/Page.h \
  /sandbox/Development/AlbumGenerator/src/design/Row.h \
  /sandbox/Development/AlbumGenerator/src/design/Column.h \
@@ -510,6 +510,9 @@ src/gui/CMakeFiles/GuiFiles.dir/DesignTreeCtrl.cpp.o: \
  /sandbox/Development/AlbumGenerator/src/art/unchecked.xpm \
  /sandbox/Development/AlbumGenerator/src/art/checked.xpm \
  /sandbox/Development/AlbumGenerator/src/gui/CatalogTreeCtrl.h \
+ /sandbox/Development/AlbumGenerator/src/gui/GuiUtils.h \
+ /usr/local/include/wx/pdffont.h \
+ /usr/local/include/wx/pdffontdescription.h \
  /sandbox/Development/AlbumGenerator/src/catalog/Entry.h \
  /sandbox/Development/AlbumGenerator/src/catalog/CatalogBase.h \
  /sandbox/Development/AlbumGenerator/src/gui/StampDetailsDialog.h \
@@ -517,10 +520,10 @@ src/gui/CMakeFiles/GuiFiles.dir/DesignTreeCtrl.cpp.o: \
  /usr/local/include/wx-3.2/wx/listbase.h \
  /usr/local/include/wx-3.2/wx/itemattr.h \
  /usr/local/include/wx-3.2/wx/generic/listctrl.h \
- /sandbox/Development/AlbumGenerator/src/gui/AlbumDetailsDialog.h \
  /usr/local/include/wx-3.2/wx/fontpicker.h \
  /usr/local/include/wx-3.2/wx/pickerbase.h \
  /usr/local/include/wx-3.2/wx/gtk/fontpicker.h \
+ /sandbox/Development/AlbumGenerator/src/gui/AlbumDetailsDialog.h \
  /usr/local/include/wx-3.2/wx/clrpicker.h \
  /usr/local/include/wx-3.2/wx/gtk/clrpicker.h \
  /sandbox/Development/AlbumGenerator/src/gui/PageDetailsDialog.h \

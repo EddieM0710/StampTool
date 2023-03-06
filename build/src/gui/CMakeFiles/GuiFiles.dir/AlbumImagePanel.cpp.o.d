@@ -434,9 +434,12 @@ src/gui/CMakeFiles/GuiFiles.dir/AlbumImagePanel.cpp.o: \
  /usr/include/c++/11/cstring \
  /sandbox/Development/AlbumGenerator/src/utils/XMLUtilities.h \
  /sandbox/Development/AlbumGenerator/src/catalog/CatalogDefs.h \
- /usr/local/include/wx-3.2/wx/treectrl.h \
+ /sandbox/Development/AlbumGenerator/src/design/FontInfo.h \
+ /sandbox/Development/AlbumGenerator/src/design/Font.h \
+ /sandbox/Development/AlbumGenerator/src/design/DesignData.h \
  /usr/local/include/wx-3.2/wx/treebase.h \
  /usr/local/include/wx-3.2/wx/itemid.h \
+ /usr/local/include/wx-3.2/wx/treectrl.h \
  /usr/local/include/wx-3.2/wx/systhemectrl.h \
  /usr/local/include/wx-3.2/wx/withimages.h \
  /usr/local/include/wx-3.2/wx/imaglist.h \
@@ -454,7 +457,6 @@ src/gui/CMakeFiles/GuiFiles.dir/AlbumImagePanel.cpp.o: \
  /usr/local/include/wx-3.2/wx/file.h /usr/local/include/wx/pdflinestyle.h \
  /usr/local/include/wx/pdflinks.h /usr/local/include/wx/pdfproperties.h \
  /usr/local/include/wx/pdfdoc_version.h \
- /sandbox/Development/AlbumGenerator/src/design/DesignData.h \
  /sandbox/Development/AlbumGenerator/src/design/Album.h \
  /sandbox/Development/AlbumGenerator/src/utils/Project.h \
  /sandbox/Development/AlbumGenerator/src/gui/ToolData.h \
@@ -465,8 +467,6 @@ src/gui/CMakeFiles/GuiFiles.dir/AlbumImagePanel.cpp.o: \
  /sandbox/Development/AlbumGenerator/src/catalog/CatalogSectionData.h \
  /sandbox/Development/AlbumGenerator/src/catalog/CatalogDefs.h \
  /sandbox/Development/AlbumGenerator/src/utils/Settings.h \
- /sandbox/Development/AlbumGenerator/src/design/FontInfo.h \
- /sandbox/Development/AlbumGenerator/src/design/Font.h \
  /usr/local/include/wx/pdfdc.h /usr/local/include/wx-3.2/wx/cmndata.h \
  /usr/include/c++/11/stack /usr/include/c++/11/deque \
  /usr/include/c++/11/bits/stl_deque.h /usr/include/c++/11/bits/deque.tcc \

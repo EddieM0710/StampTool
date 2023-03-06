@@ -246,7 +246,7 @@ namespace Utils {
             }
         }
 
-        GetToolData( )->FileOpenDesign( m_designFilename );
+//        GetToolData( )->FileOpenDesign( m_designFilename );
         GetSettings( )->SetLastFile( m_projectFilename );
 
         SetDirty( false );

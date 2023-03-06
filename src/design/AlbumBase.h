@@ -26,6 +26,8 @@
 #define AlbumBase_h
 
 #include "design/XMLBase.h"
+#include "design/FontInfo.h"
+#include "design/DesignData.h"
 #include <wx/treectrl.h>
 
 
@@ -47,19 +49,27 @@ namespace Design {
          * @brief Unused; Construct a new Album Design Object object
          *
          **************************************************/
-        AlbumBase( )
+        AlbumBase( ) : XMLBase( (wxXmlNode*) 0 )
         { 
-
+            m_titleFont = -1;
+            m_textFont = -1;
+            m_catNbrFont = -1;
         };
-
-        ~AlbumBase( );
 
         /**
          * @brief Construct a new Album Design Object
          *
          * @param name
          **************************************************/
-        AlbumBase( wxXmlNode* ele );
+        AlbumBase( wxXmlNode* ele ) : XMLBase( ele )
+        { 
+            m_titleFont = -1;
+            m_textFont = -1;
+            m_catNbrFont = -1;
+            LoadFonts( ele );
+        }
+
+        ~AlbumBase( );
 
         int GetNbrChildren( );
 
@@ -85,12 +95,28 @@ namespace Design {
         virtual void Save( wxXmlNode* xmlNode ) = 0;
 
         wxArrayString* GetErrorArray( ){ return &m_errorArray; };
+
+        wxFont* GetTitleFont();
+
+        wxFont* GetTextFont();
+
+        wxFont* GetCatNbrFont();
+
+    void LoadFonts( wxXmlNode* node );
   
 
     private:
 
         wxTreeItemId m_treeID;
         wxArrayString m_errorArray;
+         
+        // index of title font in FontArray
+        int m_titleFont;
+        // index of text font in FontArray
+        int m_textFont;
+        // index of catalog number font in FontArray
+        int m_catNbrFont;
+
     protected:
 
     };

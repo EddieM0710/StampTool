@@ -27,6 +27,7 @@
 
 #include "Defs.h"
 #include "design/DesignDefs.h"
+#include "design/FontInfo.h"
 #include "wx/xml/xml.h"
 #include <wx/string.h>
 #include <wx/treebase.h>
@@ -86,11 +87,15 @@ namespace Design {
 
         void SaveNodeData( wxTreeItemId treeItemId );
         void UpdateAlbum( );
-
+        FontList* GetFontList(){ return &m_fontList; };
+        wxFont* GetFont( int ndx )
+        {
+            return m_fontList.GetFont( ndx );
+        };
     private:
         wxXmlDocument* m_albumDoc;
         Album* m_album;
-
+        FontList m_fontList;
         bool m_dirty;
     };
 

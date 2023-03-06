@@ -103,10 +103,10 @@ class XMLBase;
         virtual void Save( wxXmlNode* xmlNode ) = 0;
 
 
-void GetChild( )
-{ 
+// void GetChild( )
+// { 
     
-}
+// }
 
     private:
 

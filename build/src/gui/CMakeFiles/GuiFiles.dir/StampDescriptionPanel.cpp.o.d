@@ -476,8 +476,11 @@ src/gui/CMakeFiles/GuiFiles.dir/StampDescriptionPanel.cpp.o: \
  /sandbox/Development/AlbumGenerator/src/design/Attribute.h \
  /usr/include/c++/11/cstring \
  /sandbox/Development/AlbumGenerator/src/utils/XMLUtilities.h \
- /usr/local/include/wx-3.2/wx/treectrl.h \
+ /sandbox/Development/AlbumGenerator/src/design/FontInfo.h \
+ /sandbox/Development/AlbumGenerator/src/design/Font.h \
+ /sandbox/Development/AlbumGenerator/src/design/DesignData.h \
  /usr/local/include/wx-3.2/wx/treebase.h \
+ /usr/local/include/wx-3.2/wx/treectrl.h \
  /usr/local/include/wx-3.2/wx/generic/treectlg.h \
  /sandbox/Development/AlbumGenerator/src/design/Frame.h \
  /usr/local/include/wx-3.2/wx/graphics.h \

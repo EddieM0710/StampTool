@@ -444,9 +444,12 @@ src/design/CMakeFiles/DesignFiles.dir/XMLBase.cpp.o: \
  /usr/local/include/wx/pdfdoc_version.h \
  /sandbox/Development/AlbumGenerator/src/design/LayoutBase.h \
  /sandbox/Development/AlbumGenerator/src/design/AlbumBase.h \
- /usr/local/include/wx-3.2/wx/treectrl.h \
+ /sandbox/Development/AlbumGenerator/src/design/FontInfo.h \
+ /sandbox/Development/AlbumGenerator/src/design/Font.h \
+ /sandbox/Development/AlbumGenerator/src/design/DesignData.h \
  /usr/local/include/wx-3.2/wx/treebase.h \
  /usr/local/include/wx-3.2/wx/itemid.h \
+ /usr/local/include/wx-3.2/wx/treectrl.h \
  /usr/local/include/wx-3.2/wx/systhemectrl.h \
  /usr/local/include/wx-3.2/wx/withimages.h \
  /usr/local/include/wx-3.2/wx/imaglist.h \

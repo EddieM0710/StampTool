@@ -42,6 +42,7 @@
 #include "Defs.h"
 #include "utils/Project.h"
 #include "design/Album.h"
+#include "design/FontInfo.h"
 #include "design/TitlePage.h"
 #include "design/Title.h"
 #include "design/Page.h"
@@ -69,6 +70,16 @@ namespace Design {
             return designData->GetAlbum( );
         }
         return ( Album* )0;
+    }
+
+    FontList* GetFontList( void )
+    { 
+        DesignData* designData = GetDesignData( );
+        if ( designData )
+        { 
+            return designData->GetFontList( );
+        }
+        return ( FontList* )0;
     }
 
 

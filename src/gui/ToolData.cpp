@@ -271,14 +271,14 @@ void ToolData::FileSaveAsDesign( wxString filename )
     }
 
 
-void ToolData::InitLoad( )
-{ 
-    if ( GetSettings( )->GetLoadLastFileAtStartUp( ) )
-    { 
-        m_project->LoadProjectXML( );
-        LoadData( );
-    }
-}
+// void ToolData::InitLoad( )
+// { 
+//     if ( GetSettings( )->GetLoadLastFileAtStartUp( ) )
+//     { 
+//         m_project->LoadProjectXML( );
+//         LoadData( );
+//     }
+// }
 
 wxString ToolData::GetImagePath( )
 { 
@@ -314,7 +314,8 @@ wxString ToolData::GetImageFilename( wxString stampId )
         fn.SetPath( artPath );
         fn.SetName( fileName );
         fn.SetExt( "jpg" );
-        imageFile = fn.GetFullPath( );// wxString::Format( "%s/%s.jpg", dirName, fileName );
+        imageFile = fn.GetFullPath( );
+        // wxString::Format( "%s/%s.jpg", dirName, fileName );
     }  
     return imageFile;
 }

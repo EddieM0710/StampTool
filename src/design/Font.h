@@ -90,7 +90,7 @@ namespace Design {
 
 
     private:
-        // index of font in FontList
+        // index of font in FontArray
         int m_fontNdx;
         // title or CatNbr font
         // AT_FontUsageType m_type;

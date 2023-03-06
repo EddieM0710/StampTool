@@ -62,6 +62,7 @@ namespace Design {
     { 
         m_albumDoc = 0;
         m_album = 0;
+        m_fontList.InitFonts();
         return (DesignData* )0;
     }
 

@@ -420,20 +420,23 @@ src/design/CMakeFiles/DesignFiles.dir/AlbumBase.cpp.o: \
  /usr/local/include/wx-3.2/wx/filectrl.h \
  /usr/local/include/wx-3.2/wx/mdi.h \
  /usr/local/include/wx-3.2/wx/gtk/mdi.h \
- /sandbox/Development/AlbumGenerator/src/design/AlbumBase.h \
- /sandbox/Development/AlbumGenerator/src/design/XMLBase.h \
- /sandbox/Development/AlbumGenerator/src/Defs.h \
  /sandbox/Development/AlbumGenerator/src/design/DesignDefs.h \
  /usr/local/include/wx-3.2/wx/xml/xml.h \
  /usr/local/include/wx-3.2/wx/textbuf.h \
  /usr/local/include/wx-3.2/wx/convauto.h \
+ /sandbox/Development/AlbumGenerator/src/design/AlbumBase.h \
+ /sandbox/Development/AlbumGenerator/src/design/XMLBase.h \
+ /sandbox/Development/AlbumGenerator/src/Defs.h \
  /sandbox/Development/AlbumGenerator/src/design/Attribute.h \
  /usr/include/c++/11/cstring \
  /sandbox/Development/AlbumGenerator/src/utils/XMLUtilities.h \
  /sandbox/Development/AlbumGenerator/src/catalog/CatalogDefs.h \
- /usr/local/include/wx-3.2/wx/treectrl.h \
+ /sandbox/Development/AlbumGenerator/src/design/FontInfo.h \
+ /sandbox/Development/AlbumGenerator/src/design/Font.h \
+ /sandbox/Development/AlbumGenerator/src/design/DesignData.h \
  /usr/local/include/wx-3.2/wx/treebase.h \
  /usr/local/include/wx-3.2/wx/itemid.h \
+ /usr/local/include/wx-3.2/wx/treectrl.h \
  /usr/local/include/wx-3.2/wx/systhemectrl.h \
  /usr/local/include/wx-3.2/wx/withimages.h \
  /usr/local/include/wx-3.2/wx/imaglist.h \
@@ -464,8 +467,6 @@ src/design/CMakeFiles/DesignFiles.dir/AlbumBase.cpp.o: \
  /sandbox/Development/AlbumGenerator/src/catalog/CatalogSectionData.h \
  /sandbox/Development/AlbumGenerator/src/catalog/CatalogDefs.h \
  /sandbox/Development/AlbumGenerator/src/utils/Settings.h \
- /sandbox/Development/AlbumGenerator/src/design/FontInfo.h \
- /sandbox/Development/AlbumGenerator/src/design/Font.h \
  /sandbox/Development/AlbumGenerator/src/design/Title.h \
  /sandbox/Development/AlbumGenerator/src/gui/AlbumImagePanel.h \
  /sandbox/Development/AlbumGenerator/src/gui/GuiDefs.h \

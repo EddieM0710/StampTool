@@ -441,6 +441,9 @@ src/utils/CMakeFiles/Utils.dir/StampList.cpp.o: \
  /usr/include/c++/11/cstring \
  /sandbox/Development/AlbumGenerator/src/utils/XMLUtilities.h \
  /sandbox/Development/AlbumGenerator/src/catalog/CatalogDefs.h \
+ /sandbox/Development/AlbumGenerator/src/design/FontInfo.h \
+ /sandbox/Development/AlbumGenerator/src/design/Font.h \
+ /sandbox/Development/AlbumGenerator/src/design/DesignData.h \
  /sandbox/Development/AlbumGenerator/src/design/Frame.h \
  /usr/local/include/wx-3.2/wx/graphics.h \
  /usr/local/include/wx/pdfdocument.h \
@@ -488,6 +491,10 @@ src/utils/CMakeFiles/Utils.dir/StampList.cpp.o: \
  /sandbox/Development/AlbumGenerator/src/art/folder.xpm \
  /sandbox/Development/AlbumGenerator/src/art/unchecked.xpm \
  /sandbox/Development/AlbumGenerator/src/art/checked.xpm \
+ /sandbox/Development/AlbumGenerator/src/gui/GuiUtils.h \
+ /usr/local/include/wx/pdffont.h \
+ /usr/local/include/wx/pdffontdescription.h \
+ /sandbox/Development/AlbumGenerator/src/gui/GuiDefs.h \
  /sandbox/Development/AlbumGenerator/src/catalog/Entry.h \
  /sandbox/Development/AlbumGenerator/src/catalog/CatalogBase.h \
  /sandbox/Development/AlbumGenerator/src/gui/DesignTreeCtrl.h

@@ -268,8 +268,10 @@ src/design/CMakeFiles/DesignFiles.dir/Page.cpp.o: \
  /usr/include/c++/11/cstring \
  /sandbox/Development/AlbumGenerator/src/utils/XMLUtilities.h \
  /sandbox/Development/AlbumGenerator/src/catalog/CatalogDefs.h \
- /usr/local/include/wx-3.2/wx/treectrl.h \
- /usr/local/include/wx-3.2/wx/control.h \
+ /sandbox/Development/AlbumGenerator/src/design/FontInfo.h \
+ /sandbox/Development/AlbumGenerator/src/design/Font.h \
+ /sandbox/Development/AlbumGenerator/src/design/DesignData.h \
+ /usr/local/include/wx-3.2/wx/treebase.h \
  /usr/local/include/wx-3.2/wx/window.h \
  /usr/local/include/wx-3.2/wx/event.h \
  /usr/local/include/wx-3.2/wx/clntdata.h \
@@ -294,9 +296,10 @@ src/design/CMakeFiles/DesignFiles.dir/Page.cpp.o: \
  /usr/local/include/wx-3.2/wx/gtk/accel.h \
  /usr/local/include/wx-3.2/wx/generic/accel.h \
  /usr/local/include/wx-3.2/wx/gtk/window.h \
- /usr/local/include/wx-3.2/wx/gtk/control.h \
- /usr/local/include/wx-3.2/wx/treebase.h \
  /usr/local/include/wx-3.2/wx/itemid.h \
+ /usr/local/include/wx-3.2/wx/treectrl.h \
+ /usr/local/include/wx-3.2/wx/control.h \
+ /usr/local/include/wx-3.2/wx/gtk/control.h \
  /usr/local/include/wx-3.2/wx/textctrl.h \
  /usr/local/include/wx-3.2/wx/textentry.h \
  /usr/local/include/wx-3.2/wx/gtk/textentry.h \
@@ -349,14 +352,11 @@ src/design/CMakeFiles/DesignFiles.dir/Page.cpp.o: \
  /sandbox/Development/AlbumGenerator/src/catalog/CatalogSectionData.h \
  /sandbox/Development/AlbumGenerator/src/catalog/CatalogDefs.h \
  /sandbox/Development/AlbumGenerator/src/utils/Settings.h \
- /sandbox/Development/AlbumGenerator/src/design/FontInfo.h \
- /sandbox/Development/AlbumGenerator/src/design/Font.h \
  /sandbox/Development/AlbumGenerator/src/design/Title.h \
  /sandbox/Development/AlbumGenerator/src/gui/AlbumImagePanel.h \
  /sandbox/Development/AlbumGenerator/src/gui/GuiDefs.h \
  /sandbox/Development/AlbumGenerator/src/design/Row.h \
  /sandbox/Development/AlbumGenerator/src/design/Column.h \
- /sandbox/Development/AlbumGenerator/src/design/DesignData.h \
  /sandbox/Development/AlbumGenerator/src/gui/DesignTreeCtrl.h \
  /sandbox/Development/AlbumGenerator/src/gui/IconDefs.h \
  /sandbox/Development/AlbumGenerator/src/art/StampBlack.xpm \

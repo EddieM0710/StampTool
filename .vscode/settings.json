@@ -15,8 +15,10 @@
         "ostream": "cpp",
         "tuple": "cpp",
         "type_traits": "cpp",
-        "utility": "cpp"
-    }
+        "utility": "cpp",
+        "random": "cpp",
+        "*.xpm": "cpp"
+    },
     "files.watcherExclude": {
         "**/doc/**": true
       }

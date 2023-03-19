@@ -21,7 +21,7 @@
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  */
 
-// For compilers that support precompilation, includes "wx/wx.h".
+
 #include "wx/wxprec.h"
 
 #ifdef __BORLANDC__
@@ -271,44 +271,17 @@ void NewStampDialog::CreateControls( )
 }
 
 
-/*
- * Should we show tooltips?
- */
+
 
 bool NewStampDialog::ShowToolTips( )
 { 
     return true;
 }
 
-/*
- * Get bitmap resources
- */
-
-wxBitmap NewStampDialog::GetBitmapResource( const wxString& name )
-{ 
-    // Bitmap retrieval
-// NewStampDialog bitmap retrieval
-    wxUnusedVar( name );
-    return wxNullBitmap;
-// NewStampDialog bitmap retrieval
-}
-
-/*
- * Get icon resources
- */
-
-wxIcon NewStampDialog::GetIconResource( const wxString& name )
-{ 
-    // Icon retrieval
-// NewStampDialog icon retrieval
-    wxUnusedVar( name );
-    return wxNullIcon;
-// NewStampDialog icon retrieval
-}
 
 
 /*
- * wxEVT_COMMAND_CHOICE_SELECTED event handler for ID_EMISSIONCHOICE
+ *   ID_EMISSIONCHOICE
  */
 
 void NewStampDialog::OnEmissionchoiceSelected( wxCommandEvent& event )
@@ -316,15 +289,13 @@ void NewStampDialog::OnEmissionchoiceSelected( wxCommandEvent& event )
     wxString strSel = m_emission->GetStringSelection( );
  //   if ( m_stamp ) m_stamp->SetEmission( strSel );
 
-// wxEVT_COMMAND_CHOICE_SELECTED event handler for ID_EMISSIONCHOICE in NewStampDialog.
-    // Before editing this code, remove the block markers.
     event.Skip( );
-// wxEVT_COMMAND_CHOICE_SELECTED event handler for ID_EMISSIONCHOICE in NewStampDialog. 
+ 
 }
 
 
 /*
- * wxEVT_COMMAND_CHOICE_SELECTED event handler for ID_FORMATCHOICE
+ *   ID_FORMATCHOICE
  */
 
 void NewStampDialog::OnFormatchoiceSelected( wxCommandEvent& event )
@@ -332,23 +303,21 @@ void NewStampDialog::OnFormatchoiceSelected( wxCommandEvent& event )
     int sel = m_format->GetSelection( );
     wxString strSel = m_format->GetStringSelection( );
  //   if ( m_stamp ) m_stamp->SetFormat( strSel );
-// wxEVT_COMMAND_CHOICE_SELECTED event handler for ID_FORMATCHOICE in NewStampDialog.
-    // Before editing this code, remove the block markers.
+
     event.Skip( );
-// wxEVT_COMMAND_CHOICE_SELECTED event handler for ID_FORMATCHOICE in NewStampDialog. 
+ 
 }
 
 
 /*
- * wxEVT_COMMAND_BUTTON_CLICKED event handler for wxID_CANCEL
+ *   wxID_CANCEL
  */
 
 void NewStampDialog::OnCancelClick( wxCommandEvent& event )
 { 
-// wxEVT_COMMAND_BUTTON_CLICKED event handler for wxID_CANCEL in NewStampDialog.
-    // Before editing this code, remove the block markers.
+
     event.Skip( );
-// wxEVT_COMMAND_BUTTON_CLICKED event handler for wxID_CANCEL in NewStampDialog. 
+ 
 }
 
 void NewStampDialog::UpdateStamp( )
@@ -362,17 +331,15 @@ void NewStampDialog::UpdateStamp( )
 
 }
 /*
- * wxEVT_COMMAND_BUTTON_CLICKED event handler for wxID_OK
+ *   wxID_OK
  */
 
 void NewStampDialog::OnOkClick( wxCommandEvent& event )
 { 
     UpdateStamp( );
 
-// wxEVT_COMMAND_BUTTON_CLICKED event handler for wxID_OK in NewStampDialog.
-    // Before editing this code, remove the block markers.
     event.Skip( );
-// wxEVT_COMMAND_BUTTON_CLICKED event handler for wxID_OK in NewStampDialog. 
+
 }
 
 /*

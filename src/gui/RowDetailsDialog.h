@@ -25,13 +25,12 @@
 #define _ROWDETAILSDIALOG_H_
 
 
- /*!
+ /*
   * Includes
   */
 
-  // includes
 #include "wx/listctrl.h"
-// includes
+
 #include <wx/fontpicker.h>
 #include <wx/clrpicker.h>
 
@@ -39,32 +38,30 @@
 #include "gui/GuiDefs.h"
 
 
-/*!
- * Forward declarations
- */
-
- // forward declarations
+  /*
+   * Forward declarations
+   */
 class LabeledTextBox;
 class wxListCtrl;
-// forward declarations
+namespace Design { class Row; };
 
-/*!
+/*
  * Control identifiers
  */
 
- // control identifiers
+
 
 #define SYMBOL_ROWDETAILSDIALOG_STYLE wxCAPTION | wxRESIZE_BORDER | wxSYSTEM_MENU | wxCLOSE_BOX | wxTAB_TRAVERSAL
 #define SYMBOL_ROWDETAILSDIALOG_TITLE _( "Row Details Dialog" )
 #define SYMBOL_ROWDETAILSDIALOG_IDNAME ID_ROWDETAILSDIALOG
 #define SYMBOL_ROWDETAILSDIALOG_SIZE wxSize( 400, 300 )
 #define SYMBOL_ROWDETAILSDIALOG_POSITION wxDefaultPosition
-// control identifiers
 
 
-/*!
- * RowDetailsDialog class declaration
- */
+
+ /*
+  * RowDetailsDialog class declaration
+  */
 
 class RowDetailsDialog: public wxDialog
 {
@@ -89,52 +86,47 @@ public:
         ID_POSITIONTEXTCTRL
     };
 
-    /// Constructors
+
     RowDetailsDialog( );
     RowDetailsDialog( wxWindow* parent, wxWindowID id = SYMBOL_ROWDETAILSDIALOG_IDNAME, const wxString& caption = SYMBOL_ROWDETAILSDIALOG_TITLE, const wxPoint& pos = SYMBOL_ROWDETAILSDIALOG_POSITION, const wxSize& size = SYMBOL_ROWDETAILSDIALOG_SIZE, long style = SYMBOL_ROWDETAILSDIALOG_STYLE );
 
-    /// Creation
+
     bool Create( wxWindow* parent, wxWindowID id = SYMBOL_ROWDETAILSDIALOG_IDNAME, const wxString& caption = SYMBOL_ROWDETAILSDIALOG_TITLE, const wxPoint& pos = SYMBOL_ROWDETAILSDIALOG_POSITION, const wxSize& size = SYMBOL_ROWDETAILSDIALOG_SIZE, long style = SYMBOL_ROWDETAILSDIALOG_STYLE );
 
-    /// Destructor
+
     ~RowDetailsDialog( );
 
-    /// Initialises member variables
+
     void Init( );
 
-    /// Creates the controls and sizers
+
     void CreateControls( );
 
+    void UpdateControls( );
+
+    void SetupDialog( wxTreeItemId treeID );
+
     // RowDetailsDialog event handler declarations
 
-        /// wxEVT_COMMAND_BUTTON_CLICKED event handler for wxID_OK
+    ///   wxID_OK
     void OnOkClick( wxCommandEvent& event );
 
-    // RowDetailsDialog event handler declarations
 
-    // RowDetailsDialog member function declarations
-
-        /// Retrieves bitmap resources
-    wxBitmap GetBitmapResource( const wxString& name );
-
-    /// Retrieves icon resources
-    wxIcon GetIconResource( const wxString& name );
-    // RowDetailsDialog member function declarations
-
-        /// Should we show tooltips?
     static bool ShowToolTips( );
     void SetNameModified( bool state );
-    void SetDesignTreeID( wxTreeItemId id );
-    bool IsNameModified( );
     void SetShowTitle( bool state = false );
     void SetShowFrame( bool state = false );
+    void SetTitleColor( wxColour color );
+    void SetTitleFont( wxFont font );
     bool GetShowTitle( );
     bool GetShowFrame( );
 
+    wxString GetName( );
 
+    bool IsNameModified( );
 
-    wxTreeItemId m_designTreeID;
-    // RowDetailsDialog member variables
+private:
+
     LabeledTextBox* m_name;
     wxCheckBox* m_titleCheckbox;
     wxCheckBox* m_frameCheckbox;
@@ -142,8 +134,8 @@ public:
     wxFontPickerCtrl* m_titleFontPicker;
     wxColourPickerCtrl* m_titleColorPicker;
     wxTextCtrl* positionTextCtrl;
-    // RowDetailsDialog member variables
-
+    Design::Row* m_row;
+    wxTreeItemId m_designTreeID;
 };
 
 #endif

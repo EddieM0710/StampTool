@@ -48,6 +48,7 @@ class DesignTreeCtrl;
 class CatalogTreeCtrl;
 class AlbumImagePanel;
 namespace Design { class DesignData; };
+namespace Utils { class FontList; };
 namespace Catalog { class CatalogSectionData;  };
 /**
  * @brief Get the Settings data 
@@ -57,6 +58,8 @@ namespace Catalog { class CatalogSectionData;  };
 Utils::Settings* GetSettings( );
 
 Utils::Project* GetProject( );
+
+Utils::FontList* GetFontList( );
 
 ToolData* GetToolData( );
 Design::DesignData* GetDesignData( ) ;

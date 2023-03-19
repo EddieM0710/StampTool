@@ -24,43 +24,39 @@
 #define _STAMPDETAILSDIALOG_H_
 
 
- /*!
+ /*
   * Includes
   */
 
 #include "wx/listctrl.h"
+#include <wx/fontpicker.h>
+#include <wx/clrpicker.h>
 
 #include "gui/DesignTreeCtrl.h"
 #include "gui/GuiDefs.h"
-#include <wx/fontpicker.h>
 
-  /*!
+
+  /*
    * Forward declarations
    */
-
-   // forward declarations
 class LabeledTextBox;
 class wxListCtrl;
-// forward declarations
+namespace Design { class Stamp; };
 
-/*!
+/*
  * Control identifiers
  */
-
- // control identifiers
-
 #define SYMBOL_STAMPDETAILSDIALOG_STYLE wxCAPTION | wxRESIZE_BORDER | wxSYSTEM_MENU | wxCLOSE_BOX | wxTAB_TRAVERSAL
 #define SYMBOL_STAMPDETAILSDIALOG_TITLE _( "StampDetailsDialog" )
 #define SYMBOL_STAMPDETAILSDIALOG_IDNAME ID_STAMPDETAILSDIALOG
 #define SYMBOL_STAMPDETAILSDIALOG_SIZE wxSize( 400, 800 )
 #define SYMBOL_STAMPDETAILSDIALOG_POSITION wxDefaultPosition
-// control identifiers
 
 
-/*!
- * StampDetailsDialog class declaration
- */
 
+ /*
+  * StampDetailsDialog class declaration
+  */
 class StampDetailsDialog: public wxDialog
 {
     DECLARE_DYNAMIC_CLASS( StampDetailsDialog )
@@ -86,62 +82,74 @@ public:
         ID_NOTEBOOK,
         ID_NOTEBOOKDETAILSPANEL,
         ID_NOTEBOOKPOSITIONPANEL,
-        ID_POSITIONTEXTCTRL
+        ID_POSITIONTEXTCTRL,
+        ID_STAMPCATNBRFONTPICKER,
+        ID_STAMPCATNBRCOLORPICKER,
+        ID_STAMPTEXTFONTPICKER,
+        ID_STAMPTEXTCOLORPICKER,
+        ID_STAMPTEXTEDEFAULTFONTBUTTON,
+        ID_STAMPCATNBRDEFAULTFONTBUTTON
     };
-    /// Constructors
+
     StampDetailsDialog( );
     StampDetailsDialog( wxWindow* parent, wxWindowID id = SYMBOL_STAMPDETAILSDIALOG_IDNAME, const wxString& caption = SYMBOL_STAMPDETAILSDIALOG_TITLE, const wxPoint& pos = SYMBOL_STAMPDETAILSDIALOG_POSITION, const wxSize& size = SYMBOL_STAMPDETAILSDIALOG_SIZE, long style = SYMBOL_STAMPDETAILSDIALOG_STYLE );
 
-    /// Creation
+
     bool Create( wxWindow* parent, wxWindowID id = SYMBOL_STAMPDETAILSDIALOG_IDNAME, const wxString& caption = SYMBOL_STAMPDETAILSDIALOG_TITLE, const wxPoint& pos = SYMBOL_STAMPDETAILSDIALOG_POSITION, const wxSize& size = SYMBOL_STAMPDETAILSDIALOG_SIZE, long style = SYMBOL_STAMPDETAILSDIALOG_STYLE );
 
-    /// Destructor
+
     ~StampDetailsDialog( );
 
-    /// Initialises member variables
+
     void Init( );
 
-    /// Creates the controls and sizers
+
     void CreateControls( );
 
+    void UpdateControls( );
+
+    void SetupDialog( wxTreeItemId id );
+
     // StampDetailsDialog event handler declarations
 
-        /// wxEVT_COMMAND_BUTTON_CLICKED event handler for ID_REFRESHBUTTON
+        ///   ID_REFRESHBUTTON
     void OnRefreshButtonClick( wxCommandEvent& event );
 
-    /// wxEVT_COMMAND_BUTTON_CLICKED event handler for wxID_CANCEL
+    ///   wxID_CANCEL
     void OnCancelClick( wxCommandEvent& event );
 
-    /// wxEVT_COMMAND_BUTTON_CLICKED event handler for wxID_OK
+    ///   wxID_OK
     void OnOkClick( wxCommandEvent& event );
 
-    // StampDetailsDialog event handler declarations
+    void OnNbrDefaultClick( wxCommandEvent& event );
+    void OnTextDefaultClick( wxCommandEvent& event );
+    void OnCatNbrCheckboxClicked( wxCommandEvent& event );
 
-    // StampDetailsDialog member function declarations
 
-        /// Retrieves bitmap resources
-    wxBitmap GetBitmapResource( const wxString& name );
 
-    /// Retrieves icon resources
-    wxIcon GetIconResource( const wxString& name );
-    // StampDetailsDialog member function declarations
-
-        /// Should we show tooltips?
     static bool ShowToolTips( );
+
     void SetImageFilename( wxString filename );
     void SetHeight( wxString height );
     void SetWidth( wxString width );
     void SetCatNbr( wxString catNbr );
     void SetName( wxString name );
-    void SetDesignTreeID( wxTreeItemId id );
     void SetShowCatNbr( bool state = false );
     void SetShowTitle( bool state = false );
+    void SetCatNbrFont( wxFont font );
+    void SetTextFont( wxFont font );
+    void SetCatNbrColor( wxColour color );
+    void SetTextColor( wxColour color );
+
     wxString GetImageFilename( );
     wxString GetHeight( );
     wxString GetWidth( );
     wxString GetCatNbr( );
     wxString GetName( );
-
+    wxFont GetCatNbrFont( );
+    wxFont GetTextFont( );
+    wxColour GetCatNbrColor( );
+    wxColour GetTextColor( );
     bool GetShowCatNbr( );
     bool GetShowTitle( );
 
@@ -155,8 +163,9 @@ public:
     void SetNameModified( bool state = true );
     void RefreshFromCatalog( );
 
+    //  void SetStamp( Design::Stamp* stamp){ m_stamp = stamp; };
+private:
 
-    // StampDetailsDialog member variables
     LabeledTextBox* m_catNbr;
     LabeledTextBox* m_name;
     LabeledTextBox* m_imagePath;
@@ -168,8 +177,11 @@ public:
     wxCheckBox* m_catNbrCheckbox;
     wxCheckBox* m_titleCheckbox;
     wxTextCtrl* positionTextCtrl;
-    wxFontPickerCtrl* m_fontPicker;
-    // StampDetailsDialog member variables
+    wxFontPickerCtrl* m_catNbrFontPicker;
+    wxFontPickerCtrl* m_textFontPicker;
+    wxColourPickerCtrl* m_textColorPicker;
+    wxColourPickerCtrl* m_catNbrColorPicker;
+    Design::Stamp* m_stamp;
 
 
 

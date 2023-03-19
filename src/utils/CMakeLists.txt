@@ -14,6 +14,8 @@ add_library( Utils SHARED
     Project.cpp
     Settings.cpp 
     StampList.cpp 
+    Font.cpp
+    FontList.cpp
     XMLUtilities.cpp 
 )
 

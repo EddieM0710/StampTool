@@ -1,28 +1,40 @@
-/////////////////////////////////////////////////////////////////////////////
-// Name:        AlbumDetailsDialog.h
-// Purpose:     
-// Author:      Eddie Monroe
-// Modified by: 
-// Created:     Wed 23 Nov 2022 11:31:39 CST
-// RCS-ID:      
-// Copyright:   
-// Licence:     
-//
-// @copyright Copyright ( c ) 2022  
-// 
-// This file is part of StampTool.
-//
-// StampTool is free software: you can redistribute it and/or modify it under the 
-// terms of the GNU General Public License as published by the Free Software Foundation, 
-// either version 3 of the License, or any later version.
-//
-// StampTool is distributed in the hope that it will be useful, but WITHOUT ANY 
-// WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
-// PARTICULAR PURPOSE. See the GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License along with 
-// StampTool. If not, see <https://www.gnu.org/licenses/>.
-/////////////////////////////////////////////////////////////////////////////
+/*
+ * @file         AlbumDetailsDialog.h
+ * @brief
+ * @author      Eddie Monroe
+ * Modified by:
+ * @date     Wed 23 Nov 2022 11:31:39 CST
+ *
+ * @copyright Copyright ( c ) 2024
+ * This file is part of StampTool.
+ *
+ * StampTool is free software: you can redistribute it and/or modify it under the
+ * terms of the GNU General Public License as published by the Free Software Foundation,
+ * either version 3 of the License, or any later version.
+ *
+ * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
+ * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+ * PARTICULAR PURPOSE. See the GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along with
+ * StampTool. If not, see <https://www.gnu.org/licenses/>.
+ */
+ //
+ // @copyright Copyright ( c ) 2022  
+ // 
+ // This file is part of StampTool.
+ //
+ // StampTool is free software: you can redistribute it and/or modify it under the 
+ // terms of the GNU General Public License as published by the Free Software Foundation, 
+ // either version 3 of the License, or any later version.
+ //
+ // StampTool is distributed in the hope that it will be useful, but WITHOUT ANY 
+ // WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+ // PARTICULAR PURPOSE. See the GNU General Public License for more details.
+ //
+ // You should have received a copy of the GNU General Public License along with 
+ // StampTool. If not, see <https://www.gnu.org/licenses/>.
+ /////////////////////////////////////////////////////////////////////////////
 
 #ifndef _ALBUMDETAILSDIALOG_H_
 #define _ALBUMDETAILSDIALOG_H_
@@ -34,24 +46,18 @@
 #include "gui/GuiDefs.h"
 #include "gui/DesignTreeCtrl.h"
 
-/*!
+/*
  * Forward declarations
  */
-
- // forward declarations
 class LabeledTextBox;
 class wxListCtrl;
-// forward declarations
+namespace Design { class Album; };
 
-
-
-//// control identifiers
 #define SYMBOL_ALBUMDETAILSDIALOG_STYLE wxCAPTION | wxRESIZE_BORDER | wxSYSTEM_MENU | wxCLOSE_BOX | wxTAB_TRAVERSAL
 #define SYMBOL_ALBUMDETAILSDIALOG_TITLE _( "AlbumDetailsDialog" )
 #define SYMBOL_ALBUMDETAILSDIALOG_IDNAME ID_ALBUMDETAILSDIALOG
 #define SYMBOL_ALBUMDETAILSDIALOG_SIZE wxSize( 400, 300 )
 #define SYMBOL_ALBUMDETAILSDIALOG_POSITION wxDefaultPosition
-//// control identifiers
 
 
 //
@@ -59,7 +65,7 @@ class wxListCtrl;
 //
 
 class AlbumDetailsDialog: public wxDialog
-{ 
+{
     DECLARE_DYNAMIC_CLASS( AlbumDetailsDialog )
         DECLARE_EVENT_TABLE( )
 
@@ -81,13 +87,17 @@ public:
         ID_CATNBCOLORPICKER,
         ID_TITLEFONTPICKER,
         ID_TITLECOLORPICKER,
+        ID_TEXTFONTPICKER,
+        ID_TEXTCOLORPICKER,
+        ID_NBRDEFAULTFONTBUTTON,
+        ID_TITLEDEFAULTFONTBUTTON,
+        ID_TEXTDEFAULTFONTBUTTON,
 
         ID_CATNBRDEFAULTCHECKBOX,
         ID_STAMPTITLEDEFAULTCHECKBOX,
         ID_ROWCOLTITLEDEFAULTCHECKBOX,
         ID_FRAMEDEFAULTCHECKBOX,
-        ID_NBRDEFAULTFONTBUTTON,
-        ID_TITLEDEFAULTFONTBUTTON,
+
         ID_TITLEFONTPANEL,
         ID_ALBUMLAYOUTTEXTCTRL,
         ID_ALBUMLAYOUTPANEL,
@@ -95,36 +105,23 @@ public:
         ID_ALBUMNAMEPANEL
     };
 
-    /// Constructors
+
     AlbumDetailsDialog( );
     AlbumDetailsDialog( wxWindow* parent, wxWindowID id = SYMBOL_ALBUMDETAILSDIALOG_IDNAME, const wxString& caption = SYMBOL_ALBUMDETAILSDIALOG_TITLE, const wxPoint& pos = SYMBOL_ALBUMDETAILSDIALOG_POSITION, const wxSize& size = SYMBOL_ALBUMDETAILSDIALOG_SIZE, long style = SYMBOL_ALBUMDETAILSDIALOG_STYLE );
 
-    /// Creation
     bool Create( wxWindow* parent, wxWindowID id = SYMBOL_ALBUMDETAILSDIALOG_IDNAME, const wxString& caption = SYMBOL_ALBUMDETAILSDIALOG_TITLE, const wxPoint& pos = SYMBOL_ALBUMDETAILSDIALOG_POSITION, const wxSize& size = SYMBOL_ALBUMDETAILSDIALOG_SIZE, long style = SYMBOL_ALBUMDETAILSDIALOG_STYLE );
 
-    /// Destructor
     ~AlbumDetailsDialog( );
 
-    /// Initialises member variables
     void Init( );
 
-    /// Creates the controls and sizers
     void CreateControls( );
 
-    //// AlbumDetailsDialog event handler declarations
+    void UpdateControls( );
 
-    //// AlbumDetailsDialog event handler declarations
+    void SetupDialog( wxTreeItemId id );
 
-    //// AlbumDetailsDialog member function declarations
 
-        /// Retrieves bitmap resources
-    wxBitmap GetBitmapResource( const wxString& name );
-
-    /// Retrieves icon resources
-    wxIcon GetIconResource( const wxString& name );
-    //// AlbumDetailsDialog member function declarations
-
-        /// Should we show tooltips?
     static bool ShowToolTips( );
     void SetName( wxString name );
     void SetPageHeight( wxString height );
@@ -136,6 +133,12 @@ public:
     void SetBorderSize( wxString size );
     void SetShowCatNbr( bool state );
     void SetShowStampTitle( bool state );
+    void SetCatNbrFont( wxFont font );
+    void SetTextFont( wxFont font );
+    void SetTitleFont( wxFont font );
+    void SetCatNbrColor( wxColour color );
+    void SetTextColor( wxColour color );
+    void SetTitleColor( wxColour color );
 
     wxString GetName( );
     wxString GetPageHeight( );
@@ -148,6 +151,7 @@ public:
     bool GetShowCatNbr( );
     bool GetShowStampTitle( );
 
+
     bool IsNameModified( );
     bool IsPageHeightModified( );
     bool IsPageWidthModified( );
@@ -156,10 +160,6 @@ public:
     bool IsLeftMarginModified( );
     bool IsRightMarginModified( );
     bool IsBorderSizeModified( );
-    //bool IsShowCatNbrModified( );
-    //bool IsShowStampTitleModified( );
-
-
 
     void SetNameModified( bool state );
     void SetPageHeightModified( bool state );
@@ -169,16 +169,22 @@ public:
     void SetLeftMarginModified( bool state );
     void SetRightMarginModified( bool state );
     void SetBorderSizeModified( bool state );
-    //void SetShowCatNbrModified( bool state );
-    //void SetShowStampTitleModified( bool state );
+
+    wxFont GetCatNbrFont( );
+    wxFont GetTextFont( );
+    wxFont GetTitleFont( );
+    wxColour GetCatNbrColor( );
+    wxColour GetTextColor( );
+    wxColour GetTitleColor( );
 
     void OnOkClick( wxCommandEvent& event );
     void OnCancelClick( wxCommandEvent& event );
     void OnNbrDefaultClick( wxCommandEvent& event );
     void OnTitleDefaultClick( wxCommandEvent& event );
+    void OnTextDefaultClick( wxCommandEvent& event );
+    void SetAlbum( Design::Album* album ) { m_album = album; };
 
-
-    //// AlbumDetailsDialog member variables
+private:
     LabeledTextBox* m_name;
     LabeledTextBox* m_height;
     LabeledTextBox* m_width;
@@ -194,12 +200,13 @@ public:
     wxColourPickerCtrl* m_titleColorPicker;
     wxFontPickerCtrl* m_catNbrFontPicker;
     wxColourPickerCtrl* m_catNbrColorPicker;
+    wxFontPickerCtrl* m_textFontPicker;
+    wxColourPickerCtrl* m_textColorPicker;
 
     wxButton* m_validate;
     wxListCtrl* m_statusList;
-
-    //// AlbumDetailsDialog member variables
+    AlbumDetailsDialog* theDialog;
+    Design::Album* m_album;
 };
 
 #endif
-// _ALBUMDETAILSDIALOG_H_

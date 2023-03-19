@@ -22,7 +22,7 @@
  *
  **************************************************/
 
- // For compilers that support precompilation, includes "wx/wx.h".
+ 
 #include "wx/wxprec.h"
 
 #ifdef __BORLANDC__
@@ -476,7 +476,6 @@ namespace Catalog {
             while ( tokenizer.HasMoreTokens( ) )
             { 
                 valStr = tokenizer.GetNextToken( );
-                //std::cout << "Entry::ProcessCatalogCodes>"<< valStr<<"<\n";
                 if ( valStr.StartsWith( wxT( "\"" ), &rest ) )
                     valStr = rest;
                 if ( valStr.EndsWith( wxT( "\"" ), &rest ) )
@@ -493,7 +492,6 @@ namespace Catalog {
                 wxString country = valStr.Mid( 0, pos );
                 wxString id = valStr.Mid( pos + 1 );
 
-                //std::cout << "country>"<< country << "<  catalog>"<< catalog << "<  id>"<< id << "<\n";
 
                 wxXmlNode* catCodeElement = Utils::NewNode( GetCatXMLNode( ), CatalogBaseNames[ NT_CatalogCode ] );
 

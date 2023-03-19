@@ -21,7 +21,7 @@
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  */
 
- // For compilers that support precompilation, includes "wx/wx.h".
+ 
 #include "wx/wxprec.h"
 
 #ifdef __BORLANDC__
@@ -32,32 +32,26 @@
 #include "wx/wx.h"
 #endif
 
-// includes
+
 #include "wx/imaglist.h"
-// includes
 #include "wx/notebook.h"
 
 #include "gui/RowDetailsDialog.h"
 #include "gui/LabeledTextBox.h"
+#include "gui/FontPickerHelper.h"
 #include "design/Row.h"
 
 /*
  * RowDetailsDialog type definition
  */
-
 IMPLEMENT_DYNAMIC_CLASS( RowDetailsDialog, wxDialog )
 
 
 /*
  * RowDetailsDialog event table definition
  */
-
     BEGIN_EVENT_TABLE( RowDetailsDialog, wxDialog )
-
-    // RowDetailsDialog event table entries
     EVT_BUTTON( wxID_OK, RowDetailsDialog::OnOkClick )
-    // RowDetailsDialog event table entries
-
     END_EVENT_TABLE( )
     ;
 
@@ -172,25 +166,14 @@ void RowDetailsDialog::CreateControls( )
     firstRowHorizontalSizer->Add( m_frameCheckbox, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
     //>>second row ctrls
-    wxBoxSizer* SecondRowHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
-    detailsVerticalSizer->Add( SecondRowHorizontalSizer, 0, wxGROW | wxALL, 5 );
-
-    wxStaticText* TitleFontStatic = new wxStaticText( notebookDetailsPanel, wxID_STATIC, _( "Title Font" ), wxDefaultPosition, wxDefaultSize, 0 );
-    SecondRowHorizontalSizer->Add( TitleFontStatic, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
-
-    m_titleFontPicker = new wxFontPickerCtrl( notebookDetailsPanel, 12345, 
-        *wxNORMAL_FONT, wxDefaultPosition, 
-        wxDefaultSize, wxFNTP_DEFAULT_STYLE );
-    SecondRowHorizontalSizer->Add( m_titleFontPicker, 5, wxGROW | wxALL, 5 );
-
-    m_titleColorPicker = new wxColourPickerCtrl( notebookDetailsPanel, 12346, 
-        *wxBLACK, wxDefaultPosition, 
-        wxDefaultSize, wxCLRP_DEFAULT_STYLE );
-    SecondRowHorizontalSizer->Add( m_titleColorPicker, 1, wxGROW | wxALL, 5 );
-
-    wxButton* defaultButton = new wxButton( notebookDetailsPanel, ID_DEFAULTFONTBUTTON, _( "Default" ), wxDefaultPosition, wxDefaultSize, 0 );
-    SecondRowHorizontalSizer->Add( defaultButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
-
+    FontPicker* titleFontPickerHelper = new FontPicker( 
+        notebookDetailsPanel, detailsVerticalSizer,
+        _( "Title Font" ), wxID_STATIC,
+        12345, 12346,
+        _( "Default" ), ID_DEFAULTFONTBUTTON,
+        *wxNORMAL_FONT, *wxBLACK );
+    m_titleFontPicker = titleFontPickerHelper->GetFontPickerCtrl();    
+    m_titleColorPicker = titleFontPickerHelper->GetColourPickerCtrl();    
 
     //>>error list ctrls
     wxBoxSizer* errorListSizer = new wxBoxSizer( wxHORIZONTAL );
@@ -234,75 +217,84 @@ void RowDetailsDialog::CreateControls( )
 }
 
 
-/*
- * Should we show tooltips?
- */
+
+void RowDetailsDialog::UpdateControls( )
+{
+
+    SetName( m_row->GetAttrStr( Design::AT_Name ) );
+    SetShowTitle( m_row->GetShowTitle( ) );
+    SetTitleFont( m_row->GetTitleFont( ) );
+    SetTitleColor( m_row->GetTitleColor( ) );
+
+    wxListBox* m_statusList;
+
+
+}
+
+
+void RowDetailsDialog::SetupDialog( wxTreeItemId treeID )
+{
+    if ( treeID.IsOk( ) )
+    {
+        m_designTreeID = treeID;
+        DesignTreeItemData* data = ( DesignTreeItemData* ) GetDesignTreeCtrl( )->GetItemData( m_designTreeID );
+        m_row = ( Design::Row* ) data->GetNodeElement( );
+
+        wxArrayString* errors = m_row->GetErrorArray( );
+        positionTextCtrl->AlwaysShowScrollbars( );
+        positionTextCtrl->WriteText(m_row->DumpFrame( ));
+        positionTextCtrl->ShowPosition( 0 );
+
+
+        if ( !errors->IsEmpty( ) )
+        {
+            m_statusList->InsertItems( *errors, 0 );
+        }
+    }
+};
+
+
+
 
 bool RowDetailsDialog::ShowToolTips( )
 { 
     return true;
 }
 
-/*
- * Get bitmap resources
- */
-
-wxBitmap RowDetailsDialog::GetBitmapResource( const wxString& name )
-{ 
-    // Bitmap retrieval
-// RowDetailsDialog bitmap retrieval
-    wxUnusedVar( name );
-    return wxNullBitmap;
-    // RowDetailsDialog bitmap retrieval
-}
-
-/*
- * Get icon resources
- */
-
-wxIcon RowDetailsDialog::GetIconResource( const wxString& name )
-{ 
-    // Icon retrieval
-// RowDetailsDialog icon retrieval
-    wxUnusedVar( name );
-    return wxNullIcon;
-    // RowDetailsDialog icon retrieval
-}
-
-
-/*
- * wxEVT_COMMAND_BUTTON_CLICKED event handler for wxID_OK
- */
-
-void RowDetailsDialog::OnOkClick( wxCommandEvent& event )
-{ 
-    // wxEVT_COMMAND_BUTTON_CLICKED event handler for wxID_OK in RowDetailsDialog.
-        // Before editing this code, remove the block markers.
-    event.Skip( );
-    // wxEVT_COMMAND_BUTTON_CLICKED event handler for wxID_OK in RowDetailsDialog. 
-}
-
 void RowDetailsDialog::SetNameModified( bool state ) { m_name->SetModified( state ); };
-void RowDetailsDialog::SetDesignTreeID( wxTreeItemId id ) 
-{ 
-    if ( id.IsOk( ) ) 
-    {
-        m_designTreeID = id;
-        DesignTreeItemData* data = ( DesignTreeItemData* )GetDesignTreeCtrl( )->GetItemData( m_designTreeID );
-        Design::Row* row = (Design::Row*)data->GetNodeElement();
-        wxArrayString* errors = row->GetErrorArray( );
-        positionTextCtrl->AlwaysShowScrollbars();
-        positionTextCtrl->WriteText(row->DumpFrame( ));
-        positionTextCtrl->ShowPosition( 0 );
 
-        if ( !errors->IsEmpty() )
-        {
-            m_statusList->InsertItems( *errors, 0 );
-        }
-    }
- };
 bool RowDetailsDialog::IsNameModified( ) { return m_name->IsModified( ); };
 void RowDetailsDialog::SetShowTitle( bool state ) { m_titleCheckbox->SetValue( state ); };
 void RowDetailsDialog::SetShowFrame( bool state ) { m_frameCheckbox->SetValue( state ); };
 bool RowDetailsDialog::GetShowTitle( ) { return m_titleCheckbox->IsChecked( ); };;
 bool RowDetailsDialog::GetShowFrame( ) { return m_frameCheckbox->IsChecked( ); };
+
+wxString RowDetailsDialog::GetName( ){ return m_name->GetValue( ); };
+
+
+void RowDetailsDialog::SetTitleFont( wxFont font )
+{
+    m_titleFontPicker->SetSelectedFont( font );
+}
+
+void RowDetailsDialog::SetTitleColor( wxColour color )
+{
+    m_titleColorPicker->SetColour( color );
+}
+
+void RowDetailsDialog::OnOkClick( wxCommandEvent& event )
+{
+ 
+    if ( IsNameModified( ) )
+    {
+        m_row->SetAttrStr( Design::AT_Name, GetName( ) );
+    }
+
+    m_row->SetShowFrame( GetShowFrame( ) );
+    m_row->SetShowTitle( GetShowTitle( ) );
+
+    m_row->SetTitleFont( m_titleFontPicker->GetSelectedFont( ), m_titleColorPicker->GetColour( ) );
+
+    event.Skip( );
+
+}

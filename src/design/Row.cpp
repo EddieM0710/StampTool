@@ -36,14 +36,13 @@ namespace Design {
 
     bool Row::UpdateMinimumSize( )
     { 
-//          m_frame.WriteLayout( "Row::UpdateMinimumSize <" );
        //Positioning across the row.
         //The min height of the row is the size of the tallest child 
         //plus the title if used
         //The min width is the sum of the min widths of the children. 
         double minWidth = 0.0;
         double minHeight = 0.0;
-//        UpdateTitleSize( );
+
         wxTreeItemIdValue cookie;
         wxTreeItemId parentID = GetTreeItemId( );
         wxTreeItemId childID = GetDesignTreeCtrl( )->GetFirstChild( parentID, cookie );
@@ -58,15 +57,6 @@ namespace Design {
             minWidth += child->GetMinWidth( );
             childID = GetDesignTreeCtrl( )->GetNextChild( parentID, cookie );
         }
-        if ( GetShowTitle( ) )
-        { 
-            
-            wxFont* titleFont = new wxFont( *wxNORMAL_FONT );
-            titleFont->SetPointSize( 8 ); 
-            UpdateTitleSize( minWidth, titleFont );
-            delete titleFont;
-            minHeight += GetTitleHeight( );  
-        }
 
         double leftPadding = 0;
         double rightPadding = 0;
@@ -80,16 +70,25 @@ namespace Design {
             bottomPadding = GetBottomContentPadding( );
         }    
 
-        SetMinHeight( minHeight + topPadding+bottomPadding );
-        SetMinWidth( minWidth + leftPadding+rightPadding );
 
-         m_frame.WriteLayout( "Row::UpdateMinimumSize >" );
+        minHeight = minHeight + topPadding + bottomPadding ;
+        minWidth = minWidth + leftPadding + rightPadding ;
+
+        UpdateTitleSize( minWidth );
+
+        if ( GetShowTitle( ) )
+        {
+            // Allow 3 times the title height
+            minHeight += 3 * GetTitleHeight( );
+        }
+
+        SetMinHeight( minHeight );
+        SetMinWidth( minWidth );
         return true;
     }
 
     void Row::UpdateSizes( )
     { 
-//        m_frame.WriteLayout( "Row::UpdateSizes <" );
 
         // Set the height and width of each child column
         // Stamps have fixed height and width
@@ -99,7 +98,7 @@ namespace Design {
         while ( childID.IsOk( ) )
         { 
             LayoutBase* child = ( LayoutBase* )GetDesignTreeCtrl( )->GetItemNode( childID );
-            if ( child->GetNodeType( ) == AT_Col )
+            if ( child->IsNodeType( AT_Col ) )
             { 
                 child->SetWidth( GetMinWidth( ) );
                 child->SetHeight( GetMinHeight( ) );
@@ -108,8 +107,6 @@ namespace Design {
 
             childID = GetDesignTreeCtrl( )->GetNextChild( parentID, cookie );
         }
-        m_frame.WriteLayout( "Row::UpdateSizes >" );
-
     }
 
     // calculate the row layout based on child parameters
@@ -124,12 +121,22 @@ namespace Design {
         int nbrStamps = 0;
         ValidateChildType( nbrRows, nbrCols, nbrStamps );
 
+        double xPos = 0;
+        double yPos = 0;
+        //First calc title position  
+        if ( GetShowTitle( ) )
+        {
+            m_titleFrame.SetXPos( 0 + ( GetWidth( ) - m_titleFrame.GetWidth( ) ) / 2 );
+            m_titleFrame.SetYPos( m_titleFrame.GetHeight( ) );
+            // allow for space above title, title height and that much again for nice spaing
+            yPos = m_titleFrame.GetHeight( );
+        }
+
         // this is a row so we are positioning children across the page
         double spacing = ( GetWidth( ) - GetMinWidth( ) ) / ( nbrCols + nbrStamps + 1 );
 
         // inital x/y pos within the row
-        double xPos = spacing;
-        double yPos = GetTitleHeight( );
+        xPos += spacing;
 
         wxTreeItemIdValue cookie;
         wxTreeItemId parentID = GetTreeItemId( );
@@ -167,8 +174,6 @@ namespace Design {
             }
             childID = GetDesignTreeCtrl( )->GetNextChild( parentID, cookie );
         }
-
-        m_frame.WriteLayout( "Row::UpdatePositions " );
 
     }
 
@@ -216,9 +221,9 @@ namespace Design {
         if ( GetShowTitle( ) )
         { 
             RealPoint pos( x, y );
-            RealSize size( GetWidth( ), m_titleSize.y  );
+            RealSize size( GetWidth( ),m_titleFrame.GetHeight( )   );
 //            DrawTitlePDF( doc, m_title, pos, size );
-            y = y + m_titleSize.y ;
+            y = y + m_titleFrame.GetHeight( )  ;
         }
 
         double xPos = x+GetXPos( )+leftPadding;
@@ -249,23 +254,36 @@ namespace Design {
             leftPadding = GetLeftContentPadding( );
             topPadding = GetTopContentPadding( );
         } 
-//dc.SetPen( *wxBLUE_PEN );
       
         SetClientDimensions( dc, x+GetXPos( ), y+GetYPos( ), GetWidth( ), GetHeight( ) );
 
         m_frame.Draw( dc, x, y );
 
-     
-        if ( GetShowTitle( ) )
-        { 
-            RealPoint pos( x, y );
-            RealSize size( GetWidth( ), m_titleSize.y  );
-            DrawTitle( dc, m_title, pos, size );
-            y = y + m_titleSize.y ;
-        }
-
         double xPos = x+GetXPos( )+leftPadding;
         double yPos = y+GetYPos( )+topPadding;
+
+        if ( GetShowTitle( ) )
+        {
+            wxFont currFont = dc.GetFont( );
+            wxColour currColor = dc.GetTextForeground( );
+
+            wxFont titleFont = GetTitleFont( );
+            wxFont font( titleFont );
+            wxColour color = GetTitleColor( );
+            dc.SetFont( font );
+            dc.SetTextForeground( color );
+
+            RealPoint pos( xPos + m_titleFrame.GetXPos( ), yPos + m_titleFrame.GetYPos( ) );
+            RealSize size( m_titleFrame.GetWidth( ),  m_titleFrame.GetHeight( ) );
+
+            wxString title = GetTitle( );
+            GetAlbumImagePanel( )->MakeMultiLine( title, font, size.x );
+            DrawLabel( dc, title, pos, size, wxALIGN_LEFT );
+
+            dc.SetFont( currFont );
+            dc.SetTextForeground( currColor );
+
+        }
    
         wxTreeItemIdValue cookie;
         wxTreeItemId parentID = GetTreeItemId( );
@@ -286,7 +304,8 @@ namespace Design {
         SetAttribute( xmlNode, AT_Name );
         SetAttribute( xmlNode, AT_ShowTitle );
         SetAttribute( xmlNode, AT_ShowFrame );
-    }
+        SaveFonts( xmlNode );
+     }
 
 
     void Row::ReportLayout(  )

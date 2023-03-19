@@ -20,7 +20,7 @@ add_library( GuiFiles SHARED
     CatalogTreeCtrl.cpp
     CharacteristicsPanel.cpp 
     ColDetailsDialog.cpp 
-    DefinePeriodsDialog.cpp
+    DefinePeriodsPanel.cpp
     DesignTreeCtrl.cpp 
     FileCreateDialog.cpp
     GenerateList.cpp
@@ -37,7 +37,7 @@ add_library( GuiFiles SHARED
     RowDetailsDialog.cpp 
     SectionDetailsDialog.cpp
     SettingsDialog.cpp
-    SortOrderDialog.cpp
+    SortOrderPanel.cpp
     StampDescriptionPanel.cpp 
     StampDetailsDialog.cpp
 #    StaticItem.cpp 

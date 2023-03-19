@@ -22,7 +22,7 @@
  *
  */
 
- // For compilers that support precompilation, includes "wx/wx.h".
+ 
 #include "wx/wxprec.h"
 
 #ifdef __BORLANDC__
@@ -154,12 +154,6 @@ namespace Utils {
 
         projFile.DirName( str );
 
-        // std::cout << "LoadProjectXML Dir Name " << str << "\n";
-
-        // std::cout << "LoadProjectXML Full Name " << projFile.GetFullName( ) << "\n";
-        // std::cout << "LoadProjectXML Full Path " << projFile.GetFullPath( ) << "\n";
-
-
         if ( projFile.FileExists( ) )
         { 
             if ( !projFile.IsAbsolute( ) )
@@ -232,13 +226,9 @@ namespace Utils {
                     Catalog::CatalogSectionData* sectionData = GetToolData( )->NewCatalogSectionData( );
                    
                     sectionData->SetSectionFilename( catFile.GetFullPath( ) );
-
-                    // std::cout << "LoadProjectXML cat Full Path " << catFile.GetFullPath( ) << "\n";
-                    // std::cout << "LoadProjectXML cat Full Name " << catFile.GetFullName( ) << "\n";
                 }
                 else
                 { 
-                    //std::cout << "LoadProjectXML file doesnt exist: " << catFile.GetFullPath( ) << "\n";
 
                 }
 
@@ -246,7 +236,6 @@ namespace Utils {
             }
         }
 
-//        GetToolData( )->FileOpenDesign( m_designFilename );
         GetSettings( )->SetLastFile( m_projectFilename );
 
         SetDirty( false );
@@ -337,13 +326,10 @@ namespace Utils {
             Catalog::CatalogSectionData* section = ( Catalog::CatalogSectionData* )( *it );
             wxString filename = section->GetSectionFilename( );
             wxString cwd = wxGetCwd( );
- //           std::cout << "Project::Save cwd " << cwd << "\n";
             wxFileName sectFile( filename );
             sectFile.MakeRelativeTo( cwd );
             wxXmlNode* newSection = NewNode( newNode, "Section" );
             newSection->AddAttribute( "FileName", sectFile.GetFullPath( ) );
-//            std::cout << "Project::Save GetFullName " << sectFile.GetFullName( ) << "\n";
-//            std::cout << "Project::Save GetFullPath " << sectFile.GetFullPath( ) << "\n";
         }
         m_ProjectDoc->SetRoot( root );
 

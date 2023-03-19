@@ -25,27 +25,25 @@
 #define _ALBUMSPLITTERWIINDOW_H_
 
 
- /*!
+ /*
   * Includes
   */
-
 #include "wx/splitter.h"
 #include "wx/treectrl.h"
 #include "gui/GuiDefs.h"
 
-/*!
+/*
  * Forward declarations
  */
-
- // forward declarations
 class wxSplitterWindow;
 class wxTreeCtrl;
 class wxWindow;
-// forward declarations
+
 class DesignTreeCtrl;
 class AlbumDesignTreePanel;
 class AlbumImagePanel;
-/*!
+
+/*
  * Control identifiers
  */
 #define SYMBOL_STAMPTOOLDESIGNPANEL_STYLE wxTAB_TRAVERSAL
@@ -53,10 +51,8 @@ class AlbumImagePanel;
 #define SYMBOL_STAMPTOOLDESIGNPANEL_IDNAME ID_ALBUMDESIGNPANEL
 #define SYMBOL_STAMPTOOLDESIGNPANEL_SIZE wxSize( 400, 300 )
 #define SYMBOL_STAMPTOOLDESIGNPANEL_POSITION wxDefaultPosition
-// control identifiers
 
-
-/*!
+/*
  * AlbumDesignPanel class declaration
  */
 
@@ -76,48 +72,32 @@ public:
         ID_ALBUMALBUMIMAGEPANEL,
         ID_ALBUMZOOMSLIDER
     };
-    /// Constructors
+  
     AlbumDesignPanel( );
     AlbumDesignPanel( wxWindow* parent, wxWindowID id = SYMBOL_STAMPTOOLDESIGNPANEL_IDNAME, const wxPoint& pos = SYMBOL_STAMPTOOLDESIGNPANEL_POSITION, const wxSize& size = SYMBOL_STAMPTOOLDESIGNPANEL_SIZE, long style = SYMBOL_STAMPTOOLDESIGNPANEL_STYLE );
 
-    /// Creation
     bool Create( wxWindow* parent, wxWindowID id = SYMBOL_STAMPTOOLDESIGNPANEL_IDNAME, const wxPoint& pos = SYMBOL_STAMPTOOLDESIGNPANEL_POSITION, const wxSize& size = SYMBOL_STAMPTOOLDESIGNPANEL_SIZE, long style = SYMBOL_STAMPTOOLDESIGNPANEL_STYLE );
 
-    /// Destructor
     ~AlbumDesignPanel( );
 
-    /// Initialises member variables
     void Init( );
 
-    /// Creates the controls and sizers
     void CreateControls( );
 
-    // AlbumDesignPanel event handler declarations
-
-    // AlbumDesignPanel event handler declarations
-
-    // AlbumDesignPanel member function declarations
-
-        /// Retrieves bitmap resources
-    wxBitmap GetBitmapResource( const wxString& name );
-
-    /// Retrieves icon resources
-    wxIcon GetIconResource( const wxString& name );
-    // AlbumDesignPanel member function declarations
-
     AlbumDesignTreePanel* GetAlbumDesignTreePanel( ) { return m_albumDesignTreePanel; };
+
     void OnZoomsliderUpdated( wxCommandEvent& event );
 
-    /// Should we show tooltips?
     static bool ShowToolTips( );
+
     void SetSashPosition( int pos ) { m_secondarySplitterWindow->SetSashPosition( pos ); };
-    // AlbumDesignPanel member variables
+    
+    private:
     wxSplitterWindow* m_secondarySplitterWindow;
     AlbumImagePanel* m_albumImagePanel;
-    // AlbumDesignPanel member variables
     wxSlider* m_zoomSlider; ///< Pointer to image soom slider
     AlbumDesignTreePanel* m_albumDesignTreePanel;
 };
 
 #endif
-// _ALBUMSPLITTERWIINDOW_H_
+

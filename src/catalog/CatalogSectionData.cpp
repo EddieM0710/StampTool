@@ -22,7 +22,7 @@
  *
  **************************************************/
 
- // For compilers that support precompilation, includes "wx/wx.h".
+ 
 #include "wx/wxprec.h"
 
 #ifdef __BORLANDC__
@@ -193,7 +193,7 @@ namespace Catalog {
             }
             if ( !m_stampDoc->Load( stream ) )
             { 
-                wxString txt = wxString::Format( "\n%s Stream  Failed. Error: %s.\n\n", m_sectionFilename, stream.GetLastError( ) );
+                wxString txt = wxString::Format( "\n%s Stream  Failed. Error: %s.<<std::endl<<std::<<endl", m_sectionFilename, stream.GetLastError( ) );
                 wxMessageDialog* dlg = new wxMessageDialog( 
                     wxGetApp( ).GetFrame( ), txt, 
                     wxT( "Warning! Stream Load Failed.\n" ), 
@@ -341,7 +341,6 @@ namespace Catalog {
             Catalog::Entry parentEntry( child );
             if ( parentEntry.GetFormat( ) == Catalog::FT_FormatStrings[ parentType ] )
             { 
- //   std::cout << parentEntry.GetFormat( ) << " " << parentEntry.GetID( ) << "\n";
                 parentList->push_back( child );
             }
             child = child->GetNext( );
@@ -384,7 +383,6 @@ namespace Catalog {
             wxString parentSeries = parentEntry->GetSeries( );
             wxString parentFace = parentEntry->GetFaceValue( );
             wxString id = parentEntry->GetID( );
-            // std::cout << "Looking for children of " << id << " "<< parentIssue << "  series:"<<parentSeries<<"  face:" <<parentFace <<"\n";
             long nbrEntrys;
             parentFace.ToLong( &nbrEntrys );
             if ( nbrEntrys <= 0 )
@@ -432,7 +430,6 @@ namespace Catalog {
                             }
                             //and add it to new place
                             parentNode->AddChild( childNode );
-                        // std::cout << "Adding "<< childEntry->GetID( ) << " to" << parentEntry->GetID( ) <<"\n";                       
                         }
                     }
                 }

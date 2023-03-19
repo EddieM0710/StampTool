@@ -1,27 +1,27 @@
-/* 
+/*
  * @file src/gui/DefinePeriodsDialog.cpp
- * @author Eddie Monroe 
- * @brief 
+ * @author Eddie Monroe
+ * @brief
  * @version 0.1
  * @date 2022-01-11
  *
- * @copyright Copyright ( c ) 2022  
- * 
+ * @copyright Copyright ( c ) 2022
+ *
  * This file is part of StampTool.
  *
- * StampTool is free software: you can redistribute it and/or modify it under the 
- * terms of the GNU General Public License as published by the Free Software Foundation, 
+ * StampTool is free software: you can redistribute it and/or modify it under the
+ * terms of the GNU General Public License as published by the Free Software Foundation,
  * either version 3 of the License, or any later version.
  *
- * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY 
- * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+ * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
+ * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
- * You should have received a copy of the GNU General Public License along with 
+ * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  */
 
-// For compilers that support precompilation, includes "wx/wx.h".
+
 #include "wx/wxprec.h"
 
 #ifdef __BORLANDC__
@@ -32,54 +32,34 @@
 #include "wx/wx.h"
 #endif
 
-// includes
-// includes
+
+
 
 #include "gui/DefinePeriodsDialog.h"
 #include "Settings.h"
 #include "Defs.h"
 
-// XPM images
-// XPM images
-
-
-/*
- * DefinePeriodsDialog type definition
- */
 
 IMPLEMENT_DYNAMIC_CLASS( DefinePeriodsDialog, wxDialog )
 
 
-/*
- * DefinePeriodsDialog event table definition
- */
-
 BEGIN_EVENT_TABLE( DefinePeriodsDialog, wxDialog )
-
-// DefinePeriodsDialog event table entries
-    EVT_TEXT( ID_ANTIQUE, DefinePeriodsDialog::OnAntiqueTextUpdated )
-    EVT_TEXT( ID_ANTIQUEYEAR, DefinePeriodsDialog::OnAntiqueYearTextUpdated )
-    EVT_TEXT( ID_CLASSIC, DefinePeriodsDialog::OnClassicTextUpdated )
-    EVT_TEXT( ID_MODERN, DefinePeriodsDialog::OnModernTextUpdated )
-    EVT_TEXT( ID_MODERNYEAR, DefinePeriodsDialog::OnModernYearTextUpdated )
-    EVT_BUTTON( wxID_CANCEL, DefinePeriodsDialog::OnCancelClick )
-    EVT_BUTTON( wxID_OK, DefinePeriodsDialog::OnOkClick )
-// DefinePeriodsDialog event table entries
-
+EVT_TEXT( ID_ANTIQUE, DefinePeriodsDialog::OnAntiqueTextUpdated )
+EVT_TEXT( ID_ANTIQUEYEAR, DefinePeriodsDialog::OnAntiqueYearTextUpdated )
+EVT_TEXT( ID_CLASSIC, DefinePeriodsDialog::OnClassicTextUpdated )
+EVT_TEXT( ID_MODERN, DefinePeriodsDialog::OnModernTextUpdated )
+EVT_TEXT( ID_MODERNYEAR, DefinePeriodsDialog::OnModernYearTextUpdated )
+EVT_BUTTON( wxID_CANCEL, DefinePeriodsDialog::OnCancelClick )
+EVT_BUTTON( wxID_OK, DefinePeriodsDialog::OnOkClick )
 END_EVENT_TABLE( )
 
-
-/*
- * DefinePeriodsDialog constructors
- */
-
 DefinePeriodsDialog::DefinePeriodsDialog( )
-{ 
+{
     Init( );
 }
 
 DefinePeriodsDialog::DefinePeriodsDialog( wxWindow* parent, wxWindowID id, const wxString& caption, const wxPoint& pos, const wxSize& size, long style )
-{ 
+{
     Init( );
     Create( parent, id, caption, pos, size, style );
     m_antiqueTextBox->SetValue( GetSettings( )->GetLowerPeriod( ) );
@@ -91,62 +71,37 @@ DefinePeriodsDialog::DefinePeriodsDialog( wxWindow* parent, wxWindowID id, const
 }
 
 
-/*
- * DefinePeriodsDialog creator
- */
-
 bool DefinePeriodsDialog::Create( wxWindow* parent, wxWindowID id, const wxString& caption, const wxPoint& pos, const wxSize& size, long style )
-{ 
-// DefinePeriodsDialog creation
+{
     SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY | wxWS_EX_BLOCK_EVENTS );
     wxDialog::Create( parent, id, caption, pos, size, style );
 
     CreateControls( );
     if ( GetSizer( ) )
-    { 
+    {
         GetSizer( )->SetSizeHints( this );
     }
     Centre( );
-// DefinePeriodsDialog creation
     return true;
 }
 
-
-/*
- * DefinePeriodsDialog destructor
- */
-
 DefinePeriodsDialog::~DefinePeriodsDialog( )
-{ 
-// DefinePeriodsDialog destruction
-// DefinePeriodsDialog destruction
+{
 }
 
 
-/*
- * Member initialisation
- */
 
 void DefinePeriodsDialog::Init( )
-{ 
-// DefinePeriodsDialog member initialisation
+{
     m_antiqueTextBox = NULL;
     m_AntiqueYear = NULL;
     m_classicTextBox = NULL;
     m_modernTextBox = NULL;
     m_modernYear = NULL;
-// DefinePeriodsDialog member initialisation
 }
 
-
-/*
- * Control creation for DefinePeriodsDialog
- */
-
 void DefinePeriodsDialog::CreateControls( )
-{    
-// DefinePeriodsDialog content construction
-
+{
     DefinePeriodsDialog* itemDialog1 = this;
 
     wxBoxSizer* itemBoxSizer2 = new wxBoxSizer( wxVERTICAL );
@@ -202,173 +157,84 @@ void DefinePeriodsDialog::CreateControls( )
     wxButton* itemButton17 = new wxButton( itemDialog1, wxID_OK, _( "OK" ), wxDefaultPosition, wxDefaultSize, 0 );
     itemBoxSizer14->Add( itemButton17, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
-// DefinePeriodsDialog content construction
 }
-
-
-/*
- * wxEVT_COMMAND_TEXT_UPDATED event handler for ID_ANTIQUE
- */
 
 void DefinePeriodsDialog::OnAntiqueTextUpdated( wxCommandEvent& event )
-{ 
-
-// wxEVT_COMMAND_TEXT_UPDATED event handler for ID_ANTIQUE in DefinePeriodsDialog.
-    // Before editing this code, remove the block markers.
+{
     event.Skip( );
-// wxEVT_COMMAND_TEXT_UPDATED event handler for ID_ANTIQUE in DefinePeriodsDialog. 
 }
-
-
-/*
- * wxEVT_COMMAND_TEXT_UPDATED event handler for ID_ANTIQUEYEAR
- */
 
 void DefinePeriodsDialog::OnAntiqueYearTextUpdated( wxCommandEvent& event )
-{ 
-
-// wxEVT_COMMAND_TEXT_UPDATED event handler for ID_ANTIQUEYEAR in DefinePeriodsDialog.
-    // Before editing this code, remove the block markers.
+{
     event.Skip( );
-// wxEVT_COMMAND_TEXT_UPDATED event handler for ID_ANTIQUEYEAR in DefinePeriodsDialog. 
+
 }
-
-
-/*
- * wxEVT_COMMAND_TEXT_UPDATED event handler for ID_CLASSIC
- */
 
 void DefinePeriodsDialog::OnClassicTextUpdated( wxCommandEvent& event )
-{ 
-
-// wxEVT_COMMAND_TEXT_UPDATED event handler for ID_CLASSIC in DefinePeriodsDialog.
-    // Before editing this code, remove the block markers.
+{
     event.Skip( );
-// wxEVT_COMMAND_TEXT_UPDATED event handler for ID_CLASSIC in DefinePeriodsDialog. 
 }
-
-
-/*
- * wxEVT_COMMAND_TEXT_UPDATED event handler for ID_MODERN
- */
 
 void DefinePeriodsDialog::OnModernTextUpdated( wxCommandEvent& event )
-{ 
- 
-// wxEVT_COMMAND_TEXT_UPDATED event handler for ID_MODERN in DefinePeriodsDialog.
-    // Before editing this code, remove the block markers.
+{
     event.Skip( );
-// wxEVT_COMMAND_TEXT_UPDATED event handler for ID_MODERN in DefinePeriodsDialog. 
 }
 
-
-/*
- * wxEVT_COMMAND_TEXT_UPDATED event handler for ID_MODERNYEAR
- */
 
 void DefinePeriodsDialog::OnModernYearTextUpdated( wxCommandEvent& event )
-{ 
- 
-// wxEVT_COMMAND_TEXT_UPDATED event handler for ID_MODERNYEAR in DefinePeriodsDialog.
-    // Before editing this code, remove the block markers.
+{
     event.Skip( );
-// wxEVT_COMMAND_TEXT_UPDATED event handler for ID_MODERNYEAR in DefinePeriodsDialog. 
+
 }
-
-
-/*
- * wxEVT_COMMAND_BUTTON_CLICKED event handler for wxID_CANCEL
- */
 
 void DefinePeriodsDialog::OnCancelClick( wxCommandEvent& event )
-{ 
-// wxEVT_COMMAND_BUTTON_CLICKED event handler for wxID_CANCEL in DefinePeriodsDialog.
-    // Before editing this code, remove the block markers.
+{
     event.Skip( );
-// wxEVT_COMMAND_BUTTON_CLICKED event handler for wxID_CANCEL in DefinePeriodsDialog. 
 }
 
-
-/*
- * wxEVT_COMMAND_BUTTON_CLICKED event handler for wxID_OK
- */
-
 void DefinePeriodsDialog::OnOkClick( wxCommandEvent& event )
-{ 
+{
     if ( m_antiqueTextBox->IsModified( ) )
-    { 
+    {
         GetSettings( )->SetDirty( );
         GetSettings( )->SetLowerPeriod( m_antiqueTextBox->GetValue( ) );
         m_antiqueTextBox->SetModified( false );
     }
     if ( m_AntiqueYear->IsModified( ) )
-    { 
+    {
         GetSettings( )->SetDirty( );
         GetSettings( )->SetLowerDivision( m_AntiqueYear->GetValue( ) );
         m_AntiqueYear->SetModified( false );
     }
-   if ( m_modernTextBox->IsModified( ) )
-    { 
+    if ( m_modernTextBox->IsModified( ) )
+    {
         GetSettings( )->SetDirty( );
         GetSettings( )->SetUpperPeriod( m_modernTextBox->GetValue( ) );
         m_modernTextBox->SetModified( false );
     }
     if ( m_classicTextBox->IsModified( ) )
-    { 
+    {
         GetSettings( )->SetDirty( );
         GetSettings( )->SetMiddlePeriod( m_classicTextBox->GetValue( ) );
         m_classicTextBox->SetModified( false );
     }
-   if ( m_modernYear->IsModified( ) )
-    { 
+    if ( m_modernYear->IsModified( ) )
+    {
         GetSettings( )->SetDirty( );
         GetSettings( )->SetUpperDivision( m_modernYear->GetValue( ) );
         m_modernYear->SetModified( false );
     }
-if( GetSettings( )->isDirty( ) )  
-    GetSettings( )->Save( );
+    if ( GetSettings( )->isDirty( ) )
+        GetSettings( )->Save( );
 
-
-
-
-// wxEVT_COMMAND_BUTTON_CLICKED event handler for wxID_OK in DefinePeriodsDialog.
-    // Before editing this code, remove the block markers.
     event.Skip( );
-// wxEVT_COMMAND_BUTTON_CLICKED event handler for wxID_OK in DefinePeriodsDialog. 
 }
 
 
-/*
- * Should we show tooltips?
- */
-
 bool DefinePeriodsDialog::ShowToolTips( )
-{ 
+{
     return true;
 }
 
-/*
- * Get bitmap resources
- */
 
-wxBitmap DefinePeriodsDialog::GetBitmapResource( const wxString& name )
-{ 
-    // Bitmap retrieval
-// DefinePeriodsDialog bitmap retrieval
-    wxUnusedVar( name );
-    return wxNullBitmap;
-// DefinePeriodsDialog bitmap retrieval
-}
 
-/*
- * Get icon resources
- */
-
-wxIcon DefinePeriodsDialog::GetIconResource( const wxString& name )
-{ 
-    // Icon retrieval
-// DefinePeriodsDialog icon retrieval
-    wxUnusedVar( name );
-    return wxNullIcon;
-// DefinePeriodsDialog icon retrieval
-}

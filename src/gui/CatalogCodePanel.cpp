@@ -7,9 +7,23 @@
  *
  * @copyright Copyright ( c ) 2021
  *
+ * This file is part of StampTool.
+ *
+ * StampTool is free software: you can redistribute it and/or modify it under the
+ * terms of the GNU General Public License as published by the Free Software Foundation,
+ * either version 3 of the License, or any later version.
+ *
+ * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
+ * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+ * PARTICULAR PURPOSE. See the GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along with
+ * StampTool. If not, see <https://www.gnu.org/licenses/>.
+ *
  **************************************************/
 
- // For compilers that support precompilation, includes "wx/wx.h".
+
+
 #include "wx/wxprec.h"
 
 #ifdef __BORLANDC__
@@ -27,9 +41,9 @@
 #include "Defs.h"
 #include "utils/Settings.h"
 
-/*
- * CatalogCodePanel type definition
- */
+ /*
+  * CatalogCodePanel type definition
+  */
 
 IMPLEMENT_DYNAMIC_CLASS( CatalogCodePanel, wxPanel )
 ; // silly business; The above macro screws up the formatter
@@ -65,10 +79,10 @@ CatalogCodePanel::CatalogCodePanel( ) { Init( ); }
  *
  **************************************************/
 
-CatalogCodePanel::CatalogCodePanel( wxWindow* parent, wxWindowID id, 
-    const wxPoint& pos, const wxSize& size, 
+CatalogCodePanel::CatalogCodePanel( wxWindow* parent, wxWindowID id,
+    const wxPoint& pos, const wxSize& size,
     long style )
-{ 
+{
     Init( );
     Create( parent, id, pos, size, style );
 }
@@ -79,9 +93,9 @@ CatalogCodePanel::CatalogCodePanel( wxWindow* parent, wxWindowID id,
  *
  **************************************************/
 
-bool CatalogCodePanel::Create( wxWindow* parent, wxWindowID id, const wxPoint& pos, 
+bool CatalogCodePanel::Create( wxWindow* parent, wxWindowID id, const wxPoint& pos,
     const wxSize& size, long style )
-{ 
+{
     SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
     wxPanel::Create( parent, id, pos, size, style );
 
@@ -97,7 +111,7 @@ bool CatalogCodePanel::Create( wxWindow* parent, wxWindowID id, const wxPoint& p
  **************************************************/
 
 CatalogCodePanel::~CatalogCodePanel( )
-{ 
+{
 
 }
 
@@ -108,7 +122,7 @@ CatalogCodePanel::~CatalogCodePanel( )
  **************************************************/
 
 void CatalogCodePanel::Init( )
-{ 
+{
     // CatalogCodePanel member initialisation
     m_grid = NULL;
     // CatalogCodePanel member initialisation
@@ -121,7 +135,7 @@ void CatalogCodePanel::Init( )
  **************************************************/
 
 void CatalogCodePanel::CreateControls( )
-{ 
+{
     // CatalogCodePanel content construction
 
     CatalogCodePanel* itemPanel1 = this;
@@ -132,7 +146,7 @@ void CatalogCodePanel::CreateControls( )
     wxBoxSizer* itemBoxSizer2 = new wxBoxSizer( wxVERTICAL );
     itemBoxSizer1->Add( itemBoxSizer2, 1, wxGROW | wxALL, 5 );
 
-    m_grid = new wxGrid( itemPanel1, ID_GRID, wxDefaultPosition, wxSize( 200, 150 ), 
+    m_grid = new wxGrid( itemPanel1, ID_GRID, wxDefaultPosition, wxSize( 200, 150 ),
         wxHSCROLL | wxVSCROLL );
     m_grid->SetDefaultColSize( 100 );
     m_grid->SetDefaultRowSize( 25 );
@@ -141,15 +155,12 @@ void CatalogCodePanel::CreateControls( )
     m_grid->CreateGrid( 0, 3, wxGrid::wxGridSelectCells );
     itemBoxSizer2->Add( m_grid, 1, wxGROW | wxALL, 5 );
 
-    // Connect events and objects
-    //    m_grid->Connect( ID_GRID, wxEVT_CONTEXT_MENU, 
-    //    wxContextMenuEventHandler( CatalogCodePanel::OnContextMenu ), NULL, this );
     // CatalogCodePanel content construction
     for ( int i = 0; i < Catalog::CC_NbrTypes; i++ )
-    { 
+    {
         m_grid->SetColLabelValue( i, Catalog::CC_CatalogCodeNames[ i ] );
     }
-    
+
     SetDataEditable( GetSettings( )->IsCatalogSectionDataEditable( ) );
 
     m_grid->Refresh( );
@@ -163,12 +174,12 @@ void CatalogCodePanel::CreateControls( )
  **************************************************/
 
 wxXmlNode* CatalogCodePanel::InitNewCatCode( )
-{ 
+{
     wxXmlNode* ele = m_entry->AddCode( );
     Catalog::CatalogCode catCode( ele );
     for ( int col = 0; col < Catalog::CC_NbrTypes; col++ )
-    { 
-        catCode.SetAttr( ( Catalog::CatalogCodeTypes )col, "" );
+    {
+        catCode.SetAttr( ( Catalog::CatalogCodeTypes ) col, "" );
     }
     return ele;
 }
@@ -179,9 +190,9 @@ wxXmlNode* CatalogCodePanel::InitNewCatCode( )
  **************************************************/
 
 int CatalogCodePanel::AddNewRow( )
-{ 
+{
     if ( m_entry )
-    { 
+    {
         int cnt = m_grid->GetNumberRows( );
         m_grid->InsertRows( cnt, 1 );
         wxXmlNode* ele = InitNewCatCode( );
@@ -198,56 +209,30 @@ int CatalogCodePanel::AddNewRow( )
  **************************************************/
 
 void CatalogCodePanel::ShowRow( int row )
-{ 
+{
     wxXmlNode* ele = m_catCodeList[ row ];
     Catalog::CatalogCode catCode( ele );
     for ( int col = 0; col < Catalog::CC_NbrTypes; col++ )
-    { 
-        wxString str = catCode.GetAttr( ( Catalog::CatalogCodeTypes )col );
+    {
+        wxString str = catCode.GetAttr( ( Catalog::CatalogCodeTypes ) col );
         m_grid->SetCellValue( row, col, str );
     }
 }
 
 /*
  *
- * Should we show tooltips?
+ *
  *
  **************************************************/
 
 bool CatalogCodePanel::ShowToolTips( )
-{ 
+{
     return true;
 }
 
-/*
- *
- * Get bitmap resources
- *
- **************************************************/
 
-wxBitmap CatalogCodePanel::GetBitmapResource( const wxString& name )
-{ 
-    // Bitmap retrieval
-    // CatalogCodePanel bitmap retrieval
-    wxUnusedVar( name );
-    return wxNullBitmap;
-    // CatalogCodePanel bitmap retrieval
-}
 
-/*
- *
- * Get icon resources
- *
- **************************************************/
 
-wxIcon CatalogCodePanel::GetIconResource( const wxString& name )
-{ 
-    // Icon retrieval
-    // CatalogCodePanel icon retrieval
-    wxUnusedVar( name );
-    return wxNullIcon;
-    // CatalogCodePanel icon retrieval
-}
 
 /*
  *
@@ -256,7 +241,7 @@ wxIcon CatalogCodePanel::GetIconResource( const wxString& name )
  **************************************************/
 
 void CatalogCodePanel::SetStamp( Catalog::Entry* entry )
-{ 
+{
     m_entry = entry;
     ShowEntry( );
 }
@@ -268,12 +253,12 @@ void CatalogCodePanel::SetStamp( Catalog::Entry* entry )
  **************************************************/
 
 void CatalogCodePanel::ShowEntry( )
-{ 
+{
     // new entry to show; clean up the grid
     int row = m_grid->GetNumberRows( );
     m_grid->ClearGrid( );
     if ( row > 0 )
-    { 
+    {
         m_grid->DeleteRows( 0, row );
     }
     m_catCodeList.clear( );
@@ -281,14 +266,14 @@ void CatalogCodePanel::ShowEntry( )
 
     // if the entry is valid
     if ( m_entry && m_entry->IsOK( ) )
-    { 
+    {
         //and if it has catalog codes
         if ( m_entry->HasChildCode( ) )
-        { 
+        {
             // loop through the codes and add them to the grid
             wxXmlNode* ele = m_entry->GetFirstChildCode( );
             while ( ele )
-            { 
+            {
                 m_grid->InsertRows( row, 1 );
                 m_catCodeList.push_back( ele );
 
@@ -301,24 +286,24 @@ void CatalogCodePanel::ShowEntry( )
 }
 
 /*
- * wxEVT_CONTEXT_MENU event handler
+ *
  *
  **************************************************/
 
 void CatalogCodePanel::OnContextMenu( wxContextMenuEvent& event )
-{ 
+{
     if ( GetSettings( )->IsCatalogSectionDataEditable( ) )
-    { 
+    {
         wxPoint point = event.GetPosition( );
         // If from keyboard
         if ( ( point.x == -1 ) && ( point.y == -1 ) )
-        { 
+        {
             wxSize size = GetSize( );
             point.x = size.x / 2;
             point.y = size.y / 2;
         }
         else
-        { 
+        {
             point = ScreenToClient( point );
         }
         wxMenu menu;
@@ -332,18 +317,18 @@ void CatalogCodePanel::OnContextMenu( wxContextMenuEvent& event )
 }
 
 /*
- * wxEVT_GRID_CELL_CHANGED event handler for ID_GRID
+ *  ID_GRID
  *
  **************************************************/
 
 void CatalogCodePanel::OnCellChanged( wxGridEvent& event )
-{ 
+{
     int col = event.GetCol( );
     int row = event.GetRow( );
     wxString str = m_grid->GetCellValue( row, col );
     wxXmlNode* ele = m_catCodeList[ row ];
     Catalog::CatalogCode catCode( ele );
-    catCode.SetAttr( ( Catalog::CatalogCodeTypes )col, str );
+    catCode.SetAttr( ( Catalog::CatalogCodeTypes ) col, str );
 
     event.Skip( );
 }
@@ -355,23 +340,23 @@ void CatalogCodePanel::OnCellChanged( wxGridEvent& event )
  **************************************************/
 
 void CatalogCodePanel::OnContextPopup( wxCommandEvent& event )
-{ 
+{
     int id = event.GetId( );
     switch ( id )
-    { 
+    {
     case wxIDAddItem:
-    { 
+    {
         AddNewRow( );
         break;
     }
     case wxIDDeleteItem:
-    { 
+    {
         break;
     }
     }
 }
 
 void CatalogCodePanel::SetDataEditable( bool val )
-{ 
-     m_grid->EnableEditing( val );
+{
+    m_grid->EnableEditing( val );
 }

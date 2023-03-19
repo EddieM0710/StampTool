@@ -23,7 +23,7 @@
  **************************************************/
 
 
-// For compilers that support precompilation, includes "wx/wx.h".
+
 #include "wx/wxprec.h"
 
 #ifdef __BORLANDC__
@@ -202,40 +202,13 @@ void MiscellaneousDataPanel::CreateControls( )
 
 }
 
-/*
- * Should we show tooltips?
- */
+
 
 bool MiscellaneousDataPanel::ShowToolTips( )
 { 
     return true;
 }
 
-/*
- * Get bitmap resources
- */
-
-wxBitmap MiscellaneousDataPanel::GetBitmapResource( const wxString &name )
-{ 
-    // Bitmap retrieval
-     // MiscellaneousDataPanel bitmap retrieval
-    wxUnusedVar( name );
-    return wxNullBitmap;
-     // MiscellaneousDataPanel bitmap retrieval
-}
-
-/*
- * Get icon resources
- */
-
-wxIcon MiscellaneousDataPanel::GetIconResource( const wxString &name )
-{ 
-    // Icon retrieval
-     // MiscellaneousDataPanel icon retrieval
-    wxUnusedVar( name );
-    return wxNullIcon;
-     // MiscellaneousDataPanel icon retrieval
-}
 
 void MiscellaneousDataPanel::SetStamp( Catalog::Entry *stamp )
 { 
@@ -263,7 +236,7 @@ void MiscellaneousDataPanel::ShowStamp( )
 }
 
 /*
- * wxEVT_COMMAND_BUTTON_CLICKED event handler for ID_GOBUTTON
+ *   ID_GOBUTTON
  */
 
 void MiscellaneousDataPanel::OnColnectButtonClick( wxCommandEvent &event )
@@ -281,44 +254,33 @@ void MiscellaneousDataPanel::OnColnectButtonClick( wxCommandEvent &event )
     wxString link = m_link->GetValue( );
     wxString cmd = wxString::Format( "/usr/bin/firefox --new-tab %s &", link );
     system( cmd.fn_str( )  );
-     // wxEVT_COMMAND_BUTTON_CLICKED event handler for ID_GOBUTTON in
-    //MiscellaneousData.
-    // Before editing this code, remove the block markers.
     event.Skip( );
-     // wxEVT_COMMAND_BUTTON_CLICKED event handler for ID_GOBUTTON in
-    //MiscellaneousData.
+ 
 }
 
 /*
- * wxEVT_COMMAND_BUTTON_CLICKED event handler for ID_BUTTON
+ *   ID_BUTTON
  */
 
 void MiscellaneousDataPanel::OnMysticButtonClick( wxCommandEvent &event )
 { 
-     // wxEVT_COMMAND_BUTTON_CLICKED event handler for ID_BUTTON in
-    //MiscellaneousData.
-    // Before editing this code, remove the block markers.
+
     event.Skip( );
-     // wxEVT_COMMAND_BUTTON_CLICKED event handler for ID_BUTTON in
-    //MiscellaneousData.
+
 }
 
 /*
- * wxEVT_COMMAND_BUTTON_CLICKED event handler for ID_NPMBUTTON
+ *   ID_NPMBUTTON
  */
 
 void MiscellaneousDataPanel::OnNPMButtonClick( wxCommandEvent &event )
 { 
-     // wxEVT_COMMAND_BUTTON_CLICKED event handler for ID_NPMBUTTON in
-    //MiscellaneousData.
-    // Before editing this code, remove the block markers.
+
     event.Skip( );
-     // wxEVT_COMMAND_BUTTON_CLICKED event handler for ID_NPMBUTTON in
-    //MiscellaneousData.
 }
 
 /*
- * wxEVT_COMMAND_BUTTON_CLICKED event handler for ID_EBAYBUTTON
+ *   ID_EBAYBUTTON
  */
 
 void MiscellaneousDataPanel::OneBayButtonClick( wxCommandEvent &event )
@@ -327,12 +289,9 @@ void MiscellaneousDataPanel::OneBayButtonClick( wxCommandEvent &event )
     //     wxString cmd = wxString::Format( "/usr/bin/firefox --new-tab %s", 
     //     link ); system ( cmd.fn_str( ) );
     // "https://www.ebay.com/sch/i.html?_from = R40&_nkw = us+stamps+%s&_sacat = 261&LH_TitleDesc = 0&_osacat = 261&_odkw = us+stamps"
-     // wxEVT_COMMAND_BUTTON_CLICKED event handler for ID_EBAYBUTTON in
-    //MiscellaneousData.
-    // Before editing this code, remove the block markers.
+  
     event.Skip( );
-     // wxEVT_COMMAND_BUTTON_CLICKED event handler for ID_EBAYBUTTON in
-    //MiscellaneousData.
+
 }
 
 void MiscellaneousDataPanel::SetDataEditable( bool val )

@@ -23,7 +23,7 @@
  **************************************************/
 
 
-// For compilers that support precompilation, includes "wx/wx.h".
+
 #include "wx/wxprec.h"
 
 #ifdef __BORLANDC__
@@ -164,7 +164,7 @@ void LabeledTextBox::CreateControls( )
 
 /*
  *
- * Should we show tooltips?
+ * 
  *
  **************************************************/
 bool LabeledTextBox::ShowToolTips( )
@@ -172,34 +172,6 @@ bool LabeledTextBox::ShowToolTips( )
     return true;
 }
 
-/*
- *
- * Get bitmap resources
- *
- **************************************************/
-wxBitmap LabeledTextBox::GetBitmapResource( const wxString &name )
-{ 
-    // Bitmap retrieval
-     // LabeledTextBox bitmap retrieval
-    wxUnusedVar( name );
-    return wxNullBitmap;
-     // LabeledTextBox bitmap retrieval
-}
-
-
-/*
- *
- * GetIconResource( const wxString &name )
- *
- **************************************************/
-wxIcon LabeledTextBox::GetIconResource( const wxString &name )
-{ 
-    // Icon retrieval
-     // LabeledTextBox icon retrieval
-    wxUnusedVar( name );
-    return wxNullIcon;
-     // LabeledTextBox icon retrieval
-}
 
 void LabeledTextBox::SetEditable( bool value )
 { 
@@ -230,7 +202,7 @@ wxString LabeledTextBox::GetValue( )
 
 /*
  *
- * wxEVT_COMMAND_TEXT_UPDATED event handler for ID_LABELEDTEXTBOX_TEXTCTRL
+ *   ID_LABELEDTEXTBOX_TEXTCTRL
  *
  **************************************************/
 
@@ -245,10 +217,7 @@ void LabeledTextBox::OnTextctrlTextUpdated( wxCommandEvent &event )
 //        m_stamp->SetAttr( m_type, m_idText->GetValue( ) );
         m_value->SetModified( true );
     }
-     // wxEVT_COMMAND_TEXT_UPDATED event handler for ID_LABELEDTEXTBOX_TEXTCTRL in
-    //LabeledTextBox.
-    // Before editing this code, remove the block markers.
+
     event.Skip( );
-     // wxEVT_COMMAND_TEXT_UPDATED event handler for ID_LABELEDTEXTBOX_TEXTCTRL in
-    //LabeledTextBox.
+
 }

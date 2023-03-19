@@ -25,35 +25,35 @@
 #define _DEFINEPERIODSDIALOG_H_
 
 
- /*!
-  * Includes
-  */
+ /*
+ * Includes
+ */
 
 #include "gui/GuiDefs.h"
 
 
-  /*!
-   * Forward declarations
-   */
+ /*
+ * Forward declarations
+ */
 
-   // forward declarations
-   // forward declarations
 
-   /*!
-    * Control identifiers
-    */
 
-    // control identifiers
+
+ /*
+ * Control identifiers
+ */
+
+
 
 #define SYMBOL_DEFINEPERIODSDIALOG_STYLE wxCAPTION | wxRESIZE_BORDER | wxSYSTEM_MENU | wxCLOSE_BOX | wxTAB_TRAVERSAL
 #define SYMBOL_DEFINEPERIODSDIALOG_TITLE _( "DefinePeriods" )
 #define SYMBOL_DEFINEPERIODSDIALOG_IDNAME ID_DEFINEPERIODSDIALOG
 #define SYMBOL_DEFINEPERIODSDIALOG_SIZE wxSize( 400, 300 )
 #define SYMBOL_DEFINEPERIODSDIALOG_POSITION wxDefaultPosition
-// control identifiers
 
 
-/*!
+
+ /*
  * DefinePeriodsDialog class declaration
  */
 
@@ -73,67 +73,35 @@ public:
         ID_MODERNYEAR
     };
 
-    /// Constructors
+
     DefinePeriodsDialog( );
     DefinePeriodsDialog( wxWindow* parent, wxWindowID id = SYMBOL_DEFINEPERIODSDIALOG_IDNAME, const wxString& caption = SYMBOL_DEFINEPERIODSDIALOG_TITLE, const wxPoint& pos = SYMBOL_DEFINEPERIODSDIALOG_POSITION, const wxSize& size = SYMBOL_DEFINEPERIODSDIALOG_SIZE, long style = SYMBOL_DEFINEPERIODSDIALOG_STYLE );
 
-    /// Creation
     bool Create( wxWindow* parent, wxWindowID id = SYMBOL_DEFINEPERIODSDIALOG_IDNAME, const wxString& caption = SYMBOL_DEFINEPERIODSDIALOG_TITLE, const wxPoint& pos = SYMBOL_DEFINEPERIODSDIALOG_POSITION, const wxSize& size = SYMBOL_DEFINEPERIODSDIALOG_SIZE, long style = SYMBOL_DEFINEPERIODSDIALOG_STYLE );
 
-    /// Destructor
     ~DefinePeriodsDialog( );
 
-    /// Initialises member variables
     void Init( );
 
-    /// Creates the controls and sizers
     void CreateControls( );
 
-    // DefinePeriodsDialog event handler declarations
-
-        /// wxEVT_COMMAND_TEXT_UPDATED event handler for ID_ANTIQUE
     void OnAntiqueTextUpdated( wxCommandEvent& event );
-
-    /// wxEVT_COMMAND_TEXT_UPDATED event handler for ID_ANTIQUEYEAR
     void OnAntiqueYearTextUpdated( wxCommandEvent& event );
-
-    /// wxEVT_COMMAND_TEXT_UPDATED event handler for ID_CLASSIC
     void OnClassicTextUpdated( wxCommandEvent& event );
-
-    /// wxEVT_COMMAND_TEXT_UPDATED event handler for ID_MODERN
     void OnModernTextUpdated( wxCommandEvent& event );
-
-    /// wxEVT_COMMAND_TEXT_UPDATED event handler for ID_MODERNYEAR
     void OnModernYearTextUpdated( wxCommandEvent& event );
-
-    /// wxEVT_COMMAND_BUTTON_CLICKED event handler for wxID_CANCEL
     void OnCancelClick( wxCommandEvent& event );
-
-    /// wxEVT_COMMAND_BUTTON_CLICKED event handler for wxID_OK
     void OnOkClick( wxCommandEvent& event );
 
-    // DefinePeriodsDialog event handler declarations
 
-    // DefinePeriodsDialog member function declarations
-
-        /// Retrieves bitmap resources
-    wxBitmap GetBitmapResource( const wxString& name );
-
-    /// Retrieves icon resources
-    wxIcon GetIconResource( const wxString& name );
-    // DefinePeriodsDialog member function declarations
-
-        /// Should we show tooltips?
     static bool ShowToolTips( );
     bool IsDirty( ) { return m_dirty; };
 
-    // DefinePeriodsDialog member variables
     wxTextCtrl* m_antiqueTextBox;
     wxTextCtrl* m_AntiqueYear;
     wxTextCtrl* m_classicTextBox;
     wxTextCtrl* m_modernTextBox;
     wxTextCtrl* m_modernYear;
-    // DefinePeriodsDialog member variables
     bool m_dirty;
 };
 

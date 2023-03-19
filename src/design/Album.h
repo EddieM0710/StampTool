@@ -24,62 +24,38 @@
 
 #ifndef Album_H
 #define Album_H
+#include <wx/font.h>
 
 #include "design/AlbumBase.h"
 #include "design/DesignDefs.h"
 #include "utils/Project.h"
 #include "utils/Settings.h"
-#include <wx/font.h>
-#include "design/FontInfo.h"
+#include "utils/FontList.h"
 
 namespace Design { 
 
     /**
-     * @brief Album layout object; inherits from LayoutBase. This is the top  LayoutBase for holding all the objecs within the album
+     * @brief Album layout object; inherits from LayoutBase. 
+     * This is the top LayoutBase for holding all the objecs within the album
      *
      **************************************************/
     class Album : public AlbumBase
     { 
     public:
 
-        /**
-         * @brief Construct a new Album object. The top layout LayoutBase
-         * for holding all the objecs within the album
-         *
-         **************************************************/
+        // Construct a new Album object. The top layout LayoutBase
+        // for holding all the objecs within the album
         Album(  wxXmlNode* node ) : AlbumBase( node )
         { 
             SetNodeType( AT_Album );
-            m_defaultTitleFont = GetSettings()->GetDefaultTitleFontNdx( );
-            m_defaultCatNbrFont = GetSettings()->GetDefaultCatNbrFontNdx( );
-            m_defaultTextFont =  GetSettings()->GetDefaultTextFontNdx( );
-        //    InitFonts( node );
-
         };
   
-        /**
-         * @brief Destroy the Album object
-         *
-         **************************************************/
+        // Destroy the Album object
         ~Album( ) { };
 
-        /**
-         * @brief calculate the layout and update all the pdf files based on tht.
-         *
-         **************************************************/
+        void MakeAlbum( );
         void MakePDFAlbum( );
-        void DrawPDF( );
-
-
-        /**
-         * @brief  Does the layout for each child. Goes to the bottom
-         * of each child container object ( row, column, page )
-         * and begin filling in position relative to the parent
-         *
-         * @return true
-         * @return false
-         **************************************************/
-        void UpdatePositions( );
+        wxString DrawPDF( );
 
         /**
          * @brief init drills down to the lowest layout object with an actual size
@@ -91,144 +67,69 @@ namespace Design {
         bool UpdateMinimumSize( );
 
         void UpdateSizes( );
-        
+
+        /**
+         * @brief  Does the layout for each child. Goes to the bottom
+         * of each child container object ( row, column, page )
+         * and begin filling in position relative to the parent
+         *
+         * @return true
+         * @return false
+         **************************************************/
+        void UpdatePositions( );
  
-        /**
-         * @brief Get the Width
-         *
-         * @return double
-         **************************************************/
+        NodeStatus ValidateNode( );
+      
         double GetWidth( );
-
-        /**
-         * @brief Get the Height
-         *
-         * @return double
-         **************************************************/
-        double GetHeight( );
-
-
-        /**
-         * @brief Get the Page Width
-         *
-         * @return double
-         **************************************************/
         double GetPageWidth( );
         wxString GetPageWidthStr( );
         void SetPageWidth( wxString str );
 
-        /**
-         * @brief Get the Page Height
-         *
-         * @return double
-         **************************************************/
+        double GetHeight( );
         double GetPageHeight( );
         wxString GetPageHeightStr( );
         void SetPageHeight( wxString str );
 
-        /**
-         * @brief Get the Top Margin
-         *
-         * @return double
-         **************************************************/
         double GetTopMargin( );
         wxString GetTopMarginStr( );
         void SetTopMargin( wxString str );
 
-        /**
-         * @brief Get the Bottom Margin
-         *
-         * @return double
-         **************************************************/
         double GetBottomMargin( );
         wxString GetBottomMarginStr( );
         void SetBottomMargin( wxString str );
 
-        /**
-         * @brief Get the Right Margin
-         *
-         * @return double
-         **************************************************/
         double GetRightMargin( );
         wxString GetRightMarginStr( );
         void SetRightMargin( wxString str );
 
-        /**
-         * @brief Get the Left Margin
-         *
-         * @return double
-         **************************************************/
         double GetLeftMargin( );
         wxString GetLeftMarginStr( );
         void SetLeftMargin( wxString str );
 
-        /**
-         * @brief Get the Border Size
-         *
-         * @return double
-         **************************************************/
         double GetBorderSize( );
         wxString GetBorderSizeStr( );
         void SetBorderSize( wxString str );
-
-        /**
-         * @brief Get the Border File Name
-         *
-         * @return wxString
-         **************************************************/
         wxString GetBorderFileName( );
 
-
-        /**
-         * @brief Get the Doc Name
-         *
-         * @return wxString
-         **************************************************/
         wxString GetDocName( );
         void SetDocName( wxString str );
 
-
-        /**
-         * @brief Get the Page Parameters
-         *
-         * @param width
-         * @param height
-         * @param topMargin
-         * @param bottomMargin
-         * @param rightMargin
-         * @param leftMargin
-         **************************************************/
         void GetPageParameters( wxString& width, wxString& height, wxString& topMargin, 
             wxString& bottomMargin, wxString& rightMargin, wxString& leftMargin );
-
-        NodeStatus ValidateNode( );
         void Save( wxXmlNode* xmlNode );
         void DumpLayout(   );
 
-        FontInfo* FindFontInfo( wxFont* font, wxColor color );
-        int GetDefaultTitleFontNdx ( )
-        { 
-            return m_defaultTitleFont;
-        };
-        int GetDefaultCatNbrFontNdx ( )
-        { 
-            return m_defaultCatNbrFont;
-        }
-        int GetDefaultTextFontNdx ( )
-        { 
-            return m_defaultTextFont;
-        }
+        int GetAppPrefTitleFontNdx ( );
+        int GetAppPrefCatNbrFontNdx ( );
+        int GetAppPrefTextFontNdx ( );
 
-    //    void InitFonts( wxXmlNode* node );
+        bool GetShowTitle( ){ return String2Bool( GetAttrStr( AT_ShowTitle ) ); };
+        void SetShowTitle( bool val ){ SetAttrStr( AT_ShowTitle, Bool2String( val ) ); };
+        bool GetShowCatNbr( ){ return String2Bool( GetAttrStr( AT_CatNbr ) ); };
+        void SetShowCatNbr( bool val ){ SetAttrStr( AT_CatNbr, Bool2String( val ) ); };
 
     private:
-        // index of title font in FontArray
-        int m_defaultTitleFont;
-        // index of catalog number font in FontArray
-        int m_defaultCatNbrFont;
-        // index of catalog number font in FontArray
-        int m_defaultTextFont;
-                
+              
     };
 }
 #endif

@@ -38,11 +38,7 @@ namespace Design {
     class Row : public LayoutBase
     { 
     public:
-        /**
-         * @brief Construct a new Row object
-         *
-         * @param parent
-         **************************************************/
+
         Row(  wxXmlNode* node ) : LayoutBase( node )
         { 
             SetNodeType( AT_Row ); 
@@ -50,11 +46,7 @@ namespace Design {
             SetShowFrame( false );
             SetShowTitle( false );
         };
-
-        /**
-         * @brief Destroy the Row object
-         *
-         **************************************************/
+        
         ~Row( ) { };
 
         /**
@@ -92,16 +84,9 @@ namespace Design {
 
         void Save( wxXmlNode* xmlNode );
 
-        // returns the index into FontArray
-        int GetTitleFont( )
-        { 
-//            if ( getch )
-            return 0;
-        }
         void ReportLayout(  );
 
     private:
-        bool m_showCatNbr;
         bool m_showTitle;
         DebugString m_debugString;
     };

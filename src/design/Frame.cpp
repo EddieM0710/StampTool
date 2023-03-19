@@ -106,7 +106,6 @@ namespace Design {
         { 
             str << "invalid Height/width\n";
         }
-        std::cout << str;
         return str;
     };
 }

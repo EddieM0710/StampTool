@@ -6,18 +6,18 @@
  * @date 2022-02-04
  *
  * @copyright Copyright ( c ) 2022
- * 
+ *
  * This file is part of StampTool.
  *
- * StampTool is free software: you can redistribute it and/or modify it under the 
- * terms of the GNU General Public License as published by the Free Software Foundation, 
+ * StampTool is free software: you can redistribute it and/or modify it under the
+ * terms of the GNU General Public License as published by the Free Software Foundation,
  * either version 3 of the License, or any later version.
  *
- * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY 
- * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+ * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
+ * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
- * You should have received a copy of the GNU General Public License along with 
+ * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
  **************************************************/
@@ -30,16 +30,16 @@
 #include "design/LayoutBase.h"
 #include "utils/DebugString.h"
 
-namespace Design { 
+namespace Design {
 
 
-    typedef enum { 
-        AT_InvalidImage = 0, 
-        AT_InvalidHeight, 
-        AT_InvalidWidth, 
+    typedef enum {
+        AT_InvalidImage = 0,
+        AT_InvalidHeight,
+        AT_InvalidWidth,
         AT_NbrStampErrorTypes
     }StampErrorType;
-    
+
     extern const char* ErrorStrings[ AT_NbrStampErrorTypes ];
 
     /**
@@ -53,8 +53,8 @@ namespace Design {
      * The 3rd one is embedded in the 2nd one and is the image of the object.
      *
      **************************************************/
-    class Stamp : public LayoutBase
-    { 
+    class Stamp: public LayoutBase
+    {
     public:
 
         /**
@@ -62,29 +62,27 @@ namespace Design {
          *
          * @param parent
          **************************************************/
-        Stamp(  wxXmlNode* node ) : LayoutBase( node )
-        { 
+        Stamp( wxXmlNode* node ): LayoutBase( node )
+        {
             SetNodeType( AT_Stamp );
             SetObjectName( AlbumBaseNames[ GetNodeType( ) ] );
-            m_title = GetAttrStr( Design::AT_Name );
             SetShowCatNbr( true );
             SetShowTitle( true );
             wxString height = GetAttrStr( Design::AT_Height );
-            SetStampHeight( height ) ;
+            SetStampHeight( height );
             wxString width = GetAttrStr( Design::AT_Width );
-            SetStampWidth( width ) ;
+            SetStampWidth( width );
             CalcFrame( );
         };
-        
-        Stamp(  ) : LayoutBase( (wxXmlNode*)0 )
-        { 
+
+        Stamp( ): LayoutBase( ( wxXmlNode* ) 0 )
+        {
             SetNodeType( AT_Stamp );
             SetObjectName( AlbumBaseNames[ AT_Stamp ] );
-            m_title = "New Stamp";
             SetShowCatNbr( true );
             SetShowTitle( true );
-            SetStampHeight( "10.0" ) ;
-            SetStampWidth( "10.0" ) ;
+            SetStampHeight( "10.0" );
+            SetStampWidth( "10.0" );
             CalcFrame( );
         };
 
@@ -115,7 +113,7 @@ namespace Design {
         void UpdatePositions( );
 
         /**
-         * 
+         *
          * @brief Builds the frame container for the stamp.  The Object is built
          * up of 3 objects. The outer object is the frame container
          * for the stamp frame and the title text. The text is the only thing visible.
@@ -125,33 +123,33 @@ namespace Design {
          * @param parent
          * @return wxXmlNode*
          **************************************************/
-//        wxXmlNode* Write( wxXmlNode* parent );
+         //        wxXmlNode* Write( wxXmlNode* parent );
 
         NodeStatus ValidateNode( );
         void ClearError( );
         void SetError( StampErrorType type, NodeStatus status );
         NodeStatus GetStatus( );
-        
-        void SetStampHeight( double val ) ;
-        void SetStampHeight( wxString str ) ;
+
+        void SetStampHeight( double val );
+        void SetStampHeight( wxString str );
         double GetStampHeight( );
         wxString GetStampHeightStr( );
         void SetStampWidth( double val );
-        void SetStampWidth( wxString str ) ;
+        void SetStampWidth( wxString str );
         double GetStampWidth( );
-        wxString GetStampWidthStr( ) ;
+        wxString GetStampWidthStr( );
 
-        /* 
+        /*
          * @brief Draw object on screen
-         * 
+         *
          * @param dc current device context
          * @param x position in MM from page top
-         * @param y position in MM from page left 
-         */        
-        void Draw( wxDC &dc, double x, double y );
+         * @param y position in MM from page left
+         */
+        void Draw( wxDC& dc, double x, double y );
         void DrawPDF( wxPdfDocument* doc, double x, double y );
 
-        void DrawID( wxDC& dc, double x, double y  );
+        void DrawID( wxDC& dc, double x, double y );
         void DrawIDPDF( wxPdfDocument* doc, double x, double y );
         //void DrawTitle( wxDC&, wxRect rect  );
         //void MakeMultiLine(  wxDC& dc, wxString text, double width  );
@@ -160,27 +158,30 @@ namespace Design {
         void Save( wxXmlNode* xmlNode );
         wxImage* GetStampImage( );
         wxString GetStampImageFilename( );
-        bool GetShowTitle( ){ return String2Bool( GetAttrStr( AT_ShowTitle ) ); };
-        void SetShowTitle( bool val ){ SetAttrStr( AT_ShowTitle, Bool2String( val ) ); };
+        bool GetShowTitle( ) { return String2Bool( GetAttrStr( AT_ShowTitle ) ); };
+        void SetShowTitle( bool val ) { SetAttrStr( AT_ShowTitle, Bool2String( val ) ); };
 
-        bool GetShowCatNbr( ){ return String2Bool( GetAttrStr( AT_ShowCatNbr ) ); };
-        void SetShowCatNbr( bool val ){ SetAttrStr( AT_ShowCatNbr, Bool2String( val ) ); };
-        
-//        wxString GetImageFilename( ){ return m_imageFilename; };
-//        void SetImageFilename( wxString str ){  m_imageFilename = str; };
+        bool GetShowCatNbr( )
+        {
+            wxString catStr = GetAttrStr( AT_ShowCatNbr );
+            if ( catStr.IsEmpty( ) )
+            {
+                //default true;
+                return true;
+            }
+            else
+            {
+                return String2Bool( catStr );
+            }
+        };
+        void SetShowCatNbr( bool val ) { SetAttrStr( AT_ShowCatNbr, Bool2String( val ) ); };
 
-        void ReportLayout(  );
+        void ReportLayout( );
 
         void DumpStamp( wxTextCtrl* positionTextCtrl );
     private:
 
-        /**
-         * @brief The name of the stamp to display
-         *
-         **************************************************/
-//        wxString m_name;
-
-        // The LayoutBase for this objects contains the frame parameters for the stamp Album object. 
+        // The LayoutBase for this object contains the frame parameters for the stamp Album object. 
         // It is 10% Larger than the actual Stamp.
         // The m_stampFrame has the parameters of the actual Stamp.
         // The m_stampImageFrame has the parameters for the printed album image. 
@@ -188,7 +189,6 @@ namespace Design {
         // These parameters are all in MM.
         Frame m_stampFrame;
         Frame m_stampImageFrame;
-        //Title m_title;
 
         NodeStatus m_error[ AT_NbrStampErrorTypes ];
         bool m_showCatNbr;

@@ -26,7 +26,7 @@
 #define AlbumBase_h
 
 #include "design/XMLBase.h"
-#include "design/FontInfo.h"
+#include "utils/FontList.h"
 #include "design/DesignData.h"
 #include <wx/treectrl.h>
 
@@ -34,8 +34,6 @@
 namespace Design { 
 
     //   class AlbumBase;
-
-       //typedef std::vector<AlbumBase*> ChildList;
 
            /**
             * @brief Base class for all layout objects. The layout objects are
@@ -45,37 +43,17 @@ namespace Design {
     class AlbumBase: public XMLBase
     { 
     public:
-        /**
-         * @brief Unused; Construct a new Album Design Object object
-         *
-         **************************************************/
-        AlbumBase( ) : XMLBase( (wxXmlNode*) 0 )
-        { 
-            m_titleFont = -1;
-            m_textFont = -1;
-            m_catNbrFont = -1;
-        };
+  
+        AlbumBase( ) : XMLBase( (wxXmlNode*) 0 ){ };
 
-        /**
-         * @brief Construct a new Album Design Object
-         *
-         * @param name
-         **************************************************/
         AlbumBase( wxXmlNode* ele ) : XMLBase( ele )
         { 
-            m_titleFont = -1;
-            m_textFont = -1;
-            m_catNbrFont = -1;
-            LoadFonts( ele );
+
         }
 
         ~AlbumBase( );
 
         int GetNbrChildren( );
-
-//        virtual wxXmlNode* Write( wxXmlNode* parent ) = 0;
-
-        void DeleteChild( AlbumBase* node );
 
         AlbumBase* GetParent( );
         bool HasChildren( );
@@ -83,9 +61,7 @@ namespace Design {
         wxTreeItemId GetTreeItemId( ) { return m_treeID; };
         void SetTreeItemId( wxTreeItemId id ) { m_treeID = id; };
 
-
         virtual NodeStatus ValidateNode( ) = 0;
-
 
         NodeStatus ValidateChildren( AlbumBase* node );
         NodeStatus GetNodeStatus( ) { return m_nodeValid; };
@@ -96,26 +72,51 @@ namespace Design {
 
         wxArrayString* GetErrorArray( ){ return &m_errorArray; };
 
-        wxFont* GetTitleFont();
+        int GetTitleFontNdx( );
+        int GetTextFontNdx( );
+        int GetCatNbrFontNdx( );
 
-        wxFont* GetTextFont();
+        wxFont GetTitleFont( );
+        wxFont GetTextFont( );
+        wxFont GetCatNbrFont( );
 
-        wxFont* GetCatNbrFont();
+        wxColour GetTitleColor( );
+        wxColour GetTextColor( );
+        wxColour GetCatNbrColor( );
 
-    void LoadFonts( wxXmlNode* node );
-  
+        void SetTitleFont( wxFont font, wxColour color );
+        void SetTextFont( wxFont font, wxColour color );
+        void SetCatNbrFont( wxFont font, wxColour color );
+
+        // resets the Catalog Nbr Font to the default CatNbr Font
+        void DefaultCatNbrFont(){ m_catNbrFont.Default( );  };
+
+        // resets the Title Font to the default Title Font
+        void DefaultTitleFont(){ m_titleFont.Default( );  };
+
+        // resets the Text Font to the default Text Font
+        void DefaultTextFont(){ m_textFont.Default( );  };
+
+        bool IsDefaultTitleFont( int ndx );
+        bool IsDefaultTextFont( int ndx );
+        bool IsDefaultCatNbrFont( int ndx );
+
+        void LoadFonts( wxXmlNode* node );
+        void SaveFonts( wxXmlNode* parent );
+        void DumpFont( wxString Level );
+
 
     private:
 
         wxTreeItemId m_treeID;
         wxArrayString m_errorArray;
          
-        // index of title font in FontArray
-        int m_titleFont;
-        // index of text font in FontArray
-        int m_textFont;
-        // index of catalog number font in FontArray
-        int m_catNbrFont;
+        // index of title font in FontMap
+        Utils::FontNdx m_titleFont;
+        // index of text font in FontMap
+        Utils::FontNdx m_textFont;
+        // index of catalog number font in FontMap
+        Utils::FontNdx m_catNbrFont;
 
     protected:
 

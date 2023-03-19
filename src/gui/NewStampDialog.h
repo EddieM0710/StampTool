@@ -25,32 +25,32 @@
 #define _NEWSTAMPDIALOG_H_
 
 
- /*!
+ /*
   * Includes
   */
 
 #include "catalog/Entry.h"
 #include "gui/GuiDefs.h"
 
-  /*!
+  /*
    * Forward declarations
    */
 class LabeledTextBox;
 
-/*!
+/*
  * Control identifiers
  */
 
- // control identifiers
+ 
 #define SYMBOL_NEWSTAMPDIALOG_STYLE wxCAPTION | wxRESIZE_BORDER | wxSYSTEM_MENU | wxCLOSE_BOX | wxTAB_TRAVERSAL
 #define SYMBOL_NEWSTAMPDIALOG_TITLE _( "New Stamp Dialog" )
 #define SYMBOL_NEWSTAMPDIALOG_IDNAME ID_NEWSTAMPDIALOG
 #define SYMBOL_NEWSTAMPDIALOG_SIZE wxSize( 400, 300 )
 #define SYMBOL_NEWSTAMPDIALOG_POSITION wxDefaultPosition
-// control identifiers
 
 
-/*!
+
+/*
  * NewStampDialog class declaration
  */
 
@@ -73,48 +73,38 @@ public:
         ID_WIDTHTEXTBOX,
         ID_HEIGHTTEXTBOX
     };
-    /// Constructors
+    
     NewStampDialog( );
     NewStampDialog( wxWindow* parent, wxWindowID id = SYMBOL_NEWSTAMPDIALOG_IDNAME, const wxString& caption = SYMBOL_NEWSTAMPDIALOG_TITLE, const wxPoint& pos = SYMBOL_NEWSTAMPDIALOG_POSITION, const wxSize& size = SYMBOL_NEWSTAMPDIALOG_SIZE, long style = SYMBOL_NEWSTAMPDIALOG_STYLE );
 
-    /// Creation
+    
     bool Create( wxWindow* parent, wxWindowID id = SYMBOL_NEWSTAMPDIALOG_IDNAME, const wxString& caption = SYMBOL_NEWSTAMPDIALOG_TITLE, const wxPoint& pos = SYMBOL_NEWSTAMPDIALOG_POSITION, const wxSize& size = SYMBOL_NEWSTAMPDIALOG_SIZE, long style = SYMBOL_NEWSTAMPDIALOG_STYLE );
 
-    /// Destructor
+    
     ~NewStampDialog( );
 
-    /// Initialises member variables
+    
     void Init( );
 
-    /// Creates the controls and sizers
+    
     void CreateControls( );
 
     // NewStampDialog event handler declarations
 
-        /// wxEVT_COMMAND_CHOICE_SELECTED event handler for ID_EMISSIONCHOICE
+        ///   ID_EMISSIONCHOICE
     void OnEmissionchoiceSelected( wxCommandEvent& event );
 
-    /// wxEVT_COMMAND_CHOICE_SELECTED event handler for ID_FORMATCHOICE
+    ///   ID_FORMATCHOICE
     void OnFormatchoiceSelected( wxCommandEvent& event );
 
-    /// wxEVT_COMMAND_BUTTON_CLICKED event handler for wxID_CANCEL
+    ///   wxID_CANCEL
     void OnCancelClick( wxCommandEvent& event );
 
-    /// wxEVT_COMMAND_BUTTON_CLICKED event handler for wxID_OK
+    ///   wxID_OK
     void OnOkClick( wxCommandEvent& event );
 
-    // NewStampDialog event handler declarations
-
-    // NewStampDialog member function declarations
-
-        /// Retrieves bitmap resources
-    wxBitmap GetBitmapResource( const wxString& name );
-
-    /// Retrieves icon resources
-    wxIcon GetIconResource( const wxString& name );
-    // NewStampDialog member function declarations
-
-        /// Should we show tooltips?
+ 
+        
     static bool ShowToolTips( );
 
     void UpdateStamp( );

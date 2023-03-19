@@ -28,6 +28,7 @@
 #include "utils/StampList.h"
 #include "catalog/CatalogData.h"
 #include "catalog/CatalogSectionData.h"
+#include "utils/FontList.h"
 
 namespace Design { class DesignData; };
 namespace Catalog { class CatalogSectionData; };
@@ -194,6 +195,7 @@ public:
     void SetAlbumImagePanel( AlbumImagePanel* albumImagePanel ) { m_albumImagePanel = albumImagePanel; };
     wxString GetImageFilename( wxString stampId );
     wxString GetImagePath( );
+    Utils::FontList* GetFontList(){ return &m_fontList; };
 
     void SetDirty( bool state = true ) { m_dirty = state; };
     // Is project dirty?
@@ -207,6 +209,7 @@ private:
     Catalog::CatalogData m_catalogData;
    // int m_catalogSectionDataNdx;
     Design::DesignData* m_designData;
+    Utils::FontList m_fontList;
 
     CatalogTreeCtrl* m_catalogPageTreeCtrl;
     CatalogTreeCtrl* m_albumPageTreeCtrl;

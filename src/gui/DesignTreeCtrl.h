@@ -116,6 +116,7 @@ public:
      * @return { wxString| :
      **************************************************/
     wxString GetDesc( ) const { return m_desc; };
+    void SetDesc( wxString desc ) { m_desc = desc; };
 
     /**
      *
@@ -401,7 +402,7 @@ public:
 
     Design::LayoutBase* GetSelectedNode( );
     void ShowAlbumDetails( wxTreeItemId treeID, Design::AlbumBase* node );
-    void ShowStampDetails( wxTreeItemId id, Design::AlbumBase* node );
+    void ShowStampDetails( wxTreeItemId id );
     void ShowPageDetails( wxTreeItemId treeID, Design::AlbumBase* node );
     void ShowRowDetails( wxTreeItemId id, Design::AlbumBase* node );
     void ShowColDetails( wxTreeItemId id, Design::AlbumBase* node );

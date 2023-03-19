@@ -27,7 +27,6 @@
 
 #include "Defs.h"
 #include "design/DesignDefs.h"
-#include "design/FontInfo.h"
 #include "wx/xml/xml.h"
 #include <wx/string.h>
 #include <wx/treebase.h>
@@ -67,9 +66,15 @@ namespace Design {
 
         // create a new design document with default data
         void LoadDefaultDocument( );
-
+    
+        /// @brief Save the DesignData to an xml file  
+        /// @param filename 
         void SaveXML( wxString filename );
+
+        // transfers the DesignData tree to an xml file
         void SaveDesignTree( );
+
+        // loads an xml file into memory 
         bool LoadXML( wxString filename );
 
         Album* GetAlbum( ) { return m_album; };
@@ -77,25 +82,28 @@ namespace Design {
 
         void MakePage( Design::LayoutBase* node );
 
+        /// @brief Set the design to dirty
+        /// @param state 
         void SetDirty( bool state = true );
+
         bool isDirty( ) { return m_dirty; };
 
+        // Gets the page of the selected design given node
         AlbumBase* GetPage( AlbumBase* node );
-        wxTreeItemId GetPage( wxTreeItemId id );
-        NodeStatus ValidatePage( AlbumBase* node );
-        AlbumBase* ValidateChildren( AlbumBase* node );
 
-        void SaveNodeData( wxTreeItemId treeItemId );
+//        wxTreeItemId GetPage( wxTreeItemId id );
+
+        NodeStatus ValidatePage( AlbumBase* node );
+
+//        AlbumBase* ValidateChildren( AlbumBase* node );
+
+//        void SaveNodeData( wxTreeItemId treeItemId );
         void UpdateAlbum( );
-        FontList* GetFontList(){ return &m_fontList; };
-        wxFont* GetFont( int ndx )
-        {
-            return m_fontList.GetFont( ndx );
-        };
+        void UpdatePage( AlbumBase* node  )  ;      
+
     private:
         wxXmlDocument* m_albumDoc;
         Album* m_album;
-        FontList m_fontList;
         bool m_dirty;
     };
 

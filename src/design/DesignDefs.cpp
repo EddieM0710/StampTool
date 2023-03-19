@@ -6,23 +6,23 @@
  * @date 2021-02-24
  *
  * @copyright Copyright ( c ) 2021
- * 
+ *
  * This file is part of StampTool.
  *
- * StampTool is free software: you can redistribute it and/or modify it under the 
- * terms of the GNU General Public License as published by the Free Software Foundation, 
+ * StampTool is free software: you can redistribute it and/or modify it under the
+ * terms of the GNU General Public License as published by the Free Software Foundation,
  * either version 3 of the License, or any later version.
  *
- * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY 
- * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+ * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
+ * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
- * You should have received a copy of the GNU General Public License along with 
+ * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
  */
 
- // For compilers that support precompilation, includes "wx/wx.h".
+ 
 #include "wx/wxprec.h"
 
 #ifdef __BORLANDC__
@@ -37,12 +37,14 @@
 #include "wx/wx.h"
 #endif
 
+#include <iostream>
+
 #include "DesignDefs.h"
 #include "DesignData.h"
 #include "Defs.h"
 #include "utils/Project.h"
 #include "design/Album.h"
-#include "design/FontInfo.h"
+#include "utils/FontList.h"
 #include "design/TitlePage.h"
 #include "design/Title.h"
 #include "design/Page.h"
@@ -53,44 +55,44 @@
 #include "gui/ToolData.h"
 
 // namespace for all Album design 
-namespace Design { 
+namespace Design {
 
-    wxRealPoint  ScaleFactor;    
-    
-    bool IsAlbumBaseTypeValid( AlbumBaseType type ) 
-    { 
-        return ( type>= AT_Album && type < AT_NbrAlbumTypes );
+    wxRealPoint  ScaleFactor;
+
+    bool IsAlbumBaseTypeValid( AlbumBaseType type )
+    {
+        return ( type >= AT_Album && type < AT_NbrAlbumTypes );
     };
 
     Album* GetAlbum( void )
-    { 
+    {
         DesignData* designData = GetDesignData( );
         if ( designData )
-        { 
+        {
             return designData->GetAlbum( );
         }
-        return ( Album* )0;
+        return ( Album* ) 0;
     }
 
-    FontList* GetFontList( void )
-    { 
-        DesignData* designData = GetDesignData( );
-        if ( designData )
-        { 
-            return designData->GetFontList( );
-        }
-        return ( FontList* )0;
-    }
+    // FontList* GetFontList( void )
+             // { 
+    //     DesignData* designData = GetDesignData( );
+        //     if ( designData )
+    //     { 
+    //         return designData->GetFontList( );
+    //     }
+    //     return ( FontList* )0;
+    // }
 
 
     DesignData* GetDesignData( void )
-    { 
+    {
         ToolData* project = GetToolData( );
         if ( project )
-        { 
+        {
             return project->GetDesignData( );
         }
-        return ( DesignData* )0;
+        return ( DesignData* ) 0;
     };
 
     // DesignData* SetDesignData( DesignData* designData )
@@ -103,220 +105,166 @@ namespace Design {
     // };
 
 
-    wxString AlbumBaseNames[ AT_NbrAlbumTypes ] = { 
-            "Album", 
-            "Page", 
-            "Row", 
-            "Col", 
-            "Title", 
-            "TitlePage", 
-            "Stamp", 
+    wxString AlbumBaseNames[ AT_NbrAlbumTypes ] = {
+            "Album",
+            "Page",
+            "Row",
+            "Col",
+            "Title",
+            "TitlePage",
+            "Stamp",
             "Font" };
 
-   
-   
 
-    const char* AttrNameStrings[ AT_NbrAttrTypes ] = { 
-            "Name", 
-            "PageWidth", 
-            "PageHeight", 
-            "TopMargin", 
-            "BottomMargin", 
-            "RightMargin", 
-            "LeftMargin", 
-            "BorderFileName", 
-            "BorderSize", 
-            "Height", 
-            "Width", 
-            "XPos", 
-            "YPos", 
-            "MinHeight", 
-            "MinWidth", 
-            "CatNbr", 
-            "Link", 
-            "ShowTitle", 
-            "ShowCatNbr", 
-            "ShowFrame", 
-            "ShowImage", 
-            "TopContentPadding", 
-            "BottomContentPadding", 
-            "LeftContentPadding", 
-            "RightContentPadding", 
-            "FontType", 
-//            "FontName", 
-//            "Family", 
-            "NativeFontString", 
-//            "Size", 
-//            "Weight", 
-            "Color", 
-//            "Style"
+    wxString AttrNameStrings[ AT_NbrAttrTypes ] = {
+            "Name",
+            "PageWidth",
+            "PageHeight",
+            "TopMargin",
+            "BottomMargin",
+            "RightMargin",
+            "LeftMargin",
+            "BorderFileName",
+            "BorderSize",
+            "Height",
+            "Width",
+            "XPos",
+            "YPos",
+            "MinHeight",
+            "MinWidth",
+            "CatNbr",
+            "Link",
+            "ShowTitle",
+            "ShowCatNbr",
+            "ShowFrame",
+            "ShowImage",
+            "TopContentPadding",
+            "BottomContentPadding",
+            "LeftContentPadding",
+            "RightContentPadding",
+            "FontType",
+            "NativeFontString",
+            "Color",
             "ImageName"
-            };
+    };
 
     void InitDesignDefs( ScaleClient client )
-    { 
+    {
 
-        if ( client == DD_PDF)
+        if ( client == DD_PDF )
         {
             ScaleFactor.x = 1.0;
             ScaleFactor.y = 1.0;
         }
         else //if ( client == DD_Display)
         {
-        wxSize ppi = wxGetDisplayPPI( );
-        ScaleFactor.x = ppi.x / 25.4;
-        ScaleFactor.y = ppi.y / 25.4;
+            wxSize ppi = wxGetDisplayPPI( );
+            ScaleFactor.x = ppi.x / 25.4;
+            ScaleFactor.y = ppi.y / 25.4;
         }
     }
 
     AlbumBaseType FindAlbumBaseType( wxString name )
-    { 
+    {
         wxString baseName;
         for ( int i = 0; i < AT_NbrAlbumTypes; i++ )
-        { 
+        {
             baseName = AlbumBaseNames[ i ];
             if ( !name.Cmp( baseName ) )
-            { 
-                return ( AlbumBaseType )i;
+            {
+                return ( AlbumBaseType ) i;
             }
         }
-        return ( AlbumBaseType )-1;
+        return ( AlbumBaseType ) -1;
     };
 
 
     AlbumAttrType FindAlbumAttrType( wxString name )
-    { 
+    {
         wxString attrName;
         for ( int i = 0; i < AT_NbrAttrTypes; i++ )
-        { 
+        {
             attrName = AlbumBaseNames[ i ];
             if ( !name.Cmp( attrName ) )
-            { 
-                return ( AlbumAttrType )i;
+            {
+                return ( AlbumAttrType ) i;
             }
         }
-        return ( AlbumAttrType )-1;
+        return ( AlbumAttrType ) -1;
     };
 
     AT_FontUsageType FindFontUsageType( wxString name )
-    { 
+    {
         wxString usageStr;
         for ( int i = 0; i < AT_NbrFontUsageTypes; i++ )
-        { 
+        {
             usageStr = AT_FontUsageTypeStrings[ i ];
             if ( !name.Cmp( usageStr ) )
-            { 
-                return ( AT_FontUsageType )i;
+            {
+                return ( AT_FontUsageType ) i;
             }
         }
-        return ( AT_FontUsageType )-1;
+        return ( AT_FontUsageType ) -1;
     };
 
-    // wxString GetAttribute( AlbumBaseType type )
-    // { 
-    //     return Utils::GetAttrStr( GetNodeElement( ), AttrNameStrings[ type ] );
-    // }
-
-    // double GetAttributeDbl( AlbumBaseType type )
-    // { 
-    //     return Utils::GetAttrDbl( GetNodeElement( ), AttrNameStrings[ type ] );
-    // }
-    //   void SetAttrStr( AlbumBaseType type, wxString val )
-    //     { 
-    //         Utils::SetAttrStr( GetNodeElement( ), AttrNameStrings[ type ], val );
-    //     };
-    //   void SetAttrDbl( AlbumBaseType type, double val )
-    //     { 
-    //         Utils::SetAttrDbl( GetNodeElement( ), AttrNameStrings[ type ], val );
-    //     };
-
-
-    // void UpdateSizes( wxXmlNode* child )
-    // { 
-    //     wxString name = child->GetName( );
-    //     if ( name.Cmp( "Page" ) )
-    //     { 
-    //         Page node( child );
-    //         node.UpdateSizes( );
-    //     }
-    //     else if ( name.Cmp( "Column" ) )
-    //     { 
-    //         Column node( child );
-    //         node.UpdateSizes( );
-    //     }
-    //     else if ( name.Cmp( "Row" ) )
-    //     { 
-    //         Row node( child );
-    //         node.UpdateSizes( );
-    //     }
-    //     else if ( name.Cmp( "Title" ) )
-    //     { 
-    //         Title node( child );
-    //         node.UpdateSizes( );
-    //     }
-    //     else if ( name.Cmp( "TitlePage" ) )
-    //     { 
-    //         TitlePage node( child );
-    //         node.UpdateSizes( );
-    //     }
-
-    // }
     LayoutBase* GetSelectedNodePage( )
-    { 
+    {
         DesignData* designData = Design::GetDesignData( );
         if ( designData )
-        { 
+        {
             DesignTreeCtrl* treeCtrl = GetDesignTreeCtrl( );
             if ( treeCtrl )
-            { 
+            {
                 wxTreeItemId id = treeCtrl->GetSelection( );
                 if ( id.IsOk( ) )
-                { 
-                    DesignTreeItemData* data = ( DesignTreeItemData* )treeCtrl->GetItemData( id );
+                {
+                    DesignTreeItemData* data = ( DesignTreeItemData* ) treeCtrl->GetItemData( id );
                     while ( id.IsOk( ) && data )
-                    { 
+                    {
                         Design::AlbumBaseType type = data->GetType( );
                         if ( type == Design::AT_Album )
-                        { 
+                        {
                             wxTreeItemIdValue cookie;
                             wxTreeItemId childID = treeCtrl->GetFirstChild( id, cookie );
                             if ( childID.IsOk( ) )
-                            { 
+                            {
                                 Design::AlbumBaseType childType = treeCtrl->GetItemType( childID );
-                                data = ( DesignTreeItemData* )treeCtrl->GetItemData( childID );
+                                data = ( DesignTreeItemData* ) treeCtrl->GetItemData( childID );
                                 return ( LayoutBase* ) data->GetNodeElement( );
                             }
                         }
                         else if ( type == AT_Page )
-                        { 
+                        {
                             return ( LayoutBase* ) data->GetNodeElement( );
                         }
                         id = treeCtrl->GetItemParent( id );
                         if ( id.IsOk( ) )
-                        { 
-                            data = ( DesignTreeItemData* )treeCtrl->GetItemData( id );
+                        {
+                            data = ( DesignTreeItemData* ) treeCtrl->GetItemData( id );
                         }
                     }
                 }
             }
         }
-        return ( LayoutBase* )0;
+        return ( LayoutBase* ) 0;
     }
 
 
     AlbumBase* MakeNode( wxXmlNode* node )
-    { 
+    {
+
+
         wxString nodeName = node->GetName( );
         AlbumBaseType type = FindAlbumBaseType( nodeName );
 
-        AlbumBase* object = ( AlbumBase* )0;
+        AlbumBase* object = ( AlbumBase* ) 0;
 
         if ( type == AT_Album )
-        { 
+        {
             object = ( AlbumBase* )new Album( node );
         }
         if ( type == AT_Page )
-        { 
+        {
             object = ( AlbumBase* )new Page( node );
         }
         // else if ( type == AT_Title )
@@ -324,155 +272,156 @@ namespace Design {
         //     object = ( AlbumBase* )new Title( node );
         // }
         else if ( type == AT_Col )
-        { 
+        {
             object = ( AlbumBase* )new Column( node );
         }
         else if ( type == AT_Row )
-        { 
+        {
             object = ( AlbumBase* )new Row( node );
         }
         else if ( type == AT_Stamp )
-        { 
+        {
             object = ( AlbumBase* )new Stamp( node );
         }
         return object;
     }
-    wxString AT_FontUsageTypeStrings[ AT_NbrFontUsageTypes ] = { 
-        "Unspecified", 
-        "Text", 
-        "Title", 
+    wxString AT_FontUsageTypeStrings[ AT_NbrFontUsageTypes ] = {
+        "Unspecified",
+        "Text",
+        "Title",
         "CatNbr"
     };
 
+    int AT_DefaultPointSize[ AT_NbrFontUsageTypes ] = { 6, 10, 12, 8 };
 
-    wxFontFamily AT_FontFamilyMap[ AT_NbrFontFamilies ] = 
-    { 
-        wxFONTFAMILY_DEFAULT, 
-        wxFONTFAMILY_DECORATIVE, 
-        wxFONTFAMILY_ROMAN, 
-        wxFONTFAMILY_SCRIPT, 
-        wxFONTFAMILY_SWISS, 
-        wxFONTFAMILY_MODERN, 
+    wxFontFamily AT_FontFamilyMap[ AT_NbrFontFamilies ] =
+    {
+        wxFONTFAMILY_DEFAULT,
+        wxFONTFAMILY_DECORATIVE,
+        wxFONTFAMILY_ROMAN,
+        wxFONTFAMILY_SCRIPT,
+        wxFONTFAMILY_SWISS,
+        wxFONTFAMILY_MODERN,
         wxFONTFAMILY_TELETYPE
     };
 
 
-    wxString AT_FontFamilyStrings[ AT_NbrFontFamilies ] = 
-    { 
-        "Decorative", 
-        "Roman", 
-        "Script", 
-        "Swiss", 
-        "Modern", 
+    wxString AT_FontFamilyStrings[ AT_NbrFontFamilies ] =
+    {
+        "Decorative",
+        "Roman",
+        "Script",
+        "Swiss",
+        "Modern",
         "Teletype"
     };
     bool IsOK( AT_FontFamilyType type )
-    { 
+    {
         return ( ( type >= AT_Default ) && ( type < AT_NbrFontFamilies ) );
     }
 
     AT_FontFamilyType GetATFamily( wxFontFamily wxVal )
-    { 
+    {
         for ( int i = 0; i < AT_NbrFontFamilies; i++ )
-        { 
+        {
             if ( AT_FontFamilyMap[ i ] == wxVal )
-            { 
-                return ( AT_FontFamilyType )i;
+            {
+                return ( AT_FontFamilyType ) i;
             }
         }
-        return ( AT_FontFamilyType )UnknownFontVal;
+        return ( AT_FontFamilyType ) UnknownFontVal;
     };
 
     AT_FontFamilyType GetFamilyFromStr( wxString family )
-    {        
+    {
         for ( int i = 0; i < AT_NbrFontFamilies; i++ )
-        { 
+        {
             if ( !AT_FontFamilyStrings[ i ].compare( family ) )
-            { 
-                return ( AT_FontFamilyType )i;
+            {
+                return ( AT_FontFamilyType ) i;
             }
         }
-        return ( AT_FontFamilyType )UnknownFontVal;
+        return ( AT_FontFamilyType ) UnknownFontVal;
     }
 
-    wxFontStyle AT_FontStyleMap[ AT_NbrFontStyles ] = 
-    { 
-        wxFONTSTYLE_NORMAL, 
-        wxFONTSTYLE_ITALIC, 
-        wxFONTSTYLE_SLANT, 
+    wxFontStyle AT_FontStyleMap[ AT_NbrFontStyles ] =
+    {
+        wxFONTSTYLE_NORMAL,
+        wxFONTSTYLE_ITALIC,
+        wxFONTSTYLE_SLANT,
         wxFONTSTYLE_MAX
     };
 
-    wxString AT_FontStyleStrings[ AT_NbrFontStyles ] = 
-    { 
-        "Normal", 
-        "Italic", 
-        "Slant", 
-        "Max", 
+    wxString AT_FontStyleStrings[ AT_NbrFontStyles ] =
+    {
+        "Normal",
+        "Italic",
+        "Slant",
+        "Max",
     };
 
     AT_FontStyleType GetATStyle( wxFontStyle wxVal )
-    { 
+    {
         for ( int i = 0; i < AT_NbrFontStyles; i++ )
-        { 
+        {
             if ( AT_FontStyleMap[ i ] == wxVal )
-            { 
-                return ( AT_FontStyleType )i;
+            {
+                return ( AT_FontStyleType ) i;
             }
         }
-        return ( AT_FontStyleType )UnknownFontVal;
+        return ( AT_FontStyleType ) UnknownFontVal;
     };
 
-    bool IsOK( AT_FontStyleType type ) 
-    { 
+    bool IsOK( AT_FontStyleType type )
+    {
         return ( ( type >= AT_Normal ) && ( type < AT_NbrFontStyles ) );
     }
 
-    wxFontWeight AT_FontWeightMap[ AT_NbrFontWeights ] = 
-    { 
-        wxFONTWEIGHT_INVALID, 
-        wxFONTWEIGHT_THIN, 
-        wxFONTWEIGHT_EXTRALIGHT, 
-        wxFONTWEIGHT_LIGHT, 
-        wxFONTWEIGHT_NORMAL, 
-        wxFONTWEIGHT_MEDIUM, 
-        wxFONTWEIGHT_SEMIBOLD, 
-        wxFONTWEIGHT_BOLD, 
-        wxFONTWEIGHT_EXTRABOLD, 
-        wxFONTWEIGHT_HEAVY, 
+    wxFontWeight AT_FontWeightMap[ AT_NbrFontWeights ] =
+    {
+        wxFONTWEIGHT_INVALID,
+        wxFONTWEIGHT_THIN,
+        wxFONTWEIGHT_EXTRALIGHT,
+        wxFONTWEIGHT_LIGHT,
+        wxFONTWEIGHT_NORMAL,
+        wxFONTWEIGHT_MEDIUM,
+        wxFONTWEIGHT_SEMIBOLD,
+        wxFONTWEIGHT_BOLD,
+        wxFONTWEIGHT_EXTRABOLD,
+        wxFONTWEIGHT_HEAVY,
         wxFONTWEIGHT_EXTRAHEAVY
     };
 
 
-    wxString AT_FontWeightStrings[ AT_NbrFontWeights ] = 
-    { 
-        "Invalid", 
-        "Thin", 
-        "ExtraLight", 
-        "Light", 
-        "Normal", 
-        "Medium", 
-        "SemiBold", 
-        "Bold", 
-        "ExtraBold", 
-        "Heavy", 
+    wxString AT_FontWeightStrings[ AT_NbrFontWeights ] =
+    {
+        "Invalid",
+        "Thin",
+        "ExtraLight",
+        "Light",
+        "Normal",
+        "Medium",
+        "SemiBold",
+        "Bold",
+        "ExtraBold",
+        "Heavy",
         "ExtraHeavy"
     };
 
     AT_FontWeightType GetATWeight( wxFontWeight wxVal )
-    { 
+    {
         for ( int i = 0; i < AT_NbrFontWeights; i++ )
-        { 
+        {
             if ( AT_FontWeightMap[ i ] == wxVal )
-            { 
-                return ( AT_FontWeightType )i;
+            {
+                return ( AT_FontWeightType ) i;
             }
         }
-        return ( AT_FontWeightType )UnknownFontVal;
+        return ( AT_FontWeightType ) UnknownFontVal;
     };
-    
+
     bool IsOK( AT_FontWeightType type )
-    { 
+    {
         return ( ( type >= AT_ThinWeight ) && ( type < AT_NbrFontWeights ) );
     }
 }

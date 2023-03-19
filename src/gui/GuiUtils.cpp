@@ -40,6 +40,7 @@
 #include "art/fleur_di_lis3.xpm"
 
 
+    
 void DrawLabelPDF( wxPdfDocument* doc, const wxString& text,
     RealPoint pos,
     RealSize size,
@@ -72,12 +73,13 @@ void DrawLabel( wxDC& dc, const wxString& text,
 void DrawTitle( wxDC& dc, wxString title, RealPoint pos, RealSize size )
 {
     wxString id;
-    wxFont font( *wxNORMAL_FONT );
-    font.SetPointSize( 10 );
-    dc.SetFont( font );
+   wxFont font = dc.GetFont();//( *wxNORMAL_FONT );
+//    font.SetPointSize( 10 );
+//    dc.SetFont( font );
     id = title;
     id.Trim( );
     id.Trim( false );
+
     GetAlbumImagePanel( )->MakeMultiLine( id, font, size.x );
 
     DrawLabel( dc, id, pos, size, wxALIGN_CENTER_HORIZONTAL );
@@ -135,7 +137,6 @@ void DrawTitlePDF( wxPdfDocument* doc, wxString title, RealPoint pos, RealSize s
     doc->MultiCell( size.x, lineHeight, id, 0, wxPDF_ALIGN_CENTER );
     double y = doc->GetY( );
     double x = doc->GetX( );
-    // std::cout << id << "  h " << lineHeight << " pos(" << pos.x <<", "<<pos.y<<")  new pos(" << x <<", "<<y<<")  size(" << size.x <<", "<<size.y<<") new size (" << x-pos.x <<", "<< y-pos.y <<") \n"; 
 }
 
 wxSize LogicalToDeviceRel( wxDC& dc, double x, double y )
@@ -153,17 +154,8 @@ void DrawRectanglePDF( wxPdfDocument* doc, double x, double y, double width, dou
 
 void DrawRectangle( wxDC& dc, double x, double y, double width, double height )
 {
-    //wxPoint pt = dc.LogicalToDevice( x, y );
-    //wxSize size = dc.LogicalToDeviceRel( width, height );
-    //   wxSize devicePos = GetAlbumImagePanel( )->LogicalToDeviceRel( dc, x, y );
-    //   wxSize deviceSize = GetAlbumImagePanel( )->LogicalToDeviceRel( dc, width, height );
-    //   dc.DrawRectangle( devicePos.x, devicePos.y, deviceSize.x, deviceSize.y );
-    // std::cout << "DrawRec pos( "<< x * Design::ScaleFactor.x << ", " << y * Design::ScaleFactor.y << " ) size ( "
-    // << width * Design::ScaleFactor.x << ", "<< height * Design::ScaleFactor.y<<" )\n";
     dc.DrawRectangle( x * Design::ScaleFactor.x, y * Design::ScaleFactor.y, width * Design::ScaleFactor.x, height * Design::ScaleFactor.y );
-    //dc.DrawRectangle( pt.x, pt.y, size.x, size.y );
 };
-
 
 
 wxImage* GetImageFromFilename( wxString filename )

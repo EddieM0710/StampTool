@@ -62,7 +62,7 @@ public:
     virtual int OnExit( );
 
     StampToolFrame* GetFrame( ) { return m_frame; };
-    ToolData* GetToolDate( ){ return m_toolData; };
+    ToolData* GetToolData( ){ return m_toolData; };
 
 private:
     StampToolFrame* m_frame;

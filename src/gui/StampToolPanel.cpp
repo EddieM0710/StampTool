@@ -23,7 +23,7 @@
  **************************************************/
 
 
- // For compilers that support precompilation, includes "wx/wx.h".
+ 
 #include "wx/wxprec.h"
 
 #ifdef __BORLANDC__
@@ -199,39 +199,11 @@ void StampToolPanel::CreateControls( )
 
 }
 
-/*
- * Should we show tooltips?
- */
+
 
 bool StampToolPanel::ShowToolTips( )
 { 
     return true;
-}
-
-/*
- * Get bitmap resources
- */
-
-wxBitmap StampToolPanel::GetBitmapResource( const wxString& name )
-{ 
-    // Bitmap retrieval
-     // StampToolPanel bitmap retrieval
-    wxUnusedVar( name );
-    return wxNullBitmap;
-    // StampToolPanel bitmap retrieval
-}
-
-/*
- * Get icon resources
- */
-
-wxIcon StampToolPanel::GetIconResource( const wxString& name )
-{ 
-    // Icon retrieval
-     // StampToolPanel icon retrieval
-    wxUnusedVar( name );
-    return wxNullIcon;
-    // StampToolPanel icon retrieval
 }
 
 
@@ -242,19 +214,15 @@ void StampToolPanel::UpdateStatus( )
 
 bool StampToolPanel::ShouldShowStates( )
 { 
-// int sel = m_notebook->GetSelection( ) ;
-// wxWindow* page = m_notebook->GetPage(sel );
-// std::cout << "sel=" << sel << " page=" << page << " m_albumNotebookPage" << m_albumNotebookPage<<"\n";
+
     if ( m_notebook->GetPage( m_notebook->GetSelection( ) ) == m_albumNotebookPage )
     {    
-        //std::cout << "ShowStates on\n";
         return true;
     }
-    //std::cout << "ShowStates off\n";
     return false;
 }
 /*
- * wxEVT_COMMAND_NOTEBOOK_PAGE_CHANGED event handler for ID_NOTEBOOK
+ *  COMMAND_NOTEBOOK_PAGE_CHANGED event handler for ID_NOTEBOOK
  */
 
 void StampToolPanel::OnNotebookPageChanged( wxNotebookEvent& event )
@@ -262,39 +230,26 @@ void StampToolPanel::OnNotebookPageChanged( wxNotebookEvent& event )
  int sel = m_notebook->GetSelection( ) ;
 
 wxWindow* page = m_notebook->GetPage( sel );
-    // std::cout << "sel=" << sel << " page=" << page << " m_albumNotebookPage" << m_albumNotebookPage<<"\n";
 
-
-    // std::cout << "sel=" << sel ;   
     if ( ShouldShowStates( ) )
     { 
-    //std::cout << "  albumTree states on \n";          
         m_albumTreePanel->GetCatalogTree()->SetStates( true );
         m_albumTreePanel->GetCatalogTree()->LoadTree();
     }
     else
     { 
-        //std::cout << "  catalogTree states off \n";          
         m_catalogTreePanel->GetCatalogTree()->SetStates( false );
         m_catalogTreePanel->GetCatalogTree()->LoadTree();
     }
-    // wxEVT_COMMAND_NOTEBOOK_PAGE_CHANGED event handler for ID_NOTEBOOK
-   //in StampToolPanel.
-   // Before editing this code, remove the block markers.
     event.Skip( );
-    // wxEVT_COMMAND_NOTEBOOK_PAGE_CHANGED event handler for ID_NOTEBOOK
-   //in StampToolPanel.
 }
 
 
 /*
- * wxEVT_COMMAND_TEXT_UPDATED event handler for ID_TITLETEXTCTRL
+ *   ID_TITLETEXTCTRL
  */
 
 void StampToolPanel::OnTitleTextUpdated( wxCommandEvent& event )
 { 
-    // wxEVT_COMMAND_TEXT_UPDATED event handler for ID_TITLETEXTCTRL in StampToolPanel.
-        // Before editing this code, remove the block markers.
     event.Skip( );
-    // wxEVT_COMMAND_TEXT_UPDATED event handler for ID_TITLETEXTCTRL in StampToolPanel. 
 }

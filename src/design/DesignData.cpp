@@ -9,7 +9,7 @@
  *
  **************************************************/
 
- // For compilers that support precompilation, includes "wx/wx.h".
+ 
 #include "wx/wxprec.h"
 
 #ifdef __BORLANDC__
@@ -58,11 +58,11 @@ namespace Design {
         m_albumDoc = 0;
         m_album = 0;
     }
+
     DesignData* DesignData::InitDesignData( )
     { 
         m_albumDoc = 0;
         m_album = 0;
-        m_fontList.InitFonts();
         return (DesignData* )0;
     }
 
@@ -87,8 +87,7 @@ namespace Design {
     }
 
 
-    // Set the design to dirty
-    //*****    
+    // Set the design to dirty  
     void DesignData::SetDirty( bool state )
     { 
         m_dirty = state;
@@ -97,7 +96,6 @@ namespace Design {
             GetToolData( )->SetDirty( true );
         }
     }
-
 
     void DesignData::LoadDefaultDocument( )
     { 
@@ -119,8 +117,6 @@ namespace Design {
         Page* page = ( Page* )new Page( pageNode );
     }
 
-
-    //*****  
     wxXmlDocument* DesignData::NewDesignDocument( )
     { 
         delete m_albumDoc;
@@ -129,8 +125,7 @@ namespace Design {
     };
 
 
-    // Save the DesignData to an xml file 
-    //*****  
+    
     void DesignData::SaveXML( wxString filename )
     { 
         if ( m_albumDoc )
@@ -147,8 +142,6 @@ namespace Design {
         }
     }
 
-    // transfers the DesignData tree to an xml file
-    //*****  
     void DesignData::SaveDesignTree( )
     { 
         if ( m_albumDoc )
@@ -166,8 +159,6 @@ namespace Design {
         }
     }
 
-    // loads an xml file into memory
-    //*****  
     bool DesignData::LoadXML( wxString filename )
     { 
         if ( !wxFileExists( filename ) )
@@ -182,7 +173,7 @@ namespace Design {
 
         if ( !ok )
         { 
-            std::cout << filename << " Load Failed.\n";
+            std::cout << "DesignData::LoadXML: " << filename << " Load Failed.\n";
             return false;
         }
 
@@ -191,17 +182,17 @@ namespace Design {
         return true;
     }
 
-    // Gets the page of the selected design given node
-    //*****  
     AlbumBase* DesignData::GetPage( AlbumBase* node )
     { 
         wxTreeItemId id = node->GetTreeItemId( );
         if ( id.IsOk( ) ) id = GetDesignTreeCtrl( )->GetPage( id );
-        if ( id.IsOk( ) ) return GetDesignTreeCtrl( )->GetItemNode( id );
+        if ( id.IsOk( ) ) 
+        {
+            return GetDesignTreeCtrl( )->GetItemNode( id );
+        }
         return ( AlbumBase* )0;
     }
-
-    //*****  
+   
     NodeStatus DesignData::ValidatePage( AlbumBase* node )
     { 
         Page* page = ( Page* )GetPage( node );
@@ -211,8 +202,7 @@ namespace Design {
         }
         return AT_FATAL;
     }
-
-    //*****  
+ 
     void DesignData::MakePage( Design::LayoutBase* node )
     { 
         Page* page = ( Page* )GetPage( node );
@@ -228,19 +218,23 @@ namespace Design {
         }
     }
 
-    //*****  
     void DesignData::UpdateAlbum( )
     { 
-        bool ok = m_album->UpdateMinimumSize( );
-        //if ( ok )
-        { 
-            m_album->UpdateSizes( );
-            m_album->UpdatePositions( );
-            GetAlbumImagePanel( )->Refresh( );
+        m_album->UpdateMinimumSize( );
+        m_album->UpdateSizes( );
+        m_album->UpdatePositions( );
+        GetAlbumImagePanel( )->Refresh( );
 
-//            m_album->DumpLayout( );
-
-        }
     }
 
+    void DesignData::UpdatePage( AlbumBase* node  )
+    {
+        Design::Page* page = ( Page* )GetPage( node );
+        if ( page)
+        {
+            page->UpdateMinimumSize( );
+            page->UpdateSizes( );
+            page->UpdatePositions( );
+        }
+    }
 }

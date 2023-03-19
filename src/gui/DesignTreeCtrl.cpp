@@ -213,12 +213,15 @@ void DesignTreeCtrl::UpdateStampList( wxTreeItemId& treeItemId )
 wxTreeItemId DesignTreeCtrl::AddChild( wxTreeItemId parent, wxXmlNode* child )
 {
     wxString name = child->GetName( );
-    Design::AlbumBaseType nodeType = Design::FindAlbumBaseType( name );;
+    Design::AlbumBaseType nodeType = Design::FindAlbumBaseType( name );
+
     if ( Design::IsAlbumBaseTypeValid( nodeType ) )
     {
         Design::AlbumBase* node = Design::MakeNode( child );
         if ( node )
         {
+            node->LoadFonts( child );
+
             Design::IconID icon;
             wxString label;
 
@@ -552,7 +555,6 @@ Utils::StampLink* DesignTreeCtrl::AppendStamp( wxTreeItemId catTreeID )
             newStamp->SetAttrStr( Design::AT_CatNbr, idText );
 
             newStamp->SetAttrStr( Design::AT_ImageName, imageFileName.GetFullPath( ) );
-            // std::cout << "imageFileName.GetFullPath( ) " << imageFileName.GetFullPath( ) << "\n";
             // stamp item text combines the stampID and its name to form a label
             wxString label = newStamp->GetAttrStr( Design::AT_CatNbr );
             label += " - " + newStamp->GetAttrStr( Design::AT_Name );
@@ -740,6 +742,7 @@ bool DesignTreeCtrl::IsElement( wxTreeItemId item, Design::AlbumBase* ele )
 
 void DesignTreeCtrl::LoadTree( )
 {
+    
     wxXmlDocument* doc = GetDesignData( )->GetDoc( );
     if ( doc && doc->IsOk( ) )
     {
@@ -1029,17 +1032,11 @@ void DesignTreeCtrl::OnSelChanged( wxTreeEvent& event )
     wxString desc = GetItemDesc( itemId );
 
     Design::LayoutBase* layout = ( Design::LayoutBase* ) GetItemNode( itemId );
-    // std::cout << "\n\nSelected " << desc << "\n";
-    // layout->ReportLayoutFrame( );
-    // std::cout << "\n\n";
     wxTreeItemId pageId = GetPage( itemId );
     if ( pageId.IsOk( ) )
     {
-        //       if ( pageId != m_currPageID )
         {
-            //    if ( m_currPageID.IsOk( ) ) 
-            //    std::cout << "m_currPageID >" << GetItemText( m_currPageID ) << "<\n";
-            //            std::cout << "pageId >" << GetItemText( pageId ) << "<\n";
+
             m_currPageID = pageId;
             MakePage( pageId );
             GetAlbumImagePanel( )->Refresh( );
@@ -1047,7 +1044,7 @@ void DesignTreeCtrl::OnSelChanged( wxTreeEvent& event )
     }
     else
     {
-        std::cout << "DesignTreeCtrl::OnSelChanged invalid pageId\n";
+        std::cout << "DesignTreeCtrl::OnSelChanged invalid pageId"<< std::endl;
     }
     event.Skip( );
 }
@@ -1058,7 +1055,6 @@ void DesignTreeCtrl::OnItemMenu( wxTreeEvent& event )
 {
     wxTreeItemId itemId = event.GetItem( );
     wxCHECK_RET( itemId.IsOk( ), "should have a valid item" );
-    //    std::cout << "DesignTreeCtrl::OnItemMenu\n";
     wxPoint clientpt = event.GetPoint( );
     wxPoint screenpt = ClientToScreen( clientpt );
 
@@ -1118,7 +1114,6 @@ void DesignTreeCtrl::ShowMenu( wxTreeItemId id, const wxPoint& pt )
         Design::AlbumBaseType type = node->GetNodeType( );
         wxMenu menu( title );
         wxMenu* addSubMenu = new wxMenu( );
-        //wxMenu deleteSubMenu( "Delete" );
         menu.AppendSubMenu( addSubMenu, "    Add Item" );
         menu.Append( DesignTree_DeleteItem, "    Delete Item" );
         menu.Append( DesignTree_EditDetails, "    Edit Details" );
@@ -1214,7 +1209,7 @@ void DesignTreeCtrl::ShowMenu( wxTreeItemId id, const wxPoint& pt )
         {
             if ( type == Design::AT_Stamp )
             {
-                ShowStampDetails( id, node );
+                ShowStampDetails( id );
                 GetDesignData( )->MakePage( ( Design::LayoutBase* ) node );
             }
             else if ( type == Design::AT_Row )
@@ -1254,185 +1249,116 @@ void DesignTreeCtrl::ShowMenu( wxTreeItemId id, const wxPoint& pt )
 void DesignTreeCtrl::ShowAlbumDetails( wxTreeItemId treeID, Design::AlbumBase* node )
 {
     Design::Album* album = ( Design::Album* ) node;
-    album->GetHeight( );
-    AlbumDetailsDialog albumDetailsDialog( this, 12345,
-        _( "View Edit Album Details" ) );
-    wxString height = album->GetPageHeightStr( );
-    albumDetailsDialog.SetPageHeight( height );
-    wxString width = album->GetPageWidthStr( );
-    albumDetailsDialog.SetPageWidth( width );
-    wxString topMargin = album->GetTopMarginStr( );
-    albumDetailsDialog.SetTopMargin( topMargin );
-    wxString bottomMargin = album->GetTopMarginStr( );
-    albumDetailsDialog.SetBottomMargin( bottomMargin );
-    wxString leftMargin = album->GetLeftMarginStr( );
-    albumDetailsDialog.SetLeftMargin( leftMargin );
-    wxString rightMargin = album->GetRightMarginStr( );
-    albumDetailsDialog.SetRightMargin( rightMargin );
-    wxString borderSize = album->GetBorderSizeStr( );
-    albumDetailsDialog.SetBorderSize( borderSize );
 
-    wxString name = node->GetAttrStr( Design::AT_Name );
-    albumDetailsDialog.SetName( name );
+    AlbumDetailsDialog albumDetailsDialog( this, 12345, _( "View Edit Album Details" ) );
 
+    albumDetailsDialog.SetupDialog( treeID );
 
-    if ( albumDetailsDialog.ShowModal( ) == wxID_CANCEL )
-        return; // the user changed idea..
+    if ( albumDetailsDialog.ShowModal( ) == wxID_OK )
+    {
 
-    if ( albumDetailsDialog.IsNameModified( ) )
-    {
-        node->SetAttrStr( Design::AT_Name, albumDetailsDialog.GetName( ) );
-    }
-    if ( albumDetailsDialog.IsPageHeightModified( ) )
-    {
-        album->SetPageHeight( albumDetailsDialog.GetPageHeight( ) );
-    }
-    if ( albumDetailsDialog.IsPageWidthModified( ) )
-    {
-        album->SetPageWidth( albumDetailsDialog.GetPageWidth( ) );
-    }
-    if ( albumDetailsDialog.IsTopMarginModified( ) )
-    {
-        album->SetTopMargin( albumDetailsDialog.GetTopMargin( ) );
-    }
-    if ( albumDetailsDialog.IsBottomMarginModified( ) )
-    {
-        album->SetBottomMargin( albumDetailsDialog.GetBottomMargin( ) );
-    }
-    if ( albumDetailsDialog.IsLeftMarginModified( ) )
-    {
-        album->SetLeftMargin( albumDetailsDialog.GetLeftMargin( ) );
-    }
-    if ( albumDetailsDialog.IsRightMarginModified( ) )
-    {
-        album->SetRightMargin( albumDetailsDialog.GetRightMargin( ) );
-    }
-    if ( albumDetailsDialog.IsBorderSizeModified( ) )
-    {
-        album->SetBorderSize( albumDetailsDialog.GetBorderSize( ) );
-    }
+        wxString newName = album->GetAttrStr( Design::AT_Name  );
+        SetItemText( treeID, newName );
 
-    Design::NodeStatus status = album->ValidateNode( );
-    SetItemBackgroundColour( node->GetTreeItemId( ), ItemBackgroundColour[ status ] );
+        DesignTreeItemData* data = ( DesignTreeItemData* ) GetItemData( treeID );
+        data->SetDesc( newName );
+        
 
-    MakePage( m_currPageID );
+        album->MakeAlbum();
+        Design::NodeStatus status = album->ValidateNode( );
+        SetItemBackgroundColour( node->GetTreeItemId( ), ItemBackgroundColour[ status ] );
+        GetAlbumImagePanel( )->Refresh( );
+    }
+    return; 
+    
+//    MakePage( m_currPageID );
 
 }
 
-void DesignTreeCtrl::ShowStampDetails( wxTreeItemId treeID, Design::AlbumBase* node )
+void DesignTreeCtrl::ShowStampDetails( wxTreeItemId treeID )
 {
-    Design::Stamp* stamp = ( Design::Stamp* ) node;
-    stamp->GetHeight( );
+
     StampDetailsDialog stampDetailsDialog( this, 12345,
         _( "View Edit Stamp Details" ) );
-    wxString height = stamp->GetStampHeightStr( );
-    stampDetailsDialog.SetHeight( height );
-    wxString width = stamp->GetStampWidthStr( );
-    stampDetailsDialog.SetWidth( width );
-    wxString catNbr = node->GetAttrStr( Design::AT_CatNbr );
-    stampDetailsDialog.SetCatNbr( catNbr );
-    wxString name = node->GetAttrStr( Design::AT_Name );
-    stampDetailsDialog.SetName( name );
 
-    stampDetailsDialog.SetShowCatNbr( stamp->GetShowCatNbr( ) );
-    stampDetailsDialog.SetShowTitle( stamp->GetShowTitle( ) );
+    stampDetailsDialog.SetupDialog( treeID );
+//    stamp->ReportLayout( );
 
-    stampDetailsDialog.SetDesignTreeID( treeID );
-    stamp->ReportLayout( );
-
-    // stamp->ReportLayout( stampDetailsDialog.GetLayoutTextCtrl( ) );
-
-    if ( stampDetailsDialog.ShowModal( ) == wxID_CANCEL )
-        return; // the user changed idea..
-    if ( stampDetailsDialog.IsIDModified( ) )
+    if ( stampDetailsDialog.ShowModal( ) == wxID_OK )
     {
-        node->SetAttrStr( Design::AT_CatNbr, stampDetailsDialog.GetCatNbr( ) );
-    }
-    if ( stampDetailsDialog.IsNameModified( ) )
-    {
-        node->SetAttrStr( Design::AT_Name, stampDetailsDialog.GetName( ) );
-    }
-    if ( stampDetailsDialog.IsHeightModified( ) )
-    {
-        stamp->SetStampHeight( stampDetailsDialog.GetHeight( ) );
-    }
-    if ( stampDetailsDialog.IsWidthModified( ) )
-    {
-        stamp->SetStampWidth( stampDetailsDialog.GetWidth( ) );
-    }
-    stamp->SetShowCatNbr( stampDetailsDialog.GetShowCatNbr( ) );
-    stamp->SetShowTitle( stampDetailsDialog.GetShowTitle( ) );
+        DesignTreeItemData* data = ( DesignTreeItemData* ) GetDesignTreeCtrl( )->GetItemData( treeID );       
+        Design::Stamp* stamp = ( Design::Stamp* ) data->GetNodeElement( );
 
-    Design::NodeStatus status = stamp->ValidateNode( );
-    SetItemBackgroundColour( node->GetTreeItemId( ), ItemBackgroundColour[ status ] );
+        if ( stampDetailsDialog.IsNameModified( ) )
+        {
+            wxString newName = stamp->GetAttrStr( Design::AT_Name  );
+            SetItemText( treeID, newName );
+            data->SetDesc( newName );
+        }
+
+        Design::NodeStatus status = stamp->ValidateNode( );
+        SetItemBackgroundColour( treeID, ItemBackgroundColour[ status ] );
+        GetAlbumImagePanel( )->Refresh( );
+    }
+    return; 
 
 }
 void DesignTreeCtrl::ShowPageDetails( wxTreeItemId treeID, Design::AlbumBase* node )
 {
 
-    Design::Page* page = ( Design::Page* ) node;
     PageDetailsDialog pageDetailsDialog( this, 12345,
         _( "View/Edit Page Details" ) );
 
-    pageDetailsDialog.SetName( page->GetTitle( ) );
+    pageDetailsDialog.SetupDialog( treeID );
 
-    pageDetailsDialog.SetDesignTreeID( treeID );
-
-    pageDetailsDialog.SetShowTitle( page->GetShowTitle( ) );
-    pageDetailsDialog.SetShowFrame( page->GetShowFrame( ) );
-
-
-    page->ReportLayout( );
+    //page->ReportLayout( );
     if ( pageDetailsDialog.ShowModal( ) == wxID_OK )
     {
+        DesignTreeItemData* data = ( DesignTreeItemData* ) GetDesignTreeCtrl( )->GetItemData( treeID );       
+        Design::Page* page = ( Design::Page* ) data->GetNodeElement( );
         if ( pageDetailsDialog.IsNameModified( ) )
         {
-            page->SetTitle( pageDetailsDialog.GetName( ) );
+            wxString desc = "Page - " + page->GetAttrStr( Design::AT_Name  );
+            SetItemText( treeID, desc );
+            data->SetDesc( desc );
         }
-        page->SetShowTitle( pageDetailsDialog.GetShowTitle( ) );
-        page->SetShowFrame( pageDetailsDialog.GetShowFrame( ) );
+
+        page->UpdateLayout();
 
         Design::NodeStatus status = page->ValidateNode( );
         SetItemBackgroundColour( page->GetTreeItemId( ), ItemBackgroundColour[ status ] );
+        GetAlbumImagePanel( )->Refresh( );
     }
-    else
-    {
-        return; // the user changed idea..
-    }
-
+    return; 
 }
 
 void DesignTreeCtrl::ShowRowDetails( wxTreeItemId treeID, Design::AlbumBase* node )
 {
 
-    Design::Row* row = ( Design::Row* ) node;
     RowDetailsDialog rowDetailsDialog( this, 12345,
         _( "View/Edit Row Details" ) );
 
-    rowDetailsDialog.SetName( row->GetTitle( ) );
-
-    rowDetailsDialog.SetDesignTreeID( treeID );
-
-    rowDetailsDialog.SetShowTitle( row->GetShowTitle( ) );
-    rowDetailsDialog.SetShowFrame( row->GetShowFrame( ) );
-    row->ReportLayout( );
+    rowDetailsDialog.SetupDialog( treeID );
 
     if ( rowDetailsDialog.ShowModal( ) == wxID_OK )
     {
+        DesignTreeItemData* data = ( DesignTreeItemData* ) GetDesignTreeCtrl( )->GetItemData( treeID );       
+        Design::Row* row = ( Design::Row* ) data->GetNodeElement( );
         if ( rowDetailsDialog.IsNameModified( ) )
         {
-            row->SetTitle( rowDetailsDialog.GetName( ) );
+            wxString newName = row->GetAttrStr( Design::AT_Name  );
+            SetItemText( treeID, newName );
+            data->SetDesc( newName );
         }
-        row->SetShowTitle( rowDetailsDialog.GetShowTitle( ) );
-        row->SetShowFrame( rowDetailsDialog.GetShowFrame( ) );
+
+        GetDesignData()->UpdatePage( row  );
+        //row->UpdateLayout();
 
         Design::NodeStatus status = row->ValidateNode( );
         SetItemBackgroundColour( row->GetTreeItemId( ), ItemBackgroundColour[ status ] );
-    }
-    else
-    {
-        return; // the user changed idea..
-    }
+         GetAlbumImagePanel( )->Refresh( );
+   }
+    return; // the user changed idea..
 
 }
 void DesignTreeCtrl::ShowColDetails( wxTreeItemId treeID, Design::AlbumBase* node )
@@ -1440,19 +1366,24 @@ void DesignTreeCtrl::ShowColDetails( wxTreeItemId treeID, Design::AlbumBase* nod
 
     ColDetailsDialog colDetailsDialog( this, 12345,
         _( "View/Edit Col Details" ) );
-    wxString name = node->GetAttrStr( Design::AT_Name );
-    colDetailsDialog.SetName( name );
 
-    colDetailsDialog.SetDesignTreeID( treeID );
+    colDetailsDialog.SetupDialog( treeID );
 
-    if ( colDetailsDialog.ShowModal( ) == wxID_CANCEL )
-        return; // the user changed idea..
-
-    if ( colDetailsDialog.IsNameModified( ) )
+    if ( colDetailsDialog.ShowModal( ) == wxID_OK )
     {
-        node->SetAttrStr( Design::AT_Name, colDetailsDialog.GetName( ) );
-    }
 
+        DesignTreeItemData* data = ( DesignTreeItemData* ) GetDesignTreeCtrl( )->GetItemData( treeID );       
+        Design::Column* col = ( Design::Column* ) data->GetNodeElement( );
+
+        if ( colDetailsDialog.IsNameModified( ) )
+        {
+            wxString newName = col->GetAttrStr( Design::AT_Name  );
+            SetItemText( treeID, newName );
+            data->SetDesc( newName );
+            node->SetAttrStr( Design::AT_Name, colDetailsDialog.GetName( ) );
+        }
+        GetAlbumImagePanel( )->Refresh( );
+    }
     Design::NodeStatus status = node->ValidateNode( );
     SetItemBackgroundColour( node->GetTreeItemId( ), ItemBackgroundColour[ status ] );
 

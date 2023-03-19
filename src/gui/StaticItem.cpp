@@ -20,7 +20,7 @@
  * You should have received a copy of the GNU General Public License along with 
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  */
-// For compilers that support precompilation, includes "wx/wx.h".
+
 #include "wx/wxprec.h"
 
 #ifdef __BORLANDC__
@@ -31,8 +31,8 @@
 #include "wx/wx.h"
 #endif
 
-// includes
-// includes
+
+
 
 #include "gui/StaticItem.h"
 
@@ -147,51 +147,23 @@ void StaticItem::CreateControls( )
 }
 
 
-/*
- * Should we show tooltips?
- */
+
 
 bool StaticItem::ShowToolTips( )
 { 
     return true;
 }
 
-/*
- * Get bitmap resources
- */
-
-wxBitmap StaticItem::GetBitmapResource( const wxString& name )
-{ 
-    // Bitmap retrieval
-// StaticItem bitmap retrieval
-    wxUnusedVar( name );
-    return wxNullBitmap;
-// StaticItem bitmap retrieval
-}
-
-/*
- * Get icon resources
- */
-
-wxIcon StaticItem::GetIconResource( const wxString& name )
-{ 
-    // Icon retrieval
-// StaticItem icon retrieval
-    wxUnusedVar( name );
-    return wxNullIcon;
-// StaticItem icon retrieval
-}
 
 
 /*
- * wxEVT_CONTEXT_MENU event handler for ID_STATICITEM
+ *  ID_STATICITEM
  */
 
 void StaticItem::OnContextMenu( wxContextMenuEvent& event )
 { 
-// wxEVT_CONTEXT_MENU event handler for ID_STATICITEM in StaticItem.
-    // Before editing this code, remove the block markers.
+    
     event.Skip( );
-// wxEVT_CONTEXT_MENU event handler for ID_STATICITEM in StaticItem. 
+    
 }
 

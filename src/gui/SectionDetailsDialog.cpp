@@ -21,7 +21,7 @@
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  */
 
- // For compilers that support precompilation, includes "wx/wx.h".
+ 
 #include "wx/wxprec.h"
 
 #ifdef __BORLANDC__
@@ -32,9 +32,9 @@
 #include "wx/wx.h"
 #endif
 
-// includes
+
 #include "wx/imaglist.h"
-// includes
+
 #include "wx/notebook.h"
 
 #include "gui/SectionDetailsDialog.h"
@@ -201,52 +201,22 @@ void SectionDetailsDialog::CreateControls( )
 }
 
 
-/*
- * Should we show tooltips?
- */
+
 
 bool SectionDetailsDialog::ShowToolTips( )
 { 
     return true;
 }
 
-/*
- * Get bitmap resources
- */
-
-wxBitmap SectionDetailsDialog::GetBitmapResource( const wxString& name )
-{ 
-    // Bitmap retrieval
-// SectionDetailsDialog bitmap retrieval
-    wxUnusedVar( name );
-    return wxNullBitmap;
-    // SectionDetailsDialog bitmap retrieval
-}
 
 /*
- * Get icon resources
- */
-
-wxIcon SectionDetailsDialog::GetIconResource( const wxString& name )
-{ 
-    // Icon retrieval
-// SectionDetailsDialog icon retrieval
-    wxUnusedVar( name );
-    return wxNullIcon;
-    // SectionDetailsDialog icon retrieval
-}
-
-
-/*
- * wxEVT_COMMAND_BUTTON_CLICKED event handler for wxID_OK
+ *   wxID_OK
  */
 
 void SectionDetailsDialog::OnOkClick( wxCommandEvent& event )
 { 
-    // wxEVT_COMMAND_BUTTON_CLICKED event handler for wxID_OK in SectionDetailsDialog.
-        // Before editing this code, remove the block markers.
     event.Skip( );
-    // wxEVT_COMMAND_BUTTON_CLICKED event handler for wxID_OK in SectionDetailsDialog. 
+ 
 }
 void SectionDetailsDialog::OnDirClick( wxCommandEvent& event )
 { 

@@ -25,37 +25,40 @@
 #define _SETTINGSDIALOG_H_
 
 
- /*!
+ /*
   * Includes
   */
 
-  // includes
-  // includes
+
+
 
 #include "gui/GuiDefs.h"
-/*!
- * Forward declarations
+#include <wx/fontpicker.h>
+#include <wx/clrpicker.h>
+  /*
+   * Forward declarations
+   */
+
+
+
+class SortOrderPanel;
+class DefinePeriodsPanel;
+/*
+ * Control identifiers
  */
 
- // forward declarations
- // forward declarations
 
- /*!
-  * Control identifiers
-  */
-
-  // control identifiers
 #define SYMBOL_SETTINGSDIALOG_STYLE wxCAPTION | wxRESIZE_BORDER | wxSYSTEM_MENU | wxCLOSE_BOX | wxTAB_TRAVERSAL
 #define SYMBOL_SETTINGSDIALOG_TITLE _( "SettingsDialog" )
 #define SYMBOL_SETTINGSDIALOG_IDNAME ID_SETTINGSDIALOG
 #define SYMBOL_SETTINGSDIALOG_SIZE wxSize( 600, 300 )
 #define SYMBOL_SETTINGSDIALOG_POSITION wxDefaultPosition
-// control identifiers
 
 
-/*!
- * SettingsDialog class declaration
- */
+
+ /*
+  * SettingsDialog class declaration
+  */
 
 class SettingsDialog: public wxDialog
 {
@@ -69,53 +72,59 @@ public:
         ID_COUNTRYTEXTBOX,
         ID_CATALOGTEXTBOX,
         ID_OPENLASTCHECKBOX,
-        ID_RECENTSIZETEXTCTRL
+        ID_RECENTSIZETEXTCTRL,
+        ID_NOTEBOOK,
+        ID_NOTEBOOKDETAILSPANEL,
+        ID_NOTEBOOKFONTSPANEL,
+        ID_CATNBRFONTPICKER,
+        ID_CATNBCOLORPICKER,
+        ID_TITLEFONTPICKER,
+        ID_TITLECOLORPICKER,
+        ID_TEXTFONTPICKER,
+        ID_TEXTCOLORPICKER,
+        ID_NBRDEFAULTFONTBUTTON,
+        ID_TITLEDEFAULTFONTBUTTON,
+        ID_TEXTDEFAULTFONTBUTTON
     };
-    /// Constructors
+
     SettingsDialog( );
     SettingsDialog( wxWindow* parent, wxWindowID id = SYMBOL_SETTINGSDIALOG_IDNAME, const wxString& caption = SYMBOL_SETTINGSDIALOG_TITLE, const wxPoint& pos = SYMBOL_SETTINGSDIALOG_POSITION, const wxSize& size = SYMBOL_SETTINGSDIALOG_SIZE, long style = SYMBOL_SETTINGSDIALOG_STYLE );
 
-    /// Creation
+
     bool Create( wxWindow* parent, wxWindowID id = SYMBOL_SETTINGSDIALOG_IDNAME, const wxString& caption = SYMBOL_SETTINGSDIALOG_TITLE, const wxPoint& pos = SYMBOL_SETTINGSDIALOG_POSITION, const wxSize& size = SYMBOL_SETTINGSDIALOG_SIZE, long style = SYMBOL_SETTINGSDIALOG_STYLE );
 
-    /// Destructor
+
     ~SettingsDialog( );
 
-    /// Initialises member variables
+
     void Init( );
 
-    /// Creates the controls and sizers
+
     void CreateControls( );
 
     // SettingsDialog event handler declarations
 
-        /// wxEVT_COMMAND_TEXT_UPDATED event handler for ID_IMAGEDIRECTORTEXTBOX
+        ///   ID_IMAGEDIRECTORTEXTBOX
     void OnImagedirectortextboxTextUpdated( wxCommandEvent& event );
 
-    /// wxEVT_COMMAND_TEXT_UPDATED event handler for ID_COUNTRYTEXTBOX
+    ///   ID_COUNTRYTEXTBOX
     void OnCountrytextboxTextUpdated( wxCommandEvent& event );
 
-    /// wxEVT_COMMAND_TEXT_UPDATED event handler for ID_CATALOGTEXTBOX
+    ///   ID_CATALOGTEXTBOX
     void OnCatalogtextboxTextUpdated( wxCommandEvent& event );
 
-    /// wxEVT_COMMAND_CHECKBOX_CLICKED event handler for ID_OPENLASTCHECKBOX
+    ///   ID_OPENLASTCHECKBOX
     void OnOpenlastcheckboxClick( wxCommandEvent& event );
 
-    /// wxEVT_COMMAND_TEXT_UPDATED event handler for ID_RECENTSIZETEXTCTRL
+    ///   ID_RECENTSIZETEXTCTRL
     void OnRecentsizetextctrlTextUpdated( wxCommandEvent& event );
 
     // SettingsDialog event handler declarations
 
     void OnOkClick( wxCommandEvent& event );
 
-    // SettingsDialog member function declarations
 
-        /// Retrieves bitmap resources
-    wxBitmap GetBitmapResource( const wxString& name );
 
-    wxIcon GetIconResource( const wxString& name );
-    /// Retrieves Save( )
-    /// Should we show tooltips?
     static bool ShowToolTips( );
 
     bool IsDirty( ) { return m_dirty; };
@@ -128,6 +137,14 @@ public:
     wxTextCtrl* m_catalog;
     wxCheckBox* m_loadLastFileAtStartUp;
     wxTextCtrl* m_recentListSize;
+    SortOrderPanel* m_sortOrderPanel;
+    DefinePeriodsPanel* m_definePeriodsPanel;
+    wxFontPickerCtrl* m_titleFontPicker;
+    wxColourPickerCtrl* m_titleColorPicker;
+    wxFontPickerCtrl* m_catNbrFontPicker;
+    wxColourPickerCtrl* m_catNbrColorPicker;
+    wxFontPickerCtrl* m_textFontPicker;
+    wxColourPickerCtrl* m_textColorPicker;
     // SettingsDialog member variables
     bool m_dirty;
 

@@ -22,7 +22,7 @@
  *
  **************************************************/
 
- // For compilers that support precompilation, includes "wx/wx.h".
+ 
 #include "wx/wxprec.h"
 
 #ifdef __BORLANDC__
@@ -156,7 +156,7 @@ void InventoryPanel::CreateControls( )
     itemBoxSizer2->Add( m_grid, 1, wxGROW | wxALL, 5 );
 
     // Connect events and objects
-    //    m_grid->Connect( ID_INVENTORYGRID, wxEVT_CONTEXT_MENU, 
+    //    m_grid->Connect( ID_INVENTORYGRID,  CONTEXT_MENU, 
     //    wxContextMenuEventHandler( InventoryPanel::OnContextMenu ), NULL, this );
     // InventoryPanel content construction
     for ( int i = 0; i < Catalog::IDT_NbrTypes; i++ )
@@ -242,7 +242,7 @@ void InventoryPanel::ShowRow( int row )
 
 /*
  *
- * Should we show tooltips?
+ * 
  *
  **************************************************/
 
@@ -251,35 +251,7 @@ bool InventoryPanel::ShowToolTips( )
     return true;
 }
 
-/*
- *
- * Get bitmap resources
- *
- **************************************************/
 
-wxBitmap InventoryPanel::GetBitmapResource( const wxString& name )
-{ 
-    // Bitmap retrieval
-    // InventoryPanel bitmap retrieval
-    wxUnusedVar( name );
-    return wxNullBitmap;
-    // InventoryPanel bitmap retrieval
-}
-
-/*
- *
- * Get icon resources
- *
- **************************************************/
-
-wxIcon InventoryPanel::GetIconResource( const wxString& name )
-{ 
-    // Icon retrieval
-    // InventoryPanel icon retrieval
-    wxUnusedVar( name );
-    return wxNullIcon;
-    // InventoryPanel icon retrieval
-}
 
 /*
  *
@@ -330,7 +302,7 @@ void InventoryPanel::ShowStamp( )
 }
 
 /*
- * wxEVT_CONTEXT_MENU event handler for ID_INVENTORYLISTCTRL
+ *  ID_INVENTORYLISTCTRL
  *
  **************************************************/
 
@@ -358,15 +330,12 @@ void InventoryPanel::OnContextMenu( wxContextMenuEvent& event )
 
         PopupMenu( &menu, point.x, point.y );
     }
-    // wxEVT_CONTEXT_MENU event handler for ID_INVENTORYLISTCTRL in
-    // InventoryPanel.
-    // Before editing this code, remove the block markers.
     event.Skip( );
-    // wxEVT_CONTEXT_MENU event handler for ID_INVENTORYLISTCTRL in InventoryPanel.
+
 }
 
 /*
- * wxEVT_GRID_CELL_CHANGED event handler for ID_INVENTORYGRID
+ *  GRID_CELL_CHANGED event handler for ID_INVENTORYGRID
  *
  **************************************************/
 
@@ -379,12 +348,8 @@ void InventoryPanel::OnCellChanged( wxGridEvent& event )
     Catalog::Specimen specimen( ele );
     specimen.SetAttr( ( Catalog::ItemDataTypes )col, str );
 
-    // wxEVT_GRID_CELL_CHANGED event handler for ID_INVENTORYGRID in
-    // InventoryPanel.
-    // Before editing this code, remove the block markers.
     event.Skip( );
-    // wxEVT_GRID_CELL_CHANGED event handler for ID_INVENTORYGRID in
-    // InventoryPanel.
+
 }
 
 /*

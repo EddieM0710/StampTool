@@ -25,7 +25,7 @@
 #define _ALBUMPANEL_H_
 
 
- /*!
+ /*
   * Includes
   */
 #include <vector>
@@ -33,28 +33,24 @@
 
 #include "Defs.h"
 #include "gui/GuiDefs.h"
-/*!
+
+/*
  * Forward declarations
  */
 class DesignTreeCtrl;
-//class StaticItem;
-
 class ReadAlbumEasyFile;
-/*!
+
+/*
  * Control identifiers
  */
-
- // control identifiers
 
 #define SYMBOL_ALBUMDESIGNTREE_STYLE wxTAB_TRAVERSAL
 #define SYMBOL_ALBUMDESIGNTREE_TITLE _( "AlbumPanel" )
 #define SYMBOL_ALBUMDESIGNTREE_IDNAME ID_ALBUMDESIGNTREEPANEL
 #define SYMBOL_ALBUMDESIGNTREE_SIZE wxSize( 400, 300 )
 #define SYMBOL_ALBUMDESIGNTREE_POSITION wxDefaultPosition
-// control identifiers
 
-
-/*!
+/*
  * AlbumDesignTreePanel class declaration
  */
 
@@ -65,49 +61,27 @@ class AlbumDesignTreePanel: public wxPanel
 
 public:
 
-        /// Constructors
+        
         AlbumDesignTreePanel( );
     AlbumDesignTreePanel( wxWindow* parent, wxWindowID id = SYMBOL_ALBUMDESIGNTREE_IDNAME, const wxPoint& pos = SYMBOL_ALBUMDESIGNTREE_POSITION, const wxSize& size = SYMBOL_ALBUMDESIGNTREE_SIZE, long style = SYMBOL_ALBUMDESIGNTREE_STYLE );
 
-    /// Creation
     bool Create( wxWindow* parent, wxWindowID id = SYMBOL_ALBUMDESIGNTREE_IDNAME, const wxPoint& pos = SYMBOL_ALBUMDESIGNTREE_POSITION, const wxSize& size = SYMBOL_ALBUMDESIGNTREE_SIZE, long style = SYMBOL_ALBUMDESIGNTREE_STYLE );
 
-    /// Destructor
     ~AlbumDesignTreePanel( );
-
-    /// Initialises member variables
+    
     void Init( );
 
-    /// Creates the controls and sizers
     void CreateControls( );
-
-    // AlbumDesignTreePanel event handler declarations
-
-    // AlbumDesignTreePanel event handler declarations
-
-    // AlbumDesignTreePanel member function declarations
-
-        /// Retrieves bitmap resources
-    wxBitmap GetBitmapResource( const wxString& name );
-
-    /// Retrieves icon resources
-    wxIcon GetIconResource( const wxString& name );
-    // AlbumDesignTreePanel member function declarations
-
-        /// Should we show tooltips?
+     
     static bool ShowToolTips( );
 
     void LoadAlbumLayout( );
 
-    void LoadAEData( wxString filename );
-
     DesignTreeCtrl* GetDesignTreeCtrl( ) { return m_designTreeCtrl; };
 
-    // AlbumDesignTreePanel member variables
+private:
     DesignTreeCtrl* m_designTreeCtrl;
-    // AlbumDesignTreePanel member variables
-     //ArrayWrapper* m_AEItemArray;
+
     };
 
 #endif
-    // _ALBUMDESIGNTREE_H_

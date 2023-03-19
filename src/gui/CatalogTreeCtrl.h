@@ -7,8 +7,19 @@
  *
  * @copyright Copyright ( c ) 2021
  *
- **************************************************/
-
+ * This file is part of StampTool.
+ *
+ * StampTool is free software: you can redistribute it and/or modify it under the
+ * terms of the GNU General Public License as published by the Free Software Foundation,
+ * either version 3 of the License, or any later version.
+ *
+ * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
+ * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+ * PARTICULAR PURPOSE. See the GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along with
+ * StampTool. If not, see <https://www.gnu.org/licenses/>.
+ */
 #ifndef CatalogTreeCtrl_H
 #define CatalogTreeCtrl_H
 
@@ -18,32 +29,6 @@
 #include "gui/GuiUtils.h"
 #include "catalog/Entry.h"
 #include "design/AlbumBase.h"
- /**
-  *
-  *  @brief menu and control ids
-  **************************************************/
-enum
-{
-    CatalogDataTree_Quit = wxID_EXIT,
-    CatalogDataTree_About = wxID_ABOUT,
-    CatalogDataTree_StructureStamps,
-    CatalogDataTree_ResortTree,
-    CatalogDataTree_EditDetails,
-    CatalogDataTree_Delete,
-    CatalogDataTree_Add,
-    CatalogDataTree_Colnect,
-    CatalogDataTree_Before,
-    CatalogDataTree_After,
-    CatalogDataTree_AsChild,
-    CatalogDataTree_Cancel,
-    CatalogDataTree_Inventory,
-    CatalogDataTree_InventoryStatusNone,
-    CatalogDataTree_InventoryStatusMissing,
-    CatalogDataTree_InventoryStatusOrdered,
-    CatalogDataTree_InventoryStatusOwn,
-    CatalogDataTree_InventoryStatusOwnVariant,
-    CatalogDataTree_InventoryStatusExclude
-};
 
 
 class Stamp;
@@ -59,6 +44,8 @@ class CatalogTreeItemData: public wxTreeItemData
 {
 public:
 
+
+
     CatalogTreeItemData( Catalog::CatalogBaseType type, const wxString desc,
         wxXmlNode* ele = 0 )
     {
@@ -68,10 +55,10 @@ public:
         m_imageFullPath = 0;
         m_ok = 12345;
     };
-    ~CatalogTreeItemData( ) 
-    { 
-        m_ok=0;
-        if ( m_imageFullPath ) delete m_imageFullPath; 
+    ~CatalogTreeItemData( )
+    {
+        m_ok = 0;
+        if ( m_imageFullPath ) delete m_imageFullPath;
     };
     wxString const& GetDesc( ) const { return m_desc; };
     void SetCatNode( wxXmlNode* ele ) { m_element = ele; };
@@ -92,9 +79,9 @@ public:
     {
         m_isChecked = state;
     };
-    bool IsOK()
+    bool IsOK( )
     {
-        if ( m_ok ==12345 )
+        if ( m_ok == 12345 )
         {
             return true;
         }
@@ -109,7 +96,7 @@ public:
 
         if ( m_type != type2 )
         {
-            return ( int )m_type - ( int )type2;
+            return ( int ) m_type - ( int ) type2;
         }
         else
         {
@@ -175,11 +162,6 @@ public:
         }
     };
 
-
-
-
-
-
 private:
     double m_ok;
     wxXmlNode* m_element;
@@ -200,6 +182,28 @@ class CatalogTreeCtrl: public wxTreeCtrl
     //    DECLARE_EVENT_TABLE( )
 
 public:
+    enum
+    {
+        CatalogDataTree_Quit = wxID_EXIT,
+        CatalogDataTree_About = wxID_ABOUT,
+        CatalogDataTree_StructureStamps,
+        CatalogDataTree_ResortTree,
+        CatalogDataTree_EditDetails,
+        CatalogDataTree_Delete,
+        CatalogDataTree_Add,
+        CatalogDataTree_Colnect,
+        CatalogDataTree_Before,
+        CatalogDataTree_After,
+        CatalogDataTree_AsChild,
+        CatalogDataTree_Cancel,
+        CatalogDataTree_Inventory,
+        CatalogDataTree_InventoryStatusNone,
+        CatalogDataTree_InventoryStatusMissing,
+        CatalogDataTree_InventoryStatusOrdered,
+        CatalogDataTree_InventoryStatusOwn,
+        CatalogDataTree_InventoryStatusOwnVariant,
+        CatalogDataTree_InventoryStatusExclude
+    };
 
     /**
      * @brief Construct a new Stamp Tree Ctrl object
@@ -420,7 +424,7 @@ public:
  * @param parent
  */
     void SortTree( wxTreeItemId parent );
-    
+
     /*
      * @brief Delete the tree and resort it with the new sort order data.
      * Probably doing this because the sort order was changed.
@@ -518,18 +522,18 @@ public:
      * @param itemId
      * @return wxXmlNode*
      */
-    //wxXmlNode* GetEntryNode( wxTreeItemId itemId );
+     //wxXmlNode* GetEntryNode( wxTreeItemId itemId );
 
-    //wxString GetEntryID( wxTreeItemId itemId );
+     //wxString GetEntryID( wxTreeItemId itemId );
 
     Utils::StampLink* FindStampLink( wxTreeItemId itemId );
 
-    /* 
+    /*
      * @brief If this tree id item is catalg entry id IDNbr then set the link
-     * 
-     * @param catTreeID 
-     * @param link 
-     * @param IDNbr 
+     *
+     * @param catTreeID
+     * @param link
+     * @param IDNbr
      */
     void SetCatalogLink( wxTreeItemId catTreeID, Utils::StampLink* link, wxString IDNbr );
 
@@ -567,7 +571,7 @@ public:
     {
         if ( id.IsOk( ) )
         {
-            CatalogTreeItemData* data = ( CatalogTreeItemData* )GetItemData( id );
+            CatalogTreeItemData* data = ( CatalogTreeItemData* ) GetItemData( id );
             if ( data )
             {
                 return data->GetDesc( );
@@ -587,35 +591,35 @@ public:
     //         }
     //     }
     // };
-    void SetItemNode( wxTreeItemId id, wxXmlNode* ele ) 
-    { 
+    void SetItemNode( wxTreeItemId id, wxXmlNode* ele )
+    {
         if ( id.IsOk( ) )
         {
-            CatalogTreeItemData* data = ( CatalogTreeItemData* )GetItemData( id );
+            CatalogTreeItemData* data = ( CatalogTreeItemData* ) GetItemData( id );
             if ( data )
             {
                 data->SetCatNode( ele );
             }
-        }   
+        }
     };
     wxXmlNode* GetItemNode( wxTreeItemId id )
     {
         if ( id.IsOk( ) )
         {
-            CatalogTreeItemData* data = ( CatalogTreeItemData* )GetItemData( id );
+            CatalogTreeItemData* data = ( CatalogTreeItemData* ) GetItemData( id );
             if ( data )
             {
                 return data->GetNodeElement( );
             }
         }
-        return (wxXmlNode*)0;
+        return ( wxXmlNode* ) 0;
     };
 
-    void SetType( wxTreeItemId id, Catalog::CatalogBaseType type ) 
-    { 
+    void SetType( wxTreeItemId id, Catalog::CatalogBaseType type )
+    {
         if ( id.IsOk( ) )
         {
-            CatalogTreeItemData* data = ( CatalogTreeItemData* )GetItemData( id );
+            CatalogTreeItemData* data = ( CatalogTreeItemData* ) GetItemData( id );
             if ( data )
             {
                 return data->SetType( type );
@@ -627,7 +631,7 @@ public:
     {
         if ( id.IsOk( ) )
         {
-            CatalogTreeItemData* data = ( CatalogTreeItemData* )GetItemData( id );
+            CatalogTreeItemData* data = ( CatalogTreeItemData* ) GetItemData( id );
             if ( data )
             {
                 return data->GetType( );
@@ -641,19 +645,19 @@ public:
     {
         if ( id.IsOk( ) )
         {
-            CatalogTreeItemData* data = ( CatalogTreeItemData* )GetItemData( id );
+            CatalogTreeItemData* data = ( CatalogTreeItemData* ) GetItemData( id );
             if ( data )
             {
                 return data->GetStampLink( );
             }
         }
-        return (Utils::StampLink*)0;
+        return ( Utils::StampLink* ) 0;
     };
-    void SetItemStampLink( wxTreeItemId id, Utils::StampLink* link ) 
-    { 
+    void SetItemStampLink( wxTreeItemId id, Utils::StampLink* link )
+    {
         if ( id.IsOk( ) )
         {
-            CatalogTreeItemData* data = ( CatalogTreeItemData* )GetItemData( id );
+            CatalogTreeItemData* data = ( CatalogTreeItemData* ) GetItemData( id );
             if ( data )
             {
                 data->SetStampLink( link );
@@ -665,19 +669,19 @@ public:
     {
         if ( id.IsOk( ) )
         {
-            CatalogTreeItemData* data = ( CatalogTreeItemData* )GetItemData( id );
+            CatalogTreeItemData* data = ( CatalogTreeItemData* ) GetItemData( id );
             if ( data )
             {
                 return data->GetImageFullName( );
             }
         }
-        return (wxString*)0;
+        return ( wxString* ) 0;
     };
-    void SetItemImageFullName( wxTreeItemId id, wxString* str ) 
+    void SetItemImageFullName( wxTreeItemId id, wxString* str )
     {
         if ( id.IsOk( ) )
         {
-            CatalogTreeItemData* data = ( CatalogTreeItemData* )GetItemData( id );
+            CatalogTreeItemData* data = ( CatalogTreeItemData* ) GetItemData( id );
             if ( data )
             {
                 data->SetImageFullName( str );
@@ -689,7 +693,7 @@ public:
     {
         if ( id.IsOk( ) )
         {
-            CatalogTreeItemData* data = ( CatalogTreeItemData* )GetItemData( id );
+            CatalogTreeItemData* data = ( CatalogTreeItemData* ) GetItemData( id );
             if ( data )
             {
                 return data->IsChecked( );
@@ -701,7 +705,7 @@ public:
     {
         if ( id.IsOk( ) )
         {
-            CatalogTreeItemData* data = ( CatalogTreeItemData* )GetItemData( id );
+            CatalogTreeItemData* data = ( CatalogTreeItemData* ) GetItemData( id );
             if ( data )
             {
                 data->SetChecked( state );

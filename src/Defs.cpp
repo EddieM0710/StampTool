@@ -22,7 +22,7 @@
  *
  */
 
- // For compilers that support precompilation, includes "wx/wx.h".
+ 
 #include "wx/wxprec.h"
 
 #ifdef __BORLANDC__
@@ -58,17 +58,20 @@ bool IsDirty( ) { return Dirty; };
 
 Utils::Settings* GetSettings( )
 { 
-
-    return wxGetApp( ).GetToolDate( )->GetSettings( );
-
+    return wxGetApp( ).GetToolData( )->GetSettings( );
 };
 
 Utils::Project* GetProject( )
 { 
-    return wxGetApp( ).GetToolDate( )->GetProject( );
+    return wxGetApp( ).GetToolData( )->GetProject( );
 }
 
-inline ToolData* GetToolData( ){ return wxGetApp( ).GetToolDate( ); };
+Utils::FontList* GetFontList( )
+{ 
+    return wxGetApp( ).GetToolData( )->GetFontList( );
+};
+
+inline ToolData* GetToolData( ){ return wxGetApp( ).GetToolData( ); };
 
 Design::DesignData* GetDesignData( ) { return GetToolData( )->GetDesignData( ); };
 Catalog::CatalogSectionData* GetCatalogSectionData( ) 

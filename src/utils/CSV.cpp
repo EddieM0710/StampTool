@@ -23,7 +23,7 @@
  *
  **************************************************/
 
- // For compilers that support precompilation, includes "wx/wx.h".
+ 
 #include "wx/wxprec.h"
 
 #ifdef __BORLANDC__
@@ -121,7 +121,6 @@ namespace Utils {
     { 
         wxStringTokenizer tokenizer( catCodes, "," );
         wxString codePrefix = GetSettings( )->GetCatCodePrefix( );
-        std::cout << "GetIDNbr   codePrefix:>"<< codePrefix << " < catCodes:>" << catCodes << "<\n";
         wxString valStr;
         wxString rest;
         while ( tokenizer.HasMoreTokens( ) )
@@ -144,14 +143,12 @@ namespace Utils {
                     valStr = valStr.substr( pos );
                     valStr = valStr.Trim( );
                     valStr = valStr.Trim( false );
-                    std::cout << "GetIDNbr "<< catCodes << " found id >" << valStr << "<\n";
                     id = valStr;
                     return true;
                 }
 
             }
         }
-        std::cout << "GetIDNbr "<< catCodes << " has no id with " << codePrefix << "\n";
 
                 //couldn't find it; just get the first one.
         wxStringTokenizer tokenizer2( catCodes, "," );
@@ -203,7 +200,6 @@ namespace Utils {
             { 
                 // unmatched parens
                 // this means the csv is messed up
-                //std::cout << "Format error in csv file at line number " << lineNbr << ".\n";
                 wxString caption = "CSV Format Error";
                 wxString message;
                 message = message.Format( "Format error in csv file %s at line number %d. \n\n%s", m_filename, lineNbr, line );
@@ -277,37 +273,21 @@ namespace Utils {
                                     valStr = rest;
                                 valStr.Replace( "{", ",", true );
 
-                                // std::cout <<  "valStr:>"<< valStr<<"<; csvCol"<< csvCol << "size:" << m_csvColMap.size() << "\n";                                   
-
                                 Catalog::DataTypes entryType = m_csvColMap.at( csvCol );
-
-                                // std::cout <<  "csvCol"<< csvCol << "  entryType:" << entryType << "\n";                                   
-
 
                                 if ( entryType > 0 )
                                 { 
                                     Utils::SetAttrStr( entryElement, Catalog::DT_XMLDataNames[ entryType ], valStr );
-                                    //                           Catalog::Entry* entry = new Catalog::Entry( );
                                     wxString id = "";
                                     if ( entryType == Catalog::DT_Catalog_Codes )
                                     { 
-                                        // std::cout <<  "entryNode->ProcessCatalogCodes( "<< valStr<<" ); \n"   ;                                   
                                         entryNode->ProcessCatalogCodes( valStr );
                                         if ( GetIDNbr( valStr, id ) )
                                         { 
                                             wxString codePrefix = GetSettings( )->GetCatCodePrefix( );
-                                            int pos = id.Find( "2502" );//               .StartsWith( codePrefix, &rest );
-                                            if ( pos != wxNOT_FOUND )
-                                            { 
-                                                std::cout << "ID_Nbr>"<<valStr<<"<\n";
 
-                                            }
-
-                                            // std::cout <<  "entryNode->SetID( "<< id<<" ); \n"   ; 
                                             entryNode->SetID( id );
-                                            // std::cout <<  "entryNode->GetID( ); \n"   ; 
                                             id = entryNode->GetID( );
-                                            // std::cout <<  "entryNode->GetID( ); returned >"<< id << "<\n"; 
                                             if ( id.IsEmpty( ) )
                                             { 
                                                 std::cout << "ID_Nbr>" << valStr << "<\n";
@@ -316,7 +296,6 @@ namespace Utils {
                                         }
                                         else
                                         { 
-                                            // std::cout << "ID_Nbr>"<<valStr<<"<\n";
                                             entryNode->SetID( valStr );
                                         }
                                     }

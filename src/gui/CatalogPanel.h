@@ -25,7 +25,7 @@
 #define _CATALOGSECTIONDATAPANEL_H_
 
 
- /*!
+ /*
   * Includes
   */
 
@@ -37,33 +37,33 @@
 #include "utils/Project.h"
 #include "catalog/CatalogSectionData.h"
 
-  /*!
-   * Forward declarations
-   */
+  /*
+  * Forward declarations
+  */
 
-   // forward declarations
+
 class CatalogTreeCtrl;
-// forward declarations
+
 
 class Stamp;
 
-/*!
- * Control identifiers
- */
+/*
+* Control identifiers
+*/
 
- // control identifiers
+
 
 #define SYMBOL_CATALOGSECTIONDATAPANEL_STYLE wxTAB_TRAVERSAL
 #define SYMBOL_CATALOGSECTIONDATAPANEL_TITLE _( "CatalogPanel" )
 #define SYMBOL_CATALOGSECTIONDATAPANEL_IDNAME ID_CATALOGPANEL
 #define SYMBOL_CATALOGSECTIONDATAPANEL_SIZE wxSize( 400, 300 )
 #define SYMBOL_CATALOGSECTIONDATAPANEL_POSITION wxDefaultPosition
-// control identifiers
 
 
-/*!
- * CatalogPanel class declaration
- */
+
+/*
+* CatalogPanel class declaration
+*/
 
 class CatalogPanel: public wxPanel
 {
@@ -83,47 +83,28 @@ public:
         ID_SECTIONCHOICE
     };
 
-    /// Constructors
     CatalogPanel( );
+
     CatalogPanel( wxWindow* parent,
         wxWindowID id = SYMBOL_CATALOGSECTIONDATAPANEL_IDNAME,
         const wxPoint& pos = SYMBOL_CATALOGSECTIONDATAPANEL_POSITION,
         const wxSize& size = SYMBOL_CATALOGSECTIONDATAPANEL_SIZE,
         long style = SYMBOL_CATALOGSECTIONDATAPANEL_STYLE );
 
-    /// Creation
     bool Create( wxWindow* parent, wxWindowID id = SYMBOL_CATALOGSECTIONDATAPANEL_IDNAME, const wxPoint& pos = SYMBOL_CATALOGSECTIONDATAPANEL_POSITION, const wxSize& size = SYMBOL_CATALOGSECTIONDATAPANEL_SIZE, long style = SYMBOL_CATALOGSECTIONDATAPANEL_STYLE );
 
-    /// Destructor
     ~CatalogPanel( );
 
-    /// Initialises member variables
     void Init( );
 
-    /// Creates the controls and sizers
     void CreateControls( );
 
-    // CatalogPanel event handler declarations
-
-        /// wxEVT_COMMAND_TEXT_UPDATED event handler for ID_TEXTCTRL
     void OnTextctrlTextUpdated( wxCommandEvent& event );
 
     void OnTogglebuttonClick( wxCommandEvent& event );
 
     void OnSectionChoiceSelected( wxCommandEvent& event );
 
-    // CatalogPanel event handler declarations
-
-    // CatalogPanel member function declarations
-
-        /// Retrieves bitmap resources
-    wxBitmap GetBitmapResource( const wxString& name );
-
-    /// Retrieves icon resources
-    wxIcon GetIconResource( const wxString& name );
-    // CatalogPanel member function declarations
-
-        /// Should we show tooltips?
     static bool ShowToolTips( );
 
     void InitCatalogSectionData( );

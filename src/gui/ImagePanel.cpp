@@ -23,7 +23,7 @@
  **************************************************/
 
 
- // For compilers that support precompilation, includes "wx/wx.h".
+ 
 #include "wx/wxprec.h"
 
 #ifdef __BORLANDC__
@@ -139,43 +139,13 @@ void ImagePanel::CreateControls( )
 
 }
 
-/*
- * Should we show tooltips?
- *
- **************************************************/
+
 
 bool ImagePanel::ShowToolTips( )
 { 
     return true;
 }
 
-/*
- * Get bitmap resources
- *
- **************************************************/
-
-wxBitmap ImagePanel::GetBitmapResource( const wxString& name )
-{ 
-    // Bitmap retrieval
-     // ImagePanel bitmap retrieval
-    wxUnusedVar( name );
-    return wxNullBitmap;
-    // ImagePanel bitmap retrieval
-}
-
-/*
- * Get icon resources
- *
- **************************************************/
-
-wxIcon ImagePanel::GetIconResource( const wxString& name )
-{ 
-    // Icon retrieval
-     // ImagePanel icon retrieval
-    wxUnusedVar( name );
-    return wxNullIcon;
-    // ImagePanel icon retrieval
-}
 
 /*
  * SetBitmap
@@ -266,7 +236,7 @@ void ImagePanel::OnZoom( wxCommandEvent& event )
 
 
 /*
- * wxEVT_PAINT event handler for ID_IMAGEPANEL
+ *  ID_IMAGEPANEL
  *
  **************************************************/
 
@@ -307,7 +277,7 @@ void ImagePanel::OnPaint( wxPaintEvent& event )
 
 
 /*
- * wxEVT_CONTEXT_MENU event handler for ID_IMAGEPANEL
+ *  ID_IMAGEPANEL
  *
  **************************************************/
 
@@ -333,10 +303,8 @@ void ImagePanel::OnContextMenu( wxContextMenuEvent& event )
     PopupMenu( &menu );
     event.Skip( );
 
-    // wxEVT_CONTEXT_MENU event handler for ID_IMAGEPANEL in ImagePanel.
-   // Before editing this code, remove the block markers.
     event.Skip( );
-    // wxEVT_CONTEXT_MENU event handler for ID_IMAGEPANEL in ImagePanel.
+
 }
 
 

@@ -28,7 +28,7 @@
 #include <wx/arrstr.h>
 #include <wx/string.h>
 #include "wx/xml/xml.h"
-
+#include "utils/FontList.h"
 
 namespace Utils { 
 
@@ -60,15 +60,20 @@ class Settings;
         wxArrayInt* GetSortOrder( ) { return &m_sortOrder; };
         wxString GetUpperDivision( ) { return m_upperDivision; };
         wxString GetUpperPeriod( ) { return m_upperPeriod; };
-        wxString GetCatNbrFontString( ) { return m_catNbrFontString; };
-        wxString GetCatNbrColorString( ) { return  m_catNbrColorString; };
-        wxString GetTitleFontString( ) { return m_titleFontString; };
-        wxString GetTitleColorString( ) { return m_titleColorString; };
-        wxString GetTextFontString( ) { return m_textFontString; };
-        wxString GetTextColorString( ) { return m_textColorString; };
-        int GetDefaultTitleFontNdx() { return m_defaultTitleFontNdx; };
-        int GetDefaultTextFontNdx() { return m_defaultTextFontNdx; };
-        int GetDefaultCatNbrFontNdx() { return m_defaultCatNbrFontNdx; };
+
+        wxFont GetCatNbrFont( ) { return GetFontList()->GetFont( m_appPrefCatNbrFontNdx.Get( ) ); };
+        wxColour GetCatNbrColor( ) { return GetFontList()->GetColor( m_appPrefCatNbrFontNdx.Get( ) );; };
+        
+        wxFont GetTitleFont( ) { return GetFontList()->GetFont( m_appPrefTitleFontNdx.Get( ) ); };
+        wxColour GetTitleColor( ) { return GetFontList()->GetColor( m_appPrefTitleFontNdx.Get( ) ); };
+
+        wxFont GetTextFont( ) { return GetFontList()->GetFont( m_appPrefTextFontNdx.Get( ) ); };
+        wxColour GetTextColor( ) { return GetFontList()->GetColor( m_appPrefTextFontNdx.Get( ) ); };
+
+        int GetAppPrefTitleFontNdx() { return m_appPrefTitleFontNdx.Get(); };
+        int GetAppPrefTextFontNdx() { return m_appPrefTextFontNdx.Get(); };
+        int GetAppPrefCatNbrFontNdx() { return m_appPrefCatNbrFontNdx.Get(); };
+
         void SetConfigurationDirectory( wxString val ) { m_configurationDirectory = val.Trim( ); m_dirty = true; };
         //void SetImageDirectory( wxString val ) { m_imageDirectory = val.Trim( );m_dirty = true; };
         void SetCatalogID( wxString val ) { m_catalogID = val.Trim( );m_dirty = true; };
@@ -79,15 +84,10 @@ class Settings;
         void SetMiddlePeriod( wxString val ) { m_middlePeriod = val.Trim( );m_dirty = true; };
         void SetUpperDivision( wxString val ) { m_upperDivision = val.Trim( );m_dirty = true; };
         void SetUpperPeriod( wxString val ) { m_upperPeriod = m_configurationDirectory.Trim( );m_dirty = true; };
-        void SetCatNbrFontString( wxString val ) { m_catNbrFontString = val.Trim( );m_dirty = true; };
-        void SetCatNbrColorString( wxString val ) { m_catNbrColorString = val.Trim( );m_dirty = true; };
-        void SetTitleFontString( wxString val ) { m_titleFontString = val.Trim( );m_dirty = true; };
-        void SetTitleColorString( wxString val ) { m_titleColorString = val.Trim( );m_dirty = true; };
-        void SetTextFontString( wxString val ) { m_textFontString = val.Trim( );m_dirty = true; };
-        void SetTextColorString( wxString val ) { m_textColorString = val.Trim( );m_dirty = true; };
-        void SetDefaultTitleFontNdx( int ndx ) { m_defaultTitleFontNdx = ndx; };
-        void SetDefaultTextFontNdx( int ndx ) { m_defaultTextFontNdx = ndx; };
-        void SetDefaultCatNbrFontNdx( int ndx ) { m_defaultCatNbrFontNdx = ndx; };
+
+        void SetAppPrefTitleFontNdx( int ndx ) { m_appPrefTitleFontNdx.Set( ndx ); };
+        void SetAppPrefTextFontNdx( int ndx ) { m_appPrefTextFontNdx.Set( ndx ); };
+        void SetAppPrefCatNbrFontNdx( int ndx ) { m_appPrefCatNbrFontNdx.Set( ndx ); };
 
         int GetNextSortClassification( int current );
         void SetSettingValue( wxString& setting, wxXmlNode* parent, wxString childName, wxString defaultVal );
@@ -122,6 +122,10 @@ class Settings;
         void SetCatalogSectionDataEditable( bool val = true ){ m_catalogSectionDataEditable = val; };
         bool IsCatalogSectionDataEditableByDefault( ){ return m_catalogSectionDataEditableDefault; };
         void SetCatalogSectionDataEditableDefault( bool val = true ){ m_catalogSectionDataEditableDefault = val; };
+
+    void DumpFont ( wxString Level = "" );
+
+
     private:
         wxString m_lastFile;
         bool m_loadLastFileAtStartUp;
@@ -135,12 +139,12 @@ class Settings;
         wxString m_lowerPeriod;
         wxString m_middlePeriod;
         wxString m_upperPeriod;
-        wxString m_catNbrFontString;
-        wxString m_catNbrColorString;
-        wxString m_titleFontString;
-        wxString m_titleColorString;
-        wxString m_textFontString;
-        wxString m_textColorString;
+        wxFont m_catNbrFont;
+        wxColour m_catNbrColor;
+        wxFont m_titleFont;
+        wxColour m_titleColor;
+        wxFont m_textFont;
+        wxColour m_textColor;
         wxArrayString m_recentFiles;
         int m_nbrRecentPreference;
         bool m_catalogSectionDataEditable;
@@ -159,10 +163,10 @@ class Settings;
         const wxString m_defaultMiddlePeriod = "Classical";
         const wxString m_defaultUpperPeriod = "Modern";
 
-        int m_defaultTitleFontNdx;
-        int m_defaultTextFontNdx;
-        int m_defaultCatNbrFontNdx;
-        const wxString m_defaultFontColor = "BLACK";
+        Utils::FontNdx m_appPrefTitleFontNdx;
+        Utils::FontNdx m_appPrefTextFontNdx;
+        Utils::FontNdx m_appPrefCatNbrFontNdx;
+        const wxColour m_defaultFontColor = *wxBLACK ;
 
         //const wxArrayString m_defaultrecentFiles;
         const int m_defaultNbrRecentPreference = 4;

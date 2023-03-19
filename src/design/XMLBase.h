@@ -66,6 +66,7 @@ class XMLBase;
 
         void SetNodeType( AlbumBaseType type ) { m_nodeType = type; };
         AlbumBaseType GetNodeType( ) { return ( AlbumBaseType )m_nodeType; };
+        bool IsNodeType( AlbumBaseType type ){ return ( type == m_nodeType ); };
 
         int GetLineNumber( ){ return m_lineNbr; };
         void SetLineNumber( int nbr ){ m_lineNbr = nbr; };

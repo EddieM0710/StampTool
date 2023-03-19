@@ -22,7 +22,7 @@
  *
  **************************************************/
 
- // For compilers that support precompilation, includes "wx/wx.h".
+ 
 #include "wx/wxprec.h"
 
 #ifdef __BORLANDC__
@@ -338,7 +338,7 @@ void StampDescriptionPanel::CreateControls( void )
     // topVerticalSizer->Add( horizontalSplitterWindow, 3, wxGROW | wxALL, 5 );
 
     // Connect events and objects
-//$    m_bkgndText->Connect( ID_BKGNDTEXTCTRL, wxEVT_LEAVE_WINDOW, 
+//$    m_bkgndText->Connect( ID_BKGNDTEXTCTRL,  LEAVE_WINDOW, 
 //$        wxMouseEventHandler( StampDescriptionPanel::OnLeaveWindow ), 
 //$        NULL, this );
     // StampDescriptionPanel content construction
@@ -364,72 +364,35 @@ void StampDescriptionPanel::CreateControls( void )
 /*
  *
  *
- * wxEVT_COMMAND_TEXT_MAXLEN event handler for ID_BKGNDTEXTCTRL
+ *  COMMAND_TEXT_MAXLEN event handler for ID_BKGNDTEXTCTRL
  ***************************************************************/
 
 void StampDescriptionPanel::OnBkgndtextctrlMaxLen( wxCommandEvent& event )
 { 
-    // wxEVT_COMMAND_TEXT_MAXLEN event handler for ID_BKGNDTEXTCTRL in
-    // StampDescriptionPanel.
-    // Before editing this code, remove the block markers.
     event.Skip( );
-    // wxEVT_COMMAND_TEXT_MAXLEN event handler for ID_BKGNDTEXTCTRL in
-    // StampDescriptionPanel.
 }
 
 /*
  *
  *
- * wxEVT_LEAVE_WINDOW event handler for ID_BKGNDTEXTCTRL
+ *  LEAVE_WINDOW event handler for ID_BKGNDTEXTCTRL
  ***************************************************************/
 
 void StampDescriptionPanel::OnLeaveWindow( wxMouseEvent& event )
 { 
-    // wxEVT_LEAVE_WINDOW event handler for ID_BKGNDTEXTCTRL in
-    // StampDescriptionPanel.
-    // Before editing this code, remove the block markers.
     event.Skip( );
-    // wxEVT_LEAVE_WINDOW event handler for ID_BKGNDTEXTCTRL in
-    // StampDescriptionPanel.
 }
 
 /*
  *
  *
- * Should we show tooltips?
+ * 
  ***************************************************************/
 
 bool StampDescriptionPanel::ShowToolTips( void ) { return true; }
 
-/*
- *
- *
- * Get bitmap resources
- ***************************************************************/
 
-wxBitmap StampDescriptionPanel::GetBitmapResource( const wxString& name )
-{ 
-    // Bitmap retrieval
-    // StampDescriptionPanel bitmap retrieval
-    wxUnusedVar( name );
-    return wxNullBitmap;
-    // StampDescriptionPanel bitmap retrieval
-}
 
-/*
- *
- *
- * Get icon resources
- ***************************************************************/
-
-wxIcon StampDescriptionPanel::GetIconResource( const wxString& name )
-{ 
-    // Icon retrieval
-    // StampDescriptionPanel icon retrieval
-    wxUnusedVar( name );
-    return wxNullIcon;
-    // StampDescriptionPanel icon retrieval
-}
 
 /*
  * UpdateStatus
@@ -443,7 +406,7 @@ void StampDescriptionPanel::UpdateStatus( void )
 
 /*
  *
- * wxEVT_COMMAND_SLIDER_UPDATED event handler for ID_SLIDER
+ *  COMMAND_SLIDER_UPDATED event handler for ID_SLIDER
  *
  ***************************************************************/
 
@@ -453,18 +416,13 @@ void StampDescriptionPanel::OnZoomsliderUpdated( wxCommandEvent& event )
     double zoom = ( double )val / 100.0;
     m_stampImage->SetZoom( zoom );
 
-    // wxEVT_COMMAND_SLIDER_UPDATED event handler for ID_SLIDER in
-    // StampDescriptionPanel.
-    // Before editing this code, remove the block markers.
     event.Skip( );
-    // wxEVT_COMMAND_SLIDER_UPDATED event handler for ID_SLIDER in
-    // StampDescriptionPanel.
 }
 
 /*
  *
  *
- * wxEVT_COMMAND_TEXT_UPDATED event handler for ID_BKGNDTEXTCTRL
+ *   ID_BKGNDTEXTCTRL
  ***************************************************************/
 
 void StampDescriptionPanel::OnBkGndTextUpdated( wxCommandEvent& event )
@@ -477,16 +435,11 @@ void StampDescriptionPanel::OnBkGndTextUpdated( wxCommandEvent& event )
     //$     m_bkgndText->SetModified( false );
     //$ }
 
-    // wxEVT_COMMAND_TEXT_UPDATED event handler for ID_BKGNDTEXTCTRL in
-    // StampDescriptionPanel.
-    // Before editing this code, remove the block markers.
     event.Skip( );
-    // wxEVT_COMMAND_TEXT_UPDATED event handler for ID_BKGNDTEXTCTRL in
-    // StampDescriptionPanel.
 }
 
 /*
- * wxEVT_COMMAND_TEXT_UPDATED event handler for ID_DESCRIPTIONTEXTCTRL
+ *   ID_DESCRIPTIONTEXTCTRL
  ***************************************************************/
 
 void StampDescriptionPanel::OnDescriptionTextctrlTextUpdated( wxCommandEvent& event )
@@ -498,12 +451,8 @@ void StampDescriptionPanel::OnDescriptionTextctrlTextUpdated( wxCommandEvent& ev
     //$     m_stamp->SetDescription( strSel );
     //$     m_description->SetModified( false );
     //$ }
-    // wxEVT_COMMAND_TEXT_UPDATED event handler for
-    // ID_DESCRIPTIONTEXTCTRL in StampDescriptionPanel.
-    // Before editing this code, remove the block markers.
+    //  
     event.Skip( );
-    // wxEVT_COMMAND_TEXT_UPDATED event handler for ID_DESCRIPTIONTEXTCTRL
-    // in StampDescriptionPanel.
 }
 
 /*

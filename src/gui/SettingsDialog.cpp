@@ -21,7 +21,7 @@
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  */
 
-// For compilers that support precompilation, includes "wx/wx.h".
+
 #include "wx/wxprec.h"
 
 #ifdef __BORLANDC__
@@ -32,12 +32,18 @@
 #include "wx/wx.h"
 #endif
 
-// includes
-// includes
+
+
+#include <wx/notebook.h>
 
 #include "Defs.h"
 #include "Settings.h"
 #include "gui/SettingsDialog.h"
+#include "gui/SortOrderPanel.h"
+#include "gui/DefinePeriodsPanel.h"
+#include "gui/FontPickerHelper.h"
+#include <wx/font.h>
+#include <wx/colour.h>
 
 // XPM images
 // XPM images
@@ -146,125 +152,176 @@ void SettingsDialog::CreateControls( )
 {    
 // SettingsDialog content construction
 
-    SettingsDialog* itemDialog1 = this;
+    SettingsDialog* theDialog = this;
 
-    wxBoxSizer* itemBoxSizer1 = new wxBoxSizer( wxVERTICAL );
-    itemDialog1->SetSizer( itemBoxSizer1 );
+    wxBoxSizer* theDialogVerticalSizer = new wxBoxSizer( wxVERTICAL );
+    theDialog->SetSizer( theDialogVerticalSizer );
 
-    wxBoxSizer* itemBoxSizer3 = new wxBoxSizer( wxHORIZONTAL );
-    itemBoxSizer1->Add( itemBoxSizer3, 1, wxGROW | wxALL, 5 );
+    // wxBoxSizer* itemBoxSizer3 = new wxBoxSizer( wxHORIZONTAL );
+    // theDialogVerticalSizer->Add( itemBoxSizer3, 1, wxGROW | wxALL, 5 );
 
-    wxStaticText* itemStaticText1 = new wxStaticText( itemDialog1, wxID_STATIC, _( "Image Directory" ), wxDefaultPosition, wxDefaultSize, 0 );
-    itemBoxSizer3->Add( itemStaticText1, 1, wxALIGN_CENTER_VERTICAL | wxLEFT | wxTOP | wxBOTTOM, 5 );
+    wxBoxSizer* theDialogHorizontalSizer = new wxBoxSizer(wxHORIZONTAL);
+    theDialogVerticalSizer->Add(theDialogHorizontalSizer, 2, wxGROW|wxALL, 5);
 
-    m_imageDirectory = new wxTextCtrl( itemDialog1, ID_IMAGEDIRECTORTEXTBOX, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
-    itemBoxSizer3->Add( m_imageDirectory, 3, wxGROW | wxALL, 5 );
+    wxNotebook* notebook = new wxNotebook( theDialog, ID_NOTEBOOK, wxDefaultPosition, wxDefaultSize, wxBK_DEFAULT );
 
-    wxBoxSizer* itemBoxSizer5 = new wxBoxSizer( wxHORIZONTAL );
-    itemBoxSizer1->Add( itemBoxSizer5, 1, wxGROW | wxALL, 5 );
+    wxPanel* notebookDetailsPanel = new wxPanel( notebook, ID_NOTEBOOKDETAILSPANEL, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER|wxTAB_TRAVERSAL );
+    notebookDetailsPanel->SetExtraStyle(wxWS_EX_VALIDATE_RECURSIVELY);
 
-    wxStaticText* itemStaticText3 = new wxStaticText( itemDialog1, wxID_STATIC, _( "Working Directory" ), wxDefaultPosition, wxDefaultSize, 0 );
-    itemBoxSizer5->Add( itemStaticText3, 0, wxALIGN_CENTER_VERTICAL | wxLEFT | wxTOP | wxBOTTOM, 5 );
+    wxBoxSizer* detailsVerticalSizer = new wxBoxSizer(wxVERTICAL);
+    notebookDetailsPanel->SetSizer(detailsVerticalSizer);
+  
+    wxBoxSizer* imageHorizontalSizer = new wxBoxSizer(wxHORIZONTAL);
+    detailsVerticalSizer->Add(imageHorizontalSizer, 0, wxGROW|wxALL, 5);
 
-    wxBoxSizer* itemBoxSizer7 = new wxBoxSizer( wxHORIZONTAL );
-    itemBoxSizer1->Add( itemBoxSizer7, 1, wxGROW | wxALL, 5 );
+    wxStaticText* itemStaticText1 = new wxStaticText( notebookDetailsPanel, wxID_STATIC, _( "Image Directory" ), wxDefaultPosition, wxDefaultSize, 0 );
+    imageHorizontalSizer->Add( itemStaticText1, 1, wxALIGN_CENTER_VERTICAL | wxLEFT | wxTOP | wxBOTTOM, 5 );
 
-    wxStaticText* itemStaticText5 = new wxStaticText( itemDialog1, wxID_STATIC, _( "Country Code" ), wxDefaultPosition, wxDefaultSize, 0 );
-    itemBoxSizer7->Add( itemStaticText5, 0, wxALIGN_CENTER_VERTICAL | wxLEFT | wxTOP | wxBOTTOM, 5 );
+    m_imageDirectory = new wxTextCtrl( notebookDetailsPanel, ID_IMAGEDIRECTORTEXTBOX, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+    imageHorizontalSizer->Add( m_imageDirectory, 3, wxGROW | wxALL, 5 );
 
-    m_country = new wxTextCtrl( itemDialog1, ID_COUNTRYTEXTBOX, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
-    itemBoxSizer7->Add( m_country, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+    // wxBoxSizer* itemBoxSizer5 = new wxBoxSizer( wxHORIZONTAL );
+    // theDialogVerticalSizer->Add( itemBoxSizer5, 1, wxGROW | wxALL, 5 );
 
-    itemBoxSizer7->Add( 10, 5, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+    // wxStaticText* itemStaticText3 = new wxStaticText( notebookDetailsPanel, wxID_STATIC, _( "Working Directory" ), wxDefaultPosition, wxDefaultSize, 0 );
+    // itemBoxSizer5->Add( itemStaticText3, 0, wxALIGN_CENTER_VERTICAL | wxLEFT | wxTOP | wxBOTTOM, 5 );
 
-    wxStaticText* itemStaticText8 = new wxStaticText( itemDialog1, wxID_STATIC, _( "Catalog Code" ), wxDefaultPosition, wxDefaultSize, 0 );
-    itemBoxSizer7->Add( itemStaticText8, 0, wxALIGN_CENTER_VERTICAL | wxLEFT | wxTOP | wxBOTTOM, 5 );
+    wxBoxSizer* codePrefHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
+    detailsVerticalSizer->Add( codePrefHorizontalSizer, 0, wxGROW | wxALL, 5 );
 
-    m_catalog = new wxTextCtrl( itemDialog1, ID_CATALOGTEXTBOX, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
-    itemBoxSizer7->Add( m_catalog, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+    wxStaticText* itemStaticText5 = new wxStaticText( notebookDetailsPanel, wxID_STATIC, _( "Country Code" ), wxDefaultPosition, wxDefaultSize, 0 );
+    codePrefHorizontalSizer->Add( itemStaticText5, 0, wxALIGN_CENTER_VERTICAL | wxLEFT | wxTOP | wxBOTTOM, 5 );
 
-    wxBoxSizer* itemBoxSizer10 = new wxBoxSizer( wxHORIZONTAL );
-    itemBoxSizer1->Add( itemBoxSizer10, 1, wxGROW | wxALL, 5 );
+    m_country = new wxTextCtrl( notebookDetailsPanel, ID_COUNTRYTEXTBOX, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+    codePrefHorizontalSizer->Add( m_country, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
-    m_loadLastFileAtStartUp = new wxCheckBox( itemDialog1, ID_OPENLASTCHECKBOX, _( "Load Last File at Startup" ), wxDefaultPosition, wxDefaultSize, 0 );
+    codePrefHorizontalSizer->Add( 10, 5, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+
+    wxStaticText* itemStaticText8 = new wxStaticText( notebookDetailsPanel, wxID_STATIC, _( "Catalog Code" ), wxDefaultPosition, wxDefaultSize, 0 );
+    codePrefHorizontalSizer->Add( itemStaticText8, 0, wxALIGN_CENTER_VERTICAL | wxLEFT | wxTOP | wxBOTTOM, 5 );
+
+    m_catalog = new wxTextCtrl( notebookDetailsPanel, ID_CATALOGTEXTBOX, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+    codePrefHorizontalSizer->Add( m_catalog, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+
+    wxBoxSizer* recentHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
+    detailsVerticalSizer->Add( recentHorizontalSizer, 0, wxGROW | wxALL, 5 );
+
+    m_loadLastFileAtStartUp = new wxCheckBox( notebookDetailsPanel, ID_OPENLASTCHECKBOX, _( "Load Last File at Startup" ), wxDefaultPosition, wxDefaultSize, 0 );
     m_loadLastFileAtStartUp->SetValue( false );
-    itemBoxSizer10->Add( m_loadLastFileAtStartUp, 2, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+    recentHorizontalSizer->Add( m_loadLastFileAtStartUp, 2, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
-    itemBoxSizer10->Add( 20, 5, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+    recentHorizontalSizer->Add( 20, 5, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
-    wxStaticText* itemStaticText2 = new wxStaticText( itemDialog1, wxID_STATIC, _( "Size of RecentList" ), wxDefaultPosition, wxDefaultSize, 0 );
-    itemBoxSizer10->Add( itemStaticText2, 0, wxALIGN_CENTER_VERTICAL | wxLEFT | wxTOP | wxBOTTOM, 5 );
+    wxStaticText* itemStaticText2 = new wxStaticText( notebookDetailsPanel, wxID_STATIC, _( "Size of RecentList" ), wxDefaultPosition, wxDefaultSize, 0 );
+    recentHorizontalSizer->Add( itemStaticText2, 0, wxALIGN_CENTER_VERTICAL | wxLEFT | wxTOP | wxBOTTOM, 5 );
 
-    m_recentListSize = new wxTextCtrl( itemDialog1, ID_RECENTSIZETEXTCTRL, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
-    itemBoxSizer10->Add( m_recentListSize, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+    m_recentListSize = new wxTextCtrl( notebookDetailsPanel, ID_RECENTSIZETEXTCTRL, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+    recentHorizontalSizer->Add( m_recentListSize, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
-    wxBoxSizer* itemBoxSizer12 = new wxBoxSizer( wxHORIZONTAL );
-    itemBoxSizer1->Add( itemBoxSizer12, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 5 );
 
-    wxButton* itemButton13 = new wxButton( itemDialog1, wxID_CANCEL, _( "Cancel" ), wxDefaultPosition, wxDefaultSize, 0 );
-    itemBoxSizer12->Add( itemButton13, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+    notebook->AddPage( notebookDetailsPanel, _("Details"));
 
-    wxButton* itemButton14 = new wxButton( itemDialog1, wxID_OK, _( "OK" ), wxDefaultPosition, wxDefaultSize, 0 );
-    itemBoxSizer12->Add( itemButton14, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+    m_sortOrderPanel = 
+        new SortOrderPanel( notebook, ID_SORTORDERPANEL, wxDefaultPosition, 
+            wxSize( 100, 100 ), wxSIMPLE_BORDER );
+
+    notebook->AddPage( m_sortOrderPanel, _( "Sort Order" ) );
+
+    m_definePeriodsPanel = 
+        new DefinePeriodsPanel( notebook, ID_DEFINEPERIODSPANEL, wxDefaultPosition, 
+            wxSize( 100, 100 ), wxSIMPLE_BORDER );
+
+    notebook->AddPage( m_definePeriodsPanel, _( "Define Periods" ) );
+
+
+
+    wxPanel* notebookFontsPanel = new wxPanel( notebook, ID_NOTEBOOKFONTSPANEL, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER|wxTAB_TRAVERSAL );
+    notebookFontsPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY);
+
+    wxBoxSizer* fontsVerticalSizer = new wxBoxSizer(wxVERTICAL);
+    notebookFontsPanel->SetSizer( fontsVerticalSizer);
+  
+    wxBoxSizer* fontsHorizontalSizer = new wxBoxSizer( wxHORIZONTAL);
+    fontsVerticalSizer->Add( fontsHorizontalSizer, 0, wxGROW|wxALL, 5);
+
+
+
+    wxFont catNbrFont = GetSettings( )->GetCatNbrFont(  );
+    wxColour catNbrColor = GetSettings( )->GetCatNbrColor();
+    wxFont titleFont = GetSettings( )->GetTitleFont(  );
+    wxColour titleColor = GetSettings( )->GetTitleColor();
+    wxFont textFont = GetSettings( )->GetTextFont(  );
+    wxColour textColor = GetSettings( )->GetTextColor();
+
+    FontPicker* catNbrFontPickerHelper = new FontPicker( 
+        notebookFontsPanel, fontsVerticalSizer,
+        _( "Default Catalog Nbr  Font" ), wxID_STATIC,
+        ID_CATNBRFONTPICKER, ID_CATNBCOLORPICKER,
+        _( "Default" ), ID_NBRDEFAULTFONTBUTTON,
+        catNbrFont, catNbrColor );
+    m_catNbrFontPicker = catNbrFontPickerHelper->GetFontPickerCtrl();    
+    m_catNbrColorPicker = catNbrFontPickerHelper->GetColourPickerCtrl();  
+
+    FontPicker* titleFontPickerHelper = new FontPicker( 
+        notebookFontsPanel, fontsVerticalSizer,
+        _( "Default Title Font" ), wxID_STATIC,
+        ID_TITLEFONTPICKER, ID_TITLECOLORPICKER,
+        _( "Default" ), ID_TITLEDEFAULTFONTBUTTON,
+        titleFont, titleColor );
+    m_titleFontPicker = titleFontPickerHelper->GetFontPickerCtrl();    
+    m_titleColorPicker = titleFontPickerHelper->GetColourPickerCtrl();    
+
+
+    FontPicker* textFontPickerHelper = new FontPicker( 
+        notebookFontsPanel, fontsVerticalSizer,
+        _( "Default Text Font" ), wxID_STATIC,
+        ID_TEXTFONTPICKER, ID_TEXTCOLORPICKER,
+        _( "Default" ), ID_TEXTDEFAULTFONTBUTTON,
+        textFont, textColor );
+    m_textFontPicker = textFontPickerHelper->GetFontPickerCtrl();    
+    m_textColorPicker = textFontPickerHelper->GetColourPickerCtrl();   
+
+    notebook->AddPage( notebookFontsPanel, _( "Fonts" ) );
+
+
+    theDialogHorizontalSizer->Add(notebook, 2, wxGROW|wxALL, 5);
+
+    wxBoxSizer* dialogCtrlButtonSizer = new wxBoxSizer( wxHORIZONTAL );
+    theDialogVerticalSizer->Add( dialogCtrlButtonSizer, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 5 );
+
+    wxButton* itemButton13 = new wxButton( theDialog, wxID_CANCEL, _( "Cancel" ), wxDefaultPosition, wxDefaultSize, 0 );
+    dialogCtrlButtonSizer->Add( itemButton13, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+
+    wxButton* itemButton14 = new wxButton( theDialog, wxID_OK, _( "OK" ), wxDefaultPosition, wxDefaultSize, 0 );
+    dialogCtrlButtonSizer->Add( itemButton14, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
 // SettingsDialog content construction
 }
 
 
-/*
- * Should we show tooltips?
- */
+
 
 bool SettingsDialog::ShowToolTips( )
 { 
     return true;
 }
 
-/*
- * Get bitmap resources
- */
-
-wxBitmap SettingsDialog::GetBitmapResource( const wxString& name )
-{ 
-    // Bitmap retrieval
-// SettingsDialog bitmap retrieval
-    wxUnusedVar( name );
-    return wxNullBitmap;
-// SettingsDialog bitmap retrieval
-}
 
 /*
- * Get icon resources
- */
-
-wxIcon SettingsDialog::GetIconResource( const wxString& name )
-{ 
-    // Icon retrieval
-// SettingsDialog icon retrieval
-    wxUnusedVar( name );
-    return wxNullIcon;
-// SettingsDialog icon retrieval
-}
-
-
-/*
- * wxEVT_COMMAND_TEXT_UPDATED event handler for ID_IMAGEDIRECTORTEXTBOX
+ *   ID_IMAGEDIRECTORTEXTBOX
  */
 
 void SettingsDialog::OnImagedirectortextboxTextUpdated( wxCommandEvent& event )
 { 
 
     m_dirty = true;
-
-// wxEVT_COMMAND_TEXT_UPDATED event handler for ID_IMAGEDIRECTORTEXTBOX in SettingsDialog.
-    // Before editing this code, remove the block markers.
     event.Skip( );
-// wxEVT_COMMAND_TEXT_UPDATED event handler for ID_IMAGEDIRECTORTEXTBOX in SettingsDialog. 
+
 }
 
 
 /*
- * wxEVT_COMMAND_TEXT_UPDATED event handler for ID_COUNTRYTEXTBOX
+ *   ID_COUNTRYTEXTBOX
  */
 
 void SettingsDialog::OnCountrytextboxTextUpdated( wxCommandEvent& event )
@@ -272,15 +329,13 @@ void SettingsDialog::OnCountrytextboxTextUpdated( wxCommandEvent& event )
 
     m_dirty = true;
 
-// wxEVT_COMMAND_TEXT_UPDATED event handler for ID_COUNTRYTEXTBOX in SettingsDialog.
-    // Before editing this code, remove the block markers.
     event.Skip( );
-// wxEVT_COMMAND_TEXT_UPDATED event handler for ID_COUNTRYTEXTBOX in SettingsDialog. 
+
 }
 
 
 /*
- * wxEVT_COMMAND_TEXT_UPDATED event handler for ID_CATALOGTEXTBOX
+ *   ID_CATALOGTEXTBOX
  */
 
 void SettingsDialog::OnCatalogtextboxTextUpdated( wxCommandEvent& event )
@@ -288,15 +343,13 @@ void SettingsDialog::OnCatalogtextboxTextUpdated( wxCommandEvent& event )
 
     m_dirty = true;
 
-// wxEVT_COMMAND_TEXT_UPDATED event handler for ID_CATALOGTEXTBOX in SettingsDialog.
-    // Before editing this code, remove the block markers.
     event.Skip( );
-// wxEVT_COMMAND_TEXT_UPDATED event handler for ID_CATALOGTEXTBOX in SettingsDialog. 
+
 }
 
 
 /*
- * wxEVT_COMMAND_CHECKBOX_CLICKED event handler for ID_OPENLASTCHECKBOX
+ *   ID_OPENLASTCHECKBOX
  */
 
 void SettingsDialog::OnOpenlastcheckboxClick( wxCommandEvent& event )
@@ -304,15 +357,13 @@ void SettingsDialog::OnOpenlastcheckboxClick( wxCommandEvent& event )
 
     m_dirty = true;
 
-// wxEVT_COMMAND_CHECKBOX_CLICKED event handler for ID_OPENLASTCHECKBOX in SettingsDialog.
-    // Before editing this code, remove the block markers.
     event.Skip( );
-// wxEVT_COMMAND_CHECKBOX_CLICKED event handler for ID_OPENLASTCHECKBOX in SettingsDialog. 
+
 }
 
 
 /*
- * wxEVT_COMMAND_TEXT_UPDATED event handler for ID_RECENTSIZETEXTCTRL
+ *   ID_RECENTSIZETEXTCTRL
  */
 
 void SettingsDialog::OnRecentsizetextctrlTextUpdated( wxCommandEvent& event )
@@ -320,19 +371,21 @@ void SettingsDialog::OnRecentsizetextctrlTextUpdated( wxCommandEvent& event )
 
     m_dirty = true;
 
-// wxEVT_COMMAND_TEXT_UPDATED event handler for ID_RECENTSIZETEXTCTRL in SettingsDialog.
-    // Before editing this code, remove the block markers.
     event.Skip( );
-// wxEVT_COMMAND_TEXT_UPDATED event handler for ID_RECENTSIZETEXTCTRL in SettingsDialog. 
+
 }
 
 void SettingsDialog::OnOkClick( wxCommandEvent& event )
 { 
     UpdateSettings( );
-// wxEVT_COMMAND_BUTTON_CLICKED event handler for wxID_OK in DefinePeriodsDialog.
-    // Before editing this code, remove the block markers.
+    m_definePeriodsPanel->OnOkClick();
+    m_sortOrderPanel->OnOkClick();
+
+    if( GetSettings( )->isDirty( ) )  
+    GetSettings( )->Save( );
+     
     event.Skip( );
-// wxEVT_COMMAND_BUTTON_CLICKED event handler for wxID_OK in DefinePeriodsDialog. 
+
 
  }
 
@@ -382,6 +435,24 @@ void SettingsDialog::UpdateSettings( )
         }
         m_recentListSize->SetModified( false );  
     } 
+
+    wxFont titleFont = m_titleFontPicker->GetSelectedFont();
+    wxColour titleColor = m_titleColorPicker->GetColour();
+    int ndx = GetFontList()->AddNewFont( titleFont, titleColor );
+    GetSettings( )->SetAppPrefTitleFontNdx( ndx );
+
+    wxFont catNbrFont = m_catNbrFontPicker->GetSelectedFont();
+    wxColour catNbrColor = m_catNbrColorPicker->GetColour(  );
+    ndx = GetFontList()->AddNewFont( catNbrFont, catNbrColor );
+    GetSettings( )->SetAppPrefCatNbrFontNdx( ndx );
+
+    wxFont textFont = m_textFontPicker->GetSelectedFont();
+    wxColour textColor = m_textColorPicker->GetColour( );
+    ndx = GetFontList()->AddNewFont( textFont, textColor );
+    GetSettings( )->SetAppPrefTextFontNdx( ndx );
+
+    GetFontList()->InitFonts();
+
     if( GetSettings( )->isDirty( ) )  
     GetSettings( )->Save( );
 }

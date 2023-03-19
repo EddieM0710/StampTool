@@ -42,28 +42,10 @@ namespace Design {
     { 
     public:
 
-        // column frame constructor
-        /**
-         * @brief Construct a new Column frame object.
-         *
-         * @param parent
-         **************************************************/
         Column( wxXmlNode* node ) : LayoutBase( node ) { SetNodeType( AT_Col ); };
 
-        /**
-         * @brief Destroy the Column object
-         *
-         **************************************************/
         ~Column( ) { };
 
-
-        /**
-         * @brief Calculate the column layout based on child parameters
-         *
-         * @return true
-         * @return false
-         **************************************************/
-        void UpdatePositions( );
 
         /**
          * @brief UpdateMinimumSize
@@ -76,13 +58,21 @@ namespace Design {
         bool UpdateMinimumSize( );
 
         void UpdateSizes( );
-
-
-
-        // build the frame container for the column
+        
+        /**
+         * @brief Calculate the column layout based on child parameters. 
+         *  Go to the bottom of each child container object ( row, column, page ) 
+         * and begin filling in position relative to the parent
+         * *
+         * 
+         * @return true
+         * @return false
+         **************************************************/
+        void UpdatePositions( );
 
 
         NodeStatus ValidateNode( );
+
         /*
          * @brief Draw object on screen
          *
@@ -98,7 +88,7 @@ namespace Design {
         void ReportLayout(  );
 
     private:
-
+        bool m_showTitle;
         DebugString m_debugString;
 
     };

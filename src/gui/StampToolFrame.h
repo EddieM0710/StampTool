@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation, 
+ * terms of the GNU General Public License as published by the Free Software Foundation,
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -26,7 +26,7 @@
 #ifndef _STAMPTOOLFRAME_H_
 #define _STAMPTOOLFRAME_H_
 
- /*!
+ /*
   * Includes
   */
 
@@ -35,10 +35,10 @@
 
 #include "gui/GuiDefs.h"
 
-/*!
- * Forward declarations
- */
- //namespace Catalog { class Stamp; };
+  /*
+   * Forward declarations
+   */
+   //namespace Catalog { class Stamp; };
 
 class StampToolPanel;
 
@@ -48,38 +48,38 @@ class wxButton;
 class CatalogPanel;
 //class CatalogTreeCtrl;
 class AlbumDesignTreePanel;
-/*!
+/*
  * Control identifiers
  */
 
 
 enum {
- ID_TEXTSERCHMENUITEM = ID_STAMPTOOLFRAME,
- ID_SORTORDER,
- ID_ITEMVIEW,
- ID_DEFINEPERIOD ,
- ID_RECENT,
- ID_RECENTMENU,
- ID_SETTINGS,
- ID_MERGE,
- ID_PREFERENCES ,
- ID_CSVIMPORT,
- ID_OPENPROJECT,
- ID_OPENDESIGN,
- ID_OPENCATALOG,
- ID_SAVEPROJECT,
- ID_SAVEDESIGN,
- ID_SAVECATALOG,
- ID_SAVEASPROJECT ,
- ID_SAVEASDESIGN ,
- ID_SAVEASCATALOG,
- ID_NEWPROJECT,
- ID_NEWDESIGN,
- ID_NEWCATALOG,
- ID_CATALOGMENU,
- ID_GENERATEPDF,
- ID_DESIGNMENU,
- ID_STAMPTOOLPANELFOREIGN = ID_STAMPTOOLPANEL
+    ID_TEXTSERCHMENUITEM = ID_STAMPTOOLFRAME,
+    ID_SORTORDER,
+    ID_ITEMVIEW,
+    ID_DEFINEPERIOD,
+    ID_RECENT,
+    ID_RECENTMENU,
+    ID_SETTINGS,
+    ID_MERGE,
+    ID_PREFERENCES,
+    ID_CSVIMPORT,
+    ID_OPENPROJECT,
+    ID_OPENDESIGN,
+    ID_OPENCATALOG,
+    ID_SAVEPROJECT,
+    ID_SAVEDESIGN,
+    ID_SAVECATALOG,
+    ID_SAVEASPROJECT,
+    ID_SAVEASDESIGN,
+    ID_SAVEASCATALOG,
+    ID_NEWPROJECT,
+    ID_NEWDESIGN,
+    ID_NEWCATALOG,
+    ID_CATALOGMENU,
+    ID_GENERATEPDF,
+    ID_DESIGNMENU,
+    ID_STAMPTOOLPANELFOREIGN = ID_STAMPTOOLPANEL
 };
 
 #define SYMBOL_STAMPTOOLFRAME_STYLE                                         \
@@ -103,12 +103,12 @@ enum {
   *
   */
 class StampToolFrame: public wxFrame
-{ 
+{
     DECLARE_CLASS( StampToolFrame )
         DECLARE_EVENT_TABLE( )
 
 public:
-    // Constructors
+
     /**
      * @brief Default Constructor a new StampToolFrame object
      * @details Must be used in conjunction with Create.
@@ -126,11 +126,11 @@ public:
      * @param  style	The window style.
      * @see wxPanel.
      **************************************************/
-    StampToolFrame( wxWindow* parent, 
-        wxWindowID id = SYMBOL_STAMPTOOLFRAME_IDNAME, 
-        const wxString& caption = SYMBOL_STAMPTOOLFRAME_TITLE, 
-        const wxPoint& pos = SYMBOL_STAMPTOOLFRAME_POSITION, 
-        const wxSize& size = SYMBOL_STAMPTOOLFRAME_SIZE, 
+    StampToolFrame( wxWindow* parent,
+        wxWindowID id = SYMBOL_STAMPTOOLFRAME_IDNAME,
+        const wxString& caption = SYMBOL_STAMPTOOLFRAME_TITLE,
+        const wxPoint& pos = SYMBOL_STAMPTOOLFRAME_POSITION,
+        const wxSize& size = SYMBOL_STAMPTOOLFRAME_SIZE,
         long style = SYMBOL_STAMPTOOLFRAME_STYLE );
 
     /**
@@ -145,14 +145,14 @@ public:
      * @return bool
      *
      **************************************************/
-    bool Create( wxWindow* parent, 
-        wxWindowID id = SYMBOL_STAMPTOOLFRAME_IDNAME, 
-        const wxString& caption = SYMBOL_STAMPTOOLFRAME_TITLE, 
-        const wxPoint& pos = SYMBOL_STAMPTOOLFRAME_POSITION, 
-        const wxSize& size = SYMBOL_STAMPTOOLFRAME_SIZE, 
+    bool Create( wxWindow* parent,
+        wxWindowID id = SYMBOL_STAMPTOOLFRAME_IDNAME,
+        const wxString& caption = SYMBOL_STAMPTOOLFRAME_TITLE,
+        const wxPoint& pos = SYMBOL_STAMPTOOLFRAME_POSITION,
+        const wxSize& size = SYMBOL_STAMPTOOLFRAME_SIZE,
         long style = SYMBOL_STAMPTOOLFRAME_STYLE );
 
-    // Destructor
+
     ~StampToolFrame( );
 
     /**
@@ -169,63 +169,63 @@ public:
 
     // StampToolFrame event handler declarations
 
-   // wxEVT_CLOSE_WINDOW event handler for ID_STAMPTOOLFRAME
+   //  CLOSE_WINDOW event handler for ID_STAMPTOOLFRAME
     void OnCloseWindow( wxCloseEvent& event );
 
-    // wxEVT_ICONIZE event handler for ID_STAMPTOOLFRAME
+    //  ICONIZE event handler for ID_STAMPTOOLFRAME
     void OnIconize( wxIconizeEvent& event );
 
-    // wxEVT_MAXIMIZE event handler for ID_STAMPTOOLFRAME
+    //  MAXIMIZE event handler for ID_STAMPTOOLFRAME
     void OnMaximize( wxMaximizeEvent& event );
 
-    // wxEVT_COMMAND_MENU_SELECTED event handler for wxID_NEW
+    //  COMMAND_MENU_SELECTED event handler for wxID_NEW
     void OnNewProjectClick( wxCommandEvent& event );
     void OnNewDesignClick( wxCommandEvent& event );
     void OnNewCatalogClick( wxCommandEvent& event );
 
-    // wxEVT_COMMAND_MENU_SELECTED event handler for wxID_OPEN
+    //  COMMAND_MENU_SELECTED event handler for wxID_OPEN
     void OnOpenProjectClick( wxCommandEvent& event );
     void OnOpenDesignClick( wxCommandEvent& event );
     void OnOpenCatalogClick( wxCommandEvent& event );
 
-    // wxEVT_COMMAND_MENU_SELECTED event handler for wxID_SAVE
+    //  COMMAND_MENU_SELECTED event handler for wxID_SAVE
     void OnSaveProjectClick( wxCommandEvent& event );
     void OnSaveDesignClick( wxCommandEvent& event );
     void OnSaveCatalogClick( wxCommandEvent& event );
 
-    // wxEVT_COMMAND_MENU_SELECTED event handler for wxID_SAVEAS
+    //  COMMAND_MENU_SELECTED event handler for wxID_SAVEAS
     void OnSaveasProjectClick( wxCommandEvent& event );
     void OnSaveasDesignClick( wxCommandEvent& event );
     void OnSaveasCatalogClick( wxCommandEvent& event );
 
     void OnGeneratePDFClick( wxCommandEvent& event );
 
-    // wxEVT_COMMAND_MENU_SELECTED event handler for ID_IMPORT
+    //  COMMAND_MENU_SELECTED event handler for ID_IMPORT
     void OnCSVImportClick( wxCommandEvent& event );
     //   void OnAEImportClick( wxCommandEvent &event );
 
-       // wxEVT_COMMAND_MENU_SELECTED event handler for wxID_REVERT_TO_SAVED
+       //  COMMAND_MENU_SELECTED event handler for wxID_REVERT_TO_SAVED
     void OnRevertToSavedClick( wxCommandEvent& event );
 
-    // wxEVT_COMMAND_MENU_SELECTED event handler for wxID_EXIT
+    //  COMMAND_MENU_SELECTED event handler for wxID_EXIT
     void OnExitClick( wxCommandEvent& event );
 
-    // wxEVT_COMMAND_MENU_SELECTED event handler for ID_TEXTSERCHMENUITEM
+    //  COMMAND_MENU_SELECTED event handler for ID_TEXTSERCHMENUITEM
     void OnTextserchmenuitemClick( wxCommandEvent& event );
 
-    // wxEVT_COMMAND_MENU_SELECTED event handler for ID_SORTORDER
+    //  COMMAND_MENU_SELECTED event handler for ID_SORTORDER
     void OnSortOrderClick( wxCommandEvent& event );
 
-    // wxEVT_COMMAND_MENU_SELECTED event handler for ID_ITEMVIEW
+    //  COMMAND_MENU_SELECTED event handler for ID_ITEMVIEW
     void OnItemviewClick( wxCommandEvent& event );
 
-    // wxEVT_COMMAND_MENU_SELECTED event handler for ID_DEFINEPERIOD
+    //  COMMAND_MENU_SELECTED event handler for ID_DEFINEPERIOD
     void OnDefineperiodClick( wxCommandEvent& event );
 
-    // wxEVT_COMMAND_MENU_SELECTED event handler for ID_SETTINGS
+    //  COMMAND_MENU_SELECTED event handler for ID_SETTINGS
     void OnSettingsClick( wxCommandEvent& event );
 
-    // wxEVT_COMMAND_MENU_SELECTED event handler for ID_MERGE
+    //  COMMAND_MENU_SELECTED event handler for ID_MERGE
     void OnMergeClick( wxCommandEvent& event );
 
     void SetupRecentMenu( );
@@ -233,30 +233,11 @@ public:
     void OnRecentmenuUpdate( wxUpdateUIEvent& event );
     void DoDefinePeriodDialog( );
     void DoSettingsDialog( );
-    // StampToolFrame event handler declarations
-
-    // StampToolFrame member function declarations
-
-   /**
-    * @brief Retrieves bitmap resources
-    *
-    * @param  name ( autogenerated. Dummy. )
-    * @return wxBitmap null
-    **************************************************/
-    wxBitmap GetBitmapResource( const wxString& name );
-
-    /**
-     * @brief Get the Icon Resource objectRetrieves icon resources
-     *
-     * @param  name ( autogenerated. Dummy. )
-     * @return wxIcon null
-     **************************************************/
-    wxIcon GetIconResource( const wxString& name );
 
 
     // StampToolFrame member function declarations
 
-    // Should we show tooltips?
+    // 
     static bool ShowToolTips( );
 
     //void SetStamp( wxXmlNode *stamp );
@@ -294,7 +275,7 @@ public:
     int DoQueryMerge( int& mergeMethod );
 
 
-    void GetSetupData( int& mergeProcedure, wxXmlNode** currItem, 
+    void GetSetupData( int& mergeProcedure, wxXmlNode** currItem,
         wxXmlNode** mergeItem );
 
     int ImageGallery( );
@@ -319,7 +300,7 @@ public:
     wxMenu* m_recentMenu;
     wxMenu* m_preferencesMenu;
     wxMenu* m_importMenu;
-    typedef struct { 
+    typedef struct {
         wxMenuItem* item;
         int id;
     } RecentListItem;

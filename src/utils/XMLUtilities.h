@@ -6,18 +6,18 @@
  * @date 2021-02-25
  *
  * @copyright Copyright ( c ) 2021
- * 
+ *
  * This file is part of StampTool.
  *
- * StampTool is free software: you can redistribute it and/or modify it under the 
- * terms of the GNU General Public License as published by the Free Software Foundation, 
+ * StampTool is free software: you can redistribute it and/or modify it under the
+ * terms of the GNU General Public License as published by the Free Software Foundation,
  * either version 3 of the License, or any later version.
  *
- * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY 
- * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+ * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
+ * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
- * You should have received a copy of the GNU General Public License along with 
+ * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
  **************************************************/
@@ -29,21 +29,22 @@
 #include <vector>
 
 #include "catalog/CatalogDefs.h"
+#include "design/DesignDefs.h"
 
 class wxTextOutputStream;
 
-namespace Utils { 
+namespace Utils {
 
     // Class for iterating an XML heirarchy
     class XMLIterator
-    { 
+    {
     private:
         wxXmlNode* m_parent;      // pointer to parent of current element
         wxXmlNode* m_currElement; // pointer to the current element
         XMLIterator* m_iterator;   // iterator for children of this element
         bool m_decend;             // bool; true = > iterate children
         bool m_firstDone; // bool; true if First has been called; if not true Next
-                          // just returns null
+        // just returns null
 
     public:
         /**
@@ -98,6 +99,9 @@ namespace Utils {
     void Save( wxXmlDocument* doc, wxString filename );
     void SaveChild( wxTextOutputStream* text, wxXmlNode* node, wxString level );
     void SaveAttributes( wxTextOutputStream* text, wxXmlNode* node, wxString level );
+
+    Design::AT_FontUsageType LoadFont( wxXmlNode* fontNode, wxString& nativeString, wxString& color );
+    void SaveFont( wxXmlNode* parent, Design::AT_FontUsageType type, wxFont font, wxColour color );
 
     extern int zIndex;
     extern int frameIndex;

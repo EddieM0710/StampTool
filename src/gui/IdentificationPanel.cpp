@@ -22,7 +22,7 @@
  *
  **************************************************/
 
- // For compilers that support precompilation, includes "wx/wx.h".
+ 
 #include "wx/wxprec.h"
 
 #ifdef __BORLANDC__
@@ -311,43 +311,14 @@ void IdentificationPanel::CreateControls( )
     SetDataEditable( GetSettings( )->IsCatalogSectionDataEditable( ) );
 }
 
-/*
- * Should we show tooltips?
- *
- **************************************************/
+
 
 bool IdentificationPanel::ShowToolTips( )
 { 
     return true;
 }
 
-/*
- * Get bitmap resources
- *
- **************************************************/
 
-wxBitmap IdentificationPanel::GetBitmapResource( const wxString& name )
-{ 
-    // Bitmap retrieval
-    // IdentificationPanel bitmap retrieval
-    wxUnusedVar( name );
-    return wxNullBitmap;
-    // IdentificationPanel bitmap retrieval
-}
-
-/*
- * Get icon resources
- *
- **************************************************/
-
-wxIcon IdentificationPanel::GetIconResource( const wxString& name )
-{ 
-    // Icon retrieval
-    // IdentificationPanel icon retrieval
-    wxUnusedVar( name );
-    return wxNullIcon;
-    // IdentificationPanel icon retrieval
-}
 
 void IdentificationPanel::UpdateStampValue( Catalog::DataTypes dt, LabeledTextBox* textBox  )
 { 
@@ -383,15 +354,12 @@ void IdentificationPanel::OnTextctrlTextUpdated( wxCommandEvent& event )
         UpdateStampValue( Catalog::DT_Name, m_name );
     }
 
-    // wxEVT_COMMAND_CHOICE_SELECTED event handler for ID_EMISSIONCHOICE
-    // in IdentificationPanel.
-    // Before editing this code, remove the block markers.
+
     event.Skip( );
-    // wxEVT_COMMAND_CHOICE_SELECTED event handler for ID_EMISSIONCHOICE
-    // in IdentificationPanel.
+
 }
 /*
- * wxEVT_COMMAND_CHOICE_SELECTED event handler for ID_EMISSIONCHOICE
+ *   ID_EMISSIONCHOICE
  *
  **************************************************/
 
@@ -400,16 +368,12 @@ void IdentificationPanel::OnEmissionchoiceSelected( wxCommandEvent& event )
     wxString strSel = m_emission->GetStringSelection( );
     if ( m_stamp ) m_stamp->SetEmission( strSel );
 
-    // wxEVT_COMMAND_CHOICE_SELECTED event handler for ID_EMISSIONCHOICE
-    // in IdentificationPanel.
-    // Before editing this code, remove the block markers.
     event.Skip( );
-    // wxEVT_COMMAND_CHOICE_SELECTED event handler for ID_EMISSIONCHOICE
-    // in IdentificationPanel.
+
 }
 
 /*
- * wxEVT_COMMAND_CHOICE_SELECTED event handler for ID_FORMATCHOICE
+ *   ID_FORMATCHOICE
  *
  **************************************************/
 
@@ -419,12 +383,9 @@ void IdentificationPanel::OnFormatchoiceSelected( wxCommandEvent& event )
     wxString strSel = m_format->GetStringSelection( );
     if ( m_stamp ) m_stamp->SetFormat( strSel );
 
-    // wxEVT_COMMAND_CHOICE_SELECTED event handler for ID_FORMATCHOICE
-    // in IdentificationPanel.
-    // Before editing this code, remove the block markers.
+  
     event.Skip( );
-    // wxEVT_COMMAND_CHOICE_SELECTED event handler for ID_FORMATCHOICE in
-    // IdentificationPanel.
+
 }
 
 /*
@@ -497,7 +458,7 @@ void IdentificationPanel::OnEditCheckBox( wxCommandEvent& event )
 
 
 /*
- * wxEVT_COMMAND_CHOICE_SELECTED event handler for ID_STATUSCHOICE
+ *   ID_STATUSCHOICE
  *
  **************************************************/
 
@@ -509,12 +470,8 @@ void IdentificationPanel::OnStatuschoiceSelected( wxCommandEvent& event )
         m_stamp->SetInventoryStatus( strSel );
         GetCatalogPageTreeCtrl( )->SetInventoryStatusImage( );
     }
-    // wxEVT_COMMAND_CHOICE_SELECTED event handler for ID_STATUSCHOICE
-    // in IdentificationPanel.
-    // Before editing this code, remove the block markers.
     event.Skip( );
-    // wxEVT_COMMAND_CHOICE_SELECTED event handler for ID_STATUSCHOICE in
-    // IdentificationPanel.
+
 }
 
 /*

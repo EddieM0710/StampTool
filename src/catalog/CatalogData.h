@@ -43,7 +43,7 @@ class CatalogSectionData;
     public:
 
         CatalogData( ){ m_catalogSectionDataNdx = -1; };
-        ~CatalogData( );
+        ~CatalogData( ){ };
         bool IsOK( );
         Catalog::CatalogSectionData* NewCatalogSectionData( );
         Catalog::CatalogSectionData* GetCatalogSectionData( );

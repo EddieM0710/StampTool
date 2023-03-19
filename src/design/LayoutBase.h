@@ -159,28 +159,20 @@ namespace Design {
          */
         void SetMinHeight( double val ) { m_frame.SetMinHeight( val ); };
 
-        wxString GetTitle( ) { return m_title; };
+        wxString GetTitle( ) { return GetAttrStr( Design::AT_Name ); };
+        void SetTitle( wxString title ) { SetAttrStr( Design::AT_Name, title); };
 
-        /*
-         * @brief  Set Layout element title
-         *
-         * @param val wxString
-         */
-        void SetTitle( wxString title ) { m_title = title; };
+        // Get TitleHeight in MM
+        double GetTitleHeight( ) { return m_titleFrame.GetHeight( ); };
+        double GetTitleMinHeight( ) { return m_titleFrame.GetMinHeight( ); };
 
-        /*
-         * @brief Get Layout element title
-         *
-         * @return double - width in MM
-         */
-        double GetTitleHeight( ) { return m_titleSize.y; };
-
-        /*
-         * @brief  Set Layout element position
-         *
-         * @param val double - position in MM
-         */
-        double GetTitleWidth( ) { return m_titleSize.x; };
+        // TitleWidth in MM   
+        double GetTitleWidth( ) { return m_titleFrame.GetWidth( ); };
+        double GetTitleMinWidth( ) { return m_titleFrame.GetMinWidth( ); };
+        void SetTitleXPos( double val ) { m_titleFrame.SetXPos( val ); };
+        void SetTitleYPos( double val ) { m_titleFrame.SetYPos( val ); };
+        double GetTitleXPos() { return m_titleFrame.GetXPos( ); };
+        double GetTitleYPos( ) { return m_titleFrame.GetYPos( ); };
 
 
         bool GetShowTitle( ) { return String2Bool( GetAttrStr( AT_ShowTitle ) ); };
@@ -232,12 +224,11 @@ namespace Design {
         virtual void UpdateSizes( ) = 0;
 
         /*
-         * @brief Calculate the size in MM necessary for the title
+         * @brief  Calc Title size based on allowed width and font size.
          *
          * @param width the max width of the title
-         * @param font font to be used for writing
          */
-        void UpdateTitleSize( double width, wxFont* font );
+        void UpdateTitleSize( double width );
 
         //void WriteFrame( wxString loc, wxString name, wxString id, Frame* frame );
         void DumpLayout( double x, double y );
@@ -269,8 +260,8 @@ namespace Design {
     protected:
         Frame m_frame;
         Frame m_clientDimensions;
-        wxString m_title;
-        RealSize m_titleSize;
+ //       wxString m_title;
+        Frame m_titleFrame;
  
     };
 }

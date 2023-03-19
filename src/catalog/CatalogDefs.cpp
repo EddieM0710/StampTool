@@ -23,7 +23,7 @@
  *
  */
 
- // For compilers that support precompilation, includes "wx/wx.h".
+ 
 #include "wx/wxprec.h"
 
 #ifdef __BORLANDC__
@@ -236,58 +236,6 @@ namespace Catalog {
     };
 
 
-    // /**
-    //  * @brief cout a brief id of the xml node
-    //  *
-    //  * @param ele
-    //  **************************************************/
-    // void IDElement( wxXmlNode* ele )
-    // { 
-    //     const char* name = ele->GetName( );
-    //     Catalog::CatalogBaseType nodeType = FindCatalogBaseType( name );
-
-    //     switch ( nodeType )
-    //     { 
-    //     case  NT_Catalog:
-    //     case  NT_Country:
-    //     case  NT_Period:
-    //     case  NT_Decade:
-    //     case  NT_Year:
-    //     case  NT_Emission:
-    //     case  NT_Status:
-    //     case  NT_Condition:
-    //     { 
-    //         Classification classification( ele );
-    //         std::cout << "wxXmlNode " << name << " label " << classification.GetLabel( ) << "\n";
-    //         break;
-    //     }
-    //     case  NT_Entry:
-    //     { 
-    //         Entry entry( ele );
-    //         std::cout << "wxXmlNode " << name << "  ID" << entry.GetID( ) << "  Name " << entry.GetName( ) << "\n";
-    //         break;
-    //     }
-    //     case  NT_Specimen:
-    //     { 
-    //         Specimen item( ele );
-    //         std::cout << "wxXmlNode " << name << "  Type " << item.GetType( ) << "  Condition " << item.GetCondition( ) << "\n";
-    //         break;
-    //     }
-    //     case  NT_CatalogCode:
-    //     { 
-    //         CatalogCode code( ele );
-    //         std::cout << "wxXmlNode " << name << "  Type " << code.GetCatalog( ) << "  ID " << code.GetID( ) << "\n";
-    //         break;
-    //     }
-    //     default:
-    //     { 
-    //         std::cout << "wxXmlNode " << name << "  Unknown \n";
-
-    //         break;
-    //     }
-
-    //     }
-    // }
 
     /**
      * @brief is the specified wxXmlNode of specified type
@@ -330,9 +278,7 @@ namespace Catalog {
         wxString childName = child->GetName( );
         wxString parentName = parent->GetName( );
         CatalogBaseType parentType = FindCatalogBaseType( parentName );
-        //    std::cout << "AddEntry  ParentName:" << parentName
-        //        << "  ParentType:" << CatalogBaseNames[ parentType ]
-        //        << "  ChildName:" << childName << "  level" << level << "\n";
+ 
         if ( level > 6 )
         { 
              std::cout << "Infinite loop\n";
@@ -351,7 +297,6 @@ namespace Catalog {
                 pos = id.find( ' ' );
                 id = id.substr( pos );
                 id.ToLong( &a );
-               //std::cout << "     InsertChild "<< " id:" << id << "  Name:" << entry.GetName( ) << "\n";
                 
                 // if the sort type is not one of the classification node types
                 // then add it here. All entrys and their children get added here.
@@ -360,11 +305,9 @@ namespace Catalog {
             }
             else
             { 
-               //std::cout << "     SortType: " << CatalogBaseNames[ sortType ]  << "\n";
                 wxString nodeName = CatalogBaseNames[ sortType ];
                 wxString name = entry.GetClassificationName( &entry, sortType );
                 const char* nodeNameStr = nodeName;
-               //std::cout << "     Looking for " << nodeNameStr << " with Name " << name << "\n";
 
                 wxXmlNode* nextNode = Utils::FirstChildElement( parent, nodeNameStr );
                 while ( nextNode )
@@ -374,16 +317,12 @@ namespace Catalog {
                     { 
                         if ( !attr.Cmp( name ) )
                         { 
-                           //std::cout << "     Found it \n";
                             AddEntry( nextNode, child, level );
                             return;
                         }
                     }
                     nextNode = nextNode->GetNext( );
                 }
-                // couldn't find it so add it
-               //std::cout << "     Adding it: " << nodeNameStr << " with Name "
-               //    << name << "\n";
 
                 nextNode = Utils::NewNode( parent, nodeNameStr );
                 nextNode->SetParent( parent );
@@ -460,13 +399,11 @@ namespace Catalog {
     void SortData( wxXmlNode* destNode, wxXmlNode* parent )
     { 
          wxString name = parent->GetAttribute( DT_XMLDataNames[ DT_Name ] );
-//         std::cout << "SortData   Parent Name:" << name << "\n";
 
         wxXmlNode* child = parent->GetChildren( );
         while ( child )
         { 
              wxString name = child->GetAttribute( DT_XMLDataNames[ DT_Name ] );
-//             std::cout << "SortData   child Name:" << name << "\n";
 
             if ( !CatalogBaseNames[ NT_Entry ].Cmp( child->GetName( ) ) )
             { 

@@ -1,27 +1,27 @@
-/* 
+/*
  * @file CatalogPanel.cpp
- * @author Eddie Monroe 
- * @brief 
+ * @author Eddie Monroe
+ * @brief
  * @version 0.1
  * @date 2022-01-22
  *
- * @copyright Copyright ( c ) 2022  
- * 
+ * @copyright Copyright ( c ) 2022
+ *
  * This file is part of StampTool.
  *
- * StampTool is free software: you can redistribute it and/or modify it under the 
- * terms of the GNU General Public License as published by the Free Software Foundation, 
+ * StampTool is free software: you can redistribute it and/or modify it under the
+ * terms of the GNU General Public License as published by the Free Software Foundation,
  * either version 3 of the License, or any later version.
  *
- * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY 
- * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+ * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
+ * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
- * You should have received a copy of the GNU General Public License along with 
+ * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  */
 
-// For compilers that support precompilation, includes "wx/wx.h".
+
 #include "wx/wxprec.h"
 
 #ifdef __BORLANDC__
@@ -32,22 +32,19 @@
 #include "wx/wx.h"
 #endif
 
-// includes
+
 #include "gui/CatalogTreeCtrl.h"
 #include "wx/imaglist.h"
-// includes
+
 
 #include "gui/CatalogPanel.h"
 #include "Defs.h"
 #include <wx/filename.h>
 
-// XPM images
-// XPM images
 
-
-/*
- * CatalogPanel type definition
- */
+ /*
+  * CatalogPanel type definition
+  */
 
 IMPLEMENT_DYNAMIC_CLASS( CatalogPanel, wxPanel )
 
@@ -56,84 +53,52 @@ IMPLEMENT_DYNAMIC_CLASS( CatalogPanel, wxPanel )
  * CatalogPanel event table definition
  */
 
-BEGIN_EVENT_TABLE( CatalogPanel, wxPanel )
-
-// CatalogPanel event table entries
+    BEGIN_EVENT_TABLE( CatalogPanel, wxPanel )
     EVT_TEXT( ID_TEXTCTRL, CatalogPanel::OnTextctrlTextUpdated )
     EVT_TOGGLEBUTTON( ID_TOGGLEBUTTON, CatalogPanel::OnTogglebuttonClick )
     EVT_CHOICE( ID_SECTIONCHOICE, CatalogPanel::OnSectionChoiceSelected )
-// CatalogPanel event table entries
-
-END_EVENT_TABLE( )
+    END_EVENT_TABLE( )
 
 
-/*
- * CatalogPanel constructors
- */
-
-CatalogPanel::CatalogPanel( )
-{ 
+    CatalogPanel::CatalogPanel( )
+{
     Init( );
 }
 
 CatalogPanel::CatalogPanel( wxWindow* parent, wxWindowID id, const wxPoint& pos, const wxSize& size, long style )
-{ 
+{
     Init( );
     Create( parent, id, pos, size, style );
 }
 
-
-/*
- * CatalogPanel creator
- */
-
 bool CatalogPanel::Create( wxWindow* parent, wxWindowID id, const wxPoint& pos, const wxSize& size, long style )
-{ 
-// CatalogPanel creation
+{
     SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
     wxPanel::Create( parent, id, pos, size, style );
 
     CreateControls( );
     if ( GetSizer( ) )
-    { 
+    {
         GetSizer( )->SetSizeHints( this );
     }
     Centre( );
-// CatalogPanel creation
     return true;
 }
 
 
-/*
- * CatalogPanel destructor
- */
-
 CatalogPanel::~CatalogPanel( )
-{ 
-// CatalogPanel destruction
-// CatalogPanel destruction
+{
 }
 
-
-/*
- * Member initialisation
- */
 
 void CatalogPanel::Init( )
-{ 
-// CatalogPanel member initialisation
-   // m_title = NULL;
+{
+    // m_title = NULL;
     m_catalogTreeCtrl = NULL;
-// CatalogPanel member initialisation
 }
 
-
-/*
- * Control creation for CatalogPanel
- */
-
 void CatalogPanel::CreateControls( )
-{    
+{
 
     CatalogPanel* itemPanel1 = this;
 
@@ -146,7 +111,7 @@ void CatalogPanel::CreateControls( )
     wxStaticText* itemStaticText2 = new wxStaticText( itemPanel1, wxID_STATIC, _( "Section" ), wxDefaultPosition, wxDefaultSize, 0 );
     itemBoxSizer1->Add( itemStaticText2, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
- 
+
     m_sectionListCtrl = new wxChoice( itemPanel1, ID_SECTIONCHOICE, wxDefaultPosition, wxSize( -1, -1 ), GetToolData( )->GetSectionNameStrings( ), wxLB_HSCROLL );
     itemBoxSizer1->Add( m_sectionListCtrl, 1, wxGROW | wxALL, 5 );
 
@@ -185,88 +150,53 @@ void CatalogPanel::CreateControls( )
     m_catalogTreeCtrl = new CatalogTreeCtrl( itemPanel1, ID_CATALOGTREECTRL, wxDefaultPosition, wxDefaultSize, wxTR_HAS_BUTTONS | wxTR_FULL_ROW_HIGHLIGHT | wxTR_SINGLE | wxSUNKEN_BORDER | wxTR_DEFAULT_STYLE );
     catTreeHorizontalSizer->Add( m_catalogTreeCtrl, 2, wxGROW | wxALL, 0 );
 
-// CatalogPanel content construction
-   m_searchSizer->Show( false );
+    m_searchSizer->Show( false );
     m_catPanelSizer->Layout( );
 }
 
-
-/*
- * Should we show tooltips?
- */
-
 bool CatalogPanel::ShowToolTips( )
-{ 
+{
     return true;
 }
 
 /*
- * Get bitmap resources
- */
-
-wxBitmap CatalogPanel::GetBitmapResource( const wxString& name )
-{ 
-    // Bitmap retrieval
-// CatalogPanel bitmap retrieval
-    wxUnusedVar( name );
-    return wxNullBitmap;
-// CatalogPanel bitmap retrieval
-}
-
-/*
- * Get icon resources
- */
-
-wxIcon CatalogPanel::GetIconResource( const wxString& name )
-{ 
-    // Icon retrieval
-// CatalogPanel icon retrieval
-    wxUnusedVar( name );
-    return wxNullIcon;
-// CatalogPanel icon retrieval
-}
-
-
-/*
- * wxEVT_COMMAND_TEXT_UPDATED event handler for ID_TEXTCTRL
+ *   ID_TEXTCTRL
  */
 
 void CatalogPanel::OnTextctrlTextUpdated( wxCommandEvent& event )
-{ 
-// wxEVT_COMMAND_TEXT_UPDATED event handler for ID_TEXTCTRL in CatalogPanel.
-    // Before editing this code, remove the block markers.
+{
+
     event.Skip( );
-// wxEVT_COMMAND_TEXT_UPDATED event handler for ID_TEXTCTRL in CatalogPanel. 
+
 }
 
 
 
 
 /*
- * wxEVT_COMMAND_CHECKBOX_CLICKED event handler for ID_TOGGLEBUTTON
+ *   ID_TOGGLEBUTTON
  */
 
 void CatalogPanel::OnTogglebuttonClick( wxCommandEvent& event )
-{ 
+{
     if ( m_toggleButton->GetValue( ) )
-    { 
+    {
         m_searchSizer->Show( true );
         //m_searchSizer->Hide( m_catPanelSizer, true );
     }
     else
-    { 
+    {
         m_searchSizer->Show( false );
-    //    m_searchSizer->Hide( m_catPanelSizer, false );
+        //    m_searchSizer->Hide( m_catPanelSizer, false );
     }
-    m_catPanelSizer->Layout ( );
-////@begin wxEVT_COMMAND_CHECKBOX_CLICKED event handler for ID_TOGGLEBUTTON in StampManagerPanel.
-    // Before editing this code, remove the block markers.
+    m_catPanelSizer->Layout( );
+
     event.Skip( );
-////@end wxEVT_COMMAND_CHECKBOX_CLICKED event handler for ID_TOGGLEBUTTON in StampManagerPanel. 
+
 }
 
 void CatalogPanel::OnSectionChoiceSelected( wxCommandEvent& event )
-{ 
+{
     int sel = m_sectionListCtrl->GetSelection( );
 
     GetToolData( )->GetCatalogData( )->SetCatalogSectionDataNdx( sel );
@@ -276,10 +206,7 @@ void CatalogPanel::OnSectionChoiceSelected( wxCommandEvent& event )
     //     m_stamp->SetInventoryStatus( strSel );
     //     GetCatalogTreeCtrl( )->SetInventoryStatusImage( );
     // }
-    // wxEVT_COMMAND_CHOICE_SELECTED event handler for ID_STATUSCHOICE
-    // in IdentificationPanel.
-    // Before editing this code, remove the block markers.
+
     event.Skip( );
-    // wxEVT_COMMAND_CHOICE_SELECTED event handler for ID_STATUSCHOICE in
-    // IdentificationPanel.
+
 }

@@ -1,5 +1,4 @@
 {
-    "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
     "C_Cpp.vcFormat.space.withinExpressionParentheses": true,
     "C_Cpp.vcFormat.space.withinControlFlowStatementParentheses": true,
     "C_Cpp.vcFormat.space.withinCastParentheses": true,
@@ -17,11 +16,53 @@
         "type_traits": "cpp",
         "utility": "cpp",
         "random": "cpp",
-        "*.xpm": "cpp"
+        "*.xpm": "cpp",
+        "atomic": "cpp",
+        "hash_map": "cpp",
+        "bit": "cpp",
+        "*.tcc": "cpp",
+        "cctype": "cpp",
+        "clocale": "cpp",
+        "cmath": "cpp",
+        "compare": "cpp",
+        "concepts": "cpp",
+        "cstdarg": "cpp",
+        "cstddef": "cpp",
+        "cstdint": "cpp",
+        "cstdio": "cpp",
+        "cstdlib": "cpp",
+        "cstring": "cpp",
+        "cwchar": "cpp",
+        "cwctype": "cpp",
+        "deque": "cpp",
+        "list": "cpp",
+        "string": "cpp",
+        "vector": "cpp",
+        "exception": "cpp",
+        "algorithm": "cpp",
+        "iterator": "cpp",
+        "memory": "cpp",
+        "memory_resource": "cpp",
+        "numeric": "cpp",
+        "optional": "cpp",
+        "string_view": "cpp",
+        "system_error": "cpp",
+        "fstream": "cpp",
+        "initializer_list": "cpp",
+        "iosfwd": "cpp",
+        "iostream": "cpp",
+        "limits": "cpp",
+        "new": "cpp",
+        "numbers": "cpp",
+        "sstream": "cpp",
+        "stdexcept": "cpp",
+        "streambuf": "cpp",
+        "typeinfo": "cpp"
     },
     "files.watcherExclude": {
         "**/doc/**": true
-      }
+    },
+    "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools"
     
     
 }

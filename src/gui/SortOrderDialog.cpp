@@ -23,7 +23,7 @@
  **************************************************/
 
 
-// For compilers that support precompilation, includes "wx/wx.h".
+
 #include "wx/wxprec.h"
 
 #ifdef __BORLANDC__
@@ -306,127 +306,69 @@ void SortOrderDialog::CreateControls( )
     }
 }
 
-/*
- * Should we show tooltips?
- */
+
 
 bool SortOrderDialog::ShowToolTips( )
 { 
     return true;
 }
 
-/*
- * Get bitmap resources
- */
 
-wxBitmap SortOrderDialog::GetBitmapResource( const wxString &name )
-{ 
-    // Bitmap retrieval
-     // SortOrderDialog bitmap retrieval
-    wxUnusedVar( name );
-    return wxNullBitmap;
-     // SortOrderDialog bitmap retrieval
-}
-
-/*
- * Get icon resources
- */
-
-wxIcon SortOrderDialog::GetIconResource( const wxString &name )
-{ 
-    // Icon retrieval
-     // SortOrderDialog icon retrieval
-    wxUnusedVar( name );
-    return wxNullIcon;
-     // SortOrderDialog icon retrieval
-}
-
-/*
- * wxEVT_COMMAND_CHOICE_SELECTED event handler for ID_CHOICE
- */
 
 void SortOrderDialog::OnChoiceSelected( wxCommandEvent &event )
 { 
-     // wxEVT_COMMAND_CHOICE_SELECTED event handler for ID_CHOICE in
-    //SortOrderDialog.
-    // Before editing this code, remove the block markers.
+
     event.Skip( );
-     // wxEVT_COMMAND_CHOICE_SELECTED event handler for ID_CHOICE in
-    //SortOrderDialog.
+
 }
 
-/*
- * wxEVT_COMMAND_CHOICE_SELECTED event handler for ID_CHOICE1
- */
+
 
 void SortOrderDialog::OnChoice1Selected( wxCommandEvent &event )
 { 
-     // wxEVT_COMMAND_CHOICE_SELECTED event handler for ID_CHOICE1 in
-    //SortOrderDialog.
-    // Before editing this code, remove the block markers.
+
     event.Skip( );
-     // wxEVT_COMMAND_CHOICE_SELECTED event handler for ID_CHOICE1 in
-    //SortOrderDialog.
+
 }
 
 /*
- * wxEVT_COMMAND_CHOICE_SELECTED event handler for ID_CHOICE2
+ *   ID_CHOICE2
  */
 
 void SortOrderDialog::OnChoice2Selected( wxCommandEvent &event )
 { 
-     // wxEVT_COMMAND_CHOICE_SELECTED event handler for ID_CHOICE2 in
-    //SortOrderDialog.
-    // Before editing this code, remove the block markers.
     event.Skip( );
-     // wxEVT_COMMAND_CHOICE_SELECTED event handler for ID_CHOICE2 in
-    //SortOrderDialog.
+
 }
 
 /*
- * wxEVT_COMMAND_CHOICE_SELECTED event handler for ID_CHOICE3
+ *   ID_CHOICE3
  */
 
 void SortOrderDialog::OnChoice3Selected( wxCommandEvent &event )
 { 
-     // wxEVT_COMMAND_CHOICE_SELECTED event handler for ID_CHOICE3 in
-    //SortOrderDialog.
-    // Before editing this code, remove the block markers.
     event.Skip( );
-     // wxEVT_COMMAND_CHOICE_SELECTED event handler for ID_CHOICE3 in
-    //SortOrderDialog.
 }
 
 /*
- * wxEVT_COMMAND_CHOICE_SELECTED event handler for ID_CHOICE4
+ *   ID_CHOICE4
  */
 
 void SortOrderDialog::OnChoice4Selected( wxCommandEvent &event )
 { 
-     // wxEVT_COMMAND_CHOICE_SELECTED event handler for ID_CHOICE4 in
-    //SortOrderDialog.
-    // Before editing this code, remove the block markers.
     event.Skip( );
-     // wxEVT_COMMAND_CHOICE_SELECTED event handler for ID_CHOICE4 in
-    //SortOrderDialog.
-}
 
 /*
- * wxEVT_COMMAND_BUTTON_CLICKED event handler for wxID_CANCEL
+ *   wxID_CANCEL
  */
 
 void SortOrderDialog::OnCancelClick( wxCommandEvent &event )
 { 
-     // wxEVT_COMMAND_BUTTON_CLICKED event handler for wxID_CANCEL in
-    //SortOrderDialog.
-    // Before editing this code, remove the block markers.
     event.Skip( );
-     // wxEVT_COMMAND_BUTTON_CLICKED event handler for wxID_CANCEL in
-    //SortOrderDialog.
 }
 
 /*
- * wxEVT_COMMAND_BUTTON_CLICKED event handler for wxID_OK
+ *   wxID_OK
  */
 
 void SortOrderDialog::OnOkClick( wxCommandEvent &event )
@@ -460,10 +402,6 @@ void SortOrderDialog::OnOkClick( wxCommandEvent &event )
     }
     if( GetSettings( )->isDirty( ) )  
         GetSettings( )->Save( );
-     // wxEVT_COMMAND_BUTTON_CLICKED event handler for wxID_OK in
-    //SortOrderDialog.
-    // Before editing this code, remove the block markers.
+ 
     event.Skip( );
-     // wxEVT_COMMAND_BUTTON_CLICKED event handler for wxID_OK in
-    //SortOrderDialog.
 }

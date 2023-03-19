@@ -6,33 +6,33 @@
  * @date 2021-02-25
  *
  * @copyright Copyright ( c ) 2021
- * 
+ *
  * This file is part of StampTool.
  *
- * StampTool is free software: you can redistribute it and/or modify it under the 
- * terms of the GNU General Public License as published by the Free Software Foundation, 
+ * StampTool is free software: you can redistribute it and/or modify it under the
+ * terms of the GNU General Public License as published by the Free Software Foundation,
  * either version 3 of the License, or any later version.
  *
- * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY 
- * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+ * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
+ * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
- * You should have received a copy of the GNU General Public License along with 
+ * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
  **************************************************/
 
-/**
- * 
- * @todo Complete Documentation
- * 
- * @todo integrate GIT
- * 
- * 
- **************************************************/
+ /**
+  *
+  * @todo Complete Documentation
+  *
+  * @todo integrate GIT
+  *
+  *
+  **************************************************/
 
 
- // For compilers that support precompilation, includes "wx/wx.h".
+  
 #include "wx/wxprec.h"
 
 #ifdef __BORLANDC__
@@ -82,7 +82,7 @@ END_EVENT_TABLE( )
  */
 
 StampToolApp::StampToolApp( )
-{ 
+{
     Init( );
 }
 
@@ -91,7 +91,7 @@ StampToolApp::StampToolApp( )
  */
 
 void StampToolApp::Init( )
-{ 
+{
     // StampToolApp member initialisation
     // StampToolApp member initialisation
 }
@@ -101,14 +101,14 @@ void StampToolApp::Init( )
  */
 
 bool StampToolApp::OnInit( )
-{ 
+{
     // StampToolApp initialisation
    // Remove the comment markers above and below this block
    // to make permanent changes to the code.
 
-    wxLog::EnableLogging ( true );
-   // wxLog* logger = new wxLogStream(&std::cout);
-   // wxLog::SetActiveTarget(logger);
+    wxLog::EnableLogging( true );
+    // wxLog* logger = new wxLogStream(&std::cout);
+    // wxLog::SetActiveTarget(logger);
 
 #if wxUSE_XPM
     wxImage::AddHandler( new wxXPMHandler );
@@ -127,7 +127,7 @@ bool StampToolApp::OnInit( )
     m_toolData->InitToolData( );
 
     m_frame = new StampToolFrame( NULL );
-  //  m_frame->SetupRecentMenu( );    
+    //  m_frame->SetupRecentMenu( );    
     m_frame->InitLoad( );
 
     m_frame->Show( true );
@@ -141,7 +141,7 @@ bool StampToolApp::OnInit( )
  */
 
 int StampToolApp::OnExit( )
-{ 
+{
     // StampToolApp cleanup
     return wxApp::OnExit( );
     // StampToolApp cleanup

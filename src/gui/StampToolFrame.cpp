@@ -22,7 +22,7 @@
  *
  **************************************************/
 
- // For compilers that support precompilation, includes "wx/wx.h".
+ 
 #include "wx/wxprec.h"
 
 #ifdef __BORLANDC__
@@ -46,9 +46,9 @@
 
 #include "gui/StampToolPanel.h"
 #include "gui/CatalogPanel.h"
-#include "gui/DefinePeriodsDialog.h"
+//#include "gui/DefinePeriodsDialog.h"
 #include "gui/AlbumDesignTreePanel.h"
-#include "gui/SortOrderDialog.h"
+#include "gui/SortOrderPanel.h"
 #include "gui/SettingsDialog.h"
 #include "gui/FileCreateDialog.h"
 #include "gui/StampToolFrame.h"
@@ -211,13 +211,15 @@ void StampToolFrame::CreateControls( )
 
     m_fileMenu->AppendSeparator( );
 
+    m_fileMenu->Append( ID_SETTINGS, _( "Preferences" ), wxEmptyString, wxITEM_NORMAL );
 
-    m_fileMenu->AppendSeparator( );
-    m_preferencesMenu = new wxMenu;
-    m_preferencesMenu->Append( ID_DEFINEPERIOD, _( "Define Period" ), wxEmptyString, wxITEM_NORMAL );
-    m_preferencesMenu->Append( ID_SETTINGS, _( "Settings" ), wxEmptyString, wxITEM_NORMAL );
-    m_preferencesMenu->Append( ID_SORTORDER, _( "Sort Order" ), wxEmptyString, wxITEM_NORMAL );
-    m_fileMenu->Append( ID_PREFERENCES, _( "Preferences" ), m_preferencesMenu );
+
+    // m_fileMenu->AppendSeparator( );
+    // m_preferencesMenu = new wxMenu;
+    // m_preferencesMenu->Append( ID_DEFINEPERIOD, _( "Define Period" ), wxEmptyString, wxITEM_NORMAL );
+    // m_preferencesMenu->Append( ID_SETTINGS, _( "Settings" ), wxEmptyString, wxITEM_NORMAL );
+    // m_preferencesMenu->Append( ID_SORTORDER, _( "Sort Order" ), wxEmptyString, wxITEM_NORMAL );
+    // m_fileMenu->Append( ID_PREFERENCES, _( "Preferences" ), m_preferencesMenu );
     m_fileMenu->AppendSeparator( );
     
     m_fileMenu->Append( wxID_EXIT, _( "Exit" ), wxEmptyString, wxITEM_NORMAL );
@@ -258,23 +260,6 @@ bool StampToolFrame::ShowToolTips( )
     return true;
 }
 
-wxBitmap StampToolFrame::GetBitmapResource( const wxString& name )
-{ 
-    // Bitmap retrieval
-    // StampToolFrame bitmap retrieval
-    wxUnusedVar( name );
-    return wxNullBitmap;
-    // StampToolFrame bitmap retrieval
-}
-
-wxIcon StampToolFrame::GetIconResource( const wxString& name )
-{ 
-    // Icon retrieval
-    // StampToolFrame icon retrieval
-    wxUnusedVar( name );
-    return wxNullIcon;
-    // StampToolFrame icon retrieval
-}
 
 int StampToolFrame::DoQueryMerge( int& mergeMethod )
 { 
@@ -360,16 +345,16 @@ void StampToolFrame::DoCSVImport( )
 
 void StampToolFrame::DoDefinePeriodDialog( )
 { 
-    DefinePeriodsDialog definePeriodsDialog( this, ID_DEFINEPERIODSDIALOG,  _( "Define Periods Order" ) );
+    // DefinePeriodsDialog definePeriodsDialog( this, ID_DEFINEPERIODSDIALOG,  _( "Define Periods Order" ) );
 
-    if ( definePeriodsDialog.ShowModal( ) == wxID_CANCEL )
-        return; // the user changed idea..
+    // if ( definePeriodsDialog.ShowModal( ) == wxID_CANCEL )
+    //     return; // the user changed idea..
 
-    if ( definePeriodsDialog.IsDirty( ) )
-    { 
-        // Save settings
-        // resort tree
-    }
+    // if ( definePeriodsDialog.IsDirty( ) )
+    // { 
+    //     // Save settings
+    //     // resort tree
+    // }
 }
 
 
@@ -508,7 +493,7 @@ void StampToolFrame::OnSettingsClick( wxCommandEvent& event )
 void StampToolFrame::DoSettingsDialog( )
 { 
     SettingsDialog settingsDialog( this, ID_SETTINGSDIALOG, 
-        _( "Define Sort Order" ) );
+        _( "Define Preferences" ) );
 
     if ( settingsDialog.ShowModal( ) == wxID_CANCEL )
         return; // the user changed idea..
@@ -522,18 +507,18 @@ void StampToolFrame::DoSettingsDialog( )
 
 void StampToolFrame::DoSortOrderDialog( )
 { 
-    SortOrderDialog sortOrderDialog( this, ID_SORTORDERDIALOG, 
-        _( "Define Sort Order" ) );
+//     SortOrderDialog sortOrderDialog( this, ID_SORTORDERDIALOG, 
+//         _( "Define Sort Order" ) );
 
-    if ( sortOrderDialog.ShowModal( ) == wxID_CANCEL )
-        return; // the user changed idea..
+//     if ( sortOrderDialog.ShowModal( ) == wxID_CANCEL )
+//         return; // the user changed idea..
 
-    if ( sortOrderDialog.IsDirty( ) )
-    { 
-        // Save settings
-        // resort tree
-    }
-}
+//     if ( sortOrderDialog.IsDirty( ) )
+//     { 
+//         // Save settings
+//         // resort tree
+//     }
+ }
 
 
 void StampToolFrame::OnSortOrderClick( wxCommandEvent& event )
@@ -931,7 +916,7 @@ void StampToolFrame::SetupRecentMenu( )
     //     for ( int i = 0; i < m_menuItemList.size( ); i++ )
     //     { 
     //         RecentListItem* item = m_menuItemList[ i ];
-    //         bool val = Unbind( wxEVT_MENU, &StampToolFrame::DoRecentSelection, this, item->id );
+    //         bool val = Unbind(  MENU, &StampToolFrame::DoRecentSelection, this, item->id );
     //         m_recentMenu->Delete( item->item );
     //         //  item->item->~wxMenuItem( );
     //     }
@@ -950,7 +935,7 @@ void StampToolFrame::SetupRecentMenu( )
     //         cnt++;
     //         listItem->item = m_recentMenu->Append( listItem->id, item, wxEmptyString, wxITEM_NORMAL );
 
-    //         Bind( wxEVT_MENU, &StampToolFrame::DoRecentSelection, this, listItem->id );
+    //         Bind(  MENU, &StampToolFrame::DoRecentSelection, this, listItem->id );
     //         m_menuItemList.push_back( listItem );
     //     }
     // }

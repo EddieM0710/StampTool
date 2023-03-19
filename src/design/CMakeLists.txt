@@ -16,7 +16,6 @@ add_library( DesignFiles SHARED
     LayoutBase.cpp
     Album.cpp 
     Page.cpp 
-    FontInfo.cpp
     Title.cpp 
     TitlePage.cpp
     Row.cpp 

@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation, 
+ * terms of the GNU General Public License as published by the Free Software Foundation,
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -37,7 +37,7 @@
 
 class  wxPdfDocument;
 
-namespace Design { 
+namespace Design {
 
 
     class Title;
@@ -48,17 +48,18 @@ namespace Design {
      *
      **************************************************/
     class LayoutBase: public AlbumBase
-    { 
+    {
     public:
         /**
          * @brief Unused; Construct a new Album Design Object object
          *
          **************************************************/
-        LayoutBase( ): AlbumBase( ) { 
+        LayoutBase( ): AlbumBase( ) {
             SetTopContentPadding( 0 );
             SetBottomContentPadding( 0 );
             SetLeftContentPadding( 0 );
             SetRightContentPadding( 0 );
+            SetTitleLocation( Design::AT_TitleLocationDefault );
         };
 
         /**
@@ -66,11 +67,12 @@ namespace Design {
          *
          * @param name
          **************************************************/
-        LayoutBase( wxXmlNode* node ): AlbumBase( node ) { 
+        LayoutBase( wxXmlNode* node ): AlbumBase( node ) {
             SetTopContentPadding( 0 );
             SetBottomContentPadding( 0 );
             SetLeftContentPadding( 0 );
             SetRightContentPadding( 0 );
+            SetTitleLocation( Design::AT_TitleLocationDefault );
         };
 
         virtual void DrawPDF( wxPdfDocument* doc, double x, double y ) = 0;
@@ -160,7 +162,7 @@ namespace Design {
         void SetMinHeight( double val ) { m_frame.SetMinHeight( val ); };
 
         wxString GetTitle( ) { return GetAttrStr( Design::AT_Name ); };
-        void SetTitle( wxString title ) { SetAttrStr( Design::AT_Name, title); };
+        void SetTitle( wxString title ) { SetAttrStr( Design::AT_Name, title ); };
 
         // Get TitleHeight in MM
         double GetTitleHeight( ) { return m_titleFrame.GetHeight( ); };
@@ -171,7 +173,7 @@ namespace Design {
         double GetTitleMinWidth( ) { return m_titleFrame.GetMinWidth( ); };
         void SetTitleXPos( double val ) { m_titleFrame.SetXPos( val ); };
         void SetTitleYPos( double val ) { m_titleFrame.SetYPos( val ); };
-        double GetTitleXPos() { return m_titleFrame.GetXPos( ); };
+        double GetTitleXPos( ) { return m_titleFrame.GetXPos( ); };
         double GetTitleYPos( ) { return m_titleFrame.GetYPos( ); };
 
 
@@ -184,8 +186,8 @@ namespace Design {
         //        bool GetShowImage( ){ return String2Bool( GetAttrStr( AT_ShowImage ) ); };
         //        void SetShowImage( bool val ){ SetAttrStr( AT_ShowImage, Bool2String( val ) ); };
 
-        bool GetShowCatNbr( ) { return String2Bool( GetAttrStr( AT_ShowCatNbr ) ); };
-        void SetShowCatNbr( bool val ) { SetAttrStr( AT_ShowCatNbr, Bool2String( val ) ); };
+        bool GetShowNbr( ) { return String2Bool( GetAttrStr( AT_ShowCatNbr ) ); };
+        void SetShowNbr( bool val ) { SetAttrStr( AT_ShowCatNbr, Bool2String( val ) ); };
 
 
         double GetTopContentPadding( ) { return GetAttrDbl( AT_TopContentPadding ); };
@@ -200,7 +202,7 @@ namespace Design {
         double GetRightContentPadding( ) { return GetAttrDbl( AT_RightContentPadding ); };
         void SetRightContentPadding( double val ) { SetAttrDbl( AT_RightContentPadding, val ); };
 
-        void ValidateChildType( int& nbrRows, int& nbrCols, int& nbrStamps );
+        void ValidateChildType( int& nbrRows, int& nbrCols, int& nbrLeaf );
         void ReportLayoutError( wxString funct, wxString err, bool fatal = true );
 
         /**
@@ -228,6 +230,12 @@ namespace Design {
          *
          * @param width the max width of the title
          */
+         //void UpdateTitleSize( double width );
+         //void UpdateTextSize( double width );
+        wxRealPoint CalcTextSize( wxString text, double width, wxFont font );
+        void UpdateNameSize( double width );
+        void UpdateNbrSize( double width );
+        void UpdateTextSize( double width );
         void UpdateTitleSize( double width );
 
         //void WriteFrame( wxString loc, wxString name, wxString id, Frame* frame );
@@ -252,17 +260,26 @@ namespace Design {
         void SetClientDimensions( wxDC& dc, double x, double y, double width = 0.0, double height = 0.0, double minWidth = 0.0, double minHeight = 0.0 );
 
         bool IsInClient( double x, double y, wxString indent = "" );
-        wxString DumpFrame(  )
+        wxString DumpFrame( )
         {
             return m_frame.LayoutString( );
         };
 
+        bool IsTitleLocation( TitleLocation loc );
+
+        TitleLocation GetTitleLayoutLocation( );
+        void SetTitleLocation( TitleLocation loc ) { m_titleLocation = loc; };
+
     protected:
         Frame m_frame;
         Frame m_clientDimensions;
- //       wxString m_title;
+        //       wxString m_title;
         Frame m_titleFrame;
- 
+        Frame m_textFrame;
+        Frame m_nbrFrame;
+        Frame m_nameFrame;
+        TitleLocation m_titleLocation;
+
     };
 }
 #endif

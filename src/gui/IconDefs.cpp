@@ -113,7 +113,7 @@ wxImageList* CreateAlbumImageList( )
     wxImageList* images;
     wxBusyCursor wait;
 
-    wxIcon icons[ 9 ];
+    wxIcon icons[ 10 ];
 
     icons[ Design::Icon_StampSelected ] = wxIcon( StampRed );
     icons[ Design::Icon_Stamp ] = wxIcon( StampBlue );
@@ -124,6 +124,7 @@ wxImageList* CreateAlbumImageList( )
     icons[ Design::Icon_StampSouvenirSheetSelected ] = wxIcon( SouvenirSheetRed );
     icons[ Design::Icon_StampSouvenirSheet ] = wxIcon( SouvenirSheetBlue );
     icons[ Design::Icon_Folder ] = wxIcon( folder_xpm );
+    icons[ Design::Icon_Menu ] = wxIcon( menu_xpm );
 
     int width = icons[ 0 ].GetWidth( ), height = icons[ 0 ].GetHeight( );
 

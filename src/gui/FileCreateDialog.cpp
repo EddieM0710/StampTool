@@ -1,11 +1,11 @@
 /*
  * @file         FileCreateDialog.cpp
- *@brief      
+ *@brief
 * @author      Eddie Monroe
-* Modified by: 
+* Modified by:
 * @author     Fri 20 Jan 2023 19:33:48 CST
- *     
-* @copyright Copyright ( c ) 2024   
+ *
+* @copyright Copyright ( c ) 2024
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
@@ -18,8 +18,8 @@
  *
  * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
- */    
-/////////////////////////////////////////////////////////////////////////////
+ */
+ ///////////////////////////////////////
 
 
 #include "wx/wxprec.h"
@@ -59,27 +59,27 @@ IMPLEMENT_DYNAMIC_CLASS( FileCreateDialog, wxDialog )
  * FileCreateDialog event table definition
  */
 
-BEGIN_EVENT_TABLE( FileCreateDialog, wxDialog )
+    BEGIN_EVENT_TABLE( FileCreateDialog, wxDialog )
 
-//  FileCreateDialog event table entries
+    //  FileCreateDialog event table entries
     EVT_BUTTON( wxID_CANCEL, FileCreateDialog::OnCancelClick )
     EVT_BUTTON( wxID_OK, FileCreateDialog::OnOKClick )
-//  FileCreateDialog event table entries
+    //  FileCreateDialog event table entries
 
-END_EVENT_TABLE( )
+    END_EVENT_TABLE( )
 
 
-/*
- * FileCreateDialog constructors
- */
+    /*
+     * FileCreateDialog constructors
+     */
 
-FileCreateDialog::FileCreateDialog( )
-{ 
+    FileCreateDialog::FileCreateDialog( )
+{
     Init( );
 }
 
 FileCreateDialog::FileCreateDialog( wxWindow* parent, wxWindowID id, const wxString& caption, const wxPoint& pos, const wxSize& size, long style )
-{ 
+{
     Init( );
     Create( parent, id, caption, pos, size, style );
 }
@@ -90,18 +90,18 @@ FileCreateDialog::FileCreateDialog( wxWindow* parent, wxWindowID id, const wxStr
  */
 
 bool FileCreateDialog::Create( wxWindow* parent, wxWindowID id, const wxString& caption, const wxPoint& pos, const wxSize& size, long style )
-{ 
-//  FileCreateDialog creation
+{
+    //  FileCreateDialog creation
     SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY | wxWS_EX_BLOCK_EVENTS );
     wxDialog::Create( parent, id, caption, pos, size, style );
 
     CreateControls( );
     if ( GetSizer( ) )
-    { 
+    {
         GetSizer( )->SetSizeHints( this );
     }
     Centre( );
-//  FileCreateDialog creation
+    //  FileCreateDialog creation
     return true;
 }
 
@@ -111,9 +111,9 @@ bool FileCreateDialog::Create( wxWindow* parent, wxWindowID id, const wxString& 
  */
 
 FileCreateDialog::~FileCreateDialog( )
-{ 
-//  FileCreateDialog destruction
-//  FileCreateDialog destruction
+{
+    //  FileCreateDialog destruction
+    //  FileCreateDialog destruction
 }
 
 
@@ -122,13 +122,13 @@ FileCreateDialog::~FileCreateDialog( )
  */
 
 void FileCreateDialog::Init( )
-{ 
-    
-    m_defaultDirectory = wxEmptyString; 
-    m_defaultFilename = wxEmptyString; 
+{
+
+    m_defaultDirectory = wxEmptyString;
+    m_defaultFilename = wxEmptyString;
     m_wildCard = wxFileSelectorDefaultWildcardStr;
-//  FileCreateDialog member initialisation
-//  FileCreateDialog member initialisation
+    //  FileCreateDialog member initialisation
+    //  FileCreateDialog member initialisation
 }
 
 
@@ -137,7 +137,7 @@ void FileCreateDialog::Init( )
  */
 
 void FileCreateDialog::CreateControls( )
-{    
+{
 
     FileCreateDialog* itemDialog1 = this;
 
@@ -159,14 +159,14 @@ void FileCreateDialog::CreateControls( )
     wxButton* itemButton5 = new wxButton( itemDialog1, wxID_OK, _( "OK" ), wxDefaultPosition, wxDefaultSize, 0 );
     itemBoxSizer3->Add( itemButton5, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
-//  FileCreateDialog content construction
+    //  FileCreateDialog content construction
 }
 
 
 
 
 bool FileCreateDialog::ShowToolTips( )
-{ 
+{
     return true;
 }
 
@@ -176,40 +176,40 @@ bool FileCreateDialog::ShowToolTips( )
 
 
 
-/*
- *   wxID_CANCEL
- */
+ /*
+  *   wxID_CANCEL
+  */
 
 void FileCreateDialog::OnCancelClick( wxCommandEvent& event )
-{ 
+{
     event.Skip( );
 }
-wxString FileCreateDialog::GetPath( ){ return m_path; };
-wxString FileCreateDialog::GetFile( ){ return m_file; };
-wxString FileCreateDialog::GetDir( ){ return m_dir; };
+wxString FileCreateDialog::GetPath( ) { return m_path; };
+wxString FileCreateDialog::GetFile( ) { return m_file; };
+wxString FileCreateDialog::GetDir( ) { return m_dir; };
 
 void FileCreateDialog::OnOKClick( wxCommandEvent& event )
-{ 
+{
     m_path = m_fileCtrl->GetPath( );
     m_file = m_fileCtrl->GetFilename( );
     m_dir = m_fileCtrl->GetDirectory( );
     wxFileName prjFile( m_path );
     if ( prjFile.Exists( ) )
-    { 
-         wxMessageDialog* dlg = new wxMessageDialog( 
-            this, 
+    {
+        wxMessageDialog* dlg = new wxMessageDialog(
+            this,
             wxT( "The selected file exists. \n"\
                 "Select \"OK\" to overwrite the existing file losing the contents.\n"\
-                "Or select \"Cancel\" to choose another name.\n" ), 
-            wxT( "Warning! File Exists.\n" ), 
+                "Or select \"Cancel\" to choose another name.\n" ),
+            wxT( "Warning! File Exists.\n" ),
             wxOK | wxCANCEL | wxCENTER );
         int rsp = dlg->ShowModal( );
         if ( rsp == wxID_CANCEL )
-        { 
+        {
             return;
-        }     
+        }
     }
 
-   event.Skip( );
+    event.Skip( );
 }
 

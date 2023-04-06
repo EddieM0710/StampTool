@@ -39,20 +39,59 @@
 
 namespace Design {
 
+    wxRealPoint LayoutBase::CalcTextSize( wxString text, double width, wxFont font )
+    {
+        // first break into lines if necessary
+        GetAlbumImagePanel( )->MakeMultiLine( text, font, width );
+        // then get the actual multi line text extent
+        wxRealPoint size = GetAlbumImagePanel( )->GetLogicalTextExtent( text, font );
+        return size;
+    }
+
+    void LayoutBase::UpdateNameSize( double width )
+    {
+        wxString name = GetAttrStr( Design::AT_Name );
+        wxFont font = GetNameFont( );
+        wxRealPoint size = CalcTextSize( name, width, font );
+        m_nameFrame.SetWidth( size.x );
+        m_nameFrame.SetHeight( size.y );
+        m_nameFrame.SetMinWidth( size.x );
+        m_nameFrame.SetMinHeight( size.y );
+    }
+
+    void LayoutBase::UpdateNbrSize( double width )
+    {
+        wxString id = GetAttrStr( AT_CatNbr );
+        wxFont font = GetNbrFont( );
+        wxRealPoint size = CalcTextSize( id, width, font );
+        m_nbrFrame.SetWidth( size.x );
+        m_nbrFrame.SetHeight( size.y );
+        m_nbrFrame.SetMinWidth( size.x );
+        m_nbrFrame.SetMinHeight( size.y );
+    }
+
     // Calc Title size based on allowed width and font size.
     void LayoutBase::UpdateTitleSize( double width )
     {
-        wxString text = GetAttrStr( Design::AT_Name );
+        wxString title = GetAttrStr( Design::AT_Name );
         wxFont font = GetTitleFont( );
-        // first break into lines if necessary
-        GetAlbumImagePanel( )->MakeMultiLine( text, font, width );
+        wxRealPoint size = CalcTextSize( title, width, font );
+        m_titleFrame.SetWidth( size.x );
+        m_titleFrame.SetHeight( size.y );
+        m_titleFrame.SetMinWidth( size.x );
+        m_titleFrame.SetMinHeight( size.y );
+    }
 
-        // then get the actual multi line text extent
-        wxRealPoint titleSize = GetAlbumImagePanel( )->GetLogicalTextExtent( text, font );
-        m_titleFrame.SetWidth( titleSize.x );
-        m_titleFrame.SetHeight( titleSize.y );
-        m_titleFrame.SetMinWidth( titleSize.x );
-        m_titleFrame.SetMinHeight( titleSize.y );
+    // Calc Title size based on allowed width and font size.
+    void LayoutBase::UpdateTextSize( double width )
+    {
+        wxString text = m_text;
+        wxFont font = GetTextFont( );
+        wxRealPoint size = CalcTextSize( text, width, font );
+        m_textFrame.SetWidth( size.x );
+        m_textFrame.SetHeight( size.y );
+        m_textFrame.SetMinWidth( size.x );
+        m_textFrame.SetMinHeight( size.y );
     }
 
     void LayoutBase::ReportLayoutError( wxString funct, wxString err, bool fatal )
@@ -62,12 +101,12 @@ namespace Design {
         ReportError( funcStr, msgStr, fatal );
     }
 
-    void LayoutBase::ValidateChildType( int& nbrRows, int& nbrCols, int& nbrStamps )
+    void LayoutBase::ValidateChildType( int& nbrRows, int& nbrCols, int& nbrLeaf )
     {
         // count the number of rows/cols planned
         nbrRows = 0;
         nbrCols = 0;
-        nbrStamps = 0;
+        nbrLeaf = 0;
 
         wxTreeItemIdValue cookie;
         wxTreeItemId parentID = GetTreeItemId( );
@@ -90,7 +129,12 @@ namespace Design {
             }
             case AT_Stamp:
             {
-                nbrStamps++;
+                nbrLeaf++;
+                break;
+            }
+            case AT_Text:
+            {
+                nbrLeaf++;
                 break;
             }
             }
@@ -246,5 +290,39 @@ namespace Design {
 
         }
         return false;
+    }
+
+    bool LayoutBase::IsTitleLocation( TitleLocation loc )
+    {
+        return( GetTitleLayoutLocation( ) == loc );
+    }
+
+    TitleLocation LayoutBase::GetTitleLayoutLocation( )
+    {
+        if ( m_titleLocation == AT_TitleLocationDefault )
+        {
+            LayoutBase* parent = ( LayoutBase* ) GetParent( );
+            if ( !parent )
+            {
+                return AT_TitleLocationBottom;
+            }
+            TitleLocation parentLoc = parent->GetTitleLayoutLocation( );
+            if ( parentLoc != AT_TitleLocationDefault )
+            {
+                return parentLoc;
+            }
+            else if ( parent->IsNodeType( AT_Col ) )
+            {
+                return AT_TitleLocationLeft;
+            }
+            else
+            {
+                return AT_TitleLocationBottom;
+            }
+        }
+        else
+        {
+            return m_titleLocation;
+        }
     }
 }

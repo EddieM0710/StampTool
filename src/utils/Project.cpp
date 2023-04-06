@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation, 
+ * terms of the GNU General Public License as published by the Free Software Foundation,
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -22,7 +22,7 @@
  *
  */
 
- 
+
 #include "wx/wxprec.h"
 
 #ifdef __BORLANDC__
@@ -57,21 +57,21 @@
 #include "gui/DesignTreeCtrl.h"
 
 
-namespace Utils { 
+namespace Utils {
 
     Project* NewProjectInstance( )
-    { 
+    {
         Project* project = new Project( );
         project->InitProject( );
         return project;
     }
 
     Project::Project( )
-    { 
-        m_ProjectDoc = ( wxXmlDocument* )0;
+    {
+        m_ProjectDoc = ( wxXmlDocument* ) 0;
     }
     void Project::InitProject( )
-    { 
+    {
         InitDefs( );
         SetDirty( false );
     }
@@ -79,14 +79,14 @@ namespace Utils {
     //***** 
 
     wxString Project::GetDesignFilename( )
-    { 
+    {
         return m_designFilename;
     };
 
     //*****
 
     void Project::SetDesignFilename( wxString albumFilename )
-    { 
+    {
         m_designFilename = albumFilename;
         m_dirty = true;
     };
@@ -94,14 +94,14 @@ namespace Utils {
     //*****
 
     wxString Project::GetImagePath( )
-    { 
+    {
         return m_imagePath;
     };
 
     //*****
 
     void Project::SetImagePath( wxString imagePath )
-    { 
+    {
         m_imagePath = imagePath; SetDirty( );
     };
 
@@ -115,9 +115,9 @@ namespace Utils {
     //*****
 
     void Project::SetCatalogFilename( wxString catalogFilename )
-    { 
+    {
         if ( m_catalogFilename.Cmp( catalogFilename ) )
-        { 
+        {
             m_catalogFilename = catalogFilename;
             SetDirty( );
         }
@@ -126,7 +126,7 @@ namespace Utils {
     //*****
 
     void Project::SetProjectFilename( wxString name )
-    { 
+    {
         m_projectFilename = name;
         GetSettings( )->SetLastFile( m_projectFilename );
     };
@@ -134,10 +134,10 @@ namespace Utils {
     //*****
 
     wxString Project::MakeFileAbsolute( wxString filename )
-    { 
+    {
         wxFileName newFile( filename );
         if ( !newFile.IsAbsolute( ) )
-        { 
+        {
             newFile.MakeAbsolute( );
         }
         return newFile.GetFullPath( );
@@ -148,21 +148,21 @@ namespace Utils {
     //*****
 
     bool Project::LoadProjectXML( )
-    { 
+    {
         wxFileName projFile( m_projectFilename );
         wxString str;
 
         projFile.DirName( str );
 
         if ( projFile.FileExists( ) )
-        { 
+        {
             if ( !projFile.IsAbsolute( ) )
-            { 
+            {
                 projFile.MakeAbsolute( );
             }
         }
         else
-        { 
+        {
             //setup new files
             return false;
         }
@@ -172,7 +172,7 @@ namespace Utils {
 
         m_ProjectDoc = new wxXmlDocument( );
         if ( !m_ProjectDoc->Load( m_projectFilename ) )
-        { 
+        {
             ReportError( "Project::Load", "error loading Prokect xml file.", true );
             return false;
         }
@@ -180,7 +180,7 @@ namespace Utils {
         wxXmlNode* projectRoot = m_ProjectDoc->GetRoot( );
         wxString name = projectRoot->GetName( );
         if ( name.Cmp( "Project" ) )
-        { 
+        {
             // std::cout << "Initial node must be <Project>" << "\n";
             // std::cout << "Found \"" << name << "\" instead.\n";
             return false;
@@ -190,45 +190,45 @@ namespace Utils {
 
         wxXmlNode* album = FirstChildElement( projectRoot, "Album" );
         if ( album )
-        { 
+        {
             m_designFilename = album->GetAttribute( "FileName" );
         }
         wxXmlNode* imagePath = FirstChildElement( projectRoot, "ImagePath" );
         if ( imagePath )
-        { 
+        {
             m_imagePath = imagePath->GetAttribute( "Name" );
         }
         wxXmlNode* catalog = FirstChildElement( projectRoot, "Catalog" );
         Catalog::CatalogData* catalogData = GetToolData( )->GetCatalogData( );
-        
+
         catalogData->ClearCatalogArray( );
         if ( catalog )
-        { 
+        {
             wxXmlNode* section = FirstChildElement( catalog, "Section" );
             if ( !section )
             {
                 section = FirstChildElement( catalog, "Volume" );
             }
             while ( section )
-            { 
+            {
                 wxString name = section->GetAttribute( "FileName" );
 
                 wxFileName catFile( name );
 
                 if ( catFile.FileExists( ) )
-                { 
- 
+                {
+
                     if ( catFile.IsAbsolute( ) )
-                    { 
+                    {
                         catFile.MakeRelativeTo( cwd );
                     }
 
                     Catalog::CatalogSectionData* sectionData = GetToolData( )->NewCatalogSectionData( );
-                   
+
                     sectionData->SetSectionFilename( catFile.GetFullPath( ) );
                 }
                 else
-                { 
+                {
 
                 }
 
@@ -247,37 +247,37 @@ namespace Utils {
     //*****
 
     void Project::LoadAttributes( wxXmlNode* thisObject )
-    { 
+    {
         const wxXmlAttribute* attr = thisObject->GetAttributes( );
         wxFileName filename;
         while ( attr )
-        { 
+        {
             wxString name = attr->GetName( );
             wxString val = attr->GetValue( );
 
             if ( !name.Cmp( "OutputName" ) )
-            { 
- //               m_ODTOutputFilename = MakeFileAbsolute( val );
+            {
+                //               m_ODTOutputFilename = MakeFileAbsolute( val );
             }
             else if ( !name.Cmp( "Album" ) )
-            { 
+            {
                 m_designFilename = MakeFileAbsolute( val );
             }
             else if ( !name.Cmp( "ImagePath" ) )
-            { 
+            {
                 //m_imagePath = MakeFileAbsolute( val );
                 //GetSettings( )->SetImageDirectory( m_imagePath );
             }
             else if ( !name.Cmp( "Catalog" ) )
-            { 
+            {
                 m_catalogFilename = MakeFileAbsolute( val );
             }
             else if ( !name.Cmp( "Country" ) )
-            { 
+            {
                 m_defaultCountryID = val;
             }
             else if ( !name.Cmp( "CatalogCode" ) )
-            { 
+            {
                 m_defaultCatalogCode = val;
             }
             attr = attr->GetNext( );
@@ -288,16 +288,16 @@ namespace Utils {
     //*****
 
     void Project::Save( )
-    { 
+    {
 
         if ( wxFileExists( m_projectFilename ) )
-        { 
+        {
             wxFileName bakFile( m_projectFilename );
             bakFile.SetExt( "bak" );
             wxRenameFile( m_projectFilename, bakFile.GetFullName( ), true );
         }
         if ( m_ProjectDoc )
-        { 
+        {
             delete m_ProjectDoc;
         }
         m_ProjectDoc = new wxXmlDocument( );
@@ -306,7 +306,7 @@ namespace Utils {
         root->AddAttribute( "CatalogCode", GetProjectCatalogCode( ) );
 
         wxXmlNode* newNode = NewNode( root, "OutputName" );
- //       newNode->AddAttribute( "FileName", m_outputFilename );
+        //       newNode->AddAttribute( "FileName", m_outputFilename );
 
         newNode = NewNode( root, "Album" );
         newNode->AddAttribute( "FileName", m_designFilename );
@@ -322,8 +322,8 @@ namespace Utils {
         for ( Catalog::CatalogSectionDataArray::iterator it = std::begin( *catalogArray );
             it != std::end( *catalogArray );
             ++it )
-        { 
-            Catalog::CatalogSectionData* section = ( Catalog::CatalogSectionData* )( *it );
+        {
+            Catalog::CatalogSectionData* section = ( Catalog::CatalogSectionData* ) ( *it );
             wxString filename = section->GetSectionFilename( );
             wxString cwd = wxGetCwd( );
             wxFileName sectFile( filename );

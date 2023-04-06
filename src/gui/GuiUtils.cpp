@@ -40,7 +40,7 @@
 #include "art/fleur_di_lis3.xpm"
 
 
-    
+
 void DrawLabelPDF( wxPdfDocument* doc, const wxString& text,
     RealPoint pos,
     RealSize size,
@@ -73,9 +73,9 @@ void DrawLabel( wxDC& dc, const wxString& text,
 void DrawTitle( wxDC& dc, wxString title, RealPoint pos, RealSize size )
 {
     wxString id;
-   wxFont font = dc.GetFont();//( *wxNORMAL_FONT );
-//    font.SetPointSize( 10 );
-//    dc.SetFont( font );
+    wxFont font = dc.GetFont( );//( *wxNORMAL_FONT );
+    //    font.SetPointSize( 10 );
+    //    dc.SetFont( font );
     id = title;
     id.Trim( );
     id.Trim( false );
@@ -135,8 +135,8 @@ void DrawTitlePDF( wxPdfDocument* doc, wxString title, RealPoint pos, RealSize s
     double lineHeight = GetHeightChars( 10 );
 
     doc->MultiCell( size.x, lineHeight, id, 0, wxPDF_ALIGN_CENTER );
-    double y = doc->GetY( );
-    double x = doc->GetX( );
+    //double y = doc->GetY( );
+    //double x = doc->GetX( );
 }
 
 wxSize LogicalToDeviceRel( wxDC& dc, double x, double y )
@@ -195,7 +195,7 @@ void DrawImagePDF( wxPdfDocument* doc, wxString fileName, double x, double y, do
     wxImage* image = GetImageFromFilename( fileName );
     // Draw jpeg image
  //   doc->Image( fileName, x, y, w, h );
-    doc->Image ( fileName, *image, x, y, w, h );
+    doc->Image( fileName, *image, x, y, w, h );
 
 
 }

@@ -1,11 +1,11 @@
 /*
  * @file         GenerateList.cpp
- *@brief      
+ *@brief
 * @author      Eddie Monroe
-* Modified by: 
+* Modified by:
 * @author     Thu 08 Dec 2022 20:20:21 CST
- *     
-* @copyright Copyright ( c ) 2024   
+ *
+* @copyright Copyright ( c ) 2024
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
@@ -18,8 +18,8 @@
  *
  * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
- */    
-/////////////////////////////////////////////////////////////////////////////
+ */
+ ///////////////////////////////////////
 
 
 #include "wx/wxprec.h"
@@ -41,7 +41,7 @@
 #include "catalog/Entry.h"
 #include "utils/XMLUtilities.h"
 
-//// XPM images
+// XPM images
 
 
 /*
@@ -55,28 +55,28 @@ IMPLEMENT_DYNAMIC_CLASS( GenerateList, wxPanel )
  * GenerateList event table definition
  */
 
-BEGIN_EVENT_TABLE( GenerateList, wxPanel )
+    BEGIN_EVENT_TABLE( GenerateList, wxPanel )
 
-//// GenerateList event table entries
+    // GenerateList event table entries
     EVT_BUTTON( ID_SETLISTPREFSBUTTON, GenerateList::OnSetListPrefsButtonClick )
     EVT_BUTTON( ID_WRITEBUTTON, GenerateList::OnWriteButtonClick )
     EVT_TEXT( ID_FILENAMETEXTCTRL, GenerateList::OnFileNameTextUpdated )
-//// GenerateList event table entries
+    // GenerateList event table entries
 
-END_EVENT_TABLE( )
+    END_EVENT_TABLE( )
 
 
-/*
- * GenerateList constructors
- */
+    /*
+     * GenerateList constructors
+     */
 
-GenerateList::GenerateList( )
-{ 
+    GenerateList::GenerateList( )
+{
     Init( );
 }
 
 GenerateList::GenerateList( wxWindow* parent, wxWindowID id, const wxPoint& pos, const wxSize& size, long style )
-{ 
+{
     Init( );
     Create( parent, id, pos, size, style );
 }
@@ -87,18 +87,18 @@ GenerateList::GenerateList( wxWindow* parent, wxWindowID id, const wxPoint& pos,
  */
 
 bool GenerateList::Create( wxWindow* parent, wxWindowID id, const wxPoint& pos, const wxSize& size, long style )
-{ 
-//// GenerateList creation
+{
+    // GenerateList creation
     SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
     wxPanel::Create( parent, id, pos, size, style );
 
     CreateControls( );
     if ( GetSizer( ) )
-    { 
+    {
         GetSizer( )->SetSizeHints( this );
     }
     Centre( );
-//// GenerateList creation
+    // GenerateList creation
     return true;
 }
 
@@ -108,9 +108,9 @@ bool GenerateList::Create( wxWindow* parent, wxWindowID id, const wxPoint& pos, 
  */
 
 GenerateList::~GenerateList( )
-{ 
-//// GenerateList destruction
-//// GenerateList destruction
+{
+    // GenerateList destruction
+    // GenerateList destruction
 }
 
 
@@ -119,13 +119,13 @@ GenerateList::~GenerateList( )
  */
 
 void GenerateList::Init( )
-{ 
-//// GenerateList member initialisation
+{
+    // GenerateList member initialisation
     m_gridCtrl = NULL;
     m_writeButton = NULL;
     m_filename = NULL;
-//// GenerateList member initialisation
-    m_checkedStatusItems = 0;    
+    // GenerateList member initialisation
+    m_checkedStatusItems = 0;
     m_checkedFormatItems = 0;
     m_checkedEmissionItems = 0;
     m_fromYear = "";
@@ -138,7 +138,7 @@ void GenerateList::Init( )
  */
 
 void GenerateList::CreateControls( )
-{    
+{
     GenerateList* itemPanel1 = this;
 
     wxBoxSizer* itemBoxSizer2 = new wxBoxSizer( wxVERTICAL );
@@ -170,20 +170,20 @@ void GenerateList::CreateControls( )
     m_filename = new wxTextCtrl( itemPanel1, ID_FILENAMETEXTCTRL, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
     itemBoxSizer8->Add( m_filename, 1, wxGROW | wxALL, 5 );
 
-//// GenerateList content construction
-        m_gridCtrl->SetColLabelValue( 0, Catalog::DT_DataNames[ Catalog::DT_ID_Nbr ] );
-        m_gridCtrl->SetColLabelValue( 1, Catalog::DT_DataNames[ Catalog::DT_InventoryStatus ] );
-        m_gridCtrl->SetColLabelValue( 2, Catalog::DT_DataNames[ Catalog::DT_Name ] );
-        m_gridCtrl->SetColLabelValue( 3, Catalog::DT_DataNames[ Catalog::DT_Issued_on ] );        
-        m_gridCtrl->SetColLabelValue( 4, Catalog::DT_DataNames[ Catalog::DT_Emission ] );        
-        m_gridCtrl->SetColLabelValue( 5, Catalog::DT_DataNames[ Catalog::DT_Format ] );
+    // GenerateList content construction
+    m_gridCtrl->SetColLabelValue( 0, Catalog::DT_DataNames[ Catalog::DT_ID_Nbr ] );
+    m_gridCtrl->SetColLabelValue( 1, Catalog::DT_DataNames[ Catalog::DT_InventoryStatus ] );
+    m_gridCtrl->SetColLabelValue( 2, Catalog::DT_DataNames[ Catalog::DT_Name ] );
+    m_gridCtrl->SetColLabelValue( 3, Catalog::DT_DataNames[ Catalog::DT_Issued_on ] );
+    m_gridCtrl->SetColLabelValue( 4, Catalog::DT_DataNames[ Catalog::DT_Emission ] );
+    m_gridCtrl->SetColLabelValue( 5, Catalog::DT_DataNames[ Catalog::DT_Format ] );
 }
 
 
 
 
 bool GenerateList::ShowToolTips( )
-{ 
+{
     return true;
 }
 
@@ -194,47 +194,47 @@ bool GenerateList::ShowToolTips( )
 
 
 bool GenerateList::CheckStatus( Catalog::Entry* entry )
-{ 
+{
     wxString emission = entry->GetInventoryStatus( );
     int i = Catalog::FindStatusType( emission );
     if ( i >= 0 )
-    { 
+    {
         int base = 1;
-        base = base<<= i;
-        return m_checkedStatusItems & base ; 
+        base = base <<= i;
+        return m_checkedStatusItems & base;
     }
     return true;
 }
 
 bool GenerateList::CheckFormat( Catalog::Entry* entry )
-{ 
+{
     wxString emission = entry->GetFormat( );
     int i = Catalog::FindFormatType( emission );
     if ( i >= 0 )
-    { 
+    {
         int base = 1;
-        base = base<<= i;
-        return m_checkedFormatItems & base ; 
+        base = base <<= i;
+        return m_checkedFormatItems & base;
     }
     return true;
 }
 
 bool GenerateList::CheckEmission( Catalog::Entry* entry )
-{ 
+{
     wxString emission = entry->GetEmission( );
     int i = Catalog::FindEmissionType( emission );
     if ( i >= 0 )
-    { 
+    {
         int base = 1;
-        base = base<<= i;
-        return m_checkedEmissionItems & base ; 
+        base = base <<= i;
+        return m_checkedEmissionItems & base;
     }
     return true;
 }
 #include "wx/graphics.h"
 
-int GenerateList::GetStringLen( wxFont& font,  wxString text )
-{ 
+int GenerateList::GetStringLen( wxFont& font, wxString text )
+{
 
     wxClientDC dc( this );//= this->GetDC( );
     dc.SetMapMode( wxMM_METRIC );
@@ -248,74 +248,74 @@ int GenerateList::GetStringLen( wxFont& font,  wxString text )
     text.Trim( false );
     int len = text.length( );
     if ( len > 0 )
-    { 
+    {
         wxSize ext = dc.GetTextExtent( text );
         return ext.GetX( );
     }
     return 25;
 }
 void GenerateList::ShowRow( Catalog::Entry* entry, int row )
-{ 
+{
     wxFont font = m_gridCtrl->GetCellFont( row, 2 );
 
     m_gridCtrl->AppendRows( 1 );
-        m_gridCtrl->SetCellValue( row, 0, entry->GetID( ) );
-        m_gridCtrl->SetCellValue( row, 1, entry->GetInventoryStatus( ) );
-        m_gridCtrl->SetCellValue( row, 2, entry->GetName( ) );
+    m_gridCtrl->SetCellValue( row, 0, entry->GetID( ) );
+    m_gridCtrl->SetCellValue( row, 1, entry->GetInventoryStatus( ) );
+    m_gridCtrl->SetCellValue( row, 2, entry->GetName( ) );
 
-        int size = GetStringLen( font, entry->GetName( ) );
-        int curr = m_gridCtrl->GetColSize( 2 );
-        if ( size > curr )
-        { 
-            m_gridCtrl->SetColSize( 2, size );
-        }
+    int size = GetStringLen( font, entry->GetName( ) );
+    int curr = m_gridCtrl->GetColSize( 2 );
+    if ( size > curr )
+    {
+        m_gridCtrl->SetColSize( 2, size );
+    }
 
-        m_gridCtrl->SetCellValue( row, 3, entry->GetIssuedDate( ) );        
-        m_gridCtrl->SetCellValue( row, 4, entry->GetEmission( ) );  
-        size = GetStringLen( font, entry->GetEmission( ) );
-        curr = m_gridCtrl->GetColSize( 4 );
-        if ( size > curr )
-        { 
-            m_gridCtrl->SetColSize( 4, size );
-        }            
-        m_gridCtrl->SetCellValue( row, 5, entry->GetFormat( ) );
+    m_gridCtrl->SetCellValue( row, 3, entry->GetIssuedDate( ) );
+    m_gridCtrl->SetCellValue( row, 4, entry->GetEmission( ) );
+    size = GetStringLen( font, entry->GetEmission( ) );
+    curr = m_gridCtrl->GetColSize( 4 );
+    if ( size > curr )
+    {
+        m_gridCtrl->SetColSize( 4, size );
+    }
+    m_gridCtrl->SetCellValue( row, 5, entry->GetFormat( ) );
 }
 void GenerateList::WriteEntries( wxXmlNode* parent, int& row )
-{ 
+{
 
-        wxXmlNode* child = parent->GetChildren( );
-        while ( child )
-        { 
-            if ( !child->GetName( ).compare( "Entry" ) )
-            { 
-                Catalog::Entry entry( child );
-                if( CheckStatus( &entry ) && CheckEmission( &entry ) && CheckFormat( &entry ) )
-                {                 
-                    ShowRow( &entry, row );
-                    row++;
-                }
-                WriteEntries( child, row ) ;                
+    wxXmlNode* child = parent->GetChildren( );
+    while ( child )
+    {
+        if ( !child->GetName( ).compare( "Entry" ) )
+        {
+            Catalog::Entry entry( child );
+            if ( CheckStatus( &entry ) && CheckEmission( &entry ) && CheckFormat( &entry ) )
+            {
+                ShowRow( &entry, row );
+                row++;
             }
-            child = child->GetNext( );            
+            WriteEntries( child, row );
         }
+        child = child->GetNext( );
+    }
 }
 
 void GenerateList::UpdateGrid( )
-{ 
+{
     m_gridCtrl->ClearGrid( );
     int nbrRows = m_gridCtrl->GetNumberRows( );
     if ( nbrRows > 0 ) m_gridCtrl->DeleteRows( 0, nbrRows );
     int row = 0;
     Catalog::CatalogSectionData* catalogSectionData = GetCatalogSectionData( );
     if ( catalogSectionData )
-    { 
+    {
         wxXmlDocument* entryDoc = catalogSectionData->GetDoc( );
         wxXmlNode* root = entryDoc->GetRoot( );
 
 
         if ( root )
-        { 
-        WriteEntries( root, row )  ;       
+        {
+            WriteEntries( root, row );
         }
     }
 }
@@ -324,7 +324,7 @@ void GenerateList::UpdateGrid( )
  */
 
 void GenerateList::OnWriteButtonClick( wxCommandEvent& event )
-{ 
+{
     UpdateGrid( );
 
     event.Skip( );
@@ -336,28 +336,28 @@ void GenerateList::OnWriteButtonClick( wxCommandEvent& event )
  */
 
 void GenerateList::OnFileNameTextUpdated( wxCommandEvent& event )
-{ 
+{
 
     event.Skip( );
- 
+
 }
 
 int MakeBitPatern( wxArrayInt& array )
-{ 
+{
     int nbr = array.Count( );
     int val = 0;
     for ( int i = 0; i < nbr; i++ )
-    { 
+    {
         int base = 1;
-        base = base<<= array[ i ];
-        val = val | base ;
+        base = base <<= array[ i ];
+        val = val | base;
     }
     return val;
 }
 
 void GenerateList::DoListPrefs( )
-{ 
-    GenerateListSettings* settings = new GenerateListSettings( this, 12349, 
+{
+    GenerateListSettings* settings = new GenerateListSettings( this, 12349,
         _( "Edit Report Settings" ) );
 
     settings->SetCheckedStatusItems( m_checkedStatusItems );
@@ -369,14 +369,14 @@ void GenerateList::DoListPrefs( )
     if ( settings->ShowModal( ) == wxID_CANCEL )
         return; // the user changed idea..
 
-    m_checkedStatusItems = settings->GetCheckedStatusItems(  );
-    m_checkedFormatItems = settings->GetCheckedFormatItems(  );
-    m_checkedEmissionItems = settings->GetCheckedEmissionItems(  );
+    m_checkedStatusItems = settings->GetCheckedStatusItems( );
+    m_checkedFormatItems = settings->GetCheckedFormatItems( );
+    m_checkedEmissionItems = settings->GetCheckedEmissionItems( );
 
 
     m_fromYear = settings->GetFromYear( );
     m_toYear = settings->GetToYear( );
-    
+
     UpdateGrid( );
 
     return;
@@ -386,7 +386,7 @@ void GenerateList::DoListPrefs( )
  */
 
 void GenerateList::OnSetListPrefsButtonClick( wxCommandEvent& event )
-{ 
+{
     DoListPrefs( );
 
     // if ( GenerateListSettings.IsNameModified( ) )

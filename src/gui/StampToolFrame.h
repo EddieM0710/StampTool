@@ -32,22 +32,25 @@
 
 #include <vector>
 #include "wx/frame.h"
-
 #include "gui/GuiDefs.h"
+  //#include "gui/WebRequest.h"
 
-  /*
-   * Forward declarations
-   */
-   //namespace Catalog { class Stamp; };
+    /*
+     * Forward declarations
+     */
+     //namespace Catalog { class Stamp; };
 
 class StampToolPanel;
 
 class wxButton;
-////class CatalogSectionData;
+//class CatalogSectionData;
 
 class CatalogPanel;
 //class CatalogTreeCtrl;
 class AlbumDesignTreePanel;
+
+//class WebViewPanel;
+
 /*
  * Control identifiers
  */
@@ -283,14 +286,16 @@ public:
     StampToolPanel* GetStampToolPanel( ) { return m_stampToolPanel; }
     CatalogPanel* GetAlbumPagePanel( );
     CatalogPanel* GetCatalogPagePanel( );
-    // StampToolFrame member variables
-    StampToolPanel* m_stampToolPanel;
-    CatalogPanel* m_catalogPagePanel;
-    CatalogPanel* m_albumPagePanel;
-    AlbumDesignTreePanel* m_albumDesignTreePanel;
-    // StampToolFrame member variables
+    //    WebViewPanel* GetWebViewPage( );
+    //    WebRequest* GetWebRequest( ) { return &m_webRequest; };
 
-   // container data classification sort order
+    StampToolPanel* m_stampToolPanel;
+    //CatalogPanel* m_catalogPagePanel;
+    //CatalogPanel* m_albumPagePanel;
+    AlbumDesignTreePanel* m_albumDesignTreePanel;
+    //    WebRequest m_webRequest;
+
+        // container data classification sort order
     wxArrayInt m_sortOrder;
     wxMenu* m_fileMenu;
     wxMenu* m_newMenu;
@@ -306,6 +311,9 @@ public:
     } RecentListItem;
     std::vector<RecentListItem*> m_menuItemList;
     //Catalog::Stamp *m_stamp;
+
+
+
 };
 
 #endif

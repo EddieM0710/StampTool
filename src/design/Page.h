@@ -6,18 +6,18 @@
  * @date 2022-02-02
  *
  * @copyright Copyright ( c ) 2022
- * 
+ *
  * This file is part of StampTool.
  *
- * StampTool is free software: you can redistribute it and/or modify it under the 
- * terms of the GNU General Public License as published by the Free Software Foundation, 
+ * StampTool is free software: you can redistribute it and/or modify it under the
+ * terms of the GNU General Public License as published by the Free Software Foundation,
  * either version 3 of the License, or any later version.
  *
- * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY 
- * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+ * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
+ * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
- * You should have received a copy of the GNU General Public License along with 
+ * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
  **************************************************/
@@ -32,13 +32,13 @@
 #include "design/Album.h"
 #include "utils/DebugString.h"
 
-namespace Design { 
+namespace Design {
 
     class Title;
 
     // Encapsulates the parameters of the page
-    class Page : public LayoutBase
-    { 
+    class Page: public LayoutBase
+    {
     public:
         Page( wxXmlNode* node );
         ~Page( ) { };
@@ -67,7 +67,7 @@ namespace Design {
         void UpdateLayout( );
 
         NodeStatus ValidateNode( );
-        
+
         void SetContentFrame( );
 
         // Get the Top Margin 
@@ -80,7 +80,7 @@ namespace Design {
         double GetBottomMargin( ) { return m_bottomMargin; };
 
         // Set the Bottom Margin 
-       void SetBottomMargin( double val ) { m_bottomMargin = val; };
+        void SetBottomMargin( double val ) { m_bottomMargin = val; };
 
         //Get the Right Margin
         double GetRightMargin( ) { return m_rightMargin; };
@@ -108,11 +108,11 @@ namespace Design {
 
         void Save( wxXmlNode* parent );
 
-        void ReportLayout(  );
+        void ReportLayout( );
 
-        wxString GetBorderFileName( ){ return m_borderFileName; }
+        wxString GetBorderFileName( ) { return m_borderFileName; }
 
-        void SetBorderFilename( wxString str ){ m_borderFileName = str; };
+        void SetBorderFilename( wxString str ) { m_borderFileName = str; };
 
     private:
 

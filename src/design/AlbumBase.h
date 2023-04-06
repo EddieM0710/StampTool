@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation, 
+ * terms of the GNU General Public License as published by the Free Software Foundation,
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -31,7 +31,7 @@
 #include <wx/treectrl.h>
 
 
-namespace Design { 
+namespace Design {
 
     //   class AlbumBase;
 
@@ -41,13 +41,13 @@ namespace Design {
             *
             **************************************************/
     class AlbumBase: public XMLBase
-    { 
+    {
     public:
-  
-        AlbumBase( ) : XMLBase( (wxXmlNode*) 0 ){ };
 
-        AlbumBase( wxXmlNode* ele ) : XMLBase( ele )
-        { 
+        AlbumBase( ): XMLBase( ( wxXmlNode* ) 0 ) { };
+
+        AlbumBase( wxXmlNode* ele ): XMLBase( ele )
+        {
 
         }
 
@@ -70,36 +70,41 @@ namespace Design {
 
         virtual void Save( wxXmlNode* xmlNode ) = 0;
 
-        wxArrayString* GetErrorArray( ){ return &m_errorArray; };
+        wxArrayString* GetErrorArray( ) { return &m_errorArray; };
 
         int GetTitleFontNdx( );
         int GetTextFontNdx( );
-        int GetCatNbrFontNdx( );
+        int GetNameFontNdx( );
+        int GetNbrFontNdx( );
 
         wxFont GetTitleFont( );
         wxFont GetTextFont( );
-        wxFont GetCatNbrFont( );
+        wxFont GetNameFont( );
+        wxFont GetNbrFont( );
 
         wxColour GetTitleColor( );
         wxColour GetTextColor( );
-        wxColour GetCatNbrColor( );
+        wxColour GetNameColor( );
+        wxColour GetNbrColor( );
 
         void SetTitleFont( wxFont font, wxColour color );
         void SetTextFont( wxFont font, wxColour color );
-        void SetCatNbrFont( wxFont font, wxColour color );
+        void SetNameFont( wxFont font, wxColour color );
+        void SetNbrFont( wxFont font, wxColour color );
 
         // resets the Catalog Nbr Font to the default CatNbr Font
-        void DefaultCatNbrFont(){ m_catNbrFont.Default( );  };
+        void DefaultCatNbrFont( ) { m_nbrFont.Default( ); };
 
         // resets the Title Font to the default Title Font
-        void DefaultTitleFont(){ m_titleFont.Default( );  };
+        void DefaultTitleFont( ) { m_titleFont.Default( ); };
 
         // resets the Text Font to the default Text Font
-        void DefaultTextFont(){ m_textFont.Default( );  };
+        void DefaultTextFont( ) { m_textFont.Default( ); };
 
         bool IsDefaultTitleFont( int ndx );
         bool IsDefaultTextFont( int ndx );
-        bool IsDefaultCatNbrFont( int ndx );
+        bool IsDefaultNameFont( int ndx );
+        bool IsDefaultNbrFont( int ndx );
 
         void LoadFonts( wxXmlNode* node );
         void SaveFonts( wxXmlNode* parent );
@@ -110,13 +115,15 @@ namespace Design {
 
         wxTreeItemId m_treeID;
         wxArrayString m_errorArray;
-         
+
         // index of title font in FontMap
         Utils::FontNdx m_titleFont;
         // index of text font in FontMap
         Utils::FontNdx m_textFont;
         // index of catalog number font in FontMap
-        Utils::FontNdx m_catNbrFont;
+        Utils::FontNdx m_nbrFont;
+        // index of name font in FontMap
+        Utils::FontNdx m_nameFont;
 
     protected:
 

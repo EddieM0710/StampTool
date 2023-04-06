@@ -6,18 +6,18 @@
  * @date 2021-03-05
  *
  * @copyright Copyright ( c ) 2021
- * 
+ *
  * This file is part of StampTool.
  *
- * StampTool is free software: you can redistribute it and/or modify it under the 
- * terms of the GNU General Public License as published by the Free Software Foundation, 
+ * StampTool is free software: you can redistribute it and/or modify it under the
+ * terms of the GNU General Public License as published by the Free Software Foundation,
  * either version 3 of the License, or any later version.
  *
- * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY 
- * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+ * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
+ * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
- * You should have received a copy of the GNU General Public License along with 
+ * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
  **************************************************/
@@ -30,9 +30,9 @@
 #include "wx/xml/xml.h"
 #include "utils/FontList.h"
 
-namespace Utils { 
+namespace Utils {
 
-class Settings;
+    class Settings;
 
     Settings* NewSettingsInstance( );
 
@@ -41,7 +41,7 @@ class Settings;
      *
      **************************************************/
     class Settings
-    { 
+    {
     public:
         Settings( );
         ~Settings( ) { };
@@ -61,33 +61,37 @@ class Settings;
         wxString GetUpperDivision( ) { return m_upperDivision; };
         wxString GetUpperPeriod( ) { return m_upperPeriod; };
 
-        wxFont GetCatNbrFont( ) { return GetFontList()->GetFont( m_appPrefCatNbrFontNdx.Get( ) ); };
-        wxColour GetCatNbrColor( ) { return GetFontList()->GetColor( m_appPrefCatNbrFontNdx.Get( ) );; };
-        
-        wxFont GetTitleFont( ) { return GetFontList()->GetFont( m_appPrefTitleFontNdx.Get( ) ); };
-        wxColour GetTitleColor( ) { return GetFontList()->GetColor( m_appPrefTitleFontNdx.Get( ) ); };
+        wxFont GetNbrFont( ) { return GetFontList( )->GetFont( m_appPrefNbrFontNdx.Get( ) ); };
+        wxColour GetNbrColor( ) { return GetFontList( )->GetColor( m_appPrefNbrFontNdx.Get( ) );; };
 
-        wxFont GetTextFont( ) { return GetFontList()->GetFont( m_appPrefTextFontNdx.Get( ) ); };
-        wxColour GetTextColor( ) { return GetFontList()->GetColor( m_appPrefTextFontNdx.Get( ) ); };
+        wxFont GetNameFont( ) { return GetFontList( )->GetFont( m_appPrefNameFontNdx.Get( ) ); };
+        wxColour GetNameColor( ) { return GetFontList( )->GetColor( m_appPrefNameFontNdx.Get( ) );; };
 
-        int GetAppPrefTitleFontNdx() { return m_appPrefTitleFontNdx.Get(); };
-        int GetAppPrefTextFontNdx() { return m_appPrefTextFontNdx.Get(); };
-        int GetAppPrefCatNbrFontNdx() { return m_appPrefCatNbrFontNdx.Get(); };
+        wxFont GetTitleFont( ) { return GetFontList( )->GetFont( m_appPrefTitleFontNdx.Get( ) ); };
+        wxColour GetTitleColor( ) { return GetFontList( )->GetColor( m_appPrefTitleFontNdx.Get( ) ); };
+
+        wxFont GetTextFont( ) { return GetFontList( )->GetFont( m_appPrefTextFontNdx.Get( ) ); };
+        wxColour GetTextColor( ) { return GetFontList( )->GetColor( m_appPrefTextFontNdx.Get( ) ); };
+
+        int GetAppPrefTitleFontNdx( ) { return m_appPrefTitleFontNdx.Get( ); };
+        int GetAppPrefTextFontNdx( ) { return m_appPrefTextFontNdx.Get( ); };
+        int GetAppPrefNbrFontNdx( ) { return m_appPrefNbrFontNdx.Get( ); };
+        int GetAppPrefNameFontNdx( ) { return m_appPrefNameFontNdx.Get( ); };
 
         void SetConfigurationDirectory( wxString val ) { m_configurationDirectory = val.Trim( ); m_dirty = true; };
         //void SetImageDirectory( wxString val ) { m_imageDirectory = val.Trim( );m_dirty = true; };
-        void SetCatalogID( wxString val ) { m_catalogID = val.Trim( );m_dirty = true; };
-        void SetCountryID( wxString val ) { m_countryID = val.Trim( );m_dirty = true; };
+        void SetCatalogID( wxString val ) { m_catalogID = val.Trim( ); m_dirty = true; };
+        void SetCountryID( wxString val ) { m_countryID = val.Trim( ); m_dirty = true; };
         void SetLoadLastFileAtStartUp( bool state = true ) { m_loadLastFileAtStartUp = state; };
-        void SetLowerDivision( wxString val ) { m_lowerDivision = val.Trim( );m_dirty = true; };
-        void SetLowerPeriod( wxString val ) { m_lowerPeriod = val.Trim( );m_dirty = true; };
-        void SetMiddlePeriod( wxString val ) { m_middlePeriod = val.Trim( );m_dirty = true; };
-        void SetUpperDivision( wxString val ) { m_upperDivision = val.Trim( );m_dirty = true; };
-        void SetUpperPeriod( wxString val ) { m_upperPeriod = m_configurationDirectory.Trim( );m_dirty = true; };
+        void SetLowerDivision( wxString val ) { m_lowerDivision = val.Trim( ); m_dirty = true; };
+        void SetLowerPeriod( wxString val ) { m_lowerPeriod = val.Trim( ); m_dirty = true; };
+        void SetMiddlePeriod( wxString val ) { m_middlePeriod = val.Trim( ); m_dirty = true; };
+        void SetUpperDivision( wxString val ) { m_upperDivision = val.Trim( ); m_dirty = true; };
+        void SetUpperPeriod( wxString val ) { m_upperPeriod = m_configurationDirectory.Trim( ); m_dirty = true; };
 
         void SetAppPrefTitleFontNdx( int ndx ) { m_appPrefTitleFontNdx.Set( ndx ); };
         void SetAppPrefTextFontNdx( int ndx ) { m_appPrefTextFontNdx.Set( ndx ); };
-        void SetAppPrefCatNbrFontNdx( int ndx ) { m_appPrefCatNbrFontNdx.Set( ndx ); };
+        void SetAppPrefCatNbrFontNdx( int ndx ) { m_appPrefNbrFontNdx.Set( ndx ); };
 
         int GetNextSortClassification( int current );
         void SetSettingValue( wxString& setting, wxXmlNode* parent, wxString childName, wxString defaultVal );
@@ -106,31 +110,31 @@ class Settings;
         bool isDirty( ) { return m_dirty; };
         void SetDefaults( );
         wxString GetCatCodePrefix( )
-        { 
+        {
             wxString str = "";
             if ( !m_countryID.IsEmpty( ) && !m_catalogID.IsEmpty( ) )
-            { 
+            {
                 str = m_countryID + ":" + m_catalogID;
             }
             else
-            { 
+            {
                 str = m_defaultCountryID + ":" + m_defaultCatalogID;
             }
             return str;
         };
-        bool IsCatalogSectionDataEditable( ){ return m_catalogSectionDataEditable; };
-        void SetCatalogSectionDataEditable( bool val = true ){ m_catalogSectionDataEditable = val; };
-        bool IsCatalogSectionDataEditableByDefault( ){ return m_catalogSectionDataEditableDefault; };
-        void SetCatalogSectionDataEditableDefault( bool val = true ){ m_catalogSectionDataEditableDefault = val; };
+        bool IsCatalogSectionDataEditable( ) { return m_catalogSectionDataEditable; };
+        void SetCatalogSectionDataEditable( bool val = true ) { m_catalogSectionDataEditable = val; };
+        bool IsCatalogSectionDataEditableByDefault( ) { return m_catalogSectionDataEditableDefault; };
+        void SetCatalogSectionDataEditableDefault( bool val = true ) { m_catalogSectionDataEditableDefault = val; };
 
-    void DumpFont ( wxString Level = "" );
+        void DumpFont( wxString Level = "" );
 
 
     private:
         wxString m_lastFile;
         bool m_loadLastFileAtStartUp;
         wxString m_configurationDirectory;
-    //    wxString m_imageDirectory;
+        //    wxString m_imageDirectory;
         wxString m_countryID;
         wxString m_catalogID;
         wxArrayInt m_sortOrder;
@@ -139,7 +143,7 @@ class Settings;
         wxString m_lowerPeriod;
         wxString m_middlePeriod;
         wxString m_upperPeriod;
-        wxFont m_catNbrFont;
+        wxFont m_nbrFont;
         wxColour m_catNbrColor;
         wxFont m_titleFont;
         wxColour m_titleColor;
@@ -165,8 +169,9 @@ class Settings;
 
         Utils::FontNdx m_appPrefTitleFontNdx;
         Utils::FontNdx m_appPrefTextFontNdx;
-        Utils::FontNdx m_appPrefCatNbrFontNdx;
-        const wxColour m_defaultFontColor = *wxBLACK ;
+        Utils::FontNdx m_appPrefNbrFontNdx;
+        Utils::FontNdx m_appPrefNameFontNdx;
+        const wxColour m_defaultFontColor = *wxBLACK;
 
         //const wxArrayString m_defaultrecentFiles;
         const int m_defaultNbrRecentPreference = 4;

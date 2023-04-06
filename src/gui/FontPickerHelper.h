@@ -1,11 +1,11 @@
 /*
  * @file         FontPickerHelper.h
- *@brief      
+ *@brief
 * @author      Eddie Monroe
-* Modified by: 
+* Modified by:
 * @author     Mon 02 Jan 2023 08:34:03 CST
- *     
-* @copyright Copyright ( c ) 2024   
+ *
+* @copyright Copyright ( c ) 2024
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
@@ -18,8 +18,8 @@
  *
  * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
- */    
-/////////////////////////////////////////////////////////////////////////////
+ */
+ ///////////////////////////////////////
 
 
 #ifndef _FONTPICKERHELPER_H_
@@ -37,7 +37,7 @@
 #include "gui/GuiDefs.h"
 
 
-//Helper class to group repetitive control construction sequence
+ //Helper class to group repetitive control construction sequence
 class FontPicker
 {
 public:
@@ -45,9 +45,9 @@ public:
     FontPicker( wxWindow* parent, wxBoxSizer* verticalSizer,
         wxString staticText, int idStatic,
         int idFontPicker, int idColorPicker,
-        wxString buttonText, int idDefaultButton,        
-        const wxFont &font = wxNullFont,
-        const wxColour &color = *wxStockGDI::GetColour(wxStockGDI::COLOUR_BLACK) )
+        wxString buttonText, int idDefaultButton,
+        const wxFont& font = wxNullFont,
+        const wxColour& color = *wxStockGDI::GetColour( wxStockGDI::COLOUR_BLACK ) )
     {
         m_parent = parent;
         m_verticalSizer = verticalSizer;
@@ -61,7 +61,7 @@ public:
         m_color = color;
         CreateCtrls( );
     }
-    
+
     void CreateCtrls( )
     {
         m_horizontalSizer = new wxBoxSizer( wxHORIZONTAL );
@@ -84,9 +84,9 @@ public:
         m_horizontalSizer->Add( m_defaultButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
     }
 
-    wxFontPickerCtrl* GetFontPickerCtrl() { return m_fontPicker; };
-    wxColourPickerCtrl* GetColourPickerCtrl() { return m_colorPicker; };
-    wxButton* GetDefaultButton() { return m_defaultButton; };
+    wxFontPickerCtrl* GetFontPickerCtrl( ) { return m_fontPicker; };
+    wxColourPickerCtrl* GetColourPickerCtrl( ) { return m_colorPicker; };
+    wxButton* GetDefaultButton( ) { return m_defaultButton; };
 private:
     wxWindow* m_parent;
 

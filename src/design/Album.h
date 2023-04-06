@@ -6,18 +6,18 @@
  * @date 2022-02-02
  *
  * @copyright Copyright ( c ) 2022
- * 
+ *
  * This file is part of StampTool.
  *
- * StampTool is free software: you can redistribute it and/or modify it under the 
- * terms of the GNU General Public License as published by the Free Software Foundation, 
+ * StampTool is free software: you can redistribute it and/or modify it under the
+ * terms of the GNU General Public License as published by the Free Software Foundation,
  * either version 3 of the License, or any later version.
  *
- * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY 
- * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+ * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
+ * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
- * You should have received a copy of the GNU General Public License along with 
+ * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
  **************************************************/
@@ -32,24 +32,24 @@
 #include "utils/Settings.h"
 #include "utils/FontList.h"
 
-namespace Design { 
+namespace Design {
 
     /**
-     * @brief Album layout object; inherits from LayoutBase. 
+     * @brief Album layout object; inherits from LayoutBase.
      * This is the top LayoutBase for holding all the objecs within the album
      *
      **************************************************/
-    class Album : public AlbumBase
-    { 
+    class Album: public AlbumBase
+    {
     public:
 
         // Construct a new Album object. The top layout LayoutBase
         // for holding all the objecs within the album
-        Album(  wxXmlNode* node ) : AlbumBase( node )
-        { 
+        Album( wxXmlNode* node ): AlbumBase( node )
+        {
             SetNodeType( AT_Album );
         };
-  
+
         // Destroy the Album object
         ~Album( ) { };
 
@@ -77,9 +77,9 @@ namespace Design {
          * @return false
          **************************************************/
         void UpdatePositions( );
- 
+
         NodeStatus ValidateNode( );
-      
+
         double GetWidth( );
         double GetPageWidth( );
         wxString GetPageWidthStr( );
@@ -111,25 +111,29 @@ namespace Design {
         void SetBorderSize( wxString str );
         wxString GetBorderFileName( );
 
+
         wxString GetDocName( );
         void SetDocName( wxString str );
 
-        void GetPageParameters( wxString& width, wxString& height, wxString& topMargin, 
+        void GetPageParameters( wxString& width, wxString& height, wxString& topMargin,
             wxString& bottomMargin, wxString& rightMargin, wxString& leftMargin );
         void Save( wxXmlNode* xmlNode );
-        void DumpLayout(   );
+        void DumpLayout( );
 
-        int GetAppPrefTitleFontNdx ( );
-        int GetAppPrefCatNbrFontNdx ( );
-        int GetAppPrefTextFontNdx ( );
+        int GetAppPrefTitleFontNdx( );
+        int GetAppPrefNbrFontNdx( );
+        int GetAppPrefTextFontNdx( );
+        int GetAppPrefNameFontNdx( );
 
-        bool GetShowTitle( ){ return String2Bool( GetAttrStr( AT_ShowTitle ) ); };
-        void SetShowTitle( bool val ){ SetAttrStr( AT_ShowTitle, Bool2String( val ) ); };
-        bool GetShowCatNbr( ){ return String2Bool( GetAttrStr( AT_CatNbr ) ); };
-        void SetShowCatNbr( bool val ){ SetAttrStr( AT_CatNbr, Bool2String( val ) ); };
+        bool GetShowTitle( ) { return String2Bool( GetAttrStr( AT_ShowTitle ) ); };
+        void SetShowTitle( bool val ) { SetAttrStr( AT_ShowTitle, Bool2String( val ) ); };
+        bool GetShowNbr( ) { return String2Bool( GetAttrStr( AT_CatNbr ) ); };
+        void SetShowNbr( bool val ) { SetAttrStr( AT_CatNbr, Bool2String( val ) ); };
+        void SetGrayScaleImages( bool val = true ) { SetAttrStr( AT_GrayScaleImages, Bool2String( val ) ); };
+        bool GetGrayScaleImages( ) { return String2Bool( GetAttrStr( AT_GrayScaleImages ) ); };
 
     private:
-              
+
     };
 }
 #endif

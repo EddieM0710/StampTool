@@ -22,7 +22,7 @@
  *
  **************************************************/
 
- 
+
 #include "wx/wxprec.h"
 
 #ifdef __BORLANDC__
@@ -50,9 +50,9 @@
 #include "Defs.h"
 
 
-/*
- * StampDetailsDialog type definition
- */
+ /*
+  * StampDetailsDialog type definition
+  */
 
 IMPLEMENT_DYNAMIC_CLASS( StampDetailsDialog, wxDialog )
 
@@ -62,17 +62,17 @@ IMPLEMENT_DYNAMIC_CLASS( StampDetailsDialog, wxDialog )
  */
 
     BEGIN_EVENT_TABLE( StampDetailsDialog, wxDialog )
-
-    // StampDetailsDialog event table entries
     EVT_BUTTON( ID_REFRESHBUTTON, StampDetailsDialog::OnRefreshButtonClick )
     EVT_BUTTON( wxID_CANCEL, StampDetailsDialog::OnCancelClick )
     EVT_BUTTON( wxID_OK, StampDetailsDialog::OnOkClick )
     EVT_CHECKBOX( ID_CATNBRCHECKBOX, StampDetailsDialog::OnCatNbrCheckboxClicked )
-    EVT_BUTTON( ID_STAMPCATNBRDEFAULTFONTBUTTON, StampDetailsDialog::OnNbrDefaultClick )
-    EVT_BUTTON( ID_STAMPTEXTEDEFAULTFONTBUTTON, StampDetailsDialog::OnTextDefaultClick )
-
-    // StampDetailsDialog event table entries
-
+    EVT_BUTTON( ID_STAMPNBRDEFAULTFONTBUTTON, StampDetailsDialog::OnNbrDefaultClick )
+    EVT_BUTTON( ID_STAMPNAMEDEFAULTFONTBUTTON, StampDetailsDialog::OnNameDefaultClick )
+    EVT_RADIOBUTTON( ID_DEFAULTRADIOBUTTON, StampDetailsDialog::OnDefaultRadioButtonSelected )
+    EVT_RADIOBUTTON( ID_TOPRADIOBUTTON, StampDetailsDialog::OnTopRadioButtonSelected )
+    EVT_RADIOBUTTON( ID_BOTTOMRADIOBUTTON, StampDetailsDialog::OnBottomRadioButtonSelected )
+    EVT_RADIOBUTTON( ID_LEFTRADIOBUTTON, StampDetailsDialog::OnLeftRadioButtonSelected )
+    EVT_RADIOBUTTON( ID_RIGHTRADIOBUTTON, StampDetailsDialog::OnRightRadioButtonSelected )
     END_EVENT_TABLE( )
 
     void StampDetailsDialog::OnCatNbrCheckboxClicked( wxCommandEvent& event )
@@ -142,7 +142,7 @@ void StampDetailsDialog::Init( )
     m_validate = NULL;
     m_statusList = NULL;
     m_designTreeID = NULL;
-    m_catNbrCheckbox = NULL;
+    m_nbrCheckbox = NULL;
     m_titleCheckbox = NULL;
 
     // StampDetailsDialog member initialisation
@@ -193,9 +193,9 @@ void StampDetailsDialog::CreateControls( )
     wxBoxSizer* checkBoxHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
     detailsVerticalSizer->Add( checkBoxHorizontalSizer, 0, wxGROW | wxALL, 0 );
 
-    m_catNbrCheckbox = new wxCheckBox( notebookDetailsPanel/*detailsPanel*/, ID_CATNBRCHECKBOX, _( "Show ID" ), wxDefaultPosition, wxDefaultSize, 0 );
-    m_catNbrCheckbox->SetValue( false );
-    checkBoxHorizontalSizer->Add( m_catNbrCheckbox, 0, wxALIGN_LEFT | wxALL, 5 );
+    m_nbrCheckbox = new wxCheckBox( notebookDetailsPanel/*detailsPanel*/, ID_CATNBRCHECKBOX, _( "Show ID" ), wxDefaultPosition, wxDefaultSize, 0 );
+    m_nbrCheckbox->SetValue( false );
+    checkBoxHorizontalSizer->Add( m_nbrCheckbox, 0, wxALIGN_LEFT | wxALL, 5 );
 
     m_titleCheckbox = new wxCheckBox( notebookDetailsPanel/*detailsPanel*/, ID_TITLECHECKBOX, _( "Show Title" ), wxDefaultPosition, wxDefaultSize, 0 );
     m_titleCheckbox->SetValue( false );
@@ -204,20 +204,51 @@ void StampDetailsDialog::CreateControls( )
     FontPicker* catNbrFontPickerHelper = new FontPicker(
         notebookDetailsPanel, detailsVerticalSizer,
         _( "Catalog Nbr Font" ), wxID_STATIC,
-        ID_STAMPCATNBRFONTPICKER, ID_STAMPCATNBRCOLORPICKER,
-        _( "Default" ), ID_STAMPCATNBRDEFAULTFONTBUTTON,
+        ID_STAMPNBRFONTPICKER, ID_STAMPNBRCOLORPICKER,
+        _( "Default" ), ID_STAMPNBRDEFAULTFONTBUTTON,
         *wxNORMAL_FONT, *wxBLACK );
-    m_catNbrFontPicker = catNbrFontPickerHelper->GetFontPickerCtrl( );
-    m_catNbrColorPicker = catNbrFontPickerHelper->GetColourPickerCtrl( );
+    m_nbrFontPicker = catNbrFontPickerHelper->GetFontPickerCtrl( );
+    m_nbrColorPicker = catNbrFontPickerHelper->GetColourPickerCtrl( );
 
-    FontPicker* textFontPickerHelper = new FontPicker(
+    FontPicker* nameFontPickerHelper = new FontPicker(
         notebookDetailsPanel, detailsVerticalSizer,
         _( "Name Font" ), wxID_STATIC,
-        ID_STAMPTEXTFONTPICKER, ID_STAMPTEXTCOLORPICKER,
-        _( "Default" ), ID_STAMPTEXTEDEFAULTFONTBUTTON,
+        ID_STAMPNAMEFONTPICKER, ID_STAMPNAMECOLORPICKER,
+        _( "Default" ), ID_STAMPNAMEDEFAULTFONTBUTTON,
         *wxNORMAL_FONT, *wxBLACK );
-    m_textFontPicker = textFontPickerHelper->GetFontPickerCtrl( );
-    m_textColorPicker = textFontPickerHelper->GetColourPickerCtrl( );
+    m_nameFontPicker = nameFontPickerHelper->GetFontPickerCtrl( );
+    m_nameColorPicker = nameFontPickerHelper->GetColourPickerCtrl( );
+
+
+
+    m_TitleLocationBox = new wxStaticBox( notebookDetailsPanel, wxID_ANY, _( "Member Title Location" ) );
+    m_titleLocationVSizer = new wxStaticBoxSizer( m_TitleLocationBox, wxVERTICAL );
+    detailsVerticalSizer->Add( m_titleLocationVSizer, 1, wxGROW | wxALL, 5 );
+
+    m_titleLocationHSizer = new wxBoxSizer( wxHORIZONTAL );
+    m_titleLocationVSizer->Add( m_titleLocationHSizer, 1, wxGROW | wxALL, 0 );
+
+    m_topButton = new wxRadioButton( m_titleLocationVSizer->GetStaticBox( ), ID_DEFAULTRADIOBUTTON, _( "Default" ), wxDefaultPosition, wxDefaultSize, 0 );
+    m_topButton->SetValue( true );
+    m_titleLocationHSizer->Add( m_topButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+
+    m_bottomButton = new wxRadioButton( m_titleLocationVSizer->GetStaticBox( ), ID_TOPRADIOBUTTON, _( "Top" ), wxDefaultPosition, wxDefaultSize, 0 );
+    m_bottomButton->SetValue( false );
+    m_titleLocationHSizer->Add( m_bottomButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+
+    m_leftButton = new wxRadioButton( m_titleLocationVSizer->GetStaticBox( ), ID_BOTTOMRADIOBUTTON, _( "Bottom" ), wxDefaultPosition, wxDefaultSize, 0 );
+    m_leftButton->SetValue( false );
+    m_titleLocationHSizer->Add( m_leftButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+
+    m_rightButton = new wxRadioButton( m_titleLocationVSizer->GetStaticBox( ), ID_LEFTRADIOBUTTON, _( "Left" ), wxDefaultPosition, wxDefaultSize, 0 );
+    m_rightButton->SetValue( false );
+    m_titleLocationHSizer->Add( m_rightButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+
+    m_defaultButton = new wxRadioButton( m_titleLocationVSizer->GetStaticBox( ), ID_RIGHTRADIOBUTTON, _( "Right" ), wxDefaultPosition, wxDefaultSize, 0 );
+    m_defaultButton->SetValue( false );
+    m_titleLocationHSizer->Add( m_defaultButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+
+
 
     m_imagePath = new LabeledTextBox( notebookDetailsPanel/*detailsPanel*/, ID_IMAGEPATHLABELEDTEXTBOX, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
     m_imagePath->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
@@ -298,18 +329,67 @@ void StampDetailsDialog::CreateControls( )
     m_imagePath->SetLabel( "ImageName" );
 }
 
+void StampDetailsDialog::SetTitleLayoutLocation( )
+{
+
+    m_titleLocation = m_stamp->GetTitleLayoutLocation( );
+    if ( m_titleLocation == Design::AT_TitleLocationTop )
+    {
+        m_topButton->SetValue( true );
+        m_bottomButton->SetValue( false );
+        m_leftButton->SetValue( false );;
+        m_rightButton->SetValue( false );;
+        m_defaultButton->SetValue( false );;
+    }
+    else if ( m_titleLocation == Design::AT_TitleLocationBottom )
+    {
+        m_topButton->SetValue( false );
+        m_bottomButton->SetValue( true );
+        m_leftButton->SetValue( false );;
+        m_rightButton->SetValue( false );;
+        m_defaultButton->SetValue( false );;
+    }
+    else if ( m_titleLocation == Design::AT_TitleLocationLeft )
+    {
+        m_topButton->SetValue( false );
+        m_bottomButton->SetValue( false );
+        m_leftButton->SetValue( true );;
+        m_rightButton->SetValue( false );;
+        m_defaultButton->SetValue( false );;
+    }
+    else if ( m_titleLocation == Design::AT_TitleLocationRight )
+    {
+        m_topButton->SetValue( false );
+        m_bottomButton->SetValue( false );
+        m_leftButton->SetValue( false );;
+        m_rightButton->SetValue( true );;
+        m_defaultButton->SetValue( false );;
+    }
+    else if ( m_titleLocation == Design::AT_TitleLocationDefault )
+    {
+        m_topButton->SetValue( false );
+        m_bottomButton->SetValue( false );
+        m_leftButton->SetValue( false );;
+        m_rightButton->SetValue( false );;
+        m_defaultButton->SetValue( true );;
+    }
+}
+
 void StampDetailsDialog::UpdateControls( )
 {
     SetHeight( m_stamp->GetStampHeightStr( ) );
     SetWidth( m_stamp->GetStampWidthStr( ) );
     SetCatNbr( m_stamp->GetAttrStr( Design::AT_CatNbr ) );
     SetName( m_stamp->GetAttrStr( Design::AT_Name ) );
-    SetShowCatNbr( m_stamp->GetShowCatNbr( ) );
+    SetShowNbr( m_stamp->GetShowNbr( ) );
     SetShowTitle( m_stamp->GetShowTitle( ) );
-    SetCatNbrFont( m_stamp->GetCatNbrFont( ) );
-    SetTextFont( m_stamp->GetTextFont( ) );
-    SetCatNbrColor( m_stamp->GetCatNbrColor( ) );
-    SetTextColor( m_stamp->GetTextColor( ) );
+    SetNbrFont( m_stamp->GetNbrFont( ) );
+    SetNameFont( m_stamp->GetNameFont( ) );
+    SetNbrColor( m_stamp->GetNbrColor( ) );
+    SetNameColor( m_stamp->GetNameColor( ) );
+    m_stamp->GetTitleLayoutLocation( );
+
+
 }
 
 
@@ -400,31 +480,31 @@ void StampDetailsDialog::SetName( wxString name )
     m_name->SetModified( false );
 }
 
-void StampDetailsDialog::SetShowCatNbr( bool state )
+void StampDetailsDialog::SetShowNbr( bool state )
 {
-    m_catNbrCheckbox->SetValue( state );
+    m_nbrCheckbox->SetValue( state );
 }
 
 void StampDetailsDialog::SetShowTitle( bool state )
 {
     m_titleCheckbox->SetValue( state );
 }
-void StampDetailsDialog::SetCatNbrFont( wxFont font )
+void StampDetailsDialog::SetNbrFont( wxFont font )
 {
-    m_catNbrFontPicker->SetSelectedFont( font );
+    m_nbrFontPicker->SetSelectedFont( font );
 }
-void StampDetailsDialog::SetTextFont( wxFont font )
+void StampDetailsDialog::SetNameFont( wxFont font )
 {
-    m_textFontPicker->SetSelectedFont( font );
+    m_nameFontPicker->SetSelectedFont( font );
 }
 
-void StampDetailsDialog::SetCatNbrColor( wxColour color )
+void StampDetailsDialog::SetNbrColor( wxColour color )
 {
-    m_catNbrColorPicker->SetColour( color );
+    m_nbrColorPicker->SetColour( color );
 }
-void StampDetailsDialog::SetTextColor( wxColour color )
+void StampDetailsDialog::SetNameColor( wxColour color )
 {
-    m_textColorPicker->SetColour( color );
+    m_nameColorPicker->SetColour( color );
 }
 
 wxString StampDetailsDialog::GetImageFilename( )
@@ -451,9 +531,9 @@ wxString StampDetailsDialog::GetName( )
     return m_name->GetValue( );
 }
 
-bool StampDetailsDialog::GetShowCatNbr( )
+bool StampDetailsDialog::GetShowNbr( )
 {
-    return m_catNbrCheckbox->IsChecked( );
+    return m_nbrCheckbox->IsChecked( );
 }
 
 bool StampDetailsDialog::GetShowTitle( )
@@ -461,22 +541,22 @@ bool StampDetailsDialog::GetShowTitle( )
     return m_titleCheckbox->IsChecked( );
 }
 
-wxFont StampDetailsDialog::GetCatNbrFont( )
+wxFont StampDetailsDialog::GetNbrFont( )
 {
-    return m_catNbrFontPicker->GetSelectedFont( );
+    return m_nbrFontPicker->GetSelectedFont( );
 }
-wxFont StampDetailsDialog::GetTextFont( )
+wxFont StampDetailsDialog::GetNameFont( )
 {
-    return m_textFontPicker->GetSelectedFont( );
+    return m_nameFontPicker->GetSelectedFont( );
 }
 
-wxColour StampDetailsDialog::GetCatNbrColor( )
+wxColour StampDetailsDialog::GetNbrColor( )
 {
-    return m_catNbrColorPicker->GetColour( );
+    return m_nbrColorPicker->GetColour( );
 }
-wxColour StampDetailsDialog::GetTextColor( )
+wxColour StampDetailsDialog::GetNameColor( )
 {
-    return m_textColorPicker->GetColour( );
+    return m_nameColorPicker->GetColour( );
 }
 
 bool StampDetailsDialog::IsNameModified( )
@@ -527,7 +607,7 @@ void StampDetailsDialog::SetNameModified( bool state )
 void StampDetailsDialog::OnRefreshButtonClick( wxCommandEvent& event )
 {
     RefreshFromCatalog( );
-  
+
     event.Skip( );
 }
 
@@ -552,7 +632,7 @@ void StampDetailsDialog::OnOkClick( wxCommandEvent& event )
 
     // m_stamp->ReportLayout( );
 
- 
+
     if ( IsIDModified( ) )
     {
         m_stamp->SetAttrStr( Design::AT_CatNbr, GetCatNbr( ) );
@@ -569,35 +649,68 @@ void StampDetailsDialog::OnOkClick( wxCommandEvent& event )
     {
         m_stamp->SetStampWidth( GetWidth( ) );
     }
-    m_stamp->SetShowCatNbr( GetShowCatNbr( ) );
+    m_stamp->SetShowNbr( GetShowNbr( ) );
     m_stamp->SetShowTitle( GetShowTitle( ) );
 
-    m_stamp->SetTextFont( GetTextFont( ), GetTextColor( ) );
-    m_stamp->SetCatNbrFont( GetCatNbrFont( ), GetCatNbrColor( ) );
+    m_stamp->SetNameFont( GetNameFont( ), GetNameColor( ) );
+    m_stamp->SetNbrFont( GetNbrFont( ), GetNbrColor( ) );
 
     event.Skip( );
 }
 
-void StampDetailsDialog::OnNbrDefaultClick( wxCommandEvent& event )
-{ 
-    m_stamp->DefaultCatNbrFont( );
-    int ndx = Design::GetAlbum()->GetCatNbrFontNdx();
-    Utils::FontList* fontList = GetFontList();
-    wxFont font = fontList->GetFont( ndx );
-    wxColour color = fontList->GetColor( ndx );
-    m_catNbrFontPicker->SetSelectedFont( font );
-    m_catNbrColorPicker->SetColour( color );
 
-    event.Skip( ); 
+void StampDetailsDialog::OnTopRadioButtonSelected( wxCommandEvent& event )
+{
+    m_titleLocation = Design::AT_TitleLocationTop;
+    event.Skip( );
 }
 
-void StampDetailsDialog::OnTextDefaultClick ( wxCommandEvent& event )
-{ 
-    int ndx = GetSettings()->GetAppPrefTextFontNdx();
-    Utils::FontList* fontList = GetFontList();
+void StampDetailsDialog::OnBottomRadioButtonSelected( wxCommandEvent& event )
+{
+    m_titleLocation = Design::AT_TitleLocationBottom;
+    event.Skip( );
+}
+
+
+void StampDetailsDialog::OnLeftRadioButtonSelected( wxCommandEvent& event )
+{
+    m_titleLocation = Design::AT_TitleLocationLeft;
+    event.Skip( );
+}
+
+
+void StampDetailsDialog::OnRightRadioButtonSelected( wxCommandEvent& event )
+{
+    m_titleLocation = Design::AT_TitleLocationRight;
+    event.Skip( );
+}
+
+void StampDetailsDialog::OnDefaultRadioButtonSelected( wxCommandEvent& event )
+{
+    m_titleLocation = Design::AT_TitleLocationDefault;
+    event.Skip( );
+}
+
+void StampDetailsDialog::OnNbrDefaultClick( wxCommandEvent& event )
+{
+    m_stamp->DefaultCatNbrFont( );
+    int ndx = Design::GetAlbum( )->GetNbrFontNdx( );
+    Utils::FontList* fontList = GetFontList( );
     wxFont font = fontList->GetFont( ndx );
     wxColour color = fontList->GetColor( ndx );
-    m_textFontPicker->SetSelectedFont( font );
-    m_textColorPicker->SetColour( color );
+    m_nbrFontPicker->SetSelectedFont( font );
+    m_nbrColorPicker->SetColour( color );
+
+    event.Skip( );
+}
+
+void StampDetailsDialog::OnNameDefaultClick( wxCommandEvent& event )
+{
+    int ndx = GetSettings( )->GetAppPrefNameFontNdx( );
+    Utils::FontList* fontList = GetFontList( );
+    wxFont font = fontList->GetFont( ndx );
+    wxColour color = fontList->GetColor( ndx );
+    m_nameFontPicker->SetSelectedFont( font );
+    m_nameColorPicker->SetColour( color );
     event.Skip( );
 }

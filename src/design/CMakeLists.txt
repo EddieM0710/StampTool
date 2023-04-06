@@ -18,6 +18,7 @@ add_library( DesignFiles SHARED
     Page.cpp 
     Title.cpp 
     TitlePage.cpp
+    Text.cpp
     Row.cpp 
     Column.cpp 
     Stamp.cpp

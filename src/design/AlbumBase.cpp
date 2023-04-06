@@ -116,7 +116,25 @@ namespace Design {
 
     int AlbumBase::GetTitleFontNdx( ) { return m_titleFont.Get( ); };
     int AlbumBase::GetTextFontNdx( ) { return m_textFont.Get( ); };
-    int AlbumBase::GetCatNbrFontNdx( ) { return m_catNbrFont.Get( ); };
+    int AlbumBase::GetNameFontNdx( ) { return m_nameFont.Get( ); };
+    int AlbumBase::GetNbrFontNdx( ) { return m_nbrFont.Get( ); };
+
+    wxFont AlbumBase::GetNameFont( )
+    {
+        if ( GetFontList( )->IsValidFontNdx( m_nameFont.Get( ) ) )
+        {
+            return GetFontList( )->GetFont( m_nameFont.Get( ) );
+        }
+        if ( GetNodeType( ) == AT_Album )
+        {
+            return GetFontList( )->GetFont( GetAlbum( )->GetAppPrefNameFontNdx( ) );
+        }
+        else
+        {
+            return GetAlbum( )->GetNameFont( );
+        }
+
+    }
 
     wxFont AlbumBase::GetTitleFont( )
     {
@@ -151,35 +169,35 @@ namespace Design {
         }
     }
 
-    wxFont AlbumBase::GetCatNbrFont( )
+    wxFont AlbumBase::GetNbrFont( )
     {
-        if ( GetFontList( )->IsValidFontNdx( m_catNbrFont.Get( ) ) )
+        if ( GetFontList( )->IsValidFontNdx( m_nbrFont.Get( ) ) )
         {
-            return GetFontList( )->GetFont( m_catNbrFont.Get( ) );
+            return GetFontList( )->GetFont( m_nbrFont.Get( ) );
         }
         if ( GetNodeType( ) == AT_Album )
         {
-            return GetFontList( )->GetFont( GetAlbum( )->GetAppPrefCatNbrFontNdx( ) );
+            return GetFontList( )->GetFont( GetAlbum( )->GetAppPrefNbrFontNdx( ) );
         }
         else
         {
-            return GetAlbum( )->GetCatNbrFont( );
+            return GetAlbum( )->GetNbrFont( );
         }
     }
 
-    wxColour AlbumBase::GetCatNbrColor( )
+    wxColour AlbumBase::GetNbrColor( )
     {
-        if ( GetFontList( )->IsValidFontNdx( m_catNbrFont.Get( ) ) )
+        if ( GetFontList( )->IsValidFontNdx( m_nbrFont.Get( ) ) )
         {
-            return GetFontList( )->GetColor( m_catNbrFont.Get( ) );
+            return GetFontList( )->GetColor( m_nbrFont.Get( ) );
         }
         if ( GetNodeType( ) == AT_Album )
         {
-            return GetFontList( )->GetColor( GetAlbum( )->GetAppPrefCatNbrFontNdx( ) );
+            return GetFontList( )->GetColor( GetAlbum( )->GetAppPrefNbrFontNdx( ) );
         }
         else
         {
-            return GetAlbum( )->GetCatNbrColor( );
+            return GetAlbum( )->GetNbrColor( );
         }
     }
 
@@ -196,6 +214,22 @@ namespace Design {
         else
         {
             return GetAlbum( )->GetTextColor( );
+        }
+    }
+
+    wxColour AlbumBase::GetNameColor( )
+    {
+        if ( GetFontList( )->IsValidFontNdx( m_nameFont.Get( ) ) )
+        {
+            return GetFontList( )->GetColor( m_nameFont.Get( ) );
+        }
+        if ( GetNodeType( ) == AT_Album )
+        {
+            return GetFontList( )->GetColor( GetAlbum( )->GetAppPrefNameFontNdx( ) );
+        }
+        else
+        {
+            return GetAlbum( )->GetNameColor( );
         }
     }
 
@@ -219,8 +253,10 @@ namespace Design {
 
     bool AlbumBase::IsDefaultTextFont( int ndx ) { return ( ndx == Design::GetAlbum( )->GetTextFontNdx( ) ); }
 
-    bool AlbumBase::IsDefaultCatNbrFont( int ndx ) { return ( ndx == GetAlbum( )->GetCatNbrFontNdx( ) ); }
-    
+    bool AlbumBase::IsDefaultNbrFont( int ndx ) { return ( ndx == GetAlbum( )->GetNbrFontNdx( ) ); }
+
+    bool AlbumBase::IsDefaultNameFont( int ndx ) { return ( ndx == GetAlbum( )->GetNameFontNdx( ) ); }
+
     void AlbumBase::SetTitleFont( wxFont font, wxColour color )
     {
         m_titleFont.Set( GetFontList( )->AddNewFont( font, color ) );
@@ -246,40 +282,62 @@ namespace Design {
             m_textFont.Set( ndx );
         }
     }
-    void AlbumBase::SetCatNbrFont( wxFont font, wxColour color )
+
+    void AlbumBase::SetNameFont( wxFont font, wxColour color )
     {
         int ndx = GetFontList( )->AddNewFont( font, color );
-        if ( IsDefaultCatNbrFont( ndx ) && !IsNodeType( AT_Album ) )
+        if ( IsDefaultNameFont( ndx ) && !IsNodeType( AT_Album ) )
         {
-            m_catNbrFont.Set( -1 );
+            m_nameFont.Set( -1 );
         }
         else
         {
-            m_catNbrFont.Set( ndx );
+            m_nameFont.Set( ndx );
+        }
+    }
+    void AlbumBase::SetNbrFont( wxFont font, wxColour color )
+    {
+        int ndx = GetFontList( )->AddNewFont( font, color );
+        if ( IsDefaultNbrFont( ndx ) && !IsNodeType( AT_Album ) )
+        {
+            m_nbrFont.Set( -1 );
+        }
+        else
+        {
+            m_nbrFont.Set( ndx );
         }
     }
 
     void AlbumBase::SaveFonts( wxXmlNode* parent )
     {
-        if ( m_catNbrFont.IsOk( ) || m_textFont.IsOk( ) || m_titleFont.IsOk( ) )
+        if ( m_nbrFont.IsOk( ) || m_textFont.IsOk( ) || m_titleFont.IsOk( ) )
         {
             wxXmlNode* fonts = Utils::NewNode( parent, "Fonts" );
             if ( fonts )
             {
-                if ( m_catNbrFont.IsOk( ) )
+                if ( m_nbrFont.IsOk( ) )
                 {
                     if ( IsNodeType( AT_Album )  //save all fonts for album                    
                         //or all but default fonts for others
-                        || ( !IsNodeType( AT_Album ) && !IsDefaultCatNbrFont( m_catNbrFont.Get( ) ) ) )
+                        || ( !IsNodeType( AT_Album ) && !IsDefaultNbrFont( m_nbrFont.Get( ) ) ) )
                     {
-                        GetFontList( )->SaveFont( fonts, m_catNbrFont, Design::AT_CatNbrFontType );
+                        GetFontList( )->SaveFont( fonts, m_nbrFont, Design::AT_NbrFontType );
+                    }
+                }
+                if ( m_nameFont.IsOk( ) )
+                {
+                    if ( IsNodeType( AT_Album )  //save all fonts for album                    
+                        //or all but default fonts for others
+                        || ( !IsNodeType( AT_Album ) && !IsDefaultNbrFont( m_nbrFont.Get( ) ) ) )
+                    {
+                        GetFontList( )->SaveFont( fonts, m_nameFont, Design::AT_NameFontType );
                     }
                 }
                 if ( m_textFont.IsOk( ) )
                 {
                     if ( IsNodeType( AT_Album )  //save all fonts for album                    
                         //or all but default fonts for others
-                        || ( !IsNodeType( AT_Album ) && !IsDefaultCatNbrFont( m_textFont.Get( ) ) ) )
+                        || ( !IsNodeType( AT_Album ) && !IsDefaultNbrFont( m_textFont.Get( ) ) ) )
                     {
                         GetFontList( )->SaveFont( fonts, m_textFont, Design::AT_TextFontType );
                     }
@@ -288,7 +346,7 @@ namespace Design {
                 {
                     if ( IsNodeType( AT_Album )  //save all fonts for album                    
                         //or all but default fonts for others
-                        || ( !IsNodeType( AT_Album ) && !IsDefaultCatNbrFont( m_titleFont.Get( ) ) ) )
+                        || ( !IsNodeType( AT_Album ) && !IsDefaultNbrFont( m_titleFont.Get( ) ) ) )
                     {
                         GetFontList( )->SaveFont( fonts, m_titleFont, Design::AT_TitleFontType );
                     }
@@ -307,12 +365,22 @@ namespace Design {
 
             Design::AlbumBaseType nodeType = GetNodeType( );
 
-            m_catNbrFont = GetFontList( )->LoadFont( fonts, Design::AT_CatNbrFontType );
-            if ( !m_catNbrFont.IsOk( ) )
+            m_nbrFont = GetFontList( )->LoadFont( fonts, Design::AT_NbrFontType );
+            if ( !m_nbrFont.IsOk( ) )
             {
                 if ( nodeType == AT_Album )
                 {
-                    m_catNbrFont.Set( GetSettings( )->GetAppPrefCatNbrFontNdx( ) );
+                    m_nbrFont.Set( GetSettings( )->GetAppPrefNbrFontNdx( ) );
+                }
+            }
+            m_nameFont = GetFontList( )->LoadFont( fonts, Design::AT_NameFontType );
+            if ( m_nameFont.IsOk( ) )
+            {
+                if ( IsNodeType( AT_Album )  //save all fonts for album                    
+                    //or all but default fonts for others
+                    || ( !IsNodeType( AT_Album ) && !IsDefaultNbrFont( m_nameFont.Get( ) ) ) )
+                {
+                    GetFontList( )->SaveFont( fonts, m_nameFont, Design::AT_NameFontType );
                 }
             }
 
@@ -338,7 +406,7 @@ namespace Design {
     void AlbumBase::DumpFont( wxString Level )
     {
 
-        int ndx = m_catNbrFont.Get( );
+        int ndx = m_nbrFont.Get( );
         std::cout << Level << "CatNbr font " << GetFontList( )->GetFont( ndx ).GetNativeFontInfoUserDesc( )
             << "  color " << GetFontList( )->GetColor( ndx ).GetAsString( )
             << "  Ndx " << ndx << std::endl;

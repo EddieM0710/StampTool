@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation, 
+ * terms of the GNU General Public License as published by the Free Software Foundation,
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -22,7 +22,7 @@
  *
  **************************************************/
 
- 
+
 #include "wx/wxprec.h"
 
 #ifdef __BORLANDC__
@@ -49,24 +49,24 @@
 
 wxDECLARE_APP( StampToolApp );
 
-namespace Design { 
+namespace Design {
 
     bool Album::UpdateMinimumSize( )
-    { 
+    {
 
         // set known child values
         wxTreeItemIdValue cookie;
         wxTreeItemId parentID = GetTreeItemId( );
         wxTreeItemId childID = GetDesignTreeCtrl( )->GetFirstChild( parentID, cookie );
         while ( childID.IsOk( ) )
-        { 
-            AlbumBaseType type = ( AlbumBaseType )GetDesignTreeCtrl( )->GetItemType( childID );
+        {
+            AlbumBaseType type = ( AlbumBaseType ) GetDesignTreeCtrl( )->GetItemType( childID );
             switch ( type )
-            { 
+            {
             case AT_Page:
-            { 
+            {
                 // set the layout parameters into the child
-                Page* page = ( Page* )GetDesignTreeCtrl( )->GetItemNode( childID );
+                Page* page = ( Page* ) GetDesignTreeCtrl( )->GetItemNode( childID );
                 //page->SetBorder( m_border );
                 // the page frame takes into account the margins, the border is within this
                 page->SetXPos( GetLeftMargin( ) );
@@ -91,7 +91,7 @@ namespace Design {
     }
 
     void Album::UpdateSizes( )
-    { 
+    {
         // go to the bottom of each child container object ( row, column, page )
         // and begin filling in position relative to the parent
 
@@ -99,8 +99,8 @@ namespace Design {
         wxTreeItemId parentID = GetTreeItemId( );
         wxTreeItemId childID = GetDesignTreeCtrl( )->GetFirstChild( parentID, cookie );
         while ( childID.IsOk( ) )
-        { 
-            LayoutBase* child = ( LayoutBase* )GetDesignTreeCtrl( )->GetItemNode( childID );
+        {
+            LayoutBase* child = ( LayoutBase* ) GetDesignTreeCtrl( )->GetItemNode( childID );
 
             //  call each childs Design function
             child->UpdateSizes( );
@@ -110,7 +110,7 @@ namespace Design {
     }
 
     void Album::UpdatePositions( )
-    { 
+    {
         // go to the bottom of each child container object ( row, column, page )
         // and begin filling in position relative to the parent
 
@@ -118,8 +118,8 @@ namespace Design {
         wxTreeItemId parentID = GetTreeItemId( );
         wxTreeItemId childID = GetDesignTreeCtrl( )->GetFirstChild( parentID, cookie );
         while ( childID.IsOk( ) )
-        { 
-            LayoutBase* child = ( LayoutBase* )GetDesignTreeCtrl( )->GetItemNode( childID );
+        {
+            LayoutBase* child = ( LayoutBase* ) GetDesignTreeCtrl( )->GetItemNode( childID );
 
             child->UpdatePositions( );
             childID = GetDesignTreeCtrl( )->GetNextChild( parentID, cookie );
@@ -127,67 +127,68 @@ namespace Design {
     }
 
     NodeStatus Album::ValidateNode( )
-    { 
+    {
         NodeStatus status = AT_OK;
         if ( GetPageHeight( ) <= 0.0 )
-        { 
-          // "Must define the page height.\n";
+        {
+            // "Must define the page height.\n";
             status = AT_FATAL;
         }
         if ( GetPageWidth( ) <= 0.0 )
-        { 
-        //   "Must define the page width.\n";
+        {
+            //   "Must define the page width.\n";
             status = AT_FATAL;
         }
         m_nodeValid = status;
         return status;
     }
 
-    double Album::GetWidth( ) {  return GetAttrDbl( AT_PageWidth ); };
-    double Album::GetPageWidth( ) {  return GetAttrDbl( AT_PageWidth ); };
-    wxString Album::GetPageWidthStr( ) {  return GetAttrStr( AT_PageWidth ); };
-    void Album::SetPageWidth( wxString str ) {  return SetAttrStr( AT_PageWidth, str ); };
-    
+    double Album::GetWidth( ) { return GetAttrDbl( AT_PageWidth ); };
+    double Album::GetPageWidth( ) { return GetAttrDbl( AT_PageWidth ); };
+    wxString Album::GetPageWidthStr( ) { return GetAttrStr( AT_PageWidth ); };
+    void Album::SetPageWidth( wxString str ) { return SetAttrStr( AT_PageWidth, str ); };
+
     double Album::GetHeight( ) { return GetAttrDbl( AT_PageHeight ); };
-    double Album::GetPageHeight( ) {   return GetAttrDbl( AT_PageHeight ); };
-    wxString Album::GetPageHeightStr( ) {  return GetAttrStr( AT_PageHeight ); };
-    void Album::SetPageHeight( wxString str ) {   return SetAttrStr( AT_PageHeight, str );  };
+    double Album::GetPageHeight( ) { return GetAttrDbl( AT_PageHeight ); };
+    wxString Album::GetPageHeightStr( ) { return GetAttrStr( AT_PageHeight ); };
+    void Album::SetPageHeight( wxString str ) { return SetAttrStr( AT_PageHeight, str ); };
 
-    double Album::GetTopMargin( ) {  return GetAttrDbl( AT_TopMargin ); };
-    wxString Album::GetTopMarginStr( ) {  return GetAttrStr( AT_TopMargin ); };
-    void Album::SetTopMargin( wxString str ) {  return SetAttrStr( AT_TopMargin, str );  };
+    double Album::GetTopMargin( ) { return GetAttrDbl( AT_TopMargin ); };
+    wxString Album::GetTopMarginStr( ) { return GetAttrStr( AT_TopMargin ); };
+    void Album::SetTopMargin( wxString str ) { return SetAttrStr( AT_TopMargin, str ); };
 
-    double Album::GetBottomMargin( ) {  return GetAttrDbl( AT_BottomMargin );  };
+    double Album::GetBottomMargin( ) { return GetAttrDbl( AT_BottomMargin ); };
     wxString Album::GetBottomMarginStr( ) { return GetAttrStr( AT_BottomMargin ); };
-    void Album::SetBottomMargin( wxString str ) {  return SetAttrStr( AT_BottomMargin, str ); };
+    void Album::SetBottomMargin( wxString str ) { return SetAttrStr( AT_BottomMargin, str ); };
 
-    double Album::GetRightMargin( ) {  return GetAttrDbl( AT_RightMargin ); };
-    wxString Album::GetRightMarginStr( ) {  return GetAttrStr( AT_RightMargin ); };
-    void Album::SetRightMargin( wxString str ) {   return SetAttrStr( AT_RightMargin, str ); };
+    double Album::GetRightMargin( ) { return GetAttrDbl( AT_RightMargin ); };
+    wxString Album::GetRightMarginStr( ) { return GetAttrStr( AT_RightMargin ); };
+    void Album::SetRightMargin( wxString str ) { return SetAttrStr( AT_RightMargin, str ); };
 
     double Album::GetLeftMargin( ) { return GetAttrDbl( AT_LeftMargin ); };
-    wxString Album::GetLeftMarginStr( ) {  return GetAttrStr( AT_LeftMargin ); };
+    wxString Album::GetLeftMarginStr( ) { return GetAttrStr( AT_LeftMargin ); };
     void Album::SetLeftMargin( wxString str ) { return SetAttrStr( AT_LeftMargin, str ); };
 
-    double Album::GetBorderSize( ) {return GetAttrDbl( AT_BorderSize ); };
-    wxString Album::GetBorderSizeStr( ) {  return GetAttrStr( AT_BorderSize ); };
-    void Album::SetBorderSize( wxString str ) {  return SetAttrStr( AT_BorderSize, str ); };
-    
+    double Album::GetBorderSize( ) { return GetAttrDbl( AT_BorderSize ); };
+    wxString Album::GetBorderSizeStr( ) { return GetAttrStr( AT_BorderSize ); };
+    void Album::SetBorderSize( wxString str ) { return SetAttrStr( AT_BorderSize, str ); };
+
     wxString  Album::GetBorderFileName( ) { return GetAttrStr( AT_BorderFileName ); };
 
     wxString Album::GetDocName( ) { return  GetAttrStr( "Name" ); };
-    void Album::SetDocName( wxString str ) {  return SetAttrStr( AT_Name, str ); };
-    int Album::GetAppPrefTitleFontNdx ( ) { return GetSettings()->GetAppPrefTitleFontNdx( ); };
-    int Album::GetAppPrefCatNbrFontNdx ( ) {  return GetSettings()->GetAppPrefCatNbrFontNdx( ); }
-    int Album::GetAppPrefTextFontNdx ( ) { return GetSettings()->GetAppPrefTextFontNdx( ); }
+    void Album::SetDocName( wxString str ) { return SetAttrStr( AT_Name, str ); };
+    int Album::GetAppPrefTitleFontNdx( ) { return GetSettings( )->GetAppPrefTitleFontNdx( ); };
+    int Album::GetAppPrefNbrFontNdx( ) { return GetSettings( )->GetAppPrefNbrFontNdx( ); }
+    int Album::GetAppPrefTextFontNdx( ) { return GetSettings( )->GetAppPrefTextFontNdx( ); }
+    int Album::GetAppPrefNameFontNdx( ) { return GetSettings( )->GetAppPrefNameFontNdx( ); }
 
-    void Album::GetPageParameters( wxString& width, 
-        wxString& height, 
-        wxString& topMargin, 
-        wxString& bottomMargin, 
-        wxString& rightMargin, 
+    void Album::GetPageParameters( wxString& width,
+        wxString& height,
+        wxString& topMargin,
+        wxString& bottomMargin,
+        wxString& rightMargin,
         wxString& leftMargin )
-    { 
+    {
         width = GetAttrStr( AT_PageWidth );
         height = GetAttrStr( AT_PageHeight );
         topMargin = GetAttrStr( AT_TopMargin );
@@ -197,45 +198,45 @@ namespace Design {
     };
 
 
-    wxString Album::DrawPDF(  )
+    wxString Album::DrawPDF( )
     {
-         Design::InitDesignDefs( Design::DD_PDF );
+        Design::InitDesignDefs( Design::DD_PDF );
         // The text:p, i.e., content holder, for this Page
         double width = GetAttrDbl( AT_PageWidth );
         double height = GetAttrDbl( AT_PageHeight );
-        wxPdfDocument* pdfDoc = new wxPdfDocument( wxPORTRAIT, width, height);
+        wxPdfDocument* pdfDoc = new wxPdfDocument( wxPORTRAIT, width, height );
 
         wxTreeItemIdValue cookie;
         wxTreeItemId parentID = GetTreeItemId( );
         wxTreeItemId childID = GetDesignTreeCtrl( )->GetFirstChild( parentID, cookie );
         while ( childID.IsOk( ) )
-        { 
-            int childType = ( AlbumBaseType )GetDesignTreeCtrl( )->GetItemType( childID );
+        {
+            int childType = ( AlbumBaseType ) GetDesignTreeCtrl( )->GetItemType( childID );
 
-            pdfDoc->AddPage();
+            pdfDoc->AddPage( );
             // set the layout parameters into the child
-            Page* page = ( Page* )GetDesignTreeCtrl( )->GetItemNode( childID );
+            Page* page = ( Page* ) GetDesignTreeCtrl( )->GetItemNode( childID );
             page->DrawPDF( pdfDoc, width, height );
-            childID = GetDesignTreeCtrl( )->GetNextChild( parentID, cookie ); 
+            childID = GetDesignTreeCtrl( )->GetNextChild( parentID, cookie );
         }
- 
-        wxString docName = GetDocName();
-        docName += ".pdf"; 
+
+        wxString docName = GetDocName( );
+        docName += ".pdf";
         wxFileName outFile( docName );
-        outFile.MakeAbsolute();
+        outFile.MakeAbsolute( );
         wxString fullPath = outFile.GetFullPath( );
         pdfDoc->SaveAsFile( fullPath );
         wxString txt = wxString::Format( "Generated %s.\n\n", fullPath );
-        wxMessageDialog* dlg = new wxMessageDialog( 
-                    wxGetApp( ).GetFrame( ), txt, 
-                    wxT( "Pdf Generated" ), 
-                    wxOK | wxCENTER );
-                int rsp = dlg->ShowModal( );
+        wxMessageDialog* dlg = new wxMessageDialog(
+            wxGetApp( ).GetFrame( ), txt,
+            wxT( "Pdf Generated" ),
+            wxOK | wxCENTER );
+        int rsp = dlg->ShowModal( );
         return docName;
     }
-    
+
     void Album::MakeAlbum( )
-    { 
+    {
 
         UpdateMinimumSize( );
         UpdateSizes( );
@@ -243,13 +244,13 @@ namespace Design {
     }
 
     void Album::MakePDFAlbum( )
-    { 
-        MakeAlbum();
+    {
+        MakeAlbum( );
         wxString outName = DrawPDF( );
     }
 
     void Album::Save( wxXmlNode* xmlNode )
-    { 
+    {
         SetAttribute( xmlNode, AT_Name );
         SetAttribute( xmlNode, AT_PageWidth );
         SetAttribute( xmlNode, AT_PageHeight );
@@ -262,12 +263,12 @@ namespace Design {
         SetAttribute( xmlNode, AT_FontType );
         SetAttribute( xmlNode, AT_NativeFontString );
         SetAttribute( xmlNode, AT_FontColor );
-        
+
         SaveFonts( xmlNode );
     }
 
     void Album::DumpLayout( )
-    { 
+    {
         std::cout << "Album Parms w:" << GetAttrStr( AT_PageWidth )
             << " h:" << GetAttrStr( AT_PageHeight )
             << " tm:" << GetAttrStr( AT_TopMargin )
@@ -279,8 +280,8 @@ namespace Design {
         wxTreeItemId parentID = GetTreeItemId( );
         wxTreeItemId childID = GetDesignTreeCtrl( )->GetFirstChild( parentID, cookie );
         while ( childID.IsOk( ) )
-        { 
-            LayoutBase* child = ( LayoutBase* )GetDesignTreeCtrl( )->GetItemNode( childID );
+        {
+            LayoutBase* child = ( LayoutBase* ) GetDesignTreeCtrl( )->GetItemNode( childID );
 
             child->DumpLayout( 0, 0 );
             childID = GetDesignTreeCtrl( )->GetNextChild( parentID, cookie );

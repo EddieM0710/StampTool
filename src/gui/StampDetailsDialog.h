@@ -83,12 +83,17 @@ public:
         ID_NOTEBOOKDETAILSPANEL,
         ID_NOTEBOOKPOSITIONPANEL,
         ID_POSITIONTEXTCTRL,
-        ID_STAMPCATNBRFONTPICKER,
-        ID_STAMPCATNBRCOLORPICKER,
-        ID_STAMPTEXTFONTPICKER,
-        ID_STAMPTEXTCOLORPICKER,
-        ID_STAMPTEXTEDEFAULTFONTBUTTON,
-        ID_STAMPCATNBRDEFAULTFONTBUTTON
+        ID_STAMPNBRFONTPICKER,
+        ID_STAMPNBRCOLORPICKER,
+        ID_STAMPNAMEFONTPICKER,
+        ID_STAMPNAMECOLORPICKER,
+        ID_STAMPNAMEDEFAULTFONTBUTTON,
+        ID_STAMPNBRDEFAULTFONTBUTTON,
+        ID_DEFAULTRADIOBUTTON,
+        ID_TOPRADIOBUTTON,
+        ID_BOTTOMRADIOBUTTON,
+        ID_LEFTRADIOBUTTON,
+        ID_RIGHTRADIOBUTTON
     };
 
     StampDetailsDialog( );
@@ -106,6 +111,9 @@ public:
 
     void CreateControls( );
 
+    void SetTitleLayoutLocation( );
+
+
     void UpdateControls( );
 
     void SetupDialog( wxTreeItemId id );
@@ -120,9 +128,14 @@ public:
 
     ///   wxID_OK
     void OnOkClick( wxCommandEvent& event );
-
+    void OnDefaultRadioButtonSelected( wxCommandEvent& event );
+    void OnTopRadioButtonSelected( wxCommandEvent& event );
+    void OnBottomRadioButtonSelected( wxCommandEvent& event );
+    void OnLeftRadioButtonSelected( wxCommandEvent& event );
+    void OnRightRadioButtonSelected( wxCommandEvent& event );
+    void OnTitleDefaultClick( wxCommandEvent& event );
     void OnNbrDefaultClick( wxCommandEvent& event );
-    void OnTextDefaultClick( wxCommandEvent& event );
+    void OnNameDefaultClick( wxCommandEvent& event );
     void OnCatNbrCheckboxClicked( wxCommandEvent& event );
 
 
@@ -134,23 +147,23 @@ public:
     void SetWidth( wxString width );
     void SetCatNbr( wxString catNbr );
     void SetName( wxString name );
-    void SetShowCatNbr( bool state = false );
+    void SetShowNbr( bool state = false );
     void SetShowTitle( bool state = false );
-    void SetCatNbrFont( wxFont font );
-    void SetTextFont( wxFont font );
-    void SetCatNbrColor( wxColour color );
-    void SetTextColor( wxColour color );
+    void SetNbrFont( wxFont font );
+    void SetNameFont( wxFont font );
+    void SetNbrColor( wxColour color );
+    void SetNameColor( wxColour color );
 
     wxString GetImageFilename( );
     wxString GetHeight( );
     wxString GetWidth( );
     wxString GetCatNbr( );
     wxString GetName( );
-    wxFont GetCatNbrFont( );
-    wxFont GetTextFont( );
-    wxColour GetCatNbrColor( );
-    wxColour GetTextColor( );
-    bool GetShowCatNbr( );
+    wxFont GetNbrFont( );
+    wxFont GetNameFont( );
+    wxColour GetNbrColor( );
+    wxColour GetNameColor( );
+    bool GetShowNbr( );
     bool GetShowTitle( );
 
     bool IsNameModified( );
@@ -174,15 +187,23 @@ private:
     wxButton* m_validate;
     wxListBox* m_statusList;
     wxTreeItemId m_designTreeID;
-    wxCheckBox* m_catNbrCheckbox;
+    wxCheckBox* m_nbrCheckbox;
     wxCheckBox* m_titleCheckbox;
     wxTextCtrl* positionTextCtrl;
-    wxFontPickerCtrl* m_catNbrFontPicker;
-    wxFontPickerCtrl* m_textFontPicker;
-    wxColourPickerCtrl* m_textColorPicker;
-    wxColourPickerCtrl* m_catNbrColorPicker;
+    wxFontPickerCtrl* m_nbrFontPicker;
+    wxFontPickerCtrl* m_nameFontPicker;
+    wxColourPickerCtrl* m_nameColorPicker;
+    wxColourPickerCtrl* m_nbrColorPicker;
     Design::Stamp* m_stamp;
-
+    wxStaticBox* m_TitleLocationBox;
+    wxStaticBoxSizer* m_titleLocationVSizer;
+    wxBoxSizer* m_titleLocationHSizer;
+    Design::TitleLocation m_titleLocation;
+    wxRadioButton* m_topButton;
+    wxRadioButton* m_bottomButton;
+    wxRadioButton* m_leftButton;
+    wxRadioButton* m_rightButton;
+    wxRadioButton* m_defaultButton;
 
 
 };

@@ -1,11 +1,11 @@
 /*
  * @file         PageDetailsDialog.h
- *@brief      
+ *@brief
 * @author      Eddie Monroe
-* Modified by: 
+* Modified by:
 * @author     Mon 02 Jan 2023 08:34:03 CST
- *     
-* @copyright Copyright ( c ) 2024   
+ *
+* @copyright Copyright ( c ) 2024
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
@@ -18,8 +18,8 @@
  *
  * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
- */    
-/////////////////////////////////////////////////////////////////////////////
+ */
+ ///////////////////////////////////////
 
 #ifndef _PAGEDETAILSDIALOG_H_
 #define _PAGEDETAILSDIALOG_H_
@@ -37,9 +37,9 @@
 #include "gui/GuiDefs.h"
 #include "design/Album.h"
 
-/*
- * Forward declarations
- */
+ /*
+  * Forward declarations
+  */
 
 class LabeledTextBox;
 class wxListCtrl;
@@ -84,17 +84,17 @@ public:
         ID_NOTEBOOKDETAILSPANEL
     };
 
-    
+
     PageDetailsDialog( );
     PageDetailsDialog( wxWindow* parent, wxWindowID id = SYMBOL_PAGEDETAILSDIALOG_IDNAME, const wxString& caption = SYMBOL_PAGEDETAILSDIALOG_TITLE, const wxPoint& pos = SYMBOL_PAGEDETAILSDIALOG_POSITION, const wxSize& size = SYMBOL_PAGEDETAILSDIALOG_SIZE, long style = SYMBOL_PAGEDETAILSDIALOG_STYLE );
 
-    
+
     bool Create( wxWindow* parent, wxWindowID id = SYMBOL_PAGEDETAILSDIALOG_IDNAME, const wxString& caption = SYMBOL_PAGEDETAILSDIALOG_TITLE, const wxPoint& pos = SYMBOL_PAGEDETAILSDIALOG_POSITION, const wxSize& size = SYMBOL_PAGEDETAILSDIALOG_SIZE, long style = SYMBOL_PAGEDETAILSDIALOG_STYLE );
 
-    
+
     ~PageDetailsDialog( );
 
-    
+
     void Init( );
 
     void CreateControls( );
@@ -102,8 +102,8 @@ public:
     void UpdateControls( );
 
     void SetupDialog( wxTreeItemId treeID );
-    
-    
+
+
     static bool ShowToolTips( );
 
     void OnOkClick( wxCommandEvent& event );

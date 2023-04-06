@@ -246,8 +246,8 @@ void SettingsDialog::CreateControls( )
 
 
 
-    wxFont catNbrFont = GetSettings( )->GetCatNbrFont(  );
-    wxColour catNbrColor = GetSettings( )->GetCatNbrColor();
+    wxFont catNbrFont = GetSettings( )->GetNbrFont(  );
+    wxColour catNbrColor = GetSettings( )->GetNbrColor();
     wxFont titleFont = GetSettings( )->GetTitleFont(  );
     wxColour titleColor = GetSettings( )->GetTitleColor();
     wxFont textFont = GetSettings( )->GetTextFont(  );
@@ -256,11 +256,11 @@ void SettingsDialog::CreateControls( )
     FontPicker* catNbrFontPickerHelper = new FontPicker( 
         notebookFontsPanel, fontsVerticalSizer,
         _( "Default Catalog Nbr  Font" ), wxID_STATIC,
-        ID_CATNBRFONTPICKER, ID_CATNBCOLORPICKER,
+        ID_NBRFONTPICKER, ID_NBRCOLORPICKER,
         _( "Default" ), ID_NBRDEFAULTFONTBUTTON,
         catNbrFont, catNbrColor );
-    m_catNbrFontPicker = catNbrFontPickerHelper->GetFontPickerCtrl();    
-    m_catNbrColorPicker = catNbrFontPickerHelper->GetColourPickerCtrl();  
+    m_nbrFontPicker = catNbrFontPickerHelper->GetFontPickerCtrl();    
+    m_nbrColorPicker = catNbrFontPickerHelper->GetColourPickerCtrl();  
 
     FontPicker* titleFontPickerHelper = new FontPicker( 
         notebookFontsPanel, fontsVerticalSizer,
@@ -441,8 +441,8 @@ void SettingsDialog::UpdateSettings( )
     int ndx = GetFontList()->AddNewFont( titleFont, titleColor );
     GetSettings( )->SetAppPrefTitleFontNdx( ndx );
 
-    wxFont catNbrFont = m_catNbrFontPicker->GetSelectedFont();
-    wxColour catNbrColor = m_catNbrColorPicker->GetColour(  );
+    wxFont catNbrFont = m_nbrFontPicker->GetSelectedFont();
+    wxColour catNbrColor = m_nbrColorPicker->GetColour(  );
     ndx = GetFontList()->AddNewFont( catNbrFont, catNbrColor );
     GetSettings( )->SetAppPrefCatNbrFontNdx( ndx );
 

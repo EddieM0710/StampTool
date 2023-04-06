@@ -22,7 +22,7 @@
  *
  */
 
- 
+
 #include "wx/wxprec.h"
 
 #ifdef __BORLANDC__
@@ -54,7 +54,7 @@
 #include "gui/DesignTreeCtrl.h"
 #include "gui/ToolData.h"
 
-// namespace for all Album design 
+ // namespace for all Album design 
 namespace Design {
 
     wxRealPoint  ScaleFactor;
@@ -110,6 +110,7 @@ namespace Design {
             "Page",
             "Row",
             "Col",
+            "Text",
             "Title",
             "TitlePage",
             "Stamp",
@@ -138,6 +139,7 @@ namespace Design {
             "ShowCatNbr",
             "ShowFrame",
             "ShowImage",
+            "GrayScaleImages",
             "TopContentPadding",
             "BottomContentPadding",
             "LeftContentPadding",
@@ -290,9 +292,10 @@ namespace Design {
         "Text",
         "Title",
         "CatNbr"
+        "Name"
     };
 
-    int AT_DefaultPointSize[ AT_NbrFontUsageTypes ] = { 6, 10, 12, 8 };
+    int AT_DefaultPointSize[ AT_NbrFontUsageTypes ] = { 6, 10, 12, 8, 10 };
 
     wxFontFamily AT_FontFamilyMap[ AT_NbrFontFamilies ] =
     {

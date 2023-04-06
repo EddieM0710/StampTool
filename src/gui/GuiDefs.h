@@ -58,9 +58,10 @@ enum GuiDefs {
     ID_STAMPDESCRIPTIONPANEL = 13000,
     ID_STAMPDETAILSDIALOG = 13100,
     ID_STATICITEM = 13200,
-    ID_TOOLDATA = 13300, 
+    ID_TOOLDATA = 13300,
+    //    ID_WEBVIEWPANEL = 13400,
     NbrGuiDefItems
-    };
+};
 
 
 
@@ -83,5 +84,6 @@ enum GuiDefs {
 // #define ID_SETTINGSDIALOG 10340
 // #define ID_DESIGNTREECTRL 10360
 // #define ID_IMAGEPANEL 10380
+
 
 #endif

@@ -57,7 +57,11 @@
         "sstream": "cpp",
         "stdexcept": "cpp",
         "streambuf": "cpp",
-        "typeinfo": "cpp"
+        "typeinfo": "cpp",
+        "hash_set": "cpp",
+        "unordered_set": "cpp",
+        "bitset": "cpp",
+        "regex": "cpp"
     },
     "files.watcherExclude": {
         "**/doc/**": true

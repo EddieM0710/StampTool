@@ -76,8 +76,8 @@ public:
         ID_NOTEBOOK,
         ID_NOTEBOOKDETAILSPANEL,
         ID_NOTEBOOKFONTSPANEL,
-        ID_CATNBRFONTPICKER,
-        ID_CATNBCOLORPICKER,
+        ID_NBRFONTPICKER,
+        ID_NBRCOLORPICKER,
         ID_TITLEFONTPICKER,
         ID_TITLECOLORPICKER,
         ID_TEXTFONTPICKER,
@@ -141,8 +141,8 @@ public:
     DefinePeriodsPanel* m_definePeriodsPanel;
     wxFontPickerCtrl* m_titleFontPicker;
     wxColourPickerCtrl* m_titleColorPicker;
-    wxFontPickerCtrl* m_catNbrFontPicker;
-    wxColourPickerCtrl* m_catNbrColorPicker;
+    wxFontPickerCtrl* m_nbrFontPicker;
+    wxColourPickerCtrl* m_nbrColorPicker;
     wxFontPickerCtrl* m_textFontPicker;
     wxColourPickerCtrl* m_textColorPicker;
     // SettingsDialog member variables

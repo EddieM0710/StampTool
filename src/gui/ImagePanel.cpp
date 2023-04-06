@@ -6,24 +6,24 @@
  * @date 2021-02-25
  *
  * @copyright Copyright ( c ) 2021
- * 
+ *
  * This file is part of StampTool.
  *
- * StampTool is free software: you can redistribute it and/or modify it under the 
- * terms of the GNU General Public License as published by the Free Software Foundation, 
+ * StampTool is free software: you can redistribute it and/or modify it under the
+ * terms of the GNU General Public License as published by the Free Software Foundation,
  * either version 3 of the License, or any later version.
  *
- * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY 
- * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+ * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
+ * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
- * You should have received a copy of the GNU General Public License along with 
+ * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
  **************************************************/
 
 
- 
+
 #include "wx/wxprec.h"
 
 #ifdef __BORLANDC__
@@ -33,6 +33,8 @@
 #ifndef WX_PRECOMP
 #include "wx/wx.h"
 #endif
+
+
 #include "wx/file.h"
 #include "wx/filename.h"
 #include "wx/graphics.h"
@@ -40,9 +42,13 @@
 
 #include "Defs.h"
 #include "design/DesignDefs.h"
+#include "gui/ToolData.h"
 #include "gui/ImagePanel.h"
 #include "art/NotFound.xpm"
 
+#include "StampToolApp.h"
+
+wxDECLARE_APP( StampToolApp );
 /*
  * ImagePanel type definition
  */
@@ -72,7 +78,7 @@ END_EVENT_TABLE( )
  **************************************************/
 
 ImagePanel::ImagePanel( )
-{ 
+{
     Init( );
 }
 
@@ -81,9 +87,9 @@ ImagePanel::ImagePanel( )
  *
  **************************************************/
 
-ImagePanel::ImagePanel( wxWindow* parent, wxWindowID id, const wxPoint& pos, 
+ImagePanel::ImagePanel( wxWindow* parent, wxWindowID id, const wxPoint& pos,
     const wxSize& size, long style )
-{ 
+{
     Init( );
     Create( parent, id, pos, size, style );
 }
@@ -93,9 +99,9 @@ ImagePanel::ImagePanel( wxWindow* parent, wxWindowID id, const wxPoint& pos,
  *
  **************************************************/
 
-bool ImagePanel::Create( wxWindow* parent, wxWindowID id, const wxPoint& pos, 
+bool ImagePanel::Create( wxWindow* parent, wxWindowID id, const wxPoint& pos,
     const wxSize& size, long style )
-{ 
+{
     // ImagePanel creation
     SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
     wxScrolledWindow::Create( parent, id, pos, size, style );
@@ -112,7 +118,7 @@ bool ImagePanel::Create( wxWindow* parent, wxWindowID id, const wxPoint& pos,
  **************************************************/
 
 ImagePanel::~ImagePanel( )
-{ 
+{
     // ImagePanel destruction
     // ImagePanel destruction
 }
@@ -123,7 +129,7 @@ ImagePanel::~ImagePanel( )
  **************************************************/
 
 void ImagePanel::Init( )
-{ 
+{
     //   this->SetScrollbars( 10, 10, 1000, 1000 );
      // ImagePanel member initialisation
      // ImagePanel member initialisation
@@ -135,16 +141,18 @@ void ImagePanel::Init( )
  **************************************************/
 
 void ImagePanel::CreateControls( )
-{ 
+{
 
 }
 
 
 
 bool ImagePanel::ShowToolTips( )
-{ 
+{
     return true;
 }
+
+
 
 
 /*
@@ -153,27 +161,30 @@ bool ImagePanel::ShowToolTips( )
  **************************************************/
 
 void ImagePanel::SetBitmap( wxString filename )
-{ 
+{
     wxImage image;
     if ( filename.IsEmpty( ) )
-    { 
+    {
         image = wxImage( NotFound );
     }
     else
-    { 
+    {
         wxFileName fn( filename );
         if ( !fn.FileExists( ) )
-        { 
+        {
             image = wxImage( NotFound );
+            //image.SaveFile( filename, wxBITMAP_TYPE_JPEG );
+            //wxGetApp( ).GetFrame( )->GetWebRequest( )->LoadImageFromWeb( m_stamp );
+
         }
         else
-        { 
+        {
             if ( !image.CanRead( filename ) )
-            { 
+            {
                 image = wxImage( NotFound );
             }
             else
-            { 
+            {
                 image = wxImage( filename );
             }
         }
@@ -182,8 +193,8 @@ void ImagePanel::SetBitmap( wxString filename )
     m_bitmap = image;
     m_zoom = .9;
 
-    int w = image.GetWidth( )*2;
-    int h = image.GetHeight( )*2;
+    int w = image.GetWidth( ) * 2;
+    int h = image.GetHeight( ) * 2;
 
     /* init scrolled area size, scrolling speed, etc. */
     SetScrollbars( 1, 1, w, h, 0, 0 );
@@ -193,13 +204,17 @@ void ImagePanel::SetBitmap( wxString filename )
     Show( );
 }
 
+void ImagePanel::SetStamp( Catalog::Entry* stamp )
+{
+    m_stamp = stamp;
+}
 /*
  * OnResize
  *
  **************************************************/
 
 void ImagePanel::OnResize( wxCommandEvent& WXUNUSED( event ) )
-{ 
+{
     wxImage img( m_bitmap.ConvertToImage( ) );
 
     const wxSize size = GetClientSize( );
@@ -213,7 +228,7 @@ void ImagePanel::OnResize( wxCommandEvent& WXUNUSED( event ) )
  **************************************************/
 
 void ImagePanel::SetZoom( double zoom )
-{ 
+{
     m_zoom = zoom;
     Refresh( );
 }
@@ -224,7 +239,7 @@ void ImagePanel::SetZoom( double zoom )
  **************************************************/
 
 void ImagePanel::OnZoom( wxCommandEvent& event )
-{ 
+{
     if ( event.GetId( ) == wxID_ZOOM_IN )
         m_zoom *= 1.2;
     else if ( event.GetId( ) == wxID_ZOOM_OUT )
@@ -241,7 +256,7 @@ void ImagePanel::OnZoom( wxCommandEvent& event )
  **************************************************/
 
 void ImagePanel::OnPaint( wxPaintEvent& event )
-{ 
+{
     wxPaintDC dc( this );
     DoPrepareDC( dc );
 
@@ -254,18 +269,18 @@ void ImagePanel::OnPaint( wxPaintEvent& event )
     int width = m_bitmap.GetWidth( );
     int height = m_bitmap.GetHeight( );
     if ( size.x < width )
-    { 
-        scale = ( double )size.x / ( double )width;
+    {
+        scale = ( double ) size.x / ( double ) width;
     }
     if ( size.y < ( height * scale ) )
-    { 
-        scale = ( double )size.y / ( ( double )height * scale ) * scale;
+    {
+        scale = ( double ) size.y / ( ( double ) height * scale ) * scale;
     }
 
     dc.SetUserScale( scale * m_zoom, scale * m_zoom );
-   // GetAlbumImagePanel( )->Refresh( );
+    // GetAlbumImagePanel( )->Refresh( );
 
-    dc.DrawBitmap( m_bitmap, 0, 0, 
+    dc.DrawBitmap( m_bitmap, 0, 0,
         // dc.DeviceToLogicalX( ( size.x - m_zoom*scale *
         // m_bitmap.GetWidth( ) ) / 2 ), dc.DeviceToLogicalY( ( size.y -
         // m_zoom*scale * m_bitmap.GetHeight( ) ) / 2 ), 
@@ -282,7 +297,7 @@ void ImagePanel::OnPaint( wxPaintEvent& event )
  **************************************************/
 
 void ImagePanel::OnContextMenu( wxContextMenuEvent& event )
-{ 
+{
     wxPoint screenpt = event.GetPosition( );
     wxPoint clientpt = ScreenToClient( clientpt );
 
@@ -307,4 +322,155 @@ void ImagePanel::OnContextMenu( wxContextMenuEvent& event )
 
 }
 
+// void ImagePanel::LoadImageFromWeb( Catalog::Entry* stamp )
+// {
+//     wxString link = stamp->GetAttr( Catalog::DT_Link );
+//     StartWebRequest( Page_Text, link );
+//     Refresh( );
+// }
 
+// void ImagePanel::StartWebRequest( RequestType page, wxString url )
+// {
+//     m_page = page;
+
+//     std::cout << "StartWebRequest\n";
+
+//     // Create request for the specified URL from the default session
+//     m_currentRequest = wxWebSession::GetDefault( ).CreateRequest( this, url );
+//     std::cout << url << "\n";
+
+//     // Bind event for state change
+//     Bind( wxEVT_WEBREQUEST_STATE, &ImagePanel::OnWebRequestState, this );
+
+//     // Prepare request based on selected action
+//     switch ( m_page )
+//     {
+//     case Page_Image:
+//         // Reset static bitmap image
+// //                m_imageStaticBitmap->SetBitmap(wxArtProvider::GetBitmap(wxART_MISSING_IMAGE));
+//         break;
+//     case Page_Text:
+//         // Reset response text control
+//         // m_textResponseTextCtrl->Clear();
+
+//         // // Set postdata if checked
+//         // if ( m_postCheckBox->IsChecked() )
+//         // {
+//         //     m_currentRequest.SetData(m_postRequestTextCtrl->GetValue(),
+//         //         m_postContentTypeTextCtrl->GetValue());
+//         // }
+//         break;
+//     case Page_Download:
+//         m_currentRequest.SetStorage( wxWebRequest::Storage_File );
+//         //m_downloadGauge->SetValue(0);
+//         //m_downloadGauge->Pulse();
+//         //m_downloadStaticText->SetLabel("");
+//        // m_downloadProgressTimer.Start(500);
+//  //       SetStatusText( "" );
+//         break;
+//     }
+
+//     //        m_startButton->Disable();
+
+//             // Start the request (events will be sent on success or failure)
+//     m_currentRequest.Start( );
+// }
+
+// void ImagePanel::OnWebRequestState( wxWebRequestEvent& evt )
+// {
+//     // m_startButton->Enable(evt.GetState() != wxWebRequest::State_Active);
+//     // m_cancelButton->Enable(evt.GetState() == wxWebRequest::State_Active);
+//     std::cout << "ImagePanel::OnWebRequestState\n";
+//     bool stillActive = false;
+//     wxWebRequest::State state = evt.GetState( );
+//     switch ( evt.GetState( ) )
+//     {
+//     case wxWebRequest::State_Completed:
+//     {
+//         switch ( m_page )
+//         {
+//         case Page_Image:
+//         {
+//             std::cout << "ImagePanel::OnWebRequestState Page_Image\n";
+//             wxImage img( *evt.GetResponse( ).GetStream( ) );
+//             m_imageBitmap = img;
+//             wxString imageFile = GetToolData( )->GetImageFilename( m_stamp->GetID( ) );
+
+//             m_imageBitmap.SaveFile( imageFile, wxBITMAP_TYPE_JPEG );
+//             //m_notebook->GetPage(Page_Image)->Layout();
+//             std::cout << "Loaded " << evt.GetResponse( ).GetContentLength( ) << " bytes image data\n";
+//             SetBitmap( imageFile );
+//             break;
+//         }
+//         case Page_Text:
+//         {
+//             std::cout << "ImagePanel::OnWebRequestState Page_Text\n";
+//             m_webText = evt.GetResponse( ).AsString( );
+//             std::cout << "Loaded " << evt.GetResponse( ).GetContentLength( ) << " bytes text data (Status: " <<
+//                 evt.GetResponse( ).GetStatus( ) << "  " << evt.GetResponse( ).GetStatusText( ) << ")\n";
+//             int pos = m_webText.Find( "og:image" );
+//             int pos2 = m_webText.find( "content=\"", pos );
+//             pos2 = pos2 + 9;
+//             int pos3 = m_webText.find( "\"/>", pos2 );
+//             wxString url = m_webText.Mid( pos2, pos3 - pos2 );
+//             std::cout << url << "\n";
+//             StartWebRequest( Page_Image, url );
+//             break;
+//         }
+//         case Page_Download:
+//         {
+//             // m_downloadGauge->SetValue(100);
+//             // m_downloadStaticText->SetLabel("");
+
+//             std::cout << "Download completed" << "\n";
+
+
+//             // Ask the user where to save the file
+//             wxFileDialog fileDlg( this, "Save download", "",
+//                 evt.GetResponse( ).GetSuggestedFileName( ), "*.*",
+//                 wxFD_SAVE | wxFD_OVERWRITE_PROMPT );
+//             if ( fileDlg.ShowModal( ) == wxID_OK )
+//             {
+//                 if ( !wxRenameFile( evt.GetDataFile( ), fileDlg.GetPath( ) ) )
+//                     std::cout << "Could not move file" << "\n";
+//             }
+
+//             break;
+//         }
+//         // case Page_Advanced:
+//         //     UpdateAdvCount();
+//         //     SetStatusText("");
+//         //     break;
+//         }
+//         break;
+
+//     }
+//     case wxWebRequest::State_Failed:
+//         std::cout << "Web Request failed: " << evt.GetErrorDescription( ) << "\n";
+
+//         break;
+
+//     case wxWebRequest::State_Cancelled:
+//         // m_downloadGauge->SetValue(0);
+//         // m_downloadStaticText->SetLabel("");
+//         std::cout << "Cancelled" << "\n";
+
+//         break;
+
+
+//     case wxWebRequest::State_Active:
+//         stillActive = true;
+//         break;
+
+//     case wxWebRequest::State_Idle:
+//         // Nothing special to do for this state.
+//         break;
+
+//     }
+
+//     if ( !stillActive )
+//     {
+//         m_currentRequest = wxWebRequest( );
+//         // m_downloadProgressTimer.Stop();
+//     }
+// }

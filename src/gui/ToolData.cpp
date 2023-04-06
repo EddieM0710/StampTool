@@ -6,18 +6,18 @@
  * @date 2022-03-31
  *
  * @copyright Copyright ( c ) 2022
- * 
+ *
  * This file is part of StampTool.
  *
- * StampTool is free software: you can redistribute it and/or modify it under the 
- * terms of the GNU General Public License as published by the Free Software Foundation, 
+ * StampTool is free software: you can redistribute it and/or modify it under the
+ * terms of the GNU General Public License as published by the Free Software Foundation,
  * either version 3 of the License, or any later version.
  *
- * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY 
- * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+ * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
+ * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
- * You should have received a copy of the GNU General Public License along with 
+ * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
  **************************************************/
@@ -35,11 +35,11 @@
 
 
 ToolData* NewToolDataInstance( )
-{ 
-   return new ToolData( );
+{
+    return new ToolData( );
 }
 
-ToolData::ToolData( ) { 
+ToolData::ToolData( ) {
 
     m_designData = 0;
     m_catalogPageTreeCtrl = 0;
@@ -51,42 +51,42 @@ ToolData::ToolData( ) {
 };
 
 void ToolData::InitToolData( )
-{ 
-        m_designData = 0;
-        m_catalogPageTreeCtrl = 0;
-        m_albumPageTreeCtrl = 0;
-        m_designTreeCtrl = 0;
-        m_stampDescriptionPanel = 0;
-        SetProject( Utils::NewProjectInstance( ) );
+{
+    m_designData = 0;
+    m_catalogPageTreeCtrl = 0;
+    m_albumPageTreeCtrl = 0;
+    m_designTreeCtrl = 0;
+    m_stampDescriptionPanel = 0;
+    SetProject( Utils::NewProjectInstance( ) );
 
-        m_settings = Utils::NewSettingsInstance( );
+    m_settings = Utils::NewSettingsInstance( );
 
-        if ( m_settings->GetLoadLastFileAtStartUp( ) )
-        { 
-            m_project->SetProjectFilename( m_settings->GetLastFile( ) );
+    if ( m_settings->GetLoadLastFileAtStartUp( ) )
+    {
+        m_project->SetProjectFilename( m_settings->GetLastFile( ) );
 
-            // if ( wxFileExists( filename ) )
-            // { 
-            //     if ( LoadProjectXML( filename ) )
-            //     { 
-            //     }
-            // }
-        }
+        // if ( wxFileExists( filename ) )
+        // { 
+        //     if ( LoadProjectXML( filename ) )
+        //     { 
+        //     }
+        // }
+    }
 }
 
-void ToolData::SetProject( Utils::Project* project ) 
-{ 
-    if ( m_project ) 
-    { 
+void ToolData::SetProject( Utils::Project* project )
+{
+    if ( m_project )
+    {
         m_project->~Project( );
     }
-    m_project = project; 
+    m_project = project;
 };
 
 
 
 void ToolData::FileNewProject( wxString prjName )
-{ 
+{
     m_project->SetProjectFilename( prjName );
     wxString lastFile = wxGetCwd( );
     lastFile += "/" + prjName;
@@ -97,8 +97,8 @@ void ToolData::FileNewProject( wxString prjName )
 
 // Load the Catalog and Design data then populate trees
 void ToolData::LoadData( )
-{ 
-    bool state = wxLog::IsEnabled( ) 	;
+{
+    bool state = wxLog::IsEnabled( );
     LoadCatalogSectionFiles( );
     LoadCatalogTree( );
     ReadDesignFile( );
@@ -106,7 +106,7 @@ void ToolData::LoadData( )
 }
 
 void ToolData::FileOpenProject( wxString filename )
-{ 
+{
     m_project->SetProjectFilename( filename );
     wxString lastFile = wxGetCwd( );
     lastFile += "/" + filename;
@@ -116,13 +116,13 @@ void ToolData::FileOpenProject( wxString filename )
 }
 
 void ToolData::FileSaveProject( )
-{ 
+{
     m_settings->Save( );
-    m_project->Save( );   
+    m_project->Save( );
 }
 
 void ToolData::FileSaveAsProject( wxString filename )
-{ 
+{
     m_project->SetProjectFilename( filename );
     wxString lastFile = wxGetCwd( );
     lastFile += "/" + filename;
@@ -131,13 +131,13 @@ void ToolData::FileSaveAsProject( wxString filename )
 }
 
 Catalog::CatalogSectionData* ToolData::NewCatalogSectionData( )
-{ 
+{
     if ( m_catalogPageTreeCtrl )
-    { 
+    {
         m_catalogPageTreeCtrl->ClearCatalogTree( );
     }
     if ( m_albumPageTreeCtrl )
-    { 
+    {
         m_albumPageTreeCtrl->ClearCatalogTree( );
     }
 
@@ -148,20 +148,20 @@ Catalog::CatalogSectionData* ToolData::NewCatalogSectionData( )
 // { 
 // }
 
-////*****
+//*****
 
 void ToolData::LoadCatalogSectionFiles( )
-{ 
+{
     m_catalogData.LoadCatalogSections( );
 }
 
 
 bool ToolData::ReadCatalogCSV( wxString csvFilename )
-{ 
+{
     wxFileName csvFile( csvFilename );
     wxString ext = csvFile.GetExt( );
     if ( !ext.CmpNoCase( "csv" ) )
-    { 
+    {
         wxFileName catalogFile = csvFile;
         catalogFile.SetExt( "cat.xml" );
 
@@ -176,37 +176,37 @@ bool ToolData::ReadCatalogCSV( wxString csvFilename )
 }
 
 void ToolData::LoadCatalogTree( )
-{ 
+{
     GetCatalogPageTreeCtrl( )->LoadTree( );
     GetAlbumPageTreeCtrl( )->LoadTree( );
 }
 
 void ToolData::LoadNewCatalog( wxString catFile )
-{ 
+{
     Catalog::NewCatalogSectionDataInstance( );
     m_project->SetCatalogFilename( catFile );
     LoadCatalogTree( );
     SetDirty( );
 }
 Design::DesignData* ToolData::FileOpenDesign( wxString filename )
-{ 
+{
     m_project->SetDesignFilename( filename );
     ReadDesignFile( );
     LoadDesignTree( );
-    return (Design::DesignData*)0;
+    return ( Design::DesignData* ) 0;
 }
 Design::DesignData* ToolData::FileOpenCatalog( wxString filename )
-{ 
+{
     m_project->SetCatalogFilename( filename );
     LoadCatalogSectionFiles( );
     LoadCatalogTree( );
-    return (Design::DesignData*)0;
+    return ( Design::DesignData* ) 0;
 }
 
 Design::DesignData* ToolData::NewDesignData( void )
-{ 
+{
     if ( m_designData )
-    { 
+    {
         delete m_designData;
 
         m_designTreeCtrl->DeleteAllItems( );
@@ -218,7 +218,7 @@ Design::DesignData* ToolData::NewDesignData( void )
 
 
 void ToolData::ReadDesignFile( )
-{ 
+{
     NewDesignData( );
     wxString albumFilename = m_project->GetDesignFilename( );
     m_designData->LoadXML( albumFilename );
@@ -226,18 +226,18 @@ void ToolData::ReadDesignFile( )
 
 
 void ToolData::LoadDesignTree( )
-{ 
+{
     GetDesignTreeCtrl( )->LoadTree( );
 }
 
 void ToolData::LoadDefaultDesignData( )
-{ 
+{
     NewDesignData( );
     m_designData->LoadDefaultDocument( );
 }
 
-void ToolData::LoadNewDesign( wxString designFileName  )
-{ 
+void ToolData::LoadNewDesign( wxString designFileName )
+{
     m_project->SetDesignFilename( designFileName );
 
     LoadDefaultDesignData( );
@@ -246,29 +246,29 @@ void ToolData::LoadNewDesign( wxString designFileName  )
 }
 
 void ToolData::FileSaveDesign( )
-{    
+{
     if ( m_designData )
-    { 
+    {
         m_designData->SaveXML( GetProject( )->GetDesignFilename( ) );
     }
 };
 
 void ToolData::FileSaveAsDesign( wxString filename )
-{    
+{
     m_project->SetDesignFilename( filename );
     FileSaveDesign( );
 };
 
-    void ToolData::FileSaveAsCatalog( wxString filename )
-    { 
-        m_project->SetCatalogFilename( filename );
-        FileSaveCatalog( );
-    }
-    
-    void ToolData::FileSaveCatalog( )
-    { 
-        m_catalogData.SaveCatalogSections( );
-    }
+void ToolData::FileSaveAsCatalog( wxString filename )
+{
+    m_project->SetCatalogFilename( filename );
+    FileSaveCatalog( );
+}
+
+void ToolData::FileSaveCatalog( )
+{
+    m_catalogData.SaveCatalogSections( );
+}
 
 
 // void ToolData::InitLoad( )
@@ -281,31 +281,31 @@ void ToolData::FileSaveAsDesign( wxString filename )
 // }
 
 wxString ToolData::GetImagePath( )
-{ 
+{
     wxString sectFilename = GetCatalogSectionData( )->GetSectionFilename( );
     wxFileName fn( sectFilename );
     fn.ClearExt( );
     fn.SetName( "" );
     wxString dirName = GetCatalogSectionData( )->GetCatalogSectionImagePath( );
     if ( !dirName.IsEmpty( ) )
-    { 
+    {
         fn.AppendDir( dirName );
-    }  
+    }
     return fn.GetPath( );
 }
 
 wxString ToolData::GetImageFilename( wxString stampId )
-{ 
+{
 
     wxString artPath = GetImagePath( );
-    wxString fileName = stampId ;
+    wxString fileName = stampId;
     wxString imageFile;
     if ( artPath.IsEmpty( ) || fileName.IsEmpty( ) )
-    { 
+    {
         imageFile = "";
     }
     else
-    { 
+    {
         fileName = fileName.Trim( true );
         fileName = fileName.Trim( false );
         fileName.Replace( ":", "_" );
@@ -316,6 +316,6 @@ wxString ToolData::GetImageFilename( wxString stampId )
         fn.SetExt( "jpg" );
         imageFile = fn.GetFullPath( );
         // wxString::Format( "%s/%s.jpg", dirName, fileName );
-    }  
+    }
     return imageFile;
 }

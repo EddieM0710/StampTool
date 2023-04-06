@@ -6,23 +6,23 @@
  * @date 2021-02-25
  *
  * @copyright Copyright ( c ) 2021
- * 
+ *
  * This file is part of StampTool.
  *
- * StampTool is free software: you can redistribute it and/or modify it under the 
- * terms of the GNU General Public License as published by the Free Software Foundation, 
+ * StampTool is free software: you can redistribute it and/or modify it under the
+ * terms of the GNU General Public License as published by the Free Software Foundation,
  * either version 3 of the License, or any later version.
  *
- * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY 
- * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+ * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
+ * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
- * You should have received a copy of the GNU General Public License along with 
+ * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
  **************************************************/
 
- 
+
 #include "wx/wxprec.h"
 
 #ifdef __BORLANDC__
@@ -46,7 +46,7 @@
 
 #include "gui/StampToolPanel.h"
 #include "gui/CatalogPanel.h"
-//#include "gui/DefinePeriodsDialog.h"
+ //#include "gui/DefinePeriodsDialog.h"
 #include "gui/AlbumDesignTreePanel.h"
 #include "gui/SortOrderPanel.h"
 #include "gui/SettingsDialog.h"
@@ -107,6 +107,7 @@ EVT_MENU( ID_SORTORDER, StampToolFrame::OnSortOrderClick )
 EVT_MENU( ID_ITEMVIEW, StampToolFrame::OnItemviewClick )
 EVT_MENU( ID_DEFINEPERIOD, StampToolFrame::OnDefineperiodClick )
 EVT_MENU( ID_SETTINGS, StampToolFrame::OnSettingsClick )
+
 // StampToolFrame event table entries
 
 END_EVENT_TABLE( )
@@ -116,15 +117,15 @@ END_EVENT_TABLE( )
 
 
 StampToolFrame::StampToolFrame( )
-{ 
+{
     Init( );
 }
 
 
 void StampToolFrame::InitLoad( )
-{ 
+{
     if ( GetSettings( )->GetLoadLastFileAtStartUp( ) )
-    { 
+    {
         GetProject( )->LoadProjectXML( );
         GetToolData( )->LoadData( );
     }
@@ -132,24 +133,24 @@ void StampToolFrame::InitLoad( )
 
 
 
-StampToolFrame::StampToolFrame( wxWindow* parent, wxWindowID id, 
-    const wxString& caption, 
-    const wxPoint& pos, const wxSize& size, 
+StampToolFrame::StampToolFrame( wxWindow* parent, wxWindowID id,
+    const wxString& caption,
+    const wxPoint& pos, const wxSize& size,
     long style )
-{ 
+{
     Init( );
     Create( parent, id, caption, pos, size, style );
 }
 
 
-bool StampToolFrame::Create( wxWindow* parent, wxWindowID id, 
-    const wxString& caption, const wxPoint& pos, 
+bool StampToolFrame::Create( wxWindow* parent, wxWindowID id,
+    const wxString& caption, const wxPoint& pos,
     const wxSize& size, long style )
-{ 
+{
     // StampToolFrame creation
     wxFrame::Create( parent, id, caption, pos, size, style );
 
-    this->SetFont( wxFont( 12, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, 
+    this->SetFont( wxFont( 12, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL,
         wxFONTWEIGHT_NORMAL, false, wxT( "Ubuntu" ) ) );
     CreateControls( );
     Centre( );
@@ -159,7 +160,7 @@ bool StampToolFrame::Create( wxWindow* parent, wxWindowID id,
 
 
 StampToolFrame::~StampToolFrame( )
-{ 
+{
 
 }
 
@@ -168,10 +169,10 @@ StampToolFrame::~StampToolFrame( )
  */
 
 void StampToolFrame::Init( )
-{ 
+{
     //    m_stamp = new Catalog::Stamp( );
     m_stampToolPanel = NULL;
-    m_catalogPagePanel = NULL;
+    //m_catalogPagePanel = NULL;
 }
 
 /*
@@ -179,7 +180,7 @@ void StampToolFrame::Init( )
  */
 
 void StampToolFrame::CreateControls( )
-{ 
+{
     // StampToolFrame content construction
 
     StampToolFrame* itemFrame1 = this;
@@ -194,7 +195,7 @@ void StampToolFrame::CreateControls( )
     m_fileMenu->Append( ID_SAVEASPROJECT, _( "Save As" ), wxEmptyString, wxITEM_NORMAL );
     m_fileMenu->AppendSeparator( );
 
-    wxMenu* m_catalogMenu = new wxMenu;    
+    wxMenu* m_catalogMenu = new wxMenu;
     m_catalogMenu->Append( ID_NEWCATALOG, _( "New Catalog File" ), wxEmptyString, wxITEM_NORMAL );
     m_catalogMenu->Append( ID_CSVIMPORT, _( "Create Catalog from CSV" ), wxEmptyString, wxITEM_NORMAL );
     m_catalogMenu->Append( ID_OPENCATALOG, _( "Add Catalog File" ), wxEmptyString, wxITEM_NORMAL );
@@ -221,7 +222,7 @@ void StampToolFrame::CreateControls( )
     // m_preferencesMenu->Append( ID_SORTORDER, _( "Sort Order" ), wxEmptyString, wxITEM_NORMAL );
     // m_fileMenu->Append( ID_PREFERENCES, _( "Preferences" ), m_preferencesMenu );
     m_fileMenu->AppendSeparator( );
-    
+
     m_fileMenu->Append( wxID_EXIT, _( "Exit" ), wxEmptyString, wxITEM_NORMAL );
     menuBar->Append( m_fileMenu, _( "File" ) );
     wxMenu* itemMenu3 = new wxMenu;
@@ -236,55 +237,59 @@ void StampToolFrame::CreateControls( )
     wxGridSizer* itemGridSizer1 = new wxGridSizer( 1, 1, 0, 0 );
     itemFrame1->SetSizer( itemGridSizer1 );
 
-    m_stampToolPanel = new StampToolPanel( 
-        itemFrame1, ID_STAMPTOOLPANELFOREIGN, wxDefaultPosition, 
+    m_stampToolPanel = new StampToolPanel(
+        itemFrame1, ID_STAMPTOOLPANELFOREIGN, wxDefaultPosition,
         wxSize( 100, 100 ), wxSIMPLE_BORDER );
     itemGridSizer1->Add( m_stampToolPanel, 1, wxGROW | wxALL, 0 );
-    m_catalogPagePanel = m_stampToolPanel->GetCatalogPagePanel( );
-    m_albumPagePanel = m_stampToolPanel->GetAlbumPagePanel( );
+    //m_catalogPagePanel = m_stampToolPanel->GetCatalogPagePanel( );
+    //m_albumPagePanel = m_stampToolPanel->GetAlbumPagePanel( );
     m_albumDesignTreePanel = m_stampToolPanel->GetAlbumDesignTreePanel( );
 }
 
 CatalogPanel* StampToolFrame::GetCatalogPagePanel( )
-{ 
+{
     return m_stampToolPanel->GetCatalogPagePanel( );
 }
 
 CatalogPanel* StampToolFrame::GetAlbumPagePanel( )
-{ 
+{
     return m_stampToolPanel->GetAlbumPagePanel( );
 }
 
+// WebViewPanel* StampToolFrame::GetWebViewPage( )
+// {
+//     return m_stampToolPanel->GetWebViewPage( );
+// }
 bool StampToolFrame::ShowToolTips( )
-{ 
+{
     return true;
 }
 
 
 int StampToolFrame::DoQueryMerge( int& mergeMethod )
-{ 
+{
     wxXmlNode* docRoot = 0;
     int mergeOverwriteQuery;
 
     Catalog::CatalogSectionData* catalogSectionData = GetCatalogSectionData( );
     if ( catalogSectionData )
-    { 
+    {
         mergeOverwriteQuery = QueryMerge( mergeMethod );
     }
     else
-    { 
+    {
         mergeOverwriteQuery = Catalog::MO_Cancel;
     }
     return mergeOverwriteQuery;
 }
 
 void StampToolFrame::DoRecentSelection( wxCommandEvent& event )
-{ 
+{
 
     int mergeMethod;
     int mergeOverwriteQuery = DoQueryMerge( mergeMethod );
     if ( mergeOverwriteQuery == Catalog::MO_Cancel )
-    { 
+    {
         return;
     }
 
@@ -296,7 +301,7 @@ void StampToolFrame::DoRecentSelection( wxCommandEvent& event )
     wxString filename = recentList->Item( ndx );
     wxFileInputStream input_stream( filename );
     if ( !input_stream.IsOk( ) )
-    { 
+    {
         wxLogError( "StampToolFrame::DoRecentSelection Cannot open file '%s'.", filename );
         return;
     }
@@ -309,19 +314,19 @@ void StampToolFrame::DoRecentSelection( wxCommandEvent& event )
 
 
 void StampToolFrame::DoCSVImport( )
-{ 
+{
 
     if ( IsDirty( ) )
-    { 
+    {
         // query whether to save first 
     }
 
-    wxFileDialog openFileDialog( 
-        this, _( "Open Colnect CSV file" ), 
-        "", "", 
+    wxFileDialog openFileDialog(
+        this, _( "Open Colnect CSV file" ),
+        "", "",
         "CSV files (*.csv)|*.csv", wxFD_OPEN | wxFD_FILE_MUST_EXIST );
     if ( openFileDialog.ShowModal( ) == wxID_CANCEL )
-    { 
+    {
         return; // the user changed idea...
     }
 
@@ -330,21 +335,21 @@ void StampToolFrame::DoCSVImport( )
     wxString filename = openFileDialog.GetPath( );
     wxFileInputStream input_stream( filename );
     if ( !input_stream.IsOk( ) )
-    { 
+    {
         wxLogError( "DoCSVImport: Cannot open file '%s'.", filename );
         return;
     }
 
     if ( GetToolData( )->ReadCatalogCSV( filename ) )
-    { 
+    {
         GetCatalogSectionData( )->EditDetailsDialog( this );
         GetToolData( )->LoadCatalogTree( );
-    }  
+    }
     Dirty = true;
 }
 
 void StampToolFrame::DoDefinePeriodDialog( )
-{ 
+{
     // DefinePeriodsDialog definePeriodsDialog( this, ID_DEFINEPERIODSDIALOG,  _( "Define Periods Order" ) );
 
     // if ( definePeriodsDialog.ShowModal( ) == wxID_CANCEL )
@@ -359,18 +364,18 @@ void StampToolFrame::DoDefinePeriodDialog( )
 
 
 void StampToolFrame::OnNewProjectClick( wxCommandEvent& event )
-{ 
+{
     NewProject( );
     event.Skip( );
 }
 
 void StampToolFrame::OnNewDesignClick( wxCommandEvent& event )
-{ 
+{
     NewDesign( );
     event.Skip( );
 }
 void StampToolFrame::OnNewCatalogClick( wxCommandEvent& event )
-{ 
+{
     NewCatalog( );
     event.Skip( );
 }
@@ -378,103 +383,103 @@ void StampToolFrame::OnNewCatalogClick( wxCommandEvent& event )
 
 
 void StampToolFrame::OnOpenProjectClick( wxCommandEvent& event )
-{ 
+{
     OpenProject( );
     event.Skip( );
 }
 
 void StampToolFrame::OnOpenDesignClick( wxCommandEvent& event )
-{ 
+{
     OpenDesign( );
     event.Skip( );
 }
 void StampToolFrame::OnOpenCatalogClick( wxCommandEvent& event )
-{ 
+{
     OpenCatalog( );
     event.Skip( );
 }
 
 void StampToolFrame::OnSaveProjectClick( wxCommandEvent& event )
-{ 
+{
     GetToolData( )->FileSaveProject( );
     event.Skip( );
 }
 
 void StampToolFrame::OnSaveDesignClick( wxCommandEvent& event )
-{ 
+{
     GetToolData( )->FileSaveDesign( );
     event.Skip( );
 }
 void StampToolFrame::OnSaveCatalogClick( wxCommandEvent& event )
-{ 
+{
     GetToolData( )->FileSaveCatalog( );
     event.Skip( );
 }
 
 
 void StampToolFrame::OnCSVImportClick( wxCommandEvent& event )
-{ 
+{
     DoCSVImport( );
     event.Skip( );
 }
 
 void StampToolFrame::OnExitClick( wxCommandEvent& event )
-{ 
+{
     GetSettings( )->Save( );
     Close( );
     event.Skip( );
 }
 
 void StampToolFrame::OnSaveasProjectClick( wxCommandEvent& event )
-{ 
+{
     SaveAsProject( );
     event.Skip( );
 }
 
 void StampToolFrame::OnCloseWindow( wxCloseEvent& event )
-{ 
+{
     event.Skip( );
 }
 
 
 
 void StampToolFrame::OnDefineperiodClick( wxCommandEvent& event )
-{ 
+{
     DoDefinePeriodDialog( );
     event.Skip( );
 }
 
 void StampToolFrame::OnIconize( wxIconizeEvent& event )
-{ 
+{
     event.Skip( );
 }
 
 
 
 void StampToolFrame::OnItemviewClick( wxCommandEvent& event )
-{ 
+{
     event.Skip( );
 }
 
 
 void StampToolFrame::OnMaximize( wxMaximizeEvent& event )
-{ 
+{
     event.Skip( );
 }
 
 
 void StampToolFrame::OnMergeClick( wxCommandEvent& event )
-{ 
+{
     event.Skip( );
 }
 
 void StampToolFrame::OnSaveasDesignClick( wxCommandEvent& event )
-{ 
+{
     SaveAsDesign( );
     event.Skip( );
 }
 void StampToolFrame::OnSaveasCatalogClick( wxCommandEvent& event )
-{ 
+{
     SaveAsCatalog( );
     event.Skip( );
 }
@@ -482,47 +487,47 @@ void StampToolFrame::OnSaveasCatalogClick( wxCommandEvent& event )
 void StampToolFrame::OnGeneratePDFClick( wxCommandEvent& event )
 {
     //AlbumImagePanel*
-     GetDesignData()->GetAlbum( )->MakePDFAlbum();
+    GetDesignData( )->GetAlbum( )->MakePDFAlbum( );
 }
 void StampToolFrame::OnSettingsClick( wxCommandEvent& event )
-{ 
+{
     DoSettingsDialog( );
     event.Skip( );
 }
 
 void StampToolFrame::DoSettingsDialog( )
-{ 
-    SettingsDialog settingsDialog( this, ID_SETTINGSDIALOG, 
+{
+    SettingsDialog settingsDialog( this, ID_SETTINGSDIALOG,
         _( "Define Preferences" ) );
 
     if ( settingsDialog.ShowModal( ) == wxID_CANCEL )
         return; // the user changed idea..
 
     if ( settingsDialog.IsDirty( ) )
-    { 
+    {
         // Save settings
         // resort tree
     }
 }
 
 void StampToolFrame::DoSortOrderDialog( )
-{ 
-//     SortOrderDialog sortOrderDialog( this, ID_SORTORDERDIALOG, 
-//         _( "Define Sort Order" ) );
+{
+    //     SortOrderDialog sortOrderDialog( this, ID_SORTORDERDIALOG, 
+    //         _( "Define Sort Order" ) );
 
-//     if ( sortOrderDialog.ShowModal( ) == wxID_CANCEL )
-//         return; // the user changed idea..
+    //     if ( sortOrderDialog.ShowModal( ) == wxID_CANCEL )
+    //         return; // the user changed idea..
 
-//     if ( sortOrderDialog.IsDirty( ) )
-//     { 
-//         // Save settings
-//         // resort tree
-//     }
- }
+    //     if ( sortOrderDialog.IsDirty( ) )
+    //     { 
+    //         // Save settings
+    //         // resort tree
+    //     }
+}
 
 
 void StampToolFrame::OnSortOrderClick( wxCommandEvent& event )
-{ 
+{
     DoSortOrderDialog( );
     event.Skip( );
 }
@@ -530,38 +535,38 @@ void StampToolFrame::OnSortOrderClick( wxCommandEvent& event )
 
 
 void StampToolFrame::OnTextserchmenuitemClick( wxCommandEvent& event )
-{ 
+{
     event.Skip( );
 }
 
 void StampToolFrame::NewProject( )
-{ 
+{
 
     if ( IsDirty( ) )
-    { 
+    {
         // query whether to save first 
-        wxMessageDialog* dlg = new wxMessageDialog( 
-            this, 
+        wxMessageDialog* dlg = new wxMessageDialog(
+            this,
             wxT( "The current data has been changed but not saved. \n"\
                 "Select \"OK\" to close the file losing the changes.\n"\
-                "Or select \"Cancel\" to quit file open process.\n" ), 
-            wxT( "Warning! Unsaved modifications.\n" ), 
+                "Or select \"Cancel\" to quit file open process.\n" ),
+            wxT( "Warning! Unsaved modifications.\n" ),
             wxOK | wxCANCEL | wxCENTER );
         int rsp = dlg->ShowModal( );
         if ( rsp == wxID_CANCEL )
-        { 
+        {
             return;
         }
     }
- 
-    FileCreateDialog fileDialog( this, 12355, _( "Select the Filename and Directory for the Project file." )  );
+
+    FileCreateDialog fileDialog( this, 12355, _( "Select the Filename and Directory for the Project file." ) );
     wxGetCwd( );
     fileDialog.SetDefaultDirectory( wxGetCwd( ) );
-    fileDialog.SetDefaultFilename( _( "unnamed.prj.xml" ) ); 
-    fileDialog.SetWildCard( _("Project files(*.prj.xml)|*.prj.xml") );
+    fileDialog.SetDefaultFilename( _( "unnamed.prj.xml" ) );
+    fileDialog.SetWildCard( _( "Project files(*.prj.xml)|*.prj.xml" ) );
 
-    if (  fileDialog.ShowModal( ) == wxID_CANCEL )
-    { 
+    if ( fileDialog.ShowModal( ) == wxID_CANCEL )
+    {
         return;
     }
     wxString dir = fileDialog.GetDir( );
@@ -576,33 +581,33 @@ void StampToolFrame::NewProject( )
 
 //GUI interface for creating new design
 void StampToolFrame::NewDesign( )
-{ 
+{
     if ( IsDirty( ) )
-    { 
+    {
         // query whether to save first 
 
-        wxMessageDialog* dlg = new wxMessageDialog( 
-            this, 
+        wxMessageDialog* dlg = new wxMessageDialog(
+            this,
             wxT( "The current data has been changed but not saved. \n"\
                 "Select \"OK\" to close the file losing the changes.\n"\
-                "Or select \"Cancel\" to quit file open process.\n" ), 
-            wxT( "Warning! Unsaved modifications.\n" ), 
+                "Or select \"Cancel\" to quit file open process.\n" ),
+            wxT( "Warning! Unsaved modifications.\n" ),
             wxOK | wxCANCEL | wxCENTER );
         int rsp = dlg->ShowModal( );
         if ( rsp == wxID_CANCEL )
-        { 
+        {
             return;
         }
     };
-     
-    FileCreateDialog fileDialog( this, 12355, _( "Select the Filename and Directory for the Design file." )  );
+
+    FileCreateDialog fileDialog( this, 12355, _( "Select the Filename and Directory for the Design file." ) );
     wxGetCwd( );
     fileDialog.SetDefaultDirectory( wxGetCwd( ) );
-    fileDialog.SetDefaultFilename( _( "unnamed.alb.xml" ) ); 
+    fileDialog.SetDefaultFilename( _( "unnamed.alb.xml" ) );
     fileDialog.SetWildCard( _( "Design files(*.alb.xml)|*.alb.xml" ) );
 
-    if (  fileDialog.ShowModal( ) == wxID_CANCEL )
-    { 
+    if ( fileDialog.ShowModal( ) == wxID_CANCEL )
+    {
         return;
     }
     wxString cwd = wxGetCwd( );
@@ -616,34 +621,34 @@ void StampToolFrame::NewDesign( )
 
 
 void StampToolFrame::NewCatalog( )
-{ 
+{
 
 
     if ( IsDirty( ) )
-    { 
+    {
         // query whether to save first 
-        wxMessageDialog* dlg = new wxMessageDialog( 
-            this, 
+        wxMessageDialog* dlg = new wxMessageDialog(
+            this,
             wxT( "The current data has been changed but not saved. \n"\
                 "Select \"OK\" to close the file losing the changes.\n"\
-                "Or select \"Cancel\" to quit file open process.\n" ), 
-            wxT( "Warning! Unsaved modifications.\n" ), 
+                "Or select \"Cancel\" to quit file open process.\n" ),
+            wxT( "Warning! Unsaved modifications.\n" ),
             wxOK | wxCANCEL | wxCENTER );
         int rsp = dlg->ShowModal( );
         if ( rsp == wxID_CANCEL )
-        { 
+        {
             return;
         }
     };
-     
-    FileCreateDialog fileDialog( this, 12355, _( "Select the Filename and Directory for the Design file." )  );
+
+    FileCreateDialog fileDialog( this, 12355, _( "Select the Filename and Directory for the Design file." ) );
     wxGetCwd( );
     fileDialog.SetDefaultDirectory( wxGetCwd( ) );
-    fileDialog.SetDefaultFilename( _( "unnamed.alb.xml" ) ); 
+    fileDialog.SetDefaultFilename( _( "unnamed.alb.xml" ) );
     fileDialog.SetWildCard( _( "Design files(*.alb.xml)|*.alb.xml" ) );
 
-    if (  fileDialog.ShowModal( ) == wxID_CANCEL )
-    { 
+    if ( fileDialog.ShowModal( ) == wxID_CANCEL )
+    {
         return;
     }
 
@@ -656,33 +661,33 @@ void StampToolFrame::NewCatalog( )
 }
 
 void StampToolFrame::OpenProject( )
-{ 
+{
 
     if ( IsDirty( ) )
-    { 
+    {
         // query whether to save first 
-        wxMessageDialog* dlg = new wxMessageDialog( 
-            this, 
+        wxMessageDialog* dlg = new wxMessageDialog(
+            this,
             wxT( "The current data has been changed but not saved. \n"\
                 "Select \"OK\" to close the file losing the changes.\n"\
-                "Or select \"Cancel\" to quit file open process.\n" ), 
-            wxT( "Warning! Unsaved modifications.\n" ), 
+                "Or select \"Cancel\" to quit file open process.\n" ),
+            wxT( "Warning! Unsaved modifications.\n" ),
             wxOK | wxCANCEL | wxCENTER );
         int rsp = dlg->ShowModal( );
         if ( rsp == wxID_CANCEL )
-        { 
+        {
             return;
         }
     };
     wxFileName lastFile( GetSettings( )->GetLastFile( ) );
     lastFile.SetExt( "xml" );
-    wxFileDialog openFileDialog( 
-        this, _( "Open Project XML file" ), 
-        lastFile.GetPath( ), lastFile.GetFullName( ), 
-        "Project XML files (*.prj.xml)|*.prj.xml|All XML(&.xml)|*.xml", 
+    wxFileDialog openFileDialog(
+        this, _( "Open Project XML file" ),
+        lastFile.GetPath( ), lastFile.GetFullName( ),
+        "Project XML files (*.prj.xml)|*.prj.xml|All XML(&.xml)|*.xml",
         wxFD_OPEN | wxFD_FILE_MUST_EXIST | wxFD_CHANGE_DIR );
     if ( openFileDialog.ShowModal( ) == wxID_CANCEL )
-    { 
+    {
         return; // the user changed idea...
     }
 
@@ -692,7 +697,7 @@ void StampToolFrame::OpenProject( )
 
     wxFileInputStream input_stream( filename );
     if ( !input_stream.IsOk( ) )
-    { 
+    {
         wxLogError( "StampToolFrame::OpenProject Cannot open file '%s'.", filename );
         return;
     }
@@ -705,32 +710,32 @@ void StampToolFrame::OpenProject( )
 
 
 void StampToolFrame::OpenDesign( )
-{ 
+{
     if ( IsDirty( ) )
-    { 
+    {
         // query whether to save first 
-        wxMessageDialog* dlg = new wxMessageDialog( 
-            this, 
+        wxMessageDialog* dlg = new wxMessageDialog(
+            this,
             wxT( "The current data has been changed but not saved. \n"\
                 "Select \"OK\" to close the file losing the changes.\n"\
-                "Or select \"Cancel\" to quit file open process.\n" ), 
-            wxT( "Warning! Unsaved modifications.\n" ), 
+                "Or select \"Cancel\" to quit file open process.\n" ),
+            wxT( "Warning! Unsaved modifications.\n" ),
             wxOK | wxCANCEL | wxCENTER );
         int rsp = dlg->ShowModal( );
         if ( rsp == wxID_CANCEL )
-        { 
+        {
             return;
         }
     }
 
     wxFileName lastFile( GetProject( )->GetDesignFilename( ) );
     lastFile.SetExt( "xml" );
-    wxFileDialog openFileDialog( 
-        this, _( "Open Design XML file" ), 
-        lastFile.GetPath( ), lastFile.GetFullName( ), 
+    wxFileDialog openFileDialog(
+        this, _( "Open Design XML file" ),
+        lastFile.GetPath( ), lastFile.GetFullName( ),
         "Project XML files(*.alb.xml)|*.alb.xml|All XML(&.xml)|*.xml", wxFD_OPEN | wxFD_FILE_MUST_EXIST );
     if ( openFileDialog.ShowModal( ) == wxID_CANCEL )
-    { 
+    {
         return; // the user changed idea...
     }
 
@@ -744,7 +749,7 @@ void StampToolFrame::OpenDesign( )
 
 
 void StampToolFrame::OpenCatalog( )
-{ 
+{
     // if ( IsDirty( ) )
     // { 
     //     // query whether to save first 
@@ -762,13 +767,13 @@ void StampToolFrame::OpenCatalog( )
     //     }
     // };
 
-    wxFileDialog openFileDialog( 
-        this, _( "Open Catalog XML file" ), 
-        wxGetCwd( ), 
-        _( "unnamed.cat.xml" ), 
+    wxFileDialog openFileDialog(
+        this, _( "Open Catalog XML file" ),
+        wxGetCwd( ),
+        _( "unnamed.cat.xml" ),
         "Catalog XML files(*.cat.xml)|*.cat.xml|All XML(&.xml)|*.xml", wxFD_OPEN | wxFD_FILE_MUST_EXIST );
     if ( openFileDialog.ShowModal( ) == wxID_CANCEL )
-    { 
+    {
         return; // the user changed idea...
     }
 
@@ -781,53 +786,53 @@ void StampToolFrame::OpenCatalog( )
 
 
 int StampToolFrame::QueryMerge( int& mergeMethod )
-{ 
+{
     const wxString choices[ ] = { "Merge", "Overwrite" };
 
-    wxSingleChoiceDialog dialog( 
-        this, 
+    wxSingleChoiceDialog dialog(
+        this,
         "Data already exists\n"
-        "What do you want to do with the existing data?", 
-        "Please select a value", WXSIZEOF( choices ), choices, NULL, 
+        "What do you want to do with the existing data?",
+        "Please select a value", WXSIZEOF( choices ), choices, NULL,
         wxDEFAULT_DIALOG_STYLE | wxOK | wxCANCEL | wxCENTRE );
 
     if ( dialog.ShowModal( ) == wxID_OK )
-    { 
+    {
         int sel = dialog.GetSelection( );
         if ( sel == 1 ) // overwrite
-        { 
+        {
             return Catalog::MO_Overwrite;
         }
         else // merge
-        { 
-            const wxString DispositionChoices[ ] = { 
-                "Add missing entries only.", 
-                "Add missing entries and missing fields in existing entries", 
+        {
+            const wxString DispositionChoices[ ] = {
+                "Add missing entries only.",
+                "Add missing entries and missing fields in existing entries",
                 "Add missing entries and overwrite exixting fields in existing "
-                "entries", 
+                "entries",
                 "Add missing entries and query if fields differ.", "Query All." };
 
-            wxSingleChoiceDialog dispositionDialog( 
-                this, 
+            wxSingleChoiceDialog dispositionDialog(
+                this,
                 "Merging Data\n"
-                "What do you want to do with the incoming data?", 
-                "Please select a value", WXSIZEOF( DispositionChoices ), 
-                DispositionChoices, NULL, 
+                "What do you want to do with the incoming data?",
+                "Please select a value", WXSIZEOF( DispositionChoices ),
+                DispositionChoices, NULL,
                 wxDEFAULT_DIALOG_STYLE | wxOK | wxCANCEL | wxCENTRE );
 
             if ( dispositionDialog.ShowModal( ) == wxID_OK )
-            { 
+            {
                 mergeMethod = dispositionDialog.GetSelection( );
                 return Catalog::MO_Merge;
             }
             else
-            { 
+            {
                 return Catalog::MO_Cancel;
             }
         }
     }
     else
-    { 
+    {
         return Catalog::MO_Cancel;
     }
 }
@@ -854,25 +859,25 @@ int StampToolFrame::QueryMerge( int& mergeMethod )
 
 // }
 void StampToolFrame::SaveAsProject( )
-{ 
+{
 
     //if ( GetCatalogSectionData( ) )
     //{ 
-        wxFileName lastFile( GetSettings( )->GetLastFile( ) );
-        lastFile.SetExt( "xml" );
-        wxFileDialog saveFileDialog( 
-            this, _( "StampTool Project XML file" ), 
-            lastFile.GetPath( ), lastFile.GetFullName( ), 
-            "XML files(*.prj.xml)|*.prj.xml", wxFD_SAVE | wxFD_OVERWRITE_PROMPT );
-        if ( saveFileDialog.ShowModal( ) == wxID_CANCEL )
-            return;
+    wxFileName lastFile( GetSettings( )->GetLastFile( ) );
+    lastFile.SetExt( "xml" );
+    wxFileDialog saveFileDialog(
+        this, _( "StampTool Project XML file" ),
+        lastFile.GetPath( ), lastFile.GetFullName( ),
+        "XML files(*.prj.xml)|*.prj.xml", wxFD_SAVE | wxFD_OVERWRITE_PROMPT );
+    if ( saveFileDialog.ShowModal( ) == wxID_CANCEL )
+        return;
 
-        wxString filename = saveFileDialog.GetPath( );
-        GetToolData( )->FileSaveAsProject( filename );
+    wxString filename = saveFileDialog.GetPath( );
+    GetToolData( )->FileSaveAsProject( filename );
     //}
 }
 void StampToolFrame::SaveAsCatalog( )
-{ 
+{
 
     // if ( GetCatalogSectionData( ) )
     // { 
@@ -890,15 +895,15 @@ void StampToolFrame::SaveAsCatalog( )
     // }
 }
 void StampToolFrame::SaveAsDesign( )
-{ 
+{
 
     if ( GetCatalogSectionData( ) )
-    { 
+    {
         wxFileName lastFile( GetProject( )->GetDesignFilename( ) );
         lastFile.SetExt( "xml" );
-        wxFileDialog saveFileDialog( 
-            this, _( "Stamp List XML file" ), 
-            lastFile.GetPath( ), lastFile.GetFullName( ), 
+        wxFileDialog saveFileDialog(
+            this, _( "Stamp List XML file" ),
+            lastFile.GetPath( ), lastFile.GetFullName( ),
             "XML files (*.alb.xml)|*.alb.xml", wxFD_SAVE | wxFD_OVERWRITE_PROMPT );
         if ( saveFileDialog.ShowModal( ) == wxID_CANCEL )
             return;
@@ -909,7 +914,7 @@ void StampToolFrame::SaveAsDesign( )
 }
 
 void StampToolFrame::SetupRecentMenu( )
-{ 
+{
     // // first clobber each of the current menuItems and unbind them.
     // if ( m_menuItemList.size( ) > 0 )
     // { 
@@ -953,4 +958,5 @@ void StampToolFrame::SetupRecentMenu( )
 
 
 void StampToolFrame::UpdateStatus( ) { m_stampToolPanel->UpdateStatus( ); }
+
 

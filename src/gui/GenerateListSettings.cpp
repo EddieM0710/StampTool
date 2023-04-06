@@ -1,11 +1,11 @@
 /*
  * @file         GenerateListSettings.cpp
- *@brief      
+ *@brief
 * @author      Eddie Monroe
-* Modified by: 
+* Modified by:
 * @author     Fri 09 Dec 2022 14:55:49 CST
- *     
-* @copyright Copyright ( c ) 2024   
+ *
+* @copyright Copyright ( c ) 2024
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
@@ -18,8 +18,8 @@
  *
  * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
- */    
-/////////////////////////////////////////////////////////////////////////////
+ */
+ ///////////////////////////////////////
 
 
 #include "wx/wxprec.h"
@@ -48,9 +48,9 @@ IMPLEMENT_DYNAMIC_CLASS( GenerateListSettings, wxDialog )
  * GenerateListSettings event table definition
  */
 
-BEGIN_EVENT_TABLE( GenerateListSettings, wxDialog )
+    BEGIN_EVENT_TABLE( GenerateListSettings, wxDialog )
 
-//// GenerateListSettings event table entries
+    // GenerateListSettings event table entries
     EVT_BUTTON( ID_STATUSALLBUTTON, GenerateListSettings::OnStatusAllButtonClick )
     EVT_BUTTON( IDSTATUSCLEARBUTTON, GenerateListSettings::OnStatusClearButtonClick )
     EVT_BUTTON( ID_EMISSIONALLBUTTON, GenerateListSettings::OnEmissionAllButtonClick )
@@ -58,22 +58,22 @@ BEGIN_EVENT_TABLE( GenerateListSettings, wxDialog )
     EVT_BUTTON( ID_FORMATCLEARBUTTON, GenerateListSettings::OnFormatClearButtonClick )
     EVT_BUTTON( ID_CLEARYEARRANGEBUTTON, GenerateListSettings::OnClearYearRangeButtonClick )
     EVT_BUTTON( wxID_OK, GenerateListSettings::OnOkClick )
-//// GenerateListSettings event table entries
+    // GenerateListSettings event table entries
 
-END_EVENT_TABLE( )
+    END_EVENT_TABLE( )
 
 
-/*
- * GenerateListSettings constructors
- */
+    /*
+     * GenerateListSettings constructors
+     */
 
-GenerateListSettings::GenerateListSettings( )
-{ 
+    GenerateListSettings::GenerateListSettings( )
+{
     Init( );
 }
 
 GenerateListSettings::GenerateListSettings( wxWindow* parent, wxWindowID id, const wxString& caption, const wxPoint& pos, const wxSize& size, long style )
-{ 
+{
     Init( );
     Create( parent, id, caption, pos, size, style );
 }
@@ -84,18 +84,18 @@ GenerateListSettings::GenerateListSettings( wxWindow* parent, wxWindowID id, con
  */
 
 bool GenerateListSettings::Create( wxWindow* parent, wxWindowID id, const wxString& caption, const wxPoint& pos, const wxSize& size, long style )
-{ 
-//// GenerateListSettings creation
+{
+    // GenerateListSettings creation
     SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY | wxWS_EX_BLOCK_EVENTS );
     wxDialog::Create( parent, id, caption, pos, size, style );
 
     CreateControls( );
     if ( GetSizer( ) )
-    { 
+    {
         GetSizer( )->SetSizeHints( this );
     }
     Centre( );
-//// GenerateListSettings creation
+    // GenerateListSettings creation
     return true;
 }
 
@@ -105,9 +105,9 @@ bool GenerateListSettings::Create( wxWindow* parent, wxWindowID id, const wxStri
  */
 
 GenerateListSettings::~GenerateListSettings( )
-{ 
-//// GenerateListSettings destruction
-//// GenerateListSettings destruction
+{
+    // GenerateListSettings destruction
+    // GenerateListSettings destruction
 }
 
 
@@ -116,26 +116,26 @@ GenerateListSettings::~GenerateListSettings( )
  */
 
 void GenerateListSettings::Init( )
-{ 
-//// GenerateListSettings member initialisation
+{
+    // GenerateListSettings member initialisation
     m_statusListCtrl = NULL;
     m_emissionListCtrl = NULL;
     m_formatListCtrl = NULL;
     m_fromYear = NULL;
     m_toYear = NULL;
-//// GenerateListSettings member initialisation
-    for ( int i = 0; i < Catalog::ET_NbrTypes; i++ ) 
-    { 
+    // GenerateListSettings member initialisation
+    for ( int i = 0; i < Catalog::ET_NbrTypes; i++ )
+    {
         m_emissionListCtrlStrings.Add( _( Catalog::ET_EmissionStrings[ i ] ) );
-    }  
+    }
 
-    for ( int i = 0; i < Catalog::FT_NbrTypes; i++ ) 
-    { 
+    for ( int i = 0; i < Catalog::FT_NbrTypes; i++ )
+    {
         m_formatListCtrlStrings.Add( _( Catalog::FT_FormatStrings[ i ] ) );
     }
 
-    for ( int i = 0; i < Catalog::ST_NbrInventoryStatusTypes; i++ ) 
-    { 
+    for ( int i = 0; i < Catalog::ST_NbrInventoryStatusTypes; i++ )
+    {
         m_statusListCtrlStrings.Add( _( Catalog::ST_InventoryStatusStrings[ i ] ) );
     }
 }
@@ -146,7 +146,7 @@ void GenerateListSettings::Init( )
  */
 
 void GenerateListSettings::CreateControls( )
-{    
+{
 
     GenerateListSettings* itemDialog1 = this;
 
@@ -239,14 +239,14 @@ void GenerateListSettings::CreateControls( )
     wxButton* itemButton24 = new wxButton( itemDialog1, wxID_OK, _( "OK" ), wxDefaultPosition, wxDefaultSize, 0 );
     itemBoxSizer23->Add( itemButton24, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
-//// GenerateListSettings content construction
+    // GenerateListSettings content construction
 }
 
 
 
 
 bool GenerateListSettings::ShowToolTips( )
-{ 
+{
     return true;
 }
 
@@ -258,7 +258,7 @@ bool GenerateListSettings::ShowToolTips( )
  */
 
 void GenerateListSettings::OnStatusAllButtonClick( wxCommandEvent& event )
-{ 
+{
 
     event.Skip( );
 
@@ -270,7 +270,7 @@ void GenerateListSettings::OnStatusAllButtonClick( wxCommandEvent& event )
  */
 
 void GenerateListSettings::OnStatusClearButtonClick( wxCommandEvent& event )
-{ 
+{
 
     // Before editing this code, remove the block markers.
     event.Skip( );
@@ -283,9 +283,9 @@ void GenerateListSettings::OnStatusClearButtonClick( wxCommandEvent& event )
  */
 
 void GenerateListSettings::OnEmissionAllButtonClick( wxCommandEvent& event )
-{ 
+{
     event.Skip( );
- 
+
 }
 
 
@@ -294,7 +294,7 @@ void GenerateListSettings::OnEmissionAllButtonClick( wxCommandEvent& event )
  */
 
 void GenerateListSettings::OnEmissionClearButtonClick( wxCommandEvent& event )
-{ 
+{
     event.Skip( );
 
 }
@@ -305,9 +305,9 @@ void GenerateListSettings::OnEmissionClearButtonClick( wxCommandEvent& event )
  */
 
 void GenerateListSettings::OnFormatClearButtonClick( wxCommandEvent& event )
-{ 
+{
     event.Skip( );
- 
+
 }
 
 
@@ -316,7 +316,7 @@ void GenerateListSettings::OnFormatClearButtonClick( wxCommandEvent& event )
  */
 
 void GenerateListSettings::OnClearYearRangeButtonClick( wxCommandEvent& event )
-{ 
+{
     event.Skip( );
 }
 
@@ -326,81 +326,81 @@ void GenerateListSettings::OnClearYearRangeButtonClick( wxCommandEvent& event )
  */
 
 void GenerateListSettings::OnOkClick( wxCommandEvent& event )
-{ 
+{
     event.Skip( );
 }
 
 int GenerateListSettings::MakeBitPatern( wxArrayInt& array )
-{ 
+{
     int nbr = array.Count( );
     int val = 0;
     for ( int i = 0; i < nbr; i++ )
-    { 
+    {
         int base = 1;
-        base = base<<= array[ i ];
-        val = val | base ;
+        base = base <<= array[ i ];
+        val = val | base;
     }
     return val;
 }
 
 int GenerateListSettings::GetCheckedStatusItems( )
-{ 
+{
     wxArrayInt checkedStatusItems;
     m_statusListCtrl->GetCheckedItems( checkedStatusItems );
     return MakeBitPatern( checkedStatusItems );
 }
 
-int GenerateListSettings::GetCheckedFormatItems(  )
-{ 
+int GenerateListSettings::GetCheckedFormatItems( )
+{
     wxArrayInt checkedFormatItems;
     m_formatListCtrl->GetCheckedItems( checkedFormatItems );
     return MakeBitPatern( checkedFormatItems );
 }
 
 int GenerateListSettings::GetCheckedEmissionItems( )
-{ 
-     wxArrayInt checkedEmissionItems;
+{
+    wxArrayInt checkedEmissionItems;
     m_emissionListCtrl->GetCheckedItems( checkedEmissionItems );
-    return MakeBitPatern( checkedEmissionItems );  
+    return MakeBitPatern( checkedEmissionItems );
 }
 
 void GenerateListSettings::SetCheckedEmissionItems( int checkedEmissionItems )
-{ 
+{
     int base = 1;
-    for ( int i = 0; i < Catalog::ET_NbrTypes; i++ ) 
-    { 
+    for ( int i = 0; i < Catalog::ET_NbrTypes; i++ )
+    {
 
         if ( checkedEmissionItems & base )
-        { 
+        {
             m_emissionListCtrl->Check( i );
         }
-        base = base<<= 1;
-    } 
+        base = base <<= 1;
+    }
 }
 
 
 void GenerateListSettings::SetCheckedFormatItems( int checkedFormatItems )
-{ 
+{
     int base = 1;
-    for ( int i = 0; i < Catalog::FT_NbrTypes; i++ ) 
-    { 
+    for ( int i = 0; i < Catalog::FT_NbrTypes; i++ )
+    {
         if ( checkedFormatItems & base )
-        { 
+        {
             m_formatListCtrl->Check( i );
         }
-        base = base<<= 1;
-    } 
+        base = base <<= 1;
+    }
 }
 
 void GenerateListSettings::SetCheckedStatusItems( int checkedStatusItems )
-{ 
+{
     int base = 1;
-    for ( int i = 0; i < Catalog::FT_NbrTypes; i++ ) 
-    { 
+    for ( int i = 0; i < Catalog::FT_NbrTypes; i++ )
+    {
         if ( checkedStatusItems & base )
-        { 
+        {
             m_statusListCtrl->Check( i );
         }
-        base = base<<= 1;
-    }    
+        base = base <<= 1;
+    }
 }

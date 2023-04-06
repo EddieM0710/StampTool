@@ -42,6 +42,8 @@ add_library( GuiFiles SHARED
     StampDetailsDialog.cpp
 #    StaticItem.cpp 
     ToolData.cpp
+#   WebViewPanel.cpp
+#   WebRequest.cpp
 
 )
 

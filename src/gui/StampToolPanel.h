@@ -25,10 +25,6 @@
 #ifndef _STAMPTOOLPANEL_H_
 #define _STAMPTOOLPANEL_H_
 
- /*
-  * Includes
-  */
-
 #include "wx/notebook.h"
 #include "wx/splitter.h"
 #include "wx/treectrl.h"
@@ -36,27 +32,19 @@
 #include "gui/GuiDefs.h"
 
 #include "gui/AlbumDesignPanel.h"
-  //#include "CatalogDefs.h"
-  /*
-   * Forward declarations
-   */
+
+ //#include "gui/WebViewPanel.h"
 
 class CatalogPanel;
 class wxNotebook;
 class wxFlexGridSizer;
 class StampDescriptionPanel;
 class GenerateList;
-//class StampToolDialog;
 
-//namespace Catalog { class Stamp; }
 
-/*
- * Control identifiers
- */
 
 #define SYMBOL_STAMPTOOLPANEL_STYLE wxTAB_TRAVERSAL
 #define SYMBOL_STAMPTOOLPANEL_TITLE _( "StampToolPanel" )
- //#define SYMBOL_STAMPTOOLPANEL_IDNAME ID_STAMPTOOLPANEL
 #define SYMBOL_STAMPTOOLPANEL_SIZE wxSize( 400, 300 )
 #define SYMBOL_STAMPTOOLPANEL_POSITION wxDefaultPosition
 
@@ -87,7 +75,7 @@ public:
         ID_DESIGNPAGE,
         ID_DESIGNSPLITTERWINDOW
     };
-    
+
     /**
      * @brief Default Constructor a new StampToolPanel object
      * @details Must be used in conjunction with Create.
@@ -129,60 +117,41 @@ public:
         const wxSize& size = SYMBOL_STAMPTOOLPANEL_SIZE,
         long style = SYMBOL_STAMPTOOLPANEL_STYLE );
 
-    
+
     ~StampToolPanel( );
 
-    /**
-     * @brief   Initialises member variables
-     *
-     **************************************************/
     void Init( );
 
-    /**
-     * @brief Creates the controls and sizers
-     *
-     **************************************************/
     void CreateControls( );
-
-    // StampToolPanel event handler declarations
 
     bool ShouldShowStates( );
 
-    //  COMMAND_NOTEBOOK_PAGE_CHANGED event handler for ID_NOTEBOOK
     void OnNotebookPageChanged( wxNotebookEvent& event );
 
     void OnTitleTextUpdated( wxCommandEvent& event );
 
-
-   
-    // 
     static bool ShowToolTips( );
 
-    //    void SetStamp( Catalog::Stamp* stamp );
     void UpdateStatus( );
-
 
     CatalogPanel* GetCatalogPagePanel( ) { return m_catalogTreePanel; };
     CatalogPanel* GetAlbumPagePanel( ) { return m_albumTreePanel; };
+    //    WebViewPanel* GetWebViewPage( ) { return m_webViewPanel; };
     AlbumDesignTreePanel* GetAlbumDesignTreePanel( ) { return m_albumDesignPanel->GetAlbumDesignTreePanel( ); };
-    // * GetCatalogTree( ) { return m_catalogTreeCtrl; };
 
-     // StampToolPanel member variables
     wxNotebook* m_notebook;
-    // StampToolDialog* m_stampToolDialog;
     wxFlexGridSizer* m_sizer;
-    // StampToolPanel member variables
     CatalogPanel* m_catalogTreePanel;
     CatalogPanel* m_albumTreePanel;
     wxSplitterWindow* m_catalogNotebookPage;
     wxSplitterWindow* m_albumNotebookPage;
     wxTreeItemId m_draggedItem;
-    //    Catalog::Stamp* m_stamp;
     wxTreeItemId m_currentItem;
     AlbumDesignPanel* m_albumDesignPanel;
     StampDescriptionPanel* m_stampDescriptionPanel;
     GenerateList* m_generateListPanel;
+    //    WebViewPanel* m_webViewPanel;
 };
 
 #endif
-// _STAMPTOOLPANEL_H_
+

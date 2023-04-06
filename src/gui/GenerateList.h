@@ -19,7 +19,7 @@
  * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  */
- /////////////////////////////////////////////////////////////////////////////
+ ///////////////////////////////////////
 
 #ifndef _GENERATELIST_H_
 #define _GENERATELIST_H_
@@ -93,9 +93,9 @@ public:
 
     void CreateControls( );
 
-    //// GenerateList event handler declarations
+    // GenerateList event handler declarations
 
-    ////   ID_SETLISTPREFSBUTTON
+    //   ID_SETLISTPREFSBUTTON
     void OnSetListPrefsButtonClick( wxCommandEvent& event );
 
     bool CheckEmission( Catalog::Entry* entry );
@@ -113,9 +113,9 @@ public:
     ///   ID_FILENAMETEXTCTRL
     void OnFileNameTextUpdated( wxCommandEvent& event );
 
-    //// GenerateList event handler declarations
+    // GenerateList event handler declarations
 
-    //// GenerateList member function declarations
+    // GenerateList member function declarations
 
 
 
@@ -123,11 +123,11 @@ public:
 
     void DoListPrefs( );
 
-    //// GenerateList member variables
+    // GenerateList member variables
     wxGrid* m_gridCtrl;
     wxButton* m_writeButton;
     wxTextCtrl* m_filename;
-    //// GenerateList member variables
+    // GenerateList member variables
     GenerateListSettings* m_generateListSettings;
 
     int m_checkedStatusItems;

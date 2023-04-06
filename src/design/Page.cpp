@@ -108,7 +108,7 @@ namespace Design {
                         minWidth = child->GetMinWidth( );
                     }
                     minHeight += child->GetMinHeight( );
- 
+
                 }
             }
 
@@ -121,7 +121,7 @@ namespace Design {
         if ( GetShowTitle( ) )
         {
             // Allow 3 times the title height
-            minHeight += 3*GetTitleHeight( );
+            minHeight += 3 * GetTitleHeight( );
         }
 
         SetMinWidth( minWidth );
@@ -180,7 +180,7 @@ namespace Design {
                 row->SetHeight( row->GetMinHeight( ) + topPadding + bottomPadding );
                 if ( row->GetShowTitle( ) )
                 {
-                    row->SetHeight( row->GetHeight( ) + 3*row->GetTitleHeight( ) );
+                    row->SetHeight( row->GetHeight( ) + 3 * row->GetTitleHeight( ) );
                 }
 
                 break;
@@ -217,17 +217,17 @@ namespace Design {
         double yPos = 0;
         //First calc title position  
         if ( GetShowTitle( ) )
-            {
-                m_titleFrame.SetXPos( 0 + ( GetWidth( ) - m_titleFrame.GetWidth( ) ) / 2 );
-                m_titleFrame.SetYPos( m_titleFrame.GetHeight( ) );
-                // allow for space above title, title height and that much again for nice spaing
-                yPos = 3*m_titleFrame.GetHeight( );
-            }
-// std::cout << "Page::UpdatePositions " << GetTitle() << " title height = " << GetTitleHeight( ) << std::endl;
-// std::cout.flush();
+        {
+            m_titleFrame.SetXPos( 0 + ( GetWidth( ) - m_titleFrame.GetWidth( ) ) / 2 );
+            m_titleFrame.SetYPos( m_titleFrame.GetHeight( ) );
+            // allow for space above title, title height and that much again for nice spaing
+            yPos = 3 * m_titleFrame.GetHeight( );
+        }
+        // std::cout << "Page::UpdatePositions " << GetTitle() << " title height = " << GetTitleHeight( ) << std::endl;
+        // std::cout.flush();
 
 
-        // if there are cols then we are positioning them across the page
+                // if there are cols then we are positioning them across the page
         double spacing = 0;
         if ( nbrCols > 0 )
         {
@@ -242,7 +242,7 @@ namespace Design {
         //figure out starting pos accounting for title if present
         if ( nbrRows > 0 )
         {
-            yPos += spacing ;
+            yPos += spacing;
         }
         else
         {
@@ -416,11 +416,11 @@ namespace Design {
             dc.SetTextForeground( color );
 
             RealPoint pos( xPos + m_titleFrame.GetXPos( ), yPos + m_titleFrame.GetYPos( ) );
-            RealSize size( m_titleFrame.GetWidth( ),  m_titleFrame.GetHeight( ) );
+            RealSize size( m_titleFrame.GetWidth( ), m_titleFrame.GetHeight( ) );
 
-// std::cout << "Page::UpdatePositions " << GetTitle() << " pos(" << pos.x << "," << pos.y << ") "
-// << "pageSize (" << GetWidth( ) << "," << GetHeight( ) << ")  TitleSize("<< size.x << "," << size.y << ")" << std::endl;
-// std::cout.flush();
+            // std::cout << "Page::UpdatePositions " << GetTitle() << " pos(" << pos.x << "," << pos.y << ") "
+            // << "pageSize (" << GetWidth( ) << "," << GetHeight( ) << ")  TitleSize("<< size.x << "," << size.y << ")" << std::endl;
+            // std::cout.flush();
             wxString title = GetTitle( );
             GetAlbumImagePanel( )->MakeMultiLine( title, font, size.x );
             DrawLabel( dc, title, pos, size, wxALIGN_LEFT );
@@ -448,17 +448,17 @@ namespace Design {
         m_contentFrame.SetXPos( GetXPos( ) + GetLeftContentPadding( ) + GetBorderSize( ) );
         m_contentFrame.SetYPos( GetYPos( ) + GetTopContentPadding( ) );
         m_contentFrame.SetWidth( GetWidth( )
-                                    - GetLeftContentPadding( ) - GetRightContentPadding( ) 
-                                    - 2 * GetBorderSize( ) );
+            - GetLeftContentPadding( ) - GetRightContentPadding( )
+            - 2 * GetBorderSize( ) );
         m_contentFrame.SetHeight( GetHeight( )
-                                    - GetTopContentPadding( ) - GetBottomContentPadding( ) );
+            - GetTopContentPadding( ) - GetBottomContentPadding( ) );
     }
 
     void Page::Save( wxXmlNode* xmlNode )
     {
         SetAttribute( xmlNode, AT_Name );
         SaveFonts( xmlNode );
-     }
+    }
 
     void Page::ReportLayout( )
     {
@@ -469,7 +469,7 @@ namespace Design {
 
         wxString str = wxString::Format( "Border Size:%7.2f\n ", GetBorderSize( ) );
         std::cout << str;
-        str = wxString::Format( "Top Margin:%7.2f  Bottom Margin:%7.2f\n  Right Margin:%7.2f  Left Margin:%7.2f\n",
+        str = wxString::Format( "Top Margin:%7.2f  Bottom Margin:%7.2f\n  Right Margin:%7.2f  c Margin:%7.2f\n",
             GetTopMargin( ), GetBottomMargin( ), GetRightMargin( ), GetLeftMargin( ) );
         std::cout << str;
     };

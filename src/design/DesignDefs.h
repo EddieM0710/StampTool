@@ -53,6 +53,7 @@ namespace Design {
         AT_Page,
         AT_Row,
         AT_Col,
+        AT_Text,
         AT_Title,
         AT_TitlePage,
         AT_Stamp,
@@ -88,6 +89,7 @@ namespace Design {
         AT_ShowCatNbr,
         AT_ShowFrame,
         AT_ShowImage,
+        AT_GrayScaleImages,
         AT_TopContentPadding,
         AT_BottomContentPadding,
         AT_LeftContentPadding,
@@ -146,7 +148,8 @@ namespace Design {
         AT_UnspecifiedFontType,
         AT_TextFontType,
         AT_TitleFontType,
-        AT_CatNbrFontType,
+        AT_NbrFontType,
+        AT_NameFontType,
         AT_NbrFontUsageTypes
     } AT_FontUsageType;
 
@@ -207,6 +210,24 @@ namespace Design {
     extern wxString AT_FontWeightStrings[ AT_NbrFontWeights ];
     AT_FontWeightType GetATWeight( wxFontWeight wxVal );
 
+    typedef enum
+    {
+        AT_TitleLocationTop,
+        AT_TitleLocationBottom,
+        AT_TitleLocationLeft,
+        AT_TitleLocationRight,
+        AT_TitleLocationDefault
+    } TitleLocation;
+
+    typedef enum
+    {
+        AT_AlignTop,
+        AT_AlignBottom,
+        AT_AlignLeft,
+        AT_AlignRight,
+        AT_Center,
+        AT_AlignDefault
+    } StampAlignment;
 
 }
 

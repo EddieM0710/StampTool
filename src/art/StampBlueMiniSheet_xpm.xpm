@@ -1,7 +1,5 @@
 /* XPM */
-#ifndef MINISHEETBLUE_XPM
-#define MINISHEETBLUE_XPM
-static const char* MiniSheetBlue[ ] = {
+static const char* MiniSheetBlue_xpm[ ] = {
     /* columns rows colors chars-per-pixel */
     "16 16 2 1 ",
     "O c #2A00FF",
@@ -25,4 +23,3 @@ static const char* MiniSheetBlue[ ] = {
     "XOOOOOOOOOOOOOOX",//15
     "XXXXXXXXXXXXXXXX" //16
 };
-#endif

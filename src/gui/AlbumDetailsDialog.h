@@ -34,7 +34,7 @@
  //
  // You should have received a copy of the GNU General Public License along with 
  // StampTool. If not, see <https://www.gnu.org/licenses/>.
- /////////////////////////////////////////////////////////////////////////////
+ ///////////////////////////////////////
 
 #ifndef _ALBUMDETAILSDIALOG_H_
 #define _ALBUMDETAILSDIALOG_H_
@@ -83,20 +83,24 @@ public:
         ID_REFRESHBUTTON123,
         ID_VALIDATEBUTTON123,
         ID_LISTCTRL123,
-        ID_CATNBRFONTPICKER,
-        ID_CATNBCOLORPICKER,
+        ID_NBRFONTPICKER,
+        ID_NBRCOLORPICKER,
+        ID_NAMEFONTPICKER,
+        ID_NAMECOLORPICKER,
         ID_TITLEFONTPICKER,
         ID_TITLECOLORPICKER,
         ID_TEXTFONTPICKER,
         ID_TEXTCOLORPICKER,
         ID_NBRDEFAULTFONTBUTTON,
+        ID_NAMEDEFAULTFONTBUTTON,
         ID_TITLEDEFAULTFONTBUTTON,
         ID_TEXTDEFAULTFONTBUTTON,
 
-        ID_CATNBRDEFAULTCHECKBOX,
+        ID_NBRDEFAULTCHECKBOX,
         ID_STAMPTITLEDEFAULTCHECKBOX,
         ID_ROWCOLTITLEDEFAULTCHECKBOX,
         ID_FRAMEDEFAULTCHECKBOX,
+        ID_GRAYSCALECHECKBOX,
 
         ID_TITLEFONTPANEL,
         ID_ALBUMLAYOUTTEXTCTRL,
@@ -131,14 +135,17 @@ public:
     void SetLeftMargin( wxString margin );
     void SetRightMargin( wxString margin );
     void SetBorderSize( wxString size );
-    void SetShowCatNbr( bool state );
+    void SetShowNbr( bool state );
     void SetShowStampTitle( bool state );
-    void SetCatNbrFont( wxFont font );
+    void SetNbrFont( wxFont font );
+    void SetNameFont( wxFont font );
     void SetTextFont( wxFont font );
     void SetTitleFont( wxFont font );
-    void SetCatNbrColor( wxColour color );
+    void SetNbrColor( wxColour color );
+    void SetNameColor( wxColour color );
     void SetTextColor( wxColour color );
     void SetTitleColor( wxColour color );
+    void SetGrayScaleImages( bool val );
 
     wxString GetName( );
     wxString GetPageHeight( );
@@ -148,8 +155,9 @@ public:
     wxString GetLeftMargin( );
     wxString GetRightMargin( );
     wxString GetBorderSize( );
-    bool GetShowCatNbr( );
+    bool GetShowNbr( );
     bool GetShowStampTitle( );
+    bool GetGrayScaleImages( );
 
 
     bool IsNameModified( );
@@ -170,16 +178,19 @@ public:
     void SetRightMarginModified( bool state );
     void SetBorderSizeModified( bool state );
 
-    wxFont GetCatNbrFont( );
+    wxFont GetNbrFont( );
+    wxFont GetNameFont( );
     wxFont GetTextFont( );
     wxFont GetTitleFont( );
-    wxColour GetCatNbrColor( );
+    wxColour GetNbrColor( );
+    wxColour GetNameColor( );
     wxColour GetTextColor( );
     wxColour GetTitleColor( );
 
     void OnOkClick( wxCommandEvent& event );
     void OnCancelClick( wxCommandEvent& event );
     void OnNbrDefaultClick( wxCommandEvent& event );
+    void OnNameDefaultClick( wxCommandEvent& event );
     void OnTitleDefaultClick( wxCommandEvent& event );
     void OnTextDefaultClick( wxCommandEvent& event );
     void SetAlbum( Design::Album* album ) { m_album = album; };
@@ -194,12 +205,15 @@ private:
     LabeledTextBox* m_leftMargin;
     LabeledTextBox* m_borderSize;
 
-    wxCheckBox* m_catNbrCheckbox;
+    wxCheckBox* m_nbrCheckbox;
     wxCheckBox* m_stampTitleCheckbox;
+    wxCheckBox* m_grayScaleImagesCheckbox;
     wxFontPickerCtrl* m_titleFontPicker;
     wxColourPickerCtrl* m_titleColorPicker;
-    wxFontPickerCtrl* m_catNbrFontPicker;
-    wxColourPickerCtrl* m_catNbrColorPicker;
+    wxFontPickerCtrl* m_nbrFontPicker;
+    wxColourPickerCtrl* m_nbrColorPicker;
+    wxFontPickerCtrl* m_nameFontPicker;
+    wxColourPickerCtrl* m_nameColorPicker;
     wxFontPickerCtrl* m_textFontPicker;
     wxColourPickerCtrl* m_textColorPicker;
 

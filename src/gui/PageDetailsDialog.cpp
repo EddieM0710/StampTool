@@ -21,7 +21,7 @@
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  */
 
- 
+
 #include "wx/wxprec.h"
 
 #ifdef __BORLANDC__
@@ -43,9 +43,9 @@
 #include "design/Page.h"
 #include "design/Album.h"
 #include "design/DesignDefs.h"
-/*
- * PageDetailsDialog type definition
- */
+ /*
+  * PageDetailsDialog type definition
+  */
 
 IMPLEMENT_DYNAMIC_CLASS( PageDetailsDialog, wxDialog )
 
@@ -59,7 +59,7 @@ IMPLEMENT_DYNAMIC_CLASS( PageDetailsDialog, wxDialog )
     EVT_BUTTON( ID_TITLEDEFAULTBUTTON, PageDetailsDialog::OnTitleDefaultClick )
     END_EVENT_TABLE( )
 
-;
+    ;
 
 /*
  * PageDetailsDialog constructors
@@ -83,7 +83,7 @@ PageDetailsDialog::PageDetailsDialog( wxWindow* parent, wxWindowID id, const wxS
 
 bool PageDetailsDialog::Create( wxWindow* parent, wxWindowID id, const wxString& caption, const wxPoint& pos, const wxSize& size, long style )
 {
-    ////  PageDetailsDialog creation
+    //  PageDetailsDialog creation
     SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY | wxWS_EX_BLOCK_EVENTS );
     wxDialog::Create( parent, id, caption, pos, size, style );
 
@@ -93,7 +93,7 @@ bool PageDetailsDialog::Create( wxWindow* parent, wxWindowID id, const wxString&
         GetSizer( )->SetSizeHints( this );
     }
     Centre( );
-    ////  PageDetailsDialog creation
+    //  PageDetailsDialog creation
     return true;
 }
 
@@ -104,8 +104,8 @@ bool PageDetailsDialog::Create( wxWindow* parent, wxWindowID id, const wxString&
 
 PageDetailsDialog::~PageDetailsDialog( )
 {
-    ////  PageDetailsDialog destruction
-    ////  PageDetailsDialog destruction
+    //  PageDetailsDialog destruction
+    //  PageDetailsDialog destruction
 }
 
 
@@ -115,14 +115,14 @@ PageDetailsDialog::~PageDetailsDialog( )
 
 void PageDetailsDialog::Init( )
 {
-    ////  PageDetailsDialog member initialisation
+    //  PageDetailsDialog member initialisation
     m_name = NULL;
     m_titleCheckbox = NULL;
     m_frameCheckbox = NULL;
     m_name = NULL;
     m_titleCheckbox = NULL;
     m_statusList = NULL;
-    ////  PageDetailsDialog member initialisation
+    //  PageDetailsDialog member initialisation
 }
 
 
@@ -226,7 +226,7 @@ void PageDetailsDialog::CreateControls( )
     wxButton* itemButton10 = new wxButton( theDialog, wxID_OK, _( "OK" ), wxDefaultPosition, wxDefaultSize, 0 );
     dialogCtrlButtonSizer->Add( itemButton10, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
     //>>dialog Ctrl buttons    
-    ////  PageDetailsDialog content construction
+    //  PageDetailsDialog content construction
 }
 
 
@@ -284,7 +284,7 @@ void PageDetailsDialog::SetTitleColor( wxColour color )
 
 void PageDetailsDialog::OnOkClick( wxCommandEvent& event )
 {
- 
+
     if ( IsNameModified( ) )
     {
         m_page->SetAttrStr( Design::AT_Name, GetName( ) );
@@ -341,10 +341,10 @@ bool PageDetailsDialog::GetShowFrame( )
 };
 
 
-void PageDetailsDialog::OnTitleDefaultClick ( wxCommandEvent& event )
-{ 
-    int ndx = Design::GetAlbum()->GetTitleFontNdx();
-    Utils::FontList* fontList = GetFontList();
+void PageDetailsDialog::OnTitleDefaultClick( wxCommandEvent& event )
+{
+    int ndx = Design::GetAlbum( )->GetTitleFontNdx( );
+    Utils::FontList* fontList = GetFontList( );
     wxFont font = fontList->GetFont( ndx );
     wxColour color = fontList->GetColor( ndx );
     m_titleFontPicker->SetSelectedFont( font );

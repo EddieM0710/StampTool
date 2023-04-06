@@ -83,7 +83,14 @@ public:
         ID_NOTEBOOK,
         ID_NOTEBOOKPOSITIONPANEL,
         ID_NOTEBOOKDETAILSPANEL,
-        ID_POSITIONTEXTCTRL
+        ID_POSITIONTEXTCTRL,
+        ID_TITLELOCATION,
+        ID_DEFAULTRADIOBUTTON,
+        ID_TOPRADIOBUTTON,
+        ID_BOTTOMRADIOBUTTON,
+        ID_LEFTRADIOBUTTON,
+        ID_RIGHTRADIOBUTTON
+
     };
 
 
@@ -110,7 +117,12 @@ public:
 
     ///   wxID_OK
     void OnOkClick( wxCommandEvent& event );
-
+    void OnDefaultRadioButtonSelected( wxCommandEvent& event );
+    void OnTopRadioButtonSelected( wxCommandEvent& event );
+    void OnBottomRadioButtonSelected( wxCommandEvent& event );
+    void OnLeftRadioButtonSelected( wxCommandEvent& event );
+    void OnRightRadioButtonSelected( wxCommandEvent& event );
+    void OnTitleDefaultClick( wxCommandEvent& event );
 
     static bool ShowToolTips( );
     void SetNameModified( bool state );
@@ -120,6 +132,7 @@ public:
     void SetTitleFont( wxFont font );
     bool GetShowTitle( );
     bool GetShowFrame( );
+    void SetTitleLayoutLocation( );
 
     wxString GetName( );
 
@@ -136,6 +149,15 @@ private:
     wxTextCtrl* positionTextCtrl;
     Design::Row* m_row;
     wxTreeItemId m_designTreeID;
+    wxStaticBox* m_TitleLocationBox;
+    wxStaticBoxSizer* m_titleLocationVSizer;
+    wxBoxSizer* m_titleLocationHSizer;
+    Design::TitleLocation m_titleLocation;
+    wxRadioButton* m_topButton;
+    wxRadioButton* m_bottomButton;
+    wxRadioButton* m_leftButton;
+    wxRadioButton* m_rightButton;
+    wxRadioButton* m_defaultButton;
 };
 
 #endif

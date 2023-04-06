@@ -58,6 +58,7 @@
 #include "design/Stamp.h"
 #include "design/Row.h"
 #include "design/Column.h"
+#include "design/Text.h"
 #include "gui/StampToolFrame.h"
 #include "gui/DesignTreeCtrl.h"
 #include "utils/XMLUtilities.h"
@@ -200,8 +201,8 @@ void DesignTreeCtrl::UpdateStampList( wxTreeItemId& treeItemId )
             }
         }
 
-    UpdateStampList( childID );
-    childID = GetNextChild( treeItemId, cookie );
+        UpdateStampList( childID );
+        childID = GetNextChild( treeItemId, cookie );
     }
 
 }
@@ -481,6 +482,35 @@ Design::Stamp* DesignTreeCtrl::AddStampTreeItem( wxTreeItemId parentID, Design::
 
 
 
+Design::Text* DesignTreeCtrl::AddTextTreeItem( wxTreeItemId parentID, Design::Text* newText )
+{
+    wxXmlNode* parentNode = ( wxXmlNode* ) GetItemNode( parentID );
+
+    if ( newText )
+    {
+
+        DesignTreeItemData* itemData = new DesignTreeItemData( Design::AT_Text, "Text", newText );
+        wxTreeItemId childID = AppendItem( parentID, "Text", Design::Icon_Folder, -1, itemData );
+        newText->SetTreeItemId( childID );
+        SetItemImage( childID, Design::Icon_Menu );
+        Expand( childID );
+        SelectItem( childID );
+        wxTreeItemId  pageID = GetPage( childID );
+        Design::Page* page = ( Design::Page* ) GetItemNode( pageID );
+        page->UpdateMinimumSize( );
+        page->UpdateSizes( );
+        page->UpdatePositions( );
+
+        Design::NodeStatus status = newText->ValidateNode( );
+        SetItemBackgroundColour( childID, ItemBackgroundColour[ status ] );
+
+        status = newText->ValidateNode( );
+        SetItemBackgroundColour( parentID, ItemBackgroundColour[ status ] );
+    }
+    return newText;
+}
+
+
 
 Design::Stamp* DesignTreeCtrl::CreateNewStamp( wxTreeItemId catTreeID )
 {
@@ -520,6 +550,16 @@ Design::Stamp* DesignTreeCtrl::CreateNewStamp( wxTreeItemId catTreeID )
     }
     return newStamp;
 }
+
+
+
+Design::Text* DesignTreeCtrl::CreateNewText( )
+{
+    Design::Text* newText = new Design::Text( );
+    newText->SetAttrStr( Design::AT_Name, "Text Title" );
+    return newText;
+}
+
 Utils::StampLink* DesignTreeCtrl::AppendStamp( wxTreeItemId catTreeID )
 {
     Utils::StampLink* newLink = ( Utils::StampLink* ) 0;
@@ -742,7 +782,7 @@ bool DesignTreeCtrl::IsElement( wxTreeItemId item, Design::AlbumBase* ele )
 
 void DesignTreeCtrl::LoadTree( )
 {
-    
+
     wxXmlDocument* doc = GetDesignData( )->GetDoc( );
     if ( doc && doc->IsOk( ) )
     {
@@ -902,7 +942,7 @@ void DesignTreeCtrl::MoveItem( wxTreeItemId srcID, wxTreeItemId dstID )
     CopyItem( dstID, srcID );
     SelectItem( dstID );
     UpdateItemPageLayout( srcParentID );
-    if ( srcParentID != dstParentID)
+    if ( srcParentID != dstParentID )
     {
         UpdateItemPageLayout( dstParentID );
     }
@@ -1044,7 +1084,7 @@ void DesignTreeCtrl::OnSelChanged( wxTreeEvent& event )
     }
     else
     {
-        std::cout << "DesignTreeCtrl::OnSelChanged invalid pageId"<< std::endl;
+        std::cout << "DesignTreeCtrl::OnSelChanged invalid pageId" << std::endl;
     }
     event.Skip( );
 }
@@ -1121,6 +1161,7 @@ void DesignTreeCtrl::ShowMenu( wxTreeItemId id, const wxPoint& pt )
         wxMenuItem* addRowItem = addSubMenu->Append( DesignTree_AddRow, "Add Row" );
         wxMenuItem* addColItem = addSubMenu->Append( DesignTree_AddCol, "Add Column" );
         wxMenuItem* addStampItem = addSubMenu->Append( DesignTree_AddStamp, "Add Stamp" );
+        wxMenuItem* addTextItem = addSubMenu->Append( DesignTree_AddText, "Add Text" );
 
         switch ( type )
         {
@@ -1130,6 +1171,7 @@ void DesignTreeCtrl::ShowMenu( wxTreeItemId id, const wxPoint& pt )
             addRowItem->Enable( false );
             addColItem->Enable( false );
             addStampItem->Enable( false );
+            addTextItem->Enable( false );
             break;
         }
         case Design::AT_Page:
@@ -1138,6 +1180,7 @@ void DesignTreeCtrl::ShowMenu( wxTreeItemId id, const wxPoint& pt )
             addRowItem->Enable( true );
             addColItem->Enable( true );
             addStampItem->Enable( false );
+            addTextItem->Enable( false );
             break;
         }
         case Design::AT_Row:
@@ -1146,6 +1189,7 @@ void DesignTreeCtrl::ShowMenu( wxTreeItemId id, const wxPoint& pt )
             addRowItem->Enable( false );
             addColItem->Enable( true );
             addStampItem->Enable( true );
+            addTextItem->Enable( true );
             break;
         }
         case Design::AT_Col:
@@ -1154,6 +1198,7 @@ void DesignTreeCtrl::ShowMenu( wxTreeItemId id, const wxPoint& pt )
             addRowItem->Enable( true );
             addColItem->Enable( false );
             addStampItem->Enable( true );
+            addTextItem->Enable( true );
             break;
         }
         case Design::AT_Stamp:
@@ -1162,14 +1207,24 @@ void DesignTreeCtrl::ShowMenu( wxTreeItemId id, const wxPoint& pt )
             addRowItem->Enable( false );
             addColItem->Enable( false );
             addStampItem->Enable( false );
+            addTextItem->Enable( false );
             break;
         }
-        default:
+        case Design::AT_Text:
         {
             addPageItem->Enable( false );
             addRowItem->Enable( false );
             addColItem->Enable( false );
             addStampItem->Enable( false );
+            addTextItem->Enable( false );
+            break;
+        }        default:
+        {
+            addPageItem->Enable( false );
+            addRowItem->Enable( false );
+            addColItem->Enable( false );
+            addStampItem->Enable( false );
+            addTextItem->Enable( false );
             break;
         }
         }
@@ -1198,6 +1253,12 @@ void DesignTreeCtrl::ShowMenu( wxTreeItemId id, const wxPoint& pt )
         {
             Design::Stamp* newStamp = CreateNewStamp( 0 );
             AddStampTreeItem( id, newStamp );
+            break;
+        }
+        case DesignTree_AddText:
+        {
+            Design::Text* newText = CreateNewText( );
+            AddTextTreeItem( id, newText );
             break;
         }
         case DesignTree_DeleteItem:
@@ -1257,21 +1318,21 @@ void DesignTreeCtrl::ShowAlbumDetails( wxTreeItemId treeID, Design::AlbumBase* n
     if ( albumDetailsDialog.ShowModal( ) == wxID_OK )
     {
 
-        wxString newName = album->GetAttrStr( Design::AT_Name  );
+        wxString newName = album->GetAttrStr( Design::AT_Name );
         SetItemText( treeID, newName );
 
         DesignTreeItemData* data = ( DesignTreeItemData* ) GetItemData( treeID );
         data->SetDesc( newName );
-        
 
-        album->MakeAlbum();
+
+        album->MakeAlbum( );
         Design::NodeStatus status = album->ValidateNode( );
         SetItemBackgroundColour( node->GetTreeItemId( ), ItemBackgroundColour[ status ] );
         GetAlbumImagePanel( )->Refresh( );
     }
-    return; 
-    
-//    MakePage( m_currPageID );
+    return;
+
+    //    MakePage( m_currPageID );
 
 }
 
@@ -1282,16 +1343,16 @@ void DesignTreeCtrl::ShowStampDetails( wxTreeItemId treeID )
         _( "View Edit Stamp Details" ) );
 
     stampDetailsDialog.SetupDialog( treeID );
-//    stamp->ReportLayout( );
+    //    stamp->ReportLayout( );
 
     if ( stampDetailsDialog.ShowModal( ) == wxID_OK )
     {
-        DesignTreeItemData* data = ( DesignTreeItemData* ) GetDesignTreeCtrl( )->GetItemData( treeID );       
+        DesignTreeItemData* data = ( DesignTreeItemData* ) GetDesignTreeCtrl( )->GetItemData( treeID );
         Design::Stamp* stamp = ( Design::Stamp* ) data->GetNodeElement( );
 
         if ( stampDetailsDialog.IsNameModified( ) )
         {
-            wxString newName = stamp->GetAttrStr( Design::AT_Name  );
+            wxString newName = stamp->GetAttrStr( Design::AT_Name );
             SetItemText( treeID, newName );
             data->SetDesc( newName );
         }
@@ -1300,7 +1361,7 @@ void DesignTreeCtrl::ShowStampDetails( wxTreeItemId treeID )
         SetItemBackgroundColour( treeID, ItemBackgroundColour[ status ] );
         GetAlbumImagePanel( )->Refresh( );
     }
-    return; 
+    return;
 
 }
 void DesignTreeCtrl::ShowPageDetails( wxTreeItemId treeID, Design::AlbumBase* node )
@@ -1314,22 +1375,22 @@ void DesignTreeCtrl::ShowPageDetails( wxTreeItemId treeID, Design::AlbumBase* no
     //page->ReportLayout( );
     if ( pageDetailsDialog.ShowModal( ) == wxID_OK )
     {
-        DesignTreeItemData* data = ( DesignTreeItemData* ) GetDesignTreeCtrl( )->GetItemData( treeID );       
+        DesignTreeItemData* data = ( DesignTreeItemData* ) GetDesignTreeCtrl( )->GetItemData( treeID );
         Design::Page* page = ( Design::Page* ) data->GetNodeElement( );
         if ( pageDetailsDialog.IsNameModified( ) )
         {
-            wxString desc = "Page - " + page->GetAttrStr( Design::AT_Name  );
+            wxString desc = "Page - " + page->GetAttrStr( Design::AT_Name );
             SetItemText( treeID, desc );
             data->SetDesc( desc );
         }
 
-        page->UpdateLayout();
+        page->UpdateLayout( );
 
         Design::NodeStatus status = page->ValidateNode( );
         SetItemBackgroundColour( page->GetTreeItemId( ), ItemBackgroundColour[ status ] );
         GetAlbumImagePanel( )->Refresh( );
     }
-    return; 
+    return;
 }
 
 void DesignTreeCtrl::ShowRowDetails( wxTreeItemId treeID, Design::AlbumBase* node )
@@ -1342,22 +1403,22 @@ void DesignTreeCtrl::ShowRowDetails( wxTreeItemId treeID, Design::AlbumBase* nod
 
     if ( rowDetailsDialog.ShowModal( ) == wxID_OK )
     {
-        DesignTreeItemData* data = ( DesignTreeItemData* ) GetDesignTreeCtrl( )->GetItemData( treeID );       
+        DesignTreeItemData* data = ( DesignTreeItemData* ) GetDesignTreeCtrl( )->GetItemData( treeID );
         Design::Row* row = ( Design::Row* ) data->GetNodeElement( );
         if ( rowDetailsDialog.IsNameModified( ) )
         {
-            wxString newName = row->GetAttrStr( Design::AT_Name  );
+            wxString newName = row->GetAttrStr( Design::AT_Name );
             SetItemText( treeID, newName );
             data->SetDesc( newName );
         }
 
-        GetDesignData()->UpdatePage( row  );
+        GetDesignData( )->UpdatePage( row );
         //row->UpdateLayout();
 
         Design::NodeStatus status = row->ValidateNode( );
         SetItemBackgroundColour( row->GetTreeItemId( ), ItemBackgroundColour[ status ] );
-         GetAlbumImagePanel( )->Refresh( );
-   }
+        GetAlbumImagePanel( )->Refresh( );
+    }
     return; // the user changed idea..
 
 }
@@ -1372,12 +1433,12 @@ void DesignTreeCtrl::ShowColDetails( wxTreeItemId treeID, Design::AlbumBase* nod
     if ( colDetailsDialog.ShowModal( ) == wxID_OK )
     {
 
-        DesignTreeItemData* data = ( DesignTreeItemData* ) GetDesignTreeCtrl( )->GetItemData( treeID );       
+        DesignTreeItemData* data = ( DesignTreeItemData* ) GetDesignTreeCtrl( )->GetItemData( treeID );
         Design::Column* col = ( Design::Column* ) data->GetNodeElement( );
 
         if ( colDetailsDialog.IsNameModified( ) )
         {
-            wxString newName = col->GetAttrStr( Design::AT_Name  );
+            wxString newName = col->GetAttrStr( Design::AT_Name );
             SetItemText( treeID, newName );
             data->SetDesc( newName );
             node->SetAttrStr( Design::AT_Name, colDetailsDialog.GetName( ) );
@@ -1453,7 +1514,7 @@ wxString DesignTreeCtrl::GetItemDesc( wxTreeItemId albumID )
     {
         DesignTreeItemData* data = ( DesignTreeItemData* ) GetItemData( albumID );
         if ( data )
-        {        
+        {
             return data->GetDesc( );
         }
     }
@@ -1473,10 +1534,10 @@ void DesignTreeCtrl::SetItemStampLink( wxTreeItemId albumID, Utils::StampLink* l
 {
     if ( albumID.IsOk( ) )
     {
-        DesignTreeItemData* data = ( DesignTreeItemData* )GetItemData( albumID );
+        DesignTreeItemData* data = ( DesignTreeItemData* ) GetItemData( albumID );
         if ( data )
         {
-            data->SetStampLink( link  );
+            data->SetStampLink( link );
         }
     }
 };

@@ -68,12 +68,13 @@ public:
         ID_LINKTEXTBOX,
         ID_MYSTICBUTTON,
         ID_COLNECTBUTTON,
+        ID_SITETBUTTON,
         ID_EBAYBUTTON,
         ID_NPMBUTTON,
         ID_CATCODETEXTBOX,
         ID_IMAGENAMETEXTBOX
     };
-    
+
     /**
      * @brief Default Constructor a new MiscellaneousDataPanel object
      * @details Must be used in conjunction with Create.
@@ -115,7 +116,7 @@ public:
         const wxSize& size = SYMBOL_MISCELLANEOUSDATAPANEL_SIZE,
         long style = SYMBOL_MISCELLANEOUSDATAPANEL_STYLE );
 
-    
+
     ~MiscellaneousDataPanel( );
 
     /**
@@ -138,6 +139,8 @@ public:
     //   ID_COLNECTBUTTON
     void OnColnectButtonClick( wxCommandEvent& event );
 
+    void OnSiteButtonClick( wxCommandEvent& event );
+
     //   ID_EBAYBUTTON
     void OneBayButtonClick( wxCommandEvent& event );
 
@@ -148,13 +151,16 @@ public:
 
     // MiscellaneousDataPanel member function declarations
 
-   
+
    // 
     static bool ShowToolTips( );
 
     void ShowStamp( );
     void SetStamp( Catalog::Entry* stamp );
     void SetDataEditable( bool val );
+
+    void RetrieveImage( );
+    static size_t write_data( void* ptr, size_t size, size_t nmemb, void* stream );
 
     //void SetLabel( wxWindowID id, wxString val );
 

@@ -19,7 +19,7 @@
  * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  */
- /////////////////////////////////////////////////////////////////////////////
+ ///////////////////////////////////////
 
 #ifndef _GENERATELISTSETTINGS_H_
 #define _GENERATELISTSETTINGS_H_
@@ -92,7 +92,7 @@ public:
 
     void CreateControls( );
 
-    //// GenerateListSettings event handler declarations
+    // GenerateListSettings event handler declarations
 
         ///   ID_STATUSALLBUTTON
     void OnStatusAllButtonClick( wxCommandEvent& event );

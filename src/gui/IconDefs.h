@@ -59,6 +59,7 @@
 #include "art/StampRedSouvenirSheet.xpm"
 #include "art/StampYellowSouvenirSheet.xpm"
 #include "art/folder.xpm"
+#include "art/menu.xpm"
 
 #include "art/unchecked.xpm"
 #include "art/checked.xpm"
@@ -74,7 +75,8 @@ namespace Design {
         Icon_StampMiniSheetSelected,
         Icon_StampSouvenirSheet,
         Icon_StampSouvenirSheetSelected,
-        Icon_Folder
+        Icon_Folder,
+        Icon_Menu
     } IconID;
     /*
       * @brief AlbumImageSelection[ Design::AT_NbrAlbumTypes ][ Catalog::ST_NbrCheckedStatusTypes ];

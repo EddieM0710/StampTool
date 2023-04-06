@@ -19,7 +19,7 @@
  * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  */
- /////////////////////////////////////////////////////////////////////////////
+ ///////////////////////////////////////
 
 #include "wx/wxprec.h"
 
@@ -32,9 +32,9 @@
 #endif
 #include "wx/notebook.h"
 
-////  includes
+//  includes
 #include "wx/imaglist.h"
-////  includes
+//  includes
 
 #include "gui/AlbumDetailsDialog.h"
 #include "gui/LabeledTextBox.h"
@@ -47,9 +47,9 @@
 #include "wx/treectrl.h"
 #include <wx/fontdlg.h>
 #include <wx/fontdata.h>
-////  XPM images
+//  XPM images
 
-////  XPM images
+//  XPM images
 
 
 /*
@@ -67,6 +67,7 @@ IMPLEMENT_DYNAMIC_CLASS( AlbumDetailsDialog, wxDialog )
     EVT_BUTTON( wxID_CANCEL, AlbumDetailsDialog::OnCancelClick )
     EVT_BUTTON( wxID_OK, AlbumDetailsDialog::OnOkClick )
     EVT_BUTTON( ID_NBRDEFAULTFONTBUTTON, AlbumDetailsDialog::OnNbrDefaultClick )
+    EVT_BUTTON( ID_NAMEDEFAULTFONTBUTTON, AlbumDetailsDialog::OnNameDefaultClick )
     EVT_BUTTON( ID_TITLEDEFAULTFONTBUTTON, AlbumDetailsDialog::OnTitleDefaultClick )
     EVT_BUTTON( ID_TEXTDEFAULTFONTBUTTON, AlbumDetailsDialog::OnTextDefaultClick )
     END_EVENT_TABLE( )
@@ -135,14 +136,23 @@ void AlbumDetailsDialog::CreateControls( )
     m_name->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
     itemBoxSizer6->Add( m_name, 1, wxGROW | wxALL, 5 );
 
-    FontPicker* catNbrFontPickerHelper = new FontPicker(
+    FontPicker* nbrFontPickerHelper = new FontPicker(
         theDialog, theDialogVerticalSizer,
         _( "Default Catalog Nbr  Font" ), wxID_STATIC,
-        ID_CATNBRFONTPICKER, ID_CATNBCOLORPICKER,
+        ID_NBRFONTPICKER, ID_NBRCOLORPICKER,
         _( "Default" ), ID_NBRDEFAULTFONTBUTTON,
         *wxNORMAL_FONT, *wxBLACK );
-    m_catNbrFontPicker = catNbrFontPickerHelper->GetFontPickerCtrl( );
-    m_catNbrColorPicker = catNbrFontPickerHelper->GetColourPickerCtrl( );
+    m_nbrFontPicker = nbrFontPickerHelper->GetFontPickerCtrl( );
+    m_nbrColorPicker = nbrFontPickerHelper->GetColourPickerCtrl( );
+
+    FontPicker* nameFontPickerHelper = new FontPicker(
+        theDialog, theDialogVerticalSizer,
+        _( "Default Name Font" ), wxID_STATIC,
+        ID_NAMEFONTPICKER, ID_NAMECOLORPICKER,
+        _( "Default" ), ID_NAMEDEFAULTFONTBUTTON,
+        *wxNORMAL_FONT, *wxBLACK );
+    m_nameFontPicker = nameFontPickerHelper->GetFontPickerCtrl( );
+    m_nameColorPicker = nameFontPickerHelper->GetColourPickerCtrl( );
 
     FontPicker* titleFontPickerHelper = new FontPicker(
         theDialog, theDialogVerticalSizer,
@@ -206,13 +216,17 @@ void AlbumDetailsDialog::CreateControls( )
     wxBoxSizer* itemBoxSizer20 = new wxBoxSizer( wxHORIZONTAL );
     theDialogVerticalSizer->Add( itemBoxSizer20, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 0 );
 
-    m_catNbrCheckbox = new wxCheckBox( theDialog, ID_CATNBRDEFAULTCHECKBOX, _( "Show Catalog Nbr" ), wxDefaultPosition, wxDefaultSize, 0 );
-    m_catNbrCheckbox->SetValue( true );
-    itemBoxSizer20->Add( m_catNbrCheckbox, 0, wxALIGN_LEFT | wxALL, 5 );
+    m_nbrCheckbox = new wxCheckBox( theDialog, ID_NBRDEFAULTCHECKBOX, _( "Show Catalog Nbr" ), wxDefaultPosition, wxDefaultSize, 0 );
+    m_nbrCheckbox->SetValue( true );
+    itemBoxSizer20->Add( m_nbrCheckbox, 0, wxALIGN_LEFT | wxALL, 5 );
 
-    m_stampTitleCheckbox = new wxCheckBox( theDialog, ID_STAMPTITLEDEFAULTCHECKBOX, _( "Show StampTitle" ), wxDefaultPosition, wxDefaultSize, 0 );
+    m_stampTitleCheckbox = new wxCheckBox( theDialog, ID_STAMPTITLEDEFAULTCHECKBOX, _( "Show Stamp Title" ), wxDefaultPosition, wxDefaultSize, 0 );
     m_stampTitleCheckbox->SetValue( true );
     itemBoxSizer20->Add( m_stampTitleCheckbox, 0, wxALIGN_LEFT | wxALL, 5 );
+
+    m_grayScaleImagesCheckbox = new wxCheckBox( theDialog, ID_GRAYSCALECHECKBOX, _( "Show Grayscale Images" ), wxDefaultPosition, wxDefaultSize, 0 );
+    m_grayScaleImagesCheckbox->SetValue( true );
+    itemBoxSizer20->Add( m_grayScaleImagesCheckbox, 0, wxALIGN_LEFT | wxALL, 5 );
 
     wxBoxSizer* itemBoxSizer13 = new wxBoxSizer( wxHORIZONTAL );
     theDialogVerticalSizer->Add( itemBoxSizer13, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 0 );
@@ -263,11 +277,14 @@ void AlbumDetailsDialog::UpdateControls( )
     SetLeftMargin( m_album->GetLeftMarginStr( ) );
     SetRightMargin( m_album->GetRightMarginStr( ) );
     SetBorderSize( m_album->GetBorderSizeStr( ) );
+    SetShowNbr( m_album->GetShowNbr( ) );
+    SetShowStampTitle( m_album->GetShowTitle( ) );
+    SetGrayScaleImages( m_album->GetGrayScaleImages( ) );
 
-    SetCatNbrFont( m_album->GetCatNbrFont( ) );
+    SetNbrFont( m_album->GetNbrFont( ) );
     SetTextFont( m_album->GetTextFont( ) );
     SetTitleFont( m_album->GetTitleFont( ) );
-    SetCatNbrColor( m_album->GetCatNbrColor( ) );
+    SetNbrColor( m_album->GetNbrColor( ) );
     SetTextColor( m_album->GetTextColor( ) );
     SetTitleColor( m_album->GetTitleColor( ) );
     SetName( m_album->GetAttrStr( Design::AT_Name ) );
@@ -352,10 +369,12 @@ wxString AlbumDetailsDialog::GetBottomMargin( ) { return m_bottomMargin->GetValu
 wxString AlbumDetailsDialog::GetLeftMargin( ) { return m_leftMargin->GetValue( ); }
 wxString AlbumDetailsDialog::GetRightMargin( ) { return m_rightMargin->GetValue( ); }
 wxString AlbumDetailsDialog::GetBorderSize( ) { return m_borderSize->GetValue( ); }
-wxFont AlbumDetailsDialog::GetCatNbrFont( ) { return m_catNbrFontPicker->GetSelectedFont( ); }
+wxFont AlbumDetailsDialog::GetNbrFont( ) { return m_nbrFontPicker->GetSelectedFont( ); }
+wxFont AlbumDetailsDialog::GetNameFont( ) { return m_nameFontPicker->GetSelectedFont( ); }
 wxFont AlbumDetailsDialog::GetTextFont( ) { return m_textFontPicker->GetSelectedFont( ); }
 wxFont AlbumDetailsDialog::GetTitleFont( ) { return m_titleFontPicker->GetSelectedFont( ); }
-wxColour AlbumDetailsDialog::GetCatNbrColor( ) { return m_catNbrColorPicker->GetColour( ); }
+wxColour AlbumDetailsDialog::GetNbrColor( ) { return m_nbrColorPicker->GetColour( ); }
+wxColour AlbumDetailsDialog::GetNameColor( ) { return m_nbrColorPicker->GetColour( ); }
 wxColour AlbumDetailsDialog::GetTextColor( ) { return m_textColorPicker->GetColour( ); }
 wxColour AlbumDetailsDialog::GetTitleColor( ) { return m_titleColorPicker->GetColour( ); }
 
@@ -376,16 +395,20 @@ void AlbumDetailsDialog::SetBottomMarginModified( bool state ) { m_bottomMargin-
 void AlbumDetailsDialog::SetLeftMarginModified( bool state ) { m_leftMargin->SetModified( state ); }
 void AlbumDetailsDialog::SetRightMarginModified( bool state ) { m_rightMargin->SetModified( state ); }
 void AlbumDetailsDialog::SetBorderSizeModified( bool state ) { m_borderSize->SetModified( state ); }
-void AlbumDetailsDialog::SetShowCatNbr( bool state ) { m_catNbrCheckbox->SetValue( state ); }
+void AlbumDetailsDialog::SetShowNbr( bool state ) { m_nbrCheckbox->SetValue( state ); }
 void AlbumDetailsDialog::SetShowStampTitle( bool state ) { m_stampTitleCheckbox->SetValue( state ); }
-bool AlbumDetailsDialog::GetShowCatNbr( ) { return m_catNbrCheckbox->IsChecked( ); }
+bool AlbumDetailsDialog::GetShowNbr( ) { return m_nbrCheckbox->IsChecked( ); }
 bool AlbumDetailsDialog::GetShowStampTitle( ) { return m_stampTitleCheckbox->GetValue( ); }
-void AlbumDetailsDialog::SetCatNbrFont( wxFont font ) { m_catNbrFontPicker->SetSelectedFont( font ); }
+void AlbumDetailsDialog::SetNbrFont( wxFont font ) { m_nbrFontPicker->SetSelectedFont( font ); }
+void AlbumDetailsDialog::SetNameFont( wxFont font ) { m_nameFontPicker->SetSelectedFont( font ); }
 void AlbumDetailsDialog::SetTextFont( wxFont font ) { m_textFontPicker->SetSelectedFont( font ); }
 void AlbumDetailsDialog::SetTitleFont( wxFont font ) { m_titleFontPicker->SetSelectedFont( font ); }
-void AlbumDetailsDialog::SetCatNbrColor( wxColour color ) { m_catNbrColorPicker->SetColour( color ); }
+void AlbumDetailsDialog::SetNbrColor( wxColour color ) { m_nbrColorPicker->SetColour( color ); }
+void AlbumDetailsDialog::SetNameColor( wxColour color ) { m_nbrColorPicker->SetColour( color ); }
 void AlbumDetailsDialog::SetTextColor( wxColour color ) { m_textColorPicker->SetColour( color ); }
 void AlbumDetailsDialog::SetTitleColor( wxColour color ) { m_titleColorPicker->SetColour( color ); }
+void AlbumDetailsDialog::SetGrayScaleImages( bool val ) { m_grayScaleImagesCheckbox->SetValue( val ); };
+bool AlbumDetailsDialog::GetGrayScaleImages( ) { return m_grayScaleImagesCheckbox->GetValue( ); }
 
 
 /*
@@ -400,16 +423,28 @@ void AlbumDetailsDialog::OnCancelClick( wxCommandEvent& event )
 void AlbumDetailsDialog::OnNbrDefaultClick( wxCommandEvent& event )
 {
 
-    int ndx = GetSettings( )->GetAppPrefCatNbrFontNdx( );
+    int ndx = GetSettings( )->GetAppPrefNbrFontNdx( );
     Utils::FontList* fontList = GetFontList( );
     wxFont font = fontList->GetFont( ndx );
     wxColour color = fontList->GetColor( ndx );
-    m_catNbrFontPicker->SetSelectedFont( font );
-    m_catNbrColorPicker->SetColour( color );
+    m_nbrFontPicker->SetSelectedFont( font );
+    m_nbrColorPicker->SetColour( color );
 
     event.Skip( );
 }
 
+void AlbumDetailsDialog::OnNameDefaultClick( wxCommandEvent& event )
+{
+
+    int ndx = GetSettings( )->GetAppPrefNameFontNdx( );
+    Utils::FontList* fontList = GetFontList( );
+    wxFont font = fontList->GetFont( ndx );
+    wxColour color = fontList->GetColor( ndx );
+    m_nameFontPicker->SetSelectedFont( font );
+    m_nameColorPicker->SetColour( color );
+
+    event.Skip( );
+}
 void AlbumDetailsDialog::OnTextDefaultClick( wxCommandEvent& event )
 {
     int ndx = GetSettings( )->GetAppPrefTextFontNdx( );
@@ -473,11 +508,14 @@ void AlbumDetailsDialog::OnOkClick( wxCommandEvent& event )
     {
         m_album->SetBorderSize( GetBorderSize( ) );
     }
-    m_album->SetShowCatNbr( GetShowCatNbr( ) );
+    m_album->SetShowNbr( GetShowNbr( ) );
     m_album->SetShowTitle( GetShowStampTitle( ) );
-    wxFont newFont = GetCatNbrFont( );
+    m_album->SetGrayScaleImages( GetGrayScaleImages( ) );
+
+    wxFont newFont = GetNbrFont( );
+
     m_album->SetTextFont( GetTextFont( ), GetTextColor( ) );
-    m_album->SetCatNbrFont( GetCatNbrFont( ), GetCatNbrColor( ) );
+    m_album->SetNbrFont( GetNbrFont( ), GetNbrColor( ) );
     m_album->SetTitleFont( GetTitleFont( ), GetTitleColor( ) );
 
 

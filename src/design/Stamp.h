@@ -33,14 +33,14 @@
 namespace Design {
 
 
-    typedef enum {
-        AT_InvalidImage = 0,
-        AT_InvalidHeight,
-        AT_InvalidWidth,
-        AT_NbrStampErrorTypes
-    }StampErrorType;
+    // typedef enum {
+    //     AT_InvalidImage = 0,
+    //     AT_InvalidHeight,
+    //     AT_InvalidWidth,
+    //     AT_NbrStampErrorTypes
+    // }StampErrorType;
 
-    extern const char* ErrorStrings[ AT_NbrStampErrorTypes ];
+    // extern const char* ErrorStrings[ AT_NbrStampErrorTypes ];
 
     /**
      * @class Stamp
@@ -66,7 +66,7 @@ namespace Design {
         {
             SetNodeType( AT_Stamp );
             SetObjectName( AlbumBaseNames[ GetNodeType( ) ] );
-            SetShowCatNbr( true );
+            SetShowNbr( true );
             SetShowTitle( true );
             wxString height = GetAttrStr( Design::AT_Height );
             SetStampHeight( height );
@@ -79,7 +79,7 @@ namespace Design {
         {
             SetNodeType( AT_Stamp );
             SetObjectName( AlbumBaseNames[ AT_Stamp ] );
-            SetShowCatNbr( true );
+            SetShowNbr( true );
             SetShowTitle( true );
             SetStampHeight( "10.0" );
             SetStampWidth( "10.0" );
@@ -126,9 +126,9 @@ namespace Design {
          //        wxXmlNode* Write( wxXmlNode* parent );
 
         NodeStatus ValidateNode( );
-        void ClearError( );
-        void SetError( StampErrorType type, NodeStatus status );
-        NodeStatus GetStatus( );
+        //        void ClearError( );
+        //        void SetError( StampErrorType type, NodeStatus status );
+        //        NodeStatus GetStatus( );
 
         void SetStampHeight( double val );
         void SetStampHeight( wxString str );
@@ -161,7 +161,7 @@ namespace Design {
         bool GetShowTitle( ) { return String2Bool( GetAttrStr( AT_ShowTitle ) ); };
         void SetShowTitle( bool val ) { SetAttrStr( AT_ShowTitle, Bool2String( val ) ); };
 
-        bool GetShowCatNbr( )
+        bool GetShowNbr( )
         {
             wxString catStr = GetAttrStr( AT_ShowCatNbr );
             if ( catStr.IsEmpty( ) )
@@ -174,7 +174,7 @@ namespace Design {
                 return String2Bool( catStr );
             }
         };
-        void SetShowCatNbr( bool val ) { SetAttrStr( AT_ShowCatNbr, Bool2String( val ) ); };
+        void SetShowNbr( bool val ) { SetAttrStr( AT_ShowCatNbr, Bool2String( val ) ); };
 
         void ReportLayout( );
 
@@ -190,14 +190,14 @@ namespace Design {
         Frame m_stampFrame;
         Frame m_stampImageFrame;
 
-        NodeStatus m_error[ AT_NbrStampErrorTypes ];
+        //        NodeStatus m_error[ AT_NbrStampErrorTypes ];
         bool m_showCatNbr;
         wxSize m_idTextExtent;
         wxSize m_titleTextExtent;
         bool m_showTitle;
         wxString m_imageFilename;
         DebugString m_debugString;
-
+        //        RealPoint  m_stampCenter;
     };
 }
 #endif

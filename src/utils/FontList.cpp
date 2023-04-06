@@ -6,18 +6,18 @@
  * @date 2022-02-04
  *
  * @copyright Copyright ( c ) 2022
- * 
+ *
  * This file is part of StampTool.
  *
- * StampTool is free software: you can redistribute it and/or modify it under the 
- * terms of the GNU General Public License as published by the Free Software Foundation, 
+ * StampTool is free software: you can redistribute it and/or modify it under the
+ * terms of the GNU General Public License as published by the Free Software Foundation,
  * either version 3 of the License, or any later version.
  *
- * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY 
- * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+ * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
+ * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
- * You should have received a copy of the GNU General Public License along with 
+ * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
  **************************************************/
@@ -41,10 +41,10 @@
 #include "gui/GuiUtils.h"
 
 
-namespace Utils { 
+namespace Utils {
 
     int FontCount = -1;
-    int GetFontCount() { FontCount++; return FontCount; };
+    int GetFontCount( ) { FontCount++; return FontCount; };
 
     // int FontList::FindFont( FontMap& list, wxFont* font, wxColor color )
     // { 
@@ -63,8 +63,8 @@ namespace Utils {
         m_ndx = -1;
     }
 
-    int FontNdx::Get( ) 
-    { 
+    int FontNdx::Get( )
+    {
         return m_ndx;
     };
 
@@ -73,15 +73,15 @@ namespace Utils {
         if ( m_fontList->IsValidFontNdx( ndx ) )
         {
             Font* font;
-            if ( IsOk() )
+            if ( IsOk( ) )
             {
                 font = m_fontList->GetMyFont( m_ndx );
                 if ( ndx != m_ndx )
                 {
                     if ( m_fontList->IsValidFontNdx( m_ndx ) )
                     {
-                        int cnt = font->Decrement();
-                        if (cnt <= 0 )
+                        int cnt = font->Decrement( );
+                        if ( cnt <= 0 )
                         {
                             m_fontList->Erase( m_ndx );
                         }
@@ -90,17 +90,17 @@ namespace Utils {
                 }
                 else
                 {
-                    int cnt = font->Increment();
+                    int cnt = font->Increment( );
                 }
             }
             else
             {
                 m_ndx = ndx;
                 font = m_fontList->GetMyFont( m_ndx );
-                int cnt = font->Increment();
+                int cnt = font->Increment( );
             }
         }
-    }   
+    }
 
     void FontNdx::Default( )
     {
@@ -108,9 +108,9 @@ namespace Utils {
         {
             Font* font = m_fontList->GetMyFont( m_ndx );
             if ( font )
-            {    
-                int cnt = font->Decrement();
-                if (cnt <= 0 )
+            {
+                int cnt = font->Decrement( );
+                if ( cnt <= 0 )
                 {
                     m_fontList->Erase( m_ndx );
                 }
@@ -124,8 +124,8 @@ namespace Utils {
         wxFont font;
         wxColour color;
 
-        font = GetSettings( )->GetCatNbrFont( );
-        color = GetSettings( )->GetCatNbrColor( );
+        font = GetSettings( )->GetNbrFont( );
+        color = GetSettings( )->GetNbrColor( );
         int ndx = AddNewFont( font, color );
         GetSettings( )->SetAppPrefCatNbrFontNdx( ndx );
 
@@ -133,7 +133,7 @@ namespace Utils {
         color = GetSettings( )->GetTextColor( );
         ndx = AddNewFont( font, color );
         GetSettings( )->SetAppPrefTextFontNdx( ndx );
-            
+
         font = GetSettings( )->GetTitleFont( );
         color = GetSettings( )->GetTitleColor( );
         ndx = AddNewFont( font, color );
@@ -154,7 +154,7 @@ namespace Utils {
 
     bool FontList::IsValidFontNdx( int ndx )
     {
-        if ( m_fontMap.find( ndx ) == m_fontMap.end() )
+        if ( m_fontMap.find( ndx ) == m_fontMap.end( ) )
         {
             return false;
         }
@@ -179,34 +179,34 @@ namespace Utils {
         return *wxBLACK;
     };
 
-    int FontList::AddNewFont(  wxFont newFont, wxColour newColor )
-    { 
-        wxFont font = newFont ;
+    int FontList::AddNewFont( wxFont newFont, wxColour newColor )
+    {
+        wxFont font = newFont;
         if ( !font.IsOk( ) )
-        { 
+        {
             //delete font;
-            font =  wxFont( *wxNORMAL_FONT );
+            font = wxFont( *wxNORMAL_FONT );
         }
         Font* info = new Font( font, newColor );
         int ndx = FindFont( info );
         if ( IsValidFontNdx( ndx ) )
-        { 
+        {
             delete info;
             return ndx;
         }
         else
-        { 
-            ndx = GetFontCount();
+        {
+            ndx = GetFontCount( );
             m_fontMap.insert( std::make_pair( ndx, info ) );
             return ndx;
         }
     }
 
-    
+
     int FontList::FindFont( Font* info )
-    {         
+    {
         FontMap::iterator itr = FindFontIterator( info->GetFont( ), info->GetColor( ) );
-        if ( itr != m_fontMap.end() )
+        if ( itr != m_fontMap.end( ) )
         {
             return itr->first;
         }
@@ -217,70 +217,70 @@ namespace Utils {
     }
 
     FontMap::iterator FontList::FindFontIterator( wxFont font, wxColor color )
-    { 
+    {
         FontMap::iterator itr;
 
-        for ( itr = m_fontMap.begin(); 
-            itr != m_fontMap.end(); itr++ ) 
+        for ( itr = m_fontMap.begin( );
+            itr != m_fontMap.end( ); itr++ )
         {
             if ( font == itr->second->GetFont( ) &&
-                    color == itr->second->GetColor( ) )
+                color == itr->second->GetColor( ) )
             {
                 return itr;
             }
         }
-        return m_fontMap.end();
+        return m_fontMap.end( );
     };
 
 
-    void FontList::DumpFonts(  )
-    { 
+    void FontList::DumpFonts( )
+    {
         FontMap::iterator itr;
 
-        for ( itr = m_fontMap.begin(); 
-            itr != m_fontMap.end(); itr++ ) 
+        for ( itr = m_fontMap.begin( );
+            itr != m_fontMap.end( ); itr++ )
         {
             int key = itr->first;
-            wxFont font = itr->second->GetFont( ) ;
-            wxColour color = itr->second->GetColor( ) ;
-            int count = itr->second->Count();
-         }
+            wxFont font = itr->second->GetFont( );
+            wxColour color = itr->second->GetColor( );
+            int count = itr->second->Count( );
+        }
 
     };
 
 
     Font* FontList::GetMyFont( int ndx )
-    {   
+    {
         FontMap::iterator itr = m_fontMap.find( ndx );
-        if ( itr != m_fontMap.end() )
-        { 
+        if ( itr != m_fontMap.end( ) )
+        {
             return itr->second;
         }
-        return ( Font* )0;
+        return ( Font* ) 0;
     }
 
     Font* FontList::GetMyFont( FontMap::iterator itr )
-    {  
-            return itr->second;
-    } 
+    {
+        return itr->second;
+    }
 
     Font* FontList::FindMyFont( wxFont font, wxColor color )
-    { 
-         FontMap::iterator itr = FindFontIterator( font, color );
-         if ( itr !=  m_fontMap.end() )
-         {
+    {
+        FontMap::iterator itr = FindFontIterator( font, color );
+        if ( itr != m_fontMap.end( ) )
+        {
             return itr->second;
-         }
+        }
 
-        return ( Font* )0 ;
+        return ( Font* ) 0;
     };
 
-    FontNdx FontList::LoadFont( wxXmlNode* parent,  Design::AT_FontUsageType type )
+    FontNdx FontList::LoadFont( wxXmlNode* parent, Design::AT_FontUsageType type )
     {
         FontNdx fontNdx;
-        wxXmlNode* fontNode = FindFirstChildWithPropertyofValue( parent, 
-                                            Design::AttrNameStrings[ Design::AT_FontType ], 
-                                            Design::AT_FontUsageTypeStrings[type] );
+        wxXmlNode* fontNode = FindFirstChildWithPropertyofValue( parent,
+            Design::AttrNameStrings[ Design::AT_FontType ],
+            Design::AT_FontUsageTypeStrings[ type ] );
         if ( fontNode )
         {
             wxString nativeString = fontNode->GetAttribute( Design::AttrNameStrings[ Design::AT_NativeFontString ] );
@@ -299,7 +299,7 @@ namespace Utils {
     {
         if ( IsValidFontNdx( ndx ) )
         {
-            GetMyFont( ndx.Get() )->SaveFont( parent, type );
+            GetMyFont( ndx.Get( ) )->SaveFont( parent, type );
         }
     };
 
@@ -308,6 +308,6 @@ namespace Utils {
         wxFont font = *wxNORMAL_FONT;
         font.SetPointSize( 8 );
         wxColour color = *wxBLACK;
-        return AddNewFont( font, color ) ;
-    } 
+        return AddNewFont( font, color );
+    }
 }

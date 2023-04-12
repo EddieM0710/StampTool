@@ -82,7 +82,10 @@ public:
         ID_TOPRADIOBUTTON,
         ID_BOTTOMRADIOBUTTON,
         ID_LEFTRADIOBUTTON,
-        ID_RIGHTRADIOBUTTON
+        ID_RIGHTRADIOBUTTON,
+        ID_CALCULATEDRADIOBUTTON,
+        ID_FIXEDRADIOBUTTON,
+        ID_FIXEDSIZETEXTCTRL
     };
 
 
@@ -114,6 +117,9 @@ public:
     void OnRightRadioButtonSelected( wxCommandEvent& event );
     void OnTitleDefaultClick( wxCommandEvent& event );
 
+    void OnFixedClick( wxCommandEvent& event );
+    void OnCalculatedClick( wxCommandEvent& event );
+
     static bool ShowToolTips( );
     void SetNameModified( bool state );
     bool IsNameModified( );
@@ -122,9 +128,17 @@ public:
     void SetShowFrame( bool state = false );
     bool GetShowTitle( );
     bool GetShowFrame( );
-    void SetTitleColor( wxColour color );
     void SetTitleFont( wxFont font );
+    void SetTitleColor( wxColour color );
+    wxFont GetTitleFont( );
+    wxColour GetTitleColor( );
     void SetTitleLayoutLocation( );
+
+    void SetCalculateSpacing( bool val );
+    void SetFixedSpacingSize( wxString str ) { m_positionFixedSize->SetValue( str ); };
+    wxString GetFixedSpacing( ) { return m_positionFixedSize->GetValue( ); };
+    bool CalculateSpacing( ) { return m_positionCalculated->GetValue( ); };
+
 
 private:
 
@@ -146,6 +160,9 @@ private:
     wxRadioButton* m_leftButton;
     wxRadioButton* m_rightButton;
     wxRadioButton* m_defaultButton;
+    wxRadioButton* m_positionCalculated;
+    wxRadioButton* m_positionFixed;
+    wxTextCtrl* m_positionFixedSize;
 };
 
 #endif

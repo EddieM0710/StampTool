@@ -46,7 +46,7 @@
 #include "design/Album.h"
 #include "utils/FontList.h"
 #include "design/TitlePage.h"
-#include "design/Title.h"
+ //#include "design/Title.h"
 #include "design/Page.h"
 #include "design/Row.h"
 #include "design/Column.h"
@@ -110,7 +110,7 @@ namespace Design {
             "Page",
             "Row",
             "Col",
-            "Text",
+            "TextBox",
             "Title",
             "TitlePage",
             "Stamp",
@@ -147,7 +147,9 @@ namespace Design {
             "FontType",
             "NativeFontString",
             "Color",
-            "ImageName"
+            "ImageName",
+            "CalculateSpacing",
+            "FixedSpacingSize"
     };
 
     void InitDesignDefs( ScaleClient client )
@@ -291,11 +293,11 @@ namespace Design {
         "Unspecified",
         "Text",
         "Title",
-        "CatNbr"
+        "CatNbr",
         "Name"
     };
 
-    int AT_DefaultPointSize[ AT_NbrFontUsageTypes ] = { 6, 10, 12, 8, 10 };
+    int AT_DefaultPointSize[ AT_NbrFontUsageTypes ] = { 6, 10, 14, 8, 10 };
 
     wxFontFamily AT_FontFamilyMap[ AT_NbrFontFamilies ] =
     {

@@ -1,5 +1,5 @@
 /**
- * @file Text.h
+ * @file TextBox.h
  * @author Eddie Monroe
  * @brief
  * @version 0.1
@@ -42,22 +42,22 @@ namespace Design {
     // extern const char* ErrorStrings[ AT_NbrTextErrorTypes ];
 
     /**
-     * @class Text
+     * @class TextBox
      *
-     * @brief Text layout object; Inherits from LayoutBase.
+     * @brief TextBox layout object; Inherits from LayoutBase.
      *
      *
      **************************************************/
-    class Text: public LayoutBase
+    class TextBox: public LayoutBase
     {
     public:
 
         /**
-         * @brief Construct a new Text object
+         * @brief Construct a new TextBox object
          *
          * @param parent
          **************************************************/
-        Text( wxXmlNode* node ): LayoutBase( node )
+        TextBox( wxXmlNode* node ): LayoutBase( node )
         {
             SetNodeType( AT_Text );
             SetObjectName( AlbumBaseNames[ GetNodeType( ) ] );
@@ -67,7 +67,7 @@ namespace Design {
             CalcFrame( );
         };
 
-        Text( ): LayoutBase( ( wxXmlNode* ) 0 )
+        TextBox( ): LayoutBase( ( wxXmlNode* ) 0 )
         {
             SetNodeType( AT_Text );
             SetObjectName( AlbumBaseNames[ AT_Text ] );
@@ -79,10 +79,10 @@ namespace Design {
         };
 
         /**
-         * @brief Destroy the Text object
+         * @brief Destroy the TextBox object
          *
          **************************************************/
-        ~Text( ) { };
+        ~TextBox( ) { };
 
         /**
          * @brief

@@ -149,8 +149,8 @@ namespace Design {
         void Draw( wxDC& dc, double x, double y );
         void DrawPDF( wxPdfDocument* doc, double x, double y );
 
-        void DrawID( wxDC& dc, double x, double y );
-        void DrawIDPDF( wxPdfDocument* doc, double x, double y );
+        // void DrawID( wxDC& dc, double x, double y );
+        // void DrawIDPDF( wxPdfDocument* doc, double x, double y );
         //void DrawTitle( wxDC&, wxRect rect  );
         //void MakeMultiLine(  wxDC& dc, wxString text, double width  );
 //        void UpdateTitleSize( double width );

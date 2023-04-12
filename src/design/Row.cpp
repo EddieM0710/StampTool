@@ -21,12 +21,14 @@
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
  **************************************************/
+
+
 #include <wx/pen.h>
 
 #include "design/Row.h"
 #include "design/Column.h"
 #include "design/Stamp.h"
-#include "design/Title.h"
+ //#include "design/Title.h"
 #include "gui/DesignTreeCtrl.h"
 #include "gui/AlbumImagePanel.h"
 #include "gui/GuiUtils.h"
@@ -70,16 +72,16 @@ namespace Design {
             bottomPadding = GetBottomContentPadding( );
         }
 
-
         minHeight = minHeight + topPadding + bottomPadding;
         minWidth = minWidth + leftPadding + rightPadding;
 
-        UpdateTitleSize( minWidth );
+        GetTitleFrame( )->UpdateString( GetWidth( ) );
 
         if ( GetShowTitle( ) )
         {
             // Allow 3 times the title height
-            minHeight += 3 * GetTitleHeight( );
+            minHeight += 3 * GetTitleFrame( )->GetHeight( );
+            GetTitleFrame( )->SetYPos( GetTitleFrame( )->GetHeight( ) );
         }
 
         SetMinHeight( minHeight );
@@ -127,17 +129,25 @@ namespace Design {
         //First calc title position  
         if ( GetShowTitle( ) )
         {
-            m_titleFrame.SetXPos( 0 + ( GetWidth( ) - m_titleFrame.GetWidth( ) ) / 2 );
-            m_titleFrame.SetYPos( m_titleFrame.GetHeight( ) );
+            GetTitleFrame( )->SetXPos( 0 + ( GetWidth( ) - GetTitleFrame( )->GetWidth( ) ) / 2 );
+            GetTitleFrame( )->SetYPos( GetTitleFrame( )->GetHeight( ) );
             // allow for space above title, title height and that much again for nice spaing
-            yPos = m_titleFrame.GetHeight( );
+            yPos = GetTitleFrame( )->GetHeight( );
         }
+        double spacing = 4;
+        if ( CalculateSpacing( ) )
+        {
+            // this is a row so we are positioning children across the page
+            spacing = ( GetWidth( ) - GetMinWidth( ) ) / ( nbrCols + nbrStamps + 1 );
 
-        // this is a row so we are positioning children across the page
-        double spacing = ( GetWidth( ) - GetMinWidth( ) ) / ( nbrCols + nbrStamps + 1 );
-
-        // inital x/y pos within the row
-        xPos += spacing;
+            // inital x/y pos within the row
+            xPos += spacing;
+        }
+        else
+        {
+            spacing = GetFixedSpacingDbl( );
+            xPos += ( ( GetWidth( ) - GetMinWidth( ) ) - ( nbrCols + nbrStamps - 1 ) * spacing ) / 2;
+        }
 
         wxTreeItemIdValue cookie;
         wxTreeItemId parentID = GetTreeItemId( );
@@ -165,7 +175,7 @@ namespace Design {
 
                 // each stamp is positioned in the cell
 
-                double yBorder = ( GetHeight( ) - stamp->GetHeight( ) ) / 2;
+                double yBorder = 0;//( GetHeight( ) - stamp->GetHeight( ) ) / 2;
                 stamp->SetXPos( xPos );
                 stamp->SetYPos( yPos + yBorder );
                 // get xpos of next cell
@@ -174,8 +184,8 @@ namespace Design {
             }
             case AT_Text:
             {
-                Text* text = ( Text* ) child;
-                double yBorder = ( GetHeight( ) - text->GetHeight( ) ) / 2;
+                TextBox* text = ( TextBox* ) child;
+                double yBorder = 0;//( GetHeight( ) - text->GetHeight( ) ) / 2;
                 text->SetXPos( xPos );
                 text->SetYPos( yPos + yBorder );
                 // get xpos of next cell
@@ -232,9 +242,9 @@ namespace Design {
         if ( GetShowTitle( ) )
         {
             RealPoint pos( x, y );
-            RealSize size( GetWidth( ), m_titleFrame.GetHeight( ) );
+            RealSize size( GetWidth( ), GetTitleFrame( )->GetHeight( ) );
             //            DrawTitlePDF( doc, m_title, pos, size );
-            y = y + m_titleFrame.GetHeight( );
+            y = y + GetTitleFrame( )->GetHeight( );
         }
 
         double xPos = x + GetXPos( ) + leftPadding;
@@ -258,42 +268,25 @@ namespace Design {
     {
         double leftPadding = 0;
         double topPadding = 0;
-        dc.SetPen( *wxTRANSPARENT_PEN );
+
+        dc.SetPen( *wxBLACK_PEN );
+
         if ( GetShowFrame( ) )
         {
-            dc.SetPen( *wxBLACK_PEN );
             leftPadding = GetLeftContentPadding( );
             topPadding = GetTopContentPadding( );
+
+            m_frame.Draw( dc, x, y );
         }
 
         SetClientDimensions( dc, x + GetXPos( ), y + GetYPos( ), GetWidth( ), GetHeight( ) );
-
-        m_frame.Draw( dc, x, y );
 
         double xPos = x + GetXPos( ) + leftPadding;
         double yPos = y + GetYPos( ) + topPadding;
 
         if ( GetShowTitle( ) )
         {
-            wxFont currFont = dc.GetFont( );
-            wxColour currColor = dc.GetTextForeground( );
-
-            wxFont titleFont = GetTitleFont( );
-            wxFont font( titleFont );
-            wxColour color = GetTitleColor( );
-            dc.SetFont( font );
-            dc.SetTextForeground( color );
-
-            RealPoint pos( xPos + m_titleFrame.GetXPos( ), yPos + m_titleFrame.GetYPos( ) );
-            RealSize size( m_titleFrame.GetWidth( ), m_titleFrame.GetHeight( ) );
-
-            wxString title = GetTitle( );
-            GetAlbumImagePanel( )->MakeMultiLine( title, font, size.x );
-            DrawLabel( dc, title, pos, size, wxALIGN_LEFT );
-
-            dc.SetFont( currFont );
-            dc.SetTextForeground( currColor );
-
+            GetTitleFrame( )->Draw( dc, xPos, yPos );
         }
 
         wxTreeItemIdValue cookie;
@@ -302,7 +295,6 @@ namespace Design {
         while ( childID.IsOk( ) )
         {
 
-            AlbumBaseType type = ( AlbumBaseType ) GetDesignTreeCtrl( )->GetItemType( childID );
             LayoutBase* child = ( LayoutBase* ) GetDesignTreeCtrl( )->GetItemNode( childID );
             child->Draw( dc, xPos, yPos );
 

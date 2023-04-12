@@ -47,8 +47,8 @@ namespace Utils {
 
         void Set( int ndx );
 
-        void Default(  );
-        bool IsOk(){ return ( m_ndx >= 0 ); };
+        void MakeDefault( );
+        bool IsOk( ) { return ( m_ndx >= 0 ); };
 
     private:
         FontList* m_fontList;
@@ -60,16 +60,16 @@ namespace Utils {
     class FontList
     {
     public:
-        FontList( ) 
+        FontList( )
         {
-            m_fontMap.rehash(10);
+            m_fontMap.rehash( 10 );
         };
         ~FontList( ) {};
 
         void InitFonts( );
 
         bool IsValidFontNdx( int ndx );
-        bool IsValidFontNdx( FontNdx ndx ){ return IsValidFontNdx( ndx.Get( ) ); }; 
+        bool IsValidFontNdx( FontNdx ndx ) { return IsValidFontNdx( ndx.Get( ) ); };
         wxFont GetFont( int ndx );
         wxColour GetColor( int ndx );
 
@@ -90,14 +90,14 @@ namespace Utils {
         Design::AT_FontUsageType Load( wxXmlNode* fontNode, wxString nativeString, wxString color );
         std::size_t Erase( int ndx )
         {
-           return m_fontMap.erase( ndx );
+            return m_fontMap.erase( ndx );
         };
-        
-        FontNdx LoadFont( wxXmlNode* parent,  Design::AT_FontUsageType type );
-        
+
+        FontNdx LoadFont( wxXmlNode* parent, Design::AT_FontUsageType type );
+
         void SaveFont( wxXmlNode* parent, FontNdx ndx, Design::AT_FontUsageType type );
         int DefaultFont( int pointSize );
-        void DumpFonts(  );
+        void DumpFonts( );
 
     private:
         FontMap m_fontMap;

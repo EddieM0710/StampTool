@@ -58,7 +58,7 @@
 #include "design/Stamp.h"
 #include "design/Row.h"
 #include "design/Column.h"
-#include "design/Text.h"
+#include "design/TextBox.h"
 #include "gui/StampToolFrame.h"
 #include "gui/DesignTreeCtrl.h"
 #include "utils/XMLUtilities.h"
@@ -482,15 +482,15 @@ Design::Stamp* DesignTreeCtrl::AddStampTreeItem( wxTreeItemId parentID, Design::
 
 
 
-Design::Text* DesignTreeCtrl::AddTextTreeItem( wxTreeItemId parentID, Design::Text* newText )
+Design::TextBox* DesignTreeCtrl::AddTextTreeItem( wxTreeItemId parentID, Design::TextBox* newText )
 {
     wxXmlNode* parentNode = ( wxXmlNode* ) GetItemNode( parentID );
 
     if ( newText )
     {
 
-        DesignTreeItemData* itemData = new DesignTreeItemData( Design::AT_Text, "Text", newText );
-        wxTreeItemId childID = AppendItem( parentID, "Text", Design::Icon_Folder, -1, itemData );
+        DesignTreeItemData* itemData = new DesignTreeItemData( Design::AT_Text, "TextBox", newText );
+        wxTreeItemId childID = AppendItem( parentID, "TextBox", Design::Icon_Folder, -1, itemData );
         newText->SetTreeItemId( childID );
         SetItemImage( childID, Design::Icon_Menu );
         Expand( childID );
@@ -553,10 +553,10 @@ Design::Stamp* DesignTreeCtrl::CreateNewStamp( wxTreeItemId catTreeID )
 
 
 
-Design::Text* DesignTreeCtrl::CreateNewText( )
+Design::TextBox* DesignTreeCtrl::CreateNewText( )
 {
-    Design::Text* newText = new Design::Text( );
-    newText->SetAttrStr( Design::AT_Name, "Text Title" );
+    Design::TextBox* newText = new Design::TextBox( );
+    newText->SetAttrStr( Design::AT_Name, "TextBox Title" );
     return newText;
 }
 
@@ -1161,7 +1161,7 @@ void DesignTreeCtrl::ShowMenu( wxTreeItemId id, const wxPoint& pt )
         wxMenuItem* addRowItem = addSubMenu->Append( DesignTree_AddRow, "Add Row" );
         wxMenuItem* addColItem = addSubMenu->Append( DesignTree_AddCol, "Add Column" );
         wxMenuItem* addStampItem = addSubMenu->Append( DesignTree_AddStamp, "Add Stamp" );
-        wxMenuItem* addTextItem = addSubMenu->Append( DesignTree_AddText, "Add Text" );
+        wxMenuItem* addTextItem = addSubMenu->Append( DesignTree_AddText, "Add TextBox" );
 
         switch ( type )
         {
@@ -1257,7 +1257,7 @@ void DesignTreeCtrl::ShowMenu( wxTreeItemId id, const wxPoint& pt )
         }
         case DesignTree_AddText:
         {
-            Design::Text* newText = CreateNewText( );
+            Design::TextBox* newText = CreateNewText( );
             AddTextTreeItem( id, newText );
             break;
         }

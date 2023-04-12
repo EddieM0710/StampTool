@@ -26,7 +26,7 @@
 
 #include "design/Page.h"
 #include "design/Album.h"
-#include "design/Title.h"
+ //#include "design/Title.h"
 #include "design/Row.h"
 #include "design/Column.h"
 #include "design/Stamp.h"
@@ -116,12 +116,12 @@ namespace Design {
 
         }
 
-        UpdateTitleSize( minWidth );
+        GetTitleFrame( )->UpdateString( minWidth );
 
         if ( GetShowTitle( ) )
         {
             // Allow 3 times the title height
-            minHeight += 3 * GetTitleHeight( );
+            minHeight += 3 * GetTitleFrame( )->GetHeight( );
         }
 
         SetMinWidth( minWidth );
@@ -180,7 +180,7 @@ namespace Design {
                 row->SetHeight( row->GetMinHeight( ) + topPadding + bottomPadding );
                 if ( row->GetShowTitle( ) )
                 {
-                    row->SetHeight( row->GetHeight( ) + 3 * row->GetTitleHeight( ) );
+                    row->SetHeight( row->GetHeight( ) + 3 * row->GetTitleFrame( )->GetHeight( ) );
                 }
 
                 break;
@@ -191,7 +191,7 @@ namespace Design {
                 col->SetWidth( GetMinWidth( ) );
                 if ( col->GetShowTitle( ) )
                 {
-                    col->SetHeight( GetHeight( ) + GetTitleHeight( ) - 2 * GetBorderSize( ) );
+                    col->SetHeight( GetHeight( ) + GetTitleFrame( )->GetHeight( ) - 2 * GetBorderSize( ) );
                 }
                 else
                 {
@@ -218,10 +218,10 @@ namespace Design {
         //First calc title position  
         if ( GetShowTitle( ) )
         {
-            m_titleFrame.SetXPos( 0 + ( GetWidth( ) - m_titleFrame.GetWidth( ) ) / 2 );
-            m_titleFrame.SetYPos( m_titleFrame.GetHeight( ) );
+            GetTitleFrame( )->SetXPos( 0 + ( GetWidth( ) - GetTitleFrame( )->GetWidth( ) ) / 2 );
+            GetTitleFrame( )->SetYPos( GetTitleFrame( )->GetHeight( ) );
             // allow for space above title, title height and that much again for nice spaing
-            yPos = 3 * m_titleFrame.GetHeight( );
+            yPos = 3 * GetTitleFrame( )->GetHeight( );
         }
         // std::cout << "Page::UpdatePositions " << GetTitle() << " title height = " << GetTitleHeight( ) << std::endl;
         // std::cout.flush();
@@ -387,7 +387,9 @@ namespace Design {
         double yPos = y + GetTopMargin( );
 
 
-        DrawImage( dc, borderName, xPos, yPos,
+        wxImage* image = GetImageFromFilename( borderName );
+
+        DrawImage( dc, image, xPos, yPos,
             GetWidth( ),
             GetHeight( ) );
 
@@ -407,25 +409,25 @@ namespace Design {
         yPos = yPos + GetBorderSize( );
         if ( GetShowTitle( ) )
         {
-            wxFont currFont = dc.GetFont( );
-            wxColour currColor = dc.GetTextForeground( );
-            wxFont titleFont = GetTitleFont( );
-            wxFont font( titleFont );
-            wxColour color = GetTitleColor( );
-            dc.SetFont( font );
-            dc.SetTextForeground( color );
+            // wxFont currFont = dc.GetFont( );
+            // wxColour currColor = dc.GetTextForeground( );
+            // wxFont titleFont = GetFont( AT_TitleFontType );
+            // wxFont font( titleFont );
+            // wxColour color = GetColor( AT_TitleFontType );
+            // dc.SetFont( font );
+            // dc.SetTextForeground( color );
 
-            RealPoint pos( xPos + m_titleFrame.GetXPos( ), yPos + m_titleFrame.GetYPos( ) );
-            RealSize size( m_titleFrame.GetWidth( ), m_titleFrame.GetHeight( ) );
-
+            // RealPoint pos( xPos + GetTitleFrame()->GetXPos( ), yPos + GetTitleFrame()->GetYPos( ) );
+            // RealSize size( GetTitleFrame()->GetWidth( ), GetTitleFrame()->GetHeight( ) );
+            GetTitleFrame( )->Draw( dc, xPos, yPos );
             // std::cout << "Page::UpdatePositions " << GetTitle() << " pos(" << pos.x << "," << pos.y << ") "
             // << "pageSize (" << GetWidth( ) << "," << GetHeight( ) << ")  TitleSize("<< size.x << "," << size.y << ")" << std::endl;
             // std::cout.flush();
-            wxString title = GetTitle( );
-            GetAlbumImagePanel( )->MakeMultiLine( title, font, size.x );
-            DrawLabel( dc, title, pos, size, wxALIGN_LEFT );
-            dc.SetFont( currFont );
-            dc.SetTextForeground( currColor );
+            // wxString title = GetTitle( );
+            // GetAlbumImagePanel( )->MakeMultiLine( title, font, size.x );
+            // DrawLabel( dc, title, pos, size, wxALIGN_LEFT );
+            // dc.SetFont( currFont );
+            // dc.SetTextForeground( currColor );
 
         }
 

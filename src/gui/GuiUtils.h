@@ -55,7 +55,7 @@ void DrawRectanglePDF( wxPdfDocument* doc,
 wxSize LogicalToDeviceRel( wxDC& dc,
     double x, double y );
 
-double GetHeightChars(double pt);
+double GetHeightChars( double pt );
 
 double GetMultiLineTextHeight( wxString text, wxFont* font, double width );
 
@@ -70,7 +70,7 @@ void DrawTitlePDF( wxPdfDocument* doc, wxString title,
 void DrawLabel( wxDC& dc, const wxString& text,
     RealPoint pos,
     RealSize size,
-    int  	alignment = wxALIGN_LEFT | wxALIGN_TOP,
+    int  	alignment = wxALIGN_CENTER,
     int  	indexAccel = -1 );
 
 void DrawLabelPDF( wxPdfDocument* doc, const wxString& text,
@@ -84,7 +84,7 @@ void DrawImagePDF( wxPdfDocument* doc, wxString fileName,
     double x, double y,
     double w, double h );
 
-void DrawImage( wxDC& dc, wxString fileName,
+void DrawImage( wxDC& dc, wxImage* image,
     double x, double y,
     double w, double h );
 

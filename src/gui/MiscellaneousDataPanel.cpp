@@ -272,8 +272,8 @@ void MiscellaneousDataPanel::OnColnectButtonClick( wxCommandEvent& event )
     }
     wxString link = m_link->GetValue( );
     //    wxGetApp( ).GetFrame( )->GetWebViewPage( )->DoLoad( link );
-        //wxString cmd = wxString::Format( "/usr/bin/firefox --new-tab %s &", link );
-        //system( cmd.fn_str( ) );
+    wxString cmd = wxString::Format( "/usr/bin/firefox --new-tab %s &", link );
+    system( cmd.fn_str( ) );
     event.Skip( );
 
 }

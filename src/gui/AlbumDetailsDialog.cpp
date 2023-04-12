@@ -40,6 +40,7 @@
 #include "gui/LabeledTextBox.h"
 #include "gui/CatalogTreeCtrl.h"
 #include "gui/FontPickerHelper.h"
+#include "design/DesignDefs.h"
 #include "design/Album.h"
 #include "utils/StampList.h"
 #include "utils/Settings.h"
@@ -281,12 +282,12 @@ void AlbumDetailsDialog::UpdateControls( )
     SetShowStampTitle( m_album->GetShowTitle( ) );
     SetGrayScaleImages( m_album->GetGrayScaleImages( ) );
 
-    SetNbrFont( m_album->GetNbrFont( ) );
-    SetTextFont( m_album->GetTextFont( ) );
-    SetTitleFont( m_album->GetTitleFont( ) );
-    SetNbrColor( m_album->GetNbrColor( ) );
-    SetTextColor( m_album->GetTextColor( ) );
-    SetTitleColor( m_album->GetTitleColor( ) );
+    SetNbrFont( m_album->GetFont( Design::AT_NbrFontType ) );
+    SetTextFont( m_album->GetFont( Design::AT_TextFontType ) );
+    SetTitleFont( m_album->GetFont( Design::AT_TitleFontType ) );
+    SetNbrColor( m_album->GetColor( Design::AT_NbrFontType ) );
+    SetTextColor( m_album->GetColor( Design::AT_TextFontType ) );
+    SetTitleColor( m_album->GetColor( Design::AT_TitleFontType ) );
     SetName( m_album->GetAttrStr( Design::AT_Name ) );
 
 }
@@ -423,7 +424,7 @@ void AlbumDetailsDialog::OnCancelClick( wxCommandEvent& event )
 void AlbumDetailsDialog::OnNbrDefaultClick( wxCommandEvent& event )
 {
 
-    int ndx = GetSettings( )->GetAppPrefNbrFontNdx( );
+    int ndx = GetSettings( )->GetFontNdxPreference( Design::AT_NbrFontType );
     Utils::FontList* fontList = GetFontList( );
     wxFont font = fontList->GetFont( ndx );
     wxColour color = fontList->GetColor( ndx );
@@ -436,7 +437,7 @@ void AlbumDetailsDialog::OnNbrDefaultClick( wxCommandEvent& event )
 void AlbumDetailsDialog::OnNameDefaultClick( wxCommandEvent& event )
 {
 
-    int ndx = GetSettings( )->GetAppPrefNameFontNdx( );
+    int ndx = GetSettings( )->GetFontNdxPreference( Design::AT_NameFontType );
     Utils::FontList* fontList = GetFontList( );
     wxFont font = fontList->GetFont( ndx );
     wxColour color = fontList->GetColor( ndx );
@@ -447,7 +448,7 @@ void AlbumDetailsDialog::OnNameDefaultClick( wxCommandEvent& event )
 }
 void AlbumDetailsDialog::OnTextDefaultClick( wxCommandEvent& event )
 {
-    int ndx = GetSettings( )->GetAppPrefTextFontNdx( );
+    int ndx = GetSettings( )->GetFontNdxPreference( Design::AT_TextFontType );
     Utils::FontList* fontList = GetFontList( );
     wxFont font = fontList->GetFont( ndx );
     wxColour color = fontList->GetColor( ndx );
@@ -458,7 +459,7 @@ void AlbumDetailsDialog::OnTextDefaultClick( wxCommandEvent& event )
 }
 void AlbumDetailsDialog::OnTitleDefaultClick( wxCommandEvent& event )
 {
-    int ndx = GetSettings( )->GetAppPrefTitleFontNdx( );
+    int ndx = GetSettings( )->GetFontNdxPreference( Design::AT_TitleFontType );
     Utils::FontList* fontList = GetFontList( );
     wxFont font = fontList->GetFont( ndx );
     wxColour color = fontList->GetColor( ndx );
@@ -514,9 +515,9 @@ void AlbumDetailsDialog::OnOkClick( wxCommandEvent& event )
 
     wxFont newFont = GetNbrFont( );
 
-    m_album->SetTextFont( GetTextFont( ), GetTextColor( ) );
-    m_album->SetNbrFont( GetNbrFont( ), GetNbrColor( ) );
-    m_album->SetTitleFont( GetTitleFont( ), GetTitleColor( ) );
+    m_album->SetFont( Design::AT_TextFontType, GetTextFont( ), GetTextColor( ) );
+    m_album->SetFont( Design::AT_NbrFontType, GetNbrFont( ), GetNbrColor( ) );
+    m_album->SetFont( Design::AT_TitleFontType, GetTitleFont( ), GetTitleColor( ) );
 
 
     event.Skip( );

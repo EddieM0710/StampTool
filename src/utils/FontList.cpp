@@ -102,7 +102,7 @@ namespace Utils {
         }
     }
 
-    void FontNdx::Default( )
+    void FontNdx::MakeDefault( )
     {
         if ( m_fontList->IsValidFontNdx( m_ndx ) )
         {
@@ -127,17 +127,17 @@ namespace Utils {
         font = GetSettings( )->GetNbrFont( );
         color = GetSettings( )->GetNbrColor( );
         int ndx = AddNewFont( font, color );
-        GetSettings( )->SetAppPrefCatNbrFontNdx( ndx );
+        GetSettings( )->SetFontNdxPreference( Design::AT_NbrFontType, ndx );
 
         font = GetSettings( )->GetTextFont( );
         color = GetSettings( )->GetTextColor( );
         ndx = AddNewFont( font, color );
-        GetSettings( )->SetAppPrefTextFontNdx( ndx );
+        GetSettings( )->SetFontNdxPreference( Design::AT_TextFontType, ndx );
 
         font = GetSettings( )->GetTitleFont( );
         color = GetSettings( )->GetTitleColor( );
         ndx = AddNewFont( font, color );
-        GetSettings( )->SetAppPrefTitleFontNdx( ndx );
+        GetSettings( )->SetFontNdxPreference( Design::AT_TitleFontType, ndx );
 
     }
 

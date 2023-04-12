@@ -184,6 +184,27 @@ void ColDetailsDialog::CreateControls( )
     m_defaultButton->SetValue( false );
     m_titleLocationHSizer->Add( m_defaultButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
+    wxStaticBox* memberPositionStaticBox = new wxStaticBox( notebookDetailsPanel, wxID_ANY, _( "Member Position" ) );
+    wxStaticBoxSizer* memberPositionStaticBoxSizer = new wxStaticBoxSizer( memberPositionStaticBox, wxHORIZONTAL );
+    detailsVerticalSizer->Add( memberPositionStaticBoxSizer, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 5 );
+
+    m_positionCalculated = new wxRadioButton( memberPositionStaticBoxSizer->GetStaticBox( ), ID_CALCULATEDRADIOBUTTON, _( "Calculated" ), wxDefaultPosition, wxDefaultSize, 0 );
+    m_positionCalculated->SetValue( true );
+    m_positionCalculated->SetToolTip( _( "Evenly Distributed" ) );
+    memberPositionStaticBoxSizer->Add( m_positionCalculated, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+
+    memberPositionStaticBoxSizer->Add( 5, 5, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+
+
+    m_positionFixed = new wxRadioButton( memberPositionStaticBoxSizer->GetStaticBox( ), ID_FIXEDRADIOBUTTON, _( "Fixed" ), wxDefaultPosition, wxDefaultSize, 0 );
+    m_positionFixed->SetValue( false );
+    memberPositionStaticBoxSizer->Add( m_positionFixed, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+
+    m_positionFixedSize = new wxTextCtrl( memberPositionStaticBoxSizer->GetStaticBox( ), ID_FIXEDSIZETEXTCTRL, _( "4" ), wxDefaultPosition, wxDefaultSize, 0 );
+    m_positionFixedSize->SetToolTip( _( "mm" ) );
+    m_positionFixedSize->Enable( false );
+    memberPositionStaticBoxSizer->Add( m_positionFixedSize, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+
     //>>error list ctrls
     wxBoxSizer* errorListSizer = new wxBoxSizer( wxHORIZONTAL );
     detailsVerticalSizer->Add( errorListSizer, 2, wxGROW | wxALL, 5 );
@@ -276,8 +297,8 @@ void ColDetailsDialog::UpdateControls( )
 {
     SetName( m_col->GetAttrStr( Design::AT_Name ) );
     SetShowTitle( m_col->GetShowTitle( ) );
-    SetTitleFont( m_col->GetTitleFont( ) );
-    SetTitleColor( m_col->GetTitleColor( ) );
+    SetTitleFont( m_col->GetFont( Design::AT_TitleFontType ) );
+    SetTitleColor( m_col->GetColor( Design::AT_TitleFontType ) );
     m_col->GetTitleLayoutLocation( );
 }
 
@@ -302,10 +323,6 @@ void ColDetailsDialog::SetupDialog( wxTreeItemId treeID )
     }
 };
 
-bool ColDetailsDialog::ShowToolTips( )
-{
-    return true;
-}
 
 
 void ColDetailsDialog::SetNameModified( bool state ) { m_name->SetModified( state ); };
@@ -317,6 +334,8 @@ bool ColDetailsDialog::GetShowTitle( ) { return m_titleCheckbox->IsChecked( ); }
 bool ColDetailsDialog::GetShowFrame( ) { return m_frameCheckbox->IsChecked( ); };
 void ColDetailsDialog::SetTitleFont( wxFont font ) { m_titleFontPicker->SetSelectedFont( font ); }
 void ColDetailsDialog::SetTitleColor( wxColour color ) { m_titleColorPicker->SetColour( color ); }
+wxFont ColDetailsDialog::GetTitleFont( ) { return m_titleFontPicker->GetSelectedFont( ); }
+wxColour ColDetailsDialog::GetTitleColor( ) { return m_titleColorPicker->GetColour( ); }
 
 void ColDetailsDialog::OnOkClick( wxCommandEvent& event )
 {
@@ -329,13 +348,31 @@ void ColDetailsDialog::OnOkClick( wxCommandEvent& event )
     m_col->SetShowFrame( GetShowFrame( ) );
     m_col->SetShowTitle( GetShowTitle( ) );
 
-    m_col->SetTitleFont( m_titleFontPicker->GetSelectedFont( ), m_titleColorPicker->GetColour( ) );
+    m_col->SetFont( Design::AT_TitleFontType, GetTitleFont( ), GetTitleColor( ) );
     m_col->SetTitleLocation( m_titleLocation );
+    m_col->SetCalculateSpacing( CalculateSpacing( ) );
+    m_col->SetFixedSpacingSize( GetFixedSpacing( ) );
 
     event.Skip( );
 
 }
 
+void ColDetailsDialog::SetCalculateSpacing( bool val )
+{
+    if ( val )
+    {
+        m_positionCalculated->SetValue( true );
+        m_positionFixed->SetValue( false );
+        m_positionFixedSize->Enable( false );
+    }
+    else
+    {
+        m_positionFixed->SetValue( true );
+        m_positionCalculated->SetValue( false );
+        m_positionFixedSize->Enable( true );
+
+    }
+};
 
 void ColDetailsDialog::OnTopRadioButtonSelected( wxCommandEvent& event )
 {
@@ -347,20 +384,21 @@ void ColDetailsDialog::OnBottomRadioButtonSelected( wxCommandEvent& event )
 {
     m_titleLocation = Design::AT_TitleLocationBottom;
     event.Skip( );
-}
 
+}
 
 void ColDetailsDialog::OnLeftRadioButtonSelected( wxCommandEvent& event )
 {
     m_titleLocation = Design::AT_TitleLocationLeft;
     event.Skip( );
-}
 
+}
 
 void ColDetailsDialog::OnRightRadioButtonSelected( wxCommandEvent& event )
 {
     m_titleLocation = Design::AT_TitleLocationRight;
     event.Skip( );
+
 }
 
 void ColDetailsDialog::OnDefaultRadioButtonSelected( wxCommandEvent& event )
@@ -372,7 +410,7 @@ void ColDetailsDialog::OnDefaultRadioButtonSelected( wxCommandEvent& event )
 
 void ColDetailsDialog::OnTitleDefaultClick( wxCommandEvent& event )
 {
-    int ndx = Design::GetAlbum( )->GetTitleFontNdx( );
+    int ndx = Design::GetAlbum( )->GetFontNdx( Design::AT_TitleFontType );
     Utils::FontList* fontList = GetFontList( );
     wxFont font = fontList->GetFont( ndx );
     wxColour color = fontList->GetColor( ndx );

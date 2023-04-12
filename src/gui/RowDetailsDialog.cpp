@@ -60,6 +60,8 @@ IMPLEMENT_DYNAMIC_CLASS( RowDetailsDialog, wxDialog )
     EVT_RADIOBUTTON( ID_LEFTRADIOBUTTON, RowDetailsDialog::OnLeftRadioButtonSelected )
     EVT_RADIOBUTTON( ID_RIGHTRADIOBUTTON, RowDetailsDialog::OnRightRadioButtonSelected )
     EVT_BUTTON( ID_DEFAULTFONTBUTTON, RowDetailsDialog::OnTitleDefaultClick )
+    EVT_RADIOBUTTON( ID_CALCULATEDRADIOBUTTON, RowDetailsDialog::OnCalculatedClick )
+    EVT_RADIOBUTTON( ID_FIXEDRADIOBUTTON, RowDetailsDialog::OnFixedClick )
     END_EVENT_TABLE( )
     ;
 
@@ -146,6 +148,8 @@ void RowDetailsDialog::CreateControls( )
     m_name = new LabeledTextBox( theDialog, ID_NAMELABELEDTEXTBOX, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
     m_name->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
     nameHorizontalSizer->Add( m_name, 1, wxGROW | wxALL, 5 );
+    m_name->SetLabel( "Row Name" );
+
 
     wxBoxSizer* notebookHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
     theDialogVerticalSizer->Add( notebookHorizontalSizer, 2, wxGROW | wxALL, 5 );
@@ -189,25 +193,46 @@ void RowDetailsDialog::CreateControls( )
     m_titleLocationHSizer = new wxBoxSizer( wxHORIZONTAL );
     m_titleLocationVSizer->Add( m_titleLocationHSizer, 1, wxGROW | wxALL, 0 );
 
-    wxRadioButton* m_topButton = new wxRadioButton( m_titleLocationVSizer->GetStaticBox( ), ID_DEFAULTRADIOBUTTON, _( "Default" ), wxDefaultPosition, wxDefaultSize, 0 );
+    m_topButton = new wxRadioButton( m_titleLocationVSizer->GetStaticBox( ), ID_DEFAULTRADIOBUTTON, _( "Default" ), wxDefaultPosition, wxDefaultSize, 0 );
     m_topButton->SetValue( true );
     m_titleLocationHSizer->Add( m_topButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
-    wxRadioButton* m_bottomButton = new wxRadioButton( m_titleLocationVSizer->GetStaticBox( ), ID_TOPRADIOBUTTON, _( "Top" ), wxDefaultPosition, wxDefaultSize, 0 );
+    m_bottomButton = new wxRadioButton( m_titleLocationVSizer->GetStaticBox( ), ID_TOPRADIOBUTTON, _( "Top" ), wxDefaultPosition, wxDefaultSize, 0 );
     m_bottomButton->SetValue( false );
     m_titleLocationHSizer->Add( m_bottomButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
-    wxRadioButton* m_leftButton = new wxRadioButton( m_titleLocationVSizer->GetStaticBox( ), ID_BOTTOMRADIOBUTTON, _( "Bottom" ), wxDefaultPosition, wxDefaultSize, 0 );
+    m_leftButton = new wxRadioButton( m_titleLocationVSizer->GetStaticBox( ), ID_BOTTOMRADIOBUTTON, _( "Bottom" ), wxDefaultPosition, wxDefaultSize, 0 );
     m_leftButton->SetValue( false );
     m_titleLocationHSizer->Add( m_leftButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
-
-    wxRadioButton* m_rightButton = new wxRadioButton( m_titleLocationVSizer->GetStaticBox( ), ID_LEFTRADIOBUTTON, _( "Left" ), wxDefaultPosition, wxDefaultSize, 0 );
+    m_rightButton = new wxRadioButton( m_titleLocationVSizer->GetStaticBox( ), ID_LEFTRADIOBUTTON, _( "Left" ), wxDefaultPosition, wxDefaultSize, 0 );
     m_rightButton->SetValue( false );
     m_titleLocationHSizer->Add( m_rightButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
-    wxRadioButton* m_defaultButton = new wxRadioButton( m_titleLocationVSizer->GetStaticBox( ), ID_RIGHTRADIOBUTTON, _( "Right" ), wxDefaultPosition, wxDefaultSize, 0 );
+    m_defaultButton = new wxRadioButton( m_titleLocationVSizer->GetStaticBox( ), ID_RIGHTRADIOBUTTON, _( "Right" ), wxDefaultPosition, wxDefaultSize, 0 );
     m_defaultButton->SetValue( false );
     m_titleLocationHSizer->Add( m_defaultButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+
+    wxStaticBox* memberPositionStaticBox = new wxStaticBox( notebookDetailsPanel, wxID_ANY, _( "Member Position" ) );
+    wxStaticBoxSizer* memberPositionStaticBoxSizer = new wxStaticBoxSizer( memberPositionStaticBox, wxHORIZONTAL );
+    detailsVerticalSizer->Add( memberPositionStaticBoxSizer, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 5 );
+
+    m_positionCalculated = new wxRadioButton( memberPositionStaticBoxSizer->GetStaticBox( ), ID_CALCULATEDRADIOBUTTON, _( "Calculated" ), wxDefaultPosition, wxDefaultSize, 0 );
+    m_positionCalculated->SetValue( true );
+    m_positionCalculated->SetToolTip( _( "Evenly Distributed" ) );
+    memberPositionStaticBoxSizer->Add( m_positionCalculated, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+
+    memberPositionStaticBoxSizer->Add( 5, 5, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+
+
+    m_positionFixed = new wxRadioButton( memberPositionStaticBoxSizer->GetStaticBox( ), ID_FIXEDRADIOBUTTON, _( "Fixed" ), wxDefaultPosition, wxDefaultSize, 0 );
+    m_positionFixed->SetValue( false );
+    memberPositionStaticBoxSizer->Add( m_positionFixed, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+
+    m_positionFixedSize = new wxTextCtrl( memberPositionStaticBoxSizer->GetStaticBox( ), ID_FIXEDSIZETEXTCTRL, _( "4" ), wxDefaultPosition, wxDefaultSize, 0 );
+    m_positionFixedSize->SetToolTip( _( "mm" ) );
+    m_positionFixedSize->Enable( false );
+    memberPositionStaticBoxSizer->Add( m_positionFixedSize, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+
 
     //>>error list ctrls
     wxBoxSizer* errorListSizer = new wxBoxSizer( wxHORIZONTAL );
@@ -303,9 +328,12 @@ void RowDetailsDialog::UpdateControls( )
     SetName( m_row->GetAttrStr( Design::AT_Name ) );
     SetShowTitle( m_row->GetShowTitle( ) );
     SetShowFrame( m_row->GetShowFrame( ) );
-    SetTitleFont( m_row->GetTitleFont( ) );
-    SetTitleColor( m_row->GetTitleColor( ) );
+    SetFont( m_row->GetFont( Design::AT_TitleFontType ) );
+    SetColor( m_row->GetColor( Design::AT_TitleFontType ) );
     SetTitleLayoutLocation( );
+    SetCalculateSpacing( m_row->CalculateSpacing( ) );
+    SetFixedSpacingSize( m_row->GetFixedSpacing( ) );
+
     wxListBox* m_statusList;
 }
 
@@ -331,13 +359,6 @@ void RowDetailsDialog::SetupDialog( wxTreeItemId treeID )
 };
 
 
-
-
-bool RowDetailsDialog::ShowToolTips( )
-{
-    return true;
-}
-
 void RowDetailsDialog::SetNameModified( bool state ) { m_name->SetModified( state ); };
 
 bool RowDetailsDialog::IsNameModified( ) { return m_name->IsModified( ); };
@@ -349,12 +370,12 @@ bool RowDetailsDialog::GetShowFrame( ) { return m_frameCheckbox->IsChecked( ); }
 wxString RowDetailsDialog::GetName( ) { return m_name->GetValue( ); };
 
 
-void RowDetailsDialog::SetTitleFont( wxFont font )
+void RowDetailsDialog::SetFont( wxFont font )
 {
     m_titleFontPicker->SetSelectedFont( font );
 }
 
-void RowDetailsDialog::SetTitleColor( wxColour color )
+void RowDetailsDialog::SetColor( wxColour color )
 {
     m_titleColorPicker->SetColour( color );
 }
@@ -370,12 +391,30 @@ void RowDetailsDialog::OnOkClick( wxCommandEvent& event )
     m_row->SetShowFrame( GetShowFrame( ) );
     m_row->SetShowTitle( GetShowTitle( ) );
 
-    m_row->SetTitleFont( m_titleFontPicker->GetSelectedFont( ), m_titleColorPicker->GetColour( ) );
+    m_row->SetFont( Design::AT_TitleFontType, m_titleFontPicker->GetSelectedFont( ), m_titleColorPicker->GetColour( ) );
     m_row->SetTitleLocation( m_titleLocation );
+    m_row->SetCalculateSpacing( CalculateSpacing( ) );
+    m_row->SetFixedSpacingSize( GetFixedSpacing( ) );
 
     event.Skip( );
 
 }
+void RowDetailsDialog::SetCalculateSpacing( bool val )
+{
+    if ( val )
+    {
+        m_positionCalculated->SetValue( true );
+        m_positionFixed->SetValue( false );
+        m_positionFixedSize->Enable( false );
+    }
+    else
+    {
+        m_positionFixed->SetValue( true );
+        m_positionCalculated->SetValue( false );
+        m_positionFixedSize->Enable( true );
+
+    }
+};
 
 
 void RowDetailsDialog::OnTopRadioButtonSelected( wxCommandEvent& event )
@@ -410,9 +449,23 @@ void RowDetailsDialog::OnDefaultRadioButtonSelected( wxCommandEvent& event )
     event.Skip( );
 }
 
+
+void RowDetailsDialog::OnCalculatedClick( wxCommandEvent& event )
+{
+    m_positionFixedSize->Enable( false );
+    event.Skip( );
+}
+void RowDetailsDialog::OnFixedClick( wxCommandEvent& event )
+{
+    m_positionFixedSize->Enable( true );
+    event.Skip( );
+}
+
+
+
 void RowDetailsDialog::OnTitleDefaultClick( wxCommandEvent& event )
 {
-    int ndx = Design::GetAlbum( )->GetTitleFontNdx( );
+    int ndx = Design::GetAlbum( )->GetFontNdx( Design::AT_TitleFontType );
     Utils::FontList* fontList = GetFontList( );
     wxFont font = fontList->GetFont( ndx );
     wxColour color = fontList->GetColor( ndx );

@@ -201,8 +201,8 @@ private:
     Design::TitleLocation m_titleLocation;
     wxRadioButton* m_topButton;
     wxRadioButton* m_bottomButton;
-    wxRadioButton* m_leftButton;
-    wxRadioButton* m_rightButton;
+    //wxRadioButton* m_leftButton;
+    //wxRadioButton* m_rightButton;
     wxRadioButton* m_defaultButton;
 
 

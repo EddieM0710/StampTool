@@ -30,7 +30,7 @@
 #include "LayoutBase.h"
 #include "design/TitlePage.h"
 #include "design/Page.h"
-#include "design/Title.h"
+#include "design/DisplayString.h"
 #include "design/Row.h"
 #include "design/Column.h"
 #include "design/Stamp.h"
@@ -39,60 +39,72 @@
 
 namespace Design {
 
-    wxRealPoint LayoutBase::CalcTextSize( wxString text, double width, wxFont font )
+    LayoutBase::LayoutBase( ): AlbumBase( )
     {
-        // first break into lines if necessary
-        GetAlbumImagePanel( )->MakeMultiLine( text, font, width );
-        // then get the actual multi line text extent
-        wxRealPoint size = GetAlbumImagePanel( )->GetLogicalTextExtent( text, font );
-        return size;
-    }
 
-    void LayoutBase::UpdateNameSize( double width )
+        SetTopContentPadding( 0 );
+        SetBottomContentPadding( 0 );
+        SetLeftContentPadding( 0 );
+        SetRightContentPadding( 0 );
+        SetTitleLocation( Design::AT_TitleLocationDefault );
+        m_nbrFrame = 0;
+        m_nameFrame = 0;
+        m_titleFrame = 0;
+        m_textFrame = 0;
+    };
+    /**************************************************/
+    LayoutBase::LayoutBase( wxXmlNode* node ): AlbumBase( node )
     {
-        wxString name = GetAttrStr( Design::AT_Name );
-        wxFont font = GetNameFont( );
-        wxRealPoint size = CalcTextSize( name, width, font );
-        m_nameFrame.SetWidth( size.x );
-        m_nameFrame.SetHeight( size.y );
-        m_nameFrame.SetMinWidth( size.x );
-        m_nameFrame.SetMinHeight( size.y );
-    }
 
-    void LayoutBase::UpdateNbrSize( double width )
-    {
-        wxString id = GetAttrStr( AT_CatNbr );
-        wxFont font = GetNbrFont( );
-        wxRealPoint size = CalcTextSize( id, width, font );
-        m_nbrFrame.SetWidth( size.x );
-        m_nbrFrame.SetHeight( size.y );
-        m_nbrFrame.SetMinWidth( size.x );
-        m_nbrFrame.SetMinHeight( size.y );
-    }
+        SetTopContentPadding( 0 );
+        SetBottomContentPadding( 0 );
+        SetLeftContentPadding( 0 );
+        SetRightContentPadding( 0 );
+        SetTitleLocation( Design::AT_TitleLocationDefault );
+        m_nbrFrame = 0;
+        m_nameFrame = 0;
+        m_titleFrame = 0;
+        m_textFrame = 0;
+    };
 
-    // Calc Title size based on allowed width and font size.
-    void LayoutBase::UpdateTitleSize( double width )
-    {
-        wxString title = GetAttrStr( Design::AT_Name );
-        wxFont font = GetTitleFont( );
-        wxRealPoint size = CalcTextSize( title, width, font );
-        m_titleFrame.SetWidth( size.x );
-        m_titleFrame.SetHeight( size.y );
-        m_titleFrame.SetMinWidth( size.x );
-        m_titleFrame.SetMinHeight( size.y );
-    }
 
-    // Calc Title size based on allowed width and font size.
-    void LayoutBase::UpdateTextSize( double width )
+
+    DisplayString* LayoutBase::GetTitleFrame( )
     {
-        wxString text = m_text;
-        wxFont font = GetTextFont( );
-        wxRealPoint size = CalcTextSize( text, width, font );
-        m_textFrame.SetWidth( size.x );
-        m_textFrame.SetHeight( size.y );
-        m_textFrame.SetMinWidth( size.x );
-        m_textFrame.SetMinHeight( size.y );
-    }
+        if ( !m_titleFrame )
+        {
+            m_titleFrame = new DisplayString( this, AT_TitleFontType );
+        }
+        return m_titleFrame;
+    };
+
+    DisplayString* LayoutBase::GetNbrFrame( )
+    {
+        if ( !m_nbrFrame )
+        {
+            m_nbrFrame = new DisplayString( this, AT_NbrFontType );
+        }
+        return m_nbrFrame;
+    };
+
+    DisplayString* LayoutBase::GetTextFrame( )
+    {
+        if ( !m_textFrame )
+        {
+            m_textFrame = new DisplayString( this, AT_TextFontType );
+        }
+        return m_textFrame;
+    };
+
+    DisplayString* LayoutBase::GetNameFrame( )
+    {
+        if ( !m_nameFrame )
+        {
+            m_nameFrame = new DisplayString( this, AT_NameFontType );
+        }
+        return m_nameFrame;
+    };
+
 
     void LayoutBase::ReportLayoutError( wxString funct, wxString err, bool fatal )
     {
@@ -173,7 +185,7 @@ namespace Design {
     {
         m_frame.ReportLayout( indent );
         wxString str = wxString::Format( "%sTitle Size: width:%7.2f  height:%7.2f \n",
-            indent, m_titleFrame.GetWidth( ), m_titleFrame.GetHeight( ) );
+            indent, m_titleFrame->GetWidth( ), m_titleFrame->GetHeight( ) );
         std::cout << "\n" << indent << "Client Dimensions ";
         m_clientDimensions.ReportLayout( indent );
     };

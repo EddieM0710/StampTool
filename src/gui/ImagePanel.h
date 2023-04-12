@@ -44,13 +44,13 @@
 #define SYMBOL_IMAGEPANEL_POSITION wxDefaultPosition
 
 
-enum
-{
-    ID_ROTATE_LEFT = wxID_HIGHEST + 1,
-    ID_ROTATE_RIGHT,
-    ID_RESIZE,
-    ID_PAINT_BG
-};
+// enum
+// {
+//     ID_ROTATE_LEFT = wxID_HIGHEST + 1,
+//     ID_ROTATE_RIGHT,
+//     ID_RESIZE,
+//     ID_PAINT_BG
+// };
 
 /**
  * @brief This is the class that manages the image displayed on the StampDescriptionPanel.

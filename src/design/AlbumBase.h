@@ -72,39 +72,16 @@ namespace Design {
 
         wxArrayString* GetErrorArray( ) { return &m_errorArray; };
 
-        int GetTitleFontNdx( );
-        int GetTextFontNdx( );
-        int GetNameFontNdx( );
-        int GetNbrFontNdx( );
+        void SetFontNdx( AT_FontUsageType fontType, int ndx );
+        int GetFontNdx( AT_FontUsageType fontType );
+        wxFont GetFont( AT_FontUsageType fontType );
+        wxColour GetColor( AT_FontUsageType fontType );
+        void SetFont( AT_FontUsageType fontType, wxFont font, wxColour color );
 
-        wxFont GetTitleFont( );
-        wxFont GetTextFont( );
-        wxFont GetNameFont( );
-        wxFont GetNbrFont( );
+        bool IsDefaultFont( AT_FontUsageType fontType, int ndx );
 
-        wxColour GetTitleColor( );
-        wxColour GetTextColor( );
-        wxColour GetNameColor( );
-        wxColour GetNbrColor( );
-
-        void SetTitleFont( wxFont font, wxColour color );
-        void SetTextFont( wxFont font, wxColour color );
-        void SetNameFont( wxFont font, wxColour color );
-        void SetNbrFont( wxFont font, wxColour color );
-
-        // resets the Catalog Nbr Font to the default CatNbr Font
-        void DefaultCatNbrFont( ) { m_nbrFont.Default( ); };
-
-        // resets the Title Font to the default Title Font
-        void DefaultTitleFont( ) { m_titleFont.Default( ); };
-
-        // resets the Text Font to the default Text Font
-        void DefaultTextFont( ) { m_textFont.Default( ); };
-
-        bool IsDefaultTitleFont( int ndx );
-        bool IsDefaultTextFont( int ndx );
-        bool IsDefaultNameFont( int ndx );
-        bool IsDefaultNbrFont( int ndx );
+        // resets the Font to the default Font
+        void MakeDefaultFont( AT_FontUsageType fontType ) { AlbunBaseFonts[ fontType ].MakeDefault( ); };
 
         void LoadFonts( wxXmlNode* node );
         void SaveFonts( wxXmlNode* parent );
@@ -116,14 +93,7 @@ namespace Design {
         wxTreeItemId m_treeID;
         wxArrayString m_errorArray;
 
-        // index of title font in FontMap
-        Utils::FontNdx m_titleFont;
-        // index of text font in FontMap
-        Utils::FontNdx m_textFont;
-        // index of catalog number font in FontMap
-        Utils::FontNdx m_nbrFont;
-        // index of name font in FontMap
-        Utils::FontNdx m_nameFont;
+        Utils::FontNdx AlbunBaseFonts[ AT_NbrFontUsageTypes ];
 
     protected:
 

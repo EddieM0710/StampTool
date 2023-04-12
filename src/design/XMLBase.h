@@ -6,18 +6,18 @@
  * @date 2022-02-04
  *
  * @copyright Copyright ( c ) 2022
- * 
+ *
  * This file is part of StampTool.
  *
- * StampTool is free software: you can redistribute it and/or modify it under the 
- * terms of the GNU General Public License as published by the Free Software Foundation, 
+ * StampTool is free software: you can redistribute it and/or modify it under the
+ * terms of the GNU General Public License as published by the Free Software Foundation,
  * either version 3 of the License, or any later version.
  *
- * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY 
- * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+ * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
+ * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
- * You should have received a copy of the GNU General Public License along with 
+ * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
  **************************************************/
@@ -35,19 +35,19 @@
 #include "utils/XMLUtilities.h"
 
 
-namespace Design { 
+namespace Design {
 
-class XMLBase;
+    class XMLBase;
 
-//typedef std::vector<XMLBase*> ChildList;
+    //typedef std::vector<XMLBase*> ChildList;
 
-    /**
-     * @brief Base class for all layout objects. The layout objects are
-     * initialy loaded from the layout XML.
-     *
-     **************************************************/
+        /**
+         * @brief Base class for all layout objects. The layout objects are
+         * initialy loaded from the layout XML.
+         *
+         **************************************************/
     class XMLBase
-    { 
+    {
     public:
         /**
          * @brief Unused; Construct a new Album Design Object object
@@ -62,28 +62,28 @@ class XMLBase;
          *
          * @param name
          **************************************************/
-        XMLBase( wxXmlNode* ele ) ;
+        XMLBase( wxXmlNode* ele );
 
         void SetNodeType( AlbumBaseType type ) { m_nodeType = type; };
-        AlbumBaseType GetNodeType( ) { return ( AlbumBaseType )m_nodeType; };
-        bool IsNodeType( AlbumBaseType type ){ return ( type == m_nodeType ); };
+        AlbumBaseType GetNodeType( ) { return ( AlbumBaseType ) m_nodeType; };
+        bool IsNodeType( AlbumBaseType type ) { return ( type == m_nodeType ); };
 
-        int GetLineNumber( ){ return m_lineNbr; };
-        void SetLineNumber( int nbr ){ m_lineNbr = nbr; };
+        int GetLineNumber( ) { return m_lineNbr; };
+        void SetLineNumber( int nbr ) { m_lineNbr = nbr; };
 
         Attribute* FindAttr( wxString name );
         bool LoadAttributes( wxXmlNode* thisObject );
 
         wxString GetAttrStr( wxString name );
-        wxString GetAttrStr( AlbumAttrType type );  
+        wxString GetAttrStr( AlbumAttrType type );
 
-        double GetAttrDbl( AlbumAttrType type );  
+        double GetAttrDbl( AlbumAttrType type );
         double GetAttrDbl( wxString name );
 
         void SetAttrStr( wxString name, wxString val );
         void SetAttrStr( AlbumAttrType type, wxString val );
-        void SetAttrDbl( AlbumAttrType type, double val ) ; 
-        
+        void SetAttrDbl( AlbumAttrType type, double val );
+
         int GetNbrAttr( ) { return m_attrArray.size( ); };
         Attribute* AttributeItem( int ndx ) { return m_attrArray.at( ndx ); };
 
@@ -96,18 +96,18 @@ class XMLBase;
         void SetObjectText( wxString text ) { m_text = text; }
         wxString GetObjectText( ) { return m_text; }
 
-        NodeStatus GetNodeStatus( ){ return m_nodeValid; };
-        bool IsStatusOK( ){ return ( m_nodeValid != AT_FATAL ); };
-        void SetNodeStatus( NodeStatus status ){  m_nodeValid = status; };
+        NodeStatus GetNodeStatus( ) { return m_nodeValid; };
+        bool IsStatusOK( ) { return ( m_nodeValid != AT_FATAL ); };
+        void SetNodeStatus( NodeStatus status ) { m_nodeValid = status; };
         void SetAttribute( wxXmlNode* xmlNode, AlbumAttrType type );
 
         virtual void Save( wxXmlNode* xmlNode ) = 0;
 
+        wxString GetText( ) { return m_text; }
+        // void GetChild( )
+        // { 
 
-// void GetChild( )
-// { 
-    
-// }
+        // }
 
     private:
 
@@ -119,11 +119,11 @@ class XMLBase;
         int m_nodeType;
         int m_lineNbr;
 
-        protected:
+    protected:
         LayoutAttributeArray m_attrArray;
         wxString m_text;
         NodeStatus m_nodeValid;
-   };
+    };
 
 }
 #endif

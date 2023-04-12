@@ -6,18 +6,18 @@
  * @date 2022-02-04
  *
  * @copyright Copyright ( c ) 2022
- * 
+ *
  * This file is part of StampTool.
  *
- * StampTool is free software: you can redistribute it and/or modify it under the 
- * terms of the GNU General Public License as published by the Free Software Foundation, 
+ * StampTool is free software: you can redistribute it and/or modify it under the
+ * terms of the GNU General Public License as published by the Free Software Foundation,
  * either version 3 of the License, or any later version.
  *
- * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY 
- * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+ * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
+ * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
- * You should have received a copy of the GNU General Public License along with 
+ * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
  **************************************************/
@@ -31,18 +31,25 @@
 #include "design/DesignDefs.h"
 #include "utils/DebugString.h"
 
-namespace Design { 
+namespace Design {
 
     /**
-     * @brief Column layout object; Inherits from LayoutBase.  
+     * @brief Column layout object; Inherits from LayoutBase.
      * The column can contain Row or Stamp objects.
      *
      **************************************************/
-    class Column : public LayoutBase
-    { 
+    class Column: public LayoutBase
+    {
     public:
 
-        Column( wxXmlNode* node ) : LayoutBase( node ) { SetNodeType( AT_Col ); };
+        Column( wxXmlNode* node ): LayoutBase( node ) {
+            SetNodeType( AT_Col );
+            SetObjectName( AlbumBaseNames[ GetNodeType( ) ] );
+            SetShowFrame( false );
+            SetShowTitle( false );
+            SetFixedSpacingSize( "4" );
+            SetCalculateSpacing( true );
+        };
 
         ~Column( ) { };
 
@@ -58,13 +65,13 @@ namespace Design {
         bool UpdateMinimumSize( );
 
         void UpdateSizes( );
-        
+
         /**
-         * @brief Calculate the column layout based on child parameters. 
-         *  Go to the bottom of each child container object ( row, column, page ) 
+         * @brief Calculate the column layout based on child parameters.
+         *  Go to the bottom of each child container object ( row, column, page )
          * and begin filling in position relative to the parent
          * *
-         * 
+         *
          * @return true
          * @return false
          **************************************************/
@@ -81,14 +88,21 @@ namespace Design {
          * @param y position in MM
          */
         void Draw( wxDC& dc, double x, double y );
-        void DrawPDF( wxPdfDocument* doc, double x, double y ){};
+        void DrawPDF( wxPdfDocument* doc, double x, double y ) {};
 
         void Save( wxXmlNode* xmlNode );
 
-        void ReportLayout(  );
+        void SetFixedSpacingSize( wxString str ) { SetAttrStr( AT_FixedSpacingSize, str ); };
+        wxString GetFixedSpacing( ) { return GetAttrStr( AT_FixedSpacingSize ); };
+        double GetFixedSpacingDbl( ) { return GetAttrDbl( AT_FixedSpacingSize ); };
+
+        bool CalculateSpacing( ) { return String2Bool( GetAttrStr( AT_CalculateSpacing ) ); };
+        void SetCalculateSpacing( bool val ) { SetAttrStr( AT_CalculateSpacing, Bool2String( val ) ); };
+
+        void ReportLayout( );
 
     private:
-        bool m_showTitle;
+        // bool m_showTitle;
         DebugString m_debugString;
 
     };

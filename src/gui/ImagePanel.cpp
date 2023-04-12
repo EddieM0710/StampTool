@@ -65,7 +65,7 @@ BEGIN_EVENT_TABLE( ImagePanel, wxPanel )
 // ImagePanel event table entries
 EVT_PAINT( ImagePanel::OnPaint )
 EVT_CONTEXT_MENU( ImagePanel::OnContextMenu )
-EVT_MENU( ID_RESIZE, ImagePanel::OnResize )
+//EVT_MENU( ID_RESIZE, ImagePanel::OnResize )
 EVT_MENU( wxID_ZOOM_IN, ImagePanel::OnZoom )
 EVT_MENU( wxID_ZOOM_OUT, ImagePanel::OnZoom )
 EVT_MENU( wxID_ZOOM_100, ImagePanel::OnZoom )
@@ -307,13 +307,13 @@ void ImagePanel::OnContextMenu( wxContextMenuEvent& event )
 
     wxMenu menu( "Image Menu" );
 
-    menu.Append( ID_RESIZE, "&Fit to window\tCtrl-F" );
+    //menu.Append( ID_RESIZE, "&Fit to window\tCtrl-F" );
     menu.Append( wxID_ZOOM_IN, "Zoom &in\tCtrl-+" );
     menu.Append( wxID_ZOOM_OUT, "Zoom &out\tCtrl--" );
     menu.Append( wxID_ZOOM_100, "Reset zoom to &100%\tCtrl-1" );
     menu.AppendSeparator( );
-    menu.Append( ID_ROTATE_LEFT, "Rotate &left\tCtrl-L" );
-    menu.Append( ID_ROTATE_RIGHT, "Rotate &right\tCtrl-R" );
+    //menu.Append( ID_ROTATE_LEFT, "Rotate &left\tCtrl-L" );
+    //menu.Append( ID_ROTATE_RIGHT, "Rotate &right\tCtrl-R" );
 
     PopupMenu( &menu );
     event.Skip( );

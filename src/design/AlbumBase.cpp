@@ -38,7 +38,6 @@
 
 #include "design/TitlePage.h"
 #include "design/Page.h"
-#include "design/Title.h"
 #include "design/Row.h"
 #include "design/Column.h"
 #include "design/Stamp.h"
@@ -114,241 +113,114 @@ namespace Design {
         return false;
     };
 
-    int AlbumBase::GetTitleFontNdx( ) { return m_titleFont.Get( ); };
-    int AlbumBase::GetTextFontNdx( ) { return m_textFont.Get( ); };
-    int AlbumBase::GetNameFontNdx( ) { return m_nameFont.Get( ); };
-    int AlbumBase::GetNbrFontNdx( ) { return m_nbrFont.Get( ); };
 
-    wxFont AlbumBase::GetNameFont( )
+
+
+
+    void AlbumBase::SetFontNdx( AT_FontUsageType fontType, int ndx )
     {
-        if ( GetFontList( )->IsValidFontNdx( m_nameFont.Get( ) ) )
+        AlbunBaseFonts[ fontType ].Set( ndx );
+    };
+
+    int AlbumBase::GetFontNdx( AT_FontUsageType fontType )
+    {
+        return AlbunBaseFonts[ fontType ].Get( );
+    };
+
+    wxFont AlbumBase::GetFont( AT_FontUsageType fontType )
+    {
+        int ndx = GetFontNdx( fontType );
+        if ( GetFontList( )->IsValidFontNdx( ndx ) )
         {
-            return GetFontList( )->GetFont( m_nameFont.Get( ) );
+            return GetFontList( )->GetFont( ndx );
         }
         if ( GetNodeType( ) == AT_Album )
         {
-            return GetFontList( )->GetFont( GetAlbum( )->GetAppPrefNameFontNdx( ) );
+            return GetFontList( )->GetFont( GetAlbum( )->GetFontNdxPreference( fontType ) );
         }
         else
         {
-            return GetAlbum( )->GetNameFont( );
+            return GetAlbum( )->GetFont( fontType );
         }
 
     }
 
-    wxFont AlbumBase::GetTitleFont( )
+    wxColour AlbumBase::GetColor( AT_FontUsageType fontType )
     {
-        if ( GetFontList( )->IsValidFontNdx( m_titleFont.Get( ) ) )
+        int ndx = GetFontNdx( fontType );
+        if ( GetFontList( )->IsValidFontNdx( ndx ) )
         {
-            return GetFontList( )->GetFont( m_titleFont.Get( ) );
+            return GetFontList( )->GetColor( ndx );
         }
         if ( GetNodeType( ) == AT_Album )
         {
-            return GetFontList( )->GetFont( GetAlbum( )->GetAppPrefTitleFontNdx( ) );
+            return GetFontList( )->GetColor( GetAlbum( )->GetFontNdxPreference( fontType ) );
         }
         else
         {
-            return GetAlbum( )->GetTitleFont( );
-        }
-
-    }
-
-    wxFont AlbumBase::GetTextFont( )
-    {
-        if ( GetFontList( )->IsValidFontNdx( m_textFont.Get( ) ) )
-        {
-            return GetFontList( )->GetFont( m_textFont.Get( ) );
-        }
-        if ( GetNodeType( ) == AT_Album )
-        {
-            return GetFontList( )->GetFont( GetAlbum( )->GetAppPrefTextFontNdx( ) );
-        }
-        else
-        {
-            return GetAlbum( )->GetTextFont( );
+            return GetAlbum( )->GetColor( fontType );
         }
     }
 
-    wxFont AlbumBase::GetNbrFont( )
-    {
-        if ( GetFontList( )->IsValidFontNdx( m_nbrFont.Get( ) ) )
-        {
-            return GetFontList( )->GetFont( m_nbrFont.Get( ) );
-        }
-        if ( GetNodeType( ) == AT_Album )
-        {
-            return GetFontList( )->GetFont( GetAlbum( )->GetAppPrefNbrFontNdx( ) );
-        }
-        else
-        {
-            return GetAlbum( )->GetNbrFont( );
-        }
-    }
-
-    wxColour AlbumBase::GetNbrColor( )
-    {
-        if ( GetFontList( )->IsValidFontNdx( m_nbrFont.Get( ) ) )
-        {
-            return GetFontList( )->GetColor( m_nbrFont.Get( ) );
-        }
-        if ( GetNodeType( ) == AT_Album )
-        {
-            return GetFontList( )->GetColor( GetAlbum( )->GetAppPrefNbrFontNdx( ) );
-        }
-        else
-        {
-            return GetAlbum( )->GetNbrColor( );
-        }
-    }
-
-    wxColour AlbumBase::GetTextColor( )
-    {
-        if ( GetFontList( )->IsValidFontNdx( m_textFont.Get( ) ) )
-        {
-            return GetFontList( )->GetColor( m_textFont.Get( ) );
-        }
-        if ( GetNodeType( ) == AT_Album )
-        {
-            return GetFontList( )->GetColor( GetAlbum( )->GetAppPrefTextFontNdx( ) );
-        }
-        else
-        {
-            return GetAlbum( )->GetTextColor( );
-        }
-    }
-
-    wxColour AlbumBase::GetNameColor( )
-    {
-        if ( GetFontList( )->IsValidFontNdx( m_nameFont.Get( ) ) )
-        {
-            return GetFontList( )->GetColor( m_nameFont.Get( ) );
-        }
-        if ( GetNodeType( ) == AT_Album )
-        {
-            return GetFontList( )->GetColor( GetAlbum( )->GetAppPrefNameFontNdx( ) );
-        }
-        else
-        {
-            return GetAlbum( )->GetNameColor( );
-        }
-    }
-
-    wxColour AlbumBase::GetTitleColor( )
-    {
-        if ( GetFontList( )->IsValidFontNdx( m_titleFont.Get( ) ) )
-        {
-            return GetFontList( )->GetColor( m_titleFont.Get( ) );
-        }
-        if ( GetNodeType( ) == AT_Album )
-        {
-            return GetFontList( )->GetColor( GetAlbum( )->GetAppPrefTitleFontNdx( ) );
-        }
-        else
-        {
-            return GetAlbum( )->GetTitleColor( );
-        }
-    }
-
-    bool AlbumBase::IsDefaultTitleFont( int ndx ) { return ( ndx == GetAlbum( )->GetTitleFontNdx( ) ); }
-
-    bool AlbumBase::IsDefaultTextFont( int ndx ) { return ( ndx == Design::GetAlbum( )->GetTextFontNdx( ) ); }
-
-    bool AlbumBase::IsDefaultNbrFont( int ndx ) { return ( ndx == GetAlbum( )->GetNbrFontNdx( ) ); }
-
-    bool AlbumBase::IsDefaultNameFont( int ndx ) { return ( ndx == GetAlbum( )->GetNameFontNdx( ) ); }
-
-    void AlbumBase::SetTitleFont( wxFont font, wxColour color )
-    {
-        m_titleFont.Set( GetFontList( )->AddNewFont( font, color ) );
-        int ndx = GetFontList( )->AddNewFont( font, color );
-        if ( IsDefaultTitleFont( ndx ) && !IsNodeType( AT_Album ) )
-        {
-            m_titleFont.Set( -1 );
-        }
-        else
-        {
-            m_titleFont.Set( ndx );
-        }
-    }
-    void AlbumBase::SetTextFont( wxFont font, wxColour color )
+    void AlbumBase::SetFont( AT_FontUsageType fontType, wxFont font, wxColour color )
     {
         int ndx = GetFontList( )->AddNewFont( font, color );
-        if ( IsDefaultTextFont( ndx ) && !IsNodeType( AT_Album ) )
+        if ( IsDefaultFont( fontType, ndx ) && !IsNodeType( AT_Album ) )
         {
-            m_textFont.Set( -1 );
+            SetFontNdx( fontType, -1 );
         }
         else
         {
-            m_textFont.Set( ndx );
+            SetFontNdx( fontType, ndx );
         }
     }
 
-    void AlbumBase::SetNameFont( wxFont font, wxColour color )
+    bool AlbumBase::IsDefaultFont( AT_FontUsageType fontType, int ndx )
     {
-        int ndx = GetFontList( )->AddNewFont( font, color );
-        if ( IsDefaultNameFont( ndx ) && !IsNodeType( AT_Album ) )
-        {
-            m_nameFont.Set( -1 );
-        }
-        else
-        {
-            m_nameFont.Set( ndx );
-        }
-    }
-    void AlbumBase::SetNbrFont( wxFont font, wxColour color )
-    {
-        int ndx = GetFontList( )->AddNewFont( font, color );
-        if ( IsDefaultNbrFont( ndx ) && !IsNodeType( AT_Album ) )
-        {
-            m_nbrFont.Set( -1 );
-        }
-        else
-        {
-            m_nbrFont.Set( ndx );
-        }
+        return ( ndx == GetAlbum( )->GetFontNdx( fontType ) );
     }
 
     void AlbumBase::SaveFonts( wxXmlNode* parent )
     {
-        if ( m_nbrFont.IsOk( ) || m_textFont.IsOk( ) || m_titleFont.IsOk( ) )
+        if ( AlbunBaseFonts[ AT_NbrFontType ].IsOk( ) || AlbunBaseFonts[ AT_TextFontType ].IsOk( ) || AlbunBaseFonts[ AT_TitleFontType ].IsOk( ) || AlbunBaseFonts[ AT_NameFontType ].IsOk( ) )
         {
             wxXmlNode* fonts = Utils::NewNode( parent, "Fonts" );
             if ( fonts )
             {
-                if ( m_nbrFont.IsOk( ) )
+                if ( AlbunBaseFonts[ AT_NbrFontType ].IsOk( ) )
                 {
                     if ( IsNodeType( AT_Album )  //save all fonts for album                    
                         //or all but default fonts for others
-                        || ( !IsNodeType( AT_Album ) && !IsDefaultNbrFont( m_nbrFont.Get( ) ) ) )
+                        || ( !IsNodeType( AT_Album ) && !IsDefaultFont( AT_NbrFontType, GetFontNdx( AT_NbrFontType ) ) ) )
                     {
-                        GetFontList( )->SaveFont( fonts, m_nbrFont, Design::AT_NbrFontType );
+                        GetFontList( )->SaveFont( fonts, AlbunBaseFonts[ AT_NbrFontType ], Design::AT_NbrFontType );
                     }
                 }
-                if ( m_nameFont.IsOk( ) )
+                if ( AlbunBaseFonts[ AT_NameFontType ].IsOk( ) )
                 {
                     if ( IsNodeType( AT_Album )  //save all fonts for album                    
                         //or all but default fonts for others
-                        || ( !IsNodeType( AT_Album ) && !IsDefaultNbrFont( m_nbrFont.Get( ) ) ) )
+                        || ( !IsNodeType( AT_Album ) && !IsDefaultFont( AT_NameFontType, GetFontNdx( AT_NameFontType ) ) ) )
                     {
-                        GetFontList( )->SaveFont( fonts, m_nameFont, Design::AT_NameFontType );
+                        GetFontList( )->SaveFont( fonts, AlbunBaseFonts[ AT_NameFontType ], Design::AT_NameFontType );
                     }
                 }
-                if ( m_textFont.IsOk( ) )
+                if ( AlbunBaseFonts[ AT_TextFontType ].IsOk( ) )
                 {
                     if ( IsNodeType( AT_Album )  //save all fonts for album                    
                         //or all but default fonts for others
-                        || ( !IsNodeType( AT_Album ) && !IsDefaultNbrFont( m_textFont.Get( ) ) ) )
+                        || ( !IsNodeType( AT_Album ) && !IsDefaultFont( AT_TextFontType, GetFontNdx( AT_TextFontType ) ) ) )
                     {
-                        GetFontList( )->SaveFont( fonts, m_textFont, Design::AT_TextFontType );
+                        GetFontList( )->SaveFont( fonts, AlbunBaseFonts[ AT_TextFontType ], Design::AT_TextFontType );
                     }
                 }
-                if ( m_titleFont.IsOk( ) )
+                if ( AlbunBaseFonts[ AT_TitleFontType ].IsOk( ) )
                 {
                     if ( IsNodeType( AT_Album )  //save all fonts for album                    
                         //or all but default fonts for others
-                        || ( !IsNodeType( AT_Album ) && !IsDefaultNbrFont( m_titleFont.Get( ) ) ) )
+                        || ( !IsNodeType( AT_Album ) && !IsDefaultFont( AT_TitleFontType, GetFontNdx( AT_TitleFontType ) ) ) )
                     {
-                        GetFontList( )->SaveFont( fonts, m_titleFont, Design::AT_TitleFontType );
+                        GetFontList( )->SaveFont( fonts, AlbunBaseFonts[ AT_TitleFontType ], Design::AT_TitleFontType );
                     }
                 }
             }
@@ -365,40 +237,39 @@ namespace Design {
 
             Design::AlbumBaseType nodeType = GetNodeType( );
 
-            m_nbrFont = GetFontList( )->LoadFont( fonts, Design::AT_NbrFontType );
-            if ( !m_nbrFont.IsOk( ) )
+            AlbunBaseFonts[ AT_NbrFontType ] = GetFontList( )->LoadFont( fonts, Design::AT_NbrFontType );
+            if ( !AlbunBaseFonts[ AT_NbrFontType ].IsOk( ) )
             {
                 if ( nodeType == AT_Album )
                 {
-                    m_nbrFont.Set( GetSettings( )->GetAppPrefNbrFontNdx( ) );
-                }
-            }
-            m_nameFont = GetFontList( )->LoadFont( fonts, Design::AT_NameFontType );
-            if ( m_nameFont.IsOk( ) )
-            {
-                if ( IsNodeType( AT_Album )  //save all fonts for album                    
-                    //or all but default fonts for others
-                    || ( !IsNodeType( AT_Album ) && !IsDefaultNbrFont( m_nameFont.Get( ) ) ) )
-                {
-                    GetFontList( )->SaveFont( fonts, m_nameFont, Design::AT_NameFontType );
+                    AlbunBaseFonts[ AT_NbrFontType ].Set( GetSettings( )->GetFontNdxPreference( AT_NbrFontType ) );
                 }
             }
 
-            m_textFont = GetFontList( )->LoadFont( fonts, Design::AT_TextFontType );
-            if ( !m_textFont.IsOk( ) )
+            AlbunBaseFonts[ AT_NameFontType ] = GetFontList( )->LoadFont( fonts, Design::AT_NameFontType );
+            if ( AlbunBaseFonts[ AT_NameFontType ].IsOk( ) )
             {
                 if ( IsNodeType( AT_Album ) )
                 {
-                    m_textFont.Set( GetSettings( )->GetAppPrefTextFontNdx( ) );
+                    AlbunBaseFonts[ AT_NameFontType ].Set( GetSettings( )->GetFontNdxPreference( AT_TextFontType ) );
                 }
             }
 
-            m_titleFont = GetFontList( )->LoadFont( fonts, Design::AT_TitleFontType );
-            if ( !m_titleFont.IsOk( ) )
+            AlbunBaseFonts[ AT_TextFontType ] = GetFontList( )->LoadFont( fonts, Design::AT_TextFontType );
+            if ( !AlbunBaseFonts[ AT_TextFontType ].IsOk( ) )
             {
                 if ( IsNodeType( AT_Album ) )
                 {
-                    m_titleFont.Set( GetSettings( )->GetAppPrefTitleFontNdx( ) );
+                    AlbunBaseFonts[ AT_TextFontType ].Set( GetSettings( )->GetFontNdxPreference( AT_TextFontType ) );
+                }
+            }
+
+            AlbunBaseFonts[ AT_TitleFontType ] = GetFontList( )->LoadFont( fonts, Design::AT_TitleFontType );
+            if ( !AlbunBaseFonts[ AT_TitleFontType ].IsOk( ) )
+            {
+                if ( IsNodeType( AT_Album ) )
+                {
+                    AlbunBaseFonts[ AT_TitleFontType ].Set( GetSettings( )->GetFontNdxPreference( Design::AT_TitleFontType ) );
                 }
             }
         }
@@ -406,17 +277,17 @@ namespace Design {
     void AlbumBase::DumpFont( wxString Level )
     {
 
-        int ndx = m_nbrFont.Get( );
+        int ndx = AlbunBaseFonts[ AT_NbrFontType ].Get( );
         std::cout << Level << "CatNbr font " << GetFontList( )->GetFont( ndx ).GetNativeFontInfoUserDesc( )
             << "  color " << GetFontList( )->GetColor( ndx ).GetAsString( )
             << "  Ndx " << ndx << std::endl;
 
-        ndx = m_textFont.Get( );
+        ndx = AlbunBaseFonts[ AT_TextFontType ].Get( );
         std::cout << Level << "Text font " << GetFontList( )->GetFont( ndx ).GetNativeFontInfoUserDesc( )
             << "  color " << GetFontList( )->GetColor( ndx ).GetAsString( )
             << "  Ndx " << ndx << std::endl;
 
-        ndx = m_titleFont.Get( );
+        ndx = AlbunBaseFonts[ AT_TitleFontType ].Get( );
         std::cout << Level << "Title font " << GetFontList( )->GetFont( ndx ).GetNativeFontInfoUserDesc( )
             << "  color " << GetFontList( )->GetColor( ndx ).GetAsString( )
             << "  Ndx " << ndx << std::endl;

@@ -45,6 +45,8 @@ namespace Design {
             SetObjectName( AlbumBaseNames[ GetNodeType( ) ] );
             SetShowFrame( false );
             SetShowTitle( false );
+            SetFixedSpacingSize( "4" );
+            SetCalculateSpacing( true );
         };
 
         ~Row( ) { };
@@ -86,8 +88,17 @@ namespace Design {
 
         void ReportLayout( );
 
+        void SetFixedSpacingSize( wxString str ) { SetAttrStr( AT_FixedSpacingSize, str ); };
+        wxString GetFixedSpacing( ) { return GetAttrStr( AT_FixedSpacingSize ); };
+        double GetFixedSpacingDbl( ) { return GetAttrDbl( AT_FixedSpacingSize ); };
+
+        bool CalculateSpacing( ) { return String2Bool( GetAttrStr( AT_CalculateSpacing ) ); };
+        void SetCalculateSpacing( bool val ) { SetAttrStr( AT_CalculateSpacing, Bool2String( val ) ); };
+
     private:
-        bool m_showTitle;
+        //        bool m_showTitle;
+        //        bool m_calculateSpacing;
+        //        double m_fixedSpacing;
         DebugString m_debugString;
         //        StampAlignment m_stampAlignment;
     };

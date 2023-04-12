@@ -26,7 +26,7 @@
 #define DesignTreeCtrl_H
 
 #include "design/Stamp.h"
-#include "design/Text.h"
+#include "design/TextBox.h"
 #include "design/AlbumBase.h"
 #include "design/LayoutBase.h"
 #include "design/DesignDefs.h"
@@ -316,8 +316,8 @@ public:
     Utils::StampLink* AppendStamp( wxTreeItemId id );
     wxString GetImageFullPath( wxTreeItemId catTreeID );
     void UpdateItemPageLayout( wxTreeItemId id );
-    Design::Text* CreateNewText( );
-    Design::Text* AddTextTreeItem( wxTreeItemId parentID, Design::Text* newText );
+    Design::TextBox* CreateNewText( );
+    Design::TextBox* AddTextTreeItem( wxTreeItemId parentID, Design::TextBox* newText );
 
     wxTreeItemId GetPage( wxTreeItemId id );
     void MakePage( wxTreeItemId id );

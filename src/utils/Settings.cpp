@@ -220,10 +220,10 @@ namespace Utils {
         wxXmlNode* fonts = NewNode( settings, "Fonts" );
         if ( fonts )
         {
-            GetFontList( )->SaveFont( fonts, m_appPrefNbrFontNdx, Design::AT_NbrFontType );
-            GetFontList( )->SaveFont( fonts, m_appPrefNameFontNdx, Design::AT_NameFontType );
-            GetFontList( )->SaveFont( fonts, m_appPrefTextFontNdx, Design::AT_TextFontType );
-            GetFontList( )->SaveFont( fonts, m_appPrefTitleFontNdx, Design::AT_TitleFontType );
+            GetFontList( )->SaveFont( fonts, FontPreference[ Design::AT_NbrFontType ], Design::AT_NbrFontType );
+            GetFontList( )->SaveFont( fonts, FontPreference[ Design::AT_NameFontType ], Design::AT_NameFontType );
+            GetFontList( )->SaveFont( fonts, FontPreference[ Design::AT_TextFontType ], Design::AT_TextFontType );
+            GetFontList( )->SaveFont( fonts, FontPreference[ Design::AT_TitleFontType ], Design::AT_TitleFontType );
         }
 
         wxXmlNode* sortOrder = NewNode( settings, "SortOrder" );
@@ -356,50 +356,65 @@ namespace Utils {
 
         wxFont font( *wxNORMAL_FONT );
 
-        if ( !m_nbrFont.IsOk( ) )
-        {
-            SetDirty( );
-            font.SetWeight( wxFONTWEIGHT_THIN );
-            font.SetStyle( wxFONTSTYLE_ITALIC );
-            font.SetPointSize( 8 );
-            m_nbrFont = font;
-        }
+        // if ( !m_nbrFont.IsOk( ) )
+        // {
+        //     SetDirty( );
+        //     font.SetWeight( wxFONTWEIGHT_THIN );
+        //     font.SetStyle( wxFONTSTYLE_ITALIC );
+        //     font.SetPointSize( 8 );
+        //     m_nbrFont = font;
+        // }
 
-        if ( !m_catNbrColor.IsOk( ) )
-        {
-            SetDirty( );
-            m_catNbrColor = m_defaultFontColor;
-        }
+        // if ( !m_catNbrColor.IsOk( ) )
+        // {
+        //     SetDirty( );
+        //     m_catNbrColor = m_defaultFontColor;
+        // }
 
-        if ( !m_titleFont.IsOk( ) )
-        {
-            SetDirty( );
-            font.SetWeight( wxFONTWEIGHT_BOLD );
-            font.SetStyle( wxFONTSTYLE_NORMAL );
-            font.SetPointSize( 12 );
-            m_titleFont = font;
-        }
+        // if ( !m_titleFont.IsOk( ) )
+        // {
+        //     SetDirty( );
+        //     font.SetWeight( wxFONTWEIGHT_BOLD );
+        //     font.SetStyle( wxFONTSTYLE_NORMAL );
+        //     font.SetPointSize( 12 );
+        //     m_titleFont = font;
+        // }
 
-        if ( !m_titleColor.IsOk( ) )
-        {
-            SetDirty( );
-            m_titleColor = m_defaultFontColor;
-        }
+        // if ( !m_titleColor.IsOk( ) )
+        // {
+        //     SetDirty( );
+        //     m_titleColor = m_defaultFontColor;
+        // }
 
-        if ( !m_textFont.IsOk( ) )
-        {
-            SetDirty( );
-            font.SetWeight( wxFONTWEIGHT_NORMAL );
-            font.SetStyle( wxFONTSTYLE_NORMAL );
-            font.SetPointSize( 10 );
-            m_textFont = font;
-        }
+        // if ( !m_textFont.IsOk( ) )
+        // {
+        //     SetDirty( );
+        //     font.SetWeight( wxFONTWEIGHT_NORMAL );
+        //     font.SetStyle( wxFONTSTYLE_NORMAL );
+        //     font.SetPointSize( 10 );
+        //     m_textFont = font;
+        // }
 
-        if ( !m_textColor.IsOk( ) )
-        {
-            SetDirty( );
-            m_textColor = m_defaultFontColor;
-        }
+        // if ( !m_textColor.IsOk( ) )
+        // {
+        //     SetDirty( );
+        //     m_textColor = m_defaultFontColor;
+        // }
+
+        // if ( !m_nameFont.IsOk( ) )
+        // {
+        //     SetDirty( );
+        //     font.SetWeight( wxFONTWEIGHT_NORMAL );
+        //     font.SetStyle( wxFONTSTYLE_NORMAL );
+        //     font.SetPointSize( 10 );
+        //     m_nameFont = font;
+        // }
+
+        // if ( !m_textColor.IsOk( ) )
+        // {
+        //     SetDirty( );
+        //     m_textColor = m_defaultFontColor;
+        // }
     }
 
     //***** 
@@ -570,28 +585,28 @@ namespace Utils {
             else if ( !name.Cmp( "Fonts" ) )
             {
 
-                m_appPrefNbrFontNdx = GetFontList( )->LoadFont( child, Design::AT_NbrFontType );
-                if ( m_appPrefNbrFontNdx.Get( ) < 0 )
+                FontPreference[ Design::AT_NbrFontType ] = GetFontList( )->LoadFont( child, Design::AT_NbrFontType );
+                if ( FontPreference[ Design::AT_NbrFontType ].Get( ) < 0 )
                 {
-                    m_appPrefNbrFontNdx.Set( GetFontList( )->DefaultFont( Design::AT_DefaultPointSize[ Design::AT_NbrFontType ] ) );
+                    FontPreference[ Design::AT_NbrFontType ].Set( GetFontList( )->DefaultFont( Design::AT_DefaultPointSize[ Design::AT_NbrFontType ] ) );
                 }
 
-                m_appPrefNameFontNdx = GetFontList( )->LoadFont( child, Design::AT_NameFontType );
-                if ( m_appPrefNameFontNdx.Get( ) < 0 )
+                FontPreference[ Design::AT_NameFontType ] = GetFontList( )->LoadFont( child, Design::AT_NameFontType );
+                if ( FontPreference[ Design::AT_NameFontType ].Get( ) < 0 )
                 {
-                    m_appPrefNameFontNdx.Set( GetFontList( )->DefaultFont( Design::AT_DefaultPointSize[ Design::AT_NameFontType ] ) );
+                    FontPreference[ Design::AT_NameFontType ].Set( GetFontList( )->DefaultFont( Design::AT_DefaultPointSize[ Design::AT_NameFontType ] ) );
                 }
 
-                m_appPrefTextFontNdx = GetFontList( )->LoadFont( child, Design::AT_TextFontType );
-                if ( m_appPrefTextFontNdx.Get( ) < 0 )
+                FontPreference[ Design::AT_TextFontType ] = GetFontList( )->LoadFont( child, Design::AT_TextFontType );
+                if ( FontPreference[ Design::AT_TextFontType ].Get( ) < 0 )
                 {
-                    m_appPrefTextFontNdx.Set( GetFontList( )->DefaultFont( Design::AT_DefaultPointSize[ Design::AT_TextFontType ] ) );
+                    FontPreference[ Design::AT_TextFontType ].Set( GetFontList( )->DefaultFont( Design::AT_DefaultPointSize[ Design::AT_TextFontType ] ) );
                 }
 
-                m_appPrefTitleFontNdx = GetFontList( )->LoadFont( child, Design::AT_TitleFontType );
-                if ( m_appPrefTitleFontNdx.Get( ) < 0 )
+                FontPreference[ Design::AT_TitleFontType ] = GetFontList( )->LoadFont( child, Design::AT_TitleFontType );
+                if ( FontPreference[ Design::AT_TitleFontType ].Get( ) < 0 )
                 {
-                    m_appPrefTitleFontNdx.Set( GetFontList( )->DefaultFont( Design::AT_DefaultPointSize[ Design::AT_TitleFontType ] ) );
+                    FontPreference[ Design::AT_TitleFontType ].Set( GetFontList( )->DefaultFont( Design::AT_DefaultPointSize[ Design::AT_TitleFontType ] ) );
                 }
 
                 //     wxXmlNode* fontChild = child->GetChildren( ) ;

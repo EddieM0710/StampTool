@@ -103,6 +103,8 @@ namespace Design {
         AT_FontColor,
         //        AT_FontStyle, 
         AT_ImageName,
+        AT_CalculateSpacing,
+        AT_FixedSpacingSize,
         AT_NbrAttrTypes,
         AT_NOTYPE
     } AlbumAttrType;

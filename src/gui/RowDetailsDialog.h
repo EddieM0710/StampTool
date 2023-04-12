@@ -89,20 +89,18 @@ public:
         ID_TOPRADIOBUTTON,
         ID_BOTTOMRADIOBUTTON,
         ID_LEFTRADIOBUTTON,
-        ID_RIGHTRADIOBUTTON
-
+        ID_RIGHTRADIOBUTTON,
+        ID_CALCULATEDRADIOBUTTON,
+        ID_FIXEDRADIOBUTTON,
+        ID_FIXEDSIZETEXTCTRL
     };
-
 
     RowDetailsDialog( );
     RowDetailsDialog( wxWindow* parent, wxWindowID id = SYMBOL_ROWDETAILSDIALOG_IDNAME, const wxString& caption = SYMBOL_ROWDETAILSDIALOG_TITLE, const wxPoint& pos = SYMBOL_ROWDETAILSDIALOG_POSITION, const wxSize& size = SYMBOL_ROWDETAILSDIALOG_SIZE, long style = SYMBOL_ROWDETAILSDIALOG_STYLE );
 
-
     bool Create( wxWindow* parent, wxWindowID id = SYMBOL_ROWDETAILSDIALOG_IDNAME, const wxString& caption = SYMBOL_ROWDETAILSDIALOG_TITLE, const wxPoint& pos = SYMBOL_ROWDETAILSDIALOG_POSITION, const wxSize& size = SYMBOL_ROWDETAILSDIALOG_SIZE, long style = SYMBOL_ROWDETAILSDIALOG_STYLE );
 
-
     ~RowDetailsDialog( );
-
 
     void Init( );
 
@@ -124,15 +122,22 @@ public:
     void OnRightRadioButtonSelected( wxCommandEvent& event );
     void OnTitleDefaultClick( wxCommandEvent& event );
 
-    static bool ShowToolTips( );
+    void OnFixedClick( wxCommandEvent& event );
+    void OnCalculatedClick( wxCommandEvent& event );
+
     void SetNameModified( bool state );
     void SetShowTitle( bool state = false );
     void SetShowFrame( bool state = false );
-    void SetTitleColor( wxColour color );
-    void SetTitleFont( wxFont font );
+    void SetColor( wxColour color );
+    void SetFont( wxFont font );
     bool GetShowTitle( );
     bool GetShowFrame( );
     void SetTitleLayoutLocation( );
+
+    void SetCalculateSpacing( bool val );
+    void SetFixedSpacingSize( wxString str ) { m_positionFixedSize->SetValue( str ); };
+    wxString GetFixedSpacing( ) { return m_positionFixedSize->GetValue( ); };
+    bool CalculateSpacing( ) { return m_positionCalculated->GetValue( ); };
 
     wxString GetName( );
 
@@ -158,6 +163,9 @@ private:
     wxRadioButton* m_leftButton;
     wxRadioButton* m_rightButton;
     wxRadioButton* m_defaultButton;
+    wxRadioButton* m_positionCalculated;
+    wxRadioButton* m_positionFixed;
+    wxTextCtrl* m_positionFixedSize;
 };
 
 #endif

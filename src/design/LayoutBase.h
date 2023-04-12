@@ -30,6 +30,7 @@
 #include "Defs.h"
 #include "design/AlbumBase.h"
 #include "design/DesignData.h"
+#include "design/DisplayString.h"
 #include "design/Frame.h"
 #include "utils/XMLUtilities.h"
 
@@ -39,8 +40,7 @@ class  wxPdfDocument;
 
 namespace Design {
 
-
-    class Title;
+    class DisplayString;
 
     /**
      * @brief Base class for all layout objects. The layout objects are
@@ -54,26 +54,14 @@ namespace Design {
          * @brief Unused; Construct a new Album Design Object object
          *
          **************************************************/
-        LayoutBase( ): AlbumBase( ) {
-            SetTopContentPadding( 0 );
-            SetBottomContentPadding( 0 );
-            SetLeftContentPadding( 0 );
-            SetRightContentPadding( 0 );
-            SetTitleLocation( Design::AT_TitleLocationDefault );
-        };
+        LayoutBase( );
 
         /**
          * @brief Construct a new Album Design Object
          *
          * @param name
          **************************************************/
-        LayoutBase( wxXmlNode* node ): AlbumBase( node ) {
-            SetTopContentPadding( 0 );
-            SetBottomContentPadding( 0 );
-            SetLeftContentPadding( 0 );
-            SetRightContentPadding( 0 );
-            SetTitleLocation( Design::AT_TitleLocationDefault );
-        };
+        LayoutBase( wxXmlNode* node );
 
         virtual void DrawPDF( wxPdfDocument* doc, double x, double y ) = 0;
         virtual void Draw( wxDC& dc, double x, double y ) = 0;
@@ -161,20 +149,20 @@ namespace Design {
          */
         void SetMinHeight( double val ) { m_frame.SetMinHeight( val ); };
 
-        wxString GetTitle( ) { return GetAttrStr( Design::AT_Name ); };
-        void SetTitle( wxString title ) { SetAttrStr( Design::AT_Name, title ); };
+        // wxString GetTitle( ) { return GetAttrStr( Design::AT_Name ); };
+        // void SetTitle( wxString title ) { SetAttrStr( Design::AT_Name, title ); };
 
-        // Get TitleHeight in MM
-        double GetTitleHeight( ) { return m_titleFrame.GetHeight( ); };
-        double GetTitleMinHeight( ) { return m_titleFrame.GetMinHeight( ); };
+        // // Get TitleHeight in MM
+        // double GetTitleHeight( ) { return m_titleFrame.GetHeight( ); };
+        // double GetTitleMinHeight( ) { return m_titleFrame.GetMinHeight( ); };
 
-        // TitleWidth in MM   
-        double GetTitleWidth( ) { return m_titleFrame.GetWidth( ); };
-        double GetTitleMinWidth( ) { return m_titleFrame.GetMinWidth( ); };
-        void SetTitleXPos( double val ) { m_titleFrame.SetXPos( val ); };
-        void SetTitleYPos( double val ) { m_titleFrame.SetYPos( val ); };
-        double GetTitleXPos( ) { return m_titleFrame.GetXPos( ); };
-        double GetTitleYPos( ) { return m_titleFrame.GetYPos( ); };
+        // // TitleWidth in MM   
+        // double GetTitleWidth( ) { return m_titleFrame.GetWidth( ); };
+        // double GetTitleMinWidth( ) { return m_titleFrame.GetMinWidth( ); };
+        // void SetTitleXPos( double val ) { m_titleFrame.SetXPos( val ); };
+        // void SetTitleYPos( double val ) { m_titleFrame.SetYPos( val ); };
+        // double GetTitleXPos( ) { return m_titleFrame.GetXPos( ); };
+        // double GetTitleYPos( ) { return m_titleFrame.GetYPos( ); };
 
 
         bool GetShowTitle( ) { return String2Bool( GetAttrStr( AT_ShowTitle ) ); };
@@ -225,28 +213,9 @@ namespace Design {
 
         virtual void UpdateSizes( ) = 0;
 
-        /*
-         * @brief  Calc Title size based on allowed width and font size.
-         *
-         * @param width the max width of the title
-         */
-         //void UpdateTitleSize( double width );
-         //void UpdateTextSize( double width );
-        wxRealPoint CalcTextSize( wxString text, double width, wxFont font );
-        void UpdateNameSize( double width );
-        void UpdateNbrSize( double width );
-        void UpdateTextSize( double width );
-        void UpdateTitleSize( double width );
 
         //void WriteFrame( wxString loc, wxString name, wxString id, Frame* frame );
         void DumpLayout( double x, double y );
-
-        // wxXmlNode* GetTitleFont( wxXmlNode* node, wxString name )
-        // { 
-        //     wxTreeItemId ctrlID = GetTreeItemId( );
-        //     //    GetDesignTreeCtrl( )->GetItemData( ctrlID );
-        //     return (wxXmlNode*)0; 
-        // }
 
         void ReportLayoutFrame( wxString indent = "" );
 
@@ -269,17 +238,23 @@ namespace Design {
 
         TitleLocation GetTitleLayoutLocation( );
         void SetTitleLocation( TitleLocation loc ) { m_titleLocation = loc; };
+        DisplayString* GetTitleFrame( );
+        DisplayString* GetNbrFrame( );
+        DisplayString* GetTextFrame( );
+        DisplayString* GetNameFrame( );
 
     protected:
         Frame m_frame;
         Frame m_clientDimensions;
         //       wxString m_title;
-        Frame m_titleFrame;
-        Frame m_textFrame;
-        Frame m_nbrFrame;
-        Frame m_nameFrame;
+
         TitleLocation m_titleLocation;
 
+    private:
+        DisplayString* m_titleFrame;
+        DisplayString* m_nbrFrame;
+        DisplayString* m_nameFrame;
+        DisplayString* m_textFrame;
     };
 }
 #endif

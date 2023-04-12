@@ -82,9 +82,12 @@ public:
         ID_TITLECOLORPICKER,
         ID_TEXTFONTPICKER,
         ID_TEXTCOLORPICKER,
+        ID_NAMEFONTPICKER,
+        ID_NAMECOLORPICKER,
         ID_NBRDEFAULTFONTBUTTON,
         ID_TITLEDEFAULTFONTBUTTON,
-        ID_TEXTDEFAULTFONTBUTTON
+        ID_TEXTDEFAULTFONTBUTTON,
+        ID_NAMEDEFAULTFONTBUTTON
     };
 
     SettingsDialog( );
@@ -145,6 +148,8 @@ public:
     wxColourPickerCtrl* m_nbrColorPicker;
     wxFontPickerCtrl* m_textFontPicker;
     wxColourPickerCtrl* m_textColorPicker;
+    wxFontPickerCtrl* m_nameFontPicker;
+    wxColourPickerCtrl* m_nameColorPicker;
     // SettingsDialog member variables
     bool m_dirty;
 

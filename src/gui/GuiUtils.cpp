@@ -67,7 +67,7 @@ void DrawLabel( wxDC& dc, const wxString& text,
 
     //wxRect rect( devicePos.x, devicePos.y , deviceSize.x, deviceSize.y );
     wxRect rect( pos.x * Design::ScaleFactor.x, pos.y * Design::ScaleFactor.y, size.x * Design::ScaleFactor.x, size.y * Design::ScaleFactor.y );
-    dc.DrawLabel( text, rect, wxALIGN_CENTER_HORIZONTAL );
+    dc.DrawLabel( text, rect, alignment, indexAccel );
 }
 
 void DrawTitle( wxDC& dc, wxString title, RealPoint pos, RealSize size )
@@ -154,7 +154,13 @@ void DrawRectanglePDF( wxPdfDocument* doc, double x, double y, double width, dou
 
 void DrawRectangle( wxDC& dc, double x, double y, double width, double height )
 {
+    // wxBrush currBrush = dc.GetBrush( );
+    // wxBrush brush( currBrush );
+    // brush.SetStyle( wxBRUSHSTYLE_TRANSPARENT );
+    // dc.SetBrush( brush );
     dc.DrawRectangle( x * Design::ScaleFactor.x, y * Design::ScaleFactor.y, width * Design::ScaleFactor.x, height * Design::ScaleFactor.y );
+    // dc.SetBrush( currBrush );
+
 };
 
 
@@ -199,9 +205,8 @@ void DrawImagePDF( wxPdfDocument* doc, wxString fileName, double x, double y, do
 
 
 }
-void DrawImage( wxDC& dc, wxString fileName, double x, double y, double w, double h )
+void DrawImage( wxDC& dc, wxImage* image, double x, double y, double w, double h )
 {
-    wxImage* image = GetImageFromFilename( fileName );
     if ( image && image->IsOk( ) )
     {
         //Draw the stamp image

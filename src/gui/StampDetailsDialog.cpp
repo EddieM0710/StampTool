@@ -71,8 +71,8 @@ IMPLEMENT_DYNAMIC_CLASS( StampDetailsDialog, wxDialog )
     EVT_RADIOBUTTON( ID_DEFAULTRADIOBUTTON, StampDetailsDialog::OnDefaultRadioButtonSelected )
     EVT_RADIOBUTTON( ID_TOPRADIOBUTTON, StampDetailsDialog::OnTopRadioButtonSelected )
     EVT_RADIOBUTTON( ID_BOTTOMRADIOBUTTON, StampDetailsDialog::OnBottomRadioButtonSelected )
-    EVT_RADIOBUTTON( ID_LEFTRADIOBUTTON, StampDetailsDialog::OnLeftRadioButtonSelected )
-    EVT_RADIOBUTTON( ID_RIGHTRADIOBUTTON, StampDetailsDialog::OnRightRadioButtonSelected )
+    //EVT_RADIOBUTTON( ID_LEFTRADIOBUTTON, StampDetailsDialog::OnLeftRadioButtonSelected )
+    //EVT_RADIOBUTTON( ID_RIGHTRADIOBUTTON, StampDetailsDialog::OnRightRadioButtonSelected )
     END_EVENT_TABLE( )
 
     void StampDetailsDialog::OnCatNbrCheckboxClicked( wxCommandEvent& event )
@@ -236,13 +236,13 @@ void StampDetailsDialog::CreateControls( )
     m_bottomButton->SetValue( false );
     m_titleLocationHSizer->Add( m_bottomButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
-    m_leftButton = new wxRadioButton( m_titleLocationVSizer->GetStaticBox( ), ID_BOTTOMRADIOBUTTON, _( "Bottom" ), wxDefaultPosition, wxDefaultSize, 0 );
-    m_leftButton->SetValue( false );
-    m_titleLocationHSizer->Add( m_leftButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+    // m_leftButton = new wxRadioButton( m_titleLocationVSizer->GetStaticBox( ), ID_BOTTOMRADIOBUTTON, _( "Bottom" ), wxDefaultPosition, wxDefaultSize, 0 );
+    // m_leftButton->SetValue( false );
+    // m_titleLocationHSizer->Add( m_leftButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
-    m_rightButton = new wxRadioButton( m_titleLocationVSizer->GetStaticBox( ), ID_LEFTRADIOBUTTON, _( "Left" ), wxDefaultPosition, wxDefaultSize, 0 );
-    m_rightButton->SetValue( false );
-    m_titleLocationHSizer->Add( m_rightButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+    // m_rightButton = new wxRadioButton( m_titleLocationVSizer->GetStaticBox( ), ID_LEFTRADIOBUTTON, _( "Left" ), wxDefaultPosition, wxDefaultSize, 0 );
+    // m_rightButton->SetValue( false );
+    // m_titleLocationHSizer->Add( m_rightButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
     m_defaultButton = new wxRadioButton( m_titleLocationVSizer->GetStaticBox( ), ID_RIGHTRADIOBUTTON, _( "Right" ), wxDefaultPosition, wxDefaultSize, 0 );
     m_defaultButton->SetValue( false );
@@ -337,40 +337,40 @@ void StampDetailsDialog::SetTitleLayoutLocation( )
     {
         m_topButton->SetValue( true );
         m_bottomButton->SetValue( false );
-        m_leftButton->SetValue( false );;
-        m_rightButton->SetValue( false );;
+        // m_leftButton->SetValue( false );;
+        // m_rightButton->SetValue( false );;
         m_defaultButton->SetValue( false );;
     }
     else if ( m_titleLocation == Design::AT_TitleLocationBottom )
     {
         m_topButton->SetValue( false );
         m_bottomButton->SetValue( true );
-        m_leftButton->SetValue( false );;
-        m_rightButton->SetValue( false );;
+        // m_leftButton->SetValue( false );;
+        // m_rightButton->SetValue( false );;
         m_defaultButton->SetValue( false );;
     }
-    else if ( m_titleLocation == Design::AT_TitleLocationLeft )
-    {
-        m_topButton->SetValue( false );
-        m_bottomButton->SetValue( false );
-        m_leftButton->SetValue( true );;
-        m_rightButton->SetValue( false );;
-        m_defaultButton->SetValue( false );;
-    }
-    else if ( m_titleLocation == Design::AT_TitleLocationRight )
-    {
-        m_topButton->SetValue( false );
-        m_bottomButton->SetValue( false );
-        m_leftButton->SetValue( false );;
-        m_rightButton->SetValue( true );;
-        m_defaultButton->SetValue( false );;
-    }
+    // else if ( m_titleLocation == Design::AT_TitleLocationLeft )
+    // {
+    //     m_topButton->SetValue( false );
+    //     m_bottomButton->SetValue( false );
+    //     m_leftButton->SetValue( true );;
+    //     m_rightButton->SetValue( false );;
+    //     m_defaultButton->SetValue( false );;
+    // }
+    // else if ( m_titleLocation == Design::AT_TitleLocationRight )
+    // {
+    //     m_topButton->SetValue( false );
+    //     m_bottomButton->SetValue( false );
+    //     m_leftButton->SetValue( false );;
+    //     m_rightButton->SetValue( true );;
+    //     m_defaultButton->SetValue( false );;
+    // }
     else if ( m_titleLocation == Design::AT_TitleLocationDefault )
     {
         m_topButton->SetValue( false );
         m_bottomButton->SetValue( false );
-        m_leftButton->SetValue( false );;
-        m_rightButton->SetValue( false );;
+        // m_leftButton->SetValue( false );;
+        // m_rightButton->SetValue( false );;
         m_defaultButton->SetValue( true );;
     }
 }
@@ -383,10 +383,10 @@ void StampDetailsDialog::UpdateControls( )
     SetName( m_stamp->GetAttrStr( Design::AT_Name ) );
     SetShowNbr( m_stamp->GetShowNbr( ) );
     SetShowTitle( m_stamp->GetShowTitle( ) );
-    SetNbrFont( m_stamp->GetNbrFont( ) );
-    SetNameFont( m_stamp->GetNameFont( ) );
-    SetNbrColor( m_stamp->GetNbrColor( ) );
-    SetNameColor( m_stamp->GetNameColor( ) );
+    SetNbrFont( m_stamp->GetFont( Design::AT_NbrFontType ) );
+    SetNameFont( m_stamp->GetFont( Design::AT_NameFontType ) );
+    SetNbrColor( m_stamp->GetColor( Design::AT_NbrFontType ) );
+    SetNameColor( m_stamp->GetColor( Design::AT_NameFontType ) );
     m_stamp->GetTitleLayoutLocation( );
 
 
@@ -652,8 +652,8 @@ void StampDetailsDialog::OnOkClick( wxCommandEvent& event )
     m_stamp->SetShowNbr( GetShowNbr( ) );
     m_stamp->SetShowTitle( GetShowTitle( ) );
 
-    m_stamp->SetNameFont( GetNameFont( ), GetNameColor( ) );
-    m_stamp->SetNbrFont( GetNbrFont( ), GetNbrColor( ) );
+    m_stamp->SetFont( Design::AT_NameFontType, GetNameFont( ), GetNameColor( ) );
+    m_stamp->SetFont( Design::AT_NameFontType, GetNbrFont( ), GetNbrColor( ) );
 
     event.Skip( );
 }
@@ -672,18 +672,18 @@ void StampDetailsDialog::OnBottomRadioButtonSelected( wxCommandEvent& event )
 }
 
 
-void StampDetailsDialog::OnLeftRadioButtonSelected( wxCommandEvent& event )
-{
-    m_titleLocation = Design::AT_TitleLocationLeft;
-    event.Skip( );
-}
+// void StampDetailsDialog::OnLeftRadioButtonSelected( wxCommandEvent& event )
+// {
+//     m_titleLocation = Design::AT_TitleLocationLeft;
+//     event.Skip( );
+// }
 
 
-void StampDetailsDialog::OnRightRadioButtonSelected( wxCommandEvent& event )
-{
-    m_titleLocation = Design::AT_TitleLocationRight;
-    event.Skip( );
-}
+// void StampDetailsDialog::OnRightRadioButtonSelected( wxCommandEvent& event )
+// {
+//     m_titleLocation = Design::AT_TitleLocationRight;
+//     event.Skip( );
+// }
 
 void StampDetailsDialog::OnDefaultRadioButtonSelected( wxCommandEvent& event )
 {
@@ -693,8 +693,8 @@ void StampDetailsDialog::OnDefaultRadioButtonSelected( wxCommandEvent& event )
 
 void StampDetailsDialog::OnNbrDefaultClick( wxCommandEvent& event )
 {
-    m_stamp->DefaultCatNbrFont( );
-    int ndx = Design::GetAlbum( )->GetNbrFontNdx( );
+    m_stamp->MakeDefaultFont( Design::AT_NbrFontType );
+    int ndx = Design::GetAlbum( )->GetFontNdx( Design::AT_NbrFontType );
     Utils::FontList* fontList = GetFontList( );
     wxFont font = fontList->GetFont( ndx );
     wxColour color = fontList->GetColor( ndx );
@@ -706,7 +706,7 @@ void StampDetailsDialog::OnNbrDefaultClick( wxCommandEvent& event )
 
 void StampDetailsDialog::OnNameDefaultClick( wxCommandEvent& event )
 {
-    int ndx = GetSettings( )->GetAppPrefNameFontNdx( );
+    int ndx = GetSettings( )->GetFontNdxPreference( Design::AT_NameFontType );
     Utils::FontList* fontList = GetFontList( );
     wxFont font = fontList->GetFont( ndx );
     wxColour color = fontList->GetColor( ndx );

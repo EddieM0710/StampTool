@@ -29,6 +29,7 @@
 #include <wx/string.h>
 #include "wx/xml/xml.h"
 #include "utils/FontList.h"
+#include "design/DesignDefs.h"
 
 namespace Utils {
 
@@ -61,22 +62,21 @@ namespace Utils {
         wxString GetUpperDivision( ) { return m_upperDivision; };
         wxString GetUpperPeriod( ) { return m_upperPeriod; };
 
-        wxFont GetNbrFont( ) { return GetFontList( )->GetFont( m_appPrefNbrFontNdx.Get( ) ); };
-        wxColour GetNbrColor( ) { return GetFontList( )->GetColor( m_appPrefNbrFontNdx.Get( ) );; };
+        wxFont GetNbrFont( ) { return GetFontList( )->GetFont( FontPreference[ Design::AT_NbrFontType ].Get( ) ); };
+        wxColour GetNbrColor( ) { return GetFontList( )->GetColor( FontPreference[ Design::AT_NbrFontType ].Get( ) );; };
 
-        wxFont GetNameFont( ) { return GetFontList( )->GetFont( m_appPrefNameFontNdx.Get( ) ); };
-        wxColour GetNameColor( ) { return GetFontList( )->GetColor( m_appPrefNameFontNdx.Get( ) );; };
+        wxFont GetNameFont( ) { return GetFontList( )->GetFont( FontPreference[ Design::AT_NameFontType ].Get( ) ); };
+        wxColour GetNameColor( ) { return GetFontList( )->GetColor( FontPreference[ Design::AT_NameFontType ].Get( ) );; };
 
-        wxFont GetTitleFont( ) { return GetFontList( )->GetFont( m_appPrefTitleFontNdx.Get( ) ); };
-        wxColour GetTitleColor( ) { return GetFontList( )->GetColor( m_appPrefTitleFontNdx.Get( ) ); };
+        wxFont GetTitleFont( ) { return GetFontList( )->GetFont( FontPreference[ Design::AT_TitleFontType ].Get( ) ); };
+        wxColour GetTitleColor( ) { return GetFontList( )->GetColor( FontPreference[ Design::AT_TitleFontType ].Get( ) ); };
 
-        wxFont GetTextFont( ) { return GetFontList( )->GetFont( m_appPrefTextFontNdx.Get( ) ); };
-        wxColour GetTextColor( ) { return GetFontList( )->GetColor( m_appPrefTextFontNdx.Get( ) ); };
+        wxFont GetTextFont( ) { return GetFontList( )->GetFont( FontPreference[ Design::AT_TextFontType ].Get( ) ); };
+        wxColour GetTextColor( ) { return GetFontList( )->GetColor( FontPreference[ Design::AT_TextFontType ].Get( ) ); };
 
-        int GetAppPrefTitleFontNdx( ) { return m_appPrefTitleFontNdx.Get( ); };
-        int GetAppPrefTextFontNdx( ) { return m_appPrefTextFontNdx.Get( ); };
-        int GetAppPrefNbrFontNdx( ) { return m_appPrefNbrFontNdx.Get( ); };
-        int GetAppPrefNameFontNdx( ) { return m_appPrefNameFontNdx.Get( ); };
+
+        int GetFontNdxPreference( Design::AT_FontUsageType fontType ) { return FontPreference[ fontType ].Get( ); };
+        void SetFontNdxPreference( Design::AT_FontUsageType fontType, int ndx ) { FontPreference[ fontType ].Set( ndx ); };
 
         void SetConfigurationDirectory( wxString val ) { m_configurationDirectory = val.Trim( ); m_dirty = true; };
         //void SetImageDirectory( wxString val ) { m_imageDirectory = val.Trim( );m_dirty = true; };
@@ -89,9 +89,10 @@ namespace Utils {
         void SetUpperDivision( wxString val ) { m_upperDivision = val.Trim( ); m_dirty = true; };
         void SetUpperPeriod( wxString val ) { m_upperPeriod = m_configurationDirectory.Trim( ); m_dirty = true; };
 
-        void SetAppPrefTitleFontNdx( int ndx ) { m_appPrefTitleFontNdx.Set( ndx ); };
-        void SetAppPrefTextFontNdx( int ndx ) { m_appPrefTextFontNdx.Set( ndx ); };
-        void SetAppPrefCatNbrFontNdx( int ndx ) { m_appPrefNbrFontNdx.Set( ndx ); };
+        // void SetAppPrefTitleFontNdx( int ndx ) { FontPreference[ Design::AT_TitleFontType ].Set( ndx ); };
+        // void SetAppPrefTextFontNdx( int ndx ) { FontPreference[ Design::AT_TitleFontType ].Set( ndx ); };
+        // void SetAppPrefCatNbrFontNdx( int ndx ) { FontPreference[ Design::AT_TitleFontType ].Set( ndx ); };
+
 
         int GetNextSortClassification( int current );
         void SetSettingValue( wxString& setting, wxXmlNode* parent, wxString childName, wxString defaultVal );
@@ -114,11 +115,11 @@ namespace Utils {
             wxString str = "";
             if ( !m_countryID.IsEmpty( ) && !m_catalogID.IsEmpty( ) )
             {
-                str = m_countryID + ":" + m_catalogID;
+                str = m_catalogID + ":" + m_countryID;
             }
             else
             {
-                str = m_defaultCountryID + ":" + m_defaultCatalogID;
+                str = m_defaultCatalogID + ":" + m_defaultCountryID;
             }
             return str;
         };
@@ -143,12 +144,14 @@ namespace Utils {
         wxString m_lowerPeriod;
         wxString m_middlePeriod;
         wxString m_upperPeriod;
-        wxFont m_nbrFont;
-        wxColour m_catNbrColor;
-        wxFont m_titleFont;
-        wxColour m_titleColor;
-        wxFont m_textFont;
-        wxColour m_textColor;
+        // wxFont m_nbrFont;
+        // wxColour m_catNbrColor;
+        // wxFont m_titleFont;
+        // wxColour m_titleColor;
+        // wxFont m_textFont;
+        // wxColour m_textColor;
+        // wxFont m_nameFont;
+        // wxColour m_nameColor;
         wxArrayString m_recentFiles;
         int m_nbrRecentPreference;
         bool m_catalogSectionDataEditable;
@@ -167,10 +170,12 @@ namespace Utils {
         const wxString m_defaultMiddlePeriod = "Classical";
         const wxString m_defaultUpperPeriod = "Modern";
 
-        Utils::FontNdx m_appPrefTitleFontNdx;
-        Utils::FontNdx m_appPrefTextFontNdx;
-        Utils::FontNdx m_appPrefNbrFontNdx;
-        Utils::FontNdx m_appPrefNameFontNdx;
+        // Utils::FontNdx m_appPrefTitleFontNdx;
+        // Utils::FontNdx m_appPrefTextFontNdx;
+        // Utils::FontNdx m_appPrefNbrFontNdx;
+        // Utils::FontNdx m_appPrefNameFontNdx;
+
+        Utils::FontNdx FontPreference[ Design::AT_NbrFontUsageTypes ];
         const wxColour m_defaultFontColor = *wxBLACK;
 
         //const wxArrayString m_defaultrecentFiles;

@@ -24,8 +24,8 @@
 
 #include "Defs.h"
 
-#include "design/Text.h"
-#include "design/Title.h"
+#include "design/TextBox.h"
+ //include "design/Title.h"
 #include "design/Album.h"
 
 #include "utils/XMLUtilities.h"
@@ -43,22 +43,7 @@ namespace Design {
     const double BorderAllowancePercent = .2;
     const double ImagePercentOfActual = .75;
 
-    void Text::UpdateTextSize( double width )
-    {
-        wxString text = m_text;
-        wxFont font = GetTextFont( );
-        // first break into lines if necessary
-        GetAlbumImagePanel( )->MakeMultiLine( text, font, width );
-
-        // then get the actual multi line text extent
-        wxRealPoint textSize = GetAlbumImagePanel( )->GetLogicalTextExtent( text, font );
-        m_textFrame.SetWidth( textSize.x );
-        m_textFrame.SetHeight( textSize.y );
-        m_textFrame.SetMinWidth( textSize.x );
-        m_textFrame.SetMinHeight( textSize.y );
-    }
-
-    void Text::CalcFrame( )
+    void TextBox::CalcFrame( )
     {
 
         SetMinHeight( GetHeight( ) );
@@ -77,30 +62,30 @@ namespace Design {
         }
         double contentWidth = GetWidth( ) - leftPadding - rightPadding;
 
-        UpdateTitleSize( contentWidth );
+        GetTitleFrame( )->UpdateString( contentWidth );
 
-        UpdateTextSize( contentWidth );
+        GetTextFrame( )->UpdateString( contentWidth );
 
         if ( IsTitleLocation( AT_TitleLocationBottom ) )
         {
             m_textFrame.SetXPos( ( GetWidth( ) - m_textFrame.GetWidth( ) ) / 2 );
             m_textFrame.SetYPos( topPadding );
-            m_titleFrame.SetXPos( ( GetWidth( ) - m_titleFrame.GetWidth( ) ) / 2 );
-            m_titleFrame.SetYPos( GetHeight( ) - bottomPadding - m_titleFrame.GetHeight( ) );
+            GetTitleFrame( )->SetXPos( ( GetWidth( ) - GetTitleFrame( )->GetWidth( ) ) / 2 );
+            GetTitleFrame( )->SetYPos( GetHeight( ) - bottomPadding - GetTitleFrame( )->GetHeight( ) );
         }
         else
         {
-            m_titleFrame.SetXPos( ( GetWidth( ) - m_titleFrame.GetWidth( ) ) / 2 );
-            m_titleFrame.SetYPos( topPadding );
-            m_textFrame.SetXPos( ( GetWidth( ) - m_textFrame.GetWidth( ) ) / 2 );
-            m_textFrame.SetYPos( m_titleFrame.GetYPos( ) + m_titleFrame.GetHeight( ) );
+            GetTitleFrame( )->SetXPos( ( GetWidth( ) - GetTitleFrame( )->GetWidth( ) ) / 2 );
+            GetTitleFrame( )->SetYPos( topPadding );
+            GetTextFrame( )->SetXPos( ( GetWidth( ) - GetTextFrame( )->GetWidth( ) ) / 2 );
+            GetTextFrame( )->SetYPos( GetTitleFrame( )->GetYPos( ) + GetTitleFrame( )->GetHeight( ) );
         }
 
     }
 
 
 
-    bool Text::UpdateMinimumSize( )
+    bool TextBox::UpdateMinimumSize( )
     {
         CalcFrame( );
 
@@ -111,30 +96,30 @@ namespace Design {
         return true;
     }
 
-    void Text::UpdateSizes( )
+    void TextBox::UpdateSizes( )
     {
         //        m_frame.WriteLayout( "Text::UpdateSizes <>" );
     }
 
-    void Text::UpdatePositions( )
+    void TextBox::UpdatePositions( )
     {
         //        m_frame.WriteLayout( "Text::UpdatePositions <>" );
     }
 
-    NodeStatus Text::ValidateNode( )
+    NodeStatus TextBox::ValidateNode( )
     {
         NodeStatus status = AT_OK;
         // wxString str;
 
         // if ( GetHeight( ) <= 0.01 )
         // {
-        //     str = wxString::Format( "Invalid Text Height.\n" );
+        //     str = wxString::Format( "Invalid TextBox Height.\n" );
         //     GetErrorArray( )->Add( str );
         //     status = AT_FATAL;
         // }
         // if ( GetWidth( ) <= 0.01 )
         // {
-        //     str = wxString::Format( "Invalid Text Width.\n" );
+        //     str = wxString::Format( "Invalid TextBox Width.\n" );
         //     GetErrorArray( )->Add( str );
         //     status = AT_FATAL;
         // }
@@ -142,13 +127,13 @@ namespace Design {
         return status;
     }
 
-    void Text::ClearError( )
+    void TextBox::ClearError( )
     {
 
     };
 
 
-    NodeStatus Text::GetStatus( )
+    NodeStatus TextBox::GetStatus( )
     {
         NodeStatus status = AT_OK;
 
@@ -169,24 +154,24 @@ namespace Design {
 
     };
 
-    void Text::DrawPDF( wxPdfDocument* doc, double x, double y )
+    void TextBox::DrawPDF( wxPdfDocument* doc, double x, double y )
     {
 
 
         //Draw the outer frame transparent
 //        m_frame.DrawPDF( doc, x, y );
 
-        //Draw the Text frame
+        //Draw the TextBox frame
         double xPos = x + GetXPos( );
         double yPos = y + GetYPos( );
 
         m_textFrame.DrawPDF( doc, xPos, yPos );
 
 
-        RealPoint pos( m_titleFrame.GetXPos( ) + xPos, m_titleFrame.GetYPos( ) + yPos );
-        RealSize size( m_titleFrame.GetWidth( ), m_titleFrame.GetHeight( ) );
+        RealPoint pos( GetTitleFrame( )->GetXPos( ) + xPos, GetTitleFrame( )->GetYPos( ) + yPos );
+        RealSize size( GetTitleFrame( )->GetWidth( ), GetTitleFrame( )->GetHeight( ) );
 
-        DrawTitlePDF( doc, GetTitle( ), pos, size );
+        //  GetTitleFrame( )->DrawTitlePDF( doc, GetTitle( ), pos, size );
 
 
         pos = RealPoint( m_textFrame.GetXPos( ) + xPos, m_textFrame.GetYPos( ) + yPos );
@@ -196,7 +181,7 @@ namespace Design {
 
     }
 
-    void Text::Draw( wxDC& dc, double x, double y )
+    void TextBox::Draw( wxDC& dc, double x, double y )
     {
 
 
@@ -208,46 +193,22 @@ namespace Design {
 
         dc.SetPen( *wxBLACK_PEN );
 
-        //Draw the Text frame
+        //Draw the TextBox frame
 
         m_frame.Draw( dc, x, y );
 
         double xPos = x + GetXPos( );
         double yPos = y + GetYPos( );
 
-        wxFont currFont = dc.GetFont( );
-        wxColour currColor = dc.GetTextForeground( );
+        GetTitleFrame( )->Draw( dc, xPos, yPos );
 
-        RealPoint pos( xPos + GetTitleXPos( ), yPos + GetTitleYPos( ) );
-        RealSize size( m_titleFrame.GetWidth( ), m_titleFrame.GetHeight( ) );
-
-        wxFont textFont = GetTextFont( );
-        wxFont font( textFont );
-        wxColour color = GetTextColor( );
-        dc.SetFont( font );
-        dc.SetTextForeground( color );
-        DrawTitle( dc, GetTitle( ), pos, size );
-
-
-        pos = RealPoint( xPos + m_textFrame.GetXPos( ), yPos + m_textFrame.GetYPos( ) );
-        size = RealSize( m_textFrame.GetWidth( ), m_textFrame.GetHeight( ) );
-
-        textFont = GetTextFont( );
-        font = wxFont( textFont );
-        color = GetTextColor( );
-        dc.SetFont( font );
-        dc.SetTextForeground( color );
-        DrawTitle( dc, m_text, pos, size );
-
-
-        dc.SetFont( currFont );
-        dc.SetTextForeground( currColor );
+        GetTextFrame( )->Draw( dc, xPos, yPos + m_textFrame.GetYPos( ) );
 
     }
 
 
 
-    void Text::Save( wxXmlNode* xmlNode )
+    void TextBox::Save( wxXmlNode* xmlNode )
     {
         SetAttribute( xmlNode, AT_Name );
         SetAttribute( xmlNode, AT_Width );
@@ -259,14 +220,14 @@ namespace Design {
         xmlNode->SetContent( m_text );
     }
 
-    void Text::ReportLayout( )
+    void TextBox::ReportLayout( )
     {
 
-        std::cout << "Layout for Text :";
+        std::cout << "Layout for TextBox :";
         ReportLayoutFrame( );
     };
 
-    void Text::DumpText( wxTextCtrl* ctrl )
+    void TextBox::DumpText( wxTextCtrl* ctrl )
     {
         *ctrl << DumpFrame( );
     }

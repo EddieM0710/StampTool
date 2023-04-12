@@ -47,18 +47,18 @@
 #define SYMBOL_ALBUMIMAGEPANEL_SIZE wxSize( 400, 300 )
 #define SYMBOL_ALBUMIMAGEPANEL_POSITION wxDefaultPosition
 
-enum
-{
-    ID_ROTATE_LEFT = wxID_HIGHEST + 1,
-    ID_ROTATE_RIGHT,
-    ID_RESIZE,
-    ID_PAINT_BG
-};
+  // enum
+  // {
+  //     ID_ROTATE_LEFT = wxID_HIGHEST + 1,
+  //     ID_ROTATE_RIGHT,
+  //     ID_RESIZE,
+  //     ID_PAINT_BG
+  // };
 
-/**
- * @brief This is the class that manages the image displayed on the StampDescriptionPanel.
- *
- **************************************************/
+  /**
+   * @brief This is the class that manages the image displayed on the StampDescriptionPanel.
+   *
+   **************************************************/
 class AlbumImagePanel: public wxScrolledWindow
 {
     DECLARE_DYNAMIC_CLASS( AlbumImagePanel )

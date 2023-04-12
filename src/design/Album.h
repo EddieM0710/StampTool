@@ -120,10 +120,12 @@ namespace Design {
         void Save( wxXmlNode* xmlNode );
         void DumpLayout( );
 
-        int GetAppPrefTitleFontNdx( );
-        int GetAppPrefNbrFontNdx( );
-        int GetAppPrefTextFontNdx( );
-        int GetAppPrefNameFontNdx( );
+        // int GetAppPrefTitleFontNdx( );
+        // int GetAppPrefNbrFontNdx( );
+        // int GetAppPrefTextFontNdx( );
+        // int GetAppPrefNameFontNdx( );
+
+        int GetFontNdxPreference( AT_FontUsageType fontType ) { return GetSettings( )->GetFontNdxPreference( fontType ); }
 
         bool GetShowTitle( ) { return String2Bool( GetAttrStr( AT_ShowTitle ) ); };
         void SetShowTitle( bool val ) { SetAttrStr( AT_ShowTitle, Bool2String( val ) ); };

@@ -177,10 +177,10 @@ namespace Design {
 
     wxString Album::GetDocName( ) { return  GetAttrStr( "Name" ); };
     void Album::SetDocName( wxString str ) { return SetAttrStr( AT_Name, str ); };
-    int Album::GetAppPrefTitleFontNdx( ) { return GetSettings( )->GetAppPrefTitleFontNdx( ); };
-    int Album::GetAppPrefNbrFontNdx( ) { return GetSettings( )->GetAppPrefNbrFontNdx( ); }
-    int Album::GetAppPrefTextFontNdx( ) { return GetSettings( )->GetAppPrefTextFontNdx( ); }
-    int Album::GetAppPrefNameFontNdx( ) { return GetSettings( )->GetAppPrefNameFontNdx( ); }
+    // int Album::GetAppPrefTitleFontNdx( ) { return GetSettings( )->GetAppPrefTitleFontNdx( ); };
+    // int Album::GetAppPrefNbrFontNdx( ) { return GetSettings( )->GetAppPrefNbrFontNdx( ); }
+    // int Album::GetAppPrefTextFontNdx( ) { return GetSettings( )->GetAppPrefTextFontNdx( ); }
+    // int Album::GetAppPrefNameFontNdx( ) { return GetSettings( )->GetAppPrefNameFontNdx( ); }
 
     void Album::GetPageParameters( wxString& width,
         wxString& height,

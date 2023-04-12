@@ -237,8 +237,8 @@ void PageDetailsDialog::UpdateControls( )
     SetName( m_page->GetAttrStr( Design::AT_Name ) );
     SetShowTitle( m_page->GetShowTitle( ) );
     SetShowFrame( m_page->GetShowFrame( ) );
-    SetTitleFont( m_page->GetTitleFont( ) );
-    SetTitleColor( m_page->GetTitleColor( ) );
+    SetTitleFont( m_page->GetFont( Design::AT_TitleFontType ) );
+    SetTitleColor( m_page->GetColor( Design::AT_TitleFontType ) );
 
     wxListBox* m_statusList;
 
@@ -293,7 +293,7 @@ void PageDetailsDialog::OnOkClick( wxCommandEvent& event )
     m_page->SetShowFrame( GetShowFrame( ) );
     m_page->SetShowTitle( GetShowTitle( ) );
 
-    m_page->SetTitleFont( m_titleFontPicker->GetSelectedFont( ), m_titleColorPicker->GetColour( ) );
+    m_page->SetFont( Design::AT_TitleFontType, m_titleFontPicker->GetSelectedFont( ), m_titleColorPicker->GetColour( ) );
 
     event.Skip( );
 
@@ -343,7 +343,7 @@ bool PageDetailsDialog::GetShowFrame( )
 
 void PageDetailsDialog::OnTitleDefaultClick( wxCommandEvent& event )
 {
-    int ndx = Design::GetAlbum( )->GetTitleFontNdx( );
+    int ndx = Design::GetAlbum( )->GetFontNdx( Design::AT_TitleFontType );
     Utils::FontList* fontList = GetFontList( );
     wxFont font = fontList->GetFont( ndx );
     wxColour color = fontList->GetColor( ndx );

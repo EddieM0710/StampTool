@@ -70,7 +70,7 @@ IMPLEMENT_DYNAMIC_CLASS( AlbumImagePanel, wxPanel )
     EVT_PAINT( AlbumImagePanel::OnPaint )
     EVT_LEFT_DOWN( AlbumImagePanel::OnLeftDown )
     EVT_CONTEXT_MENU( AlbumImagePanel::OnContextMenu )
-    EVT_MENU( ID_RESIZE, AlbumImagePanel::OnResize )
+    //EVT_MENU( ID_RESIZE, AlbumImagePanel::OnResize )
     EVT_MENU( wxID_ZOOM_IN, AlbumImagePanel::OnZoom )
     EVT_MENU( wxID_ZOOM_OUT, AlbumImagePanel::OnZoom )
     EVT_MENU( wxID_ZOOM_100, AlbumImagePanel::OnZoom )
@@ -278,13 +278,13 @@ void AlbumImagePanel::OnContextMenu( wxContextMenuEvent& event )
     }
     wxMenu menu( name );
 
-    menu.Append( ID_RESIZE, "&Fit to window\tCtrl-F" );
+    //menu.Append( ID_RESIZE, "&Fit to window\tCtrl-F" );
     menu.Append( wxID_ZOOM_IN, "Zoom &in\tCtrl-+" );
     menu.Append( wxID_ZOOM_OUT, "Zoom &out\tCtrl--" );
     menu.Append( wxID_ZOOM_100, "Reset zoom to &100%\tCtrl-1" );
     menu.AppendSeparator( );
-    menu.Append( ID_ROTATE_LEFT, "Rotate &left\tCtrl-L" );
-    menu.Append( ID_ROTATE_RIGHT, "Rotate &right\tCtrl-R" );
+    // menu.Append( ID_ROTATE_LEFT, "Rotate &left\tCtrl-L" );
+    // menu.Append( ID_ROTATE_RIGHT, "Rotate &right\tCtrl-R" );
 
     PopupMenu( &menu );
     event.Skip( );

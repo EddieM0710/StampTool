@@ -40,13 +40,11 @@
 #include <iostream>
 
 #include "DesignDefs.h"
-#include "DesignData.h"
+#include "AlbumVolume.h"
 #include "Defs.h"
 #include "utils/Project.h"
 #include "design/Album.h"
 #include "utils/FontList.h"
-#include "design/TitlePage.h"
- //#include "design/Title.h"
 #include "design/Page.h"
 #include "design/Row.h"
 #include "design/Column.h"
@@ -66,43 +64,24 @@ namespace Design {
 
     Album* GetAlbum( void )
     {
-        DesignData* designData = GetDesignData( );
-        if ( designData )
+        AlbumVolume* albumVolume = GetAlbumVolume( );
+        if ( albumVolume )
         {
-            return designData->GetAlbum( );
+            return albumVolume->GetAlbum( );
         }
         return ( Album* ) 0;
     }
 
-    // FontList* GetFontList( void )
-             // { 
-    //     DesignData* designData = GetDesignData( );
-        //     if ( designData )
-    //     { 
-    //         return designData->GetFontList( );
-    //     }
-    //     return ( FontList* )0;
-    // }
 
-
-    DesignData* GetDesignData( void )
+    AlbumVolume* GetAlbumVolume( void )
     {
-        ToolData* project = GetToolData( );
-        if ( project )
+        AlbumData* albumData = GetAlbumData( );
+        if ( albumData )
         {
-            return project->GetDesignData( );
+            return albumData->GetAlbumVolume( );
         }
-        return ( DesignData* ) 0;
+        return ( AlbumVolume* ) 0;
     };
-
-    // DesignData* SetDesignData( DesignData* designData )
-    // { 
-    //     ToolData* project = GetToolData( );
-    //     if ( project )
-    //     { 
-    //         project->SetDesignData( designData );
-    //     }
-    // };
 
 
     wxString AlbumBaseNames[ AT_NbrAlbumTypes ] = {
@@ -213,8 +192,8 @@ namespace Design {
 
     LayoutBase* GetSelectedNodePage( )
     {
-        DesignData* designData = Design::GetDesignData( );
-        if ( designData )
+        AlbumVolume* albumVolume = Design::GetAlbumVolume( );
+        if ( albumVolume )
         {
             DesignTreeCtrl* treeCtrl = GetDesignTreeCtrl( );
             if ( treeCtrl )

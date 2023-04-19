@@ -1,0 +1,21 @@
+<map id="/sandbox/Development/AlbumGenerator/src/design/TextBox.h" name="/sandbox/Development/AlbumGenerator/src/design/TextBox.h">
+<area shape="rect" id="node2" href="$da/d60/_text_box_8cpp.html" title="/sandbox/Development\l/AlbumGenerator/src/design\l/TextBox.cpp" alt="" coords="38,213,222,269"/>
+<area shape="rect" id="node3" href="$da/dbf/_design_tree_ctrl_8cpp.html" title="/sandbox/Development\l/AlbumGenerator/src/gui\l/DesignTreeCtrl.cpp" alt="" coords="2726,317,2888,373"/>
+<area shape="rect" id="node4" href="$d4/d6a/_design_tree_ctrl_8h.html" title="/sandbox/Development\l/AlbumGenerator/src/gui\l/DesignTreeCtrl.h" alt="" coords="1712,109,1875,165"/>
+<area shape="rect" id="node5" href="$d8/de8/_album_8cpp.html" title="/sandbox/Development\l/AlbumGenerator/src/design\l/Album.cpp" alt="" coords="3336,213,3520,269"/>
+<area shape="rect" id="node6" href="$d0/de0/_album_base_8cpp.html" title="/sandbox/Development\l/AlbumGenerator/src/design\l/AlbumBase.cpp" alt="" coords="246,213,430,269"/>
+<area shape="rect" id="node7" href="$d2/d2c/_album_data_8cpp.html" title="/sandbox/Development\l/AlbumGenerator/src/design\l/AlbumData.cpp" alt="" coords="454,213,638,269"/>
+<area shape="rect" id="node8" href="$d0/d2e/_album_volume_8cpp.html" title="/sandbox/Development\l/AlbumGenerator/src/design\l/AlbumVolume.cpp" alt="" coords="662,213,846,269"/>
+<area shape="rect" id="node9" href="$de/dfd/_column_8cpp.html" title="/sandbox/Development\l/AlbumGenerator/src/design\l/Column.cpp" alt="" coords="870,213,1054,269"/>
+<area shape="rect" id="node10" href="$df/da1/_design_defs_8cpp.html" title="/sandbox/Development\l/AlbumGenerator/src/design\l/DesignDefs.cpp" alt="" coords="1078,213,1262,269"/>
+<area shape="rect" id="node11" href="$d8/dad/_layout_base_8cpp.html" title="/sandbox/Development\l/AlbumGenerator/src/design\l/LayoutBase.cpp" alt="" coords="1286,213,1470,269"/>
+<area shape="rect" id="node12" href="$d7/dfc/_page_8cpp.html" title="/sandbox/Development\l/AlbumGenerator/src/design\l/Page.cpp" alt="" coords="1494,213,1678,269"/>
+<area shape="rect" id="node13" href="$da/dd5/_row_8cpp.html" title="/sandbox/Development\l/AlbumGenerator/src/design\l/Row.cpp" alt="" coords="1702,213,1886,269"/>
+<area shape="rect" id="node14" href="$d6/d11/_stamp_8cpp.html" title="/sandbox/Development\l/AlbumGenerator/src/design\l/Stamp.cpp" alt="" coords="1910,213,2094,269"/>
+<area shape="rect" id="node15" href="$df/d4b/_x_m_l_base_8cpp.html" title="/sandbox/Development\l/AlbumGenerator/src/design\l/XMLBase.cpp" alt="" coords="2118,213,2302,269"/>
+<area shape="rect" id="node16" href="$d2/d62/_album_design_panel_8cpp.html" title="/sandbox/Development\l/AlbumGenerator/src/gui\l/AlbumDesignPanel.cpp" alt="" coords="2326,213,2488,269"/>
+<area shape="rect" id="node17" href="$d2/dd8/_album_design_tree_panel_8cpp.html" title="/sandbox/Development\l/AlbumGenerator/src/gui\l/AlbumDesignTreePanel.cpp" alt="" coords="2513,213,2701,269"/>
+<area shape="rect" id="node18" href="$d8/d62/_album_details_dialog_8h.html" title="/sandbox/Development\l/AlbumGenerator/src/gui\l/AlbumDetailsDialog.h" alt="" coords="2726,213,2888,269"/>
+<area shape="rect" id="node19" href="$d0/d24/_album_image_panel_8cpp.html" title="/sandbox/Development\l/AlbumGenerator/src/gui\l/AlbumImagePanel.cpp" alt="" coords="2912,213,3075,269"/>
+<area shape="rect" id="node20" href="$d2/dd6/_catalog_details_dialog_8h.html" title="/sandbox/Development\l/AlbumGenerator/src/gui\l/CatalogDetailsDialog.h" alt="" coords="3099,213,3262,269"/>
+</map>

@@ -1,0 +1,26 @@
+var class_design_1_1_text_box =
+[
+    [ "TextBox", "d6/d70/class_design_1_1_text_box.html#a9e8393b9a0653a20dc5051dbff47e913", null ],
+    [ "TextBox", "d6/d70/class_design_1_1_text_box.html#ab43788bba19128ea0e3575f40791414b", null ],
+    [ "~TextBox", "d6/d70/class_design_1_1_text_box.html#a902c73e65304b5323e88f3b10b8d245b", null ],
+    [ "CalcFrame", "d6/d70/class_design_1_1_text_box.html#a6d8b683c25910d150b8613b4653eab62", null ],
+    [ "ClearError", "d6/d70/class_design_1_1_text_box.html#a022fe4bece78d7e23434db44ed2639db", null ],
+    [ "Draw", "d6/d70/class_design_1_1_text_box.html#a2b92f7e43b0396b82f39bfc7850f3bb2", null ],
+    [ "DrawPDF", "d6/d70/class_design_1_1_text_box.html#a7de4a2ea5422aeb0c0721843ebdffad9", null ],
+    [ "DumpText", "d6/d70/class_design_1_1_text_box.html#a4a78d19ad45d8de875ff214051f1e4db", null ],
+    [ "GetShowTitle", "d6/d70/class_design_1_1_text_box.html#ad52ee0879d7a7917e5adf2625348f870", null ],
+    [ "GetStatus", "d6/d70/class_design_1_1_text_box.html#a01f4558f3b1a20e581c4017e8a4aef39", null ],
+    [ "ReportLayout", "d6/d70/class_design_1_1_text_box.html#a560ba0068554848a066c7905156b5646", null ],
+    [ "Save", "d6/d70/class_design_1_1_text_box.html#ac6d92fe935dfeccb5615eb89af8fd8e1", null ],
+    [ "SetShowTitle", "d6/d70/class_design_1_1_text_box.html#a4d4cda73409332dde40074802fe8b1d2", null ],
+    [ "UpdateMinimumSize", "d6/d70/class_design_1_1_text_box.html#a8b22eac5a9f975e5376d0db26fcad1b0", null ],
+    [ "UpdatePositions", "d6/d70/class_design_1_1_text_box.html#a5323349438de511d38fa288103eb69c1", null ],
+    [ "UpdateSizes", "d6/d70/class_design_1_1_text_box.html#ae00fe0322c485136fd130efe1759b94a", null ],
+    [ "UpdateTextSize", "d6/d70/class_design_1_1_text_box.html#a7ba6d255fdd998943cf093f463fdba58", null ],
+    [ "ValidateNode", "d6/d70/class_design_1_1_text_box.html#abb0c7693adf8d8ecc3c04c102f18b72b", null ],
+    [ "m_debugString", "d6/d70/class_design_1_1_text_box.html#a2d0324dd4f2c8ef4f7e567c42673259a", null ],
+    [ "m_showTitle", "d6/d70/class_design_1_1_text_box.html#a22b1440fa8fc41f1cc73870c9ba10768", null ],
+    [ "m_textFrame", "d6/d70/class_design_1_1_text_box.html#a5d36047296b417552e2b262af03ba503", null ],
+    [ "m_title", "d6/d70/class_design_1_1_text_box.html#ae2cd7c9ebacc181b52cd271457d2504e", null ],
+    [ "m_titleTextExtent", "d6/d70/class_design_1_1_text_box.html#a87fb0fd9be82b27ff3906551252a7a33", null ]
+];

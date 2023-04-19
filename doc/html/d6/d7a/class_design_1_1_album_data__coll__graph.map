@@ -1,0 +1,6 @@
+<map id="Design::AlbumData" name="Design::AlbumData">
+<area shape="rect" id="node2" href="$d4/d6c/class_design_tree_ctrl.html" title="Tree for displaying Album design. " alt="" coords="5,132,245,415"/>
+<area shape="rect" id="node4" href="$d0/d0b/class_album_image_panel.html" title="This is the class that manages the image displayed on the StampDescriptionPanel. " alt="" coords="270,169,426,378"/>
+<area shape="rect" id="node6" href="$de/daa/class_utils_1_1_font_list.html" title="{Utils::FontList\n|&#45; m_fontMap\l|+ FontList()\l+ ~FontList()\l+ InitFonts()\l+ IsValidFontNdx()\l+ IsValidFontNdx()\land 16 more...\l}" alt="" coords="450,198,582,349"/>
+<area shape="rect" id="node7" href="$dd/d59/class_design_1_1_album_list.html" title="{Design::AlbumList\n|&#45; m_albumVolumeArray\l&#45; m_albumVolumeNdx\l&#45; m_albumNameStrings\l|+ AlbumList()\l+ ~AlbumList()\l+ IsOK()\l+ NewAlbumVolume()\l+ GetAlbumVolume()\land 6 more...\l}" alt="" coords="606,183,765,363"/>
+</map>

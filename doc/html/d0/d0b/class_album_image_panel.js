@@ -1,0 +1,26 @@
+var class_album_image_panel =
+[
+    [ "AlbumImagePanel", "d0/d0b/class_album_image_panel.html#a665d67b523b67a78d9e4ba37b6e57cd2", null ],
+    [ "AlbumImagePanel", "d0/d0b/class_album_image_panel.html#a26dd521360d0fbc420692808d7fd1f9f", null ],
+    [ "~AlbumImagePanel", "d0/d0b/class_album_image_panel.html#a9f3d5edab3ede55ac8b352653bb54747", null ],
+    [ "Create", "d0/d0b/class_album_image_panel.html#abdd3b882bffb54ca436e0418ab2a9e14", null ],
+    [ "CreateControls", "d0/d0b/class_album_image_panel.html#af883debcbead6ffd558e7d4a9f40be0c", null ],
+    [ "Draw", "d0/d0b/class_album_image_panel.html#a1254d5e3928e568e935baab17cca0b5c", null ],
+    [ "GetLogicalTextExtent", "d0/d0b/class_album_image_panel.html#aba3bacd62e4bbe8292f37c77fcbedd8f", null ],
+    [ "GetTextSize", "d0/d0b/class_album_image_panel.html#a2a0533d34e4dc42f2fcb9ffbcbe66935", null ],
+    [ "Init", "d0/d0b/class_album_image_panel.html#aff7b55d34f07862d1ba1c8ca21bd4160", null ],
+    [ "MakeMultiLine", "d0/d0b/class_album_image_panel.html#aaf87a19767416e8414bdf2a3d882f6c5", null ],
+    [ "OnContextMenu", "d0/d0b/class_album_image_panel.html#a2dbe7a7ec1744fe7863d382a40b60a0e", null ],
+    [ "OnDeleteItem", "d0/d0b/class_album_image_panel.html#ae5d99bb03b991848285adbef91f0d340", null ],
+    [ "OnEditDetails", "d0/d0b/class_album_image_panel.html#a4c49a7bd736a8b482d15ae642635a905", null ],
+    [ "OnLeftDown", "d0/d0b/class_album_image_panel.html#afb9576355f3c9e74963bbdc32dea0185", null ],
+    [ "OnPaint", "d0/d0b/class_album_image_panel.html#afde57621dac3d24050b695c62a95acbc", null ],
+    [ "OnResize", "d0/d0b/class_album_image_panel.html#aba48bf932a148ab465a4103fd8dd2c43", null ],
+    [ "PaintPDF", "d0/d0b/class_album_image_panel.html#a19cade398969ff67f11b5fa7a11c7997", null ],
+    [ "SetZoom", "d0/d0b/class_album_image_panel.html#ad1d33cdb6204b6f8af52c8b53241b61f", null ],
+    [ "ShowToolTips", "d0/d0b/class_album_image_panel.html#a390a819ffdc80b8e43d8f19a28031227", null ],
+    [ "m_bitmap", "d0/d0b/class_album_image_panel.html#a2ea021f94ee7bd73784742042d6e69bb", null ],
+    [ "m_once", "d0/d0b/class_album_image_panel.html#ad61daa39d729954639730555b0318b72", null ],
+    [ "m_pixelsPerIn", "d0/d0b/class_album_image_panel.html#ab197e99c17a0f39a573f3ec2880cc467", null ],
+    [ "m_zoom", "d0/d0b/class_album_image_panel.html#a65de5071247c7ec0ab63cab9b755a65c", null ]
+];

@@ -1,0 +1,15 @@
+<map id="/sandbox/Development/AlbumGenerator/src/gui/CatalogPanel.h" name="/sandbox/Development/AlbumGenerator/src/gui/CatalogPanel.h">
+<area shape="rect" id="node4" href="$df/dde/_defs_8h.html" title="Resting place for Global stuff. " alt="" coords="237,557,299,584"/>
+<area shape="rect" id="node7" href="$dd/d97/_gui_defs_8h.html" title="gui/GuiDefs.h" alt="" coords="989,109,1091,136"/>
+<area shape="rect" id="node8" href="$d9/d8d/_project_8h.html" title="utils/Project.h" alt="" coords="578,109,681,136"/>
+<area shape="rect" id="node17" href="$d6/d5a/_catalog_volume_8h.html" title="catalog/CatalogVolume.h" alt="" coords="835,483,1003,509"/>
+<area shape="rect" id="node10" href="$dd/df0/_tool_data_8h.html" title="gui/ToolData.h" alt="" coords="492,184,599,211"/>
+<area shape="rect" id="node11" href="$d9/d34/_stamp_list_8h.html" title="utils/StampList.h" alt="" coords="347,333,467,360"/>
+<area shape="rect" id="node15" href="$d5/da1/_catalog_data_8h.html" title="catalog/CatalogData.h" alt="" coords="428,259,580,285"/>
+<area shape="rect" id="node18" href="$d8/d48/_album_data_8h.html" title="design/AlbumData.h" alt="" coords="605,259,745,285"/>
+<area shape="rect" id="node13" href="$d8/d78/_layout_base_8h.html" title="design/LayoutBase.h" alt="" coords="155,483,299,509"/>
+<area shape="rect" id="node14" href="$d4/d67/_stamp_8h.html" title="This is a wrapper of an wxXmlNode for safe/convenient getting/putting. " alt="" coords="265,408,378,435"/>
+<area shape="rect" id="node16" href="$d1/dd9/_catalog_list_8h.html" title="catalog/CatalogList.h" alt="" coords="505,408,650,435"/>
+<area shape="rect" id="node19" href="$d6/d6d/_font_list_8h.html" title="utils/FontList.h" alt="" coords="542,333,650,360"/>
+<area shape="rect" id="node20" href="$d9/daa/_album_list_8h.html" title="design/AlbumList.h" alt="" coords="576,483,709,509"/>
+</map>

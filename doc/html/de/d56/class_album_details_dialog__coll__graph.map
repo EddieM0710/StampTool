@@ -1,0 +1,8 @@
+<map id="AlbumDetailsDialog" name="AlbumDetailsDialog">
+<area shape="rect" id="node3" href="$d0/db0/class_labeled_text_box.html" title="{LabeledTextBox\n|&#45; m_label\l&#45; m_parent\l&#45; m_id\l&#45; m_value\l|+ LabeledTextBox()\l+ LabeledTextBox()\l+ Create()\l+ ~LabeledTextBox()\l+ Init()\land 10 more...\l+ ShowToolTips()\l}" alt="" coords="106,749,250,959"/>
+<area shape="rect" id="node5" href="$d0/dbe/class_design_1_1_album.html" title="Album layout object; inherits from LayoutBase. " alt="" coords="274,779,413,929"/>
+<area shape="rect" id="node6" href="$d4/d47/class_design_1_1_album_base.html" title="Base class for all layout objects. " alt="" coords="274,535,413,700"/>
+<area shape="rect" id="node7" href="$de/d5f/class_design_1_1_x_m_l_base.html" title="Base class for all layout objects. " alt="" coords="231,219,359,472"/>
+<area shape="rect" id="node8" href="$dc/d08/class_utils_1_1_font_ndx.html" title="{Utils::FontNdx\n|&#45; m_ndx\l|+ FontNdx()\l+ Get()\l+ Set()\l+ MakeDefault()\l+ IsOk()\l}" alt="" coords="384,277,500,413"/>
+<area shape="rect" id="node9" href="$de/daa/class_utils_1_1_font_list.html" title="{Utils::FontList\n|&#45; m_fontMap\l|+ FontList()\l+ ~FontList()\l+ InitFonts()\l+ IsValidFontNdx()\l+ IsValidFontNdx()\land 16 more...\l}" alt="" coords="376,5,508,156"/>
+</map>

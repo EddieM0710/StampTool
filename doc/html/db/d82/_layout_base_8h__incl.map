@@ -1,0 +1,12 @@
+<map id="/sandbox/Development/AlbumGenerator/src/design/LayoutBase.h" name="/sandbox/Development/AlbumGenerator/src/design/LayoutBase.h">
+<area shape="rect" id="node3" href="$df/dde/_defs_8h.html" title="Resting place for Global stuff. " alt="" coords="323,333,384,360"/>
+<area shape="rect" id="node5" href="$d4/da8/_album_base_8h.html" title="design/AlbumBase.h" alt="" coords="466,109,609,136"/>
+<area shape="rect" id="node9" href="$d0/db9/_x_m_l_utilities_8h.html" title="utils/XMLUtilities.h" alt="" coords="561,333,693,360"/>
+<area shape="rect" id="node11" href="$d4/dcd/_album_volume_8h.html" title="design/AlbumVolume.h" alt="" coords="95,259,251,285"/>
+<area shape="rect" id="node14" href="$d6/d19/_display_string_8h.html" title="design/DisplayString.h" alt="" coords="769,109,922,136"/>
+<area shape="rect" id="node16" href="$de/dd6/_frame_8h.html" title="design/Frame.h" alt="" coords="899,184,1011,211"/>
+<area shape="rect" id="node6" href="$d4/d5d/_x_m_l_base_8h.html" title="design/XMLBase.h" alt="" coords="471,259,603,285"/>
+<area shape="rect" id="node10" href="$d6/d6d/_font_list_8h.html" title="utils/FontList.h" alt="" coords="483,184,591,211"/>
+<area shape="rect" id="node7" href="$dc/dff/_design_defs_8h.html" title="Resting place for Global stuff. " alt="" coords="449,408,593,435"/>
+<area shape="rect" id="node20" href="$d5/d83/_album_image_panel_8h.html" title="This is the class that manages the image displayed on the StampDescriptionPanel. " alt="" coords="1035,184,1195,211"/>
+</map>

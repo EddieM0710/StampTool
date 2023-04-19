@@ -1,0 +1,21 @@
+<map id="/sandbox/Development/AlbumGenerator/src/gui/GuiUtils.h" name="/sandbox/Development/AlbumGenerator/src/gui/GuiUtils.h">
+<area shape="rect" id="node2" href="$de/dfd/_column_8cpp.html" title="/sandbox/Development\l/AlbumGenerator/src/design\l/Column.cpp" alt="" coords="5,109,189,165"/>
+<area shape="rect" id="node3" href="$d0/de4/_display_string_8cpp.html" title="/sandbox/Development\l/AlbumGenerator/src/design\l/DisplayString.cpp" alt="" coords="213,109,397,165"/>
+<area shape="rect" id="node4" href="$d8/d8a/_frame_8cpp.html" title="/sandbox/Development\l/AlbumGenerator/src/design\l/Frame.cpp" alt="" coords="421,109,605,165"/>
+<area shape="rect" id="node5" href="$d7/dfc/_page_8cpp.html" title="/sandbox/Development\l/AlbumGenerator/src/design\l/Page.cpp" alt="" coords="629,109,813,165"/>
+<area shape="rect" id="node6" href="$da/dd5/_row_8cpp.html" title="/sandbox/Development\l/AlbumGenerator/src/design\l/Row.cpp" alt="" coords="837,109,1021,165"/>
+<area shape="rect" id="node7" href="$d6/d11/_stamp_8cpp.html" title="/sandbox/Development\l/AlbumGenerator/src/design\l/Stamp.cpp" alt="" coords="1045,109,1229,165"/>
+<area shape="rect" id="node8" href="$da/d60/_text_box_8cpp.html" title="/sandbox/Development\l/AlbumGenerator/src/design\l/TextBox.cpp" alt="" coords="1253,109,1437,165"/>
+<area shape="rect" id="node9" href="$d0/d24/_album_image_panel_8cpp.html" title="/sandbox/Development\l/AlbumGenerator/src/gui\l/AlbumImagePanel.cpp" alt="" coords="1461,109,1624,165"/>
+<area shape="rect" id="node10" href="$d6/d05/_catalog_tree_ctrl_8h.html" title="/sandbox/Development\l/AlbumGenerator/src/gui\l/CatalogTreeCtrl.h" alt="" coords="1648,109,1811,165"/>
+<area shape="rect" id="node18" href="$d5/d6d/_stamp_tool_panel_8cpp.html" title="/sandbox/Development\l/AlbumGenerator/src/gui\l/StampToolPanel.cpp" alt="" coords="2213,213,2376,269"/>
+<area shape="rect" id="node19" href="$de/d72/_gui_utils_8cpp.html" title="/sandbox/Development\l/AlbumGenerator/src/gui\l/GuiUtils.cpp" alt="" coords="1885,109,2048,165"/>
+<area shape="rect" id="node20" href="$dd/d55/_font_list_8cpp.html" title="/sandbox/Development\l/AlbumGenerator/src/utils\l/FontList.cpp" alt="" coords="2072,109,2243,165"/>
+<area shape="rect" id="node11" href="$db/d84/_catalog_data_8cpp.html" title="/sandbox/Development\l/AlbumGenerator/src/catalog\l/CatalogData.cpp" alt="" coords="871,213,1059,269"/>
+<area shape="rect" id="node12" href="$de/dfd/_album_details_dialog_8cpp.html" title="/sandbox/Development\l/AlbumGenerator/src/gui\l/AlbumDetailsDialog.cpp" alt="" coords="1083,213,1250,269"/>
+<area shape="rect" id="node13" href="$d0/d85/_catalog_panel_8cpp.html" title="/sandbox/Development\l/AlbumGenerator/src/gui\l/CatalogPanel.cpp" alt="" coords="1275,213,1437,269"/>
+<area shape="rect" id="node14" href="$da/db2/_catalog_tree_ctrl_8cpp.html" title="/sandbox/Development\l/AlbumGenerator/src/gui\l/CatalogTreeCtrl.cpp" alt="" coords="1461,213,1624,269"/>
+<area shape="rect" id="node15" href="$da/dbf/_design_tree_ctrl_8cpp.html" title="/sandbox/Development\l/AlbumGenerator/src/gui\l/DesignTreeCtrl.cpp" alt="" coords="1648,213,1811,269"/>
+<area shape="rect" id="node16" href="$db/db5/_identification_panel_8cpp.html" title="IdentificationPanel displays Stamp data relative to the stamp identification. " alt="" coords="1835,213,1997,269"/>
+<area shape="rect" id="node17" href="$d6/d99/_stamp_details_dialog_8cpp.html" title="/sandbox/Development\l/AlbumGenerator/src/gui\l/StampDetailsDialog.cpp" alt="" coords="2022,213,2189,269"/>
+</map>

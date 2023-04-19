@@ -1,0 +1,5 @@
+<map id="NewStampDialog" name="NewStampDialog">
+<area shape="rect" id="node3" href="$d0/db0/class_labeled_text_box.html" title="{LabeledTextBox\n|&#45; m_label\l&#45; m_parent\l&#45; m_id\l&#45; m_value\l|+ LabeledTextBox()\l+ LabeledTextBox()\l+ Create()\l+ ~LabeledTextBox()\l+ Init()\land 10 more...\l+ ShowToolTips()\l}" alt="" coords="106,235,250,444"/>
+<area shape="rect" id="node5" href="$d6/d7e/class_catalog_1_1_entry.html" title="This is a wrapper of an wxXmlNode for safe/convenient getting/putting. " alt="" coords="275,257,393,422"/>
+<area shape="rect" id="node6" href="$d3/db8/class_catalog_1_1_catalog_base.html" title="Base class for all catalog objects. " alt="" coords="259,5,409,185"/>
+</map>

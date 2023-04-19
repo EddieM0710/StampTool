@@ -1,0 +1,13 @@
+<map id="/sandbox/Development/AlbumGenerator/src/gui/InventoryPanel.cpp" name="/sandbox/Development/AlbumGenerator/src/gui/InventoryPanel.cpp">
+<area shape="rect" id="node4" href="$d9/d99/_inventory_panel_8h.html" title="InventoryPanel.h" alt="" coords="744,109,864,136"/>
+<area shape="rect" id="node13" href="$d5/da1/_catalog_data_8h.html" title="catalog/CatalogData.h" alt="" coords="349,109,501,136"/>
+<area shape="rect" id="node16" href="$df/dde/_defs_8h.html" title="Resting place for Global stuff. " alt="" coords="299,259,360,285"/>
+<area shape="rect" id="node17" href="$dc/d95/_specimen_8h.html" title="This is a wrapper of an wxXmlNode for safe/convenient getting/putting. " alt="" coords="637,184,728,211"/>
+<area shape="rect" id="node18" href="$d4/d4a/_settings_8h.html" title="utils/Settings.h" alt="" coords="1080,259,1189,285"/>
+<area shape="rect" id="node8" href="$db/dd4/_entry_8h.html" title="catalog/Entry.h" alt="" coords="803,184,914,211"/>
+<area shape="rect" id="node12" href="$dd/d97/_gui_defs_8h.html" title="gui/GuiDefs.h" alt="" coords="1038,184,1141,211"/>
+<area shape="rect" id="node9" href="$d7/db4/_catalog_base_8h.html" title="catalog/CatalogBase.h" alt="" coords="901,259,1056,285"/>
+<area shape="rect" id="node14" href="$d9/d34/_stamp_list_8h.html" title="utils/StampList.h" alt="" coords="443,184,563,211"/>
+<area shape="rect" id="node15" href="$d1/dd9/_catalog_list_8h.html" title="catalog/CatalogList.h" alt="" coords="273,184,418,211"/>
+<area shape="rect" id="node20" href="$d6/d6d/_font_list_8h.html" title="utils/FontList.h" alt="" coords="1141,333,1249,360"/>
+</map>

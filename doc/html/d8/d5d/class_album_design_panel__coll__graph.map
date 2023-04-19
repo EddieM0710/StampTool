@@ -1,0 +1,5 @@
+<map id="AlbumDesignPanel" name="AlbumDesignPanel">
+<area shape="rect" id="node5" href="$d5/d8f/class_album_design_tree_panel.html" title="{AlbumDesignTreePanel\n||+ AlbumDesignTreePanel()\l+ AlbumDesignTreePanel()\l+ Create()\l+ ~AlbumDesignTreePanel()\l+ Init()\land 3 more...\l+ ShowToolTips()\l}" alt="" coords="97,499,284,665"/>
+<area shape="rect" id="node3" href="$d0/d0b/class_album_image_panel.html" title="This is the class that manages the image displayed on the StampDescriptionPanel. " alt="" coords="341,477,497,687"/>
+<area shape="rect" id="node6" href="$d4/d6c/class_design_tree_ctrl.html" title="Tree for displaying Album design. " alt="" coords="101,132,341,415"/>
+</map>

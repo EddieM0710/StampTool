@@ -1,0 +1,26 @@
+var _defs_8h =
+[
+    [ "RealRect", "d2/da3/class_real_rect.html", "d2/da3/class_real_rect" ],
+    [ "MaxRecentEntries", "df/dde/_defs_8h.html#acfbed7eb6d9ac85e7d58b8b8c93c88ef", null ],
+    [ "RealPoint", "df/dde/_defs_8h.html#a213dea8a5ce1d84736c963a5cbfde8e0", null ],
+    [ "RealSize", "df/dde/_defs_8h.html#acd8ac2c7f3e4026c03e6a45ba79cf0c3", null ],
+    [ "Bool2String", "df/dde/_defs_8h.html#ac069ffec99f21fb1e45e52d11ccff7a1", null ],
+    [ "GetAlbumData", "df/dde/_defs_8h.html#a99ef3e5e1dd07e4f37659ff3a42dd839", null ],
+    [ "GetAlbumImagePanel", "df/dde/_defs_8h.html#a7504c0d79d9e13662def3c7442cd0f77", null ],
+    [ "GetAlbumPageTreeCtrl", "df/dde/_defs_8h.html#a7e6ad76c973ffdb2fa408d010d274883", null ],
+    [ "GetAlbumVolume", "df/dde/_defs_8h.html#a6206d15b5c548de3327ee76f8aab4afe", null ],
+    [ "GetCatalogData", "df/dde/_defs_8h.html#a1187a0684050271c69434e1a4f11531d", null ],
+    [ "GetCatalogPageTreeCtrl", "df/dde/_defs_8h.html#aa0a68d36d05c0a9367c647a98a27feec", null ],
+    [ "GetCatalogVolume", "df/dde/_defs_8h.html#abcecec158566f412489ef9b5c86b44ad", null ],
+    [ "GetDesignTreeCtrl", "df/dde/_defs_8h.html#a6f2f93523c5e8342fdf5c9cbbbe785b1", null ],
+    [ "GetFontList", "df/dde/_defs_8h.html#addaa9e59fd6526e9da1b574ea7320d7e", null ],
+    [ "GetProject", "df/dde/_defs_8h.html#af0a4defa62d7ef2cfefc3b859373d1cd", null ],
+    [ "GetSettings", "df/dde/_defs_8h.html#a3332d417e043dc2b96449848ac7045e0", null ],
+    [ "GetToolData", "df/dde/_defs_8h.html#a51bbdce93e012d758fe53fa2e1935e91", null ],
+    [ "InitDefs", "df/dde/_defs_8h.html#a23fa417a1c1324598f31fabd7989c85f", null ],
+    [ "IsDirty", "df/dde/_defs_8h.html#ae43c07413305d0671128a60ac5acea11", null ],
+    [ "ReportError", "df/dde/_defs_8h.html#a3e67be56c7d1ffdbf3b422f386bcde60", null ],
+    [ "SetDirty", "df/dde/_defs_8h.html#aeee3e7f8f05ddc82e87a7f68b45d9422", null ],
+    [ "String2Bool", "df/dde/_defs_8h.html#a3cd9c2b33f9e61529faa2080e2b0388e", null ],
+    [ "Dirty", "df/dde/_defs_8h.html#afe520d20f313629f90bcee509ed7ba66", null ]
+];

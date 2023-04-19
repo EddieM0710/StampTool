@@ -27,7 +27,7 @@
 
 #include "design/XMLBase.h"
 #include "utils/FontList.h"
-#include "design/DesignData.h"
+#include "design/AlbumVolume.h"
 #include <wx/treectrl.h>
 
 

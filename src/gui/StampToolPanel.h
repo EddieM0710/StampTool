@@ -138,6 +138,7 @@ public:
     CatalogPanel* GetAlbumPagePanel( ) { return m_albumTreePanel; };
     //    WebViewPanel* GetWebViewPage( ) { return m_webViewPanel; };
     AlbumDesignTreePanel* GetAlbumDesignTreePanel( ) { return m_albumDesignPanel->GetAlbumDesignTreePanel( ); };
+    AlbumDesignPanel* GetAlbumDesignPanel( ) { return m_albumDesignPanel; };
 
     wxNotebook* m_notebook;
     wxFlexGridSizer* m_sizer;

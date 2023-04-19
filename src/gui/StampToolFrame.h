@@ -43,12 +43,12 @@
 class StampToolPanel;
 
 class wxButton;
-//class CatalogSectionData;
+//class CatalogVolume;
 
 class CatalogPanel;
 //class CatalogTreeCtrl;
 class AlbumDesignTreePanel;
-
+class AlbumDesignPanel;
 //class WebViewPanel;
 
 /*
@@ -105,7 +105,7 @@ enum {
   * It inherits from wxFrame.
   *
   */
-class StampToolFrame: public wxFrame
+class StampToolFrame : public wxFrame
 {
     DECLARE_CLASS( StampToolFrame )
         DECLARE_EVENT_TABLE( )
@@ -267,8 +267,8 @@ public:
     void SaveCatalogXML( wxString filename );
     // void LoadXML( wxString filename );
     void InitLoad( );
-    //void LinkAlbumToCat( Design::LayoutBase* child, Catalog::CatalogSectionData* stampData );
-   // void LinkNodes( Design::LayoutBase* child, Catalog::CatalogSectionData* stampData  );
+    //void LinkAlbumToCat( Design::LayoutBase* child, Catalog::CatalogVolume* stampData );
+   // void LinkNodes( Design::LayoutBase* child, Catalog::CatalogVolume* stampData  );
 
     //void ( );
 
@@ -286,6 +286,7 @@ public:
     StampToolPanel* GetStampToolPanel( ) { return m_stampToolPanel; }
     CatalogPanel* GetAlbumPagePanel( );
     CatalogPanel* GetCatalogPagePanel( );
+    AlbumDesignPanel* GetAlbumDesignPanel( );
     //    WebViewPanel* GetWebViewPage( );
     //    WebRequest* GetWebRequest( ) { return &m_webRequest; };
 
@@ -293,6 +294,7 @@ public:
     //CatalogPanel* m_catalogPagePanel;
     //CatalogPanel* m_albumPagePanel;
     AlbumDesignTreePanel* m_albumDesignTreePanel;
+    AlbumDesignPanel* m_albumDesignPanel;
     //    WebRequest m_webRequest;
 
         // container data classification sort order

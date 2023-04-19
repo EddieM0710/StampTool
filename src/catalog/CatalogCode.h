@@ -6,18 +6,18 @@
  * @date 2021-03-01
  *
  * @copyright Copyright ( c ) 2021
- * 
+ *
  * This file is part of StampTool.
  *
- * StampTool is free software: you can redistribute it and/or modify it under the 
- * terms of the GNU General Public License as published by the Free Software Foundation, 
+ * StampTool is free software: you can redistribute it and/or modify it under the
+ * terms of the GNU General Public License as published by the Free Software Foundation,
  * either version 3 of the License, or any later version.
  *
- * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY 
- * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+ * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
+ * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
- * You should have received a copy of the GNU General Public License along with 
+ * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
  **************************************************/
@@ -36,7 +36,7 @@
 
 
 
-namespace Catalog { 
+namespace Catalog {
 
 
 
@@ -52,32 +52,65 @@ namespace Catalog {
       *
       **************************************************/
     class CatalogCode : public CatalogBase
-    { 
-    public:
+    {
+    private:
         CatalogCode( ) : CatalogBase( )
-        { 
+        {
             SetNodeType( NT_CatalogCode );
             IsOK( );
         };
 
+    public:
+
+        ///  @brief Construct a new Catalog Code object
+        ///  
+        ///  @param ele 
         CatalogCode( wxXmlNode* ele ) : CatalogBase( ele )
-        { 
+        {
             SetNodeType( NT_CatalogCode );
             IsOK( );
         };
 
+
+        ///  @brief Destroy the Catalog Code object
+        ///  
         ~CatalogCode( ) { };
 
+
+        ///  @brief Sanity check on CataloCode instantion
+        ///  
+        ///  @return true 
+        ///  @return false 
         bool IsOK( );
 
+
+        ///  @brief Get the attr value for the given type
+        ///  
+        ///  @param type 
+        ///  @return wxString 
         wxString GetAttr( CatalogCodeTypes type );
+
+
+        ///  @brief Set the attr value fo th given type
+        ///  
+        ///  @param type 
+        ///  @param val 
         void SetAttr( CatalogCodeTypes type, wxString val );
 
-        wxString GetVal( CatalogCodeTypes type ) { return GetAttr( type ); };
-        void SetVal( CatalogCodeTypes type, wxString val ) { SetAttr( type, val ); };
 
+        ///  @brief Convenience function for setting Catalog attribute
+        ///  
+        ///  @param val 
         void SetCatalog( wxString val );
+
+        ///  @brief Convenience function for setting Country attribute
+        ///  
+        ///  @param val 
         void SetCountry( wxString val );
+
+        ///  @brief Convenience function for setting ID attribute
+        ///  
+        ///  @param val 
         void SetID( wxString val );
 
         /**
@@ -89,8 +122,20 @@ namespace Catalog {
         wxXmlNode* GetData( wxVector<wxVariant>* data );
 
 
+
+        ///  @brief Convenience function for getting Catalog attribute
+        ///  
+        ///  @param val 
         wxString GetCatalog( );
+
+        ///  @brief Convenience function for getting Country attribute
+        ///  
+        ///  @param val 
         wxString GetCountry( );
+
+        ///  @brief Convenience function for getting id attribute
+        ///  
+        ///  @param val 
         wxString GetID( );
 
 

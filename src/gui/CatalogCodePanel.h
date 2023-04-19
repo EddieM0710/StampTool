@@ -57,7 +57,7 @@ class wxGrid;
 * CatalogCodePanel class declaration
 */
 
-class CatalogCodePanel: public wxPanel
+class CatalogCodePanel : public wxPanel
 {
     DECLARE_DYNAMIC_CLASS( CatalogCodePanel )
         DECLARE_EVENT_TABLE( )
@@ -159,7 +159,7 @@ public:
      *
      * @param entry  set the currently displayed entry to this
      **************************************************/
-    void SetStamp( Catalog::Entry* entry );
+    void UpdatePanel( );
 
     void SetDataEditable( bool val );
 
@@ -193,7 +193,7 @@ public:
 private:
 
     wxGrid* m_grid;  ///< wxGrid to display item entries
-    Catalog::Entry* m_entry; ///< pointer to the currently displayed entry 
+    //    Catalog::Entry* m_entry; ///< pointer to the currently displayed entry 
     std::vector<wxXmlNode*> m_catCodeList;  ///< list containing each of the entries
 };
 

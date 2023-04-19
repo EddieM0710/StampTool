@@ -7,18 +7,18 @@
  * @date 2021-02-25
  *
  * @copyright Copyright ( c ) 2021
- * 
+ *
  * This file is part of StampTool.
  *
- * StampTool is free software: you can redistribute it and/or modify it under the 
- * terms of the GNU General Public License as published by the Free Software Foundation, 
+ * StampTool is free software: you can redistribute it and/or modify it under the
+ * terms of the GNU General Public License as published by the Free Software Foundation,
  * either version 3 of the License, or any later version.
  *
- * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY 
- * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+ * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
+ * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
- * You should have received a copy of the GNU General Public License along with 
+ * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
  **************************************************/
@@ -36,7 +36,7 @@
 #include "wx/xml/xml.h"
 
 
-namespace Catalog { 
+namespace Catalog {
 
 
     /**
@@ -46,43 +46,108 @@ namespace Catalog {
      *
      **************************************************/
     class Specimen : public CatalogBase
-    { 
+    {
     public:
+
+        ///  @brief Construct a new Specimen object
+        ///  
         Specimen( ) : CatalogBase( )
-        { 
+        {
             SetNodeType( NT_Specimen );
             IsOK( );
         };
 
+        ///  @brief Construct a new Specimen object
+        ///  
+        ///  @param ele 
         Specimen( wxXmlNode* ele ) : CatalogBase( ele )
-        { 
+        {
             SetNodeType( NT_Specimen );
             IsOK( );
         };
 
+        ///  @brief Destroy the Specimen object
+        ///  
         ~Specimen( ) { };
 
+        ///  @brief Sanity check instance
+        ///  
+        ///  @return true 
+        ///  @return false 
         bool IsOK( );
 
+        ///  @brief Get the attribute value of type
+        ///  
+        ///  @param type 
+        ///  @return wxString 
         wxString GetAttr( ItemDataTypes type );
+
+        ///  @brief Set the attribute value of type
+        ///  
+        ///  @param type 
+        ///  @param val 
         void SetAttr( ItemDataTypes type, wxString val );
 
+        ///  @brief Convenience function. Same as GetAttr( type )
+        ///  
+        ///  @param type 
+        ///  @return wxString 
         wxString GetVal( ItemDataTypes type ) { return GetAttr( type ); };
+
+        ///  @brief Convenience function. Same as SGetAttr( type )
+        ///  
+        ///  @param type 
+        ///  @param val 
         void SetVal( ItemDataTypes type, wxString val ) { SetAttr( type, val ); };
 
+        ///  @brief Get the IDT_Type Attribute
+        ///  
+        ///  @return wxString 
         wxString GetType( ) { return GetAttr( IDT_Type ); };
+
+        ///  @brief Set the IDT_Type Attribute
+        ///  
+        ///  @param val 
         void SetType( wxString val ) { SetAttr( IDT_Type, val ); };
 
+        ///  @brief Get the IDT_Condition Attribute
+        ///  
+        ///  @return wxString 
         wxString GetCondition( ) { return GetAttr( IDT_Condition ); };
+
+        ///  @brief Set the IDT_Condition Attribute
+        ///  
+        ///  @param val 
         void SetCondition( wxString val ) { SetAttr( IDT_Condition, val ); };
 
+        ///  @brief Get the IDT_Value Attribute
+        ///  
+        ///  @return wxString 
         wxString GetValue( ) { return GetAttr( IDT_Value ); };
+
+        ///  @brief Set the IDT_Value Attribute
+        ///  
+        ///  @param val 
         void SetValue( wxString val ) { SetAttr( IDT_Value, val ); };
 
+        ///  @brief Get the IDT_Location Attribute
+        ///  
+        ///  @return wxString 
         wxString GetLocation( ) { return GetAttr( IDT_Location ); };
+
+        ///  @brief Set the IDT_Location Attribute
+        ///  
+        ///  @param val 
         void SetLocation( wxString val ) { SetAttr( IDT_Location, val ); };
 
+        ///  @brief Get the IDT_Remarks  Attribute
+        ///  
+        ///  @return wxString 
         wxString GetRemarks( ) { return GetAttr( IDT_Remarks ); };
+
+        ///  @brief Set the IDT_RemarksV Attribute
+        ///  
+        ///  @param val 
         void SetRemarks( wxString val ) { SetAttr( IDT_Remarks, val ); };
 
         /**

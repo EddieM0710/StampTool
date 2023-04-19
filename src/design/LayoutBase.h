@@ -29,7 +29,7 @@
 
 #include "Defs.h"
 #include "design/AlbumBase.h"
-#include "design/DesignData.h"
+#include "design/AlbumVolume.h"
 #include "design/DisplayString.h"
 #include "design/Frame.h"
 #include "utils/XMLUtilities.h"

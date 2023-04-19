@@ -7,18 +7,18 @@
  * @date 2021-02-25
  *
  * @copyright Copyright ( c ) 2021
- * 
+ *
  * This file is part of StampTool.
  *
- * StampTool is free software: you can redistribute it and/or modify it under the 
- * terms of the GNU General Public License as published by the Free Software Foundation, 
+ * StampTool is free software: you can redistribute it and/or modify it under the
+ * terms of the GNU General Public License as published by the Free Software Foundation,
  * either version 3 of the License, or any later version.
  *
- * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY 
- * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+ * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
+ * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
- * You should have received a copy of the GNU General Public License along with 
+ * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
  **************************************************/
@@ -32,7 +32,7 @@
 
 
 
-namespace Catalog { 
+namespace Catalog {
 
     /**
      * @brief This is a wrapper of an wxXmlNode for
@@ -41,7 +41,7 @@ namespace Catalog {
      *
      **************************************************/
     class Classification : public CatalogBase
-    { 
+    {
     public:
         /**
          * @brief Construct a new Classification object
@@ -51,9 +51,9 @@ namespace Catalog {
          *
          **************************************************/
         Classification( void ) : CatalogBase( )
-        { 
+        {
             SetXMLCatNode( 0 );
-            SetNodeType( ( CatalogBaseType )-1 );
+            SetNodeType( ( CatalogBaseType ) -1 );
         }
 
         /**
@@ -63,14 +63,14 @@ namespace Catalog {
          * node type or this instance will be invalid.
          **************************************************/
         Classification( wxXmlNode* node ) : CatalogBase( node )
-        { 
+        {
             if ( IsOK( ) )
-            { 
+            {
                 SetNodeType( GetNodeType( ) );
             }
             else
-            { 
-                SetNodeType( ( CatalogBaseType )-1 );
+            {
+                SetNodeType( ( CatalogBaseType ) -1 );
             }
         };
 
@@ -130,24 +130,26 @@ namespace Catalog {
          **************************************************/
         wxString GetTitle( void ) { return GetAttr( CT_Title ); };
 
-        wxString GetPreferredCatalog( ) { return GetAttr( CT_PreferredCatalog ); };
-        wxString GetImageDirectory( ) { return GetAttr( CT_ImageDirectory ); };
-        /**
-         * @brief Set the Name object
-         *
-         * @param  val the value to set title
-         **************************************************/
-        void SetTitle( wxString val ) { SetAttr( CT_Title, val ); };
-        void SetPreferredCatalog( wxString val ) { SetAttr( CT_PreferredCatalog, val ); };
-        void SetImageDirectory( wxString val ) { SetAttr( CT_ImageDirectory, val ); };
+        //        wxString GetPreferredCatalog( ) { return GetAttr( CT_PreferredCatalog ); };
+        //        wxString GetImageDirectory( ) { return GetAttr( CT_ImageDirectory ); };
 
-        /**
-         * @brief loop thru the CT_Names and find one that is
-         *  eqal to name and returns the corresponding DataType
-         *
-         * @param  name  string to search for
-         * @return ClassificationTypes the datatype corresponding to name
-         **************************************************/
+                /**
+                 * @brief Set the Title object
+                 *
+                 * @param  val the value to set title
+                 **************************************************/
+        void SetTitle( wxString val ) { SetAttr( CT_Title, val ); };
+
+        //        void SetPreferredCatalog( wxString val ) { SetAttr( CT_PreferredCatalog, val ); };
+        //        void SetImageDirectory( wxString val ) { SetAttr( CT_ImageDirectory, val ); };
+
+                /**
+                 * @brief loop thru the CT_Names and find one that is
+                 *  eqal to name and returns the corresponding DataType
+                 *
+                 * @param  name  string to search for
+                 * @return ClassificationTypes the datatype corresponding to name
+                 **************************************************/
         ClassificationTypes FindDataType( wxString name );
 
         /**

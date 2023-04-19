@@ -123,10 +123,10 @@ namespace Utils {
             }
             return str;
         };
-        bool IsCatalogSectionDataEditable( ) { return m_catalogSectionDataEditable; };
-        void SetCatalogSectionDataEditable( bool val = true ) { m_catalogSectionDataEditable = val; };
-        bool IsCatalogSectionDataEditableByDefault( ) { return m_catalogSectionDataEditableDefault; };
-        void SetCatalogSectionDataEditableDefault( bool val = true ) { m_catalogSectionDataEditableDefault = val; };
+        bool IsCatalogVolumeEditable( ) { return m_catalogVolumeEditable; };
+        void SetCatalogVolumeEditable( bool val = true ) { m_catalogVolumeEditable = val; };
+        bool IsCatalogVolumeEditableByDefault( ) { return m_catalogVolumeEditableDefault; };
+        void SetCatalogVolumeEditableDefault( bool val = true ) { m_catalogVolumeEditableDefault = val; };
 
         void DumpFont( wxString Level = "" );
 
@@ -154,8 +154,8 @@ namespace Utils {
         // wxColour m_nameColor;
         wxArrayString m_recentFiles;
         int m_nbrRecentPreference;
-        bool m_catalogSectionDataEditable;
-        bool m_catalogSectionDataEditableDefault;
+        bool m_catalogVolumeEditable;
+        bool m_catalogVolumeEditableDefault;
 
         const wxString m_defaultLastFile = "";
         const bool m_defaultloadLastFileAtStartUp = true;

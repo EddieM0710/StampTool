@@ -35,7 +35,7 @@
 #include <wx/pen.h>
 
 #include "utils/FontList.h"
-#include "design/DesignData.h"
+#include "design/AlbumVolume.h"
 #include "utils/XMLUtilities.h"
 #include "utils/Settings.h"
 #include "gui/GuiUtils.h"

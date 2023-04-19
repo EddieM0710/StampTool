@@ -155,7 +155,7 @@ void StampToolPanel::CreateControls( )
     m_catalogTreePanel = new CatalogPanel( m_catalogNotebookPage, ID_CATALOGPAGE,
         wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
 
-    GetToolData( )->SetCatalogPageTreeCtrl( m_catalogTreePanel->GetCatalogTree( ) );
+    GetCatalogData( )->SetCatalogPageTreeCtrl( m_catalogTreePanel->GetCatalogTree( ) );
     m_catalogTreePanel->GetCatalogTree( )->SetStates( false );
 
     m_stampDescriptionPanel = new StampDescriptionPanel( m_catalogNotebookPage,
@@ -177,7 +177,7 @@ void StampToolPanel::CreateControls( )
     m_albumTreePanel = new  CatalogPanel( m_albumNotebookPage,
         ID_DESIGNPAGE, wxDefaultPosition, wxDefaultSize,
         wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
-    GetToolData( )->SetAlbumPageTreeCtrl( m_albumTreePanel->GetCatalogTree( ) );
+    GetCatalogData( )->SetAlbumPageTreeCtrl( m_albumTreePanel->GetCatalogTree( ) );
     m_albumTreePanel->GetCatalogTree( )->SetStates( true );
 
     m_albumDesignPanel = new AlbumDesignPanel( m_albumNotebookPage,
@@ -203,7 +203,7 @@ void StampToolPanel::CreateControls( )
 
     // StampToolPanel content construction
 
-    GetToolData( )->SetDescriptionPanel( m_stampDescriptionPanel );
+    GetCatalogData( )->SetDescriptionPanel( m_stampDescriptionPanel );
 
 }
 

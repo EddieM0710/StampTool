@@ -69,6 +69,7 @@ EVT_CONTEXT_MENU( ImagePanel::OnContextMenu )
 EVT_MENU( wxID_ZOOM_IN, ImagePanel::OnZoom )
 EVT_MENU( wxID_ZOOM_OUT, ImagePanel::OnZoom )
 EVT_MENU( wxID_ZOOM_100, ImagePanel::OnZoom )
+
 END_EVENT_TABLE( )
 ;  // silly business; The above macro screws up the formatter
 
@@ -204,10 +205,10 @@ void ImagePanel::SetBitmap( wxString filename )
     Show( );
 }
 
-void ImagePanel::SetStamp( Catalog::Entry* stamp )
-{
-    m_stamp = stamp;
-}
+// void ImagePanel::SetStamp( Catalog::Entry* stamp )
+// {
+//     m_stamp = stamp;
+// }
 /*
  * OnResize
  *
@@ -248,7 +249,6 @@ void ImagePanel::OnZoom( wxCommandEvent& event )
         m_zoom = .9;
     Refresh( );
 }
-
 
 /*
  *  ID_IMAGEPANEL

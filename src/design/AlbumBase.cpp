@@ -36,7 +36,6 @@
 #include "design/DesignDefs.h"
 #include "design/AlbumBase.h"
 
-#include "design/TitlePage.h"
 #include "design/Page.h"
 #include "design/Row.h"
 #include "design/Column.h"

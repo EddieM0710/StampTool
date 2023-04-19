@@ -32,7 +32,7 @@
   **************************************************/
 
 
-  
+
 #include "wx/wxprec.h"
 
 #ifdef __BORLANDC__
@@ -50,11 +50,11 @@
 #include <wx/log.h>
 
 
-/*
- * Application instance implementation
- */
+  /*
+   * Application instance implementation
+   */
 
- // implement app
+   // implement app
 IMPLEMENT_APP( StampToolApp )
 // implement app
 
@@ -123,7 +123,7 @@ bool StampToolApp::OnInit( )
     wxImage::AddHandler( new wxGIFHandler );
 #endif
 
-    m_toolData = NewToolDataInstance( );
+    m_toolData = new ToolData( );
     m_toolData->InitToolData( );
 
     m_frame = new StampToolFrame( NULL );

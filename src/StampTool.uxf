@@ -1,0 +1,29 @@
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>170</x><y>0</y><w>210</w><h>70</h></coordinates><panel_attributes>StampToolApp: wxApp
+--
+StampToolFrame* m_frame;
+ToolData* m_toolData;
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>50</x><y>140</y><w>180</w><h>70</h></coordinates><panel_attributes>StampToolFrame: wxFrame
+--
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>140</x><y>60</y><w>130</w><h>100</h></coordinates><panel_attributes>lt=&lt;-
+</panel_attributes><additional_attributes>110;10;10;80</additional_attributes></element><element><id>UMLClass</id><coordinates><x>380</x><y>120</y><w>210</w><h>110</h></coordinates><panel_attributes>ToolData
+--
+    Utils::Settings* m_settings;
+    Utils::Project* m_project;
+    Catalog::CatalogData* m_catalogData;
+    Design::AlbumData* m_albumData;
+    Utils::StampList* m_StampAlbumCatalogLink;
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>330</x><y>60</y><w>180</w><h>80</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;160;60</additional_attributes></element><element><id>UMLClass</id><coordinates><x>290</x><y>280</y><w>120</w><h>70</h></coordinates><panel_attributes>Utils::Project
+--
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>330</x><y>380</y><w>140</w><h>60</h></coordinates><panel_attributes>Utils::Settings
+--
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>570</x><y>270</y><w>140</w><h>70</h></coordinates><panel_attributes>Catalog::CatalogData
+--
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>540</x><y>380</y><w>150</w><h>60</h></coordinates><panel_attributes> Design::AlbumData
+--
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>470</x><y>480</y><w>120</w><h>50</h></coordinates><panel_attributes>Utils::StampList
+--
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>360</x><y>220</y><w>80</w><h>80</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>60;10;10;60</additional_attributes></element><element><id>Relation</id><coordinates><x>410</x><y>220</y><w>50</w><h>180</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>30;10;10;160</additional_attributes></element><element><id>Relation</id><coordinates><x>460</x><y>220</y><w>60</w><h>280</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;40;260</additional_attributes></element><element><id>Relation</id><coordinates><x>480</x><y>220</y><w>130</w><h>180</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;110;160</additional_attributes></element><element><id>Relation</id><coordinates><x>530</x><y>220</y><w>90</w><h>70</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;70;50</additional_attributes></element><element><id>UMLClass</id><coordinates><x>190</x><y>480</y><w>200</w><h>60</h></coordinates><panel_attributes>StampToolPanel: wxPanel
+--
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>10</x><y>380</y><w>210</w><h>60</h></coordinates><panel_attributes>AlbumDesignTreePanel wxPanel
+--
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>180</x><y>200</y><w>120</w><h>300</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;100;280</additional_attributes></element><element><id>Relation</id><coordinates><x>70</x><y>200</y><w>30</w><h>200</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;10;180</additional_attributes></element></diagram>

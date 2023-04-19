@@ -89,7 +89,6 @@ namespace Utils {
             SetConfigurationDirectory( fileName->GetFullPath( ) );
         }
 
-
         Load( );
 
     };
@@ -430,8 +429,8 @@ namespace Utils {
 
         SetLastFile( "" );
         SetNbrRecentPreference( 4 );
-        SetCatalogSectionDataEditable( );
-        SetCatalogSectionDataEditableDefault( );
+        SetCatalogVolumeEditable( );
+        SetCatalogVolumeEditableDefault( );
 
         //Now get the Settings
         wxFileName* filename
@@ -541,8 +540,8 @@ namespace Utils {
             {
                 wxString defaultVal = child->GetAttribute( "Default" );
                 bool isTrue = !defaultVal.Cmp( "true" );
-                SetCatalogSectionDataEditable( isTrue );
-                SetCatalogSectionDataEditableDefault( isTrue );
+                SetCatalogVolumeEditable( isTrue );
+                SetCatalogVolumeEditableDefault( isTrue );
             }
 
             else if ( !name.Cmp( "IDPreference" ) )

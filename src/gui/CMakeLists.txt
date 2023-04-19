@@ -35,15 +35,13 @@ add_library( GuiFiles SHARED
     NewStampDialog.cpp 
     PageDetailsDialog.cpp
     RowDetailsDialog.cpp 
-    SectionDetailsDialog.cpp
+    CatalogDetailsDialog.cpp
     SettingsDialog.cpp
     SortOrderPanel.cpp
     StampDescriptionPanel.cpp 
     StampDetailsDialog.cpp
-#    StaticItem.cpp 
     ToolData.cpp
-#   WebViewPanel.cpp
-#   WebRequest.cpp
+
 
 )
 

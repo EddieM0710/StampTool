@@ -32,7 +32,7 @@
 
 namespace Design {
 
-    class DesignData;
+    class AlbumVolume;
     class LayoutBase;
     class AlbumBase;
     class Album;
@@ -41,11 +41,11 @@ namespace Design {
     Album* GetAlbum( void );
     // FontList* GetFontList( void );
 
-    DesignData* GetDesignData( void );
+    AlbumVolume* GetAlbumVolume( void );
 
-    //DesignData* GetDesignData( DesignData* designData );
+    //AlbumVolume* GetAlbumVolume( AlbumVolume* albumVolume );
 
-    //DesignData* NewDesignData( void );
+    //AlbumVolume* NewAlbumVolume( void );
 
     typedef enum
     {

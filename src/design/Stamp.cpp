@@ -34,7 +34,7 @@
 #include "gui/StampDescriptionPanel.h"
 #include "gui/GuiUtils.h"
 
-#include "catalog/CatalogSectionData.h"
+#include "catalog/CatalogVolume.h"
 #include "catalog/Entry.h"
 #include "art/NotFound.xpm"
 

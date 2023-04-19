@@ -161,45 +161,11 @@ namespace Design {
         {
             LayoutBase* child = ( LayoutBase* ) GetDesignTreeCtrl( )->GetItemNode( childID );
             child->UpdatePositions( );
+            child->SetXPos( xPos );
+            child->SetYPos( yPos );
+            //calc position of next child
+            yPos += child->GetHeight( ) + spacing;
 
-            AlbumBaseType childType = ( AlbumBaseType ) child->GetNodeType( );
-            switch ( childType )
-            {
-            case AT_Row:
-            {
-                Row* row = ( Row* ) child;
-                row->SetXPos( xPos );
-                row->SetYPos( yPos );
-                //calc position of next row
-                yPos += row->GetHeight( ) + spacing;
-                break;
-            }
-            case AT_Stamp:
-            {
-
-                Stamp* stamp = ( Stamp* ) child;
-
-                // each stamp is positioned in the cell
-
-                double xBorder = 0;//( GetWidth( ) - stamp->GetWidth( ) ) / 2;
-                stamp->SetXPos( xPos + xBorder );
-                stamp->SetYPos( yPos );
-                // get xpos of next cell
-                yPos += stamp->GetHeight( ) + spacing;
-                break;
-            }
-            case AT_Text:
-            {
-                TextBox* text = ( TextBox* ) child;
-
-                double xBorder = 0;//( GetWidth( ) - text->GetWidth( ) ) / 2;
-                text->SetXPos( xPos + xBorder );
-                text->SetYPos( yPos );
-                // get xpos of next cell
-                yPos += text->GetHeight( ) + spacing;
-                break;
-            }
-            }
             childID = GetDesignTreeCtrl( )->GetNextChild( parentID, cookie );
         }
     }
@@ -247,7 +213,7 @@ namespace Design {
             m_frame.Draw( dc, x, y );
         }
 
-        SetClientDimensions( dc, x, y, GetWidth( ), GetHeight( ) );
+        SetClientDimensions( dc, x + GetXPos( ), y + GetYPos( ), GetWidth( ), GetHeight( ) );
 
         double xPos = x + GetXPos( ) + leftPadding;
         double yPos = y + GetYPos( ) + topPadding;

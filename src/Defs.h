@@ -6,18 +6,18 @@
  * @date 2021-02-24
  *
  * @copyright Copyright ( c ) 2021
- * 
+ *
  * This file is part of StampTool.
  *
- * StampTool is free software: you can redistribute it and/or modify it under the 
- * terms of the GNU General Public License as published by the Free Software Foundation, 
+ * StampTool is free software: you can redistribute it and/or modify it under the
+ * terms of the GNU General Public License as published by the Free Software Foundation,
  * either version 3 of the License, or any later version.
  *
- * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY 
- * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+ * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
+ * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
- * You should have received a copy of the GNU General Public License along with 
+ * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
  **************************************************/
@@ -26,7 +26,7 @@
 #define Defs_H
 
 #include <wx/string.h>
-//#include "gui/ToolData.h"
+ //#include "gui/ToolData.h"
 #include <wx/gdicmn.h>
 
 class ToolData;
@@ -47,13 +47,15 @@ class ToolData;
 class DesignTreeCtrl;
 class CatalogTreeCtrl;
 class AlbumImagePanel;
-namespace Design { class DesignData; };
+namespace Design { class AlbumVolume; };
+namespace Design { class AlbumData; };
 namespace Utils { class FontList; };
-namespace Catalog { class CatalogSectionData;  };
+namespace Catalog { class CatalogVolume; };
+namespace Catalog { class CatalogData; };
 /**
- * @brief Get the Settings data 
- * 
- * @return CatalogSectionData* 
+ * @brief Get the Settings data
+ *
+ * @return CatalogVolume*
  **************************************************/
 Utils::Settings* GetSettings( );
 
@@ -62,8 +64,12 @@ Utils::Project* GetProject( );
 Utils::FontList* GetFontList( );
 
 ToolData* GetToolData( );
-Design::DesignData* GetDesignData( ) ;
-Catalog::CatalogSectionData* GetCatalogSectionData( ) ;
+Design::AlbumData* GetAlbumData( );
+Catalog::CatalogData* GetCatalogData( );
+
+
+Design::AlbumVolume* GetAlbumVolume( );
+Catalog::CatalogVolume* GetCatalogVolume( );
 CatalogTreeCtrl* GetCatalogPageTreeCtrl( );
 CatalogTreeCtrl* GetAlbumPageTreeCtrl( );
 DesignTreeCtrl* GetDesignTreeCtrl( );
@@ -72,8 +78,8 @@ AlbumImagePanel* GetAlbumImagePanel( );
 #define RealPoint wxRealPoint  
 #define RealSize wxRealPoint 
 class RealRect
-{ 
-    public:
+{
+public:
     RealRect( RealPoint posR, RealPoint sizeR ) { pos = posR; size = sizeR; };
     RealRect( double x, double y, double width, double height ) { SetPosition( x, y ), SetSize( width, height );; };
     RealPoint GetPosition( ) { return pos; };
@@ -101,7 +107,7 @@ class RealRect
  * @return const wxString
  **************************************************/
 inline const wxString Bool2String( bool b )
-{ 
+{
     return b ? "true" : "false";
 };
 
@@ -113,7 +119,7 @@ inline const wxString Bool2String( bool b )
  * @return false   if str == "false" ( or anything else )
  **************************************************/
 inline const bool String2Bool( wxString str )
-{ 
+{
     return str.CmpNoCase( "true" ) ? false : true;
 };
 

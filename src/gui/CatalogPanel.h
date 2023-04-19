@@ -21,8 +21,8 @@
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef _CATALOGSECTIONDATAPANEL_H_
-#define _CATALOGSECTIONDATAPANEL_H_
+#ifndef _CATALOGVOLUMEPANEL_H_
+#define _CATALOGVOLUMEPANEL_H_
 
 
  /*
@@ -35,7 +35,7 @@
 #include "Defs.h"
 #include "gui/GuiDefs.h"
 #include "utils/Project.h"
-#include "catalog/CatalogSectionData.h"
+#include "catalog/CatalogVolume.h"
 
   /*
   * Forward declarations
@@ -53,11 +53,11 @@ class Stamp;
 
 
 
-#define SYMBOL_CATALOGSECTIONDATAPANEL_STYLE wxTAB_TRAVERSAL
-#define SYMBOL_CATALOGSECTIONDATAPANEL_TITLE _( "CatalogPanel" )
-#define SYMBOL_CATALOGSECTIONDATAPANEL_IDNAME ID_CATALOGPANEL
-#define SYMBOL_CATALOGSECTIONDATAPANEL_SIZE wxSize( 400, 300 )
-#define SYMBOL_CATALOGSECTIONDATAPANEL_POSITION wxDefaultPosition
+#define SYMBOL_CATALOGVOLUMEPANEL_STYLE wxTAB_TRAVERSAL
+#define SYMBOL_CATALOGVOLUMEPANEL_TITLE _( "CatalogPanel" )
+#define SYMBOL_CATALOGVOLUMEPANEL_IDNAME ID_CATALOGPANEL
+#define SYMBOL_CATALOGVOLUMEPANEL_SIZE wxSize( 400, 300 )
+#define SYMBOL_CATALOGVOLUMEPANEL_POSITION wxDefaultPosition
 
 
 
@@ -65,7 +65,7 @@ class Stamp;
 * CatalogPanel class declaration
 */
 
-class CatalogPanel: public wxPanel
+class CatalogPanel : public wxPanel
 {
     DECLARE_DYNAMIC_CLASS( CatalogPanel )
         DECLARE_EVENT_TABLE( )
@@ -73,25 +73,29 @@ class CatalogPanel: public wxPanel
 public:
 
     enum CatalogPanelGuiDefs {
-        ID_CATALOGSECTIONDATAPANEL = ID_CATALOGPANEL + 1,
+        ID_CATALOGVOLUMEPANEL = ID_CATALOGPANEL + 1,
         ID_TEXTCTRL,
         ID_TREECTRL,
         ID_NEXTBUTTON,
         ID_CHECKLISTBOX,
         ID_SEARCHSTRINGTEXTCTRL,
         ID_TOGGLEBUTTON,
-        ID_SECTIONCHOICE
+        ID_VOLUMECHOICE,
+        ID_MANAGEBUTTON,
+        ID_NEWCATALOG,
+        ID_OPENCATALOG,
+        ID_REMOVECATALOG
     };
 
     CatalogPanel( );
 
     CatalogPanel( wxWindow* parent,
-        wxWindowID id = SYMBOL_CATALOGSECTIONDATAPANEL_IDNAME,
-        const wxPoint& pos = SYMBOL_CATALOGSECTIONDATAPANEL_POSITION,
-        const wxSize& size = SYMBOL_CATALOGSECTIONDATAPANEL_SIZE,
-        long style = SYMBOL_CATALOGSECTIONDATAPANEL_STYLE );
+        wxWindowID id = SYMBOL_CATALOGVOLUMEPANEL_IDNAME,
+        const wxPoint& pos = SYMBOL_CATALOGVOLUMEPANEL_POSITION,
+        const wxSize& size = SYMBOL_CATALOGVOLUMEPANEL_SIZE,
+        long style = SYMBOL_CATALOGVOLUMEPANEL_STYLE );
 
-    bool Create( wxWindow* parent, wxWindowID id = SYMBOL_CATALOGSECTIONDATAPANEL_IDNAME, const wxPoint& pos = SYMBOL_CATALOGSECTIONDATAPANEL_POSITION, const wxSize& size = SYMBOL_CATALOGSECTIONDATAPANEL_SIZE, long style = SYMBOL_CATALOGSECTIONDATAPANEL_STYLE );
+    bool Create( wxWindow* parent, wxWindowID id = SYMBOL_CATALOGVOLUMEPANEL_IDNAME, const wxPoint& pos = SYMBOL_CATALOGVOLUMEPANEL_POSITION, const wxSize& size = SYMBOL_CATALOGVOLUMEPANEL_SIZE, long style = SYMBOL_CATALOGVOLUMEPANEL_STYLE );
 
     ~CatalogPanel( );
 
@@ -103,33 +107,36 @@ public:
 
     void OnTogglebuttonClick( wxCommandEvent& event );
 
-    void OnSectionChoiceSelected( wxCommandEvent& event );
+    void OnVolumeChoiceSelected( wxCommandEvent& event );
+
+    void OnManageClick( wxCommandEvent& event );
 
     static bool ShowToolTips( );
 
-    void InitCatalogSectionData( );
+    void InitCatalogVolume( );
     CatalogTreeCtrl* GetCatalogTree( ) { return m_catalogTreeCtrl; };
 
-    void SetSectionListStrings( wxArrayString& choices )
+    void SetVolumeListStrings( wxArrayString& choices )
     {
-        m_sectionListCtrl->Clear( );
-        m_sectionListCtrl->Append( choices );
+        m_volumeListCtrl->Clear( );
+        m_volumeListCtrl->Append( choices );
     };
 
-    void SetSectionListSelection( int i )
+    void SetVolumeListSelection( int i )
     {
-        m_sectionListCtrl->SetSelection( i );
+        m_volumeListCtrl->SetSelection( i );
     };
 
     // wxTextCtrl* m_title;
-    wxChoice* m_sectionListCtrl;
+    wxChoice* m_volumeListCtrl;
     CatalogTreeCtrl* m_catalogTreeCtrl;
 
     wxTreeItemId m_draggedItem;
     wxBoxSizer* m_searchSizer;
     wxBoxSizer* m_catPanelSizer;
     wxToggleButton* m_toggleButton;
+    wxButton* m_manageButton;
 };
 
 #endif
-// _CATALOGSECTIONDATAPANEL_H_
+// _CATALOGVOLUMEPANEL_H_

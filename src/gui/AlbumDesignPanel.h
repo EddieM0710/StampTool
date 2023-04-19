@@ -32,9 +32,9 @@
 #include "wx/treectrl.h"
 #include "gui/GuiDefs.h"
 
-/*
- * Forward declarations
- */
+  /*
+   * Forward declarations
+   */
 class wxSplitterWindow;
 class wxTreeCtrl;
 class wxWindow;
@@ -52,11 +52,11 @@ class AlbumImagePanel;
 #define SYMBOL_STAMPTOOLDESIGNPANEL_SIZE wxSize( 400, 300 )
 #define SYMBOL_STAMPTOOLDESIGNPANEL_POSITION wxDefaultPosition
 
-/*
- * AlbumDesignPanel class declaration
- */
+ /*
+  * AlbumDesignPanel class declaration
+  */
 
-class AlbumDesignPanel: public wxPanel
+class AlbumDesignPanel : public wxPanel
 {
     DECLARE_DYNAMIC_CLASS( AlbumDesignPanel )
         DECLARE_EVENT_TABLE( )
@@ -70,9 +70,15 @@ public:
         ID_PANEL,
         ID_CDDATATEXTCTRL,
         ID_ALBUMALBUMIMAGEPANEL,
-        ID_ALBUMZOOMSLIDER
+        ID_ALBUMZOOMSLIDER,
+        ID_LISTCHOICE,
+        ID_MANAGEBUTTON,
+        ID_NEWDESIGN,
+        ID_OPENDESIGN,
+        ID_REMOVEDESIGN,
+        ID_GENERATEPDF
     };
-  
+
     AlbumDesignPanel( );
     AlbumDesignPanel( wxWindow* parent, wxWindowID id = SYMBOL_STAMPTOOLDESIGNPANEL_IDNAME, const wxPoint& pos = SYMBOL_STAMPTOOLDESIGNPANEL_POSITION, const wxSize& size = SYMBOL_STAMPTOOLDESIGNPANEL_SIZE, long style = SYMBOL_STAMPTOOLDESIGNPANEL_STYLE );
 
@@ -88,15 +94,29 @@ public:
 
     void OnZoomsliderUpdated( wxCommandEvent& event );
 
+    void OnManageClick( wxCommandEvent& event );
+
     static bool ShowToolTips( );
 
     void SetSashPosition( int pos ) { m_secondarySplitterWindow->SetSashPosition( pos ); };
-    
-    private:
+
+    void SetAlbumListStrings( wxArrayString& choices )
+    {
+        m_albumListCtrl->Clear( );
+        m_albumListCtrl->Append( choices );
+    };
+
+    void SetAlbumListSelection( int i )
+    {
+        m_albumListCtrl->SetSelection( i );
+    };
+
+private:
     wxSplitterWindow* m_secondarySplitterWindow;
     AlbumImagePanel* m_albumImagePanel;
     wxSlider* m_zoomSlider; ///< Pointer to image soom slider
     AlbumDesignTreePanel* m_albumDesignTreePanel;
+    wxChoice* m_albumListCtrl;
 };
 
 #endif

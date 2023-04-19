@@ -57,13 +57,12 @@
 #include "utils/Project.h"
 #include "utils/CSV.h"
 #include "utils/XMLUtilities.h"
-#include "catalog/Classification.h"
 #include "catalog/Entry.h"
-#include "catalog/CatalogSectionData.h"
+#include "catalog/CatalogVolume.h"
 
 
 #include "design/DesignDefs.h"
-#include "design/DesignData.h"
+#include "design/AlbumVolume.h"
 #include "design/AlbumBase.h"
 #include "design/Album.h"
 #include "design/Stamp.h"
@@ -256,6 +255,12 @@ CatalogPanel* StampToolFrame::GetAlbumPagePanel( )
     return m_stampToolPanel->GetAlbumPagePanel( );
 }
 
+
+AlbumDesignPanel* StampToolFrame::GetAlbumDesignPanel( )
+{
+    return m_stampToolPanel->GetAlbumDesignPanel( );
+}
+
 // WebViewPanel* StampToolFrame::GetWebViewPage( )
 // {
 //     return m_stampToolPanel->GetWebViewPage( );
@@ -271,8 +276,8 @@ int StampToolFrame::DoQueryMerge( int& mergeMethod )
     wxXmlNode* docRoot = 0;
     int mergeOverwriteQuery;
 
-    Catalog::CatalogSectionData* catalogSectionData = GetCatalogSectionData( );
-    if ( catalogSectionData )
+    Catalog::CatalogVolume* catalogVolume = GetCatalogVolume( );
+    if ( catalogVolume )
     {
         mergeOverwriteQuery = QueryMerge( mergeMethod );
     }
@@ -340,10 +345,10 @@ void StampToolFrame::DoCSVImport( )
         return;
     }
 
-    if ( GetToolData( )->ReadCatalogCSV( filename ) )
+    if ( GetCatalogData( )->ReadCatalogCSV( filename ) )
     {
-        GetCatalogSectionData( )->EditDetailsDialog( this );
-        GetToolData( )->LoadCatalogTree( );
+        GetCatalogVolume( )->EditDetailsDialog( this );
+        GetCatalogData( )->LoadCatalogTree( );
     }
     Dirty = true;
 }
@@ -407,12 +412,12 @@ void StampToolFrame::OnSaveProjectClick( wxCommandEvent& event )
 
 void StampToolFrame::OnSaveDesignClick( wxCommandEvent& event )
 {
-    GetToolData( )->FileSaveDesign( );
+    GetAlbumData( )->FileSave( );
     event.Skip( );
 }
 void StampToolFrame::OnSaveCatalogClick( wxCommandEvent& event )
 {
-    GetToolData( )->FileSaveCatalog( );
+    GetCatalogData( )->FileSave( );
     event.Skip( );
 }
 
@@ -487,7 +492,7 @@ void StampToolFrame::OnSaveasCatalogClick( wxCommandEvent& event )
 void StampToolFrame::OnGeneratePDFClick( wxCommandEvent& event )
 {
     //AlbumImagePanel*
-    GetDesignData( )->GetAlbum( )->MakePDFAlbum( );
+    GetAlbumVolume( )->GetAlbum( )->MakePDFAlbum( );
 }
 void StampToolFrame::OnSettingsClick( wxCommandEvent& event )
 {
@@ -534,6 +539,49 @@ void StampToolFrame::OnSortOrderClick( wxCommandEvent& event )
 
 
 
+void StampToolFrame::OpenDesign( )
+{
+    wxFileName lastFile( GetProject( )->GetDesignFilename( ) );
+    lastFile.SetExt( "xml" );
+    wxFileDialog openFileDialog(
+        this, _( "Open Design XML file" ),
+        lastFile.GetPath( ), lastFile.GetFullName( ),
+        "Project XML files(*.alb.xml)|*.alb.xml|All XML(&.xml)|*.xml", wxFD_OPEN | wxFD_FILE_MUST_EXIST );
+    if ( openFileDialog.ShowModal( ) == wxID_CANCEL )
+    {
+        return; // the user changed idea...
+    }
+
+    // proceed loading the file chosen by the user;
+    // this can be done with e.g. wxWidgets input streams:
+    wxString filename = openFileDialog.GetPath( );
+
+    GetAlbumData( )->FileOpen( filename );
+}
+
+
+//GUI interface for creating new design
+void StampToolFrame::NewDesign( )
+{
+
+    FileCreateDialog fileDialog( this, 12355, _( "Select the Filename and Directory for the Design file." ) );
+    wxGetCwd( );
+    fileDialog.SetDefaultDirectory( wxGetCwd( ) );
+    fileDialog.SetDefaultFilename( _( "unnamed.alb.xml" ) );
+    fileDialog.SetWildCard( _( "Design files(*.alb.xml)|*.alb.xml" ) );
+
+    if ( fileDialog.ShowModal( ) == wxID_CANCEL )
+    {
+        return;
+    }
+    wxString cwd = wxGetCwd( );
+    wxFileName designFile( fileDialog.GetPath( ) );
+    designFile.MakeRelativeTo( cwd );
+    GetAlbumData( )->LoadNew( designFile.GetFullPath( ) );
+    SetDirty( );
+
+}
+
 void StampToolFrame::OnTextserchmenuitemClick( wxCommandEvent& event )
 {
     event.Skip( );
@@ -579,45 +627,6 @@ void StampToolFrame::NewProject( )
 
 }
 
-//GUI interface for creating new design
-void StampToolFrame::NewDesign( )
-{
-    if ( IsDirty( ) )
-    {
-        // query whether to save first 
-
-        wxMessageDialog* dlg = new wxMessageDialog(
-            this,
-            wxT( "The current data has been changed but not saved. \n"\
-                "Select \"OK\" to close the file losing the changes.\n"\
-                "Or select \"Cancel\" to quit file open process.\n" ),
-            wxT( "Warning! Unsaved modifications.\n" ),
-            wxOK | wxCANCEL | wxCENTER );
-        int rsp = dlg->ShowModal( );
-        if ( rsp == wxID_CANCEL )
-        {
-            return;
-        }
-    };
-
-    FileCreateDialog fileDialog( this, 12355, _( "Select the Filename and Directory for the Design file." ) );
-    wxGetCwd( );
-    fileDialog.SetDefaultDirectory( wxGetCwd( ) );
-    fileDialog.SetDefaultFilename( _( "unnamed.alb.xml" ) );
-    fileDialog.SetWildCard( _( "Design files(*.alb.xml)|*.alb.xml" ) );
-
-    if ( fileDialog.ShowModal( ) == wxID_CANCEL )
-    {
-        return;
-    }
-    wxString cwd = wxGetCwd( );
-    wxFileName designFile( fileDialog.GetPath( ) );
-    designFile.MakeRelativeTo( cwd );
-    GetToolData( )->LoadNewDesign( designFile.GetFullPath( ) );
-    SetDirty( );
-
-}
-
 
 
 void StampToolFrame::NewCatalog( )
@@ -656,9 +665,46 @@ void StampToolFrame::NewCatalog( )
     wxFileName catFile( fileDialog.GetPath( ) );
     catFile.MakeRelativeTo( cwd );
 
-    GetToolData( )->LoadNewCatalog( catFile.GetFullPath( ) );
+    GetCatalogData( )->LoadNew( catFile.GetFullPath( ) );
     SetDirty( );
 }
+
+
+void StampToolFrame::OpenCatalog( )
+{
+    // if ( IsDirty( ) )
+    // { 
+    //     // query whether to save first 
+    //     wxMessageDialog* dlg = new wxMessageDialog( 
+    //         this, 
+    //         wxT( "The current data has been changed but not saved. \n"\
+    //             "Select \"OK\" to close the file losing the changes.\n"\
+    //             "Or select \"Cancel\" to quit file open process.\n" ), 
+    //         wxT( "Warning! Unsaved modifications.\n" ), 
+    //         wxOK | wxCANCEL | wxCENTER );
+    //     int rsp = dlg->ShowModal( );
+    //     if ( rsp == wxID_CANCEL )
+    //     { 
+    //         return;
+    //     }
+    // };
+
+    wxFileDialog openFileDialog(
+        this, _( "Open Catalog XML file" ),
+        wxGetCwd( ),
+        _( "unnamed.cat.xml" ),
+        "Catalog XML files(*.cat.xml)|*.cat.xml|All XML(&.xml)|*.xml", wxFD_OPEN | wxFD_FILE_MUST_EXIST );
+    if ( openFileDialog.ShowModal( ) == wxID_CANCEL )
+    {
+        return; // the user changed idea...
+    }
+
+    wxString cwd = wxGetCwd( );
+    wxFileName catFile( openFileDialog.GetPath( ) );
+    catFile.MakeRelativeTo( cwd );
+    GetCatalogData( )->FileOpen( catFile.GetFullPath( ) );
+}
+
 
 void StampToolFrame::OpenProject( )
 {
@@ -706,83 +752,6 @@ void StampToolFrame::OpenProject( )
     GetToolData( )->FileOpenProject( filename );
 
 }
-
-
-
-void StampToolFrame::OpenDesign( )
-{
-    if ( IsDirty( ) )
-    {
-        // query whether to save first 
-        wxMessageDialog* dlg = new wxMessageDialog(
-            this,
-            wxT( "The current data has been changed but not saved. \n"\
-                "Select \"OK\" to close the file losing the changes.\n"\
-                "Or select \"Cancel\" to quit file open process.\n" ),
-            wxT( "Warning! Unsaved modifications.\n" ),
-            wxOK | wxCANCEL | wxCENTER );
-        int rsp = dlg->ShowModal( );
-        if ( rsp == wxID_CANCEL )
-        {
-            return;
-        }
-    }
-
-    wxFileName lastFile( GetProject( )->GetDesignFilename( ) );
-    lastFile.SetExt( "xml" );
-    wxFileDialog openFileDialog(
-        this, _( "Open Design XML file" ),
-        lastFile.GetPath( ), lastFile.GetFullName( ),
-        "Project XML files(*.alb.xml)|*.alb.xml|All XML(&.xml)|*.xml", wxFD_OPEN | wxFD_FILE_MUST_EXIST );
-    if ( openFileDialog.ShowModal( ) == wxID_CANCEL )
-    {
-        return; // the user changed idea...
-    }
-
-    // proceed loading the file chosen by the user;
-    // this can be done with e.g. wxWidgets input streams:
-    wxString filename = openFileDialog.GetPath( );
-
-    GetToolData( )->FileOpenDesign( filename );
-
-}
-
-
-void StampToolFrame::OpenCatalog( )
-{
-    // if ( IsDirty( ) )
-    // { 
-    //     // query whether to save first 
-    //     wxMessageDialog* dlg = new wxMessageDialog( 
-    //         this, 
-    //         wxT( "The current data has been changed but not saved. \n"\
-    //             "Select \"OK\" to close the file losing the changes.\n"\
-    //             "Or select \"Cancel\" to quit file open process.\n" ), 
-    //         wxT( "Warning! Unsaved modifications.\n" ), 
-    //         wxOK | wxCANCEL | wxCENTER );
-    //     int rsp = dlg->ShowModal( );
-    //     if ( rsp == wxID_CANCEL )
-    //     { 
-    //         return;
-    //     }
-    // };
-
-    wxFileDialog openFileDialog(
-        this, _( "Open Catalog XML file" ),
-        wxGetCwd( ),
-        _( "unnamed.cat.xml" ),
-        "Catalog XML files(*.cat.xml)|*.cat.xml|All XML(&.xml)|*.xml", wxFD_OPEN | wxFD_FILE_MUST_EXIST );
-    if ( openFileDialog.ShowModal( ) == wxID_CANCEL )
-    {
-        return; // the user changed idea...
-    }
-
-    wxString cwd = wxGetCwd( );
-    wxFileName catFile( openFileDialog.GetPath( ) );
-    catFile.MakeRelativeTo( cwd );
-    GetToolData( )->FileOpenCatalog( catFile.GetFullPath( ) );
-}
-
 
 
 int StampToolFrame::QueryMerge( int& mergeMethod )
@@ -849,19 +818,19 @@ int StampToolFrame::QueryMerge( int& mergeMethod )
 
 // void StampToolFrame::SaveDesign( )
 // { 
-//     GetDesignData( )->SaveXML( GetProject( )->GetDesignFilename( ) );
+//     GetAlbumVolume( )->SaveXML( GetProject( )->GetDesignFilename( ) );
 // }
 
 // void StampToolFrame::SaveCatalog( )
 // { 
-//     GetCatalogSectionData( )->Save( );
+//     GetCatalogVolume( )->Save( );
 //     SetDirty( false );
 
 // }
 void StampToolFrame::SaveAsProject( )
 {
 
-    //if ( GetCatalogSectionData( ) )
+    //if ( GetCatalogVolume( ) )
     //{ 
     wxFileName lastFile( GetSettings( )->GetLastFile( ) );
     lastFile.SetExt( "xml" );
@@ -879,7 +848,7 @@ void StampToolFrame::SaveAsProject( )
 void StampToolFrame::SaveAsCatalog( )
 {
 
-    // if ( GetCatalogSectionData( ) )
+    // if ( GetCatalogVolume( ) )
     // { 
     //     wxFileName lastFile( GetProject( )->GetCatalogFilename( ) );
     //     lastFile.SetExt( "xml" );
@@ -897,7 +866,7 @@ void StampToolFrame::SaveAsCatalog( )
 void StampToolFrame::SaveAsDesign( )
 {
 
-    if ( GetCatalogSectionData( ) )
+    if ( GetCatalogVolume( ) )
     {
         wxFileName lastFile( GetProject( )->GetDesignFilename( ) );
         lastFile.SetExt( "xml" );
@@ -909,7 +878,7 @@ void StampToolFrame::SaveAsDesign( )
             return;
 
         wxString filename = saveFileDialog.GetPath( );
-        GetToolData( )->FileSaveAsDesign( filename );
+        GetAlbumData( )->FileSaveAs( filename );
     }
 }
 

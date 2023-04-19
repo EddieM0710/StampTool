@@ -1,16 +1,16 @@
 /**
  * @file CatalogData.cpp
- * @author Eddie Monroe ( )
+ * @author Eddie Monroe
  * @brief
  * @version 0.1
- * @date 2021-02-25
+ * @date 2022-03-31
  *
- * @copyright Copyright ( c ) 2021
+ * @copyright Copyright ( c ) 2022
  *
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation, 
+ * terms of the GNU General Public License as published by the Free Software Foundation,
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -22,134 +22,159 @@
  *
  **************************************************/
 
- 
-#include "wx/wxprec.h"
-
-#ifdef __BORLANDC__
-#pragma hdrstop
-#endif
-
-#ifndef WX_PRECOMP
-#include "wx/wx.h"
-#endif
-
-// #include <iostream>
-#include <wx/filename.h>
-// #include <wx/string.h>
-// #include "wx/xml/xml.h"
-// #include <wx/msgdlg.h>
-
 #include "catalog/CatalogData.h"
-#include "gui/CatalogPanel.h"
+#include "catalog/CatalogVolume.h"
+#include "catalog/Entry.h"
+#include "gui/CatalogTreeCtrl.h"
+#include "gui/StampDescriptionPanel.h"
+#include "gui/ToolData.h" 
+#include "utils/Project.h"
+#include "Defs.h" 
 
+namespace Catalog
+{
 
-#include "Defs.h"
+    Catalog::CatalogVolume* CatalogData::NewCatalogVolume( )
+    {
+        if ( m_catalogPageTreeCtrl )
+        {
+            m_catalogPageTreeCtrl->ClearCatalogTree( );
+        }
+        if ( m_albumPageTreeCtrl )
+        {
+            m_albumPageTreeCtrl->ClearCatalogTree( );
+        }
 
-// #include "catalog/CatalogDefs.h"
-// #include "catalog/Classification.h"
-// #include "catalog/Entry.h"
-
-// #include "utils/CSV.h"
-// #include "utils/Settings.h"
-// #include "utils/Project.h"
-// #include "utils/XMLUtilities.h"
-#include "StampToolApp.h"
-#include "gui/ToolData.h"
-
-wxDECLARE_APP( StampToolApp );
-
-namespace Catalog { 
-
-    Catalog::CatalogSectionData* CatalogData::NewCatalogSectionData( )
-    { 
-        Catalog::CatalogSectionData* catalogSectionData = Catalog::NewCatalogSectionDataInstance( );
-        m_catalogArray.push_back( catalogSectionData );
-        m_catalogSectionDataNdx = m_catalogArray.size( ) - 1;
-        return catalogSectionData;
+        return m_catalogList.NewCatalogVolume( );
     };
 
-    bool CatalogData::ClearCatalogArray( )
-    { 
-        while( !m_catalogArray.empty( ) )
-        { 
-            CatalogSectionData* data = m_catalogArray.back( );
-            delete data;
-            m_catalogArray.pop_back( );
+    // void CatalogData::LoadCatalogXML( wxString catalogFilename )
+    // { 
+    // }
+
+    //*****
+
+    void CatalogData::LoadCatalogVolumeFiles( )
+    {
+        m_catalogList.LoadCatalogVolumes( );
+    }
+
+
+    bool CatalogData::ReadCatalogCSV( wxString csvFilename )
+    {
+        wxFileName csvFile( csvFilename );
+        wxString ext = csvFile.GetExt( );
+        if ( !ext.CmpNoCase( "csv" ) )
+        {
+            wxFileName catalogFile = csvFile;
+            catalogFile.SetExt( "cat.xml" );
+
+            GetProject( )->SetCatalogFilename( catalogFile.GetFullPath( ) );
+
+            Catalog::CatalogVolume* catalogVolume = NewCatalogVolume( );
+
+            catalogVolume->SetVolumeFilename( catalogFile.GetFullPath( ) );
+            return catalogVolume->LoadCSV( csvFile.GetFullPath( ) );
         }
-        return true;
-    } 
-    Catalog::CatalogSectionData* CatalogData::GetCatalogSectionData( )
-    { 
-        if ( m_catalogSectionDataNdx >= 0 )
-        { 
-            if ( !m_catalogArray.empty( ) ) 
-            { 
-                return m_catalogArray.at( m_catalogSectionDataNdx );
-            }
+        return false;
+    }
+
+    void CatalogData::LoadCatalogTree( )
+    {
+        GetCatalogPageTreeCtrl( )->LoadTree( );
+        GetAlbumPageTreeCtrl( )->LoadTree( );
+    }
+
+    void CatalogData::LoadNew( wxString catFile )
+    {
+        Catalog::NewCatalogVolumeInstance( );
+        GetProject( )->SetCatalogFilename( catFile );
+        LoadCatalogTree( );
+        SetDirty( );
+    }
+
+    void CatalogData::FileOpen( wxString filename )
+    {
+        GetProject( )->SetCatalogFilename( filename );
+        LoadCatalogVolumeFiles( );
+        LoadCatalogTree( );
+    }
+
+    void CatalogData::FileSaveAs( wxString filename )
+    {
+        GetProject( )->SetCatalogFilename( filename );
+        FileSave( );
+    }
+
+    void CatalogData::FileSave( )
+    {
+        m_catalogList.SaveCatalogVolumes( );
+    }
+
+
+    wxString CatalogData::GetImagePath( )
+    {
+        wxString sectFilename = GetCatalogVolume( )->GetVolumeFilename( );
+        wxFileName fn( sectFilename );
+        fn.ClearExt( );
+        fn.SetName( "" );
+        wxString dirName = GetCatalogVolume( )->GetCatalogVolumeImagePath( );
+        if ( !dirName.IsEmpty( ) )
+        {
+            fn.AppendDir( dirName );
         }
-        return ( Catalog::CatalogSectionData* )0;
-    };
+        return fn.GetPath( );
+    }
 
-int wayToSort( Catalog::CatalogSectionData* sect1, Catalog::CatalogSectionData* sect2 ) 
-{ 
-    wxString name1 = sect1->GetSectionName( );
-    wxString name2 = sect2->GetSectionName( );
-    return name1.compare( name2 ); 
-}
+    wxString CatalogData::GetImageFilename( wxString stampId )
+    {
 
-    void CatalogData::LoadCatalogSections( )
-    { 
-
-        for ( Catalog::CatalogSectionDataArray::iterator it = std::begin( m_catalogArray );
-            it != std::end( m_catalogArray );
-            ++it )
-        { 
-            Catalog::CatalogSectionData* section = ( Catalog::CatalogSectionData* )( *it );
-            section->LoadXML( );
-            wxString name = section->GetSectionName( );
-            if ( !name.IsEmpty( ) )
-            { 
-                name = section->GetSectionFilename( );
-                wxFileName fn( name );
-                section->SetSectionName( fn.GetName( ) );
-            }
+        wxString artPath = GetImagePath( );
+        wxString fileName = stampId;
+        wxString imageFile;
+        if ( artPath.IsEmpty( ) || fileName.IsEmpty( ) )
+        {
+            imageFile = "";
         }
-
-        if ( m_catalogArray.size( ) > 1 )
-        { 
-            sort( m_catalogArray.begin( ), m_catalogArray.end( ), wayToSort );
+        else
+        {
+            fileName = fileName.Trim( true );
+            fileName = fileName.Trim( false );
+            fileName.Replace( ":", "_" );
+            fileName.Replace( " ", "_" );
+            wxFileName fn;
+            fn.SetPath( artPath );
+            fn.SetName( fileName );
+            fn.SetExt( "jpg" );
+            imageFile = fn.GetFullPath( );
+            // wxString::Format( "%s/%s.jpg", dirName, fileName );
         }
-        m_sectionNameStrings.Clear( );
-        for ( Catalog::CatalogSectionDataArray::iterator it = std::begin( m_catalogArray );
-            it != std::end( m_catalogArray );
-            ++it )
-        { 
-            Catalog::CatalogSectionData* section = ( Catalog::CatalogSectionData* )( *it );
-            m_sectionNameStrings.Add( section->GetSectionName( ) );
+        return imageFile;
+    }
+    // void CatalogData::InitLoad( )
+    // { 
+    //     if ( GetSettings( )->GetLoadLastFileAtStartUp( ) )
+    //     { 
+    //         m_project->LoadProjectXML( );
+    //         LoadData( );
+    //     }
+    // }
+
+
+    // Load the Catalog and Design data then populate trees
+    void CatalogData::LoadData( )
+    {
+        LoadCatalogVolumeFiles( );
+        LoadCatalogTree( );
+    }
+
+    void CatalogData::SetCurrentStamp( wxXmlNode* stamp )
+    {
+        if ( m_stamp )
+        {
+            delete m_stamp;
         }
-        CatalogPanel* catPanel = wxGetApp( ).GetFrame( )->GetCatalogPagePanel( );
-        CatalogPanel* albPanel = wxGetApp( ).GetFrame( )->GetAlbumPagePanel( );
-        catPanel->SetSectionListStrings( m_sectionNameStrings );
-        albPanel->SetSectionListStrings( m_sectionNameStrings );
-        m_catalogSectionDataNdx = 0;
-        catPanel->SetSectionListSelection( m_catalogSectionDataNdx );
-        albPanel->SetSectionListSelection( m_catalogSectionDataNdx );
-
-    };
-
-    void CatalogData::SaveCatalogSections( )
-    { 
-        for ( Catalog::CatalogSectionDataArray::iterator it = std::begin( m_catalogArray );
-            it != std::end( m_catalogArray );
-            ++it )
-        { 
-            Catalog::CatalogSectionData* section = ( Catalog::CatalogSectionData* )( *it );
-            section->Save( );
-        }
-    };
-
-    void CatalogData::SetCatalogSectionDataNdx( int i ) { 
-        m_catalogSectionDataNdx = i;
-        GetToolData( )->LoadCatalogTree( );
+        m_stamp = new Catalog::Entry( stamp );
+        GetDescriptionPanel( )->Show( );
     };
 }

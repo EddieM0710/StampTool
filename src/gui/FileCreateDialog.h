@@ -32,21 +32,22 @@
 
 #include "gui/GuiDefs.h"
 
- //  includes
- //  includes
+;
+//  includes
+//  includes
+
+/*
+ * Forward declarations
+ */
+
+ //  forward declarations
+ //  forward declarations
 
  /*
-  * Forward declarations
+  * Control identifiers
   */
 
-  //  forward declarations
-  //  forward declarations
-
-  /*
-   * Control identifiers
-   */
-
-   //  control identifiers
+  //  control identifiers
 
 #define SYMBOL_FILECREATEDIALOG_STYLE wxCAPTION | wxRESIZE_BORDER | wxSYSTEM_MENU | wxCLOSE_BOX | wxTAB_TRAVERSAL
 #define SYMBOL_FILECREATEDIALOG_TITLE _( "Select file and directory" )
@@ -60,7 +61,7 @@
  * FileCreateDialog class declaration
  */
 
-class FileCreateDialog: public wxDialog
+class FileCreateDialog : public wxDialog
 {
     DECLARE_DYNAMIC_CLASS( FileCreateDialog )
         DECLARE_EVENT_TABLE( )

@@ -44,19 +44,13 @@
 #define SYMBOL_IMAGEPANEL_POSITION wxDefaultPosition
 
 
-// enum
-// {
-//     ID_ROTATE_LEFT = wxID_HIGHEST + 1,
-//     ID_ROTATE_RIGHT,
-//     ID_RESIZE,
-//     ID_PAINT_BG
-// };
+
 
 /**
  * @brief This is the class that manages the image displayed on the StampDescriptionPanel.
  *
  **************************************************/
-class ImagePanel: public wxScrolledWindow
+class ImagePanel : public wxScrolledWindow
 {
     DECLARE_DYNAMIC_CLASS( ImagePanel )
         DECLARE_EVENT_TABLE( )
@@ -150,13 +144,13 @@ public:
      **************************************************/
     void SetBitmap( wxString filename );
 
-    void SetStamp( Catalog::Entry* stamp );
+    //  void SetStamp( Catalog::Entry* stamp );
 
-    /**
-     * @brief Resize the image to fit in the clientspace
-     *
-     * @param WXUNUSED
-     **************************************************/
+      /**
+       * @brief Resize the image to fit in the clientspace
+       *
+       * @param WXUNUSED
+       **************************************************/
     void OnResize( wxCommandEvent& WXUNUSED( event ) );
 
     /**
@@ -184,8 +178,8 @@ private:
     wxBitmap m_bitmap; ///< current bitmap to display
     double m_zoom; ///< current zoom factor
 
-    Catalog::Entry* m_stamp; ///< Pointer to currently displayed stamp
-    //    RequestType m_page;
+    //  Catalog::Entry* m_stamp; ///< Pointer to currently displayed stamp
+      //    RequestType m_page;
     wxBitmap m_imageBitmap;
     //    wxString m_webText;
     //    wxWebRequest m_currentRequest;

@@ -24,65 +24,49 @@
 #include <wx/log.h>
 
 #include "catalog/CatalogDefs.h"
-#include "catalog/CatalogSectionData.h"
+#include "catalog/CatalogVolume.h"
 #include "gui/DesignTreeCtrl.h"
 #include "gui/CatalogTreeCtrl.h"
 #include "gui/ToolData.h" 
 #include "utils/Settings.h"
 #include "utils/Project.h"
 
-#include "design/DesignData.h"
+#include "design/AlbumVolume.h"
 
-
-ToolData* NewToolDataInstance( )
-{
-    return new ToolData( );
-}
 
 ToolData::ToolData( ) {
 
-    m_designData = 0;
-    m_catalogPageTreeCtrl = 0;
-    m_albumPageTreeCtrl = 0;
-    m_designTreeCtrl = 0;
-    m_stampDescriptionPanel = 0;
-    m_project = 0;
-    m_settings = 0;
+    // m_albumVolume = 0;
+    // m_catalogPageTreeCtrl = 0;
+    // m_albumPageTreeCtrl = 0;
+    // m_designTreeCtrl = 0;
+    // m_stampDescriptionPanel = 0;
+    // m_project = 0;
+    // m_settings = 0;
+    m_catalogData = new Catalog::CatalogData( );
+    m_albumData = new Design::AlbumData( this );
+
 };
 
 void ToolData::InitToolData( )
 {
-    m_designData = 0;
-    m_catalogPageTreeCtrl = 0;
-    m_albumPageTreeCtrl = 0;
-    m_designTreeCtrl = 0;
-    m_stampDescriptionPanel = 0;
-    SetProject( Utils::NewProjectInstance( ) );
+    // m_albumVolume = 0;
+    // m_catalogPageTreeCtrl = 0;
+    // m_albumPageTreeCtrl = 0;
+    // m_designTreeCtrl = 0;
+    // m_stampDescriptionPanel = 0;
+    m_settings = new Utils::Settings( );
+    m_project = new Utils::Project( );
+    m_StampAlbumCatalogLink = new Utils::StampList( );
 
-    m_settings = Utils::NewSettingsInstance( );
+    m_project->InitProject( );
+    m_settings->InitSettings( );
 
     if ( m_settings->GetLoadLastFileAtStartUp( ) )
     {
         m_project->SetProjectFilename( m_settings->GetLastFile( ) );
-
-        // if ( wxFileExists( filename ) )
-        // { 
-        //     if ( LoadProjectXML( filename ) )
-        //     { 
-        //     }
-        // }
     }
 }
-
-void ToolData::SetProject( Utils::Project* project )
-{
-    if ( m_project )
-    {
-        m_project->~Project( );
-    }
-    m_project = project;
-};
-
 
 
 void ToolData::FileNewProject( wxString prjName )
@@ -99,10 +83,9 @@ void ToolData::FileNewProject( wxString prjName )
 void ToolData::LoadData( )
 {
     bool state = wxLog::IsEnabled( );
-    LoadCatalogSectionFiles( );
-    LoadCatalogTree( );
-    ReadDesignFile( );
-    LoadDesignTree( );
+    m_catalogData->LoadData( );
+    m_albumData->LoadData( );
+    ;
 }
 
 void ToolData::FileOpenProject( wxString filename )
@@ -130,192 +113,4 @@ void ToolData::FileSaveAsProject( wxString filename )
     FileSaveProject( );
 }
 
-Catalog::CatalogSectionData* ToolData::NewCatalogSectionData( )
-{
-    if ( m_catalogPageTreeCtrl )
-    {
-        m_catalogPageTreeCtrl->ClearCatalogTree( );
-    }
-    if ( m_albumPageTreeCtrl )
-    {
-        m_albumPageTreeCtrl->ClearCatalogTree( );
-    }
 
-    return m_catalogData.NewCatalogSectionData( );
-};
-
-// void ToolData::LoadCatalogXML( wxString catalogFilename )
-// { 
-// }
-
-//*****
-
-void ToolData::LoadCatalogSectionFiles( )
-{
-    m_catalogData.LoadCatalogSections( );
-}
-
-
-bool ToolData::ReadCatalogCSV( wxString csvFilename )
-{
-    wxFileName csvFile( csvFilename );
-    wxString ext = csvFile.GetExt( );
-    if ( !ext.CmpNoCase( "csv" ) )
-    {
-        wxFileName catalogFile = csvFile;
-        catalogFile.SetExt( "cat.xml" );
-
-        m_project->SetCatalogFilename( catalogFile.GetFullPath( ) );
-
-        Catalog::CatalogSectionData* catalogSectionData = NewCatalogSectionData( );
-
-        catalogSectionData->SetSectionFilename( catalogFile.GetFullPath( ) );
-        return catalogSectionData->LoadCSV( csvFile.GetFullPath( ) );
-    }
-    return false;
-}
-
-void ToolData::LoadCatalogTree( )
-{
-    GetCatalogPageTreeCtrl( )->LoadTree( );
-    GetAlbumPageTreeCtrl( )->LoadTree( );
-}
-
-void ToolData::LoadNewCatalog( wxString catFile )
-{
-    Catalog::NewCatalogSectionDataInstance( );
-    m_project->SetCatalogFilename( catFile );
-    LoadCatalogTree( );
-    SetDirty( );
-}
-Design::DesignData* ToolData::FileOpenDesign( wxString filename )
-{
-    m_project->SetDesignFilename( filename );
-    ReadDesignFile( );
-    LoadDesignTree( );
-    return ( Design::DesignData* ) 0;
-}
-Design::DesignData* ToolData::FileOpenCatalog( wxString filename )
-{
-    m_project->SetCatalogFilename( filename );
-    LoadCatalogSectionFiles( );
-    LoadCatalogTree( );
-    return ( Design::DesignData* ) 0;
-}
-
-Design::DesignData* ToolData::NewDesignData( void )
-{
-    if ( m_designData )
-    {
-        delete m_designData;
-
-        m_designTreeCtrl->DeleteAllItems( );
-        m_StampAlbumCatalogLink.Clear( );
-    }
-    m_designData = Design::NewDesignDataInstance( );
-    return m_designData;
-}
-
-
-void ToolData::ReadDesignFile( )
-{
-    NewDesignData( );
-    wxString albumFilename = m_project->GetDesignFilename( );
-    m_designData->LoadXML( albumFilename );
-}
-
-
-void ToolData::LoadDesignTree( )
-{
-    GetDesignTreeCtrl( )->LoadTree( );
-}
-
-void ToolData::LoadDefaultDesignData( )
-{
-    NewDesignData( );
-    m_designData->LoadDefaultDocument( );
-}
-
-void ToolData::LoadNewDesign( wxString designFileName )
-{
-    m_project->SetDesignFilename( designFileName );
-
-    LoadDefaultDesignData( );
-    LoadDesignTree( );
-    SetDirty( false );
-}
-
-void ToolData::FileSaveDesign( )
-{
-    if ( m_designData )
-    {
-        m_designData->SaveXML( GetProject( )->GetDesignFilename( ) );
-    }
-};
-
-void ToolData::FileSaveAsDesign( wxString filename )
-{
-    m_project->SetDesignFilename( filename );
-    FileSaveDesign( );
-};
-
-void ToolData::FileSaveAsCatalog( wxString filename )
-{
-    m_project->SetCatalogFilename( filename );
-    FileSaveCatalog( );
-}
-
-void ToolData::FileSaveCatalog( )
-{
-    m_catalogData.SaveCatalogSections( );
-}
-
-
-// void ToolData::InitLoad( )
-// { 
-//     if ( GetSettings( )->GetLoadLastFileAtStartUp( ) )
-//     { 
-//         m_project->LoadProjectXML( );
-//         LoadData( );
-//     }
-// }
-
-wxString ToolData::GetImagePath( )
-{
-    wxString sectFilename = GetCatalogSectionData( )->GetSectionFilename( );
-    wxFileName fn( sectFilename );
-    fn.ClearExt( );
-    fn.SetName( "" );
-    wxString dirName = GetCatalogSectionData( )->GetCatalogSectionImagePath( );
-    if ( !dirName.IsEmpty( ) )
-    {
-        fn.AppendDir( dirName );
-    }
-    return fn.GetPath( );
-}
-
-wxString ToolData::GetImageFilename( wxString stampId )
-{
-
-    wxString artPath = GetImagePath( );
-    wxString fileName = stampId;
-    wxString imageFile;
-    if ( artPath.IsEmpty( ) || fileName.IsEmpty( ) )
-    {
-        imageFile = "";
-    }
-    else
-    {
-        fileName = fileName.Trim( true );
-        fileName = fileName.Trim( false );
-        fileName.Replace( ":", "_" );
-        fileName.Replace( " ", "_" );
-        wxFileName fn;
-        fn.SetPath( artPath );
-        fn.SetName( fileName );
-        fn.SetExt( "jpg" );
-        imageFile = fn.GetFullPath( );
-        // wxString::Format( "%s/%s.jpg", dirName, fileName );
-    }
-    return imageFile;
-}

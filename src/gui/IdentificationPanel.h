@@ -24,22 +24,12 @@
 #ifndef _IDENTIFICATIONPANEL_H_
 #define _IDENTIFICATIONPANEL_H_
 
- /*
-   * Includes
-   */
 #include "Defs.h"
 #include "gui/GuiDefs.h"
 #include "catalog/CatalogDefs.h"
-   /*
-    * Forward declarations
-    */
 
 class LabeledTextBox;
 namespace Catalog { class Entry; }
-
-/*
- * Control identifiers
- */
 
 #define SYMBOL_IDENTIFICATIONPANEL_STYLE wxTAB_TRAVERSAL
 #define SYMBOL_IDENTIFICATIONPANEL_TITLE _( "IdentificationPanel" )
@@ -47,10 +37,10 @@ namespace Catalog { class Entry; }
 #define SYMBOL_IDENTIFICATIONPANEL_SIZE wxDefaultSize
 #define SYMBOL_IDENTIFICATIONPANEL_POSITION wxDefaultPosition
 
- /**
-   * @brief IdentificationPanel displays stamp data relative to the stamp identification
-   */
-class IdentificationPanel: public wxPanel
+/**
+  * @brief IdentificationPanel displays stamp data relative to the stamp identification
+  */
+class IdentificationPanel : public wxPanel
 {
     DECLARE_DYNAMIC_CLASS( IdentificationPanel )
         DECLARE_EVENT_TABLE( )
@@ -115,7 +105,6 @@ public:
 
     ~IdentificationPanel( );
 
-    // Initialises member variables
     void Init( );
 
     /**
@@ -123,8 +112,6 @@ public:
      *
      **************************************************/
     void CreateControls( );
-
-    // IdentificationPanel event handler declarations
 
     /**
     * @brief   ID_STATUSCHOICE
@@ -142,13 +129,11 @@ public:
 
     /**
      * @brief   ID_FORMATCHOICE
-
      *
      * @param event   Contains information about command events
      **************************************************/
     void OnFormatchoiceSelected( wxCommandEvent& event );
 
-    //void OnThemeUpdated( wxCommandEvent &event );
     void OnTextctrlTextUpdated( wxCommandEvent& event );
     void OnEditCheckBox( wxCommandEvent& event );
     void SetDataEditable( bool val = true );
@@ -157,7 +142,7 @@ public:
 
 
     /**
-     * @brief
+     * @brief ShowToolTips
      *
      * @return bool
      **************************************************/
@@ -184,7 +169,7 @@ public:
      *
      * @param stamp
      **************************************************/
-    void SetStamp( Catalog::Entry* stamp );
+    void UpdatePanel( );//Catalog::Entry* stamp );
     void UpdateStampValue( Catalog::DataTypes dt, LabeledTextBox* textBox );
 
     /**
@@ -204,8 +189,6 @@ private:
     LabeledTextBox* m_series;    ///< Stamp Series display
     LabeledTextBox* m_themes;    ///< Stamp Theme display
     LabeledTextBox* m_country;   ///< Stamp Country display
-    Catalog::Entry* m_stamp;              ///< Pointer to currently displayed stamp
 };
 
 #endif
-// _STAMPIDENTIFICATIONPANEL_H_

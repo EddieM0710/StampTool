@@ -429,7 +429,7 @@ void StampDetailsDialog::RefreshFromCatalog( )
 
             if ( node )
             {
-                Catalog::CatalogSectionData* catalogSectionData = GetCatalogSectionData( );
+                Catalog::CatalogVolume* catalogVolume = GetCatalogVolume( );
                 Catalog::Entry  stamp( node );
                 SetHeight( stamp.GetHeight( ) );
                 SetWidth( stamp.GetWidth( ) );

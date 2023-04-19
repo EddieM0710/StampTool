@@ -37,13 +37,12 @@
 #include <wx/arrimpl.cpp>
 #include <wx/msgdlg.h>
 #include "catalog/CatalogCode.h"
-#include "catalog/Classification.h"
 #include "utils/CSV.h"
 #include "utils/Settings.h"
 #include "Defs.h"
 #include "catalog/Entry.h"
 #include <wx/tokenzr.h>
-#include "catalog/CatalogSectionData.h"
+#include "catalog/CatalogVolume.h"
 #include "utils/XMLUtilities.h"
 #include "StampToolApp.h"
 
@@ -109,9 +108,9 @@ namespace Utils {
         return status;
     };
 
-    bool CSVData::DoLoad( wxString& filename, wxXmlNode* catalogSectionData )
+    bool CSVData::DoLoad( wxString& filename, wxXmlNode* catalogVolume )
     {
-        m_nodeData = catalogSectionData;
+        m_nodeData = catalogVolume;
 
         return ReadDataFile( filename );
     };

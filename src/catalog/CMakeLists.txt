@@ -12,10 +12,10 @@ set( CMAKE_RUNTIME_OUTPUT_DIRECTORY ${build_Directory} )
 add_library( CatalogFiles SHARED
 CatalogCode.cpp
 CatalogBase.cpp
-CatalogSectionData.cpp
 CatalogData.cpp
+CatalogVolume.cpp
+CatalogList.cpp
 CatalogDefs.cpp
-Classification.cpp 
 Entry.cpp
 Specimen.cpp
 )

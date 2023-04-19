@@ -32,7 +32,7 @@
 
 
 class Stamp;
-class Classification;
+//class Classification;
 namespace Utils { class StampLink; }
 
 
@@ -40,7 +40,7 @@ namespace Utils { class StampLink; }
  * data associated with each node in the tree
  *
  **************************************************/
-class CatalogTreeItemData: public wxTreeItemData
+class CatalogTreeItemData : public wxTreeItemData
 {
 public:
 
@@ -69,7 +69,7 @@ public:
     Catalog::CatalogBaseType GetType( ) { return m_type; };
 
     Utils::StampLink* GetStampLink( ) { return m_stampLink; }
-    void SetStampLink( Utils::StampLink* link ) { m_stampLink = link; }
+    void SetStampLink( Utils::StampLink* link ) { m_stampLink = link; };
 
     wxString* GetImageFullName( ) { return m_imageFullPath; };
     void SetImageFullName( wxString* str ) { m_imageFullPath = str; };
@@ -106,57 +106,17 @@ public:
                 // they are both entries
 
                 Catalog::Entry entry1( m_element );
-                wxString date1 = entry1.GetIssuedDate( );
-                wxString id1 = m_desc;
-                wxString series1 = entry1.GetSeries( );
+                wxString id1 = entry1.GetID( );
+                // wxString date1 = entry1.GetIssuedDate( );
+                // wxString desc1 = m_desc;
+                // wxString series1 = entry1.GetSeries( );
                 wxXmlNode* node2 = itemData2->GetNodeElement( );
                 Catalog::Entry entry2( node2 );
-                wxString date2 = entry2.GetIssuedDate( );
-                wxString id2 = itemData2->GetDesc( );
-                wxString series2 = entry2.GetSeries( );
-
-                ComparisonResultType result = CompareDates( date1, date2 );
-                if ( ( result == CompareInvalid ) || ( result == CompareEqual ) )
-                {
-                    int val = series1.Cmp( series2 );
-
-
-                    //    if ( m_reverseSort )
-                    //    { 
-                    return val;
-                    //    }
-                    //    else
-                    //    { 
-                    //        return val * -1;
-                    //    }
-
-                }
-                else if ( result == CompareLess )
-                {
-                    //    if ( m_reverseSort )
-                    //    { 
-                    return -1;
-                    // }
-                    // else
-                    // { 
-                    //     return 1;
-                    // }
-                }
-                // else if ( result == CompareEqual )
-                // { 
-                //     return 0;
-                //}
-                else
-                {
-                    //    if ( m_reverseSort )
-                    //    { 
-                    //        return -1;
-                    //    }
-                        //   else
-                    //    { 
-                    return 1;
-                    //    }
-                }
+                wxString id2 = entry2.GetID( );
+                // wxString date2 = entry2.GetIssuedDate( );
+                // wxString desc2 = itemData2->GetDesc( );
+                // wxString series2 = entry2.GetSeries( );
+                return CompareID( id1, id2 );
             }
             return -1;
         }
@@ -176,7 +136,7 @@ private:
  * @brief Class to manage a wxTreeCtrl for Stamp
  *
  **************************************************/
-class CatalogTreeCtrl: public wxTreeCtrl
+class CatalogTreeCtrl : public wxTreeCtrl
 {
     //    DECLARE_DYNAMIC_CLASS( CatalogTreeCtrl )
     //    DECLARE_EVENT_TABLE( )
@@ -184,25 +144,25 @@ class CatalogTreeCtrl: public wxTreeCtrl
 public:
     enum
     {
-        CatalogDataTree_Quit = wxID_EXIT,
-        CatalogDataTree_About = wxID_ABOUT,
-        CatalogDataTree_StructureStamps,
-        CatalogDataTree_ResortTree,
-        CatalogDataTree_EditDetails,
-        CatalogDataTree_Delete,
-        CatalogDataTree_Add,
-        CatalogDataTree_Colnect,
-        CatalogDataTree_Before,
-        CatalogDataTree_After,
-        CatalogDataTree_AsChild,
-        CatalogDataTree_Cancel,
-        CatalogDataTree_Inventory,
-        CatalogDataTree_InventoryStatusNone,
-        CatalogDataTree_InventoryStatusMissing,
-        CatalogDataTree_InventoryStatusOrdered,
-        CatalogDataTree_InventoryStatusOwn,
-        CatalogDataTree_InventoryStatusOwnVariant,
-        CatalogDataTree_InventoryStatusExclude
+        CatalogListTree_Quit = wxID_EXIT,
+        CatalogListTree_About = wxID_ABOUT,
+        CatalogListTree_StructureStamps,
+        CatalogListTree_ResortTree,
+        CatalogListTree_EditDetails,
+        CatalogListTree_Delete,
+        CatalogListTree_Add,
+        CatalogListTree_Colnect,
+        CatalogListTree_Before,
+        CatalogListTree_After,
+        CatalogListTree_AsChild,
+        CatalogListTree_Cancel,
+        CatalogListTree_Inventory,
+        CatalogListTree_InventoryStatusNone,
+        CatalogListTree_InventoryStatusMissing,
+        CatalogListTree_InventoryStatusOrdered,
+        CatalogListTree_InventoryStatusOwn,
+        CatalogListTree_InventoryStatusOwnVariant,
+        CatalogListTree_InventoryStatusExclude
     };
 
     /**
@@ -408,12 +368,12 @@ public:
     void ClearCatalogTree( );
 
     /*
-     * @brief Loads the tree with current catalog section data.
+     * @brief Loads the tree with current catalog volume data.
      *
      */
     void LoadTree( void );
 
-    //wxString GetLabel( wxXmlNode* catalogSectionData );
+    //wxString GetLabel( wxXmlNode* catalogVolume );
 
     //wxTreeItemId AddTreeNode( wxTreeItemId parent, wxXmlNode* node );
 
@@ -709,6 +669,7 @@ public:
             if ( data )
             {
                 data->SetChecked( state );
+                SetItemState( id, state );
             }
         }
     };

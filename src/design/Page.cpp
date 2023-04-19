@@ -30,7 +30,7 @@
 #include "design/Row.h"
 #include "design/Column.h"
 #include "design/Stamp.h"
-#include "design/DesignData.h"
+#include "design/AlbumVolume.h"
 #include "gui/DesignTreeCtrl.h"
 #include "gui/GuiUtils.h"
 
@@ -61,14 +61,12 @@ namespace Design {
 
     bool Page::UpdateMinimumSize( )
     {
-        //        m_frame.WriteLayout( "Page::UpdateMinimumSize <" );
-
-
         int nbrRows = 0;
         int nbrCols = 0;
         int nbrStamps = 0;
-        ValidateChildType( nbrRows, nbrCols, nbrStamps );
+
         // count the number of rows/cols planned
+        ValidateChildType( nbrRows, nbrCols, nbrStamps );
 
         double minWidth = 0.0;
         double minHeight = 0.0;
@@ -82,34 +80,30 @@ namespace Design {
             AlbumBaseType type = ( AlbumBaseType ) GetDesignTreeCtrl( )->GetItemType( childID );
             LayoutBase* child = ( LayoutBase* ) GetDesignTreeCtrl( )->GetItemNode( childID );
 
-            //layout everything except the title
-            if ( child->GetNodeType( ) != AT_Title )
+            child->UpdateMinimumSize( );
+
+            if ( nbrCols > 0 )
             {
-                child->UpdateMinimumSize( );
-
-                if ( nbrCols > 0 )
+                //positioning across the page
+                //the min height of the page is the size of the tallest child 
+                //the min width is the sum of the min widths of the children 
+                if ( child->GetMinHeight( ) > minHeight )
                 {
-                    //positioning across the page
-                    //the min height of the page is the size of the tallest child 
-                    //the min width is the sum of the min widths of the children 
-                    if ( child->GetMinHeight( ) > minHeight )
-                    {
-                        minHeight = child->GetMinHeight( );
-                    }
-                    minWidth += child->GetMinWidth( );
+                    minHeight = child->GetMinHeight( );
                 }
-                else
+                minWidth += child->GetMinWidth( );
+            }
+            else
+            {
+                // positioning down the page
+                //the min width of the page is the size of the widest child 
+                //the min height is the sum of the min heights of the children 
+                if ( child->GetMinWidth( ) > minWidth )
                 {
-                    // positioning down the page
-                    //the min width of the page is the size of the widest child 
-                    //the min height is the sum of the min heights of the children 
-                    if ( child->GetMinWidth( ) > minWidth )
-                    {
-                        minWidth = child->GetMinWidth( );
-                    }
-                    minHeight += child->GetMinHeight( );
-
+                    minWidth = child->GetMinWidth( );
                 }
+                minHeight += child->GetMinHeight( );
+
             }
 
             childID = GetDesignTreeCtrl( )->GetNextChild( parentID, cookie );
@@ -129,25 +123,18 @@ namespace Design {
 
         GetErrorArray( )->Empty( );
 
-        //        m_frame.WriteLayout( "Page::UpdateMinimumSize >" );
-
         return ValidateNode( );
     }
 
     void Page::UpdateSizes( )
     {
-        //        m_frame.WriteLayout( "Page::UpdateSizes <" );
 
-                //figure out how many rows or cols there are to calculate the child spacing
+        //figure out how many rows or cols there are to calculate the child spacing
         int nbrRows = 0;
         int nbrCols = 0;
         int nbrStamps = 0;
         ValidateChildType( nbrRows, nbrCols, nbrStamps );
 
-        // if ( GetShowTitle( ) )
-        // {
-            // already calculated
-        // }
 
         // Set the height and width of each child row or column
         wxTreeItemIdValue cookie;
@@ -203,7 +190,6 @@ namespace Design {
             child->UpdateSizes( );
             childID = GetDesignTreeCtrl( )->GetNextChild( parentID, cookie );
         }
-        //m_frame.WriteLayout( "Page::UpdateSizes >" );
     }
 
     void Page::UpdatePositions( )
@@ -258,33 +244,21 @@ namespace Design {
             LayoutBase* child = ( LayoutBase* ) GetDesignTreeCtrl( )->GetItemNode( childID );
             child->UpdatePositions( );
 
-            //layout everything except the title
-            if ( type != AT_Title )
+            if ( nbrRows > 0 )
             {
-
-                if ( nbrRows > 0 )
-                {
-                    child->SetXPos( 0 );
-                    child->SetYPos( yPos );
-                    yPos = yPos + spacing + child->GetHeight( );
-                }
-                else if ( nbrCols > 0 || nbrStamps > 0 )
-                {
-                    child->SetXPos( xPos );
-                    child->SetYPos( 0 );
-                    xPos = xPos + spacing + child->GetWidth( );
-                }
+                child->SetXPos( 0 );
+                child->SetYPos( yPos );
+                yPos = yPos + spacing + child->GetHeight( );
             }
-            else
+            else if ( nbrCols > 0 || nbrStamps > 0 )
             {
-                if ( GetShowTitle( ) )
-                {
-
-                }
+                child->SetXPos( xPos );
+                child->SetYPos( 0 );
+                xPos = xPos + spacing + child->GetWidth( );
             }
+
             childID = GetDesignTreeCtrl( )->GetNextChild( parentID, cookie );
         }
-        //.WriteLayout( "Page::UpdatePositions >" );
     }
 
     NodeStatus Page::ValidateNode( )

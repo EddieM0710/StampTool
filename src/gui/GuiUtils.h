@@ -91,5 +91,6 @@ void DrawImage( wxDC& dc, wxImage* image,
 wxImage* GetImageFromFilename( wxString filename );
 
 ComparisonResultType CompareDates( wxString date1, wxString date2 );
+int CompareID( wxString id1, wxString id2 );
 
 #endif

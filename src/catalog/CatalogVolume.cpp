@@ -1,5 +1,5 @@
 /**
- * @file CatalogSectionData.cpp
+ * @file CatalogVolume.cpp
  * @author Eddie Monroe ( )
  * @brief
  * @version 0.1
@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation, 
+ * terms of the GNU General Public License as published by the Free Software Foundation,
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -22,7 +22,7 @@
  *
  **************************************************/
 
- 
+
 #include "wx/wxprec.h"
 
 #ifdef __BORLANDC__
@@ -40,12 +40,11 @@
 #include "wx/xml/xml.h"
 #include <wx/msgdlg.h>
 
-#include "catalog/CatalogSectionData.h"
+#include "catalog/CatalogVolume.h"
 
 #include "Defs.h"
 
 #include "catalog/CatalogDefs.h"
-#include "catalog/Classification.h"
 #include "catalog/Entry.h"
 
 #include "utils/CSV.h"
@@ -53,35 +52,35 @@
 #include "utils/Project.h"
 #include "utils/XMLUtilities.h"
 #include "StampToolApp.h"
-#include "gui/SectionDetailsDialog.h"
+#include "gui/CatalogDetailsDialog.h"
 
 wxDECLARE_APP( StampToolApp );
 
-namespace Catalog { 
+namespace Catalog {
 
-    CatalogSectionData* NewCatalogSectionDataInstance( )
-    { 
-        return new CatalogSectionData( );
+    CatalogVolume* NewCatalogVolumeInstance( )
+    {
+        return new CatalogVolume( );
     }
 
-    CatalogSectionData::CatalogSectionData( /* args */ )
-    { 
+    CatalogVolume::CatalogVolume( /* args */ )
+    {
         m_stampDoc = 0;
     }
 
     //*****
 
-    CatalogSectionData::~CatalogSectionData( )
-    { 
+    CatalogVolume::~CatalogVolume( )
+    {
         delete m_stampDoc;
     }
 
     //*****
 
-    bool CatalogSectionData::IsOK( )
-    { 
+    bool CatalogVolume::IsOK( )
+    {
         if ( m_stampDoc )
-        { 
+        {
             return true;
         }
         return false;
@@ -89,18 +88,18 @@ namespace Catalog {
 
     //*****   
 
-    void CatalogSectionData::SetDirty( bool state )
-    { 
+    void CatalogVolume::SetDirty( bool state )
+    {
         m_dirty = state;
         if ( m_dirty )
-        { 
+        {
             GetToolData( )->SetDirty( true );
         }
     }
     //*****
 
-    wxXmlDocument* CatalogSectionData::NewDocument( )
-    { 
+    wxXmlDocument* CatalogVolume::NewDocument( )
+    {
         delete m_stampDoc;
         m_stampDoc = new wxXmlDocument( );
         return m_stampDoc;
@@ -108,8 +107,8 @@ namespace Catalog {
 
     //*****
 
-    wxXmlDocument* CatalogSectionData::ReplaceDocument( wxXmlDocument* doc )
-    { 
+    wxXmlDocument* CatalogVolume::ReplaceDocument( wxXmlDocument* doc )
+    {
         delete m_stampDoc;
         m_stampDoc = doc;
         return m_stampDoc;
@@ -117,11 +116,11 @@ namespace Catalog {
 
     //*****
 
-    void CatalogSectionData::Save( )
-    { 
-        wxString filename = m_sectionFilename;
+    void CatalogVolume::Save( )
+    {
+        wxString filename = m_volumeFilename;
         if ( wxFileExists( filename ) )
-        { 
+        {
             wxFileName bakFile( filename );
             bakFile.SetExt( "bak" );
             wxRenameFile( filename, bakFile.GetFullName( ), true );
@@ -130,22 +129,22 @@ namespace Catalog {
         SetDirty( false );
     }
 
-    //*****catalogData
+    //*****catalogList
 
-    void CatalogSectionData::NewCatalog( )
-    { 
+    void CatalogVolume::NewCatalog( )
+    {
         m_stampDoc = NewDocument( );
         wxXmlNode* root = new wxXmlNode( wxXML_ELEMENT_NODE, "Catalog" );
         m_stampDoc->SetRoot( root );
     }
-    wxString CatalogSectionData::GetCatalogSectionImagePath( )
-    { 
+    wxString CatalogVolume::GetCatalogVolumeImagePath( )
+    {
         wxString filename = "";
         if ( m_stampDoc && m_stampDoc->IsOk( ) )
-        { 
+        {
             wxXmlNode* root = m_stampDoc->GetRoot( );
             if ( root )
-            { 
+            {
                 filename = Utils::GetAttrStr( root, "ImagePath" );
 
                 return filename;
@@ -154,69 +153,69 @@ namespace Catalog {
         return filename;
     };
 
-    void CatalogSectionData::SetImagePath( wxString str )
-    { 
+    void CatalogVolume::SetImagePath( wxString str )
+    {
         if ( m_stampDoc && m_stampDoc->IsOk( ) )
-        { 
+        {
             wxXmlNode* root = m_stampDoc->GetRoot( );
             if ( root )
-            { 
+            {
                 Utils::SetAttrStr( root, "ImagePath", str );
             }
         }
     }
     //*****
 
-    void CatalogSectionData::LoadXML( )
-    { 
+    void CatalogVolume::LoadXML( )
+    {
 
         bool ok = false;
-        if ( m_sectionFilename.length( ) > 0 )
-        { 
+        if ( m_volumeFilename.length( ) > 0 )
+        {
             if ( !m_stampDoc )
-            { 
+            {
                 m_stampDoc = NewDocument( );
             }
 
             wxString cwd = wxGetCwd( );
             //ok = m_stampDoc->Load( filename );
-            wxFileInputStream stream( m_sectionFilename );
+            wxFileInputStream stream( m_volumeFilename );
             if ( !stream.IsOk( ) )
-            { 
-                wxString txt = wxString::Format( "%s Stream Create Failed.\n\n", m_sectionFilename );
-                wxMessageDialog* dlg = new wxMessageDialog( 
-                    wxGetApp( ).GetFrame( ), txt, 
-                    wxT( "Warning! Stream Create Failed.\n" ), 
+            {
+                wxString txt = wxString::Format( "%s Stream Create Failed.\n\n", m_volumeFilename );
+                wxMessageDialog* dlg = new wxMessageDialog(
+                    wxGetApp( ).GetFrame( ), txt,
+                    wxT( "Warning! Stream Create Failed.\n" ),
                     wxOK | wxCANCEL | wxCENTER );
                 int rsp = dlg->ShowModal( );
                 return;
             }
             if ( !m_stampDoc->Load( stream ) )
-            { 
-                wxString txt = wxString::Format( "\n%s Stream  Failed. Error: %s.<<std::endl<<std::<<endl", m_sectionFilename, stream.GetLastError( ) );
-                wxMessageDialog* dlg = new wxMessageDialog( 
-                    wxGetApp( ).GetFrame( ), txt, 
-                    wxT( "Warning! Stream Load Failed.\n" ), 
+            {
+                wxString txt = wxString::Format( "\n%s Stream  Failed. Error: %s.<<std::endl<<std::<<endl", m_volumeFilename, stream.GetLastError( ) );
+                wxMessageDialog* dlg = new wxMessageDialog(
+                    wxGetApp( ).GetFrame( ), txt,
+                    wxT( "Warning! Stream Load Failed.\n" ),
                     wxOK | wxCANCEL | wxCENTER );
                 int rsp = dlg->ShowModal( );
                 return;
             }
         }
         else
-        { 
+        {
             // this creates an empty document
             if ( !m_stampDoc )
-            { 
+            {
                 m_stampDoc = NewDocument( );
             }
-            wxXmlNode* catalogSectionData = m_stampDoc->GetRoot( );
-            if ( catalogSectionData )
-            { 
-                wxString name = catalogSectionData->GetName( );
+            wxXmlNode* catalogVolume = m_stampDoc->GetRoot( );
+            if ( catalogVolume )
+            {
+                wxString name = catalogVolume->GetName( );
 
                 if ( name.Length( ) == 0 )
-                { 
-                    catalogSectionData->SetName( m_sectionFilename );
+                {
+                    catalogVolume->SetName( m_volumeFilename );
                 }
             }
         }
@@ -226,17 +225,17 @@ namespace Catalog {
 
     //*****
 
-    bool CatalogSectionData::LoadCSV( wxString filename )
-    { 
+    bool CatalogVolume::LoadCSV( wxString filename )
+    {
         if ( !m_stampDoc )
-        { 
+        {
             NewDocument( );
         }
 
         Utils::CSVData* csv = new Utils::CSVData( );
         wxXmlNode* docRoot = m_stampDoc->GetRoot( );
         if ( !docRoot )
-        { 
+        {
             docRoot = Utils::NewNode( m_stampDoc, CatalogBaseNames[ NT_Catalog ] );
         }
         wxFileName name( filename );
@@ -254,44 +253,44 @@ namespace Catalog {
 
     //*****
 
-    wxXmlNode* CatalogSectionData::FindNodeWithPropertyAndValue( wxString property, wxString value )
-    { 
+    wxXmlNode* CatalogVolume::FindNodeWithPropertyAndValue( wxString property, wxString value )
+    {
         return FindNodeWithPropertyAndValue( m_stampDoc->GetRoot( ), property, value );
     }
 
     //*****
 
-    wxXmlNode* CatalogSectionData::FindNodeWithPropertyAndValue( wxXmlNode* element, wxString property, wxString value )
-    { 
+    wxXmlNode* CatalogVolume::FindNodeWithPropertyAndValue( wxXmlNode* element, wxString property, wxString value )
+    {
         wxString   	attr;
         wxXmlNode* child = element->GetChildren( );
         while ( child )
-        { 
+        {
             if ( child->GetAttribute( property, &attr ) )
-            { 
+            {
                 if ( !value.Cmp( attr ) )
-                { 
+                {
                     return child;
                 }
             }
             wxXmlNode* foundChild = FindNodeWithPropertyAndValue( child, property, value );
             if ( foundChild )
-            { 
+            {
                 return foundChild;
             }
-            child = ( wxXmlNode* )child->GetNext( );
+            child = ( wxXmlNode* ) child->GetNext( );
         }
-        return ( wxXmlNode* )0;
+        return ( wxXmlNode* ) 0;
     }
 
     // resort the tree with the new sort order data.
     // Probably doint this because the sort order was changed.
-    void CatalogSectionData::ReSortTree( )
-    { 
+    void CatalogVolume::ReSortTree( )
+    {
         wxXmlDocument* newDoc = new wxXmlDocument( );
         wxXmlNode* newRoot = newDoc->GetRoot( );
         if ( !newRoot )
-        { 
+        {
             newRoot = Utils::NewNode( newDoc, Catalog::CatalogBaseNames[ Catalog::NT_Catalog ] );
         }
 
@@ -299,24 +298,24 @@ namespace Catalog {
         wxXmlNode* root = doc->GetRoot( );
 
         wxXmlAttribute* attr = Utils::GetAttribute( root, Catalog::DT_DataNames[ Catalog::DT_Name ] );
-        if ( attr ) { 
+        if ( attr ) {
             wxString name = attr->GetName( );
             wxString value = attr->GetValue( );
             Utils::SetAttrStr( newRoot, name, value );
         }
         else
-        { 
+        {
             Utils::SetAttrStr( newRoot, Catalog::DT_DataNames[ Catalog::DT_Name ], "" );
         }
 
         attr = Utils::GetAttribute( root, "ImagePath" );
-        if ( attr ) { 
+        if ( attr ) {
             wxString name = attr->GetName( );
             wxString value = attr->GetValue( );
             Utils::SetAttrStr( newRoot, name, value );
         }
         else
-        { 
+        {
             Utils::SetAttrStr( newRoot, "ImagePath", "" );
         }
 
@@ -329,18 +328,18 @@ namespace Catalog {
 
     //*****
     // this makes a list of the children entry elements that can have childrem
-    Utils::wxXmlNodeArray* CatalogSectionData::MakeParentList( Catalog::FormatType parentType )
-    { 
+    Utils::wxXmlNodeArray* CatalogVolume::MakeParentList( Catalog::FormatType parentType )
+    {
         //Catalog::Entry parentEntry;
         wxXmlNode* node = m_stampDoc->GetRoot( );
 
         Utils::wxXmlNodeArray* parentList = new  Utils::wxXmlNodeArray( );
         wxXmlNode* child = node->GetChildren( );
         while ( child )
-        { 
+        {
             Catalog::Entry parentEntry( child );
             if ( parentEntry.GetFormat( ) == Catalog::FT_FormatStrings[ parentType ] )
-            { 
+            {
                 parentList->push_back( child );
             }
             child = child->GetNext( );
@@ -352,32 +351,32 @@ namespace Catalog {
     //*****
     // this is an attempt to group the entrys;
     // i.e., an item of type entry can be a child of an item SeTenent type.
-    void CatalogSectionData::ReGroupMultiples( )
-    { 
-        StructureCatalogSectionData( Catalog::FT_Se_tenant, Catalog::FT_Stamp );
-        StructureCatalogSectionData( Catalog::FT_Gutter_Pair, Catalog::FT_Stamp );
-        StructureCatalogSectionData( Catalog::FT_Booklet_Pane, Catalog::FT_Stamp, Catalog::FT_Se_tenant );
-        StructureCatalogSectionData( Catalog::FT_Mini_Sheet, Catalog::FT_Stamp, Catalog::FT_Se_tenant );
-        StructureCatalogSectionData( Catalog::FT_Souvenir_Sheet, Catalog::FT_Stamp, Catalog::FT_Se_tenant );
-        StructureCatalogSectionData( Catalog::FT_Mini_Sheet, Catalog::FT_Stamp, Catalog::FT_Se_tenant );
-        StructureCatalogSectionData( Catalog::FT_Booklet, Catalog::FT_Stamp, Catalog::FT_Booklet_Pane );
+    void CatalogVolume::ReGroupMultiples( )
+    {
+        StructureCatalogVolume( Catalog::FT_Se_tenant, Catalog::FT_Stamp );
+        StructureCatalogVolume( Catalog::FT_Gutter_Pair, Catalog::FT_Stamp );
+        StructureCatalogVolume( Catalog::FT_Booklet_Pane, Catalog::FT_Stamp, Catalog::FT_Se_tenant );
+        StructureCatalogVolume( Catalog::FT_Mini_Sheet, Catalog::FT_Stamp, Catalog::FT_Se_tenant );
+        StructureCatalogVolume( Catalog::FT_Souvenir_Sheet, Catalog::FT_Stamp, Catalog::FT_Se_tenant );
+        StructureCatalogVolume( Catalog::FT_Mini_Sheet, Catalog::FT_Stamp, Catalog::FT_Se_tenant );
+        StructureCatalogVolume( Catalog::FT_Booklet, Catalog::FT_Stamp, Catalog::FT_Booklet_Pane );
 
     }
 
     //*****
     // this looks through the xml tree and makes related entries of childType a child of the parent type
-    void CatalogSectionData::StructureCatalogSectionData( Catalog::FormatType parentType, 
-        Catalog::FormatType childType, 
+    void CatalogVolume::StructureCatalogVolume( Catalog::FormatType parentType,
+        Catalog::FormatType childType,
         Catalog::FormatType secondChildType )
-    { 
+    {
         // Make a list of all nodes that are of parentType
         wxXmlNode* node = m_stampDoc->GetRoot( );
         Utils::wxXmlNodeArray* parentList = MakeParentList( parentType );
 
         // now find all the entrys that go into each parent by comparing the issue date, series and face value
         for ( int i = 0; i < parentList->size( ); i++ )
-        { 
-            wxXmlNode* parentNode = ( wxXmlNode* )parentList->at( i );
+        {
+            wxXmlNode* parentNode = ( wxXmlNode* ) parentList->at( i );
             Catalog::Entry* parentEntry = new Catalog::Entry( parentNode );
             wxString parentIssue = parentEntry->GetIssuedDate( );
             wxString parentSeries = parentEntry->GetSeries( );
@@ -386,7 +385,7 @@ namespace Catalog {
             long nbrEntrys;
             parentFace.ToLong( &nbrEntrys );
             if ( nbrEntrys <= 0 )
-            { 
+            {
                 // if we can't figure out the face then assume a setenant is no bigger than 50 entrys
                 nbrEntrys = 50;
             }
@@ -396,17 +395,17 @@ namespace Catalog {
             wxXmlNode* childNode = node->GetChildren( );
 
             while ( childNode && ( searchRange < 1005 ) && ( count < nbrEntrys ) )
-            { 
+            {
                 Catalog::Entry* childEntry = new Catalog::Entry( childNode );
 
                 // figure out what the next sibling is because we may move childNode
                 wxXmlNode* nextSibling = childNode->GetNext( );
 
                 if ( parentNode != childNode )
-                { 
+                {
                     // only search a reasonable distance after the first one is found
                     if ( count > 1 )
-                    { 
+                    {
                         searchRange++;
                     }
                     // only look at children of childType
@@ -414,18 +413,18 @@ namespace Catalog {
                     if ( ( format == Catalog::FT_FormatStrings[ childType ] )
                         || ( secondChildType
                             && ( format == Catalog::FT_FormatStrings[ secondChildType ] ) ) )
-                    { 
+                    {
                         wxString issue = childEntry->GetIssuedDate( );
                         wxString series = childEntry->GetSeries( );
                         // if the issue date and the series match the parent assume
                         // that the childNode goes in the parent
                         if ( !issue.Cmp( parentIssue )
                             && !series.Cmp( parentSeries ) )
-                        { 
+                        {
                             count++;
                             wxXmlNode* currParent = childNode->GetParent( );
                             if ( currParent )
-                            { 
+                            {
                                 currParent->RemoveChild( childNode );
                             }
                             //and add it to new place
@@ -437,22 +436,22 @@ namespace Catalog {
             }
         }
     }
-    void CatalogSectionData::EditDetailsDialog( wxWindow* parent )
-    { 
-        SectionDetailsDialog sectionDetailsDialog( parent, 12346, 
+    void CatalogVolume::EditDetailsDialog( wxWindow* parent )
+    {
+        CatalogDetailsDialog catalogDetailsDialog( parent, 12346,
             _( "View Edit Catalog Details" ) );
 
-        sectionDetailsDialog.SetImagePath( GetCatalogSectionImagePath( ) );
-        sectionDetailsDialog.SetName( GetSectionName( ) );
+        catalogDetailsDialog.SetImagePath( GetCatalogVolumeImagePath( ) );
+        catalogDetailsDialog.SetName( GetVolumeName( ) );
 
 
-        if ( sectionDetailsDialog.ShowModal( ) == wxID_CANCEL )
+        if ( catalogDetailsDialog.ShowModal( ) == wxID_CANCEL )
             return; // the user changed idea..
 
-        if ( sectionDetailsDialog.IsNameModified( ) )
-        { 
-            SetImagePath( sectionDetailsDialog.GetImagePath( ) );
-            SetSectionName( sectionDetailsDialog.GetName( ) );
+        if ( catalogDetailsDialog.IsNameModified( ) )
+        {
+            SetImagePath( catalogDetailsDialog.GetImagePath( ) );
+            SetVolumeName( catalogDetailsDialog.GetName( ) );
         }
     }
 

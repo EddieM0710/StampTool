@@ -9,15 +9,16 @@ ${StampTool_CatalogFiles_Source_Directory} )
 
 set( CMAKE_RUNTIME_OUTPUT_DIRECTORY ${build_Directory} )
 add_library( DesignFiles SHARED
-    DesignData.cpp 
+    AlbumVolume.cpp 
+    AlbumList.cpp 
     DesignDefs.cpp 
+    AlbumData.cpp 
     XMLBase.cpp
     AlbumBase.cpp
     LayoutBase.cpp
     Album.cpp 
     Page.cpp 
     DisplayString.cpp 
-    TitlePage.cpp
     TextBox.cpp
     Row.cpp 
     Column.cpp 

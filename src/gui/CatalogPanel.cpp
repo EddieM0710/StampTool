@@ -56,7 +56,8 @@ IMPLEMENT_DYNAMIC_CLASS( CatalogPanel, wxPanel )
     BEGIN_EVENT_TABLE( CatalogPanel, wxPanel )
     EVT_TEXT( ID_TEXTCTRL, CatalogPanel::OnTextctrlTextUpdated )
     EVT_TOGGLEBUTTON( ID_TOGGLEBUTTON, CatalogPanel::OnTogglebuttonClick )
-    EVT_CHOICE( ID_SECTIONCHOICE, CatalogPanel::OnSectionChoiceSelected )
+    EVT_CHOICE( ID_VOLUMECHOICE, CatalogPanel::OnVolumeChoiceSelected )
+    EVT_BUTTON( ID_MANAGEBUTTON, CatalogPanel::OnManageClick )
     END_EVENT_TABLE( )
 
 
@@ -108,12 +109,17 @@ void CatalogPanel::CreateControls( )
     wxBoxSizer* itemBoxSizer1 = new wxBoxSizer( wxHORIZONTAL );
     m_catPanelSizer->Add( itemBoxSizer1, 0, wxGROW | wxALL, 0 );
 
-    wxStaticText* itemStaticText2 = new wxStaticText( itemPanel1, wxID_STATIC, _( "Section" ), wxDefaultPosition, wxDefaultSize, 0 );
+    m_manageButton = new wxButton( itemPanel1, ID_MANAGEBUTTON, _( "Manage" ), wxDefaultPosition, wxDefaultSize, 0 );
+    itemBoxSizer1->Add( m_manageButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+
+    itemBoxSizer1->Add( 5, 5, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+
+    wxStaticText* itemStaticText2 = new wxStaticText( itemPanel1, wxID_STATIC, _( "Volume" ), wxDefaultPosition, wxDefaultSize, 0 );
     itemBoxSizer1->Add( itemStaticText2, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
 
-    m_sectionListCtrl = new wxChoice( itemPanel1, ID_SECTIONCHOICE, wxDefaultPosition, wxSize( -1, -1 ), GetToolData( )->GetSectionNameStrings( ), wxLB_HSCROLL );
-    itemBoxSizer1->Add( m_sectionListCtrl, 1, wxGROW | wxALL, 5 );
+    m_volumeListCtrl = new wxChoice( itemPanel1, ID_VOLUMECHOICE, wxDefaultPosition, wxSize( -1, -1 ), GetCatalogData( )->GetVolumeNameStrings( ), wxLB_HSCROLL );
+    itemBoxSizer1->Add( m_volumeListCtrl, 1, wxGROW | wxALL, 5 );
 
 
     m_toggleButton = new wxToggleButton( itemPanel1, ID_TOGGLEBUTTON, _( "Search" ), wxDefaultPosition, wxDefaultSize, 0 );
@@ -195,11 +201,11 @@ void CatalogPanel::OnTogglebuttonClick( wxCommandEvent& event )
 
 }
 
-void CatalogPanel::OnSectionChoiceSelected( wxCommandEvent& event )
+void CatalogPanel::OnVolumeChoiceSelected( wxCommandEvent& event )
 {
-    int sel = m_sectionListCtrl->GetSelection( );
+    int sel = m_volumeListCtrl->GetSelection( );
 
-    GetToolData( )->GetCatalogData( )->SetCatalogSectionDataNdx( sel );
+    GetCatalogData( )->GetCatalogList( )->SetCatalogVolumeNdx( sel );
     // wxString strSel = m_status->GetStringSelection( );
     // if ( m_stamp )
     // { 
@@ -209,4 +215,30 @@ void CatalogPanel::OnSectionChoiceSelected( wxCommandEvent& event )
 
     event.Skip( );
 
+}
+void CatalogPanel::OnManageClick( wxCommandEvent& event )
+{
+
+    wxMenu m_designMenu;
+    m_designMenu.Append( ID_NEWCATALOG, _( "New Catalog File" ), wxEmptyString, wxITEM_NORMAL );
+    m_designMenu.Append( ID_OPENCATALOG, _( "Open Catalog File" ), wxEmptyString, wxITEM_NORMAL );
+    m_designMenu.Append( ID_REMOVECATALOG, _( "Remove Catalog File" ), wxEmptyString, wxITEM_NORMAL );
+
+
+    switch ( GetPopupMenuSelectionFromUser( m_designMenu ) )
+    {
+    case ID_NEWCATALOG:
+    {
+        break;
+    }
+    case ID_OPENCATALOG:
+    {
+        break;
+    }
+    case ID_REMOVECATALOG:
+    {
+        break;
+    }
+
+    }
 }

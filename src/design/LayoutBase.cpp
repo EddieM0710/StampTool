@@ -28,7 +28,6 @@
 
 
 #include "LayoutBase.h"
-#include "design/TitlePage.h"
 #include "design/Page.h"
 #include "design/DisplayString.h"
 #include "design/Row.h"
@@ -39,7 +38,7 @@
 
 namespace Design {
 
-    LayoutBase::LayoutBase( ): AlbumBase( )
+    LayoutBase::LayoutBase( ) : AlbumBase( )
     {
 
         SetTopContentPadding( 0 );
@@ -53,7 +52,7 @@ namespace Design {
         m_textFrame = 0;
     };
     /**************************************************/
-    LayoutBase::LayoutBase( wxXmlNode* node ): AlbumBase( node )
+    LayoutBase::LayoutBase( wxXmlNode* node ) : AlbumBase( node )
     {
 
         SetTopContentPadding( 0 );
@@ -221,6 +220,10 @@ namespace Design {
         indent += "    ";
         Design::AlbumBaseType type = GetNodeType( );
         wxString name = Design::AlbumBaseNames[ type ];
+        std::cout << indent << name
+            << " pnt(" << x << "," << y << ") "
+            << " pos(" << m_clientDimensions.GetXPos( ) << "," << m_clientDimensions.GetYPos( ) << ") "
+            << " size(" << m_clientDimensions.GetWidth( ) << "," << m_clientDimensions.GetHeight( ) << ")\n";
         if ( IsInClient( x, y, indent ) )
         {
             wxTreeItemId thisID = GetTreeItemId( );
@@ -237,14 +240,16 @@ namespace Design {
                     if ( foundChild )
                     {
                         Design::AlbumBaseType type = foundChild->GetNodeType( );
+                        std::cout << indent << "foundChild \n";
                         return foundChild;
                     }
                 }
                 childID = GetDesignTreeCtrl( )->GetNextChild( thisID, cookie );
             }
-
+            std::cout << indent << "Success \n";
             return this;
         }
+        std::cout << indent << "fail \n";
         return ( LayoutBase* ) 0;
     }
 
@@ -293,12 +298,15 @@ namespace Design {
             }
             else
             {
+                std::cout << indent << name << " Failed y" << y << " min:" << miny << " max:" << maxy << "\n";
+                std::cout << indent << name << " Failed x" << x << " min:" << minx << " max:" << maxx << "\n";
 
             }
         }
         else
         {
-            //                std::cout << indent<< name << " Failed x" << x << " min:" << minx  << " max:"<< maxx << "\n";
+            std::cout << indent << name << " Failed x" << x << " min:" << minx << " max:" << maxx << "\n";
+            std::cout << indent << name << " Failed y" << y << " min:" << miny << " max:" << maxy << "\n";
 
         }
         return false;

@@ -58,7 +58,6 @@ enum
 };
 
 class Stamp;
-class Classification;
 namespace Utils { class StampLink; };
 
 
@@ -75,7 +74,7 @@ namespace Utils { class StampLink; };
   * data associated with each node in the tree
   *
   **************************************************/
-class DesignTreeItemData: public wxTreeItemData
+class DesignTreeItemData : public wxTreeItemData
 {
 public:
     /**
@@ -167,7 +166,7 @@ private:
  * @brief Tree for displaying Album design
  *
  **************************************************/
-class DesignTreeCtrl: public wxTreeCtrl
+class DesignTreeCtrl : public wxTreeCtrl
 {
     //    DECLARE_DYNAMIC_CLASS( DesignTreeCtrl )
     //    DECLARE_EVENT_TABLE( )
@@ -198,7 +197,7 @@ public:
      **************************************************/
     virtual ~DesignTreeCtrl( void ) { m_OK = 0; }
 
-
+    void OnDeleteItem( wxTreeItemId id );
     void DeleteItem( wxTreeItemId id );
 
     Design::AlbumBase* GetStampNode( wxTreeItemId itemID );
@@ -336,12 +335,14 @@ public:
      **************************************************/
     void LoadTree( void );
 
+    void ClearDesignTree( );
+
     /**
      *
-     * @param   catalogSectionData :
+     * @param   catalogVolume :
      * @return { wxString|            :
      **************************************************/
-    wxString GetLabel( Design::AlbumBase* catalogSectionData );
+    wxString GetLabel( Design::AlbumBase* catalogVolume );
 
     /**
      *
@@ -354,11 +355,11 @@ public:
 
     /**
      *
-     * @param   catalogSectionData :
+     * @param   catalogVolume :
      * @param   parentType :
      * @return { wxArrayPtrVoid*|     :
      **************************************************/
-    wxArrayPtrVoid* MakeParentList( Design::LayoutBase* catalogSectionData,
+    wxArrayPtrVoid* MakeParentList( Design::LayoutBase* catalogVolume,
         Catalog::FormatType parentType );
 
     /**

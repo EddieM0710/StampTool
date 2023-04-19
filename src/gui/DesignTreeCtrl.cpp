@@ -50,7 +50,7 @@
 #include "utils/Project.h"
 
 #include "StampToolApp.h"
-#include "design/DesignData.h"
+#include "design/AlbumVolume.h"
 #include "design/DesignDefs.h"
 #include "design/LayoutBase.h"
 #include "design/Album.h"
@@ -241,7 +241,7 @@ wxTreeItemId DesignTreeCtrl::AddChild( wxTreeItemId parent, wxXmlNode* child )
             {
                 if ( nodeType == Design::AT_Album )
                 {
-                    GetDesignData( )->SetAlbum( ( Design::Album* ) node );
+                    GetAlbumVolume( )->SetAlbum( ( Design::Album* ) node );
                 }
                 label = name;
                 wxString title = node->GetAttrStr( Design::AT_Name );
@@ -329,7 +329,7 @@ wxTreeItemId DesignTreeCtrl::AddChild( wxTreeItemId parent, wxXmlNode* child )
 //             { 
 //                 if ( nodeType == Design::AT_Album )
 //                 { 
-//                     GetDesignData( )->SetAlbum( ( Design::Album* )node );
+//                     GetAlbumVolume( )->SetAlbum( ( Design::Album* )node );
 //                 }
 //                 label = name;
 //                 wxString title = node->GetAttrStr( Design::AT_Name );
@@ -389,7 +389,7 @@ wxTreeItemId DesignTreeCtrl::AddChild( wxTreeItemId parent, wxXmlNode* child )
 // }
 void DesignTreeCtrl::AddPageTreeItem( wxTreeItemId parentID )
 {
-    Design::DesignData* designData = GetDesignData( );
+    Design::AlbumVolume* albumVolume = GetAlbumVolume( );
 
     Design::Page* newPage = new Design::Page( ( wxXmlNode* ) 0 );;
     if ( newPage )
@@ -407,7 +407,7 @@ void DesignTreeCtrl::AddPageTreeItem( wxTreeItemId parentID )
 
 void DesignTreeCtrl::AddColTreeItem( wxTreeItemId parentID )
 {
-    Design::DesignData* designData = GetDesignData( );
+    Design::AlbumVolume* albumVolume = GetAlbumVolume( );
 
     Design::Column* newCol = new Design::Column( ( wxXmlNode* ) 0 );;
     if ( newCol )
@@ -426,7 +426,7 @@ void DesignTreeCtrl::AddColTreeItem( wxTreeItemId parentID )
 
 void DesignTreeCtrl::AddRowTreeItem( wxTreeItemId parentID )
 {
-    Design::DesignData* designData = GetDesignData( );
+    Design::AlbumVolume* albumVolume = GetAlbumVolume( );
 
     Design::Row* newRow = new Design::Row( ( wxXmlNode* ) 0 );
     if ( newRow )
@@ -581,7 +581,7 @@ Utils::StampLink* DesignTreeCtrl::AppendStamp( wxTreeItemId catTreeID )
         {
             // make the image path relative to the album path
             wxTreeItemId newStampID = newStamp->GetTreeItemId( );
-            wxString catStr = GetToolData( )->GetCatalogSectionData( )->GetSectionFilename( );
+            wxString catStr = GetCatalogData( )->GetCatalogVolume( )->GetVolumeFilename( );
             wxFileName catFileName( catStr );
             wxString imageName = GetAlbumPageTreeCtrl( )->GetImageFullName( catTreeID );
             wxFileName imageFileName( imageName );
@@ -644,6 +644,18 @@ void DesignTreeCtrl::CreateStateImageList( )
 
 //*****
 
+void DesignTreeCtrl::OnDeleteItem( wxTreeItemId currID )
+{
+    wxMessageDialog* dialog = new wxMessageDialog( this,
+        "Are you sure you want to delete this item? This and all child Items will be deleted. There is no UnDo.", " Delete Item.",
+        wxYES_NO | wxCENTRE );
+    int ret = dialog->ShowModal( );
+    if ( ret == wxID_YES )
+    {
+        DeleteItem( currID );
+    }
+}
+
 void DesignTreeCtrl::DeleteItem( wxTreeItemId currID )
 {
     wxTreeItemId parentID = this->GetItemParent( currID );
@@ -674,6 +686,8 @@ void DesignTreeCtrl::DeleteItem( wxTreeItemId currID )
     delete child;
     UpdateItemPageLayout( parentID );
 }
+
+
 
 
 //*****
@@ -778,24 +792,39 @@ bool DesignTreeCtrl::IsElement( wxTreeItemId item, Design::AlbumBase* ele )
     }
     return true;
 }
+
+void DesignTreeCtrl::ClearDesignTree( )
+{
+    // first make sure all the links to the items are gone
+    Utils::StampList* stampList = GetToolData( )->GetStampAlbumCatalogLink( );
+    stampList->Clear( );
+
+    // then clobber all the tree items
+    DeleteAllItems( );
+}
+
 //*****
 
 void DesignTreeCtrl::LoadTree( )
 {
-
-    wxXmlDocument* doc = GetDesignData( )->GetDoc( );
-    if ( doc && doc->IsOk( ) )
+    ClearDesignTree( );
+    Design::AlbumVolume* volume = GetAlbumVolume( );
+    if ( volume )
     {
-        wxXmlNode* docRoot = doc->GetRoot( );
-        if ( docRoot )
+        wxXmlDocument* doc = volume->GetDoc( );
+        if ( doc && doc->IsOk( ) )
         {
-            AddChild( 0, docRoot );
-            GetDesignData( )->UpdateAlbum( );
-            wxTreeItemId id = FindFirstStampChild( GetRootItem( ) );
-            if ( id.IsOk( ) ) SelectItem( id );
-            GetAlbumImagePanel( )->Refresh( );
+            wxXmlNode* docRoot = doc->GetRoot( );
+            if ( docRoot )
+            {
+                AddChild( 0, docRoot );
+                GetAlbumVolume( )->UpdateAlbum( );
+                wxTreeItemId id = FindFirstStampChild( GetRootItem( ) );
+                if ( id.IsOk( ) ) SelectItem( id );
+                GetAlbumImagePanel( )->Refresh( );
 
-            ExpandAll( );
+                ExpandAll( );
+            }
         }
     }
 }
@@ -1148,45 +1177,44 @@ void DesignTreeCtrl::ShowMenu( wxTreeItemId id, const wxPoint& pt )
     {
         wxString title = "Design Tree Menu";
 
-
-        Design::DesignData* designData = GetDesignData( );
+        Design::AlbumVolume* albumVolume = GetAlbumVolume( );
         Design::AlbumBase* node = GetItemNode( id );
         Design::AlbumBaseType type = node->GetNodeType( );
         wxMenu menu( title );
         wxMenu* addSubMenu = new wxMenu( );
-        menu.AppendSubMenu( addSubMenu, "    Add Item" );
         menu.Append( DesignTree_DeleteItem, "    Delete Item" );
         menu.Append( DesignTree_EditDetails, "    Edit Details" );
-        wxMenuItem* addPageItem = addSubMenu->Append( DesignTree_AddPage, "Add Page" );
-        wxMenuItem* addRowItem = addSubMenu->Append( DesignTree_AddRow, "Add Row" );
-        wxMenuItem* addColItem = addSubMenu->Append( DesignTree_AddCol, "Add Column" );
-        wxMenuItem* addStampItem = addSubMenu->Append( DesignTree_AddStamp, "Add Stamp" );
-        wxMenuItem* addTextItem = addSubMenu->Append( DesignTree_AddText, "Add TextBox" );
+        wxMenuItem* addPageItem;// = addSubMenu->Append( DesignTree_AddPage, "Add Page" );
+        wxMenuItem* addRowItem;// = addSubMenu->Append( DesignTree_AddRow, "Add Row" );
+        wxMenuItem* addColItem;// = addSubMenu->Append( DesignTree_AddCol, "Add Column" );
+        wxMenuItem* addStampItem;// = addSubMenu->Append( DesignTree_AddStamp, "Add Stamp" );
+        wxMenuItem* addTextItem;// = addSubMenu->Append( DesignTree_AddText, "Add TextBox" );
 
         switch ( type )
         {
         case Design::AT_Album:
         {
+            menu.AppendSubMenu( addSubMenu, "    Add Item" );
+            addPageItem = addSubMenu->Append( DesignTree_AddPage, "Add Page" );;
             addPageItem->Enable( true );
-            addRowItem->Enable( false );
-            addColItem->Enable( false );
-            addStampItem->Enable( false );
-            addTextItem->Enable( false );
             break;
         }
         case Design::AT_Page:
         {
-            addPageItem->Enable( false );
+            menu.AppendSubMenu( addSubMenu, "    Add Item" );
+            addRowItem = addSubMenu->Append( DesignTree_AddRow, "Add Row" );
+            addColItem = addSubMenu->Append( DesignTree_AddCol, "Add Column" );
             addRowItem->Enable( true );
             addColItem->Enable( true );
-            addStampItem->Enable( false );
-            addTextItem->Enable( false );
+
             break;
         }
         case Design::AT_Row:
         {
-            addPageItem->Enable( false );
-            addRowItem->Enable( false );
+            menu.AppendSubMenu( addSubMenu, "    Add Item" );
+            addColItem = addSubMenu->Append( DesignTree_AddCol, "Add Column" );
+            addStampItem = addSubMenu->Append( DesignTree_AddStamp, "Add Stamp" );
+            addTextItem = addSubMenu->Append( DesignTree_AddText, "Add TextBox" );
             addColItem->Enable( true );
             addStampItem->Enable( true );
             addTextItem->Enable( true );
@@ -1194,37 +1222,24 @@ void DesignTreeCtrl::ShowMenu( wxTreeItemId id, const wxPoint& pt )
         }
         case Design::AT_Col:
         {
-            addPageItem->Enable( false );
+            menu.AppendSubMenu( addSubMenu, "    Add Item" );
+            addRowItem = addSubMenu->Append( DesignTree_AddRow, "Add Row" );
+            addStampItem = addSubMenu->Append( DesignTree_AddStamp, "Add Stamp" );
+            addTextItem = addSubMenu->Append( DesignTree_AddText, "Add TextBox" );
             addRowItem->Enable( true );
-            addColItem->Enable( false );
             addStampItem->Enable( true );
             addTextItem->Enable( true );
             break;
         }
         case Design::AT_Stamp:
         {
-            addPageItem->Enable( false );
-            addRowItem->Enable( false );
-            addColItem->Enable( false );
-            addStampItem->Enable( false );
-            addTextItem->Enable( false );
             break;
         }
         case Design::AT_Text:
         {
-            addPageItem->Enable( false );
-            addRowItem->Enable( false );
-            addColItem->Enable( false );
-            addStampItem->Enable( false );
-            addTextItem->Enable( false );
             break;
         }        default:
         {
-            addPageItem->Enable( false );
-            addRowItem->Enable( false );
-            addColItem->Enable( false );
-            addStampItem->Enable( false );
-            addTextItem->Enable( false );
             break;
         }
         }
@@ -1271,27 +1286,27 @@ void DesignTreeCtrl::ShowMenu( wxTreeItemId id, const wxPoint& pt )
             if ( type == Design::AT_Stamp )
             {
                 ShowStampDetails( id );
-                GetDesignData( )->MakePage( ( Design::LayoutBase* ) node );
+                GetAlbumVolume( )->MakePage( ( Design::LayoutBase* ) node );
             }
             else if ( type == Design::AT_Row )
             {
                 ShowRowDetails( id, node );
-                GetDesignData( )->MakePage( ( Design::LayoutBase* ) node );
+                GetAlbumVolume( )->MakePage( ( Design::LayoutBase* ) node );
             }
             else if ( type == Design::AT_Col )
             {
                 ShowColDetails( id, node );
-                GetDesignData( )->MakePage( ( Design::LayoutBase* ) node );
+                GetAlbumVolume( )->MakePage( ( Design::LayoutBase* ) node );
             }
             else if ( type == Design::AT_Page )
             {
                 ShowPageDetails( id, node );
-                GetDesignData( )->MakePage( ( Design::LayoutBase* ) node );
+                GetAlbumVolume( )->MakePage( ( Design::LayoutBase* ) node );
             }
             else if ( type == Design::AT_Album )
             {
                 ShowAlbumDetails( id, node );
-                GetDesignData( )->MakePage( ( Design::LayoutBase* ) node );
+                GetAlbumVolume( )->MakePage( ( Design::LayoutBase* ) node );
             }
 
 
@@ -1412,7 +1427,7 @@ void DesignTreeCtrl::ShowRowDetails( wxTreeItemId treeID, Design::AlbumBase* nod
             data->SetDesc( newName );
         }
 
-        GetDesignData( )->UpdatePage( row );
+        GetAlbumVolume( )->UpdatePage( row );
         //row->UpdateLayout();
 
         Design::NodeStatus status = row->ValidateNode( );
@@ -1605,6 +1620,6 @@ void DesignTreeCtrl::MakePage( wxTreeItemId id )
 {
 
     Design::AlbumBase* node = GetItemNode( id );
-    GetDesignData( )->MakePage( ( Design::LayoutBase* ) node );
+    GetAlbumVolume( )->MakePage( ( Design::LayoutBase* ) node );
 
 }

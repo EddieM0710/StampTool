@@ -8,16 +8,16 @@
  * @copyright Copyright ( c ) 2021
  * This file is part of StampTool.
  *
- * StampTool is free software: you can redistribute it and/or modify it under the 
- * terms of the GNU General Public License as published by the Free Software Foundation, 
+ * StampTool is free software: you can redistribute it and/or modify it under the
+ * terms of the GNU General Public License as published by the Free Software Foundation,
  * either version 3 of the License, or any later version.
  *
- * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY 
- * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+ * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
+ * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
- * You should have received a copy of the GNU General Public License along with 
- * StampTool. If not, see <https://www.gnu.org/licenses/>. 
+ * You should have received a copy of the GNU General Public License along with
+ * StampTool. If not, see <https://www.gnu.org/licenses/>.
  * *
  **************************************************/
 
@@ -29,29 +29,88 @@
 #include "wx/xml/xml.h"
 
 
-namespace Catalog { 
-
+namespace Catalog {
+    /// @brief Base class for all catalog objects. The catalog objects are
+    /// initialy loaded from the catalog XML or from a csv file.
     class CatalogBase
-    { 
-    public:
+    {
+    protected:
         CatalogBase( ) { };
 
+    public:
+
+        ///  @brief Construct a new Catalog Base object
+        ///  
+        ///  @param ele 
         CatalogBase( wxXmlNode* ele ) { SetXMLCatNode( ele ); };
 
-        ~CatalogBase( ) { SetXMLCatNode( ( wxXmlNode* )0 ); };
 
+        ///  @brief Destroy the Catalog Base object
+        ///  
+        ~CatalogBase( ) { SetXMLCatNode( ( wxXmlNode* ) 0 ); };
+
+
+        ///  @brief Set the node type object
+        ///  
+        ///  @param type 
         void SetNodeType( CatalogBaseType type ) { m_nodeType = type; };
-        CatalogBaseType GetNodeType( ) { return m_nodeType; };
 
+        ///  @brief Get the node type object
+        ///  
+        ///  @param type 
+        CatalogBaseType  GetNodeType( ) { return m_nodeType; };
+
+
+        ///  @brief Get the XML Node of the object
+        ///  
+        ///  @return wxXmlNode* 
         wxXmlNode* GetCatXMLNode( ) { return m_catXMLNode; };
+
+
+        ///  @brief Set the XML Node of the object
+        ///  
+        ///  @param node 
         void SetXMLCatNode( wxXmlNode* node ) { m_catXMLNode = node; };
+
+
+        ///  @brief Get the First xml Child object of this node
+        ///  
+        ///  @return wxXmlNode* 
         wxXmlNode* GetFirstChild( ) { return m_catXMLNode->GetChildren( ); };
 
+
+        ///  @brief Finds the attribute named name and returns its string value
+        ///  
+        ///  @param name 
+        ///  @return wxString 
         wxString GetNodeAttrStr( wxString name );
+
+
+        ///  @brief Finds the attribute named name and returns its double value
+        ///  
+        ///  @param name 
+        ///  @return double 
         double GetNodeAttrDbl( wxString name );
+
+
+        ///  @brief  The attribute named name with val
+        ///  
+        ///  @param name 
+        ///  @param val 
         void SetNodeAttrStr( wxString name, wxString val );
+
+
+        ///  @brief Set the Node Attr Dbl object
+        ///  
+        ///  @param name 
+        ///  @param val 
         void SetNodeAttrDbl( wxString name, double val );
 
+
+        ///  @brief Sanity check on object instantiation
+        ///  
+        ///  @return true 
+        ///  @return false 
         virtual bool IsOK( ) = 0;
 
     private:

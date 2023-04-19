@@ -55,7 +55,7 @@ class LabeledTextBox;
   * MiscellaneousDataPanel class declaration
   */
 
-class MiscellaneousDataPanel: public wxPanel
+class MiscellaneousDataPanel : public wxPanel
 {
     DECLARE_DYNAMIC_CLASS( MiscellaneousDataPanel )
         DECLARE_EVENT_TABLE( )
@@ -131,49 +131,28 @@ public:
      **************************************************/
     void CreateControls( );
 
-    // MiscellaneousDataPanel event handler declarations
 
-   //   ID_MYSTICBUTTON
     void OnMysticButtonClick( wxCommandEvent& event );
 
-    //   ID_COLNECTBUTTON
     void OnColnectButtonClick( wxCommandEvent& event );
 
     void OnSiteButtonClick( wxCommandEvent& event );
 
-    //   ID_EBAYBUTTON
     void OneBayButtonClick( wxCommandEvent& event );
 
-    //   ID_NPMBUTTON
     void OnNPMButtonClick( wxCommandEvent& event );
 
-    // MiscellaneousDataPanel event handler declarations
-
-    // MiscellaneousDataPanel member function declarations
-
-
-   // 
     static bool ShowToolTips( );
 
-    void ShowStamp( );
-    void SetStamp( Catalog::Entry* stamp );
+    void UpdatePanel( );
     void SetDataEditable( bool val );
 
     void RetrieveImage( );
     static size_t write_data( void* ptr, size_t size, size_t nmemb, void* stream );
 
-    //void SetLabel( wxWindowID id, wxString val );
-
-    Catalog::Entry* m_stamp;
-
-    // MiscellaneousDataPanel member variables
-//$   LabeledTextBox *m_score;
- //$   LabeledTextBox *m_accuracy;
     LabeledTextBox* m_link;
     LabeledTextBox* m_catCodes;
     LabeledTextBox* m_imageName;
-    // MiscellaneousDataPanel member variables
 };
 
 #endif
-// _MISCELLANEOUSDATA_H_

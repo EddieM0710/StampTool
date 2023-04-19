@@ -47,18 +47,17 @@
 #define SYMBOL_ALBUMIMAGEPANEL_SIZE wxSize( 400, 300 )
 #define SYMBOL_ALBUMIMAGEPANEL_POSITION wxDefaultPosition
 
-  // enum
-  // {
-  //     ID_ROTATE_LEFT = wxID_HIGHEST + 1,
-  //     ID_ROTATE_RIGHT,
-  //     ID_RESIZE,
-  //     ID_PAINT_BG
-  // };
+enum
+{
+    AlbumImagePanel_DeleteItem,
+    AlbumImagePanel_EditDetails
+};
+// };
 
-  /**
-   * @brief This is the class that manages the image displayed on the StampDescriptionPanel.
-   *
-   **************************************************/
+/**
+ * @brief This is the class that manages the image displayed on the StampDescriptionPanel.
+ *
+ **************************************************/
 class AlbumImagePanel: public wxScrolledWindow
 {
     DECLARE_DYNAMIC_CLASS( AlbumImagePanel )
@@ -165,8 +164,11 @@ public:
      *
      * @param event   Contains information about command events
      **************************************************/
-    void OnZoom( wxCommandEvent& event );
+     // void OnZoom( wxCommandEvent& event );
 
+
+    void OnDeleteItem( );
+    void OnEditDetails( );
 
     /**
      * @brief Set the Zoom object

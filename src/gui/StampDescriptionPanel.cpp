@@ -46,7 +46,7 @@
 #include "Settings.h"
 #include "Stamp.h"
 #include "ToolData.h"
-#include "CatalogSectionData.h"
+#include "CatalogVolume.h"
 
  /*
   * StampDescriptionPanel type definition
@@ -134,7 +134,7 @@ void StampDescriptionPanel::Init( void )
     //$    m_description = NULL;
     //$    m_bkgndText = NULL;
         // StampDescriptionPanel member initialisation
-    m_stamp = NULL;
+    //m_stamp = NULL;
 }
 
 /*
@@ -342,13 +342,13 @@ void StampDescriptionPanel::CreateControls( void )
 //$        wxMouseEventHandler( StampDescriptionPanel::OnLeaveWindow ), 
 //$        NULL, this );
     // StampDescriptionPanel content construction
- //$     m_bkgndText->SetEditable( GetSettings( )->IsCatalogSectionDataEditable( )  );
-  //$    m_description->SetEditable( GetSettings( )->IsCatalogSectionDataEditable( )  );
+ //$     m_bkgndText->SetEditable( GetSettings( )->IsCatalogVolumeEditable( )  );
+  //$    m_description->SetEditable( GetSettings( )->IsCatalogVolumeEditable( )  );
 
 
     // // display a random image until one is selected
     wxString filename;
-    // if (  GetCatalogSectionData( ) )
+    // if (  GetCatalogVolume( ) )
     // { 
     //     filename = GetSettings( )->GetImageDirectory( );
     //     filename.Append( "/4503.jpg" );
@@ -460,24 +460,16 @@ void StampDescriptionPanel::OnDescriptionTextctrlTextUpdated( wxCommandEvent& ev
  * initializes the StampDescriptionPanel with new stamp values
  ***************************************************************/
 
-void StampDescriptionPanel::SetStamp( wxXmlNode* stamp )
+void StampDescriptionPanel::UpdatePanel( )//wxXmlNode* stamp )
 {
-    if ( m_stamp )
-    {
-        delete m_stamp;
-    }
-    m_stamp = new Catalog::Entry( stamp );
-    //$    m_bkgndText->ChangeValue( m_stamp->GetBackground( ) );
-    //$    m_description->ChangeValue( m_stamp->GetDescription( ) );
+    Catalog::Entry* stamp = GetCatalogData( )->GetCurrentStamp( );
 
-    m_inventoryPanel->SetStamp( m_stamp );
-    m_catalogCodePanel->SetStamp( m_stamp );
-    m_characteristicsPanel->SetStamp( m_stamp );
-    m_identificationPanel->SetStamp( m_stamp );
-    m_miscellaneousDataPanel->SetStamp( m_stamp );
-
-    wxString imageFile = GetToolData( )->GetImageFilename( m_stamp->GetID( ) );
-    m_stampImage->SetStamp( m_stamp );
+    m_inventoryPanel->UpdatePanel( );
+    m_catalogCodePanel->UpdatePanel( );
+    m_characteristicsPanel->UpdatePanel( );
+    m_identificationPanel->UpdatePanel( );
+    m_miscellaneousDataPanel->UpdatePanel( );
+    wxString imageFile = GetCatalogData( )->GetImageFilename( stamp->GetID( ) );
     m_stampImage->SetBitmap( imageFile );
 }
 

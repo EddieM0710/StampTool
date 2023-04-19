@@ -38,8 +38,7 @@
 
 #include "design/Album.h"
 
-#include "design/DesignData.h"
-#include "design/TitlePage.h"
+#include "design/AlbumVolume.h"
 #include "design/Page.h"
 #include "utils/XMLUtilities.h"
 #include "utils/FontList.h"

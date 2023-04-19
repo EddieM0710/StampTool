@@ -228,6 +228,68 @@ void DrawImage( wxDC& dc, wxImage* image, double x, double y, double w, double h
     }
 
 };
+int CompareID( wxString id1, wxString id2 )
+{
+    id1 = id1.Trim( );
+    id1 = id1.Trim( false );
+
+    int pos = id1.Find( ":" );
+    wxString catalog1 = id1.Mid( 0, pos );
+    id1 = id1.Mid( pos + 1 );
+    pos = id1.Find( " " );
+    wxString country1 = id1.Mid( 0, pos );
+    wxString catCode1 = id1.Mid( pos + 1 );
+    wxString prefix1 = "";
+    wxString code1 = "";
+
+    if ( pos > 0 )
+    {
+        prefix1 = catCode1.Mid( 0, pos - 1 );
+        code1 = catCode1.Mid( pos );
+    }
+    else {
+        code1 = catCode1;
+    }
+
+    id2 = id2.Trim( );
+    id2 = id2.Trim( false );
+    pos = id2.Find( ":" );
+    wxString catalog2 = id2.Mid( 0, pos );
+    id2 = id2.Mid( pos + 1 );
+    pos = id2.Find( " " );
+    wxString country2 = id2.Mid( 0, pos );
+    wxString catCode2 = id2.Mid( pos + 1 );
+    pos = catCode2.find_first_of( "0123456789" );
+
+    wxString prefix2 = "";
+    wxString code2 = "";
+
+    if ( pos > 0 )
+    {
+        prefix2 = catCode2.Mid( 0, pos - 1 );
+        code2 = catCode2.Mid( pos );
+    }
+    else
+    {
+        code2 = catCode2;
+    }
+
+    int stat = country1.Cmp( country2 );
+    if ( !stat )
+    {
+        stat = catalog1.Cmp( catalog2 );
+        if ( !stat )
+        {
+            stat = code1.Cmp( code2 );
+            if ( !stat )
+            {
+                stat = prefix1.Cmp( prefix2 );
+            }
+        }
+    }
+    return stat;
+
+}
 
 ComparisonResultType CompareDates( wxString date1, wxString date2 )
 {

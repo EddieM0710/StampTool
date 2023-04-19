@@ -115,9 +115,8 @@ namespace Design {
     // calculate the row layout based on child parameters
     void Row::UpdatePositions( )
     {
-        //        m_frame.WriteLayout( "Row::UpdatePositions <" );
-                // go to the bottom of each child container object ( row, column, page ) 
-                // and begin filling in position relative to the parent
+        // go to the bottom of each child container object ( row, column, page ) 
+        // and begin filling in position relative to the parent
 
         int nbrRows = 0;
         int nbrCols = 0;
@@ -157,42 +156,10 @@ namespace Design {
             LayoutBase* child = ( LayoutBase* ) GetDesignTreeCtrl( )->GetItemNode( childID );
             child->UpdatePositions( );
 
-            AlbumBaseType childType = ( AlbumBaseType ) child->GetNodeType( );
-            switch ( childType )
-            {
-            case AT_Col:
-            {
-                Column* col = ( Column* ) child;
-                col->SetXPos( xPos );
-                col->SetYPos( yPos );
-                xPos += col->GetWidth( ) + spacing;
-                break;
-            }
-            case AT_Stamp:
-            {
+            child->SetXPos( xPos );
+            child->SetYPos( yPos );
+            xPos += child->GetWidth( ) + spacing;
 
-                Stamp* stamp = ( Stamp* ) child;
-
-                // each stamp is positioned in the cell
-
-                double yBorder = 0;//( GetHeight( ) - stamp->GetHeight( ) ) / 2;
-                stamp->SetXPos( xPos );
-                stamp->SetYPos( yPos + yBorder );
-                // get xpos of next cell
-                xPos += stamp->GetWidth( ) + spacing;
-                break;
-            }
-            case AT_Text:
-            {
-                TextBox* text = ( TextBox* ) child;
-                double yBorder = 0;//( GetHeight( ) - text->GetHeight( ) ) / 2;
-                text->SetXPos( xPos );
-                text->SetYPos( yPos + yBorder );
-                // get xpos of next cell
-                xPos += text->GetWidth( ) + spacing;
-                break;
-            }
-            }
             childID = GetDesignTreeCtrl( )->GetNextChild( parentID, cookie );
         }
 

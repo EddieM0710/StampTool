@@ -22,7 +22,7 @@
  *
  **************************************************/
 
- 
+
 #include "wx/wxprec.h"
 
 #ifdef __BORLANDC__
@@ -41,11 +41,9 @@
 #include "wx/xml/xml.h"
 
 #include "catalog/CatalogCode.h"
-#include "catalog/Classification.h"
 #include "Defs.h"
 #include "catalog/CatalogBase.h"
 #include "utils/Settings.h"
-#include "catalog/Specimen.h"
 #include "catalog/Entry.h"
 #include "utils/XMLUtilities.h"
 

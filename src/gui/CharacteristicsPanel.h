@@ -27,27 +27,10 @@
 #ifndef _CHARACTERISTICSPANEL_H_
 #define _CHARACTERISTICSPANEL_H_
 
- /*
-  * Includes
-  */
-
-
-
 #include "gui/GuiDefs.h"
 #include "catalog/Entry.h"
 
-  /*
-   * Forward declarations
-   */
-
-
 class LabeledTextBox;
-
-
-/*
- * Control identifiers
- */
-
 
 
 #define SYMBOL_CHARACTERISTICSPANEL_STYLE wxTAB_TRAVERSAL
@@ -57,13 +40,13 @@ class LabeledTextBox;
 #define SYMBOL_CHARACTERISTICSPANEL_POSITION wxDefaultPosition
 
 
- /**
-  * CharacteristicsPanel class declaration
-  *
-  * Inherits from wxPanel. This class manages the widgets that
-  * display the physical characteristics of the stamp.
-  **************************************************/
-class CharacteristicsPanel: public wxPanel
+/**
+ * CharacteristicsPanel class declaration
+ *
+ * Inherits from wxPanel. This class manages the widgets that
+ * display the physical characteristics of the stamp.
+ **************************************************/
+class CharacteristicsPanel : public wxPanel
 {
     DECLARE_DYNAMIC_CLASS( CharacteristicsPanel )
         DECLARE_EVENT_TABLE( )
@@ -137,53 +120,31 @@ public:
      **************************************************/
     ~CharacteristicsPanel( void );
 
-    /**
-     * @brief Initialises member variables
-     *
-     **************************************************/
+    ///@brief Initialises member variables
     void Init( );
 
-    /**
-     * @brief Creates the controls and sizers
-     *
-     **************************************************/
+    /// @brief Creates the controls and sizers
     void CreateControls( );
 
 
 
-    // 
+
     static bool ShowToolTips( );
 
-    // 
-    /**
-     * @brief Initializes the CharacteristicsPanel with new stamp values
-     * @param  stamp :
-     */
-    void SetStamp( Catalog::Entry* stamp );
+
+    /// @brief Initializes the CharacteristicsPanel with new stamp values
+
+    void UpdatePanel( );
 
     void UpdateStampValue( Catalog::DataTypes dt, LabeledTextBox* textBox );
 
     void OnTextctrlTextUpdated( wxCommandEvent& event );
     void SetDataEditable( bool val );
 
-    // CharacteristicsPanel member variables
-//$    LabeledTextBox* m_faceValue; ///< widget to display Face Value
-//$    LabeledTextBox* m_currency;  ///< widget to display Currency
+
     LabeledTextBox* m_height;  ///< widget to display stamp height
     LabeledTextBox* m_width;  ///< widget to display stamp width
-    //$    LabeledTextBox* m_perforation; ///< widget to display perforation count
-    //$    LabeledTextBox* m_watermark; ///< widget to display discription of stamp watermark
-    //$    LabeledTextBox* m_gum;  ///< widget to display stamp gum
-    //$    LabeledTextBox* m_variant; ///< widget to display stamp variant
-    //$    LabeledTextBox* m_colors; ///< widget to display colors
-    //$    LabeledTextBox* m_paper;  ///< widget to display stamp colors
-    //$    LabeledTextBox* m_printing; ///< widget to display printing
-    //$    LabeledTextBox* m_printRun;  ///< widget to display print run size
-    //$    LabeledTextBox* m_expiryDate; ///< widget to display expiration date of stamp
-         // CharacteristicsPanel member variables
 
-        // pointer to current stamp
-    Catalog::Entry* m_stamp; ///< pointer to the currently displayed stamp
 };
 
 #endif

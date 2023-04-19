@@ -1,5 +1,5 @@
 /**
- * @file DesignData.cpp
+ * @file AlbumVolume.cpp
  * @author Eddie Monroe ( )
  * @brief
  * @version 0.1
@@ -25,12 +25,11 @@
 #include <wx/string.h>
 #include "wx/xml/xml.h"
 
-#include "catalog/Classification.h"
 #include "utils/CSV.h"
 #include "utils/Settings.h"
 #include "utils/XMLUtilities.h"
 #include "Defs.h"
-#include "design/DesignData.h"
+#include "design/AlbumVolume.h"
 #include "design/AlbumBase.h"
 #include "design/Album.h"
 #include "design/Stamp.h"
@@ -44,30 +43,31 @@
 
 namespace Design {
 
-    DesignData* NewDesignDataInstance( )
+    AlbumVolume* NewAlbumVolumeInstance( )
     {
-        DesignData* designData = new DesignData( );
-        designData->InitDesignData( );
-        return designData;
+        AlbumVolume* albumVolume = new AlbumVolume( );
+        albumVolume->InitAlbumVolume( );
+        return albumVolume;
     }
 
     //*****    
 
-    DesignData::DesignData( /* args */ )
+    AlbumVolume::AlbumVolume( /* args */ )
     {
+        isOKPtr = ( intptr_t ) &isOKPtr;
         m_albumDoc = 0;
         m_album = 0;
     }
 
-    DesignData* DesignData::InitDesignData( )
+    AlbumVolume* AlbumVolume::InitAlbumVolume( )
     {
         m_albumDoc = 0;
         m_album = 0;
-        return ( DesignData* ) 0;
+        return ( AlbumVolume* ) 0;
     }
 
     //*****  
-    DesignData::~DesignData( )
+    AlbumVolume::~AlbumVolume( )
     {
 
         if ( m_albumDoc ) m_albumDoc->~wxXmlDocument( );
@@ -77,9 +77,10 @@ namespace Design {
     }
 
     //*****  
-    bool DesignData::IsOK( )
+    bool AlbumVolume::IsOK( )
     {
-        if ( m_albumDoc )
+
+        if ( isOKPtr == ( intptr_t ) &isOKPtr )
         {
             return true;
         }
@@ -88,7 +89,7 @@ namespace Design {
 
 
     // Set the design to dirty  
-    void DesignData::SetDirty( bool state )
+    void AlbumVolume::SetDirty( bool state )
     {
         m_dirty = state;
         if ( m_dirty )
@@ -97,9 +98,9 @@ namespace Design {
         }
     }
 
-    void DesignData::LoadDefaultDocument( )
+    void AlbumVolume::LoadDefaultDocument( )
     {
-        wxXmlDocument* newDocument = DesignData::NewDesignDocument( );
+        wxXmlDocument* newDocument = AlbumVolume::NewDesignDocument( );
         wxXmlNode* root = new wxXmlNode( wxXML_ELEMENT_NODE, "Album" );
         newDocument->SetRoot( root );
         root->AddAttribute( AttrNameStrings[ AT_Name ], "" );
@@ -117,7 +118,7 @@ namespace Design {
         Page* page = ( Page* )new Page( pageNode );
     }
 
-    wxXmlDocument* DesignData::NewDesignDocument( )
+    wxXmlDocument* AlbumVolume::NewDesignDocument( )
     {
         delete m_albumDoc;
         m_albumDoc = new wxXmlDocument( );
@@ -126,8 +127,9 @@ namespace Design {
 
 
 
-    void DesignData::SaveXML( wxString filename )
+    void AlbumVolume::SaveXML( )
     {
+        wxString filename = GetAlbumFilename( );
         if ( m_albumDoc )
         {
             if ( wxFileExists( filename ) )
@@ -142,7 +144,7 @@ namespace Design {
         }
     }
 
-    void DesignData::SaveDesignTree( )
+    void AlbumVolume::SaveDesignTree( )
     {
         if ( m_albumDoc )
         {
@@ -159,8 +161,9 @@ namespace Design {
         }
     }
 
-    bool DesignData::LoadXML( wxString filename )
+    bool AlbumVolume::LoadXML( )
     {
+        wxString filename = GetAlbumFilename( );
         if ( !wxFileExists( filename ) )
         {
             return false;
@@ -173,7 +176,7 @@ namespace Design {
 
         if ( !ok )
         {
-            std::cout << "DesignData::LoadXML: " << filename << " Load Failed.\n";
+            std::cout << "AlbumVolume::LoadXML: " << filename << " Load Failed.\n";
             return false;
         }
 
@@ -182,7 +185,7 @@ namespace Design {
         return true;
     }
 
-    AlbumBase* DesignData::GetPage( AlbumBase* node )
+    AlbumBase* AlbumVolume::GetPage( AlbumBase* node )
     {
         wxTreeItemId id = node->GetTreeItemId( );
         if ( id.IsOk( ) ) id = GetDesignTreeCtrl( )->GetPage( id );
@@ -193,7 +196,7 @@ namespace Design {
         return ( AlbumBase* ) 0;
     }
 
-    NodeStatus DesignData::ValidatePage( AlbumBase* node )
+    NodeStatus AlbumVolume::ValidatePage( AlbumBase* node )
     {
         Page* page = ( Page* ) GetPage( node );
         if ( page )
@@ -203,7 +206,7 @@ namespace Design {
         return AT_FATAL;
     }
 
-    void DesignData::MakePage( Design::LayoutBase* node )
+    void AlbumVolume::MakePage( Design::LayoutBase* node )
     {
         Page* page = ( Page* ) GetPage( node );
         if ( page )
@@ -218,7 +221,7 @@ namespace Design {
         }
     }
 
-    void DesignData::UpdateAlbum( )
+    void AlbumVolume::UpdateAlbum( )
     {
         m_album->UpdateMinimumSize( );
         m_album->UpdateSizes( );
@@ -227,7 +230,7 @@ namespace Design {
 
     }
 
-    void DesignData::UpdatePage( AlbumBase* node )
+    void AlbumVolume::UpdatePage( AlbumBase* node )
     {
         Design::Page* page = ( Page* ) GetPage( node );
         if ( page )

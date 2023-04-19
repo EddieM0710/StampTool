@@ -7,18 +7,18 @@
  * @date 2021-02-25
  *
  * @copyright Copyright ( c ) 2021
- * 
+ *
  * This file is part of StampTool.
  *
- * StampTool is free software: you can redistribute it and/or modify it under the 
- * terms of the GNU General Public License as published by the Free Software Foundation, 
+ * StampTool is free software: you can redistribute it and/or modify it under the
+ * terms of the GNU General Public License as published by the Free Software Foundation,
  * either version 3 of the License, or any later version.
  *
- * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY 
- * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+ * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
+ * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
- * You should have received a copy of the GNU General Public License along with 
+ * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
  **************************************************/
@@ -32,22 +32,16 @@
 
 
 
-namespace Catalog { 
+namespace Catalog {
 
     /**
-    * @todo 2 fix so the GetName  refers to the name of an element and GetTitle refers to the attribute of an element.
+     * @brief This is a wrapper of an wxXmlNode for
+     * safe/convenient getting/putting.
+     * @see CatalogBase, Classification, Specimen
+     *
      **************************************************/
-
-
-
-     /**
-      * @brief This is a wrapper of an wxXmlNode for
-      * safe/convenient getting/putting.
-      * @see CatalogBase, Classification, Specimen
-      *
-      **************************************************/
     class Entry : public CatalogBase
-    { 
+    {
     public:
 
         /**
@@ -55,7 +49,7 @@ namespace Catalog {
          *
          **************************************************/
         Entry( ) : CatalogBase( )
-        { 
+        {
             SetNodeType( NT_Entry );
             IsOK( );
         };
@@ -66,7 +60,7 @@ namespace Catalog {
          * @param entry
          **************************************************/
         Entry( wxXmlNode* entry ) : CatalogBase( entry )
-        { 
+        {
             SetNodeType( NT_Entry );
             IsOK( );
         };
@@ -78,7 +72,7 @@ namespace Catalog {
         ~Entry( ) { };
 
         /**
-         * @brief
+         * @brief Sanity check instance
          *
          * @return true
          * @return false
@@ -90,9 +84,8 @@ namespace Catalog {
          * @brief Retrieves the value of the attribute of the entry
          *
          * @return wxString  wxString representation of the field
-         * @{ 
+         * @{
          **************************************************/
-
         wxString GetAccuracy( ); ///< Get the entry Accuracy field
         wxString GetCatalogCodes( ); ///< Get the entry Catalog Codes field
         wxString GetColors( ); ///< Get the entry Colors field
@@ -119,16 +112,16 @@ namespace Catalog {
         wxString GetVariant( ); ///< Get the entry Variant field
         wxString GetWatermark( ); ///< Get the entry Watermark field 
         wxString GetWidth( ); ///< Get the entry Width field
-        wxString GetInventoryStatus( );
+        wxString GetInventoryStatus( );///< Get the Inventory Status field
 
-    /**@}*/
+        /** @}*/
 
-    /**
-     * @brief Get the Attr object
-     *
-     * @param type
-     * @return wxString
-     **************************************************/
+        /**
+         * @brief Get the Attr object
+         *
+         * @param type
+         * @return wxString
+         **************************************************/
         wxString GetAttr( DataTypes type );
 
         /**
@@ -160,7 +153,7 @@ namespace Catalog {
          * @brief Sets the value of the appropriate attribute of the entry
          *
          * @param val  the value to set the attribute to.
-         * @{ 
+         * @{
          **************************************************/
         void SetAccuracy( wxString val ); ///< Get the entry Accuracy field 
         void SetCatalogCodes( wxString val ); ///< Get the entry CatalogCodes field 
@@ -204,7 +197,7 @@ namespace Catalog {
          * @param type
          **************************************************/
         void SetFormatType( FormatType type )
-        { 
+        {
             SetAttr( DT_Format, FT_FormatStrings[ type ] );
         };
 
@@ -214,6 +207,11 @@ namespace Catalog {
          * @return CheckedStatusType
          **************************************************/
         CheckedStatusType GetCheckedStatusType( );
+
+        ///---
+        ///  @brief Get the InventoryStatusType value of the entry
+        ///  
+        ///  @return InventoryStatusType 
         InventoryStatusType GetInventoryStatusType( );
 
         /**
@@ -221,15 +219,15 @@ namespace Catalog {
          *
          * @return wxString
          **************************************************/
-        //wxString GetCheckedStatus( ) { return GetAttr( DT_CheckedStatus ); };
-       // wxString GetInventoryStatus( ) { return GetAttr( DT_InventoryStatus ); };
+         //wxString GetCheckedStatus( ) { return GetAttr( DT_CheckedStatus ); };
+        // wxString GetInventoryStatus( ) { return GetAttr( DT_InventoryStatus ); };
 
-        /**
-         * @brief Set the Status object
-         *
-         * @param val
-         **************************************************/
-        //void SetCheckedStatus( wxString val ) { SetAttr( DT_CheckedStatus, val ); };
+         /**
+          * @brief Set the Status object
+          *
+          * @param val
+          **************************************************/
+          //void SetCheckedStatus( wxString val ) { SetAttr( DT_CheckedStatus, val ); };
         void SetInventoryStatus( wxString val ) { SetAttr( DT_InventoryStatus, val ); };
 
         /**
@@ -241,8 +239,13 @@ namespace Catalog {
         // { 
         //     SetAttr( DT_CheckedStatus, ST_CheckedStatusStrings[ type ] );
         // };
+
+        ///---
+        ///  @brief Set the Inventory Status Type field to it's string name
+        ///  
+        ///  @param type 
         void SetInventoryStatusType( InventoryStatusType type )
-        { 
+        {
             SetAttr( DT_InventoryStatus, ST_InventoryStatusStrings[ type ] );
         };
 
@@ -291,10 +294,10 @@ namespace Catalog {
         DataTypes FindDataType( wxString name );
 
         /**
-         * @brief
+         * @brief Is this a stamp type that has stamp cildren, e.g., a setenant or souviner sheet
          *
-         * @return true
-         * @return false
+         * @return true => FT_Se_tenant, FT_Mini_Sheet, FT_Souvenir_Sheet, FT_Booklet, FT_Booklet_Pane )
+         * @return false => otherwise
          **************************************************/
         bool IsMultiple( );
 
@@ -304,7 +307,7 @@ namespace Catalog {
          * @return wxString
          **************************************************/
         wxString GetLabel( )
-        { 
+        {
             wxString label = GetID( );
             label.Append( " - " );
             label.Append( GetName( ) );
@@ -371,7 +374,7 @@ namespace Catalog {
         void DeleteCode( wxXmlNode* deleteThisNode );
 
         /**
-         * @brief
+         * @brief Has a child node of type NT_CatalogCode
          *
          * @return true
          * @return false
@@ -406,7 +409,7 @@ namespace Catalog {
         wxXmlNode* GetCodeForCatalog( const char* catalog );
 
         /**
-         * @brief
+         * @brief Process te striing of catalogcodes into ountry, catalog and id parts
          *
          **************************************************/
         void ProcessCatalogCodes( wxString catCodes );

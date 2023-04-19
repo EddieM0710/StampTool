@@ -37,25 +37,19 @@
 #include "CatalogCodePanel.h"
 #include "CatalogCode.h"
 #include "catalog/CatalogDefs.h"
+#include "catalog/CatalogData.h"
 #include "XMLUtilities.h"
 #include "Defs.h"
 #include "utils/Settings.h"
-
- /*
-  * CatalogCodePanel type definition
-  */
 
 IMPLEMENT_DYNAMIC_CLASS( CatalogCodePanel, wxPanel )
 ; // silly business; The above macro screws up the formatter
 
 #define wxIDAddItem 17000
 #define wxIDDeleteItem 17001
-/*
- * CatalogCodePanel event table definition
- */
+
 
 BEGIN_EVENT_TABLE( CatalogCodePanel, wxPanel )
-
 EVT_CONTEXT_MENU( CatalogCodePanel::OnContextMenu )
 EVT_GRID_CELL_CHANGED( CatalogCodePanel::OnCellChanged )
 EVT_MENU( wxIDAddItem, CatalogCodePanel::OnContextPopup )
@@ -65,19 +59,8 @@ END_EVENT_TABLE( )
 ;  // silly business; The above macro screws up the formatter
 
 
-/*
- *
- * CatalogCodePanel constructors
- *
- **************************************************/
-
 CatalogCodePanel::CatalogCodePanel( ) { Init( ); }
 
-/*
- *
- * CatalogCodePanel constructors
- *
- **************************************************/
 
 CatalogCodePanel::CatalogCodePanel( wxWindow* parent, wxWindowID id,
     const wxPoint& pos, const wxSize& size,
@@ -87,11 +70,6 @@ CatalogCodePanel::CatalogCodePanel( wxWindow* parent, wxWindowID id,
     Create( parent, id, pos, size, style );
 }
 
-/*
- *
- * CatalogCodePanel creation
- *
- **************************************************/
 
 bool CatalogCodePanel::Create( wxWindow* parent, wxWindowID id, const wxPoint& pos,
     const wxSize& size, long style )
@@ -104,35 +82,16 @@ bool CatalogCodePanel::Create( wxWindow* parent, wxWindowID id, const wxPoint& p
     return true;
 }
 
-/*
- *
- * CatalogCodePanel destructor
- *
- **************************************************/
-
 CatalogCodePanel::~CatalogCodePanel( )
 {
 
 }
 
-/*
- *
- * * Member initialisation
- *
- **************************************************/
 
 void CatalogCodePanel::Init( )
 {
-    // CatalogCodePanel member initialisation
     m_grid = NULL;
-    // CatalogCodePanel member initialisation
 }
-
-/*
- *
- * Control creation for CatalogCode
- *
- **************************************************/
 
 void CatalogCodePanel::CreateControls( )
 {
@@ -161,21 +120,17 @@ void CatalogCodePanel::CreateControls( )
         m_grid->SetColLabelValue( i, Catalog::CC_CatalogCodeNames[ i ] );
     }
 
-    SetDataEditable( GetSettings( )->IsCatalogSectionDataEditable( ) );
+    SetDataEditable( GetSettings( )->IsCatalogVolumeEditable( ) );
 
     m_grid->Refresh( );
 
 }
 
-/*
- *
- * InitRow
- *
- **************************************************/
-
 wxXmlNode* CatalogCodePanel::InitNewCatCode( )
 {
-    wxXmlNode* ele = m_entry->AddCode( );
+    Catalog::Entry* stamp = GetCatalogData( )->GetCurrentStamp( );
+
+    wxXmlNode* ele = stamp->AddCode( );
     Catalog::CatalogCode catCode( ele );
     for ( int col = 0; col < Catalog::CC_NbrTypes; col++ )
     {
@@ -183,15 +138,12 @@ wxXmlNode* CatalogCodePanel::InitNewCatCode( )
     }
     return ele;
 }
-/*
- *
- * AddRow
- *
- **************************************************/
 
 int CatalogCodePanel::AddNewRow( )
 {
-    if ( m_entry )
+    Catalog::Entry* stamp = GetCatalogData( )->GetCurrentStamp( );
+
+    if ( stamp )
     {
         int cnt = m_grid->GetNumberRows( );
         m_grid->InsertRows( cnt, 1 );
@@ -202,11 +154,6 @@ int CatalogCodePanel::AddNewRow( )
     }
     return -1;
 }
-/*
- *
- * ShowRow
- *
- **************************************************/
 
 void CatalogCodePanel::ShowRow( int row )
 {
@@ -234,25 +181,12 @@ bool CatalogCodePanel::ShowToolTips( )
 
 
 
-/*
+/**
  *
- *SetEntry
- *
- **************************************************/
-
-void CatalogCodePanel::SetStamp( Catalog::Entry* entry )
-{
-    m_entry = entry;
-    ShowEntry( );
-}
-
-
-/*
- * ShowEntry
+ * @brief UpdatePanel
  *
  **************************************************/
-
-void CatalogCodePanel::ShowEntry( )
+void CatalogCodePanel::UpdatePanel( )
 {
     // new entry to show; clean up the grid
     int row = m_grid->GetNumberRows( );
@@ -265,13 +199,15 @@ void CatalogCodePanel::ShowEntry( )
     row = m_grid->GetNumberRows( );  // better be 0 at this point
 
     // if the entry is valid
-    if ( m_entry && m_entry->IsOK( ) )
+    Catalog::Entry* stamp = GetCatalogData( )->GetCurrentStamp( );
+
+    if ( stamp && stamp->IsOK( ) )
     {
         //and if it has catalog codes
-        if ( m_entry->HasChildCode( ) )
+        if ( stamp->HasChildCode( ) )
         {
             // loop through the codes and add them to the grid
-            wxXmlNode* ele = m_entry->GetFirstChildCode( );
+            wxXmlNode* ele = stamp->GetFirstChildCode( );
             while ( ele )
             {
                 m_grid->InsertRows( row, 1 );
@@ -279,7 +215,7 @@ void CatalogCodePanel::ShowEntry( )
 
                 ShowRow( row );
                 row++;
-                ele = m_entry->GetNextChildCode( ele );
+                ele = stamp->GetNextChildCode( ele );
             }
         }
     }
@@ -292,7 +228,7 @@ void CatalogCodePanel::ShowEntry( )
 
 void CatalogCodePanel::OnContextMenu( wxContextMenuEvent& event )
 {
-    if ( GetSettings( )->IsCatalogSectionDataEditable( ) )
+    if ( GetSettings( )->IsCatalogVolumeEditable( ) )
     {
         wxPoint point = event.GetPosition( );
         // If from keyboard

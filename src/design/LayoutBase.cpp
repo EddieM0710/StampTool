@@ -20,7 +20,7 @@
  * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
- **************************************************/
+ */
 
 #include "design/AlbumBase.h"
 
@@ -29,12 +29,13 @@
 
 #include "LayoutBase.h"
 #include "design/Page.h"
-#include "design/DisplayString.h"
+#include "design/LabelFrame.h"
 #include "design/Row.h"
 #include "design/Column.h"
 #include "design/Stamp.h"
 #include "gui/AlbumImagePanel.h"
-#include "gui/DesignTreeCtrl.h"
+#include "gui/AlbumTreeCtrl.h"
+
 
 namespace Design {
 
@@ -46,12 +47,9 @@ namespace Design {
         SetLeftContentPadding( 0 );
         SetRightContentPadding( 0 );
         SetTitleLocation( Design::AT_TitleLocationDefault );
-        m_nbrFrame = 0;
-        m_nameFrame = 0;
-        m_titleFrame = 0;
-        m_textFrame = 0;
     };
-    /**************************************************/
+
+
     LayoutBase::LayoutBase( wxXmlNode* node ) : AlbumBase( node )
     {
 
@@ -60,102 +58,9 @@ namespace Design {
         SetLeftContentPadding( 0 );
         SetRightContentPadding( 0 );
         SetTitleLocation( Design::AT_TitleLocationDefault );
-        m_nbrFrame = 0;
-        m_nameFrame = 0;
-        m_titleFrame = 0;
-        m_textFrame = 0;
     };
 
 
-
-    DisplayString* LayoutBase::GetTitleFrame( )
-    {
-        if ( !m_titleFrame )
-        {
-            m_titleFrame = new DisplayString( this, AT_TitleFontType );
-        }
-        return m_titleFrame;
-    };
-
-    DisplayString* LayoutBase::GetNbrFrame( )
-    {
-        if ( !m_nbrFrame )
-        {
-            m_nbrFrame = new DisplayString( this, AT_NbrFontType );
-        }
-        return m_nbrFrame;
-    };
-
-    DisplayString* LayoutBase::GetTextFrame( )
-    {
-        if ( !m_textFrame )
-        {
-            m_textFrame = new DisplayString( this, AT_TextFontType );
-        }
-        return m_textFrame;
-    };
-
-    DisplayString* LayoutBase::GetNameFrame( )
-    {
-        if ( !m_nameFrame )
-        {
-            m_nameFrame = new DisplayString( this, AT_NameFontType );
-        }
-        return m_nameFrame;
-    };
-
-
-    void LayoutBase::ReportLayoutError( wxString funct, wxString err, bool fatal )
-    {
-        wxString funcStr = wxString::Format( "%s::%s", AttrNameStrings[ GetNodeType( ) ], funct );
-        wxString msgStr = wxString::Format( "InputLine: %d;  %s", GetLineNumber( ), err );
-        ReportError( funcStr, msgStr, fatal );
-    }
-
-    void LayoutBase::ValidateChildType( int& nbrRows, int& nbrCols, int& nbrLeaf )
-    {
-        // count the number of rows/cols planned
-        nbrRows = 0;
-        nbrCols = 0;
-        nbrLeaf = 0;
-
-        wxTreeItemIdValue cookie;
-        wxTreeItemId parentID = GetTreeItemId( );
-        wxTreeItemId childID = GetDesignTreeCtrl( )->GetFirstChild( parentID, cookie );
-        while ( childID.IsOk( ) )
-        {
-            AlbumBaseType type = ( AlbumBaseType ) GetDesignTreeCtrl( )->GetItemType( childID );
-            LayoutBase* child = ( LayoutBase* ) GetDesignTreeCtrl( )->GetItemNode( childID );
-            switch ( type )
-            {
-            case AT_Row:
-            {
-                nbrRows++;
-                break;
-            }
-            case AT_Col:
-            {
-                nbrCols++;
-                break;
-            }
-            case AT_Stamp:
-            {
-                nbrLeaf++;
-                break;
-            }
-            case AT_Text:
-            {
-                nbrLeaf++;
-                break;
-            }
-            }
-            childID = GetDesignTreeCtrl( )->GetNextChild( parentID, cookie );
-        }
-        if ( ( nbrRows > 0 ) && ( nbrCols > 0 ) )
-        {
-            ReportLayoutError( "ValidateChildType", "Only Rows or Columns are allowed as the children, not both" );
-        }
-    }
 
 
     void LayoutBase::DumpLayout( double x, double y )
@@ -164,30 +69,20 @@ namespace Design {
         m_frame.WriteLayout( GetObjectName( ) );
         wxTreeItemIdValue cookie;
         wxTreeItemId parentID = GetTreeItemId( );
-        wxTreeItemId childID = GetDesignTreeCtrl( )->GetFirstChild( parentID, cookie );
+        wxTreeItemId childID = GetAlbumTreeCtrl( )->GetFirstChild( parentID, cookie );
         while ( childID.IsOk( ) )
         {
-            AlbumBaseType type = ( AlbumBaseType ) GetDesignTreeCtrl( )->GetItemType( childID );
-            LayoutBase* child = ( LayoutBase* ) GetDesignTreeCtrl( )->GetItemNode( childID );
+            AlbumBaseType type = ( AlbumBaseType ) GetAlbumTreeCtrl( )->GetItemType( childID );
+            LayoutBase* child = ( LayoutBase* ) GetAlbumTreeCtrl( )->GetItemNode( childID );
 
             double xPos = x + GetXPos( );
             double yPos = y + GetYPos( );
 
             child->DumpLayout( xPos, yPos );
 
-            childID = GetDesignTreeCtrl( )->GetNextChild( parentID, cookie );
+            childID = GetAlbumTreeCtrl( )->GetNextChild( parentID, cookie );
         }
     }
-
-
-    void LayoutBase::ReportLayoutFrame( wxString indent )
-    {
-        m_frame.ReportLayout( indent );
-        wxString str = wxString::Format( "%sTitle Size: width:%7.2f  height:%7.2f \n",
-            indent, m_titleFrame->GetWidth( ), m_titleFrame->GetHeight( ) );
-        std::cout << "\n" << indent << "Client Dimensions ";
-        m_clientDimensions.ReportLayout( indent );
-    };
 
     void LayoutBase::DumpObjectLayout( wxString indent )
     {
@@ -200,17 +95,17 @@ namespace Design {
 
         wxTreeItemId thisID = GetTreeItemId( );
         wxTreeItemIdValue cookie;
-        wxTreeItemId childID = GetDesignTreeCtrl( )->GetFirstChild( thisID, cookie );
+        wxTreeItemId childID = GetAlbumTreeCtrl( )->GetFirstChild( thisID, cookie );
         while ( childID.IsOk( ) )
         {
-            AlbumBaseType type = ( AlbumBaseType ) GetDesignTreeCtrl( )->GetItemType( childID );
-            LayoutBase* child = ( LayoutBase* ) GetDesignTreeCtrl( )->GetItemNode( childID );
+            AlbumBaseType type = ( AlbumBaseType ) GetAlbumTreeCtrl( )->GetItemType( childID );
+            LayoutBase* child = ( LayoutBase* ) GetAlbumTreeCtrl( )->GetItemNode( childID );
             //layout everything except the title
             if ( type != AT_Title )
             {
                 child->DumpObjectLayout( indent );
             }
-            childID = GetDesignTreeCtrl( )->GetNextChild( thisID, cookie );
+            childID = GetAlbumTreeCtrl( )->GetNextChild( thisID, cookie );
         }
 
     }
@@ -228,11 +123,11 @@ namespace Design {
         {
             wxTreeItemId thisID = GetTreeItemId( );
             wxTreeItemIdValue cookie;
-            wxTreeItemId childID = GetDesignTreeCtrl( )->GetFirstChild( thisID, cookie );
+            wxTreeItemId childID = GetAlbumTreeCtrl( )->GetFirstChild( thisID, cookie );
             while ( childID.IsOk( ) )
             {
-                AlbumBaseType type = ( AlbumBaseType ) GetDesignTreeCtrl( )->GetItemType( childID );
-                LayoutBase* child = ( LayoutBase* ) GetDesignTreeCtrl( )->GetItemNode( childID );
+                AlbumBaseType type = ( AlbumBaseType ) GetAlbumTreeCtrl( )->GetItemType( childID );
+                LayoutBase* child = ( LayoutBase* ) GetAlbumTreeCtrl( )->GetItemNode( childID );
                 //layout everything except the title
                 if ( type != AT_Title )
                 {
@@ -244,7 +139,7 @@ namespace Design {
                         return foundChild;
                     }
                 }
-                childID = GetDesignTreeCtrl( )->GetNextChild( thisID, cookie );
+                childID = GetAlbumTreeCtrl( )->GetNextChild( thisID, cookie );
             }
             std::cout << indent << "Success \n";
             return this;
@@ -253,33 +148,35 @@ namespace Design {
         return ( LayoutBase* ) 0;
     }
 
-    // void LayoutBase::SetClientDimensions( Frame *frame )
-    // { 
-    //     m_clientDimensions.SetXPos( frame->GetXPos( ) *  Design::ScaleFactor.x );
-    //     m_clientDimensions.SetYPos( frame->GetYPos( ) *  Design::ScaleFactor.y );
-    //     m_clientDimensions.SetHeight( frame->GetHeight( ) *  Design::ScaleFactor.y );
-    //     m_clientDimensions.SetWidth( frame->GetWidth( ) *  Design::ScaleFactor.x );
-    //     m_clientDimensions.SetMinHeight( frame->GetMinHeight( ) *  Design::ScaleFactor.y );
-    //     m_clientDimensions.SetMinWidth( frame->GetMinWidth( ) *  Design::ScaleFactor.x );
-    // };
 
-    void LayoutBase::SetClientDimensions( wxDC& dc, double x, double y, double width, double height, double minWidth, double minHeight )
+    TitleLocation LayoutBase::GetTitleLayoutLocation( )
     {
-        //std::cout << "pos ( " << x <<", "<< y <<" )  size ( "<< width <<", "<< height << " )\n";
-        wxPoint pnt = dc.LogicalToDevice( x * Design::ScaleFactor.x, y * Design::ScaleFactor.y );
-        wxSize size = dc.LogicalToDeviceRel( width * Design::ScaleFactor.x, height * Design::ScaleFactor.y );
-        wxSize minSize = dc.LogicalToDeviceRel( minWidth * Design::ScaleFactor.x, minHeight * Design::ScaleFactor.y );
-
-        //std::cout << "           pos ( " << pnt.x <<", "<< pnt.y <<" )  size ( "<< size.GetX( ) <<", "<< size.GetY( ) << " )\n";
-
-        m_clientDimensions.SetXPos( pnt.x );
-        m_clientDimensions.SetYPos( pnt.y );
-        m_clientDimensions.SetHeight( size.y );
-        m_clientDimensions.SetWidth( size.x );
-        m_clientDimensions.SetMinHeight( minSize.y );
-        m_clientDimensions.SetMinWidth( minSize.x );
-    };
-
+        if ( m_titleLocation == AT_TitleLocationDefault )
+        {
+            LayoutBase* parent = ( LayoutBase* ) GetParent( );
+            if ( !parent )
+            {
+                return AT_TitleLocationBottom;
+            }
+            TitleLocation parentLoc = parent->GetTitleLayoutLocation( );
+            if ( parentLoc != AT_TitleLocationDefault )
+            {
+                return parentLoc;
+            }
+            else if ( parent->IsNodeType( AT_Col ) )
+            {
+                return AT_TitleLocationLeft;
+            }
+            else
+            {
+                return AT_TitleLocationBottom;
+            }
+        }
+        else
+        {
+            return m_titleLocation;
+        }
+    }
     bool LayoutBase::IsInClient( double x, double y, wxString indent )
     {
         Design::AlbumBaseType type = GetNodeType( );
@@ -317,32 +214,101 @@ namespace Design {
         return( GetTitleLayoutLocation( ) == loc );
     }
 
-    TitleLocation LayoutBase::GetTitleLayoutLocation( )
+    void LayoutBase::ReportLayoutFrame( wxString indent )
     {
-        if ( m_titleLocation == AT_TitleLocationDefault )
+        m_frame.ReportLayout( indent );
+        // wxString str = wxString::Format( "%sTitle Size: width:%7.2f  height:%7.2f \n",
+        //     indent, m_titleFrame->GetWidth( ), m_titleFrame->GetHeight( ) );
+        std::cout << "\n" << indent << "Client Dimensions ";
+        m_clientDimensions.ReportLayout( indent );
+    };
+
+    void LayoutBase::ReportLayoutError( wxString funct, wxString err, bool fatal )
+    {
+        wxString funcStr = wxString::Format( "%s::%s", AttrNameStrings[ GetNodeType( ) ], funct );
+        wxString msgStr = wxString::Format( "InputLine: %d;  %s", GetLineNumber( ), err );
+        ReportError( funcStr, msgStr, fatal );
+    }
+
+    // void LayoutBase::SetClientDimensions( Frame *frame )
+    // { 
+    //     m_clientDimensions.SetXPos( frame->GetXPos( ) *  Design::ScaleFactor.x );
+    //     m_clientDimensions.SetYPos( frame->GetYPos( ) *  Design::ScaleFactor.y );
+    //     m_clientDimensions.SetHeight( frame->GetHeight( ) *  Design::ScaleFactor.y );
+    //     m_clientDimensions.SetWidth( frame->GetWidth( ) *  Design::ScaleFactor.x );
+    //     m_clientDimensions.SetMinHeight( frame->GetMinHeight( ) *  Design::ScaleFactor.y );
+    //     m_clientDimensions.SetMinWidth( frame->GetMinWidth( ) *  Design::ScaleFactor.x );
+    // };
+
+    void LayoutBase::SetClientDimensions( wxDC& dc, double x, double y, double width, double height, double minWidth, double minHeight )
+    {
+        //std::cout << "pos ( " << x <<", "<< y <<" )  size ( "<< width <<", "<< height << " )\n";
+        wxPoint pnt = dc.LogicalToDevice( x * Design::ScaleFactor.x, y * Design::ScaleFactor.y );
+        wxSize size = dc.LogicalToDeviceRel( width * Design::ScaleFactor.x, height * Design::ScaleFactor.y );
+        wxSize minSize = dc.LogicalToDeviceRel( minWidth * Design::ScaleFactor.x, minHeight * Design::ScaleFactor.y );
+
+        //std::cout << "           pos ( " << pnt.x <<", "<< pnt.y <<" )  size ( "<< size.GetX( ) <<", "<< size.GetY( ) << " )\n";
+
+        m_clientDimensions.SetXPos( pnt.x );
+        m_clientDimensions.SetYPos( pnt.y );
+        m_clientDimensions.SetHeight( size.y );
+        m_clientDimensions.SetWidth( size.x );
+        m_clientDimensions.SetMinHeight( minSize.y );
+        m_clientDimensions.SetMinWidth( minSize.x );
+    };
+
+    void LayoutBase::ValidateChildType( int& nbrRows, int& nbrCols, int& nbrLeaf )
+    {
+        // count the number of rows/cols planned
+        nbrRows = 0;
+        nbrCols = 0;
+        nbrLeaf = 0;
+
+        wxTreeItemIdValue cookie;
+        wxTreeItemId parentID = GetTreeItemId( );
+        wxTreeItemId childID = GetAlbumTreeCtrl( )->GetFirstChild( parentID, cookie );
+        while ( childID.IsOk( ) )
         {
-            LayoutBase* parent = ( LayoutBase* ) GetParent( );
-            if ( !parent )
+            AlbumBaseType type = ( AlbumBaseType ) GetAlbumTreeCtrl( )->GetItemType( childID );
+            LayoutBase* child = ( LayoutBase* ) GetAlbumTreeCtrl( )->GetItemNode( childID );
+            switch ( type )
             {
-                return AT_TitleLocationBottom;
+                case AT_Row:
+                {
+                    nbrRows++;
+                    break;
+                }
+                case AT_Col:
+                {
+                    nbrCols++;
+                    break;
+                }
+                case AT_Stamp:
+                {
+                    nbrLeaf++;
+                    break;
+                }
+                case AT_Text:
+                {
+                    nbrLeaf++;
+                    break;
+                }
             }
-            TitleLocation parentLoc = parent->GetTitleLayoutLocation( );
-            if ( parentLoc != AT_TitleLocationDefault )
-            {
-                return parentLoc;
-            }
-            else if ( parent->IsNodeType( AT_Col ) )
-            {
-                return AT_TitleLocationLeft;
-            }
-            else
-            {
-                return AT_TitleLocationBottom;
-            }
+            childID = GetAlbumTreeCtrl( )->GetNextChild( parentID, cookie );
         }
-        else
+        if ( ( nbrRows > 0 ) && ( nbrCols > 0 ) )
         {
-            return m_titleLocation;
+            ReportLayoutError( "ValidateChildType", "Only Rows or Columns are allowed as the children, not both" );
         }
     }
+
+
+    void LayoutBase::UpdateString( Design::LabelFrame* frame, double width )
+    {
+
+        frame->UpdateString( width );
+    };
+
+
+
 }

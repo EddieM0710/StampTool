@@ -36,9 +36,6 @@
 #include "gui/DefinePeriodsPanel.h"
 #include "Settings.h"
 #include "Defs.h"
- /*
-  * DefinePeriodsPanel type definition
-  */
 
 IMPLEMENT_DYNAMIC_CLASS( DefinePeriodsPanel, wxPanel )
 
@@ -50,10 +47,14 @@ EVT_TEXT( ID_MODERN, DefinePeriodsPanel::OnModernTextUpdated )
 EVT_TEXT( ID_MODERNYEAR, DefinePeriodsPanel::OnModernYearTextUpdated )
 END_EVENT_TABLE( )
 
+//--------------
+
 DefinePeriodsPanel::DefinePeriodsPanel( )
 {
     Init( );
 }
+
+//--------------
 
 DefinePeriodsPanel::DefinePeriodsPanel( wxWindow* parent, wxWindowID id, const wxPoint& pos, const wxSize& size, long style )
 {
@@ -66,6 +67,14 @@ DefinePeriodsPanel::DefinePeriodsPanel( wxWindow* parent, wxWindowID id, const w
     m_modernYear->SetValue( GetSettings( )->GetUpperDivision( ) );
 
 }
+
+//--------------
+
+DefinePeriodsPanel::~DefinePeriodsPanel( )
+{
+}
+
+//--------------
 
 bool DefinePeriodsPanel::Create( wxWindow* parent, wxWindowID id, const wxPoint& pos, const wxSize& size, long style )
 {
@@ -81,21 +90,7 @@ bool DefinePeriodsPanel::Create( wxWindow* parent, wxWindowID id, const wxPoint&
     return true;
 }
 
-DefinePeriodsPanel::~DefinePeriodsPanel( )
-{
-}
-
-
-
-void DefinePeriodsPanel::Init( )
-{
-    m_antiqueTextBox = NULL;
-    m_AntiqueYear = NULL;
-    m_classicTextBox = NULL;
-    m_modernTextBox = NULL;
-    m_modernYear = NULL;
-}
-
+//--------------
 
 void DefinePeriodsPanel::CreateControls( )
 {
@@ -146,30 +141,53 @@ void DefinePeriodsPanel::CreateControls( )
 
 }
 
+//--------------
+
+void DefinePeriodsPanel::Init( )
+{
+    m_antiqueTextBox = NULL;
+    m_AntiqueYear = NULL;
+    m_classicTextBox = NULL;
+    m_modernTextBox = NULL;
+    m_modernYear = NULL;
+}
+
+//--------------
+
 void DefinePeriodsPanel::OnAntiqueTextUpdated( wxCommandEvent& event )
 {
     event.Skip( );
 }
+
+//--------------
 
 void DefinePeriodsPanel::OnAntiqueYearTextUpdated( wxCommandEvent& event )
 {
     event.Skip( );
 }
 
+//--------------
+
 void DefinePeriodsPanel::OnClassicTextUpdated( wxCommandEvent& event )
 {
     event.Skip( );
 }
+
+//--------------
+
+void DefinePeriodsPanel::OnModernYearTextUpdated( wxCommandEvent& event )
+{
+    event.Skip( );
+}
+
+//--------------
 
 void DefinePeriodsPanel::OnModernTextUpdated( wxCommandEvent& event )
 {
     event.Skip( );
 }
 
-void DefinePeriodsPanel::OnModernYearTextUpdated( wxCommandEvent& event )
-{
-    event.Skip( );
-}
+//--------------
 
 void DefinePeriodsPanel::OnOkClick( )
 {
@@ -203,8 +221,9 @@ void DefinePeriodsPanel::OnOkClick( )
         GetSettings( )->SetUpperDivision( m_modernYear->GetValue( ) );
         m_modernYear->SetModified( false );
     }
-
 }
+
+//--------------
 
 bool DefinePeriodsPanel::ShowToolTips( )
 {

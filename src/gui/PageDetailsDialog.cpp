@@ -43,6 +43,8 @@
 #include "design/Page.h"
 #include "design/Album.h"
 #include "design/DesignDefs.h"
+#include "utils/FontList.h"
+
  /*
   * PageDetailsDialog type definition
   */
@@ -237,8 +239,8 @@ void PageDetailsDialog::UpdateControls( )
     SetName( m_page->GetAttrStr( Design::AT_Name ) );
     SetShowTitle( m_page->GetShowTitle( ) );
     SetShowFrame( m_page->GetShowFrame( ) );
-    SetTitleFont( m_page->GetFont( Design::AT_TitleFontType ) );
-    SetTitleColor( m_page->GetColor( Design::AT_TitleFontType ) );
+    SetTitleFont( m_page->GetTitleFrame( )->GetFont( ) );
+    SetTitleColor( m_page->GetTitleFrame( )->GetColor( ) );
 
     wxListBox* m_statusList;
 
@@ -251,7 +253,7 @@ void PageDetailsDialog::SetupDialog( wxTreeItemId treeID )
     if ( treeID.IsOk( ) )
     {
         m_designTreeID = treeID;
-        DesignTreeItemData* data = ( DesignTreeItemData* ) GetDesignTreeCtrl( )->GetItemData( m_designTreeID );
+        DesignTreeItemData* data = ( DesignTreeItemData* ) GetAlbumTreeCtrl( )->GetItemData( m_designTreeID );
         m_page = ( Design::Page* ) data->GetNodeElement( );
         wxArrayString* errors = m_page->GetErrorArray( );
         if ( !errors->IsEmpty( ) )
@@ -293,7 +295,7 @@ void PageDetailsDialog::OnOkClick( wxCommandEvent& event )
     m_page->SetShowFrame( GetShowFrame( ) );
     m_page->SetShowTitle( GetShowTitle( ) );
 
-    m_page->SetFont( Design::AT_TitleFontType, m_titleFontPicker->GetSelectedFont( ), m_titleColorPicker->GetColour( ) );
+    m_page->GetTitleFrame( )->SetFont( m_titleFontPicker->GetSelectedFont( ), m_titleColorPicker->GetColour( ) );
 
     event.Skip( );
 

@@ -20,7 +20,7 @@
  * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
- **************************************************/
+ */
 
 #ifndef _STAMPTOOLAPP_H_
 #define _STAMPTOOLAPP_H_
@@ -42,10 +42,10 @@
 
 #include "wx/image.h"
 
-#include "gui/StampToolFrame.h"
+//#include "gui/StampToolFrame.h"
 
-class ToolData;
-
+class AppData;
+class StampToolFrame;
 /**
  * @brief StampToolApp class declaration.
  * @details This is the main instantiation class for the application.  It
@@ -56,13 +56,14 @@ class StampToolApp : public wxApp {
         DECLARE_EVENT_TABLE( )
 
 public:
+
     // Constructor
     StampToolApp( );
 
     /**
      * @brief   Initialises member variables
      *
-     **************************************************/
+     */
     void Init( );
 
     // Initialises the application
@@ -74,15 +75,15 @@ public:
     virtual int OnExit( );
 
     StampToolFrame* GetFrame( ) { return m_frame; };
-    ToolData* GetToolData( ) { return m_toolData; };
+    AppData* GetAppData( ) { return m_AppData; };
 
 private:
     StampToolFrame* m_frame;
 
-    // global declaration of application data 
-    ToolData* m_toolData;
+    // application data 
+    AppData* m_AppData;
 
 };
 
 #endif
-// _STAMPTOOLAPP_H_
+

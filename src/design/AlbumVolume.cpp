@@ -7,7 +7,7 @@
  *
  * @copyright Copyright ( c ) 2021
  *
- **************************************************/
+ */
 
 
 #include "wx/wxprec.h"
@@ -34,23 +34,16 @@
 #include "design/Album.h"
 #include "design/Stamp.h"
 #include "design/Page.h"
- //#include "design/Title.h"
 #include "design/Row.h"
 #include "design/Column.h"
-#include "StampToolApp.h"
+ //#include "StampToolApp.h"
 #include "gui/AlbumImagePanel.h"
-#include "gui/DesignTreeCtrl.h"
+#include "gui/AlbumTreeCtrl.h"
+#include "gui/StampToolFrame.h"
+#include "gui/AppData.h"
+ //#include "gui/AppData.h"
 
 namespace Design {
-
-    AlbumVolume* NewAlbumVolumeInstance( )
-    {
-        AlbumVolume* albumVolume = new AlbumVolume( );
-        albumVolume->InitAlbumVolume( );
-        return albumVolume;
-    }
-
-    //*****    
 
     AlbumVolume::AlbumVolume( /* args */ )
     {
@@ -59,14 +52,6 @@ namespace Design {
         m_album = 0;
     }
 
-    AlbumVolume* AlbumVolume::InitAlbumVolume( )
-    {
-        m_albumDoc = 0;
-        m_album = 0;
-        return ( AlbumVolume* ) 0;
-    }
-
-    //*****  
     AlbumVolume::~AlbumVolume( )
     {
 
@@ -76,7 +61,24 @@ namespace Design {
         m_album = 0;
     }
 
-    //*****  
+    AlbumBase* AlbumVolume::GetPage( AlbumBase* node )
+    {
+        wxTreeItemId id = node->GetTreeItemId( );
+        if ( id.IsOk( ) ) id = GetAlbumTreeCtrl( )->GetPage( id );
+        if ( id.IsOk( ) )
+        {
+            return GetAlbumTreeCtrl( )->GetItemNode( id );
+        }
+        return ( AlbumBase* ) 0;
+    }
+
+    AlbumVolume* AlbumVolume::InitAlbumVolume( )
+    {
+        m_albumDoc = 0;
+        m_album = 0;
+        return ( AlbumVolume* ) 0;
+    }
+
     bool AlbumVolume::IsOK( )
     {
 
@@ -85,17 +87,6 @@ namespace Design {
             return true;
         }
         return false;
-    }
-
-
-    // Set the design to dirty  
-    void AlbumVolume::SetDirty( bool state )
-    {
-        m_dirty = state;
-        if ( m_dirty )
-        {
-            GetToolData( )->SetDirty( true );
-        }
     }
 
     void AlbumVolume::LoadDefaultDocument( )
@@ -116,49 +107,6 @@ namespace Design {
         SetAlbum( album );
         wxXmlNode* pageNode = new wxXmlNode( wxXML_ELEMENT_NODE, AlbumBaseNames[ AT_Page ] );
         Page* page = ( Page* )new Page( pageNode );
-    }
-
-    wxXmlDocument* AlbumVolume::NewDesignDocument( )
-    {
-        delete m_albumDoc;
-        m_albumDoc = new wxXmlDocument( );
-        return m_albumDoc;
-    };
-
-
-
-    void AlbumVolume::SaveXML( )
-    {
-        wxString filename = GetAlbumFilename( );
-        if ( m_albumDoc )
-        {
-            if ( wxFileExists( filename ) )
-            {
-                wxFileName bakFile( filename );
-                bakFile.SetExt( "bak" );
-                wxRenameFile( filename, bakFile.GetFullName( ), true );
-            }
-            SaveDesignTree( );
-            m_albumDoc->Save( filename );
-            SetDirty( false );
-        }
-    }
-
-    void AlbumVolume::SaveDesignTree( )
-    {
-        if ( m_albumDoc )
-        {
-            wxTreeItemId albumID = GetDesignTreeCtrl( )->GetRootItem( );
-            Design::Album* album = ( Design::Album* ) GetDesignTreeCtrl( )->GetItemNode( albumID );
-
-            wxXmlNode* root = m_albumDoc->DetachRoot( );
-            root->~wxXmlNode( );
-
-            wxXmlNode* xmlNode = Utils::NewNode( m_albumDoc, Design::AlbumBaseNames[ Design::AT_Album ] );
-            albumID = GetDesignTreeCtrl( )->GetRootItem( );
-            album->Save( xmlNode );
-            GetDesignTreeCtrl( )->SaveNodeData( xmlNode, albumID );
-        }
     }
 
     bool AlbumVolume::LoadXML( )
@@ -185,27 +133,6 @@ namespace Design {
         return true;
     }
 
-    AlbumBase* AlbumVolume::GetPage( AlbumBase* node )
-    {
-        wxTreeItemId id = node->GetTreeItemId( );
-        if ( id.IsOk( ) ) id = GetDesignTreeCtrl( )->GetPage( id );
-        if ( id.IsOk( ) )
-        {
-            return GetDesignTreeCtrl( )->GetItemNode( id );
-        }
-        return ( AlbumBase* ) 0;
-    }
-
-    NodeStatus AlbumVolume::ValidatePage( AlbumBase* node )
-    {
-        Page* page = ( Page* ) GetPage( node );
-        if ( page )
-        {
-            return page->ValidateChildren( page );
-        }
-        return AT_FATAL;
-    }
-
     void AlbumVolume::MakePage( Design::LayoutBase* node )
     {
         Page* page = ( Page* ) GetPage( node );
@@ -219,6 +146,74 @@ namespace Design {
                 GetAlbumImagePanel( )->Refresh( );
             }
         }
+    }
+
+    AlbumVolume* NewAlbumVolumeInstance( )
+    {
+        AlbumVolume* albumVolume = new AlbumVolume( );
+        albumVolume->InitAlbumVolume( );
+        return albumVolume;
+    }
+
+    wxXmlDocument* AlbumVolume::NewDesignDocument( )
+    {
+        delete m_albumDoc;
+        m_albumDoc = new wxXmlDocument( );
+        return m_albumDoc;
+    };
+
+    void AlbumVolume::SaveDesignTree( )
+    {
+        if ( m_albumDoc )
+        {
+            wxTreeItemId albumID = GetAlbumTreeCtrl( )->GetRootItem( );
+            Design::Album* album = ( Design::Album* ) GetAlbumTreeCtrl( )->GetItemNode( albumID );
+
+            wxXmlNode* root = m_albumDoc->DetachRoot( );
+            root->~wxXmlNode( );
+
+            wxXmlNode* xmlNode = Utils::NewNode( m_albumDoc, Design::AlbumBaseNames[ Design::AT_Album ] );
+            albumID = GetAlbumTreeCtrl( )->GetRootItem( );
+            album->Save( xmlNode );
+            GetAlbumTreeCtrl( )->SaveNodeData( xmlNode, albumID );
+        }
+    }
+
+    void AlbumVolume::SaveXML( )
+    {
+        wxString filename = GetAlbumFilename( );
+        if ( m_albumDoc )
+        {
+            if ( wxFileExists( filename ) )
+            {
+                wxFileName bakFile( filename );
+                bakFile.SetExt( "bak" );
+                wxRenameFile( filename, bakFile.GetFullName( ), true );
+            }
+            SaveDesignTree( );
+            m_albumDoc->Save( filename );
+            SetDirty( false );
+        }
+    }
+
+    // Set the design to dirty  
+    void AlbumVolume::SetDirty( bool state )
+    {
+        m_dirty = state;
+        if ( m_dirty )
+        {
+            GetAppData( )->SetDirty( true );
+        }
+    }
+
+    NodeStatus AlbumVolume::ValidatePage( AlbumBase* node )
+    {
+        Page* page = ( Page* ) GetPage( node );
+        if ( page )
+        {
+            return page->ValidateChildren( page );
+        }
+        return AT_FATAL;
     }
 
     void AlbumVolume::UpdateAlbum( )
@@ -240,4 +235,5 @@ namespace Design {
             page->UpdatePositions( );
         }
     }
+
 }

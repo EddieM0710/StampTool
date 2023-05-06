@@ -1,5 +1,7 @@
 build/
 projects/
+doc/
+doc/html
 .gitignore
 .vscode/tasks.json
 

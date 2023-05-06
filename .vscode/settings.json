@@ -61,7 +61,12 @@
         "hash_set": "cpp",
         "unordered_set": "cpp",
         "bitset": "cpp",
-        "regex": "cpp"
+        "regex": "cpp",
+        "ctime": "cpp",
+        "map": "cpp",
+        "set": "cpp",
+        "iomanip": "cpp",
+        "cinttypes": "cpp"
     },
     "files.watcherExclude": {
         "**/doc/**": true

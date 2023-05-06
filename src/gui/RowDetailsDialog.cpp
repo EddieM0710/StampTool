@@ -41,6 +41,7 @@
 #include "gui/FontPickerHelper.h"
 #include "design/Row.h"
 #include "design/Album.h"
+#include "utils/FontList.h"
 
 
  /*
@@ -328,8 +329,8 @@ void RowDetailsDialog::UpdateControls( )
     SetName( m_row->GetAttrStr( Design::AT_Name ) );
     SetShowTitle( m_row->GetShowTitle( ) );
     SetShowFrame( m_row->GetShowFrame( ) );
-    SetFont( m_row->GetFont( Design::AT_TitleFontType ) );
-    SetColor( m_row->GetColor( Design::AT_TitleFontType ) );
+    SetFont( m_row->GetTitleFrame( )->GetFont( ) );
+    SetColor( m_row->GetTitleFrame( )->GetColor( ) );
     SetTitleLayoutLocation( );
     SetCalculateSpacing( m_row->CalculateSpacing( ) );
     SetFixedSpacingSize( m_row->GetFixedSpacing( ) );
@@ -343,7 +344,7 @@ void RowDetailsDialog::SetupDialog( wxTreeItemId treeID )
     if ( treeID.IsOk( ) )
     {
         m_designTreeID = treeID;
-        DesignTreeItemData* data = ( DesignTreeItemData* ) GetDesignTreeCtrl( )->GetItemData( m_designTreeID );
+        DesignTreeItemData* data = ( DesignTreeItemData* ) GetAlbumTreeCtrl( )->GetItemData( m_designTreeID );
         m_row = ( Design::Row* ) data->GetNodeElement( );
         UpdateControls( );
         wxArrayString* errors = m_row->GetErrorArray( );
@@ -391,7 +392,7 @@ void RowDetailsDialog::OnOkClick( wxCommandEvent& event )
     m_row->SetShowFrame( GetShowFrame( ) );
     m_row->SetShowTitle( GetShowTitle( ) );
 
-    m_row->SetFont( Design::AT_TitleFontType, m_titleFontPicker->GetSelectedFont( ), m_titleColorPicker->GetColour( ) );
+    m_row->GetTitleFrame( )->SetFont( m_titleFontPicker->GetSelectedFont( ), m_titleColorPicker->GetColour( ) );
     m_row->SetTitleLocation( m_titleLocation );
     m_row->SetCalculateSpacing( CalculateSpacing( ) );
     m_row->SetFixedSpacingSize( GetFixedSpacing( ) );

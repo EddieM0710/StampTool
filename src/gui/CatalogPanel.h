@@ -24,46 +24,25 @@
 #ifndef _CATALOGVOLUMEPANEL_H_
 #define _CATALOGVOLUMEPANEL_H_
 
-
- /*
-  * Includes
-  */
-
 #include "wx/treectrl.h"
 #include <wx/tglbtn.h>
+#include <wx/choice.h>
+#include <wx/sizer.h>
 
 #include "Defs.h"
 #include "gui/GuiDefs.h"
 #include "utils/Project.h"
 #include "catalog/CatalogVolume.h"
 
-  /*
-  * Forward declarations
-  */
-
-
 class CatalogTreeCtrl;
 
-
 class Stamp;
-
-/*
-* Control identifiers
-*/
-
-
 
 #define SYMBOL_CATALOGVOLUMEPANEL_STYLE wxTAB_TRAVERSAL
 #define SYMBOL_CATALOGVOLUMEPANEL_TITLE _( "CatalogPanel" )
 #define SYMBOL_CATALOGVOLUMEPANEL_IDNAME ID_CATALOGPANEL
 #define SYMBOL_CATALOGVOLUMEPANEL_SIZE wxSize( 400, 300 )
 #define SYMBOL_CATALOGVOLUMEPANEL_POSITION wxDefaultPosition
-
-
-
-/*
-* CatalogPanel class declaration
-*/
 
 class CatalogPanel : public wxPanel
 {
@@ -82,52 +61,117 @@ public:
         ID_TOGGLEBUTTON,
         ID_VOLUMECHOICE,
         ID_MANAGEBUTTON,
+        ID_CSVIMPORTCATALOG,
         ID_NEWCATALOG,
         ID_OPENCATALOG,
         ID_REMOVECATALOG
     };
 
+    ///  @brief Construct a new Catalog Panel object
+    ///  
     CatalogPanel( );
 
+    ///  @brief Construct a new Catalog Panel object
+    ///  
+    ///  @param parent 
+    ///  @param id 
+    ///  @param pos 
+    ///  @param size 
+    ///  @param style 
     CatalogPanel( wxWindow* parent,
         wxWindowID id = SYMBOL_CATALOGVOLUMEPANEL_IDNAME,
         const wxPoint& pos = SYMBOL_CATALOGVOLUMEPANEL_POSITION,
         const wxSize& size = SYMBOL_CATALOGVOLUMEPANEL_SIZE,
         long style = SYMBOL_CATALOGVOLUMEPANEL_STYLE );
 
-    bool Create( wxWindow* parent, wxWindowID id = SYMBOL_CATALOGVOLUMEPANEL_IDNAME, const wxPoint& pos = SYMBOL_CATALOGVOLUMEPANEL_POSITION, const wxSize& size = SYMBOL_CATALOGVOLUMEPANEL_SIZE, long style = SYMBOL_CATALOGVOLUMEPANEL_STYLE );
-
+    ///  @brief Destroy the Catalog Panel object
+    ///  
     ~CatalogPanel( );
 
-    void Init( );
+    ///  @brief 
+    ///  
+    ///  @param parent 
+    ///  @param id 
+    ///  @param pos 
+    ///  @param size 
+    ///  @param style 
+    ///  @return true 
+    ///  @return false 
+    bool Create( wxWindow* parent, wxWindowID id = SYMBOL_CATALOGVOLUMEPANEL_IDNAME, const wxPoint& pos = SYMBOL_CATALOGVOLUMEPANEL_POSITION, const wxSize& size = SYMBOL_CATALOGVOLUMEPANEL_SIZE, long style = SYMBOL_CATALOGVOLUMEPANEL_STYLE );
 
+    ///  @brief Create a Controls object
+    ///  
     void CreateControls( );
 
-    void OnTextctrlTextUpdated( wxCommandEvent& event );
-
-    void OnTogglebuttonClick( wxCommandEvent& event );
-
-    void OnVolumeChoiceSelected( wxCommandEvent& event );
-
-    void OnManageClick( wxCommandEvent& event );
-
-    static bool ShowToolTips( );
-
-    void InitCatalogVolume( );
+    ///  @brief Get the Catalog Tree object
+    ///  
+    ///  @return CatalogTreeCtrl* 
     CatalogTreeCtrl* GetCatalogTree( ) { return m_catalogTreeCtrl; };
 
+    ///  @brief 
+    ///  
+    void Init( );
+
+    void DoCSVImport( );
+
+    ///  @brief 
+    ///  
+    void InitCatalogVolume( );
+
+    void NewCatalogDialog( );
+
+    void OnCSVImportClick( wxCommandEvent& event );
+
+    ///  @brief 
+    ///  
+    ///  @param event 
+    void OnTextctrlTextUpdated( wxCommandEvent& event );
+
+    ///  @brief 
+    ///  
+    ///  @param event 
+    void OnTogglebuttonClick( wxCommandEvent& event );
+
+    ///  @brief 
+    ///  
+    ///  @param event 
+    void OnVolumeChoiceSelected( wxCommandEvent& event );
+
+    ///  @brief 
+    ///  
+    ///  @param event 
+    void OnManageClick( wxCommandEvent& event );
+
+    ///  @brief Set the Volume List Strings object
+    ///  
+    ///  @param choices 
     void SetVolumeListStrings( wxArrayString& choices )
     {
         m_volumeListCtrl->Clear( );
         m_volumeListCtrl->Append( choices );
     };
 
+    ///  @brief Set the Volume List Selection object
+    ///  
+    ///  @param i 
     void SetVolumeListSelection( int i )
     {
         m_volumeListCtrl->SetSelection( i );
     };
 
-    // wxTextCtrl* m_title;
+    void OpenCatalog( );
+
+    void RemoveVolume( );
+
+    void SaveAsCatalog( );
+
+    ///  @brief 
+    ///  
+    ///  @return true 
+    ///  @return false 
+    static bool ShowToolTips( );
+    ;
+private:
     wxChoice* m_volumeListCtrl;
     CatalogTreeCtrl* m_catalogTreeCtrl;
 
@@ -139,4 +183,3 @@ public:
 };
 
 #endif
-// _CATALOGVOLUMEPANEL_H_

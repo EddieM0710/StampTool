@@ -20,7 +20,7 @@
  * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
- **************************************************/
+ */
 
 
 #include "wx/wxprec.h"
@@ -35,18 +35,19 @@
 
 #include "utils/StampList.h"
 #include "gui/CatalogTreeCtrl.h"
-#include "gui/DesignTreeCtrl.h"
+#include "gui/AlbumTreeCtrl.h"
 
+  
 namespace Utils {
 
 
     wxString StampLink::GetID( )
     {
         wxString id = "";
-        DesignTreeCtrl* designTreeCtrl = GetDesignTreeCtrl( );
-        if ( designTreeCtrl && m_designTreeID.IsOk( ) )
+        AlbumTreeCtrl* albumTreeCtrl = GetAlbumTreeCtrl( );
+        if ( albumTreeCtrl && m_designTreeID.IsOk( ) )
         {
-            DesignTreeItemData* data = ( DesignTreeItemData* ) designTreeCtrl->GetItemData( m_designTreeID );
+            DesignTreeItemData* data = ( DesignTreeItemData* ) albumTreeCtrl->GetItemData( m_designTreeID );
             if ( data && data->IsOk( ) )
             {
                 Design::AlbumBase* node = data->GetNodeElement( );
@@ -78,14 +79,14 @@ namespace Utils {
                 catData->SetStampLink( ( StampLink* ) 0 );
             }
         }
-        DesignTreeCtrl* designTreeCtrl = GetDesignTreeCtrl( );
-        if ( designTreeCtrl )
+        AlbumTreeCtrl* albumTreeCtrl = GetAlbumTreeCtrl( );
+        if ( albumTreeCtrl )
         {
             wxTreeItemId albumID = GetDesignTreeID( );
             if ( albumID.IsOk( ) )
             {
                 DesignTreeItemData* itemData =
-                    ( DesignTreeItemData* ) designTreeCtrl->GetItemData( albumID );
+                    ( DesignTreeItemData* ) albumTreeCtrl->GetItemData( albumID );
                 itemData->SetStampLink( ( StampLink* ) 0 );
             }
         }
@@ -94,7 +95,7 @@ namespace Utils {
     void StampList::Clear( )
     {
         CatalogTreeCtrl* catTreeCtrl = GetAlbumPageTreeCtrl( );
-        DesignTreeCtrl* designTreeCtrl = GetDesignTreeCtrl( );
+        AlbumTreeCtrl* albumTreeCtrl = GetAlbumTreeCtrl( );
         if ( catTreeCtrl )
         {
             for ( int i = 0; i < m_list.size( ); i++ )

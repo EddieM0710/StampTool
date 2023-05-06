@@ -20,7 +20,7 @@
  * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
- **************************************************/
+ */
 
 
 
@@ -40,6 +40,42 @@
 
 namespace Catalog {
 
+    wxString CatalogCode::GetAttr( CatalogCodeTypes type )
+    {
+        if ( IsOK( ) )
+        {
+            wxXmlAttribute* attr = Utils::GetAttribute( GetCatXMLNode( ), CatalogCodeNames[ type ] );
+            if ( attr )
+            {
+                return attr->GetValue( );
+            }
+        }
+        return wxString( "" );
+    }
+
+    wxString CatalogCode::GetCatalog( )
+    {
+        return GetAttr( CC_Catalog );
+    };
+
+    wxString CatalogCode::GetCountry( )
+    {
+        return GetAttr( CC_Country );
+    };
+
+    wxXmlNode* CatalogCode::GetData( wxVector<wxVariant>* data )
+    {
+        data->push_back( GetCatalog( ) );
+        data->push_back( GetCountry( ) );
+        data->push_back( GetID( ) );
+        return GetCatXMLNode( );
+    }
+
+    wxString CatalogCode::GetID( )
+    {
+        return GetAttr( CC_ID );
+    };
+
     bool CatalogCode::IsOK( )
     {
         if ( GetCatXMLNode( ) )
@@ -53,21 +89,8 @@ namespace Catalog {
     {
         if ( IsOK( ) )
         {
-            Utils::SetAttrStr( GetCatXMLNode( ), CC_CatalogCodeNames[ type ], val );
+            Utils::SetAttrStr( GetCatXMLNode( ), CatalogCodeNames[ type ], val );
         };
-    }
-
-    wxString CatalogCode::GetAttr( CatalogCodeTypes type )
-    {
-        if ( IsOK( ) )
-        {
-            wxXmlAttribute* attr = Utils::GetAttribute( GetCatXMLNode( ), CC_CatalogCodeNames[ type ] );
-            if ( attr )
-            {
-                return attr->GetValue( );
-            }
-        }
-        return wxString( "" );
     }
 
     void CatalogCode::SetCatalog( wxString val )
@@ -85,29 +108,4 @@ namespace Catalog {
         SetAttr( CC_ID, val );
     };
 
-
-
-    wxString CatalogCode::GetCatalog( )
-    {
-        return GetAttr( CC_Catalog );
-    };
-
-    wxString CatalogCode::GetCountry( )
-    {
-        return GetAttr( CC_Country );
-    };
-
-    wxString CatalogCode::GetID( )
-    {
-        return GetAttr( CC_ID );
-    };
-
-
-    wxXmlNode* CatalogCode::GetData( wxVector<wxVariant>* data )
-    {
-        data->push_back( GetCatalog( ) );
-        data->push_back( GetCountry( ) );
-        data->push_back( GetID( ) );
-        return GetCatXMLNode( );
-    }
 }

@@ -44,11 +44,8 @@
 #include <wx/clrpicker.h>
 
 #include "gui/GuiDefs.h"
-#include "gui/DesignTreeCtrl.h"
+#include "gui/AlbumTreeCtrl.h"
 
-/*
- * Forward declarations
- */
 class LabeledTextBox;
 class wxListCtrl;
 namespace Design { class Album; };
@@ -59,12 +56,9 @@ namespace Design { class Album; };
 #define SYMBOL_ALBUMDETAILSDIALOG_SIZE wxSize( 400, 300 )
 #define SYMBOL_ALBUMDETAILSDIALOG_POSITION wxDefaultPosition
 
-
-//
-// AlbumDetailsDialog class declaration
-//
-
-class AlbumDetailsDialog: public wxDialog
+///  @brief
+///  
+class AlbumDetailsDialog : public wxDialog
 {
     DECLARE_DYNAMIC_CLASS( AlbumDetailsDialog )
         DECLARE_EVENT_TABLE( )
@@ -109,91 +103,369 @@ public:
         ID_ALBUMNAMEPANEL
     };
 
-
+    ///  @brief Construct a new Album Details Dialog object
+    ///  
     AlbumDetailsDialog( );
+
+    ///  @brief Construct a new Album Details Dialog object
+    ///  
+    ///  @param parent 
+    ///  @param id 
+    ///  @param caption 
+    ///  @param pos 
+    ///  @param size 
+    ///  @param style 
     AlbumDetailsDialog( wxWindow* parent, wxWindowID id = SYMBOL_ALBUMDETAILSDIALOG_IDNAME, const wxString& caption = SYMBOL_ALBUMDETAILSDIALOG_TITLE, const wxPoint& pos = SYMBOL_ALBUMDETAILSDIALOG_POSITION, const wxSize& size = SYMBOL_ALBUMDETAILSDIALOG_SIZE, long style = SYMBOL_ALBUMDETAILSDIALOG_STYLE );
 
-    bool Create( wxWindow* parent, wxWindowID id = SYMBOL_ALBUMDETAILSDIALOG_IDNAME, const wxString& caption = SYMBOL_ALBUMDETAILSDIALOG_TITLE, const wxPoint& pos = SYMBOL_ALBUMDETAILSDIALOG_POSITION, const wxSize& size = SYMBOL_ALBUMDETAILSDIALOG_SIZE, long style = SYMBOL_ALBUMDETAILSDIALOG_STYLE );
-
+    ///  @brief Destroy the Album Details Dialog object
+    ///  
     ~AlbumDetailsDialog( );
 
-    void Init( );
+    ///  @brief 
+    ///  
+    ///  @param parent 
+    ///  @param id 
+    ///  @param caption 
+    ///  @param pos 
+    ///  @param size 
+    ///  @param style 
+    ///  @return true 
+    ///  @return false 
+    bool Create( wxWindow* parent, wxWindowID id = SYMBOL_ALBUMDETAILSDIALOG_IDNAME, const wxString& caption = SYMBOL_ALBUMDETAILSDIALOG_TITLE, const wxPoint& pos = SYMBOL_ALBUMDETAILSDIALOG_POSITION, const wxSize& size = SYMBOL_ALBUMDETAILSDIALOG_SIZE, long style = SYMBOL_ALBUMDETAILSDIALOG_STYLE );
 
+    ///  @brief Create a Controls object
+    ///  
     void CreateControls( );
 
-    void UpdateControls( );
-
-    void SetupDialog( wxTreeItemId id );
-
-
-    static bool ShowToolTips( );
-    void SetName( wxString name );
-    void SetPageHeight( wxString height );
-    void SetPageWidth( wxString width );
-    void SetTopMargin( wxString margin );
-    void SetBottomMargin( wxString margin );
-    void SetLeftMargin( wxString margin );
-    void SetRightMargin( wxString margin );
-    void SetBorderSize( wxString size );
-    void SetShowNbr( bool state );
-    void SetShowStampTitle( bool state );
-    void SetNbrFont( wxFont font );
-    void SetNameFont( wxFont font );
-    void SetTextFont( wxFont font );
-    void SetTitleFont( wxFont font );
-    void SetNbrColor( wxColour color );
-    void SetNameColor( wxColour color );
-    void SetTextColor( wxColour color );
-    void SetTitleColor( wxColour color );
-    void SetGrayScaleImages( bool val );
-
-    wxString GetName( );
-    wxString GetPageHeight( );
-    wxString GetPageWidth( );
-    wxString GetTopMargin( );
-    wxString GetBottomMargin( );
-    wxString GetLeftMargin( );
-    wxString GetRightMargin( );
+    ///  @brief Get the Border Size object
+    ///  
+    ///  @return wxString 
     wxString GetBorderSize( );
-    bool GetShowNbr( );
-    bool GetShowStampTitle( );
+
+    ///  @brief Get the Bottom Margin object
+    ///  
+    ///  @return wxString 
+    wxString GetBottomMargin( );
+
+    ///  @brief Get the Gray Scale Images object
+    ///  
+    ///  @return true 
+    ///  @return false 
     bool GetGrayScaleImages( );
 
+    ///  @brief Get the Left Margin object
+    ///  
+    ///  @return wxString 
+    wxString GetLeftMargin( );
 
-    bool IsNameModified( );
-    bool IsPageHeightModified( );
-    bool IsPageWidthModified( );
-    bool IsTopMarginModified( );
-    bool IsBottomMarginModified( );
-    bool IsLeftMarginModified( );
-    bool IsRightMarginModified( );
-    bool IsBorderSizeModified( );
+    ///  @brief Get the Name object
+    ///  
+    ///  @return wxString 
+    wxString GetName( );
 
-    void SetNameModified( bool state );
-    void SetPageHeightModified( bool state );
-    void SetPageWidthModified( bool state );
-    void SetTopMarginModified( bool state );
-    void SetBottomMarginModified( bool state );
-    void SetLeftMarginModified( bool state );
-    void SetRightMarginModified( bool state );
-    void SetBorderSizeModified( bool state );
-
-    wxFont GetNbrFont( );
-    wxFont GetNameFont( );
-    wxFont GetTextFont( );
-    wxFont GetTitleFont( );
-    wxColour GetNbrColor( );
+    ///  @brief Get the Name Color object
+    ///  
+    ///  @return wxColour 
     wxColour GetNameColor( );
+
+    ///  @brief Get the Name Font object
+    ///  
+    ///  @return wxFont 
+    wxFont GetNameFont( );
+
+    ///  @brief Get the Nbr Color object
+    ///  
+    ///  @return wxColour 
+    wxColour GetNbrColor( );
+
+    ///  @brief Get the Nbr Font object
+    ///  
+    ///  @return wxFont 
+    wxFont GetNbrFont( );
+
+    ///  @brief Get the Page Height object
+    ///  
+    ///  @return wxString 
+    wxString GetPageHeight( );
+
+    ///  @brief Get the Page Width object
+    ///  
+    ///  @return wxString 
+    wxString GetPageWidth( );
+
+    ///  @brief Get the Right Margin object
+    ///  
+    ///  @return wxString 
+    wxString GetRightMargin( );
+
+    ///  @brief Get the Show Nbr object
+    ///  
+    ///  @return true 
+    ///  @return false 
+    bool GetShowNbr( );
+
+    ///  @brief Get the Show Stamp Title object
+    ///  
+    ///  @return true 
+    ///  @return false 
+    bool GetShowStampTitle( );
+
     wxColour GetTextColor( );
+
+    ///  @brief Get the Text Font object
+    ///  
+    ///  @return wxFont 
+    wxFont GetTextFont( );
+
+    ///  @brief Get the Title Color object
+    ///  
+    ///  @return wxColour 
     wxColour GetTitleColor( );
 
-    void OnOkClick( wxCommandEvent& event );
-    void OnCancelClick( wxCommandEvent& event );
-    void OnNbrDefaultClick( wxCommandEvent& event );
-    void OnNameDefaultClick( wxCommandEvent& event );
-    void OnTitleDefaultClick( wxCommandEvent& event );
-    void OnTextDefaultClick( wxCommandEvent& event );
+    ///  @brief Get the Title Font object
+    ///  
+    ///  @return wxFont 
+    wxFont GetTitleFont( );
+
+    ///  @brief Get the Top Margin object
+    ///  
+    ///  @return wxString 
+    wxString GetTopMargin( );
+
+    ///  @brief 
+    ///  
+    void Init( );
+
+    ///  @brief 
+    ///  
+    ///  @return true 
+    ///  @return false 
+    bool IsBorderSizeModified( );
+
+    ///  @brief 
+    ///  
+    ///  @return true 
+    ///  @return false 
+    bool IsBottomMarginModified( );
+
+    ///  @brief 
+    ///  
+    ///  @return true 
+    ///  @return false 
+    bool IsLeftMarginModified( );
+
+    ///  @brief 
+    ///  
+    ///  @return true 
+    ///  @return false 
+    bool IsNameModified( );
+
+    ///  @brief 
+    ///  
+    ///  @return true 
+    ///  @return false 
+    bool IsPageHeightModified( );
+
+    ///  @brief 
+    ///  
+    ///  @return true 
+    ///  @return false 
+    bool IsPageWidthModified( );
+
+    ///  @brief 
+    ///  
+    ///  @return true 
+    ///  @return false 
+    bool IsRightMarginModified( );
+
+    ///  @brief 
+    ///  
+    ///  @return true 
+    ///  @return false 
+    bool IsTopMarginModified( );
+
+    ///  @brief 
+    ///  
+    ///  @param id 
+    void SetupDialog( wxTreeItemId id );
+
+    ///  @brief 
+    ///  
+    ///  @return true 
+    ///  @return false 
+    static bool ShowToolTips( );
+
+    ///  @brief Set the Album object
+    ///  
+    ///  @param album 
     void SetAlbum( Design::Album* album ) { m_album = album; };
+
+    ///  @brief Set the Border Size object
+    ///  
+    ///  @param size 
+    void SetBorderSize( wxString size );
+
+    ///  @brief Set the Border Size Modified object
+    ///  
+    ///  @param state 
+    void SetBorderSizeModified( bool state );
+
+    ///  @brief Set the Bottom Margin object
+    ///  
+    ///  @param margin 
+    void SetBottomMargin( wxString margin );
+
+
+    ///  @brief Set the Bottom Margin Modified object
+    ///  
+    ///  @param state 
+    void SetBottomMarginModified( bool state );
+
+    void SetGrayScaleImages( bool val );
+
+    ///  @brief Set the Left Margin object
+    ///  
+    ///  @param margin 
+    void SetLeftMargin( wxString margin );
+
+    ///  @brief Set the Left Margin Modified object
+    ///  
+    ///  @param state 
+    void SetLeftMarginModified( bool state );
+
+    ///  @brief Set the Name object
+    ///  
+    ///  @param name 
+    void SetName( wxString name );
+
+    ///  @brief Set the Name Color object
+    ///  
+    ///  @param color 
+    void SetNameColor( wxColour color );
+
+    ///  @brief Set the Name Font object
+    ///  
+    ///  @param font 
+    void SetNameFont( wxFont font );
+
+    ///  @brief Set the Name Modified object
+    ///  
+    ///  @param state 
+    void SetNameModified( bool state );
+
+    ///  @brief Set the Nbr Color object
+    ///  
+    ///  @param color 
+    void SetNbrColor( wxColour color );
+
+    ///  @brief Set the Nbr Font object
+    ///  
+    ///  @param font 
+    void SetNbrFont( wxFont font );
+
+    ///  @brief Set the Page Height object
+    ///  
+    ///  @param height 
+    void SetPageHeight( wxString height );
+
+    ///  @brief Set the Page Height Modified object
+    ///  
+    ///  @param state 
+    void SetPageHeightModified( bool state );
+
+    ///  @brief Set the Page Width object
+    ///  
+    ///  @param width 
+    void SetPageWidth( wxString width );
+
+    ///  @brief Set the Page Width Modified object
+    ///  
+    ///  @param state 
+    void SetPageWidthModified( bool state );
+
+    ///  @brief Set the Right Margin object
+    ///  
+    ///  @param margin 
+    void SetRightMargin( wxString margin );
+
+    ///  @brief Set the Right Margin Modified object
+    ///  
+    ///  @param state 
+    void SetRightMarginModified( bool state );
+
+    ///  @brief Set the Show Nbr object
+    ///  
+    ///  @param state 
+    void SetShowNbr( bool state );
+
+    ///  @brief Set the Show Stamp Title object
+    ///  
+    ///  @param state 
+    void SetShowStampTitle( bool state );
+
+    ///  @brief Set the Text Color object
+    ///  
+    ///  @param color 
+    void SetTextColor( wxColour color );
+
+    ///  @brief Set the Text Font object
+    ///  
+    ///  @param font 
+    void SetTextFont( wxFont font );
+
+    ///  @brief Set the Title Color object
+    ///  
+    ///  @param color 
+    void SetTitleColor( wxColour color );
+
+    ///  @brief Set the Title Font object
+    ///  
+    ///  @param font 
+    void SetTitleFont( wxFont font );
+
+    ///  @brief Set the Top Margin object
+    ///  
+    ///  @param margin 
+    void SetTopMargin( wxString margin );
+
+    ///  @brief Set the Top Margin Modified object
+    ///  
+    ///  @param state 
+    void SetTopMarginModified( bool state );
+
+    ///  @brief 
+    ///  
+    ///  @param event 
+    void OnCancelClick( wxCommandEvent& event );
+
+    ///  @brief 
+    ///  
+    ///  @param event 
+    void OnNameDefaultClick( wxCommandEvent& event );
+
+    ///  @brief 
+    ///  
+    ///  @param event 
+    void OnNbrDefaultClick( wxCommandEvent& event );
+
+    ///  @brief 
+    ///  
+    ///  @param event 
+    void OnOkClick( wxCommandEvent& event );
+
+    ///  @brief 
+    ///  
+    ///  @param event 
+    void OnTextDefaultClick( wxCommandEvent& event );
+
+    ///  @brief 
+    ///  
+    ///  @param event 
+    void OnTitleDefaultClick( wxCommandEvent& event );
+
+    ///  @brief 
+    ///  
+    void UpdateControls( );
 
 private:
     LabeledTextBox* m_name;

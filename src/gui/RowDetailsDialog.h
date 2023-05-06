@@ -34,7 +34,7 @@
 #include <wx/fontpicker.h>
 #include <wx/clrpicker.h>
 
-#include "gui/DesignTreeCtrl.h"
+#include "gui/AlbumTreeCtrl.h"
 #include "gui/GuiDefs.h"
 
 
@@ -63,7 +63,7 @@ namespace Design { class Row; };
   * RowDetailsDialog class declaration
   */
 
-class RowDetailsDialog: public wxDialog
+class RowDetailsDialog : public wxDialog
 {
     DECLARE_DYNAMIC_CLASS( RowDetailsDialog )
         DECLARE_EVENT_TABLE( )
@@ -95,6 +95,8 @@ public:
         ID_FIXEDSIZETEXTCTRL
     };
 
+    
+
     RowDetailsDialog( );
     RowDetailsDialog( wxWindow* parent, wxWindowID id = SYMBOL_ROWDETAILSDIALOG_IDNAME, const wxString& caption = SYMBOL_ROWDETAILSDIALOG_TITLE, const wxPoint& pos = SYMBOL_ROWDETAILSDIALOG_POSITION, const wxSize& size = SYMBOL_ROWDETAILSDIALOG_SIZE, long style = SYMBOL_ROWDETAILSDIALOG_STYLE );
 
@@ -113,7 +115,7 @@ public:
 
     // RowDetailsDialog event handler declarations
 
-    ///   wxID_OK
+    //   wxID_OK
     void OnOkClick( wxCommandEvent& event );
     void OnDefaultRadioButtonSelected( wxCommandEvent& event );
     void OnTopRadioButtonSelected( wxCommandEvent& event );
@@ -142,6 +144,10 @@ public:
     wxString GetName( );
 
     bool IsNameModified( );
+
+    
+
+
 
 private:
 

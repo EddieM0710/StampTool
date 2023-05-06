@@ -20,7 +20,7 @@
  * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
- **************************************************/
+ */
 
 #include "Defs.h"
 
@@ -29,14 +29,15 @@
 #include "design/Album.h"
 
 #include "utils/XMLUtilities.h"
-#include "gui/DesignTreeCtrl.h"
+#include "gui/AlbumTreeCtrl.h"
 #include "gui/AlbumImagePanel.h"
-#include "gui/StampDescriptionPanel.h"
+//#include "gui/StampDescriptionPanel.h"
 #include "gui/GuiUtils.h"
 
 #include "catalog/CatalogVolume.h"
 #include "catalog/Entry.h"
 #include "art/NotFound.xpm"
+
 
 namespace Design {
 
@@ -48,90 +49,6 @@ namespace Design {
     //     "Invalid Height",
     //     "Invalid Width" };
 
-    void Stamp::CalcFrame( )
-    {
-        //  border allowance for one edge
-        double borderAllowance = 0;//m_stampFrame.GetWidth( ) * BorderAllowancePercent / 2;
-        TitleLocation titleLocation = GetTitleLayoutLocation( );
-
-        // The width of the frame is the stamp width * border
-        SetWidth( m_stampFrame.GetWidth( ) + 2 * borderAllowance );
-        GetNameFrame( )->UpdateString( GetWidth( ) );
-
-        // the height of the frame is the stamp height + border + title height 
-        SetHeight( ( m_stampFrame.GetHeight( ) + 2 * borderAllowance ) + GetNameFrame( )->GetHeight( ) );
-        SetMinWidth( GetWidth( ) );
-        SetMinHeight( GetHeight( ) );
-        //the Frame is positioned  the border allowance over
-        m_stampFrame.SetXPos( borderAllowance );
-        m_stampFrame.SetYPos( borderAllowance );
-
-        GetNbrFrame( )->UpdateString( m_stampFrame.GetWidth( ) );
-
-        m_stampImageFrame.SetWidth( m_stampFrame.GetWidth( ) * ImagePercentOfActual );
-        m_stampImageFrame.SetHeight( m_stampFrame.GetHeight( ) * ImagePercentOfActual );
-        m_stampImageFrame.SetXPos( ( m_stampFrame.GetWidth( ) - m_stampImageFrame.GetWidth( ) ) / 2 );
-        if ( GetShowNbr( ) )
-        {
-            wxFont font = GetFont( AT_NbrFontType );
-            double textHeight = font.GetPointSize( ) * .26;
-            double yOffset = ( m_stampFrame.GetHeight( ) - m_stampImageFrame.GetHeight( ) - GetNbrFrame( )->GetHeight( ) ) / 2;
-            m_stampImageFrame.SetYPos( yOffset );
-        }
-        else
-        {
-            m_stampImageFrame.SetYPos( m_stampFrame.GetXPos( ) + ( m_stampFrame.GetHeight( ) - m_stampImageFrame.GetHeight( ) ) / 2 );
-        }
-    }
-
-    bool Stamp::UpdateMinimumSize( )
-    {
-        CalcFrame( );
-
-        if ( ValidateNode( ) == AT_FATAL )
-        {
-            return false;
-        }
-        return true;
-    }
-
-    void Stamp::UpdateSizes( )
-    {
-    }
-
-    void Stamp::UpdatePositions( )
-    {
-    }
-
-    NodeStatus Stamp::ValidateNode( )
-    {
-        NodeStatus status = AT_OK;
-        wxString str;
-        wxImage* image = GetStampImage( );
-        if ( image && !image->IsOk( ) )
-        {
-            str = wxString::Format( "Invalid Stamp Image.\n" );
-            GetErrorArray( )->Add( str );
-            //           SetError( AT_InvalidImage, AT_WARING );
-            status = AT_WARING;
-        }
-        if ( GetHeight( ) <= 0.01 )
-        {
-            str = wxString::Format( "Invalid Stamp Height.\n" );
-            GetErrorArray( )->Add( str );
-            //            SetError( AT_InvalidHeight, AT_FATAL );
-            status = AT_FATAL;
-        }
-        if ( GetWidth( ) <= 0.01 )
-        {
-            str = wxString::Format( "Invalid Stamp Width.\n" );
-            GetErrorArray( )->Add( str );
-            ///            SetError( AT_InvalidWidth, AT_FATAL );
-            status = AT_FATAL;
-        }
-        m_nodeValid = status;
-        return status;
-    }
 
     // void Stamp::ClearError( )
     // {
@@ -171,167 +88,46 @@ namespace Design {
 
     // };
 
-    void Stamp::SetStampHeight( double val )
+    //--------------
+    void Stamp::CalcFrame( )
     {
-        m_stampFrame.SetHeight( val );
-        wxString str = wxString::Format( "%d", val );
-        SetAttrStr( Design::AT_Height, str );
-        //        CalcFrame( );
-    };
+        //  border allowance for one edge
+        double borderAllowance = 0;//m_stampFrame.GetWidth( ) * BorderAllowancePercent / 2;
+        TitleLocation titleLocation = GetTitleLayoutLocation( );
 
-    void Stamp::SetStampHeight( wxString str )
-    {
-        SetAttrStr( Design::AT_Height, str );
-        double val;
-        bool ok = str.ToDouble( &val );
-        m_stampFrame.SetHeight( val );
-        //        CalcFrame( );
-    };
+        // The width of the frame is the stamp width * border
+        SetWidth( m_stampFrame.GetWidth( ) + 2 * borderAllowance );
+        UpdateString( GetNameFrame( ), GetWidth( ) );
 
-    double Stamp::GetStampHeight( )
-    {
-        return m_stampFrame.GetHeight( );
-    };
+        // the height of the frame is the stamp height + border + title height 
+        SetHeight( ( m_stampFrame.GetHeight( ) + 2 * borderAllowance ) + GetNameFrame( )->GetHeight( ) );
+        SetMinWidth( GetWidth( ) );
+        SetMinHeight( GetHeight( ) );
+        //the Frame is positioned  the border allowance over
+        m_stampFrame.SetXPos( borderAllowance );
+        m_stampFrame.SetYPos( borderAllowance );
 
-    wxString Stamp::GetStampHeightStr( )
-    {
-        return GetAttrStr( Design::AT_Height );
-    };
+        UpdateString( GetNbrFrame( ), m_stampFrame.GetWidth( ) );
 
-    void Stamp::SetStampWidth( double val )
-    {
-        m_stampFrame.SetWidth( val );
-        wxString str = wxString::Format( "%d", val );
-        SetAttrStr( Design::AT_Width, str );
-        CalcFrame( );
-    };
-
-    void Stamp::SetStampWidth( wxString str )
-    {
-        SetAttrStr( Design::AT_Width, str );
-        double val;
-        bool ok = str.ToDouble( &val );
-        m_stampFrame.SetWidth( val );
-        CalcFrame( );
-    };
-
-    double Stamp::GetStampWidth( )
-    {
-        return m_stampFrame.GetWidth( );
-    };
-
-    wxString Stamp::GetStampWidthStr( )
-    {
-        return GetAttrStr( Design::AT_Width );
-    };
-
-    wxString Stamp::GetStampImageFilename( )
-    {
-        wxFileName fn;
-        wxString filename;
-        wxImage* image;
-        bool fileOK = false;
-        wxString fileID = GetAttrStr( Design::AT_CatNbr );
-        if ( fileID.IsEmpty( ) )
-        {
-            fileOK = false;
-        }
-        else
-        {
-            wxString imageName = GetAttrStr( AT_ImageName );
-            filename = imageName;//GetToolData( )->GetImageFilename( fileID );
-            fn.Assign( filename );
-            wxString fullpath = fn.GetFullPath( );
-            wxFileName fn3 = fn;
-            fn3.MakeAbsolute( );
-            wxString str = fn3.GetFullPath( );
-            if ( fn.FileExists( ) )
-            {
-                if ( image->CanRead( filename ) )
-                {
-                    fileOK = true;
-                }
-            }
-        }
-        if ( fileOK )
-        {
-            return filename;
-        }
-        else
-        {
-            return "";
-        }
-    }
-    wxImage* Stamp::GetStampImage( )
-    {
-        wxString filename = GetStampImageFilename( );
-        wxImage* image;
-        if ( filename.IsEmpty( ) )
-        {
-            image = new wxImage( NotFound );
-        }
-        else
-        {
-            image = new wxImage( filename );
-        }
-        return image;
-    }
-
-    void Stamp::DrawPDF( wxPdfDocument* doc, double x, double y )
-    {
-
-
-        //Draw the outer frame transparent
-//        m_frame.DrawPDF( doc, x, y );
-
-        //Draw the Stamp frame
-        double xInnerPos = x + GetXPos( );
-        double yInnerPos = y + GetYPos( );
-
-        m_stampFrame.DrawPDF( doc, xInnerPos, yInnerPos );
-
-        double xImagePos = xInnerPos + m_stampFrame.GetXPos( ) + m_stampImageFrame.GetXPos( );
-        double yImagePos = yInnerPos + m_stampFrame.GetYPos( );
-
-        wxString filename = GetStampImageFilename( );
-
-        if ( !filename.IsEmpty( ) )
-        {
-            //Draw the stamp image
-
-            double height = m_stampImageFrame.GetHeight( );
-            double width = m_stampImageFrame.GetWidth( );
-            if ( width <= 0.01 || height <= 0.01 )
-            {
-                height = 10;
-                width = 10;
-            }
-
-            DrawImagePDF( doc, filename, xImagePos, yImagePos + 1, width, height );
-        }
-        else
-        {
-            // Draw missing image frame transparent
-            //m_stampImageFrame.DrawPDF( dc, xImagePos, yImagePos );
-        }
-
-        //  RealPoint pos( xInnerPos, ( yInnerPos + m_stampFrame.GetHeight( ) ) );
-        //  RealSize size( GetWidth( ), GetHeight( ) - m_stampFrame.GetHeight( ) );
-
-          //GetTitleFrame( )->DrawTitlePDF( doc, GetTitle( ), pos, size );
-
+        m_stampImageFrame.SetWidth( m_stampFrame.GetWidth( ) * ImagePercentOfActual );
+        m_stampImageFrame.SetHeight( m_stampFrame.GetHeight( ) * ImagePercentOfActual );
+        m_stampImageFrame.SetXPos( ( m_stampFrame.GetWidth( ) - m_stampImageFrame.GetWidth( ) ) / 2 );
         if ( GetShowNbr( ) )
         {
-            double xIDPos = xInnerPos + m_stampFrame.GetXPos( ) + m_stampImageFrame.GetXPos( );
-            double yIDPos = yImagePos + m_stampImageFrame.GetHeight( );
-            //    DrawIDPDF( doc, xIDPos, yIDPos );
+            wxFont font = GetNbrFrame( )->GetFont( );
+            double textHeight = font.GetPointSize( ) * .26;
+            double yOffset = ( m_stampFrame.GetHeight( ) - m_stampImageFrame.GetHeight( ) - GetNbrFrame( )->GetHeight( ) ) / 2;
+            m_stampImageFrame.SetYPos( yOffset );
+        }
+        else
+        {
+            m_stampImageFrame.SetYPos( m_stampFrame.GetXPos( ) + ( m_stampFrame.GetHeight( ) - m_stampImageFrame.GetHeight( ) ) / 2 );
         }
     }
 
+    //--------------
     void Stamp::Draw( wxDC& dc, double x, double y )
     {
-
-
         //Draw the outer frame transparent
         // m_frame.Draw( dc, x, y );
 
@@ -383,56 +179,245 @@ namespace Design {
         }
     }
 
+    //--------------
 
-    // void Stamp::DrawID( wxDC& dc, double x, double y )
-    // {
+    void Stamp::DrawPDF( wxPdfDocument* doc, double x, double y )
+    {
+        //Draw the outer frame transparent
+//        m_frame.DrawPDF( doc, x, y );
 
-    //     wxFont currFont = dc.GetFont( );
-    //     wxColour currColor = dc.GetTextForeground( );
-    //     wxFont catFont = GetFont( AT_NbrFontType );
-    //     wxFont font( catFont );
-    //     wxColour color = GetColor( AT_NbrFontType );
-    //     dc.SetFont( font );
-    //     dc.SetTextForeground( color );
+        //Draw the Stamp frame
+        double xInnerPos = x + GetXPos( );
+        double yInnerPos = y + GetYPos( );
 
-    //     wxString id = GetAttrStr( AT_CatNbr );
-    //     id.Trim( );
-    //     id.Trim( false );
-    //     int ndx = id.First( ' ' );
-    //     id = id.Mid( ndx + 1 );
-    //     wxSize ext = dc.GetTextExtent( id );
-    //     wxSize  m_idTextExtent( ext.x / Design::ScaleFactor.x, ext.y / Design::ScaleFactor.y );
+        m_stampFrame.DrawPDF( doc, xInnerPos, yInnerPos );
 
-    //     x = x + ( m_stampImageFrame.GetWidth( ) - m_idTextExtent.x ) / 2;
-    //     dc.DrawText( id, x * ScaleFactor.x, y * ScaleFactor.y );
-    //     dc.SetFont( currFont );
-    //     dc.SetTextForeground( currColor );
+        double xImagePos = xInnerPos + m_stampFrame.GetXPos( ) + m_stampImageFrame.GetXPos( );
+        double yImagePos = yInnerPos + m_stampFrame.GetYPos( );
 
-    //     //delete font;
-    // }
+        wxString filename = GetStampImageFilename( );
+
+        if ( !filename.IsEmpty( ) )
+        {
+            //Draw the stamp image
+
+            double height = m_stampImageFrame.GetHeight( );
+            double width = m_stampImageFrame.GetWidth( );
+            if ( width <= 0.01 || height <= 0.01 )
+            {
+                height = 10;
+                width = 10;
+            }
+
+            DrawImagePDF( doc, filename, xImagePos, yImagePos + 1, width, height );
+        }
+        else
+        {
+            // Draw missing image frame transparent
+            //m_stampImageFrame.DrawPDF( dc, xImagePos, yImagePos );
+        }
+
+        //  RealPoint pos( xInnerPos, ( yInnerPos + m_stampFrame.GetHeight( ) ) );
+        //  RealSize size( GetWidth( ), GetHeight( ) - m_stampFrame.GetHeight( ) );
+
+          //GetTitleFrame( )->DrawTitlePDF( doc, GetTitle( ), pos, size );
+
+        if ( GetShowNbr( ) )
+        {
+            double xIDPos = xInnerPos + m_stampFrame.GetXPos( ) + m_stampImageFrame.GetXPos( );
+            double yIDPos = yImagePos + m_stampImageFrame.GetHeight( );
+            //    DrawIDPDF( doc, xIDPos, yIDPos );
+        }
+    }
+
+    //--------------
+
+    void Stamp::DumpStamp( wxTextCtrl* ctrl )
+    {
+        *ctrl << DumpFrame( );
+        *ctrl << m_stampFrame.LayoutString( );
+        *ctrl << m_stampImageFrame.LayoutString( );
+    }
+
+    //--------------
+
+    LabelFrame* Stamp::GetNameFrame( ) { return m_nameFrame; };
+
+    //--------------
+
+    wxString  Stamp::GetNameString( ) { return m_nameFrame->GetString( ); };
+    void  Stamp::SetNameString( wxString str )
+    {
+        SetAttrStr( AT_Name, str );
+        m_nameFrame->SetString( str );
+    };
+
+    //--------------
 
 
+    LabelFrame* Stamp::GetNbrFrame( ) { return m_nbrFrame; };
 
-    // void Stamp::DrawIDPDF( wxPdfDocument* doc, double x, double y )
-    // {
+    wxString  Stamp::GetNbrString( ) { return m_nbrFrame->GetString( ); };
+    void  Stamp::SetNbrString( wxString str )
+    {
+        SetAttrStr( AT_Name, str );
+        m_nbrFrame->SetString( str );
+    };
 
-    //     wxFont font = GetFont( AT_NbrFontType );
-    //     double textHeight = font.GetPointSize( ) * .26;
-    //     doc->SetFont( font );
-    //     wxPdfFont pdfFont = doc->GetCurrentFont( );
+    //--------------
 
-    //     wxString id = GetAttrStr( AT_CatNbr );
-    //     id.Trim( );
-    //     id.Trim( false );
-    //     int ndx = id.First( ' ' );
-    //     id = id.Mid( ndx + 1 );
+    double Stamp::GetStampHeight( )
+    {
+        return m_stampFrame.GetHeight( );
+    };
 
-    //     double idXmargin = ( m_stampImageFrame.GetWidth( ) - doc->GetStringWidth( id ) ) / 2.;
-    //     RealPoint pos( x + idXmargin, y );
-    //     RealSize size( doc->GetStringWidth( id ), textHeight );
-    //     DrawLabelPDF( doc, id, pos, size );
-    //     //        delete font;
-    // }
+    //--------------
+
+    wxString Stamp::GetStampHeightStr( )
+    {
+        return GetAttrStr( Design::AT_Height );
+    };
+
+    //--------------
+
+    double Stamp::GetStampWidth( )
+    {
+        return m_stampFrame.GetWidth( );
+    };
+
+    //--------------
+
+    wxString Stamp::GetStampWidthStr( )
+    {
+        return GetAttrStr( Design::AT_Width );
+    };
+
+    //--------------
+
+    wxString Stamp::GetStampImageFilename( )
+    {
+        wxFileName fn;
+        wxString filename;
+        wxImage* image;
+        bool fileOK = false;
+        wxString fileID = GetAttrStr( Design::AT_CatNbr );
+        if ( fileID.IsEmpty( ) )
+        {
+            fileOK = false;
+        }
+        else
+        {
+            wxString imageName = GetAttrStr( AT_ImageName );
+            filename = imageName;//GetFrame( )->GetImageFilename( fileID );
+            fn.Assign( filename );
+            wxString fullpath = fn.GetFullPath( );
+            wxFileName fn3 = fn;
+            fn3.MakeAbsolute( );
+            wxString str = fn3.GetFullPath( );
+            if ( fn.FileExists( ) )
+            {
+                if ( image->CanRead( filename ) )
+                {
+                    fileOK = true;
+                }
+            }
+        }
+        if ( fileOK )
+        {
+            return filename;
+        }
+        else
+        {
+            return "";
+        }
+    }
+
+    //--------------
+
+    wxImage* Stamp::GetStampImage( )
+    {
+        wxString filename = GetStampImageFilename( );
+        wxImage* image;
+        if ( filename.IsEmpty( ) )
+        {
+            image = new wxImage( NotFound );
+        }
+        else
+        {
+            image = new wxImage( filename );
+        }
+        return image;
+    }
+
+    //--------------
+
+    void Stamp::LoadFonts( wxXmlNode* node )
+    {
+        wxXmlNode* fonts = Utils::FirstChildElement( node, "Fonts" );
+        if ( fonts )
+        {
+            m_nameFrame->LoadFont( fonts );
+            m_nbrFrame->LoadFont( fonts );
+        }
+    }
+
+    //--------------
+
+    void Stamp::SetStampHeight( double val )
+    {
+        m_stampFrame.SetHeight( val );
+        wxString str = wxString::Format( "%d", val );
+        SetAttrStr( Design::AT_Height, str );
+        //        CalcFrame( );
+    };
+
+    //--------------
+
+    void Stamp::SetStampHeight( wxString str )
+    {
+        SetAttrStr( Design::AT_Height, str );
+        double val;
+        bool ok = str.ToDouble( &val );
+        m_stampFrame.SetHeight( val );
+        //        CalcFrame( );
+    };
+
+    //--------------
+
+    void Stamp::SetStampWidth( double val )
+    {
+        m_stampFrame.SetWidth( val );
+        wxString str = wxString::Format( "%d", val );
+        SetAttrStr( Design::AT_Width, str );
+        CalcFrame( );
+    };
+
+    //--------------
+
+    void Stamp::SetStampWidth( wxString str )
+    {
+        SetAttrStr( Design::AT_Width, str );
+        double val;
+        bool ok = str.ToDouble( &val );
+        m_stampFrame.SetWidth( val );
+        //        CalcFrame( );
+    };
+
+    //--------------
+
+    void Stamp::ReportLayout( )
+    {
+        wxString id = GetAttrStr( AT_CatNbr );
+
+        std::cout << "Layout for Stamp ID " << id << "\nOuter ";
+        ReportLayoutFrame( );
+        std::cout << "\nInner ";
+        m_stampFrame.ReportLayout( );
+        std::cout << "\nImage ";
+        m_stampImageFrame.ReportLayout( );
+    };
+
+    //--------------
 
     void Stamp::Save( wxXmlNode* xmlNode )
     {
@@ -447,23 +432,77 @@ namespace Design {
         SaveFonts( xmlNode );
     }
 
-    void Stamp::ReportLayout( )
-    {
-        wxString id = GetAttrStr( AT_CatNbr );
+    //--------------
 
-        std::cout << "Layout for Stamp ID " << id << "\nOuter ";
-        ReportLayoutFrame( );
-        std::cout << "\nInner ";
-        m_stampFrame.ReportLayout( );
-        std::cout << "\nImage ";
-        m_stampImageFrame.ReportLayout( );
-    };
-
-    void Stamp::DumpStamp( wxTextCtrl* ctrl )
+    void Stamp::SaveFonts( wxXmlNode* parent )
     {
-        *ctrl << DumpFrame( );
-        *ctrl << m_stampFrame.LayoutString( );
-        *ctrl << m_stampImageFrame.LayoutString( );
+        if ( m_nameFrame->GetFontNdx( ).IsOk( ) || m_nbrFrame->GetFontNdx( ).IsOk( ) )
+        {
+            wxXmlNode* fonts = Utils::NewNode( parent, "Fonts" );
+            if ( fonts )
+            {
+                m_nameFrame->SaveFont( fonts );
+                m_nbrFrame->SaveFont( fonts );
+            }
+        }
     }
+
+    //--------------
+
+    bool Stamp::UpdateMinimumSize( )
+    {
+        CalcFrame( );
+
+        if ( ValidateNode( ) == AT_FATAL )
+        {
+            return false;
+        }
+        return true;
+    }
+
+    //--------------
+
+    void Stamp::UpdateSizes( )
+    {
+    }
+
+    //--------------
+
+    void Stamp::UpdatePositions( )
+    {
+    }
+
+    //--------------
+
+    NodeStatus Stamp::ValidateNode( )
+    {
+        NodeStatus status = AT_OK;
+        wxString str;
+        wxImage* image = GetStampImage( );
+        if ( image && !image->IsOk( ) )
+        {
+            str = wxString::Format( "Invalid Stamp Image.\n" );
+            GetErrorArray( )->Add( str );
+            //           SetError( AT_InvalidImage, AT_WARING );
+            status = AT_WARING;
+        }
+        if ( GetHeight( ) <= 0.01 )
+        {
+            str = wxString::Format( "Invalid Stamp Height.\n" );
+            GetErrorArray( )->Add( str );
+            //            SetError( AT_InvalidHeight, AT_FATAL );
+            status = AT_FATAL;
+        }
+        if ( GetWidth( ) <= 0.01 )
+        {
+            str = wxString::Format( "Invalid Stamp Width.\n" );
+            GetErrorArray( )->Add( str );
+            status = AT_FATAL;
+        }
+        m_nodeValid = status;
+        return status;
+    }
+
+    //--------------
 
 }

@@ -20,7 +20,7 @@
  * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
- **************************************************/
+ */
 
 #ifndef Settings_H
 #define Settings_H
@@ -28,8 +28,10 @@
 #include <wx/arrstr.h>
 #include <wx/string.h>
 #include "wx/xml/xml.h"
-#include "utils/FontList.h"
+
 #include "design/DesignDefs.h"
+#include "utils/FontNdx.h"
+
 
 namespace Utils {
 
@@ -40,10 +42,12 @@ namespace Utils {
     /**
      * @brief Settings for the application
      *
-     **************************************************/
+     */
     class Settings
     {
     public:
+
+
         Settings( );
         ~Settings( ) { };
 
@@ -62,21 +66,21 @@ namespace Utils {
         wxString GetUpperDivision( ) { return m_upperDivision; };
         wxString GetUpperPeriod( ) { return m_upperPeriod; };
 
-        wxFont GetNbrFont( ) { return GetFontList( )->GetFont( FontPreference[ Design::AT_NbrFontType ].Get( ) ); };
-        wxColour GetNbrColor( ) { return GetFontList( )->GetColor( FontPreference[ Design::AT_NbrFontType ].Get( ) );; };
+        wxFont GetNbrFont( );
+        wxColour GetNbrColor( );
 
-        wxFont GetNameFont( ) { return GetFontList( )->GetFont( FontPreference[ Design::AT_NameFontType ].Get( ) ); };
-        wxColour GetNameColor( ) { return GetFontList( )->GetColor( FontPreference[ Design::AT_NameFontType ].Get( ) );; };
+        wxFont GetNameFont( );
+        wxColour GetNameColor( );
 
-        wxFont GetTitleFont( ) { return GetFontList( )->GetFont( FontPreference[ Design::AT_TitleFontType ].Get( ) ); };
-        wxColour GetTitleColor( ) { return GetFontList( )->GetColor( FontPreference[ Design::AT_TitleFontType ].Get( ) ); };
+        wxFont GetTitleFont( );
+        wxColour GetTitleColor( );
 
-        wxFont GetTextFont( ) { return GetFontList( )->GetFont( FontPreference[ Design::AT_TextFontType ].Get( ) ); };
-        wxColour GetTextColor( ) { return GetFontList( )->GetColor( FontPreference[ Design::AT_TextFontType ].Get( ) ); };
+        wxFont GetTextFont( );
+        wxColour GetTextColor( );
 
 
-        int GetFontNdxPreference( Design::AT_FontUsageType fontType ) { return FontPreference[ fontType ].Get( ); };
-        void SetFontNdxPreference( Design::AT_FontUsageType fontType, int ndx ) { FontPreference[ fontType ].Set( ndx ); };
+        int GetFontNdxPreference( Design::FontUsageType fontType ) { return FontPreference[ fontType ].Get( ); };
+        void SetFontNdxPreference( Design::FontUsageType fontType, int ndx ) { FontPreference[ fontType ].Set( ndx ); };
 
         void SetConfigurationDirectory( wxString val ) { m_configurationDirectory = val.Trim( ); m_dirty = true; };
         //void SetImageDirectory( wxString val ) { m_imageDirectory = val.Trim( );m_dirty = true; };
@@ -129,6 +133,8 @@ namespace Utils {
         void SetCatalogVolumeEditableDefault( bool val = true ) { m_catalogVolumeEditableDefault = val; };
 
         void DumpFont( wxString Level = "" );
+
+
 
 
     private:

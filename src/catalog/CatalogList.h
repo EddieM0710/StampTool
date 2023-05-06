@@ -20,7 +20,7 @@
  * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
- **************************************************/
+ */
 
 #ifndef CatalogList_H
 #define CatalogList_H
@@ -34,15 +34,19 @@
 #include "catalog/CatalogDefs.h"
 #include "catalog/CatalogVolume.h"
 
+
 namespace Catalog {
 
     class CatalogVolume;
 
+    int WayToSort( Catalog::CatalogVolume* sect1, Catalog::CatalogVolume* sect2 );
 
     ///  @brief The array that contains all the catalogs
     ///  
     class CatalogList
     {
+
+
     public:
 
         ///  @brief Construct a new Catalog List object
@@ -53,6 +57,8 @@ namespace Catalog {
         ///  @brief Destroy the Catalog List object
         ///  
         ~CatalogList( ) { };
+
+        void BuildVolumeNameStrings( );
 
         ///  @brief 
         ///  
@@ -78,7 +84,7 @@ namespace Catalog {
 
         ///  @brief Load all the catalog volumes
         ///  
-        void LoadCatalogVolumes( );
+        void Load( );
 
         ///  @brief Remove all the elements of thearray and delete it.
         ///  
@@ -91,6 +97,11 @@ namespace Catalog {
         ///  @return wxArrayString& 
         wxArrayString& GetVolumeNameStrings( ) { return m_volumeNameStrings; };
 
+        ///  @brief Get the ndx of the currently selected volume
+        ///  
+        ///  @param i 
+        int GetCatalogVolumeNdx( ) { return m_catalogVolumeNdx; };
+
         ///  @brief Set the ndx of the currently selected volume
         ///  
         ///  @param i 
@@ -100,7 +111,6 @@ namespace Catalog {
         ///  
         ///  @return Catalog::CatalogVolumeArray* 
         Catalog::CatalogVolumeArray* GetCatalogArray( ) { return &m_catalogArray; };
-
     private:
         Catalog::CatalogVolumeArray m_catalogArray;
         int m_catalogVolumeNdx;

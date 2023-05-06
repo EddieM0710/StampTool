@@ -24,26 +24,7 @@
 #ifndef _DEFINEPERIODSPANEL_H_
 #define _DEFINEPERIODSPANEL_H_
 
-
- /*
-  * Includes
-  */
-
 #include "gui/GuiDefs.h"
-
-
-  /*
-   * Forward declarations
-   */
-
-
-
-
-   /*
-    * Control identifiers
-    */
-
-
 
 #define SYMBOL_DEFINEPERIODSPANEL_STYLE  wxTAB_TRAVERSAL
 #define SYMBOL_DEFINEPERIODSPANEL_TITLE _( "DefinePeriods" )
@@ -51,13 +32,7 @@
 #define SYMBOL_DEFINEPERIODSPANEL_SIZE wxSize( 400, 300 )
 #define SYMBOL_DEFINEPERIODSPANEL_POSITION wxDefaultPosition
 
-
-
-    /*
-     * DefinePeriodsPanel class declaration
-     */
-
-class DefinePeriodsPanel: public wxPanel
+class DefinePeriodsPanel : public wxPanel
 {
     DECLARE_DYNAMIC_CLASS( DefinePeriodsPanel )
         DECLARE_EVENT_TABLE( )
@@ -73,51 +48,89 @@ public:
         ID_MODERNYEAR
     };
 
-
+    ///  @brief Construct a new Define Periods Panel object
+    ///  
     DefinePeriodsPanel( );
+
+    ///  @brief Construct a new Define Periods Panel object
+    ///  
+    ///  @param parent 
+    ///  @param id 
+    ///  @param pos 
+    ///  @param size 
+    ///  @param style 
     DefinePeriodsPanel( wxWindow* parent, wxWindowID id = SYMBOL_DEFINEPERIODSPANEL_IDNAME, const wxPoint& pos = SYMBOL_DEFINEPERIODSPANEL_POSITION, const wxSize& size = SYMBOL_DEFINEPERIODSPANEL_SIZE, long style = SYMBOL_DEFINEPERIODSPANEL_STYLE );
 
-
-    bool Create( wxWindow* parent, wxWindowID id = SYMBOL_DEFINEPERIODSPANEL_IDNAME, const wxPoint& pos = SYMBOL_DEFINEPERIODSPANEL_POSITION, const wxSize& size = SYMBOL_DEFINEPERIODSPANEL_SIZE, long style = SYMBOL_DEFINEPERIODSPANEL_STYLE );
-
-
+    ///  @brief Destroy the Define Periods Panel object
+    ///  
     ~DefinePeriodsPanel( );
 
+    ///  @brief 
+    ///  
+    ///  @param parent 
+    ///  @param id 
+    ///  @param pos 
+    ///  @param size 
+    ///  @param style 
+    ///  @return true 
+    ///  @return false 
+    bool Create( wxWindow* parent, wxWindowID id = SYMBOL_DEFINEPERIODSPANEL_IDNAME, const wxPoint& pos = SYMBOL_DEFINEPERIODSPANEL_POSITION, const wxSize& size = SYMBOL_DEFINEPERIODSPANEL_SIZE, long style = SYMBOL_DEFINEPERIODSPANEL_STYLE );
 
-    void Init( );
-
-
+    ///  @brief Create a Controls object
+    ///  
     void CreateControls( );
 
-    // DefinePeriodsPanel event handler declarations
+    ///  @brief 
+    ///  
+    void Init( );
 
-        ///   ID_ANTIQUE
-    void OnAntiqueTextUpdated( wxCommandEvent& event );
-
-    ///   ID_ANTIQUEYEAR
-    void OnAntiqueYearTextUpdated( wxCommandEvent& event );
-
-    ///   ID_CLASSIC
-    void OnClassicTextUpdated( wxCommandEvent& event );
-
-    ///   ID_MODERN
-    void OnModernTextUpdated( wxCommandEvent& event );
-
-    ///   ID_MODERNYEAR
-    void OnModernYearTextUpdated( wxCommandEvent& event );
-
-    ///   wxID_CANCEL
-    void OnCancelClick( wxCommandEvent& event );
-
-    ///   wxID_OK
-    void OnOkClick( );
-
-
-
-
-    static bool ShowToolTips( );
+    ///  @brief 
+    ///  
+    ///  @return true 
+    ///  @return false 
     bool IsDirty( ) { return m_dirty; };
 
+    ///  @brief 
+    ///  
+    ///  @param event 
+    void OnAntiqueTextUpdated( wxCommandEvent& event );
+
+    ///  @brief 
+    ///  
+    ///  @param event 
+    void OnAntiqueYearTextUpdated( wxCommandEvent& event );
+
+    ///  @brief 
+    ///  
+    ///  @param event 
+    void OnCancelClick( wxCommandEvent& event );
+
+    ///  @brief 
+    ///  
+    ///  @param event 
+    void OnClassicTextUpdated( wxCommandEvent& event );
+
+    ///  @brief 
+    ///  
+    ///  @param event 
+    void OnModernTextUpdated( wxCommandEvent& event );
+
+    ///  @brief 
+    ///  
+    ///  @param event 
+    void OnModernYearTextUpdated( wxCommandEvent& event );
+
+    ///  @brief 
+    ///  
+    void OnOkClick( );
+
+    ///  @brief 
+    ///  
+    ///  @return true 
+    ///  @return false 
+    static bool ShowToolTips( );
+
+private:
     // DefinePeriodsPanel member variables
     wxTextCtrl* m_antiqueTextBox;
     wxTextCtrl* m_AntiqueYear;

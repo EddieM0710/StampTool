@@ -53,7 +53,7 @@
  * GenerateListSettings class declaration
  */
 
-class GenerateListSettings: public wxDialog
+class GenerateListSettings : public wxDialog
 {
     DECLARE_DYNAMIC_CLASS( GenerateListSettings )
         DECLARE_EVENT_TABLE( )
@@ -76,6 +76,8 @@ public:
     };
 
 
+    
+
 
     GenerateListSettings( );
     GenerateListSettings( wxWindow* parent, wxWindowID id = SYMBOL_GENERATELISTSETTINGS_IDNAME, const wxString& caption = SYMBOL_GENERATELISTSETTINGS_TITLE, const wxPoint& pos = SYMBOL_GENERATELISTSETTINGS_POSITION, const wxSize& size = SYMBOL_GENERATELISTSETTINGS_SIZE, long style = SYMBOL_GENERATELISTSETTINGS_STYLE );
@@ -94,25 +96,25 @@ public:
 
     // GenerateListSettings event handler declarations
 
-        ///   ID_STATUSALLBUTTON
+        //   ID_STATUSALLBUTTON
     void OnStatusAllButtonClick( wxCommandEvent& event );
 
-    ///   IDSTATUSCLEARBUTTON
+    //   IDSTATUSCLEARBUTTON
     void OnStatusClearButtonClick( wxCommandEvent& event );
 
-    ///   ID_EMISSIONALLBUTTON
+    //   ID_EMISSIONALLBUTTON
     void OnEmissionAllButtonClick( wxCommandEvent& event );
 
-    ///   ID_EMISSIONCLEARBUTTON
+    //   ID_EMISSIONCLEARBUTTON
     void OnEmissionClearButtonClick( wxCommandEvent& event );
 
-    ///   ID_FORMATCLEARBUTTON
+    //   ID_FORMATCLEARBUTTON
     void OnFormatClearButtonClick( wxCommandEvent& event );
 
-    ///   ID_CLEARYEARRANGEBUTTON
+    //   ID_CLEARYEARRANGEBUTTON
     void OnClearYearRangeButtonClick( wxCommandEvent& event );
 
-    ///   wxID_OK
+    //   wxID_OK
     void OnOkClick( wxCommandEvent& event );
 
 
@@ -132,6 +134,10 @@ public:
     void SetFromYear( wxString year ) { m_fromYear->SetValue( year ); };
     wxString GetToYear( ) { return m_toYear->GetValue( ); };
     void SetToYear( wxString year ) { m_toYear->SetValue( year ); };
+
+    
+
+
 
     wxCheckListBox* m_statusListCtrl;
     wxArrayString m_statusListCtrlStrings;

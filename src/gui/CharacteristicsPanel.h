@@ -45,7 +45,7 @@ class LabeledTextBox;
  *
  * Inherits from wxPanel. This class manages the widgets that
  * display the physical characteristics of the stamp.
- **************************************************/
+ */
 class CharacteristicsPanel : public wxPanel
 {
     DECLARE_DYNAMIC_CLASS( CharacteristicsPanel )
@@ -69,12 +69,10 @@ public:
         ID_EXPIRYDATEEXTBOX
     };
 
-
-
     /**
      * @brief Default Constructor for a new CharacteristicsPanel object
      *
-     **************************************************/
+     */
     CharacteristicsPanel( void );
 
     /**
@@ -86,7 +84,7 @@ public:
      * @param  size	The panel size. The value wxDefaultSize indicates a default size, chosen by either the windowing system or wxWidgets, depending on platform.
      * @param  style	The window style.
      * @see wxPanel.
-     **************************************************/
+     */
     CharacteristicsPanel( wxWindow* parent,
         wxWindowID id = SYMBOL_CHARACTERISTICSPANEL_IDNAME,
         const wxPoint& pos
@@ -94,6 +92,11 @@ public:
         const wxSize& size = SYMBOL_CHARACTERISTICSPANEL_SIZE,
         long style = SYMBOL_CHARACTERISTICSPANEL_STYLE );
 
+    /**
+     * @brief Destroy the Characteristics Panel object
+     *
+     */
+    ~CharacteristicsPanel( void );
 
     /**
      * @brief  Used for two-step panel construction.
@@ -106,41 +109,45 @@ public:
      * @param  style	The window style.
      * @return bool
      *
-     **************************************************/
+     */
     bool Create( wxWindow* parent,
         wxWindowID id = SYMBOL_CHARACTERISTICSPANEL_IDNAME,
         const wxPoint& pos = SYMBOL_CHARACTERISTICSPANEL_POSITION,
         const wxSize& size = SYMBOL_CHARACTERISTICSPANEL_SIZE,
         long style = SYMBOL_CHARACTERISTICSPANEL_STYLE );
 
-
-    /**
-     * @brief Destroy the Characteristics Panel object
-     *
-     **************************************************/
-    ~CharacteristicsPanel( void );
+    /// @brief Creates the controls and sizers
+    void CreateControls( );
 
     ///@brief Initialises member variables
     void Init( );
 
-    /// @brief Creates the controls and sizers
-    void CreateControls( );
-
-
-
-
-    static bool ShowToolTips( );
-
-
-    /// @brief Initializes the CharacteristicsPanel with new stamp values
-
-    void UpdatePanel( );
-
-    void UpdateStampValue( Catalog::DataTypes dt, LabeledTextBox* textBox );
-
+    ///  @brief 
+    ///  
+    ///  @param event 
     void OnTextctrlTextUpdated( wxCommandEvent& event );
+
+    ///  @brief Set the Data Editable object
+    ///  
+    ///  @param val 
     void SetDataEditable( bool val );
 
+    ///  @brief 
+    ///  
+    ///  @return true 
+    ///  @return false 
+    static bool ShowToolTips( );
+
+    /// @brief Initializes the CharacteristicsPanel with new stamp values
+    void UpdatePanel( );
+
+    ///  @brief 
+    ///  
+    ///  @param dt 
+    ///  @param textBox 
+    void UpdateStampValue( Catalog::DataTypes dt, LabeledTextBox* textBox );
+
+private:
 
     LabeledTextBox* m_height;  ///< widget to display stamp height
     LabeledTextBox* m_width;  ///< widget to display stamp width

@@ -21,7 +21,7 @@
  * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
- **************************************************/
+ */
 
 #ifndef DebugString_H
 #define DebugString_H
@@ -31,10 +31,14 @@
 class DebugString
 {
 public:
+
+    
     DebugString( ) { m_maxSize = 2000; };
     DebugString( int size ) { m_maxSize = size; };
     ~DebugString( ) {};
     void Append( wxString str );
+
+    
 private:
     wxString m_str;
     int m_maxSize;

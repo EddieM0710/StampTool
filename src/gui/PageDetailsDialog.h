@@ -33,7 +33,7 @@
 #include <wx/fontpicker.h>
 #include <wx/clrpicker.h>
 
-#include "gui/DesignTreeCtrl.h"
+#include "gui/AlbumTreeCtrl.h"
 #include "gui/GuiDefs.h"
 #include "design/Album.h"
 
@@ -57,7 +57,7 @@ namespace Design { class Page; };
  * PageDetailsDialog class declaration
  */
 
-class PageDetailsDialog: public wxDialog
+class PageDetailsDialog : public wxDialog
 {
     DECLARE_DYNAMIC_CLASS( PageDetailsDialog )
         DECLARE_EVENT_TABLE( )
@@ -84,6 +84,8 @@ public:
         ID_NOTEBOOKDETAILSPANEL
     };
 
+
+    
 
     PageDetailsDialog( );
     PageDetailsDialog( wxWindow* parent, wxWindowID id = SYMBOL_PAGEDETAILSDIALOG_IDNAME, const wxString& caption = SYMBOL_PAGEDETAILSDIALOG_TITLE, const wxPoint& pos = SYMBOL_PAGEDETAILSDIALOG_POSITION, const wxSize& size = SYMBOL_PAGEDETAILSDIALOG_SIZE, long style = SYMBOL_PAGEDETAILSDIALOG_STYLE );
@@ -120,6 +122,10 @@ public:
     void SetTitleFont( wxFont font );
     bool GetShowTitle( );
     bool GetShowFrame( );
+
+    
+
+
 
 private:
     LabeledTextBox* m_name;

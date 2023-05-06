@@ -48,14 +48,18 @@
 #include "utils/Settings.h"
 
 #include "catalog/CatalogList.h"
+#include "catalog/CatalogData.h"
 #include "catalog/CatalogVolume.h"
 #include "design/DesignDefs.h"
 #include "design/AlbumVolume.h"
 #include "design/AlbumList.h"
 #include "design/AlbumBase.h"
+#include "design/AlbumData.h"
 
 #include "gui/CatalogTreeCtrl.h"
-#include "gui/DesignTreeCtrl.h"
+#include "gui/AlbumTreeCtrl.h"
+#include "gui/StampToolFrame.h"
+
 
 
 namespace Utils {
@@ -70,14 +74,14 @@ namespace Utils {
         SetDirty( false );
     }
 
-    //***** 
+    // 
 
     wxString Project::GetDesignFilename( )
     {
         return m_designFilename;
     };
 
-    //*****
+    //
 
     void Project::SetDesignFilename( wxString albumFilename )
     {
@@ -85,16 +89,16 @@ namespace Utils {
         m_dirty = true;
     };
 
-    void Project::SetCatalogFilename( wxString catalogFilename )
-    {
-        if ( m_catalogFilename.Cmp( catalogFilename ) )
-        {
-            m_catalogFilename = catalogFilename;
-            SetDirty( );
-        }
-    };
+    // void Project::SetCatalogFilename( wxString catalogFilename )
+    // {
+    //     if ( m_catalogFilename.Cmp( catalogFilename ) )
+    //     {
+    //         m_catalogFilename = catalogFilename;
+    //         SetDirty( );
+    //     }
+    // };
 
-    //*****
+    //
 
     void Project::SetProjectFilename( wxString name )
     {
@@ -102,7 +106,7 @@ namespace Utils {
         GetSettings( )->SetLastFile( m_projectFilename );
     };
 
-    //*****
+    //
 
     wxString Project::MakeFileAbsolute( wxString filename )
     {
@@ -116,7 +120,7 @@ namespace Utils {
 
 
 
-    //*****
+    //
 
     bool Project::LoadProjectXML( )
     {
@@ -207,13 +211,6 @@ namespace Utils {
         }
 
 
-
-
-        // wxXmlNode* imagePath = FirstChildElement( projectRoot, "ImagePath" );
-        // if ( imagePath )
-        // {
-        //     m_imagePath = imagePath->GetAttribute( "Name" );
-        // }
         wxXmlNode* catListNode = FirstChildElement( projectRoot, "CatalogList" );
         Catalog::CatalogList* catalogList = GetCatalogData( )->GetCatalogList( );
 
@@ -233,13 +230,12 @@ namespace Utils {
 
                 if ( catFile.FileExists( ) )
                 {
-
                     if ( catFile.IsAbsolute( ) )
                     {
                         catFile.MakeRelativeTo( cwd );
                     }
-
-                    Catalog::CatalogVolume* volumeData = GetCatalogData( )->NewCatalogVolume( );
+                    Catalog::CatalogVolume* volumeData = GetCatalogData( )->GetCatalogList( )->NewCatalogVolume( );
+                    //GetCatalogData( )->NewCatalogVolume( );
 
                     volumeData->SetVolumeFilename( catFile.GetFullPath( ) );
                 }
@@ -260,7 +256,7 @@ namespace Utils {
 
 
 
-    //*****
+    //
 
     void Project::LoadAttributes( wxXmlNode* thisObject )
     {
@@ -284,10 +280,10 @@ namespace Utils {
             //     //m_imagePath = MakeFileAbsolute( val );
             //     //GetSettings( )->SetImageDirectory( m_imagePath );
             // }
-            else if ( !name.Cmp( "Catalog" ) )
-            {
-                m_catalogFilename = MakeFileAbsolute( val );
-            }
+            // else if ( !name.Cmp( "Catalog" ) )
+            // {
+            //     m_catalogFilename = MakeFileAbsolute( val );
+            // }
             else if ( !name.Cmp( "Country" ) )
             {
                 m_defaultCountryID = val;
@@ -301,7 +297,26 @@ namespace Utils {
     }
 
 
-    //*****
+
+    void Project::FileNewProject( wxString prjName )
+    {
+        GetProject( )->SetProjectFilename( prjName );
+        wxString lastFile = wxGetCwd( );
+        lastFile += "/" + prjName;
+        GetSettings( )->SetLastFile( lastFile );
+        GetFrame( )->SetCaption( prjName );
+
+        //clear catalog volume wxList
+        GetCatalogData( )->GetCatalogList( )->ClearCatalogArray( );
+        //clear dialog volume list
+        GetAlbumData( )->GetAlbumList( ).ClearAlbumVolumeArray( );
+        //clear catalog tree
+        GetCatalogPageTreeCtrl( )->ClearCatalogTree( );
+        GetAlbumPageTreeCtrl( )->ClearCatalogTree( );
+        //clear dialog tree
+        GetAlbumTreeCtrl( )->ClearDesignTree( );
+
+    }
 
     void Project::Save( )
     {
@@ -357,4 +372,39 @@ namespace Utils {
         SetDirty( false );
     }
 
+    // Load the Catalog and Design data then populate trees
+    void Project::LoadData( )
+    {
+        bool state = wxLog::IsEnabled( );
+        GetCatalogData( )->LoadData( );
+        GetAlbumData( )->LoadData( );
+        ;
+    }
+
+    void Project::FileOpenProject( wxString filename )
+    {
+        SetProjectFilename( filename );
+        wxString lastFile = wxGetCwd( );
+        lastFile += "/" + filename;
+        GetSettings( )->SetLastFile( lastFile );
+        LoadProjectXML( );
+        LoadData( );
+    }
+
+    void Project::FileSaveProject( )
+    {
+        GetSettings( )->Save( );
+        Save( );
+    }
+
+    void Project::FileSaveAsProject( wxString filename )
+    {
+        SetProjectFilename( filename );
+        wxString lastFile = wxGetCwd( );
+        lastFile += "/" + filename;
+        GetSettings( )->SetLastFile( lastFile );
+        FileSaveProject( );
+    }
+
 }
+

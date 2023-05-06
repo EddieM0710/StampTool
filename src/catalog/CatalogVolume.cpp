@@ -20,7 +20,7 @@
  * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
- **************************************************/
+ */
 
 
 #include "wx/wxprec.h"
@@ -51,92 +51,71 @@
 #include "utils/Settings.h"
 #include "utils/Project.h"
 #include "utils/XMLUtilities.h"
-#include "StampToolApp.h"
+#include "gui/AppData.h"
 #include "gui/CatalogDetailsDialog.h"
+#include "gui/StampToolFrame.h"
 
-wxDECLARE_APP( StampToolApp );
+ //wxDECLARE_APP( StampToolApp );
 
 namespace Catalog {
-
-    CatalogVolume* NewCatalogVolumeInstance( )
-    {
-        return new CatalogVolume( );
-    }
-
     CatalogVolume::CatalogVolume( /* args */ )
     {
         m_stampDoc = 0;
     }
 
-    //*****
+    //
 
     CatalogVolume::~CatalogVolume( )
     {
         delete m_stampDoc;
     }
 
-    //*****
-
-    bool CatalogVolume::IsOK( )
+    void CatalogVolume::EditDetailsDialog( wxWindow* parent )
     {
-        if ( m_stampDoc )
-        {
-            return true;
-        }
-        return false;
-    }
+        CatalogDetailsDialog catalogDetailsDialog( parent, 12346,
+            _( "View Edit Catalog Details" ) );
 
-    //*****   
+        catalogDetailsDialog.SetImagePath( GetCatalogVolumeImagePath( ) );
+        catalogDetailsDialog.SetName( GetVolumeName( ) );
 
-    void CatalogVolume::SetDirty( bool state )
-    {
-        m_dirty = state;
-        if ( m_dirty )
+
+        if ( catalogDetailsDialog.ShowModal( ) == wxID_CANCEL )
+            return; // the user changed idea..
+
+        if ( catalogDetailsDialog.IsNameModified( ) )
         {
-            GetToolData( )->SetDirty( true );
+            SetImagePath( catalogDetailsDialog.GetImagePath( ) );
+            SetVolumeName( catalogDetailsDialog.GetName( ) );
         }
     }
-    //*****
-
-    wxXmlDocument* CatalogVolume::NewDocument( )
+    wxXmlNode* CatalogVolume::FindNodeWithPropertyAndValue( wxString property, wxString value )
     {
-        delete m_stampDoc;
-        m_stampDoc = new wxXmlDocument( );
-        return m_stampDoc;
-    };
+        return FindNodeWithPropertyAndValue( m_stampDoc->GetRoot( ), property, value );
+    }
 
-    //*****
-
-    wxXmlDocument* CatalogVolume::ReplaceDocument( wxXmlDocument* doc )
+    wxXmlNode* CatalogVolume::FindNodeWithPropertyAndValue( wxXmlNode* element, wxString property, wxString value )
     {
-        delete m_stampDoc;
-        m_stampDoc = doc;
-        return m_stampDoc;
-    };
-
-    //*****
-
-    void CatalogVolume::Save( )
-    {
-        wxString filename = m_volumeFilename;
-        if ( wxFileExists( filename ) )
+        wxString   	attr;
+        wxXmlNode* child = element->GetChildren( );
+        while ( child )
         {
-            wxFileName bakFile( filename );
-            bakFile.SetExt( "bak" );
-            wxRenameFile( filename, bakFile.GetFullName( ), true );
+            if ( child->GetAttribute( property, &attr ) )
+            {
+                if ( !value.Cmp( attr ) )
+                {
+                    return child;
+                }
+            }
+            wxXmlNode* foundChild = FindNodeWithPropertyAndValue( child, property, value );
+            if ( foundChild )
+            {
+                return foundChild;
+            }
+            child = ( wxXmlNode* ) child->GetNext( );
         }
-        m_stampDoc->Save( filename );
-        SetDirty( false );
+        return ( wxXmlNode* ) 0;
     }
 
-    //*****catalogList
-
-    void CatalogVolume::NewCatalog( )
-    {
-        m_stampDoc = NewDocument( );
-        wxXmlNode* root = new wxXmlNode( wxXML_ELEMENT_NODE, "Catalog" );
-        m_stampDoc->SetRoot( root );
-    }
     wxString CatalogVolume::GetCatalogVolumeImagePath( )
     {
         wxString filename = "";
@@ -153,18 +132,51 @@ namespace Catalog {
         return filename;
     };
 
-    void CatalogVolume::SetImagePath( wxString str )
+    bool CatalogVolume::IsOK( )
     {
-        if ( m_stampDoc && m_stampDoc->IsOk( ) )
+        if ( m_stampDoc )
         {
-            wxXmlNode* root = m_stampDoc->GetRoot( );
-            if ( root )
-            {
-                Utils::SetAttrStr( root, "ImagePath", str );
-            }
+            return true;
+        }
+        return false;
+    }
+
+    bool CatalogVolume::LoadCSV( wxString filename )
+    {
+        if ( !m_stampDoc )
+        {
+            NewDocument( );
+        }
+
+        Utils::CSVData* csv = new Utils::CSVData( );
+        wxXmlNode* docRoot = m_stampDoc->GetRoot( );
+        if ( !docRoot )
+        {
+            docRoot = Utils::NewNode( m_stampDoc, CatalogBaseNames[ NT_Catalog ] );
+        }
+        wxFileName name( filename );
+        Utils::SetAttrStr( docRoot, "Name", name.GetName( ) );
+        // name.MakeRelativeTo( "." );
+        Utils::SetAttrStr( docRoot, "ImagePath", "" );//name.GetPath( ) );
+
+        bool status = false;
+        status = csv->DoLoad( filename, m_stampDoc->GetRoot( ) );
+        SetDirty( );
+        delete csv;
+        return status;
+    }
+
+    void CatalogVolume::Load( )
+    {
+        LoadXML( );
+        wxString name = GetVolumeName( );
+        if ( !name.IsEmpty( ) )
+        {
+            name = GetVolumeFilename( );
+            wxFileName fn( name );
+            SetVolumeName( fn.GetName( ) );
         }
     }
-    //*****
 
     void CatalogVolume::LoadXML( )
     {
@@ -184,7 +196,7 @@ namespace Catalog {
             {
                 wxString txt = wxString::Format( "%s Stream Create Failed.\n\n", m_volumeFilename );
                 wxMessageDialog* dlg = new wxMessageDialog(
-                    wxGetApp( ).GetFrame( ), txt,
+                    GetFrame( ), txt,
                     wxT( "Warning! Stream Create Failed.\n" ),
                     wxOK | wxCANCEL | wxCENTER );
                 int rsp = dlg->ShowModal( );
@@ -194,7 +206,7 @@ namespace Catalog {
             {
                 wxString txt = wxString::Format( "\n%s Stream  Failed. Error: %s.<<std::endl<<std::<<endl", m_volumeFilename, stream.GetLastError( ) );
                 wxMessageDialog* dlg = new wxMessageDialog(
-                    wxGetApp( ).GetFrame( ), txt,
+                    GetFrame( ), txt,
                     wxT( "Warning! Stream Load Failed.\n" ),
                     wxOK | wxCANCEL | wxCENTER );
                 int rsp = dlg->ShowModal( );
@@ -223,65 +235,76 @@ namespace Catalog {
         SetDirty( false );
     }
 
-    //*****
-
-    bool CatalogVolume::LoadCSV( wxString filename )
+    /// this makes a list of the children entry elements that can have childrem
+    Utils::wxXmlNodeArray* CatalogVolume::MakeParentList( Catalog::FormatType parentType )
     {
-        if ( !m_stampDoc )
-        {
-            NewDocument( );
-        }
+        //Catalog::Entry parentEntry;
+        wxXmlNode* node = m_stampDoc->GetRoot( );
 
-        Utils::CSVData* csv = new Utils::CSVData( );
-        wxXmlNode* docRoot = m_stampDoc->GetRoot( );
-        if ( !docRoot )
-        {
-            docRoot = Utils::NewNode( m_stampDoc, CatalogBaseNames[ NT_Catalog ] );
-        }
-        wxFileName name( filename );
-        Utils::SetAttrStr( docRoot, "Name", name.GetName( ) );
-        // name.MakeRelativeTo( "." );
-        Utils::SetAttrStr( docRoot, "ImagePath", "" );//name.GetPath( ) );
-
-        bool status = false;
-        status = csv->DoLoad( filename, m_stampDoc->GetRoot( ) );
-        SetDirty( );
-        delete csv;
-        return status;
-    }
-
-
-    //*****
-
-    wxXmlNode* CatalogVolume::FindNodeWithPropertyAndValue( wxString property, wxString value )
-    {
-        return FindNodeWithPropertyAndValue( m_stampDoc->GetRoot( ), property, value );
-    }
-
-    //*****
-
-    wxXmlNode* CatalogVolume::FindNodeWithPropertyAndValue( wxXmlNode* element, wxString property, wxString value )
-    {
-        wxString   	attr;
-        wxXmlNode* child = element->GetChildren( );
+        Utils::wxXmlNodeArray* parentList = new  Utils::wxXmlNodeArray( );
+        wxXmlNode* child = node->GetChildren( );
         while ( child )
         {
-            if ( child->GetAttribute( property, &attr ) )
+            Catalog::Entry parentEntry( child );
+            if ( parentEntry.GetFormat( ) == Catalog::FormatStrings[ parentType ] )
             {
-                if ( !value.Cmp( attr ) )
-                {
-                    return child;
-                }
+                parentList->push_back( child );
             }
-            wxXmlNode* foundChild = FindNodeWithPropertyAndValue( child, property, value );
-            if ( foundChild )
-            {
-                return foundChild;
-            }
-            child = ( wxXmlNode* ) child->GetNext( );
+            child = child->GetNext( );
         }
-        return ( wxXmlNode* ) 0;
+        return parentList;
     }
+
+
+    void CatalogVolume::NewCatalog( )
+    {
+        m_stampDoc = NewDocument( );
+        wxXmlNode* root = new wxXmlNode( wxXML_ELEMENT_NODE, "Catalog" );
+        m_stampDoc->SetRoot( root );
+    }
+
+    CatalogVolume* NewCatalogVolumeInstance( )
+    {
+        return new CatalogVolume( );
+    }
+
+    wxXmlDocument* CatalogVolume::NewDocument( )
+    {
+        delete m_stampDoc;
+        m_stampDoc = new wxXmlDocument( );
+        return m_stampDoc;
+    };
+
+    wxXmlDocument* CatalogVolume::ReplaceDocument( wxXmlDocument* doc )
+    {
+        delete m_stampDoc;
+        m_stampDoc = doc;
+        return m_stampDoc;
+    };
+
+    void CatalogVolume::Save( )
+    {
+        wxString filename = m_volumeFilename;
+        if ( wxFileExists( filename ) )
+        {
+            wxFileName bakFile( filename );
+            bakFile.SetExt( "bak" );
+            wxRenameFile( filename, bakFile.GetFullName( ), true );
+        }
+        m_stampDoc->Save( filename );
+        SetDirty( false );
+    }
+
+    void CatalogVolume::SetDirty( bool state )
+    {
+        m_dirty = state;
+        if ( m_dirty )
+        {
+            GetAppData( )->SetDirty( true );
+        }
+    }
+
+
 
     // resort the tree with the new sort order data.
     // Probably doint this because the sort order was changed.
@@ -297,7 +320,7 @@ namespace Catalog {
         wxXmlDocument* doc = m_stampDoc;
         wxXmlNode* root = doc->GetRoot( );
 
-        wxXmlAttribute* attr = Utils::GetAttribute( root, Catalog::DT_DataNames[ Catalog::DT_Name ] );
+        wxXmlAttribute* attr = Utils::GetAttribute( root, Catalog::DataTypeNames[ Catalog::DT_Name ] );
         if ( attr ) {
             wxString name = attr->GetName( );
             wxString value = attr->GetValue( );
@@ -305,7 +328,7 @@ namespace Catalog {
         }
         else
         {
-            Utils::SetAttrStr( newRoot, Catalog::DT_DataNames[ Catalog::DT_Name ], "" );
+            Utils::SetAttrStr( newRoot, Catalog::DataTypeNames[ Catalog::DT_Name ], "" );
         }
 
         attr = Utils::GetAttribute( root, "ImagePath" );
@@ -326,29 +349,18 @@ namespace Catalog {
 
     }
 
-    //*****
-    // this makes a list of the children entry elements that can have childrem
-    Utils::wxXmlNodeArray* CatalogVolume::MakeParentList( Catalog::FormatType parentType )
+    void CatalogVolume::SetImagePath( wxString str )
     {
-        //Catalog::Entry parentEntry;
-        wxXmlNode* node = m_stampDoc->GetRoot( );
-
-        Utils::wxXmlNodeArray* parentList = new  Utils::wxXmlNodeArray( );
-        wxXmlNode* child = node->GetChildren( );
-        while ( child )
+        if ( m_stampDoc && m_stampDoc->IsOk( ) )
         {
-            Catalog::Entry parentEntry( child );
-            if ( parentEntry.GetFormat( ) == Catalog::FT_FormatStrings[ parentType ] )
+            wxXmlNode* root = m_stampDoc->GetRoot( );
+            if ( root )
             {
-                parentList->push_back( child );
+                Utils::SetAttrStr( root, "ImagePath", str );
             }
-            child = child->GetNext( );
         }
-        return parentList;
     }
 
-
-    //*****
     // this is an attempt to group the entrys;
     // i.e., an item of type entry can be a child of an item SeTenent type.
     void CatalogVolume::ReGroupMultiples( )
@@ -363,7 +375,7 @@ namespace Catalog {
 
     }
 
-    //*****
+    //
     // this looks through the xml tree and makes related entries of childType a child of the parent type
     void CatalogVolume::StructureCatalogVolume( Catalog::FormatType parentType,
         Catalog::FormatType childType,
@@ -410,9 +422,9 @@ namespace Catalog {
                     }
                     // only look at children of childType
                     wxString format = childEntry->GetFormat( );
-                    if ( ( format == Catalog::FT_FormatStrings[ childType ] )
+                    if ( ( format == Catalog::FormatStrings[ childType ] )
                         || ( secondChildType
-                            && ( format == Catalog::FT_FormatStrings[ secondChildType ] ) ) )
+                            && ( format == Catalog::FormatStrings[ secondChildType ] ) ) )
                     {
                         wxString issue = childEntry->GetIssuedDate( );
                         wxString series = childEntry->GetSeries( );
@@ -436,23 +448,6 @@ namespace Catalog {
             }
         }
     }
-    void CatalogVolume::EditDetailsDialog( wxWindow* parent )
-    {
-        CatalogDetailsDialog catalogDetailsDialog( parent, 12346,
-            _( "View Edit Catalog Details" ) );
 
-        catalogDetailsDialog.SetImagePath( GetCatalogVolumeImagePath( ) );
-        catalogDetailsDialog.SetName( GetVolumeName( ) );
-
-
-        if ( catalogDetailsDialog.ShowModal( ) == wxID_CANCEL )
-            return; // the user changed idea..
-
-        if ( catalogDetailsDialog.IsNameModified( ) )
-        {
-            SetImagePath( catalogDetailsDialog.GetImagePath( ) );
-            SetVolumeName( catalogDetailsDialog.GetName( ) );
-        }
-    }
 
 }

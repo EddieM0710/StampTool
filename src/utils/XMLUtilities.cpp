@@ -20,7 +20,7 @@
  * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
- **************************************************/
+ */
 
 
 #include "wx/wxprec.h"
@@ -48,6 +48,7 @@
 #include "utils/XMLUtilities.h"
 
 
+  
 namespace Utils {
 
 
@@ -303,8 +304,8 @@ namespace Utils {
             {
                 std::cout << level << nodeName << "  ";
 
-                std::cout << GetAttrStr( child, Catalog::DT_XMLDataNames[ Catalog::DT_ID_Nbr ] );
-                std::cout << "  " << GetAttrStr( child, Catalog::DT_XMLDataNames[ Catalog::DT_Name ] );
+                std::cout << GetAttrStr( child, Catalog::XMLDataNames[ Catalog::DT_ID_Nbr ] );
+                std::cout << "  " << GetAttrStr( child, Catalog::XMLDataNames[ Catalog::DT_Name ] );
 
                 wxXmlAttribute* attr = child->GetAttributes( );
                 while ( attr )
@@ -470,13 +471,13 @@ namespace Utils {
         return str;
     }
 
-    void SaveFont( wxXmlNode* parent, Design::AT_FontUsageType type, wxFont font, wxColour color )
+    void SaveFont( wxXmlNode* parent, Design::FontUsageType type, wxFont font, wxColour color )
     {
         wxXmlNode* child = NewNode( parent, Design::AlbumBaseNames[ Design::AT_Font ] );
         if ( child )
         {
             child->AddAttribute( Design::AttrNameStrings[ Design::AT_FontType ],
-                Design::AT_FontUsageTypeStrings[ type ] );
+                Design::FontUsageTypeStrings[ type ] );
             child->AddAttribute( Design::AttrNameStrings[ Design::AT_NativeFontString ],
                 font.GetNativeFontInfoDesc( ) );
             child->AddAttribute( Design::AttrNameStrings[ Design::AT_FontColor ],
@@ -485,10 +486,10 @@ namespace Utils {
         }
     }
 
-    Design::AT_FontUsageType LoadFont( wxXmlNode* fontNode, wxString& nativeString, wxString& color )
+    Design::FontUsageType LoadFont( wxXmlNode* fontNode, wxString& nativeString, wxString& color )
     {
         wxString name = fontNode->GetAttribute( Design::AttrNameStrings[ Design::AT_FontType ] );
-        Design::AT_FontUsageType type = Design::FindFontUsageType( name );
+        Design::FontUsageType type = Design::FindFontUsageType( name );
 
         nativeString = fontNode->GetAttribute( Design::AttrNameStrings[ Design::AT_NativeFontString ] );
         color = fontNode->GetAttribute( Design::AttrNameStrings[ Design::AT_FontColor ] );

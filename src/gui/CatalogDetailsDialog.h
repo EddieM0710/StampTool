@@ -24,43 +24,19 @@
 #ifndef _CATALOGDETAILSDIALOG_H_
 #define _CATALOGDETAILSDIALOG_H_
 
-
- /*
-  * Includes
-  */
-
 #include "wx/listctrl.h"
 
-#include "gui/DesignTreeCtrl.h"
+#include "gui/AlbumTreeCtrl.h"
 #include "gui/GuiDefs.h"
-
-
-  /*
-   * Forward declarations
-   */
-
 
 class LabeledTextBox;
 class wxListCtrl;
-
-
-/*
- * Control identifiers
- */
-
-
 
 #define SYMBOL_CATALOGDETAILSDIALOG_STYLE wxCAPTION | wxRESIZE_BORDER | wxSYSTEM_MENU | wxCLOSE_BOX | wxTAB_TRAVERSAL
 #define SYMBOL_CATALOGDETAILSDIALOG_TITLE _( "Volume Details Dialog" )
 #define SYMBOL_CATALOGDETAILSDIALOG_IDNAME ID_CATALOGDETAILSDIALOG
 #define SYMBOL_CATALOGDETAILSDIALOG_SIZE wxSize( 600, 400 )
 #define SYMBOL_CATALOGDETAILSDIALOG_POSITION wxDefaultPosition
-
-
-
- /*
-  * CatalogDetailsDialog class declaration
-  */
 
 class CatalogDetailsDialog : public wxDialog
 {
@@ -71,7 +47,6 @@ public:
 
     enum CatalogDetailsDialogGuiDefs
     {
-
         ID_NAMELABELEDTEXTBOX = ID_CATALOGDETAILSDIALOG + 1,
         ID_IMAGEPATHTEXTBOX,
         ID_VOLUMETITLECHECKBOX,
@@ -84,47 +59,103 @@ public:
         ID_DIRBUTTON
     };
 
+    ///  @brief Construct a new Catalog Details Dialog object
+    ///  
     CatalogDetailsDialog( );
+
+    ///  @brief Construct a new Catalog Details Dialog object
+    ///  
+    ///  @param parent 
+    ///  @param id 
+    ///  @param caption 
+    ///  @param pos 
+    ///  @param size 
+    ///  @param style 
     CatalogDetailsDialog( wxWindow* parent, wxWindowID id = SYMBOL_CATALOGDETAILSDIALOG_IDNAME, const wxString& caption = SYMBOL_CATALOGDETAILSDIALOG_TITLE, const wxPoint& pos = SYMBOL_CATALOGDETAILSDIALOG_POSITION, const wxSize& size = SYMBOL_CATALOGDETAILSDIALOG_SIZE, long style = SYMBOL_CATALOGDETAILSDIALOG_STYLE );
 
-
-    bool Create( wxWindow* parent, wxWindowID id = SYMBOL_CATALOGDETAILSDIALOG_IDNAME, const wxString& caption = SYMBOL_CATALOGDETAILSDIALOG_TITLE, const wxPoint& pos = SYMBOL_CATALOGDETAILSDIALOG_POSITION, const wxSize& size = SYMBOL_CATALOGDETAILSDIALOG_SIZE, long style = SYMBOL_CATALOGDETAILSDIALOG_STYLE );
-
-
+    ///  @brief Destroy the Catalog Details Dialog object
+    ///  
     ~CatalogDetailsDialog( );
 
+    ///  @brief 
+    ///  
+    ///  @param parent 
+    ///  @param id 
+    ///  @param caption 
+    ///  @param pos 
+    ///  @param size 
+    ///  @param style 
+    ///  @return true 
+    ///  @return false 
+    bool Create( wxWindow* parent, wxWindowID id = SYMBOL_CATALOGDETAILSDIALOG_IDNAME, const wxString& caption = SYMBOL_CATALOGDETAILSDIALOG_TITLE, const wxPoint& pos = SYMBOL_CATALOGDETAILSDIALOG_POSITION, const wxSize& size = SYMBOL_CATALOGDETAILSDIALOG_SIZE, long style = SYMBOL_CATALOGDETAILSDIALOG_STYLE );
 
-    void Init( );
-
-
+    ///  @brief Create a Controls object
+    ///  
     void CreateControls( );
 
-    // CatalogDetailsDialog event handler declarations
+    ///  @brief Get the Name object
+    ///  
+    ///  @return wxString 
+    wxString GetName( );
 
-        ///   wxID_OK
+    ///  @brief Get the Image Path object
+    ///  
+    ///  @return wxString 
+    wxString GetImagePath( );
+
+    ///  @brief 
+    ///  
+    void Init( );
+
+    ///  @brief 
+    ///  
+    ///  @return true 
+    ///  @return false 
+    bool IsNameModified( );
+
+    ///  @brief 
+    ///  
+    ///  @param event 
     void OnOkClick( wxCommandEvent& event );
+
+    ///  @brief 
+    ///  
+    ///  @param event 
     void OnDirClick( wxCommandEvent& event );
 
-
-
-    static bool ShowToolTips( );
-    void SetNameModified( bool state );
+    ///  @brief Set the Design Tree I D object
+    ///  
+    ///  @param id 
     void SetDesignTreeID( wxTreeItemId id );
-    bool IsNameModified( );
-    wxString GetName( );
-    wxString GetImagePath( );
-    void SetName( wxString str );
+
+    ///  @brief Set the Image Path object
+    ///  
+    ///  @param str 
     void SetImagePath( wxString str );
+
+    ///  @brief Set the Name object
+    ///  
+    ///  @param str 
+    void SetName( wxString str );
+
+    ///  @brief Set the Name Modified object
+    ///  
+    ///  @param state 
+    void SetNameModified( bool state );
+
+    ///  @brief 
+    ///  
+    ///  @return true 
+    ///  @return false 
+    static bool ShowToolTips( );
+
+private:
 
     wxTreeItemId m_designTreeID;
     // CatalogDetailsDialog member variables
     LabeledTextBox* m_name;
     LabeledTextBox* m_imagePath;
 
-
-    // CatalogDetailsDialog member variables
-
 };
 
 #endif
-// _CATALOGDETAILSDIALOG_H_

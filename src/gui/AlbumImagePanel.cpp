@@ -20,7 +20,7 @@
  * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
- **************************************************/
+ */
 
 
 
@@ -52,38 +52,31 @@
 #include "utils/Project.h"
 
 #include "art/NotFound.xpm"
-#include "gui/DesignTreeCtrl.h"
+#include "gui/AlbumTreeCtrl.h"
 #include "gui/GuiUtils.h"
-
-
-
 
 IMPLEMENT_DYNAMIC_CLASS( AlbumImagePanel, wxPanel )
 
-/*
- * AlbumImagePanel event table definition
- */
+BEGIN_EVENT_TABLE( AlbumImagePanel, wxPanel )
+EVT_PAINT( AlbumImagePanel::OnPaint )
+EVT_LEFT_DOWN( AlbumImagePanel::OnLeftDown )
+EVT_CONTEXT_MENU( AlbumImagePanel::OnContextMenu )
+//EVT_MENU( ID_RESIZE, AlbumImagePanel::OnResize )
+// EVT_MENU( wxID_ZOOM_IN, AlbumImagePanel::OnZoom )
+// EVT_MENU( wxID_ZOOM_OUT, AlbumImagePanel::OnZoom )
+// EVT_MENU( wxID_ZOOM_100, AlbumImagePanel::OnZoom )
+// EVT_MENU( AlbumImagePanel_DeleteItem, AlbumImagePanel::OnDeleteItem )
+// EVT_MENU( AlbumImagePanel_EditDetails, AlbumImagePanel::OnEditDetails )
+END_EVENT_TABLE( )
 
-    BEGIN_EVENT_TABLE( AlbumImagePanel, wxPanel )
-
-    // AlbumImagePanel event table entries
-    EVT_PAINT( AlbumImagePanel::OnPaint )
-    EVT_LEFT_DOWN( AlbumImagePanel::OnLeftDown )
-    EVT_CONTEXT_MENU( AlbumImagePanel::OnContextMenu )
-    //EVT_MENU( ID_RESIZE, AlbumImagePanel::OnResize )
-    // EVT_MENU( wxID_ZOOM_IN, AlbumImagePanel::OnZoom )
-    // EVT_MENU( wxID_ZOOM_OUT, AlbumImagePanel::OnZoom )
-    // EVT_MENU( wxID_ZOOM_100, AlbumImagePanel::OnZoom )
-    // EVT_MENU( AlbumImagePanel_DeleteItem, AlbumImagePanel::OnDeleteItem )
-    // EVT_MENU( AlbumImagePanel_EditDetails, AlbumImagePanel::OnEditDetails )
-    END_EVENT_TABLE( )
-    ;  // silly business; The above macro screws up the formatter
+//--------------
 
 AlbumImagePanel::AlbumImagePanel( )
 {
     Init( );
 }
 
+//--------------
 
 AlbumImagePanel::AlbumImagePanel( wxWindow* parent, wxWindowID id, const wxPoint& pos,
     const wxSize& size, long style )
@@ -91,6 +84,14 @@ AlbumImagePanel::AlbumImagePanel( wxWindow* parent, wxWindowID id, const wxPoint
     Init( );
     Create( parent, id, pos, size, style );
 }
+
+//--------------
+
+AlbumImagePanel::~AlbumImagePanel( )
+{
+}
+
+//--------------
 
 bool AlbumImagePanel::Create( wxWindow* parent, wxWindowID id, const wxPoint& pos,
     const wxSize& size, long style )
@@ -105,14 +106,7 @@ bool AlbumImagePanel::Create( wxWindow* parent, wxWindowID id, const wxPoint& po
     return true;
 }
 
-AlbumImagePanel::~AlbumImagePanel( )
-{
-}
-
-void AlbumImagePanel::Init( )
-{
-
-}
+//--------------
 
 void AlbumImagePanel::CreateControls( )
 {
@@ -120,50 +114,8 @@ void AlbumImagePanel::CreateControls( )
     m_zoom = .4;
 }
 
-bool AlbumImagePanel::ShowToolTips( )
-{
-    return true;
-}
+//--------------
 
-/*
- * OnResize
- *
- **************************************************/
-void AlbumImagePanel::OnResize( wxCommandEvent& WXUNUSED( event ) )
-{
-    wxImage img( m_bitmap.ConvertToImage( ) );
-
-    const wxSize size = GetClientSize( );
-    img.Rescale( size.x, size.y, wxIMAGE_QUALITY_HIGH );
-    m_bitmap = wxBitmap( img );
-}
-
-/*
- * SetZoom
- *
- **************************************************/
-void AlbumImagePanel::SetZoom( double zoom )
-{
-    m_zoom = zoom;
-    Refresh( );
-}
-
-/*
- * OnZoom
- *
- **************************************************/
-
-
-void AlbumImagePanel::OnDeleteItem( )
-{
-}
-void AlbumImagePanel::OnEditDetails( )
-{
-    //     wxPoint clientpt = event.;
-
-   //  Design::LayoutBase* pageNode = Design::GetSelectedNodePage( );
-
-}
 void AlbumImagePanel::Draw( wxDC& dc, Design::LayoutBase* node, wxPoint pt )
 {
     wxPoint newPoint( pt.x + node->GetXPos( ), pt.y + node->GetYPos( ) );
@@ -172,203 +124,16 @@ void AlbumImagePanel::Draw( wxDC& dc, Design::LayoutBase* node, wxPoint pt )
 
     wxTreeItemIdValue cookie;
     wxTreeItemId nodeID = node->GetTreeItemId( );
-    wxTreeItemId childID = GetDesignTreeCtrl( )->GetFirstChild( nodeID, cookie );
+    wxTreeItemId childID = GetAlbumTreeCtrl( )->GetFirstChild( nodeID, cookie );
     while ( childID.IsOk( ) )
     {
-        Design::LayoutBase* child = ( Design::LayoutBase* ) GetDesignTreeCtrl( )->GetItemNode( childID );
+        Design::LayoutBase* child = ( Design::LayoutBase* ) GetAlbumTreeCtrl( )->GetItemNode( childID );
         Draw( dc, child, newPoint );
-        childID = GetDesignTreeCtrl( )->GetNextChild( nodeID, cookie );
+        childID = GetAlbumTreeCtrl( )->GetNextChild( nodeID, cookie );
     }
 }
 
-/*
- * ID_ALBUMIMAGEPANEL
- *
- **************************************************/
-void AlbumImagePanel::OnPaint( wxPaintEvent& event )
-{
-    Design::AlbumVolume* albumVolume = GetAlbumVolume( );
-    if ( albumVolume )
-    {
-        wxPaintDC dc( this );
-        DoPrepareDC( dc );
-        dc.SetMapMode( wxMM_METRIC );
-        dc.Clear( );
-        Design::InitDesignDefs( );
-
-        Design::Album* album = GetAlbumVolume( )->GetAlbum( );
-        if ( album )
-        {
-            double width = album->GetAttrDbl( Design::AT_PageWidth ) * Design::ScaleFactor.x;
-            double height = album->GetAttrDbl( Design::AT_PageHeight ) * Design::ScaleFactor.y;
-
-            /* init scrolled area size, scrolling speed, etc. */
-            if ( m_once == false )
-            {
-                m_once = true;
-                SetScrollbars( Design::ScaleFactor.x, Design::ScaleFactor.y, width * 2, height * 2, 0, 0 );
-            }
-            const wxSize size = GetClientSize( );
-            double scale = 1.;
-
-            if ( size.x < width )
-            {
-                scale = ( double ) size.x / ( double ) width;
-            }
-            if ( size.y < ( height * scale ) )
-            {
-                scale = ( double ) size.y / ( ( ( double ) height * scale ) * scale );
-            }
-
-            dc.SetUserScale( scale * m_zoom, scale * m_zoom );
-
-            dc.DrawRectangle( 0, 0, width, height );
-
-            Design::LayoutBase* pageNode = Design::GetSelectedNodePage( );
-            if ( pageNode && pageNode->IsStatusOK( ) )
-            {
-                //pageNode->Draw( dc, album->GetAttrDbl( Design::AT_LeftMargin ), album->GetAttrDbl( Design::AT_TopMargin ) );
-                pageNode->Draw( dc, 0, 0 );
-            }
-        }
-    }
-}
-
-/*
- *  ID_IMAGEPANEL
- */
-void AlbumImagePanel::OnLeftDown( wxMouseEvent& event )
-{
-    wxPoint clientpt = event.GetPosition( );
-
-    Design::LayoutBase* pageNode = Design::GetSelectedNodePage( );
-
-    if ( pageNode )
-    {
-        Design::LayoutBase* item = pageNode->FindObjectByPos( clientpt.x, clientpt.y );
-        if ( item )
-        {
-            wxTreeItemId newID = item->GetTreeItemId( );
-            GetDesignTreeCtrl( )->SelectItem( newID );
-        }
-    }
-
-    event.Skip( );
-
-}
-
-
-void AlbumImagePanel::OnContextMenu( wxContextMenuEvent& event )
-{
-    wxPoint screenpt = event.GetPosition( );
-    wxPoint clientpt = ScreenToClient( screenpt );
-
-    Design::LayoutBase* pageNode = Design::GetSelectedNodePage( );
-
-    wxString name = "";
-    Design::AlbumBaseType type;
-    wxTreeItemId newID = 0;
-    if ( pageNode )
-    {
-        Design::LayoutBase* item = pageNode->FindObjectByPos( clientpt.x, clientpt.y );
-        if ( item )
-        {
-            type = item->GetNodeType( );
-            name = Design::AlbumBaseNames[ type ];
-
-            newID = item->GetTreeItemId( );
-            GetDesignTreeCtrl( )->SelectItem( newID );
-        }
-    }
-    wxMenu menu( name );
-
-    //menu.Append( ID_RESIZE, "&Fit to window\tCtrl-F" );
-    menu.Append( wxID_ZOOM_IN, "Zoom &in\tCtrl-+" );
-    menu.Append( wxID_ZOOM_OUT, "Zoom &out\tCtrl--" );
-    menu.Append( wxID_ZOOM_100, "Reset zoom to &100%\tCtrl-1" );
-    menu.AppendSeparator( );
-    menu.Append( AlbumImagePanel_DeleteItem, "    Delete Item" );
-    menu.Append( AlbumImagePanel_EditDetails, "    Edit Details" );
-
-    // PopupMenu( &menu );
-
-
-    switch ( GetPopupMenuSelectionFromUser( menu ) )
-    {
-    case wxID_ZOOM_IN:
-    {
-        m_zoom *= 1.2;
-        Refresh( );
-        break;
-    }
-    case wxID_ZOOM_OUT:
-    {
-        m_zoom /= 1.2;
-        Refresh( );
-        break;
-    }
-    case wxID_ZOOM_100:
-    {
-
-        m_zoom = .4;
-        Refresh( );
-        break;
-    }
-    case AlbumImagePanel_DeleteItem:
-    {
-        GetDesignTreeCtrl( )->OnDeleteItem( newID );
-        break;
-    }
-
-    case AlbumImagePanel_EditDetails:
-    {
-        if ( newID && ( type == Design::AT_Stamp ) )
-        {
-            GetDesignTreeCtrl( )->ShowStampDetails( newID );
-            GetAlbumVolume( )->MakePage( ( Design::LayoutBase* ) pageNode );
-        }
-        else if ( type == Design::AT_Row )
-        {
-            GetDesignTreeCtrl( )->ShowRowDetails( newID, pageNode );
-            GetAlbumVolume( )->MakePage( ( Design::LayoutBase* ) pageNode );
-        }
-        else if ( type == Design::AT_Col )
-        {
-            GetDesignTreeCtrl( )->ShowColDetails( newID, pageNode );
-            GetAlbumVolume( )->MakePage( ( Design::LayoutBase* ) pageNode );
-        }
-        else if ( type == Design::AT_Page )
-        {
-            GetDesignTreeCtrl( )->ShowPageDetails( newID, pageNode );
-            GetAlbumVolume( )->MakePage( ( Design::LayoutBase* ) pageNode );
-        }
-        else if ( type == Design::AT_Album )
-        {
-            GetDesignTreeCtrl( )->ShowAlbumDetails( newID, pageNode );
-            GetAlbumVolume( )->MakePage( ( Design::LayoutBase* ) pageNode );
-        }
-
-
-        break;
-        break;
-    }
-    }
-    event.Skip( );
-
-}
-
-wxSize AlbumImagePanel::GetTextSize( wxFont font, wxString text )
-{
-    wxClientDC dc( this );
-    dc.SetFont( font );
-    dc.SetMapMode( wxMM_METRIC );
-    DoPrepareDC( dc );
-
-    text.Trim( );
-    text.Trim( false );
-
-    return dc.GetMultiLineTextExtent( text );
-}
+//--------------
 
 wxRealPoint AlbumImagePanel::GetLogicalTextExtent( wxString text, wxFont font )
 {
@@ -386,6 +151,29 @@ wxRealPoint AlbumImagePanel::GetLogicalTextExtent( wxString text, wxFont font )
     return textSize;
 }
 
+//--------------
+
+wxSize AlbumImagePanel::GetTextSize( wxFont font, wxString text )
+{
+    wxClientDC dc( this );
+    dc.SetFont( font );
+    dc.SetMapMode( wxMM_METRIC );
+    DoPrepareDC( dc );
+
+    text.Trim( );
+    text.Trim( false );
+
+    return dc.GetMultiLineTextExtent( text );
+}
+
+//--------------
+
+void AlbumImagePanel::Init( )
+{
+
+}
+
+//--------------
 
 void AlbumImagePanel::MakeMultiLine( wxString& text, wxFont font, double width )
 {
@@ -487,4 +275,220 @@ void AlbumImagePanel::MakeMultiLine( wxString& text, wxFont font, double width )
             }
         }
     }
+}
+
+//--------------
+
+void AlbumImagePanel::OnContextMenu( wxContextMenuEvent& event )
+{
+    wxPoint screenpt = event.GetPosition( );
+    wxPoint clientpt = ScreenToClient( screenpt );
+
+    Design::LayoutBase* pageNode = Design::GetSelectedNodePage( );
+
+    wxString name = "";
+    Design::AlbumBaseType type;
+    wxTreeItemId newID = 0;
+    if ( pageNode )
+    {
+        Design::LayoutBase* item = pageNode->FindObjectByPos( clientpt.x, clientpt.y );
+        if ( item )
+        {
+            type = item->GetNodeType( );
+            name = Design::AlbumBaseNames[ type ];
+
+            newID = item->GetTreeItemId( );
+            GetAlbumTreeCtrl( )->SelectItem( newID );
+        }
+    }
+    wxMenu menu( name );
+
+    //menu.Append( ID_RESIZE, "&Fit to window\tCtrl-F" );
+    menu.Append( wxID_ZOOM_IN, "Zoom &in\tCtrl-+" );
+    menu.Append( wxID_ZOOM_OUT, "Zoom &out\tCtrl--" );
+    menu.Append( wxID_ZOOM_100, "Reset zoom to &100%\tCtrl-1" );
+    menu.AppendSeparator( );
+    menu.Append( AlbumImagePanel_DeleteItem, "    Delete Item" );
+    menu.Append( AlbumImagePanel_EditDetails, "    Edit Details" );
+
+    // PopupMenu( &menu );
+
+
+    switch ( GetPopupMenuSelectionFromUser( menu ) )
+    {
+        case wxID_ZOOM_IN:
+        {
+            m_zoom *= 1.2;
+            Refresh( );
+            break;
+        }
+        case wxID_ZOOM_OUT:
+        {
+            m_zoom /= 1.2;
+            Refresh( );
+            break;
+        }
+        case wxID_ZOOM_100:
+        {
+
+            m_zoom = .4;
+            Refresh( );
+            break;
+        }
+        case AlbumImagePanel_DeleteItem:
+        {
+            GetAlbumTreeCtrl( )->OnDeleteItem( newID );
+            break;
+        }
+
+        case AlbumImagePanel_EditDetails:
+        {
+            if ( newID && ( type == Design::AT_Stamp ) )
+            {
+                GetAlbumTreeCtrl( )->ShowStampDetails( newID );
+                GetAlbumVolume( )->MakePage( ( Design::LayoutBase* ) pageNode );
+            }
+            else if ( type == Design::AT_Row )
+            {
+                GetAlbumTreeCtrl( )->ShowRowDetails( newID, pageNode );
+                GetAlbumVolume( )->MakePage( ( Design::LayoutBase* ) pageNode );
+            }
+            else if ( type == Design::AT_Col )
+            {
+                GetAlbumTreeCtrl( )->ShowColDetails( newID, pageNode );
+                GetAlbumVolume( )->MakePage( ( Design::LayoutBase* ) pageNode );
+            }
+            else if ( type == Design::AT_Page )
+            {
+                GetAlbumTreeCtrl( )->ShowPageDetails( newID, pageNode );
+                GetAlbumVolume( )->MakePage( ( Design::LayoutBase* ) pageNode );
+            }
+            else if ( type == Design::AT_Album )
+            {
+                GetAlbumTreeCtrl( )->ShowAlbumDetails( newID, pageNode );
+                GetAlbumVolume( )->MakePage( ( Design::LayoutBase* ) pageNode );
+            }
+
+
+            break;
+            break;
+        }
+    }
+    event.Skip( );
+
+}
+
+//--------------
+
+void AlbumImagePanel::OnDeleteItem( )
+{
+}
+
+//--------------
+
+void AlbumImagePanel::OnEditDetails( )
+{
+    //     wxPoint clientpt = event.;
+
+   //  Design::LayoutBase* pageNode = Design::GetSelectedNodePage( );
+
+}
+
+//--------------
+
+void AlbumImagePanel::OnLeftDown( wxMouseEvent& event )
+{
+    wxPoint clientpt = event.GetPosition( );
+
+    Design::LayoutBase* pageNode = Design::GetSelectedNodePage( );
+
+    if ( pageNode )
+    {
+        Design::LayoutBase* item = pageNode->FindObjectByPos( clientpt.x, clientpt.y );
+        if ( item )
+        {
+            wxTreeItemId newID = item->GetTreeItemId( );
+            GetAlbumTreeCtrl( )->SelectItem( newID );
+        }
+    }
+
+    event.Skip( );
+
+}
+
+//--------------
+
+void AlbumImagePanel::OnPaint( wxPaintEvent& event )
+{
+    Design::AlbumVolume* albumVolume = GetAlbumVolume( );
+    if ( albumVolume )
+    {
+        wxPaintDC dc( this );
+        DoPrepareDC( dc );
+        dc.SetMapMode( wxMM_METRIC );
+        dc.Clear( );
+        Design::InitDesignDefs( );
+
+        Design::Album* album = GetAlbumVolume( )->GetAlbum( );
+        if ( album )
+        {
+            double width = album->GetAttrDbl( Design::AT_PageWidth ) * Design::ScaleFactor.x;
+            double height = album->GetAttrDbl( Design::AT_PageHeight ) * Design::ScaleFactor.y;
+
+            /* init scrolled area size, scrolling speed, etc. */
+            if ( m_once == false )
+            {
+                m_once = true;
+                SetScrollbars( Design::ScaleFactor.x, Design::ScaleFactor.y, width * 2, height * 2, 0, 0 );
+            }
+            const wxSize size = GetClientSize( );
+            double scale = 1.;
+
+            if ( size.x < width )
+            {
+                scale = ( double ) size.x / ( double ) width;
+            }
+            if ( size.y < ( height * scale ) )
+            {
+                scale = ( double ) size.y / ( ( ( double ) height * scale ) * scale );
+            }
+
+            dc.SetUserScale( scale * m_zoom, scale * m_zoom );
+
+            dc.DrawRectangle( 0, 0, width, height );
+
+            Design::LayoutBase* pageNode = Design::GetSelectedNodePage( );
+            if ( pageNode && pageNode->IsStatusOK( ) )
+            {
+                //pageNode->Draw( dc, album->GetAttrDbl( Design::AT_LeftMargin ), album->GetAttrDbl( Design::AT_TopMargin ) );
+                pageNode->Draw( dc, 0, 0 );
+            }
+        }
+    }
+}
+
+//--------------
+
+void AlbumImagePanel::OnResize( wxCommandEvent& WXUNUSED( event ) )
+{
+    wxImage img( m_bitmap.ConvertToImage( ) );
+
+    const wxSize size = GetClientSize( );
+    img.Rescale( size.x, size.y, wxIMAGE_QUALITY_HIGH );
+    m_bitmap = wxBitmap( img );
+}
+
+//--------------
+
+void AlbumImagePanel::SetZoom( double zoom )
+{
+    m_zoom = zoom;
+    Refresh( );
+}
+
+//--------------
+
+bool AlbumImagePanel::ShowToolTips( )
+{
+    return true;
 }

@@ -20,7 +20,7 @@
  * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
- **************************************************/
+ */
 
 #ifndef Attribute_H
 #define Attribute_H
@@ -32,64 +32,69 @@ namespace Design {
     /**
      * @brief Container for a Name/Value pair.
      *
-     **************************************************/
+     */
     class Attribute
     {
+
     public:
+
         /**
          * @brief Construct a new Attribute object
          *
-         **************************************************/
+         */
         Attribute( ) { };
+
         /**
          * @brief Construct a new Attribute object
          *
          * @param name
          * @param value
-         **************************************************/
+         */
         Attribute( const char* name, const char* value ) {
             SetName( name );
             SetValue( value );
         };
 
+        ///  @brief Destroy the Attribute object
+        ///  
         ~Attribute( ) {
             delete m_name;
             delete m_value;
         };
 
         /**
-         * @brief Set the attribute Name
-         *
-         * @param name
-         **************************************************/
-        inline void SetName( const char* name ) {
-            m_name = ( char* ) malloc( strlen( name ) + 1 );
-            strcpy( m_name, name );
-        };
-        
-        /**
          * @brief Get the attributes Name
          *
          * @return wxString
-         **************************************************/
+         */
         inline char* GetName( ) { return m_name; };
-
-        /**
-         * @brief Set the attributes Value
-         *
-         * @param value
-         **************************************************/
-        inline void SetValue( const char* value ) {
-            m_value = ( char* ) malloc( strlen( value ) + 1 );
-            strcpy( m_value, value );
-        };
 
         /**
          * @brief Get the attributes Value
          *
          * @return wxString
-         **************************************************/
+         */
         inline char* GetValue( ) { return m_value; };
+
+        /**
+         * @brief Set the attribute Name
+         *
+         * @param name
+         */
+        inline void SetName( const char* name ) {
+            m_name = ( char* ) malloc( strlen( name ) + 1 );
+            strcpy( m_name, name );
+        };
+
+        /**
+         * @brief Set the attributes Value
+         *
+         * @param value
+         */
+        inline void SetValue( const char* value ) {
+            m_value = ( char* ) malloc( strlen( value ) + 1 );
+            strcpy( m_value, value );
+        };
 
     private:
         char* m_name;

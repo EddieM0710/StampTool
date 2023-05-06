@@ -44,47 +44,45 @@
 #include "design/Album.h"
 #include "utils/StampList.h"
 #include "utils/Settings.h"
+#include "utils/FontList.h"
 #include "Defs.h"
 #include "wx/treectrl.h"
 #include <wx/fontdlg.h>
 #include <wx/fontdata.h>
-//  XPM images
-
-//  XPM images
-
-
-/*
- * AlbumDetailsDialog type definition
- */
 
 IMPLEMENT_DYNAMIC_CLASS( AlbumDetailsDialog, wxDialog )
 
+BEGIN_EVENT_TABLE( AlbumDetailsDialog, wxDialog )
+EVT_BUTTON( wxID_CANCEL, AlbumDetailsDialog::OnCancelClick )
+EVT_BUTTON( wxID_OK, AlbumDetailsDialog::OnOkClick )
+EVT_BUTTON( ID_NBRDEFAULTFONTBUTTON, AlbumDetailsDialog::OnNbrDefaultClick )
+EVT_BUTTON( ID_NAMEDEFAULTFONTBUTTON, AlbumDetailsDialog::OnNameDefaultClick )
+EVT_BUTTON( ID_TITLEDEFAULTFONTBUTTON, AlbumDetailsDialog::OnTitleDefaultClick )
+EVT_BUTTON( ID_TEXTDEFAULTFONTBUTTON, AlbumDetailsDialog::OnTextDefaultClick )
+END_EVENT_TABLE( )
 
-/*
- * AlbumDetailsDialog event table definition
- */
-
-    BEGIN_EVENT_TABLE( AlbumDetailsDialog, wxDialog )
-    EVT_BUTTON( wxID_CANCEL, AlbumDetailsDialog::OnCancelClick )
-    EVT_BUTTON( wxID_OK, AlbumDetailsDialog::OnOkClick )
-    EVT_BUTTON( ID_NBRDEFAULTFONTBUTTON, AlbumDetailsDialog::OnNbrDefaultClick )
-    EVT_BUTTON( ID_NAMEDEFAULTFONTBUTTON, AlbumDetailsDialog::OnNameDefaultClick )
-    EVT_BUTTON( ID_TITLEDEFAULTFONTBUTTON, AlbumDetailsDialog::OnTitleDefaultClick )
-    EVT_BUTTON( ID_TEXTDEFAULTFONTBUTTON, AlbumDetailsDialog::OnTextDefaultClick )
-    END_EVENT_TABLE( )
-
-    ;
+//--------------
 
 AlbumDetailsDialog::AlbumDetailsDialog( )
 {
     Init( );
 }
 
+//--------------
+
 AlbumDetailsDialog::AlbumDetailsDialog( wxWindow* parent, wxWindowID id, const wxString& caption, const wxPoint& pos, const wxSize& size, long style )
 {
     Init( );
     Create( parent, id, caption, pos, size, style );
 }
+
+//--------------
+
+AlbumDetailsDialog::~AlbumDetailsDialog( )
+{
+}
+
+//--------------
 
 bool AlbumDetailsDialog::Create( wxWindow* parent, wxWindowID id, const wxString& caption, const wxPoint& pos, const wxSize& size, long style )
 {
@@ -100,24 +98,7 @@ bool AlbumDetailsDialog::Create( wxWindow* parent, wxWindowID id, const wxString
     return true;
 }
 
-
-AlbumDetailsDialog::~AlbumDetailsDialog( )
-{
-}
-
-void AlbumDetailsDialog::Init( )
-{
-    m_name = NULL;
-    m_height = NULL;
-    m_width = NULL;
-    m_topMargin = NULL;
-    m_bottomMargin = NULL;
-    m_rightMargin = NULL;
-    m_leftMargin = NULL;
-    m_borderSize = NULL;
-    m_validate = NULL;
-    m_statusList = NULL;
-}
+//--------------
 
 void AlbumDetailsDialog::CreateControls( )
 {
@@ -213,7 +194,6 @@ void AlbumDetailsDialog::CreateControls( )
     m_borderSize->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
     itemBoxSizer3->Add( m_borderSize, 1, wxGROW | wxALL, 5 );
 
-
     wxBoxSizer* itemBoxSizer20 = new wxBoxSizer( wxHORIZONTAL );
     theDialogVerticalSizer->Add( itemBoxSizer20, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 0 );
 
@@ -268,36 +248,202 @@ void AlbumDetailsDialog::CreateControls( )
     m_borderSize->SetLabel( "Border Size" );
 }
 
+//--------------
 
-void AlbumDetailsDialog::UpdateControls( )
+
+//--------------
+
+wxString AlbumDetailsDialog::GetName( ) { return m_name->GetValue( ); }
+
+//--------------
+
+wxString AlbumDetailsDialog::GetPageHeight( ) { return m_height->GetValue( ); }
+
+//--------------
+
+wxString AlbumDetailsDialog::GetPageWidth( ) { return m_width->GetValue( ); }
+
+//--------------
+
+wxString AlbumDetailsDialog::GetTopMargin( ) { return m_topMargin->GetValue( ); }
+
+//--------------
+
+wxString AlbumDetailsDialog::GetBottomMargin( ) { return m_bottomMargin->GetValue( ); }
+
+//--------------
+
+wxString AlbumDetailsDialog::GetLeftMargin( ) { return m_leftMargin->GetValue( ); }
+
+//--------------
+
+wxString AlbumDetailsDialog::GetRightMargin( ) { return m_rightMargin->GetValue( ); }
+
+//--------------
+
+wxString AlbumDetailsDialog::GetBorderSize( ) { return m_borderSize->GetValue( ); }
+
+//--------------
+
+wxFont AlbumDetailsDialog::GetNbrFont( ) { return m_nbrFontPicker->GetSelectedFont( ); }
+
+//--------------
+
+wxFont AlbumDetailsDialog::GetNameFont( ) { return m_nameFontPicker->GetSelectedFont( ); }
+
+//--------------
+
+wxFont AlbumDetailsDialog::GetTextFont( ) { return m_textFontPicker->GetSelectedFont( ); }
+
+//--------------
+
+wxFont AlbumDetailsDialog::GetTitleFont( ) { return m_titleFontPicker->GetSelectedFont( ); }
+
+//--------------
+
+wxColour AlbumDetailsDialog::GetNbrColor( ) { return m_nbrColorPicker->GetColour( ); }
+
+//--------------
+
+wxColour AlbumDetailsDialog::GetNameColor( ) { return m_nbrColorPicker->GetColour( ); }
+
+//--------------
+
+wxColour AlbumDetailsDialog::GetTextColor( ) { return m_textColorPicker->GetColour( ); }
+
+//--------------
+
+wxColour AlbumDetailsDialog::GetTitleColor( ) { return m_titleColorPicker->GetColour( ); }
+
+//--------------
+
+bool AlbumDetailsDialog::GetShowNbr( ) { return m_nbrCheckbox->IsChecked( ); }
+
+//--------------
+
+bool AlbumDetailsDialog::GetShowStampTitle( ) { return m_stampTitleCheckbox->GetValue( ); }
+
+//--------------
+
+void AlbumDetailsDialog::Init( )
 {
-    SetPageHeight( m_album->GetPageHeightStr( ) );
-    SetPageWidth( m_album->GetPageWidthStr( ) );
-    SetTopMargin( m_album->GetTopMarginStr( ) );
-    SetBottomMargin( m_album->GetTopMarginStr( ) );
-    SetLeftMargin( m_album->GetLeftMarginStr( ) );
-    SetRightMargin( m_album->GetRightMarginStr( ) );
-    SetBorderSize( m_album->GetBorderSizeStr( ) );
-    SetShowNbr( m_album->GetShowNbr( ) );
-    SetShowStampTitle( m_album->GetShowTitle( ) );
-    SetGrayScaleImages( m_album->GetGrayScaleImages( ) );
-
-    SetNbrFont( m_album->GetFont( Design::AT_NbrFontType ) );
-    SetTextFont( m_album->GetFont( Design::AT_TextFontType ) );
-    SetTitleFont( m_album->GetFont( Design::AT_TitleFontType ) );
-    SetNbrColor( m_album->GetColor( Design::AT_NbrFontType ) );
-    SetTextColor( m_album->GetColor( Design::AT_TextFontType ) );
-    SetTitleColor( m_album->GetColor( Design::AT_TitleFontType ) );
-    SetName( m_album->GetAttrStr( Design::AT_Name ) );
-
+    m_name = NULL;
+    m_height = NULL;
+    m_width = NULL;
+    m_topMargin = NULL;
+    m_bottomMargin = NULL;
+    m_rightMargin = NULL;
+    m_leftMargin = NULL;
+    m_borderSize = NULL;
+    m_validate = NULL;
+    m_statusList = NULL;
 }
 
+
+//--------------
+
+bool AlbumDetailsDialog::IsNameModified( ) { return m_name->IsModified( ); }
+
+//--------------
+
+bool AlbumDetailsDialog::IsPageHeightModified( ) { return m_height->IsModified( ); }
+
+//--------------
+
+bool AlbumDetailsDialog::IsPageWidthModified( ) { return m_width->IsModified( ); }
+
+//--------------
+
+bool AlbumDetailsDialog::IsTopMarginModified( ) { return m_topMargin->IsModified( ); }
+
+//--------------
+
+bool AlbumDetailsDialog::IsBottomMarginModified( ) { return m_bottomMargin->IsModified( ); }
+
+//--------------
+
+bool AlbumDetailsDialog::IsLeftMarginModified( ) { return m_leftMargin->IsModified( ); }
+
+//--------------
+
+bool AlbumDetailsDialog::IsRightMarginModified( ) { return m_rightMargin->IsModified( ); };
+
+//--------------
+
+bool AlbumDetailsDialog::IsBorderSizeModified( ) { return m_borderSize->IsModified( ); }
+
+
+//--------------
+
+void AlbumDetailsDialog::SetName( wxString name )
+{
+    m_name->SetValue( name );
+    m_name->SetModified( false );
+}
+
+//--------------
+
+void AlbumDetailsDialog::SetPageHeight( wxString height )
+{
+    m_height->SetValue( height );
+    m_height->SetModified( false );
+}
+
+//--------------
+
+void AlbumDetailsDialog::SetPageWidth( wxString width )
+{
+    m_width->SetValue( width );
+    m_width->SetModified( false );
+}
+
+//--------------
+
+void AlbumDetailsDialog::SetTopMargin( wxString topMargin )
+{
+    m_topMargin->SetValue( topMargin );
+    m_topMargin->SetModified( false );
+}
+
+//--------------
+
+void AlbumDetailsDialog::SetBottomMargin( wxString bottomMargin )
+{
+    m_bottomMargin->SetValue( bottomMargin );
+    m_bottomMargin->SetModified( false );
+}
+
+//--------------
+
+void AlbumDetailsDialog::SetLeftMargin( wxString leftMargin )
+{
+    m_leftMargin->SetValue( leftMargin );
+    m_leftMargin->SetModified( false );
+}
+
+//--------------
+
+void AlbumDetailsDialog::SetRightMargin( wxString rightMargin )
+{
+    m_rightMargin->SetValue( rightMargin );
+    m_rightMargin->SetModified( false );
+}
+
+//--------------
+
+void AlbumDetailsDialog::SetBorderSize( wxString borderSize )
+{
+    m_borderSize->SetValue( borderSize );
+    m_borderSize->SetModified( false );
+}
+
+//--------------
 
 void AlbumDetailsDialog::SetupDialog( wxTreeItemId treeID )
 {
     if ( treeID.IsOk( ) )
     {
-        DesignTreeItemData* data = ( DesignTreeItemData* ) GetDesignTreeCtrl( )->GetItemData( treeID );
+        DesignTreeItemData* data = ( DesignTreeItemData* ) GetAlbumTreeCtrl( )->GetItemData( treeID );
         m_album = ( Design::Album* ) data->GetNodeElement( );
         UpdateControls( );
 
@@ -314,112 +460,102 @@ void AlbumDetailsDialog::SetupDialog( wxTreeItemId treeID )
     }
 };
 
+//--------------
 
+void AlbumDetailsDialog::SetNameModified( bool state ) { m_name->SetModified( state ); }
+
+//--------------
+
+void AlbumDetailsDialog::SetPageHeightModified( bool state ) { m_height->SetModified( state ); }
+
+//--------------
+
+void AlbumDetailsDialog::SetPageWidthModified( bool state ) { m_width->SetModified( state ); }
+
+//--------------
+
+void AlbumDetailsDialog::SetTopMarginModified( bool state ) { m_topMargin->SetModified( state ); }
+
+//--------------
+
+void AlbumDetailsDialog::SetBottomMarginModified( bool state ) { m_bottomMargin->SetModified( state ); }
+
+//--------------
+
+void AlbumDetailsDialog::SetLeftMarginModified( bool state ) { m_leftMargin->SetModified( state ); }
+
+//--------------
+
+void AlbumDetailsDialog::SetRightMarginModified( bool state ) { m_rightMargin->SetModified( state ); }
+
+//--------------
+
+void AlbumDetailsDialog::SetBorderSizeModified( bool state ) { m_borderSize->SetModified( state ); }
+
+//--------------
+
+void AlbumDetailsDialog::SetShowNbr( bool state ) { m_nbrCheckbox->SetValue( state ); }
+
+//--------------
+
+void AlbumDetailsDialog::SetShowStampTitle( bool state ) { m_stampTitleCheckbox->SetValue( state ); }
+
+//--------------
+
+void AlbumDetailsDialog::SetNbrFont( wxFont font ) { m_nbrFontPicker->SetSelectedFont( font ); }
+
+//--------------
+
+void AlbumDetailsDialog::SetNameFont( wxFont font ) { m_nameFontPicker->SetSelectedFont( font ); }
+
+//--------------
+
+void AlbumDetailsDialog::SetTextFont( wxFont font ) { m_textFontPicker->SetSelectedFont( font ); }
+
+//--------------
+
+void AlbumDetailsDialog::SetTitleFont( wxFont font ) { m_titleFontPicker->SetSelectedFont( font ); }
+
+//--------------
+
+void AlbumDetailsDialog::SetNbrColor( wxColour color ) { m_nbrColorPicker->SetColour( color ); }
+
+//--------------
+
+void AlbumDetailsDialog::SetNameColor( wxColour color ) { m_nbrColorPicker->SetColour( color ); }
+
+//--------------
+
+void AlbumDetailsDialog::SetTextColor( wxColour color ) { m_textColorPicker->SetColour( color ); }
+
+//--------------
+
+void AlbumDetailsDialog::SetTitleColor( wxColour color ) { m_titleColorPicker->SetColour( color ); }
+
+//--------------
+
+void AlbumDetailsDialog::SetGrayScaleImages( bool val ) { m_grayScaleImagesCheckbox->SetValue( val ); };
+
+//--------------
+
+bool AlbumDetailsDialog::GetGrayScaleImages( ) { return m_grayScaleImagesCheckbox->GetValue( ); }
+
+//--------------
 
 bool AlbumDetailsDialog::ShowToolTips( )
 {
     return true;
 }
 
-void AlbumDetailsDialog::SetName( wxString name )
-{
-    m_name->SetValue( name );
-    m_name->SetModified( false );
-}
-void AlbumDetailsDialog::SetPageHeight( wxString height )
-{
-    m_height->SetValue( height );
-    m_height->SetModified( false );
-}
-void AlbumDetailsDialog::SetPageWidth( wxString width )
-{
-    m_width->SetValue( width );
-    m_width->SetModified( false );
-}
-void AlbumDetailsDialog::SetTopMargin( wxString topMargin )
-{
-    m_topMargin->SetValue( topMargin );
-    m_topMargin->SetModified( false );
-}
-void AlbumDetailsDialog::SetBottomMargin( wxString bottomMargin )
-{
-    m_bottomMargin->SetValue( bottomMargin );
-    m_bottomMargin->SetModified( false );
-}
-void AlbumDetailsDialog::SetLeftMargin( wxString leftMargin )
-{
-    m_leftMargin->SetValue( leftMargin );
-    m_leftMargin->SetModified( false );
-}
-void AlbumDetailsDialog::SetRightMargin( wxString rightMargin )
-{
-    m_rightMargin->SetValue( rightMargin );
-    m_rightMargin->SetModified( false );
-}
-void AlbumDetailsDialog::SetBorderSize( wxString borderSize )
-{
-    m_borderSize->SetValue( borderSize );
-    m_borderSize->SetModified( false );
-}
 
-wxString AlbumDetailsDialog::GetName( ) { return m_name->GetValue( ); }
-wxString AlbumDetailsDialog::GetPageHeight( ) { return m_height->GetValue( ); }
-wxString AlbumDetailsDialog::GetPageWidth( ) { return m_width->GetValue( ); }
-wxString AlbumDetailsDialog::GetTopMargin( ) { return m_topMargin->GetValue( ); }
-wxString AlbumDetailsDialog::GetBottomMargin( ) { return m_bottomMargin->GetValue( ); }
-wxString AlbumDetailsDialog::GetLeftMargin( ) { return m_leftMargin->GetValue( ); }
-wxString AlbumDetailsDialog::GetRightMargin( ) { return m_rightMargin->GetValue( ); }
-wxString AlbumDetailsDialog::GetBorderSize( ) { return m_borderSize->GetValue( ); }
-wxFont AlbumDetailsDialog::GetNbrFont( ) { return m_nbrFontPicker->GetSelectedFont( ); }
-wxFont AlbumDetailsDialog::GetNameFont( ) { return m_nameFontPicker->GetSelectedFont( ); }
-wxFont AlbumDetailsDialog::GetTextFont( ) { return m_textFontPicker->GetSelectedFont( ); }
-wxFont AlbumDetailsDialog::GetTitleFont( ) { return m_titleFontPicker->GetSelectedFont( ); }
-wxColour AlbumDetailsDialog::GetNbrColor( ) { return m_nbrColorPicker->GetColour( ); }
-wxColour AlbumDetailsDialog::GetNameColor( ) { return m_nbrColorPicker->GetColour( ); }
-wxColour AlbumDetailsDialog::GetTextColor( ) { return m_textColorPicker->GetColour( ); }
-wxColour AlbumDetailsDialog::GetTitleColor( ) { return m_titleColorPicker->GetColour( ); }
-
-bool AlbumDetailsDialog::IsNameModified( ) { return m_name->IsModified( ); }
-bool AlbumDetailsDialog::IsPageHeightModified( ) { return m_height->IsModified( ); }
-bool AlbumDetailsDialog::IsPageWidthModified( ) { return m_width->IsModified( ); }
-bool AlbumDetailsDialog::IsTopMarginModified( ) { return m_topMargin->IsModified( ); }
-bool AlbumDetailsDialog::IsBottomMarginModified( ) { return m_bottomMargin->IsModified( ); }
-bool AlbumDetailsDialog::IsLeftMarginModified( ) { return m_leftMargin->IsModified( ); }
-bool AlbumDetailsDialog::IsRightMarginModified( ) { return m_rightMargin->IsModified( ); };
-bool AlbumDetailsDialog::IsBorderSizeModified( ) { return m_borderSize->IsModified( ); }
-
-void AlbumDetailsDialog::SetNameModified( bool state ) { m_name->SetModified( state ); }
-void AlbumDetailsDialog::SetPageHeightModified( bool state ) { m_height->SetModified( state ); }
-void AlbumDetailsDialog::SetPageWidthModified( bool state ) { m_width->SetModified( state ); }
-void AlbumDetailsDialog::SetTopMarginModified( bool state ) { m_topMargin->SetModified( state ); }
-void AlbumDetailsDialog::SetBottomMarginModified( bool state ) { m_bottomMargin->SetModified( state ); }
-void AlbumDetailsDialog::SetLeftMarginModified( bool state ) { m_leftMargin->SetModified( state ); }
-void AlbumDetailsDialog::SetRightMarginModified( bool state ) { m_rightMargin->SetModified( state ); }
-void AlbumDetailsDialog::SetBorderSizeModified( bool state ) { m_borderSize->SetModified( state ); }
-void AlbumDetailsDialog::SetShowNbr( bool state ) { m_nbrCheckbox->SetValue( state ); }
-void AlbumDetailsDialog::SetShowStampTitle( bool state ) { m_stampTitleCheckbox->SetValue( state ); }
-bool AlbumDetailsDialog::GetShowNbr( ) { return m_nbrCheckbox->IsChecked( ); }
-bool AlbumDetailsDialog::GetShowStampTitle( ) { return m_stampTitleCheckbox->GetValue( ); }
-void AlbumDetailsDialog::SetNbrFont( wxFont font ) { m_nbrFontPicker->SetSelectedFont( font ); }
-void AlbumDetailsDialog::SetNameFont( wxFont font ) { m_nameFontPicker->SetSelectedFont( font ); }
-void AlbumDetailsDialog::SetTextFont( wxFont font ) { m_textFontPicker->SetSelectedFont( font ); }
-void AlbumDetailsDialog::SetTitleFont( wxFont font ) { m_titleFontPicker->SetSelectedFont( font ); }
-void AlbumDetailsDialog::SetNbrColor( wxColour color ) { m_nbrColorPicker->SetColour( color ); }
-void AlbumDetailsDialog::SetNameColor( wxColour color ) { m_nbrColorPicker->SetColour( color ); }
-void AlbumDetailsDialog::SetTextColor( wxColour color ) { m_textColorPicker->SetColour( color ); }
-void AlbumDetailsDialog::SetTitleColor( wxColour color ) { m_titleColorPicker->SetColour( color ); }
-void AlbumDetailsDialog::SetGrayScaleImages( bool val ) { m_grayScaleImagesCheckbox->SetValue( val ); };
-bool AlbumDetailsDialog::GetGrayScaleImages( ) { return m_grayScaleImagesCheckbox->GetValue( ); }
-
-
-/*
- *   wxID_CANCEL
- */
+//--------------
 
 void AlbumDetailsDialog::OnCancelClick( wxCommandEvent& event )
 {
     event.Skip( );
 }
+
+//--------------
 
 void AlbumDetailsDialog::OnNbrDefaultClick( wxCommandEvent& event )
 {
@@ -434,6 +570,8 @@ void AlbumDetailsDialog::OnNbrDefaultClick( wxCommandEvent& event )
     event.Skip( );
 }
 
+//--------------
+
 void AlbumDetailsDialog::OnNameDefaultClick( wxCommandEvent& event )
 {
 
@@ -446,6 +584,9 @@ void AlbumDetailsDialog::OnNameDefaultClick( wxCommandEvent& event )
 
     event.Skip( );
 }
+
+//--------------
+
 void AlbumDetailsDialog::OnTextDefaultClick( wxCommandEvent& event )
 {
     int ndx = GetSettings( )->GetFontNdxPreference( Design::AT_TextFontType );
@@ -457,6 +598,9 @@ void AlbumDetailsDialog::OnTextDefaultClick( wxCommandEvent& event )
 
     event.Skip( );
 }
+
+//--------------
+
 void AlbumDetailsDialog::OnTitleDefaultClick( wxCommandEvent& event )
 {
     int ndx = GetSettings( )->GetFontNdxPreference( Design::AT_TitleFontType );
@@ -468,9 +612,8 @@ void AlbumDetailsDialog::OnTitleDefaultClick( wxCommandEvent& event )
 
     event.Skip( );
 }
-/*
- *   wxID_OK
- */
+
+//--------------
 
 void AlbumDetailsDialog::OnOkClick( wxCommandEvent& event )
 {
@@ -523,3 +666,27 @@ void AlbumDetailsDialog::OnOkClick( wxCommandEvent& event )
     event.Skip( );
 }
 
+//--------------
+
+void AlbumDetailsDialog::UpdateControls( )
+{
+    SetPageHeight( m_album->GetPageHeightStr( ) );
+    SetPageWidth( m_album->GetPageWidthStr( ) );
+    SetTopMargin( m_album->GetTopMarginStr( ) );
+    SetBottomMargin( m_album->GetTopMarginStr( ) );
+    SetLeftMargin( m_album->GetLeftMarginStr( ) );
+    SetRightMargin( m_album->GetRightMarginStr( ) );
+    SetBorderSize( m_album->GetBorderSizeStr( ) );
+    SetShowNbr( m_album->GetShowNbr( ) );
+    SetShowStampTitle( m_album->GetShowTitle( ) );
+    SetGrayScaleImages( m_album->GetGrayScaleImages( ) );
+
+    SetNbrFont( m_album->GetFont( Design::AT_NbrFontType ) );
+    SetTextFont( m_album->GetFont( Design::AT_TextFontType ) );
+    SetTitleFont( m_album->GetFont( Design::AT_TitleFontType ) );
+    SetNbrColor( m_album->GetColor( Design::AT_NbrFontType ) );
+    SetTextColor( m_album->GetColor( Design::AT_TextFontType ) );
+    SetTitleColor( m_album->GetColor( Design::AT_TitleFontType ) );
+    SetName( m_album->GetAttrStr( Design::AT_Name ) );
+
+}

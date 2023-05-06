@@ -20,7 +20,7 @@
  * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
- **************************************************/
+ */
 
 
 #include "wx/wxprec.h"
@@ -33,39 +33,21 @@
 #include "wx/wx.h"
 #endif
 
- // #include <iostream>
 #include <wx/filename.h>
-// #include <wx/string.h>
-// #include "wx/xml/xml.h"
-// #include <wx/msgdlg.h>
 
 #include "catalog/CatalogList.h"
 #include "gui/CatalogPanel.h"
-
+#include "catalog/CatalogData.h"
 
 #include "Defs.h"
 
-// #include "catalog/CatalogDefs.h"
-// #include "catalog/Entry.h"
+ //#include "StampToolApp.h"
+ //#include "gui/StampToolFrame.h"
+ //#include "gui/AppData.h"
 
-// #include "utils/CSV.h"
-// #include "utils/Settings.h"
-// #include "utils/Project.h"
-// #include "utils/XMLUtilities.h"
-#include "StampToolApp.h"
-#include "gui/ToolData.h"
-
-wxDECLARE_APP( StampToolApp );
+ //wxDECLARE_APP( StampToolApp );
 
 namespace Catalog {
-
-    Catalog::CatalogVolume* CatalogList::NewCatalogVolume( )
-    {
-        Catalog::CatalogVolume* catalogVolume = Catalog::NewCatalogVolumeInstance( );
-        m_catalogArray.push_back( catalogVolume );
-        m_catalogVolumeNdx = m_catalogArray.size( ) - 1;
-        return catalogVolume;
-    };
 
     bool CatalogList::ClearCatalogArray( )
     {
@@ -76,6 +58,18 @@ namespace Catalog {
             m_catalogArray.pop_back( );
         }
         return true;
+    }
+
+    void CatalogList::BuildVolumeNameStrings( )
+    {
+        m_volumeNameStrings.Clear( );
+        for ( Catalog::CatalogVolumeArray::iterator it = std::begin( m_catalogArray );
+            it != std::end( m_catalogArray );
+            ++it )
+        {
+            Catalog::CatalogVolume* volume = ( Catalog::CatalogVolume* ) ( *it );
+            m_volumeNameStrings.Add( volume->GetVolumeName( ) );
+        }
     }
     Catalog::CatalogVolume* CatalogList::GetCatalogVolume( )
     {
@@ -89,14 +83,7 @@ namespace Catalog {
         return ( Catalog::CatalogVolume* ) 0;
     };
 
-    int wayToSort( Catalog::CatalogVolume* sect1, Catalog::CatalogVolume* sect2 )
-    {
-        wxString name1 = sect1->GetVolumeName( );
-        wxString name2 = sect2->GetVolumeName( );
-        return name1.compare( name2 );
-    }
-
-    void CatalogList::LoadCatalogVolumes( )
+    void CatalogList::Load( )
     {
 
         for ( Catalog::CatalogVolumeArray::iterator it = std::begin( m_catalogArray );
@@ -104,20 +91,14 @@ namespace Catalog {
             ++it )
         {
             Catalog::CatalogVolume* volume = ( Catalog::CatalogVolume* ) ( *it );
-            volume->LoadXML( );
-            wxString name = volume->GetVolumeName( );
-            if ( !name.IsEmpty( ) )
-            {
-                name = volume->GetVolumeFilename( );
-                wxFileName fn( name );
-                volume->SetVolumeName( fn.GetName( ) );
-            }
+            volume->Load( );
         }
 
         if ( m_catalogArray.size( ) > 1 )
         {
-            sort( m_catalogArray.begin( ), m_catalogArray.end( ), wayToSort );
+            sort( m_catalogArray.begin( ), m_catalogArray.end( ), WayToSort );
         }
+
         m_volumeNameStrings.Clear( );
         for ( Catalog::CatalogVolumeArray::iterator it = std::begin( m_catalogArray );
             it != std::end( m_catalogArray );
@@ -126,14 +107,16 @@ namespace Catalog {
             Catalog::CatalogVolume* volume = ( Catalog::CatalogVolume* ) ( *it );
             m_volumeNameStrings.Add( volume->GetVolumeName( ) );
         }
-        CatalogPanel* catPanel = wxGetApp( ).GetFrame( )->GetCatalogPagePanel( );
-        CatalogPanel* albPanel = wxGetApp( ).GetFrame( )->GetAlbumPagePanel( );
-        catPanel->SetVolumeListStrings( m_volumeNameStrings );
-        albPanel->SetVolumeListStrings( m_volumeNameStrings );
         m_catalogVolumeNdx = 0;
-        catPanel->SetVolumeListSelection( m_catalogVolumeNdx );
-        albPanel->SetVolumeListSelection( m_catalogVolumeNdx );
 
+    };
+
+    Catalog::CatalogVolume* CatalogList::NewCatalogVolume( )
+    {
+        Catalog::CatalogVolume* catalogVolume = Catalog::NewCatalogVolumeInstance( );
+        m_catalogArray.push_back( catalogVolume );
+        m_catalogVolumeNdx = m_catalogArray.size( ) - 1;
+        return catalogVolume;
     };
 
     void CatalogList::SaveCatalogVolumes( )
@@ -151,4 +134,12 @@ namespace Catalog {
         m_catalogVolumeNdx = i;
         GetCatalogData( )->LoadCatalogTree( );
     };
+
+    int WayToSort( Catalog::CatalogVolume* sect1, Catalog::CatalogVolume* sect2 )
+    {
+        wxString name1 = sect1->GetVolumeName( );
+        wxString name2 = sect2->GetVolumeName( );
+        return name1.compare( name2 );
+    }
+
 }

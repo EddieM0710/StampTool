@@ -32,45 +32,50 @@
 #include "wx/wx.h"
 #endif
 
-
-#include "gui/CatalogTreeCtrl.h"
-#include "wx/imaglist.h"
-
-
-#include "gui/CatalogPanel.h"
-#include "Defs.h"
+#include <wx/filedlg.h> 
 #include <wx/filename.h>
+#include "wx/imaglist.h"
+#include <wx/wfstream.h>
 
-
- /*
-  * CatalogPanel type definition
-  */
+#include "Defs.h"
+#include "gui/CatalogTreeCtrl.h"
+#include "gui/CatalogPanel.h"
+#include "catalog/CatalogData.h"
+#include "gui/FileCreateDialog.h"
+#include "gui/RemoveVolumeDialog.h"
 
 IMPLEMENT_DYNAMIC_CLASS( CatalogPanel, wxPanel )
 
 
-/*
- * CatalogPanel event table definition
- */
+BEGIN_EVENT_TABLE( CatalogPanel, wxPanel )
+EVT_TEXT( ID_TEXTCTRL, CatalogPanel::OnTextctrlTextUpdated )
+EVT_TOGGLEBUTTON( ID_TOGGLEBUTTON, CatalogPanel::OnTogglebuttonClick )
+EVT_CHOICE( ID_VOLUMECHOICE, CatalogPanel::OnVolumeChoiceSelected )
+EVT_BUTTON( ID_MANAGEBUTTON, CatalogPanel::OnManageClick )
+END_EVENT_TABLE( )
 
-    BEGIN_EVENT_TABLE( CatalogPanel, wxPanel )
-    EVT_TEXT( ID_TEXTCTRL, CatalogPanel::OnTextctrlTextUpdated )
-    EVT_TOGGLEBUTTON( ID_TOGGLEBUTTON, CatalogPanel::OnTogglebuttonClick )
-    EVT_CHOICE( ID_VOLUMECHOICE, CatalogPanel::OnVolumeChoiceSelected )
-    EVT_BUTTON( ID_MANAGEBUTTON, CatalogPanel::OnManageClick )
-    END_EVENT_TABLE( )
+//--------------
 
-
-    CatalogPanel::CatalogPanel( )
+CatalogPanel::CatalogPanel( )
 {
     Init( );
 }
+
+//--------------
 
 CatalogPanel::CatalogPanel( wxWindow* parent, wxWindowID id, const wxPoint& pos, const wxSize& size, long style )
 {
     Init( );
     Create( parent, id, pos, size, style );
 }
+
+//--------------
+
+CatalogPanel::~CatalogPanel( )
+{
+}
+
+//--------------
 
 bool CatalogPanel::Create( wxWindow* parent, wxWindowID id, const wxPoint& pos, const wxSize& size, long style )
 {
@@ -86,17 +91,7 @@ bool CatalogPanel::Create( wxWindow* parent, wxWindowID id, const wxPoint& pos, 
     return true;
 }
 
-
-CatalogPanel::~CatalogPanel( )
-{
-}
-
-
-void CatalogPanel::Init( )
-{
-    // m_title = NULL;
-    m_catalogTreeCtrl = NULL;
-}
+//--------------
 
 void CatalogPanel::CreateControls( )
 {
@@ -160,14 +155,93 @@ void CatalogPanel::CreateControls( )
     m_catPanelSizer->Layout( );
 }
 
-bool CatalogPanel::ShowToolTips( )
+
+void CatalogPanel::DoCSVImport( )
 {
-    return true;
+
+    if ( IsDirty( ) )
+    {
+        // query whether to save first 
+    }
+
+    wxFileDialog openFileDialog(
+        this, _( "Open Colnect CSV file" ),
+        "", "",
+        "CSV files (*.csv)|*.csv", wxFD_OPEN | wxFD_FILE_MUST_EXIST );
+    if ( openFileDialog.ShowModal( ) == wxID_CANCEL )
+    {
+        return; // the user changed idea...
+    }
+
+    // proceed loading the file chosen by the user;
+    // this can be done with e.g. wxWidgets input streams:
+    wxString filename = openFileDialog.GetPath( );
+    wxFileInputStream input_stream( filename );
+    if ( !input_stream.IsOk( ) )
+    {
+        wxLogError( "DoCSVImport: Cannot open file '%s'.", filename );
+        return;
+    }
+
+    GetCatalogData( )->ImportCSV( filename );
+    Dirty = true;
 }
 
-/*
- *   ID_TEXTCTRL
- */
+//--------------
+
+void CatalogPanel::Init( )
+{
+    // m_title = NULL;
+    m_catalogTreeCtrl = NULL;
+}
+
+
+void CatalogPanel::NewCatalogDialog( )
+{
+    if ( IsDirty( ) )
+    {
+        // query whether to save first 
+        wxMessageDialog* dlg = new wxMessageDialog(
+            this,
+            wxT( "The current data has been changed but not saved. \n"\
+                "Select \"OK\" to close the file losing the changes.\n"\
+                "Or select \"Cancel\" to quit file open process.\n" ),
+            wxT( "Warning! Unsaved modifications.\n" ),
+            wxOK | wxCANCEL | wxCENTER );
+        int rsp = dlg->ShowModal( );
+        if ( rsp == wxID_CANCEL )
+        {
+            return;
+        }
+    };
+
+    FileCreateDialog fileDialog( this, 12355, _( "Select the Filename and Directory for the Design file." ) );
+    wxGetCwd( );
+    fileDialog.SetDefaultDirectory( wxGetCwd( ) );
+    fileDialog.SetDefaultFilename( _( "unnamed.alb" ) );
+    fileDialog.SetWildCard( _( "Design files(*.alb)|*.alb" ) );
+
+    if ( fileDialog.ShowModal( ) == wxID_CANCEL )
+    {
+        return;
+    }
+
+    wxString cwd = wxGetCwd( );
+    wxFileName catFile( fileDialog.GetPath( ) );
+    catFile.MakeRelativeTo( cwd );
+
+    GetCatalogData( )->LoadNew( catFile.GetFullPath( ) );
+    SetDirty( );
+}
+
+//--------------
+
+
+void CatalogPanel::OnCSVImportClick( wxCommandEvent& event )
+{
+    DoCSVImport( );
+    event.Skip( );
+}
 
 void CatalogPanel::OnTextctrlTextUpdated( wxCommandEvent& event )
 {
@@ -176,12 +250,47 @@ void CatalogPanel::OnTextctrlTextUpdated( wxCommandEvent& event )
 
 }
 
+//--------------
+
+void CatalogPanel::OnManageClick( wxCommandEvent& event )
+{
+
+    wxMenu m_designMenu;
+    m_designMenu.Append( ID_NEWCATALOG, _( "New Catalog File" ), wxEmptyString, wxITEM_NORMAL );
+    m_designMenu.Append( ID_OPENCATALOG, _( "Open Catalog File" ), wxEmptyString, wxITEM_NORMAL );
+    m_designMenu.Append( ID_CSVIMPORTCATALOG, _( "Import Catalog from CSV File" ), wxEmptyString, wxITEM_NORMAL );
+    m_designMenu.Append( ID_REMOVECATALOG, _( "Remove Catalog File" ), wxEmptyString, wxITEM_NORMAL );
 
 
+    switch ( GetPopupMenuSelectionFromUser( m_designMenu ) )
+    {
+        case ID_NEWCATALOG:
+        {
+            NewCatalogDialog( );
+            break;
+        }
+        case ID_OPENCATALOG:
+        {
+            OpenCatalog( );
+            break;
+        }
+        case ID_CSVIMPORTCATALOG:
+        {
+            DoCSVImport( );
+            break;
+        }
+        case ID_REMOVECATALOG:
+        {
 
-/*
- *   ID_TOGGLEBUTTON
- */
+            RemoveVolume( );
+            break;
+        }
+
+    }
+
+}
+
+//--------------
 
 void CatalogPanel::OnTogglebuttonClick( wxCommandEvent& event )
 {
@@ -201,6 +310,8 @@ void CatalogPanel::OnTogglebuttonClick( wxCommandEvent& event )
 
 }
 
+//--------------
+
 void CatalogPanel::OnVolumeChoiceSelected( wxCommandEvent& event )
 {
     int sel = m_volumeListCtrl->GetSelection( );
@@ -216,29 +327,77 @@ void CatalogPanel::OnVolumeChoiceSelected( wxCommandEvent& event )
     event.Skip( );
 
 }
-void CatalogPanel::OnManageClick( wxCommandEvent& event )
+
+
+void CatalogPanel::OpenCatalog( )
+{
+    // if ( IsDirty( ) )
+    // { 
+    //     // query whether to save first 
+    //     wxMessageDialog* dlg = new wxMessageDialog( 
+    //         this, 
+    //         wxT( "The current data has been changed but not saved. \n"\
+    //             "Select \"OK\" to close the file losing the changes.\n"\
+    //             "Or select \"Cancel\" to quit file open process.\n" ), 
+    //         wxT( "Warning! Unsaved modifications.\n" ), 
+    //         wxOK | wxCANCEL | wxCENTER );
+    //     int rsp = dlg->ShowModal( );
+    //     if ( rsp == wxID_CANCEL )
+    //     { 
+    //         return;
+    //     }
+    // };
+
+    wxFileDialog openFileDialog(
+        this, _( "Open Catalog XML file" ),
+        wxGetCwd( ),
+        _( "unnamed.cat" ),
+        "Catalog XML files(*.cat)|*.cat", wxFD_OPEN | wxFD_FILE_MUST_EXIST );
+    if ( openFileDialog.ShowModal( ) == wxID_CANCEL )
+    {
+        return; // the user changed idea...
+    }
+
+    wxString cwd = wxGetCwd( );
+    wxFileName catFile( openFileDialog.GetPath( ) );
+    catFile.MakeRelativeTo( cwd );
+    GetCatalogData( )->FileOpen( catFile.GetFullPath( ) );
+}
+
+
+void CatalogPanel::RemoveVolume( )
+{
+    wxArrayString array = GetCatalogData( )->GetVolumeNameStrings( );
+    RemoveVolumeDialog  dialog( ( wxWindow* ) this,
+        "Remove Catalog Volume From Project",
+        "Select Volume to remove:",
+        array );
+    dialog.ShowModal( );
+
+}
+
+void CatalogPanel::SaveAsCatalog( )
 {
 
-    wxMenu m_designMenu;
-    m_designMenu.Append( ID_NEWCATALOG, _( "New Catalog File" ), wxEmptyString, wxITEM_NORMAL );
-    m_designMenu.Append( ID_OPENCATALOG, _( "Open Catalog File" ), wxEmptyString, wxITEM_NORMAL );
-    m_designMenu.Append( ID_REMOVECATALOG, _( "Remove Catalog File" ), wxEmptyString, wxITEM_NORMAL );
+    // if ( GetCatalogVolume( ) )
+    // { 
+    //     wxFileName lastFile( GetProject( )->GetCatalogFilename( ) );
+    //     lastFile.SetExt( "xml" );
+    //     wxFileDialog saveFileDialog( 
+    //         this, _( "Stamp List XML file" ), 
+    //         lastFile.GetPath( ), lastFile.GetFullName( ), 
+    //         "XML files (*.cat)|*.cat", wxFD_SAVE | wxFD_OVERWRITE_PROMPT );
+    //     if ( saveFileDialog.ShowModal( ) == wxID_CANCEL )
+    //         return;
 
+    //     wxString filename = saveFileDialog.GetPath( );
+    //     GetFrame( )->FileSaveAsCatalog( filename );
+    // }
+}
 
-    switch ( GetPopupMenuSelectionFromUser( m_designMenu ) )
-    {
-    case ID_NEWCATALOG:
-    {
-        break;
-    }
-    case ID_OPENCATALOG:
-    {
-        break;
-    }
-    case ID_REMOVECATALOG:
-    {
-        break;
-    }
+//--------------
 
-    }
+bool CatalogPanel::ShowToolTips( )
+{
+    return true;
 }

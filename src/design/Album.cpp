@@ -20,7 +20,7 @@
  * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
- **************************************************/
+ */
 
 
 #include "wx/wxprec.h"
@@ -42,144 +42,153 @@
 #include "design/Page.h"
 #include "utils/XMLUtilities.h"
 #include "utils/FontList.h"
-#include "gui/DesignTreeCtrl.h"
-#include "StampToolApp.h"
+#include "utils/Settings.h"
+#include "gui/AlbumTreeCtrl.h"
+ //#include "StampToolApp.h"
 
-
-wxDECLARE_APP( StampToolApp );
+ //wxDECLARE_APP( StampToolApp );
 
 namespace Design {
 
-    bool Album::UpdateMinimumSize( )
+    wxString Album::DrawPDF( )
     {
-
-        // set known child values
-        wxTreeItemIdValue cookie;
-        wxTreeItemId parentID = GetTreeItemId( );
-        wxTreeItemId childID = GetDesignTreeCtrl( )->GetFirstChild( parentID, cookie );
-        while ( childID.IsOk( ) )
-        {
-            AlbumBaseType type = ( AlbumBaseType ) GetDesignTreeCtrl( )->GetItemType( childID );
-            switch ( type )
-            {
-            case AT_Page:
-            {
-                // set the layout parameters into the child
-                Page* page = ( Page* ) GetDesignTreeCtrl( )->GetItemNode( childID );
-                //page->SetBorder( m_border );
-                // the page frame takes into account the margins, the border is within this
-                page->SetXPos( GetLeftMargin( ) );
-                page->SetYPos( GetTopMargin( ) );
-                page->SetWidth( GetWidth( ) - GetRightMargin( ) - GetLeftMargin( ) );
-                page->SetHeight( GetHeight( ) - GetTopMargin( ) - GetBottomMargin( ) );
-                page->SetTopMargin( GetTopMargin( ) );
-                page->SetBottomMargin( GetBottomMargin( ) );
-                page->SetRightMargin( GetRightMargin( ) );
-                page->SetLeftMargin( GetLeftMargin( ) );
-                page->SetBorderSize( GetBorderSize( ) );
-                page->SetBorderFilename( GetBorderFileName( ) );
-                page->UpdateMinimumSize( );
-                break;
-            }
-            default:
-                break;
-            }
-            childID = GetDesignTreeCtrl( )->GetNextChild( parentID, cookie );
-        }
-        return true;
-    }
-
-    void Album::UpdateSizes( )
-    {
-        // go to the bottom of each child container object ( row, column, page )
-        // and begin filling in position relative to the parent
+        Design::InitDesignDefs( Design::DD_PDF );
+        // The text:p, i.e., content holder, for this Page
+        double width = GetAttrDbl( AT_PageWidth );
+        double height = GetAttrDbl( AT_PageHeight );
+        wxPdfDocument* pdfDoc = new wxPdfDocument( wxPORTRAIT, width, height );
 
         wxTreeItemIdValue cookie;
         wxTreeItemId parentID = GetTreeItemId( );
-        wxTreeItemId childID = GetDesignTreeCtrl( )->GetFirstChild( parentID, cookie );
+        wxTreeItemId childID = GetAlbumTreeCtrl( )->GetFirstChild( parentID, cookie );
         while ( childID.IsOk( ) )
         {
-            LayoutBase* child = ( LayoutBase* ) GetDesignTreeCtrl( )->GetItemNode( childID );
+            int childType = ( AlbumBaseType ) GetAlbumTreeCtrl( )->GetItemType( childID );
 
-            //  call each childs Design function
-            child->UpdateSizes( );
-            childID = GetDesignTreeCtrl( )->GetNextChild( parentID, cookie );
+            pdfDoc->AddPage( );
+            // set the layout parameters into the child
+            Page* page = ( Page* ) GetAlbumTreeCtrl( )->GetItemNode( childID );
+            page->DrawPDF( pdfDoc, width, height );
+            childID = GetAlbumTreeCtrl( )->GetNextChild( parentID, cookie );
         }
 
+        wxString docName = GetDocName( );
+        docName += ".pdf";
+        wxFileName outFile( docName );
+        outFile.MakeAbsolute( );
+        wxString fullPath = outFile.GetFullPath( );
+        pdfDoc->SaveAsFile( fullPath );
+        wxString txt = wxString::Format( "Generated %s.\n\n", fullPath );
+        wxMessageDialog* dlg = new wxMessageDialog(
+            ( wxWindow* ) GetFrame( ), txt,
+            wxT( "Pdf Generated" ),
+            wxOK | wxCENTER );
+        int rsp = dlg->ShowModal( );
+        return docName;
     }
 
-    void Album::UpdatePositions( )
+    void Album::DumpFont( wxString Level )
     {
-        // go to the bottom of each child container object ( row, column, page )
-        // and begin filling in position relative to the parent
+
+        int ndx = DefaultFonts[ AT_NbrFontType ].Get( );
+        std::cout << Level << "CatNbr font " << GetFontList( )->GetFont( ndx ).GetNativeFontInfoUserDesc( )
+            << "  color " << GetFontList( )->GetColor( ndx ).GetAsString( )
+            << "  Ndx " << ndx << std::endl;
+
+        ndx = DefaultFonts[ AT_TextFontType ].Get( );
+        std::cout << Level << "Text font " << GetFontList( )->GetFont( ndx ).GetNativeFontInfoUserDesc( )
+            << "  color " << GetFontList( )->GetColor( ndx ).GetAsString( )
+            << "  Ndx " << ndx << std::endl;
+
+        ndx = DefaultFonts[ AT_TitleFontType ].Get( );
+        std::cout << Level << "Title font " << GetFontList( )->GetFont( ndx ).GetNativeFontInfoUserDesc( )
+            << "  color " << GetFontList( )->GetColor( ndx ).GetAsString( )
+            << "  Ndx " << ndx << std::endl;
+    };
+
+    void Album::DumpLayout( )
+    {
+        std::cout << "Album Parms w:" << GetAttrStr( AT_PageWidth )
+            << " h:" << GetAttrStr( AT_PageHeight )
+            << " tm:" << GetAttrStr( AT_TopMargin )
+            << " bm:" << GetAttrStr( AT_BottomMargin )
+            << " rm:" << GetAttrStr( AT_RightMargin )
+            << " lm:" << GetAttrStr( AT_LeftMargin ) << "\n";
 
         wxTreeItemIdValue cookie;
         wxTreeItemId parentID = GetTreeItemId( );
-        wxTreeItemId childID = GetDesignTreeCtrl( )->GetFirstChild( parentID, cookie );
+        wxTreeItemId childID = GetAlbumTreeCtrl( )->GetFirstChild( parentID, cookie );
         while ( childID.IsOk( ) )
         {
-            LayoutBase* child = ( LayoutBase* ) GetDesignTreeCtrl( )->GetItemNode( childID );
+            LayoutBase* child = ( LayoutBase* ) GetAlbumTreeCtrl( )->GetItemNode( childID );
 
-            child->UpdatePositions( );
-            childID = GetDesignTreeCtrl( )->GetNextChild( parentID, cookie );
+            child->DumpLayout( 0, 0 );
+            childID = GetAlbumTreeCtrl( )->GetNextChild( parentID, cookie );
         }
     }
-
-    NodeStatus Album::ValidateNode( )
-    {
-        NodeStatus status = AT_OK;
-        if ( GetPageHeight( ) <= 0.0 )
-        {
-            // "Must define the page height.\n";
-            status = AT_FATAL;
-        }
-        if ( GetPageWidth( ) <= 0.0 )
-        {
-            //   "Must define the page width.\n";
-            status = AT_FATAL;
-        }
-        m_nodeValid = status;
-        return status;
-    }
-
-    double Album::GetWidth( ) { return GetAttrDbl( AT_PageWidth ); };
-    double Album::GetPageWidth( ) { return GetAttrDbl( AT_PageWidth ); };
-    wxString Album::GetPageWidthStr( ) { return GetAttrStr( AT_PageWidth ); };
-    void Album::SetPageWidth( wxString str ) { return SetAttrStr( AT_PageWidth, str ); };
-
-    double Album::GetHeight( ) { return GetAttrDbl( AT_PageHeight ); };
-    double Album::GetPageHeight( ) { return GetAttrDbl( AT_PageHeight ); };
-    wxString Album::GetPageHeightStr( ) { return GetAttrStr( AT_PageHeight ); };
-    void Album::SetPageHeight( wxString str ) { return SetAttrStr( AT_PageHeight, str ); };
-
-    double Album::GetTopMargin( ) { return GetAttrDbl( AT_TopMargin ); };
-    wxString Album::GetTopMarginStr( ) { return GetAttrStr( AT_TopMargin ); };
-    void Album::SetTopMargin( wxString str ) { return SetAttrStr( AT_TopMargin, str ); };
-
-    double Album::GetBottomMargin( ) { return GetAttrDbl( AT_BottomMargin ); };
-    wxString Album::GetBottomMarginStr( ) { return GetAttrStr( AT_BottomMargin ); };
-    void Album::SetBottomMargin( wxString str ) { return SetAttrStr( AT_BottomMargin, str ); };
-
-    double Album::GetRightMargin( ) { return GetAttrDbl( AT_RightMargin ); };
-    wxString Album::GetRightMarginStr( ) { return GetAttrStr( AT_RightMargin ); };
-    void Album::SetRightMargin( wxString str ) { return SetAttrStr( AT_RightMargin, str ); };
-
-    double Album::GetLeftMargin( ) { return GetAttrDbl( AT_LeftMargin ); };
-    wxString Album::GetLeftMarginStr( ) { return GetAttrStr( AT_LeftMargin ); };
-    void Album::SetLeftMargin( wxString str ) { return SetAttrStr( AT_LeftMargin, str ); };
 
     double Album::GetBorderSize( ) { return GetAttrDbl( AT_BorderSize ); };
-    wxString Album::GetBorderSizeStr( ) { return GetAttrStr( AT_BorderSize ); };
-    void Album::SetBorderSize( wxString str ) { return SetAttrStr( AT_BorderSize, str ); };
 
-    wxString  Album::GetBorderFileName( ) { return GetAttrStr( AT_BorderFileName ); };
+    wxString Album::GetBorderSizeStr( ) { return GetAttrStr( AT_BorderSize ); };
+
+    wxString Album::GetBorderFileName( ) { return GetAttrStr( AT_BorderFileName ); };
+
+    double Album::GetBottomMargin( ) { return GetAttrDbl( AT_BottomMargin ); };
+
+    wxString Album::GetBottomMarginStr( ) { return GetAttrStr( AT_BottomMargin ); };
+
+    wxColour Album::GetColor( FontUsageType fontType )
+    {
+        int ndx = GetFontNdx( fontType );
+        if ( GetFontList( )->IsValidFontNdx( ndx ) )
+        {
+            return GetFontList( )->GetColor( ndx );
+        }
+        if ( GetNodeType( ) == AT_Album )
+        {
+            return GetFontList( )->GetColor( GetAlbum( )->GetFontNdxPreference( fontType ) );
+        }
+        else
+        {
+            return GetAlbum( )->GetColor( fontType );
+        }
+    }
 
     wxString Album::GetDocName( ) { return  GetAttrStr( "Name" ); };
-    void Album::SetDocName( wxString str ) { return SetAttrStr( AT_Name, str ); };
-    // int Album::GetAppPrefTitleFontNdx( ) { return GetSettings( )->GetAppPrefTitleFontNdx( ); };
-    // int Album::GetAppPrefNbrFontNdx( ) { return GetSettings( )->GetAppPrefNbrFontNdx( ); }
-    // int Album::GetAppPrefTextFontNdx( ) { return GetSettings( )->GetAppPrefTextFontNdx( ); }
-    // int Album::GetAppPrefNameFontNdx( ) { return GetSettings( )->GetAppPrefNameFontNdx( ); }
+
+    wxFont Album::GetFont( FontUsageType fontType )
+    {
+        return GetFontList( )->GetFont( GetFontNdx( fontType ) );
+    };
+
+    int Album::GetFontNdx( FontUsageType fontType )
+    {
+        int ndx = DefaultFonts[ fontType ].Get( );
+        if ( GetFontList( )->IsValidFontNdx( ndx ) )
+        {
+            return DefaultFonts[ fontType ].Get( );
+        }
+        else
+        {
+            return GetSettings( )->GetFontNdxPreference( fontType );
+        }
+    };
+
+
+    int Album::GetFontNdxPreference( FontUsageType fontType )
+    {
+        return GetSettings( )->GetFontNdxPreference( fontType );
+    }
+
+    double Album::GetHeight( ) { return GetAttrDbl( AT_PageHeight ); };
+
+    double Album::GetLeftMargin( ) { return GetAttrDbl( AT_LeftMargin ); };
+
+    wxString Album::GetLeftMarginStr( ) { return GetAttrStr( AT_LeftMargin ); };
+
+    double Album::GetPageHeight( ) { return GetAttrDbl( AT_PageHeight ); };
+
+    wxString Album::GetPageHeightStr( ) { return GetAttrStr( AT_PageHeight ); };
 
     void Album::GetPageParameters( wxString& width,
         wxString& height,
@@ -196,42 +205,70 @@ namespace Design {
         leftMargin = GetAttrStr( AT_LeftMargin );
     };
 
+    double Album::GetPageWidth( ) { return GetAttrDbl( AT_PageWidth ); };
 
-    wxString Album::DrawPDF( )
+    wxString Album::GetPageWidthStr( ) { return GetAttrStr( AT_PageWidth ); };
+
+    double Album::GetRightMargin( ) { return GetAttrDbl( AT_RightMargin ); };
+
+    wxString Album::GetRightMarginStr( ) { return GetAttrStr( AT_RightMargin ); };
+
+    double Album::GetTopMargin( ) { return GetAttrDbl( AT_TopMargin ); };
+
+    wxString Album::GetTopMarginStr( ) { return GetAttrStr( AT_TopMargin ); };
+
+    double Album::GetWidth( ) { return GetAttrDbl( AT_PageWidth ); };
+
+    bool Album::IsDefaultFont( FontUsageType fontType, int ndx )
     {
-        Design::InitDesignDefs( Design::DD_PDF );
-        // The text:p, i.e., content holder, for this Page
-        double width = GetAttrDbl( AT_PageWidth );
-        double height = GetAttrDbl( AT_PageHeight );
-        wxPdfDocument* pdfDoc = new wxPdfDocument( wxPORTRAIT, width, height );
+        return ( ndx == GetFontNdx( fontType ) );
+    }
 
-        wxTreeItemIdValue cookie;
-        wxTreeItemId parentID = GetTreeItemId( );
-        wxTreeItemId childID = GetDesignTreeCtrl( )->GetFirstChild( parentID, cookie );
-        while ( childID.IsOk( ) )
+    void Album::LoadFonts( wxXmlNode* node )
+    {
+
+        wxXmlNode* fonts = Utils::FirstChildElement( node, "Fonts" );
+        if ( fonts )
         {
-            int childType = ( AlbumBaseType ) GetDesignTreeCtrl( )->GetItemType( childID );
 
-            pdfDoc->AddPage( );
-            // set the layout parameters into the child
-            Page* page = ( Page* ) GetDesignTreeCtrl( )->GetItemNode( childID );
-            page->DrawPDF( pdfDoc, width, height );
-            childID = GetDesignTreeCtrl( )->GetNextChild( parentID, cookie );
+            Design::AlbumBaseType nodeType = GetNodeType( );
+
+            DefaultFonts[ AT_NbrFontType ] = GetFontList( )->LoadFont( fonts, Design::AT_NbrFontType );
+            if ( !DefaultFonts[ AT_NbrFontType ].IsOk( ) )
+            {
+                if ( nodeType == AT_Album )
+                {
+                    DefaultFonts[ AT_NbrFontType ].Set( GetSettings( )->GetFontNdxPreference( AT_NbrFontType ) );
+                }
+            }
+
+            DefaultFonts[ AT_NameFontType ] = GetFontList( )->LoadFont( fonts, Design::AT_NameFontType );
+            if ( DefaultFonts[ AT_NameFontType ].IsOk( ) )
+            {
+                if ( IsNodeType( AT_Album ) )
+                {
+                    DefaultFonts[ AT_NameFontType ].Set( GetSettings( )->GetFontNdxPreference( AT_TextFontType ) );
+                }
+            }
+
+            DefaultFonts[ AT_TextFontType ] = GetFontList( )->LoadFont( fonts, Design::AT_TextFontType );
+            if ( !DefaultFonts[ AT_TextFontType ].IsOk( ) )
+            {
+                if ( IsNodeType( AT_Album ) )
+                {
+                    DefaultFonts[ AT_TextFontType ].Set( GetSettings( )->GetFontNdxPreference( AT_TextFontType ) );
+                }
+            }
+
+            DefaultFonts[ AT_TitleFontType ] = GetFontList( )->LoadFont( fonts, Design::AT_TitleFontType );
+            if ( !DefaultFonts[ AT_TitleFontType ].IsOk( ) )
+            {
+                if ( IsNodeType( AT_Album ) )
+                {
+                    DefaultFonts[ AT_TitleFontType ].Set( GetSettings( )->GetFontNdxPreference( Design::AT_TitleFontType ) );
+                }
+            }
         }
-
-        wxString docName = GetDocName( );
-        docName += ".pdf";
-        wxFileName outFile( docName );
-        outFile.MakeAbsolute( );
-        wxString fullPath = outFile.GetFullPath( );
-        pdfDoc->SaveAsFile( fullPath );
-        wxString txt = wxString::Format( "Generated %s.\n\n", fullPath );
-        wxMessageDialog* dlg = new wxMessageDialog(
-            wxGetApp( ).GetFrame( ), txt,
-            wxT( "Pdf Generated" ),
-            wxOK | wxCENTER );
-        int rsp = dlg->ShowModal( );
-        return docName;
     }
 
     void Album::MakeAlbum( )
@@ -266,24 +303,179 @@ namespace Design {
         SaveFonts( xmlNode );
     }
 
-    void Album::DumpLayout( )
+    void Album::SaveFonts( wxXmlNode* parent )
     {
-        std::cout << "Album Parms w:" << GetAttrStr( AT_PageWidth )
-            << " h:" << GetAttrStr( AT_PageHeight )
-            << " tm:" << GetAttrStr( AT_TopMargin )
-            << " bm:" << GetAttrStr( AT_BottomMargin )
-            << " rm:" << GetAttrStr( AT_RightMargin )
-            << " lm:" << GetAttrStr( AT_LeftMargin ) << "\n";
+        if ( DefaultFonts[ AT_NbrFontType ].IsOk( ) || DefaultFonts[ AT_TextFontType ].IsOk( ) || DefaultFonts[ AT_TitleFontType ].IsOk( ) || DefaultFonts[ AT_NameFontType ].IsOk( ) )
+        {
+            wxXmlNode* fonts = Utils::NewNode( parent, "Fonts" );
+            if ( fonts )
+            {
+                if ( DefaultFonts[ AT_NbrFontType ].IsOk( ) )
+                {
+                    if ( IsNodeType( AT_Album )  //save all fonts for album                    
+                        //or all but default fonts for others
+                        || ( !IsNodeType( AT_Album ) && !IsDefaultFont( AT_NbrFontType, GetFontNdx( AT_NbrFontType ) ) ) )
+                    {
+                        GetFontList( )->SaveFont( fonts, DefaultFonts[ AT_NbrFontType ], Design::AT_NbrFontType );
+                    }
+                }
+                if ( DefaultFonts[ AT_NameFontType ].IsOk( ) )
+                {
+                    if ( IsNodeType( AT_Album )  //save all fonts for album                    
+                        //or all but default fonts for others
+                        || ( !IsNodeType( AT_Album ) && !IsDefaultFont( AT_NameFontType, GetFontNdx( AT_NameFontType ) ) ) )
+                    {
+                        GetFontList( )->SaveFont( fonts, DefaultFonts[ AT_NameFontType ], Design::AT_NameFontType );
+                    }
+                }
+                if ( DefaultFonts[ AT_TextFontType ].IsOk( ) )
+                {
+                    if ( IsNodeType( AT_Album )  //save all fonts for album                    
+                        //or all but default fonts for others
+                        || ( !IsNodeType( AT_Album ) && !IsDefaultFont( AT_TextFontType, GetFontNdx( AT_TextFontType ) ) ) )
+                    {
+                        GetFontList( )->SaveFont( fonts, DefaultFonts[ AT_TextFontType ], Design::AT_TextFontType );
+                    }
+                }
+                if ( DefaultFonts[ AT_TitleFontType ].IsOk( ) )
+                {
+                    if ( IsNodeType( AT_Album )  //save all fonts for album                    
+                        //or all but default fonts for others
+                        || ( !IsNodeType( AT_Album ) && !IsDefaultFont( AT_TitleFontType, GetFontNdx( AT_TitleFontType ) ) ) )
+                    {
+                        GetFontList( )->SaveFont( fonts, DefaultFonts[ AT_TitleFontType ], Design::AT_TitleFontType );
+                    }
+                }
+            }
+        }
+    }
+
+    void Album::SetBorderSize( wxString str ) { return SetAttrStr( AT_BorderSize, str ); };
+
+    void Album::SetBottomMargin( wxString str ) { return SetAttrStr( AT_BottomMargin, str ); };
+
+    void Album::SetDocName( wxString str ) { return SetAttrStr( AT_Name, str ); };
+
+    void Album::SetFont( FontUsageType fontType, wxFont font, wxColour color )
+    {
+        int ndx = GetFontList( )->AddNewFont( font, color );
+        if ( IsDefaultFont( fontType, ndx ) && !IsNodeType( AT_Album ) )
+        {
+            SetFontNdx( fontType, -1 );
+        }
+        else
+        {
+            SetFontNdx( fontType, ndx );
+        }
+    }
+
+    void Album::SetLeftMargin( wxString str ) { return SetAttrStr( AT_LeftMargin, str ); };
+
+    void Album::SetPageHeight( wxString str ) { return SetAttrStr( AT_PageHeight, str ); };
+
+    void Album::SetPageWidth( wxString str ) { return SetAttrStr( AT_PageWidth, str ); };
+
+    void Album::SetRightMargin( wxString str ) { return SetAttrStr( AT_RightMargin, str ); };
+
+    void Album::SetTopMargin( wxString str ) { return SetAttrStr( AT_TopMargin, str ); };
+
+    void Album::SetFontNdx( FontUsageType fontType, int ndx )
+    {
+        DefaultFonts[ fontType ].Set( ndx );
+    };
+
+
+    bool Album::UpdateMinimumSize( )
+    {
+
+        // set known child values
+        wxTreeItemIdValue cookie;
+        wxTreeItemId parentID = GetTreeItemId( );
+        wxTreeItemId childID = GetAlbumTreeCtrl( )->GetFirstChild( parentID, cookie );
+        while ( childID.IsOk( ) )
+        {
+            AlbumBaseType type = ( AlbumBaseType ) GetAlbumTreeCtrl( )->GetItemType( childID );
+            switch ( type )
+            {
+                case AT_Page:
+                {
+                    // set the layout parameters into the child
+                    Page* page = ( Page* ) GetAlbumTreeCtrl( )->GetItemNode( childID );
+                    //page->SetBorder( m_border );
+                    // the page frame takes into account the margins, the border is within this
+                    page->SetXPos( GetLeftMargin( ) );
+                    page->SetYPos( GetTopMargin( ) );
+                    page->SetWidth( GetWidth( ) - GetRightMargin( ) - GetLeftMargin( ) );
+                    page->SetHeight( GetHeight( ) - GetTopMargin( ) - GetBottomMargin( ) );
+                    page->SetTopMargin( GetTopMargin( ) );
+                    page->SetBottomMargin( GetBottomMargin( ) );
+                    page->SetRightMargin( GetRightMargin( ) );
+                    page->SetLeftMargin( GetLeftMargin( ) );
+                    page->SetBorderSize( GetBorderSize( ) );
+                    page->SetBorderFilename( GetBorderFileName( ) );
+                    page->UpdateMinimumSize( );
+                    break;
+                }
+                default:
+                    break;
+            }
+            childID = GetAlbumTreeCtrl( )->GetNextChild( parentID, cookie );
+        }
+        return true;
+    }
+
+    void Album::UpdatePositions( )
+    {
+        // go to the bottom of each child container object ( row, column, page )
+        // and begin filling in position relative to the parent
 
         wxTreeItemIdValue cookie;
         wxTreeItemId parentID = GetTreeItemId( );
-        wxTreeItemId childID = GetDesignTreeCtrl( )->GetFirstChild( parentID, cookie );
+        wxTreeItemId childID = GetAlbumTreeCtrl( )->GetFirstChild( parentID, cookie );
         while ( childID.IsOk( ) )
         {
-            LayoutBase* child = ( LayoutBase* ) GetDesignTreeCtrl( )->GetItemNode( childID );
+            LayoutBase* child = ( LayoutBase* ) GetAlbumTreeCtrl( )->GetItemNode( childID );
 
-            child->DumpLayout( 0, 0 );
-            childID = GetDesignTreeCtrl( )->GetNextChild( parentID, cookie );
+            child->UpdatePositions( );
+            childID = GetAlbumTreeCtrl( )->GetNextChild( parentID, cookie );
         }
     }
+
+    void Album::UpdateSizes( )
+    {
+        // go to the bottom of each child container object ( row, column, page )
+        // and begin filling in position relative to the parent
+
+        wxTreeItemIdValue cookie;
+        wxTreeItemId parentID = GetTreeItemId( );
+        wxTreeItemId childID = GetAlbumTreeCtrl( )->GetFirstChild( parentID, cookie );
+        while ( childID.IsOk( ) )
+        {
+            LayoutBase* child = ( LayoutBase* ) GetAlbumTreeCtrl( )->GetItemNode( childID );
+
+            //  call each childs Design function
+            child->UpdateSizes( );
+            childID = GetAlbumTreeCtrl( )->GetNextChild( parentID, cookie );
+        }
+
+    }
+
+    NodeStatus Album::ValidateNode( )
+    {
+        NodeStatus status = AT_OK;
+        if ( GetPageHeight( ) <= 0.0 )
+        {
+            // "Must define the page height.\n";
+            status = AT_FATAL;
+        }
+        if ( GetPageWidth( ) <= 0.0 )
+        {
+            //   "Must define the page width.\n";
+            status = AT_FATAL;
+        }
+        m_nodeValid = status;
+        return status;
+    }
+
+
 }

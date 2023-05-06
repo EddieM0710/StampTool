@@ -20,7 +20,7 @@
  * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
- **************************************************/
+ */
 
  /**
   *
@@ -29,7 +29,7 @@
   * @todo integrate GIT
   *
   *
-  **************************************************/
+  */
 
 
 
@@ -44,67 +44,41 @@
 #endif
 #include <iostream>
 #include "Defs.h"
-#include "gui/ToolData.h"
+#include "gui/AppData.h"
 #include "StampToolApp.h"
+#include "gui/StampToolFrame.h"
 
 #include <wx/log.h>
 
 
-  /*
-   * Application instance implementation
-   */
-
-   // implement app
 IMPLEMENT_APP( StampToolApp )
-// implement app
 
-/*
- * StampToolApp type definition
- */
-    IMPLEMENT_CLASS( StampToolApp, wxApp )
-    ;
-/*
- * StampToolApp event table definition
- */
+IMPLEMENT_CLASS( StampToolApp, wxApp )
+
 
 BEGIN_EVENT_TABLE( StampToolApp, wxApp )
 
-// StampToolApp event table entries
-// StampToolApp event table entries
-
 END_EVENT_TABLE( )
-;  // silly business; The above macro screws up the formatter
-;
 
 
-/*
- * Constructor for StampToolApp
- */
 
 StampToolApp::StampToolApp( )
 {
     Init( );
 }
 
-/*
- * Member initialisation
- */
 
 void StampToolApp::Init( )
 {
-    // StampToolApp member initialisation
-    // StampToolApp member initialisation
+
 }
 
-/*
- * Initialisation for StampToolApp
- */
 
 bool StampToolApp::OnInit( )
 {
-    // StampToolApp initialisation
-   // Remove the comment markers above and below this block
-   // to make permanent changes to the code.
+
+    // Remove the comment markers above and below this block
+    // to make permanent changes to the code.
 
     wxLog::EnableLogging( true );
     // wxLog* logger = new wxLogStream(&std::cout);
@@ -123,15 +97,15 @@ bool StampToolApp::OnInit( )
     wxImage::AddHandler( new wxGIFHandler );
 #endif
 
-    m_toolData = new ToolData( );
-    m_toolData->InitToolData( );
+    m_AppData = new AppData( );
+    m_AppData->InitAppData( );
 
     m_frame = new StampToolFrame( NULL );
     //  m_frame->SetupRecentMenu( );    
     m_frame->InitLoad( );
 
     m_frame->Show( true );
-    // StampToolApp initialisation
+
 
     return true;
 }
@@ -142,7 +116,7 @@ bool StampToolApp::OnInit( )
 
 int StampToolApp::OnExit( )
 {
-    // StampToolApp cleanup
+
     return wxApp::OnExit( );
-    // StampToolApp cleanup
+
 }

@@ -20,7 +20,7 @@
  * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
- **************************************************/
+ */
 
 #ifndef CatalogCode_h
 #define CatalogCode_h
@@ -41,18 +41,14 @@ namespace Catalog {
 
 
     /**
-     * @todo fix catalog code usage
+     * @brief This is a wrapper of an wxXmlNode for
+     * safe/convenient getting/putting.
+     * @see CatalogBase, Stamp, CatalogCode, Specimen, Classification
      *
-     **************************************************/
-
-     /**
-      * @brief This is a wrapper of an wxXmlNode for
-      * safe/convenient getting/putting.
-      * @see CatalogBase, Stamp, CatalogCode, Specimen, Classification
-      *
-      **************************************************/
+     */
     class CatalogCode : public CatalogBase
     {
+
     private:
         CatalogCode( ) : CatalogBase( )
         {
@@ -71,57 +67,14 @@ namespace Catalog {
             IsOK( );
         };
 
-
         ///  @brief Destroy the Catalog Code object
-        ///  
         ~CatalogCode( ) { };
-
-
-        ///  @brief Sanity check on CataloCode instantion
-        ///  
-        ///  @return true 
-        ///  @return false 
-        bool IsOK( );
-
 
         ///  @brief Get the attr value for the given type
         ///  
         ///  @param type 
         ///  @return wxString 
         wxString GetAttr( CatalogCodeTypes type );
-
-
-        ///  @brief Set the attr value fo th given type
-        ///  
-        ///  @param type 
-        ///  @param val 
-        void SetAttr( CatalogCodeTypes type, wxString val );
-
-
-        ///  @brief Convenience function for setting Catalog attribute
-        ///  
-        ///  @param val 
-        void SetCatalog( wxString val );
-
-        ///  @brief Convenience function for setting Country attribute
-        ///  
-        ///  @param val 
-        void SetCountry( wxString val );
-
-        ///  @brief Convenience function for setting ID attribute
-        ///  
-        ///  @param val 
-        void SetID( wxString val );
-
-        /**
-         * @brief Fills the input vector with the code values and returns the element pointer for convenience
-         *
-         * @param data   pointer to vector to fill
-         * @return wxXmlNode*   pointer to the element of this CatalogCode
-         **************************************************/
-        wxXmlNode* GetData( wxVector<wxVariant>* data );
-
-
 
         ///  @brief Convenience function for getting Catalog attribute
         ///  
@@ -138,12 +91,43 @@ namespace Catalog {
         ///  @param val 
         wxString GetID( );
 
+        ///  @brief Fills the input vector with the code values and returns the element pointer for convenience
+        ///  
+        /// @param data   pointer to vector to fill
+        /// @return wxXmlNode*   pointer to the element of this CatalogCode
+        wxXmlNode* GetData( wxVector<wxVariant>* data );
+
+        ///  @brief Sanity check on CataloCode instantion
+        ///  
+        ///  @return true 
+        ///  @return false 
+        bool IsOK( );
+
+        ///  @brief Set the attr value fo th given type
+        ///  
+        ///  @param type 
+        ///  @param val 
+        void SetAttr( CatalogCodeTypes type, wxString val );
+
+        ///  @brief Convenience function for setting Catalog attribute
+        ///  
+        ///  @param val 
+        void SetCatalog( wxString val );
+
+        ///  @brief Convenience function for setting Country attribute
+        ///  
+        ///  @param val 
+        void SetCountry( wxString val );
+
+        ///  @brief Convenience function for setting ID attribute
+        ///  
+        ///  @param val 
+        void SetID( wxString val );
 
     private:
         bool m_OK;
         bool m_dataDirty[ CC_NbrTypes ];
     };
-
 }
 
 #endif

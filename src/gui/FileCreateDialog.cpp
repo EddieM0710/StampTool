@@ -32,51 +32,32 @@
 #include "wx/wx.h"
 #endif
 
-//  includes
-//  includes
-
-#include "FileCreateDialog.h"
-
-
 #include <wx/filepicker.h>
 #include <wx/filectrl.h>
-#include "utils/Settings.h"
+
 #include "Defs.h"
-
-//#define wxUSE_FILECTRL 1
-//  XPM images
-//  XPM images
+#include "FileCreateDialog.h"
+#include "utils/Settings.h"
 
 
-/*
- * FileCreateDialog type definition
- */
 
 IMPLEMENT_DYNAMIC_CLASS( FileCreateDialog, wxDialog )
 
 
-/*
- * FileCreateDialog event table definition
- */
+BEGIN_EVENT_TABLE( FileCreateDialog, wxDialog )
+EVT_BUTTON( wxID_CANCEL, FileCreateDialog::OnCancelClick )
+EVT_BUTTON( wxID_OK, FileCreateDialog::OnOKClick )
 
-    BEGIN_EVENT_TABLE( FileCreateDialog, wxDialog )
+END_EVENT_TABLE( )
 
-    //  FileCreateDialog event table entries
-    EVT_BUTTON( wxID_CANCEL, FileCreateDialog::OnCancelClick )
-    EVT_BUTTON( wxID_OK, FileCreateDialog::OnOKClick )
-    //  FileCreateDialog event table entries
+//--------------
 
-    END_EVENT_TABLE( )
-
-
-    /*
-     * FileCreateDialog constructors
-     */
-
-    FileCreateDialog::FileCreateDialog( )
+FileCreateDialog::FileCreateDialog( )
 {
     Init( );
 }
+
+//--------------
 
 FileCreateDialog::FileCreateDialog( wxWindow* parent, wxWindowID id, const wxString& caption, const wxPoint& pos, const wxSize& size, long style )
 {
@@ -84,14 +65,15 @@ FileCreateDialog::FileCreateDialog( wxWindow* parent, wxWindowID id, const wxStr
     Create( parent, id, caption, pos, size, style );
 }
 
+FileCreateDialog::~FileCreateDialog( )
+{
 
-/*
- * FileCreateDialog creator
- */
+}
+
+//--------------
 
 bool FileCreateDialog::Create( wxWindow* parent, wxWindowID id, const wxString& caption, const wxPoint& pos, const wxSize& size, long style )
 {
-    //  FileCreateDialog creation
     SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY | wxWS_EX_BLOCK_EVENTS );
     wxDialog::Create( parent, id, caption, pos, size, style );
 
@@ -101,40 +83,10 @@ bool FileCreateDialog::Create( wxWindow* parent, wxWindowID id, const wxString& 
         GetSizer( )->SetSizeHints( this );
     }
     Centre( );
-    //  FileCreateDialog creation
     return true;
 }
 
-
-/*
- * FileCreateDialog destructor
- */
-
-FileCreateDialog::~FileCreateDialog( )
-{
-    //  FileCreateDialog destruction
-    //  FileCreateDialog destruction
-}
-
-
-/*
- * Member initialisation
- */
-
-void FileCreateDialog::Init( )
-{
-
-    m_defaultDirectory = wxEmptyString;
-    m_defaultFilename = wxEmptyString;
-    m_wildCard = wxFileSelectorDefaultWildcardStr;
-    //  FileCreateDialog member initialisation
-    //  FileCreateDialog member initialisation
-}
-
-
-/*
- * Control creation for FileCreateDialog
- */
+//--------------
 
 void FileCreateDialog::CreateControls( )
 {
@@ -162,31 +114,35 @@ void FileCreateDialog::CreateControls( )
     //  FileCreateDialog content construction
 }
 
+//--------------
 
+wxString FileCreateDialog::GetPath( ) { return m_path; };
 
+//--------------
 
-bool FileCreateDialog::ShowToolTips( )
+wxString FileCreateDialog::GetFile( ) { return m_file; };
+
+//--------------
+
+wxString FileCreateDialog::GetDir( ) { return m_dir; };
+
+//--------------
+
+void FileCreateDialog::Init( )
 {
-    return true;
+    m_defaultDirectory = wxEmptyString;
+    m_defaultFilename = wxEmptyString;
+    m_wildCard = wxFileSelectorDefaultWildcardStr;
 }
 
-/*
- * Get bitmap resources
- */
-
-
-
- /*
-  *   wxID_CANCEL
-  */
+//--------------
 
 void FileCreateDialog::OnCancelClick( wxCommandEvent& event )
 {
     event.Skip( );
 }
-wxString FileCreateDialog::GetPath( ) { return m_path; };
-wxString FileCreateDialog::GetFile( ) { return m_file; };
-wxString FileCreateDialog::GetDir( ) { return m_dir; };
+
+//--------------
 
 void FileCreateDialog::OnOKClick( wxCommandEvent& event )
 {
@@ -213,3 +169,9 @@ void FileCreateDialog::OnOKClick( wxCommandEvent& event )
     event.Skip( );
 }
 
+//--------------
+
+bool FileCreateDialog::ShowToolTips( )
+{
+    return true;
+}

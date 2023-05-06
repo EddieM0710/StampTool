@@ -20,7 +20,7 @@
  * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
- **************************************************/
+ */
 
 #ifndef Frame_h
 #define Frame_h
@@ -31,47 +31,67 @@
 #include <wx/pdfdocument.h>
 
 
+
 namespace Design {
 
     class Frame
     {
+
     public:
+
         Frame( );
+
         ~Frame( );
 
-        double GetXPos( );
-        void SetXPos( double val );
-        double GetYPos( );
-        void SetYPos( double val );
-        double GetWidth( );
-        void SetWidth( double val );
-        double GetHeight( );
-        void SetHeight( double val );
-        double GetMinWidth( );
-        void SetMinWidth( double val );
-        double GetMinHeight( );
-        void SetMinHeight( double val );
-
         /*
-         * @brief Draw object on screen
-         *
-         * @param dc current device context
-         * @param x position in MM
-         * @param y position in MM
-         */
+          * @brief Draw object on screen
+          *
+          * @param dc current device context
+          * @param x position in MM
+          * @param y position in MM
+          */
         void Draw( wxDC& dc, double x, double y );
+
         void DrawPDF( wxPdfDocument* doc, double x, double y );
+
         //void DrawRectangle( wxDC &dc, double x, double y, double width, double height );
 
         //void drawBorder( wxDC &dc, double x, double y );
 
+        double GetHeight( );
+
+        double GetMinHeight( );
+
+        double GetMinWidth( );
+
+        RealPoint GetPosition( ) { return RealPoint( GetXPos( ), GetYPos( ) ); };
+
+        RealSize GetSize( ) { return RealSize( GetWidth( ), GetHeight( ) ); };
+
+        double GetXPos( );
+
+        double GetYPos( );
+
+        double GetWidth( );
+
+
         wxString ReportLayout( wxString indent = "" );
         wxString LayoutString( );
 
+        void SetHeight( double val );
+
+        void SetMinWidth( double val );
+
+        void SetMinHeight( double val );
+
+        void SetXPos( double val );
+
+        void SetYPos( double val );
+
+        void SetWidth( double val );
+
         wxString WriteLayout( wxString prefix );
 
-        RealSize GetSize( ) { return RealSize( GetWidth( ), GetHeight( ) ); };
-        RealPoint GetPosition( ) { return RealPoint( GetXPos( ), GetYPos( ) ); };
         wxRect GetRect( ) { return wxRect( GetXPos( ), GetYPos( ), GetWidth( ), GetHeight( ) ); };
 
     protected:

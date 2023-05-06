@@ -20,7 +20,7 @@
  * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
- **************************************************/
+ */
 
 #include "wx/wxprec.h"
 
@@ -37,9 +37,11 @@
 
 #include "utils/Project.h"
 
-#include "StampToolApp.h"
+ //#include "StampToolApp.h"
+#include "gui/StampToolFrame.h"
+#include "gui/AppData.h"
 #include "utils/XMLUtilities.h"
-
+#include "utils/FontList.h"
 #include <iostream>
 #include <wx/dir.h>
 #include <wx/filefn.h>
@@ -49,7 +51,8 @@
 
 
 
-wxDECLARE_APP( StampToolApp );
+//wxDECLARE_APP( StampToolApp );
+
 
 namespace Utils {
 
@@ -92,17 +95,17 @@ namespace Utils {
         Load( );
 
     };
-    //*****    
+    //    
     void Settings::SetDirty( bool state )
     {
         m_dirty = state;
         if ( m_dirty )
         {
-            GetToolData( )->SetDirty( true );
+            GetAppData( )->SetDirty( true );
         }
     }
 
-    //*****    
+    //    
     int Settings::GetNextSortClassification( int current )
     {
 
@@ -133,11 +136,24 @@ namespace Utils {
         return Catalog::NT_None;
     }
 
-    //*****    
+    wxFont Settings::GetNbrFont( ) { return GetFontList( )->GetFont( FontPreference[ Design::AT_NbrFontType ].Get( ) ); };
+    wxColour Settings::GetNbrColor( ) { return GetFontList( )->GetColor( FontPreference[ Design::AT_NbrFontType ].Get( ) );; };
+
+    wxFont Settings::GetNameFont( ) { return GetFontList( )->GetFont( FontPreference[ Design::AT_NameFontType ].Get( ) ); };
+    wxColour Settings::GetNameColor( ) { return GetFontList( )->GetColor( FontPreference[ Design::AT_NameFontType ].Get( ) );; };
+
+    wxFont Settings::GetTitleFont( ) { return GetFontList( )->GetFont( FontPreference[ Design::AT_TitleFontType ].Get( ) ); };
+    wxColour Settings::GetTitleColor( ) { return GetFontList( )->GetColor( FontPreference[ Design::AT_TitleFontType ].Get( ) ); };
+
+    wxFont Settings::GetTextFont( ) { return GetFontList( )->GetFont( FontPreference[ Design::AT_TextFontType ].Get( ) ); };
+    wxColour Settings::GetTextColor( ) { return GetFontList( )->GetColor( FontPreference[ Design::AT_TextFontType ].Get( ) ); };
+
+
+    //    
     void Settings::SetLastFile( wxString file )
     {
         AddRecent( m_lastFile );
-        StampToolFrame* frame = wxGetApp( ).GetFrame( );
+        StampToolFrame* frame = GetFrame( );
         if ( frame )
         {
             frame->SetupRecentMenu( );
@@ -147,7 +163,7 @@ namespace Utils {
     };
 
 
-    //***** 
+    // 
     void Settings::AddRecent( wxString filename )
     {
         if ( !filename.IsEmpty( ) ) // add an empty file
@@ -184,15 +200,15 @@ namespace Utils {
         }
     }
 
-    // void SaveFont( wxXmlNode* parent, Design::AT_FontUsageType type  )
+    // void SaveFont( wxXmlNode* parent, Design::FontUsageType type  )
     // {
 
-    //     void SaveFont( wxXmlNode* parent, Design::AT_FontUsageType type );
+    //     void SaveFont( wxXmlNode* parent, Design::FontUsageType type );
 
     //             SaveFont( fonts, type, m_nbrFont, m_catNbrColor );
 
 
-        //***** 
+        // 
     void Settings::Save( )
     {
         wxFileName* filename = new wxFileName( GetConfigurationDirectory( ), "Settings", "xml" );
@@ -279,7 +295,7 @@ namespace Utils {
         SetDirty( false );
     }
 
-    //***** 
+    // 
     void Settings::SetSettingValue( wxString& setting, wxXmlNode* parent, wxString childName, wxString defaultVal )
     {
         wxXmlNode* childNode = FirstChildElement( parent, childName );
@@ -299,7 +315,7 @@ namespace Utils {
         }
     }
 
-    //***** 
+    // 
     void Settings::SetDefaults( )
     {
 
@@ -416,7 +432,7 @@ namespace Utils {
         // }
     }
 
-    //***** 
+    // 
     void Settings::Load( )
     {
         //Set Defaults
@@ -587,25 +603,25 @@ namespace Utils {
                 FontPreference[ Design::AT_NbrFontType ] = GetFontList( )->LoadFont( child, Design::AT_NbrFontType );
                 if ( FontPreference[ Design::AT_NbrFontType ].Get( ) < 0 )
                 {
-                    FontPreference[ Design::AT_NbrFontType ].Set( GetFontList( )->DefaultFont( Design::AT_DefaultPointSize[ Design::AT_NbrFontType ] ) );
+                    FontPreference[ Design::AT_NbrFontType ].Set( GetFontList( )->DefaultFont( Design::DefaultPointSize[ Design::AT_NbrFontType ] ) );
                 }
 
                 FontPreference[ Design::AT_NameFontType ] = GetFontList( )->LoadFont( child, Design::AT_NameFontType );
                 if ( FontPreference[ Design::AT_NameFontType ].Get( ) < 0 )
                 {
-                    FontPreference[ Design::AT_NameFontType ].Set( GetFontList( )->DefaultFont( Design::AT_DefaultPointSize[ Design::AT_NameFontType ] ) );
+                    FontPreference[ Design::AT_NameFontType ].Set( GetFontList( )->DefaultFont( Design::DefaultPointSize[ Design::AT_NameFontType ] ) );
                 }
 
                 FontPreference[ Design::AT_TextFontType ] = GetFontList( )->LoadFont( child, Design::AT_TextFontType );
                 if ( FontPreference[ Design::AT_TextFontType ].Get( ) < 0 )
                 {
-                    FontPreference[ Design::AT_TextFontType ].Set( GetFontList( )->DefaultFont( Design::AT_DefaultPointSize[ Design::AT_TextFontType ] ) );
+                    FontPreference[ Design::AT_TextFontType ].Set( GetFontList( )->DefaultFont( Design::DefaultPointSize[ Design::AT_TextFontType ] ) );
                 }
 
                 FontPreference[ Design::AT_TitleFontType ] = GetFontList( )->LoadFont( child, Design::AT_TitleFontType );
                 if ( FontPreference[ Design::AT_TitleFontType ].Get( ) < 0 )
                 {
-                    FontPreference[ Design::AT_TitleFontType ].Set( GetFontList( )->DefaultFont( Design::AT_DefaultPointSize[ Design::AT_TitleFontType ] ) );
+                    FontPreference[ Design::AT_TitleFontType ].Set( GetFontList( )->DefaultFont( Design::DefaultPointSize[ Design::AT_TitleFontType ] ) );
                 }
 
                 //     wxXmlNode* fontChild = child->GetChildren( ) ;
@@ -615,7 +631,7 @@ namespace Utils {
                 //         wxFont font;
                 //         wxString colorStr;
                 //         wxColour color;
-                //         Design::AT_FontUsageType type = Utils::LoadFont( fontChild, nativeFontString, colorStr );
+                //         Design::FontUsageType type = Utils::LoadFont( fontChild, nativeFontString, colorStr );
                 //         if ( type == Design::AT_NbrFontType )
                 //         { 
                 //             font = wxFont( nativeFontString );

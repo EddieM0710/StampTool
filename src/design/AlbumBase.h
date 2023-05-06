@@ -20,80 +20,64 @@
  * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
- **************************************************/
+ */
 
 #ifndef AlbumBase_h
 #define AlbumBase_h
 
 #include "design/XMLBase.h"
-#include "utils/FontList.h"
 #include "design/AlbumVolume.h"
 #include <wx/treectrl.h>
 
 
 namespace Design {
 
-    //   class AlbumBase;
 
-           /**
-            * @brief Base class for all layout objects. The layout objects are
-            * initialy loaded from the layout XML.
-            *
-            **************************************************/
-    class AlbumBase: public XMLBase
+    /**
+     * @brief Base class for all layout objects. The layout objects are
+     * initialy loaded from the layout XML.
+     *
+     */
+    class AlbumBase : public XMLBase
     {
+
+
     public:
 
-        AlbumBase( ): XMLBase( ( wxXmlNode* ) 0 ) { };
+        AlbumBase( ) : XMLBase( ( wxXmlNode* ) 0 ) { };
 
-        AlbumBase( wxXmlNode* ele ): XMLBase( ele )
-        {
-
-        }
+        AlbumBase( wxXmlNode* ele ) : XMLBase( ele ) { }
 
         ~AlbumBase( );
 
-        int GetNbrChildren( );
-
-        AlbumBase* GetParent( );
-        bool HasChildren( );
-
-        wxTreeItemId GetTreeItemId( ) { return m_treeID; };
-        void SetTreeItemId( wxTreeItemId id ) { m_treeID = id; };
-
-        virtual NodeStatus ValidateNode( ) = 0;
-
-        NodeStatus ValidateChildren( AlbumBase* node );
-        NodeStatus GetNodeStatus( ) { return m_nodeValid; };
-        bool IsStatusOK( ) { return ( m_nodeValid != AT_FATAL ); };
-        void SetNodeStatus( NodeStatus status ) { m_nodeValid = status; };
-
-        virtual void Save( wxXmlNode* xmlNode ) = 0;
-
         wxArrayString* GetErrorArray( ) { return &m_errorArray; };
 
-        void SetFontNdx( AT_FontUsageType fontType, int ndx );
-        int GetFontNdx( AT_FontUsageType fontType );
-        wxFont GetFont( AT_FontUsageType fontType );
-        wxColour GetColor( AT_FontUsageType fontType );
-        void SetFont( AT_FontUsageType fontType, wxFont font, wxColour color );
+        int GetNbrChildren( );
 
-        bool IsDefaultFont( AT_FontUsageType fontType, int ndx );
+        NodeStatus GetNodeStatus( ) { return m_nodeValid; };
 
-        // resets the Font to the default Font
-        void MakeDefaultFont( AT_FontUsageType fontType ) { AlbunBaseFonts[ fontType ].MakeDefault( ); };
+        AlbumBase* GetParent( );
 
-        void LoadFonts( wxXmlNode* node );
-        void SaveFonts( wxXmlNode* parent );
-        void DumpFont( wxString Level );
+        wxTreeItemId GetTreeItemId( ) { return m_treeID; };
 
+        bool HasChildren( );
+
+        bool IsStatusOK( ) { return ( m_nodeValid != AT_FATAL ); };
+
+        virtual void LoadFonts( wxXmlNode* node ) = 0;
+
+        void SetNodeStatus( NodeStatus status ) { m_nodeValid = status; };
+
+        void SetTreeItemId( wxTreeItemId id ) { m_treeID = id; };
+
+        NodeStatus ValidateChildren( AlbumBase* node );
+
+        virtual NodeStatus ValidateNode( ) = 0;
 
     private:
 
         wxTreeItemId m_treeID;
         wxArrayString m_errorArray;
-
-        Utils::FontNdx AlbunBaseFonts[ AT_NbrFontUsageTypes ];
 
     protected:
 

@@ -7,21 +7,21 @@
  * @date 2021-02-25
  *
  * @copyright Copyright ( c ) 2021
- * 
+ *
  * This file is part of StampTool.
  *
- * StampTool is free software: you can redistribute it and/or modify it under the 
- * terms of the GNU General Public License as published by the Free Software Foundation, 
+ * StampTool is free software: you can redistribute it and/or modify it under the
+ * terms of the GNU General Public License as published by the Free Software Foundation,
  * either version 3 of the License, or any later version.
  *
- * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY 
- * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+ * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
+ * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
- * You should have received a copy of the GNU General Public License along with 
+ * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
- **************************************************/
+ */
 
 #ifndef CSVData_H
 #define CSVData_H
@@ -29,7 +29,7 @@
 #include "catalog/CatalogDefs.h"
 
 #include "wx/xml/xml.h"
-//#include <wx/dynarray.h>
+ //#include <wx/dynarray.h>
 #include <wx/filename.h>
 #include <wx/string.h>
 
@@ -37,39 +37,41 @@
 #include <wx/wfstream.h>
 #include <vector>
 //namespace Catalog { class DataTypes; };
-   
+
 typedef std::vector<wxString> StringArray;
 typedef std::vector<Catalog::DataTypes> DataTypesArray;
 
-namespace Utils { 
  
+namespace Utils {
+
 #define MaxNbrCSVCols 50
 
     /**
      * @brief read/write .csv files.
      *
-     **************************************************/
+     */
     class CSVData
-    { 
+    {
     public:
 
-        /**
-         * @brief Construct a new CSVData object
-         *
-         **************************************************/
+        
+                /**
+                 * @brief Construct a new CSVData object
+                 *
+                 */
         CSVData( void ) { };
 
         /**
          * @brief Destroy the CSVData object
          *
-         **************************************************/
+         */
         ~CSVData( void ) { };
 
         /**
          * @brief Return the number of columes
          *
          * @return int   Return the number of columns
-         **************************************************/
+         */
         int NbrColNames( void ) { return m_csvColName.size( ); };
 
         /**
@@ -77,7 +79,7 @@ namespace Utils {
          *
          * @param  col ; index for the column number
          * @return wxString ; returns th column name
-         **************************************************/
+         */
         wxString GetColName( int col ) { return m_csvColName.at( col ); };
 
         /**
@@ -85,7 +87,7 @@ namespace Utils {
          *
          * @param  name    the name of the new colun to add
          * @return size_t  the col index to which this string was assigned
-         **************************************************/
+         */
         void SetColName( wxString name ) { return m_csvColName.push_back( name ); };
 
         /**
@@ -93,7 +95,7 @@ namespace Utils {
          *
          * @param  filename ; full path to the file to be read
          * @return true ; true on successful open
-         **************************************************/
+         */
         bool ReadDataFile( wxString& filename );
 
         /**
@@ -103,7 +105,7 @@ namespace Utils {
          * saving it back to a csv file frequently screws things up.
          *
          * @param  line :line to be fixed
-         **************************************************/
+         */
         bool FixUpLine( wxString& line, int lineNbr );
 
         /**
@@ -118,7 +120,7 @@ namespace Utils {
          * @param  text   Text Stream for the input file
          * @return true   if the file was succesfully read otherwise false.
 
-         **************************************************/
+         */
         bool ReadTextInStream( wxFileInputStream& file, wxTextInputStream& text );
 
         /**
@@ -126,13 +128,13 @@ namespace Utils {
          *
          * @param  colName : col name to search for.
          * @return int : index of colName; wxNOT_FOUND if not found
-         **************************************************/
-        //int FindCol( wxString& colName ) { m_csvColName.Index( colName ); };
+         */
+         //int FindCol( wxString& colName ) { m_csvColName.Index( colName ); };
 
-        /**
-         * @brief Create a map of csv col names to DataTypes ( Defs.h )
-         *
-         **************************************************/
+         /**
+          * @brief Create a map of csv col names to DataTypes ( Defs.h )
+          *
+          */
         void MakeColMap( void );
 
         /**
@@ -145,7 +147,7 @@ namespace Utils {
          * @param  catCodes  the string of catalogs
          * @param  id        returns the id of the stamp
          * @return true      true if an id was found else false
-         **************************************************/
+         */
         bool GetIDNbr( wxString catCodes, wxString& id );
 
 
@@ -154,8 +156,10 @@ namespace Utils {
          *
          * @param  filename file name to read
          * @param  nodeData toplevel XML node to store the data
-         **************************************************/
+         */
         bool DoLoad( wxString& filename, wxXmlNode* nodeData );
+
+        
 
     private:
         wxString m_filename;

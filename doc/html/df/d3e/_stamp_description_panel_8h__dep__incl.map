@@ -1,9 +1,0 @@
-<map id="/sandbox/Development/AlbumGenerator/src/gui/StampDescriptionPanel.h" name="/sandbox/Development/AlbumGenerator/src/gui/StampDescriptionPanel.h">
-<area shape="rect" id="node2" href="$db/d84/_catalog_data_8cpp.html" title="/sandbox/Development\l/AlbumGenerator/src/catalog\l/CatalogData.cpp" alt="" coords="5,109,193,165"/>
-<area shape="rect" id="node3" href="$d6/d11/_stamp_8cpp.html" title="/sandbox/Development\l/AlbumGenerator/src/design\l/Stamp.cpp" alt="" coords="218,109,402,165"/>
-<area shape="rect" id="node4" href="$da/d60/_text_box_8cpp.html" title="/sandbox/Development\l/AlbumGenerator/src/design\l/TextBox.cpp" alt="" coords="426,109,610,165"/>
-<area shape="rect" id="node5" href="$da/db2/_catalog_tree_ctrl_8cpp.html" title="/sandbox/Development\l/AlbumGenerator/src/gui\l/CatalogTreeCtrl.cpp" alt="" coords="634,109,797,165"/>
-<area shape="rect" id="node6" href="$db/db5/_identification_panel_8cpp.html" title="IdentificationPanel displays Stamp data relative to the stamp identification. " alt="" coords="821,109,983,165"/>
-<area shape="rect" id="node7" href="$d3/d07/_stamp_description_panel_8cpp.html" title="/sandbox/Development\l/AlbumGenerator/src/gui\l/StampDescriptionPanel.cpp" alt="" coords="1008,109,1196,165"/>
-<area shape="rect" id="node8" href="$d5/d6d/_stamp_tool_panel_8cpp.html" title="/sandbox/Development\l/AlbumGenerator/src/gui\l/StampToolPanel.cpp" alt="" coords="1221,109,1383,165"/>
-</map>

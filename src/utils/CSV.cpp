@@ -21,7 +21,7 @@
  * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
- **************************************************/
+ */
 
 
 #include "wx/wxprec.h"
@@ -44,9 +44,10 @@
 #include <wx/tokenzr.h>
 #include "catalog/CatalogVolume.h"
 #include "utils/XMLUtilities.h"
-#include "StampToolApp.h"
+ //#include "StampToolApp.h"
+#include "gui/StampToolFrame.h"
 
-wxDECLARE_APP( StampToolApp );
+//wxDECLARE_APP( StampToolApp );
 
 namespace Utils {
 
@@ -100,7 +101,7 @@ namespace Utils {
         {
             wxString caption = "CSV Load Error";
             wxString message = wxString::Format( "Error tryng to load csv file %s.", m_filename );
-            wxMessageDialog* msg = new wxMessageDialog( wxGetApp( ).GetFrame( ),
+            wxMessageDialog* msg = new wxMessageDialog( GetFrame( ),
                 message, caption, wxOK | wxCENTRE | wxICON_ERROR );
             msg->ShowModal( );
             msg->~wxMessageDialog( );
@@ -172,7 +173,7 @@ namespace Utils {
         {
             for ( int i = 0; i < Catalog::DT_NbrTypes; i++ )
             {
-                if ( !Catalog::DT_DataNames[ i ].Cmp( GetColName( j ) ) )
+                if ( !Catalog::DataTypeNames[ i ].Cmp( GetColName( j ) ) )
                 {
                     m_csvColMap.at( j ) = ( ( Catalog::DataTypes ) i );
                     break;
@@ -202,7 +203,7 @@ namespace Utils {
                 wxString caption = "CSV Format Error";
                 wxString message;
                 message = message.Format( "Format error in csv file %s at line number %d. \n\n%s", m_filename, lineNbr, line );
-                wxMessageDialog* msg = new wxMessageDialog( wxGetApp( ).GetFrame( ),
+                wxMessageDialog* msg = new wxMessageDialog( GetFrame( ),
                     message, caption, wxOK | wxCENTRE | wxICON_ERROR );
                 msg->ShowModal( );
                 msg->~wxMessageDialog( );
@@ -276,7 +277,7 @@ namespace Utils {
 
                                 if ( entryType > 0 )
                                 {
-                                    Utils::SetAttrStr( entryElement, Catalog::DT_XMLDataNames[ entryType ], valStr );
+                                    Utils::SetAttrStr( entryElement, Catalog::XMLDataNames[ entryType ], valStr );
                                     wxString id = "";
                                     if ( entryType == Catalog::DT_Catalog_Codes )
                                     {

@@ -20,7 +20,7 @@
  * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
- **************************************************/
+ */
 
 
 #ifndef _LABLEDTEXTBOX_H_
@@ -37,6 +37,7 @@
   /*
    * Forward declarations
    */
+    
 namespace Catalog { class Entry; };
 
 /*
@@ -55,7 +56,7 @@ typedef void ( MyFunct )( wxCommandEvent& event );
 
 
 
-class LabeledTextBox: public wxPanel
+class LabeledTextBox : public wxPanel
 {
     DECLARE_DYNAMIC_CLASS( LabeledTextBox )
         DECLARE_EVENT_TABLE( )
@@ -66,18 +67,20 @@ public:
         ID_LABELEDTEXTBOX_TEXTCTRL = ID_LABELEDTEXTBOX + 1
     };
 
+
     
-    /**
-     * @brief Default Constructor a new LabeledTextBox object
-     * @details Must be used in conjunction with Create.
-     *
-     **************************************************/
+
+        /**
+         * @brief Default Constructor a new LabeledTextBox object
+         * @details Must be used in conjunction with Create.
+         *
+         */
     LabeledTextBox( );
 
     /**typedefze	The panel size. The value wxDefaultSize indicates a default size, chosen by either the windowing system or wxWidgets, depending on platform.
      * @param  style	The window style.
      * @see wxPanel.
-     **************************************************/
+     */
     LabeledTextBox( wxWindow* parent,
         wxWindowID id = SYMBOL_LABELEDTEXTBOX_IDNAME,
         const wxPoint& pos = SYMBOL_LABELEDTEXTBOX_POSITION,
@@ -95,29 +98,29 @@ public:
      * @param  style	The window style.
      * @return bool
      *
-     **************************************************/
+     */
     bool Create( wxWindow* parent, wxWindowID id = SYMBOL_LABELEDTEXTBOX_IDNAME,
         const wxPoint& pos = SYMBOL_LABELEDTEXTBOX_POSITION,
         const wxSize& size = SYMBOL_LABELEDTEXTBOX_SIZE,
         long style = SYMBOL_LABELEDTEXTBOX_STYLE );
 
-    
+
     /**
      * @brief Destroy the Labeled Text Box object
      *
-     **************************************************/
+     */
     ~LabeledTextBox( );
 
     /**
      * @brief   Initialises member variables
      *
-     **************************************************/
+     */
     void Init( );
 
     /**
      * @brief Creates the controls and sizers
      *
-     **************************************************/
+     */
     void CreateControls( );
 
     // LabeledTextBox event handler declarations
@@ -126,13 +129,13 @@ public:
    //   ID_LABELEDTEXTBOX_TEXTCTRL
     void OnTextctrlTextUpdated( wxCommandEvent& event );
 
-  
+
 
     /**
-     * @brief 
+     * @brief
      *
      * @return bool
-     **************************************************/
+     */
     static bool ShowToolTips( );
 
     /**
@@ -140,21 +143,21 @@ public:
      *
      * @param stamp
      * @param type
-     **************************************************/
+     */
     void Setup( wxString label, wxString value );
 
     /**
      * @brief Get the value in the ctrl
      *
      * @return wxString
-     **************************************************/
+     */
     wxString GetValue( );
 
     /**
      * @brief Set the Width object
      *
      * @param width
-     **************************************************/
+     */
     void SetValue( wxString value )
     {
         m_value->SetValue( value );
@@ -173,6 +176,10 @@ public:
     };
 
     void SetEditable( bool value );
+
+    
+
+
 
 
 private:

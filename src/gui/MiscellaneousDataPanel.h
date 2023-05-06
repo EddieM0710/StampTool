@@ -20,7 +20,7 @@
  * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
- **************************************************/
+ */
 
 
 #ifndef _MISCELLANEOUSDATA_H_
@@ -75,11 +75,13 @@ public:
         ID_IMAGENAMETEXTBOX
     };
 
-    /**
-     * @brief Default Constructor a new MiscellaneousDataPanel object
-     * @details Must be used in conjunction with Create.
-     *
-     **************************************************/
+    
+
+        /**
+         * @brief Default Constructor a new MiscellaneousDataPanel object
+         * @details Must be used in conjunction with Create.
+         *
+         */
     MiscellaneousDataPanel( );
 
     /**
@@ -91,7 +93,7 @@ public:
      * @param  size	The panel size. The value wxDefaultSize indicates a default size, chosen by either the windowing system or wxWidgets, depending on platform.
      * @param  style	The window style.
      * @see wxPanel.
-     **************************************************/
+     */
     MiscellaneousDataPanel(
         wxWindow* parent, wxWindowID id = SYMBOL_MISCELLANEOUSDATAPANEL_IDNAME,
         const wxPoint& pos = SYMBOL_MISCELLANEOUSDATAPANEL_POSITION,
@@ -109,7 +111,7 @@ public:
      * @param  style	The window style.
      * @return bool
      *
-     **************************************************/
+     */
     bool Create( wxWindow* parent,
         wxWindowID id = SYMBOL_MISCELLANEOUSDATAPANEL_IDNAME,
         const wxPoint& pos = SYMBOL_MISCELLANEOUSDATAPANEL_POSITION,
@@ -122,13 +124,13 @@ public:
     /**
      * @brief   Initialises member variables
      *
-     **************************************************/
+     */
     void Init( );
 
     /**
      * @brief Creates the controls and sizers
      *
-     **************************************************/
+     */
     void CreateControls( );
 
 
@@ -149,6 +151,10 @@ public:
 
     void RetrieveImage( );
     static size_t write_data( void* ptr, size_t size, size_t nmemb, void* stream );
+
+    
+
+
 
     LabeledTextBox* m_link;
     LabeledTextBox* m_catCodes;

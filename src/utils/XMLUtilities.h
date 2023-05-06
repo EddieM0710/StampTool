@@ -20,7 +20,7 @@
  * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
- **************************************************/
+ */
 
 #ifndef XMLIterator_H
 #define XMLIterator_H
@@ -33,28 +33,25 @@
 
 class wxTextOutputStream;
 
+ 
 namespace Utils {
 
     // Class for iterating an XML heirarchy
     class XMLIterator
     {
-    private:
-        wxXmlNode* m_parent;      // pointer to parent of current element
-        wxXmlNode* m_currElement; // pointer to the current element
-        XMLIterator* m_iterator;   // iterator for children of this element
-        bool m_decend;             // bool; true = > iterate children
-        bool m_firstDone; // bool; true if First has been called; if not true Next
-        // just returns null
 
     public:
-        /**
-         * XMLIterator - constructor for iterating an XML heirarchy
-         *
-         * @param   parent : is the xml element whose children will be
-         * iterated.
-         * @param   decend : false will iterate only the first level
-         * childeren. - true ( default ) will iterate  heirarchy
-         */
+
+        
+
+                /**
+                 * XMLIterator - constructor for iterating an XML heirarchy
+                 *
+                 * @param   parent : is the xml element whose children will be
+                 * iterated.
+                 * @param   decend : false will iterate only the first level
+                 * childeren. - true ( default ) will iterate  heirarchy
+                 */
         XMLIterator( wxXmlNode* parent, bool decend = true );
         ~XMLIterator( );
 
@@ -69,6 +66,16 @@ namespace Utils {
          * @return { wxXmlNode*} :
          */
         wxXmlNode* Next( );
+
+        
+
+    private:
+        wxXmlNode* m_parent;      // pointer to parent of current element
+        wxXmlNode* m_currElement; // pointer to the current element
+        XMLIterator* m_iterator;   // iterator for children of this element
+        bool m_decend;             // bool; true = > iterate children
+        bool m_firstDone; // bool; true if First has been called; if not true Next
+        // just returns null
     };
 
     void IDElement( wxXmlNode* ele );
@@ -100,8 +107,8 @@ namespace Utils {
     void SaveChild( wxTextOutputStream* text, wxXmlNode* node, wxString level );
     void SaveAttributes( wxTextOutputStream* text, wxXmlNode* node, wxString level );
 
-    Design::AT_FontUsageType LoadFont( wxXmlNode* fontNode, wxString& nativeString, wxString& color );
-    void SaveFont( wxXmlNode* parent, Design::AT_FontUsageType type, wxFont font, wxColour color );
+    Design::FontUsageType LoadFont( wxXmlNode* fontNode, wxString& nativeString, wxString& color );
+    void SaveFont( wxXmlNode* parent, Design::FontUsageType type, wxFont font, wxColour color );
 
     extern int zIndex;
     extern int frameIndex;
@@ -112,7 +119,7 @@ namespace Utils {
      *
      * @param str
      * @return char*
-     **************************************************/
+     */
     char* GetZIndex( char* str );
 
     /**
@@ -120,7 +127,7 @@ namespace Utils {
      *
      * @param str
      * @return char*
-     **************************************************/
+     */
     char* GetImageName( char* str );
 
     /**
@@ -128,7 +135,7 @@ namespace Utils {
      *
      * @param str
      * @return char*
-     **************************************************/
+     */
     char* GetFrameName( char* str );
 
     wxString GetTextStyleName( wxString& str );
@@ -137,7 +144,7 @@ namespace Utils {
      *
      * @param str
      * @return char*
-     **************************************************/
+     */
     char* GetDrawName( char* str );
 
     /**
@@ -146,7 +153,7 @@ namespace Utils {
      * @param str
      * @param nbr
      * @return char*
-     **************************************************/
+     */
     char* DoubleToMMString( char* str, double nbr );
 
 

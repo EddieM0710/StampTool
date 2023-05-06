@@ -20,7 +20,7 @@
  * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
- **************************************************/
+ */
 #ifndef GuiDefs_h
 #define GuiDefs_h
 
@@ -28,8 +28,8 @@
 enum GuiDefs {
     ID_STAMPTOOLFRAME = 10100,
     ID_STAMPTOOLPANEL = 10200,
-    ID_ALBUMDESIGNPANEL = 10300,
-    ID_ALBUMDESIGNTREEPANEL = 10400,
+    ID_ALBUMAlbumPanel = 10300,
+    ID_albumTreePanel = 10400,
     ID_ALBUMDETAILSDIALOG = 10500,
     ID_ALBUMIMAGEPANEL = 10600,
     ID_CATALOGCODEPANEL = 10700,
@@ -38,7 +38,7 @@ enum GuiDefs {
     ID_CHARACTERISTICSPANEL = 11000,
     ID_COLDETAILSDIALOG = 11100,
     ID_DEFINEPERIODSPANEL = 11200,
-    ID_DESIGNTREECTRL = 11300,
+    ID_ALBUMTREECTRL = 11300,
     ID_FILECREATEDIALOG = 11400,
     ID_GENERATELIST = 11500,
     ID_GENERATELISTSETTINGS = 11600,
@@ -58,7 +58,7 @@ enum GuiDefs {
     ID_STAMPDESCRIPTIONPANEL = 13000,
     ID_STAMPDETAILSDIALOG = 13100,
     ID_STATICITEM = 13200,
-    ID_TOOLDATA = 13300,
+    ID_AppData = 13300,
     //    ID_WEBVIEWPANEL = 13400,
     NbrGuiDefItems
 };
@@ -82,7 +82,7 @@ enum GuiDefs {
 // #define ID_CATALOGTREECTRL 10300
 // #define ID_CHARACTERISTICSPANEL 10320
 // #define ID_SETTINGSDIALOG 10340
-// #define ID_DESIGNTREECTRL 10360
+// #define ID_ALBUMTREECTRL 10360
 // #define ID_IMAGEPANEL 10380
 
 

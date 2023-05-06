@@ -39,18 +39,9 @@
 #include "gui/FontPickerHelper.h"
 #include "design/Column.h"
 #include "design/Album.h"
-
-
- /*
-  * ColDetailsDialog type definition
-  */
+#include "utils/FontList.h"
 
 IMPLEMENT_DYNAMIC_CLASS( ColDetailsDialog, wxDialog )
-;
-
-/*
- * ColDetailsDialog event table definition
- */
 
 BEGIN_EVENT_TABLE( ColDetailsDialog, wxDialog )
 EVT_BUTTON( wxID_OK, ColDetailsDialog::OnOkClick )
@@ -63,17 +54,28 @@ EVT_BUTTON( ID_COLDEFAULTFONTBUTTON, ColDetailsDialog::OnTitleDefaultClick )
 
 END_EVENT_TABLE( )
 
+//--------------
 
 ColDetailsDialog::ColDetailsDialog( )
 {
     Init( );
 }
 
+//--------------
+
 ColDetailsDialog::ColDetailsDialog( wxWindow* parent, wxWindowID id, const wxString& caption, const wxPoint& pos, const wxSize& size, long style )
 {
     Init( );
     Create( parent, id, caption, pos, size, style );
 }
+
+//--------------
+
+ColDetailsDialog::~ColDetailsDialog( )
+{
+}
+
+//--------------
 
 bool ColDetailsDialog::Create( wxWindow* parent, wxWindowID id, const wxString& caption, const wxPoint& pos, const wxSize& size, long style )
 {
@@ -91,19 +93,7 @@ bool ColDetailsDialog::Create( wxWindow* parent, wxWindowID id, const wxString& 
     return true;
 }
 
-
-ColDetailsDialog::~ColDetailsDialog( )
-{
-}
-
-
-void ColDetailsDialog::Init( )
-{
-    m_name = NULL;
-    m_titleCheckbox = NULL;
-    m_frameCheckbox = NULL;
-    m_statusList = NULL;
-}
+//--------------
 
 void ColDetailsDialog::CreateControls( )
 {
@@ -244,12 +234,159 @@ void ColDetailsDialog::CreateControls( )
     wxButton* itemButton7 = new wxButton( theDialog, wxID_OK, _( "OK" ), wxDefaultPosition, wxDefaultSize, 0 );
     dialogCtrlButtonSizer->Add( itemButton7, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
     //>>dialog Ctrl buttons  
+}
+
+//--------------
+
+bool ColDetailsDialog::GetShowTitle( ) { return m_titleCheckbox->IsChecked( ); };;
+
+//--------------
+
+bool ColDetailsDialog::GetShowFrame( ) { return m_frameCheckbox->IsChecked( ); };
+
+//--------------
+
+wxFont ColDetailsDialog::GetTitleFont( ) { return m_titleFontPicker->GetSelectedFont( ); }
+
+//--------------
+
+wxColour ColDetailsDialog::GetTitleColor( ) { return m_titleColorPicker->GetColour( ); }
+
+//--------------
+
+void ColDetailsDialog::Init( )
+{
+    m_name = NULL;
+    m_titleCheckbox = NULL;
+    m_frameCheckbox = NULL;
+    m_statusList = NULL;
+}
+
+//--------------
+
+bool ColDetailsDialog::IsNameModified( ) { return m_name->IsModified( ); };
+
+//--------------
+
+void ColDetailsDialog::OnOkClick( wxCommandEvent& event )
+{
+
+    if ( IsNameModified( ) )
+    {
+        m_col->SetAttrStr( Design::AT_Name, GetName( ) );
+    }
+
+    m_col->SetShowFrame( GetShowFrame( ) );
+    m_col->SetShowTitle( GetShowTitle( ) );
+
+    m_col->GetTitleFrame( )->SetFont( GetTitleFont( ), GetTitleColor( ) );
+    m_col->SetTitleLocation( m_titleLocation );
+    m_col->SetCalculateSpacing( CalculateSpacing( ) );
+    m_col->SetFixedSpacingSize( GetFixedSpacing( ) );
+
+    event.Skip( );
 
 }
 
+//--------------
+
+void ColDetailsDialog::OnBottomRadioButtonSelected( wxCommandEvent& event )
+{
+    m_titleLocation = Design::AT_TitleLocationBottom;
+    event.Skip( );
+
+}
+
+//--------------
+
+void ColDetailsDialog::OnDefaultRadioButtonSelected( wxCommandEvent& event )
+{
+    m_titleLocation = Design::AT_TitleLocationDefault;
+    event.Skip( );
+}
+
+//--------------
+
+void ColDetailsDialog::OnLeftRadioButtonSelected( wxCommandEvent& event )
+{
+    m_titleLocation = Design::AT_TitleLocationLeft;
+    event.Skip( );
+
+}
+
+//--------------
+
+void ColDetailsDialog::OnRightRadioButtonSelected( wxCommandEvent& event )
+{
+    m_titleLocation = Design::AT_TitleLocationRight;
+    event.Skip( );
+
+}
+
+//--------------
+
+void ColDetailsDialog::OnTopRadioButtonSelected( wxCommandEvent& event )
+{
+    m_titleLocation = Design::AT_TitleLocationTop;
+    event.Skip( );
+}
+
+//--------------
+
+void ColDetailsDialog::OnTitleDefaultClick( wxCommandEvent& event )
+{
+    int ndx = Design::GetAlbum( )->GetFontNdx( Design::AT_TitleFontType );
+    Utils::FontList* fontList = GetFontList( );
+    wxFont font = fontList->GetFont( ndx );
+    wxColour color = fontList->GetColor( ndx );
+    m_titleFontPicker->SetSelectedFont( font );
+    m_titleColorPicker->SetColour( color );
+    event.Skip( );
+}
+
+//--------------
+
+void ColDetailsDialog::SetCalculateSpacing( bool val )
+{
+    if ( val )
+    {
+        m_positionCalculated->SetValue( true );
+        m_positionFixed->SetValue( false );
+        m_positionFixedSize->Enable( false );
+    }
+    else
+    {
+        m_positionFixed->SetValue( true );
+        m_positionCalculated->SetValue( false );
+        m_positionFixedSize->Enable( true );
+
+    }
+};
+
+//--------------
+
+void ColDetailsDialog::SetNameModified( bool state ) { m_name->SetModified( state ); };
+
+//--------------
+
+void ColDetailsDialog::SetShowFrame( bool state ) { m_frameCheckbox->SetValue( state ); };
+
+//--------------
+
+void ColDetailsDialog::SetShowTitle( bool state ) { m_titleCheckbox->SetValue( state ); };
+
+//--------------
+
+void ColDetailsDialog::SetTitleFont( wxFont font ) { m_titleFontPicker->SetSelectedFont( font ); }
+
+//--------------
+
+void ColDetailsDialog::SetTitleColor( wxColour color ) { m_titleColorPicker->SetColour( color ); }
+
+//--------------
+
 void ColDetailsDialog::SetTitleLayoutLocation( )
 {
-
     m_titleLocation = m_col->GetTitleLayoutLocation( );
     if ( m_titleLocation == Design::AT_TitleLocationTop )
     {
@@ -293,22 +430,14 @@ void ColDetailsDialog::SetTitleLayoutLocation( )
     }
 }
 
-void ColDetailsDialog::UpdateControls( )
-{
-    SetName( m_col->GetAttrStr( Design::AT_Name ) );
-    SetShowTitle( m_col->GetShowTitle( ) );
-    SetTitleFont( m_col->GetFont( Design::AT_TitleFontType ) );
-    SetTitleColor( m_col->GetColor( Design::AT_TitleFontType ) );
-    m_col->GetTitleLayoutLocation( );
-}
-
+//--------------
 
 void ColDetailsDialog::SetupDialog( wxTreeItemId treeID )
 {
     if ( treeID.IsOk( ) )
     {
         m_designTreeID = treeID;
-        DesignTreeItemData* data = ( DesignTreeItemData* ) GetDesignTreeCtrl( )->GetItemData( m_designTreeID );
+        DesignTreeItemData* data = ( DesignTreeItemData* ) GetAlbumTreeCtrl( )->GetItemData( m_designTreeID );
         m_col = ( Design::Column* ) data->GetNodeElement( );
 
         wxArrayString* errors = m_col->GetErrorArray( );
@@ -323,98 +452,13 @@ void ColDetailsDialog::SetupDialog( wxTreeItemId treeID )
     }
 };
 
+//--------------
 
-
-void ColDetailsDialog::SetNameModified( bool state ) { m_name->SetModified( state ); };
-bool ColDetailsDialog::IsNameModified( ) { return m_name->IsModified( ); };
-
-void ColDetailsDialog::SetShowTitle( bool state ) { m_titleCheckbox->SetValue( state ); };
-void ColDetailsDialog::SetShowFrame( bool state ) { m_frameCheckbox->SetValue( state ); };
-bool ColDetailsDialog::GetShowTitle( ) { return m_titleCheckbox->IsChecked( ); };;
-bool ColDetailsDialog::GetShowFrame( ) { return m_frameCheckbox->IsChecked( ); };
-void ColDetailsDialog::SetTitleFont( wxFont font ) { m_titleFontPicker->SetSelectedFont( font ); }
-void ColDetailsDialog::SetTitleColor( wxColour color ) { m_titleColorPicker->SetColour( color ); }
-wxFont ColDetailsDialog::GetTitleFont( ) { return m_titleFontPicker->GetSelectedFont( ); }
-wxColour ColDetailsDialog::GetTitleColor( ) { return m_titleColorPicker->GetColour( ); }
-
-void ColDetailsDialog::OnOkClick( wxCommandEvent& event )
+void ColDetailsDialog::UpdateControls( )
 {
-
-    if ( IsNameModified( ) )
-    {
-        m_col->SetAttrStr( Design::AT_Name, GetName( ) );
-    }
-
-    m_col->SetShowFrame( GetShowFrame( ) );
-    m_col->SetShowTitle( GetShowTitle( ) );
-
-    m_col->SetFont( Design::AT_TitleFontType, GetTitleFont( ), GetTitleColor( ) );
-    m_col->SetTitleLocation( m_titleLocation );
-    m_col->SetCalculateSpacing( CalculateSpacing( ) );
-    m_col->SetFixedSpacingSize( GetFixedSpacing( ) );
-
-    event.Skip( );
-
-}
-
-void ColDetailsDialog::SetCalculateSpacing( bool val )
-{
-    if ( val )
-    {
-        m_positionCalculated->SetValue( true );
-        m_positionFixed->SetValue( false );
-        m_positionFixedSize->Enable( false );
-    }
-    else
-    {
-        m_positionFixed->SetValue( true );
-        m_positionCalculated->SetValue( false );
-        m_positionFixedSize->Enable( true );
-
-    }
-};
-
-void ColDetailsDialog::OnTopRadioButtonSelected( wxCommandEvent& event )
-{
-    m_titleLocation = Design::AT_TitleLocationTop;
-    event.Skip( );
-}
-
-void ColDetailsDialog::OnBottomRadioButtonSelected( wxCommandEvent& event )
-{
-    m_titleLocation = Design::AT_TitleLocationBottom;
-    event.Skip( );
-
-}
-
-void ColDetailsDialog::OnLeftRadioButtonSelected( wxCommandEvent& event )
-{
-    m_titleLocation = Design::AT_TitleLocationLeft;
-    event.Skip( );
-
-}
-
-void ColDetailsDialog::OnRightRadioButtonSelected( wxCommandEvent& event )
-{
-    m_titleLocation = Design::AT_TitleLocationRight;
-    event.Skip( );
-
-}
-
-void ColDetailsDialog::OnDefaultRadioButtonSelected( wxCommandEvent& event )
-{
-    m_titleLocation = Design::AT_TitleLocationDefault;
-    event.Skip( );
-}
-
-
-void ColDetailsDialog::OnTitleDefaultClick( wxCommandEvent& event )
-{
-    int ndx = Design::GetAlbum( )->GetFontNdx( Design::AT_TitleFontType );
-    Utils::FontList* fontList = GetFontList( );
-    wxFont font = fontList->GetFont( ndx );
-    wxColour color = fontList->GetColor( ndx );
-    m_titleFontPicker->SetSelectedFont( font );
-    m_titleColorPicker->SetColour( color );
-    event.Skip( );
+    SetName( m_col->GetAttrStr( Design::AT_Name ) );
+    SetShowTitle( m_col->GetShowTitle( ) );
+    SetTitleFont( m_col->GetTitleFrame( )->GetFont( ) );
+    SetTitleColor( m_col->GetTitleFrame( )->GetColor( ) );
+    m_col->GetTitleLayoutLocation( );
 }

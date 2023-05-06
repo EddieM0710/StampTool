@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation, 
+ * terms of the GNU General Public License as published by the Free Software Foundation,
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -20,7 +20,7 @@
  * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
- **************************************************/
+ */
 
 #ifndef Font_H
 #define Font_H
@@ -33,23 +33,25 @@
 
 class wxXmlNode;
 
-namespace Utils { 
+
+namespace Utils {
 
 
     /**
         * @brief Font layout object; In
         *
-        **************************************************/
+        */
     class Font
     {
     public:
+
 
         // Font frame constructor
         /**
          * @brief Construct a new Font frame object.
          *
          * @param parent
-         **************************************************/
+         */
         Font( );
 
         Font( wxFont font, wxString colorStr );
@@ -58,7 +60,7 @@ namespace Utils {
         /**
          * @brief Destroy the Font object
          *
-         **************************************************/
+         */
         ~Font( );
 
 
@@ -78,11 +80,11 @@ namespace Utils {
 
         void SetColor( wxString colorStr );
 
-        Design::AT_FontFamilyType GetFamily( );
+        //        Design::FontFamilyType GetFamily( );
 
         wxString GetNativeInfoStr( );
 
-        Design::AT_FontWeightType GetWeight( );
+        //        Design::FontWeightType GetWeight( );
 
         int GetPointSize( );
 
@@ -90,20 +92,22 @@ namespace Utils {
 
         // wxString GetFamilyName( );
 
-        // Design::AT_FontStyleType GetStyle( );
+        // Design::FontStyleType GetStyle( );
 
         bool IsEqual( wxFont font, wxColor color );
 
         bool IsFontEqual( wxFont font );
 
         bool IsColorEqual( wxColor color );
-        int Increment();
-        int Decrement();
+        int Increment( );
+        int Decrement( );
 
-    void SaveFont( wxXmlNode* parent, Design::AT_FontUsageType type );
+        void SaveFont( wxXmlNode* parent, Design::FontUsageType type );
 
-    int Count( ){ return m_count; };
-    
+        int Count( ) { return m_count; };
+
+
+
     private:
 
         wxFont m_font;

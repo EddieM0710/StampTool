@@ -20,26 +20,13 @@
  * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
- **************************************************/
+ */
 
 #ifndef _ALBUMIMAGEPANEL_H_
 #define _ALBUMIMAGEPANEL_H_
 
- /*
-  * Includes
-  */
 #include "gui/GuiDefs.h"
 #include "design/LayoutBase.h"
-
-  /*
-  * Forward declarations
-  */
-
-
-  /*
-  * Control identifiers
-  */
-
 
 #define SYMBOL_ALBUMIMAGEPANEL_STYLE wxTAB_TRAVERSAL
 #define SYMBOL_ALBUMIMAGEPANEL_TITLE _( "AlbumImagePanel" )
@@ -52,13 +39,13 @@ enum
     AlbumImagePanel_DeleteItem,
     AlbumImagePanel_EditDetails
 };
-// };
+
 
 /**
  * @brief This is the class that manages the image displayed on the StampDescriptionPanel.
  *
- **************************************************/
-class AlbumImagePanel: public wxScrolledWindow
+ */
+class AlbumImagePanel : public wxScrolledWindow
 {
     DECLARE_DYNAMIC_CLASS( AlbumImagePanel )
         DECLARE_EVENT_TABLE( )
@@ -69,7 +56,7 @@ public:
      * @brief Default Constructor a new AlbumImagePanel object
      * @details Must be used in conjunction with Create.
      *
-     **************************************************/
+     */
     AlbumImagePanel( );
 
     /**
@@ -81,11 +68,17 @@ public:
      * @param  size	The panel size. The value wxDefaultSize indicates a default size, chosen by either the windowing system or wxWidgets, depending on platform.
      * @param  style	The window style.
      * @see wxPanel.
-     **************************************************/
+     */
     AlbumImagePanel( wxWindow* parent, wxWindowID id = SYMBOL_ALBUMIMAGEPANEL_IDNAME,
         const wxPoint& pos = SYMBOL_ALBUMIMAGEPANEL_POSITION,
         const wxSize& size = SYMBOL_ALBUMIMAGEPANEL_SIZE,
         long style = SYMBOL_ALBUMIMAGEPANEL_STYLE );
+
+    /**
+     * @brief Destroy the Image Panel object
+     *
+     */
+    ~AlbumImagePanel( );
 
     /**
      * @brief  Used for two-step panel construction.
@@ -98,86 +91,102 @@ public:
      * @param  style	The window style.
      * @return bool
      *
-     **************************************************/
+     */
     bool Create( wxWindow* parent, wxWindowID id = SYMBOL_ALBUMIMAGEPANEL_IDNAME,
         const wxPoint& pos = SYMBOL_ALBUMIMAGEPANEL_POSITION,
         const wxSize& size = SYMBOL_ALBUMIMAGEPANEL_SIZE,
         long style = SYMBOL_ALBUMIMAGEPANEL_STYLE );
 
     /**
-     * @brief Destroy the Image Panel object
+     * @brief Creates the controls and sizers
      *
-     **************************************************/
-    ~AlbumImagePanel( );
+     */
+    void CreateControls( );
 
+    ///  @brief 
+    ///  
+    ///  @param dc 
+    ///  @param node 
+    ///  @param pt 
+    void Draw( wxDC& dc, Design::LayoutBase* node, wxPoint pt );
+
+    ///  @brief Get the Logical Text Extent object
+    ///  
+    ///  @param text 
+    ///  @param font 
+    ///  @return wxRealPoint 
+    wxRealPoint GetLogicalTextExtent( wxString text, wxFont font );
+
+    ///  @brief Get the Text Size object
+    ///  
+    ///  @param font 
+    ///  @param text 
+    ///  @return wxSize 
+    wxSize GetTextSize( wxFont font, wxString text );
 
     /**
      * @brief Initialises member variables
      *
-     **************************************************/
+     */
     void Init( );
 
-    /**
-     * @brief Creates the controls and sizers
-     *
-     **************************************************/
-    void CreateControls( );
-
-    // AlbumImagePanel event handler declarations
-
-
-    /**
-     * @brief ID_ALBUMIMAGEPANEL
-     *
-     * @param event   Contains information about command events
-     **************************************************/
-    void OnPaint( wxPaintEvent& event );
-    void PaintPDF( );
-
-    void OnLeftDown( wxMouseEvent& event );
-
-    wxRealPoint GetLogicalTextExtent( wxString text, wxFont font );
-
-    wxSize GetTextSize( wxFont font, wxString text );
-
+    ///  @brief 
+    ///  
+    ///  @param text 
+    ///  @param font 
+    ///  @param width 
     void MakeMultiLine( wxString& text, wxFont font, double width );
 
+    ///  @brief 
+    ///  
+    void PaintPDF( );
 
     /**
-     * @brief  ID_ALBUMIMAGEPANEL
+     * @brief
      *
      * @param event   Contains information about command events
-     **************************************************/
+     */
     void OnContextMenu( wxContextMenuEvent& event );
 
-    static bool ShowToolTips( );
+    ///  @brief 
+    ///  
+    void OnDeleteItem( );
+
+    ///  @brief 
+    ///  
+    ///  @param event 
+    void OnLeftDown( wxMouseEvent& event );
+
+    /**
+     * @brief
+     *
+     * @param event   Contains information about command events
+     */
+    void OnPaint( wxPaintEvent& event );
 
     /**
      * @brief Resize the image to fit in the clientspace
      *
      * @param WXUNUSED
-     **************************************************/
+     */
     void OnResize( wxCommandEvent& WXUNUSED( event ) );
 
-    /**
-     * @brief Zoom requested
-     *
-     * @param event   Contains information about command events
-     **************************************************/
-     // void OnZoom( wxCommandEvent& event );
-
-
-    void OnDeleteItem( );
+    ///  @brief 
+    ///  
     void OnEditDetails( );
 
     /**
      * @brief Set the Zoom object
      *
      * @param zoom new value to set the zoom factor to.
-     **************************************************/
+     */
     void SetZoom( double zoom );
 
-    void Draw( wxDC& dc, Design::LayoutBase* node, wxPoint pt );
+    ///  @brief 
+    ///  
+    ///  @return true 
+    ///  @return false 
+    static bool ShowToolTips( );
 
 private:
     double m_pixelsPerIn;

@@ -1,7 +1,0 @@
-<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$d3/db8/class_catalog_1_1_catalog_base.html" title="Base class for all catalog objects. " alt="" coords="5,81,156,108"/>
-<area shape="rect" id="node2" href="$da/d66/class_catalog_1_1_catalog_code.html" title="This is a wrapper of an wxXmlNode for safe/convenient getting/putting. " alt="" coords="206,5,357,32"/>
-<area shape="rect" id="node3" href="$dd/d83/class_catalog_1_1_classification.html" title="This is a wrapper of an wxXmlNode for safe/convenient getting/putting. " alt="" coords="204,56,359,83"/>
-<area shape="rect" id="node4" href="$d6/d7e/class_catalog_1_1_entry.html" title="This is a wrapper of an wxXmlNode for safe/convenient getting/putting. " alt="" coords="228,107,335,133"/>
-<area shape="rect" id="node5" href="$de/d3e/class_catalog_1_1_specimen.html" title="This is a wrapper of an wxXmlNode for safe/convenient getting/putting. " alt="" coords="215,157,348,184"/>
-</map>

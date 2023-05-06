@@ -20,7 +20,7 @@
  * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
- **************************************************/
+ */
 
 #ifndef _STAMPTOOLPANEL_H_
 #define _STAMPTOOLPANEL_H_
@@ -31,7 +31,7 @@
 
 #include "gui/GuiDefs.h"
 
-#include "gui/AlbumDesignPanel.h"
+#include "gui/AlbumPanel.h"
 
  //#include "gui/WebViewPanel.h"
 
@@ -50,10 +50,10 @@ class GenerateList;
 
 /**
  * @brief StampToolPanel is the main window class for the application,
- * It contains wxNotebook with the the StampDescriptionPanel and AlbumDesignPanel as pages.
+ * It contains wxNotebook with the the StampDescriptionPanel and AlbumPanel as pages.
  * StampToolPanel inherits from wxPanel.
  */
-class StampToolPanel: public wxPanel
+class StampToolPanel : public wxPanel
 {
     DECLARE_DYNAMIC_CLASS( StampToolPanel )
         DECLARE_EVENT_TABLE( )
@@ -76,11 +76,13 @@ public:
         ID_DESIGNSPLITTERWINDOW
     };
 
-    /**
-     * @brief Default Constructor a new StampToolPanel object
-     * @details Must be used in conjunction with Create.
-     *
-     **************************************************/
+    
+
+        /**
+         * @brief Default Constructor a new StampToolPanel object
+         * @details Must be used in conjunction with Create.
+         *
+         */
     StampToolPanel( );
 
     /**
@@ -92,7 +94,7 @@ public:
      * @param  size	The panel size. The value wxDefaultSize indicates a default size, chosen by either the windowing system or wxWidgets, depending on platform.
      * @param  style	The window style.
      * @see wxPanel.
-     **************************************************/
+     */
     StampToolPanel( wxWindow* parent,
         wxWindowID id = ID_STAMPTOOLPANEL,
         const wxPoint& pos = SYMBOL_STAMPTOOLPANEL_POSITION,
@@ -110,7 +112,7 @@ public:
      * @param  style	The window style.
      * @return bool
      *
-     **************************************************/
+     */
     bool Create( wxWindow* parent,
         wxWindowID id = ID_STAMPTOOLPANEL,
         const wxPoint& pos = SYMBOL_STAMPTOOLPANEL_POSITION,
@@ -135,20 +137,22 @@ public:
     void UpdateStatus( );
 
     CatalogPanel* GetCatalogPagePanel( ) { return m_catalogTreePanel; };
-    CatalogPanel* GetAlbumPagePanel( ) { return m_albumTreePanel; };
+    CatalogPanel* GetAlbumPagePanel( ) { return m_albumPageCatTreePanel; };
     //    WebViewPanel* GetWebViewPage( ) { return m_webViewPanel; };
-    AlbumDesignTreePanel* GetAlbumDesignTreePanel( ) { return m_albumDesignPanel->GetAlbumDesignTreePanel( ); };
-    AlbumDesignPanel* GetAlbumDesignPanel( ) { return m_albumDesignPanel; };
+    AlbumTreePanel* GetAlbumTreePanel( ) { return m_albumAlbumPanel->GetAlbumTreePanel( ); };
+    AlbumPanel* GetAlbumAlbumPanel( ) { return m_albumAlbumPanel; };
+
+    
 
     wxNotebook* m_notebook;
     wxFlexGridSizer* m_sizer;
     CatalogPanel* m_catalogTreePanel;
-    CatalogPanel* m_albumTreePanel;
+    CatalogPanel* m_albumPageCatTreePanel;
     wxSplitterWindow* m_catalogNotebookPage;
     wxSplitterWindow* m_albumNotebookPage;
     wxTreeItemId m_draggedItem;
     wxTreeItemId m_currentItem;
-    AlbumDesignPanel* m_albumDesignPanel;
+    AlbumPanel* m_albumAlbumPanel;
     StampDescriptionPanel* m_stampDescriptionPanel;
     GenerateList* m_generateListPanel;
     //    WebViewPanel* m_webViewPanel;

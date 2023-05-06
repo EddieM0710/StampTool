@@ -20,7 +20,7 @@
  * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
- **************************************************/
+ */
 
 #ifndef Album_H
 #define Album_H
@@ -28,34 +28,263 @@
 
 #include "design/AlbumBase.h"
 #include "design/DesignDefs.h"
-#include "utils/Project.h"
-#include "utils/Settings.h"
-#include "utils/FontList.h"
+ //#include "utils/Project.h"
+#include "utils/FontNdx.h"
+
 
 namespace Design {
 
     /**
      * @brief Album layout object; inherits from LayoutBase.
-     * This is the top LayoutBase for holding all the objecs within the album
      *
-     **************************************************/
-    class Album: public AlbumBase
+     */
+    class Album : public AlbumBase
     {
+
     public:
 
-        // Construct a new Album object. The top layout LayoutBase
-        // for holding all the objecs within the album
-        Album( wxXmlNode* node ): AlbumBase( node )
+
+        ///  @brief Construct a new Album object. The top layout LayoutBase
+        /// for holding all the objecs within the album
+        Album( wxXmlNode* node ) : AlbumBase( node )
         {
             SetNodeType( AT_Album );
         };
 
-        // Destroy the Album object
+        ///  @brief Destroy the Album object
         ~Album( ) { };
 
-        void MakeAlbum( );
-        void MakePDFAlbum( );
+        ///  @brief 
+        ///  
+        ///  @return wxString 
         wxString DrawPDF( );
+
+        void DumpFont( wxString Level );
+
+        ///  @brief 
+        ///  
+        void DumpLayout( );
+
+        ///  @brief Get the Border Size object
+        ///  
+        ///  @return double 
+        double GetBorderSize( );
+
+        ///  @brief Get the Border Size Str object
+        ///  
+        ///  @return wxString 
+        wxString GetBorderSizeStr( );
+
+        ///  @brief Set the Border Size object
+        ///  
+        ///  @param str 
+        void SetBorderSize( wxString str );
+
+        ///  @brief Get the Border File Name object
+        ///  
+        ///  @return wxString 
+        wxString GetBorderFileName( );
+
+        ///  @brief Get the Bottom Margin object
+        ///  
+        ///  @return double 
+        double GetBottomMargin( );
+
+        ///  @brief Get the Bottom Margin Str object
+        ///  
+        ///  @return wxString 
+        wxString GetBottomMarginStr( );
+
+        wxColour GetColor( FontUsageType fontType );
+
+        ///  @brief Get the Doc Name object
+        ///  
+        ///  @return wxString 
+        wxString GetDocName( );
+
+        wxFont GetFont( FontUsageType fontType );
+
+        int GetFontNdx( FontUsageType fontType );
+
+        ///  @brief Get the Font Ndx Preference object
+        ///  
+        ///  @param fontType 
+        ///  @return int 
+        int GetFontNdxPreference( FontUsageType fontType );
+
+        ///  @brief Get the Gray Scale Images object
+        ///  
+        ///  @return true 
+        ///  @return false 
+        bool GetGrayScaleImages( ) { return String2Bool( GetAttrStr( AT_GrayScaleImages ) ); };
+
+        ///  @brief Get the Height object
+        ///  
+        ///  @return double 
+        double GetHeight( );
+
+        ///  @brief Get the Left Margin object
+        ///  
+        ///  @return double 
+        double GetLeftMargin( );
+
+        ///  @brief Get the Left Margin Str object
+        ///  
+        ///  @return wxString 
+        wxString GetLeftMarginStr( );
+
+        ///  @brief Get the Page Height object
+        ///  
+        ///  @return double 
+        double GetPageHeight( );
+
+        ///  @brief Get the Page Height Str object
+        ///  
+        ///  @return wxString 
+        wxString GetPageHeightStr( );
+
+        ///  @brief Get the Page Parameters object
+        ///  
+        ///  @param width 
+        ///  @param height 
+        ///  @param topMargin 
+        ///  @param bottomMargin 
+        ///  @param rightMargin 
+        ///  @param leftMargin 
+        void GetPageParameters( wxString& width, wxString& height, wxString& topMargin,
+            wxString& bottomMargin, wxString& rightMargin, wxString& leftMargin );
+
+        ///  @brief Get the Page Width object
+        ///  
+        ///  @return double 
+        double GetPageWidth( );
+
+        ///  @brief Get the Page Width Str object
+        ///  
+        ///  @return wxString 
+        wxString GetPageWidthStr( );
+
+        ///  @brief Get the Right Margin object
+        ///  
+        ///  @return double 
+        double GetRightMargin( );
+
+        ///  @brief Get the Right Margin Str object
+        ///  
+        ///  @return wxString 
+        wxString GetRightMarginStr( );
+
+        ///  @brief Get the Show Nbr object
+        ///  
+        ///  @return true 
+        ///  @return false 
+        bool GetShowNbr( ) { return String2Bool( GetAttrStr( AT_CatNbr ) ); };
+
+        ///  @brief Get the Top Margin object
+        ///  
+        ///  @return double 
+        double GetTopMargin( );
+
+        ///  @brief Get the Top Margin Str object
+        ///  
+        ///  @return wxString 
+        wxString GetTopMarginStr( );
+
+        ///  @brief Get the Show Title object
+        ///  
+        ///  @return true 
+        ///  @return false 
+        bool GetShowTitle( ) { return String2Bool( GetAttrStr( AT_ShowTitle ) ); };
+
+        ///  @brief Get the Width object
+         ///  
+         ///  @return double 
+        double GetWidth( );
+
+        ///  @brief 
+        ///  
+        ///  @param fontType 
+        ///  @param ndx 
+        ///  @return true 
+        ///  @return false 
+        bool IsDefaultFont( FontUsageType fontType, int ndx );
+
+        ///  @brief 
+        ///  
+        ///  @param node 
+        void LoadFonts( wxXmlNode* node );
+
+        ///  @brief 
+        ///  
+        void MakeAlbum( );
+
+        /// @brief resets the Font to the default Font
+        void MakeDefaultFont( FontUsageType fontType ) { DefaultFonts[ fontType ].MakeDefault( ); };
+
+        ///  @brief 
+        ///  
+        void MakePDFAlbum( );
+
+        ///  @brief 
+        ///  
+        ///  @param xmlNode 
+        void Save( wxXmlNode* xmlNode );
+
+        void SaveFonts( wxXmlNode* parent );
+
+        ///  @brief Set the Bottom Margin object
+        ///  
+        ///  @param str 
+        void SetBottomMargin( wxString str );
+
+        ///  @brief Set the Doc Name object
+        ///  
+        ///  @param str 
+        void SetDocName( wxString str );
+
+        void SetFont( FontUsageType fontType, wxFont font, wxColour color );
+
+        void SetFontNdx( FontUsageType fontType, int ndx );
+
+        ///  @brief Set the Gray Scale Images object
+        ///  
+        ///  @param val 
+        void SetGrayScaleImages( bool val = true ) { SetAttrStr( AT_GrayScaleImages, Bool2String( val ) ); };
+
+        ///  @brief Set the Left Margin object
+        ///  
+        ///  @param str 
+        void SetLeftMargin( wxString str );
+
+        ///  @brief Set the Page Height object
+        ///  
+        ///  @param str 
+        void SetPageHeight( wxString str );
+
+        ///  @brief Set the Page Width object
+        ///  
+        ///  @param str 
+        void SetPageWidth( wxString str );
+
+        ///  @brief Set the Right Margin object
+        ///  
+        ///  @param str 
+        void SetRightMargin( wxString str );
+
+        ///  @brief Set the Top Margin object
+        ///  
+        ///  @param str 
+        void SetTopMargin( wxString str );
+
+        ///  @brief Set the Show Title object
+        ///  
+        ///  @param val 
+        void SetShowTitle( bool val ) { SetAttrStr( AT_ShowTitle, Bool2String( val ) ); };
+
+        ///  @brief Set the Show Nbr object
+        ///  
+        ///  @param val 
+        void SetShowNbr( bool val ) { SetAttrStr( AT_CatNbr, Bool2String( val ) ); };
 
         /**
          * @brief init drills down to the lowest layout object with an actual size
@@ -63,10 +292,8 @@ namespace Design {
          * back up the heirarchy.
          * @return true
          * @return false
-         **************************************************/
+         */
         bool UpdateMinimumSize( );
-
-        void UpdateSizes( );
 
         /**
          * @brief  Does the layout for each child. Goes to the bottom
@@ -75,66 +302,22 @@ namespace Design {
          *
          * @return true
          * @return false
-         **************************************************/
+         */
         void UpdatePositions( );
 
+        ///  @brief 
+        ///  
+        void UpdateSizes( );
+
+        ///  @brief 
+        ///  
+        ///  @return NodeStatus 
         NodeStatus ValidateNode( );
 
-        double GetWidth( );
-        double GetPageWidth( );
-        wxString GetPageWidthStr( );
-        void SetPageWidth( wxString str );
-
-        double GetHeight( );
-        double GetPageHeight( );
-        wxString GetPageHeightStr( );
-        void SetPageHeight( wxString str );
-
-        double GetTopMargin( );
-        wxString GetTopMarginStr( );
-        void SetTopMargin( wxString str );
-
-        double GetBottomMargin( );
-        wxString GetBottomMarginStr( );
-        void SetBottomMargin( wxString str );
-
-        double GetRightMargin( );
-        wxString GetRightMarginStr( );
-        void SetRightMargin( wxString str );
-
-        double GetLeftMargin( );
-        wxString GetLeftMarginStr( );
-        void SetLeftMargin( wxString str );
-
-        double GetBorderSize( );
-        wxString GetBorderSizeStr( );
-        void SetBorderSize( wxString str );
-        wxString GetBorderFileName( );
-
-
-        wxString GetDocName( );
-        void SetDocName( wxString str );
-
-        void GetPageParameters( wxString& width, wxString& height, wxString& topMargin,
-            wxString& bottomMargin, wxString& rightMargin, wxString& leftMargin );
-        void Save( wxXmlNode* xmlNode );
-        void DumpLayout( );
-
-        // int GetAppPrefTitleFontNdx( );
-        // int GetAppPrefNbrFontNdx( );
-        // int GetAppPrefTextFontNdx( );
-        // int GetAppPrefNameFontNdx( );
-
-        int GetFontNdxPreference( AT_FontUsageType fontType ) { return GetSettings( )->GetFontNdxPreference( fontType ); }
-
-        bool GetShowTitle( ) { return String2Bool( GetAttrStr( AT_ShowTitle ) ); };
-        void SetShowTitle( bool val ) { SetAttrStr( AT_ShowTitle, Bool2String( val ) ); };
-        bool GetShowNbr( ) { return String2Bool( GetAttrStr( AT_CatNbr ) ); };
-        void SetShowNbr( bool val ) { SetAttrStr( AT_CatNbr, Bool2String( val ) ); };
-        void SetGrayScaleImages( bool val = true ) { SetAttrStr( AT_GrayScaleImages, Bool2String( val ) ); };
-        bool GetGrayScaleImages( ) { return String2Bool( GetAttrStr( AT_GrayScaleImages ) ); };
 
     private:
+
+        Utils::FontNdx DefaultFonts[ AT_NbrFontUsageTypes ];
 
     };
 }

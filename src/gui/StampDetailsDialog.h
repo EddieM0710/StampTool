@@ -32,7 +32,7 @@
 #include <wx/fontpicker.h>
 #include <wx/clrpicker.h>
 
-#include "gui/DesignTreeCtrl.h"
+#include "gui/AlbumTreeCtrl.h"
 #include "gui/GuiDefs.h"
 
 
@@ -57,7 +57,7 @@ namespace Design { class Stamp; };
  /*
   * StampDetailsDialog class declaration
   */
-class StampDetailsDialog: public wxDialog
+class StampDetailsDialog : public wxDialog
 {
     DECLARE_DYNAMIC_CLASS( StampDetailsDialog )
         DECLARE_EVENT_TABLE( )
@@ -96,6 +96,8 @@ public:
         ID_RIGHTRADIOBUTTON
     };
 
+    
+
     StampDetailsDialog( );
     StampDetailsDialog( wxWindow* parent, wxWindowID id = SYMBOL_STAMPDETAILSDIALOG_IDNAME, const wxString& caption = SYMBOL_STAMPDETAILSDIALOG_TITLE, const wxPoint& pos = SYMBOL_STAMPDETAILSDIALOG_POSITION, const wxSize& size = SYMBOL_STAMPDETAILSDIALOG_SIZE, long style = SYMBOL_STAMPDETAILSDIALOG_STYLE );
 
@@ -120,13 +122,13 @@ public:
 
     // StampDetailsDialog event handler declarations
 
-        ///   ID_REFRESHBUTTON
+        //   ID_REFRESHBUTTON
     void OnRefreshButtonClick( wxCommandEvent& event );
 
-    ///   wxID_CANCEL
+    //   wxID_CANCEL
     void OnCancelClick( wxCommandEvent& event );
 
-    ///   wxID_OK
+    //   wxID_OK
     void OnOkClick( wxCommandEvent& event );
     void OnDefaultRadioButtonSelected( wxCommandEvent& event );
     void OnTopRadioButtonSelected( wxCommandEvent& event );
@@ -177,6 +179,10 @@ public:
     void RefreshFromCatalog( );
 
     //  void SetStamp( Design::Stamp* stamp){ m_stamp = stamp; };
+
+
+
+
 private:
 
     LabeledTextBox* m_catNbr;

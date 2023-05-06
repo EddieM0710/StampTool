@@ -39,8 +39,6 @@
 
 
 IMPLEMENT_DYNAMIC_CLASS( CharacteristicsPanel, wxPanel )
-; // silly business; The above macro screws up the formatter
-
 
 BEGIN_EVENT_TABLE( CharacteristicsPanel, wxPanel )
 
@@ -48,8 +46,8 @@ EVT_TEXT( ID_HEIGHTEXTBOX, CharacteristicsPanel::OnTextctrlTextUpdated )
 EVT_TEXT( ID_WIDTHTEXTBOX, CharacteristicsPanel::OnTextctrlTextUpdated )
 
 END_EVENT_TABLE( )
-;  // silly business; The above macro screws up the formatter
 
+//--------------
 
 CharacteristicsPanel::CharacteristicsPanel( ) { Init( ); }
 
@@ -61,6 +59,13 @@ CharacteristicsPanel::CharacteristicsPanel( wxWindow* parent, wxWindowID id,
     Create( parent, id, pos, size, style );
 }
 
+//--------------
+
+CharacteristicsPanel::~CharacteristicsPanel( void )
+{
+}
+
+//--------------
 
 bool CharacteristicsPanel::Create( wxWindow* parent, wxWindowID id,
     const wxPoint& pos, const wxSize& size,
@@ -78,19 +83,7 @@ bool CharacteristicsPanel::Create( wxWindow* parent, wxWindowID id,
     return true;
 }
 
-
-CharacteristicsPanel::~CharacteristicsPanel( void )
-{
-}
-
-
-void CharacteristicsPanel::Init( void )
-{
-
-    m_height = NULL;
-    m_width = NULL;
-}
-
+//--------------
 
 void CharacteristicsPanel::CreateControls( void )
 {
@@ -122,31 +115,15 @@ void CharacteristicsPanel::CreateControls( void )
     SetDataEditable( GetSettings( )->IsCatalogVolumeEditable( ) );
 }
 
-bool CharacteristicsPanel::ShowToolTips( void ) { return true; }
+//--------------
 
-/// initializes the CharacteristicsPanel with new stamp values
-void CharacteristicsPanel::UpdatePanel( )
+void CharacteristicsPanel::Init( void )
 {
-
-    Catalog::Entry* stamp = GetCatalogData( )->GetCurrentStamp( );
-
-    if ( stamp->IsOK( ) )
-    {
-        m_height->SetValue( stamp->GetAttr( Catalog::DT_Height ) );
-        m_width->SetValue( stamp->GetAttr( Catalog::DT_Width ) );
-    }
+    m_height = NULL;
+    m_width = NULL;
 }
 
-
-void CharacteristicsPanel::UpdateStampValue( Catalog::DataTypes dt, LabeledTextBox* textBox )
-{
-    if ( textBox->IsModified( ) )
-    {
-        wxString val = textBox->GetValue( );
-        GetCatalogData( )->GetCurrentStamp( )->SetAttr( dt, val );
-        textBox->SetModified( false );
-    }
-}
+//--------------
 
 void CharacteristicsPanel::OnTextctrlTextUpdated( wxCommandEvent& event )
 {
@@ -162,11 +139,41 @@ void CharacteristicsPanel::OnTextctrlTextUpdated( wxCommandEvent& event )
     }
 
     event.Skip( );
-
 }
+
+//--------------
 
 void CharacteristicsPanel::SetDataEditable( bool val )
 {
     m_height->SetEditable( val );
     m_width->SetEditable( val );
+}
+
+//--------------
+
+bool CharacteristicsPanel::ShowToolTips( void ) { return true; }
+
+//--------------
+/// initializes the CharacteristicsPanel with new stamp values
+void CharacteristicsPanel::UpdatePanel( )
+{
+    Catalog::Entry* stamp = GetCatalogData( )->GetCurrentStamp( );
+
+    if ( stamp->IsOK( ) )
+    {
+        m_height->SetValue( stamp->GetAttr( Catalog::DT_Height ) );
+        m_width->SetValue( stamp->GetAttr( Catalog::DT_Width ) );
+    }
+}
+
+//--------------
+
+void CharacteristicsPanel::UpdateStampValue( Catalog::DataTypes dt, LabeledTextBox* textBox )
+{
+    if ( textBox->IsModified( ) )
+    {
+        wxString val = textBox->GetValue( );
+        GetCatalogData( )->GetCurrentStamp( )->SetAttr( dt, val );
+        textBox->SetModified( false );
+    }
 }

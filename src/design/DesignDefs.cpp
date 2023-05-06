@@ -49,51 +49,15 @@
 #include "design/Row.h"
 #include "design/Column.h"
 #include "design/Stamp.h"
-#include "gui/DesignTreeCtrl.h"
-#include "gui/ToolData.h"
+#include "design/AlbumData.h"
+#include "gui/AlbumTreeCtrl.h"
+ //#include "gui/AppData.h"
 
- // namespace for all Album design 
+  // namespace for all Album design 
 namespace Design {
 
     wxRealPoint  ScaleFactor;
 
-    bool IsAlbumBaseTypeValid( AlbumBaseType type )
-    {
-        return ( type >= AT_Album && type < AT_NbrAlbumTypes );
-    };
-
-    Album* GetAlbum( void )
-    {
-        AlbumVolume* albumVolume = GetAlbumVolume( );
-        if ( albumVolume )
-        {
-            return albumVolume->GetAlbum( );
-        }
-        return ( Album* ) 0;
-    }
-
-
-    AlbumVolume* GetAlbumVolume( void )
-    {
-        AlbumData* albumData = GetAlbumData( );
-        if ( albumData )
-        {
-            return albumData->GetAlbumVolume( );
-        }
-        return ( AlbumVolume* ) 0;
-    };
-
-
-    wxString AlbumBaseNames[ AT_NbrAlbumTypes ] = {
-            "Album",
-            "Page",
-            "Row",
-            "Col",
-            "TextBox",
-            "Title",
-            "TitlePage",
-            "Stamp",
-            "Font" };
 
 
     wxString AttrNameStrings[ AT_NbrAttrTypes ] = {
@@ -131,34 +95,26 @@ namespace Design {
             "FixedSpacingSize"
     };
 
-    void InitDesignDefs( ScaleClient client )
-    {
+    wxString AlbumBaseNames[ AT_NbrAlbumTypes ] = {
+            "Album",
+            "Page",
+            "Row",
+            "Col",
+            "TextBox",
+            "Title",
+            "TitlePage",
+            "Stamp",
+            "Font" };
 
-        if ( client == DD_PDF )
-        {
-            ScaleFactor.x = 1.0;
-            ScaleFactor.y = 1.0;
-        }
-        else //if ( client == DD_Display)
-        {
-            wxSize ppi = wxGetDisplayPPI( );
-            ScaleFactor.x = ppi.x / 25.4;
-            ScaleFactor.y = ppi.y / 25.4;
-        }
-    }
 
-    AlbumBaseType FindAlbumBaseType( wxString name )
-    {
-        wxString baseName;
-        for ( int i = 0; i < AT_NbrAlbumTypes; i++ )
-        {
-            baseName = AlbumBaseNames[ i ];
-            if ( !name.Cmp( baseName ) )
-            {
-                return ( AlbumBaseType ) i;
-            }
-        }
-        return ( AlbumBaseType ) -1;
+    int DefaultPointSize[ AT_NbrFontUsageTypes ] = { 6, 10, 14, 8, 10 };
+
+    wxString FontUsageTypeStrings[ AT_NbrFontUsageTypes ] = {
+        "Unspecified",
+        "Text",
+        "Title",
+        "CatNbr",
+        "Name"
     };
 
 
@@ -176,26 +132,62 @@ namespace Design {
         return ( AlbumAttrType ) -1;
     };
 
-    AT_FontUsageType FindFontUsageType( wxString name )
+    AlbumBaseType FindAlbumBaseType( wxString name )
+    {
+        wxString baseName;
+        for ( int i = 0; i < AT_NbrAlbumTypes; i++ )
+        {
+            baseName = AlbumBaseNames[ i ];
+            if ( !name.Cmp( baseName ) )
+            {
+                return ( AlbumBaseType ) i;
+            }
+        }
+        return ( AlbumBaseType ) -1;
+    };
+
+    FontUsageType FindFontUsageType( wxString name )
     {
         wxString usageStr;
         for ( int i = 0; i < AT_NbrFontUsageTypes; i++ )
         {
-            usageStr = AT_FontUsageTypeStrings[ i ];
+            usageStr = FontUsageTypeStrings[ i ];
             if ( !name.Cmp( usageStr ) )
             {
-                return ( AT_FontUsageType ) i;
+                return ( FontUsageType ) i;
             }
         }
-        return ( AT_FontUsageType ) -1;
+        return ( FontUsageType ) -1;
     };
+    Album* GetAlbum( void )
+    {
+        AlbumVolume* albumVolume = GetAlbumVolume( );
+        if ( albumVolume )
+        {
+            return albumVolume->GetAlbum( );
+        }
+        return ( Album* ) 0;
+    }
+
+
+    AlbumVolume* GetAlbumVolume( void )
+    {
+        AlbumData* albumData = GetAlbumData( );
+        if ( albumData )
+        {
+            return albumData->GetAlbumVolume( );
+        }
+        return ( AlbumVolume* ) 0;
+    };
+
+
 
     LayoutBase* GetSelectedNodePage( )
     {
         AlbumVolume* albumVolume = Design::GetAlbumVolume( );
         if ( albumVolume )
         {
-            DesignTreeCtrl* treeCtrl = GetDesignTreeCtrl( );
+            AlbumTreeCtrl* treeCtrl = GetAlbumTreeCtrl( );
             if ( treeCtrl )
             {
                 wxTreeItemId id = treeCtrl->GetSelection( );
@@ -232,6 +224,26 @@ namespace Design {
         return ( LayoutBase* ) 0;
     }
 
+    void InitDesignDefs( ScaleClient client )
+    {
+
+        if ( client == DD_PDF )
+        {
+            ScaleFactor.x = 1.0;
+            ScaleFactor.y = 1.0;
+        }
+        else //if ( client == DD_Display)
+        {
+            wxSize ppi = wxGetDisplayPPI( );
+            ScaleFactor.x = ppi.x / 25.4;
+            ScaleFactor.y = ppi.y / 25.4;
+        }
+    }
+
+    bool IsAlbumBaseTypeValid( AlbumBaseType type )
+    {
+        return ( type >= AT_Album && type < AT_NbrAlbumTypes );
+    };
 
     AlbumBase* MakeNode( wxXmlNode* node )
     {
@@ -267,145 +279,5 @@ namespace Design {
             object = ( AlbumBase* )new Stamp( node );
         }
         return object;
-    }
-    wxString AT_FontUsageTypeStrings[ AT_NbrFontUsageTypes ] = {
-        "Unspecified",
-        "Text",
-        "Title",
-        "CatNbr",
-        "Name"
-    };
-
-    int AT_DefaultPointSize[ AT_NbrFontUsageTypes ] = { 6, 10, 14, 8, 10 };
-
-    wxFontFamily AT_FontFamilyMap[ AT_NbrFontFamilies ] =
-    {
-        wxFONTFAMILY_DEFAULT,
-        wxFONTFAMILY_DECORATIVE,
-        wxFONTFAMILY_ROMAN,
-        wxFONTFAMILY_SCRIPT,
-        wxFONTFAMILY_SWISS,
-        wxFONTFAMILY_MODERN,
-        wxFONTFAMILY_TELETYPE
-    };
-
-
-    wxString AT_FontFamilyStrings[ AT_NbrFontFamilies ] =
-    {
-        "Decorative",
-        "Roman",
-        "Script",
-        "Swiss",
-        "Modern",
-        "Teletype"
-    };
-    bool IsOK( AT_FontFamilyType type )
-    {
-        return ( ( type >= AT_Default ) && ( type < AT_NbrFontFamilies ) );
-    }
-
-    AT_FontFamilyType GetATFamily( wxFontFamily wxVal )
-    {
-        for ( int i = 0; i < AT_NbrFontFamilies; i++ )
-        {
-            if ( AT_FontFamilyMap[ i ] == wxVal )
-            {
-                return ( AT_FontFamilyType ) i;
-            }
-        }
-        return ( AT_FontFamilyType ) UnknownFontVal;
-    };
-
-    AT_FontFamilyType GetFamilyFromStr( wxString family )
-    {
-        for ( int i = 0; i < AT_NbrFontFamilies; i++ )
-        {
-            if ( !AT_FontFamilyStrings[ i ].compare( family ) )
-            {
-                return ( AT_FontFamilyType ) i;
-            }
-        }
-        return ( AT_FontFamilyType ) UnknownFontVal;
-    }
-
-    wxFontStyle AT_FontStyleMap[ AT_NbrFontStyles ] =
-    {
-        wxFONTSTYLE_NORMAL,
-        wxFONTSTYLE_ITALIC,
-        wxFONTSTYLE_SLANT,
-        wxFONTSTYLE_MAX
-    };
-
-    wxString AT_FontStyleStrings[ AT_NbrFontStyles ] =
-    {
-        "Normal",
-        "Italic",
-        "Slant",
-        "Max",
-    };
-
-    AT_FontStyleType GetATStyle( wxFontStyle wxVal )
-    {
-        for ( int i = 0; i < AT_NbrFontStyles; i++ )
-        {
-            if ( AT_FontStyleMap[ i ] == wxVal )
-            {
-                return ( AT_FontStyleType ) i;
-            }
-        }
-        return ( AT_FontStyleType ) UnknownFontVal;
-    };
-
-    bool IsOK( AT_FontStyleType type )
-    {
-        return ( ( type >= AT_Normal ) && ( type < AT_NbrFontStyles ) );
-    }
-
-    wxFontWeight AT_FontWeightMap[ AT_NbrFontWeights ] =
-    {
-        wxFONTWEIGHT_INVALID,
-        wxFONTWEIGHT_THIN,
-        wxFONTWEIGHT_EXTRALIGHT,
-        wxFONTWEIGHT_LIGHT,
-        wxFONTWEIGHT_NORMAL,
-        wxFONTWEIGHT_MEDIUM,
-        wxFONTWEIGHT_SEMIBOLD,
-        wxFONTWEIGHT_BOLD,
-        wxFONTWEIGHT_EXTRABOLD,
-        wxFONTWEIGHT_HEAVY,
-        wxFONTWEIGHT_EXTRAHEAVY
-    };
-
-
-    wxString AT_FontWeightStrings[ AT_NbrFontWeights ] =
-    {
-        "Invalid",
-        "Thin",
-        "ExtraLight",
-        "Light",
-        "Normal",
-        "Medium",
-        "SemiBold",
-        "Bold",
-        "ExtraBold",
-        "Heavy",
-        "ExtraHeavy"
-    };
-
-    AT_FontWeightType GetATWeight( wxFontWeight wxVal )
-    {
-        for ( int i = 0; i < AT_NbrFontWeights; i++ )
-        {
-            if ( AT_FontWeightMap[ i ] == wxVal )
-            {
-                return ( AT_FontWeightType ) i;
-            }
-        }
-        return ( AT_FontWeightType ) UnknownFontVal;
-    };
-
-    bool IsOK( AT_FontWeightType type )
-    {
-        return ( ( type >= AT_ThinWeight ) && ( type < AT_NbrFontWeights ) );
     }
 }

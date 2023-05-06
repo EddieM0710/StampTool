@@ -20,7 +20,7 @@
  * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
- **************************************************/
+ */
 
 
 
@@ -48,9 +48,9 @@
 #include "utils/Settings.h"
 #include "catalog/CatalogData.h"
 //#include "gui/WebViewPanel.h"
-#include "StampToolApp.h"
+//#include "StampToolApp.h"
 
-wxDECLARE_APP( StampToolApp );
+//wxDECLARE_APP( StampToolApp );
 
 
 
@@ -164,8 +164,8 @@ void MiscellaneousDataPanel::CreateControls( )
         wxDefaultPosition, wxDefaultSize, 0 );
     itemBoxSizer2->Add( m_imageName, 0, wxGROW | wxALL, 0 );
 
-    m_link->SetLabel( Catalog::DT_DataNames[ Catalog::DT_Link ] );
-    m_catCodes->SetLabel( Catalog::DT_DataNames[ Catalog::DT_Catalog_Codes ] );
+    m_link->SetLabel( Catalog::DataTypeNames[ Catalog::DT_Link ] );
+    m_catCodes->SetLabel( Catalog::DataTypeNames[ Catalog::DT_Catalog_Codes ] );
     m_imageName->SetLabel( "Image Name" );
 
     SetDataEditable( GetSettings( )->IsCatalogVolumeEditable( ) );
@@ -299,148 +299,3 @@ void MiscellaneousDataPanel::RetrieveImage( )
     //wxString text = wxGetApp( ).GetFrame( )->GetWebText( );
 
 }
-
-//     // static_cast<const char*>(s)
-//     const char* urlString = static_cast< const char* >( url.c_str( ) );
-//     char urlString2[ 200 ];
-//     strcpy( urlString2, urlString );
-
-//     wxString filename = "test.html";
-//     static const char* pagefilename = "page.out";
-//     FILE* pagefile;
-
-//     wxFile file( filename, wxFile::write );
-
-//     wxFileOutputStream outstream( file );
-
-//     // wxURL url( urlString );
-//     // if ( url.GetError( ) == wxURL_NOERR )
-//     // {
-//     //     wxInputStream* in = url.GetInputStream( );
-//     //     wxStreamError err = in->GetLastError( );
-
-//     //     wxInputStream& inStream = in->Read( outstream );
-//     //     int i = in->GetSize( );
-//     //     i = in->GetLength( );
-//     //     i = in->TellI( );
-//     //     i = in->SeekI( 0 );
-//     //     wxTextInputStream text( *in );
-//     //     err = in->GetLastError( );
-//     //     wxString inLine = text.ReadLine( );//skip header
-//     //     err = in->GetLastError( );
-//     //     if ( !in->Eof( ) )
-//     //     {
-//     //         //read a line and parse it
-//     //         inLine = text.ReadLine( );
-//     //         err = in->GetLastError( );
-//     //         std::cout << inLine << "\n";
-//     //     }
-//     //     //	return in;
-
-//     CURL* curl;
-//     CURLcode res;
-//     fprintf( stderr, "url: %s\n", urlString2 );
-
-//     curl_global_init( CURL_GLOBAL_DEFAULT );
-
-//     curl = curl_easy_init( );
-//     if ( curl ) {
-//         res = curl_easy_setopt( curl, CURLOPT_URL, urlString2 );
-//         fprintf( stderr, "curl_easy_perform() failed: %s\n", curl_easy_strerror( res ) );
-//         res = curl_easy_setopt( curl, CURLOPT_VERBOSE, 1L );
-//         fprintf( stderr, "curl_easy_perform() failed: %s\n", curl_easy_strerror( res ) );
-//         /* example.com is redirected, so we tell libcurl to follow redirection */
-// //        curl_easy_setopt( curl, CURLOPT_FOLLOWLOCATION, 1L );
-// //        res = curl_easy_setopt( curl, CURLOPT_SSL_VERIFYPEER, 0L );
-// //        fprintf( stderr, "curl_easy_perform() failed: %s\n", curl_easy_strerror( res ) );
-// //        res = curl_easy_setopt( curl, CURLOPT_SSL_VERIFYHOST, 0L );
-// //        fprintf( stderr, "curl_easy_perform() failed: %s\n", curl_easy_strerror( res ) );
-//         /* Perform the request, res will get the return code */
-//  //       res = curl_easy_setopt( curl, CURLOPT_PROTOCOLS, "HTTPS" );
-
-//         /* send all data to this function  */
-//         res = curl_easy_setopt( curl, CURLOPT_WRITEFUNCTION, write_data );
-//         fprintf( stderr, "curl_easy_perform() failed: %s\n", curl_easy_strerror( res ) );
-//         /* open the file */
-//         pagefile = fopen( pagefilename, "wb" );
-//         if ( pagefile ) {
-
-//             /* write the page body to this file handle */
-//             res = curl_easy_setopt( curl, CURLOPT_WRITEDATA, pagefile );
-//             fprintf( stderr, "curl_easy_perform() failed: %s\n", curl_easy_strerror( res ) );
-//             /* get it! */
-//             res = curl_easy_perform( curl );
-//             fprintf( stderr, "curl_easy_perform() failed: %s\n", curl_easy_strerror( res ) );
-//             char* scheme;
-//             res = curl_easy_getinfo( curl, CURLINFO_SCHEME, &scheme );
-//             fprintf( stderr, "curl_easy_perform() failed: %s\n", curl_easy_strerror( res ) );
-
-//             /* close the header file */
-//             fclose( pagefile );
-//         }
-
-
-
-
-//         // res = curl_easy_perform( curl );
-//         // /* Check for errors */
-//         // if ( res != CURLE_OK )
-//         //     fprintf( stderr, "curl_easy_perform() failed: %s\n",curl_easy_strerror( res ) );
-
-//         /* always cleanup */
-//         curl_easy_cleanup( curl );
-//     }
-//
-
-    // void OnStartButton(wxCommandEvent& WXUNUSED(evt))
-    // {
-    //     wxLogStatus(this, "Started request...");
-
-    //     // Create request for the specified URL from the default session
-    //     m_currentRequest = wxWebSession::GetDefault().CreateRequest(this,
-    //         m_urlTextCtrl->GetValue());
-
-    //     // Bind event for state change
-    //     Bind(wxEVT_WEBREQUEST_STATE, &WebRequestFrame::OnWebRequestState, this);
-
-    //     // Prepare request based on selected action
-    //     switch (m_notebook->GetSelection())
-    //     {
-    //         case Page_Image:
-    //             // Reset static bitmap image
-    //             m_imageStaticBitmap->SetBitmap(wxArtProvider::GetBitmap(wxART_MISSING_IMAGE));
-    //             break;
-    //         case Page_Text:
-    //             // Reset response text control
-    //             m_textResponseTextCtrl->Clear();
-
-    //             // Set postdata if checked
-    //             if ( m_postCheckBox->IsChecked() )
-    //             {
-    //                 m_currentRequest.SetData(m_postRequestTextCtrl->GetValue(),
-    //                     m_postContentTypeTextCtrl->GetValue());
-    //             }
-    //             break;
-    //         case Page_Download:
-    //             m_currentRequest.SetStorage(wxWebRequest::Storage_File);
-    //             m_downloadGauge->SetValue(0);
-    //             m_downloadGauge->Pulse();
-    //             m_downloadStaticText->SetLabel("");
-    //             m_downloadProgressTimer.Start(500);
-    //             SetStatusText("");
-    //             break;
-    //         case Page_Advanced:
-    //             m_currentRequest.SetStorage(wxWebRequest::Storage_None);
-    //             Bind(wxEVT_WEBREQUEST_DATA, &WebRequestFrame::OnRequestData, this);
-
-    //             wxLogStatus(this, "Counting...");
-    //             m_advCount = 0;
-    //             m_advCountStaticText->SetLabel("0");
-    //             break;
-    //     }
-
-    //     m_startButton->Disable();
-
-    //     // Start the request (events will be sent on success or failure)
-    //     m_currentRequest.Start();
-    // }

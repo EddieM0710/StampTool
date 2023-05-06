@@ -26,22 +26,32 @@
 #define _FONTPICKERHELPER_H_
 
 
-/*
- * Includes
- */
 
-#include "gui/DesignTreeCtrl.h"
+#include "gui/AlbumTreeCtrl.h"
 #include <wx/fontpicker.h>
 #include <wx/font.h>
 #include <wx/clrpicker.h>
 #include "gui/GuiDefs.h"
 
-
- //Helper class to group repetitive control construction sequence
+ ///  @brief Helper class to group repetitive control construction sequence
+ ///  
 class FontPicker
 {
+
 public:
-    // create static, font picker color picker and default button t=ctrls
+
+    ///  @brief create static, font picker color picker and default button t=ctrls
+    ///  
+    ///  @param parent 
+    ///  @param verticalSizer 
+    ///  @param staticText 
+    ///  @param idStatic 
+    ///  @param idFontPicker 
+    ///  @param idColorPicker 
+    ///  @param buttonText 
+    ///  @param idDefaultButton 
+    ///  @param font 
+    ///  @param color 
     FontPicker( wxWindow* parent, wxBoxSizer* verticalSizer,
         wxString staticText, int idStatic,
         int idFontPicker, int idColorPicker,
@@ -62,6 +72,8 @@ public:
         CreateCtrls( );
     }
 
+    ///  @brief Create the controls for this helper
+    ///  
     void CreateCtrls( )
     {
         m_horizontalSizer = new wxBoxSizer( wxHORIZONTAL );
@@ -84,9 +96,21 @@ public:
         m_horizontalSizer->Add( m_defaultButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
     }
 
+    ///  @brief Get the Font Picker Ctrl object
+    ///  
+    ///  @return wxFontPickerCtrl* 
     wxFontPickerCtrl* GetFontPickerCtrl( ) { return m_fontPicker; };
+
+    ///  @brief Get the Colour Picker Ctrl object
+    ///  
+    ///  @return wxColourPickerCtrl* 
     wxColourPickerCtrl* GetColourPickerCtrl( ) { return m_colorPicker; };
+
+    ///  @brief Get the Default Button object
+    ///  
+    ///  @return wxButton* 
     wxButton* GetDefaultButton( ) { return m_defaultButton; };
+
 private:
     wxWindow* m_parent;
 

@@ -20,25 +20,19 @@
  * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
- **************************************************/
+ */
 
 
 #ifndef _STAMPTOOLFRAME_H_
 #define _STAMPTOOLFRAME_H_
 
- /*
-  * Includes
-  */
 
 #include <vector>
 #include "wx/frame.h"
 #include "gui/GuiDefs.h"
-  //#include "gui/WebRequest.h"
+#include "utils/StampList.h"
 
-    /*
-     * Forward declarations
-     */
-     //namespace Catalog { class Stamp; };
+ //namespace Catalog { class Stamp; };
 
 class StampToolPanel;
 
@@ -47,13 +41,11 @@ class wxButton;
 
 class CatalogPanel;
 //class CatalogTreeCtrl;
-class AlbumDesignTreePanel;
-class AlbumDesignPanel;
+class AlbumTreePanel;
+class AlbumPanel;
 //class WebViewPanel;
+namespace { class StampList; }
 
-/*
- * Control identifiers
- */
 
 
 enum {
@@ -88,23 +80,17 @@ enum {
 #define SYMBOL_STAMPTOOLFRAME_STYLE                                         \
     wxDEFAULT_FRAME_STYLE | wxCAPTION | wxRESIZE_BORDER | wxSYSTEM_MENU        \
         | wxMINIMIZE_BOX | wxMAXIMIZE_BOX | wxCLOSE_BOX
-#define SYMBOL_STAMPTOOLFRAME_TITLE _( "StampToolFrame" )
+#define SYMBOL_STAMPTOOLFRAME_TITLE _( "Stamp Tool" )
 #define SYMBOL_STAMPTOOLFRAME_IDNAME ID_STAMPTOOLFRAME
 #define SYMBOL_STAMPTOOLFRAME_SIZE wxSize( 1800, 1200 )
 #define SYMBOL_STAMPTOOLFRAME_POSITION wxDefaultPosition
 
 /**
- * @todo rework main menu
+ * @brief  This is the application main frame.
+ * @details This class contains the main menu and main window, StampToolPanel.
+ * It inherits from wxFrame.
  *
- **************************************************/
-
-
- /**
-  * @brief  This is the application main frame.
-  * @details This class contains the main menu and main window, StampToolPanel.
-  * It inherits from wxFrame.
-  *
-  */
+ */
 class StampToolFrame : public wxFrame
 {
     DECLARE_CLASS( StampToolFrame )
@@ -112,11 +98,13 @@ class StampToolFrame : public wxFrame
 
 public:
 
+
+
     /**
      * @brief Default Constructor a new StampToolFrame object
      * @details Must be used in conjunction with Create.
      *
-     **************************************************/
+     */
     StampToolFrame( );
 
     /**
@@ -128,7 +116,7 @@ public:
      * @param  size	The panel size. The value wxDefaultSize indicates a default size, chosen by either the windowing system or wxWidgets, depending on platform.
      * @param  style	The window style.
      * @see wxPanel.
-     **************************************************/
+     */
     StampToolFrame( wxWindow* parent,
         wxWindowID id = SYMBOL_STAMPTOOLFRAME_IDNAME,
         const wxString& caption = SYMBOL_STAMPTOOLFRAME_TITLE,
@@ -147,7 +135,7 @@ public:
      * @param  style	The window style.
      * @return bool
      *
-     **************************************************/
+     */
     bool Create( wxWindow* parent,
         wxWindowID id = SYMBOL_STAMPTOOLFRAME_IDNAME,
         const wxString& caption = SYMBOL_STAMPTOOLFRAME_TITLE,
@@ -158,77 +146,70 @@ public:
 
     ~StampToolFrame( );
 
+    void SetCaption( wxString caption )
+    {
+        SetTitle( SYMBOL_STAMPTOOLFRAME_TITLE + " - " + caption );
+    }
     /**
      * @brief   Initialises member variables
      *
-     **************************************************/
+     */
     void Init( );
 
     /**
      * @brief Creates the controls and sizers
      *
-     **************************************************/
+     */
     void CreateControls( );
 
-    // StampToolFrame event handler declarations
 
-   //  CLOSE_WINDOW event handler for ID_STAMPTOOLFRAME
     void OnCloseWindow( wxCloseEvent& event );
 
-    //  ICONIZE event handler for ID_STAMPTOOLFRAME
+
     void OnIconize( wxIconizeEvent& event );
 
-    //  MAXIMIZE event handler for ID_STAMPTOOLFRAME
+
     void OnMaximize( wxMaximizeEvent& event );
 
-    //  COMMAND_MENU_SELECTED event handler for wxID_NEW
+
     void OnNewProjectClick( wxCommandEvent& event );
     void OnNewDesignClick( wxCommandEvent& event );
     void OnNewCatalogClick( wxCommandEvent& event );
 
-    //  COMMAND_MENU_SELECTED event handler for wxID_OPEN
+
     void OnOpenProjectClick( wxCommandEvent& event );
     void OnOpenDesignClick( wxCommandEvent& event );
     void OnOpenCatalogClick( wxCommandEvent& event );
 
-    //  COMMAND_MENU_SELECTED event handler for wxID_SAVE
+
     void OnSaveProjectClick( wxCommandEvent& event );
     void OnSaveDesignClick( wxCommandEvent& event );
     void OnSaveCatalogClick( wxCommandEvent& event );
 
-    //  COMMAND_MENU_SELECTED event handler for wxID_SAVEAS
+
     void OnSaveasProjectClick( wxCommandEvent& event );
     void OnSaveasDesignClick( wxCommandEvent& event );
     void OnSaveasCatalogClick( wxCommandEvent& event );
 
     void OnGeneratePDFClick( wxCommandEvent& event );
 
-    //  COMMAND_MENU_SELECTED event handler for ID_IMPORT
-    void OnCSVImportClick( wxCommandEvent& event );
-    //   void OnAEImportClick( wxCommandEvent &event );
+    //void OnCSVImportClick( wxCommandEvent& event );
 
-       //  COMMAND_MENU_SELECTED event handler for wxID_REVERT_TO_SAVED
+
     void OnRevertToSavedClick( wxCommandEvent& event );
 
-    //  COMMAND_MENU_SELECTED event handler for wxID_EXIT
     void OnExitClick( wxCommandEvent& event );
 
-    //  COMMAND_MENU_SELECTED event handler for ID_TEXTSERCHMENUITEM
     void OnTextserchmenuitemClick( wxCommandEvent& event );
 
-    //  COMMAND_MENU_SELECTED event handler for ID_SORTORDER
     void OnSortOrderClick( wxCommandEvent& event );
 
-    //  COMMAND_MENU_SELECTED event handler for ID_ITEMVIEW
     void OnItemviewClick( wxCommandEvent& event );
 
-    //  COMMAND_MENU_SELECTED event handler for ID_DEFINEPERIOD
     void OnDefineperiodClick( wxCommandEvent& event );
 
-    //  COMMAND_MENU_SELECTED event handler for ID_SETTINGS
     void OnSettingsClick( wxCommandEvent& event );
 
-    //  COMMAND_MENU_SELECTED event handler for ID_MERGE
     void OnMergeClick( wxCommandEvent& event );
 
     void SetupRecentMenu( );
@@ -237,64 +218,49 @@ public:
     void DoDefinePeriodDialog( );
     void DoSettingsDialog( );
 
-
-    // StampToolFrame member function declarations
-
-    // 
     static bool ShowToolTips( );
 
-    //void SetStamp( wxXmlNode *stamp );
     void UpdateStatus( );
 
     void DoCSVImport( );
 
     void NewProject( );
-    void NewDesign( );
-    void NewCatalog( );
 
     void OpenProject( );
-    void OpenDesign( );
-    void OpenCatalog( );
-
     void SaveProject( );
-    void SaveDesign( );
-    void SaveCatalog( );
+
+    //void NewDesign( );
+    //void NewCatalog( );
+
+    //void OpenDesign( );
+    //void OpenCatalog( );
+
+    //void SaveDesign( );
+    //void SaveCatalog( );
 
     void SaveAsProject( );
-    void SaveAsDesign( );
-    void SaveAsCatalog( );
+    //void SaveAsDesign( );
+    //void SaveAsCatalog( );
 
     void SaveCatalogXML( wxString filename );
-    // void LoadXML( wxString filename );
     void InitLoad( );
-    //void LinkAlbumToCat( Design::LayoutBase* child, Catalog::CatalogVolume* stampData );
-   // void LinkNodes( Design::LayoutBase* child, Catalog::CatalogVolume* stampData  );
 
-    //void ( );
 
     void DoSortOrderDialog( );
 
     int QueryMerge( int& mergeMethod );
     int DoQueryMerge( int& mergeMethod );
 
-
-    void GetSetupData( int& mergeProcedure, wxXmlNode** currItem,
-        wxXmlNode** mergeItem );
-
-    int ImageGallery( );
-
     StampToolPanel* GetStampToolPanel( ) { return m_stampToolPanel; }
     CatalogPanel* GetAlbumPagePanel( );
     CatalogPanel* GetCatalogPagePanel( );
-    AlbumDesignPanel* GetAlbumDesignPanel( );
-    //    WebViewPanel* GetWebViewPage( );
-    //    WebRequest* GetWebRequest( ) { return &m_webRequest; };
+    AlbumPanel* GetAlbumAlbumPanel( );
 
     StampToolPanel* m_stampToolPanel;
     //CatalogPanel* m_catalogPagePanel;
     //CatalogPanel* m_albumPagePanel;
-    AlbumDesignTreePanel* m_albumDesignTreePanel;
-    AlbumDesignPanel* m_albumDesignPanel;
+    AlbumTreePanel* m_albumTreePanel;
+    AlbumPanel* m_albumAlbumPanel;
     //    WebRequest m_webRequest;
 
         // container data classification sort order
@@ -312,11 +278,8 @@ public:
         int id;
     } RecentListItem;
     std::vector<RecentListItem*> m_menuItemList;
-    //Catalog::Stamp *m_stamp;
-
-
 
 };
 
 #endif
-// _STAMPTOOLFRAME_H_
+

@@ -20,20 +20,25 @@
  * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
- **************************************************/
+ */
 
 #include "catalog/CatalogData.h"
 #include "catalog/CatalogVolume.h"
 #include "catalog/Entry.h"
 #include "gui/CatalogTreeCtrl.h"
+#include "gui/CatalogPanel.h"
+#include "gui/AlbumPanel.h"
 #include "gui/StampDescriptionPanel.h"
-#include "gui/ToolData.h" 
+ ////#include "gui/AppData.h" 
 #include "utils/Project.h"
 #include "Defs.h" 
 
 namespace Catalog
 {
 
+    ///  @brief Create anew empty Catalog
+    ///  
+    ///  @return Catalog::CatalogVolume* 
     Catalog::CatalogVolume* CatalogData::NewCatalogVolume( )
     {
         if ( m_catalogPageTreeCtrl )
@@ -48,87 +53,34 @@ namespace Catalog
         return m_catalogList.NewCatalogVolume( );
     };
 
-    // void CatalogData::LoadCatalogXML( wxString catalogFilename )
-    // { 
-    // }
-
-    //*****
-
-    void CatalogData::LoadCatalogVolumeFiles( )
-    {
-        m_catalogList.LoadCatalogVolumes( );
-    }
-
-
-    bool CatalogData::ReadCatalogCSV( wxString csvFilename )
-    {
-        wxFileName csvFile( csvFilename );
-        wxString ext = csvFile.GetExt( );
-        if ( !ext.CmpNoCase( "csv" ) )
-        {
-            wxFileName catalogFile = csvFile;
-            catalogFile.SetExt( "cat.xml" );
-
-            GetProject( )->SetCatalogFilename( catalogFile.GetFullPath( ) );
-
-            Catalog::CatalogVolume* catalogVolume = NewCatalogVolume( );
-
-            catalogVolume->SetVolumeFilename( catalogFile.GetFullPath( ) );
-            return catalogVolume->LoadCSV( csvFile.GetFullPath( ) );
-        }
-        return false;
-    }
-
-    void CatalogData::LoadCatalogTree( )
-    {
-        GetCatalogPageTreeCtrl( )->LoadTree( );
-        GetAlbumPageTreeCtrl( )->LoadTree( );
-    }
-
-    void CatalogData::LoadNew( wxString catFile )
-    {
-        Catalog::NewCatalogVolumeInstance( );
-        GetProject( )->SetCatalogFilename( catFile );
-        LoadCatalogTree( );
-        SetDirty( );
-    }
-
+    ///  @brief Open a catalog file
+    ///  
+    ///  @param filename 
     void CatalogData::FileOpen( wxString filename )
     {
-        GetProject( )->SetCatalogFilename( filename );
-        LoadCatalogVolumeFiles( );
+        Catalog::CatalogVolume* volume = GetCatalogList( )->NewCatalogVolume( );
+        volume->SetVolumeFilename( filename );
+        volume->Load( );
+        GetCatalogList( )->BuildVolumeNameStrings( );
+        UpdateCatalogVolumeStrings( );
         LoadCatalogTree( );
     }
 
-    void CatalogData::FileSaveAs( wxString filename )
-    {
-        GetProject( )->SetCatalogFilename( filename );
-        FileSave( );
-    }
-
+    ///  @brief Save a catalog file
+    ///  
     void CatalogData::FileSave( )
     {
         m_catalogList.SaveCatalogVolumes( );
     }
 
-
-    wxString CatalogData::GetImagePath( )
-    {
-        wxString sectFilename = GetCatalogVolume( )->GetVolumeFilename( );
-        wxFileName fn( sectFilename );
-        fn.ClearExt( );
-        fn.SetName( "" );
-        wxString dirName = GetCatalogVolume( )->GetCatalogVolumeImagePath( );
-        if ( !dirName.IsEmpty( ) )
-        {
-            fn.AppendDir( dirName );
-        }
-        return fn.GetPath( );
-    }
+    // void CatalogData::FileSaveAs( wxString filename )
+    // {
+    //     GetProject( )->SetCatalogFilename( filename );
+    //     FileSave( );
+    // }
 
     wxString CatalogData::GetImageFilename( wxString stampId )
     {
-
         wxString artPath = GetImagePath( );
         wxString fileName = stampId;
         wxString imageFile;
@@ -151,21 +103,69 @@ namespace Catalog
         }
         return imageFile;
     }
-    // void CatalogData::InitLoad( )
-    // { 
-    //     if ( GetSettings( )->GetLoadLastFileAtStartUp( ) )
-    //     { 
-    //         m_project->LoadProjectXML( );
-    //         LoadData( );
-    //     }
-    // }
 
+    wxString CatalogData::GetImagePath( )
+    {
+        wxString sectFilename = GetCatalogVolume( )->GetVolumeFilename( );
+        wxFileName fn( sectFilename );
+        fn.ClearExt( );
+        fn.SetName( "" );
+        wxString dirName = GetCatalogVolume( )->GetCatalogVolumeImagePath( );
+        if ( !dirName.IsEmpty( ) )
+        {
+            fn.AppendDir( dirName );
+        }
+        return fn.GetPath( );
+    }
 
-    // Load the Catalog and Design data then populate trees
+    void CatalogData::LoadCatalogTree( )
+    {
+        GetCatalogPageTreeCtrl( )->LoadTree( );
+        GetAlbumPageTreeCtrl( )->LoadTree( );
+    }
+
+    bool CatalogData::ImportCSV( wxString csvFilename )
+    {
+        wxFileName csvFile( csvFilename );
+        wxString ext = csvFile.GetExt( );
+        if ( !ext.CmpNoCase( "csv" ) )
+        {
+            wxFileName catalogFile = csvFile;
+            catalogFile.SetExt( "cat" );
+
+            Catalog::CatalogVolume* catalogVolume = GetCatalogList( )->NewCatalogVolume( );
+
+            catalogVolume->SetVolumeFilename( catalogFile.GetFullPath( ) );
+            bool readStatus = catalogVolume->LoadCSV( csvFile.GetFullPath( ) );
+            if ( readStatus )
+            {
+                GetCatalogList( )->BuildVolumeNameStrings( );
+                UpdateCatalogVolumeStrings( );
+                GetCatalogVolume( )->EditDetailsDialog( m_catalogNotebookPagePanel );
+                GetCatalogData( )->LoadCatalogTree( );
+            }
+            return readStatus;
+        }
+        return false;
+    }
+
+    ///  @brief  Load the Catalog data then populate trees
+    ///  
     void CatalogData::LoadData( )
     {
-        LoadCatalogVolumeFiles( );
+        m_catalogList.Load( );
+        GetCatalogList( )->BuildVolumeNameStrings( );
+        UpdateCatalogVolumeStrings( );
         LoadCatalogTree( );
+    }
+
+    void CatalogData::LoadNew( wxString catFile )
+    {
+        Catalog::CatalogVolume* volume = GetCatalogList( )->NewCatalogVolume( );
+        volume->SetVolumeFilename( catFile );
+        //        GetProject( )->SetCatalogFilename( catFile );
+        LoadCatalogTree( );
+        SetDirty( );
     }
 
     void CatalogData::SetCurrentStamp( wxXmlNode* stamp )
@@ -177,4 +177,12 @@ namespace Catalog
         m_stamp = new Catalog::Entry( stamp );
         GetDescriptionPanel( )->Show( );
     };
+
+    void CatalogData::UpdateCatalogVolumeStrings( )
+    {
+        m_catalogNotebookPagePanel->SetVolumeListStrings( m_catalogList.GetVolumeNameStrings( ) );
+        m_albumNotebookPagePanel->SetVolumeListStrings( m_catalogList.GetVolumeNameStrings( ) );
+        m_catalogNotebookPagePanel->SetVolumeListSelection( m_catalogList.GetCatalogVolumeNdx( ) );
+        m_albumNotebookPagePanel->SetVolumeListSelection( m_catalogList.GetCatalogVolumeNdx( ) );
+    }
 }

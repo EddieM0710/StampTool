@@ -20,7 +20,7 @@
  * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
- **************************************************/
+ */
 
 #ifndef DesignDefs_H
 #define DesignDefs_H
@@ -30,6 +30,7 @@
 #include <wx/gdicmn.h>
 #include <wx/font.h>
 
+
 namespace Design {
 
     class AlbumVolume;
@@ -37,34 +38,6 @@ namespace Design {
     class AlbumBase;
     class Album;
     class FontList;
-
-    Album* GetAlbum( void );
-    // FontList* GetFontList( void );
-
-    AlbumVolume* GetAlbumVolume( void );
-
-    //AlbumVolume* GetAlbumVolume( AlbumVolume* albumVolume );
-
-    //AlbumVolume* NewAlbumVolume( void );
-
-    typedef enum
-    {
-        AT_Album = 0,
-        AT_Page,
-        AT_Row,
-        AT_Col,
-        AT_Text,
-        AT_Title,
-        AT_TitlePage,
-        AT_Stamp,
-        AT_Font,
-        AT_NbrAlbumTypes,
-        AT_None = 999
-    } AlbumBaseType;
-
-    bool IsAlbumBaseTypeValid( AlbumBaseType type );
-
-    extern wxString AlbumBaseNames[ AT_NbrAlbumTypes ];
 
     typedef enum
     {
@@ -109,42 +82,20 @@ namespace Design {
         AT_NOTYPE
     } AlbumAttrType;
 
-    extern wxString AttrNameStrings[ AT_NbrAttrTypes ];
-
-
-    AlbumAttrType FindAlbumAttrType( wxString name );
-
     typedef enum
     {
-        AT_OK = 0,
-        AT_WARING,
-        AT_FATAL
-    } NodeStatus;
-
-    AlbumBaseType FindAlbumBaseType( wxString name );
-    typedef enum
-    {
-        DD_Display,
-        DD_PDF
-    } ScaleClient;
-
-
-    /**
-     * @brief Performs the initial instantiantion of all the sTart up data.
-     *
-     **************************************************/
-    void InitDesignDefs( ScaleClient client = DD_Display );
-
-    LayoutBase* GetSelectedNodePage( );
-
-    AlbumBase* MakeNode( wxXmlNode* node );
-
-    // Conversion factor to convert from Pixels to MM. 
-    // Screen units are in pixels. Album Design elements are in mm.
-    extern wxRealPoint  ScaleFactor;
-
-
-    const static int UnknownFontVal = -1;
+        AT_Album = 0,
+        AT_Page,
+        AT_Row,
+        AT_Col,
+        AT_Text,
+        AT_Title,
+        AT_TitlePage,
+        AT_Stamp,
+        AT_Font,
+        AT_NbrAlbumTypes,
+        AT_None = 999
+    } AlbumBaseType;
 
     typedef enum {
         AT_UnspecifiedFontType,
@@ -153,73 +104,20 @@ namespace Design {
         AT_NbrFontType,
         AT_NameFontType,
         AT_NbrFontUsageTypes
-    } AT_FontUsageType;
-
-    extern int AT_DefaultPointSize[ AT_NbrFontUsageTypes ];
-    extern wxString AT_FontUsageTypeStrings[ AT_NbrFontUsageTypes ];
-
-    AT_FontUsageType FindFontUsageType( wxString name );
-
-    typedef enum {
-        AT_Default,
-        AT_Decorative,
-        AT_Roman,
-        AT_Script,
-        AT_Swiss,
-        AT_Modern,
-        AT_Teletype,
-        AT_NbrFontFamilies
-    }AT_FontFamilyType;
-
-    bool IsOK( AT_FontFamilyType type );
-    extern wxFontFamily AT_FontFamilyMap[ AT_NbrFontFamilies ];
-    extern wxString AT_FontFamilyStrings[ AT_NbrFontFamilies ];
-    AT_FontFamilyType GetATFamily( wxFontFamily wxVal );
-    AT_FontFamilyType GetFamilyFromStr( wxString family );
-
-
-    typedef enum {
-        AT_Unknown = -1,
-        AT_Normal,
-        AT_Italic,
-        AT_Slant,
-        AT_Max,
-        AT_NbrFontStyles
-    } AT_FontStyleType;
-
-    bool IsOK( AT_FontStyleType type );
-    extern wxFontStyle AT_FontStyleMap[ AT_NbrFontStyles ];
-    extern wxString AT_FontStyleStrings[ AT_NbrFontStyles ];
-    AT_FontStyleType GetATStyle( wxFontStyle wxVal );
-
-    typedef enum {
-        AT_InvalidWeight,
-        AT_ThinWeight,
-        AT_ExtraLightWeight,
-        AT_LightWeight,
-        AT_NormalWeight,
-        AT_MediumWeight,
-        AT_SemiBoldWeight,
-        AT_BoldWeight,
-        AT_ExtraBoldWeight,
-        AT_HeavyWeight,
-        AT_ExtraHeavyWeight,
-        AT_NbrFontWeights
-    }AT_FontWeightType;
-
-    bool IsOK( AT_FontWeightType type );
-    extern wxFontWeight AT_FontWeightMap[ AT_NbrFontWeights ];
-    extern wxString AT_FontWeightStrings[ AT_NbrFontWeights ];
-    AT_FontWeightType GetATWeight( wxFontWeight wxVal );
+    } FontUsageType;
 
     typedef enum
     {
-        AT_TitleLocationTop,
-        AT_TitleLocationBottom,
-        AT_TitleLocationLeft,
-        AT_TitleLocationRight,
-        AT_TitleLocationDefault
-    } TitleLocation;
+        AT_OK = 0,
+        AT_WARING,
+        AT_FATAL
+    } NodeStatus;
+
+    typedef enum
+    {
+        DD_Display,
+        DD_PDF
+    } ScaleClient;
 
     typedef enum
     {
@@ -230,6 +128,50 @@ namespace Design {
         AT_Center,
         AT_AlignDefault
     } StampAlignment;
+
+    typedef enum
+    {
+        AT_TitleLocationTop,
+        AT_TitleLocationBottom,
+        AT_TitleLocationLeft,
+        AT_TitleLocationRight,
+        AT_TitleLocationDefault
+    } TitleLocation;
+
+    Album* GetAlbum( void );
+
+    AlbumVolume* GetAlbumVolume( void );
+
+    bool IsAlbumBaseTypeValid( AlbumBaseType type );
+
+    AlbumAttrType FindAlbumAttrType( wxString name );
+
+    AlbumBaseType FindAlbumBaseType( wxString name );
+
+    FontUsageType FindFontUsageType( wxString name );
+
+    LayoutBase* GetSelectedNodePage( );
+
+    /**
+     * @brief Performs the initial instantiantion of all the sTart up data.
+     *
+     */
+    void InitDesignDefs( ScaleClient client = DD_Display );
+
+    AlbumBase* MakeNode( wxXmlNode* node );
+
+    const static int UnknownFontVal = -1;
+
+    // Conversion factor to convert from Pixels to MM. 
+    // Screen units are in pixels. Album Design elements are in mm.
+    extern wxRealPoint  ScaleFactor;
+
+    extern wxString AlbumBaseNames[ AT_NbrAlbumTypes ];
+
+    extern wxString AttrNameStrings[ AT_NbrAttrTypes ];
+
+    extern int DefaultPointSize[ AT_NbrFontUsageTypes ];
+    extern wxString FontUsageTypeStrings[ AT_NbrFontUsageTypes ];
 
 }
 

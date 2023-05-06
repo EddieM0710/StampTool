@@ -20,7 +20,7 @@
  * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
- **************************************************/
+ */
 
 
 
@@ -36,19 +36,20 @@
 
 
 #include "wx/imaglist.h"
- //#include "StampToolDialog.h"
 
 #include "gui/StampToolPanel.h"
 
-#include "gui/CatalogPanel.h"
-
 #include "gui/StampDescriptionPanel.h"
+
+#include "gui/CatalogPanel.h"
+#include "catalog/CatalogData.h"
+
 #include "gui/GenerateList.h"
 #include "gui/CatalogTreeCtrl.h"
 #include "gui/GuiUtils.h"
-/*
- * IdentificationPanel type definition
- */
+ /*
+  * IdentificationPanel type definition
+  */
 
 IMPLEMENT_DYNAMIC_CLASS( StampToolPanel, wxPanel )
 ; // silly business; The above macro screws up the formatter
@@ -84,54 +85,38 @@ StampToolPanel::StampToolPanel( wxWindow* parent, wxWindowID id,
     Create( parent, id, pos, size, style );
 }
 
-/*
- * StampToolPanel creator
- */
 
 bool StampToolPanel::Create( wxWindow* parent, wxWindowID id,
     const wxPoint& pos, const wxSize& size,
     long style )
 {
-    // StampToolPanel creation
     SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
     wxPanel::Create( parent, id, pos, size, style );
 
     CreateControls( );
+
     Centre( );
-    // StampToolPanel creation
     return true;
 }
 
-/*
- * StampToolPanel destructor
- */
-
 StampToolPanel::~StampToolPanel( )
 {
-    // StampToolPanel destruction
-    // StampToolPanel destruction
+
 }
 
-/*
- * Member initialisation
- */
 
 void StampToolPanel::Init( )
 {
-    // StampToolPanel member initialisation
 
     m_notebook = NULL;
     m_sizer = NULL;
-    // StampToolPanel member initialisation
+
+
 }
 
-/*
- * Control creation for StampToolPanel
- */
 
 void StampToolPanel::CreateControls( )
 {
-    // StampToolPanel content construction
 
     StampToolPanel* itemPanel1 = this;
 
@@ -155,6 +140,7 @@ void StampToolPanel::CreateControls( )
     m_catalogTreePanel = new CatalogPanel( m_catalogNotebookPage, ID_CATALOGPAGE,
         wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
 
+    GetCatalogData( )->SetCatalogNotebookPagePanel( m_catalogTreePanel );
     GetCatalogData( )->SetCatalogPageTreeCtrl( m_catalogTreePanel->GetCatalogTree( ) );
     m_catalogTreePanel->GetCatalogTree( )->SetStates( false );
 
@@ -174,18 +160,20 @@ void StampToolPanel::CreateControls( )
         wxSP_3DBORDER | wxSP_3DSASH | wxNO_BORDER );
     m_albumNotebookPage->SetMinimumPaneSize( 20 );
 
-    m_albumTreePanel = new  CatalogPanel( m_albumNotebookPage,
+    m_albumPageCatTreePanel = new  CatalogPanel( m_albumNotebookPage,
         ID_DESIGNPAGE, wxDefaultPosition, wxDefaultSize,
         wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
-    GetCatalogData( )->SetAlbumPageTreeCtrl( m_albumTreePanel->GetCatalogTree( ) );
-    m_albumTreePanel->GetCatalogTree( )->SetStates( true );
 
-    m_albumDesignPanel = new AlbumDesignPanel( m_albumNotebookPage,
+    GetCatalogData( )->SetAlbumNotebookPagePanel( m_albumPageCatTreePanel );
+    GetCatalogData( )->SetAlbumPageTreeCtrl( m_albumPageCatTreePanel->GetCatalogTree( ) );
+    m_albumPageCatTreePanel->GetCatalogTree( )->SetStates( true );
+
+    m_albumAlbumPanel = new AlbumPanel( m_albumNotebookPage,
         ID_ALBUMSPLITTERWINDOWFOREIGN, wxDefaultPosition,
         wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
-    m_albumDesignPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
+    m_albumAlbumPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
 
-    m_albumNotebookPage->SplitVertically( m_albumTreePanel, m_albumDesignPanel, 600 );
+    m_albumNotebookPage->SplitVertically( m_albumPageCatTreePanel, m_albumAlbumPanel, 600 );
 
     m_notebook->AddPage( m_albumNotebookPage, _( "Album" ) );
 
@@ -194,14 +182,6 @@ void StampToolPanel::CreateControls( )
         wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
 
     m_notebook->AddPage( m_generateListPanel, _( "List" ) );
-
-
-    // m_webViewPanel = new WebViewPanel( m_notebook,
-    //     ID_WEBVIEWPANEL, wxDefaultPosition, wxDefaultSize );
-
-    // m_notebook->AddPage( m_webViewPanel, _( "Web View" ) );
-
-    // StampToolPanel content construction
 
     GetCatalogData( )->SetDescriptionPanel( m_stampDescriptionPanel );
 
@@ -246,8 +226,8 @@ void StampToolPanel::OnNotebookPageChanged( wxNotebookEvent& event )
     // else 
     if ( page == m_albumNotebookPage )
     {
-        m_albumTreePanel->GetCatalogTree( )->SetStates( true );
-        m_albumTreePanel->GetCatalogTree( )->LoadTree( );
+        m_albumPageCatTreePanel->GetCatalogTree( )->SetStates( true );
+        m_albumPageCatTreePanel->GetCatalogTree( )->LoadTree( );
     }
     else if ( page == m_catalogNotebookPage )
     {

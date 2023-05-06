@@ -20,7 +20,7 @@
  * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
- **************************************************/
+ */
 
 #ifndef StampLink_H
 #define StampLink_H
@@ -33,6 +33,7 @@
 #include "design/LayoutBase.h"
 #include "design/Stamp.h"
 
+
 namespace Utils {
 
     ///
@@ -41,6 +42,9 @@ namespace Utils {
     class StampLink
     {
     public:
+
+
+
 
         /// @brief Construct a new Stamp Link object
         StampLink( ) { m_designTreeID = 0; m_catTreeID = 0; };
@@ -117,6 +121,8 @@ namespace Utils {
          */
         inline bool IsStamp( wxString id );
 
+
+
     private:
         wxTreeItemId m_designTreeID;
         wxTreeItemId m_catTreeID;
@@ -124,13 +130,18 @@ namespace Utils {
 
     typedef std::vector<StampLink*> StampLinkList;
 
+}
+namespace Utils {
+
     /**
      * @brief List of all the StampLinks in the Design tree.
-     * @see StampLink
      */
     class StampList
     {
     public:
+
+
+
         /**
          * @brief Construct a new Stamp List object
          *
@@ -202,6 +213,8 @@ namespace Utils {
                 it++;
             }
         };
+
+
 
     private:
         StampLinkList m_list;

@@ -44,6 +44,7 @@
 #include "gui/FontPickerHelper.h"
 #include <wx/font.h>
 #include <wx/colour.h>
+#include "utils/FontList.h"
 
  // XPM images
  // XPM images

@@ -1,4 +1,0 @@
-<map id="Utils::Settings" name="Utils::Settings">
-<area shape="rect" id="node2" href="$dc/d08/class_utils_1_1_font_ndx.html" title="{Utils::FontNdx\n|&#45; m_ndx\l|+ FontNdx()\l+ Get()\l+ Set()\l+ MakeDefault()\l+ IsOk()\l}" alt="" coords="44,219,160,355"/>
-<area shape="rect" id="node3" href="$de/daa/class_utils_1_1_font_list.html" title="{Utils::FontList\n|&#45; m_fontMap\l|+ FontList()\l+ ~FontList()\l+ InitFonts()\l+ IsValidFontNdx()\l+ IsValidFontNdx()\land 16 more...\l}" alt="" coords="36,5,168,156"/>
-</map>

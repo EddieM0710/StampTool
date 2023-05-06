@@ -1,4 +1,0 @@
-<map id="SettingsDialog" name="SettingsDialog">
-<area shape="rect" id="node3" href="$df/d09/class_sort_order_panel.html" title="{SortOrderPanel\n|+ m_firstSort\l+ m_secondSort\l+ m_thirdSort\l+ m_forthSort\l+ m_fifthSort\l+ m_sortStrings\l+ m_dirty\l|+ SortOrderPanel()\l+ SortOrderPanel()\l+ Create()\l+ ~SortOrderPanel()\l+ Init()\land 8 more...\l+ ShowToolTips()\l}" alt="" coords="106,132,245,385"/>
-<area shape="rect" id="node5" href="$d8/d1f/class_define_periods_panel.html" title="{DefinePeriodsPanel\n|+ m_antiqueTextBox\l+ m_AntiqueYear\l+ m_classicTextBox\l+ m_modernTextBox\l+ m_modernYear\l+ m_dirty\l|+ DefinePeriodsPanel()\l+ DefinePeriodsPanel()\l+ Create()\l+ ~DefinePeriodsPanel()\l+ Init()\land 9 more...\l+ ShowToolTips()\l}" alt="" coords="269,139,434,378"/>
-</map>

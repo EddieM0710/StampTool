@@ -20,7 +20,7 @@
  * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
- **************************************************/
+ */
 
 #ifndef _IMAGEPANEL_H_
 #define _IMAGEPANEL_H_
@@ -49,7 +49,7 @@
 /**
  * @brief This is the class that manages the image displayed on the StampDescriptionPanel.
  *
- **************************************************/
+ */
 class ImagePanel : public wxScrolledWindow
 {
     DECLARE_DYNAMIC_CLASS( ImagePanel )
@@ -57,11 +57,13 @@ class ImagePanel : public wxScrolledWindow
 
 public:
 
-    /**
-     * @brief Default Constructor a new ImagePanel object
-     * @details Must be used in conjunction with Create.
-     *
-     **************************************************/
+    
+
+        /**
+         * @brief Default Constructor a new ImagePanel object
+         * @details Must be used in conjunction with Create.
+         *
+         */
     ImagePanel( );
 
     /**
@@ -73,7 +75,7 @@ public:
      * @param  size	The panel size. The value wxDefaultSize indicates a default size, chosen by either the windowing system or wxWidgets, depending on platform.
      * @param  style	The window style.
      * @see wxPanel.
-     **************************************************/
+     */
     ImagePanel( wxWindow* parent, wxWindowID id = SYMBOL_IMAGEPANEL_IDNAME,
         const wxPoint& pos = SYMBOL_IMAGEPANEL_POSITION,
         const wxSize& size = SYMBOL_IMAGEPANEL_SIZE,
@@ -90,7 +92,7 @@ public:
      * @param  style	The window style.
      * @return bool
      *
-     **************************************************/
+     */
     bool Create( wxWindow* parent, wxWindowID id = SYMBOL_IMAGEPANEL_IDNAME,
         const wxPoint& pos = SYMBOL_IMAGEPANEL_POSITION,
         const wxSize& size = SYMBOL_IMAGEPANEL_SIZE,
@@ -99,20 +101,20 @@ public:
     /**
      * @brief Destroy the Image Panel object
      *
-     **************************************************/
+     */
     ~ImagePanel( );
 
 
     /**
      * @brief Initialises member variables
      *
-     **************************************************/
+     */
     void Init( );
 
     /**
      * @brief Creates the controls and sizers
      *
-     **************************************************/
+     */
     void CreateControls( );
 
     // ImagePanel event handler declarations
@@ -122,14 +124,14 @@ public:
      * @brief  PAINT event handler for ID_IMAGEPANEL
      *
      * @param event   Contains information about command events
-     **************************************************/
+     */
     void OnPaint( wxPaintEvent& event );
 
     /**
      * @brief  ID_IMAGEPANEL
      *
      * @param event   Contains information about command events
-     **************************************************/
+     */
     void OnContextMenu( wxContextMenuEvent& event );
 
 
@@ -141,7 +143,7 @@ public:
      * @brief Set the Bitmap
      *
      * @param filename  fullname and path for the bitmap file
-     **************************************************/
+     */
     void SetBitmap( wxString filename );
 
     //  void SetStamp( Catalog::Entry* stamp );
@@ -150,14 +152,14 @@ public:
        * @brief Resize the image to fit in the clientspace
        *
        * @param WXUNUSED
-       **************************************************/
+       */
     void OnResize( wxCommandEvent& WXUNUSED( event ) );
 
     /**
      * @brief Zoom requested
      *
      * @param event   Contains information about command events
-     **************************************************/
+     */
     void OnZoom( wxCommandEvent& event );
 
 
@@ -165,7 +167,7 @@ public:
      * @brief Set the Zoom object
      *
      * @param zoom new value to set the zoom factor to.
-     **************************************************/
+     */
     void SetZoom( double zoom );
 
     //    void StartWebRequest( RequestType page, wxString url );
@@ -173,6 +175,10 @@ public:
      //   wxBitmap GetWebImage( ) { return m_imageBitmap; };
     //    wxString GetWebText( ) { return m_webText; };
         //void LoadImageFromWeb( Catalog::Entry* stamp );
+
+
+
+
 
 private:
     wxBitmap m_bitmap; ///< current bitmap to display

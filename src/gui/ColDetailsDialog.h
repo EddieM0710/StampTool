@@ -24,23 +24,16 @@
 #ifndef _COLDETAILSDIALOG_H_
 #define _COLDETAILSDIALOG_H_
 
-
- /*
- * Includes
- */
-
 #include "wx/listctrl.h"
 #include <wx/fontpicker.h>
 #include <wx/clrpicker.h>
 
-#include "gui/DesignTreeCtrl.h"
+#include "gui/AlbumTreeCtrl.h"
 #include "gui/GuiDefs.h"
 
- /*
- * Forward declarations
- */
 class LabeledTextBox;
 class wxListCtrl;
+
 namespace Design { class Column; };
 
 
@@ -50,13 +43,7 @@ namespace Design { class Column; };
 #define SYMBOL_COLDETAILSDIALOG_SIZE wxSize( 400, 300 )
 #define SYMBOL_COLDETAILSDIALOG_POSITION wxDefaultPosition
 
-
-
-/*
- * ColDetailsDialog class declaration
- */
-
-class ColDetailsDialog: public wxDialog
+class ColDetailsDialog : public wxDialog
 {
     DECLARE_DYNAMIC_CLASS( ColDetailsDialog )
         DECLARE_EVENT_TABLE( )
@@ -88,57 +75,181 @@ public:
         ID_FIXEDSIZETEXTCTRL
     };
 
-
+    ///  @brief Construct a new Col Details Dialog object
+    ///  
     ColDetailsDialog( );
+
+    ///  @brief Construct a new Col Details Dialog object
+    ///  
+    ///  @param parent 
+    ///  @param id 
+    ///  @param caption 
+    ///  @param pos 
+    ///  @param size 
+    ///  @param style 
     ColDetailsDialog( wxWindow* parent, wxWindowID id = SYMBOL_COLDETAILSDIALOG_IDNAME, const wxString& caption = SYMBOL_COLDETAILSDIALOG_TITLE, const wxPoint& pos = SYMBOL_COLDETAILSDIALOG_POSITION, const wxSize& size = SYMBOL_COLDETAILSDIALOG_SIZE, long style = SYMBOL_COLDETAILSDIALOG_STYLE );
 
-
-    bool Create( wxWindow* parent, wxWindowID id = SYMBOL_COLDETAILSDIALOG_IDNAME, const wxString& caption = SYMBOL_COLDETAILSDIALOG_TITLE, const wxPoint& pos = SYMBOL_COLDETAILSDIALOG_POSITION, const wxSize& size = SYMBOL_COLDETAILSDIALOG_SIZE, long style = SYMBOL_COLDETAILSDIALOG_STYLE );
-
-
+    ///  @brief Destroy the Col Details Dialog object
+    ///  
     ~ColDetailsDialog( );
 
+    ///  @brief 
+    ///  
+    ///  @param parent 
+    ///  @param id 
+    ///  @param caption 
+    ///  @param pos 
+    ///  @param size 
+    ///  @param style 
+    ///  @return true 
+    ///  @return false 
+    bool Create( wxWindow* parent, wxWindowID id = SYMBOL_COLDETAILSDIALOG_IDNAME, const wxString& caption = SYMBOL_COLDETAILSDIALOG_TITLE, const wxPoint& pos = SYMBOL_COLDETAILSDIALOG_POSITION, const wxSize& size = SYMBOL_COLDETAILSDIALOG_SIZE, long style = SYMBOL_COLDETAILSDIALOG_STYLE );
 
-    void Init( );
-
-
+    ///  @brief Create a Controls object
+    ///  
     void CreateControls( );
 
-    void UpdateControls( );
+    ///  @brief Get the Fixed Spacing object
+    ///  
+    ///  @return wxString 
+    wxString GetFixedSpacing( ) { return m_positionFixedSize->GetValue( ); };
 
-    void SetupDialog( wxTreeItemId treeID );
+    ///  @brief Get the Show Title object
+    ///  
+    ///  @return true 
+    ///  @return false 
+    bool GetShowTitle( );
 
-    //   wxID_OK
-    void OnOkClick( wxCommandEvent& event );
-    void OnDefaultRadioButtonSelected( wxCommandEvent& event );
-    void OnTopRadioButtonSelected( wxCommandEvent& event );
-    void OnBottomRadioButtonSelected( wxCommandEvent& event );
-    void OnLeftRadioButtonSelected( wxCommandEvent& event );
-    void OnRightRadioButtonSelected( wxCommandEvent& event );
-    void OnTitleDefaultClick( wxCommandEvent& event );
+    ///  @brief Get the Show Frame object
+    ///  
+    ///  @return true 
+    ///  @return false 
+    bool GetShowFrame( );
 
-    void OnFixedClick( wxCommandEvent& event );
-    void OnCalculatedClick( wxCommandEvent& event );
+    ///  @brief Get the Title Font object
+    ///  
+    ///  @return wxFont 
+    wxFont GetTitleFont( );
 
-    static bool ShowToolTips( );
-    void SetNameModified( bool state );
+    ///  @brief Get the Title Color object
+    ///  
+    ///  @return wxColour 
+    wxColour GetTitleColor( );
+
+    ///  @brief 
+    ///  
+    void Init( );
+
+    ///  @brief 
+    ///  
+    ///  @return true 
+    ///  @return false 
     bool IsNameModified( );
 
+    ///  @brief 
+    ///  
+    ///  @param event 
+    void OnOkClick( wxCommandEvent& event );
+
+    ///  @brief 
+    ///  
+    ///  @param event 
+    void OnDefaultRadioButtonSelected( wxCommandEvent& event );
+
+    ///  @brief 
+    ///  
+    ///  @param event 
+    void OnTopRadioButtonSelected( wxCommandEvent& event );
+
+    ///  @brief 
+    ///  
+    ///  @param event 
+    void OnBottomRadioButtonSelected( wxCommandEvent& event );
+
+    ///  @brief 
+    ///  
+    ///  @param event 
+    void OnLeftRadioButtonSelected( wxCommandEvent& event );
+
+    ///  @brief 
+    ///  
+    ///  @param event 
+    void OnRightRadioButtonSelected( wxCommandEvent& event );
+
+    ///  @brief 
+    ///  
+    ///  @param event 
+    void OnTitleDefaultClick( wxCommandEvent& event );
+
+    ///  @brief 
+    ///  
+    ///  @param event 
+    void OnFixedClick( wxCommandEvent& event );
+
+    ///  @brief 
+    ///  
+    ///  @param event 
+    void OnCalculatedClick( wxCommandEvent& event );
+
+    ///  @brief Set the Calculate Spacing object
+    ///  
+    ///  @param val 
+    void SetCalculateSpacing( bool val );
+
+    ///  @brief Set the Fixed Spacing Size object
+    ///  
+    ///  @param str 
+    void SetFixedSpacingSize( wxString str ) { m_positionFixedSize->SetValue( str ); };
+
+    ///  @brief Set the Name Modified object
+    ///  
+    ///  @param state 
+    void SetNameModified( bool state );
+
+    ///  @brief Set the Show Title object
+    ///  
+    ///  @param state 
     void SetShowTitle( bool state = false );
+
+    ///  @brief Set the Show Frame object
+    ///  
+    ///  @param state 
     void SetShowFrame( bool state = false );
-    bool GetShowTitle( );
-    bool GetShowFrame( );
-    void SetTitleFont( wxFont font );
+
+    ///  @brief Set the Title Color object
+    ///  
+    ///  @param color 
     void SetTitleColor( wxColour color );
-    wxFont GetTitleFont( );
-    wxColour GetTitleColor( );
+
+    ///  @brief Set the Title Font object
+    ///  
+    ///  @param font 
+    void SetTitleFont( wxFont font );
+
+    ///  @brief Set the Title Layout Location object
+    ///  
     void SetTitleLayoutLocation( );
 
-    void SetCalculateSpacing( bool val );
-    void SetFixedSpacingSize( wxString str ) { m_positionFixedSize->SetValue( str ); };
-    wxString GetFixedSpacing( ) { return m_positionFixedSize->GetValue( ); };
+    ///  @brief 
+    ///  
+    ///  @return true 
+    ///  @return false 
     bool CalculateSpacing( ) { return m_positionCalculated->GetValue( ); };
 
+    ///  @brief 
+    ///  
+    ///  @param treeID 
+    void SetupDialog( wxTreeItemId treeID );
+
+    ///  @brief 
+    ///  
+    ///  @return true 
+    ///  @return false 
+    static bool ShowToolTips( );
+
+    ///  @brief 
+    ///  
+    void UpdateControls( );
 
 private:
 

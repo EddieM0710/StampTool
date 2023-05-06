@@ -41,7 +41,7 @@ class LabeledTextBox;
  * Control identifiers
  */
 
- 
+
 #define SYMBOL_NEWSTAMPDIALOG_STYLE wxCAPTION | wxRESIZE_BORDER | wxSYSTEM_MENU | wxCLOSE_BOX | wxTAB_TRAVERSAL
 #define SYMBOL_NEWSTAMPDIALOG_TITLE _( "New Stamp Dialog" )
 #define SYMBOL_NEWSTAMPDIALOG_IDNAME ID_NEWSTAMPDIALOG
@@ -50,11 +50,11 @@ class LabeledTextBox;
 
 
 
-/*
- * NewStampDialog class declaration
- */
+ /*
+  * NewStampDialog class declaration
+  */
 
-class NewStampDialog: public wxDialog
+class NewStampDialog : public wxDialog
 {
     DECLARE_DYNAMIC_CLASS( NewStampDialog )
         DECLARE_EVENT_TABLE( )
@@ -73,46 +73,52 @@ public:
         ID_WIDTHTEXTBOX,
         ID_HEIGHTTEXTBOX
     };
+
     
+
     NewStampDialog( );
     NewStampDialog( wxWindow* parent, wxWindowID id = SYMBOL_NEWSTAMPDIALOG_IDNAME, const wxString& caption = SYMBOL_NEWSTAMPDIALOG_TITLE, const wxPoint& pos = SYMBOL_NEWSTAMPDIALOG_POSITION, const wxSize& size = SYMBOL_NEWSTAMPDIALOG_SIZE, long style = SYMBOL_NEWSTAMPDIALOG_STYLE );
 
-    
+
     bool Create( wxWindow* parent, wxWindowID id = SYMBOL_NEWSTAMPDIALOG_IDNAME, const wxString& caption = SYMBOL_NEWSTAMPDIALOG_TITLE, const wxPoint& pos = SYMBOL_NEWSTAMPDIALOG_POSITION, const wxSize& size = SYMBOL_NEWSTAMPDIALOG_SIZE, long style = SYMBOL_NEWSTAMPDIALOG_STYLE );
 
-    
+
     ~NewStampDialog( );
 
-    
+
     void Init( );
 
-    
+
     void CreateControls( );
 
     // NewStampDialog event handler declarations
 
-        ///   ID_EMISSIONCHOICE
+        //   ID_EMISSIONCHOICE
     void OnEmissionchoiceSelected( wxCommandEvent& event );
 
-    ///   ID_FORMATCHOICE
+    //   ID_FORMATCHOICE
     void OnFormatchoiceSelected( wxCommandEvent& event );
 
-    ///   wxID_CANCEL
+    //   wxID_CANCEL
     void OnCancelClick( wxCommandEvent& event );
 
-    ///   wxID_OK
+    //   wxID_OK
     void OnOkClick( wxCommandEvent& event );
 
- 
-        
+
+
     static bool ShowToolTips( );
 
     void UpdateStamp( );
     void SetChoice( wxChoice* ctrl, wxString str );
     void SetStamp( Catalog::Entry* stamp );
 
+    
 
-    // NewStampDialog member variables
+
+
+
+        // NewStampDialog member variables
     LabeledTextBox* m_ID;
     LabeledTextBox* m_name;
     wxChoice* m_emission;

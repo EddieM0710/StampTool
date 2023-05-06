@@ -20,7 +20,7 @@
  * You should have received a copy of the GNU General Public License along with 
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  * 
- **************************************************/
+ */
 
 // the configured options and settings for MainConfig
 #define StampTool_VERSION_MAJOR 1

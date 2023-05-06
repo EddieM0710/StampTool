@@ -20,7 +20,7 @@
  * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
- **************************************************/
+ */
 
 
 #ifndef _SORTORDERPANEL_H_
@@ -54,7 +54,7 @@
      * SortOrderPanel class declaration
      */
 
-class SortOrderPanel: public wxPanel
+class SortOrderPanel : public wxPanel
 {
     DECLARE_DYNAMIC_CLASS( SortOrderPanel )
         DECLARE_EVENT_TABLE( )
@@ -69,12 +69,14 @@ public:
         ID_CHOICE3,
         ID_CHOICE4
     };
+
     
-    /**
-     * @brief Default Constructor a new SortOrderPanel object
-     * @details Must be used in conjunction with Create.
-     *
-     **************************************************/
+
+        /**
+         * @brief Default Constructor a new SortOrderPanel object
+         * @details Must be used in conjunction with Create.
+         *
+         */
     SortOrderPanel( );
 
     /**
@@ -86,7 +88,7 @@ public:
      * @param  size	The panel size. The value wxDefaultSize indicates a default size, chosen by either the windowing system or wxWidgets, depending on platform.
      * @param  style	The window style.
      * @see wxPanel.
-     **************************************************/
+     */
     SortOrderPanel( wxWindow* parent,
         wxWindowID id = SYMBOL_SORTORDERPANEL_IDNAME,
         const wxPoint& pos = SYMBOL_SORTORDERPANEL_POSITION,
@@ -104,26 +106,26 @@ public:
      * @param  style	The window style.
      * @return bool
      *
-     **************************************************/
+     */
     bool Create( wxWindow* parent,
         wxWindowID id = SYMBOL_SORTORDERPANEL_IDNAME,
         const wxPoint& pos = SYMBOL_SORTORDERPANEL_POSITION,
         const wxSize& size = SYMBOL_SORTORDERPANEL_SIZE,
         long style = SYMBOL_SORTORDERPANEL_STYLE );
 
-    
+
     ~SortOrderPanel( );
 
     /**
      * @brief   Initialises member variables
      *
-     **************************************************/
+     */
     void Init( );
 
     /**
      * @brief Creates the controls and sizers
      *
-     **************************************************/
+     */
     void CreateControls( );
 
     // SortOrderPanel event handler declarations
@@ -142,20 +144,24 @@ public:
 
     //   ID_CHOICE4
     void OnChoice4Selected( wxCommandEvent& event );
-    
-    void OnOkClick(  );
+
+    void OnOkClick( );
 
     // SortOrderPanel event handler declarations
 
     // SortOrderPanel member function declarations
 
- 
- 
+
+
    // 
     static bool ShowToolTips( );
     bool IsDirty( ) { return m_dirty; };
 
-    // SortOrderPanel member variables
+    
+
+
+
+        // SortOrderPanel member variables
     wxChoice* m_firstSort;
     wxChoice* m_secondSort;
     wxChoice* m_thirdSort;

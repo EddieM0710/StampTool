@@ -159,7 +159,7 @@ void NewStampDialog::CreateControls( )
     wxArrayString m_emissionStrings;
     for ( int i = 0; i < Catalog::ET_NbrTypes; i++ ) 
     { 
-        m_emissionStrings.Add( _( Catalog::ET_EmissionStrings[ i ] ) );
+        m_emissionStrings.Add( _( Catalog::EmissionStrings[ i ] ) );
     } 
     // m_emissionStrings.Add( _( "Unknown" ) );
     // m_emissionStrings.Add( _( "Commemorative" ) );
@@ -345,7 +345,7 @@ void NewStampDialog::OnOkClick( wxCommandEvent& event )
 /*
  *
  *
- **************************************************/
+ */
 
 void NewStampDialog::SetChoice( wxChoice* ctrl, wxString str )
 { 
@@ -360,7 +360,7 @@ void NewStampDialog::SetChoice( wxChoice* ctrl, wxString str )
 /*
  *
  *
- **************************************************/
+ */
 
 // void NewStampDialog::SetChoice( wxChoice* ctrl, int ndx )
 // { 
@@ -370,7 +370,7 @@ void NewStampDialog::SetChoice( wxChoice* ctrl, wxString str )
 /*
  *
  *
- **************************************************/
+ */
 
 void NewStampDialog::SetStamp( Catalog::Entry* stamp )
 { 
@@ -392,7 +392,7 @@ void NewStampDialog::SetStamp( Catalog::Entry* stamp )
 /*
  *
  *
- **************************************************/
+ */
 
 
 

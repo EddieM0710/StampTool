@@ -20,7 +20,7 @@
  * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
- **************************************************/
+ */
 
 #ifndef MyFont_H
 #define MyFont_H
@@ -28,38 +28,18 @@
 #include "design/DesignDefs.h"
 #include "design/XMLBase.h"
 #include "utils/Font.h"
+#include "utils/FontNdx.h"
 
  //#include <vector>
 
-
 namespace Utils {
 
-    class FontList;
-
-
-    class FontNdx
-    {
-    public:
-
-        FontNdx( );
-
-        int Get( );
-
-        void Set( int ndx );
-
-        void MakeDefault( );
-        bool IsOk( ) { return ( m_ndx >= 0 ); };
-
-    private:
-        FontList* m_fontList;
-        int m_ndx;
-    };
-
-    int FindFont( FontMap& list, wxFont font, wxColor color );
+    // int FindFont( FontMap& list, wxFont font, wxColor color );
 
     class FontList
     {
     public:
+
         FontList( )
         {
             m_fontMap.rehash( 10 );
@@ -87,17 +67,19 @@ namespace Utils {
             return m_fontMap;
         }
         int AddNewFont( wxFont font, wxColour color );
-        Design::AT_FontUsageType Load( wxXmlNode* fontNode, wxString nativeString, wxString color );
+        Design::FontUsageType Load( wxXmlNode* fontNode, wxString nativeString, wxString color );
         std::size_t Erase( int ndx )
         {
             return m_fontMap.erase( ndx );
         };
 
-        FontNdx LoadFont( wxXmlNode* parent, Design::AT_FontUsageType type );
+        FontNdx LoadFont( wxXmlNode* parent, Design::FontUsageType type );
 
-        void SaveFont( wxXmlNode* parent, FontNdx ndx, Design::AT_FontUsageType type );
+        void SaveFont( wxXmlNode* parent, FontNdx ndx, Design::FontUsageType type );
         int DefaultFont( int pointSize );
         void DumpFonts( );
+
+
 
     private:
         FontMap m_fontMap;

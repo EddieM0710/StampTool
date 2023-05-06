@@ -43,76 +43,51 @@
 #include "utils/XMLUtilities.h"
 #include "Defs.h"
 #include "catalog/CatalogVolume.h"
- // #include "catalog/Speciman.h"
 #include "catalog/Entry.h"
-// #include "CatalogCode.h"
 
 namespace Catalog {
 
-    /**
-     * @brief Global pointer to CatalogVolume data object
-     *
-     */
+    wxString CatalogBaseNames[ NT_NbrTypes ] = {
+        "Catalog" ,
+        "Country" ,
+        "Period"  ,
+        "Decade" ,
+        "Year" ,
+        "Emission" ,
+        "Status" ,
+        "Condition" ,
+        "Entry" ,
+        "Specimen" ,
+        "CatalogCode",
+        "None" };
 
+    const wxString CatalogCodeNames[ CC_NbrTypes ]
+        = { wxT( "ID" ), wxT( "Country" ), wxT( "Catalog" ) };
 
-
-     // CatalogVolume* GetCatalogVolume( void )
-     // { 
-     //     return  GetToolData( )->GetCatalogVolume( );
-     // };
-     // void SetCatalogVolume( CatalogVolume* catalogVolume )
-     // { 
-     //     GetToolData( )->SetCatalogVolume( catalogVolume );
-     // };
-
-    const wxString ST_CheckedStatusStrings[ ST_NbrCheckedStatusTypes ]
+    const wxString CheckedStatusStrings[ ST_NbrCheckedStatusTypes ]
         = { wxT( "Checked" ), wxT( "Unchecked" ) };
 
-    const wxString ST_InventoryStatusStrings[ ST_NbrInventoryStatusTypes ]
-        = { wxT( "None" ), wxT( "Missing" ), wxT( "Ordered" ), wxT( "Own" ), wxT( "Own Variant" ), wxT( "Exclude" ) };
+    /**
+     * @brief String name used for wxXmlNodes.
+     *
+     */
+    const wxString ClassificationNames[ CT_NbrTypes ] = { wxT( "Name" ),
+    wxT( "PreferredCatalog" ), wxT( "ImageDirectory" ) };
 
-    InventoryStatusType FindStatusType( wxString name )
-    {
-        wxString baseName;
-        for ( int i = 0; i < ST_NbrInventoryStatusTypes; i++ )
-        {
-            baseName = ST_InventoryStatusStrings[ i ];
-            if ( !name.Cmp( baseName ) )
-            {
-                return ( InventoryStatusType ) i;
-            }
-        }
-        return ( InventoryStatusType ) -1;
+    const wxString DataTypeNames[ DT_NbrTypes ] = {
+        wxT( "ID Nbr" ),      wxT( "Name" ),          wxT( "Country" ),
+        wxT( "Series" ),      wxT( "Catalog Codes" ), wxT( "Issued on" ),
+        wxT( "Expiry date" ), wxT( "Width" ),         wxT( "Height" ),
+        wxT( "Paper" ),       wxT( "Watermark" ),     wxT( "Emission" ),
+        wxT( "Format" ),      wxT( "Perforation" ),   wxT( "Printing" ),
+        wxT( "Gum" ),         wxT( "Currency" ),      wxT( "FaceValue" ),
+        wxT( "Print run" ),   wxT( "Variant" ),       wxT( "Score" ),
+        wxT( "Accuracy" ),    wxT( "Colors" ),        wxT( "Themes" ),
+        wxT( "Description" ), wxT( "Link" ),       //   wxT( "Checked" ), 
+        wxT( "Inventory" ), wxT( "Background" )
     };
 
-    const wxString FT_FormatStrings[ FT_NbrTypes ]
-        = { wxT( "Unknown" ),
-            wxT( "Stamp" ),
-            wxT( "Se-tenant" ),
-            wxT( "Mini Sheet" ),
-            wxT( "Souvenir Sheet" ),
-            wxT( "Booklet" ),
-            wxT( "Booklet Pane" ),
-            wxT( "Gutter Pair" ),
-            wxT( "Entry with Attached Label" ),
-            wxT( "Tete-Beche" ) };
-
-
-    FormatType FindFormatType( wxString name )
-    {
-        wxString baseName;
-        for ( int i = 0; i < FT_NbrTypes; i++ )
-        {
-            baseName = FT_FormatStrings[ i ];
-            if ( !name.Cmp( baseName ) )
-            {
-                return ( FormatType ) i;
-            }
-        }
-        return ( FormatType ) -1;
-    };
-
-    const wxString ET_EmissionStrings[ ET_NbrTypes ]
+    const wxString EmissionStrings[ ET_NbrTypes ]
         = { wxT( "Unknown" ),
             wxT( "Commemorative" ),
             wxT( "Definitive" ),
@@ -140,36 +115,28 @@ namespace Catalog {
             wxT( "Semi-Postal" ),
             wxT( "War Tax" ) };
 
+    const wxString FormatStrings[ FT_NbrTypes ]
+        = { wxT( "Unknown" ),
+            wxT( "Stamp" ),
+            wxT( "Se-tenant" ),
+            wxT( "Mini Sheet" ),
+            wxT( "Souvenir Sheet" ),
+            wxT( "Booklet" ),
+            wxT( "Booklet Pane" ),
+            wxT( "Gutter Pair" ),
+            wxT( "Entry with Attached Label" ),
+            wxT( "Tete-Beche" ) };
+
+    const wxString InventoryStatusStrings[ ST_NbrInventoryStatusTypes ]
+        = { wxT( "None" ), wxT( "Missing" ), wxT( "Ordered" ), wxT( "Own" ), wxT( "Own Variant" ), wxT( "Exclude" ) };
 
 
-    EmissionType FindEmissionType( wxString name )
-    {
-        wxString baseName;
-        for ( int i = 0; i < ET_NbrTypes; i++ )
-        {
-            baseName = ET_EmissionStrings[ i ];
-            if ( !name.Cmp( baseName ) )
-            {
-                return ( EmissionType ) i;
-            }
-        }
-        return ( EmissionType ) -1;
-    };
+    const wxString ItemDataNames[ IDT_NbrTypes ]
+        = { wxT( "Type" ), wxT( "Condition" ), wxT( "Value" ), wxT( "Location" ),
+            wxT( "Remarks" ) };
 
-    const wxString DT_DataNames[ DT_NbrTypes ] = {
-        wxT( "ID Nbr" ),      wxT( "Name" ),          wxT( "Country" ),
-        wxT( "Series" ),      wxT( "Catalog Codes" ), wxT( "Issued on" ),
-        wxT( "Expiry date" ), wxT( "Width" ),         wxT( "Height" ),
-        wxT( "Paper" ),       wxT( "Watermark" ),     wxT( "Emission" ),
-        wxT( "Format" ),      wxT( "Perforation" ),   wxT( "Printing" ),
-        wxT( "Gum" ),         wxT( "Currency" ),      wxT( "FaceValue" ),
-        wxT( "Print run" ),   wxT( "Variant" ),       wxT( "Score" ),
-        wxT( "Accuracy" ),    wxT( "Colors" ),        wxT( "Themes" ),
-        wxT( "Description" ), wxT( "Link" ),       //   wxT( "Checked" ), 
-        wxT( "Inventory" ), wxT( "Background" )
-    };
 
-    const wxString DT_XMLDataNames[ DT_NbrTypes ] = {
+    const wxString XMLDataNames[ DT_NbrTypes ] = {
         wxT( "ID_Nbr" ),      wxT( "Name" ),         wxT( "Country" ),
         wxT( "Series" ),      wxT( "Catalog_Codes" ), wxT( "Issued_on" ),
         wxT( "Expiry_date" ), wxT( "Width" ),         wxT( "Height" ),
@@ -181,73 +148,6 @@ namespace Catalog {
         wxT( "Description" ), wxT( "Link" ),        //  wxT( "CheckedStatus" ), 
         wxT( "InventoryStatus" ),  wxT( "Background" )
     };
-
-    wxString CatalogBaseNames[ NT_NbrTypes ] = {
-        "Catalog" ,
-        "Country" ,
-        "Period"  ,
-        "Decade" ,
-        "Year" ,
-        "Emission" ,
-        "Status" ,
-        "Condition" ,
-        "Entry" ,
-        "Specimen" ,
-        "CatalogCode",
-        "None" };
-
-    const wxString CC_CatalogCodeNames[ CC_NbrTypes ]
-        = { wxT( "ID" ), wxT( "Country" ), wxT( "Catalog" ) };
-
-    void InitCatalogDefs( )
-    {
-
-    }
-
-
-
-    /**
-     * @brief String name used for wxXmlNodes.
-     *
-     */
-    const wxString CT_Names[ CT_NbrTypes ] = { wxT( "Name" ),
-    wxT( "PreferredCatalog" ), wxT( "ImageDirectory" ) };
-
-    const wxString ItemDataNames[ IDT_NbrTypes ]
-        = { wxT( "Type" ), wxT( "Condition" ), wxT( "Value" ), wxT( "Location" ),
-            wxT( "Remarks" ) };
-
-
-
-    CatalogBaseType FindCatalogBaseType( wxString name )
-    {
-        wxString baseName;
-
-        for ( int i = 0; i < NT_NbrTypes; i++ )
-        {
-            baseName = CatalogBaseNames[ i ];
-            if ( !name.Cmp( baseName ) )
-            {
-                return ( CatalogBaseType ) i;
-            }
-        }
-        return ( CatalogBaseType ) -1;
-    };
-
-
-
-    /**
-     * @brief is the specified wxXmlNode of specified type
-     *
-     * @param ele  element of interest
-     * @param type  element type
-     * @return true  if a match
-     **************************************************/
-    bool IsCatalogBaseType( wxXmlNode* ele, CatalogBaseType type )
-    {
-        return !CatalogBaseNames[ type ].Cmp( ele->GetName( ) );
-    }
-
 
 
     void AddEntry( wxXmlNode* parent, wxXmlNode* child, int level )
@@ -313,33 +213,96 @@ namespace Catalog {
         }
     }
 
-    wxXmlNode* MoveEntry( wxXmlNode* newParent, wxXmlNode* child )
+    CatalogBaseType FindCatalogBaseType( wxXmlNode* element )
     {
-        if ( newParent == child )
-        {
-            // can't be a child of itself
-            return ( wxXmlNode* ) 0;
-        }
+        wxString name = element->GetName( );
 
-        wxXmlNode* parent = newParent->GetParent( );
-        while ( parent )
+        for ( int i = 0; i < NT_NbrTypes; i++ )
         {
-            if ( child == parent )
+            if ( !name.Cmp( CatalogBaseNames[ i ] ) )
             {
-                // child can't be an ancestor of itself
-                return ( wxXmlNode* ) 0;
+                return ( CatalogBaseType ) i;
             }
-            parent = parent->GetParent( );
         }
-        // Make a copy of the old child and insert it
-        wxXmlNode* newChildNode = new wxXmlNode( *child );
-        wxXmlNode* newChild = newChildNode;
-        newParent->AddChild( newChild );
+        return ( CatalogBaseType ) -1;
+    };
 
-        parent = child->GetParent( );
-        parent->RemoveChild( child );
-        return newChild;
+    CatalogBaseType FindCatalogBaseType( wxString name )
+    {
+        wxString baseName;
+
+        for ( int i = 0; i < NT_NbrTypes; i++ )
+        {
+            baseName = CatalogBaseNames[ i ];
+            if ( !name.Cmp( baseName ) )
+            {
+                return ( CatalogBaseType ) i;
+            }
+        }
+        return ( CatalogBaseType ) -1;
+    };
+
+    EmissionType FindEmissionType( wxString name )
+    {
+        wxString baseName;
+        for ( int i = 0; i < ET_NbrTypes; i++ )
+        {
+            baseName = EmissionStrings[ i ];
+            if ( !name.Cmp( baseName ) )
+            {
+                return ( EmissionType ) i;
+            }
+        }
+        return ( EmissionType ) -1;
+    };
+
+    FormatType FindFormatType( wxString name )
+    {
+        wxString baseName;
+        for ( int i = 0; i < FT_NbrTypes; i++ )
+        {
+            baseName = FormatStrings[ i ];
+            if ( !name.Cmp( baseName ) )
+            {
+                return ( FormatType ) i;
+            }
+        }
+        return ( FormatType ) -1;
+    };
+
+
+    InventoryStatusType FindStatusType( wxString name )
+    {
+        wxString baseName;
+        for ( int i = 0; i < ST_NbrInventoryStatusTypes; i++ )
+        {
+            baseName = InventoryStatusStrings[ i ];
+            if ( !name.Cmp( baseName ) )
+            {
+                return ( InventoryStatusType ) i;
+            }
+        }
+        return ( InventoryStatusType ) -1;
+    };
+
+    /**
+     * @brief is the specified wxXmlNode of specified type
+     *
+     * @param ele  element of interest
+     * @param type  element type
+     * @return true  if a match
+     */
+    bool IsCatalogBaseType( wxXmlNode* ele, CatalogBaseType type )
+    {
+        return !CatalogBaseNames[ type ].Cmp( ele->GetName( ) );
     }
+
+    void InitCatalogDefs( )
+    {
+
+    }
+
+
 
     wxXmlNode* InsertEntry( wxXmlNode* sibling, wxXmlNode* child, bool after )
     {
@@ -374,15 +337,42 @@ namespace Catalog {
         return newChild;
     }
 
+    wxXmlNode* MoveEntry( wxXmlNode* newParent, wxXmlNode* child )
+    {
+        if ( newParent == child )
+        {
+            // can't be a child of itself
+            return ( wxXmlNode* ) 0;
+        }
+
+        wxXmlNode* parent = newParent->GetParent( );
+        while ( parent )
+        {
+            if ( child == parent )
+            {
+                // child can't be an ancestor of itself
+                return ( wxXmlNode* ) 0;
+            }
+            parent = parent->GetParent( );
+        }
+        // Make a copy of the old child and insert it
+        wxXmlNode* newChildNode = new wxXmlNode( *child );
+        wxXmlNode* newChild = newChildNode;
+        newParent->AddChild( newChild );
+
+        parent = child->GetParent( );
+        parent->RemoveChild( child );
+        return newChild;
+    }
 
     void SortData( wxXmlNode* destNode, wxXmlNode* parent )
     {
-        wxString name = parent->GetAttribute( DT_XMLDataNames[ DT_Name ] );
+        wxString name = parent->GetAttribute( XMLDataNames[ DT_Name ] );
 
         wxXmlNode* child = parent->GetChildren( );
         while ( child )
         {
-            wxString name = child->GetAttribute( DT_XMLDataNames[ DT_Name ] );
+            wxString name = child->GetAttribute( XMLDataNames[ DT_Name ] );
 
             if ( !CatalogBaseNames[ NT_Entry ].Cmp( child->GetName( ) ) )
             {
@@ -399,17 +389,4 @@ namespace Catalog {
         }
     }
 
-    CatalogBaseType FindCatalogBaseType( wxXmlNode* element )
-    {
-        wxString name = element->GetName( );
-
-        for ( int i = 0; i < NT_NbrTypes; i++ )
-        {
-            if ( !name.Cmp( CatalogBaseNames[ i ] ) )
-            {
-                return ( CatalogBaseType ) i;
-            }
-        }
-        return ( CatalogBaseType ) -1;
-    };
 }

@@ -20,7 +20,7 @@
  * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
- **************************************************/
+ */
 #include "wx/wxprec.h"
 
 #ifdef __BORLANDC__
@@ -33,6 +33,7 @@
 
 #include "utils/Font.h"
 #include "utils/XMLUtilities.h"
+
 
 namespace Utils {
 
@@ -57,7 +58,7 @@ namespace Utils {
     /**
      * @brief Destroy the Font object
      *
-     **************************************************/
+     */
     Font::~Font( ) { };
 
 
@@ -92,20 +93,20 @@ namespace Utils {
         m_color = wxTheColourDatabase->Find( colorStr );
     };
 
-    Design::AT_FontFamilyType Font::GetFamily( )
-    {
-        return  Design::GetATFamily( m_font.GetFamily( ) );
-    };
+    // Design::FontFamilyType Font::GetFamily( )
+    // {
+    //     return  Design::GetFamily( m_font.GetFamily( ) );
+    // };
 
     wxString Font::GetNativeInfoStr( )
     {
         return m_font.GetNativeFontInfoDesc( );
     };
 
-    Design::AT_FontWeightType Font::GetWeight( )
-    {
-        return  Design::GetATWeight( m_font.GetWeight( ) );
-    };
+    // Design::FontWeightType Font::GetWeight( )
+    // {
+    //     return  Design::GetATWeight( m_font.GetWeight( ) );
+    // };
 
     int Font::GetPointSize( )
     {
@@ -122,9 +123,9 @@ namespace Utils {
     //     return m_font.GetFamilyString( );
     // };
 
-    // Design::AT_FontStyleType Font::GetStyle( )
+    // Design::FontStyleType Font::GetStyle( )
     // {
-    //     return  Design::GetATStyle( m_font.GetStyle( ) );
+    //     return  Design::GetStyle( m_font.GetStyle( ) );
     // };
 
     bool Font::IsEqual( wxFont font, wxColor color )
@@ -164,13 +165,13 @@ namespace Utils {
         return m_count;
     }
 
-    void Font::SaveFont( wxXmlNode* parent, Design::AT_FontUsageType type )
+    void Font::SaveFont( wxXmlNode* parent, Design::FontUsageType type )
     {
         wxXmlNode* child = Utils::NewNode( parent, Design::AlbumBaseNames[ Design::AT_Font ] );
         if ( child )
         {
             child->AddAttribute( Design::AttrNameStrings[ Design::AT_FontType ],
-                Design::AT_FontUsageTypeStrings[ type ] );
+                Design::FontUsageTypeStrings[ type ] );
             child->AddAttribute( Design::AttrNameStrings[ Design::AT_NativeFontString ],
                 m_font.GetNativeFontInfoDesc( ) );
             child->AddAttribute( Design::AttrNameStrings[ Design::AT_FontColor ],

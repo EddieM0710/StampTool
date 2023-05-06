@@ -20,7 +20,7 @@
  * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
- **************************************************/
+ */
 
 
 #include "wx/wxprec.h"
@@ -47,7 +47,9 @@
 #include "gui/FontPickerHelper.h"
 #include "design/Album.h"
 #include "utils/StampList.h"
+#include "utils/Settings.h"
 #include "Defs.h"
+#include "utils/FontList.h"
 
 
  /*
@@ -383,10 +385,10 @@ void StampDetailsDialog::UpdateControls( )
     SetName( m_stamp->GetAttrStr( Design::AT_Name ) );
     SetShowNbr( m_stamp->GetShowNbr( ) );
     SetShowTitle( m_stamp->GetShowTitle( ) );
-    SetNbrFont( m_stamp->GetFont( Design::AT_NbrFontType ) );
-    SetNameFont( m_stamp->GetFont( Design::AT_NameFontType ) );
-    SetNbrColor( m_stamp->GetColor( Design::AT_NbrFontType ) );
-    SetNameColor( m_stamp->GetColor( Design::AT_NameFontType ) );
+    SetNbrFont( m_stamp->GetNbrFrame( )->GetFont( ) );
+    SetNameFont( m_stamp->GetNameFrame( )->GetFont( ) );
+    SetNbrColor( m_stamp->GetNbrFrame( )->GetColor( ) );
+    SetNameColor( m_stamp->GetNameFrame( )->GetColor( ) );
     m_stamp->GetTitleLayoutLocation( );
 
 
@@ -398,7 +400,7 @@ void StampDetailsDialog::SetupDialog( wxTreeItemId id )
     if ( id.IsOk( ) )
     {
         m_designTreeID = id;
-        DesignTreeItemData* data = ( DesignTreeItemData* ) GetDesignTreeCtrl( )->GetItemData( m_designTreeID );
+        DesignTreeItemData* data = ( DesignTreeItemData* ) GetAlbumTreeCtrl( )->GetItemData( m_designTreeID );
         m_stamp = ( Design::Stamp* ) data->GetNodeElement( );
         UpdateControls( );
 
@@ -419,7 +421,7 @@ void StampDetailsDialog::RefreshFromCatalog( )
 {
     if ( m_designTreeID.IsOk( ) )
     {
-        DesignTreeItemData* data = ( DesignTreeItemData* ) GetDesignTreeCtrl( )->GetItemData( m_designTreeID );
+        DesignTreeItemData* data = ( DesignTreeItemData* ) GetAlbumTreeCtrl( )->GetItemData( m_designTreeID );
 
         Utils::StampLink* link = data->GetStampLink( );
         if ( link )
@@ -437,7 +439,7 @@ void StampDetailsDialog::RefreshFromCatalog( )
                 SetCatNbr( stamp.GetID( ) );
                 wxString label;
                 label = GetCatNbr( ) + " - " + GetName( );
-                GetDesignTreeCtrl( )->SetItemText( m_designTreeID, label );
+                GetAlbumTreeCtrl( )->SetItemText( m_designTreeID, label );
             }
         }
     }
@@ -652,8 +654,8 @@ void StampDetailsDialog::OnOkClick( wxCommandEvent& event )
     m_stamp->SetShowNbr( GetShowNbr( ) );
     m_stamp->SetShowTitle( GetShowTitle( ) );
 
-    m_stamp->SetFont( Design::AT_NameFontType, GetNameFont( ), GetNameColor( ) );
-    m_stamp->SetFont( Design::AT_NameFontType, GetNbrFont( ), GetNbrColor( ) );
+    m_stamp->GetNameFrame( )->SetFont( GetNameFont( ), GetNameColor( ) );
+    m_stamp->GetNameFrame( )->SetFont( GetNbrFont( ), GetNbrColor( ) );
 
     event.Skip( );
 }
@@ -693,7 +695,7 @@ void StampDetailsDialog::OnDefaultRadioButtonSelected( wxCommandEvent& event )
 
 void StampDetailsDialog::OnNbrDefaultClick( wxCommandEvent& event )
 {
-    m_stamp->MakeDefaultFont( Design::AT_NbrFontType );
+    m_stamp->GetNbrFrame( )->MakeDefaultFont( );
     int ndx = Design::GetAlbum( )->GetFontNdx( Design::AT_NbrFontType );
     Utils::FontList* fontList = GetFontList( );
     wxFont font = fontList->GetFont( ndx );

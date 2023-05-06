@@ -20,7 +20,7 @@
  * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
- **************************************************/
+ */
 
 #ifndef AlbumVolumeArray_H
 #define AlbumVolumeArray_H
@@ -38,30 +38,72 @@ namespace Design {
 
     class AlbumVolume;
 
+    int WayToSort( Design::AlbumVolume* sect1, Design::AlbumVolume* sect2 );
+
     class AlbumList
     {
+
     public:
 
+        ///  @brief Construct a new Album List object
+        ///  
         AlbumList( ) {
             m_albumVolumeArray.clear( );
             m_albumVolumeNdx = -1;
         };
+
+        ///  @brief Destroy the Album List object
+        ///  
         ~AlbumList( ) { };
-        bool IsOK( );
-        Design::AlbumVolume* NewAlbumVolume( );
-        Design::AlbumVolume* GetAlbumVolume( );
-        void SaveAlbums( );
-        void LoadAlbums( );
+
+        ///  @brief 
+        ///  
+        ///  @return true 
+        ///  @return false 
         bool ClearAlbumVolumeArray( );
-        wxArrayString& GetVolumeNameStrings( ) { return m_albumNameStrings; };
-        void SetAlbumVolumeNdx( int i );
+
+        ///  @brief Get the Album Volume object
+        ///  
+        ///  @return Design::AlbumVolume* 
+        Design::AlbumVolume* GetAlbumVolume( );
+
+        ///  @brief Get the Album Volume Array object//.
+
+        ///  
+        ///  @return Design::AlbumVolumeArray* 
         Design::AlbumVolumeArray* GetAlbumVolumeArray( ) { return &m_albumVolumeArray; };
+
+        ///  @brief Get the Volume Name Strings object
+        ///  
+        ///  @return wxArrayString& 
+        wxArrayString& GetVolumeNameStrings( ) { return m_albumNameStrings; };
+
+        ///  @brief 
+        ///  
+        ///  @return true 
+        ///  @return false 
+        bool IsOK( );
+
+        ///  @brief 
+        ///  
+        void LoadAlbums( );
+
+        ///  @brief 
+        ///  
+        ///  @return Design::AlbumVolume* 
+        Design::AlbumVolume* NewAlbumVolume( );
+
+        void SaveAlbums( );
+
+        ///  @brief Set the Album Volume Ndx object
+        ///  
+        ///  @param i 
+        void SetAlbumVolumeNdx( int i );
 
     private:
         Design::AlbumVolumeArray m_albumVolumeArray;
         int m_albumVolumeNdx;
         wxArrayString m_albumNameStrings;
-
 
     };
 }

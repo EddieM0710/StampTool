@@ -25,41 +25,13 @@
 #ifndef _FILECREATEDIALOG_H_
 #define _FILECREATEDIALOG_H_
 
-
-/*
- * Includes
- */
-
 #include "gui/GuiDefs.h"
-
-;
-//  includes
-//  includes
-
-/*
- * Forward declarations
- */
-
- //  forward declarations
- //  forward declarations
-
- /*
-  * Control identifiers
-  */
-
-  //  control identifiers
 
 #define SYMBOL_FILECREATEDIALOG_STYLE wxCAPTION | wxRESIZE_BORDER | wxSYSTEM_MENU | wxCLOSE_BOX | wxTAB_TRAVERSAL
 #define SYMBOL_FILECREATEDIALOG_TITLE _( "Select file and directory" )
 #define SYMBOL_FILECREATEDIALOG_IDNAME ID_FILECREATEDIALOG
 #define SYMBOL_FILECREATEDIALOG_SIZE wxSize( 600, 300 )
 #define SYMBOL_FILECREATEDIALOG_POSITION wxDefaultPosition
-//  control identifiers
-
-
-/*
- * FileCreateDialog class declaration
- */
 
 class FileCreateDialog : public wxDialog
 {
@@ -68,44 +40,91 @@ class FileCreateDialog : public wxDialog
 
 public:
 
-    // enum FileCreateDialogGuiDefs
-    // {
-    // };
-
-
+    ///  @brief Construct a new File Create Dialog object
+    ///  
     FileCreateDialog( );
+
+    ///  @brief Construct a new File Create Dialog object
+    ///  
+    ///  @param parent 
+    ///  @param id 
+    ///  @param caption 
+    ///  @param pos 
+    ///  @param size 
+    ///  @param style 
     FileCreateDialog( wxWindow* parent, wxWindowID id = SYMBOL_FILECREATEDIALOG_IDNAME, const wxString& caption = SYMBOL_FILECREATEDIALOG_TITLE, const wxPoint& pos = SYMBOL_FILECREATEDIALOG_POSITION, const wxSize& size = SYMBOL_FILECREATEDIALOG_SIZE, long style = SYMBOL_FILECREATEDIALOG_STYLE );
 
-
-    bool Create( wxWindow* parent, wxWindowID id = SYMBOL_FILECREATEDIALOG_IDNAME, const wxString& caption = SYMBOL_FILECREATEDIALOG_TITLE, const wxPoint& pos = SYMBOL_FILECREATEDIALOG_POSITION, const wxSize& size = SYMBOL_FILECREATEDIALOG_SIZE, long style = SYMBOL_FILECREATEDIALOG_STYLE );
-
-
+    ///  @brief Destroy the File Create Dialog object
+    ///  
     ~FileCreateDialog( );
 
+    ///  @brief 
+    ///  
+    ///  @param parent 
+    ///  @param id 
+    ///  @param caption 
+    ///  @param pos 
+    ///  @param size 
+    ///  @param style 
+    ///  @return true 
+    ///  @return false 
+    bool Create( wxWindow* parent, wxWindowID id = SYMBOL_FILECREATEDIALOG_IDNAME, const wxString& caption = SYMBOL_FILECREATEDIALOG_TITLE, const wxPoint& pos = SYMBOL_FILECREATEDIALOG_POSITION, const wxSize& size = SYMBOL_FILECREATEDIALOG_SIZE, long style = SYMBOL_FILECREATEDIALOG_STYLE );
 
-    void Init( );
-
-
+    ///  @brief Create a Controls object
+    ///  
     void CreateControls( );
 
-    //  FileCreateDialog event handler declarations
+    ///  @brief Get the Path object
+    ///  
+    ///  @return wxString 
+    wxString GetPath( );
 
-        ///   wxID_CANCEL
+    ///  @brief Get the File object
+    ///  
+    ///  @return wxString 
+    wxString GetFile( );
+
+    ///  @brief Get the Dir object
+    ///  
+    ///  @return wxString 
+    wxString GetDir( );
+
+    ///  @brief 
+    ///  
+    void Init( );
+
+    ///  @brief 
+    ///  
+    ///  @param event 
     void OnCancelClick( wxCommandEvent& event );
+
+    ///  @brief 
+    ///  
+    ///  @param event 
     void OnOKClick( wxCommandEvent& event );
 
-
-
-    static bool ShowToolTips( );
-    wxString GetPath( );
-    wxString GetFile( );
-    wxString GetDir( );
+    ///  @brief Set the Default Directory object
+    ///  
+    ///  @param str 
     void SetDefaultDirectory( wxString str ) { m_defaultDirectory = str; m_fileCtrl->SetDirectory( str ); };
+
+    ///  @brief Set the Default Filename object
+    ///  
+    ///  @param str 
     void SetDefaultFilename( wxString str ) { m_defaultFilename = str; m_fileCtrl->SetFilename( str ); };
+
+    ///  @brief Set the Wild Card object
+    ///  
+    ///  @param str 
     void SetWildCard( wxString str ) { m_wildCard = str; m_fileCtrl->SetWildcard( str ); };
 
-    //  FileCreateDialog member variables
-    //  FileCreateDialog member variables
+    ///  @brief 
+    ///  
+    ///  @return true 
+    ///  @return false 
+    static bool ShowToolTips( );
+
+private:
     wxString m_path;
     wxString m_file;
     wxString m_dir;

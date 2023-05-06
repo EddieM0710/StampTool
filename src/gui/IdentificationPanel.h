@@ -20,7 +20,7 @@
  * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
- **************************************************/
+ */
 #ifndef _IDENTIFICATIONPANEL_H_
 #define _IDENTIFICATIONPANEL_H_
 
@@ -61,11 +61,13 @@ public:
         ID_EDITCHECKBOX
     };
 
-    /**
-     * @brief Default Constructor a new IdentificationPanel object
-     * @details Must be used in conjunction with Create.
-     *
-     **************************************************/
+    
+
+        /**
+         * @brief Default Constructor a new IdentificationPanel object
+         * @details Must be used in conjunction with Create.
+         *
+         */
     IdentificationPanel( );
 
     /**
@@ -77,7 +79,7 @@ public:
      * @param  size	The panel size. The value wxDefaultSize indicates a default size, chosen by either the windowing system or wxWidgets, depending on platform.
      * @param  style	The window style.
      * @see wxPanel.
-     **************************************************/
+     */
     IdentificationPanel( wxWindow* parent,
         wxWindowID id = SYMBOL_IDENTIFICATIONPANEL_IDNAME,
         const wxPoint& pos = SYMBOL_IDENTIFICATIONPANEL_POSITION,
@@ -95,7 +97,7 @@ public:
      * @param  style	The window style.
      * @return bool
      *
-     **************************************************/
+     */
     bool Create( wxWindow* parent,
         wxWindowID id = SYMBOL_IDENTIFICATIONPANEL_IDNAME,
         const wxPoint& pos = SYMBOL_IDENTIFICATIONPANEL_POSITION,
@@ -110,28 +112,28 @@ public:
     /**
      * @brief Creates the controls and sizers
      *
-     **************************************************/
+     */
     void CreateControls( );
 
     /**
     * @brief   ID_STATUSCHOICE
     *
     * @param event   Contains information about command events
-    **************************************************/
+    */
     void OnStatuschoiceSelected( wxCommandEvent& event );
 
     /**
      * @brief    ID_EMISSIONCHOICE
      *
      * @param event   Contains information about command events
-     **************************************************/
+     */
     void OnEmissionchoiceSelected( wxCommandEvent& event );
 
     /**
      * @brief   ID_FORMATCHOICE
      *
      * @param event   Contains information about command events
-     **************************************************/
+     */
     void OnFormatchoiceSelected( wxCommandEvent& event );
 
     void OnTextctrlTextUpdated( wxCommandEvent& event );
@@ -145,7 +147,7 @@ public:
      * @brief ShowToolTips
      *
      * @return bool
-     **************************************************/
+     */
     static bool ShowToolTips( );
 
     /**
@@ -153,7 +155,7 @@ public:
      *
      * @param ctrl  pointer to choice control to set
      * @param str   value to set the choice to.
-     **************************************************/
+     */
     void SetChoice( wxChoice* ctrl, wxString str );
 
     /**
@@ -161,22 +163,26 @@ public:
      *
      * @param ctrl  pointer to choice control to set
      * @param ndx  selection index of the choice
-     **************************************************/
+     */
     void SetChoice( wxChoice* ctrl, int ndx );
 
     /**
      * @brief Set the Stamp object
      *
      * @param stamp
-     **************************************************/
+     */
     void UpdatePanel( );//Catalog::Entry* stamp );
     void UpdateStampValue( Catalog::DataTypes dt, LabeledTextBox* textBox );
 
     /**
      * @brief
      *
-     **************************************************/
+     */
     void UpdateStatus( );
+
+    
+
+
 
 private:
     wxCheckBox* m_editCheckbox;

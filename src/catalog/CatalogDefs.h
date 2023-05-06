@@ -20,7 +20,7 @@
  * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
- **************************************************/
+ */
 
 #ifndef CatalogDefs_H
 #define CatalogDefs_H
@@ -31,13 +31,12 @@
 
 class wxXmlNode;
 
+
 namespace Catalog {
 
     class CatalogVolume;
 
-
     /// @enum CatalogBaseType
-    /// 
     ///  @brief Enum defining Entry node types. One of NT_Catalog = 0, NT_Country, NT_Period,
     ///  NT_Decade, NT_Year, NT_Emission, NT_Status, NT_Condition, NT_Entry,
     ///  NT_Specimen, NT_CatalogCode, NT_None
@@ -58,17 +57,36 @@ namespace Catalog {
         NT_NbrTypes
     } CatalogBaseType;
 
-    /// @enum PeriodType
+    /// @enum  
+   ///  @brief Enum defining catalog code data types;
     /// 
-    /// @brief Enum defining periods --
-    /// PT_Antique, PT_Classical, PT_Modern, 
+    ///  This represents data for catalog code entry. 
     typedef enum
     {
-        PT_Antique,
-        PT_Classical,
-        PT_Modern,
-        PT_NbrTypes
-    } PeriodType;
+        CC_ID,
+        CC_Country,
+        CC_Catalog,
+        CC_NbrTypes
+    } CatalogCodeTypes;
+
+    /// @enum CheckedStatusType
+    ///  @brief Enum defining the status of a given entry.
+    typedef enum
+    {
+        ST_Unchecked = 0,
+        ST_Checked,
+        ST_NbrCheckedStatusTypes
+    } CheckedStatusType;
+
+    ///  @enum  ClassificationTypes
+    /// @brief Valid values of Classification Type. One of CT_Title = 0, CT_PreferredCatalog, CT_ImageDirectory,
+    typedef enum
+    {
+        CT_Title = 0,
+        CT_PreferredCatalog,
+        CT_ImageDirectory,
+        CT_NbrTypes
+    } ClassificationTypes;
 
     ///  @enum DataTypes
     ///  @brief Enum defining data types; i.e., fields in a entry. One of DT_ID_Nbr = 0, DT_Name,
@@ -110,109 +128,6 @@ namespace Catalog {
         DT_NbrTypes
     } DataTypes;
 
-
-
-    ///  @enum  ClassificationTypes
-    /// @brief Valid values of Classification Type. One of CT_Title = 0, CT_PreferredCatalog, CT_ImageDirectory,
-    typedef enum
-    {
-        CT_Title = 0,
-        CT_PreferredCatalog,
-        CT_ImageDirectory,
-        CT_NbrTypes
-    } ClassificationTypes;
-
-    ///  @brief Strings of ClassificationTypes
-    ///  
-    extern  const wxString CT_Names[ CT_NbrTypes ];
-
-    /// @enum  ItemDataTypes
-    /// @brief Enum defining item data types;
-    /// 
-    /// This represents data kept for actual physical stamps in the collection.
-    /// One of IDT_Type, IDT_Condition, IDT_Value, IDT_Location, IDT_Remarks,   
-    typedef enum
-    {
-        IDT_Type,
-        IDT_Condition,
-        IDT_Value,
-        IDT_Location,
-        IDT_Remarks,
-        IDT_NbrTypes
-    } ItemDataTypes;
-
-    /// @enum  
-   ///  @brief Enum defining catalog code data types;
-    /// 
-    ///  This represents data for catalog code entry. 
-    typedef enum
-    {
-        CC_ID,
-        CC_Country,
-        CC_Catalog,
-        CC_NbrTypes
-    } CatalogCodeTypes;
-
-    extern const wxString CC_CatalogCodeNames[ CC_NbrTypes ];
-
-    /// @enum PeriodType
-    ///  @brief Enum defining the status of a given entry.
-    typedef enum
-    {
-        ST_Unchecked = 0,
-        ST_Checked,
-        ST_NbrCheckedStatusTypes
-    } CheckedStatusType;
-
-    /// @brief Strings used for StatusTypes enum
-    extern const wxString ST_CheckedStatusStrings[ ST_NbrCheckedStatusTypes ];
-
-    /// @enum ST_NbrInventoryStatusTypes
-    ///  @brief  enum for stamp status in collection. One of: ST_None = 0, ST_Missing,
-    ///  ST_Ordered, ST_Own, ST_OwnVariant, ST_Exclude
-    typedef enum
-    {
-        ST_None = 0,
-        ST_Missing,
-        ST_Ordered,
-        ST_Own,
-        ST_OwnVariant,
-        ST_Exclude,
-        ST_NbrInventoryStatusTypes
-    } InventoryStatusType;
-
-    ///  @brief loop through the inventory status and find one with the name name.
-    ///  
-    ///  @param name 
-    ///  @return InventoryStatusType 
-    InventoryStatusType FindStatusType( wxString name );
-
-    /// @enum FormatType
-    /// @brief Enum defining the format of a entry.
-    /// One of: FT_FormatUnknown = 0, FT_Stamp, FT_Se_tenant, FT_Mini_Sheet, FT_Souvenir_Sheet,
-    /// FT_Booklet, FT_Booklet_Pane, FT_Gutter_Pair, FT_Stamp_with_Attached_Label, FT_Tete_Beche,
-    typedef enum
-    {
-        FT_FormatUnknown = 0,
-        FT_Stamp,
-        FT_Se_tenant,
-        FT_Mini_Sheet,
-        FT_Souvenir_Sheet,
-        FT_Booklet,
-        FT_Booklet_Pane,
-        FT_Gutter_Pair,
-        FT_Stamp_with_Attached_Label,
-        FT_Tete_Beche,
-        FT_NbrTypes
-    } FormatType;
-
-
-    ///  @brief loop through the format types and find one with the name name.
-    ///  
-    ///  @param name 
-    ///  @return FormatType 
-    FormatType FindFormatType( wxString name );
-
     /// @enum EmissionType
     ///  @brief enum for the stamp emission.  One of: 
     ///  ET_Unknown = 0, ET_Commemorative, ET_Definitive, ET_HuntingPermit, ET_Revenue,
@@ -251,16 +166,53 @@ namespace Catalog {
         ET_NbrTypes
     } EmissionType;
 
-    ///  @brief string representation of Emission types indexed by Emission Type
-    extern const wxString ET_EmissionStrings[ ET_NbrTypes ];
+    /// @enum FormatType
+    /// @brief Enum defining the format of a entry.
+    /// One of: FT_FormatUnknown = 0, FT_Stamp, FT_Se_tenant, FT_Mini_Sheet, FT_Souvenir_Sheet,
+    /// FT_Booklet, FT_Booklet_Pane, FT_Gutter_Pair, FT_Stamp_with_Attached_Label, FT_Tete_Beche,
+    typedef enum
+    {
+        FT_FormatUnknown = 0,
+        FT_Stamp,
+        FT_Se_tenant,
+        FT_Mini_Sheet,
+        FT_Souvenir_Sheet,
+        FT_Booklet,
+        FT_Booklet_Pane,
+        FT_Gutter_Pair,
+        FT_Stamp_with_Attached_Label,
+        FT_Tete_Beche,
+        FT_NbrTypes
+    } FormatType;
 
+    /// @enum ST_NbrInventoryStatusTypes
+    ///  @brief  enum for stamp status in collection. One of: ST_None = 0, ST_Missing,
+    ///  ST_Ordered, ST_Own, ST_OwnVariant, ST_Exclude
+    typedef enum
+    {
+        ST_None = 0,
+        ST_Missing,
+        ST_Ordered,
+        ST_Own,
+        ST_OwnVariant,
+        ST_Exclude,
+        ST_NbrInventoryStatusTypes
+    } InventoryStatusType;
 
-    ///  @brief loop through the Emission types and find one with the name name.
-    ///  
-    ///  @param name 
-    ///  @return EmissionType 
-    EmissionType FindEmissionType( wxString name );
-
+    /// @enum  ItemDataTypes
+    /// @brief Enum defining item data types;
+    /// 
+    /// This represents data kept for actual physical stamps in the collection.
+    /// One of IDT_Type, IDT_Condition, IDT_Value, IDT_Location, IDT_Remarks,   
+    typedef enum
+    {
+        IDT_Type,
+        IDT_Condition,
+        IDT_Value,
+        IDT_Location,
+        IDT_Remarks,
+        IDT_NbrTypes
+    } ItemDataTypes;
 
     /// @enum MergeOverwriteQuery
     /// @brief Enum for specifying file load process.One of: MO_Cancel = 0,
@@ -272,7 +224,6 @@ namespace Catalog {
         MO_Overwrite,
         MO_NbrTypes
     } MergeOverwriteQuery;
-
 
     /// @enum MergeProcedure
     /// @brief Enum specifying merge process. Oe of: MP_AddMissing = 0, 
@@ -288,60 +239,53 @@ namespace Catalog {
         MP_NbrTypes
     } MergeProcedure;
 
-    extern const wxString ST_InventoryStatusStrings[ ST_NbrInventoryStatusTypes ];
+    /// @enum PeriodType
+        /// @brief Enum defining periods --
+    /// PT_Antique, PT_Classical, PT_Modern, 
+    typedef enum
+    {
+        PT_Antique,
+        PT_Classical,
+        PT_Modern,
+        PT_NbrTypes
+    } PeriodType;
 
-    /// @brief Ascii strings used for FormatTypes enum
-    extern const wxString FT_FormatStrings[ FT_NbrTypes ];
-
-    /// @brief Ascii string for each DataType enum
-    extern const wxString DT_DataNames[ DT_NbrTypes ];
-
-    /// @brief Ascii string for each XMLDataType enum. These are the same as
-    /// DT_DataNames except they have no spaces in the string since they are used for
-    /// XML element names.
-    extern const wxString DT_XMLDataNames[ DT_NbrTypes ];
-
-    /// @brief Ascii string for each ItemDataType enum
-    extern const wxString ItemDataNames[ IDT_NbrTypes ];
-
-    /// @brief Ascii string for the cataloge code enum
-    extern const wxString CC_CatalogCodeNames[ CC_NbrTypes ];
 
     /// @brief Ascii string for each node string.
     /// @note This is the name used for the tree node; not the wxXmlNode node.
     extern  wxString CatalogBaseNames[ NT_NbrTypes ];
 
+    /// @brief Ascii string for the cataloge code enum
+    extern const wxString CatalogCodeNames[ CC_NbrTypes ];
 
-    /**
-     * @brief Look thru all the CatalogBaseNames to find "name"
-     * and return the corresponding CatalogBaseType enum
-     * @param   name : name of the node to find the Type of
-     * @return { CatalogBaseType|    :  enum or -1 if not found.
-     **************************************************/
-    CatalogBaseType FindCatalogBaseType( wxString name );
+    /// @brief Strings used for StatusTypes enum
+    extern const wxString CheckedStatusStrings[ ST_NbrCheckedStatusTypes ];
 
-    //  CatalogVolume* GetCatalogVolume( void );
-
-
-  ///  @brief Null right now
-  ///  
-    void InitCatalogDefs( );
-
-    /**
-     * @brief is the specified wxXmlNode of specified type
-     *
-     * @param ele  element of interest
-     * @param type  element type
-     * @return true  if a match
-     **************************************************/
-    bool IsCatalogBaseType( wxXmlNode* ele, CatalogBaseType type );
-
-
-    ///  @brief Get the catalog base type of thid node.
+    ///  @brief Strings of ClassificationTypes
     ///  
-    ///  @param element 
-    ///  @return CatalogBaseType 
-    CatalogBaseType FindCatalogBaseType( wxXmlNode* element );
+    extern  const wxString ClassificationNames[ CT_NbrTypes ];
+
+    /// @brief Ascii string for each DataType enum
+    extern const wxString DataTypeNames[ DT_NbrTypes ];
+
+    ///  @brief string representation of Emission types indexed by Emission Type
+    extern const wxString EmissionStrings[ ET_NbrTypes ];
+
+    /// @brief Ascii strings used for FormatTypes enum
+    extern const wxString FormatStrings[ FT_NbrTypes ];
+
+    extern const wxString InventoryStatusStrings[ ST_NbrInventoryStatusTypes ];
+
+    /// @brief Ascii string for each ItemDataType enum
+    extern const wxString ItemDataNames[ IDT_NbrTypes ];
+
+    /// @brief Ascii string for each XMLDataType enum. These are the same as
+    /// DataTypeNames except they have no spaces in the string since they are used for
+    /// XML element names.
+    extern const wxString XMLDataNames[ DT_NbrTypes ];
+
+
+
 
     ///  @brief Find the place where the entry should go and adds it.
     ///  
@@ -350,12 +294,41 @@ namespace Catalog {
     ///  @param level 
     void AddEntry( wxXmlNode* parent, wxXmlNode* child, int level );
 
-    ///  @brief Moves a node to a new parent.
+    /**
+     * @brief Look thru all the CatalogBaseNames to find "name"
+     * and return the corresponding CatalogBaseType enum
+     * @param   name : name of the node to find the Type of
+     * @return { CatalogBaseType|    :  enum or -1 if not found.
+     */
+    CatalogBaseType FindCatalogBaseType( wxString name );
+
+    ///  @brief Get the catalog base type of thid node.
     ///  
-    ///  @param newParent 
-    ///  @param child 
-    ///  @return wxXmlNode* 
-    wxXmlNode* MoveEntry( wxXmlNode* newParent, wxXmlNode* child );
+    ///  @param element 
+    ///  @return CatalogBaseType 
+    CatalogBaseType FindCatalogBaseType( wxXmlNode* element );
+
+    ///  @brief loop through the Emission types and find one with the name name.
+    ///  
+    ///  @param name 
+    ///  @return EmissionType 
+    EmissionType FindEmissionType( wxString name );
+
+    ///  @brief loop through the format types and find one with the name name.
+    ///  
+    ///  @param name 
+    ///  @return FormatType 
+    FormatType FindFormatType( wxString name );
+
+    ///  @brief loop through the inventory status and find one with the name name.
+    ///  
+    ///  @param name 
+    ///  @return InventoryStatusType 
+    InventoryStatusType FindStatusType( wxString name );
+
+    ///  @brief Null right now
+    ///  
+    void InitCatalogDefs( );
 
     ///  @brief Inserts a node as a sibling
     ///  
@@ -365,13 +338,27 @@ namespace Catalog {
     ///  @return wxXmlNode* 
     wxXmlNode* InsertEntry( wxXmlNode* sibling, wxXmlNode* child, bool after = true );
 
+    /**
+     * @brief is the specified wxXmlNode of specified type
+     *
+     * @param ele  element of interest
+     * @param type  element type
+     * @return true  if a match
+     */
+    bool IsCatalogBaseType( wxXmlNode* ele, CatalogBaseType type );
+
+    ///  @brief Moves a node to a new parent.
+    ///  
+    ///  @param newParent 
+    ///  @param child 
+    ///  @return wxXmlNode* 
+    wxXmlNode* MoveEntry( wxXmlNode* newParent, wxXmlNode* child );
 
     ///  @brief Sorts the nodes.
     ///  
     ///  @param newRoot 
     ///  @param parent 
     void SortData( wxXmlNode* newRoot, wxXmlNode* parent );
-
 
 }
 

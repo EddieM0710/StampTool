@@ -24,7 +24,9 @@
 
 #include "wx/string.h"
 #include <wx/xml/xml.h>
-#include "gui/ToolData.h"
+#include "gui/StampToolFrame.h"
+ ////#include "gui/AppData.h"
+
 
 namespace Utils {
 
@@ -33,6 +35,7 @@ namespace Utils {
     class Project
     {
     public:
+
         Project( );
         ~Project( ) { if ( m_ProjectDoc ) { delete m_ProjectDoc; } };
 
@@ -52,7 +55,7 @@ namespace Utils {
         // void SetImagePath( wxString imagePath );
 
         //wxString GetCatalogFilename( );
-        void SetCatalogFilename( wxString catalogFilename );
+        //void SetCatalogFilename( wxString catalogFilename );
 
         wxString GetProjectCountryID( ) { return m_defaultCountryID; };
         void SetProjectCountryID( wxString str ) { m_defaultCountryID = str; };
@@ -65,13 +68,17 @@ namespace Utils {
         //Load the project xml attributes
         void LoadAttributes( wxXmlNode* thisObject );
 
+        void FileNewProject( wxString prjName );
+        void LoadData( );
+        void FileOpenProject( wxString filename );
+        void FileSaveProject( );
+        void FileSaveAsProject( wxString filename );
+
         // save the project to an xml file
         void Save( );
 
         // make the filename absolute if its not already
         wxString MakeFileAbsolute( wxString filename );
-
-        //inline ToolData* GetToolData( ){ return &m_toolData; };
 
         void SetDirty( bool state = true ) { m_dirty = state; };
         // Is project dirty?
@@ -83,7 +90,7 @@ namespace Utils {
         wxString m_outputFilename;
         wxString m_designFilename;
         //wxString m_imagePath;
-        wxString m_catalogFilename;
+        //wxString m_catalogFilename;
         wxString m_defaultCountryID;
         wxString m_defaultCatalogCode;
         bool m_dirty;

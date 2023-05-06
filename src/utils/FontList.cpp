@@ -20,7 +20,7 @@
  * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
- **************************************************/
+ */
 #include "wx/wxprec.h"
 
 #ifdef __BORLANDC__
@@ -40,85 +40,11 @@
 #include "utils/Settings.h"
 #include "gui/GuiUtils.h"
 
-
 namespace Utils {
 
     int FontCount = -1;
     int GetFontCount( ) { FontCount++; return FontCount; };
 
-    // int FontList::FindFont( FontMap& list, wxFont* font, wxColor color )
-    // { 
-    //     for ( int i = 0; i < list.size( ); i++ )
-    //     { 
-    //         if ( ( *font == *( list.at( i )->GetFont( ) ) )
-    //             && ( color == list.at( i )->GetColor( ) ) )
-    //             return i;
-    //     }
-    //     return -1;
-    // }
-
-    FontNdx::FontNdx( )
-    {
-        m_fontList = GetFontList( );
-        m_ndx = -1;
-    }
-
-    int FontNdx::Get( )
-    {
-        return m_ndx;
-    };
-
-    void FontNdx::Set( int ndx )
-    {
-        if ( m_fontList->IsValidFontNdx( ndx ) )
-        {
-            Font* font;
-            if ( IsOk( ) )
-            {
-                font = m_fontList->GetMyFont( m_ndx );
-                if ( ndx != m_ndx )
-                {
-                    if ( m_fontList->IsValidFontNdx( m_ndx ) )
-                    {
-                        int cnt = font->Decrement( );
-                        if ( cnt <= 0 )
-                        {
-                            m_fontList->Erase( m_ndx );
-                        }
-                    }
-                    m_ndx = ndx;
-                }
-                else
-                {
-                    int cnt = font->Increment( );
-                }
-            }
-            else
-            {
-                m_ndx = ndx;
-                font = m_fontList->GetMyFont( m_ndx );
-                int cnt = font->Increment( );
-            }
-        }
-    }
-
-    void FontNdx::MakeDefault( )
-    {
-        if ( m_fontList->IsValidFontNdx( m_ndx ) )
-        {
-            Font* font = m_fontList->GetMyFont( m_ndx );
-            if ( font )
-            {
-                int cnt = font->Decrement( );
-                if ( cnt <= 0 )
-                {
-                    m_fontList->Erase( m_ndx );
-                }
-            }
-        }
-        m_ndx = -1;
-
-    }
     void FontList::InitFonts( )
     {
         wxFont font;
@@ -141,10 +67,10 @@ namespace Utils {
 
     }
 
-    Design::AT_FontUsageType FontList::Load( wxXmlNode* fontNode, wxString nativeString, wxString color )
+    Design::FontUsageType FontList::Load( wxXmlNode* fontNode, wxString nativeString, wxString color )
     {
         wxString name = fontNode->GetAttribute( Design::AttrNameStrings[ Design::AT_FontType ] );
-        Design::AT_FontUsageType type = Design::FindFontUsageType( name );
+        Design::FontUsageType type = Design::FindFontUsageType( name );
 
         nativeString = fontNode->GetAttribute( Design::AttrNameStrings[ Design::AT_NativeFontString ] );
         color = fontNode->GetAttribute( Design::AttrNameStrings[ Design::AT_FontColor ] );
@@ -275,12 +201,12 @@ namespace Utils {
         return ( Font* ) 0;
     };
 
-    FontNdx FontList::LoadFont( wxXmlNode* parent, Design::AT_FontUsageType type )
+    FontNdx FontList::LoadFont( wxXmlNode* parent, Design::FontUsageType type )
     {
         FontNdx fontNdx;
         wxXmlNode* fontNode = FindFirstChildWithPropertyofValue( parent,
             Design::AttrNameStrings[ Design::AT_FontType ],
-            Design::AT_FontUsageTypeStrings[ type ] );
+            Design::FontUsageTypeStrings[ type ] );
         if ( fontNode )
         {
             wxString nativeString = fontNode->GetAttribute( Design::AttrNameStrings[ Design::AT_NativeFontString ] );
@@ -295,7 +221,7 @@ namespace Utils {
         }
         return fontNdx;
     }
-    void FontList::SaveFont( wxXmlNode* parent, FontNdx ndx, Design::AT_FontUsageType type )
+    void FontList::SaveFont( wxXmlNode* parent, FontNdx ndx, Design::FontUsageType type )
     {
         if ( IsValidFontNdx( ndx ) )
         {

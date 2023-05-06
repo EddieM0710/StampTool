@@ -20,7 +20,7 @@
  * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
- **************************************************/
+ */
 
 #include "wx/wxprec.h"
 
@@ -67,6 +67,7 @@ namespace Design
 //     { Icon_StampSouvenirSheet, Icon_StampSouvenirSheetSelected }, //    FT_Stamp_with_Attached_Label, 
 //     { Icon_StampBlock, Icon_StampBlockSelected } }; //   FT_Tete_Beche, 
 
+ 
 namespace Catalog
 {
 

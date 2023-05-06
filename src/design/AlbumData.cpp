@@ -20,38 +20,21 @@
  * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
- **************************************************/
-
-#include "gui/DesignTreeCtrl.h"
+ */
+#include "Defs.h"
+#include "gui/AlbumTreeCtrl.h"
  //#include "gui/FileCreateDialog.h"
 
 #include "utils/Settings.h"
 #include "utils/Project.h"
+#include "gui/StampToolFrame.h"
 
 #include "design/AlbumVolume.h"
 
 #include "design/AlbumData.h"
+
 namespace Design {
 
-    AlbumData::AlbumData( ToolData* toolData )
-    {
-        //       m_toolData = toolData;
-    };
-
-
-    Design::AlbumVolume* AlbumData::GetAlbumVolume( )
-    {
-        return m_albumList.GetAlbumVolume( );
-    }
-
-    Design::AlbumVolume* AlbumData::NewAlbumVolume( void )
-    {
-
-        m_designTreeCtrl->DeleteAllItems( );
-        GetToolData( )->GetStampAlbumCatalogLink( )->Clear( );
-
-        return m_albumList.NewAlbumVolume( );
-    }
 
     void AlbumData::FileOpen( wxString filename )
     {
@@ -59,25 +42,48 @@ namespace Design {
         LoadDesignVolumeFiles( );
         LoadDesignTree( );
     }
-    void AlbumData::LoadDesignVolumeFiles( )
-    {
-        m_albumList.LoadAlbums( );
 
-        //    NewAlbumVolume( );
-        //    //wxString albumFilename = m_project->GetDesignFilename( );
-        //    m_albumVolume->LoadXML( );
+    void AlbumData::FileSave( )
+    {
+        Design::AlbumVolume* volume = m_albumList.GetAlbumVolume( );
+        if ( volume )
+        {
+            volume->SaveXML( );
+        }
+    };
+
+    void AlbumData::FileSaveAs( wxString filename )
+    {
+        GetProject( )->SetDesignFilename( filename );
+        FileSave( );
+    };
+
+    Design::AlbumVolume* AlbumData::GetAlbumVolume( )
+    {
+        return m_albumList.GetAlbumVolume( );
     }
 
-
-    void AlbumData::LoadDesignTree( )
+    /// Load the Catalog and Design data then populate trees
+    void AlbumData::LoadData( )
     {
-        GetDesignTreeCtrl( )->LoadTree( );
+        LoadDesignVolumeFiles( );
+        LoadDesignTree( );
     }
 
     void AlbumData::LoadDefaultAlbumVolume( )
     {
-        //m_albumList.LoadAlbums( );
         GetAlbumVolume( )->LoadDefaultDocument( );
+    }
+
+    void AlbumData::LoadDesignTree( )
+    {
+        GetAlbumTreeCtrl( )->LoadTree( );
+    }
+
+    void AlbumData::LoadDesignVolumeFiles( )
+    {
+        m_albumList.LoadAlbums( );
+
     }
 
     void AlbumData::LoadNew( wxString designFileName )
@@ -89,28 +95,13 @@ namespace Design {
         SetDirty( false );
     }
 
-    void AlbumData::FileSave( )
+    Design::AlbumVolume* AlbumData::NewAlbumVolume( void )
     {
-        Design::AlbumVolume* volume = m_albumList.GetAlbumVolume( );
-        if ( volume )
-        {
-            //m_albumVolume->SaveXML( GetProject( )->GetDesignFilename( ) );
-            volume->SaveXML( );
-        }
-    };
 
-    void AlbumData::FileSaveAs( wxString filename )
-    {
-        GetProject( )->SetDesignFilename( filename );
-        FileSave( );
-    };
+        m_albumTreeCtrl->DeleteAllItems( );
+        GetStampAlbumCatalogLink( )->Clear( );
 
-
-    // Load the Catalog and Design data then populate trees
-    void AlbumData::LoadData( )
-    {
-        LoadDesignVolumeFiles( );
-        LoadDesignTree( );
+        return m_albumList.NewAlbumVolume( );
     }
 
 }

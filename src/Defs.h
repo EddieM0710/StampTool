@@ -20,66 +20,73 @@
  * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
- **************************************************/
+ */
 
 #ifndef Defs_H
 #define Defs_H
 
 #include <wx/string.h>
- //#include "gui/ToolData.h"
 #include <wx/gdicmn.h>
 
-class ToolData;
+class AppData;
 
-//#include "utils/Settings.h"
-//#include "utils/Project.h"
 #define MaxRecentEntries = 8
 
-//extern ToolData* m_toolData;
-
-extern bool Dirty;
-
-void SetDirty( bool state = true );
-bool IsDirty( );
-namespace Utils { class Project; };
-namespace Utils { class Settings; };
-class ToolData;
-class DesignTreeCtrl;
+class StampToolFrame;
+class AlbumTreeCtrl;
 class CatalogTreeCtrl;
 class AlbumImagePanel;
 namespace Design { class AlbumVolume; };
 namespace Design { class AlbumData; };
 namespace Utils { class FontList; };
+namespace Utils { class StampList; };
 namespace Catalog { class CatalogVolume; };
 namespace Catalog { class CatalogData; };
-/**
- * @brief Get the Settings data
- *
- * @return CatalogVolume*
- **************************************************/
-Utils::Settings* GetSettings( );
+namespace Utils { class Project; };
+namespace Utils { class Settings; };
 
-Utils::Project* GetProject( );
+extern bool Dirty;
+
+void SetDirty( bool state = true );
+bool IsDirty( );
+
+Design::AlbumData* GetAlbumData( );
+
+AlbumImagePanel* GetAlbumImagePanel( );
+
+CatalogTreeCtrl* GetAlbumPageTreeCtrl( );
+
+Design::AlbumVolume* GetAlbumVolume( );
+
+AlbumTreeCtrl* GetAlbumTreeCtrl( );
+
+AppData* GetAppData( );
+
+Catalog::CatalogData* GetCatalogData( );
+
+CatalogTreeCtrl* GetCatalogPageTreeCtrl( );
+
+Catalog::CatalogVolume* GetCatalogVolume( );
 
 Utils::FontList* GetFontList( );
 
-ToolData* GetToolData( );
-Design::AlbumData* GetAlbumData( );
-Catalog::CatalogData* GetCatalogData( );
+StampToolFrame* GetFrame( );
 
+Utils::Project* GetProject( );
 
-Design::AlbumVolume* GetAlbumVolume( );
-Catalog::CatalogVolume* GetCatalogVolume( );
-CatalogTreeCtrl* GetCatalogPageTreeCtrl( );
-CatalogTreeCtrl* GetAlbumPageTreeCtrl( );
-DesignTreeCtrl* GetDesignTreeCtrl( );
-AlbumImagePanel* GetAlbumImagePanel( );
+Utils::Settings* GetSettings( );
+
+Utils::StampList* GetStampAlbumCatalogLink( );
+
 
 #define RealPoint wxRealPoint  
 #define RealSize wxRealPoint 
 class RealRect
 {
 public:
+
+
+
     RealRect( RealPoint posR, RealPoint sizeR ) { pos = posR; size = sizeR; };
     RealRect( double x, double y, double width, double height ) { SetPosition( x, y ), SetSize( width, height );; };
     RealPoint GetPosition( ) { return pos; };
@@ -98,6 +105,11 @@ public:
     void SetHeight( double height ) { pos.y = height; };
     RealPoint pos;
     RealPoint size;
+
+
+
+
+
 };
 
 /**
@@ -105,7 +117,7 @@ public:
  *
  * @param  b
  * @return const wxString
- **************************************************/
+ */
 inline const wxString Bool2String( bool b )
 {
     return b ? "true" : "false";
@@ -117,7 +129,7 @@ inline const wxString Bool2String( bool b )
  * @param  str
  * @return true  if str == "true"
  * @return false   if str == "false" ( or anything else )
- **************************************************/
+ */
 inline const bool String2Bool( wxString str )
 {
     return str.CmpNoCase( "true" ) ? false : true;
@@ -126,7 +138,7 @@ inline const bool String2Bool( wxString str )
 /**
  * @brief Performs the initial instantiantion of all the sTart up data.
  *
- **************************************************/
+ */
 void InitDefs( );
 
 
@@ -136,8 +148,7 @@ void InitDefs( );
  * @param funct  call function
  * @param err  error string
  * @param fatal  exit on fatal
- **************************************************/
+ */
 void ReportError( wxString funct, wxString err, bool fatal = true );
-
 
 #endif

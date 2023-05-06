@@ -20,7 +20,7 @@
  * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
- **************************************************/
+ */
 
 
 #include "wx/wxprec.h"
@@ -37,7 +37,7 @@
 #include "gui/LabeledTextBox.h"
 #include "gui/IdentificationPanel.h"
 #include "gui/CatalogTreeCtrl.h"
-#include "gui/ToolData.h"
+//#include "gui/AppData.h"
 #include "gui/StampDescriptionPanel.h"
 #include "utils/Settings.h"
 #include "catalog/CatalogData.h"
@@ -146,12 +146,12 @@ void IdentificationPanel::CreateControls( )
         5 );
 
     wxArrayString m_statusStrings;
-    m_statusStrings.Add( Catalog::ST_InventoryStatusStrings[ Catalog::ST_None ] );
-    m_statusStrings.Add( Catalog::ST_InventoryStatusStrings[ Catalog::ST_Missing ] );
-    m_statusStrings.Add( Catalog::ST_InventoryStatusStrings[ Catalog::ST_Ordered ] );
-    m_statusStrings.Add( Catalog::ST_InventoryStatusStrings[ Catalog::ST_Own ] );
-    m_statusStrings.Add( Catalog::ST_InventoryStatusStrings[ Catalog::ST_OwnVariant ] );
-    m_statusStrings.Add( Catalog::ST_InventoryStatusStrings[ Catalog::ST_Exclude ] );
+    m_statusStrings.Add( Catalog::InventoryStatusStrings[ Catalog::ST_None ] );
+    m_statusStrings.Add( Catalog::InventoryStatusStrings[ Catalog::ST_Missing ] );
+    m_statusStrings.Add( Catalog::InventoryStatusStrings[ Catalog::ST_Ordered ] );
+    m_statusStrings.Add( Catalog::InventoryStatusStrings[ Catalog::ST_Own ] );
+    m_statusStrings.Add( Catalog::InventoryStatusStrings[ Catalog::ST_OwnVariant ] );
+    m_statusStrings.Add( Catalog::InventoryStatusStrings[ Catalog::ST_Exclude ] );
     m_status = new wxChoice( itemPanel1, ID_STATUSCHOICE, wxDefaultPosition,
         wxDefaultSize, m_statusStrings, 0 );
     m_status->SetStringSelection( _( "None" ) );
@@ -172,7 +172,7 @@ void IdentificationPanel::CreateControls( )
     wxArrayString m_emissionStrings;
     for ( int i = 0; i < Catalog::ET_NbrTypes; i++ )
     {
-        m_emissionStrings.Add( _( Catalog::ET_EmissionStrings[ i ] ) );
+        m_emissionStrings.Add( _( Catalog::EmissionStrings[ i ] ) );
     }
 
     m_emission = new wxChoice( itemPanel1, ID_EMISSIONCHOICE, wxDefaultPosition,

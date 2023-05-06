@@ -19,7 +19,7 @@
  * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  * *
- **************************************************/
+ */
 
 #ifndef CatalogBase_h
 #define CatalogBase_h
@@ -28,13 +28,13 @@
 #include "catalog/CatalogDefs.h"
 #include "wx/xml/xml.h"
 
-
 namespace Catalog {
     /// @brief Base class for all catalog objects. The catalog objects are
     /// initialy loaded from the catalog XML or from a csv file.
     class CatalogBase
     {
     protected:
+
         CatalogBase( ) { };
 
     public:
@@ -44,40 +44,19 @@ namespace Catalog {
         ///  @param ele 
         CatalogBase( wxXmlNode* ele ) { SetXMLCatNode( ele ); };
 
-
         ///  @brief Destroy the Catalog Base object
         ///  
         ~CatalogBase( ) { SetXMLCatNode( ( wxXmlNode* ) 0 ); };
-
-
-        ///  @brief Set the node type object
-        ///  
-        ///  @param type 
-        void SetNodeType( CatalogBaseType type ) { m_nodeType = type; };
-
-        ///  @brief Get the node type object
-        ///  
-        ///  @param type 
-        CatalogBaseType  GetNodeType( ) { return m_nodeType; };
-
 
         ///  @brief Get the XML Node of the object
         ///  
         ///  @return wxXmlNode* 
         wxXmlNode* GetCatXMLNode( ) { return m_catXMLNode; };
 
-
-        ///  @brief Set the XML Node of the object
-        ///  
-        ///  @param node 
-        void SetXMLCatNode( wxXmlNode* node ) { m_catXMLNode = node; };
-
-
         ///  @brief Get the First xml Child object of this node
         ///  
         ///  @return wxXmlNode* 
         wxXmlNode* GetFirstChild( ) { return m_catXMLNode->GetChildren( ); };
-
 
         ///  @brief Finds the attribute named name and returns its string value
         ///  
@@ -85,13 +64,22 @@ namespace Catalog {
         ///  @return wxString 
         wxString GetNodeAttrStr( wxString name );
 
-
         ///  @brief Finds the attribute named name and returns its double value
         ///  
         ///  @param name 
         ///  @return double 
         double GetNodeAttrDbl( wxString name );
 
+        ///  @brief Get the node type object
+        ///  
+        ///  @param type 
+        CatalogBaseType  GetNodeType( ) { return m_nodeType; };
+
+        ///  @brief Sanity check on object instantiation
+        ///  
+        ///  @return true 
+        ///  @return false 
+        virtual bool IsOK( ) = 0;
 
         ///  @brief  The attribute named name with val
         ///  
@@ -99,19 +87,21 @@ namespace Catalog {
         ///  @param val 
         void SetNodeAttrStr( wxString name, wxString val );
 
-
         ///  @brief Set the Node Attr Dbl object
         ///  
         ///  @param name 
         ///  @param val 
         void SetNodeAttrDbl( wxString name, double val );
 
-
-        ///  @brief Sanity check on object instantiation
+        ///  @brief Set the node type object
         ///  
-        ///  @return true 
-        ///  @return false 
-        virtual bool IsOK( ) = 0;
+        ///  @param type 
+        void SetNodeType( CatalogBaseType type ) { m_nodeType = type; };
+
+        ///  @brief Set the XML Node of the object
+        ///  
+        ///  @param node 
+        void SetXMLCatNode( wxXmlNode* node ) { m_catXMLNode = node; };
 
     private:
         wxXmlNode* m_catXMLNode;

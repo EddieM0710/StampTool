@@ -24,11 +24,6 @@
 #ifndef _GENERATELIST_H_
 #define _GENERATELIST_H_
 
-
-/*
- * Includes
- */
-
 #include "wx/grid.h"
 
 #include "Defs.h"
@@ -37,33 +32,18 @@
 #include "catalog/Entry.h"
 #include "utils/XMLUtilities.h"
 
- /*
-  * Forward declarations
-  */
-
-  //
 class wxGrid;
-//
-class GenerateListSettings;
-/*
- * Control identifiers
- */
 
- //
+class GenerateListSettings;
 
 #define SYMBOL_GENERATELIST_STYLE wxTAB_TRAVERSAL
 #define SYMBOL_GENERATELIST_TITLE _( "GenerateList" )
 #define SYMBOL_GENERATELIST_IDNAME ID_GENERATELIST
 #define SYMBOL_GENERATELIST_SIZE wxSize( 400, 500 )
 #define SYMBOL_GENERATELIST_POSITION wxDefaultPosition
-//
 
 
-/*
- * GenerateList class declaration
- */
-
-class GenerateList: public wxPanel
+class GenerateList : public wxPanel
 {
     DECLARE_DYNAMIC_CLASS( GenerateList )
         DECLARE_EVENT_TABLE( )
@@ -78,56 +58,116 @@ public:
     };
 
 
+    ///  @brief Construct a new Generate List object
+    ///  
     GenerateList( );
+
+    ///  @brief Construct a new Generate List object
+    ///  
+    ///  @param parent 
+    ///  @param id 
+    ///  @param pos 
+    ///  @param size 
+    ///  @param style 
     GenerateList( wxWindow* parent, wxWindowID id = SYMBOL_GENERATELIST_IDNAME, const wxPoint& pos = SYMBOL_GENERATELIST_POSITION, const wxSize& size = SYMBOL_GENERATELIST_SIZE, long style = SYMBOL_GENERATELIST_STYLE );
 
-
-    bool Create( wxWindow* parent, wxWindowID id = SYMBOL_GENERATELIST_IDNAME, const wxPoint& pos = SYMBOL_GENERATELIST_POSITION, const wxSize& size = SYMBOL_GENERATELIST_SIZE, long style = SYMBOL_GENERATELIST_STYLE );
-
-
+    ///  @brief Destroy the Generate List object
+    ///  
     ~GenerateList( );
 
+    ///  @brief 
+    ///  
+    ///  @param entry 
+    ///  @return true 
+    ///  @return false 
+    bool CheckEmission( Catalog::Entry* entry );
 
-    void Init( );
+    ///  @brief 
+    ///  
+    ///  @param entry 
+    ///  @return true 
+    ///  @return false 
+    bool CheckFormat( Catalog::Entry* entry );
 
+    ///  @brief 
+    ///  
+    ///  @param entry 
+    ///  @return true 
+    ///  @return false 
+    bool CheckStatus( Catalog::Entry* entry );
 
+    ///  @brief 
+    ///  
+    ///  @param parent 
+    ///  @param id 
+    ///  @param pos 
+    ///  @param size 
+    ///  @param style 
+    ///  @return true 
+    ///  @return false 
+    bool Create( wxWindow* parent, wxWindowID id = SYMBOL_GENERATELIST_IDNAME, const wxPoint& pos = SYMBOL_GENERATELIST_POSITION, const wxSize& size = SYMBOL_GENERATELIST_SIZE, long style = SYMBOL_GENERATELIST_STYLE );
+
+    ///  @brief Create a Controls object
+    ///  
     void CreateControls( );
 
-    // GenerateList event handler declarations
-
-    //   ID_SETLISTPREFSBUTTON
-    void OnSetListPrefsButtonClick( wxCommandEvent& event );
-
-    bool CheckEmission( Catalog::Entry* entry );
-    bool CheckFormat( Catalog::Entry* entry );
-    bool CheckStatus( Catalog::Entry* entry );
-    void WriteEntries( wxXmlNode* parent, int& row );
-    void UpdateGrid( );
-    void ShowRow( Catalog::Entry* entry, int row );
-    int GetStringLen( wxFont& font, wxString text );
-
-
-    ///   ID_WRITEBUTTON
-    void OnWriteButtonClick( wxCommandEvent& event );
-
-    ///   ID_FILENAMETEXTCTRL
-    void OnFileNameTextUpdated( wxCommandEvent& event );
-
-    // GenerateList event handler declarations
-
-    // GenerateList member function declarations
-
-
-
-    static bool ShowToolTips( );
-
+    ///  @brief 
+    ///  
     void DoListPrefs( );
 
-    // GenerateList member variables
+    ///  @brief Get the String Len object
+    ///  
+    ///  @param font 
+    ///  @param text 
+    ///  @return int 
+    int GetStringLen( wxFont& font, wxString text );
+
+    ///  @brief 
+    ///  
+    void Init( );
+
+    ///  @brief 
+    ///  
+    ///  @param event 
+    void OnFileNameTextUpdated( wxCommandEvent& event );
+
+    ///  @brief 
+    ///  
+    ///  @param event 
+    void OnSetListPrefsButtonClick( wxCommandEvent& event );
+
+    ///  @brief 
+    ///  
+    ///  @param event 
+    void OnWriteButtonClick( wxCommandEvent& event );
+
+    ///  @brief 
+    ///  
+    ///  @param entry 
+    ///  @param row 
+    void ShowRow( Catalog::Entry* entry, int row );
+
+    ///  @brief 
+    ///  
+    ///  @return true 
+    ///  @return false 
+    static bool ShowToolTips( );
+
+    ///  @brief 
+    ///  
+    void UpdateGrid( );
+
+    ///  @brief 
+    ///  
+    ///  @param parent 
+    ///  @param row 
+    void WriteEntries( wxXmlNode* parent, int& row );
+
+private:
     wxGrid* m_gridCtrl;
     wxButton* m_writeButton;
     wxTextCtrl* m_filename;
-    // GenerateList member variables
+
     GenerateListSettings* m_generateListSettings;
 
     int m_checkedStatusItems;
@@ -138,4 +178,4 @@ public:
 };
 
 #endif
-// _GENERATELIST_H_
+

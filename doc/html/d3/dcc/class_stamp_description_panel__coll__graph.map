@@ -1,9 +1,0 @@
-<map id="StampDescriptionPanel" name="StampDescriptionPanel">
-<area shape="rect" id="node3" href="$d8/d7f/class_inventory_panel.html" title="{InventoryPanel\n|&#45; m_grid\l&#45; m_specimenList\l|+ InventoryPanel()\l+ InventoryPanel()\l+ Create()\l+ ~InventoryPanel()\l+ Init()\land 9 more...\l+ ShowToolTips()\l}" alt="" coords="21,365,159,545"/>
-<area shape="rect" id="node6" href="$d1/d7e/class_characteristics_panel.html" title="CharacteristicsPanel class declaration. " alt="" coords="497,591,667,757"/>
-<area shape="rect" id="node7" href="$d0/db0/class_labeled_text_box.html" title="{LabeledTextBox\n|&#45; m_label\l&#45; m_parent\l&#45; m_id\l&#45; m_value\l|+ LabeledTextBox()\l+ LabeledTextBox()\l+ Create()\l+ ~LabeledTextBox()\l+ Init()\land 10 more...\l+ ShowToolTips()\l}" alt="" coords="487,132,631,341"/>
-<area shape="rect" id="node8" href="$de/d4d/class_catalog_code_panel.html" title="{CatalogCodePanel\n|&#45; m_grid\l&#45; m_catCodeList\l|+ CatalogCodePanel()\l+ CatalogCodePanel()\l+ Create()\l+ ~CatalogCodePanel()\l+ Init()\land 10 more...\l+ ShowToolTips()\l}" alt="" coords="833,365,992,545"/>
-<area shape="rect" id="node9" href="$da/d71/class_identification_panel.html" title="IdentificationPanel displays stamp data relative to the stamp identification. " alt="" coords="315,569,473,779"/>
-<area shape="rect" id="node10" href="$dc/dcc/class_miscellaneous_data_panel.html" title="{MiscellaneousDataPanel\n||+ MiscellaneousDataPanel()\l+ MiscellaneousDataPanel()\l+ Create()\l+ ~MiscellaneousDataPanel()\l+ Init()\land 9 more...\l+ ShowToolTips()\l+ write_data()\l}" alt="" coords="691,584,886,764"/>
-<area shape="rect" id="node4" href="$dc/d8f/class_image_panel.html" title="This is the class that manages the image displayed on the StampDescriptionPanel. " alt="" coords="166,577,291,771"/>
-</map>

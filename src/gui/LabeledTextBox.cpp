@@ -20,7 +20,7 @@
  * You should have received a copy of the GNU General Public License along with 
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  * 
- **************************************************/
+ */
 
 
 
@@ -41,14 +41,14 @@
 
 /*
  * LabeledTextBox type definition
- **************************************************/
+ */
 
 IMPLEMENT_DYNAMIC_CLASS( LabeledTextBox, wxPanel )
 ; // silly business; The above macro screws up the formatter
 
 /*
  * LabeledTextBox event table definition
- **************************************************/
+ */
 
 BEGIN_EVENT_TABLE( LabeledTextBox, wxPanel )
 
@@ -61,7 +61,7 @@ END_EVENT_TABLE( )
  *
  * LabeledTextBox constructors
  *
- **************************************************/
+ */
 LabeledTextBox::LabeledTextBox( )
 { 
     Init( );
@@ -71,7 +71,7 @@ LabeledTextBox::LabeledTextBox( )
  *
  * LabeledTextBox constructors
  *
- **************************************************/
+ */
 LabeledTextBox::LabeledTextBox( wxWindow *parent, wxWindowID id, 
                                 const wxPoint &pos, const wxSize &size, 
                                 long style )
@@ -86,7 +86,7 @@ LabeledTextBox::LabeledTextBox( wxWindow *parent, wxWindowID id,
  *
  *  LabledTextBox creator
  *
- **************************************************/
+ */
 bool LabeledTextBox::Create( wxWindow *parent, wxWindowID id, 
                              const wxPoint &pos, const wxSize &size, 
                              long style )
@@ -109,7 +109,7 @@ bool LabeledTextBox::Create( wxWindow *parent, wxWindowID id,
  *
  * LabeledTextBox destructor
  *
- **************************************************/
+ */
 LabeledTextBox::~LabeledTextBox( )
 { 
      // LabeledTextBox destruction
@@ -120,7 +120,7 @@ LabeledTextBox::~LabeledTextBox( )
  *
  * Member initialisation
  *
- **************************************************/
+ */
 void LabeledTextBox::Init( )
 { 
      // LabeledTextBox member initialisation
@@ -133,7 +133,7 @@ void LabeledTextBox::Init( )
  *
  * Control creation for LabledTextBox
  *
-  **************************************************/
+  */
 void LabeledTextBox::CreateControls( )
 { 
      // LabeledTextBox content construction
@@ -166,7 +166,7 @@ void LabeledTextBox::CreateControls( )
  *
  * 
  *
- **************************************************/
+ */
 bool LabeledTextBox::ShowToolTips( )
 { 
     return true;
@@ -181,7 +181,7 @@ void LabeledTextBox::SetEditable( bool value )
  *
  * Setup( wxString label, wxString value )
  * 
- **************************************************/
+ */
 
 void LabeledTextBox::Setup( wxString label, wxString value )
 { 
@@ -193,7 +193,7 @@ void LabeledTextBox::Setup( wxString label, wxString value )
 /**
  * GetValue( )
  * 
- **************************************************/
+ */
 
 wxString LabeledTextBox::GetValue( )
 { 
@@ -204,7 +204,7 @@ wxString LabeledTextBox::GetValue( )
  *
  *   ID_LABELEDTEXTBOX_TEXTCTRL
  *
- **************************************************/
+ */
 
 void LabeledTextBox::OnTextctrlTextUpdated( wxCommandEvent &event )
 { 

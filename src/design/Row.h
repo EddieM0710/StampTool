@@ -20,7 +20,7 @@
  * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
- **************************************************/
+ */
 
 #ifndef Row_H
 #define Row_H
@@ -29,17 +29,20 @@
 
 #include "design/LayoutBase.h"
 #include "utils/DebugString.h"
+
 namespace Design {
 
     /**
      * @brief Row layout object; Inherits from LayoutBase.  The Row can contain Column or Stamp objects.
      *
-     **************************************************/
-    class Row: public LayoutBase
+     */
+    class Row : public LayoutBase
     {
+
+
     public:
 
-        Row( wxXmlNode* node ): LayoutBase( node )
+        Row( wxXmlNode* node ) : LayoutBase( node )
         {
             SetNodeType( AT_Row );
             SetObjectName( AlbumBaseNames[ GetNodeType( ) ] );
@@ -47,32 +50,13 @@ namespace Design {
             SetShowTitle( false );
             SetFixedSpacingSize( "4" );
             SetCalculateSpacing( true );
+            m_titleFrame = new LabelFrame( Design::AT_TitleFontType );
+            m_titleFrame->SetString( GetAttrStr( AT_Name ) );
         };
 
         ~Row( ) { };
 
-        /**
-         * @brief Calculate the row layout based on child parameters
-         *
-         * @return true
-         * @return false
-         **************************************************/
-        void UpdatePositions( );
-
-        /**
-        * @brief UpdateMinimumSize
-        * Calculates the minimum Height and width of the object. It drills down to
-        * the lowest layout object with an actual size and begins calculating the
-        * min size of its parents as it progresses back up the heirarchy.
-        * @return true
-        * @return false
-        **************************************************/
-        bool UpdateMinimumSize( );
-
-        void UpdateSizes( );
-
-
-        NodeStatus ValidateNode( );
+        bool CalculateSpacing( ) { return String2Bool( GetAttrStr( AT_CalculateSpacing ) ); };
 
         /*
          * @brief Draw object on screen
@@ -82,25 +66,58 @@ namespace Design {
          * @param y position in MM
          */
         void Draw( wxDC& dc, double x, double y );
+
         void DrawPDF( wxPdfDocument* doc, double x, double y );
 
-        void Save( wxXmlNode* xmlNode );
+        wxString GetFixedSpacing( ) { return GetAttrStr( AT_FixedSpacingSize ); };
+
+        double GetFixedSpacingDbl( ) { return GetAttrDbl( AT_FixedSpacingSize ); };
+
+        LabelFrame* GetTitleFrame( );
+
+        void LoadFonts( wxXmlNode* node );
 
         void ReportLayout( );
 
-        void SetFixedSpacingSize( wxString str ) { SetAttrStr( AT_FixedSpacingSize, str ); };
-        wxString GetFixedSpacing( ) { return GetAttrStr( AT_FixedSpacingSize ); };
-        double GetFixedSpacingDbl( ) { return GetAttrDbl( AT_FixedSpacingSize ); };
+        void SaveFonts( wxXmlNode* parent );
 
-        bool CalculateSpacing( ) { return String2Bool( GetAttrStr( AT_CalculateSpacing ) ); };
+        void Save( wxXmlNode* xmlNode );
+
+        void SetFixedSpacingSize( wxString str ) { SetAttrStr( AT_FixedSpacingSize, str ); };
+
         void SetCalculateSpacing( bool val ) { SetAttrStr( AT_CalculateSpacing, Bool2String( val ) ); };
 
+        wxString GetTitleString( );
+
+        void SetTitleString( wxString str );
+
+        /**
+        * @brief UpdateMinimumSize
+        * Calculates the minimum Height and width of the object. It drills down to
+        * the lowest layout object with an actual size and begins calculating the
+        * min size of its parents as it progresses back up the heirarchy.
+        * @return true
+        * @return false
+        */
+        bool UpdateMinimumSize( );
+
+        /**
+         * @brief Calculate the row layout based on child parameters
+         *
+         * @return true
+         * @return false
+         */
+        void UpdatePositions( );
+
+        void UpdateSizes( );
+
+        NodeStatus ValidateNode( );
+
     private:
-        //        bool m_showTitle;
-        //        bool m_calculateSpacing;
-        //        double m_fixedSpacing;
+
         DebugString m_debugString;
-        //        StampAlignment m_stampAlignment;
+        LabelFrame* m_titleFrame;
+
     };
 
 }

@@ -20,7 +20,7 @@
  * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
- **************************************************/
+ */
 
 #ifndef Layout_Stamp_h
 #define Layout_Stamp_h
@@ -29,6 +29,7 @@
 
 #include "design/LayoutBase.h"
 #include "utils/DebugString.h"
+
 
 namespace Design {
 
@@ -52,8 +53,8 @@ namespace Design {
      * The next is embedded in it and is tthe visible frame for the stamp.
      * The 3rd one is embedded in the 2nd one and is the image of the object.
      *
-     **************************************************/
-    class Stamp: public LayoutBase
+     */
+    class Stamp : public LayoutBase
     {
     public:
 
@@ -61,8 +62,8 @@ namespace Design {
          * @brief Construct a new Stamp object
          *
          * @param parent
-         **************************************************/
-        Stamp( wxXmlNode* node ): LayoutBase( node )
+         */
+        Stamp( wxXmlNode* node ) : LayoutBase( node )
         {
             SetNodeType( AT_Stamp );
             SetObjectName( AlbumBaseNames[ GetNodeType( ) ] );
@@ -72,10 +73,17 @@ namespace Design {
             SetStampHeight( height );
             wxString width = GetAttrStr( Design::AT_Width );
             SetStampWidth( width );
-            CalcFrame( );
+            m_nameFrame = new LabelFrame( Design::AT_NameFontType );
+            m_nameFrame->SetString( GetAttrStr( AT_Name ) );
+            m_nbrFrame = new LabelFrame( Design::AT_NbrFontType );
+            m_nbrFrame->SetString( GetAttrStr( AT_CatNbr ) );
+            //  CalcFrame( );
+
         };
 
-        Stamp( ): LayoutBase( ( wxXmlNode* ) 0 )
+        ///  @brief Construct a new Stamp object
+        ///  
+        Stamp( ) : LayoutBase( ( wxXmlNode* ) 0 )
         {
             SetNodeType( AT_Stamp );
             SetObjectName( AlbumBaseNames[ AT_Stamp ] );
@@ -83,61 +91,27 @@ namespace Design {
             SetShowTitle( true );
             SetStampHeight( "10.0" );
             SetStampWidth( "10.0" );
-            CalcFrame( );
+            m_nameFrame = new LabelFrame( Design::AT_NameFontType );
+            m_nameFrame->SetString( "name" );
+            m_nbrFrame = new LabelFrame( Design::AT_NbrFontType );
+            m_nbrFrame->SetString( "Nbr" );
+            //     CalcFrame( );
         };
 
         /**
          * @brief Destroy the Stamp object
          *
-         **************************************************/
+         */
         ~Stamp( ) { };
 
-        /**
-         * @brief
-         *
-         * @return true
-         * @return falseDesign::
-        /**
-        * @brief UpdateMinimumSize
-        * Calculates the minimum Height and width of the object. It drills down to
-        * the lowest layout object with an actual size and begins calculating the
-        * min size of its parents as it progresses back up the heirarchy.
-        * @return true
-        * @return false
-        **************************************************/
-        bool UpdateMinimumSize( );
+        ///  @brief 
+        ///  
         void CalcFrame( );
 
-        void UpdateSizes( );
 
-        void UpdatePositions( );
-
-        /**
-         *
-         * @brief Builds the frame container for the stamp.  The Object is built
-         * up of 3 objects. The outer object is the frame container
-         * for the stamp frame and the title text. The text is the only thing visible.
-         * The next is embedded in it and is tthe visible frame for the stamp.
-         * The 3rd one is embedded in the 2nd one and is the image of the object.
-         *
-         * @param parent
-         * @return wxXmlNode*
-         **************************************************/
-         //        wxXmlNode* Write( wxXmlNode* parent );
-
-        NodeStatus ValidateNode( );
         //        void ClearError( );
         //        void SetError( StampErrorType type, NodeStatus status );
         //        NodeStatus GetStatus( );
-
-        void SetStampHeight( double val );
-        void SetStampHeight( wxString str );
-        double GetStampHeight( );
-        wxString GetStampHeightStr( );
-        void SetStampWidth( double val );
-        void SetStampWidth( wxString str );
-        double GetStampWidth( );
-        wxString GetStampWidthStr( );
 
         /*
          * @brief Draw object on screen
@@ -147,20 +121,43 @@ namespace Design {
          * @param y position in MM from page left
          */
         void Draw( wxDC& dc, double x, double y );
+
+        ///  @brief 
+        ///  
+        ///  @param doc 
+        ///  @param x 
+        ///  @param y 
         void DrawPDF( wxPdfDocument* doc, double x, double y );
 
-        // void DrawID( wxDC& dc, double x, double y );
-        // void DrawIDPDF( wxPdfDocument* doc, double x, double y );
-        //void DrawTitle( wxDC&, wxRect rect  );
-        //void MakeMultiLine(  wxDC& dc, wxString text, double width  );
-//        void UpdateTitleSize( double width );
+        ///  @brief 
+        ///  
+        ///  @param positionTextCtrl 
+        void DumpStamp( wxTextCtrl* positionTextCtrl );
 
-        void Save( wxXmlNode* xmlNode );
-        wxImage* GetStampImage( );
-        wxString GetStampImageFilename( );
-        bool GetShowTitle( ) { return String2Bool( GetAttrStr( AT_ShowTitle ) ); };
-        void SetShowTitle( bool val ) { SetAttrStr( AT_ShowTitle, Bool2String( val ) ); };
+        ///  @brief Get the Name Frame object
+        ///  
+        ///  @return LabelFrame* 
+        LabelFrame* GetNameFrame( );
 
+        ///  @brief Get the Name String object
+        ///  
+        ///  @return wxString 
+        wxString GetNameString( );
+
+        ///  @brief Get the Nbr Frame object
+        ///  
+        ///  @return LabelFrame* 
+        LabelFrame* GetNbrFrame( );
+
+        ///  @brief Get the Nbr String object
+        ///  
+        ///  @return wxString 
+        wxString GetNbrString( );
+
+        ///  @brief Get the Show Nbr object
+        ///  
+        ///  @return true 
+        ///  @return false 
         bool GetShowNbr( )
         {
             wxString catStr = GetAttrStr( AT_ShowCatNbr );
@@ -174,11 +171,125 @@ namespace Design {
                 return String2Bool( catStr );
             }
         };
-        void SetShowNbr( bool val ) { SetAttrStr( AT_ShowCatNbr, Bool2String( val ) ); };
 
+        ///  @brief 
+        ///  
+        ///  @param node 
+        void LoadFonts( wxXmlNode* node );
+
+        ///  @brief Get the Show Title object
+        ///  
+        ///  @return true 
+        ///  @return false 
+        bool GetShowTitle( ) { return String2Bool( GetAttrStr( AT_ShowTitle ) ); };
+
+        ///  @brief Set the Show Title object
+        ///  
+        ///  @param val 
+        void SetShowTitle( bool val ) { SetAttrStr( AT_ShowTitle, Bool2String( val ) ); };
+
+        ///  @brief Get the Stamp Height object
+        ///  
+        ///  @return double 
+        double GetStampHeight( );
+
+        ///  @brief Get the Stamp Height Str object
+        ///  
+        ///  @return wxString 
+        wxString GetStampHeightStr( );
+
+        ///  @brief Get the Stamp Image object
+        ///  
+        ///  @return wxImage* 
+        wxImage* GetStampImage( );
+
+        ///  @brief Get the Stamp Image Filename object
+        ///  
+        ///  @return wxString 
+        wxString GetStampImageFilename( );
+
+        ///  @brief Get the Stamp Width object
+        ///  
+        ///  @return double 
+        double GetStampWidth( );
+
+        ///  @brief Get the Stamp Width Str object
+        ///  
+        ///  @return wxString 
+        wxString GetStampWidthStr( );
+
+        ///  @brief 
+        ///  
         void ReportLayout( );
 
-        void DumpStamp( wxTextCtrl* positionTextCtrl );
+        ///  @brief 
+        ///  
+        ///  @param xmlNode 
+        void Save( wxXmlNode* xmlNode );
+
+        ///  @brief 
+        ///  
+        ///  @param parent 
+        void SaveFonts( wxXmlNode* parent );
+
+        ///  @brief Set the Nbr String object
+        ///  
+        ///  @param str 
+        void SetNbrString( wxString str );
+
+        ///  @brief Set the Name String object
+        ///  
+        ///  @param str 
+        void SetNameString( wxString str );
+
+        ///  @brief Set the Show Nbr object
+        ///  
+        ///  @param val 
+        void SetShowNbr( bool val ) { SetAttrStr( AT_ShowCatNbr, Bool2String( val ) ); };
+
+        ///  @brief Set the Stamp Height object
+        ///  
+        ///  @param val 
+        void SetStampHeight( double val );
+
+        ///  @brief Set the Stamp Height object
+        ///  
+        ///  @param str 
+        void SetStampHeight( wxString str );
+
+        ///  @brief Set the Stamp Width object
+        ///  
+        ///  @param val 
+        void SetStampWidth( double val );
+
+        ///  @brief Set the Stamp Width object
+        ///  
+        ///  @param str 
+        void SetStampWidth( wxString str );
+
+        /**
+        * @brief UpdateMinimumSize
+        * Calculates the minimum Height and width of the object. It drills down to
+        * the lowest layout object with an actual size and begins calculating the
+        * min size of its parents as it progresses back up the heirarchy.
+        * @return true
+        * @return false
+        */
+        bool UpdateMinimumSize( );
+
+        ///  @brief 
+        ///  
+        void UpdatePositions( );
+
+        ///  @brief 
+        ///  
+        void UpdateSizes( );
+
+        ///  @brief 
+        ///  
+        ///  @return NodeStatus 
+        NodeStatus ValidateNode( );
+
     private:
 
         // The LayoutBase for this object contains the frame parameters for the stamp Album object. 
@@ -197,7 +308,8 @@ namespace Design {
         bool m_showTitle;
         wxString m_imageFilename;
         DebugString m_debugString;
-        //        RealPoint  m_stampCenter;
+        LabelFrame* m_nameFrame;
+        LabelFrame* m_nbrFrame;
     };
 }
 #endif

@@ -20,7 +20,7 @@
  * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
- **************************************************/
+ */
 
 
 
@@ -42,13 +42,13 @@
 
 #include "Defs.h"
 #include "design/DesignDefs.h"
-#include "gui/ToolData.h"
+ //#include "gui/AppData.h"
 #include "gui/ImagePanel.h"
 #include "art/NotFound.xpm"
 
-#include "StampToolApp.h"
+//#include "StampToolApp.h"
 
-wxDECLARE_APP( StampToolApp );
+//wxDECLARE_APP( StampToolApp );
 /*
  * ImagePanel type definition
  */
@@ -76,7 +76,7 @@ END_EVENT_TABLE( )
 /*
  * ImagePanel constructors
  *
- **************************************************/
+ */
 
 ImagePanel::ImagePanel( )
 {
@@ -86,7 +86,7 @@ ImagePanel::ImagePanel( )
 /*
  * ImagePanel constructors
  *
- **************************************************/
+ */
 
 ImagePanel::ImagePanel( wxWindow* parent, wxWindowID id, const wxPoint& pos,
     const wxSize& size, long style )
@@ -98,7 +98,7 @@ ImagePanel::ImagePanel( wxWindow* parent, wxWindowID id, const wxPoint& pos,
 /*
  * ImagePanel creator
  *
- **************************************************/
+ */
 
 bool ImagePanel::Create( wxWindow* parent, wxWindowID id, const wxPoint& pos,
     const wxSize& size, long style )
@@ -116,7 +116,7 @@ bool ImagePanel::Create( wxWindow* parent, wxWindowID id, const wxPoint& pos,
 /*
  * ImagePanel destructor
  *
- **************************************************/
+ */
 
 ImagePanel::~ImagePanel( )
 {
@@ -127,7 +127,7 @@ ImagePanel::~ImagePanel( )
 /*
  * Member initialisation
  *
- **************************************************/
+ */
 
 void ImagePanel::Init( )
 {
@@ -139,7 +139,7 @@ void ImagePanel::Init( )
 /*
  * Control creation for ImagePanel
  *
- **************************************************/
+ */
 
 void ImagePanel::CreateControls( )
 {
@@ -159,7 +159,7 @@ bool ImagePanel::ShowToolTips( )
 /*
  * SetBitmap
  *
- **************************************************/
+ */
 
 void ImagePanel::SetBitmap( wxString filename )
 {
@@ -212,7 +212,7 @@ void ImagePanel::SetBitmap( wxString filename )
 /*
  * OnResize
  *
- **************************************************/
+ */
 
 void ImagePanel::OnResize( wxCommandEvent& WXUNUSED( event ) )
 {
@@ -226,7 +226,7 @@ void ImagePanel::OnResize( wxCommandEvent& WXUNUSED( event ) )
 /*
  * SetZoom
  *
- **************************************************/
+ */
 
 void ImagePanel::SetZoom( double zoom )
 {
@@ -237,7 +237,7 @@ void ImagePanel::SetZoom( double zoom )
 /*
  * OnZoom
  *
- **************************************************/
+ */
 
 void ImagePanel::OnZoom( wxCommandEvent& event )
 {
@@ -253,7 +253,7 @@ void ImagePanel::OnZoom( wxCommandEvent& event )
 /*
  *  ID_IMAGEPANEL
  *
- **************************************************/
+ */
 
 void ImagePanel::OnPaint( wxPaintEvent& event )
 {
@@ -294,7 +294,7 @@ void ImagePanel::OnPaint( wxPaintEvent& event )
 /*
  *  ID_IMAGEPANEL
  *
- **************************************************/
+ */
 
 void ImagePanel::OnContextMenu( wxContextMenuEvent& event )
 {
@@ -394,7 +394,7 @@ void ImagePanel::OnContextMenu( wxContextMenuEvent& event )
 //             std::cout << "ImagePanel::OnWebRequestState Page_Image\n";
 //             wxImage img( *evt.GetResponse( ).GetStream( ) );
 //             m_imageBitmap = img;
-//             wxString imageFile = GetToolData( )->GetImageFilename( m_stamp->GetID( ) );
+//             wxString imageFile = GetFrame( )->GetImageFilename( m_stamp->GetID( ) );
 
 //             m_imageBitmap.SaveFile( imageFile, wxBITMAP_TYPE_JPEG );
 //             //m_notebook->GetPage(Page_Image)->Layout();

@@ -20,7 +20,7 @@
  * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
- **************************************************/
+ */
 
 
 #include "wx/wxprec.h"
@@ -36,6 +36,7 @@
 #include "wx/imaglist.h"
 
 #include "CatalogCodePanel.h"
+#include "catalog/CatalogData.h"
 #include "CharacteristicsPanel.h"
 #include "Defs.h"
 #include "StampDescriptionPanel.h"
@@ -45,7 +46,7 @@
 #include "MiscellaneousDataPanel.h"
 #include "Settings.h"
 #include "Stamp.h"
-#include "ToolData.h"
+#include "AppData.h"
 #include "CatalogVolume.h"
 
  /*
@@ -76,7 +77,7 @@ END_EVENT_TABLE( )
 
 StampDescriptionPanel::StampDescriptionPanel( void ) { Init( ); }
 
-/****************************************************/
+
 
 StampDescriptionPanel::StampDescriptionPanel( wxWindow* parent, wxWindowID id,
     const wxPoint& pos, const wxSize& size,
@@ -88,7 +89,7 @@ StampDescriptionPanel::StampDescriptionPanel( wxWindow* parent, wxWindowID id,
 
 /*
  * StampDescriptionPanel creator
- ***************************************************************/
+ */
 
 bool StampDescriptionPanel::Create( wxWindow* parent, wxWindowID id,
     const wxPoint& pos, const wxSize& size,
@@ -110,7 +111,7 @@ bool StampDescriptionPanel::Create( wxWindow* parent, wxWindowID id,
 
 /*
  * StampDescriptionPanel destructor
- ***************************************************************/
+ */
 
 StampDescriptionPanel::~StampDescriptionPanel( void )
 {
@@ -120,7 +121,7 @@ StampDescriptionPanel::~StampDescriptionPanel( void )
 
 /*
  * Member initialisation
- ***************************************************************/
+ */
 
 void StampDescriptionPanel::Init( void )
 {
@@ -139,7 +140,7 @@ void StampDescriptionPanel::Init( void )
 
 /*
  * Control creation for StampDescriptionPanel
- ***************************************************************/
+ */
 
 void StampDescriptionPanel::CreateControls( void )
 {
@@ -365,7 +366,7 @@ void StampDescriptionPanel::CreateControls( void )
  *
  *
  *  COMMAND_TEXT_MAXLEN event handler for ID_BKGNDTEXTCTRL
- ***************************************************************/
+ */
 
 void StampDescriptionPanel::OnBkgndtextctrlMaxLen( wxCommandEvent& event )
 {
@@ -376,7 +377,7 @@ void StampDescriptionPanel::OnBkgndtextctrlMaxLen( wxCommandEvent& event )
  *
  *
  *  LEAVE_WINDOW event handler for ID_BKGNDTEXTCTRL
- ***************************************************************/
+ */
 
 void StampDescriptionPanel::OnLeaveWindow( wxMouseEvent& event )
 {
@@ -387,7 +388,7 @@ void StampDescriptionPanel::OnLeaveWindow( wxMouseEvent& event )
  *
  *
  *
- ***************************************************************/
+ */
 
 bool StampDescriptionPanel::ShowToolTips( void ) { return true; }
 
@@ -397,7 +398,7 @@ bool StampDescriptionPanel::ShowToolTips( void ) { return true; }
 /*
  * UpdateStatus
  *
- ***************************************************************/
+ */
 
 void StampDescriptionPanel::UpdateStatus( void )
 {
@@ -408,7 +409,7 @@ void StampDescriptionPanel::UpdateStatus( void )
  *
  *  COMMAND_SLIDER_UPDATED event handler for ID_SLIDER
  *
- ***************************************************************/
+ */
 
 void StampDescriptionPanel::OnZoomsliderUpdated( wxCommandEvent& event )
 {
@@ -423,7 +424,7 @@ void StampDescriptionPanel::OnZoomsliderUpdated( wxCommandEvent& event )
  *
  *
  *   ID_BKGNDTEXTCTRL
- ***************************************************************/
+ */
 
 void StampDescriptionPanel::OnBkGndTextUpdated( wxCommandEvent& event )
 {
@@ -440,7 +441,7 @@ void StampDescriptionPanel::OnBkGndTextUpdated( wxCommandEvent& event )
 
 /*
  *   ID_DESCRIPTIONTEXTCTRL
- ***************************************************************/
+ */
 
 void StampDescriptionPanel::OnDescriptionTextctrlTextUpdated( wxCommandEvent& event )
 {
@@ -458,7 +459,7 @@ void StampDescriptionPanel::OnDescriptionTextctrlTextUpdated( wxCommandEvent& ev
 /*
  *
  * initializes the StampDescriptionPanel with new stamp values
- ***************************************************************/
+ */
 
 void StampDescriptionPanel::UpdatePanel( )//wxXmlNode* stamp )
 {

@@ -21,14 +21,16 @@
  * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
- **************************************************/
+ */
 #ifndef Classification_H
 #define Classification_H
 
-#include "CatalogDefs.h"
-#include "CatalogBase.h"
 #include "wx/xml/xml.h"
 #include <wx/string.h>
+
+#include "catalog/CatalogDefs.h"
+#include "catalog/CatalogBase.h"
+
 
 
 
@@ -39,17 +41,22 @@ namespace Catalog {
      * safe/convenient getting/putting.
      * @see CatalogBase, Stamp, Specimen
      *
-     **************************************************/
+     */
     class Classification : public CatalogBase
     {
+
+
     public:
+
+
+
         /**
          * @brief Construct a new Classification object
          *
          * @note This node is invalid until the node type is defined.
          * @see CatalogBase::SetCatNode
          *
-         **************************************************/
+         */
         Classification( void ) : CatalogBase( )
         {
             SetXMLCatNode( 0 );
@@ -61,7 +68,7 @@ namespace Catalog {
          *
          * @param  node ; must be set to a valid Classification
          * node type or this instance will be invalid.
-         **************************************************/
+         */
         Classification( wxXmlNode* node ) : CatalogBase( node )
         {
             if ( IsOK( ) )
@@ -77,8 +84,55 @@ namespace Catalog {
         /**
          * @brief Destroy the Classification object
          *
-         **************************************************/
+         */
         ~Classification( void ) { };
+
+        /**
+         * @brief loop thru the ClassificationNames and find one that is
+         *  eqal to name and returns the corresponding DataType
+         *
+         * @param  name  string to search for
+         * @return ClassificationTypes the datatype corresponding to name
+         */
+        ClassificationTypes FindDataType( wxString name );
+
+        /**
+         * @brief Gets the XML attribute value of this node type.
+         *
+         * @param  type   a valid data type ( DataTypes )
+         * @return wxString   the value of this type or "" if none.
+         */
+        wxString GetAttr( ClassificationTypes type );
+
+        /**
+         * @brief Returns the Name of this element.
+         *
+         * @return wxString
+         */
+        wxString GetLabel( void ) { return GetTitle( ); }
+
+        /**
+         * @brief Get the Name object
+         *
+         * @return wxString
+         */
+        wxString GetTitle( void ) { return GetAttr( CT_Title ); };
+
+        /**
+         * @brief Get the Val object
+         *
+         * @param  type   a valid data type
+         * @return wxString  the value of this type or "" if none.
+         */
+        wxString GetVal( ClassificationTypes type ) { return GetAttr( type ); };
+
+        /**
+         * @brief stub for Classification to keep interface common.
+         * This function is meaningful for Stamps
+         *
+         * @return true  Alswys returns true
+         */
+        bool IsMultiple( void );
 
         /**
          * @brief Returns true if this is a valid Classification node.
@@ -90,83 +144,30 @@ namespace Catalog {
         bool IsOK( void );
 
         /**
-         * @brief Gets the XML attribute value of this node type.
-         *
-         * @param  type   a valid data type ( DataTypes )
-         * @return wxString   the value of this type or "" if none.
-         **************************************************/
-        wxString GetAttr( ClassificationTypes type );
-
-        /**
          * @brief Sets the node type to val.
          *
          * This is actually setting an XML attribute of this node to type = val.
          *
          * @param type   a valid data type
          * @param val   the string to be associated with this type
-         **************************************************/
+         */
         void SetAttr( ClassificationTypes type, wxString val );
-
-        /**
-         * @brief Get the Val object
-         *
-         * @param  type   a valid data type
-         * @return wxString  the value of this type or "" if none.
-         **************************************************/
-        wxString GetVal( ClassificationTypes type ) { return GetAttr( type ); };
 
         /**
          * @brief Set the Val object
          *
          * @param  type  a valid data type
          * @param  val the string to be associated with this type
-         **************************************************/
+         */
         void SetVal( ClassificationTypes type, wxString val ) { SetAttr( type, val ); };
 
         /**
-         * @brief Get the Name object
+         * @brief Set the Title object
          *
-         * @return wxString
-         **************************************************/
-        wxString GetTitle( void ) { return GetAttr( CT_Title ); };
-
-        //        wxString GetPreferredCatalog( ) { return GetAttr( CT_PreferredCatalog ); };
-        //        wxString GetImageDirectory( ) { return GetAttr( CT_ImageDirectory ); };
-
-                /**
-                 * @brief Set the Title object
-                 *
-                 * @param  val the value to set title
-                 **************************************************/
+         * @param  val the value to set title
+         */
         void SetTitle( wxString val ) { SetAttr( CT_Title, val ); };
 
-        //        void SetPreferredCatalog( wxString val ) { SetAttr( CT_PreferredCatalog, val ); };
-        //        void SetImageDirectory( wxString val ) { SetAttr( CT_ImageDirectory, val ); };
-
-                /**
-                 * @brief loop thru the CT_Names and find one that is
-                 *  eqal to name and returns the corresponding DataType
-                 *
-                 * @param  name  string to search for
-                 * @return ClassificationTypes the datatype corresponding to name
-                 **************************************************/
-        ClassificationTypes FindDataType( wxString name );
-
-        /**
-         * @brief stub for Classification to keep interface common.
-         * This function is meaningful for Stamps
-         *
-         * @return true  Alswys returns true
-
-         **************************************************/
-        bool IsMultiple( void );
-
-        /**
-         * @brief Returns the Name of this element.
-         *
-         * @return wxString
-         **************************************************/
-        wxString GetLabel( void ) { return GetTitle( ); }
     };
 
 }

@@ -60,7 +60,7 @@ class DefinePeriodsPanel;
   * SettingsDialog class declaration
   */
 
-class SettingsDialog: public wxDialog
+class SettingsDialog : public wxDialog
 {
     DECLARE_DYNAMIC_CLASS( SettingsDialog )
         DECLARE_EVENT_TABLE( )
@@ -90,6 +90,8 @@ public:
         ID_NAMEDEFAULTFONTBUTTON
     };
 
+    
+
     SettingsDialog( );
     SettingsDialog( wxWindow* parent, wxWindowID id = SYMBOL_SETTINGSDIALOG_IDNAME, const wxString& caption = SYMBOL_SETTINGSDIALOG_TITLE, const wxPoint& pos = SYMBOL_SETTINGSDIALOG_POSITION, const wxSize& size = SYMBOL_SETTINGSDIALOG_SIZE, long style = SYMBOL_SETTINGSDIALOG_STYLE );
 
@@ -107,23 +109,22 @@ public:
 
     // SettingsDialog event handler declarations
 
-        ///   ID_IMAGEDIRECTORTEXTBOX
+        //   ID_IMAGEDIRECTORTEXTBOX
     void OnImagedirectortextboxTextUpdated( wxCommandEvent& event );
 
-    ///   ID_COUNTRYTEXTBOX
+    //   ID_COUNTRYTEXTBOX
     void OnCountrytextboxTextUpdated( wxCommandEvent& event );
 
-    ///   ID_CATALOGTEXTBOX
+    //   ID_CATALOGTEXTBOX
     void OnCatalogtextboxTextUpdated( wxCommandEvent& event );
 
-    ///   ID_OPENLASTCHECKBOX
+    //   ID_OPENLASTCHECKBOX
     void OnOpenlastcheckboxClick( wxCommandEvent& event );
 
-    ///   ID_RECENTSIZETEXTCTRL
+    //   ID_RECENTSIZETEXTCTRL
     void OnRecentsizetextctrlTextUpdated( wxCommandEvent& event );
 
     // SettingsDialog event handler declarations
-
     void OnOkClick( wxCommandEvent& event );
 
 
@@ -134,7 +135,11 @@ public:
 
     void UpdateSettings( );
 
-    // SettingsDialog member variables
+    
+
+
+
+        // SettingsDialog member variables
     wxTextCtrl* m_imageDirectory;
     wxTextCtrl* m_country;
     wxTextCtrl* m_catalog;

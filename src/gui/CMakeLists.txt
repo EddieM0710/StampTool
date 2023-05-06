@@ -10,9 +10,10 @@ ${StampTool_CatalogFiles_Source_Directory} )
 set( CMAKE_RUNTIME_OUTPUT_DIRECTORY ${build_Directory} )
 add_library( GuiFiles SHARED
     StampToolFrame.cpp
+    AppData.cpp
     StampToolPanel.cpp
-    AlbumDesignPanel.cpp 
-    AlbumDesignTreePanel.cpp 
+    AlbumPanel.cpp 
+    AlbumTreePanel.cpp 
     AlbumDetailsDialog.cpp
     AlbumImagePanel.cpp 
     CatalogCodePanel.cpp 
@@ -21,7 +22,7 @@ add_library( GuiFiles SHARED
     CharacteristicsPanel.cpp 
     ColDetailsDialog.cpp 
     DefinePeriodsPanel.cpp
-    DesignTreeCtrl.cpp 
+    AlbumTreeCtrl.cpp 
     FileCreateDialog.cpp
     GenerateList.cpp
     GenerateListSettings.cpp
@@ -34,13 +35,14 @@ add_library( GuiFiles SHARED
     MiscellaneousDataPanel.cpp
     NewStampDialog.cpp 
     PageDetailsDialog.cpp
+    RemoveVolumeDialog.cpp    
     RowDetailsDialog.cpp 
     CatalogDetailsDialog.cpp
     SettingsDialog.cpp
     SortOrderPanel.cpp
     StampDescriptionPanel.cpp 
     StampDetailsDialog.cpp
-    ToolData.cpp
+ 
 
 
 )

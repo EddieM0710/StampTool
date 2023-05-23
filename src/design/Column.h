@@ -76,7 +76,7 @@ namespace Design {
         ///  @param doc 
         ///  @param x 
         ///  @param y 
-        void DrawPDF( wxPdfDocument* doc, double x, double y ) {};
+        void DrawPDF( wxPdfDocument* doc, double x, double y );
 
         ///  @brief Get the Fixed Spacing object
         ///  

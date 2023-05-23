@@ -66,12 +66,11 @@
         "map": "cpp",
         "set": "cpp",
         "iomanip": "cpp",
-        "cinttypes": "cpp"
+        "cinttypes": "cpp",
+        "*.inc": "cpp"
     },
     "files.watcherExclude": {
         "**/doc/**": true
     },
     "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools"
-    
-    
 }

@@ -41,14 +41,14 @@ namespace Catalog
     ///  @return Catalog::CatalogVolume* 
     Catalog::CatalogVolume* CatalogData::NewCatalogVolume( )
     {
-        if ( m_catalogPageTreeCtrl )
+        if ( m_catalogTreeCtrl )
         {
-            m_catalogPageTreeCtrl->ClearCatalogTree( );
+            m_catalogTreeCtrl->ClearCatalogTree( );
         }
-        if ( m_albumPageTreeCtrl )
-        {
-            m_albumPageTreeCtrl->ClearCatalogTree( );
-        }
+        // if ( m_albumPageTreeCtrl )
+        // {
+        //     m_albumPageTreeCtrl->ClearCatalogTree( );
+        // }
 
         return m_catalogList.NewCatalogVolume( );
     };
@@ -81,10 +81,10 @@ namespace Catalog
 
     wxString CatalogData::GetImageFilename( wxString stampId )
     {
-        wxString artPath = GetImagePath( );
+        //       wxString artPath = GetImagePath( );
         wxString fileName = stampId;
         wxString imageFile;
-        if ( artPath.IsEmpty( ) || fileName.IsEmpty( ) )
+        if ( fileName.IsEmpty( ) )
         {
             imageFile = "";
         }
@@ -95,7 +95,7 @@ namespace Catalog
             fileName.Replace( ":", "_" );
             fileName.Replace( " ", "_" );
             wxFileName fn;
-            fn.SetPath( artPath );
+            //            fn.SetPath( artPath );
             fn.SetName( fileName );
             fn.SetExt( "jpg" );
             imageFile = fn.GetFullPath( );
@@ -120,8 +120,8 @@ namespace Catalog
 
     void CatalogData::LoadCatalogTree( )
     {
-        GetCatalogPageTreeCtrl( )->LoadTree( );
-        GetAlbumPageTreeCtrl( )->LoadTree( );
+        GetCatalogTreeCtrl( )->LoadTree( );
+        //  GetAlbumPageTreeCtrl( )->LoadTree( );
     }
 
     bool CatalogData::ImportCSV( wxString csvFilename )
@@ -130,18 +130,29 @@ namespace Catalog
         wxString ext = csvFile.GetExt( );
         if ( !ext.CmpNoCase( "csv" ) )
         {
-            wxFileName catalogFile = csvFile;
+
+            wxString cwd = wxGetCwd( );
+            wxFileName catalogFile;// = csvFile;
+            catalogFile.SetPath( cwd );
+
+            wxString name = csvFile.GetName( );
+            catalogFile.SetName( name );
             catalogFile.SetExt( "cat" );
 
             Catalog::CatalogVolume* catalogVolume = GetCatalogList( )->NewCatalogVolume( );
-
+            wxString fullPath = catalogFile.GetFullPath( );
+            wxString fullName = catalogFile.GetFullName( );
+            wxString path = catalogFile.GetPath( );
             catalogVolume->SetVolumeFilename( catalogFile.GetFullPath( ) );
+
             bool readStatus = catalogVolume->LoadCSV( csvFile.GetFullPath( ) );
             if ( readStatus )
             {
                 GetCatalogList( )->BuildVolumeNameStrings( );
                 UpdateCatalogVolumeStrings( );
-                GetCatalogVolume( )->EditDetailsDialog( m_catalogNotebookPagePanel );
+                GetCatalogVolume( )->EditDetailsDialog( m_catalogTreePanel );
+
+                GetCatalogVolume( )->MakeCatalogImageRepository( );
                 GetCatalogData( )->LoadCatalogTree( );
             }
             return readStatus;
@@ -168,21 +179,16 @@ namespace Catalog
         SetDirty( );
     }
 
-    void CatalogData::SetCurrentStamp( wxXmlNode* stamp )
+    void CatalogData::SetCurrentStamp( wxXmlNode* xmlNode )
     {
-        if ( m_stamp )
-        {
-            delete m_stamp;
-        }
-        m_stamp = new Catalog::Entry( stamp );
+        m_stamp = new Catalog::Entry( xmlNode );
+        GetDescriptionPanel( )->UpdatePanel( );
         GetDescriptionPanel( )->Show( );
     };
 
     void CatalogData::UpdateCatalogVolumeStrings( )
     {
-        m_catalogNotebookPagePanel->SetVolumeListStrings( m_catalogList.GetVolumeNameStrings( ) );
-        m_albumNotebookPagePanel->SetVolumeListStrings( m_catalogList.GetVolumeNameStrings( ) );
-        m_catalogNotebookPagePanel->SetVolumeListSelection( m_catalogList.GetCatalogVolumeNdx( ) );
-        m_albumNotebookPagePanel->SetVolumeListSelection( m_catalogList.GetCatalogVolumeNdx( ) );
+        m_catalogTreePanel->SetVolumeListStrings( m_catalogList.GetVolumeNameStrings( ) );
+        m_catalogTreePanel->SetVolumeListSelection( m_catalogList.GetCatalogVolumeNdx( ) );
     }
 }

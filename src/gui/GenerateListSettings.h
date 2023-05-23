@@ -19,39 +19,23 @@
  * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  */
- ///////////////////////////////////////
+
 
 #ifndef _GENERATELISTSETTINGS_H_
 #define _GENERATELISTSETTINGS_H_
 
-
-/*
- * Includes
- */
 #include "gui/GuiDefs.h"
 
 
- /*
-  * Forward declarations
-  */
 
-  /*
-   * Control identifiers
-   */
-
-   //
 
 #define SYMBOL_GENERATELISTSETTINGS_STYLE wxCAPTION | wxRESIZE_BORDER | wxSYSTEM_MENU | wxCLOSE_BOX | wxTAB_TRAVERSAL
 #define SYMBOL_GENERATELISTSETTINGS_TITLE _( "GenerateListSettings" )
 #define SYMBOL_GENERATELISTSETTINGS_IDNAME ID_GENERATELISTSETTINGS
 #define SYMBOL_GENERATELISTSETTINGS_SIZE wxSize( 400, 500 )
 #define SYMBOL_GENERATELISTSETTINGS_POSITION wxDefaultPosition
-//
 
 
-/*
- * GenerateListSettings class declaration
- */
 
 class GenerateListSettings : public wxDialog
 {
@@ -76,7 +60,7 @@ public:
     };
 
 
-    
+
 
 
     GenerateListSettings( );
@@ -94,27 +78,20 @@ public:
 
     void CreateControls( );
 
-    // GenerateListSettings event handler declarations
-
-        //   ID_STATUSALLBUTTON
     void OnStatusAllButtonClick( wxCommandEvent& event );
 
-    //   IDSTATUSCLEARBUTTON
     void OnStatusClearButtonClick( wxCommandEvent& event );
 
-    //   ID_EMISSIONALLBUTTON
     void OnEmissionAllButtonClick( wxCommandEvent& event );
 
-    //   ID_EMISSIONCLEARBUTTON
+    void OnFormatAllButtonClick( wxCommandEvent& event );
+
     void OnEmissionClearButtonClick( wxCommandEvent& event );
 
-    //   ID_FORMATCLEARBUTTON
     void OnFormatClearButtonClick( wxCommandEvent& event );
 
-    //   ID_CLEARYEARRANGEBUTTON
     void OnClearYearRangeButtonClick( wxCommandEvent& event );
 
-    //   wxID_OK
     void OnOkClick( wxCommandEvent& event );
 
 
@@ -135,7 +112,7 @@ public:
     wxString GetToYear( ) { return m_toYear->GetValue( ); };
     void SetToYear( wxString year ) { m_toYear->SetValue( year ); };
 
-    
+
 
 
 
@@ -155,4 +132,3 @@ public:
 };
 
 #endif
-// _GENERATELISTSETTINGS_H_

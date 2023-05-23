@@ -37,7 +37,10 @@ namespace Utils {
     public:
 
         Project( );
+
         ~Project( ) { if ( m_ProjectDoc ) { delete m_ProjectDoc; } };
+
+        void SetCaption( );
 
         void InitProject( );
 
@@ -51,8 +54,8 @@ namespace Utils {
         void SetDesignFilename( wxString albumFilename );;
 
 
-        // wxString GetImagePath( );
-        // void SetImagePath( wxString imagePath );
+        wxString GetImagePath( );
+        void SetImagePath( wxString imagePath );
 
         //wxString GetCatalogFilename( );
         //void SetCatalogFilename( wxString catalogFilename );
@@ -68,7 +71,7 @@ namespace Utils {
         //Load the project xml attributes
         void LoadAttributes( wxXmlNode* thisObject );
 
-        void FileNewProject( wxString prjName );
+        void FileNewProject( wxString sptName );
         void LoadData( );
         void FileOpenProject( wxString filename );
         void FileSaveProject( );
@@ -89,7 +92,7 @@ namespace Utils {
         wxString m_projectFilename;
         wxString m_outputFilename;
         wxString m_designFilename;
-        //wxString m_imagePath;
+        wxString m_imagePath;
         //wxString m_catalogFilename;
         wxString m_defaultCountryID;
         wxString m_defaultCatalogCode;

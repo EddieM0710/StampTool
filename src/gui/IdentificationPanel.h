@@ -58,16 +58,26 @@ public:
         ID_THEMETEXTBOX,
         ID_THEMETEXTBOXUP,
         ID_COUNTRYTEXTBOX,
-        ID_EDITCHECKBOX
+        ID_EDITCHECKBOX,
+        ID_WIDTHLABELEDTEXTBOX,
+        ID_HEIGHTLABELEDTEXTBOX,
+        ID_LINKTEXTBOX,
+        ID_MYSTICBUTTON,
+        ID_COLNECTBUTTON,
+        ID_SITETBUTTON,
+        ID_EBAYBUTTON,
+        ID_NPMBUTTON,
+        ID_CATCODETEXTBOX,
+        ID_IMAGENAMETEXTBOX
     };
 
-    
 
-        /**
-         * @brief Default Constructor a new IdentificationPanel object
-         * @details Must be used in conjunction with Create.
-         *
-         */
+
+    /**
+     * @brief Default Constructor a new IdentificationPanel object
+     * @details Must be used in conjunction with Create.
+     *
+     */
     IdentificationPanel( );
 
     /**
@@ -139,8 +149,11 @@ public:
     void OnTextctrlTextUpdated( wxCommandEvent& event );
     void OnEditCheckBox( wxCommandEvent& event );
     void SetDataEditable( bool val = true );
+    void OnColnectButtonClick( wxCommandEvent& event );;
 
-    // IdentificationPanel member function declarations
+    void OneBayButtonClick( wxCommandEvent& event );
+    void OnMysticButtonClick( wxCommandEvent& event );
+    void OnNPMButtonClick( wxCommandEvent& event );
 
 
     /**
@@ -180,7 +193,7 @@ public:
      */
     void UpdateStatus( );
 
-    
+
 
 
 
@@ -195,6 +208,14 @@ private:
     LabeledTextBox* m_series;    ///< Stamp Series display
     LabeledTextBox* m_themes;    ///< Stamp Theme display
     LabeledTextBox* m_country;   ///< Stamp Country display
+    LabeledTextBox* m_width;   ///< Stamp width display
+    LabeledTextBox* m_height;   ///< Stamp height display
+
+
+
+    LabeledTextBox* m_link;
+    LabeledTextBox* m_catCodes;
+    LabeledTextBox* m_imageName;
 };
 
 #endif

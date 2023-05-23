@@ -92,11 +92,12 @@ namespace Catalog {
         {
             Catalog::CatalogVolume* volume = ( Catalog::CatalogVolume* ) ( *it );
             volume->Load( );
+            std::cout << " Loaded " << volume->GetVolumeName( ) << "\n";
         }
 
         if ( m_catalogArray.size( ) > 1 )
         {
-            sort( m_catalogArray.begin( ), m_catalogArray.end( ), WayToSort );
+            sort( std::begin( m_catalogArray ), std::end( m_catalogArray ) );
         }
 
         m_volumeNameStrings.Clear( );

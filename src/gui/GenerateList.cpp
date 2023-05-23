@@ -72,6 +72,28 @@ GenerateList::~GenerateList( )
 
 //--------------
 
+bool GenerateList::AddEntry( Catalog::Entry* entry )
+{
+
+    m_gridCtrl->SetCellValue( m_currRow, 0, entry->GetID( ) );
+    m_gridCtrl->SetCellValue( m_currRow, 1, entry->GetInventoryStatus( ) );
+    m_gridCtrl->SetCellValue( m_currRow, 2, entry->GetName( ) );
+    m_gridCtrl->SetCellValue( m_currRow, 3, entry->GetIssuedDate( ) );
+    m_gridCtrl->SetCellValue( m_currRow, 4, entry->GetEmission( ) );
+    m_gridCtrl->SetCellValue( m_currRow, 5, entry->GetFormat( ) );
+    m_gridCtrl->SetCellValue( m_currRow, 6, entry->GetIssuedDate( ) );
+
+    return true;
+}
+
+void GenerateList::ClearList( )
+{
+    m_currRow = 0;
+    m_gridCtrl->ClearGrid( );
+
+}
+//--------------
+
 bool GenerateList::Create( wxWindow* parent, wxWindowID id, const wxPoint& pos, const wxSize& size, long style )
 {
     SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
@@ -106,7 +128,7 @@ void GenerateList::CreateControls( )
     m_gridCtrl->SetDefaultRowSize( 25 );
     m_gridCtrl->SetColLabelSize( 25 );
     m_gridCtrl->SetRowLabelSize( 50 );
-    m_gridCtrl->CreateGrid( 0, 6, wxGrid::wxGridSelectCells );
+    m_gridCtrl->CreateGrid( 0, 7, wxGrid::wxGridSelectCells );
     itemBoxSizer2->Add( m_gridCtrl, 1, wxGROW | wxALL, 5 );
 
     wxBoxSizer* itemBoxSizer8 = new wxBoxSizer( wxHORIZONTAL );
@@ -128,12 +150,17 @@ void GenerateList::CreateControls( )
     m_gridCtrl->SetColLabelValue( 3, Catalog::DataTypeNames[ Catalog::DT_Issued_on ] );
     m_gridCtrl->SetColLabelValue( 4, Catalog::DataTypeNames[ Catalog::DT_Emission ] );
     m_gridCtrl->SetColLabelValue( 5, Catalog::DataTypeNames[ Catalog::DT_Format ] );
+    m_gridCtrl->SetColLabelValue( 6, "Size" );
 }
 
 //--------------
 
 bool GenerateList::CheckStatus( Catalog::Entry* entry )
 {
+    if ( m_checkedStatusItems == 0 )
+    {
+        return true;
+    }
     wxString emission = entry->GetInventoryStatus( );
     int i = Catalog::FindStatusType( emission );
     if ( i >= 0 )
@@ -149,6 +176,10 @@ bool GenerateList::CheckStatus( Catalog::Entry* entry )
 
 bool GenerateList::CheckFormat( Catalog::Entry* entry )
 {
+    if ( m_checkedFormatItems == 0 )
+    {
+        return true;
+    }
     wxString emission = entry->GetFormat( );
     int i = Catalog::FindFormatType( emission );
     if ( i >= 0 )
@@ -164,6 +195,10 @@ bool GenerateList::CheckFormat( Catalog::Entry* entry )
 
 bool GenerateList::CheckEmission( Catalog::Entry* entry )
 {
+    if ( m_checkedEmissionItems == 0 )
+    {
+        return true;
+    }
     wxString emission = entry->GetEmission( );
     int i = Catalog::FindEmissionType( emission );
     if ( i >= 0 )
@@ -312,6 +347,19 @@ void GenerateList::ShowRow( Catalog::Entry* entry, int row )
         m_gridCtrl->SetColSize( 4, size );
     }
     m_gridCtrl->SetCellValue( row, 5, entry->GetFormat( ) );
+
+    wxString height = entry->GetHeight( );
+    wxString width = entry->GetWidth( );
+    if ( height.IsEmpty( ) || width.IsEmpty( ) )
+    {
+        m_gridCtrl->SetCellValue( row, 6, "Size Missing" );
+    }
+    else
+    {
+        m_gridCtrl->SetCellValue( row, 6, "" );
+
+    }
+
 }
 
 //--------------
@@ -358,8 +406,8 @@ void GenerateList::WriteEntries( wxXmlNode* parent, int& row )
                 ShowRow( &entry, row );
                 row++;
             }
-            WriteEntries( child, row );
         }
+        WriteEntries( child, row );
         child = child->GetNext( );
     }
 }

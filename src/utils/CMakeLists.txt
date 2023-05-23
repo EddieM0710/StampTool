@@ -11,6 +11,8 @@ set( CMAKE_RUNTIME_OUTPUT_DIRECTORY ${build_Directory} )
 add_library( Utils SHARED
     CSV.cpp
     DebugString.cpp
+#    ImageZip.cpp
+    ImageRepository.cpp
     Project.cpp
     Settings.cpp 
     StampList.cpp 

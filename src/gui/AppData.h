@@ -45,6 +45,8 @@ public:
     ///
     ~AppData( ) { };
 
+    void SetCaption( );
+
     ///  @brief Get the Album Data object
     ///  
     ///  @return * Design::AlbumData* 

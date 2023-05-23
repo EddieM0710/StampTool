@@ -25,15 +25,20 @@
 #ifndef AlbumVolume_H
 #define AlbumVolume_H
 
-#include "Defs.h"
-#include "design/DesignDefs.h"
 #include "wx/xml/xml.h"
 #include <wx/string.h>
 #include <wx/treebase.h>
+#include <wx/zipstrm.h>
+#include <wx/arrstr.h>
+
+#include "Defs.h"
+#include "design/DesignDefs.h"
+
+
 #include "utils/XMLUtilities.h"
 
 class AlbumTreeCtrl;
-
+namespace Utils { class ImageRepository; };
 
 namespace Design {
 
@@ -54,10 +59,16 @@ namespace Design {
         ///  
         ~AlbumVolume( );
 
+        bool AddImageToZip( wxString outputZipName, wxString newImage );
+
         /// @brief Get the Album object
         ///  
         ///  @return Album* 
         Album* GetAlbum( ) { return m_album; };
+
+        Utils::ImageRepository* GetImageRepository( );
+
+        wxString GetAlbumBaseName( );
 
         /// @brief Get the Album Filename object
         ///  
@@ -77,11 +88,21 @@ namespace Design {
             return "";
         };
 
+        wxString GetAlbumPath( );
+
+        wxImage GetImage( wxString filename );
+
+        wxImage* GetImageFromZip( wxString inputZipName, wxString newImage );
+
+        wxString GetPath( );
+
         /// @brief Get the AlbumVolume xml Doc
         wxXmlDocument* GetDoc( ) { return m_albumDoc; };
 
         /// @brief Gets the page of the selected design given node
         AlbumBase* GetPage( AlbumBase* node );
+
+        wxString GetZipFileName( );
 
         /// @brief 
         ///  
@@ -115,6 +136,14 @@ namespace Design {
 
         /// @brief loads an xml file into memory 
         bool LoadXML( );
+
+        bool MakeAlbumImageArray( wxArrayString& fileArray );
+
+        bool MakeAlbumImageArray( wxXmlNode* parent, wxArrayString& fileArray );
+
+        bool MakeAlbumImageRepository( wxString outputZipName );
+
+        bool AddImageFile( wxZipOutputStream& zip, wxString inputFileName, wxString zippedFileName );
 
         /// @brief Set the Album object
         ///  
@@ -166,7 +195,9 @@ namespace Design {
         int isOKPtr;
         wxString m_albumFilename;
         wxXmlDocument* m_albumDoc;
+        Utils::ImageRepository* m_imageRepository;
         Album* m_album;
+        //        Utils::ImageZip* m_zip;
         bool m_dirty;
     };
 

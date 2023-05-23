@@ -31,16 +31,27 @@
 
 #include "design/AlbumVolume.h"
 
+#include "gui/AlbumPanel.h"
 #include "design/AlbumData.h"
+#include "design/AlbumList.h"
+#include "design/AlbumVolume.h"
 
 namespace Design {
 
 
     void AlbumData::FileOpen( wxString filename )
     {
-        GetProject( )->SetDesignFilename( filename );
-        LoadDesignVolumeFiles( );
+        // GetProject( )->SetDesignFilename( filename );
+        // LoadDesignVolumeFiles( );
+        // LoadDesignTree( );
+
+        Design::AlbumVolume* volume = GetAlbumList( ).NewAlbumVolume( );
+        volume->SetAlbumFilename( filename );
+        volume->LoadXML( );
+        GetAlbumList( ).BuildVolumeNameStrings( );
+        UpdateAlbumVolumeStrings( );
         LoadDesignTree( );
+
     }
 
     void AlbumData::FileSave( )
@@ -66,7 +77,9 @@ namespace Design {
     /// Load the Catalog and Design data then populate trees
     void AlbumData::LoadData( )
     {
+
         LoadDesignVolumeFiles( );
+        m_albumList.BuildVolumeNameStrings( );
         LoadDesignTree( );
     }
 
@@ -102,6 +115,12 @@ namespace Design {
         GetStampAlbumCatalogLink( )->Clear( );
 
         return m_albumList.NewAlbumVolume( );
+    }
+
+    void AlbumData::UpdateAlbumVolumeStrings( )
+    {
+        m_albumPanel->SetAlbumListStrings( m_albumList.GetVolumeNameStrings( ) );
+        m_albumPanel->SetAlbumListSelection( m_albumList.GetAlbumVolumeNdx( ) );
     }
 
 }

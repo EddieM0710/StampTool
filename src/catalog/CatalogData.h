@@ -36,6 +36,7 @@ namespace Catalog { class Entry; };
 class CatalogTreeCtrl;
 class StampDescriptionPanel;
 class CatalogPanel;
+class GenerateList;
 
 namespace Catalog
 {
@@ -71,7 +72,7 @@ namespace Catalog
         ///  @brief Get the Album Notebook Page TreeCtrl object
         ///  
         ///  @return CatalogTreeCtrl* 
-        inline CatalogTreeCtrl* GetAlbumPageTreeCtrl( ) { return m_albumPageTreeCtrl; };
+        //inline CatalogTreeCtrl* GetAlbumPageTreeCtrl( ) { return m_albumPageTreeCtrl; };
 
         ///  @brief Get the Catalog List object
         ///  
@@ -82,7 +83,7 @@ namespace Catalog
         ///
         /// @return CatalogTreeCtrl*
         ///
-        inline CatalogTreeCtrl* GetCatalogPageTreeCtrl( ) { return m_catalogPageTreeCtrl; };
+        inline CatalogTreeCtrl* GetCatalogTreeCtrl( ) { return m_catalogTreeCtrl; };
 
         ///  @brief Get the Image Filename object
         ///  
@@ -113,6 +114,8 @@ namespace Catalog
         ///  @brief Get the Description Panel object
         ///  @return StampDescriptionPanel*
         inline StampDescriptionPanel* GetDescriptionPanel( ) { return m_stampDescriptionPanel; };
+
+        GenerateList* GetGenerateListPanel( ) { return m_generateListPanel; };
 
         ///  @brief Get the Volume Name Strings object
         ///  
@@ -150,27 +153,30 @@ namespace Catalog
         ///  @brief Set the Album Notebook Page TreeCtrl object
         ///  
         ///  @param treeCtrl 
-        void SetAlbumPageTreeCtrl( CatalogTreeCtrl* treeCtrl ) { m_albumPageTreeCtrl = treeCtrl; };
+      //  void SetAlbumPageTreeCtrl( CatalogTreeCtrl* treeCtrl ) { m_albumPageTreeCtrl = treeCtrl; };
 
         ///  @brief Set the Description Panel object
         ///  
         ///  @param descriptionPanel 
         void SetDescriptionPanel( StampDescriptionPanel* descriptionPanel ) { m_stampDescriptionPanel = descriptionPanel; };
 
+        void SetGenerateListPanel( GenerateList* generateListPanel ) { m_generateListPanel = generateListPanel; };
+
+
         ///  @brief Set the Catalog Notebook Page TreeCtrl object
         ///  
         ///  @param treeCtrl 
-        void SetCatalogPageTreeCtrl( CatalogTreeCtrl* treeCtrl ) { m_catalogPageTreeCtrl = treeCtrl; };
+        void SetCatalogTreeCtrl( CatalogTreeCtrl* treeCtrl ) { m_catalogTreeCtrl = treeCtrl; };
 
-        void SetCatalogNotebookPagePanel( CatalogPanel* catalogPanel ) { m_catalogNotebookPagePanel = catalogPanel; };
+        void SetCatalogTreePanel( CatalogPanel* catalogPanel ) { m_catalogTreePanel = catalogPanel; };
 
-        void SetAlbumNotebookPagePanel( CatalogPanel* catalogPanel ) { m_albumNotebookPagePanel = catalogPanel; };
+        //void SetAlbumNotebookPagePanel( CatalogPanel* catalogPanel ) { m_albumNotebookPagePanel = catalogPanel; };
 
         ///  @brief Set the Current Stamp object for sisplay in 
         /// all gui panels;
         ///  
         ///  @param stamp 
-        void SetCurrentStamp( wxXmlNode* stamp );
+        void SetCurrentStamp( wxXmlNode* xmlNode );
 
         void UpdateCatalogVolumeStrings( );
 
@@ -178,11 +184,13 @@ namespace Catalog
 
         Catalog::Entry* m_stamp;
         Catalog::CatalogList m_catalogList;
-        CatalogTreeCtrl* m_catalogPageTreeCtrl;
-        CatalogTreeCtrl* m_albumPageTreeCtrl;
+        CatalogTreeCtrl* m_catalogTreeCtrl;
+        //CatalogTreeCtrl* m_albumPageTreeCtrl;
         StampDescriptionPanel* m_stampDescriptionPanel;
-        CatalogPanel* m_catalogNotebookPagePanel;
-        CatalogPanel* m_albumNotebookPagePanel;
+        GenerateList* m_generateListPanel;
+
+        CatalogPanel* m_catalogTreePanel;
+        //CatalogPanel* m_albumNotebookPagePanel;
     };
 }
 #endif

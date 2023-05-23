@@ -33,11 +33,13 @@
 #include "wx/wx.h"
 #endif
 
+#include <wx/clipbrd.h>
+
 #include "Defs.h"
 #include "gui/LabeledTextBox.h"
 #include "gui/IdentificationPanel.h"
 #include "gui/CatalogTreeCtrl.h"
-//#include "gui/AppData.h"
+ //#include "gui/AppData.h"
 #include "gui/StampDescriptionPanel.h"
 #include "utils/Settings.h"
 #include "catalog/CatalogData.h"
@@ -45,7 +47,6 @@
 
 
 IMPLEMENT_DYNAMIC_CLASS( IdentificationPanel, wxPanel )
-; // Formatting silly business; The above macro screws up the formatter but the semicolon fixes it
 
 
 BEGIN_EVENT_TABLE( IdentificationPanel, wxPanel )
@@ -59,12 +60,17 @@ EVT_TEXT( ID_THEMETEXTBOX, IdentificationPanel::OnTextctrlTextUpdated )
 EVT_TEXT( ID_COUNTRYTEXTBOX, IdentificationPanel::OnTextctrlTextUpdated )
 EVT_TEXT( ID_NAMELABELEDTEXTBOX, IdentificationPanel::OnTextctrlTextUpdated )
 EVT_TEXT( ID_IDLABELEDTEXTBOX, IdentificationPanel::OnTextctrlTextUpdated )
+EVT_TEXT( ID_WIDTHLABELEDTEXTBOX, IdentificationPanel::OnTextctrlTextUpdated )
+EVT_TEXT( ID_HEIGHTLABELEDTEXTBOX, IdentificationPanel::OnTextctrlTextUpdated )
+
+EVT_BUTTON( ID_MYSTICBUTTON, IdentificationPanel::OnMysticButtonClick )
+EVT_BUTTON( ID_COLNECTBUTTON, IdentificationPanel::OnColnectButtonClick )
+EVT_BUTTON( ID_EBAYBUTTON, IdentificationPanel::OneBayButtonClick )
+EVT_BUTTON( ID_NPMBUTTON, IdentificationPanel::OnNPMButtonClick )
 
 EVT_CHECKBOX( ID_EDITCHECKBOX, IdentificationPanel::OnEditCheckBox )
 
 END_EVENT_TABLE( )
-; // silly business; The above macro screws up the formatter
-
 
 IdentificationPanel::IdentificationPanel( )
 {
@@ -109,40 +115,45 @@ void IdentificationPanel::Init( )
     m_ID = NULL;
     m_status = NULL;
     m_name = NULL;
+    m_width = NULL;
+    m_height = NULL;
     m_emission = NULL;
     m_format = NULL;
     m_issueDate = NULL;
     m_series = NULL;
     m_themes = NULL;
     m_country = NULL;
+    m_link = NULL;
+    m_catCodes = NULL;
+    m_imageName = NULL;
 }
 
 void IdentificationPanel::CreateControls( )
 {
-    IdentificationPanel* itemPanel1 = this;
+    IdentificationPanel* thePanel = this;
 
-    wxBoxSizer* itemBoxSizer2 = new wxBoxSizer( wxVERTICAL );
-    itemPanel1->SetSizer( itemBoxSizer2 );
+    wxBoxSizer* panelVerticalSizer = new wxBoxSizer( wxVERTICAL );
+    thePanel->SetSizer( panelVerticalSizer );
 
 
-    m_editCheckbox = new wxCheckBox( itemPanel1, ID_EDITCHECKBOX, _( "Edit" ), wxDefaultPosition, wxDefaultSize, 0 );
+    m_editCheckbox = new wxCheckBox( thePanel, ID_EDITCHECKBOX, _( "Edit" ), wxDefaultPosition, wxDefaultSize, 0 );
     m_editCheckbox->SetValue( false );
-    itemBoxSizer2->Add( m_editCheckbox, 0, wxALIGN_LEFT | wxALL, 5 );
+    panelVerticalSizer->Add( m_editCheckbox, 0, wxALIGN_LEFT | wxALL, 5 );
 
-    wxBoxSizer* itemBoxSizer1 = new wxBoxSizer( wxHORIZONTAL );
-    itemBoxSizer2->Add( itemBoxSizer1, 0, wxALIGN_CENTER_HORIZONTAL | wxALL,
+    wxBoxSizer* idHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
+    panelVerticalSizer->Add( idHorizontalSizer, 0, wxALIGN_CENTER_HORIZONTAL | wxALL,
         2 );
 
-    m_ID = new LabeledTextBox( itemPanel1, ID_IDLABELEDTEXTBOX,
+    m_ID = new LabeledTextBox( thePanel, ID_IDLABELEDTEXTBOX,
         wxDefaultPosition, wxDefaultSize, 0 );
-    itemBoxSizer1->Add( m_ID, 0, wxALIGN_CENTER_VERTICAL | wxALL, 0 );
+    idHorizontalSizer->Add( m_ID, 0, wxALIGN_CENTER_VERTICAL | wxALL, 0 );
 
-    wxBoxSizer* itemBoxSizer5 = new wxBoxSizer( wxHORIZONTAL );
-    itemBoxSizer1->Add( itemBoxSizer5, 0, wxALIGN_CENTER_VERTICAL | wxALL, 0 );
+    wxBoxSizer* statusHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
+    idHorizontalSizer->Add( statusHorizontalSizer, 0, wxALIGN_CENTER_VERTICAL | wxALL, 0 );
 
-    wxStaticText* itemStaticText6 = new wxStaticText( itemPanel1, wxID_STATIC, _( "Status" ),
+    wxStaticText* itemStaticText6 = new wxStaticText( thePanel, wxID_STATIC, _( "Status" ),
         wxDefaultPosition, wxDefaultSize, 0 );
-    itemBoxSizer5->Add( itemStaticText6, 0, wxALIGN_CENTER_VERTICAL | wxALL,
+    statusHorizontalSizer->Add( itemStaticText6, 0, wxALIGN_CENTER_VERTICAL | wxALL,
         5 );
 
     wxArrayString m_statusStrings;
@@ -152,21 +163,21 @@ void IdentificationPanel::CreateControls( )
     m_statusStrings.Add( Catalog::InventoryStatusStrings[ Catalog::ST_Own ] );
     m_statusStrings.Add( Catalog::InventoryStatusStrings[ Catalog::ST_OwnVariant ] );
     m_statusStrings.Add( Catalog::InventoryStatusStrings[ Catalog::ST_Exclude ] );
-    m_status = new wxChoice( itemPanel1, ID_STATUSCHOICE, wxDefaultPosition,
+    m_status = new wxChoice( thePanel, ID_STATUSCHOICE, wxDefaultPosition,
         wxDefaultSize, m_statusStrings, 0 );
     m_status->SetStringSelection( _( "None" ) );
-    itemBoxSizer5->Add( m_status, 1, wxGROW | wxALL, 1 );
+    statusHorizontalSizer->Add( m_status, 1, wxGROW | wxALL, 1 );
 
-    m_name = new LabeledTextBox( itemPanel1, ID_NAMELABELEDTEXTBOX,
+    m_name = new LabeledTextBox( thePanel, ID_NAMELABELEDTEXTBOX,
         wxDefaultPosition, wxDefaultSize, 0 );
-    itemBoxSizer2->Add( m_name, 0, wxGROW | wxALL, 2 );
+    panelVerticalSizer->Add( m_name, 0, wxGROW | wxALL, 2 );
 
-    wxBoxSizer* itemBoxSizer3 = new wxBoxSizer( wxHORIZONTAL );
-    itemBoxSizer2->Add( itemBoxSizer3, 0, wxALIGN_LEFT | wxALL, 2 );
+    wxBoxSizer* emissionHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
+    panelVerticalSizer->Add( emissionHorizontalSizer, 0, wxALIGN_LEFT | wxALL, 2 );
 
-    wxStaticText* itemStaticText1 = new wxStaticText( itemPanel1, wxID_STATIC, _( "Emission" ),
+    wxStaticText* emissionStaticText = new wxStaticText( thePanel, wxID_STATIC, _( "Emission" ),
         wxDefaultPosition, wxDefaultSize, 0 );
-    itemBoxSizer3->Add( itemStaticText1, 0, wxALIGN_CENTER_VERTICAL | wxALL,
+    emissionHorizontalSizer->Add( emissionStaticText, 0, wxALIGN_CENTER_VERTICAL | wxALL,
         0 );
 
     wxArrayString m_emissionStrings;
@@ -175,17 +186,17 @@ void IdentificationPanel::CreateControls( )
         m_emissionStrings.Add( _( Catalog::EmissionStrings[ i ] ) );
     }
 
-    m_emission = new wxChoice( itemPanel1, ID_EMISSIONCHOICE, wxDefaultPosition,
+    m_emission = new wxChoice( thePanel, ID_EMISSIONCHOICE, wxDefaultPosition,
         wxDefaultSize, m_emissionStrings, 0 );
     m_emission->SetStringSelection( _( "Unknown" ) );
-    itemBoxSizer3->Add( m_emission, 1, wxGROW | wxALL, 1 );
+    emissionHorizontalSizer->Add( m_emission, 1, wxGROW | wxALL, 1 );
 
-    wxBoxSizer* itemBoxSizer4 = new wxBoxSizer( wxHORIZONTAL );
-    itemBoxSizer2->Add( itemBoxSizer4, 0, wxALIGN_LEFT | wxALL, 2 );
+    wxBoxSizer* formatHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
+    panelVerticalSizer->Add( formatHorizontalSizer, 0, wxALIGN_LEFT | wxALL, 2 );
 
-    wxStaticText* itemStaticText5 = new wxStaticText( itemPanel1, wxID_STATIC, _( "Format" ),
+    wxStaticText* formatStaticText = new wxStaticText( thePanel, wxID_STATIC, _( "Format" ),
         wxDefaultPosition, wxDefaultSize, 0 );
-    itemBoxSizer4->Add( itemStaticText5, 0, wxALIGN_CENTER_VERTICAL | wxALL,
+    formatHorizontalSizer->Add( formatStaticText, 0, wxALIGN_CENTER_VERTICAL | wxALL,
         0 );
 
     wxArrayString m_formatStrings;
@@ -199,26 +210,86 @@ void IdentificationPanel::CreateControls( )
     m_formatStrings.Add( _( "Gutter Pair" ) );
     m_formatStrings.Add( _( "Stamp with Attached Label" ) );
     m_formatStrings.Add( _( "Tete-Beche" ) );
-    m_format = new wxChoice( itemPanel1, ID_FORMATCHOICE, wxDefaultPosition,
+    m_format = new wxChoice( thePanel, ID_FORMATCHOICE, wxDefaultPosition,
         wxDefaultSize, m_formatStrings, 0 );
     m_format->SetStringSelection( _( "Unknown" ) );
-    itemBoxSizer4->Add( m_format, 1, wxGROW | wxALL, 1 );
+    formatHorizontalSizer->Add( m_format, 1, wxGROW | wxALL, 1 );
 
-    m_issueDate = new LabeledTextBox( itemPanel1, ID_ISSUEDTEXTBOX,
+    m_issueDate = new LabeledTextBox( thePanel, ID_ISSUEDTEXTBOX,
         wxDefaultPosition, wxDefaultSize, 0 );
-    itemBoxSizer2->Add( m_issueDate, 0, wxGROW | wxALL, 2 );
+    panelVerticalSizer->Add( m_issueDate, 0, wxGROW | wxALL, 2 );
 
-    m_series = new LabeledTextBox( itemPanel1, ID_SERIESTEXTBOX,
+    m_series = new LabeledTextBox( thePanel, ID_SERIESTEXTBOX,
         wxDefaultPosition, wxDefaultSize, 0 );
-    itemBoxSizer2->Add( m_series, 0, wxGROW | wxALL, 2 );
+    panelVerticalSizer->Add( m_series, 0, wxGROW | wxALL, 2 );
 
-    m_themes = new LabeledTextBox( itemPanel1, ID_THEMETEXTBOX,
+    m_themes = new LabeledTextBox( thePanel, ID_THEMETEXTBOX,
         wxDefaultPosition, wxDefaultSize, 0 );
-    itemBoxSizer2->Add( m_themes, 0, wxGROW | wxALL, 2 );
+    panelVerticalSizer->Add( m_themes, 0, wxGROW | wxALL, 2 );
 
-    m_country = new LabeledTextBox( itemPanel1, ID_COUNTRYTEXTBOX,
+    m_country = new LabeledTextBox( thePanel, ID_COUNTRYTEXTBOX,
         wxDefaultPosition, wxDefaultSize, 0 );
-    itemBoxSizer2->Add( m_country, 0, wxGROW | wxALL, 2 );
+    panelVerticalSizer->Add( m_country, 0, wxGROW | wxALL, 2 );
+
+    wxBoxSizer* sizeHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
+    panelVerticalSizer->Add( sizeHorizontalSizer, 0, wxALIGN_LEFT | wxALL, 2 );
+
+    m_width = new LabeledTextBox( thePanel, ID_WIDTHLABELEDTEXTBOX,
+        wxDefaultPosition, wxDefaultSize, 0 );
+    sizeHorizontalSizer->Add( m_width, 0, wxGROW | wxALL, 2 );
+
+    m_height = new LabeledTextBox( thePanel, ID_HEIGHTLABELEDTEXTBOX,
+        wxDefaultPosition, wxDefaultSize, 0 );
+    sizeHorizontalSizer->Add( m_height, 0, wxGROW | wxALL, 2 );
+
+
+
+
+    wxBoxSizer* itemBoxSizer3 = new wxBoxSizer( wxHORIZONTAL );
+    panelVerticalSizer->Add( itemBoxSizer3, 0, wxGROW | wxALL, 0 );
+
+    m_link = new LabeledTextBox( thePanel, ID_LINKTEXTBOX, wxDefaultPosition,
+        wxDefaultSize, 0 );
+    panelVerticalSizer->Add( m_link, 0, wxGROW | wxALL, 0 );
+
+    wxBoxSizer* itemBoxSizer8 = new wxBoxSizer( wxHORIZONTAL );
+    panelVerticalSizer->Add( itemBoxSizer8, 0, wxGROW | wxALL, 5 );
+
+    // wxButton* itemButton9
+    //     = new wxButton( thePanel, ID_MYSTICBUTTON, _( "Mystic" ),
+    //         wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT );
+    // itemBoxSizer8->Add( itemButton9, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+
+    wxButton* itemButton10
+        = new wxButton( thePanel, ID_COLNECTBUTTON, _( "Colnect" ),
+            wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT );
+    itemBoxSizer8->Add( itemButton10, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+
+    // wxButton* itemButton11
+    //     = new wxButton( thePanel, ID_EBAYBUTTON, _( "eBay" ),
+    //         wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT );
+    // itemBoxSizer8->Add( itemButton11, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+
+    // wxButton* itemButton12
+    //     = new wxButton( thePanel, ID_NPMBUTTON, _( "NPM" ), wxDefaultPosition,
+    //         wxDefaultSize, wxBU_EXACTFIT );
+    // itemBoxSizer8->Add( itemButton12, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+
+    m_catCodes = new LabeledTextBox( thePanel, ID_CATCODETEXTBOX,
+        wxDefaultPosition, wxDefaultSize, 0 );
+    panelVerticalSizer->Add( m_catCodes, 0, wxGROW | wxALL, 0 );
+
+    m_imageName = new LabeledTextBox( thePanel, ID_IMAGENAMETEXTBOX,
+        wxDefaultPosition, wxDefaultSize, 0 );
+    panelVerticalSizer->Add( m_imageName, 0, wxGROW | wxALL, 0 );
+
+    m_link->SetLabel( Catalog::DataTypeNames[ Catalog::DT_Link ] );
+    m_catCodes->SetLabel( Catalog::DataTypeNames[ Catalog::DT_Catalog_Codes ] );
+    m_imageName->SetLabel( "Image Name" );
+
+
+
+
 
     m_issueDate->SetLabel( "Issue Date" );
     m_emission->SetLabel( "Emission" );
@@ -226,6 +297,8 @@ void IdentificationPanel::CreateControls( )
     m_themes->SetLabel( "Themes" );
     m_ID->SetLabel( "ID" );
     m_name->SetLabel( "Name" );
+    m_width->SetLabel( "Width" );
+    m_height->SetLabel( "Height" );
 
     m_series->SetLabel( "Series" );
     m_status->SetLabel( "Status" );
@@ -277,6 +350,14 @@ void IdentificationPanel::OnTextctrlTextUpdated( wxCommandEvent& event )
     else if ( eventObject == m_name )
     {
         UpdateStampValue( Catalog::DT_Name, m_name );
+    }
+    else if ( eventObject == m_width )
+    {
+        UpdateStampValue( Catalog::DT_Width, m_width );
+    }
+    else if ( eventObject == m_height )
+    {
+        UpdateStampValue( Catalog::DT_Height, m_height );
     }
 
 
@@ -330,6 +411,8 @@ void IdentificationPanel::UpdatePanel( )
     {
         m_ID->ChangeValue( stamp->GetAttr( Catalog::DT_ID_Nbr ) );
         m_name->ChangeValue( stamp->GetAttr( Catalog::DT_Name ) );
+        m_width->ChangeValue( stamp->GetAttr( Catalog::DT_Width ) );
+        m_height->ChangeValue( stamp->GetAttr( Catalog::DT_Height ) );
         m_issueDate->SetValue( stamp->GetAttr( Catalog::DT_Issued_on ) );
         SetChoice( m_emission, stamp->GetEmission( ) );
         SetChoice( m_format, stamp->GetFormat( ) );
@@ -337,6 +420,16 @@ void IdentificationPanel::UpdatePanel( )
         m_themes->ChangeValue( stamp->GetAttr( Catalog::DT_Themes ) );
         m_country->ChangeValue( stamp->GetAttr( Catalog::DT_Country ) );
         SetChoice( m_status, stamp->GetInventoryStatus( ) );
+
+        m_link->SetValue( stamp->GetAttr( Catalog::DT_Link ) );
+        m_catCodes->SetValue( stamp->GetAttr( Catalog::DT_Catalog_Codes ) );
+        wxString id = stamp->GetAttr( Catalog::DT_ID_Nbr );
+        id = id.Trim( true );
+        id = id.Trim( false );
+        id.Replace( ":", "_" );
+        id.Replace( " ", "_" );
+        id.Append( ".jpg" );
+        m_imageName->SetValue( id );
     }
 }
 
@@ -348,9 +441,14 @@ void IdentificationPanel::SetDataEditable( bool val )
     m_themes->SetEditable( val );
     m_ID->SetEditable( val );
     m_name->SetEditable( val );
+    m_width->SetEditable( val );
+    m_height->SetEditable( val );
     m_series->SetEditable( val );
     // m_status->Enable( val );
     m_country->SetEditable( val );
+    m_link->SetEditable( val );;
+    m_catCodes->SetEditable( val );;
+    m_imageName->SetEditable( val );;
 }
 
 void IdentificationPanel::OnEditCheckBox( wxCommandEvent& event )
@@ -369,7 +467,7 @@ void IdentificationPanel::OnStatuschoiceSelected( wxCommandEvent& event )
     if ( stamp )
     {
         stamp->SetInventoryStatus( strSel );
-        GetCatalogPageTreeCtrl( )->SetInventoryStatusImage( );
+        GetCatalogTreeCtrl( )->SetInventoryStatusImage( );
     }
     event.Skip( );
 
@@ -382,5 +480,94 @@ void IdentificationPanel::UpdateStatus( )
     if ( stamp->IsOK( ) )
     {
         SetChoice( m_status, stamp->GetInventoryStatus( ) );
+    }
+}
+
+void IdentificationPanel::OnColnectButtonClick( wxCommandEvent& event )
+{
+    if ( wxTheClipboard->Open( ) )
+    {
+        // This data objects are held by the clipboard, 
+        // so do not delete them in the app.
+        wxString imageName = m_imageName->GetValue( );
+        int pos = imageName.Find( ".jpg" );
+        imageName = imageName.Mid( 0, pos );
+        wxTheClipboard->SetData( new wxTextDataObject( imageName ) );
+        wxTheClipboard->Close( );
+    }
+    wxString link = m_link->GetValue( );
+    //    wxGetApp( ).GetFrame( )->GetWebViewPage( )->DoLoad( link );
+    wxString cmd = wxString::Format( "/usr/bin/firefox --new-tab %s &", link );
+    system( cmd.fn_str( ) );
+    event.Skip( );
+
+}
+
+void IdentificationPanel::OnMysticButtonClick( wxCommandEvent& event )
+{
+    //https://www.mysticstamp.com/Products/SimpleSearch.aspx?q=garden+Corsage
+
+    Catalog::Entry* stamp = GetCatalogData( )->GetCurrentStamp( );
+    if ( stamp->IsOK( ) )
+    {
+        wxString comma = ",";
+        wxString period = ".";
+        wxString semi = ";";
+        wxString apos = "'";
+        wxString space = " ";
+        wxString plus = "+";
+        wxString plusplus = "++";
+        wxString oParen = "(";
+        wxString cParen = ")";
+
+        wxString str = stamp->GetAttr( Catalog::DT_ID_Nbr ) + plus + stamp->GetAttr( Catalog::DT_Name );
+        str.Replace( space, plus );
+        str.Replace( space, plus );
+        str.Replace( space, plus );
+        str.Replace( period, plus );
+        str.Replace( semi, plus );
+        str.Replace( apos, plus );
+        str.Replace( oParen, plus );
+        str.Replace( cParen, plus );
+        str.Replace( plus, plus );
+        str.Replace( plusplus, plus );
+        str.Replace( plusplus, plus );
+        wxString link = "https://www.mysticstamp.com/Products/SimpleSearch.aspx?q=" + str;
+        wxString cmd = wxString::Format( "/usr/bin/firefox --new-tab %s", link );
+        system( cmd.fn_str( ) );
+
+        event.Skip( );
+
+    }
+}
+
+void IdentificationPanel::OnNPMButtonClick( wxCommandEvent& event )
+{
+
+    event.Skip( );
+}
+
+
+void IdentificationPanel::OneBayButtonClick( wxCommandEvent& event )
+{
+
+    Catalog::Entry* stamp = GetCatalogData( )->GetCurrentStamp( );
+    if ( stamp->IsOK( ) )
+    {
+
+        wxString str = "Postage Stamp " +
+            stamp->GetAttr( Catalog::DT_ID_Nbr ) + " + " + stamp->GetAttr( Catalog::DT_Name );
+        wxString space = " ";
+        wxString plus = "+";
+        str.Replace( space, plus );
+        wxString link = "https://www.ebay.com/sch/i.html?_nkw=" + str + "&_sop=15";
+        //https://www.ebay.com/sch/i.html?_from=R40&_nkw=garden&_sacat=260";
+        wxString cmd = wxString::Format( "/usr/bin/firefox --new-tab %s", link );
+        system( cmd.fn_str( ) );
+        // "https://www.ebay.com/sch/i.html?_from = R40&_nkw = us+stamps+%s&_sacat = 261&LH_TitleDesc = 0&_osacat = 261&_odkw = us+stamps"
+    https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2499334.m570.l1313&_nkw=Garden+Corsage&_sacat=260
+
+        event.Skip( );
+
     }
 }

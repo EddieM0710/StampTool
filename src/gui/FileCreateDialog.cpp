@@ -149,8 +149,8 @@ void FileCreateDialog::OnOKClick( wxCommandEvent& event )
     m_path = m_fileCtrl->GetPath( );
     m_file = m_fileCtrl->GetFilename( );
     m_dir = m_fileCtrl->GetDirectory( );
-    wxFileName prjFile( m_path );
-    if ( prjFile.Exists( ) )
+    wxFileName sptFile( m_path );
+    if ( sptFile.Exists( ) )
     {
         wxMessageDialog* dlg = new wxMessageDialog(
             this,

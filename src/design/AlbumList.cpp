@@ -61,6 +61,17 @@ namespace Design {
         return true;
     }
 
+    void AlbumList::BuildVolumeNameStrings( )
+    {
+        m_albumNameStrings.Clear( );
+        for ( Design::AlbumVolumeArray::iterator it = std::begin( m_albumVolumeArray );
+            it != std::end( m_albumVolumeArray );
+            ++it )
+        {
+            Design::AlbumVolume* volume = ( Design::AlbumVolume* ) ( *it );
+            m_albumNameStrings.Add( volume->GetAlbumName( ) );
+        }
+    }
     Design::AlbumVolume* AlbumList::GetAlbumVolume( )
     {
         if ( m_albumVolumeNdx >= 0 )
@@ -102,7 +113,7 @@ namespace Design {
             Design::AlbumVolume* album = ( Design::AlbumVolume* ) ( *it );
             m_albumNameStrings.Add( album->GetAlbumName( ) );
         }
-        AlbumPanel* albPanel = GetFrame( )->GetAlbumAlbumPanel( );
+        AlbumPanel* albPanel = GetFrame( )->GetAlbumPanel( );
         albPanel->SetAlbumListStrings( m_albumNameStrings );
         m_albumVolumeNdx = 0;
         albPanel->SetAlbumListSelection( m_albumVolumeNdx );

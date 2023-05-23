@@ -130,7 +130,7 @@ void StampDescriptionPanel::Init( void )
     m_zoomSlider = NULL;
     m_stampImage = NULL;
     m_inventoryPanel = NULL;
-    m_characteristicsPanel = NULL;
+    //    m_characteristicsPanel = NULL;
     m_miscellaneousDataPanel = NULL;
     //$    m_description = NULL;
     //$    m_bkgndText = NULL;
@@ -255,26 +255,26 @@ void StampDescriptionPanel::CreateControls( void )
 
 
 
-    m_catalogCodePanel =
-        new CatalogCodePanel( descriptionNotebook, ID_CATALOGCODEPANEL, wxDefaultPosition,
-            wxSize( 100, 100 ), wxSIMPLE_BORDER );
+    // m_catalogCodePanel =
+    //     new CatalogCodePanel( descriptionNotebook, ID_CATALOGCODEPANEL, wxDefaultPosition,
+    //         wxSize( 100, 100 ), wxSIMPLE_BORDER );
 
-    descriptionNotebook->AddPage( m_catalogCodePanel, _( "Catalog Codes" ) );
+    // descriptionNotebook->AddPage( m_catalogCodePanel, _( "Catalog Codes" ) );
 
 
 
-    m_characteristicsPanel = new CharacteristicsPanel(
-        descriptionNotebook, ID_CHARACTERISTICSWINDOW, wxDefaultPosition,
-        wxSize( 100, 100 ), wxSIMPLE_BORDER );
+    // m_characteristicsPanel = new CharacteristicsPanel(
+    //     descriptionNotebook, ID_CHARACTERISTICSWINDOW, wxDefaultPosition,
+    //     wxSize( 100, 100 ), wxSIMPLE_BORDER );
 
-    descriptionNotebook->AddPage( m_characteristicsPanel, _( "Characteristics" ) );
+    // descriptionNotebook->AddPage( m_characteristicsPanel, _( "Characteristics" ) );
 
-    m_miscellaneousDataPanel = new MiscellaneousDataPanel(
-        descriptionNotebook, ID_MISCELLANEOUSDATAFORIEGN, wxDefaultPosition,
-        wxDefaultSize, wxSIMPLE_BORDER | wxTAB_TRAVERSAL );
-    m_miscellaneousDataPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
+    // m_miscellaneousDataPanel = new MiscellaneousDataPanel(
+    //     descriptionNotebook, ID_MISCELLANEOUSDATAFORIEGN, wxDefaultPosition,
+    //     wxDefaultSize, wxSIMPLE_BORDER | wxTAB_TRAVERSAL );
+    // m_miscellaneousDataPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
 
-    descriptionNotebook->AddPage( m_miscellaneousDataPanel, _( "Miscellaneous" ) );
+    // descriptionNotebook->AddPage( m_miscellaneousDataPanel, _( "Miscellaneous" ) );
 
 
 
@@ -461,15 +461,15 @@ void StampDescriptionPanel::OnDescriptionTextctrlTextUpdated( wxCommandEvent& ev
  * initializes the StampDescriptionPanel with new stamp values
  */
 
-void StampDescriptionPanel::UpdatePanel( )//wxXmlNode* stamp )
+void StampDescriptionPanel::UpdatePanel( )
 {
     Catalog::Entry* stamp = GetCatalogData( )->GetCurrentStamp( );
 
     m_inventoryPanel->UpdatePanel( );
-    m_catalogCodePanel->UpdatePanel( );
-    m_characteristicsPanel->UpdatePanel( );
+    //    m_catalogCodePanel->UpdatePanel( );
+        //    m_characteristicsPanel->UpdatePanel( );
     m_identificationPanel->UpdatePanel( );
-    m_miscellaneousDataPanel->UpdatePanel( );
+    //    m_miscellaneousDataPanel->UpdatePanel( );
     wxString imageFile = GetCatalogData( )->GetImageFilename( stamp->GetID( ) );
     m_stampImage->SetBitmap( imageFile );
 }
@@ -477,10 +477,10 @@ void StampDescriptionPanel::UpdatePanel( )//wxXmlNode* stamp )
 void StampDescriptionPanel::SetDataEditable( bool val )
 {
     m_inventoryPanel->SetDataEditable( val );
-    m_catalogCodePanel->SetDataEditable( val );
-    m_characteristicsPanel->SetDataEditable( val );
+    //    m_catalogCodePanel->SetDataEditable( val );
+        //    m_characteristicsPanel->SetDataEditable( val );
     m_identificationPanel->SetDataEditable( val );
-    m_miscellaneousDataPanel->SetDataEditable( val );
-    //$    m_bkgndText->SetEditable( val );
-    //$    m_description->SetEditable( val );
+    //    m_miscellaneousDataPanel->SetDataEditable( val );
+        //$    m_bkgndText->SetEditable( val );
+        //$    m_description->SetEditable( val );
 }

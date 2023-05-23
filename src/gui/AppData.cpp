@@ -45,7 +45,10 @@ AppData::AppData( ) {
 
 };
 
-
+void AppData::SetCaption( )
+{
+    GetProject( )->SetCaption( );
+}
 ///  @brief Get the Album Data object
 ///  
 ///  @return * Design::AlbumData* 

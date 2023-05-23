@@ -24,6 +24,7 @@
 #include <wx/filename.h>
 #include <wx/string.h>
 #include "wx/xml/xml.h"
+#include <wx/wfstream.h>
 
 #include "utils/CSV.h"
 #include "utils/Settings.h"
@@ -41,7 +42,9 @@
 #include "gui/AlbumTreeCtrl.h"
 #include "gui/StampToolFrame.h"
 #include "gui/AppData.h"
- //#include "gui/AppData.h"
+//#include "utils/ImageZip.h"
+
+#include "utils/ImageRepository.h"
 
 namespace Design {
 
@@ -59,6 +62,46 @@ namespace Design {
         if ( m_album ) delete m_album;
         m_albumDoc = 0;
         m_album = 0;
+    }
+
+    wxImage AlbumVolume::GetImage( wxString filename )
+    {
+        wxImage image;
+        if ( filename.IsEmpty( ) )
+        {
+            image = wxNullImage;
+        }
+        else
+        {
+            Utils::ImageRepository* imageRepository = GetAlbumVolume( )->GetImageRepository( );
+
+            if ( !imageRepository || !imageRepository->Exists( filename ) )
+            {
+                image = wxNullImage; ;
+            }
+            else
+            {
+                image = imageRepository->GetImage( filename );
+
+                if ( !image.IsOk( ) )
+                {
+                    image = wxNullImage; ;
+                }
+            }
+        }
+        return image;
+    }
+
+    Utils::ImageRepository* AlbumVolume::GetImageRepository( )
+    {
+        return m_imageRepository;
+    };
+
+    wxString AlbumVolume::GetPath( )
+    {
+        wxFileName albumFn( m_albumFilename );
+        albumFn.MakeAbsolute( );
+        return albumFn.GetPath( );
     }
 
     AlbumBase* AlbumVolume::GetPage( AlbumBase* node )
@@ -109,6 +152,32 @@ namespace Design {
         Page* page = ( Page* )new Page( pageNode );
     }
 
+    wxString AlbumVolume::GetAlbumPath( )
+    {
+        wxString filename = GetAlbumFilename( );
+        wxFileName FN( filename );
+        FN.MakeAbsolute( );
+        return FN.GetPath( );
+    }
+
+    wxString AlbumVolume::GetAlbumBaseName( )
+    {
+        wxString filename = GetAlbumFilename( );
+        wxFileName FN( filename );
+        return FN.GetName( );
+    }
+
+    wxString AlbumVolume::GetZipFileName( )
+    {
+        wxString path = GetAlbumPath( );
+        wxString name = GetAlbumBaseName( );
+        name = name + "Alb.zip";
+        wxFileName FN( path );
+        FN.SetName( name );
+        FN.SetExt( "zip" );
+        return ( path + "/" + name );
+    }
+
     bool AlbumVolume::LoadXML( )
     {
         wxString filename = GetAlbumFilename( );
@@ -128,6 +197,7 @@ namespace Design {
             return false;
         }
 
+        MakeAlbumImageRepository( GetZipFileName( ) );
 
         SetDirty( false );
         return true;
@@ -146,6 +216,63 @@ namespace Design {
                 GetAlbumImagePanel( )->Refresh( );
             }
         }
+    }
+
+    bool AlbumVolume::MakeAlbumImageArray( wxArrayString& fileArray )
+    {
+        fileArray.Clear( );
+
+        wxXmlNode* root = m_albumDoc->GetRoot( );
+        wxString nodeName = root->GetName( );
+        if ( !nodeName.Cmp( "Album" ) )
+        {
+            wxString borderImage = root->GetAttribute( "BorderFileName" );
+            //copy image to imageFile
+            fileArray.Add( borderImage );
+        }
+        wxXmlNode* child = root->GetChildren( );
+        while ( child )
+        {
+            MakeAlbumImageArray( child, fileArray );
+            child = child->GetNext( );
+        }
+        return true;
+    }
+
+    bool AlbumVolume::MakeAlbumImageArray( wxXmlNode* parent, wxArrayString& fileArray )
+    {
+        wxXmlNode* child = parent->GetChildren( );
+        while ( child )
+        {
+            wxString nodeName = child->GetName( );
+            if ( !nodeName.Cmp( "Stamp" ) )
+            {
+                wxString imageName = child->GetAttribute( "ImageName" );
+                //copy image to imageFile
+                wxString albumPath = AlbumVolume::GetAlbumPath( );
+                albumPath = albumPath + "/" + imageName;
+                wxFileName file( albumPath );
+                wxString str = file.GetFullPath( );
+                file.MakeAbsolute( );
+                fileArray.Add( file.GetFullPath( ) );
+            }
+            MakeAlbumImageArray( child, fileArray );
+            child = child->GetNext( );
+        }
+        return true;
+    }
+
+
+    bool AlbumVolume::MakeAlbumImageRepository( wxString outputZipName )
+    {
+
+        m_imageRepository = new Utils::ImageRepository( outputZipName );
+        wxArrayString fileArray;
+
+        MakeAlbumImageArray( fileArray );
+        m_imageRepository->Insert( fileArray );
+
+        return true;
     }
 
     AlbumVolume* NewAlbumVolumeInstance( )
@@ -187,7 +314,7 @@ namespace Design {
             if ( wxFileExists( filename ) )
             {
                 wxFileName bakFile( filename );
-                bakFile.SetExt( "bak" );
+                bakFile.SetExt( "bak.alb" );
                 wxRenameFile( filename, bakFile.GetFullName( ), true );
             }
             SaveDesignTree( );

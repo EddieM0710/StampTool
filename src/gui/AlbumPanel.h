@@ -27,6 +27,7 @@
 #include "wx/treectrl.h"
 #include "gui/GuiDefs.h"
 #include <wx/slider.h>
+#include <wx/choice.h>
 
 class wxSplitterWindow;
 class wxTreeCtrl;
@@ -58,7 +59,6 @@ public:
         ID_SCROLLEDWINDOW,
         ID_AECMDTREECTRL,
         ID_PANEL,
-        ID_CDDATATEXTCTRL,
         ID_ALBUMALBUMIMAGEPANEL,
         ID_ALBUMZOOMSLIDER,
         ID_LISTCHOICE,
@@ -143,6 +143,13 @@ public:
         m_albumListCtrl->Clear( );
         m_albumListCtrl->Append( choices );
     };
+
+    ///  @brief 
+    ///  
+    ///  @param event   
+    void OnGeneratePDFClick( wxCommandEvent& event );
+
+    void OnAlbumChoiceSelected( wxCommandEvent& event );
 
     ///  @brief 
     ///  

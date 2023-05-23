@@ -104,10 +104,10 @@ void CatalogPanel::CreateControls( )
     wxBoxSizer* itemBoxSizer1 = new wxBoxSizer( wxHORIZONTAL );
     m_catPanelSizer->Add( itemBoxSizer1, 0, wxGROW | wxALL, 0 );
 
-    m_manageButton = new wxButton( itemPanel1, ID_MANAGEBUTTON, _( "Manage" ), wxDefaultPosition, wxDefaultSize, 0 );
-    itemBoxSizer1->Add( m_manageButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+    // m_manageButton = new wxButton( itemPanel1, ID_MANAGEBUTTON, _( "Manage" ), wxDefaultPosition, wxDefaultSize, 0 );
+    // itemBoxSizer1->Add( m_manageButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
-    itemBoxSizer1->Add( 5, 5, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+    // itemBoxSizer1->Add( 5, 5, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
     wxStaticText* itemStaticText2 = new wxStaticText( itemPanel1, wxID_STATIC, _( "Volume" ), wxDefaultPosition, wxDefaultSize, 0 );
     itemBoxSizer1->Add( itemStaticText2, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );

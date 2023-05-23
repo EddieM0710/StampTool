@@ -79,10 +79,11 @@ bool StampToolApp::OnInit( )
 
     // Remove the comment markers above and below this block
     // to make permanent changes to the code.
-
+    wxLog::SetLogLevel( wxLOG_Max );
+    wxLog::SetVerbose( );
     wxLog::EnableLogging( true );
-    // wxLog* logger = new wxLogStream(&std::cout);
-    // wxLog::SetActiveTarget(logger);
+    wxLog* logger = new wxLogStream( &std::cout );
+    wxLog::SetActiveTarget( logger );
 
 #if wxUSE_XPM
     wxImage::AddHandler( new wxXPMHandler );
@@ -103,6 +104,7 @@ bool StampToolApp::OnInit( )
     m_frame = new StampToolFrame( NULL );
     //  m_frame->SetupRecentMenu( );    
     m_frame->InitLoad( );
+    m_AppData->SetCaption( );
 
     m_frame->Show( true );
 

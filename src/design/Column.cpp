@@ -68,6 +68,38 @@ namespace Design {
             childID = GetAlbumTreeCtrl( )->GetNextChild( parentID, cookie );
         }
     }
+    void Column::DrawPDF( wxPdfDocument* doc, double x, double y )
+    {
+        double leftPadding = 0;
+        double topPadding = 0;
+        //  dc.SetPen( *wxBLACK_PEN );
+        if ( GetShowFrame( ) )
+        {
+            leftPadding = GetLeftContentPadding( );
+            topPadding = GetTopContentPadding( );
+
+            m_frame.DrawPDF( doc, x, y );
+        }
+
+        double xPos = x + GetXPos( ) + leftPadding;
+        double yPos = y + GetYPos( ) + topPadding;
+
+        if ( GetShowTitle( ) )
+        {
+            m_titleFrame->DrawPDF( doc, xPos, yPos );
+        }
+
+        wxTreeItemIdValue cookie;
+        wxTreeItemId parentID = GetTreeItemId( );
+        wxTreeItemId childID = GetAlbumTreeCtrl( )->GetFirstChild( parentID, cookie );
+        while ( childID.IsOk( ) )
+        {
+            LayoutBase* child = ( LayoutBase* ) GetAlbumTreeCtrl( )->GetItemNode( childID );
+            child->DrawPDF( doc, xPos, yPos );
+
+            childID = GetAlbumTreeCtrl( )->GetNextChild( parentID, cookie );
+        }
+    }
 
     LabelFrame* Column::GetTitleFrame( ) { return m_titleFrame; };
 

@@ -62,6 +62,8 @@ enum {
     ID_OPENPROJECT,
     ID_OPENDESIGN,
     ID_OPENCATALOG,
+    ID_REMOVECATALOG,
+    ID_REMOVEDESIGN,
     ID_SAVEPROJECT,
     ID_SAVEDESIGN,
     ID_SAVECATALOG,
@@ -97,8 +99,6 @@ class StampToolFrame : public wxFrame
         DECLARE_EVENT_TABLE( )
 
 public:
-
-
 
     /**
      * @brief Default Constructor a new StampToolFrame object
@@ -143,12 +143,12 @@ public:
         const wxSize& size = SYMBOL_STAMPTOOLFRAME_SIZE,
         long style = SYMBOL_STAMPTOOLFRAME_STYLE );
 
-
     ~StampToolFrame( );
 
     void SetCaption( wxString caption )
     {
-        SetTitle( SYMBOL_STAMPTOOLFRAME_TITLE + " - " + caption );
+        wxString str = SYMBOL_STAMPTOOLFRAME_TITLE + " - " + caption;
+        SetTitle( str );
     }
     /**
      * @brief   Initialises member variables
@@ -162,108 +162,87 @@ public:
      */
     void CreateControls( );
 
-
     void OnCloseWindow( wxCloseEvent& event );
-
 
     void OnIconize( wxIconizeEvent& event );
 
-
     void OnMaximize( wxMaximizeEvent& event );
 
-
     void OnNewProjectClick( wxCommandEvent& event );
-    void OnNewDesignClick( wxCommandEvent& event );
-    void OnNewCatalogClick( wxCommandEvent& event );
-
 
     void OnOpenProjectClick( wxCommandEvent& event );
-    void OnOpenDesignClick( wxCommandEvent& event );
-    void OnOpenCatalogClick( wxCommandEvent& event );
-
 
     void OnSaveProjectClick( wxCommandEvent& event );
-    void OnSaveDesignClick( wxCommandEvent& event );
-    void OnSaveCatalogClick( wxCommandEvent& event );
-
 
     void OnSaveasProjectClick( wxCommandEvent& event );
-    void OnSaveasDesignClick( wxCommandEvent& event );
-    void OnSaveasCatalogClick( wxCommandEvent& event );
 
-    void OnGeneratePDFClick( wxCommandEvent& event );
-
-    //void OnCSVImportClick( wxCommandEvent& event );
-
-
-    void OnRevertToSavedClick( wxCommandEvent& event );
+    //void OnGeneratePDFClick( wxCommandEvent& event );
 
     void OnExitClick( wxCommandEvent& event );
 
-    void OnTextserchmenuitemClick( wxCommandEvent& event );
+    void OnTextSearchMenuItemClick( wxCommandEvent& event );
 
     void OnSortOrderClick( wxCommandEvent& event );
 
     void OnItemviewClick( wxCommandEvent& event );
 
-    void OnDefineperiodClick( wxCommandEvent& event );
+    void OnDefinePeriodClick( wxCommandEvent& event );
 
     void OnSettingsClick( wxCommandEvent& event );
 
+    void OnOpenCatalogClick( wxCommandEvent& event );
+    void OnNewCatalogClick( wxCommandEvent& event );
+    void OnImportCatalogClick( wxCommandEvent& event );
+    void OnRemoveCatalogClick( wxCommandEvent& event );
+    void OnNewDesignClick( wxCommandEvent& event );
+    void OnOpenDesignClick( wxCommandEvent& event );
+    void OnGeneratePDFClick( wxCommandEvent& event );
+    void OnRemoveDesignClick( wxCommandEvent& event );
     void OnMergeClick( wxCommandEvent& event );
 
     void SetupRecentMenu( );
+
     void DoRecentSelection( wxCommandEvent& event );
+
     void OnRecentmenuUpdate( wxUpdateUIEvent& event );
+
     void DoDefinePeriodDialog( );
+
     void DoSettingsDialog( );
 
     static bool ShowToolTips( );
 
     void UpdateStatus( );
 
-    void DoCSVImport( );
-
     void NewProject( );
 
     void OpenProject( );
+
     void SaveProject( );
 
-    //void NewDesign( );
-    //void NewCatalog( );
-
-    //void OpenDesign( );
-    //void OpenCatalog( );
-
-    //void SaveDesign( );
-    //void SaveCatalog( );
-
     void SaveAsProject( );
-    //void SaveAsDesign( );
-    //void SaveAsCatalog( );
 
-    void SaveCatalogXML( wxString filename );
     void InitLoad( );
-
 
     void DoSortOrderDialog( );
 
     int QueryMerge( int& mergeMethod );
+
     int DoQueryMerge( int& mergeMethod );
 
-    StampToolPanel* GetStampToolPanel( ) { return m_stampToolPanel; }
-    CatalogPanel* GetAlbumPagePanel( );
+    StampToolPanel* GetStampToolPanel( ) { return m_stampToolPanel; };
+
     CatalogPanel* GetCatalogPagePanel( );
-    AlbumPanel* GetAlbumAlbumPanel( );
+
+    AlbumPanel* GetAlbumPanel( );
 
     StampToolPanel* m_stampToolPanel;
-    //CatalogPanel* m_catalogPagePanel;
-    //CatalogPanel* m_albumPagePanel;
-    AlbumTreePanel* m_albumTreePanel;
-    AlbumPanel* m_albumAlbumPanel;
-    //    WebRequest m_webRequest;
 
-        // container data classification sort order
+    AlbumTreePanel* m_albumTreePanel;
+
+    AlbumPanel* m_albumAlbumPanel;
+
+    // container data classification sort order
     wxArrayInt m_sortOrder;
     wxMenu* m_fileMenu;
     wxMenu* m_newMenu;

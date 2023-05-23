@@ -281,7 +281,7 @@ namespace Utils {
                                     wxString id = "";
                                     if ( entryType == Catalog::DT_Catalog_Codes )
                                     {
-                                        entryNode->ProcessCatalogCodes( valStr );
+                                        //entryNode->ProcessCatalogCodes( valStr );
                                         if ( GetIDNbr( valStr, id ) )
                                         {
                                             wxString codePrefix = GetSettings( )->GetCatCodePrefix( );

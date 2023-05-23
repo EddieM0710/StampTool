@@ -28,6 +28,9 @@
 
 #include "catalog/CatalogDefs.h"
 #include "catalog/CatalogBase.h"
+#include "catalog/CatalogData.h"
+#include "catalog/CatalogVolume.h"
+#include "utils/ImageRepository.h"
 #include <wx/string.h>
 
 namespace Catalog {
@@ -227,8 +230,27 @@ namespace Catalog {
         wxString GetLabel( )
         {
             wxString label = GetID( );
+            wxString height = GetHeight( );
+            wxString width = GetWidth( );
+            wxString imageName = GetCatalogData( )->GetImageFilename( label );
+            wxString name = GetName( );
             label.Append( " - " );
-            label.Append( GetName( ) );
+            label.Append( name );
+            bool nameEmpty = name.IsEmpty( );
+            bool imageMissing = !GetCatalogVolume( )->GetImageRepository( )->Exists( imageName );
+            wxString sizeMissing = "";
+            if ( height.IsEmpty( ) || width.IsEmpty( ) || imageMissing || nameEmpty )
+            {
+                sizeMissing = " (";
+                if ( name.IsEmpty( ) ) sizeMissing += "N";
+                if ( imageMissing ) sizeMissing += "I";
+                if ( height.IsEmpty( ) ) sizeMissing += "H";
+                if ( width.IsEmpty( ) ) sizeMissing += "W";
+                sizeMissing += ")";
+            }
+
+            label.Append( sizeMissing );
+
             return label;
         };
 

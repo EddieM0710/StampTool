@@ -45,7 +45,13 @@
  //#include "gui/AppData.h"
 #include "gui/ImagePanel.h"
 #include "art/NotFound.xpm"
+#include "catalog/CatalogVolume.h"
+#include "utils/ImageRepository.h"
 
+#include "wx/wfstream.h"
+#include <wx/datstrm.h>
+#include <wx/mstream.h>
+#include <wx/log.h>
 //#include "StampToolApp.h"
 
 //wxDECLARE_APP( StampToolApp );
@@ -146,15 +152,10 @@ void ImagePanel::CreateControls( )
 
 }
 
-
-
 bool ImagePanel::ShowToolTips( )
 {
     return true;
 }
-
-
-
 
 /*
  * SetBitmap
@@ -170,23 +171,20 @@ void ImagePanel::SetBitmap( wxString filename )
     }
     else
     {
-        wxFileName fn( filename );
-        if ( !fn.FileExists( ) )
+        //wxFileName fn( filename );
+        Utils::ImageRepository* imageRepository = GetCatalogVolume( )->GetImageRepository( );
+
+        if ( !imageRepository || !imageRepository->Exists( filename ) )
         {
             image = wxImage( NotFound );
-            //image.SaveFile( filename, wxBITMAP_TYPE_JPEG );
-            //wxGetApp( ).GetFrame( )->GetWebRequest( )->LoadImageFromWeb( m_stamp );
-
         }
         else
         {
-            if ( !image.CanRead( filename ) )
+            image = imageRepository->GetImage( filename );
+
+            if ( !image.IsOk( ) )
             {
                 image = wxImage( NotFound );
-            }
-            else
-            {
-                image = wxImage( filename );
             }
         }
     }
@@ -317,160 +315,4 @@ void ImagePanel::OnContextMenu( wxContextMenuEvent& event )
 
     PopupMenu( &menu );
     event.Skip( );
-
-    event.Skip( );
-
 }
-
-// void ImagePanel::LoadImageFromWeb( Catalog::Entry* stamp )
-// {
-//     wxString link = stamp->GetAttr( Catalog::DT_Link );
-//     StartWebRequest( Page_Text, link );
-//     Refresh( );
-// }
-
-// void ImagePanel::StartWebRequest( RequestType page, wxString url )
-// {
-//     m_page = page;
-
-//     std::cout << "StartWebRequest\n";
-
-//     // Create request for the specified URL from the default session
-//     m_currentRequest = wxWebSession::GetDefault( ).CreateRequest( this, url );
-//     std::cout << url << "\n";
-
-//     // Bind event for state change
-//     Bind( wxEVT_WEBREQUEST_STATE, &ImagePanel::OnWebRequestState, this );
-
-//     // Prepare request based on selected action
-//     switch ( m_page )
-//     {
-//     case Page_Image:
-//         // Reset static bitmap image
-// //                m_imageStaticBitmap->SetBitmap(wxArtProvider::GetBitmap(wxART_MISSING_IMAGE));
-//         break;
-//     case Page_Text:
-//         // Reset response text control
-//         // m_textResponseTextCtrl->Clear();
-
-//         // // Set postdata if checked
-//         // if ( m_postCheckBox->IsChecked() )
-//         // {
-//         //     m_currentRequest.SetData(m_postRequestTextCtrl->GetValue(),
-//         //         m_postContentTypeTextCtrl->GetValue());
-//         // }
-//         break;
-//     case Page_Download:
-//         m_currentRequest.SetStorage( wxWebRequest::Storage_File );
-//         //m_downloadGauge->SetValue(0);
-//         //m_downloadGauge->Pulse();
-//         //m_downloadStaticText->SetLabel("");
-//        // m_downloadProgressTimer.Start(500);
-//  //       SetStatusText( "" );
-//         break;
-//     }
-
-//     //        m_startButton->Disable();
-
-//             // Start the request (events will be sent on success or failure)
-//     m_currentRequest.Start( );
-// }
-
-// void ImagePanel::OnWebRequestState( wxWebRequestEvent& evt )
-// {
-//     // m_startButton->Enable(evt.GetState() != wxWebRequest::State_Active);
-//     // m_cancelButton->Enable(evt.GetState() == wxWebRequest::State_Active);
-//     std::cout << "ImagePanel::OnWebRequestState\n";
-//     bool stillActive = false;
-//     wxWebRequest::State state = evt.GetState( );
-//     switch ( evt.GetState( ) )
-//     {
-//     case wxWebRequest::State_Completed:
-//     {
-//         switch ( m_page )
-//         {
-//         case Page_Image:
-//         {
-//             std::cout << "ImagePanel::OnWebRequestState Page_Image\n";
-//             wxImage img( *evt.GetResponse( ).GetStream( ) );
-//             m_imageBitmap = img;
-//             wxString imageFile = GetFrame( )->GetImageFilename( m_stamp->GetID( ) );
-
-//             m_imageBitmap.SaveFile( imageFile, wxBITMAP_TYPE_JPEG );
-//             //m_notebook->GetPage(Page_Image)->Layout();
-//             std::cout << "Loaded " << evt.GetResponse( ).GetContentLength( ) << " bytes image data\n";
-//             SetBitmap( imageFile );
-//             break;
-//         }
-//         case Page_Text:
-//         {
-//             std::cout << "ImagePanel::OnWebRequestState Page_Text\n";
-//             m_webText = evt.GetResponse( ).AsString( );
-//             std::cout << "Loaded " << evt.GetResponse( ).GetContentLength( ) << " bytes text data (Status: " <<
-//                 evt.GetResponse( ).GetStatus( ) << "  " << evt.GetResponse( ).GetStatusText( ) << ")\n";
-//             int pos = m_webText.Find( "og:image" );
-//             int pos2 = m_webText.find( "content=\"", pos );
-//             pos2 = pos2 + 9;
-//             int pos3 = m_webText.find( "\"/>", pos2 );
-//             wxString url = m_webText.Mid( pos2, pos3 - pos2 );
-//             std::cout << url << "\n";
-//             StartWebRequest( Page_Image, url );
-//             break;
-//         }
-//         case Page_Download:
-//         {
-//             // m_downloadGauge->SetValue(100);
-//             // m_downloadStaticText->SetLabel("");
-
-//             std::cout << "Download completed" << "\n";
-
-
-//             // Ask the user where to save the file
-//             wxFileDialog fileDlg( this, "Save download", "",
-//                 evt.GetResponse( ).GetSuggestedFileName( ), "*.*",
-//                 wxFD_SAVE | wxFD_OVERWRITE_PROMPT );
-//             if ( fileDlg.ShowModal( ) == wxID_OK )
-//             {
-//                 if ( !wxRenameFile( evt.GetDataFile( ), fileDlg.GetPath( ) ) )
-//                     std::cout << "Could not move file" << "\n";
-//             }
-
-//             break;
-//         }
-//         // case Page_Advanced:
-//         //     UpdateAdvCount();
-//         //     SetStatusText("");
-//         //     break;
-//         }
-//         break;
-
-//     }
-//     case wxWebRequest::State_Failed:
-//         std::cout << "Web Request failed: " << evt.GetErrorDescription( ) << "\n";
-
-//         break;
-
-//     case wxWebRequest::State_Cancelled:
-//         // m_downloadGauge->SetValue(0);
-//         // m_downloadStaticText->SetLabel("");
-//         std::cout << "Cancelled" << "\n";
-
-//         break;
-
-
-//     case wxWebRequest::State_Active:
-//         stillActive = true;
-//         break;
-
-//     case wxWebRequest::State_Idle:
-//         // Nothing special to do for this state.
-//         break;
-
-//     }
-
-//     if ( !stillActive )
-//     {
-//         m_currentRequest = wxWebRequest( );
-//         // m_downloadProgressTimer.Stop();
-//     }
-// }

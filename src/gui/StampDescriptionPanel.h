@@ -86,12 +86,12 @@ public:
     };
 
 
-    
 
-        /**
-         * @brief Default Constructor for a new Description Panel object
-         *
-         */
+
+    /**
+     * @brief Default Constructor for a new Description Panel object
+     *
+     */
     StampDescriptionPanel( void );
 
 
@@ -206,17 +206,16 @@ public:
      */
     void UpdateStatus( void );
 
-    
+
 
 
 private:
-    // StampDescriptionPanel member variables
     IdentificationPanel* m_identificationPanel; ///< Pointer to IdentificationPanel
     wxSlider* m_zoomSlider; ///< Pointer to image soom slider
     ImagePanel* m_stampImage; ///< Pointer to stamp image
     InventoryPanel* m_inventoryPanel; ///< Pointer to InventoryPanel
     CatalogCodePanel* m_catalogCodePanel; ///< Pointer to CatalogCodePanel
-    CharacteristicsPanel* m_characteristicsPanel; ///< Pointer to CharacteristicsPanel
+    //    CharacteristicsPanel* m_characteristicsPanel; ///< Pointer to CharacteristicsPanel
     MiscellaneousDataPanel* m_miscellaneousDataPanel; ///< Pointer to MiscellaneousDataPanel
 };
 

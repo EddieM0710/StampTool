@@ -54,7 +54,7 @@ Design::AlbumData* GetAlbumData( );
 
 AlbumImagePanel* GetAlbumImagePanel( );
 
-CatalogTreeCtrl* GetAlbumPageTreeCtrl( );
+//CatalogTreeCtrl* GetAlbumPageTreeCtrl( );
 
 Design::AlbumVolume* GetAlbumVolume( );
 
@@ -64,7 +64,7 @@ AppData* GetAppData( );
 
 Catalog::CatalogData* GetCatalogData( );
 
-CatalogTreeCtrl* GetCatalogPageTreeCtrl( );
+CatalogTreeCtrl* GetCatalogTreeCtrl( );
 
 Catalog::CatalogVolume* GetCatalogVolume( );
 

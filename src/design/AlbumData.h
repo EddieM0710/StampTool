@@ -32,6 +32,7 @@
 namespace Design { class AlbumVolume; };
 namespace Design { class AlbumList; };
 
+class AlbumPanel;
 class AlbumTreeCtrl;
 class AlbumImagePanel;
 
@@ -140,6 +141,8 @@ namespace Design {
         ///  
         void OpenDesign( );
 
+        void SetAlbumPanel( AlbumPanel* albumPanel ) { m_albumPanel = albumPanel; };
+
         ///  @brief Set the Album Image Panel object
         ///  
         ///  @param albumImagePanel 
@@ -150,7 +153,11 @@ namespace Design {
         ///  @param treeCtrl 
         void SetAlbumTreeCtrl( AlbumTreeCtrl* treeCtrl ) { m_albumTreeCtrl = treeCtrl; };
 
+        void UpdateAlbumVolumeStrings( );
+
     private:
+        AlbumPanel* m_albumPanel;
+
         AlbumImagePanel* m_albumImagePanel;
 
         Utils::FontList m_fontList;

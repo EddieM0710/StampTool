@@ -56,11 +56,15 @@ namespace Design {
         ///  
         ~AlbumList( ) { };
 
+        void BuildVolumeNameStrings( );
+
         ///  @brief 
         ///  
         ///  @return true 
         ///  @return false 
         bool ClearAlbumVolumeArray( );
+
+        int GetAlbumVolumeNdx( ) { return m_albumVolumeNdx; };
 
         ///  @brief Get the Album Volume object
         ///  

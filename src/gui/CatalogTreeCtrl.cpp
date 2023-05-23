@@ -197,7 +197,6 @@ CatalogTreeItemData* CatalogTreeCtrl::CreateChildData( wxXmlNode* child,
     {
         // then we add the appropriate icon and label
         Catalog::Entry entry( child );
-
         // entry combines the entryID and its name to form a label
         label = entry.GetLabel( );
 
@@ -914,8 +913,9 @@ void CatalogTreeCtrl::OnItemStateClick( wxTreeEvent& event )
 void CatalogTreeCtrl::OnSelChanged( wxTreeEvent& event )
 {
     wxTreeItemId itemId = event.GetItem( );
-    wxXmlNode* entry = GetItemNode( itemId );
-    GetCatalogData( )->SetCurrentStamp( entry );
+    wxXmlNode* xmlNode = GetItemNode( itemId );
+    GetCatalogData( )->SetCurrentStamp( xmlNode );
+
     event.Skip( );
 }
 

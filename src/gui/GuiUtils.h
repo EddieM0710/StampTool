@@ -80,15 +80,16 @@ void DrawLabelPDF( wxPdfDocument* doc, const wxString& text,
     int  	border = wxPDF_BORDER_NONE,
     bool fill = 0 ); //0=>no Fill default   1=>Fill
 
-void DrawImagePDF( wxPdfDocument* doc, wxString fileName,
+void DrawImagePDF( wxPdfDocument* doc, wxImage image,
     double x, double y,
     double w, double h );
 
-void DrawImage( wxDC& dc, wxImage* image,
+void DrawImage( wxDC& dc, wxImage image,
     double x, double y,
     double w, double h );
 
-wxImage* GetImageFromFilename( wxString filename );
+//wxImage GetImageFromFilename( wxString filename );
+////wxImage GetImage( wxString filename );
 
 ComparisonResultType CompareDates( wxString date1, wxString date2 );
 int CompareID( wxString id1, wxString id2 );

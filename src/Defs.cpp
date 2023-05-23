@@ -59,7 +59,7 @@ Design::AlbumData* GetAlbumData( ) { return GetAppData( )->GetAlbumData( ); }
 
 AlbumImagePanel* GetAlbumImagePanel( ) { return GetAlbumData( )->GetAlbumImagePanel( ); };
 
-CatalogTreeCtrl* GetAlbumPageTreeCtrl( ) { return GetCatalogData( )->GetAlbumPageTreeCtrl( ); };
+//CatalogTreeCtrl* GetAlbumPageTreeCtrl( ) { return GetCatalogData( )->GetAlbumPageTreeCtrl( ); };
 
 AlbumTreeCtrl* GetAlbumTreeCtrl( ) { return GetAlbumData( )->GetAlbumTreeCtrl( ); };
 
@@ -67,7 +67,7 @@ Design::AlbumVolume* GetAlbumVolume( ) { return GetAlbumData( )->GetAlbumVolume(
 
 Catalog::CatalogData* GetCatalogData( ) { return GetAppData( )->GetCatalogData( ); }
 
-CatalogTreeCtrl* GetCatalogPageTreeCtrl( ) { return GetCatalogData( )->GetCatalogPageTreeCtrl( ); };
+CatalogTreeCtrl* GetCatalogTreeCtrl( ) { return GetCatalogData( )->GetCatalogTreeCtrl( ); };
 
 Utils::FontList* GetFontList( ) { return GetAlbumData( )->GetFontList( ); };
 

@@ -48,8 +48,8 @@ namespace Design {
         {
             SetXPos( 0.0 );
             SetYPos( 0.0 );
-            SetWidth( album->GetWidth( ) );
-            SetHeight( album->GetHeight( ) );
+            SetWidth( album->GetWidth( ) - album->GetRightMargin( ) - album->GetLeftMargin( ) );
+            SetHeight( album->GetHeight( ) - album->GetBottomMargin( ) - album->GetTopMargin( ) );
             SetTopMargin( album->GetTopMargin( ) );
             SetBottomMargin( album->GetBottomMargin( ) );
             SetRightMargin( album->GetRightMargin( ) );
@@ -71,7 +71,7 @@ namespace Design {
         double yPos = y + GetTopMargin( );
 
 
-        wxImage* image = GetImageFromFilename( borderName );
+        wxImage image = GetAlbumVolume( )->GetImage( borderName );
 
         DrawImage( dc, image, xPos, yPos,
             GetWidth( ),
@@ -137,8 +137,8 @@ namespace Design {
         double xPos = GetLeftMargin( );
         double yPos = GetTopMargin( );
 
-
-        DrawImagePDF( doc, borderName, xPos, yPos,
+        wxImage image = GetAlbumVolume( )->GetImage( borderName );
+        doc->Image( borderName, image, xPos, yPos,
             GetWidth( ),
             GetHeight( ) );
 

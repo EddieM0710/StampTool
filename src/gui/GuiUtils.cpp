@@ -50,7 +50,7 @@ void DrawLabelPDF( wxPdfDocument* doc, const wxString& text,
 {
     doc->SetXY( pos.x, pos.y );
     doc->Write( 2, text );
-    //   doc->Cell(size.x, size.y, text, border, 0, alignment, fill );
+    //doc->Cell( size.x, size.y, text, border, 0, alignment, fill );
 
 }
 
@@ -164,11 +164,11 @@ void DrawRectangle( wxDC& dc, double x, double y, double width, double height )
 };
 
 
-wxImage* GetImageFromFilename( wxString filename )
+wxImage GetImageFromFilename( wxString filename )
 {
 
     wxFileName fn;
-    wxImage* image;
+    wxImage image;
     bool fileOK = false;
 
     fn.Assign( filename );
@@ -178,36 +178,66 @@ wxImage* GetImageFromFilename( wxString filename )
     wxString str = fn3.GetFullPath( );
     if ( fn.FileExists( ) )
     {
-        if ( image->CanRead( filename ) )
+        if ( image.CanRead( filename ) )
         {
             fileOK = true;
         }
     }
     if ( fileOK )
     {
-        image = new wxImage( filename );
+        image = wxImage( filename );
     }
     else
     {
-        image = new wxImage( fleur_di_lis );
+        image = wxImage( fleur_di_lis );
     }
 
     return image;
 }
 
-void DrawImagePDF( wxPdfDocument* doc, wxString fileName, double x, double y, double w, double h )
+//--------------
+
+// wxImage GetImage( wxString filename )
+// {
+//     wxImage image;
+//     if ( filename.IsEmpty( ) )
+//     {
+//         image = wxImage( NotFound );
+//     }
+//     else
+//     {
+
+//         Utils::ImageRepository* imageRepository = GetAlbumVolume( )->GetImageRepository( );
+
+//         if ( !imageRepository || !imageRepository->Exists( filename ) )
+//         {
+//             image = wxImage( NotFound );
+//         }
+//         else
+//         {
+//             image = imageRepository->GetImage( filename );
+
+//             if ( !image.IsOk( ) )
+//             {
+//                 image = wxImage( NotFound );
+//             }
+//         }
+//     }
+//     return image;
+// }
+// void DrawImagePDF( wxPdfDocument* doc, wxImage image, double x, double y, double w, double h )
+// {
+
+//     // wxImage image = GetImageFromFilename( fileName );
+//      // Draw jpeg image
+//   //   doc->Image( fileName, x, y, w, h );
+//     doc->Image( fileName, image, x, y, w, h );
+
+
+// }
+void DrawImage( wxDC& dc, wxImage image, double x, double y, double w, double h )
 {
-
-    wxImage* image = GetImageFromFilename( fileName );
-    // Draw jpeg image
- //   doc->Image( fileName, x, y, w, h );
-    doc->Image( fileName, *image, x, y, w, h );
-
-
-}
-void DrawImage( wxDC& dc, wxImage* image, double x, double y, double w, double h )
-{
-    if ( image && image->IsOk( ) )
+    if ( image.IsOk( ) )
     {
         //Draw the stamp image
 
@@ -217,14 +247,14 @@ void DrawImage( wxDC& dc, wxImage* image, double x, double y, double w, double h
             w = 10;
         }
 
-        image->Rescale( w * Design::ScaleFactor.x, h * Design::ScaleFactor.y );
-        wxBitmap bitmap = *image;
+        image.Rescale( w * Design::ScaleFactor.x, h * Design::ScaleFactor.y );
+        wxBitmap bitmap = image;
 
         dc.DrawBitmap( bitmap, x * Design::ScaleFactor.x, y * Design::ScaleFactor.y, true );
-        if ( image )
-        {
-            delete image;
-        }
+        // if ( image )
+        // {
+        //     delete image;
+        // }
     }
 
 };

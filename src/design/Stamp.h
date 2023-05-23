@@ -201,7 +201,7 @@ namespace Design {
         ///  @brief Get the Stamp Image object
         ///  
         ///  @return wxImage* 
-        wxImage* GetStampImage( );
+        wxImage GetStampImage( wxString filename );
 
         ///  @brief Get the Stamp Image Filename object
         ///  

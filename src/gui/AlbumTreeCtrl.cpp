@@ -284,9 +284,42 @@ Design::TextBox* AlbumTreeCtrl::AddTextTreeItem( wxTreeItemId parentID, Design::
 }
 
 //--------------
+wxString AlbumTreeCtrl::GetRelativePathToImageDir( )
+{
+    //if the cat volume path is the same as the alb volume path
+    // they have the same relative path to the image dir
+    wxString albumFilename = GetAlbumVolume( )->GetAlbumFilename( );
+    wxFileName albumFN( albumFilename );
+    wxString albumPath = albumFN.GetPath( );
 
+    wxString catalogVolume = GetCatalogVolume( )->GetVolumeFilename( );
+    wxFileName catFN( catalogVolume );
+    wxString catPath = catFN.GetPath( );
+
+    wxString catalogImagePath = GetCatalogVolume( )->GetCatalogVolumeImagePath( );
+
+    if ( !albumPath.Cmp( catPath ) )
+    {
+        return catalogImagePath;
+    }
+    else
+    {
+        //first get absolute Cat vol path
+        wxFileName fn1( catalogVolume );
+        catFN.MakeAbsolute( );
+        //then append the cat art path to it
+        wxString catVolPath = catFN.GetPath( );
+        wxString artPath = catVolPath + "/" + catalogImagePath;
+        // and make it relative to the album volume
+        wxFileName artFN( artPath );
+        artFN.MakeRelativeTo( albumFilename );
+        wxString relArtPath = artFN.GetFullPath( );
+        return relArtPath;
+    }
+}
 Utils::StampLink* AlbumTreeCtrl::AppendStamp( wxTreeItemId catTreeID )
 {
+
     Utils::StampLink* newLink = ( Utils::StampLink* ) 0;
     wxTreeItemId currAlbumID = GetSelection( );
     if ( currAlbumID.IsOk( ) && catTreeID.IsOk( ) )
@@ -300,7 +333,7 @@ Utils::StampLink* AlbumTreeCtrl::AppendStamp( wxTreeItemId catTreeID )
         }
 
         Design::Stamp* newStamp = CreateNewStamp( catTreeID );
-
+        //  newStamp->
         AddStampTreeItem( currAlbumID, newStamp );
         if ( newStamp )
         {
@@ -308,17 +341,19 @@ Utils::StampLink* AlbumTreeCtrl::AppendStamp( wxTreeItemId catTreeID )
             wxTreeItemId newStampID = newStamp->GetTreeItemId( );
             wxString catStr = GetCatalogData( )->GetCatalogVolume( )->GetVolumeFilename( );
             wxFileName catFileName( catStr );
-            wxString imageName = GetAlbumPageTreeCtrl( )->GetImageFullName( catTreeID );
+            wxString imageName = GetCatalogTreeCtrl( )->GetImageFullName( catTreeID );
             wxFileName imageFileName( imageName );
             imageFileName.MakeRelativeTo( catFileName.GetFullPath( ) );
 
 
             //update the Stamp with the catalog data
-            CatalogTreeCtrl* catTree = GetAlbumPageTreeCtrl( );
+            CatalogTreeCtrl* catTree = GetCatalogTreeCtrl( );
             wxString idText = catTree->GetIdText( catTreeID );
             SetItemText( newStampID, idText );
             newStamp->SetAttrStr( Design::AT_CatNbr, idText );
 
+            wxString imagepath = GetRelativePathToImageDir( );
+            wxString imagename = imageFileName.GetFullPath( );
             newStamp->SetAttrStr( Design::AT_ImageName, imageFileName.GetFullPath( ) );
             // stamp item text combines the stampID and its name to form a label
             wxString label = newStamp->GetAttrStr( Design::AT_CatNbr );
@@ -421,7 +456,7 @@ Design::Stamp* AlbumTreeCtrl::CreateNewStamp( wxTreeItemId catTreeID )
         // load stamp from catalog
 
         //create a stamp with the catalog data
-        CatalogTreeCtrl* catTree = GetAlbumPageTreeCtrl( );
+        CatalogTreeCtrl* catTree = GetCatalogTreeCtrl( );
         wxString label = catTree->GetAttribute( catTreeID, Catalog::XMLDataNames[ Catalog::DT_ID_Nbr ] );
         newStamp->SetAttrStr( Design::AT_CatNbr, label );
         wxString title = catTree->GetAttribute( catTreeID, Catalog::XMLDataNames[ Catalog::DT_Name ] );
@@ -436,7 +471,7 @@ Design::Stamp* AlbumTreeCtrl::CreateNewStamp( wxTreeItemId catTreeID )
         // create a default Stamp
 
         //create a new xml node with the catalog data
-        CatalogTreeCtrl* catTree = GetAlbumPageTreeCtrl( );
+        CatalogTreeCtrl* catTree = GetCatalogTreeCtrl( );
         wxString label = "New ID";
         newStamp->SetAttrStr( Design::AT_CatNbr, label );
         wxString title = "New Title";
@@ -487,7 +522,7 @@ void AlbumTreeCtrl::DeleteItem( wxTreeItemId currID )
         wxTreeItemId catTreeID = link->GetCatTreeID( );
         if ( catTreeID.IsOk( ) )
         {
-            GetCatalogPageTreeCtrl( )->SetItemState( catTreeID, Catalog::ST_Unchecked );
+            GetCatalogTreeCtrl( )->SetItemState( catTreeID, Catalog::ST_Unchecked );
         }
         Utils::StampList* stampList = GetStampAlbumCatalogLink( );
         stampList->DeleteLink( link );
@@ -1441,7 +1476,7 @@ void AlbumTreeCtrl::UpdateStampList( )
 
 void AlbumTreeCtrl::UpdateStampList( wxTreeItemId& treeItemId )
 {
-    CatalogTreeCtrl* catTree = GetCatalogPageTreeCtrl( );
+    CatalogTreeCtrl* catTree = GetCatalogTreeCtrl( );
 
     wxTreeItemIdValue cookie;
     wxTreeItemId childID = GetFirstChild( treeItemId, cookie );
@@ -1507,7 +1542,7 @@ void AlbumTreeCtrl::Validate( wxTreeItemId id )
 
 void AlbumTreeCtrl::ValidateLink( wxTreeItemId& childID, wxString albIDNbr )
 {
-    CatalogTreeCtrl* catTree = GetCatalogPageTreeCtrl( );
+    CatalogTreeCtrl* catTree = GetCatalogTreeCtrl( );
 
     Utils::StampLink* link = GetItemStampLink( childID );
     // if link exists validate it

@@ -112,7 +112,7 @@ namespace Catalog {
         return wxString( "" );
     }
 
-    wxString Entry::GetCatalogCodes( ) { return GetAttr( DT_Catalog_Codes ); };
+    //   wxString Entry::GetCatalogCodes( ) { return GetAttr( DT_Catalog_Codes ); };
 
     wxString Entry::GetClassificationName( Entry* entry, CatalogBaseType type )
     {
@@ -153,27 +153,27 @@ namespace Catalog {
         }
     }
 
-    wxXmlNode* Entry::GetCodeForCatalog( const char* catalog )
-    {
-        wxXmlNode* ele = GetCatXMLNode( );
-        if ( ele )
-        {
-            wxXmlNode* childCode = Utils::FirstChildElement( ele, CatalogBaseNames[ NT_CatalogCode ] );
-            if ( childCode )
-            {
-                const wxXmlAttribute* attr = Utils::GetAttribute( childCode, CatalogCodeNames[ CC_Catalog ] );
-                if ( attr )
-                {
-                    const char* code = attr->GetValue( );
-                    if ( !strncmp( catalog, code, strlen( catalog ) ) )
-                    {
-                        return childCode;
-                    }
-                }
-            }
-        }
-        return ( wxXmlNode* ) 0;
-    }
+    // wxXmlNode* Entry::GetCodeForCatalog( const char* catalog )
+    // {
+    //     wxXmlNode* ele = GetCatXMLNode( );
+    //     if ( ele )
+    //     {
+    //         wxXmlNode* childCode = Utils::FirstChildElement( ele, CatalogBaseNames[ NT_CatalogCode ] );
+    //         if ( childCode )
+    //         {
+    //             const wxXmlAttribute* attr = Utils::GetAttribute( childCode, CatalogCodeNames[ CC_Catalog ] );
+    //             if ( attr )
+    //             {
+    //                 const char* code = attr->GetValue( );
+    //                 if ( !strncmp( catalog, code, strlen( catalog ) ) )
+    //                 {
+    //                     return childCode;
+    //                 }
+    //             }
+    //         }
+    //     }
+    //     return ( wxXmlNode* ) 0;
+    // }
 
     wxString Entry::GetColors( ) { return GetAttr( DT_Colors ); };
 
@@ -489,7 +489,7 @@ namespace Catalog {
         };
     }
 
-    void Entry::SetCatalogCodes( wxString val ) { SetAttr( DT_Catalog_Codes, val ); };
+    //    void Entry::SetCatalogCodes( wxString val ) { SetAttr( DT_Catalog_Codes, val ); };
 
     void Entry::SetColors( wxString val ) { SetAttr( DT_Colors, val ); };
 

@@ -45,7 +45,10 @@
 #include "gui/LabeledTextBox.h"
 #include "gui/FileCreateDialog.h"
 #include "design/AlbumData.h"
+#include "design/Album.h"
+#include "gui/CatalogTreeCtrl.h"
 #include "utils/Project.h"
+#include "catalog/CatalogData.h"
 #include "Defs.h"
 
 
@@ -53,6 +56,7 @@ IMPLEMENT_DYNAMIC_CLASS( AlbumPanel, wxPanel )
 
 BEGIN_EVENT_TABLE( AlbumPanel, wxPanel )
 EVT_SLIDER( ID_ALBUMZOOMSLIDER, AlbumPanel::OnZoomsliderUpdated )
+EVT_CHOICE( ID_LISTCHOICE, AlbumPanel::OnAlbumChoiceSelected )
 EVT_BUTTON( ID_MANAGEBUTTON, AlbumPanel::OnManageClick )
 END_EVENT_TABLE( )
 
@@ -108,10 +112,10 @@ void AlbumPanel::CreateControls( )
     // nameHorizontalSizer->Add( m_name, 1, wxALIGN_CENTER_VERTICAL | wxALL, 0 );
     // m_name->SetLabel( "Album Name" );
 
-    wxButton* m_manageButton = new wxButton( thePanel, ID_MANAGEBUTTON, _( "Manage" ), wxDefaultPosition, wxDefaultSize, 0 );
-    nameHorizontalSizer->Add( m_manageButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+    // wxButton* m_manageButton = new wxButton( thePanel, ID_MANAGEBUTTON, _( "Manage" ), wxDefaultPosition, wxDefaultSize, 0 );
+    // nameHorizontalSizer->Add( m_manageButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
-    nameHorizontalSizer->Add( 5, 5, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+    // nameHorizontalSizer->Add( 5, 5, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
     wxStaticText* albumListStatic = new wxStaticText(
         thePanel, wxID_STATIC, _( "Album List" ), wxDefaultPosition, wxDefaultSize, 0 );
@@ -163,6 +167,8 @@ void AlbumPanel::CreateControls( )
     splitterWindowHorizontalSizer->Add( m_secondarySplitterWindow, 1, wxGROW | wxALL, 5 );
 
     GetAlbumData( )->SetAlbumImagePanel( m_albumImagePanel );
+    GetAlbumData( )->SetAlbumPanel( this );
+
 }
 
 //--------------
@@ -170,6 +176,21 @@ void AlbumPanel::CreateControls( )
 void AlbumPanel::Init( )
 {
     m_secondarySplitterWindow = NULL;
+
+}
+
+//--------------
+
+void AlbumPanel::OnAlbumChoiceSelected( wxCommandEvent& event )
+{
+    int sel = m_albumListCtrl->GetSelection( );
+
+    GetAlbumData( )->GetAlbumList( ).SetAlbumVolumeNdx( sel );
+
+    GetCatalogData( )->GetCatalogTreeCtrl( )->SetStates( true );
+    GetCatalogData( )->GetCatalogTreeCtrl( )->LoadTree( );
+
+    event.Skip( );
 
 }
 
@@ -199,10 +220,12 @@ void AlbumPanel::OnManageClick( wxCommandEvent& event )
     {
         case ID_NEWDESIGN:
         {
+            NewDesign( );
             break;
         }
         case ID_OPENDESIGN:
         {
+            OpenDesign( );
             break;
         }
         case ID_REMOVEDESIGN:
@@ -226,7 +249,7 @@ void AlbumPanel::NewDesign( )
     wxGetCwd( );
     fileDialog.SetDefaultDirectory( wxGetCwd( ) );
     fileDialog.SetDefaultFilename( _( "unnamed.alb" ) );
-    fileDialog.SetWildCard( _( "Design files(*.alb)|*.alb" ) );
+    fileDialog.SetWildCard( _( "Album Design files(*.alb)|*.alb" ) );
 
     if ( fileDialog.ShowModal( ) == wxID_CANCEL )
     {
@@ -243,11 +266,11 @@ void AlbumPanel::NewDesign( )
 void AlbumPanel::OpenDesign( )
 {
     wxFileName lastFile( GetProject( )->GetDesignFilename( ) );
-    lastFile.SetExt( "xml" );
+    lastFile.SetExt( "alb" );
     wxFileDialog openFileDialog(
-        this, _( "Open Design XML file" ),
+        this, _( "Open Album Design file" ),
         lastFile.GetPath( ), lastFile.GetFullName( ),
-        "Project XML files(*.alb)|*.alb", wxFD_OPEN | wxFD_FILE_MUST_EXIST );
+        "Album Design files(*.alb)|*.alb", wxFD_OPEN | wxFD_FILE_MUST_EXIST );
     if ( openFileDialog.ShowModal( ) == wxID_CANCEL )
     {
         return; // the user changed idea...
@@ -265,17 +288,24 @@ void AlbumPanel::SaveAsDesign( )
     if ( GetCatalogVolume( ) )
     {
         wxFileName lastFile( GetProject( )->GetDesignFilename( ) );
-        lastFile.SetExt( "xml" );
+        lastFile.SetExt( "alb" );
         wxFileDialog saveFileDialog(
-            this, _( "Stamp List XML file" ),
+            this, _( "Album Design file" ),
             lastFile.GetPath( ), lastFile.GetFullName( ),
-            "XML files (*.alb)|*.alb", wxFD_SAVE | wxFD_OVERWRITE_PROMPT );
+            "Album Design files (*.alb)|*.alb", wxFD_SAVE | wxFD_OVERWRITE_PROMPT );
         if ( saveFileDialog.ShowModal( ) == wxID_CANCEL )
             return;
 
         wxString filename = saveFileDialog.GetPath( );
         GetAlbumData( )->FileSaveAs( filename );
     }
+}
+
+//--------------
+
+void AlbumPanel::OnGeneratePDFClick( wxCommandEvent& event )
+{
+    GetAlbumData( )->GetAlbumVolume( )->GetAlbum( )->MakePDFAlbum( );
 }
 
 //--------------

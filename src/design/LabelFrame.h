@@ -68,7 +68,7 @@ namespace Design {
 
         void Draw( wxDC& dc, double x, double y );
 
-        void drawPDF( wxPdfDocument* doc, double x, double y );
+        void DrawPDF( wxPdfDocument* doc, double x, double y );
 
         wxColour GetColor( );
 

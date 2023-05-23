@@ -76,13 +76,13 @@ public:
         ID_DESIGNSPLITTERWINDOW
     };
 
-    
 
-        /**
-         * @brief Default Constructor a new StampToolPanel object
-         * @details Must be used in conjunction with Create.
-         *
-         */
+
+    /**
+     * @brief Default Constructor a new StampToolPanel object
+     * @details Must be used in conjunction with Create.
+     *
+     */
     StampToolPanel( );
 
     /**
@@ -137,19 +137,18 @@ public:
     void UpdateStatus( );
 
     CatalogPanel* GetCatalogPagePanel( ) { return m_catalogTreePanel; };
-    CatalogPanel* GetAlbumPagePanel( ) { return m_albumPageCatTreePanel; };
-    //    WebViewPanel* GetWebViewPage( ) { return m_webViewPanel; };
     AlbumTreePanel* GetAlbumTreePanel( ) { return m_albumAlbumPanel->GetAlbumTreePanel( ); };
-    AlbumPanel* GetAlbumAlbumPanel( ) { return m_albumAlbumPanel; };
+    AlbumPanel* GetAlbumPanel( ) { return m_albumAlbumPanel; };
+    GenerateList* GetGenerateListPanel( ) { return m_generateListPanel; };
 
-    
+
 
     wxNotebook* m_notebook;
     wxFlexGridSizer* m_sizer;
     CatalogPanel* m_catalogTreePanel;
-    CatalogPanel* m_albumPageCatTreePanel;
-    wxSplitterWindow* m_catalogNotebookPage;
-    wxSplitterWindow* m_albumNotebookPage;
+    //CatalogPanel* xm_albumPageCatTreePanel;
+    wxSplitterWindow* m_stampToolSplitter;
+    //wxSplitterWindow* m_albumNotebookPage;
     wxTreeItemId m_draggedItem;
     wxTreeItemId m_currentItem;
     AlbumPanel* m_albumAlbumPanel;

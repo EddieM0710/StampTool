@@ -221,8 +221,6 @@ void StampDetailsDialog::CreateControls( )
     m_nameFontPicker = nameFontPickerHelper->GetFontPickerCtrl( );
     m_nameColorPicker = nameFontPickerHelper->GetColourPickerCtrl( );
 
-
-
     m_TitleLocationBox = new wxStaticBox( notebookDetailsPanel, wxID_ANY, _( "Member Title Location" ) );
     m_titleLocationVSizer = new wxStaticBoxSizer( m_TitleLocationBox, wxVERTICAL );
     detailsVerticalSizer->Add( m_titleLocationVSizer, 1, wxGROW | wxALL, 5 );
@@ -427,7 +425,7 @@ void StampDetailsDialog::RefreshFromCatalog( )
         if ( link )
         {
             wxTreeItemId catTreeID = link->GetCatTreeID( );
-            wxXmlNode* node = GetAlbumPageTreeCtrl( )->GetItemNode( catTreeID );
+            wxXmlNode* node = GetCatalogTreeCtrl( )->GetItemNode( catTreeID );
 
             if ( node )
             {

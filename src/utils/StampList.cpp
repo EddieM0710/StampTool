@@ -37,7 +37,7 @@
 #include "gui/CatalogTreeCtrl.h"
 #include "gui/AlbumTreeCtrl.h"
 
-  
+
 namespace Utils {
 
 
@@ -68,7 +68,7 @@ namespace Utils {
 
     void StampLink::Clear( )
     {
-        CatalogTreeCtrl* catTreeCtrl = GetAlbumPageTreeCtrl( );
+        CatalogTreeCtrl* catTreeCtrl = GetCatalogTreeCtrl( );
         if ( catTreeCtrl )
         {
             wxTreeItemId catTreeID = GetCatTreeID( );
@@ -94,7 +94,7 @@ namespace Utils {
 
     void StampList::Clear( )
     {
-        CatalogTreeCtrl* catTreeCtrl = GetAlbumPageTreeCtrl( );
+        CatalogTreeCtrl* catTreeCtrl = GetCatalogTreeCtrl( );
         AlbumTreeCtrl* albumTreeCtrl = GetAlbumTreeCtrl( );
         if ( catTreeCtrl )
         {

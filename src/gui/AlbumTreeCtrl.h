@@ -118,6 +118,7 @@ public:
     ///  @return Design::AlbumBase* 
     Design::AlbumBase* GetNodeElement( void ) { return m_element; };
 
+
     ///  @brief Get the Type object
     ///  
     ///  @return Design::AlbumBaseType 
@@ -357,6 +358,8 @@ public:
     ///  @param id 
     ///  @return wxTreeItemId 
     wxTreeItemId GetPage( wxTreeItemId id );
+
+    wxString GetRelativePathToImageDir( );
 
     ///  @brief Get the Selected Node object
     ///  

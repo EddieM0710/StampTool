@@ -45,6 +45,7 @@ EVT_BUTTON( IDSTATUSCLEARBUTTON, GenerateListSettings::OnStatusClearButtonClick 
 EVT_BUTTON( ID_EMISSIONALLBUTTON, GenerateListSettings::OnEmissionAllButtonClick )
 EVT_BUTTON( ID_EMISSIONCLEARBUTTON, GenerateListSettings::OnEmissionClearButtonClick )
 EVT_BUTTON( ID_FORMATCLEARBUTTON, GenerateListSettings::OnFormatClearButtonClick )
+EVT_BUTTON( ID_FORMATALLBUTTON, GenerateListSettings::OnFormatAllButtonClick )
 EVT_BUTTON( ID_CLEARYEARRANGEBUTTON, GenerateListSettings::OnClearYearRangeButtonClick )
 EVT_BUTTON( wxID_OK, GenerateListSettings::OnOkClick )
 
@@ -262,6 +263,27 @@ void GenerateListSettings::OnClearYearRangeButtonClick( wxCommandEvent& event )
 
 void GenerateListSettings::OnEmissionAllButtonClick( wxCommandEvent& event )
 {
+    int base = 1;
+    for ( int i = 0; i < Catalog::ET_NbrTypes; i++ )
+    {
+        m_emissionListCtrl->Check( i );
+        base = base <<= 1;
+    }
+
+    event.Skip( );
+
+}
+
+//--------------
+void GenerateListSettings::OnFormatAllButtonClick( wxCommandEvent& event )
+{
+    int base = 1;
+    for ( int i = 0; i < Catalog::FT_NbrTypes; i++ )
+    {
+        m_formatListCtrl->Check( i );
+        base = base <<= 1;
+    }
+
     event.Skip( );
 
 }
@@ -270,6 +292,12 @@ void GenerateListSettings::OnEmissionAllButtonClick( wxCommandEvent& event )
 
 void GenerateListSettings::OnEmissionClearButtonClick( wxCommandEvent& event )
 {
+    int base = 1;
+    for ( int i = 0; i < Catalog::ET_NbrTypes; i++ )
+    {
+        m_emissionListCtrl->Check( i, false );
+        base = base <<= 1;
+    }
     event.Skip( );
 
 }
@@ -278,6 +306,13 @@ void GenerateListSettings::OnEmissionClearButtonClick( wxCommandEvent& event )
 
 void GenerateListSettings::OnFormatClearButtonClick( wxCommandEvent& event )
 {
+    int base = 1;
+    for ( int i = 0; i < Catalog::FT_NbrTypes; i++ )
+    {
+        m_formatListCtrl->Check( i, false );
+        base = base <<= 1;
+    }
+
     event.Skip( );
 
 }
@@ -293,7 +328,12 @@ void GenerateListSettings::OnOkClick( wxCommandEvent& event )
 
 void GenerateListSettings::OnStatusAllButtonClick( wxCommandEvent& event )
 {
-
+    int base = 1;
+    for ( int i = 0; i < Catalog::ST_NbrInventoryStatusTypes; i++ )
+    {
+        m_statusListCtrl->Check( i );
+        base = base <<= 1;
+    }
     event.Skip( );
 
 }
@@ -302,6 +342,12 @@ void GenerateListSettings::OnStatusAllButtonClick( wxCommandEvent& event )
 
 void GenerateListSettings::OnStatusClearButtonClick( wxCommandEvent& event )
 {
+    int base = 1;
+    for ( int i = 0; i < Catalog::ST_NbrInventoryStatusTypes; i++ )
+    {
+        m_statusListCtrl->Check( i, false );
+        base = base <<= 1;
+    }
     event.Skip( );
 }
 

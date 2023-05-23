@@ -33,9 +33,9 @@ class LabeledTextBox;
 class wxListCtrl;
 
 #define SYMBOL_CATALOGDETAILSDIALOG_STYLE wxCAPTION | wxRESIZE_BORDER | wxSYSTEM_MENU | wxCLOSE_BOX | wxTAB_TRAVERSAL
-#define SYMBOL_CATALOGDETAILSDIALOG_TITLE _( "Volume Details Dialog" )
+#define SYMBOL_CATALOGDETAILSDIALOG_TITLE _( "Import File Details Dialog" )
 #define SYMBOL_CATALOGDETAILSDIALOG_IDNAME ID_CATALOGDETAILSDIALOG
-#define SYMBOL_CATALOGDETAILSDIALOG_SIZE wxSize( 600, 400 )
+#define SYMBOL_CATALOGDETAILSDIALOG_SIZE wxSize( 800, 400 )
 #define SYMBOL_CATALOGDETAILSDIALOG_POSITION wxDefaultPosition
 
 class CatalogDetailsDialog : public wxDialog
@@ -56,7 +56,8 @@ public:
         ID_VOLUMELAYOUTPANEL,
         ID_VOLUMELAYOUTTEXTCTRL,
         ID_VOLUMENOTEBOOK,
-        ID_DIRBUTTON
+        ID_CATDIRBUTTON,
+        ID_IMAGEDIRBUTTON
     };
 
     ///  @brief Construct a new Catalog Details Dialog object
@@ -93,6 +94,9 @@ public:
     ///  
     void CreateControls( );
 
+    wxString GetCatalogPath( );
+
+
     ///  @brief Get the Name object
     ///  
     ///  @return wxString 
@@ -121,7 +125,10 @@ public:
     ///  @brief 
     ///  
     ///  @param event 
-    void OnDirClick( wxCommandEvent& event );
+    void OnCatDirClick( wxCommandEvent& event );
+    // void OnImageDirClick( wxCommandEvent& event );
+
+    void SetCatalogFilename( wxString filename );
 
     ///  @brief Set the Design Tree I D object
     ///  
@@ -153,8 +160,9 @@ private:
 
     wxTreeItemId m_designTreeID;
     // CatalogDetailsDialog member variables
-    LabeledTextBox* m_name;
-    LabeledTextBox* m_imagePath;
+    wxTextCtrl* m_name;
+    LabeledTextBox* m_catPath;
+    //    LabeledTextBox* m_imagePath;
 
 };
 

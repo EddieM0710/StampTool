@@ -62,10 +62,8 @@ namespace Design {
     {
         wxString id = m_multiLineString;
         wxFont font( GetFont( ) );
-        int pointSize = font.GetPointSize( );
-
-
         dc.SetFont( font );
+
         RealPoint pos = GetPosition( );
         RealSize size = GetSize( );
         pos.x += x;
@@ -73,18 +71,19 @@ namespace Design {
         DrawLabel( dc, id, pos, size, wxALIGN_CENTER );
     };
 
-    void LabelFrame::drawPDF( wxPdfDocument* doc, double x, double y )
+    void LabelFrame::DrawPDF( wxPdfDocument* doc, double x, double y )
     {
-        //         wxString id;
-        //         wxFont font( *m_font );
+        RealPoint pos = GetPosition( );
+        pos.x += x;
+        pos.y += y;
 
-        //         id = m_string;
-        //         id.Trim( );
-        //         id.Trim( false );
-        //         GetAlbumImagePanel( )->MakeMultiLine( id, font, GetWidth( ) );
-        //         //font.SetPointSize( 6 );
-        //         //dc.SetFont( font );
-        // //        doc->Write( id, m_stringRect, wxALIGN_CENTER_HORIZONTAL );            
+        wxFont font( GetFont( ) );
+        int pointSize = font.GetPointSize( );
+        RealSize size( GetWidth( ), 0 + pointSize * .31 );
+
+        doc->SetFont( font );
+        doc->SetXY( pos.x, pos.y );
+        doc->MultiCell( size.x, size.y, m_multiLineString, 0, wxPDF_ALIGN_CENTER );
     };
 
     void LabelFrame::LoadFont( wxXmlNode* node )

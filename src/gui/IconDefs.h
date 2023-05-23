@@ -59,6 +59,7 @@
 #include "art/StampRedSouvenirSheet.xpm"
 #include "art/StampYellowSouvenirSheet.xpm"
 #include "art/folder.xpm"
+#include "art/folder_open.xpm"
 #include "art/menu.xpm"
 
 #include "art/unchecked.xpm"

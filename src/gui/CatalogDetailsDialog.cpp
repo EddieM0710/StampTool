@@ -38,7 +38,7 @@
 
 #include "gui/CatalogDetailsDialog.h"
 #include "gui/LabeledTextBox.h"
-//#include "gui/AppData.h" 
+ //#include "gui/AppData.h" 
 #include "catalog/CatalogData.h"
 
 IMPLEMENT_DYNAMIC_CLASS( CatalogDetailsDialog, wxDialog )
@@ -46,7 +46,8 @@ IMPLEMENT_DYNAMIC_CLASS( CatalogDetailsDialog, wxDialog )
 BEGIN_EVENT_TABLE( CatalogDetailsDialog, wxDialog )
 
 EVT_BUTTON( wxID_OK, CatalogDetailsDialog::OnOkClick )
-EVT_BUTTON( ID_DIRBUTTON, CatalogDetailsDialog::OnDirClick )
+EVT_BUTTON( ID_CATDIRBUTTON, CatalogDetailsDialog::OnCatDirClick )
+//EVT_BUTTON( ID_IMAGEDIRBUTTON, CatalogDetailsDialog::OnImageDirClick )
 
 END_EVENT_TABLE( )
 
@@ -74,7 +75,7 @@ CatalogDetailsDialog::CatalogDetailsDialog( )
 CatalogDetailsDialog::CatalogDetailsDialog( wxWindow* parent, wxWindowID id, const wxString& caption, const wxPoint& pos, const wxSize& size, long style )
 {
     Init( );
-    Create( parent, id, caption, pos, size, style );
+    Create( parent, id, caption, pos, wxSize( 800, 800 ), style );
 }
 
 //--------------
@@ -122,21 +123,44 @@ void CatalogDetailsDialog::CreateControls( )
     wxBoxSizer* theDialogVerticalSizer = new wxBoxSizer( wxVERTICAL );
     theDialog->SetSizer( theDialogVerticalSizer );
 
-    m_name = new LabeledTextBox( theDialog, ID_NAMELABELEDTEXTBOX, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
-    m_name->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
-    theDialogVerticalSizer->Add( m_name, 1, wxGROW | wxALL, 5 );
+    // cat name
+    wxBoxSizer* theCatNameHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
+    theDialogVerticalSizer->Add( theCatNameHorizontalSizer, 1, wxGROW | wxALL, 0 );
 
-    wxBoxSizer* theDialogHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
-    theDialogVerticalSizer->Add( theDialogHorizontalSizer, 1, wxGROW | wxALL, 0 );
 
-    m_imagePath = new LabeledTextBox( theDialog, ID_IMAGEPATHTEXTBOX, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
-    m_imagePath->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
-    theDialogHorizontalSizer->Add( m_imagePath, 1, wxGROW | wxALL, 5 );
+    wxStaticText* itemStaticText1 = new wxStaticText( theDialog, wxID_STATIC, _( "Catalog Display Name" ), wxDefaultPosition, wxDefaultSize, 0 );
+    theCatNameHorizontalSizer->Add( itemStaticText1, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
-    wxButton* dirButton = new wxButton( theDialog, ID_DIRBUTTON, _( "Dir" ), wxDefaultPosition, wxDefaultSize, 0 );
-    theDialogHorizontalSizer->Add( dirButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+    m_name = new wxTextCtrl( theDialog, ID_NAMELABELEDTEXTBOX, wxEmptyString, wxDefaultPosition, wxSize( 400, -1 ), 0 );
+    theCatNameHorizontalSizer->Add( m_name, 7, wxGROW | wxALL, 5 );
 
-    //>>dialog Ctrl buttons
+    //cat path
+    wxBoxSizer* theCatPathHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
+    theDialogVerticalSizer->Add( theCatPathHorizontalSizer, 1, wxGROW | wxALL, 0 );
+
+    m_catPath = new LabeledTextBox( theDialog, ID_IMAGEPATHTEXTBOX, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
+    m_catPath->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
+    theCatPathHorizontalSizer->Add( m_catPath, 2, wxGROW | wxALL, 5 );
+
+    wxBitmapButton* catDirButton = new wxBitmapButton( theDialog, ID_CATDIRBUTTON,
+        wxBitmap( folder_open_xpm ),
+        wxDefaultPosition, wxDefaultSize, wxBU_AUTODRAW | wxNO_BORDER );
+    theCatPathHorizontalSizer->Add( catDirButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+
+    // image path
+    wxBoxSizer* theImagePathHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
+    theDialogVerticalSizer->Add( theImagePathHorizontalSizer, 1, wxGROW | wxALL, 0 );
+
+    // m_imagePath = new LabeledTextBox( theDialog, ID_IMAGEPATHTEXTBOX, wxDefaultPosition, wxSize( -1, 100 ), wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
+    // m_imagePath->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
+    // theImagePathHorizontalSizer->Add( m_imagePath, 5, wxGROW | wxALL, 5 );
+
+    // wxBitmapButton* imageDirButton = new wxBitmapButton( theDialog, ID_IMAGEDIRBUTTON,
+    //     wxBitmap( folder_open_xpm ),
+    //     wxDefaultPosition, wxDefaultSize, wxBU_AUTODRAW | wxNO_BORDER );
+    // theImagePathHorizontalSizer->Add( imageDirButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+
+    //ctrl buttons
     wxBoxSizer* dialogCtrlButtonSizer = new wxBoxSizer( wxHORIZONTAL );
     theDialogVerticalSizer->Add( dialogCtrlButtonSizer, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 0 );
 
@@ -145,25 +169,28 @@ void CatalogDetailsDialog::CreateControls( )
 
     wxButton* okButton = new wxButton( theDialog, wxID_OK, _( "OK" ), wxDefaultPosition, wxDefaultSize, 0 );
     dialogCtrlButtonSizer->Add( okButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
-    //>>dialog Ctrl buttons  
-    m_name->SetLabel( "Name" );
-    m_imagePath->SetLabel( "ImageName" );
+
+    // m_name->SetLabel( "Catalog Display Name" );
+    m_catPath->SetLabel( "Catalog Path" );
+    //    m_imagePath->SetLabel( "Image Path" );
 }
 
 //--------------
+wxString CatalogDetailsDialog::GetCatalogPath( ) { return m_catPath->GetValue( ); };
 
+//--------------
 wxString CatalogDetailsDialog::GetName( ) { return m_name->GetValue( ); };
 
 //--------------
 
-wxString CatalogDetailsDialog::GetImagePath( ) { return m_imagePath->GetValue( ); };
+//wxString CatalogDetailsDialog::GetImagePath( ) { return m_imagePath->GetValue( ); };
 
 //--------------
 
 void CatalogDetailsDialog::Init( )
 {
     m_name = NULL;
-    m_imagePath = NULL;
+    //    m_imagePath = NULL;
 }
 
 //--------------
@@ -175,39 +202,78 @@ void CatalogDetailsDialog::OnOkClick( wxCommandEvent& event )
 
 //--------------
 
-void CatalogDetailsDialog::OnDirClick( wxCommandEvent& event )
+void CatalogDetailsDialog::OnCatDirClick( wxCommandEvent& event )
 {
-    wxDirDialog dirDialog( this, "Select the art directory", GetCatalogData( )->GetImagePath( ) );
+    wxString catfile = m_catPath->GetValue( );
+    wxFileName filename1( catfile );
+    wxString path = filename1.GetPath( );
+    wxString name = filename1.GetFullName( );
+    wxFileDialog dirDialog( this, "Select the art directory", path, name,
+        "Catalog files (*.cat)|*.cat",
+        wxFD_SAVE );
 
     if ( dirDialog.ShowModal( ) == wxID_CANCEL )
         return;
 
     wxString filename = dirDialog.GetPath( );
-    wxString sectFilename = GetCatalogVolume( )->GetVolumeFilename( );
-    wxFileName vFn( sectFilename );
-    vFn.ClearExt( );
-    vFn.SetName( "" );
-    wxFileName fn;
-    fn.SetPath( filename );
-    fn.ClearExt( );
-    fn.SetName( "" );
-    wxString str1 = vFn.GetPath( );
-    wxString str2 = fn.GetPath( );
-    fn.MakeRelativeTo( vFn.GetPath( ) );
-    wxString str3 = fn.GetPath( );
-    SetImagePath( fn.GetPath( ) );
+    m_catPath->SetValue( filename );
+    // wxString sectFilename = GetCatalogVolume( )->GetVolumeFilename( );
+    // wxFileName vFn( sectFilename );
+    // vFn.ClearExt( );
+    // vFn.SetName( "" );
+    // wxFileName fn;
+    // fn.SetPath( filename );
+    // fn.ClearExt( );
+    // fn.SetName( "" );
+    //wxString str1 = vFn.GetPath( );
+    //wxString str2 = fn.GetPath( );
+    //fn.MakeRelativeTo( vFn.GetPath( ) );
+    //wxString str3 = fn.GetPath( );
+   // SetImagePath( fn.GetPath( ) );
 }
+
+//--------------
+
+// void CatalogDetailsDialog::OnImageDirClick( wxCommandEvent& event )
+// {
+//     wxString name = "";
+//     wxDirDialog dirDialog( this, "Select the art directory",
+//         m_imagePath->GetValue( ), wxDD_CHANGE_DIR );
+
+//     if ( dirDialog.ShowModal( ) == wxID_CANCEL )
+//         return;
+
+//     wxString filename = dirDialog.GetPath( );
+//     wxString sectFilename = GetCatalogVolume( )->GetVolumeFilename( );
+//     wxFileName vFn( sectFilename );
+//     vFn.ClearExt( );
+//     vFn.SetName( "" );
+//     wxFileName fn;
+//     fn.SetPath( filename );
+//     fn.ClearExt( );
+//     fn.SetName( "" );
+//     wxString str1 = vFn.GetPath( );
+//     wxString str2 = fn.GetPath( );
+//     fn.MakeRelativeTo( vFn.GetPath( ) );
+//     wxString str3 = fn.GetPath( );
+//     SetImagePath( fn.GetPath( ) );
+// }
 
 //--------------
 
 bool CatalogDetailsDialog::IsNameModified( ) { return m_name->IsModified( ); };
 
 //--------------
-
-void CatalogDetailsDialog::SetImagePath( wxString str )
+void CatalogDetailsDialog::SetCatalogFilename( wxString filename )
 {
-    m_imagePath->SetValue( str );
-};
+    m_catPath->SetValue( filename );
+}
+
+//--------------
+// void CatalogDetailsDialog::SetImagePath( wxString str )
+// {
+//     m_imagePath->SetValue( str );
+// };
 
 //--------------
 

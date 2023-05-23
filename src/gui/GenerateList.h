@@ -75,6 +75,10 @@ public:
     ///  
     ~GenerateList( );
 
+
+    bool AddEntry( Catalog::Entry* entry );
+    void ClearList( );
+
     ///  @brief 
     ///  
     ///  @param entry 
@@ -175,6 +179,7 @@ private:
     int m_checkedEmissionItems;
     wxString m_fromYear;
     wxString m_toYear;
+    int m_currRow;
 };
 
 #endif

@@ -32,6 +32,8 @@
 #include "CatalogDefs.h"
 #include "utils/XMLUtilities.h"
 
+namespace Utils { class ImageRepository; };
+
 namespace Catalog {
 
     class CatalogVolume;
@@ -102,6 +104,19 @@ namespace Catalog {
         /// Get the Catalog XML doc
         wxXmlDocument* GetDoc( ) { return m_stampDoc; };
 
+        /// @brief Get the Album Filename object
+        ///  
+        ///  @return wxString 
+        wxString GetCatalogFilename( ) { return m_volumeFilename; };
+
+        wxString GetCatalogPath( );
+
+        wxString GetCatalogBaseName( );
+
+        Utils::ImageRepository* GetImageRepository( );
+
+        wxString GetZipFileName( );
+
         ///  @brief Get the Volume Name from the doc root
         ///  
         ///  @return wxString 
@@ -137,6 +152,14 @@ namespace Catalog {
 
         /// this makes a list of the children entry elements that can have childrem
         Utils::wxXmlNodeArray* MakeParentList( Catalog::FormatType parentType );
+
+        bool MakeCatalogImageArray( wxXmlNode* parent, wxArrayString& fileArray );
+        bool MakeCatalogImageArray( wxArrayString& fileArray );
+
+        bool MakeCatalogImageRepository( );
+
+        bool MakeCatalogList( wxArrayString& fileArray );
+        bool MakeCatalogList( wxXmlNode* parent, wxArrayString& fileArray );
 
         ///Create and load a new Catalog xml Doc
         void NewCatalog( );
@@ -181,6 +204,7 @@ namespace Catalog {
 
     private:
         wxString m_volumeFilename;
+        Utils::ImageRepository* m_imageRepository;
         wxXmlDocument* m_stampDoc;
         //  wxString m_title;
         bool m_dirty;

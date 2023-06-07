@@ -42,6 +42,8 @@ namespace Utils { class FontList; };
 namespace Utils { class StampList; };
 namespace Catalog { class CatalogVolume; };
 namespace Catalog { class CatalogData; };
+namespace Inventory { class CollectionList; };
+namespace Catalog { class StampMountData; };
 namespace Utils { class Project; };
 namespace Utils { class Settings; };
 
@@ -64,6 +66,8 @@ AppData* GetAppData( );
 
 Catalog::CatalogData* GetCatalogData( );
 
+Inventory::CollectionList* GetCollectionList( );
+
 CatalogTreeCtrl* GetCatalogTreeCtrl( );
 
 Catalog::CatalogVolume* GetCatalogVolume( );
@@ -77,6 +81,8 @@ Utils::Project* GetProject( );
 Utils::Settings* GetSettings( );
 
 Utils::StampList* GetStampAlbumCatalogLink( );
+
+Catalog::StampMountData* GetStampMountData( );
 
 
 #define RealPoint wxRealPoint  

@@ -34,7 +34,7 @@
 #include "wx/wx.h"
 #endif
 
-#include "catalog/CatalogCode.h"
+ //#include "catalog/CatalogCode.h"
 #include <wx/strconv.h>
 #include "utils/XMLUtilities.h"
 

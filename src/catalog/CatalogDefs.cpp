@@ -84,7 +84,7 @@ namespace Catalog {
         wxT( "Print run" ),   wxT( "Variant" ),       wxT( "Score" ),
         wxT( "Accuracy" ),    wxT( "Colors" ),        wxT( "Themes" ),
         wxT( "Description" ), wxT( "Link" ),       //   wxT( "Checked" ), 
-        wxT( "Inventory" ), wxT( "Background" )
+        wxT( "Inventory" ), wxT( "StampMount" ), wxT( "Background" )
     };
 
     const wxString EmissionStrings[ ET_NbrTypes ]
@@ -132,7 +132,7 @@ namespace Catalog {
 
 
     const wxString ItemDataNames[ IDT_NbrTypes ]
-        = { wxT( "Type" ), wxT( "Condition" ), wxT( "Value" ), wxT( "Location" ),
+        = { wxT( "Collection" ), wxT( "Status" ), wxT( "Type" ), wxT( "Condition" ), wxT( "Value" ), wxT( "Location" ),
             wxT( "Remarks" ) };
 
 
@@ -146,10 +146,11 @@ namespace Catalog {
         wxT( "Print_run" ),   wxT( "Variant" ),       wxT( "Score" ),
         wxT( "Accuracy" ),    wxT( "Colors" ),        wxT( "Themes" ),
         wxT( "Description" ), wxT( "Link" ),        //  wxT( "CheckedStatus" ), 
-        wxT( "InventoryStatus" ),  wxT( "Background" )
+        wxT( "InventoryStatus" ),  wxT( "StampMount" ), wxT( "Background" )
     };
 
 
+    // find a place in the dest to put thr child
     void AddEntry( wxXmlNode* parent, wxXmlNode* child, int level )
     {
         level++;
@@ -157,17 +158,18 @@ namespace Catalog {
         wxString childName = child->GetName( );
         wxString parentName = parent->GetName( );
         CatalogBaseType parentType = FindCatalogBaseType( parentName );
-
+        std::cout << "parent " << parentName << " type " << parentType << "   child " << childName << "\n";
         if ( level > 6 )
         {
             std::cout << "Infinite loop\n";
         }
+        // child has to be an entry
         if ( childName == CatalogBaseNames[ NT_Entry ] )
         {
             Catalog::Entry entry( child );
             Catalog::CatalogBaseType sortType =
-                ( Catalog::CatalogBaseType ) GetSettings( )->GetNextSortClassification(
-                    ( int ) parentType );
+                ( Catalog::CatalogBaseType ) GetSettings( )->GetNextSortClassification( ( int ) parentType );
+            std::cout << "parent next sortType" << CatalogBaseNames[ sortType ] << "\n";
             if ( ( sortType < NT_Catalog ) || ( sortType >= NT_Entry ) )
             {
                 wxString id = entry.GetID( );
@@ -196,6 +198,7 @@ namespace Catalog {
                     {
                         if ( !attr.Cmp( name ) )
                         {
+                            //Found the classification+ it goes in 
                             AddEntry( nextNode, child, level );
                             return;
                         }
@@ -203,10 +206,33 @@ namespace Catalog {
                     nextNode = nextNode->GetNext( );
                 }
 
-                nextNode = Utils::NewNode( parent, nodeNameStr );
-                nextNode->SetParent( parent );
+                // if we got here then we didn't find a ckassificaeion qith that name
+                // Insert it here as nextNode in order
+                // look for a child it can go after
+                wxXmlNode* childNode = parent->GetChildren( );
+                bool found = false;
+                nextNode = new wxXmlNode( 0, wxXML_ELEMENT_NODE, nodeNameStr );
                 Utils::SetAttrStr( nextNode, "Name", name );
+                while ( childNode && !found )
+                {
+                    wxString childNodeName = Utils::GetAttrStr( childNode, "Name" );
+                    if ( name.Cmp( childNodeName ) < 0 )
+                    {
+                        parent->InsertChild( nextNode, childNode );
+                        nextNode->SetParent( parent );
+                        found = true;
+                    }
+                    childNode = childNode->GetNext( );;
+                }
+                if ( !found )
+                {
+                    //either no children or couldn't figure out where it goes so just add it to end
+                    parent->AddChild( nextNode );
 
+                    nextNode->SetParent( parent );
+                }
+                std::cout << "nextNode " << nextNode->GetName( ) <<
+                    Utils::GetAttrStr( nextNode, "Name" ) << "\n";
                 AddEntry( nextNode, child, level );
                 return;
             }
@@ -282,7 +308,7 @@ namespace Catalog {
                 return ( InventoryStatusType ) i;
             }
         }
-        return ( InventoryStatusType ) -1;
+        return ( InventoryStatusType ) ST_None;
     };
 
     /**
@@ -365,6 +391,7 @@ namespace Catalog {
         return newChild;
     }
 
+    // search thru the source nodes to find an entry. When found pur it into dest
     void SortData( wxXmlNode* destNode, wxXmlNode* parent )
     {
         wxString name = parent->GetAttribute( XMLDataNames[ DT_Name ] );

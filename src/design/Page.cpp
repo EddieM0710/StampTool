@@ -132,6 +132,7 @@ namespace Design {
     void Page::DrawPDF( wxPdfDocument* doc, double x, double y )
     {
 
+
         wxString borderName = GetBorderFileName( );
 
         double xPos = GetLeftMargin( );

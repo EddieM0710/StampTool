@@ -58,6 +58,8 @@ namespace Utils {
         wxString GetCatalogID( ) { return m_catalogID; };
         wxString GetCountryID( ) { return m_countryID; };
 
+        wxString GetLastCollection( ) { return m_lastCollection; };
+        wxString GetCollectionFile( ) { return m_CollectionFile; };
         bool GetLoadLastFileAtStartUp( ) { return m_loadLastFileAtStartUp; };
         wxString GetLowerDivision( ) { return m_lowerDivision; };
         wxString GetLowerPeriod( ) { return m_lowerPeriod; };
@@ -86,6 +88,8 @@ namespace Utils {
         //void SetImageDirectory( wxString val ) { m_imageDirectory = val.Trim( );m_dirty = true; };
         void SetCatalogID( wxString val ) { m_catalogID = val.Trim( ); m_dirty = true; };
         void SetCountryID( wxString val ) { m_countryID = val.Trim( ); m_dirty = true; };
+        void SetLastCollection( wxString str ) { m_lastCollection = str; };
+        void SetCollectionFile( wxString str ) { m_CollectionFile = str; };
         void SetLoadLastFileAtStartUp( bool state = true ) { m_loadLastFileAtStartUp = state; };
         void SetLowerDivision( wxString val ) { m_lowerDivision = val.Trim( ); m_dirty = true; };
         void SetLowerPeriod( wxString val ) { m_lowerPeriod = val.Trim( ); m_dirty = true; };
@@ -140,6 +144,8 @@ namespace Utils {
     private:
         wxString m_lastFile;
         bool m_loadLastFileAtStartUp;
+        wxString m_CollectionFile;
+        wxString m_lastCollection;
         wxString m_configurationDirectory;
         //    wxString m_imageDirectory;
         wxString m_countryID;

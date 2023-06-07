@@ -40,6 +40,7 @@
 #include "catalog/CatalogVolume.h"
 #include "catalog/Entry.h"
 #include "utils/XMLUtilities.h"
+#include "gui/CatalogTreeCtrl.h"
 
 IMPLEMENT_DYNAMIC_CLASS( GenerateList, wxPanel )
 
@@ -47,6 +48,8 @@ BEGIN_EVENT_TABLE( GenerateList, wxPanel )
 EVT_BUTTON( ID_SETLISTPREFSBUTTON, GenerateList::OnSetListPrefsButtonClick )
 EVT_BUTTON( ID_WRITEBUTTON, GenerateList::OnWriteButtonClick )
 EVT_TEXT( ID_FILENAMETEXTCTRL, GenerateList::OnFileNameTextUpdated )
+EVT_GRID_CELL_LEFT_CLICK( GenerateList::OnCellLeftClick )
+EVT_GRID_LABEL_LEFT_CLICK( GenerateList::OnLabelLeftClick )
 END_EVENT_TABLE( )
 
 //--------------
@@ -128,7 +131,7 @@ void GenerateList::CreateControls( )
     m_gridCtrl->SetDefaultRowSize( 25 );
     m_gridCtrl->SetColLabelSize( 25 );
     m_gridCtrl->SetRowLabelSize( 50 );
-    m_gridCtrl->CreateGrid( 0, 7, wxGrid::wxGridSelectCells );
+    m_gridCtrl->CreateGrid( 0, 9, wxGrid::wxGridSelectCells );
     itemBoxSizer2->Add( m_gridCtrl, 1, wxGROW | wxALL, 5 );
 
     wxBoxSizer* itemBoxSizer8 = new wxBoxSizer( wxHORIZONTAL );
@@ -150,7 +153,9 @@ void GenerateList::CreateControls( )
     m_gridCtrl->SetColLabelValue( 3, Catalog::DataTypeNames[ Catalog::DT_Issued_on ] );
     m_gridCtrl->SetColLabelValue( 4, Catalog::DataTypeNames[ Catalog::DT_Emission ] );
     m_gridCtrl->SetColLabelValue( 5, Catalog::DataTypeNames[ Catalog::DT_Format ] );
-    m_gridCtrl->SetColLabelValue( 6, "Size" );
+    m_gridCtrl->SetColLabelValue( 6, Catalog::DataTypeNames[ Catalog::DT_Width ] );
+    m_gridCtrl->SetColLabelValue( 7, Catalog::DataTypeNames[ Catalog::DT_Height ] );
+    m_gridCtrl->SetColLabelValue( 8, Catalog::DataTypeNames[ Catalog::DT_StampMount ] );
 }
 
 //--------------
@@ -347,18 +352,21 @@ void GenerateList::ShowRow( Catalog::Entry* entry, int row )
         m_gridCtrl->SetColSize( 4, size );
     }
     m_gridCtrl->SetCellValue( row, 5, entry->GetFormat( ) );
+    m_gridCtrl->SetCellValue( row, 6, entry->GetWidth( ) );
+    m_gridCtrl->SetCellValue( row, 7, entry->GetHeight( ) );
+    m_gridCtrl->SetCellValue( row, 8, entry->GetMount( ) );
 
-    wxString height = entry->GetHeight( );
-    wxString width = entry->GetWidth( );
-    if ( height.IsEmpty( ) || width.IsEmpty( ) )
-    {
-        m_gridCtrl->SetCellValue( row, 6, "Size Missing" );
-    }
-    else
-    {
-        m_gridCtrl->SetCellValue( row, 6, "" );
+    // wxString height = entry->GetHeight( );
+    // wxString width = entry->GetWidth( );
+    // if ( height.IsEmpty( ) || width.IsEmpty( ) )
+    // {
+    //     m_gridCtrl->SetCellValue( row, 6, "Size Missing" );
+    // }
+    // else
+    // {
+    //     m_gridCtrl->SetCellValue( row, 6, "" );
 
-    }
+    // }
 
 }
 
@@ -410,4 +418,21 @@ void GenerateList::WriteEntries( wxXmlNode* parent, int& row )
         WriteEntries( child, row );
         child = child->GetNext( );
     }
+}
+
+
+void GenerateList::OnCellLeftClick( wxGridEvent& event )
+{
+    int row = event.GetRow( );
+    wxString id = m_gridCtrl->GetCellValue( row, 0 );
+    GetCatalogTreeCtrl( )->SelectStamp( id );
+    event.Skip( );
+}
+
+
+void GenerateList::OnLabelLeftClick( wxGridEvent& event )
+{
+
+    event.Skip( );
+
 }

@@ -93,7 +93,7 @@ namespace Catalog {
     ///  DT_Country, DT_Series, DT_Catalog_Codes, DT_Issued_on, DT_Expiry_date, DT_Width,
     ///  DT_Height, DT_Paper, DT_Watermark, DT_Emission, DT_Format, DT_Perforation, DT_Printing, 
     ///  DT_Gum, DT_Currency, DT_FaceValue, DT_Print_run, DT_Variant, DT_Score, DT_Accuracy, 
-    ///  DT_Colors, DT_Themes, DT_Description, DT_Link, DT_InventoryStatus, DT_BackGround,
+    ///  DT_Colors, DT_Themes, DT_Description, DT_Link, DT_InventoryStatus, DT_StampMount, DT_BackGround,
     typedef enum
     {
         DT_ID_Nbr = 0,
@@ -124,6 +124,7 @@ namespace Catalog {
         DT_Link,
         //        DT_CheckedStatus, 
         DT_InventoryStatus,
+        DT_StampMount,
         DT_BackGround,
         DT_NbrTypes
     } DataTypes;
@@ -206,6 +207,8 @@ namespace Catalog {
     /// One of IDT_Type, IDT_Condition, IDT_Value, IDT_Location, IDT_Remarks,   
     typedef enum
     {
+        IDT_Collection,
+        IDT_InventoryStatus,
         IDT_Type,
         IDT_Condition,
         IDT_Value,

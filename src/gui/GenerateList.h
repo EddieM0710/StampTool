@@ -46,7 +46,7 @@ class GenerateListSettings;
 class GenerateList : public wxPanel
 {
     DECLARE_DYNAMIC_CLASS( GenerateList )
-        DECLARE_EVENT_TABLE( )
+    DECLARE_EVENT_TABLE( )
 
 public:
     enum GenerateListGuiDefs
@@ -139,6 +139,10 @@ public:
     ///  
     ///  @param event 
     void OnSetListPrefsButtonClick( wxCommandEvent& event );
+
+    void OnCellLeftClick( wxGridEvent& event );
+
+    void OnLabelLeftClick( wxGridEvent& event );
 
     ///  @brief 
     ///  

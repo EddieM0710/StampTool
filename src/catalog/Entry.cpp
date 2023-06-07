@@ -33,7 +33,7 @@
 #include "wx/wx.h"
 #endif
 
-#include "catalog/CatalogCode.h"
+ //#include "catalog/CatalogCode.h"
 #include "Defs.h"
 #include "Settings.h"
 #include "catalog/Entry.h"
@@ -55,6 +55,30 @@ namespace Catalog {
         }
         return ( wxXmlNode* ) 0;
     }
+
+    wxXmlNode* Entry::GetSpecimen( wxString collectionName )
+    {
+        wxXmlNode* ele = GetCatXMLNode( );
+        if ( ele )
+        {
+            wxXmlNode* child = ele->GetChildren( );
+            while ( child )
+            {
+                if ( !child->GetName( ).Cmp( "Specimen" ) )
+                {
+                    wxString specimenCollection = child->GetAttribute( Catalog::ItemDataNames[ Catalog::IDT_Collection ], "" );
+                    if ( !collectionName.Cmp( specimenCollection ) )
+                    {
+                        return child;
+                    }
+
+                }
+                child->GetNext( );
+            }
+        }
+        return ( wxXmlNode* ) 0;
+    }
+
 
     wxXmlNode* Entry::AddSpecimen( )
     {
@@ -243,6 +267,8 @@ namespace Catalog {
     wxString Entry::GetGum( ) { return GetAttr( DT_Gum ); };
 
     wxString Entry::GetHeight( ) { return GetAttr( DT_Height ); };
+
+    wxString Entry::GetMount( ) { return GetAttr( DT_StampMount ); };
 
     wxString Entry::GetID( ) { return GetAttr( DT_ID_Nbr ); };
 
@@ -436,48 +462,48 @@ namespace Catalog {
         return m_OK;
     };
 
-    void Entry::ProcessCatalogCodes( wxString catCodes )
-    {
-        if ( !HasChildCode( ) )
-        {
-            if ( catCodes.IsEmpty( ) )
-            {
-                return;
-            }
+    // void Entry::ProcessCatalogCodes( wxString catCodes )
+    // {
+    //     if ( !HasChildCode( ) )
+    //     {
+    //         if ( catCodes.IsEmpty( ) )
+    //         {
+    //             return;
+    //         }
 
-            wxStringTokenizer tokenizer( catCodes, "," );
+    //         wxStringTokenizer tokenizer( catCodes, "," );
 
-            wxString valStr;
-            wxString rest;
-            while ( tokenizer.HasMoreTokens( ) )
-            {
-                valStr = tokenizer.GetNextToken( );
-                if ( valStr.StartsWith( wxT( "\"" ), &rest ) )
-                    valStr = rest;
-                if ( valStr.EndsWith( wxT( "\"" ), &rest ) )
-                    valStr = rest;
+    //         wxString valStr;
+    //         wxString rest;
+    //         while ( tokenizer.HasMoreTokens( ) )
+    //         {
+    //             valStr = tokenizer.GetNextToken( );
+    //             if ( valStr.StartsWith( wxT( "\"" ), &rest ) )
+    //                 valStr = rest;
+    //             if ( valStr.EndsWith( wxT( "\"" ), &rest ) )
+    //                 valStr = rest;
 
-                // "Mi:US 1, Sn:US 1b, Yt:US 1, Sg:US 1, Un:US 1b"
-                valStr = valStr.Trim( );
-                valStr = valStr.Trim( false );
+    //             // "Mi:US 1, Sn:US 1b, Yt:US 1, Sg:US 1, Un:US 1b"
+    //             valStr = valStr.Trim( );
+    //             valStr = valStr.Trim( false );
 
-                int pos = valStr.Find( ":" );
-                wxString catalog = valStr.Mid( 0, pos );
-                valStr = valStr.Mid( pos + 1 );
-                pos = valStr.Find( " " );
-                wxString country = valStr.Mid( 0, pos );
-                wxString id = valStr.Mid( pos + 1 );
+    //             int pos = valStr.Find( ":" );
+    //             wxString catalog = valStr.Mid( 0, pos );
+    //             valStr = valStr.Mid( pos + 1 );
+    //             pos = valStr.Find( " " );
+    //             wxString country = valStr.Mid( 0, pos );
+    //             wxString id = valStr.Mid( pos + 1 );
 
 
-                wxXmlNode* catCodeElement = Utils::NewNode( GetCatXMLNode( ), CatalogBaseNames[ NT_CatalogCode ] );
+    //             wxXmlNode* catCodeElement = Utils::NewNode( GetCatXMLNode( ), CatalogBaseNames[ NT_CatalogCode ] );
 
-                CatalogCode* catCodeNode = new CatalogCode( catCodeElement );
-                catCodeNode->SetCatalog( catalog );
-                catCodeNode->SetCountry( country );
-                catCodeNode->SetID( id );
-            }
-        }
-    }
+    //             CatalogCode* catCodeNode = new CatalogCode( catCodeElement );
+    //             catCodeNode->SetCatalog( catalog );
+    //             catCodeNode->SetCountry( country );
+    //             catCodeNode->SetID( id );
+    //         }
+    //     }
+    // }
 
     void Entry::SetAccuracy( wxString val ) { SetAttr( DT_Accuracy, val ); };
 

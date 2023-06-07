@@ -40,7 +40,9 @@
 #include "Defs.h"
 #include "gui/CatalogTreeCtrl.h"
 #include "gui/CatalogPanel.h"
+#include "gui/InventoryPanel.h"
 #include "catalog/CatalogData.h"
+#include "collection/CollectionList.h"
 #include "gui/FileCreateDialog.h"
 #include "gui/RemoveVolumeDialog.h"
 
@@ -51,6 +53,7 @@ BEGIN_EVENT_TABLE( CatalogPanel, wxPanel )
 EVT_TEXT( ID_TEXTCTRL, CatalogPanel::OnTextctrlTextUpdated )
 EVT_TOGGLEBUTTON( ID_TOGGLEBUTTON, CatalogPanel::OnTogglebuttonClick )
 EVT_CHOICE( ID_VOLUMECHOICE, CatalogPanel::OnVolumeChoiceSelected )
+EVT_CHOICE( ID_COLLECTIONCHOICE, CatalogPanel::OnCollectionChoiceSelected )
 EVT_BUTTON( ID_MANAGEBUTTON, CatalogPanel::OnManageClick )
 END_EVENT_TABLE( )
 
@@ -100,7 +103,17 @@ void CatalogPanel::CreateControls( )
 
     m_catPanelSizer = new wxBoxSizer( wxVERTICAL );
     itemPanel1->SetSizer( m_catPanelSizer );
+    //@@@@@;
+    wxBoxSizer* collectionBoxSizer = new wxBoxSizer( wxHORIZONTAL );
+    m_catPanelSizer->Add( collectionBoxSizer, 0, wxGROW | wxALL, 0 );
 
+    wxStaticText* collectionStaticText = new wxStaticText( itemPanel1, wxID_STATIC, _( "Collection" ), wxDefaultPosition, wxDefaultSize, 0 );
+    collectionBoxSizer->Add( collectionStaticText, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+
+    m_collectionListCtrl = new wxChoice( itemPanel1, ID_COLLECTIONCHOICE, wxDefaultPosition, wxSize( -1, -1 ), GetCatalogData( )->GetVolumeNameStrings( ), wxLB_HSCROLL );
+    collectionBoxSizer->Add( m_collectionListCtrl, 1, wxGROW | wxALL, 5 );
+
+    //@@@@@@@
     wxBoxSizer* itemBoxSizer1 = new wxBoxSizer( wxHORIZONTAL );
     m_catPanelSizer->Add( itemBoxSizer1, 0, wxGROW | wxALL, 0 );
 
@@ -154,7 +167,6 @@ void CatalogPanel::CreateControls( )
     m_searchSizer->Show( false );
     m_catPanelSizer->Layout( );
 }
-
 
 void CatalogPanel::DoCSVImport( )
 {
@@ -327,7 +339,16 @@ void CatalogPanel::OnVolumeChoiceSelected( wxCommandEvent& event )
     event.Skip( );
 
 }
+void CatalogPanel::OnCollectionChoiceSelected( wxCommandEvent& event )
+{
+    //int sel = m_collectionListCtrl->GetSelection( );
+    wxString sel = m_collectionListCtrl->GetStringSelection( );
+    GetCollectionList( )->SetCurrentCollection( sel );
+    GetCatalogData( )->GetInventoryPanel( )->UpdatePanel( );
 
+    event.Skip( );
+
+}
 
 void CatalogPanel::OpenCatalog( )
 {
@@ -394,7 +415,16 @@ void CatalogPanel::SaveAsCatalog( )
     //     GetFrame( )->FileSaveAsCatalog( filename );
     // }
 }
+void CatalogPanel::SetCollectionListStrings( )
+{
+    m_collectionListCtrl->Clear( );
+    m_collectionListCtrl->Append( GetCollectionList( )->GetNameStrings( ) );
+};
 
+void CatalogPanel::SetCollectionListSelection( )
+{
+    m_collectionListCtrl->SetStringSelection( GetCollectionList( )->GetCurrentName( ) );
+};
 //--------------
 
 bool CatalogPanel::ShowToolTips( )

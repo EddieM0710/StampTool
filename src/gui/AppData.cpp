@@ -27,6 +27,7 @@
 #include "catalog/CatalogDefs.h"
 #include "catalog/CatalogVolume.h"
 #include "catalog/CatalogData.h"
+#include "collection/CollectionList.h"
 #include "gui/AlbumTreeCtrl.h"
 #include "gui/CatalogTreeCtrl.h"
 #include "gui/StampToolFrame.h"
@@ -36,13 +37,15 @@
 
 #include "design/AlbumVolume.h"
 #include "design/AlbumData.h"
+#include "catalog/StampMount.h"
 
 
 AppData::AppData( ) {
 
     m_catalogData = new Catalog::CatalogData( );
     m_albumData = new Design::AlbumData( );
-
+    m_mountData = new Catalog::StampMountData( );
+    m_collectionList = new Inventory::CollectionList( );
 };
 
 void AppData::SetCaption( )
@@ -58,6 +61,10 @@ Design::AlbumData* AppData::GetAlbumData( ) { return m_albumData; };
 ///
 ///@return Catalog::CatalogData* 
 Catalog::CatalogData* AppData::GetCatalogData( ) { return m_catalogData; };
+
+Inventory::CollectionList* AppData::GetCollectionList( ) { return m_collectionList; };
+
+Catalog::StampMountData* AppData::GetStampMountData( ) { return m_mountData; };
 
 ///@brief Get the Project object
 ///@return Utils::Project* 

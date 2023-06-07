@@ -256,7 +256,7 @@ void SortOrderPanel::CreateControls( )
     }
     else
     {
-        m_firstSort->SetSelection( Catalog::NT_None );
+        m_firstSort->SetSelection( 0 );
     }
 
     m_secondSort->Set( m_sortStrings );
@@ -266,17 +266,17 @@ void SortOrderPanel::CreateControls( )
     }
     else
     {
-        m_secondSort->SetSelection( Catalog::NT_None );
+        m_secondSort->SetSelection( 0 );
     }
 
     m_thirdSort->Set( m_sortStrings );
     if ( sortOrder->GetCount( ) > 2 )
     {
-        m_thirdSort->SetSelection( sortOrder->Item( 2 ) );
+        m_thirdSort->SetSelection( 0 );
     }
     else
     {
-        m_thirdSort->SetSelection( Catalog::NT_None );
+        m_thirdSort->SetSelection( 0 );
     }
 
     m_forthSort->Set( m_sortStrings );
@@ -286,7 +286,7 @@ void SortOrderPanel::CreateControls( )
     }
     else
     {
-        m_forthSort->SetSelection( Catalog::NT_None );
+        m_forthSort->SetSelection( 0 );
     }
 
     m_fifthSort->Set( m_sortStrings );
@@ -296,7 +296,7 @@ void SortOrderPanel::CreateControls( )
     }
     else
     {
-        m_fifthSort->SetSelection( Catalog::NT_None );
+        m_fifthSort->SetSelection( 0 );
     }
 }
 
@@ -364,27 +364,52 @@ void SortOrderPanel::OnOkClick( )
 
     if ( sortOrder->Count( ) >= 1 && sortOrder->Item( 0 ) != m_firstSort->GetSelection( ) )
     {
-        sortOrder->Item( 0 ) = m_firstSort->GetSelection( );
+        int sel = m_firstSort->GetSelection( );
+        if ( sel == 0 )
+        {
+            sel = Catalog::NT_None;
+        }
+        sortOrder->Item( 0 ) = sel;
         GetSettings( )->SetDirty( );
     }
     if ( sortOrder->Count( ) >= 2 && sortOrder->Item( 1 ) != m_secondSort->GetSelection( ) )
     {
-        sortOrder->Item( 1 ) = m_secondSort->GetSelection( );
+        int sel = m_secondSort->GetSelection( );
+        if ( sel == 0 )
+        {
+            sel = Catalog::NT_None;
+        }
+        sortOrder->Item( 1 ) = sel;
         GetSettings( )->SetDirty( );
     }
     if ( sortOrder->Count( ) >= 3 && sortOrder->Item( 2 ) != m_thirdSort->GetSelection( ) )
     {
-        sortOrder->Item( 2 ) = m_thirdSort->GetSelection( );
+        int sel = m_thirdSort->GetSelection( );
+        if ( sel == 0 )
+        {
+            sel = Catalog::NT_None;
+        }
+        sortOrder->Item( 2 ) = sel;
         GetSettings( )->SetDirty( );
     }
     if ( sortOrder->Count( ) >= 4 && sortOrder->Item( 3 ) != m_forthSort->GetSelection( ) )
     {
-        sortOrder->Item( 3 ) = m_forthSort->GetSelection( );
+        int sel = m_forthSort->GetSelection( );
+        if ( sel = 0 )
+        {
+            sel = Catalog::NT_None;
+        }
+        sortOrder->Item( 3 ) = sel;
         GetSettings( )->SetDirty( );
     }
     if ( sortOrder->Count( ) >= 5 && sortOrder->Item( 4 ) != m_fifthSort->GetSelection( ) )
     {
-        sortOrder->Item( 4 ) = m_fifthSort->GetSelection( );
+        int sel = m_fifthSort->GetSelection( );
+        if ( sel == 0 )
+        {
+            sel = Catalog::NT_None;
+        }
+        sortOrder->Item( 4 ) = sel;
         GetSettings( )->SetDirty( );
     }
 

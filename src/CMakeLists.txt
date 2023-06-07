@@ -1,9 +1,7 @@
 
 configure_file( StampToolConfig.h.in StampToolConfig.h )
 
-
 find_package( wxWidgets COMPONENTS core base xml net pdfdoc webview stc ribbon REQUIRED )
-
 
 find_package(CURL REQUIRED) 
 include_directories(${CURL_INCLUDE_DIR})
@@ -17,6 +15,8 @@ ${StampTool_GuiFiles_Source_Directory}
 ${StampTool_UtilsFiles_Source_Directory}
 ${StampTool_DesignFiles_Source_Directory}
 ${StampTool_CatalogFiles_Source_Directory} 
+${StampTool_MountFiles_Source_Directory} 
+${StampTool_CollectionFiles_Source_Directory} 
 /sandbox/Applications/wxWidgets-3.2.2.1/
 ${WXWIN} )
  
@@ -25,6 +25,7 @@ add_subdirectory (utils)
 add_subdirectory (gui)
 add_subdirectory (catalog)
 add_subdirectory (design)
+add_subdirectory (collection)
 
 add_executable ( StampTool 
     StampToolApp.cpp
@@ -33,9 +34,10 @@ add_executable ( StampTool
 
 target_link_libraries (StampTool LINK_PUBLIC debug
      GuiFiles  
-    DesignFiles
-    CatalogFiles  
-    Utils
+     DesignFiles
+     CatalogFiles  
+     CollectionFiles  
+     Utils
     ${CURL_LIBRARIES}
     ${wxWidgets_LIBRARIES}
     )

@@ -36,6 +36,7 @@ namespace Catalog { class Entry; };
 class CatalogTreeCtrl;
 class StampDescriptionPanel;
 class CatalogPanel;
+class InventoryPanel;
 class GenerateList;
 
 namespace Catalog
@@ -115,6 +116,8 @@ namespace Catalog
         ///  @return StampDescriptionPanel*
         inline StampDescriptionPanel* GetDescriptionPanel( ) { return m_stampDescriptionPanel; };
 
+        InventoryPanel* GetInventoryPanel( );
+
         GenerateList* GetGenerateListPanel( ) { return m_generateListPanel; };
 
         ///  @brief Get the Volume Name Strings object
@@ -132,6 +135,8 @@ namespace Catalog
         ///  @brief Load the catalog data from file
         ///  
         void LoadData( );
+
+        wxXmlDocument* LoadMountCSV( );
 
         ///  @brief Load a new unnamed empty catalog 
         ///  
@@ -169,6 +174,19 @@ namespace Catalog
         void SetCatalogTreeCtrl( CatalogTreeCtrl* treeCtrl ) { m_catalogTreeCtrl = treeCtrl; };
 
         void SetCatalogTreePanel( CatalogPanel* catalogPanel ) { m_catalogTreePanel = catalogPanel; };
+
+
+        CatalogPanel* GetCatalogTreePanel( ) { return m_catalogTreePanel; };
+
+        ///  @brief Set the Volume List Strings object
+        ///  
+        ///  @param choices 
+        void SetCollectionListStrings( );
+
+        ///  @brief Set the Volume List Selection object
+        ///  
+        ///  @param i 
+        void SetCollectionListSelection( );
 
         //void SetAlbumNotebookPagePanel( CatalogPanel* catalogPanel ) { m_albumNotebookPagePanel = catalogPanel; };
 

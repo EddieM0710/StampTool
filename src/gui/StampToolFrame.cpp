@@ -201,6 +201,13 @@ void StampToolFrame::CreateControls( )
 
     m_fileMenu->Append( wxID_EXIT, _( "Exit" ), wxEmptyString, wxITEM_NORMAL );
     menuBar->Append( m_fileMenu, _( "Project" ) );
+
+    wxMenu* itemMenu5 = new wxMenu;
+
+    itemMenu5->Append( ID_ADDCOLLECTION, _( "Add Collection File" ), wxEmptyString, wxITEM_NORMAL );
+    itemMenu5->Append( ID_OPENCOLLECTION, _( "Open Collection File" ), wxEmptyString, wxITEM_NORMAL );
+
+
     wxMenu* itemMenu3 = new wxMenu;
     //itemMenu3->Append( ID_TEXTSERCHMENUITEM, _( "Text Search" ), wxEmptyString, wxITEM_NORMAL );
 

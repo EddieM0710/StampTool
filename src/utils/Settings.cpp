@@ -41,6 +41,7 @@
 #include "gui/StampToolFrame.h"
 #include "gui/AppData.h"
 #include "utils/XMLUtilities.h"
+#include "collection/CollectionList.h"
 #include "utils/FontList.h"
 #include <iostream>
 #include <wx/dir.h>
@@ -108,6 +109,13 @@ namespace Utils {
     //    
     int Settings::GetNextSortClassification( int current )
     {
+        for ( int i = 0; i < m_sortOrder.GetCount( ); i++ )
+        {
+            int j = m_sortOrder.Item( i );
+            std::cout << "   " << j << " " << Catalog::CatalogBaseNames[ j ];
+        }
+        std::cout << "\n";
+        std::cout << "Looking for" << current + 1 << " " << Catalog::CatalogBaseNames[ current + 1 ];
 
         if ( current == 0 )
         {
@@ -230,6 +238,18 @@ namespace Utils {
             child->AddAttribute( "LoadLastFileAtStartUp", Bool2String( GetLoadLastFileAtStartUp( ) ) );
             child = NewNode( child, "File" );
             child->AddAttribute( "Name", GetLastFile( ) );
+        }
+
+        child = NewNode( settings, "LastCollection" );
+        if ( child )
+        {
+            child->AddAttribute( "Name", m_lastCollection );
+        }
+
+        child = NewNode( settings, "CollectionList" );
+        if ( child )
+        {
+            GetCollectionList( )->Save( child );
         }
 
         wxXmlNode* fonts = NewNode( settings, "Fonts" );
@@ -470,234 +490,267 @@ namespace Utils {
 
         // start processing the XML file
         name = root->GetName( );
-        wxXmlNode* child = root->GetChildren( );;
+        //wxXmlNode* child = root->GetChildren( );;
 
-        while ( child )
+        //while ( child )
+        //{
+            //wxString name = child->GetName( );
+
+        wxXmlNode* child = FirstChildElement( root, "SortOrder" );
+        if ( child )
         {
-            wxString name = child->GetName( );
-            if ( !name.Cmp( "SortOrder" ) )
+            wxArrayInt* sortOrderArray = GetSortOrder( );
+            wxXmlNode* sortOrderChild = child->GetChildren( );
+            while ( sortOrderChild )
             {
-                wxArrayInt* sortOrderArray = GetSortOrder( );
-                wxXmlNode* sortOrderChild = child->GetChildren( );
-                while ( sortOrderChild )
+                wxString childName = sortOrderChild->GetName( );
+                if ( !childName.Cmp( "Classification" ) )
                 {
-                    wxString childName = sortOrderChild->GetName( );
-                    if ( !childName.Cmp( "Classification" ) )
+                    wxString sortOrderChild = child->GetAttribute( "Name" );
+                    Catalog::CatalogBaseType type = Catalog::FindCatalogBaseType( name );
+                    if ( type > -1 )
                     {
-                        wxString sortOrderChild = child->GetAttribute( "Name" );
-                        Catalog::CatalogBaseType type = Catalog::FindCatalogBaseType( name );
-                        if ( type > -1 )
-                        {
-                            sortOrderArray->Add( type );
-                        }
-                    }
-                    sortOrderChild = sortOrderChild->GetNext( );
-                }
-            }
-
-            else if ( !name.Cmp( "PeriodDivision" ) )
-            {
-                m_lowerDivision = child->GetAttribute( "LowerDivision" );
-                if ( m_lowerDivision.IsEmpty( ) )
-                {
-                    m_lowerDivision = m_defaultLowerDivision;
-                }
-
-                m_upperDivision = child->GetAttribute( "UpperDivision" );
-                if ( m_upperDivision.IsEmpty( ) )
-                {
-                    m_upperDivision = m_defaultUpperDivision;
-                }
-            }
-            else if ( !name.Cmp( "Periods" ) )
-            {
-                m_lowerPeriod = child->GetAttribute( "LowerPeriod" );
-                if ( m_lowerPeriod.IsEmpty( ) )
-                {
-                    m_lowerPeriod = m_defaultLowerPeriod;
-                }
-                m_middlePeriod = child->GetAttribute( "MiddlePeriod" );
-                if ( m_middlePeriod.IsEmpty( ) )
-                {
-                    m_middlePeriod = m_defaultMiddlePeriod;
-                }
-                m_upperPeriod = child->GetAttribute( "UpperPeriod" );
-                if ( m_upperPeriod.IsEmpty( ) )
-                {
-                    m_upperPeriod = m_defaultUpperPeriod;
-                }
-            }
-
-            else if ( !name.Cmp( "LastFile" ) )
-            {
-                wxString loadLastFile = child->GetAttribute( "LoadLastFileAtStartUp" );
-                bool isTrue = !loadLastFile.Cmp( "true" );
-                SetLoadLastFileAtStartUp( isTrue );
-
-                wxXmlNode* file = child->GetChildren( );
-                if ( file )
-                {
-                    wxString childName = file->GetName( );
-                    if ( !childName.Cmp( "File" ) )
-                    {
-                        m_lastFile = file->GetAttribute( "Name" );
-                        if ( m_lastFile.IsEmpty( ) )
-                        {
-                            m_lastFile = wxGetHomeDir( );
-                        }
-
-                        wxFileName lf( m_lastFile );
-                        wxSetWorkingDirectory( lf.GetPath( ) );
+                        sortOrderArray->Add( type );
                     }
                 }
+                sortOrderChild = sortOrderChild->GetNext( );
             }
-
-            else if ( !name.Cmp( "StampDataEdit" ) )
-            {
-                wxString defaultVal = child->GetAttribute( "Default" );
-                bool isTrue = !defaultVal.Cmp( "true" );
-                SetCatalogVolumeEditable( isTrue );
-                SetCatalogVolumeEditableDefault( isTrue );
-            }
-
-            else if ( !name.Cmp( "IDPreference" ) )
-            {
-                m_catalogID = child->GetAttribute( "CatalogID" );
-                if ( m_catalogID.IsEmpty( ) )
-                {
-                    m_catalogID = m_defaultCatalogID;
-                }
-                m_countryID = child->GetAttribute( "CountryID" );
-                if ( m_countryID.IsEmpty( ) )
-                {
-                    m_countryID = m_defaultCountryID;
-                }
-            }
-
-            else if ( !name.Cmp( "RecentFileList" ) )
-            {
-                wxArrayString* recentArray = GetRecentArray( );
-                recentArray->Clear( );
-                wxString nbeRecentPref = child->GetAttribute( "NbrRecentPreference" );
-                long nbr;
-                nbeRecentPref.ToLong( &nbr );
-                m_nbrRecentPreference = nbr;
-
-                wxXmlNode* file = child->GetChildren( );
-                while ( file )
-                {
-                    wxString childName = file->GetName( );
-                    if ( !childName.Cmp( "File" ) )
-                    {
-                        name = file->GetAttribute( "Name" );
-
-                        recentArray->Add( name );
-                    }
-                    file = file->GetNext( );
-                }
-            }
-
-            else if ( !name.Cmp( "Fonts" ) )
-            {
-
-                FontPreference[ Design::AT_NbrFontType ] = GetFontList( )->LoadFont( child, Design::AT_NbrFontType );
-                if ( FontPreference[ Design::AT_NbrFontType ].Get( ) < 0 )
-                {
-                    FontPreference[ Design::AT_NbrFontType ].Set( GetFontList( )->DefaultFont( Design::DefaultPointSize[ Design::AT_NbrFontType ] ) );
-                }
-
-                FontPreference[ Design::AT_NameFontType ] = GetFontList( )->LoadFont( child, Design::AT_NameFontType );
-                if ( FontPreference[ Design::AT_NameFontType ].Get( ) < 0 )
-                {
-                    FontPreference[ Design::AT_NameFontType ].Set( GetFontList( )->DefaultFont( Design::DefaultPointSize[ Design::AT_NameFontType ] ) );
-                }
-
-                FontPreference[ Design::AT_TextFontType ] = GetFontList( )->LoadFont( child, Design::AT_TextFontType );
-                if ( FontPreference[ Design::AT_TextFontType ].Get( ) < 0 )
-                {
-                    FontPreference[ Design::AT_TextFontType ].Set( GetFontList( )->DefaultFont( Design::DefaultPointSize[ Design::AT_TextFontType ] ) );
-                }
-
-                FontPreference[ Design::AT_TitleFontType ] = GetFontList( )->LoadFont( child, Design::AT_TitleFontType );
-                if ( FontPreference[ Design::AT_TitleFontType ].Get( ) < 0 )
-                {
-                    FontPreference[ Design::AT_TitleFontType ].Set( GetFontList( )->DefaultFont( Design::DefaultPointSize[ Design::AT_TitleFontType ] ) );
-                }
-
-                //     wxXmlNode* fontChild = child->GetChildren( ) ;
-                //     while ( fontChild )
-                //     { 
-                //         wxString nativeFontString;
-                //         wxFont font;
-                //         wxString colorStr;
-                //         wxColour color;
-                //         Design::FontUsageType type = Utils::LoadFont( fontChild, nativeFontString, colorStr );
-                //         if ( type == Design::AT_NbrFontType )
-                //         { 
-                //             font = wxFont( nativeFontString );
-                //             if ( !font.IsOk( ) )
-                //             {
-                //                 font = *wxNORMAL_FONT;
-                //                 font.SetPointSize( 8 );
-                //             }
-
-                //             color = wxColour( colorStr );
-                //             if ( !color.IsOk( ) )
-                //             {
-                //                 color = *wxBLACK;
-                //             }
-
-                //             SetNbrFont( font );
-                //             SetNbrColor( color );
-                //             SetAppPrefCatNbrFontNdx( GetFontList()->AddNewFont( font, color ) );
-                //         }
-                //         else if ( type == Design::AT_TextFontType )
-                //         { 
-                //             font = wxFont( nativeFontString );
-                //             if ( !font.IsOk( ) )
-                //             {
-                //                 font = *wxNORMAL_FONT;
-                //                 font.SetPointSize( 10 );
-                //             }
-
-                //             color = wxColour( colorStr );
-                //             if ( !color.IsOk( ) )
-                //             {
-                //                 color = *wxBLACK;
-                //             }
-
-                //             SetTextFont( font );
-                //             SetTextColor( color );
-                //             SetAppPrefTextFontNdx( GetFontList()->AddNewFont( font, color ) );
-                //         }
-                //        else if ( type == Design::AT_TitleFontType )
-                //         { 
-                //             font = wxFont( nativeFontString );
-                //             if ( !font.IsOk( ) )
-                //             {
-                //                 font = *wxNORMAL_FONT;
-                //                 font.SetPointSize( 12 );
-                //             }
-
-                //             color = wxColour( colorStr );
-                //             if ( !color.IsOk( ) )
-                //             {
-                //                 color = *wxBLACK;
-                //             }
-
-                //             SetTitleFont( font );
-                //             SetTitleColor( color );
-                //             SetAppPrefTitleFontNdx( GetFontList()->AddNewFont( font, color ) );
-                //         }
-
-                //         fontChild = fontChild->GetNext( );
-                //    }
-            }
-            child = child->GetNext( );
-
         }
 
+        child = FirstChildElement( root, "PeriodDivision" );
+        if ( child )
+            //else if ( !name.Cmp( "PeriodDivision" ) )
+        {
+            m_lowerDivision = child->GetAttribute( "LowerDivision" );
+            if ( m_lowerDivision.IsEmpty( ) )
+            {
+                m_lowerDivision = m_defaultLowerDivision;
+            }
 
+            m_upperDivision = child->GetAttribute( "UpperDivision" );
+            if ( m_upperDivision.IsEmpty( ) )
+            {
+                m_upperDivision = m_defaultUpperDivision;
+            }
+        }
+
+        child = FirstChildElement( root, "Periods" );
+        if ( child )
+            //else if ( !name.Cmp( "Periods" ) )
+        {
+            m_lowerPeriod = child->GetAttribute( "LowerPeriod" );
+            if ( m_lowerPeriod.IsEmpty( ) )
+            {
+                m_lowerPeriod = m_defaultLowerPeriod;
+            }
+            m_middlePeriod = child->GetAttribute( "MiddlePeriod" );
+            if ( m_middlePeriod.IsEmpty( ) )
+            {
+                m_middlePeriod = m_defaultMiddlePeriod;
+            }
+            m_upperPeriod = child->GetAttribute( "UpperPeriod" );
+            if ( m_upperPeriod.IsEmpty( ) )
+            {
+                m_upperPeriod = m_defaultUpperPeriod;
+            }
+        }
+
+        child = FirstChildElement( root, "LastFile" );
+        if ( child )
+            //else if ( !name.Cmp( "LastFile" ) )
+        {
+            wxString loadLastFile = child->GetAttribute( "LoadLastFileAtStartUp" );
+            bool isTrue = !loadLastFile.Cmp( "true" );
+            SetLoadLastFileAtStartUp( isTrue );
+
+            wxXmlNode* file = child->GetChildren( );
+            if ( file )
+            {
+                wxString childName = file->GetName( );
+                if ( !childName.Cmp( "File" ) )
+                {
+                    m_lastFile = file->GetAttribute( "Name" );
+                    if ( m_lastFile.IsEmpty( ) )
+                    {
+                        m_lastFile = wxGetHomeDir( );
+                    }
+
+                    wxFileName lf( m_lastFile );
+                    wxSetWorkingDirectory( lf.GetPath( ) );
+                }
+            }
+        }
+
+        child = FirstChildElement( root, "StampDataEdit" );
+        if ( child )
+            //else if ( !name.Cmp( "StampDataEdit" ) )
+        {
+            wxString defaultVal = child->GetAttribute( "Default" );
+            bool isTrue = !defaultVal.Cmp( "true" );
+            SetCatalogVolumeEditable( isTrue );
+            SetCatalogVolumeEditableDefault( isTrue );
+        }
+
+        child = FirstChildElement( root, "IDPreference" );
+        if ( child )
+            //else if ( !name.Cmp( "IDPreference" ) )
+        {
+            m_catalogID = child->GetAttribute( "CatalogID" );
+            if ( m_catalogID.IsEmpty( ) )
+            {
+                m_catalogID = m_defaultCatalogID;
+            }
+            m_countryID = child->GetAttribute( "CountryID" );
+            if ( m_countryID.IsEmpty( ) )
+            {
+                m_countryID = m_defaultCountryID;
+            }
+        }
+
+        child = FirstChildElement( root, "RecentFileList" );
+        if ( child )
+            //else if ( !name.Cmp( "RecentFileList" ) )
+        {
+            wxArrayString* recentArray = GetRecentArray( );
+            recentArray->Clear( );
+            wxString nbeRecentPref = child->GetAttribute( "NbrRecentPreference" );
+            long nbr;
+            nbeRecentPref.ToLong( &nbr );
+            m_nbrRecentPreference = nbr;
+
+            wxXmlNode* file = child->GetChildren( );
+            while ( file )
+            {
+                wxString childName = file->GetName( );
+                if ( !childName.Cmp( "File" ) )
+                {
+                    name = file->GetAttribute( "Name" );
+
+                    recentArray->Add( name );
+                }
+                file = file->GetNext( );
+            }
+        }
+
+        child = FirstChildElement( root, "LastCollection" );
+        if ( child )
+            //else if ( !name.Cmp( "LastCollection" ) )
+        {
+            m_lastCollection = child->GetAttribute( "Name" );
+        }
+
+        child = FirstChildElement( root, "CollectionList" );
+        if ( child )
+            //else if ( !name.Cmp( "CollectionList" ) )
+        {
+            GetCollectionList( )->Load( child );
+        }
+        else
+        {
+            GetCollectionList( )->SetDefaultCollection( );
+        }
+
+        child = FirstChildElement( root, "Fonts" );
+        if ( child )
+            //else if ( !name.Cmp( "Fonts" ) )
+        {
+
+            FontPreference[ Design::AT_NbrFontType ] = GetFontList( )->LoadFont( child, Design::AT_NbrFontType );
+            if ( FontPreference[ Design::AT_NbrFontType ].Get( ) < 0 )
+            {
+                FontPreference[ Design::AT_NbrFontType ].Set( GetFontList( )->DefaultFont( Design::DefaultPointSize[ Design::AT_NbrFontType ] ) );
+            }
+
+            FontPreference[ Design::AT_NameFontType ] = GetFontList( )->LoadFont( child, Design::AT_NameFontType );
+            if ( FontPreference[ Design::AT_NameFontType ].Get( ) < 0 )
+            {
+                FontPreference[ Design::AT_NameFontType ].Set( GetFontList( )->DefaultFont( Design::DefaultPointSize[ Design::AT_NameFontType ] ) );
+            }
+
+            FontPreference[ Design::AT_TextFontType ] = GetFontList( )->LoadFont( child, Design::AT_TextFontType );
+            if ( FontPreference[ Design::AT_TextFontType ].Get( ) < 0 )
+            {
+                FontPreference[ Design::AT_TextFontType ].Set( GetFontList( )->DefaultFont( Design::DefaultPointSize[ Design::AT_TextFontType ] ) );
+            }
+
+            FontPreference[ Design::AT_TitleFontType ] = GetFontList( )->LoadFont( child, Design::AT_TitleFontType );
+            if ( FontPreference[ Design::AT_TitleFontType ].Get( ) < 0 )
+            {
+                FontPreference[ Design::AT_TitleFontType ].Set( GetFontList( )->DefaultFont( Design::DefaultPointSize[ Design::AT_TitleFontType ] ) );
+            }
+
+            //     wxXmlNode* fontChild = child->GetChildren( ) ;
+            //     while ( fontChild )
+            //     { 
+            //         wxString nativeFontString;
+            //         wxFont font;
+            //         wxString colorStr;
+            //         wxColour color;
+            //         Design::FontUsageType type = Utils::LoadFont( fontChild, nativeFontString, colorStr );
+            //         if ( type == Design::AT_NbrFontType )
+            //         { 
+            //             font = wxFont( nativeFontString );
+            //             if ( !font.IsOk( ) )
+            //             {
+            //                 font = *wxNORMAL_FONT;
+            //                 font.SetPointSize( 8 );
+            //             }
+
+            //             color = wxColour( colorStr );
+            //             if ( !color.IsOk( ) )
+            //             {
+            //                 color = *wxBLACK;
+            //             }
+
+            //             SetNbrFont( font );
+            //             SetNbrColor( color );
+            //             SetAppPrefCatNbrFontNdx( GetFontList()->AddNewFont( font, color ) );
+            //         }
+            //         else if ( type == Design::AT_TextFontType )
+            //         { 
+            //             font = wxFont( nativeFontString );
+            //             if ( !font.IsOk( ) )
+            //             {
+            //                 font = *wxNORMAL_FONT;
+            //                 font.SetPointSize( 10 );
+            //             }
+
+            //             color = wxColour( colorStr );
+            //             if ( !color.IsOk( ) )
+            //             {
+            //                 color = *wxBLACK;
+            //             }
+
+            //             SetTextFont( font );
+            //             SetTextColor( color );
+            //             SetAppPrefTextFontNdx( GetFontList()->AddNewFont( font, color ) );
+            //         }
+            //        else if ( type == Design::AT_TitleFontType )
+            //         { 
+            //             font = wxFont( nativeFontString );
+            //             if ( !font.IsOk( ) )
+            //             {
+            //                 font = *wxNORMAL_FONT;
+            //                 font.SetPointSize( 12 );
+            //             }
+
+            //             color = wxColour( colorStr );
+            //             if ( !color.IsOk( ) )
+            //             {
+            //                 color = *wxBLACK;
+            //             }
+
+            //             SetTitleFont( font );
+            //             SetTitleColor( color );
+            //             SetAppPrefTitleFontNdx( GetFontList()->AddNewFont( font, color ) );
+            //         }
+
+            //         fontChild = fontChild->GetNext( );
+            //    }
+        }
+        //            child = child->GetNext( );
+
+        //        }
     }
     void Settings::DumpFont( wxString Level )
     {

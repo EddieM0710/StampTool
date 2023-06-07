@@ -42,6 +42,8 @@
 #include "DesignDefs.h"
 #include "CatalogVolume.h"
 #include "catalog/CatalogData.h"
+#include "catalog/StampMount.h"
+#include "collection/CollectionData.h"
 #include "design/AlbumData.h"
 #include "Settings.h"
 #include "utils/Project.h"
@@ -50,6 +52,8 @@
 wxDECLARE_APP( StampToolApp );
 
 bool Dirty = false;
+
+//namespace Inventory { class CollectionData; };
 
 void SetDirty( bool state ) { Dirty = state; };
 bool IsDirty( ) { return Dirty; };
@@ -66,6 +70,10 @@ AlbumTreeCtrl* GetAlbumTreeCtrl( ) { return GetAlbumData( )->GetAlbumTreeCtrl( )
 Design::AlbumVolume* GetAlbumVolume( ) { return GetAlbumData( )->GetAlbumVolume( ); };
 
 Catalog::CatalogData* GetCatalogData( ) { return GetAppData( )->GetCatalogData( ); }
+
+Inventory::CollectionList* GetCollectionList( ) { return GetAppData( )->GetCollectionList( ); }
+
+Catalog::StampMountData* GetStampMountData( ) { return GetAppData( )->GetStampMountData( ); }
 
 CatalogTreeCtrl* GetCatalogTreeCtrl( ) { return GetCatalogData( )->GetCatalogTreeCtrl( ); };
 

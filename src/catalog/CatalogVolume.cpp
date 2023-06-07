@@ -48,7 +48,9 @@
 
 #include "catalog/CatalogData.h"
 #include "catalog/CatalogDefs.h"
+#include "catalog/StampMount.h"
 #include "catalog/Entry.h"
+#include "collection/CollectionList.h"
 
 #include "utils/CSV.h"
 #include "utils/Settings.h"
@@ -121,6 +123,104 @@ namespace Catalog {
         }
         return ( wxXmlNode* ) 0;
     }
+
+
+    bool CatalogVolume::FixupInventoryStatus( )
+    {
+
+        wxXmlNode* root = m_stampDoc->GetRoot( );
+        wxString nodeName = root->GetName( );
+
+        wxXmlNode* child = root;
+        while ( child )
+        {
+            FixupInventoryStatus( child, ( InventoryStatusType ) ST_None );
+            child = child->GetNext( );
+        }
+        return true;
+    }
+
+    bool CatalogVolume::FixupInventoryStatus( wxXmlNode* parent, InventoryStatusType parentStatus )
+    {
+        bool specimenFound = false;
+        wxXmlNode* child = parent->GetChildren( );
+        while ( child )
+        {
+            wxString nodeName = child->GetName( );
+            // for each entry
+            if ( !nodeName.Cmp( "Entry" ) )
+            {
+                wxString statusStr = child->GetAttribute( XMLDataNames[ DT_InventoryStatus ] );
+                InventoryStatusType status = ( InventoryStatusType ) ST_None;
+                if ( !statusStr.IsEmpty( ) )
+                {
+                    status = FindStatusType( statusStr );
+                }
+                wxString currCollection = GetCollectionList( )->GetCurrentName( );
+                // find all specimen nodes
+
+                FixupInventoryStatus( child, status );
+
+            }
+            else  if ( !nodeName.Cmp( "Specimen" ) )
+            {
+                // use the status in the specimen in preference to the parent preference
+                wxString statusStr = child->GetAttribute( ItemDataNames[ IDT_InventoryStatus ], "" );
+
+                InventoryStatusType specimenStatus = ( InventoryStatusType ) ST_None;
+                if ( !statusStr.IsEmpty( ) )
+                {
+                    specimenStatus = FindStatusType( statusStr );
+                }
+
+                if ( specimenStatus >= ST_None && specimenStatus < ST_Exclude )
+                {
+                    parentStatus = specimenStatus;
+                }
+
+                specimenFound = true;
+                wxString name = child->GetAttribute( "Collection", "" );
+                // if this collection doesn't exist then add it.
+                if ( !name.IsEmpty( ) )
+                {
+                    if ( parentStatus >= ST_None && parentStatus < ST_Exclude )
+                    {
+                        // if this name not in collection then add it
+                        Inventory::Collection* collection = GetCollectionList( )->FindCollection( name );
+                        if ( !collection )
+                        {
+                            GetCollectionList( )->AddCollection( name, "", "" );
+                        }
+                        Utils::SetAttrStr( child, ItemDataNames[ IDT_InventoryStatus ], InventoryStatusStrings[ parentStatus ] );
+                    }
+                }
+                else
+                {
+                    // specimen has no collection
+                    if ( parentStatus >= ST_None && parentStatus < ST_Exclude )
+                    {
+                        wxString currCollection = GetCollectionList( )->GetCurrentName( );
+                        Utils::SetAttrStr( child, ItemDataNames[ IDT_Collection ], currCollection );
+                        Utils::SetAttrStr( child, ItemDataNames[ IDT_InventoryStatus ], InventoryStatusStrings[ parentStatus ] );
+                    }
+                }
+            }
+            else  if ( !nodeName.Cmp( "CatalogCode" ) )
+            {
+                //clobber it... or just ignore it
+            }
+            else
+            {
+                // for all other node types just decend and keep looking
+                FixupInventoryStatus( child, ( InventoryStatusType ) -1 );
+            }
+            child->DeleteAttribute( XMLDataNames[ DT_InventoryStatus ] );;
+            child = child->GetNext( );
+        }
+        return true;
+    }
+
+
 
     wxString CatalogVolume::GetCatalogPath( )
     {
@@ -238,9 +338,11 @@ namespace Catalog {
                 int rsp = dlg->ShowModal( );
                 return;
             }
+
             if ( !m_stampDoc->Load( stream ) )
             {
-                wxString txt = wxString::Format( "\n%s Stream  Failed. Error: %s.<<std::endl<<std::<<endl", m_volumeFilename, stream.GetLastError( ) );
+                int err = stream.GetLastError( );
+                wxString txt = wxString::Format( "\n%s Stream  Failed. Error: %d\n\n.", m_volumeFilename, err );
                 wxMessageDialog* dlg = new wxMessageDialog(
                     GetFrame( ), txt,
                     wxT( "Warning! Stream Load Failed.\n" ),
@@ -268,8 +370,9 @@ namespace Catalog {
             }
         }
 
+        FixupInventoryStatus( );
         MakeCatalogImageRepository( );
-
+        UpdateMount( );
         SetDirty( false );
     }
 
@@ -295,11 +398,11 @@ namespace Catalog {
         while ( child )
         {
             wxString nodeName = child->GetName( );
-            std::cout << "  " << nodeName;
+            //            std::cout << "  " << nodeName;
             if ( !nodeName.Cmp( "Entry" ) )
             {
                 wxString imageName = child->GetAttribute( "ID_Nbr" );
-                std::cout << "    id =" << imageName << "\n";
+                //                std::cout << "    id =" << imageName << "\n";
                 imageName = imageName.Trim( true );
                 imageName = imageName.Trim( false );
                 imageName.Replace( ":", "_" );
@@ -352,14 +455,56 @@ namespace Catalog {
             else
             {
             }
-            std::cout << "\n";
+            //           std::cout << "\n";
 
             MakeCatalogImageArray( child, fileArray );
             child = child->GetNext( );
         }
         return true;
     }
+    bool CatalogVolume::UpdateMount( )
+    {
 
+        wxXmlNode* root = m_stampDoc->GetRoot( );
+        wxString nodeName = root->GetName( );
+
+        wxXmlNode* child = root;
+        while ( child )
+        {
+            UpdateMount( child );
+            child = child->GetNext( );
+        }
+        return true;
+    }
+
+    bool CatalogVolume::UpdateMount( wxXmlNode* parent )
+    {
+        wxXmlNode* child = parent->GetChildren( );
+        while ( child )
+        {
+            wxString nodeName = child->GetName( );
+            //            std::cout << "  " << nodeName;
+            if ( !nodeName.Cmp( "Entry" ) )
+            {
+                wxString id = child->GetAttribute( "ID_Nbr" );
+                //                std::cout << "    id =" << id << "\n";
+                wxString mountStr = GetStampMountData( )->Find( id );
+                wxString status = child->GetAttribute( XMLDataNames[ DT_StampMount ] );
+                if ( status.IsEmpty( ) && !mountStr.IsEmpty( ) )
+                {
+                    Utils::SetAttrStr( child, XMLDataNames[ DT_StampMount ], mountStr );
+                }
+            }
+            else
+            {
+            }
+            //            std::cout << "\n";
+
+            UpdateMount( child );
+            child = child->GetNext( );
+        }
+        return true;
+    }
     bool CatalogVolume::MakeCatalogImageRepository( )
     {
         wxString outputZipName = GetZipFileName( );
@@ -372,8 +517,6 @@ namespace Catalog {
 
         return true;
     }
-
-
 
     bool CatalogVolume::MakeCatalogList( wxArrayString& fileArray )
     {

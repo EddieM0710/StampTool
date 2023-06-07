@@ -27,10 +27,13 @@
 #include "gui/StampToolFrame.h"
  ////#include "gui/AppData.h"
 
+//#include "mount/StampMount.h"
+
+//namespace Mount { class StampMount; };
 
 namespace Utils {
 
-    Project* NewProjectInstance( );
+    // Project* NewProjectInstance( );
 
     class Project
     {
@@ -96,6 +99,10 @@ namespace Utils {
         //wxString m_catalogFilename;
         wxString m_defaultCountryID;
         wxString m_defaultCatalogCode;
+
+        //Mount::StampMount* m_stampMount;
+        //Mount::StampMount* m_stampMount;
+
         bool m_dirty;
 
     };

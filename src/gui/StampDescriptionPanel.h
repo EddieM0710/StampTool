@@ -61,7 +61,7 @@ class MiscellaneousDataPanel;
 class StampDescriptionPanel : public wxPanel
 {
     DECLARE_DYNAMIC_CLASS( StampDescriptionPanel )
-        DECLARE_EVENT_TABLE( )
+    DECLARE_EVENT_TABLE( )
 
 public:
 
@@ -206,7 +206,7 @@ public:
      */
     void UpdateStatus( void );
 
-
+    InventoryPanel* GetInventoryPanel( ) { return m_inventoryPanel; };
 
 
 private:

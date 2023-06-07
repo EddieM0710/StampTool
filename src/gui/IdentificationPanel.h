@@ -43,7 +43,7 @@ namespace Catalog { class Entry; }
 class IdentificationPanel : public wxPanel
 {
     DECLARE_DYNAMIC_CLASS( IdentificationPanel )
-        DECLARE_EVENT_TABLE( )
+    DECLARE_EVENT_TABLE( )
 
 public:
     enum IdentificationPanelGuiDefs
@@ -68,6 +68,7 @@ public:
         ID_EBAYBUTTON,
         ID_NPMBUTTON,
         ID_CATCODETEXTBOX,
+        ID_STAMPMOUNTTEXTBOX,
         ID_IMAGENAMETEXTBOX
     };
 
@@ -154,7 +155,8 @@ public:
     void OneBayButtonClick( wxCommandEvent& event );
     void OnMysticButtonClick( wxCommandEvent& event );
     void OnNPMButtonClick( wxCommandEvent& event );
-
+    void OnComboboxSelected( wxCommandEvent& event );
+    void OnComboboxUpdated( wxCommandEvent& event );
 
     /**
      * @brief ShowToolTips
@@ -211,7 +213,8 @@ private:
     LabeledTextBox* m_width;   ///< Stamp width display
     LabeledTextBox* m_height;   ///< Stamp height display
 
-
+    //LabeledTextBox* m_stampMount;
+    wxComboBox* mountComboBox;
 
     LabeledTextBox* m_link;
     LabeledTextBox* m_catCodes;

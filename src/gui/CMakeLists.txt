@@ -16,7 +16,6 @@ add_library( GuiFiles SHARED
     AlbumTreePanel.cpp 
     AlbumDetailsDialog.cpp
     AlbumImagePanel.cpp 
-    CatalogCodePanel.cpp 
     CatalogPanel.cpp 
     CatalogTreeCtrl.cpp
     CharacteristicsPanel.cpp 

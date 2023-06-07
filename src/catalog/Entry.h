@@ -87,6 +87,8 @@ namespace Catalog {
          */
         wxXmlNode* AddSpecimen( );
 
+        wxXmlNode* GetSpecimen( wxString collectionName );
+
         /**
          * @brief Get the Status Type object
          *
@@ -210,6 +212,8 @@ namespace Catalog {
         wxString GetGum( ); ///< Get the entry Gum field
 
         wxString GetHeight( ); ///< Get the entry height field 
+
+        wxString GetMount( );
 
         wxString GetID( ); ///< Get the entry ID
 

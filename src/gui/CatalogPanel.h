@@ -47,7 +47,7 @@ class Stamp;
 class CatalogPanel : public wxPanel
 {
     DECLARE_DYNAMIC_CLASS( CatalogPanel )
-        DECLARE_EVENT_TABLE( )
+    DECLARE_EVENT_TABLE( )
 
 public:
 
@@ -59,6 +59,7 @@ public:
         ID_CHECKLISTBOX,
         ID_SEARCHSTRINGTEXTCTRL,
         ID_TOGGLEBUTTON,
+        ID_COLLECTIONCHOICE,
         ID_VOLUMECHOICE,
         ID_MANAGEBUTTON,
         ID_CSVIMPORTCATALOG,
@@ -137,6 +138,8 @@ public:
     ///  @param event 
     void OnVolumeChoiceSelected( wxCommandEvent& event );
 
+    void OnCollectionChoiceSelected( wxCommandEvent& event );
+
     ///  @brief 
     ///  
     ///  @param event 
@@ -159,11 +162,23 @@ public:
         m_volumeListCtrl->SetSelection( i );
     };
 
+    ///  @brief Set the Volume List Strings object
+    ///  
+    ///  @param choices 
+    void SetCollectionListStrings( );
+
+    ///  @brief Set the Volume List Selection object
+    ///  
+    ///  @param i 
+    void SetCollectionListSelection( );
+
     void OpenCatalog( );
 
     void RemoveVolume( );
 
     void SaveAsCatalog( );
+
+
 
     ///  @brief 
     ///  
@@ -173,6 +188,7 @@ public:
     ;
 private:
     wxChoice* m_volumeListCtrl;
+    wxChoice* m_collectionListCtrl;
     CatalogTreeCtrl* m_catalogTreeCtrl;
 
     wxTreeItemId m_draggedItem;

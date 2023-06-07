@@ -32,6 +32,7 @@
  ////#include "gui/AppData.h" 
 #include "utils/Project.h"
 #include "Defs.h" 
+#include "catalog/StampMount.h"
 
 namespace Catalog
 {
@@ -118,8 +119,13 @@ namespace Catalog
         return fn.GetPath( );
     }
 
+    InventoryPanel* CatalogData::GetInventoryPanel( ) { return GetDescriptionPanel( )->GetInventoryPanel( ); };
+
     void CatalogData::LoadCatalogTree( )
     {
+        //        SetCollectionListStrings( );
+        //        SetCollectionListSelection( );
+
         GetCatalogTreeCtrl( )->LoadTree( );
         //  GetAlbumPageTreeCtrl( )->LoadTree( );
     }
@@ -170,6 +176,15 @@ namespace Catalog
         LoadCatalogTree( );
     }
 
+    wxXmlDocument* CatalogData::LoadMountCSV( )
+    {
+        // StampMountData* stampMount = new StampMountData( );
+        wxString mountFile = "StampMounts.csv";
+        wxXmlDocument* res = GetStampMountData( )->LoadXML( );
+        //LoadMountCSV( mountFile );
+        return res;
+    }
+
     void CatalogData::LoadNew( wxString catFile )
     {
         Catalog::CatalogVolume* volume = GetCatalogList( )->NewCatalogVolume( );
@@ -185,6 +200,15 @@ namespace Catalog
         GetDescriptionPanel( )->UpdatePanel( );
         GetDescriptionPanel( )->Show( );
     };
+
+    void CatalogData::SetCollectionListStrings( )
+    {
+        m_catalogTreePanel->SetCollectionListStrings( );
+    }
+    void CatalogData::SetCollectionListSelection( )
+    {
+        m_catalogTreePanel->SetCollectionListSelection( );
+    }
 
     void CatalogData::UpdateCatalogVolumeStrings( )
     {

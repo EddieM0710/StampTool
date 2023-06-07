@@ -8,7 +8,7 @@
 
 #include <iostream>
 #include "wx/filename.h"
-
+#include <memory>
 #include "wx/wfstream.h"
 #include "utils/ImageRepository.h"
 #include <wx/filefn.h> 
@@ -34,15 +34,17 @@ namespace Utils {
 
         wxFFileInputStream in( m_archiveFileName );
         wxZipInputStream zip( in );
-
         // load the zip catalog
-        wxZipEntry* entry = zip.GetNextEntry( );
-        while ( entry != NULL )
+        if ( !zip.Eof( ) )
         {
-            m_repositoryCatalog[ entry->GetInternalName( ) ] = entry;
-            entry = zip.GetNextEntry( );
-        }
+            wxZipEntry* entry = zip.GetNextEntry( );
 
+            while ( entry != NULL )
+            {
+                m_repositoryCatalog[ entry->GetInternalName( ) ] = entry;
+                entry = zip.GetNextEntry( );
+            }
+        }
     }
 
     // bool ImageRepository::CopyToImage( wxInputStream& inputStream, wxMemoryOutputStream& outStream )

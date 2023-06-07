@@ -40,7 +40,7 @@
 #include <wx/txtstrm.h>
 #include "wx/xml/xml.h"
 
-#include "catalog/CatalogCode.h"
+ //#include "catalog/CatalogCode.h"
 #include "Defs.h"
 #include "catalog/CatalogBase.h"
 #include "utils/Settings.h"
@@ -48,7 +48,7 @@
 #include "utils/XMLUtilities.h"
 
 
-  
+
 namespace Utils {
 
 
@@ -300,28 +300,28 @@ namespace Utils {
             wxXmlNodeType type = child->GetType( );
             wxString nodeName = child->GetName( );
 
-            if ( nodeName.Cmp( "CatalogCode" ) )
+            //if ( nodeName.Cmp( "CatalogCode" ) )
+            //{
+            std::cout << level << nodeName << "  ";
+
+            // std::cout << GetAttrStr( child, Catalog::XMLDataNames[ Catalog::DT_ID_Nbr ] );
+            // std::cout << "  " << GetAttrStr( child, Catalog::XMLDataNames[ Catalog::DT_Name ] );
+
+            wxXmlAttribute* attr = child->GetAttributes( );
+            while ( attr )
             {
-                std::cout << level << nodeName << "  ";
-
-                std::cout << GetAttrStr( child, Catalog::XMLDataNames[ Catalog::DT_ID_Nbr ] );
-                std::cout << "  " << GetAttrStr( child, Catalog::XMLDataNames[ Catalog::DT_Name ] );
-
-                wxXmlAttribute* attr = child->GetAttributes( );
-                while ( attr )
-                {
-                    wxString name = attr->GetName( );
-                    wxString val = attr->GetValue( );
-                    std::cout << level << "   " << name << ":" << val << "\n";
-                    attr = attr->GetNext( );
-                }
-
-                std::cout << "\n";
-                if ( child->GetChildren( ) )
-                {
-                    XMLDumpNode( child, level );
-                }
+                wxString name = attr->GetName( );
+                wxString val = attr->GetValue( );
+                std::cout << level << "   " << name << ":" << val << "\n";
+                attr = attr->GetNext( );
             }
+
+            std::cout << "\n";
+            if ( child->GetChildren( ) )
+            {
+                XMLDumpNode( child, level );
+            }
+            //}
             child = child->GetNext( );
         }
     }

@@ -73,6 +73,8 @@ enum {
     ID_NEWPROJECT,
     ID_NEWDESIGN,
     ID_NEWCATALOG,
+    ID_OPENCOLLECTION,
+    ID_ADDCOLLECTION,
     ID_CATALOGMENU,
     ID_GENERATEPDF,
     ID_DESIGNMENU,
@@ -96,7 +98,7 @@ enum {
 class StampToolFrame : public wxFrame
 {
     DECLARE_CLASS( StampToolFrame )
-        DECLARE_EVENT_TABLE( )
+    DECLARE_EVENT_TABLE( )
 
 public:
 

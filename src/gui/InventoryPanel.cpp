@@ -35,12 +35,12 @@
 
 #include "InventoryPanel.h"
 #include "catalog/CatalogData.h"
+#include "collection/CollectionList.h"
 #include "Specimen.h"
 #include "Defs.h"
 #include "utils/Settings.h"
 
 IMPLEMENT_DYNAMIC_CLASS( InventoryPanel, wxPanel )
-; // silly business; The above macro screws up the formatter
 
 #define wxIDAddItem 17000
 #define wxIDDeleteItem 17001
@@ -54,7 +54,6 @@ EVT_MENU( wxIDAddItem, InventoryPanel::OnContextPopup )
 EVT_MENU( wxIDDeleteItem, InventoryPanel::OnContextPopup )
 
 END_EVENT_TABLE( )
-;  // silly business; The above macro screws up the formatter
 
 
 
@@ -108,7 +107,7 @@ void InventoryPanel::CreateControls( )
     m_grid->SetDefaultRowSize( 25 );
     m_grid->SetColLabelSize( 25 );
     m_grid->SetRowLabelSize( 50 );
-    m_grid->CreateGrid( 0, 5, wxGrid::wxGridSelectCells );
+    m_grid->CreateGrid( 0, 7, wxGrid::wxGridSelectCells );
     itemBoxSizer2->Add( m_grid, 1, wxGROW | wxALL, 5 );
 
     // Connect events and objects
@@ -136,6 +135,20 @@ void InventoryPanel::CreateControls( )
     attr = new wxGridCellAttr( );
     attr->SetEditor( new wxGridCellChoiceEditor( 3, choices3, true ) );
     m_grid->SetColAttr( Catalog::IDT_Location, attr );
+
+    wxString choices4[ Catalog::ST_NbrInventoryStatusTypes ];
+    for ( int i = 0; i < Catalog::ST_NbrInventoryStatusTypes; i++ )
+    {
+        choices4[ i ] = Catalog::InventoryStatusStrings[ i ];
+    }
+
+    attr = new wxGridCellAttr( );
+    attr->SetEditor( new wxGridCellChoiceEditor( Catalog::ST_NbrInventoryStatusTypes, choices4, true ) );
+    m_grid->SetColAttr( Catalog::IDT_InventoryStatus, attr );
+
+    attr = new wxGridCellAttr( );
+    attr->SetEditor( new wxGridCellChoiceEditor( GetCollectionList( )->GetNameStrings( ), true ) );
+    m_grid->SetColAttr( Catalog::IDT_Collection, attr );
 
     SetDataEditable( GetSettings( )->IsCatalogVolumeEditable( ) );
 
@@ -193,6 +206,11 @@ bool InventoryPanel::ShowToolTips( )
 void InventoryPanel::UpdatePanel( )
 {
 
+    //   wxGridCellAttr* attr = new wxGridCellAttr( );
+    //   attr->SetEditor( new wxGridCellChoiceEditor( GetCollectionList( )->GetNameStrings( ), true ) );
+    //   m_grid->SetColAttr( Catalog::IDT_Collection, attr );
+    wxString currCollection = GetCollectionList( )->GetCurrentName( );
+
     int cnt = m_grid->GetNumberRows( );
     m_grid->ClearGrid( );
     if ( cnt > 0 )
@@ -206,18 +224,26 @@ void InventoryPanel::UpdatePanel( )
     {
         if ( stamp->HasChildSpecimen( ) )
         {
-            wxXmlNode* ele = stamp->GetFirstChildSpecimen( );
+            //wxXmlNode* ele = stamp->GetFirstChildSpecimen( );
+            wxXmlNode* ele = stamp->GetCatXMLNode( )->GetChildren( );
             while ( ele )
             {
-                AddRow( );
-                m_specimenList.push_back( ele );
-                Catalog::Specimen specimen( ele );
-                for ( int i = 0; i < Catalog::IDT_NbrTypes; i++ )
+                if ( !ele->GetName( ).Cmp( "Specimen" ) )
                 {
-                    wxString str = specimen.GetAttr( ( Catalog::ItemDataTypes ) i );
-                    m_grid->SetCellValue( row, i, str );
+                    wxString specimenCollection = ele->GetAttribute( Catalog::ItemDataNames[ Catalog::IDT_Collection ], "" );
+                    if ( !currCollection.Cmp( specimenCollection ) )
+                    {
+                        AddRow( );
+                        m_specimenList.push_back( ele );
+                        Catalog::Specimen specimen( ele );
+                        for ( int i = 0; i < Catalog::IDT_NbrTypes; i++ )
+                        {
+                            wxString str = specimen.GetAttr( ( Catalog::ItemDataTypes ) i );
+                            m_grid->SetCellValue( row, i, str );
+                        }
+                    }
                 }
-                ele = stamp->GetNextChildSpecimen( );
+                ele = ele->GetNext( );
             }
         }
     }
@@ -270,15 +296,15 @@ void InventoryPanel::OnContextPopup( wxCommandEvent& event )
     int id = event.GetId( );
     switch ( id )
     {
-    case wxIDAddItem:
-    {
-        AddRow( );
-        break;
-    }
-    case wxIDDeleteItem:
-    {
-        break;
-    }
+        case wxIDAddItem:
+        {
+            AddRow( );
+            break;
+        }
+        case wxIDDeleteItem:
+        {
+            break;
+        }
     }
 }
 

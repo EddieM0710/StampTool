@@ -44,6 +44,7 @@
 #include "utils/Settings.h"
 #include "catalog/CatalogData.h"
 #include "catalog/CatalogDefs.h"
+#include "catalog/StampMount.h"
 
 
 IMPLEMENT_DYNAMIC_CLASS( IdentificationPanel, wxPanel )
@@ -69,6 +70,9 @@ EVT_BUTTON( ID_EBAYBUTTON, IdentificationPanel::OneBayButtonClick )
 EVT_BUTTON( ID_NPMBUTTON, IdentificationPanel::OnNPMButtonClick )
 
 EVT_CHECKBOX( ID_EDITCHECKBOX, IdentificationPanel::OnEditCheckBox )
+
+EVT_COMBOBOX( ID_STAMPMOUNTTEXTBOX, IdentificationPanel::OnComboboxSelected )
+EVT_TEXT( ID_STAMPMOUNTTEXTBOX, IdentificationPanel::OnComboboxUpdated )
 
 END_EVENT_TABLE( )
 
@@ -126,6 +130,7 @@ void IdentificationPanel::Init( )
     m_link = NULL;
     m_catCodes = NULL;
     m_imageName = NULL;
+    mountComboBox = NULL;
 }
 
 void IdentificationPanel::CreateControls( )
@@ -289,6 +294,27 @@ void IdentificationPanel::CreateControls( )
 
 
 
+    // m_stampMount = new LabeledTextBox( thePanel, ID_STAMPMOUNTTEXTBOX,
+    //     wxDefaultPosition, wxDefaultSize, 0 );
+    // panelVerticalSizer->Add( m_stampMount, 0, wxGROW | wxALL, 0 );
+    // m_stampMount->SetLabel( Catalog::DataTypeNames[ Catalog::DT_StampMount ] );
+
+    wxBoxSizer* MountHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
+    panelVerticalSizer->Add( MountHorizontalSizer, 0, wxGROW | wxALL, 0 );
+
+    wxStaticText* mountStaticText = new wxStaticText( thePanel, wxID_STATIC, Catalog::DataTypeNames[ Catalog::DT_StampMount ],
+        wxDefaultPosition, wxDefaultSize, 0 );
+    MountHorizontalSizer->Add( mountStaticText, 0, wxALIGN_CENTER_VERTICAL | wxALL,
+        0 );
+
+    wxArrayString itemComboBox3Strings;
+    for ( int i = 0; i < Catalog::NbrStampMounts; i++ )
+    {
+        itemComboBox3Strings.Add( Catalog::mounts[ i ].name );
+    }
+    mountComboBox = new wxComboBox( thePanel, ID_STAMPMOUNTTEXTBOX, wxEmptyString,
+        wxDefaultPosition, wxDefaultSize, itemComboBox3Strings, wxCB_DROPDOWN );
+    MountHorizontalSizer->Add( mountComboBox, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
 
     m_issueDate->SetLabel( "Issue Date" );
@@ -430,6 +456,7 @@ void IdentificationPanel::UpdatePanel( )
         id.Replace( " ", "_" );
         id.Append( ".jpg" );
         m_imageName->SetValue( id );
+        mountComboBox->SetValue( stamp->GetAttr( Catalog::DT_StampMount ) );
     }
 }
 
@@ -449,8 +476,22 @@ void IdentificationPanel::SetDataEditable( bool val )
     m_link->SetEditable( val );;
     m_catCodes->SetEditable( val );;
     m_imageName->SetEditable( val );;
+    mountComboBox->SetEditable( val );;
 }
 
+
+void IdentificationPanel::OnComboboxSelected( wxCommandEvent& event )
+{
+    event.Skip( );
+}
+
+void IdentificationPanel::OnComboboxUpdated( wxCommandEvent& event )
+{
+    Catalog::Entry* stamp = GetCatalogData( )->GetCurrentStamp( );
+    stamp->SetAttr
+    ( Catalog::DT_StampMount, mountComboBox->GetStringSelection( ) );
+    event.Skip( );
+}
 void IdentificationPanel::OnEditCheckBox( wxCommandEvent& event )
 {
     bool val = m_editCheckbox->GetValue( );

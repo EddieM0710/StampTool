@@ -10,7 +10,6 @@ ${StampTool_CatalogFiles_Source_Directory} )
 
 set( CMAKE_RUNTIME_OUTPUT_DIRECTORY ${build_Directory} )
 add_library( CatalogFiles SHARED
-CatalogCode.cpp
 CatalogBase.cpp
 CatalogData.cpp
 CatalogVolume.cpp
@@ -18,6 +17,8 @@ CatalogList.cpp
 CatalogDefs.cpp
 Entry.cpp
 Specimen.cpp
+StampMount.cpp 
+CSV.cpp 
 )
 
 

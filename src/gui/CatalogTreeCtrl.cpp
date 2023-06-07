@@ -52,9 +52,10 @@
 
  //#include "StampToolApp.h"
 #include "catalog/CatalogVolume.h"
-#include "catalog/CatalogCode.h"
+//#include "catalog/CatalogCode.h"
 #include "catalog/CatalogData.h"
 #include "catalog/Entry.h"
+#include "collection/CollectionList.h"
 #include "gui/GuiDefs.h"
 #include "gui/StampToolFrame.h"
 #include "gui/StampToolPanel.h"
@@ -1126,6 +1127,11 @@ void CatalogTreeCtrl::ShowMenu( wxTreeItemId id, const wxPoint& pt )
         {
             Catalog::InventoryStatusType newType = Catalog::ST_None;
             Catalog::Entry* entry = new Catalog::Entry( GetItemNode( id ) );
+            wxXmlNode* specimen = entry->GetSpecimen(GetCollectionList()->GetCurrentName());
+            if ( specimen )
+            {
+                Utils::SetAttrStr( specimen,Catalog::ItemDataNames[ Catalog::IDT_InventoryStatus ],InventoryStatusStrings[Catalog::ST_None] );
+            }
             Catalog::InventoryStatusType type = entry->GetInventoryStatusType( );
             if ( type != newType )
             {
@@ -1432,4 +1438,11 @@ void CatalogTreeCtrl::XMLDumpNode( wxTreeItemId item, wxString str )
 }
 
 //--------------
-
+void CatalogTreeCtrl::SelectStamp( wxString id )
+{
+    wxTreeItemId item = FindTreeItemID( id );
+    if ( item.IsOk( ) )
+    {
+        this->SelectItem( item );
+    }
+}

@@ -29,6 +29,8 @@
 
 namespace Design { class AlbumData; };
 namespace Catalog { class CatalogData; };
+namespace Inventory { class CollectionList; };
+namespace Catalog { class StampMountData; };
 namespace Utils { class Project; };
 namespace Utils { class Settings; };
 
@@ -56,6 +58,10 @@ public:
     ///
     ///@return Catalog::CatalogData* 
     Catalog::CatalogData* GetCatalogData( );
+
+    Inventory::CollectionList* GetCollectionList( );
+
+    Catalog::StampMountData* GetStampMountData( );
 
     ///@brief Get the Project object
     ///@return Utils::Project* 
@@ -89,6 +95,8 @@ private:
     Utils::Settings* m_settings;
     Utils::Project* m_project;
     Catalog::CatalogData* m_catalogData;
+    Inventory::CollectionList* m_collectionList;
+    Catalog::StampMountData* m_mountData;
     Design::AlbumData* m_albumData;
     Utils::StampList* m_StampAlbumCatalogLink;
     bool m_dirty;

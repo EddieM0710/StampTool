@@ -85,6 +85,7 @@ namespace Design {
 
     void AlbumData::LoadDefaultAlbumVolume( )
     {
+
         GetAlbumVolume( )->LoadDefaultDocument( );
     }
 
@@ -102,6 +103,8 @@ namespace Design {
     void AlbumData::LoadNew( wxString designFileName )
     {
         GetProject( )->SetDesignFilename( designFileName );
+        Design::AlbumVolume* volume = GetAlbumList( ).NewAlbumVolume( );
+        volume->SetAlbumFilename( designFileName );
 
         LoadDefaultAlbumVolume( );
         LoadDesignTree( );

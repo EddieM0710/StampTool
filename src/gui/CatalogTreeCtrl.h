@@ -576,6 +576,8 @@ public:
      */
     void ReSortTree( );
 
+    void SelectStamp( wxString id );
+
     ///  @brief Set the Catalog Link object
     ///  
     ///  @param catTreeID 

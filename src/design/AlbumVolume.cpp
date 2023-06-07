@@ -28,6 +28,7 @@
 
 #include "utils/CSV.h"
 #include "utils/Settings.h"
+#include "utils/Project.h"
 #include "utils/XMLUtilities.h"
 #include "Defs.h"
 #include "design/AlbumVolume.h"
@@ -254,7 +255,36 @@ namespace Design {
                 wxFileName file( albumPath );
                 wxString str = file.GetFullPath( );
                 file.MakeAbsolute( );
-                fileArray.Add( file.GetFullPath( ) );
+
+                if ( wxFileExists( str ) )
+                {
+                    fileArray.Add( file.GetFullPath( ) );
+                }
+                else
+                {
+                    wxString path = albumPath + "/art/" + imageName;
+                    wxFileName file( path );
+                    wxString str = file.GetFullPath( );
+                    file.MakeAbsolute( );
+                    str = file.GetFullPath( );
+                    if ( wxFileExists( str ) )
+                    {
+                        fileArray.Add( file.GetFullPath( ) );
+                    }
+                    else
+                    {
+                        albumPath = GetProject( )->GetImagePath( );
+                        wxString path = albumPath + "/" + imageName;
+                        wxFileName file( path );
+                        wxString str = file.GetFullPath( );
+                        file.MakeAbsolute( );
+                        str = file.GetFullPath( );
+                        if ( wxFileExists( str ) )
+                        {
+                            fileArray.Add( file.GetFullPath( ) );
+                        }
+                    }
+                }
             }
             MakeAlbumImageArray( child, fileArray );
             child = child->GetNext( );
@@ -284,7 +314,10 @@ namespace Design {
 
     wxXmlDocument* AlbumVolume::NewDesignDocument( )
     {
-        delete m_albumDoc;
+        if ( m_albumDoc )
+        {
+            delete m_albumDoc;
+        }
         m_albumDoc = new wxXmlDocument( );
         return m_albumDoc;
     };

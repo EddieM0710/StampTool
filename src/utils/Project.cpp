@@ -56,12 +56,13 @@
 #include "design/AlbumList.h"
 #include "design/AlbumBase.h"
 #include "design/AlbumData.h"
+#include "collection/CollectionData.h"
 
 #include "gui/CatalogTreeCtrl.h"
 #include "gui/AlbumTreeCtrl.h"
 #include "gui/StampToolFrame.h"
 
-
+ //#include "mount/StampMount.h"
 
 namespace Utils {
 
@@ -191,7 +192,16 @@ namespace Utils {
         }
         LoadAttributes( projectRoot );
 
+        // // Get Collections
+        // wxXmlNode* collectionNode = FirstChildElement( projectRoot, "CollectionList" );
+        // if ( collectionNode )
+        // {
+        //     Inventory::CollectionData* collectionData = GetCollectionList( );
+        //     wxString name = collectionNode->GetAttribute( "Filename", "" );
+        //     collectionData->SetFilename( name );
+        // }
 
+        // Get Albums
         wxXmlNode* listNode = FirstChildElement( projectRoot, "AlbumList" );
         Design::AlbumList& albumList = GetAlbumData( )->GetAlbumList( );
 
@@ -233,7 +243,10 @@ namespace Utils {
             }
         }
 
+        // Get Mounts
+        wxXmlDocument* mountDoc = GetCatalogData( )->LoadMountCSV( );
 
+        // Get Catalogs
         wxXmlNode* catListNode = FirstChildElement( projectRoot, "CatalogList" );
         Catalog::CatalogList* catalogList = GetCatalogData( )->GetCatalogList( );
 
@@ -275,12 +288,17 @@ namespace Utils {
             }
         }
 
+
         GetSettings( )->SetLastFile( m_projectFilename );
 
         SetDirty( false );
         return true;
     }
 
+    // AddMount( Catalog::CatalogVolume* volumeData, wxXmlDocument* mountDoc )
+    // {
+    //     wxXmlDocument* catDoc = volumeData->GetDoc( );
+    // }
 
 
     //
@@ -413,9 +431,11 @@ namespace Utils {
     void Project::LoadData( )
     {
         bool state = wxLog::IsEnabled( );
+        //GetCollectionData( )->LoadData( );
         GetCatalogData( )->LoadData( );
         GetAlbumData( )->LoadData( );
-        ;
+        GetCatalogData( )->SetCollectionListStrings( );
+        GetCatalogData( )->SetCollectionListSelection( );
     }
 
     void Project::FileOpenProject( wxString filename )

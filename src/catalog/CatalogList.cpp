@@ -92,7 +92,7 @@ namespace Catalog {
         {
             Catalog::CatalogVolume* volume = ( Catalog::CatalogVolume* ) ( *it );
             volume->Load( );
-            std::cout << " Loaded " << volume->GetVolumeName( ) << "\n";
+            // std::cout << " Loaded " << volume->GetVolumeName( ) << "\n";
         }
 
         if ( m_catalogArray.size( ) > 1 )

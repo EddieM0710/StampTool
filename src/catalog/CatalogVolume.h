@@ -101,6 +101,10 @@ namespace Catalog {
         /// @return 
         wxXmlNode* FindNodeWithPropertyAndValue( wxString property, wxString value );
 
+        bool FixupInventoryStatus( wxXmlNode* parent, InventoryStatusType status );
+
+        bool FixupInventoryStatus( );
+
         /// Get the Catalog XML doc
         wxXmlDocument* GetDoc( ) { return m_stampDoc; };
 
@@ -201,6 +205,10 @@ namespace Catalog {
         void StructureCatalogVolume( Catalog::FormatType parentType,
             Catalog::FormatType childType,
             Catalog::FormatType secondChildType = Catalog::FT_FormatUnknown );
+
+        bool UpdateMount( wxXmlNode* parent );
+
+        bool UpdateMount( );
 
     private:
         wxString m_volumeFilename;

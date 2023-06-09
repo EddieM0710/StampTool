@@ -179,14 +179,14 @@ bool MiscellaneousDataPanel::ShowToolTips( )
 
 void MiscellaneousDataPanel::UpdatePanel( )
 {
-    Catalog::Entry* stamp = GetCatalogData( )->GetCurrentStamp( );
+    Catalog::Entry stamp( GetCatalogData( )->GetCurrentStamp( ) );
 
-    if ( stamp->IsOK( ) )
+    if ( stamp.IsOK( ) )
     {
 
-        m_link->SetValue( stamp->GetAttr( Catalog::DT_Link ) );
-        m_catCodes->SetValue( stamp->GetAttr( Catalog::DT_Catalog_Codes ) );
-        wxString id = stamp->GetAttr( Catalog::DT_ID_Nbr );
+        m_link->SetValue( stamp.GetAttr( Catalog::DT_Link ) );
+        m_catCodes->SetValue( stamp.GetAttr( Catalog::DT_Catalog_Codes ) );
+        wxString id = stamp.GetAttr( Catalog::DT_ID_Nbr );
         id = id.Trim( true );
         id = id.Trim( false );
         id.Replace( ":", "_" );

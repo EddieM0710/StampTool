@@ -66,7 +66,7 @@ class wxGrid;
 class InventoryPanel : public wxPanel
 {
     DECLARE_DYNAMIC_CLASS( InventoryPanel )
-        DECLARE_EVENT_TABLE( )
+    DECLARE_EVENT_TABLE( )
 
 public:
     enum InventoryPanelGuiDefs
@@ -75,14 +75,14 @@ public:
     };
 
 
-    
 
 
-        /**
-         * @brief Default Constructor a new InventoryPanel object
-         * @details Must be used in conjunction with Create.
-         *
-         */
+
+    /**
+     * @brief Default Constructor a new InventoryPanel object
+     * @details Must be used in conjunction with Create.
+     *
+     */
     InventoryPanel( );
 
     /**
@@ -179,7 +179,9 @@ public:
      *
      * @return int index of the new row
      */
-    int AddRow( );
+    int AddRow( wxXmlNode* ele );
+
+    wxXmlNode* AddSpecimen( );
 
     /**
      * @brief creates a new empty row in the grid
@@ -195,7 +197,8 @@ public:
      */
     void ShowRow( int row );
 
-    
+    void OnRowBeginMove( wxGridEvent& ev );
+
 
 
 

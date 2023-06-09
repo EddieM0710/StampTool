@@ -62,6 +62,8 @@ IMPLEMENT_DYNAMIC_CLASS( StampDescriptionPanel, wxPanel )
 BEGIN_EVENT_TABLE( StampDescriptionPanel, wxPanel )
 
 // StampDescriptionPanel event table entries
+EVT_SPLITTER_SASH_POS_CHANGED( ID_HORIZONTALLITTERWINDOW, StampDescriptionPanel::OnNotebooksplitterwindowSashPosChanged )
+
 EVT_SLIDER( ID_ZOOMSLIDER, StampDescriptionPanel::OnZoomsliderUpdated )
 EVT_TEXT( ID_DESCRIPTIONTEXTCTRL, StampDescriptionPanel::OnDescriptionTextctrlTextUpdated )
 EVT_TEXT( ID_BKGNDTEXTCTRL, StampDescriptionPanel::OnBkGndTextUpdated )
@@ -156,9 +158,9 @@ void StampDescriptionPanel::CreateControls( void )
 
     wxSplitterWindow* horizontalSplitterWindow = new wxSplitterWindow(
         thisPanel, ID_HORIZONTALLITTERWINDOW, wxDefaultPosition,
-        wxSize( 100, 400 ), wxSP_3DBORDER | wxSP_3DSASH | wxNO_BORDER );
-    horizontalSplitterWindow->SetSashPosition( 400 );
-    horizontalSplitterWindow->SetMinimumPaneSize( 300 );
+        wxSize( 100, 800 ), wxSP_3DBORDER | wxSP_3DSASH | wxNO_BORDER );
+    horizontalSplitterWindow->SetSashPosition( 800 );
+    horizontalSplitterWindow->SetMinimumPaneSize( 100 );
     horizontalSplitterWindow->SetSashGravity( 0.2 );
 
 
@@ -402,7 +404,7 @@ bool StampDescriptionPanel::ShowToolTips( void ) { return true; }
 
 void StampDescriptionPanel::UpdateStatus( void )
 {
-    m_identificationPanel->UpdateStatus( );
+    m_inventoryPanel->UpdatePanel( );
 }
 
 /*
@@ -463,14 +465,14 @@ void StampDescriptionPanel::OnDescriptionTextctrlTextUpdated( wxCommandEvent& ev
 
 void StampDescriptionPanel::UpdatePanel( )
 {
-    Catalog::Entry* stamp = GetCatalogData( )->GetCurrentStamp( );
+    Catalog::Entry stamp( GetCatalogData( )->GetCurrentStamp( ) );
 
     m_inventoryPanel->UpdatePanel( );
     //    m_catalogCodePanel->UpdatePanel( );
         //    m_characteristicsPanel->UpdatePanel( );
     m_identificationPanel->UpdatePanel( );
     //    m_miscellaneousDataPanel->UpdatePanel( );
-    wxString imageFile = GetCatalogData( )->GetImageFilename( stamp->GetID( ) );
+    wxString imageFile = GetCatalogData( )->GetImageFilename( stamp.GetID( ) );
     m_stampImage->SetBitmap( imageFile );
 }
 
@@ -484,3 +486,11 @@ void StampDescriptionPanel::SetDataEditable( bool val )
         //$    m_bkgndText->SetEditable( val );
         //$    m_description->SetEditable( val );
 }
+
+void StampDescriptionPanel::OnNotebooksplitterwindowSashPosChanged( wxSplitterEvent& event )
+{
+    int pos = event.GetSashPosition( );
+    event.Skip( );
+}
+
+

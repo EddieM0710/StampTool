@@ -196,7 +196,7 @@ namespace Catalog
 
     void CatalogData::SetCurrentStamp( wxXmlNode* xmlNode )
     {
-        m_stamp = new Catalog::Entry( xmlNode );
+        m_stamp = xmlNode;
         GetDescriptionPanel( )->UpdatePanel( );
         GetDescriptionPanel( )->Show( );
     };

@@ -157,12 +157,12 @@ bool CharacteristicsPanel::ShowToolTips( void ) { return true; }
 /// initializes the CharacteristicsPanel with new stamp values
 void CharacteristicsPanel::UpdatePanel( )
 {
-    Catalog::Entry* stamp = GetCatalogData( )->GetCurrentStamp( );
+    Catalog::Entry stamp( GetCatalogData( )->GetCurrentStamp( ) );
 
-    if ( stamp->IsOK( ) )
+    if ( stamp.IsOK( ) )
     {
-        m_height->SetValue( stamp->GetAttr( Catalog::DT_Height ) );
-        m_width->SetValue( stamp->GetAttr( Catalog::DT_Width ) );
+        m_height->SetValue( stamp.GetAttr( Catalog::DT_Height ) );
+        m_width->SetValue( stamp.GetAttr( Catalog::DT_Width ) );
     }
 }
 
@@ -173,7 +173,8 @@ void CharacteristicsPanel::UpdateStampValue( Catalog::DataTypes dt, LabeledTextB
     if ( textBox->IsModified( ) )
     {
         wxString val = textBox->GetValue( );
-        GetCatalogData( )->GetCurrentStamp( )->SetAttr( dt, val );
+        Catalog::Entry stamp( GetCatalogData( )->GetCurrentStamp( ) );
+        stamp.SetAttr( dt, val );
         textBox->SetModified( false );
     }
 }

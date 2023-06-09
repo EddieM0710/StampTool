@@ -208,6 +208,8 @@ public:
 
     InventoryPanel* GetInventoryPanel( ) { return m_inventoryPanel; };
 
+    void OnNotebooksplitterwindowSashPosChanged( wxSplitterEvent& event );
+
 
 private:
     IdentificationPanel* m_identificationPanel; ///< Pointer to IdentificationPanel

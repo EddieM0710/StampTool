@@ -146,6 +146,7 @@ namespace Catalog {
         wxXmlNode* child = parent->GetChildren( );
         while ( child )
         {
+            wxXmlNode* nextChild = child->GetNext( );
             wxString nodeName = child->GetName( );
             // for each entry
             if ( !nodeName.Cmp( "Entry" ) )
@@ -160,6 +161,7 @@ namespace Catalog {
                 // find all specimen nodes
 
                 FixupInventoryStatus( child, status );
+                child->DeleteAttribute( XMLDataNames[ DT_InventoryStatus ] );;
 
             }
             else  if ( !nodeName.Cmp( "Specimen" ) )
@@ -208,14 +210,14 @@ namespace Catalog {
             else  if ( !nodeName.Cmp( "CatalogCode" ) )
             {
                 //clobber it... or just ignore it
+                parent->RemoveChild( child );
             }
             else
             {
                 // for all other node types just decend and keep looking
                 FixupInventoryStatus( child, ( InventoryStatusType ) -1 );
             }
-            child->DeleteAttribute( XMLDataNames[ DT_InventoryStatus ] );;
-            child = child->GetNext( );
+            child = nextChild; //child->GetNext( );
         }
         return true;
     }
@@ -722,11 +724,11 @@ namespace Catalog {
         for ( int i = 0; i < parentList->size( ); i++ )
         {
             wxXmlNode* parentNode = ( wxXmlNode* ) parentList->at( i );
-            Catalog::Entry* parentEntry = new Catalog::Entry( parentNode );
-            wxString parentIssue = parentEntry->GetIssuedDate( );
-            wxString parentSeries = parentEntry->GetSeries( );
-            wxString parentFace = parentEntry->GetFaceValue( );
-            wxString id = parentEntry->GetID( );
+            Catalog::Entry parentEntry( parentNode );
+            wxString parentIssue = parentEntry.GetIssuedDate( );
+            wxString parentSeries = parentEntry.GetSeries( );
+            wxString parentFace = parentEntry.GetFaceValue( );
+            wxString id = parentEntry.GetID( );
             long nbrEntrys;
             parentFace.ToLong( &nbrEntrys );
             if ( nbrEntrys <= 0 )
@@ -741,7 +743,7 @@ namespace Catalog {
 
             while ( childNode && ( searchRange < 1005 ) && ( count < nbrEntrys ) )
             {
-                Catalog::Entry* childEntry = new Catalog::Entry( childNode );
+                Catalog::Entry childEntry( childNode );
 
                 // figure out what the next sibling is because we may move childNode
                 wxXmlNode* nextSibling = childNode->GetNext( );
@@ -754,13 +756,13 @@ namespace Catalog {
                         searchRange++;
                     }
                     // only look at children of childType
-                    wxString format = childEntry->GetFormat( );
+                    wxString format = childEntry.GetFormat( );
                     if ( ( format == Catalog::FormatStrings[ childType ] )
                         || ( secondChildType
                             && ( format == Catalog::FormatStrings[ secondChildType ] ) ) )
                     {
-                        wxString issue = childEntry->GetIssuedDate( );
-                        wxString series = childEntry->GetSeries( );
+                        wxString issue = childEntry.GetIssuedDate( );
+                        wxString series = childEntry.GetSeries( );
                         // if the issue date and the series match the parent assume
                         // that the childNode goes in the parent
                         if ( !issue.Cmp( parentIssue )

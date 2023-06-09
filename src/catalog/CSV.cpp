@@ -250,7 +250,6 @@ namespace Catalog {
 
                             wxXmlNode* entryElement = Utils::NewNode( docRoot, "Item" );
 
-                            //Catalog::Entry* entryNode = new Catalog::Entry( entryElement );
                             csvCol = 0;
                             valFound = false;
                             wxString valStr;

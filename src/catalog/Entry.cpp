@@ -42,6 +42,7 @@
 #include <wx/tokenzr.h>
 #include <cstdio>
 #include "utils/XMLUtilities.h"
+#include "collection/CollectionList.h"
 
 
 namespace Catalog {
@@ -71,9 +72,8 @@ namespace Catalog {
                     {
                         return child;
                     }
-
                 }
-                child->GetNext( );
+                child = child->GetNext( );
             }
         }
         return ( wxXmlNode* ) 0;
@@ -274,26 +274,37 @@ namespace Catalog {
 
     wxString Entry::GetInventoryStatus( )
     {
-        wxString status = GetAttr( DT_InventoryStatus );
-        if ( status.IsEmpty( ) )
-        {
-            return InventoryStatusStrings[ ST_None ];
-        }
-        return status;
+        InventoryStatusType type = GetInventoryStatusType( );
+        return InventoryStatusStrings[ type ];
     }
 
     InventoryStatusType Entry::GetInventoryStatusType( )
     {
-        wxString status = GetAttr( DT_InventoryStatus );
-        for ( int i = ST_None; i < ST_NbrInventoryStatusTypes; i++ )
+        wxString currCollection = GetCollectionList( )->GetCurrentName( );
+        wxXmlNode* ele = GetCatXMLNode( );
+        wxXmlNode* child = ele->GetChildren( );
+        while ( child )
         {
-            wxString str = InventoryStatusStrings[ i ];
-            if ( !status.CmpNoCase( InventoryStatusStrings[ i ] ) )
+            wxString str = child->GetName( );
+            if ( !child->GetName( ).Cmp( "Specimen" ) )
             {
-                return ( InventoryStatusType ) i;
+                wxString specimenCollection = child->GetAttribute( Catalog::ItemDataNames[ Catalog::IDT_Collection ], "" );
+                if ( !currCollection.Cmp( specimenCollection ) )
+                {
+                    wxString status = child->GetAttribute( Catalog::ItemDataNames[ IDT_InventoryStatus ], "" );
+                    for ( int i = ST_None; i < ST_NbrInventoryStatusTypes; i++ )
+                    {
+                        wxString str = InventoryStatusStrings[ i ];
+                        if ( !status.CmpNoCase( str ) )
+                        {
+                            return ( InventoryStatusType ) i;
+                        }
+                    }
+                }
             }
+            child = child->GetNext( );
         }
-        return ( InventoryStatusType ) ST_None;
+        return ( InventoryStatusType ) ST_Exclude;
     };
 
     wxString Entry::GetIssuedDate( ) { return GetAttr( DT_Issued_on ); };

@@ -131,7 +131,7 @@ public:
     *
     * @param event   Contains information about command events
     */
-    void OnStatuschoiceSelected( wxCommandEvent& event );
+    //void OnStatuschoiceSelected( wxCommandEvent& event );
 
     /**
      * @brief    ID_EMISSIONCHOICE
@@ -202,7 +202,7 @@ public:
 private:
     wxCheckBox* m_editCheckbox;
     LabeledTextBox* m_ID;        ///< ID display
-    wxChoice* m_status;          ///< Stamp Status wxChoice
+    //    wxChoice* m_status;          ///< Stamp Status wxChoice
     LabeledTextBox* m_name;      ///< Stamp Name display
     wxChoice* m_emission;        ///<  Stamp Emission wxChoice
     wxChoice* m_format;          ///<  Stamp Format wxChoice

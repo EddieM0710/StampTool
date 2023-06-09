@@ -341,11 +341,17 @@ void CatalogPanel::OnVolumeChoiceSelected( wxCommandEvent& event )
 }
 void CatalogPanel::OnCollectionChoiceSelected( wxCommandEvent& event )
 {
+    wxTreeItemId id = m_catalogTreeCtrl->GetSelection( );
+    wxXmlNode* ele = m_catalogTreeCtrl->GetItemNode( id );
+
+    //m_catalogTreeCtrl->GetItemData( );
     //int sel = m_collectionListCtrl->GetSelection( );
     wxString sel = m_collectionListCtrl->GetStringSelection( );
     GetCollectionList( )->SetCurrentCollection( sel );
     GetCatalogData( )->GetInventoryPanel( )->UpdatePanel( );
-
+    m_catalogTreeCtrl->LoadTree( );
+    wxTreeItemId newID = m_catalogTreeCtrl->FindTreeItemID( ele );
+    m_catalogTreeCtrl->SelectItem( newID );
     event.Skip( );
 
 }

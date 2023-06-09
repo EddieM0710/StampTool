@@ -471,7 +471,7 @@ public:
      * @param itemId
      * @return Catalog::Entry*
      */
-    Catalog::Entry* GetNewEntry( wxTreeItemId itemId );
+    wxXmlNode* GetNewEntry( wxTreeItemId itemId );
 
     /*
      * @brief In Browser GoTo Colnect page for this item
@@ -641,6 +641,8 @@ public:
     * @param itemDst
     */
     void ShowDropMenu( wxTreeItemId itemSrc, wxTreeItemId itemDst );
+
+    void SetInventoryStatus( wxXmlNode* node, Catalog::InventoryStatusType newType );
 
 
     /*

@@ -87,6 +87,7 @@ namespace Catalog {
          */
         wxXmlNode* AddSpecimen( );
 
+        // returns the first specimen in this entry with collectionName or 0 if not found
         wxXmlNode* GetSpecimen( wxString collectionName );
 
         /**

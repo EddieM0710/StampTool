@@ -53,7 +53,7 @@ BEGIN_EVENT_TABLE( CatalogCodePanel, wxPanel )
 
 EVT_CONTEXT_MENU( CatalogCodePanel::OnContextMenu )
 EVT_GRID_CELL_CHANGED( CatalogCodePanel::OnCellChanged )
-EVT_MENU( wxIDAddItem, CatalogCodePanel::OnContextPopup )
+EVT_MENU( ID_AddItem, CatalogCodePanel::OnContextPopup )
 EVT_MENU( wxIDDeleteItem, CatalogCodePanel::OnContextPopup )
 
 END_EVENT_TABLE( )
@@ -187,7 +187,7 @@ void CatalogCodePanel::OnContextMenu( wxContextMenuEvent& event )
         }
         wxMenu menu;
         menu.Append( wxID_ANY, wxString::Format( "Menu1" ) );
-        menu.Append( wxIDAddItem, "Add Item" );
+        menu.Append( ID_AddItem, "Add Item" );
         menu.Append( wxIDDeleteItem, "Delete Item" );
 
         PopupMenu( &menu, point.x, point.y );
@@ -216,7 +216,7 @@ void CatalogCodePanel::OnContextPopup( wxCommandEvent& event )
     int id = event.GetId( );
     switch ( id )
     {
-        case wxIDAddItem:
+        case ID_AddItem:
         {
             AddNewRow( );
             break;

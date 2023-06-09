@@ -110,7 +110,7 @@ namespace Catalog
         ///  @brief Get the Current Stamp object to display
         ///  
         ///  @return Entry* 
-        inline Entry* GetCurrentStamp( ) { return m_stamp; };
+        inline wxXmlNode* GetCurrentStamp( ) { return m_stamp; };
 
         ///  @brief Get the Description Panel object
         ///  @return StampDescriptionPanel*
@@ -200,7 +200,7 @@ namespace Catalog
 
     private:
 
-        Catalog::Entry* m_stamp;
+        wxXmlNode* m_stamp;
         Catalog::CatalogList m_catalogList;
         CatalogTreeCtrl* m_catalogTreeCtrl;
         //CatalogTreeCtrl* m_albumPageTreeCtrl;

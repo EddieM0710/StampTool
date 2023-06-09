@@ -258,7 +258,7 @@ namespace Utils {
 
                             wxXmlNode* entryElement = NewNode( docRoot, Catalog::CatalogBaseNames[ Catalog::NT_Entry ] );
 
-                            Catalog::Entry* entryNode = new Catalog::Entry( entryElement );
+                            Catalog::Entry entryNode( entryElement );
                             csvCol = 0;
                             valFound = false;
                             wxString valStr;
@@ -286,8 +286,8 @@ namespace Utils {
                                         {
                                             wxString codePrefix = GetSettings( )->GetCatCodePrefix( );
 
-                                            entryNode->SetID( id );
-                                            id = entryNode->GetID( );
+                                            entryNode.SetID( id );
+                                            id = entryNode.GetID( );
                                             if ( id.IsEmpty( ) )
                                             {
                                                 std::cout << "ID_Nbr>" << valStr << "<\n";
@@ -296,7 +296,7 @@ namespace Utils {
                                         }
                                         else
                                         {
-                                            entryNode->SetID( valStr );
+                                            entryNode.SetID( valStr );
                                         }
                                     }
                                     valFound = true;
@@ -306,7 +306,7 @@ namespace Utils {
                                 }
                                 csvCol++;
                             }
-                            wxString id = entryNode->GetID( );
+                            wxString id = entryNode.GetID( );
                             id = id.Trim( );
                             id = id.Trim( false );
                             if ( id.IsEmpty( ) )

@@ -35,24 +35,35 @@
 
 #include "InventoryPanel.h"
 #include "catalog/CatalogData.h"
+#include "gui/CatalogTreeCtrl.h"
 #include "collection/CollectionList.h"
-#include "Specimen.h"
+ //#include "Specimen.h"
 #include "Defs.h"
 #include "utils/Settings.h"
 
 IMPLEMENT_DYNAMIC_CLASS( InventoryPanel, wxPanel )
 
-#define wxIDAddItem 17000
-#define wxIDDeleteItem 17001
+#define ID_AddItem 17000
+#define ID_DeleteItem 17001
+#define ID_MoveItemUp 17002
+#define ID_MoveItemDown 17003
+#define ID_MoveItemTop 17004
+#define ID_MoveItemBottom 17005
+#define ID_Move 17006
 
 
 BEGIN_EVENT_TABLE( InventoryPanel, wxPanel )
 
 EVT_CONTEXT_MENU( InventoryPanel::OnContextMenu )
 EVT_GRID_CELL_CHANGED( InventoryPanel::OnCellChanged )
-EVT_MENU( wxIDAddItem, InventoryPanel::OnContextPopup )
-EVT_MENU( wxIDDeleteItem, InventoryPanel::OnContextPopup )
-
+EVT_MENU( ID_AddItem, InventoryPanel::OnContextPopup )
+EVT_MENU( ID_DeleteItem, InventoryPanel::OnContextPopup )
+EVT_MENU( ID_MoveItemUp, InventoryPanel::OnContextPopup )
+EVT_MENU( ID_MoveItemDown, InventoryPanel::OnContextPopup )
+EVT_MENU( ID_MoveItemTop, InventoryPanel::OnContextPopup )
+EVT_MENU( ID_MoveItemBottom, InventoryPanel::OnContextPopup )
+EVT_GRID_ROW_MOVE( InventoryPanel::OnRowBeginMove )
+EVT_GRID_CELL_BEGIN_DRAG( InventoryPanel::OnRowBeginMove )
 END_EVENT_TABLE( )
 
 
@@ -77,6 +88,8 @@ bool InventoryPanel::Create( wxWindow* parent, wxWindowID id, const wxPoint& pos
     CreateControls( );
     Centre( );
     // InventoryPanel creation
+    m_grid->SetSelectionMode( m_grid->wxGridSelectRows );
+
     return true;
 }
 
@@ -101,7 +114,7 @@ void InventoryPanel::CreateControls( )
     wxBoxSizer* itemBoxSizer2 = new wxBoxSizer( wxVERTICAL );
     itemBoxSizer1->Add( itemBoxSizer2, 1, wxGROW | wxALL, 5 );
 
-    m_grid = new wxGrid( itemPanel1, ID_INVENTORYGRID, wxDefaultPosition, wxSize( 200, 150 ),
+    m_grid = new wxGrid( itemPanel1, ID_INVENTORYGRID, wxDefaultPosition, wxSize( 300, 100 ),
         wxHSCROLL | wxVSCROLL );
     m_grid->SetDefaultColSize( 100 );
     m_grid->SetDefaultRowSize( 25 );
@@ -151,7 +164,7 @@ void InventoryPanel::CreateControls( )
     m_grid->SetColAttr( Catalog::IDT_Collection, attr );
 
     SetDataEditable( GetSettings( )->IsCatalogVolumeEditable( ) );
-
+    m_grid->EnableDragRowMove( );
     m_grid->Refresh( );
 
 }
@@ -160,23 +173,31 @@ void InventoryPanel::CreateControls( )
 void InventoryPanel::InitRow( int row )
 {
     wxXmlNode* ele = m_specimenList[ row ];
-    Catalog::Specimen specimen( ele );
     for ( int i = 0; i < Catalog::IDT_NbrTypes; i++ )
     {
-        specimen.SetAttr( ( Catalog::ItemDataTypes ) i, "" );
         m_grid->SetCellValue( row, i, "" );
     }
 }
-
-int InventoryPanel::AddRow( )
+wxXmlNode* InventoryPanel::AddSpecimen( )
 {
-    Catalog::Entry* stamp = GetCatalogData( )->GetCurrentStamp( );
-    if ( stamp )
+    wxXmlNode* ele = GetCatalogData( )->GetCurrentStamp( );
+    if ( ele )
+    {
+        wxXmlNode* newChild = Utils::NewNode( ele, Catalog::CatalogBaseNames[ Catalog::NT_Specimen ] );
+        wxString currCollection = GetCollectionList( )->GetCurrentName( );
+        Utils::SetAttrStr( newChild, Catalog::ItemDataNames[ Catalog::IDT_Collection ], currCollection );
+
+        return newChild;
+    }
+    return ( wxXmlNode* ) 0;
+}
+
+int InventoryPanel::AddRow( wxXmlNode* ele )
+{
+    if ( ele )
     {
         int cnt = m_grid->GetNumberRows( );
         m_grid->InsertRows( cnt, 1 );
-
-        wxXmlNode* ele = stamp->AddSpecimen( );
         m_specimenList.push_back( ele );
         InitRow( cnt );
         return cnt;
@@ -187,10 +208,9 @@ int InventoryPanel::AddRow( )
 void InventoryPanel::ShowRow( int row )
 {
     wxXmlNode* ele = m_specimenList[ row ];
-    Catalog::Specimen specimen( ele );
     for ( int i = 0; i < Catalog::IDT_NbrTypes; i++ )
     {
-        wxString str = specimen.GetAttr( ( Catalog::ItemDataTypes ) i );
+        wxString str = Utils::GetAttrStr( ele, Catalog::ItemDataNames[ ( Catalog::ItemDataTypes ) i ] );
         m_grid->SetCellValue( row, i, str );
     }
 }
@@ -205,10 +225,6 @@ bool InventoryPanel::ShowToolTips( )
 
 void InventoryPanel::UpdatePanel( )
 {
-
-    //   wxGridCellAttr* attr = new wxGridCellAttr( );
-    //   attr->SetEditor( new wxGridCellChoiceEditor( GetCollectionList( )->GetNameStrings( ), true ) );
-    //   m_grid->SetColAttr( Catalog::IDT_Collection, attr );
     wxString currCollection = GetCollectionList( )->GetCurrentName( );
 
     int cnt = m_grid->GetNumberRows( );
@@ -216,42 +232,40 @@ void InventoryPanel::UpdatePanel( )
     if ( cnt > 0 )
         m_grid->DeleteRows( 0, cnt );
     m_specimenList.clear( );
-    cnt = m_grid->GetNumberRows( );
-    int size = m_specimenList.size( );
     int row = 0;
-    Catalog::Entry* stamp = GetCatalogData( )->GetCurrentStamp( );
-    if ( stamp && stamp->IsOK( ) )
+
+    wxXmlNode* parent = GetCatalogData( )->GetCurrentStamp( );
+    if ( parent )
     {
-        if ( stamp->HasChildSpecimen( ) )
+        wxXmlNode* ele = parent->GetChildren( );
+        while ( ele && ( ele->GetParent( ) == parent ) )
         {
-            //wxXmlNode* ele = stamp->GetFirstChildSpecimen( );
-            wxXmlNode* ele = stamp->GetCatXMLNode( )->GetChildren( );
-            while ( ele )
+            wxString str = ele->GetName( );
+            std::cout << str << " " << ele->GetLineNumber( );
+            if ( !ele->GetName( ).Cmp( "Specimen" ) )
             {
-                if ( !ele->GetName( ).Cmp( "Specimen" ) )
+                wxString specimenCollection = ele->GetAttribute( Catalog::ItemDataNames[ Catalog::IDT_Collection ], "" );
+                if ( !currCollection.Cmp( specimenCollection ) )
                 {
-                    wxString specimenCollection = ele->GetAttribute( Catalog::ItemDataNames[ Catalog::IDT_Collection ], "" );
-                    if ( !currCollection.Cmp( specimenCollection ) )
+                    AddRow( ele );
+                    for ( int i = 0; i < Catalog::IDT_NbrTypes; i++ )
                     {
-                        AddRow( );
-                        m_specimenList.push_back( ele );
-                        Catalog::Specimen specimen( ele );
-                        for ( int i = 0; i < Catalog::IDT_NbrTypes; i++ )
-                        {
-                            wxString str = specimen.GetAttr( ( Catalog::ItemDataTypes ) i );
-                            m_grid->SetCellValue( row, i, str );
-                        }
+                        wxString str = Utils::GetAttrStr( ele, Catalog::ItemDataNames[ ( Catalog::ItemDataTypes ) i ] );
+                        m_grid->SetCellValue( row, i, str );
                     }
+                    row++;
                 }
-                ele = ele->GetNext( );
             }
+            std::cout << "\n";
+
+            ele = ele->GetNext( );
         }
+        //       }
     }
 }
 
 void InventoryPanel::OnContextMenu( wxContextMenuEvent& event )
 {
-
     if ( GetSettings( )->IsCatalogVolumeEditable( ) )
     {
         wxPoint point = event.GetPosition( );
@@ -267,9 +281,22 @@ void InventoryPanel::OnContextMenu( wxContextMenuEvent& event )
             point = ScreenToClient( point );
         }
         wxMenu menu;
+        wxGridCellCoords coords = m_grid->GetGridCursorCoords( );
         menu.Append( wxID_ANY, wxString::Format( "Menu1" ) );
-        menu.Append( wxIDAddItem, "Add Item" );
-        menu.Append( wxIDDeleteItem, "Delete Item" );
+
+        if ( m_grid->IsInSelection( coords ) )
+        {
+
+            wxMenu* moveMenu = new wxMenu( );
+            moveMenu->Append( ID_MoveItemTop, "To Top" );
+            moveMenu->Append( ID_MoveItemUp, "Up" );
+            moveMenu->Append( ID_MoveItemDown, "Down" );
+            moveMenu->Append( ID_MoveItemBottom, "To Bottom" );
+            menu.Append( ID_Move, "Move", moveMenu );
+
+        }
+        menu.Append( ID_AddItem, "Add Item" );
+        menu.Append( ID_DeleteItem, "Delete Item" );
 
         PopupMenu( &menu, point.x, point.y );
     }
@@ -283,9 +310,11 @@ void InventoryPanel::OnCellChanged( wxGridEvent& event )
     int row = event.GetRow( );
     wxString str = m_grid->GetCellValue( row, col );
     wxXmlNode* ele = m_specimenList[ row ];
-    Catalog::Specimen specimen( ele );
-    specimen.SetAttr( ( Catalog::ItemDataTypes ) col, str );
-
+    Utils::SetAttrStr( ele, Catalog::ItemDataNames[ ( Catalog::ItemDataTypes ) col ], str );
+    if ( col == Catalog::IDT_InventoryStatus )
+    {
+        GetCatalogTreeCtrl( )->SetInventoryStatusImage( );
+    }
     event.Skip( );
 
 }
@@ -296,13 +325,81 @@ void InventoryPanel::OnContextPopup( wxCommandEvent& event )
     int id = event.GetId( );
     switch ( id )
     {
-        case wxIDAddItem:
+        case ID_AddItem:
         {
-            AddRow( );
+            AddRow( AddSpecimen( ) );
             break;
         }
-        case wxIDDeleteItem:
+        case ID_DeleteItem:
         {
+            break;
+        }
+        case ID_MoveItemUp:
+        {
+            wxArrayInt array = m_grid->GetSelectedRows( );
+            m_grid->IsSelection( );
+            int row = array[ 0 ];
+            if ( row > 0 && row < m_specimenList.size( ) )
+            {
+                int prevRow = row - 1;
+                wxXmlNode* node = m_specimenList[ row ];
+                wxXmlNode* prevNode = m_specimenList[ prevRow ];
+                wxXmlNode* parent = node->GetParent( );
+                parent->RemoveChild( node );
+                parent->InsertChild( node, prevNode );
+                UpdatePanel( );
+            }
+            break;
+        }
+        case ID_MoveItemBottom:
+        {
+            wxArrayInt array = m_grid->GetSelectedRows( );
+            m_grid->IsSelection( );
+            int row = array[ 0 ];
+            if ( row >= 0 && row < m_specimenList.size( ) - 1 )
+            {
+                int lastRow = m_specimenList.size( ) - 1;
+                wxXmlNode* node = m_specimenList[ row ];
+                wxXmlNode* lastNode = m_specimenList[ lastRow ];
+                wxXmlNode* parent = node->GetParent( );
+                parent->RemoveChild( node );
+                parent->InsertChildAfter( node, lastNode );
+                UpdatePanel( );
+            }
+            break;
+        }
+        case ID_MoveItemDown:
+        {
+            wxArrayInt array = m_grid->GetSelectedRows( );
+            m_grid->IsSelection( );
+            int row = array[ 0 ];
+            if ( row >= 0 && row < m_specimenList.size( ) - 1 )
+            {
+                int nextRow = row + 1;
+                wxXmlNode* node = m_specimenList[ row ];
+                wxXmlNode* nextNode = m_specimenList[ nextRow ];
+                wxXmlNode* parent = node->GetParent( );
+                parent->RemoveChild( node );
+                parent->InsertChildAfter( node, nextNode );
+                UpdatePanel( );
+            }
+            break;
+        }
+        case ID_MoveItemTop:
+        {
+            wxArrayInt array = m_grid->GetSelectedRows( );
+            m_grid->IsSelection( );
+            int row = array[ 0 ];
+            if ( row > 0 && row < m_specimenList.size( ) )
+            {
+                int firstRow = 0;
+                wxXmlNode* node = m_specimenList[ row ];
+                wxXmlNode* firstNode = m_specimenList[ firstRow ];
+                wxXmlNode* parent = node->GetParent( );
+                parent->RemoveChild( node );
+                parent->InsertChild( node, firstNode );
+                UpdatePanel( );
+            }
             break;
         }
     }
@@ -311,4 +408,16 @@ void InventoryPanel::OnContextPopup( wxCommandEvent& event )
 void InventoryPanel::SetDataEditable( bool val )
 {
     m_grid->EnableEditing( val );
+}
+
+
+void InventoryPanel::OnRowBeginMove( wxGridEvent& ev )
+{
+    //  ev.GetRow( ), ev.GetCol( ) );
+    int sel = ev.GetSelection( );
+    int row = ev.GetRow( );
+    int cursorRow = m_grid->GetGridCursorRow( );
+
+    std::cout << "  row " << row << "  cursorRow " << cursorRow << "   sel " << sel << "\n";
+    ev.Skip( );
 }

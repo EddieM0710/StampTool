@@ -560,9 +560,9 @@ Catalog::CatalogBaseType  CatalogTreeCtrl::GetItemType( wxTreeItemId id )
 };
 //--------------
 
-Catalog::Entry* CatalogTreeCtrl::GetNewEntry( wxTreeItemId itemId )
+wxXmlNode* CatalogTreeCtrl::GetNewEntry( wxTreeItemId itemId )
 {
-    return new Catalog::Entry( GetItemNode( itemId ) );
+    return GetItemNode( itemId );
 }
 
 //--------------
@@ -992,6 +992,42 @@ void CatalogTreeCtrl::SetCatalogLink( wxTreeItemId catTreeID, Utils::StampLink* 
 
 //--------------
 
+void CatalogTreeCtrl::SetInventoryStatus( wxXmlNode* node, Catalog::InventoryStatusType newType )
+{
+    Catalog::Entry entry( node );
+    wxString currCollection = GetCollectionList( )->GetCurrentName( );
+    wxXmlNode* specimen = entry.GetSpecimen( currCollection );
+    if ( specimen )
+    {
+        if ( newType == Catalog::ST_Exclude )
+        {
+            node->RemoveChild( specimen );
+        }
+        else
+        {
+            Utils::SetAttrStr( specimen,
+                Catalog::ItemDataNames[ Catalog::IDT_InventoryStatus ],
+                Catalog::InventoryStatusStrings[ newType ] );
+        }
+    }
+    else
+    {
+        if ( newType != Catalog::ST_Exclude )
+        {
+            specimen = Utils::NewNode( node, Catalog::CatalogBaseNames[ Catalog::NT_Specimen ] );
+            Utils::SetAttrStr( specimen,
+                Catalog::ItemDataNames[ Catalog::IDT_Collection ],
+                currCollection );
+            Utils::SetAttrStr( specimen,
+                Catalog::ItemDataNames[ Catalog::IDT_InventoryStatus ],
+                Catalog::InventoryStatusStrings[ newType ] );
+        }
+    }
+    SetInventoryStatusImage( );
+    GetFrame( )->UpdateStatus( );
+}
+//--------------
+
 void CatalogTreeCtrl::ShowDropMenu( wxTreeItemId itemSrc, wxTreeItemId itemDst )
 {
     wxString title;
@@ -1125,94 +1161,40 @@ void CatalogTreeCtrl::ShowMenu( wxTreeItemId id, const wxPoint& pt )
         case CatalogListTree_Inventory:
         case CatalogListTree_InventoryStatusNone:
         {
-            Catalog::InventoryStatusType newType = Catalog::ST_None;
-            Catalog::Entry* entry = new Catalog::Entry( GetItemNode( id ) );
-            wxXmlNode* specimen = entry->GetSpecimen(GetCollectionList()->GetCurrentName());
-            if ( specimen )
-            {
-                Utils::SetAttrStr( specimen,Catalog::ItemDataNames[ Catalog::IDT_InventoryStatus ],InventoryStatusStrings[Catalog::ST_None] );
-            }
-            Catalog::InventoryStatusType type = entry->GetInventoryStatusType( );
-            if ( type != newType )
-            {
-                entry->SetInventoryStatusType( newType );
-                SetInventoryStatusImage( );
-                GetFrame( )->UpdateStatus( );
-            }
+            SetInventoryStatus( GetItemNode( id ), Catalog::ST_None );
+
         }
         break;
         case CatalogListTree_InventoryStatusMissing:
         {
-            Catalog::InventoryStatusType newType = Catalog::ST_Missing;
-            Catalog::Entry* entry = new Catalog::Entry( GetItemNode( id ) );
-            Catalog::InventoryStatusType type = entry->GetInventoryStatusType( );
-            if ( type != newType )
-            {
-                entry->SetInventoryStatusType( newType );
-                SetInventoryStatusImage( );
-                GetFrame( )->UpdateStatus( );
-
-            }
+            SetInventoryStatus( GetItemNode( id ), Catalog::ST_Missing );
         }
         break;
 
         case CatalogListTree_InventoryStatusOrdered:
         {
-            Catalog::InventoryStatusType newType = Catalog::ST_Ordered;
-            Catalog::Entry* entry = new Catalog::Entry( GetItemNode( id ) );
-            Catalog::InventoryStatusType type = entry->GetInventoryStatusType( );
-            if ( type != newType )
-            {
-                entry->SetInventoryStatusType( newType );
-                SetInventoryStatusImage( );
-                GetFrame( )->UpdateStatus( );
+            SetInventoryStatus( GetItemNode( id ), Catalog::ST_Ordered );
 
-            }
         }
         break;
 
         case CatalogListTree_InventoryStatusOwn:
         {
-            Catalog::InventoryStatusType newType = Catalog::ST_Own;
-            Catalog::Entry* entry = new Catalog::Entry( GetItemNode( id ) );
-            Catalog::InventoryStatusType type = entry->GetInventoryStatusType( );
-            if ( type != newType )
-            {
-                entry->SetInventoryStatusType( newType );
-                SetInventoryStatusImage( );
-                GetFrame( )->UpdateStatus( );
-
-            }
+            SetInventoryStatus( GetItemNode( id ), Catalog::ST_Own );
         }
         break;
 
         case CatalogListTree_InventoryStatusOwnVariant:
         {
-            Catalog::InventoryStatusType newType = Catalog::ST_OwnVariant;
-            Catalog::Entry* entry = new Catalog::Entry( GetItemNode( id ) );
-            Catalog::InventoryStatusType type = entry->GetInventoryStatusType( );
-            if ( type != newType )
-            {
-                entry->SetInventoryStatusType( newType );
-                SetInventoryStatusImage( );
-                GetFrame( )->UpdateStatus( );
+            SetInventoryStatus( GetItemNode( id ), Catalog::ST_OwnVariant );
 
-            }
         }
         break;
 
         case CatalogListTree_InventoryStatusExclude:
         {
-            Catalog::InventoryStatusType newType = Catalog::ST_Exclude;
-            Catalog::Entry* entry = new Catalog::Entry( GetItemNode( id ) );
-            Catalog::InventoryStatusType type = entry->GetInventoryStatusType( );
-            if ( type != newType )
-            {
-                entry->SetInventoryStatusType( newType );
-                SetInventoryStatusImage( );
-                GetFrame( )->UpdateStatus( );
+            SetInventoryStatus( GetItemNode( id ), Catalog::ST_Exclude );
 
-            }
         }
         break;
         // m_statusStrings.Add( Catalog::InventoryStatusStrings[ Catalog::ST_None ] );
@@ -1275,13 +1257,13 @@ void CatalogTreeCtrl::ShowMenu( wxTreeItemId id, const wxPoint& pt )
 void CatalogTreeCtrl::SetInventoryStatusImage( )
 {
     wxTreeItemId itemId = GetFocusedItem( );
-    Catalog::Entry* entry = GetNewEntry( itemId );
-    if ( entry->IsOK( ) )
+    Catalog::Entry entry = GetNewEntry( itemId );
+    if ( entry.IsOK( ) )
     {
-        int status = entry->GetInventoryStatusType( );
-        int format = entry->GetFormatType( );
+        int status = entry.GetInventoryStatusType( );
+        int format = entry.GetFormatType( );
         //Catalog::IconID iconID = Catalog::CatalogImageSelection[ format ][ status ];
-        SetItemImage( itemId, GetInventoryIconId( entry ) );
+        SetItemImage( itemId, GetInventoryIconId( &entry ) );
     }
 }
 
@@ -1347,8 +1329,8 @@ void CatalogTreeCtrl::SetItemStampLink( wxTreeItemId id, Utils::StampLink* link 
 void CatalogTreeCtrl::SetNextState( const wxTreeItemId& itemId )
 {
     wxXmlNode* element = GetItemNode( itemId );
-    Catalog::Entry* entry = new Catalog::Entry( element );
-    if ( entry->IsOK( ) )
+    Catalog::Entry entry( element );
+    if ( entry.IsOK( ) )
     {
         SetItemState( itemId, wxTREE_ITEMSTATE_NEXT );
         int state = GetItemState( itemId );

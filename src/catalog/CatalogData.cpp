@@ -62,6 +62,7 @@ namespace Catalog
         Catalog::CatalogVolume* volume = GetCatalogList( )->NewCatalogVolume( );
         volume->SetVolumeFilename( filename );
         volume->Load( );
+        volume->GetVolumeName( );
         GetCatalogList( )->BuildVolumeNameStrings( );
         UpdateCatalogVolumeStrings( );
         LoadCatalogTree( );
@@ -158,7 +159,7 @@ namespace Catalog
                 UpdateCatalogVolumeStrings( );
                 GetCatalogVolume( )->EditDetailsDialog( m_catalogTreePanel );
 
-                GetCatalogVolume( )->MakeCatalogImageRepository( );
+                //GetCatalogVolume( )->MakeCatalogImageRepository( );
                 GetCatalogData( )->LoadCatalogTree( );
             }
             return readStatus;
@@ -213,6 +214,11 @@ namespace Catalog
     void CatalogData::UpdateCatalogVolumeStrings( )
     {
         m_catalogTreePanel->SetVolumeListStrings( m_catalogList.GetVolumeNameStrings( ) );
-        m_catalogTreePanel->SetVolumeListSelection( m_catalogList.GetCatalogVolumeNdx( ) );
+        //m_catalogTreePanel->SetCollectionListSelection( );
+        Catalog::CatalogVolume* vol = m_catalogList.GetCatalogVolume( );
+        wxString name = vol->GetVolumeName( );
+        m_catalogTreePanel->SetVolumeListSelection( name );
+        // int currNdx = m_catalogList.GetCatalogVolumeNdx( ) ;
+        // m_catalogTreePanel->SetVolumeListSelection( m_catalogList.GetCatalogVolumeNdx( ) );
     }
 }

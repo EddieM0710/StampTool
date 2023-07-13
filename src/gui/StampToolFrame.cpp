@@ -101,6 +101,7 @@ EVT_MENU( ID_REMOVECATALOG, StampToolFrame::OnRemoveCatalogClick )
 EVT_MENU( ID_NEWDESIGN, StampToolFrame::OnNewDesignClick )
 EVT_MENU( ID_OPENDESIGN, StampToolFrame::OnOpenDesignClick )
 EVT_MENU( ID_GENERATEPDF, StampToolFrame::OnGeneratePDFClick )
+EVT_MENU( ID_OPENPDF, StampToolFrame::OnOpenPDFClick )
 EVT_MENU( ID_REMOVEDESIGN, StampToolFrame::OnRemoveDesignClick )
 END_EVENT_TABLE( )
 
@@ -178,6 +179,7 @@ void StampToolFrame::Init( )
 
 void StampToolFrame::CreateControls( )
 {
+    //   std::cout << "StampToolFrame" << "\n";
 
     StampToolFrame* itemFrame1 = this;
 
@@ -223,6 +225,7 @@ void StampToolFrame::CreateControls( )
     itemMenu4->Append( ID_NEWDESIGN, _( "New Album" ), wxEmptyString, wxITEM_NORMAL );
     itemMenu4->Append( ID_OPENDESIGN, _( "Open Album" ), wxEmptyString, wxITEM_NORMAL );
     itemMenu4->Append( ID_GENERATEPDF, _( "Generate Album PDF" ), wxEmptyString, wxITEM_NORMAL );
+    itemMenu4->Append( ID_OPENPDF, _( "Open PDF" ), wxEmptyString, wxITEM_NORMAL );
     itemMenu4->Append( ID_REMOVEDESIGN, _( "Remove Album" ), wxEmptyString, wxITEM_NORMAL );
     itemMenu4->Append( ID_SAVEDESIGN, _( "Save Album" ), wxEmptyString, wxITEM_NORMAL );
     menuBar->Append( itemMenu4, _( "Album" ) );
@@ -448,6 +451,14 @@ void StampToolFrame::OnGeneratePDFClick( wxCommandEvent& event )
     //GetAlbumPanel( )->OnGeneratePDFClick( );
     event.Skip( );
 }
+
+void StampToolFrame::OnOpenPDFClick( wxCommandEvent& event )
+{
+    OpenPdf( );
+    event.Skip( );
+}
+
+
 void StampToolFrame::OnRemoveDesignClick( wxCommandEvent& event )
 {
     GetCatalogPagePanel( )->RemoveVolume( );
@@ -578,6 +589,37 @@ void StampToolFrame::OpenProject( )
 
 
     GetProject( )->FileOpenProject( filename );
+
+}
+
+
+void StampToolFrame::OpenPdf( )
+{
+
+    wxFileName lastFile( GetSettings( )->GetLastFile( ) );
+    lastFile.SetExt( "pdf" );
+    wxFileDialog openFileDialog(
+        this, _( "Open PDF file" ),
+        lastFile.GetPath( ), lastFile.GetFullName( ),
+        "PDF files (*.pdf)|*.pdf",
+        wxFD_OPEN | wxFD_FILE_MUST_EXIST | wxFD_CHANGE_DIR );
+    if ( openFileDialog.ShowModal( ) == wxID_CANCEL )
+    {
+        return; // the user changed idea...
+    }
+
+    // proceed loading the file chosen by the user;
+    // this can be done with e.g. wxWidgets input streams:
+    wxString filename = openFileDialog.GetPath( );
+
+    wxFileInputStream input_stream( filename );
+    if ( !input_stream.IsOk( ) )
+    {
+        wxLogError( "StampToolFrame::OpenPdf Cannot open file '%s'.", filename );
+        return;
+    }
+
+    GetStampToolPanel( )->OnPDF( filename );
 
 }
 

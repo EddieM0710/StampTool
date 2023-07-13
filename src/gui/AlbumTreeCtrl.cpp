@@ -333,28 +333,30 @@ Utils::StampLink* AlbumTreeCtrl::AppendStamp( wxTreeItemId catTreeID )
         }
 
         Design::Stamp* newStamp = CreateNewStamp( catTreeID );
-        //  newStamp->
-        AddStampTreeItem( currAlbumID, newStamp );
+
         if ( newStamp )
         {
-            // make the image path relative to the album path
-            wxTreeItemId newStampID = newStamp->GetTreeItemId( );
+            // gather info from the catalog item entry and update thenew stamp
             wxString catStr = GetCatalogData( )->GetCatalogVolume( )->GetVolumeFilename( );
             wxFileName catFileName( catStr );
             wxString imageName = GetCatalogTreeCtrl( )->GetImageFullName( catTreeID );
             wxFileName imageFileName( imageName );
-            imageFileName.MakeRelativeTo( catFileName.GetFullPath( ) );
+            wxString imagename = imageFileName.GetFullPath( );
+            newStamp->SetAttrStr( Design::AT_ImageName, imageFileName.GetFullPath( ) );
 
-
-            //update the Stamp with the catalog data
             CatalogTreeCtrl* catTree = GetCatalogTreeCtrl( );
             wxString idText = catTree->GetIdText( catTreeID );
+
+            newStamp->GetNbrFrame( )->SetString( idText );
+            newStamp->GetNameFrame( )->SetString( newStamp->GetAttrStr( Design::AT_Name ) );
+
+
+            AddStampTreeItem( currAlbumID, newStamp );
+            wxTreeItemId newStampID = newStamp->GetTreeItemId( );
+
             SetItemText( newStampID, idText );
             newStamp->SetAttrStr( Design::AT_CatNbr, idText );
 
-            wxString imagepath = GetRelativePathToImageDir( );
-            wxString imagename = imageFileName.GetFullPath( );
-            newStamp->SetAttrStr( Design::AT_ImageName, imageFileName.GetFullPath( ) );
             // stamp item text combines the stampID and its name to form a label
             wxString label = newStamp->GetAttrStr( Design::AT_CatNbr );
             label += " - " + newStamp->GetAttrStr( Design::AT_Name );
@@ -465,6 +467,8 @@ Design::Stamp* AlbumTreeCtrl::CreateNewStamp( wxTreeItemId catTreeID )
         newStamp->SetStampHeight( height );
         wxString width = catTree->GetAttribute( catTreeID, Catalog::XMLDataNames[ Catalog::DT_Width ] );
         newStamp->SetStampWidth( width );
+        //       wxString imageName = catTree->GetAttribute( catTreeID, Catalog::XMLDataNames[ Catalog::DT_i ] );
+        //       newStamp->SetStampImage( );
     }
     else
     {

@@ -351,7 +351,7 @@ namespace Catalog {
                 wxString last = startStr.Mid( 0, startLen - lastLen ) + lastStr;
                 // std::cout << val << " " << startStr << " " << last << "\n";
                 val = prefix + startStr;
-                std::cout << val << " i1 ";
+                //                std::cout << val << " i1 ";
                 count++;
                 Utils::SetAttrStr( child, Catalog::MountDataTypeNames[ MT_ID ], val );
                 int begin;
@@ -388,7 +388,7 @@ namespace Catalog {
                     newNode->AddAttribute( Catalog::MountDataTypeNames[ MT_Year ], year );
                     wxString id;
                     id = id.Format( "%s%d", prefix, i );
-                    std::cout << id << " i2 ";
+                    //                    std::cout << id << " i2 ";
                     count++;
                     newNode->AddAttribute( Catalog::MountDataTypeNames[ MT_ID ], id );
 
@@ -404,7 +404,7 @@ namespace Catalog {
             else
             {
                 wxString id = prefix + val;
-                std::cout << id << " i3 ";
+                //                std::cout << id << " i3 ";
                 count++;
                 Utils::SetAttrStr( child, Catalog::MountDataTypeNames[ MT_ID ], id );
             }
@@ -416,7 +416,7 @@ namespace Catalog {
             }
             if ( count > 15 )
             {
-                std::cout << "\n";
+                //                std::cout << "\n";
                 count = 0;
             }
             //}

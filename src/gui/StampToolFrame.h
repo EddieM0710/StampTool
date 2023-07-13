@@ -77,6 +77,7 @@ enum {
     ID_ADDCOLLECTION,
     ID_CATALOGMENU,
     ID_GENERATEPDF,
+    ID_OPENPDF,
     ID_DESIGNMENU,
     ID_STAMPTOOLPANELFOREIGN = ID_STAMPTOOLPANEL
 };
@@ -199,6 +200,7 @@ public:
     void OnNewDesignClick( wxCommandEvent& event );
     void OnOpenDesignClick( wxCommandEvent& event );
     void OnGeneratePDFClick( wxCommandEvent& event );
+    void OnOpenPDFClick( wxCommandEvent& event );
     void OnRemoveDesignClick( wxCommandEvent& event );
     void OnMergeClick( wxCommandEvent& event );
 
@@ -218,6 +220,7 @@ public:
 
     void NewProject( );
 
+    void OpenPdf( );
     void OpenProject( );
 
     void SaveProject( );

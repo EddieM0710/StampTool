@@ -147,7 +147,7 @@ void SortOrderPanel::Init( )
 
 void SortOrderPanel::CreateControls( )
 {
-    // SortOrderPanel content construction
+    std::cout << "SortOrderPanel" << "\n";
 
     SortOrderPanel* itemDialog1 = this;
 

@@ -98,6 +98,7 @@ bool CatalogPanel::Create( wxWindow* parent, wxWindowID id, const wxPoint& pos, 
 
 void CatalogPanel::CreateControls( )
 {
+    //   std::cout << "CatalogPanel" << "\n";
 
     CatalogPanel* itemPanel1 = this;
 
@@ -327,8 +328,8 @@ void CatalogPanel::OnTogglebuttonClick( wxCommandEvent& event )
 void CatalogPanel::OnVolumeChoiceSelected( wxCommandEvent& event )
 {
     int sel = m_volumeListCtrl->GetSelection( );
-
-    GetCatalogData( )->GetCatalogList( )->SetCatalogVolumeNdx( sel );
+    int ndx = GetCatalogData( )->GetCatalogList( )->FindVolumeNdx( m_volumeListCtrl->GetStringSelection( ) );
+    GetCatalogData( )->GetCatalogList( )->SetCatalogVolumeNdx( ndx );
     // wxString strSel = m_status->GetStringSelection( );
     // if ( m_stamp )
     // { 
@@ -351,7 +352,8 @@ void CatalogPanel::OnCollectionChoiceSelected( wxCommandEvent& event )
     GetCatalogData( )->GetInventoryPanel( )->UpdatePanel( );
     m_catalogTreeCtrl->LoadTree( );
     wxTreeItemId newID = m_catalogTreeCtrl->FindTreeItemID( ele );
-    m_catalogTreeCtrl->SelectItem( newID );
+    if ( newID.IsOk( ) )
+        m_catalogTreeCtrl->SelectItem( newID );
     event.Skip( );
 
 }
@@ -425,6 +427,7 @@ void CatalogPanel::SetCollectionListStrings( )
 {
     m_collectionListCtrl->Clear( );
     m_collectionListCtrl->Append( GetCollectionList( )->GetNameStrings( ) );
+    // m_collectionListCtrl->SetSelection()
 };
 
 void CatalogPanel::SetCollectionListSelection( )

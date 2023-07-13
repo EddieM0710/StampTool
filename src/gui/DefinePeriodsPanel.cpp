@@ -94,6 +94,7 @@ bool DefinePeriodsPanel::Create( wxWindow* parent, wxWindowID id, const wxPoint&
 
 void DefinePeriodsPanel::CreateControls( )
 {
+    //   std::cout << "DefinePeriodsPanel" << "\n";
 
     DefinePeriodsPanel* thisPanel = this;
 

@@ -30,7 +30,7 @@
 #include "catalog/CatalogBase.h"
 #include "catalog/CatalogData.h"
 #include "catalog/CatalogVolume.h"
-#include "utils/ImageRepository.h"
+ //#include "utils/ImageRepository.h"
 #include <wx/string.h>
 
 namespace Catalog {
@@ -232,32 +232,7 @@ namespace Catalog {
          *
          * @return wxString
          */
-        wxString GetLabel( )
-        {
-            wxString label = GetID( );
-            wxString height = GetHeight( );
-            wxString width = GetWidth( );
-            wxString imageName = GetCatalogData( )->GetImageFilename( label );
-            wxString name = GetName( );
-            label.Append( " - " );
-            label.Append( name );
-            bool nameEmpty = name.IsEmpty( );
-            bool imageMissing = !GetCatalogVolume( )->GetImageRepository( )->Exists( imageName );
-            wxString sizeMissing = "";
-            if ( height.IsEmpty( ) || width.IsEmpty( ) || imageMissing || nameEmpty )
-            {
-                sizeMissing = " (";
-                if ( name.IsEmpty( ) ) sizeMissing += "N";
-                if ( imageMissing ) sizeMissing += "I";
-                if ( height.IsEmpty( ) ) sizeMissing += "H";
-                if ( width.IsEmpty( ) ) sizeMissing += "W";
-                sizeMissing += ")";
-            }
-
-            label.Append( sizeMissing );
-
-            return label;
-        };
+        wxString GetLabel( );
 
         wxString GetLink( ); ///< Get the entry Link field
 
@@ -414,15 +389,15 @@ namespace Catalog {
 
         void SetID( wxString val ); ///< Get the entry ID field 
 
-        void SetInventoryStatus( wxString val ) { SetAttr( DT_InventoryStatus, val ); };
+        //        void SetInventoryStatus( wxString val ) { SetAttr( DT_InventoryStatus, val ); };
 
-        ///  @brief Set the Inventory Status Type field to it's string name
-        ///  
-        ///  @param type 
-        void SetInventoryStatusType( InventoryStatusType type )
-        {
-            SetAttr( DT_InventoryStatus, InventoryStatusStrings[ type ] );
-        };
+                ///  @brief Set the Inventory Status Type field to it's string name
+                ///  
+                ///  @param type 
+                // void SetInventoryStatusType( InventoryStatusType type )
+                // {
+                //     SetAttr( DT_InventoryStatus, InventoryStatusStrings[ type ] );
+                // };
 
         void SetIssuedDate( wxString val ); ///< Get the entry IssuedDate field 
 

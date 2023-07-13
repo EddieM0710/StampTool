@@ -63,40 +63,47 @@ namespace Design {
          *
          * @param parent
          */
-        Stamp( wxXmlNode* node ) : LayoutBase( node )
-        {
-            SetNodeType( AT_Stamp );
-            SetObjectName( AlbumBaseNames[ GetNodeType( ) ] );
-            SetShowNbr( true );
-            SetShowTitle( true );
-            wxString height = GetAttrStr( Design::AT_Height );
-            SetStampHeight( height );
-            wxString width = GetAttrStr( Design::AT_Width );
-            SetStampWidth( width );
-            m_nameFrame = new LabelFrame( Design::AT_NameFontType );
-            m_nameFrame->SetString( GetAttrStr( AT_Name ) );
-            m_nbrFrame = new LabelFrame( Design::AT_NbrFontType );
-            m_nbrFrame->SetString( GetAttrStr( AT_CatNbr ) );
-            //  CalcFrame( );
+        Stamp( wxXmlNode* node );
+        // {
+        //     SetNodeType( AT_Stamp );
+        //     SetObjectName( AlbumBaseNames[ GetNodeType( ) ] );
+        //     SetShowNbr( true );
+        //     SetShowTitle( true );
+        //     wxString height = GetAttrStr( Design::AT_Height );
+        //     SetStampHeight( height );
+        //     wxString width = GetAttrStr( Design::AT_Width );
+        //     SetStampWidth( width );
 
-        };
+        //     // wxString str = GetAttrStr( AT_SelvageHeight );
+        //     // if ( str.IsEmpty( ) )
+        //     // {
+        //     //     SetSelvageHeight( GetAlbum( )->GetDefaultVal( AT_SelvageHeight ) );
+        //     // }
+
+        //     m_nameFrame = new LabelFrame( Design::AT_NameFontType );
+        //     m_nameFrame->SetString( GetAttrStr( AT_Name ) );
+        //     m_nbrFrame = new LabelFrame( Design::AT_NbrFontType );
+        //     m_nbrFrame->SetString( GetAttrStr( AT_CatNbr ) );
+        //     //  CalcFrame( );
+
+        // };
 
         ///  @brief Construct a new Stamp object
         ///  
-        Stamp( ) : LayoutBase( ( wxXmlNode* ) 0 )
-        {
-            SetNodeType( AT_Stamp );
-            SetObjectName( AlbumBaseNames[ AT_Stamp ] );
-            SetShowNbr( true );
-            SetShowTitle( true );
-            SetStampHeight( "10.0" );
-            SetStampWidth( "10.0" );
-            m_nameFrame = new LabelFrame( Design::AT_NameFontType );
-            m_nameFrame->SetString( "name" );
-            m_nbrFrame = new LabelFrame( Design::AT_NbrFontType );
-            m_nbrFrame->SetString( "Nbr" );
-            //     CalcFrame( );
-        };
+        Stamp( );
+        // {
+        //     SetNodeType( AT_Stamp );
+        //     SetObjectName( AlbumBaseNames[ AT_Stamp ] );
+        //     SetShowNbr( true );
+        //     SetShowTitle( true );
+        //     SetStampHeight( "10.0" );
+        //     SetStampWidth( "10.0" );
+        //     m_nameFrame = new LabelFrame( Design::AT_NameFontType );
+        //     m_nameFrame->SetString( "name" );
+        //     m_nbrFrame = new LabelFrame( Design::AT_NbrFontType );
+        //     m_nbrFrame->SetString( "Nbr" );
+        //     //     CalcFrame( );
+        // };
 
         /**
          * @brief Destroy the Stamp object
@@ -128,6 +135,8 @@ namespace Design {
         ///  @param x 
         ///  @param y 
         void DrawPDF( wxPdfDocument* doc, double x, double y );
+
+        wxImage GetImage( );
 
         ///  @brief 
         ///  
@@ -172,6 +181,8 @@ namespace Design {
             }
         };
 
+        void InitParameters( );
+
         ///  @brief 
         ///  
         ///  @param node 
@@ -207,6 +218,7 @@ namespace Design {
         ///  
         ///  @return wxString 
         wxString GetStampImageFilename( );
+        void SetStampImageFilename( wxString filename );
 
         ///  @brief Get the Stamp Width object
         ///  
@@ -267,6 +279,90 @@ namespace Design {
         ///  @param str 
         void SetStampWidth( wxString str );
 
+        ///  @brief Set the Stamp Height object
+        ///  
+        ///  @param val 
+        void SetSelvageHeight( double val );
+
+        ///  @brief Set the Stamp Height object
+        ///  
+        ///  @param val 
+        void SetSelvageHeight( wxString val );
+
+        ///  @brief Set the Stamp Width object
+        ///  
+        ///  @param val 
+        void SetSelvageWidth( double val );
+
+
+        ///  @brief Set the Stamp Width object
+        ///  
+        ///  @param val 
+        void SetSelvageWidth( wxString val );
+
+        ///  @brief Set the Stamp Height object
+        ///  
+        ///  @param val 
+        void SetMountAllowanceHeight( double val );
+
+        ///  @brief Set the Stamp Height object
+        ///  
+        ///  @param val 
+        void SetMountAllowanceHeight( wxString val );
+
+        ///  @brief Set the Stamp Width object
+        ///  
+        ///  @param val 
+        void SetMountAllowanceWidth( double val );
+
+
+        ///  @brief Set the Stamp Width object
+        ///  
+        ///  @param val 
+        void SetMountAllowanceWidth( wxString val );
+
+        ///  @brief Set the Stamp Height object
+        ///  
+        ///  @param val 
+        double GetSelvageHeight( );
+
+        ///  @brief Set the Stamp Height object
+        ///  
+        ///  @param val 
+        wxString GetSelvageHeightStr( );
+
+        ///  @brief Set the Stamp Width object
+        ///  
+        ///  @param val 
+        double GetSelvageWidth( );
+
+
+        ///  @brief Set the Stamp Width object
+        ///  
+        ///  @param val 
+        wxString GetSelvageWidthStr( );
+
+        ///  @brief Set the Stamp Height object
+        ///  
+        ///  @param val 
+        double GetMountAllowanceHeight( );
+
+        ///  @brief Set the Stamp Height object
+        ///  
+        ///  @param val 
+        wxString GetMountAllowanceHeightStr( );
+
+        ///  @brief Set the Stamp Width object
+        ///  
+        ///  @param val 
+        double GetMountAllowanceWidth( );
+
+
+        ///  @brief Set the Stamp Width object
+        ///  
+        ///  @param val 
+        wxString GetMountAllowanceWidthStr( );
+
         /**
         * @brief UpdateMinimumSize
         * Calculates the minimum Height and width of the object. It drills down to
@@ -290,23 +386,39 @@ namespace Design {
         ///  @return NodeStatus 
         NodeStatus ValidateNode( );
 
+        bool IsDefaultVal( AlbumAttrType type );
+        wxImage  RescaleImage( );
+        wxBitmap BlitResize( wxBitmap& bmpIn, double scale, bool antialiasing );
+
     private:
 
         // The LayoutBase for this object contains the frame parameters for the stamp Album object. 
-        // It is 10% Larger than the actual Stamp.
+
+        // These parameters are all in MM.
+
+        //The m_borderFrame has the parameters of outline for the stamp/mount in the album. 
+        // It is the actual stamp + selvage + mount allowance.
+        Frame m_borderFrame;
+
         // The m_stampFrame has the parameters of the actual Stamp.
+        Frame m_stampFrame;
+
         // The m_stampImageFrame has the parameters for the printed album image. 
         // It is 10% smaller than the actual stamp.
-        // These parameters are all in MM.
-        Frame m_stampFrame;
         Frame m_stampImageFrame;
+
+        double m_selvageHeight;
+        double m_selvageWidth;
+        double m_mountAllowanceHeight;
+        double m_mountAllowanceWidth;
 
         //        NodeStatus m_error[ AT_NbrStampErrorTypes ];
         bool m_showCatNbr;
-        wxSize m_idTextExtent;
-        wxSize m_titleTextExtent;
+        //wxSize m_idTextExtent;
+        //wxSize m_titleTextExtent;
         bool m_showTitle;
         wxString m_imageFilename;
+        wxImage m_image;
         DebugString m_debugString;
         LabelFrame* m_nameFrame;
         LabelFrame* m_nbrFrame;

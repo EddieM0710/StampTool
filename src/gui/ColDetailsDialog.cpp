@@ -97,6 +97,7 @@ bool ColDetailsDialog::Create( wxWindow* parent, wxWindowID id, const wxString& 
 
 void ColDetailsDialog::CreateControls( )
 {
+    //   std::cout << "ColDetailsDialog" << "\n";
 
     ColDetailsDialog* theDialog = this;
 
@@ -109,7 +110,7 @@ void ColDetailsDialog::CreateControls( )
     wxBoxSizer* nameHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
     theDialogVerticalSizer->Add( nameHorizontalSizer, 0, wxGROW | wxALL, 0 );
 
-    m_name = new LabeledTextBox( theDialog, ID_NAMELABELEDTEXTBOX, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
+    m_name = new LabeledTextBox( theDialog, ID_NAMELABELEDTEXTBOX, wxDefaultPosition, wxDefaultSize, wxNO_BORDER | wxTAB_TRAVERSAL );
     m_name->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
     nameHorizontalSizer->Add( m_name, 1, wxGROW | wxALL, 5 );
 
@@ -118,7 +119,7 @@ void ColDetailsDialog::CreateControls( )
 
     wxNotebook* notebook = new wxNotebook( theDialog, ID_NOTEBOOK, wxDefaultPosition, wxDefaultSize, wxBK_DEFAULT );
 
-    wxPanel* notebookDetailsPanel = new wxPanel( notebook, ID_NOTEBOOKDETAILSPANEL, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
+    wxPanel* notebookDetailsPanel = new wxPanel( notebook, ID_NOTEBOOKDETAILSPANEL, wxDefaultPosition, wxDefaultSize, wxNO_BORDER | wxTAB_TRAVERSAL );
     notebookDetailsPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
 
     wxBoxSizer* detailsVerticalSizer = new wxBoxSizer( wxVERTICAL );

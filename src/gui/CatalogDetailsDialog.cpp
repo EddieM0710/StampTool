@@ -117,6 +117,7 @@ bool CatalogDetailsDialog::Create( wxWindow* parent, wxWindowID id, const wxStri
 
 void CatalogDetailsDialog::CreateControls( )
 {
+    //   std::cout << "CatalogDetailsDialog" << "\n";
 
     CatalogDetailsDialog* theDialog = this;
 
@@ -138,7 +139,7 @@ void CatalogDetailsDialog::CreateControls( )
     wxBoxSizer* theCatPathHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
     theDialogVerticalSizer->Add( theCatPathHorizontalSizer, 1, wxGROW | wxALL, 0 );
 
-    m_catPath = new LabeledTextBox( theDialog, ID_IMAGEPATHTEXTBOX, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
+    m_catPath = new LabeledTextBox( theDialog, ID_IMAGEPATHTEXTBOX, wxDefaultPosition, wxDefaultSize, wxNO_BORDER | wxTAB_TRAVERSAL );
     m_catPath->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
     theCatPathHorizontalSizer->Add( m_catPath, 2, wxGROW | wxALL, 5 );
 

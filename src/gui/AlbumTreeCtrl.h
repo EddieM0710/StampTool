@@ -315,7 +315,7 @@ public:
     ///  
     ///  @param catTreeID 
     ///  @return wxString 
-    wxString GetImageFullPath( wxTreeItemId catTreeID );
+    //wxString GetImageFullPath( wxTreeItemId catTreeID );
 
     ///  @brief Get the Item Desc object
     ///  
@@ -353,7 +353,7 @@ public:
     ///  @return Design::AlbumBaseType 
     Design::AlbumBaseType GetItemType( wxTreeItemId albumID );
 
-    ///  @brief Get the Page object
+    ///  @brief Get the page object that contains this item Treid
     ///  
     ///  @param id 
     ///  @return wxTreeItemId 
@@ -528,7 +528,7 @@ public:
     ///  @param node 
     void ShowRowDetails( wxTreeItemId id, Design::AlbumBase* node );
 
-    ///  @brief 
+    ///  @brief Update the layout of the page that contins this item tree id
     ///  
     ///  @param id 
     void UpdateItemPageLayout( wxTreeItemId id );

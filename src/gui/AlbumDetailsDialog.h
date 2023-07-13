@@ -61,12 +61,15 @@ namespace Design { class Album; };
 class AlbumDetailsDialog : public wxDialog
 {
     DECLARE_DYNAMIC_CLASS( AlbumDetailsDialog )
-        DECLARE_EVENT_TABLE( )
+    DECLARE_EVENT_TABLE( )
 
 public:
 
     enum AlbumDetailDialogDefs {
         ID_NAMELABELEDTEXTBOX = ID_ALBUMDETAILSDIALOG + 1,
+        ID_OVERSIZECHECKBOX,
+        ID_PAPERHEIGHTLABELEDTEXTBOX123,
+        ID_PAPERWIDTHLABELEDTEXTBOX123,
         ID_HEIGHTLABELEDTEXTBOX123,
         ID_WIDTHLABELEDTEXTBOX123,
         ID_TOPMARGINLABELEDTEXTBOX,
@@ -74,6 +77,7 @@ public:
         ID_RIGHTMARGINLABELEDTEXTBOX,
         ID_LEFTMARGINLABELEDTEXTBOX,
         ID_BORDERSIZELABELEDTEXTBOX,
+        ID_BORDERFILENAMELABELEDTEXTBOX,
         ID_REFRESHBUTTON123,
         ID_VALIDATEBUTTON123,
         ID_LISTCTRL123,
@@ -142,6 +146,8 @@ public:
     ///  @return wxString 
     wxString GetBorderSize( );
 
+    wxString GetBorderFilename( );
+
     ///  @brief Get the Bottom Margin object
     ///  
     ///  @return wxString 
@@ -193,6 +199,10 @@ public:
     ///  @return wxString 
     wxString GetPageWidth( );
 
+    wxString GetPaperHeight( );
+
+    wxString GetPaperWidth( );
+
     ///  @brief Get the Right Margin object
     ///  
     ///  @return wxString 
@@ -211,6 +221,8 @@ public:
     bool GetShowStampTitle( );
 
     wxColour GetTextColor( );
+
+    bool GetOverSizePaper( );
 
     ///  @brief Get the Text Font object
     ///  
@@ -265,6 +277,8 @@ public:
     ///  @return true 
     ///  @return false 
     bool IsPageHeightModified( );
+    bool IsPaperHeightModified( );
+    bool IsPaperWidthModified( );
 
     ///  @brief 
     ///  
@@ -304,6 +318,8 @@ public:
     ///  
     ///  @param size 
     void SetBorderSize( wxString size );
+
+    void SetBorderFilename( wxString filename );
 
     ///  @brief Set the Border Size Modified object
     ///  
@@ -373,10 +389,16 @@ public:
     ///  @param state 
     void SetPageHeightModified( bool state );
 
+    void SetPaperHeightModified( bool state );
+
+    void SetPaperWidthModified( bool state );
+
     ///  @brief Set the Page Width object
     ///  
     ///  @param width 
     void SetPageWidth( wxString width );
+    void SetPaperWidth( wxString width );
+    void SetPaperHeight( wxString height );
 
     ///  @brief Set the Page Width Modified object
     ///  
@@ -397,6 +419,7 @@ public:
     ///  
     ///  @param state 
     void SetShowNbr( bool state );
+    void SetOverSizePaper( bool state );
 
     ///  @brief Set the Show Stamp Title object
     ///  
@@ -469,6 +492,8 @@ public:
 
 private:
     LabeledTextBox* m_name;
+    LabeledTextBox* m_paperHeight;
+    LabeledTextBox* m_paperWidth;
     LabeledTextBox* m_height;
     LabeledTextBox* m_width;
     LabeledTextBox* m_topMargin;
@@ -476,7 +501,8 @@ private:
     LabeledTextBox* m_rightMargin;
     LabeledTextBox* m_leftMargin;
     LabeledTextBox* m_borderSize;
-
+    LabeledTextBox* m_borderFilename;
+    wxCheckBox* m_overSizeCheckbox;
     wxCheckBox* m_nbrCheckbox;
     wxCheckBox* m_stampTitleCheckbox;
     wxCheckBox* m_grayScaleImagesCheckbox;
@@ -490,7 +516,8 @@ private:
     wxColourPickerCtrl* m_textColorPicker;
 
     wxButton* m_validate;
-    wxListCtrl* m_statusList;
+    wxListBox* m_statusList;
+
     AlbumDetailsDialog* theDialog;
     Design::Album* m_album;
 };

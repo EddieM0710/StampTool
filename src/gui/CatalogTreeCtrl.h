@@ -55,7 +55,7 @@ public:
         m_type = type;
         m_desc = desc;
         m_element = ele;
-        m_imageFullPath = 0;
+        m_imageFullPath = "";
         m_ok = 12345;
     };
 
@@ -64,7 +64,6 @@ public:
     ~CatalogTreeItemData( )
     {
         m_ok = 0;
-        if ( m_imageFullPath ) delete m_imageFullPath;
     };
 
     ///  @brief 
@@ -78,7 +77,7 @@ public:
 
         if ( m_type != type2 )
         {
-            return ( int ) m_type - ( int ) type2;
+            return 0;//( int ) m_type - ( int ) type2;
         }
         else
         {
@@ -100,7 +99,7 @@ public:
                 // wxString series2 = entry2.GetSeries( );
                 return CompareID( id1, id2 );
             }
-            return -1;
+            return 0;
         }
     };
 
@@ -131,7 +130,7 @@ public:
     ///  @brief Get the Image Full Name object
     ///  
     ///  @return wxString* 
-    wxString* GetImageFullName( ) { return m_imageFullPath; };
+    wxString GetImageFullName( ) { return m_imageFullPath; };
 
     ///  @brief Get the Node Element object
     ///  
@@ -166,7 +165,7 @@ public:
     ///  @brief Set the Image Full Name object
     ///  
     ///  @param str 
-    void SetImageFullName( wxString* str ) { m_imageFullPath = str; };
+    void SetImageFullName( wxString str ) { m_imageFullPath = str; };
 
     ///  @brief Set the Checked object
     ///  
@@ -183,7 +182,7 @@ private:
     Catalog::CatalogBaseType m_type;
     Utils::StampLink* m_stampLink;
     bool m_isChecked;
-    wxString* m_imageFullPath;
+    wxString m_imageFullPath;
 };
 
 /**
@@ -445,7 +444,7 @@ public:
     ///  
     ///  @param id 
     ///  @return wxString* 
-    wxString* GetItemImageFullName( wxTreeItemId id );
+    wxString GetItemImageFullName( wxTreeItemId id );
 
     ///  @brief Get the Item Node object
     ///  
@@ -605,7 +604,7 @@ public:
 
     ///  @brief 
     ///  
-    void SetItemImageFullName( wxTreeItemId id, wxString* str );
+    void SetItemImageFullName( wxTreeItemId id, wxString str );
 
     ///  @brief Set the Item Stamp Link object
     ///  

@@ -72,5 +72,6 @@
     "files.watcherExclude": {
         "**/doc/**": true
     },
-    "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools"
+    "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
+    "openhab.useRestApi": false
 }

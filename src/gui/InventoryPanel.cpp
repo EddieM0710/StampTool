@@ -105,6 +105,7 @@ void InventoryPanel::Init( )
 
 void InventoryPanel::CreateControls( )
 {
+    //    std::cout << "InventoryPanel" << "\n";
 
     InventoryPanel* itemPanel1 = this;
 
@@ -241,7 +242,7 @@ void InventoryPanel::UpdatePanel( )
         while ( ele && ( ele->GetParent( ) == parent ) )
         {
             wxString str = ele->GetName( );
-            std::cout << str << " " << ele->GetLineNumber( );
+            //            std::cout << str << " " << ele->GetLineNumber( );
             if ( !ele->GetName( ).Cmp( "Specimen" ) )
             {
                 wxString specimenCollection = ele->GetAttribute( Catalog::ItemDataNames[ Catalog::IDT_Collection ], "" );
@@ -256,7 +257,7 @@ void InventoryPanel::UpdatePanel( )
                     row++;
                 }
             }
-            std::cout << "\n";
+            //            std::cout << "\n";
 
             ele = ele->GetNext( );
         }
@@ -418,6 +419,6 @@ void InventoryPanel::OnRowBeginMove( wxGridEvent& ev )
     int row = ev.GetRow( );
     int cursorRow = m_grid->GetGridCursorRow( );
 
-    std::cout << "  row " << row << "  cursorRow " << cursorRow << "   sel " << sel << "\n";
+    //    std::cout << "  row " << row << "  cursorRow " << cursorRow << "   sel " << sel << "\n";
     ev.Skip( );
 }

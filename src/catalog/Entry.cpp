@@ -36,6 +36,7 @@
  //#include "catalog/CatalogCode.h"
 #include "Defs.h"
 #include "Settings.h"
+#include "utils/Project.h"
 #include "catalog/Entry.h"
 #include <wx/datetime.h>
 #include <wx/strconv.h>
@@ -291,7 +292,7 @@ namespace Catalog {
                 wxString specimenCollection = child->GetAttribute( Catalog::ItemDataNames[ Catalog::IDT_Collection ], "" );
                 if ( !currCollection.Cmp( specimenCollection ) )
                 {
-                    wxString status = child->GetAttribute( Catalog::ItemDataNames[ IDT_InventoryStatus ], "" );
+                    wxString status = child->GetAttribute( Catalog::ItemDataNames[ IDT_InventoryStatus ], "Exclude" );
                     for ( int i = ST_None; i < ST_NbrInventoryStatusTypes; i++ )
                     {
                         wxString str = InventoryStatusStrings[ i ];
@@ -308,7 +309,33 @@ namespace Catalog {
     };
 
     wxString Entry::GetIssuedDate( ) { return GetAttr( DT_Issued_on ); };
+    wxString Entry::GetLabel( )
+    {
+        wxString label = GetID( );
+        wxString height = GetHeight( );
+        wxString width = GetWidth( );
+        wxString imageName = GetCatalogData( )->GetImageFilename( label );
+        wxString name = GetName( );
+        label.Append( " - " );
+        label.Append( name );
+        bool nameEmpty = name.IsEmpty( );
+        wxString str = GetProject( )->GetImageFullPath( imageName );
+        bool imageMissing = !GetProject( )->ImageExists( str );
+        wxString sizeMissing = "";
+        if ( height.IsEmpty( ) || width.IsEmpty( ) || imageMissing || nameEmpty )
+        {
+            sizeMissing = " (";
+            if ( name.IsEmpty( ) ) sizeMissing += "N";
+            if ( imageMissing ) sizeMissing += "I";
+            if ( height.IsEmpty( ) ) sizeMissing += "H";
+            if ( width.IsEmpty( ) ) sizeMissing += "W";
+            sizeMissing += ")";
+        }
 
+        label.Append( sizeMissing );
+
+        return label;
+    };
     wxString Entry::GetLink( ) { return GetAttr( DT_Link ); };
 
     wxString Entry::GetName( ) { return GetAttr( DT_Name ); };

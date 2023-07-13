@@ -82,11 +82,37 @@ namespace Utils {
     {
         return m_imagePath;
     };
+
+    wxString Project::GetImageFullPath( wxString imageName )
+    {
+        wxString projectPath = GetImagePath( );
+        projectPath += "/" + imageName;
+        wxFileName file( projectPath );
+        wxString str = file.GetFullPath( );
+        file.MakeAbsolute( );
+        str = file.GetFullPath( );
+        return str;
+    }
+
+    bool Project::ImageExists( wxString imageName )
+    {
+        wxImage image;
+
+        if ( wxFileExists( imageName ) )
+        {
+            if ( image.CanRead( imageName ) )
+            {
+                return true;
+            }
+        }
+        return false;
+    }
     void Project::SetImagePath( wxString imagePath )
     {
         m_imagePath = imagePath;
         m_dirty = true;
     };
+
 
     wxString Project::GetDesignFilename( )
     {
@@ -451,6 +477,7 @@ namespace Utils {
 
     void Project::FileSaveProject( )
     {
+
         GetSettings( )->Save( );
         Save( );
     }

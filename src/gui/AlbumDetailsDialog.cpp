@@ -102,6 +102,7 @@ bool AlbumDetailsDialog::Create( wxWindow* parent, wxWindowID id, const wxString
 
 void AlbumDetailsDialog::CreateControls( )
 {
+    //   std::cout << "AlbumDetailsDialog" << "\n";
     theDialog = this;
 
     wxBoxSizer* theDialogVerticalSizer = new wxBoxSizer( wxVERTICAL );
@@ -114,7 +115,7 @@ void AlbumDetailsDialog::CreateControls( )
     wxBoxSizer* itemBoxSizer6 = new wxBoxSizer( wxHORIZONTAL );
     theDialogVerticalSizer->Add( itemBoxSizer6, 0, wxGROW | wxALL, 0 );
 
-    m_name = new LabeledTextBox( theDialog, ID_NAMELABELEDTEXTBOX, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
+    m_name = new LabeledTextBox( theDialog, ID_NAMELABELEDTEXTBOX, wxDefaultPosition, wxDefaultSize, wxNO_BORDER | wxTAB_TRAVERSAL );
     m_name->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
     itemBoxSizer6->Add( m_name, 1, wxGROW | wxALL, 5 );
 
@@ -154,43 +155,66 @@ void AlbumDetailsDialog::CreateControls( )
     m_textFontPicker = textFontPickerHelper->GetFontPickerCtrl( );
     m_textColorPicker = textFontPickerHelper->GetColourPickerCtrl( );
 
+    wxBoxSizer* paperSizeBoxSizer = new wxBoxSizer( wxHORIZONTAL );
+    theDialogVerticalSizer->Add( paperSizeBoxSizer, 0, wxGROW | wxALL, 0 );
+
+    m_overSizeCheckbox = new wxCheckBox( theDialog, ID_OVERSIZECHECKBOX, _( "Oversize Paper" ), wxDefaultPosition, wxDefaultSize, 0 );
+    m_overSizeCheckbox->SetValue( true );
+    paperSizeBoxSizer->Add( m_overSizeCheckbox, 0, wxALIGN_LEFT | wxALL, 5 );
+
+    m_paperHeight = new LabeledTextBox( theDialog, ID_PAPERHEIGHTLABELEDTEXTBOX123, wxDefaultPosition, wxDefaultSize, wxNO_BORDER | wxTAB_TRAVERSAL );
+    m_paperHeight->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
+    paperSizeBoxSizer->Add( m_paperHeight, 1, wxGROW | wxALL, 5 );
+
+    m_paperWidth = new LabeledTextBox( theDialog, ID_PAPERWIDTHLABELEDTEXTBOX123, wxDefaultPosition, wxDefaultSize, wxNO_BORDER | wxTAB_TRAVERSAL );
+    m_paperWidth->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
+    paperSizeBoxSizer->Add( m_paperWidth, 1, wxGROW | wxALL, 5 );
+
     wxBoxSizer* itemBoxSizer4 = new wxBoxSizer( wxHORIZONTAL );
     theDialogVerticalSizer->Add( itemBoxSizer4, 0, wxGROW | wxALL, 0 );
 
-    m_height = new LabeledTextBox( theDialog, ID_HEIGHTLABELEDTEXTBOX123, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
+    m_height = new LabeledTextBox( theDialog, ID_HEIGHTLABELEDTEXTBOX123, wxDefaultPosition, wxDefaultSize, wxNO_BORDER | wxTAB_TRAVERSAL );
     m_height->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
     itemBoxSizer4->Add( m_height, 1, wxGROW | wxALL, 5 );
 
-    m_width = new LabeledTextBox( theDialog, ID_WIDTHLABELEDTEXTBOX123, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
+    m_width = new LabeledTextBox( theDialog, ID_WIDTHLABELEDTEXTBOX123, wxDefaultPosition, wxDefaultSize, wxNO_BORDER | wxTAB_TRAVERSAL );
     m_width->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
     itemBoxSizer4->Add( m_width, 1, wxGROW | wxALL, 5 );
 
     wxBoxSizer* itemBoxSizer7 = new wxBoxSizer( wxHORIZONTAL );
     theDialogVerticalSizer->Add( itemBoxSizer7, 0, wxGROW | wxALL, 0 );
 
-    m_topMargin = new LabeledTextBox( theDialog, ID_TOPMARGINLABELEDTEXTBOX, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
+    m_topMargin = new LabeledTextBox( theDialog, ID_TOPMARGINLABELEDTEXTBOX, wxDefaultPosition, wxDefaultSize, wxNO_BORDER | wxTAB_TRAVERSAL );
     m_topMargin->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
     itemBoxSizer7->Add( m_topMargin, 1, wxGROW | wxALL, 5 );
 
-    m_bottomMargin = new LabeledTextBox( theDialog, ID_BOTTOMMARGINLABELEDTEXTBOX, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
+    m_bottomMargin = new LabeledTextBox( theDialog, ID_BOTTOMMARGINLABELEDTEXTBOX, wxDefaultPosition, wxDefaultSize, wxNO_BORDER | wxTAB_TRAVERSAL );
     m_bottomMargin->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
     itemBoxSizer7->Add( m_bottomMargin, 1, wxGROW | wxALL, 5 );
 
     wxBoxSizer* itemBoxSizer10 = new wxBoxSizer( wxHORIZONTAL );
     theDialogVerticalSizer->Add( itemBoxSizer10, 0, wxGROW | wxALL, 0 );
 
-    m_rightMargin = new LabeledTextBox( theDialog, ID_RIGHTMARGINLABELEDTEXTBOX, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
+    m_rightMargin = new LabeledTextBox( theDialog, ID_RIGHTMARGINLABELEDTEXTBOX, wxDefaultPosition, wxDefaultSize, wxNO_BORDER | wxTAB_TRAVERSAL );
     m_rightMargin->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
     itemBoxSizer10->Add( m_rightMargin, 1, wxGROW | wxALL, 5 );
 
-    m_leftMargin = new LabeledTextBox( theDialog, ID_LEFTMARGINLABELEDTEXTBOX, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
+    m_leftMargin = new LabeledTextBox( theDialog, ID_LEFTMARGINLABELEDTEXTBOX, wxDefaultPosition, wxDefaultSize, wxNO_BORDER | wxTAB_TRAVERSAL );
     m_leftMargin->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
     itemBoxSizer10->Add( m_leftMargin, 1, wxGROW | wxALL, 5 );
+
+    wxBoxSizer* borderBoxSizer = new wxBoxSizer( wxHORIZONTAL );
+    theDialogVerticalSizer->Add( borderBoxSizer, 0, wxGROW | wxALL, 0 );
+
+    m_borderFilename = new LabeledTextBox( theDialog, ID_BORDERFILENAMELABELEDTEXTBOX, wxDefaultPosition, wxDefaultSize, wxNO_BORDER | wxTAB_TRAVERSAL );
+    m_borderFilename->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
+    borderBoxSizer->Add( m_borderFilename, 1, wxGROW | wxALL, 5 );
+
 
     wxBoxSizer* itemBoxSizer3 = new wxBoxSizer( wxHORIZONTAL );
     theDialogVerticalSizer->Add( itemBoxSizer3, 0, wxGROW | wxALL, 0 );
 
-    m_borderSize = new LabeledTextBox( theDialog, ID_BORDERSIZELABELEDTEXTBOX, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
+    m_borderSize = new LabeledTextBox( theDialog, ID_BORDERSIZELABELEDTEXTBOX, wxDefaultPosition, wxDefaultSize, wxNO_BORDER | wxTAB_TRAVERSAL );
     m_borderSize->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
     itemBoxSizer3->Add( m_borderSize, 1, wxGROW | wxALL, 5 );
 
@@ -223,7 +247,9 @@ void AlbumDetailsDialog::CreateControls( )
     wxBoxSizer* itemBoxSizer17 = new wxBoxSizer( wxHORIZONTAL );
     theDialogVerticalSizer->Add( itemBoxSizer17, 2, wxGROW | wxALL, 5 );
 
-    m_statusList = new wxListCtrl( theDialog, ID_LISTCTRL123, wxDefaultPosition, wxSize( 100, 100 ), wxLC_REPORT | wxLC_EDIT_LABELS | wxSIMPLE_BORDER );
+    wxArrayString m_statusListStrings;
+    m_statusList = new wxListBox( theDialog, ID_LISTCTRL123, wxDefaultPosition, wxDefaultSize, m_statusListStrings, wxLB_SINGLE );
+
     itemBoxSizer17->Add( m_statusList, 2, wxGROW | wxALL, 5 );
 
     //>>dialog Ctrl buttons
@@ -237,8 +263,12 @@ void AlbumDetailsDialog::CreateControls( )
     dialogCtrlButtonSizer->Add( okButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
     //>>dialog Ctrl buttons  
 
-
+    m_name->SetToolTip( "Name of Album" );
+    m_paperHeight->SetToolTip( "Height of paper in printer (in mm)" );
     m_name->SetLabel( "Name" );
+    m_paperHeight->SetLabel( "Paper Height" );
+    m_paperWidth->SetLabel( "Paper Width" );
+    m_borderFilename->SetLabel( "Border Filename" );
     m_height->SetLabel( "Page Height" );
     m_width->SetLabel( "Page Width" );
     m_topMargin->SetLabel( "Top Margin" );
@@ -254,6 +284,14 @@ void AlbumDetailsDialog::CreateControls( )
 //--------------
 
 wxString AlbumDetailsDialog::GetName( ) { return m_name->GetValue( ); }
+
+//--------------
+
+wxString AlbumDetailsDialog::GetPaperHeight( ) { return m_paperHeight->GetValue( ); }
+
+//--------------
+
+wxString AlbumDetailsDialog::GetPaperWidth( ) { return m_paperWidth->GetValue( ); }
 
 //--------------
 
@@ -282,6 +320,10 @@ wxString AlbumDetailsDialog::GetRightMargin( ) { return m_rightMargin->GetValue(
 //--------------
 
 wxString AlbumDetailsDialog::GetBorderSize( ) { return m_borderSize->GetValue( ); }
+
+// --------------
+
+wxString AlbumDetailsDialog::GetBorderFilename( ) { return m_borderFilename->GetValue( ); }
 
 //--------------
 
@@ -318,6 +360,7 @@ wxColour AlbumDetailsDialog::GetTitleColor( ) { return m_titleColorPicker->GetCo
 //--------------
 
 bool AlbumDetailsDialog::GetShowNbr( ) { return m_nbrCheckbox->IsChecked( ); }
+bool AlbumDetailsDialog::GetOverSizePaper( ) { return m_overSizeCheckbox->IsChecked( ); }
 
 //--------------
 
@@ -344,6 +387,13 @@ void AlbumDetailsDialog::Init( )
 
 bool AlbumDetailsDialog::IsNameModified( ) { return m_name->IsModified( ); }
 
+//--------------
+
+bool AlbumDetailsDialog::IsPaperHeightModified( ) { return m_paperHeight->IsModified( ); }
+
+//--------------
+
+bool AlbumDetailsDialog::IsPaperWidthModified( ) { return m_paperWidth->IsModified( ); }
 //--------------
 
 bool AlbumDetailsDialog::IsPageHeightModified( ) { return m_height->IsModified( ); }
@@ -396,6 +446,21 @@ void AlbumDetailsDialog::SetPageWidth( wxString width )
     m_width->SetValue( width );
     m_width->SetModified( false );
 }
+//--------------
+
+void AlbumDetailsDialog::SetPaperHeight( wxString height )
+{
+    m_paperHeight->SetValue( height );
+    m_paperHeight->SetModified( false );
+}
+
+//--------------
+
+void AlbumDetailsDialog::SetPaperWidth( wxString width )
+{
+    m_paperWidth->SetValue( width );
+    m_paperWidth->SetModified( false );
+}
 
 //--------------
 
@@ -437,6 +502,12 @@ void AlbumDetailsDialog::SetBorderSize( wxString borderSize )
     m_borderSize->SetModified( false );
 }
 
+void AlbumDetailsDialog::SetBorderFilename( wxString filename )
+{
+    m_borderFilename->SetValue( filename );
+    m_borderFilename->SetModified( false );
+}
+
 //--------------
 
 void AlbumDetailsDialog::SetupDialog( wxTreeItemId treeID )
@@ -447,22 +518,25 @@ void AlbumDetailsDialog::SetupDialog( wxTreeItemId treeID )
         m_album = ( Design::Album* ) data->GetNodeElement( );
         UpdateControls( );
 
-        //         wxArrayString* errors = m_album->GetErrorArray( );
-        //         positionTextCtrl->AlwaysShowScrollbars( );
-        // //        m_stamp->DumpStamp( positionTextCtrl );
-        //         positionTextCtrl->ShowPosition( 0 );
-
-        //         if ( !errors->IsEmpty( ) )
-        //         {
-        //             m_statusList->InsertItems( *errors, 0 );
-        //         }
-        //         positionTextCtrl->ShowPosition( 0 );
+        wxArrayString* errors = m_album->GetErrorArray( );
+        if ( !errors->IsEmpty( ) )
+        {
+            m_statusList->InsertItems( *errors, 0 );
+        }
     }
 };
 
 //--------------
 
 void AlbumDetailsDialog::SetNameModified( bool state ) { m_name->SetModified( state ); }
+
+//--------------
+
+void AlbumDetailsDialog::SetPaperHeightModified( bool state ) { m_paperHeight->SetModified( state ); }
+
+//--------------
+
+void AlbumDetailsDialog::SetPaperWidthModified( bool state ) { m_paperWidth->SetModified( state ); }
 
 //--------------
 
@@ -495,6 +569,8 @@ void AlbumDetailsDialog::SetBorderSizeModified( bool state ) { m_borderSize->Set
 //--------------
 
 void AlbumDetailsDialog::SetShowNbr( bool state ) { m_nbrCheckbox->SetValue( state ); }
+
+void AlbumDetailsDialog::SetOverSizePaper( bool state ) { m_overSizeCheckbox->SetValue( state ); }
 
 //--------------
 
@@ -624,6 +700,14 @@ void AlbumDetailsDialog::OnOkClick( wxCommandEvent& event )
         m_album->SetAttrStr( Design::AT_Name, newName );
     }
 
+    if ( IsPaperHeightModified( ) )
+    {
+        m_album->SetPaperHeight( GetPaperHeight( ) );
+    }
+    if ( IsPaperWidthModified( ) )
+    {
+        m_album->SetPaperWidth( GetPaperWidth( ) );
+    }
     if ( IsPageHeightModified( ) )
     {
         m_album->SetPageHeight( GetPageHeight( ) );
@@ -652,10 +736,11 @@ void AlbumDetailsDialog::OnOkClick( wxCommandEvent& event )
     {
         m_album->SetBorderSize( GetBorderSize( ) );
     }
+    m_album->SetOverSizePaper( GetOverSizePaper( ) );
     m_album->SetShowNbr( GetShowNbr( ) );
     m_album->SetShowTitle( GetShowStampTitle( ) );
     m_album->SetGrayScaleImages( GetGrayScaleImages( ) );
-
+    m_album->SetBorderFilename( GetBorderFilename( ) );
     wxFont newFont = GetNbrFont( );
 
     m_album->SetFont( Design::AT_TextFontType, GetTextFont( ), GetTextColor( ) );
@@ -670,6 +755,9 @@ void AlbumDetailsDialog::OnOkClick( wxCommandEvent& event )
 
 void AlbumDetailsDialog::UpdateControls( )
 {
+    SetOverSizePaper( m_album->GetOverSizePaper( ) );
+    SetPaperHeight( m_album->GetPaperHeightStr( ) );
+    SetPaperWidth( m_album->GetPaperWidthStr( ) );
     SetPageHeight( m_album->GetPageHeightStr( ) );
     SetPageWidth( m_album->GetPageWidthStr( ) );
     SetTopMargin( m_album->GetTopMarginStr( ) );
@@ -680,6 +768,7 @@ void AlbumDetailsDialog::UpdateControls( )
     SetShowNbr( m_album->GetShowNbr( ) );
     SetShowStampTitle( m_album->GetShowTitle( ) );
     SetGrayScaleImages( m_album->GetGrayScaleImages( ) );
+    SetBorderFilename( m_album->GetBorderFileName( ) );
 
     SetNbrFont( m_album->GetFont( Design::AT_NbrFontType ) );
     SetTextFont( m_album->GetFont( Design::AT_TextFontType ) );

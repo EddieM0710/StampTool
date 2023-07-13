@@ -136,7 +136,8 @@ void LabeledTextBox::Init( )
   */
 void LabeledTextBox::CreateControls( )
 {
-    // LabeledTextBox content construction
+    //   std::cout << "LabeledTextBox" << "\n";
+       // LabeledTextBox content construction
 
     LabeledTextBox* itemPanel1 = this;
 

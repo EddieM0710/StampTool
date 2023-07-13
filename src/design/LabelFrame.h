@@ -93,6 +93,7 @@ namespace Design {
 
         void SetString( wxString str ) { m_string = str; };
 
+        // calculate the string frame based on the available width and the text length
         void UpdateString( double width );
     private:
 

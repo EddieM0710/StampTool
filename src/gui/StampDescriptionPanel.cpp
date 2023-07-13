@@ -146,7 +146,7 @@ void StampDescriptionPanel::Init( void )
 
 void StampDescriptionPanel::CreateControls( void )
 {
-    // StampDescriptionPanel content construction
+    //    std::cout << "StampDescriptionPanel" << "\n";
 
     StampDescriptionPanel* thisPanel = this;
 
@@ -233,27 +233,27 @@ void StampDescriptionPanel::CreateControls( void )
 
 
 
-    wxPanel* notebookPanel = new wxPanel( horizontalSplitterWindow, ID_NOTEBOOKPANEL,
-        wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
-    notebookPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
+    // wxPanel* notebookPanel = new wxPanel( horizontalSplitterWindow, ID_NOTEBOOKPANEL,
+    //     wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
+    // notebookPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
 
-    wxBoxSizer* notebookPanelVerticalSizer = new wxBoxSizer( wxVERTICAL );
-    notebookPanel->SetSizer( notebookPanelVerticalSizer );
+    // wxBoxSizer* notebookPanelVerticalSizer = new wxBoxSizer( wxVERTICAL );
+    // notebookPanel->SetSizer( notebookPanelVerticalSizer );
 
-    wxBoxSizer* notebookPanelHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
-    notebookPanelVerticalSizer->Add( notebookPanelHorizontalSizer, 1, wxGROW | wxALL, 5 );
+    // wxBoxSizer* notebookPanelHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
+    // notebookPanelVerticalSizer->Add( notebookPanelHorizontalSizer, 1, wxGROW | wxALL, 5 );
 
 
 
-    wxNotebook* descriptionNotebook =
-        new wxNotebook( notebookPanel, ID_DESCRIPTIONLNOTEBOOK,
-            wxDefaultPosition, wxDefaultSize, wxBK_DEFAULT );
+    // wxNotebook* descriptionNotebook =
+    //     new wxNotebook( notebookPanel, ID_DESCRIPTIONLNOTEBOOK,
+    //         wxDefaultPosition, wxDefaultSize, wxBK_DEFAULT );
 
     m_inventoryPanel =
-        new InventoryPanel( descriptionNotebook, ID_INVENTORYPANEL, wxDefaultPosition,
+        new InventoryPanel( horizontalSplitterWindow, ID_INVENTORYPANEL, wxDefaultPosition,
             wxSize( 100, 100 ), wxSIMPLE_BORDER );
 
-    descriptionNotebook->AddPage( m_inventoryPanel, _( "Inventory" ) );
+    //descriptionNotebook->AddPage( m_inventoryPanel, _( "Inventory" ) );
 
 
 
@@ -280,7 +280,7 @@ void StampDescriptionPanel::CreateControls( void )
 
 
 
-    notebookPanelHorizontalSizer->Add( descriptionNotebook, 1, wxGROW | wxALL, 5 );
+   // notebookPanelHorizontalSizer->Add( descriptionNotebook, 1, wxGROW | wxALL, 5 );
 
     //$     wxScrolledWindow* itemScrolledWindow1 = new wxScrolledWindow( 
     //$         descriptionNotebook, ID_DESCRIPTIONSCROLLEDWINDOW, wxDefaultPosition, 
@@ -326,7 +326,7 @@ void StampDescriptionPanel::CreateControls( void )
         //$ descriptionNotebook->AddPage( itemPanel16, _( "Background" ) );
 
 
-    horizontalSplitterWindow->SplitHorizontally( stampAndImagePanel, notebookPanel, 500 );
+    horizontalSplitterWindow->SplitHorizontally( stampAndImagePanel, m_inventoryPanel, 500 );
     topHorizontalSizer->Add( horizontalSplitterWindow, 1, wxGROW | wxALL, 5 );
 
 

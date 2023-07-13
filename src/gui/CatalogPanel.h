@@ -162,6 +162,11 @@ public:
         m_volumeListCtrl->SetSelection( i );
     };
 
+    void SetVolumeListSelection( wxString str )
+    {
+        m_volumeListCtrl->SetStringSelection( str );
+    };
+
     ///  @brief Set the Volume List Strings object
     ///  
     ///  @param choices 

@@ -59,6 +59,8 @@ namespace Utils {
 
         wxString GetImagePath( );
         void SetImagePath( wxString imagePath );
+        wxString GetImageFullPath( wxString imageName );
+        bool ImageExists( wxString imageName );
 
         //wxString GetCatalogFilename( );
         //void SetCatalogFilename( wxString catalogFilename );

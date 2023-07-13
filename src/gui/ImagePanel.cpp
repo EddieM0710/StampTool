@@ -46,7 +46,7 @@
 #include "gui/ImagePanel.h"
 #include "art/NotFound.xpm"
 #include "catalog/CatalogVolume.h"
-#include "utils/ImageRepository.h"
+#include "utils/Project.h"
 
 #include "wx/wfstream.h"
 #include <wx/datstrm.h>
@@ -172,15 +172,15 @@ void ImagePanel::SetBitmap( wxString filename )
     else
     {
         //wxFileName fn( filename );
-        Utils::ImageRepository* imageRepository = GetCatalogVolume( )->GetImageRepository( );
+        wxString str = GetProject( )->GetImageFullPath( filename );
 
-        if ( !imageRepository || !imageRepository->Exists( filename ) )
+        if ( !GetProject( )->ImageExists( str ) )
         {
             image = wxImage( NotFound );
         }
         else
         {
-            image = imageRepository->GetImage( filename );
+            image = wxImage( str );
 
             if ( !image.IsOk( ) )
             {

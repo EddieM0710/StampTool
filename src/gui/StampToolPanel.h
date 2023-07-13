@@ -48,6 +48,11 @@ class GenerateList;
 #define SYMBOL_STAMPTOOLPANEL_SIZE wxSize( 400, 300 )
 #define SYMBOL_STAMPTOOLPANEL_POSITION wxDefaultPosition
 
+
+
+
+
+
 /**
  * @brief StampToolPanel is the main window class for the application,
  * It contains wxNotebook with the the StampDescriptionPanel and AlbumPanel as pages.
@@ -56,7 +61,7 @@ class GenerateList;
 class StampToolPanel : public wxPanel
 {
     DECLARE_DYNAMIC_CLASS( StampToolPanel )
-        DECLARE_EVENT_TABLE( )
+    DECLARE_EVENT_TABLE( )
 
 public:
 
@@ -129,6 +134,8 @@ public:
     bool ShouldShowStates( );
 
     void OnNotebookPageChanged( wxNotebookEvent& event );
+
+    void OnPDF( wxString filename );
 
     void OnTitleTextUpdated( wxCommandEvent& event );
 

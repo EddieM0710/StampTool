@@ -60,7 +60,7 @@ namespace Design { class Stamp; };
 class StampDetailsDialog : public wxDialog
 {
     DECLARE_DYNAMIC_CLASS( StampDetailsDialog )
-        DECLARE_EVENT_TABLE( )
+    DECLARE_EVENT_TABLE( )
 
 public:
 
@@ -69,6 +69,10 @@ public:
         ID_NAMELABELEDTEXTBOX1,
         ID_HEIGHTLABELEDTEXTBOX,
         ID_WIDTHLABELEDTEXTBOX,
+        ID_SELVAGEHEIGHTLABELEDTEXTBOX,
+        ID_SELVAGEWIDTHLABELEDTEXTBOX,
+        ID_MOUNTHEIGHTLABELEDTEXTBOX,
+        ID_MOUNTWIDTHLABELEDTEXTBOX,
         ID_REFRESHBUTTON,
         ID_VALIDATEBUTTON,
         ID_LISTCTRL,
@@ -82,7 +86,7 @@ public:
         ID_NOTEBOOK,
         ID_NOTEBOOKDETAILSPANEL,
         ID_NOTEBOOKPOSITIONPANEL,
-        ID_POSITIONTEXTCTRL,
+        //ID_POSITIONTEXTCTRL,
         ID_STAMPNBRFONTPICKER,
         ID_STAMPNBRCOLORPICKER,
         ID_STAMPNAMEFONTPICKER,
@@ -96,7 +100,7 @@ public:
         ID_RIGHTRADIOBUTTON
     };
 
-    
+
 
     StampDetailsDialog( );
     StampDetailsDialog( wxWindow* parent, wxWindowID id = SYMBOL_STAMPDETAILSDIALOG_IDNAME, const wxString& caption = SYMBOL_STAMPDETAILSDIALOG_TITLE, const wxPoint& pos = SYMBOL_STAMPDETAILSDIALOG_POSITION, const wxSize& size = SYMBOL_STAMPDETAILSDIALOG_SIZE, long style = SYMBOL_STAMPDETAILSDIALOG_STYLE );
@@ -147,6 +151,12 @@ public:
     void SetImageFilename( wxString filename );
     void SetHeight( wxString height );
     void SetWidth( wxString width );
+    void SetSelvageHeight( wxString height );
+    void SetSelvageWidth( wxString width );
+    void SetMountAllowanceHeight( wxString height );
+    void SetMountAllowanceWidth( wxString width );
+
+
     void SetCatNbr( wxString catNbr );
     void SetName( wxString name );
     void SetShowNbr( bool state = false );
@@ -159,6 +169,11 @@ public:
     wxString GetImageFilename( );
     wxString GetHeight( );
     wxString GetWidth( );
+
+    wxString GetSelvageHeight( );
+    wxString GetSelvageWidth( );
+    wxString GetMountAllowanceHeight( );
+    wxString GetMountAllowanceWidth( );
     wxString GetCatNbr( );
     wxString GetName( );
     wxFont GetNbrFont( );
@@ -172,8 +187,19 @@ public:
     bool IsIDModified( );
     bool IsHeightModified( );
     bool IsWidthModified( );
+
+    bool IsSelvageHeightModified( );
+    bool IsSelvageWidthModified( );
+    bool IsMountAllowanceHeightModified( );
+    bool IsMountAllowanceWidthModified( );
     void SetHeightModified( bool state = true );
     void SetWidthModified( bool state = true );
+
+
+    void SetSelvageHeightModified( bool state );
+    void SetSelvageWidthModified( bool state );
+    void SetMountAllowanceHeightModified( bool state );
+    void SetMountAllowanceWidthModified( bool state );
     void SetCatNbrModified( bool state = true );
     void SetNameModified( bool state = true );
     void RefreshFromCatalog( );
@@ -190,12 +216,19 @@ private:
     LabeledTextBox* m_imagePath;
     LabeledTextBox* m_height;
     LabeledTextBox* m_width;
+    LabeledTextBox* m_selvageHeight;
+    LabeledTextBox* m_selvageWidth;
+    LabeledTextBox* m_mountAllowanceHeight;
+    LabeledTextBox* m_mountAllowanceWidth;
     wxButton* m_validate;
     wxListBox* m_statusList;
+    wxArrayString m_statusListStrings;
+
+
     wxTreeItemId m_designTreeID;
     wxCheckBox* m_nbrCheckbox;
     wxCheckBox* m_titleCheckbox;
-    wxTextCtrl* positionTextCtrl;
+    //wxTextCtrl* positionTextCtrl;
     wxFontPickerCtrl* m_nbrFontPicker;
     wxFontPickerCtrl* m_nameFontPicker;
     wxColourPickerCtrl* m_nameColorPicker;

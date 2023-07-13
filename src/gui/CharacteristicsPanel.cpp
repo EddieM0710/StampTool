@@ -87,6 +87,7 @@ bool CharacteristicsPanel::Create( wxWindow* parent, wxWindowID id,
 
 void CharacteristicsPanel::CreateControls( void )
 {
+    //   std::cout << "CharacteristicsPanel" << "\n";
     CharacteristicsPanel* itemPanel1 = this;
 
     wxBoxSizer* itemBoxSizer1 = new wxBoxSizer( wxHORIZONTAL );
@@ -95,12 +96,10 @@ void CharacteristicsPanel::CreateControls( void )
     wxBoxSizer* itemBoxSizer2 = new wxBoxSizer( wxVERTICAL );
     itemBoxSizer1->Add( itemBoxSizer2, 1, wxGROW | wxALL, 5 );
 
-    m_height = new LabeledTextBox( itemPanel1, ID_HEIGHTEXTBOX, wxDefaultPosition,
-        wxDefaultSize, 0 );
+    m_height = new LabeledTextBox( itemPanel1, ID_HEIGHTEXTBOX, wxDefaultPosition, wxDefaultSize, 0 );
     itemBoxSizer2->Add( m_height, 0, wxGROW | wxALL, 2 );
 
-    m_width = new LabeledTextBox( itemPanel1, ID_WIDTHTEXTBOX, wxDefaultPosition,
-        wxDefaultSize, 0 );
+    m_width = new LabeledTextBox( itemPanel1, ID_WIDTHTEXTBOX, wxDefaultPosition, wxDefaultSize, 0 );
     itemBoxSizer2->Add( m_width, 0, wxGROW | wxALL, 2 );
 
     wxBoxSizer* itemBoxSizer7 = new wxBoxSizer( wxVERTICAL );

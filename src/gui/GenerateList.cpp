@@ -115,6 +115,7 @@ bool GenerateList::Create( wxWindow* parent, wxWindowID id, const wxPoint& pos, 
 
 void GenerateList::CreateControls( )
 {
+    //    std::cout << "GenerateList" << "\n";
     GenerateList* itemPanel1 = this;
 
     wxBoxSizer* itemBoxSizer2 = new wxBoxSizer( wxVERTICAL );
@@ -156,6 +157,8 @@ void GenerateList::CreateControls( )
     m_gridCtrl->SetColLabelValue( 6, Catalog::DataTypeNames[ Catalog::DT_Width ] );
     m_gridCtrl->SetColLabelValue( 7, Catalog::DataTypeNames[ Catalog::DT_Height ] );
     m_gridCtrl->SetColLabelValue( 8, Catalog::DataTypeNames[ Catalog::DT_StampMount ] );
+    std::cout << " exiting GenerateList" << "\n";
+
 }
 
 //--------------

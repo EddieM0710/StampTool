@@ -134,7 +134,8 @@ void RowDetailsDialog::Init( )
  */
 
 void RowDetailsDialog::CreateControls( )
-{
+{//
+    std::cout << "RowDetailsDialog" << "\n";
     RowDetailsDialog* theDialog = this;
 
     wxBoxSizer* theDialogVerticalSizer = new wxBoxSizer( wxVERTICAL );
@@ -146,7 +147,7 @@ void RowDetailsDialog::CreateControls( )
     wxBoxSizer* nameHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
     theDialogVerticalSizer->Add( nameHorizontalSizer, 0, wxGROW | wxALL, 0 );
 
-    m_name = new LabeledTextBox( theDialog, ID_NAMELABELEDTEXTBOX, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
+    m_name = new LabeledTextBox( theDialog, ID_NAMELABELEDTEXTBOX, wxDefaultPosition, wxDefaultSize, wxNO_BORDER | wxTAB_TRAVERSAL );
     m_name->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
     nameHorizontalSizer->Add( m_name, 1, wxGROW | wxALL, 5 );
     m_name->SetLabel( "Row Name" );

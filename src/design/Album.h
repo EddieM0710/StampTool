@@ -30,6 +30,7 @@
 #include "design/DesignDefs.h"
  //#include "utils/Project.h"
 #include "utils/FontNdx.h"
+#include <wx/pdfdc.h>
 
 
 namespace Design {
@@ -80,10 +81,14 @@ namespace Design {
         ///  @param str 
         void SetBorderSize( wxString str );
 
+        //void SetBorderFilename( wxString str );
+
         ///  @brief Get the Border File Name object
         ///  
         ///  @return wxString 
         wxString GetBorderFileName( );
+
+        void SetBorderFilename( wxString filename );
 
         ///  @brief Get the Bottom Margin object
         ///  
@@ -142,6 +147,7 @@ namespace Design {
         ///  
         ///  @return wxString 
         wxString GetPageHeightStr( );
+        wxString GetPaperHeightStr( );
 
         ///  @brief Get the Page Parameters object
         ///  
@@ -158,6 +164,18 @@ namespace Design {
         ///  
         ///  @return double 
         double GetPageWidth( );
+
+        ///  @brief Get the Paper Width for oversize paper
+        ///  
+        ///  @return double 
+        double GetPaperWidth( );
+
+        wxString GetPaperWidthStr( );
+
+        ///  @brief Get the Paper Height for oversize paper
+        ///  
+        ///  @return double 
+        double GetPaperHeight( );
 
         ///  @brief Get the Page Width Str object
         ///  
@@ -195,6 +213,7 @@ namespace Design {
         ///  @return true 
         ///  @return false 
         bool GetShowTitle( ) { return String2Bool( GetAttrStr( AT_ShowTitle ) ); };
+        bool GetOverSizePaper( ) { return String2Bool( GetAttrStr( AT_OverSizePaper ) ); };
 
         ///  @brief Get the Width object
          ///  
@@ -266,6 +285,10 @@ namespace Design {
         ///  @param str 
         void SetPageWidth( wxString str );
 
+        void SetPaperHeight( wxString str );
+
+        void SetPaperWidth( wxString str );
+
         ///  @brief Set the Right Margin object
         ///  
         ///  @param str 
@@ -280,6 +303,8 @@ namespace Design {
         ///  
         ///  @param val 
         void SetShowTitle( bool val ) { SetAttrStr( AT_ShowTitle, Bool2String( val ) ); };
+
+        void SetOverSizePaper( bool val ) { SetAttrStr( AT_OverSizePaper, Bool2String( val ) ); };
 
         ///  @brief Set the Show Nbr object
         ///  
@@ -315,10 +340,58 @@ namespace Design {
         NodeStatus ValidateNode( );
 
 
+        wxString GetDefaultValStr( AlbumAttrType type )
+        {
+            if ( type == AT_SelvageHeight )
+            {
+                return  wxString::Format( "%4.1f", m_defaultSelvageHeight );
+            }
+            else if ( type == AT_SelvageWidth )
+            {
+                return   wxString::Format( "%4.1f", m_defaultSelvageWidth );
+            }
+            else if ( type == AT_MountAllowanceHeight )
+            {
+                return   wxString::Format( "%4.1f", m_defaultMountAllowanceHeight );
+            }
+            else if ( type == AT_MountAllowanceWidth )
+            {
+                return   wxString::Format( "%4.1f", m_defaultMountAllowanceWidth );
+            }
+            else
+                return "";
+        };
+
+        double GetDefaultVal( AlbumAttrType type )
+        {
+            if ( type == AT_SelvageHeight )
+            {
+                return m_defaultSelvageHeight;
+            }
+            else if ( type == AT_SelvageWidth )
+            {
+                return m_defaultSelvageWidth;
+            }
+            else if ( type == AT_MountAllowanceHeight )
+            {
+                return m_defaultMountAllowanceHeight;
+            }
+            else if ( type == AT_MountAllowanceWidth )
+            {
+                return m_defaultMountAllowanceWidth;
+            }
+            return 0;
+        };
+
+
     private:
 
         Utils::FontNdx DefaultFonts[ AT_NbrFontUsageTypes ];
 
+        const double m_defaultSelvageHeight = 0;
+        const double m_defaultSelvageWidth = 0;
+        const double m_defaultMountAllowanceHeight = 5;
+        const double m_defaultMountAllowanceWidth = 4;
     };
 }
 #endif

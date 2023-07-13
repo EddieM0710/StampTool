@@ -56,7 +56,7 @@
   // namespace for all Album design 
 namespace Design {
 
-    wxRealPoint  ScaleFactor;
+    wxRealPoint  DeviceUnitsPerMM;
 
 
 
@@ -92,7 +92,14 @@ namespace Design {
             "Color",
             "ImageName",
             "CalculateSpacing",
-            "FixedSpacingSize"
+            "FixedSpacingSize",
+            "OversizePaper",
+            "PaperHeight",
+            "PaperWidth",
+            "SelvageHeight",
+        "SelvageWidth",
+        "MountAllowanceHeight",
+        "MountAllowanceWidth"
     };
 
     wxString AlbumBaseNames[ AT_NbrAlbumTypes ] = {
@@ -229,14 +236,15 @@ namespace Design {
 
         if ( client == DD_PDF )
         {
-            ScaleFactor.x = 1.0;
-            ScaleFactor.y = 1.0;
+            DeviceUnitsPerMM.x = 1;
+            DeviceUnitsPerMM.y = 1;
         }
         else //if ( client == DD_Display)
         {
+
             wxSize ppi = wxGetDisplayPPI( );
-            ScaleFactor.x = ppi.x / 25.4;
-            ScaleFactor.y = ppi.y / 25.4;
+            DeviceUnitsPerMM.x = ppi.x / 25.4;
+            DeviceUnitsPerMM.y = ppi.y / 25.4;
         }
     }
 

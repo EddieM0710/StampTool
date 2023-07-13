@@ -14,7 +14,7 @@ add_library( Utils SHARED
     CSV.cpp
     DebugString.cpp
 #    ImageZip.cpp
-    ImageRepository.cpp
+#    ImageRepository.cpp
     Project.cpp
     Settings.cpp 
     StampList.cpp 

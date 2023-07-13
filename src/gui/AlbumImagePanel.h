@@ -48,7 +48,7 @@ enum
 class AlbumImagePanel : public wxScrolledWindow
 {
     DECLARE_DYNAMIC_CLASS( AlbumImagePanel )
-        DECLARE_EVENT_TABLE( )
+    DECLARE_EVENT_TABLE( )
 
 public:
 
@@ -188,10 +188,13 @@ public:
     ///  @return false 
     static bool ShowToolTips( );
 
+    double GetZoom( ) { return m_zoom; };
+    double GetUserScale( ) { return m_userScale; };
 private:
     double m_pixelsPerIn;
     wxBitmap m_bitmap; ///< current bitmap to display
-    double m_zoom; ///< current zoom factor
+    double m_zoom; ///< current zoom 
+    double m_userScale;
     bool m_once;
 };
 

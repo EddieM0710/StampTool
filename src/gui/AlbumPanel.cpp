@@ -99,6 +99,7 @@ bool AlbumPanel::Create( wxWindow* parent, wxWindowID id, const wxPoint& pos, co
 
 void AlbumPanel::CreateControls( )
 {
+    //    std::cout << "AlbumPanel" << "\n";
     AlbumPanel* thePanel = this;
 
     wxBoxSizer* thePanelVerticalSizer = new wxBoxSizer( wxVERTICAL );
@@ -162,7 +163,7 @@ void AlbumPanel::CreateControls( )
     m_albumImagePanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
     imagePanelVerticalSizer->Add( m_albumImagePanel, 1, wxGROW | wxALL, 0 );
 
-    m_secondarySplitterWindow->SplitVertically( m_albumTreePanel, descriptionPanel, 200 );
+    m_secondarySplitterWindow->SplitVertically( m_albumTreePanel, descriptionPanel, 400 );
 
     splitterWindowHorizontalSizer->Add( m_secondarySplitterWindow, 1, wxGROW | wxALL, 5 );
 

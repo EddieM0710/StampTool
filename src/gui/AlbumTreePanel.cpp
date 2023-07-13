@@ -40,7 +40,7 @@
 
 #include "gui/AlbumTreePanel.h"
 #include "gui/GuiDefs.h"
-//#include "gui/AppData.h"
+ //#include "gui/AppData.h"
 #include "design/AlbumData.h"
 
  /*
@@ -91,6 +91,7 @@ bool AlbumTreePanel::Create( wxWindow* parent, wxWindowID id, const wxPoint& pos
 
 void AlbumTreePanel::CreateControls( )
 {
+    //    std::cout << "AlbumTreePanel" << "\n";
     AlbumTreePanel* itemPanel1 = this;
 
     wxBoxSizer* itemBoxSizer1 = new wxBoxSizer( wxVERTICAL );

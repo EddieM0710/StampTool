@@ -36,6 +36,9 @@
 #include "design/LabelFrame.h"
 
 #include <wx/xml/xml.h>
+#include <wx/pdfdocument.h>
+#include <wx/pdfdocument.h>
+
 
 class  wxPdfDocument;
 
@@ -267,7 +270,8 @@ namespace Design {
     protected:
         Frame m_frame;
         Frame m_clientDimensions;
-
+        //defaultDash.Add( .6 );
+        //defaultDash.Add( .6 );
         TitleLocation m_titleLocation;
 
     private:

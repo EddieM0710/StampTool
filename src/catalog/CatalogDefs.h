@@ -122,7 +122,6 @@ namespace Catalog {
         DT_Themes,
         DT_Description,
         DT_Link,
-        //        DT_CheckedStatus, 
         DT_InventoryStatus,
         DT_StampMount,
         DT_BackGround,

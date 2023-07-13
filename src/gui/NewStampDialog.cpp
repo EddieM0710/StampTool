@@ -1,23 +1,23 @@
-/* 
+/*
  * @file NewStampDialog.cpp
- * @author Eddie Monroe 
- * @brief 
+ * @author Eddie Monroe
+ * @brief
  * @version 0.1
  * @date 2022-06-03
  *
- * @copyright Copyright ( c ) 2022  
- * 
+ * @copyright Copyright ( c ) 2022
+ *
  * This file is part of StampTool.
  *
- * StampTool is free software: you can redistribute it and/or modify it under the 
- * terms of the GNU General Public License as published by the Free Software Foundation, 
+ * StampTool is free software: you can redistribute it and/or modify it under the
+ * terms of the GNU General Public License as published by the Free Software Foundation,
  * either version 3 of the License, or any later version.
  *
- * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY 
- * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+ * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
+ * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
  * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
- * You should have received a copy of the GNU General Public License along with 
+ * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  */
 
@@ -36,9 +36,9 @@
 #include "LabeledTextBox.h"
 #include "NewStampDialog.h"
 
-/*
- * NewStampDialog type definition
- */
+ /*
+  * NewStampDialog type definition
+  */
 
 IMPLEMENT_DYNAMIC_CLASS( NewStampDialog, wxDialog )
 
@@ -47,30 +47,30 @@ IMPLEMENT_DYNAMIC_CLASS( NewStampDialog, wxDialog )
  * NewStampDialog event table definition
  */
 
-BEGIN_EVENT_TABLE( NewStampDialog, wxDialog )
+    BEGIN_EVENT_TABLE( NewStampDialog, wxDialog )
 
-// NewStampDialog event table entries
+    // NewStampDialog event table entries
     EVT_CHOICE( ID_EMISSIONCHOICE, NewStampDialog::OnEmissionchoiceSelected )
     EVT_CHOICE( ID_FORMATCHOICE, NewStampDialog::OnFormatchoiceSelected )
     EVT_BUTTON( wxID_CANCEL, NewStampDialog::OnCancelClick )
     EVT_BUTTON( wxID_OK, NewStampDialog::OnOkClick )
-// NewStampDialog event table entries
+    // NewStampDialog event table entries
 
-END_EVENT_TABLE( )
-; // silly business; The above macro screws up the formatter
+    END_EVENT_TABLE( )
+    ; // silly business; The above macro screws up the formatter
 
 
-/*
- * NewStampDialog constructors
- */
+    /*
+     * NewStampDialog constructors
+     */
 
 NewStampDialog::NewStampDialog( )
-{ 
+{
     Init( );
 }
 
 NewStampDialog::NewStampDialog( wxWindow* parent, wxWindowID id, const wxString& caption, const wxPoint& pos, const wxSize& size, long style )
-{ 
+{
     Init( );
     Create( parent, id, caption, pos, size, style );
 }
@@ -81,18 +81,18 @@ NewStampDialog::NewStampDialog( wxWindow* parent, wxWindowID id, const wxString&
  */
 
 bool NewStampDialog::Create( wxWindow* parent, wxWindowID id, const wxString& caption, const wxPoint& pos, const wxSize& size, long style )
-{ 
-// NewStampDialog creation
+{
+    // NewStampDialog creation
     SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY | wxWS_EX_BLOCK_EVENTS );
     wxDialog::Create( parent, id, caption, pos, size, style );
 
     CreateControls( );
     if ( GetSizer( ) )
-    { 
+    {
         GetSizer( )->SetSizeHints( this );
     }
     Centre( );
-// NewStampDialog creation
+    // NewStampDialog creation
     return true;
 }
 
@@ -102,9 +102,9 @@ bool NewStampDialog::Create( wxWindow* parent, wxWindowID id, const wxString& ca
  */
 
 NewStampDialog::~NewStampDialog( )
-{ 
-// NewStampDialog destruction
-// NewStampDialog destruction
+{
+    // NewStampDialog destruction
+    // NewStampDialog destruction
 }
 
 
@@ -113,8 +113,8 @@ NewStampDialog::~NewStampDialog( )
  */
 
 void NewStampDialog::Init( )
-{ 
-// NewStampDialog member initialisation
+{
+    // NewStampDialog member initialisation
     m_ID = NULL;
     m_name = NULL;
     m_emission = NULL;
@@ -125,7 +125,7 @@ void NewStampDialog::Init( )
     m_catNbr = NULL;
     m_width = NULL;
     m_height = NULL;
-// NewStampDialog member initialisation
+    // NewStampDialog member initialisation
 }
 
 
@@ -134,8 +134,9 @@ void NewStampDialog::Init( )
  */
 
 void NewStampDialog::CreateControls( )
-{    
-// NewStampDialog content construction
+{
+    // NewStampDialog content construction
+//    std::cout << "NewStampDialog" << "\n";
 
     NewStampDialog* itemDialog1 = this;
 
@@ -157,10 +158,10 @@ void NewStampDialog::CreateControls( )
     itemBoxSizer8->Add( itemStaticText9, 0, wxALIGN_CENTER_VERTICAL | wxALL, 0 );
 
     wxArrayString m_emissionStrings;
-    for ( int i = 0; i < Catalog::ET_NbrTypes; i++ ) 
-    { 
+    for ( int i = 0; i < Catalog::ET_NbrTypes; i++ )
+    {
         m_emissionStrings.Add( _( Catalog::EmissionStrings[ i ] ) );
-    } 
+    }
     // m_emissionStrings.Add( _( "Unknown" ) );
     // m_emissionStrings.Add( _( "Commemorative" ) );
     // m_emissionStrings.Add( _( "Definitive" ) );
@@ -255,9 +256,9 @@ void NewStampDialog::CreateControls( )
     wxButton* itemButton6 = new wxButton( itemDialog1, wxID_OK, _( "OK" ), wxDefaultPosition, wxDefaultSize, 0 );
     itemBoxSizer3->Add( itemButton6, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
-// NewStampDialog content construction
+    // NewStampDialog content construction
 
-    // m_status->SetLabel( "Status" );
+        // m_status->SetLabel( "Status" );
     m_issueDate->SetLabel( "Issue Date" );
     m_emission->SetLabel( "Emission" );
     m_format->SetLabel( "Format" );
@@ -274,7 +275,7 @@ void NewStampDialog::CreateControls( )
 
 
 bool NewStampDialog::ShowToolTips( )
-{ 
+{
     return true;
 }
 
@@ -285,12 +286,12 @@ bool NewStampDialog::ShowToolTips( )
  */
 
 void NewStampDialog::OnEmissionchoiceSelected( wxCommandEvent& event )
-{ 
+{
     wxString strSel = m_emission->GetStringSelection( );
- //   if ( m_stamp ) m_stamp->SetEmission( strSel );
+    //   if ( m_stamp ) m_stamp->SetEmission( strSel );
 
     event.Skip( );
- 
+
 }
 
 
@@ -299,13 +300,13 @@ void NewStampDialog::OnEmissionchoiceSelected( wxCommandEvent& event )
  */
 
 void NewStampDialog::OnFormatchoiceSelected( wxCommandEvent& event )
-{ 
+{
     int sel = m_format->GetSelection( );
     wxString strSel = m_format->GetStringSelection( );
- //   if ( m_stamp ) m_stamp->SetFormat( strSel );
+    //   if ( m_stamp ) m_stamp->SetFormat( strSel );
 
     event.Skip( );
- 
+
 }
 
 
@@ -314,19 +315,19 @@ void NewStampDialog::OnFormatchoiceSelected( wxCommandEvent& event )
  */
 
 void NewStampDialog::OnCancelClick( wxCommandEvent& event )
-{ 
+{
 
     event.Skip( );
- 
+
 }
 
 void NewStampDialog::UpdateStamp( )
-{ 
+{
 
     if ( m_country->IsModified( ) )
-    { 
-//        m_stamp->SetDirty( );
-//        m_stamp->SetCountryID( m_country->GetValue( ) );
+    {
+        //        m_stamp->SetDirty( );
+        //        m_stamp->SetCountryID( m_country->GetValue( ) );
     }
 
 }
@@ -335,7 +336,7 @@ void NewStampDialog::UpdateStamp( )
  */
 
 void NewStampDialog::OnOkClick( wxCommandEvent& event )
-{ 
+{
     UpdateStamp( );
 
     event.Skip( );
@@ -348,10 +349,10 @@ void NewStampDialog::OnOkClick( wxCommandEvent& event )
  */
 
 void NewStampDialog::SetChoice( wxChoice* ctrl, wxString str )
-{ 
+{
     int ndx = ctrl->FindString( str );
     if ( ndx == wxNOT_FOUND )
-    { 
+    {
         ndx = 0;
     }
     ctrl->SetSelection( ndx );
@@ -362,30 +363,30 @@ void NewStampDialog::SetChoice( wxChoice* ctrl, wxString str )
  *
  */
 
-// void NewStampDialog::SetChoice( wxChoice* ctrl, int ndx )
-// { 
-//     ctrl->SetSelection( ndx );
-// }
+ // void NewStampDialog::SetChoice( wxChoice* ctrl, int ndx )
+ // { 
+ //     ctrl->SetSelection( ndx );
+ // }
 
-/*
- *
- *
- */
+ /*
+  *
+  *
+  */
 
 void NewStampDialog::SetStamp( Catalog::Entry* stamp )
-{ 
+{
     m_stamp = stamp;
     if ( m_stamp->IsOK( ) )
-    { 
-        m_ID->SetValue( m_stamp->GetAttr(  Catalog::DT_ID_Nbr )  );
-        m_name->SetValue( m_stamp->GetAttr(  Catalog::DT_Name ) );
-        m_issueDate->SetValue( m_stamp->GetAttr(  Catalog::DT_Issued_on ) );
+    {
+        m_ID->SetValue( m_stamp->GetAttr( Catalog::DT_ID_Nbr ) );
+        m_name->SetValue( m_stamp->GetAttr( Catalog::DT_Name ) );
+        m_issueDate->SetValue( m_stamp->GetAttr( Catalog::DT_Issued_on ) );
         SetChoice( m_emission, m_stamp->GetEmission( ) );
         SetChoice( m_format, m_stamp->GetFormat( ) );
-//        m_series->SetValue( m_stamp->GetAttr(  Catalog::DT_Series ) );
-//        m_themes->SetValue( m_stamp->GetAttr(  Catalog::DT_Themes ) );
-        m_country->SetValue( m_stamp->GetAttr(  Catalog::DT_Country ) );
-//        SetChoice( m_status, m_stamp->GetInventoryStatus( ) );
+        //        m_series->SetValue( m_stamp->GetAttr(  Catalog::DT_Series ) );
+        //        m_themes->SetValue( m_stamp->GetAttr(  Catalog::DT_Themes ) );
+        m_country->SetValue( m_stamp->GetAttr( Catalog::DT_Country ) );
+        //        SetChoice( m_status, m_stamp->GetInventoryStatus( ) );
     }
 }
 

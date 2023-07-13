@@ -501,7 +501,7 @@ wxString CatalogTreeCtrl::GetItemDesc( wxTreeItemId id )
 
 //--------------
 
-wxString* CatalogTreeCtrl::GetItemImageFullName( wxTreeItemId id )
+wxString CatalogTreeCtrl::GetItemImageFullName( wxTreeItemId id )
 {
     if ( id.IsOk( ) )
     {
@@ -511,7 +511,7 @@ wxString* CatalogTreeCtrl::GetItemImageFullName( wxTreeItemId id )
             return data->GetImageFullName( );
         }
     }
-    return ( wxString* ) 0;
+    return "";
 };
 
 //--------------
@@ -596,10 +596,11 @@ wxString CatalogTreeCtrl::GetAttribute( wxTreeItemId catTreeID, wxString name )
 
 wxString CatalogTreeCtrl::GetImageFullName( wxTreeItemId catTreeID )
 {
+
     if ( catTreeID.IsOk( ) )
     {
-        wxString* imageFullName = GetItemImageFullName( catTreeID );
-        if ( !imageFullName )
+        wxString imageName = GetItemImageFullName( catTreeID );
+        if ( !imageName )
         {
             Catalog::CatalogVolume* sectData = GetCatalogData( )->GetCatalogVolume( );
             wxString catFilename = sectData->GetVolumeFilename( );
@@ -612,11 +613,11 @@ wxString CatalogTreeCtrl::GetImageFullName( wxTreeItemId catTreeID )
             id.Replace( ":", "_" );
             id.Replace( " ", "_" );
             id.Append( ".jpg" );
+            imageName = id;// GetProject( )->GetImageFullPath( id );
 
-            imageFullName = new wxString( wxFileName( catFilename ).GetFullPath( ) + "/" + imageFile + "/" + id );
-            SetItemImageFullName( catTreeID, imageFullName );
+            SetItemImageFullName( catTreeID, imageName );
         }
-        return *imageFullName;
+        return imageName;
     }
     return "";
 }
@@ -824,7 +825,7 @@ void CatalogTreeCtrl::LoadTree( )
             AddChild( rootID, child );
             child = child->GetNext( );
         }
-        SortTree( rootID );
+        //        SortTree( rootID );
         GetAlbumTreeCtrl( )->UpdateStampList( );
         SetStates( GetFrame( )->GetStampToolPanel( )->ShouldShowStates( ) );
         ExpandAll( );
@@ -875,15 +876,23 @@ void CatalogTreeCtrl::OnEndDrag( wxTreeEvent& event )
 int CatalogTreeCtrl::OnCompareItems( const wxTreeItemId& item1,
     const wxTreeItemId& item2 )
 {
+    CatalogTreeItemData* itemData1 = ( CatalogTreeItemData* ) 0;
+    CatalogTreeItemData* itemData2 = ( CatalogTreeItemData* ) 0;
     if ( item1.IsOk( ) && item2.IsOk( ) )
     {
-        CatalogTreeItemData* itemData2 = ( CatalogTreeItemData* ) GetItemData( item2 );
+        void* ptr2 = item2.GetID( );
+        void* ptr1 = item1.GetID( );
+        if ( ( ptr1 < ( void* ) 0xFFFF ) || ( ptr2 < ( void* ) 0xFFFF ) )return 0;
+        bool b1 = item1.IsOk( );
+        bool b2 = item2.IsOk( );
 
-        CatalogTreeItemData* itemData1 = ( CatalogTreeItemData* ) GetItemData( item1 );
+        itemData1 = ( CatalogTreeItemData* ) GetItemData( item1 );
+
+        itemData2 = ( CatalogTreeItemData* ) GetItemData( item2 );
 
         return itemData1->Cmp( itemData2 );
     }
-    return -1;
+    return 0;
 }
 
 //--------------
@@ -1298,7 +1307,7 @@ void CatalogTreeCtrl::SetItemChecked( wxTreeItemId id, bool state )
 
 //--------------
 
-void CatalogTreeCtrl::SetItemImageFullName( wxTreeItemId id, wxString* str )
+void CatalogTreeCtrl::SetItemImageFullName( wxTreeItemId id, wxString str )
 {
     if ( id.IsOk( ) )
     {
@@ -1402,7 +1411,7 @@ void CatalogTreeCtrl::SortTree( wxTreeItemId parent )
     if ( HasChildren( parent ) )
     {
         //std::cout << "parent:" << GetItemText( parent ) << "\n";
-        //       SortChildren( parent );
+        SortChildren( parent );
     }
 }
 

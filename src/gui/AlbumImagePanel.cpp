@@ -138,16 +138,24 @@ void AlbumImagePanel::Draw( wxDC& dc, Design::LayoutBase* node, wxPoint pt )
 wxRealPoint AlbumImagePanel::GetLogicalTextExtent( wxString text, wxFont font )
 {
     wxClientDC dc( this );
-    dc.SetFont( font );
     dc.SetMapMode( wxMM_METRIC );
+    wxSize ppi = wxGetDisplayPPI( );
+    if ( m_userScale <= 0 )
+    {
+        m_userScale = .4;
+    }
+    dc.SetUserScale( m_userScale, m_userScale );
     DoPrepareDC( dc );
+    dc.SetFont( font );
 
     wxSize size = dc.GetMultiLineTextExtent( text );
 
     wxRealPoint textSize;
     // convert the size from Device units to Metric
-    textSize.x = size.x / Design::ScaleFactor.x;
-    textSize.y = size.y / Design::ScaleFactor.y;
+    textSize.x = size.x / Design::DeviceUnitsPerMM.x;
+    textSize.y = size.y / Design::DeviceUnitsPerMM.y;
+    //textSize.x = size.x;
+    //textSize.y = size.y;
     return textSize;
 }
 
@@ -156,9 +164,15 @@ wxRealPoint AlbumImagePanel::GetLogicalTextExtent( wxString text, wxFont font )
 wxSize AlbumImagePanel::GetTextSize( wxFont font, wxString text )
 {
     wxClientDC dc( this );
-    dc.SetFont( font );
     dc.SetMapMode( wxMM_METRIC );
+    wxSize ppi = wxGetDisplayPPI( );
+    if ( m_userScale <= 0 )
+    {
+        m_userScale = .4;
+    }
+    dc.SetUserScale( m_userScale, m_userScale );
     DoPrepareDC( dc );
+    dc.SetFont( font );
 
     text.Trim( );
     text.Trim( false );
@@ -177,13 +191,22 @@ void AlbumImagePanel::Init( )
 
 void AlbumImagePanel::MakeMultiLine( wxString& text, wxFont font, double width )
 {
-    //adjust the with down just a bit to allow for text conversion
+    //adjust the width down just a bit to allow for text conversion
     width = width * .95;
 
     wxClientDC  dc( this );//= this->GetDC( );
-    dc.SetMapMode( wxMM_METRIC );
-    dc.SetFont( font );
     DoPrepareDC( dc );
+    dc.SetMapMode( wxMM_METRIC );
+    wxSize ppi = wxGetDisplayPPI( );
+    double userScale = GetUserScale( );
+    if ( m_userScale <= 0 )
+    {
+        m_userScale = .4;
+    }
+    dc.SetUserScale( m_userScale, m_userScale );
+
+    dc.SetFont( font );
+    //   double deviceScale = ppi.x / 25.4;
 
     text.Trim( );
     text.Trim( false );
@@ -191,8 +214,9 @@ void AlbumImagePanel::MakeMultiLine( wxString& text, wxFont font, double width )
     if ( len > 0 )
     {
         wxSize ext = dc.GetTextExtent( text );
-        wxSize logExt = dc.DeviceToLogicalRel( ext );
-        if ( ext.x < width * Design::ScaleFactor.x )
+        //        wxSize logExt = dc.DeviceToLogicalRel( ext );
+        if ( ext.x < width )
+            // if ( ext.x < width * Design::DeviceUnitsPerMM.x )
         {
             // if it fits print it
             //all done
@@ -225,7 +249,8 @@ void AlbumImagePanel::MakeMultiLine( wxString& text, wxFont font, double width )
 
                     wxSize ext = dc.GetTextExtent( workingStr );
                     wxSize logExt = dc.DeviceToLogicalRel( ext );
-                    if ( ext.x > width * Design::ScaleFactor.x )
+                    if ( ext.x > width * Design::DeviceUnitsPerMM.x )
+                        //if ( ext.x > width * Design::DeviceUnitsPerMM.x )
                     {
                         // it won't fit; decide what to do
                         if ( start == origPos )
@@ -432,30 +457,41 @@ void AlbumImagePanel::OnPaint( wxPaintEvent& event )
         Design::Album* album = GetAlbumVolume( )->GetAlbum( );
         if ( album )
         {
-            double width = album->GetAttrDbl( Design::AT_PageWidth ) * Design::ScaleFactor.x;
-            double height = album->GetAttrDbl( Design::AT_PageHeight ) * Design::ScaleFactor.y;
+
+            const wxSize size = dc.GetSizeMM( );//GetClientSize( );
+            double clientScale = 1.;
+            wxSize ppi = dc.GetPPI( );//wxGetDisplayPPI( );
+            double deviceScale = ppi.x / 25.4;
+
+            double width = album->GetAttrDbl( Design::AT_PageWidth );
+            double height = album->GetAttrDbl( Design::AT_PageHeight );
+            double clientx = size.x;
+            double clienty = size.y;
+            if ( clientx < width )
+            {
+                clientScale = ( double ) clientx / ( double ) width;
+            }
+            // if ( clienty < ( height * clientScale ) )
+            // {
+            //     clientScale = ( double ) clienty / ( double ) height;
+            // }
+            m_userScale = .75 * clientScale * ( 1 - ( .4 - m_zoom ) );//
+
+            dc.SetUserScale( m_userScale, m_userScale );
 
             /* init scrolled area size, scrolling speed, etc. */
             if ( m_once == false )
             {
                 m_once = true;
-                SetScrollbars( Design::ScaleFactor.x, Design::ScaleFactor.y, width * 2, height * 2, 0, 0 );
-            }
-            const wxSize size = GetClientSize( );
-            double scale = 1.;
-
-            if ( size.x < width )
-            {
-                scale = ( double ) size.x / ( double ) width;
-            }
-            if ( size.y < ( height * scale ) )
-            {
-                scale = ( double ) size.y / ( ( ( double ) height * scale ) * scale );
+                SetScrollbars( Design::DeviceUnitsPerMM.x, Design::DeviceUnitsPerMM.y, 1.5 * width, 1.5 * height, 0, 0 );
             }
 
-            dc.SetUserScale( scale * m_zoom, scale * m_zoom );
+            dc.SetPen( *wxRED_PEN );
 
-            dc.DrawRectangle( 0, 0, width, height );
+            DrawRectangle( dc, 0, 0, width, height );
+
+            dc.SetPen( *wxBLACK_PEN );
+
 
             Design::LayoutBase* pageNode = Design::GetSelectedNodePage( );
             if ( pageNode && pageNode->IsStatusOK( ) )
@@ -465,6 +501,9 @@ void AlbumImagePanel::OnPaint( wxPaintEvent& event )
             }
         }
     }
+
+
+
 }
 
 //--------------
@@ -474,7 +513,8 @@ void AlbumImagePanel::OnResize( wxCommandEvent& WXUNUSED( event ) )
     wxImage img( m_bitmap.ConvertToImage( ) );
 
     const wxSize size = GetClientSize( );
-    img.Rescale( size.x, size.y, wxIMAGE_QUALITY_HIGH );
+    //   w* Design::DeviceUnitsPerMM.x, h* Design::DeviceUnitsPerMM.y
+    img.Rescale( size.x * Design::DeviceUnitsPerMM.x, size.y * Design::DeviceUnitsPerMM.y, wxIMAGE_QUALITY_HIGH );
     m_bitmap = wxBitmap( img );
 }
 

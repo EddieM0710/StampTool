@@ -32,6 +32,14 @@
 #include "wx/wx.h"
 #endif
 
+#include <iostream>
+#include <wx/dir.h>
+#include <wx/filefn.h>
+#include <wx/filename.h>
+#include <wx/utils.h> 
+#include "wx/xml/xml.h"
+#include <wx/utils.h>
+
 #include "Defs.h"
 #include "utils/Settings.h"
 
@@ -43,12 +51,7 @@
 #include "utils/XMLUtilities.h"
 #include "collection/CollectionList.h"
 #include "utils/FontList.h"
-#include <iostream>
-#include <wx/dir.h>
-#include <wx/filefn.h>
-#include <wx/filename.h>
-#include <wx/utils.h> 
-#include "wx/xml/xml.h"
+
 
 
 
@@ -112,10 +115,10 @@ namespace Utils {
         for ( int i = 0; i < m_sortOrder.GetCount( ); i++ )
         {
             int j = m_sortOrder.Item( i );
-            std::cout << "   " << j << " " << Catalog::CatalogBaseNames[ j ];
+            //            std::cout << "   " << j << " " << Catalog::CatalogBaseNames[ j ];
         }
-        std::cout << "\n";
-        std::cout << "Looking for" << current + 1 << " " << Catalog::CatalogBaseNames[ current + 1 ];
+        //        std::cout << "\n";
+        //        std::cout << "Looking for" << current + 1 << " " << Catalog::CatalogBaseNames[ current + 1 ];
 
         if ( current == 0 )
         {
@@ -219,6 +222,8 @@ namespace Utils {
         // 
     void Settings::Save( )
     {
+        wxBusyCursor wait( wxHOURGLASS_CURSOR );
+
         wxFileName* filename = new wxFileName( GetConfigurationDirectory( ), "Settings", "xml" );
         wxString fullPath = filename->GetFullPath( );
         wxXmlDocument doc;

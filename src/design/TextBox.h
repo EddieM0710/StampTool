@@ -229,7 +229,7 @@ namespace Design {
         //        NodeStatus m_error[ AT_NbrTextErrorTypes ];
         wxString m_title;
         Frame m_textBoxFrame;
-        wxSize m_titleTextExtent;
+        //wxSize m_titleTextExtent;
         bool m_showTitle;
         DebugString m_debugString;
         LabelFrame* m_titleFrame;

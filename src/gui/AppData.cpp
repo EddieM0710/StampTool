@@ -46,6 +46,10 @@ AppData::AppData( ) {
     m_albumData = new Design::AlbumData( );
     m_mountData = new Catalog::StampMountData( );
     m_collectionList = new Inventory::CollectionList( );
+
+    // two entries in an array
+    defaultDash.Add( .6 );
+    defaultDash.Add( .6 );
 };
 
 void AppData::SetCaption( )

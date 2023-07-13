@@ -45,7 +45,7 @@
 #include "gui/AppData.h"
 //#include "utils/ImageZip.h"
 
-#include "utils/ImageRepository.h"
+//#include "utils/ImageRepository.h"
 
 namespace Design {
 
@@ -74,15 +74,15 @@ namespace Design {
         }
         else
         {
-            Utils::ImageRepository* imageRepository = GetAlbumVolume( )->GetImageRepository( );
+            wxString str = GetProject( )->GetImageFullPath( filename );
 
-            if ( !imageRepository || !imageRepository->Exists( filename ) )
+            if ( !GetProject( )->ImageExists( str ) )
             {
                 image = wxNullImage; ;
             }
             else
             {
-                image = imageRepository->GetImage( filename );
+                image = wxImage( str );
 
                 if ( !image.IsOk( ) )
                 {
@@ -93,10 +93,10 @@ namespace Design {
         return image;
     }
 
-    Utils::ImageRepository* AlbumVolume::GetImageRepository( )
-    {
-        return m_imageRepository;
-    };
+    // Utils::ImageRepository* AlbumVolume::GetImageRepository( )
+    // {
+    //     return m_imageRepository;
+    // };
 
     wxString AlbumVolume::GetPath( )
     {
@@ -139,6 +139,9 @@ namespace Design {
         wxXmlNode* root = new wxXmlNode( wxXML_ELEMENT_NODE, "Album" );
         newDocument->SetRoot( root );
         root->AddAttribute( AttrNameStrings[ AT_Name ], "" );
+        root->AddAttribute( AttrNameStrings[ AT_OverSizePaper ], "False" );
+        root->AddAttribute( AttrNameStrings[ AT_PaperHeight ], "0" );
+        root->AddAttribute( AttrNameStrings[ AT_PaperWidth ], "0" );
         root->AddAttribute( AttrNameStrings[ AT_PageWidth ], "215.9" );
         root->AddAttribute( AttrNameStrings[ AT_PageHeight ], "279.4" );
         root->AddAttribute( AttrNameStrings[ AT_TopMargin ], "7.62" );
@@ -146,6 +149,7 @@ namespace Design {
         root->AddAttribute( AttrNameStrings[ AT_RightMargin ], "7.62" );
         root->AddAttribute( AttrNameStrings[ AT_LeftMargin ], "19.05" );
         root->AddAttribute( AttrNameStrings[ AT_BorderSize ], "4" );
+        root->AddAttribute( AttrNameStrings[ AT_BorderFileName ], "" );
 
         Album* album = new Album( root );
         SetAlbum( album );
@@ -168,16 +172,16 @@ namespace Design {
         return FN.GetName( );
     }
 
-    wxString AlbumVolume::GetZipFileName( )
-    {
-        wxString path = GetAlbumPath( );
-        wxString name = GetAlbumBaseName( );
-        name = name + "Alb.zip";
-        wxFileName FN( path );
-        FN.SetName( name );
-        FN.SetExt( "zip" );
-        return ( path + "/" + name );
-    }
+    // wxString AlbumVolume::GetZipFileName( )
+    // {
+    //     wxString path = GetAlbumPath( );
+    //     wxString name = GetAlbumBaseName( );
+    //     name = name + "Alb.zip";
+    //     wxFileName FN( path );
+    //     FN.SetName( name );
+    //     FN.SetExt( "zip" );
+    //     return ( path + "/" + name );
+    // }
 
     bool AlbumVolume::LoadXML( )
     {
@@ -198,7 +202,7 @@ namespace Design {
             return false;
         }
 
-        MakeAlbumImageRepository( GetZipFileName( ) );
+        //        MakeAlbumImageRepository( GetZipFileName( ) );
 
         SetDirty( false );
         return true;
@@ -219,91 +223,91 @@ namespace Design {
         }
     }
 
-    bool AlbumVolume::MakeAlbumImageArray( wxArrayString& fileArray )
-    {
-        fileArray.Clear( );
+    // bool AlbumVolume::MakeAlbumImageArray( wxArrayString& fileArray )
+    // {
+    //     fileArray.Clear( );
 
-        wxXmlNode* root = m_albumDoc->GetRoot( );
-        wxString nodeName = root->GetName( );
-        if ( !nodeName.Cmp( "Album" ) )
-        {
-            wxString borderImage = root->GetAttribute( "BorderFileName" );
-            //copy image to imageFile
-            fileArray.Add( borderImage );
-        }
-        wxXmlNode* child = root->GetChildren( );
-        while ( child )
-        {
-            MakeAlbumImageArray( child, fileArray );
-            child = child->GetNext( );
-        }
-        return true;
-    }
+    //     wxXmlNode* root = m_albumDoc->GetRoot( );
+    //     wxString nodeName = root->GetName( );
+    //     if ( !nodeName.Cmp( "Album" ) )
+    //     {
+    //         wxString borderImage = root->GetAttribute( "BorderFileName" );
+    //         //copy image to imageFile
+    //         fileArray.Add( borderImage );
+    //     }
+    //     wxXmlNode* child = root->GetChildren( );
+    //     while ( child )
+    //     {
+    //         MakeAlbumImageArray( child, fileArray );
+    //         child = child->GetNext( );
+    //     }
+    //     return true;
+    // }
 
-    bool AlbumVolume::MakeAlbumImageArray( wxXmlNode* parent, wxArrayString& fileArray )
-    {
-        wxXmlNode* child = parent->GetChildren( );
-        while ( child )
-        {
-            wxString nodeName = child->GetName( );
-            if ( !nodeName.Cmp( "Stamp" ) )
-            {
-                wxString imageName = child->GetAttribute( "ImageName" );
-                //copy image to imageFile
-                wxString albumPath = AlbumVolume::GetAlbumPath( );
-                albumPath = albumPath + "/" + imageName;
-                wxFileName file( albumPath );
-                wxString str = file.GetFullPath( );
-                file.MakeAbsolute( );
+    // bool AlbumVolume::MakeAlbumImageArray( wxXmlNode* parent, wxArrayString& fileArray )
+    // {
+    //     wxXmlNode* child = parent->GetChildren( );
+    //     while ( child )
+    //     {
+    //         wxString nodeName = child->GetName( );
+    //         if ( !nodeName.Cmp( "Stamp" ) )
+    //         {
+    //             wxString imageName = child->GetAttribute( "ImageName" );
+    //             //copy image to imageFile
+    //             wxString albumPath = AlbumVolume::GetAlbumPath( );
+    //             albumPath = albumPath + "/" + imageName;
+    //             wxFileName file( albumPath );
+    //             wxString str = file.GetFullPath( );
+    //             file.MakeAbsolute( );
 
-                if ( wxFileExists( str ) )
-                {
-                    fileArray.Add( file.GetFullPath( ) );
-                }
-                else
-                {
-                    wxString path = albumPath + "/art/" + imageName;
-                    wxFileName file( path );
-                    wxString str = file.GetFullPath( );
-                    file.MakeAbsolute( );
-                    str = file.GetFullPath( );
-                    if ( wxFileExists( str ) )
-                    {
-                        fileArray.Add( file.GetFullPath( ) );
-                    }
-                    else
-                    {
-                        albumPath = GetProject( )->GetImagePath( );
-                        wxString path = albumPath + "/" + imageName;
-                        wxFileName file( path );
-                        wxString str = file.GetFullPath( );
-                        file.MakeAbsolute( );
-                        str = file.GetFullPath( );
-                        if ( wxFileExists( str ) )
-                        {
-                            fileArray.Add( file.GetFullPath( ) );
-                        }
-                    }
-                }
-            }
-            MakeAlbumImageArray( child, fileArray );
-            child = child->GetNext( );
-        }
-        return true;
-    }
+    //             if ( wxFileExists( str ) )
+    //             {
+    //                 fileArray.Add( file.GetFullPath( ) );
+    //             }
+    //             else
+    //             {
+    //                 wxString path = albumPath + "/art/" + imageName;
+    //                 wxFileName file( path );
+    //                 wxString str = file.GetFullPath( );
+    //                 file.MakeAbsolute( );
+    //                 str = file.GetFullPath( );
+    //                 if ( wxFileExists( str ) )
+    //                 {
+    //                     fileArray.Add( file.GetFullPath( ) );
+    //                 }
+    //                 else
+    //                 {
+    //                     albumPath = GetProject( )->GetImagePath( );
+    //                     wxString path = albumPath + "/" + imageName;
+    //                     wxFileName file( path );
+    //                     wxString str = file.GetFullPath( );
+    //                     file.MakeAbsolute( );
+    //                     str = file.GetFullPath( );
+    //                     if ( wxFileExists( str ) )
+    //                     {
+    //                         fileArray.Add( file.GetFullPath( ) );
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //         MakeAlbumImageArray( child, fileArray );
+    //         child = child->GetNext( );
+    //     }
+    //     return true;
+    // }
 
 
-    bool AlbumVolume::MakeAlbumImageRepository( wxString outputZipName )
-    {
+    // bool AlbumVolume::MakeAlbumImageRepository( wxString outputZipName )
+    // {
 
-        m_imageRepository = new Utils::ImageRepository( outputZipName );
-        wxArrayString fileArray;
+    //     m_imageRepository = new Utils::ImageRepository( outputZipName );
+    //     wxArrayString fileArray;
 
-        MakeAlbumImageArray( fileArray );
-        m_imageRepository->Insert( fileArray );
+    //     MakeAlbumImageArray( fileArray );
+    //     m_imageRepository->Insert( fileArray );
 
-        return true;
-    }
+    //     return true;
+    // }
 
     AlbumVolume* NewAlbumVolumeInstance( )
     {

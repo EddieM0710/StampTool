@@ -114,7 +114,7 @@ bool CatalogCodePanel::Create( wxWindow* parent, wxWindowID id, const wxPoint& p
 
 void CatalogCodePanel::CreateControls( )
 {
-    // CatalogCodePanel content construction
+    //    std::cout << "CatalogCodePanel" << "\n";
 
     CatalogCodePanel* itemPanel1 = this;
 

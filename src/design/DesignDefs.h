@@ -78,6 +78,13 @@ namespace Design {
         AT_ImageName,
         AT_CalculateSpacing,
         AT_FixedSpacingSize,
+        AT_OverSizePaper,
+        AT_PaperHeight,
+        AT_PaperWidth,
+        AT_SelvageHeight,
+        AT_SelvageWidth,
+        AT_MountAllowanceHeight,
+        AT_MountAllowanceWidth,
         AT_NbrAttrTypes,
         AT_NOTYPE
     } AlbumAttrType;
@@ -164,7 +171,7 @@ namespace Design {
 
     // Conversion factor to convert from Pixels to MM. 
     // Screen units are in pixels. Album Design elements are in mm.
-    extern wxRealPoint  ScaleFactor;
+    extern wxRealPoint  DeviceUnitsPerMM;
 
     extern wxString AlbumBaseNames[ AT_NbrAlbumTypes ];
 

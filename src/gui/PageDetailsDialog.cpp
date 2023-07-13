@@ -134,6 +134,7 @@ void PageDetailsDialog::Init( )
 
 void PageDetailsDialog::CreateControls( )
 {
+    //   std::cout << "PageDetailsDialog" << "\n";
 
     PageDetailsDialog* theDialog = this;
 
@@ -146,7 +147,7 @@ void PageDetailsDialog::CreateControls( )
     wxBoxSizer* nameHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
     theDialogVerticalSizer->Add( nameHorizontalSizer, 0, wxGROW | wxALL, 0 );
 
-    m_name = new LabeledTextBox( theDialog, ID_PAGENAMELABELEDTEXTBOX, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
+    m_name = new LabeledTextBox( theDialog, ID_PAGENAMELABELEDTEXTBOX, wxDefaultPosition, wxDefaultSize, wxNO_BORDER | wxTAB_TRAVERSAL );
     m_name->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
     nameHorizontalSizer->Add( m_name, 1, wxGROW | wxALL, 5 );
 
@@ -155,7 +156,7 @@ void PageDetailsDialog::CreateControls( )
 
     wxNotebook* notebook = new wxNotebook( theDialog, ID_NOTEBOOK, wxDefaultPosition, wxDefaultSize, wxBK_DEFAULT );
 
-    wxPanel* notebookDetailsPanel = new wxPanel( notebook, ID_NOTEBOOKDETAILSPANEL, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
+    wxPanel* notebookDetailsPanel = new wxPanel( notebook, ID_NOTEBOOKDETAILSPANEL, wxDefaultPosition, wxDefaultSize, wxNO_BORDER | wxTAB_TRAVERSAL );
     notebookDetailsPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
 
     wxBoxSizer* detailsVerticalSizer = new wxBoxSizer( wxVERTICAL );
@@ -200,7 +201,7 @@ void PageDetailsDialog::CreateControls( )
 
     notebook->AddPage( notebookDetailsPanel, _( "Details" ) );
 
-    wxPanel* notebookPositionPanel = new wxPanel( notebook, ID_NOTEBOOKPOSITIONPANEL, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
+    wxPanel* notebookPositionPanel = new wxPanel( notebook, ID_NOTEBOOKPOSITIONPANEL, wxDefaultPosition, wxDefaultSize, wxNO_BORDER | wxTAB_TRAVERSAL );
     notebookPositionPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
 
     wxBoxSizer* positionVerticalSizer = new wxBoxSizer( wxVERTICAL );

@@ -90,6 +90,7 @@ bool FileCreateDialog::Create( wxWindow* parent, wxWindowID id, const wxString& 
 
 void FileCreateDialog::CreateControls( )
 {
+    //   std::cout << "FileCreateDialog" << "\n";
 
     FileCreateDialog* itemDialog1 = this;
 

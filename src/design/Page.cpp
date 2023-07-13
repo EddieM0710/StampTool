@@ -70,10 +70,10 @@ namespace Design {
         double xPos = x + GetLeftMargin( );
         double yPos = y + GetTopMargin( );
 
-
         wxImage image = GetAlbumVolume( )->GetImage( borderName );
 
-        DrawImage( dc, image, xPos, yPos,
+        DrawImage( dc, image,
+            xPos, yPos,
             GetWidth( ),
             GetHeight( ) );
 
@@ -93,13 +93,7 @@ namespace Design {
         yPos = yPos + GetBorderSize( );
         if ( GetShowTitle( ) )
         {
-            // wxFont currFont = dc.GetFont( );
-            // wxColour currColor = dc.GetTextForeground( );
-            // wxFont titleFont = GetFont( AT_TitleFontType );
-            // wxFont font( titleFont );
-            // wxColour color = GetColor( AT_TitleFontType );
-            // dc.SetFont( font );
-            // dc.SetTextForeground( color );
+
 
             // RealPoint pos( xPos + GetTitleFrame()->GetXPos( ), yPos + GetTitleFrame()->GetYPos( ) );
             // RealSize size( GetTitleFrame()->GetWidth( ), GetTitleFrame()->GetHeight( ) );
@@ -132,17 +126,26 @@ namespace Design {
     void Page::DrawPDF( wxPdfDocument* doc, double x, double y )
     {
 
-
         wxString borderName = GetBorderFileName( );
 
         double xPos = GetLeftMargin( );
         double yPos = GetTopMargin( );
+        double width = GetAlbum( )->GetWidth( );
+        double height = GetAlbum( )->GetHeight( );
 
         wxImage image = GetAlbumVolume( )->GetImage( borderName );
         doc->Image( borderName, image, xPos, yPos,
             GetWidth( ),
             GetHeight( ) );
 
+        if ( GetAlbum( )->GetOverSizePaper( ) )
+        {
+
+            wxPdfLineStyle currStyle = PDFLineStyle( doc, *wxBLACK, .2, defaultDash );
+            doc->Line( 0, height, width, height );
+            doc->Line( width, 0, width, height );
+            doc->SetLineStyle( currStyle );
+        }
         double leftPadding = 0;
         double rightPadding = 0;
         double topPadding = 0;
@@ -171,9 +174,16 @@ namespace Design {
 
 
 
-    LabelFrame* Page::GetTitleFrame( ) { return m_titleFrame; };
+    LabelFrame* Page::GetTitleFrame( )
+    {
+        return m_titleFrame;
+    };
 
-    wxString  Page::GetTitleString( ) { return m_titleFrame->GetString( ); };
+    wxString  Page::GetTitleString( )
+    {
+        return m_titleFrame->GetString( );
+    };
+
     void  Page::SetTitleString( wxString str )
     {
         SetAttrStr( AT_Name, str );
@@ -412,14 +422,12 @@ namespace Design {
                         topPadding = row->GetTopContentPadding( );
                         bottomPadding = row->GetBottomContentPadding( );
                     }
-                    row->SetWidth( GetWidth( )
-                        - leftPadding
-                        - rightPadding - 2 * GetBorderSize( ) );
+                    row->SetWidth( GetWidth( ) - leftPadding - rightPadding - 2 * GetBorderSize( ) );
                     row->SetHeight( row->GetMinHeight( ) + topPadding + bottomPadding );
-                    if ( row->GetShowTitle( ) )
-                    {
-                        row->SetHeight( row->GetHeight( ) + 3 * row->GetTitleFrame( )->GetHeight( ) );
-                    }
+                    // if ( row->GetShowTitle( ) )
+                    // {
+                    //     row->SetHeight( row->GetHeight( ) + 3 * row->GetTitleFrame( )->GetHeight( ) );
+                    // }
 
                     break;
                 }

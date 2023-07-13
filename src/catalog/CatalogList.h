@@ -59,6 +59,8 @@ namespace Catalog {
         ~CatalogList( ) { };
 
         void BuildVolumeNameStrings( );
+        void SortNameArray( );
+        void dumpArray( wxArrayString& array );
 
         ///  @brief 
         ///  
@@ -71,6 +73,8 @@ namespace Catalog {
         ///  @return Catalog::CatalogVolume* 
         Catalog::CatalogVolume* NewCatalogVolume( );
 
+        int FindVolumeNdx( wxString str );
+        int FindVolumeNameArrayNdx( wxString str );
 
         ///  @brief Get the Catalog Volume object
         ///  

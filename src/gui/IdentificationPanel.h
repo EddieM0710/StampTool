@@ -58,6 +58,7 @@ public:
         ID_THEMETEXTBOX,
         ID_THEMETEXTBOXUP,
         ID_COUNTRYTEXTBOX,
+        ID_PEFORATIONTEXTBOX,
         ID_EDITCHECKBOX,
         ID_WIDTHLABELEDTEXTBOX,
         ID_HEIGHTLABELEDTEXTBOX,
@@ -210,6 +211,7 @@ private:
     LabeledTextBox* m_series;    ///< Stamp Series display
     LabeledTextBox* m_themes;    ///< Stamp Theme display
     LabeledTextBox* m_country;   ///< Stamp Country display
+    LabeledTextBox* m_perforation;   ///< Stamp perforation display
     LabeledTextBox* m_width;   ///< Stamp width display
     LabeledTextBox* m_height;   ///< Stamp height display
 

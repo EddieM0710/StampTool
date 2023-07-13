@@ -84,20 +84,24 @@ namespace Design {
         {
             leftPadding = GetLeftContentPadding( );
             topPadding = GetTopContentPadding( );
+
+            wxPdfLineStyle currStyle = PDFLineStyle( doc, *wxBLACK, .2 );
             m_frame.DrawPDF( doc, x, y );
+            doc->SetLineStyle( currStyle );
         }
         //m_frame.DrawPDF( doc, x, y );
 
-        if ( GetShowTitle( ) )
-        {
-            RealPoint pos( x, y );
-            RealSize size( GetWidth( ), GetTitleFrame( )->GetHeight( ) );
-            //            DrawTitlePDF( doc, m_title, pos, size );
-            y = y + GetTitleFrame( )->GetHeight( );
-        }
-
         double xPos = x + GetXPos( ) + leftPadding;
         double yPos = y + GetYPos( ) + topPadding;
+
+        if ( GetShowTitle( ) )
+        {
+            //RealPoint pos( x + GetXPos( ), y + GetYPos( ) );
+            //RealSize size( GetWidth( ), GetTitleFrame( )->GetHeight( ) );
+            m_titleFrame->DrawPDF( doc, xPos, yPos );
+            //DrawTitlePDF( doc, m_title, pos, size );
+ //           y = yPos + GetTitleFrame( )->GetHeight( );
+        }
 
         wxTreeItemIdValue cookie;
         wxTreeItemId parentID = GetTreeItemId( );
@@ -200,6 +204,7 @@ namespace Design {
         minHeight = minHeight + topPadding + bottomPadding;
         minWidth = minWidth + leftPadding + rightPadding;
 
+        // update the title frame
         UpdateString( GetTitleFrame( ), GetWidth( ) );
 
         if ( GetShowTitle( ) )
@@ -208,7 +213,7 @@ namespace Design {
             minHeight += 3 * GetTitleFrame( )->GetHeight( );
             GetTitleFrame( )->SetYPos( GetTitleFrame( )->GetHeight( ) );
         }
-
+        // row min height and width
         SetMinHeight( minHeight );
         SetMinWidth( minWidth );
         return true;
@@ -234,7 +239,7 @@ namespace Design {
             GetTitleFrame( )->SetXPos( 0 + ( GetWidth( ) - GetTitleFrame( )->GetWidth( ) ) / 2 );
             GetTitleFrame( )->SetYPos( GetTitleFrame( )->GetHeight( ) );
             // allow for space above title, title height and that much again for nice spaing
-            yPos = GetTitleFrame( )->GetHeight( );
+            yPos = GetTitleFrame( )->GetHeight( ) * 3;
         }
         double spacing = 4;
         if ( CalculateSpacing( ) )
@@ -248,6 +253,9 @@ namespace Design {
         else
         {
             spacing = GetFixedSpacingDbl( );
+            //find the extra space to go on each end
+            //it is the amount from the width of items - the minwidth - amount of total space between items  
+            //then divide the remaining by 2 to go on each end
             xPos += ( ( GetWidth( ) - GetMinWidth( ) ) - ( nbrCols + nbrStamps - 1 ) * spacing ) / 2;
         }
 

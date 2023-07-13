@@ -151,7 +151,8 @@ void SettingsDialog::Init( )
 
 void SettingsDialog::CreateControls( )
 {
-    // SettingsDialog content construction
+    //   std::cout << "SettingsDialog" << "\n";
+       // SettingsDialog content construction
 
     SettingsDialog* theDialog = this;
 

@@ -41,11 +41,6 @@
 
 #include "Defs.h"
 
- //#include "StampToolApp.h"
- //#include "gui/StampToolFrame.h"
- //#include "gui/AppData.h"
-
- //wxDECLARE_APP( StampToolApp );
 
 namespace Catalog {
 
@@ -60,6 +55,48 @@ namespace Catalog {
         return true;
     }
 
+    void CatalogList::dumpArray( wxArrayString& array )
+    {
+        for ( int j = 0; j < array.Count( ); j++ )
+        {
+            wxString str = array.Item( j );
+            std::cout << str << " ";
+        }
+        std::cout << "\n";
+    }
+    void CatalogList::SortNameArray( )
+    {
+        wxArrayString oldNameStrings = m_volumeNameStrings;
+        m_volumeNameStrings.Clear( );
+        for ( int j = 0; j < oldNameStrings.Count( ); j++ )
+        {
+            wxString str = oldNameStrings.Item( j );
+            if ( j == 0 )
+            {
+                m_volumeNameStrings.Add( str );
+            }
+            else
+            {
+                bool done = false;
+                for ( int i = 0; i < m_volumeNameStrings.Count( ); i++ )
+                {
+                    wxString test = m_volumeNameStrings.Item( i );
+                    if ( test.Cmp( str ) < 0 )
+                    {
+                        m_volumeNameStrings.Insert( str, i );
+                        done = true;
+                        break;
+                    }
+                }
+                if ( !done )
+                {
+                    m_volumeNameStrings.Add( str );
+                }
+            }
+            dumpArray( m_volumeNameStrings );
+        }
+    }
+
     void CatalogList::BuildVolumeNameStrings( )
     {
         m_volumeNameStrings.Clear( );
@@ -70,6 +107,7 @@ namespace Catalog {
             Catalog::CatalogVolume* volume = ( Catalog::CatalogVolume* ) ( *it );
             m_volumeNameStrings.Add( volume->GetVolumeName( ) );
         }
+        SortNameArray( );
     }
     Catalog::CatalogVolume* CatalogList::GetCatalogVolume( )
     {
@@ -112,6 +150,34 @@ namespace Catalog {
 
     };
 
+
+    int CatalogList::FindVolumeNdx( wxString str )
+    {
+        for ( int i = 0; i < m_catalogArray.size( ); i++ )
+        {
+            Catalog::CatalogVolume* volume = ( Catalog::CatalogVolume* ) ( m_catalogArray.at( i ) );
+            if ( !str.Cmp( volume->GetVolumeName( ) ) )
+            {
+                return i;
+            }
+        }
+        return 0;
+    }
+
+
+
+    // int CatalogList::FindVolumeNameArrayNdx( wxString str )
+    // {
+    //     for ( int i = 0; i < m_volumeNameStrings.Count( ); i++ )
+    //     {
+    //         wxString name = ( Catalog::CatalogVolume* ) ( m_volumeNameStrings.Item( i ) );
+    //         if ( !str.Cmp( name ) )
+    //         {
+    //             return i;
+    //         }
+    //     }
+    //     return 0;
+    // }
     Catalog::CatalogVolume* CatalogList::NewCatalogVolume( )
     {
         Catalog::CatalogVolume* catalogVolume = Catalog::NewCatalogVolumeInstance( );

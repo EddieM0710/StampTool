@@ -37,7 +37,8 @@
 #include <wx/msgdlg.h>
 
 #include "design/Album.h"
-
+#include <wx/pdfdc.h>
+#include <wx/cmndata.h>
 #include "design/AlbumVolume.h"
 #include "design/Page.h"
 #include "utils/XMLUtilities.h"
@@ -50,13 +51,32 @@
 
 namespace Design {
 
+
+
     wxString Album::DrawPDF( )
     {
-        Design::InitDesignDefs( Design::DD_PDF );
-        // The text:p, i.e., content holder, for this Page
-        double width = GetAttrDbl( AT_PageWidth );
-        double height = GetAttrDbl( AT_PageHeight );
-        wxPdfDocument* pdfDoc = new wxPdfDocument( wxPORTRAIT, width, height );
+
+        wxString docName = GetDocName( );
+        docName += ".pdf";
+        wxFileName outFile( docName );
+        outFile.MakeAbsolute( );
+        wxString fullPath = outFile.GetFullPath( );
+
+        double width = GetAttrDbl( AT_PaperWidth );
+        double height = GetAttrDbl( AT_PaperHeight );
+        wxPdfDocument* doc = new wxPdfDocument( wxPORTRAIT, width, height );
+
+        wxPdfDC pdfDC( doc, doc->GetPageWidth( ), doc->GetPageHeight( ) );
+
+        // set wxPdfDC mapping mode style so
+        // we can scale fonts and graphics
+        // coords with a single setting
+        pdfDC.SetMapModeStyle( wxPDF_MAPMODESTYLE_PDF );
+        pdfDC.SetMapMode( wxMM_POINTS );
+        wxSize pdfPPI = pdfDC.GetPPI( );
+        DeviceUnitsPerMM.x = pdfPPI.x / 25.4;
+        DeviceUnitsPerMM.y = pdfPPI.y / 25.4;
+        pdfDC.SetUserScale( DeviceUnitsPerMM.x, DeviceUnitsPerMM.y );
 
         wxTreeItemIdValue cookie;
         wxTreeItemId parentID = GetTreeItemId( );
@@ -65,19 +85,18 @@ namespace Design {
         {
             int childType = ( AlbumBaseType ) GetAlbumTreeCtrl( )->GetItemType( childID );
 
-            pdfDoc->AddPage( );
+            doc->AddPage( );
+
             // set the layout parameters into the child
             Page* page = ( Page* ) GetAlbumTreeCtrl( )->GetItemNode( childID );
-            page->DrawPDF( pdfDoc, width, height );
-            childID = GetAlbumTreeCtrl( )->GetNextChild( parentID, cookie );
-        }
 
-        wxString docName = GetDocName( );
-        docName += ".pdf";
-        wxFileName outFile( docName );
-        outFile.MakeAbsolute( );
-        wxString fullPath = outFile.GetFullPath( );
-        pdfDoc->SaveAsFile( fullPath );
+            page->DrawPDF( doc, width, height );
+
+            childID = GetAlbumTreeCtrl( )->GetNextChild( parentID, cookie );
+
+        }
+        doc->SaveAsFile( fullPath );
+
         wxString txt = wxString::Format( "Generated %s.\n\n", fullPath );
         wxMessageDialog* dlg = new wxMessageDialog(
             ( wxWindow* ) GetFrame( ), txt,
@@ -85,6 +104,7 @@ namespace Design {
             wxOK | wxCENTER );
         int rsp = dlg->ShowModal( );
         return docName;
+
     }
 
     void Album::DumpFont( wxString Level )
@@ -189,6 +209,7 @@ namespace Design {
     double Album::GetPageHeight( ) { return GetAttrDbl( AT_PageHeight ); };
 
     wxString Album::GetPageHeightStr( ) { return GetAttrStr( AT_PageHeight ); };
+    wxString Album::GetPaperHeightStr( ) { return GetAttrStr( AT_PaperHeight ); };
 
     void Album::GetPageParameters( wxString& width,
         wxString& height,
@@ -204,6 +225,12 @@ namespace Design {
         rightMargin = GetAttrStr( AT_RightMargin );
         leftMargin = GetAttrStr( AT_LeftMargin );
     };
+
+    double Album::GetPaperWidth( ) { return GetAttrDbl( AT_PaperWidth ); };
+
+    double Album::GetPaperHeight( ) { return GetAttrDbl( AT_PaperHeight ); };
+
+    wxString Album::GetPaperWidthStr( ) { return GetAttrStr( AT_PaperWidth ); };
 
     double Album::GetPageWidth( ) { return GetAttrDbl( AT_PageWidth ); };
 
@@ -288,6 +315,9 @@ namespace Design {
     void Album::Save( wxXmlNode* xmlNode )
     {
         SetAttribute( xmlNode, AT_Name );
+        SetAttribute( xmlNode, AT_OverSizePaper );
+        SetAttribute( xmlNode, AT_PaperHeight );
+        SetAttribute( xmlNode, AT_PaperWidth );
         SetAttribute( xmlNode, AT_PageWidth );
         SetAttribute( xmlNode, AT_PageHeight );
         SetAttribute( xmlNode, AT_TopMargin );
@@ -352,6 +382,8 @@ namespace Design {
 
     void Album::SetBorderSize( wxString str ) { return SetAttrStr( AT_BorderSize, str ); };
 
+    void Album::SetBorderFilename( wxString str ) { return SetAttrStr( AT_BorderFileName, str ); };
+
     void Album::SetBottomMargin( wxString str ) { return SetAttrStr( AT_BottomMargin, str ); };
 
     void Album::SetDocName( wxString str ) { return SetAttrStr( AT_Name, str ); };
@@ -374,6 +406,11 @@ namespace Design {
     void Album::SetPageHeight( wxString str ) { return SetAttrStr( AT_PageHeight, str ); };
 
     void Album::SetPageWidth( wxString str ) { return SetAttrStr( AT_PageWidth, str ); };
+
+    void Album::SetPaperHeight( wxString str ) { return SetAttrStr( AT_PaperHeight, str ); };
+
+    void Album::SetPaperWidth( wxString str ) { return SetAttrStr( AT_PaperWidth, str ); };
+
 
     void Album::SetRightMargin( wxString str ) { return SetAttrStr( AT_RightMargin, str ); };
 

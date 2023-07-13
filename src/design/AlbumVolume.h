@@ -38,7 +38,7 @@
 #include "utils/XMLUtilities.h"
 
 class AlbumTreeCtrl;
-namespace Utils { class ImageRepository; };
+//namespace Utils { class ImageRepository; };
 
 namespace Design {
 
@@ -66,7 +66,7 @@ namespace Design {
         ///  @return Album* 
         Album* GetAlbum( ) { return m_album; };
 
-        Utils::ImageRepository* GetImageRepository( );
+        //       Utils::ImageRepository* GetImageRepository( );
 
         wxString GetAlbumBaseName( );
 
@@ -92,7 +92,7 @@ namespace Design {
 
         wxImage GetImage( wxString filename );
 
-        wxImage* GetImageFromZip( wxString inputZipName, wxString newImage );
+        //        wxImage* GetImageFromZip( wxString inputZipName, wxString newImage );
 
         wxString GetPath( );
 
@@ -102,11 +102,11 @@ namespace Design {
         /// @brief Gets the page of the selected design given node
         AlbumBase* GetPage( AlbumBase* node );
 
-        wxString GetZipFileName( );
+        //        wxString GetZipFileName( );
 
-        /// @brief 
-        ///  
-        ///  @return AlbumVolume* 
+                /// @brief 
+                ///  
+                ///  @return AlbumVolume* 
         AlbumVolume* InitAlbumVolume( );
 
         /// @brief 
@@ -137,17 +137,17 @@ namespace Design {
         /// @brief loads an xml file into memory 
         bool LoadXML( );
 
-        bool MakeAlbumImageArray( wxArrayString& fileArray );
+        //        bool MakeAlbumImageArray( wxArrayString& fileArray );
 
-        bool MakeAlbumImageArray( wxXmlNode* parent, wxArrayString& fileArray );
+        //        bool MakeAlbumImageArray( wxXmlNode* parent, wxArrayString& fileArray );
 
-        bool MakeAlbumImageRepository( wxString outputZipName );
+        //        bool MakeAlbumImageRepository( wxString outputZipName );
 
-        bool AddImageFile( wxZipOutputStream& zip, wxString inputFileName, wxString zippedFileName );
+        //        bool AddImageFile( wxZipOutputStream& zip, wxString inputFileName, wxString zippedFileName );
 
-        /// @brief Set the Album object
-        ///  
-        ///  @param album 
+                /// @brief Set the Album object
+                ///  
+                ///  @param album 
         void SetAlbum( Album* album ) { m_album = album; };
 
         /// @brief 
@@ -195,7 +195,7 @@ namespace Design {
         int isOKPtr;
         wxString m_albumFilename;
         wxXmlDocument* m_albumDoc;
-        Utils::ImageRepository* m_imageRepository;
+        //        Utils::ImageRepository* m_imageRepository;
         Album* m_album;
         //        Utils::ImageZip* m_zip;
         bool m_dirty;

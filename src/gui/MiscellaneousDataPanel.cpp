@@ -115,6 +115,7 @@ void MiscellaneousDataPanel::Init( )
 
 void MiscellaneousDataPanel::CreateControls( )
 {
+    //    std::cout << "MiscellaneousDataPanel" << "\n";
 
     MiscellaneousDataPanel* itemPanel1 = this;
 

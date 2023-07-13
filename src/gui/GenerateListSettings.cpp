@@ -92,6 +92,7 @@ bool GenerateListSettings::Create( wxWindow* parent, wxWindowID id, const wxStri
 
 void GenerateListSettings::CreateControls( )
 {
+    //   std::cout << "GenerateListSettings" << "\n";
 
     GenerateListSettings* itemDialog1 = this;
 

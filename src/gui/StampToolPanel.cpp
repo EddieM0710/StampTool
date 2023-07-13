@@ -48,6 +48,12 @@
 #include "gui/CatalogTreeCtrl.h"
 #include "gui/GuiUtils.h"
 
+#include "wx/pdfdc.h"
+#include "wx/pdffontmanager.h"
+#include "wx/pdfprint.h"
+#include <wx/mimetype.h>
+
+
 IMPLEMENT_DYNAMIC_CLASS( StampToolPanel, wxPanel )
 
 BEGIN_EVENT_TABLE( StampToolPanel, wxPanel )
@@ -96,6 +102,7 @@ void StampToolPanel::Init( )
 
 void StampToolPanel::CreateControls( )
 {
+    //   std::cout << "StampToolPanel" << "\n";
     StampToolPanel* itemPanel1 = this;
 
     wxBoxSizer* panelVerticalBoxSizer = new wxBoxSizer( wxVERTICAL );
@@ -121,7 +128,7 @@ void StampToolPanel::CreateControls( )
         ID_NOTEBOOK, wxDefaultPosition,
         wxDefaultSize, wxBK_DEFAULT );
 
-    m_stampToolSplitter->SplitVertically( m_catalogTreePanel, m_notebook, 600 );
+    m_stampToolSplitter->SplitVertically( m_catalogTreePanel, m_notebook, 200 );
 
     m_stampDescriptionPanel = new StampDescriptionPanel( m_notebook,
         ID_DESCRIPTIONPANELFOREIGN, wxDefaultPosition,
@@ -170,9 +177,7 @@ bool StampToolPanel::ShouldShowStates( )
     }
     return false;
 }
-/*
- *  COMMAND_NOTEBOOK_PAGE_CHANGED event handler for ID_NOTEBOOK
- */
+
 
 void StampToolPanel::OnNotebookPageChanged( wxNotebookEvent& event )
 {
@@ -180,11 +185,6 @@ void StampToolPanel::OnNotebookPageChanged( wxNotebookEvent& event )
 
     wxWindow* page = m_notebook->GetPage( sel );
 
-    // if ( page == m_webViewPanel )
-    // {
-    //     m_webViewPanel->DoReLoad( );
-    // }
-    // else 
     if ( page != m_stampDescriptionPanel )
     {
         m_catalogTreePanel->GetCatalogTree( )->SetStates( true );
@@ -196,6 +196,28 @@ void StampToolPanel::OnNotebookPageChanged( wxNotebookEvent& event )
         m_catalogTreePanel->GetCatalogTree( )->LoadTree( );
     }
     event.Skip( );
+}
+
+void StampToolPanel::OnPDF( wxString filename )
+{
+    wxFileName fileName( filename );
+
+    wxPrintData printData;
+    printData.SetOrientation( wxPORTRAIT );
+    printData.SetPaperId( wxPAPER_A4 );
+    printData.SetFilename( fileName.GetFullPath( ) );
+
+
+    wxFileType* fileType = wxTheMimeTypesManager->GetFileTypeFromExtension( wxS( "pdf" ) );
+    if ( fileType != NULL )
+    {
+        wxString cmd = fileType->GetOpenCommand( fileName.GetFullPath( ) );
+        if ( !cmd.IsEmpty( ) )
+        {
+            wxExecute( cmd );
+        }
+        delete fileType;
+    }
 }
 
 

@@ -38,7 +38,10 @@
 #include "gui/AlbumImagePanel.h"
 #include "art/NotFound.xpm"
 #include "art/fleur_di_lis3.xpm"
+#include <wx/dcmemory.h>
+#include <wx/dcgraph.h>
 
+wxPdfArrayDouble defaultDash;
 
 
 void DrawLabelPDF( wxPdfDocument* doc, const wxString& text,
@@ -62,12 +65,16 @@ void DrawLabel( wxDC& dc, const wxString& text,
 {
     // wxSize devicePos = LogicalToDeviceRel( dc, pos.x, pos.y );
     // wxSize deviceSize = LogicalToDeviceRel( dc, size.x, size.y );
-    // double tx = pos.x * Design::ScaleFactor.x;
-    // double ty = pos.y * Design::ScaleFactor.y;
+    // double tx = pos.x * Design::DeviceUnitsPerMM.x;
+    // double ty = pos.y * Design::DeviceUnitsPerMM.y;
 
     //wxRect rect( devicePos.x, devicePos.y , deviceSize.x, deviceSize.y );
-    wxRect rect( pos.x * Design::ScaleFactor.x, pos.y * Design::ScaleFactor.y, size.x * Design::ScaleFactor.x, size.y * Design::ScaleFactor.y );
+    wxRect rect( pos.x * Design::DeviceUnitsPerMM.x, pos.y * Design::DeviceUnitsPerMM.y,
+        size.x * Design::DeviceUnitsPerMM.x, size.y * Design::DeviceUnitsPerMM.y );
+    //wxRect rect( pos.x, pos.y, size.x, size.y );
     dc.DrawLabel( text, rect, alignment, indexAccel );
+
+
 }
 
 void DrawTitle( wxDC& dc, wxString title, RealPoint pos, RealSize size )
@@ -147,6 +154,28 @@ wxSize LogicalToDeviceRel( wxDC& dc, double x, double y )
     return size;
 }
 
+wxPen DCLineStyle( wxDC& dc, wxColour colour, double  width, wxPenStyle style )
+{
+    wxPen currStyle = dc.GetPen( );
+    wxPen frameStyle( currStyle );
+    frameStyle.SetColour( colour );
+    frameStyle.SetStyle( style );
+    frameStyle.SetWidth( width );
+
+    return currStyle;
+}
+
+wxPdfLineStyle PDFLineStyle( wxPdfDocument* doc, wxColour colour, double  width, const wxPdfArrayDouble& dash )
+{
+    wxPdfLineStyle currStyle = doc->GetLineStyle( );
+    wxPdfLineStyle frameStyle( currStyle );
+    frameStyle.SetColour( wxPdfColour( colour ) );
+    frameStyle.SetDash( dash );
+    frameStyle.SetWidth( width );
+    doc->SetLineStyle( frameStyle );
+    return currStyle;
+}
+
 void DrawRectanglePDF( wxPdfDocument* doc, double x, double y, double width, double height )
 {
     doc->Rect( x, y, width, height, wxPDF_STYLE_DRAW );
@@ -154,15 +183,9 @@ void DrawRectanglePDF( wxPdfDocument* doc, double x, double y, double width, dou
 
 void DrawRectangle( wxDC& dc, double x, double y, double width, double height )
 {
-    // wxBrush currBrush = dc.GetBrush( );
-    // wxBrush brush( currBrush );
-    // brush.SetStyle( wxBRUSHSTYLE_TRANSPARENT );
-    // dc.SetBrush( brush );
-    dc.DrawRectangle( x * Design::ScaleFactor.x, y * Design::ScaleFactor.y, width * Design::ScaleFactor.x, height * Design::ScaleFactor.y );
-    // dc.SetBrush( currBrush );
-
+    dc.DrawRectangle( x * Design::DeviceUnitsPerMM.x, y * Design::DeviceUnitsPerMM.y, width * Design::DeviceUnitsPerMM.x, height * Design::DeviceUnitsPerMM.y );
+    //dc.DrawRectangle( x, y, width, height );
 };
-
 
 wxImage GetImageFromFilename( wxString filename )
 {
@@ -195,36 +218,6 @@ wxImage GetImageFromFilename( wxString filename )
     return image;
 }
 
-//--------------
-
-// wxImage GetImage( wxString filename )
-// {
-//     wxImage image;
-//     if ( filename.IsEmpty( ) )
-//     {
-//         image = wxImage( NotFound );
-//     }
-//     else
-//     {
-
-//         Utils::ImageRepository* imageRepository = GetAlbumVolume( )->GetImageRepository( );
-
-//         if ( !imageRepository || !imageRepository->Exists( filename ) )
-//         {
-//             image = wxImage( NotFound );
-//         }
-//         else
-//         {
-//             image = imageRepository->GetImage( filename );
-
-//             if ( !image.IsOk( ) )
-//             {
-//                 image = wxImage( NotFound );
-//             }
-//         }
-//     }
-//     return image;
-// }
 // void DrawImagePDF( wxPdfDocument* doc, wxImage image, double x, double y, double w, double h )
 // {
 
@@ -234,7 +227,73 @@ wxImage GetImageFromFilename( wxString filename )
 //     doc->Image( fileName, image, x, y, w, h );
 
 
-// }
+void  BlitResize( wxDC& dc, wxImage image, double x, double y, double w, double h )
+{
+    wxBitmap bmpIn( image );
+
+    bool antialiasing = true;
+    wxSize sizeIn = bmpIn.GetSize( );
+
+    wxSize pixels = dc.GetSize( );
+    wxSize mm = dc.GetSizeMM( );
+    RealSize dcPixelsPerMM;
+    dcPixelsPerMM.x = pixels.x / mm.x;
+    dcPixelsPerMM.y = pixels.y / mm.y;
+
+    double scale = w * dcPixelsPerMM.x / sizeIn.x;
+
+    wxSize sizeOut( ( int ) w * dcPixelsPerMM.x * GetAlbumImagePanel( )->GetZoom( ), ( int ) h * dcPixelsPerMM.y * GetAlbumImagePanel( )->GetZoom( ) );
+
+    wxBitmap bmpOut;
+    bmpOut.Create( sizeOut );   // the final size
+
+    wxMemoryDC inDC( bmpIn );
+
+    if ( antialiasing && scale < 0.4 )
+    {
+        wxGCDC outDC( bmpOut );
+        outDC.StretchBlit( wxPoint( 0, 0 ), sizeOut, &inDC, wxPoint( 0, 0 ), sizeIn );
+    }
+    else
+    {
+        wxMemoryDC outDC( bmpOut );
+        outDC.StretchBlit( wxPoint( 0, 0 ), sizeOut, &inDC, wxPoint( 0, 0 ), sizeIn );
+        outDC.SelectObject( wxNullBitmap );
+    }
+    inDC.SelectObject( wxNullBitmap );
+
+    dc.DrawBitmap( bmpOut, x, y, false );
+}
+
+
+void RescaleImage( wxDC& dc, wxImage image, double x, double y, double w, double h )
+{
+    wxBitmap bitmap( image.Scale( w, h, wxIMAGE_QUALITY_HIGH ) );
+    dc.DrawBitmap( bitmap, x, y, false );
+}
+
+void Kluge( wxDC& dc, wxImage image, double x, double y, double w, double h )
+{
+    double xScale;
+    double yScale;
+    dc.GetUserScale( &xScale, &yScale );
+    dc.SetUserScale( 1, 1 );
+
+    wxSize size = image.GetSize( );
+
+    double imageScaleX = ( w / size.x );
+    double imageScaleY = ( h / size.y );
+
+    double zoom = GetAlbumImagePanel( )->GetUserScale( );
+
+    dc.SetUserScale( imageScaleX * zoom, imageScaleY * zoom );
+    wxBitmap bitmap( image );
+
+    dc.DrawBitmap( bitmap, x / imageScaleX, y / imageScaleY, false );
+    dc.SetUserScale( xScale, yScale );
+
+}
+
 void DrawImage( wxDC& dc, wxImage image, double x, double y, double w, double h )
 {
     if ( image.IsOk( ) )
@@ -247,17 +306,20 @@ void DrawImage( wxDC& dc, wxImage image, double x, double y, double w, double h 
             w = 10;
         }
 
-        image.Rescale( w * Design::ScaleFactor.x, h * Design::ScaleFactor.y );
+
+        // RescaleImage( dc, image, x * Design::DeviceUnitsPerMM.x, y * Design::DeviceUnitsPerMM.y, w * Design::DeviceUnitsPerMM.x, h * Design::DeviceUnitsPerMM.y );
+        // BlitResize( dc, image, x * Design::DeviceUnitsPerMM.x, y * Design::DeviceUnitsPerMM.y, w * Design::DeviceUnitsPerMM.x, h * Design::DeviceUnitsPerMM.y );
+        // Kluge( dc, image, x * Design::DeviceUnitsPerMM.x, y * Design::DeviceUnitsPerMM.y, w * Design::DeviceUnitsPerMM.x, h * Design::DeviceUnitsPerMM.y );
+
+        image.Rescale( w * Design::DeviceUnitsPerMM.x, h * Design::DeviceUnitsPerMM.y );
         wxBitmap bitmap = image;
 
-        dc.DrawBitmap( bitmap, x * Design::ScaleFactor.x, y * Design::ScaleFactor.y, true );
-        // if ( image )
-        // {
-        //     delete image;
-        // }
-    }
+        dc.DrawBitmap( bitmap, x * Design::DeviceUnitsPerMM.x, y * Design::DeviceUnitsPerMM.y, true );
 
+
+    }
 };
+
 int CompareID( wxString id1, wxString id2 )
 {
     id1 = id1.Trim( );

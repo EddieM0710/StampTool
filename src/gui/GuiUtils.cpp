@@ -63,16 +63,17 @@ void DrawLabel( wxDC& dc, const wxString& text,
     int  	alignment,
     int  	indexAccel )
 {
-    // wxSize devicePos = LogicalToDeviceRel( dc, pos.x, pos.y );
-    // wxSize deviceSize = LogicalToDeviceRel( dc, size.x, size.y );
-    // double tx = pos.x * Design::DeviceUnitsPerMM.x;
-    // double ty = pos.y * Design::DeviceUnitsPerMM.y;
 
-    //wxRect rect( devicePos.x, devicePos.y , deviceSize.x, deviceSize.y );
-    wxRect rect( pos.x * Design::DeviceUnitsPerMM.x, pos.y * Design::DeviceUnitsPerMM.y,
-        size.x * Design::DeviceUnitsPerMM.x, size.y * Design::DeviceUnitsPerMM.y );
-    //wxRect rect( pos.x, pos.y, size.x, size.y );
+
+    wxRect rect( pos.x, pos.y, size.x, size.y );
+    wxFont font = dc.GetFont( );
+    int point = font.GetPointSize( );
+    font.SetPointSize( dc.DeviceToLogicalX( point ) );
+    dc.SetFont( font );
+
     dc.DrawLabel( text, rect, alignment, indexAccel );
+    font.SetPointSize( point );
+    dc.SetFont( font );
 
 
 }
@@ -146,13 +147,13 @@ void DrawTitlePDF( wxPdfDocument* doc, wxString title, RealPoint pos, RealSize s
     //double x = doc->GetX( );
 }
 
-wxSize LogicalToDeviceRel( wxDC& dc, double x, double y )
-{
-    wxPoint point( x, y );
-    point = dc.LogicalToDevice( wxCoord( x ), wxCoord( y ) );
-    wxSize size( point.x, point.y );
-    return size;
-}
+// wxSize LogicalToDeviceRel( wxDC& dc, double x, double y )
+// {
+//     wxPoint point( x, y );
+//     point = dc.LogicalToDevice( wxCoord( x ), wxCoord( y ) );
+//     wxSize size( point.x, point.y );
+//     return size;
+// }
 
 wxPen DCLineStyle( wxDC& dc, wxColour colour, double  width, wxPenStyle style )
 {
@@ -183,8 +184,11 @@ void DrawRectanglePDF( wxPdfDocument* doc, double x, double y, double width, dou
 
 void DrawRectangle( wxDC& dc, double x, double y, double width, double height )
 {
-    dc.DrawRectangle( x * Design::DeviceUnitsPerMM.x, y * Design::DeviceUnitsPerMM.y, width * Design::DeviceUnitsPerMM.x, height * Design::DeviceUnitsPerMM.y );
-    //dc.DrawRectangle( x, y, width, height );
+    wxPen pen = dc.GetPen( );
+    pen.SetWidth( 1 );
+    pen.SetQuality( wxPEN_QUALITY_HIGH );
+    dc.SetPen( pen );
+    dc.DrawRectangle( x, y, width, height );
 };
 
 wxImage GetImageFromFilename( wxString filename )
@@ -225,7 +229,6 @@ wxImage GetImageFromFilename( wxString filename )
 //      // Draw jpeg image
 //   //   doc->Image( fileName, x, y, w, h );
 //     doc->Image( fileName, image, x, y, w, h );
-
 
 void  BlitResize( wxDC& dc, wxImage image, double x, double y, double w, double h )
 {
@@ -306,15 +309,10 @@ void DrawImage( wxDC& dc, wxImage image, double x, double y, double w, double h 
             w = 10;
         }
 
-
-        // RescaleImage( dc, image, x * Design::DeviceUnitsPerMM.x, y * Design::DeviceUnitsPerMM.y, w * Design::DeviceUnitsPerMM.x, h * Design::DeviceUnitsPerMM.y );
-        // BlitResize( dc, image, x * Design::DeviceUnitsPerMM.x, y * Design::DeviceUnitsPerMM.y, w * Design::DeviceUnitsPerMM.x, h * Design::DeviceUnitsPerMM.y );
-        // Kluge( dc, image, x * Design::DeviceUnitsPerMM.x, y * Design::DeviceUnitsPerMM.y, w * Design::DeviceUnitsPerMM.x, h * Design::DeviceUnitsPerMM.y );
-
-        image.Rescale( w * Design::DeviceUnitsPerMM.x, h * Design::DeviceUnitsPerMM.y );
-        wxBitmap bitmap = image;
-
-        dc.DrawBitmap( bitmap, x * Design::DeviceUnitsPerMM.x, y * Design::DeviceUnitsPerMM.y, true );
+        //image.Rescale( w, h, wxIMAGE_QUALITY_HIGH );
+        wxBitmap bitmap( image );
+        Kluge( dc, image, x, y, w, h );
+        //dc.DrawBitmap( bitmap, x, y, true );
 
 
     }

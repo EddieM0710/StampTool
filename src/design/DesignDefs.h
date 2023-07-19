@@ -62,6 +62,7 @@ namespace Design {
         AT_ShowCatNbr,
         AT_ShowFrame,
         AT_ShowImage,
+        AT_Orientation,
         AT_GrayScaleImages,
         AT_TopContentPadding,
         AT_BottomContentPadding,
@@ -88,6 +89,11 @@ namespace Design {
         AT_NbrAttrTypes,
         AT_NOTYPE
     } AlbumAttrType;
+    typedef enum
+    {
+        AT_Portrait = 0,
+        AT_Landscape
+    } PageOrientation;
 
     typedef enum
     {
@@ -116,7 +122,7 @@ namespace Design {
     typedef enum
     {
         AT_OK = 0,
-        AT_WARING,
+        AT_WARNING,
         AT_FATAL
     } NodeStatus;
 
@@ -169,11 +175,12 @@ namespace Design {
 
     const static int UnknownFontVal = -1;
 
-    // Conversion factor to convert from Pixels to MM. 
-    // Screen units are in pixels. Album Design elements are in mm.
-    extern wxRealPoint  DeviceUnitsPerMM;
 
     extern wxString AlbumBaseNames[ AT_NbrAlbumTypes ];
+
+    extern wxString OrientationStrings[ 2 ];
+
+    bool IsPortrait( wxString orientation );
 
     extern wxString AttrNameStrings[ AT_NbrAttrTypes ];
 

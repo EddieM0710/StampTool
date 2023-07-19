@@ -76,6 +76,8 @@ namespace Design {
         ///  @return Attribute* 
         Attribute* AttributeItem( int ndx ) { return m_attrArray.at( ndx ); };
 
+        void DeleteAttribute( wxString name );
+
         ///  @brief 
         ///  
         ///  @param name 

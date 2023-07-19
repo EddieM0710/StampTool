@@ -46,6 +46,8 @@ namespace Design {
         Page( wxXmlNode* node );
         ~Page( ) { };
 
+        void Init( );
+
         // Draw object on screen; position in MM
         void Draw( wxDC& dc, double x, double y );
 
@@ -127,7 +129,22 @@ namespace Design {
         void UpdateLayout( );
 
         NodeStatus ValidateNode( );
+        wxString GetOrientation( )
+        {
+            wxString orientation = GetAttrStr( AT_Orientation );
+            if ( orientation.IsEmpty( ) )
+            {
+                return GetAlbum( )->GetDefaultOrientation( );
+            }
+            return orientation;
+        };
+        void SetOrientation( wxString orientation )
+        {
+            SetAttrStr( AT_Orientation, orientation );
+            Init( );
+        };
 
+        bool IsDefaultOrientation( ) { return GetAlbum( )->IsDefaultOrientation( GetOrientation( ) ); };
     private:
 
         double m_topMargin;
@@ -139,6 +156,7 @@ namespace Design {
         wxString m_borderFileName;
         DebugString m_debugString;
         LabelFrame* m_titleFrame;
+        //        PageOrientation m_orientation;
     };
 }
 #endif

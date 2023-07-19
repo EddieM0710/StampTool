@@ -50,6 +50,7 @@ namespace Design {
         Album( wxXmlNode* node ) : AlbumBase( node )
         {
             SetNodeType( AT_Album );
+            SetAttrStr( Design::AT_Orientation, OrientationStrings[ Design::AT_Portrait ] );
         };
 
         ///  @brief Destroy the Album object
@@ -382,7 +383,15 @@ namespace Design {
             }
             return 0;
         };
-
+        wxString GetDefaultOrientation( ) { return GetAttrStr( Design::AT_Orientation ); };
+        void SetDefaultOrientation( wxString orientation )
+        {
+            SetAttrStr( Design::AT_Orientation, orientation );
+        };
+        bool IsDefaultOrientation( wxString orientation )
+        {
+            return ( !orientation.Cmp( GetAttrStr( Design::AT_Orientation ) ) );
+        };
 
     private:
 
@@ -392,6 +401,8 @@ namespace Design {
         const double m_defaultSelvageWidth = 0;
         const double m_defaultMountAllowanceHeight = 5;
         const double m_defaultMountAllowanceWidth = 4;
+        //  PageOrientation m_defaultOrientation;
+
     };
 }
 #endif

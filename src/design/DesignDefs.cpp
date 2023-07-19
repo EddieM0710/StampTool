@@ -56,8 +56,6 @@
   // namespace for all Album design 
 namespace Design {
 
-    wxRealPoint  DeviceUnitsPerMM;
-
 
 
     wxString AttrNameStrings[ AT_NbrAttrTypes ] = {
@@ -82,6 +80,7 @@ namespace Design {
             "ShowCatNbr",
             "ShowFrame",
             "ShowImage",
+            "Orientation",
             "GrayScaleImages",
             "TopContentPadding",
             "BottomContentPadding",
@@ -100,6 +99,12 @@ namespace Design {
         "SelvageWidth",
         "MountAllowanceHeight",
         "MountAllowanceWidth"
+    };
+    wxString OrientationStrings[ 2 ] = { "Portrait", "Landscape" };
+
+    bool IsPortrait( wxString orientation )
+    {
+        return !orientation.Cmp( OrientationStrings[ AT_Portrait ] );
     };
 
     wxString AlbumBaseNames[ AT_NbrAlbumTypes ] = {
@@ -234,18 +239,6 @@ namespace Design {
     void InitDesignDefs( ScaleClient client )
     {
 
-        if ( client == DD_PDF )
-        {
-            DeviceUnitsPerMM.x = 1;
-            DeviceUnitsPerMM.y = 1;
-        }
-        else //if ( client == DD_Display)
-        {
-
-            wxSize ppi = wxGetDisplayPPI( );
-            DeviceUnitsPerMM.x = ppi.x / 25.4;
-            DeviceUnitsPerMM.y = ppi.y / 25.4;
-        }
     }
 
     bool IsAlbumBaseTypeValid( AlbumBaseType type )

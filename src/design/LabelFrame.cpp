@@ -62,13 +62,20 @@ namespace Design {
     {
         wxString id = m_multiLineString;
         wxFont font( GetFont( ) );
+        //    int point = font.GetPointSize( );
+        //    font.SetPointSize( dc.DeviceToLogicalX( point ) );
         dc.SetFont( font );
 
         RealPoint pos = GetPosition( );
         RealSize size = GetSize( );
         pos.x += x;
         pos.y += y;
+
+        int pointSize = font.GetPointSize( );
+        //        size.y = 0 + pointSize * .31;
+        //dc.DrawText( id, pos );
         DrawLabel( dc, id, pos, size, wxALIGN_CENTER );
+
     };
 
     void LabelFrame::DrawPDF( wxPdfDocument* doc, double x, double y )

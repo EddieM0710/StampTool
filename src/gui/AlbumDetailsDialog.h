@@ -99,7 +99,7 @@ public:
         ID_ROWCOLTITLEDEFAULTCHECKBOX,
         ID_FRAMEDEFAULTCHECKBOX,
         ID_GRAYSCALECHECKBOX,
-
+        ID_ORIENTATIONCHOICE,
         ID_TITLEFONTPANEL,
         ID_ALBUMLAYOUTTEXTCTRL,
         ID_ALBUMLAYOUTPANEL,
@@ -490,6 +490,11 @@ public:
     ///  
     void UpdateControls( );
 
+    void OnOrientationchoiceSelected( wxCommandEvent& event );
+    wxString GetOrientation( ) { return  m_orientationChoice->GetStringSelection( ); };
+    void SetOrientation( wxString sel ) { m_orientationChoice->SetStringSelection( sel ); }
+
+
 private:
     LabeledTextBox* m_name;
     LabeledTextBox* m_paperHeight;
@@ -506,6 +511,7 @@ private:
     wxCheckBox* m_nbrCheckbox;
     wxCheckBox* m_stampTitleCheckbox;
     wxCheckBox* m_grayScaleImagesCheckbox;
+    wxChoice* m_orientationChoice;
     wxFontPickerCtrl* m_titleFontPicker;
     wxColourPickerCtrl* m_titleColorPicker;
     wxFontPickerCtrl* m_nbrFontPicker;

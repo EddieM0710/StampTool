@@ -73,10 +73,6 @@ namespace Design {
         // coords with a single setting
         pdfDC.SetMapModeStyle( wxPDF_MAPMODESTYLE_PDF );
         pdfDC.SetMapMode( wxMM_POINTS );
-        wxSize pdfPPI = pdfDC.GetPPI( );
-        DeviceUnitsPerMM.x = pdfPPI.x / 25.4;
-        DeviceUnitsPerMM.y = pdfPPI.y / 25.4;
-        pdfDC.SetUserScale( DeviceUnitsPerMM.x, DeviceUnitsPerMM.y );
 
         wxTreeItemIdValue cookie;
         wxTreeItemId parentID = GetTreeItemId( );
@@ -85,12 +81,20 @@ namespace Design {
         {
             int childType = ( AlbumBaseType ) GetAlbumTreeCtrl( )->GetItemType( childID );
 
-            doc->AddPage( );
-
             // set the layout parameters into the child
             Page* page = ( Page* ) GetAlbumTreeCtrl( )->GetItemNode( childID );
 
-            page->DrawPDF( doc, width, height );
+
+            if ( Design::IsPortrait( page->GetOrientation( ) ) )
+            {
+                doc->AddPage( wxPORTRAIT );
+                page->DrawPDF( doc, width, height );
+            }
+            else
+            {
+                doc->AddPage( wxLANDSCAPE, width, height );
+                page->DrawPDF( doc, height, width );
+            }
 
             childID = GetAlbumTreeCtrl( )->GetNextChild( parentID, cookie );
 
@@ -329,7 +333,7 @@ namespace Design {
         SetAttribute( xmlNode, AT_FontType );
         SetAttribute( xmlNode, AT_NativeFontString );
         SetAttribute( xmlNode, AT_FontColor );
-
+        SetAttribute( xmlNode, AT_Orientation );
         SaveFonts( xmlNode );
     }
 
@@ -438,17 +442,8 @@ namespace Design {
                 {
                     // set the layout parameters into the child
                     Page* page = ( Page* ) GetAlbumTreeCtrl( )->GetItemNode( childID );
-                    //page->SetBorder( m_border );
-                    // the page frame takes into account the margins, the border is within this
-                    page->SetXPos( GetLeftMargin( ) );
-                    page->SetYPos( GetTopMargin( ) );
-                    page->SetWidth( GetWidth( ) - GetRightMargin( ) - GetLeftMargin( ) );
-                    page->SetHeight( GetHeight( ) - GetTopMargin( ) - GetBottomMargin( ) );
-                    page->SetTopMargin( GetTopMargin( ) );
-                    page->SetBottomMargin( GetBottomMargin( ) );
-                    page->SetRightMargin( GetRightMargin( ) );
-                    page->SetLeftMargin( GetLeftMargin( ) );
-                    page->SetBorderSize( GetBorderSize( ) );
+
+                    page->Init( );
                     page->SetBorderFilename( GetBorderFileName( ) );
                     page->UpdateMinimumSize( );
                     break;

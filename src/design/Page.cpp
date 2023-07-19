@@ -43,22 +43,45 @@ namespace Design {
         SetObjectName( AlbumBaseNames[ GetNodeType( ) ] );
         m_titleFrame = new LabelFrame( Design::AT_TitleFontType );
         m_titleFrame->SetString( GetAttrStr( AT_Name ) );
+        SetOrientation( GetAlbum( )->GetDefaultOrientation( ) );
+
+    };
+
+    void Page::Init( )
+    {
         Album* album = GetAlbum( );
         if ( album )
         {
-            SetXPos( 0.0 );
-            SetYPos( 0.0 );
-            SetWidth( album->GetWidth( ) - album->GetRightMargin( ) - album->GetLeftMargin( ) );
-            SetHeight( album->GetHeight( ) - album->GetBottomMargin( ) - album->GetTopMargin( ) );
-            SetTopMargin( album->GetTopMargin( ) );
-            SetBottomMargin( album->GetBottomMargin( ) );
-            SetRightMargin( album->GetRightMargin( ) );
-            SetLeftMargin( album->GetLeftMargin( ) );
-            SetBorderSize( album->GetBorderSize( ) );
+            if ( Design::IsPortrait( GetOrientation( ) ) )
+            {
+                //SetBorder( m_border );
+                // the page frame takes into account the margins, the border is within this
+                SetXPos( album->GetLeftMargin( ) );
+                SetYPos( album->GetTopMargin( ) );
+                SetWidth( album->GetWidth( ) - album->GetRightMargin( ) - album->GetLeftMargin( ) );
+                SetHeight( album->GetHeight( ) - album->GetTopMargin( ) - album->GetBottomMargin( ) );
+                SetTopMargin( album->GetTopMargin( ) );
+                SetBottomMargin( album->GetBottomMargin( ) );
+                SetRightMargin( album->GetRightMargin( ) );
+                SetLeftMargin( album->GetLeftMargin( ) );
+                SetBorderSize( album->GetBorderSize( ) );
+            }
+            else
+            {
+                //SetBorder( m_border );
+                // the page frame takes into account the margins, the border is within this
+                SetXPos( album->GetTopMargin( ) );
+                SetYPos( album->GetLeftMargin( ) );
+                SetHeight( album->GetWidth( ) - album->GetRightMargin( ) - album->GetLeftMargin( ) );
+                SetWidth( album->GetHeight( ) - album->GetTopMargin( ) - album->GetBottomMargin( ) );
+                SetTopMargin( album->GetLeftMargin( ) );
+                SetBottomMargin( album->GetRightMargin( ) );
+                SetRightMargin( album->GetBottomMargin( ) );
+                SetLeftMargin( album->GetTopMargin( ) );
+                SetBorderSize( album->GetBorderSize( ) );
+            }
         }
-    };
-
-
+    }
     void Page::Draw( wxDC& dc, double x, double y )
     {
 
@@ -140,10 +163,18 @@ namespace Design {
 
         if ( GetAlbum( )->GetOverSizePaper( ) )
         {
-
             wxPdfLineStyle currStyle = PDFLineStyle( doc, *wxBLACK, .2, defaultDash );
-            doc->Line( 0, height, width, height );
-            doc->Line( width, 0, width, height );
+
+            if ( Design::IsPortrait( GetOrientation( ) ) )
+            {
+                doc->Line( 0, height, width, height );
+                doc->Line( width, 0, width, height );
+            }
+            else
+            {
+                doc->Line( 0, width, height, width );
+                doc->Line( height, 0, height, width );
+            }
             doc->SetLineStyle( currStyle );
         }
         double leftPadding = 0;
@@ -217,6 +248,14 @@ namespace Design {
     void Page::Save( wxXmlNode* xmlNode )
     {
         SetAttribute( xmlNode, AT_Name );
+        if ( !GetAlbum( )->IsDefaultOrientation( GetOrientation( ) ) )
+        {
+            SetAttribute( xmlNode, AT_Orientation );
+        }
+        else
+        {
+            DeleteAttribute( AttrNameStrings[ AT_Orientation ] );
+        }
         SaveFonts( xmlNode );
     }
 
@@ -479,7 +518,9 @@ namespace Design {
             wxString str;
             str = wxString::Format( "Children too big for page. width:%7.2f  min width:%7.2f\n", GetWidth( ), GetMinWidth( ) );
             GetErrorArray( )->Add( str );
-            ReportLayoutError( "UpdateMinimumSize", "Children too big for page", true );
+            GetErrorArray( )->Add( str );
+            status = AT_FATAL;
+            ReportLayoutError( " UpdateMinimumSize", "Children too big for page", true );
         }
         //            if ( m_pageFrame.GetHeight( ) < minHeight )
         if ( GetHeight( ) < GetMinHeight( ) )
@@ -487,7 +528,9 @@ namespace Design {
             wxString str;
             str = wxString::Format( "Children too big for page. height:%7.2f  min height:%7.2f\n", GetHeight( ), GetMinHeight( ) );
             GetErrorArray( )->Add( str );
-            ReportLayoutError( "UpdateMinimumSize", "Children too big for page", true );
+            GetErrorArray( )->Add( str );
+            status = AT_FATAL;
+            ReportLayoutError( " UpdateMinimumSize", "Children too big for page", true );
         }
         return status;
     }

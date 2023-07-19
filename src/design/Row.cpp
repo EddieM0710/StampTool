@@ -40,39 +40,44 @@ namespace Design {
 
     void Row::Draw( wxDC& dc, double x, double y )
     {
-        double leftPadding = 0;
-        double topPadding = 0;
-
-        dc.SetPen( *wxBLACK_PEN );
-
-        if ( GetShowFrame( ) )
-        {
-            leftPadding = GetLeftContentPadding( );
-            topPadding = GetTopContentPadding( );
-
-            m_frame.Draw( dc, x, y );
-        }
-
-        SetClientDimensions( dc, x + GetXPos( ), y + GetYPos( ), GetWidth( ), GetHeight( ) );
-
-        double xPos = x + GetXPos( ) + leftPadding;
-        double yPos = y + GetYPos( ) + topPadding;
-
-        if ( GetShowTitle( ) )
-        {
-            GetTitleFrame( )->Draw( dc, xPos, yPos );
-        }
-
-        wxTreeItemIdValue cookie;
-        wxTreeItemId parentID = GetTreeItemId( );
-        wxTreeItemId childID = GetAlbumTreeCtrl( )->GetFirstChild( parentID, cookie );
-        while ( childID.IsOk( ) )
+        Design::NodeStatus status = GetNodeStatus( );
+        if ( status != Design::AT_FATAL )
         {
 
-            LayoutBase* child = ( LayoutBase* ) GetAlbumTreeCtrl( )->GetItemNode( childID );
-            child->Draw( dc, xPos, yPos );
+            double leftPadding = 0;
+            double topPadding = 0;
 
-            childID = GetAlbumTreeCtrl( )->GetNextChild( parentID, cookie );
+            dc.SetPen( *wxBLACK_PEN );
+
+            if ( GetShowFrame( ) )
+            {
+                leftPadding = GetLeftContentPadding( );
+                topPadding = GetTopContentPadding( );
+
+                m_frame.Draw( dc, x, y );
+            }
+
+            SetClientDimensions( dc, x + GetXPos( ), y + GetYPos( ), GetWidth( ), GetHeight( ) );
+
+            double xPos = x + GetXPos( ) + leftPadding;
+            double yPos = y + GetYPos( ) + topPadding;
+
+            if ( GetShowTitle( ) )
+            {
+                GetTitleFrame( )->Draw( dc, xPos, yPos );
+            }
+
+            wxTreeItemIdValue cookie;
+            wxTreeItemId parentID = GetTreeItemId( );
+            wxTreeItemId childID = GetAlbumTreeCtrl( )->GetFirstChild( parentID, cookie );
+            while ( childID.IsOk( ) )
+            {
+
+                LayoutBase* child = ( LayoutBase* ) GetAlbumTreeCtrl( )->GetItemNode( childID );
+                child->Draw( dc, xPos, yPos );
+
+                childID = GetAlbumTreeCtrl( )->GetNextChild( parentID, cookie );
+            }
         }
     }
 
@@ -273,6 +278,7 @@ namespace Design {
 
             childID = GetAlbumTreeCtrl( )->GetNextChild( parentID, cookie );
         }
+        ValidateNode( );
 
     }
 
@@ -296,7 +302,6 @@ namespace Design {
 
             childID = GetAlbumTreeCtrl( )->GetNextChild( parentID, cookie );
         }
-
     }
 
     NodeStatus Row::ValidateNode( )
@@ -325,6 +330,21 @@ namespace Design {
         }
 
         m_nodeValid = status;
+        wxTreeItemId id = GetTreeItemId( );
+        if ( id.IsOk( ) )
+        {
+            if ( status == AT_FATAL )
+            {
+                GetAlbumTreeCtrl( )->SetItemBackgroundColour( id, *wxRED );
+                std::cout << GetAlbumTreeCtrl( )->GetItemText( id ) << "Fatal\n";
+            }
+            else if ( status == AT_WARNING )
+            {
+                GetAlbumTreeCtrl( )->SetItemBackgroundColour( id, *wxYELLOW );
+                std::cout << GetAlbumTreeCtrl( )->GetItemText( id ) << "Warning\n";
+            }
+        }
+
         return status;
     }
 

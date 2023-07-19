@@ -59,6 +59,7 @@ IMPLEMENT_DYNAMIC_CLASS( PageDetailsDialog, wxDialog )
     BEGIN_EVENT_TABLE( PageDetailsDialog, wxDialog )
     EVT_BUTTON( wxID_OK, PageDetailsDialog::OnOkClick )
     EVT_BUTTON( ID_TITLEDEFAULTBUTTON, PageDetailsDialog::OnTitleDefaultClick )
+    EVT_CHOICE( ID_ORIENTATIONCHOICE, PageDetailsDialog::OnOrientationchoiceSelected )
     END_EVENT_TABLE( )
 
     ;
@@ -173,6 +174,18 @@ void PageDetailsDialog::CreateControls( )
     m_frameCheckbox = new wxCheckBox( notebookDetailsPanel, ID_SHOWFRAMECHECKBOX, _( "Show Frame" ), wxDefaultPosition, wxDefaultSize, 0 );
     m_frameCheckbox->SetValue( false );
     firstRowHorizontalSizer->Add( m_frameCheckbox, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+
+
+    wxStaticText* orientationStatic = new wxStaticText(
+        notebookDetailsPanel, wxID_STATIC, _( "Orientation:" ), wxDefaultPosition, wxDefaultSize, 0 );
+    firstRowHorizontalSizer->Add( orientationStatic, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+
+    wxArrayString m_orientationChoiceStrings( 2, Design::OrientationStrings );
+    m_orientationChoice = new wxChoice( notebookDetailsPanel, ID_ORIENTATIONCHOICE, wxDefaultPosition, wxDefaultSize, m_orientationChoiceStrings, 0 );
+    m_orientationChoice->SetSelection( Design::AT_Portrait );
+
+    firstRowHorizontalSizer->Add( m_orientationChoice, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+
     //>> first row ctrls
 
     //>>second row ctrls
@@ -242,7 +255,7 @@ void PageDetailsDialog::UpdateControls( )
     SetShowFrame( m_page->GetShowFrame( ) );
     SetTitleFont( m_page->GetTitleFrame( )->GetFont( ) );
     SetTitleColor( m_page->GetTitleFrame( )->GetColor( ) );
-
+    SetOrientation( m_page->GetOrientation( ) );
     wxListBox* m_statusList;
 
 
@@ -295,6 +308,7 @@ void PageDetailsDialog::OnOkClick( wxCommandEvent& event )
 
     m_page->SetShowFrame( GetShowFrame( ) );
     m_page->SetShowTitle( GetShowTitle( ) );
+    m_page->SetOrientation( GetOrientation( ) );
 
     m_page->GetTitleFrame( )->SetFont( m_titleFontPicker->GetSelectedFont( ), m_titleColorPicker->GetColour( ) );
 
@@ -355,3 +369,11 @@ void PageDetailsDialog::OnTitleDefaultClick( wxCommandEvent& event )
     event.Skip( );
 }
 
+
+void PageDetailsDialog::OnOrientationchoiceSelected( wxCommandEvent& event )
+{
+    ////@begin wxEVT_COMMAND_CHOICE_SELECTED event handler for ID_ORIENTATIONCHOICE in PageDetailsDialog.
+        // Before editing this code, remove the block markers.
+    event.Skip( );
+    ////@end wxEVT_COMMAND_CHOICE_SELECTED event handler for ID_ORIENTATIONCHOICE in PageDetailsDialog. 
+}

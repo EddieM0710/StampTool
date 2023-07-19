@@ -40,7 +40,8 @@
 #include "catalog/Entry.h"
 #include "art/NotFound.xpm"
 
-
+#include <wx/dcmemory.h>
+#include <wx/dcgraph.h>
 
 namespace Design {
 
@@ -273,75 +274,83 @@ namespace Design {
         return image;
     }
 
+    void DrawRotated( wxDC& dc, double x, double y )
+    {
+
+    }
+
     //--------------
     void Stamp::Draw( wxDC& dc, double x, double y )
     {
-        //Draw the outer frame transparent
-        // m_frame.Draw( dc, x, y );
+        Design::NodeStatus status = GetNodeStatus( );
+        if ( status != Design::AT_FATAL ) {
+            //Draw the outer frame transparent
+            // m_frame.Draw( dc, x, y );
 
-        SetClientDimensions( dc, x + GetXPos( ), y + GetYPos( ), GetMinWidth( ), GetMinHeight( ) );
+            SetClientDimensions( dc, x + GetXPos( ), y + GetYPos( ), GetMinWidth( ), GetMinHeight( ) );
 
-        //Draw the Stamp frame
-        double xInnerPos = x + GetXPos( );
-        double yInnerPos = y + GetYPos( );
+            //Draw the Stamp frame
+            double xInnerPos = x + GetXPos( );
+            double yInnerPos = y + GetYPos( );
+            //wxPen pen = dc.GetPen( );
+            //pen.SetColour( *wxBLACK );
+            wxPen pen( *wxBLACK, 1, wxPENSTYLE_DOT );
 
-        dc.SetPen( *wxBLACK_PEN );
-        m_borderFrame.Draw( dc, xInnerPos, yInnerPos );
+            dc.SetPen( pen );
+            m_borderFrame.Draw( dc, xInnerPos, yInnerPos );
 
-        double xImagePos = xInnerPos + m_stampImageFrame.GetXPos( );
-        double yImagePos = yInnerPos + m_stampImageFrame.GetYPos( );
+            double xImagePos = xInnerPos + m_stampImageFrame.GetXPos( );
+            double yImagePos = yInnerPos + m_stampImageFrame.GetYPos( );
+            if ( xImagePos < 0.0 )xImagePos = .01;
+            if ( yImagePos < 0.0 )yImagePos = .01;
 
-        wxString filename = GetStampImageFilename( );
+            wxString filename = GetStampImageFilename( );
 
-        //wxImage image = GetImage( );
-        wxImage image;
-        wxString imageName = GetStampImageFilename( );
-        std::cout << "Stamp::Draw image " << imageName << "\n";
-        wxString str = GetProject( )->GetImageFullPath( imageName );
-        if ( GetProject( )->ImageExists( str ) )
-        {
-            image = wxImage( str, wxBITMAP_TYPE_JPEG );
-        }
-
-        //= Utils::GetImageFromFilename( filename );
-        if ( image.IsOk( ) )
-        {
-            //Draw the stamp image
-            if ( GetAlbum( )->GetGrayScaleImages( ) )
+            //wxImage image = GetImage( );
+            wxImage image;
+            wxString imageName = GetStampImageFilename( );
+            wxString str = GetProject( )->GetImageFullPath( imageName );
+            if ( GetProject( )->ImageExists( str ) )
             {
-                image = image.ConvertToGreyscale( );
+                image = wxImage( str, wxBITMAP_TYPE_JPEG );
             }
-            // wxImage image2( image );
-            // wxSize imageSize = image2.GetSize( );
-            // wxSize dcSize = dc.GetSizeMM( );
-            // wxSize ppi = dc.GetPPI( );//wxGetDisplayPPI( );
-            // double deviceScale = ppi.x / 25.4;
 
-            // //image2 = image2.Scale( dc.LogicalToDeviceX( m_stampImageFrame.GetWidth( ) ), dc.LogicalToDeviceY( m_stampImageFrame.GetHeight( ) ), wxIMAGE_QUALITY_HIGH );
-            // wxBitmap bitmap( image2 );
-            // wxBitmap bitmap2 = BlitResize( bitmap, .1, true );
-            // //bitmap.SetScaleFactor( .1 );
-            // dc.DrawBitmap( bitmap2, xImagePos, yImagePos, true );
-            DrawImage( dc, image,
-                xImagePos, yImagePos,
-                m_stampImageFrame.GetWidth( ), m_stampImageFrame.GetHeight( ) );
+            //= Utils::GetImageFromFilename( filename );
+            if ( image.IsOk( ) )
+            {
+                //Draw the stamp image
+                if ( GetAlbum( )->GetGrayScaleImages( ) )
+                {
+                    image = image.ConvertToGreyscale( );
+                }
+
+                DrawImage( dc, image,
+                    xImagePos, yImagePos,
+                    m_stampImageFrame.GetWidth( ), m_stampImageFrame.GetHeight( ) );
+            }
+            else
+            {
+                // Draw missing image frame transparent
+
+                dc.SetPen( *wxTRANSPARENT_PEN );
+                m_stampImageFrame.Draw( dc, xImagePos, yImagePos );
+                pen.SetColour( *wxBLACK );
+            }
+
+            double borderAllowance = m_borderFrame.GetYPos( );
+            GetNameFrame( )->Draw( dc, xInnerPos, yInnerPos );
+
+
+            if ( GetShowNbr( ) )
+            {
+
+                GetNbrFrame( )->Draw( dc, xInnerPos, yInnerPos );
+
+            }
         }
         else
         {
-            // Draw missing image frame transparent
-            dc.SetPen( *wxTRANSPARENT_PEN );
-            m_stampImageFrame.Draw( dc, xImagePos, yImagePos );
-        }
-
-        double borderAllowance = m_borderFrame.GetYPos( );
-        GetNameFrame( )->Draw( dc, xInnerPos, yInnerPos );
-
-
-        if ( GetShowNbr( ) )
-        {
-
-            GetNbrFrame( )->Draw( dc, xInnerPos, yInnerPos );
-
+            int a = 0;
         }
     }
 
@@ -745,6 +754,7 @@ namespace Design {
 
     void Stamp::UpdatePositions( )
     {
+        ValidateNode( );
     }
 
     //--------------
@@ -755,32 +765,45 @@ namespace Design {
         wxString filename = GetStampImageFilename( );
         wxString str;// = GetProject( )->GetImageFullPath( filename );
         wxImage image = GetAlbumVolume( )->GetImage( filename );
-        std::cout << "Stamp::ValidateNode image " << filename;
         if ( !image.IsOk( ) )
         {
-            std::cout << " fail ";
             str = wxString::Format( "Invalid Stamp Image.\n" );
             GetErrorArray( )->Add( str );
-            //           SetError( AT_InvalidImage, AT_WARING );
-            status = AT_WARING;
+            //SetError( AT_InvalidImage, AT_WARNING );
+            status = AT_WARNING;
         }
-        std::cout << "\n";
 
-        if ( GetHeight( ) <= 0.01 )
+        if ( m_stampFrame.GetHeight( ) <= 0.01 )
         {
             str = wxString::Format( "Invalid Stamp Height.\n" );
             GetErrorArray( )->Add( str );
-            //            SetError( AT_InvalidHeight, AT_FATAL );
+            //SetError( AT_InvalidHeight, AT_FATAL );
             status = AT_FATAL;
         }
-        if ( GetWidth( ) <= 0.01 )
+        if ( m_stampFrame.GetWidth( ) <= 0.01 )
         {
             str = wxString::Format( "Invalid Stamp Width.\n" );
             GetErrorArray( )->Add( str );
             status = AT_FATAL;
         }
         m_nodeValid = status;
+        wxTreeItemId id = GetTreeItemId( );
+        if ( id.IsOk( ) )
+        {
+            if ( status == AT_FATAL )
+            {
+                GetAlbumTreeCtrl( )->SetItemBackgroundColour( id, *wxRED );
+                std::cout << GetAlbumTreeCtrl( )->GetItemText( id ) << "Fatal\n";
+            }
+            else if ( status == AT_WARNING )
+            {
+                GetAlbumTreeCtrl( )->SetItemBackgroundColour( id, *wxYELLOW );
+                std::cout << GetAlbumTreeCtrl( )->GetItemText( id ) << "Warning\n";
+            }
+        }
+
         return status;
+
     }
 
     //--------------

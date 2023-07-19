@@ -33,7 +33,7 @@
 
 class wxTextOutputStream;
 
- 
+
 namespace Utils {
 
     // Class for iterating an XML heirarchy
@@ -42,16 +42,16 @@ namespace Utils {
 
     public:
 
-        
 
-                /**
-                 * XMLIterator - constructor for iterating an XML heirarchy
-                 *
-                 * @param   parent : is the xml element whose children will be
-                 * iterated.
-                 * @param   decend : false will iterate only the first level
-                 * childeren. - true ( default ) will iterate  heirarchy
-                 */
+
+        /**
+         * XMLIterator - constructor for iterating an XML heirarchy
+         *
+         * @param   parent : is the xml element whose children will be
+         * iterated.
+         * @param   decend : false will iterate only the first level
+         * childeren. - true ( default ) will iterate  heirarchy
+         */
         XMLIterator( wxXmlNode* parent, bool decend = true );
         ~XMLIterator( );
 
@@ -67,7 +67,7 @@ namespace Utils {
          */
         wxXmlNode* Next( );
 
-        
+
 
     private:
         wxXmlNode* m_parent;      // pointer to parent of current element
@@ -84,6 +84,8 @@ namespace Utils {
 
     wxXmlNode* NewNode( wxXmlNode* parent, wxString name );
     wxXmlNode* NewNode( wxXmlDocument* parent, wxString name );
+
+    bool DeleteAttribute( wxXmlNode* node, wxString attrName );
 
     wxXmlNode* FirstChildElement( wxXmlNode* node, wxString name );
     wxXmlNode* GetNext( wxXmlNode* node, wxString name );

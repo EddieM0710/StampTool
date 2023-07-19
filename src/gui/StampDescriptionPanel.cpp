@@ -159,8 +159,8 @@ void StampDescriptionPanel::CreateControls( void )
     wxSplitterWindow* horizontalSplitterWindow = new wxSplitterWindow(
         thisPanel, ID_HORIZONTALLITTERWINDOW, wxDefaultPosition,
         wxSize( 100, 800 ), wxSP_3DBORDER | wxSP_3DSASH | wxNO_BORDER );
-    horizontalSplitterWindow->SetSashPosition( 800 );
-    horizontalSplitterWindow->SetMinimumPaneSize( 100 );
+    horizontalSplitterWindow->SetSashPosition( 900 );
+    horizontalSplitterWindow->SetMinimumPaneSize( 50 );
     horizontalSplitterWindow->SetSashGravity( 0.2 );
 
 
@@ -176,7 +176,7 @@ void StampDescriptionPanel::CreateControls( void )
     wxSplitterWindow* stampAndImageVerticalSplitterWindow = new wxSplitterWindow(
         stampAndImagePanel, ID_DESCRIPTIONSPLITTERWINDOW, wxDefaultPosition,
         wxSize( 200, 200 ), wxSP_3DBORDER | wxSP_3DSASH | wxNO_BORDER );
-    stampAndImageVerticalSplitterWindow->SetSashPosition( 500 );
+    stampAndImageVerticalSplitterWindow->SetSashPosition( 800 );
     stampAndImageVerticalSplitterWindow->SetMinimumPaneSize( 100 );
     stampAndImageVerticalSplitterWindow->SetSashGravity( 0.2 );
 
@@ -326,7 +326,7 @@ void StampDescriptionPanel::CreateControls( void )
         //$ descriptionNotebook->AddPage( itemPanel16, _( "Background" ) );
 
 
-    horizontalSplitterWindow->SplitHorizontally( stampAndImagePanel, m_inventoryPanel, 500 );
+    horizontalSplitterWindow->SplitHorizontally( stampAndImagePanel, m_inventoryPanel, 600 );
     topHorizontalSizer->Add( horizontalSplitterWindow, 1, wxGROW | wxALL, 5 );
 
 

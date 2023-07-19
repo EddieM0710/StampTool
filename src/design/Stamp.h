@@ -128,6 +128,7 @@ namespace Design {
          * @param y position in MM from page left
          */
         void Draw( wxDC& dc, double x, double y );
+        void DrawRotated( wxDC& dc, double x, double y );
 
         ///  @brief 
         ///  

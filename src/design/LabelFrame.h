@@ -101,7 +101,7 @@ namespace Design {
 
         wxString m_multiLineString;
 
-        wxRealPoint m_stringTextExtent;
+        wxSize m_stringTextExtent;
 
         FontUsageType m_fontType;
 

@@ -93,7 +93,7 @@ namespace Catalog {
                     m_volumeNameStrings.Add( str );
                 }
             }
-            dumpArray( m_volumeNameStrings );
+            // dumpArray( m_volumeNameStrings );
         }
     }
 

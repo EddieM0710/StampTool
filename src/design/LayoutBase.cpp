@@ -232,28 +232,12 @@ namespace Design {
         ReportError( funcStr, msgStr, fatal );
     }
 
-    // void LayoutBase::SetClientDimensions( Frame *frame )
-    // { 
-    //     m_clientDimensions.SetXPos( frame->GetXPos( ) *  Design::DeviceUnitsPerMM.x );
-    //     m_clientDimensions.SetYPos( frame->GetYPos( ) *  Design::DeviceUnitsPerMM.y );
-    //     m_clientDimensions.SetHeight( frame->GetHeight( ) *  Design::DeviceUnitsPerMM.y );
-    //     m_clientDimensions.SetWidth( frame->GetWidth( ) *  Design::DeviceUnitsPerMM.x );
-    //     m_clientDimensions.SetMinHeight( frame->GetMinHeight( ) *  Design::DeviceUnitsPerMM.y );
-    //     m_clientDimensions.SetMinWidth( frame->GetMinWidth( ) *  Design::DeviceUnitsPerMM.x );
-    // };
 
     void LayoutBase::SetClientDimensions( wxDC& dc, double x, double y, double width, double height, double minWidth, double minHeight )
     {
-        //std::cout << "pos ( " << x <<", "<< y <<" )  size ( "<< width <<", "<< height << " )\n";
-        // wxPoint pnt = dc.LogicalToDevice( x * Design::DeviceUnitsPerMM.x, y * Design::DeviceUnitsPerMM.y );
-        // wxSize size = dc.LogicalToDeviceRel( width * Design::DeviceUnitsPerMM.x, height * Design::DeviceUnitsPerMM.y );
-        // wxSize minSize = dc.LogicalToDeviceRel( minWidth * Design::DeviceUnitsPerMM.x, minHeight * Design::DeviceUnitsPerMM.y );
         wxPoint pnt = dc.LogicalToDevice( x, y );
         wxSize size = dc.LogicalToDeviceRel( width, height );
         wxSize minSize = dc.LogicalToDeviceRel( minWidth, minHeight );
-
-
-        //std::cout << "           pos ( " << pnt.x <<", "<< pnt.y <<" )  size ( "<< size.GetX( ) <<", "<< size.GetY( ) << " )\n";
 
         m_clientDimensions.SetXPos( pnt.x );
         m_clientDimensions.SetYPos( pnt.y );

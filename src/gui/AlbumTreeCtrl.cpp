@@ -1518,6 +1518,7 @@ Design::NodeStatus  AlbumTreeCtrl::UpdateTreeItem( wxTreeItemId childID, Design:
     page->UpdateSizes( );
     page->UpdatePositions( );
     Design::NodeStatus status = ele->ValidateNode( );
+    std::cout << "AlbumTreeCtrl::UpdateTreeItem Set backGround color " << ItemBackgroundColour[ status ] << "  status " << status << "\n";
     SetItemBackgroundColour( childID, ItemBackgroundColour[ status ] );
     return status;
 }

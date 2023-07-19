@@ -48,6 +48,7 @@
 #include "gui/CatalogPanel.h"
 #include "gui/AlbumPanel.h"
 #include "catalog/CatalogData.h"
+#include "design/Album.h"
 #include "design/AlbumData.h"
  //#include "gui/DefinePeriodsDialog.h"
 #include "gui/AlbumTreePanel.h"
@@ -103,6 +104,7 @@ EVT_MENU( ID_OPENDESIGN, StampToolFrame::OnOpenDesignClick )
 EVT_MENU( ID_GENERATEPDF, StampToolFrame::OnGeneratePDFClick )
 EVT_MENU( ID_OPENPDF, StampToolFrame::OnOpenPDFClick )
 EVT_MENU( ID_REMOVEDESIGN, StampToolFrame::OnRemoveDesignClick )
+EVT_MENU( ID_SAVEDESIGN, StampToolFrame::OnSaveDesignClick )
 END_EVENT_TABLE( )
 
 
@@ -461,7 +463,14 @@ void StampToolFrame::OnOpenPDFClick( wxCommandEvent& event )
 
 void StampToolFrame::OnRemoveDesignClick( wxCommandEvent& event )
 {
-    GetCatalogPagePanel( )->RemoveVolume( );
+    //  GetCatalogPagePanel( )->RemoveVolume( );
+     // GetAlbumPagePanel( )->RemoveVolume( );
+    event.Skip( );
+}
+
+void StampToolFrame::OnSaveDesignClick( wxCommandEvent& event )
+{
+    GetAlbumData( )->FileSave( );
     event.Skip( );
 }
 void StampToolFrame::DoSettingsDialog( )

@@ -220,6 +220,11 @@ namespace Utils {
         return ( wxXmlNode* ) 0;
     }
 
+    bool DeleteAttribute( wxXmlNode* node, wxString attrName )
+    {
+        return node->DeleteAttribute( attrName );
+    }
+
     wxXmlAttribute* GetAttribute( wxXmlNode* node, wxString attrName )
     {
         wxXmlAttribute* attr = node->GetAttributes( );

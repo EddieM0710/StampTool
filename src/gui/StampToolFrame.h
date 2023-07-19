@@ -202,6 +202,7 @@ public:
     void OnGeneratePDFClick( wxCommandEvent& event );
     void OnOpenPDFClick( wxCommandEvent& event );
     void OnRemoveDesignClick( wxCommandEvent& event );
+    void OnSaveDesignClick( wxCommandEvent& event );
     void OnMergeClick( wxCommandEvent& event );
 
     void SetupRecentMenu( );

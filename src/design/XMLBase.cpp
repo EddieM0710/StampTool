@@ -68,7 +68,23 @@ namespace Design {
         }
         wxTreeItemIdValue cookie;
     };
+    //--------------
 
+    void XMLBase::DeleteAttribute( wxString name )
+    {
+        for ( LayoutAttributeArray::iterator it = std::begin( m_attrArray );
+            it != std::end( m_attrArray );
+            ++it )
+        {
+            Attribute* attr = ( Attribute* ) ( *it );
+            wxString attrName = attr->GetName( );
+            if ( !attrName.Cmp( name ) )
+            {
+                m_attrArray.erase( it );
+                return;
+            }
+        }
+    }
     //--------------
 
     Attribute* XMLBase::FindAttr( wxString name )

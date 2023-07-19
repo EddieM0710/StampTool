@@ -59,6 +59,7 @@ EVT_BUTTON( ID_NBRDEFAULTFONTBUTTON, AlbumDetailsDialog::OnNbrDefaultClick )
 EVT_BUTTON( ID_NAMEDEFAULTFONTBUTTON, AlbumDetailsDialog::OnNameDefaultClick )
 EVT_BUTTON( ID_TITLEDEFAULTFONTBUTTON, AlbumDetailsDialog::OnTitleDefaultClick )
 EVT_BUTTON( ID_TEXTDEFAULTFONTBUTTON, AlbumDetailsDialog::OnTextDefaultClick )
+EVT_CHOICE( ID_ORIENTATIONCHOICE, AlbumDetailsDialog::OnOrientationchoiceSelected )
 END_EVENT_TABLE( )
 
 //--------------
@@ -223,15 +224,26 @@ void AlbumDetailsDialog::CreateControls( )
 
     m_nbrCheckbox = new wxCheckBox( theDialog, ID_NBRDEFAULTCHECKBOX, _( "Show Catalog Nbr" ), wxDefaultPosition, wxDefaultSize, 0 );
     m_nbrCheckbox->SetValue( true );
-    itemBoxSizer20->Add( m_nbrCheckbox, 0, wxALIGN_LEFT | wxALL, 5 );
+    itemBoxSizer20->Add( m_nbrCheckbox, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
     m_stampTitleCheckbox = new wxCheckBox( theDialog, ID_STAMPTITLEDEFAULTCHECKBOX, _( "Show Stamp Title" ), wxDefaultPosition, wxDefaultSize, 0 );
     m_stampTitleCheckbox->SetValue( true );
-    itemBoxSizer20->Add( m_stampTitleCheckbox, 0, wxALIGN_LEFT | wxALL, 5 );
+    itemBoxSizer20->Add( m_stampTitleCheckbox, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
     m_grayScaleImagesCheckbox = new wxCheckBox( theDialog, ID_GRAYSCALECHECKBOX, _( "Show Grayscale Images" ), wxDefaultPosition, wxDefaultSize, 0 );
     m_grayScaleImagesCheckbox->SetValue( true );
-    itemBoxSizer20->Add( m_grayScaleImagesCheckbox, 0, wxALIGN_LEFT | wxALL, 5 );
+    itemBoxSizer20->Add( m_grayScaleImagesCheckbox, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+
+
+    wxStaticText* orientationStatic = new wxStaticText(
+        theDialog, wxID_STATIC, _( " Default Orientation:" ), wxDefaultPosition, wxDefaultSize, 0 );
+    itemBoxSizer20->Add( orientationStatic, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+
+    wxArrayString m_orientationChoiceStrings( 2, Design::OrientationStrings );
+    m_orientationChoice = new wxChoice( theDialog, wxALIGN_CENTER_VERTICAL, wxDefaultPosition, wxDefaultSize, m_orientationChoiceStrings, 0 );
+    m_orientationChoice->SetSelection( Design::AT_Portrait );
+
+    itemBoxSizer20->Add( m_orientationChoice, 0, wxALIGN_LEFT | wxALL, 0 );
 
     wxBoxSizer* itemBoxSizer13 = new wxBoxSizer( wxHORIZONTAL );
     theDialogVerticalSizer->Add( itemBoxSizer13, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 0 );
@@ -740,6 +752,9 @@ void AlbumDetailsDialog::OnOkClick( wxCommandEvent& event )
     m_album->SetShowNbr( GetShowNbr( ) );
     m_album->SetShowTitle( GetShowStampTitle( ) );
     m_album->SetGrayScaleImages( GetGrayScaleImages( ) );
+    m_album->SetDefaultOrientation( GetOrientation( ) );
+
+
     m_album->SetBorderFilename( GetBorderFilename( ) );
     wxFont newFont = GetNbrFont( );
 
@@ -779,3 +794,12 @@ void AlbumDetailsDialog::UpdateControls( )
     SetName( m_album->GetAttrStr( Design::AT_Name ) );
 
 }
+
+void AlbumDetailsDialog::OnOrientationchoiceSelected( wxCommandEvent& event )
+{
+    ////@begin wxEVT_COMMAND_CHOICE_SELECTED event handler for ID_ORIENTATIONCHOICE in PageDetailsDialog.
+        // Before editing this code, remove the block markers.
+    event.Skip( );
+    ////@end wxEVT_COMMAND_CHOICE_SELECTED event handler for ID_ORIENTATIONCHOICE in PageDetailsDialog. 
+}
+

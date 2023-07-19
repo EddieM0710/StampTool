@@ -46,6 +46,7 @@
 #include "AlbumImagePanel.h"
 #include "design/AlbumVolume.h"
 #include "design/Album.h"
+#include "design/Page.h"
 #include "design/DesignDefs.h"
 #include "design/LayoutBase.h"
 #include "design/LayoutBase.h"
@@ -135,28 +136,16 @@ void AlbumImagePanel::Draw( wxDC& dc, Design::LayoutBase* node, wxPoint pt )
 
 //--------------
 
-wxRealPoint AlbumImagePanel::GetLogicalTextExtent( wxString text, wxFont font )
+wxSize AlbumImagePanel::GetLogicalTextExtent( wxString text, wxFont font )
 {
     wxClientDC dc( this );
     dc.SetMapMode( wxMM_METRIC );
-    wxSize ppi = wxGetDisplayPPI( );
-    if ( m_userScale <= 0 )
-    {
-        m_userScale = .4;
-    }
-    dc.SetUserScale( m_userScale, m_userScale );
     DoPrepareDC( dc );
     dc.SetFont( font );
 
-    wxSize size = dc.GetMultiLineTextExtent( text );
+    wxSize size = dc.DeviceToLogicalRel( dc.GetMultiLineTextExtent( text ) );
 
-    wxRealPoint textSize;
-    // convert the size from Device units to Metric
-    textSize.x = size.x / Design::DeviceUnitsPerMM.x;
-    textSize.y = size.y / Design::DeviceUnitsPerMM.y;
-    //textSize.x = size.x;
-    //textSize.y = size.y;
-    return textSize;
+    return size;
 }
 
 //--------------
@@ -165,11 +154,7 @@ wxSize AlbumImagePanel::GetTextSize( wxFont font, wxString text )
 {
     wxClientDC dc( this );
     dc.SetMapMode( wxMM_METRIC );
-    wxSize ppi = wxGetDisplayPPI( );
-    if ( m_userScale <= 0 )
-    {
-        m_userScale = .4;
-    }
+
     dc.SetUserScale( m_userScale, m_userScale );
     DoPrepareDC( dc );
     dc.SetFont( font );
@@ -194,36 +179,28 @@ void AlbumImagePanel::MakeMultiLine( wxString& text, wxFont font, double width )
     //adjust the width down just a bit to allow for text conversion
     width = width * .95;
 
-    wxClientDC  dc( this );//= this->GetDC( );
+    wxClientDC  dc( this );
     DoPrepareDC( dc );
     dc.SetMapMode( wxMM_METRIC );
-    wxSize ppi = wxGetDisplayPPI( );
-    double userScale = GetUserScale( );
-    if ( m_userScale <= 0 )
-    {
-        m_userScale = .4;
-    }
-    dc.SetUserScale( m_userScale, m_userScale );
 
+    dc.SetUserScale( 1, 1 );
+    //int point = font.GetPointSize( );;
     dc.SetFont( font );
-    //   double deviceScale = ppi.x / 25.4;
 
     text.Trim( );
     text.Trim( false );
     int len = text.length( );
     if ( len > 0 )
     {
-        wxSize ext = dc.GetTextExtent( text );
-        //        wxSize logExt = dc.DeviceToLogicalRel( ext );
+        wxSize ext = dc.DeviceToLogicalRel( dc.GetTextExtent( text ) );
         if ( ext.x < width )
-            // if ( ext.x < width * Design::DeviceUnitsPerMM.x )
         {
             // if it fits print it
             //all done
         }
         else
         {
-            // break the line up at word DoPrepareDC( dc ); breaks; look for a space
+            // break the line up at word breaks; look for a space
             int start = 0;
             int pos = start;
             int origPos = start;
@@ -247,10 +224,8 @@ void AlbumImagePanel::MakeMultiLine( wxString& text, wxFont font, double width )
                     // Add words until length exceeded
                     workingStr = text.Mid( start, pos );
 
-                    wxSize ext = dc.GetTextExtent( workingStr );
-                    wxSize logExt = dc.DeviceToLogicalRel( ext );
-                    if ( ext.x > width * Design::DeviceUnitsPerMM.x )
-                        //if ( ext.x > width * Design::DeviceUnitsPerMM.x )
+                    wxSize ext = dc.DeviceToLogicalRel( dc.GetTextExtent( workingStr ) );
+                    if ( ext.x > width )
                     {
                         // it won't fit; decide what to do
                         if ( start == origPos )
@@ -453,49 +428,60 @@ void AlbumImagePanel::OnPaint( wxPaintEvent& event )
         dc.SetMapMode( wxMM_METRIC );
         dc.Clear( );
         Design::InitDesignDefs( );
-
+        wxSize mm = dc.GetSizeMM( );
+        wxSize sizeClient = dc.GetSize( );
+        //dc.SetLogicalScale( 6, 6 );
         Design::Album* album = GetAlbumVolume( )->GetAlbum( );
         if ( album )
         {
 
-            const wxSize size = dc.GetSizeMM( );//GetClientSize( );
-            double clientScale = 1.;
-            wxSize ppi = dc.GetPPI( );//wxGetDisplayPPI( );
-            double deviceScale = ppi.x / 25.4;
-
-            double width = album->GetAttrDbl( Design::AT_PageWidth );
-            double height = album->GetAttrDbl( Design::AT_PageHeight );
-            double clientx = size.x;
-            double clienty = size.y;
-            if ( clientx < width )
-            {
-                clientScale = ( double ) clientx / ( double ) width;
-            }
-            // if ( clienty < ( height * clientScale ) )
-            // {
-            //     clientScale = ( double ) clienty / ( double ) height;
-            // }
-            m_userScale = .75 * clientScale * ( 1 - ( .4 - m_zoom ) );//
-
-            dc.SetUserScale( m_userScale, m_userScale );
-
-            /* init scrolled area size, scrolling speed, etc. */
-            if ( m_once == false )
-            {
-                m_once = true;
-                SetScrollbars( Design::DeviceUnitsPerMM.x, Design::DeviceUnitsPerMM.y, 1.5 * width, 1.5 * height, 0, 0 );
-            }
-
-            dc.SetPen( *wxRED_PEN );
-
-            DrawRectangle( dc, 0, 0, width, height );
-
-            dc.SetPen( *wxBLACK_PEN );
-
-
-            Design::LayoutBase* pageNode = Design::GetSelectedNodePage( );
+            Design::Page* pageNode = ( Design::Page* ) Design::GetSelectedNodePage( );
             if ( pageNode && pageNode->IsStatusOK( ) )
             {
+
+                const wxSize size = dc.GetSizeMM( );//GetClientSize( );
+                double clientScale = 1.;
+
+                double width;
+                double height;
+                if ( Design::IsPortrait( pageNode->GetOrientation( ) ) )
+                {
+                    width = album->GetAttrDbl( Design::AT_PageWidth );
+                    height = album->GetAttrDbl( Design::AT_PageHeight );
+                }
+                else
+                {
+                    height = album->GetAttrDbl( Design::AT_PageWidth );
+                    width = album->GetAttrDbl( Design::AT_PageHeight );
+                }
+                double clientx = size.x;
+                double clienty = size.y;
+                //if ( clientx > width )
+                {
+                    clientScale = ( double ) clientx / ( double ) width;
+                }
+                // if ( clienty < ( height * clientScale ) )
+                // {
+                //     clientScale = ( double ) clienty / ( double ) height;
+                // }
+                m_userScale = ( 1 - ( .4 - m_zoom ) ) / clientScale;
+
+                dc.SetUserScale( m_userScale, m_userScale );
+
+                /* init scrolled area size, scrolling speed, etc. */
+                if ( m_once == false )
+                {
+                    m_once = true;
+                    SetScrollbars( 3, 3, 2 * width, 2 * height, 0, 0 );
+                }
+                wxPen pen( *wxBLACK, 1, wxPENSTYLE_SOLID );
+                pen.SetColour( *wxRED );
+                dc.SetPen( pen );
+
+                DrawRectangle( dc, 0, 0, width, height );
+                pen.SetColour( *wxBLACK );
+                dc.SetPen( pen );
+
                 //pageNode->Draw( dc, album->GetAttrDbl( Design::AT_LeftMargin ), album->GetAttrDbl( Design::AT_TopMargin ) );
                 pageNode->Draw( dc, 0, 0 );
             }
@@ -513,8 +499,8 @@ void AlbumImagePanel::OnResize( wxCommandEvent& WXUNUSED( event ) )
     wxImage img( m_bitmap.ConvertToImage( ) );
 
     const wxSize size = GetClientSize( );
-    //   w* Design::DeviceUnitsPerMM.x, h* Design::DeviceUnitsPerMM.y
-    img.Rescale( size.x * Design::DeviceUnitsPerMM.x, size.y * Design::DeviceUnitsPerMM.y, wxIMAGE_QUALITY_HIGH );
+
+    img.Rescale( size.x, size.y, wxIMAGE_QUALITY_HIGH );
     m_bitmap = wxBitmap( img );
 }
 

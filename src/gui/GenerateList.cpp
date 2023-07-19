@@ -157,7 +157,6 @@ void GenerateList::CreateControls( )
     m_gridCtrl->SetColLabelValue( 6, Catalog::DataTypeNames[ Catalog::DT_Width ] );
     m_gridCtrl->SetColLabelValue( 7, Catalog::DataTypeNames[ Catalog::DT_Height ] );
     m_gridCtrl->SetColLabelValue( 8, Catalog::DataTypeNames[ Catalog::DT_StampMount ] );
-    std::cout << " exiting GenerateList" << "\n";
 
 }
 

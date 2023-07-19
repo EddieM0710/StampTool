@@ -128,6 +128,7 @@ void IdentificationPanel::Init( )
     m_themes = NULL;
     m_country = NULL;
     m_perforation = NULL;
+    m_printing = NULL;
     m_link = NULL;
     m_catCodes = NULL;
     m_imageName = NULL;
@@ -226,6 +227,10 @@ void IdentificationPanel::CreateControls( )
             wxDefaultPosition, wxDefaultSize, 0 );
         panelVerticalSizer->Add( m_perforation, 0, wxGROW | wxALL, 2 );
 
+        m_printing = new LabeledTextBox( thePanel, ID_PRINTINGTEXTBOX,
+            wxDefaultPosition, wxDefaultSize, 0 );
+        panelVerticalSizer->Add( m_printing, 0, wxGROW | wxALL, 2 );
+
         wxBoxSizer* sizeHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
         panelVerticalSizer->Add( sizeHorizontalSizer, 0, wxALIGN_LEFT | wxALL, 2 );
 
@@ -320,6 +325,7 @@ void IdentificationPanel::CreateControls( )
     //m_status->SetLabel( "Status" );
     m_country->SetLabel( "Country" );
     m_perforation->SetLabel( "Perforation" );
+    m_printing->SetLabel( "Printing" );
     SetDataEditable( GetSettings( )->IsCatalogVolumeEditable( ) );
 }
 
@@ -366,6 +372,10 @@ void IdentificationPanel::OnTextctrlTextUpdated( wxCommandEvent& event )
     else if ( eventObject == m_perforation )
     {
         UpdateStampValue( Catalog::DT_Perforation, m_perforation );
+    }
+    else if ( eventObject == m_printing )
+    {
+        UpdateStampValue( Catalog::DT_Printing, m_printing );
     }
     else if ( eventObject == m_name )
     {
@@ -440,6 +450,7 @@ void IdentificationPanel::UpdatePanel( )
         m_themes->ChangeValue( stamp.GetAttr( Catalog::DT_Themes ) );
         m_country->ChangeValue( stamp.GetAttr( Catalog::DT_Country ) );
         m_perforation->ChangeValue( stamp.GetAttr( Catalog::DT_Perforation ) );
+        m_printing->ChangeValue( stamp.GetAttr( Catalog::DT_Printing ) );
         //SetChoice( m_status, stamp.GetInventoryStatus( ) );
 
         m_link->SetValue( stamp.GetAttr( Catalog::DT_Link ) );
@@ -469,6 +480,7 @@ void IdentificationPanel::SetDataEditable( bool val )
     // m_status->Enable( val );
     m_country->SetEditable( val );
     m_perforation->SetEditable( val );
+    m_printing->SetEditable( val );
     m_link->SetEditable( val );;
     m_catCodes->SetEditable( val );;
     m_imageName->SetEditable( val );;

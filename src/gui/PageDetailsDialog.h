@@ -60,7 +60,7 @@ namespace Design { class Page; };
 class PageDetailsDialog : public wxDialog
 {
     DECLARE_DYNAMIC_CLASS( PageDetailsDialog )
-        DECLARE_EVENT_TABLE( )
+    DECLARE_EVENT_TABLE( )
 
 public:
 
@@ -73,6 +73,7 @@ public:
         ID_PAGENAMELABELEDTEXTBOX,
         ID_SHOWTITLECHECKBOX,
         ID_SHOWFRAMECHECKBOX,
+        ID_ORIENTATIONCHOICE,
         ID_DEFAULTBUTTON,
         ID_ERRORLISTCTRL,
         ID_NOTEBOOK,
@@ -85,7 +86,7 @@ public:
     };
 
 
-    
+
 
     PageDetailsDialog( );
     PageDetailsDialog( wxWindow* parent, wxWindowID id = SYMBOL_PAGEDETAILSDIALOG_IDNAME, const wxString& caption = SYMBOL_PAGEDETAILSDIALOG_TITLE, const wxPoint& pos = SYMBOL_PAGEDETAILSDIALOG_POSITION, const wxSize& size = SYMBOL_PAGEDETAILSDIALOG_SIZE, long style = SYMBOL_PAGEDETAILSDIALOG_STYLE );
@@ -123,14 +124,16 @@ public:
     bool GetShowTitle( );
     bool GetShowFrame( );
 
-    
-
+    void OnOrientationchoiceSelected( wxCommandEvent& event );
+    wxString GetOrientation( ) { return  m_orientationChoice->GetStringSelection( ); };
+    void SetOrientation( wxString sel ) { m_orientationChoice->SetStringSelection( sel ); }
 
 
 private:
     LabeledTextBox* m_name;
     wxCheckBox* m_titleCheckbox;
     wxCheckBox* m_frameCheckbox;
+    wxChoice* m_orientationChoice;
     wxListBox* m_statusList;
     wxFontPickerCtrl* m_titleFontPicker;
     wxColourPickerCtrl* m_titleColorPicker;

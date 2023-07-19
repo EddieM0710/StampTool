@@ -115,7 +115,7 @@ public:
     ///  @param text 
     ///  @param font 
     ///  @return wxRealPoint 
-    wxRealPoint GetLogicalTextExtent( wxString text, wxFont font );
+    wxSize GetLogicalTextExtent( wxString text, wxFont font );
 
     ///  @brief Get the Text Size object
     ///  

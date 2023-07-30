@@ -208,18 +208,18 @@ void StampDetailsDialog::CreateControls( )
         m_nameFontPicker = nameFontPickerHelper->GetFontPickerCtrl( );
         m_nameColorPicker = nameFontPickerHelper->GetColourPickerCtrl( );
 
-        m_TitleLocationBox = new wxStaticBox( theDialog, wxID_ANY, _( "Member Title Location" ) );
+        m_TitleLocationBox = new wxStaticBox( theDialog, wxID_ANY, _( "Name Location" ) );
         m_titleLocationVSizer = new wxStaticBoxSizer( m_TitleLocationBox, wxVERTICAL );
-        theDialogVerticalSizer->Add( m_titleLocationVSizer, 1, wxGROW | wxALL, 5 );
+        theDialogVerticalSizer->Add( m_titleLocationVSizer, 0, wxGROW | wxALL, 5 );
 
         m_titleLocationHSizer = new wxBoxSizer( wxHORIZONTAL );
-        m_titleLocationVSizer->Add( m_titleLocationHSizer, 1, wxGROW | wxALL, 0 );
+        m_titleLocationVSizer->Add( m_titleLocationHSizer, 0, wxGROW | wxALL, 0 );
 
-        m_topButton = new wxRadioButton( m_titleLocationVSizer->GetStaticBox( ), ID_DEFAULTRADIOBUTTON, _( "Default" ), wxDefaultPosition, wxDefaultSize, 0 );
+        m_topButton = new wxRadioButton( m_titleLocationVSizer->GetStaticBox( ), ID_DEFAULTRADIOBUTTON, _( "Top" ), wxDefaultPosition, wxDefaultSize, 0 );
         m_topButton->SetValue( true );
         m_titleLocationHSizer->Add( m_topButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
-        m_bottomButton = new wxRadioButton( m_titleLocationVSizer->GetStaticBox( ), ID_TOPRADIOBUTTON, _( "Top" ), wxDefaultPosition, wxDefaultSize, 0 );
+        m_bottomButton = new wxRadioButton( m_titleLocationVSizer->GetStaticBox( ), ID_TOPRADIOBUTTON, _( "Bottom" ), wxDefaultPosition, wxDefaultSize, 0 );
         m_bottomButton->SetValue( false );
         m_titleLocationHSizer->Add( m_bottomButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
@@ -720,53 +720,22 @@ void StampDetailsDialog::OnOkClick( wxCommandEvent& event )
     // m_stamp->ReportLayout( );
 
 
-    if ( IsIDModified( ) )
-    {
-        m_stamp->SetAttrStr( Design::AT_CatNbr, GetCatNbr( ) );
-    }
-    if ( IsNameModified( ) )
-    {
-        m_stamp->SetAttrStr( Design::AT_Name, GetName( ) );
-    }
+    m_stamp->SetAttrStr( Design::AT_CatNbr, GetCatNbr( ) );
+    m_stamp->SetAttrStr( Design::AT_Name, GetName( ) );
+    m_stamp->SetStampHeight( GetHeight( ) );
+    m_stamp->SetStampWidth( GetWidth( ) );
+    m_stamp->SetSelvageHeight( GetSelvageHeight( ) );
 
+    m_stamp->SetSelvageWidth( GetSelvageWidth( ) );
 
-
-    if ( IsHeightModified( ) )
-    {
-        m_stamp->SetStampHeight( GetHeight( ) );
-    }
-    if ( IsWidthModified( ) )
-    {
-        m_stamp->SetStampWidth( GetWidth( ) );
-    }
-
-
-
-    if ( IsSelvageHeightModified( ) )
-    {
-        m_stamp->SetSelvageHeight( GetSelvageHeight( ) );
-    }
-    if ( IsSelvageWidthModified( ) )
-    {
-        m_stamp->SetSelvageWidth( GetSelvageWidth( ) );
-    }
-
-
-
-    if ( IsMountAllowanceHeightModified( ) )
-    {
-        m_stamp->SetMountAllowanceHeight( GetMountAllowanceHeight( ) );
-    }
-    if ( IsMountAllowanceWidthModified( ) )
-    {
-        m_stamp->SetMountAllowanceWidth( GetMountAllowanceWidth( ) );
-    }
+    m_stamp->SetMountAllowanceHeight( GetMountAllowanceHeight( ) );
+    m_stamp->SetMountAllowanceWidth( GetMountAllowanceWidth( ) );
 
     m_stamp->SetShowNbr( GetShowNbr( ) );
     m_stamp->SetShowTitle( GetShowTitle( ) );
 
     m_stamp->GetNameFrame( )->SetFont( GetNameFont( ), GetNameColor( ) );
-    m_stamp->GetNameFrame( )->SetFont( GetNbrFont( ), GetNbrColor( ) );
+    m_stamp->GetNbrFrame( )->SetFont( GetNbrFont( ), GetNbrColor( ) );
 
     event.Skip( );
 }

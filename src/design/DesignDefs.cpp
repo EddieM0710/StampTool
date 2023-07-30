@@ -56,6 +56,8 @@
   // namespace for all Album design 
 namespace Design {
 
+    wxRealPoint  DeviceUnitsPerMM;
+
 
 
     wxString AttrNameStrings[ AT_NbrAttrTypes ] = {
@@ -119,7 +121,7 @@ namespace Design {
             "Font" };
 
 
-    int DefaultPointSize[ AT_NbrFontUsageTypes ] = { 6, 10, 14, 8, 10 };
+    int DefaultPointSize[ AT_NbrFontUsageTypes ] = { 6, 18, 14, 6, 8 };
 
     wxString FontUsageTypeStrings[ AT_NbrFontUsageTypes ] = {
         "Unspecified",
@@ -171,6 +173,7 @@ namespace Design {
         }
         return ( FontUsageType ) -1;
     };
+
     Album* GetAlbum( void )
     {
         AlbumVolume* albumVolume = GetAlbumVolume( );
@@ -239,6 +242,18 @@ namespace Design {
     void InitDesignDefs( ScaleClient client )
     {
 
+        if ( client == DD_PDF )
+        {
+            DeviceUnitsPerMM.x = 1;
+            DeviceUnitsPerMM.y = 1;
+        }
+        else //if ( client == DD_Display)
+        {
+
+            wxSize ppi = wxGetDisplayPPI( );
+            DeviceUnitsPerMM.x = ppi.x / 25.4;
+            DeviceUnitsPerMM.y = ppi.y / 25.4;
+        }
     }
 
     bool IsAlbumBaseTypeValid( AlbumBaseType type )

@@ -32,7 +32,7 @@
 #include "design/Frame.h"
 #include "utils/FontNdx.h"
 #include "gui/AlbumImagePanel.h"
-
+#include "utils/Font.h"
 
 namespace Design {
 
@@ -89,7 +89,17 @@ namespace Design {
 
         int SetFont( wxFont newFont, wxColour newColor );
 
-        void SetFontNdx( Utils::FontNdx ndx ) { m_FontNdx = ndx; };
+        void SetFontNdx( Utils::FontNdx ndx ) {
+            Utils::Font* font = ndx.GetFont( );
+            int pnt = font->GetPointSize( );
+
+            std::cout << "SetFontNdx " << m_string
+                << " ndx:" << ndx.Get( )
+                << " pnt:" << pnt
+                << " family:" << font->GetNativeInfoStr( ) << "\n";
+
+            m_FontNdx = ndx;
+        };
 
         void SetString( wxString str ) { m_string = str; };
 

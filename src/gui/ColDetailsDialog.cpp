@@ -272,10 +272,7 @@ bool ColDetailsDialog::IsNameModified( ) { return m_name->IsModified( ); };
 void ColDetailsDialog::OnOkClick( wxCommandEvent& event )
 {
 
-    if ( IsNameModified( ) )
-    {
-        m_col->SetAttrStr( Design::AT_Name, GetName( ) );
-    }
+    m_col->SetAttrStr( Design::AT_Name, GetName( ) );
 
     m_col->SetShowFrame( GetShowFrame( ) );
     m_col->SetShowTitle( GetShowTitle( ) );

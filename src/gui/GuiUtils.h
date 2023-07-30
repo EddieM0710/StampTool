@@ -42,6 +42,12 @@ typedef enum {
 
 extern wxPdfArrayDouble defaultDash;
 
+extern double ScaleX;
+extern double ScaleY;
+extern RealPoint ScalePoint;
+
+void InitScale( wxSize sizeMM, wxSize sizeClient );
+
 void drawBorder( wxDC& dc,
     double x, double y,
     double width, double height );

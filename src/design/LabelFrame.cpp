@@ -50,10 +50,13 @@ namespace Design {
         int ndx = m_FontNdx.Get( );
         if ( GetFontList( )->IsValidFontNdx( ndx ) )
         {
+            // std::cout << "LabelFrame::GetFont from ndx " << GetFontList( )->GetMyFont( ndx )->GetNativeInfoStr( ) << "\n";
+
             return GetFontList( )->GetFont( ndx );
         }
         else
         {
+            ndx = GetAlbum( )->GetFontNdx( m_fontType );
             return GetFontList( )->GetFont( GetAlbum( )->GetFontNdx( m_fontType ) );
         }
     }
@@ -62,20 +65,16 @@ namespace Design {
     {
         wxString id = m_multiLineString;
         wxFont font( GetFont( ) );
-        //    int point = font.GetPointSize( );
-        //    font.SetPointSize( dc.DeviceToLogicalX( point ) );
+        int point = font.GetPointSize( );
+        font.SetPointSize( point - 2 );
         dc.SetFont( font );
-
         RealPoint pos = GetPosition( );
         RealSize size = GetSize( );
         pos.x += x;
         pos.y += y;
+        //std::cout << m_string << " (" << pos.x << "," << pos.y << ")  point " << point << "\n";
 
-        int pointSize = font.GetPointSize( );
-        //        size.y = 0 + pointSize * .31;
-        //dc.DrawText( id, pos );
         DrawLabel( dc, id, pos, size, wxALIGN_CENTER );
-
     };
 
     void LabelFrame::DrawPDF( wxPdfDocument* doc, double x, double y )
@@ -85,12 +84,13 @@ namespace Design {
         pos.y += y;
 
         wxFont font( GetFont( ) );
-        int pointSize = font.GetPointSize( );
+        int pointSize = font.GetPointSize( ) + 1;
         RealSize size( GetWidth( ), 0 + pointSize * .31 );
-
+        font.SetPointSize( pointSize );
         doc->SetFont( font );
         doc->SetXY( pos.x, pos.y );
-        doc->MultiCell( size.x, size.y, m_multiLineString, 0, wxPDF_ALIGN_CENTER );
+        double h = GetHeightChars( pointSize );
+        doc->MultiCell( GetWidth( ), h, m_multiLineString, 0, wxPDF_ALIGN_CENTER );
     };
 
     void LabelFrame::LoadFont( wxXmlNode* node )
@@ -113,6 +113,8 @@ namespace Design {
     int LabelFrame::SetFont( wxFont newFont, wxColour newColor )
     {
         int ndx = GetFontList( )->AddNewFont( newFont, newColor );
+        //m_FontNdx = GetFontList( )->GetFont( ndx );
+        //std::cout << "LabelFrame::SetFont " << m_FontNdx->GetNativeInfoStr( ) << "\n";
         return ndx;
     };
 
@@ -122,15 +124,17 @@ namespace Design {
         m_maxWidth = width;
 
         wxFont font = GetFont( );
+        int point = font.GetPointSize( );
         if ( font == wxNullFont )
         {
             font = *wxNORMAL_FONT;
         }
 
-        // first break into lines if necessary
-        GetAlbumImagePanel( )->MakeMultiLine( m_multiLineString, font, width );
-        // then get the actual multi line text extent
-        m_stringTextExtent = GetAlbumImagePanel( )->GetLogicalTextExtent( m_multiLineString, font );
+
+        //   GetAlbumImagePanel( )->MakeMultiLine( m_multiLineString, font, width );
+        // first break into lines if necessary then get the actual multi line text extent
+        m_stringTextExtent = GetAlbumImagePanel( )->MakeMultiLine( m_multiLineString, font, width );
+        // std::cout << m_string << "  " << width << "  x:" << m_stringTextExtent.x << " y" << m_stringTextExtent.y << "\n";
         SetWidth( m_maxWidth );
         SetHeight( m_stringTextExtent.y );
         SetMinWidth( m_maxWidth );

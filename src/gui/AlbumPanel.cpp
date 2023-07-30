@@ -162,7 +162,7 @@ void AlbumPanel::CreateControls( )
             wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL | wxFULL_REPAINT_ON_RESIZE );
     m_albumImagePanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
     imagePanelVerticalSizer->Add( m_albumImagePanel, 1, wxGROW | wxALL, 0 );
-
+    m_albumImagePanel->SetScrollbars( 3, 3, 400, 400, 0, 0 );
     m_secondarySplitterWindow->SplitVertically( m_albumTreePanel, descriptionPanel, 400 );
 
     splitterWindowHorizontalSizer->Add( m_secondarySplitterWindow, 1, wxGROW | wxALL, 5 );

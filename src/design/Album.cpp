@@ -73,6 +73,11 @@ namespace Design {
         // coords with a single setting
         pdfDC.SetMapModeStyle( wxPDF_MAPMODESTYLE_PDF );
         pdfDC.SetMapMode( wxMM_POINTS );
+        wxSize pdfPPI = pdfDC.GetPPI( );
+        DeviceUnitsPerMM.x = pdfPPI.x / 25.4;
+        DeviceUnitsPerMM.y = pdfPPI.y / 25.4;
+        pdfDC.SetUserScale( DeviceUnitsPerMM.x, DeviceUnitsPerMM.y );
+
 
         wxTreeItemIdValue cookie;
         wxTreeItemId parentID = GetTreeItemId( );
@@ -83,8 +88,6 @@ namespace Design {
 
             // set the layout parameters into the child
             Page* page = ( Page* ) GetAlbumTreeCtrl( )->GetItemNode( childID );
-
-
             if ( Design::IsPortrait( page->GetOrientation( ) ) )
             {
                 doc->AddPage( wxPORTRAIT );
@@ -278,7 +281,7 @@ namespace Design {
             {
                 if ( IsNodeType( AT_Album ) )
                 {
-                    DefaultFonts[ AT_NameFontType ].Set( GetSettings( )->GetFontNdxPreference( AT_TextFontType ) );
+                    DefaultFonts[ AT_NameFontType ].Set( GetSettings( )->GetFontNdxPreference( AT_NameFontType ) );
                 }
             }
 

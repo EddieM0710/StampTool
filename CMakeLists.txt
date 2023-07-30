@@ -1,6 +1,6 @@
 cmake_minimum_required( VERSION 3.10 )
 
-# set(CMAKE_VERBOSE_MAKEFILE ON)
+set(CMAKE_VERBOSE_MAKEFILE ON)
 
 # set the project name
 project( StampTool VERSION 1.0 )

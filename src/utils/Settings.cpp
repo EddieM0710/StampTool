@@ -211,15 +211,7 @@ namespace Utils {
         }
     }
 
-    // void SaveFont( wxXmlNode* parent, Design::FontUsageType type  )
-    // {
 
-    //     void SaveFont( wxXmlNode* parent, Design::FontUsageType type );
-
-    //             SaveFont( fonts, type, m_nbrFont, m_catNbrColor );
-
-
-        // 
     void Settings::Save( )
     {
         wxBusyCursor wait( wxHOURGLASS_CURSOR );
@@ -230,12 +222,6 @@ namespace Utils {
 
         wxXmlNode* settings = NewNode( &doc, "Settings" );
 
-        // wxXmlNode* child = NewNode( settings, "ImageDirectory" );
-        // if ( child )
-        // { 
-        //     child = NewNode( child, "File" );
-        //     child->AddAttribute( "Name", GetImageDirectory( ) );
-        // }
 
         wxXmlNode* child = NewNode( settings, "LastFile" );
         if ( child )
@@ -396,68 +382,8 @@ namespace Utils {
 
         wxFont font( *wxNORMAL_FONT );
 
-        // if ( !m_nbrFont.IsOk( ) )
-        // {
-        //     SetDirty( );
-        //     font.SetWeight( wxFONTWEIGHT_THIN );
-        //     font.SetStyle( wxFONTSTYLE_ITALIC );
-        //     font.SetPointSize( 8 );
-        //     m_nbrFont = font;
-        // }
-
-        // if ( !m_catNbrColor.IsOk( ) )
-        // {
-        //     SetDirty( );
-        //     m_catNbrColor = m_defaultFontColor;
-        // }
-
-        // if ( !m_titleFont.IsOk( ) )
-        // {
-        //     SetDirty( );
-        //     font.SetWeight( wxFONTWEIGHT_BOLD );
-        //     font.SetStyle( wxFONTSTYLE_NORMAL );
-        //     font.SetPointSize( 12 );
-        //     m_titleFont = font;
-        // }
-
-        // if ( !m_titleColor.IsOk( ) )
-        // {
-        //     SetDirty( );
-        //     m_titleColor = m_defaultFontColor;
-        // }
-
-        // if ( !m_textFont.IsOk( ) )
-        // {
-        //     SetDirty( );
-        //     font.SetWeight( wxFONTWEIGHT_NORMAL );
-        //     font.SetStyle( wxFONTSTYLE_NORMAL );
-        //     font.SetPointSize( 10 );
-        //     m_textFont = font;
-        // }
-
-        // if ( !m_textColor.IsOk( ) )
-        // {
-        //     SetDirty( );
-        //     m_textColor = m_defaultFontColor;
-        // }
-
-        // if ( !m_nameFont.IsOk( ) )
-        // {
-        //     SetDirty( );
-        //     font.SetWeight( wxFONTWEIGHT_NORMAL );
-        //     font.SetStyle( wxFONTSTYLE_NORMAL );
-        //     font.SetPointSize( 10 );
-        //     m_nameFont = font;
-        // }
-
-        // if ( !m_textColor.IsOk( ) )
-        // {
-        //     SetDirty( );
-        //     m_textColor = m_defaultFontColor;
-        // }
     }
 
-    // 
     void Settings::Load( )
     {
         //Set Defaults
@@ -684,78 +610,7 @@ namespace Utils {
                 FontPreference[ Design::AT_TitleFontType ].Set( GetFontList( )->DefaultFont( Design::DefaultPointSize[ Design::AT_TitleFontType ] ) );
             }
 
-            //     wxXmlNode* fontChild = child->GetChildren( ) ;
-            //     while ( fontChild )
-            //     { 
-            //         wxString nativeFontString;
-            //         wxFont font;
-            //         wxString colorStr;
-            //         wxColour color;
-            //         Design::FontUsageType type = Utils::LoadFont( fontChild, nativeFontString, colorStr );
-            //         if ( type == Design::AT_NbrFontType )
-            //         { 
-            //             font = wxFont( nativeFontString );
-            //             if ( !font.IsOk( ) )
-            //             {
-            //                 font = *wxNORMAL_FONT;
-            //                 font.SetPointSize( 8 );
-            //             }
-
-            //             color = wxColour( colorStr );
-            //             if ( !color.IsOk( ) )
-            //             {
-            //                 color = *wxBLACK;
-            //             }
-
-            //             SetNbrFont( font );
-            //             SetNbrColor( color );
-            //             SetAppPrefCatNbrFontNdx( GetFontList()->AddNewFont( font, color ) );
-            //         }
-            //         else if ( type == Design::AT_TextFontType )
-            //         { 
-            //             font = wxFont( nativeFontString );
-            //             if ( !font.IsOk( ) )
-            //             {
-            //                 font = *wxNORMAL_FONT;
-            //                 font.SetPointSize( 10 );
-            //             }
-
-            //             color = wxColour( colorStr );
-            //             if ( !color.IsOk( ) )
-            //             {
-            //                 color = *wxBLACK;
-            //             }
-
-            //             SetTextFont( font );
-            //             SetTextColor( color );
-            //             SetAppPrefTextFontNdx( GetFontList()->AddNewFont( font, color ) );
-            //         }
-            //        else if ( type == Design::AT_TitleFontType )
-            //         { 
-            //             font = wxFont( nativeFontString );
-            //             if ( !font.IsOk( ) )
-            //             {
-            //                 font = *wxNORMAL_FONT;
-            //                 font.SetPointSize( 12 );
-            //             }
-
-            //             color = wxColour( colorStr );
-            //             if ( !color.IsOk( ) )
-            //             {
-            //                 color = *wxBLACK;
-            //             }
-
-            //             SetTitleFont( font );
-            //             SetTitleColor( color );
-            //             SetAppPrefTitleFontNdx( GetFontList()->AddNewFont( font, color ) );
-            //         }
-
-            //         fontChild = fontChild->GetNext( );
-            //    }
         }
-        //            child = child->GetNext( );
-
-        //        }
     }
     void Settings::DumpFont( wxString Level )
     {

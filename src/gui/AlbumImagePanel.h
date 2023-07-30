@@ -122,7 +122,7 @@ public:
     ///  @param font 
     ///  @param text 
     ///  @return wxSize 
-    wxSize GetTextSize( wxFont font, wxString text );
+    //wxSize GetTextSize( wxFont font, wxString text );
 
     /**
      * @brief Initialises member variables
@@ -135,7 +135,7 @@ public:
     ///  @param text 
     ///  @param font 
     ///  @param width 
-    void MakeMultiLine( wxString& text, wxFont font, double width );
+    wxSize  MakeMultiLine( wxString& text, wxFont font, double width );
 
     ///  @brief 
     ///  

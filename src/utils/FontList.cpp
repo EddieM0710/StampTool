@@ -65,6 +65,11 @@ namespace Utils {
         ndx = AddNewFont( font, color );
         GetSettings( )->SetFontNdxPreference( Design::AT_TitleFontType, ndx );
 
+        font = GetSettings( )->GetNameFont( );
+        color = GetSettings( )->GetNameColor( );
+        ndx = AddNewFont( font, color );
+        GetSettings( )->SetFontNdxPreference( Design::AT_NameFontType, ndx );
+
     }
 
     Design::FontUsageType FontList::Load( wxXmlNode* fontNode, wxString nativeString, wxString color )
@@ -216,9 +221,14 @@ namespace Utils {
             if ( font.IsOk( ) && color.IsOk( ) )
             {
                 fontNdx.Set( AddNewFont( font, color ) );
+
+                // std::cout << " FontList::LoadFont " << Design::FontUsageTypeStrings[ type ]
+                //     << " " << fontNdx.Get( ) << "\n";
                 return fontNdx;
             }
         }
+        // std::cout << " FontList::LoadFont " << Design::FontUsageTypeStrings[ type ]
+        //     << " " << fontNdx.Get( ) << "\n";
         return fontNdx;
     }
     void FontList::SaveFont( wxXmlNode* parent, FontNdx ndx, Design::FontUsageType type )
@@ -232,7 +242,11 @@ namespace Utils {
     int FontList::DefaultFont( int pointSize )
     {
         wxFont font = *wxNORMAL_FONT;
-        font.SetPointSize( 8 );
+        if ( pointSize < 1 || pointSize > 30 )
+        {
+            pointSize = 6;
+        }
+        font.SetPointSize( pointSize );
         wxColour color = *wxBLACK;
         return AddNewFont( font, color );
     }

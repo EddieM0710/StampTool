@@ -66,8 +66,11 @@ namespace Utils {
         {
             return m_fontMap;
         }
+
         int AddNewFont( wxFont font, wxColour color );
+
         Design::FontUsageType Load( wxXmlNode* fontNode, wxString nativeString, wxString color );
+
         std::size_t Erase( int ndx )
         {
             return m_fontMap.erase( ndx );
@@ -76,7 +79,9 @@ namespace Utils {
         FontNdx LoadFont( wxXmlNode* parent, Design::FontUsageType type );
 
         void SaveFont( wxXmlNode* parent, FontNdx ndx, Design::FontUsageType type );
+
         int DefaultFont( int pointSize );
+
         void DumpFonts( );
 
 

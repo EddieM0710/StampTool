@@ -135,7 +135,7 @@ void RowDetailsDialog::Init( )
 
 void RowDetailsDialog::CreateControls( )
 {//
-    std::cout << "RowDetailsDialog" << "\n";
+    //std::cout << "RowDetailsDialog" << "\n";
     RowDetailsDialog* theDialog = this;
 
     wxBoxSizer* theDialogVerticalSizer = new wxBoxSizer( wxVERTICAL );
@@ -384,12 +384,7 @@ void RowDetailsDialog::SetColor( wxColour color )
 
 void RowDetailsDialog::OnOkClick( wxCommandEvent& event )
 {
-
-    if ( IsNameModified( ) )
-    {
-        m_row->SetAttrStr( Design::AT_Name, GetName( ) );
-    }
-
+    m_row->SetAttrStr( Design::AT_Name, GetName( ) );
     m_row->SetShowFrame( GetShowFrame( ) );
     m_row->SetShowTitle( GetShowTitle( ) );
 

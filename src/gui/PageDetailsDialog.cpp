@@ -300,12 +300,7 @@ void PageDetailsDialog::SetTitleColor( wxColour color )
 
 void PageDetailsDialog::OnOkClick( wxCommandEvent& event )
 {
-
-    if ( IsNameModified( ) )
-    {
-        m_page->SetAttrStr( Design::AT_Name, GetName( ) );
-    }
-
+    m_page->SetAttrStr( Design::AT_Name, GetName( ) );
     m_page->SetShowFrame( GetShowFrame( ) );
     m_page->SetShowTitle( GetShowTitle( ) );
     m_page->SetOrientation( GetOrientation( ) );
@@ -313,7 +308,6 @@ void PageDetailsDialog::OnOkClick( wxCommandEvent& event )
     m_page->GetTitleFrame( )->SetFont( m_titleFontPicker->GetSelectedFont( ), m_titleColorPicker->GetColour( ) );
 
     event.Skip( );
-
 }
 
 void PageDetailsDialog::SetName( wxString name )

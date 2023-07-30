@@ -93,7 +93,13 @@ public:
         ID_NAMEDEFAULTFONTBUTTON,
         ID_TITLEDEFAULTFONTBUTTON,
         ID_TEXTDEFAULTFONTBUTTON,
-
+        ID_NOTEBOOK,
+        ID_PAGEDETAILSPANEL,
+        ID_ROWCOLDETAILSPANEL,
+        ID_STAMPDETAILSPANEL,
+        ID_DEFAULTRADIOBUTTON,
+        ID_TOPRADIOBUTTON,
+        ID_BOTTOMRADIOBUTTON,
         ID_NBRDEFAULTCHECKBOX,
         ID_STAMPTITLEDEFAULTCHECKBOX,
         ID_ROWCOLTITLEDEFAULTCHECKBOX,
@@ -521,6 +527,14 @@ private:
     wxFontPickerCtrl* m_textFontPicker;
     wxColourPickerCtrl* m_textColorPicker;
 
+    wxStaticBox* m_TitleLocationBox;
+    wxStaticBoxSizer* m_titleLocationVSizer;
+    wxBoxSizer* m_titleLocationHSizer;
+    Design::TitleLocation m_titleLocation;
+    wxRadioButton* m_topButton;
+    wxRadioButton* m_bottomButton;
+
+    wxRadioButton* m_defaultButton;
     wxButton* m_validate;
     wxListBox* m_statusList;
 

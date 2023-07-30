@@ -175,6 +175,9 @@ namespace Design {
 
     const static int UnknownFontVal = -1;
 
+    // Conversion factor to convert from Pixels to MM. 
+    // Screen units are in pixels. Album Design elements are in mm.
+    extern wxRealPoint  DeviceUnitsPerMM;
 
     extern wxString AlbumBaseNames[ AT_NbrAlbumTypes ];
 

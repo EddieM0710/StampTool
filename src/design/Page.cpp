@@ -43,7 +43,15 @@ namespace Design {
         SetObjectName( AlbumBaseNames[ GetNodeType( ) ] );
         m_titleFrame = new LabelFrame( Design::AT_TitleFontType );
         m_titleFrame->SetString( GetAttrStr( AT_Name ) );
-        SetOrientation( GetAlbum( )->GetDefaultOrientation( ) );
+        // wxString orientation = GetAttrStr( AT_Orientation );
+        // if ( orientation.IsEmpty( ) )
+        // {
+        //     orientation = GetOrientation( );
+        // }
+        // else
+        // {
+        //     orientation = GetOrientation( );
+        // }
 
     };
 

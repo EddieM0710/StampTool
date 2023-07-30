@@ -120,26 +120,20 @@ void AlbumDetailsDialog::CreateControls( )
     m_name->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
     itemBoxSizer6->Add( m_name, 1, wxGROW | wxALL, 5 );
 
-    FontPicker* nbrFontPickerHelper = new FontPicker(
-        theDialog, theDialogVerticalSizer,
-        _( "Default Catalog Nbr  Font" ), wxID_STATIC,
-        ID_NBRFONTPICKER, ID_NBRCOLORPICKER,
-        _( "Default" ), ID_NBRDEFAULTFONTBUTTON,
-        *wxNORMAL_FONT, *wxBLACK );
-    m_nbrFontPicker = nbrFontPickerHelper->GetFontPickerCtrl( );
-    m_nbrColorPicker = nbrFontPickerHelper->GetColourPickerCtrl( );
+    wxBoxSizer* notebookHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
+    theDialogVerticalSizer->Add( notebookHorizontalSizer, 2, wxGROW | wxALL, 5 );
 
-    FontPicker* nameFontPickerHelper = new FontPicker(
-        theDialog, theDialogVerticalSizer,
-        _( "Default Name Font" ), wxID_STATIC,
-        ID_NAMEFONTPICKER, ID_NAMECOLORPICKER,
-        _( "Default" ), ID_NAMEDEFAULTFONTBUTTON,
-        *wxNORMAL_FONT, *wxBLACK );
-    m_nameFontPicker = nameFontPickerHelper->GetFontPickerCtrl( );
-    m_nameColorPicker = nameFontPickerHelper->GetColourPickerCtrl( );
+    wxNotebook* notebook = new wxNotebook( theDialog, ID_NOTEBOOK, wxDefaultPosition, wxDefaultSize, wxBK_DEFAULT );
+
+    wxPanel* pageDetailsPanel = new wxPanel( notebook, ID_PAGEDETAILSPANEL, wxDefaultPosition, wxDefaultSize, wxNO_BORDER | wxTAB_TRAVERSAL );
+    pageDetailsPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
+
+    wxBoxSizer* detailsVerticalSizer = new wxBoxSizer( wxVERTICAL );
+    pageDetailsPanel->SetSizer( detailsVerticalSizer );
+
 
     FontPicker* titleFontPickerHelper = new FontPicker(
-        theDialog, theDialogVerticalSizer,
+        pageDetailsPanel, detailsVerticalSizer,
         _( "Default Title Font" ), wxID_STATIC,
         ID_TITLEFONTPICKER, ID_TITLECOLORPICKER,
         _( "Default" ), ID_TITLEDEFAULTFONTBUTTON,
@@ -148,7 +142,7 @@ void AlbumDetailsDialog::CreateControls( )
     m_titleColorPicker = titleFontPickerHelper->GetColourPickerCtrl( );
 
     FontPicker* textFontPickerHelper = new FontPicker(
-        theDialog, theDialogVerticalSizer,
+        pageDetailsPanel, detailsVerticalSizer,
         _( "Default Text Font" ), wxID_STATIC,
         ID_TEXTFONTPICKER, ID_TEXTCOLORPICKER,
         _( "Default" ), ID_TEXTDEFAULTFONTBUTTON,
@@ -157,93 +151,162 @@ void AlbumDetailsDialog::CreateControls( )
     m_textColorPicker = textFontPickerHelper->GetColourPickerCtrl( );
 
     wxBoxSizer* paperSizeBoxSizer = new wxBoxSizer( wxHORIZONTAL );
-    theDialogVerticalSizer->Add( paperSizeBoxSizer, 0, wxGROW | wxALL, 0 );
+    detailsVerticalSizer->Add( paperSizeBoxSizer, 0, wxGROW | wxALL, 0 );
 
-    m_overSizeCheckbox = new wxCheckBox( theDialog, ID_OVERSIZECHECKBOX, _( "Oversize Paper" ), wxDefaultPosition, wxDefaultSize, 0 );
+    m_overSizeCheckbox = new wxCheckBox( pageDetailsPanel, ID_OVERSIZECHECKBOX, _( "Oversize Paper" ), wxDefaultPosition, wxDefaultSize, 0 );
     m_overSizeCheckbox->SetValue( true );
     paperSizeBoxSizer->Add( m_overSizeCheckbox, 0, wxALIGN_LEFT | wxALL, 5 );
 
-    m_paperHeight = new LabeledTextBox( theDialog, ID_PAPERHEIGHTLABELEDTEXTBOX123, wxDefaultPosition, wxDefaultSize, wxNO_BORDER | wxTAB_TRAVERSAL );
+    m_paperHeight = new LabeledTextBox( pageDetailsPanel, ID_PAPERHEIGHTLABELEDTEXTBOX123, wxDefaultPosition, wxDefaultSize, wxNO_BORDER | wxTAB_TRAVERSAL );
     m_paperHeight->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
     paperSizeBoxSizer->Add( m_paperHeight, 1, wxGROW | wxALL, 5 );
 
-    m_paperWidth = new LabeledTextBox( theDialog, ID_PAPERWIDTHLABELEDTEXTBOX123, wxDefaultPosition, wxDefaultSize, wxNO_BORDER | wxTAB_TRAVERSAL );
+    m_paperWidth = new LabeledTextBox( pageDetailsPanel, ID_PAPERWIDTHLABELEDTEXTBOX123, wxDefaultPosition, wxDefaultSize, wxNO_BORDER | wxTAB_TRAVERSAL );
     m_paperWidth->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
     paperSizeBoxSizer->Add( m_paperWidth, 1, wxGROW | wxALL, 5 );
 
     wxBoxSizer* itemBoxSizer4 = new wxBoxSizer( wxHORIZONTAL );
-    theDialogVerticalSizer->Add( itemBoxSizer4, 0, wxGROW | wxALL, 0 );
+    detailsVerticalSizer->Add( itemBoxSizer4, 0, wxGROW | wxALL, 0 );
 
-    m_height = new LabeledTextBox( theDialog, ID_HEIGHTLABELEDTEXTBOX123, wxDefaultPosition, wxDefaultSize, wxNO_BORDER | wxTAB_TRAVERSAL );
+    m_height = new LabeledTextBox( pageDetailsPanel, ID_HEIGHTLABELEDTEXTBOX123, wxDefaultPosition, wxDefaultSize, wxNO_BORDER | wxTAB_TRAVERSAL );
     m_height->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
     itemBoxSizer4->Add( m_height, 1, wxGROW | wxALL, 5 );
 
-    m_width = new LabeledTextBox( theDialog, ID_WIDTHLABELEDTEXTBOX123, wxDefaultPosition, wxDefaultSize, wxNO_BORDER | wxTAB_TRAVERSAL );
+    m_width = new LabeledTextBox( pageDetailsPanel, ID_WIDTHLABELEDTEXTBOX123, wxDefaultPosition, wxDefaultSize, wxNO_BORDER | wxTAB_TRAVERSAL );
     m_width->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
     itemBoxSizer4->Add( m_width, 1, wxGROW | wxALL, 5 );
 
     wxBoxSizer* itemBoxSizer7 = new wxBoxSizer( wxHORIZONTAL );
-    theDialogVerticalSizer->Add( itemBoxSizer7, 0, wxGROW | wxALL, 0 );
+    detailsVerticalSizer->Add( itemBoxSizer7, 0, wxGROW | wxALL, 0 );
 
-    m_topMargin = new LabeledTextBox( theDialog, ID_TOPMARGINLABELEDTEXTBOX, wxDefaultPosition, wxDefaultSize, wxNO_BORDER | wxTAB_TRAVERSAL );
+    m_topMargin = new LabeledTextBox( pageDetailsPanel, ID_TOPMARGINLABELEDTEXTBOX, wxDefaultPosition, wxDefaultSize, wxNO_BORDER | wxTAB_TRAVERSAL );
     m_topMargin->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
     itemBoxSizer7->Add( m_topMargin, 1, wxGROW | wxALL, 5 );
 
-    m_bottomMargin = new LabeledTextBox( theDialog, ID_BOTTOMMARGINLABELEDTEXTBOX, wxDefaultPosition, wxDefaultSize, wxNO_BORDER | wxTAB_TRAVERSAL );
+    m_bottomMargin = new LabeledTextBox( pageDetailsPanel, ID_BOTTOMMARGINLABELEDTEXTBOX, wxDefaultPosition, wxDefaultSize, wxNO_BORDER | wxTAB_TRAVERSAL );
     m_bottomMargin->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
     itemBoxSizer7->Add( m_bottomMargin, 1, wxGROW | wxALL, 5 );
 
     wxBoxSizer* itemBoxSizer10 = new wxBoxSizer( wxHORIZONTAL );
-    theDialogVerticalSizer->Add( itemBoxSizer10, 0, wxGROW | wxALL, 0 );
+    detailsVerticalSizer->Add( itemBoxSizer10, 0, wxGROW | wxALL, 0 );
 
-    m_rightMargin = new LabeledTextBox( theDialog, ID_RIGHTMARGINLABELEDTEXTBOX, wxDefaultPosition, wxDefaultSize, wxNO_BORDER | wxTAB_TRAVERSAL );
+    m_rightMargin = new LabeledTextBox( pageDetailsPanel, ID_RIGHTMARGINLABELEDTEXTBOX, wxDefaultPosition, wxDefaultSize, wxNO_BORDER | wxTAB_TRAVERSAL );
     m_rightMargin->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
     itemBoxSizer10->Add( m_rightMargin, 1, wxGROW | wxALL, 5 );
 
-    m_leftMargin = new LabeledTextBox( theDialog, ID_LEFTMARGINLABELEDTEXTBOX, wxDefaultPosition, wxDefaultSize, wxNO_BORDER | wxTAB_TRAVERSAL );
+    m_leftMargin = new LabeledTextBox( pageDetailsPanel, ID_LEFTMARGINLABELEDTEXTBOX, wxDefaultPosition, wxDefaultSize, wxNO_BORDER | wxTAB_TRAVERSAL );
     m_leftMargin->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
     itemBoxSizer10->Add( m_leftMargin, 1, wxGROW | wxALL, 5 );
 
     wxBoxSizer* borderBoxSizer = new wxBoxSizer( wxHORIZONTAL );
-    theDialogVerticalSizer->Add( borderBoxSizer, 0, wxGROW | wxALL, 0 );
+    detailsVerticalSizer->Add( borderBoxSizer, 0, wxGROW | wxALL, 0 );
 
-    m_borderFilename = new LabeledTextBox( theDialog, ID_BORDERFILENAMELABELEDTEXTBOX, wxDefaultPosition, wxDefaultSize, wxNO_BORDER | wxTAB_TRAVERSAL );
+    m_borderFilename = new LabeledTextBox( pageDetailsPanel, ID_BORDERFILENAMELABELEDTEXTBOX, wxDefaultPosition, wxDefaultSize, wxNO_BORDER | wxTAB_TRAVERSAL );
     m_borderFilename->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
     borderBoxSizer->Add( m_borderFilename, 1, wxGROW | wxALL, 5 );
 
 
     wxBoxSizer* itemBoxSizer3 = new wxBoxSizer( wxHORIZONTAL );
-    theDialogVerticalSizer->Add( itemBoxSizer3, 0, wxGROW | wxALL, 0 );
+    detailsVerticalSizer->Add( itemBoxSizer3, 0, wxGROW | wxALL, 0 );
 
-    m_borderSize = new LabeledTextBox( theDialog, ID_BORDERSIZELABELEDTEXTBOX, wxDefaultPosition, wxDefaultSize, wxNO_BORDER | wxTAB_TRAVERSAL );
+    m_borderSize = new LabeledTextBox( pageDetailsPanel, ID_BORDERSIZELABELEDTEXTBOX, wxDefaultPosition, wxDefaultSize, wxNO_BORDER | wxTAB_TRAVERSAL );
     m_borderSize->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
     itemBoxSizer3->Add( m_borderSize, 1, wxGROW | wxALL, 5 );
 
     wxBoxSizer* itemBoxSizer20 = new wxBoxSizer( wxHORIZONTAL );
-    theDialogVerticalSizer->Add( itemBoxSizer20, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 0 );
-
-    m_nbrCheckbox = new wxCheckBox( theDialog, ID_NBRDEFAULTCHECKBOX, _( "Show Catalog Nbr" ), wxDefaultPosition, wxDefaultSize, 0 );
-    m_nbrCheckbox->SetValue( true );
-    itemBoxSizer20->Add( m_nbrCheckbox, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
-
-    m_stampTitleCheckbox = new wxCheckBox( theDialog, ID_STAMPTITLEDEFAULTCHECKBOX, _( "Show Stamp Title" ), wxDefaultPosition, wxDefaultSize, 0 );
-    m_stampTitleCheckbox->SetValue( true );
-    itemBoxSizer20->Add( m_stampTitleCheckbox, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
-
-    m_grayScaleImagesCheckbox = new wxCheckBox( theDialog, ID_GRAYSCALECHECKBOX, _( "Show Grayscale Images" ), wxDefaultPosition, wxDefaultSize, 0 );
-    m_grayScaleImagesCheckbox->SetValue( true );
-    itemBoxSizer20->Add( m_grayScaleImagesCheckbox, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
-
+    detailsVerticalSizer->Add( itemBoxSizer20, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 0 );
 
     wxStaticText* orientationStatic = new wxStaticText(
-        theDialog, wxID_STATIC, _( " Default Orientation:" ), wxDefaultPosition, wxDefaultSize, 0 );
+        pageDetailsPanel, wxID_STATIC, _( " Default Orientation:" ), wxDefaultPosition, wxDefaultSize, 0 );
     itemBoxSizer20->Add( orientationStatic, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
     wxArrayString m_orientationChoiceStrings( 2, Design::OrientationStrings );
-    m_orientationChoice = new wxChoice( theDialog, wxALIGN_CENTER_VERTICAL, wxDefaultPosition, wxDefaultSize, m_orientationChoiceStrings, 0 );
+    m_orientationChoice = new wxChoice( pageDetailsPanel, wxALIGN_CENTER_VERTICAL, wxDefaultPosition, wxDefaultSize, m_orientationChoiceStrings, 0 );
     m_orientationChoice->SetSelection( Design::AT_Portrait );
 
     itemBoxSizer20->Add( m_orientationChoice, 0, wxALIGN_LEFT | wxALL, 0 );
+
+
+
+    notebook->AddPage( pageDetailsPanel, _( "Page" ) );
+
+    wxPanel* rowColDetailsPanel = new wxPanel( notebook, ID_PAGEDETAILSPANEL, wxDefaultPosition, wxDefaultSize, wxNO_BORDER | wxTAB_TRAVERSAL );
+    rowColDetailsPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
+
+    wxBoxSizer* rowColVerticalSizer = new wxBoxSizer( wxVERTICAL );
+    rowColDetailsPanel->SetSizer( rowColVerticalSizer );
+
+
+    notebook->AddPage( rowColDetailsPanel, _( "Row/Col" ) );
+
+    wxPanel* stampDetailsPanel = new wxPanel( notebook, ID_PAGEDETAILSPANEL, wxDefaultPosition, wxDefaultSize, wxNO_BORDER | wxTAB_TRAVERSAL );
+    stampDetailsPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
+
+    wxBoxSizer* stampVerticalSizer = new wxBoxSizer( wxVERTICAL );
+    stampDetailsPanel->SetSizer( stampVerticalSizer );
+
+
+
+    FontPicker* nbrFontPickerHelper = new FontPicker(
+        stampDetailsPanel, stampVerticalSizer,
+        _( "Default Catalog Nbr  Font" ), wxID_STATIC,
+        ID_NBRFONTPICKER, ID_NBRCOLORPICKER,
+        _( "Default" ), ID_NBRDEFAULTFONTBUTTON,
+        *wxNORMAL_FONT, *wxBLACK );
+    m_nbrFontPicker = nbrFontPickerHelper->GetFontPickerCtrl( );
+    m_nbrColorPicker = nbrFontPickerHelper->GetColourPickerCtrl( );
+
+    FontPicker* nameFontPickerHelper = new FontPicker(
+        stampDetailsPanel, stampVerticalSizer,
+        _( "Default Name Font" ), wxID_STATIC,
+        ID_NAMEFONTPICKER, ID_NAMECOLORPICKER,
+        _( "Default" ), ID_NAMEDEFAULTFONTBUTTON,
+        *wxNORMAL_FONT, *wxBLACK );
+    m_nameFontPicker = nameFontPickerHelper->GetFontPickerCtrl( );
+    m_nameColorPicker = nameFontPickerHelper->GetColourPickerCtrl( );
+
+
+    wxBoxSizer* stampDetailsHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
+    stampVerticalSizer->Add( stampDetailsHorizontalSizer, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 0 );
+
+    m_nbrCheckbox = new wxCheckBox( stampDetailsPanel, ID_NBRDEFAULTCHECKBOX, _( "Show Catalog Nbr" ), wxDefaultPosition, wxDefaultSize, 0 );
+    m_nbrCheckbox->SetValue( true );
+    stampDetailsHorizontalSizer->Add( m_nbrCheckbox, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+
+    m_stampTitleCheckbox = new wxCheckBox( stampDetailsPanel, ID_STAMPTITLEDEFAULTCHECKBOX, _( "Show Stamp Title" ), wxDefaultPosition, wxDefaultSize, 0 );
+    m_stampTitleCheckbox->SetValue( true );
+    stampDetailsHorizontalSizer->Add( m_stampTitleCheckbox, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+
+    m_grayScaleImagesCheckbox = new wxCheckBox( stampDetailsPanel, ID_GRAYSCALECHECKBOX, _( "Show Grayscale Images" ), wxDefaultPosition, wxDefaultSize, 0 );
+    m_grayScaleImagesCheckbox->SetValue( true );
+    stampDetailsHorizontalSizer->Add( m_grayScaleImagesCheckbox, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+
+
+    // wxStaticText* orientationStatic = new wxStaticText(
+    //     theDialog, wxID_STATIC, _( " Default Orientation:" ), wxDefaultPosition, wxDefaultSize, 0 );
+    // itemBoxSizer20->Add( orientationStatic, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+
+    m_TitleLocationBox = new wxStaticBox( stampDetailsPanel, wxID_ANY, _( "Name Location" ) );
+    m_titleLocationVSizer = new wxStaticBoxSizer( m_TitleLocationBox, wxVERTICAL );
+    stampVerticalSizer->Add( m_titleLocationVSizer, 0, wxGROW | wxALL, 5 );
+
+    m_titleLocationHSizer = new wxBoxSizer( wxHORIZONTAL );
+    m_titleLocationVSizer->Add( m_titleLocationHSizer, 0, wxGROW | wxALL, 0 );
+
+    m_topButton = new wxRadioButton( m_titleLocationVSizer->GetStaticBox( ), ID_DEFAULTRADIOBUTTON, _( "Top" ), wxDefaultPosition, wxDefaultSize, 0 );
+    m_topButton->SetValue( true );
+    m_titleLocationHSizer->Add( m_topButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+
+    m_bottomButton = new wxRadioButton( m_titleLocationVSizer->GetStaticBox( ), ID_TOPRADIOBUTTON, _( "Bottom" ), wxDefaultPosition, wxDefaultSize, 0 );
+    m_bottomButton->SetValue( false );
+    m_titleLocationHSizer->Add( m_bottomButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+
+    notebook->AddPage( stampDetailsPanel, _( "Stamp" ) );
+
+
+
+    notebookHorizontalSizer->Add( notebook, 2, wxGROW | wxALL, 5 );
+
 
     wxBoxSizer* itemBoxSizer13 = new wxBoxSizer( wxHORIZONTAL );
     theDialogVerticalSizer->Add( itemBoxSizer13, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 0 );
@@ -706,48 +769,17 @@ void AlbumDetailsDialog::OnTitleDefaultClick( wxCommandEvent& event )
 void AlbumDetailsDialog::OnOkClick( wxCommandEvent& event )
 {
 
-    if ( IsNameModified( ) )
-    {
-        wxString newName = GetName( );
-        m_album->SetAttrStr( Design::AT_Name, newName );
-    }
+    m_album->SetAttrStr( Design::AT_Name, GetName( ) );
+    m_album->SetPaperHeight( GetPaperHeight( ) );
+    m_album->SetPaperWidth( GetPaperWidth( ) );
+    m_album->SetPageHeight( GetPageHeight( ) );
+    m_album->SetPageWidth( GetPageWidth( ) );
+    m_album->SetTopMargin( GetTopMargin( ) );
+    m_album->SetBottomMargin( GetBottomMargin( ) );
+    m_album->SetLeftMargin( GetLeftMargin( ) );
+    m_album->SetRightMargin( GetRightMargin( ) );
+    m_album->SetBorderSize( GetBorderSize( ) );
 
-    if ( IsPaperHeightModified( ) )
-    {
-        m_album->SetPaperHeight( GetPaperHeight( ) );
-    }
-    if ( IsPaperWidthModified( ) )
-    {
-        m_album->SetPaperWidth( GetPaperWidth( ) );
-    }
-    if ( IsPageHeightModified( ) )
-    {
-        m_album->SetPageHeight( GetPageHeight( ) );
-    }
-    if ( IsPageWidthModified( ) )
-    {
-        m_album->SetPageWidth( GetPageWidth( ) );
-    }
-    if ( IsTopMarginModified( ) )
-    {
-        m_album->SetTopMargin( GetTopMargin( ) );
-    }
-    if ( IsBottomMarginModified( ) )
-    {
-        m_album->SetBottomMargin( GetBottomMargin( ) );
-    }
-    if ( IsLeftMarginModified( ) )
-    {
-        m_album->SetLeftMargin( GetLeftMargin( ) );
-    }
-    if ( IsRightMarginModified( ) )
-    {
-        m_album->SetRightMargin( GetRightMargin( ) );
-    }
-    if ( IsBorderSizeModified( ) )
-    {
-        m_album->SetBorderSize( GetBorderSize( ) );
-    }
     m_album->SetOverSizePaper( GetOverSizePaper( ) );
     m_album->SetShowNbr( GetShowNbr( ) );
     m_album->SetShowTitle( GetShowStampTitle( ) );
@@ -761,6 +793,7 @@ void AlbumDetailsDialog::OnOkClick( wxCommandEvent& event )
     m_album->SetFont( Design::AT_TextFontType, GetTextFont( ), GetTextColor( ) );
     m_album->SetFont( Design::AT_NbrFontType, GetNbrFont( ), GetNbrColor( ) );
     m_album->SetFont( Design::AT_TitleFontType, GetTitleFont( ), GetTitleColor( ) );
+    m_album->SetFont( Design::AT_NameFontType, GetNameFont( ), GetNameColor( ) );
 
 
     event.Skip( );
@@ -788,9 +821,11 @@ void AlbumDetailsDialog::UpdateControls( )
     SetNbrFont( m_album->GetFont( Design::AT_NbrFontType ) );
     SetTextFont( m_album->GetFont( Design::AT_TextFontType ) );
     SetTitleFont( m_album->GetFont( Design::AT_TitleFontType ) );
+    SetNameFont( m_album->GetFont( Design::AT_NameFontType ) );
     SetNbrColor( m_album->GetColor( Design::AT_NbrFontType ) );
     SetTextColor( m_album->GetColor( Design::AT_TextFontType ) );
     SetTitleColor( m_album->GetColor( Design::AT_TitleFontType ) );
+    SetNameColor( m_album->GetColor( Design::AT_NameFontType ) );
     SetName( m_album->GetAttrStr( Design::AT_Name ) );
 
 }

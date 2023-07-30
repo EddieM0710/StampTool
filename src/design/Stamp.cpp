@@ -164,6 +164,9 @@ namespace Design {
 
         m_nameFrame = new LabelFrame( Design::AT_NameFontType );
         m_nameFrame->SetString( GetAttrStr( AT_Name ) );
+        wxFont font = m_nameFrame->GetFont( );
+        int point = font.GetPointSize( );
+
         m_nbrFrame = new LabelFrame( Design::AT_NbrFontType );
         m_nbrFrame->SetString( GetAttrStr( AT_CatNbr ) );
         //  CalcFrame( );
@@ -208,7 +211,16 @@ namespace Design {
 
         //the Frame is positioned  the border allowance over
         m_borderFrame.SetXPos( borderAllowance );
-        m_borderFrame.SetYPos( borderAllowance );
+        if ( titleLocation == AT_TitleLocationBottom )
+        {
+            m_borderFrame.SetYPos( borderAllowance );
+        }
+        else
+        {
+            Design::LayoutBase* parent = ( Design::LayoutBase* ) GetParent( );
+            double parentHeight = parent->GetHeight( );
+            m_borderFrame.SetYPos( parentHeight - borderAllowance - m_borderFrame.GetHeight( ) );
+        }
         GetNameFrame( )->SetXPos( 0 );
 
         // the NbrFrame vals are determined by stamp frame width, the text and the font
@@ -230,8 +242,18 @@ namespace Design {
         // the nbr ypos is just below the image
         GetNbrFrame( )->SetYPos( m_stampImageFrame.GetYPos( ) + m_stampImageFrame.GetHeight( ) + 1 );
 
-        //the name ypos is just below the stampframe
-        GetNameFrame( )->SetYPos( m_borderFrame.GetHeight( ) + 1 );
+        if ( titleLocation == AT_TitleLocationBottom )
+        {
+            //the name ypos is just below the stampframe
+            GetNameFrame( )->SetYPos( m_borderFrame.GetHeight( ) + 1 );
+        }
+        else
+        {
+            Design::LayoutBase* parent = ( Design::LayoutBase* ) GetParent( );
+            double parentHeight = parent->GetHeight( );
+            GetNameFrame( )->SetYPos( parentHeight - borderAllowance - m_borderFrame.GetHeight( ) - GetNameFrame( )->GetHeight( ) - 2 );
+
+        }
 
     }
 
@@ -276,7 +298,17 @@ namespace Design {
 
     void DrawRotated( wxDC& dc, double x, double y )
     {
+        // wxMemoryDC inDC;
 
+        // DoPrepareDC( inDC );
+        // inDC.SetMapMode( wxMM_METRIC );
+        // double userScale;
+        // double userScale
+        //     dc.GetUserScale( &userScale, userScale );
+        // dc.SetUserScale( m_userScale, m_userScale );
+
+        // dc.SetFont( font );
+        // //   double deviceScale = ppi.x / 25.4;
     }
 
     //--------------
@@ -292,11 +324,8 @@ namespace Design {
             //Draw the Stamp frame
             double xInnerPos = x + GetXPos( );
             double yInnerPos = y + GetYPos( );
-            //wxPen pen = dc.GetPen( );
-            //pen.SetColour( *wxBLACK );
-            wxPen pen( *wxBLACK, 1, wxPENSTYLE_DOT );
 
-            dc.SetPen( pen );
+            dc.SetPen( *wxBLACK_PEN );
             m_borderFrame.Draw( dc, xInnerPos, yInnerPos );
 
             double xImagePos = xInnerPos + m_stampImageFrame.GetXPos( );
@@ -323,7 +352,17 @@ namespace Design {
                 {
                     image = image.ConvertToGreyscale( );
                 }
+                // wxImage image2( image );
+                // wxSize imageSize = image2.GetSize( );
+                // wxSize dcSize = dc.GetSizeMM( );
+                // wxSize ppi = dc.GetPPI( );//wxGetDisplayPPI( );
+                // double deviceScale = ppi.x / 25.4;
 
+                // //image2 = image2.Scale( dc.LogicalToDeviceX( m_stampImageFrame.GetWidth( ) ), dc.LogicalToDeviceY( m_stampImageFrame.GetHeight( ) ), wxIMAGE_QUALITY_HIGH );
+                // wxBitmap bitmap( image2 );
+                // wxBitmap bitmap2 = BlitResize( bitmap, .1, true );
+                // //bitmap.SetScaleFactor( .1 );
+                // dc.DrawBitmap( bitmap2, xImagePos, yImagePos, true );
                 DrawImage( dc, image,
                     xImagePos, yImagePos,
                     m_stampImageFrame.GetWidth( ), m_stampImageFrame.GetHeight( ) );
@@ -331,12 +370,10 @@ namespace Design {
             else
             {
                 // Draw missing image frame transparent
-
                 dc.SetPen( *wxTRANSPARENT_PEN );
                 m_stampImageFrame.Draw( dc, xImagePos, yImagePos );
-                pen.SetColour( *wxBLACK );
             }
-
+            //            DrawRectangle( dc, GetNameFrame( )->GetXPos( ) + xInnerPos, GetNameFrame( )->GetYPos( ) + yInnerPos, GetNameFrame( )->GetWidth( ), GetNameFrame( )->GetHeight( ) );
             double borderAllowance = m_borderFrame.GetYPos( );
             GetNameFrame( )->Draw( dc, xInnerPos, yInnerPos );
 
@@ -436,9 +473,10 @@ namespace Design {
     LabelFrame* Stamp::GetNbrFrame( ) { return m_nbrFrame; };
 
     wxString  Stamp::GetNbrString( ) { return m_nbrFrame->GetString( ); };
+
     void  Stamp::SetNbrString( wxString str )
     {
-        SetAttrStr( AT_Name, str );
+        SetAttrStr( AT_CatNbr, str );
     };
 
     //--------------

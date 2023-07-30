@@ -28,7 +28,6 @@
 #include "design/DesignDefs.h"
 #include "design/XMLBase.h"
 
-
  //#include <vector>
 
 
@@ -36,7 +35,7 @@
 namespace Utils {
 
     class FontList;
-
+    class Font;
 
     class FontNdx
     {
@@ -51,7 +50,7 @@ namespace Utils {
 
         void MakeDefault( );
         bool IsOk( ) { return ( m_ndx >= 0 ); };
-
+        Utils::Font* GetFont( );
     private:
         FontList* m_fontList;
         int m_ndx;

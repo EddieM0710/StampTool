@@ -42,6 +42,8 @@
 // #include "gui/GuiUtils.h"
 
 
+#include "utils/Font.h"
+
 
 namespace Utils {
 
@@ -102,7 +104,12 @@ namespace Utils {
                 int cnt = font->Increment( );
             }
         }
+        //        std::cout << "FontNdx::Set  ndx:" << m_ndx << " " << GetFont( )->GetNativeInfoStr( ) << "\n";
     }
+    Utils::Font* FontNdx::GetFont( )
+    {
+        return m_fontList->GetMyFont( m_ndx );
+    };
 
     void FontNdx::MakeDefault( )
     {

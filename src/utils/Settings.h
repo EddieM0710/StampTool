@@ -97,11 +97,6 @@ namespace Utils {
         void SetUpperDivision( wxString val ) { m_upperDivision = val.Trim( ); m_dirty = true; };
         void SetUpperPeriod( wxString val ) { m_upperPeriod = m_configurationDirectory.Trim( ); m_dirty = true; };
 
-        // void SetAppPrefTitleFontNdx( int ndx ) { FontPreference[ Design::AT_TitleFontType ].Set( ndx ); };
-        // void SetAppPrefTextFontNdx( int ndx ) { FontPreference[ Design::AT_TitleFontType ].Set( ndx ); };
-        // void SetAppPrefCatNbrFontNdx( int ndx ) { FontPreference[ Design::AT_TitleFontType ].Set( ndx ); };
-
-
         int GetNextSortClassification( int current );
         void SetSettingValue( wxString& setting, wxXmlNode* parent, wxString childName, wxString defaultVal );
         void SetLastFile( wxString file );
@@ -147,7 +142,7 @@ namespace Utils {
         wxString m_CollectionFile;
         wxString m_lastCollection;
         wxString m_configurationDirectory;
-        //    wxString m_imageDirectory;
+
         wxString m_countryID;
         wxString m_catalogID;
         wxArrayInt m_sortOrder;
@@ -156,14 +151,7 @@ namespace Utils {
         wxString m_lowerPeriod;
         wxString m_middlePeriod;
         wxString m_upperPeriod;
-        // wxFont m_nbrFont;
-        // wxColour m_catNbrColor;
-        // wxFont m_titleFont;
-        // wxColour m_titleColor;
-        // wxFont m_textFont;
-        // wxColour m_textColor;
-        // wxFont m_nameFont;
-        // wxColour m_nameColor;
+
         wxArrayString m_recentFiles;
         int m_nbrRecentPreference;
         bool m_catalogVolumeEditable;
@@ -182,10 +170,7 @@ namespace Utils {
         const wxString m_defaultMiddlePeriod = "Classical";
         const wxString m_defaultUpperPeriod = "Modern";
 
-        // Utils::FontNdx m_appPrefTitleFontNdx;
-        // Utils::FontNdx m_appPrefTextFontNdx;
-        // Utils::FontNdx m_appPrefNbrFontNdx;
-        // Utils::FontNdx m_appPrefNameFontNdx;
+
 
         Utils::FontNdx FontPreference[ Design::AT_NbrFontUsageTypes ];
         const wxColour m_defaultFontColor = *wxBLACK;

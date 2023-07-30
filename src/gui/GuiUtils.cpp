@@ -40,8 +40,19 @@
 #include "art/fleur_di_lis3.xpm"
 #include <wx/dcmemory.h>
 #include <wx/dcgraph.h>
+#include <wx/tokenzr.h>
 
 wxPdfArrayDouble defaultDash;
+double ScaleX;
+double ScaleY;
+RealPoint ScalePoint;
+
+void InitScale( wxSize sizeMM, wxSize sizeClient )
+{
+    ScaleX = sizeClient.x / sizeMM.x;
+    ScaleY = sizeClient.y / sizeMM.y;
+    ScalePoint = RealPoint( ScaleX, ScaleY );
+}
 
 
 void DrawLabelPDF( wxPdfDocument* doc, const wxString& text,
@@ -57,6 +68,93 @@ void DrawLabelPDF( wxPdfDocument* doc, const wxString& text,
 
 }
 
+
+void DrawText( wxDC& dc, wxString& str, wxRect& rect, bool draw ) {
+    wxCoord w, h;
+    rect.x = rect.x * ScaleX;
+    rect.y = rect.y * ScaleY;
+    rect.width = rect.width * ScaleX;
+    rect.height = rect.height * ScaleY;
+    wxCoord x = rect.x,
+        y = rect.y;
+
+    // zeroing height, in which the new height of the whole will be returned
+    rect.height = 0;
+
+    wxArrayString lines = wxStringTokenize( str, "\n" );
+
+    size_t size = lines.GetCount( );
+    for ( size_t i = 0; i < size; i++ ) {
+
+        wxString line;
+        wxCoord width = 0;
+
+        wxArrayString words = wxStringTokenize( lines[ i ], " ", wxTOKEN_RET_DELIMS );
+
+        for ( size_t k = 0; k < words.GetCount( ); k++ ) {
+
+            dc.GetTextExtent( words[ k ], &w, &h );
+
+            if ( ( width += w ) > rect.width ) {
+                // if larger, paint lines (text without the last word)
+                if ( draw )
+                    dc.DrawText( line, x, y );
+
+                // Increase the height and position to the next line
+                y += h;
+                rect.height += h;
+
+                line = "";
+
+                // the width of the last word later attached to the line
+                width = w;
+            }
+
+            // a word larger than the entire line
+            if ( w > rect.width ) {
+                wxString s;
+                int a = 0;
+                int len = words[ k ].Length( );
+
+                for ( int i = 0; i < len; i++ ) {
+
+                    dc.GetTextExtent( words[ k ][ i ], &w, &h );
+
+                    if ( ( a += w ) > rect.width ) {
+
+                        if ( draw )
+                            dc.DrawText( s, x, y );
+
+                        y += h;
+                        rect.height += h;
+
+                        s = "";
+                        a = w;
+                    }
+
+                    s << words[ k ][ i ];
+                }
+
+                words[ k ] = s;   // The word is the remnant
+                width = a;      // the width of this residue
+            }
+
+            line << words[ k ];
+
+        } // end for()
+
+        // If there is something left (smaller than the line - the remnant) then namluj
+        if ( line != "" ) {
+            if ( draw )
+                dc.DrawText( line, x, y );
+
+            y += h;
+            rect.height += h;
+        }
+
+    } // end for()
+}
+
 void DrawLabel( wxDC& dc, const wxString& text,
     RealPoint pos,
     RealSize size,
@@ -64,26 +162,15 @@ void DrawLabel( wxDC& dc, const wxString& text,
     int  	indexAccel )
 {
 
-
-    wxRect rect( pos.x, pos.y, size.x, size.y );
-    wxFont font = dc.GetFont( );
-    int point = font.GetPointSize( );
-    font.SetPointSize( dc.DeviceToLogicalX( point ) );
-    dc.SetFont( font );
-
+    wxRect rect( pos.x * ScaleX, pos.y * ScaleY, size.x * ScaleX, size.y * ScaleY );
     dc.DrawLabel( text, rect, alignment, indexAccel );
-    font.SetPointSize( point );
-    dc.SetFont( font );
-
-
 }
 
 void DrawTitle( wxDC& dc, wxString title, RealPoint pos, RealSize size )
 {
     wxString id;
     wxFont font = dc.GetFont( );//( *wxNORMAL_FONT );
-    //    font.SetPointSize( 10 );
-    //    dc.SetFont( font );
+
     id = title;
     id.Trim( );
     id.Trim( false );
@@ -135,16 +222,11 @@ void DrawTitlePDF( wxPdfDocument* doc, wxString title, RealPoint pos, RealSize s
     id.Trim( false );
 
     wxPdfFont pdfFont = doc->GetCurrentFont( );
-    //   pdfFont.GetStringWidth{ id };
-
-       //GetAlbumImagePanel( )->MakeMultiLine( id, font, size.x );
     doc->SetXY( pos.x, pos.y );
 
     double lineHeight = GetHeightChars( 10 );
 
     doc->MultiCell( size.x, lineHeight, id, 0, wxPDF_ALIGN_CENTER );
-    //double y = doc->GetY( );
-    //double x = doc->GetX( );
 }
 
 // wxSize LogicalToDeviceRel( wxDC& dc, double x, double y )
@@ -182,13 +264,11 @@ void DrawRectanglePDF( wxPdfDocument* doc, double x, double y, double width, dou
     doc->Rect( x, y, width, height, wxPDF_STYLE_DRAW );
 }
 
+// inputs are in mm
 void DrawRectangle( wxDC& dc, double x, double y, double width, double height )
 {
-    wxPen pen = dc.GetPen( );
-    pen.SetWidth( 1 );
-    pen.SetQuality( wxPEN_QUALITY_HIGH );
-    dc.SetPen( pen );
-    dc.DrawRectangle( x, y, width, height );
+    //Scale to client logical units
+    dc.DrawRectangle( x * ScaleX, y * ScaleY, width * ScaleX, height * ScaleY );
 };
 
 wxImage GetImageFromFilename( wxString filename )
@@ -271,8 +351,8 @@ void  BlitResize( wxDC& dc, wxImage image, double x, double y, double w, double 
 
 void RescaleImage( wxDC& dc, wxImage image, double x, double y, double w, double h )
 {
-    wxBitmap bitmap( image.Scale( w, h, wxIMAGE_QUALITY_HIGH ) );
-    dc.DrawBitmap( bitmap, x, y, false );
+    wxBitmap bitmap( image.Scale( w * ScaleX, h * ScaleY, wxIMAGE_QUALITY_HIGH ) );
+    dc.DrawBitmap( bitmap, x * ScaleX, y * ScaleY, false );
 }
 
 void Kluge( wxDC& dc, wxImage image, double x, double y, double w, double h )
@@ -309,10 +389,10 @@ void DrawImage( wxDC& dc, wxImage image, double x, double y, double w, double h 
             w = 10;
         }
 
-        //image.Rescale( w, h, wxIMAGE_QUALITY_HIGH );
+        image.Rescale( w * ScaleX, h * ScaleY, wxIMAGE_QUALITY_HIGH );
         wxBitmap bitmap( image );
-        Kluge( dc, image, x, y, w, h );
-        //dc.DrawBitmap( bitmap, x, y, true );
+        //Kluge( dc, image, x, y, w, h );
+        dc.DrawBitmap( bitmap, x * ScaleX, y * ScaleY, true );
 
 
     }

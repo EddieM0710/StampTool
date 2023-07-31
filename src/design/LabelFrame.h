@@ -30,7 +30,7 @@
 
 #include "Defs.h"
 #include "design/Frame.h"
-#include "utils/FontNdx.h"
+ //#include "utils/FontNdx.h"
 #include "gui/AlbumImagePanel.h"
 #include "utils/Font.h"
 
@@ -46,7 +46,7 @@ namespace Design {
 
     private:
 
-        LabelFrame( ) { };
+        LabelFrame( ) { m_FontNdx = -1; };
 
     public:
 
@@ -58,6 +58,7 @@ namespace Design {
         LabelFrame( Design::FontUsageType fontType ) : Frame( )
         {
             m_fontType = fontType;
+            m_FontNdx = -1;
         };
 
         /**
@@ -74,7 +75,7 @@ namespace Design {
 
         wxFont GetFont( );
 
-        Utils::FontNdx GetFontNdx( ) { return m_FontNdx; };
+        int GetFontNdx( ) { return m_FontNdx; };
 
         wxString GetString( ) { return m_string; };
 
@@ -83,23 +84,13 @@ namespace Design {
         void LoadFont( wxXmlNode* node );
 
         /// @brief resets the Font to the default Font
-        void MakeDefaultFont( ) { m_FontNdx.MakeDefault( ); };
+//        void MakeDefaultFont( ) { m_FontNdx.MakeDefault( ); };
 
         void SaveFont( wxXmlNode* node );
 
         int SetFont( wxFont newFont, wxColour newColor );
 
-        void SetFontNdx( Utils::FontNdx ndx ) {
-            Utils::Font* font = ndx.GetFont( );
-            int pnt = font->GetPointSize( );
-
-            std::cout << "SetFontNdx " << m_string
-                << " ndx:" << ndx.Get( )
-                << " pnt:" << pnt
-                << " family:" << font->GetNativeInfoStr( ) << "\n";
-
-            m_FontNdx = ndx;
-        };
+        void SetFontNdx( int ndx );
 
         void SetString( wxString str ) { m_string = str; };
 
@@ -115,7 +106,7 @@ namespace Design {
 
         FontUsageType m_fontType;
 
-        Utils::FontNdx m_FontNdx;
+        int m_FontNdx;
 
         double m_maxWidth;
 

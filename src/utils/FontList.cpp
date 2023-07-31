@@ -36,6 +36,7 @@
 
 #include "utils/FontList.h"
 #include "design/AlbumVolume.h"
+#include "design/Album.h"
 #include "utils/XMLUtilities.h"
 #include "utils/Settings.h"
 #include "gui/GuiUtils.h"
@@ -206,9 +207,9 @@ namespace Utils {
         return ( Font* ) 0;
     };
 
-    FontNdx FontList::LoadFont( wxXmlNode* parent, Design::FontUsageType type )
+    int FontList::LoadFont( wxXmlNode* parent, Design::FontUsageType type )
     {
-        FontNdx fontNdx;
+        int fontNdx;
         wxXmlNode* fontNode = FindFirstChildWithPropertyofValue( parent,
             Design::AttrNameStrings[ Design::AT_FontType ],
             Design::FontUsageTypeStrings[ type ] );
@@ -220,22 +221,24 @@ namespace Utils {
             wxColour color = wxColour( colorStr );
             if ( font.IsOk( ) && color.IsOk( ) )
             {
-                fontNdx.Set( AddNewFont( font, color ) );
+                fontNdx = AddNewFont( font, color );
 
-                // std::cout << " FontList::LoadFont " << Design::FontUsageTypeStrings[ type ]
-                //     << " " << fontNdx.Get( ) << "\n";
+                std::cout << " FontList::LoadFont " << Design::FontUsageTypeStrings[ type ]
+                    << " " << fontNdx << "  " << nativeString << "\n";
                 return fontNdx;
             }
         }
-        // std::cout << " FontList::LoadFont " << Design::FontUsageTypeStrings[ type ]
-        //     << " " << fontNdx.Get( ) << "\n";
+        fontNdx = -1;
+        // GetSettings()->GetFontNdxPreference( type );
+        std::cout << " FontList::LoadFont(default) " << Design::FontUsageTypeStrings[ type ]
+            << " " << fontNdx << "\n";
         return fontNdx;
     }
-    void FontList::SaveFont( wxXmlNode* parent, FontNdx ndx, Design::FontUsageType type )
+    void FontList::SaveFont( wxXmlNode* parent, int ndx, Design::FontUsageType type )
     {
         if ( IsValidFontNdx( ndx ) )
         {
-            GetMyFont( ndx.Get( ) )->SaveFont( parent, type );
+            GetMyFont( ndx )->SaveFont( parent, type );
         }
     };
 
@@ -249,5 +252,22 @@ namespace Utils {
         font.SetPointSize( pointSize );
         wxColour color = *wxBLACK;
         return AddNewFont( font, color );
+    }
+
+    void FontList::MakeDefault( int ndx )
+    {
+        if ( IsValidFontNdx( ndx ) )
+        {
+            Font* font = GetMyFont( ndx );
+            if ( font )
+            {
+                int cnt = font->Decrement( );
+                if ( cnt <= 0 )
+                {
+                    Erase( ndx );
+                }
+            }
+        }
+        ndx = -1;
     }
 }

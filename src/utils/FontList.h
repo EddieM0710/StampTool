@@ -28,9 +28,9 @@
 #include "design/DesignDefs.h"
 #include "design/XMLBase.h"
 #include "utils/Font.h"
-#include "utils/FontNdx.h"
+ //#include "utils/FontNdx.h"
 
- //#include <vector>
+  //#include <vector>
 
 namespace Utils {
 
@@ -49,7 +49,7 @@ namespace Utils {
         void InitFonts( );
 
         bool IsValidFontNdx( int ndx );
-        bool IsValidFontNdx( FontNdx ndx ) { return IsValidFontNdx( ndx.Get( ) ); };
+        //bool IsValidFontNdx( int ndx ) { return IsValidFontNdx( ndx.Get( ) ); };
         wxFont GetFont( int ndx );
         wxColour GetColor( int ndx );
 
@@ -76,14 +76,15 @@ namespace Utils {
             return m_fontMap.erase( ndx );
         };
 
-        FontNdx LoadFont( wxXmlNode* parent, Design::FontUsageType type );
+        int LoadFont( wxXmlNode* parent, Design::FontUsageType type );
 
-        void SaveFont( wxXmlNode* parent, FontNdx ndx, Design::FontUsageType type );
+        void SaveFont( wxXmlNode* parent, int ndx, Design::FontUsageType type );
 
         int DefaultFont( int pointSize );
 
         void DumpFonts( );
 
+        void MakeDefault( int ndx );
 
 
     private:

@@ -34,7 +34,7 @@ namespace Design {
 
     wxColour LabelFrame::GetColor( )
     {
-        int ndx = m_FontNdx.Get( );
+        int ndx = m_FontNdx;
         if ( GetFontList( )->IsValidFontNdx( ndx ) )
         {
             return GetFontList( )->GetColor( ndx );
@@ -47,16 +47,18 @@ namespace Design {
 
     wxFont LabelFrame::GetFont( )
     {
-        int ndx = m_FontNdx.Get( );
+        wxString usage = FontUsageTypeStrings[ m_fontType ];
+        int ndx = m_FontNdx;
         if ( GetFontList( )->IsValidFontNdx( ndx ) )
         {
-            // std::cout << "LabelFrame::GetFont from ndx " << GetFontList( )->GetMyFont( ndx )->GetNativeInfoStr( ) << "\n";
+            std::cout << "LabelFrame::GetFont from this. " << m_string << "  usage:" << usage << " ndx:" << ndx << " " << GetFontList( )->GetMyFont( ndx )->GetNativeInfoStr( ) << "\n";
 
             return GetFontList( )->GetFont( ndx );
         }
         else
         {
             ndx = GetAlbum( )->GetFontNdx( m_fontType );
+            std::cout << "LabelFrame::GetFont from album. usage:" << usage << " ndx:" << ndx << " " << GetFontList( )->GetMyFont( ndx )->GetNativeInfoStr( ) << "\n";
             return GetFontList( )->GetFont( GetAlbum( )->GetFontNdx( m_fontType ) );
         }
     }
@@ -103,7 +105,7 @@ namespace Design {
     {
         if ( fonts )
         {
-            if ( m_FontNdx.IsOk( ) && !GetAlbum( )->IsDefaultFont( AT_TitleFontType, m_FontNdx.Get( ) ) )
+            if ( !GetAlbum( )->IsDefaultFont( AT_TitleFontType, m_FontNdx ) )
             {
                 GetFontList( )->SaveFont( fonts, m_FontNdx, m_fontType );
             }
@@ -113,11 +115,23 @@ namespace Design {
     int LabelFrame::SetFont( wxFont newFont, wxColour newColor )
     {
         int ndx = GetFontList( )->AddNewFont( newFont, newColor );
-        //m_FontNdx = GetFontList( )->GetFont( ndx );
-        //std::cout << "LabelFrame::SetFont " << m_FontNdx->GetNativeInfoStr( ) << "\n";
+        Utils::Font* font = GetFontList( )->GetMyFont( ndx );
+        std::cout << "LabelFrame::SetFont " << Design::FontUsageTypeStrings[ ndx ] << " " << font->GetNativeInfoStr( ) << "\n";
         return ndx;
     };
 
+    void LabelFrame::SetFontNdx( int ndx )
+    {
+        Utils::Font* font = GetFontList( )->GetMyFont( ndx );
+        int pnt = font->GetPointSize( );
+
+        std::cout << "LabelFrame::SetFontNdx " << m_string
+            << " ndx:" << ndx
+            << " pnt:" << pnt
+            << " family:" << font->GetNativeInfoStr( ) << "\n";
+
+        m_FontNdx = ndx;
+    };
     void LabelFrame::UpdateString( double width )
     {
         m_multiLineString = m_string;
@@ -134,7 +148,10 @@ namespace Design {
         //   GetAlbumImagePanel( )->MakeMultiLine( m_multiLineString, font, width );
         // first break into lines if necessary then get the actual multi line text extent
         m_stringTextExtent = GetAlbumImagePanel( )->MakeMultiLine( m_multiLineString, font, width );
-        // std::cout << m_string << "  " << width << "  x:" << m_stringTextExtent.x << " y" << m_stringTextExtent.y << "\n";
+        // std::cout << "LabelFrame::UpdateString " << m_string << "  "
+        //     << width << "  x:" << m_stringTextExtent.x
+        //     << " y" << m_stringTextExtent.y
+        //     << "point:" << point << "\n";
         SetWidth( m_maxWidth );
         SetHeight( m_stringTextExtent.y );
         SetMinWidth( m_maxWidth );

@@ -147,17 +147,17 @@ namespace Utils {
         return Catalog::NT_None;
     }
 
-    wxFont Settings::GetNbrFont( ) { return GetFontList( )->GetFont( FontPreference[ Design::AT_NbrFontType ].Get( ) ); };
-    wxColour Settings::GetNbrColor( ) { return GetFontList( )->GetColor( FontPreference[ Design::AT_NbrFontType ].Get( ) );; };
+    wxFont Settings::GetNbrFont( ) { return GetFontList( )->GetFont( FontPreference[ Design::AT_NbrFontType ] ); };
+    wxColour Settings::GetNbrColor( ) { return GetFontList( )->GetColor( FontPreference[ Design::AT_NbrFontType ] );; };
 
-    wxFont Settings::GetNameFont( ) { return GetFontList( )->GetFont( FontPreference[ Design::AT_NameFontType ].Get( ) ); };
-    wxColour Settings::GetNameColor( ) { return GetFontList( )->GetColor( FontPreference[ Design::AT_NameFontType ].Get( ) );; };
+    wxFont Settings::GetNameFont( ) { return GetFontList( )->GetFont( FontPreference[ Design::AT_NameFontType ] ); };
+    wxColour Settings::GetNameColor( ) { return GetFontList( )->GetColor( FontPreference[ Design::AT_NameFontType ] );; };
 
-    wxFont Settings::GetTitleFont( ) { return GetFontList( )->GetFont( FontPreference[ Design::AT_TitleFontType ].Get( ) ); };
-    wxColour Settings::GetTitleColor( ) { return GetFontList( )->GetColor( FontPreference[ Design::AT_TitleFontType ].Get( ) ); };
+    wxFont Settings::GetTitleFont( ) { return GetFontList( )->GetFont( FontPreference[ Design::AT_TitleFontType ] ); };
+    wxColour Settings::GetTitleColor( ) { return GetFontList( )->GetColor( FontPreference[ Design::AT_TitleFontType ] ); };
 
-    wxFont Settings::GetTextFont( ) { return GetFontList( )->GetFont( FontPreference[ Design::AT_TextFontType ].Get( ) ); };
-    wxColour Settings::GetTextColor( ) { return GetFontList( )->GetColor( FontPreference[ Design::AT_TextFontType ].Get( ) ); };
+    wxFont Settings::GetTextFont( ) { return GetFontList( )->GetFont( FontPreference[ Design::AT_TextFontType ] ); };
+    wxColour Settings::GetTextColor( ) { return GetFontList( )->GetColor( FontPreference[ Design::AT_TextFontType ] ); };
 
 
     //    
@@ -587,45 +587,59 @@ namespace Utils {
         {
 
             FontPreference[ Design::AT_NbrFontType ] = GetFontList( )->LoadFont( child, Design::AT_NbrFontType );
-            if ( FontPreference[ Design::AT_NbrFontType ].Get( ) < 0 )
+            if ( FontPreference[ Design::AT_NbrFontType ] < 0 )
             {
-                FontPreference[ Design::AT_NbrFontType ].Set( GetFontList( )->DefaultFont( Design::DefaultPointSize[ Design::AT_NbrFontType ] ) );
+                FontPreference[ Design::AT_NbrFontType ] = GetFontList( )->DefaultFont( Design::DefaultPointSize[ Design::AT_NbrFontType ] );
             }
 
             FontPreference[ Design::AT_NameFontType ] = GetFontList( )->LoadFont( child, Design::AT_NameFontType );
-            if ( FontPreference[ Design::AT_NameFontType ].Get( ) < 0 )
+            if ( FontPreference[ Design::AT_NameFontType ] < 0 )
             {
-                FontPreference[ Design::AT_NameFontType ].Set( GetFontList( )->DefaultFont( Design::DefaultPointSize[ Design::AT_NameFontType ] ) );
+                FontPreference[ Design::AT_NameFontType ] = GetFontList( )->DefaultFont( Design::DefaultPointSize[ Design::AT_NameFontType ] );
             }
 
             FontPreference[ Design::AT_TextFontType ] = GetFontList( )->LoadFont( child, Design::AT_TextFontType );
-            if ( FontPreference[ Design::AT_TextFontType ].Get( ) < 0 )
+            if ( FontPreference[ Design::AT_TextFontType ] < 0 )
             {
-                FontPreference[ Design::AT_TextFontType ].Set( GetFontList( )->DefaultFont( Design::DefaultPointSize[ Design::AT_TextFontType ] ) );
+                FontPreference[ Design::AT_TextFontType ] = GetFontList( )->DefaultFont( Design::DefaultPointSize[ Design::AT_TextFontType ] );
             }
 
             FontPreference[ Design::AT_TitleFontType ] = GetFontList( )->LoadFont( child, Design::AT_TitleFontType );
-            if ( FontPreference[ Design::AT_TitleFontType ].Get( ) < 0 )
+            if ( FontPreference[ Design::AT_TitleFontType ] < 0 )
             {
-                FontPreference[ Design::AT_TitleFontType ].Set( GetFontList( )->DefaultFont( Design::DefaultPointSize[ Design::AT_TitleFontType ] ) );
+                FontPreference[ Design::AT_TitleFontType ] = GetFontList( )->DefaultFont( Design::DefaultPointSize[ Design::AT_TitleFontType ] );
             }
 
+        }
+
+        for ( int i = 0; i < Design::AT_NbrFontUsageTypes; i++ )
+        {
+            Utils::Font* font = GetFontList( )->GetMyFont( FontPreference[ i ] );
+            wxString fontStr = "";
+            if ( font )
+            {
+                fontStr = font->GetNativeInfoStr( );
+            }
+
+            std::cout << "FontPreference " << Design::FontUsageTypeStrings[ i ]
+                << " ndx " << FontPreference[ i ] << "   "
+                << fontStr << "\n";
         }
     }
     void Settings::DumpFont( wxString Level )
     {
         // std::cout << Level << "CatNbr font " << GetNbrFont().GetNativeFontInfoUserDesc( )
         //     << "  color " << GetNbrColor().GetAsString( )
-        //     << "  Ndx " << m_appPrefNbrFontNdx.Get( ) << "\n";
+        //     << "  Ndx " << m_appPrefNbrFontNdx << "\n";
         // std::cout << Level << "Name font " << GetNbrFont().GetNativeFontInfoUserDesc( )
         //     << "  color " << GetNameColor().GetAsString( )
-        //     << "  Ndx " << m_appPrefNbrFontNdx.Get( ) << "\n";
+        //     << "  Ndx " << m_appPrefNbrFontNdx << "\n";
         // std::cout << Level << "Text font " <<GetTextFont().GetNativeFontInfoUserDesc( )
         //     << "  color " << GetTextColor().GetAsString( )
-        //     << "  Ndx " << m_appPrefTextFontNdx.Get( ) << "\n";
+        //     << "  Ndx " << m_appPrefTextFontNdx << "\n";
         // std::cout << Level << "Title font " << GetTitleFont().GetNativeFontInfoUserDesc( )
         //     << "  color " << GetTitleColor().GetAsString( )
-        //     << "  Ndx " << m_appPrefTitleFontNdx.Get( ) << "\n";
+        //     << "  Ndx " << m_appPrefTitleFontNdx << "\n";
     };
 
 }

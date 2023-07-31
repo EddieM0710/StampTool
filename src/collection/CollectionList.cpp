@@ -15,6 +15,7 @@
 
 //#include "collection/CollectionData.h"
 #include "utils/Settings.h"
+#include "Defs.h"
 
 
 namespace Inventory {

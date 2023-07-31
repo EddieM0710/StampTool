@@ -18,7 +18,6 @@ add_library( Utils SHARED
     StampList.cpp 
     Font.cpp
     FontList.cpp
-    FontNdx.cpp
     XMLUtilities.cpp 
 )
 

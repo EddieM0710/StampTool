@@ -117,17 +117,17 @@ namespace Design {
     void Album::DumpFont( wxString Level )
     {
 
-        int ndx = DefaultFonts[ AT_NbrFontType ].Get( );
+        int ndx = DefaultFonts[ AT_NbrFontType ];
         std::cout << Level << "CatNbr font " << GetFontList( )->GetFont( ndx ).GetNativeFontInfoUserDesc( )
             << "  color " << GetFontList( )->GetColor( ndx ).GetAsString( )
             << "  Ndx " << ndx << std::endl;
 
-        ndx = DefaultFonts[ AT_TextFontType ].Get( );
+        ndx = DefaultFonts[ AT_TextFontType ];
         std::cout << Level << "Text font " << GetFontList( )->GetFont( ndx ).GetNativeFontInfoUserDesc( )
             << "  color " << GetFontList( )->GetColor( ndx ).GetAsString( )
             << "  Ndx " << ndx << std::endl;
 
-        ndx = DefaultFonts[ AT_TitleFontType ].Get( );
+        ndx = DefaultFonts[ AT_TitleFontType ];
         std::cout << Level << "Title font " << GetFontList( )->GetFont( ndx ).GetNativeFontInfoUserDesc( )
             << "  color " << GetFontList( )->GetColor( ndx ).GetAsString( )
             << "  Ndx " << ndx << std::endl;
@@ -190,13 +190,17 @@ namespace Design {
 
     int Album::GetFontNdx( FontUsageType fontType )
     {
-        int ndx = DefaultFonts[ fontType ].Get( );
+        int ndx = DefaultFonts[ fontType ];
         if ( GetFontList( )->IsValidFontNdx( ndx ) )
         {
-            return DefaultFonts[ fontType ].Get( );
+            std::cout << "       Album::GetFontNdx from album " << Design::FontUsageTypeStrings[ fontType ]
+                << " ndx:" << DefaultFonts[ fontType ] << "\n";
+            return DefaultFonts[ fontType ];
         }
         else
         {
+            std::cout << "       Album::GetFontNdx from settings " << Design::FontUsageTypeStrings[ fontType ]
+                << " ndx:" << GetSettings( )->GetFontNdxPreference( fontType ) << "\n";
             return GetSettings( )->GetFontNdxPreference( fontType );
         }
     };
@@ -268,38 +272,38 @@ namespace Design {
             Design::AlbumBaseType nodeType = GetNodeType( );
 
             DefaultFonts[ AT_NbrFontType ] = GetFontList( )->LoadFont( fonts, Design::AT_NbrFontType );
-            if ( !DefaultFonts[ AT_NbrFontType ].IsOk( ) )
+            if ( DefaultFonts[ AT_NbrFontType ] < 0 )
             {
                 if ( nodeType == AT_Album )
                 {
-                    DefaultFonts[ AT_NbrFontType ].Set( GetSettings( )->GetFontNdxPreference( AT_NbrFontType ) );
+                    DefaultFonts[ AT_NbrFontType ] = GetSettings( )->GetFontNdxPreference( AT_NbrFontType );
                 }
             }
 
             DefaultFonts[ AT_NameFontType ] = GetFontList( )->LoadFont( fonts, Design::AT_NameFontType );
-            if ( DefaultFonts[ AT_NameFontType ].IsOk( ) )
+            if ( DefaultFonts[ AT_NameFontType ] < 0 )
             {
                 if ( IsNodeType( AT_Album ) )
                 {
-                    DefaultFonts[ AT_NameFontType ].Set( GetSettings( )->GetFontNdxPreference( AT_NameFontType ) );
+                    DefaultFonts[ AT_NameFontType ] = GetSettings( )->GetFontNdxPreference( AT_NameFontType );
                 }
             }
 
             DefaultFonts[ AT_TextFontType ] = GetFontList( )->LoadFont( fonts, Design::AT_TextFontType );
-            if ( !DefaultFonts[ AT_TextFontType ].IsOk( ) )
+            if ( DefaultFonts[ AT_TextFontType ] < 0 )
             {
                 if ( IsNodeType( AT_Album ) )
                 {
-                    DefaultFonts[ AT_TextFontType ].Set( GetSettings( )->GetFontNdxPreference( AT_TextFontType ) );
+                    DefaultFonts[ AT_TextFontType ] = GetSettings( )->GetFontNdxPreference( AT_TextFontType );
                 }
             }
 
             DefaultFonts[ AT_TitleFontType ] = GetFontList( )->LoadFont( fonts, Design::AT_TitleFontType );
-            if ( !DefaultFonts[ AT_TitleFontType ].IsOk( ) )
+            if ( DefaultFonts[ AT_TitleFontType ] < 0 )
             {
                 if ( IsNodeType( AT_Album ) )
                 {
-                    DefaultFonts[ AT_TitleFontType ].Set( GetSettings( )->GetFontNdxPreference( Design::AT_TitleFontType ) );
+                    DefaultFonts[ AT_TitleFontType ] = GetSettings( )->GetFontNdxPreference( Design::AT_TitleFontType );
                 }
             }
         }
@@ -312,6 +316,11 @@ namespace Design {
         UpdateSizes( );
         UpdatePositions( );
     }
+
+    void Album::MakeDefaultFont( FontUsageType fontType )
+    {
+        GetFontList( )->MakeDefault( DefaultFonts[ fontType ] );
+    };
 
     void Album::MakePDFAlbum( )
     {
@@ -342,12 +351,15 @@ namespace Design {
 
     void Album::SaveFonts( wxXmlNode* parent )
     {
-        if ( DefaultFonts[ AT_NbrFontType ].IsOk( ) || DefaultFonts[ AT_TextFontType ].IsOk( ) || DefaultFonts[ AT_TitleFontType ].IsOk( ) || DefaultFonts[ AT_NameFontType ].IsOk( ) )
+        if ( DefaultFonts[ AT_NbrFontType ] >= 0
+            || DefaultFonts[ AT_TextFontType ] >= 0
+            || DefaultFonts[ AT_TitleFontType ] >= 0
+            || DefaultFonts[ AT_NameFontType ] >= 0 )
         {
             wxXmlNode* fonts = Utils::NewNode( parent, "Fonts" );
             if ( fonts )
             {
-                if ( DefaultFonts[ AT_NbrFontType ].IsOk( ) )
+                if ( DefaultFonts[ AT_NbrFontType ] >= 0 )
                 {
                     if ( IsNodeType( AT_Album )  //save all fonts for album                    
                         //or all but default fonts for others
@@ -356,7 +368,7 @@ namespace Design {
                         GetFontList( )->SaveFont( fonts, DefaultFonts[ AT_NbrFontType ], Design::AT_NbrFontType );
                     }
                 }
-                if ( DefaultFonts[ AT_NameFontType ].IsOk( ) )
+                if ( DefaultFonts[ AT_NameFontType ] >= 0 )
                 {
                     if ( IsNodeType( AT_Album )  //save all fonts for album                    
                         //or all but default fonts for others
@@ -365,7 +377,7 @@ namespace Design {
                         GetFontList( )->SaveFont( fonts, DefaultFonts[ AT_NameFontType ], Design::AT_NameFontType );
                     }
                 }
-                if ( DefaultFonts[ AT_TextFontType ].IsOk( ) )
+                if ( DefaultFonts[ AT_TextFontType ] >= 0 )
                 {
                     if ( IsNodeType( AT_Album )  //save all fonts for album                    
                         //or all but default fonts for others
@@ -374,7 +386,7 @@ namespace Design {
                         GetFontList( )->SaveFont( fonts, DefaultFonts[ AT_TextFontType ], Design::AT_TextFontType );
                     }
                 }
-                if ( DefaultFonts[ AT_TitleFontType ].IsOk( ) )
+                if ( DefaultFonts[ AT_TitleFontType ] >= 0 )
                 {
                     if ( IsNodeType( AT_Album )  //save all fonts for album                    
                         //or all but default fonts for others
@@ -425,7 +437,7 @@ namespace Design {
 
     void Album::SetFontNdx( FontUsageType fontType, int ndx )
     {
-        DefaultFonts[ fontType ].Set( ndx );
+        DefaultFonts[ fontType ] = ndx;
     };
 
 

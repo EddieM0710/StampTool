@@ -29,7 +29,7 @@
 #include "design/AlbumBase.h"
 #include "design/DesignDefs.h"
  //#include "utils/Project.h"
-#include "utils/FontNdx.h"
+//#include "utils/FontNdx.h"
 #include <wx/pdfdc.h>
 
 
@@ -51,7 +51,12 @@ namespace Design {
         {
             SetNodeType( AT_Album );
             SetAttrStr( Design::AT_Orientation, OrientationStrings[ Design::AT_Portrait ] );
-        };
+
+            for ( int i = 0; i < Design::AT_NbrFontUsageTypes; i++ )
+            {
+                DefaultFonts[ i ] = -1;
+            };
+        }
 
         ///  @brief Destroy the Album object
         ~Album( ) { };
@@ -239,7 +244,9 @@ namespace Design {
         void MakeAlbum( );
 
         /// @brief resets the Font to the default Font
-        void MakeDefaultFont( FontUsageType fontType ) { DefaultFonts[ fontType ].MakeDefault( ); };
+
+
+        void MakeDefaultFont( FontUsageType fontType );
 
         ///  @brief 
         ///  
@@ -395,7 +402,7 @@ namespace Design {
 
     private:
 
-        Utils::FontNdx DefaultFonts[ AT_NbrFontUsageTypes ];
+        int DefaultFonts[ AT_NbrFontUsageTypes ];
 
         const double m_defaultSelvageHeight = 0;
         const double m_defaultSelvageWidth = 0;

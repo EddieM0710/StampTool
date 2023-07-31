@@ -130,7 +130,7 @@ namespace Design {
 
     void Column::SaveFonts( wxXmlNode* parent )
     {
-        if ( m_titleFrame->GetFontNdx( ).IsOk( ) )
+        if ( m_titleFrame->GetFontNdx( ) >= 0 )
         {
             wxXmlNode* fonts = Utils::NewNode( parent, "Fonts" );
             if ( fonts )

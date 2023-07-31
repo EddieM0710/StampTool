@@ -30,7 +30,7 @@
 #include "wx/xml/xml.h"
 
 #include "design/DesignDefs.h"
-#include "utils/FontNdx.h"
+ //#include "utils/FontNdx.h"
 
 
 namespace Utils {
@@ -81,8 +81,8 @@ namespace Utils {
         wxColour GetTextColor( );
 
 
-        int GetFontNdxPreference( Design::FontUsageType fontType ) { return FontPreference[ fontType ].Get( ); };
-        void SetFontNdxPreference( Design::FontUsageType fontType, int ndx ) { FontPreference[ fontType ].Set( ndx ); };
+        int GetFontNdxPreference( Design::FontUsageType fontType ) { return FontPreference[ fontType ]; };
+        void SetFontNdxPreference( Design::FontUsageType fontType, int ndx ) { FontPreference[ fontType ] = ndx; };
 
         void SetConfigurationDirectory( wxString val ) { m_configurationDirectory = val.Trim( ); m_dirty = true; };
         //void SetImageDirectory( wxString val ) { m_imageDirectory = val.Trim( );m_dirty = true; };
@@ -172,7 +172,7 @@ namespace Utils {
 
 
 
-        Utils::FontNdx FontPreference[ Design::AT_NbrFontUsageTypes ];
+        int FontPreference[ Design::AT_NbrFontUsageTypes ];
         const wxColour m_defaultFontColor = *wxBLACK;
 
         //const wxArrayString m_defaultrecentFiles;

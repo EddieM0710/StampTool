@@ -775,7 +775,8 @@ void StampDetailsDialog::OnDefaultRadioButtonSelected( wxCommandEvent& event )
 
 void StampDetailsDialog::OnNbrDefaultClick( wxCommandEvent& event )
 {
-    m_stamp->GetNbrFrame( )->MakeDefaultFont( );
+    //m_stamp->GetNbrFrame( )->GetFontNdx()
+    //MakeDefaultFont( );
     int ndx = Design::GetAlbum( )->GetFontNdx( Design::AT_NbrFontType );
     Utils::FontList* fontList = GetFontList( );
     wxFont font = fontList->GetFont( ndx );

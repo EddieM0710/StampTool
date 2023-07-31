@@ -314,6 +314,8 @@ namespace Design {
     //--------------
     void Stamp::Draw( wxDC& dc, double x, double y )
     {
+
+        std::cout << "\nStamp::Draw " << m_nameFrame->GetString( ) << "\n";
         Design::NodeStatus status = GetNodeStatus( );
         if ( status != Design::AT_FATAL ) {
             //Draw the outer frame transparent
@@ -389,6 +391,7 @@ namespace Design {
         {
             int a = 0;
         }
+        std::cout << "\n";
     }
 
     //--------------
@@ -758,7 +761,7 @@ namespace Design {
 
     void Stamp::SaveFonts( wxXmlNode* parent )
     {
-        if ( m_nameFrame->GetFontNdx( ).IsOk( ) || m_nbrFrame->GetFontNdx( ).IsOk( ) )
+        if ( m_nameFrame->GetFontNdx( ) >= 0 || m_nbrFrame->GetFontNdx( ) >= 0 )
         {
             wxXmlNode* fonts = Utils::NewNode( parent, "Fonts" );
             if ( fonts )

@@ -224,7 +224,7 @@ namespace Design {
 
     void TextBox::SaveFonts( wxXmlNode* parent )
     {
-        if ( m_titleFrame->GetFontNdx( ).IsOk( ) || m_textFrame->GetFontNdx( ).IsOk( ) )
+        if ( m_titleFrame->GetFontNdx( ) >= 0 || m_textFrame->GetFontNdx( ) >= 0 )
         {
             wxXmlNode* fonts = Utils::NewNode( parent, "Fonts" );
             if ( fonts )

@@ -87,7 +87,7 @@ namespace Design {
 
         LayoutBase* FindObjectByPos( double x, double y, wxString indent = "" );
 
-        double GetBottomContentPadding( ) { return GetAttrDbl( AT_BottomContentPadding ); };
+        double GetBottomContentMargin( ) { return GetAttrDbl( AT_BottomContentMargin ); };
 
 
         /*
@@ -97,7 +97,7 @@ namespace Design {
          */
         double GetHeight( ) { return m_frame.GetHeight( ); };
 
-        double GetLeftContentPadding( ) { return GetAttrDbl( AT_LeftContentPadding ); };
+        double GetLeftContentMargin( ) { return GetAttrDbl( AT_LeftContentMargin ); };
 
         /*
          * @brief Get Layout element min height
@@ -113,7 +113,7 @@ namespace Design {
          */
         double GetMinWidth( ) { return m_frame.GetMinWidth( ); };
 
-        double GetRightContentPadding( ) { return GetAttrDbl( AT_RightContentPadding ); };
+        double GetRightContentMargin( ) { return GetAttrDbl( AT_RightContentMargin ); };
 
         bool GetShowFrame( ) { return String2Bool( GetAttrStr( AT_ShowFrame ) ); };
 
@@ -123,6 +123,7 @@ namespace Design {
         bool GetShowNbr( ) { return String2Bool( GetAttrStr( AT_ShowCatNbr ) ); };
 
         bool GetShowTitle( ) { return String2Bool( GetAttrStr( AT_ShowTitle ) ); };
+        bool GetShowSubTitle( ) { return String2Bool( GetAttrStr( AT_ShowSubTitle ) ); };
 
         wxString GetString( Design::FontUsageType fontType )
         {
@@ -145,9 +146,9 @@ namespace Design {
             return "";
         };
 
-        TitleLocation GetTitleLayoutLocation( );
+        // TitleLocation GetTitleLocation( );
 
-        double GetTopContentPadding( ) { return GetAttrDbl( AT_TopContentPadding ); };
+        double GetTopContentMargin( ) { return GetAttrDbl( AT_TopContentMargin ); };
         /*
          * @brief Get Layout element position within parent element
          *
@@ -176,7 +177,7 @@ namespace Design {
 
         bool IsInClient( double x, double y, wxString indent = "" );
 
-        bool IsTitleLocation( TitleLocation loc );
+        //bool IsTitleLocation( TitleLocation loc );
 
 
         virtual void LoadFonts( wxXmlNode* node ) = 0;
@@ -185,7 +186,7 @@ namespace Design {
         void ReportLayoutFrame( wxString indent = "" );
 
         void SetClientDimensions( wxDC& dc, double x, double y, double width = 0.0, double height = 0.0, double minWidth = 0.0, double minHeight = 0.0 );
-        void SetBottomContentPadding( double val ) { SetAttrDbl( AT_BottomContentPadding, val ); };
+        void SetBottomContentMargin( double val ) { SetAttrDbl( AT_BottomContentMargin, val ); };
 
         /*
          * @brief  Set Layout element height
@@ -194,7 +195,7 @@ namespace Design {
          */
         void SetHeight( double val ) { m_frame.SetHeight( val ); };
 
-        void SetLeftContentPadding( double val ) { SetAttrDbl( AT_LeftContentPadding, val ); };
+        void SetLeftContentMargin( double val ) { SetAttrDbl( AT_LeftContentMargin, val ); };
         /*
          * @brief  Set Layout element min height
          *
@@ -209,7 +210,7 @@ namespace Design {
          */
         void SetMinWidth( double val ) { m_frame.SetMinWidth( val ); };
 
-        void SetRightContentPadding( double val ) { SetAttrDbl( AT_RightContentPadding, val ); };
+        void SetRightContentMargin( double val ) { SetAttrDbl( AT_RightContentMargin, val ); };
 
         void SetShowFrame( bool val ) { SetAttrStr( AT_ShowFrame, Bool2String( val ) ); };
 
@@ -217,9 +218,11 @@ namespace Design {
 
         void SetShowTitle( bool val ) { SetAttrStr( AT_ShowTitle, Bool2String( val ) ); };
 
-        void SetTopContentPadding( double val ) { SetAttrDbl( AT_TopContentPadding, val ); };
+        void SetShowSubTitle( bool val ) { SetAttrStr( AT_ShowSubTitle, Bool2String( val ) ); };
 
-        void SetTitleLocation( TitleLocation loc ) { m_titleLocation = loc; };
+        void SetTopContentMargin( double val ) { SetAttrDbl( AT_TopContentMargin, val ); };
+
+        //void SetTitleLocation( TitleLocation loc ) { m_titleLocation = loc; };
 
         /*
          * @brief  Set Layout element position
@@ -272,7 +275,6 @@ namespace Design {
         Frame m_clientDimensions;
         //defaultDash.Add( .6 );
         //defaultDash.Add( .6 );
-        TitleLocation m_titleLocation;
 
     private:
 

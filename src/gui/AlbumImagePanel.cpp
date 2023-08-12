@@ -568,7 +568,7 @@ void AlbumImagePanel::OnPaint( wxPaintEvent& event )
 
                 dc.SetPen( *wxBLACK_PEN );
 
-                //pageNode->Draw( dc, album->GetAttrDbl( Design::AT_LeftMargin ), album->GetAttrDbl( Design::AT_TopMargin ) );
+                //pageNode->Draw( dc, album->GetAttrDbl( Design::AT_LeftPageMargin ), album->GetAttrDbl( Design::AT_TopPageMargin ) );
                 pageNode->Draw( dc, 0, 0 );
             }
         }

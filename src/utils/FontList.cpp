@@ -223,15 +223,15 @@ namespace Utils {
             {
                 fontNdx = AddNewFont( font, color );
 
-                std::cout << " FontList::LoadFont " << Design::FontUsageTypeStrings[ type ]
-                    << " " << fontNdx << "  " << nativeString << "\n";
+                // std::cout << " FontList::LoadFont " << Design::FontUsageTypeStrings[ type ]
+                //     << " " << fontNdx << "  " << nativeString << "\n";
                 return fontNdx;
             }
         }
         fontNdx = -1;
         // GetSettings()->GetFontNdxPreference( type );
-        std::cout << " FontList::LoadFont(default) " << Design::FontUsageTypeStrings[ type ]
-            << " " << fontNdx << "\n";
+        // std::cout << " FontList::LoadFont(default) " << Design::FontUsageTypeStrings[ type ]
+        //     << " " << fontNdx << "\n";
         return fontNdx;
     }
     void FontList::SaveFont( wxXmlNode* parent, int ndx, Design::FontUsageType type )

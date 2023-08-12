@@ -41,6 +41,9 @@
    */
 class LabeledTextBox;
 class wxListCtrl;
+class TitleHelper;
+class FontPicker;
+
 namespace Design { class Stamp; };
 
 /*
@@ -77,27 +80,29 @@ public:
         ID_VALIDATEBUTTON,
         ID_LISTCTRL,
         ID_CATNBRCHECKBOX,
-        ID_TITLECHECKBOX,
+        //ID_TITLECHECKBOX,
+        //ID_SUBTITLECHECKBOX,
         ID_IMAGEPATHLABELEDTEXTBOX,
-        ID_STAMPNOTEBOOK,
+        //    ID_STAMPNOTEBOOK,
         ID_STAMPNAMEPANEL,
         ID_STAMPLAYOUTPANEL,
         ID_STAMPLAYOUTTEXTCTRL,
-        ID_NOTEBOOK,
-        ID_NOTEBOOKDETAILSPANEL,
-        ID_NOTEBOOKPOSITIONPANEL,
-        //ID_POSITIONTEXTCTRL,
-        ID_STAMPNBRFONTPICKER,
-        ID_STAMPNBRCOLORPICKER,
-        ID_STAMPNAMEFONTPICKER,
-        ID_STAMPNAMECOLORPICKER,
-        ID_STAMPNAMEDEFAULTFONTBUTTON,
-        ID_STAMPNBRDEFAULTFONTBUTTON,
+        //   ID_NOTEBOOK,
+          // ID_NOTEBOOKDETAILSPANEL,
+         //  ID_NOTEBOOKPOSITIONPANEL,
+           //ID_POSITIONTEXTCTRL,
+           //ID_STAMPNBRFONTPICKER,
+           //ID_STAMPNBRCOLORPICKER,
+           //ID_STAMPNAMEFONTPICKER,
+           //ID_STAMPNAMECOLORPICKER,
+           //ID_STAMPNAMEDEFAULTFONTBUTTON,
+          // ID_STAMPNBRDEFAULTFONTBUTTON,
         ID_DEFAULTRADIOBUTTON,
         ID_TOPRADIOBUTTON,
         ID_BOTTOMRADIOBUTTON,
         ID_LEFTRADIOBUTTON,
-        ID_RIGHTRADIOBUTTON
+        ID_RIGHTRADIOBUTTON,
+        ID_LastID
     };
 
 
@@ -117,7 +122,7 @@ public:
 
     void CreateControls( );
 
-    void SetTitleLayoutLocation( );
+    void SetTitleLocation( );
 
 
     void UpdateControls( );
@@ -141,8 +146,12 @@ public:
     void OnRightRadioButtonSelected( wxCommandEvent& event );
     void OnTitleDefaultClick( wxCommandEvent& event );
     void OnNbrDefaultClick( wxCommandEvent& event );
+    void OnSubTitleDefaultClick( wxCommandEvent& event );
+    void OnNameCheckboxClick( wxCommandEvent& event );
+    void OnSubTitleCheckboxClick( wxCommandEvent& event );
+
     void OnNameDefaultClick( wxCommandEvent& event );
-    void OnCatNbrCheckboxClicked( wxCommandEvent& event );
+    void OnCatNbrCheckboxClick( wxCommandEvent& event );
 
 
 
@@ -161,6 +170,7 @@ public:
     void SetName( wxString name );
     void SetShowNbr( bool state = false );
     void SetShowTitle( bool state = false );
+    void SetShowSubTitle( bool state = false );
     void SetNbrFont( wxFont font );
     void SetNameFont( wxFont font );
     void SetNbrColor( wxColour color );
@@ -182,6 +192,7 @@ public:
     wxColour GetNameColor( );
     bool GetShowNbr( );
     bool GetShowTitle( );
+    bool GetShowSubTitle( );
 
     bool IsNameModified( );
     bool IsIDModified( );
@@ -225,13 +236,20 @@ private:
     wxArrayString m_statusListStrings;
 
 
+    TitleHelper* m_titleHelper;
     wxTreeItemId m_designTreeID;
     wxCheckBox* m_nbrCheckbox;
     wxCheckBox* m_titleCheckbox;
+    wxCheckBox* m_subTitleCheckbox;
+    LabeledTextBox* m_subTitleLabel;
+    wxBoxSizer* m_dialogVerticalSizer;
+
     //wxTextCtrl* positionTextCtrl;
     wxFontPickerCtrl* m_nbrFontPicker;
     wxFontPickerCtrl* m_nameFontPicker;
+    wxFontPickerCtrl* m_subTitleFontPicker;
     wxColourPickerCtrl* m_nameColorPicker;
+    wxColourPickerCtrl* m_subTitleColorPicker;
     wxColourPickerCtrl* m_nbrColorPicker;
     Design::Stamp* m_stamp;
     wxStaticBox* m_TitleLocationBox;
@@ -244,7 +262,7 @@ private:
     //wxRadioButton* m_rightButton;
     wxRadioButton* m_defaultButton;
 
-
+    FontPicker* m_catNbrFontPickerHelper;
 };
 
 #endif

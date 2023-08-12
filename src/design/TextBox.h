@@ -69,6 +69,7 @@ namespace Design {
             SetNodeType( AT_Text );
             SetObjectName( AlbumBaseNames[ GetNodeType( ) ] );
             SetShowTitle( true );
+            SetShowSubTitle( false );
             SetHeight( GetAttrDbl( Design::AT_Height ) );
             SetWidth( GetAttrDbl( Design::AT_Width ) );
             CalcFrame( );
@@ -85,6 +86,7 @@ namespace Design {
             SetNodeType( AT_Text );
             SetObjectName( AlbumBaseNames[ AT_Text ] );
             SetShowTitle( true );
+            SetShowSubTitle( false );
             SetHeight( 40.0 );
             SetWidth( 40.0 );
             m_text = "Enter some text here.";
@@ -145,6 +147,7 @@ namespace Design {
         ///  @return true 
         ///  @return false 
         bool GetShowTitle( ) { return String2Bool( GetAttrStr( AT_ShowTitle ) ); };
+        bool GetShowSubTitle( ) { return String2Bool( GetAttrStr( AT_ShowSubTitle ) ); };
 
         ///  @brief Get the Text Frame object
         ///  
@@ -184,6 +187,7 @@ namespace Design {
         ///  
         ///  @param val 
         void SetShowTitle( bool val ) { SetAttrStr( AT_ShowTitle, Bool2String( val ) ); };
+        void SetShowSubTitle( bool val ) { SetAttrStr( AT_ShowSubTitle, Bool2String( val ) ); };
 
         ///  @brief Set the Text String object
         ///  

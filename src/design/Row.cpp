@@ -51,16 +51,21 @@ namespace Design {
 
             if ( GetShowFrame( ) )
             {
-                leftPadding = GetLeftContentPadding( );
-                topPadding = GetTopContentPadding( );
+                //     leftPadding = GetLeftContentMargin( );
+                //            topPadding = GetTopContentMargin( );
 
                 m_frame.Draw( dc, x, y );
+
+                // std::cout << " Row::Draw id:" << m_titleFrame->GetString( )
+                //     << " y:" << y
+                //     << " Height:" << GetHeight( ) << "\n";
+
             }
 
             SetClientDimensions( dc, x + GetXPos( ), y + GetYPos( ), GetWidth( ), GetHeight( ) );
 
-            double xPos = x + GetXPos( ) + leftPadding;
-            double yPos = y + GetYPos( ) + topPadding;
+            double xPos = x + GetXPos( );// + leftPadding;
+            double yPos = y + GetYPos( );// + topPadding;
 
             if ( GetShowTitle( ) )
             {
@@ -87,8 +92,8 @@ namespace Design {
         double topPadding = 0;
         if ( GetShowFrame( ) )
         {
-            leftPadding = GetLeftContentPadding( );
-            topPadding = GetTopContentPadding( );
+            leftPadding = GetLeftContentMargin( );
+            topPadding = GetTopContentMargin( );
 
             wxPdfLineStyle currStyle = PDFLineStyle( doc, *wxBLACK, .2 );
             m_frame.DrawPDF( doc, x, y );
@@ -151,6 +156,7 @@ namespace Design {
     {
         SetAttribute( xmlNode, AT_Name );
         SetAttribute( xmlNode, AT_ShowTitle );
+        SetAttribute( xmlNode, AT_ShowSubTitle );
         SetAttribute( xmlNode, AT_ShowFrame );
         SaveFonts( xmlNode );
     }
@@ -198,25 +204,34 @@ namespace Design {
         double rightPadding = 0;
         double topPadding = 0;
         double bottomPadding = 0;
-        if ( GetShowFrame( ) )
+        // if ( GetShowFrame( ) )
         {
-            leftPadding = GetLeftContentPadding( );
-            rightPadding = GetRightContentPadding( );
-            topPadding = GetTopContentPadding( );
-            bottomPadding = GetBottomContentPadding( );
+            leftPadding = GetLeftContentMargin( );
+            rightPadding = GetRightContentMargin( );
+            topPadding = GetTopContentMargin( );
+            bottomPadding = GetBottomContentMargin( );
         }
 
-        minHeight = minHeight + topPadding + bottomPadding;
+        minHeight = minHeight;//+ topPadding + bottomPadding;
         minWidth = minWidth + leftPadding + rightPadding;
 
-        // update the title frame
-        UpdateString( GetTitleFrame( ), GetWidth( ) );
+        m_titleFrame->UpdateString( minWidth );
 
         if ( GetShowTitle( ) )
         {
-            // Allow 3 times the title height
-            minHeight += 3 * GetTitleFrame( )->GetHeight( );
-            GetTitleFrame( )->SetYPos( GetTitleFrame( )->GetHeight( ) );
+            // update the title frame
+            UpdateString( GetTitleFrame( ), minWidth );
+            // std::cout << " Row::UpdateMinimumSize id:" << m_titleFrame->GetString( )
+            //     << " rowHeight:" << GetHeight( )
+            //     << " titleHeight:" << GetTitleFrame( )->GetHeight( ) << "\n";
+
+            SetHeight( GetHeight( ) + GetTitleFrame( )->GetHeight( ) );
+            // std::cout << " Row::UpdateMinimumSize id:" << m_titleFrame->GetString( )
+            //     << " updated rowHeight:" << GetHeight( ) << "\n";
+
+            // Add the title height
+            minHeight += GetTitleFrame( )->GetHeight( );
+            GetTitleFrame( )->SetYPos( 0 );// GetTitleFrame( )->GetHeight( ) );
         }
         // row min height and width
         SetMinHeight( minHeight );
@@ -242,9 +257,9 @@ namespace Design {
         if ( GetShowTitle( ) )
         {
             GetTitleFrame( )->SetXPos( 0 + ( GetWidth( ) - GetTitleFrame( )->GetWidth( ) ) / 2 );
-            GetTitleFrame( )->SetYPos( GetTitleFrame( )->GetHeight( ) );
+            GetTitleFrame( )->SetYPos( 2 );
             // allow for space above title, title height and that much again for nice spaing
-            yPos = GetTitleFrame( )->GetHeight( ) * 3;
+            yPos = GetTitleFrame( )->GetHeight( ) + 2;
         }
         double spacing = 4;
         if ( CalculateSpacing( ) )
@@ -270,10 +285,14 @@ namespace Design {
         while ( childID.IsOk( ) )
         {
             LayoutBase* child = ( LayoutBase* ) GetAlbumTreeCtrl( )->GetItemNode( childID );
-            child->UpdatePositions( );
 
             child->SetXPos( xPos );
             child->SetYPos( yPos );
+            ( ( Stamp* ) child )->CalculateYPos( yPos, GetHeight( ) - GetTitleFrame( )->GetHeight( ) );
+            // std::cout << " Row::UpdatePositions id:" << m_titleFrame->GetString( )
+            //     << " child->yPos:" << child->GetYPos( ) << "\n";
+            child->UpdatePositions( );
+
             xPos += child->GetWidth( ) + spacing;
 
             childID = GetAlbumTreeCtrl( )->GetNextChild( parentID, cookie );
@@ -348,4 +367,24 @@ namespace Design {
         return status;
     }
 
+    TitleLocation  Row::GetTitleLocation( )
+    {
+        TitleLocation loc = FindTitleLocationType( GetAttrStr( AT_StampNameLocation ) );
+        TitleLocation defaultLoc = GetAlbum( )->GetTitleLocation( );
+        if ( ( loc == defaultLoc ) && ( loc != AT_TitleLocationDefault ) )
+        {
+            SetTitleLocation( AT_TitleLocationDefault );
+        }
+        return loc;
+    };
+
+    void Row::SetTitleLocation( TitleLocation loc )
+    {
+        TitleLocation defaultLoc = GetAlbum( )->GetTitleLocation( );
+        if ( ( loc == defaultLoc ) && ( loc != AT_TitleLocationDefault ) )
+        {
+            loc = AT_TitleLocationDefault;
+        }
+        SetAttrStr( AT_StampNameLocation, StampTitleLocationStrings[ loc ] );
+    };
 }

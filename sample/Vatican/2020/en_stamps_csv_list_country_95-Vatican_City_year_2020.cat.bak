@@ -62,7 +62,7 @@
     <CatalogCode Catalog="WAD" Country="VA001.20" ID="VA001.20"/>
     <CatalogCode Catalog="Un" Country="VA" ID="1857"/>
   </Entry>
-  <Entry Name="250th Anniversary of Death of Giambattista Tiepolo" Country="Vatican City" Series="" Catalog_Codes="Mi:VA 1993, Sn:VA 1732, Yt:VA 1844, Sg:VA 1898, WAD:VA002.20, Un:VA 1859" ID_Nbr="Mi:VA 1993" Issued_on="2020-02-14" Expiry_date="" Width="30" Height="40" Watermark="" Format="Stamp" Emission="Commemorative" Perforation="comb&lt;i&gt; 13¾ x 14&lt;/i&gt;" Printing="Offset lithography" Paper="" Gum="" Currency="€ - Euro" FaceValue="1.10" Print_run="160000" Variant="" Score="80.44" Accuracy="Medium" Colors="Multicolor" Themes="Art,Frescos,Anniversaries and Jubilees" Description="Issued in panes of four with decorative margin" Link="https://colnect.com/stamps/stamp/942496">
+  <Entry Name="250th Anniversary of Death of Giambattista Tiepolo" Country="Vatican City" Series="" Catalog_Codes="Mi:VA 1993, Sn:VA 1732, Yt:VA 1844, Sg:VA 1898, WAD:VA002.20, Un:VA 1859" ID_Nbr="Mi:VA 1993" Issued_on="2020-02-14" Expiry_date="" Width="30" Height="40" Watermark="" Format="Stamp" Emission="Commemorative" Perforation="comb&lt;i&gt; 13¾ x 14&lt;/i&gt;" Printing="Offset lithography" Paper="" Gum="" Currency="€ - Euro" FaceValue="1.10" Print_run="160000" Variant="" Score="80.44" Accuracy="Medium" Colors="Multicolor" Themes="Art,Frescos,Anniversaries and Jubilees" Description="Issued in panes of four with decorative pageMargin" Link="https://colnect.com/stamps/stamp/942496">
     <CatalogCode Catalog="Mi" Country="VA" ID="1993"/>
     <CatalogCode Catalog="Sn" Country="VA" ID="1732"/>
     <CatalogCode Catalog="Yt" Country="VA" ID="1844"/>

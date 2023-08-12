@@ -43,13 +43,14 @@
 
 class LabeledTextBox;
 class wxListCtrl;
+class TitleHelper;
 namespace Design { class Page; };
 
 
 #define SYMBOL_PAGEDETAILSDIALOG_STYLE wxCAPTION | wxRESIZE_BORDER | wxSYSTEM_MENU | wxCLOSE_BOX | wxTAB_TRAVERSAL
 #define SYMBOL_PAGEDETAILSDIALOG_TITLE _( "PageDetailsDialog" )
 #define SYMBOL_PAGEDETAILSDIALOG_IDNAME ID_PAGEDETAILSDIALOG
-#define SYMBOL_PAGEDETAILSDIALOG_SIZE wxSize( 400, 300 )
+#define SYMBOL_PAGEDETAILSDIALOG_SIZE wxSize( 600, 800 )
 #define SYMBOL_PAGEDETAILSDIALOG_POSITION wxDefaultPosition
 
 
@@ -72,6 +73,7 @@ public:
         ID_NOTEBOOKPOSITIONPANEL = ID_PAGEDETAILSDIALOG + 1,
         ID_PAGENAMELABELEDTEXTBOX,
         ID_SHOWTITLECHECKBOX,
+        ID_SHOWSUBTITLECHECKBOX,
         ID_SHOWFRAMECHECKBOX,
         ID_ORIENTATIONCHOICE,
         ID_DEFAULTBUTTON,
@@ -82,7 +84,8 @@ public:
         ID_LAYOUTPANEL,
         ID_LAYOUTTEXTCTRL,
         ID_POSITIONTEXTCTRL,
-        ID_NOTEBOOKDETAILSPANEL
+        ID_NOTEBOOKDETAILSPANEL,
+        ID_LastID
     };
 
 
@@ -117,30 +120,46 @@ public:
     bool IsNameModified( );
     void SetName( wxString name );
     wxString GetName( );
+    void SetSubTitle( wxString subTitle );
+    wxString GetSubTitle( );
     void SetShowTitle( bool state = false );
+    void SetShowSubTitle( bool state = false );
     void SetShowFrame( bool state = false );
     void SetTitleColor( wxColour color );
     void SetTitleFont( wxFont font );
+    void SetSubTitleColor( wxColour color );
+    void SetSubTitleFont( wxFont font );
     bool GetShowTitle( );
+    bool GetShowSubTitle( );
     bool GetShowFrame( );
 
     void OnOrientationchoiceSelected( wxCommandEvent& event );
     wxString GetOrientation( ) { return  m_orientationChoice->GetStringSelection( ); };
     void SetOrientation( wxString sel ) { m_orientationChoice->SetStringSelection( sel ); }
-
+    void OnSubTitleDefaultClick( wxCommandEvent& event );
+    void OnNameCheckboxClick( wxCommandEvent& event );
+    void OnSubTitleCheckboxClick( wxCommandEvent& event );
+    void OnNameDefaultClick( wxCommandEvent& event );
 
 private:
     LabeledTextBox* m_name;
     wxCheckBox* m_titleCheckbox;
+    wxCheckBox* m_subTitleCheckbox;
     wxCheckBox* m_frameCheckbox;
     wxChoice* m_orientationChoice;
     wxListBox* m_statusList;
-    wxFontPickerCtrl* m_titleFontPicker;
-    wxColourPickerCtrl* m_titleColorPicker;
+    //wxFontPickerCtrl* m_titleFontPicker;
+    //wxColourPickerCtrl* m_titleColorPicker;
     wxTextCtrl* positionTextCtrl;
     Design::Page* m_page;
     wxTreeItemId m_designTreeID;
-
+    TitleHelper* m_titleHelper;
+    LabeledTextBox* m_subTitleLabel;
+    wxFontPickerCtrl* m_nameFontPicker;
+    wxFontPickerCtrl* m_subTitleFontPicker;
+    wxColourPickerCtrl* m_nameColorPicker;
+    wxColourPickerCtrl* m_subTitleColorPicker;
+    wxBoxSizer* m_dialogVerticalSizer;
 };
 
 #endif

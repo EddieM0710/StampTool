@@ -64,10 +64,10 @@ namespace Design {
             "Name",
             "PageWidth",
             "PageHeight",
-            "TopMargin",
-            "BottomMargin",
-            "RightMargin",
-            "LeftMargin",
+            "TopPageMargin",
+            "BottomPageMargin",
+            "RightPageMargin",
+            "LeftPageMargin",
             "BorderFileName",
             "BorderSize",
             "Height",
@@ -79,15 +79,16 @@ namespace Design {
             "CatNbr",
             "Link",
             "ShowTitle",
+            "ShowSubTitle",
             "ShowCatNbr",
             "ShowFrame",
             "ShowImage",
             "Orientation",
             "GrayScaleImages",
-            "TopContentPadding",
-            "BottomContentPadding",
-            "LeftContentPadding",
-            "RightContentPadding",
+            "TopContentMargin",
+            "BottomContentMargin",
+            "LeftContentMargin",
+            "RightContentMargin",
             "FontType",
             "NativeFontString",
             "Color",
@@ -98,9 +99,12 @@ namespace Design {
             "PaperHeight",
             "PaperWidth",
             "SelvageHeight",
-        "SelvageWidth",
-        "MountAllowanceHeight",
-        "MountAllowanceWidth"
+            "SelvageWidth",
+            "SubTitle",
+            "MountAllowanceHeight",
+            "MountAllowanceWidth",
+            "StampNameLocation",
+            "StampMargin"
     };
     wxString OrientationStrings[ 2 ] = { "Portrait", "Landscape" };
 
@@ -121,16 +125,35 @@ namespace Design {
             "Font" };
 
 
-    int DefaultPointSize[ AT_NbrFontUsageTypes ] = { 6, 18, 14, 6, 8 };
+    int DefaultPointSize[ AT_NbrFontUsageTypes ] = { 14, 12, 10, 16, 8 };
 
     wxString FontUsageTypeStrings[ AT_NbrFontUsageTypes ] = {
-        "Unspecified",
-        "Text",
         "Title",
-        "CatNbr",
+        "SubTitle",
         "Name"
+        "Text",
+        "CatNbr",
+    };
+    wxString StampTitleLocationStrings[ AT_NbrTitleLocations ] = {
+            "Top",
+            "Bottom",
+            "Default"
     };
 
+
+    TitleLocation FindTitleLocationType( wxString name )
+    {
+        wxString baseName;
+        for ( int i = 0; i < AT_NbrTitleLocations; i++ )
+        {
+            baseName = StampTitleLocationStrings[ i ];
+            if ( !name.Cmp( baseName ) )
+            {
+                return ( TitleLocation ) i;
+            }
+        }
+        return  AT_TitleLocationDefault;
+    };
 
     AlbumAttrType FindAlbumAttrType( wxString name )
     {

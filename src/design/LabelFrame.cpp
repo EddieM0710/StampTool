@@ -51,14 +51,14 @@ namespace Design {
         int ndx = m_FontNdx;
         if ( GetFontList( )->IsValidFontNdx( ndx ) )
         {
-            std::cout << "LabelFrame::GetFont from this. " << m_string << "  usage:" << usage << " ndx:" << ndx << " " << GetFontList( )->GetMyFont( ndx )->GetNativeInfoStr( ) << "\n";
+            //std::cout << "LabelFrame::GetFont from this. " << m_string << "  usage:" << usage << " ndx:" << ndx << " " << GetFontList( )->GetMyFont( ndx )->GetNativeInfoStr( ) << "\n";
 
             return GetFontList( )->GetFont( ndx );
         }
         else
         {
             ndx = GetAlbum( )->GetFontNdx( m_fontType );
-            std::cout << "LabelFrame::GetFont from album. usage:" << usage << " ndx:" << ndx << " " << GetFontList( )->GetMyFont( ndx )->GetNativeInfoStr( ) << "\n";
+            //std::cout << "LabelFrame::GetFont from album. usage:" << usage << " ndx:" << ndx << " " << GetFontList( )->GetMyFont( ndx )->GetNativeInfoStr( ) << "\n";
             return GetFontList( )->GetFont( GetAlbum( )->GetFontNdx( m_fontType ) );
         }
     }
@@ -75,7 +75,7 @@ namespace Design {
         pos.x += x;
         pos.y += y;
         //std::cout << m_string << " (" << pos.x << "," << pos.y << ")  point " << point << "\n";
-
+        //DrawRectangle( dc, pos.x, pos.y, size.x, size.y );
         DrawLabel( dc, id, pos, size, wxALIGN_CENTER );
     };
 
@@ -115,8 +115,14 @@ namespace Design {
     int LabelFrame::SetFont( wxFont newFont, wxColour newColor )
     {
         int ndx = GetFontList( )->AddNewFont( newFont, newColor );
-        Utils::Font* font = GetFontList( )->GetMyFont( ndx );
-        std::cout << "LabelFrame::SetFont " << Design::FontUsageTypeStrings[ ndx ] << " " << font->GetNativeInfoStr( ) << "\n";
+        if ( !GetAlbum( )->IsDefaultFont( m_fontType, ndx ) )
+        {
+            m_FontNdx = ndx;
+        }
+        //std::cout << "LabelFrame::SetFont ndx:" << ndx << " " << newFont.GetNativeFontInfoDesc( ) << "\n";
+
+        //Utils::Font* font = GetFontList( )->GetMyFont( ndx );
+        //std::cout << "LabelFrame::SetFont " << Design::FontUsageTypeStrings[ ndx ] << " " << font->GetNativeInfoStr( ) << "\n";
         return ndx;
     };
 
@@ -125,10 +131,10 @@ namespace Design {
         Utils::Font* font = GetFontList( )->GetMyFont( ndx );
         int pnt = font->GetPointSize( );
 
-        std::cout << "LabelFrame::SetFontNdx " << m_string
-            << " ndx:" << ndx
-            << " pnt:" << pnt
-            << " family:" << font->GetNativeInfoStr( ) << "\n";
+        // std::cout << "LabelFrame::SetFontNdx " << m_string
+        //     << " ndx:" << ndx
+        //     << " pnt:" << pnt
+        //     << " family:" << font->GetNativeInfoStr( ) << "\n";
 
         m_FontNdx = ndx;
     };
@@ -137,26 +143,37 @@ namespace Design {
         m_multiLineString = m_string;
         m_maxWidth = width;
 
-        wxFont font = GetFont( );
-        int point = font.GetPointSize( );
-        if ( font == wxNullFont )
+        if ( width > 0 )
         {
-            font = *wxNORMAL_FONT;
+            wxFont font = GetFont( );
+            int point = font.GetPointSize( );
+            if ( font == wxNullFont )
+            {
+                font = *wxNORMAL_FONT;
+            }
+
+            //   GetAlbumImagePanel( )->MakeMultiLine( m_multiLineString, font, width );
+            // first break into lines if necessary then get the actual multi line text extent
+            m_stringTextExtent = GetAlbumImagePanel( )->MakeMultiLine( m_multiLineString, font, width );
+            // std::cout << "LabelFrame::UpdateString " << m_string << "  "
+            //     << width << "  x:" << m_stringTextExtent.x
+            //     << " y" << m_stringTextExtent.y
+            //     << "point:" << point << "\n";
+            SetWidth( m_maxWidth );
+            SetHeight( m_stringTextExtent.y );
+            SetMinWidth( m_maxWidth );
+            SetMinHeight( m_stringTextExtent.y );
+            SetXPos( 0 );
+            SetYPos( 0 );
         }
-
-
-        //   GetAlbumImagePanel( )->MakeMultiLine( m_multiLineString, font, width );
-        // first break into lines if necessary then get the actual multi line text extent
-        m_stringTextExtent = GetAlbumImagePanel( )->MakeMultiLine( m_multiLineString, font, width );
-        // std::cout << "LabelFrame::UpdateString " << m_string << "  "
-        //     << width << "  x:" << m_stringTextExtent.x
-        //     << " y" << m_stringTextExtent.y
-        //     << "point:" << point << "\n";
-        SetWidth( m_maxWidth );
-        SetHeight( m_stringTextExtent.y );
-        SetMinWidth( m_maxWidth );
-        SetMinHeight( m_stringTextExtent.y );
-        SetXPos( 0 );
-        SetYPos( 0 );
+        else
+        {
+            SetWidth( 0 );
+            SetHeight( 0 );
+            SetMinWidth( 0 );
+            SetMinHeight( 0 );
+            SetXPos( 0 );
+            SetYPos( 0 );
+        }
     };
 }

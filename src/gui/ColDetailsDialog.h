@@ -33,7 +33,7 @@
 
 class LabeledTextBox;
 class wxListCtrl;
-
+class TitleHelper;
 namespace Design { class Column; };
 
 
@@ -46,33 +46,35 @@ namespace Design { class Column; };
 class ColDetailsDialog : public wxDialog
 {
     DECLARE_DYNAMIC_CLASS( ColDetailsDialog )
-        DECLARE_EVENT_TABLE( )
+    DECLARE_EVENT_TABLE( )
 
 public:
 
     enum ColDetailsDialogGuiDefs {
         ID_NAMELABELEDTEXTBOX = ID_COLDETAILSDIALOG + 1,
         ID_COLTITLECHECKBOX,
+        ID_COLSUBTITLECHECKBOX,
         ID_FRAMECHECKBOX,
         ID_LISTCTRL,
-        ID_COLNOTEBOOK,
+        //  ID_COLNOTEBOOK,
         ID_COLNAMEPANEL,
         ID_COLDEFAULTFONTBUTTON,
         ID_COLLAYOUTPANEL,
         ID_COLLAYOUTTEXTCTRL,
-        ID_NOTEBOOKPOSITIONPANEL,
-        ID_POSITIONTEXTCTRL,
-        ID_NOTEBOOK,
-        ID_NOTEBOOKDETAILSPANEL,
+        //    ID_NOTEBOOKPOSITIONPANEL,
+    //ID_POSITIONTEXTCTRL,
+           // ID_NOTEBOOK,
+           // ID_NOTEBOOKDETAILSPANEL,
         ID_DEFAULTFONTBUTTON,
         ID_DEFAULTRADIOBUTTON,
         ID_TOPRADIOBUTTON,
         ID_BOTTOMRADIOBUTTON,
-        ID_LEFTRADIOBUTTON,
-        ID_RIGHTRADIOBUTTON,
+        //ID_LEFTRADIOBUTTON,
+        //ID_RIGHTRADIOBUTTON,
         ID_CALCULATEDRADIOBUTTON,
         ID_FIXEDRADIOBUTTON,
-        ID_FIXEDSIZETEXTCTRL
+        ID_FIXEDSIZETEXTCTRL,
+        ID_LastID
     };
 
     ///  @brief Construct a new Col Details Dialog object
@@ -119,6 +121,7 @@ public:
     ///  @return true 
     ///  @return false 
     bool GetShowTitle( );
+    bool GetShowSubTitle( );
 
     ///  @brief Get the Show Frame object
     ///  
@@ -169,16 +172,6 @@ public:
     ///  @brief 
     ///  
     ///  @param event 
-    void OnLeftRadioButtonSelected( wxCommandEvent& event );
-
-    ///  @brief 
-    ///  
-    ///  @param event 
-    void OnRightRadioButtonSelected( wxCommandEvent& event );
-
-    ///  @brief 
-    ///  
-    ///  @param event 
     void OnTitleDefaultClick( wxCommandEvent& event );
 
     ///  @brief 
@@ -210,6 +203,7 @@ public:
     ///  
     ///  @param state 
     void SetShowTitle( bool state = false );
+    void SetShowSubTitle( bool state = false );
 
     ///  @brief Set the Show Frame object
     ///  
@@ -228,7 +222,8 @@ public:
 
     ///  @brief Set the Title Layout Location object
     ///  
-    void SetTitleLayoutLocation( );
+    void SetTitleLocation( );
+    Design::TitleLocation  GetTitleLocation( );
 
     ///  @brief 
     ///  
@@ -251,10 +246,18 @@ public:
     ///  
     void UpdateControls( );
 
+    void OnSubTitleDefaultClick( wxCommandEvent& event );
+    void OnNameCheckboxClick( wxCommandEvent& event );
+    void OnSubTitleCheckboxClick( wxCommandEvent& event );
+
+    void OnNameDefaultClick( wxCommandEvent& event );
+
 private:
 
-    LabeledTextBox* m_name;
+    LabeledTextBox* m_titleLabel;
+    LabeledTextBox* m_subTitleLabel;
     wxCheckBox* m_titleCheckbox;
+    wxCheckBox* m_subTitleCheckbox;
     wxCheckBox* m_frameCheckbox;
     wxListBox* m_statusList;
     wxFontPickerCtrl* m_titleFontPicker;
@@ -268,12 +271,17 @@ private:
     Design::TitleLocation m_titleLocation;
     wxRadioButton* m_topButton;
     wxRadioButton* m_bottomButton;
-    wxRadioButton* m_leftButton;
-    wxRadioButton* m_rightButton;
+
     wxRadioButton* m_defaultButton;
     wxRadioButton* m_positionCalculated;
     wxRadioButton* m_positionFixed;
     wxTextCtrl* m_positionFixedSize;
+    // wxFontPickerCtrl* m_nameFontPicker;
+    wxFontPickerCtrl* m_subTitleFontPicker;
+    //  wxColourPickerCtrl* m_nameColorPicker;
+    wxColourPickerCtrl* m_subTitleColorPicker;
+    wxBoxSizer* m_dialogVerticalSizer;
+    TitleHelper* m_titleHelper;
 };
 
 #endif

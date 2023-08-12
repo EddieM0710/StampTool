@@ -1514,6 +1514,8 @@ Design::NodeStatus  AlbumTreeCtrl::UpdateTreeItem( wxTreeItemId childID, Design:
     SelectItem( childID );
     wxTreeItemId  pageID = GetPage( childID );
     Design::Page* page = ( Design::Page* ) GetItemNode( pageID );
+    page->Init( );
+    page->SetBorderFilename( Design::GetAlbum( )->GetBorderFileName( ) );
     page->UpdateMinimumSize( );
     page->UpdateSizes( );
     page->UpdatePositions( );

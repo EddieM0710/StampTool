@@ -102,6 +102,7 @@ public:
         ID_BOTTOMRADIOBUTTON,
         ID_NBRDEFAULTCHECKBOX,
         ID_STAMPTITLEDEFAULTCHECKBOX,
+        ID_STAMPSUBTITLEDEFAULTCHECKBOX,
         ID_ROWCOLTITLEDEFAULTCHECKBOX,
         ID_FRAMEDEFAULTCHECKBOX,
         ID_GRAYSCALECHECKBOX,
@@ -110,7 +111,8 @@ public:
         ID_ALBUMLAYOUTTEXTCTRL,
         ID_ALBUMLAYOUTPANEL,
         ID_ALBUMNOTEBOOK,
-        ID_ALBUMNAMEPANEL
+        ID_ALBUMNAMEPANEL,
+        ID_LastID
     };
 
     ///  @brief Construct a new Album Details Dialog object
@@ -154,10 +156,10 @@ public:
 
     wxString GetBorderFilename( );
 
-    ///  @brief Get the Bottom Margin object
+    ///  @brief Get the Bottom PageMargin object
     ///  
     ///  @return wxString 
-    wxString GetBottomMargin( );
+    wxString GetBottomPageMargin( );
 
     ///  @brief Get the Gray Scale Images object
     ///  
@@ -165,10 +167,10 @@ public:
     ///  @return false 
     bool GetGrayScaleImages( );
 
-    ///  @brief Get the Left Margin object
+    ///  @brief Get the Left PageMargin object
     ///  
     ///  @return wxString 
-    wxString GetLeftMargin( );
+    wxString GetLeftPageMargin( );
 
     ///  @brief Get the Name object
     ///  
@@ -209,10 +211,10 @@ public:
 
     wxString GetPaperWidth( );
 
-    ///  @brief Get the Right Margin object
+    ///  @brief Get the Right PageMargin object
     ///  
     ///  @return wxString 
-    wxString GetRightMargin( );
+    wxString GetRightPageMargin( );
 
     ///  @brief Get the Show Nbr object
     ///  
@@ -225,6 +227,7 @@ public:
     ///  @return true 
     ///  @return false 
     bool GetShowStampTitle( );
+    bool GetShowStampSubTitle( );
 
     wxColour GetTextColor( );
 
@@ -245,10 +248,10 @@ public:
     ///  @return wxFont 
     wxFont GetTitleFont( );
 
-    ///  @brief Get the Top Margin object
+    ///  @brief Get the Top PageMargin object
     ///  
     ///  @return wxString 
-    wxString GetTopMargin( );
+    wxString GetTopPageMargin( );
 
     ///  @brief 
     ///  
@@ -264,13 +267,13 @@ public:
     ///  
     ///  @return true 
     ///  @return false 
-    bool IsBottomMarginModified( );
+    bool IsBottomPageMarginModified( );
 
     ///  @brief 
     ///  
     ///  @return true 
     ///  @return false 
-    bool IsLeftMarginModified( );
+    bool IsLeftPageMarginModified( );
 
     ///  @brief 
     ///  
@@ -296,13 +299,13 @@ public:
     ///  
     ///  @return true 
     ///  @return false 
-    bool IsRightMarginModified( );
+    bool IsRightPageMarginModified( );
 
     ///  @brief 
     ///  
     ///  @return true 
     ///  @return false 
-    bool IsTopMarginModified( );
+    bool IsTopPageMarginModified( );
 
     ///  @brief 
     ///  
@@ -332,28 +335,28 @@ public:
     ///  @param state 
     void SetBorderSizeModified( bool state );
 
-    ///  @brief Set the Bottom Margin object
+    ///  @brief Set the Bottom PageMargin object
     ///  
-    ///  @param margin 
-    void SetBottomMargin( wxString margin );
+    ///  @param pageMargin 
+    void SetBottomPageMargin( wxString pageMargin );
 
 
-    ///  @brief Set the Bottom Margin Modified object
+    ///  @brief Set the Bottom PageMargin Modified object
     ///  
     ///  @param state 
-    void SetBottomMarginModified( bool state );
+    void SetBottomPageMarginModified( bool state );
 
     void SetGrayScaleImages( bool val );
 
-    ///  @brief Set the Left Margin object
+    ///  @brief Set the Left PageMargin object
     ///  
-    ///  @param margin 
-    void SetLeftMargin( wxString margin );
+    ///  @param pageMargin 
+    void SetLeftPageMargin( wxString pageMargin );
 
-    ///  @brief Set the Left Margin Modified object
+    ///  @brief Set the Left PageMargin Modified object
     ///  
     ///  @param state 
-    void SetLeftMarginModified( bool state );
+    void SetLeftPageMarginModified( bool state );
 
     ///  @brief Set the Name object
     ///  
@@ -411,15 +414,15 @@ public:
     ///  @param state 
     void SetPageWidthModified( bool state );
 
-    ///  @brief Set the Right Margin object
+    ///  @brief Set the Right PageMargin object
     ///  
-    ///  @param margin 
-    void SetRightMargin( wxString margin );
+    ///  @param pageMargin 
+    void SetRightPageMargin( wxString pageMargin );
 
-    ///  @brief Set the Right Margin Modified object
+    ///  @brief Set the Right PageMargin Modified object
     ///  
     ///  @param state 
-    void SetRightMarginModified( bool state );
+    void SetRightPageMarginModified( bool state );
 
     ///  @brief Set the Show Nbr object
     ///  
@@ -452,15 +455,15 @@ public:
     ///  @param font 
     void SetTitleFont( wxFont font );
 
-    ///  @brief Set the Top Margin object
+    ///  @brief Set the Top PageMargin object
     ///  
-    ///  @param margin 
-    void SetTopMargin( wxString margin );
+    ///  @param pageMargin 
+    void SetTopPageMargin( wxString pageMargin );
 
-    ///  @brief Set the Top Margin Modified object
+    ///  @brief Set the Top PageMargin Modified object
     ///  
     ///  @param state 
-    void SetTopMarginModified( bool state );
+    void SetTopPageMarginModified( bool state );
 
     ///  @brief 
     ///  
@@ -500,6 +503,14 @@ public:
     wxString GetOrientation( ) { return  m_orientationChoice->GetStringSelection( ); };
     void SetOrientation( wxString sel ) { m_orientationChoice->SetStringSelection( sel ); }
 
+    Design::TitleLocation GetDefaultStampNameLocation( )
+    {
+        return m_stampNameLocation;
+    }
+    void SetStampNameLocation( );
+
+    void OnTopRadioButtonSelected( wxCommandEvent& event );
+    void OnBottomRadioButtonSelected( wxCommandEvent& event );
 
 private:
     LabeledTextBox* m_name;
@@ -507,15 +518,16 @@ private:
     LabeledTextBox* m_paperWidth;
     LabeledTextBox* m_height;
     LabeledTextBox* m_width;
-    LabeledTextBox* m_topMargin;
-    LabeledTextBox* m_bottomMargin;
-    LabeledTextBox* m_rightMargin;
-    LabeledTextBox* m_leftMargin;
+    LabeledTextBox* m_topPageMargin;
+    LabeledTextBox* m_bottomPageMargin;
+    LabeledTextBox* m_rightPageMargin;
+    LabeledTextBox* m_leftPageMargin;
     LabeledTextBox* m_borderSize;
     LabeledTextBox* m_borderFilename;
     wxCheckBox* m_overSizeCheckbox;
     wxCheckBox* m_nbrCheckbox;
     wxCheckBox* m_stampTitleCheckbox;
+    wxCheckBox* m_stampSubTitleCheckbox;
     wxCheckBox* m_grayScaleImagesCheckbox;
     wxChoice* m_orientationChoice;
     wxFontPickerCtrl* m_titleFontPicker;
@@ -527,10 +539,10 @@ private:
     wxFontPickerCtrl* m_textFontPicker;
     wxColourPickerCtrl* m_textColorPicker;
 
-    wxStaticBox* m_TitleLocationBox;
-    wxStaticBoxSizer* m_titleLocationVSizer;
-    wxBoxSizer* m_titleLocationHSizer;
-    Design::TitleLocation m_titleLocation;
+    wxStaticBox* m_stampNameLocationBox;
+    wxStaticBoxSizer* m_stampNameLocationVSizer;
+    wxBoxSizer* m_stampNameLocationHSizer;
+    Design::TitleLocation m_stampNameLocation;
     wxRadioButton* m_topButton;
     wxRadioButton* m_bottomButton;
 

@@ -44,10 +44,10 @@ namespace Design {
         AT_Name = 0,
         AT_PageWidth,
         AT_PageHeight,
-        AT_TopMargin,
-        AT_BottomMargin,
-        AT_RightMargin,
-        AT_LeftMargin,
+        AT_TopPageMargin,
+        AT_BottomPageMargin,
+        AT_RightPageMargin,
+        AT_LeftPageMargin,
         AT_BorderFileName,
         AT_BorderSize,
         AT_Height,
@@ -59,15 +59,16 @@ namespace Design {
         AT_CatNbr,
         AT_Link,
         AT_ShowTitle,
+        AT_ShowSubTitle,
         AT_ShowCatNbr,
         AT_ShowFrame,
         AT_ShowImage,
         AT_Orientation,
         AT_GrayScaleImages,
-        AT_TopContentPadding,
-        AT_BottomContentPadding,
-        AT_LeftContentPadding,
-        AT_RightContentPadding,
+        AT_TopContentMargin,
+        AT_BottomContentMargin,
+        AT_LeftContentMargin,
+        AT_RightContentMargin,
         AT_FontType,
         //        AT_FontName, 
         //        AT_FontFamily, 
@@ -84,8 +85,11 @@ namespace Design {
         AT_PaperWidth,
         AT_SelvageHeight,
         AT_SelvageWidth,
+        AT_SubTitle,
         AT_MountAllowanceHeight,
         AT_MountAllowanceWidth,
+        AT_StampNameLocation,
+        AT_StampMargin,
         AT_NbrAttrTypes,
         AT_NOTYPE
     } AlbumAttrType;
@@ -111,11 +115,11 @@ namespace Design {
     } AlbumBaseType;
 
     typedef enum {
-        AT_UnspecifiedFontType,
-        AT_TextFontType,
         AT_TitleFontType,
-        AT_NbrFontType,
+        AT_SubTitleFontType,
         AT_NameFontType,
+        AT_TextFontType,
+        AT_NbrFontType,
         AT_NbrFontUsageTypes
     } FontUsageType;
 
@@ -146,9 +150,8 @@ namespace Design {
     {
         AT_TitleLocationTop,
         AT_TitleLocationBottom,
-        AT_TitleLocationLeft,
-        AT_TitleLocationRight,
-        AT_TitleLocationDefault
+        AT_TitleLocationDefault,
+        AT_NbrTitleLocations
     } TitleLocation;
 
     Album* GetAlbum( void );
@@ -156,6 +159,8 @@ namespace Design {
     AlbumVolume* GetAlbumVolume( void );
 
     bool IsAlbumBaseTypeValid( AlbumBaseType type );
+
+    TitleLocation FindTitleLocationType( wxString name );
 
     AlbumAttrType FindAlbumAttrType( wxString name );
 
@@ -189,6 +194,7 @@ namespace Design {
 
     extern int DefaultPointSize[ AT_NbrFontUsageTypes ];
     extern wxString FontUsageTypeStrings[ AT_NbrFontUsageTypes ];
+    extern wxString StampTitleLocationStrings[ AT_NbrTitleLocations ];
 
 }
 

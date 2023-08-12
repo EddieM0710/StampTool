@@ -53,46 +53,31 @@ public:
     ///  @param font 
     ///  @param color 
     FontPicker( wxWindow* parent, wxBoxSizer* verticalSizer,
-        wxString staticText, int idStatic,
-        int idFontPicker, int idColorPicker,
-        wxString buttonText, int idDefaultButton,
+        wxString staticText, wxString buttonText, int& lastID,
         const wxFont& font = wxNullFont,
         const wxColour& color = *wxStockGDI::GetColour( wxStockGDI::COLOUR_BLACK ) )
     {
-        m_parent = parent;
-        m_verticalSizer = verticalSizer;
-        m_staticText = staticText;
-        m_idStatic = idStatic;
-        m_idFontPicker = idFontPicker;
-        m_idColorPicker = idColorPicker;
-        m_buttonText = buttonText;
-        m_idDefaultButton = idDefaultButton;
+
         m_font = font;
         m_color = color;
-        CreateCtrls( );
-    }
 
-    ///  @brief Create the controls for this helper
-    ///  
-    void CreateCtrls( )
-    {
         m_horizontalSizer = new wxBoxSizer( wxHORIZONTAL );
-        m_verticalSizer->Add( m_horizontalSizer, 0, wxGROW | wxALL, 5 );
+        verticalSizer->Add( m_horizontalSizer, 0, wxGROW | wxALL, 5 );
 
-        wxStaticText* FontStatic = new wxStaticText( m_parent, m_idStatic, m_staticText, wxDefaultPosition, wxDefaultSize, 0 );
+        wxStaticText* FontStatic = new wxStaticText( parent, ++lastID, staticText, wxDefaultPosition, wxDefaultSize, 0 );
         m_horizontalSizer->Add( FontStatic, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
-        m_fontPicker = new wxFontPickerCtrl( m_parent, m_idFontPicker,
+        m_fontPicker = new wxFontPickerCtrl( parent, ++lastID,
             m_font, wxDefaultPosition,
             wxDefaultSize, wxFNTP_DEFAULT_STYLE );
         m_horizontalSizer->Add( m_fontPicker, 2, wxGROW | wxALL, 5 );
 
-        m_colorPicker = new wxColourPickerCtrl( m_parent, m_idColorPicker,
+        m_colorPicker = new wxColourPickerCtrl( parent, ++lastID,
             m_color, wxDefaultPosition,
             wxDefaultSize, wxCLRP_DEFAULT_STYLE );
         m_horizontalSizer->Add( m_colorPicker, 1, wxGROW | wxALL, 5 );
 
-        m_defaultButton = new wxButton( m_parent, m_idDefaultButton, m_buttonText, wxDefaultPosition, wxDefaultSize, 0 );
+        m_defaultButton = new wxButton( parent, ++lastID, buttonText, wxDefaultPosition, wxDefaultSize, 0 );
         m_horizontalSizer->Add( m_defaultButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
     }
 
@@ -110,21 +95,14 @@ public:
     ///  
     ///  @return wxButton* 
     wxButton* GetDefaultButton( ) { return m_defaultButton; };
+    void ShowFontPicker( bool show = true ) { m_horizontalSizer->Show( show ); }
 
 private:
-    wxWindow* m_parent;
 
     wxFontPickerCtrl* m_fontPicker;
     wxColourPickerCtrl* m_colorPicker;
     wxButton* m_defaultButton;
     wxBoxSizer* m_horizontalSizer;
-    wxBoxSizer* m_verticalSizer;
-    wxString m_staticText;
-    wxString m_buttonText;
-    int m_idStatic;
-    int m_idFontPicker;
-    int m_idColorPicker;
-    int m_idDefaultButton;
     wxFont m_font;
     wxColour m_color;
 

@@ -15,8 +15,8 @@ public:
     void DrawPageOne( );
 
     void DrawPageTwo( );
-    void SetMargins( float top, float bottom, float left, float right, float spaces = 3 );
-    void SetMargins( const wxPageSetupDialogData& pageSetupData );
+    void SetPageMargins( float top, float bottom, float left, float right, float spaces = 3 );
+    void SetPageMargins( const wxPageSetupDialogData& pageSetupData );
     void SetFonts( const wxString& normal_face, const wxString& fixed_face, const int* sizes );
     void SetStandardFonts( int size, const wxString& normal_face, const wxString& fixed_face );
     void SetFile( const wxString& htmlfile );
@@ -54,7 +54,7 @@ private:
 
     int m_HeaderHeight, m_FooterHeight;
     // wxHtmlDCRenderer m_Renderer, m_RendererHdr;
-    float m_MarginTop, m_MarginBottom, m_MarginLeft, m_MarginRight, m_MarginSpace;
+    float m_PageMarginTop, m_PageMarginBottom, m_PageMarginLeft, m_PageMarginRight, m_PageMarginSpace;
 
     // list of HTML filters
    // static wxVector<wxHtmlFilter*> m_Filters;

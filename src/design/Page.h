@@ -34,7 +34,7 @@
 
 namespace Design {
 
-    class Title;
+    class TitleFrame;
 
     // Encapsulates the parameters of the page
     class Page : public LayoutBase
@@ -56,24 +56,25 @@ namespace Design {
 
         wxString GetBorderFileName( ) { return m_borderFileName; };
 
-        // Get the Bottom Margin 
-        double GetBottomMargin( ) { return m_bottomMargin; };
+        // Get the Bottom PageMargin 
+        double GetBottomPageMargin( ) { return m_bottomPageMargin; };
 
         // Get the Border Size 
         double GetBorderSize( ) { return m_borderSize; };
 
-        // Get the Left Margin 
-        double GetLeftMargin( ) { return m_leftMargin; };
+        // Get the Left PageMargin 
+        double GetLeftPageMargin( ) { return m_leftPageMargin; };
 
-        //Get the Right Margin
-        double GetRightMargin( ) { return m_rightMargin; };
+        //Get the Right PageMargin
+        double GetRightPageMargin( ) { return m_rightPageMargin; };
 
-        LabelFrame* GetTitleFrame( );
+        TitleFrame* GetTitleFrame( );
 
         wxString GetTitleString( );
+        wxString  GetSubTitleString( );
 
-        // Get the Top Margin 
-        double GetTopMargin( ) { return m_topMargin; };
+        // Get the Top PageMargin 
+        double GetTopPageMargin( ) { return m_topPageMargin; };
 
         void ReportLayout( );
 
@@ -86,21 +87,21 @@ namespace Design {
 
         void SetBorderFilename( wxString str ) { m_borderFileName = str; };
 
-        // Set the Bottom Margin 
-        void SetBottomMargin( double val ) { m_bottomMargin = val; };
+        // Set the Bottom PageMargin 
+        void SetBottomPageMargin( double val ) { m_bottomPageMargin = val; };
 
         void SetContentFrame( );
 
-        // Set the Left Margin 
-        void SetLeftMargin( double val ) { m_leftMargin = val; };
+        // Set the Left PageMargin 
+        void SetLeftPageMargin( double val ) { m_leftPageMargin = val; };
 
-        // Set the Right Margin 
-        void SetRightMargin( double val ) { m_rightMargin = val; };
+        // Set the Right PageMargin 
+        void SetRightPageMargin( double val ) { m_rightPageMargin = val; };
 
         void SetTitleString( wxString str );
-
-        // Set the Top Margin 
-        void SetTopMargin( double val ) { m_topMargin = val; };
+        void  SetSubTitleString( wxString str );
+        // Set the Top PageMargin 
+        void SetTopPageMargin( double val ) { m_topPageMargin = val; };
 
         void LoadFonts( wxXmlNode* node );
 
@@ -147,15 +148,15 @@ namespace Design {
         bool IsDefaultOrientation( ) { return GetAlbum( )->IsDefaultOrientation( GetOrientation( ) ); };
     private:
 
-        double m_topMargin;
-        double m_bottomMargin;
-        double m_rightMargin;
-        double m_leftMargin;
+        double m_topPageMargin;
+        double m_bottomPageMargin;
+        double m_rightPageMargin;
+        double m_leftPageMargin;
         double m_borderSize;
         Frame m_contentFrame;
         wxString m_borderFileName;
         DebugString m_debugString;
-        LabelFrame* m_titleFrame;
+        TitleFrame* m_titleFrame;
         //        PageOrientation m_orientation;
     };
 }

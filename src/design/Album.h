@@ -96,15 +96,15 @@ namespace Design {
 
         void SetBorderFilename( wxString filename );
 
-        ///  @brief Get the Bottom Margin object
+        ///  @brief Get the Bottom PageMargin object
         ///  
         ///  @return double 
-        double GetBottomMargin( );
+        double GetBottomPageMargin( );
 
-        ///  @brief Get the Bottom Margin Str object
+        ///  @brief Get the Bottom PageMargin Str object
         ///  
         ///  @return wxString 
-        wxString GetBottomMarginStr( );
+        wxString GetBottomPageMarginStr( );
 
         wxColour GetColor( FontUsageType fontType );
 
@@ -134,15 +134,15 @@ namespace Design {
         ///  @return double 
         double GetHeight( );
 
-        ///  @brief Get the Left Margin object
+        ///  @brief Get the Left PageMargin object
         ///  
         ///  @return double 
-        double GetLeftMargin( );
+        double GetLeftPageMargin( );
 
-        ///  @brief Get the Left Margin Str object
+        ///  @brief Get the Left PageMargin Str object
         ///  
         ///  @return wxString 
-        wxString GetLeftMarginStr( );
+        wxString GetLeftPageMarginStr( );
 
         ///  @brief Get the Page Height object
         ///  
@@ -159,12 +159,12 @@ namespace Design {
         ///  
         ///  @param width 
         ///  @param height 
-        ///  @param topMargin 
-        ///  @param bottomMargin 
-        ///  @param rightMargin 
-        ///  @param leftMargin 
-        void GetPageParameters( wxString& width, wxString& height, wxString& topMargin,
-            wxString& bottomMargin, wxString& rightMargin, wxString& leftMargin );
+        ///  @param topPageMargin 
+        ///  @param bottomPageMargin 
+        ///  @param rightPageMargin 
+        ///  @param leftPageMargin 
+        void GetPageParameters( wxString& width, wxString& height, wxString& topPageMargin,
+            wxString& bottomPageMargin, wxString& rightPageMargin, wxString& leftPageMargin );
 
         ///  @brief Get the Page Width object
         ///  
@@ -188,15 +188,15 @@ namespace Design {
         ///  @return wxString 
         wxString GetPageWidthStr( );
 
-        ///  @brief Get the Right Margin object
+        ///  @brief Get the Right PageMargin object
         ///  
         ///  @return double 
-        double GetRightMargin( );
+        double GetRightPageMargin( );
 
-        ///  @brief Get the Right Margin Str object
+        ///  @brief Get the Right PageMargin Str object
         ///  
         ///  @return wxString 
-        wxString GetRightMarginStr( );
+        wxString GetRightPageMarginStr( );
 
         ///  @brief Get the Show Nbr object
         ///  
@@ -204,21 +204,24 @@ namespace Design {
         ///  @return false 
         bool GetShowNbr( ) { return String2Bool( GetAttrStr( AT_CatNbr ) ); };
 
-        ///  @brief Get the Top Margin object
+        TitleLocation  GetTitleLocation( );
+
+        ///  @brief Get the Top PageMargin object
         ///  
         ///  @return double 
-        double GetTopMargin( );
+        double GetTopPageMargin( );
 
-        ///  @brief Get the Top Margin Str object
+        ///  @brief Get the Top PageMargin Str object
         ///  
         ///  @return wxString 
-        wxString GetTopMarginStr( );
+        wxString GetTopPageMarginStr( );
 
         ///  @brief Get the Show Title object
         ///  
         ///  @return true 
         ///  @return false 
         bool GetShowTitle( ) { return String2Bool( GetAttrStr( AT_ShowTitle ) ); };
+        bool GetShowSubTitle( ) { return String2Bool( GetAttrStr( AT_ShowSubTitle ) ); };
         bool GetOverSizePaper( ) { return String2Bool( GetAttrStr( AT_OverSizePaper ) ); };
 
         ///  @brief Get the Width object
@@ -259,10 +262,10 @@ namespace Design {
 
         void SaveFonts( wxXmlNode* parent );
 
-        ///  @brief Set the Bottom Margin object
+        ///  @brief Set the Bottom PageMargin object
         ///  
         ///  @param str 
-        void SetBottomMargin( wxString str );
+        void SetBottomPageMargin( wxString str );
 
         ///  @brief Set the Doc Name object
         ///  
@@ -278,10 +281,10 @@ namespace Design {
         ///  @param val 
         void SetGrayScaleImages( bool val = true ) { SetAttrStr( AT_GrayScaleImages, Bool2String( val ) ); };
 
-        ///  @brief Set the Left Margin object
+        ///  @brief Set the Left PageMargin object
         ///  
         ///  @param str 
-        void SetLeftMargin( wxString str );
+        void SetLeftPageMargin( wxString str );
 
         ///  @brief Set the Page Height object
         ///  
@@ -297,20 +300,21 @@ namespace Design {
 
         void SetPaperWidth( wxString str );
 
-        ///  @brief Set the Right Margin object
+        ///  @brief Set the Right PageMargin object
         ///  
         ///  @param str 
-        void SetRightMargin( wxString str );
+        void SetRightPageMargin( wxString str );
 
-        ///  @brief Set the Top Margin object
+        ///  @brief Set the Top PageMargin object
         ///  
         ///  @param str 
-        void SetTopMargin( wxString str );
+        void SetTopPageMargin( wxString str );
 
         ///  @brief Set the Show Title object
         ///  
         ///  @param val 
         void SetShowTitle( bool val ) { SetAttrStr( AT_ShowTitle, Bool2String( val ) ); };
+        void SetShowSubTitle( bool val ) { SetAttrStr( AT_ShowSubTitle, Bool2String( val ) ); };
 
         void SetOverSizePaper( bool val ) { SetAttrStr( AT_OverSizePaper, Bool2String( val ) ); };
 
@@ -318,6 +322,8 @@ namespace Design {
         ///  
         ///  @param val 
         void SetShowNbr( bool val ) { SetAttrStr( AT_CatNbr, Bool2String( val ) ); };
+
+        void SetTitleLocation( TitleLocation loc );
 
         /**
          * @brief init drills down to the lowest layout object with an actual size

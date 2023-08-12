@@ -26,7 +26,7 @@
 
 #include "design/Page.h"
 #include "design/Album.h"
- //#include "design/Title.h"
+#include "design/TitleFrame.h"
 #include "design/Row.h"
 #include "design/Column.h"
 #include "design/Stamp.h"
@@ -41,8 +41,9 @@ namespace Design {
     {
         SetNodeType( AT_Page );
         SetObjectName( AlbumBaseNames[ GetNodeType( ) ] );
-        m_titleFrame = new LabelFrame( Design::AT_TitleFontType );
-        m_titleFrame->SetString( GetAttrStr( AT_Name ) );
+        m_titleFrame = new TitleFrame( this );
+        m_titleFrame->SetHeadingString( GetAttrStr( AT_Name ) );
+        m_titleFrame->SetSubHeadingString( GetAttrStr( AT_SubTitle ) );
         // wxString orientation = GetAttrStr( AT_Orientation );
         // if ( orientation.IsEmpty( ) )
         // {
@@ -63,29 +64,29 @@ namespace Design {
             if ( Design::IsPortrait( GetOrientation( ) ) )
             {
                 //SetBorder( m_border );
-                // the page frame takes into account the margins, the border is within this
-                SetXPos( album->GetLeftMargin( ) );
-                SetYPos( album->GetTopMargin( ) );
-                SetWidth( album->GetWidth( ) - album->GetRightMargin( ) - album->GetLeftMargin( ) );
-                SetHeight( album->GetHeight( ) - album->GetTopMargin( ) - album->GetBottomMargin( ) );
-                SetTopMargin( album->GetTopMargin( ) );
-                SetBottomMargin( album->GetBottomMargin( ) );
-                SetRightMargin( album->GetRightMargin( ) );
-                SetLeftMargin( album->GetLeftMargin( ) );
+                // the page frame takes into account the pageMargins, the border is within this
+                SetXPos( album->GetLeftPageMargin( ) );
+                SetYPos( album->GetTopPageMargin( ) );
+                SetWidth( album->GetWidth( ) - album->GetRightPageMargin( ) - album->GetLeftPageMargin( ) );
+                SetHeight( album->GetHeight( ) - album->GetTopPageMargin( ) - album->GetBottomPageMargin( ) );
+                SetTopPageMargin( album->GetTopPageMargin( ) );
+                SetBottomPageMargin( album->GetBottomPageMargin( ) );
+                SetRightPageMargin( album->GetRightPageMargin( ) );
+                SetLeftPageMargin( album->GetLeftPageMargin( ) );
                 SetBorderSize( album->GetBorderSize( ) );
             }
             else
             {
                 //SetBorder( m_border );
-                // the page frame takes into account the margins, the border is within this
-                SetXPos( album->GetTopMargin( ) );
-                SetYPos( album->GetLeftMargin( ) );
-                SetHeight( album->GetWidth( ) - album->GetRightMargin( ) - album->GetLeftMargin( ) );
-                SetWidth( album->GetHeight( ) - album->GetTopMargin( ) - album->GetBottomMargin( ) );
-                SetTopMargin( album->GetLeftMargin( ) );
-                SetBottomMargin( album->GetRightMargin( ) );
-                SetRightMargin( album->GetBottomMargin( ) );
-                SetLeftMargin( album->GetTopMargin( ) );
+                // the page frame takes into account the pageMargins, the border is within this
+                SetXPos( album->GetTopPageMargin( ) );
+                SetYPos( album->GetLeftPageMargin( ) );
+                SetHeight( album->GetWidth( ) - album->GetRightPageMargin( ) - album->GetLeftPageMargin( ) );
+                SetWidth( album->GetHeight( ) - album->GetTopPageMargin( ) - album->GetBottomPageMargin( ) );
+                SetTopPageMargin( album->GetLeftPageMargin( ) );
+                SetBottomPageMargin( album->GetRightPageMargin( ) );
+                SetRightPageMargin( album->GetBottomPageMargin( ) );
+                SetLeftPageMargin( album->GetTopPageMargin( ) );
                 SetBorderSize( album->GetBorderSize( ) );
             }
         }
@@ -98,8 +99,8 @@ namespace Design {
         SetClientDimensions( dc, x + GetXPos( ), y + GetYPos( ), GetWidth( ), GetHeight( ) );
 
         wxString borderName = GetBorderFileName( );
-        double xPos = x + GetLeftMargin( );
-        double yPos = y + GetTopMargin( );
+        double xPos = x + GetLeftPageMargin( );
+        double yPos = y + GetTopPageMargin( );
 
         wxImage image = GetAlbumVolume( )->GetImage( borderName );
 
@@ -114,10 +115,10 @@ namespace Design {
         double bottomPadding = 0;
         if ( 1 )//row->GetShowFrame( ) ) 
         {
-            leftPadding = GetLeftContentPadding( );
-            rightPadding = GetRightContentPadding( );
-            topPadding = GetTopContentPadding( );
-            bottomPadding = GetBottomContentPadding( );
+            leftPadding = GetLeftContentMargin( );
+            rightPadding = GetRightContentMargin( );
+            topPadding = GetTopContentMargin( );
+            bottomPadding = GetBottomContentMargin( );
         }
 
         xPos = xPos + GetBorderSize( );
@@ -159,8 +160,8 @@ namespace Design {
 
         wxString borderName = GetBorderFileName( );
 
-        double xPos = GetLeftMargin( );
-        double yPos = GetTopMargin( );
+        double xPos = GetLeftPageMargin( );
+        double yPos = GetTopPageMargin( );
         double width = GetAlbum( )->GetWidth( );
         double height = GetAlbum( )->GetHeight( );
 
@@ -191,10 +192,10 @@ namespace Design {
         double bottomPadding = 0;
         if ( 1 )//row->GetShowFrame( ) ) 
         {
-            leftPadding = GetLeftContentPadding( );
-            rightPadding = GetRightContentPadding( );
-            topPadding = GetTopContentPadding( );
-            bottomPadding = GetBottomContentPadding( );
+            leftPadding = GetLeftContentMargin( );
+            rightPadding = GetRightContentMargin( );
+            topPadding = GetTopContentMargin( );
+            bottomPadding = GetBottomContentMargin( );
         }
 
         xPos = xPos + GetBorderSize( );
@@ -213,20 +214,31 @@ namespace Design {
 
 
 
-    LabelFrame* Page::GetTitleFrame( )
+    TitleFrame* Page::GetTitleFrame( )
     {
         return m_titleFrame;
     };
 
     wxString  Page::GetTitleString( )
     {
-        return m_titleFrame->GetString( );
+        return m_titleFrame->GetHeadingString( );
     };
 
     void  Page::SetTitleString( wxString str )
     {
         SetAttrStr( AT_Name, str );
-        m_titleFrame->SetString( str );
+        m_titleFrame->SetHeadingString( str );
+    };
+
+    wxString  Page::GetSubTitleString( )
+    {
+        return m_titleFrame->GetHeadingString( );
+    };
+
+    void  Page::SetSubTitleString( wxString str )
+    {
+        SetAttrStr( AT_SubTitle, str );
+        m_titleFrame->SetSubHeadingString( str );
     };
 
     void Page::LoadFonts( wxXmlNode* node )
@@ -234,7 +246,7 @@ namespace Design {
         wxXmlNode* fonts = Utils::FirstChildElement( node, "Fonts" );
         if ( fonts )
         {
-            m_titleFrame->LoadFont( fonts );
+            m_titleFrame->LoadFonts( fonts );
         }
     }
 
@@ -247,8 +259,8 @@ namespace Design {
 
         wxString str = wxString::Format( "Border Size:%7.2f\n ", GetBorderSize( ) );
         std::cout << str;
-        str = wxString::Format( "Top Margin:%7.2f  Bottom Margin:%7.2f\n  Right Margin:%7.2f  c Margin:%7.2f\n",
-            GetTopMargin( ), GetBottomMargin( ), GetRightMargin( ), GetLeftMargin( ) );
+        str = wxString::Format( "Top PageMargin:%7.2f  Bottom PageMargin:%7.2f\n  Right PageMargin:%7.2f  c PageMargin:%7.2f\n",
+            GetTopPageMargin( ), GetBottomPageMargin( ), GetRightPageMargin( ), GetLeftPageMargin( ) );
         std::cout << str;
     };
 
@@ -269,25 +281,18 @@ namespace Design {
 
     void Page::SaveFonts( wxXmlNode* parent )
     {
-        if ( m_titleFrame->GetFontNdx( ) >= 0 )
-        {
-            wxXmlNode* fonts = Utils::NewNode( parent, "Fonts" );
-            if ( fonts )
-            {
-                m_titleFrame->SaveFont( parent );
-            }
-        }
+        m_titleFrame->SaveFonts( parent );
     }
 
     void Page::SetContentFrame( )
     {
-        m_contentFrame.SetXPos( GetXPos( ) + GetLeftContentPadding( ) + GetBorderSize( ) );
-        m_contentFrame.SetYPos( GetYPos( ) + GetTopContentPadding( ) );
+        m_contentFrame.SetXPos( GetXPos( ) + GetLeftContentMargin( ) + GetBorderSize( ) );
+        m_contentFrame.SetYPos( GetYPos( ) + GetTopContentMargin( ) );
         m_contentFrame.SetWidth( GetWidth( )
-            - GetLeftContentPadding( ) - GetRightContentPadding( )
+            - GetLeftContentMargin( ) - GetRightContentMargin( )
             - 2 * GetBorderSize( ) );
         m_contentFrame.SetHeight( GetHeight( )
-            - GetTopContentPadding( ) - GetBottomContentPadding( ) );
+            - GetTopContentMargin( ) - GetBottomContentMargin( ) );
     }
 
     void Page::UpdateLayout( )
@@ -348,10 +353,10 @@ namespace Design {
 
         }
 
-        m_titleFrame->UpdateString( minWidth );
-
         if ( GetShowTitle( ) )
         {
+
+            m_titleFrame->UpdateString( minWidth, minWidth );
             // Allow 3 times the title height
             minHeight += 3 * GetTitleFrame( )->GetHeight( );
         }
@@ -361,7 +366,7 @@ namespace Design {
 
         GetErrorArray( )->Empty( );
 
-        return ValidateNode( );
+        return ( ValidateNode( ) != AT_FATAL );
     }
 
 
@@ -380,7 +385,7 @@ namespace Design {
             GetTitleFrame( )->SetXPos( 0 + ( GetWidth( ) - GetTitleFrame( )->GetWidth( ) ) / 2 );
             GetTitleFrame( )->SetYPos( GetTitleFrame( )->GetHeight( ) );
             // allow for space above title, title height and that much again for nice spaing
-            yPos = 3 * GetTitleFrame( )->GetHeight( );
+            yPos = 3 + GetTitleFrame( )->GetHeight( );
         }
         // std::cout << "Page::UpdatePositions " << GetTitle() << " title height = " << GetTitleHeight( ) << std::endl;
         // std::cout.flush();
@@ -390,20 +395,28 @@ namespace Design {
         double spacing = 0;
         if ( nbrCols > 0 )
         {
-            spacing = ( GetWidth( ) - GetMinWidth( ) ) / ( nbrCols + nbrStamps + 1 );
+            double totalExtraSpace = GetWidth( ) - GetMinWidth( ) - GetLeftPageMargin( ) - GetRightPageMargin( ) - 2 * GetBorderSize( );
+            spacing = totalExtraSpace / ( nbrCols + nbrStamps + 1 );
         }
         else // we are positioning them down the page
         {
-            double totalExtraSpace = GetHeight( ) - GetMinHeight( );
+            double totalExtraSpace = GetHeight( ) - GetMinHeight( ) - GetTopPageMargin( ) - GetBottomPageMargin( ) - 2 * GetBorderSize( );
             spacing = totalExtraSpace / ( nbrRows + nbrStamps + 1 );
         }
 
         //figure out starting pos accounting for title if present
         if ( nbrRows > 0 )
         {
-            yPos += spacing;
+            if ( GetAlbum( )->IsDefaultOrientation( GetOrientation( ) ) )
+            {
+                yPos += spacing - GetTopPageMargin( ) - GetBorderSize( );
+            }
+            else
+            {
+                yPos += spacing - GetLeftPageMargin( ) - GetBorderSize( );
+            }
         }
-        else
+        else if ( nbrCols > 0 || nbrStamps > 0 )
         {
             xPos += spacing;
         }
@@ -452,36 +465,48 @@ namespace Design {
         {
             AlbumBaseType type = ( AlbumBaseType ) GetAlbumTreeCtrl( )->GetItemType( childID );
             LayoutBase* child = ( LayoutBase* ) GetAlbumTreeCtrl( )->GetItemNode( childID );
-
+            double leftPadding = 0;
+            double rightPadding = 0;
+            double topPadding = 0;
+            double bottomPadding = 0;
             switch ( type )
             {
                 case AT_Row:
                 {
                     Row* row = ( Row* ) child;
-                    double leftPadding = 0;
-                    double rightPadding = 0;
-                    double topPadding = 0;
-                    double bottomPadding = 0;
                     if ( 1 )//row->GetShowFrame( ) ) 
                     {
-                        leftPadding = row->GetLeftContentPadding( );
-                        rightPadding = row->GetRightContentPadding( );
-                        topPadding = row->GetTopContentPadding( );
-                        bottomPadding = row->GetBottomContentPadding( );
+                        leftPadding = row->GetLeftContentMargin( );
+                        rightPadding = row->GetRightContentMargin( );
+                        topPadding = row->GetTopContentMargin( );
+                        bottomPadding = row->GetBottomContentMargin( );
                     }
+
                     row->SetWidth( GetWidth( ) - leftPadding - rightPadding - 2 * GetBorderSize( ) );
-                    row->SetHeight( row->GetMinHeight( ) + topPadding + bottomPadding );
-                    // if ( row->GetShowTitle( ) )
-                    // {
-                    //     row->SetHeight( row->GetHeight( ) + 3 * row->GetTitleFrame( )->GetHeight( ) );
-                    // }
+                    if ( row->GetShowTitle( ) )
+                    {
+                        // if showing the title then move everything down
+                        row->SetHeight( row->GetMinHeight( ) + topPadding + bottomPadding + row->GetTitleFrame( )->GetHeight( ) );
+                    }
+                    else
+                    {
+                        row->SetHeight( row->GetMinHeight( ) + topPadding + bottomPadding );
+                    }
 
                     break;
                 }
                 case AT_Col:
                 {
                     Column* col = ( Column* ) child;
-                    col->SetWidth( GetMinWidth( ) );
+                    if ( 1 )//row->GetShowFrame( ) ) 
+                    {
+                        leftPadding = col->GetLeftContentMargin( );
+                        rightPadding = col->GetRightContentMargin( );
+                        topPadding = col->GetTopContentMargin( );
+                        bottomPadding = col->GetBottomContentMargin( );
+                    }
+                    col->SetWidth( GetMinWidth( ) - leftPadding - rightPadding );
+                    col->SetHeight( GetHeight( ) - topPadding - bottomPadding );
                     if ( col->GetShowTitle( ) )
                     {
                         col->SetHeight( GetHeight( ) + GetTitleFrame( )->GetHeight( ) - 2 * GetBorderSize( ) );

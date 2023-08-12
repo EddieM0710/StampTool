@@ -20,6 +20,7 @@ add_library( DesignFiles SHARED
     Page.cpp 
     LabelFrame.cpp 
     TextBox.cpp
+    TitleFrame.cpp
     Row.cpp 
     Column.cpp 
     Stamp.cpp

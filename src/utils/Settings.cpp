@@ -621,9 +621,9 @@ namespace Utils {
                 fontStr = font->GetNativeInfoStr( );
             }
 
-            std::cout << "FontPreference " << Design::FontUsageTypeStrings[ i ]
-                << " ndx " << FontPreference[ i ] << "   "
-                << fontStr << "\n";
+            // std::cout << "FontPreference " << Design::FontUsageTypeStrings[ i ]
+            //     << " ndx " << FontPreference[ i ] << "   "
+            //     << fontStr << "\n";
         }
     }
     void Settings::DumpFont( wxString Level )

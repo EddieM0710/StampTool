@@ -58,10 +58,10 @@ namespace Design {
         double bottomPadding = 0;
         if ( GetShowFrame( ) )
         {
-            leftPadding = GetLeftContentPadding( );
-            rightPadding = GetRightContentPadding( );
-            topPadding = GetTopContentPadding( );
-            bottomPadding = GetBottomContentPadding( );
+            leftPadding = GetLeftContentMargin( );
+            rightPadding = GetRightContentMargin( );
+            topPadding = GetTopContentMargin( );
+            bottomPadding = GetBottomContentMargin( );
         }
         double contentWidth = GetWidth( ) - leftPadding - rightPadding;
 
@@ -69,20 +69,20 @@ namespace Design {
 
         UpdateString( GetTextFrame( ), contentWidth );
 
-        if ( IsTitleLocation( AT_TitleLocationBottom ) )
-        {
-            m_textBoxFrame.SetXPos( ( GetWidth( ) - m_textBoxFrame.GetWidth( ) ) / 2 );
-            m_textBoxFrame.SetYPos( topPadding );
-            GetTitleFrame( )->SetXPos( ( GetWidth( ) - GetTitleFrame( )->GetWidth( ) ) / 2 );
-            GetTitleFrame( )->SetYPos( GetHeight( ) - bottomPadding - GetTitleFrame( )->GetHeight( ) );
-        }
-        else
-        {
-            GetTitleFrame( )->SetXPos( ( GetWidth( ) - GetTitleFrame( )->GetWidth( ) ) / 2 );
-            GetTitleFrame( )->SetYPos( topPadding );
-            GetTextFrame( )->SetXPos( ( GetWidth( ) - GetTextFrame( )->GetWidth( ) ) / 2 );
-            GetTextFrame( )->SetYPos( GetTitleFrame( )->GetYPos( ) + GetTitleFrame( )->GetHeight( ) );
-        }
+        // if ( IsTitleLocation( AT_TitleLocationBottom ) )
+        // {
+        //     m_textBoxFrame.SetXPos( ( GetWidth( ) - m_textBoxFrame.GetWidth( ) ) / 2 );
+        //     m_textBoxFrame.SetYPos( topPadding );
+        //     GetTitleFrame( )->SetXPos( ( GetWidth( ) - GetTitleFrame( )->GetWidth( ) ) / 2 );
+        //     GetTitleFrame( )->SetYPos( GetHeight( ) - bottomPadding - GetTitleFrame( )->GetHeight( ) );
+        // }
+        // else
+        // {
+        GetTitleFrame( )->SetXPos( ( GetWidth( ) - GetTitleFrame( )->GetWidth( ) ) / 2 );
+        GetTitleFrame( )->SetYPos( topPadding );
+        GetTextFrame( )->SetXPos( ( GetWidth( ) - GetTextFrame( )->GetWidth( ) ) / 2 );
+        GetTextFrame( )->SetYPos( GetTitleFrame( )->GetYPos( ) + GetTitleFrame( )->GetHeight( ) );
+        //      }
 
     }
 
@@ -215,6 +215,7 @@ namespace Design {
         SetAttribute( xmlNode, AT_Height );
         //   SetAttribute( xmlNode, AT_Link );
         SetAttribute( xmlNode, AT_ShowTitle );
+        SetAttribute( xmlNode, AT_ShowSubTitle );
         //   SetAttribute( xmlNode, AT_ImageName );
         SaveFonts( xmlNode );
         xmlNode->SetContent( m_text );

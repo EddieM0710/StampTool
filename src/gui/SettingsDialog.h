@@ -63,7 +63,7 @@ class DefinePeriodsPanel;
 class SettingsDialog : public wxDialog
 {
     DECLARE_DYNAMIC_CLASS( SettingsDialog )
-        DECLARE_EVENT_TABLE( )
+    DECLARE_EVENT_TABLE( )
 
 public:
     enum SettingsDialogGuiDefs
@@ -87,10 +87,11 @@ public:
         ID_NBRDEFAULTFONTBUTTON,
         ID_TITLEDEFAULTFONTBUTTON,
         ID_TEXTDEFAULTFONTBUTTON,
-        ID_NAMEDEFAULTFONTBUTTON
+        ID_NAMEDEFAULTFONTBUTTON,
+        ID_LastID
     };
 
-    
+
 
     SettingsDialog( );
     SettingsDialog( wxWindow* parent, wxWindowID id = SYMBOL_SETTINGSDIALOG_IDNAME, const wxString& caption = SYMBOL_SETTINGSDIALOG_TITLE, const wxPoint& pos = SYMBOL_SETTINGSDIALOG_POSITION, const wxSize& size = SYMBOL_SETTINGSDIALOG_SIZE, long style = SYMBOL_SETTINGSDIALOG_STYLE );
@@ -135,11 +136,11 @@ public:
 
     void UpdateSettings( );
 
-    
 
 
 
-        // SettingsDialog member variables
+
+    // SettingsDialog member variables
     wxTextCtrl* m_imageDirectory;
     wxTextCtrl* m_country;
     wxTextCtrl* m_catalog;

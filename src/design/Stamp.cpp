@@ -28,6 +28,8 @@
  //#include "design/Title.h"
 #include "design/Album.h"
 #include "design/AlbumData.h"
+#include "design/Row.h"
+#include "design/Column.h"
 
 #include "utils/XMLUtilities.h"
 #include "utils/Project.h"
@@ -160,6 +162,7 @@ namespace Design {
         SetObjectName( AlbumBaseNames[ GetNodeType( ) ] );
         SetShowNbr( true );
         SetShowTitle( true );
+        SetShowSubTitle( false );
         InitParameters( );
 
         m_nameFrame = new LabelFrame( Design::AT_NameFontType );
@@ -179,6 +182,7 @@ namespace Design {
         SetObjectName( AlbumBaseNames[ AT_Stamp ] );
         SetShowNbr( true );
         SetShowTitle( true );
+        SetShowSubTitle( false );
         InitParameters( );
 
         m_nameFrame = new LabelFrame( Design::AT_NameFontType );
@@ -189,75 +193,101 @@ namespace Design {
     }
 
     //--------------
-    void Stamp::CalcFrame( )
+    void Stamp::CalcFrameSizes( )
     {
         //  border allowance for one edge
-        double borderAllowance = 0;//m_stampFrame.GetWidth( ) * BorderAllowancePercent / 2;
-        TitleLocation titleLocation = GetTitleLayoutLocation( );
+        SetStampMargin( 4 );
 
+        // everything is basedfrom the actual stamp m_stampFrame
         m_borderFrame.SetHeight( m_stampFrame.GetHeight( ) + GetSelvageHeight( ) + GetMountAllowanceHeight( ) );
         m_borderFrame.SetWidth( m_stampFrame.GetWidth( ) + GetSelvageWidth( ) + GetMountAllowanceWidth( ) );
 
-        // The width of the frame is the stamp width * border
-        SetWidth( m_borderFrame.GetWidth( ) + 2 * borderAllowance );
+        // The width of the stamp object is the m_borderFrame width + margin
+        SetWidth( m_borderFrame.GetWidth( ) + 2 * GetStampMargin( ) );
 
-        // the NameFrame vals are determined by the outer stamp frame width, the text and the font.
-        UpdateString( GetNameFrame( ), GetWidth( ) );
-
-        // the height of the frame is the stamp height + border + title height 
-        SetHeight( ( m_borderFrame.GetHeight( ) + 2 * borderAllowance ) + GetNameFrame( )->GetHeight( ) );
+        // the height of the stamp object is the border frame height + border + title height 
+        SetHeight( GetNameFrame( )->GetHeight( ) + m_borderFrame.GetHeight( ) + 2 * GetStampMargin( ) );
         SetMinWidth( GetWidth( ) );
         SetMinHeight( GetHeight( ) );
 
-        //the Frame is positioned  the border allowance over
-        m_borderFrame.SetXPos( borderAllowance );
-        if ( titleLocation == AT_TitleLocationBottom )
-        {
-            m_borderFrame.SetYPos( borderAllowance );
-        }
-        else
-        {
-            Design::LayoutBase* parent = ( Design::LayoutBase* ) GetParent( );
-            double parentHeight = parent->GetHeight( );
-            m_borderFrame.SetYPos( parentHeight - borderAllowance - m_borderFrame.GetHeight( ) );
-        }
-        GetNameFrame( )->SetXPos( 0 );
+        // the NameFrame vals are determined by the outer stamp object width, the text and the font.
+        // note the name is centered in the outside stamp object
+        UpdateString( GetNameFrame( ), GetWidth( ) );
 
         // the NbrFrame vals are determined by stamp frame width, the text and the font
+        // note the nbr is centered in the m_borderFrame
         UpdateString( GetNbrFrame( ), m_borderFrame.GetWidth( ) );
-        GetNbrFrame( )->SetXPos( m_borderFrame.GetXPos( ) );
 
         m_stampImageFrame.SetWidth( m_stampFrame.GetWidth( ) * ImagePercentOfActual );
         m_stampImageFrame.SetHeight( m_stampFrame.GetHeight( ) * ImagePercentOfActual );
-        m_stampImageFrame.SetXPos( m_borderFrame.GetXPos( ) + ( m_borderFrame.GetWidth( ) - m_stampImageFrame.GetWidth( ) ) / 2 );
-        if ( GetShowNbr( ) )
-        {
-            double yOffset = m_borderFrame.GetYPos( ) + ( m_borderFrame.GetHeight( ) - m_stampImageFrame.GetHeight( ) - GetNbrFrame( )->GetHeight( ) - 1 ) / 2;
-            m_stampImageFrame.SetYPos( yOffset );
-        }
-        else
-        {
-            m_stampImageFrame.SetYPos( m_borderFrame.GetYPos( ) + ( m_borderFrame.GetHeight( ) - m_stampImageFrame.GetHeight( ) ) / 2 );
-        }
-        // the nbr ypos is just below the image
-        GetNbrFrame( )->SetYPos( m_stampImageFrame.GetYPos( ) + m_stampImageFrame.GetHeight( ) + 1 );
-
-        if ( titleLocation == AT_TitleLocationBottom )
-        {
-            //the name ypos is just below the stampframe
-            GetNameFrame( )->SetYPos( m_borderFrame.GetHeight( ) + 1 );
-        }
-        else
-        {
-            Design::LayoutBase* parent = ( Design::LayoutBase* ) GetParent( );
-            double parentHeight = parent->GetHeight( );
-            GetNameFrame( )->SetYPos( parentHeight - borderAllowance - m_borderFrame.GetHeight( ) - GetNameFrame( )->GetHeight( ) - 2 );
-
-        }
-
     }
 
+    //--------------
+    void Stamp::CalcFramePositions( )
+    {
+        // the xPos and yPos are offsets from the containing frame
+        //the m_borderFrame is offset by the margin.
+        m_borderFrame.SetXPos( GetStampMargin( ) );
 
+        // the name frame has 0 x offset but is centered in its frame
+        GetNameFrame( )->SetXPos( 0 );
+
+        // the number g=frame is centered within the border frame
+        GetNbrFrame( )->SetXPos( m_borderFrame.GetXPos( ) + ( m_borderFrame.GetWidth( ) - m_nbrFrame->GetWidth( ) ) / 2 );
+
+        // the image is horizontally centered within the m_borderFrame.
+        m_stampImageFrame.SetXPos( m_borderFrame.GetXPos( ) + ( m_borderFrame.GetWidth( ) - m_stampImageFrame.GetWidth( ) ) / 2 );
+
+        double borderFrameYPos = 0;
+        double nameFrameYPos;
+        double imageFrameYPos;
+        double nbrFrameYPos;
+        double frameBorderYPos;
+
+        if ( GetTitleLocation( ) == AT_TitleLocationBottom )
+        {
+            //if the title is on the bottom then the border frame is on top
+            borderFrameYPos = 0;
+            // and the name is just below the m_borderFrame
+            nameFrameYPos = m_borderFrame.GetHeight( );
+        }
+        else
+        {
+            // if the name is on top then no offset for the name frame
+            nameFrameYPos = 0;
+            // and the border is jus under that
+            borderFrameYPos = GetNameFrame( )->GetHeight( );
+        }
+        // center the image vertically within the m_borderFrame
+        // note the image offsets from the m_borderFrame
+        imageFrameYPos = borderFrameYPos + ( m_borderFrame.GetHeight( ) - m_stampImageFrame.GetHeight( ) - 4 ) / 2;
+        nbrFrameYPos = imageFrameYPos + m_stampImageFrame.GetHeight( );
+
+
+        m_borderFrame.SetYPos( frameBorderYPos + borderFrameYPos );
+        m_nameFrame->SetYPos( frameBorderYPos + nameFrameYPos );
+        m_stampImageFrame.SetYPos( frameBorderYPos + imageFrameYPos );
+        m_nbrFrame->SetYPos( frameBorderYPos + nbrFrameYPos );
+        // std::cout << "Stamp::CalcFramePositions id:" << m_nbrFrame->GetString( )
+        //     << " frameYPos:" << GetYPos( )
+        //     << " frameBorderYPos:" << frameBorderYPos
+        //     << " borderFrame:" << m_borderFrame.GetYPos( )
+        //     << " nameFrame:" << m_nameFrame->GetYPos( )
+        //     << " stampImageFrame:" << m_stampImageFrame.GetYPos( )
+        //     << " nbrFrame:" << m_nbrFrame->GetYPos( ) << "\n";
+
+    }
+    void Stamp::CalculateYPos( double yPos, double height )
+    {
+        if ( GetTitleLocation( ) == AT_TitleLocationBottom )
+        {
+            SetYPos( yPos );
+        }
+        else
+        {
+            SetYPos( yPos + height - GetHeight( ) );
+        }
+    }
     wxImage Stamp::GetImage( )
     {
         if ( m_image.IsOk( ) )
@@ -291,37 +321,31 @@ namespace Design {
         {
 
             image.Rescale( m_stampImageFrame.GetWidth( ), m_stampImageFrame.GetHeight( ), wxIMAGE_QUALITY_HIGH );
-            //image = m_image.Scale( m_stampImageFrame.GetWidth( ), m_stampImageFrame.GetHeight( ), wxIMAGE_QUALITY_HIGH );
         }
         return image;
     }
 
     void DrawRotated( wxDC& dc, double x, double y )
     {
-        // wxMemoryDC inDC;
 
-        // DoPrepareDC( inDC );
-        // inDC.SetMapMode( wxMM_METRIC );
-        // double userScale;
-        // double userScale
-        //     dc.GetUserScale( &userScale, userScale );
-        // dc.SetUserScale( m_userScale, m_userScale );
-
-        // dc.SetFont( font );
-        // //   double deviceScale = ppi.x / 25.4;
     }
 
     //--------------
     void Stamp::Draw( wxDC& dc, double x, double y )
     {
 
-        std::cout << "\nStamp::Draw " << m_nameFrame->GetString( ) << "\n";
+        //std::cout << "\nStamp::Draw " << m_nameFrame->GetString( ) << "\n";
         Design::NodeStatus status = GetNodeStatus( );
         if ( status != Design::AT_FATAL ) {
             //Draw the outer frame transparent
-            // m_frame.Draw( dc, x, y );
+            m_frame.Draw( dc, x, y );
+
+            // std::cout << " Stamp::Draw id:" << m_nameFrame->GetString( )
+            //     << " y:" << y
+            //     << " yPos:" << GetYPos( ) << "\n";
 
             SetClientDimensions( dc, x + GetXPos( ), y + GetYPos( ), GetMinWidth( ), GetMinHeight( ) );
+
 
             //Draw the Stamp frame
             double xInnerPos = x + GetXPos( );
@@ -337,7 +361,6 @@ namespace Design {
 
             wxString filename = GetStampImageFilename( );
 
-            //wxImage image = GetImage( );
             wxImage image;
             wxString imageName = GetStampImageFilename( );
             wxString str = GetProject( )->GetImageFullPath( imageName );
@@ -354,17 +377,7 @@ namespace Design {
                 {
                     image = image.ConvertToGreyscale( );
                 }
-                // wxImage image2( image );
-                // wxSize imageSize = image2.GetSize( );
-                // wxSize dcSize = dc.GetSizeMM( );
-                // wxSize ppi = dc.GetPPI( );//wxGetDisplayPPI( );
-                // double deviceScale = ppi.x / 25.4;
 
-                // //image2 = image2.Scale( dc.LogicalToDeviceX( m_stampImageFrame.GetWidth( ) ), dc.LogicalToDeviceY( m_stampImageFrame.GetHeight( ) ), wxIMAGE_QUALITY_HIGH );
-                // wxBitmap bitmap( image2 );
-                // wxBitmap bitmap2 = BlitResize( bitmap, .1, true );
-                // //bitmap.SetScaleFactor( .1 );
-                // dc.DrawBitmap( bitmap2, xImagePos, yImagePos, true );
                 DrawImage( dc, image,
                     xImagePos, yImagePos,
                     m_stampImageFrame.GetWidth( ), m_stampImageFrame.GetHeight( ) );
@@ -376,7 +389,7 @@ namespace Design {
                 m_stampImageFrame.Draw( dc, xImagePos, yImagePos );
             }
             //            DrawRectangle( dc, GetNameFrame( )->GetXPos( ) + xInnerPos, GetNameFrame( )->GetYPos( ) + yInnerPos, GetNameFrame( )->GetWidth( ), GetNameFrame( )->GetHeight( ) );
-            double borderAllowance = m_borderFrame.GetYPos( );
+            //double GetStampMargin( )  = m_borderFrame.GetYPos( );
             GetNameFrame( )->Draw( dc, xInnerPos, yInnerPos );
 
 
@@ -391,7 +404,7 @@ namespace Design {
         {
             int a = 0;
         }
-        std::cout << "\n";
+        // std::cout << "\n";
     }
 
     //--------------
@@ -482,19 +495,10 @@ namespace Design {
         SetAttrStr( AT_CatNbr, str );
     };
 
-    //--------------
-
-    double Stamp::GetStampHeight( )
-    {
-        return m_stampFrame.GetHeight( );
-    };
 
     //--------------
 
-    wxString Stamp::GetStampHeightStr( )
-    {
-        return GetAttrStr( Design::AT_Height );
-    };
+
 
     //--------------
 
@@ -524,35 +528,6 @@ namespace Design {
     }
 
     //--------------
-
-    // wxImage Stamp::GetStampImage( wxString filename )
-    // {
-    //     wxImage image;
-    //     if ( filename.IsEmpty( ) )
-    //     {
-    //         image = wxImage( NotFound );
-    //     }
-    //     else
-    //     {
-
-    //         Utils::ImageRepository* imageRepository = GetAlbumVolume( )->GetImageRepository( );
-
-    //         if ( !imageRepository || !imageRepository->Exists( filename ) )
-    //         {
-    //             image = wxImage( NotFound );
-    //         }
-    //         else
-    //         {
-    //             image = imageRepository->GetImage( filename );
-
-    //             if ( !image.IsOk( ) )
-    //             {
-    //                 image = wxImage( NotFound );
-    //             }
-    //         }
-    //     }
-    //     return image;
-    // }
 
     //--------------
 
@@ -592,7 +567,8 @@ namespace Design {
         m_stampFrame.SetWidth( val );
         wxString str = wxString::Format( "%4.1f", val );
         SetAttrStr( Design::AT_Width, str );
-        CalcFrame( );
+        CalcFrameSizes( );
+        CalcFramePositions( );
     };
 
     //--------------
@@ -752,6 +728,7 @@ namespace Design {
         if ( IsDefaultVal( AT_MountAllowanceWidth ) ) SetAttribute( xmlNode, AT_MountAllowanceWidth );
         SetAttribute( xmlNode, AT_Link );
         SetAttribute( xmlNode, AT_ShowTitle );
+        SetAttribute( xmlNode, AT_ShowSubTitle );
         SetAttribute( xmlNode, AT_ShowCatNbr );
         SetAttribute( xmlNode, AT_ImageName );
         SaveFonts( xmlNode );
@@ -772,11 +749,53 @@ namespace Design {
         }
     }
 
+    TitleLocation  Stamp::GetDefaultTitleLocation( )
+    {
+        Design::AlbumBase* node = GetParent( );
+        Design::AlbumBaseType type = node->GetNodeType( );
+        TitleLocation defaultLoc = AT_TitleLocationDefault;
+        if ( type == Design::AT_Row )
+        {
+            Design::Row* row = ( Design::Row* ) node;
+            defaultLoc = row->GetTitleLocation( );
+        }
+        else if ( type = Design::AT_Col )
+        {
+            Design::Column* col = ( Design::Column* ) node;
+            defaultLoc = col->GetTitleLocation( );
+        }
+        return  defaultLoc;
+    }
+
+    TitleLocation Stamp::GetTitleLocation( )
+    {
+        TitleLocation defaultLoc = GetDefaultTitleLocation( );
+        TitleLocation loc = FindTitleLocationType( GetAttrStr( AT_StampNameLocation ) );
+        if ( ( loc == defaultLoc ) )// && ( loc != AT_TitleLocationDefault ) )
+        {
+            SetTitleLocation( AT_TitleLocationDefault );
+        }
+        if ( loc == AT_TitleLocationDefault )
+        {
+            return defaultLoc;
+        }
+        return loc;
+    };
+
+    void Stamp::SetTitleLocation( TitleLocation loc )
+    {
+        TitleLocation defaultLoc = GetDefaultTitleLocation( );
+        if ( loc == defaultLoc )
+        {
+            loc = AT_TitleLocationDefault;
+        }
+        SetAttrStr( AT_StampNameLocation, StampTitleLocationStrings[ loc ] );
+    };
     //--------------
 
     bool Stamp::UpdateMinimumSize( )
     {
-        CalcFrame( );
+        CalcFrameSizes( );
 
         if ( ValidateNode( ) == AT_FATAL )
         {
@@ -795,6 +814,7 @@ namespace Design {
 
     void Stamp::UpdatePositions( )
     {
+        CalcFramePositions( );
         ValidateNode( );
     }
 

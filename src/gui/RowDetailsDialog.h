@@ -24,11 +24,6 @@
 #ifndef _ROWDETAILSDIALOG_H_
 #define _ROWDETAILSDIALOG_H_
 
-
- /*
-  * Includes
-  */
-
 #include "wx/listctrl.h"
 
 #include <wx/fontpicker.h>
@@ -38,11 +33,12 @@
 #include "gui/GuiDefs.h"
 
 
-  /*
-   * Forward declarations
-   */
+ /*
+  * Forward declarations
+  */
 class LabeledTextBox;
 class wxListCtrl;
+class TitleHelper;
 namespace Design { class Row; };
 
 /*
@@ -66,13 +62,14 @@ namespace Design { class Row; };
 class RowDetailsDialog : public wxDialog
 {
     DECLARE_DYNAMIC_CLASS( RowDetailsDialog )
-        DECLARE_EVENT_TABLE( )
+    DECLARE_EVENT_TABLE( )
 
 public:
     enum RowDetailsDialogGuiDefs {
 
         ID_NAMELABELEDTEXTBOX = ID_ROWDETAILSDIALOG,
         ID_ROWTITLECHECKBOX,
+        ID_ROWSUBTITLECHECKBOX,
         ID_FRAMECHECKBOX,
         ID_LISTCTRL,
         ID_DEFAULTFONTBUTTON,
@@ -92,10 +89,11 @@ public:
         ID_RIGHTRADIOBUTTON,
         ID_CALCULATEDRADIOBUTTON,
         ID_FIXEDRADIOBUTTON,
-        ID_FIXEDSIZETEXTCTRL
+        ID_FIXEDSIZETEXTCTRL,
+        ID_LastID
     };
 
-    
+
 
     RowDetailsDialog( );
     RowDetailsDialog( wxWindow* parent, wxWindowID id = SYMBOL_ROWDETAILSDIALOG_IDNAME, const wxString& caption = SYMBOL_ROWDETAILSDIALOG_TITLE, const wxPoint& pos = SYMBOL_ROWDETAILSDIALOG_POSITION, const wxSize& size = SYMBOL_ROWDETAILSDIALOG_SIZE, long style = SYMBOL_ROWDETAILSDIALOG_STYLE );
@@ -120,8 +118,6 @@ public:
     void OnDefaultRadioButtonSelected( wxCommandEvent& event );
     void OnTopRadioButtonSelected( wxCommandEvent& event );
     void OnBottomRadioButtonSelected( wxCommandEvent& event );
-    void OnLeftRadioButtonSelected( wxCommandEvent& event );
-    void OnRightRadioButtonSelected( wxCommandEvent& event );
     void OnTitleDefaultClick( wxCommandEvent& event );
 
     void OnFixedClick( wxCommandEvent& event );
@@ -129,30 +125,40 @@ public:
 
     void SetNameModified( bool state );
     void SetShowTitle( bool state = false );
+    void SetShowSubTitle( bool state = false );
     void SetShowFrame( bool state = false );
     void SetColor( wxColour color );
     void SetFont( wxFont font );
     bool GetShowTitle( );
+    bool GetShowSubTitle( );
     bool GetShowFrame( );
-    void SetTitleLayoutLocation( );
-
+    void SetTitleLocation( );
+    Design::TitleLocation GetTitleLocation( );
     void SetCalculateSpacing( bool val );
     void SetFixedSpacingSize( wxString str ) { m_positionFixedSize->SetValue( str ); };
     wxString GetFixedSpacing( ) { return m_positionFixedSize->GetValue( ); };
     bool CalculateSpacing( ) { return m_positionCalculated->GetValue( ); };
 
-    wxString GetName( );
+    wxString GetTitle( );
+    void SetTitle( wxString str );
 
     bool IsNameModified( );
 
-    
 
+    // void OnTitleDefaultClick( wxCommandEvent& event );
+    void OnSubTitleDefaultClick( wxCommandEvent& event );
+    void OnNameCheckboxClick( wxCommandEvent& event );
+    void OnSubTitleCheckboxClick( wxCommandEvent& event );
+
+    void OnNameDefaultClick( wxCommandEvent& event );
 
 
 private:
 
-    LabeledTextBox* m_name;
+    LabeledTextBox* m_titleLabel;
+    LabeledTextBox* m_subTitleLabel;
     wxCheckBox* m_titleCheckbox;
+    wxCheckBox* m_subTitleCheckbox;
     wxCheckBox* m_frameCheckbox;
     wxListBox* m_statusList;
     wxFontPickerCtrl* m_titleFontPicker;
@@ -166,12 +172,22 @@ private:
     Design::TitleLocation m_titleLocation;
     wxRadioButton* m_topButton;
     wxRadioButton* m_bottomButton;
-    wxRadioButton* m_leftButton;
-    wxRadioButton* m_rightButton;
+
     wxRadioButton* m_defaultButton;
     wxRadioButton* m_positionCalculated;
     wxRadioButton* m_positionFixed;
     wxTextCtrl* m_positionFixedSize;
+
+    wxBoxSizer* m_dialogVerticalSizer;
+
+    //wxTextCtrl* positionTextCtrl;
+    wxFontPickerCtrl* m_nbrFontPicker;
+    wxFontPickerCtrl* m_nameFontPicker;
+    wxFontPickerCtrl* m_subTitleFontPicker;
+    wxColourPickerCtrl* m_nameColorPicker;
+    wxColourPickerCtrl* m_subTitleColorPicker;
+    wxColourPickerCtrl* m_nbrColorPicker;
+    TitleHelper* m_titleHelper;
 };
 
 #endif

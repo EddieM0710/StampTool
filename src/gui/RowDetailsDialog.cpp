@@ -39,7 +39,9 @@
 #include "gui/RowDetailsDialog.h"
 #include "gui/LabeledTextBox.h"
 #include "gui/FontPickerHelper.h"
+#include "gui/TitleHelper.h"
 #include "design/Row.h"
+ //#include "design/DesignDefs.h"
 #include "design/Album.h"
 #include "utils/FontList.h"
 
@@ -58,9 +60,7 @@ IMPLEMENT_DYNAMIC_CLASS( RowDetailsDialog, wxDialog )
     EVT_RADIOBUTTON( ID_DEFAULTRADIOBUTTON, RowDetailsDialog::OnDefaultRadioButtonSelected )
     EVT_RADIOBUTTON( ID_TOPRADIOBUTTON, RowDetailsDialog::OnTopRadioButtonSelected )
     EVT_RADIOBUTTON( ID_BOTTOMRADIOBUTTON, RowDetailsDialog::OnBottomRadioButtonSelected )
-    EVT_RADIOBUTTON( ID_LEFTRADIOBUTTON, RowDetailsDialog::OnLeftRadioButtonSelected )
-    EVT_RADIOBUTTON( ID_RIGHTRADIOBUTTON, RowDetailsDialog::OnRightRadioButtonSelected )
-    EVT_BUTTON( ID_DEFAULTFONTBUTTON, RowDetailsDialog::OnTitleDefaultClick )
+    //  EVT_BUTTON( ID_DEFAULTFONTBUTTON, RowDetailsDialog::OnTitleDefaultClick )
     EVT_RADIOBUTTON( ID_CALCULATEDRADIOBUTTON, RowDetailsDialog::OnCalculatedClick )
     EVT_RADIOBUTTON( ID_FIXEDRADIOBUTTON, RowDetailsDialog::OnFixedClick )
     END_EVENT_TABLE( )
@@ -121,7 +121,7 @@ RowDetailsDialog::~RowDetailsDialog( )
 void RowDetailsDialog::Init( )
 {
     // RowDetailsDialog member initialisation
-    m_name = NULL;
+    m_titleLabel = NULL;
     m_titleCheckbox = NULL;
     m_frameCheckbox = NULL;
     m_statusList = NULL;
@@ -138,85 +138,79 @@ void RowDetailsDialog::CreateControls( )
     //std::cout << "RowDetailsDialog" << "\n";
     RowDetailsDialog* theDialog = this;
 
-    wxBoxSizer* theDialogVerticalSizer = new wxBoxSizer( wxVERTICAL );
-    theDialog->SetSizer( theDialogVerticalSizer );
-
-    wxBoxSizer* theDialogHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
-    theDialogVerticalSizer->Add( theDialogHorizontalSizer, 1, wxGROW | wxALL, 0 );
-
-    wxBoxSizer* nameHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
-    theDialogVerticalSizer->Add( nameHorizontalSizer, 0, wxGROW | wxALL, 0 );
-
-    m_name = new LabeledTextBox( theDialog, ID_NAMELABELEDTEXTBOX, wxDefaultPosition, wxDefaultSize, wxNO_BORDER | wxTAB_TRAVERSAL );
-    m_name->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
-    nameHorizontalSizer->Add( m_name, 1, wxGROW | wxALL, 5 );
-    m_name->SetLabel( "Row Name" );
+    m_dialogVerticalSizer = new wxBoxSizer( wxVERTICAL );
+    theDialog->SetSizer( m_dialogVerticalSizer );
 
 
-    wxBoxSizer* notebookHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
-    theDialogVerticalSizer->Add( notebookHorizontalSizer, 2, wxGROW | wxALL, 5 );
-
-    wxNotebook* notebook = new wxNotebook( theDialog, ID_NOTEBOOK, wxDefaultPosition, wxDefaultSize, wxBK_DEFAULT );
-
-    wxPanel* notebookDetailsPanel = new wxPanel( notebook, ID_NOTEBOOKDETAILSPANEL, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
-    notebookDetailsPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
-
-    wxBoxSizer* detailsVerticalSizer = new wxBoxSizer( wxVERTICAL );
-    notebookDetailsPanel->SetSizer( detailsVerticalSizer );
-
-
-    //>> first row ctrls
+    // //>> first row ctrls
     wxBoxSizer* firstRowHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
-    detailsVerticalSizer->Add( firstRowHorizontalSizer, 0, wxGROW | wxALL, 0 );
+    m_dialogVerticalSizer->Add( firstRowHorizontalSizer, 0, wxGROW | wxALL, 0 );
 
-    m_titleCheckbox = new wxCheckBox( notebookDetailsPanel, ID_ROWTITLECHECKBOX, _( "Show Title" ), wxDefaultPosition, wxDefaultSize, 0 );
-    m_titleCheckbox->SetValue( false );
-    firstRowHorizontalSizer->Add( m_titleCheckbox, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
-
-    m_frameCheckbox = new wxCheckBox( notebookDetailsPanel, ID_FRAMECHECKBOX, _( "Show Frame" ), wxDefaultPosition, wxDefaultSize, 0 );
+    m_frameCheckbox = new wxCheckBox( theDialog, ID_FRAMECHECKBOX, _( "Show Frame" ), wxDefaultPosition, wxDefaultSize, 0 );
     m_frameCheckbox->SetValue( false );
     firstRowHorizontalSizer->Add( m_frameCheckbox, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+    //@@@
 
-    //>>second row ctrls
-    FontPicker* titleFontPickerHelper = new FontPicker(
-        notebookDetailsPanel, detailsVerticalSizer,
-        _( "Title Font" ), wxID_STATIC,
-        12345, 12346,
-        _( "Default" ), ID_DEFAULTFONTBUTTON,
-        *wxNORMAL_FONT, *wxBLACK );
+    int lastID = ID_LastID;
 
-    m_titleFontPicker = titleFontPickerHelper->GetFontPickerCtrl( );
-    m_titleColorPicker = titleFontPickerHelper->GetColourPickerCtrl( );
+    m_titleHelper = new TitleHelper( theDialog, m_dialogVerticalSizer, lastID, HasLabels );
+    m_titleLabel = m_titleHelper->GetTitleLabel( );
+    m_subTitleLabel = m_titleHelper->GetSubTitleLabel( );
+    m_titleCheckbox = m_titleHelper->GetTitleCheckbox( );
+    m_titleCheckbox->SetLabelText( "Title" );
+    m_titleCheckbox->SetValue( true );
+    m_subTitleCheckbox = m_titleHelper->GetSubTitleCheckbox( );
+    m_subTitleCheckbox->SetLabelText( "SubTitle" );
+    m_subTitleCheckbox->SetValue( false );
 
-    m_TitleLocationBox = new wxStaticBox( notebookDetailsPanel, wxID_ANY, _( "Member Title Location" ) );
+    m_titleFontPicker = m_titleHelper->GetTitleFontPickerCtrl( );
+    m_titleColorPicker = m_titleHelper->GetTitleColourPickerCtrl( );
+
+    m_subTitleFontPicker = m_titleHelper->GetSubTitleFontPickerCtrl( );
+    m_subTitleColorPicker = m_titleHelper->GetSubTitleColourPickerCtrl( );
+
+    Connect( m_titleHelper->GetSubTitleDefaultButton( )->GetId( ),
+        wxEVT_BUTTON,
+        wxCommandEventHandler( RowDetailsDialog::OnNameDefaultClick ) );
+
+    Connect( m_titleHelper->GetSubTitleDefaultButton( )->GetId( ),
+        wxEVT_BUTTON,
+        wxCommandEventHandler( RowDetailsDialog::OnSubTitleDefaultClick ) );
+
+    Connect( m_titleHelper->GetTitleCheckbox( )->GetId( ),
+        wxEVT_CHECKBOX,
+        wxCommandEventHandler( RowDetailsDialog::OnNameCheckboxClick ) );
+
+    Connect( m_titleHelper->GetSubTitleCheckbox( )->GetId( ),
+        wxEVT_CHECKBOX,
+        wxCommandEventHandler( RowDetailsDialog::OnSubTitleCheckboxClick ) );
+    //@@@
+
+
+
+
+    m_TitleLocationBox = new wxStaticBox( theDialog, wxID_ANY, _( "Member Title Location" ) );
     m_titleLocationVSizer = new wxStaticBoxSizer( m_TitleLocationBox, wxVERTICAL );
-    detailsVerticalSizer->Add( m_titleLocationVSizer, 1, wxGROW | wxALL, 5 );
+    m_dialogVerticalSizer->Add( m_titleLocationVSizer, 1, wxGROW | wxALL, 5 );
 
     m_titleLocationHSizer = new wxBoxSizer( wxHORIZONTAL );
     m_titleLocationVSizer->Add( m_titleLocationHSizer, 1, wxGROW | wxALL, 0 );
 
-    m_topButton = new wxRadioButton( m_titleLocationVSizer->GetStaticBox( ), ID_DEFAULTRADIOBUTTON, _( "Default" ), wxDefaultPosition, wxDefaultSize, 0 );
-    m_topButton->SetValue( true );
-    m_titleLocationHSizer->Add( m_topButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
-
-    m_bottomButton = new wxRadioButton( m_titleLocationVSizer->GetStaticBox( ), ID_TOPRADIOBUTTON, _( "Top" ), wxDefaultPosition, wxDefaultSize, 0 );
-    m_bottomButton->SetValue( false );
-    m_titleLocationHSizer->Add( m_bottomButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
-
-    m_leftButton = new wxRadioButton( m_titleLocationVSizer->GetStaticBox( ), ID_BOTTOMRADIOBUTTON, _( "Bottom" ), wxDefaultPosition, wxDefaultSize, 0 );
-    m_leftButton->SetValue( false );
-    m_titleLocationHSizer->Add( m_leftButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
-    m_rightButton = new wxRadioButton( m_titleLocationVSizer->GetStaticBox( ), ID_LEFTRADIOBUTTON, _( "Left" ), wxDefaultPosition, wxDefaultSize, 0 );
-    m_rightButton->SetValue( false );
-    m_titleLocationHSizer->Add( m_rightButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
-
-    m_defaultButton = new wxRadioButton( m_titleLocationVSizer->GetStaticBox( ), ID_RIGHTRADIOBUTTON, _( "Right" ), wxDefaultPosition, wxDefaultSize, 0 );
+    m_defaultButton = new wxRadioButton( m_titleLocationVSizer->GetStaticBox( ), ID_DEFAULTRADIOBUTTON, _( "Default" ), wxDefaultPosition, wxDefaultSize, 0 );
     m_defaultButton->SetValue( false );
     m_titleLocationHSizer->Add( m_defaultButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
-    wxStaticBox* memberPositionStaticBox = new wxStaticBox( notebookDetailsPanel, wxID_ANY, _( "Member Position" ) );
+    m_topButton = new wxRadioButton( m_titleLocationVSizer->GetStaticBox( ), ID_TOPRADIOBUTTON, _( "Top" ), wxDefaultPosition, wxDefaultSize, 0 );
+    m_topButton->SetValue( true );
+    m_titleLocationHSizer->Add( m_topButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+
+    m_bottomButton = new wxRadioButton( m_titleLocationVSizer->GetStaticBox( ), ID_BOTTOMRADIOBUTTON, _( "Bottom" ), wxDefaultPosition, wxDefaultSize, 0 );
+    m_bottomButton->SetValue( false );
+    m_titleLocationHSizer->Add( m_bottomButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+
+    wxStaticBox* memberPositionStaticBox = new wxStaticBox( theDialog, wxID_ANY, _( "Member Position" ) );
     wxStaticBoxSizer* memberPositionStaticBoxSizer = new wxStaticBoxSizer( memberPositionStaticBox, wxHORIZONTAL );
-    detailsVerticalSizer->Add( memberPositionStaticBoxSizer, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 5 );
+    m_dialogVerticalSizer->Add( memberPositionStaticBoxSizer, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 5 );
 
     m_positionCalculated = new wxRadioButton( memberPositionStaticBoxSizer->GetStaticBox( ), ID_CALCULATEDRADIOBUTTON, _( "Calculated" ), wxDefaultPosition, wxDefaultSize, 0 );
     m_positionCalculated->SetValue( true );
@@ -238,35 +232,16 @@ void RowDetailsDialog::CreateControls( )
 
     //>>error list ctrls
     wxBoxSizer* errorListSizer = new wxBoxSizer( wxHORIZONTAL );
-    detailsVerticalSizer->Add( errorListSizer, 2, wxGROW | wxALL, 5 );
+    m_dialogVerticalSizer->Add( errorListSizer, 2, wxGROW | wxALL, 5 );
 
     wxArrayString m_statusListStrings;
-    m_statusList = new wxListBox( notebookDetailsPanel, ID_LISTCTRL, wxDefaultPosition, wxDefaultSize, m_statusListStrings, wxLB_SINGLE );
+    m_statusList = new wxListBox( theDialog, ID_LISTCTRL, wxDefaultPosition, wxDefaultSize, m_statusListStrings, wxLB_SINGLE );
     errorListSizer->Add( m_statusList, 2, wxGROW | wxALL, 0 );
     //<<error list ctrls
 
-    notebook->AddPage( notebookDetailsPanel, _( "Details" ) );
-
-    wxPanel* notebookPositionPanel = new wxPanel( notebook, ID_NOTEBOOKPOSITIONPANEL, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
-    notebookPositionPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
-
-    wxBoxSizer* positionVerticalSizer = new wxBoxSizer( wxVERTICAL );
-    notebookPositionPanel->SetSizer( positionVerticalSizer );
-
-    wxBoxSizer* positionHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
-    positionVerticalSizer->Add( positionHorizontalSizer, 1, wxGROW | wxALL, 0 );
-
-    positionTextCtrl = new wxTextCtrl( notebookPositionPanel, ID_POSITIONTEXTCTRL, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE | wxVSCROLL | wxALWAYS_SHOW_SB | wxTE_RICH2 );
-    positionTextCtrl->Clear( );
-    positionHorizontalSizer->Add( positionTextCtrl, 1, wxGROW | wxALL, 0 );
-
-    notebook->AddPage( notebookPositionPanel, _( "Position" ) );
-
-    notebookHorizontalSizer->Add( notebook, 2, wxGROW | wxALL, 5 );
-
     //>>dialog Ctrl buttons
     wxBoxSizer* dialogCtrlButtonSizer = new wxBoxSizer( wxHORIZONTAL );
-    theDialogVerticalSizer->Add( dialogCtrlButtonSizer, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 0 );
+    m_dialogVerticalSizer->Add( dialogCtrlButtonSizer, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 0 );
 
     wxButton* cancelButton = new wxButton( theDialog, wxID_CANCEL, _( "Cancel" ), wxDefaultPosition, wxDefaultSize, 0 );
     dialogCtrlButtonSizer->Add( cancelButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
@@ -276,50 +251,33 @@ void RowDetailsDialog::CreateControls( )
     //>>dialog Ctrl buttons  
     // RowDetailsDialog content construction
 }
+Design::TitleLocation  RowDetailsDialog::GetTitleLocation( )
+{
+    return m_titleLocation;
+}
 
 
-void RowDetailsDialog::SetTitleLayoutLocation( )
+void RowDetailsDialog::SetTitleLocation( )
 {
 
-    m_titleLocation = m_row->GetTitleLayoutLocation( );
+    m_titleLocation = m_row->GetTitleLocation( );
     if ( m_titleLocation == Design::AT_TitleLocationTop )
     {
         m_topButton->SetValue( true );
-        m_bottomButton->SetValue( false );
-        m_leftButton->SetValue( false );;
-        m_rightButton->SetValue( false );;
-        m_defaultButton->SetValue( false );;
+        // m_bottomButton->SetValue( false );
+        // m_defaultButton->SetValue( false );;
     }
     else if ( m_titleLocation == Design::AT_TitleLocationBottom )
     {
-        m_topButton->SetValue( false );
+        // m_topButton->SetValue( false );
         m_bottomButton->SetValue( true );
-        m_leftButton->SetValue( false );;
-        m_rightButton->SetValue( false );;
-        m_defaultButton->SetValue( false );;
+        // m_defaultButton->SetValue( false );;
     }
-    else if ( m_titleLocation == Design::AT_TitleLocationLeft )
+
+    else //if ( m_titleLocation == Design::AT_TitleLocationDefault )
     {
-        m_topButton->SetValue( false );
-        m_bottomButton->SetValue( false );
-        m_leftButton->SetValue( true );;
-        m_rightButton->SetValue( false );;
-        m_defaultButton->SetValue( false );;
-    }
-    else if ( m_titleLocation == Design::AT_TitleLocationRight )
-    {
-        m_topButton->SetValue( false );
-        m_bottomButton->SetValue( false );
-        m_leftButton->SetValue( false );;
-        m_rightButton->SetValue( true );;
-        m_defaultButton->SetValue( false );;
-    }
-    else if ( m_titleLocation == Design::AT_TitleLocationDefault )
-    {
-        m_topButton->SetValue( false );
-        m_bottomButton->SetValue( false );
-        m_leftButton->SetValue( false );;
-        m_rightButton->SetValue( false );;
+        // m_topButton->SetValue( false );
+        // m_bottomButton->SetValue( false );
         m_defaultButton->SetValue( true );;
     }
 }
@@ -327,12 +285,12 @@ void RowDetailsDialog::SetTitleLayoutLocation( )
 void RowDetailsDialog::UpdateControls( )
 {
 
-    SetName( m_row->GetAttrStr( Design::AT_Name ) );
+    SetTitle( m_row->GetTitleString( ) );
     SetShowTitle( m_row->GetShowTitle( ) );
+    SetShowSubTitle( m_row->GetShowSubTitle( ) );
     SetShowFrame( m_row->GetShowFrame( ) );
-    SetFont( m_row->GetTitleFrame( )->GetFont( ) );
     SetColor( m_row->GetTitleFrame( )->GetColor( ) );
-    SetTitleLayoutLocation( );
+    SetTitleLocation( );
     SetCalculateSpacing( m_row->CalculateSpacing( ) );
     SetFixedSpacingSize( m_row->GetFixedSpacing( ) );
 
@@ -349,9 +307,9 @@ void RowDetailsDialog::SetupDialog( wxTreeItemId treeID )
         m_row = ( Design::Row* ) data->GetNodeElement( );
         UpdateControls( );
         wxArrayString* errors = m_row->GetErrorArray( );
-        positionTextCtrl->AlwaysShowScrollbars( );
-        //positionTextCtrl->WriteText(m_row->DumpFrame( ));
-        positionTextCtrl->ShowPosition( 0 );
+        // positionTextCtrl->AlwaysShowScrollbars( );
+         //positionTextCtrl->WriteText(m_row->DumpFrame( ));
+       //  positionTextCtrl->ShowPosition( 0 );
 
         if ( !errors->IsEmpty( ) )
         {
@@ -359,17 +317,22 @@ void RowDetailsDialog::SetupDialog( wxTreeItemId treeID )
         }
     }
 };
-
-
-void RowDetailsDialog::SetNameModified( bool state ) { m_name->SetModified( state ); };
-
-bool RowDetailsDialog::IsNameModified( ) { return m_name->IsModified( ); };
-void RowDetailsDialog::SetShowTitle( bool state ) { m_titleCheckbox->SetValue( state ); };
-void RowDetailsDialog::SetShowFrame( bool state ) { m_frameCheckbox->SetValue( state ); };
 bool RowDetailsDialog::GetShowTitle( ) { return m_titleCheckbox->IsChecked( ); };;
+bool RowDetailsDialog::GetShowSubTitle( ) { return m_subTitleCheckbox->IsChecked( ); };;
 bool RowDetailsDialog::GetShowFrame( ) { return m_frameCheckbox->IsChecked( ); };
 
-wxString RowDetailsDialog::GetName( ) { return m_name->GetValue( ); };
+
+void RowDetailsDialog::SetNameModified( bool state ) { m_titleLabel->SetModified( state ); };
+
+bool RowDetailsDialog::IsNameModified( ) { return m_titleLabel->IsModified( ); };
+void RowDetailsDialog::SetShowTitle( bool state ) { m_titleCheckbox->SetValue( state ); };
+void RowDetailsDialog::SetShowSubTitle( bool state ) { m_subTitleCheckbox->SetValue( state ); };
+void RowDetailsDialog::SetShowFrame( bool state ) { m_frameCheckbox->SetValue( state ); };
+
+wxString RowDetailsDialog::GetTitle( ) { return m_titleLabel->GetValue( ); };
+
+
+void RowDetailsDialog::SetTitle( wxString str ) { m_titleLabel->SetValue( str ); };
 
 
 void RowDetailsDialog::SetFont( wxFont font )
@@ -384,14 +347,16 @@ void RowDetailsDialog::SetColor( wxColour color )
 
 void RowDetailsDialog::OnOkClick( wxCommandEvent& event )
 {
-    m_row->SetAttrStr( Design::AT_Name, GetName( ) );
+    m_row->SetTitleString( GetTitle( ) );
     m_row->SetShowFrame( GetShowFrame( ) );
     m_row->SetShowTitle( GetShowTitle( ) );
+    m_row->SetShowSubTitle( GetShowSubTitle( ) );
 
     m_row->GetTitleFrame( )->SetFont( m_titleFontPicker->GetSelectedFont( ), m_titleColorPicker->GetColour( ) );
-    m_row->SetTitleLocation( m_titleLocation );
+    // m_row->SetTitleLocation( m_titleLocation );
     m_row->SetCalculateSpacing( CalculateSpacing( ) );
     m_row->SetFixedSpacingSize( GetFixedSpacing( ) );
+    m_row->SetTitleLocation( GetTitleLocation( ) );
 
     event.Skip( );
 
@@ -427,18 +392,6 @@ void RowDetailsDialog::OnBottomRadioButtonSelected( wxCommandEvent& event )
 }
 
 
-void RowDetailsDialog::OnLeftRadioButtonSelected( wxCommandEvent& event )
-{
-    m_titleLocation = Design::AT_TitleLocationLeft;
-    event.Skip( );
-}
-
-
-void RowDetailsDialog::OnRightRadioButtonSelected( wxCommandEvent& event )
-{
-    m_titleLocation = Design::AT_TitleLocationRight;
-    event.Skip( );
-}
 
 void RowDetailsDialog::OnDefaultRadioButtonSelected( wxCommandEvent& event )
 {
@@ -470,3 +423,45 @@ void RowDetailsDialog::OnTitleDefaultClick( wxCommandEvent& event )
     m_titleColorPicker->SetColour( color );
     event.Skip( );
 }
+
+
+
+
+void RowDetailsDialog::OnNameDefaultClick( wxCommandEvent& event )
+{
+    int ndx = Design::GetAlbum( )->GetFontNdx( Design::AT_NameFontType );
+    Utils::FontList* fontList = GetFontList( );
+    wxFont font = fontList->GetFont( ndx );
+    wxColour color = fontList->GetColor( ndx );
+    m_titleFontPicker->SetSelectedFont( font );
+    m_titleColorPicker->SetColour( color );
+    event.Skip( );
+}
+
+
+void RowDetailsDialog::OnSubTitleDefaultClick( wxCommandEvent& event )
+{
+    int ndx = Design::GetAlbum( )->GetFontNdx( Design::AT_SubTitleFontType );
+    Utils::FontList* fontList = GetFontList( );
+    wxFont font = fontList->GetFont( ndx );
+    wxColour color = fontList->GetColor( ndx );
+    m_subTitleFontPicker->SetSelectedFont( font );
+    m_subTitleColorPicker->SetColour( color );
+    event.Skip( );
+}
+
+
+void RowDetailsDialog::OnNameCheckboxClick( wxCommandEvent& event )
+{
+    m_titleHelper->UpdateTitleState( );
+
+    m_dialogVerticalSizer->Layout( );
+}
+
+
+
+void RowDetailsDialog::OnSubTitleCheckboxClick( wxCommandEvent& event )
+{
+    m_titleHelper->UpdateSubTitleState( );
+    m_dialogVerticalSizer->Layout( );
+};

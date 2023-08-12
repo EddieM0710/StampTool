@@ -82,7 +82,7 @@ bool PDFPrintout::HasPage( int pageNum )
 //     // This sets the user scale and origin of the DC so that the image fits
 //     // within the paper rectangle (but the edges could be cut off by printers
 //     // that can't print to the edges of the paper -- which is most of them. Use
-//     // this if your image already has its own margins.
+//     // this if your image already has its own pageMargins.
 // //    FitThisSizeToPaper(wxSize(maxX, maxY));
 // //    wxRect fitRect = GetLogicalPaperRect();
 
@@ -93,13 +93,13 @@ bool PDFPrintout::HasPage( int pageNum )
 // //    wxRect fitRect = GetLogicalPageRect();
 
 //     // This sets the user scale and origin of the DC so that the image fits
-//     // within the page margins as specified by g_PageSetupData, which you can
+//     // within the page pageMargins as specified by g_PageSetupData, which you can
 //     // change (on some platforms, at least) in the Page Setup dialog. Note that
-//     // on Mac, the native Page Setup dialog doesn't let you change the margins
+//     // on Mac, the native Page Setup dialog doesn't let you change the pageMargins
 //     // of a wxPageSetupDialogData object, so you'll have to write your own dialog or
-//     // use the Mac-only wxMacPageMarginsDialog, as we do in this program.
-//     FitThisSizeToPageMargins( wxSize( maxX, maxY ), *g_pageSetupData );
-//     wxRect fitRect = GetLogicalPageMarginsRect( *g_pageSetupData );
+//     // use the Mac-only wxMacPagePageMarginsDialog, as we do in this program.
+//     FitThisSizeToPagePageMargins( wxSize( maxX, maxY ), *g_pageSetupData );
+//     wxRect fitRect = GetLogicalPagePageMarginsRect( *g_pageSetupData );
 
 //     // This sets the user scale and origin of the DC so that the image appears
 //     // on the paper at the same size that it appears on screen (i.e., 10-point
@@ -221,24 +221,24 @@ bool PDFPrintout::HasPage( int pageNum )
 
 //     // TESTING
 
-//     int leftMargin = 20;
-//     int rightMargin = 20;
-//     int topMargin = 20;
-//     int bottomMargin = 20;
+//     int leftPageMargin = 20;
+//     int rightPageMargin = 20;
+//     int topPageMargin = 20;
+//     int bottomPageMargin = 20;
 
 //     int pageWidthMM, pageHeightMM;
 //     GetPageSizeMM( &pageWidthMM, &pageHeightMM );
 
-//     float leftMarginLogical = ( float ) ( logUnitsFactor * leftMargin );
-//     float topMarginLogical = ( float ) ( logUnitsFactor * topMargin );
-//     float bottomMarginLogical = ( float ) ( logUnitsFactor * ( pageHeightMM - bottomMargin ) );
-//     float rightMarginLogical = ( float ) ( logUnitsFactor * ( pageWidthMM - rightMargin ) );
+//     float leftPageMarginLogical = ( float ) ( logUnitsFactor * leftPageMargin );
+//     float topPageMarginLogical = ( float ) ( logUnitsFactor * topPageMargin );
+//     float bottomPageMarginLogical = ( float ) ( logUnitsFactor * ( pageHeightMM - bottomPageMargin ) );
+//     float rightPageMarginLogical = ( float ) ( logUnitsFactor * ( pageWidthMM - rightPageMargin ) );
 
 //     dc->SetPen( *wxRED_PEN );
-//     dc->DrawLine( ( long ) leftMarginLogical, ( long ) topMarginLogical,
-//         ( long ) rightMarginLogical, ( long ) topMarginLogical );
-//     dc->DrawLine( ( long ) leftMarginLogical, ( long ) bottomMarginLogical,
-//         ( long ) rightMarginLogical, ( long ) bottomMarginLogical );
+//     dc->DrawLine( ( long ) leftPageMarginLogical, ( long ) topPageMarginLogical,
+//         ( long ) rightPageMarginLogical, ( long ) topPageMarginLogical );
+//     dc->DrawLine( ( long ) leftPageMarginLogical, ( long ) bottomPageMarginLogical,
+//         ( long ) rightPageMarginLogical, ( long ) bottomPageMarginLogical );
 
 //     WritePageHeader( this, dc, _T( "A header" ), logUnitsFactor );
 // }
@@ -283,21 +283,21 @@ void PDFPrintout::SetFile( const wxString& htmlfile )
 
 
 
-void PDFPrintout::SetMargins( float top, float bottom, float left, float right, float spaces )
+void PDFPrintout::SetPageMargins( float top, float bottom, float left, float right, float spaces )
 {
-    m_MarginTop = top;
-    m_MarginBottom = bottom;
-    m_MarginLeft = left;
-    m_MarginRight = right;
-    m_MarginSpace = spaces;
+    m_PageMarginTop = top;
+    m_PageMarginBottom = bottom;
+    m_PageMarginLeft = left;
+    m_PageMarginRight = right;
+    m_PageMarginSpace = spaces;
 }
 
-void PDFPrintout::SetMargins( const wxPageSetupDialogData& pageSetupData )
+void PDFPrintout::SetPageMargins( const wxPageSetupDialogData& pageSetupData )
 {
-    SetMargins( pageSetupData.GetMarginTopLeft( ).y,
-        pageSetupData.GetMarginBottomRight( ).y,
-        pageSetupData.GetMarginTopLeft( ).x,
-        pageSetupData.GetMarginBottomRight( ).x );
+    SetPageMargins( pageSetupData.GetPageMarginTopLeft( ).y,
+        pageSetupData.GetPageMarginBottomRight( ).y,
+        pageSetupData.GetPageMarginTopLeft( ).x,
+        pageSetupData.GetPageMarginBottomRight( ).x );
 }
 
 void PDFPrintout::SetFonts( const wxString& normal_face, const wxString& fixed_face,

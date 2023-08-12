@@ -144,10 +144,10 @@ namespace Design {
         root->AddAttribute( AttrNameStrings[ AT_PaperWidth ], "0" );
         root->AddAttribute( AttrNameStrings[ AT_PageWidth ], "215.9" );
         root->AddAttribute( AttrNameStrings[ AT_PageHeight ], "279.4" );
-        root->AddAttribute( AttrNameStrings[ AT_TopMargin ], "7.62" );
-        root->AddAttribute( AttrNameStrings[ AT_BottomMargin ], "7.62" );
-        root->AddAttribute( AttrNameStrings[ AT_RightMargin ], "7.62" );
-        root->AddAttribute( AttrNameStrings[ AT_LeftMargin ], "19.05" );
+        root->AddAttribute( AttrNameStrings[ AT_TopPageMargin ], "7.62" );
+        root->AddAttribute( AttrNameStrings[ AT_BottomPageMargin ], "7.62" );
+        root->AddAttribute( AttrNameStrings[ AT_RightPageMargin ], "7.62" );
+        root->AddAttribute( AttrNameStrings[ AT_LeftPageMargin ], "19.05" );
         root->AddAttribute( AttrNameStrings[ AT_BorderSize ], "4" );
         root->AddAttribute( AttrNameStrings[ AT_BorderFileName ], "" );
 

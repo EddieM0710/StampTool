@@ -48,6 +48,7 @@ namespace Design {
             SetObjectName( AlbumBaseNames[ GetNodeType( ) ] );
             SetShowFrame( false );
             SetShowTitle( false );
+            SetShowSubTitle( false );
             SetFixedSpacingSize( "4" );
             SetCalculateSpacing( true );
             m_titleFrame = new LabelFrame( Design::AT_TitleFontType );
@@ -112,6 +113,9 @@ namespace Design {
         void UpdateSizes( );
 
         NodeStatus ValidateNode( );
+
+        TitleLocation  GetTitleLocation( );
+        void SetTitleLocation( TitleLocation loc );
 
     private:
 

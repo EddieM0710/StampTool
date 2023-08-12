@@ -50,8 +50,7 @@
 #include "utils/Settings.h"
 #include "Defs.h"
 #include "utils/FontList.h"
-
-
+#include "gui/TitleHelper.h"
  /*
   * StampDetailsDialog type definition
   */
@@ -72,29 +71,22 @@ IMPLEMENT_DYNAMIC_CLASS( StampDetailsDialog, wxDialog )
     EVT_BUTTON( ID_REFRESHBUTTON, StampDetailsDialog::OnRefreshButtonClick )
     EVT_BUTTON( wxID_CANCEL, StampDetailsDialog::OnCancelClick )
     EVT_BUTTON( wxID_OK, StampDetailsDialog::OnOkClick )
-    EVT_CHECKBOX( ID_CATNBRCHECKBOX, StampDetailsDialog::OnCatNbrCheckboxClicked )
-    EVT_BUTTON( ID_STAMPNBRDEFAULTFONTBUTTON, StampDetailsDialog::OnNbrDefaultClick )
-    EVT_BUTTON( ID_STAMPNAMEDEFAULTFONTBUTTON, StampDetailsDialog::OnNameDefaultClick )
+    EVT_CHECKBOX( ID_CATNBRCHECKBOX, StampDetailsDialog::OnCatNbrCheckboxClick )
     EVT_RADIOBUTTON( ID_DEFAULTRADIOBUTTON, StampDetailsDialog::OnDefaultRadioButtonSelected )
     EVT_RADIOBUTTON( ID_TOPRADIOBUTTON, StampDetailsDialog::OnTopRadioButtonSelected )
     EVT_RADIOBUTTON( ID_BOTTOMRADIOBUTTON, StampDetailsDialog::OnBottomRadioButtonSelected )
-    //EVT_RADIOBUTTON( ID_LEFTRADIOBUTTON, StampDetailsDialog::OnLeftRadioButtonSelected )
-    //EVT_RADIOBUTTON( ID_RIGHTRADIOBUTTON, StampDetailsDialog::OnRightRadioButtonSelected )
     END_EVENT_TABLE( )
 
-    void StampDetailsDialog::OnCatNbrCheckboxClicked( wxCommandEvent& event )
-{
 
-};
+    /*
+     * StampDetailsDialog constructors
+     */
 
-/*
- * StampDetailsDialog constructors
- */
-
-StampDetailsDialog::StampDetailsDialog( )
+    StampDetailsDialog::StampDetailsDialog( )
 {
     Init( );
 }
+
 
 StampDetailsDialog::StampDetailsDialog( wxWindow* parent, wxWindowID id, const wxString& caption, const wxPoint& pos, const wxSize& size, long style )
 {
@@ -165,75 +157,93 @@ void StampDetailsDialog::CreateControls( )
 
     StampDetailsDialog* theDialog = this;
 
-    wxBoxSizer* theDialogVerticalSizer = new wxBoxSizer( wxVERTICAL );
-    theDialog->SetSizer( theDialogVerticalSizer );
+    m_dialogVerticalSizer = new wxBoxSizer( wxVERTICAL );
+    theDialog->SetSizer( m_dialogVerticalSizer );
     {
         wxBoxSizer* theDialogHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
-        theDialogVerticalSizer->Add( theDialogHorizontalSizer, 0, wxGROW | wxALL, 0 );
-
-        m_catNbr = new LabeledTextBox( theDialog, ID_IDLABELTEXTBOX, wxDefaultPosition, wxDefaultSize, wxNO_BORDER | wxTAB_TRAVERSAL );
-        m_catNbr->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
-        theDialogVerticalSizer->Add( m_catNbr, 0, wxGROW | wxALL, 5 );
-
-        m_name = new LabeledTextBox( theDialog, ID_NAMELABELEDTEXTBOX1, wxDefaultPosition, wxDefaultSize, wxNO_BORDER | wxTAB_TRAVERSAL );
-        m_name->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
-        theDialogVerticalSizer->Add( m_name, 0, wxGROW | wxALL, 5 );
+        m_dialogVerticalSizer->Add( theDialogHorizontalSizer, 0, wxGROW | wxALL, 0 );
 
         wxBoxSizer* checkBoxHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
-        theDialogVerticalSizer->Add( checkBoxHorizontalSizer, 0, wxGROW | wxALL, 0 );
+        m_dialogVerticalSizer->Add( checkBoxHorizontalSizer, 0, wxGROW | wxALL, 0 );
 
         m_nbrCheckbox = new wxCheckBox( theDialog, ID_CATNBRCHECKBOX, _( "Show ID" ), wxDefaultPosition, wxDefaultSize, 0 );
         m_nbrCheckbox->SetValue( false );
         checkBoxHorizontalSizer->Add( m_nbrCheckbox, 0, wxALIGN_LEFT | wxALL, 5 );
 
-        m_titleCheckbox = new wxCheckBox( theDialog, ID_TITLECHECKBOX, _( "Show Title" ), wxDefaultPosition, wxDefaultSize, 0 );
-        m_titleCheckbox->SetValue( false );
-        checkBoxHorizontalSizer->Add( m_titleCheckbox, 0, wxALIGN_LEFT | wxALL, 5 );
+        m_catNbr = new LabeledTextBox( theDialog, ID_IDLABELTEXTBOX, wxDefaultPosition, wxDefaultSize, wxNO_BORDER | wxTAB_TRAVERSAL );
+        m_catNbr->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
+        m_dialogVerticalSizer->Add( m_catNbr, 0, wxGROW | wxALL, 5 );
 
-        FontPicker* catNbrFontPickerHelper = new FontPicker(
-            theDialog, theDialogVerticalSizer,
-            _( "Catalog Nbr Font" ), wxID_STATIC,
-            ID_STAMPNBRFONTPICKER, ID_STAMPNBRCOLORPICKER,
-            _( "Default" ), ID_STAMPNBRDEFAULTFONTBUTTON,
-            *wxNORMAL_FONT, *wxBLACK );
-        m_nbrFontPicker = catNbrFontPickerHelper->GetFontPickerCtrl( );
-        m_nbrColorPicker = catNbrFontPickerHelper->GetColourPickerCtrl( );
+        int lastID = ID_LastID;
 
-        FontPicker* nameFontPickerHelper = new FontPicker(
-            theDialog, theDialogVerticalSizer,
-            _( "Name Font" ), wxID_STATIC,
-            ID_STAMPNAMEFONTPICKER, ID_STAMPNAMECOLORPICKER,
-            _( "Default" ), ID_STAMPNAMEDEFAULTFONTBUTTON,
+        m_catNbrFontPickerHelper = new FontPicker(
+            theDialog, m_dialogVerticalSizer,
+            _( "Catalog Nbr Font" ), _( "Default" ), lastID,
             *wxNORMAL_FONT, *wxBLACK );
-        m_nameFontPicker = nameFontPickerHelper->GetFontPickerCtrl( );
-        m_nameColorPicker = nameFontPickerHelper->GetColourPickerCtrl( );
+        m_nbrFontPicker = m_catNbrFontPickerHelper->GetFontPickerCtrl( );
+        m_nbrColorPicker = m_catNbrFontPickerHelper->GetColourPickerCtrl( );
+
+        Connect( m_catNbrFontPickerHelper->GetDefaultButton( )->GetId( ),
+            wxEVT_BUTTON,
+            wxCommandEventHandler( StampDetailsDialog::OnNbrDefaultClick ) );
+
+        m_titleHelper = new TitleHelper( theDialog, m_dialogVerticalSizer, lastID, HasLabels | NoHideTitle );
+        m_name = m_titleHelper->GetTitleLabel( );
+        m_subTitleLabel = m_titleHelper->GetSubTitleLabel( );
+        m_titleCheckbox = m_titleHelper->GetTitleCheckbox( );
+        m_titleCheckbox->SetLabelText( "Name" );
+        m_titleCheckbox->SetValue( true );
+        m_subTitleCheckbox = m_titleHelper->GetSubTitleCheckbox( );
+        m_subTitleCheckbox->SetLabelText( "SubTitle" );
+        m_subTitleCheckbox->SetValue( false );
+
+        m_nameFontPicker = m_titleHelper->GetTitleFontPickerCtrl( );
+        m_nameColorPicker = m_titleHelper->GetTitleColourPickerCtrl( );
+
+        m_subTitleFontPicker = m_titleHelper->GetSubTitleFontPickerCtrl( );
+        m_subTitleColorPicker = m_titleHelper->GetSubTitleColourPickerCtrl( );
+
+        Connect( m_titleHelper->GetSubTitleDefaultButton( )->GetId( ),
+            wxEVT_BUTTON,
+            wxCommandEventHandler( StampDetailsDialog::OnNameDefaultClick ) );
+
+        Connect( m_titleHelper->GetSubTitleDefaultButton( )->GetId( ),
+            wxEVT_BUTTON,
+            wxCommandEventHandler( StampDetailsDialog::OnSubTitleDefaultClick ) );
+
+        Connect( m_titleHelper->GetTitleCheckbox( )->GetId( ),
+            wxEVT_CHECKBOX,
+            wxCommandEventHandler( StampDetailsDialog::OnNameCheckboxClick ) );
+
+        Connect( m_titleHelper->GetSubTitleCheckbox( )->GetId( ),
+            wxEVT_CHECKBOX,
+            wxCommandEventHandler( StampDetailsDialog::OnSubTitleCheckboxClick ) );
 
         m_TitleLocationBox = new wxStaticBox( theDialog, wxID_ANY, _( "Name Location" ) );
         m_titleLocationVSizer = new wxStaticBoxSizer( m_TitleLocationBox, wxVERTICAL );
-        theDialogVerticalSizer->Add( m_titleLocationVSizer, 0, wxGROW | wxALL, 5 );
+        m_dialogVerticalSizer->Add( m_titleLocationVSizer, 0, wxGROW | wxALL, 5 );
 
         m_titleLocationHSizer = new wxBoxSizer( wxHORIZONTAL );
         m_titleLocationVSizer->Add( m_titleLocationHSizer, 0, wxGROW | wxALL, 0 );
 
-        m_topButton = new wxRadioButton( m_titleLocationVSizer->GetStaticBox( ), ID_DEFAULTRADIOBUTTON, _( "Top" ), wxDefaultPosition, wxDefaultSize, 0 );
-        m_topButton->SetValue( true );
-        m_titleLocationHSizer->Add( m_topButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
-
-        m_bottomButton = new wxRadioButton( m_titleLocationVSizer->GetStaticBox( ), ID_TOPRADIOBUTTON, _( "Bottom" ), wxDefaultPosition, wxDefaultSize, 0 );
-        m_bottomButton->SetValue( false );
-        m_titleLocationHSizer->Add( m_bottomButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
-
-        m_defaultButton = new wxRadioButton( m_titleLocationVSizer->GetStaticBox( ), ID_RIGHTRADIOBUTTON, _( "Right" ), wxDefaultPosition, wxDefaultSize, 0 );
+        m_defaultButton = new wxRadioButton( m_titleLocationVSizer->GetStaticBox( ), ID_DEFAULTRADIOBUTTON, _( "Default" ), wxDefaultPosition, wxDefaultSize, 0 );
         m_defaultButton->SetValue( false );
         m_titleLocationHSizer->Add( m_defaultButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
+        m_topButton = new wxRadioButton( m_titleLocationVSizer->GetStaticBox( ), ID_TOPRADIOBUTTON, _( "Top" ), wxDefaultPosition, wxDefaultSize, 0 );
+        m_topButton->SetValue( true );
+        m_titleLocationHSizer->Add( m_topButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+
+        m_bottomButton = new wxRadioButton( m_titleLocationVSizer->GetStaticBox( ), ID_BOTTOMRADIOBUTTON, _( "Bottom" ), wxDefaultPosition, wxDefaultSize, 0 );
+        m_bottomButton->SetValue( false );
+        m_titleLocationHSizer->Add( m_bottomButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+
         m_imagePath = new LabeledTextBox( theDialog, ID_IMAGEPATHLABELEDTEXTBOX, wxDefaultPosition, wxDefaultSize, wxNO_BORDER | wxTAB_TRAVERSAL );
         m_imagePath->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
-        theDialogVerticalSizer->Add( m_imagePath, 0, wxGROW | wxALL, 5 );
+        m_dialogVerticalSizer->Add( m_imagePath, 0, wxGROW | wxALL, 5 );
 
         wxBoxSizer* sizeSizer = new wxBoxSizer( wxHORIZONTAL );
-        theDialogVerticalSizer->Add( sizeSizer, 0, wxGROW | wxALL, 0 );
-
+        m_dialogVerticalSizer->Add( sizeSizer, 0, wxGROW | wxALL, 0 );
 
         wxStaticText* stampStaticText = new wxStaticText( theDialog, wxID_STATIC, _( "Stamp" ), wxDefaultPosition, wxDefaultSize, 0 );
         sizeSizer->Add( stampStaticText, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
@@ -247,7 +257,7 @@ void StampDetailsDialog::CreateControls( )
         sizeSizer->Add( m_width, 1, wxGROW | wxALL, 5 );
 
         wxBoxSizer* selvageSizeSizer = new wxBoxSizer( wxHORIZONTAL );
-        theDialogVerticalSizer->Add( selvageSizeSizer, 0, wxGROW | wxALL, 0 );
+        m_dialogVerticalSizer->Add( selvageSizeSizer, 0, wxGROW | wxALL, 0 );
 
         wxStaticText* selvageStaticText = new wxStaticText( theDialog, wxID_STATIC, _( "Selvage" ), wxDefaultPosition, wxDefaultSize, 0 );
         selvageSizeSizer->Add( selvageStaticText, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
@@ -261,7 +271,7 @@ void StampDetailsDialog::CreateControls( )
         selvageSizeSizer->Add( m_selvageWidth, 1, wxGROW | wxALL, 5 );
 
         wxBoxSizer* mountSizeSizer = new wxBoxSizer( wxHORIZONTAL );
-        theDialogVerticalSizer->Add( mountSizeSizer, 0, wxGROW | wxALL, 0 );
+        m_dialogVerticalSizer->Add( mountSizeSizer, 0, wxGROW | wxALL, 0 );
 
         wxStaticText* mountStaticText = new wxStaticText( theDialog, wxID_STATIC, _( "Mount Allowance" ), wxDefaultPosition, wxDefaultSize, 0 );
         mountSizeSizer->Add( mountStaticText, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
@@ -274,9 +284,8 @@ void StampDetailsDialog::CreateControls( )
         m_mountAllowanceWidth->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
         mountSizeSizer->Add( m_mountAllowanceWidth, 1, wxGROW | wxALL, 5 );
 
-
         wxBoxSizer* refreshSizer = new wxBoxSizer( wxHORIZONTAL );
-        theDialogVerticalSizer->Add( refreshSizer, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 0 );
+        m_dialogVerticalSizer->Add( refreshSizer, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 0 );
 
         wxButton* itemButton7 = new wxButton( theDialog, ID_REFRESHBUTTON, _( "Refresh from Catalog" ), wxDefaultPosition, wxDefaultSize, 0 );
         refreshSizer->Add( itemButton7, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
@@ -287,14 +296,14 @@ void StampDetailsDialog::CreateControls( )
         refreshSizer->Add( m_validate, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
         wxBoxSizer* statusSizer = new wxBoxSizer( wxHORIZONTAL );
-        theDialogVerticalSizer->Add( statusSizer, 2, wxGROW | wxALL, 5 );
+        m_dialogVerticalSizer->Add( statusSizer, 2, wxGROW | wxALL, 5 );
 
         m_statusList = new wxListBox( theDialog, ID_LISTCTRL, wxDefaultPosition, wxDefaultSize, m_statusListStrings, wxLB_SINGLE );
 
         statusSizer->Add( m_statusList, 2, wxGROW | wxALL, 5 );
 
         wxBoxSizer* dialogCtrlButtonSizer = new wxBoxSizer( wxHORIZONTAL );
-        theDialogVerticalSizer->Add( dialogCtrlButtonSizer, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 0 );
+        m_dialogVerticalSizer->Add( dialogCtrlButtonSizer, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 0 );
         {
             wxButton* cancelButton = new wxButton( theDialog, wxID_CANCEL, _( "Cancel" ), wxDefaultPosition, wxDefaultSize, 0 );
             dialogCtrlButtonSizer->Add( cancelButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
@@ -313,53 +322,33 @@ void StampDetailsDialog::CreateControls( )
     m_mountAllowanceHeight->SetLabel( "Height" );
     m_mountAllowanceWidth->SetLabel( "Width" );
     m_imagePath->SetLabel( "ImageName" );
+    m_subTitleLabel->SetLabel( "Subtitle" );
 }
 
-void StampDetailsDialog::SetTitleLayoutLocation( )
-{
 
-    m_titleLocation = m_stamp->GetTitleLayoutLocation( );
+void StampDetailsDialog::SetTitleLocation( )
+{
+    m_titleLocation = m_stamp->GetTitleLocation( );
     if ( m_titleLocation == Design::AT_TitleLocationTop )
     {
         m_topButton->SetValue( true );
         m_bottomButton->SetValue( false );
-        // m_leftButton->SetValue( false );;
-        // m_rightButton->SetValue( false );;
         m_defaultButton->SetValue( false );;
     }
     else if ( m_titleLocation == Design::AT_TitleLocationBottom )
     {
         m_topButton->SetValue( false );
         m_bottomButton->SetValue( true );
-        // m_leftButton->SetValue( false );;
-        // m_rightButton->SetValue( false );;
         m_defaultButton->SetValue( false );;
     }
-    // else if ( m_titleLocation == Design::AT_TitleLocationLeft )
-    // {
-    //     m_topButton->SetValue( false );
-    //     m_bottomButton->SetValue( false );
-    //     m_leftButton->SetValue( true );;
-    //     m_rightButton->SetValue( false );;
-    //     m_defaultButton->SetValue( false );;
-    // }
-    // else if ( m_titleLocation == Design::AT_TitleLocationRight )
-    // {
-    //     m_topButton->SetValue( false );
-    //     m_bottomButton->SetValue( false );
-    //     m_leftButton->SetValue( false );;
-    //     m_rightButton->SetValue( true );;
-    //     m_defaultButton->SetValue( false );;
-    // }
     else if ( m_titleLocation == Design::AT_TitleLocationDefault )
     {
         m_topButton->SetValue( false );
         m_bottomButton->SetValue( false );
-        // m_leftButton->SetValue( false );;
-        // m_rightButton->SetValue( false );;
         m_defaultButton->SetValue( true );;
     }
 }
+
 
 void StampDetailsDialog::UpdateControls( )
 {
@@ -376,13 +365,12 @@ void StampDetailsDialog::UpdateControls( )
     SetName( m_stamp->GetAttrStr( Design::AT_Name ) );
     SetShowNbr( m_stamp->GetShowNbr( ) );
     SetShowTitle( m_stamp->GetShowTitle( ) );
+    SetShowSubTitle( m_stamp->GetShowSubTitle( ) );
     SetNbrFont( m_stamp->GetNbrFrame( )->GetFont( ) );
     SetNameFont( m_stamp->GetNameFrame( )->GetFont( ) );
     SetNbrColor( m_stamp->GetNbrFrame( )->GetColor( ) );
     SetNameColor( m_stamp->GetNameFrame( )->GetColor( ) );
-    m_stamp->GetTitleLayoutLocation( );
-
-
+    SetTitleLocation( );
 }
 
 
@@ -402,6 +390,7 @@ void StampDetailsDialog::SetupDialog( wxTreeItemId id )
         }
     }
 };
+
 
 void StampDetailsDialog::RefreshFromCatalog( )
 {
@@ -444,11 +433,13 @@ void StampDetailsDialog::SetImageFilename( wxString path )
     m_height->SetModified( false );
 }
 
+
 void StampDetailsDialog::SetHeight( wxString height )
 {
     m_height->SetValue( height );
     m_height->SetModified( false );
 }
+
 
 void StampDetailsDialog::SetWidth( wxString width )
 {
@@ -456,11 +447,13 @@ void StampDetailsDialog::SetWidth( wxString width )
     m_width->SetModified( false );
 }
 
+
 void StampDetailsDialog::SetSelvageHeight( wxString height )
 {
     m_selvageHeight->SetValue( height );
     m_selvageHeight->SetModified( false );
 }
+
 
 void StampDetailsDialog::SetSelvageWidth( wxString width )
 {
@@ -468,17 +461,20 @@ void StampDetailsDialog::SetSelvageWidth( wxString width )
     m_selvageWidth->SetModified( false );
 }
 
+
 void StampDetailsDialog::SetMountAllowanceHeight( wxString height )
 {
     m_mountAllowanceHeight->SetValue( height );
     m_mountAllowanceHeight->SetModified( false );
 }
 
+
 void StampDetailsDialog::SetMountAllowanceWidth( wxString width )
 {
     m_mountAllowanceWidth->SetValue( width );
     m_mountAllowanceWidth->SetModified( false );
 }
+
 
 void StampDetailsDialog::SetCatNbr( wxString catNbr )
 {
@@ -487,38 +483,62 @@ void StampDetailsDialog::SetCatNbr( wxString catNbr )
     m_catNbr->SetModified( false );
 }
 
+
 void StampDetailsDialog::SetName( wxString name )
 {
     m_name->SetValue( name );
     m_name->SetModified( false );
 }
 
+
 void StampDetailsDialog::SetShowNbr( bool state )
 {
     m_nbrCheckbox->SetValue( state );
 }
 
+
 void StampDetailsDialog::SetShowTitle( bool state )
 {
     m_titleCheckbox->SetValue( state );
+
+    m_titleHelper->ShowTitleFontPicker( state );
+    m_dialogVerticalSizer->Layout( );
 }
+
+
+void StampDetailsDialog::SetShowSubTitle( bool state )
+{
+    m_subTitleCheckbox->SetValue( state );
+
+    m_titleHelper->ShowSubTitleFontPicker( state );
+    m_subTitleLabel->Show( state );
+    m_dialogVerticalSizer->Layout( );
+}
+
+
 void StampDetailsDialog::SetNbrFont( wxFont font )
 {
     m_nbrFontPicker->SetSelectedFont( font );
 }
+
+
 void StampDetailsDialog::SetNameFont( wxFont font )
 {
     m_nameFontPicker->SetSelectedFont( font );
 }
 
+
 void StampDetailsDialog::SetNbrColor( wxColour color )
 {
     m_nbrColorPicker->SetColour( color );
 }
+
+
 void StampDetailsDialog::SetNameColor( wxColour color )
 {
     m_nameColorPicker->SetColour( color );
 }
+
 
 wxString StampDetailsDialog::GetImageFilename( )
 {
@@ -531,6 +551,7 @@ wxString StampDetailsDialog::GetHeight( )
     return m_height->GetValue( );
 }
 
+
 wxString StampDetailsDialog::GetWidth( )
 {
     return m_width->GetValue( );
@@ -541,6 +562,7 @@ wxString StampDetailsDialog::GetSelvageHeight( )
 {
     return m_selvageHeight->GetValue( );
 }
+
 
 wxString StampDetailsDialog::GetSelvageWidth( )
 {
@@ -553,11 +575,11 @@ wxString StampDetailsDialog::GetMountAllowanceHeight( )
     return m_mountAllowanceHeight->GetValue( );
 }
 
+
 wxString StampDetailsDialog::GetMountAllowanceWidth( )
 {
     return m_mountAllowanceWidth->GetValue( );
 }
-
 
 
 wxString StampDetailsDialog::GetCatNbr( )
@@ -565,53 +587,72 @@ wxString StampDetailsDialog::GetCatNbr( )
     return m_catNbr->GetValue( );
 }
 
+
 wxString StampDetailsDialog::GetName( )
 {
     return m_name->GetValue( );
 }
+
 
 bool StampDetailsDialog::GetShowNbr( )
 {
     return m_nbrCheckbox->IsChecked( );
 }
 
+
 bool StampDetailsDialog::GetShowTitle( )
 {
     return m_titleCheckbox->IsChecked( );
 }
 
+
+bool StampDetailsDialog::GetShowSubTitle( )
+{
+    return m_subTitleCheckbox->IsChecked( );
+}
+
+
 wxFont StampDetailsDialog::GetNbrFont( )
 {
     return m_nbrFontPicker->GetSelectedFont( );
 }
+
+
 wxFont StampDetailsDialog::GetNameFont( )
 {
     return m_nameFontPicker->GetSelectedFont( );
 }
 
+
 wxColour StampDetailsDialog::GetNbrColor( )
 {
     return m_nbrColorPicker->GetColour( );
 }
+
+
 wxColour StampDetailsDialog::GetNameColor( )
 {
     return m_nameColorPicker->GetColour( );
 }
+
 
 bool StampDetailsDialog::IsNameModified( )
 {
     return m_name->IsModified( );
 }
 
+
 bool StampDetailsDialog::IsIDModified( )
 {
     return m_catNbr->IsModified( );
 }
 
+
 bool StampDetailsDialog::IsHeightModified( )
 {
     return m_height->IsModified( );
 }
+
 
 bool StampDetailsDialog::IsWidthModified( )
 {
@@ -619,12 +660,11 @@ bool StampDetailsDialog::IsWidthModified( )
 }
 
 
-
-
 bool StampDetailsDialog::IsSelvageHeightModified( )
 {
     return m_selvageHeight->IsModified( );
 }
+
 
 bool StampDetailsDialog::IsSelvageWidthModified( )
 {
@@ -637,12 +677,11 @@ bool StampDetailsDialog::IsMountAllowanceHeightModified( )
     return m_mountAllowanceHeight->IsModified( );
 }
 
+
 bool StampDetailsDialog::IsMountAllowanceWidthModified( )
 {
     return m_mountAllowanceWidth->IsModified( );
 }
-
-
 
 
 void StampDetailsDialog::SetHeightModified( bool state )
@@ -650,36 +689,42 @@ void StampDetailsDialog::SetHeightModified( bool state )
     m_height->SetModified( state );
 }
 
+
 void StampDetailsDialog::SetWidthModified( bool state )
 {
     m_width->SetModified( state );
 }
 
+
 void StampDetailsDialog::SetSelvageHeightModified( bool state )
 {
     m_selvageHeight->SetModified( state );
 }
+
+
 void StampDetailsDialog::SetSelvageWidthModified( bool state )
 {
     m_selvageWidth->SetModified( state );
 }
+
+
 void StampDetailsDialog::SetMountAllowanceHeightModified( bool state )
 {
     m_mountAllowanceHeight->SetModified( state );
 }
+
+
 void StampDetailsDialog::SetMountAllowanceWidthModified( bool state )
 {
     m_mountAllowanceWidth->SetModified( state );
 }
 
 
-
-
-
 void StampDetailsDialog::SetCatNbrModified( bool state )
 {
     m_catNbr->SetModified( state );
 }
+
 
 void StampDetailsDialog::SetNameModified( bool state )
 {
@@ -717,9 +762,6 @@ void StampDetailsDialog::OnCancelClick( wxCommandEvent& event )
 void StampDetailsDialog::OnOkClick( wxCommandEvent& event )
 {
 
-    // m_stamp->ReportLayout( );
-
-
     m_stamp->SetAttrStr( Design::AT_CatNbr, GetCatNbr( ) );
     m_stamp->SetAttrStr( Design::AT_Name, GetName( ) );
     m_stamp->SetStampHeight( GetHeight( ) );
@@ -733,10 +775,11 @@ void StampDetailsDialog::OnOkClick( wxCommandEvent& event )
 
     m_stamp->SetShowNbr( GetShowNbr( ) );
     m_stamp->SetShowTitle( GetShowTitle( ) );
+    m_stamp->SetShowSubTitle( GetShowSubTitle( ) );
 
     m_stamp->GetNameFrame( )->SetFont( GetNameFont( ), GetNameColor( ) );
     m_stamp->GetNbrFrame( )->SetFont( GetNbrFont( ), GetNbrColor( ) );
-
+    m_stamp->SetTitleLocation( m_titleLocation );
     event.Skip( );
 }
 
@@ -747,6 +790,7 @@ void StampDetailsDialog::OnTopRadioButtonSelected( wxCommandEvent& event )
     event.Skip( );
 }
 
+
 void StampDetailsDialog::OnBottomRadioButtonSelected( wxCommandEvent& event )
 {
     m_titleLocation = Design::AT_TitleLocationBottom;
@@ -754,24 +798,12 @@ void StampDetailsDialog::OnBottomRadioButtonSelected( wxCommandEvent& event )
 }
 
 
-// void StampDetailsDialog::OnLeftRadioButtonSelected( wxCommandEvent& event )
-// {
-//     m_titleLocation = Design::AT_TitleLocationLeft;
-//     event.Skip( );
-// }
-
-
-// void StampDetailsDialog::OnRightRadioButtonSelected( wxCommandEvent& event )
-// {
-//     m_titleLocation = Design::AT_TitleLocationRight;
-//     event.Skip( );
-// }
-
 void StampDetailsDialog::OnDefaultRadioButtonSelected( wxCommandEvent& event )
 {
     m_titleLocation = Design::AT_TitleLocationDefault;
     event.Skip( );
 }
+
 
 void StampDetailsDialog::OnNbrDefaultClick( wxCommandEvent& event )
 {
@@ -787,6 +819,7 @@ void StampDetailsDialog::OnNbrDefaultClick( wxCommandEvent& event )
     event.Skip( );
 }
 
+
 void StampDetailsDialog::OnNameDefaultClick( wxCommandEvent& event )
 {
     int ndx = GetSettings( )->GetFontNdxPreference( Design::AT_NameFontType );
@@ -797,3 +830,39 @@ void StampDetailsDialog::OnNameDefaultClick( wxCommandEvent& event )
     m_nameColorPicker->SetColour( color );
     event.Skip( );
 }
+
+
+void StampDetailsDialog::OnSubTitleDefaultClick( wxCommandEvent& event )
+{
+    int ndx = GetSettings( )->GetFontNdxPreference( Design::AT_SubTitleFontType );
+    Utils::FontList* fontList = GetFontList( );
+    wxFont font = fontList->GetFont( ndx );
+    wxColour color = fontList->GetColor( ndx );
+    m_subTitleFontPicker->SetSelectedFont( font );
+    m_subTitleColorPicker->SetColour( color );
+    event.Skip( );
+}
+
+
+void StampDetailsDialog::OnNameCheckboxClick( wxCommandEvent& event )
+{
+    m_titleHelper->UpdateTitleState( );
+
+    m_dialogVerticalSizer->Layout( );
+}
+
+
+void StampDetailsDialog::OnCatNbrCheckboxClick( wxCommandEvent& event )
+{
+    bool state = m_nbrCheckbox->GetValue( );
+
+    m_catNbrFontPickerHelper->ShowFontPicker( state );
+    m_dialogVerticalSizer->Layout( );
+}
+
+
+void StampDetailsDialog::OnSubTitleCheckboxClick( wxCommandEvent& event )
+{
+    m_titleHelper->UpdateSubTitleState( );
+    m_dialogVerticalSizer->Layout( );
+};

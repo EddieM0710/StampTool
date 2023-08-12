@@ -255,20 +255,19 @@ void SettingsDialog::CreateControls( )
     wxFont textFont = GetSettings( )->GetTextFont( );
     wxColour textColor = GetSettings( )->GetTextColor( );
 
+    int lastID = ID_LastID;
+
+
     FontPicker* catNbrFontPickerHelper = new FontPicker(
         notebookFontsPanel, fontsVerticalSizer,
-        _( "Default Stamp Nbr Font" ), wxID_STATIC,
-        ID_NBRFONTPICKER, ID_NBRCOLORPICKER,
-        _( "Default" ), ID_NBRDEFAULTFONTBUTTON,
+        _( "Default Stamp Nbr Font" ), _( "Default" ), lastID,
         catNbrFont, catNbrColor );
     m_nbrFontPicker = catNbrFontPickerHelper->GetFontPickerCtrl( );
     m_nbrColorPicker = catNbrFontPickerHelper->GetColourPickerCtrl( );
 
     FontPicker* titleFontPickerHelper = new FontPicker(
         notebookFontsPanel, fontsVerticalSizer,
-        _( "Default Title Font" ), wxID_STATIC,
-        ID_TITLEFONTPICKER, ID_TITLECOLORPICKER,
-        _( "Default" ), ID_TITLEDEFAULTFONTBUTTON,
+        _( "Default Title Font" ), _( "Default" ), lastID,
         titleFont, titleColor );
     m_titleFontPicker = titleFontPickerHelper->GetFontPickerCtrl( );
     m_titleColorPicker = titleFontPickerHelper->GetColourPickerCtrl( );
@@ -276,9 +275,7 @@ void SettingsDialog::CreateControls( )
 
     FontPicker* textFontPickerHelper = new FontPicker(
         notebookFontsPanel, fontsVerticalSizer,
-        _( "Default Text Font" ), wxID_STATIC,
-        ID_TEXTFONTPICKER, ID_TEXTCOLORPICKER,
-        _( "Default" ), ID_TEXTDEFAULTFONTBUTTON,
+        _( "Default Text Font" ), _( "Default" ), lastID,
         textFont, textColor );
     m_textFontPicker = textFontPickerHelper->GetFontPickerCtrl( );
     m_textColorPicker = textFontPickerHelper->GetColourPickerCtrl( );
@@ -286,9 +283,7 @@ void SettingsDialog::CreateControls( )
 
     FontPicker* nameFontPickerHelper = new FontPicker(
         notebookFontsPanel, fontsVerticalSizer,
-        _( "Default Stamp Name Font" ), wxID_STATIC,
-        ID_NAMEFONTPICKER, ID_NAMECOLORPICKER,
-        _( "Default" ), ID_NAMEDEFAULTFONTBUTTON,
+        _( "Default Stamp Name Font" ), _( "Default" ), lastID,
         textFont, textColor );
     m_nameFontPicker = nameFontPickerHelper->GetFontPickerCtrl( );
     m_nameColorPicker = nameFontPickerHelper->GetColourPickerCtrl( );

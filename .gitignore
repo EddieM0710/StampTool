@@ -1,7 +1,14 @@
 build/
 projects/
+sample/
 doc/
-doc/html
 .gitignore
 .vscode/tasks.json
+sample/Vatican/2020/en_stamps_csv_list_country_95-Vatican_City_year_2020.cat.bak
+sample/Vatican/2020/en_stamps_csv_list_country_95-Vatican_City_year_2020.cat.xml
+sample/Vatican/2020/en_stamps_csv_list_country_95-Vatican_City_year_2020.csv
+sample/Vatican/2020/Vatican_City_2020.alb.bak
+sample/Vatican/2020/Vatican_City_2020.alb.xml
+sample/Vatican/2020/Vatican_City_2020.cat.bak
+sample/Vatican/2020/Vatican_City_2020.cat.xml
 

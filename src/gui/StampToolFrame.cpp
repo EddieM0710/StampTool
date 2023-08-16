@@ -154,7 +154,7 @@ bool StampToolFrame::Create( wxWindow* parent, wxWindowID id,
 
 StampToolFrame::~StampToolFrame( )
 {
-
+    int a = 1;
 }
 
 void StampToolFrame::Init( )
@@ -190,16 +190,15 @@ void StampToolFrame::CreateControls( )
     m_newMenu = new wxMenu;
     m_fileMenu->Append( ID_NEWPROJECT, _( "New" ), "New Project", wxITEM_NORMAL );
     m_fileMenu->Append( ID_OPENPROJECT, _( "Open" ), wxEmptyString, wxITEM_NORMAL );
-    m_fileMenu->AppendSeparator( );
     m_fileMenu->Append( ID_SAVEPROJECT, _( "Save" ), wxEmptyString, wxITEM_NORMAL );
     m_fileMenu->Append( ID_SAVEASPROJECT, _( "Save As" ), wxEmptyString, wxITEM_NORMAL );
 
     m_fileMenu->AppendSeparator( );
-    m_fileMenu->Append( ID_SETTINGS, _( "Preferences" ), wxEmptyString, wxITEM_NORMAL );
-
-    m_fileMenu->AppendSeparator( );
 
     m_fileMenu->Append( ID_OPENCATALOG, _( "Open Catalog" ), wxEmptyString, wxITEM_NORMAL );
+
+    m_fileMenu->AppendSeparator( );
+    m_fileMenu->Append( ID_SETTINGS, _( "Preferences" ), wxEmptyString, wxITEM_NORMAL );
 
     m_fileMenu->AppendSeparator( );
 
@@ -217,19 +216,23 @@ void StampToolFrame::CreateControls( )
 
     itemMenu3->Append( ID_NEWCATALOG, _( "New Catalog" ), wxEmptyString, wxITEM_NORMAL );
     itemMenu3->Append( ID_OPENCATALOG, _( "Open Catalog" ), wxEmptyString, wxITEM_NORMAL );
-    itemMenu3->Append( ID_CSVIMPORT, _( "Import Catalog From CSV file" ), wxEmptyString, wxITEM_NORMAL );
-    itemMenu3->Append( ID_REMOVECATALOG, _( "Remove Catalog" ), wxEmptyString, wxITEM_NORMAL );
     itemMenu3->Append( ID_SAVECATALOG, _( "Save Catalog" ), wxEmptyString, wxITEM_NORMAL );
+    itemMenu3->AppendSeparator( );
+    itemMenu3->Append( ID_CSVIMPORT, _( "Import Catalog From CSV file" ), wxEmptyString, wxITEM_NORMAL );
+    itemMenu3->AppendSeparator( );
+    itemMenu3->Append( ID_REMOVECATALOG, _( "Remove Catalog" ), wxEmptyString, wxITEM_NORMAL );
     menuBar->Append( itemMenu3, _( "Catalog" ) );
 
     wxMenu* itemMenu4 = new wxMenu;
 
     itemMenu4->Append( ID_NEWDESIGN, _( "New Album" ), wxEmptyString, wxITEM_NORMAL );
     itemMenu4->Append( ID_OPENDESIGN, _( "Open Album" ), wxEmptyString, wxITEM_NORMAL );
+    itemMenu4->Append( ID_SAVEDESIGN, _( "Save Album" ), wxEmptyString, wxITEM_NORMAL );
+    itemMenu4->AppendSeparator( );
     itemMenu4->Append( ID_GENERATEPDF, _( "Generate Album PDF" ), wxEmptyString, wxITEM_NORMAL );
     itemMenu4->Append( ID_OPENPDF, _( "Open PDF" ), wxEmptyString, wxITEM_NORMAL );
+    itemMenu4->AppendSeparator( );
     itemMenu4->Append( ID_REMOVEDESIGN, _( "Remove Album" ), wxEmptyString, wxITEM_NORMAL );
-    itemMenu4->Append( ID_SAVEDESIGN, _( "Save Album" ), wxEmptyString, wxITEM_NORMAL );
     menuBar->Append( itemMenu4, _( "Album" ) );
 
     wxMenu* itemMenu7 = new wxMenu;

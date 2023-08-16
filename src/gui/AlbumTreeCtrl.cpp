@@ -85,6 +85,8 @@ EVT_TREE_SEL_CHANGED( ID_ALBUMTREECTRL, AlbumTreeCtrl::OnSelChanged )
 EVT_TREE_STATE_IMAGE_CLICK( ID_ALBUMTREECTRL, AlbumTreeCtrl::OnItemStateClick )
 EVT_TREE_ITEM_MENU( ID_ALBUMTREECTRL, AlbumTreeCtrl::OnItemMenu )
 EVT_TREE_ITEM_RIGHT_CLICK( ID_ALBUMTREECTRL, AlbumTreeCtrl::OnItemRClick )
+EVT_TREE_ITEM_COLLAPSED( ID_ALBUMTREECTRL, AlbumTreeCtrl::OnTreectrlItemCollapsed )
+EVT_TREE_ITEM_EXPANDED( ID_ALBUMTREECTRL, AlbumTreeCtrl::OnTreectrlItemExpanded )
 wxEND_EVENT_TABLE( )
 
 wxColour ItemBackgroundColour[ 3 ] = { wxNullColour, *wxYELLOW, *wxRED };
@@ -738,7 +740,7 @@ void AlbumTreeCtrl::LoadTree( )
                 if ( id.IsOk( ) ) SelectItem( id );
                 GetAlbumImagePanel( )->Refresh( );
 
-                ExpandAll( );
+                // ExpandAll( );
             }
         }
     }
@@ -1602,3 +1604,19 @@ void AlbumTreeCtrl::ValidateTree( )
         Validate( id );
     }
 }
+
+
+void AlbumTreeCtrl::OnTreectrlItemCollapsed( wxTreeEvent& event )
+{
+
+    event.Skip( );
+}
+
+
+void AlbumTreeCtrl::OnTreectrlItemExpanded( wxTreeEvent& event )
+{
+
+    event.Skip( );
+
+}
+

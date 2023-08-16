@@ -44,9 +44,23 @@ namespace Design {
 
     public:
 
-        AlbumBase( ) : XMLBase( ( wxXmlNode* ) 0 ) { };
+        AlbumBase( ) : XMLBase( ( wxXmlNode* ) 0 )
+        {
 
-        AlbumBase( wxXmlNode* ele ) : XMLBase( ele ) { }
+            SetTopContentMargin( 2 );
+            SetBottomContentMargin( 2 );
+            SetLeftContentMargin( 2 );
+            SetRightContentMargin( 2 );
+        };
+
+        AlbumBase( wxXmlNode* ele ) : XMLBase( ele )
+        {
+
+            SetTopContentMargin( 2 );
+            SetBottomContentMargin( 2 );
+            SetLeftContentMargin( 2 );
+            SetRightContentMargin( 2 );
+        }
 
         ~AlbumBase( );
 
@@ -73,6 +87,16 @@ namespace Design {
         NodeStatus ValidateChildren( AlbumBase* node );
 
         virtual NodeStatus ValidateNode( ) = 0;
+
+        void SetTopContentMargin( double val ) { SetAttrDbl( AT_TopContentMargin, val ); };
+        void SetBottomContentMargin( double val ) { SetAttrDbl( AT_BottomContentMargin, val ); };
+        void SetRightContentMargin( double val ) { SetAttrDbl( AT_RightContentMargin, val ); };
+        void SetLeftContentMargin( double val ) { SetAttrDbl( AT_LeftContentMargin, val ); };
+
+        double GetTopContentMargin( ) { return GetAttrDbl( AT_TopContentMargin ); };
+        double GetBottomContentMargin( ) { return GetAttrDbl( AT_BottomContentMargin ); };
+        double GetRightContentMargin( ) { return GetAttrDbl( AT_RightContentMargin ); };
+        double GetLeftContentMargin( ) { return GetAttrDbl( AT_LeftContentMargin ); };
 
     private:
 

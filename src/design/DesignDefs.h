@@ -90,6 +90,7 @@ namespace Design {
         AT_MountAllowanceWidth,
         AT_StampNameLocation,
         AT_StampMargin,
+        AT_CollapseState,
         AT_NbrAttrTypes,
         AT_NOTYPE
     } AlbumAttrType;

@@ -56,13 +56,13 @@ namespace Design {
         double rightPadding = 0;
         double topPadding = 0;
         double bottomPadding = 0;
-        if ( GetShowFrame( ) )
-        {
-            leftPadding = GetLeftContentMargin( );
-            rightPadding = GetRightContentMargin( );
-            topPadding = GetTopContentMargin( );
-            bottomPadding = GetBottomContentMargin( );
-        }
+        // if ( GetShowFrame( ) )
+        // {
+        //     leftPadding = GetLeftContentMargin( );
+        //     rightPadding = GetRightContentMargin( );
+        //     topPadding = GetTopContentMargin( );
+        //     bottomPadding = GetBottomContentMargin( );
+        // }
         double contentWidth = GetWidth( ) - leftPadding - rightPadding;
 
         m_titleFrame->UpdateString( contentWidth );

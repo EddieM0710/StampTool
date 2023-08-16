@@ -32,15 +32,19 @@ namespace Design {
 
     Frame::Frame( )
     {
+        Init( );
+    };
+    Frame::~Frame( ) { };
+
+    void Frame::Init( )
+    {
         m_xPos = 0;
         m_yPos = 0;
         m_width = 0;
         m_height = 0;
         m_minWidth = 0;
         m_minHeight = 0;
-    };
-    Frame::~Frame( ) { };
-
+    }
     /*
      * @brief Draw object on screen
      *

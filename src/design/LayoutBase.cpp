@@ -42,27 +42,15 @@ namespace Design {
     LayoutBase::LayoutBase( ) : AlbumBase( )
     {
 
-        SetTopContentMargin( 5 );
-        SetBottomContentMargin( 5 );
-        SetLeftContentMargin( 5 );
-        SetRightContentMargin( 5 );
         // SetTitleLocation( Design::AT_TitleLocationDefault );
-
 
     };
 
 
     LayoutBase::LayoutBase( wxXmlNode* node ) : AlbumBase( node )
     {
-
-        SetTopContentMargin( 4 );
-        SetBottomContentMargin( 4 );
-        SetLeftContentMargin( 1 );
-        SetRightContentMargin( 1 );
         // SetTitleLocation( Design::AT_TitleLocationDefault );
     };
-
-
 
 
     void LayoutBase::DumpLayout( double x, double y )

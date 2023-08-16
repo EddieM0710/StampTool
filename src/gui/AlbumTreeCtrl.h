@@ -565,6 +565,11 @@ public:
     ///  @param albIDNbr 
     void ValidateLink( wxTreeItemId& childId, wxString albIDNbr );
 
+    void OnTreectrlItemCollapsed( wxTreeEvent& event );
+
+    void OnTreectrlItemExpanded( wxTreeEvent& event );
+
+
 private:
     int m_OK;
     /**

@@ -409,6 +409,7 @@ public:
      * @return wxString
      */
     wxString GetAttribute( wxTreeItemId catTreeID, wxString name );
+    void  SetAttribute( wxTreeItemId catTreeID, wxString name, wxString val );
 
     /*
      * @brief Get the entry id of the stamp. This is typically a catalog id.
@@ -584,6 +585,8 @@ public:
     ///  @param IDNbr 
     void SetCatalogLink( wxTreeItemId catTreeID, Utils::StampLink* link, wxString IDNbr );
 
+    void SetTreeItemCollapseState( wxTreeItemId childID );
+
     /*
      * @brief Set the item Inventory Status Icon
      *
@@ -680,6 +683,10 @@ public:
      * @param str
      */
     void XMLDumpNode( wxTreeItemId item, wxString str );
+
+    void OnTreectrlItemCollapsed( wxTreeEvent& event );
+
+    void OnTreectrlItemExpanded( wxTreeEvent& event );
 
 
 private:

@@ -242,11 +242,13 @@ public:
     ///  
     ///  @return wxColour 
     wxColour GetTitleColor( );
+    wxColour GetSubTitleColor( );
 
     ///  @brief Get the Title Font object
     ///  
     ///  @return wxFont 
     wxFont GetTitleFont( );
+    wxFont GetSubTitleFont( );
 
     ///  @brief Get the Top PageMargin object
     ///  
@@ -449,11 +451,13 @@ public:
     ///  
     ///  @param color 
     void SetTitleColor( wxColour color );
+    void SetSubTitleColor( wxColour color );
 
     ///  @brief Set the Title Font object
     ///  
     ///  @param font 
     void SetTitleFont( wxFont font );
+    void SetSubTitleFont( wxFont font );
 
     ///  @brief Set the Top PageMargin object
     ///  
@@ -531,7 +535,9 @@ private:
     wxCheckBox* m_grayScaleImagesCheckbox;
     wxChoice* m_orientationChoice;
     wxFontPickerCtrl* m_titleFontPicker;
+    wxFontPickerCtrl* m_subTitleFontPicker;
     wxColourPickerCtrl* m_titleColorPicker;
+    wxColourPickerCtrl* m_subTitleColorPicker;
     wxFontPickerCtrl* m_nbrFontPicker;
     wxColourPickerCtrl* m_nbrColorPicker;
     wxFontPickerCtrl* m_nameFontPicker;

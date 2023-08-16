@@ -230,7 +230,8 @@ namespace Utils {
         wxXmlAttribute* attr = node->GetAttributes( );
         while ( attr )
         {
-            if ( !attr->GetName( ).Cmp( attrName ) )
+            wxString name = attr->GetName( );
+            if ( !attrName.Cmp( name ) )
             {
                 return attr;
             }

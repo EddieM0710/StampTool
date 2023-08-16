@@ -74,6 +74,8 @@ EVT_TREE_END_DRAG( ID_CATALOGTREECTRL, CatalogTreeCtrl::OnEndDrag )
 EVT_TREE_SEL_CHANGED( ID_CATALOGTREECTRL, CatalogTreeCtrl::OnSelChanged )
 EVT_TREE_STATE_IMAGE_CLICK( ID_CATALOGTREECTRL, CatalogTreeCtrl::OnItemStateClick )
 EVT_TREE_ITEM_MENU( ID_CATALOGTREECTRL, CatalogTreeCtrl::OnItemMenu )
+EVT_TREE_ITEM_COLLAPSED( ID_CATALOGTREECTRL, CatalogTreeCtrl::OnTreectrlItemCollapsed )
+EVT_TREE_ITEM_EXPANDED( ID_CATALOGTREECTRL, CatalogTreeCtrl::OnTreectrlItemExpanded )
 wxEND_EVENT_TABLE( )
 
 //--------------
@@ -89,7 +91,22 @@ CatalogTreeCtrl::CatalogTreeCtrl( wxWindow* parent, const wxWindowID id,
     CreateStateImageList( );
 }
 
-//--------------
+void CatalogTreeCtrl::SetTreeItemCollapseState( wxTreeItemId childID )
+{
+
+    wxString state = GetAttribute( childID, Catalog::XMLDataNames[ Catalog::DT_CollapseState ] );
+    if ( String2Bool( state ) )
+    {
+        Collapse( childID );
+    }
+    else
+    {
+        Expand( childID );
+    }
+
+}
+
+//---------wxTreeItemId childID-----
 
 wxTreeItemId CatalogTreeCtrl::AddChild( wxTreeItemId parent, wxXmlNode* child )
 {
@@ -102,7 +119,6 @@ wxTreeItemId CatalogTreeCtrl::AddChild( wxTreeItemId parent, wxXmlNode* child )
     {
         return 0;
     }
-
     wxTreeItemId childID = AppendItem( parent, label, icon, -1, itemData );
 
 
@@ -156,7 +172,7 @@ wxTreeItemId CatalogTreeCtrl::AddChild( wxTreeItemId parent, wxXmlNode* child )
         AddChild( childID, grandChild );
         grandChild = grandChild->GetNext( );
     }
-
+    SetTreeItemCollapseState( childID );
     return childID;
 }
 
@@ -586,12 +602,24 @@ wxString CatalogTreeCtrl::GetAttribute( wxTreeItemId catTreeID, wxString name )
     wxXmlNode* node = GetItemNode( catTreeID );
     if ( node )
     {
-        wxString val = node->GetAttribute( name );
+        wxString val = Utils::GetAttrStr( node, name );
         return val;
     }
     return "";
 }
 
+void  CatalogTreeCtrl::SetAttribute( wxTreeItemId catTreeID, wxString name, wxString val )
+{
+    if ( catTreeID.IsOk( ) )
+    {
+        wxXmlNode* node = GetItemNode( catTreeID );
+        if ( node )
+        {
+            Utils::SetAttrStr( node, name, val );
+
+        }
+    }
+}
 //--------------
 
 wxString CatalogTreeCtrl::GetImageFullName( wxTreeItemId catTreeID )
@@ -828,7 +856,7 @@ void CatalogTreeCtrl::LoadTree( )
         //        SortTree( rootID );
         GetAlbumTreeCtrl( )->UpdateStampList( );
         SetStates( GetFrame( )->GetStampToolPanel( )->ShouldShowStates( ) );
-        ExpandAll( );
+        Expand( rootID );
     }
 }
 
@@ -1437,3 +1465,29 @@ void CatalogTreeCtrl::SelectStamp( wxString id )
         this->SelectItem( item );
     }
 }
+
+void CatalogTreeCtrl::OnTreectrlItemCollapsed( wxTreeEvent& event )
+{
+
+    wxTreeItemId id = event.GetItem( );
+    if ( !id.IsOk( ) )
+    {
+        while ( 1 ) { }
+    }
+    wxString before = GetAttribute( id, Catalog::XMLDataNames[ Catalog::DT_CollapseState ] );
+    SetAttribute( id, Catalog::XMLDataNames[ Catalog::DT_CollapseState ], "true" );
+    wxString after = GetAttribute( id, Catalog::XMLDataNames[ Catalog::DT_CollapseState ] );
+    event.Skip( );
+}
+
+
+void CatalogTreeCtrl::OnTreectrlItemExpanded( wxTreeEvent& event )
+{
+    wxTreeItemId id = event.GetItem( );
+    wxString   a = GetAttribute( id, Catalog::XMLDataNames[ Catalog::DT_CollapseState ] );
+    SetAttribute( id, Catalog::XMLDataNames[ Catalog::DT_CollapseState ], "false" );
+
+    event.Skip( );
+
+}
+

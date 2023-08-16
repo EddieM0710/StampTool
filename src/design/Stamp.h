@@ -28,6 +28,7 @@
 #include <wx/pdfdocument.h>
 
 #include "design/LayoutBase.h"
+#include "design/Album.h"
 #include "utils/DebugString.h"
 
 
@@ -79,8 +80,6 @@ namespace Design {
 
         ///  @brief 
         ///  
-        void CalcFrameSizes( );
-        void CalcFramePositions( );
         void CalculateYPos( double yPos, double height );
 
         //        void ClearError( );
@@ -137,16 +136,17 @@ namespace Design {
         ///  @return false 
         bool GetShowNbr( )
         {
-            wxString catStr = GetAttrStr( AT_ShowCatNbr );
-            if ( catStr.IsEmpty( ) )
-            {
-                //default true;
-                return true;
-            }
-            else
-            {
-                return String2Bool( catStr );
-            }
+            return GetAlbum( )->GetShowNbr( );
+            // wxString catStr = GetAttrStr( AT_ShowCatNbr );
+            // if ( catStr.IsEmpty( ) )
+            // {
+            //     //default true;
+            //     return true;
+            // }
+            // else
+            // {
+            //     return String2Bool( catStr );
+            // }
         };
 
         void InitParameters( );

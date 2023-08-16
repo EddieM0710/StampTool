@@ -229,7 +229,7 @@ namespace Utils {
             }
         }
         fontNdx = -1;
-        // GetSettings()->GetFontNdxPreference( type );
+        GetSettings( )->GetFontNdxPreference( type );
         // std::cout << " FontList::LoadFont(default) " << Design::FontUsageTypeStrings[ type ]
         //     << " " << fontNdx << "\n";
         return fontNdx;

@@ -129,14 +129,20 @@ namespace Design {
     void LabelFrame::SetFontNdx( int ndx )
     {
         Utils::Font* font = GetFontList( )->GetMyFont( ndx );
-        int pnt = font->GetPointSize( );
+        if ( font )
+        {
+            int pnt = font->GetPointSize( );
 
-        // std::cout << "LabelFrame::SetFontNdx " << m_string
-        //     << " ndx:" << ndx
-        //     << " pnt:" << pnt
-        //     << " family:" << font->GetNativeInfoStr( ) << "\n";
+            // std::cout << "LabelFrame::SetFontNdx " << m_string
+            //     << " ndx:" << ndx
+            //     << " pnt:" << pnt
+            //     << " family:" << font->GetNativeInfoStr( ) << "\n";
 
-        m_FontNdx = ndx;
+            m_FontNdx = ndx;
+            return;
+        }
+        m_FontNdx = -1;
+
     };
     void LabelFrame::UpdateString( double width )
     {

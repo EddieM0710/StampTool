@@ -143,6 +143,15 @@ void AlbumDetailsDialog::CreateControls( )
     m_titleFontPicker = titleFontPickerHelper->GetFontPickerCtrl( );
     m_titleColorPicker = titleFontPickerHelper->GetColourPickerCtrl( );
 
+
+    FontPicker* subTitleFontPickerHelper = new FontPicker(
+        pageDetailsPanel, detailsVerticalSizer,
+        _( "Default SubTitle Font" ),
+        _( "Default" ), lastID,
+        *wxNORMAL_FONT, *wxBLACK );
+    m_subTitleFontPicker = subTitleFontPickerHelper->GetFontPickerCtrl( );
+    m_subTitleColorPicker = subTitleFontPickerHelper->GetColourPickerCtrl( );
+
     Connect( titleFontPickerHelper->GetDefaultButton( )->GetId( ),
         wxEVT_BUTTON,
         wxCommandEventHandler( AlbumDetailsDialog::OnTitleDefaultClick ) );
@@ -287,13 +296,13 @@ void AlbumDetailsDialog::CreateControls( )
     m_nbrCheckbox->SetValue( true );
     stampDetailsHorizontalSizer->Add( m_nbrCheckbox, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
-    m_stampTitleCheckbox = new wxCheckBox( stampDetailsPanel, ID_STAMPTITLEDEFAULTCHECKBOX, _( "Show Stamp Title" ), wxDefaultPosition, wxDefaultSize, 0 );
-    m_stampTitleCheckbox->SetValue( true );
-    stampDetailsHorizontalSizer->Add( m_stampTitleCheckbox, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+    // m_stampTitleCheckbox = new wxCheckBox( stampDetailsPanel, ID_STAMPTITLEDEFAULTCHECKBOX, _( "Show Stamp Title" ), wxDefaultPosition, wxDefaultSize, 0 );
+    // m_stampTitleCheckbox->SetValue( true );
+    // stampDetailsHorizontalSizer->Add( m_stampTitleCheckbox, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
-    m_stampSubTitleCheckbox = new wxCheckBox( stampDetailsPanel, ID_STAMPSUBTITLEDEFAULTCHECKBOX, _( "Show Stamp SubTitle" ), wxDefaultPosition, wxDefaultSize, 0 );
-    m_stampSubTitleCheckbox->SetValue( true );
-    stampDetailsHorizontalSizer->Add( m_stampSubTitleCheckbox, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+    // m_stampSubTitleCheckbox = new wxCheckBox( stampDetailsPanel, ID_STAMPSUBTITLEDEFAULTCHECKBOX, _( "Show Stamp SubTitle" ), wxDefaultPosition, wxDefaultSize, 0 );
+    // m_stampSubTitleCheckbox->SetValue( true );
+    // stampDetailsHorizontalSizer->Add( m_stampSubTitleCheckbox, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
     m_grayScaleImagesCheckbox = new wxCheckBox( stampDetailsPanel, ID_GRAYSCALECHECKBOX, _( "Show Grayscale Images" ), wxDefaultPosition, wxDefaultSize, 0 );
     m_grayScaleImagesCheckbox->SetValue( true );
@@ -433,6 +442,7 @@ wxFont AlbumDetailsDialog::GetTextFont( ) { return m_textFontPicker->GetSelected
 //--------------
 
 wxFont AlbumDetailsDialog::GetTitleFont( ) { return m_titleFontPicker->GetSelectedFont( ); }
+wxFont AlbumDetailsDialog::GetSubTitleFont( ) { return m_subTitleFontPicker->GetSelectedFont( ); }
 
 //--------------
 
@@ -449,6 +459,8 @@ wxColour AlbumDetailsDialog::GetTextColor( ) { return m_textColorPicker->GetColo
 //--------------
 
 wxColour AlbumDetailsDialog::GetTitleColor( ) { return m_titleColorPicker->GetColour( ); }
+
+wxColour AlbumDetailsDialog::GetSubTitleColor( ) { return m_subTitleColorPicker->GetColour( ); }
 
 //--------------
 
@@ -687,6 +699,8 @@ void AlbumDetailsDialog::SetTextFont( wxFont font ) { m_textFontPicker->SetSelec
 
 void AlbumDetailsDialog::SetTitleFont( wxFont font ) { m_titleFontPicker->SetSelectedFont( font ); }
 
+void AlbumDetailsDialog::SetSubTitleFont( wxFont font ) { m_subTitleFontPicker->SetSelectedFont( font ); }
+
 //--------------
 
 void AlbumDetailsDialog::SetNbrColor( wxColour color ) { m_nbrColorPicker->SetColour( color ); }
@@ -702,6 +716,8 @@ void AlbumDetailsDialog::SetTextColor( wxColour color ) { m_textColorPicker->Set
 //--------------
 
 void AlbumDetailsDialog::SetTitleColor( wxColour color ) { m_titleColorPicker->SetColour( color ); }
+
+void AlbumDetailsDialog::SetSubTitleColor( wxColour color ) { m_subTitleColorPicker->SetColour( color ); }
 
 //--------------
 
@@ -802,8 +818,8 @@ void AlbumDetailsDialog::OnOkClick( wxCommandEvent& event )
 
     m_album->SetOverSizePaper( GetOverSizePaper( ) );
     m_album->SetShowNbr( GetShowNbr( ) );
-    m_album->SetShowTitle( GetShowStampTitle( ) );
-    m_album->SetShowSubTitle( GetShowStampSubTitle( ) );
+    //m_album->SetShowTitle( GetShowStampTitle( ) );
+   //m_album->SetShowSubTitle( GetShowStampSubTitle( ) );
     m_album->SetGrayScaleImages( GetGrayScaleImages( ) );
     m_album->SetDefaultOrientation( GetOrientation( ) );
     m_album->SetTitleLocation( m_stampNameLocation );
@@ -814,6 +830,7 @@ void AlbumDetailsDialog::OnOkClick( wxCommandEvent& event )
     m_album->SetFont( Design::AT_TextFontType, GetTextFont( ), GetTextColor( ) );
     m_album->SetFont( Design::AT_NbrFontType, GetNbrFont( ), GetNbrColor( ) );
     m_album->SetFont( Design::AT_TitleFontType, GetTitleFont( ), GetTitleColor( ) );
+    m_album->SetFont( Design::AT_SubTitleFontType, GetSubTitleFont( ), GetSubTitleColor( ) );
     m_album->SetFont( Design::AT_NameFontType, GetNameFont( ), GetNameColor( ) );
 
 
@@ -849,7 +866,7 @@ void AlbumDetailsDialog::UpdateControls( )
     SetRightPageMargin( m_album->GetRightPageMarginStr( ) );
     SetBorderSize( m_album->GetBorderSizeStr( ) );
     SetShowNbr( m_album->GetShowNbr( ) );
-    SetShowStampTitle( m_album->GetShowTitle( ) );
+    // SetShowStampTitle( m_album->GetShowTitle( ) );
     SetGrayScaleImages( m_album->GetGrayScaleImages( ) );
     SetBorderFilename( m_album->GetBorderFileName( ) );
 

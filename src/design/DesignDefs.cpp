@@ -104,7 +104,8 @@ namespace Design {
             "MountAllowanceHeight",
             "MountAllowanceWidth",
             "StampNameLocation",
-            "StampMargin"
+            "StampMargin",
+            "CollapseState"
     };
     wxString OrientationStrings[ 2 ] = { "Portrait", "Landscape" };
 
@@ -125,14 +126,14 @@ namespace Design {
             "Font" };
 
 
-    int DefaultPointSize[ AT_NbrFontUsageTypes ] = { 14, 12, 10, 16, 8 };
+    int DefaultPointSize[ AT_NbrFontUsageTypes ] = { 12, 10, 10, 10, 8 };
 
     wxString FontUsageTypeStrings[ AT_NbrFontUsageTypes ] = {
         "Title",
         "SubTitle",
-        "Name"
+        "Name",
         "Text",
-        "CatNbr",
+        "CatNbr"
     };
     wxString StampTitleLocationStrings[ AT_NbrTitleLocations ] = {
             "Top",

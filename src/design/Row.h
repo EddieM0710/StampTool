@@ -45,14 +45,26 @@ namespace Design {
         Row( wxXmlNode* node ) : LayoutBase( node )
         {
             SetNodeType( AT_Row );
-            SetObjectName( AlbumBaseNames[ GetNodeType( ) ] );
-            SetShowFrame( false );
-            SetShowTitle( false );
-            SetShowSubTitle( false );
-            SetFixedSpacingSize( "4" );
-            SetCalculateSpacing( true );
+            //SetObjectName( AlbumBaseNames[ GetNodeType( ) ] );
+            //SetShowFrame( false );
+            //SetShowTitle( false );
+            ///SetShowSubTitle( false );
+            //SetFixedSpacingSize( "4" );
+            //SetCalculateSpacing( true );
             m_titleFrame = new LabelFrame( Design::AT_TitleFontType );
-            m_titleFrame->SetString( GetAttrStr( AT_Name ) );
+            SetTitleString( GetAttrStr( AT_Name ) );
+            if ( GetShowTitle( ) )
+            {
+                m_titleFrame->SetString( GetAttrStr( AT_Name ) );
+            }
+            else
+            {
+                m_titleFrame->Init( );
+            }
+            SetTopContentMargin( 2 );
+            SetBottomContentMargin( 2 );
+            SetLeftContentMargin( 2 );
+            SetRightContentMargin( 2 );
         };
 
         ~Row( ) { };

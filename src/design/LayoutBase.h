@@ -87,8 +87,6 @@ namespace Design {
 
         LayoutBase* FindObjectByPos( double x, double y, wxString indent = "" );
 
-        double GetBottomContentMargin( ) { return GetAttrDbl( AT_BottomContentMargin ); };
-
 
         /*
          * @brief Get Layout element height
@@ -96,8 +94,6 @@ namespace Design {
          * @return double - height in MM
          */
         double GetHeight( ) { return m_frame.GetHeight( ); };
-
-        double GetLeftContentMargin( ) { return GetAttrDbl( AT_LeftContentMargin ); };
 
         /*
          * @brief Get Layout element min height
@@ -112,8 +108,6 @@ namespace Design {
          * @return double - width in MM
          */
         double GetMinWidth( ) { return m_frame.GetMinWidth( ); };
-
-        double GetRightContentMargin( ) { return GetAttrDbl( AT_RightContentMargin ); };
 
         bool GetShowFrame( ) { return String2Bool( GetAttrStr( AT_ShowFrame ) ); };
 
@@ -148,7 +142,6 @@ namespace Design {
 
         // TitleLocation GetTitleLocation( );
 
-        double GetTopContentMargin( ) { return GetAttrDbl( AT_TopContentMargin ); };
         /*
          * @brief Get Layout element position within parent element
          *
@@ -186,7 +179,6 @@ namespace Design {
         void ReportLayoutFrame( wxString indent = "" );
 
         void SetClientDimensions( wxDC& dc, double x, double y, double width = 0.0, double height = 0.0, double minWidth = 0.0, double minHeight = 0.0 );
-        void SetBottomContentMargin( double val ) { SetAttrDbl( AT_BottomContentMargin, val ); };
 
         /*
          * @brief  Set Layout element height
@@ -195,7 +187,6 @@ namespace Design {
          */
         void SetHeight( double val ) { m_frame.SetHeight( val ); };
 
-        void SetLeftContentMargin( double val ) { SetAttrDbl( AT_LeftContentMargin, val ); };
         /*
          * @brief  Set Layout element min height
          *
@@ -210,8 +201,6 @@ namespace Design {
          */
         void SetMinWidth( double val ) { m_frame.SetMinWidth( val ); };
 
-        void SetRightContentMargin( double val ) { SetAttrDbl( AT_RightContentMargin, val ); };
-
         void SetShowFrame( bool val ) { SetAttrStr( AT_ShowFrame, Bool2String( val ) ); };
 
         void SetShowNbr( bool val ) { SetAttrStr( AT_ShowCatNbr, Bool2String( val ) ); };
@@ -220,7 +209,6 @@ namespace Design {
 
         void SetShowSubTitle( bool val ) { SetAttrStr( AT_ShowSubTitle, Bool2String( val ) ); };
 
-        void SetTopContentMargin( double val ) { SetAttrDbl( AT_TopContentMargin, val ); };
 
         //void SetTitleLocation( TitleLocation loc ) { m_titleLocation = loc; };
 

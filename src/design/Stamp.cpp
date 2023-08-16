@@ -50,49 +50,7 @@ namespace Design {
 
     const double BorderAllowancePercent = .1;
     const double ImagePercentOfActual = .75;
-    // const char* StampErrorStrings[ AT_NbrStampErrorTypes ] = {
-    //     "Invalid Image Link",
-    //     "Invalid Height",
-    //     "Invalid Width" };
 
-
-    // void Stamp::ClearError( )
-    // {
-    //     m_error[ AT_InvalidImage ] = AT_OK;
-    //     m_error[ AT_InvalidHeight ] = AT_OK;
-    //     m_error[ AT_InvalidWidth ] = AT_OK;
-    // };
-
-    // void Stamp::SetError( StampErrorType type, NodeStatus status )
-    // {
-    //     m_error[ type ] = status;
-    // };
-
-    // NodeStatus Stamp::GetStatus( )
-    // {
-    //     NodeStatus status = AT_OK;
-    //     if ( m_error[ AT_InvalidImage ] > status )
-    //     {
-    //         status = m_error[ AT_InvalidImage ];
-    //         if ( status == AT_FATAL )
-    //             return status;
-    //     }
-    //     if ( m_error[ AT_InvalidHeight ] > status )
-    //     {
-    //         status = m_error[ AT_InvalidHeight ];
-    //         if ( status == AT_FATAL )
-    //             return status;
-    //     }
-    //     if ( m_error[ AT_InvalidWidth ] > status )
-    //     {
-    //         status = m_error[ AT_InvalidWidth ];
-    //         if ( status == AT_FATAL )
-    //             return status;
-    //     }
-
-    //     return status;
-
-    // };
     void Stamp::InitParameters( )
     {
         wxString height = GetAttrStr( Design::AT_Height );
@@ -171,7 +129,11 @@ namespace Design {
         int point = font.GetPointSize( );
 
         m_nbrFrame = new LabelFrame( Design::AT_NbrFontType );
-        m_nbrFrame->SetString( GetAttrStr( AT_CatNbr ) );
+
+        wxString str = GetAttrStr( AT_CatNbr );
+        int pos = str.Find( " " );
+        str = str.substr( pos + 1 );
+        m_nbrFrame->SetString( str );
         //  CalcFrame( );
 
     };
@@ -192,102 +154,7 @@ namespace Design {
         //     CalcFrame( );
     }
 
-    //--------------
-    void Stamp::CalcFrameSizes( )
-    {
-        //  border allowance for one edge
-        SetStampMargin( 4 );
 
-        // everything is basedfrom the actual stamp m_stampFrame
-        m_borderFrame.SetHeight( m_stampFrame.GetHeight( ) + GetSelvageHeight( ) + GetMountAllowanceHeight( ) );
-        m_borderFrame.SetWidth( m_stampFrame.GetWidth( ) + GetSelvageWidth( ) + GetMountAllowanceWidth( ) );
-
-        // The width of the stamp object is the m_borderFrame width + margin
-        SetWidth( m_borderFrame.GetWidth( ) + 2 * GetStampMargin( ) );
-
-        // the height of the stamp object is the border frame height + border + title height 
-        SetHeight( GetNameFrame( )->GetHeight( ) + m_borderFrame.GetHeight( ) + 2 * GetStampMargin( ) );
-        SetMinWidth( GetWidth( ) );
-        SetMinHeight( GetHeight( ) );
-
-        // the NameFrame vals are determined by the outer stamp object width, the text and the font.
-        // note the name is centered in the outside stamp object
-        UpdateString( GetNameFrame( ), GetWidth( ) );
-
-        // the NbrFrame vals are determined by stamp frame width, the text and the font
-        // note the nbr is centered in the m_borderFrame
-        UpdateString( GetNbrFrame( ), m_borderFrame.GetWidth( ) );
-
-        m_stampImageFrame.SetWidth( m_stampFrame.GetWidth( ) * ImagePercentOfActual );
-        m_stampImageFrame.SetHeight( m_stampFrame.GetHeight( ) * ImagePercentOfActual );
-    }
-
-    //--------------
-    void Stamp::CalcFramePositions( )
-    {
-        // the xPos and yPos are offsets from the containing frame
-        //the m_borderFrame is offset by the margin.
-        m_borderFrame.SetXPos( GetStampMargin( ) );
-
-        // the name frame has 0 x offset but is centered in its frame
-        GetNameFrame( )->SetXPos( 0 );
-
-        // the number g=frame is centered within the border frame
-        GetNbrFrame( )->SetXPos( m_borderFrame.GetXPos( ) + ( m_borderFrame.GetWidth( ) - m_nbrFrame->GetWidth( ) ) / 2 );
-
-        // the image is horizontally centered within the m_borderFrame.
-        m_stampImageFrame.SetXPos( m_borderFrame.GetXPos( ) + ( m_borderFrame.GetWidth( ) - m_stampImageFrame.GetWidth( ) ) / 2 );
-
-        double borderFrameYPos = 0;
-        double nameFrameYPos;
-        double imageFrameYPos;
-        double nbrFrameYPos;
-        double frameBorderYPos;
-
-        if ( GetTitleLocation( ) == AT_TitleLocationBottom )
-        {
-            //if the title is on the bottom then the border frame is on top
-            borderFrameYPos = 0;
-            // and the name is just below the m_borderFrame
-            nameFrameYPos = m_borderFrame.GetHeight( );
-        }
-        else
-        {
-            // if the name is on top then no offset for the name frame
-            nameFrameYPos = 0;
-            // and the border is jus under that
-            borderFrameYPos = GetNameFrame( )->GetHeight( );
-        }
-        // center the image vertically within the m_borderFrame
-        // note the image offsets from the m_borderFrame
-        imageFrameYPos = borderFrameYPos + ( m_borderFrame.GetHeight( ) - m_stampImageFrame.GetHeight( ) - 4 ) / 2;
-        nbrFrameYPos = imageFrameYPos + m_stampImageFrame.GetHeight( );
-
-
-        m_borderFrame.SetYPos( frameBorderYPos + borderFrameYPos );
-        m_nameFrame->SetYPos( frameBorderYPos + nameFrameYPos );
-        m_stampImageFrame.SetYPos( frameBorderYPos + imageFrameYPos );
-        m_nbrFrame->SetYPos( frameBorderYPos + nbrFrameYPos );
-        // std::cout << "Stamp::CalcFramePositions id:" << m_nbrFrame->GetString( )
-        //     << " frameYPos:" << GetYPos( )
-        //     << " frameBorderYPos:" << frameBorderYPos
-        //     << " borderFrame:" << m_borderFrame.GetYPos( )
-        //     << " nameFrame:" << m_nameFrame->GetYPos( )
-        //     << " stampImageFrame:" << m_stampImageFrame.GetYPos( )
-        //     << " nbrFrame:" << m_nbrFrame->GetYPos( ) << "\n";
-
-    }
-    void Stamp::CalculateYPos( double yPos, double height )
-    {
-        if ( GetTitleLocation( ) == AT_TitleLocationBottom )
-        {
-            SetYPos( yPos );
-        }
-        else
-        {
-            SetYPos( yPos + height - GetHeight( ) );
-        }
-    }
     wxImage Stamp::GetImage( )
     {
         if ( m_image.IsOk( ) )
@@ -338,11 +205,7 @@ namespace Design {
         Design::NodeStatus status = GetNodeStatus( );
         if ( status != Design::AT_FATAL ) {
             //Draw the outer frame transparent
-            m_frame.Draw( dc, x, y );
-
-            // std::cout << " Stamp::Draw id:" << m_nameFrame->GetString( )
-            //     << " y:" << y
-            //     << " yPos:" << GetYPos( ) << "\n";
+            //m_frame.Draw( dc, x, y );
 
             SetClientDimensions( dc, x + GetXPos( ), y + GetYPos( ), GetMinWidth( ), GetMinHeight( ) );
 
@@ -369,7 +232,6 @@ namespace Design {
                 image = wxImage( str, wxBITMAP_TYPE_JPEG );
             }
 
-            //= Utils::GetImageFromFilename( filename );
             if ( image.IsOk( ) )
             {
                 //Draw the stamp image
@@ -388,23 +250,15 @@ namespace Design {
                 dc.SetPen( *wxTRANSPARENT_PEN );
                 m_stampImageFrame.Draw( dc, xImagePos, yImagePos );
             }
-            //            DrawRectangle( dc, GetNameFrame( )->GetXPos( ) + xInnerPos, GetNameFrame( )->GetYPos( ) + yInnerPos, GetNameFrame( )->GetWidth( ), GetNameFrame( )->GetHeight( ) );
-            //double GetStampMargin( )  = m_borderFrame.GetYPos( );
-            GetNameFrame( )->Draw( dc, xInnerPos, yInnerPos );
 
+            GetNameFrame( )->Draw( dc, xInnerPos, yInnerPos );
 
             if ( GetShowNbr( ) )
             {
-
                 GetNbrFrame( )->Draw( dc, xInnerPos, yInnerPos );
-
             }
         }
-        else
-        {
-            int a = 0;
-        }
-        // std::cout << "\n";
+
     }
 
     //--------------
@@ -567,8 +421,8 @@ namespace Design {
         m_stampFrame.SetWidth( val );
         wxString str = wxString::Format( "%4.1f", val );
         SetAttrStr( Design::AT_Width, str );
-        CalcFrameSizes( );
-        CalcFramePositions( );
+        UpdateMinimumSize( );
+        UpdatePositions( );
     };
 
     //--------------
@@ -795,8 +649,31 @@ namespace Design {
 
     bool Stamp::UpdateMinimumSize( )
     {
-        CalcFrameSizes( );
+        //  border allowance for one edge
+        SetStampMargin( 4 );
 
+        // everything is basedfrom the actual stamp m_stampFrame
+        m_borderFrame.SetHeight( m_stampFrame.GetHeight( ) + GetSelvageHeight( ) + GetMountAllowanceHeight( ) );
+        m_borderFrame.SetWidth( m_stampFrame.GetWidth( ) + GetSelvageWidth( ) + GetMountAllowanceWidth( ) );
+
+        // The width of the stamp object is the m_borderFrame width + margin
+        SetWidth( m_borderFrame.GetWidth( ) + 2 * GetStampMargin( ) );
+
+        // the height of the stamp object is the border frame height + border + title height 
+        SetHeight( GetNameFrame( )->GetHeight( ) + m_borderFrame.GetHeight( ) + 1 /** GetStampMargin( )*/ );
+        SetMinWidth( GetWidth( ) );
+        SetMinHeight( GetHeight( ) );
+
+        // the NameFrame vals are determined by the outer stamp object width, the text and the font.
+        // note the name is centered in the outside stamp object
+        UpdateString( GetNameFrame( ), GetWidth( ) );
+
+        // the NbrFrame vals are determined by stamp frame width, the text and the font
+        // note the nbr is centered in the m_borderFrame
+        UpdateString( GetNbrFrame( ), m_borderFrame.GetWidth( ) );
+
+        m_stampImageFrame.SetWidth( m_stampFrame.GetWidth( ) * ImagePercentOfActual );
+        m_stampImageFrame.SetHeight( m_stampFrame.GetHeight( ) * ImagePercentOfActual );
         if ( ValidateNode( ) == AT_FATAL )
         {
             return false;
@@ -814,7 +691,46 @@ namespace Design {
 
     void Stamp::UpdatePositions( )
     {
-        CalcFramePositions( );
+        // the xPos and yPos are offsets from the containing frame
+         //the m_borderFrame is offset by the margin.
+        m_borderFrame.SetXPos( GetStampMargin( ) );
+
+        // the name frame has 0 x offset but is centered in its frame
+        GetNameFrame( )->SetXPos( 0 );
+
+        // the number g=frame is centered within the border frame
+        GetNbrFrame( )->SetXPos( m_borderFrame.GetXPos( ) + ( m_borderFrame.GetWidth( ) - m_nbrFrame->GetWidth( ) ) / 2 );
+
+        // the image is horizontally centered within the m_borderFrame.
+        m_stampImageFrame.SetXPos( m_borderFrame.GetXPos( ) + ( m_borderFrame.GetWidth( ) - m_stampImageFrame.GetWidth( ) ) / 2 );
+
+        if ( GetTitleLocation( ) == AT_TitleLocationBottom )
+        {
+            //if the title is on the bottom then the border frame is on top
+            m_borderFrame.SetYPos( 0 );
+            // and the name is just below the m_borderFrame
+            m_nameFrame->SetYPos( m_borderFrame.GetHeight( ) + 1 );
+        }
+        else
+        {
+            // if the name is on top then no offset for the name frame
+            m_nameFrame->SetYPos( 0 );
+            // and the border is just under that
+
+            m_borderFrame.SetYPos( GetNameFrame( )->GetHeight( ) + 1 );
+        }
+        // center the image vertically within the m_borderFrame
+        // note the image offsets from the m_borderFrame
+        m_stampImageFrame.SetYPos( m_borderFrame.GetYPos( ) + ( m_borderFrame.GetHeight( ) - m_stampImageFrame.GetHeight( ) - 4 ) / 2 );
+        m_nbrFrame->SetYPos( m_stampImageFrame.GetYPos( ) + m_stampImageFrame.GetHeight( ) );
+        // std::cout << "Stamp::CalcFramePositions id:" << m_nbrFrame->GetString( )
+        //     << " frameYPos:" << GetYPos( )
+        //     << " frameBorderYPos:" << frameBorderYPos
+        //     << " borderFrame:" << m_borderFrame.GetYPos( )
+        //     << " nameFrame:" << m_nameFrame->GetYPos( )
+        //     << " stampImageFrame:" << m_stampImageFrame.GetYPos( )
+        //     << " nbrFrame:" << m_nbrFrame->GetYPos( ) << "\n";
+
         ValidateNode( );
     }
 
@@ -869,4 +785,15 @@ namespace Design {
 
     //--------------
 
+    void Stamp::CalculateYPos( double yPos, double height )
+    {
+        if ( GetTitleLocation( ) == AT_TitleLocationBottom )
+        {
+            SetYPos( yPos );
+        }
+        else
+        {
+            SetYPos( yPos + height - GetHeight( ) );
+        }
+    }
 }

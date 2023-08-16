@@ -84,7 +84,7 @@ namespace Catalog {
         wxT( "Print run" ),   wxT( "Variant" ),       wxT( "Score" ),
         wxT( "Accuracy" ),    wxT( "Colors" ),        wxT( "Themes" ),
         wxT( "Description" ), wxT( "Link" ),       //   wxT( "Checked" ), 
-        wxT( "Inventory" ), wxT( "StampMount" ), wxT( "Background" )
+        wxT( "Inventory" ), wxT( "StampMount" ), wxT( "Background" ), wxT( "Collapse State" )
     };
 
     const wxString EmissionStrings[ ET_NbrTypes ]
@@ -146,7 +146,8 @@ namespace Catalog {
         wxT( "Print_run" ),   wxT( "Variant" ),       wxT( "Score" ),
         wxT( "Accuracy" ),    wxT( "Colors" ),        wxT( "Themes" ),
         wxT( "Description" ), wxT( "Link" ),        //  wxT( "CheckedStatus" ), 
-        wxT( "InventoryStatus" ),  wxT( "StampMount" ), wxT( "Background" )
+        wxT( "InventoryStatus" ),  wxT( "StampMount" ), wxT( "Background" ),
+         wxT( "CollapseState" )
     };
 
 

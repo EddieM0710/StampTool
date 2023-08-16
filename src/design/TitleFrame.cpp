@@ -55,8 +55,8 @@ namespace Design {
 
     void TitleFrame::DrawPDF( wxPdfDocument* doc, double x, double y )
     {
-        m_headingFrame->DrawPDF( doc, x, y );
-        m_subHeadingFrame->DrawPDF( doc, x, y );
+        m_headingFrame->DrawPDF( doc, x + GetXPos( ), y + GetYPos( ) );
+        m_subHeadingFrame->DrawPDF( doc, x + GetXPos( ), y + GetYPos( ) );
 
     };
     void TitleFrame::LoadFonts( wxXmlNode* node )
@@ -111,7 +111,9 @@ namespace Design {
         m_subHeadingFrame->UpdateString( subTitleWidth );
         SetHeight( m_headingFrame->GetHeight( ) + m_subHeadingFrame->GetHeight( ) );
         SetWidth( std::max( titleWidth, subTitleWidth ) );
-        SetMinHeight( m_headingFrame->GetMinHeight( ) + m_subHeadingFrame->GetMinHeight( ) );
+        SetMinHeight( m_headingFrame->GetMinHeight( )
+            + m_subHeadingFrame->GetMinHeight( )
+            + GetAlbum( )->GetTopContentMargin( ) );
         SetMinWidth( std::max( titleWidth, subTitleWidth ) );
         SetXPos( m_headingFrame->GetXPos( ) );
         SetYPos( m_headingFrame->GetYPos( ) );

@@ -43,6 +43,8 @@ namespace Design {
 
         ~Frame( );
 
+        void Init( );
+
         /*
           * @brief Draw object on screen
           *

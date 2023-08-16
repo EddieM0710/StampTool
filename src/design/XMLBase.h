@@ -84,6 +84,8 @@ namespace Design {
         ///  @return Attribute* 
         Attribute* FindAttr( wxString name );
 
+        void DumpAttr( );
+
         ///  @brief Get the Attr Str object
         ///  
         ///  @param name 

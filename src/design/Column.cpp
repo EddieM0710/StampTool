@@ -46,16 +46,14 @@ namespace Design {
 
             if ( GetShowFrame( ) )
             {
-                // leftPadding = GetLeftContentMargin( );
-                // topPadding = GetTopContentMargin( );
 
                 m_frame.Draw( dc, x, y );
             }
 
             SetClientDimensions( dc, x + GetXPos( ), y + GetYPos( ), GetWidth( ), GetHeight( ) );
 
-            double xPos = x + GetXPos( );// + leftPadding;
-            double yPos = y + GetYPos( );// + topPadding;
+            double xPos = x + GetXPos( );
+            double yPos = y + GetYPos( );
 
             if ( GetShowTitle( ) )
             {
@@ -85,14 +83,11 @@ namespace Design {
         //  dc.SetPen( *wxBLACK_PEN );
         if ( GetShowFrame( ) )
         {
-            leftPadding = GetLeftContentMargin( );
-            topPadding = GetTopContentMargin( );
-
             m_frame.DrawPDF( doc, x, y );
         }
 
-        double xPos = x + GetXPos( ) + leftPadding;
-        double yPos = y + GetYPos( ) + topPadding;
+        double xPos = x + GetXPos( );
+        double yPos = y + GetYPos( );
 
         if ( GetShowTitle( ) )
         {
@@ -186,13 +181,13 @@ namespace Design {
         double rightPadding = 0;
         double topPadding = 0;
         double bottomPadding = 0;
-        //if ( GetShowFrame( ) )
-        {
-            leftPadding = GetLeftContentMargin( );
-            rightPadding = GetRightContentMargin( );
-            topPadding = GetTopContentMargin( );
-            bottomPadding = GetBottomContentMargin( );
-        }
+        // //if ( GetShowFrame( ) )
+        // {
+        //     leftPadding = GetLeftContentMargin( );
+        //     rightPadding = GetRightContentMargin( );
+        //     topPadding = GetTopContentMargin( );
+        //     bottomPadding = GetBottomContentMargin( );
+        // }
 
         minHeight = minHeight + topPadding + bottomPadding;
         minWidth = minWidth;//+ leftPadding + rightPadding;
@@ -282,6 +277,7 @@ namespace Design {
 
     void Column::UpdateSizes( )
     {
+        SetWidth( GetMinWidth( ) - GetLeftContentMargin( ) - GetRightContentMargin( ) );
 
         // Set the height and width of each child  column
         // Stamps have fixed height and width
@@ -299,8 +295,8 @@ namespace Design {
 
             }
             child->UpdateSizes( );
-            std::cout << "Column::UpdateSizes  child pos (" << child->GetXPos( ) << ", " << child->GetYPos( ) <<
-                ")   size (" << child->GetWidth( ) << ", " << child->GetHeight( ) << ") \n";
+            // std::cout << "Column::UpdateSizes  child pos (" << child->GetXPos( ) << ", " << child->GetYPos( ) <<
+            //     ")   size (" << child->GetWidth( ) << ", " << child->GetHeight( ) << ") \n";
 
 
             childID = GetAlbumTreeCtrl( )->GetNextChild( parentID, cookie );

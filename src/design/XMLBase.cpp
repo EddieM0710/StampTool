@@ -47,6 +47,8 @@ namespace Design {
             wxString name = ele->GetName( );
             SetObjectName( name );
             m_lineNbr = ele->GetLineNumber( );
+
+            //            std::cout << "XMLBase::XMLBase " << name << " line:" << m_lineNbr << "\n";
             LoadAttributes( ele );
             m_text = ele->GetNodeContent( );
         }
@@ -87,8 +89,20 @@ namespace Design {
     }
     //--------------
 
+    void XMLBase::DumpAttr( )
+    {
+
+        int cnt = m_attrArray.size( );
+        for ( int i = 0; i < cnt; i++ )
+        {
+            Attribute* attr = m_attrArray.at( i );
+            std::cout << "XMLBase::DumpAttr " << i << " " << attr->GetName( ) << " " << attr->GetValue( ) << "\n";
+        }
+    }
+
     Attribute* XMLBase::FindAttr( wxString name )
     {
+
         int cnt = m_attrArray.size( );
         for ( int i = 0; i < cnt; i++ )
         {
@@ -96,6 +110,10 @@ namespace Design {
             wxString attrName = attr->GetName( );
             if ( !attrName.Cmp( name ) )
             {
+                // if ( !name.Cmp( "ShowFrame" ) )
+                // {
+                //     std::cout << name << " " << attr->GetValue( ) << "\n";
+                // }
                 return attr;
             }
         }
@@ -173,10 +191,12 @@ namespace Design {
         {
             const char* name = attr->GetName( );
             const char* val = attr->GetValue( );
+            //            std::cout << "    XMLBase::LoadAttributes  " << name << "  " << val << "\n";
             Attribute* attribute = new Attribute( name, val );
             m_attrArray.push_back( attribute );
             attr = attr->GetNext( );
         }
+        //        DumpAttr( );
         return true;
     }
 

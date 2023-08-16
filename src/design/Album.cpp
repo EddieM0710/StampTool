@@ -353,9 +353,11 @@ namespace Design {
         SetAttribute( xmlNode, AT_LeftPageMargin );
         SetAttribute( xmlNode, AT_BorderFileName );
         SetAttribute( xmlNode, AT_BorderSize );
-        SetAttribute( xmlNode, AT_FontType );
-        SetAttribute( xmlNode, AT_NativeFontString );
-        SetAttribute( xmlNode, AT_FontColor );
+        SetAttribute( xmlNode, AT_ShowCatNbr );
+        SetAttribute( xmlNode, AT_ShowTitle );
+        SetAttribute( xmlNode, AT_SubTitle );
+        SetAttribute( xmlNode, AT_GrayScaleImages );
+        SetAttribute( xmlNode, AT_StampNameLocation );
         SetAttribute( xmlNode, AT_Orientation );
         SaveFonts( xmlNode );
     }
@@ -365,6 +367,7 @@ namespace Design {
         if ( DefaultFonts[ AT_NbrFontType ] >= 0
             || DefaultFonts[ AT_TextFontType ] >= 0
             || DefaultFonts[ AT_TitleFontType ] >= 0
+            || DefaultFonts[ AT_SubTitleFontType ] >= 0
             || DefaultFonts[ AT_NameFontType ] >= 0 )
         {
             wxXmlNode* fonts = Utils::NewNode( parent, "Fonts" );
@@ -404,6 +407,15 @@ namespace Design {
                         || ( !IsNodeType( AT_Album ) && !IsDefaultFont( AT_TitleFontType, GetFontNdx( AT_TitleFontType ) ) ) )
                     {
                         GetFontList( )->SaveFont( fonts, DefaultFonts[ AT_TitleFontType ], Design::AT_TitleFontType );
+                    }
+                }
+                if ( DefaultFonts[ AT_SubTitleFontType ] >= 0 )
+                {
+                    if ( IsNodeType( AT_Album )  //save all fonts for album                    
+                        //or all but default fonts for others
+                        || ( !IsNodeType( AT_Album ) && !IsDefaultFont( AT_SubTitleFontType, GetFontNdx( AT_SubTitleFontType ) ) ) )
+                    {
+                        GetFontList( )->SaveFont( fonts, DefaultFonts[ AT_SubTitleFontType ], Design::AT_SubTitleFontType );
                     }
                 }
             }

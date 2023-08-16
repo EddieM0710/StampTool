@@ -202,7 +202,7 @@ namespace Design {
         ///  
         ///  @return true 
         ///  @return false 
-        bool GetShowNbr( ) { return String2Bool( GetAttrStr( AT_CatNbr ) ); };
+        bool GetShowNbr( ) { return String2Bool( GetAttrStr( AT_ShowCatNbr ) ); };
 
         TitleLocation  GetTitleLocation( );
 
@@ -321,7 +321,7 @@ namespace Design {
         ///  @brief Set the Show Nbr object
         ///  
         ///  @param val 
-        void SetShowNbr( bool val ) { SetAttrStr( AT_CatNbr, Bool2String( val ) ); };
+        void SetShowNbr( bool val ) { SetAttrStr( AT_ShowCatNbr, Bool2String( val ) ); };
 
         void SetTitleLocation( TitleLocation loc );
 

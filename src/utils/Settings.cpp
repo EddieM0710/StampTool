@@ -156,6 +156,9 @@ namespace Utils {
     wxFont Settings::GetTitleFont( ) { return GetFontList( )->GetFont( FontPreference[ Design::AT_TitleFontType ] ); };
     wxColour Settings::GetTitleColor( ) { return GetFontList( )->GetColor( FontPreference[ Design::AT_TitleFontType ] ); };
 
+    wxFont Settings::GetSubTitleFont( ) { return GetFontList( )->GetFont( FontPreference[ Design::AT_SubTitleFontType ] ); };
+    wxColour Settings::GetSubTitleColor( ) { return GetFontList( )->GetColor( FontPreference[ Design::AT_TitleFontType ] ); };
+
     wxFont Settings::GetTextFont( ) { return GetFontList( )->GetFont( FontPreference[ Design::AT_TextFontType ] ); };
     wxColour Settings::GetTextColor( ) { return GetFontList( )->GetColor( FontPreference[ Design::AT_TextFontType ] ); };
 
@@ -250,6 +253,7 @@ namespace Utils {
             GetFontList( )->SaveFont( fonts, FontPreference[ Design::AT_NameFontType ], Design::AT_NameFontType );
             GetFontList( )->SaveFont( fonts, FontPreference[ Design::AT_TextFontType ], Design::AT_TextFontType );
             GetFontList( )->SaveFont( fonts, FontPreference[ Design::AT_TitleFontType ], Design::AT_TitleFontType );
+            GetFontList( )->SaveFont( fonts, FontPreference[ Design::AT_SubTitleFontType ], Design::AT_SubTitleFontType );
         }
 
         wxXmlNode* sortOrder = NewNode( settings, "SortOrder" );
@@ -608,6 +612,12 @@ namespace Utils {
             if ( FontPreference[ Design::AT_TitleFontType ] < 0 )
             {
                 FontPreference[ Design::AT_TitleFontType ] = GetFontList( )->DefaultFont( Design::DefaultPointSize[ Design::AT_TitleFontType ] );
+            }
+
+            FontPreference[ Design::AT_SubTitleFontType ] = GetFontList( )->LoadFont( child, Design::AT_SubTitleFontType );
+            if ( FontPreference[ Design::AT_SubTitleFontType ] < 0 )
+            {
+                FontPreference[ Design::AT_SubTitleFontType ] = GetFontList( )->DefaultFont( Design::DefaultPointSize[ Design::AT_SubTitleFontType ] );
             }
 
         }

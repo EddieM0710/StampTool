@@ -77,6 +77,9 @@ namespace Utils {
         wxFont GetTitleFont( );
         wxColour GetTitleColor( );
 
+        wxFont GetSubTitleFont( );
+        wxColour GetSubTitleColor( );
+
         wxFont GetTextFont( );
         wxColour GetTextColor( );
 

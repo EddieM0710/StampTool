@@ -148,7 +148,7 @@ void GenerateList::CreateControls( )
     itemBoxSizer8->Add( m_filename, 1, wxGROW | wxALL, 5 );
 
     // GenerateList content construction
-    m_gridCtrl->SetColLabelValue( 0, Catalog::DataTypeNames[ Catalog::DT_ID_Nbr ] );
+    m_gridCtrl->SetColLabelValue( 0, "ID" );
     m_gridCtrl->SetColLabelValue( 1, Catalog::DataTypeNames[ Catalog::DT_InventoryStatus ] );
     m_gridCtrl->SetColLabelValue( 2, Catalog::DataTypeNames[ Catalog::DT_Name ] );
     m_gridCtrl->SetColLabelValue( 3, Catalog::DataTypeNames[ Catalog::DT_Issued_on ] );

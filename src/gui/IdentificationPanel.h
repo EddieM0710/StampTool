@@ -64,7 +64,6 @@ public:
         ID_WIDTHLABELEDTEXTBOX,
         ID_HEIGHTLABELEDTEXTBOX,
         ID_LINKTEXTBOX,
-        ID_MYSTICBUTTON,
         ID_COLNECTBUTTON,
         ID_SITETBUTTON,
         ID_EBAYBUTTON,
@@ -155,7 +154,7 @@ public:
     void OnColnectButtonClick( wxCommandEvent& event );;
 
     void OneBayButtonClick( wxCommandEvent& event );
-    void OnMysticButtonClick( wxCommandEvent& event );
+
     void OnNPMButtonClick( wxCommandEvent& event );
     void OnComboboxSelected( wxCommandEvent& event );
     void OnComboboxUpdated( wxCommandEvent& event );
@@ -203,8 +202,8 @@ public:
 
 private:
     wxCheckBox* m_editCheckbox;
-    LabeledTextBox* m_ID;        ///< ID display
-    //    wxChoice* m_status;          ///< Stamp Status wxChoice
+    //    LabeledTextBox* m_ID;        ///< ID display
+        //    wxChoice* m_status;          ///< Stamp Status wxChoice
     LabeledTextBox* m_name;      ///< Stamp Name display
     wxChoice* m_emission;        ///<  Stamp Emission wxChoice
     wxChoice* m_format;          ///<  Stamp Format wxChoice
@@ -216,12 +215,12 @@ private:
     LabeledTextBox* m_printing;   ///< Stamp printng display
     LabeledTextBox* m_width;   ///< Stamp width display
     LabeledTextBox* m_height;   ///< Stamp height display
-
+    wxTextCtrl* m_catCode;
     //LabeledTextBox* m_stampMount;
     wxComboBox* mountComboBox;
 
     LabeledTextBox* m_link;
-    LabeledTextBox* m_catCodes;
+    // LabeledTextBox* m_catCodes;
     LabeledTextBox* m_imageName;
 };
 

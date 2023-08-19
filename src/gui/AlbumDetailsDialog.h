@@ -106,6 +106,7 @@ public:
         ID_ROWCOLTITLEDEFAULTCHECKBOX,
         ID_FRAMEDEFAULTCHECKBOX,
         ID_GRAYSCALECHECKBOX,
+        ID_CATALOGTEXTBOX,
         ID_ORIENTATIONCHOICE,
         ID_TITLEFONTPANEL,
         ID_ALBUMLAYOUTTEXTCTRL,
@@ -155,6 +156,8 @@ public:
     wxString GetBorderSize( );
 
     wxString GetBorderFilename( );
+
+    wxString GetCatalog( );
 
     ///  @brief Get the Bottom PageMargin object
     ///  
@@ -331,6 +334,8 @@ public:
     void SetBorderSize( wxString size );
 
     void SetBorderFilename( wxString filename );
+
+    void SetCatalog( wxString catCode );
 
     ///  @brief Set the Border Size Modified object
     ///  
@@ -552,6 +557,7 @@ private:
     wxRadioButton* m_topButton;
     wxRadioButton* m_bottomButton;
 
+    wxTextCtrl* m_catalog;
     wxRadioButton* m_defaultButton;
     wxButton* m_validate;
     wxListBox* m_statusList;

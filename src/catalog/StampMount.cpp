@@ -252,8 +252,6 @@ namespace Catalog {
         }
         wxFileName name( filename );
         Utils::SetAttrStr( docRoot, "Name", name.GetName( ) );
-        // name.MakeRelativeTo( "." );
-       // Utils::SetAttrStr( docRoot, "ImagePath", "" );//name.GetPath( ) );
 
         bool status = false;
         status = csv->DoLoad( filename, m_mountDoc->GetRoot( ) );

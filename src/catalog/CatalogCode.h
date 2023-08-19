@@ -1,9 +1,10 @@
 /**
  * @file CatalogCode.h
- * @author Eddie Monroe
- * @brief
+ * @author Eddie Monroe ( )
+ * @brief This is a wrapper of an wxXmlNode for
+ * safe/convenient getting/putting.
  * @version 0.1
- * @date 2021-03-01
+ * @date 2021-02-25
  *
  * @copyright Copyright ( c ) 2021
  *
@@ -25,109 +26,62 @@
 #ifndef CatalogCode_h
 #define CatalogCode_h
 
-#include <vector>
-#include <wx/dataview.h>
+#include "catalog/CatalogDefs.h"
+#include "catalog/CatalogBase.h"
+#include "catalog/CatalogData.h"
+#include "catalog/CatalogVolume.h"
+ //#include "utils/ImageRepository.h"
 #include <wx/string.h>
-
-#include "CatalogDefs.h"
-#include "CatalogBase.h"
-
-#include "wx/xml/xml.h"
-
-
+#include <wx/arrstr.h>
 
 namespace Catalog {
 
 
+    wxString MakeImageName( wxString catCode );
+    void GetCodes( wxString catCodeStr, wxString& catalog, wxString& country, wxString& code );
 
     /**
      * @brief This is a wrapper of an wxXmlNode for
      * safe/convenient getting/putting.
-     * @see CatalogBase, Stamp, CatalogCode, Specimen, Classification
+     *
      *
      */
-    class CatalogCode : public CatalogBase
+    class CatalogCode
     {
-
-    private:
-        CatalogCode( ) : CatalogBase( )
+        /**
+           * @brief Construct a new CatalogCode object
+           *
+           */
+        CatalogCode( )
         {
-            SetNodeType( NT_CatalogCode );
-            IsOK( );
+
         };
 
     public:
 
-        ///  @brief Construct a new Catalog Code object
-        ///  
-        ///  @param ele 
-        CatalogCode( wxXmlNode* ele ) : CatalogBase( ele )
-        {
-            SetNodeType( NT_CatalogCode );
-            IsOK( );
-        };
+        /**
+         * @brief Construct a new CatalogCode object
+         *
+         * @param entry
+         */
+        CatalogCode( wxString codeList );
 
-        ///  @brief Destroy the Catalog Code object
+        /**
+         * @brief Destroy the CatalogCode object
+         *
+         */
         ~CatalogCode( ) { };
 
-        ///  @brief Get the attr value for the given type
-        ///  
-        ///  @param type 
-        ///  @return wxString 
-        wxString GetAttr( CatalogCodeTypes type );
+        wxString FindImageName( );
 
-        ///  @brief Convenience function for getting Catalog attribute
-        ///  
-        ///  @param val 
-        wxString GetCatalog( );
+        wxString GetPreferredCatalogCode( wxString cat );
 
-        ///  @brief Convenience function for getting Country attribute
-        ///  
-        ///  @param val 
-        wxString GetCountry( );
+        bool IsCatalogCode( wxString catCode );
 
-        ///  @brief Convenience function for getting id attribute
-        ///  
-        ///  @param val 
-        wxString GetID( );
-
-        ///  @brief Fills the input vector with the code values and returns the element pointer for convenience
-        ///  
-        /// @param data   pointer to vector to fill
-        /// @return wxXmlNode*   pointer to the element of this CatalogCode
-        wxXmlNode* GetData( wxVector<wxVariant>* data );
-
-        ///  @brief Sanity check on CataloCode instantion
-        ///  
-        ///  @return true 
-        ///  @return false 
-        bool IsOK( );
-
-        ///  @brief Set the attr value fo th given type
-        ///  
-        ///  @param type 
-        ///  @param val 
-        void SetAttr( CatalogCodeTypes type, wxString val );
-
-        ///  @brief Convenience function for setting Catalog attribute
-        ///  
-        ///  @param val 
-        void SetCatalog( wxString val );
-
-        ///  @brief Convenience function for setting Country attribute
-        ///  
-        ///  @param val 
-        void SetCountry( wxString val );
-
-        ///  @brief Convenience function for setting ID attribute
-        ///  
-        ///  @param val 
-        void SetID( wxString val );
 
     private:
-        bool m_OK;
-        bool m_dataDirty[ CC_NbrTypes ];
+        wxArrayString m_codes;
+        wxString m_codeList;
     };
 }
-
 #endif

@@ -26,23 +26,9 @@
 #ifndef _SORTORDERPANEL_H_
 #define _SORTORDERPANEL_H_
 
- /*
-  * Includes
-  */
 #include "gui/GuiDefs.h"
 
 
-
-  /*
-   * Forward declarations
-   */
-
-
-
-
-   /*
-    * Control identifiers
-    */
 #define SYMBOL_SORTORDERPANEL_STYLE  wxTAB_TRAVERSAL
 #define SYMBOL_SORTORDERPANEL_TITLE _( "SortOrderPanel" )
 #define SYMBOL_SORTORDERPANEL_IDNAME ID_SORTORDERPANEL
@@ -50,14 +36,10 @@
 #define SYMBOL_SORTORDERPANEL_POSITION wxDefaultPosition
 
 
-    /*
-     * SortOrderPanel class declaration
-     */
-
 class SortOrderPanel : public wxPanel
 {
     DECLARE_DYNAMIC_CLASS( SortOrderPanel )
-        DECLARE_EVENT_TABLE( )
+    DECLARE_EVENT_TABLE( )
 
 public:
     enum SortOrderPanelGuiDefs
@@ -70,13 +52,13 @@ public:
         ID_CHOICE4
     };
 
-    
 
-        /**
-         * @brief Default Constructor a new SortOrderPanel object
-         * @details Must be used in conjunction with Create.
-         *
-         */
+
+    /**
+     * @brief Default Constructor a new SortOrderPanel object
+     * @details Must be used in conjunction with Create.
+     *
+     */
     SortOrderPanel( );
 
     /**
@@ -128,49 +110,34 @@ public:
      */
     void CreateControls( );
 
-    // SortOrderPanel event handler declarations
 
-   //   ID_CHOICE
     void OnChoiceSelected( wxCommandEvent& event );
 
-    //   ID_CHOICE1
     void OnChoice1Selected( wxCommandEvent& event );
 
-    //   ID_CHOICE2
     void OnChoice2Selected( wxCommandEvent& event );
 
-    //   ID_CHOICE3
     void OnChoice3Selected( wxCommandEvent& event );
 
-    //   ID_CHOICE4
     void OnChoice4Selected( wxCommandEvent& event );
 
     void OnOkClick( );
 
-    // SortOrderPanel event handler declarations
 
-    // SortOrderPanel member function declarations
-
-
-
-   // 
     static bool ShowToolTips( );
     bool IsDirty( ) { return m_dirty; };
 
-    
 
 
 
-        // SortOrderPanel member variables
+
     wxChoice* m_firstSort;
     wxChoice* m_secondSort;
     wxChoice* m_thirdSort;
     wxChoice* m_forthSort;
     wxChoice* m_fifthSort;
-    // SortOrderPanel member variables
     wxArrayString m_sortStrings;
     bool m_dirty;
 };
 
 #endif
-// _SORTORDERPANEL_H_

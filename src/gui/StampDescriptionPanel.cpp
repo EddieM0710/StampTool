@@ -35,7 +35,7 @@
 
 #include "wx/imaglist.h"
 
-#include "CatalogCodePanel.h"
+ //#include "CatalogCodePanel.h"
 #include "catalog/CatalogData.h"
 #include "CharacteristicsPanel.h"
 #include "Defs.h"
@@ -43,7 +43,7 @@
 #include "IdentificationPanel.h"
 #include "ImagePanel.h"
 #include "InventoryPanel.h"
-#include "MiscellaneousDataPanel.h"
+ //#include "MiscellaneousDataPanel.h"
 #include "Settings.h"
 #include "Stamp.h"
 #include "AppData.h"
@@ -133,7 +133,7 @@ void StampDescriptionPanel::Init( void )
     m_stampImage = NULL;
     m_inventoryPanel = NULL;
     //    m_characteristicsPanel = NULL;
-    m_miscellaneousDataPanel = NULL;
+   // m_miscellaneousDataPanel = NULL;
     //$    m_description = NULL;
     //$    m_bkgndText = NULL;
         // StampDescriptionPanel member initialisation
@@ -468,24 +468,17 @@ void StampDescriptionPanel::UpdatePanel( )
     Catalog::Entry stamp( GetCatalogData( )->GetCurrentStamp( ) );
 
     m_inventoryPanel->UpdatePanel( );
-    //    m_catalogCodePanel->UpdatePanel( );
-        //    m_characteristicsPanel->UpdatePanel( );
     m_identificationPanel->UpdatePanel( );
-    //    m_miscellaneousDataPanel->UpdatePanel( );
-    wxString imageFile = GetCatalogData( )->GetImageFilename( stamp.GetID( ) );
+    wxString imageFile = stamp.FindImageName( );
     m_stampImage->SetBitmap( imageFile );
 }
 
 void StampDescriptionPanel::SetDataEditable( bool val )
 {
     m_inventoryPanel->SetDataEditable( val );
-    //    m_catalogCodePanel->SetDataEditable( val );
-        //    m_characteristicsPanel->SetDataEditable( val );
     m_identificationPanel->SetDataEditable( val );
-    //    m_miscellaneousDataPanel->SetDataEditable( val );
-        //$    m_bkgndText->SetEditable( val );
-        //$    m_description->SetEditable( val );
 }
+
 
 void StampDescriptionPanel::OnNotebooksplitterwindowSashPosChanged( wxSplitterEvent& event )
 {

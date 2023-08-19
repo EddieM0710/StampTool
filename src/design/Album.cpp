@@ -164,6 +164,8 @@ namespace Design {
 
     wxString Album::GetBottomPageMarginStr( ) { return GetAttrStr( AT_BottomPageMargin ); };
 
+    wxString Album::GetCatalog( ) { return GetAttrStr( AT_Catalog ); };
+
     wxColour Album::GetColor( FontUsageType fontType )
     {
         int ndx = GetFontNdx( fontType );
@@ -427,6 +429,31 @@ namespace Design {
     void Album::SetBorderFilename( wxString str ) { SetAttrStr( AT_BorderFileName, str ); };
 
     void Album::SetBottomPageMargin( wxString str ) { SetAttrStr( AT_BottomPageMargin, str ); };
+
+    void Album::SetCatalog( wxString str )
+    {
+        wxString currCat = GetAttrStr( AT_Catalog );
+        if ( currCat.IsEmpty( ) )
+        {
+            SetAttrStr( AT_Catalog, str );
+            // now fix all the stamp entries to reflect the right catalog code
+            GetAlbumTreeCtrl( )->UpdateAlbumStampEntries( GetAlbumTreeCtrl( )->GetRootItem( ) );
+            return;
+        }
+        else
+        {
+            if ( !currCat.Cmp( str ) )
+            {
+                return;
+            }
+            else
+            {
+                SetAttrStr( AT_Catalog, str );
+                // now fix all the stamp entries to reflect the right catalog code
+                GetAlbumTreeCtrl( )->UpdateAlbumStampEntries( GetAlbumTreeCtrl( )->GetRootItem( ) );
+            }
+        }
+    };
 
     void Album::SetDocName( wxString str ) { SetAttrStr( AT_Name, str ); };
 

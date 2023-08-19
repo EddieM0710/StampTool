@@ -86,22 +86,11 @@ namespace Catalog
         ///
         inline CatalogTreeCtrl* GetCatalogTreeCtrl( ) { return m_catalogTreeCtrl; };
 
-        ///  @brief Get the Image Filename object
+
+
+        ///  @brief Get the Catalog Volume object
         ///  
-        ///  @param stampId 
-        ///  @return wxString 
-        wxString GetImageFilename( wxString stampId );
-
-        ///  @brief Get the Image Path object
-        ///  
-        ///  @return wxString 
-        wxString GetImagePath( );
-
-        // CatalogPanel*  GetCatalogPanel( ){ return m_catalogPanel; };
-
-         ///  @brief Get the Catalog Volume object
-         ///  
-         ///  @return Catalog::CatalogVolume* 
+        ///  @return Catalog::CatalogVolume* 
         inline Catalog::CatalogVolume* GetCatalogVolume( )
         {
             return m_catalogList.GetCatalogVolume( );
@@ -188,8 +177,6 @@ namespace Catalog
         ///  @param i 
         void SetCollectionListSelection( );
 
-        //void SetAlbumNotebookPagePanel( CatalogPanel* catalogPanel ) { m_albumNotebookPagePanel = catalogPanel; };
-
         ///  @brief Set the Current Stamp object for sisplay in 
         /// all gui panels;
         ///  
@@ -203,12 +190,10 @@ namespace Catalog
         wxXmlNode* m_stamp;
         Catalog::CatalogList m_catalogList;
         CatalogTreeCtrl* m_catalogTreeCtrl;
-        //CatalogTreeCtrl* m_albumPageTreeCtrl;
         StampDescriptionPanel* m_stampDescriptionPanel;
         GenerateList* m_generateListPanel;
 
         CatalogPanel* m_catalogTreePanel;
-        //CatalogPanel* m_albumNotebookPagePanel;
     };
 }
 #endif

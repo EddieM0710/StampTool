@@ -29,7 +29,6 @@
 #include "gui/CatalogPanel.h"
 #include "gui/AlbumPanel.h"
 #include "gui/StampDescriptionPanel.h"
- ////#include "gui/AppData.h" 
 #include "utils/Project.h"
 #include "Defs.h" 
 #include "catalog/StampMount.h"
@@ -46,10 +45,7 @@ namespace Catalog
         {
             m_catalogTreeCtrl->ClearCatalogTree( );
         }
-        // if ( m_albumPageTreeCtrl )
-        // {
-        //     m_albumPageTreeCtrl->ClearCatalogTree( );
-        // }
+
 
         return m_catalogList.NewCatalogVolume( );
     };
@@ -75,60 +71,13 @@ namespace Catalog
         m_catalogList.SaveCatalogVolumes( );
     }
 
-    // void CatalogData::FileSaveAs( wxString filename )
-    // {
-    //     GetProject( )->SetCatalogFilename( filename );
-    //     FileSave( );
-    // }
-
-    wxString CatalogData::GetImageFilename( wxString stampId )
-    {
-        //       wxString artPath = GetImagePath( );
-        wxString fileName = stampId;
-        wxString imageFile;
-        if ( fileName.IsEmpty( ) )
-        {
-            imageFile = "";
-        }
-        else
-        {
-            fileName = fileName.Trim( true );
-            fileName = fileName.Trim( false );
-            fileName.Replace( ":", "_" );
-            fileName.Replace( " ", "_" );
-            wxFileName fn;
-            //            fn.SetPath( artPath );
-            fn.SetName( fileName );
-            fn.SetExt( "jpg" );
-            imageFile = fn.GetFullPath( );
-            // wxString::Format( "%s/%s.jpg", dirName, fileName );
-        }
-        return imageFile;
-    }
-
-    wxString CatalogData::GetImagePath( )
-    {
-        wxString sectFilename = GetCatalogVolume( )->GetVolumeFilename( );
-        wxFileName fn( sectFilename );
-        fn.ClearExt( );
-        fn.SetName( "" );
-        wxString dirName = GetCatalogVolume( )->GetCatalogVolumeImagePath( );
-        if ( !dirName.IsEmpty( ) )
-        {
-            fn.AppendDir( dirName );
-        }
-        return fn.GetPath( );
-    }
 
     InventoryPanel* CatalogData::GetInventoryPanel( ) { return GetDescriptionPanel( )->GetInventoryPanel( ); };
 
     void CatalogData::LoadCatalogTree( )
     {
-        //        SetCollectionListStrings( );
-        //        SetCollectionListSelection( );
 
         GetCatalogTreeCtrl( )->LoadTree( );
-        //  GetAlbumPageTreeCtrl( )->LoadTree( );
     }
 
     bool CatalogData::ImportCSV( wxString csvFilename )
@@ -159,7 +108,6 @@ namespace Catalog
                 UpdateCatalogVolumeStrings( );
                 GetCatalogVolume( )->EditDetailsDialog( m_catalogTreePanel );
 
-                //GetCatalogVolume( )->MakeCatalogImageRepository( );
                 GetCatalogData( )->LoadCatalogTree( );
             }
             return readStatus;
@@ -179,10 +127,8 @@ namespace Catalog
 
     wxXmlDocument* CatalogData::LoadMountCSV( )
     {
-        // StampMountData* stampMount = new StampMountData( );
         wxString mountFile = "StampMounts.csv";
         wxXmlDocument* res = GetStampMountData( )->LoadXML( );
-        //LoadMountCSV( mountFile );
         return res;
     }
 
@@ -190,7 +136,6 @@ namespace Catalog
     {
         Catalog::CatalogVolume* volume = GetCatalogList( )->NewCatalogVolume( );
         volume->SetVolumeFilename( catFile );
-        //        GetProject( )->SetCatalogFilename( catFile );
         LoadCatalogTree( );
         SetDirty( );
     }
@@ -214,11 +159,8 @@ namespace Catalog
     void CatalogData::UpdateCatalogVolumeStrings( )
     {
         m_catalogTreePanel->SetVolumeListStrings( m_catalogList.GetVolumeNameStrings( ) );
-        //m_catalogTreePanel->SetCollectionListSelection( );
         Catalog::CatalogVolume* vol = m_catalogList.GetCatalogVolume( );
         wxString name = vol->GetVolumeName( );
         m_catalogTreePanel->SetVolumeListSelection( name );
-        // int currNdx = m_catalogList.GetCatalogVolumeNdx( ) ;
-        // m_catalogTreePanel->SetVolumeListSelection( m_catalogList.GetCatalogVolumeNdx( ) );
     }
 }

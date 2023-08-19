@@ -359,11 +359,11 @@ public:
     ///  @return wxTreeItemId 
     wxTreeItemId GetPage( wxTreeItemId id );
 
-    wxString GetRelativePathToImageDir( );
+    // wxString GetRelativePathToImageDir( );
 
-    ///  @brief Get the Selected Node object
-    ///  
-    ///  @return Design::LayoutBase* 
+     ///  @brief Get the Selected Node object
+     ///  
+     ///  @return Design::LayoutBase* 
     Design::LayoutBase* GetSelectedNode( );
 
     ///  @brief Get the Stamp Node object
@@ -569,6 +569,8 @@ public:
 
     void OnTreectrlItemExpanded( wxTreeEvent& event );
 
+    wxTreeItemId GetCurrentTreeID( ) { return m_currentTreeID; };
+    void UpdateAlbumStampEntries( wxTreeItemId treeID );
 
 private:
     int m_OK;
@@ -586,6 +588,8 @@ private:
     wxColour m_defaultBackgroundColour;
     wxTreeItemId m_currPageID;
     bool ValidateStatus;
+    wxTreeItemId m_currentTreeID;
+
     // NB: due to an ugly wxMSW hack you _must_ use wxDECLARE_DYNAMIC_CLASS( );
     //     if you want your overloaded OnCompareItems( ) to be called.
     //     OTOH, if you don't want it you may omit the next line - this will

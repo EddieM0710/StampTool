@@ -306,12 +306,9 @@ namespace Utils {
             wxXmlNodeType type = child->GetType( );
             wxString nodeName = child->GetName( );
 
-            //if ( nodeName.Cmp( "CatalogCode" ) )
-            //{
+
             std::cout << level << nodeName << "  ";
 
-            // std::cout << GetAttrStr( child, Catalog::XMLDataNames[ Catalog::DT_ID_Nbr ] );
-            // std::cout << "  " << GetAttrStr( child, Catalog::XMLDataNames[ Catalog::DT_Name ] );
 
             wxXmlAttribute* attr = child->GetAttributes( );
             while ( attr )

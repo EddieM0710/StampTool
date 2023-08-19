@@ -106,6 +106,8 @@ namespace Design {
         ///  @return wxString 
         wxString GetBottomPageMarginStr( );
 
+        wxString GetCatalog( );
+
         wxColour GetColor( FontUsageType fontType );
 
         ///  @brief Get the Doc Name object
@@ -266,6 +268,8 @@ namespace Design {
         ///  
         ///  @param str 
         void SetBottomPageMargin( wxString str );
+
+        void SetCatalog( wxString str );
 
         ///  @brief Set the Doc Name object
         ///  

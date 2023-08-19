@@ -64,7 +64,7 @@ EVT_TEXT( ID_IDLABELEDTEXTBOX, IdentificationPanel::OnTextctrlTextUpdated )
 EVT_TEXT( ID_WIDTHLABELEDTEXTBOX, IdentificationPanel::OnTextctrlTextUpdated )
 EVT_TEXT( ID_HEIGHTLABELEDTEXTBOX, IdentificationPanel::OnTextctrlTextUpdated )
 
-EVT_BUTTON( ID_MYSTICBUTTON, IdentificationPanel::OnMysticButtonClick )
+
 EVT_BUTTON( ID_COLNECTBUTTON, IdentificationPanel::OnColnectButtonClick )
 EVT_BUTTON( ID_EBAYBUTTON, IdentificationPanel::OneBayButtonClick )
 EVT_BUTTON( ID_NPMBUTTON, IdentificationPanel::OnNPMButtonClick )
@@ -116,8 +116,8 @@ IdentificationPanel::~IdentificationPanel( )
 
 void IdentificationPanel::Init( )
 {
-    m_ID = NULL;
-    //m_status = NULL;
+    // m_ID = NULL;
+     //m_status = NULL;
     m_name = NULL;
     m_width = NULL;
     m_height = NULL;
@@ -130,7 +130,7 @@ void IdentificationPanel::Init( )
     m_perforation = NULL;
     m_printing = NULL;
     m_link = NULL;
-    m_catCodes = NULL;
+    m_catCode = NULL;
     m_imageName = NULL;
     mountComboBox = NULL;
 }
@@ -147,9 +147,9 @@ void IdentificationPanel::CreateControls( )
         wxBoxSizer* idHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
         panelVerticalSizer->Add( idHorizontalSizer, 0, wxALIGN_LEFT | wxALL, 2 );
         {
-            m_ID = new LabeledTextBox( thePanel, ID_IDLABELEDTEXTBOX,
-                wxDefaultPosition, wxDefaultSize, 0 );
-            idHorizontalSizer->Add( m_ID, 2, wxALIGN_LEFT | wxALL, 0 );
+            // m_ID = new LabeledTextBox( thePanel, ID_IDLABELEDTEXTBOX,
+            //     wxDefaultPosition, wxDefaultSize, 0 );
+            // idHorizontalSizer->Add( m_ID, 2, wxALIGN_LEFT | wxALL, 0 );
 
             //idHorizontalSizer->Add( 5, 5, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
@@ -157,6 +157,21 @@ void IdentificationPanel::CreateControls( )
             m_editCheckbox->SetValue( false );
             idHorizontalSizer->Add( m_editCheckbox, 0, wxALIGN_CENTRE_VERTICAL | wxALL, 5 );
         }
+
+        wxBoxSizer* itemBoxSizer1 = new wxBoxSizer( wxHORIZONTAL );
+        panelVerticalSizer->Add( itemBoxSizer1, 0, wxGROW | wxALL, 2 );
+
+        wxBoxSizer* catCodeVerticalSizer = new wxBoxSizer( wxVERTICAL );
+        itemBoxSizer1->Add( catCodeVerticalSizer, 2, wxGROW | wxALL, 2 );
+
+        wxStaticText* m_catcodeStatic = new wxStaticText( thePanel, wxID_STATIC, _( "CatalogCodes" ),
+            wxDefaultPosition, wxDefaultSize, 0 );
+
+        catCodeVerticalSizer->Add( m_catcodeStatic, 0, wxALIGN_LEFT | wxALL, 0 );
+
+        m_catCode = new wxTextCtrl( thePanel, ID_CATCODETEXTBOX, wxEmptyString,
+            wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE );
+        catCodeVerticalSizer->Add( m_catCode, 3, wxGROW | wxALL, 0 );
 
         m_name = new LabeledTextBox( thePanel, ID_NAMELABELEDTEXTBOX,
             wxDefaultPosition, wxDefaultSize, 0 );
@@ -255,10 +270,6 @@ void IdentificationPanel::CreateControls( )
         wxBoxSizer* itemBoxSizer8 = new wxBoxSizer( wxHORIZONTAL );
         panelVerticalSizer->Add( itemBoxSizer8, 0, wxGROW | wxALL, 5 );
 
-        // wxButton* itemButton9
-        //     = new wxButton( thePanel, ID_MYSTICBUTTON, _( "Mystic" ),
-        //         wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT );
-        // itemBoxSizer8->Add( itemButton9, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
         wxButton* itemButton10
             = new wxButton( thePanel, ID_COLNECTBUTTON, _( "Colnect" ),
@@ -275,16 +286,16 @@ void IdentificationPanel::CreateControls( )
         //         wxDefaultSize, wxBU_EXACTFIT );
         // itemBoxSizer8->Add( itemButton12, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
-        m_catCodes = new LabeledTextBox( thePanel, ID_CATCODETEXTBOX,
-            wxDefaultPosition, wxDefaultSize, 0 );
-        panelVerticalSizer->Add( m_catCodes, 0, wxGROW | wxALL, 0 );
+        // m_catCodes = new LabeledTextBox( thePanel, ID_CATCODETEXTBOX,
+        //     wxDefaultPosition, wxDefaultSize, 0 );
+        // panelVerticalSizer->Add( m_catCodes, 0, wxGROW | wxALL, 0 );
 
         m_imageName = new LabeledTextBox( thePanel, ID_IMAGENAMETEXTBOX,
             wxDefaultPosition, wxDefaultSize, 0 );
         panelVerticalSizer->Add( m_imageName, 0, wxGROW | wxALL, 0 );
 
         m_link->SetLabel( Catalog::DataTypeNames[ Catalog::DT_Link ] );
-        m_catCodes->SetLabel( Catalog::DataTypeNames[ Catalog::DT_Catalog_Codes ] );
+        //        m_catCodes->SetLabel( Catalog::DataTypeNames[ Catalog::DT_Catalog_Codes ] );
         m_imageName->SetLabel( "Image Name" );
 
 
@@ -316,7 +327,7 @@ void IdentificationPanel::CreateControls( )
     m_emission->SetLabel( "Emission" );
     m_format->SetLabel( "Format" );
     m_themes->SetLabel( "Themes" );
-    m_ID->SetLabel( "ID" );
+    // m_ID->SetLabel( "ID" );
     m_name->SetLabel( "Name" );
     m_width->SetLabel( "Width" );
     m_height->SetLabel( "Height" );
@@ -353,11 +364,8 @@ void IdentificationPanel::UpdateStampValue( Catalog::DataTypes dt, LabeledTextBo
 void IdentificationPanel::OnTextctrlTextUpdated( wxCommandEvent& event )
 {
     void* eventObject = event.GetClientData( );
-    if ( eventObject == m_ID )
-    {
-        UpdateStampValue( Catalog::DT_ID_Nbr, m_ID );
-    }
-    else if ( eventObject == m_series )
+
+    if ( eventObject == m_series )
     {
         UpdateStampValue( Catalog::DT_Series, m_series );
     }
@@ -439,7 +447,7 @@ void IdentificationPanel::UpdatePanel( )
     Catalog::Entry stamp( GetCatalogData( )->GetCurrentStamp( ) );
     if ( stamp.IsOK( ) )
     {
-        m_ID->ChangeValue( stamp.GetAttr( Catalog::DT_ID_Nbr ) );
+
         m_name->ChangeValue( stamp.GetAttr( Catalog::DT_Name ) );
         m_width->ChangeValue( stamp.GetAttr( Catalog::DT_Width ) );
         m_height->ChangeValue( stamp.GetAttr( Catalog::DT_Height ) );
@@ -454,13 +462,8 @@ void IdentificationPanel::UpdatePanel( )
         //SetChoice( m_status, stamp.GetInventoryStatus( ) );
 
         m_link->SetValue( stamp.GetAttr( Catalog::DT_Link ) );
-        m_catCodes->SetValue( stamp.GetAttr( Catalog::DT_Catalog_Codes ) );
-        wxString id = stamp.GetAttr( Catalog::DT_ID_Nbr );
-        id = id.Trim( true );
-        id = id.Trim( false );
-        id.Replace( ":", "_" );
-        id.Replace( " ", "_" );
-        id.Append( ".jpg" );
+        m_catCode->SetValue( stamp.GetAttr( Catalog::DT_Catalog_Codes ) );
+        wxString id = stamp.FindImageName( );
         m_imageName->SetValue( id );
         mountComboBox->SetValue( stamp.GetAttr( Catalog::DT_StampMount ) );
     }
@@ -472,7 +475,7 @@ void IdentificationPanel::SetDataEditable( bool val )
     m_emission->Enable( val );
     m_format->Enable( val );
     m_themes->SetEditable( val );
-    m_ID->SetEditable( val );
+    //   m_ID->SetEditable( val );
     m_name->SetEditable( val );
     m_width->SetEditable( val );
     m_height->SetEditable( val );
@@ -482,7 +485,7 @@ void IdentificationPanel::SetDataEditable( bool val )
     m_perforation->SetEditable( val );
     m_printing->SetEditable( val );
     m_link->SetEditable( val );;
-    m_catCodes->SetEditable( val );;
+    //   m_catCodes->SetEditable( val );;
     m_imageName->SetEditable( val );;
     mountComboBox->SetEditable( val );;
 }
@@ -551,43 +554,6 @@ void IdentificationPanel::OnColnectButtonClick( wxCommandEvent& event )
 
 }
 
-void IdentificationPanel::OnMysticButtonClick( wxCommandEvent& event )
-{
-    //https://www.mysticstamp.com/Products/SimpleSearch.aspx?q=garden+Corsage
-
-    Catalog::Entry stamp( GetCatalogData( )->GetCurrentStamp( ) );
-    if ( stamp.IsOK( ) )
-    {
-        wxString comma = ",";
-        wxString period = ".";
-        wxString semi = ";";
-        wxString apos = "'";
-        wxString space = " ";
-        wxString plus = "+";
-        wxString plusplus = "++";
-        wxString oParen = "(";
-        wxString cParen = ")";
-
-        wxString str = stamp.GetAttr( Catalog::DT_ID_Nbr ) + plus + stamp.GetAttr( Catalog::DT_Name );
-        str.Replace( space, plus );
-        str.Replace( space, plus );
-        str.Replace( space, plus );
-        str.Replace( period, plus );
-        str.Replace( semi, plus );
-        str.Replace( apos, plus );
-        str.Replace( oParen, plus );
-        str.Replace( cParen, plus );
-        str.Replace( plus, plus );
-        str.Replace( plusplus, plus );
-        str.Replace( plusplus, plus );
-        wxString link = "https://www.mysticstamp.com/Products/SimpleSearch.aspx?q=" + str;
-        wxString cmd = wxString::Format( "/usr/bin/firefox --new-tab %s", link );
-        system( cmd.fn_str( ) );
-
-        event.Skip( );
-
-    }
-}
 
 void IdentificationPanel::OnNPMButtonClick( wxCommandEvent& event )
 {
@@ -599,23 +565,23 @@ void IdentificationPanel::OnNPMButtonClick( wxCommandEvent& event )
 void IdentificationPanel::OneBayButtonClick( wxCommandEvent& event )
 {
 
-    Catalog::Entry stamp( GetCatalogData( )->GetCurrentStamp( ) );
-    if ( stamp.IsOK( ) )
-    {
+    // Catalog::Entry stamp( GetCatalogData( )->GetCurrentStamp( ) );
+    // if ( stamp.IsOK( ) )
+    // {
 
-        wxString str = "Postage Stamp " +
-            stamp.GetAttr( Catalog::DT_ID_Nbr ) + " + " + stamp.GetAttr( Catalog::DT_Name );
-        wxString space = " ";
-        wxString plus = "+";
-        str.Replace( space, plus );
-        wxString link = "https://www.ebay.com/sch/i.html?_nkw=" + str + "&_sop=15";
-        //https://www.ebay.com/sch/i.html?_from=R40&_nkw=garden&_sacat=260";
-        wxString cmd = wxString::Format( "/usr/bin/firefox --new-tab %s", link );
-        system( cmd.fn_str( ) );
-        // "https://www.ebay.com/sch/i.html?_from = R40&_nkw = us+stamps+%s&_sacat = 261&LH_TitleDesc = 0&_osacat = 261&_odkw = us+stamps"
-    https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2499334.m570.l1313&_nkw=Garden+Corsage&_sacat=260
+    //     wxString str = "Postage Stamp " +
+    //         stamp.GetAttr( Catalog::DT_ID_Nbr ) + " + " + stamp.GetAttr( Catalog::DT_Name );
+    //     wxString space = " ";
+    //     wxString plus = "+";
+    //     str.Replace( space, plus );
+    //     wxString link = "https://www.ebay.com/sch/i.html?_nkw=" + str + "&_sop=15";
+    //     //https://www.ebay.com/sch/i.html?_from=R40&_nkw=garden&_sacat=260";
+    //     wxString cmd = wxString::Format( "/usr/bin/firefox --new-tab %s", link );
+    //     system( cmd.fn_str( ) );
+    //     // "https://www.ebay.com/sch/i.html?_from = R40&_nkw = us+stamps+%s&_sacat = 261&LH_TitleDesc = 0&_osacat = 261&_odkw = us+stamps"
+    // https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2499334.m570.l1313&_nkw=Garden+Corsage&_sacat=260
 
-        event.Skip( );
+    //     event.Skip( );
 
-    }
+    // }
 }

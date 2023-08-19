@@ -210,7 +210,8 @@ CatalogTreeItemData* CatalogTreeCtrl::CreateChildData( wxXmlNode* child,
     //Catalog::IconID icon;
 
     //if the child element is not a entry
-    if ( !name.Cmp( Catalog::CatalogBaseNames[ Catalog::NT_Entry ] ) )
+    //if ( !name.Cmp( Catalog::CatalogBaseNames[ Catalog::NT_Entry ] ) )
+    if ( nodeType == Catalog::NT_Entry )
     {
         // then we add the appropriate icon and label
         Catalog::Entry entry( child );
@@ -485,7 +486,7 @@ wxTreeItemId CatalogTreeCtrl::FindFirstEntryChild( wxTreeItemId id )
 
 Utils::StampLink* CatalogTreeCtrl::FindStampLink( wxTreeItemId itemId )
 {
-    wxString id = GetIdText( itemId );
+    wxString id = GetID( itemId );
     Utils::StampList* stampList = GetStampAlbumCatalogLink( );
     Utils::StampLink* stampLink = stampList->FindStampLink( id );
     return stampLink;
@@ -583,19 +584,6 @@ wxXmlNode* CatalogTreeCtrl::GetNewEntry( wxTreeItemId itemId )
 
 //--------------
 
-wxString CatalogTreeCtrl::GetIdText( wxTreeItemId catTreeID )
-{
-    wxXmlNode* catNode = GetItemNode( catTreeID );
-    wxString idText = "";
-    if ( catNode )
-    {
-        idText = catNode->GetAttribute( Catalog::XMLDataNames[ Catalog::DT_ID_Nbr ] );
-    }
-    return idText;
-}
-
-//--------------
-
 wxString CatalogTreeCtrl::GetAttribute( wxTreeItemId catTreeID, wxString name )
 {
     if ( !catTreeID.IsOk( ) ) return "";
@@ -607,6 +595,35 @@ wxString CatalogTreeCtrl::GetAttribute( wxTreeItemId catTreeID, wxString name )
     }
     return "";
 }
+wxString CatalogTreeCtrl::GetImage( wxTreeItemId catTreeID )
+{
+    if ( !catTreeID.IsOk( ) ) return "";
+    wxXmlNode* node = GetItemNode( catTreeID );
+    if ( node && !node->GetName( ).Cmp( Catalog::CatalogBaseNames[ Catalog::NT_Entry ] ) )
+    {
+        Catalog::Entry stamp( node );
+        wxString val = stamp.FindImageName( );
+        //Utils::GetAttrStr( node, name );
+        return val;
+    }
+    return "";
+}
+
+
+wxString CatalogTreeCtrl::GetID( wxTreeItemId catTreeID )
+{
+    if ( !catTreeID.IsOk( ) ) return "";
+    wxXmlNode* node = GetItemNode( catTreeID );
+    if ( node && !node->GetName( ).Cmp( Catalog::CatalogBaseNames[ Catalog::NT_Entry ] ) )
+    {
+        Catalog::Entry stamp( node );
+        wxString val = stamp.GetID( );
+        //Utils::GetAttrStr( node, name );
+        return val;
+    }
+    return "";
+}
+
 
 void  CatalogTreeCtrl::SetAttribute( wxTreeItemId catTreeID, wxString name, wxString val )
 {
@@ -630,20 +647,9 @@ wxString CatalogTreeCtrl::GetImageFullName( wxTreeItemId catTreeID )
         wxString imageName = GetItemImageFullName( catTreeID );
         if ( !imageName )
         {
-            Catalog::CatalogVolume* sectData = GetCatalogData( )->GetCatalogVolume( );
-            wxString catFilename = sectData->GetVolumeFilename( );
-            wxString imageFile = sectData->GetCatalogVolumeImagePath( );;
-
-            wxString id = GetAttribute( catTreeID, Catalog::XMLDataNames[ Catalog::DT_ID_Nbr ] );
-
-            id = id.Trim( true );
-            id = id.Trim( false );
-            id.Replace( ":", "_" );
-            id.Replace( " ", "_" );
-            id.Append( ".jpg" );
-            imageName = id;// GetProject( )->GetImageFullPath( id );
-
-            SetItemImageFullName( catTreeID, imageName );
+            wxString id = GetImage( catTreeID );
+            wxString imageName = GetProject( )->GetImageFullPath( id );
+            SetItemImageFullName( catTreeID, id );
         }
         return imageName;
     }
@@ -792,15 +798,17 @@ bool CatalogTreeCtrl::IsElement( wxTreeItemId item, wxString entryID )
 {
     if ( item.IsOk( ) )
     {
-        wxString id = GetAttribute( item, Catalog::XMLDataNames[ Catalog::DT_ID_Nbr ] );
-        if ( !entryID.Cmp( id ) )
+        CatalogTreeItemData* itemData = ( CatalogTreeItemData* ) GetItemData( item );
+        Catalog::CatalogBaseType  type = itemData->GetType( );
+        if ( type == Catalog::NT_Entry )
         {
-            return true;
+            Catalog::Entry stamp( itemData->GetNodeElement( ) );
+            return stamp.IsCatalogCode( entryID );
+
         }
     }
     return false;
 }
-
 //--------------
 
 
@@ -1005,9 +1013,9 @@ void CatalogTreeCtrl::SetCatalogLink( wxTreeItemId catTreeID, Utils::StampLink* 
     wxXmlNode* ele = GetItemNode( catTreeID );
     if ( ele )
     {
-        wxString catIDNbr = ele->GetAttribute( Catalog::XMLDataNames[ Catalog::DT_ID_Nbr ] );
+        Catalog::Entry stamp( ele );
 
-        if ( !catIDNbr.Cmp( IDNbr ) )
+        if ( stamp.IsCatalogCode( IDNbr ) )
         {
             link->SetCatTreeID( catTreeID );
             SetItemStampLink( catTreeID, link );

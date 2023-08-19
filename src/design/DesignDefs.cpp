@@ -105,7 +105,8 @@ namespace Design {
             "MountAllowanceWidth",
             "StampNameLocation",
             "StampMargin",
-            "CollapseState"
+            "CollapseState",
+            "Catalog"
     };
     wxString OrientationStrings[ 2 ] = { "Portrait", "Landscape" };
 

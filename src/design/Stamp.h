@@ -343,6 +343,8 @@ namespace Design {
 
         TitleLocation  GetTitleLocation( );
 
+        wxString MakeDisplayNbr( );
+
         void SetTitleLocation( TitleLocation loc );
         TitleLocation  GetDefaultTitleLocation( );
 

@@ -40,6 +40,7 @@
 #include "wx/treectrl.h"
 #include <wx/fontpicker.h>
 #include <wx/checkbox.h>
+#include <wx/tokenzr.h>
 
 #include "gui/StampDetailsDialog.h"
 #include "gui/LabeledTextBox.h"
@@ -78,10 +79,6 @@ IMPLEMENT_DYNAMIC_CLASS( StampDetailsDialog, wxDialog )
     END_EVENT_TABLE( )
 
 
-    /*
-     * StampDetailsDialog constructors
-     */
-
     StampDetailsDialog::StampDetailsDialog( )
 {
     Init( );
@@ -91,17 +88,14 @@ IMPLEMENT_DYNAMIC_CLASS( StampDetailsDialog, wxDialog )
 StampDetailsDialog::StampDetailsDialog( wxWindow* parent, wxWindowID id, const wxString& caption, const wxPoint& pos, const wxSize& size, long style )
 {
     Init( );
+    m_designTreeID = ( ( AlbumTreeCtrl* ) parent )->GetCurrentTreeID( );
     Create( parent, id, caption, pos, size, style );
 }
 
 
-/*
- * StampDetailsDialog creator
- */
 
 bool StampDetailsDialog::Create( wxWindow* parent, wxWindowID id, const wxString& caption, const wxPoint& pos, const wxSize& size, long style )
 {
-    // StampDetailsDialog creation
     SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY | wxWS_EX_BLOCK_EVENTS );
     wxDialog::Create( parent, id, caption, pos, size, style );
 
@@ -116,24 +110,14 @@ bool StampDetailsDialog::Create( wxWindow* parent, wxWindowID id, const wxString
 }
 
 
-/*
- * StampDetailsDialog destructor
- */
-
 StampDetailsDialog::~StampDetailsDialog( )
 {
-    // StampDetailsDialog destruction
-    // StampDetailsDialog destruction
+
 }
 
 
-/*
- * Member initialisation
- */
-
 void StampDetailsDialog::Init( )
 {
-    // StampDetailsDialog member initialisation
     m_catNbr = NULL;
     m_name = NULL;
     m_height = NULL;
@@ -144,7 +128,6 @@ void StampDetailsDialog::Init( )
     m_nbrCheckbox = NULL;
     m_titleCheckbox = NULL;
 
-    // StampDetailsDialog member initialisation
 }
 
 
@@ -166,13 +149,36 @@ void StampDetailsDialog::CreateControls( )
         wxBoxSizer* checkBoxHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
         m_dialogVerticalSizer->Add( checkBoxHorizontalSizer, 0, wxGROW | wxALL, 0 );
 
+
+        wxBoxSizer* itemBoxSizer1 = new wxBoxSizer( wxHORIZONTAL );
+        m_dialogVerticalSizer->Add( itemBoxSizer1, 0, wxGROW | wxALL, 2 );
+
+        wxBoxSizer* catCodeVerticalSizer = new wxBoxSizer( wxVERTICAL );
+        itemBoxSizer1->Add( catCodeVerticalSizer, 2, wxGROW | wxALL, 2 );
+
+        wxStaticText* m_catcodeStatic = new wxStaticText( theDialog, wxID_STATIC, _( "CatalogCodes" ),
+            wxDefaultPosition, wxDefaultSize, 0 );
+
+        catCodeVerticalSizer->Add( m_catcodeStatic, 0, wxALIGN_LEFT | wxALL, 0 );
+
+        m_catCode = new wxTextCtrl( theDialog, ID_CATCODETEXTBOX, wxEmptyString,
+            wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE );
+        catCodeVerticalSizer->Add( m_catCode, 3, wxGROW | wxALL, 0 );
+
         m_nbrCheckbox = new wxCheckBox( theDialog, ID_CATNBRCHECKBOX, _( "Show ID" ), wxDefaultPosition, wxDefaultSize, 0 );
         m_nbrCheckbox->SetValue( false );
         checkBoxHorizontalSizer->Add( m_nbrCheckbox, 0, wxALIGN_LEFT | wxALL, 5 );
 
-        m_catNbr = new LabeledTextBox( theDialog, ID_IDLABELTEXTBOX, wxDefaultPosition, wxDefaultSize, wxNO_BORDER | wxTAB_TRAVERSAL );
-        m_catNbr->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
-        m_dialogVerticalSizer->Add( m_catNbr, 0, wxGROW | wxALL, 5 );
+        // m_catNbr = new LabeledTextBox( theDialog, ID_IDLABELTEXTBOX, wxDefaultPosition, wxDefaultSize, wxNO_BORDER | wxTAB_TRAVERSAL );
+        // m_catNbr->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
+        // m_dialogVerticalSizer->Add( m_catNbr, 0, wxGROW | wxALL, 5 );
+
+        wxBoxSizer* itemBoxSizer6 = new wxBoxSizer( wxHORIZONTAL );
+        catCodeVerticalSizer->Add( itemBoxSizer6, 0, wxGROW | wxALL, 5 );
+        SetCatCodes( );
+        m_catCode->SetValue( m_catCodesString );
+        m_catNbr = new wxComboBox( theDialog, ID_IDLABELTEXTBOX, wxEmptyString, wxDefaultPosition, wxDefaultSize, m_catCodesStringArray, wxCB_DROPDOWN );
+        itemBoxSizer6->Add( m_catNbr, 1, wxGROW | wxALL, 5 );
 
         int lastID = ID_LastID;
 
@@ -313,7 +319,7 @@ void StampDetailsDialog::CreateControls( )
         }
     }
 
-    m_catNbr->SetLabel( "Catalog Nbr" );
+    // m_catNbr->SetLabel( "Catalog Nbr" );
     m_name->SetLabel( "Name" );
     m_height->SetLabel( "Height" );
     m_width->SetLabel( "Width" );
@@ -370,6 +376,8 @@ void StampDetailsDialog::UpdateControls( )
     SetNameFont( m_stamp->GetNameFrame( )->GetFont( ) );
     SetNbrColor( m_stamp->GetNbrFrame( )->GetColor( ) );
     SetNameColor( m_stamp->GetNameFrame( )->GetColor( ) );
+    SetImageFilename( m_stamp->GetStampImageFilename( ) );
+    // SetCatCodes( );
     SetTitleLocation( );
 }
 
@@ -391,6 +399,39 @@ void StampDetailsDialog::SetupDialog( wxTreeItemId id )
     }
 };
 
+
+void StampDetailsDialog::SetCatCodes( )
+{
+    if ( m_designTreeID.IsOk( ) )
+    {
+        DesignTreeItemData* data = ( DesignTreeItemData* ) GetAlbumTreeCtrl( )->GetItemData( m_designTreeID );
+
+        Utils::StampLink* link = data->GetStampLink( );
+        if ( link )
+        {
+            wxTreeItemId catTreeID = link->GetCatTreeID( );
+            wxXmlNode* node = GetCatalogTreeCtrl( )->GetItemNode( catTreeID );
+
+            if ( node )
+            {
+                Catalog::CatalogVolume* catalogVolume = GetCatalogVolume( );
+                Catalog::Entry  stamp( node );
+                m_catCodesString = stamp.GetCatalogCodes( );
+
+                m_catCodesStringArray = wxStringTokenize( m_catCodesString, ",", wxTOKEN_STRTOK );
+                for ( size_t k = 0; k < m_catCodesStringArray.GetCount( ); k++ )
+                {
+                    wxString str = m_catCodesStringArray[ k ];
+                    str = str.Trim( true );
+                    str = str.Trim( false );
+                    m_catCodesStringArray[ k ] = str;
+                }
+            }
+        }
+        return;
+    }
+    m_catCode->SetValue( "" );
+}
 
 void StampDetailsDialog::RefreshFromCatalog( )
 {
@@ -478,9 +519,7 @@ void StampDetailsDialog::SetMountAllowanceWidth( wxString width )
 
 void StampDetailsDialog::SetCatNbr( wxString catNbr )
 {
-
-    m_catNbr->SetValue( catNbr );
-    m_catNbr->SetModified( false );
+    m_catNbr->SetStringSelection( catNbr );
 }
 
 
@@ -644,7 +683,8 @@ bool StampDetailsDialog::IsNameModified( )
 
 bool StampDetailsDialog::IsIDModified( )
 {
-    return m_catNbr->IsModified( );
+    //  return m_catNbr->IsModified( );
+    return true;
 }
 
 
@@ -722,7 +762,6 @@ void StampDetailsDialog::SetMountAllowanceWidthModified( bool state )
 
 void StampDetailsDialog::SetCatNbrModified( bool state )
 {
-    m_catNbr->SetModified( state );
 }
 
 
@@ -732,9 +771,7 @@ void StampDetailsDialog::SetNameModified( bool state )
 }
 
 
-/*
- *   ID_BUTTON
- */
+
 
 void StampDetailsDialog::OnRefreshButtonClick( wxCommandEvent& event )
 {
@@ -744,20 +781,12 @@ void StampDetailsDialog::OnRefreshButtonClick( wxCommandEvent& event )
 }
 
 
-/*
- *   wxID_CANCEL
- */
-
 void StampDetailsDialog::OnCancelClick( wxCommandEvent& event )
 {
 
     event.Skip( );
 }
 
-
-/*
- *   wxID_OK
- */
 
 void StampDetailsDialog::OnOkClick( wxCommandEvent& event )
 {
@@ -780,6 +809,7 @@ void StampDetailsDialog::OnOkClick( wxCommandEvent& event )
     m_stamp->GetNameFrame( )->SetFont( GetNameFont( ), GetNameColor( ) );
     m_stamp->GetNbrFrame( )->SetFont( GetNbrFont( ), GetNbrColor( ) );
     m_stamp->SetTitleLocation( m_titleLocation );
+    m_stamp->SetStampImageFilename( GetImageFilename( ) );
     event.Skip( );
 }
 
@@ -807,8 +837,6 @@ void StampDetailsDialog::OnDefaultRadioButtonSelected( wxCommandEvent& event )
 
 void StampDetailsDialog::OnNbrDefaultClick( wxCommandEvent& event )
 {
-    //m_stamp->GetNbrFrame( )->GetFontNdx()
-    //MakeDefaultFont( );
     int ndx = Design::GetAlbum( )->GetFontNdx( Design::AT_NbrFontType );
     Utils::FontList* fontList = GetFontList( );
     wxFont font = fontList->GetFont( ndx );

@@ -57,20 +57,20 @@ namespace Catalog {
         NT_NbrTypes
     } CatalogBaseType;
 
-    /// @enum  
-   ///  @brief Enum defining catalog code data types;
-    /// 
-    ///  This represents data for catalog code entry. 
-    typedef enum
-    {
-        CC_ID,
-        CC_Country,
-        CC_Catalog,
-        CC_NbrTypes
-    } CatalogCodeTypes;
+    //     /// @enum  
+    //    ///  @brief Enum defining catalog code data types;
+    //     /// 
+    //     ///  This represents data for catalog code entry. 
+    //     typedef enum
+    //     {
+    //         CC_ID,
+    //         CC_Country,
+    //         CC_Catalog,
+    //         CC_NbrTypes
+    //     } CatalogCodeTypes;
 
-    /// @enum CheckedStatusType
-    ///  @brief Enum defining the status of a given entry.
+        /// @enum CheckedStatusType
+        ///  @brief Enum defining the status of a given entry.
     typedef enum
     {
         ST_Unchecked = 0,
@@ -78,26 +78,25 @@ namespace Catalog {
         ST_NbrCheckedStatusTypes
     } CheckedStatusType;
 
-    ///  @enum  ClassificationTypes
-    /// @brief Valid values of Classification Type. One of CT_Title = 0, CT_PreferredCatalog, CT_ImageDirectory,
-    typedef enum
-    {
-        CT_Title = 0,
-        CT_PreferredCatalog,
-        CT_ImageDirectory,
-        CT_NbrTypes
-    } ClassificationTypes;
+    // ///  @enum  ClassificationTypes
+    // /// @brief Valid values of Classification Type. One of CT_Title = 0, CT_PreferredCatalog, CT_ImageDirectory,
+    // typedef enum
+    // {
+    //     CT_Title = 0,
+    //     CT_PreferredCatalog,
+    //     CT_ImageDirectory,
+    //     CT_NbrTypes
+    // } ClassificationTypes;
 
     ///  @enum DataTypes
-    ///  @brief Enum defining data types; i.e., fields in a entry. One of DT_ID_Nbr = 0, DT_Name,
+    ///  @brief Enum defining data types; i.e., fields in a entry. One of  DT_Name,
     ///  DT_Country, DT_Series, DT_Catalog_Codes, DT_Issued_on, DT_Expiry_date, DT_Width,
     ///  DT_Height, DT_Paper, DT_Watermark, DT_Emission, DT_Format, DT_Perforation, DT_Printing, 
     ///  DT_Gum, DT_Currency, DT_FaceValue, DT_Print_run, DT_Variant, DT_Score, DT_Accuracy, 
     ///  DT_Colors, DT_Themes, DT_Description, DT_Link, DT_InventoryStatus, DT_StampMount, DT_BackGround,
     typedef enum
     {
-        DT_ID_Nbr = 0,
-        DT_Name,
+        DT_Name = 0,
         DT_Country,
         DT_Series,
         DT_Catalog_Codes,
@@ -258,15 +257,15 @@ namespace Catalog {
     /// @note This is the name used for the tree node; not the wxXmlNode node.
     extern  wxString CatalogBaseNames[ NT_NbrTypes ];
 
-    /// @brief Ascii string for the cataloge code enum
-    extern const wxString CatalogCodeNames[ CC_NbrTypes ];
+    // /// @brief Ascii string for the cataloge code enum
+    // extern const wxString CatalogCodeNames[ CC_NbrTypes ];
 
     /// @brief Strings used for StatusTypes enum
     extern const wxString CheckedStatusStrings[ ST_NbrCheckedStatusTypes ];
 
-    ///  @brief Strings of ClassificationTypes
-    ///  
-    extern  const wxString ClassificationNames[ CT_NbrTypes ];
+    // ///  @brief Strings of ClassificationTypes
+    // ///  
+    // extern  const wxString ClassificationNames[ CT_NbrTypes ];
 
     /// @brief Ascii string for each DataType enum
     extern const wxString DataTypeNames[ DT_NbrTypes ];

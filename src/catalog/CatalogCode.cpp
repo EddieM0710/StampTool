@@ -1,9 +1,11 @@
+
+
 /**
  * @file CatalogCode.cpp
- * @author Eddie Monroe
+ * @author Eddie Monroe ( )
  * @brief
  * @version 0.1
- * @date 2021-03-01
+ * @date 2021-02-25
  *
  * @copyright Copyright ( c ) 2021
  *
@@ -23,7 +25,6 @@
  */
 
 
-
 #include "wx/wxprec.h"
 
 #ifdef __BORLANDC__
@@ -35,77 +36,107 @@
 #endif
 
  //#include "catalog/CatalogCode.h"
+#include "Defs.h"
+#include "Settings.h"
+#include "utils/Project.h"
+#include "catalog/CatalogCode.h"
+#include <wx/datetime.h>
 #include <wx/strconv.h>
+#include <wx/tokenzr.h>
+#include <cstdio>
 #include "utils/XMLUtilities.h"
+#include "collection/CollectionList.h"
+
 
 namespace Catalog {
 
-    wxString CatalogCode::GetAttr( CatalogCodeTypes type )
+    wxString MakeImageName( wxString catCode )
     {
-        if ( IsOK( ) )
+        catCode.Trim( true );
+        catCode.Trim( false );
+
+        catCode.Replace( ":", "_" );
+        catCode.Replace( " ", "_" );
+        catCode.Append( ".jpg" );
+        return catCode;
+    }
+    void GetCodes( wxString catCodeStr, wxString& catalog, wxString& country, wxString& code )
+    {
+        catCodeStr.Trim( );
+        catCodeStr.Trim( false );
+
+        int pos = catCodeStr.Find( ":" );
+        catalog = catCodeStr.Mid( 0, pos );
+        catCodeStr = catCodeStr.Mid( pos + 1 );
+        pos = catCodeStr.Find( " " );
+        country = catCodeStr.Mid( 0, pos );
+        code = catCodeStr.Mid( pos + 1 );
+    }
+    CatalogCode::CatalogCode( wxString codeList )
+    {
+        m_codeList = codeList;
+        m_codes.Empty( );
+        if ( !m_codeList.IsEmpty( ) )
         {
-            wxXmlAttribute* attr = Utils::GetAttribute( GetCatXMLNode( ), CatalogCodeNames[ type ] );
-            if ( attr )
+            m_codes = wxStringTokenize( m_codeList, ",", wxTOKEN_STRTOK );
+            for ( size_t k = 0; k < m_codes.GetCount( ); k++ )
             {
-                return attr->GetValue( );
+                m_codes[ k ].Trim( true );
+                m_codes[ k ].Trim( false );
             }
         }
-        return wxString( "" );
-    }
-
-    wxString CatalogCode::GetCatalog( )
-    {
-        return GetAttr( CC_Catalog );
     };
 
-    wxString CatalogCode::GetCountry( )
+    wxString CatalogCode::GetPreferredCatalogCode( wxString cat )
     {
-        return GetAttr( CC_Country );
-    };
-
-    wxXmlNode* CatalogCode::GetData( wxVector<wxVariant>* data )
-    {
-        data->push_back( GetCatalog( ) );
-        data->push_back( GetCountry( ) );
-        data->push_back( GetID( ) );
-        return GetCatXMLNode( );
-    }
-
-    wxString CatalogCode::GetID( )
-    {
-        return GetAttr( CC_ID );
-    };
-
-    bool CatalogCode::IsOK( )
-    {
-        if ( GetCatXMLNode( ) )
+        if ( m_codes.IsEmpty( ) )  return "";
+        for ( size_t k = 0; k < m_codes.GetCount( ); k++ )
         {
-            return true;
+            if ( m_codes[ k ].StartsWith( cat ) )
+            {
+                return m_codes[ k ];
+            }
+        }
+        return m_codes[ 0 ];
+    }
+
+
+    wxString CatalogCode::FindImageName( )
+    {
+        wxString preferredName = MakeImageName(
+            GetPreferredCatalogCode(
+                GetSettings( )->GetCatalogID( ) ) );
+        wxString  str = GetProject( )->GetImageFullPath( preferredName );
+
+        if ( GetProject( )->ImageExists( str ) )
+        {
+            return preferredName;
+        }
+        // preferred dosent exist so keep lookng ;
+        for ( size_t k = 0; k < m_codes.GetCount( ); k++ )
+        {
+            wxString filename = MakeImageName( m_codes[ k ] );
+
+            wxString str = GetProject( )->GetImageFullPath( filename );
+
+            if ( GetProject( )->ImageExists( str ) )
+            {
+                return filename;
+            }
+        }
+
+        return preferredName;
+    }
+
+    bool CatalogCode::IsCatalogCode( wxString catCode )
+    {
+        for ( size_t k = 0; k < m_codes.GetCount( ); k++ )
+        {
+            if ( !catCode.Cmp( m_codes[ k ] ) )
+            {
+                return true;
+            }
         }
         return false;
     }
-
-    void CatalogCode::SetAttr( CatalogCodeTypes type, wxString val )
-    {
-        if ( IsOK( ) )
-        {
-            Utils::SetAttrStr( GetCatXMLNode( ), CatalogCodeNames[ type ], val );
-        };
-    }
-
-    void CatalogCode::SetCatalog( wxString val )
-    {
-        SetAttr( CC_Catalog, val );
-    };
-
-    void CatalogCode::SetCountry( wxString val )
-    {
-        SetAttr( CC_Country, val );
-    };
-
-    void CatalogCode::SetID( wxString val )
-    {
-        SetAttr( CC_ID, val );
-    };
-
 }

@@ -378,7 +378,7 @@ void NewStampDialog::SetStamp( Catalog::Entry* stamp )
     m_stamp = stamp;
     if ( m_stamp->IsOK( ) )
     {
-        m_ID->SetValue( m_stamp->GetAttr( Catalog::DT_ID_Nbr ) );
+        m_ID->SetValue( m_stamp->GetID( ) );
         m_name->SetValue( m_stamp->GetAttr( Catalog::DT_Name ) );
         m_issueDate->SetValue( m_stamp->GetAttr( Catalog::DT_Issued_on ) );
         SetChoice( m_emission, m_stamp->GetEmission( ) );

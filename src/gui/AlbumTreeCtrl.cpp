@@ -73,6 +73,7 @@
 #include "gui/AlbumImagePanel.h"
 #include "catalog/CatalogDefs.h"
 #include "catalog/CatalogData.h"
+#include "catalog/CatalogCode.h"
 
 IMPLEMENT_CLASS( AlbumTreeCtrl, wxTreeCtrl );
 
@@ -107,6 +108,48 @@ AlbumTreeCtrl::AlbumTreeCtrl( wxWindow* parent, const wxWindowID id,
     ItemBackgroundColour[ Design::AT_OK ] = GetBackgroundColour( );
 }
 
+//--------------
+void AlbumTreeCtrl::UpdateAlbumStampEntries( wxTreeItemId treeID )
+{
+
+    DesignTreeItemData* data = ( DesignTreeItemData* ) this->GetItemData( treeID );
+    Design::AlbumBaseType nodeType = data->GetType( );
+    if ( Design::IsAlbumBaseTypeValid( nodeType ) )
+    {
+        std::cout << Design::AlbumBaseNames[ nodeType ] << "\n";
+        //if the child element is not a stamp
+        if ( nodeType == Design::AT_Stamp )
+        {
+            Utils::StampLink* link = data->GetStampLink( );
+            if ( link )
+            {
+                wxTreeItemId catTreeID = link->GetCatTreeID( );
+                wxXmlNode* node = GetCatalogTreeCtrl( )->GetItemNode( catTreeID );
+                Catalog::Entry catStamp( node );
+                wxString catCodeStr = catStamp.GetCatalogCodes( );
+                Catalog::CatalogCode catCodeArray( catCodeStr );
+                Design::Stamp* albumStamp = ( Design::Stamp* ) data->GetNodeElement( );
+                wxString preferredID = catCodeArray.GetPreferredCatalogCode( Design::GetAlbum( )->GetCatalog( ) );
+                albumStamp->SetNbrString( preferredID );
+                wxString label = preferredID;
+                wxString title = albumStamp->GetAttrStr( Design::AT_Name );
+                label += " - " + title;
+                SetItemText( treeID, label );
+            }
+        }
+
+        if ( this->HasChildren( treeID ) )
+        {
+            wxTreeItemIdValue cookie;
+            wxTreeItemId childID = GetFirstChild( treeID, cookie );
+            while ( childID.IsOk( ) )
+            {
+                UpdateAlbumStampEntries( childID );
+                childID = GetNextChild( treeID, cookie );
+            }
+        }
+    }
+}
 //--------------
 
 // AddChild adds wxXmlNode as a item in the tree.  It is recursively called to
@@ -285,40 +328,6 @@ Design::TextBox* AlbumTreeCtrl::AddTextTreeItem( wxTreeItemId parentID, Design::
     return newText;
 }
 
-//--------------
-wxString AlbumTreeCtrl::GetRelativePathToImageDir( )
-{
-    //if the cat volume path is the same as the alb volume path
-    // they have the same relative path to the image dir
-    wxString albumFilename = GetAlbumVolume( )->GetAlbumFilename( );
-    wxFileName albumFN( albumFilename );
-    wxString albumPath = albumFN.GetPath( );
-
-    wxString catalogVolume = GetCatalogVolume( )->GetVolumeFilename( );
-    wxFileName catFN( catalogVolume );
-    wxString catPath = catFN.GetPath( );
-
-    wxString catalogImagePath = GetCatalogVolume( )->GetCatalogVolumeImagePath( );
-
-    if ( !albumPath.Cmp( catPath ) )
-    {
-        return catalogImagePath;
-    }
-    else
-    {
-        //first get absolute Cat vol path
-        wxFileName fn1( catalogVolume );
-        catFN.MakeAbsolute( );
-        //then append the cat art path to it
-        wxString catVolPath = catFN.GetPath( );
-        wxString artPath = catVolPath + "/" + catalogImagePath;
-        // and make it relative to the album volume
-        wxFileName artFN( artPath );
-        artFN.MakeRelativeTo( albumFilename );
-        wxString relArtPath = artFN.GetFullPath( );
-        return relArtPath;
-    }
-}
 Utils::StampLink* AlbumTreeCtrl::AppendStamp( wxTreeItemId catTreeID )
 {
 
@@ -342,14 +351,15 @@ Utils::StampLink* AlbumTreeCtrl::AppendStamp( wxTreeItemId catTreeID )
             wxString catStr = GetCatalogData( )->GetCatalogVolume( )->GetVolumeFilename( );
             wxFileName catFileName( catStr );
             wxString imageName = GetCatalogTreeCtrl( )->GetImageFullName( catTreeID );
-            wxFileName imageFileName( imageName );
-            wxString imagename = imageFileName.GetFullPath( );
-            newStamp->SetAttrStr( Design::AT_ImageName, imageFileName.GetFullPath( ) );
+            //wxFileName imageFileName( imageName );
+            //wxString imagename = imageFileName.GetFullPath( );
+            newStamp->SetAttrStr( Design::AT_ImageName, imageName );
 
             CatalogTreeCtrl* catTree = GetCatalogTreeCtrl( );
-            wxString idText = catTree->GetIdText( catTreeID );
+            wxString idText = catTree->GetID( catTreeID );
+            wxString str = newStamp->MakeDisplayNbr( );
 
-            newStamp->GetNbrFrame( )->SetString( idText );
+            newStamp->GetNbrFrame( )->SetString( str );
             newStamp->GetNameFrame( )->SetString( newStamp->GetAttrStr( Design::AT_Name ) );
 
 
@@ -458,19 +468,16 @@ Design::Stamp* AlbumTreeCtrl::CreateNewStamp( wxTreeItemId catTreeID )
     if ( catTreeID.IsOk( ) )
     {
         // load stamp from catalog
-
-        //create a stamp with the catalog data
         CatalogTreeCtrl* catTree = GetCatalogTreeCtrl( );
-        wxString label = catTree->GetAttribute( catTreeID, Catalog::XMLDataNames[ Catalog::DT_ID_Nbr ] );
-        newStamp->SetAttrStr( Design::AT_CatNbr, label );
-        wxString title = catTree->GetAttribute( catTreeID, Catalog::XMLDataNames[ Catalog::DT_Name ] );
-        newStamp->SetAttrStr( Design::AT_Name, title );
-        wxString height = catTree->GetAttribute( catTreeID, Catalog::XMLDataNames[ Catalog::DT_Height ] );
-        newStamp->SetStampHeight( height );
-        wxString width = catTree->GetAttribute( catTreeID, Catalog::XMLDataNames[ Catalog::DT_Width ] );
-        newStamp->SetStampWidth( width );
-        //       wxString imageName = catTree->GetAttribute( catTreeID, Catalog::XMLDataNames[ Catalog::DT_i ] );
-        //       newStamp->SetStampImage( );
+        wxXmlNode* node = catTree->GetItemNode( catTreeID );
+        Catalog::Entry stamp( node );
+        //create a stamp with the catalog data
+
+        newStamp->SetAttrStr( Design::AT_CatNbr, stamp.GetID( ) );
+        newStamp->SetAttrStr( Design::AT_Name, stamp.GetName( ) );
+        newStamp->SetStampHeight( stamp.GetHeight( ) );
+        newStamp->SetStampWidth( stamp.GetWidth( ) );
+        newStamp->SetStampImageFilename( stamp.FindImageName( ) );
     }
     else
     {
@@ -1338,7 +1345,7 @@ void AlbumTreeCtrl::ShowAlbumDetails( wxTreeItemId treeID, Design::AlbumBase* no
 
 void AlbumTreeCtrl::ShowStampDetails( wxTreeItemId treeID )
 {
-
+    m_currentTreeID = treeID;
     StampDetailsDialog stampDetailsDialog( this, 12345,
         _( "View Edit Stamp Details" ) );
 

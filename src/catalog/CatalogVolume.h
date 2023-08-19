@@ -78,11 +78,6 @@ namespace Catalog {
             }
         };
 
-        ///  @brief Get the relative path to the image directory
-        ///  
-        ///  @return wxString 
-        wxString GetCatalogVolumeImagePath( );
-
         ///  @brief Show the details dialog 
         ///  
         ///  @param parent 
@@ -184,10 +179,6 @@ namespace Catalog {
         ///  @param state 
         void SetDirty( bool state = true );
 
-        ///  @brief set the relative path to the image directory
-        ///  
-        ///  @param str 
-        void SetImagePath( wxString str );
 
 
         ///  @brief Set the Volume Filename object

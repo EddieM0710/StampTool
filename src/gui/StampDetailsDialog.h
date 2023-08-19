@@ -24,10 +24,6 @@
 #define _STAMPDETAILSDIALOG_H_
 
 
- /*
-  * Includes
-  */
-
 #include "wx/listctrl.h"
 #include <wx/fontpicker.h>
 #include <wx/clrpicker.h>
@@ -36,9 +32,6 @@
 #include "gui/GuiDefs.h"
 
 
-  /*
-   * Forward declarations
-   */
 class LabeledTextBox;
 class wxListCtrl;
 class TitleHelper;
@@ -46,9 +39,7 @@ class FontPicker;
 
 namespace Design { class Stamp; };
 
-/*
- * Control identifiers
- */
+
 #define SYMBOL_STAMPDETAILSDIALOG_STYLE wxCAPTION | wxRESIZE_BORDER | wxSYSTEM_MENU | wxCLOSE_BOX | wxTAB_TRAVERSAL
 #define SYMBOL_STAMPDETAILSDIALOG_TITLE _( "StampDetailsDialog" )
 #define SYMBOL_STAMPDETAILSDIALOG_IDNAME ID_STAMPDETAILSDIALOG
@@ -57,9 +48,7 @@ namespace Design { class Stamp; };
 
 
 
- /*
-  * StampDetailsDialog class declaration
-  */
+
 class StampDetailsDialog : public wxDialog
 {
     DECLARE_DYNAMIC_CLASS( StampDetailsDialog )
@@ -69,6 +58,7 @@ public:
 
     enum StampDetailsDialogGuiDefs {
         ID_IDLABELTEXTBOX = ID_STAMPDETAILSDIALOG,
+        ID_CATCODETEXTBOX,
         ID_NAMELABELEDTEXTBOX1,
         ID_HEIGHTLABELEDTEXTBOX,
         ID_WIDTHLABELEDTEXTBOX,
@@ -80,23 +70,10 @@ public:
         ID_VALIDATEBUTTON,
         ID_LISTCTRL,
         ID_CATNBRCHECKBOX,
-        //ID_TITLECHECKBOX,
-        //ID_SUBTITLECHECKBOX,
         ID_IMAGEPATHLABELEDTEXTBOX,
-        //    ID_STAMPNOTEBOOK,
         ID_STAMPNAMEPANEL,
         ID_STAMPLAYOUTPANEL,
         ID_STAMPLAYOUTTEXTCTRL,
-        //   ID_NOTEBOOK,
-          // ID_NOTEBOOKDETAILSPANEL,
-         //  ID_NOTEBOOKPOSITIONPANEL,
-           //ID_POSITIONTEXTCTRL,
-           //ID_STAMPNBRFONTPICKER,
-           //ID_STAMPNBRCOLORPICKER,
-           //ID_STAMPNAMEFONTPICKER,
-           //ID_STAMPNAMECOLORPICKER,
-           //ID_STAMPNAMEDEFAULTFONTBUTTON,
-          // ID_STAMPNBRDEFAULTFONTBUTTON,
         ID_DEFAULTRADIOBUTTON,
         ID_TOPRADIOBUTTON,
         ID_BOTTOMRADIOBUTTON,
@@ -128,16 +105,10 @@ public:
     void UpdateControls( );
 
     void SetupDialog( wxTreeItemId id );
+    void SetCatCodes( );
 
-    // StampDetailsDialog event handler declarations
-
-        //   ID_REFRESHBUTTON
     void OnRefreshButtonClick( wxCommandEvent& event );
-
-    //   wxID_CANCEL
     void OnCancelClick( wxCommandEvent& event );
-
-    //   wxID_OK
     void OnOkClick( wxCommandEvent& event );
     void OnDefaultRadioButtonSelected( wxCommandEvent& event );
     void OnTopRadioButtonSelected( wxCommandEvent& event );
@@ -215,14 +186,14 @@ public:
     void SetNameModified( bool state = true );
     void RefreshFromCatalog( );
 
-    //  void SetStamp( Design::Stamp* stamp){ m_stamp = stamp; };
 
 
 
 
 private:
 
-    LabeledTextBox* m_catNbr;
+    // LabeledTextBox* m_catNbr;
+    wxComboBox* m_catNbr;
     LabeledTextBox* m_name;
     LabeledTextBox* m_imagePath;
     LabeledTextBox* m_height;
@@ -244,7 +215,6 @@ private:
     LabeledTextBox* m_subTitleLabel;
     wxBoxSizer* m_dialogVerticalSizer;
 
-    //wxTextCtrl* positionTextCtrl;
     wxFontPickerCtrl* m_nbrFontPicker;
     wxFontPickerCtrl* m_nameFontPicker;
     wxFontPickerCtrl* m_subTitleFontPicker;
@@ -258,12 +228,14 @@ private:
     Design::TitleLocation m_titleLocation;
     wxRadioButton* m_topButton;
     wxRadioButton* m_bottomButton;
-    //wxRadioButton* m_leftButton;
-    //wxRadioButton* m_rightButton;
     wxRadioButton* m_defaultButton;
 
     FontPicker* m_catNbrFontPickerHelper;
+
+    wxTextCtrl* m_catCode;
+    wxString m_catCodesString;
+    wxArrayString m_catCodesStringArray;
+
 };
 
 #endif
-// _STAMPDETAILSDIALOG_H_

@@ -33,6 +33,7 @@
 
 #include "utils/XMLUtilities.h"
 #include "utils/Project.h"
+#include "utils/Settings.h"
 #include "gui/AlbumTreeCtrl.h"
 #include "gui/AlbumImagePanel.h"
 //#include "gui/StampDescriptionPanel.h"
@@ -40,6 +41,7 @@
 
 #include "catalog/CatalogVolume.h"
 #include "catalog/Entry.h"
+#include "catalog/CatalogCode.h"
 #include "art/NotFound.xpm"
 
 #include <wx/dcmemory.h>
@@ -130,14 +132,32 @@ namespace Design {
 
         m_nbrFrame = new LabelFrame( Design::AT_NbrFontType );
 
-        wxString str = GetAttrStr( AT_CatNbr );
-        int pos = str.Find( " " );
-        str = str.substr( pos + 1 );
+        wxString str = MakeDisplayNbr( );
+
+        // int pos = str.Find( " " );
+        // str = str.substr( pos + 1 );
         m_nbrFrame->SetString( str );
         //  CalcFrame( );
 
     };
 
+    wxString Stamp::MakeDisplayNbr( )
+    {
+        wxString str = GetAttrStr( AT_CatNbr );
+        wxString catalog;
+        wxString country;
+        wxString code;
+        Catalog::GetCodes( str, catalog, country, code );
+        wxString preferredCatalog = GetSettings( )->GetCatalogID( );
+        if ( !preferredCatalog.Cmp( catalog ) )
+        {
+            return code;
+        }
+        else
+        {
+            return catalog + ":" + code;
+        }
+    }
     Stamp::Stamp( ) : LayoutBase( ( wxXmlNode* ) 0 )
     {
         SetNodeType( AT_Stamp );

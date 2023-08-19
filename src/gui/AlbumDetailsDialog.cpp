@@ -309,6 +309,12 @@ void AlbumDetailsDialog::CreateControls( )
     stampDetailsHorizontalSizer->Add( m_grayScaleImagesCheckbox, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
 
+    wxStaticText* itemStaticText8 = new wxStaticText( stampDetailsPanel, wxID_STATIC, _( " Catalog Code" ), wxDefaultPosition, wxDefaultSize, 0 );
+    stampDetailsHorizontalSizer->Add( itemStaticText8, 0, wxALIGN_CENTER_VERTICAL | wxLEFT | wxTOP | wxBOTTOM, 5 );
+
+    m_catalog = new wxTextCtrl( stampDetailsPanel, ID_CATALOGTEXTBOX, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+    stampDetailsHorizontalSizer->Add( m_catalog, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+
     // wxStaticText* orientationStatic = new wxStaticText(
     //     theDialog, wxID_STATIC, _( " Default Orientation:" ), wxDefaultPosition, wxDefaultSize, 0 );
     // itemBoxSizer20->Add( orientationStatic, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
@@ -364,6 +370,7 @@ void AlbumDetailsDialog::CreateControls( )
     wxButton* okButton = new wxButton( theDialog, wxID_OK, _( "OK" ), wxDefaultPosition, wxDefaultSize, 0 );
     dialogCtrlButtonSizer->Add( okButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
     //>>dialog Ctrl buttons  
+
 
     m_name->SetToolTip( "Name of Album" );
     m_paperHeight->SetToolTip( "Height of paper in printer (in mm)" );
@@ -426,6 +433,8 @@ wxString AlbumDetailsDialog::GetBorderSize( ) { return m_borderSize->GetValue( )
 // --------------
 
 wxString AlbumDetailsDialog::GetBorderFilename( ) { return m_borderFilename->GetValue( ); }
+
+wxString AlbumDetailsDialog::GetCatalog( ) { return m_catalog->GetValue( ); };
 
 //--------------
 
@@ -613,6 +622,11 @@ void AlbumDetailsDialog::SetBorderFilename( wxString filename )
 {
     m_borderFilename->SetValue( filename );
     m_borderFilename->SetModified( false );
+}
+void AlbumDetailsDialog::SetCatalog( wxString catCode )
+{
+    m_catalog->SetValue( catCode );
+    m_catalog->SetModified( false );
 }
 
 //--------------
@@ -823,6 +837,7 @@ void AlbumDetailsDialog::OnOkClick( wxCommandEvent& event )
     m_album->SetGrayScaleImages( GetGrayScaleImages( ) );
     m_album->SetDefaultOrientation( GetOrientation( ) );
     m_album->SetTitleLocation( m_stampNameLocation );
+    m_album->SetCatalog( GetCatalog( ) );
 
     m_album->SetBorderFilename( GetBorderFilename( ) );
     wxFont newFont = GetNbrFont( );
@@ -880,6 +895,7 @@ void AlbumDetailsDialog::UpdateControls( )
     SetNameColor( m_album->GetColor( Design::AT_NameFontType ) );
     SetName( m_album->GetAttrStr( Design::AT_Name ) );
     SetStampNameLocation( );
+    SetCatalog( m_album->GetCatalog( ) );
 
 
 }

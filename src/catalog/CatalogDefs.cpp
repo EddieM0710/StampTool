@@ -61,21 +61,21 @@ namespace Catalog {
         "CatalogCode",
         "None" };
 
-    const wxString CatalogCodeNames[ CC_NbrTypes ]
-        = { wxT( "ID" ), wxT( "Country" ), wxT( "Catalog" ) };
+    // const wxString CatalogCodeNames[ CC_NbrTypes ]
+    //     = { wxT( "ID" ), wxT( "Country" ), wxT( "Catalog" ) };
 
     const wxString CheckedStatusStrings[ ST_NbrCheckedStatusTypes ]
         = { wxT( "Checked" ), wxT( "Unchecked" ) };
 
-    /**
-     * @brief String name used for wxXmlNodes.
-     *
-     */
-    const wxString ClassificationNames[ CT_NbrTypes ] = { wxT( "Name" ),
-    wxT( "PreferredCatalog" ), wxT( "ImageDirectory" ) };
+    // /**
+    //  * @brief String name used for wxXmlNodes.
+    //  *
+    //  */
+    // const wxString ClassificationNames[ CT_NbrTypes ] = { wxT( "Name" ),
+    // wxT( "PreferredCatalog" ), wxT( "ImageDirectory" ) };
 
     const wxString DataTypeNames[ DT_NbrTypes ] = {
-        wxT( "ID Nbr" ),      wxT( "Name" ),          wxT( "Country" ),
+        wxT( "Name" ),          wxT( "Country" ),
         wxT( "Series" ),      wxT( "Catalog Codes" ), wxT( "Issued on" ),
         wxT( "Expiry date" ), wxT( "Width" ),         wxT( "Height" ),
         wxT( "Paper" ),       wxT( "Watermark" ),     wxT( "Emission" ),
@@ -137,7 +137,7 @@ namespace Catalog {
 
 
     const wxString XMLDataNames[ DT_NbrTypes ] = {
-        wxT( "ID_Nbr" ),      wxT( "Name" ),         wxT( "Country" ),
+        wxT( "Name" ),         wxT( "Country" ),
         wxT( "Series" ),      wxT( "Catalog_Codes" ), wxT( "Issued_on" ),
         wxT( "Expiry_date" ), wxT( "Width" ),         wxT( "Height" ),
         wxT( "Paper" ),       wxT( "Watermark" ),     wxT( "Emission" ),

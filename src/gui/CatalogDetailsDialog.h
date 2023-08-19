@@ -41,7 +41,7 @@ class wxListCtrl;
 class CatalogDetailsDialog : public wxDialog
 {
     DECLARE_DYNAMIC_CLASS( CatalogDetailsDialog )
-        DECLARE_EVENT_TABLE( )
+    DECLARE_EVENT_TABLE( )
 
 public:
 
@@ -159,10 +159,8 @@ public:
 private:
 
     wxTreeItemId m_designTreeID;
-    // CatalogDetailsDialog member variables
     wxTextCtrl* m_name;
     LabeledTextBox* m_catPath;
-    //    LabeledTextBox* m_imagePath;
 
 };
 

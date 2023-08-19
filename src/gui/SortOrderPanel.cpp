@@ -91,7 +91,6 @@ bool SortOrderPanel::Create( wxWindow* parent, wxWindowID id,
     const wxPoint& pos,
     const wxSize& size, long style )
 {
-    // SortOrderPanel creation
     SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
     wxPanel::Create( parent, id, pos, size, style );
 
@@ -101,33 +100,23 @@ bool SortOrderPanel::Create( wxWindow* parent, wxWindowID id,
         GetSizer( )->SetSizeHints( this );
     }
     Centre( );
-    // SortOrderPanel creation
     return true;
 }
 
-/*
- * SortOrderPanel destructor
- */
 
 SortOrderPanel::~SortOrderPanel( )
 {
-    // SortOrderPanel destruction
-    // SortOrderPanel destruction
+
 }
 
-/*
- * Member initialisation
- */
 
 void SortOrderPanel::Init( )
 {
-    // SortOrderPanel member initialisation
     m_firstSort = NULL;
     m_secondSort = NULL;
     m_thirdSort = NULL;
     m_forthSort = NULL;
     m_fifthSort = NULL;
-    // SortOrderPanel member initialisation
 
     m_dirty = false;
 
@@ -141,13 +130,9 @@ void SortOrderPanel::Init( )
     m_sortStrings.Add( _( "Condition" ) );
 }
 
-/*
- * Control creation for SortOrderPanel
- */
 
 void SortOrderPanel::CreateControls( )
 {
-    std::cout << "SortOrderPanel" << "\n";
 
     SortOrderPanel* itemDialog1 = this;
 
@@ -232,21 +217,7 @@ void SortOrderPanel::CreateControls( )
         wxDefaultSize, m_fifthSortStrings, 0 );
     itemBoxSizer16->Add( m_fifthSort, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
-    // wxBoxSizer *itemBoxSizer19 = new wxBoxSizer( wxHORIZONTAL );
-    // itemBoxSizer2->Add( itemBoxSizer19, 0, wxALIGN_RIGHT | wxALL, 5 );
 
-    // wxButton *itemButton20
-    //     = new wxButton( itemDialog1, wxID_CANCEL, _( "Cancel" ), 
-    //                     wxDefaultPosition, wxDefaultSize, 0 );
-    // itemBoxSizer19->Add( itemButton20, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
-
-    // itemBoxSizer19->Add( 5, 5, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
-
-    // wxButton *itemButton22 = new wxButton( 
-    //     itemDialog1, wxID_OK, _( "OK" ), wxDefaultPosition, wxDefaultSize, 0 );
-    // itemBoxSizer19->Add( itemButton22, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
-
-     // SortOrderPanel content construction
     wxArrayInt* sortOrder = GetSettings( )->GetSortOrder( );
 
     m_firstSort->Set( m_sortStrings );
@@ -309,54 +280,34 @@ bool SortOrderPanel::ShowToolTips( )
 
 
 
-/*
- *   ID_CHOICE
- */
 
 void SortOrderPanel::OnChoiceSelected( wxCommandEvent& event )
 {
     event.Skip( );
 }
 
-/*
- *   ID_CHOICE1
- */
 
 void SortOrderPanel::OnChoice1Selected( wxCommandEvent& event )
 {
     event.Skip( );
 }
 
-/*
- *   ID_CHOICE2
- */
-
 void SortOrderPanel::OnChoice2Selected( wxCommandEvent& event )
 {
     event.Skip( );
 }
 
-/*
- *   ID_CHOICE3
- */
 
 void SortOrderPanel::OnChoice3Selected( wxCommandEvent& event )
 {
     event.Skip( );
 }
 
-/*
- *   ID_CHOICE4
- */
-
 void SortOrderPanel::OnChoice4Selected( wxCommandEvent& event )
 {
     event.Skip( );
 }
 
-/*
- *   wxID_CANCEL
- */
 
 void SortOrderPanel::OnOkClick( )
 {

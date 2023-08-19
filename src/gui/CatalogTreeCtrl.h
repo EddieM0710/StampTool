@@ -410,14 +410,9 @@ public:
      */
     wxString GetAttribute( wxTreeItemId catTreeID, wxString name );
     void  SetAttribute( wxTreeItemId catTreeID, wxString name, wxString val );
+    wxString GetID( wxTreeItemId catTreeID );
+    wxString GetImage( wxTreeItemId catTreeID );
 
-    /*
-     * @brief Get the entry id of the stamp. This is typically a catalog id.
-     *
-     * @param catTreeID
-     * @return wxString
-     */
-    wxString GetIdText( wxTreeItemId catTreeID );
 
     /*
      * @brief Get the full filename of the image

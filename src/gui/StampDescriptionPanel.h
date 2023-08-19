@@ -35,7 +35,7 @@
 #include "catalog/Entry.h"
 #include "gui/GuiDefs.h"
 
-class CatalogCodePanel;
+ //class CatalogCodePanel;
 class CharacteristicsPanel;
 class IdentificationPanel;
 class ImagePanel;
@@ -216,9 +216,9 @@ private:
     wxSlider* m_zoomSlider; ///< Pointer to image soom slider
     ImagePanel* m_stampImage; ///< Pointer to stamp image
     InventoryPanel* m_inventoryPanel; ///< Pointer to InventoryPanel
-    CatalogCodePanel* m_catalogCodePanel; ///< Pointer to CatalogCodePanel
+    //CatalogCodePanel* m_catalogCodePanel; ///< Pointer to CatalogCodePanel
     //    CharacteristicsPanel* m_characteristicsPanel; ///< Pointer to CharacteristicsPanel
-    MiscellaneousDataPanel* m_miscellaneousDataPanel; ///< Pointer to MiscellaneousDataPanel
+    //MiscellaneousDataPanel* m_miscellaneousDataPanel; ///< Pointer to MiscellaneousDataPanel
 };
 
 #endif

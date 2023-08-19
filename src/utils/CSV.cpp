@@ -41,6 +41,7 @@
 #include "utils/Settings.h"
 #include "Defs.h"
 #include "catalog/Entry.h"
+#include "catalog/CatalogCode.h"
 #include <wx/tokenzr.h>
 #include "catalog/CatalogVolume.h"
 #include "utils/XMLUtilities.h"
@@ -281,23 +282,30 @@ namespace Utils {
                                     wxString id = "";
                                     if ( entryType == Catalog::DT_Catalog_Codes )
                                     {
-                                        //entryNode->ProcessCatalogCodes( valStr );
-                                        if ( GetIDNbr( valStr, id ) )
-                                        {
-                                            wxString codePrefix = GetSettings( )->GetCatCodePrefix( );
+                                        Catalog::CatalogCode catCodes( valStr );
+                                        wxString code = catCodes.GetPreferredCatalogCode( GetSettings( )->GetCatalogID( ) );
 
-                                            entryNode.SetID( id );
-                                            id = entryNode.GetID( );
-                                            if ( id.IsEmpty( ) )
-                                            {
-                                                std::cout << "ID_Nbr>" << valStr << "<\n";
-                                                int a = 0;
-                                            }
-                                        }
-                                        else
-                                        {
-                                            entryNode.SetID( valStr );
-                                        }
+                                        //  wxString code = Catalog::GetPreferredCatalogCode( valStr, GetSettings( )->GetCatalogID( ) );
+
+                                          //entryNode.SetID( code );
+                                          // //entryNode->ProcessCatalogCodes( valStr );
+                                          // if ( GetIDNbr( valStr, id ) )
+                                          // {
+                                          //     wxString codePrefix = GetSettings( )->GetCatCodePrefix( );
+
+                                          //     emtryno
+                                          //     entryNode.SetID( id );
+                                          //     id = entryNode.GetID( );
+                                          //     if ( id.IsEmpty( ) )
+                                          //     {
+                                          //         std::cout << "ID_Nbr>" << valStr << "<\n";
+                                          //         int a = 0;
+                                          //     }
+                                          // }
+                                          // else
+                                          // {
+                                          //     entryNode.SetID( valStr );
+                                          // }
                                     }
                                     valFound = true;
 

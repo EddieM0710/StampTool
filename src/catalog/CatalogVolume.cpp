@@ -253,21 +253,6 @@ namespace Catalog {
         FN.SetExt( "zip" );
         return ( path + "/" + name );
     }
-    wxString CatalogVolume::GetCatalogVolumeImagePath( )
-    {
-        wxString filename = "";
-        if ( m_stampDoc && m_stampDoc->IsOk( ) )
-        {
-            wxXmlNode* root = m_stampDoc->GetRoot( );
-            if ( root )
-            {
-                filename = Utils::GetAttrStr( root, "ImagePath" );
-
-                return filename;
-            }
-        }
-        return filename;
-    };
 
     bool CatalogVolume::IsOK( )
     {
@@ -439,8 +424,6 @@ namespace Catalog {
             wxString nodeName = child->GetName( );
             if ( !nodeName.Cmp( "Entry" ) )
             {
-                wxString imageName = child->GetAttribute( "ID_Nbr" );
-
                 wxString status = child->GetAttribute( XMLDataNames[ DT_InventoryStatus ], InventoryStatusStrings[ ST_Exclude ] );
                 InventoryStatusType type = FindStatusType( status );
                 if ( type < ST_None ) type = ST_Exclude;
@@ -561,33 +544,11 @@ namespace Catalog {
             Utils::SetAttrStr( newRoot, Catalog::DataTypeNames[ Catalog::DT_Name ], "" );
         }
 
-        attr = Utils::GetAttribute( root, "ImagePath" );
-        if ( attr ) {
-            wxString name = attr->GetName( );
-            wxString value = attr->GetValue( );
-            Utils::SetAttrStr( newRoot, name, value );
-        }
-        else
-        {
-            Utils::SetAttrStr( newRoot, "ImagePath", "" );
-        }
-
         Catalog::SortData( newRoot, root );
 
         ReplaceDocument( newDoc );
     }
 
-    void CatalogVolume::SetImagePath( wxString str )
-    {
-        if ( m_stampDoc && m_stampDoc->IsOk( ) )
-        {
-            wxXmlNode* root = m_stampDoc->GetRoot( );
-            if ( root )
-            {
-                Utils::SetAttrStr( root, "ImagePath", str );
-            }
-        }
-    }
 
     // this is an attempt to group the entrys;
     // i.e., an item of type entry can be a child of an item SeTenent type.

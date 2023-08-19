@@ -38,6 +38,7 @@
 #include "Settings.h"
 #include "utils/Project.h"
 #include "catalog/Entry.h"
+#include "catalog/CatalogCode.h"
 #include <wx/datetime.h>
 #include <wx/strconv.h>
 #include <wx/tokenzr.h>
@@ -47,6 +48,21 @@
 
 
 namespace Catalog {
+
+
+    wxString Entry::FindImageName( )
+    {
+        wxString catCodeStr = GetCatalogCodes( );
+        Catalog::CatalogCode catCodeArray( catCodeStr );
+        return catCodeArray.FindImageName( );
+    }
+
+    bool Entry::IsCatalogCode( wxString catCode )
+    {
+        wxString catCodeStr = GetCatalogCodes( );
+        Catalog::CatalogCode catCodeArray( catCodeStr );
+        return catCodeArray.IsCatalogCode( catCode );
+    }
 
     wxXmlNode* Entry::AddCode( )
     {
@@ -113,7 +129,7 @@ namespace Catalog {
 
     DataTypes Entry::FindDataType( wxString name )
     {
-        for ( int i = DT_ID_Nbr; i < DT_NbrTypes; i++ )
+        for ( int i = DT_Name; i < DT_NbrTypes; i++ )
         {
             if ( !name.Cmp( XMLDataNames[ i ] ) )
             {
@@ -137,7 +153,7 @@ namespace Catalog {
         return wxString( "" );
     }
 
-    //   wxString Entry::GetCatalogCodes( ) { return GetAttr( DT_Catalog_Codes ); };
+    wxString Entry::GetCatalogCodes( ) { return GetAttr( DT_Catalog_Codes ); };
 
     wxString Entry::GetClassificationName( Entry* entry, CatalogBaseType type )
     {
@@ -177,28 +193,6 @@ namespace Catalog {
                 return wxString( "" );
         }
     }
-
-    // wxXmlNode* Entry::GetCodeForCatalog( const char* catalog )
-    // {
-    //     wxXmlNode* ele = GetCatXMLNode( );
-    //     if ( ele )
-    //     {
-    //         wxXmlNode* childCode = Utils::FirstChildElement( ele, CatalogBaseNames[ NT_CatalogCode ] );
-    //         if ( childCode )
-    //         {
-    //             const wxXmlAttribute* attr = Utils::GetAttribute( childCode, CatalogCodeNames[ CC_Catalog ] );
-    //             if ( attr )
-    //             {
-    //                 const char* code = attr->GetValue( );
-    //                 if ( !strncmp( catalog, code, strlen( catalog ) ) )
-    //                 {
-    //                     return childCode;
-    //                 }
-    //             }
-    //         }
-    //     }
-    //     return ( wxXmlNode* ) 0;
-    // }
 
     wxString Entry::GetColors( ) { return GetAttr( DT_Colors ); };
 
@@ -271,7 +265,11 @@ namespace Catalog {
 
     wxString Entry::GetMount( ) { return GetAttr( DT_StampMount ); };
 
-    wxString Entry::GetID( ) { return GetAttr( DT_ID_Nbr ); };
+    wxString Entry::GetID( )
+    {
+        Catalog::CatalogCode catCodes( GetCatalogCodes( ) );
+        return catCodes.GetPreferredCatalogCode( GetSettings( )->GetCatalogID( ) );
+    };
 
     wxString Entry::GetInventoryStatus( )
     {
@@ -314,7 +312,7 @@ namespace Catalog {
         wxString label = GetID( );
         wxString height = GetHeight( );
         wxString width = GetWidth( );
-        wxString imageName = GetCatalogData( )->GetImageFilename( label );
+        wxString imageName = FindImageName( );
         wxString name = GetName( );
         label.Append( " - " );
         label.Append( name );
@@ -500,49 +498,6 @@ namespace Catalog {
         return m_OK;
     };
 
-    // void Entry::ProcessCatalogCodes( wxString catCodes )
-    // {
-    //     if ( !HasChildCode( ) )
-    //     {
-    //         if ( catCodes.IsEmpty( ) )
-    //         {
-    //             return;
-    //         }
-
-    //         wxStringTokenizer tokenizer( catCodes, "," );
-
-    //         wxString valStr;
-    //         wxString rest;
-    //         while ( tokenizer.HasMoreTokens( ) )
-    //         {
-    //             valStr = tokenizer.GetNextToken( );
-    //             if ( valStr.StartsWith( wxT( "\"" ), &rest ) )
-    //                 valStr = rest;
-    //             if ( valStr.EndsWith( wxT( "\"" ), &rest ) )
-    //                 valStr = rest;
-
-    //             // "Mi:US 1, Sn:US 1b, Yt:US 1, Sg:US 1, Un:US 1b"
-    //             valStr = valStr.Trim( );
-    //             valStr = valStr.Trim( false );
-
-    //             int pos = valStr.Find( ":" );
-    //             wxString catalog = valStr.Mid( 0, pos );
-    //             valStr = valStr.Mid( pos + 1 );
-    //             pos = valStr.Find( " " );
-    //             wxString country = valStr.Mid( 0, pos );
-    //             wxString id = valStr.Mid( pos + 1 );
-
-
-    //             wxXmlNode* catCodeElement = Utils::NewNode( GetCatXMLNode( ), CatalogBaseNames[ NT_CatalogCode ] );
-
-    //             CatalogCode* catCodeNode = new CatalogCode( catCodeElement );
-    //             catCodeNode->SetCatalog( catalog );
-    //             catCodeNode->SetCountry( country );
-    //             catCodeNode->SetID( id );
-    //         }
-    //     }
-    // }
-
     void Entry::SetAccuracy( wxString val ) { SetAttr( DT_Accuracy, val ); };
 
     void Entry::SetAttr( DataTypes type, wxString val )
@@ -552,8 +507,6 @@ namespace Catalog {
             Utils::SetAttrStr( GetCatXMLNode( ), XMLDataNames[ type ], val );
         };
     }
-
-    //    void Entry::SetCatalogCodes( wxString val ) { SetAttr( DT_Catalog_Codes, val ); };
 
     void Entry::SetColors( wxString val ) { SetAttr( DT_Colors, val ); };
 
@@ -574,8 +527,6 @@ namespace Catalog {
     void Entry::SetGum( wxString val ) { SetAttr( DT_Gum, val ); };
 
     void Entry::SetHeight( wxString val ) { SetAttr( DT_Height, val ); };
-
-    void Entry::SetID( wxString val ) { SetAttr( DT_ID_Nbr, val ); };
 
     void Entry::SetIssuedDate( wxString val ) { SetAttr( DT_Issued_on, val ); };
 

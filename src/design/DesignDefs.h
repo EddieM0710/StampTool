@@ -91,6 +91,7 @@ namespace Design {
         AT_StampNameLocation,
         AT_StampMargin,
         AT_CollapseState,
+        AT_Catalog,
         AT_NbrAttrTypes,
         AT_NOTYPE
     } AlbumAttrType;

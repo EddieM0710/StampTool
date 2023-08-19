@@ -45,12 +45,7 @@ namespace Design {
         Row( wxXmlNode* node ) : LayoutBase( node )
         {
             SetNodeType( AT_Row );
-            //SetObjectName( AlbumBaseNames[ GetNodeType( ) ] );
-            //SetShowFrame( false );
-            //SetShowTitle( false );
-            ///SetShowSubTitle( false );
-            //SetFixedSpacingSize( "4" );
-            //SetCalculateSpacing( true );
+
             m_titleFrame = new LabelFrame( Design::AT_TitleFontType );
             SetTitleString( GetAttrStr( AT_Name ) );
             if ( GetShowTitle( ) )

@@ -35,6 +35,7 @@
 
 namespace Catalog {
 
+
     /**
      * @brief This is a wrapper of an wxXmlNode for
      * safe/convenient getting/putting.
@@ -144,6 +145,9 @@ namespace Catalog {
         wxString GetBackground( ) { return GetAttr( DT_BackGround ); };
 
         wxString GetCatalogCodes( ); ///< Get the entry Catalog Codes field
+
+
+        wxString FindImageName( );
 
         /**
          * @brief Get the Classification Name object
@@ -309,6 +313,8 @@ namespace Catalog {
          * @return false
          */
         bool HasChildSpecimen( );
+
+        bool IsCatalogCode( wxString catCode );
 
         /**
          * @brief Is this a stamp type that has stamp cildren, e.g., a setenant or souviner sheet

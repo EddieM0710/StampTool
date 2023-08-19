@@ -31,7 +31,7 @@ add_library( GuiFiles SHARED
     ImagePanel.cpp
     InventoryPanel.cpp
     LabeledTextBox.cpp
-    MiscellaneousDataPanel.cpp
+#    MiscellaneousDataPanel.cpp
     NewStampDialog.cpp 
     PageDetailsDialog.cpp
     RemoveVolumeDialog.cpp    

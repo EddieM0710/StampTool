@@ -10,7 +10,7 @@ ${StampTool_CollectionFiles_Source_Directory}
 ${StampTool_CatalogFiles_Source_Directory} )
 
 set( CMAKE_RUNTIME_OUTPUT_DIRECTORY ${build_Directory} )
-add_library( Utils SHARED
+add_library( Utils SHARED 
     CSV.cpp
     DebugString.cpp
     Project.cpp

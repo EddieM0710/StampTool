@@ -26,6 +26,7 @@
 #define Attribute_H
 #include <cstring>
 #include <vector>
+#include <stdlib.h>
 
 namespace Design {
 

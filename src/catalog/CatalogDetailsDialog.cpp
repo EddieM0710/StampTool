@@ -36,7 +36,7 @@
 
 #include "wx/notebook.h"
 
-#include "gui/CatalogDetailsDialog.h"
+#include "catalog/CatalogDetailsDialog.h"
 #include "gui/LabeledTextBox.h"
  //#include "gui/AppData.h" 
 #include "catalog/CatalogData.h"

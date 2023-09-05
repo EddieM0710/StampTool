@@ -31,19 +31,14 @@ add_library( GuiFiles SHARED
     ImagePanel.cpp
     InventoryPanel.cpp
     LabeledTextBox.cpp
-#    MiscellaneousDataPanel.cpp
     NewStampDialog.cpp 
     PageDetailsDialog.cpp
     RemoveVolumeDialog.cpp    
     RowDetailsDialog.cpp 
-    CatalogDetailsDialog.cpp
     SettingsDialog.cpp
     SortOrderPanel.cpp
     StampDescriptionPanel.cpp 
     StampDetailsDialog.cpp
- 
-
-
 )
 
 

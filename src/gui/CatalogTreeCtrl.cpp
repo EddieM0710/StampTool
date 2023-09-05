@@ -682,7 +682,7 @@ void CatalogTreeCtrl::GoToColnect( wxTreeItemId id )
 
             wxString link = entry.GetLink( );
             wxString cmd = wxString::Format( "/usr/bin/firefox --new-tab %s", link );
-            system( cmd.fn_str( ) );
+            int a = system( cmd.fn_str( ) );
         }
 
     }

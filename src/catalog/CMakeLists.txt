@@ -16,6 +16,7 @@ CatalogData.cpp
 CatalogVolume.cpp
 CatalogList.cpp
 CatalogDefs.cpp
+CatalogDetailsDialog.cpp
 Entry.cpp
 Specimen.cpp
 StampMount.cpp 

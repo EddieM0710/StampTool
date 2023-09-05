@@ -49,128 +49,128 @@
 
 namespace Design {
 
-    AlbumVolume::AlbumVolume( /* args */ )
-    {
+    AlbumVolume::AlbumVolume ( /* args */ )
+        {
         isOKPtr = ( intptr_t ) &isOKPtr;
         m_albumDoc = 0;
         m_album = 0;
-    }
+        }
 
-    AlbumVolume::~AlbumVolume( )
-    {
+    AlbumVolume::~AlbumVolume ( )
+        {
 
-        if ( m_albumDoc ) m_albumDoc->~wxXmlDocument( );
+        if ( m_albumDoc ) m_albumDoc->~wxXmlDocument ( );
         if ( m_album ) delete m_album;
         m_albumDoc = 0;
         m_album = 0;
-    }
-
-    wxImage AlbumVolume::GetImage( wxString filename )
-    {
-        wxImage image;
-        if ( filename.IsEmpty( ) )
-        {
-            image = wxNullImage;
         }
-        else
+
+    wxImage AlbumVolume::GetImage ( wxString filename )
         {
-            wxString str = GetProject( )->GetImageFullPath( filename );
-
-            if ( !GetProject( )->ImageExists( str ) )
+        wxImage image;
+        if ( filename.IsEmpty ( ) )
             {
-                image = wxNullImage; ;
+            image = wxNullImage;
             }
-            else
+        else
             {
-                image = wxImage( str );
+            wxString str = GetProject ( )->GetImageFullPath ( filename );
 
-                if ( !image.IsOk( ) )
+            if ( !GetProject ( )->ImageExists ( str ) )
                 {
+                image = wxNullImage; ;
+                }
+            else
+                {
+                image = wxImage ( str );
+
+                if ( !image.IsOk ( ) )
+                    {
                     image = wxNullImage; ;
+                    }
                 }
             }
-        }
         return image;
-    }
+        }
 
     // Utils::ImageRepository* AlbumVolume::GetImageRepository( )
     // {
     //     return m_imageRepository;
     // };
 
-    wxString AlbumVolume::GetPath( )
-    {
-        wxFileName albumFn( m_albumFilename );
-        albumFn.MakeAbsolute( );
-        return albumFn.GetPath( );
-    }
-
-    AlbumBase* AlbumVolume::GetPage( AlbumBase* node )
-    {
-        wxTreeItemId id = node->GetTreeItemId( );
-        if ( id.IsOk( ) ) id = GetAlbumTreeCtrl( )->GetPage( id );
-        if ( id.IsOk( ) )
+    wxString AlbumVolume::GetPath ( )
         {
-            return GetAlbumTreeCtrl( )->GetItemNode( id );
+        wxFileName albumFn ( m_albumFilename );
+        albumFn.MakeAbsolute ( );
+        return albumFn.GetPath ( );
         }
-        return ( AlbumBase* ) 0;
-    }
 
-    AlbumVolume* AlbumVolume::InitAlbumVolume( )
-    {
+    AlbumBase* AlbumVolume::GetPage ( AlbumBase* node )
+        {
+        wxTreeItemId id = node->GetTreeItemId ( );
+        if ( id.IsOk ( ) ) id = GetAlbumTreeCtrl ( )->GetPage ( id );
+        if ( id.IsOk ( ) )
+            {
+            return GetAlbumTreeCtrl ( )->GetItemNode ( id );
+            }
+        return ( AlbumBase* ) 0;
+        }
+
+    AlbumVolume* AlbumVolume::InitAlbumVolume ( )
+        {
         m_albumDoc = 0;
         m_album = 0;
         return ( AlbumVolume* ) 0;
-    }
+        }
 
-    bool AlbumVolume::IsOK( )
-    {
+    bool AlbumVolume::IsOK ( )
+        {
 
         if ( isOKPtr == ( intptr_t ) &isOKPtr )
-        {
+            {
             return true;
-        }
+            }
         return false;
-    }
+        }
 
-    void AlbumVolume::LoadDefaultDocument( )
-    {
-        wxXmlDocument* newDocument = AlbumVolume::NewDesignDocument( );
-        wxXmlNode* root = new wxXmlNode( wxXML_ELEMENT_NODE, "Album" );
-        newDocument->SetRoot( root );
-        root->AddAttribute( AttrNameStrings[ AT_Name ], "" );
-        root->AddAttribute( AttrNameStrings[ AT_OverSizePaper ], "False" );
-        root->AddAttribute( AttrNameStrings[ AT_PaperHeight ], "0" );
-        root->AddAttribute( AttrNameStrings[ AT_PaperWidth ], "0" );
-        root->AddAttribute( AttrNameStrings[ AT_PageWidth ], "215.9" );
-        root->AddAttribute( AttrNameStrings[ AT_PageHeight ], "279.4" );
-        root->AddAttribute( AttrNameStrings[ AT_TopPageMargin ], "7.62" );
-        root->AddAttribute( AttrNameStrings[ AT_BottomPageMargin ], "7.62" );
-        root->AddAttribute( AttrNameStrings[ AT_RightPageMargin ], "7.62" );
-        root->AddAttribute( AttrNameStrings[ AT_LeftPageMargin ], "19.05" );
-        root->AddAttribute( AttrNameStrings[ AT_BorderSize ], "4" );
-        root->AddAttribute( AttrNameStrings[ AT_BorderFileName ], "" );
+    void AlbumVolume::LoadDefaultDocument ( )
+        {
+        wxXmlDocument* newDocument = AlbumVolume::NewDesignDocument ( );
+        wxXmlNode* root = new wxXmlNode ( wxXML_ELEMENT_NODE, "Album" );
+        newDocument->SetRoot ( root );
+        root->AddAttribute ( AttrNameStrings[ AT_Name ], "" );
+        root->AddAttribute ( AttrNameStrings[ AT_OverSizePaper ], "False" );
+        root->AddAttribute ( AttrNameStrings[ AT_PaperHeight ], "0" );
+        root->AddAttribute ( AttrNameStrings[ AT_PaperWidth ], "0" );
+        root->AddAttribute ( AttrNameStrings[ AT_PageWidth ], "215.9" );
+        root->AddAttribute ( AttrNameStrings[ AT_PageHeight ], "279.4" );
+        root->AddAttribute ( AttrNameStrings[ AT_TopPageMargin ], "7.62" );
+        root->AddAttribute ( AttrNameStrings[ AT_BottomPageMargin ], "7.62" );
+        root->AddAttribute ( AttrNameStrings[ AT_RightPageMargin ], "7.62" );
+        root->AddAttribute ( AttrNameStrings[ AT_LeftPageMargin ], "19.05" );
+        root->AddAttribute ( AttrNameStrings[ AT_BorderSize ], "4" );
+        root->AddAttribute ( AttrNameStrings[ AT_BorderFileName ], "" );
 
-        Album* album = new Album( root );
-        SetAlbum( album );
-        wxXmlNode* pageNode = new wxXmlNode( wxXML_ELEMENT_NODE, AlbumBaseNames[ AT_Page ] );
-        Page* page = ( Page* )new Page( pageNode );
-    }
+        Album* album = new Album ( root );
+        SetAlbum ( album );
+        wxXmlNode* pageNode = new wxXmlNode ( wxXML_ELEMENT_NODE, AlbumBaseNames[ AT_Page ] );
+        Page* page = ( Page* )new Page ( pageNode );
+        }
 
-    wxString AlbumVolume::GetAlbumPath( )
-    {
-        wxString filename = GetAlbumFilename( );
-        wxFileName FN( filename );
-        FN.MakeAbsolute( );
-        return FN.GetPath( );
-    }
+    wxString AlbumVolume::GetAlbumPath ( )
+        {
+        wxString filename = GetAlbumFilename ( );
+        wxFileName FN ( filename );
+        FN.MakeAbsolute ( );
+        return FN.GetPath ( );
+        }
 
-    wxString AlbumVolume::GetAlbumBaseName( )
-    {
-        wxString filename = GetAlbumFilename( );
-        wxFileName FN( filename );
-        return FN.GetName( );
-    }
+    wxString AlbumVolume::GetAlbumBaseName ( )
+        {
+        wxString filename = GetAlbumFilename ( );
+        wxFileName FN ( filename );
+        return FN.GetName ( );
+        }
 
     // wxString AlbumVolume::GetZipFileName( )
     // {
@@ -183,136 +183,136 @@ namespace Design {
     //     return ( path + "/" + name );
     // }
 
-    bool AlbumVolume::LoadXML( )
-    {
-        wxString filename = GetAlbumFilename( );
-        if ( !wxFileExists( filename ) )
+    bool AlbumVolume::LoadXML ( )
         {
+        wxString filename = GetAlbumFilename ( );
+        if ( !wxFileExists ( filename ) )
+            {
             return false;
-        }
+            }
         if ( !m_albumDoc )
-        {
-            m_albumDoc = NewDesignDocument( );
-        }
-        bool ok = m_albumDoc->Load( filename );
+            {
+            m_albumDoc = NewDesignDocument ( );
+            }
+        bool ok = m_albumDoc->Load ( filename );
 
         if ( !ok )
-        {
+            {
             std::cout << "AlbumVolume::LoadXML: " << filename << " Load Failed.\n";
             return false;
-        }
+            }
 
         //        MakeAlbumImageRepository( GetZipFileName( ) );
 
-        SetDirty( false );
+        SetDirty ( false );
         return true;
-    }
+        }
 
-    void AlbumVolume::MakePage( Design::LayoutBase* node )
-    {
-        Page* page = ( Page* ) GetPage( node );
+    void AlbumVolume::MakePage ( Design::LayoutBase* node )
+        {
+        Page* page = ( Page* ) GetPage ( node );
         if ( page )
-        {
-            bool ok = page->UpdateMinimumSize( );
+            {
+            bool ok = page->UpdateMinimumSize ( );
             if ( ok )
-            {
-                page->UpdateSizes( );
-                page->UpdatePositions( );
-                GetAlbumImagePanel( )->Refresh( );
+                {
+                page->UpdateSizes ( );
+                page->UpdatePositions ( );
+                GetAlbumImagePanel ( )->Refresh ( );
+                }
             }
         }
-    }
 
 
-    AlbumVolume* NewAlbumVolumeInstance( )
-    {
-        AlbumVolume* albumVolume = new AlbumVolume( );
-        albumVolume->InitAlbumVolume( );
+    AlbumVolume* NewAlbumVolumeInstance ( )
+        {
+        AlbumVolume* albumVolume = new AlbumVolume ( );
+        albumVolume->InitAlbumVolume ( );
         return albumVolume;
-    }
-
-    wxXmlDocument* AlbumVolume::NewDesignDocument( )
-    {
-        if ( m_albumDoc )
-        {
-            delete m_albumDoc;
         }
-        m_albumDoc = new wxXmlDocument( );
-        return m_albumDoc;
-    };
 
-    void AlbumVolume::SaveDesignTree( )
-    {
-        if ( m_albumDoc )
+    wxXmlDocument* AlbumVolume::NewDesignDocument ( )
         {
-            wxTreeItemId albumID = GetAlbumTreeCtrl( )->GetRootItem( );
-            Design::Album* album = ( Design::Album* ) GetAlbumTreeCtrl( )->GetItemNode( albumID );
-
-            wxXmlNode* root = m_albumDoc->DetachRoot( );
-            root->~wxXmlNode( );
-
-            wxXmlNode* xmlNode = Utils::NewNode( m_albumDoc, Design::AlbumBaseNames[ Design::AT_Album ] );
-            albumID = GetAlbumTreeCtrl( )->GetRootItem( );
-            album->Save( xmlNode );
-            GetAlbumTreeCtrl( )->SaveNodeData( xmlNode, albumID );
-        }
-    }
-
-    void AlbumVolume::SaveXML( )
-    {
-        wxString filename = GetAlbumFilename( );
         if ( m_albumDoc )
-        {
-            if ( wxFileExists( filename ) )
             {
-                wxFileName bakFile( filename );
-                bakFile.SetExt( "bak.alb" );
-                wxRenameFile( filename, bakFile.GetFullName( ), true );
+            delete m_albumDoc;
             }
-            SaveDesignTree( );
-            m_albumDoc->Save( filename );
-            SetDirty( false );
+        m_albumDoc = new wxXmlDocument ( );
+        return m_albumDoc;
+        };
+
+    void AlbumVolume::SaveDesignTree ( )
+        {
+        if ( m_albumDoc )
+            {
+            wxTreeItemId albumID = GetAlbumTreeCtrl ( )->GetRootItem ( );
+            Design::Album* album = ( Design::Album* ) GetAlbumTreeCtrl ( )->GetItemNode ( albumID );
+
+            wxXmlNode* root = m_albumDoc->DetachRoot ( );
+            root->~wxXmlNode ( );
+
+            wxXmlNode* xmlNode = Utils::NewNode ( m_albumDoc, Design::AlbumBaseNames[ Design::AT_Album ] );
+            albumID = GetAlbumTreeCtrl ( )->GetRootItem ( );
+            album->Save ( xmlNode );
+            GetAlbumTreeCtrl ( )->SaveNodeData ( xmlNode, albumID );
+            }
         }
-    }
+
+    void AlbumVolume::SaveXML ( )
+        {
+        wxString filename = GetAlbumFilename ( );
+        if ( m_albumDoc )
+            {
+            if ( wxFileExists ( filename ) )
+                {
+                wxFileName bakFile ( filename );
+                bakFile.SetExt ( "bak.alb" );
+                wxRenameFile ( filename, bakFile.GetFullName ( ), true );
+                }
+            SaveDesignTree ( );
+            m_albumDoc->Save ( filename );
+            SetDirty ( false );
+            }
+        }
 
     // Set the design to dirty  
-    void AlbumVolume::SetDirty( bool state )
-    {
+    void AlbumVolume::SetDirty ( bool state )
+        {
         m_dirty = state;
         if ( m_dirty )
-        {
-            GetAppData( )->SetDirty( true );
+            {
+            GetAppData ( )->SetDirty ( true );
+            }
         }
-    }
 
-    NodeStatus AlbumVolume::ValidatePage( AlbumBase* node )
-    {
-        Page* page = ( Page* ) GetPage( node );
-        if ( page )
+    NodeStatus AlbumVolume::ValidatePage ( AlbumBase* node )
         {
-            return page->ValidateChildren( page );
-        }
+        Page* page = ( Page* ) GetPage ( node );
+        if ( page )
+            {
+            return page->ValidateChildren ( page );
+            }
         return AT_FATAL;
-    }
-
-    void AlbumVolume::UpdateAlbum( )
-    {
-        m_album->UpdateMinimumSize( );
-        m_album->UpdateSizes( );
-        m_album->UpdatePositions( );
-        GetAlbumImagePanel( )->Refresh( );
-
-    }
-
-    void AlbumVolume::UpdatePage( AlbumBase* node )
-    {
-        Design::Page* page = ( Page* ) GetPage( node );
-        if ( page )
-        {
-            page->UpdateMinimumSize( );
-            page->UpdateSizes( );
-            page->UpdatePositions( );
         }
-    }
 
-}
+    void AlbumVolume::UpdateAlbum ( )
+        {
+        m_album->UpdateMinimumSize ( );
+        m_album->UpdateSizes ( );
+        m_album->UpdatePositions ( );
+        GetAlbumImagePanel ( )->Refresh ( );
+
+        }
+
+    void AlbumVolume::UpdatePage ( AlbumBase* node )
+        {
+        Design::Page* page = ( Page* ) GetPage ( node );
+        if ( page )
+            {
+            page->UpdateMinimumSize ( );
+            page->UpdateSizes ( );
+            page->UpdatePositions ( );
+            }
+        }
+
+    }

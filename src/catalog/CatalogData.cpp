@@ -160,7 +160,10 @@ namespace Catalog
     {
         m_catalogTreePanel->SetVolumeListStrings( m_catalogList.GetVolumeNameStrings( ) );
         Catalog::CatalogVolume* vol = m_catalogList.GetCatalogVolume( );
-        wxString name = vol->GetVolumeName( );
-        m_catalogTreePanel->SetVolumeListSelection( name );
+        if ( vol )
+        {
+            wxString name = vol->GetVolumeName( );
+            m_catalogTreePanel->SetVolumeListSelection( name );
+        }
     }
 }

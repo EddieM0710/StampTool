@@ -73,5 +73,9 @@
         "**/doc/**": true
     },
     "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
-    "openhab.useRestApi": false
+    "openhab.useRestApi": false,
+    "editor.minimap.enabled": false,
+    "C_Cpp.formatting": "vcFormat",
+    "workbench.colorCustomizations": {},
+    "C_Cpp.vcFormat.newLine.beforeOpenBrace.namespace": "ignore"
 }

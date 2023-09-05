@@ -435,16 +435,19 @@ namespace Catalog {
 
         wxString cwd = wxGetCwd( );
         //ok = m_stampDoc->Load( filename );
-        wxFileInputStream stream( "US_StampMounts.xml" );
-        if ( !stream.IsOk( ) )
+        if ( wxFileExists( "US_StampMounts.xml" ) )
         {
-            std::cout << "Stream Create Failed.\n\n";
-            return 0;
-        }
-        if ( !m_mountDoc->Load( stream ) )
-        {
-            std::cout << " Stream  Failed." << std::endl << std::endl;
-            return 0;
+            wxFileInputStream stream( "US_StampMounts.xml" );
+            if ( !stream.IsOk( ) )
+            {
+                std::cout << "Stream Create Failed.\n\n";
+                return 0;
+            }
+            if ( !m_mountDoc->Load( stream ) )
+            {
+                std::cout << " Stream  Failed." << std::endl << std::endl;
+                return 0;
+            }
         }
         return m_mountDoc;
     }

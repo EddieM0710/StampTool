@@ -1,11 +1,11 @@
 /*
  * @file         FontPickerHelper.h
  *@brief
-* @author      Eddie Monroe
-* Modified by:
-* @author     Mon 02 Jan 2023 08:34:03 CST
+ * @author      Eddie Monroe
+ * Modified by:
+ * @author     Mon 02 Jan 2023 08:34:03 CST
  *
-* @copyright Copyright ( c ) 2024
+ * @copyright Copyright ( c ) 2024
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
@@ -29,16 +29,17 @@
 
 #include "gui/AlbumTreeCtrl.h"
 #include <gui/FontPickerHelper.h>
-#include <gui/TitleHelper.h>
+//#include <gui/TitleHelper.h>
 
 #include "gui/GuiDefs.h"
 
  ///  @brief Helper class to group repetitive control construction sequence
  ///  
 
-#define HasLabels 0x01
-#define NoHideTitle 0x2
-
+#define HasTextCtrl 0x01
+#define HasSubTitle  0x2
+#define NoHideTextCtrl 0x4
+#define DefaultTitleHelperStyle HasTextCtrl | HasSubTitle
 class TitleHelper
 {
 
@@ -94,14 +95,22 @@ public:
     ///  @brief Get the Font Picker Ctrl object
     ///  
     ///  @return wxFontPickerCtrl* 
-    wxFontPickerCtrl* GetTitleFontPickerCtrl( ) { return m_titleFontPickerHelper->GetFontPickerCtrl( ); };
-    wxFontPickerCtrl* GetSubTitleFontPickerCtrl( ) { return m_subTitleFontPickerHelper->GetFontPickerCtrl( ); };
+    wxFontPickerCtrl* GetTitleFontPickerCtrl( ) {
+        return m_titleFontPickerHelper->GetFontPickerCtrl( );
+    };
+    wxFontPickerCtrl* GetSubTitleFontPickerCtrl( ) {
+        return m_subTitleFontPickerHelper->GetFontPickerCtrl( );
+    };
 
     ///  @brief Get the Colour Picker Ctrl object
     ///  
     ///  @return wxColourPickerCtrl* 
-    wxColourPickerCtrl* GetTitleColourPickerCtrl( ) { return m_titleFontPickerHelper->GetColourPickerCtrl( ); };
-    wxColourPickerCtrl* GetSubTitleColourPickerCtrl( ) { return m_subTitleFontPickerHelper->GetColourPickerCtrl( ); };
+    wxColourPickerCtrl* GetTitleColourPickerCtrl( ) {
+        return m_titleFontPickerHelper->GetColourPickerCtrl( );
+    };
+    wxColourPickerCtrl* GetSubTitleColourPickerCtrl( ) {
+        return m_subTitleFontPickerHelper->GetColourPickerCtrl( );
+    };
 
     void ShowTitleFontPicker( bool show = true )
     {
@@ -117,12 +126,14 @@ public:
             {
                 m_titleLabel->Show( show );
             }
-            else {
+            else
+            {
                 m_titleLabel->Show( true );
             }
             m_verticalSizer->Layout( );
         }
     };
+
     void ShowSubTitleFontPicker( bool show = true )
     {
         m_subTitleFontPickerHelper->ShowFontPicker( show );
@@ -138,11 +149,19 @@ public:
         }
     };
 
-    wxCheckBox* GetTitleCheckbox( ) { return m_titleCheckbox; };
-    wxCheckBox* GetSubTitleCheckbox( ) { return m_subTitleCheckbox; };
+    wxCheckBox* GetTitleCheckbox( ) {
+        return m_titleCheckbox;
+    };
+    wxCheckBox* GetSubTitleCheckbox( ) {
+        return m_subTitleCheckbox;
+    };
 
-    bool GetTitleCheckboxValue( ) { return m_titleCheckbox->GetValue( ); };
-    bool GetSubTitleCheckboxValue( ) { return m_subTitleCheckbox->GetValue( ); };
+    bool GetTitleCheckboxValue( ) {
+        return m_titleCheckbox->GetValue( );
+    };
+    bool GetSubTitleCheckboxValue( ) {
+        return m_subTitleCheckbox->GetValue( );
+    };
     void SetTitleCheckboxValue( bool state )
     {
         m_titleCheckbox->SetValue( state );
@@ -154,10 +173,18 @@ public:
         UpdateSubTitleState( );
     };
 
-    wxButton* GetTitleDefaultButton( ) { return m_titleFontPickerHelper->GetDefaultButton( ); };
-    wxButton* GetSubTitleDefaultButton( ) { return m_subTitleFontPickerHelper->GetDefaultButton( ); };
-    LabeledTextBox* GetTitleLabel( ) { return m_titleLabel; };
-    LabeledTextBox* GetSubTitleLabel( ) { return m_subTitleLabel; };
+    wxButton* GetTitleDefaultButton( ) {
+        return m_titleFontPickerHelper->GetDefaultButton( );
+    };
+    wxButton* GetSubTitleDefaultButton( ) {
+        return m_subTitleFontPickerHelper->GetDefaultButton( );
+    };
+    LabeledTextBox* GetTitleLabel( ) {
+        return m_titleLabel;
+    };
+    LabeledTextBox* GetSubTitleLabel( ) {
+        return m_subTitleLabel;
+    };
     void UpdateTitleState( )
     {
         bool state = GetTitleCheckboxValue( );
@@ -168,7 +195,8 @@ public:
         {
             m_titleLabel->Show( state );
         }
-        else {
+        else
+        {
             m_titleLabel->Show( true );
         }
         if ( !state )

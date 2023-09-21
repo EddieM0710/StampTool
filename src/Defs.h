@@ -36,16 +36,36 @@ class StampToolFrame;
 class AlbumTreeCtrl;
 class CatalogTreeCtrl;
 class AlbumImagePanel;
-namespace Design { class AlbumVolume; };
-namespace Design { class AlbumData; };
-namespace Utils { class FontList; };
-namespace Utils { class StampList; };
-namespace Catalog { class CatalogVolume; };
-namespace Catalog { class CatalogData; };
-namespace Inventory { class CollectionList; };
-namespace Catalog { class StampMountData; };
-namespace Utils { class Project; };
-namespace Utils { class Settings; };
+namespace Design {
+    class AlbumVolume;
+};
+namespace Design {
+    class AlbumData;
+};
+namespace Utils {
+    class FontList;
+};
+namespace Utils {
+    class StampList;
+};
+namespace Catalog {
+    class CatalogVolume;
+};
+namespace Catalog {
+    class CatalogData;
+};
+namespace Inventory {
+    class CollectionList;
+};
+namespace Catalog {
+    class StampMountData;
+};
+namespace Utils {
+    class Project;
+};
+namespace Utils {
+    class Settings;
+};
 
 extern bool Dirty;
 
@@ -86,29 +106,61 @@ Catalog::StampMountData* GetStampMountData( );
 
 
 #define RealPoint wxRealPoint  
-#define RealSize wxRealPoint 
+#define RealSize wxRealPoint
 class RealRect
 {
 public:
 
 
 
-    RealRect( RealPoint posR, RealPoint sizeR ) { pos = posR; size = sizeR; };
-    RealRect( double x, double y, double width, double height ) { SetPosition( x, y ), SetSize( width, height );; };
-    RealPoint GetPosition( ) { return pos; };
-    RealPoint GetSize( ) { return size; };
-    void SetPosition( double x, double y ) { pos.x = x; pos.y = y; };
-    void SetPosition( RealPoint posR ) { pos = posR; };
-    void SetSize( double width, double height ) { size.x = width; size.y = height; };
-    void SetSize( RealPoint sizeR ) { size = sizeR; };
-    double GetX( ) { return pos.x; };
-    double GetY( ) { return pos.y; };
-    double GetHeight( ) { return size.x; };
-    double GetWidth( ) { return size.y; };
-    void SetX( double x ) { pos.x = x; };
-    void SetY( double y ) { pos.y = y; };
-    void SetWidth( double width ) { pos.x = width; };
-    void SetHeight( double height ) { pos.y = height; };
+    RealRect( RealPoint posR, RealSize sizeR ) {
+        pos = posR; size = sizeR;
+    };
+    RealRect( double x, double y, double width, double height ) {
+        SetPosition( x, y ), SetSize( width, height );;
+    };
+    RealPoint GetPosition( ) {
+        return pos;
+    };
+    RealPoint GetSize( ) {
+        return size;
+    };
+    void SetPosition( double x, double y ) {
+        pos.x = x; pos.y = y;
+    };
+    void SetPosition( RealPoint posR ) {
+        pos = posR;
+    };
+    void SetSize( double width, double height ) {
+        size.x = width; size.y = height;
+    };
+    void SetSize( RealPoint sizeR ) {
+        size = sizeR;
+    };
+    double GetX( ) {
+        return pos.x;
+    };
+    double GetY( ) {
+        return pos.y;
+    };
+    double GetHeight( ) {
+        return size.x;
+    };
+    double GetWidth( ) {
+        return size.y;
+    };
+    void SetX( double x ) {
+        pos.x = x;
+    };
+    void SetY( double y ) {
+        pos.y = y;
+    };
+    void SetWidth( double width ) {
+        pos.x = width;
+    };
+    void SetHeight( double height ) {
+        pos.y = height;
+    };
     RealPoint pos;
     RealPoint size;
 

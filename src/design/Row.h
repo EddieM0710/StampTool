@@ -42,29 +42,34 @@ namespace Design {
 
     public:
 
-        Row( wxXmlNode* node ) : LayoutBase( node )
-        {
-            SetNodeType( AT_Row );
+        Row( wxXmlNode* node );
+        // : LayoutBase( node )
+        // {
+        //     SetNodeType( AT_Row );
 
-            m_titleFrame = new LabelFrame( Design::AT_TitleFontType );
-            SetTitleString( GetAttrStr( AT_Name ) );
-            if ( GetShowTitle( ) )
-            {
-                m_titleFrame->SetString( GetAttrStr( AT_Name ) );
-            }
-            else
-            {
-                m_titleFrame->Init( );
-            }
-            SetTopContentMargin( 2 );
-            SetBottomContentMargin( 2 );
-            SetLeftContentMargin( 2 );
-            SetRightContentMargin( 2 );
-        };
+        //     m_titleFrame = new LabelFrame( Design::AT_TitleFontType );
+        //     SetTitleString( GetAttrStr( AT_Name ) );
+        //     if ( GetShowTitle( ) )
+        //     {
+        //         m_titleFrame->SetString( GetAttrStr( AT_Name ) );
+        //     }
+        //     else
+        //     {
+        //         m_titleFrame->Init( );
+        //     }
+        //     SetTopContentMargin( 2 );
+        //     SetBottomContentMargin( 2 );
+        //     SetLeftContentMargin( 2 );
+        //     SetRightContentMargin( 2 );
+        // };
 
         ~Row( ) { };
 
-        bool CalculateSpacing( ) { return String2Bool( GetAttrStr( AT_CalculateSpacing ) ); };
+        void InitParameters( );
+
+        bool CalculateSpacing( ) {
+            return String2Bool( GetAttrStr( AT_CalculateSpacing ) );
+        };
 
         /*
          * @brief Draw object on screen
@@ -77,9 +82,13 @@ namespace Design {
 
         void DrawPDF( wxPdfDocument* doc, double x, double y );
 
-        wxString GetFixedSpacing( ) { return GetAttrStr( AT_FixedSpacingSize ); };
+        wxString GetFixedSpacing( ) {
+            return GetAttrStr( AT_FixedSpacingSize );
+        };
 
-        double GetFixedSpacingDbl( ) { return GetAttrDbl( AT_FixedSpacingSize ); };
+        double GetFixedSpacingDbl( ) {
+            return GetAttrDbl( AT_FixedSpacingSize );
+        };
 
         LabelFrame* GetTitleFrame( );
 
@@ -91,9 +100,13 @@ namespace Design {
 
         void Save( wxXmlNode* xmlNode );
 
-        void SetFixedSpacingSize( wxString str ) { SetAttrStr( AT_FixedSpacingSize, str ); };
+        void SetFixedSpacingSize( wxString str ) {
+            SetAttrStr( AT_FixedSpacingSize, str );
+        };
 
-        void SetCalculateSpacing( bool val ) { SetAttrStr( AT_CalculateSpacing, Bool2String( val ) ); };
+        void SetCalculateSpacing( bool val ) {
+            SetAttrStr( AT_CalculateSpacing, Bool2String( val ) );
+        };
 
         wxString GetTitleString( );
 
@@ -121,8 +134,11 @@ namespace Design {
 
         NodeStatus ValidateNode( );
 
-        TitleLocation  GetTitleLocation( );
         void SetTitleLocation( TitleLocation loc );
+        wxString GetTitleLocation( );
+
+        TitleLocation  GetTitleLocationType( );
+        void SetTitleLocationType( TitleLocation loc );
 
     private:
 

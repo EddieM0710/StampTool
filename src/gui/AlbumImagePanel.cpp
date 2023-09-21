@@ -152,41 +152,17 @@ wxSize AlbumImagePanel::GetLogicalTextExtent( wxString text, wxFont font )
 
 //--------------
 
-// wxSize AlbumImagePanel::GetTextSize( wxFont font, wxString text )
-// {
-//     wxClientDC dc( this );
-//     dc.SetMapMode( wxMM_METRIC );
-// //    wxSize ppi = wxGetDisplayPPI( );
-//     if ( m_userScale <= 0 )
-//     {
-//         m_userScale = .4;
-//     }
-//      DoPrepareDC( dc );
-//     dc.SetUserScale( m_userScale, m_userScale );
-//     dc.SetFont( font );
-
-//     text.Trim( );
-//     text.Trim( false );
-
-//     return dc.GetMultiLineTextExtent( text );
-// }
-
-//--------------
-
 void AlbumImagePanel::Init( )
 {
-
 }
 
 //--------------
 
 wxSize  AlbumImagePanel::MakeMultiLine( wxString& text, wxFont font, double width )
 {
-
-
     wxClientDC  dc( this );
     //DoPrepareDC( dc );
-    dc.SetMapMode( wxMM_TEXT );
+    dc.SetMapMode( wxMM_METRIC );
     int point = font.GetPointSize( );
     //dc.SetUserScale( m_userScale, m_userScale );
     dc.SetFont( font );
@@ -196,10 +172,10 @@ wxSize  AlbumImagePanel::MakeMultiLine( wxString& text, wxFont font, double widt
     double scaleb = ( double ) sizea.y / ( double ) sizeb.y;
 
     //adjust the width down just a bit to allow for text conversion
-    wxDisplay display;
+    wxDisplay display( this );
     wxSize scale = display.GetPPI( ) / 25.4;
-    width = ( double ) width * scaleb;
-
+    double widthDev = dc.LogicalToDeviceXRel( width );
+    // width = ( double ) width * scaleb;
     str.Trim( );
     str.Trim( false );
     int len = str.length( );
@@ -212,11 +188,10 @@ wxSize  AlbumImagePanel::MakeMultiLine( wxString& text, wxFont font, double widt
     int currLine = 0;
     for ( size_t k = 0; k < words.GetCount( ); k++ )
     {
-
         dc.GetTextExtent( words[ k ], &w, &h );
         int newWidth = currWidth + w;
         // if over runs width
-        if ( newWidth > width )
+        if ( newWidth > widthDev )
         {
             if ( currWidth <= 0 )
             {
@@ -240,7 +215,6 @@ wxSize  AlbumImagePanel::MakeMultiLine( wxString& text, wxFont font, double widt
                 lines[ currLine ] = lines[ currLine ] + words[ k ];
                 currWidth = w;
             }
-
         }
         else
         {
@@ -259,114 +233,10 @@ wxSize  AlbumImagePanel::MakeMultiLine( wxString& text, wxFont font, double widt
     }
     text = output;
     wxSize outSize = dc.GetMultiLineTextExtent( text );
-    return wxSize( ( ( double ) outSize.GetWidth( ) / scaleb ), ( ( double ) outSize.GetHeight( ) / scaleb ) );
+    outSize = dc.DeviceToLogicalRel( outSize );
+    return outSize;
 
 }
-// void AlbumImagePanel::MakeMultiLine( wxString& text, wxFont font, double width )
-// {
-//     //adjust the width down just a bit to allow for text conversion
-//     wxDisplay display;
-//     wxSize scale = display.GetPPI( ) / 25.4;
-//     width = width * .95 * scale.x;
-
-//     wxClientDC  dc( this );//= this->GetDC( );
-//     DoPrepareDC( dc );
-//     dc.SetMapMode( wxMM_TEXT );
-//     //dc.SetUserScale( 1, 1 );
-//     dc.SetUserScale( 1, 1 );
-//     dc.SetFont( font );
-
-//     text.Trim( );
-//     text.Trim( false );
-//     int len = text.length( );
-//     if ( len > 0 )
-//     {
-//         wxSize ext = dc.GetTextExtent( text );
-//         //wxSize logiExt = dc.DeviceToLogicalRel( ext );
-//         if ( ext.x < width )
-//         {
-//             // if it fits print it
-//             //all done
-//         }
-//         else
-//         {
-//             // break the line up at word DoPrepareDC( dc ); breaks; look for a space
-//             int start = 0;
-//             int pos = start;
-//             int origPos = start;
-
-//             wxString currStr = text;
-//             wxString workingStr = text;
-
-//             pos = workingStr.find( ' ', pos );
-
-//             while ( len > 0 )
-//             {
-//                 if ( pos == wxNOT_FOUND )
-//                 {
-//                     // no space for break so print it.
-//                     len = 0;
-//                     // all done
-//                 }
-//                 else
-//                 {
-//                     // found a space so break into multiple lines
-//                     // Add words until length exceeded
-//                     workingStr = text.Mid( start, pos );
-
-//                     wxSize ext = dc.GetTextExtent( workingStr );
-//                     //wxSize logExt = dc.DeviceToLogicalRel( ext );
-//                     if ( ext.x > width )
-//                     {
-//                         // it won't fit; decide what to do
-//                         if ( start == origPos )
-//                         {
-//                             // the distance to the first space was bigger than the size of the stamp so print it
-//                             // i.e., a really big word or little stamp
-//                             text.SetChar( pos, '\n' );
-//                             workingStr = text.Mid( pos + 1 );
-//                             workingStr.Trim( );
-//                             workingStr.Trim( false );
-//                             len = workingStr.length( );
-//                             start = pos + 1;
-//                             origPos = pos + 1;
-//                             pos = text.find( ' ', start );
-
-//                         }
-//                         else
-//                         {
-//                             // backup to previous try
-//                             workingStr = workingStr.Mid( start, origPos );
-//                             pos = origPos;
-//                             text.SetChar( pos, '\n' );
-//                             workingStr = text.Mid( pos + 1 );
-//                             workingStr.Trim( );
-//                             workingStr.Trim( false );
-//                             len = workingStr.length( );
-//                             start = pos + 1;
-//                             origPos = pos + 1;
-//                             pos = text.find( ' ', start );
-
-//                         }
-//                     }
-//                     else
-//                     {
-//                         // the word will fit; can another word fit?
-//                         origPos = pos;
-//                         pos = text.find( ' ', pos + 1 );
-//                         if ( pos == wxNOT_FOUND )
-//                         {
-//                             // no space for break so print it.
-//                             text.SetChar( origPos, '\n' );
-//                             workingStr.Empty( );
-//                             len = 0;
-//                         }
-//                     }
-//                 }
-//             }
-//         }
-//     }
-// }
 
 //--------------
 
@@ -432,38 +302,36 @@ void AlbumImagePanel::OnContextMenu( wxContextMenuEvent& event )
             break;
         }
 
-        case AlbumImagePanel_EditDetails:
-        {
-            if ( newID && ( type == Design::AT_Stamp ) )
-            {
-                GetAlbumTreeCtrl( )->ShowStampDetails( newID );
-                GetAlbumVolume( )->MakePage( ( Design::LayoutBase* ) pageNode );
-            }
-            else if ( type == Design::AT_Row )
-            {
-                GetAlbumTreeCtrl( )->ShowRowDetails( newID, pageNode );
-                GetAlbumVolume( )->MakePage( ( Design::LayoutBase* ) pageNode );
-            }
-            else if ( type == Design::AT_Col )
-            {
-                GetAlbumTreeCtrl( )->ShowColDetails( newID, pageNode );
-                GetAlbumVolume( )->MakePage( ( Design::LayoutBase* ) pageNode );
-            }
-            else if ( type == Design::AT_Page )
-            {
-                GetAlbumTreeCtrl( )->ShowPageDetails( newID, pageNode );
-                GetAlbumVolume( )->MakePage( ( Design::LayoutBase* ) pageNode );
-            }
-            else if ( type == Design::AT_Album )
-            {
-                GetAlbumTreeCtrl( )->ShowAlbumDetails( newID, pageNode );
-                GetAlbumVolume( )->MakePage( ( Design::LayoutBase* ) pageNode );
-            }
-
-
-            break;
-            break;
-        }
+        // case AlbumImagePanel_EditDetails:
+        // {
+        //     if ( newID && ( type == Design::AT_Stamp ) )
+        //     {
+        //         GetAlbumTreeCtrl( )->ShowStampDetails( newID );
+        //         GetAlbumVolume( )->MakePage( ( Design::LayoutBase* ) pageNode );
+        //     }
+        //     else if ( type == Design::AT_Row )
+        //     {
+        //         GetAlbumTreeCtrl( )->ShowRowDetails( newID, pageNode );
+        //         GetAlbumVolume( )->MakePage( ( Design::LayoutBase* ) pageNode );
+        //     }
+        //     else if ( type == Design::AT_Col )
+        //     {
+        //         GetAlbumTreeCtrl( )->ShowColDetails( newID, pageNode );
+        //         GetAlbumVolume( )->MakePage( ( Design::LayoutBase* ) pageNode );
+        //     }
+        //     else if ( type == Design::AT_Page )
+        //     {
+        //         GetAlbumTreeCtrl( )->ShowPageDetails( newID, pageNode );
+        //         GetAlbumVolume( )->MakePage( ( Design::LayoutBase* ) pageNode );
+        //     }
+        //     else if ( type == Design::AT_Album )
+        //     {
+        //         GetAlbumTreeCtrl( )->ShowAlbumDetails( newID, pageNode );
+        //         GetAlbumVolume( )->MakePage( ( Design::LayoutBase* ) pageNode );
+        //     }
+        //     break;
+        //     break;
+        // }
     }
     event.Skip( );
 
@@ -516,10 +384,8 @@ void AlbumImagePanel::OnPaint( wxPaintEvent& event )
     {
         wxPaintDC dc( this );
         DoPrepareDC( dc );
-        dc.SetMapMode( wxMM_TEXT );
+        dc.SetMapMode( wxMM_METRIC );
         dc.Clear( );
-
-        Design::InitDesignDefs( );
 
         Design::Album* album = GetAlbumVolume( )->GetAlbum( );
         if ( album )
@@ -529,12 +395,6 @@ void AlbumImagePanel::OnPaint( wxPaintEvent& event )
             if ( pageNode && pageNode->IsStatusOK( ) )
             {
 
-                const wxSize sizeMM = dc.GetSizeMM( );//GetClientSize( );
-                const wxSize sizeClient = dc.GetSize( );//GetClientSize( );
-                InitScale( sizeMM, sizeClient );
-
-                wxSize ppi = dc.GetPPI( );//wxGetDisplayPPI( );
-                double deviceScale = ppi.x / 25.4;
                 double width;
                 double height;
                 if ( Design::IsPortrait( pageNode->GetOrientation( ) ) )
@@ -548,11 +408,8 @@ void AlbumImagePanel::OnPaint( wxPaintEvent& event )
                     width = album->GetAttrDbl( Design::AT_PageHeight );
                 }
 
-                double clientScale = 1.;
-                clientScale = ( double ) sizeMM.x / ( double ) width;
-
-                m_userScale = ( 1 - ( .4 - m_zoom ) );
-
+                m_userScale = ( .5 - ( .4 - m_zoom ) );
+                wxSize PPI = dc.GetPPI( );
                 dc.SetUserScale( m_userScale, m_userScale );
 
                 /* init scrolled area size, scrolling speed, etc. */
@@ -568,7 +425,6 @@ void AlbumImagePanel::OnPaint( wxPaintEvent& event )
 
                 dc.SetPen( *wxBLACK_PEN );
 
-                //pageNode->Draw( dc, album->GetAttrDbl( Design::AT_LeftPageMargin ), album->GetAttrDbl( Design::AT_TopPageMargin ) );
                 pageNode->Draw( dc, 0, 0 );
             }
         }

@@ -66,9 +66,13 @@ namespace Design {
 
         double GetMinWidth( );
 
-        RealPoint GetPosition( ) { return RealPoint( GetXPos( ), GetYPos( ) ); };
+        RealPoint GetPosition( ) {
+            return RealPoint( GetXPos( ), GetYPos( ) );
+        };
 
-        RealSize GetSize( ) { return RealSize( GetWidth( ), GetHeight( ) ); };
+        RealSize GetSize( ) {
+            return RealSize( GetWidth( ), GetHeight( ) );
+        };
 
         double GetXPos( );
 
@@ -93,8 +97,12 @@ namespace Design {
         void SetWidth( double val );
 
         wxString WriteLayout( wxString prefix );
+        wxString Layout( );
+        //   void Check( );
 
-        wxRect GetRect( ) { return wxRect( GetXPos( ), GetYPos( ), GetWidth( ), GetHeight( ) ); };
+        wxRect GetRect( ) {
+            return wxRect( GetXPos( ), GetYPos( ), GetWidth( ), GetHeight( ) );
+        };
 
     protected:
 

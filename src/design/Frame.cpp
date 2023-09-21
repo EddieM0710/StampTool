@@ -26,7 +26,7 @@
 #include "gui/AlbumImagePanel.h"
 #include "design/Frame.h"
 #include "gui/GuiUtils.h"
-
+#include <wx/math.h> 
 
 namespace Design {
 
@@ -38,12 +38,12 @@ namespace Design {
 
     void Frame::Init( )
     {
-        m_xPos = 0;
-        m_yPos = 0;
-        m_width = 0;
-        m_height = 0;
-        m_minWidth = 0;
-        m_minHeight = 0;
+        m_xPos = 0.0;
+        m_yPos = 0.0;
+        m_width = 0.0;
+        m_height = 0.0;
+        m_minWidth = 0.0;
+        m_minHeight = 0.0;
     }
     /*
      * @brief Draw object on screen
@@ -62,17 +62,29 @@ namespace Design {
         DrawRectanglePDF( doc, x + GetXPos( ), y + GetYPos( ), GetWidth( ), GetHeight( ) );
     };
 
-    double Frame::GetHeight( ) { return m_height; };
+    double Frame::GetHeight( ) {
+        return m_height;
+    };
 
-    double Frame::GetMinWidth( ) { return m_minWidth; };
+    double Frame::GetMinWidth( ) {
+        return m_minWidth;
+    };
 
-    double Frame::GetMinHeight( ) { return m_minHeight; };
+    double Frame::GetMinHeight( ) {
+        return m_minHeight;
+    };
 
-    double Frame::GetXPos( ) { return m_xPos; };
+    double Frame::GetXPos( ) {
+        return m_xPos;
+    };
 
-    double Frame::GetYPos( ) { return m_yPos; };
+    double Frame::GetYPos( ) {
+        return m_yPos;
+    };
 
-    double Frame::GetWidth( ) { return m_width; };
+    double Frame::GetWidth( ) {
+        return m_width;
+    };
 
     wxString Frame::LayoutString( )
     {
@@ -95,17 +107,65 @@ namespace Design {
         return str;
     }
 
-    void Frame::SetHeight( double val ) { m_height = val; };
+    void Frame::SetHeight( double val )
+    {
 
-    void Frame::SetMinHeight( double val ) { m_minHeight = val; };
+        m_height = val;
+    };
 
-    void Frame::SetMinWidth( double val ) { m_minWidth = val; };
+    void Frame::SetMinHeight( double val ) {
 
-    void Frame::SetXPos( double val ) { m_xPos = val; };
 
-    void Frame::SetYPos( double val ) { m_yPos = val; };
+        m_minHeight = val;
+    };
 
-    void Frame::SetWidth( double val ) { m_width = val; };
+    void Frame::SetMinWidth( double val ) {
+
+
+        m_minWidth = val;
+    };
+
+    void Frame::SetXPos( double val ) {
+
+
+        m_xPos = val;
+    };
+
+    void Frame::SetYPos( double val ) {
+
+        m_yPos = val;
+    };
+
+    void Frame::SetWidth( double val ) {
+
+
+        m_width = val;
+    };
+
+    // void Frame::Check( )
+    // {
+
+    //     if ( ( m_xPos < 0 ) || ( m_yPos < 0 )
+    //         || ( m_width < 0 ) || ( m_height < 0 )
+    //         || ( m_minHeight < 0 ) || ( m_minWidth < 0 )
+    //         || wxIsNaN( m_xPos ) || wxIsNaN( m_yPos )
+    //         || wxIsNaN( m_width ) || wxIsNaN( m_height )
+    //         || wxIsNaN( m_minWidth ) || wxIsNaN( m_minHeight ) )
+    //     {
+    //         std::cout << "frame error " << Layout( ) << "\n";
+
+    //         while ( 0 )
+    //         {
+    //         };
+    //     }
+    // }
+
+    // wxString Frame::Layout( )
+    // {
+    //     wxString str = wxString::Format( "   pos( %.1f, %.1f)  size( %.1f, %.1f)  minSize( %.1f, %.1f)",
+    //         m_xPos, m_yPos, m_width, m_height, m_minHeight );
+    //     return str;
+    // }
 
     wxString Frame::WriteLayout( wxString prefix )
     {

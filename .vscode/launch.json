@@ -8,7 +8,7 @@
             "name": "(gdb) Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "/sandbox/Development/StampTool/StampTool/build/StampTool",
+            "program": "/sandbox/Development/StampTool/build/StampTool",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",

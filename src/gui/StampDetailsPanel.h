@@ -1,5 +1,5 @@
 /*
- * @file StampDetailsDialog.h
+ * @file StampDetailsPanel.h
  * @author Eddie Monroe
  * @brief
  * @version 0.1
@@ -20,13 +20,15 @@
  * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  */
-#ifndef _STAMPDETAILSDIALOG_H_
-#define _STAMPDETAILSDIALOG_H_
+#ifndef _STAMPDETAILSPANEL_H_
+#define _STAMPDETAILSPANEL_H_
 
 
 #include "wx/listctrl.h"
 #include <wx/fontpicker.h>
 #include <wx/clrpicker.h>
+
+#include "gui/HelperPanel.h"
 
 #include "gui/AlbumTreeCtrl.h"
 #include "gui/GuiDefs.h"
@@ -37,21 +39,23 @@ class wxListCtrl;
 class TitleHelper;
 class FontPicker;
 
-namespace Design { class Stamp; };
+namespace Design {
+    class Stamp;
+};
 
 
-#define SYMBOL_STAMPDETAILSDIALOG_STYLE wxCAPTION | wxRESIZE_BORDER | wxSYSTEM_MENU | wxCLOSE_BOX | wxTAB_TRAVERSAL
-#define SYMBOL_STAMPDETAILSDIALOG_TITLE _( "StampDetailsDialog" )
-#define SYMBOL_STAMPDETAILSDIALOG_IDNAME ID_STAMPDETAILSDIALOG
-#define SYMBOL_STAMPDETAILSDIALOG_SIZE wxSize( 400, 800 )
-#define SYMBOL_STAMPDETAILSDIALOG_POSITION wxDefaultPosition
+#define SYMBOL_STAMPDETAILSPANEL_STYLE wxCAPTION | wxRESIZE_BORDER | wxSYSTEM_MENU | wxCLOSE_BOX | wxTAB_TRAVERSAL
+#define SYMBOL_STAMPDETAILSPANEL_TITLE _( "StampDetailsPanel" )
+#define SYMBOL_STAMPDETAILSPANEL_IDNAME ID_STAMPDETAILSDIALOG
+#define SYMBOL_STAMPDETAILSPANEL_SIZE wxSize( 400, 800 )
+#define SYMBOL_STAMPDETAILSPANEL_POSITION wxDefaultPosition
 
 
 
 
-class StampDetailsDialog : public wxDialog
+class StampDetailsPanel : public HelperPanel
 {
-    DECLARE_DYNAMIC_CLASS( StampDetailsDialog )
+    DECLARE_DYNAMIC_CLASS( StampDetailsPanel )
     DECLARE_EVENT_TABLE( )
 
 public:
@@ -84,14 +88,14 @@ public:
 
 
 
-    StampDetailsDialog( );
-    StampDetailsDialog( wxWindow* parent, wxWindowID id = SYMBOL_STAMPDETAILSDIALOG_IDNAME, const wxString& caption = SYMBOL_STAMPDETAILSDIALOG_TITLE, const wxPoint& pos = SYMBOL_STAMPDETAILSDIALOG_POSITION, const wxSize& size = SYMBOL_STAMPDETAILSDIALOG_SIZE, long style = SYMBOL_STAMPDETAILSDIALOG_STYLE );
+    StampDetailsPanel( );
+    StampDetailsPanel( wxWindow* parent, wxWindowID id = SYMBOL_STAMPDETAILSPANEL_IDNAME, const wxString& caption = SYMBOL_STAMPDETAILSPANEL_TITLE, const wxPoint& pos = SYMBOL_STAMPDETAILSPANEL_POSITION, const wxSize& size = SYMBOL_STAMPDETAILSPANEL_SIZE, long style = SYMBOL_STAMPDETAILSPANEL_STYLE );
 
 
-    bool Create( wxWindow* parent, wxWindowID id = SYMBOL_STAMPDETAILSDIALOG_IDNAME, const wxString& caption = SYMBOL_STAMPDETAILSDIALOG_TITLE, const wxPoint& pos = SYMBOL_STAMPDETAILSDIALOG_POSITION, const wxSize& size = SYMBOL_STAMPDETAILSDIALOG_SIZE, long style = SYMBOL_STAMPDETAILSDIALOG_STYLE );
+    bool Create( wxWindow* parent, wxWindowID id = SYMBOL_STAMPDETAILSPANEL_IDNAME, const wxString& caption = SYMBOL_STAMPDETAILSPANEL_TITLE, const wxPoint& pos = SYMBOL_STAMPDETAILSPANEL_POSITION, const wxSize& size = SYMBOL_STAMPDETAILSPANEL_SIZE, long style = SYMBOL_STAMPDETAILSPANEL_STYLE );
 
 
-    ~StampDetailsDialog( );
+    ~StampDetailsPanel( );
 
 
     void Init( );
@@ -104,7 +108,7 @@ public:
 
     void UpdateControls( );
 
-    void SetupDialog( wxTreeItemId id );
+    void SetupDialog( Design::Stamp* stamp );
     void SetCatCodes( );
 
     void OnRefreshButtonClick( wxCommandEvent& event );
@@ -116,15 +120,26 @@ public:
     void OnLeftRadioButtonSelected( wxCommandEvent& event );
     void OnRightRadioButtonSelected( wxCommandEvent& event );
     void OnTitleDefaultClick( wxCommandEvent& event );
+
+    void OnNameFontPicker( wxFontPickerEvent& event );
+    void OnNameColorPicker( wxColourPickerEvent& event );
+
+    void OnNbrFontPicker( wxFontPickerEvent& event );
+    void OnNbrColorPicker( wxColourPickerEvent& event );
+
     void OnNbrDefaultClick( wxCommandEvent& event );
     void OnSubTitleDefaultClick( wxCommandEvent& event );
+
+    void OnNameTextChanged( wxCommandEvent& event );
+    void OnSubTitleTextChanged( wxCommandEvent& event );
+
     void OnNameCheckboxClick( wxCommandEvent& event );
     void OnSubTitleCheckboxClick( wxCommandEvent& event );
 
     void OnNameDefaultClick( wxCommandEvent& event );
     void OnCatNbrCheckboxClick( wxCommandEvent& event );
 
-
+    void OnCatNbrComboBoxSel( wxCommandEvent& event );
 
     static bool ShowToolTips( );
 
@@ -141,7 +156,7 @@ public:
     void SetName( wxString name );
     void SetShowNbr( bool state = false );
     void SetShowTitle( bool state = false );
-    void SetShowSubTitle( bool state = false );
+    //void SetShowSubTitle( bool state = false );
     void SetNbrFont( wxFont font );
     void SetNameFont( wxFont font );
     void SetNbrColor( wxColour color );
@@ -194,7 +209,7 @@ private:
 
     // LabeledTextBox* m_catNbr;
     wxComboBox* m_catNbr;
-    LabeledTextBox* m_name;
+    //  LabeledTextBox* m_name;
     LabeledTextBox* m_imagePath;
     LabeledTextBox* m_height;
     LabeledTextBox* m_width;
@@ -205,7 +220,6 @@ private:
     wxButton* m_validate;
     wxListBox* m_statusList;
     wxArrayString m_statusListStrings;
-
 
     TitleHelper* m_titleHelper;
     wxTreeItemId m_designTreeID;

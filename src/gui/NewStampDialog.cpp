@@ -136,8 +136,6 @@ void NewStampDialog::Init( )
 void NewStampDialog::CreateControls( )
 {
     // NewStampDialog content construction
-//    std::cout << "NewStampDialog" << "\n";
-
     NewStampDialog* itemDialog1 = this;
 
     wxBoxSizer* itemBoxSizer1 = new wxBoxSizer( wxVERTICAL );

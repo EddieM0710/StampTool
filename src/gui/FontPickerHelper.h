@@ -70,32 +70,44 @@ public:
         m_fontPicker = new wxFontPickerCtrl( parent, ++lastID,
             m_font, wxDefaultPosition,
             wxDefaultSize, wxFNTP_DEFAULT_STYLE );
-        m_horizontalSizer->Add( m_fontPicker, 2, wxGROW | wxALL, 5 );
+        m_horizontalSizer->Add( m_fontPicker, 1, wxGROW | wxALL, 5 );
 
         m_colorPicker = new wxColourPickerCtrl( parent, ++lastID,
             m_color, wxDefaultPosition,
-            wxDefaultSize, wxCLRP_DEFAULT_STYLE );
-        m_horizontalSizer->Add( m_colorPicker, 1, wxGROW | wxALL, 5 );
+            wxSize( 40, -1 ), wxCLRP_DEFAULT_STYLE );
+        m_horizontalSizer->Add( m_colorPicker, 0, wxGROW | wxALL, 5 );
 
-        m_defaultButton = new wxButton( parent, ++lastID, buttonText, wxDefaultPosition, wxDefaultSize, 0 );
+        m_defaultButton = new wxButton( parent, ++lastID, buttonText, wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT );
         m_horizontalSizer->Add( m_defaultButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+
+        m_horizontalSizer->Add( 5, 5, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+
+
     }
 
     ///  @brief Get the Font Picker Ctrl object
     ///  
     ///  @return wxFontPickerCtrl* 
-    wxFontPickerCtrl* GetFontPickerCtrl( ) { return m_fontPicker; };
+    wxFontPickerCtrl* GetFontPickerCtrl( ) {
+        return m_fontPicker;
+    };
 
     ///  @brief Get the Colour Picker Ctrl object
     ///  
     ///  @return wxColourPickerCtrl* 
-    wxColourPickerCtrl* GetColourPickerCtrl( ) { return m_colorPicker; };
+    wxColourPickerCtrl* GetColourPickerCtrl( ) {
+        return m_colorPicker;
+    };
 
     ///  @brief Get the Default Button object
     ///  
     ///  @return wxButton* 
-    wxButton* GetDefaultButton( ) { return m_defaultButton; };
-    void ShowFontPicker( bool show = true ) { m_horizontalSizer->Show( show ); }
+    wxButton* GetDefaultButton( ) {
+        return m_defaultButton;
+    };
+    void ShowFontPicker( bool show = true ) {
+        m_horizontalSizer->Show( show );
+    }
 
 private:
 

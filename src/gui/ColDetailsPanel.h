@@ -1,5 +1,5 @@
 /*
- * @file src/gui/ColDetailsDialog.h
+ * @file src/gui/ColDetailsPanel.h
  * @author Eddie Monroe
  * @brief
  * @version 0.1
@@ -21,20 +21,23 @@
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef _COLDETAILSDIALOG_H_
-#define _COLDETAILSDIALOG_H_
+#ifndef _COLDETAILSPANEL_H_
+#define _COLDETAILSPANEL_H_
 
 #include "wx/listctrl.h"
 #include <wx/fontpicker.h>
 #include <wx/clrpicker.h>
 
+#include "gui/HelperPanel.h"
 #include "gui/AlbumTreeCtrl.h"
 #include "gui/GuiDefs.h"
 
 class LabeledTextBox;
 class wxListCtrl;
 class TitleHelper;
-namespace Design { class Column; };
+namespace Design {
+    class Column;
+};
 
 
 #define SYMBOL_COLDETAILSDIALOG_STYLE wxCAPTION | wxRESIZE_BORDER | wxSYSTEM_MENU | wxCLOSE_BOX | wxTAB_TRAVERSAL
@@ -43,14 +46,14 @@ namespace Design { class Column; };
 #define SYMBOL_COLDETAILSDIALOG_SIZE wxSize( 400, 300 )
 #define SYMBOL_COLDETAILSDIALOG_POSITION wxDefaultPosition
 
-class ColDetailsDialog : public wxDialog
+class ColDetailsPanel : public HelperPanel
 {
-    DECLARE_DYNAMIC_CLASS( ColDetailsDialog )
+    DECLARE_DYNAMIC_CLASS( ColDetailsPanel )
     DECLARE_EVENT_TABLE( )
 
 public:
 
-    enum ColDetailsDialogGuiDefs {
+    enum ColDetailsPanelGuiDefs {
         ID_NAMELABELEDTEXTBOX = ID_COLDETAILSDIALOG + 1,
         ID_COLTITLECHECKBOX,
         ID_COLSUBTITLECHECKBOX,
@@ -79,7 +82,7 @@ public:
 
     ///  @brief Construct a new Col Details Dialog object
     ///  
-    ColDetailsDialog( );
+    ColDetailsPanel( );
 
     ///  @brief Construct a new Col Details Dialog object
     ///  
@@ -89,11 +92,11 @@ public:
     ///  @param pos 
     ///  @param size 
     ///  @param style 
-    ColDetailsDialog( wxWindow* parent, wxWindowID id = SYMBOL_COLDETAILSDIALOG_IDNAME, const wxString& caption = SYMBOL_COLDETAILSDIALOG_TITLE, const wxPoint& pos = SYMBOL_COLDETAILSDIALOG_POSITION, const wxSize& size = SYMBOL_COLDETAILSDIALOG_SIZE, long style = SYMBOL_COLDETAILSDIALOG_STYLE );
+    ColDetailsPanel( wxWindow* parent, wxWindowID id = SYMBOL_COLDETAILSDIALOG_IDNAME, const wxString& caption = SYMBOL_COLDETAILSDIALOG_TITLE, const wxPoint& pos = SYMBOL_COLDETAILSDIALOG_POSITION, const wxSize& size = SYMBOL_COLDETAILSDIALOG_SIZE, long style = SYMBOL_COLDETAILSDIALOG_STYLE );
 
     ///  @brief Destroy the Col Details Dialog object
     ///  
-    ~ColDetailsDialog( );
+    ~ColDetailsPanel( );
 
     ///  @brief 
     ///  
@@ -114,7 +117,9 @@ public:
     ///  @brief Get the Fixed Spacing object
     ///  
     ///  @return wxString 
-    wxString GetFixedSpacing( ) { return m_positionFixedSize->GetValue( ); };
+    wxString GetFixedSpacing( ) {
+        return m_positionFixedSize->GetValue( );
+    };
 
     ///  @brief Get the Show Title object
     ///  
@@ -133,6 +138,7 @@ public:
     ///  
     ///  @return wxFont 
     wxFont GetTitleFont( );
+    wxString GetTitle( );
 
     ///  @brief Get the Title Color object
     ///  
@@ -192,7 +198,9 @@ public:
     ///  @brief Set the Fixed Spacing Size object
     ///  
     ///  @param str 
-    void SetFixedSpacingSize( wxString str ) { m_positionFixedSize->SetValue( str ); };
+    void SetFixedSpacingSize( wxString str ) {
+        m_positionFixedSize->SetValue( str );
+    };
 
     ///  @brief Set the Name Modified object
     ///  
@@ -229,12 +237,14 @@ public:
     ///  
     ///  @return true 
     ///  @return false 
-    bool CalculateSpacing( ) { return m_positionCalculated->GetValue( ); };
+    bool CalculateSpacing( ) {
+        return m_positionCalculated->GetValue( );
+    };
 
     ///  @brief 
     ///  
     ///  @param treeID 
-    void SetupDialog( wxTreeItemId treeID );
+    void SetupDialog( Design::Column* col );
 
     ///  @brief 
     ///  
@@ -247,17 +257,24 @@ public:
     void UpdateControls( );
 
     void OnSubTitleDefaultClick( wxCommandEvent& event );
-    void OnNameCheckboxClick( wxCommandEvent& event );
+    void OnTitleCheckboxClick( wxCommandEvent& event );
     void OnSubTitleCheckboxClick( wxCommandEvent& event );
+    void  OnTitleTextChanged( wxCommandEvent& event );
+    void OnSubTitleTextChanged( wxCommandEvent& event );
 
-    void OnNameDefaultClick( wxCommandEvent& event );
+    void OnTitleFontPicker( wxFontPickerEvent& event );
+    void OnTitleColorPicker( wxColourPickerEvent& event );
+
+    void OnSubTitleFontPicker( wxFontPickerEvent& event );
+    void OnSubTitleColorPicker( wxColourPickerEvent& event );
+
 
 private:
 
-    LabeledTextBox* m_titleLabel;
-    LabeledTextBox* m_subTitleLabel;
-    wxCheckBox* m_titleCheckbox;
-    wxCheckBox* m_subTitleCheckbox;
+    // LabeledTextBox* m_titleLabel;
+     //LabeledTextBox* m_subTitleLabel;
+     //wxCheckBox* m_titleCheckbox;
+     //wxCheckBox* m_subTitleCheckbox;
     wxCheckBox* m_frameCheckbox;
     wxListBox* m_statusList;
     wxFontPickerCtrl* m_titleFontPicker;

@@ -77,7 +77,9 @@ namespace Catalog {
         wxString GetPreferredCatalogCode( wxString cat );
 
         bool IsCatalogCode( wxString catCode );
-
+        wxArrayString& GetCodes( ){
+            return m_codes;
+        };
 
     private:
         wxArrayString m_codes;

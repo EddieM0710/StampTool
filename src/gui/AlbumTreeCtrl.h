@@ -58,7 +58,9 @@ enum
 };
 
 class Stamp;
-namespace Utils { class StampLink; };
+namespace Utils {
+    class StampLink;
+};
 
 
 /**
@@ -111,23 +113,31 @@ public:
     ///  @brief Get the Desc object
     ///  
     ///  @return wxString 
-    wxString GetDesc( ) const { return m_desc; };
+    wxString GetDesc( ) const {
+        return m_desc;
+    };
 
     ///  @brief Get the Node Element object
     ///  
     ///  @return Design::AlbumBase* 
-    Design::AlbumBase* GetNodeElement( void ) { return m_element; };
+    Design::AlbumBase* GetNodeElement( void ) {
+        return m_element;
+    };
 
 
     ///  @brief Get the Type object
     ///  
     ///  @return Design::AlbumBaseType 
-    Design::AlbumBaseType GetType( ) { return m_type; };
+    Design::AlbumBaseType GetType( ) {
+        return m_type;
+    };
 
     ///  @brief Get the Stamp Link object
     ///  
     ///  @return Utils::StampLink* 
-    Utils::StampLink* GetStampLink( ) { return m_stampLink; };
+    Utils::StampLink* GetStampLink( ) {
+        return m_stampLink;
+    };
 
     ///  @brief 
     ///  
@@ -143,22 +153,30 @@ public:
     ///  @brief Set the Desc object
     ///  
     ///  @param desc 
-    void SetDesc( wxString desc ) { m_desc = desc; };
+    void SetDesc( wxString desc ) {
+        m_desc = desc;
+    };
 
     ///  @brief Set the Node Element object
     ///  
     ///  @param ele 
-    void SetNodeElement( Design::AlbumBase* ele ) { m_element = ele; };
+    void SetNodeElement( Design::AlbumBase* ele ) {
+        m_element = ele;
+    };
 
     ///  @brief Set the Stamp Link object
     ///  
     ///  @param link 
-    void SetStampLink( Utils::StampLink* link ) { m_stampLink = link; };
+    void SetStampLink( Utils::StampLink* link ) {
+        m_stampLink = link;
+    };
 
     ///  @brief Set the Type object
     ///  
     ///  @param type 
-    void SetType( Design::AlbumBaseType type ) { m_type = type; };
+    void SetType( Design::AlbumBaseType type ) {
+        m_type = type;
+    };
 
 private:
     int m_ok;
@@ -185,7 +203,9 @@ public:
 
     ///  @brief Construct a new Album Tree Ctrl object
     ///  
-    AlbumTreeCtrl( ) { m_OK = 0x12345; }
+    AlbumTreeCtrl( ) {
+        m_OK = 0x12345;
+    }
 
 
     ///  @brief Construct a new Album Tree Ctrl object
@@ -201,7 +221,9 @@ public:
 
     ///  @brief Destroy the Album Tree Ctrl object
     ///  
-    virtual ~AlbumTreeCtrl( void ) { m_OK = 0; }
+    virtual ~AlbumTreeCtrl( void ) {
+        m_OK = 0;
+    }
 
     ///  @brief 
     ///  
@@ -381,7 +403,9 @@ public:
     ///  @brief 
     ///  
     ///  @return int 
-    int ImageSize( void ) const { return m_imageSize; };
+    int ImageSize( void ) const {
+        return m_imageSize;
+    };
 
     ///  @brief 
     ///  
@@ -490,19 +514,19 @@ public:
     ///  
     ///  @param treeID 
     ///  @param node 
-    void ShowAlbumDetails( wxTreeItemId treeID, Design::AlbumBase* node );
+   // void ShowAlbumDetails( wxTreeItemId treeID, Design::AlbumBase* node );
 
     ///  @brief 
     ///  
     ///  @param treeID 
     ///  @param node 
-    void ShowPageDetails( wxTreeItemId treeID, Design::AlbumBase* node );
+    //void ShowPageDetails( wxTreeItemId treeID, Design::AlbumBase* node );
 
     ///  @brief 
     ///  
     ///  @param id 
     ///  @param node 
-    void ShowColDetails( wxTreeItemId id, Design::AlbumBase* node );
+  //  void ShowColDetails( wxTreeItemId id, Design::AlbumBase* node );
 
     ///  @brief 
     ///  
@@ -520,13 +544,13 @@ public:
     ///  @brief 
     ///  
     ///  @param id 
-    void ShowStampDetails( wxTreeItemId id );
+   // void ShowStampDetails( wxTreeItemId id );
 
     ///  @brief 
     ///  
     ///  @param id 
     ///  @param node 
-    void ShowRowDetails( wxTreeItemId id, Design::AlbumBase* node );
+   // void ShowRowDetails( wxTreeItemId id, Design::AlbumBase* node );
 
     ///  @brief Update the layout of the page that contins this item tree id
     ///  
@@ -569,7 +593,9 @@ public:
 
     void OnTreectrlItemExpanded( wxTreeEvent& event );
 
-    wxTreeItemId GetCurrentTreeID( ) { return m_currentTreeID; };
+    wxTreeItemId GetCurrentTreeID( ) {
+        return m_currentTreeID;
+    };
     void UpdateAlbumStampEntries( wxTreeItemId treeID );
 
 private:

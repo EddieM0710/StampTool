@@ -114,6 +114,14 @@ namespace Design {
         {
             bool ok = str.ToDouble( &m_mountAllowanceWidth );
         }
+        str = GetCatalogCodes( );
+        if ( !str.IsEmpty( ) )
+        {
+            wxString cat = GetCatalog( );
+            Catalog::CatalogCode catCodeArray( str );
+            wxString preferredID = catCodeArray.GetPreferredCatalogCode( cat );
+            SetNameString( preferredID );
+        }
     }
 
     Stamp::Stamp( wxXmlNode* node ) : LayoutBase( node )
@@ -220,10 +228,9 @@ namespace Design {
     //--------------
     void Stamp::Draw( wxDC& dc, double x, double y )
     {
-
-        //std::cout << "\nStamp::Draw " << m_nameFrame->GetString( ) << "\n";
         Design::NodeStatus status = GetNodeStatus( );
-        if ( status != Design::AT_FATAL ) {
+        if ( status != Design::AT_FATAL )
+        {
             //Draw the outer frame transparent
             //m_frame.Draw( dc, x, y );
 
@@ -278,7 +285,6 @@ namespace Design {
                 GetNbrFrame( )->Draw( dc, xInnerPos, yInnerPos );
             }
         }
-
     }
 
     //--------------
@@ -346,11 +352,15 @@ namespace Design {
 
     //--------------
 
-    LabelFrame* Stamp::GetNameFrame( ) { return m_nameFrame; };
+    LabelFrame* Stamp::GetNameFrame( ) {
+        return m_nameFrame;
+    };
 
     //--------------
 
-    wxString  Stamp::GetNameString( ) { return m_nameFrame->GetString( ); };
+    wxString  Stamp::GetNameString( ) {
+        return m_nameFrame->GetString( );
+    };
     void  Stamp::SetNameString( wxString str )
     {
         SetAttrStr( AT_Name, str );
@@ -360,19 +370,38 @@ namespace Design {
     //--------------
 
 
-    LabelFrame* Stamp::GetNbrFrame( ) { return m_nbrFrame; };
+    LabelFrame* Stamp::GetNbrFrame( ) {
+        return m_nbrFrame;
+    };
 
-    wxString  Stamp::GetNbrString( ) { return m_nbrFrame->GetString( ); };
+    wxString  Stamp::GetNbrString( ) {
+        return m_nbrFrame->GetString( );
+    };
 
     void  Stamp::SetNbrString( wxString str )
     {
         SetAttrStr( AT_CatNbr, str );
     };
 
+    void Stamp::SetCatalog( wxString cat )
+    {
+        wxString albumCat = GetAlbum( )->GetCatalog( );
+        if ( cat.Cmp( albumCat ) )
+        {
+            SetAttrStr( AT_Catalog, cat );
+        }
+        else
+        {
+            DeleteAttribute( AttrNameStrings[ AT_Catalog ] );
+        }
+    }
 
     //--------------
 
-
+    void Stamp::SetCatalogCodes( wxString catCodes )
+    {
+        SetAttrStr( AT_Catalog_Codes, catCodes );
+    }
 
     //--------------
 
@@ -543,6 +572,23 @@ namespace Design {
     };
 
 
+
+    wxString Stamp::GetCatalog( )
+    {
+        wxString cat = GetAttrStr( Design::AT_Catalog );;
+        if ( cat.IsEmpty( ) )
+        {
+            cat = GetAlbum( )->GetCatalog( );
+        }
+        return cat;
+    };
+
+
+    wxString Stamp::GetCatalogCodes( )
+    {
+        return GetAttrStr( Design::AT_Catalog_Codes );;
+    };
+
     //--------------
 
 
@@ -592,7 +638,9 @@ namespace Design {
     }
     void Stamp::Save( wxXmlNode* xmlNode )
     {
-        SetAttribute( xmlNode, AT_CatNbr );
+        SetAttribute( xmlNode, Design::AT_Catalog_Codes );
+        if ( IsDefaultVal( AT_Catalog ) ) SetAttribute( xmlNode, AT_Catalog );
+        if ( GetAttrStr( AT_Catalog_Codes ).IsEmpty( ) )SetAttribute( xmlNode, AT_CatNbr );
         SetAttribute( xmlNode, AT_Name );
         SetAttribute( xmlNode, AT_Width );
         SetAttribute( xmlNode, AT_Height );
@@ -631,12 +679,12 @@ namespace Design {
         if ( type == Design::AT_Row )
         {
             Design::Row* row = ( Design::Row* ) node;
-            defaultLoc = row->GetTitleLocation( );
+            defaultLoc = row->GetTitleLocationType( );
         }
         else if ( type = Design::AT_Col )
         {
             Design::Column* col = ( Design::Column* ) node;
-            defaultLoc = col->GetTitleLocation( );
+            defaultLoc = col->GetTitleLocationType( );
         }
         return  defaultLoc;
     }
@@ -694,6 +742,7 @@ namespace Design {
 
         m_stampImageFrame.SetWidth( m_stampFrame.GetWidth( ) * ImagePercentOfActual );
         m_stampImageFrame.SetHeight( m_stampFrame.GetHeight( ) * ImagePercentOfActual );
+
         if ( ValidateNode( ) == AT_FATAL )
         {
             return false;
@@ -712,7 +761,7 @@ namespace Design {
     void Stamp::UpdatePositions( )
     {
         // the xPos and yPos are offsets from the containing frame
-         //the m_borderFrame is offset by the margin.
+     //the m_borderFrame is offset by the margin.
         m_borderFrame.SetXPos( GetStampMargin( ) );
 
         // the name frame has 0 x offset but is centered in its frame
@@ -743,21 +792,16 @@ namespace Design {
         // note the image offsets from the m_borderFrame
         m_stampImageFrame.SetYPos( m_borderFrame.GetYPos( ) + ( m_borderFrame.GetHeight( ) - m_stampImageFrame.GetHeight( ) - 4 ) / 2 );
         m_nbrFrame->SetYPos( m_stampImageFrame.GetYPos( ) + m_stampImageFrame.GetHeight( ) );
-        // std::cout << "Stamp::CalcFramePositions id:" << m_nbrFrame->GetString( )
-        //     << " frameYPos:" << GetYPos( )
-        //     << " frameBorderYPos:" << frameBorderYPos
-        //     << " borderFrame:" << m_borderFrame.GetYPos( )
-        //     << " nameFrame:" << m_nameFrame->GetYPos( )
-        //     << " stampImageFrame:" << m_stampImageFrame.GetYPos( )
-        //     << " nbrFrame:" << m_nbrFrame->GetYPos( ) << "\n";
 
         ValidateNode( );
+
     }
 
     //--------------
 
     NodeStatus Stamp::ValidateNode( )
     {
+
         NodeStatus status = AT_OK;
         wxString filename = GetStampImageFilename( );
         wxString str;// = GetProject( )->GetImageFullPath( filename );

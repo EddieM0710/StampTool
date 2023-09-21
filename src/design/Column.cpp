@@ -34,6 +34,49 @@
 
 namespace Design {
 
+
+
+    Column::Column( wxXmlNode* node ) : LayoutBase( node ) {
+        SetNodeType( AT_Col );
+        SetObjectName( AlbumBaseNames[ GetNodeType( ) ] );
+        SetShowFrame( false );
+        SetShowTitle( false );
+        SetShowSubTitle( false );
+        SetFixedSpacingSize( "4" );
+        SetCalculateSpacing( true );
+        m_titleFrame = new LabelFrame( Design::AT_TitleFontType );
+        m_titleFrame->SetString( GetAttrStr( AT_Name ) );
+    };
+
+
+    void Column::InitParameters( )
+    {
+        SetTitleString( GetAttrStr( AT_Name ) );
+        if ( GetShowTitle( ) )
+        {
+            m_titleFrame->SetString( GetAttrStr( AT_Name ) );
+        }
+        else
+        {
+            m_titleFrame->Init( );
+        }
+        SetTopContentMargin( 2 );
+        SetBottomContentMargin( 2 );
+        SetLeftContentMargin( 2 );
+        SetRightContentMargin( 2 );
+
+        wxString location = GetTitleLocation( );
+        if ( location.Cmp( Design::StampTitleLocationStrings[ AT_TitleLocationTop ] ) &&
+            location.Cmp( Design::StampTitleLocationStrings[ AT_TitleLocationBottom ] ) &&
+            location.Cmp( Design::StampTitleLocationStrings[ AT_TitleLocationDefault ] ) )
+        {
+            SetTitleLocation( AT_TitleLocationDefault );
+        }
+
+
+        // CalculateSpacing="true">
+
+    }
     void Column::Draw( wxDC& dc, double x, double y )
     {
         Design::NodeStatus status = GetNodeStatus( );
@@ -63,14 +106,10 @@ namespace Design {
             wxTreeItemIdValue cookie;
             wxTreeItemId parentID = GetTreeItemId( );
             wxTreeItemId childID = GetAlbumTreeCtrl( )->GetFirstChild( parentID, cookie );
-            std::cout << "Column::Draw (" << xPos << ", " << yPos << ") \n";
             while ( childID.IsOk( ) )
             {
                 LayoutBase* child = ( LayoutBase* ) GetAlbumTreeCtrl( )->GetItemNode( childID );
                 child->Draw( dc, xPos, yPos );
-                std::cout << "Column::Draw  child pos (" << child->GetXPos( ) << ", " << child->GetYPos( ) <<
-                    ")   size (" << child->GetWidth( ) << ", " << child->GetHeight( ) << ") \n";
-
 
                 childID = GetAlbumTreeCtrl( )->GetNextChild( parentID, cookie );
             }
@@ -106,9 +145,13 @@ namespace Design {
         }
     }
 
-    LabelFrame* Column::GetTitleFrame( ) { return m_titleFrame; };
+    LabelFrame* Column::GetTitleFrame( ) {
+        return m_titleFrame;
+    };
 
-    wxString Column::GetTitleString( ) { return m_titleFrame->GetString( ); };
+    wxString Column::GetTitleString( ) {
+        return m_titleFrame->GetString( );
+    };
 
     void Column::LoadFonts( wxXmlNode* node )
     {
@@ -154,7 +197,6 @@ namespace Design {
 
     bool Column::UpdateMinimumSize( )
     {
-
         //Positioning down the col.
         //The min width of the col is the size of the widest child 
         //The min height is the sum of the min heights of the children. 
@@ -198,13 +240,8 @@ namespace Design {
         {
             // update the title frame
             UpdateString( GetTitleFrame( ), minWidth );
-            // std::cout << " Row::UpdateMinimumSize id:" << m_titleFrame->GetString( )
-            //     << " rowHeight:" << GetHeight( )
-            //     << " titleHeight:" << GetTitleFrame( )->GetHeight( ) << "\n";
 
             SetHeight( GetHeight( ) + GetTitleFrame( )->GetHeight( ) );
-            // std::cout << " Row::UpdateMinimumSize id:" << m_titleFrame->GetString( )
-            //     << " updated rowHeight:" << GetHeight( ) << "\n";
 
             // Allow 3 times the title height
             minHeight += GetTitleFrame( )->GetHeight( );
@@ -219,6 +256,7 @@ namespace Design {
     // calculate the column layout based on child parameters
     void Column::UpdatePositions( )
     {
+
         // go to the bottom of each child container object ( row, column, page ) 
         // and begin filling in position relative to the parent
 
@@ -272,6 +310,7 @@ namespace Design {
 
             childID = GetAlbumTreeCtrl( )->GetNextChild( parentID, cookie );
         }
+
         ValidateNode( );
     }
 
@@ -295,8 +334,6 @@ namespace Design {
 
             }
             child->UpdateSizes( );
-            // std::cout << "Column::UpdateSizes  child pos (" << child->GetXPos( ) << ", " << child->GetYPos( ) <<
-            //     ")   size (" << child->GetWidth( ) << ", " << child->GetHeight( ) << ") \n";
 
 
             childID = GetAlbumTreeCtrl( )->GetNextChild( parentID, cookie );
@@ -345,20 +382,29 @@ namespace Design {
         return status;
     }
 
-    TitleLocation  Column::GetTitleLocation( )
+    wxString Column::GetTitleLocation( )
+    {
+        return GetAttrStr( AT_StampNameLocation );
+    }
+    void Column::SetTitleLocation( TitleLocation loc )
+    {
+        SetAttrStr( AT_StampNameLocation, StampTitleLocationStrings[ loc ] );
+    }
+
+    TitleLocation  Column::GetTitleLocationType( )
     {
         TitleLocation loc = FindTitleLocationType( GetAttrStr( AT_StampNameLocation ) );
-        TitleLocation defaultLoc = GetAlbum( )->GetTitleLocation( );
+        TitleLocation defaultLoc = GetAlbum( )->GetTitleLocationType( );
         if ( ( loc == defaultLoc ) && ( loc != AT_TitleLocationDefault ) )
         {
-            SetTitleLocation( AT_TitleLocationDefault );
+            SetTitleLocationType( AT_TitleLocationDefault );
         }
         return loc;
     };
 
-    void Column::SetTitleLocation( TitleLocation loc )
+    void Column::SetTitleLocationType( TitleLocation loc )
     {
-        TitleLocation defaultLoc = GetAlbum( )->GetTitleLocation( );
+        TitleLocation defaultLoc = GetAlbum( )->GetTitleLocationType( );
         if ( ( loc == defaultLoc ) && ( loc != AT_TitleLocationDefault ) )
         {
             loc = AT_TitleLocationDefault;

@@ -1,5 +1,5 @@
 /*
- * @file src/gui/ColDetailsDialog.cpp
+ * @file src/gui/ColDetailsPanel.cpp
  * @author Eddie Monroe
  * @brief
  * @version 0.1
@@ -34,35 +34,35 @@
 #include "wx/notebook.h"
 #include "wx/imaglist.h"
 
-#include "gui/ColDetailsDialog.h"
+#include "gui/ColDetailsPanel.h"
 #include "gui/LabeledTextBox.h"
 #include "gui/FontPickerHelper.h"
-#include "gui/TitleHelper.h"
+ //#include "gui/TitleHelper.h"
 #include "design/Column.h"
 #include "design/Album.h"
 #include "utils/FontList.h"
 
-IMPLEMENT_DYNAMIC_CLASS( ColDetailsDialog, wxDialog )
+IMPLEMENT_DYNAMIC_CLASS( ColDetailsPanel, HelperPanel )
 
-BEGIN_EVENT_TABLE( ColDetailsDialog, wxDialog )
-EVT_BUTTON( wxID_OK, ColDetailsDialog::OnOkClick )
-EVT_RADIOBUTTON( ID_DEFAULTRADIOBUTTON, ColDetailsDialog::OnDefaultRadioButtonSelected )
-EVT_RADIOBUTTON( ID_TOPRADIOBUTTON, ColDetailsDialog::OnTopRadioButtonSelected )
-EVT_RADIOBUTTON( ID_BOTTOMRADIOBUTTON, ColDetailsDialog::OnBottomRadioButtonSelected )
-//EVT_BUTTON( ID_COLDEFAULTFONTBUTTON, ColDetailsDialog::OnTitleDefaultClick )
+BEGIN_EVENT_TABLE( ColDetailsPanel, HelperPanel )
+EVT_BUTTON( wxID_OK, ColDetailsPanel::OnOkClick )
+EVT_RADIOBUTTON( ID_DEFAULTRADIOBUTTON, ColDetailsPanel::OnDefaultRadioButtonSelected )
+EVT_RADIOBUTTON( ID_TOPRADIOBUTTON, ColDetailsPanel::OnTopRadioButtonSelected )
+EVT_RADIOBUTTON( ID_BOTTOMRADIOBUTTON, ColDetailsPanel::OnBottomRadioButtonSelected )
+//EVT_BUTTON( ID_COLDEFAULTFONTBUTTON, ColDetailsPanel::OnTitleDefaultClick )
 
 END_EVENT_TABLE( )
 
 //--------------
 
-ColDetailsDialog::ColDetailsDialog( )
+ColDetailsPanel::ColDetailsPanel( )
 {
     Init( );
 }
 
 //--------------
 
-ColDetailsDialog::ColDetailsDialog( wxWindow* parent, wxWindowID id, const wxString& caption, const wxPoint& pos, const wxSize& size, long style )
+ColDetailsPanel::ColDetailsPanel( wxWindow* parent, wxWindowID id, const wxString& caption, const wxPoint& pos, const wxSize& size, long style )
 {
     Init( );
     Create( parent, id, caption, pos, size, style );
@@ -70,17 +70,17 @@ ColDetailsDialog::ColDetailsDialog( wxWindow* parent, wxWindowID id, const wxStr
 
 //--------------
 
-ColDetailsDialog::~ColDetailsDialog( )
+ColDetailsPanel::~ColDetailsPanel( )
 {
 }
 
 //--------------
 
-bool ColDetailsDialog::Create( wxWindow* parent, wxWindowID id, const wxString& caption, const wxPoint& pos, const wxSize& size, long style )
+bool ColDetailsPanel::Create( wxWindow* parent, wxWindowID id, const wxString& caption, const wxPoint& pos, const wxSize& size, long style )
 {
-    // ColDetailsDialog creation
+    // ColDetailsPanel creation
     SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY | wxWS_EX_BLOCK_EVENTS );
-    wxDialog::Create( parent, id, caption, pos, size, style );
+    wxPanel::Create( parent, id, pos, size, style );
 
     CreateControls( );
     if ( GetSizer( ) )
@@ -88,17 +88,16 @@ bool ColDetailsDialog::Create( wxWindow* parent, wxWindowID id, const wxString& 
         GetSizer( )->SetSizeHints( this );
     }
     Centre( );
-    // ColDetailsDialog creation
+    // ColDetailsPanel creation
     return true;
 }
 
 //--------------
 
-void ColDetailsDialog::CreateControls( )
+void ColDetailsPanel::CreateControls( )
 {
-    //   std::cout << "ColDetailsDialog" << "\n";
 
-    ColDetailsDialog* theDialog = this;
+    ColDetailsPanel* theDialog = this;
 
     m_dialogVerticalSizer = new wxBoxSizer( wxVERTICAL );
     theDialog->SetSizer( m_dialogVerticalSizer );
@@ -117,37 +116,59 @@ void ColDetailsDialog::CreateControls( )
 
     int lastID = ID_LastID;
 
-    m_titleHelper = new TitleHelper( theDialog, m_dialogVerticalSizer, lastID, HasLabels );
-    m_titleLabel = m_titleHelper->GetTitleLabel( );
-    m_subTitleLabel = m_titleHelper->GetSubTitleLabel( );
-    m_titleCheckbox = m_titleHelper->GetTitleCheckbox( );
-    m_titleCheckbox->SetLabelText( "Title" );
-    m_titleCheckbox->SetValue( true );
-    m_subTitleCheckbox = m_titleHelper->GetSubTitleCheckbox( );
-    m_subTitleCheckbox->SetLabelText( "SubTitle" );
-    m_subTitleCheckbox->SetValue( false );
+    m_titleHelper = SetupTitleHelper( theDialog, m_dialogVerticalSizer, lastID, DefaultTitleHelperStyle,
+        wxCommandEventHandler( ColDetailsPanel::OnTitleCheckboxClick ),
+        wxCommandEventHandler( ColDetailsPanel::OnTitleTextChanged ),
+        wxCommandEventHandler( ColDetailsPanel::OnSubTitleCheckboxClick ),
+        wxCommandEventHandler( ColDetailsPanel::OnSubTitleTextChanged ) );
 
-    m_titleFontPicker = m_titleHelper->GetTitleFontPickerCtrl( );
-    m_titleColorPicker = m_titleHelper->GetTitleColourPickerCtrl( );
+    SetupFontPicker( theDialog, m_dialogVerticalSizer, lastID,
+        _( "Title" ), _( "Default" ),
+        m_titleFontPicker, m_titleColorPicker,
+        wxFontPickerEventHandler( ColDetailsPanel::OnTitleFontPicker ),
+        wxColourPickerEventHandler( ColDetailsPanel::OnTitleColorPicker ),
+        wxCommandEventHandler( ColDetailsPanel::OnTitleDefaultClick ) );
 
-    m_subTitleFontPicker = m_titleHelper->GetSubTitleFontPickerCtrl( );
-    m_subTitleColorPicker = m_titleHelper->GetSubTitleColourPickerCtrl( );
 
-    Connect( m_titleHelper->GetSubTitleDefaultButton( )->GetId( ),
-        wxEVT_BUTTON,
-        wxCommandEventHandler( ColDetailsDialog::OnNameDefaultClick ) );
+    FontPicker* titleFontPicker = SetupFontPicker( theDialog, m_dialogVerticalSizer, lastID,
+        _( "SubTitle" ), _( "Default" ),
+        m_subTitleFontPicker, m_subTitleColorPicker,
+        wxFontPickerEventHandler( ColDetailsPanel::OnSubTitleFontPicker ),
+        wxColourPickerEventHandler( ColDetailsPanel::OnSubTitleColorPicker ),
+        wxCommandEventHandler( ColDetailsPanel::OnSubTitleDefaultClick ) );
 
-    Connect( m_titleHelper->GetSubTitleDefaultButton( )->GetId( ),
-        wxEVT_BUTTON,
-        wxCommandEventHandler( ColDetailsDialog::OnSubTitleDefaultClick ) );
 
-    Connect( m_titleHelper->GetTitleCheckbox( )->GetId( ),
-        wxEVT_CHECKBOX,
-        wxCommandEventHandler( ColDetailsDialog::OnNameCheckboxClick ) );
+    // m_titleHelper = new TitleHelper( theDialog, m_dialogVerticalSizer, lastID, HasLabels );
+    // m_titleLabel = m_titleHelper->GetTitleLabel( );
+    // m_subTitleLabel = m_titleHelper->GetSubTitleLabel( );
+    // m_titleCheckbox = m_titleHelper->GetTitleCheckbox( );
+    // m_titleCheckbox->SetLabelText( "Title" );
+    // m_titleCheckbox->SetValue( true );
+    // m_subTitleCheckbox = m_titleHelper->GetSubTitleCheckbox( );
+    // m_subTitleCheckbox->SetLabelText( "SubTitle" );
+    // m_subTitleCheckbox->SetValue( false );
 
-    Connect( m_titleHelper->GetSubTitleCheckbox( )->GetId( ),
-        wxEVT_CHECKBOX,
-        wxCommandEventHandler( ColDetailsDialog::OnSubTitleCheckboxClick ) );
+    // m_titleFontPicker = m_titleHelper->GetTitleFontPickerCtrl( );
+    // m_titleColorPicker = m_titleHelper->GetTitleColourPickerCtrl( );
+
+    // m_subTitleFontPicker = m_titleHelper->GetSubTitleFontPickerCtrl( );
+    // m_subTitleColorPicker = m_titleHelper->GetSubTitleColourPickerCtrl( );
+
+    // Connect( m_titleHelper->GetSubTitleDefaultButton( )->GetId( ),
+    //     wxEVT_BUTTON,
+    //     wxCommandEventHandler( ColDetailsPanel::OnNameDefaultClick ) );
+
+    // Connect( m_titleHelper->GetSubTitleDefaultButton( )->GetId( ),
+    //     wxEVT_BUTTON,
+    //     wxCommandEventHandler( ColDetailsPanel::OnSubTitleDefaultClick ) );
+
+    // Connect( m_titleHelper->GetTitleCheckbox( )->GetId( ),
+    //     wxEVT_CHECKBOX,
+    //     wxCommandEventHandler( ColDetailsPanel::OnNameCheckboxClick ) );
+
+    // Connect( m_titleHelper->GetSubTitleCheckbox( )->GetId( ),
+    //     wxEVT_CHECKBOX,
+    //     wxCommandEventHandler( ColDetailsPanel::OnSubTitleCheckboxClick ) );
     //@@@
 
     m_TitleLocationBox = new wxStaticBox( theDialog, wxID_ANY, _( "Member Title Location" ) );
@@ -202,20 +223,10 @@ void ColDetailsDialog::CreateControls( )
     //<<error list ctrls
 
 
-    //>>dialog Ctrl buttons
-    wxBoxSizer* dialogCtrlButtonSizer = new wxBoxSizer( wxHORIZONTAL );
-    m_dialogVerticalSizer->Add( dialogCtrlButtonSizer, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 0 );
-
-    wxButton* itemButton6 = new wxButton( theDialog, wxID_CANCEL, _( "Cancel" ), wxDefaultPosition, wxDefaultSize, 0 );
-    dialogCtrlButtonSizer->Add( itemButton6, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
-
-    wxButton* itemButton7 = new wxButton( theDialog, wxID_OK, _( "OK" ), wxDefaultPosition, wxDefaultSize, 0 );
-    dialogCtrlButtonSizer->Add( itemButton7, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
-    //>>dialog Ctrl buttons  
 }
 
 //--------------
-Design::TitleLocation  ColDetailsDialog::GetTitleLocation( )
+Design::TitleLocation  ColDetailsPanel::GetTitleLocation( )
 {
     if ( m_topButton->GetValue( ) )
     {
@@ -228,9 +239,9 @@ Design::TitleLocation  ColDetailsDialog::GetTitleLocation( )
     return Design::AT_TitleLocationDefault;
 }
 
-void ColDetailsDialog::SetTitleLocation( )
+void ColDetailsPanel::SetTitleLocation( )
 {
-    Design::TitleLocation titleLocation = m_col->GetTitleLocation( );
+    Design::TitleLocation titleLocation = m_col->GetTitleLocationType( );
     if ( titleLocation == Design::AT_TitleLocationTop )
     {
         m_topButton->SetValue( true );
@@ -239,7 +250,7 @@ void ColDetailsDialog::SetTitleLocation( )
     {
         m_bottomButton->SetValue( true );
     }
-    else if ( titleLocation == Design::AT_TitleLocationDefault )
+    else //if ( titleLocation == Design::AT_TitleLocationDefault )
     {
         m_defaultButton->SetValue( true );;
     }
@@ -248,94 +259,103 @@ void ColDetailsDialog::SetTitleLocation( )
 //--------------
 
 
-void ColDetailsDialog::UpdateControls( )
+void ColDetailsPanel::UpdateControls( )
 {
-    SetTitle( m_col->GetTitleString( ) );
+    //SetTitle ( m_col->GetTitleString ( ) );
     SetShowTitle( m_col->GetShowTitle( ) );
     SetShowSubTitle( m_col->GetShowSubTitle( ) );
     SetShowFrame( m_col->GetShowFrame( ) );
     SetTitleFont( m_col->GetTitleFrame( )->GetFont( ) );
     SetTitleColor( m_col->GetTitleFrame( )->GetColor( ) );
-    m_col->GetTitleLocation( );
+    m_col->GetTitleLocationType( );
 }
 
 
 //--------------
 
-void ColDetailsDialog::SetupDialog( wxTreeItemId treeID )
+void ColDetailsPanel::SetupDialog( Design::Column* col )
 {
-    if ( treeID.IsOk( ) )
+
+    m_col = col;
+    UpdateControls( );
+
+    wxArrayString* errors = m_col->GetErrorArray( );
+
+    if ( !errors->IsEmpty( ) )
     {
-        m_designTreeID = treeID;
-        DesignTreeItemData* data = ( DesignTreeItemData* ) GetAlbumTreeCtrl( )->GetItemData( m_designTreeID );
-        m_col = ( Design::Column* ) data->GetNodeElement( );
-        UpdateControls( );
-
-        wxArrayString* errors = m_col->GetErrorArray( );
-        // positionTextCtrl->AlwaysShowScrollbars( );
-        // // m_row->DumpRow( positionTextCtrl );
-        // positionTextCtrl->ShowPosition( 0 );
-
-        if ( !errors->IsEmpty( ) )
-        {
-            m_statusList->InsertItems( *errors, 0 );
-        }
+        m_statusList->InsertItems( *errors, 0 );
     }
 };
 
 //--------------
 
-bool ColDetailsDialog::GetShowTitle( ) { return m_titleCheckbox->IsChecked( ); };;
+bool ColDetailsPanel::GetShowTitle( ) {
+    return m_titleHelper->titleCheckbox->IsChecked( );
+};;
 
-bool ColDetailsDialog::GetShowSubTitle( ) { return m_subTitleCheckbox->IsChecked( ); };;
-
-//--------------
-
-bool ColDetailsDialog::GetShowFrame( ) { return m_frameCheckbox->IsChecked( ); };
-
-//--------------
-
-void ColDetailsDialog::SetNameModified( bool state ) { m_titleLabel->SetModified( state ); };
+bool ColDetailsPanel::GetShowSubTitle( ) {
+    return m_titleHelper->subTitleCheckbox->IsChecked( );
+};;
 
 //--------------
 
-void ColDetailsDialog::SetShowTitle( bool state ) { m_titleCheckbox->SetValue( state ); };
-void ColDetailsDialog::SetShowSubTitle( bool state ) { m_subTitleCheckbox->SetValue( state ); };
+bool ColDetailsPanel::GetShowFrame( ) {
+    return m_frameCheckbox->IsChecked( );
+};
+
+wxString ColDetailsPanel::GetTitle( ) {
+    return m_titleHelper->titleLabel->GetValue( );
+};
 
 //--------------
 
-void ColDetailsDialog::SetShowFrame( bool state ) { m_frameCheckbox->SetValue( state ); };
+void ColDetailsPanel::SetShowTitle( bool state ) {
+    m_titleHelper->titleCheckbox->SetValue( state );
+};
+void ColDetailsPanel::SetShowSubTitle( bool state ) {
+    m_titleHelper->subTitleCheckbox->SetValue( state );
+};
+
+//--------------
+
+void ColDetailsPanel::SetShowFrame( bool state ) {
+    m_frameCheckbox->SetValue( state );
+};
 
 //--------------
 
 //--------------
 
-wxFont ColDetailsDialog::GetTitleFont( ) { return m_titleFontPicker->GetSelectedFont( ); }
+wxFont ColDetailsPanel::GetTitleFont( ) {
+    return m_titleFontPicker->GetSelectedFont( );
+}
 
 //--------------
 
-wxColour ColDetailsDialog::GetTitleColor( ) { return m_titleColorPicker->GetColour( ); }
+wxColour ColDetailsPanel::GetTitleColor( ) {
+    return m_titleColorPicker->GetColour( );
+}
 
 //--------------
 
-void ColDetailsDialog::Init( )
+void ColDetailsPanel::Init( )
 {
-    m_titleLabel = NULL;
-    m_titleCheckbox = NULL;
     m_frameCheckbox = NULL;
     m_statusList = NULL;
 }
 
 //--------------
 
-bool ColDetailsDialog::IsNameModified( ) { return m_titleLabel->IsModified( ); };
+bool ColDetailsPanel::IsNameModified( ) {
+    return m_titleHelper->titleLabel->IsModified( );
+};
 
 //--------------
 
-void ColDetailsDialog::OnOkClick( wxCommandEvent& event )
+void ColDetailsPanel::OnOkClick( wxCommandEvent& event )
 {
 
-    m_col->SetTitleString( GetTitle( ) );
+    // m_col->SetTitleString ( GetTitle ( ) );
 
     m_col->SetShowFrame( GetShowFrame( ) );
     m_col->SetShowTitle( GetShowTitle( ) );
@@ -352,7 +372,7 @@ void ColDetailsDialog::OnOkClick( wxCommandEvent& event )
 
 //--------------
 
-void ColDetailsDialog::OnBottomRadioButtonSelected( wxCommandEvent& event )
+void ColDetailsPanel::OnBottomRadioButtonSelected( wxCommandEvent& event )
 {
     m_titleLocation = Design::AT_TitleLocationBottom;
     event.Skip( );
@@ -361,7 +381,7 @@ void ColDetailsDialog::OnBottomRadioButtonSelected( wxCommandEvent& event )
 
 //--------------
 
-void ColDetailsDialog::OnDefaultRadioButtonSelected( wxCommandEvent& event )
+void ColDetailsPanel::OnDefaultRadioButtonSelected( wxCommandEvent& event )
 {
     m_titleLocation = Design::AT_TitleLocationDefault;
     event.Skip( );
@@ -369,7 +389,7 @@ void ColDetailsDialog::OnDefaultRadioButtonSelected( wxCommandEvent& event )
 
 //--------------
 
-void ColDetailsDialog::OnTopRadioButtonSelected( wxCommandEvent& event )
+void ColDetailsPanel::OnTopRadioButtonSelected( wxCommandEvent& event )
 {
     m_titleLocation = Design::AT_TitleLocationTop;
     event.Skip( );
@@ -377,7 +397,7 @@ void ColDetailsDialog::OnTopRadioButtonSelected( wxCommandEvent& event )
 
 //--------------
 
-void ColDetailsDialog::SetCalculateSpacing( bool val )
+void ColDetailsPanel::SetCalculateSpacing( bool val )
 {
     if ( val )
     {
@@ -394,14 +414,18 @@ void ColDetailsDialog::SetCalculateSpacing( bool val )
     }
 };
 
-void ColDetailsDialog::SetTitleFont( wxFont font ) { m_titleFontPicker->SetSelectedFont( font ); }
+void ColDetailsPanel::SetTitleFont( wxFont font ) {
+    m_titleFontPicker->SetSelectedFont( font );
+}
 
 //--------------
 
-void ColDetailsDialog::SetTitleColor( wxColour color ) { m_titleColorPicker->SetColour( color ); }
+void ColDetailsPanel::SetTitleColor( wxColour color ) {
+    m_titleColorPicker->SetColour( color );
+}
 
 
-void ColDetailsDialog::OnTitleDefaultClick( wxCommandEvent& event )
+void ColDetailsPanel::OnTitleDefaultClick( wxCommandEvent& event )
 {
     int ndx = Design::GetAlbum( )->GetFontNdx( Design::AT_TitleFontType );
     Utils::FontList* fontList = GetFontList( );
@@ -413,21 +437,14 @@ void ColDetailsDialog::OnTitleDefaultClick( wxCommandEvent& event )
 }
 
 
-
-
-void ColDetailsDialog::OnNameDefaultClick( wxCommandEvent& event )
+void ColDetailsPanel::OnTitleTextChanged( wxCommandEvent& event )
 {
-    int ndx = Design::GetAlbum( )->GetFontNdx( Design::AT_NameFontType );
-    Utils::FontList* fontList = GetFontList( );
-    wxFont font = fontList->GetFont( ndx );
-    wxColour color = fontList->GetColor( ndx );
-    m_titleFontPicker->SetSelectedFont( font );
-    m_titleColorPicker->SetColour( color );
-    event.Skip( );
+}
+void ColDetailsPanel::OnSubTitleTextChanged( wxCommandEvent& event )
+{
 }
 
-
-void ColDetailsDialog::OnSubTitleDefaultClick( wxCommandEvent& event )
+void ColDetailsPanel::OnSubTitleDefaultClick( wxCommandEvent& event )
 {
     int ndx = Design::GetAlbum( )->GetFontNdx( Design::AT_SubTitleFontType );
     Utils::FontList* fontList = GetFontList( );
@@ -438,18 +455,33 @@ void ColDetailsDialog::OnSubTitleDefaultClick( wxCommandEvent& event )
     event.Skip( );
 }
 
-
-void ColDetailsDialog::OnNameCheckboxClick( wxCommandEvent& event )
+void ColDetailsPanel::OnTitleFontPicker( wxFontPickerEvent& event )
 {
-    m_titleHelper->UpdateTitleState( );
+}
+void ColDetailsPanel::OnTitleColorPicker( wxColourPickerEvent& event )
+{
+}
+
+void ColDetailsPanel::OnSubTitleFontPicker( wxFontPickerEvent& event )
+{
+}
+void ColDetailsPanel::OnSubTitleColorPicker( wxColourPickerEvent& event )
+{
+}
+
+
+
+void ColDetailsPanel::OnTitleCheckboxClick( wxCommandEvent& event )
+{
+    UpdateTitleState( m_titleHelper );
 
     m_dialogVerticalSizer->Layout( );
 }
 
 
 
-void ColDetailsDialog::OnSubTitleCheckboxClick( wxCommandEvent& event )
+void ColDetailsPanel::OnSubTitleCheckboxClick( wxCommandEvent& event )
 {
-    m_titleHelper->UpdateSubTitleState( );
+    UpdateSubTitleState( m_titleHelper );
     m_dialogVerticalSizer->Layout( );
 };

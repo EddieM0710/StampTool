@@ -48,16 +48,16 @@
 namespace Catalog {
 
     wxString CatalogBaseNames[ NT_NbrTypes ] = {
-        "Catalog" ,
-        "Country" ,
-        "Period"  ,
-        "Decade" ,
-        "Year" ,
-        "Emission" ,
-        "Status" ,
-        "Condition" ,
-        "Entry" ,
-        "Specimen" ,
+        "Catalog",
+        "Country",
+        "Period",
+        "Decade",
+        "Year",
+        "Emission",
+        "Status",
+        "Condition",
+        "Entry",
+        "Specimen",
         "CatalogCode",
         "None" };
 
@@ -75,57 +75,58 @@ namespace Catalog {
     // wxT( "PreferredCatalog" ), wxT( "ImageDirectory" ) };
 
     const wxString DataTypeNames[ DT_NbrTypes ] = {
-        wxT( "Name" ),          wxT( "Country" ),
-        wxT( "Series" ),      wxT( "Catalog Codes" ), wxT( "Issued on" ),
-        wxT( "Expiry date" ), wxT( "Width" ),         wxT( "Height" ),
-        wxT( "Paper" ),       wxT( "Watermark" ),     wxT( "Emission" ),
-        wxT( "Format" ),      wxT( "Perforation" ),   wxT( "Printing" ),
-        wxT( "Gum" ),         wxT( "Currency" ),      wxT( "FaceValue" ),
-        wxT( "Print run" ),   wxT( "Variant" ),       wxT( "Score" ),
-        wxT( "Accuracy" ),    wxT( "Colors" ),        wxT( "Themes" ),
+        wxT( "Name" ), wxT( "Country" ),
+        wxT( "Series" ), wxT( "Catalog Codes" ), wxT( "Issued on" ),
+        wxT( "Expiry date" ), wxT( "Width" ), wxT( "Height" ),
+        wxT( "Paper" ), wxT( "Watermark" ), wxT( "Emission" ),
+        wxT( "Format" ), wxT( "Perforation" ), wxT( "Printing" ),
+        wxT( "Gum" ), wxT( "Currency" ), wxT( "FaceValue" ),
+        wxT( "Print run" ), wxT( "Variant" ), wxT( "Score" ),
+        wxT( "Accuracy" ), wxT( "Colors" ), wxT( "Themes" ),
         wxT( "Description" ), wxT( "Link" ),       //   wxT( "Checked" ), 
-        wxT( "Inventory" ), wxT( "StampMount" ), wxT( "Background" ), wxT( "Collapse State" )
+        wxT( "Inventory" ), wxT( "StampMount" ), wxT( "Background" ),
+        wxT( "Collapse State" ), wxT( "ImageName" )
     };
 
     const wxString EmissionStrings[ ET_NbrTypes ]
         = { wxT( "Unknown" ),
-            wxT( "Commemorative" ),
-            wxT( "Definitive" ),
-            wxT( "Hunting Permit" ),
-            wxT( "Revenue" ),
-            wxT( "Air Post" ),
-            wxT( "Air Post Official" ),
-            wxT( "Air Post Semi-Postal" ),
-            wxT( "ATM labels" ),
-            wxT( "Cinderella" ),
-            wxT( "Illegal" ),
-            wxT( "Insured Letter" ),
-            wxT( "Military" ),
-            wxT( "Newspaper" ),
-            wxT( "Official" ),
-            wxT( "Parcel Post" ),
-            wxT( "Personal Delivery" ),
-            wxT( "Personalized" ),
-            wxT( "Postage Due" ),
-            wxT( "Postal Tax" ),
-            wxT( "Precancelled" ),
-            wxT( "Private" ),
-            wxT( "Regional" ),
-            wxT( "Registration" ),
-            wxT( "Semi-Postal" ),
-            wxT( "War Tax" ) };
+        wxT( "Commemorative" ),
+        wxT( "Definitive" ),
+        wxT( "Hunting Permit" ),
+        wxT( "Revenue" ),
+        wxT( "Air Post" ),
+        wxT( "Air Post Official" ),
+        wxT( "Air Post Semi-Postal" ),
+        wxT( "ATM labels" ),
+        wxT( "Cinderella" ),
+        wxT( "Illegal" ),
+        wxT( "Insured Letter" ),
+        wxT( "Military" ),
+        wxT( "Newspaper" ),
+        wxT( "Official" ),
+        wxT( "Parcel Post" ),
+        wxT( "Personal Delivery" ),
+        wxT( "Personalized" ),
+        wxT( "Postage Due" ),
+        wxT( "Postal Tax" ),
+        wxT( "Precancelled" ),
+        wxT( "Private" ),
+        wxT( "Regional" ),
+        wxT( "Registration" ),
+        wxT( "Semi-Postal" ),
+        wxT( "War Tax" ) };
 
     const wxString FormatStrings[ FT_NbrTypes ]
         = { wxT( "Unknown" ),
-            wxT( "Stamp" ),
-            wxT( "Se-tenant" ),
-            wxT( "Mini Sheet" ),
-            wxT( "Souvenir Sheet" ),
-            wxT( "Booklet" ),
-            wxT( "Booklet Pane" ),
-            wxT( "Gutter Pair" ),
-            wxT( "Entry with Attached Label" ),
-            wxT( "Tete-Beche" ) };
+        wxT( "Stamp" ),
+        wxT( "Se-tenant" ),
+        wxT( "Mini Sheet" ),
+        wxT( "Souvenir Sheet" ),
+        wxT( "Booklet" ),
+        wxT( "Booklet Pane" ),
+        wxT( "Gutter Pair" ),
+        wxT( "Entry with Attached Label" ),
+        wxT( "Tete-Beche" ) };
 
     const wxString InventoryStatusStrings[ ST_NbrInventoryStatusTypes ]
         = { wxT( "None" ), wxT( "Missing" ), wxT( "Ordered" ), wxT( "Own" ), wxT( "Own Variant" ), wxT( "Exclude" ) };
@@ -133,21 +134,21 @@ namespace Catalog {
 
     const wxString ItemDataNames[ IDT_NbrTypes ]
         = { wxT( "Collection" ), wxT( "Status" ), wxT( "Type" ), wxT( "Condition" ), wxT( "Value" ), wxT( "Location" ),
-            wxT( "Remarks" ) };
+        wxT( "Remarks" ) };
 
 
     const wxString XMLDataNames[ DT_NbrTypes ] = {
-        wxT( "Name" ),         wxT( "Country" ),
-        wxT( "Series" ),      wxT( "Catalog_Codes" ), wxT( "Issued_on" ),
-        wxT( "Expiry_date" ), wxT( "Width" ),         wxT( "Height" ),
-        wxT( "Paper" ),       wxT( "Watermark" ),     wxT( "Emission" ),
-        wxT( "Format" ),      wxT( "Perforation" ),   wxT( "Printing" ),
-        wxT( "Gum" ),         wxT( "Currency" ),      wxT( "FaceValue" ),
-        wxT( "Print_run" ),   wxT( "Variant" ),       wxT( "Score" ),
-        wxT( "Accuracy" ),    wxT( "Colors" ),        wxT( "Themes" ),
+        wxT( "Name" ), wxT( "Country" ),
+        wxT( "Series" ), wxT( "Catalog_Codes" ), wxT( "Issued_on" ),
+        wxT( "Expiry_date" ), wxT( "Width" ), wxT( "Height" ),
+        wxT( "Paper" ), wxT( "Watermark" ), wxT( "Emission" ),
+        wxT( "Format" ), wxT( "Perforation" ), wxT( "Printing" ),
+        wxT( "Gum" ), wxT( "Currency" ), wxT( "FaceValue" ),
+        wxT( "Print_run" ), wxT( "Variant" ), wxT( "Score" ),
+        wxT( "Accuracy" ), wxT( "Colors" ), wxT( "Themes" ),
         wxT( "Description" ), wxT( "Link" ),        //  wxT( "CheckedStatus" ), 
-        wxT( "InventoryStatus" ),  wxT( "StampMount" ), wxT( "Background" ),
-         wxT( "CollapseState" )
+        wxT( "InventoryStatus" ), wxT( "StampMount" ), wxT( "Background" ),
+        wxT( "CollapseState" ), wxT( "ImageName" )
     };
 
 
@@ -395,12 +396,12 @@ namespace Catalog {
     // search thru the source nodes to find an entry. When found pur it into dest
     void SortData( wxXmlNode* destNode, wxXmlNode* parent )
     {
-        wxString name = parent->GetAttribute( XMLDataNames[ DT_Name ] );
+        //    wxString name = parent->GetAttribute( XMLDataNames[ DT_Name ] );
 
         wxXmlNode* child = parent->GetChildren( );
         while ( child )
         {
-            wxString name = child->GetAttribute( XMLDataNames[ DT_Name ] );
+            //   wxString name = child->GetAttribute( XMLDataNames[ DT_Name ] );
 
             if ( !CatalogBaseNames[ NT_Entry ].Cmp( child->GetName( ) ) )
             {

@@ -103,15 +103,15 @@ void StampToolPanel::Init( )
 void StampToolPanel::CreateControls( )
 {
     //   std::cout << "StampToolPanel" << "\n";
-    StampToolPanel* itemPanel1 = this;
+    StampToolPanel* stampToolPanel = this;
 
     wxBoxSizer* panelVerticalBoxSizer = new wxBoxSizer( wxVERTICAL );
-    itemPanel1->SetSizer( panelVerticalBoxSizer );
+    stampToolPanel->SetSizer( panelVerticalBoxSizer );
 
     wxBoxSizer* panelHorizontalBoxSizer = new wxBoxSizer( wxHORIZONTAL );
     panelVerticalBoxSizer->Add( panelHorizontalBoxSizer, 1, wxGROW | wxALL, 0 );
 
-    m_stampToolSplitter = new wxSplitterWindow( itemPanel1,
+    m_stampToolSplitter = new wxSplitterWindow( stampToolPanel,
         ID_CATALOGSPLITTERWINDOW, wxDefaultPosition, wxDefaultSize,
         wxSP_3DBORDER | wxSP_3DSASH | wxNO_BORDER );
     m_stampToolSplitter->SetMinimumPaneSize( 20 );
@@ -128,7 +128,7 @@ void StampToolPanel::CreateControls( )
         ID_NOTEBOOK, wxDefaultPosition,
         wxDefaultSize, wxBK_DEFAULT );
 
-    m_stampToolSplitter->SplitVertically( m_catalogTreePanel, m_notebook, 200 );
+    m_stampToolSplitter->SplitVertically( m_catalogTreePanel, m_notebook, 500 );
 
     m_stampDescriptionPanel = new StampDescriptionPanel( m_notebook,
         ID_DESCRIPTIONPANELFOREIGN, wxDefaultPosition,

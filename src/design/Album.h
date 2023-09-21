@@ -47,19 +47,12 @@ namespace Design {
 
         ///  @brief Construct a new Album object. The top layout LayoutBase
         /// for holding all the objecs within the album
-        Album( wxXmlNode* node ) : AlbumBase( node )
-        {
-            SetNodeType( AT_Album );
-            SetAttrStr( Design::AT_Orientation, OrientationStrings[ Design::AT_Portrait ] );
-
-            for ( int i = 0; i < Design::AT_NbrFontUsageTypes; i++ )
-            {
-                DefaultFonts[ i ] = -1;
-            };
-        }
+        Album( wxXmlNode* node );
 
         ///  @brief Destroy the Album object
         ~Album( ) { };
+
+        void InitParameters( );
 
         ///  @brief 
         ///  
@@ -129,7 +122,9 @@ namespace Design {
         ///  
         ///  @return true 
         ///  @return false 
-        bool GetGrayScaleImages( ) { return String2Bool( GetAttrStr( AT_GrayScaleImages ) ); };
+        bool GetGrayScaleImages( ) {
+            return String2Bool( GetAttrStr( AT_GrayScaleImages ) );
+        };
 
         ///  @brief Get the Height object
         ///  
@@ -204,9 +199,13 @@ namespace Design {
         ///  
         ///  @return true 
         ///  @return false 
-        bool GetShowNbr( ) { return String2Bool( GetAttrStr( AT_ShowCatNbr ) ); };
+        bool GetShowNbr( ) {
+            return String2Bool( GetAttrStr( AT_ShowCatNbr ) );
+        };
 
-        TitleLocation  GetTitleLocation( );
+        wxString GetTitleLocation( );
+
+        TitleLocation  GetTitleLocationType( );
 
         ///  @brief Get the Top PageMargin object
         ///  
@@ -222,9 +221,15 @@ namespace Design {
         ///  
         ///  @return true 
         ///  @return false 
-        bool GetShowTitle( ) { return String2Bool( GetAttrStr( AT_ShowTitle ) ); };
-        bool GetShowSubTitle( ) { return String2Bool( GetAttrStr( AT_ShowSubTitle ) ); };
-        bool GetOverSizePaper( ) { return String2Bool( GetAttrStr( AT_OverSizePaper ) ); };
+        bool GetShowTitle( ) {
+            return String2Bool( GetAttrStr( AT_ShowTitle ) );
+        };
+        bool GetShowSubTitle( ) {
+            return String2Bool( GetAttrStr( AT_ShowSubTitle ) );
+        };
+        bool GetOverSizePaper( ) {
+            return String2Bool( GetAttrStr( AT_OverSizePaper ) );
+        };
 
         ///  @brief Get the Width object
          ///  
@@ -283,7 +288,9 @@ namespace Design {
         ///  @brief Set the Gray Scale Images object
         ///  
         ///  @param val 
-        void SetGrayScaleImages( bool val = true ) { SetAttrStr( AT_GrayScaleImages, Bool2String( val ) ); };
+        void SetGrayScaleImages( bool val = true ) {
+            SetAttrStr( AT_GrayScaleImages, Bool2String( val ) );
+        };
 
         ///  @brief Set the Left PageMargin object
         ///  
@@ -317,17 +324,27 @@ namespace Design {
         ///  @brief Set the Show Title object
         ///  
         ///  @param val 
-        void SetShowTitle( bool val ) { SetAttrStr( AT_ShowTitle, Bool2String( val ) ); };
-        void SetShowSubTitle( bool val ) { SetAttrStr( AT_ShowSubTitle, Bool2String( val ) ); };
+        void SetShowTitle( bool val ) {
+            SetAttrStr( AT_ShowTitle, Bool2String( val ) );
+        };
+        void SetShowSubTitle( bool val ) {
+            SetAttrStr( AT_ShowSubTitle, Bool2String( val ) );
+        };
 
-        void SetOverSizePaper( bool val ) { SetAttrStr( AT_OverSizePaper, Bool2String( val ) ); };
+        void SetOverSizePaper( bool val ) {
+            SetAttrStr( AT_OverSizePaper, Bool2String( val ) );
+        };
 
         ///  @brief Set the Show Nbr object
         ///  
         ///  @param val 
-        void SetShowNbr( bool val ) { SetAttrStr( AT_ShowCatNbr, Bool2String( val ) ); };
+        void SetShowNbr( bool val ) {
+            SetAttrStr( AT_ShowCatNbr, Bool2String( val ) );
+        };
 
         void SetTitleLocation( TitleLocation loc );
+
+        void SetTitleLocationType( TitleLocation loc );
 
         /**
          * @brief init drills down to the lowest layout object with an actual size
@@ -376,6 +393,10 @@ namespace Design {
             {
                 return   wxString::Format( "%4.1f", m_defaultMountAllowanceWidth );
             }
+            else if ( type == AT_Catalog )
+            {
+                return  GetCatalog( );
+            }
             else
                 return "";
         };
@@ -400,7 +421,9 @@ namespace Design {
             }
             return 0;
         };
-        wxString GetDefaultOrientation( ) { return GetAttrStr( Design::AT_Orientation ); };
+        wxString GetDefaultOrientation( ) {
+            return GetAttrStr( Design::AT_Orientation );
+        };
         void SetDefaultOrientation( wxString orientation )
         {
             SetAttrStr( Design::AT_Orientation, orientation );

@@ -14,12 +14,12 @@ add_library( GuiFiles SHARED
     StampToolPanel.cpp
     AlbumPanel.cpp 
     AlbumTreePanel.cpp 
-    AlbumDetailsDialog.cpp
+    AlbumDetailsPanel.cpp
     AlbumImagePanel.cpp 
     CatalogPanel.cpp 
     CatalogTreeCtrl.cpp
     CharacteristicsPanel.cpp 
-    ColDetailsDialog.cpp 
+    ColDetailsPanel.cpp 
     DefinePeriodsPanel.cpp
     AlbumTreeCtrl.cpp 
     FileCreateDialog.cpp
@@ -32,13 +32,15 @@ add_library( GuiFiles SHARED
     InventoryPanel.cpp
     LabeledTextBox.cpp
     NewStampDialog.cpp 
-    PageDetailsDialog.cpp
+    HelperPanel.cpp
+    PageDetailsPanel.cpp
     RemoveVolumeDialog.cpp    
-    RowDetailsDialog.cpp 
+    RowDetailsPanel.cpp 
     SettingsDialog.cpp
     SortOrderPanel.cpp
     StampDescriptionPanel.cpp 
-    StampDetailsDialog.cpp
+    StampDetailsPanel.cpp
+    TestDetailsPanel.cpp
 )
 
 

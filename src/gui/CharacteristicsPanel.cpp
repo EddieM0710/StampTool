@@ -49,7 +49,9 @@ END_EVENT_TABLE( )
 
 //--------------
 
-CharacteristicsPanel::CharacteristicsPanel( ) { Init( ); }
+CharacteristicsPanel::CharacteristicsPanel( ) {
+    Init( );
+}
 
 CharacteristicsPanel::CharacteristicsPanel( wxWindow* parent, wxWindowID id,
     const wxPoint& pos,
@@ -87,7 +89,6 @@ bool CharacteristicsPanel::Create( wxWindow* parent, wxWindowID id,
 
 void CharacteristicsPanel::CreateControls( void )
 {
-    //   std::cout << "CharacteristicsPanel" << "\n";
     CharacteristicsPanel* itemPanel1 = this;
 
     wxBoxSizer* itemBoxSizer1 = new wxBoxSizer( wxHORIZONTAL );
@@ -150,7 +151,9 @@ void CharacteristicsPanel::SetDataEditable( bool val )
 
 //--------------
 
-bool CharacteristicsPanel::ShowToolTips( void ) { return true; }
+bool CharacteristicsPanel::ShowToolTips( void ) {
+    return true;
+}
 
 //--------------
 /// initializes the CharacteristicsPanel with new stamp values

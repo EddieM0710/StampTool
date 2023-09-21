@@ -93,7 +93,6 @@ namespace Design {
     }
     void Page::Draw( wxDC& dc, double x, double y )
     {
-
         dc.SetPen( *wxBLACK_PEN );
 
         SetClientDimensions( dc, x + GetXPos( ), y + GetYPos( ), GetWidth( ), GetHeight( ) );
@@ -125,12 +124,8 @@ namespace Design {
         yPos = m_contentFrame.GetYPos( );
         if ( GetShowTitle( ) )
         {
-
             GetTitleFrame( )->Draw( dc, xPos, yPos );
-
         }
-
-
 
         wxTreeItemIdValue cookie;
         wxTreeItemId parentID = GetTreeItemId( );
@@ -146,7 +141,6 @@ namespace Design {
 
     void Page::DrawPDF( wxPdfDocument* doc, double x, double y )
     {
-
         wxString borderName = GetBorderFileName( );
 
         double xPos = GetLeftPageMargin( );
@@ -209,7 +203,6 @@ namespace Design {
             childID = GetAlbumTreeCtrl( )->GetNextChild( parentID, cookie );
         }
     }
-
 
 
     TitleFrame* Page::GetTitleFrame( )
@@ -309,6 +302,7 @@ namespace Design {
 
     bool Page::UpdateMinimumSize( )
     {
+
         int nbrRows = 0;
         int nbrCols = 0;
         int nbrStamps = 0;
@@ -375,7 +369,6 @@ namespace Design {
 
     void Page::UpdateSizes( )
     {
-
         //figure out how many rows or cols there are to calculate the child spacing
         int nbrRows = 0;
         int nbrCols = 0;
@@ -444,11 +437,8 @@ namespace Design {
         {
             yPos = GetTopContentMargin( );
         }
-        // std::cout << "Page::UpdatePositions " << GetTitle() << " title height = " << GetTitleHeight( ) << std::endl;
-        // std::cout.flush();
 
-
-                // if there are cols then we are positioning them across the page
+        // if there are cols then we are positioning them across the page
         double spacing = 0;
         if ( nbrCols > 0 )
         {
@@ -462,11 +452,7 @@ namespace Design {
                 - GetTopContentMargin( )
                 - GetBottomContentMargin( );
             spacing = totalExtraSpace / ( nbrRows + nbrStamps + 1 );
-            // std::cout << "Page::UpdatePositions cntH:" << m_contentFrame.GetHeight( )
-            //     << " minH:" << GetMinHeight( )
-            //     << " nbrRows:" << nbrRows
-            //     << " nbrStamps:" << nbrStamps
-            //     << " spacing:" << spacing << "\n";
+
         }
 
         //figure out starting pos accounting for title if present
@@ -510,6 +496,8 @@ namespace Design {
 
             childID = GetAlbumTreeCtrl( )->GetNextChild( parentID, cookie );
         }
+
+
     }
 
     NodeStatus Page::ValidateNode( )
@@ -552,6 +540,7 @@ namespace Design {
             status = AT_WARNING;
             ReportLayoutError( " UpdateMinimumSize", "Children too big for page", true );
         }
+
         return status;
     }
 

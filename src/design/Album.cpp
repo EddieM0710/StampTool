@@ -51,8 +51,81 @@
 
 namespace Design {
 
+    Album::Album( wxXmlNode* node ) : AlbumBase( node )
+    {
+        SetNodeType( AT_Album );
+        InitParameters( );
+
+    }
 
 
+    void Album::InitParameters( )
+    {
+        wxString orientation = GetDefaultOrientation( );
+        if ( orientation.Cmp( OrientationStrings[ Design::AT_Portrait ] ) &&
+            orientation.Cmp( OrientationStrings[ Design::AT_Landscape ] ) )
+        {
+            SetAttrStr( Design::AT_Orientation, OrientationStrings[ Design::AT_Portrait ] );
+        }
+        for ( int i = 0; i < Design::AT_NbrFontUsageTypes; i++ )
+        {
+            DefaultFonts[ i ] = -1;
+        };
+        if ( GetPaperWidth( ) <= 0 )
+        {
+            SetPaperWidth( "208.25" );
+        }
+        if ( GetPaperHeight( ) <= 0 )
+        {
+            SetPaperHeight( "269.5" );
+        }
+
+        if ( GetOverSizePaper( ) )
+        {
+            if ( GetPageWidth( ) <= 0 )
+            {
+                SetPageWidth( "208.25" );
+            }
+            if ( GetPageHeight( ) <= 0 )
+            {
+                SetPageHeight( "269.5" );
+            }
+        }
+        if ( GetTopPageMargin( ) < 0 )
+        {
+            SetTopPageMargin( "12" );
+        }
+        if ( GetBottomPageMargin( ) < 0 )
+        {
+            SetBottomPageMargin( "12" );
+        }
+        if ( GetRightPageMargin( ) < 0 )
+        {
+            SetRightPageMargin( "12" );
+        }
+        if ( GetLeftPageMargin( ) < 0 )
+        {
+            SetLeftPageMargin( "12" );
+        }
+
+
+        if ( GetBorderFileName( ).IsEmpty( ) )
+        {
+            SetBorderFilename( "big_and_little_line.jpg" );
+        }
+        if ( GetBorderSize( ) < 0 )
+        {
+            SetBorderSize( "4" );
+        }
+        wxString location = GetTitleLocation( );
+        if ( location.Cmp( Design::StampTitleLocationStrings[ AT_TitleLocationTop ] ) &&
+            location.Cmp( Design::StampTitleLocationStrings[ AT_TitleLocationBottom ] ) )
+        {
+            SetTitleLocation( AT_TitleLocationTop );
+        }
+
+
+    }
     wxString Album::DrawPDF( )
     {
 
@@ -154,17 +227,34 @@ namespace Design {
         }
     }
 
-    double Album::GetBorderSize( ) { return GetAttrDbl( AT_BorderSize ); };
+    double Album::GetBorderSize( ) {
+        return GetAttrDbl( AT_BorderSize );
+    };
 
-    wxString Album::GetBorderSizeStr( ) { return GetAttrStr( AT_BorderSize ); };
+    wxString Album::GetBorderSizeStr( ) {
+        return GetAttrStr( AT_BorderSize );
+    };
 
-    wxString Album::GetBorderFileName( ) { return GetAttrStr( AT_BorderFileName ); };
+    wxString Album::GetBorderFileName( ) {
+        return GetAttrStr( AT_BorderFileName );
+    };
 
-    double Album::GetBottomPageMargin( ) { return GetAttrDbl( AT_BottomPageMargin ); };
+    double Album::GetBottomPageMargin( ) {
+        return GetAttrDbl( AT_BottomPageMargin );
+    };
 
-    wxString Album::GetBottomPageMarginStr( ) { return GetAttrStr( AT_BottomPageMargin ); };
+    wxString Album::GetBottomPageMarginStr( ) {
+        return GetAttrStr( AT_BottomPageMargin );
+    };
 
-    wxString Album::GetCatalog( ) { return GetAttrStr( AT_Catalog ); };
+    wxString Album::GetCatalog( ) {
+        wxString cat = GetAttrStr( AT_Catalog );
+        if ( cat.IsEmpty( ) )
+        {
+            cat = GetSettings( )->GetCatalogID( );
+        }
+        return cat;
+    };
 
     wxColour Album::GetColor( FontUsageType fontType )
     {
@@ -183,7 +273,9 @@ namespace Design {
         }
     }
 
-    wxString Album::GetDocName( ) { return  GetAttrStr( "Name" ); };
+    wxString Album::GetDocName( ) {
+        return  GetAttrStr( "Name" );
+    };
 
     wxFont Album::GetFont( FontUsageType fontType )
     {
@@ -213,16 +305,28 @@ namespace Design {
         return GetSettings( )->GetFontNdxPreference( fontType );
     }
 
-    double Album::GetHeight( ) { return GetAttrDbl( AT_PageHeight ); };
+    double Album::GetHeight( ) {
+        return GetAttrDbl( AT_PageHeight );
+    };
 
-    double Album::GetLeftPageMargin( ) { return GetAttrDbl( AT_LeftPageMargin ); };
+    double Album::GetLeftPageMargin( ) {
+        return GetAttrDbl( AT_LeftPageMargin );
+    };
 
-    wxString Album::GetLeftPageMarginStr( ) { return GetAttrStr( AT_LeftPageMargin ); };
+    wxString Album::GetLeftPageMarginStr( ) {
+        return GetAttrStr( AT_LeftPageMargin );
+    };
 
-    double Album::GetPageHeight( ) { return GetAttrDbl( AT_PageHeight ); };
+    double Album::GetPageHeight( ) {
+        return GetAttrDbl( AT_PageHeight );
+    };
 
-    wxString Album::GetPageHeightStr( ) { return GetAttrStr( AT_PageHeight ); };
-    wxString Album::GetPaperHeightStr( ) { return GetAttrStr( AT_PaperHeight ); };
+    wxString Album::GetPageHeightStr( ) {
+        return GetAttrStr( AT_PageHeight );
+    };
+    wxString Album::GetPaperHeightStr( ) {
+        return GetAttrStr( AT_PaperHeight );
+    };
 
     void Album::GetPageParameters( wxString& width,
         wxString& height,
@@ -239,36 +343,61 @@ namespace Design {
         leftPageMargin = GetAttrStr( AT_LeftPageMargin );
     };
 
-    TitleLocation  Album::GetTitleLocation( )
+    wxString Album::GetTitleLocation( )
+    {
+        return GetAttrStr( AT_StampNameLocation );
+    }
+
+    TitleLocation  Album::GetTitleLocationType( )
     {
         TitleLocation loc = FindTitleLocationType( GetAttrStr( AT_StampNameLocation ) );
         if ( ( loc != AT_TitleLocationBottom ) && ( loc != AT_TitleLocationTop ) )
         {
             loc = AT_TitleLocationTop;
-            SetTitleLocation( loc );
+            SetTitleLocationType( loc );
         }
         return FindTitleLocationType( GetAttrStr( AT_StampNameLocation ) );
     };
 
-    double Album::GetPaperWidth( ) { return GetAttrDbl( AT_PaperWidth ); };
+    double Album::GetPaperWidth( ) {
+        return GetAttrDbl( AT_PaperWidth );
+    };
 
-    double Album::GetPaperHeight( ) { return GetAttrDbl( AT_PaperHeight ); };
+    double Album::GetPaperHeight( ) {
+        return GetAttrDbl( AT_PaperHeight );
+    };
 
-    wxString Album::GetPaperWidthStr( ) { return GetAttrStr( AT_PaperWidth ); };
+    wxString Album::GetPaperWidthStr( ) {
+        return GetAttrStr( AT_PaperWidth );
+    };
 
-    double Album::GetPageWidth( ) { return GetAttrDbl( AT_PageWidth ); };
+    double Album::GetPageWidth( ) {
+        return GetAttrDbl( AT_PageWidth );
+    };
 
-    wxString Album::GetPageWidthStr( ) { return GetAttrStr( AT_PageWidth ); };
+    wxString Album::GetPageWidthStr( ) {
+        return GetAttrStr( AT_PageWidth );
+    };
 
-    double Album::GetRightPageMargin( ) { return GetAttrDbl( AT_RightPageMargin ); };
+    double Album::GetRightPageMargin( ) {
+        return GetAttrDbl( AT_RightPageMargin );
+    };
 
-    wxString Album::GetRightPageMarginStr( ) { return GetAttrStr( AT_RightPageMargin ); };
+    wxString Album::GetRightPageMarginStr( ) {
+        return GetAttrStr( AT_RightPageMargin );
+    };
 
-    double Album::GetTopPageMargin( ) { return GetAttrDbl( AT_TopPageMargin ); };
+    double Album::GetTopPageMargin( ) {
+        return GetAttrDbl( AT_TopPageMargin );
+    };
 
-    wxString Album::GetTopPageMarginStr( ) { return GetAttrStr( AT_TopPageMargin ); };
+    wxString Album::GetTopPageMarginStr( ) {
+        return GetAttrStr( AT_TopPageMargin );
+    };
 
-    double Album::GetWidth( ) { return GetAttrDbl( AT_PageWidth ); };
+    double Album::GetWidth( ) {
+        return GetAttrDbl( AT_PageWidth );
+    };
 
     bool Album::IsDefaultFont( FontUsageType fontType, int ndx )
     {
@@ -424,38 +553,50 @@ namespace Design {
         }
     }
 
-    void Album::SetBorderSize( wxString str ) { SetAttrStr( AT_BorderSize, str ); };
+    void Album::SetBorderSize( wxString str ) {
+        SetAttrStr( AT_BorderSize, str );
+    };
 
-    void Album::SetBorderFilename( wxString str ) { SetAttrStr( AT_BorderFileName, str ); };
+    void Album::SetBorderFilename( wxString str ) {
+        SetAttrStr( AT_BorderFileName, str );
+    };
 
-    void Album::SetBottomPageMargin( wxString str ) { SetAttrStr( AT_BottomPageMargin, str ); };
+    void Album::SetBottomPageMargin( wxString str ) {
+        SetAttrStr( AT_BottomPageMargin, str );
+    };
 
     void Album::SetCatalog( wxString str )
     {
-        wxString currCat = GetAttrStr( AT_Catalog );
-        if ( currCat.IsEmpty( ) )
+
+        wxString currCat = GetCatalog( );
+        if ( str.Cmp( currCat ) )
         {
-            SetAttrStr( AT_Catalog, str );
-            // now fix all the stamp entries to reflect the right catalog code
-            GetAlbumTreeCtrl( )->UpdateAlbumStampEntries( GetAlbumTreeCtrl( )->GetRootItem( ) );
-            return;
-        }
-        else
-        {
-            if ( !currCat.Cmp( str ) )
-            {
-                return;
-            }
-            else
+            if ( currCat.IsEmpty( ) )
             {
                 SetAttrStr( AT_Catalog, str );
                 // now fix all the stamp entries to reflect the right catalog code
                 GetAlbumTreeCtrl( )->UpdateAlbumStampEntries( GetAlbumTreeCtrl( )->GetRootItem( ) );
+                return;
+            }
+            else
+            {
+                if ( !currCat.Cmp( str ) )
+                {
+                    return;
+                }
+                else
+                {
+                    SetAttrStr( AT_Catalog, str );
+                    // now fix all the stamp entries to reflect the right catalog code
+                    GetAlbumTreeCtrl( )->UpdateAlbumStampEntries( GetAlbumTreeCtrl( )->GetRootItem( ) );
+                }
             }
         }
     };
 
-    void Album::SetDocName( wxString str ) { SetAttrStr( AT_Name, str ); };
+    void Album::SetDocName( wxString str ) {
+        SetAttrStr( AT_Name, str );
+    };
 
     void Album::SetFont( FontUsageType fontType, wxFont font, wxColour color )
     {
@@ -470,22 +611,40 @@ namespace Design {
         }
     }
 
-    void Album::SetLeftPageMargin( wxString str ) { SetAttrStr( AT_LeftPageMargin, str ); };
+    void Album::SetLeftPageMargin( wxString str ) {
+        SetAttrStr( AT_LeftPageMargin, str );
+    };
 
-    void Album::SetPageHeight( wxString str ) { SetAttrStr( AT_PageHeight, str ); };
+    void Album::SetPageHeight( wxString str ) {
+        SetAttrStr( AT_PageHeight, str );
+    };
 
-    void Album::SetPageWidth( wxString str ) { SetAttrStr( AT_PageWidth, str ); };
+    void Album::SetPageWidth( wxString str ) {
+        SetAttrStr( AT_PageWidth, str );
+    };
 
-    void Album::SetPaperHeight( wxString str ) { SetAttrStr( AT_PaperHeight, str ); };
+    void Album::SetPaperHeight( wxString str ) {
+        SetAttrStr( AT_PaperHeight, str );
+    };
 
-    void Album::SetPaperWidth( wxString str ) { SetAttrStr( AT_PaperWidth, str ); };
+    void Album::SetPaperWidth( wxString str ) {
+        SetAttrStr( AT_PaperWidth, str );
+    };
 
 
-    void Album::SetRightPageMargin( wxString str ) { SetAttrStr( AT_RightPageMargin, str ); };
+    void Album::SetRightPageMargin( wxString str ) {
+        SetAttrStr( AT_RightPageMargin, str );
+    };
 
-    void Album::SetTopPageMargin( wxString str ) { SetAttrStr( AT_TopPageMargin, str ); };
+    void Album::SetTopPageMargin( wxString str ) {
+        SetAttrStr( AT_TopPageMargin, str );
+    };
 
     void Album::SetTitleLocation( TitleLocation loc )
+    {
+        SetAttrStr( AT_StampNameLocation, StampTitleLocationStrings[ loc ] );
+    }
+    void Album::SetTitleLocationType( TitleLocation loc )
     {
         if ( ( loc != AT_TitleLocationBottom ) && ( loc != AT_TitleLocationTop ) )
         {
@@ -523,7 +682,7 @@ namespace Design {
                     break;
                 }
                 default:
-                    break;
+                break;
             }
             childID = GetAlbumTreeCtrl( )->GetNextChild( parentID, cookie );
         }

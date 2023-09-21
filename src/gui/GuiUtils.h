@@ -42,9 +42,9 @@ typedef enum {
 
 extern wxPdfArrayDouble defaultDash;
 
-extern double ScaleX;
-extern double ScaleY;
-extern RealPoint ScalePoint;
+// extern double ScaleX;
+// extern double ScaleY;
+// extern RealPoint ScalePoint;
 
 void InitScale( wxSize sizeMM, wxSize sizeClient );
 
@@ -82,7 +82,7 @@ void DrawTitlePDF( wxPdfDocument* doc, wxString title,
     RealSize size );
 
 void DrawLabel( wxDC& dc, const wxString& text,
-    RealPoint pos,
+    wxRealPoint pos,
     RealSize size,
     int  	alignment = wxALIGN_CENTER,
     int  	indexAccel = -1 );

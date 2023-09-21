@@ -125,6 +125,7 @@ namespace Catalog {
         DT_StampMount,
         DT_BackGround,
         DT_CollapseState,
+        DT_ImageName,
         DT_NbrTypes
     } DataTypes;
 

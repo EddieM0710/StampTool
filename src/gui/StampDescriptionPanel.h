@@ -82,7 +82,7 @@ public:
         ID_BACKGROUNDPANEL1,
         ID_BKGNDSCROLLEDWINDOW,
         ID_BKGNDTEXTCTRL,
-        ID_NOTEBOOKPANEL
+        ID_NOTEBOOPANEL
     };
 
 
@@ -206,7 +206,9 @@ public:
      */
     void UpdateStatus( void );
 
-    InventoryPanel* GetInventoryPanel( ) { return m_inventoryPanel; };
+    InventoryPanel* GetInventoryPanel( ) {
+        return m_inventoryPanel;
+    };
 
     void OnNotebooksplitterwindowSashPosChanged( wxSplitterEvent& event );
 

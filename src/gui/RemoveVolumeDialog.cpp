@@ -74,7 +74,6 @@ void RemoveVolumeDialog::Init( )
 
 void RemoveVolumeDialog::CreateControls( )
 {
-    //    std::cout << "RemoveVolumeDialog" << "\n";
     RemoveVolumeDialog* theDialog = this;
 
     wxBoxSizer* mainVerticalSizer = new wxBoxSizer( wxVERTICAL );

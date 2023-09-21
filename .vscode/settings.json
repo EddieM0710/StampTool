@@ -77,5 +77,6 @@
     "editor.minimap.enabled": false,
     "C_Cpp.formatting": "vcFormat",
     "workbench.colorCustomizations": {},
-    "C_Cpp.vcFormat.newLine.beforeOpenBrace.namespace": "ignore"
+    "C_Cpp.vcFormat.newLine.beforeOpenBrace.namespace": "ignore",
+    "C_Cpp.vcFormat.space.preserveInInitializerList": false
 }

@@ -38,6 +38,44 @@
 
 namespace Design {
 
+    Row::Row( wxXmlNode* node ) : LayoutBase( node )
+    {
+        SetNodeType( AT_Row );
+
+        m_titleFrame = new LabelFrame( Design::AT_TitleFontType );
+        InitParameters( );
+    };
+
+
+    void Row::InitParameters( )
+    {
+        SetTitleString( GetAttrStr( AT_Name ) );
+        if ( GetShowTitle( ) )
+        {
+            m_titleFrame->SetString( GetAttrStr( AT_Name ) );
+        }
+        else
+        {
+            m_titleFrame->Init( );
+        }
+        SetTopContentMargin( 2 );
+        SetBottomContentMargin( 2 );
+        SetLeftContentMargin( 2 );
+        SetRightContentMargin( 2 );
+
+        wxString location = GetTitleLocation( );
+        if ( location.Cmp( Design::StampTitleLocationStrings[ AT_TitleLocationTop ] ) &&
+            location.Cmp( Design::StampTitleLocationStrings[ AT_TitleLocationBottom ] ) &&
+            location.Cmp( Design::StampTitleLocationStrings[ AT_TitleLocationDefault ] ) )
+        {
+            SetTitleLocation( AT_TitleLocationDefault );
+        }
+
+
+        // CalculateSpacing="true">
+
+    }
+
     void Row::Draw( wxDC& dc, double x, double y )
     {
         Design::NodeStatus status = GetNodeStatus( );
@@ -52,11 +90,6 @@ namespace Design {
             if ( GetShowFrame( ) )
             {
                 m_frame.Draw( dc, x, y );
-
-                // std::cout << " Row::Draw id:" << m_titleFrame->GetString( )
-                //     << " y:" << y
-                //     << " Height:" << GetHeight( ) << "\n";
-
             }
 
             SetClientDimensions( dc, x + GetXPos( ), y + GetYPos( ), GetWidth( ), GetHeight( ) );
@@ -138,9 +171,13 @@ namespace Design {
         ReportLayoutFrame( );
     };
 
-    LabelFrame* Row::GetTitleFrame( ) { return m_titleFrame; };
+    LabelFrame* Row::GetTitleFrame( ) {
+        return m_titleFrame;
+    };
 
-    wxString  Row::GetTitleString( ) { return GetAttrStr( AT_Name ); };
+    wxString  Row::GetTitleString( ) {
+        return GetAttrStr( AT_Name );
+    };
     void  Row::SetTitleString( wxString str )
     {
         SetAttrStr( AT_Name, str );
@@ -226,6 +263,7 @@ namespace Design {
             + GetTopContentMargin( )
             + GetBottomContentMargin( ) );
         SetMinWidth( minWidth );
+
         return true;
     }
 
@@ -289,6 +327,7 @@ namespace Design {
         {
             GetTitleFrame( )->Init( );
         }
+
         double spacing = 4;
         if ( CalculateSpacing( ) )
         {
@@ -297,6 +336,7 @@ namespace Design {
 
             // inital x/y pos within the row
             xPos += spacing;
+
         }
         else
         {
@@ -305,6 +345,7 @@ namespace Design {
             //it is the amount from the width of items - the minwidth - amount of total space between items  
             //then divide the remaining by 2 to go on each end
             xPos += ( ( GetWidth( ) - GetMinWidth( ) ) - ( nbrCols + nbrStamps - 1 ) * spacing ) / 2;
+
         }
 
         wxTreeItemIdValue cookie;
@@ -313,7 +354,6 @@ namespace Design {
         while ( childID.IsOk( ) )
         {
             LayoutBase* child = ( LayoutBase* ) GetAlbumTreeCtrl( )->GetItemNode( childID );
-
             child->SetXPos( xPos );
             child->SetYPos( yPos );
             if ( ( ( Stamp* ) child )->GetTitleLocation( ) == AT_TitleLocationBottom )
@@ -339,6 +379,7 @@ namespace Design {
             //     GetHeight( ) - GetTitleFrame( )->GetHeight( ) - GetTopContentMargin( ) - GetBottomContentMargin( ) );
             // std::cout << " Row::UpdatePositions id:" << m_titleFrame->GetString( )
             //     << " child->yPos:" << child->GetYPos( ) << "\n";
+
             child->UpdatePositions( );
 
             xPos += child->GetWidth( ) + spacing;
@@ -394,20 +435,29 @@ namespace Design {
         return status;
     }
 
-    TitleLocation  Row::GetTitleLocation( )
+    wxString Row::GetTitleLocation( )
+    {
+        return GetAttrStr( AT_StampNameLocation );
+    }
+    void Row::SetTitleLocation( TitleLocation loc )
+    {
+        SetAttrStr( AT_StampNameLocation, StampTitleLocationStrings[ loc ] );
+    }
+
+    TitleLocation  Row::GetTitleLocationType( )
     {
         TitleLocation loc = FindTitleLocationType( GetAttrStr( AT_StampNameLocation ) );
-        TitleLocation defaultLoc = GetAlbum( )->GetTitleLocation( );
+        TitleLocation defaultLoc = GetAlbum( )->GetTitleLocationType( );
         if ( ( loc == defaultLoc ) && ( loc != AT_TitleLocationDefault ) )
         {
-            SetTitleLocation( AT_TitleLocationDefault );
+            SetTitleLocationType( AT_TitleLocationDefault );
         }
         return loc;
     };
 
-    void Row::SetTitleLocation( TitleLocation loc )
+    void Row::SetTitleLocationType( TitleLocation loc )
     {
-        TitleLocation defaultLoc = GetAlbum( )->GetTitleLocation( );
+        TitleLocation defaultLoc = GetAlbum( )->GetTitleLocationType( );
         if ( ( loc == defaultLoc ) && ( loc != AT_TitleLocationDefault ) )
         {
             loc = AT_TitleLocationDefault;

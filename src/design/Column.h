@@ -45,23 +45,28 @@ namespace Design {
 
 
 
-        Column( wxXmlNode* node ) : LayoutBase( node ) {
-            SetNodeType( AT_Col );
-            SetObjectName( AlbumBaseNames[ GetNodeType( ) ] );
-            SetShowFrame( false );
-            SetShowTitle( false );
-            SetShowSubTitle( false );
-            SetFixedSpacingSize( "4" );
-            SetCalculateSpacing( true );
-            m_titleFrame = new LabelFrame( Design::AT_TitleFontType );
-            m_titleFrame->SetString( GetAttrStr( AT_Name ) );
-        };
+        Column( wxXmlNode* node );
+        //  : LayoutBase( node ) {
+        //     SetNodeType( AT_Col );
+        //     SetObjectName( AlbumBaseNames[ GetNodeType( ) ] );
+        //     SetShowFrame( false );
+        //     SetShowTitle( false );
+        //     SetShowSubTitle( false );
+        //     SetFixedSpacingSize( "4" );
+        //     SetCalculateSpacing( true );
+        //     m_titleFrame = new LabelFrame( Design::AT_TitleFontType );
+        //     m_titleFrame->SetString( GetAttrStr( AT_Name ) );
+        // };
 
         ///  @brief Destroy the Column object
         ///  
         ~Column( ) { };
 
-        bool CalculateSpacing( ) { return String2Bool( GetAttrStr( AT_CalculateSpacing ) ); };
+        void InitParameters( );
+
+        bool CalculateSpacing( ) {
+            return String2Bool( GetAttrStr( AT_CalculateSpacing ) );
+        };
 
         /*
          * @brief Draw object on screen
@@ -82,12 +87,16 @@ namespace Design {
         ///  @brief Get the Fixed Spacing object
         ///  
         ///  @return wxString 
-        wxString GetFixedSpacing( ) { return GetAttrStr( AT_FixedSpacingSize ); };
+        wxString GetFixedSpacing( ) {
+            return GetAttrStr( AT_FixedSpacingSize );
+        };
 
         ///  @brief Get the Fixed Spacing Dbl object
         ///  
         ///  @return double 
-        double GetFixedSpacingDbl( ) { return GetAttrDbl( AT_FixedSpacingSize ); };
+        double GetFixedSpacingDbl( ) {
+            return GetAttrDbl( AT_FixedSpacingSize );
+        };
 
         ///  @brief Get the Title Frame object
         ///  
@@ -121,12 +130,16 @@ namespace Design {
         ///  @brief Set the Calculate Spacing object
         ///  
         ///  @param val 
-        void SetCalculateSpacing( bool val ) { SetAttrStr( AT_CalculateSpacing, Bool2String( val ) ); };
+        void SetCalculateSpacing( bool val ) {
+            SetAttrStr( AT_CalculateSpacing, Bool2String( val ) );
+        };
 
         ///  @brief Set the Fixed Spacing Size object
         ///  
         ///  @param str 
-        void SetFixedSpacingSize( wxString str ) { SetAttrStr( AT_FixedSpacingSize, str ); };
+        void SetFixedSpacingSize( wxString str ) {
+            SetAttrStr( AT_FixedSpacingSize, str );
+        };
 
         ///  @brief Set the Title String object
         ///  
@@ -163,8 +176,11 @@ namespace Design {
         ///  @return NodeStatus 
         NodeStatus ValidateNode( );
 
-        TitleLocation  GetTitleLocation( );
         void SetTitleLocation( TitleLocation loc );
+        wxString GetTitleLocation( );
+
+        TitleLocation  GetTitleLocationType( );
+        void SetTitleLocationType( TitleLocation loc );
 
     private:
         // bool m_showTitle;

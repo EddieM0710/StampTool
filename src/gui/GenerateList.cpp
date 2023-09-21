@@ -115,7 +115,6 @@ bool GenerateList::Create( wxWindow* parent, wxWindowID id, const wxPoint& pos, 
 
 void GenerateList::CreateControls( )
 {
-    //    std::cout << "GenerateList" << "\n";
     GenerateList* itemPanel1 = this;
 
     wxBoxSizer* itemBoxSizer2 = new wxBoxSizer( wxVERTICAL );

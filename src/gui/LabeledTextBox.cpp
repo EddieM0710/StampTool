@@ -82,6 +82,20 @@ LabeledTextBox::LabeledTextBox( wxWindow* parent, wxWindowID id,
     Create( parent, wxID_ANY, pos, size, style );
 }
 
+// LabeledTextBox::LabeledTextBox( wxWindow* parent, wxWindowID id,
+//     const wxPoint& pos, const wxSize& size,
+//     long style, CallBack parentCallback
+// )
+//     {
+//     m_parent = parent;
+//     m_id = id;
+//     Init( );
+//     Create( parent, wxID_ANY, pos, size, style );
+//     m_parentCallback = parentCallback;
+//     }
+
+
+
 /*
  *
  *  LabledTextBox creator
@@ -136,8 +150,7 @@ void LabeledTextBox::Init( )
   */
 void LabeledTextBox::CreateControls( )
 {
-    //   std::cout << "LabeledTextBox" << "\n";
-       // LabeledTextBox content construction
+    // LabeledTextBox content construction
 
     LabeledTextBox* itemPanel1 = this;
 
@@ -145,19 +158,26 @@ void LabeledTextBox::CreateControls( )
     itemPanel1->SetSizer( itemBoxSizer1 );
 
     m_label = new wxStaticText( itemPanel1, wxID_STATIC, _( "Static text" ),
-        wxDefaultPosition, wxDefaultSize, 0 );
+        wxDefaultPosition );
 
     itemBoxSizer1->Add( m_label, 0, wxALIGN_CENTER_VERTICAL | wxLEFT, 0 );
 
     m_value = new wxTextCtrl( itemPanel1, m_id, wxEmptyString,
-        wxDefaultPosition, wxSize( -1, 26 ), 0 );
+        wxDefaultPosition );
 
     m_value->SetEditable( true );
 
     itemBoxSizer1->Add( m_value, 1, wxGROW | wxLEFT | wxRIGHT, 4 );
 
     Connect( m_id, wxEVT_TEXT, wxCommandEventHandler( LabeledTextBox::OnTextctrlTextUpdated ) );
+    //Connect( m_id, wxEVT_TEXT, m_func );
 
+    // inline void wxEvtHandler::Connect(
+    //     int winid, 
+    //     wxEventType eventType, 
+    //     wxObjectEventFunction func, 
+    //     wxObject *userData = (wxObject *)__null, 
+    //     wxEvtHandler *eventSink = (wxEvtHandler *)__null)
 }
 
 
@@ -217,6 +237,7 @@ void LabeledTextBox::OnTextctrlTextUpdated( wxCommandEvent& event )
         m_value->SetModified( true );
     }
 
-    event.Skip( );
+
+    event.Skip( false );
 
 }

@@ -143,8 +143,8 @@ bool StampToolFrame::Create( wxWindow* parent, wxWindowID id,
 
     wxFrame::Create( parent, id, caption, pos, size, style );
 
-    this->SetFont( wxFont( 12, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL,
-        wxFONTWEIGHT_NORMAL, false, wxT( "Ubuntu" ) ) );
+    // this->SetFont( wxFont( 12, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL,
+    //     wxFONTWEIGHT_NORMAL, false, wxT( "Ubuntu" ) ) );
     CreateControls( );
     Centre( );
 
@@ -181,8 +181,6 @@ void StampToolFrame::Init( )
 
 void StampToolFrame::CreateControls( )
 {
-    //   std::cout << "StampToolFrame" << "\n";
-
     StampToolFrame* itemFrame1 = this;
 
     wxMenuBar* menuBar = new wxMenuBar;
@@ -192,7 +190,6 @@ void StampToolFrame::CreateControls( )
     m_fileMenu->Append( ID_OPENPROJECT, _( "Open" ), wxEmptyString, wxITEM_NORMAL );
     m_fileMenu->Append( ID_SAVEPROJECT, _( "Save" ), wxEmptyString, wxITEM_NORMAL );
     m_fileMenu->Append( ID_SAVEASPROJECT, _( "Save As" ), wxEmptyString, wxITEM_NORMAL );
-
     m_fileMenu->AppendSeparator( );
 
     m_fileMenu->Append( ID_OPENCATALOG, _( "Open Catalog" ), wxEmptyString, wxITEM_NORMAL );
@@ -749,6 +746,8 @@ void StampToolFrame::SetupRecentMenu( )
 
 
 
-void StampToolFrame::UpdateStatus( ) { m_stampToolPanel->UpdateStatus( ); }
+void StampToolFrame::UpdateStatus( ) {
+    m_stampToolPanel->UpdateStatus( );
+}
 
 

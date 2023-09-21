@@ -36,6 +36,16 @@ class wxWindow;
 class AlbumTreeCtrl;
 class AlbumTreePanel;
 class AlbumImagePanel;
+class AlbumDetailsPanel;
+class PageDetailsPanel;
+class ColDetailsPanel;
+class RowDetailsPanel;
+class StampDetailsPanel;
+class TestDetailsPanel;
+
+namespace Design {
+    class AlbumBase;
+}
 
 #define SYMBOL_STAMPTOOLAlbumPanel_STYLE wxTAB_TRAVERSAL
 #define SYMBOL_STAMPTOOLAlbumPanel_TITLE _( "StampToolPanel" )
@@ -50,7 +60,7 @@ class AlbumImagePanel;
 class AlbumPanel : public wxPanel
 {
     DECLARE_DYNAMIC_CLASS( AlbumPanel )
-        DECLARE_EVENT_TABLE( )
+    DECLARE_EVENT_TABLE( )
 
 public:
     enum AlbumAlbumPanelGuiDefs
@@ -66,7 +76,10 @@ public:
         ID_NEWDESIGN,
         ID_OPENDESIGN,
         ID_REMOVEDESIGN,
-        ID_GENERATEPDF
+        ID_GENERATEPDF,
+        ID_DETAILSSCROLLEDWINDOW,
+        ID_HORIZONTALALBUMSPLITTERWINDOW1,
+        ID_ALBUMLAYOUTPANEL
     };
 
     ///  @brief Construct a new Album Design Panel object
@@ -100,6 +113,13 @@ public:
     ///  @brief Create a Controls object
     ///  
     void CreateControls( );
+    wxPanel* CreateAlbumImageLayoutPanel( wxWindow* parent );
+
+    wxScrolledWindow* CreateDetailsScrolledWindow( wxWindow* parent );
+
+    wxSplitterWindow* CreateImageDetailsSplitterWindow( wxWindow* parent );
+
+    void ShowDetails( Design::AlbumBase* albumBase );
 
     ///  @brief 
     ///  
@@ -108,7 +128,9 @@ public:
     ///  @brief Get the Album Design Tree Panel object
     ///  
     ///  @return AlbumTreePanel* 
-    AlbumTreePanel* GetAlbumTreePanel( ) { return m_albumTreePanel; };
+    AlbumTreePanel* GetAlbumTreePanel( ) {
+        return m_albumTreePanel;
+    };
 
     void NewDesign( );
 
@@ -133,7 +155,9 @@ public:
     ///  @brief Set the Sash Position object
     ///  
     ///  @param pos 
-    void SetSashPosition( int pos ) { m_secondarySplitterWindow->SetSashPosition( pos ); };
+    void SetSashPosition( int pos ) {
+        m_albumVerticalSplitterWindow->SetSashPosition( pos );
+    };
 
     ///  @brief Set the Album List Strings object
     ///  
@@ -162,11 +186,21 @@ public:
     void OnManageClick( wxCommandEvent& event );
 
 private:
-    wxSplitterWindow* m_secondarySplitterWindow;
+    wxSplitterWindow* m_albumVerticalSplitterWindow;
     AlbumImagePanel* m_albumImagePanel;
     wxSlider* m_zoomSlider; ///< Pointer to image soom slider
     AlbumTreePanel* m_albumTreePanel;
+    AlbumDetailsPanel* m_albumDetailsPanel;
+    PageDetailsPanel* m_pageDetailsPanel;
+    ColDetailsPanel* m_colDetailsPanel;
+    RowDetailsPanel* m_rowDetailsPanel;
+    StampDetailsPanel* m_stampDetailsPanel;
+    TestDetailsPanel* m_testDetailsPanel;
     wxChoice* m_albumListCtrl;
+
+    wxSplitterWindow* m_imageDetailsSplitterWindow;
+    wxPanel* theAlbumLayoutPanel;
+    wxScrolledWindow* m_detailsScrolledWindow;
 };
 
 #endif

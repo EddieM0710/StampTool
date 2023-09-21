@@ -93,31 +93,45 @@ namespace Design {
          *
          * @return double - height in MM
          */
-        double GetHeight( ) { return m_frame.GetHeight( ); };
+        double GetHeight( ) {
+            return m_frame.GetHeight( );
+        };
 
         /*
          * @brief Get Layout element min height
          *
          * @return double - height in MM
          */
-        double GetMinHeight( ) { return m_frame.GetMinHeight( ); };
+        double GetMinHeight( ) {
+            return m_frame.GetMinHeight( );
+        };
 
         /*
          * @brief Get Layout element min width
          *
          * @return double - width in MM
          */
-        double GetMinWidth( ) { return m_frame.GetMinWidth( ); };
+        double GetMinWidth( ) {
+            return m_frame.GetMinWidth( );
+        };
 
-        bool GetShowFrame( ) { return String2Bool( GetAttrStr( AT_ShowFrame ) ); };
+        bool GetShowFrame( ) {
+            return String2Bool( GetAttrStr( AT_ShowFrame ) );
+        };
 
         //        bool GetShowImage( ){ return String2Bool( GetAttrStr( AT_ShowImage ) ); };
         //        void SetShowImage( bool val ){ SetAttrStr( AT_ShowImage, Bool2String( val ) ); };
 
-        bool GetShowNbr( ) { return String2Bool( GetAttrStr( AT_ShowCatNbr ) ); };
+        bool GetShowNbr( ) {
+            return String2Bool( GetAttrStr( AT_ShowCatNbr ) );
+        };
 
-        bool GetShowTitle( ) { return String2Bool( GetAttrStr( AT_ShowTitle ) ); };
-        bool GetShowSubTitle( ) { return String2Bool( GetAttrStr( AT_ShowSubTitle ) ); };
+        bool GetShowTitle( ) {
+            return String2Bool( GetAttrStr( AT_ShowTitle ) );
+        };
+        bool GetShowSubTitle( ) {
+            return String2Bool( GetAttrStr( AT_ShowSubTitle ) );
+        };
 
         wxString GetString( Design::FontUsageType fontType )
         {
@@ -147,21 +161,27 @@ namespace Design {
          *
          * @return double - position in MM
          */
-        double GetXPos( ) { return m_frame.GetXPos( ); };
+        double GetXPos( ) {
+            return m_frame.GetXPos( );
+        };
 
         /*
          * @brief Get Layout element position
          *
          * @return double - position in MM
          */
-        double GetYPos( ) { return m_frame.GetYPos( ); };
+        double GetYPos( ) {
+            return m_frame.GetYPos( );
+        };
 
         /*
          * @brief Get Layout element width
          *
          * @return double - width in MM
          */
-        double GetWidth( ) { return m_frame.GetWidth( ); };
+        double GetWidth( ) {
+            return m_frame.GetWidth( );
+        };
 
 
 
@@ -185,29 +205,43 @@ namespace Design {
          *
          * @param val height - position in MM
          */
-        void SetHeight( double val ) { m_frame.SetHeight( val ); };
+        void SetHeight( double val ) {
+            m_frame.SetHeight( val );
+        };
 
         /*
          * @brief  Set Layout element min height
          *
          * @param val double - min height in MM
          */
-        void SetMinHeight( double val ) { m_frame.SetMinHeight( val ); };
+        void SetMinHeight( double val ) {
+            m_frame.SetMinHeight( val );
+        };
 
         /*
          * @brief  Set Layout element width
          *
          * @param val double - width in MM
          */
-        void SetMinWidth( double val ) { m_frame.SetMinWidth( val ); };
+        void SetMinWidth( double val ) {
+            m_frame.SetMinWidth( val );
+        };
 
-        void SetShowFrame( bool val ) { SetAttrStr( AT_ShowFrame, Bool2String( val ) ); };
+        void SetShowFrame( bool val ) {
+            SetAttrStr( AT_ShowFrame, Bool2String( val ) );
+        };
 
-        void SetShowNbr( bool val ) { SetAttrStr( AT_ShowCatNbr, Bool2String( val ) ); };
+        void SetShowNbr( bool val ) {
+            SetAttrStr( AT_ShowCatNbr, Bool2String( val ) );
+        };
 
-        void SetShowTitle( bool val ) { SetAttrStr( AT_ShowTitle, Bool2String( val ) ); };
+        void SetShowTitle( bool val ) {
+            SetAttrStr( AT_ShowTitle, Bool2String( val ) );
+        };
 
-        void SetShowSubTitle( bool val ) { SetAttrStr( AT_ShowSubTitle, Bool2String( val ) ); };
+        void SetShowSubTitle( bool val ) {
+            SetAttrStr( AT_ShowSubTitle, Bool2String( val ) );
+        };
 
 
         //void SetTitleLocation( TitleLocation loc ) { m_titleLocation = loc; };
@@ -217,21 +251,27 @@ namespace Design {
          *
          * @param val double - position in MM
          */
-        void SetYPos( double val ) { m_frame.SetYPos( val ); };
+        void SetYPos( double val ) {
+            m_frame.SetYPos( val );
+        };
 
         /*
          * @brief  Set Layout element width
          *
          * @param val double - width in MM
          */
-        void SetWidth( double val ) { m_frame.SetWidth( val ); };
+        void SetWidth( double val ) {
+            m_frame.SetWidth( val );
+        };
 
         /*
          * @brief  Set Layout element position within parent element
          *
          * @param val double - position in MM
          */
-        void SetXPos( double val ) { m_frame.SetXPos( val ); };
+        void SetXPos( double val ) {
+            m_frame.SetXPos( val );
+        };
 
 
         /**
@@ -258,6 +298,10 @@ namespace Design {
 
         void ValidateChildType( int& nbrRows, int& nbrCols, int& nbrLeaf );
 
+        wxString Layout( )
+        {
+            return m_frame.Layout( );
+        }
     protected:
         Frame m_frame;
         Frame m_clientDimensions;

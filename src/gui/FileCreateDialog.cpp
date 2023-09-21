@@ -90,8 +90,6 @@ bool FileCreateDialog::Create( wxWindow* parent, wxWindowID id, const wxString& 
 
 void FileCreateDialog::CreateControls( )
 {
-    //   std::cout << "FileCreateDialog" << "\n";
-
     FileCreateDialog* itemDialog1 = this;
 
     wxBoxSizer* itemBoxSizer2 = new wxBoxSizer( wxVERTICAL );
@@ -117,15 +115,21 @@ void FileCreateDialog::CreateControls( )
 
 //--------------
 
-wxString FileCreateDialog::GetPath( ) { return m_path; };
+wxString FileCreateDialog::GetPath( ) {
+    return m_path;
+};
 
 //--------------
 
-wxString FileCreateDialog::GetFile( ) { return m_file; };
+wxString FileCreateDialog::GetFile( ) {
+    return m_file;
+};
 
 //--------------
 
-wxString FileCreateDialog::GetDir( ) { return m_dir; };
+wxString FileCreateDialog::GetDir( ) {
+    return m_dir;
+};
 
 //--------------
 

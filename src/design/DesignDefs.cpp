@@ -61,52 +61,53 @@ namespace Design {
 
 
     wxString AttrNameStrings[ AT_NbrAttrTypes ] = {
-            "Name",
-            "PageWidth",
-            "PageHeight",
-            "TopPageMargin",
-            "BottomPageMargin",
-            "RightPageMargin",
-            "LeftPageMargin",
-            "BorderFileName",
-            "BorderSize",
-            "Height",
-            "Width",
-            "XPos",
-            "YPos",
-            "MinHeight",
-            "MinWidth",
-            "CatNbr",
-            "Link",
-            "ShowTitle",
-            "ShowSubTitle",
-            "ShowCatNbr",
-            "ShowFrame",
-            "ShowImage",
-            "Orientation",
-            "GrayScaleImages",
-            "TopContentMargin",
-            "BottomContentMargin",
-            "LeftContentMargin",
-            "RightContentMargin",
-            "FontType",
-            "NativeFontString",
-            "Color",
-            "ImageName",
-            "CalculateSpacing",
-            "FixedSpacingSize",
-            "OversizePaper",
-            "PaperHeight",
-            "PaperWidth",
-            "SelvageHeight",
-            "SelvageWidth",
-            "SubTitle",
-            "MountAllowanceHeight",
-            "MountAllowanceWidth",
-            "StampNameLocation",
-            "StampMargin",
-            "CollapseState",
-            "Catalog"
+        "Name",
+        "PageWidth",
+        "PageHeight",
+        "TopPageMargin",
+        "BottomPageMargin",
+        "RightPageMargin",
+        "LeftPageMargin",
+        "BorderFileName",
+        "BorderSize",
+        "Height",
+        "Width",
+        "XPos",
+        "YPos",
+        "MinHeight",
+        "MinWidth",
+        "CatNbr",
+        "Link",
+        "ShowTitle",
+        "ShowSubTitle",
+        "ShowCatNbr",
+        "ShowFrame",
+        "ShowImage",
+        "Orientation",
+        "GrayScaleImages",
+        "TopContentMargin",
+        "BottomContentMargin",
+        "LeftContentMargin",
+        "RightContentMargin",
+        "FontType",
+        "NativeFontString",
+        "Color",
+        "ImageName",
+        "CalculateSpacing",
+        "FixedSpacingSize",
+        "OversizePaper",
+        "PaperHeight",
+        "PaperWidth",
+        "SelvageHeight",
+        "SelvageWidth",
+        "SubTitle",
+        "MountAllowanceHeight",
+        "MountAllowanceWidth",
+        "StampNameLocation",
+        "StampMargin",
+        "CollapseState",
+        "Catalog",
+        "Catalog Codes"
     };
     wxString OrientationStrings[ 2 ] = { "Portrait", "Landscape" };
 
@@ -116,15 +117,15 @@ namespace Design {
     };
 
     wxString AlbumBaseNames[ AT_NbrAlbumTypes ] = {
-            "Album",
-            "Page",
-            "Row",
-            "Col",
-            "TextBox",
-            "Title",
-            "TitlePage",
-            "Stamp",
-            "Font" };
+        "Album",
+        "Page",
+        "Row",
+        "Col",
+        "TextBox",
+        "Title",
+        "TitlePage",
+        "Stamp",
+        "Font" };
 
 
     int DefaultPointSize[ AT_NbrFontUsageTypes ] = { 12, 10, 10, 10, 8 };
@@ -137,9 +138,9 @@ namespace Design {
         "CatNbr"
     };
     wxString StampTitleLocationStrings[ AT_NbrTitleLocations ] = {
-            "Top",
-            "Bottom",
-            "Default"
+        "Top",
+        "Bottom",
+        "Default"
     };
 
 

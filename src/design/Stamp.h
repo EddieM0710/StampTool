@@ -130,23 +130,25 @@ namespace Design {
         ///  @return wxString 
         wxString GetNbrString( );
 
+        wxString GetCatalog( );
+
+        wxString GetCatalogCodes( );
+
         ///  @brief Get the Show Nbr object
         ///  
         ///  @return true 
         ///  @return false 
         bool GetShowNbr( )
         {
-            return GetAlbum( )->GetShowNbr( );
-            // wxString catStr = GetAttrStr( AT_ShowCatNbr );
-            // if ( catStr.IsEmpty( ) )
-            // {
-            //     //default true;
-            //     return true;
-            // }
-            // else
-            // {
-            //     return String2Bool( catStr );
-            // }
+            wxString catStr = GetAttrStr( AT_ShowCatNbr );
+            if ( catStr.IsEmpty( ) )
+            {
+                return GetAlbum( )->GetShowNbr( );
+            }
+            else
+            {
+                return String2Bool( catStr );
+            }
         };
 
         void InitParameters( );
@@ -160,35 +162,55 @@ namespace Design {
         ///  
         ///  @return true 
         ///  @return false 
-        bool GetShowTitle( ) { return String2Bool( GetAttrStr( AT_ShowTitle ) ); };
+        bool GetShowTitle( ) {
+            return String2Bool( GetAttrStr( AT_ShowTitle ) );
+        };
 
-        bool GetShowSubTitle( ) { return String2Bool( GetAttrStr( AT_ShowSubTitle ) ); };
+        bool GetShowSubTitle( ) {
+            return String2Bool( GetAttrStr( AT_ShowSubTitle ) );
+        };
 
         ///  @brief Set the Show Title object
         ///  
         ///  @param val 
-        void SetShowTitle( bool val ) { SetAttrStr( AT_ShowTitle, Bool2String( val ) ); };
+        void SetShowTitle( bool val ) {
+            SetAttrStr( AT_ShowTitle, Bool2String( val ) );
+        };
 
-        void SetShowSubTitle( bool val ) { SetAttrStr( AT_ShowSubTitle, Bool2String( val ) ); };
+        void SetShowSubTitle( bool val ) {
+            SetAttrStr( AT_ShowSubTitle, Bool2String( val ) );
+        };
 
         ///  @brief Get the Stamp Height object
         ///  
         ///  @return double 
-        double GetStampHeight( ) { return m_stampFrame.GetHeight( ); };
+        double GetStampHeight( ) {
+            return m_stampFrame.GetHeight( );
+        };
 
         ///  @brief Get the Stamp Height Str object
         ///  
         ///  @return wxString 
-        wxString GetStampHeightStr( ) { return GetAttrStr( Design::AT_Height ); };
+        wxString GetStampHeightStr( ) {
+            return GetAttrStr( Design::AT_Height );
+        };
 
         // The stamp object Margin is the Margin added to the border frame 
          // for positioning the frame and title within.
-        wxString GetStampMarginStr( ) { return GetAttrStr( Design::AT_StampMargin ); };
-        double GetStampMargin( ) { return GetAttrDbl( Design::AT_StampMargin ); };
+        wxString GetStampMarginStr( ) {
+            return GetAttrStr( Design::AT_StampMargin );
+        };
+        double GetStampMargin( ) {
+            return GetAttrDbl( Design::AT_StampMargin );
+        };
 
-        void SetStampMarginStr( wxString str ) { return SetAttrStr( Design::AT_StampMargin, str ); };
+        void SetStampMarginStr( wxString str ) {
+            return SetAttrStr( Design::AT_StampMargin, str );
+        };
 
-        void SetStampMargin( double val ) { return SetAttrDbl( Design::AT_StampMargin, val ); };
+        void SetStampMargin( double val ) {
+            return SetAttrDbl( Design::AT_StampMargin, val );
+        };
 
 
         ///  @brief Get the Stamp Image Filename object
@@ -222,6 +244,10 @@ namespace Design {
         ///  @param parent 
         void SaveFonts( wxXmlNode* parent );
 
+        void SetCatalog( wxString cat );
+
+        void SetCatalogCodes( wxString catCodes );
+
         ///  @brief Set the Nbr String object
         ///  
         ///  @param str 
@@ -235,7 +261,9 @@ namespace Design {
         ///  @brief Set the Show Nbr object
         ///  
         ///  @param val 
-        void SetShowNbr( bool val ) { SetAttrStr( AT_ShowCatNbr, Bool2String( val ) ); };
+        void SetShowNbr( bool val ) {
+            SetAttrStr( AT_ShowCatNbr, Bool2String( val ) );
+        };
 
         ///  @brief Set the Stamp Height object
         ///  

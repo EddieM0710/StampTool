@@ -68,7 +68,9 @@ END_EVENT_TABLE( )
 
 
 
-InventoryPanel::InventoryPanel( ) { Init( ); }
+InventoryPanel::InventoryPanel( ) {
+    Init( );
+}
 
 InventoryPanel::InventoryPanel( wxWindow* parent, wxWindowID id,
     const wxPoint& pos, const wxSize& size,
@@ -105,7 +107,6 @@ void InventoryPanel::Init( )
 
 void InventoryPanel::CreateControls( )
 {
-    //    std::cout << "InventoryPanel" << "\n";
 
     InventoryPanel* itemPanel1 = this;
 
@@ -133,19 +134,19 @@ void InventoryPanel::CreateControls( )
         m_grid->SetColLabelValue( i, Catalog::ItemDataNames[ i ] );
     }
     wxString choices[ 5 ] = { wxT( "Mint" ), wxT( "MNH" ), wxT( "Unused" ), wxT( "Used" ),
-                           wxT( "OG" ) }; // Make table strings
+        wxT( "OG" ) }; // Make table strings
     wxGridCellAttr* attr = new wxGridCellAttr( );
     attr->SetEditor( new wxGridCellChoiceEditor( 5, choices, true ) );
     m_grid->SetColAttr( Catalog::IDT_Type, attr );
 
     wxString choices2[ 5 ] = { wxT( "VF" ), wxT( "F" ), wxT( "VG" ), wxT( "G" ),
-                            wxT( "P" ) }; // Make table strings
+        wxT( "P" ) }; // Make table strings
     attr = new wxGridCellAttr( );
     attr->SetEditor( new wxGridCellChoiceEditor( 5, choices2, true ) );
     m_grid->SetColAttr( Catalog::IDT_Condition, attr );
 
     wxString choices3[ 3 ] = { wxT( "Album" ), wxT( "Stock Book" ),
-                            wxT( "File Box" ) }; // Make table strings
+        wxT( "File Box" ) }; // Make table strings
     attr = new wxGridCellAttr( );
     attr->SetEditor( new wxGridCellChoiceEditor( 3, choices3, true ) );
     m_grid->SetColAttr( Catalog::IDT_Location, attr );
@@ -242,7 +243,6 @@ void InventoryPanel::UpdatePanel( )
         while ( ele && ( ele->GetParent( ) == parent ) )
         {
             wxString str = ele->GetName( );
-            //            std::cout << str << " " << ele->GetLineNumber( );
             if ( !ele->GetName( ).Cmp( "Specimen" ) )
             {
                 wxString specimenCollection = ele->GetAttribute( Catalog::ItemDataNames[ Catalog::IDT_Collection ], "" );
@@ -257,7 +257,6 @@ void InventoryPanel::UpdatePanel( )
                     row++;
                 }
             }
-            //            std::cout << "\n";
 
             ele = ele->GetNext( );
         }
@@ -419,6 +418,5 @@ void InventoryPanel::OnRowBeginMove( wxGridEvent& ev )
     int row = ev.GetRow( );
     int cursorRow = m_grid->GetGridCursorRow( );
 
-    //    std::cout << "  row " << row << "  cursorRow " << cursorRow << "   sel " << sel << "\n";
     ev.Skip( );
 }

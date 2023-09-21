@@ -26,10 +26,13 @@
 
 #include "Defs.h"
 #include "gui/GuiDefs.h"
+#include "gui/HelperPanel.h"
 #include "catalog/CatalogDefs.h"
 
-class LabeledTextBox;
-namespace Catalog { class Entry; }
+ //class wxTextCtrl;
+namespace Catalog {
+    class Entry;
+}
 
 #define SYMBOL_IDENTIFICATIONPANEL_STYLE wxTAB_TRAVERSAL
 #define SYMBOL_IDENTIFICATIONPANEL_TITLE _( "IdentificationPanel" )
@@ -40,7 +43,7 @@ namespace Catalog { class Entry; }
 /**
   * @brief IdentificationPanel displays stamp data relative to the stamp identification
   */
-class IdentificationPanel : public wxPanel
+class IdentificationPanel : public HelperPanel
 {
     DECLARE_DYNAMIC_CLASS( IdentificationPanel )
     DECLARE_EVENT_TABLE( )
@@ -148,7 +151,18 @@ public:
      */
     void OnFormatchoiceSelected( wxCommandEvent& event );
 
-    void OnTextctrlTextUpdated( wxCommandEvent& event );
+    void OnSeriesUpdated( wxCommandEvent& event );
+    void OnIssuedUpdated( wxCommandEvent& event );
+    void OnThemeUpdated( wxCommandEvent& event );
+    void OnCountryUpdated( wxCommandEvent& event );
+    void OnNameUpdated( wxCommandEvent& event );
+    void OnIDUpdated( wxCommandEvent& event );
+    void OnWidthUpdated( wxCommandEvent& event );
+    void OnHeightUpdated( wxCommandEvent& event );
+    void OnPerforationUpdated( wxCommandEvent& event );
+    void OnPrintingUpdated( wxCommandEvent& event );
+    void OnLinkUpdated( wxCommandEvent& event );
+    void OnImageUpdated( wxCommandEvent& event );
     void OnEditCheckBox( wxCommandEvent& event );
     void SetDataEditable( bool val = true );
     void OnColnectButtonClick( wxCommandEvent& event );;
@@ -188,7 +202,7 @@ public:
      * @param stamp
      */
     void UpdatePanel( );//Catalog::Entry* stamp );
-    void UpdateStampValue( Catalog::DataTypes dt, LabeledTextBox* textBox );
+    void UpdateStampValue( Catalog::DataTypes dt, wxTextCtrl* textBox );
 
     /**
      * @brief
@@ -202,26 +216,26 @@ public:
 
 private:
     wxCheckBox* m_editCheckbox;
-    //    LabeledTextBox* m_ID;        ///< ID display
+    //    wxTextCtrl* m_ID;        ///< ID display
         //    wxChoice* m_status;          ///< Stamp Status wxChoice
-    LabeledTextBox* m_name;      ///< Stamp Name display
+    wxTextCtrl* m_name;      ///< Stamp Name display
     wxChoice* m_emission;        ///<  Stamp Emission wxChoice
     wxChoice* m_format;          ///<  Stamp Format wxChoice
-    LabeledTextBox* m_issueDate; ///< Stamp Issue date display
-    LabeledTextBox* m_series;    ///< Stamp Series display
-    LabeledTextBox* m_themes;    ///< Stamp Theme display
-    LabeledTextBox* m_country;   ///< Stamp Country display
-    LabeledTextBox* m_perforation;   ///< Stamp perforation display
-    LabeledTextBox* m_printing;   ///< Stamp printng display
-    LabeledTextBox* m_width;   ///< Stamp width display
-    LabeledTextBox* m_height;   ///< Stamp height display
+    wxTextCtrl* m_issueDate; ///< Stamp Issue date display
+    wxTextCtrl* m_series;    ///< Stamp Series display
+    wxTextCtrl* m_themes;    ///< Stamp Theme display
+    wxTextCtrl* m_country;   ///< Stamp Country display
+    wxTextCtrl* m_perforation;   ///< Stamp perforation display
+    wxTextCtrl* m_printing;   ///< Stamp printng display
+    wxTextCtrl* m_width;   ///< Stamp width display
+    wxTextCtrl* m_height;   ///< Stamp height display
     wxTextCtrl* m_catCode;
-    //LabeledTextBox* m_stampMount;
+    //wxTextCtrl* m_stampMount;
     wxComboBox* mountComboBox;
 
-    LabeledTextBox* m_link;
-    // LabeledTextBox* m_catCodes;
-    LabeledTextBox* m_imageName;
+    wxTextCtrl* m_link;
+    // wxTextCtrl* m_catCodes;
+    wxTextCtrl* m_imageName;
 };
 
 #endif

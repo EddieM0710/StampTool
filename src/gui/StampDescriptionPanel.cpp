@@ -77,7 +77,9 @@ END_EVENT_TABLE( )
 * StampDescriptionPanel constructors
 */
 
-StampDescriptionPanel::StampDescriptionPanel( void ) { Init( ); }
+StampDescriptionPanel::StampDescriptionPanel( void ) {
+    Init( );
+}
 
 
 
@@ -146,8 +148,6 @@ void StampDescriptionPanel::Init( void )
 
 void StampDescriptionPanel::CreateControls( void )
 {
-    //    std::cout << "StampDescriptionPanel" << "\n";
-
     StampDescriptionPanel* thisPanel = this;
 
     wxBoxSizer* topVerticalSizer = new wxBoxSizer( wxVERTICAL );
@@ -158,8 +158,8 @@ void StampDescriptionPanel::CreateControls( void )
 
     wxSplitterWindow* horizontalSplitterWindow = new wxSplitterWindow(
         thisPanel, ID_HORIZONTALLITTERWINDOW, wxDefaultPosition,
-        wxSize( 100, 800 ), wxSP_3DBORDER | wxSP_3DSASH | wxNO_BORDER );
-    horizontalSplitterWindow->SetSashPosition( 900 );
+        wxDefaultSize, wxSP_3DBORDER | wxSP_3DSASH | wxNO_BORDER );
+    horizontalSplitterWindow->SetSashPosition( 100 );
     horizontalSplitterWindow->SetMinimumPaneSize( 50 );
     horizontalSplitterWindow->SetSashGravity( 0.2 );
 
@@ -167,49 +167,50 @@ void StampDescriptionPanel::CreateControls( void )
     wxPanel* stampAndImagePanel = new wxPanel( horizontalSplitterWindow, ID_HORIZONTALPLITTERWINDOW, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
     stampAndImagePanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
 
-    wxBoxSizer* stampAndImageHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
-    stampAndImagePanel->SetSizer( stampAndImageHorizontalSizer );
-
     wxBoxSizer* stampAndImageVerticalSizer = new wxBoxSizer( wxVERTICAL );
-    stampAndImageHorizontalSizer->Add( stampAndImageVerticalSizer, 1, wxGROW | wxALL, 5 );
+    stampAndImagePanel->SetSizer( stampAndImageVerticalSizer );
+
+    wxBoxSizer* stampAndImageHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
+
+    stampAndImageVerticalSizer->Add( stampAndImageHorizontalSizer, 1, wxGROW | wxALL, 5 );
 
     wxSplitterWindow* stampAndImageVerticalSplitterWindow = new wxSplitterWindow(
         stampAndImagePanel, ID_DESCRIPTIONSPLITTERWINDOW, wxDefaultPosition,
-        wxSize( 200, 200 ), wxSP_3DBORDER | wxSP_3DSASH | wxNO_BORDER );
-    stampAndImageVerticalSplitterWindow->SetSashPosition( 800 );
+        wxDefaultSize, wxSP_3DBORDER | wxSP_3DSASH | wxNO_BORDER );
+    stampAndImageVerticalSplitterWindow->SetSashPosition( 100 );
     stampAndImageVerticalSplitterWindow->SetMinimumPaneSize( 100 );
     stampAndImageVerticalSplitterWindow->SetSashGravity( 0.2 );
+
+    wxBoxSizer* vSizer = new wxBoxSizer( wxVERTICAL );
+    stampAndImageVerticalSplitterWindow->SetSizer( vSizer );
+
+    wxBoxSizer* hSizer = new wxBoxSizer( wxHORIZONTAL );
+    vSizer->Add( hSizer, 1, wxGROW | wxALL, 5 );
 
 
     m_identificationPanel = new IdentificationPanel(
         stampAndImageVerticalSplitterWindow,
         ID_IDENTIFICATIONPANELFORIEGN, wxDefaultPosition,
         wxDefaultSize, 0 );
+    hSizer->Add( m_identificationPanel, 1, wxGROW | wxALL, 5 );
 
+    //   wxBoxSizer* identificationPanelVerticalSizer = new wxBoxSizer( wxVERTICAL );
+    //   m_identificationPanel->SetSizer( identificationPanelVerticalSizer );
 
-    wxBoxSizer* identificationPanelHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
-    m_identificationPanel->SetSizer( identificationPanelHorizontalSizer );
+    //   wxBoxSizer* identificationPanelHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
 
-    wxBoxSizer* identificationPanelVerticalSizer = new wxBoxSizer( wxVERTICAL );
-
-    identificationPanelHorizontalSizer->Add( identificationPanelVerticalSizer, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
-
-
-
-
+    //   identificationPanelVerticalSizer->Add( identificationPanelHorizontalSizer, 1, wxALIGN_CENTER_HORIZONTAL | wxALL, 5 );
 
     wxPanel* StampImagePanel = new wxPanel( stampAndImageVerticalSplitterWindow,
         ID_STAMPDESCRIPTIONPANEL, wxDefaultPosition,
         wxDefaultSize, wxTAB_TRAVERSAL );
     StampImagePanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
 
-
     wxBoxSizer* stampImageVerticalSizer = new wxBoxSizer( wxVERTICAL );
     StampImagePanel->SetSizer( stampImageVerticalSizer );
 
     wxBoxSizer* stampImageHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
     stampImageVerticalSizer->Add( stampImageHorizontalSizer, 0, wxGROW | wxALL, 5 );
-
 
     wxStaticText* zoomStaticText = new wxStaticText(
         StampImagePanel, wxID_STATIC, _( "Zoom" ), wxDefaultPosition, wxDefaultSize, 0 );
@@ -218,135 +219,21 @@ void StampDescriptionPanel::CreateControls( void )
     m_zoomSlider =
         new wxSlider( StampImagePanel, ID_ZOOMSLIDER, 100, 25, 300, wxDefaultPosition,
             wxDefaultSize, wxSL_HORIZONTAL );
-    stampImageHorizontalSizer->Add( m_zoomSlider, 0, wxGROW | wxALL, 0 );
+    stampImageHorizontalSizer->Add( m_zoomSlider, 1, wxGROW | wxALL, 0 );
 
-    m_stampImage =
-        new ImagePanel( StampImagePanel, ID_STAMPIMAGEPANEL, wxDefaultPosition,
-            wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
+    m_stampImage = new ImagePanel( StampImagePanel, ID_STAMPIMAGEPANEL, wxDefaultPosition,
+        wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
     m_stampImage->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
     stampImageVerticalSizer->Add( m_stampImage, 1, wxGROW | wxALL, 0 );
 
-
-
-    stampAndImageVerticalSplitterWindow->SplitVertically( m_identificationPanel, StampImagePanel, 300 );
+    stampAndImageVerticalSplitterWindow->SplitVertically( m_identificationPanel, StampImagePanel, 200 );
     stampAndImageVerticalSizer->Add( stampAndImageVerticalSplitterWindow, 1, wxGROW | wxALL, 5 );
 
+    m_inventoryPanel = new InventoryPanel( horizontalSplitterWindow, ID_INVENTORYPANEL, wxDefaultPosition,
+        wxDefaultSize, wxSIMPLE_BORDER );
 
-
-    // wxPanel* notebookPanel = new wxPanel( horizontalSplitterWindow, ID_NOTEBOOKPANEL,
-    //     wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
-    // notebookPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
-
-    // wxBoxSizer* notebookPanelVerticalSizer = new wxBoxSizer( wxVERTICAL );
-    // notebookPanel->SetSizer( notebookPanelVerticalSizer );
-
-    // wxBoxSizer* notebookPanelHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
-    // notebookPanelVerticalSizer->Add( notebookPanelHorizontalSizer, 1, wxGROW | wxALL, 5 );
-
-
-
-    // wxNotebook* descriptionNotebook =
-    //     new wxNotebook( notebookPanel, ID_DESCRIPTIONLNOTEBOOK,
-    //         wxDefaultPosition, wxDefaultSize, wxBK_DEFAULT );
-
-    m_inventoryPanel =
-        new InventoryPanel( horizontalSplitterWindow, ID_INVENTORYPANEL, wxDefaultPosition,
-            wxSize( 100, 100 ), wxSIMPLE_BORDER );
-
-    //descriptionNotebook->AddPage( m_inventoryPanel, _( "Inventory" ) );
-
-
-
-    // m_catalogCodePanel =
-    //     new CatalogCodePanel( descriptionNotebook, ID_CATALOGCODEPANEL, wxDefaultPosition,
-    //         wxSize( 100, 100 ), wxSIMPLE_BORDER );
-
-    // descriptionNotebook->AddPage( m_catalogCodePanel, _( "Catalog Codes" ) );
-
-
-
-    // m_characteristicsPanel = new CharacteristicsPanel(
-    //     descriptionNotebook, ID_CHARACTERISTICSWINDOW, wxDefaultPosition,
-    //     wxSize( 100, 100 ), wxSIMPLE_BORDER );
-
-    // descriptionNotebook->AddPage( m_characteristicsPanel, _( "Characteristics" ) );
-
-    // m_miscellaneousDataPanel = new MiscellaneousDataPanel(
-    //     descriptionNotebook, ID_MISCELLANEOUSDATAFORIEGN, wxDefaultPosition,
-    //     wxDefaultSize, wxSIMPLE_BORDER | wxTAB_TRAVERSAL );
-    // m_miscellaneousDataPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
-
-    // descriptionNotebook->AddPage( m_miscellaneousDataPanel, _( "Miscellaneous" ) );
-
-
-
-   // notebookPanelHorizontalSizer->Add( descriptionNotebook, 1, wxGROW | wxALL, 5 );
-
-    //$     wxScrolledWindow* itemScrolledWindow1 = new wxScrolledWindow( 
-    //$         descriptionNotebook, ID_DESCRIPTIONSCROLLEDWINDOW, wxDefaultPosition, 
-    //$         wxDefaultSize, wxSIMPLE_BORDER | wxHSCROLL | wxVSCROLL );
-    //$     itemScrolledWindow1->SetScrollbars( 1, 1, 0, 0 );
-    //$     wxBoxSizer* itemBoxSizer4 = new wxBoxSizer( wxHORIZONTAL );
-    //$     itemScrolledWindow1->SetSizer( itemBoxSizer4 );
-
-    //$     wxBoxSizer* itemBoxSizer9 = new wxBoxSizer( wxVERTICAL );
-    //$     itemBoxSizer4->Add( itemBoxSizer9, 1, wxGROW | wxALL, 0 );
-    //$     m_description = 
-    //$        new wxTextCtrl( itemScrolledWindow1, ID_DESCRIPTIONTEXTCTRL, wxEmptyString, 
-    //$            wxDefaultPosition, wxSize( -1, 100 ), wxTE_MULTILINE );
-    //$      itemBoxSizer9->Add( m_description, 1, wxGROW | wxALL, 0 );
-
-    //$      itemScrolledWindow1->FitInside( );
-    //$      descriptionNotebook->AddPage( itemScrolledWindow1, _( "Description" ) );
-
-        //$ wxPanel* itemPanel16 = 
-        //$     new wxPanel( descriptionNotebook, ID_BACKGROUNDPANEL1, wxDefaultPosition, 
-        //$         wxDefaultSize, wxSIMPLE_BORDER | wxTAB_TRAVERSAL );
-        //$ itemPanel16->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
-        //$ wxBoxSizer* itemBoxSizer17 = new wxBoxSizer( wxVERTICAL );
-        //$ itemPanel16->SetSizer( itemBoxSizer17 );
-
-        //$ wxScrolledWindow* itemScrolledWindow19 = new wxScrolledWindow( 
-        //$     itemPanel16, ID_BKGNDSCROLLEDWINDOW, wxDefaultPosition, wxSize( 100, -1 ), 
-        //$     wxSUNKEN_BORDER | wxHSCROLL | wxVSCROLL );
-        //$ itemBoxSizer17->Add( itemScrolledWindow19, 1, wxGROW | wxALL, 0 );
-        //$ itemScrolledWindow19->SetScrollbars( 1, 1, 0, 0 );
-        //$ wxBoxSizer* itemBoxSizer20 = new wxBoxSizer( wxHORIZONTAL );
-        //$ itemScrolledWindow19->SetSizer( itemBoxSizer20 );
-
-        //$ wxBoxSizer* itemBoxSizer21 = new wxBoxSizer( wxVERTICAL );
-        //$ itemBoxSizer20->Add( itemBoxSizer21, 1, wxGROW | wxALL, 0 );
-        //$ m_bkgndText = 
-        //$     new wxTextCtrl( itemScrolledWindow19, ID_BKGNDTEXTCTRL, wxEmptyString, 
-        //$         wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE );
-        //$ itemBoxSizer21->Add( m_bkgndText, 1, wxGROW | wxALL, 5 );
-
-        //$ itemScrolledWindow19->FitInside( );
-
-        //$ descriptionNotebook->AddPage( itemPanel16, _( "Background" ) );
-
-
-    horizontalSplitterWindow->SplitHorizontally( stampAndImagePanel, m_inventoryPanel, 600 );
+    horizontalSplitterWindow->SplitHorizontally( stampAndImagePanel, m_inventoryPanel, 500 );
     topHorizontalSizer->Add( horizontalSplitterWindow, 1, wxGROW | wxALL, 5 );
-
-
-    //stampAndImageVerticalSplitterWindow->SplitVertically( m_identificationPanel, StampImagePanel, 400 );
-
-    // wxNotebook* descriptionNotebook = 
-    //     new wxNotebook( horizontalSplitterWindow, ID_DESCRIPTIONLNOTEBOOK, 
-    //         wxDefaultPosition, wxDefaultSize, wxBK_DEFAULT );
-
-    // horizontalSplitterWindow->SplitHorizontally( stampAndImageVerticalSplitterWindow, descriptionNotebook, 800 );
-    // horizontalSplitterWindow->SetSashPosition( 600 );
-    // topVerticalSizer->Add( horizontalSplitterWindow, 3, wxGROW | wxALL, 5 );
-
-    // Connect events and objects
-//$    m_bkgndText->Connect( ID_BKGNDTEXTCTRL,  LEAVE_WINDOW, 
-//$        wxMouseEventHandler( StampDescriptionPanel::OnLeaveWindow ), 
-//$        NULL, this );
-    // StampDescriptionPanel content construction
- //$     m_bkgndText->SetEditable( GetSettings( )->IsCatalogVolumeEditable( )  );
-  //$    m_description->SetEditable( GetSettings( )->IsCatalogVolumeEditable( )  );
 
 
     // // display a random image until one is selected
@@ -392,7 +279,9 @@ void StampDescriptionPanel::OnLeaveWindow( wxMouseEvent& event )
  *
  */
 
-bool StampDescriptionPanel::ShowToolTips( void ) { return true; }
+bool StampDescriptionPanel::ShowToolTips( void ) {
+    return true;
+}
 
 
 

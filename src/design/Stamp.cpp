@@ -120,7 +120,7 @@ namespace Design {
             wxString cat = GetCatalog( );
             Catalog::CatalogCode catCodeArray( str );
             wxString preferredID = catCodeArray.GetPreferredCatalogCode( cat );
-            SetNameString( preferredID );
+            SetNbrString( preferredID );
         }
     }
 
@@ -131,14 +131,15 @@ namespace Design {
         SetShowNbr( true );
         SetShowTitle( true );
         SetShowSubTitle( false );
-        InitParameters( );
 
         m_nameFrame = new LabelFrame( Design::AT_NameFontType );
+        m_nbrFrame = new LabelFrame( Design::AT_NbrFontType );
+
+        InitParameters( );
+        //  GetNameString
         m_nameFrame->SetString( GetAttrStr( AT_Name ) );
         wxFont font = m_nameFrame->GetFont( );
         int point = font.GetPointSize( );
-
-        m_nbrFrame = new LabelFrame( Design::AT_NbrFontType );
 
         wxString str = MakeDisplayNbr( );
 
@@ -151,7 +152,7 @@ namespace Design {
 
     wxString Stamp::MakeDisplayNbr( )
     {
-        wxString str = GetAttrStr( AT_CatNbr );
+        wxString str = GetCatalogNbr( );
         wxString catalog;
         wxString country;
         wxString code;
@@ -173,13 +174,13 @@ namespace Design {
         SetShowNbr( true );
         SetShowTitle( true );
         SetShowSubTitle( false );
-        InitParameters( );
 
         m_nameFrame = new LabelFrame( Design::AT_NameFontType );
         m_nameFrame->SetString( "name" );
         m_nbrFrame = new LabelFrame( Design::AT_NbrFontType );
         m_nbrFrame->SetString( "Nbr" );
-        //     CalcFrame( );
+        InitParameters( );
+
     }
 
 
@@ -308,7 +309,7 @@ namespace Design {
 
         wxString filename = GetStampImageFilename( );
 
-        wxImage image = GetAlbumVolume( )->GetImage( filename );
+        wxImage image = GetProject( )->GetImage( filename );
         if ( image.IsOk( ) )
         {
             //Draw the stamp image
@@ -361,6 +362,7 @@ namespace Design {
     wxString  Stamp::GetNameString( ) {
         return m_nameFrame->GetString( );
     };
+
     void  Stamp::SetNameString( wxString str )
     {
         SetAttrStr( AT_Name, str );
@@ -375,12 +377,17 @@ namespace Design {
     };
 
     wxString  Stamp::GetNbrString( ) {
-        return m_nbrFrame->GetString( );
+        return GetAttrStr( AT_CatNbr );
     };
 
+    wxString  Stamp::GetCatalogNbr( ) {
+        return GetAttrStr( AT_CatNbr );
+    };
     void  Stamp::SetNbrString( wxString str )
     {
         SetAttrStr( AT_CatNbr, str );
+        wxString displalyString = MakeDisplayNbr( );
+        GetNbrFrame( )->SetString( displalyString );
     };
 
     void Stamp::SetCatalog( wxString cat )
@@ -805,7 +812,7 @@ namespace Design {
         NodeStatus status = AT_OK;
         wxString filename = GetStampImageFilename( );
         wxString str;// = GetProject( )->GetImageFullPath( filename );
-        wxImage image = GetAlbumVolume( )->GetImage( filename );
+        wxImage image = GetProject( )->GetImage( filename );
         if ( !image.IsOk( ) )
         {
             str = wxString::Format( "Invalid Stamp Image.\n" );

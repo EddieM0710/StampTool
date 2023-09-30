@@ -42,6 +42,9 @@ typedef enum {
 
 extern wxPdfArrayDouble defaultDash;
 
+extern int LastVolumeID;
+int GetNextVolumeID( );
+
 // extern double ScaleX;
 // extern double ScaleY;
 // extern RealPoint ScalePoint;

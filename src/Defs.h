@@ -35,6 +35,8 @@ class AppData;
 class StampToolFrame;
 class AlbumTreeCtrl;
 class CatalogTreeCtrl;
+class CatalogTOCTreeCtrl;
+class AlbumTOCTreeCtrl;
 class AlbumImagePanel;
 namespace Design {
     class AlbumVolume;
@@ -89,6 +91,10 @@ Catalog::CatalogData* GetCatalogData( );
 Inventory::CollectionList* GetCollectionList( );
 
 CatalogTreeCtrl* GetCatalogTreeCtrl( );
+
+CatalogTOCTreeCtrl* GetCatalogTOCTreeCtrl( );
+
+AlbumTOCTreeCtrl* GetAlbumTOCTreeCtrl( );
 
 Catalog::CatalogVolume* GetCatalogVolume( );
 

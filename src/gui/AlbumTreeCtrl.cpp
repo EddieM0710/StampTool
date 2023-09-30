@@ -183,7 +183,7 @@ wxTreeItemId AlbumTreeCtrl::AddChild( wxTreeItemId parent, wxXmlNode* child )
                 Design::Stamp* stamp = ( Design::Stamp* ) node;
                 // stamp combines the stampID and its name to form a label
 
-                label = stamp->GetAttrStr( Design::AT_CatNbr );
+                label = stamp->GetCatalogNbr( );
                 wxString title = stamp->GetAttrStr( Design::AT_Name );
                 label += " - " + title;
                 icon = GetIconId( stamp );
@@ -356,7 +356,7 @@ Utils::StampLink* AlbumTreeCtrl::AppendStamp( wxTreeItemId catTreeID )
         if ( newStamp )
         {
             // gather info from the catalog item entry and update thenew stamp
-            wxString catStr = GetCatalogData( )->GetCatalogVolume( )->GetVolumeFilename( );
+            wxString catStr = GetCatalogData( )->GetCatalogVolume( )->GetFilename( );
             wxFileName catFileName( catStr );
             wxString imageName = GetCatalogTreeCtrl( )->GetImageFullName( catTreeID );
             //wxFileName imageFileName( imageName );

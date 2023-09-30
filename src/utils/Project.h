@@ -41,21 +41,37 @@ namespace Utils {
 
         Project( );
 
-        ~Project( ) { if ( m_ProjectDoc ) { delete m_ProjectDoc; } };
+        ~Project( ) {
+            if ( m_ProjectDoc )
+            {
+                delete m_ProjectDoc;
+            }
+        };
 
         void SetCaption( );
 
         void InitProject( );
 
-        wxString GetProjectFilename( ) { return m_projectFilename; };
+        wxString GetProjectFilename( ) {
+            return m_projectFilename;
+        };
         void SetProjectFilename( wxString name );
 
         wxString GetOutputFilename( );
+
+        wxImage GetImage( wxString filename );
+
         void SetOutputFilename( wxString outputFilename );
 
         wxString GetDesignFilename( );
         void SetDesignFilename( wxString albumFilename );;
 
+        wxXmlNode* GetCatalogListNode( ){
+            return m_catalogListNode;
+        };
+        wxXmlNode* GetAlbumListNode( ){
+            return m_albumListNode;
+        };
 
         wxString GetImagePath( );
         void SetImagePath( wxString imagePath );
@@ -65,19 +81,31 @@ namespace Utils {
         //wxString GetCatalogFilename( );
         //void SetCatalogFilename( wxString catalogFilename );
 
-        wxString GetProjectCountryID( ) { return m_defaultCountryID; };
-        void SetProjectCountryID( wxString str ) { m_defaultCountryID = str; };
-        wxString GetProjectCatalogCode( ) { return m_defaultCatalogCode; };
-        void SetProjectCatalogCode( wxString str ) { m_defaultCatalogCode = str; };
+        wxString GetProjectCountryID( ) {
+            return m_defaultCountryID;
+        };
+        void SetProjectCountryID( wxString str ) {
+            m_defaultCountryID = str;
+        };
+        wxString GetProjectCatalogCode( ) {
+            return m_defaultCatalogCode;
+        };
+        void SetProjectCatalogCode( wxString str ) {
+            m_defaultCatalogCode = str;
+        };
 
         // Load the Project xml file
         bool LoadProjectXML( );
+        wxXmlNode* AddChild( wxXmlNode* child );
 
         //Load the project xml attributes
         void LoadAttributes( wxXmlNode* thisObject );
 
         void FileNewProject( wxString sptName );
         void LoadData( );
+
+        void LoadTOCTree( );
+
         void FileOpenProject( wxString filename );
         void FileSaveProject( );
         void FileSaveAsProject( wxString filename );
@@ -88,12 +116,18 @@ namespace Utils {
         // make the filename absolute if its not already
         wxString MakeFileAbsolute( wxString filename );
 
-        void SetDirty( bool state = true ) { m_dirty = state; };
+        void SetDirty( bool state = true ) {
+            m_dirty = state;
+        };
         // Is project dirty?
-        bool isDirty( ) { return m_dirty; };
+        bool isDirty( ) {
+            return m_dirty;
+        };
 
     private:
         wxXmlDocument* m_ProjectDoc;
+        wxXmlNode* m_catalogListNode;
+        wxXmlNode* m_albumListNode;
         wxString m_projectFilename;
         wxString m_outputFilename;
         wxString m_designFilename;

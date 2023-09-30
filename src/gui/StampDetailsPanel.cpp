@@ -151,10 +151,6 @@ void StampDetailsPanel::CreateControls( )
     detailsHorizontalSizer->Add( m_rightColumnVerticalSizer, 1, wxGROW | wxALL, 0 );
 
 
-
-    wxBoxSizer* theDialogHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
-    m_leftColumnVerticalSizer->Add( theDialogHorizontalSizer, 0, wxGROW | wxALL, 0 );
-
     wxBoxSizer* checkBoxHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
     m_leftColumnVerticalSizer->Add( checkBoxHorizontalSizer, 0, wxGROW | wxALL, 0 );
 
@@ -163,29 +159,31 @@ void StampDetailsPanel::CreateControls( )
     checkBoxHorizontalSizer->Add( m_nbrCheckbox, 0, wxALIGN_LEFT | wxALL, 5 );
 
 
-    wxBoxSizer* itemBoxSizer1 = new wxBoxSizer( wxHORIZONTAL );
-    m_leftColumnVerticalSizer->Add( itemBoxSizer1, 0, wxGROW | wxALL, 2 );
+    // wxBoxSizer* itemBoxSizer1 = new wxBoxSizer( wxHORIZONTAL );
+    // m_leftColumnVerticalSizer->Add( itemBoxSizer1, 1, wxGROW | wxALL, 2 );
 
-    wxBoxSizer* catCodeVerticalSizer = new wxBoxSizer( wxVERTICAL );
-    itemBoxSizer1->Add( catCodeVerticalSizer, 2, wxGROW | wxALL, 2 );
+    // wxBoxSizer* catCodeVerticalSizer = new wxBoxSizer( wxVERTICAL );
+    // itemBoxSizer1->Add( catCodeVerticalSizer, 0, wxGROW | wxALL, 2 );
 
     wxStaticText* m_catcodeStatic = new wxStaticText( theDialog, wxID_STATIC, _( "CatalogCodes" ),
         wxDefaultPosition, wxDefaultSize, 0 );
 
-    catCodeVerticalSizer->Add( m_catcodeStatic, 0, wxALIGN_LEFT | wxALL, 0 );
+    m_leftColumnVerticalSizer->Add( m_catcodeStatic, 0, wxALIGN_LEFT | wxALL, 0 );
 
     m_catCode = new wxTextCtrl( theDialog, ID_CATCODETEXTBOX, wxEmptyString,
         wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE );
-    catCodeVerticalSizer->Add( m_catCode, 3, wxGROW | wxALL, 0 );
+
+
+    m_leftColumnVerticalSizer->Add( m_catCode, 0, wxGROW | wxALL, 0 );
 
     //    m_nbrCheckbox = SetupCheckBox( theDialog, ID_CATNBRCHECKBOX, lastID, _( "Show ID" ),
     //        wxCommandEventHandler( StampDetailsPanel::OnCatNbrCheckboxClick ) );
 
-    wxBoxSizer* itemBoxSizer6 = new wxBoxSizer( wxHORIZONTAL );
-    catCodeVerticalSizer->Add( itemBoxSizer6, 0, wxGROW | wxALL, 5 );
+    // wxBoxSizer* itemBoxSizer6 = new wxBoxSizer( wxHORIZONTAL );
+    // m_leftColumnVerticalSizer->Add( itemBoxSizer6, 1, wxGROW | wxALL, 5 );
 
     m_catNbr = new wxComboBox( theDialog, ID_IDLABELTEXTBOX, wxEmptyString, wxDefaultPosition, wxDefaultSize, m_catCodesStringArray, wxCB_DROPDOWN );
-    itemBoxSizer6->Add( m_catNbr, 1, wxGROW | wxALL, 5 );
+    m_leftColumnVerticalSizer->Add( m_catNbr, 0, wxGROW | wxALL, 5 );
 
     Connect( ID_IDLABELTEXTBOX, wxEVT_COMBOBOX, wxCommandEventHandler( StampDetailsPanel::OnCatNbrComboBoxSel ) );
 
@@ -246,11 +244,11 @@ void StampDetailsPanel::CreateControls( )
 
     m_height = new LabeledTextBox( theDialog, ID_HEIGHTLABELEDTEXTBOX, wxDefaultPosition, wxDefaultSize, wxNO_BORDER | wxTAB_TRAVERSAL );
     m_height->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
-    sizeSizer->Add( m_height, 1, wxGROW | wxALL, 5 );
+    sizeSizer->Add( m_height, 0, wxGROW | wxALL, 5 );
 
     m_width = new LabeledTextBox( theDialog, ID_WIDTHLABELEDTEXTBOX, wxDefaultPosition, wxDefaultSize, wxNO_BORDER | wxTAB_TRAVERSAL );
     m_width->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
-    sizeSizer->Add( m_width, 1, wxGROW | wxALL, 5 );
+    sizeSizer->Add( m_width, 0, wxGROW | wxALL, 5 );
 
     wxBoxSizer* selvageSizeSizer = new wxBoxSizer( wxHORIZONTAL );
     m_rightColumnVerticalSizer->Add( selvageSizeSizer, 0, wxGROW | wxALL, 0 );
@@ -299,6 +297,7 @@ void StampDetailsPanel::CreateControls( )
     m_mountAllowanceWidth->SetLabel( "Width" );
     m_imagePath->SetLabel( "ImageName" );
     //  m_subTitleLabel->SetLabel( "Subtitle" );
+    Layout( );
 }
 
 
@@ -339,7 +338,7 @@ void StampDetailsPanel::UpdateControls( )
     SetMountAllowanceHeight( m_stamp->GetMountAllowanceHeightStr( ) );
     SetMountAllowanceWidth( m_stamp->GetMountAllowanceWidthStr( ) );
 
-    SetCatNbr( m_stamp->GetNbrString( ) );
+    //SetCatNbr( m_stamp->GetNbrString( ) );
     SetName( m_stamp->GetNameString( ) );
     SetShowNbr( m_stamp->GetShowNbr( ) );
     SetShowTitle( m_stamp->GetShowTitle( ) );
@@ -389,6 +388,7 @@ void StampDetailsPanel::SetCatCodes( )
                     // Catalog::CatalogVolume* catalogVolume = GetCatalogVolume( );
                     Catalog::Entry  stamp( node );
                     m_catCodesString = stamp.GetCatalogCodes( );
+                    m_stamp->SetCatalogCodes( m_catCodesString );
                 }
             }
         }

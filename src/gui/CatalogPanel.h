@@ -33,9 +33,11 @@
 #include "gui/GuiDefs.h"
 #include "utils/Project.h"
 #include "catalog/CatalogVolume.h"
+#include "wx/spinbutt.h"
+#include "wx/notebook.h"
 
 class CatalogTreeCtrl;
-
+class CatalogTOCTreeCtrl;
 class Stamp;
 
 #define SYMBOL_CATALOGVOLUMEPANEL_STYLE wxTAB_TRAVERSAL
@@ -65,7 +67,8 @@ public:
         ID_CSVIMPORTCATALOG,
         ID_NEWCATALOG,
         ID_OPENCATALOG,
-        ID_REMOVECATALOG
+        ID_REMOVECATALOG,
+        ID_SPINBUTTON
     };
 
     ///  @brief Construct a new Catalog Panel object
@@ -107,7 +110,12 @@ public:
     ///  @brief Get the Catalog Tree object
     ///  
     ///  @return CatalogTreeCtrl* 
-    CatalogTreeCtrl* GetCatalogTree( ) { return m_catalogTreeCtrl; };
+    CatalogTreeCtrl* GetCatalogTree( ) {
+        return m_catalogTreeCtrl;
+    };
+    CatalogTOCTreeCtrl* GetTOCTree( ) {
+        return m_tocTreeCtrl;
+    };
 
     ///  @brief 
     ///  
@@ -150,8 +158,8 @@ public:
     ///  @param choices 
     void SetVolumeListStrings( wxArrayString& choices )
     {
-        m_volumeListCtrl->Clear( );
-        m_volumeListCtrl->Append( choices );
+        // m_volumeListCtrl->Clear( );
+        // m_volumeListCtrl->Append( choices );
     };
 
     ///  @brief Set the Volume List Selection object
@@ -159,12 +167,12 @@ public:
     ///  @param i 
     void SetVolumeListSelection( int i )
     {
-        m_volumeListCtrl->SetSelection( i );
+        //       m_volumeListCtrl->SetSelection( i );
     };
 
     void SetVolumeListSelection( wxString str )
     {
-        m_volumeListCtrl->SetStringSelection( str );
+        //       m_volumeListCtrl->SetStringSelection( str );
     };
 
     ///  @brief Set the Volume List Strings object
@@ -183,24 +191,47 @@ public:
 
     void SaveAsCatalog( );
 
+    void OnContextMenu( wxContextMenuEvent& event );
 
+    void OnSpinbuttonUpdated( wxSpinEvent& event );
+
+    void OnSpinbuttonUp( wxSpinEvent& event );
+
+    void OnSpinbuttonDown( wxSpinEvent& event );
+    wxTreeItemId GetNext( wxTreeItemId& currID );
+    wxTreeItemId GetNextFirstChild( wxTreeItemId& currID );
+
+
+    wxTreeItemId GetPrev( wxTreeItemId& currID );
+    wxTreeItemId GetPrevLastChild( wxTreeItemId& currID );
 
     ///  @brief 
     ///  
     ///  @return true 
     ///  @return false 
     static bool ShowToolTips( );
-    ;
+    wxTextCtrl* GetVolumeListCtrl( ) {
+        return m_volumeListCtrl;
+    };
+    void SetNotebookPage( int i ){
+        m_catalogTreePanelNotebook->SetSelection( i );
+    };
 private:
-    wxChoice* m_volumeListCtrl;
+    wxTextCtrl* m_volumeListCtrl;
+
+    wxSpinButton* m_spinButton;
     wxChoice* m_collectionListCtrl;
     CatalogTreeCtrl* m_catalogTreeCtrl;
-
+    CatalogTOCTreeCtrl* m_tocTreeCtrl;
     wxTreeItemId m_draggedItem;
     wxBoxSizer* m_searchSizer;
     wxBoxSizer* m_catPanelSizer;
     wxToggleButton* m_toggleButton;
     wxButton* m_manageButton;
+
+
+    wxNotebook* m_catalogTreePanelNotebook;
+
 };
 
 #endif

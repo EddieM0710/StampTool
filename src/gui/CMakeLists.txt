@@ -41,6 +41,9 @@ add_library( GuiFiles SHARED
     StampDescriptionPanel.cpp 
     StampDetailsPanel.cpp
     TestDetailsPanel.cpp
+    TOCTreeCtrl.cpp
+    AlbumTOCTreeCtrl.cpp
+    CatalogTOCTreeCtrl.cpp
 )
 
 

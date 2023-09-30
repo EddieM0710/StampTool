@@ -124,9 +124,11 @@ void StampToolPanel::CreateControls( )
     GetCatalogData( )->SetCatalogTreeCtrl( m_catalogTreePanel->GetCatalogTree( ) );
     m_catalogTreePanel->GetCatalogTree( )->SetStates( false );
 
+    GetCatalogData( )->SetCatalogTOCTreeCtrl( m_catalogTreePanel->GetTOCTree( ) );
+
     m_notebook = new wxNotebook( m_stampToolSplitter,
         ID_NOTEBOOK, wxDefaultPosition,
-        wxDefaultSize, wxBK_DEFAULT );
+        wxDefaultSize, wxBK_LEFT );
 
     m_stampToolSplitter->SplitVertically( m_catalogTreePanel, m_notebook, 500 );
 
@@ -135,22 +137,23 @@ void StampToolPanel::CreateControls( )
         wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
     m_stampDescriptionPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
 
-    m_notebook->AddPage( m_stampDescriptionPanel, _( "Stamp View" ) );
+    m_notebook->AddPage( m_stampDescriptionPanel, _( "  Stamp View  " ) );
 
     m_albumAlbumPanel = new AlbumPanel( m_notebook,
         ID_ALBUMSPLITTERWINDOWFOREIGN, wxDefaultPosition,
         wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
     m_albumAlbumPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
 
-    m_notebook->AddPage( m_albumAlbumPanel, _( "Album View" ) );
+    m_notebook->AddPage( m_albumAlbumPanel, _( "  Album View  " ) );
 
     m_generateListPanel = new GenerateList( m_notebook,
         ID_GENERTELISTFOREIGN, wxDefaultPosition,
         wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
 
-    m_notebook->AddPage( m_generateListPanel, _( "List" ) );
+    m_notebook->AddPage( m_generateListPanel, _( "  List  " ) );
 
     GetCatalogData( )->SetDescriptionPanel( m_stampDescriptionPanel );
+
     GetCatalogData( )->SetGenerateListPanel( m_generateListPanel );
 
 }

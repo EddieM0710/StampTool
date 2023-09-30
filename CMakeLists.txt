@@ -23,6 +23,7 @@ set( StampTool_MountFiles_Source_Directory "${CMAKE_CURRENT_SOURCE_DIR}/src/moun
 set( StampTool_GuiFiles_Source_Directory "${CMAKE_CURRENT_SOURCE_DIR}/src/gui" )
 set( StampTool_UtilsFiles_Source_Directory "${CMAKE_CURRENT_SOURCE_DIR}/src/utils" )
 set( StampTool_CollectionFiles_Source_Directory "${CMAKE_CURRENT_SOURCE_DIR}/src/collection" )
+set( StampTool_TIOCFiles_Source_Directory "${CMAKE_CURRENT_SOURCE_DIR}/src/toc" )
 
 include_directories( ${StampTool_Source_Directory} 
             ${StampTool_GuiFiles_Source_Directory} 

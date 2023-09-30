@@ -130,6 +130,8 @@ namespace Design {
         ///  @return wxString 
         wxString GetNbrString( );
 
+        wxString GetCatalogNbr( );
+
         wxString GetCatalog( );
 
         wxString GetCatalogCodes( );

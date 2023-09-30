@@ -30,6 +30,7 @@
   */
 #include <vector>
 #include "wx/treectrl.h"
+#include "wx/notebook.h"
 
 #include "Defs.h"
 #include "gui/GuiDefs.h"
@@ -39,7 +40,7 @@
    */
 class AlbumTreeCtrl;
 class ReadAlbumEasyFile;
-
+class AlbumTOCTreeCtrl;
 /*
  * Control identifiers
  */
@@ -56,69 +57,79 @@ class ReadAlbumEasyFile;
 
 class AlbumTreePanel : public wxPanel
 {
-    DECLARE_DYNAMIC_CLASS( AlbumTreePanel )
-        DECLARE_EVENT_TABLE( )
+  DECLARE_DYNAMIC_CLASS( AlbumTreePanel )
+  DECLARE_EVENT_TABLE( )
 
 public:
 
-    ///  @brief Construct a new Album Design Tree Panel object
-    ///  
-    AlbumTreePanel( );
+  ///  @brief Construct a new Album Design Tree Panel object
+  ///  
+  AlbumTreePanel( );
 
-    ///  @brief Construct a new Album Design Tree Panel object
-    ///  
-    ///  @param parent 
-    ///  @param id 
-    ///  @param pos 
-    ///  @param size 
-    ///  @param style 
-    AlbumTreePanel( wxWindow* parent, wxWindowID id = SYMBOL_ALBUMDESIGNTREE_IDNAME, const wxPoint& pos = SYMBOL_ALBUMDESIGNTREE_POSITION, const wxSize& size = SYMBOL_ALBUMDESIGNTREE_SIZE, long style = SYMBOL_ALBUMDESIGNTREE_STYLE );
+  ///  @brief Construct a new Album Design Tree Panel object
+  ///  
+  ///  @param parent 
+  ///  @param id 
+  ///  @param pos 
+  ///  @param size 
+  ///  @param style 
+  AlbumTreePanel( wxWindow* parent, wxWindowID id = SYMBOL_ALBUMDESIGNTREE_IDNAME, const wxPoint& pos = SYMBOL_ALBUMDESIGNTREE_POSITION, const wxSize& size = SYMBOL_ALBUMDESIGNTREE_SIZE, long style = SYMBOL_ALBUMDESIGNTREE_STYLE );
 
-    ///  @brief Destroy the Album Design Tree Panel object
-    ///  
-    ~AlbumTreePanel( );
+  ///  @brief Destroy the Album Design Tree Panel object
+  ///  
+  ~AlbumTreePanel( );
 
-    ///  @brief 
-    ///  
-    ///  @param parent 
-    ///  @param id 
-    ///  @param pos 
-    ///  @param size 
-    ///  @param style 
-    ///  @return true 
-    ///  @return false 
-    bool Create( wxWindow* parent, wxWindowID id = SYMBOL_ALBUMDESIGNTREE_IDNAME, const wxPoint& pos = SYMBOL_ALBUMDESIGNTREE_POSITION, const wxSize& size = SYMBOL_ALBUMDESIGNTREE_SIZE, long style = SYMBOL_ALBUMDESIGNTREE_STYLE );
+  ///  @brief 
+  ///  
+  ///  @param parent 
+  ///  @param id 
+  ///  @param pos 
+  ///  @param size 
+  ///  @param style 
+  ///  @return true 
+  ///  @return false 
+  bool Create( wxWindow* parent, wxWindowID id = SYMBOL_ALBUMDESIGNTREE_IDNAME, const wxPoint& pos = SYMBOL_ALBUMDESIGNTREE_POSITION, const wxSize& size = SYMBOL_ALBUMDESIGNTREE_SIZE, long style = SYMBOL_ALBUMDESIGNTREE_STYLE );
 
-    ///  @brief Create a Controls object
-    ///  
-    void CreateControls( );
+  ///  @brief Create a Controls object
+  ///  
+  void CreateControls( );
 
-    ///  @brief Get the Design Tree Ctrl object
-    ///  
-    ///  @return AlbumTreeCtrl* 
-    AlbumTreeCtrl* GetAlbumTreeCtrl( ) { return m_albumTreeCtrl; };
+  ///  @brief Get the Design Tree Ctrl object
+  ///  
+  ///  @return AlbumTreeCtrl* 
+  AlbumTreeCtrl* GetAlbumTreeCtrl( ) {
+    return m_albumTreeCtrl;
+  };
 
-    ///  @brief 
-    ///  
-    void Init( );
+  ///  @brief 
+  ///  
+  void Init( );
 
-    ///  @brief 
-    ///  
-    void LoadAlbumLayout( );
+  ///  @brief 
+  ///  
+  void LoadAlbumLayout( );
 
-    ///  @brief 
-    ///  
-    ///  @return true 
-    ///  @return false 
-    static bool ShowToolTips( );
+  ///  @brief 
+  ///  
+  ///  @return true 
+  ///  @return false 
+  static bool ShowToolTips( );
 
+  void OnContextMenu( wxContextMenuEvent& event );
 
+  wxTextCtrl* GetAlbumListCtrl( ){
+    return m_albumListCtrl;
+  };
 
-
+  void SetNotebookPage( int i ){
+    m_albumTreePanelNotebook->SetSelection( i );
+  };;
 
 private:
-    AlbumTreeCtrl* m_albumTreeCtrl;
-
+  AlbumTreeCtrl* m_albumTreeCtrl;
+  wxTextCtrl* m_albumListCtrl;
+  AlbumTOCTreeCtrl* m_tocTreeCtrl;
+  wxNotebook* m_albumTreePanelNotebook;
 };
 
 #endif

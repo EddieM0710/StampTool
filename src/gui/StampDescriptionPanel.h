@@ -212,6 +212,7 @@ public:
 
     void OnNotebooksplitterwindowSashPosChanged( wxSplitterEvent& event );
 
+    void OnSplitterwindowSashPosChanged( wxSplitterEvent& event );
 
 private:
     IdentificationPanel* m_identificationPanel; ///< Pointer to IdentificationPanel

@@ -46,11 +46,12 @@ class TestDetailsPanel;
 namespace Design {
     class AlbumBase;
 }
+class AlbumTOCTreeCtrl;
 
 #define SYMBOL_STAMPTOOLAlbumPanel_STYLE wxTAB_TRAVERSAL
 #define SYMBOL_STAMPTOOLAlbumPanel_TITLE _( "StampToolPanel" )
 #define SYMBOL_STAMPTOOLAlbumPanel_IDNAME ID_ALBUMAlbumPanel
-#define SYMBOL_STAMPTOOLAlbumPanel_SIZE wxSize( 400, 300 )
+#define SYMBOL_STAMPTOOLAlbumPanel_SIZE wxSize( -1, -1 )
 #define SYMBOL_STAMPTOOLAlbumPanel_POSITION wxDefaultPosition
 
 /*
@@ -115,7 +116,7 @@ public:
     void CreateControls( );
     wxPanel* CreateAlbumImageLayoutPanel( wxWindow* parent );
 
-    wxScrolledWindow* CreateDetailsScrolledWindow( wxWindow* parent );
+    wxPanel* CreateDetailsScrolledWindow( wxWindow* parent );
 
     wxSplitterWindow* CreateImageDetailsSplitterWindow( wxWindow* parent );
 
@@ -162,18 +163,18 @@ public:
     ///  @brief Set the Album List Strings object
     ///  
     ///  @param choices 
-    void SetAlbumListStrings( wxArrayString& choices )
-    {
-        m_albumListCtrl->Clear( );
-        m_albumListCtrl->Append( choices );
-    };
+    // void SetAlbumListStrings( wxArrayString& choices )
+    // {
+    //     m_albumListCtrl->Clear( );
+    //     m_albumListCtrl->Append( choices );
+    // };
 
     ///  @brief 
     ///  
     ///  @param event   
     void OnGeneratePDFClick( wxCommandEvent& event );
 
-    void OnAlbumChoiceSelected( wxCommandEvent& event );
+    //void OnAlbumChoiceSelected( wxCommandEvent& event );
 
     ///  @brief 
     ///  
@@ -185,11 +186,15 @@ public:
     ///  @param event 
     void OnManageClick( wxCommandEvent& event );
 
+    void OnSplitterwindowSashPosChanged( wxSplitterEvent& event );
+
 private:
     wxSplitterWindow* m_albumVerticalSplitterWindow;
     AlbumImagePanel* m_albumImagePanel;
     wxSlider* m_zoomSlider; ///< Pointer to image soom slider
     AlbumTreePanel* m_albumTreePanel;
+    AlbumTOCTreeCtrl* m_tocTreeCtrl;
+
     AlbumDetailsPanel* m_albumDetailsPanel;
     PageDetailsPanel* m_pageDetailsPanel;
     ColDetailsPanel* m_colDetailsPanel;
@@ -200,7 +205,7 @@ private:
 
     wxSplitterWindow* m_imageDetailsSplitterWindow;
     wxPanel* theAlbumLayoutPanel;
-    wxScrolledWindow* m_detailsScrolledWindow;
+    wxPanel* m_detailsScrolledWindow;
 };
 
 #endif

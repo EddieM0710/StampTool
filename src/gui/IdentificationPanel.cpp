@@ -414,7 +414,7 @@ void IdentificationPanel::UpdatePanel( )
     if ( stamp.IsOK( ) )
     {
 
-        m_name->ChangeValue( stamp.GetAttr( Catalog::DT_Name ) );
+        m_name->ChangeValue( stamp.GetName( ) );
         m_width->ChangeValue( stamp.GetAttr( Catalog::DT_Width ) );
         m_height->ChangeValue( stamp.GetAttr( Catalog::DT_Height ) );
         m_issueDate->SetValue( stamp.GetAttr( Catalog::DT_Issued_on ) );

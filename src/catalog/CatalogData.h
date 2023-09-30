@@ -28,12 +28,19 @@
 #include "utils/StampList.h"
 #include "catalog/CatalogList.h"
 
-namespace Catalog { class CatalogVolume; };
-namespace Catalog { class CatalogList; };
-namespace Catalog { class Entry; };
+namespace Catalog {
+    class CatalogVolume;
+};
+namespace Catalog {
+    class CatalogList;
+};
+namespace Catalog {
+    class Entry;
+};
 
 
 class CatalogTreeCtrl;
+class CatalogTOCTreeCtrl;
 class StampDescriptionPanel;
 class CatalogPanel;
 class InventoryPanel;
@@ -78,15 +85,20 @@ namespace Catalog
         ///  @brief Get the Catalog List object
         ///  
         ///  @return Catalog::CatalogList* 
-        Catalog::CatalogList* GetCatalogList( ) { return &m_catalogList; };
+        Catalog::CatalogList* GetCatalogList( ) {
+            return &m_catalogList;
+        };
 
         /// @brief Get the Catalog Notebook page TreeCtrl object
         ///
         /// @return CatalogTreeCtrl*
         ///
-        inline CatalogTreeCtrl* GetCatalogTreeCtrl( ) { return m_catalogTreeCtrl; };
-
-
+        inline CatalogTreeCtrl* GetCatalogTreeCtrl( ) {
+            return m_catalogTreeCtrl;
+        };
+        inline CatalogTOCTreeCtrl* GetCatalogTOCTreeCtrl( ) {
+            return m_catalogTocTreeCtrl;
+        };
 
         ///  @brief Get the Catalog Volume object
         ///  
@@ -99,23 +111,29 @@ namespace Catalog
         ///  @brief Get the Current Stamp object to display
         ///  
         ///  @return Entry* 
-        inline wxXmlNode* GetCurrentStamp( ) { return m_stamp; };
+        inline wxXmlNode* GetCurrentStamp( ) {
+            return m_stamp;
+        };
 
         ///  @brief Get the Description Panel object
         ///  @return StampDescriptionPanel*
-        inline StampDescriptionPanel* GetDescriptionPanel( ) { return m_stampDescriptionPanel; };
+        inline StampDescriptionPanel* GetDescriptionPanel( ) {
+            return m_stampDescriptionPanel;
+        };
 
         InventoryPanel* GetInventoryPanel( );
 
-        GenerateList* GetGenerateListPanel( ) { return m_generateListPanel; };
+        GenerateList* GetGenerateListPanel( ) {
+            return m_generateListPanel;
+        };
 
         ///  @brief Get the Volume Name Strings object
         ///  
         ///  @return wxArrayString& 
-        wxArrayString& GetVolumeNameStrings( )
-        {
-            return m_catalogList.GetVolumeNameStrings( );
-        }
+        // wxArrayString& GetVolumeNameStrings( )
+        // {
+        //     return m_catalogList.GetVolumeNameStrings( );
+        // }
 
         ///  @brief Load the xml data into the tree
         ///  
@@ -137,6 +155,8 @@ namespace Catalog
         ///  @return Catalog::CatalogVolume* 
         Catalog::CatalogVolume* NewCatalogVolume( );
 
+        CatalogVolume* NewCatalogVolume( wxString filename );
+
         ///  @brief Read a csv file containing the Catalog entry data
         ///  
         ///  @param csvFilename 
@@ -152,20 +172,34 @@ namespace Catalog
         ///  @brief Set the Description Panel object
         ///  
         ///  @param descriptionPanel 
-        void SetDescriptionPanel( StampDescriptionPanel* descriptionPanel ) { m_stampDescriptionPanel = descriptionPanel; };
+        void SetDescriptionPanel( StampDescriptionPanel* descriptionPanel ) {
+            m_stampDescriptionPanel = descriptionPanel;
+        };
 
-        void SetGenerateListPanel( GenerateList* generateListPanel ) { m_generateListPanel = generateListPanel; };
+        void SetGenerateListPanel( GenerateList* generateListPanel ) {
+            m_generateListPanel = generateListPanel;
+        };
 
 
         ///  @brief Set the Catalog Notebook Page TreeCtrl object
         ///  
         ///  @param treeCtrl 
-        void SetCatalogTreeCtrl( CatalogTreeCtrl* treeCtrl ) { m_catalogTreeCtrl = treeCtrl; };
+        void SetCatalogTreeCtrl( CatalogTreeCtrl* treeCtrl ) {
+            m_catalogTreeCtrl = treeCtrl;
+        };
+        void SetCatalogTOCTreeCtrl( CatalogTOCTreeCtrl* treeCtrl ) {
+            m_catalogTocTreeCtrl = treeCtrl;
+        };
 
-        void SetCatalogTreePanel( CatalogPanel* catalogPanel ) { m_catalogTreePanel = catalogPanel; };
+
+        void SetCatalogTreePanel( CatalogPanel* catalogPanel ) {
+            m_catalogTreePanel = catalogPanel;
+        };
 
 
-        CatalogPanel* GetCatalogTreePanel( ) { return m_catalogTreePanel; };
+        CatalogPanel* GetCatalogTreePanel( ) {
+            return m_catalogTreePanel;
+        };
 
         ///  @brief Set the Volume List Strings object
         ///  
@@ -190,6 +224,7 @@ namespace Catalog
         wxXmlNode* m_stamp;
         Catalog::CatalogList m_catalogList;
         CatalogTreeCtrl* m_catalogTreeCtrl;
+        CatalogTOCTreeCtrl* m_catalogTocTreeCtrl;
         StampDescriptionPanel* m_stampDescriptionPanel;
         GenerateList* m_generateListPanel;
 

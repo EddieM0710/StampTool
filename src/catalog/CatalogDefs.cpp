@@ -75,7 +75,8 @@ namespace Catalog {
     // wxT( "PreferredCatalog" ), wxT( "ImageDirectory" ) };
 
     const wxString DataTypeNames[ DT_NbrTypes ] = {
-        wxT( "Name" ), wxT( "Country" ),
+        wxT( "Name" ),
+        wxT( "Country" ),
         wxT( "Series" ), wxT( "Catalog Codes" ), wxT( "Issued on" ),
         wxT( "Expiry date" ), wxT( "Width" ), wxT( "Height" ),
         wxT( "Paper" ), wxT( "Watermark" ), wxT( "Emission" ),
@@ -138,7 +139,8 @@ namespace Catalog {
 
 
     const wxString XMLDataNames[ DT_NbrTypes ] = {
-        wxT( "Name" ), wxT( "Country" ),
+        wxT( "Name" ),
+        wxT( "Country" ),
         wxT( "Series" ), wxT( "Catalog_Codes" ), wxT( "Issued_on" ),
         wxT( "Expiry_date" ), wxT( "Width" ), wxT( "Height" ),
         wxT( "Paper" ), wxT( "Watermark" ), wxT( "Emission" ),
@@ -174,12 +176,12 @@ namespace Catalog {
             //            std::cout << "parent next sortType" << CatalogBaseNames[ sortType ] << "\n";
             if ( ( sortType < NT_Catalog ) || ( sortType >= NT_Entry ) )
             {
-                wxString id = entry.GetID( );
-                long a;
-                int pos;
-                pos = id.find( ' ' );
-                id = id.substr( pos );
-                id.ToLong( &a );
+                // wxString id = entry.GetID( );
+                // long a;
+                // int pos;
+                // pos = id.find( ' ' );
+                // id = id.substr( pos );
+                // id.ToLong( &a );
 
                 // if the sort type is not one of the classification node types
                 // then add it here. All entrys and their children get added here.
@@ -208,7 +210,7 @@ namespace Catalog {
                     nextNode = nextNode->GetNext( );
                 }
 
-                // if we got here then we didn't find a ckassificaeion qith that name
+                // if we got here then we didn't find a ckassificaeion wqith that name
                 // Insert it here as nextNode in order
                 // look for a child it can go after
                 wxXmlNode* childNode = parent->GetChildren( );
@@ -254,6 +256,7 @@ namespace Catalog {
         }
         return ( CatalogBaseType ) -1;
     };
+
 
     CatalogBaseType FindCatalogBaseType( wxString name )
     {
@@ -396,12 +399,12 @@ namespace Catalog {
     // search thru the source nodes to find an entry. When found pur it into dest
     void SortData( wxXmlNode* destNode, wxXmlNode* parent )
     {
-        //    wxString name = parent->GetAttribute( XMLDataNames[ DT_Name ] );
+        wxString name = parent->GetAttribute( XMLDataNames[ DT_Name ] );
 
         wxXmlNode* child = parent->GetChildren( );
         while ( child )
         {
-            //   wxString name = child->GetAttribute( XMLDataNames[ DT_Name ] );
+            wxString name = child->GetAttribute( XMLDataNames[ DT_Name ] );
 
             if ( !CatalogBaseNames[ NT_Entry ].Cmp( child->GetName( ) ) )
             {

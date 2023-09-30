@@ -23,6 +23,7 @@ ${StampTool_DesignFiles_Source_Directory}
 ${StampTool_CatalogFiles_Source_Directory} 
 ${StampTool_MountFiles_Source_Directory} 
 ${StampTool_CollectionFiles_Source_Directory} 
+${StampTool_TOCFiles_Source_Directory} 
 "/usr/local/include"
 )
  
@@ -31,6 +32,7 @@ add_subdirectory (gui)
 add_subdirectory (catalog)
 add_subdirectory (design)
 add_subdirectory (collection)
+add_subdirectory (toc)
 
 add_executable ( StampTool 
     StampToolApp.cpp
@@ -44,6 +46,7 @@ target_link_libraries (StampTool LINK_PUBLIC debug
      DesignFiles
      CatalogFiles  
      CollectionFiles  
+     TOCFiles
      Utils
     ${wxWidgets_LIBRARIES}
     )

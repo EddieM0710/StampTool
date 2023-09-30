@@ -39,6 +39,7 @@
 
 #include "Defs.h"
 #include "gui/CatalogTreeCtrl.h"
+#include "gui/CatalogTOCTreeCtrl.h"
 #include "gui/CatalogPanel.h"
 #include "gui/InventoryPanel.h"
 #include "catalog/CatalogData.h"
@@ -55,6 +56,9 @@ EVT_TOGGLEBUTTON( ID_TOGGLEBUTTON, CatalogPanel::OnTogglebuttonClick )
 EVT_CHOICE( ID_VOLUMECHOICE, CatalogPanel::OnVolumeChoiceSelected )
 EVT_CHOICE( ID_COLLECTIONCHOICE, CatalogPanel::OnCollectionChoiceSelected )
 EVT_BUTTON( ID_MANAGEBUTTON, CatalogPanel::OnManageClick )
+//EVT_SPIN( ID_SPINBUTTON, CatalogPanel::OnSpinbuttonUpdated )
+EVT_SPIN_UP( ID_SPINBUTTON, CatalogPanel::OnSpinbuttonUp )
+EVT_SPIN_DOWN( ID_SPINBUTTON, CatalogPanel::OnSpinbuttonDown )
 END_EVENT_TABLE( )
 
 //--------------
@@ -108,11 +112,11 @@ void CatalogPanel::CreateControls( )
     wxBoxSizer* collectionBoxSizer = new wxBoxSizer( wxHORIZONTAL );
     m_catPanelSizer->Add( collectionBoxSizer, 0, wxGROW | wxALL, 0 );
 
-    wxStaticText* collectionStaticText = new wxStaticText( itemPanel1, wxID_STATIC, _( "Collection" ), wxDefaultPosition, wxDefaultSize, 0 );
-    collectionBoxSizer->Add( collectionStaticText, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+    // wxStaticText* collectionStaticText = new wxStaticText( itemPanel1, wxID_STATIC, _( "Collection" ), wxDefaultPosition, wxDefaultSize, 0 );
+    // collectionBoxSizer->Add( collectionStaticText, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
-    m_collectionListCtrl = new wxChoice( itemPanel1, ID_COLLECTIONCHOICE, wxDefaultPosition, wxSize( -1, -1 ), GetCatalogData( )->GetVolumeNameStrings( ), wxLB_HSCROLL );
-    collectionBoxSizer->Add( m_collectionListCtrl, 1, wxGROW | wxALL, 5 );
+    // m_collectionListCtrl = new wxChoice( itemPanel1, ID_COLLECTIONCHOICE, wxDefaultPosition, wxSize( -1, -1 ), GetCatalogData( )->GetVolumeNameStrings( ), wxLB_HSCROLL );
+    // collectionBoxSizer->Add( m_collectionListCtrl, 1, wxGROW | wxALL, 5 );
 
     //@@@@@@@
     wxBoxSizer* itemBoxSizer1 = new wxBoxSizer( wxHORIZONTAL );
@@ -126,10 +130,16 @@ void CatalogPanel::CreateControls( )
     wxStaticText* itemStaticText2 = new wxStaticText( itemPanel1, wxID_STATIC, _( "Volume" ), wxDefaultPosition, wxDefaultSize, 0 );
     itemBoxSizer1->Add( itemStaticText2, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
-
-    m_volumeListCtrl = new wxChoice( itemPanel1, ID_VOLUMECHOICE, wxDefaultPosition, wxSize( -1, -1 ), GetCatalogData( )->GetVolumeNameStrings( ), wxLB_HSCROLL );
+    m_volumeListCtrl = new wxTextCtrl( itemPanel1, ID_VOLUMECHOICE, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+    Connect( ID_VOLUMECHOICE, wxEVT_CONTEXT_MENU, wxContextMenuEventHandler( CatalogPanel::OnContextMenu ) );//, NULL, this );
+    // m_volumeListCtrl = new wxChoice( itemPanel1, ID_VOLUMECHOICE, wxDefaultPosition, wxSize( -1, -1 ), GetCatalogData( )->GetVolumeNameStrings( ), wxLB_HSCROLL );
     itemBoxSizer1->Add( m_volumeListCtrl, 1, wxGROW | wxALL, 5 );
 
+    m_spinButton = new wxSpinButton( itemPanel1, ID_SPINBUTTON, wxDefaultPosition, wxDefaultSize, wxSP_VERTICAL | wxSP_ARROW_KEYS | wxSP_WRAP );
+    m_spinButton->SetRange( -0x8000, 0x7fff );
+    m_spinButton->SetValue( 0 );
+    itemBoxSizer1->Add( m_spinButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+    //
 
     m_toggleButton = new wxToggleButton( itemPanel1, ID_TOGGLEBUTTON, _( "Search" ), wxDefaultPosition, wxDefaultSize, 0 );
     m_toggleButton->SetValue( false );
@@ -158,15 +168,39 @@ void CatalogPanel::CreateControls( )
     wxCheckListBox* itemCheckListBox13 = new wxCheckListBox( itemPanel1, ID_CHECKLISTBOX, wxDefaultPosition, wxDefaultSize, itemCheckListBox13Strings, wxLB_SINGLE );
     m_searchSizer->Add( itemCheckListBox13, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
+    int lastID = ID_CatalogTOCTreeCtrl + 10;
+    m_catalogTreePanelNotebook = new wxNotebook( itemPanel1, ++lastID, wxDefaultPosition, wxDefaultSize, wxBK_DEFAULT );
+    m_catPanelSizer->Add( m_catalogTreePanelNotebook, 1, wxGROW | wxALL, 5 );
 
-    wxBoxSizer* catTreeHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
-    m_catPanelSizer->Add( catTreeHorizontalSizer, 2, wxGROW | wxALL, 0 );
+    m_tocTreeCtrl = new CatalogTOCTreeCtrl( m_catalogTreePanelNotebook, ID_CatalogTOCTreeCtrl, wxDefaultPosition, wxDefaultSize, wxTR_HAS_BUTTONS | wxTR_FULL_ROW_HIGHLIGHT | wxTR_SINGLE | wxSUNKEN_BORDER | wxTR_DEFAULT_STYLE );
+    m_catalogTreePanelNotebook->AddPage( m_tocTreeCtrl, _( "TOC" ) );
 
-    m_catalogTreeCtrl = new CatalogTreeCtrl( itemPanel1, ID_CATALOGTREECTRL, wxDefaultPosition, wxDefaultSize, wxTR_HAS_BUTTONS | wxTR_FULL_ROW_HIGHLIGHT | wxTR_SINGLE | wxSUNKEN_BORDER | wxTR_DEFAULT_STYLE );
-    catTreeHorizontalSizer->Add( m_catalogTreeCtrl, 2, wxGROW | wxALL, 0 );
+    m_catalogTreeCtrl = new CatalogTreeCtrl( m_catalogTreePanelNotebook, ID_CATALOGTREECTRL, wxDefaultPosition, wxDefaultSize, wxTR_HAS_BUTTONS | wxTR_FULL_ROW_HIGHLIGHT | wxTR_SINGLE | wxSUNKEN_BORDER | wxTR_DEFAULT_STYLE );
+    m_catalogTreePanelNotebook->AddPage( m_catalogTreeCtrl, _( "Catalog" ) );
+
 
     m_searchSizer->Show( false );
     m_catPanelSizer->Layout( );
+}
+
+void CatalogPanel::OnContextMenu( wxContextMenuEvent& event )
+{
+    wxPoint point = event.GetPosition( );
+
+    point = ScreenToClient( point );
+    wxMenu* menu = m_tocTreeCtrl->GetMenu( );
+
+    //PopupMenu( menu, point.x, point.y );
+
+
+    int id = GetPopupMenuSelectionFromUser( *menu, point.x, point.y );
+
+    wxTreeItemId treeId = GetCatalogData( )->GetCatalogList( )->FindMenuID( id );
+    m_tocTreeCtrl->SelectItem( treeId );
+
+    TOCTreeItemData* data = ( TOCTreeItemData* ) m_tocTreeCtrl->GetItemData( treeId );
+    wxString name = m_tocTreeCtrl->GetItemText( treeId );
+    m_volumeListCtrl->SetValue( name );
 }
 
 void CatalogPanel::DoCSVImport( )
@@ -327,9 +361,8 @@ void CatalogPanel::OnTogglebuttonClick( wxCommandEvent& event )
 
 void CatalogPanel::OnVolumeChoiceSelected( wxCommandEvent& event )
 {
-    int sel = m_volumeListCtrl->GetSelection( );
-    int ndx = GetCatalogData( )->GetCatalogList( )->FindVolumeNdx( m_volumeListCtrl->GetStringSelection( ) );
-    GetCatalogData( )->GetCatalogList( )->SetCatalogVolumeNdx( ndx );
+    Catalog::CatalogList* list = GetCatalogData( )->GetCatalogList( );
+    list->SetCatalogVolume( list->FindVolume( m_volumeListCtrl->GetStringSelection( ) ) );
     // wxString strSel = m_status->GetStringSelection( );
     // if ( m_stamp )
     // { 
@@ -396,12 +429,12 @@ void CatalogPanel::OpenCatalog( )
 
 void CatalogPanel::RemoveVolume( )
 {
-    wxArrayString array = GetCatalogData( )->GetVolumeNameStrings( );
-    RemoveVolumeDialog  dialog( ( wxWindow* ) this,
-        "Remove Catalog Volume From Project",
-        "Select Volume to remove:",
-        array );
-    dialog.ShowModal( );
+    // wxArrayString array = GetCatalogData( )->GetVolumeNameStrings( );
+    // RemoveVolumeDialog  dialog( ( wxWindow* ) this,
+    //     "Remove Catalog Volume From Project",
+    //     "Select Volume to remove:",
+    //     array );
+    // dialog.ShowModal( );
 
 }
 
@@ -425,7 +458,7 @@ void CatalogPanel::SaveAsCatalog( )
 }
 void CatalogPanel::SetCollectionListStrings( )
 {
-    m_collectionListCtrl->Clear( );
+    //   m_collectionListCtrl->Clear( );
     m_collectionListCtrl->Append( GetCollectionList( )->GetNameStrings( ) );
     // m_collectionListCtrl->SetSelection()
 };
@@ -440,3 +473,199 @@ bool CatalogPanel::ShowToolTips( )
 {
     return true;
 }
+
+
+
+wxTreeItemId CatalogPanel::GetPrevLastChild( wxTreeItemId& currID )
+{
+    wxTreeItemId parentID = m_tocTreeCtrl->GetItemParent( currID );
+
+    if ( !parentID.IsOk( ) )
+    {
+        return 0;
+    }
+    wxString name = m_tocTreeCtrl->GetItemText( parentID );
+    std::cout << name << "\n\n";
+
+
+    wxTreeItemId nextID = m_tocTreeCtrl->GetPrevSibling( parentID );
+    if ( nextID.IsOk( ) )
+    {
+        wxString name = m_tocTreeCtrl->GetItemText( nextID );
+        std::cout << name << "\n";
+
+        nextID = m_tocTreeCtrl->GetLastChild( nextID );
+        if ( nextID.IsOk( ) )
+        {
+            wxString name = m_tocTreeCtrl->GetItemText( nextID );
+            std::cout << name << "\n";
+            TOCTreeItemData* data = ( TOCTreeItemData* ) m_tocTreeCtrl->GetItemData( nextID );
+
+            if ( data->GetType( ) == Utils::TOC_Volume )
+            {
+                return nextID;
+            }
+            else
+            {
+
+                nextID = m_tocTreeCtrl->GetLastChild( nextID );
+                //nextID = GetNext( nextID );
+                return nextID;
+            }
+        }
+        else
+            return 0;
+    }
+    nextID = GetPrevLastChild( parentID );
+    return nextID;
+}
+wxTreeItemId CatalogPanel::GetPrev( wxTreeItemId& currID )
+{
+
+    wxTreeItemId nextID = m_tocTreeCtrl->GetPrevSibling( currID );
+    if ( nextID.IsOk( ) )
+    {
+        //the next entry is good
+        TOCTreeItemData* data = ( TOCTreeItemData* ) m_tocTreeCtrl->GetItemData( nextID );
+        wxString name = m_tocTreeCtrl->GetItemText( nextID );
+        std::cout << name << "\n";
+        if ( data->GetType( ) == Utils::TOC_Volume )
+        {
+            // and it is a volume entry
+            return nextID;
+        }
+        else
+        {
+            // and it is a section entry
+            return GetPrevLastChild( nextID );
+        }
+    }
+    else
+    {
+        // no more children
+        // go up a level and go to next entry
+        return GetPrevLastChild( currID );
+    }
+}
+
+
+void CatalogPanel::OnSpinbuttonUp( wxSpinEvent& event )
+{
+
+    wxTreeItemId currID = m_tocTreeCtrl->GetSelection( );
+    wxTreeItemId prevID = GetPrev( currID );
+    if ( prevID.IsOk( ) )
+    {
+        m_tocTreeCtrl->SelectItem( prevID );
+        TOCTreeItemData* data = ( TOCTreeItemData* ) m_tocTreeCtrl->GetItemData( prevID );
+        wxString name = m_tocTreeCtrl->GetItemText( prevID );
+        m_volumeListCtrl->SetValue( name );
+    }
+
+    //   event.Skip( );
+}
+
+
+
+wxTreeItemId CatalogPanel::GetNextFirstChild( wxTreeItemId& currID )
+{
+    wxTreeItemId parentID = m_tocTreeCtrl->GetItemParent( currID );
+
+    if ( !parentID.IsOk( ) )
+    {
+        return 0;
+    }
+    wxString name = m_tocTreeCtrl->GetItemText( parentID );
+    std::cout << name << "\n\n";
+
+
+    wxTreeItemId nextID = m_tocTreeCtrl->GetNextSibling( parentID );
+    if ( nextID.IsOk( ) )
+    {
+        wxString name = m_tocTreeCtrl->GetItemText( nextID );
+        std::cout << name << "\n";
+
+
+        wxTreeItemIdValue cookie;
+        nextID = m_tocTreeCtrl->GetFirstChild( nextID, cookie );
+        if ( nextID.IsOk( ) )
+        {
+            wxString name = m_tocTreeCtrl->GetItemText( nextID );
+            std::cout << name << "\n";
+            TOCTreeItemData* data = ( TOCTreeItemData* ) m_tocTreeCtrl->GetItemData( nextID );
+
+            if ( data->GetType( ) == Utils::TOC_Volume )
+            {
+                return nextID;
+            }
+            else
+            {
+
+                wxTreeItemIdValue cookie;
+                nextID = m_tocTreeCtrl->GetFirstChild( nextID, cookie );
+                //nextID = GetNext( nextID );
+                return nextID;
+            }
+        }
+        else
+            return 0;
+    }
+    nextID = GetNextFirstChild( parentID );
+    return nextID;
+}
+wxTreeItemId CatalogPanel::GetNext( wxTreeItemId& currID )
+{
+
+    wxTreeItemId nextID = m_tocTreeCtrl->GetNextSibling( currID );
+    if ( nextID.IsOk( ) )
+    {
+        //the next entry is good
+        TOCTreeItemData* data = ( TOCTreeItemData* ) m_tocTreeCtrl->GetItemData( nextID );
+        wxString name = m_tocTreeCtrl->GetItemText( nextID );
+        std::cout << name << "\n";
+        if ( data->GetType( ) == Utils::TOC_Volume )
+        {
+            // and it is a volume entry
+            return nextID;
+        }
+        else
+        {
+            // and it is a section entry
+            return GetNextFirstChild( nextID );
+        }
+    }
+    else
+    {
+        // no more children
+        // go up a level and go to next entry
+        return GetNextFirstChild( currID );
+    }
+}
+
+void CatalogPanel::OnSpinbuttonDown( wxSpinEvent& event )
+{
+
+    wxTreeItemId currID = m_tocTreeCtrl->GetSelection( );
+    wxTreeItemId nextID = GetNext( currID );
+
+    // wxTreeItemId nextID = m_tocTreeCtrl->GetNextSibling( currID );
+    if ( nextID.IsOk( ) )
+    {
+        m_tocTreeCtrl->SelectItem( nextID );
+        TOCTreeItemData* data = ( TOCTreeItemData* ) m_tocTreeCtrl->GetItemData( nextID );
+        wxString name = m_tocTreeCtrl->GetItemText( nextID );
+        std::cout << name << "\n";
+        m_volumeListCtrl->SetValue( name );
+    }
+
+}
+
+
+void CatalogPanel::OnSpinbuttonUpdated( wxSpinEvent& event )
+{
+    ////@begin wxEVT_COMMAND_SPINCTRL_UPDATED event handler for ID_SPINBUTTON in SplitterTest.
+        // Before editing this code, remove the block markers.
+    event.Skip( );
+    ////@end wxEVT_COMMAND_SPINCTRL_UPDATED event handler for ID_SPINBUTTON in SplitterTest. 
+}
+

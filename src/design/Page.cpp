@@ -33,6 +33,7 @@
 #include "design/AlbumVolume.h"
 #include "gui/AlbumTreeCtrl.h"
 #include "gui/GuiUtils.h"
+#include "utils/Project.h"
 
 
 namespace Design {
@@ -101,7 +102,7 @@ namespace Design {
         double xPos = x + GetLeftPageMargin( );
         double yPos = y + GetTopPageMargin( );
 
-        wxImage image = GetAlbumVolume( )->GetImage( borderName );
+        wxImage image = GetProject( )->GetImage( borderName );
 
         DrawImage( dc, image,
             xPos, yPos,
@@ -148,7 +149,7 @@ namespace Design {
         double width = GetAlbum( )->GetWidth( );
         double height = GetAlbum( )->GetHeight( );
 
-        wxImage image = GetAlbumVolume( )->GetImage( borderName );
+        wxImage image = GetProject( )->GetImage( borderName );
         doc->Image( borderName, image, xPos, yPos,
             GetWidth( ),
             GetHeight( ) );

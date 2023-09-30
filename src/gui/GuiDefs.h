@@ -59,6 +59,10 @@ enum GuiDefs {
     ID_STAMPDETAILSDIALOG = 13100,
     ID_STATICITEM = 13200,
     ID_AppData = 13300,
+    ID_CatalogTOCTreeCtrl = 13400,
+    ID_TOCTreeCtrl = 13500,
+    ID_AlbumTOCTreeCtrl = 13600,
+    IDCatalogMenuID = 20000,
     //    ID_WEBVIEWPANEL = 13400,
     NbrGuiDefItems
 };

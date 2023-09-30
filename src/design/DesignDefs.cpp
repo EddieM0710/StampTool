@@ -107,7 +107,7 @@ namespace Design {
         "StampMargin",
         "CollapseState",
         "Catalog",
-        "Catalog Codes"
+        "CatalogCodes"
     };
     wxString OrientationStrings[ 2 ] = { "Portrait", "Landscape" };
 

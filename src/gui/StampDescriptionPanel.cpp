@@ -61,14 +61,13 @@ IMPLEMENT_DYNAMIC_CLASS( StampDescriptionPanel, wxPanel )
 
 BEGIN_EVENT_TABLE( StampDescriptionPanel, wxPanel )
 
-// StampDescriptionPanel event table entries
 EVT_SPLITTER_SASH_POS_CHANGED( ID_HORIZONTALLITTERWINDOW, StampDescriptionPanel::OnNotebooksplitterwindowSashPosChanged )
 
 EVT_SLIDER( ID_ZOOMSLIDER, StampDescriptionPanel::OnZoomsliderUpdated )
 EVT_TEXT( ID_DESCRIPTIONTEXTCTRL, StampDescriptionPanel::OnDescriptionTextctrlTextUpdated )
 EVT_TEXT( ID_BKGNDTEXTCTRL, StampDescriptionPanel::OnBkGndTextUpdated )
 EVT_TEXT_MAXLEN( ID_BKGNDTEXTCTRL, StampDescriptionPanel::OnBkgndtextctrlMaxLen )
-// StampDescriptionPanel event table entries
+//EVT_SPLITTER_SASH_POS_CHANGED( ID_HORIZONTALLITTERWINDOW, StampDescriptionPanel::OnSplitterwindowSashPosChanged )
 
 END_EVENT_TABLE( )
 ;  // silly business; The above macro screws up the formatter
@@ -250,6 +249,13 @@ void StampDescriptionPanel::CreateControls( void )
     m_stampImage->SetBitmap( filename );
 }
 
+
+void StampDescriptionPanel::OnSplitterwindowSashPosChanged( wxSplitterEvent& event )
+{
+    Fit( );
+    Layout( );
+    event.Skip( );
+}
 
 /*
  *

@@ -56,14 +56,16 @@
 #include "utils/Project.h"
 #include "catalog/CatalogData.h"
 #include "Defs.h"
+#include "gui/AlbumTOCTreeCtrl.h"
 
 
 IMPLEMENT_DYNAMIC_CLASS( AlbumPanel, wxPanel )
 
 BEGIN_EVENT_TABLE( AlbumPanel, wxPanel )
 EVT_SLIDER( ID_ALBUMZOOMSLIDER, AlbumPanel::OnZoomsliderUpdated )
-EVT_CHOICE( ID_LISTCHOICE, AlbumPanel::OnAlbumChoiceSelected )
+//EVT_CHOICE( ID_LISTCHOICE, AlbumPanel::OnAlbumChoiceSelected )
 EVT_BUTTON( ID_MANAGEBUTTON, AlbumPanel::OnManageClick )
+//EVT_SPLITTER_SASH_POS_CHANGED( ID_SECONDARYSPLITTERWINDOW, AlbumPanel::OnSplitterwindowSashPosChanged )
 END_EVENT_TABLE( )
 
 
@@ -108,25 +110,9 @@ void AlbumPanel::CreateControls( )
 
     AlbumPanel* theAlbumPanel = this;
 
-    // wxPanel* theAlbumLayoutPanel = new wxPanel ( theAlbumPanel, ID_ALBUMLAYOUTPANEL, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
-    // theAlbumLayoutPanel->SetExtraStyle ( wxWS_EX_VALIDATE_RECURSIVELY );
-
     wxBoxSizer* theAlbumLayoutPanelVerticalSizer = new wxBoxSizer( wxVERTICAL );
     theAlbumPanel->SetSizer( theAlbumLayoutPanelVerticalSizer );
-    {
-        wxBoxSizer* nameHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
-        theAlbumLayoutPanelVerticalSizer->Add( nameHorizontalSizer, 0, wxGROW | wxALL, 0 );
 
-        wxStaticText* albumListStatic = new wxStaticText(
-            theAlbumPanel, wxID_STATIC, _( "Album List" ), wxDefaultPosition, wxDefaultSize, 0 );
-        nameHorizontalSizer->Add( albumListStatic, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
-
-        m_albumListCtrl = new wxChoice( theAlbumPanel, ID_LISTCHOICE, wxDefaultPosition, wxSize( -1, -1 ), GetAlbumData( )->GetVolumeNameStrings( ), wxLB_HSCROLL );
-        // nameHorizontalSizer->Add( m_albumListCtrl, 1, wxGROW | wxALL, 5 );
-        nameHorizontalSizer->Add( m_albumListCtrl, 1, wxALIGN_CENTER_VERTICAL | wxALL, 0 );
-    }
-    // wxBoxSizer* splitterWindowVerticalSizer = new wxBoxSizer ( wxHORIZONTAL );
-     //theAlbumLayoutPanelVerticalSizer->Add ( splitterWindowVerticalSizer, 1, wxGROW | wxALL, 5 );
     wxBoxSizer* SplitterWindowHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
     theAlbumLayoutPanelVerticalSizer->Add( SplitterWindowHorizontalSizer, 0, wxGROW | wxALL, 0 );
 
@@ -154,6 +140,18 @@ void AlbumPanel::CreateControls( )
 
 }
 
+void AlbumPanel::OnSplitterwindowSashPosChanged( wxSplitterEvent& event )
+{
+    Layout( );
+    Fit( );
+
+    ////@begin wxEVT_COMMAND_SPLITTER_SASH_POS_CHANGED event handler for ID_SPLITTERWINDOW1 in SplitterTest.
+        // Before editing this code, remove the block markers.
+    event.Skip( );
+    ////@end wxEVT_COMMAND_SPLITTER_SASH_POS_CHANGED event handler for ID_SPLITTERWINDOW1 in SplitterTest. 
+}
+
+
 wxSplitterWindow* AlbumPanel::CreateImageDetailsSplitterWindow( wxWindow* parent )
 {
 
@@ -173,11 +171,13 @@ wxSplitterWindow* AlbumPanel::CreateImageDetailsSplitterWindow( wxWindow* parent
     return imageDetailsSplitterWindow;
 }
 
-wxScrolledWindow* AlbumPanel::CreateDetailsScrolledWindow( wxWindow* parent )
+wxPanel* AlbumPanel::CreateDetailsScrolledWindow( wxWindow* parent )
 {
+    wxPanel* detailsScrolledWindow = new wxPanel( parent, ID_DETAILSSCROLLEDWINDOW,
+        wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER );
 
-    wxScrolledWindow* detailsScrolledWindow = new wxScrolledWindow( parent, ID_DETAILSSCROLLEDWINDOW, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxHSCROLL | wxVSCROLL );
-    detailsScrolledWindow->SetScrollbars( 1, 1, 0, 0 );
+    // wxScrolledWindow* detailsScrolledWindow = new wxScrolledWindow( parent, ID_DETAILSSCROLLEDWINDOW, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxHSCROLL | wxVSCROLL );
+     //detailsScrolledWindow->SetScrollbars( 1, 1, 0, 0 );
 
     wxBoxSizer* itemBoxSizer7 = new wxBoxSizer( wxVERTICAL );
     detailsScrolledWindow->SetSizer( itemBoxSizer7 );
@@ -187,27 +187,24 @@ wxScrolledWindow* AlbumPanel::CreateDetailsScrolledWindow( wxWindow* parent )
 
     m_albumDetailsPanel = new AlbumDetailsPanel( detailsScrolledWindow, 23150, "str", wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
     m_albumDetailsPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
-    itemBoxSizer8->Add( m_albumDetailsPanel, 1, wxGROW | wxALL, 0 );
+    itemBoxSizer8->Add( m_albumDetailsPanel, 0, wxGROW | wxALL, 0 );
 
     m_pageDetailsPanel = new PageDetailsPanel( detailsScrolledWindow, 23251, "str", wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
     m_pageDetailsPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
-    itemBoxSizer8->Add( m_pageDetailsPanel, 1, wxGROW | wxALL, 0 );
+    itemBoxSizer8->Add( m_pageDetailsPanel, 0, wxGROW | wxALL, 0 );
 
     m_colDetailsPanel = new ColDetailsPanel( detailsScrolledWindow, 23352, "str", wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
     m_colDetailsPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
-    itemBoxSizer8->Add( m_colDetailsPanel, 1, wxGROW | wxALL, 0 );
+    itemBoxSizer8->Add( m_colDetailsPanel, 0, wxGROW | wxALL, 0 );
 
     m_rowDetailsPanel = new RowDetailsPanel( detailsScrolledWindow, 23353, "str", wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
     m_rowDetailsPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
-    itemBoxSizer8->Add( m_rowDetailsPanel, 1, wxGROW | wxALL, 0 );
+    itemBoxSizer8->Add( m_rowDetailsPanel, 0, wxGROW | wxALL, 0 );
 
     m_stampDetailsPanel = new StampDetailsPanel( detailsScrolledWindow, 25454, "str", wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
     m_stampDetailsPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
-    itemBoxSizer8->Add( m_stampDetailsPanel, 1, wxGROW | wxALL, 0 );
+    itemBoxSizer8->Add( m_stampDetailsPanel, 0, wxGROW | wxALL, 0 );
 
-    m_testDetailsPanel = new TestDetailsPanel( detailsScrolledWindow, 25455, "str", wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
-    m_testDetailsPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
-    itemBoxSizer8->Add( m_testDetailsPanel, 1, wxGROW | wxALL, 0 );
 
 
     return detailsScrolledWindow;
@@ -220,7 +217,7 @@ void AlbumPanel::ShowDetails( Design::AlbumBase* albumBase )
     m_colDetailsPanel->Hide( );
     m_rowDetailsPanel->Hide( );
     m_stampDetailsPanel->Hide( );
-    m_testDetailsPanel->Hide( );
+    // m_testDetailsPanel->Hide( );
 
     switch ( type )
     {
@@ -332,18 +329,18 @@ void AlbumPanel::Init( )
 
 //--------------
 
-void AlbumPanel::OnAlbumChoiceSelected( wxCommandEvent& event )
-{
-    int sel = m_albumListCtrl->GetSelection( );
+// void AlbumPanel::OnAlbumChoiceSelected( wxCommandEvent& event )
+// {
+//     int sel = m_albumListCtrl->GetSelection( );
 
-    GetAlbumData( )->GetAlbumList( ).SetAlbumVolumeNdx( sel );
+//     GetAlbumData( )->GetAlbumList( ).
 
-    GetCatalogData( )->GetCatalogTreeCtrl( )->SetStates( true );
-    GetCatalogData( )->GetCatalogTreeCtrl( )->LoadTree( );
+//     GetCatalogData( )->GetCatalogTreeCtrl( )->SetStates( true );
+//     GetCatalogData( )->GetCatalogTreeCtrl( )->LoadTree( );
 
-    event.Skip( );
+//     event.Skip( );
 
-}
+// }
 
 //--------------
 

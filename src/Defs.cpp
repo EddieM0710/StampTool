@@ -48,6 +48,7 @@
 #include "Settings.h"
 #include "utils/Project.h"
 #include "gui/AppData.h"
+#include "gui/CatalogTOCTreeCtrl.h"
 #include "StampToolApp.h"
 wxDECLARE_APP( StampToolApp );
 
@@ -55,29 +56,58 @@ bool Dirty = false;
 
 //namespace Inventory { class CollectionData; };
 
-void SetDirty( bool state ) { Dirty = state; };
-bool IsDirty( ) { return Dirty; };
+void SetDirty( bool state ) {
+    Dirty = state;
+};
+bool IsDirty( ) {
+    return Dirty;
+};
 
 
-Design::AlbumData* GetAlbumData( ) { return GetAppData( )->GetAlbumData( ); }
+Design::AlbumData* GetAlbumData( ) {
+    return GetAppData( )->GetAlbumData( );
+}
 
-AlbumImagePanel* GetAlbumImagePanel( ) { return GetAlbumData( )->GetAlbumImagePanel( ); };
+AlbumImagePanel* GetAlbumImagePanel( ) {
+    return GetAlbumData( )->GetAlbumImagePanel( );
+};
 
 //CatalogTreeCtrl* GetAlbumPageTreeCtrl( ) { return GetCatalogData( )->GetAlbumPageTreeCtrl( ); };
 
-AlbumTreeCtrl* GetAlbumTreeCtrl( ) { return GetAlbumData( )->GetAlbumTreeCtrl( ); };
+AlbumTreeCtrl* GetAlbumTreeCtrl( ) {
+    return GetAlbumData( )->GetAlbumTreeCtrl( );
+};
 
-Design::AlbumVolume* GetAlbumVolume( ) { return GetAlbumData( )->GetAlbumVolume( ); };
+Design::AlbumVolume* GetAlbumVolume( ) {
+    return GetAlbumData( )->GetAlbumVolume( );
+};
 
-Catalog::CatalogData* GetCatalogData( ) { return GetAppData( )->GetCatalogData( ); }
+Catalog::CatalogData* GetCatalogData( ) {
+    return GetAppData( )->GetCatalogData( );
+}
 
-Inventory::CollectionList* GetCollectionList( ) { return GetAppData( )->GetCollectionList( ); }
+Inventory::CollectionList* GetCollectionList( ) {
+    return GetAppData( )->GetCollectionList( );
+}
 
-Catalog::StampMountData* GetStampMountData( ) { return GetAppData( )->GetStampMountData( ); }
+Catalog::StampMountData* GetStampMountData( ) {
+    return GetAppData( )->GetStampMountData( );
+}
 
-CatalogTreeCtrl* GetCatalogTreeCtrl( ) { return GetCatalogData( )->GetCatalogTreeCtrl( ); };
+CatalogTreeCtrl* GetCatalogTreeCtrl( ) {
+    return GetCatalogData( )->GetCatalogTreeCtrl( );
+};
+CatalogTOCTreeCtrl* GetCatalogTOCTreeCtrl( ) {
+    return GetCatalogData( )->GetCatalogTOCTreeCtrl( );
+};
 
-Utils::FontList* GetFontList( ) { return GetAlbumData( )->GetFontList( ); };
+AlbumTOCTreeCtrl* GetAlbumTOCTreeCtrl( ) {
+    return GetAlbumData( )->GetAlbumTOCTreeCtrl( );
+};
+
+Utils::FontList* GetFontList( ) {
+    return GetAlbumData( )->GetFontList( );
+};
 
 Catalog::CatalogVolume* GetCatalogVolume( )
 {
@@ -100,14 +130,18 @@ AppData* GetAppData( )
 }
 
 
-Utils::Project* GetProject( ) { return GetAppData( )->GetProject( ); }
+Utils::Project* GetProject( ) {
+    return GetAppData( )->GetProject( );
+}
 
 Utils::Settings* GetSettings( )
 {
     return GetAppData( )->GetSettings( );
 };
 
-Utils::StampList* GetStampAlbumCatalogLink( ) { return GetAppData( )->GetStampAlbumCatalogLink( ); };
+Utils::StampList* GetStampAlbumCatalogLink( ) {
+    return GetAppData( )->GetStampAlbumCatalogLink( );
+};
 
 void InitDefs( )
 {

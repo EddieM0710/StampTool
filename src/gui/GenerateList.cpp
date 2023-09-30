@@ -149,7 +149,7 @@ void GenerateList::CreateControls( )
     // GenerateList content construction
     m_gridCtrl->SetColLabelValue( 0, "ID" );
     m_gridCtrl->SetColLabelValue( 1, Catalog::DataTypeNames[ Catalog::DT_InventoryStatus ] );
-    m_gridCtrl->SetColLabelValue( 2, Catalog::DataTypeNames[ Catalog::DT_Name ] );
+    m_gridCtrl->SetColLabelValue( 2, "Name" );
     m_gridCtrl->SetColLabelValue( 3, Catalog::DataTypeNames[ Catalog::DT_Issued_on ] );
     m_gridCtrl->SetColLabelValue( 4, Catalog::DataTypeNames[ Catalog::DT_Emission ] );
     m_gridCtrl->SetColLabelValue( 5, Catalog::DataTypeNames[ Catalog::DT_Format ] );

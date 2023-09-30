@@ -10,8 +10,7 @@ ${StampTool_TOCFiles_Source_Directory}
 ${StampTool_CollectionFiles_Source_Directory} )
 
 set( CMAKE_RUNTIME_OUTPUT_DIRECTORY ${build_Directory} )
-add_library( CollectionFiles SHARED
-CollectionData.cpp 
-CollectionList.cpp 
-Collection.cpp
+add_library( TOCFiles SHARED
+TOCBase.cpp 
+TOCDefs.cpp 
 )

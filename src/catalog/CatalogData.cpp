@@ -41,27 +41,29 @@ namespace Catalog
     ///  @return Catalog::CatalogVolume* 
     Catalog::CatalogVolume* CatalogData::NewCatalogVolume( )
     {
-        if ( m_catalogTreeCtrl )
-        {
-            m_catalogTreeCtrl->ClearCatalogTree( );
-        }
-
-
-        return m_catalogList.NewCatalogVolume( );
+        return NewCatalogVolumeInstance( );
     };
+
+    Catalog::CatalogVolume* CatalogData::NewCatalogVolume( wxString filename )
+    {
+        CatalogVolume* vol = NewCatalogVolumeInstance( );
+        vol->SetFilename( filename );
+        vol->Load( );
+        wxString volName = vol->GetName( );
+        Catalog::CatalogList* list = GetCatalogData( )->GetCatalogList( );
+        list->SetCatalogVolume( vol );
+        return vol;
+    }
 
     ///  @brief Open a catalog file
     ///  
     ///  @param filename 
     void CatalogData::FileOpen( wxString filename )
     {
-        Catalog::CatalogVolume* volume = GetCatalogList( )->NewCatalogVolume( );
-        volume->SetVolumeFilename( filename );
-        volume->Load( );
-        volume->GetVolumeName( );
-        GetCatalogList( )->BuildVolumeNameStrings( );
-        UpdateCatalogVolumeStrings( );
-        LoadCatalogTree( );
+        NewCatalogVolume( filename );
+        // GetCatalogList( )->BuildVolumeNameStrings( );
+        // UpdateCatalogVolumeStrings( );
+        // LoadCatalogTree( );
     }
 
     ///  @brief Save a catalog file
@@ -72,7 +74,9 @@ namespace Catalog
     }
 
 
-    InventoryPanel* CatalogData::GetInventoryPanel( ) { return GetDescriptionPanel( )->GetInventoryPanel( ); };
+    InventoryPanel* CatalogData::GetInventoryPanel( ) {
+        return GetDescriptionPanel( )->GetInventoryPanel( );
+    };
 
     void CatalogData::LoadCatalogTree( )
     {
@@ -95,20 +99,20 @@ namespace Catalog
             catalogFile.SetName( name );
             catalogFile.SetExt( "cat" );
 
-            Catalog::CatalogVolume* catalogVolume = GetCatalogList( )->NewCatalogVolume( );
+            Catalog::CatalogVolume* catalogVolume = NewCatalogVolumeInstance( );
             wxString fullPath = catalogFile.GetFullPath( );
             wxString fullName = catalogFile.GetFullName( );
             wxString path = catalogFile.GetPath( );
-            catalogVolume->SetVolumeFilename( catalogFile.GetFullPath( ) );
+            catalogVolume->SetFilename( catalogFile.GetFullPath( ) );
 
             bool readStatus = catalogVolume->LoadCSV( csvFile.GetFullPath( ) );
             if ( readStatus )
             {
-                GetCatalogList( )->BuildVolumeNameStrings( );
-                UpdateCatalogVolumeStrings( );
-                GetCatalogVolume( )->EditDetailsDialog( m_catalogTreePanel );
+                //  GetCatalogList( )->BuildVolumeNameStrings( );
+                //  UpdateCatalogVolumeStrings( );
+                //  GetCatalogVolume( )->EditDetailsDialog( m_catalogTreePanel );
 
-                GetCatalogData( )->LoadCatalogTree( );
+               //   GetCatalogData( )->LoadCatalogTree( );
             }
             return readStatus;
         }
@@ -119,9 +123,9 @@ namespace Catalog
     ///  
     void CatalogData::LoadData( )
     {
-        m_catalogList.Load( );
-        GetCatalogList( )->BuildVolumeNameStrings( );
-        UpdateCatalogVolumeStrings( );
+        // m_catalogList.Load( );
+        // GetCatalogList( )->BuildVolumeNameStrings( );
+        // UpdateCatalogVolumeStrings( );
         LoadCatalogTree( );
     }
 
@@ -134,9 +138,9 @@ namespace Catalog
 
     void CatalogData::LoadNew( wxString catFile )
     {
-        Catalog::CatalogVolume* volume = GetCatalogList( )->NewCatalogVolume( );
-        volume->SetVolumeFilename( catFile );
-        LoadCatalogTree( );
+        // Catalog::CatalogVolume* volume = GetCatalogList( )->NewCatalogVolume( );
+        // volume->SetVolumeFilename( catFile );
+        // LoadCatalogTree( );
         SetDirty( );
     }
 
@@ -149,21 +153,21 @@ namespace Catalog
 
     void CatalogData::SetCollectionListStrings( )
     {
-        m_catalogTreePanel->SetCollectionListStrings( );
+        //       m_catalogTreePanel->SetCollectionListStrings( );
     }
     void CatalogData::SetCollectionListSelection( )
     {
         m_catalogTreePanel->SetCollectionListSelection( );
     }
 
-    void CatalogData::UpdateCatalogVolumeStrings( )
-    {
-        m_catalogTreePanel->SetVolumeListStrings( m_catalogList.GetVolumeNameStrings( ) );
-        Catalog::CatalogVolume* vol = m_catalogList.GetCatalogVolume( );
-        if ( vol )
-        {
-            wxString name = vol->GetVolumeName( );
-            m_catalogTreePanel->SetVolumeListSelection( name );
-        }
-    }
+    // void CatalogData::UpdateCatalogVolumeStrings( )
+    // {
+    //     m_catalogTreePanel->SetVolumeListStrings( m_catalogList.GetVolumeNameStrings( ) );
+    //     Catalog::CatalogVolume* vol = m_catalogList.GetCatalogVolume( );
+    //     if ( vol )
+    //     {
+    //         wxString name = vol->GetVolumeName( );
+    //         m_catalogTreePanel->SetVolumeListSelection( name );
+    //     }
+    // }
 }

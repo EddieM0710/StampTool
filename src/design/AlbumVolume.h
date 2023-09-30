@@ -30,12 +30,13 @@
 #include <wx/treebase.h>
 #include <wx/zipstrm.h>
 #include <wx/arrstr.h>
+#include <unordered_map>
 
 #include "Defs.h"
 #include "design/DesignDefs.h"
 
-
 #include "utils/XMLUtilities.h"
+#include "utils/Volume.h"
 
 class AlbumTreeCtrl;
 //namespace Utils { class ImageRepository; };
@@ -47,162 +48,61 @@ namespace Design {
     class AlbumBase;
 
     /// @brief class that contains all the data for the Album design
-    class AlbumVolume
+    class AlbumVolume : public Utils::Volume
     {
 
     public:
 
-        /// @brief Construct a new Catalog Data object
         AlbumVolume( );
 
-        /// @brief Destroy the Album Volume object
-        ///  
         ~AlbumVolume( );
 
-        bool AddImageToZip( wxString outputZipName, wxString newImage );
-
-        /// @brief Get the Album object
-        ///  
-        ///  @return Album* 
-        Album* GetAlbum( ) { return m_album; };
-
-        //       Utils::ImageRepository* GetImageRepository( );
-
-        wxString GetAlbumBaseName( );
-
-        /// @brief Get the Album Filename object
-        ///  
-        ///  @return wxString 
-        wxString GetAlbumFilename( ) { return m_albumFilename; };
-
-        /// @brief Get the Album Name object
-        ///  
-        ///  @return wxString 
-        wxString GetAlbumName( )
-        {
-            wxXmlNode* root = m_albumDoc->GetRoot( );
-            if ( root )
-            {
-                return Utils::GetAttrStr( root, "Name" );
-            }
-            return "";
+        Album* GetAlbum( ) {
+            return m_album;
         };
 
-        wxString GetAlbumPath( );
-
-        wxImage GetImage( wxString filename );
-
-        //        wxImage* GetImageFromZip( wxString inputZipName, wxString newImage );
-
-        wxString GetPath( );
-
-        /// @brief Get the AlbumVolume xml Doc
-        wxXmlDocument* GetDoc( ) { return m_albumDoc; };
-
-        /// @brief Gets the page of the selected design given node
         AlbumBase* GetPage( AlbumBase* node );
 
-        //        wxString GetZipFileName( );
-
-                /// @brief 
-                ///  
-                ///  @return AlbumVolume* 
         AlbumVolume* InitAlbumVolume( );
 
-        /// @brief 
-        ///  
-        ///  @return true 
-        ///  @return false 
-        bool isDirty( ) { return m_dirty; };
-
-        /// @brief 
-        ///  
-        ///  @return true 
-        ///  @return false 
-        bool IsOK( );
-
-        /// @brief create new AlbumVolume xml wxXmlDocument
-        wxXmlDocument* NewDesignDocument( );
-
-        /// @brief create a new design document with default data
         void LoadDefaultDocument( );
 
-        /// @brief Save the AlbumVolume to an xml file  
-        /// @param filename 
-        void SaveXML( );
-
-        /// @brief transfers the AlbumVolume tree to an xml file
-        void SaveDesignTree( );
-
-        /// @brief loads an xml file into memory 
-        bool LoadXML( );
-
-        //        bool MakeAlbumImageArray( wxArrayString& fileArray );
-
-        //        bool MakeAlbumImageArray( wxXmlNode* parent, wxArrayString& fileArray );
-
-        //        bool MakeAlbumImageRepository( wxString outputZipName );
-
-        //        bool AddImageFile( wxZipOutputStream& zip, wxString inputFileName, wxString zippedFileName );
-
-                /// @brief Set the Album object
-                ///  
-                ///  @param album 
-        void SetAlbum( Album* album ) { m_album = album; };
-
-        /// @brief 
-        ///  
-        ///  @param node 
         void MakePage( Design::LayoutBase* node );
 
-        /// @brief Set the design to dirty
-        /// @param state 
-        void SetDirty( bool state = true );
+        void SaveXML( );
 
-        /// @brief Set the Album Filename object
-        ///  
-        ///  @param name 
-        void SetAlbumFilename( wxString name ) { m_albumFilename = name; };
+        void Save( );
 
-        /// @brief Set the Album Name object
-        ///  
-        ///  @param str 
+        void SaveDesignTree( );
+
+        void SetAlbum( Album* album ) {
+            m_album = album;
+        };
+
         void SetAlbumName( wxString str )
         {
-            wxXmlNode* root = m_albumDoc->GetRoot( );
+            wxXmlNode* root = GetDoc( )->GetRoot( );
             if ( root )
             {
                 Utils::SetAttrStr( root, "Name", str );
             }
         };
 
-        /// @brief 
-        ///  
         void UpdateAlbum( );
 
-        /// @brief 
-        ///  
-        ///  @param node 
         void UpdatePage( AlbumBase* node );
 
-        /// @brief 
-        ///  
-        ///  @param node 
-        ///  @return NodeStatus 
         NodeStatus ValidatePage( AlbumBase* node );
 
     private:
-        int isOKPtr;
-        wxString m_albumFilename;
-        wxXmlDocument* m_albumDoc;
-        //        Utils::ImageRepository* m_imageRepository;
         Album* m_album;
-        //        Utils::ImageZip* m_zip;
-        bool m_dirty;
+
     };
 
 
-    AlbumVolume* NewAlbumVolumeInstance( );
-    typedef std::vector<AlbumVolume*> AlbumVolumeArray;
+    AlbumVolume* NewAlbumVolume( );
+    typedef std::unordered_map< std::string, AlbumVolume*> AlbumVolumeArray;
+    typedef std::unordered_map< int, wxTreeItemId > AlbumMenuIDArray;
+
 }
 #endif

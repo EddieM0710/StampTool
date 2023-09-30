@@ -57,6 +57,7 @@ namespace Catalog {
         NT_NbrTypes
     } CatalogBaseType;
 
+
     //     /// @enum  
     //    ///  @brief Enum defining catalog code data types;
     //     /// 

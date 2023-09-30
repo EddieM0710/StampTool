@@ -45,18 +45,18 @@ namespace Design {
         // LoadDesignVolumeFiles( );
         // LoadDesignTree( );
 
-        Design::AlbumVolume* volume = GetAlbumList( ).NewAlbumVolume( );
-        volume->SetAlbumFilename( filename );
+        Design::AlbumVolume* volume = GetAlbumList( ).NewVolumeInstance( );
+        volume->SetFilename( filename );
         volume->LoadXML( );
-        GetAlbumList( ).BuildVolumeNameStrings( );
-        UpdateAlbumVolumeStrings( );
+        //GetAlbumList( ).BuildVolumeNameStrings( );
+      //  UpdateAlbumVolumeStrings( );
         LoadDesignTree( );
 
     }
 
     void AlbumData::FileSave( )
     {
-        Design::AlbumVolume* volume = m_albumList.GetAlbumVolume( );
+        Design::AlbumVolume* volume = ( Design::AlbumVolume* ) m_albumList.GetVolume( );
         if ( volume )
         {
             volume->SaveXML( );
@@ -71,7 +71,7 @@ namespace Design {
 
     Design::AlbumVolume* AlbumData::GetAlbumVolume( )
     {
-        return m_albumList.GetAlbumVolume( );
+        return ( Design::AlbumVolume* ) m_albumList.GetVolume( );
     }
 
     /// Load the Catalog and Design data then populate trees
@@ -79,7 +79,7 @@ namespace Design {
     {
 
         LoadDesignVolumeFiles( );
-        m_albumList.BuildVolumeNameStrings( );
+        //  m_albumList.BuildVolumeNameStrings( );
         LoadDesignTree( );
     }
 
@@ -96,15 +96,15 @@ namespace Design {
 
     void AlbumData::LoadDesignVolumeFiles( )
     {
-        m_albumList.LoadAlbums( );
+        //       m_albumList.LoadAlbums( );
 
     }
 
     void AlbumData::LoadNew( wxString designFileName )
     {
         GetProject( )->SetDesignFilename( designFileName );
-        Design::AlbumVolume* volume = GetAlbumList( ).NewAlbumVolume( );
-        volume->SetAlbumFilename( designFileName );
+        Design::AlbumVolume* volume = GetAlbumList( ).NewVolumeInstance( );
+        volume->SetFilename( designFileName );
 
         LoadDefaultAlbumVolume( );
         LoadDesignTree( );
@@ -117,13 +117,13 @@ namespace Design {
         m_albumTreeCtrl->DeleteAllItems( );
         GetStampAlbumCatalogLink( )->Clear( );
 
-        return m_albumList.NewAlbumVolume( );
+        return m_albumList.NewVolumeInstance( );
     }
 
-    void AlbumData::UpdateAlbumVolumeStrings( )
-    {
-        m_albumPanel->SetAlbumListStrings( m_albumList.GetVolumeNameStrings( ) );
-        m_albumPanel->SetAlbumListSelection( m_albumList.GetAlbumVolumeNdx( ) );
-    }
+    // void AlbumData::UpdateAlbumVolumeStrings( )
+    // {
+    //     m_albumPanel->SetAlbumListStrings( m_albumList.GetVolumeNameStrings( ) );
+    //     m_albumPanel->SetAlbumListSelection( m_albumList.GetAlbumVolumeNdx( ) );
+    // }
 
 }

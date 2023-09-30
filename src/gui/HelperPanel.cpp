@@ -143,7 +143,7 @@ wxTextCtrl* HelperPanel::SetupLabelText( wxWindow* parent, wxBoxSizer* inSizer, 
 
     wxPanel* labelTextPanel = new wxPanel( parent, ++lastID, wxDefaultPosition, wxDefaultSize, wxNO_BORDER | wxTAB_TRAVERSAL );
     labelTextPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
-    mySizer->Add( labelTextPanel, 1, wxGROW | wxALL, 2 );
+    mySizer->Add( labelTextPanel, 1, wxALL, 2 );
 
     wxBoxSizer* labelTextHSizer = new wxBoxSizer( wxHORIZONTAL );
     labelTextPanel->SetSizer( labelTextHSizer );
@@ -173,7 +173,7 @@ wxCheckBox* HelperPanel::SetupCheckBox( wxWindow* parent, wxBoxSizer* sizer, int
     wxCheckBox* checkbox = new wxCheckBox( parent, ++lastID, label, wxDefaultPosition, wxDefaultSize, 0 );
     checkbox->SetValue( true );
 
-    sizer->Add( checkbox, 0, wxALIGN_LEFT | wxALL, 5 );
+    sizer->Add( checkbox, 0, wxALIGN_LEFT, 5 );
 
     Connect( checkbox->GetId( ), wxEVT_CHECKBOX, eventHandler );
 

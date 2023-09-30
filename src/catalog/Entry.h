@@ -142,7 +142,9 @@ namespace Catalog {
          *
          * @return wxString
          */
-        wxString GetBackground( ) { return GetAttr( DT_BackGround ); };
+        wxString GetBackground( ) {
+            return GetAttr( DT_BackGround );
+        };
 
         wxString GetCatalogCodes( ); ///< Get the entry Catalog Codes field
 
@@ -267,6 +269,8 @@ namespace Catalog {
          */
         wxString GetPeriod( );
 
+        wxString GetPreferredCode( );
+
         wxString GetPrinting( ); ///< Get the entry Printing field
 
         wxString GetPrintRun( ); ///< Get the entry PrintRun field
@@ -283,7 +287,9 @@ namespace Catalog {
          * @param type
          * @return wxString
          */
-        wxString GetVal( DataTypes type ) { return GetAttr( type ); };
+        wxString GetVal( DataTypes type ) {
+            return GetAttr( type );
+        };
 
         wxString GetVariant( ); ///< Get the entry Variant field
 
@@ -359,7 +365,9 @@ namespace Catalog {
          *
          * @param val
          */
-        void SetBackground( wxString val ) { SetAttr( DT_BackGround, val ); };
+        void SetBackground( wxString val ) {
+            SetAttr( DT_BackGround, val );
+        };
 
         void SetCatalogCodes( wxString val ); ///< Get the entry CatalogCodes field 
 
@@ -431,7 +439,9 @@ namespace Catalog {
          * @param type
          * @param val
          */
-        void SetVal( DataTypes type, wxString val ) { SetAttr( type, val ); };
+        void SetVal( DataTypes type, wxString val ) {
+            SetAttr( type, val );
+        };
 
         void SetVariant( wxString val ); ///< Get the entry Variant field 
 

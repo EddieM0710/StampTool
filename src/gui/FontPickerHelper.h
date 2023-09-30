@@ -70,7 +70,7 @@ public:
         m_fontPicker = new wxFontPickerCtrl( parent, ++lastID,
             m_font, wxDefaultPosition,
             wxDefaultSize, wxFNTP_DEFAULT_STYLE );
-        m_horizontalSizer->Add( m_fontPicker, 1, wxGROW | wxALL, 5 );
+        m_horizontalSizer->Add( m_fontPicker, 0, wxGROW | wxALL, 5 );
 
         m_colorPicker = new wxColourPickerCtrl( parent, ++lastID,
             m_color, wxDefaultPosition,
@@ -80,7 +80,7 @@ public:
         m_defaultButton = new wxButton( parent, ++lastID, buttonText, wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT );
         m_horizontalSizer->Add( m_defaultButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
-        m_horizontalSizer->Add( 5, 5, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+        // m_horizontalSizer->Add( 5, 5, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
 
     }

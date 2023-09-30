@@ -88,6 +88,7 @@ EVT_MAXIMIZE( StampToolFrame::OnMaximize )
 EVT_MENU( ID_NEWPROJECT, StampToolFrame::OnNewProjectClick )
 EVT_MENU( ID_OPENPROJECT, StampToolFrame::OnOpenProjectClick )
 EVT_MENU( ID_SAVEPROJECT, StampToolFrame::OnSaveProjectClick )
+EVT_MENU( ID_SAVECATALOG, StampToolFrame::OnSaveCatalogClick )
 EVT_MENU( ID_SAVEASPROJECT, StampToolFrame::OnSaveasProjectClick )
 EVT_MENU( wxID_EXIT, StampToolFrame::OnExitClick )
 EVT_MENU( ID_TEXTSERCHMENUITEM, StampToolFrame::OnTextSearchMenuItemClick )
@@ -344,6 +345,16 @@ void StampToolFrame::OnOpenProjectClick( wxCommandEvent& event )
 void StampToolFrame::OnSaveProjectClick( wxCommandEvent& event )
 {
     GetProject( )->FileSaveProject( );
+    event.Skip( );
+}
+
+void StampToolFrame::OnSaveCatalogClick( wxCommandEvent& event )
+{
+    Catalog::CatalogVolume* vol = GetCatalogData( )->GetCatalogList( )->GetCatalogVolume( );
+    if ( vol )
+    {
+        vol->Save( );
+    }
     event.Skip( );
 }
 

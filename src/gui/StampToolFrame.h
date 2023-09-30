@@ -44,7 +44,9 @@ class CatalogPanel;
 class AlbumTreePanel;
 class AlbumPanel;
 //class WebViewPanel;
-namespace { class StampList; }
+namespace {
+    class StampList;
+}
 
 
 
@@ -177,6 +179,8 @@ public:
 
     void OnSaveProjectClick( wxCommandEvent& event );
 
+    void OnSaveCatalogClick( wxCommandEvent& event );
+
     void OnSaveasProjectClick( wxCommandEvent& event );
 
     //void OnGeneratePDFClick( wxCommandEvent& event );
@@ -236,7 +240,9 @@ public:
 
     int DoQueryMerge( int& mergeMethod );
 
-    StampToolPanel* GetStampToolPanel( ) { return m_stampToolPanel; };
+    StampToolPanel* GetStampToolPanel( ) {
+        return m_stampToolPanel;
+    };
 
     CatalogPanel* GetCatalogPagePanel( );
 

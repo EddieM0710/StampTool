@@ -50,10 +50,15 @@ namespace Utils {
             DesignTreeItemData* data = ( DesignTreeItemData* ) albumTreeCtrl->GetItemData( m_designTreeID );
             if ( data && data->IsOk( ) )
             {
-                Design::AlbumBase* node = data->GetNodeElement( );
-                if ( node )
+                if ( data->GetType( ) == Design::AT_Stamp )
                 {
-                    id = node->GetAttrStr( Design::AT_CatNbr );
+                    Design::AlbumBase* node = data->GetNodeElement( );
+                    if ( node )
+                    {
+                        Design::Stamp* stamp = ( Design::Stamp* ) node;
+                        Design::AlbumBaseType tyoe = data->GetType( );
+                        id = stamp->GetNbrString( );
+                    }
                 }
             }
         }
@@ -95,7 +100,7 @@ namespace Utils {
     void StampList::Clear( )
     {
         CatalogTreeCtrl* catTreeCtrl = GetCatalogTreeCtrl( );
-        AlbumTreeCtrl* albumTreeCtrl = GetAlbumTreeCtrl( );
+        // AlbumTreeCtrl* albumTreeCtrl = GetAlbumTreeCtrl( );
         if ( catTreeCtrl )
         {
             for ( int i = 0; i < m_list.size( ); i++ )
@@ -108,6 +113,7 @@ namespace Utils {
             m_list.erase( std::begin( m_list ), std::end( m_list ) );
         }
     }
+
     void StampList::ClearCatalogLinks( )
     {
         for ( int i = 0; i < m_list.size( ); i++ )

@@ -125,7 +125,9 @@ namespace Catalog {
         }
     }
 
-    wxString Entry::GetAccuracy( ) { return GetAttr( DT_Accuracy ); };
+    wxString Entry::GetAccuracy( ) {
+        return GetAttr( DT_Accuracy );
+    };
 
     DataTypes Entry::FindDataType( wxString name )
     {
@@ -153,7 +155,9 @@ namespace Catalog {
         return wxString( "" );
     }
 
-    wxString Entry::GetCatalogCodes( ) { return GetAttr( DT_Catalog_Codes ); };
+    wxString Entry::GetCatalogCodes( ) {
+        return GetAttr( DT_Catalog_Codes );
+    };
 
     wxString Entry::GetClassificationName( Entry* entry, CatalogBaseType type )
     {
@@ -190,15 +194,21 @@ namespace Catalog {
                 break;
             }
             default:
-                return wxString( "" );
+            return wxString( "" );
         }
     }
 
-    wxString Entry::GetColors( ) { return GetAttr( DT_Colors ); };
+    wxString Entry::GetColors( ) {
+        return GetAttr( DT_Colors );
+    };
 
-    wxString Entry::GetCountry( ) { return GetAttr( DT_Country ); };
+    wxString Entry::GetCountry( ) {
+        return GetAttr( DT_Country );
+    };
 
-    wxString Entry::GetCurrency( ) { return GetAttr( DT_Currency ); };
+    wxString Entry::GetCurrency( ) {
+        return GetAttr( DT_Currency );
+    };
 
     wxString Entry::GetDecade( )
     {
@@ -216,13 +226,21 @@ namespace Catalog {
         return decade;
     }
 
-    wxString Entry::GetDescription( ) { return GetAttr( DT_Description ); };
+    wxString Entry::GetDescription( ) {
+        return GetAttr( DT_Description );
+    };
 
-    wxString Entry::GetEmission( ) { return GetAttr( DT_Emission ); };
+    wxString Entry::GetEmission( ) {
+        return GetAttr( DT_Emission );
+    };
 
-    wxString Entry::GetExpiryDate( ) { return GetAttr( DT_Expiry_date ); };
+    wxString Entry::GetExpiryDate( ) {
+        return GetAttr( DT_Expiry_date );
+    };
 
-    wxString Entry::GetFaceValue( ) { return GetAttr( DT_FaceValue ); };
+    wxString Entry::GetFaceValue( ) {
+        return GetAttr( DT_FaceValue );
+    };
 
     wxXmlNode* Entry::GetFirstChildCode( )
     {
@@ -243,7 +261,9 @@ namespace Catalog {
         }
         return ( wxXmlNode* ) 0;
     }
-    wxString Entry::GetFormat( ) { return GetAttr( DT_Format ); };
+    wxString Entry::GetFormat( ) {
+        return GetAttr( DT_Format );
+    };
 
     FormatType Entry::GetFormatType( )
     {
@@ -259,11 +279,17 @@ namespace Catalog {
         return ( FormatType ) FT_FormatUnknown;
     }
 
-    wxString Entry::GetGum( ) { return GetAttr( DT_Gum ); };
+    wxString Entry::GetGum( ) {
+        return GetAttr( DT_Gum );
+    };
 
-    wxString Entry::GetHeight( ) { return GetAttr( DT_Height ); };
+    wxString Entry::GetHeight( ) {
+        return GetAttr( DT_Height );
+    };
 
-    wxString Entry::GetMount( ) { return GetAttr( DT_StampMount ); };
+    wxString Entry::GetMount( ) {
+        return GetAttr( DT_StampMount );
+    };
 
     wxString Entry::GetID( )
     {
@@ -306,10 +332,12 @@ namespace Catalog {
         return ( InventoryStatusType ) ST_Exclude;
     };
 
-    wxString Entry::GetIssuedDate( ) { return GetAttr( DT_Issued_on ); };
+    wxString Entry::GetIssuedDate( ) {
+        return GetAttr( DT_Issued_on );
+    };
     wxString Entry::GetLabel( )
     {
-        wxString label = GetID( );
+        wxString label = GetPreferredCode( );
         wxString height = GetHeight( );
         wxString width = GetWidth( );
         wxString imageName = FindImageName( );
@@ -334,9 +362,22 @@ namespace Catalog {
 
         return label;
     };
-    wxString Entry::GetLink( ) { return GetAttr( DT_Link ); };
+    wxString Entry::GetLink( ) {
+        return GetAttr( DT_Link );
+    };
 
-    wxString Entry::GetName( ) { return GetAttr( DT_Name ); };
+    wxString Entry::GetName( )
+    {
+        return GetAttr( DT_Name );
+    };
+
+    wxString Entry::GetPreferredCode( )
+    {
+        wxString catCodeStr = GetCatalogCodes( );
+        Catalog::CatalogCode catCodeArray( catCodeStr );
+        wxString preferredID = catCodeArray.GetPreferredCatalogCode( GetSettings( )->GetCatalogID( ) );
+        return preferredID;
+    }
 
     wxXmlNode* Entry::GetNextChildCode( wxXmlNode* ele )
     {
@@ -357,9 +398,13 @@ namespace Catalog {
         return ( wxXmlNode* ) 0;
     }
 
-    wxString Entry::GetPaper( ) { return GetAttr( DT_Paper ); };
+    wxString Entry::GetPaper( ) {
+        return GetAttr( DT_Paper );
+    };
 
-    wxString Entry::GetPerforation( ) { return GetAttr( DT_Perforation ); };
+    wxString Entry::GetPerforation( ) {
+        return GetAttr( DT_Perforation );
+    };
 
     wxString Entry::GetPeriod( )
     {
@@ -391,21 +436,37 @@ namespace Catalog {
         }
     }
 
-    wxString Entry::GetPrinting( ) { return GetAttr( DT_Printing ); };
+    wxString Entry::GetPrinting( ) {
+        return GetAttr( DT_Printing );
+    };
 
-    wxString Entry::GetPrintRun( ) { return GetAttr( DT_Print_run ); };
+    wxString Entry::GetPrintRun( ) {
+        return GetAttr( DT_Print_run );
+    };
 
-    wxString Entry::GetScore( ) { return GetAttr( DT_Score ); };
+    wxString Entry::GetScore( ) {
+        return GetAttr( DT_Score );
+    };
 
-    wxString Entry::GetSeries( ) { return GetAttr( DT_Series ); };
+    wxString Entry::GetSeries( ) {
+        return GetAttr( DT_Series );
+    };
 
-    wxString Entry::GetThemes( ) { return GetAttr( DT_Themes ); };
+    wxString Entry::GetThemes( ) {
+        return GetAttr( DT_Themes );
+    };
 
-    wxString Entry::GetVariant( ) { return GetAttr( DT_Variant ); };
+    wxString Entry::GetVariant( ) {
+        return GetAttr( DT_Variant );
+    };
 
-    wxString Entry::GetWatermark( ) { return GetAttr( DT_Watermark ); };
+    wxString Entry::GetWatermark( ) {
+        return GetAttr( DT_Watermark );
+    };
 
-    wxString Entry::GetWidth( ) { return GetAttr( DT_Width ); };
+    wxString Entry::GetWidth( ) {
+        return GetAttr( DT_Width );
+    };
 
     wxString Entry::GetYear( )
     {
@@ -498,7 +559,9 @@ namespace Catalog {
         return m_OK;
     };
 
-    void Entry::SetAccuracy( wxString val ) { SetAttr( DT_Accuracy, val ); };
+    void Entry::SetAccuracy( wxString val ) {
+        SetAttr( DT_Accuracy, val );
+    };
 
     void Entry::SetAttr( DataTypes type, wxString val )
     {
@@ -508,50 +571,96 @@ namespace Catalog {
         };
     }
 
-    void Entry::SetColors( wxString val ) { SetAttr( DT_Colors, val ); };
+    void Entry::SetColors( wxString val ) {
+        SetAttr( DT_Colors, val );
+    };
 
-    void Entry::SetCountry( wxString val ) { SetAttr( DT_Country, val ); };
+    void Entry::SetCountry( wxString val ) {
+        SetAttr( DT_Country, val );
+    };
 
-    void Entry::SetCurrency( wxString val ) { SetAttr( DT_Currency, val ); };
+    void Entry::SetCurrency( wxString val ) {
+        SetAttr( DT_Currency, val );
+    };
 
-    void Entry::SetDescription( wxString val ) { SetAttr( DT_Description, val ); };
+    void Entry::SetDescription( wxString val ) {
+        SetAttr( DT_Description, val );
+    };
 
-    void Entry::SetExpiryDate( wxString val ) { SetAttr( DT_Expiry_date, val ); };
+    void Entry::SetExpiryDate( wxString val ) {
+        SetAttr( DT_Expiry_date, val );
+    };
 
-    void Entry::SetEmission( wxString val ) { SetAttr( DT_Emission, val ); };
+    void Entry::SetEmission( wxString val ) {
+        SetAttr( DT_Emission, val );
+    };
 
-    void Entry::SetFaceValue( wxString val ) { SetAttr( DT_FaceValue, val ); };
+    void Entry::SetFaceValue( wxString val ) {
+        SetAttr( DT_FaceValue, val );
+    };
 
-    void Entry::SetFormat( wxString val ) { SetAttr( DT_Format, val ); };
+    void Entry::SetFormat( wxString val ) {
+        SetAttr( DT_Format, val );
+    };
 
-    void Entry::SetGum( wxString val ) { SetAttr( DT_Gum, val ); };
+    void Entry::SetGum( wxString val ) {
+        SetAttr( DT_Gum, val );
+    };
 
-    void Entry::SetHeight( wxString val ) { SetAttr( DT_Height, val ); };
+    void Entry::SetHeight( wxString val ) {
+        SetAttr( DT_Height, val );
+    };
 
-    void Entry::SetIssuedDate( wxString val ) { SetAttr( DT_Issued_on, val ); };
+    void Entry::SetIssuedDate( wxString val ) {
+        SetAttr( DT_Issued_on, val );
+    };
 
-    void Entry::SetLink( wxString val ) { SetAttr( DT_Link, val ); };
+    void Entry::SetLink( wxString val ) {
+        SetAttr( DT_Link, val );
+    };
 
-    void Entry::SetName( wxString val ) { SetAttr( DT_Name, val ); };
+    void Entry::SetName( wxString val ) {
+        SetAttr( DT_Name, val );
+    };
 
-    void Entry::SetPaper( wxString val ) { SetAttr( DT_Paper, val ); };
+    void Entry::SetPaper( wxString val ) {
+        SetAttr( DT_Paper, val );
+    };
 
-    void Entry::SetPerforation( wxString val ) { SetAttr( DT_Perforation, val ); };
+    void Entry::SetPerforation( wxString val ) {
+        SetAttr( DT_Perforation, val );
+    };
 
-    void Entry::SetPrinting( wxString val ) { SetAttr( DT_Printing, val ); };
+    void Entry::SetPrinting( wxString val ) {
+        SetAttr( DT_Printing, val );
+    };
 
-    void Entry::SetPrintRun( wxString val ) { SetAttr( DT_Print_run, val ); };
+    void Entry::SetPrintRun( wxString val ) {
+        SetAttr( DT_Print_run, val );
+    };
 
-    void Entry::SetScore( wxString val ) { SetAttr( DT_Score, val ); };
+    void Entry::SetScore( wxString val ) {
+        SetAttr( DT_Score, val );
+    };
 
-    void Entry::SetSeries( wxString val ) { SetAttr( DT_Series, val ); };
+    void Entry::SetSeries( wxString val ) {
+        SetAttr( DT_Series, val );
+    };
 
-    void Entry::SetThemes( wxString val ) { SetAttr( DT_Themes, val ); };
+    void Entry::SetThemes( wxString val ) {
+        SetAttr( DT_Themes, val );
+    };
 
-    void Entry::SetVariant( wxString val ) { SetAttr( DT_Variant, val ); };
+    void Entry::SetVariant( wxString val ) {
+        SetAttr( DT_Variant, val );
+    };
 
-    void Entry::SetWidth( wxString val ) { SetAttr( DT_Width, val ); };
+    void Entry::SetWidth( wxString val ) {
+        SetAttr( DT_Width, val );
+    };
 
-    void Entry::SetWatermark( wxString val ) { SetAttr( DT_Watermark, val ); };
+    void Entry::SetWatermark( wxString val ) {
+        SetAttr( DT_Watermark, val );
+    };
 
 }

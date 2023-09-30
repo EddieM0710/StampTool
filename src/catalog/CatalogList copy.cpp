@@ -217,7 +217,7 @@ namespace Catalog {
             itr != m_catalogArray.end( ); itr++ )
         {
             CatalogVolume* vol = itr->second;
-            if ( !str.Cmp( vol->GetName( ) ) )
+            if ( !str.Cmp( vol->GetVolumeName( ) ) )
             {
                 return itr;
             }
@@ -264,8 +264,8 @@ namespace Catalog {
 
     int WayToSort( Catalog::CatalogVolume* sect1, Catalog::CatalogVolume* sect2 )
     {
-        wxString name1 = sect1->GetName( );
-        wxString name2 = sect2->GetName( );
+        wxString name1 = sect1->GetVolumeName( );
+        wxString name2 = sect2->GetVolumeName( );
         return name1.compare( name2 );
     }
     //
@@ -280,9 +280,9 @@ namespace Catalog {
         {
             wxString filename = Utils::GetAttrStr( child, "FileName" );
             Catalog::CatalogVolume* vol = Catalog::NewCatalogVolumeInstance( );
-            vol->SetFilename( filename );
+            vol->SetVolumeFilename( filename );
             vol->Load( );
-            wxString volName = vol->GetName( );
+            wxString volName = vol->GetVolumeName( );
             Utils::SetAttrStr( child, "VolumeName", volName );
 
             Insert( volName, vol );
@@ -301,7 +301,6 @@ namespace Catalog {
             AddChild( grandChild );
             grandChild = grandChild->GetNext( );
         }
-
         return child;
     }
 

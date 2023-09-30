@@ -36,13 +36,14 @@
 
 #include "gui/AlbumTreeCtrl.h"
 #include "wx/imaglist.h"
+#include "wx/notebook.h"
 
 
 #include "gui/AlbumTreePanel.h"
 #include "gui/GuiDefs.h"
  //#include "gui/AppData.h"
 #include "design/AlbumData.h"
-
+#include "gui/AlbumTOCTreeCtrl.h"
  /*
   * AlbumTreePanel type definition
   */
@@ -94,12 +95,41 @@ void AlbumTreePanel::CreateControls( )
     //    std::cout << "AlbumTreePanel" << "\n";
     AlbumTreePanel* itemPanel1 = this;
 
-    wxBoxSizer* itemBoxSizer1 = new wxBoxSizer( wxVERTICAL );
-    itemPanel1->SetSizer( itemBoxSizer1 );
+    // wxBoxSizer* topHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
 
-    m_albumTreeCtrl = new AlbumTreeCtrl( itemPanel1, ID_ALBUMTREECTRL, wxDefaultPosition, wxSize( 100, 100 ), wxTR_HAS_BUTTONS | wxTR_FULL_ROW_HIGHLIGHT | wxTR_SINGLE | wxSUNKEN_BORDER | wxTR_DEFAULT_STYLE );
-    itemBoxSizer1->Add( m_albumTreeCtrl, 1, wxGROW | wxALL, 5 );
+    wxBoxSizer* topVerticalSizer = new wxBoxSizer( wxVERTICAL );
+    itemPanel1->SetSizer( topVerticalSizer );
 
+    //topHorizontalSizer->Add( topVerticalSizer, 0, wxGROW | wxALL, 5 );
+
+    wxBoxSizer* nameHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
+    topVerticalSizer->Add( nameHorizontalSizer, 0, wxGROW | wxALL, 5 );
+
+
+    wxStaticText* albumListStatic = new wxStaticText(
+        itemPanel1, wxID_STATIC, _( "Album List" ), wxDefaultPosition, wxDefaultSize, 0 );
+    nameHorizontalSizer->Add( albumListStatic, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+    int ID_LISTCHOICE = 1234;
+    m_albumListCtrl = new wxTextCtrl( itemPanel1, ID_LISTCHOICE, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+    Connect( ID_LISTCHOICE, wxEVT_CONTEXT_MENU, wxContextMenuEventHandler( AlbumTreePanel::OnContextMenu ) );//, NULL, this );
+
+    // nameHorizontalSizer->Add( m_albumListCtrl, 1, wxGROW | wxALL, 5 );
+    nameHorizontalSizer->Add( m_albumListCtrl, 0, wxALIGN_CENTER_VERTICAL | wxALL, 0 );
+
+    int lastID = 10;
+    m_albumTreePanelNotebook = new wxNotebook( itemPanel1, ++lastID, wxDefaultPosition, wxDefaultSize, wxBK_DEFAULT );
+    topVerticalSizer->Add( m_albumTreePanelNotebook, 1, wxGROW | wxALL, 5 );
+
+    m_tocTreeCtrl = new AlbumTOCTreeCtrl( m_albumTreePanelNotebook, ID_AlbumTOCTreeCtrl, wxDefaultPosition, wxDefaultSize, wxTR_HAS_BUTTONS | wxTR_FULL_ROW_HIGHLIGHT | wxTR_SINGLE | wxSUNKEN_BORDER | wxTR_DEFAULT_STYLE );
+    m_albumTreePanelNotebook->AddPage( m_tocTreeCtrl, _( "  TOC  " ) );
+
+    GetAlbumData( )->SetAlbumTOCTreeCtrl( m_tocTreeCtrl );
+
+    m_albumTreeCtrl = new AlbumTreeCtrl( m_albumTreePanelNotebook, ID_ALBUMTREECTRL, wxDefaultPosition, wxSize( 100, 100 ), wxTR_HAS_BUTTONS | wxTR_FULL_ROW_HIGHLIGHT | wxTR_SINGLE | wxSUNKEN_BORDER | wxTR_DEFAULT_STYLE );
+    m_albumTreePanelNotebook->AddPage( m_albumTreeCtrl, _( "  Layout  " ) );
+    // itemBoxSizer1->Add( m_albumTreeCtrl, 1, wxGROW | wxALL, 5 );
+
+    Layout( );
     GetAlbumData( )->SetAlbumTreeCtrl( m_albumTreeCtrl );
 }
 
@@ -124,3 +154,24 @@ bool AlbumTreePanel::ShowToolTips( )
     return true;
 }
 
+
+
+void AlbumTreePanel::OnContextMenu( wxContextMenuEvent& event )
+{
+    wxPoint point = event.GetPosition( );
+
+    point = ScreenToClient( point );
+    wxMenu* menu = m_tocTreeCtrl->GetMenu( );
+
+    //PopupMenu( menu, point.x, point.y );
+
+
+    int id = GetPopupMenuSelectionFromUser( *menu, point.x, point.y );
+
+    wxTreeItemId treeId = GetAlbumData( )->GetAlbumList( ).FindMenuID( id );
+    m_tocTreeCtrl->SelectItem( treeId );
+
+    TOCTreeItemData* data = ( TOCTreeItemData* ) m_tocTreeCtrl->GetItemData( treeId );
+    wxString name = m_tocTreeCtrl->GetItemText( treeId );
+    m_albumListCtrl->SetValue( name );
+}

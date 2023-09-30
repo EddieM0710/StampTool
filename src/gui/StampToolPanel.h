@@ -143,12 +143,29 @@ public:
 
     void UpdateStatus( );
 
-    CatalogPanel* GetCatalogPagePanel( ) { return m_catalogTreePanel; };
-    AlbumTreePanel* GetAlbumTreePanel( ) { return m_albumAlbumPanel->GetAlbumTreePanel( ); };
-    AlbumPanel* GetAlbumPanel( ) { return m_albumAlbumPanel; };
-    GenerateList* GetGenerateListPanel( ) { return m_generateListPanel; };
+    CatalogPanel* GetCatalogPagePanel( ) {
+        return m_catalogTreePanel;
+    };
+    AlbumTreePanel* GetAlbumTreePanel( ) {
+        return m_albumAlbumPanel->GetAlbumTreePanel( );
+    };
+    AlbumPanel* GetAlbumPanel( ) {
+        return m_albumAlbumPanel;
+    };
+    GenerateList* GetGenerateListPanel( ) {
+        return m_generateListPanel;
+    };
 
 
+    void SetPage( int page )
+    {
+        m_notebook->SetSelection( page );
+    }
+
+    wxWindow* GetPage( )
+    {
+        return m_notebook->GetPage( m_notebook->GetSelection( ) );
+    }
 
     wxNotebook* m_notebook;
     wxFlexGridSizer* m_sizer;

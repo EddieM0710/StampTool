@@ -41,6 +41,7 @@
 #include "gui/AlbumPanel.h"
  //#include "gui/AppData.h"
 #include "gui/StampToolFrame.h"
+#include "gui/TOCTreeCtrl.h"
 
 #include "Defs.h"
 
@@ -50,105 +51,47 @@
 
 namespace Design {
 
-    bool AlbumList::ClearAlbumVolumeArray( )
-    {
-        while ( !m_albumVolumeArray.empty( ) )
-        {
-            AlbumVolume* albumVolume = m_albumVolumeArray.back( );
-            if ( albumVolume->IsOK( ) ) delete albumVolume;
-            m_albumVolumeArray.pop_back( );
-        }
-        return true;
-    }
+    // void AlbumList::LoadAlbums( )
+    // {
+    //     for ( Design::AlbumVolumeArray::iterator it = std::begin( m_albumVolumeArray );
+    //         it != std::end( m_albumVolumeArray );
+    //         ++it )
+    //     {
+    //         Design::AlbumVolume* albumVolume = ( Design::AlbumVolume* ) ( *it );
+    //         albumVolume->LoadXML( );
+    //         wxString name = albumVolume->GetAlbumName( );
+    //         if ( !name.IsEmpty( ) )
+    //         {
+    //             name = albumVolume->GetAlbumFilename( );
+    //             wxFileName fn( name );
+    //             albumVolume->SetAlbumName( fn.GetName( ) );
+    //         }
+    //     }
 
-    void AlbumList::BuildVolumeNameStrings( )
-    {
-        m_albumNameStrings.Clear( );
-        for ( Design::AlbumVolumeArray::iterator it = std::begin( m_albumVolumeArray );
-            it != std::end( m_albumVolumeArray );
-            ++it )
-        {
-            Design::AlbumVolume* volume = ( Design::AlbumVolume* ) ( *it );
-            m_albumNameStrings.Add( volume->GetAlbumName( ) );
-        }
-    }
-    Design::AlbumVolume* AlbumList::GetAlbumVolume( )
-    {
-        if ( m_albumVolumeNdx >= 0 )
-        {
-            if ( !m_albumVolumeArray.empty( ) )
-            {
-                return m_albumVolumeArray.at( m_albumVolumeNdx );
-            }
-        }
-        return ( Design::AlbumVolume* ) 0;
-    };
+    //     if ( m_albumVolumeArray.size( ) > 1 )
+    //     {
+    //         sort( m_albumVolumeArray.begin( ), m_albumVolumeArray.end( ), WayToSort );
+    //     }
+    //     m_albumNameStrings.Clear( );
+    //     for ( Design::AlbumVolumeArray::iterator it = std::begin( m_albumVolumeArray );
+    //         it != std::end( m_albumVolumeArray );
+    //         ++it )
+    //     {
+    //         Design::AlbumVolume* album = ( Design::AlbumVolume* ) ( *it );
+    //         m_albumNameStrings.Add( album->GetAlbumName( ) );
+    //     }
+    //     AlbumPanel* albPanel = GetFrame( )->GetAlbumPanel( );
+    //     //  albPanel->SetAlbumListStrings( m_albumNameStrings );
+    //     m_currVolume = album;
+    //     // albPanel->SetAlbumListSelection( m_albumVolumeNdx );
 
-    void AlbumList::LoadAlbums( )
+    // };
+
+    Design::AlbumVolume* AlbumList::NewVolumeInstance( )
     {
-        for ( Design::AlbumVolumeArray::iterator it = std::begin( m_albumVolumeArray );
-            it != std::end( m_albumVolumeArray );
-            ++it )
-        {
-            Design::AlbumVolume* albumVolume = ( Design::AlbumVolume* ) ( *it );
-            albumVolume->LoadXML( );
-            wxString name = albumVolume->GetAlbumName( );
-            if ( !name.IsEmpty( ) )
-            {
-                name = albumVolume->GetAlbumFilename( );
-                wxFileName fn( name );
-                albumVolume->SetAlbumName( fn.GetName( ) );
-            }
-        }
-
-        if ( m_albumVolumeArray.size( ) > 1 )
-        {
-            sort( m_albumVolumeArray.begin( ), m_albumVolumeArray.end( ), WayToSort );
-        }
-        m_albumNameStrings.Clear( );
-        for ( Design::AlbumVolumeArray::iterator it = std::begin( m_albumVolumeArray );
-            it != std::end( m_albumVolumeArray );
-            ++it )
-        {
-            Design::AlbumVolume* album = ( Design::AlbumVolume* ) ( *it );
-            m_albumNameStrings.Add( album->GetAlbumName( ) );
-        }
-        AlbumPanel* albPanel = GetFrame( )->GetAlbumPanel( );
-        albPanel->SetAlbumListStrings( m_albumNameStrings );
-        m_albumVolumeNdx = 0;
-        albPanel->SetAlbumListSelection( m_albumVolumeNdx );
-
-    };
-
-    Design::AlbumVolume* AlbumList::NewAlbumVolume( )
-    {
-        Design::AlbumVolume* albumVolume = Design::NewAlbumVolumeInstance( );
-        m_albumVolumeArray.push_back( albumVolume );
-        m_albumVolumeNdx = m_albumVolumeArray.size( ) - 1;
+        Design::AlbumVolume* albumVolume = Design::NewAlbumVolume( );
         return albumVolume;
     }
 
-    void AlbumList::SaveAlbums( )
-    {
-        for ( Design::AlbumVolumeArray::iterator it = std::begin( m_albumVolumeArray );
-            it != std::end( m_albumVolumeArray );
-            ++it )
-        {
-            Design::AlbumVolume* album = ( Design::AlbumVolume* ) ( *it );
-            album->SaveXML( );
-        }
-    };
 
-    void AlbumList::SetAlbumVolumeNdx( int i )
-    {
-        m_albumVolumeNdx = i;
-        GetAlbumData( )->LoadDesignTree( );
-    };
-
-    int WayToSort( Design::AlbumVolume* sect1, Design::AlbumVolume* sect2 )
-    {
-        wxString name1 = sect1->GetAlbumName( );
-        wxString name2 = sect2->GetAlbumName( );
-        return name1.compare( name2 );
-    }
 }

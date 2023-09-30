@@ -60,6 +60,7 @@
 #include "gui/StampToolFrame.h"
 #include "gui/StampToolPanel.h"
 #include "gui/CatalogTreeCtrl.h"
+#include "gui/CatalogTOCTreeCtrl.h"
 #include "gui/AlbumTreeCtrl.h"
 #include "gui/NewStampDialog.h"
 
@@ -120,6 +121,7 @@ wxTreeItemId CatalogTreeCtrl::AddChild( wxTreeItemId parent, wxXmlNode* child )
         return 0;
     }
     wxTreeItemId childID = AppendItem( parent, label, icon, -1, itemData );
+
 
 
     if ( nodeType == Catalog::NT_Entry )
@@ -842,30 +844,27 @@ void CatalogTreeCtrl::LogEvent( const wxString& name, const wxTreeEvent& event )
 void CatalogTreeCtrl::LoadTree( )
 {
     ClearCatalogTree( );
-    Catalog::CatalogVolume* catalogVolume = GetCatalogVolume( );
-    if ( catalogVolume )
-    {
-        wxXmlDocument* entryDoc = catalogVolume->GetDoc( );
-        //   XMLDump( entryDoc );
-        wxXmlNode* root = entryDoc->GetRoot( );
-        wxString name = root->GetName( );
-        // Create the root item
-        CatalogTreeItemData* itemData
-            = new CatalogTreeItemData( Catalog::NT_Catalog, name, root );
-        wxTreeItemId rootID = AddRoot( name, Catalog::Icon_Folder, 1, itemData );
 
-        wxXmlNode* child = root->GetChildren( );
-        while ( child )
-        {
-            // start adding child elements to it.
-            AddChild( rootID, child );
-            child = child->GetNext( );
-        }
-        //        SortTree( rootID );
-        GetAlbumTreeCtrl( )->UpdateStampList( );
-        SetStates( GetFrame( )->GetStampToolPanel( )->ShouldShowStates( ) );
-        Expand( rootID );
+    wxXmlNode* root = GetCatalogTOCTreeCtrl( )->GetCurrVolumeRoot( );
+    wxString name = root->GetName( );
+    // Create the root item
+    CatalogTreeItemData* itemData
+        = new CatalogTreeItemData( Catalog::NT_Catalog, name, root );
+    wxTreeItemId rootID = AddRoot( name, Catalog::Icon_Folder, 1, itemData );
+
+    wxXmlNode* child = root->GetChildren( );
+
+    while ( child )
+    {
+        // start adding child elements to it.
+        AddChild( rootID, child );
+        child = child->GetNext( );
     }
+    //        SortTree( rootID );
+    GetAlbumTreeCtrl( )->UpdateStampList( );
+    SetStates( GetFrame( )->GetStampToolPanel( )->ShouldShowStates( ) );
+    Expand( rootID );
+
 }
 
 //--------------
@@ -1292,8 +1291,8 @@ void CatalogTreeCtrl::ShowMenu( wxTreeItemId id, const wxPoint& pt )
         }
         break;
         default:
-            // Fall through.
-            break;
+        // Fall through.
+        break;
     }
 }
 
@@ -1480,7 +1479,9 @@ void CatalogTreeCtrl::OnTreectrlItemCollapsed( wxTreeEvent& event )
     wxTreeItemId id = event.GetItem( );
     if ( !id.IsOk( ) )
     {
-        while ( 1 ) { }
+        while ( 1 )
+        {
+        }
     }
     wxString before = GetAttribute( id, Catalog::XMLDataNames[ Catalog::DT_CollapseState ] );
     SetAttribute( id, Catalog::XMLDataNames[ Catalog::DT_CollapseState ], "true" );

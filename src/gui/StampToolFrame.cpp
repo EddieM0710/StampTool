@@ -539,7 +539,7 @@ void StampToolFrame::NewProject( )
             wxT( "The current data has been changed but not saved. \n"\
                 "Select \"OK\" to close the file losing the changes.\n"\
                 "Or select \"Cancel\" to quit file open process.\n" ),
-            wxT( "Warning! Unsaved modifications.\n" ),
+            wxT( " Warning! Unsaved modifications.\n" ),
             wxOK | wxCANCEL | wxCENTER );
         int rsp = dlg->ShowModal( );
         if ( rsp == wxID_CANCEL )
@@ -576,7 +576,7 @@ void StampToolFrame::OpenProject( )
             wxT( "The current data has been changed but not saved. \n"\
                 "Select \"OK\" to close the file losing the changes.\n"\
                 "Or select \"Cancel\" to quit file open process.\n" ),
-            wxT( "Warning! Unsaved modifications.\n" ),
+            wxT( " Warning! Unsaved modifications.\n" ),
             wxOK | wxCANCEL | wxCENTER );
         int rsp = dlg->ShowModal( );
         if ( rsp == wxID_CANCEL )

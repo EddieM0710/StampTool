@@ -122,7 +122,7 @@ namespace Utils
                 wxString txt = wxString::Format( "%s Stream Create Failed.\n\n", m_filename );
                 wxMessageDialog* dlg = new wxMessageDialog(
                     GetFrame( ), txt,
-                    wxT( "Warning! Stream Create Failed.\n" ),
+                    wxT( " Warning! Stream Create Failed.\n" ),
                     wxOK | wxCANCEL | wxCENTER );
                 int rsp = dlg->ShowModal( );
                 return;
@@ -134,7 +134,7 @@ namespace Utils
                 wxString txt = wxString::Format( "\n%s Stream  Failed. Error: %d\n\n.", m_filename, err );
                 wxMessageDialog* dlg = new wxMessageDialog(
                     GetFrame( ), txt,
-                    wxT( "Warning! Stream Load Failed.\n" ),
+                    wxT( " Warning! Stream Load Failed.\n" ),
                     wxOK | wxCANCEL | wxCENTER );
                 int rsp = dlg->ShowModal( );
                 return;

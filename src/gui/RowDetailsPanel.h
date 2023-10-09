@@ -159,6 +159,8 @@ public:
     void OnTitleCheckboxClick( wxCommandEvent& event );
     void OnSubTitleCheckboxClick( wxCommandEvent& event );
 
+    void OnFrameCheckboxClick( wxCommandEvent& event );
+
 
 
     void OnTitleFontPicker( wxFontPickerEvent& event );

@@ -100,9 +100,12 @@ public:
     ///  
     void CreateControls( );
     void Init( );
+    wxStaticBox* SetupBoxSizer( wxWindow* parent, wxBoxSizer* inSizer, wxString name,
+        int& lastID, wxBoxSizer*& boxSizer, wxOrientation orientation );
 
     wxTextCtrl* SetupLabelText( wxWindow* parent, wxBoxSizer* verticalSizer,
         int& lastID, wxString label, bool grow, wxObjectEventFunction  eventHandler );
+
 
     wxCheckBox* SetupCheckBox( wxWindow* parent, wxBoxSizer* sizer,
         int& lastID, wxString label, wxObjectEventFunction  eventHandler );
@@ -118,6 +121,9 @@ public:
         wxObjectEventFunction  fontPicker,
         wxObjectEventFunction  colorPicker,
         wxObjectEventFunction  defaultButtonHandler );
+
+    wxRadioButton* SetupRadioButton( wxWindow* parent, wxBoxSizer* sizer, int& lastID,
+        wxString label, bool initValue, wxObjectEventFunction  eventHandler );
 
     TitleHelper* SetupTitleHelper( wxWindow* parent, wxBoxSizer* verticalSizer, int& idLast,
         int style = DefaultTitleHelperStyle,

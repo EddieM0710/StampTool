@@ -44,7 +44,9 @@
 namespace Utils {
 
     int FontCount = -1;
-    int GetFontCount( ) { FontCount++; return FontCount; };
+    int GetFontCount( ) {
+        FontCount++; return FontCount;
+    };
 
     void FontList::InitFonts( )
     {
@@ -213,9 +215,10 @@ namespace Utils {
         wxXmlNode* fontNode = FindFirstChildWithPropertyofValue( parent,
             Design::AttrNameStrings[ Design::AT_FontType ],
             Design::FontUsageTypeStrings[ type ] );
+        wxString nativeString;
         if ( fontNode )
         {
-            wxString nativeString = fontNode->GetAttribute( Design::AttrNameStrings[ Design::AT_NativeFontString ] );
+            nativeString = fontNode->GetAttribute( Design::AttrNameStrings[ Design::AT_NativeFontString ] );
             wxString colorStr = fontNode->GetAttribute( Design::AttrNameStrings[ Design::AT_FontColor ] );
             wxFont font = wxFont( nativeString );
             wxColour color = wxColour( colorStr );
@@ -228,6 +231,12 @@ namespace Utils {
                 return fontNdx;
             }
         }
+        else
+        {
+            // std::cout << " FontList::LoadFont  " << Design::FontUsageTypeStrings[ type ]
+            //     << "  not " << nativeString << "\n";
+        }
+
         fontNdx = -1;
         GetSettings( )->GetFontNdxPreference( type );
         // std::cout << " FontList::LoadFont(default) " << Design::FontUsageTypeStrings[ type ]

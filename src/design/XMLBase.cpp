@@ -48,7 +48,7 @@ namespace Design {
             SetObjectName( name );
             m_lineNbr = ele->GetLineNumber( );
 
-            //            std::cout << "XMLBase::XMLBase " << name << " line:" << m_lineNbr << "\n";
+            //std::cout << "XMLBase::XMLBase " << name << " line:" << m_lineNbr << "\n";
             LoadAttributes( ele );
             m_text = ele->GetNodeContent( );
         }
@@ -191,12 +191,12 @@ namespace Design {
         {
             const char* name = attr->GetName( );
             const char* val = attr->GetValue( );
-            //            std::cout << "    XMLBase::LoadAttributes  " << name << "  " << val << "\n";
+            //std::cout << "    XMLBase::LoadAttributes  " << name << "  " << val << "\n";
             Attribute* attribute = new Attribute( name, val );
             m_attrArray.push_back( attribute );
             attr = attr->GetNext( );
         }
-        //        DumpAttr( );
+        // DumpAttr( );
         return true;
     }
 

@@ -122,7 +122,7 @@ namespace Design {
         "Row",
         "Col",
         "TextBox",
-        "Title",
+        //@@@  "Title",
         "TitlePage",
         "Stamp",
         "Font" };

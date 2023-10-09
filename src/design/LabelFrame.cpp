@@ -129,17 +129,13 @@ namespace Design {
 
     int LabelFrame::SetFont( wxFont newFont, wxColour newColor )
     {
-        std::cout << m_string << " " << newColor.GetAsString( ) << "\n";
-        int ndx = GetFontList( )->AddNewFont( newFont, newColor );
-        if ( !GetAlbum( )->IsDefaultFont( m_fontType, ndx ) )
-        {
-            m_FontNdx = ndx;
-        }
-        //std::cout << "LabelFrame::SetFont ndx:" << ndx << " " << newFont.GetNativeFontInfoDesc( ) << "\n";
+        //std::cout << m_string << " " << newColor.GetAsString( ) << "\n";
+        m_FontNdx = GetFontList( )->AddNewFont( newFont, newColor );
 
-        //Utils::Font* font = GetFontList( )->GetMyFont( ndx );
-        //std::cout << "LabelFrame::SetFont " << Design::FontUsageTypeStrings[ ndx ] << " " << font->GetNativeInfoStr( ) << "\n";
-        return ndx;
+        // std::cout << "LabelFrame::SetFont ndx:" << m_FontNdx << " " << newFont.GetNativeFontInfoDesc( ) << "\n";
+        Utils::Font* font = GetFontList( )->GetMyFont( m_FontNdx );
+        //std::cout << "LabelFrame::SetFont " << Design::FontUsageTypeStrings[ m_FontNdx ] << " " << font->GetNativeInfoStr( ) << "\n";
+        return m_FontNdx;
     };
 
     void LabelFrame::SetFontNdx( int ndx )

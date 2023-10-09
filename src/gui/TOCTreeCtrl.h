@@ -50,17 +50,34 @@ public:
     ///  @param type 
     ///  @param desc 
     ///  @param ele 
-    TOCTreeItemData( Utils::TOCBaseType type, const wxString desc,
-        wxXmlNode* ele = 0, int menuID = 0, VolumePtr vol = 0 )
+    TOCTreeItemData( Utils::TOCBaseType type, bool collapseState = false, wxString name = "",
+        const wxString desc = "", int menuID = 0, VolumePtr vol = 0 )
     {
         m_type = type;
         m_desc = desc;
-        m_element = ele;
+        m_collapseState = collapseState;
+        m_name = name;
+
         m_volume = vol;
         m_menuID = menuID;
         m_ok = 12345;
     };
+    TOCTreeItemData( TOCTreeItemData& src )
+    {
+        Copy( *this, src );
+    };
 
+    void Copy( TOCTreeItemData& lhs, TOCTreeItemData& rhs )
+    {
+        lhs.m_type = rhs.GetType( );
+        lhs.m_desc = rhs.GetDesc( );
+        lhs.m_collapseState = rhs.GetCollapseState( );
+        lhs.m_name = rhs.GetName( );
+
+        lhs.m_volume = rhs.GetVolume( );
+        lhs.m_menuID = rhs.GetMenuID( );
+        lhs.m_ok = rhs.GetOK( );
+    }
     ///  @brief Destroy the Catalog Tree Item Data object
     ///  
     ~TOCTreeItemData( )
@@ -113,9 +130,9 @@ public:
     ///  @brief Get the Node Element object
     ///  
     ///  @return wxXmlNode* 
-    wxXmlNode* GetNodeElement( void ) {
-        return m_element;
-    };
+    // wxXmlNode* GetNodeElement( void ) {
+    //     return m_element;
+    // };
 
     VolumePtr GetVolume( ) {
         return m_volume;
@@ -132,9 +149,9 @@ public:
     ///  @brief Set the Cat Node object
     ///  
     ///  @param ele 
-    void SetCatNode( wxXmlNode* ele ) {
-        m_element = ele;
-    };
+    // void SetCatNode( wxXmlNode* ele ) {
+    //     m_element = ele;
+    // };
 
     ///  @brief Set the Type object
     ///  
@@ -146,10 +163,42 @@ public:
     int GetMenuID( ){
         return m_menuID;
     };
+    void SetCollapseState( bool state ){
+        m_collapseState = state;
+    };
+    bool GetCollapseState( ){
+        return m_collapseState;
+    };
+
+    void SetName( wxString name ){
+        m_name = name;
+    };
+
+    wxString GetName( ){
+        return m_name;
+    };
+
+    double GetOK( ){
+        return m_ok;
+    };
+
+    TOCTreeItemData& operator=( TOCTreeItemData& other ) noexcept
+    {
+        if ( this == &other )
+            return *this;
+
+        Copy( *this, other );
+        return *this;
+    };
 
 private:
     double m_ok;
-    wxXmlNode* m_element;
+    // wxXmlNode* m_element;
+    bool m_collapseState;
+
+    // filename for VolumeType; sectionName for SectionType
+    wxString m_name;
+
     VolumePtr m_volume;
     int m_menuID;
     wxString m_desc;
@@ -286,14 +335,14 @@ public:
     ///  
     ///  @param node 
     ///  @return wxTreeItemId 
-    wxTreeItemId FindTreeItemID( wxXmlNode* node );
+  //  wxTreeItemId FindTreeItemID( wxXmlNode* node );
 
     ///  @brief 
     ///  
     ///  @param node 
     ///  @param id 
     ///  @return wxTreeItemId 
-    wxTreeItemId FindTreeItemID( wxXmlNode* node, wxTreeItemId id );
+  //  wxTreeItemId FindTreeItemID( wxXmlNode* node, wxTreeItemId id );
 
     ///  @brief 
     ///  
@@ -301,7 +350,7 @@ public:
     ///  @param node 
     ///  @return true 
     ///  @return false 
-    bool IsElement( wxTreeItemId item, wxXmlNode* node );
+ //   bool IsElement( wxTreeItemId item, wxXmlNode* node );
 
 
     ///  @brief 
@@ -317,8 +366,8 @@ public:
      * @param name
      * @return wxString
      */
-    wxString GetAttribute( wxTreeItemId catTreeID, wxString name );
-    void  SetAttribute( wxTreeItemId catTreeID, wxString name, wxString val );
+     //    wxString GetAttribute( wxTreeItemId catTreeID, wxString name );
+     //    void  SetAttribute( wxTreeItemId catTreeID, wxString name, wxString val );
     wxString GetID( wxTreeItemId catTreeID );
     wxString GetImage( wxTreeItemId catTreeID );
 
@@ -339,7 +388,7 @@ public:
     ///  
     ///  @param id 
     ///  @return wxXmlNode* 
-    wxXmlNode* GetItemNode( wxTreeItemId id );
+   // wxXmlNode* GetItemNode( wxTreeItemId id );
 
 
     ///  @brief Get the Item Type object
@@ -354,18 +403,20 @@ public:
      * @param itemId
      * @return Catalog::Entry*
      */
-    wxXmlNode* GetNewEntry( wxTreeItemId itemId );
+     // wxXmlNode* GetNewEntry( wxTreeItemId itemId );
 
 
-    /*
-     * @brief Similar to AddChild except inserts before or after a given child.
-     *
-     * @param parent
-     * @param child
-     * @param after
-     * @return wxTreeItemId
-     */
+      /*
+       * @brief Similar to AddChild except inserts before or after a given child.
+       *
+       * @param parent
+       * @param child
+       * @param after
+       * @return wxTreeItemId
+       */
     wxTreeItemId InsertChild( wxTreeItemId parent, wxXmlNode* child, bool after = true );
+    wxTreeItemId MoveItemAsChild( wxTreeItemId srcID, wxTreeItemId parentID );
+    wxTreeItemId MoveItem( wxTreeItemId srcID, wxTreeItemId destID, bool after );
 
     ///  @brief 
     ///  
@@ -373,7 +424,7 @@ public:
     ///  @param stampID 
     ///  @return true 
     ///  @return false 
-    bool IsElement( wxTreeItemId item, wxString stampID );
+ //   bool IsElement( wxTreeItemId item, wxString stampID );
 
     /*
      * @brief Loads the tree with current catalog volume data.
@@ -504,6 +555,10 @@ public:
     wxMenu* GetMenu( ) {
         return m_menu;
     };
+
+    wxXmlNode* MakeNode( wxTreeItemId treeID, wxXmlNode* parent );
+    void MakeTree( wxTreeItemId parentID, wxXmlNode* parentNode );
+    void MakeTree( wxXmlNode* parentNode );
 
     /*
      * @brief Delete the tree and resort it with the new sort order data.

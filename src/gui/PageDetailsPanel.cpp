@@ -75,11 +75,12 @@ PageDetailsPanel::PageDetailsPanel( )
     Init( );
 }
 
-PageDetailsPanel::PageDetailsPanel( wxWindow* parent, wxWindowID id, const wxString& caption, const wxPoint& pos, const wxSize& size, long style )
+PageDetailsPanel::PageDetailsPanel( wxWindow* parent, wxWindowID id,
+    const wxString& caption, const wxPoint& pos, const wxSize& size, long style )
 {
     Init( );
     Create( parent, id, caption, pos, size, style );
-    SetMinClientSize( wxSize( 100, 100 ) );
+    // SetMinClientSize( wxSize( 100, 100 ) );
 }
 
 
@@ -87,7 +88,8 @@ PageDetailsPanel::PageDetailsPanel( wxWindow* parent, wxWindowID id, const wxStr
  * PageDetailsPanel creator
  */
 
-bool PageDetailsPanel::Create( wxWindow* parent, wxWindowID id, const wxString& caption, const wxPoint& pos, const wxSize& size, long style )
+bool PageDetailsPanel::Create( wxWindow* parent, wxWindowID id,
+    const wxString& caption, const wxPoint& pos, const wxSize& size, long style )
 {
     SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY | wxWS_EX_BLOCK_EVENTS );
     wxPanel::Create( parent, id, pos, size, style );
@@ -164,8 +166,7 @@ void PageDetailsPanel::CreateControls( )
     m_orientationChoice = new wxChoice( theDialog, ID_ORIENTATIONCHOICE, wxDefaultPosition, wxDefaultSize, m_orientationChoiceStrings, 0 );
     m_orientationChoice->SetSelection( Design::AT_Portrait );
 
-    firstRowHorizontalSizer->Add( m_orientationChoice, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
-
+    firstRowHorizontalSizer->Add( m_orientationChoice, 1, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
     //>>error list ctrls
     wxBoxSizer* itemBoxSizer3 = new wxBoxSizer( wxHORIZONTAL );
@@ -175,13 +176,13 @@ void PageDetailsPanel::CreateControls( )
     m_statusList = new wxListBox( theDialog, ID_ERRORLISTCTRL, wxDefaultPosition, wxDefaultSize, m_statusListStrings, wxLB_SINGLE );
     //m_statusList = new wxListBox( theDialog, ID_ERRORLISTCTRL, wxDefaultPosition, wxSize( 100, 100 ), wxLC_REPORT | wxLC_EDIT_LABELS | wxSIMPLE_BORDER );
     itemBoxSizer3->Add( m_statusList, 2, wxGROW | wxALL, 0 );
-
+    Layout( );
 }
 
 
 void PageDetailsPanel::UpdateControls( )
 {
-    SetName( m_page->GetAttrStr( Design::AT_Name ) );
+    SetTitle( m_page->GetAttrStr( Design::AT_Name ) );
     SetSubTitle( m_page->GetAttrStr( Design::AT_SubTitle ) );
     SetTitleFont( m_page->GetTitleFrame( )->GetHeadingFont( ) );
     SetTitleColor( m_page->GetTitleFrame( )->GetHeadingColor( ) );
@@ -308,12 +309,15 @@ void PageDetailsPanel::OnTitleDefaultClick( wxCommandEvent& event )
     wxColour color = fontList->GetColor( ndx );
     m_titleFontPicker->SetSelectedFont( font );
     m_titleColorPicker->SetColour( color );
+    //std::cout << "PageDetailsPanel::OnTitleDefaultClick " << font.GetNativeFontInfoDesc( ) << "\n";
+    m_page->GetTitleFrame( )->SetHeadingFont( font, color );
     event.Skip( );
 }
 
 
 void PageDetailsPanel::OnOrientationchoiceSelected( wxCommandEvent& event )
 {
+    m_page->SetOrientation( Design::OrientationStrings[ m_orientationChoice->GetSelection( ) ] );
     ////@begin wxEVT_COMMAND_CHOICE_SELECTED event handler for ID_ORIENTATIONCHOICE in PageDetailsPanel.
         // Before editing this code, remove the block markers.
     event.Skip( );
@@ -324,7 +328,7 @@ void PageDetailsPanel::OnOrientationchoiceSelected( wxCommandEvent& event )
 
 void PageDetailsPanel::OnSubTitleCheckboxClick( wxCommandEvent& event )
 {
-    m_page->SetShowSubTitle( m_titleHelper->titleCheckbox->GetValue( ) );
+    m_page->SetShowSubTitle( m_titleHelper->subTitleCheckbox->GetValue( ) );
     UpdateSubTitleState( m_titleHelper );
     m_leftColumnVerticalSizer->Layout( );
 };
@@ -338,6 +342,9 @@ void PageDetailsPanel::OnSubTitleDefaultClick( wxCommandEvent& event )
     wxColour color = fontList->GetColor( ndx );
     m_subTitleFontPicker->SetSelectedFont( font );
     m_subTitleColorPicker->SetColour( color );
+    //std::cout << "PageDetailsPanel::OnSubTitleDefaultClick " << font.GetNativeFontInfoDesc( ) << "\n";
+    m_page->GetTitleFrame( )->SetSubHeadingFont( font, color );
+
     event.Skip( );
 }
 
@@ -351,9 +358,13 @@ void PageDetailsPanel::OnTitleCheckboxClick( wxCommandEvent& event )
 
 void PageDetailsPanel::OnTitleTextChanged( wxCommandEvent& event )
 {
+    wxString title = m_titleHelper->titleLabel->GetValue( );
+    m_page->SetTitleString( title );
 }
 void PageDetailsPanel::OnSubTitleTextChanged( wxCommandEvent& event )
 {
+    wxString subTitle = m_titleHelper->subTitleLabel->GetValue( );
+    m_page->SetSubTitleString( subTitle );
 }
 
 void PageDetailsPanel::OnTitleFontPicker( wxFontPickerEvent& event )

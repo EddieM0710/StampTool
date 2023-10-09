@@ -43,25 +43,7 @@ namespace Design {
     public:
 
         Row( wxXmlNode* node );
-        // : LayoutBase( node )
-        // {
-        //     SetNodeType( AT_Row );
 
-        //     m_titleFrame = new LabelFrame( Design::AT_TitleFontType );
-        //     SetTitleString( GetAttrStr( AT_Name ) );
-        //     if ( GetShowTitle( ) )
-        //     {
-        //         m_titleFrame->SetString( GetAttrStr( AT_Name ) );
-        //     }
-        //     else
-        //     {
-        //         m_titleFrame->Init( );
-        //     }
-        //     SetTopContentMargin( 2 );
-        //     SetBottomContentMargin( 2 );
-        //     SetLeftContentMargin( 2 );
-        //     SetRightContentMargin( 2 );
-        // };
 
         ~Row( ) { };
 
@@ -71,13 +53,6 @@ namespace Design {
             return String2Bool( GetAttrStr( AT_CalculateSpacing ) );
         };
 
-        /*
-         * @brief Draw object on screen
-         *
-         * @param dc current device context
-         * @param x position in MM
-         * @param y position in MM
-         */
         void Draw( wxDC& dc, double x, double y );
 
         void DrawPDF( wxPdfDocument* doc, double x, double y );
@@ -112,14 +87,6 @@ namespace Design {
 
         void SetTitleString( wxString str );
 
-        /**
-        * @brief UpdateMinimumSize
-        * Calculates the minimum Height and width of the object. It drills down to
-        * the lowest layout object with an actual size and begins calculating the
-        * min size of its parents as it progresses back up the heirarchy.
-        * @return true
-        * @return false
-        */
         bool UpdateMinimumSize( );
 
         /**

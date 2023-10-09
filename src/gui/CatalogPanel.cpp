@@ -253,7 +253,7 @@ void CatalogPanel::NewCatalogDialog( )
             wxT( "The current data has been changed but not saved. \n"\
                 "Select \"OK\" to close the file losing the changes.\n"\
                 "Or select \"Cancel\" to quit file open process.\n" ),
-            wxT( "Warning! Unsaved modifications.\n" ),
+            wxT( "2 ! Unsaved modifications.\n" ),
             wxOK | wxCANCEL | wxCENTER );
         int rsp = dlg->ShowModal( );
         if ( rsp == wxID_CANCEL )
@@ -485,20 +485,20 @@ wxTreeItemId CatalogPanel::GetPrevLastChild( wxTreeItemId& currID )
         return 0;
     }
     wxString name = m_tocTreeCtrl->GetItemText( parentID );
-    std::cout << name << "\n\n";
+    //std::cout << name << "\n\n";
 
 
     wxTreeItemId nextID = m_tocTreeCtrl->GetPrevSibling( parentID );
     if ( nextID.IsOk( ) )
     {
         wxString name = m_tocTreeCtrl->GetItemText( nextID );
-        std::cout << name << "\n";
+        // std::cout << name << "\n";
 
         nextID = m_tocTreeCtrl->GetLastChild( nextID );
         if ( nextID.IsOk( ) )
         {
             wxString name = m_tocTreeCtrl->GetItemText( nextID );
-            std::cout << name << "\n";
+            //std::cout << name << "\n";
             TOCTreeItemData* data = ( TOCTreeItemData* ) m_tocTreeCtrl->GetItemData( nextID );
 
             if ( data->GetType( ) == Utils::TOC_Volume )
@@ -528,7 +528,7 @@ wxTreeItemId CatalogPanel::GetPrev( wxTreeItemId& currID )
         //the next entry is good
         TOCTreeItemData* data = ( TOCTreeItemData* ) m_tocTreeCtrl->GetItemData( nextID );
         wxString name = m_tocTreeCtrl->GetItemText( nextID );
-        std::cout << name << "\n";
+        //std::cout << name << "\n";
         if ( data->GetType( ) == Utils::TOC_Volume )
         {
             // and it is a volume entry
@@ -576,14 +576,14 @@ wxTreeItemId CatalogPanel::GetNextFirstChild( wxTreeItemId& currID )
         return 0;
     }
     wxString name = m_tocTreeCtrl->GetItemText( parentID );
-    std::cout << name << "\n\n";
+    //std::cout << name << "\n\n";
 
 
     wxTreeItemId nextID = m_tocTreeCtrl->GetNextSibling( parentID );
     if ( nextID.IsOk( ) )
     {
         wxString name = m_tocTreeCtrl->GetItemText( nextID );
-        std::cout << name << "\n";
+        //std::cout << name << "\n";
 
 
         wxTreeItemIdValue cookie;
@@ -591,7 +591,7 @@ wxTreeItemId CatalogPanel::GetNextFirstChild( wxTreeItemId& currID )
         if ( nextID.IsOk( ) )
         {
             wxString name = m_tocTreeCtrl->GetItemText( nextID );
-            std::cout << name << "\n";
+            //std::cout << name << "\n";
             TOCTreeItemData* data = ( TOCTreeItemData* ) m_tocTreeCtrl->GetItemData( nextID );
 
             if ( data->GetType( ) == Utils::TOC_Volume )
@@ -622,7 +622,7 @@ wxTreeItemId CatalogPanel::GetNext( wxTreeItemId& currID )
         //the next entry is good
         TOCTreeItemData* data = ( TOCTreeItemData* ) m_tocTreeCtrl->GetItemData( nextID );
         wxString name = m_tocTreeCtrl->GetItemText( nextID );
-        std::cout << name << "\n";
+        //std::cout << name << "\n";
         if ( data->GetType( ) == Utils::TOC_Volume )
         {
             // and it is a volume entry
@@ -654,7 +654,7 @@ void CatalogPanel::OnSpinbuttonDown( wxSpinEvent& event )
         m_tocTreeCtrl->SelectItem( nextID );
         TOCTreeItemData* data = ( TOCTreeItemData* ) m_tocTreeCtrl->GetItemData( nextID );
         wxString name = m_tocTreeCtrl->GetItemText( nextID );
-        std::cout << name << "\n";
+        //std::cout << name << "\n";
         m_volumeListCtrl->SetValue( name );
     }
 

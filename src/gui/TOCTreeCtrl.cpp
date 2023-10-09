@@ -80,9 +80,9 @@ TOCTreeCtrl::TOCTreeCtrl( wxWindow* parent, const wxWindowID id,
 
 void TOCTreeCtrl::SetTreeItemCollapseState( wxTreeItemId childID )
 {
+    TOCTreeItemData* data = ( TOCTreeItemData* ) GetItemData( childID );
 
-    wxString state = GetAttribute( childID, Catalog::XMLDataNames[ Catalog::DT_CollapseState ] );
-    if ( String2Bool( state ) )
+    if ( data->GetCollapseState( ) )
     {
         Collapse( childID );
     }
@@ -93,6 +93,52 @@ void TOCTreeCtrl::SetTreeItemCollapseState( wxTreeItemId childID )
 
 }
 
+wxXmlNode* TOCTreeCtrl::MakeNode( wxTreeItemId treeID, wxXmlNode* parent )
+{
+    TOCTreeItemData* data = ( TOCTreeItemData* ) GetItemData( treeID );
+    Utils::TOCBaseType type = data->GetType( );
+    wxXmlNode* node = Utils::NewNode( parent, Utils::TOCBaseNames[ type ] );
+    if ( type == Utils::TOC_Volume )
+    {
+        node->AddAttribute( "FileName", data->GetName( ) );
+        node->AddAttribute( "CollapseState", Bool2String( data->GetCollapseState( ) ) );
+    }
+    else if ( type == Utils::TOC_Section )
+    {
+        node->AddAttribute( "Name", data->GetName( ) );
+        node->AddAttribute( "CollapseState", Bool2String( data->GetCollapseState( ) ) );
+    }
+
+    return node;
+}
+
+void TOCTreeCtrl::MakeTree( wxTreeItemId parentID, wxXmlNode* parentNode ){
+    wxXmlNode* node = MakeNode( parentID, parentNode );
+    wxTreeItemIdValue cookie;
+    wxTreeItemId childID = GetFirstChild( parentID, cookie );
+    while ( childID.IsOk( ) )
+    {
+        MakeTree( childID, node );
+        childID = GetNextChild( parentID, cookie );
+    }
+}
+
+void TOCTreeCtrl::MakeTree( wxXmlNode* parentNode ){
+    wxTreeItemId itemID = GetRootItem( );
+    wxTreeItemIdValue cookie;
+
+    wxTreeItemId childID = GetFirstChild( itemID, cookie );
+    int i = 0;
+    while ( childID.IsOk( ) )
+    {
+        MakeTree( childID, parentNode );
+        childID = GetNextChild( itemID, cookie );
+    }
+}
+
+
+
+
 //---------wxTreeItemId childID-----
 
 wxTreeItemId TOCTreeCtrl::AddChild( wxTreeItemId parent, wxXmlNode* child, wxMenu* menu )
@@ -101,6 +147,11 @@ wxTreeItemId TOCTreeCtrl::AddChild( wxTreeItemId parent, wxXmlNode* child, wxMen
     wxString label;
     wxMenu* subMenu;
     Utils::TOCBaseType nodeType;
+
+
+    wxString nodeName = child->GetName( );
+    nodeType = Utils::FindTOCBaseType( nodeName );
+
     TOCTreeItemData* itemData = CreateChildData( child, label, icon, nodeType );
 
     if ( !itemData )
@@ -146,6 +197,7 @@ wxTreeItemId TOCTreeCtrl::AddChild( wxTreeItemId parent, wxXmlNode* child, wxMen
 
 
 
+
 TOCTreeItemData* TOCTreeCtrl::CreateChildData( wxXmlNode* child,
     wxString& label,
     Catalog::IconID& icon,
@@ -157,15 +209,16 @@ TOCTreeItemData* TOCTreeCtrl::CreateChildData( wxXmlNode* child,
     //wxString label;
     //Catalog::IconID icon;
     int menuID = 0;
+    bool collapseState = String2Bool( Utils::GetAttrStr( child, "CollapseState" ) );
+
     if ( nodeType == Utils::TOC_Volume )
     {
         wxXmlAttribute* attr = child->GetAttributes( );
         while ( attr )
         {
-            std::cout << attr->GetName( ) << " " << attr->GetValue( ) << "\n";
             attr = attr->GetNext( );
         }
-
+        name = Utils::GetAttrStr( child, "FileName" );
         wxString volName = Utils::GetAttrStr( child, "VolumeName" );
         catalogVolume = FindVolume( volName );
         label = GetVolumeName( catalogVolume );
@@ -176,12 +229,13 @@ TOCTreeItemData* TOCTreeCtrl::CreateChildData( wxXmlNode* child,
         //otherwise get the label
         const wxXmlAttribute* attr = Utils::GetAttribute( child, "Name" );
         label = attr->GetValue( );
+        name = label;
         icon = Catalog::Icon_Folder;
         menuID = GetNextVolumeID( );
     }
 
     // create the item data 
-    return new TOCTreeItemData( nodeType, label, child, menuID, catalogVolume );
+    return new TOCTreeItemData( nodeType, collapseState, name, label, menuID, catalogVolume );
 }
 
 //--------------
@@ -204,9 +258,6 @@ void TOCTreeCtrl::CreateImageList( )
 
 void TOCTreeCtrl::DeleteEntry( wxTreeItemId id )
 {
-    wxXmlNode* node = GetItemNode( id );
-
-    Delete( id );
 }
 
 
@@ -227,41 +278,41 @@ void TOCTreeCtrl::EnableState( wxTreeItemId id )
     }
 }
 
+// //--------------
+
+// wxTreeItemId TOCTreeCtrl::FindTreeItemID( wxXmlNode* ele, wxTreeItemId id )
+// {
+//     if ( id.IsOk( ) )
+//     {
+//         wxTreeItemIdValue cookie;
+//         wxTreeItemId child = GetFirstChild( id, cookie );
+//         while ( child )
+//         {
+//             if ( IsElement( child, ele ) )
+//             {
+//                 return child;
+//             }
+//             if ( this->HasChildren( child ) )
+//             {
+//                 wxTreeItemId idFound = FindTreeItemID( ele, child );
+//                 if ( idFound )
+//                 {
+//                     return idFound;
+//                 }
+//             }
+//             child = this->GetNextChild( id, cookie );
+//         }
+//     }
+//     return 0;
+// }
+
 //--------------
 
-wxTreeItemId TOCTreeCtrl::FindTreeItemID( wxXmlNode* ele, wxTreeItemId id )
-{
-    if ( id.IsOk( ) )
-    {
-        wxTreeItemIdValue cookie;
-        wxTreeItemId child = GetFirstChild( id, cookie );
-        while ( child )
-        {
-            if ( IsElement( child, ele ) )
-            {
-                return child;
-            }
-            if ( this->HasChildren( child ) )
-            {
-                wxTreeItemId idFound = FindTreeItemID( ele, child );
-                if ( idFound )
-                {
-                    return idFound;
-                }
-            }
-            child = this->GetNextChild( id, cookie );
-        }
-    }
-    return 0;
-}
-
-//--------------
-
-wxTreeItemId TOCTreeCtrl::FindTreeItemID( wxXmlNode* ele )
-{
-    wxTreeItemId root = GetRootItem( );
-    return FindTreeItemID( ele, root );
-}
+// wxTreeItemId TOCTreeCtrl::FindTreeItemID( wxXmlNode* ele )
+// {
+//     wxTreeItemId root = GetRootItem( );
+//     return FindTreeItemID( ele, root );
+// }
 
 
 //--------------
@@ -324,18 +375,18 @@ wxString TOCTreeCtrl::GetItemImageFullName( wxTreeItemId id )
 
 //--------------
 
-wxXmlNode* TOCTreeCtrl::GetItemNode( wxTreeItemId id )
-{
-    if ( id.IsOk( ) )
-    {
-        TOCTreeItemData* data = ( TOCTreeItemData* ) GetItemData( id );
-        if ( data )
-        {
-            return data->GetNodeElement( );
-        }
-    }
-    return ( wxXmlNode* ) 0;
-};
+// wxXmlNode* TOCTreeCtrl::GetItemNode( wxTreeItemId id )
+// {
+//     if ( id.IsOk( ) )
+//     {
+//         TOCTreeItemData* data = ( TOCTreeItemData* ) GetItemData( id );
+//         if ( data )
+//         {
+//             return data->GetNodeElement( );
+//         }
+//     }
+//     return ( wxXmlNode* ) 0;
+// };
 
 //--------------
 
@@ -353,41 +404,102 @@ Utils::TOCBaseType  TOCTreeCtrl::GetItemType( wxTreeItemId id )
 };
 //--------------
 
-wxXmlNode* TOCTreeCtrl::GetNewEntry( wxTreeItemId itemId )
-{
-    return GetItemNode( itemId );
-}
+// wxXmlNode* TOCTreeCtrl::GetNewEntry( wxTreeItemId itemId )
+// {
+//     return GetItemNode( itemId );
+// }
 
 //--------------
 
-wxString TOCTreeCtrl::GetAttribute( wxTreeItemId catTreeID, wxString name )
+// wxString TOCTreeCtrl::GetAttribute( wxTreeItemId catTreeID, wxString name )
+// {
+//     if ( !catTreeID.IsOk( ) ) return "";
+//     wxXmlNode* node = GetItemNode( catTreeID );
+//     if ( node )
+//     {
+//         wxString val = Utils::GetAttrStr( node, name );
+//         return val;
+//     }
+//     return "";
+// }
+
+
+
+// void  TOCTreeCtrl::SetAttribute( wxTreeItemId catTreeID, wxString name, wxString val )
+// {
+//     if ( catTreeID.IsOk( ) )
+//     {
+//         wxXmlNode* node = GetItemNode( catTreeID );
+//         if ( node )
+//         {
+//             Utils::SetAttrStr( node, name, val );
+
+//         }
+//     }
+// }
+//--------------
+wxTreeItemId TOCTreeCtrl::MoveItemAsChild( wxTreeItemId srcID, wxTreeItemId parentID )
 {
-    if ( !catTreeID.IsOk( ) ) return "";
-    wxXmlNode* node = GetItemNode( catTreeID );
-    if ( node )
+    wxTreeItemId newID;
+    if ( srcID.IsOk( ) && parentID.IsOk( ) )
     {
-        wxString val = Utils::GetAttrStr( node, name );
-        return val;
-    }
-    return "";
-}
 
-
-
-void  TOCTreeCtrl::SetAttribute( wxTreeItemId catTreeID, wxString name, wxString val )
-{
-    if ( catTreeID.IsOk( ) )
-    {
-        wxXmlNode* node = GetItemNode( catTreeID );
-        if ( node )
+        TOCTreeItemData* data = ( TOCTreeItemData* ) GetItemData( srcID );
+        TOCTreeItemData* newData = new TOCTreeItemData( *data );
+        newID = AppendItem( parentID, GetItemText( srcID ), GetItemImage( srcID ), -1, newData );
+        if ( HasChildren( srcID ) )
         {
-            Utils::SetAttrStr( node, name, val );
-
+            wxTreeItemIdValue   	cookie;
+            wxTreeItemId child = GetFirstChild( srcID, cookie );
+            while ( child )
+            {
+                MoveItemAsChild( child, newID );
+                child = GetNextChild( srcID, cookie );
+            }
         }
     }
+    return newID;
 }
-//--------------
+wxTreeItemId TOCTreeCtrl::MoveItem( wxTreeItemId srcID, wxTreeItemId destID, bool after )
+{
+    wxTreeItemId newID = 0;
+    if ( srcID.IsOk( ) && destID.IsOk( ) )
+    {
 
+        TOCTreeItemData* data = ( TOCTreeItemData* ) GetItemData( srcID );
+        TOCTreeItemData* newData = new TOCTreeItemData( *data );
+        wxTreeItemId parent = GetItemParent( destID );
+        //copy itemData
+        if ( after )
+        {
+            // insert after sibling
+            newID = InsertItem( parent, destID, GetItemText( srcID ), GetItemImage( srcID ), -1, newData );
+        }
+        else
+        {
+            wxTreeItemId prevSibling = GetPrevSibling( destID );
+            if ( prevSibling.IsOk( ) )
+            {
+                newID = InsertItem( parent, prevSibling, GetItemText( srcID ), GetItemImage( srcID ), -1, newData );
+            }
+            else
+            {
+                newID = InsertItem( parent, 0, GetItemText( srcID ), GetItemImage( srcID ), -1, newData );
+            }
+        }
+        if ( HasChildren( srcID ) )
+        {
+            wxTreeItemIdValue cookie;
+            wxTreeItemId child = GetFirstChild( srcID, cookie );
+            while ( child )
+            {
+                MoveItemAsChild( srcID, newID );
+                child = GetNextChild( srcID, cookie );
+            }
+        }
+    }
+    return newID;
+}
 
 //--------------
 
@@ -450,18 +562,18 @@ wxTreeItemId TOCTreeCtrl::InsertChild( wxTreeItemId sibling, wxXmlNode* child, b
 
 //--------------
 
-bool TOCTreeCtrl::IsElement( wxTreeItemId item, wxXmlNode* ele )
-{
-    if ( item.IsOk( ) )
-    {
-        wxXmlNode* dataEle = GetItemNode( item );
-        if ( dataEle == ele )
-        {
-            return true;
-        }
-    }
-    return false;
-}
+// bool TOCTreeCtrl::IsElement( wxTreeItemId item, wxXmlNode* ele )
+// {
+//     if ( item.IsOk( ) )
+//     {
+//         wxXmlNode* dataEle = GetItemNode( item );
+//         if ( dataEle == ele )
+//         {
+//             return true;
+//         }
+//     }
+//     return false;
+// }
 
 //--------------
 
@@ -491,8 +603,11 @@ void TOCTreeCtrl::LoadTree( wxXmlNode* TOCNode, wxString str )
 
         wxString name = GetProject( )->GetProjectFilename( );
         // Create the root item
-        TOCTreeItemData* itemData = new TOCTreeItemData( Utils::TOC_Volume, name, TOCNode );
-        wxTreeItemId rootID = AddRoot( name, Catalog::Icon_Folder, 1, itemData );
+        bool collapseState = String2Bool( Utils::GetAttrStr( TOCNode, "CollapseState" ) );
+
+        TOCTreeItemData* itemData = new TOCTreeItemData( Utils::TOC_Volume,
+            collapseState, "TOC", name );
+        wxTreeItemId rootID = AddRoot( "TOC", Catalog::Icon_Folder, 1, itemData );
         m_menu = new wxMenu( str );
 
         wxXmlNode* child = TOCNode->GetChildren( );
@@ -525,6 +640,8 @@ void TOCTreeCtrl::OnBeginDrag( wxTreeEvent& event )
     else
     {
     }
+    // event.Skip( );
+
 }
 
 //--------------
@@ -545,6 +662,8 @@ void TOCTreeCtrl::OnEndDrag( wxTreeEvent& event )
         return;
     }
     ShowDropMenu( itemSrc, itemDst );
+    //  event.Skip( );
+
 }
 
 //--------------
@@ -627,16 +746,19 @@ void TOCTreeCtrl::ShowDropMenu( wxTreeItemId itemSrc, wxTreeItemId itemDst )
         case CatalogListTree_Before:
         {
 
-            wxXmlNode* srcElement = GetItemNode( itemSrc );
-            wxXmlNode* dstElement = GetItemNode( itemDst );
+            // wxXmlNode* srcElement = GetItemNode( itemSrc );
+            // wxXmlNode* dstElement = GetItemNode( itemDst );
 
             // move the element
             // this means making a copy and deleting the old one so old pointers are
             // trash
-            wxXmlNode* newElement = Catalog::InsertEntry( dstElement, srcElement, false );
+          //  wxXmlNode* newElement = Catalog::InsertEntry( dstElement, srcElement, false );
 
             // now update the tree with the new one
-            wxTreeItemId id = InsertChild( itemDst, newElement, false );
+            //wxTreeItemId id = InsertChild( itemDst, newElement, false );
+            //wxTreeItemId id = InsertChild( itemDst, false );
+
+            wxTreeItemId id = MoveItem( itemSrc, itemDst, false );
             //wxTreeItemId id = AddChild( itemDst, newElement );
             SelectItem( itemDst );
             Delete( itemSrc );
@@ -646,16 +768,18 @@ void TOCTreeCtrl::ShowDropMenu( wxTreeItemId itemSrc, wxTreeItemId itemDst )
         case CatalogListTree_After:
         {
 
-            wxXmlNode* srcElement = GetItemNode( itemSrc );
-            wxXmlNode* dstElement = GetItemNode( itemDst );
+            // wxXmlNode* srcElement = GetItemNode( itemSrc );
+            // wxXmlNode* dstElement = GetItemNode( itemDst );
 
             // move the element
             // this means making a copy and deleting the old one so old pointers are
             // trash
-            wxXmlNode* newElement = Catalog::InsertEntry( dstElement, srcElement, true );
+            // wxXmlNode* newElement = Catalog::InsertEntry( dstElement, srcElement, true );
 
             // now update the tree with the new one
-            wxTreeItemId id = InsertChild( itemDst, newElement, true );
+           // wxTreeItemId id = InsertChild( itemDst, newElement, true );
+            //wxTreeItemId id = InsertChild( itemDst, true );
+            wxTreeItemId id = MoveItem( itemSrc, itemDst, true );
             //wxTreeItemId id = AddChild( itemDst, newElement );
             SelectItem( itemDst );
             Delete( itemSrc );
@@ -665,16 +789,23 @@ void TOCTreeCtrl::ShowDropMenu( wxTreeItemId itemSrc, wxTreeItemId itemDst )
         case CatalogListTree_AsChild:
         {
 
-            wxXmlNode* srcElement = GetItemNode( itemSrc );
-            wxXmlNode* dstElement = GetItemNode( itemDst );
+            // wxXmlNode* srcElement = GetItemNode( itemSrc );
+            // wxXmlNode* dstElement = GetItemNode( itemDst );
 
             // move the element
             // this means making a copy and deleting the old one so old pointers are
             // trash
-            wxXmlNode* newElement = Catalog::MoveEntry( dstElement, srcElement );
+        //    wxXmlNode* newElement = Catalog::MoveEntry( dstElement, srcElement );
 
             // now update the tree with the new one
-            wxTreeItemId id = AddChild( itemDst, newElement, 0 );
+            // wxTreeItemId newID;
+            // TOCTreeItemData* data = ( TOCTreeItemData* ) GetItemData( itemSrc );
+            // TOCTreeItemData* newData = new TOCTreeItemData( *data );
+            // newID = AppendItem( itemDst, GetItemText( itemSrc ), GetItemImage( itemSrc ), -1, newData );
+            MoveItemAsChild( itemSrc, itemDst );
+
+            // AppendItem( )
+             //    wxTreeItemId id = AddChild( itemDst, newElement, 0 );
             SelectItem( itemDst );
             Delete( itemSrc );
             break;
@@ -702,7 +833,7 @@ void TOCTreeCtrl::ShowMenu( wxTreeItemId id, const wxPoint& pt )
     else
     {
         //title = "Menu for no particular item";
-        wxXmlNode* node = GetItemNode( id );
+       // wxXmlNode* node = GetItemNode( id );
 
         menu.AppendSeparator( );
 
@@ -745,17 +876,17 @@ void TOCTreeCtrl::ShowMenu( wxTreeItemId id, const wxPoint& pt )
 
 //--------------
 
-void TOCTreeCtrl::SetItemNode( wxTreeItemId id, wxXmlNode* ele )
-{
-    if ( id.IsOk( ) )
-    {
-        TOCTreeItemData* data = ( TOCTreeItemData* ) GetItemData( id );
-        if ( data )
-        {
-            data->SetCatNode( ele );
-        }
-    }
-};
+// void TOCTreeCtrl::SetItemNode( wxTreeItemId id, wxXmlNode* ele )
+// {
+//     if ( id.IsOk( ) )
+//     {
+//         TOCTreeItemData* data = ( TOCTreeItemData* ) GetItemData( id );
+//         if ( data )
+//         {
+//             data->SetCatNode( ele );
+//         }
+//     }
+// };
 
 //--------------
 
@@ -816,16 +947,16 @@ void TOCTreeCtrl::SetType( wxTreeItemId id, Utils::TOCBaseType type )
 
 //--------------
 
-void TOCTreeCtrl::XMLDumpNode( wxTreeItemId item, wxString str )
-{
+// void TOCTreeCtrl::XMLDumpNode( wxTreeItemId item, wxString str )
+// {
 
-    if ( !item.IsOk( ) )
-    {
-        return;
-    }
-    wxXmlNode* ele = GetItemNode( item );
-    Utils::XMLDumpNode( ele, str );
-}
+//     if ( !item.IsOk( ) )
+//     {
+//         return;
+//     }
+//     wxXmlNode* ele = GetItemNode( item );
+//     Utils::XMLDumpNode( ele, str );
+// }
 
 
 void TOCTreeCtrl::OnTreectrlItemCollapsed( wxTreeEvent& event )
@@ -838,9 +969,8 @@ void TOCTreeCtrl::OnTreectrlItemCollapsed( wxTreeEvent& event )
         {
         }
     }
-    wxString before = GetAttribute( id, Catalog::XMLDataNames[ Catalog::DT_CollapseState ] );
-    SetAttribute( id, Catalog::XMLDataNames[ Catalog::DT_CollapseState ], "true" );
-    wxString after = GetAttribute( id, Catalog::XMLDataNames[ Catalog::DT_CollapseState ] );
+    TOCTreeItemData* data = ( TOCTreeItemData* ) GetItemData( id );
+    data->SetCollapseState( true );
     event.Skip( );
 }
 
@@ -848,8 +978,8 @@ void TOCTreeCtrl::OnTreectrlItemCollapsed( wxTreeEvent& event )
 void TOCTreeCtrl::OnTreectrlItemExpanded( wxTreeEvent& event )
 {
     wxTreeItemId id = event.GetItem( );
-    SetAttribute( id, Catalog::XMLDataNames[ Catalog::DT_CollapseState ], "false" );
-
+    TOCTreeItemData* data = ( TOCTreeItemData* ) GetItemData( id );
+    data->SetCollapseState( false );
     event.Skip( );
 
 }

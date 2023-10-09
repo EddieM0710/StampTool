@@ -99,6 +99,7 @@ namespace Utils {
     void SetAttrDbl( wxXmlNode* node, wxString name, double val );
     void XMLDump( wxXmlDocument* doc );
     void XMLDumpNode( wxXmlNode* node, wxString level );
+    void CopyNode( wxXmlNode* src, wxXmlNode* dest );
 
     wxXmlNode* AddNewNode( wxXmlNode* parent, wxXmlNodeType type, const wxString& name );
 

@@ -80,7 +80,20 @@ EVT_TREE_ITEM_EXPANDED( ID_CATALOGTREECTRL, CatalogTreeCtrl::OnTreectrlItemExpan
 wxEND_EVENT_TABLE( )
 
 //--------------
-
+CatalogTreeItemData::CatalogTreeItemData( Catalog::CatalogBaseType type, const wxString desc,
+    wxXmlNode* ele )
+{
+    m_type = type;
+    m_desc = desc;
+    m_element = ele;
+    m_imageFullPath = Utils::GetAttrStr( ele, Catalog::DataTypeNames[ Catalog::DT_ImageName ] );
+    if ( m_imageFullPath.IsEmpty( ) )
+    {
+        Catalog::Entry stamp( ele );
+        wxString m_imageFullPath = stamp.FindImageName( );
+    }
+    m_ok = 12345;
+};
 CatalogTreeCtrl::CatalogTreeCtrl( wxWindow* parent, const wxWindowID id,
     const wxPoint& pos, const wxSize& size,
     long style )
@@ -292,7 +305,7 @@ void CatalogTreeCtrl::DeleteEntry( wxTreeItemId id )
         wxString txt = wxString::Format( "Delete Entry %s?\n\n", GetItemText( id ) );
         wxMessageDialog* dlg = new wxMessageDialog(
             GetFrame( ), txt,
-            wxT( "Warning! Entry will be deleted.\ No undo available.n" ),
+            wxT( " Warning! Entry will be deleted.\ No undo available.n" ),
             wxOK | wxCANCEL | wxCENTER );
         int rsp = dlg->ShowModal( );
         if ( rsp == wxOK )
@@ -647,7 +660,7 @@ wxString CatalogTreeCtrl::GetImageFullName( wxTreeItemId catTreeID )
     if ( catTreeID.IsOk( ) )
     {
         wxString imageName = GetItemImageFullName( catTreeID );
-        if ( !imageName )
+        if ( imageName.IsEmpty( ) )
         {
             wxString id = GetImage( catTreeID );
             wxString imageName = GetProject( )->GetImageFullPath( id );
@@ -884,6 +897,7 @@ void CatalogTreeCtrl::OnBeginDrag( wxTreeEvent& event )
     else
     {
     }
+    event.Skip( );
 }
 
 //--------------
@@ -904,6 +918,7 @@ void CatalogTreeCtrl::OnEndDrag( wxTreeEvent& event )
         return;
     }
     ShowDropMenu( itemSrc, itemDst );
+    event.Skip( );
 }
 
 //--------------

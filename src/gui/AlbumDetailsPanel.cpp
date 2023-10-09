@@ -140,23 +140,25 @@ wxPanel* AlbumDetailsPanel::SetupPageDetailsPanel( wxWindow* parent, int& lastID
     detailsHorizontalSizer->Add( rightColumnVerticalSizer, 1, wxGROW | wxALL, 0 );
 
 
-    SetupFontPicker( pageDetailsPanel, leftColumnVerticalSizer, lastID,
-        _( "Title Font" ), _( "Default" ),
+    wxBoxSizer* fontSizer;
+    wxStaticBox* fontBox = SetupBoxSizer( pageDetailsPanel, leftColumnVerticalSizer, "Default Fonts", lastID, fontSizer, wxVERTICAL );
+
+    SetupFontPicker( fontBox, fontSizer, lastID,
+        _( "Title" ), _( "Default" ),
         m_titleFontPicker, m_titleColorPicker,
         wxFontPickerEventHandler( AlbumDetailsPanel::OnTitleFontPicker ),
         wxColourPickerEventHandler( AlbumDetailsPanel::OnTitleColorPicker ),
         wxCommandEventHandler( AlbumDetailsPanel::OnTitleDefaultClick ) );
 
-
-    SetupFontPicker( pageDetailsPanel, leftColumnVerticalSizer, lastID,
-        _( "SubTitle Font" ), _( "Default" ),
+    SetupFontPicker( fontBox, fontSizer, lastID,
+        _( "SubTitle" ), _( "Default" ),
         m_subTitleFontPicker, m_titleColorPicker,
         wxFontPickerEventHandler( AlbumDetailsPanel::OnSubTitleFontPicker ),
         wxColourPickerEventHandler( AlbumDetailsPanel::OnSubTitleColorPicker ),
         wxCommandEventHandler( AlbumDetailsPanel::OnSubTitleDefaultClick ) );
 
-    SetupFontPicker( pageDetailsPanel, leftColumnVerticalSizer, lastID,
-        _( "Text Font" ), _( "Default" ),
+    SetupFontPicker( fontBox, fontSizer, lastID,
+        _( "Text" ), _( "Default" ),
         m_textFontPicker, m_textColorPicker,
         wxFontPickerEventHandler( AlbumDetailsPanel::OnTextFontPicker ),
         wxColourPickerEventHandler( AlbumDetailsPanel::OnTextColorPicker ),
@@ -164,18 +166,15 @@ wxPanel* AlbumDetailsPanel::SetupPageDetailsPanel( wxWindow* parent, int& lastID
 
 
 
-    wxStaticBox* oversizePaperBox = new wxStaticBox( pageDetailsPanel, wxID_ANY, _( "OverSize Paper" ) );
+    wxBoxSizer* oversizePaperSizer;
+    wxStaticBox* oversizePaperBox = SetupBoxSizer( pageDetailsPanel, leftColumnVerticalSizer, "OverSize Paper", lastID, oversizePaperSizer, wxVERTICAL );
 
-    wxStaticBoxSizer* paperVSizer = new wxStaticBoxSizer( oversizePaperBox, wxVERTICAL );
-
-    leftColumnVerticalSizer->Add( paperVSizer, 0, wxGROW | wxALL, 0 );
-
-    m_overSizeCheckbox = SetupCheckBox( oversizePaperBox, paperVSizer, ++lastID,
+    m_overSizeCheckbox = SetupCheckBox( oversizePaperBox, oversizePaperSizer, ++lastID,
         _( "Oversize Paper" ), wxCommandEventHandler( AlbumDetailsPanel::OnOverSizeCheckBoxClick ) );
 
     wxBoxSizer* paperSizeBoxSizer = new wxBoxSizer( wxHORIZONTAL );
 
-    paperVSizer->Add( paperSizeBoxSizer, 0, wxGROW | wxALL, 0 );
+    oversizePaperSizer->Add( paperSizeBoxSizer, 0, wxGROW | wxALL, 0 );
 
     //paperSizeBoxSizer->Add( 5, 5, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
     HorizontalSpacer( paperSizeBoxSizer );
@@ -190,13 +189,9 @@ wxPanel* AlbumDetailsPanel::SetupPageDetailsPanel( wxWindow* parent, int& lastID
 
 
 
-    wxStaticBox* pageBox = new wxStaticBox( pageDetailsPanel, wxID_ANY, _( "Page" ) );
 
-    wxStaticBoxSizer* pageBoxVSizer = new wxStaticBoxSizer( pageBox, wxVERTICAL );
-
-    rightColumnVerticalSizer->Add( pageBoxVSizer, 1, wxGROW | wxALL, 0 );
-
-
+    wxBoxSizer* pageBoxVSizer;
+    wxStaticBox* pageBox = SetupBoxSizer( pageDetailsPanel, rightColumnVerticalSizer, "Page Size", lastID, pageBoxVSizer, wxVERTICAL );
 
 
     wxBoxSizer* itemBoxSizer4 = new wxBoxSizer( wxHORIZONTAL );
@@ -206,55 +201,64 @@ wxPanel* AlbumDetailsPanel::SetupPageDetailsPanel( wxWindow* parent, int& lastID
 
     m_pageHeight = SetupLabelText( pageBox, itemBoxSizer4, lastID,
         _( "Height" ), false, wxCommandEventHandler( AlbumDetailsPanel::OnPageHeight ) );
+    m_pageHeight->SetToolTip( _( "Page layout height in mm." ) );
 
     HorizontalSpacer( itemBoxSizer4 );
 
     m_pageWidth = SetupLabelText( pageBox, itemBoxSizer4, lastID,
         _( "Width" ), false, wxCommandEventHandler( AlbumDetailsPanel::OnPageWidth ) );
-
-    wxStaticBox* marginBox = new wxStaticBox( pageBox, wxID_ANY, _( "Margin" ) );
-
-    wxStaticBoxSizer* marginBoxVSizer = new wxStaticBoxSizer( marginBox, wxVERTICAL );
-
-    pageBoxVSizer->Add( marginBoxVSizer, 0, wxGROW | wxALL, 5 );
+    m_pageWidth->SetToolTip( _( "Page layout width in mm." ) );
 
 
+
+
+    wxBoxSizer* marginBoxVSizer;
+    wxStaticBox* marginBox = SetupBoxSizer( pageDetailsPanel, rightColumnVerticalSizer, "Margin", lastID, marginBoxVSizer, wxVERTICAL );
 
     wxBoxSizer* itemBoxSizer7 = new wxBoxSizer( wxHORIZONTAL );
     marginBoxVSizer->Add( itemBoxSizer7, 0, wxGROW | wxALL, 0 );
 
     HorizontalSpacer( itemBoxSizer7 );
 
-    m_topPageMargin = SetupLabelText( pageBox, itemBoxSizer7, lastID,
+    m_topPageMargin = SetupLabelText( marginBox, itemBoxSizer7, lastID,
         _( "Top" ), false, wxCommandEventHandler( AlbumDetailsPanel::OnTopPageMargin ) );
+    m_topPageMargin->SetToolTip( _( "Page top margin in mm." ) );
     HorizontalSpacer( itemBoxSizer7 );
 
-    m_bottomPageMargin = SetupLabelText( pageBox, itemBoxSizer7, lastID,
+    m_bottomPageMargin = SetupLabelText( marginBox, itemBoxSizer7, lastID,
         _( "Bottom" ), false, wxCommandEventHandler( AlbumDetailsPanel::OnBottomPageMargin ) );
+    m_bottomPageMargin->SetToolTip( _( "Page bottom margin in mm." ) );
+
 
     wxBoxSizer* itemBoxSizer10 = new wxBoxSizer( wxHORIZONTAL );
     marginBoxVSizer->Add( itemBoxSizer10, 0, wxGROW | wxALL, 0 );
 
     HorizontalSpacer( itemBoxSizer10 );
 
-    m_leftPageMargin = SetupLabelText( pageBox, itemBoxSizer10, lastID,
+    m_leftPageMargin = SetupLabelText( marginBox, itemBoxSizer10, lastID,
         _( "Left" ), false, wxCommandEventHandler( AlbumDetailsPanel::OnLeftPageMargin ) );
+    m_leftPageMargin->SetToolTip( _( "Page left margin in mm." ) );
 
     HorizontalSpacer( itemBoxSizer10 );
 
-    m_rightPageMargin = SetupLabelText( pageBox, itemBoxSizer10, lastID,
+    m_rightPageMargin = SetupLabelText( marginBox, itemBoxSizer10, lastID,
         _( "Right" ), false, wxCommandEventHandler( AlbumDetailsPanel::OnRightPageMargin ) );
+    m_topPageMargin->SetToolTip( _( "Page right margin in mm." ) );
 
-    wxBoxSizer* borderBoxSizer = new wxBoxSizer( wxHORIZONTAL );
-    pageBoxVSizer->Add( borderBoxSizer, 0, wxGROW | wxALL, 0 );
 
-    m_borderFilename = SetupLabelText( pageBox, borderBoxSizer, lastID,
-        _( "Border Filename" ), true, wxCommandEventHandler( AlbumDetailsPanel::OnBorderFilename ) );
-    m_borderSize = SetupLabelText( pageBox, borderBoxSizer, lastID,
-        _( "Border Size" ), false, wxCommandEventHandler( AlbumDetailsPanel::OnBorderSize ) );
+    wxBoxSizer* borderBoxSizer;
+    wxStaticBox* borderBox = SetupBoxSizer( pageDetailsPanel, rightColumnVerticalSizer, "Border", lastID, borderBoxSizer, wxVERTICAL );
+
+    m_borderFilename = SetupLabelText( borderBox, borderBoxSizer, lastID,
+        _( "Filename" ), true, wxCommandEventHandler( AlbumDetailsPanel::OnBorderFilename ) );
+    m_borderFilename->SetToolTip( _( "Filename of border image" ) );
+    m_borderSize = SetupLabelText( borderBox, borderBoxSizer, lastID,
+        _( "Size" ), false, wxCommandEventHandler( AlbumDetailsPanel::OnBorderSize ) );
+    m_borderSize->SetToolTip( _( "width of the border to be added to the margin for layout in mm." ) );
+
 
     wxArrayString m_orientationChoiceStrings( 2, Design::OrientationStrings );
-    m_orientationChoice = SetupChoice( pageBox, pageBoxVSizer, ++lastID,
+    m_orientationChoice = SetupChoice( pageDetailsPanel, rightColumnVerticalSizer, ++lastID,
         _( "Orientation:" ), m_orientationChoiceStrings, wxCommandEventHandler( AlbumDetailsPanel::OnOrientationChoice ) );
     m_orientationChoice->SetSelection( Design::AT_Portrait );
     return pageDetailsPanel;
@@ -290,29 +294,28 @@ wxPanel* AlbumDetailsPanel::SetupStampDetailsPanel( wxWindow* parent, int& lastI
     stampHorizontalSizer->Add( stampRightVerticalSizer, 0, wxGROW | wxALL, 0 );
 
 
+    wxBoxSizer* fontSizer;
+    wxStaticBox* fontBox = SetupBoxSizer( stampDetailsPanel, stampLeftVerticalSizer, "Default Fonts", lastID, fontSizer, wxVERTICAL );
 
-
-    SetupFontPicker( stampDetailsPanel, stampLeftVerticalSizer, lastID,
-        _( "Default Catalog Nbr Font" ), _( "Default" ),
+    SetupFontPicker( fontBox, fontSizer, lastID,
+        _( "Catalog Nbr" ), _( "Default" ),
         m_nbrFontPicker, m_nbrColorPicker,
         wxFontPickerEventHandler( AlbumDetailsPanel::OnNbrFontPicker ),
         wxColourPickerEventHandler( AlbumDetailsPanel::OnNbrColorPicker ),
         wxCommandEventHandler( AlbumDetailsPanel::OnNbrDefaultClick ) );
 
-
-    SetupFontPicker( stampDetailsPanel, stampLeftVerticalSizer, lastID,
-        _( "Default Name Font" ), _( "Default" ),
+    SetupFontPicker( fontBox, fontSizer, lastID,
+        _( "Name " ), _( "Default" ),
         m_nameFontPicker, m_nameColorPicker,
         wxFontPickerEventHandler( AlbumDetailsPanel::OnNameFontPicker ),
         wxColourPickerEventHandler( AlbumDetailsPanel::OnNameColorPicker ),
         wxCommandEventHandler( AlbumDetailsPanel::OnNameDefaultClick ) );
 
-    wxBoxSizer* sizer = new wxBoxSizer( wxHORIZONTAL );
-    stampRightVerticalSizer->Add( sizer, 0, wxGROW | wxALL, 0 );
 
-    m_nbrCheckbox = SetupCheckBox( stampDetailsPanel, sizer, ++lastID,
+    m_nbrCheckbox = SetupCheckBox( stampDetailsPanel, stampRightVerticalSizer, ++lastID,
         _( "Show Catalog Nbr" ), wxCommandEventHandler( AlbumDetailsPanel::OnBorderSize ) );
-    m_grayScaleImagesCheckbox = SetupCheckBox( stampDetailsPanel, sizer, ++lastID,
+
+    m_grayScaleImagesCheckbox = SetupCheckBox( stampDetailsPanel, stampRightVerticalSizer, ++lastID,
         _( "Show Grayscale Images" ), wxCommandEventHandler( AlbumDetailsPanel::OnBorderSize ) );
 
     m_catalog = SetupLabelText( stampDetailsPanel, stampRightVerticalSizer, lastID,
@@ -320,24 +323,16 @@ wxPanel* AlbumDetailsPanel::SetupStampDetailsPanel( wxWindow* parent, int& lastI
 
 
 
-    m_stampNameLocationBox = new wxStaticBox( stampDetailsPanel, wxID_ANY, _( "Name Location" ) );
-    m_stampNameLocationVSizer = new wxStaticBoxSizer( m_stampNameLocationBox, wxVERTICAL );
-    stampRightVerticalSizer->Add( m_stampNameLocationVSizer, 0, wxGROW | wxALL, 5 );
+    wxBoxSizer* locationSizer;
+    wxStaticBox* locationBox = SetupBoxSizer( stampDetailsPanel, stampLeftVerticalSizer, "Name Location", lastID, locationSizer, wxHORIZONTAL );
 
-    m_stampNameLocationHSizer = new wxBoxSizer( wxHORIZONTAL );
-    m_stampNameLocationVSizer->Add( m_stampNameLocationHSizer, 0, wxGROW | wxALL, 0 );
+    m_topButton = SetupRadioButton( locationBox, locationSizer, lastID, _( "Top" ), true,
+        wxCommandEventHandler( AlbumDetailsPanel::OnNameLocationButtonSelected ) );
+    m_topButton->SetToolTip( _( "Name above Stamp." ) );
 
-    m_topButton = new wxRadioButton( m_stampNameLocationVSizer->GetStaticBox( ), ++lastID,
-        _( "Top" ), wxDefaultPosition, wxDefaultSize, 0 );
-    m_topButton->SetValue( true );
-    m_stampNameLocationHSizer->Add( m_topButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
-    Connect( m_topButton->GetId( ), wxEVT_RADIOBUTTON, wxCommandEventHandler( AlbumDetailsPanel::OnNameLocationButtonSelected ) );
-
-    m_bottomButton = new wxRadioButton( m_stampNameLocationVSizer->GetStaticBox( ), ++lastID,
-        _( "Bottom" ), wxDefaultPosition, wxDefaultSize, 0 );
-    m_bottomButton->SetValue( false );
-    m_stampNameLocationHSizer->Add( m_bottomButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
-    Connect( m_bottomButton->GetId( ), wxEVT_RADIOBUTTON, wxCommandEventHandler( AlbumDetailsPanel::OnNameLocationButtonSelected ) );
+    m_bottomButton = SetupRadioButton( locationBox, locationSizer, lastID, _( "Bottom" ), false,
+        wxCommandEventHandler( AlbumDetailsPanel::OnNameLocationButtonSelected ) );
+    m_bottomButton->SetToolTip( _( "Name below Stamp." ) );
 
     return stampDetailsPanel;
 }
@@ -937,61 +932,61 @@ void AlbumDetailsPanel::OnPageWidth( wxCommandEvent& event )
 
 void AlbumDetailsPanel::OnTopPageMargin( wxCommandEvent& event )
 {
-    wxString valAlbum = m_album->GetPaperHeightStr( );
-    wxString valLocal = m_paperHeight->GetValue( );
+    wxString valAlbum = m_album->GetTopPageMarginStr( );
+    wxString valLocal = m_topPageMargin->GetValue( );
     if ( valAlbum.Cmp( valLocal ) )
     {
-        m_album->SetPaperHeight( valLocal );
+        m_album->SetTopPageMargin( valLocal );
     }
 }
 
 void AlbumDetailsPanel::OnBottomPageMargin( wxCommandEvent& event )
 {
-    wxString valAlbum = m_album->GetPaperHeightStr( );
-    wxString valLocal = m_paperHeight->GetValue( );
+    wxString valAlbum = m_album->GetBottomPageMarginStr( );
+    wxString valLocal = m_bottomPageMargin->GetValue( );
     if ( valAlbum.Cmp( valLocal ) )
     {
-        m_album->SetPaperHeight( valLocal );
+        m_album->SetBottomPageMargin( valLocal );
     }
 }
 
 void AlbumDetailsPanel::OnLeftPageMargin( wxCommandEvent& event )
 {
-    wxString valAlbum = m_album->GetPaperHeightStr( );
-    wxString valLocal = m_paperHeight->GetValue( );
+    wxString valAlbum = m_album->GetLeftPageMarginStr( );
+    wxString valLocal = m_leftPageMargin->GetValue( );
     if ( valAlbum.Cmp( valLocal ) )
     {
-        m_album->SetPaperHeight( valLocal );
+        m_album->SetLeftPageMargin( valLocal );
     }
 }
 
 void AlbumDetailsPanel::OnRightPageMargin( wxCommandEvent& event )
 {
-    wxString valAlbum = m_album->GetPaperHeightStr( );
-    wxString valLocal = m_paperHeight->GetValue( );
+    wxString valAlbum = m_album->GetRightPageMarginStr( );
+    wxString valLocal = m_rightPageMargin->GetValue( );
     if ( valAlbum.Cmp( valLocal ) )
     {
-        m_album->SetPaperHeight( valLocal );
+        m_album->SetRightPageMargin( valLocal );
     }
 }
 
 void AlbumDetailsPanel::OnBorderFilename( wxCommandEvent& event )
 {
-    wxString valAlbum = m_album->GetPaperHeightStr( );
-    wxString valLocal = m_paperHeight->GetValue( );
+    wxString valAlbum = m_album->GetBorderFileName( );
+    wxString valLocal = m_borderFilename->GetValue( );
     if ( valAlbum.Cmp( valLocal ) )
     {
-        m_album->SetPaperHeight( valLocal );
+        m_album->SetBorderFilename( valLocal );
     }
 }
 
 void AlbumDetailsPanel::OnBorderSize( wxCommandEvent& event )
 {
-    wxString valAlbum = m_album->GetPaperHeightStr( );
-    wxString valLocal = m_paperHeight->GetValue( );
+    wxString valAlbum = m_album->GetBorderSizeStr( );
+    wxString valLocal = m_borderSize->GetValue( );
     if ( valAlbum.Cmp( valLocal ) )
     {
-        m_album->SetPaperHeight( valLocal );
+        m_album->SetBorderSize( valLocal );
     }
 }
 void AlbumDetailsPanel::OnCatalogCode( wxCommandEvent& event )
@@ -1019,40 +1014,7 @@ void AlbumDetailsPanel::OnNameLocationButtonSelected( wxCommandEvent& event )
     }
 }
 
-// void AlbumDetailsPanel::OnOkClick( wxCommandEvent& event )
-// {
-//     m_album->SetAttrStr( Design::AT_Name, GetName( ) );
-//     m_album->SetPaperHeight( GetPaperHeight( ) );
-//     m_album->SetPaperWidth( GetPaperWidth( ) );
-//     m_album->SetPageHeight( GetPageHeight( ) );
-//     m_album->SetPageWidth( GetPageWidth( ) );
-//     m_album->SetTopPageMargin( GetTopPageMargin( ) );
-//     m_album->SetBottomPageMargin( GetBottomPageMargin( ) );
-//     m_album->SetLeftPageMargin( GetLeftPageMargin( ) );
-//     m_album->SetRightPageMargin( GetRightPageMargin( ) );
-//     m_album->SetBorderSize( GetBorderSize( ) );
 
-//     m_album->SetOverSizePaper( GetOverSizePaper( ) );
-//     m_album->SetShowNbr( GetShowNbr( ) );
-//     //m_album->SetShowTitle( GetShowStampTitle( ) );
-//     //m_album->SetShowSubTitle( GetShowStampSubTitle( ) );
-//     m_album->SetGrayScaleImages( GetGrayScaleImages( ) );
-//     m_album->SetDefaultOrientation( GetOrientation( ) );
-//     m_album->SetTitleLocationType( m_stampNameLocation );
-//     m_album->SetCatalog( GetCatalog( ) );
-
-//     m_album->SetBorderFilename( GetBorderFilename( ) );
-//     wxFont newFont = GetNbrFont( );
-
-//     m_album->SetFont( Design::AT_TextFontType, GetTextFont( ), GetTextColor( ) );
-//     m_album->SetFont( Design::AT_NbrFontType, GetNbrFont( ), GetNbrColor( ) );
-//     m_album->SetFont( Design::AT_TitleFontType, GetTitleFont( ), GetTitleColor( ) );
-//     m_album->SetFont( Design::AT_SubTitleFontType, GetSubTitleFont( ), GetSubTitleColor( ) );
-//     m_album->SetFont( Design::AT_NameFontType, GetNameFont( ), GetNameColor( ) );
-
-
-//     event.Skip( );
-// }
 
 void AlbumDetailsPanel::SetStampNameLocation( )
 {

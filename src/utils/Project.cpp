@@ -260,7 +260,6 @@ namespace Utils {
         m_albumListNode = FirstChildElement( projectRoot, "AlbumList" );
         GetAlbumData( )->GetAlbumList( ).AddChild( m_albumListNode );
 
-
         // Get Mounts
         wxXmlDocument* mountDoc = GetCatalogData( )->LoadMountCSV( );
 
@@ -274,13 +273,6 @@ namespace Utils {
         return true;
     }
 
-    // AddMount( Catalog::CatalogVolume* volumeData, wxXmlDocument* mountDoc )
-    // {
-    //     wxXmlDocument* catDoc = volumeData->GetDoc( );
-    // }
-
-
-    //
 
     void Project::LoadAttributes( wxXmlNode* thisObject )
     {
@@ -353,52 +345,90 @@ namespace Utils {
         if ( m_ProjectDoc )
         {
             delete m_ProjectDoc;
+            m_ProjectDoc = 0;
         }
-        m_ProjectDoc = new wxXmlDocument( );
+        wxXmlDocument* newDoc = new wxXmlDocument( );
+
         wxXmlNode* root = new wxXmlNode( wxXML_ELEMENT_NODE, "Project" );
+        newDoc->SetRoot( root );
         root->AddAttribute( "Country", GetProjectCountryID( ) );
         root->AddAttribute( "CatalogCode", GetProjectCatalogCode( ) );
         root->AddAttribute( "ImagePath", m_imagePath );
 
-        wxXmlNode* newNode = NewNode( root, "AlbumList" );
-        Design::AlbumList albumList = GetAlbumData( )->GetAlbumList( );
-        Utils::VolumeArray* albumArray = albumList.GetArray( );
+        wxXmlNode* albumListNode = NewNode( root, "AlbumList" );
 
-        for ( Utils::VolumeArray::iterator it = std::begin( *albumArray );
-            it != std::end( *albumArray );
-            ++it )
+        wxTreeItemId tocRootID = GetAlbumTOCTreeCtrl( )->GetRootItem( );
+
+        //  TOCTreeItemData* data = ( TOCTreeItemData* ) GetAlbumTOCTreeCtrl( )->GetItemData( tocRootID );
+        //  wxXmlNode* tocRootNode = data->GetNodeElement( );
+
+        //  wxXmlNode* clone = NewNode( albumListNode, tocRootNode->GetName( ) );
+
+        //  Utils::CopyNode( tocRootNode, clone );
+        GetAlbumTOCTreeCtrl( )->MakeTree( albumListNode );
+
+        wxXmlNode* catalogListNode = NewNode( root, "CatalogList" );
+
+        tocRootID = GetCatalogTOCTreeCtrl( )->GetRootItem( );
+
+        //TOCTreeItemData* data = ( TOCTreeItemData* ) GetCatalogTOCTreeCtrl( )->GetItemData( tocRootID );
+
+       // wxXmlNode* clone = NewNode( catalogListNode, data->GetName( ) );
+        GetCatalogTOCTreeCtrl( )->MakeTree( catalogListNode );
+
+        // Utils::CopyNode( tocRootNode, clone );
+
+        if ( m_ProjectDoc )
         {
-            Design::AlbumVolume* volume = ( Design::AlbumVolume* ) ( it->second );
-            //newNode->AddAttribute( "FileName", m_designFilename );
-            wxString filename = volume->GetFilename( );
-            wxString cwd = wxGetCwd( );
-            wxFileName sectFile( filename );
-            sectFile.MakeRelativeTo( cwd );
-            wxXmlNode* newVolume = NewNode( newNode, "Album" );
-            newVolume->AddAttribute( "FileName", sectFile.GetFullPath( ) );
+            delete m_ProjectDoc;
         }
+        m_ProjectDoc = newDoc;
 
-        newNode = NewNode( root, "CatalogList" );
-        //Catalog::CatalogVolume* volumeData = 
-        Catalog::CatalogList* catalogList = GetCatalogData( )->GetCatalogList( );
-        Catalog::CatalogVolumeArray* catalogArray = catalogList->GetCatalogArray( );
 
-        for ( Catalog::CatalogVolumeArray::iterator it = std::begin( *catalogArray );
-            it != std::end( *catalogArray );
-            ++it )
-        {
-            Catalog::CatalogVolume* volume = ( Catalog::CatalogVolume* ) ( it->second );
-            wxString filename = volume->GetFilename( );
-            wxString cwd = wxGetCwd( );
-            wxFileName sectFile( filename );
-            sectFile.MakeRelativeTo( cwd );
-            wxXmlNode* newVolume = NewNode( newNode, "Volume" );
-            wxString sectFileFullPath = sectFile.GetFullPath( );
-            newVolume->AddAttribute( "FileName", sectFile.GetFullPath( ) );
-        }
-        m_ProjectDoc->SetRoot( root );
-
+        //       m_ProjectDoc->SetRoot( root );
+      //  Utils::XMLDump( m_ProjectDoc );
         m_ProjectDoc->Save( m_projectFilename );
+
+
+
+        // //Catalog::CatalogVolume* volumeData = 
+        // Catalog::CatalogList* catalogList = GetCatalogData( )->GetCatalogList( );
+        // Catalog::CatalogVolumeArray* catalogArray = catalogList->GetCatalogArray( );
+
+        // for ( Catalog::CatalogVolumeArray::iterator it = std::begin( *catalogArray );
+        //     it != std::end( *catalogArray );
+        //     ++it )
+        // {
+        //     Catalog::CatalogVolume* volume = ( Catalog::CatalogVolume* ) ( it->second );
+        //     wxString filename = volume->GetFilename( );
+        //     wxString cwd = wxGetCwd( );
+        //     wxFileName sectFile( filename );
+        //     sectFile.MakeRelativeTo( cwd );
+        //     wxXmlNode* newVolume = NewNode( newNode, "Volume" );
+        //     wxString sectFileFullPath = sectFile.GetFullPath( );
+        //     newVolume->AddAttribute( "FileName", sectFile.GetFullPath( ) );
+        // }
+
+
+        // wxXmlNode* newNode = NewNode( root, "AlbumList" );
+        // Design::AlbumList albumList = GetAlbumData( )->GetAlbumList( );
+        // Utils::VolumeArray* albumArray = albumList.GetArray( );
+
+        // for ( Utils::VolumeArray::iterator it = std::begin( *albumArray );
+        //     it != std::end( *albumArray );
+        //     ++it )
+        // {
+        //     Design::AlbumVolume* volume = ( Design::AlbumVolume* ) ( it->second );
+        //     //newNode->AddAttribute( "FileName", m_designFilename );
+        //     wxString filename = volume->GetFilename( );
+        //     wxString cwd = wxGetCwd( );
+        //     wxFileName sectFile( filename );
+        //     sectFile.MakeRelativeTo( cwd );
+        //     wxXmlNode* newVolume = NewNode( newNode, "Album" );
+        //     newVolume->AddAttribute( "FileName", sectFile.GetFullPath( ) );
+        // }
+
+
 
         GetCatalogData( )->FileSave( );
         GetAlbumData( )->FileSave( );

@@ -275,11 +275,40 @@ namespace Utils {
         }
     }
 
+    void  CopyNode( wxXmlNode* src, wxXmlNode* dest )
+    {
+        wxXmlAttribute* attr = src->GetAttributes( );
+        while ( attr )
+        {
+            wxString name = attr->GetName( );
+            wxString val = attr->GetValue( );
+            //std::cout << "   \"" << name << "\"=\"" << val << "\"\n";
+            src->AddAttribute( name, val );
+            attr = attr->GetNext( );
+        }
+
+        // not worrying about content.
+
+        wxXmlNode* child = src->GetChildren( );
+        while ( child )
+        {
+            wxString name = child->GetName( );
+            //std::cout << name << "\n";
+            wxXmlNode* clone = NewNode( dest, child->GetName( ) );
+            CopyNode( child, clone );
+            child = child->GetNext( );
+        }
+    }
+
+
+
+
     void SetAttrDbl( wxXmlNode* node, wxString name, double val )
     {
         wxString str = wxString::Format( "%7.2f", val );
         SetAttrStr( node, name, str );
     }
+
 
     // void SetAttrStr( wxXmlNode* node, wxString name, wxString value )
     // { 
@@ -395,21 +424,25 @@ namespace Utils {
         if ( type == wxXML_COMMENT_NODE )
         {
             *text << "<!--" << node->GetName( ) << "   " << node->GetContent( ) << "-->\n";
+            //std::cout << "1" << "<!--" << node->GetName( ) << "   " << node->GetContent( ) << "-->\n";
         }
         else
         {
             wxString levelStr = level + "   ";
             wxString name = node->GetName( );
             *text << levelStr << "<" << name << "  ";
+            //std::cout << "2" << levelStr << "<" << name << "  ";
 
             SaveAttributes( text, node, levelStr );
             wxString content = node->GetContent( );
             if ( !content.IsEmpty( ) || node->GetChildren( ) )
             {
                 *text << ">";
+                //std::cout << "3" << ">";
                 if ( !content.IsEmpty( ) )
                 {
                     *text << levelStr << content << "\n";
+                    // std::cout << "4" << levelStr << content << "\n";
                 }
                 wxXmlNode* child = node->GetChildren( );
                 while ( child )
@@ -418,10 +451,12 @@ namespace Utils {
                     child = child->GetNext( );
                 }
                 *text << levelStr << "</" << name << ">\n";
+                //std::cout << "5" << levelStr << "</" << name << ">\n";
             }
             else
             {
                 *text << " />\n";
+                //std::cout << "6" << " />\n";
             }
         }
 

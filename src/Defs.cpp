@@ -156,5 +156,5 @@ void ReportError( wxString funct, wxString msg, bool fatal )
     {
         status = "fatal";
     }
-    wxLogDebug( "Warning: %s %s %s\n", funct, msg, status );
+    wxLogDebug( " Warning: %s %s %s\n", funct, msg, status );
 }

@@ -35,6 +35,7 @@
 #include "wx/filename.h"
 #include "gui/GuiUtils.h"
 #include "design/DesignDefs.h"
+#include "utils/Project.h"
 #include "gui/AlbumImagePanel.h"
 #include "art/NotFound.xpm"
 #include "art/fleur_di_lis3.xpm"
@@ -290,15 +291,16 @@ wxImage GetImageFromFilename( wxString filename )
     wxFileName fn;
     wxImage image;
     bool fileOK = false;
+    wxString  str = GetProject( )->GetImageFullPath( filename );
 
-    fn.Assign( filename );
-    wxString fullpath = fn.GetFullPath( );
+    fn.Assign( str );
+    //wxString fullpath = fn.GetFullPath( );
     wxFileName fn3 = fn;
-    fn3.MakeAbsolute( );
-    wxString str = fn3.GetFullPath( );
+    //fn3.MakeAbsolute( );
+    wxString str1 = fn3.GetFullPath( );
     if ( fn.FileExists( ) )
     {
-        if ( image.CanRead( filename ) )
+        if ( image.CanRead( str ) )
         {
             fileOK = true;
         }

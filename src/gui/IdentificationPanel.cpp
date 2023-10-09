@@ -146,9 +146,9 @@ void IdentificationPanel::CreateControls( )
     wxBoxSizer* idHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
     panelVerticalSizer->Add( idHorizontalSizer, 1, wxGROW | wxALL, 2 );
 
-    m_editCheckbox = new wxCheckBox( thePanel, ++lastID, _( "Edit" ), wxDefaultPosition, wxDefaultSize, 0 );
-    m_editCheckbox->SetValue( false );
-    idHorizontalSizer->Add( m_editCheckbox, 0, wxALIGN_CENTRE_VERTICAL | wxALL, 0 );
+    // m_editCheckbox = new wxCheckBox( thePanel, ++lastID, _( "Edit" ), wxDefaultPosition, wxDefaultSize, 0 );
+    // m_editCheckbox->SetValue( false );
+    // idHorizontalSizer->Add( m_editCheckbox, 0, wxALIGN_CENTRE_VERTICAL | wxALL, 0 );
 
 
     wxBoxSizer* itemBoxSizer1 = new wxBoxSizer( wxHORIZONTAL );
@@ -157,6 +157,8 @@ void IdentificationPanel::CreateControls( )
     wxBoxSizer* catCodeVerticalSizer = new wxBoxSizer( wxVERTICAL );
     itemBoxSizer1->Add( catCodeVerticalSizer, 1, wxGROW | wxALL, 2 );
 
+
+
     wxStaticText* m_catcodeStatic = new wxStaticText( thePanel, wxID_STATIC, _( "CatalogCodes" ), wxDefaultPosition, wxDefaultSize, 0 );
 
     catCodeVerticalSizer->Add( m_catcodeStatic, 0, wxALIGN_LEFT | wxALL, 0 );
@@ -164,13 +166,14 @@ void IdentificationPanel::CreateControls( )
     m_catCode = new wxTextCtrl( thePanel, ++lastID, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE );
     catCodeVerticalSizer->Add( m_catCode, 1, wxGROW | wxALL, 0 );
 
+
     m_name = SetupLabelText( thePanel, panelVerticalSizer, ++lastID, "Name", true, wxCommandEventHandler( IdentificationPanel::OnNameUpdated ) );
 
-    wxBoxSizer* emissionHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
-    panelVerticalSizer->Add( emissionHorizontalSizer, 0, wxALIGN_LEFT | wxALL, 2 );
+    //wxBoxSizer* emissionHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
+   // panelVerticalSizer->Add( emissionHorizontalSizer, 0, wxALIGN_LEFT | wxALL, 2 );
 
-    wxStaticText* emissionStaticText = new wxStaticText( thePanel, wxID_STATIC, _( "Emission" ), wxDefaultPosition, wxDefaultSize, 0 );
-    emissionHorizontalSizer->Add( emissionStaticText, 0, wxALIGN_LEFT | wxALL, 0 );
+    // wxStaticText* emissionStaticText = new wxStaticText( thePanel, wxID_STATIC, _( "Emission" ), wxDefaultPosition, wxDefaultSize, 0 );
+    // emissionHorizontalSizer->Add( emissionStaticText, 0, wxALIGN_LEFT | wxALL, 0 );
 
     wxArrayString m_emissionStrings;
     for ( int i = 0; i < Catalog::ET_NbrTypes; i++ )
@@ -178,16 +181,20 @@ void IdentificationPanel::CreateControls( )
         m_emissionStrings.Add( _( Catalog::EmissionStrings[ i ] ) );
     }
 
-    m_emission = new wxChoice( thePanel, ++lastID, wxDefaultPosition, wxDefaultSize, m_emissionStrings, 0 );
+    //  m_emission = new wxChoice( thePanel, ++lastID, wxDefaultPosition, wxDefaultSize, m_emissionStrings, 0 );
+
+
+    m_emission = SetupChoice( thePanel, panelVerticalSizer, lastID, _( "Emission" ),
+        m_emissionStrings, wxCommandEventHandler( IdentificationPanel::OnEmissionchoiceSelected ) );
 
     m_emission->SetStringSelection( _( "Unknown" ) );
-    emissionHorizontalSizer->Add( m_emission, 1, wxGROW | wxALL, 1 );
+    //   emissionHorizontalSizer->Add( m_emission, 1, wxGROW | wxALL, 1 );
 
-    wxBoxSizer* formatHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
-    panelVerticalSizer->Add( formatHorizontalSizer, 0, wxALIGN_LEFT | wxALL, 2 );
+   // wxBoxSizer* formatHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
+   // panelVerticalSizer->Add( formatHorizontalSizer, 0, wxALIGN_LEFT | wxALL, 2 );
 
-    wxStaticText* formatStaticText = new wxStaticText( thePanel, wxID_STATIC, _( "Format" ), wxDefaultPosition, wxDefaultSize, 0 );
-    formatHorizontalSizer->Add( formatStaticText, 0, wxALIGN_LEFT | wxALL, 0 );
+    // wxStaticText* formatStaticText = new wxStaticText( thePanel, wxID_STATIC, _( "Format" ), wxDefaultPosition, wxDefaultSize, 0 );
+     //formatHorizontalSizer->Add( formatStaticText, 0, wxALIGN_LEFT | wxALL, 0 );
 
     wxArrayString m_formatStrings;
     m_formatStrings.Add( _( "Unknown" ) );
@@ -201,9 +208,12 @@ void IdentificationPanel::CreateControls( )
     m_formatStrings.Add( _( "Stamp with Attached Label" ) );
     m_formatStrings.Add( _( "Tete-Beche" ) );
 
-    m_format = new wxChoice( thePanel, ++lastID, wxDefaultPosition, wxDefaultSize, m_formatStrings, 0 );
+    //m_format = new wxChoice( thePanel, ++lastID, wxDefaultPosition, wxDefaultSize, m_formatStrings, 0 );
+   // formatHorizontalSizer->Add( m_format, 1, wxGROW | wxALL, 1 );
+
+    m_format = SetupChoice( thePanel, panelVerticalSizer, lastID, _( "Format" ),
+        m_formatStrings, wxCommandEventHandler( IdentificationPanel::OnEmissionchoiceSelected ) );
     m_format->SetStringSelection( _( "Unknown" ) );
-    formatHorizontalSizer->Add( m_format, 1, wxGROW | wxALL, 1 );
 
     m_issueDate = SetupLabelText( thePanel, panelVerticalSizer, ++lastID, "Issued On", true, wxCommandEventHandler( IdentificationPanel::OnIssuedUpdated ) );
 
@@ -217,30 +227,24 @@ void IdentificationPanel::CreateControls( )
 
     m_printing = SetupLabelText( thePanel, panelVerticalSizer, ++lastID, "Printing", true, wxCommandEventHandler( IdentificationPanel::OnPrintingUpdated ) );
 
-    wxBoxSizer* sizeHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
-    panelVerticalSizer->Add( sizeHorizontalSizer, 1, wxALIGN_LEFT | wxALL, 2 );
+    wxBoxSizer* sizeHorizontalSizer;
+    wxStaticBox* sizeBox = SetupBoxSizer( thePanel, panelVerticalSizer, "Size", lastID, sizeHorizontalSizer, wxHORIZONTAL );
+    m_width = SetupLabelText( sizeBox, sizeHorizontalSizer, ++lastID, "Width", false, wxCommandEventHandler( IdentificationPanel::OnWidthUpdated ) );
 
-    m_width = SetupLabelText( thePanel, sizeHorizontalSizer, ++lastID, "Width", false, wxCommandEventHandler( IdentificationPanel::OnWidthUpdated ) );
-
-    sizeHorizontalSizer->Add( 5, 5, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
-
-    m_height = SetupLabelText( thePanel, sizeHorizontalSizer, ++lastID, "Height", false, wxCommandEventHandler( IdentificationPanel::OnHeightUpdated ) );
+    m_height = SetupLabelText( sizeBox, sizeHorizontalSizer, ++lastID, "Height", false, wxCommandEventHandler( IdentificationPanel::OnHeightUpdated ) );
 
     m_link = SetupLabelText( thePanel, panelVerticalSizer, ++lastID, "Link", true, wxCommandEventHandler( IdentificationPanel::OnLinkUpdated ) );
 
-    wxBoxSizer* itemBoxSizer8 = new wxBoxSizer( wxHORIZONTAL );
-    panelVerticalSizer->Add( itemBoxSizer8, 1, wxGROW | wxALL, 5 );
-
-
-    wxButton* itemButton10 = new wxButton( thePanel, ID_COLNECTBUTTON, _( "Colnect" ),
-        wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT );
-    itemBoxSizer8->Add( itemButton10, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+    // wxBoxSizer* itemBoxSizer8 = new wxBoxSizer( wxHORIZONTAL );
+   //  panelVerticalSizer->Add( itemBoxSizer8, 1, wxGROW | wxALL, 5 );
 
     m_imageName = SetupLabelText( thePanel, panelVerticalSizer, ++lastID, "Image Name", true, wxCommandEventHandler( IdentificationPanel::OnImageUpdated ) );
 
-    m_link->SetLabel( Catalog::DataTypeNames[ Catalog::DT_Link ] );
-    m_imageName->SetLabel( "Image Name" );
+    //   m_link->SetLabel( Catalog::DataTypeNames[ Catalog::DT_Link ] );
+    //   m_imageName->SetLabel( "Image Name" );
 
+     //  wxBoxSizer* MountHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
+     //  panelVerticalSizer->Add( MountHorizontalSizer, 0, wxGROW | wxALL, 0 );
     wxBoxSizer* MountHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
     panelVerticalSizer->Add( MountHorizontalSizer, 0, wxGROW | wxALL, 0 );
 
@@ -259,20 +263,26 @@ void IdentificationPanel::CreateControls( )
 
 
 
-    m_issueDate->SetLabel( "Issue Date" );
-    m_emission->SetLabel( "Emission" );
-    m_format->SetLabel( "Format" );
-    m_themes->SetLabel( "Themes" );
-    // m_ID->SetLabel( "ID" );
-    m_name->SetLabel( "Name" );
-    m_width->SetLabel( "Width" );
-    m_height->SetLabel( "Height" );
+    wxButton* itemButton10 = new wxButton( thePanel, ID_COLNECTBUTTON, _( "Colnect" ),
+        wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT );
+    panelVerticalSizer->Add( itemButton10, 0, wxALIGN_LEFT | wxALL, 5 );
 
-    m_series->SetLabel( "Series" );
-    //m_status->SetLabel( "Status" );
-    m_country->SetLabel( "Country" );
-    m_perforation->SetLabel( "Perforation" );
-    m_printing->SetLabel( "Printing" );
+
+
+    // m_issueDate->SetLabel( "Issue Date" );
+    // m_emission->SetLabel( "Emission" );
+    // m_format->SetLabel( "Format" );
+    // m_themes->SetLabel( "Themes" );
+    // // m_ID->SetLabel( "ID" );
+    // m_name->SetLabel( "Name" );
+    // m_width->SetLabel( "Width" );
+    // m_height->SetLabel( "Height" );
+
+    // m_series->SetLabel( "Series" );
+    // //m_status->SetLabel( "Status" );
+    // m_country->SetLabel( "Country" );
+    // m_perforation->SetLabel( "Perforation" );
+    // m_printing->SetLabel( "Printing" );
     SetDataEditable( GetSettings( )->IsCatalogVolumeEditable( ) );
     Layout( );
     Refresh( );

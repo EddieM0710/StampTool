@@ -235,32 +235,37 @@ void InventoryPanel::UpdatePanel( )
         m_grid->DeleteRows( 0, cnt );
     m_specimenList.clear( );
     int row = 0;
-
-    wxXmlNode* parent = GetCatalogData( )->GetCurrentStamp( );
-    if ( parent )
+    wxTreeItemId currID = GetCatalogData( )->GetCatalogTreeCtrl( )->GetSelection( );
+    if ( currID.IsOk( ) )
     {
-        wxXmlNode* ele = parent->GetChildren( );
-        while ( ele && ( ele->GetParent( ) == parent ) )
-        {
-            wxString str = ele->GetName( );
-            if ( !ele->GetName( ).Cmp( "Specimen" ) )
-            {
-                wxString specimenCollection = ele->GetAttribute( Catalog::ItemDataNames[ Catalog::IDT_Collection ], "" );
-                if ( !currCollection.Cmp( specimenCollection ) )
-                {
-                    AddRow( ele );
-                    for ( int i = 0; i < Catalog::IDT_NbrTypes; i++ )
-                    {
-                        wxString str = Utils::GetAttrStr( ele, Catalog::ItemDataNames[ ( Catalog::ItemDataTypes ) i ] );
-                        m_grid->SetCellValue( row, i, str );
-                    }
-                    row++;
-                }
-            }
+        CatalogTreeItemData* data = ( CatalogTreeItemData* ) GetCatalogData( )->GetCatalogTreeCtrl( )->GetItemData( currID );
+        wxXmlNode* parent = data->GetNodeElement( );// GetCatalogData( )->GetCurrentStamp( );
 
-            ele = ele->GetNext( );
+        if ( parent )
+        {
+            wxXmlNode* ele = parent->GetChildren( );
+            while ( ele && ( ele->GetParent( ) == parent ) )
+            {
+                wxString str = ele->GetName( );
+                if ( !ele->GetName( ).Cmp( "Specimen" ) )
+                {
+                    wxString specimenCollection = ele->GetAttribute( Catalog::ItemDataNames[ Catalog::IDT_Collection ], "" );
+                    if ( !currCollection.Cmp( specimenCollection ) )
+                    {
+                        AddRow( ele );
+                        for ( int i = 0; i < Catalog::IDT_NbrTypes; i++ )
+                        {
+                            wxString str = Utils::GetAttrStr( ele, Catalog::ItemDataNames[ ( Catalog::ItemDataTypes ) i ] );
+                            m_grid->SetCellValue( row, i, str );
+                        }
+                        row++;
+                    }
+                }
+
+                ele = ele->GetNext( );
+            }
+            //       }
         }
-        //       }
     }
 }
 

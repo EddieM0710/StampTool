@@ -141,6 +141,13 @@ public:
 
     void OnCatNbrComboBoxSel( wxCommandEvent& event );
 
+    void OnHeight( wxCommandEvent& event );
+    void OnWidth( wxCommandEvent& event );
+    void OnSelvageHeight( wxCommandEvent& event );
+    void OnSelvageWidth( wxCommandEvent& event );
+    void OnMountAllowanceHeight( wxCommandEvent& event );
+    void OnMountAllowanceWidth( wxCommandEvent& event );
+
     static bool ShowToolTips( );
 
     void SetImageFilename( wxString filename );
@@ -210,13 +217,13 @@ private:
     // LabeledTextBox* m_catNbr;
     wxComboBox* m_catNbr;
     //  LabeledTextBox* m_name;
-    LabeledTextBox* m_imagePath;
-    LabeledTextBox* m_height;
-    LabeledTextBox* m_width;
-    LabeledTextBox* m_selvageHeight;
-    LabeledTextBox* m_selvageWidth;
-    LabeledTextBox* m_mountAllowanceHeight;
-    LabeledTextBox* m_mountAllowanceWidth;
+    wxTextCtrl* m_imagePath;
+    wxTextCtrl* m_height;
+    wxTextCtrl* m_width;
+    wxTextCtrl* m_selvageHeight;
+    wxTextCtrl* m_selvageWidth;
+    wxTextCtrl* m_mountAllowanceHeight;
+    wxTextCtrl* m_mountAllowanceWidth;
     wxButton* m_validate;
     wxListBox* m_statusList;
     wxArrayString m_statusListStrings;
@@ -226,9 +233,9 @@ private:
     wxCheckBox* m_nbrCheckbox;
     wxCheckBox* m_titleCheckbox;
     wxCheckBox* m_subTitleCheckbox;
-    LabeledTextBox* m_subTitleLabel;
     wxBoxSizer* m_dialogVerticalSizer;
-
+    wxStaticBox* m_fontBox;
+    wxStaticBoxSizer* m_fontVSizer;
     wxFontPickerCtrl* m_nbrFontPicker;
     wxFontPickerCtrl* m_nameFontPicker;
     wxFontPickerCtrl* m_subTitleFontPicker;

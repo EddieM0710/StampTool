@@ -198,85 +198,73 @@ void StampDetailsPanel::CreateControls( )
         wxCommandEventHandler( StampDetailsPanel::OnSubTitleCheckboxClick ),
         wxCommandEventHandler( StampDetailsPanel::OnSubTitleTextChanged ) );
 
-    SetupFontPicker( theDialog, m_leftColumnVerticalSizer, lastID,
-        _( "Name Font" ), _( "Default" ),
+
+    // m_fontBox = new wxStaticBox( theDialog, wxID_ANY, _( "Stamp Fonts" ) );
+    // m_fontVSizer = new wxStaticBoxSizer( m_fontBox, wxVERTICAL );
+    // m_leftColumnVerticalSizer->Add( m_fontVSizer, 0, wxGROW | wxALL, 5 );
+
+   // m_fontBox = SetupStaticBox( theDialog, m_leftColumnVerticalSizer, m_fontVSizer );
+
+    wxBoxSizer* fontboxSizer;
+    m_fontBox = SetupBoxSizer( theDialog, m_leftColumnVerticalSizer, "Font", lastID, fontboxSizer, wxVERTICAL );
+
+
+    SetupFontPicker( m_fontBox, fontboxSizer, lastID,
+        _( "Name" ), _( "Default" ),
         m_nameFontPicker, m_nameColorPicker,
         wxFontPickerEventHandler( StampDetailsPanel::OnNameFontPicker ),
         wxColourPickerEventHandler( StampDetailsPanel::OnNameColorPicker ),
         wxCommandEventHandler( StampDetailsPanel::OnNameDefaultClick ) );
 
 
-    SetupFontPicker( theDialog, m_leftColumnVerticalSizer, lastID,
-        _( "Catalog Nbr Font" ), _( "Default" ),
+    SetupFontPicker( m_fontBox, fontboxSizer, lastID,
+        _( "Nbr" ), _( "Default" ),
         m_nbrFontPicker, m_nbrColorPicker,
         wxFontPickerEventHandler( StampDetailsPanel::OnNbrFontPicker ),
         wxColourPickerEventHandler( StampDetailsPanel::OnNbrColorPicker ),
         wxCommandEventHandler( StampDetailsPanel::OnNbrDefaultClick ) );
 
-    m_TitleLocationBox = new wxStaticBox( theDialog, wxID_ANY, _( "Name Location" ) );
-    m_titleLocationVSizer = new wxStaticBoxSizer( m_TitleLocationBox, wxVERTICAL );
-    m_rightColumnVerticalSizer->Add( m_titleLocationVSizer, 0, wxGROW | wxALL, 5 );
 
-    m_titleLocationHSizer = new wxBoxSizer( wxHORIZONTAL );
-    m_titleLocationVSizer->Add( m_titleLocationHSizer, 0, wxGROW | wxALL, 0 );
+    wxBoxSizer* nameLocationboxSizer;
+    wxStaticBox* nameLocationbox = SetupBoxSizer( theDialog, m_rightColumnVerticalSizer, "Name Location", lastID, nameLocationboxSizer, wxHORIZONTAL );
 
-    m_defaultButton = new wxRadioButton( m_titleLocationVSizer->GetStaticBox( ), ID_DEFAULTRADIOBUTTON, _( "Default" ), wxDefaultPosition, wxDefaultSize, 0 );
+    m_defaultButton = new wxRadioButton( nameLocationbox, lastID, _( "Default" ), wxDefaultPosition, wxDefaultSize, 0 );
     m_defaultButton->SetValue( false );
-    m_titleLocationHSizer->Add( m_defaultButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+    nameLocationboxSizer->Add( m_defaultButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
-    m_topButton = new wxRadioButton( m_titleLocationVSizer->GetStaticBox( ), ID_TOPRADIOBUTTON, _( "Top" ), wxDefaultPosition, wxDefaultSize, 0 );
+    m_topButton = new wxRadioButton( nameLocationbox, lastID, _( "Top" ), wxDefaultPosition, wxDefaultSize, 0 );
     m_topButton->SetValue( true );
-    m_titleLocationHSizer->Add( m_topButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+    nameLocationboxSizer->Add( m_topButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
-    m_bottomButton = new wxRadioButton( m_titleLocationVSizer->GetStaticBox( ), ID_BOTTOMRADIOBUTTON, _( "Bottom" ), wxDefaultPosition, wxDefaultSize, 0 );
+    m_bottomButton = new wxRadioButton( nameLocationbox, lastID, _( "Bottom" ), wxDefaultPosition, wxDefaultSize, 0 );
     m_bottomButton->SetValue( false );
-    m_titleLocationHSizer->Add( m_bottomButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+    nameLocationboxSizer->Add( m_bottomButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
-    m_imagePath = new LabeledTextBox( theDialog, ID_IMAGEPATHLABELEDTEXTBOX, wxDefaultPosition, wxDefaultSize, wxNO_BORDER | wxTAB_TRAVERSAL );
-    m_imagePath->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
-    m_rightColumnVerticalSizer->Add( m_imagePath, 0, wxGROW | wxALL, 5 );
 
-    wxBoxSizer* sizeSizer = new wxBoxSizer( wxHORIZONTAL );
-    m_rightColumnVerticalSizer->Add( sizeSizer, 0, wxGROW | wxALL, 0 );
+    m_imagePath = SetupLabelText( theDialog, m_leftColumnVerticalSizer, lastID, _( "Image Name" ), true, wxCommandEventHandler( StampDetailsPanel::OnMountAllowanceWidth ) );
 
-    wxStaticText* stampStaticText = new wxStaticText( theDialog, wxID_STATIC, _( "Stamp" ), wxDefaultPosition, wxDefaultSize, 0 );
-    sizeSizer->Add( stampStaticText, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+    wxBoxSizer* stampboxSizer;
+    wxStaticBox* stampboxBox = SetupBoxSizer( theDialog, m_rightColumnVerticalSizer, "Stamp", lastID, stampboxSizer, wxHORIZONTAL );
 
-    m_height = new LabeledTextBox( theDialog, ID_HEIGHTLABELEDTEXTBOX, wxDefaultPosition, wxDefaultSize, wxNO_BORDER | wxTAB_TRAVERSAL );
-    m_height->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
-    sizeSizer->Add( m_height, 0, wxGROW | wxALL, 5 );
+    m_height = SetupLabelText( stampboxBox, stampboxSizer, lastID, _( "Height" ), false, wxCommandEventHandler( StampDetailsPanel::OnHeight ) );
 
-    m_width = new LabeledTextBox( theDialog, ID_WIDTHLABELEDTEXTBOX, wxDefaultPosition, wxDefaultSize, wxNO_BORDER | wxTAB_TRAVERSAL );
-    m_width->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
-    sizeSizer->Add( m_width, 0, wxGROW | wxALL, 5 );
+    m_width = SetupLabelText( stampboxBox, stampboxSizer, lastID, _( "Width" ), false, wxCommandEventHandler( StampDetailsPanel::OnWidth ) );
 
-    wxBoxSizer* selvageSizeSizer = new wxBoxSizer( wxHORIZONTAL );
-    m_rightColumnVerticalSizer->Add( selvageSizeSizer, 0, wxGROW | wxALL, 0 );
 
-    wxStaticText* selvageStaticText = new wxStaticText( theDialog, wxID_STATIC, _( "Selvage" ), wxDefaultPosition, wxDefaultSize, 0 );
-    selvageSizeSizer->Add( selvageStaticText, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+    wxBoxSizer* selvageBoxSizer;
+    wxStaticBox* selvageBox = SetupBoxSizer( theDialog, m_rightColumnVerticalSizer, "Selvage", lastID, selvageBoxSizer, wxHORIZONTAL );
 
-    m_selvageHeight = new LabeledTextBox( theDialog, ID_SELVAGEHEIGHTLABELEDTEXTBOX, wxDefaultPosition, wxDefaultSize, wxNO_BORDER | wxTAB_TRAVERSAL );
-    m_selvageHeight->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
-    selvageSizeSizer->Add( m_selvageHeight, 1, wxGROW | wxALL, 5 );
+    m_selvageHeight = SetupLabelText( selvageBox, selvageBoxSizer, lastID, _( "Height" ), false, wxCommandEventHandler( StampDetailsPanel::OnSelvageHeight ) );
 
-    m_selvageWidth = new LabeledTextBox( theDialog, ID_SELVAGEWIDTHLABELEDTEXTBOX, wxDefaultPosition, wxDefaultSize, wxNO_BORDER | wxTAB_TRAVERSAL );
-    m_selvageWidth->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
-    selvageSizeSizer->Add( m_selvageWidth, 1, wxGROW | wxALL, 5 );
+    m_selvageWidth = SetupLabelText( selvageBox, selvageBoxSizer, lastID, _( "Width" ), false, wxCommandEventHandler( StampDetailsPanel::OnSelvageWidth ) );
 
-    wxBoxSizer* mountSizeSizer = new wxBoxSizer( wxHORIZONTAL );
-    m_rightColumnVerticalSizer->Add( mountSizeSizer, 0, wxGROW | wxALL, 0 );
 
-    wxStaticText* mountStaticText = new wxStaticText( theDialog, wxID_STATIC, _( "Mount Allowance" ), wxDefaultPosition, wxDefaultSize, 0 );
-    mountSizeSizer->Add( mountStaticText, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+    wxBoxSizer* mountBoxSizer;
+    wxStaticBox* mountSize = SetupBoxSizer( theDialog, m_rightColumnVerticalSizer, "Mount Allowance", lastID, mountBoxSizer, wxHORIZONTAL );
 
-    m_mountAllowanceHeight = new LabeledTextBox( theDialog, ID_MOUNTHEIGHTLABELEDTEXTBOX, wxDefaultPosition, wxDefaultSize, wxNO_BORDER | wxTAB_TRAVERSAL );
-    m_mountAllowanceHeight->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
-    mountSizeSizer->Add( m_mountAllowanceHeight, 1, wxGROW | wxALL, 5 );
+    m_mountAllowanceHeight = SetupLabelText( mountSize, mountBoxSizer, lastID, _( "Height" ), false, wxCommandEventHandler( StampDetailsPanel::OnMountAllowanceHeight ) );
 
-    m_mountAllowanceWidth = new LabeledTextBox( theDialog, ID_MOUNTWIDTHLABELEDTEXTBOX, wxDefaultPosition, wxDefaultSize, wxNO_BORDER | wxTAB_TRAVERSAL );
-    m_mountAllowanceWidth->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
-    mountSizeSizer->Add( m_mountAllowanceWidth, 1, wxGROW | wxALL, 5 );
+    m_mountAllowanceWidth = SetupLabelText( mountSize, mountBoxSizer, lastID, _( "Width" ), false, wxCommandEventHandler( StampDetailsPanel::OnMountAllowanceWidth ) );
 
 
     wxBoxSizer* statusSizer = new wxBoxSizer( wxHORIZONTAL );
@@ -287,16 +275,7 @@ void StampDetailsPanel::CreateControls( )
     statusSizer->Add( m_statusList, 1, wxGROW | wxALL, 5 );
 
 
-    // m_catNbr->SetLabel( "Catalog Nbr" );
-    //  m_name->SetLabel( "Name" );
-    m_height->SetLabel( "Height" );
-    m_width->SetLabel( "Width" );
-    m_selvageHeight->SetLabel( "Height" );
-    m_selvageWidth->SetLabel( "Width" );
-    m_mountAllowanceHeight->SetLabel( "Height" );
-    m_mountAllowanceWidth->SetLabel( "Width" );
     m_imagePath->SetLabel( "ImageName" );
-    //  m_subTitleLabel->SetLabel( "Subtitle" );
     Layout( );
 }
 
@@ -863,5 +842,60 @@ void StampDetailsPanel::OnCatNbrCheckboxClick( wxCommandEvent& event )
 void StampDetailsPanel::OnSubTitleCheckboxClick( wxCommandEvent& event )
 {
     UpdateSubTitleState( m_titleHelper );
+    Layout( );
+};
+
+void StampDetailsPanel::OnHeight( wxCommandEvent& event )
+{
+    wxString str = m_height->GetValue( );
+    double val;
+    str.ToDouble( &val );
+    m_stamp->SetHeight( val );
+    Layout( );
+};
+
+void StampDetailsPanel::OnWidth( wxCommandEvent& event )
+{
+    wxString str = m_width->GetValue( );
+    double val;
+    str.ToDouble( &val );
+    m_stamp->SetWidth( val );
+    Layout( );
+};
+
+
+void StampDetailsPanel::OnSelvageHeight( wxCommandEvent& event )
+{
+    wxString str = m_selvageHeight->GetValue( );
+    double val;
+    str.ToDouble( &val );
+    m_stamp->SetSelvageHeight( val );
+    Layout( );
+};
+
+void StampDetailsPanel::OnSelvageWidth( wxCommandEvent& event )
+{
+    wxString str = m_selvageWidth->GetValue( );
+    double val;
+    str.ToDouble( &val );
+    m_stamp->SetSelvageWidth( val );
+    Layout( );
+};
+
+void StampDetailsPanel::OnMountAllowanceHeight( wxCommandEvent& event )
+{
+    wxString str = m_mountAllowanceHeight->GetValue( );
+    double val;
+    str.ToDouble( &val );
+    m_stamp->SetSelvageHeight( val );
+    Layout( );
+};
+
+void StampDetailsPanel::OnMountAllowanceWidth( wxCommandEvent& event )
+{
+    wxString str = m_mountAllowanceWidth->GetValue( );
+    double val;
+    str.ToDouble( &val );
+    m_stamp->SetMountAllowanceWidth( val );
     Layout( );
 };

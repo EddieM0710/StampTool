@@ -75,9 +75,9 @@ namespace Design {
             if ( fonts )
             {
                 if ( headingNdx >= 0 )
-                    m_headingFrame->SaveFont( parent );
+                    m_headingFrame->SaveFont( fonts );
                 if ( subHeadingNdx >= 0 )
-                    m_subHeadingFrame->SaveFont( parent );
+                    m_subHeadingFrame->SaveFont( fonts );
             }
         }
     }

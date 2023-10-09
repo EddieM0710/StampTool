@@ -55,11 +55,11 @@ IMPLEMENT_DYNAMIC_CLASS( RowDetailsPanel, HelperPanel )
  * RowDetailsPanel event table definition
  */
     BEGIN_EVENT_TABLE( RowDetailsPanel, HelperPanel )
-    EVT_RADIOBUTTON( ID_DEFAULTRADIOBUTTON, RowDetailsPanel::OnDefaultRadioButtonSelected )
-    EVT_RADIOBUTTON( ID_TOPRADIOBUTTON, RowDetailsPanel::OnTopRadioButtonSelected )
-    EVT_RADIOBUTTON( ID_BOTTOMRADIOBUTTON, RowDetailsPanel::OnBottomRadioButtonSelected )
-    EVT_RADIOBUTTON( ID_CALCULATEDRADIOBUTTON, RowDetailsPanel::OnCalculatedClick )
-    EVT_RADIOBUTTON( ID_FIXEDRADIOBUTTON, RowDetailsPanel::OnFixedClick )
+    // EVT_RADIOBUTTON( ID_DEFAULTRADIOBUTTON, RowDetailsPanel::OnDefaultRadioButtonSelected )
+    // EVT_RADIOBUTTON( ID_TOPRADIOBUTTON, RowDetailsPanel::OnTopRadioButtonSelected )
+    // EVT_RADIOBUTTON( ID_BOTTOMRADIOBUTTON, RowDetailsPanel::OnBottomRadioButtonSelected )
+    // EVT_RADIOBUTTON( ID_CALCULATEDRADIOBUTTON, RowDetailsPanel::OnCalculatedClick )
+    // EVT_RADIOBUTTON( ID_FIXEDRADIOBUTTON, RowDetailsPanel::OnFixedClick )
     END_EVENT_TABLE( )
     ;
 
@@ -115,6 +115,8 @@ void RowDetailsPanel::Init( )
 }
 
 
+
+
 void RowDetailsPanel::CreateControls( )
 {
     RowDetailsPanel* theDialog = this;
@@ -131,20 +133,26 @@ void RowDetailsPanel::CreateControls( )
     wxBoxSizer* firstRowHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
     m_leftColumnVerticalSizer->Add( firstRowHorizontalSizer, 0, wxGROW | wxALL, 5 );
 
-    m_frameCheckbox = new wxCheckBox( theDialog, ID_FRAMECHECKBOX, _( "Show Frame" ), wxDefaultPosition, wxDefaultSize, 0 );
-    m_frameCheckbox->SetValue( false );
-    firstRowHorizontalSizer->Add( m_frameCheckbox, 0, wxLEFT | wxALL, 5 );
 
     int lastID = ID_LastID;
 
+    m_frameCheckbox = SetupCheckBox( theDialog, firstRowHorizontalSizer, lastID,
+        ( "Show Frame" ), wxCommandEventHandler( RowDetailsPanel::OnFrameCheckboxClick ) );
+    m_frameCheckbox->SetValue( false );
 
-    m_titleHelper = SetupTitleHelper( theDialog, m_leftColumnVerticalSizer, lastID, DefaultTitleHelperStyle,
+
+    m_titleHelper = SetupTitleHelper( theDialog, m_leftColumnVerticalSizer, lastID, HasTextCtrl,
         wxCommandEventHandler( RowDetailsPanel::OnTitleCheckboxClick ),
         wxCommandEventHandler( RowDetailsPanel::OnTitleTextChanged ),
         wxCommandEventHandler( RowDetailsPanel::OnSubTitleCheckboxClick ),
         wxCommandEventHandler( RowDetailsPanel::OnSubTitleTextChanged ) );
 
-    SetupFontPicker( theDialog, m_leftColumnVerticalSizer, lastID,
+
+    wxBoxSizer* fontboxSizer;
+    wxStaticBox* fontBox = SetupBoxSizer( theDialog, m_leftColumnVerticalSizer, "Font", lastID, fontboxSizer, wxVERTICAL );
+
+
+    SetupFontPicker( fontBox, fontboxSizer, lastID,
         _( "Title" ), _( "Default" ),
         m_titleFontPicker, m_titleColorPicker,
         wxFontPickerEventHandler( RowDetailsPanel::OnTitleFontPicker ),
@@ -152,7 +160,7 @@ void RowDetailsPanel::CreateControls( )
         wxCommandEventHandler( RowDetailsPanel::OnTitleDefaultClick ) );
 
 
-    FontPicker* titleFontPicker = SetupFontPicker( theDialog, m_leftColumnVerticalSizer, lastID,
+    FontPicker* titleFontPicker = SetupFontPicker( fontBox, fontboxSizer, lastID,
         _( "SubTitle" ), _( "Default" ),
         m_subTitleFontPicker, m_subTitleColorPicker,
         wxFontPickerEventHandler( RowDetailsPanel::OnSubTitleFontPicker ),
@@ -160,46 +168,37 @@ void RowDetailsPanel::CreateControls( )
         wxCommandEventHandler( RowDetailsPanel::OnSubTitleDefaultClick ) );
 
 
+    wxBoxSizer* titleLocationVSizer;
+    wxStaticBox* titleLocationBox = SetupBoxSizer( theDialog, m_rightColumnVerticalSizer, "Member Title Location", lastID, titleLocationVSizer, wxHORIZONTAL );
 
-    m_TitleLocationBox = new wxStaticBox( theDialog, wxID_ANY, _( "Member Title Location" ) );
-    m_titleLocationVSizer = new wxStaticBoxSizer( m_TitleLocationBox, wxVERTICAL );
-    m_rightColumnVerticalSizer->Add( m_titleLocationVSizer, 0, wxGROW | wxALL, 5 );
+    m_defaultButton = SetupRadioButton( titleLocationBox, titleLocationVSizer, lastID, _( "Default" ), false,
+        wxCommandEventHandler( RowDetailsPanel::OnDefaultRadioButtonSelected ) );
 
-    m_titleLocationHSizer = new wxBoxSizer( wxHORIZONTAL );
-    m_titleLocationVSizer->Add( m_titleLocationHSizer, 0, wxGROW | wxALL, 0 );
+    m_topButton = SetupRadioButton( titleLocationBox, titleLocationVSizer, lastID, _( "Top" ), false,
+        wxCommandEventHandler( RowDetailsPanel::OnTopRadioButtonSelected ) );
 
-    m_defaultButton = new wxRadioButton( m_titleLocationVSizer->GetStaticBox( ), ID_DEFAULTRADIOBUTTON, _( "Default" ), wxDefaultPosition, wxDefaultSize, 0 );
-    m_defaultButton->SetValue( false );
-    m_titleLocationHSizer->Add( m_defaultButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+    m_bottomButton = SetupRadioButton( titleLocationBox, titleLocationVSizer, lastID, _( "Bottom" ), false,
+        wxCommandEventHandler( RowDetailsPanel::OnTopRadioButtonSelected ) );
 
-    m_topButton = new wxRadioButton( m_titleLocationVSizer->GetStaticBox( ), ID_TOPRADIOBUTTON, _( "Top" ), wxDefaultPosition, wxDefaultSize, 0 );
-    m_topButton->SetValue( true );
-    m_titleLocationHSizer->Add( m_topButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
-    m_bottomButton = new wxRadioButton( m_titleLocationVSizer->GetStaticBox( ), ID_BOTTOMRADIOBUTTON, _( "Bottom" ), wxDefaultPosition, wxDefaultSize, 0 );
-    m_bottomButton->SetValue( false );
-    m_titleLocationHSizer->Add( m_bottomButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+    wxBoxSizer* memberPositionVSizer;
+    wxStaticBox* memberPositionStaticBox = SetupBoxSizer( theDialog, m_rightColumnVerticalSizer, "Member Position", lastID, memberPositionVSizer, wxHORIZONTAL );
 
-    wxStaticBox* memberPositionStaticBox = new wxStaticBox( theDialog, wxID_ANY, _( "Member Position" ) );
-    wxStaticBoxSizer* memberPositionStaticBoxSizer = new wxStaticBoxSizer( memberPositionStaticBox, wxHORIZONTAL );
-    m_rightColumnVerticalSizer->Add( memberPositionStaticBoxSizer, 0, wxALIGN_TOP | wxALL, 5 );
+    m_positionCalculated = SetupRadioButton( memberPositionStaticBox, memberPositionVSizer, lastID, _( "Calculated" ), true,
+        wxCommandEventHandler( RowDetailsPanel::OnCalculatedClick ) );
+    m_positionCalculated->SetToolTip( _( "Calculate based on available space." ) );
 
-    m_positionCalculated = new wxRadioButton( memberPositionStaticBoxSizer->GetStaticBox( ), ID_CALCULATEDRADIOBUTTON, _( "Calculated" ), wxDefaultPosition, wxDefaultSize, 0 );
-    m_positionCalculated->SetValue( true );
+    HorizontalSpacer( memberPositionVSizer );
+
+    m_positionFixed = SetupRadioButton( memberPositionStaticBox, memberPositionVSizer, lastID, _( "Fixed" ), false,
+        wxCommandEventHandler( RowDetailsPanel::OnFixedClick ) );
     m_positionCalculated->SetToolTip( _( "Evenly Distributed" ) );
-    memberPositionStaticBoxSizer->Add( m_positionCalculated, 0, wxALIGN_LEFT | wxALL, 5 );
 
-    memberPositionStaticBoxSizer->Add( 5, 5, 0, wxALIGN_LEFT | wxALL, 5 );
-
-
-    m_positionFixed = new wxRadioButton( memberPositionStaticBoxSizer->GetStaticBox( ), ID_FIXEDRADIOBUTTON, _( "Fixed" ), wxDefaultPosition, wxDefaultSize, 0 );
-    m_positionFixed->SetValue( false );
-    memberPositionStaticBoxSizer->Add( m_positionFixed, 0, wxALIGN_LEFT | wxALL, 5 );
-
-    m_positionFixedSize = new wxTextCtrl( memberPositionStaticBoxSizer->GetStaticBox( ), ID_FIXEDSIZETEXTCTRL, _( "4" ), wxDefaultPosition, wxDefaultSize, 0 );
+    m_positionFixedSize = new wxTextCtrl( memberPositionStaticBox, ++lastID, _( "4" ), wxDefaultPosition, wxDefaultSize, 0 );
     m_positionFixedSize->SetToolTip( _( "mm" ) );
     m_positionFixedSize->Enable( false );
-    memberPositionStaticBoxSizer->Add( m_positionFixedSize, 0, wxALIGN_LEFT | wxALL, 5 );
+    memberPositionVSizer->Add( m_positionFixedSize, 0, wxALIGN_LEFT | wxALL, 5 );
+
 
 
     //>>error list ctrls
@@ -282,7 +281,7 @@ void RowDetailsPanel::SetShowTitle( bool state ) {
     m_titleHelper->titleCheckbox->SetValue( state );
 };
 void RowDetailsPanel::SetShowSubTitle( bool state ) {
-    m_titleHelper->subTitleCheckbox->SetValue( state );
+    //   m_titleHelper->subTitleCheckbox->SetValue( state );
 };
 void RowDetailsPanel::SetShowFrame( bool state ) {
     m_frameCheckbox->SetValue( state );
@@ -328,21 +327,31 @@ void RowDetailsPanel::SetCalculateSpacing( bool val )
 
 void RowDetailsPanel::OnTopRadioButtonSelected( wxCommandEvent& event )
 {
-    m_titleLocation = Design::AT_TitleLocationTop;
+    if ( m_topButton->GetValue( ) )
+    {
+        m_titleLocation = Design::AT_TitleLocationTop;
+        m_row->SetTitleLocation( m_titleLocation );
+    }
     event.Skip( );
 }
 
 void RowDetailsPanel::OnBottomRadioButtonSelected( wxCommandEvent& event )
 {
-    m_titleLocation = Design::AT_TitleLocationBottom;
+    if ( m_bottomButton->GetValue( ) )
+    {
+        m_titleLocation = Design::AT_TitleLocationBottom;
+        m_row->SetTitleLocation( m_titleLocation );
+    }
     event.Skip( );
 }
 
-
-
 void RowDetailsPanel::OnDefaultRadioButtonSelected( wxCommandEvent& event )
 {
-    m_titleLocation = Design::AT_TitleLocationDefault;
+    if ( m_defaultButton->GetValue( ) )
+    {
+        m_titleLocation = Design::AT_TitleLocationDefault;
+        m_row->SetTitleLocation( m_titleLocation );
+    }
     event.Skip( );
 }
 
@@ -350,11 +359,13 @@ void RowDetailsPanel::OnDefaultRadioButtonSelected( wxCommandEvent& event )
 void RowDetailsPanel::OnCalculatedClick( wxCommandEvent& event )
 {
     m_positionFixedSize->Enable( false );
+    m_row->SetCalculateSpacing( true );
     event.Skip( );
 }
 void RowDetailsPanel::OnFixedClick( wxCommandEvent& event )
 {
     m_positionFixedSize->Enable( true );
+    m_row->SetCalculateSpacing( false );
     event.Skip( );
 }
 
@@ -362,9 +373,13 @@ void RowDetailsPanel::OnFixedClick( wxCommandEvent& event )
 
 void RowDetailsPanel::OnTitleTextChanged( wxCommandEvent& event )
 {
+    wxString title = m_titleHelper->titleLabel->GetValue( );
+    m_row->SetTitleString( title );
 }
 void RowDetailsPanel::OnSubTitleTextChanged( wxCommandEvent& event )
 {
+    //     wxString title = m_titleHelper->subTitleLabel->GetValue( );
+    //     m_row->SetSubTitleString( title );
 }
 
 
@@ -405,17 +420,20 @@ void RowDetailsPanel::OnSubTitleDefaultClick( wxCommandEvent& event )
     event.Skip( );
 }
 
+void RowDetailsPanel::OnFrameCheckboxClick( wxCommandEvent& event )
+{
+    m_row->SetShowFrame( m_frameCheckbox->GetValue( ) );
+}
 
 void RowDetailsPanel::OnTitleCheckboxClick( wxCommandEvent& event )
 {
+    m_row->SetShowTitle( m_titleHelper->titleCheckbox->GetValue( ) );
     UpdateTitleState( m_titleHelper );
     Layout( );
 }
 
-
-
 void RowDetailsPanel::OnSubTitleCheckboxClick( wxCommandEvent& event )
 {
     UpdateSubTitleState( m_titleHelper );
-    m_dialogVerticalSizer->Layout( );
+    Layout( );
 };

@@ -123,6 +123,15 @@ FontPicker* HelperPanel::SetupFontPicker(
     return fontPickerHelper;
 }
 
+wxStaticBox* HelperPanel::SetupBoxSizer( wxWindow* parent, wxBoxSizer* inSizer, wxString name, int& lastID, wxBoxSizer*& boxSizer, wxOrientation orientation )
+{
+    wxStaticBox* box = new wxStaticBox( parent, ++lastID, name );
+
+    boxSizer = new wxStaticBoxSizer( box, orientation );
+    inSizer->Add( boxSizer, 0, wxGROW | wxALL, 5 );
+
+    return box;
+}
 
 wxTextCtrl* HelperPanel::SetupLabelText( wxWindow* parent, wxBoxSizer* inSizer, int& lastID, wxString label, bool grow,
     wxObjectEventFunction  eventHandler )
@@ -166,6 +175,16 @@ wxTextCtrl* HelperPanel::SetupLabelText( wxWindow* parent, wxBoxSizer* inSizer, 
     return value;
 }
 
+
+wxRadioButton* HelperPanel::SetupRadioButton( wxWindow* parent, wxBoxSizer* sizer, int& lastID, wxString label, bool initValue, wxObjectEventFunction  eventHandler )
+{
+
+    wxRadioButton* radioButton = new wxRadioButton( parent, lastID, label, wxDefaultPosition, wxDefaultSize, 0 );
+    radioButton->SetValue( initValue );
+    sizer->Add( radioButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+    Connect( radioButton->GetId( ), wxEVT_RADIOBUTTON, eventHandler );
+    return radioButton;
+}
 
 wxCheckBox* HelperPanel::SetupCheckBox( wxWindow* parent, wxBoxSizer* sizer, int& lastID, wxString label, wxObjectEventFunction  eventHandler )
 {
@@ -223,10 +242,10 @@ HelperPanel::TitleHelper* HelperPanel::SetupTitleHelper( wxWindow* parent, wxBox
     }
     if ( style & HasTextCtrl )
     {
-        titleHelper->titleLabel = SetupLabelText( parent, inSizer, idLast, _( "Title" ), true, titleCheckBoxEventHandler );
+        titleHelper->titleLabel = SetupLabelText( parent, inSizer, idLast, _( "Title" ), true, titleEventHandler );
         if ( style & HasSubTitle )
         {
-            titleHelper->subTitleLabel = SetupLabelText( parent, inSizer, idLast, _( "Sub Title" ), true, subTitleCheckBoxEeventHandler );
+            titleHelper->subTitleLabel = SetupLabelText( parent, inSizer, idLast, _( "Sub Title" ), true, subTitleEventHandler );
         }
     }
     return titleHelper;
@@ -251,7 +270,6 @@ void HelperPanel::UpdateTitleState( HelperPanel::TitleHelper* titleHelper )
     titleHelper->titleCheckbox->Show( true );
     if ( state )
     {
-
         if ( titleHelper->titleLabel )
         {
             titleHelper->titleLabel->Enable( state );
@@ -263,7 +281,6 @@ void HelperPanel::UpdateTitleState( HelperPanel::TitleHelper* titleHelper )
     }
     else
     {
-        titleHelper->titleCheckbox->Show( true );
         if ( titleHelper->titleLabel )
         {
             titleHelper->titleLabel->Disable( );
@@ -271,6 +288,8 @@ void HelperPanel::UpdateTitleState( HelperPanel::TitleHelper* titleHelper )
         if ( titleHelper->subTitleCheckbox )
         {
             titleHelper->subTitleCheckbox->Disable( );
+            titleHelper->subTitleCheckbox->SetValue( state );
+            titleHelper->subTitleLabel->Disable( );
         }
     }
     if ( titleHelper->subTitleLabel )
@@ -285,7 +304,7 @@ void HelperPanel::UpdateSubTitleState( HelperPanel::TitleHelper* titleHelper )
         bool state = titleHelper->subTitleCheckbox->GetValue( );
         if ( state )
         {
-            titleHelper->subTitleCheckbox->Enable( );
+            //titleHelper->subTitleCheckbox->Enable( );
             if ( titleHelper->subTitleLabel )
             {
                 titleHelper->subTitleLabel->Enable( );
@@ -293,7 +312,7 @@ void HelperPanel::UpdateSubTitleState( HelperPanel::TitleHelper* titleHelper )
         }
         else
         {
-            titleHelper->subTitleCheckbox->Disable( );
+            //titleHelper->subTitleCheckbox->Disable( );
             if ( titleHelper->subTitleLabel )
             {
                 titleHelper->subTitleLabel->Disable( );

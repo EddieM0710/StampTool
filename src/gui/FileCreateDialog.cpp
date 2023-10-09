@@ -162,7 +162,7 @@ void FileCreateDialog::OnOKClick( wxCommandEvent& event )
             wxT( "The selected file exists. \n"\
                 "Select \"OK\" to overwrite the existing file losing the contents.\n"\
                 "Or select \"Cancel\" to choose another name.\n" ),
-            wxT( "Warning! File Exists.\n" ),
+            wxT( " Warning! File Exists.\n" ),
             wxOK | wxCANCEL | wxCENTER );
         int rsp = dlg->ShowModal( );
         if ( rsp == wxID_CANCEL )

@@ -112,7 +112,7 @@ void AlbumTreeCtrl::UpdateAlbumStampEntries( wxTreeItemId treeID )
     Design::AlbumBaseType nodeType = data->GetType( );
     if ( Design::IsAlbumBaseTypeValid( nodeType ) )
     {
-        std::cout << Design::AlbumBaseNames[ nodeType ] << "\n";
+        //std::cout << Design::AlbumBaseNames[ nodeType ] << "\n";
         //if the child element is not a stamp
         if ( nodeType == Design::AT_Stamp )
         {
@@ -346,7 +346,7 @@ Utils::StampLink* AlbumTreeCtrl::AppendStamp( wxTreeItemId catTreeID )
 
         // A stamp can't have children. so get its parent
         Design::AlbumBaseType type = GetItemType( currAlbumID );
-        if ( type == Design::AT_Stamp || type == Design::AT_Title )
+        if ( type == Design::AT_Stamp ) //@@@ || type == Design::AT_Title )
         {
             currAlbumID = GetItemParent( currAlbumID );
         }
@@ -358,10 +358,7 @@ Utils::StampLink* AlbumTreeCtrl::AppendStamp( wxTreeItemId catTreeID )
             // gather info from the catalog item entry and update thenew stamp
             wxString catStr = GetCatalogData( )->GetCatalogVolume( )->GetFilename( );
             wxFileName catFileName( catStr );
-            wxString imageName = GetCatalogTreeCtrl( )->GetImageFullName( catTreeID );
-            //wxFileName imageFileName( imageName );
-            //wxString imagename = imageFileName.GetFullPath( );
-            newStamp->SetAttrStr( Design::AT_ImageName, imageName );
+
 
             CatalogTreeCtrl* catTree = GetCatalogTreeCtrl( );
             wxString idText = catTree->GetID( catTreeID );
@@ -1541,7 +1538,7 @@ Design::NodeStatus  AlbumTreeCtrl::UpdateTreeItem( wxTreeItemId childID, Design:
     page->UpdateSizes( );
     page->UpdatePositions( );
     Design::NodeStatus status = ele->ValidateNode( );
-    std::cout << "AlbumTreeCtrl::UpdateTreeItem Set backGround color " << ItemBackgroundColour[ status ] << "  status " << status << "\n";
+    // std::cout << "AlbumTreeCtrl::UpdateTreeItem Set backGround color " << ItemBackgroundColour[ status ] << "  status " << status << "\n";
     SetItemBackgroundColour( childID, ItemBackgroundColour[ status ] );
     return status;
 }

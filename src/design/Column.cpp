@@ -376,7 +376,7 @@ namespace Design {
             else if ( status == AT_WARNING )
             {
                 GetAlbumTreeCtrl( )->SetItemBackgroundColour( id, *wxYELLOW );
-                std::cout << GetAlbumTreeCtrl( )->GetItemText( id ) << "Warning\n";
+                std::cout << GetAlbumTreeCtrl( )->GetItemText( id ) << " Warning\n";
             }
         }
         return status;

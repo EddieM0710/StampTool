@@ -33,7 +33,9 @@
 
 class Stamp;
 
-namespace Utils { class StampLink; }
+namespace Utils {
+    class StampLink;
+}
 
 
 /**
@@ -49,15 +51,7 @@ public:
     ///  @param type 
     ///  @param desc 
     ///  @param ele 
-    CatalogTreeItemData( Catalog::CatalogBaseType type, const wxString desc,
-        wxXmlNode* ele = 0 )
-    {
-        m_type = type;
-        m_desc = desc;
-        m_element = ele;
-        m_imageFullPath = "";
-        m_ok = 12345;
-    };
+    CatalogTreeItemData( Catalog::CatalogBaseType type, const wxString desc, wxXmlNode* ele = 0 );
 
     ///  @brief Destroy the Catalog Tree Item Data object
     ///  
@@ -107,7 +101,9 @@ public:
     ///  
     ///  @return true 
     ///  @return false 
-    bool IsChecked( ) { return m_isChecked; };
+    bool IsChecked( ) {
+        return m_isChecked;
+    };
 
     ///  @brief 
     ///  
@@ -125,47 +121,65 @@ public:
     ///  @brief Get the Desc object
     ///  
     ///  @return wxString const& 
-    wxString const& GetDesc( ) const { return m_desc; };
+    wxString const& GetDesc( ) const {
+        return m_desc;
+    };
 
     ///  @brief Get the Image Full Name object
     ///  
     ///  @return wxString* 
-    wxString GetImageFullName( ) { return m_imageFullPath; };
+    wxString GetImageFullName( ) {
+        return m_imageFullPath;
+    };
 
     ///  @brief Get the Node Element object
     ///  
     ///  @return wxXmlNode* 
-    wxXmlNode* GetNodeElement( void ) { return m_element; };
+    wxXmlNode* GetNodeElement( void ) {
+        return m_element;
+    };
 
     ///  @brief Get the Stamp Link object
     ///  
     ///  @return Utils::StampLink* 
-    Utils::StampLink* GetStampLink( ) { return m_stampLink; }
+    Utils::StampLink* GetStampLink( ) {
+        return m_stampLink;
+    }
 
     ///  @brief Get the Type object
     ///  
     ///  @return Catalog::CatalogBaseType 
-    Catalog::CatalogBaseType GetType( ) { return m_type; };
+    Catalog::CatalogBaseType GetType( ) {
+        return m_type;
+    };
 
     ///  @brief Set the Cat Node object
     ///  
     ///  @param ele 
-    void SetCatNode( wxXmlNode* ele ) { m_element = ele; };
+    void SetCatNode( wxXmlNode* ele ) {
+        m_element = ele;
+    };
 
     ///  @brief Set the Type object
     ///  
     ///  @param type 
-    void SetType( Catalog::CatalogBaseType type ) { m_type = type; };
+    void SetType( Catalog::CatalogBaseType type ) {
+        m_type = type;
+    };
 
     ///  @brief Set the Stamp Link object
     ///  
     ///  @param link 
-    void SetStampLink( Utils::StampLink* link ) { m_stampLink = link; };
+    void SetStampLink( Utils::StampLink* link ) {
+        m_stampLink = link;
+    };
 
     ///  @brief Set the Image Full Name object
     ///  
     ///  @param str 
-    void SetImageFullName( wxString str ) { m_imageFullPath = str; };
+    void SetImageFullName( wxString str ) {
+        m_imageFullPath = str;
+    };
 
     ///  @brief Set the Checked object
     ///  

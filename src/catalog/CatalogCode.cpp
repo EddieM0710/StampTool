@@ -75,14 +75,20 @@ namespace Catalog {
     CatalogCode::CatalogCode( wxString codeList )
     {
         m_codeList = codeList;
-        m_codes.Empty( );
+        // m_codes.Empty( );
+        m_codes.Clear( );
+        wxString delim = ",";
         if ( !m_codeList.IsEmpty( ) )
         {
-            m_codes = wxStringTokenize( m_codeList, ",", wxTOKEN_STRTOK );
-            for ( size_t k = 0; k < m_codes.GetCount( ); k++ )
+            int cnt = 0;
+            wxStringTokenizer tokenizer( m_codeList, delim, wxTOKEN_DEFAULT );
+            while ( tokenizer.HasMoreTokens( ) )
             {
-                m_codes[ k ].Trim( true );
-                m_codes[ k ].Trim( false );
+                wxString token = tokenizer.GetNextToken( );
+                m_codes.Add( token );
+                m_codes[ cnt ].Trim( true );
+                m_codes[ cnt ].Trim( false );
+                cnt++;
             }
         }
     };

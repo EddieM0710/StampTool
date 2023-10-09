@@ -91,10 +91,10 @@ namespace Design {
             AlbumBaseType type = ( AlbumBaseType ) GetAlbumTreeCtrl( )->GetItemType( childID );
             LayoutBase* child = ( LayoutBase* ) GetAlbumTreeCtrl( )->GetItemNode( childID );
             //layout everything except the title
-            if ( type != AT_Title )
-            {
-                child->DumpObjectLayout( indent );
-            }
+//@@@            if ( type != AT_Title )
+ //@@@            {
+ //@@@                child->DumpObjectLayout( indent );
+ //@@@            }
             childID = GetAlbumTreeCtrl( )->GetNextChild( thisID, cookie );
         }
 
@@ -119,16 +119,16 @@ namespace Design {
                 AlbumBaseType type = ( AlbumBaseType ) GetAlbumTreeCtrl( )->GetItemType( childID );
                 LayoutBase* child = ( LayoutBase* ) GetAlbumTreeCtrl( )->GetItemNode( childID );
                 //layout everything except the title
-                if ( type != AT_Title )
-                {
-                    LayoutBase* foundChild = child->FindObjectByPos( x, y, indent );
-                    if ( foundChild )
-                    {
-                        Design::AlbumBaseType type = foundChild->GetNodeType( );
-                        //std::cout << indent << "foundChild \n";
-                        return foundChild;
-                    }
-                }
+  //@@@               if ( type != AT_Title )
+//@@@                 {
+ //@@@                    LayoutBase* foundChild = child->FindObjectByPos( x, y, indent );
+ //@@@                    if ( foundChild )
+ //@@@                    {
+ //@@@                        Design::AlbumBaseType type = foundChild->GetNodeType( );
+ //@@@                        //std::cout << indent << "foundChild \n";
+//@@@                        return foundChild;
+ //@@@                    }
+  //@@@           }
                 childID = GetAlbumTreeCtrl( )->GetNextChild( thisID, cookie );
             }
             // std::cout << indent << "Success \n";

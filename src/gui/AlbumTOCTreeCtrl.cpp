@@ -114,8 +114,6 @@ void AlbumTOCTreeCtrl::OnSelChanged( wxTreeEvent& event )
 
         GetAlbumData( )->GetAlbumList( ).SetVolume( ( Design::AlbumVolume* ) data->GetVolume( ) );
 
-        wxXmlNode* xmlNode = data->GetNodeElement( );
-
         GetAlbumData( )->GetAlbumTreeCtrl( )->LoadTree( );
         GetAlbumData( )->GetAlbumPanel( )->GetAlbumTreePanel( )->SetNotebookPage( 1 );
         //   GetAlbumData( )->SetCurrentStamp( xmlNode );

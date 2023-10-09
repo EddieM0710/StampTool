@@ -434,6 +434,7 @@ namespace Design {
     void Stamp::SetStampImageFilename( wxString filename )
     {
         SetAttrStr( AT_ImageName, filename );
+        m_imageFilename = filename;
         m_image = GetImageFromFilename( filename );
     }
 
@@ -815,6 +816,7 @@ namespace Design {
         wxImage image = GetProject( )->GetImage( filename );
         if ( !image.IsOk( ) )
         {
+            std::cout << "\nInvalid Stamp Image. " << filename << "\n";
             str = wxString::Format( "Invalid Stamp Image.\n" );
             GetErrorArray( )->Add( str );
             //SetError( AT_InvalidImage, AT_WARNING );
@@ -846,7 +848,7 @@ namespace Design {
             else if ( status == AT_WARNING )
             {
                 GetAlbumTreeCtrl( )->SetItemBackgroundColour( id, *wxYELLOW );
-                std::cout << GetAlbumTreeCtrl( )->GetItemText( id ) << "Warning\n";
+                std::cout << GetAlbumTreeCtrl( )->GetItemText( id ) << " Warning\n";
             }
         }
 

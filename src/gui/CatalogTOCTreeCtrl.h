@@ -74,6 +74,8 @@ public:
         return ( ( Catalog::CatalogVolume* ) catVolume )->GetName( );
     };
 
+    void OnRightDClick( wxMouseEvent& event );
+
     void LoadTree( );
 
     wxXmlNode* GetCurrVolumeRoot( );

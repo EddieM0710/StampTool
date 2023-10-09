@@ -67,8 +67,8 @@ wxIMPLEMENT_CLASS( CatalogTOCTreeCtrl, TOCTreeCtrl );
 
 wxBEGIN_EVENT_TABLE( CatalogTOCTreeCtrl, TOCTreeCtrl )
 
-//EVT_TREE_BEGIN_DRAG( ID_CatalogTOCTreeCtrl, CatalogTOCTreeCtrl::OnBeginDrag )
-//EVT_TREE_END_DRAG( ID_CatalogTOCTreeCtrl, CatalogTOCTreeCtrl::OnEndDrag )
+EVT_TREE_BEGIN_DRAG( ID_CatalogTOCTreeCtrl, CatalogTOCTreeCtrl::OnBeginDrag )
+EVT_TREE_END_DRAG( ID_CatalogTOCTreeCtrl, CatalogTOCTreeCtrl::OnEndDrag )
 EVT_TREE_SEL_CHANGED( ID_CatalogTOCTreeCtrl, CatalogTOCTreeCtrl::OnSelChanged )
 //EVT_TREE_ITEM_MENU( ID_CatalogTOCTreeCtrl, CatalogTOCTreeCtrl::OnItemMenu )
 //EVT_TREE_ITEM_COLLAPSED( ID_CatalogTOCTreeCtrl, CatalogTOCTreeCtrl::OnTreectrlItemCollapsed )
@@ -82,6 +82,9 @@ CatalogTOCTreeCtrl::CatalogTOCTreeCtrl( wxWindow* parent, const wxWindowID id,
     long style )
     : TOCTreeCtrl( parent, id, pos, size, style )
 {
+
+    Connect( id, wxEVT_LEFT_DCLICK, wxMouseEventHandler( CatalogTOCTreeCtrl::OnRightDClick ), NULL, this );
+
     //   m_reverseSort = false;
 
    //    CreateImageList( );
@@ -116,8 +119,6 @@ void CatalogTOCTreeCtrl::OnSelChanged( wxTreeEvent& event )
 
         GetCatalogData( )->GetCatalogList( )->SetCatalogVolume( ( Catalog::CatalogVolume* ) data->GetVolume( ) );
 
-        wxXmlNode* xmlNode = data->GetNodeElement( );
-
         GenerateList* generateListPanel = GetCatalogData( )->GetGenerateListPanel( );
 
         if ( generateListPanel == ( GenerateList* ) GetFrame( )->GetStampToolPanel( )->GetPage( ) )
@@ -126,7 +127,7 @@ void CatalogTOCTreeCtrl::OnSelChanged( wxTreeEvent& event )
         }
         else
         {
-            GetFrame( )->GetStampToolPanel( )->GetCatalogPagePanel( )->SetNotebookPage( 1 );
+            //  GetFrame( )->GetStampToolPanel( )->GetCatalogPagePanel( )->SetNotebookPage( 1 );
         }
         GetCatalogData( )->GetCatalogTreeCtrl( )->LoadTree( );
         //       GetCatalogData( )->GetCatalogTreePanel( )->SetNotebookPage( 1 );
@@ -168,4 +169,41 @@ void CatalogTOCTreeCtrl::LoadTree( )
     stampList->ClearCatalogLinks( );
 
     TOCTreeCtrl::LoadTree( TOCNode, "CatalogList" );
+}
+
+void CatalogTOCTreeCtrl::OnRightDClick( wxMouseEvent& event )
+{
+    wxTreeItemId itemId = GetSelection( );
+    TOCTreeItemData* data = ( TOCTreeItemData* ) GetItemData( itemId );
+    Utils::TOCBaseType type = data->GetType( );
+    if ( type == Utils::TOC_Volume )
+    {
+        SetCurrentTreeID( itemId );
+        TOCTreeItemData* data = ( TOCTreeItemData* ) GetItemData( itemId );
+        wxString name = GetItemText( itemId );
+        GetCatalogData( )->GetCatalogTreePanel( )->GetVolumeListCtrl( )->SetValue( name );
+
+        GetCatalogData( )->GetCatalogList( )->SetCatalogVolume( ( Catalog::CatalogVolume* ) data->GetVolume( ) );
+
+        GenerateList* generateListPanel = GetCatalogData( )->GetGenerateListPanel( );
+
+        if ( generateListPanel == ( GenerateList* ) GetFrame( )->GetStampToolPanel( )->GetPage( ) )
+        {
+            generateListPanel->UpdateGrid( );
+        }
+        else
+        {
+            GetFrame( )->GetStampToolPanel( )->GetCatalogPagePanel( )->SetNotebookPage( 1 );
+        }
+        GetCatalogData( )->GetCatalogTreeCtrl( )->LoadTree( );
+        //       GetCatalogData( )->GetCatalogTreePanel( )->SetNotebookPage( 1 );
+               //   GetCatalogData( )->SetCurrentStamp( xmlNode );
+    }
+
+
+
+    ////@begin wxEVT_RIGHT_DCLICK event handler for ID_TREECTRL in SplitterTest.
+        // Before editing this code, remove the block markers.
+    event.Skip( );
+    ////@end wxEVT_RIGHT_DCLICK event handler for ID_TREECTRL in SplitterTest. 
 }

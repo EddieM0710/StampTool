@@ -46,25 +46,18 @@ namespace Design {
 
     private:
 
-        LabelFrame( ) { m_FontNdx = -1; };
+        LabelFrame( ) {
+            m_FontNdx = -1;
+        };
 
     public:
 
-        /**
-         * @brief Construct a new LabelFrame object
-         *
-         * @param
-         */
         LabelFrame( Design::FontUsageType fontType ) : Frame( )
         {
             m_fontType = fontType;
             m_FontNdx = -1;
         };
 
-        /**
-         * @brief Destroy the LabelFrame object
-         *
-         */
         ~LabelFrame( ) { };
 
         void Draw( wxDC& dc, double x, double y );
@@ -75,11 +68,17 @@ namespace Design {
 
         wxFont GetFont( );
 
-        int GetFontNdx( ) { return m_FontNdx; };
+        int GetFontNdx( ) {
+            return m_FontNdx;
+        };
 
-        wxString GetString( ) { return m_string; };
+        wxString GetString( ) {
+            return m_string;
+        };
 
-        Design::FontUsageType GetStringType( ) { return m_fontType; };
+        Design::FontUsageType GetStringType( ) {
+            return m_fontType;
+        };
 
         void LoadFont( wxXmlNode* node );
 
@@ -92,7 +91,9 @@ namespace Design {
 
         void SetFontNdx( int ndx );
 
-        void SetString( wxString str ) { m_string = str; };
+        void SetString( wxString str ) {
+            m_string = str;
+        };
 
         // calculate the string frame based on the available width and the text length
         void UpdateString( double width );

@@ -39,58 +39,50 @@
 #include "design/AlbumList.h"
 #include "design/AlbumData.h"
 #include "gui/AlbumPanel.h"
- //#include "gui/AppData.h"
+#include "utils/Project.h"
 #include "gui/StampToolFrame.h"
-#include "gui/TOCTreeCtrl.h"
+#include "gui/AlbumTOCTreeCtrl.h"
 
 #include "Defs.h"
 
-//#include "StampToolApp.h"
+ //#include "StampToolApp.h"
 
-///wxDECLARE_APP( StampToolApp );
+ ///wxDECLARE_APP( StampToolApp );
 
 namespace Design {
 
-    // void AlbumList::LoadAlbums( )
-    // {
-    //     for ( Design::AlbumVolumeArray::iterator it = std::begin( m_albumVolumeArray );
-    //         it != std::end( m_albumVolumeArray );
-    //         ++it )
-    //     {
-    //         Design::AlbumVolume* albumVolume = ( Design::AlbumVolume* ) ( *it );
-    //         albumVolume->LoadXML( );
-    //         wxString name = albumVolume->GetAlbumName( );
-    //         if ( !name.IsEmpty( ) )
-    //         {
-    //             name = albumVolume->GetAlbumFilename( );
-    //             wxFileName fn( name );
-    //             albumVolume->SetAlbumName( fn.GetName( ) );
-    //         }
-    //     }
 
-    //     if ( m_albumVolumeArray.size( ) > 1 )
-    //     {
-    //         sort( m_albumVolumeArray.begin( ), m_albumVolumeArray.end( ), WayToSort );
-    //     }
-    //     m_albumNameStrings.Clear( );
-    //     for ( Design::AlbumVolumeArray::iterator it = std::begin( m_albumVolumeArray );
-    //         it != std::end( m_albumVolumeArray );
-    //         ++it )
-    //     {
-    //         Design::AlbumVolume* album = ( Design::AlbumVolume* ) ( *it );
-    //         m_albumNameStrings.Add( album->GetAlbumName( ) );
-    //     }
-    //     AlbumPanel* albPanel = GetFrame( )->GetAlbumPanel( );
-    //     //  albPanel->SetAlbumListStrings( m_albumNameStrings );
-    //     m_currVolume = album;
-    //     // albPanel->SetAlbumListSelection( m_albumVolumeNdx );
 
-    // };
-
-    Design::AlbumVolume* AlbumList::NewVolumeInstance( )
+    Design::AlbumVolume* AlbumList::NewVolumeInstance( wxString filename )
     {
-        Design::AlbumVolume* albumVolume = Design::NewAlbumVolume( );
+        Design::AlbumVolume* albumVolume = new Design::AlbumVolume( );
+        SetCurrentVolume( albumVolume );
+        albumVolume->SetFilename( filename );
         return albumVolume;
+    }
+
+
+    Design::AlbumVolume* AlbumList::AddNewVolume( wxString filename )
+    {
+
+        // make the volume
+        Design::AlbumVolume* vol = NewVolumeInstance( filename );
+
+        wxFileName albumFile( filename );
+        wxString volName = albumFile.GetName( );
+        vol->LoadDefaultDocument( volName );
+
+        // Add it to the ProjectList
+        wxXmlNode* newNode = GetProject( )->AddNewAlbumVolume( filename, volName );
+
+        // Add it to the catalog List
+        Insert( volName, vol );
+
+        // Add it to the tree
+        wxTreeItemId treeRootID = GetAlbumTOCTreeCtrl( )->GetRootItem( );
+        GetAlbumTOCTreeCtrl( )->AddChild( treeRootID, newNode, GetAlbumTOCTreeCtrl( )->GetMenu( ) );
+
+        return vol;
     }
 
 

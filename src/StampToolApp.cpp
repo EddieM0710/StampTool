@@ -97,7 +97,7 @@ bool StampToolApp::OnInit( )
 #if wxUSE_GIF
     wxImage::AddHandler( new wxGIFHandler );
 #endif
-
+    SetAppName( "StampTool" );
     m_AppData = new AppData( );
     m_AppData->InitAppData( );
 

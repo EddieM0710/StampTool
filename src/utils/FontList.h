@@ -44,30 +44,47 @@ namespace Utils {
         {
             m_fontMap.rehash( 10 );
         };
+
         ~FontList( ) {};
+
+        int AddNewFont( wxFont font, wxColour color );
+
+        void Clear( ){
+            m_fontMap.clear( );
+        };
+
+        int DefaultFont( int pointSize );
+
+        void DumpFonts( );
+
+        Font* FindMyFont( wxFont font, wxColor color );
+
+        FontMap::iterator FindFontIterator( wxFont font, wxColor color );
+
+        int FindFont( wxFont font, wxColor color );
+
+        int FindFont( Font* info );
+
+        wxFont GetFont( int ndx );
+
+        int GetFontCount( );
+
+        wxColour GetColor( int ndx );
 
         void InitFonts( );
 
         bool IsValidFontNdx( int ndx );
+
         //bool IsValidFontNdx( int ndx ) { return IsValidFontNdx( ndx.Get( ) ); };
-        wxFont GetFont( int ndx );
-        wxColour GetColor( int ndx );
-
-        Font* FindMyFont( wxFont font, wxColor color );
-        FontMap::iterator FindFontIterator( wxFont font, wxColor color );
-
-        int FindFont( wxFont font, wxColor color );
-        int FindFont( Font* info );
 
         Font* GetMyFont( int ndx );
+
         Font* GetMyFont( FontMap::iterator itr );
 
         FontMap& GetFontMap( )
         {
             return m_fontMap;
         }
-
-        int AddNewFont( wxFont font, wxColour color );
 
         Design::FontUsageType Load( wxXmlNode* fontNode, wxString nativeString, wxString color );
 
@@ -78,14 +95,9 @@ namespace Utils {
 
         int LoadFont( wxXmlNode* parent, Design::FontUsageType type );
 
-        void SaveFont( wxXmlNode* parent, int ndx, Design::FontUsageType type );
-
-        int DefaultFont( int pointSize );
-
-        void DumpFonts( );
-
         void MakeDefault( int ndx );
 
+        void SaveFont( wxXmlNode* parent, int ndx, Design::FontUsageType type );
 
     private:
         FontMap m_fontMap;

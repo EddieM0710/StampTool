@@ -20,24 +20,49 @@ namespace Inventory
     {
     public:
         CollectionList( ) {};
+
         ~CollectionList( ) {};
-        void Save( wxXmlNode* parent );
-        void Load( wxXmlNode* parent );
 
-        CollectionArray& GetCollectionList( ) { return m_list; };
-        void AddCollection( Collection* item ) { m_list.push_back( item ); };
+        void AddCollection( Collection* item ) {
+            m_list.push_back( item );
+        };
+
         void AddCollection( wxString name, wxString description, wxString location );
-        Inventory::Collection* FindCollection( wxString name );
 
-        wxArrayString& GetNameArray( ) { return m_nameArray; };
         void BuildStrings( );
 
+        void Clear( );
+
+        Inventory::Collection* FindCollection( wxString name );
+
+
+        Collection* GetCollection( int ndx );
+
+        CollectionArray& GetCollectionList( ) {
+            return m_list;
+        };
+
+        Collection* GetCurrentCollection( );
+
+        wxString GetCurrentName( );
+
+        wxString GetName( int i ) {
+            return m_nameArray[ i ];
+        };
+
+        wxArrayString& GetNameArray( ) {
+            return m_nameArray;
+        };
+
         wxArrayString& GetNameStrings( );
+
+        void Load( wxXmlNode* parent );
+
+        void Save( wxXmlNode* parent );
+
         void SetDefaultCollection( );
 
         bool SetCurrentCollection( wxString str );
-        Collection* GetCurrentCollection( );
-        wxString GetCurrentName( );
 
     private:
         wxString m_currCollection;

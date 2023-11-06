@@ -112,7 +112,7 @@ void AlbumTOCTreeCtrl::OnSelChanged( wxTreeEvent& event )
         wxString name = GetItemText( itemId );
         GetAlbumData( )->GetAlbumPanel( )->GetAlbumTreePanel( )->GetAlbumListCtrl( )->SetValue( name );
 
-        GetAlbumData( )->GetAlbumList( ).SetVolume( ( Design::AlbumVolume* ) data->GetVolume( ) );
+        GetAlbumData( )->GetAlbumList( ).SetCurrentVolume( ( Design::AlbumVolume* ) data->GetVolume( ) );
 
         GetAlbumData( )->GetAlbumTreeCtrl( )->LoadTree( );
         GetAlbumData( )->GetAlbumPanel( )->GetAlbumTreePanel( )->SetNotebookPage( 1 );
@@ -128,16 +128,7 @@ void  AlbumTOCTreeCtrl::LinkMenuItemToTreeItem( int id, wxTreeItemId treeId )
     GetAlbumData( )->GetAlbumList( ).Insert( id, treeId );
 }
 
-// void AlbumTOCTreeCtrl::ReSortTree( )
-// {
 
-//     ClearTree( );
-
-//     Design::AlbumVolume* AlbumVolume = GetAlbumVolume( );
-//     AlbumVolume->ReSortTree( );
-
-//     LoadTree( );
-// }
 
 void AlbumTOCTreeCtrl::EditDetailsDialog( TOCTreeCtrl* parent ){
     // GetAlbumVolume( )->EditDetailsDialog( parent );
@@ -148,12 +139,13 @@ VolumePtr AlbumTOCTreeCtrl::FindVolume( wxString str ){
     return ( VolumePtr ) GetAlbumData( )->GetAlbumList( ).FindVolume( str );
 };
 
-wxString AlbumTOCTreeCtrl::GetVolumeName( VolumePtr catVolume ) {
-    return ( ( Design::AlbumVolume* ) catVolume )->GetName( );
+wxString AlbumTOCTreeCtrl::GetVolumeName( VolumePtr volume ) {
+    return ( ( Design::AlbumVolume* ) volume )->GetName( );
 };
 
 void AlbumTOCTreeCtrl::LoadTree( )
 {
+    // TOCNode is the project xml node where the Album list starts.
     wxXmlNode* TOCNode = GetProject( )->GetAlbumListNode( );
     TOCTreeCtrl::LoadTree( TOCNode, "AlbumList" );
 }

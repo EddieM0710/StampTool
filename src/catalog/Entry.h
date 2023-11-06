@@ -39,7 +39,7 @@ namespace Catalog {
     /**
      * @brief This is a wrapper of an wxXmlNode for
      * safe/convenient getting/putting.
-     * @see CatalogBase, Classification, Specimen
+     * @see CatalogBase, Specimen
      *
      */
     class Entry : public CatalogBase
@@ -47,117 +47,46 @@ namespace Catalog {
 
     public:
 
-        /**
-         * @brief Construct a new Entry object
-         *
-         */
+
         Entry( ) : CatalogBase( )
         {
             SetNodeType( NT_Entry );
             IsOK( );
         };
 
-        /**
-         * @brief Construct a new Entry object
-         *
-         * @param entry
-         */
         Entry( wxXmlNode* entry ) : CatalogBase( entry )
         {
             SetNodeType( NT_Entry );
             IsOK( );
         };
 
-        /**
-         * @brief Destroy the Entry object
-         *
-         */
+
         ~Entry( ) { };
 
-        /**
-         * @brief Add any empty element of type CatalogCode
-         *
-         * @return wxXmlNode*
-         */
-        wxXmlNode* AddCode( );
 
-        /**
-         * @brief add an empty element of Specimen type
-         *
-         * @return wxXmlNode*
-         */
-        wxXmlNode* AddSpecimen( );
+        wxXmlNode* AddNewInventoryItem( wxString collection, Catalog::InventoryStatusType type );
 
-        // returns the first specimen in this entry with collectionName or 0 if not found
-        wxXmlNode* GetSpecimen( wxString collectionName );
-
-        /**
-         * @brief Get the Status Type object
-         *
-         * @return CheckedStatusType
-         */
         CheckedStatusType GetCheckedStatusType( );
 
-
-        /**
-         * @brief delete the specified element
-         *
-         * @param deleteThisNode
-         */
         void DeleteCode( wxXmlNode* deleteThisNode );
 
-        /**
-         * @brief delete the specified element
-         *
-         * @param deleteThisNode
-         */
         void DeleteSpecimen( wxXmlNode* deleteThisNode );
 
-        /**
-         * @brief
-         *
-         * @param name
-         * @return DataTypes
-         */
         DataTypes FindDataType( wxString name );
 
-        /**
-         * @defgroup Get Entry field
-         * @brief Retrieves the value of the attribute of the entry
-         *
-         * @return wxString  wxString representation of the field
-         */
         wxString GetAccuracy( ); ///< Get the entry Accuracy field
 
-        /**
-         * @brief Get the Attr object
-         *
-         * @param type
-         * @return wxString
-         */
         wxString GetAttr( DataTypes type );
 
-        /**
-         * @brief Get the Background object
-         *
-         * @return wxString
-         */
+
         wxString GetBackground( ) {
             return GetAttr( DT_BackGround );
         };
 
         wxString GetCatalogCodes( ); ///< Get the entry Catalog Codes field
 
-
         wxString FindImageName( );
 
-        /**
-         * @brief Get the Classification Name object
-         *
-         * @param entry
-         * @param type
-         * @return wxString
-         */
         wxString GetClassificationName( Entry* entry, CatalogBaseType type );
 
         /**
@@ -166,9 +95,6 @@ namespace Catalog {
          * function will return the id associated with the input catalog
          * or if there is no id for that catalog then the first one found
          * regardless of the catalog.
-         *
-         * @param catalog
-         * @return wxXmlNode*
          */
         wxXmlNode* GetCodeForCatalog( const char* catalog );
 
@@ -178,11 +104,6 @@ namespace Catalog {
 
         wxString GetCurrency( ); ///< Get the entry Currency field
 
-        /**
-         * @brief Get the Decade object
-         *
-         * @return wxString
-         */
         wxString GetDecade( );
 
         wxString GetDescription( ); ///< Get the entry Description field
@@ -193,32 +114,19 @@ namespace Catalog {
 
         wxString GetFaceValue( ); ///< Get the entry FaceValue field
 
-        /**
-         * @brief Get the first child element with CatalogCode type
-         *
-         * @return wxXmlNode*
-         */
-        wxXmlNode* GetFirstChildCode( );
+        wxXmlNode* GetFirstInventoryItem( );
 
-        /**
-         * @brief Get the first child element of Specimen type
-         *
-         * @return wxXmlNode*
-         */
-        wxXmlNode* GetFirstChildSpecimen( );
+        wxXmlNode* GetFirstInventoryItem( wxString collectionName );
 
         wxString GetFormat( ); ///< Get the entry Format field 
 
-        /**
-         * @brief Get the Format Type object
-         *
-         * @return FormatType
-         */
         FormatType GetFormatType( );
 
         wxString GetGum( ); ///< Get the entry Gum field
 
         wxString GetHeight( ); ///< Get the entry height field 
+
+        wxXmlNode* GetInventory( );
 
         wxString GetMount( );
 
@@ -226,47 +134,20 @@ namespace Catalog {
 
         wxString GetInventoryStatus( );///< Get the Inventory Status field
 
-        ///  @brief Get the InventoryStatusType value of the entry
-        ///  
-        ///  @return InventoryStatusType 
         InventoryStatusType GetInventoryStatusType( );
 
         wxString GetIssuedDate( ); ///< Get the entry Issue data field 
 
-        /**
-         * @brief Get the Label object
-         *
-         * @return wxString
-         */
         wxString GetLabel( );
 
         wxString GetLink( ); ///< Get the entry Link field
 
         wxString GetName( ); ///< Get the entry title field
-        /**
-            * @brief Get the next child element with CatalogCode type
-            *
-            * @param ele get the CatalogCode sibling after this one
-            * @return wxXmlNode*
-            */
-        wxXmlNode* GetNextChildCode( wxXmlNode* ele );
-
-        /**
-         * @brief Get the next child element of Specimen type
-         *
-         * @return wxXmlNode*
-         */
-        wxXmlNode* GetNextChildSpecimen( );
 
         wxString GetPaper( ); ///< Get the entry paper field
 
         wxString GetPerforation( ); ///< Get the entry Perforation field
 
-        /**
-         * @brief Get the Period object
-         *
-         * @return wxString
-         */
         wxString GetPeriod( );
 
         wxString GetPreferredCode( );
@@ -279,14 +160,13 @@ namespace Catalog {
 
         wxString GetSeries( ); ///< Get the entry series field
 
+        // returns the first specimen in this entry with collection or 0 if not found
+        wxXmlNode* GetItem( wxString collection );
+
+
         wxString GetThemes( ); ///< Get the entry Themes field
 
-        /**
-         * @brief Get the Val object
-         *
-         * @param type
-         * @return wxString
-         */
+
         wxString GetVal( DataTypes type ) {
             return GetAttr( type );
         };
@@ -297,28 +177,9 @@ namespace Catalog {
 
         wxString GetWidth( ); ///< Get the entry Width field
 
-        /**
-         * @brief Get the Year object
-         *
-         * @return wxString
-         */
         wxString GetYear( );
 
-        /**
-         * @brief Has a child node of type NT_CatalogCode
-         *
-         * @return true
-         * @return false
-         */
-        bool HasChildCode( );
-
-        /**
-         * @brief does this entry have a child of Specimen type
-         *
-         * @return true
-         * @return false
-         */
-        bool HasChildSpecimen( );
+        bool HasInventoryItem( );
 
         bool IsCatalogCode( wxString catCode );
 
@@ -330,41 +191,12 @@ namespace Catalog {
          */
         bool IsMultiple( );
 
-        /**
-         * @brief Sanity check instance
-         *
-         * @return true
-         * @return false
-         */
         bool IsOK( );
 
-        /**
-         * @brief Process te striing of catalogcodes into ountry, catalog and id parts
-         *
-         */
-        void ProcessCatalogCodes( wxString catCodes );
-
-        /**
-         * @brief Set the Attr object
-         *
-         * @param type
-         * @param val
-         */
         void SetAttr( DataTypes type, wxString val );
 
-        /**
-         * @defgroup
-         * @brief Sets the value of the appropriate attribute of the entry
-         *
-         * @param val  the value to set the attribute to.
-         */
         void SetAccuracy( wxString val ); ///< Get the entry Accuracy field 
 
-        /**
-         * @brief Set the Background object
-         *
-         * @param val
-         */
         void SetBackground( wxString val ) {
             SetAttr( DT_BackGround, val );
         };
@@ -387,11 +219,6 @@ namespace Catalog {
 
         void SetFormat( wxString val ); ///< Get the entry Format field 
 
-        /**
-         * @brief Set the Format Type object
-         *
-         * @param type
-         */
         void SetFormatType( FormatType type )
         {
             SetAttr( DT_Format, FormatStrings[ type ] );
@@ -403,19 +230,11 @@ namespace Catalog {
 
         void SetID( wxString val ); ///< Get the entry ID field 
 
-        //        void SetInventoryStatus( wxString val ) { SetAttr( DT_InventoryStatus, val ); };
-
-                ///  @brief Set the Inventory Status Type field to it's string name
-                ///  
-                ///  @param type 
-                // void SetInventoryStatusType( InventoryStatusType type )
-                // {
-                //     SetAttr( DT_InventoryStatus, InventoryStatusStrings[ type ] );
-                // };
-
         void SetIssuedDate( wxString val ); ///< Get the entry IssuedDate field 
 
         void SetLink( wxString val ); ///< Get the entry Link field 
+
+        wxXmlNode* GetNextInventoryItem( wxXmlNode* node, wxString collectionName );
 
         void SetName( wxString val ); ///< Get the entry Name field 
 
@@ -433,12 +252,6 @@ namespace Catalog {
 
         void SetThemes( wxString val ); ///< Get the entry Themes field 
 
-        /**
-         * @brief Set the Val object
-         *
-         * @param type
-         * @param val
-         */
         void SetVal( DataTypes type, wxString val ) {
             SetAttr( type, val );
         };

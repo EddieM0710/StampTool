@@ -27,7 +27,6 @@ namespace Inventory {
         CollectionData( ) {};
         ~CollectionData( ) {};
 
-        //void LoadData2( );//{ LoadData( ); }
         void Save( );
         void SetDirty( bool state = true );
 

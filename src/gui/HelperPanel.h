@@ -27,6 +27,7 @@
 #include "wx/listctrl.h"
 #include <wx/fontpicker.h>
 #include <wx/clrpicker.h>
+#include <wx/radiobut.h>
 
 #include "gui/GuiDefs.h"
 #include "gui/AlbumTreeCtrl.h"
@@ -66,46 +67,24 @@ public:
         wxTextCtrl* titleLabel;
     }TitleHelper;
 
-    ///  @brief Construct a new Album Details Dialog object
-    ///  
+
     HelperPanel( );
 
-    ///  @brief Construct a new Album Details Dialog object
-    ///  
-    ///  @param parent 
-    ///  @param id 
-    ///  @param caption 
-    ///  @param pos 
-    ///  @param size 
-    ///  @param style 
+
     HelperPanel( wxWindow* parent, wxWindowID id = SYMBOL_HELPERPANEL_IDNAME, const wxString& caption = SYMBOL_HELPERPANEL_TITLE, const wxPoint& pos = SYMBOL_HELPERPANEL_POSITION, const wxSize& size = SYMBOL_HELPERPANEL_SIZE, long style = SYMBOL_HELPERPANEL_STYLE );
 
-    ///  @brief Destroy the Album Details Dialog object
-    ///  
+
     ~HelperPanel( );
 
-    ///  @brief 
-    ///  
-    ///  @param parent 
-    ///  @param id 
-    ///  @param caption 
-    ///  @param pos 
-    ///  @param size 
-    ///  @param style 
-    ///  @return true 
-    ///  @return false 
     bool Create( wxWindow* parent, wxWindowID id = SYMBOL_HELPERPANEL_IDNAME, const wxString& caption = SYMBOL_HELPERPANEL_TITLE, const wxPoint& pos = SYMBOL_HELPERPANEL_POSITION, const wxSize& size = SYMBOL_HELPERPANEL_SIZE, long style = SYMBOL_HELPERPANEL_STYLE );
 
-    ///  @brief Create a Controls object
-    ///  
+
     void CreateControls( );
+
     void Init( );
+
     wxStaticBox* SetupBoxSizer( wxWindow* parent, wxBoxSizer* inSizer, wxString name,
         int& lastID, wxBoxSizer*& boxSizer, wxOrientation orientation );
-
-    wxTextCtrl* SetupLabelText( wxWindow* parent, wxBoxSizer* verticalSizer,
-        int& lastID, wxString label, bool grow, wxObjectEventFunction  eventHandler );
-
 
     wxCheckBox* SetupCheckBox( wxWindow* parent, wxBoxSizer* sizer,
         int& lastID, wxString label, wxObjectEventFunction  eventHandler );
@@ -122,6 +101,12 @@ public:
         wxObjectEventFunction  colorPicker,
         wxObjectEventFunction  defaultButtonHandler );
 
+    wxTextCtrl* SetupLabelText( wxWindow* parent, wxBoxSizer* verticalSizer,
+        int& lastID, wxString label, bool grow, wxObjectEventFunction  eventHandler );
+
+    wxTextCtrl* SetupMultilineLabeledText( wxWindow* parent, wxBoxSizer* inSizer, int& lastID, wxString label, bool grow,
+        wxObjectEventFunction  eventHandler );
+
     wxRadioButton* SetupRadioButton( wxWindow* parent, wxBoxSizer* sizer, int& lastID,
         wxString label, bool initValue, wxObjectEventFunction  eventHandler );
 
@@ -131,13 +116,16 @@ public:
         wxObjectEventFunction  titleEventHandler = ( wxEventFunction ) 0,
         wxObjectEventFunction  subTitleCheckBoxEeventHandler = ( wxEventFunction ) 0,
         wxObjectEventFunction  subTitleEventHandler = ( wxEventFunction ) 0 );
+
     void UpdateSubTitleState( HelperPanel::TitleHelper* titleHelper );
+
     void UpdateTitleState( HelperPanel::TitleHelper* titleHelper );
+
     void SetSubTitleCheckboxValue( HelperPanel::TitleHelper* titleHelper, bool state );
+
     void SetTitleCheckboxValue( HelperPanel::TitleHelper* titleHelper, bool state );
 
     wxStaticBox* SetupStaticBox( wxWindow* parent, wxBoxSizer* inSizer, wxBoxSizer* outBoxSizer );
-
 
     void HorizontalSpacer( wxBoxSizer* inSizer );
 

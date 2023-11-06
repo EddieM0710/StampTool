@@ -52,144 +52,59 @@ class AlbumImagePanel : public wxScrolledWindow
 
 public:
 
-    /**
-     * @brief Default Constructor a new AlbumImagePanel object
-     * @details Must be used in conjunction with Create.
-     *
-     */
     AlbumImagePanel( );
 
-    /**
-     * @brief Construct a new AlbumImagePanel object
-     *
-     * @param  parent	The parent window.
-     * @param  id	An identifier for the panel. wxID_ANY is taken to mean a default.
-     * @param  pos	The panel position. The value wxDefaultPosition indicates a default position, chosen by either the windowing system or wxWidgets, depending on platform.
-     * @param  size	The panel size. The value wxDefaultSize indicates a default size, chosen by either the windowing system or wxWidgets, depending on platform.
-     * @param  style	The window style.
-     * @see wxPanel.
-     */
     AlbumImagePanel( wxWindow* parent, wxWindowID id = SYMBOL_ALBUMIMAGEPANEL_IDNAME,
         const wxPoint& pos = SYMBOL_ALBUMIMAGEPANEL_POSITION,
         const wxSize& size = SYMBOL_ALBUMIMAGEPANEL_SIZE,
         long style = SYMBOL_ALBUMIMAGEPANEL_STYLE );
 
-    /**
-     * @brief Destroy the Image Panel object
-     *
-     */
     ~AlbumImagePanel( );
 
-    /**
-     * @brief  Used for two-step panel construction.
-     * Use with default constructor.
-     *
-     * @param  parent	The parent window.
-     * @param  id	An identifier for the panel. wxID_ANY is taken to mean a default.
-     * @param  pos	The panel position. The value wxDefaultPosition indicates a default position, chosen by either the windowing system or wxWidgets, depending on platform.
-     * @param  size	The panel size. The value wxDefaultSize indicates a default size, chosen by either the windowing system or wxWidgets, depending on platform.
-     * @param  style	The window style.
-     * @return bool
-     *
-     */
+    void Clear( );
+
     bool Create( wxWindow* parent, wxWindowID id = SYMBOL_ALBUMIMAGEPANEL_IDNAME,
         const wxPoint& pos = SYMBOL_ALBUMIMAGEPANEL_POSITION,
         const wxSize& size = SYMBOL_ALBUMIMAGEPANEL_SIZE,
         long style = SYMBOL_ALBUMIMAGEPANEL_STYLE );
 
-    /**
-     * @brief Creates the controls and sizers
-     *
-     */
     void CreateControls( );
 
-    ///  @brief 
-    ///  
-    ///  @param dc 
-    ///  @param node 
-    ///  @param pt 
     void Draw( wxDC& dc, Design::LayoutBase* node, wxPoint pt );
 
-    ///  @brief Get the Logical Text Extent object
-    ///  
-    ///  @param text 
-    ///  @param font 
-    ///  @return wxRealPoint 
     wxSize GetLogicalTextExtent( wxString text, wxFont font );
 
-    ///  @brief Get the Text Size object
-    ///  
-    ///  @param font 
-    ///  @param text 
-    ///  @return wxSize 
-    //wxSize GetTextSize( wxFont font, wxString text );
+    double GetUserScale( ) {
+        return m_userScale;
+    };
 
-    /**
-     * @brief Initialises member variables
-     *
-     */
+    double GetZoom( ) {
+        return m_zoom;
+        m_once = false;
+    };
+
     void Init( );
 
-    ///  @brief 
-    ///  
-    ///  @param text 
-    ///  @param font 
-    ///  @param width 
     wxSize  MakeMultiLine( wxString& text, wxFont font, double width );
 
-    ///  @brief 
-    ///  
     void PaintPDF( );
 
-    /**
-     * @brief
-     *
-     * @param event   Contains information about command events
-     */
     void OnContextMenu( wxContextMenuEvent& event );
 
-    ///  @brief 
-    ///  
     void OnDeleteItem( );
 
-    ///  @brief 
-    ///  
-    ///  @param event 
-    void OnLeftDown( wxMouseEvent& event );
-
-    /**
-     * @brief
-     *
-     * @param event   Contains information about command events
-     */
-    void OnPaint( wxPaintEvent& event );
-
-    /**
-     * @brief Resize the image to fit in the clientspace
-     *
-     * @param WXUNUSED
-     */
-    void OnResize( wxCommandEvent& WXUNUSED( event ) );
-
-    ///  @brief 
-    ///  
     void OnEditDetails( );
 
-    /**
-     * @brief Set the Zoom object
-     *
-     * @param zoom new value to set the zoom factor to.
-     */
+    void OnLeftDown( wxMouseEvent& event );
+
+    void OnPaint( wxPaintEvent& event );
+
+    void OnResize( wxCommandEvent& WXUNUSED( event ) );
+
     void SetZoom( double zoom );
 
-    ///  @brief 
-    ///  
-    ///  @return true 
-    ///  @return false 
     static bool ShowToolTips( );
 
-    double GetZoom( ) { return m_zoom; };
-    double GetUserScale( ) { return m_userScale; };
 private:
     double m_pixelsPerIn;
     wxBitmap m_bitmap; ///< current bitmap to display

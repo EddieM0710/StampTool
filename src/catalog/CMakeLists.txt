@@ -18,9 +18,9 @@ CatalogList.cpp
 CatalogDefs.cpp
 CatalogDetailsDialog.cpp
 Entry.cpp
-Specimen.cpp
+InventoryItem.cpp
 StampMount.cpp 
-CSV.cpp 
+MountCSV.cpp 
 )
 
 

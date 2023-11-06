@@ -72,34 +72,24 @@ HelperPanel::~HelperPanel( )
 {
 }
 
+//--------------
+
 void HelperPanel::Init( )
 {
 
 }
-
 
 //--------------
 
 bool HelperPanel::Create( wxWindow* parent, wxWindowID id, const wxString& caption, const wxPoint& pos, const wxSize& size, long style )
 {
     SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY | wxWS_EX_BLOCK_EVENTS );
-    //  wxDialog::Create( parent, id, caption, pos, size, style );
     wxPanel::Create( parent, id, pos, size, style );
-
-    // //( notebook, ID_PAGEDETAILSPANEL, wxDefaultPosition, wxDefaultSize, wxNO_BORDER | wxTAB_TRAVERSAL );
-    // SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
-
-
-    // CreateControls( );
-    // if ( GetSizer( ) )
-    // {
-    //     GetSizer( )->SetSizeHints( this );
-    // }
-    // Centre( );
     return true;
 }
 
 //--------------
+
 FontPicker* HelperPanel::SetupFontPicker(
     wxWindow* parent, wxBoxSizer* verticalSizer, int& lastID,
     wxString staticText, wxString buttonText,
@@ -109,7 +99,6 @@ FontPicker* HelperPanel::SetupFontPicker(
     wxObjectEventFunction  colorPickerHandler,
     wxObjectEventFunction  defaultButtonHandler )
 {
-
     FontPicker* fontPickerHelper = new FontPicker(
         parent, verticalSizer,
         staticText,
@@ -123,6 +112,8 @@ FontPicker* HelperPanel::SetupFontPicker(
     return fontPickerHelper;
 }
 
+//--------------
+
 wxStaticBox* HelperPanel::SetupBoxSizer( wxWindow* parent, wxBoxSizer* inSizer, wxString name, int& lastID, wxBoxSizer*& boxSizer, wxOrientation orientation )
 {
     wxStaticBox* box = new wxStaticBox( parent, ++lastID, name );
@@ -133,62 +124,57 @@ wxStaticBox* HelperPanel::SetupBoxSizer( wxWindow* parent, wxBoxSizer* inSizer, 
     return box;
 }
 
+//--------------
+
 wxTextCtrl* HelperPanel::SetupLabelText( wxWindow* parent, wxBoxSizer* inSizer, int& lastID, wxString label, bool grow,
     wxObjectEventFunction  eventHandler )
 {
-    wxBoxSizer* mySizer;
-    if ( inSizer->IsVertical( ) )
-    {
-        wxBoxSizer* myHSizer = new wxBoxSizer( wxHORIZONTAL );
-        inSizer->Add( myHSizer, 0, wxGROW | wxALL, 0 );
-        mySizer = myHSizer;
-    }
-    else
-    {
-        mySizer = inSizer;
+    wxStaticBox* itemStaticBoxSizerStatic = new wxStaticBox( parent, wxID_ANY, label );
+    wxStaticBoxSizer* itemStaticBoxSizer = new wxStaticBoxSizer( itemStaticBoxSizerStatic, wxVERTICAL );
+    inSizer->Add( itemStaticBoxSizer, 0, wxGROW | wxALL, 2 );
 
-    }
+    wxTextCtrl* itemTextCtrl = new wxTextCtrl( itemStaticBoxSizer->GetStaticBox( ), ++lastID,
+        wxEmptyString, wxDefaultPosition, wxDefaultSize, wxNO_BORDER );
+    itemStaticBoxSizer->Add( itemTextCtrl, 0, wxGROW | wxALL, 2 );
 
+    Connect( itemTextCtrl->GetId( ), wxEVT_TEXT, eventHandler );
 
-    wxPanel* labelTextPanel = new wxPanel( parent, ++lastID, wxDefaultPosition, wxDefaultSize, wxNO_BORDER | wxTAB_TRAVERSAL );
-    labelTextPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
-    mySizer->Add( labelTextPanel, 1, wxALL, 2 );
-
-    wxBoxSizer* labelTextHSizer = new wxBoxSizer( wxHORIZONTAL );
-    labelTextPanel->SetSizer( labelTextHSizer );
-
-    wxStaticText* staticText = new wxStaticText( labelTextPanel, wxID_STATIC, label, wxDefaultPosition, wxDefaultSize, 0 );
-    labelTextHSizer->Add( staticText, 0, wxALIGN_CENTER_VERTICAL, 0 );
-
-    wxTextCtrl* value = new wxTextCtrl( labelTextPanel, ++lastID, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
-
-    if ( grow )
-    {
-        labelTextHSizer->Add( value, 1, wxGROW | wxALL, 0 );
-    }
-    else
-    {
-        labelTextHSizer->Add( value, 0, wxLEFT | wxALL, 0 );
-    }
-    Connect( value->GetId( ), wxEVT_TEXT, eventHandler );
-
-    return value;
+    return itemTextCtrl;
 }
 
+//--------------
+
+wxTextCtrl* HelperPanel::SetupMultilineLabeledText( wxWindow* parent, wxBoxSizer* inSizer, int& lastID, wxString label, bool grow,
+    wxObjectEventFunction  eventHandler )
+{
+    wxStaticBox* itemStaticBoxSizerStatic = new wxStaticBox( parent, wxID_ANY, label );
+    wxStaticBoxSizer* itemStaticBoxSizer = new wxStaticBoxSizer( itemStaticBoxSizerStatic, wxHORIZONTAL );
+    inSizer->Add( itemStaticBoxSizer, 0, wxGROW | wxALL, 2 );
+
+    wxTextCtrl* itemTextCtrl = new wxTextCtrl( itemStaticBoxSizer->GetStaticBox( ), ++lastID,
+        wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE | wxNO_BORDER );
+    itemStaticBoxSizer->Add( itemTextCtrl, 1, wxALL, 0 );
+
+    Connect( itemTextCtrl->GetId( ), wxEVT_TEXT, eventHandler );
+
+    return itemTextCtrl;
+}
+
+//--------------
 
 wxRadioButton* HelperPanel::SetupRadioButton( wxWindow* parent, wxBoxSizer* sizer, int& lastID, wxString label, bool initValue, wxObjectEventFunction  eventHandler )
 {
-
-    wxRadioButton* radioButton = new wxRadioButton( parent, lastID, label, wxDefaultPosition, wxDefaultSize, 0 );
+    wxRadioButton* radioButton = new wxRadioButton( parent, ++lastID, label, wxDefaultPosition, wxDefaultSize, 0 );
     radioButton->SetValue( initValue );
     sizer->Add( radioButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
     Connect( radioButton->GetId( ), wxEVT_RADIOBUTTON, eventHandler );
     return radioButton;
 }
 
+//--------------
+
 wxCheckBox* HelperPanel::SetupCheckBox( wxWindow* parent, wxBoxSizer* sizer, int& lastID, wxString label, wxObjectEventFunction  eventHandler )
 {
-
     wxCheckBox* checkbox = new wxCheckBox( parent, ++lastID, label, wxDefaultPosition, wxDefaultSize, 0 );
     checkbox->SetValue( true );
 
@@ -199,23 +185,25 @@ wxCheckBox* HelperPanel::SetupCheckBox( wxWindow* parent, wxBoxSizer* sizer, int
     return checkbox;
 }
 
+//--------------
+
 wxChoice* HelperPanel::SetupChoice( wxWindow* parent, wxBoxSizer* sizer, int& lastID, wxString label,
     wxArrayString choiceStrings, wxObjectEventFunction  eventHandler )
 {
-    wxBoxSizer* itemBoxSizer20 = new wxBoxSizer( wxHORIZONTAL );
-    sizer->Add( itemBoxSizer20, 0, wxALIGN_LEFT | wxALL, 0 );
+    wxStaticBox* itemStaticBoxSizerStatic = new wxStaticBox( parent, wxID_ANY, label );
+    wxStaticBoxSizer* itemStaticBoxSizer = new wxStaticBoxSizer( itemStaticBoxSizerStatic, wxVERTICAL );
+    sizer->Add( itemStaticBoxSizer, 0, wxGROW | wxALL, 0 );
 
-    wxStaticText* staticText = new wxStaticText(
-        parent, wxID_STATIC, label, wxDefaultPosition, wxDefaultSize, 0 );
-    itemBoxSizer20->Add( staticText, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+    wxChoice* choice = new wxChoice( parent, ++lastID, wxDefaultPosition, wxDefaultSize, choiceStrings, 0 );
 
-    wxChoice* choice = new wxChoice( parent, wxALIGN_CENTER_VERTICAL, wxDefaultPosition, wxDefaultSize, choiceStrings, 0 );
+    itemStaticBoxSizer->Add( choice, 1, wxGROW | wxALL, 0 );
 
-    itemBoxSizer20->Add( choice, 0, wxALIGN_LEFT | wxALL, 0 );
+    Connect( choice->GetId( ), wxEVT_CHOICE, eventHandler );
+
     return choice;
-
 }
 
+//--------------
 
 HelperPanel::TitleHelper* HelperPanel::SetupTitleHelper( wxWindow* parent, wxBoxSizer* inSizer, int& idLast,
     int style,
@@ -251,11 +239,15 @@ HelperPanel::TitleHelper* HelperPanel::SetupTitleHelper( wxWindow* parent, wxBox
     return titleHelper;
 }
 
+//--------------
+
 void HelperPanel::SetTitleCheckboxValue( HelperPanel::TitleHelper* titleHelper, bool state )
 {
     titleHelper->titleCheckbox->SetValue( state );
     UpdateTitleState( titleHelper );
 };
+
+//--------------
 
 void HelperPanel::SetSubTitleCheckboxValue( HelperPanel::TitleHelper* titleHelper, bool state )
 {
@@ -263,6 +255,8 @@ void HelperPanel::SetSubTitleCheckboxValue( HelperPanel::TitleHelper* titleHelpe
     titleHelper->subTitleCheckbox->SetValue( state );
     UpdateSubTitleState( titleHelper );
 };
+
+//--------------
 
 void HelperPanel::UpdateTitleState( HelperPanel::TitleHelper* titleHelper )
 {
@@ -297,6 +291,9 @@ void HelperPanel::UpdateTitleState( HelperPanel::TitleHelper* titleHelper )
         titleHelper->subTitleLabel->Show( );
     }
 }
+
+//--------------
+
 void HelperPanel::UpdateSubTitleState( HelperPanel::TitleHelper* titleHelper )
 {
     if ( titleHelper->subTitleCheckbox )
@@ -321,6 +318,8 @@ void HelperPanel::UpdateSubTitleState( HelperPanel::TitleHelper* titleHelper )
     }
 }
 
+//--------------
+
 wxStaticBox* HelperPanel::SetupStaticBox( wxWindow* parent, wxBoxSizer* inSizer, wxBoxSizer* outBoxSizer )
 {
     wxStaticBox* staticBox = new wxStaticBox( parent, wxID_ANY, _( "Name Location" ) );
@@ -329,6 +328,7 @@ wxStaticBox* HelperPanel::SetupStaticBox( wxWindow* parent, wxBoxSizer* inSizer,
     return staticBox;
 }
 
+//--------------
 
 void HelperPanel::CreateControls( )
 {
@@ -342,11 +342,19 @@ void HelperPanel::CreateControls( )
 
 }
 
+//--------------
+
 void HelperPanel::HorizontalSpacer( wxBoxSizer* inSizer )
 {
     inSizer->Add( 5, 5, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 }
+
+//--------------
+
+
 void HelperPanel::VerticalSpacer( wxBoxSizer* inSizer )
 {
     inSizer->Add( 5, 5, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 5 );
 }
+
+//--------------

@@ -1,5 +1,5 @@
 /*
- * @file SettingsDialog.cpp
+ * @file PreferencesDialog.cpp
  * @author Eddie Monroe
  * @brief
  * @version 0.1
@@ -37,11 +37,14 @@
 #include <wx/notebook.h>
 
 #include "Defs.h"
-#include "Settings.h"
-#include "gui/SettingsDialog.h"
+#include "utils/Settings.h"
+#include "utils/Project.h"
+#include "gui/PreferencesDialog.h"
 #include "gui/SortOrderPanel.h"
 #include "gui/DefinePeriodsPanel.h"
 #include "gui/FontPickerHelper.h"
+#include "collection/CollectionList.h"
+#include "collection/Collection.h"
 #include <wx/font.h>
 #include <wx/colour.h>
 #include "utils/FontList.h"
@@ -51,46 +54,46 @@
 
 
  /*
-  * SettingsDialog type definition
+  * PreferencesDialog type definition
   */
 
-IMPLEMENT_DYNAMIC_CLASS( SettingsDialog, wxDialog )
+IMPLEMENT_DYNAMIC_CLASS( PreferencesDialog, wxDialog )
 
 
 /*
- * SettingsDialog event table definition
+ * PreferencesDialog event table definition
  */
 
-    BEGIN_EVENT_TABLE( SettingsDialog, wxDialog )
+    BEGIN_EVENT_TABLE( PreferencesDialog, wxDialog )
 
-    // SettingsDialog event table entries
-    EVT_TEXT( ID_IMAGEDIRECTORTEXTBOX, SettingsDialog::OnImagedirectortextboxTextUpdated )
-    EVT_TEXT( ID_COUNTRYTEXTBOX, SettingsDialog::OnCountrytextboxTextUpdated )
-    EVT_TEXT( ID_CATALOGTEXTBOX, SettingsDialog::OnCatalogtextboxTextUpdated )
-    EVT_CHECKBOX( ID_OPENLASTCHECKBOX, SettingsDialog::OnOpenlastcheckboxClick )
-    EVT_TEXT( ID_RECENTSIZETEXTCTRL, SettingsDialog::OnRecentsizetextctrlTextUpdated )
-    EVT_BUTTON( wxID_OK, SettingsDialog::OnOkClick )
-    // SettingsDialog event table entries
+    // PreferencesDialog event table entries
+    EVT_TEXT( ID_IMAGEDIRECTORTEXTBOX, PreferencesDialog::OnImagedirectortextboxTextUpdated )
+    EVT_TEXT( ID_COUNTRYTEXTBOX, PreferencesDialog::OnCountrytextboxTextUpdated )
+    EVT_TEXT( ID_CATALOGTEXTBOX, PreferencesDialog::OnCatalogtextboxTextUpdated )
+    EVT_CHECKBOX( ID_OPENLASTCHECKBOX, PreferencesDialog::OnOpenlastcheckboxClick )
+    EVT_TEXT( ID_RECENTSIZETEXTCTRL, PreferencesDialog::OnRecentsizetextctrlTextUpdated )
+    EVT_BUTTON( wxID_OK, PreferencesDialog::OnOkClick )
+    // PreferencesDialog event table entries
 
     END_EVENT_TABLE( )
 
 
     /*
-     * SettingsDialog constructors
+     * PreferencesDialog constructors
      */
 
-    SettingsDialog::SettingsDialog( )
+    PreferencesDialog::PreferencesDialog( )
 {
     Init( );
 }
 
-SettingsDialog::SettingsDialog( wxWindow* parent, wxWindowID id, const wxString& caption, const wxPoint& pos, const wxSize& size, long style )
+PreferencesDialog::PreferencesDialog( wxWindow* parent, wxWindowID id, const wxString& caption, const wxPoint& pos, const wxSize& size, long style )
 {
     Init( );
     Create( parent, id, caption, pos, size, style );
     //m_imageDirectory->SetValue( GetSettings( )->GetImageDirectory( ) );
-    m_country->SetValue( GetSettings( )->GetCountryID( ) );
-    m_catalog->SetValue( GetSettings( )->GetCatalogID( ) );
+    m_country->SetValue( GetProject( )->GetProjectCatalogCode( ) );
+    m_catalog->SetValue( GetProject( )->GetProjectCountryID( ) );
     m_loadLastFileAtStartUp->SetValue( GetSettings( )->GetLoadLastFileAtStartUp( ) );
     wxString str = wxString::Format( "%i", GetSettings( )->GetNbrRecentPreference( ) );
     m_recentListSize->SetValue( str );
@@ -98,12 +101,12 @@ SettingsDialog::SettingsDialog( wxWindow* parent, wxWindowID id, const wxString&
 
 
 /*
- * SettingsDialog creator
+ * PreferencesDialog creator
  */
 
-bool SettingsDialog::Create( wxWindow* parent, wxWindowID id, const wxString& caption, const wxPoint& pos, const wxSize& size, long style )
+bool PreferencesDialog::Create( wxWindow* parent, wxWindowID id, const wxString& caption, const wxPoint& pos, const wxSize& size, long style )
 {
-    // SettingsDialog creation
+    // PreferencesDialog creation
     SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY | wxWS_EX_BLOCK_EVENTS );
     wxDialog::Create( parent, id, caption, pos, size, style );
 
@@ -113,19 +116,19 @@ bool SettingsDialog::Create( wxWindow* parent, wxWindowID id, const wxString& ca
         GetSizer( )->SetSizeHints( this );
     }
     Centre( );
-    // SettingsDialog creation
+    // PreferencesDialog creation
     return true;
 }
 
 
 /*
- * SettingsDialog destructor
+ * PreferencesDialog destructor
  */
 
-SettingsDialog::~SettingsDialog( )
+PreferencesDialog::~PreferencesDialog( )
 {
-    // SettingsDialog destruction
-    // SettingsDialog destruction
+    // PreferencesDialog destruction
+    // PreferencesDialog destruction
 }
 
 
@@ -133,27 +136,27 @@ SettingsDialog::~SettingsDialog( )
  * Member initialisation
  */
 
-void SettingsDialog::Init( )
+void PreferencesDialog::Init( )
 {
-    // SettingsDialog member initialisation
+    // PreferencesDialog member initialisation
     m_imageDirectory = NULL;
     m_country = NULL;
     m_catalog = NULL;
     m_loadLastFileAtStartUp = NULL;
     m_recentListSize = NULL;
-    // SettingsDialog member initialisation
+    // PreferencesDialog member initialisation
 }
 
 
 /*
- * Control creation for SettingsDialog
+ * Control creation for PreferencesDialog
  */
 
-void SettingsDialog::CreateControls( )
+void PreferencesDialog::CreateControls( )
 {
-    // SettingsDialog content construction
+    // PreferencesDialog content construction
 
-    SettingsDialog* theDialog = this;
+    PreferencesDialog* theDialog = this;
 
     wxBoxSizer* theDialogVerticalSizer = new wxBoxSizer( wxVERTICAL );
     theDialog->SetSizer( theDialogVerticalSizer );
@@ -290,7 +293,41 @@ void SettingsDialog::CreateControls( )
     notebook->AddPage( notebookFontsPanel, _( "Fonts" ) );
 
 
+
+    wxPanel* notebookCollectionPanel = new wxPanel( notebook, ID_NOTEBOOKCOLLECTIONPANEL, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
+    notebookCollectionPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
+
+    wxBoxSizer* collectionVerticalSizer = new wxBoxSizer( wxVERTICAL );
+    notebookCollectionPanel->SetSizer( collectionVerticalSizer );
+
+    m_grid = new wxGrid( notebookCollectionPanel, ID_COLLECTIONGRID, wxDefaultPosition, wxSize( 300, 100 ),
+        wxHSCROLL | wxVSCROLL );
+    m_grid->SetDefaultColSize( 100 );
+    m_grid->SetDefaultRowSize( 25 );
+    m_grid->SetColLabelSize( 25 );
+    m_grid->SetRowLabelSize( 50 );
+    m_grid->CreateGrid( 0, 3, wxGrid::wxGridSelectCells );
+    collectionVerticalSizer->Add( m_grid, 1, wxGROW | wxALL, 5 );
+    m_grid->SetColLabelValue( 0, "Name" );
+    m_grid->SetColLabelValue( 1, "Description" );
+    m_grid->SetColLabelValue( 2, "Location" );
+
+    int cnt = m_grid->GetNumberRows( );
+    for ( int i = 0; i < GetCollectionList( )->GetNameArray( ).Count( ); i++ )
+    {
+        m_grid->InsertRows( cnt, 1 );
+        cnt++;
+        Inventory::Collection* collection = GetCollectionList( )->GetCollection( i );
+        m_grid->SetCellValue( i, 0, collection->GetName( ) );
+        m_grid->SetCellValue( i, 1, collection->GetDescription( ) );
+        m_grid->SetCellValue( i, 2, collection->GetLocation( ) );
+    }
+
+    notebook->AddPage( notebookCollectionPanel, _( "Collection" ) );
+
+
     theDialogHorizontalSizer->Add( notebook, 2, wxGROW | wxALL, 5 );
+
 
     wxBoxSizer* dialogCtrlButtonSizer = new wxBoxSizer( wxHORIZONTAL );
     theDialogVerticalSizer->Add( dialogCtrlButtonSizer, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 5 );
@@ -301,13 +338,13 @@ void SettingsDialog::CreateControls( )
     wxButton* itemButton14 = new wxButton( theDialog, wxID_OK, _( "OK" ), wxDefaultPosition, wxDefaultSize, 0 );
     dialogCtrlButtonSizer->Add( itemButton14, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
-    // SettingsDialog content construction
+    // PreferencesDialog content construction
 }
 
 
 
 
-bool SettingsDialog::ShowToolTips( )
+bool PreferencesDialog::ShowToolTips( )
 {
     return true;
 }
@@ -317,7 +354,7 @@ bool SettingsDialog::ShowToolTips( )
  *   ID_IMAGEDIRECTORTEXTBOX
  */
 
-void SettingsDialog::OnImagedirectortextboxTextUpdated( wxCommandEvent& event )
+void PreferencesDialog::OnImagedirectortextboxTextUpdated( wxCommandEvent& event )
 {
 
     m_dirty = true;
@@ -330,7 +367,7 @@ void SettingsDialog::OnImagedirectortextboxTextUpdated( wxCommandEvent& event )
  *   ID_COUNTRYTEXTBOX
  */
 
-void SettingsDialog::OnCountrytextboxTextUpdated( wxCommandEvent& event )
+void PreferencesDialog::OnCountrytextboxTextUpdated( wxCommandEvent& event )
 {
 
     m_dirty = true;
@@ -344,7 +381,7 @@ void SettingsDialog::OnCountrytextboxTextUpdated( wxCommandEvent& event )
  *   ID_CATALOGTEXTBOX
  */
 
-void SettingsDialog::OnCatalogtextboxTextUpdated( wxCommandEvent& event )
+void PreferencesDialog::OnCatalogtextboxTextUpdated( wxCommandEvent& event )
 {
 
     m_dirty = true;
@@ -358,7 +395,7 @@ void SettingsDialog::OnCatalogtextboxTextUpdated( wxCommandEvent& event )
  *   ID_OPENLASTCHECKBOX
  */
 
-void SettingsDialog::OnOpenlastcheckboxClick( wxCommandEvent& event )
+void PreferencesDialog::OnOpenlastcheckboxClick( wxCommandEvent& event )
 {
 
     m_dirty = true;
@@ -372,7 +409,7 @@ void SettingsDialog::OnOpenlastcheckboxClick( wxCommandEvent& event )
  *   ID_RECENTSIZETEXTCTRL
  */
 
-void SettingsDialog::OnRecentsizetextctrlTextUpdated( wxCommandEvent& event )
+void PreferencesDialog::OnRecentsizetextctrlTextUpdated( wxCommandEvent& event )
 {
 
     m_dirty = true;
@@ -381,7 +418,7 @@ void SettingsDialog::OnRecentsizetextctrlTextUpdated( wxCommandEvent& event )
 
 }
 
-void SettingsDialog::OnOkClick( wxCommandEvent& event )
+void PreferencesDialog::OnOkClick( wxCommandEvent& event )
 {
     UpdateSettings( );
     m_definePeriodsPanel->OnOkClick( );
@@ -395,7 +432,7 @@ void SettingsDialog::OnOkClick( wxCommandEvent& event )
 
 }
 
-void SettingsDialog::UpdateSettings( )
+void PreferencesDialog::UpdateSettings( )
 {
 
     if ( m_imageDirectory->IsModified( ) )

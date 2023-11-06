@@ -24,20 +24,30 @@ namespace Catalog {
     {
     public:
         StampMountData( );
-        ~StampMountData( ) {};
-        // bool LoadCSV( wxString filename );
 
-        wxXmlDocument* NewMountDocument( );
-        wxXmlDocument* GetDoc( ) { return m_mountDoc; };
-        void FixUpHyphenID( wxXmlDocument* doc );
-        void FixUpHyphenID( wxXmlNode* node, wxString level = "" );
+        ~StampMountData( ) {};
+
+        void Clear( );
 
         wxString Find( wxString id );
 
         wxString Find( wxXmlNode* node, wxString id );
-        wxXmlDocument* LoadXML( );
+
+        void FixUpHyphenID( wxXmlDocument* doc );
+
+        void FixUpHyphenID( wxXmlNode* node, wxString level = "" );
+
+        wxXmlDocument* GetDoc( ) {
+            return m_mountDoc;
+        };
 
         wxXmlDocument* LoadMountCSV( wxString filename );
+
+        wxXmlDocument* LoadXML( );
+
+        wxXmlDocument* NewMountDocument( );
+
+    private:
         wxXmlDocument* m_mountDoc;
     };
 }

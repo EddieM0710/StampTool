@@ -47,134 +47,68 @@ namespace Design {
     {
     public:
 
-        // AlbumData( ) { };
 
-         ///  @brief Construct a new Album Data object
-         ///  
-         ///  @param AppData 
         AlbumData( ) { };
 
-        ///  @brief Destroy the Album Data object
-        ///  
         ~AlbumData( ) { };
 
-        ///  @brief Get the Album Image Panel object
-        ///  
-        ///  @return AlbumImagePanel* 
+        void Clear( );
+
+        void FileOpen( wxString filename );
+
+        void FileSave( );
+
+        void FileSaveAs( wxString filename );
+
         inline AlbumImagePanel* GetAlbumImagePanel( ) {
             return m_albumImagePanel;
         };
 
-        ///  @brief Open an Album file named filename
-        ///  
-        ///  @param filename 
-        void FileOpen( wxString filename );
-
-        ///  @brief Save the Album File
-        ///  
-        void FileSave( );
-
-        ///  @brief 
-        ///  
-        ///  @param filename 
-        void FileSaveAs( wxString filename );
-
-        ///  @brief Get the Album List object
-        ///  
-        ///  @return Design::AlbumList& 
         inline Design::AlbumList& GetAlbumList( ) {
             return m_albumList;
-        };
-
-        inline AlbumTOCTreeCtrl* GetAlbumTOCTreeCtrl( ) {
-            return m_albumTocTreeCtrl;
-        };
-
-        ///  @brief Get the Album Volume object
-        ///  
-        ///  @return Album::AlbumVolume* 
-        AlbumVolume* GetAlbumVolume( );
-
-        ///  @brief Get the Design Tree Ctrl object
-        ///  
-        ///  @return AlbumTreeCtrl* 
-        inline AlbumTreeCtrl* GetAlbumTreeCtrl( ) {
-            return m_albumTreeCtrl;
-        };
-
-        ///  @brief Get the Font List object
-        ///  
-        ///  @return Utils::FontList* 
-        Utils::FontList* GetFontList( ) {
-            return &m_fontList;
-        };
-
-        ///  @brief Get the Volume Name Strings object
-        ///  
-        ///  @return wxArrayString& 
-        // wxArrayString& GetVolumeNameStrings( )
-        // {
-        //     return m_albumList.GetVolumeNameStrings( );
-        // }
-
-        ///  @brief 
-        ///  
-        void InitAlbumData( );
-
-        ///  @brief 
-        ///  
-        void LoadData( );
-
-        ///  @brief 
-        ///  
-        void LoadDefaultAlbumVolume( );
-
-        ///  @brief 
-        ///  
-        void LoadDesignVolumeFiles( );
-
-        ///  @brief 
-        ///  
-        void LoadDesignTree( );
-
-        /**
-         * @brief Load a new unnamed Design with default data
-         *
-         */
-        void LoadNew( wxString designFileName );
-
-        /**
-         * @brief Create a new empty AlbumVolume instance and clear tree
-         *
-         */
-        Design::AlbumVolume* NewAlbumVolume( void );
-
-        ///  @brief 
-        ///  
-        void NewDesign( );
-
-        ///  @brief 
-        ///  
-        void OpenDesign( );
-
-        void SetAlbumPanel( AlbumPanel* albumPanel ) {
-            m_albumPanel = albumPanel;
         };
 
         AlbumPanel* GetAlbumPanel( ) {
             return m_albumPanel;
         };
 
-        ///  @brief Set the Album Image Panel object
-        ///  
-        ///  @param albumImagePanel 
+        inline AlbumTOCTreeCtrl* GetAlbumTOCTreeCtrl( ) {
+            return m_albumTocTreeCtrl;
+        };
+
+        inline AlbumTreeCtrl* GetAlbumTreeCtrl( ) {
+            return m_albumTreeCtrl;
+        };
+
+        AlbumVolume* GetAlbumVolume( );
+
+
+        Utils::FontList* GetFontList( ) {
+            return &m_fontList;
+        };
+
+        void InitAlbumData( );
+
+        void LoadData( );
+
+        void LoadDesignTree( );
+
+        void LoadDesignVolumeFiles( );
+
+        void LoadNew( wxString designFileName );
+
+        void NewDesign( );
+
+        void OpenDesign( );
+
         void SetAlbumImagePanel( AlbumImagePanel* albumImagePanel ) {
             m_albumImagePanel = albumImagePanel;
         };
 
-        ///  @brief Set the Design Tree Ctrl object
-        ///  
-        ///  @param treeCtrl 
+        void SetAlbumPanel( AlbumPanel* albumPanel ) {
+            m_albumPanel = albumPanel;
+        };
+
         void SetAlbumTreeCtrl( AlbumTreeCtrl* treeCtrl ) {
             m_albumTreeCtrl = treeCtrl;
         };
@@ -183,7 +117,6 @@ namespace Design {
             m_albumTocTreeCtrl = treeCtrl;
         };
 
-        //void UpdateAlbumVolumeStrings( );
 
     private:
         AlbumPanel* m_albumPanel;

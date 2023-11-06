@@ -1,5 +1,5 @@
 /**
- * @file Specimen.cpp
+ * @file InventoryItem.cpp
  * @author Eddie Monroe ( )
  * @brief
  * @version 0.1
@@ -33,13 +33,13 @@
 #include "wx/wx.h"
 #endif
 
-#include "Specimen.h"
+#include "InventoryItem.h"
 #include "utils/XMLUtilities.h"
 #include <wx/strconv.h>
 
 namespace Catalog {
 
-    wxString Specimen::GetAttr( ItemDataTypes type )
+    wxString InventoryItem::GetAttr( ItemDataTypes type )
     {
         if ( IsOK( ) )
         {
@@ -52,20 +52,21 @@ namespace Catalog {
         return wxString( "" );
     }
 
-    wxXmlNode* Specimen::GetData( wxVector<wxVariant>* data )
+    wxXmlNode* InventoryItem::GetData( wxVector<wxVariant>* data )
     {
         data->push_back( GetType( ) );
         data->push_back( GetCondition( ) );
         data->push_back( GetValue( ) );
-        data->push_back( GetLocation( ) );
-        data->push_back( GetRemarks( ) );
+        //data->push_back( GetLocation( ) );
+        //data->push_back( GetRemarks( ) );
         return GetCatXMLNode( );
     }
-    bool Specimen::IsOK( )
+
+    bool InventoryItem::IsOK( )
     {
         if ( GetCatXMLNode( ) )
         {
-            if ( Catalog::IsCatalogBaseType( GetCatXMLNode( ), Catalog::NT_Specimen ) )
+            if ( Catalog::IsCatalogBaseType( GetCatXMLNode( ), Catalog::NT_Inventory ) )
             {
                 return true;
             }
@@ -73,7 +74,7 @@ namespace Catalog {
         return false;
     }
 
-    void Specimen::SetAttr( ItemDataTypes type, wxString val )
+    void InventoryItem::SetAttr( ItemDataTypes type, wxString val )
     {
         if ( IsOK( ) )
         {

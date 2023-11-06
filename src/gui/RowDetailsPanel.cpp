@@ -141,27 +141,27 @@ void RowDetailsPanel::CreateControls( )
     m_frameCheckbox->SetValue( false );
 
 
-    m_titleHelper = SetupTitleHelper( theDialog, m_leftColumnVerticalSizer, lastID, HasTextCtrl,
+    m_titleHelper = SetupTitleHelper( theDialog, m_leftColumnVerticalSizer, lastID, DefaultTitleHelperStyle,
         wxCommandEventHandler( RowDetailsPanel::OnTitleCheckboxClick ),
         wxCommandEventHandler( RowDetailsPanel::OnTitleTextChanged ),
         wxCommandEventHandler( RowDetailsPanel::OnSubTitleCheckboxClick ),
         wxCommandEventHandler( RowDetailsPanel::OnSubTitleTextChanged ) );
 
 
-    wxBoxSizer* fontboxSizer;
-    wxStaticBox* fontBox = SetupBoxSizer( theDialog, m_leftColumnVerticalSizer, "Font", lastID, fontboxSizer, wxVERTICAL );
+    //wxBoxSizer* fontboxSizer;
+    //wxStaticBox* fontBox = SetupBoxSizer( theDialog, m_leftColumnVerticalSizer, "Font", lastID, fontboxSizer, wxVERTICAL );
 
 
-    SetupFontPicker( fontBox, fontboxSizer, lastID,
-        _( "Title" ), _( "Default" ),
+    SetupFontPicker( theDialog, m_leftColumnVerticalSizer, lastID,
+        _( "Title Font" ), _( "Default" ),
         m_titleFontPicker, m_titleColorPicker,
         wxFontPickerEventHandler( RowDetailsPanel::OnTitleFontPicker ),
         wxColourPickerEventHandler( RowDetailsPanel::OnTitleColorPicker ),
         wxCommandEventHandler( RowDetailsPanel::OnTitleDefaultClick ) );
 
 
-    FontPicker* titleFontPicker = SetupFontPicker( fontBox, fontboxSizer, lastID,
-        _( "SubTitle" ), _( "Default" ),
+    SetupFontPicker( theDialog, m_leftColumnVerticalSizer, lastID,
+        _( "SubTitle Font" ), _( "Default" ),
         m_subTitleFontPicker, m_subTitleColorPicker,
         wxFontPickerEventHandler( RowDetailsPanel::OnSubTitleFontPicker ),
         wxColourPickerEventHandler( RowDetailsPanel::OnSubTitleColorPicker ),
@@ -245,8 +245,8 @@ void RowDetailsPanel::UpdateControls( )
     SetShowFrame( m_row->GetShowFrame( ) );
     SetColor( m_row->GetTitleFrame( )->GetColor( ) );
     SetTitleLocation( );
-    SetCalculateSpacing( m_row->CalculateSpacing( ) );
     SetFixedSpacingSize( m_row->GetFixedSpacing( ) );
+    SetCalculateSpacing( m_row->CalculateSpacing( ) );
 
     wxListBox* m_statusList;
 }

@@ -40,6 +40,8 @@
 #include "catalog/StampMount.h"
 
 
+ //--------
+
 AppData::AppData( ) {
 
     m_catalogData = new Catalog::CatalogData( );
@@ -50,38 +52,75 @@ AppData::AppData( ) {
     // two entries in an array
     defaultDash.Add( .6 );
     defaultDash.Add( .6 );
+
 };
+
+//--------
+
+void AppData::Clear( )
+{
+
+    m_collectionList->Clear( );
+    m_mountData->Clear( );
+
+    m_catalogData->Clear( );
+    m_albumData->Clear( );
+    m_StampAlbumCatalogLink->Clear( );
+    m_project->CloseProject( );
+
+}
+
+//--------
 
 void AppData::SetCaption( )
 {
     GetProject( )->SetCaption( );
 }
-///  @brief Get the Album Data object
-///  
-///  @return * Design::AlbumData* 
-Design::AlbumData* AppData::GetAlbumData( ) { return m_albumData; };
 
-///@brief Get the Catalog Data object
-///
-///@return Catalog::CatalogData* 
-Catalog::CatalogData* AppData::GetCatalogData( ) { return m_catalogData; };
+//--------
 
-Inventory::CollectionList* AppData::GetCollectionList( ) { return m_collectionList; };
 
-Catalog::StampMountData* AppData::GetStampMountData( ) { return m_mountData; };
+Design::AlbumData* AppData::GetAlbumData( ) {
+    return m_albumData;
+};
 
-///@brief Get the Project object
-///@return Utils::Project* 
-Utils::Project* AppData::GetProject( ) { return  m_project; };
+//--------
 
-///@brief Get the Settings object
-///@return Utils::Settings* 
-Utils::Settings* AppData::GetSettings( ) { return m_settings; };
+Catalog::CatalogData* AppData::GetCatalogData( ) {
+    return m_catalogData;
+};
 
-///  @brief Get the Stamp Album Catalog Link object
-///  
-///  @return Utils::StampList* 
-Utils::StampList* AppData::GetStampAlbumCatalogLink( ) { return m_StampAlbumCatalogLink; };
+//--------
+
+Inventory::CollectionList* AppData::GetCollectionList( ) {
+    return m_collectionList;
+};
+
+//--------
+
+Catalog::StampMountData* AppData::GetStampMountData( ) {
+    return m_mountData;
+};
+
+//--------
+
+Utils::Project* AppData::GetProject( ) {
+    return  m_project;
+};
+
+//--------
+
+Utils::Settings* AppData::GetSettings( ) {
+    return m_settings;
+};
+
+//--------
+
+Utils::StampList* AppData::GetStampAlbumCatalogLink( ) {
+    return m_StampAlbumCatalogLink;
+};
+
+//--------
 
 void AppData::InitAppData( )
 {
@@ -95,6 +134,10 @@ void AppData::InitAppData( )
     if ( m_settings->GetLoadLastFileAtStartUp( ) )
     {
         m_project->SetProjectFilename( m_settings->GetLastFile( ) );
+    }
+    else
+    {
+        m_project->SetProjectFilename( "" );
     }
 }
 

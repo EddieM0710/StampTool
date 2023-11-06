@@ -48,80 +48,101 @@ namespace Utils {
             }
         };
 
-        void SetCaption( );
+        wxXmlNode* AddChild( wxXmlNode* child );
 
-        void InitProject( );
+        wxXmlNode* AddNewAlbumVolume( wxString fileName, wxString  volName );
 
-        wxString GetProjectFilename( ) {
-            return m_projectFilename;
-        };
-        void SetProjectFilename( wxString name );
+        wxXmlNode* AddNewCatalogVolume( wxString fileName, wxString  volName );
 
-        wxString GetOutputFilename( );
+        void CloseProject( );
 
-        wxImage GetImage( wxString filename );
+        bool ContinueIfDirty( wxWindow* parent );
 
-        void SetOutputFilename( wxString outputFilename );
+        void FileNewProject( wxString sptName );
 
-        wxString GetDesignFilename( );
-        void SetDesignFilename( wxString albumFilename );;
+        void FileOpenProject( wxString filename );
 
-        wxXmlNode* GetCatalogListNode( ){
-            return m_catalogListNode;
-        };
+        void FileSaveAsProject( wxString filename );
+
+        void FileSaveProject( );
+
         wxXmlNode* GetAlbumListNode( ){
             return m_albumListNode;
         };
 
-        wxString GetImagePath( );
-        void SetImagePath( wxString imagePath );
+        wxXmlNode* GetCatalogListNode( ){
+            return m_catalogListNode;
+        };
+
+        //     wxString GetDesignFilename( );
+
+   //     void SetDesignFilename( wxString albumFilename );;
+
+        wxImage GetImage( wxString filename );
+
+        wxString GetOutputFilename( );
+
+        wxString GetProjectFilename( ) {
+            return m_projectFilename;
+        };
+
+
         wxString GetImageFullPath( wxString imageName );
-        bool ImageExists( wxString imageName );
 
         //wxString GetCatalogFilename( );
         //void SetCatalogFilename( wxString catalogFilename );
 
-        wxString GetProjectCountryID( ) {
-            return m_defaultCountryID;
-        };
-        void SetProjectCountryID( wxString str ) {
-            m_defaultCountryID = str;
-        };
         wxString GetProjectCatalogCode( ) {
-            return m_defaultCatalogCode;
-        };
-        void SetProjectCatalogCode( wxString str ) {
-            m_defaultCatalogCode = str;
+            return m_projectCatalogCode;
         };
 
-        // Load the Project xml file
+        wxString GetProjectCountryID( ) {
+            return m_projectCountryID;
+        };
+        wxString GetImageDirectory( );
+
+        bool ImageExists( wxString imageName );
+
+        void InitProject( );
+
+        // Is project dirty?
+        bool IsDirty( ) {
+            return m_dirty;
+        };
+
         bool LoadProjectXML( );
-        wxXmlNode* AddChild( wxXmlNode* child );
 
-        //Load the project xml attributes
         void LoadAttributes( wxXmlNode* thisObject );
 
-        void FileNewProject( wxString sptName );
         void LoadData( );
 
         void LoadTOCTree( );
 
-        void FileOpenProject( wxString filename );
-        void FileSaveProject( );
-        void FileSaveAsProject( wxString filename );
+        void  MakeNewProject( wxString fileName );
 
-        // save the project to an xml file
-        void Save( );
+        // make a default xml project
+        wxXmlDocument* MakeDefaultProjectDocument( );
 
         // make the filename absolute if its not already
         wxString MakeFileAbsolute( wxString filename );
 
+        // save the project to an xml file
+        void Save( );
+
+        void SetCaption( );
+
+        void SetProjectFilename( wxString name );
+
+        void SetOutputFilename( wxString outputFilename );
+
+        void SetImageDirectory( wxString imagePath );
+
+        void SetProjectCountryID( wxString str );
+
+        void SetProjectCatalogCode( wxString str );
+
         void SetDirty( bool state = true ) {
             m_dirty = state;
-        };
-        // Is project dirty?
-        bool isDirty( ) {
-            return m_dirty;
         };
 
     private:
@@ -131,10 +152,10 @@ namespace Utils {
         wxString m_projectFilename;
         wxString m_outputFilename;
         wxString m_designFilename;
-        wxString m_imagePath;
+        wxString m_imageDirectory;
         //wxString m_catalogFilename;
-        wxString m_defaultCountryID;
-        wxString m_defaultCatalogCode;
+        wxString m_projectCountryID;
+        wxString m_projectCatalogCode;
 
         //Mount::StampMount* m_stampMount;
         //Mount::StampMount* m_stampMount;

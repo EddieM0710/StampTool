@@ -53,142 +53,59 @@
 class ImagePanel : public wxScrolledWindow
 {
     DECLARE_DYNAMIC_CLASS( ImagePanel )
-        DECLARE_EVENT_TABLE( )
+    DECLARE_EVENT_TABLE( )
 
 public:
 
-    
 
-        /**
-         * @brief Default Constructor a new ImagePanel object
-         * @details Must be used in conjunction with Create.
-         *
-         */
-    ImagePanel( );
 
     /**
-     * @brief Construct a new ImagePanel object
+     * @brief Default Constructor a new ImagePanel object
+     * @details Must be used in conjunction with Create.
      *
-     * @param  parent	The parent window.
-     * @param  id	An identifier for the panel. wxID_ANY is taken to mean a default.
-     * @param  pos	The panel position. The value wxDefaultPosition indicates a default position, chosen by either the windowing system or wxWidgets, depending on platform.
-     * @param  size	The panel size. The value wxDefaultSize indicates a default size, chosen by either the windowing system or wxWidgets, depending on platform.
-     * @param  style	The window style.
-     * @see wxPanel.
      */
+    ImagePanel( );
+
     ImagePanel( wxWindow* parent, wxWindowID id = SYMBOL_IMAGEPANEL_IDNAME,
         const wxPoint& pos = SYMBOL_IMAGEPANEL_POSITION,
         const wxSize& size = SYMBOL_IMAGEPANEL_SIZE,
         long style = SYMBOL_IMAGEPANEL_STYLE );
 
-    /**
-     * @brief  Used for two-step panel construction.
-     * Use with default constructor.
-     *
-     * @param  parent	The parent window.
-     * @param  id	An identifier for the panel. wxID_ANY is taken to mean a default.
-     * @param  pos	The panel position. The value wxDefaultPosition indicates a default position, chosen by either the windowing system or wxWidgets, depending on platform.
-     * @param  size	The panel size. The value wxDefaultSize indicates a default size, chosen by either the windowing system or wxWidgets, depending on platform.
-     * @param  style	The window style.
-     * @return bool
-     *
-     */
+
     bool Create( wxWindow* parent, wxWindowID id = SYMBOL_IMAGEPANEL_IDNAME,
         const wxPoint& pos = SYMBOL_IMAGEPANEL_POSITION,
         const wxSize& size = SYMBOL_IMAGEPANEL_SIZE,
         long style = SYMBOL_IMAGEPANEL_STYLE );
 
-    /**
-     * @brief Destroy the Image Panel object
-     *
-     */
     ~ImagePanel( );
 
+    void Clear( );
 
-    /**
-     * @brief Initialises member variables
-     *
-     */
-    void Init( );
-
-    /**
-     * @brief Creates the controls and sizers
-     *
-     */
     void CreateControls( );
 
-    // ImagePanel event handler declarations
+    void Init( );
 
-
-    /**
-     * @brief  PAINT event handler for ID_IMAGEPANEL
-     *
-     * @param event   Contains information about command events
-     */
-    void OnPaint( wxPaintEvent& event );
-
-    /**
-     * @brief  ID_IMAGEPANEL
-     *
-     * @param event   Contains information about command events
-     */
     void OnContextMenu( wxContextMenuEvent& event );
 
+    void OnPaint( wxPaintEvent& event );
 
-
-    // 
-    static bool ShowToolTips( );
-
-    /**
-     * @brief Set the Bitmap
-     *
-     * @param filename  fullname and path for the bitmap file
-     */
-    void SetBitmap( wxString filename );
-
-    //  void SetStamp( Catalog::Entry* stamp );
-
-      /**
-       * @brief Resize the image to fit in the clientspace
-       *
-       * @param WXUNUSED
-       */
     void OnResize( wxCommandEvent& WXUNUSED( event ) );
 
-    /**
-     * @brief Zoom requested
-     *
-     * @param event   Contains information about command events
-     */
     void OnZoom( wxCommandEvent& event );
 
+    void SetBitmap( wxString filename );
 
-    /**
-     * @brief Set the Zoom object
-     *
-     * @param zoom new value to set the zoom factor to.
-     */
     void SetZoom( double zoom );
 
-    //    void StartWebRequest( RequestType page, wxString url );
-    //    void OnWebRequestState( wxWebRequestEvent& evt );
-     //   wxBitmap GetWebImage( ) { return m_imageBitmap; };
-    //    wxString GetWebText( ) { return m_webText; };
-        //void LoadImageFromWeb( Catalog::Entry* stamp );
-
-
-
+    static bool ShowToolTips( );
 
 
 private:
     wxBitmap m_bitmap; ///< current bitmap to display
     double m_zoom; ///< current zoom factor
 
-    //  Catalog::Entry* m_stamp; ///< Pointer to currently displayed stamp
-      //    RequestType m_page;
     wxBitmap m_imageBitmap;
-    //    wxString m_webText;
-    //    wxWebRequest m_currentRequest;
+
 };
 
 #endif

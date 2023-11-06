@@ -49,6 +49,7 @@
 
 namespace Catalog {
 
+    //-------
 
     wxString Entry::FindImageName( )
     {
@@ -57,6 +58,8 @@ namespace Catalog {
         return catCodeArray.FindImageName( );
     }
 
+    //-------
+
     bool Entry::IsCatalogCode( wxString catCode )
     {
         wxString catCodeStr = GetCatalogCodes( );
@@ -64,57 +67,107 @@ namespace Catalog {
         return catCodeArray.IsCatalogCode( catCode );
     }
 
-    wxXmlNode* Entry::AddCode( )
-    {
-        wxXmlNode* ele = GetCatXMLNode( );
-        if ( ele )
-        {
-            return Utils::NewNode( ele, CatalogBaseNames[ NT_CatalogCode ] );
-        }
-        return ( wxXmlNode* ) 0;
-    }
+    //-------
 
-    wxXmlNode* Entry::GetSpecimen( wxString collectionName )
+        // wxXmlNode* Entry::AddCode( )
+        // {
+        //     wxXmlNode* ele = GetCatXMLNode( );
+        //     if ( ele )
+        //     {
+        //         return Utils::NewNode( ele, CatalogBaseNames[ NT_CatalogCode ] );
+        //     }
+        //     return ( wxXmlNode* ) 0;
+        // }
+
+    //-------
+  //-------
+
+        // find specimen for a collection
+    wxXmlNode* Entry::GetItem( wxString collection )
     {
-        wxXmlNode* ele = GetCatXMLNode( );
-        if ( ele )
+        if ( HasInventoryItem( ) )
         {
-            wxXmlNode* child = ele->GetChildren( );
-            while ( child )
+            wxXmlNode* ele = GetCatXMLNode( );
+            if ( ele )
             {
-                if ( !child->GetName( ).Cmp( "Specimen" ) )
+                wxXmlNode* inventoryNode = Utils::FirstChildElement( ele, CatalogBaseNames[ NT_Inventory ] );
+                if ( inventoryNode )
                 {
-                    wxString specimenCollection = child->GetAttribute( Catalog::ItemDataNames[ Catalog::IDT_Collection ], "" );
-                    if ( !collectionName.Cmp( specimenCollection ) )
+                    wxXmlNode* child = inventoryNode->GetChildren( );
+                    while ( child )
                     {
-                        return child;
+                        if ( !child->GetName( ).Cmp( CatalogBaseNames[ NT_Item ] ) )
+                        {
+                            wxString str = Utils::GetAttrStr( child, Catalog::ItemDataNames[ IDT_Collection ] );
+                            if ( !str.Cmp( collection ) )
+                            {
+                                return child;
+                            }
+                        }
                     }
                 }
-                child = child->GetNext( );
             }
         }
         return ( wxXmlNode* ) 0;
     }
 
+    // wxXmlNode* Entry::GetSpecimen( wxString collectionName )
+    // {
+    //     wxXmlNode* ele = GetCatXMLNode( );
+    //     if ( ele )
+    //     {
+    //         wxXmlNode* child = ele->GetChildren( );
+    //         while ( child )
+    //         {
+    //             if ( !child->GetName( ).Cmp( "Specimen" ) )
+    //             {
+    //                 wxString specimenCollection = child->GetAttribute( Catalog::ItemDataNames[ Catalog::IDT_Collection ], "" );
+    //                 if ( !collectionName.Cmp( specimenCollection ) )
+    //                 {
+    //                     return child;
+    //                 }
+    //             }
+    //             child = child->GetNext( );
+    //         }
+    //     }
+    //     return ( wxXmlNode* ) 0;
+    // }
 
-    wxXmlNode* Entry::AddSpecimen( )
+    //-------
+
+    wxXmlNode* Entry::AddNewInventoryItem( wxString collection, Catalog::InventoryStatusType type )
     {
-        wxXmlNode* ele = GetCatXMLNode( );
-        if ( ele )
+        wxXmlNode* inventoryNode = GetInventory( );
+        if ( !inventoryNode )
         {
-            return Utils::NewNode( ele, CatalogBaseNames[ NT_Specimen ] );
+            inventoryNode = Utils::NewNode( GetCatXMLNode( ), "Inventory" );
+        }
+        if ( inventoryNode )
+        {
+            wxXmlNode* newNode = Utils::NewNode( inventoryNode, CatalogBaseNames[ NT_Item ] );
+            Utils::SetAttrStr( newNode,
+                Catalog::ItemDataNames[ Catalog::IDT_Collection ],
+                collection );
+            Utils::SetAttrStr( newNode,
+                Catalog::ItemDataNames[ Catalog::IDT_InventoryStatus ],
+                Catalog::InventoryStatusStrings[ type ] );
+            return newNode;
         }
         return ( wxXmlNode* ) 0;
     }
 
+    //-------
+
     void Entry::DeleteSpecimen( wxXmlNode* deleteThisNode )
     {
-        wxXmlNode* ele = GetCatXMLNode( );
-        if ( ele )
+        wxXmlNode* inventoryNode = GetInventory( );
+        if ( inventoryNode )
         {
-            ele->RemoveChild( deleteThisNode );
+            inventoryNode->RemoveChild( deleteThisNode );
         }
     }
+
+    //-------
 
     void Entry::DeleteCode( wxXmlNode* deleteThisNode )
     {
@@ -125,9 +178,13 @@ namespace Catalog {
         }
     }
 
+    //-------
+
     wxString Entry::GetAccuracy( ) {
         return GetAttr( DT_Accuracy );
     };
+
+    //-------
 
     DataTypes Entry::FindDataType( wxString name )
     {
@@ -140,6 +197,8 @@ namespace Catalog {
         }
         return ( DataTypes ) -1;
     }
+
+    //-------
 
     wxString Entry::GetAttr( DataTypes type )
     {
@@ -155,9 +214,13 @@ namespace Catalog {
         return wxString( "" );
     }
 
+    //-------
+
     wxString Entry::GetCatalogCodes( ) {
         return GetAttr( DT_Catalog_Codes );
     };
+
+    //-------
 
     wxString Entry::GetClassificationName( Entry* entry, CatalogBaseType type )
     {
@@ -198,17 +261,25 @@ namespace Catalog {
         }
     }
 
+    //-------
+
     wxString Entry::GetColors( ) {
         return GetAttr( DT_Colors );
     };
+
+    //-------
 
     wxString Entry::GetCountry( ) {
         return GetAttr( DT_Country );
     };
 
+    //-------
+
     wxString Entry::GetCurrency( ) {
         return GetAttr( DT_Currency );
     };
+
+    //-------
 
     wxString Entry::GetDecade( )
     {
@@ -226,44 +297,77 @@ namespace Catalog {
         return decade;
     }
 
+    //-------
+
     wxString Entry::GetDescription( ) {
         return GetAttr( DT_Description );
     };
+
+    //-------
 
     wxString Entry::GetEmission( ) {
         return GetAttr( DT_Emission );
     };
 
+    //-------
+
     wxString Entry::GetExpiryDate( ) {
         return GetAttr( DT_Expiry_date );
     };
+
+    //-------
 
     wxString Entry::GetFaceValue( ) {
         return GetAttr( DT_FaceValue );
     };
 
-    wxXmlNode* Entry::GetFirstChildCode( )
+    //-------
+
+        // wxXmlNode* Entry::GetFirstChildCode( )
+        // {
+        //     wxXmlNode* ele = GetCatXMLNode( );
+        //     if ( ele )
+        //     {
+        //         return Utils::FirstChildElement( ele, CatalogBaseNames[ NT_CatalogCode ] );
+        //     }
+        //     return ( wxXmlNode* ) 0;
+        // }
+
+    //-------
+
+    wxXmlNode* Entry::GetFirstInventoryItem( )
     {
-        wxXmlNode* ele = GetCatXMLNode( );
-        if ( ele )
+        wxXmlNode* inventoryNode = GetInventory( );
+        if ( inventoryNode )
         {
-            return Utils::FirstChildElement( ele, CatalogBaseNames[ NT_CatalogCode ] );
+            return Utils::FirstChildElement( inventoryNode, CatalogBaseNames[ NT_Item ] );
         }
         return ( wxXmlNode* ) 0;
     }
 
-    wxXmlNode* Entry::GetFirstChildSpecimen( )
+    wxXmlNode* Entry::GetFirstInventoryItem( wxString collectionName )
     {
-        wxXmlNode* ele = GetCatXMLNode( );
-        if ( ele )
+        wxXmlNode* itemNode = GetFirstInventoryItem( );
+        while ( itemNode )
         {
-            return Utils::FirstChildElement( ele, CatalogBaseNames[ NT_Specimen ] );
+            wxString collection = Utils::GetAttrStr( itemNode, ItemDataNames[ IDT_Collection ] );
+            if ( !collection.Cmp( collectionName ) )
+            {
+                return itemNode;
+            }
+            itemNode = itemNode->GetNext( );
         }
         return ( wxXmlNode* ) 0;
     }
+
+
+    //-------
+
     wxString Entry::GetFormat( ) {
         return GetAttr( DT_Format );
     };
+
+    //-------
 
     FormatType Entry::GetFormatType( )
     {
@@ -279,23 +383,45 @@ namespace Catalog {
         return ( FormatType ) FT_FormatUnknown;
     }
 
+    //-------
+
     wxString Entry::GetGum( ) {
         return GetAttr( DT_Gum );
     };
+
+    //-------
 
     wxString Entry::GetHeight( ) {
         return GetAttr( DT_Height );
     };
 
+    //-------
+
+    wxXmlNode* Entry::GetInventory( )
+    {
+        wxXmlNode* ele = GetCatXMLNode( );
+        if ( ele )
+        {
+            return Utils::FirstChildElement( ele, CatalogBaseNames[ NT_Inventory ] );
+        }
+        return ( wxXmlNode* ) 0;
+    }
+
+    //-------
+
     wxString Entry::GetMount( ) {
         return GetAttr( DT_StampMount );
     };
 
+    //-------
+
     wxString Entry::GetID( )
     {
         Catalog::CatalogCode catCodes( GetCatalogCodes( ) );
-        return catCodes.GetPreferredCatalogCode( GetSettings( )->GetCatalogID( ) );
+        return catCodes.GetPreferredCatalogCode( GetProject( )->GetProjectCatalogCode( ) );
     };
+
+    //-------
 
     wxString Entry::GetInventoryStatus( )
     {
@@ -303,38 +429,34 @@ namespace Catalog {
         return InventoryStatusStrings[ type ];
     }
 
+    //-------
+
     InventoryStatusType Entry::GetInventoryStatusType( )
     {
         wxString currCollection = GetCollectionList( )->GetCurrentName( );
         wxXmlNode* ele = GetCatXMLNode( );
-        wxXmlNode* child = ele->GetChildren( );
-        while ( child )
+        if ( HasInventoryItem( ) )
         {
-            wxString str = child->GetName( );
-            if ( !child->GetName( ).Cmp( "Specimen" ) )
+            wxXmlNode* inventory = GetInventory( );
+            wxXmlNode* child = GetFirstInventoryItem( currCollection );
+            if ( child )
             {
-                wxString specimenCollection = child->GetAttribute( Catalog::ItemDataNames[ Catalog::IDT_Collection ], "" );
-                if ( !currCollection.Cmp( specimenCollection ) )
-                {
-                    wxString status = child->GetAttribute( Catalog::ItemDataNames[ IDT_InventoryStatus ], "Exclude" );
-                    for ( int i = ST_None; i < ST_NbrInventoryStatusTypes; i++ )
-                    {
-                        wxString str = InventoryStatusStrings[ i ];
-                        if ( !status.CmpNoCase( str ) )
-                        {
-                            return ( InventoryStatusType ) i;
-                        }
-                    }
-                }
+                wxString status = child->GetAttribute( Catalog::ItemDataNames[ IDT_InventoryStatus ], "Exclude" );
+                return FindStatusType( status );
             }
-            child = child->GetNext( );
         }
         return ( InventoryStatusType ) ST_Exclude;
-    };
+    }
+
+
+    //-------
 
     wxString Entry::GetIssuedDate( ) {
         return GetAttr( DT_Issued_on );
     };
+
+    //-------
+
     wxString Entry::GetLabel( )
     {
         wxString label = GetPreferredCode( );
@@ -362,49 +484,70 @@ namespace Catalog {
 
         return label;
     };
+
+    //-------
+
     wxString Entry::GetLink( ) {
         return GetAttr( DT_Link );
     };
+
+    //-------
 
     wxString Entry::GetName( )
     {
         return GetAttr( DT_Name );
     };
 
+    //-------
+
+    wxXmlNode* Entry::GetNextInventoryItem( wxXmlNode* node, wxString collectionName )
+    {
+        wxXmlNode* itemNode = node->GetNext( );
+        while ( itemNode )
+        {
+            wxString collection = Utils::GetAttrStr( itemNode, ItemDataNames[ IDT_Collection ] );
+            if ( !collection.Cmp( collectionName ) )
+            {
+                return itemNode;
+            }
+            itemNode = itemNode->GetNext( );
+        }
+        return ( wxXmlNode* ) 0;
+    }
+    //-------
+
     wxString Entry::GetPreferredCode( )
     {
         wxString catCodeStr = GetCatalogCodes( );
         Catalog::CatalogCode catCodeArray( catCodeStr );
-        wxString preferredID = catCodeArray.GetPreferredCatalogCode( GetSettings( )->GetCatalogID( ) );
+        wxString preferredID = catCodeArray.GetPreferredCatalogCode( GetProject( )->GetProjectCatalogCode( ) );
         return preferredID;
     }
 
-    wxXmlNode* Entry::GetNextChildCode( wxXmlNode* ele )
-    {
-        if ( ele )
-        {
-            return Utils::GetNext( ele, CatalogBaseNames[ NT_CatalogCode ] );
-        }
-        return ( wxXmlNode* ) 0;
-    }
+    //-------
 
-    wxXmlNode* Entry::GetNextChildSpecimen( )
-    {
-        wxXmlNode* ele = GetCatXMLNode( );
-        if ( ele )
-        {
-            return Utils::GetNext( ele, CatalogBaseNames[ NT_Specimen ] );
-        }
-        return ( wxXmlNode* ) 0;
-    }
+        // wxXmlNode* Entry::GetNextChildCode( wxXmlNode* ele )
+        // {
+        //     if ( ele )
+        //     {
+        //         return Utils::GetNext( ele, CatalogBaseNames[ NT_CatalogCode ] );
+        //     }
+        //     return ( wxXmlNode* ) 0;
+        // }
+
+    //-------
 
     wxString Entry::GetPaper( ) {
         return GetAttr( DT_Paper );
     };
 
+    //-------
+
     wxString Entry::GetPerforation( ) {
         return GetAttr( DT_Perforation );
     };
+
+    //-------
 
     wxString Entry::GetPeriod( )
     {
@@ -436,37 +579,56 @@ namespace Catalog {
         }
     }
 
+    //-------
+
     wxString Entry::GetPrinting( ) {
         return GetAttr( DT_Printing );
     };
+
+    //-------
 
     wxString Entry::GetPrintRun( ) {
         return GetAttr( DT_Print_run );
     };
 
+    //-------
+
     wxString Entry::GetScore( ) {
         return GetAttr( DT_Score );
     };
+
+    //-------
 
     wxString Entry::GetSeries( ) {
         return GetAttr( DT_Series );
     };
 
+
+    //-------
+
     wxString Entry::GetThemes( ) {
         return GetAttr( DT_Themes );
     };
+
+    //-------
 
     wxString Entry::GetVariant( ) {
         return GetAttr( DT_Variant );
     };
 
+    //-------
+
     wxString Entry::GetWatermark( ) {
         return GetAttr( DT_Watermark );
     };
 
+    //-------
+
     wxString Entry::GetWidth( ) {
         return GetAttr( DT_Width );
     };
+
+    //-------
 
     wxString Entry::GetYear( )
     {
@@ -502,31 +664,41 @@ namespace Catalog {
         return wxString( "Unknown" );
     }
 
-    bool Entry::HasChildCode( )
+    //-------
+
+        // bool Entry::HasChildCode( )
+        // {
+        //     wxXmlNode* ele = GetCatXMLNode( );
+        //     if ( ele )
+        //     {
+        //         if ( Utils::FirstChildElement( ele, CatalogBaseNames[ NT_CatalogCode ] ) )
+        //         {
+        //             return true;
+        //         }
+        //     }
+        //     return false;
+        // }
+
+    //-------
+
+    bool Entry::HasInventoryItem( )
     {
         wxXmlNode* ele = GetCatXMLNode( );
         if ( ele )
         {
-            if ( Utils::FirstChildElement( ele, CatalogBaseNames[ NT_CatalogCode ] ) )
+            wxXmlNode* inventoryNode = Utils::FirstChildElement( ele, CatalogBaseNames[ NT_Inventory ] );
+            if ( inventoryNode )
             {
-                return true;
+                if ( Utils::FirstChildElement( inventoryNode, CatalogBaseNames[ NT_Item ] ) )
+                {
+                    return true;
+                }
             }
         }
         return false;
     }
 
-    bool Entry::HasChildSpecimen( )
-    {
-        wxXmlNode* ele = GetCatXMLNode( );
-        if ( ele )
-        {
-            if ( Utils::FirstChildElement( ele, CatalogBaseNames[ NT_Specimen ] ) )
-            {
-                return true;
-            }
-        }
-        return false;
-    }
+    //-------
 
     bool Entry::IsMultiple( )
     {
@@ -539,6 +711,8 @@ namespace Catalog {
         }
         return false;
     }
+
+    //-------
 
     bool Entry::IsOK( )
     {
@@ -559,9 +733,13 @@ namespace Catalog {
         return m_OK;
     };
 
+    //-------
+
     void Entry::SetAccuracy( wxString val ) {
         SetAttr( DT_Accuracy, val );
     };
+
+    //-------
 
     void Entry::SetAttr( DataTypes type, wxString val )
     {
@@ -571,96 +749,151 @@ namespace Catalog {
         };
     }
 
+    //-------
+
+    void Entry::SetCatalogCodes( wxString val )
+    {
+        SetAttr( DT_Catalog_Codes, val );
+    }
+
+    //-------
+
     void Entry::SetColors( wxString val ) {
         SetAttr( DT_Colors, val );
     };
+
+    //-------
 
     void Entry::SetCountry( wxString val ) {
         SetAttr( DT_Country, val );
     };
 
+    //-------
+
     void Entry::SetCurrency( wxString val ) {
         SetAttr( DT_Currency, val );
     };
+
+    //-------
 
     void Entry::SetDescription( wxString val ) {
         SetAttr( DT_Description, val );
     };
 
+    //-------
+
     void Entry::SetExpiryDate( wxString val ) {
         SetAttr( DT_Expiry_date, val );
     };
+
+    //-------
 
     void Entry::SetEmission( wxString val ) {
         SetAttr( DT_Emission, val );
     };
 
+    //-------
+
     void Entry::SetFaceValue( wxString val ) {
         SetAttr( DT_FaceValue, val );
     };
+
+    //-------
 
     void Entry::SetFormat( wxString val ) {
         SetAttr( DT_Format, val );
     };
 
+    //-------
+
     void Entry::SetGum( wxString val ) {
         SetAttr( DT_Gum, val );
     };
+
+    //-------
 
     void Entry::SetHeight( wxString val ) {
         SetAttr( DT_Height, val );
     };
 
+    //-------
+
     void Entry::SetIssuedDate( wxString val ) {
         SetAttr( DT_Issued_on, val );
     };
+
+    //-------
 
     void Entry::SetLink( wxString val ) {
         SetAttr( DT_Link, val );
     };
 
+    //-------
+
     void Entry::SetName( wxString val ) {
         SetAttr( DT_Name, val );
     };
+
+    //-------
 
     void Entry::SetPaper( wxString val ) {
         SetAttr( DT_Paper, val );
     };
 
+    //-------
+
     void Entry::SetPerforation( wxString val ) {
         SetAttr( DT_Perforation, val );
     };
+
+    //-------
 
     void Entry::SetPrinting( wxString val ) {
         SetAttr( DT_Printing, val );
     };
 
+    //-------
+
     void Entry::SetPrintRun( wxString val ) {
         SetAttr( DT_Print_run, val );
     };
+
+    //-------
 
     void Entry::SetScore( wxString val ) {
         SetAttr( DT_Score, val );
     };
 
+    //-------
+
     void Entry::SetSeries( wxString val ) {
         SetAttr( DT_Series, val );
     };
+
+    //-------
 
     void Entry::SetThemes( wxString val ) {
         SetAttr( DT_Themes, val );
     };
 
+    //-------
+
     void Entry::SetVariant( wxString val ) {
         SetAttr( DT_Variant, val );
     };
+
+    //-------
 
     void Entry::SetWidth( wxString val ) {
         SetAttr( DT_Width, val );
     };
 
+    //-------
+
     void Entry::SetWatermark( wxString val ) {
         SetAttr( DT_Watermark, val );
     };
+
+    //-------
 
 }

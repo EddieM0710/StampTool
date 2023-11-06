@@ -49,40 +49,38 @@ class CatalogTOCTreeCtrl : public TOCTreeCtrl
 public:
 
 
-    ///  @brief Construct a new Catalog Tree Ctrl object
-    ///  
-    //CatalogTOCTreeCtrl( ) { }
-
-
-    ///  @brief Construct a new Catalog Tree Ctrl object
-    ///  
-    ///  @param parent 
-    ///  @param id 
-    ///  @param pos 
-    ///  @param size 
-    ///  @param style 
     CatalogTOCTreeCtrl( wxWindow* parent, const wxWindowID id, const wxPoint& pos,
         const wxSize& size, long style );
 
     virtual ~CatalogTOCTreeCtrl( void ) { }
 
+
+    void EditDetailsDialog( TOCTreeCtrl* parent );
+
     VolumePtr FindVolume( wxString str ){
         return ( VolumePtr ) GetCatalogData( )->GetCatalogList( )->FindVolume( str );
     };
 
+    Catalog::CatalogVolume* GetCurrVolume( );
+
+    wxXmlNode* GetCurrVolumeRoot( );
+
+    CatalogTOCTreeCtrl* GetCatalogTOCTreeCtrl( ) {
+        return GetCatalogData( )->GetCatalogTOCTreeCtrl( );
+    };
     wxString GetVolumeName( VolumePtr catVolume ) {
         return ( ( Catalog::CatalogVolume* ) catVolume )->GetName( );
     };
 
-    void OnRightDClick( wxMouseEvent& event );
+    void LinkMenuItemToTreeItem( int id, wxTreeItemId treeId );
 
     void LoadTree( );
 
-    wxXmlNode* GetCurrVolumeRoot( );
+    void OnRightDClick( wxMouseEvent& event );
+
     void OnSelChanged( wxTreeEvent& event );
-    void LinkMenuItemToTreeItem( int id, wxTreeItemId treeId );
+
     void ReSortTree( );
-    void EditDetailsDialog( TOCTreeCtrl* parent );
 
 };
 

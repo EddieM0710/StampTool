@@ -68,26 +68,154 @@
 
 namespace Utils {
 
+    //-------
+
     Project::Project( )
     {
         m_ProjectDoc = ( wxXmlDocument* ) 0;
-    }
-    void Project::InitProject( )
-    {
-        InitDefs( );
-        SetDirty( false );
+        m_projectCountryID = GetSettings( )->GetCountryID( );
+        m_projectCatalogCode = GetSettings( )->GetCatalogID( );
+
+        m_projectFilename = "";
+
+        m_catalogListNode = 0;
+        m_albumListNode = 0;
+
+        m_imageDirectory = wxGetCwd( );
+        m_projectFilename = "Undefined.spt";
     }
 
-    // 
+    //-------
 
-    wxString Project::GetImagePath( )
+    wxXmlNode* Project::AddNewAlbumVolume( wxString fileName, wxString  volName )
     {
-        return m_imagePath;
+        wxXmlNode* newNode = Utils::NewNode( m_albumListNode, "Volume" );
+        newNode->AddAttribute( "FileName", fileName );
+        newNode->AddAttribute( "CollapseState", "False" );
+        newNode->AddAttribute( "VolumeName", volName );
+        return newNode;
+    }
+
+    //-------
+
+    wxXmlNode* Project::AddNewCatalogVolume( wxString fileName, wxString  volName )
+    {
+        wxXmlNode* newNode = Utils::NewNode( m_catalogListNode, "Volume" );
+        newNode->AddAttribute( "FileName", fileName );
+        newNode->AddAttribute( "CollapseState", "False" );
+        newNode->AddAttribute( "VolumeName", volName );
+        return newNode;
+    }
+
+    //-------
+
+    void Project::CloseProject( )
+    {
+        if ( m_ProjectDoc )  m_ProjectDoc->~wxXmlDocument( );
+        m_catalogListNode = 0;
+        m_albumListNode = 0;
+        m_projectFilename = "";
+        m_outputFilename = "";;
+        m_designFilename = "";;
+        m_imageDirectory = "";;
+    }
+
+    //-------
+
+    bool Project::ContinueIfDirty( wxWindow* parent ){
+        if ( IsDirty( ) )
+        {
+            // query whether to save first 
+            wxMessageDialog* dlg = new wxMessageDialog(
+                parent,
+                wxT( "The current data has been changed but not saved. \n"\
+                    "Select \"OK\" to close the file losing the changes.\n"\
+                    "Or select \"Cancel\" to quit file open process.\n" ),
+                wxT( "2 ! Unsaved modifications.\n" ),
+                wxOK | wxCANCEL | wxCENTER );
+            int rsp = dlg->ShowModal( );
+            if ( rsp == wxID_CANCEL )
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    //-------
+
+    void Project::FileNewProject( wxString sptName )
+    {
+
+        //clear catalog volume wxList
+        GetCatalogData( )->GetCatalogList( )->Clear( );
+        //clear dialog volume list
+        GetAlbumData( )->GetAlbumList( ).Clear( );
+        //clear catalog tree
+        GetCatalogTreeCtrl( )->Clear( );
+
+        //GetAlbumPageTreeCtrl( )->Clear( );
+        //clear dialog tree
+        GetAlbumTreeCtrl( )->Clear( );
+
+        wxString lastFile = wxGetCwd( );
+        lastFile += "/" + sptName;
+        GetSettings( )->SetLastFile( lastFile );
+
+        MakeNewProject( sptName );
+        LoadData( );
+    }
+
+    //-------
+
+    void Project::FileOpenProject( wxString filename )
+    {
+        SetProjectFilename( filename );
+        wxFileName sptFile( filename );
+        wxString path = sptFile.GetPath( );
+        wxSetWorkingDirectory( sptFile.GetPath( ) );
+        GetSettings( )->SetLastFile( filename );
+        LoadProjectXML( );
+        LoadData( );
+    }
+
+    //-------
+
+    void Project::FileSaveProject( )
+    {
+
+        GetSettings( )->Save( );
+        Save( );
+    }
+
+    //-------
+
+    void Project::FileSaveAsProject( wxString filename )
+    {
+        SetProjectFilename( filename );
+        GetSettings( )->SetLastFile( filename );
+        FileSaveProject( );
+    }
+
+    //-------
+
+    // wxString Project::GetDesignFilename( )
+    // {
+    //     return m_designFilename;
+    // };
+
+    //-------
+
+    wxString Project::GetImageDirectory( )
+    {
+        return m_imageDirectory;
     };
+
+    //-------
 
     wxString Project::GetImageFullPath( wxString imageName )
     {
-        wxString projectPath = GetImagePath( );
+        wxString projectPath = GetImageDirectory( );
         projectPath += "/" + imageName;
         wxFileName file( projectPath );
         wxString str = file.GetFullPath( );
@@ -95,6 +223,8 @@ namespace Utils {
         str = file.GetFullPath( );
         return str;
     }
+
+    //-------
 
     wxImage Project::GetImage( wxString filename )
     {
@@ -124,6 +254,8 @@ namespace Utils {
         return image;
     }
 
+    //-------
+
     bool Project::ImageExists( wxString imageName )
     {
         wxImage image;
@@ -137,67 +269,29 @@ namespace Utils {
         }
         return false;
     }
-    void Project::SetImagePath( wxString imagePath )
+
+    //-------
+
+    void Project::InitProject( )
     {
-        m_imagePath = imagePath;
-        m_dirty = true;
-    };
-
-
-    wxString Project::GetDesignFilename( )
-    {
-        return m_designFilename;
-    };
-
-    //
-
-    void Project::SetDesignFilename( wxString albumFilename )
-    {
-        m_designFilename = albumFilename;
-        m_dirty = true;
-    };
-
-    // void Project::SetCatalogFilename( wxString catalogFilename )
-    // {
-    //     if ( m_catalogFilename.Cmp( catalogFilename ) )
-    //     {
-    //         m_catalogFilename = catalogFilename;
-    //         SetDirty( );
-    //     }
-    // };
-
-    //
-    void Project::SetCaption( )
-    {
-        StampToolFrame* frame = GetFrame( );
-        if ( frame )
-        {
-            GetSettings( )->SetLastFile( m_projectFilename );
-            frame->SetCaption( GetSettings( )->GetLastFile( ) );
-        }
-    }
-    void Project::SetProjectFilename( wxString name )
-    {
-        m_projectFilename = name;
-        GetSettings( )->SetLastFile( m_projectFilename );
-        SetCaption( );
-
-    };
-
-    //
-
-    wxString Project::MakeFileAbsolute( wxString filename )
-    {
-        wxFileName newFile( filename );
-        if ( !newFile.IsAbsolute( ) )
-        {
-            newFile.MakeAbsolute( );
-        }
-        return newFile.GetFullPath( );
+        InitDefs( );
+        SetDirty( false );
     }
 
+    // Load the Catalog and Design data then populate trees
+    void Project::LoadData( )
+    {
+        GetCatalogTOCTreeCtrl( )->LoadTree( );;
+        GetAlbumTOCTreeCtrl( )->LoadTree( );;
 
+        bool state = wxLog::IsEnabled( );
+        //GetCollectionData( )->LoadData( );
+        //GetCatalogTreeCtrl( )->LoadCatalogTree( );
+        GetCatalogData( )->UpdateCatalogPanels( );
+        GetAlbumData( )->LoadData( );
+    }
 
+    //-------
 
     bool Project::LoadProjectXML( )
     {
@@ -273,6 +367,7 @@ namespace Utils {
         return true;
     }
 
+    //-------
 
     void Project::LoadAttributes( wxXmlNode* thisObject )
     {
@@ -283,58 +378,87 @@ namespace Utils {
             wxString name = attr->GetName( );
             wxString val = attr->GetValue( );
 
-            if ( !name.Cmp( "OutputName" ) )
+            if ( !name.Cmp( "ImagePath" ) )
             {
-                //               m_ODTOutputFilename = MakeFileAbsolute( val );
+                m_imageDirectory = MakeFileAbsolute( val );
+                SetImageDirectory( m_imageDirectory );
             }
-            else if ( !name.Cmp( "Album" ) )
-            {
-                m_designFilename = MakeFileAbsolute( val );
-            }
-            else if ( !name.Cmp( "ImagePath" ) )
-            {
-                m_imagePath = MakeFileAbsolute( val );
-                SetImagePath( m_imagePath );
-            }
-            // else if ( !name.Cmp( "Catalog" ) )
-            // {
-            //     m_catalogFilename = MakeFileAbsolute( val );
-            // }
             else if ( !name.Cmp( "Country" ) )
             {
-                m_defaultCountryID = val;
+                m_projectCountryID = val;
             }
             else if ( !name.Cmp( "CatalogCode" ) )
             {
-                m_defaultCatalogCode = val;
+                m_projectCatalogCode = val;
             }
             attr = attr->GetNext( );
         }
     }
 
-
-
-    void Project::FileNewProject( wxString sptName )
+    //-------
+    // Make a new default project
+    void  Project::MakeNewProject( wxString fileName )
     {
-        GetProject( )->SetProjectFilename( sptName );
-        wxString lastFile = wxGetCwd( );
-        lastFile += "/" + sptName;
-        GetSettings( )->SetLastFile( lastFile );
+        m_projectCountryID = GetSettings( )->GetCountryID( );
+        m_projectCatalogCode = GetSettings( )->GetCatalogID( );
 
-        //clear catalog volume wxList
-        GetCatalogData( )->GetCatalogList( )->ClearCatalogArray( );
-        //clear dialog volume list
-        GetAlbumData( )->GetAlbumList( ).ClearArray( );
-        //clear catalog tree
-        GetCatalogTreeCtrl( )->ClearCatalogTree( );
-        //GetAlbumPageTreeCtrl( )->ClearCatalogTree( );
-        //clear dialog tree
-        GetAlbumTreeCtrl( )->ClearDesignTree( );
+        m_imageDirectory = wxGetCwd( );
+        m_projectFilename = fileName;
+
+        m_ProjectDoc = MakeDefaultProjectDocument( );
+
+        wxXmlNode* root = m_ProjectDoc->GetRoot( );
+
+        m_albumListNode = FirstChildElement( root, "AlbumList" );
+
+        // add the entries of the allbum TOC
+        GetAlbumTOCTreeCtrl( )->MakeTree( m_albumListNode );
+
+        m_catalogListNode = FirstChildElement( root, "CatalogList" );
+
+        // add the entries of the catalog TOC
+        GetCatalogTOCTreeCtrl( )->MakeTree( m_catalogListNode );
 
     }
+    wxXmlDocument* Project::MakeDefaultProjectDocument( )
+    {
+        wxXmlDocument* newDoc = new wxXmlDocument( );
+
+        wxXmlNode* root = new wxXmlNode( wxXML_ELEMENT_NODE, "Project" );
+        newDoc->SetRoot( root );
+        root->AddAttribute( "Country", GetSettings( )->GetCountryID( ) );
+        root->AddAttribute( "CatalogCode", GetSettings( )->GetCatalogID( ) );
+        root->AddAttribute( "ImagePath", wxGetCwd( ) );
+
+        wxXmlNode* albumListNode = NewNode( root, "AlbumList" );
+
+        wxXmlNode* catalogListNode = NewNode( root, "CatalogList" );
+        return newDoc;
+    }
+
+    //-------
+
+    wxString Project::MakeFileAbsolute( wxString filename )
+    {
+        wxFileName newFile( filename );
+        if ( !newFile.IsAbsolute( ) )
+        {
+            newFile.MakeAbsolute( );
+        }
+        return newFile.GetFullPath( );
+    }
+
+    //-------
 
     void Project::Save( )
     {
+
+        if ( m_projectFilename.IsEmpty( ) )
+        {
+            //query for valid filename
+            m_projectFilename = "UndefinedName.spt";
+        }
+
 
         if ( wxFileExists( m_projectFilename ) )
         {
@@ -347,36 +471,24 @@ namespace Utils {
             delete m_ProjectDoc;
             m_ProjectDoc = 0;
         }
-        wxXmlDocument* newDoc = new wxXmlDocument( );
+        wxXmlDocument* newDoc = MakeDefaultProjectDocument( );
 
-        wxXmlNode* root = new wxXmlNode( wxXML_ELEMENT_NODE, "Project" );
-        newDoc->SetRoot( root );
-        root->AddAttribute( "Country", GetProjectCountryID( ) );
-        root->AddAttribute( "CatalogCode", GetProjectCatalogCode( ) );
-        root->AddAttribute( "ImagePath", m_imagePath );
+        wxXmlNode* root = newDoc->GetRoot( );
 
-        wxXmlNode* albumListNode = NewNode( root, "AlbumList" );
+        // set curr vals
+        SetAttrStr( root, "Country", GetProjectCountryID( ) );
+        SetAttrStr( root, "CatalogCode", GetProjectCatalogCode( ) );
+        SetAttrStr( root, "ImagePath", m_imageDirectory );
 
-        wxTreeItemId tocRootID = GetAlbumTOCTreeCtrl( )->GetRootItem( );
+        wxXmlNode* albumListNode = FirstChildElement( root, "AlbumList" );
 
-        //  TOCTreeItemData* data = ( TOCTreeItemData* ) GetAlbumTOCTreeCtrl( )->GetItemData( tocRootID );
-        //  wxXmlNode* tocRootNode = data->GetNodeElement( );
-
-        //  wxXmlNode* clone = NewNode( albumListNode, tocRootNode->GetName( ) );
-
-        //  Utils::CopyNode( tocRootNode, clone );
+        // add the entries of the allbum TOC
         GetAlbumTOCTreeCtrl( )->MakeTree( albumListNode );
 
-        wxXmlNode* catalogListNode = NewNode( root, "CatalogList" );
+        wxXmlNode* catalogListNode = FirstChildElement( root, "CatalogList" );
 
-        tocRootID = GetCatalogTOCTreeCtrl( )->GetRootItem( );
-
-        //TOCTreeItemData* data = ( TOCTreeItemData* ) GetCatalogTOCTreeCtrl( )->GetItemData( tocRootID );
-
-       // wxXmlNode* clone = NewNode( catalogListNode, data->GetName( ) );
+        // add the entries of the catalog TOC
         GetCatalogTOCTreeCtrl( )->MakeTree( catalogListNode );
-
-        // Utils::CopyNode( tocRootNode, clone );
 
         if ( m_ProjectDoc )
         {
@@ -384,100 +496,81 @@ namespace Utils {
         }
         m_ProjectDoc = newDoc;
 
-
-        //       m_ProjectDoc->SetRoot( root );
-      //  Utils::XMLDump( m_ProjectDoc );
+        // save the new project file
         m_ProjectDoc->Save( m_projectFilename );
 
-
-
-        // //Catalog::CatalogVolume* volumeData = 
-        // Catalog::CatalogList* catalogList = GetCatalogData( )->GetCatalogList( );
-        // Catalog::CatalogVolumeArray* catalogArray = catalogList->GetCatalogArray( );
-
-        // for ( Catalog::CatalogVolumeArray::iterator it = std::begin( *catalogArray );
-        //     it != std::end( *catalogArray );
-        //     ++it )
-        // {
-        //     Catalog::CatalogVolume* volume = ( Catalog::CatalogVolume* ) ( it->second );
-        //     wxString filename = volume->GetFilename( );
-        //     wxString cwd = wxGetCwd( );
-        //     wxFileName sectFile( filename );
-        //     sectFile.MakeRelativeTo( cwd );
-        //     wxXmlNode* newVolume = NewNode( newNode, "Volume" );
-        //     wxString sectFileFullPath = sectFile.GetFullPath( );
-        //     newVolume->AddAttribute( "FileName", sectFile.GetFullPath( ) );
-        // }
-
-
-        // wxXmlNode* newNode = NewNode( root, "AlbumList" );
-        // Design::AlbumList albumList = GetAlbumData( )->GetAlbumList( );
-        // Utils::VolumeArray* albumArray = albumList.GetArray( );
-
-        // for ( Utils::VolumeArray::iterator it = std::begin( *albumArray );
-        //     it != std::end( *albumArray );
-        //     ++it )
-        // {
-        //     Design::AlbumVolume* volume = ( Design::AlbumVolume* ) ( it->second );
-        //     //newNode->AddAttribute( "FileName", m_designFilename );
-        //     wxString filename = volume->GetFilename( );
-        //     wxString cwd = wxGetCwd( );
-        //     wxFileName sectFile( filename );
-        //     sectFile.MakeRelativeTo( cwd );
-        //     wxXmlNode* newVolume = NewNode( newNode, "Album" );
-        //     newVolume->AddAttribute( "FileName", sectFile.GetFullPath( ) );
-        // }
-
-
-
+        // then save all the catalogs and albums
         GetCatalogData( )->FileSave( );
         GetAlbumData( )->FileSave( );
 
         SetDirty( false );
     }
 
+    //-------
 
+    void Project::SetProjectCountryID( wxString str ) {
+        if ( str.Cmp( m_projectCountryID ) )
+        {
+            m_projectCountryID = str;
+            m_dirty = true;
+        }
+    };
 
+    //-------
 
-
-    // Load the Catalog and Design data then populate trees
-    void Project::LoadData( )
+    void Project::SetProjectCatalogCode( wxString str )
     {
-        GetCatalogTOCTreeCtrl( )->LoadTree( );;
-        GetAlbumTOCTreeCtrl( )->LoadTree( );;
+        if ( str.Cmp( m_projectCatalogCode ) )
+        {
+            m_projectCatalogCode = str;
+            m_dirty = true;
+        }
+    };
 
-        bool state = wxLog::IsEnabled( );
-        //GetCollectionData( )->LoadData( );
-        GetCatalogData( )->LoadData( );
-        GetAlbumData( )->LoadData( );
-        //       GetCatalogData( )->SetCollectionListStrings( );
-        //       GetCatalogData( )->SetCollectionListSelection( );
+    //-------
+
+    void Project::SetCaption( )
+    {
+        StampToolFrame* frame = GetFrame( );
+        if ( frame )
+        {
+            GetSettings( )->SetLastFile( m_projectFilename );
+            frame->SetCaption( GetSettings( )->GetLastFile( ) );
+        }
     }
 
-    void Project::FileOpenProject( wxString filename )
-    {
-        SetProjectFilename( filename );
-        wxFileName sptFile( filename );
-        wxString path = sptFile.GetPath( );
-        wxSetWorkingDirectory( sptFile.GetPath( ) );
-        GetSettings( )->SetLastFile( filename );
-        LoadProjectXML( );
-        LoadData( );
-    }
+    //-------
 
-    void Project::FileSaveProject( )
+    void Project::SetImageDirectory( wxString imagePath )
     {
+        if ( imagePath.Cmp( m_imageDirectory ) )
+        {
+            m_imageDirectory = imagePath;
+            m_dirty = true;
+        }
+    };
 
-        GetSettings( )->Save( );
-        Save( );
-    }
+    //-------
 
-    void Project::FileSaveAsProject( wxString filename )
+    // void Project::SetDesignFilename( wxString albumFilename )
+    // {
+    //     m_designFilename = albumFilename;
+    //     m_dirty = true;
+    // };
+
+    //-------
+
+
+    void Project::SetProjectFilename( wxString name )
     {
-        SetProjectFilename( filename );
-        GetSettings( )->SetLastFile( filename );
-        FileSaveProject( );
-    }
+        m_projectFilename = name;
+        GetSettings( )->SetLastFile( m_projectFilename );
+        SetCaption( );
+
+    };
+
+    //-------
+
 
 }
 

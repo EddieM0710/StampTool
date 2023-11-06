@@ -37,22 +37,15 @@
 #include "catalog/CatalogData.h"
 #include "gui/CatalogTreeCtrl.h"
 #include "collection/CollectionList.h"
+#include "collection/Collection.h"
  //#include "Specimen.h"
 #include "Defs.h"
 #include "utils/Settings.h"
 
-IMPLEMENT_DYNAMIC_CLASS( InventoryPanel, wxPanel )
-
-#define ID_AddItem 17000
-#define ID_DeleteItem 17001
-#define ID_MoveItemUp 17002
-#define ID_MoveItemDown 17003
-#define ID_MoveItemTop 17004
-#define ID_MoveItemBottom 17005
-#define ID_Move 17006
+IMPLEMENT_DYNAMIC_CLASS( InventoryPanel, HelperPanel )
 
 
-BEGIN_EVENT_TABLE( InventoryPanel, wxPanel )
+BEGIN_EVENT_TABLE( InventoryPanel, HelperPanel )
 
 EVT_CONTEXT_MENU( InventoryPanel::OnContextMenu )
 EVT_GRID_CELL_CHANGED( InventoryPanel::OnCellChanged )
@@ -64,13 +57,18 @@ EVT_MENU( ID_MoveItemTop, InventoryPanel::OnContextPopup )
 EVT_MENU( ID_MoveItemBottom, InventoryPanel::OnContextPopup )
 EVT_GRID_ROW_MOVE( InventoryPanel::OnRowBeginMove )
 EVT_GRID_CELL_BEGIN_DRAG( InventoryPanel::OnRowBeginMove )
+//EVT_BUTTON( ID_COLLECTIONALLBUTTON, InventoryPanel::OnCollectionAllButtonClick )
+//EVT_BUTTON( ID_COLLECTIONCLEARBUTTON, InventoryPanel::OnCollectionClearButtonClick )
+
 END_EVENT_TABLE( )
 
-
+//-------
 
 InventoryPanel::InventoryPanel( ) {
     Init( );
 }
+
+//-------
 
 InventoryPanel::InventoryPanel( wxWindow* parent, wxWindowID id,
     const wxPoint& pos, const wxSize& size,
@@ -79,6 +77,8 @@ InventoryPanel::InventoryPanel( wxWindow* parent, wxWindowID id,
     Init( );
     Create( parent, id, pos, size, style );
 }
+
+//-------
 
 bool InventoryPanel::Create( wxWindow* parent, wxWindowID id, const wxPoint& pos,
     const wxSize& size, long style )
@@ -95,104 +95,14 @@ bool InventoryPanel::Create( wxWindow* parent, wxWindowID id, const wxPoint& pos
     return true;
 }
 
+//-------
+
 InventoryPanel::~InventoryPanel( )
 {
 
 }
 
-void InventoryPanel::Init( )
-{
-    m_grid = NULL;
-}
-
-void InventoryPanel::CreateControls( )
-{
-
-    InventoryPanel* itemPanel1 = this;
-
-    wxBoxSizer* itemBoxSizer1 = new wxBoxSizer( wxHORIZONTAL );
-    itemPanel1->SetSizer( itemBoxSizer1 );
-
-    wxBoxSizer* itemBoxSizer2 = new wxBoxSizer( wxVERTICAL );
-    itemBoxSizer1->Add( itemBoxSizer2, 1, wxGROW | wxALL, 5 );
-
-    m_grid = new wxGrid( itemPanel1, ID_INVENTORYGRID, wxDefaultPosition, wxSize( 300, 100 ),
-        wxHSCROLL | wxVSCROLL );
-    m_grid->SetDefaultColSize( 100 );
-    m_grid->SetDefaultRowSize( 25 );
-    m_grid->SetColLabelSize( 25 );
-    m_grid->SetRowLabelSize( 50 );
-    m_grid->CreateGrid( 0, 7, wxGrid::wxGridSelectCells );
-    itemBoxSizer2->Add( m_grid, 1, wxGROW | wxALL, 5 );
-
-    // Connect events and objects
-    //    m_grid->Connect( ID_INVENTORYGRID,  CONTEXT_MENU, 
-    //    wxContextMenuEventHandler( InventoryPanel::OnContextMenu ), NULL, this );
-    // InventoryPanel content construction
-    for ( int i = 0; i < Catalog::IDT_NbrTypes; i++ )
-    {
-        m_grid->SetColLabelValue( i, Catalog::ItemDataNames[ i ] );
-    }
-    wxString choices[ 5 ] = { wxT( "Mint" ), wxT( "MNH" ), wxT( "Unused" ), wxT( "Used" ),
-        wxT( "OG" ) }; // Make table strings
-    wxGridCellAttr* attr = new wxGridCellAttr( );
-    attr->SetEditor( new wxGridCellChoiceEditor( 5, choices, true ) );
-    m_grid->SetColAttr( Catalog::IDT_Type, attr );
-
-    wxString choices2[ 5 ] = { wxT( "VF" ), wxT( "F" ), wxT( "VG" ), wxT( "G" ),
-        wxT( "P" ) }; // Make table strings
-    attr = new wxGridCellAttr( );
-    attr->SetEditor( new wxGridCellChoiceEditor( 5, choices2, true ) );
-    m_grid->SetColAttr( Catalog::IDT_Condition, attr );
-
-    wxString choices3[ 3 ] = { wxT( "Album" ), wxT( "Stock Book" ),
-        wxT( "File Box" ) }; // Make table strings
-    attr = new wxGridCellAttr( );
-    attr->SetEditor( new wxGridCellChoiceEditor( 3, choices3, true ) );
-    m_grid->SetColAttr( Catalog::IDT_Location, attr );
-
-    wxString choices4[ Catalog::ST_NbrInventoryStatusTypes ];
-    for ( int i = 0; i < Catalog::ST_NbrInventoryStatusTypes; i++ )
-    {
-        choices4[ i ] = Catalog::InventoryStatusStrings[ i ];
-    }
-
-    attr = new wxGridCellAttr( );
-    attr->SetEditor( new wxGridCellChoiceEditor( Catalog::ST_NbrInventoryStatusTypes, choices4, true ) );
-    m_grid->SetColAttr( Catalog::IDT_InventoryStatus, attr );
-
-    attr = new wxGridCellAttr( );
-    attr->SetEditor( new wxGridCellChoiceEditor( GetCollectionList( )->GetNameStrings( ), true ) );
-    m_grid->SetColAttr( Catalog::IDT_Collection, attr );
-
-    SetDataEditable( GetSettings( )->IsCatalogVolumeEditable( ) );
-    m_grid->EnableDragRowMove( );
-    m_grid->Refresh( );
-
-}
-
-
-void InventoryPanel::InitRow( int row )
-{
-    wxXmlNode* ele = m_specimenList[ row ];
-    for ( int i = 0; i < Catalog::IDT_NbrTypes; i++ )
-    {
-        m_grid->SetCellValue( row, i, "" );
-    }
-}
-wxXmlNode* InventoryPanel::AddSpecimen( )
-{
-    wxXmlNode* ele = GetCatalogData( )->GetCurrentStamp( );
-    if ( ele )
-    {
-        wxXmlNode* newChild = Utils::NewNode( ele, Catalog::CatalogBaseNames[ Catalog::NT_Specimen ] );
-        wxString currCollection = GetCollectionList( )->GetCurrentName( );
-        Utils::SetAttrStr( newChild, Catalog::ItemDataNames[ Catalog::IDT_Collection ], currCollection );
-
-        return newChild;
-    }
-    return ( wxXmlNode* ) 0;
-}
+//-------
 
 int InventoryPanel::AddRow( wxXmlNode* ele )
 {
@@ -207,67 +117,162 @@ int InventoryPanel::AddRow( wxXmlNode* ele )
     return -1;
 }
 
-void InventoryPanel::ShowRow( int row )
+//-------
+
+wxXmlNode* InventoryPanel::AddNewInventoryItem( )
+{
+    wxXmlNode* ele = GetCatalogData( )->GetCurrentStamp( );
+    if ( ele )
+    {
+        Catalog::Entry entry( ele );
+        wxString currCollection = GetCollectionList( )->GetCurrentName( );
+        wxXmlNode* newChild = entry.AddNewInventoryItem( currCollection, Catalog::ST_Missing );
+        return newChild;
+    }
+    return ( wxXmlNode* ) 0;
+}
+
+//-------
+
+void InventoryPanel::Clear( )
+{
+    m_grid->ClearGrid( );
+    m_specimenList.clear( );;  ///< list containing each of the entries
+}
+
+//-------
+
+void InventoryPanel::CreateControls( )
+{
+
+    InventoryPanel* itemPanel = this;
+
+    wxBoxSizer* inventoryHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
+    itemPanel->SetSizer( inventoryHorizontalSizer );
+
+    wxBoxSizer* leftSizer = new wxBoxSizer( wxVERTICAL );
+    inventoryHorizontalSizer->Add( leftSizer, 1, wxGROW | wxALL, 5 );
+
+    // wxBoxSizer* leftcollectionSizer = new wxBoxSizer( wxHORIZONTAL );
+     //leftSizer->Add( leftcollectionSizer, 0, wxGROW | wxALL, 5 );
+
+
+    int lastID = ID_Last;
+
+    m_collectionListCtrl = SetupChoice( itemPanel, leftSizer, lastID, _( "Collection" ),
+        GetCollectionList( )->GetNameArray( ), wxCommandEventHandler( InventoryPanel::OnCollectionChanged ) );
+
+    m_collectionListCtrl->SetStringSelection( _( "Unknown" ) );
+
+
+    m_description = SetupMultilineLabeledText( itemPanel, leftSizer, ++lastID, "Description", true, wxCommandEventHandler( InventoryPanel::OnDescriptionChanged ) );
+
+
+    m_location = SetupMultilineLabeledText( itemPanel, leftSizer, ++lastID, "Location", true, wxCommandEventHandler( InventoryPanel::OnLocationChanged ) );
+
+
+    wxBoxSizer* itemBoxSizer2 = new wxBoxSizer( wxVERTICAL );
+    inventoryHorizontalSizer->Add( itemBoxSizer2, 3, wxGROW | wxALL, 5 );
+
+    m_grid = new wxGrid( itemPanel, ID_INVENTORYGRID, wxDefaultPosition, wxSize( 300, 100 ),
+        wxHSCROLL | wxVSCROLL );
+    m_grid->SetDefaultColSize( 100 );
+    m_grid->SetDefaultRowSize( 25 );
+    m_grid->SetColLabelSize( 25 );
+    m_grid->SetRowLabelSize( 50 );
+    m_grid->CreateGrid( 0, 5, wxGrid::wxGridSelectCells );
+    m_grid->SetColSize( 4, 400 );
+    itemBoxSizer2->Add( m_grid, 1, wxGROW | wxALL, 5 );
+
+    // Connect events and objects
+    //    m_grid->Connect( ID_INVENTORYGRID,  CONTEXT_MENU, 
+    //    wxContextMenuEventHandler( InventoryPanel::OnContextMenu ), NULL, this );
+    // InventoryPanel content construction
+    for ( int i = 1; i < Catalog::IDT_NbrTypes; i++ )
+    {
+        m_grid->SetColLabelValue( i - 1, Catalog::ItemDataNames[ i ] );
+    }
+    wxString choices[ 5 ] = { wxT( "Mint" ), wxT( "MNH" ), wxT( "Unused" ), wxT( "Used" ), wxT( "OG" ) }; // Make table strings
+    wxGridCellAttr* attr = new wxGridCellAttr( );
+    attr->SetEditor( new wxGridCellChoiceEditor( 5, choices, true ) );
+    m_grid->SetColAttr( Catalog::IDT_Type - 1, attr );
+
+    wxString choices2[ 5 ] = { wxT( "VF" ), wxT( "F" ), wxT( "VG" ), wxT( "G" ),
+        wxT( "P" ) }; // Make table strings
+    attr = new wxGridCellAttr( );
+    attr->SetEditor( new wxGridCellChoiceEditor( 5, choices2, true ) );
+    m_grid->SetColAttr( Catalog::IDT_Condition - 1, attr );
+
+
+    wxString choices4[ Catalog::ST_NbrInventoryStatusTypes ];
+    for ( int i = 0; i < Catalog::ST_NbrInventoryStatusTypes; i++ )
+    {
+        choices4[ i ] = Catalog::InventoryStatusStrings[ i ];
+    }
+
+    attr = new wxGridCellAttr( );
+    attr->SetEditor( new wxGridCellChoiceEditor( Catalog::ST_NbrInventoryStatusTypes, choices4, true ) );
+    m_grid->SetColAttr( Catalog::IDT_InventoryStatus - 1, attr );
+
+    Inventory::Collection* col = GetCollectionList( )->GetCurrentCollection( );
+    SetCollectionListCtrl( col );
+
+    SetDataEditable( GetSettings( )->IsCatalogVolumeEditable( ) );
+    m_grid->EnableDragRowMove( );
+    m_grid->Refresh( );
+}
+
+//-------
+
+void InventoryPanel::Init( )
+{
+    m_grid = NULL;
+}
+
+//-------
+
+void InventoryPanel::InitRow( int row )
 {
     wxXmlNode* ele = m_specimenList[ row ];
-    for ( int i = 0; i < Catalog::IDT_NbrTypes; i++ )
+    for ( int i = 1; i < Catalog::IDT_NbrTypes; i++ )
     {
-        wxString str = Utils::GetAttrStr( ele, Catalog::ItemDataNames[ ( Catalog::ItemDataTypes ) i ] );
-        m_grid->SetCellValue( row, i, str );
+        m_grid->SetCellValue( row, i - 1, "" );
     }
 }
 
-bool InventoryPanel::ShowToolTips( )
+//-------
+
+int InventoryPanel::MakeBitPatern( wxArrayInt& array )
 {
-    return true;
-}
-
-
-
-
-void InventoryPanel::UpdatePanel( )
-{
-    wxString currCollection = GetCollectionList( )->GetCurrentName( );
-
-    int cnt = m_grid->GetNumberRows( );
-    m_grid->ClearGrid( );
-    if ( cnt > 0 )
-        m_grid->DeleteRows( 0, cnt );
-    m_specimenList.clear( );
-    int row = 0;
-    wxTreeItemId currID = GetCatalogData( )->GetCatalogTreeCtrl( )->GetSelection( );
-    if ( currID.IsOk( ) )
+    int nbr = array.Count( );
+    int val = 0;
+    for ( int i = 0; i < nbr; i++ )
     {
-        CatalogTreeItemData* data = ( CatalogTreeItemData* ) GetCatalogData( )->GetCatalogTreeCtrl( )->GetItemData( currID );
-        wxXmlNode* parent = data->GetNodeElement( );// GetCatalogData( )->GetCurrentStamp( );
-
-        if ( parent )
-        {
-            wxXmlNode* ele = parent->GetChildren( );
-            while ( ele && ( ele->GetParent( ) == parent ) )
-            {
-                wxString str = ele->GetName( );
-                if ( !ele->GetName( ).Cmp( "Specimen" ) )
-                {
-                    wxString specimenCollection = ele->GetAttribute( Catalog::ItemDataNames[ Catalog::IDT_Collection ], "" );
-                    if ( !currCollection.Cmp( specimenCollection ) )
-                    {
-                        AddRow( ele );
-                        for ( int i = 0; i < Catalog::IDT_NbrTypes; i++ )
-                        {
-                            wxString str = Utils::GetAttrStr( ele, Catalog::ItemDataNames[ ( Catalog::ItemDataTypes ) i ] );
-                            m_grid->SetCellValue( row, i, str );
-                        }
-                        row++;
-                    }
-                }
-
-                ele = ele->GetNext( );
-            }
-            //       }
-        }
+        int base = 1;
+        base = base <<= array[ i ];
+        val = val | base;
     }
+    return val;
 }
+
+//--------------
+
+void InventoryPanel::OnCellChanged( wxGridEvent& event )
+{
+    int col = event.GetCol( );
+    int row = event.GetRow( );
+    wxString str = m_grid->GetCellValue( row, col );
+    wxXmlNode* ele = m_specimenList[ row ];
+    Utils::SetAttrStr( ele, Catalog::ItemDataNames[ ( Catalog::ItemDataTypes ) col + 1 ], str );
+    if ( col + 1 == Catalog::IDT_InventoryStatus )
+    {
+        GetCatalogTreeCtrl( )->SetInventoryStatusImage( );
+    }
+    event.Skip( );
+
+}
+
+//-------
 
 void InventoryPanel::OnContextMenu( wxContextMenuEvent& event )
 {
@@ -309,21 +314,7 @@ void InventoryPanel::OnContextMenu( wxContextMenuEvent& event )
 
 }
 
-void InventoryPanel::OnCellChanged( wxGridEvent& event )
-{
-    int col = event.GetCol( );
-    int row = event.GetRow( );
-    wxString str = m_grid->GetCellValue( row, col );
-    wxXmlNode* ele = m_specimenList[ row ];
-    Utils::SetAttrStr( ele, Catalog::ItemDataNames[ ( Catalog::ItemDataTypes ) col ], str );
-    if ( col == Catalog::IDT_InventoryStatus )
-    {
-        GetCatalogTreeCtrl( )->SetInventoryStatusImage( );
-    }
-    event.Skip( );
-
-}
-
+//-------
 
 void InventoryPanel::OnContextPopup( wxCommandEvent& event )
 {
@@ -332,7 +323,7 @@ void InventoryPanel::OnContextPopup( wxCommandEvent& event )
     {
         case ID_AddItem:
         {
-            AddRow( AddSpecimen( ) );
+            AddRow( AddNewInventoryItem( ) );
             break;
         }
         case ID_DeleteItem:
@@ -352,7 +343,7 @@ void InventoryPanel::OnContextPopup( wxCommandEvent& event )
                 wxXmlNode* parent = node->GetParent( );
                 parent->RemoveChild( node );
                 parent->InsertChild( node, prevNode );
-                UpdatePanel( );
+                UpdateInventoryGrid( );
             }
             break;
         }
@@ -369,7 +360,7 @@ void InventoryPanel::OnContextPopup( wxCommandEvent& event )
                 wxXmlNode* parent = node->GetParent( );
                 parent->RemoveChild( node );
                 parent->InsertChildAfter( node, lastNode );
-                UpdatePanel( );
+                UpdateInventoryGrid( );
             }
             break;
         }
@@ -386,7 +377,7 @@ void InventoryPanel::OnContextPopup( wxCommandEvent& event )
                 wxXmlNode* parent = node->GetParent( );
                 parent->RemoveChild( node );
                 parent->InsertChildAfter( node, nextNode );
-                UpdatePanel( );
+                UpdateInventoryGrid( );
             }
             break;
         }
@@ -403,18 +394,39 @@ void InventoryPanel::OnContextPopup( wxCommandEvent& event )
                 wxXmlNode* parent = node->GetParent( );
                 parent->RemoveChild( node );
                 parent->InsertChild( node, firstNode );
-                UpdatePanel( );
+                UpdateInventoryGrid( );
             }
             break;
         }
     }
 }
 
-void InventoryPanel::SetDataEditable( bool val )
+//-------
+
+void InventoryPanel::OnCollectionChanged( wxCommandEvent& event )
 {
-    m_grid->EnableEditing( val );
+
+    wxString sel = m_collectionListCtrl->GetStringSelection( );
+    //set the new selection
+    GetCatalogData( )->SetCollection( sel );
+
+    event.Skip( );
+
 }
 
+//-------
+
+void InventoryPanel::OnDescriptionChanged( wxCommandEvent& event )
+{
+}
+
+//-------
+
+void InventoryPanel::OnLocationChanged( wxCommandEvent& event )
+{
+}
+
+//-------
 
 void InventoryPanel::OnRowBeginMove( wxGridEvent& ev )
 {
@@ -425,3 +437,104 @@ void InventoryPanel::OnRowBeginMove( wxGridEvent& ev )
 
     ev.Skip( );
 }
+
+//-------
+
+void InventoryPanel::SetDataEditable( bool val )
+{
+    m_grid->EnableEditing( val );
+}
+
+//-------
+
+void InventoryPanel::ShowRow( int row )
+{
+    wxXmlNode* ele = m_specimenList[ row ];
+    for ( int i = 1; i < Catalog::IDT_NbrTypes; i++ )
+    {
+        wxString str = Utils::GetAttrStr( ele, Catalog::ItemDataNames[ ( Catalog::ItemDataTypes ) i ] );
+        m_grid->SetCellValue( row, i - 1, str );
+    }
+}
+
+//-------
+
+bool InventoryPanel::SetCollectionListCtrl( Inventory::Collection* collection )
+{
+    bool status = m_collectionListCtrl->SetStringSelection( collection->GetName( ) );
+    if ( status )
+    {
+        m_location->SetValue( collection->GetLocation( ) );
+        m_description->SetValue( collection->GetDescription( ) );
+    }
+    return status;
+}
+
+//------
+
+void InventoryPanel::UpdateCollectionChoice( )
+{
+
+}
+
+//-------
+
+void InventoryPanel::UpdateInventoryGrid( )
+{
+    int cnt = m_grid->GetNumberRows( );
+    m_grid->ClearGrid( );
+    if ( cnt > 0 )
+        m_grid->DeleteRows( 0, cnt );
+    m_specimenList.clear( );
+    int row = 0;
+    wxTreeItemId currID = GetCatalogData( )->GetCatalogTreeCtrl( )->GetSelection( );
+    if ( currID.IsOk( ) )
+    {
+        CatalogTreeItemData* data = ( CatalogTreeItemData* ) GetCatalogData( )->GetCatalogTreeCtrl( )->GetItemData( currID );
+
+        if ( data->GetType( ) == Catalog::NT_Entry )
+        {
+            wxXmlNode* entryNode = data->GetNodeElement( );// GetCatalogData( )->GetCurrentStamp( );
+            if ( entryNode )
+            {
+                Catalog::Entry entry( entryNode );
+                if ( entry.HasInventoryItem( ) )
+                {
+                    wxString currCollection = GetCollectionList( )->GetCurrentName( );
+                    wxXmlNode* ele = entry.GetInventory( )->GetChildren( );
+                    while ( ele )
+                    {
+                        wxString str = Utils::GetAttrStr( ele, Catalog::ItemDataNames[ Catalog::IDT_Collection ] );
+                        if ( !currCollection.Cmp( str ) )
+                        {
+                            AddRow( ele );
+                            for ( int i = 1; i < Catalog::IDT_NbrTypes; i++ )
+                            {
+                                wxString str = Utils::GetAttrStr( ele, Catalog::ItemDataNames[ ( Catalog::ItemDataTypes ) i ] );
+                                m_grid->SetCellValue( row, i - 1, str );
+                            }
+                            row++;
+                        }
+                        ele = ele->GetNext( );
+                    }
+                }
+            }
+            //       }
+        }
+    }
+}
+
+//-------
+
+void InventoryPanel::UpdateInventory( )
+{
+    //set the new selection
+    Inventory::Collection* col = GetCollectionList( )->GetCurrentCollection( );
+
+    if ( SetCollectionListCtrl( col ) )
+    {
+        //update the inventory
+        UpdateInventoryGrid( );
+    }
+}
+//-------

@@ -109,36 +109,31 @@ namespace Design {
 
     void Frame::SetHeight( double val )
     {
-
         m_height = val;
     };
 
-    void Frame::SetMinHeight( double val ) {
-
-
+    void Frame::SetMinHeight( double val )
+    {
         m_minHeight = val;
     };
 
-    void Frame::SetMinWidth( double val ) {
-
-
+    void Frame::SetMinWidth( double val )
+    {
         m_minWidth = val;
     };
 
-    void Frame::SetXPos( double val ) {
-
-
+    void Frame::SetXPos( double val )
+    {
         m_xPos = val;
     };
 
-    void Frame::SetYPos( double val ) {
-
+    void Frame::SetYPos( double val )
+    {
         m_yPos = val;
     };
 
-    void Frame::SetWidth( double val ) {
-
-
+    void Frame::SetWidth( double val )
+    {
         m_width = val;
     };
 

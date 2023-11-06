@@ -52,16 +52,6 @@
 #include "StampToolApp.h"
 wxDECLARE_APP( StampToolApp );
 
-bool Dirty = false;
-
-//namespace Inventory { class CollectionData; };
-
-void SetDirty( bool state ) {
-    Dirty = state;
-};
-bool IsDirty( ) {
-    return Dirty;
-};
 
 
 Design::AlbumData* GetAlbumData( ) {
@@ -111,10 +101,10 @@ Utils::FontList* GetFontList( ) {
 
 Catalog::CatalogVolume* GetCatalogVolume( )
 {
-    Catalog::CatalogData* genData = GetCatalogData( );
-    if ( genData )
+    Catalog::CatalogData* data = GetCatalogData( );
+    if ( data )
     {
-        return genData->GetCatalogVolume( );
+        return data->GetCatalogVolume( );
     }
     return ( Catalog::CatalogVolume* ) 0;
 };

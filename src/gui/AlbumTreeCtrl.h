@@ -201,401 +201,157 @@ public:
 
 
 
-    ///  @brief Construct a new Album Tree Ctrl object
-    ///  
     AlbumTreeCtrl( ) {
         m_OK = 0x12345;
     }
 
-
-    ///  @brief Construct a new Album Tree Ctrl object
-    ///  
-    ///  @param parent 
-    ///  @param id 
-    ///  @param pos 
-    ///  @param size 
-    ///  @param style 
     AlbumTreeCtrl( wxWindow* parent, const wxWindowID id, const wxPoint& pos,
         const wxSize& size, long style );
 
 
-    ///  @brief Destroy the Album Tree Ctrl object
-    ///  
     virtual ~AlbumTreeCtrl( void ) {
         m_OK = 0;
     }
 
-    ///  @brief 
-    ///  
-    ///  @param parent 
-    ///  @param child 
-    ///  @return wxTreeItemId 
     wxTreeItemId AddChild( wxTreeItemId parent, wxXmlNode* child );
 
-    ///  @brief 
-    ///  
-    ///  @param node 
     void AddColTreeItem( wxTreeItemId node );
 
-    ///  @brief 
-    ///  
-    ///  @param node 
     void AddPageTreeItem( wxTreeItemId node );
 
-    ///  @brief 
-    ///  
-    ///  @param node 
     void AddRowTreeItem( wxTreeItemId node );
 
-    ///  @brief 
-    ///  
-    ///  @param parent 
-    ///  @param child 
-    ///  @return wxTreeItemId 
     wxTreeItemId AddStampNodeToTree( wxTreeItemId parent, wxXmlNode* child );
 
-    ///  @brief 
-    ///  
-    ///  @param node 
-    ///  @param stamp 
-    ///  @return Design::Stamp* 
     Design::Stamp* AddStampTreeItem( wxTreeItemId node, Design::Stamp* stamp );
 
-    ///  @brief 
-    ///  
-    ///  @param parentID 
-    ///  @param newText 
-    ///  @return Design::TextBox* 
     Design::TextBox* AddTextTreeItem( wxTreeItemId parentID, Design::TextBox* newText );
 
-    ///  @brief 
-    ///  
-    ///  @param id 
-    ///  @return Utils::StampLink* 
     Utils::StampLink* AppendStamp( wxTreeItemId id );
 
-    ///  @brief 
-    ///  
-    void ClearDesignTree( );
+    void Clear( );
 
-    ///  @brief 
-    ///  
-    ///  @param dstID 
-    ///  @param srcID 
     void CopyItem( wxTreeItemId dstID, wxTreeItemId srcID );
 
-    ///  @brief Create a Image List object
-    ///  
     void CreateImageList( );
 
-    ///  @brief Create a New Stamp object
-    ///  
-    ///  @param catTreeID 
-    ///  @return Design::Stamp* 
     Design::Stamp* CreateNewStamp( wxTreeItemId catTreeID );
 
-    ///  @brief Create a New Text object
-    ///  
-    ///  @return Design::TextBox* 
     Design::TextBox* CreateNewText( );
 
-    ///  @brief Create a State Image List object
-    ///  
     void CreateStateImageList( );
 
-    ///  @brief 
-    ///  
-    ///  @param id 
     void DeleteItem( wxTreeItemId id );
 
-    ///  @brief 
-    ///  
-    ///  @param node 
-    ///  @return wxTreeItemId 
     wxTreeItemId FindTreeItemID( Design::AlbumBase* node );
 
-    ///  @brief 
-    ///  
-    ///  @param node 
-    ///  @param id 
-    ///  @return wxTreeItemId 
     wxTreeItemId FindTreeItemID( Design::AlbumBase* node, wxTreeItemId id );
 
-    ///  @brief 
-    ///  
-    ///  @param id 
-    ///  @return wxTreeItemId 
     wxTreeItemId FindFirstStampChild( wxTreeItemId id );
 
-    ///  @brief Get the Icon Id object
-    ///  
-    ///  @param stamp 
-    ///  @return Design::IconID 
+    wxTreeItemId GetCurrentTreeID( ) {
+        return m_currentTreeID;
+    };
+
     Design::IconID GetIconId( Design::Stamp* stamp );
 
-    ///  @brief Get the Image Full Path object
-    ///  
-    ///  @param catTreeID 
-    ///  @return wxString 
     //wxString GetImageFullPath( wxTreeItemId catTreeID );
 
-    ///  @brief Get the Item Desc object
-    ///  
-    ///  @param albumID 
-    ///  @return wxString 
     wxString GetItemDesc( wxTreeItemId albumID );
 
-    ///  @brief Get the Label object
-    ///  
-    ///  @param catalogVolume 
-    ///  @return wxString 
     wxString GetLabel( Design::AlbumBase* catalogVolume );
 
-    ///  @brief Get the Item Node object
-    ///  
-    ///  @param albumID 
-    ///  @return Design::AlbumBase* 
     Design::AlbumBase* GetItemNode( wxTreeItemId albumID );
 
-    ///  @brief Get the Item Stamp Link object
-    ///  
-    ///  @param albumID 
-    ///  @return Utils::StampLink* 
     Utils::StampLink* GetItemStampLink( wxTreeItemId albumID );
 
-    ///  @brief Set the Item Stamp Link object
-    ///  
-    ///  @param albumID 
-    ///  @param link 
-    void SetItemStampLink( wxTreeItemId albumID, Utils::StampLink* link );
-
-    ///  @brief Get the Item Type object
-    ///  
-    ///  @param albumID 
-    ///  @return Design::AlbumBaseType 
     Design::AlbumBaseType GetItemType( wxTreeItemId albumID );
 
-    ///  @brief Get the page object that contains this item Treid
-    ///  
-    ///  @param id 
-    ///  @return wxTreeItemId 
     wxTreeItemId GetPage( wxTreeItemId id );
 
-    // wxString GetRelativePathToImageDir( );
-
-     ///  @brief Get the Selected Node object
-     ///  
-     ///  @return Design::LayoutBase* 
     Design::LayoutBase* GetSelectedNode( );
 
-    ///  @brief Get the Stamp Node object
-    ///  
-    ///  @param itemID 
-    ///  @return Design::AlbumBase* 
     Design::AlbumBase* GetStampNode( wxTreeItemId itemID );
 
-    ///  @brief Get the Validate Status object
-    ///  
-    ///  @return true 
-    ///  @return false 
     bool GetValidateStatus( );
 
-    ///  @brief 
-    ///  
-    ///  @return int 
     int ImageSize( void ) const {
         return m_imageSize;
     };
 
-    ///  @brief 
-    ///  
-    ///  @param item 
-    ///  @param node 
-    ///  @return true 
-    ///  @return false 
     bool IsElement( wxTreeItemId item, Design::AlbumBase* node );
 
-    ///  @brief 
-    ///  
     void LoadTree( void );
 
-    ///  @brief 
-    ///  
-    ///  @param id 
-    ///  @return wxString 
     wxString MakeItemLabel( wxTreeItemId id );
 
-    ///  @brief 
-    ///  
-    ///  @param itemSrc 
-    ///  @param itemDst 
     void MoveItem( wxTreeItemId itemSrc, wxTreeItemId itemDst );
 
-    ///  @brief 
-    ///  
-    ///  @param id 
     void MakePage( wxTreeItemId id );
 
-    ///  @brief 
-    ///  
-    ///  @param catalogVolume 
-    ///  @param parentType 
-    ///  @return wxArrayPtrVoid* 
     wxArrayPtrVoid* MakeParentList( Design::LayoutBase* catalogVolume,
         Catalog::FormatType parentType );
 
-    ///  @brief 
-    ///  
-    ///  @param event 
     void OnBeginDrag( wxTreeEvent& event );
 
-    ///  @brief 
-    ///  
-    ///  @param i1 
-    ///  @param i2 
-    ///  @return int 
     virtual int OnCompareItems( const wxTreeItemId& i1, const wxTreeItemId& i2 ) wxOVERRIDE;
 
-    ///  @brief 
-    ///  
-    ///  @param event 
     void OnEndDrag( wxTreeEvent& event );
 
-    ///  @brief 
-    ///  
-    ///  @param id 
     void OnDeleteItem( wxTreeItemId id );
 
-    ///  @brief 
-    ///  
-    ///  @param event 
     void OnItemContextMenu( wxTreeEvent& event );
 
-    ///  @brief 
-    ///  
-    ///  @param event 
     void OnItemMenu( wxTreeEvent& event );
 
-    ///  @brief 
-    ///  
-    ///  @param event 
     void OnItemRClick( wxTreeEvent& event );
 
-    ///  @brief 
-    ///  
-    ///  @param event 
     void OnItemStateClick( wxTreeEvent& event );
 
-    ///  @brief Event handler for tree item selection change
-    ///  
-    ///  @param event 
     void OnSelChanged( wxTreeEvent& event );
-
-    ///  @brief 
-    ///  
-    void ResetValidateStatus( );
-
-    ///  @brief 
-    ///  
-    void Save( );
-
-    ///  @brief 
-    ///  
-    ///  @param parent 
-    ///  @param treeItemId 
-    void SaveNodeData( wxXmlNode* parent, wxTreeItemId treeItemId );
-
-    ///  @brief Set the Validate Status object
-    ///  
-    ///  @param status 
-    void SetValidateStatus( bool status );
-
-    ///  @brief 
-    ///  
-    ///  @param treeID 
-    ///  @param node 
-   // void ShowAlbumDetails( wxTreeItemId treeID, Design::AlbumBase* node );
-
-    ///  @brief 
-    ///  
-    ///  @param treeID 
-    ///  @param node 
-    //void ShowPageDetails( wxTreeItemId treeID, Design::AlbumBase* node );
-
-    ///  @brief 
-    ///  
-    ///  @param id 
-    ///  @param node 
-  //  void ShowColDetails( wxTreeItemId id, Design::AlbumBase* node );
-
-    ///  @brief 
-    ///  
-    ///  @param itemSrc 
-    ///  @param itemDst 
-    ///  @param asChild 
-    void ShowDropMenu( wxTreeItemId itemSrc, wxTreeItemId itemDst, bool asChild = false );
-
-    ///  @brief 
-    ///  
-    ///  @param id 
-    ///  @param pt 
-    void ShowMenu( wxTreeItemId id, const wxPoint& pt );
-
-    ///  @brief 
-    ///  
-    ///  @param id 
-   // void ShowStampDetails( wxTreeItemId id );
-
-    ///  @brief 
-    ///  
-    ///  @param id 
-    ///  @param node 
-   // void ShowRowDetails( wxTreeItemId id, Design::AlbumBase* node );
-
-    ///  @brief Update the layout of the page that contins this item tree id
-    ///  
-    ///  @param id 
-    void UpdateItemPageLayout( wxTreeItemId id );
-
-    ///  @brief 
-    ///  
-    void UpdateStampList( );
-
-    ///  @brief 
-    ///  
-    ///  @param treeItemId 
-    void UpdateStampList( wxTreeItemId& treeItemId );
-
-    ///  @brief 
-    ///  
-    ///  @param childID 
-    ///  @param ele 
-    ///  @param icon 
-    ///  @return Design::NodeStatus 
-    Design::NodeStatus UpdateTreeItem( wxTreeItemId childID, Design::AlbumBase* ele, Design::IconID icon );
-
-    ///  @brief 
-    ///  
-    ///  @param id 
-    void Validate( wxTreeItemId id );
-
-    ///  @brief 
-    ///  
-    void ValidateTree( );
-
-    ///  @brief 
-    ///  
-    ///  @param childId 
-    ///  @param albIDNbr 
-    void ValidateLink( wxTreeItemId& childId, wxString albIDNbr );
 
     void OnTreectrlItemCollapsed( wxTreeEvent& event );
 
     void OnTreectrlItemExpanded( wxTreeEvent& event );
 
-    wxTreeItemId GetCurrentTreeID( ) {
-        return m_currentTreeID;
-    };
+    void ResetValidateStatus( );
+
+    void Save( );
+
+    void SaveNodeData( wxXmlNode* parent, wxTreeItemId treeItemId );
+
+    void SetItemStampLink( wxTreeItemId albumID, Utils::StampLink* link );
+
+    void SetValidateStatus( bool status );
+
+    // void ShowAlbumDetails( wxTreeItemId treeID, Design::AlbumBase* node );
+
+    // void ShowPageDetails( wxTreeItemId treeID, Design::AlbumBase* node );
+
+    // void ShowColDetails( wxTreeItemId id, Design::AlbumBase* node );
+
+    void ShowDropMenu( wxTreeItemId itemSrc, wxTreeItemId itemDst, bool asChild = false );
+
+    void ShowMenu( wxTreeItemId id, const wxPoint& pt );
+
+    // void ShowStampDetails( wxTreeItemId id );
+
+    // void ShowRowDetails( wxTreeItemId id, Design::AlbumBase* node );
+
+    void UpdateItemPageLayout( wxTreeItemId id );
+
+    void UpdateStampList( );
+
+    void UpdateStampList( wxTreeItemId& treeItemId );
+
+    Design::NodeStatus UpdateTreeItem( wxTreeItemId childID, Design::AlbumBase* ele, Design::IconID icon );
+
+    void Validate( wxTreeItemId id );
+
+    void ValidateTree( );
+
+    void ValidateLink( wxTreeItemId& childId, wxString albIDNbr );
+
     void UpdateAlbumStampEntries( wxTreeItemId treeID );
 
 private:

@@ -87,87 +87,15 @@ public:
     };
 
 
-
     StampDetailsPanel( );
-    StampDetailsPanel( wxWindow* parent, wxWindowID id = SYMBOL_STAMPDETAILSPANEL_IDNAME, const wxString& caption = SYMBOL_STAMPDETAILSPANEL_TITLE, const wxPoint& pos = SYMBOL_STAMPDETAILSPANEL_POSITION, const wxSize& size = SYMBOL_STAMPDETAILSPANEL_SIZE, long style = SYMBOL_STAMPDETAILSPANEL_STYLE );
 
+    StampDetailsPanel( wxWindow* parent, wxWindowID id = SYMBOL_STAMPDETAILSPANEL_IDNAME, const wxString& caption = SYMBOL_STAMPDETAILSPANEL_TITLE, const wxPoint& pos = SYMBOL_STAMPDETAILSPANEL_POSITION, const wxSize& size = SYMBOL_STAMPDETAILSPANEL_SIZE, long style = SYMBOL_STAMPDETAILSPANEL_STYLE );
 
     bool Create( wxWindow* parent, wxWindowID id = SYMBOL_STAMPDETAILSPANEL_IDNAME, const wxString& caption = SYMBOL_STAMPDETAILSPANEL_TITLE, const wxPoint& pos = SYMBOL_STAMPDETAILSPANEL_POSITION, const wxSize& size = SYMBOL_STAMPDETAILSPANEL_SIZE, long style = SYMBOL_STAMPDETAILSPANEL_STYLE );
 
-
     ~StampDetailsPanel( );
 
-
-    void Init( );
-
-
     void CreateControls( );
-
-    void SetTitleLocation( );
-
-
-    void UpdateControls( );
-
-    void SetupDialog( Design::Stamp* stamp );
-    void SetCatCodes( );
-
-    void OnRefreshButtonClick( wxCommandEvent& event );
-    void OnCancelClick( wxCommandEvent& event );
-    void OnOkClick( wxCommandEvent& event );
-    void OnDefaultRadioButtonSelected( wxCommandEvent& event );
-    void OnTopRadioButtonSelected( wxCommandEvent& event );
-    void OnBottomRadioButtonSelected( wxCommandEvent& event );
-    void OnLeftRadioButtonSelected( wxCommandEvent& event );
-    void OnRightRadioButtonSelected( wxCommandEvent& event );
-    void OnTitleDefaultClick( wxCommandEvent& event );
-
-    void OnNameFontPicker( wxFontPickerEvent& event );
-    void OnNameColorPicker( wxColourPickerEvent& event );
-
-    void OnNbrFontPicker( wxFontPickerEvent& event );
-    void OnNbrColorPicker( wxColourPickerEvent& event );
-
-    void OnNbrDefaultClick( wxCommandEvent& event );
-    void OnSubTitleDefaultClick( wxCommandEvent& event );
-
-    void OnNameTextChanged( wxCommandEvent& event );
-    void OnSubTitleTextChanged( wxCommandEvent& event );
-
-    void OnNameCheckboxClick( wxCommandEvent& event );
-    void OnSubTitleCheckboxClick( wxCommandEvent& event );
-
-    void OnNameDefaultClick( wxCommandEvent& event );
-    void OnCatNbrCheckboxClick( wxCommandEvent& event );
-
-    void OnCatNbrComboBoxSel( wxCommandEvent& event );
-
-    void OnHeight( wxCommandEvent& event );
-    void OnWidth( wxCommandEvent& event );
-    void OnSelvageHeight( wxCommandEvent& event );
-    void OnSelvageWidth( wxCommandEvent& event );
-    void OnMountAllowanceHeight( wxCommandEvent& event );
-    void OnMountAllowanceWidth( wxCommandEvent& event );
-
-    static bool ShowToolTips( );
-
-    void SetImageFilename( wxString filename );
-    void SetHeight( wxString height );
-    void SetWidth( wxString width );
-    void SetSelvageHeight( wxString height );
-    void SetSelvageWidth( wxString width );
-    void SetMountAllowanceHeight( wxString height );
-    void SetMountAllowanceWidth( wxString width );
-
-
-    void SetCatNbr( wxString catNbr );
-    void SetName( wxString name );
-    void SetShowNbr( bool state = false );
-    void SetShowTitle( bool state = false );
-    //void SetShowSubTitle( bool state = false );
-    void SetNbrFont( wxFont font );
-    void SetNameFont( wxFont font );
-    void SetNbrColor( wxColour color );
-    void SetNameColor( wxColour color );
 
     wxString GetImageFilename( );
     wxString GetHeight( );
@@ -176,41 +104,116 @@ public:
     wxString GetSelvageHeight( );
     wxString GetSelvageWidth( );
     wxString GetMountAllowanceHeight( );
+
     wxString GetMountAllowanceWidth( );
+
     wxString GetCatNbr( );
+
     wxString GetName( );
+
     wxFont GetNbrFont( );
+
     wxFont GetNameFont( );
+
     wxColour GetNbrColor( );
+
     wxColour GetNameColor( );
+
     bool GetShowNbr( );
+
     bool GetShowTitle( );
+
     bool GetShowSubTitle( );
 
-    bool IsNameModified( );
-    bool IsIDModified( );
-    bool IsHeightModified( );
-    bool IsWidthModified( );
+    void Init( );
 
-    bool IsSelvageHeightModified( );
-    bool IsSelvageWidthModified( );
-    bool IsMountAllowanceHeightModified( );
-    bool IsMountAllowanceWidthModified( );
-    void SetHeightModified( bool state = true );
-    void SetWidthModified( bool state = true );
+    void SetupDialog( Design::Stamp* stamp );
 
+    void SetCatCodes( );
 
-    void SetSelvageHeightModified( bool state );
-    void SetSelvageWidthModified( bool state );
-    void SetMountAllowanceHeightModified( bool state );
-    void SetMountAllowanceWidthModified( bool state );
-    void SetCatNbrModified( bool state = true );
-    void SetNameModified( bool state = true );
-    void RefreshFromCatalog( );
+    void OnDefaultRadioButtonSelected( wxCommandEvent& event );
 
+    void OnTopRadioButtonSelected( wxCommandEvent& event );
 
+    void OnBottomRadioButtonSelected( wxCommandEvent& event );
 
+    void OnNameFontPicker( wxFontPickerEvent& event );
 
+    void OnNameColorPicker( wxColourPickerEvent& event );
+
+    void OnNbrFontPicker( wxFontPickerEvent& event );
+
+    void OnNbrColorPicker( wxColourPickerEvent& event );
+
+    void OnNbrDefaultClick( wxCommandEvent& event );
+
+    void OnSubTitleDefaultClick( wxCommandEvent& event );
+
+    void OnNameTextChanged( wxCommandEvent& event );
+
+    void OnSubTitleTextChanged( wxCommandEvent& event );
+
+    void OnNameCheckboxClick( wxCommandEvent& event );
+
+    void OnSubTitleCheckboxClick( wxCommandEvent& event );
+
+    void OnNameDefaultClick( wxCommandEvent& event );
+
+    void OnCatNbrCheckboxClick( wxCommandEvent& event );
+
+    void OnCatalogCodesChanged( wxCommandEvent& event );
+
+    void OnCatNbrComboBoxSel( wxCommandEvent& event );
+
+    void OnHeight( wxCommandEvent& event );
+
+    void OnWidth( wxCommandEvent& event );
+
+    void OnSelvageHeight( wxCommandEvent& event );
+
+    void OnSelvageWidth( wxCommandEvent& event );
+
+    void OnMountAllowanceHeight( wxCommandEvent& event );
+
+    void OnMountAllowanceWidth( wxCommandEvent& event );
+
+    static bool ShowToolTips( );
+
+    void SetImageFilename( wxString filename );
+
+    void SetHeight( wxString height );
+
+    void SetWidth( wxString width );
+
+    void SetSelvageHeight( wxString height );
+
+    void SetSelvageWidth( wxString width );
+
+    void SetMountAllowanceHeight( wxString height );
+
+    void SetMountAllowanceWidth( wxString width );
+
+    void SetCatNbr( wxString catNbr );
+
+    void SetName( wxString name );
+
+    void SetShowNbr( bool state = false );
+
+    void SetShowTitle( bool state = false );
+
+    void SetNbrFont( wxFont font );
+
+    void SetNameFont( wxFont font );
+
+    void SetNbrColor( wxColour color );
+
+    void SetNameColor( wxColour color );
+
+    void SetTitle( wxString name );
+
+    void SetTitleLocation( );
+
+    void UpdateControls( );
 
 private:
 

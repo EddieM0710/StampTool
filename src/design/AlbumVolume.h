@@ -65,7 +65,7 @@ namespace Design {
 
         AlbumVolume* InitAlbumVolume( );
 
-        void LoadDefaultDocument( );
+        void LoadDefaultDocument( wxString volName );
 
         void MakePage( Design::LayoutBase* node );
 
@@ -100,7 +100,6 @@ namespace Design {
     };
 
 
-    AlbumVolume* NewAlbumVolume( );
     typedef std::unordered_map< std::string, AlbumVolume*> AlbumVolumeArray;
     typedef std::unordered_map< int, wxTreeItemId > AlbumMenuIDArray;
 

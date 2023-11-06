@@ -71,100 +71,90 @@ public:
         ID_SPINBUTTON
     };
 
-    ///  @brief Construct a new Catalog Panel object
-    ///  
+
     CatalogPanel( );
 
-    ///  @brief Construct a new Catalog Panel object
-    ///  
-    ///  @param parent 
-    ///  @param id 
-    ///  @param pos 
-    ///  @param size 
-    ///  @param style 
+
     CatalogPanel( wxWindow* parent,
         wxWindowID id = SYMBOL_CATALOGVOLUMEPANEL_IDNAME,
         const wxPoint& pos = SYMBOL_CATALOGVOLUMEPANEL_POSITION,
         const wxSize& size = SYMBOL_CATALOGVOLUMEPANEL_SIZE,
         long style = SYMBOL_CATALOGVOLUMEPANEL_STYLE );
 
-    ///  @brief Destroy the Catalog Panel object
-    ///  
+
     ~CatalogPanel( );
 
-    ///  @brief 
-    ///  
-    ///  @param parent 
-    ///  @param id 
-    ///  @param pos 
-    ///  @param size 
-    ///  @param style 
-    ///  @return true 
-    ///  @return false 
+    void Clear( );
+
     bool Create( wxWindow* parent, wxWindowID id = SYMBOL_CATALOGVOLUMEPANEL_IDNAME, const wxPoint& pos = SYMBOL_CATALOGVOLUMEPANEL_POSITION, const wxSize& size = SYMBOL_CATALOGVOLUMEPANEL_SIZE, long style = SYMBOL_CATALOGVOLUMEPANEL_STYLE );
 
-    ///  @brief Create a Controls object
-    ///  
     void CreateControls( );
 
-    ///  @brief Get the Catalog Tree object
-    ///  
-    ///  @return CatalogTreeCtrl* 
+    void DoCSVImport( );
+
     CatalogTreeCtrl* GetCatalogTree( ) {
         return m_catalogTreeCtrl;
     };
+
+    wxTextCtrl* GetVolumeListCtrl( ) {
+        return m_volumeListCtrl;
+    };
+
+    wxTreeItemId GetNext( wxTreeItemId& currID );
+
+    wxTreeItemId GetNextFirstChild( wxTreeItemId& currID );
+
+
+    wxTreeItemId GetPrev( wxTreeItemId& currID );
+
+    wxTreeItemId GetPrevLastChild( wxTreeItemId& currID );
+
     CatalogTOCTreeCtrl* GetTOCTree( ) {
         return m_tocTreeCtrl;
     };
 
-    ///  @brief 
-    ///  
     void Init( );
-
-    void DoCSVImport( );
-
-    ///  @brief 
-    ///  
-    void InitCatalogVolume( );
 
     void NewCatalogDialog( );
 
+    //void OnCollectionChoiceSelected( wxCommandEvent& event );
+
     void OnCSVImportClick( wxCommandEvent& event );
 
-    ///  @brief 
-    ///  
-    ///  @param event 
-    void OnTextctrlTextUpdated( wxCommandEvent& event );
-
-    ///  @brief 
-    ///  
-    ///  @param event 
-    void OnTogglebuttonClick( wxCommandEvent& event );
-
-    ///  @brief 
-    ///  
-    ///  @param event 
-    void OnVolumeChoiceSelected( wxCommandEvent& event );
-
-    void OnCollectionChoiceSelected( wxCommandEvent& event );
-
-    ///  @brief 
-    ///  
-    ///  @param event 
     void OnManageClick( wxCommandEvent& event );
 
-    ///  @brief Set the Volume List Strings object
-    ///  
-    ///  @param choices 
+    void OnContextMenu( wxContextMenuEvent& event );
+
+    void OnSpinbuttonUpdated( wxSpinEvent& event );
+
+    void OnSpinbuttonUp( wxSpinEvent& event );
+
+    void OnSpinbuttonDown( wxSpinEvent& event );
+
+    void OnTextctrlTextUpdated( wxCommandEvent& event );
+
+    void OnTogglebuttonClick( wxCommandEvent& event );
+
+    void OnVolumeChoiceSelected( wxCommandEvent& event );
+
+    void OpenCatalog( );
+
+    void RemoveVolume( );
+
+    void SaveAsCatalog( );
+
+    // void SetCollectionListSelection( );
+
+    void SetNotebookPage( int i ){
+        m_catalogPanelNotebook->SetSelection( i );
+    };
+
     void SetVolumeListStrings( wxArrayString& choices )
     {
         // m_volumeListCtrl->Clear( );
         // m_volumeListCtrl->Append( choices );
     };
 
-    ///  @brief Set the Volume List Selection object
-    ///  
-    ///  @param i 
     void SetVolumeListSelection( int i )
     {
         //       m_volumeListCtrl->SetSelection( i );
@@ -175,52 +165,15 @@ public:
         //       m_volumeListCtrl->SetStringSelection( str );
     };
 
-    ///  @brief Set the Volume List Strings object
-    ///  
-    ///  @param choices 
-    void SetCollectionListStrings( );
+    void SetVolumeListCtrl( );
 
-    ///  @brief Set the Volume List Selection object
-    ///  
-    ///  @param i 
-    void SetCollectionListSelection( );
-
-    void OpenCatalog( );
-
-    void RemoveVolume( );
-
-    void SaveAsCatalog( );
-
-    void OnContextMenu( wxContextMenuEvent& event );
-
-    void OnSpinbuttonUpdated( wxSpinEvent& event );
-
-    void OnSpinbuttonUp( wxSpinEvent& event );
-
-    void OnSpinbuttonDown( wxSpinEvent& event );
-    wxTreeItemId GetNext( wxTreeItemId& currID );
-    wxTreeItemId GetNextFirstChild( wxTreeItemId& currID );
-
-
-    wxTreeItemId GetPrev( wxTreeItemId& currID );
-    wxTreeItemId GetPrevLastChild( wxTreeItemId& currID );
-
-    ///  @brief 
-    ///  
-    ///  @return true 
-    ///  @return false 
     static bool ShowToolTips( );
-    wxTextCtrl* GetVolumeListCtrl( ) {
-        return m_volumeListCtrl;
-    };
-    void SetNotebookPage( int i ){
-        m_catalogTreePanelNotebook->SetSelection( i );
-    };
+
 private:
     wxTextCtrl* m_volumeListCtrl;
 
     wxSpinButton* m_spinButton;
-    wxChoice* m_collectionListCtrl;
+    //wxChoice* m_collectionListCtrl;
     CatalogTreeCtrl* m_catalogTreeCtrl;
     CatalogTOCTreeCtrl* m_tocTreeCtrl;
     wxTreeItemId m_draggedItem;
@@ -230,7 +183,7 @@ private:
     wxButton* m_manageButton;
 
 
-    wxNotebook* m_catalogTreePanelNotebook;
+    wxNotebook* m_catalogPanelNotebook;
 
 };
 

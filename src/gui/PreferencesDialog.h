@@ -1,5 +1,5 @@
 /*
- * @file gui/SettingsDialog.h
+ * @file gui/PreferencesDialog.h
  * @author Eddie Monroe
  * @brief
  * @version 0.1
@@ -21,13 +21,9 @@
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef _SETTINGSDIALOG_H_
-#define _SETTINGSDIALOG_H_
+#ifndef _PreferencesDialog_H_
+#define _PreferencesDialog_H_
 
-
- /*
-  * Includes
-  */
 
 
 
@@ -35,40 +31,31 @@
 #include "gui/GuiDefs.h"
 #include <wx/fontpicker.h>
 #include <wx/clrpicker.h>
-  /*
-   * Forward declarations
-   */
+#include "wx/grid.h"
+
 
 
 
 class SortOrderPanel;
 class DefinePeriodsPanel;
-/*
- * Control identifiers
- */
 
 
-#define SYMBOL_SETTINGSDIALOG_STYLE wxCAPTION | wxRESIZE_BORDER | wxSYSTEM_MENU | wxCLOSE_BOX | wxTAB_TRAVERSAL
-#define SYMBOL_SETTINGSDIALOG_TITLE _( "SettingsDialog" )
-#define SYMBOL_SETTINGSDIALOG_IDNAME ID_SETTINGSDIALOG
-#define SYMBOL_SETTINGSDIALOG_SIZE wxSize( 600, 300 )
-#define SYMBOL_SETTINGSDIALOG_POSITION wxDefaultPosition
+#define SYMBOL_PreferencesDialog_STYLE wxCAPTION | wxRESIZE_BORDER | wxSYSTEM_MENU | wxCLOSE_BOX | wxTAB_TRAVERSAL
+#define SYMBOL_PreferencesDialog_TITLE _( "PreferencesDialog" )
+#define SYMBOL_PreferencesDialog_IDNAME ID_PREFERENCESDIALOG
+#define SYMBOL_PreferencesDialog_SIZE wxSize( 600, 300 )
+#define SYMBOL_PreferencesDialog_POSITION wxDefaultPosition
 
 
-
- /*
-  * SettingsDialog class declaration
-  */
-
-class SettingsDialog : public wxDialog
+class PreferencesDialog : public wxDialog
 {
-    DECLARE_DYNAMIC_CLASS( SettingsDialog )
+    DECLARE_DYNAMIC_CLASS( PreferencesDialog )
     DECLARE_EVENT_TABLE( )
 
 public:
-    enum SettingsDialogGuiDefs
+    enum PreferencesDialogGuiDefs
     {
-        ID_IMAGEDIRECTORTEXTBOX = ID_SETTINGSDIALOG + 1,
+        ID_IMAGEDIRECTORTEXTBOX = ID_PREFERENCESDIALOG + 1,
         ID_COUNTRYTEXTBOX,
         ID_CATALOGTEXTBOX,
         ID_OPENLASTCHECKBOX,
@@ -76,6 +63,7 @@ public:
         ID_NOTEBOOK,
         ID_NOTEBOOKDETAILSPANEL,
         ID_NOTEBOOKFONTSPANEL,
+        ID_NOTEBOOKCOLLECTIONPANEL,
         ID_NBRFONTPICKER,
         ID_NBRCOLORPICKER,
         ID_TITLEFONTPICKER,
@@ -88,19 +76,20 @@ public:
         ID_TITLEDEFAULTFONTBUTTON,
         ID_TEXTDEFAULTFONTBUTTON,
         ID_NAMEDEFAULTFONTBUTTON,
+        ID_COLLECTIONGRID,
         ID_LastID
     };
 
 
 
-    SettingsDialog( );
-    SettingsDialog( wxWindow* parent, wxWindowID id = SYMBOL_SETTINGSDIALOG_IDNAME, const wxString& caption = SYMBOL_SETTINGSDIALOG_TITLE, const wxPoint& pos = SYMBOL_SETTINGSDIALOG_POSITION, const wxSize& size = SYMBOL_SETTINGSDIALOG_SIZE, long style = SYMBOL_SETTINGSDIALOG_STYLE );
+    PreferencesDialog( );
+    PreferencesDialog( wxWindow* parent, wxWindowID id = SYMBOL_PreferencesDialog_IDNAME, const wxString& caption = SYMBOL_PreferencesDialog_TITLE, const wxPoint& pos = SYMBOL_PreferencesDialog_POSITION, const wxSize& size = SYMBOL_PreferencesDialog_SIZE, long style = SYMBOL_PreferencesDialog_STYLE );
 
 
-    bool Create( wxWindow* parent, wxWindowID id = SYMBOL_SETTINGSDIALOG_IDNAME, const wxString& caption = SYMBOL_SETTINGSDIALOG_TITLE, const wxPoint& pos = SYMBOL_SETTINGSDIALOG_POSITION, const wxSize& size = SYMBOL_SETTINGSDIALOG_SIZE, long style = SYMBOL_SETTINGSDIALOG_STYLE );
+    bool Create( wxWindow* parent, wxWindowID id = SYMBOL_PreferencesDialog_IDNAME, const wxString& caption = SYMBOL_PreferencesDialog_TITLE, const wxPoint& pos = SYMBOL_PreferencesDialog_POSITION, const wxSize& size = SYMBOL_PreferencesDialog_SIZE, long style = SYMBOL_PreferencesDialog_STYLE );
 
 
-    ~SettingsDialog( );
+    ~PreferencesDialog( );
 
 
     void Init( );
@@ -108,7 +97,7 @@ public:
 
     void CreateControls( );
 
-    // SettingsDialog event handler declarations
+    // PreferencesDialog event handler declarations
 
         //   ID_IMAGEDIRECTORTEXTBOX
     void OnImagedirectortextboxTextUpdated( wxCommandEvent& event );
@@ -125,14 +114,16 @@ public:
     //   ID_RECENTSIZETEXTCTRL
     void OnRecentsizetextctrlTextUpdated( wxCommandEvent& event );
 
-    // SettingsDialog event handler declarations
+    // PreferencesDialog event handler declarations
     void OnOkClick( wxCommandEvent& event );
 
 
 
     static bool ShowToolTips( );
 
-    bool IsDirty( ) { return m_dirty; };
+    bool IsDirty( ) {
+        return m_dirty;
+    };
 
     void UpdateSettings( );
 
@@ -140,7 +131,7 @@ public:
 
 
 
-    // SettingsDialog member variables
+    // PreferencesDialog member variables
     wxTextCtrl* m_imageDirectory;
     wxTextCtrl* m_country;
     wxTextCtrl* m_catalog;
@@ -156,10 +147,12 @@ public:
     wxColourPickerCtrl* m_textColorPicker;
     wxFontPickerCtrl* m_nameFontPicker;
     wxColourPickerCtrl* m_nameColorPicker;
-    // SettingsDialog member variables
+    wxGrid* m_grid;  ///< wxGrid to display item entries
+
+    // PreferencesDialog member variables
     bool m_dirty;
 
 };
 
 #endif
-// _SETTINGSDIALOG_H_
+// _PreferencesDialog_H_

@@ -53,6 +53,413 @@ namespace Design {
     const double BorderAllowancePercent = .1;
     const double ImagePercentOfActual = .75;
 
+
+
+    //--------------
+
+    Stamp::Stamp( ) : LayoutBase( ( wxXmlNode* ) 0 )
+    {
+        SetNodeType( AT_Stamp );
+        SetObjectName( AlbumBaseNames[ AT_Stamp ] );
+        SetShowNbr( true );
+        SetShowTitle( true );
+        SetShowSubTitle( false );
+
+        m_nameFrame = new LabelFrame( Design::AT_NameFontType );
+        m_nameFrame->SetString( "name" );
+        m_nbrFrame = new LabelFrame( Design::AT_NbrFontType );
+        m_nbrFrame->SetString( "Nbr" );
+        InitParameters( );
+
+    }
+
+
+    //--------------
+
+    Stamp::Stamp( wxXmlNode* node ) : LayoutBase( node )
+    {
+        SetNodeType( AT_Stamp );
+        SetObjectName( AlbumBaseNames[ GetNodeType( ) ] );
+        SetShowNbr( true );
+        SetShowTitle( true );
+        SetShowSubTitle( false );
+
+        m_nameFrame = new LabelFrame( Design::AT_NameFontType );
+        m_nbrFrame = new LabelFrame( Design::AT_NbrFontType );
+
+        InitParameters( );
+        //  GetNameString
+        m_nameFrame->SetString( GetAttrStr( AT_Name ) );
+        wxFont font = m_nameFrame->GetFont( );
+        int point = font.GetPointSize( );
+
+        wxString str = MakeDisplayNbr( );
+
+        // int pos = str.Find( " " );
+        // str = str.substr( pos + 1 );
+        m_nbrFrame->SetString( str );
+        //  CalcFrame( );
+    };
+
+
+    //--------------
+
+    void Stamp::CalculateYPos( double yPos, double height )
+    {
+        if ( GetTitleLocation( ) == AT_TitleLocationBottom )
+        {
+            SetYPos( yPos );
+        }
+        else
+        {
+            SetYPos( yPos + height - GetHeight( ) );
+        }
+    }
+
+
+    //--------------
+
+    void DrawRotated( wxDC& dc, double x, double y )
+    {
+
+    }
+
+
+    //--------------
+
+    void Stamp::Draw( wxDC& dc, double x, double y )
+    {
+        Design::NodeStatus status = GetNodeStatus( );
+        if ( status != Design::AT_FATAL )
+        {
+            //Draw the outer frame transparent
+            //m_frame.Draw( dc, x, y );
+
+            SetClientDimensions( dc, x + GetXPos( ), y + GetYPos( ), GetMinWidth( ), GetMinHeight( ) );
+
+
+            //Draw the Stamp frame
+            double xInnerPos = x + GetXPos( );
+            double yInnerPos = y + GetYPos( );
+
+            dc.SetPen( *wxBLACK_PEN );
+            m_borderFrame.Draw( dc, xInnerPos, yInnerPos );
+
+            double xImagePos = xInnerPos + m_stampImageFrame.GetXPos( );
+            double yImagePos = yInnerPos + m_stampImageFrame.GetYPos( );
+            if ( xImagePos < 0.0 )xImagePos = .01;
+            if ( yImagePos < 0.0 )yImagePos = .01;
+
+            wxString filename = GetStampImageFilename( );
+
+            wxImage image;
+            wxString imageName = GetStampImageFilename( );
+            wxString str = GetProject( )->GetImageFullPath( imageName );
+            if ( GetProject( )->ImageExists( str ) )
+            {
+                image = wxImage( str, wxBITMAP_TYPE_JPEG );
+            }
+
+            if ( image.IsOk( ) )
+            {
+                //Draw the stamp image
+                if ( GetAlbum( )->GetGrayScaleImages( ) )
+                {
+                    image = image.ConvertToGreyscale( );
+                }
+
+                DrawImage( dc, image,
+                    xImagePos, yImagePos,
+                    m_stampImageFrame.GetWidth( ), m_stampImageFrame.GetHeight( ) );
+            }
+            else
+            {
+                // Draw missing image frame transparent
+                dc.SetPen( *wxTRANSPARENT_PEN );
+                m_stampImageFrame.Draw( dc, xImagePos, yImagePos );
+            }
+
+            GetNameFrame( )->Draw( dc, xInnerPos, yInnerPos );
+
+            if ( GetShowNbr( ) )
+            {
+                GetNbrFrame( )->Draw( dc, xInnerPos, yInnerPos );
+            }
+        }
+    }
+
+
+    //--------------
+
+    void Stamp::DrawPDF( wxPdfDocument* doc, double x, double y )
+    {
+        //Draw the outer frame transparent
+//        m_frame.DrawPDF( doc, x, y );
+
+        //Draw the Stamp frame
+        double xInnerPos = x + GetXPos( );
+        double yInnerPos = y + GetYPos( );
+
+        wxPdfLineStyle currStyle = PDFLineStyle( doc, *wxBLACK, .2, defaultDash );
+
+        m_borderFrame.DrawPDF( doc, xInnerPos, yInnerPos );
+        doc->SetLineStyle( currStyle );
+
+        double xImagePos = xInnerPos + m_stampImageFrame.GetXPos( );
+        double yImagePos = yInnerPos + m_stampImageFrame.GetYPos( );
+
+        wxString filename = GetStampImageFilename( );
+
+        wxImage image = GetProject( )->GetImage( filename );
+        if ( image.IsOk( ) )
+        {
+            //Draw the stamp image
+            if ( GetAlbum( )->GetGrayScaleImages( ) )
+            {
+                image = image.ConvertToGreyscale( );
+            }
+            double height = m_stampImageFrame.GetHeight( );
+            double width = m_stampImageFrame.GetWidth( );
+            if ( width <= 0.01 || height <= 0.01 )
+            {
+                height = 10;
+                width = 10;
+            }
+
+            doc->Image( filename, image, xImagePos, yImagePos, width, height );
+        }
+        else
+        {
+            // Draw missing image frame transparent
+            //m_stampImageFrame.DrawPDF( dc, xImagePos, yImagePos );
+        }
+
+        GetNameFrame( )->DrawPDF( doc, xInnerPos, yInnerPos );
+
+        if ( GetShowNbr( ) )
+        {
+            GetNbrFrame( )->DrawPDF( doc, xInnerPos, yInnerPos );
+        }
+    }
+
+
+    //--------------
+
+    void Stamp::DumpStamp( wxTextCtrl* ctrl )
+    {
+        *ctrl << DumpFrame( );
+        *ctrl << m_borderFrame.LayoutString( );
+        *ctrl << m_stampImageFrame.LayoutString( );
+    }
+
+
+    //--------------
+
+    wxString Stamp::GetCatalog( )
+    {
+        wxString cat = GetAttrStr( Design::AT_Catalog );;
+        if ( cat.IsEmpty( ) )
+        {
+            cat = GetAlbum( )->GetCatalog( );
+        }
+        return cat;
+    };
+
+
+    //--------------
+
+    wxString Stamp::GetCatalogCodes( )
+    {
+        return GetAttrStr( Design::AT_Catalog_Codes );;
+    };
+
+
+
+    //--------------
+
+    wxString  Stamp::GetCatalogNbr( ) {
+        return GetAttrStr( AT_CatNbr );
+    };
+
+
+    //--------------  
+
+    TitleLocation  Stamp::GetDefaultTitleLocation( )
+    {
+        Design::AlbumBase* node = GetParent( );
+        Design::AlbumBaseType type = node->GetNodeType( );
+        TitleLocation defaultLoc = AT_TitleLocationDefault;
+        if ( type == Design::AT_Row )
+        {
+            Design::Row* row = ( Design::Row* ) node;
+            defaultLoc = row->GetTitleLocationType( );
+        }
+        else if ( type = Design::AT_Col )
+        {
+            Design::Column* col = ( Design::Column* ) node;
+            defaultLoc = col->GetTitleLocationType( );
+        }
+        return  defaultLoc;
+    }
+
+
+    //--------------
+
+    wxImage Stamp::GetImage( )
+    {
+        if ( m_image.IsOk( ) )
+        {
+            return m_image;
+        }
+        else
+        {
+
+            wxString imageName = GetStampImageFilename( );
+            wxString str = GetProject( )->GetImageFullPath( imageName );
+            if ( GetProject( )->ImageExists( str ) )
+            {
+                m_image = wxImage( str );
+            }
+            return m_image;
+        }
+    }
+
+    //--------------
+
+    double Stamp::GetMountAllowanceHeight( )
+    {
+        return m_mountAllowanceHeight;
+    };
+
+
+    //--------------
+
+    wxString Stamp::GetMountAllowanceHeightStr( )
+    {
+        return  GetAttrStr( Design::AT_MountAllowanceHeight );
+    };
+
+
+    //--------------
+
+    double Stamp::GetMountAllowanceWidth( )
+    {
+        return m_mountAllowanceWidth;
+    };
+
+
+    //--------------
+
+    wxString Stamp::GetMountAllowanceWidthStr( )
+    {
+        return  GetAttrStr( Design::AT_MountAllowanceWidth );
+    };
+
+
+    //--------------
+
+    LabelFrame* Stamp::GetNameFrame( ) {
+        return m_nameFrame;
+    };
+
+
+    //--------------
+
+    wxString  Stamp::GetNameString( ) {
+        return m_nameFrame->GetString( );
+    };
+
+
+    //--------------
+
+    LabelFrame* Stamp::GetNbrFrame( ) {
+        return m_nbrFrame;
+    };
+
+
+    //--------------
+
+    wxString  Stamp::GetNbrString( ) {
+        return GetAttrStr( AT_CatNbr );
+    };
+
+
+    //--------------
+
+    double Stamp::GetSelvageHeight( )
+    {
+        return m_selvageHeight;
+    };
+
+
+    //--------------
+
+    wxString Stamp::GetSelvageHeightStr( )
+    {
+        return GetAttrStr( Design::AT_SelvageHeight );
+    };
+
+
+    //--------------
+
+    double Stamp::GetSelvageWidth( )
+    {
+        return m_selvageWidth;
+    };
+
+
+    //--------------
+
+    wxString Stamp::GetSelvageWidthStr( )
+    {
+        return GetAttrStr( Design::AT_SelvageWidth );;
+    };
+
+
+    //--------------
+
+    double Stamp::GetStampWidth( )
+    {
+        return m_stampFrame.GetWidth( );
+    };
+
+
+    //--------------
+
+    wxString Stamp::GetStampWidthStr( )
+    {
+        return GetAttrStr( Design::AT_Width );
+    };
+
+
+    //--------------
+
+    wxString Stamp::GetStampImageFilename( )
+    {
+        return GetAttrStr( AT_ImageName );
+    }
+
+
+    //--------------
+
+    TitleLocation Stamp::GetTitleLocation( )
+    {
+        TitleLocation defaultLoc = GetDefaultTitleLocation( );
+        TitleLocation loc = FindTitleLocationType( GetAttrStr( AT_StampNameLocation ) );
+        if ( ( loc == defaultLoc ) )// && ( loc != AT_TitleLocationDefault ) )
+        {
+            SetTitleLocation( AT_TitleLocationDefault );
+        }
+        if ( loc == AT_TitleLocationDefault )
+        {
+            return defaultLoc;
+        }
+        return loc;
+    };
+
+
+    //--------------
+
     void Stamp::InitParameters( )
     {
         wxString height = GetAttrStr( Design::AT_Height );
@@ -124,31 +531,29 @@ namespace Design {
         }
     }
 
-    Stamp::Stamp( wxXmlNode* node ) : LayoutBase( node )
+
+    //--------------
+
+    bool Stamp::IsDefaultVal( AlbumAttrType type )
     {
-        SetNodeType( AT_Stamp );
-        SetObjectName( AlbumBaseNames[ GetNodeType( ) ] );
-        SetShowNbr( true );
-        SetShowTitle( true );
-        SetShowSubTitle( false );
+        return !GetAlbum( )->GetDefaultValStr( type ).Cmp( GetAttrStr( type ) );
+    }
 
-        m_nameFrame = new LabelFrame( Design::AT_NameFontType );
-        m_nbrFrame = new LabelFrame( Design::AT_NbrFontType );
 
-        InitParameters( );
-        //  GetNameString
-        m_nameFrame->SetString( GetAttrStr( AT_Name ) );
-        wxFont font = m_nameFrame->GetFont( );
-        int point = font.GetPointSize( );
+    //--------------
 
-        wxString str = MakeDisplayNbr( );
+    void Stamp::LoadFonts( wxXmlNode* node )
+    {
+        wxXmlNode* fonts = Utils::FirstChildElement( node, "Fonts" );
+        if ( fonts )
+        {
+            m_nameFrame->LoadFont( fonts );
+            m_nbrFrame->LoadFont( fonts );
+        }
+    }
 
-        // int pos = str.Find( " " );
-        // str = str.substr( pos + 1 );
-        m_nbrFrame->SetString( str );
-        //  CalcFrame( );
 
-    };
+    //--------------
 
     wxString Stamp::MakeDisplayNbr( )
     {
@@ -157,7 +562,7 @@ namespace Design {
         wxString country;
         wxString code;
         Catalog::GetCodes( str, catalog, country, code );
-        wxString preferredCatalog = GetSettings( )->GetCatalogID( );
+        wxString preferredCatalog = GetProject( )->GetProjectCatalogCode( );
         if ( !preferredCatalog.Cmp( catalog ) )
         {
             return code;
@@ -167,42 +572,9 @@ namespace Design {
             return catalog + ":" + code;
         }
     }
-    Stamp::Stamp( ) : LayoutBase( ( wxXmlNode* ) 0 )
-    {
-        SetNodeType( AT_Stamp );
-        SetObjectName( AlbumBaseNames[ AT_Stamp ] );
-        SetShowNbr( true );
-        SetShowTitle( true );
-        SetShowSubTitle( false );
-
-        m_nameFrame = new LabelFrame( Design::AT_NameFontType );
-        m_nameFrame->SetString( "name" );
-        m_nbrFrame = new LabelFrame( Design::AT_NbrFontType );
-        m_nbrFrame->SetString( "Nbr" );
-        InitParameters( );
-
-    }
 
 
-    wxImage Stamp::GetImage( )
-    {
-        if ( m_image.IsOk( ) )
-        {
-            return m_image;
-        }
-        else
-        {
-
-            wxString imageName = GetStampImageFilename( );
-            wxString str = GetProject( )->GetImageFullPath( imageName );
-            if ( GetProject( )->ImageExists( str ) )
-            {
-                m_image = wxImage( str );
-            }
-            return m_image;
-        }
-    }
-
+    //--------------
 
     wxImage Stamp::RescaleImage( )
     {
@@ -221,408 +593,6 @@ namespace Design {
         return image;
     }
 
-    void DrawRotated( wxDC& dc, double x, double y )
-    {
-
-    }
-
-    //--------------
-    void Stamp::Draw( wxDC& dc, double x, double y )
-    {
-        Design::NodeStatus status = GetNodeStatus( );
-        if ( status != Design::AT_FATAL )
-        {
-            //Draw the outer frame transparent
-            //m_frame.Draw( dc, x, y );
-
-            SetClientDimensions( dc, x + GetXPos( ), y + GetYPos( ), GetMinWidth( ), GetMinHeight( ) );
-
-
-            //Draw the Stamp frame
-            double xInnerPos = x + GetXPos( );
-            double yInnerPos = y + GetYPos( );
-
-            dc.SetPen( *wxBLACK_PEN );
-            m_borderFrame.Draw( dc, xInnerPos, yInnerPos );
-
-            double xImagePos = xInnerPos + m_stampImageFrame.GetXPos( );
-            double yImagePos = yInnerPos + m_stampImageFrame.GetYPos( );
-            if ( xImagePos < 0.0 )xImagePos = .01;
-            if ( yImagePos < 0.0 )yImagePos = .01;
-
-            wxString filename = GetStampImageFilename( );
-
-            wxImage image;
-            wxString imageName = GetStampImageFilename( );
-            wxString str = GetProject( )->GetImageFullPath( imageName );
-            if ( GetProject( )->ImageExists( str ) )
-            {
-                image = wxImage( str, wxBITMAP_TYPE_JPEG );
-            }
-
-            if ( image.IsOk( ) )
-            {
-                //Draw the stamp image
-                if ( GetAlbum( )->GetGrayScaleImages( ) )
-                {
-                    image = image.ConvertToGreyscale( );
-                }
-
-                DrawImage( dc, image,
-                    xImagePos, yImagePos,
-                    m_stampImageFrame.GetWidth( ), m_stampImageFrame.GetHeight( ) );
-            }
-            else
-            {
-                // Draw missing image frame transparent
-                dc.SetPen( *wxTRANSPARENT_PEN );
-                m_stampImageFrame.Draw( dc, xImagePos, yImagePos );
-            }
-
-            GetNameFrame( )->Draw( dc, xInnerPos, yInnerPos );
-
-            if ( GetShowNbr( ) )
-            {
-                GetNbrFrame( )->Draw( dc, xInnerPos, yInnerPos );
-            }
-        }
-    }
-
-    //--------------
-
-    void Stamp::DrawPDF( wxPdfDocument* doc, double x, double y )
-    {
-        //Draw the outer frame transparent
-//        m_frame.DrawPDF( doc, x, y );
-
-        //Draw the Stamp frame
-        double xInnerPos = x + GetXPos( );
-        double yInnerPos = y + GetYPos( );
-
-        wxPdfLineStyle currStyle = PDFLineStyle( doc, *wxBLACK, .2, defaultDash );
-
-        m_borderFrame.DrawPDF( doc, xInnerPos, yInnerPos );
-        doc->SetLineStyle( currStyle );
-
-        double xImagePos = xInnerPos + m_stampImageFrame.GetXPos( );
-        double yImagePos = yInnerPos + m_stampImageFrame.GetYPos( );
-
-        wxString filename = GetStampImageFilename( );
-
-        wxImage image = GetProject( )->GetImage( filename );
-        if ( image.IsOk( ) )
-        {
-            //Draw the stamp image
-            if ( GetAlbum( )->GetGrayScaleImages( ) )
-            {
-                image = image.ConvertToGreyscale( );
-            }
-            double height = m_stampImageFrame.GetHeight( );
-            double width = m_stampImageFrame.GetWidth( );
-            if ( width <= 0.01 || height <= 0.01 )
-            {
-                height = 10;
-                width = 10;
-            }
-
-            doc->Image( filename, image, xImagePos, yImagePos, width, height );
-        }
-        else
-        {
-            // Draw missing image frame transparent
-            //m_stampImageFrame.DrawPDF( dc, xImagePos, yImagePos );
-        }
-
-
-        GetNameFrame( )->DrawPDF( doc, xInnerPos, yInnerPos );
-
-        if ( GetShowNbr( ) )
-        {
-            GetNbrFrame( )->DrawPDF( doc, xInnerPos, yInnerPos );
-        }
-    }
-
-    //--------------
-
-    void Stamp::DumpStamp( wxTextCtrl* ctrl )
-    {
-        *ctrl << DumpFrame( );
-        *ctrl << m_borderFrame.LayoutString( );
-        *ctrl << m_stampImageFrame.LayoutString( );
-    }
-
-    //--------------
-
-    LabelFrame* Stamp::GetNameFrame( ) {
-        return m_nameFrame;
-    };
-
-    //--------------
-
-    wxString  Stamp::GetNameString( ) {
-        return m_nameFrame->GetString( );
-    };
-
-    void  Stamp::SetNameString( wxString str )
-    {
-        SetAttrStr( AT_Name, str );
-        m_nameFrame->SetString( str );
-    };
-
-    //--------------
-
-
-    LabelFrame* Stamp::GetNbrFrame( ) {
-        return m_nbrFrame;
-    };
-
-    wxString  Stamp::GetNbrString( ) {
-        return GetAttrStr( AT_CatNbr );
-    };
-
-    wxString  Stamp::GetCatalogNbr( ) {
-        return GetAttrStr( AT_CatNbr );
-    };
-    void  Stamp::SetNbrString( wxString str )
-    {
-        SetAttrStr( AT_CatNbr, str );
-        wxString displalyString = MakeDisplayNbr( );
-        GetNbrFrame( )->SetString( displalyString );
-    };
-
-    void Stamp::SetCatalog( wxString cat )
-    {
-        wxString albumCat = GetAlbum( )->GetCatalog( );
-        if ( cat.Cmp( albumCat ) )
-        {
-            SetAttrStr( AT_Catalog, cat );
-        }
-        else
-        {
-            DeleteAttribute( AttrNameStrings[ AT_Catalog ] );
-        }
-    }
-
-    //--------------
-
-    void Stamp::SetCatalogCodes( wxString catCodes )
-    {
-        SetAttrStr( AT_Catalog_Codes, catCodes );
-    }
-
-    //--------------
-
-    double Stamp::GetStampWidth( )
-    {
-        return m_stampFrame.GetWidth( );
-    };
-
-    //--------------
-
-    wxString Stamp::GetStampWidthStr( )
-    {
-        return GetAttrStr( Design::AT_Width );
-    };
-
-    //--------------
-
-    wxString Stamp::GetStampImageFilename( )
-    {
-        return GetAttrStr( AT_ImageName );
-    }
-
-    void Stamp::SetStampImageFilename( wxString filename )
-    {
-        SetAttrStr( AT_ImageName, filename );
-        m_imageFilename = filename;
-        m_image = GetImageFromFilename( filename );
-    }
-
-    //--------------
-
-    //--------------
-
-    void Stamp::LoadFonts( wxXmlNode* node )
-    {
-        wxXmlNode* fonts = Utils::FirstChildElement( node, "Fonts" );
-        if ( fonts )
-        {
-            m_nameFrame->LoadFont( fonts );
-            m_nbrFrame->LoadFont( fonts );
-        }
-    }
-
-    //--------------
-
-    void Stamp::SetStampHeight( double val )
-    {
-        m_stampFrame.SetHeight( val );
-        wxString str = wxString::Format( "%4.1f", val );
-        SetAttrStr( Design::AT_Height, str );
-    };
-
-    //--------------
-
-    void Stamp::SetStampHeight( wxString str )
-    {
-        SetAttrStr( Design::AT_Height, str );
-        double val;
-        bool ok = str.ToDouble( &val );
-        m_stampFrame.SetHeight( val );
-    };
-
-    //--------------
-
-    void Stamp::SetStampWidth( double val )
-    {
-        m_stampFrame.SetWidth( val );
-        wxString str = wxString::Format( "%4.1f", val );
-        SetAttrStr( Design::AT_Width, str );
-        UpdateMinimumSize( );
-        UpdatePositions( );
-    };
-
-    //--------------
-
-    void Stamp::SetStampWidth( wxString str )
-    {
-        SetAttrStr( Design::AT_Width, str );
-        double val;
-        bool ok = str.ToDouble( &val );
-        m_stampFrame.SetWidth( val );
-    };
-
-    //--------------
-
-    void Stamp::SetSelvageHeight( double val )
-    {
-        m_selvageHeight = val;
-        wxString str = wxString::Format( "%4.1f", val );
-        SetAttrStr( Design::AT_SelvageHeight, str );
-
-    };
-
-    //--------------
-
-    void Stamp::SetSelvageHeight( wxString str )
-    {
-        SetAttrStr( Design::AT_SelvageHeight, str );
-        bool ok = str.ToDouble( &m_selvageHeight );
-    };
-
-    //--------------
-
-    void Stamp::SetSelvageWidth( double val )
-    {
-        m_selvageWidth = val;
-        wxString str = wxString::Format( "%4.1f", val );
-        SetAttrStr( Design::AT_SelvageWidth, str );
-        SetSelvageWidth( str );
-    };
-    void Stamp::SetSelvageWidth( wxString str )
-    {
-        SetAttrStr( Design::AT_SelvageWidth, str );
-        bool ok = str.ToDouble( &m_selvageWidth );
-    };
-
-    //--------------
-
-    void Stamp::SetMountAllowanceHeight( double val )
-    {
-        m_mountAllowanceHeight = val;
-        wxString str = wxString::Format( "%4.1f", val );
-        SetAttrStr( Design::AT_MountAllowanceHeight, str );
-    };
-
-    void Stamp::SetMountAllowanceHeight( wxString str )
-    {
-        SetAttrStr( Design::AT_MountAllowanceHeight, str );
-        bool ok = str.ToDouble( &m_mountAllowanceHeight );
-    };
-
-    //--------------
-
-    void Stamp::SetMountAllowanceWidth( double val )
-    {
-        m_mountAllowanceWidth = val;
-        wxString str = wxString::Format( "%4.1f", val );
-        SetAttrStr( Design::AT_MountAllowanceWidth, str );
-    };
-
-    void Stamp::SetMountAllowanceWidth( wxString str )
-    {
-        SetAttrStr( Design::AT_MountAllowanceWidth, str );
-        bool ok = str.ToDouble( &m_mountAllowanceWidth );
-    };
-
-    //--------------
-
-    double Stamp::GetSelvageHeight( )
-    {
-        return m_selvageHeight;
-    };
-
-    wxString Stamp::GetSelvageHeightStr( )
-    {
-        return GetAttrStr( Design::AT_SelvageHeight );
-    };
-
-    //--------------
-
-    double Stamp::GetSelvageWidth( )
-    {
-        return m_selvageWidth;
-    };
-
-    wxString Stamp::GetSelvageWidthStr( )
-    {
-        return GetAttrStr( Design::AT_SelvageWidth );;
-    };
-
-
-
-    wxString Stamp::GetCatalog( )
-    {
-        wxString cat = GetAttrStr( Design::AT_Catalog );;
-        if ( cat.IsEmpty( ) )
-        {
-            cat = GetAlbum( )->GetCatalog( );
-        }
-        return cat;
-    };
-
-
-    wxString Stamp::GetCatalogCodes( )
-    {
-        return GetAttrStr( Design::AT_Catalog_Codes );;
-    };
-
-    //--------------
-
-
-    double Stamp::GetMountAllowanceHeight( )
-    {
-        return m_mountAllowanceHeight;
-    };
-
-    wxString Stamp::GetMountAllowanceHeightStr( )
-    {
-        return  GetAttrStr( Design::AT_MountAllowanceHeight );
-    };
-
-    //--------------
-
-    double Stamp::GetMountAllowanceWidth( )
-    {
-        return m_mountAllowanceWidth;
-    };
-
-    //--------------
-
-    wxString Stamp::GetMountAllowanceWidthStr( )
-    {
-        return  GetAttrStr( Design::AT_MountAllowanceWidth );
-    };
 
     //--------------
 
@@ -638,12 +608,9 @@ namespace Design {
         m_stampImageFrame.ReportLayout( );
     };
 
+
     //--------------
 
-    bool Stamp::IsDefaultVal( AlbumAttrType type )
-    {
-        return !GetAlbum( )->GetDefaultValStr( type ).Cmp( GetAttrStr( type ) );
-    }
     void Stamp::Save( wxXmlNode* xmlNode )
     {
         SetAttribute( xmlNode, Design::AT_Catalog_Codes );
@@ -664,6 +631,7 @@ namespace Design {
         SaveFonts( xmlNode );
     }
 
+
     //--------------
 
     void Stamp::SaveFonts( wxXmlNode* parent )
@@ -679,38 +647,183 @@ namespace Design {
         }
     }
 
-    TitleLocation  Stamp::GetDefaultTitleLocation( )
+
+    //--------------
+
+    void Stamp::SetCatalog( wxString cat )
     {
-        Design::AlbumBase* node = GetParent( );
-        Design::AlbumBaseType type = node->GetNodeType( );
-        TitleLocation defaultLoc = AT_TitleLocationDefault;
-        if ( type == Design::AT_Row )
+        wxString albumCat = GetAlbum( )->GetCatalog( );
+        if ( cat.Cmp( albumCat ) )
         {
-            Design::Row* row = ( Design::Row* ) node;
-            defaultLoc = row->GetTitleLocationType( );
+            SetAttrStr( AT_Catalog, cat );
         }
-        else if ( type = Design::AT_Col )
+        else
         {
-            Design::Column* col = ( Design::Column* ) node;
-            defaultLoc = col->GetTitleLocationType( );
+            DeleteAttribute( AttrNameStrings[ AT_Catalog ] );
         }
-        return  defaultLoc;
     }
 
-    TitleLocation Stamp::GetTitleLocation( )
+
+    //--------------
+
+    void Stamp::SetCatalogCodes( wxString catCodes )
     {
-        TitleLocation defaultLoc = GetDefaultTitleLocation( );
-        TitleLocation loc = FindTitleLocationType( GetAttrStr( AT_StampNameLocation ) );
-        if ( ( loc == defaultLoc ) )// && ( loc != AT_TitleLocationDefault ) )
-        {
-            SetTitleLocation( AT_TitleLocationDefault );
-        }
-        if ( loc == AT_TitleLocationDefault )
-        {
-            return defaultLoc;
-        }
-        return loc;
+        SetAttrStr( AT_Catalog_Codes, catCodes );
+    }
+
+
+    //--------------
+
+    void Stamp::SetMountAllowanceHeight( double val )
+    {
+        m_mountAllowanceHeight = val;
+        wxString str = wxString::Format( "%4.1f", val );
+        SetAttrStr( Design::AT_MountAllowanceHeight, str );
     };
+
+
+    //--------------
+
+    void Stamp::SetMountAllowanceHeight( wxString str )
+    {
+        SetAttrStr( Design::AT_MountAllowanceHeight, str );
+        bool ok = str.ToDouble( &m_mountAllowanceHeight );
+    };
+
+
+    //--------------
+
+    void Stamp::SetMountAllowanceWidth( double val )
+    {
+        m_mountAllowanceWidth = val;
+        wxString str = wxString::Format( "%4.1f", val );
+        SetAttrStr( Design::AT_MountAllowanceWidth, str );
+    };
+
+
+    //--------------
+
+    void Stamp::SetMountAllowanceWidth( wxString str )
+    {
+        SetAttrStr( Design::AT_MountAllowanceWidth, str );
+        bool ok = str.ToDouble( &m_mountAllowanceWidth );
+    };
+
+
+    //--------------
+
+    void  Stamp::SetNameString( wxString str )
+    {
+        SetAttrStr( AT_Name, str );
+        m_nameFrame->SetString( str );
+    };
+
+
+    //--------------
+
+    void  Stamp::SetNbrString( wxString str )
+    {
+        SetAttrStr( AT_CatNbr, str );
+        wxString displalyString = MakeDisplayNbr( );
+        GetNbrFrame( )->SetString( displalyString );
+    };
+
+
+    //--------------
+
+    void Stamp::SetSelvageHeight( double val )
+    {
+        m_selvageHeight = val;
+        wxString str = wxString::Format( "%4.1f", val );
+        SetAttrStr( Design::AT_SelvageHeight, str );
+
+    };
+
+
+    //--------------
+
+    void Stamp::SetSelvageHeight( wxString str )
+    {
+        SetAttrStr( Design::AT_SelvageHeight, str );
+        bool ok = str.ToDouble( &m_selvageHeight );
+    };
+
+
+    //--------------
+
+    void Stamp::SetSelvageWidth( double val )
+    {
+        m_selvageWidth = val;
+        wxString str = wxString::Format( "%4.1f", val );
+        SetAttrStr( Design::AT_SelvageWidth, str );
+        SetSelvageWidth( str );
+    };
+
+
+    //--------------
+
+    void Stamp::SetSelvageWidth( wxString str )
+    {
+        SetAttrStr( Design::AT_SelvageWidth, str );
+        bool ok = str.ToDouble( &m_selvageWidth );
+    };
+
+
+    //--------------
+
+    void Stamp::SetStampHeight( double val )
+    {
+        m_stampFrame.SetHeight( val );
+        wxString str = wxString::Format( "%4.1f", val );
+        SetAttrStr( Design::AT_Height, str );
+    };
+
+
+    //--------------
+
+    void Stamp::SetStampHeight( wxString str )
+    {
+        SetAttrStr( Design::AT_Height, str );
+        double val;
+        bool ok = str.ToDouble( &val );
+        m_stampFrame.SetHeight( val );
+    };
+
+
+    //--------------
+
+    void Stamp::SetStampImageFilename( wxString filename )
+    {
+        SetAttrStr( AT_ImageName, filename );
+        m_imageFilename = filename;
+        m_image = GetImageFromFilename( filename );
+    }
+
+
+    //--------------
+
+    void Stamp::SetStampWidth( double val )
+    {
+        m_stampFrame.SetWidth( val );
+        wxString str = wxString::Format( "%4.1f", val );
+        SetAttrStr( Design::AT_Width, str );
+        UpdateMinimumSize( );
+        UpdatePositions( );
+    };
+
+
+    //--------------
+
+    void Stamp::SetStampWidth( wxString str )
+    {
+        SetAttrStr( Design::AT_Width, str );
+        double val;
+        bool ok = str.ToDouble( &val );
+        m_stampFrame.SetWidth( val );
+    };
+
+
+    //--------------
 
     void Stamp::SetTitleLocation( TitleLocation loc )
     {
@@ -721,6 +834,8 @@ namespace Design {
         }
         SetAttrStr( AT_StampNameLocation, StampTitleLocationStrings[ loc ] );
     };
+
+
     //--------------
 
     bool Stamp::UpdateMinimumSize( )
@@ -758,11 +873,13 @@ namespace Design {
         return true;
     }
 
+
     //--------------
 
     void Stamp::UpdateSizes( )
     {
     }
+
 
     //--------------
 
@@ -804,6 +921,7 @@ namespace Design {
         ValidateNode( );
 
     }
+
 
     //--------------
 
@@ -851,22 +969,7 @@ namespace Design {
                 std::cout << GetAlbumTreeCtrl( )->GetItemText( id ) << " Warning\n";
             }
         }
-
         return status;
-
     }
 
-    //--------------
-
-    void Stamp::CalculateYPos( double yPos, double height )
-    {
-        if ( GetTitleLocation( ) == AT_TitleLocationBottom )
-        {
-            SetYPos( yPos );
-        }
-        else
-        {
-            SetYPos( yPos + height - GetHeight( ) );
-        }
-    }
 }

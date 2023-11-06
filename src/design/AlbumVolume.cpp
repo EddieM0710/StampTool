@@ -75,16 +75,17 @@ namespace Design {
     AlbumVolume* AlbumVolume::InitAlbumVolume( )
     {
         m_album = 0;
-        return ( AlbumVolume* ) 0;
+        return ( AlbumVolume* ) this;
     }
 
 
 
-    void AlbumVolume::LoadDefaultDocument( )
+    void AlbumVolume::LoadDefaultDocument( wxString volName )
     {
+        // NewDocument sets the Volume m_doc
         wxXmlDocument* newDocument = NewDocument( );
         wxXmlNode* root = newDocument->GetRoot( );
-        root->AddAttribute( AttrNameStrings[ AT_Name ], "" );
+        root->AddAttribute( AttrNameStrings[ AT_Name ], volName );
         root->AddAttribute( AttrNameStrings[ AT_OverSizePaper ], "False" );
         root->AddAttribute( AttrNameStrings[ AT_PaperHeight ], "0" );
         root->AddAttribute( AttrNameStrings[ AT_PaperWidth ], "0" );
@@ -121,12 +122,6 @@ namespace Design {
     }
 
 
-    AlbumVolume* NewAlbumVolume( )
-    {
-        AlbumVolume* albumVolume = new AlbumVolume( );
-        albumVolume->InitAlbumVolume( );
-        return albumVolume;
-    }
 
     void AlbumVolume::Save( )
     {

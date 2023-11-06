@@ -46,6 +46,7 @@
 
 #include "catalog/CatalogData.h"
 #include "catalog/CatalogDefs.h"
+
 #include "catalog/StampMount.h"
 #include "catalog/Entry.h"
 #include "collection/CollectionList.h"
@@ -112,14 +113,14 @@ namespace Catalog
     bool CatalogVolume::FixupInventoryStatus( wxXmlNode* parent, InventoryStatusType parentStatus )
     {
 
-        if ( parentStatus >= ST_None && parentStatus < ST_Exclude )
-        {
-            //make sure this status is in a specimen
-            wxXmlNode* node = Utils::NewNode( parent, "Specimen" );
-            wxString currCollection = GetCollectionList( )->GetCurrentName( );
-            Utils::SetAttrStr( node, ItemDataNames[ IDT_Collection ], currCollection );
-            Utils::SetAttrStr( node, ItemDataNames[ IDT_InventoryStatus ], InventoryStatusStrings[ parentStatus ] );
-        }
+        // if ( parentStatus >= ST_None && parentStatus < ST_Exclude )
+        // {
+        //     //make sure this status is in a specimen
+        //     wxXmlNode* node = Utils::NewNode( parent, "Specimen" );
+        //     wxString currCollection = GetCollectionList( )->GetCurrentName( );
+        //     Utils::SetAttrStr( node, ItemDataNames[ IDT_Collection ], currCollection );
+        //     Utils::SetAttrStr( node, ItemDataNames[ IDT_InventoryStatus ], InventoryStatusStrings[ parentStatus ] );
+        // }
 
         bool specimenFound = false;
         wxXmlNode* child = parent->GetChildren( );
@@ -131,21 +132,28 @@ namespace Catalog
             if ( !nodeName.Cmp( "Entry" ) )
             {
 
-                wxString statusStr = child->GetAttribute( XMLDataNames[ DT_InventoryStatus ] );
-                InventoryStatusType status = ( InventoryStatusType ) ST_Exclude;
-                if ( !statusStr.IsEmpty( ) )
-                {
-                    status = FindStatusType( statusStr );
-                }
-                wxString currCollection = GetCollectionList( )->GetCurrentName( );
-                // find all specimen nodes
-
-                FixupInventoryStatus( child, status );
+                FixupInventoryStatus( child, parentStatus );
+                // all inventory statuses should have been removed already
                 bool ok = child->DeleteAttribute( XMLDataNames[ DT_InventoryStatus ] );;
 
             }
             else  if ( !nodeName.Cmp( "Specimen" ) )
             {
+                // if we find a specimen we need to see if the parent has an inventory node
+                // if it does not we need to create one
+                // then we need to detach the specimen, rename it to item and add to the inventory.
+
+                wxXmlNode* inventoryNode = Utils::FirstChildElement( parent, "Inventory" );
+
+                if ( !inventoryNode )
+                {
+                    inventoryNode = Utils::NewNode( parent, "Inventory" );
+                }
+                if ( parent->RemoveChild( child ) )
+                {
+                    child->SetName( "Item" );
+                    inventoryNode->AddChild( child );
+                }
                 // use the status in the specimen in preference to the parent preference
                 wxString statusStr = child->GetAttribute( ItemDataNames[ IDT_InventoryStatus ], "" );
 
@@ -187,6 +195,10 @@ namespace Catalog
                     }
                 }
             }
+            else  if ( !nodeName.Cmp( "Inventory" ) )
+            {
+                //assume it is fixed
+            }
             else  if ( !nodeName.Cmp( "CatalogCode" ) )
             {
                 //clobber it... or just ignore it
@@ -202,7 +214,6 @@ namespace Catalog
         }
         return true;
     }
-
 
 
     bool CatalogVolume::LoadCSV( wxString filename )
@@ -229,125 +240,17 @@ namespace Catalog
         return status;
     }
 
-    void CatalogVolume::Load( )
+
+    void CatalogVolume::LoadDefaultDocument( wxString volName )
     {
-        LoadXML( );
-        wxString name = GetName( );
-        if ( !name.IsEmpty( ) )
-        {
-            name = GetFilename( );
-            wxFileName fn( name );
-            SetName( fn.GetName( ) );
-        }
+        // NewDocument sets the Volume m_doc
+        wxXmlDocument* newDocument = NewDocument( );
+        wxXmlNode* root = newDocument->GetRoot( );
+        root->AddAttribute( "Name", volName );
+
+
     }
 
-    bool CatalogVolume::UpdateMount( )
-    {
-
-        wxXmlNode* root = GetDoc( )->GetRoot( );
-        wxString nodeName = root->GetName( );
-
-        wxXmlNode* child = root;
-        while ( child )
-        {
-            UpdateMount( child );
-            child = child->GetNext( );
-        }
-        return true;
-    }
-
-    bool CatalogVolume::UpdateMount( wxXmlNode* parent )
-    {
-        wxXmlNode* child = parent->GetChildren( );
-        while ( child )
-        {
-            wxString nodeName = child->GetName( );
-            if ( !nodeName.Cmp( "Entry" ) )
-            {
-                wxString id = child->GetAttribute( "ID_Nbr" );
-                wxString mountStr = GetStampMountData( )->Find( id );
-                wxString status = child->GetAttribute( XMLDataNames[ DT_StampMount ] );
-                if ( status.IsEmpty( ) && !mountStr.IsEmpty( ) )
-                {
-                    Utils::SetAttrStr( child, XMLDataNames[ DT_StampMount ], mountStr );
-                }
-            }
-            else
-            {
-            }
-
-            UpdateMount( child );
-            child = child->GetNext( );
-        }
-        return true;
-    }
-
-
-    CatalogVolume* NewCatalogVolumeInstance( )
-    {
-        return new CatalogVolume( );
-    }
-
-    void CatalogVolume::Save( )
-    {
-        wxString filename = GetFilename( );
-        if ( wxFileExists( filename ) )
-        {
-            wxFileName bakFile( filename );
-            bakFile.SetExt( "bak.cat" );
-            wxRenameFile( filename, bakFile.GetFullPath( ), true );
-        }
-        GetDoc( )->Save( filename );
-        SetDirty( false );
-    }
-
-
-    // resort the tree with the new sort order data.
-    // Probably doint this because the sort order was changed.
-    void CatalogVolume::ReSortTree( )
-    {
-        wxXmlDocument* newDoc = new wxXmlDocument( );
-        wxXmlNode* newRoot = newDoc->GetRoot( );
-        if ( !newRoot )
-        {
-            newRoot = Utils::NewNode( newDoc, Catalog::CatalogBaseNames[ Catalog::NT_Catalog ] );
-        }
-
-        wxXmlDocument* doc = GetDoc( );
-        wxXmlNode* root = doc->GetRoot( );
-
-        wxXmlAttribute* attr = Utils::GetAttribute( root, Catalog::DataTypeNames[ Catalog::DT_Name ] );
-        if ( attr )
-        {
-            wxString name = attr->GetName( );
-            wxString value = attr->GetValue( );
-            Utils::SetAttrStr( newRoot, name, value );
-        }
-        else
-        {
-            Utils::SetAttrStr( newRoot, Catalog::DataTypeNames[ Catalog::DT_Name ], "" );
-            //  Utils::SetAttrStr( newRoot, "Name", "" );
-        }
-
-        Catalog::SortData( newRoot, root );
-
-        ReplaceDocument( newDoc );
-    }
-
-
-    // this is an attempt to group the entrys;
-    // i.e., an item of type entry can be a child of an item SeTenent type.
-    void CatalogVolume::ReGroupMultiples( )
-    {
-        StructureCatalogVolume( Catalog::FT_Se_tenant, Catalog::FT_Stamp );
-        StructureCatalogVolume( Catalog::FT_Gutter_Pair, Catalog::FT_Stamp );
-        StructureCatalogVolume( Catalog::FT_Booklet_Pane, Catalog::FT_Stamp, Catalog::FT_Se_tenant );
-        StructureCatalogVolume( Catalog::FT_Mini_Sheet, Catalog::FT_Stamp, Catalog::FT_Se_tenant );
-        StructureCatalogVolume( Catalog::FT_Souvenir_Sheet, Catalog::FT_Stamp, Catalog::FT_Se_tenant );
-        StructureCatalogVolume( Catalog::FT_Mini_Sheet, Catalog::FT_Stamp, Catalog::FT_Se_tenant );
-        StructureCatalogVolume( Catalog::FT_Booklet, Catalog::FT_Stamp, Catalog::FT_Booklet_Pane );
-
-    }
 
     void CatalogVolume::MakeParentList( Catalog::FormatType parentType, Utils::wxXmlNodeArray* parentList, wxXmlNode* node )
     {
@@ -377,6 +280,79 @@ namespace Catalog
         MakeParentList( parentType, parentList, node );
 
         return parentList;
+    }
+
+
+    // CatalogVolume* NewCatalogVolumeInstance( )
+    // {
+    //     return new CatalogVolume( );
+    // }
+
+    // resort the tree with the new sort order data.
+    // Probably doint this because the sort order was changed.
+    void CatalogVolume::ReSortTree( )
+    {
+        wxXmlDocument* newDoc = new wxXmlDocument( );
+        wxXmlNode* newRoot = newDoc->GetRoot( );
+        if ( !newRoot )
+        {
+            newRoot = Utils::NewNode( newDoc, Catalog::CatalogBaseNames[ Catalog::NT_Catalog ] );
+        }
+
+        wxXmlDocument* doc = GetDoc( );
+        wxXmlNode* root = doc->GetRoot( );
+
+        wxXmlAttribute* attr = Utils::GetAttribute( root, Catalog::DataTypeNames[ Catalog::DT_Name ] );
+        if ( attr )
+        {
+            wxString name = attr->GetName( );
+            wxString value = attr->GetValue( );
+            Utils::SetAttrStr( newRoot, name, value );
+        }
+        else
+        {
+            Utils::SetAttrStr( newRoot, Catalog::DataTypeNames[ Catalog::DT_Name ], "" );
+            //  Utils::SetAttrStr( newRoot, "Name", "" );
+        }
+
+        Catalog::SortData( newRoot, root );
+        ReplaceDocument( newDoc );
+    }
+
+    // this is an attempt to group the entrys;
+    // i.e., an item of type entry can be a child of an item SeTenent type.
+    void CatalogVolume::ReGroupMultiples( )
+    {
+        StructureCatalogVolume( Catalog::FT_Se_tenant, Catalog::FT_Stamp );
+        StructureCatalogVolume( Catalog::FT_Gutter_Pair, Catalog::FT_Stamp );
+        StructureCatalogVolume( Catalog::FT_Booklet_Pane, Catalog::FT_Stamp, Catalog::FT_Se_tenant );
+        StructureCatalogVolume( Catalog::FT_Mini_Sheet, Catalog::FT_Stamp, Catalog::FT_Se_tenant );
+        StructureCatalogVolume( Catalog::FT_Souvenir_Sheet, Catalog::FT_Stamp, Catalog::FT_Se_tenant );
+        StructureCatalogVolume( Catalog::FT_Mini_Sheet, Catalog::FT_Stamp, Catalog::FT_Se_tenant );
+        StructureCatalogVolume( Catalog::FT_Booklet, Catalog::FT_Stamp, Catalog::FT_Booklet_Pane );
+
+    }
+
+    void CatalogVolume::Save( )
+    {
+        SaveXML( );
+    }
+
+    void CatalogVolume::SaveXML( )
+    {
+        wxString filename = GetFilename( );
+        if ( GetDoc( ) )
+        {
+            if ( wxFileExists( filename ) )
+            {
+                wxFileName bakFile( filename );
+                bakFile.SetExt( "bak.cat" );
+                wxRenameFile( filename, bakFile.GetFullName( ), true );
+            }
+
+            GetDoc( )->Save( filename );
+            SetDirty( false );
+        }
     }
 
     //
@@ -458,5 +434,54 @@ namespace Catalog
         }
     }
 
+
+    CatalogVolume* NewCatalogVolume( )
+    {
+        CatalogVolume* catalogVolume = new CatalogVolume( );
+        return catalogVolume;
+    }
+
+
+
+    bool CatalogVolume::UpdateMount( )
+    {
+
+        wxXmlNode* root = GetDoc( )->GetRoot( );
+        wxString nodeName = root->GetName( );
+
+        wxXmlNode* child = root;
+        while ( child )
+        {
+            UpdateMount( child );
+            child = child->GetNext( );
+        }
+        return true;
+    }
+
+    bool CatalogVolume::UpdateMount( wxXmlNode* parent )
+    {
+        wxXmlNode* child = parent->GetChildren( );
+        while ( child )
+        {
+            wxString nodeName = child->GetName( );
+            if ( !nodeName.Cmp( "Entry" ) )
+            {
+                wxString id = child->GetAttribute( "ID_Nbr" );
+                wxString mountStr = GetStampMountData( )->Find( id );
+                wxString status = child->GetAttribute( XMLDataNames[ DT_StampMount ] );
+                if ( status.IsEmpty( ) && !mountStr.IsEmpty( ) )
+                {
+                    Utils::SetAttrStr( child, XMLDataNames[ DT_StampMount ], mountStr );
+                }
+            }
+            else
+            {
+            }
+
+            UpdateMount( child );
+            child = child->GetNext( );
+        }
+        return true;
+    }
 
 }

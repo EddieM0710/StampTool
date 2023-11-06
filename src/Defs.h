@@ -62,17 +62,18 @@ namespace Inventory {
 namespace Catalog {
     class StampMountData;
 };
-namespace Utils {
-    class Project;
-};
+
 namespace Utils {
     class Settings;
 };
 
-extern bool Dirty;
+namespace Utils {
+    class Project;
+};
 
-void SetDirty( bool state = true );
-bool IsDirty( );
+
+
+
 
 Design::AlbumData* GetAlbumData( );
 
@@ -80,23 +81,23 @@ AlbumImagePanel* GetAlbumImagePanel( );
 
 //CatalogTreeCtrl* GetAlbumPageTreeCtrl( );
 
-Design::AlbumVolume* GetAlbumVolume( );
+AlbumTOCTreeCtrl* GetAlbumTOCTreeCtrl( );
 
 AlbumTreeCtrl* GetAlbumTreeCtrl( );
+
+Design::AlbumVolume* GetAlbumVolume( );
 
 AppData* GetAppData( );
 
 Catalog::CatalogData* GetCatalogData( );
 
-Inventory::CollectionList* GetCollectionList( );
+CatalogTOCTreeCtrl* GetCatalogTOCTreeCtrl( );
 
 CatalogTreeCtrl* GetCatalogTreeCtrl( );
 
-CatalogTOCTreeCtrl* GetCatalogTOCTreeCtrl( );
-
-AlbumTOCTreeCtrl* GetAlbumTOCTreeCtrl( );
-
 Catalog::CatalogVolume* GetCatalogVolume( );
+
+Inventory::CollectionList* GetCollectionList( );
 
 Utils::FontList* GetFontList( );
 
@@ -194,9 +195,20 @@ inline const wxString Bool2String( bool b )
  * @return true  if str == "true"
  * @return false   if str == "false" ( or anything else )
  */
-inline const bool String2Bool( wxString str )
+inline const bool String2Bool( wxString str, bool defaultStr = false )
 {
-    return str.CmpNoCase( "true" ) ? false : true;
+    if ( str.CmpNoCase( "true" ) )
+    {
+        return false;
+    }
+    else if ( str.CmpNoCase( "false" ) )
+    {
+        return true;
+    }
+    else
+    {
+        return defaultStr;
+    }
 };
 
 /**

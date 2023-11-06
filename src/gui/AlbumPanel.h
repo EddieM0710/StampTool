@@ -41,7 +41,7 @@ class PageDetailsPanel;
 class ColDetailsPanel;
 class RowDetailsPanel;
 class StampDetailsPanel;
-class TestDetailsPanel;
+//class TestDetailsPanel;
 
 namespace Design {
     class AlbumBase;
@@ -83,110 +83,57 @@ public:
         ID_ALBUMLAYOUTPANEL
     };
 
-    ///  @brief Construct a new Album Design Panel object
-    ///  
+
     AlbumPanel( );
 
-    ///  @brief Construct a new Album Design Panel object
-    ///  
-    ///  @param parent 
-    ///  @param id 
-    ///  @param pos 
-    ///  @param size 
-    ///  @param style 
     AlbumPanel( wxWindow* parent, wxWindowID id = SYMBOL_STAMPTOOLAlbumPanel_IDNAME, const wxPoint& pos = SYMBOL_STAMPTOOLAlbumPanel_POSITION, const wxSize& size = SYMBOL_STAMPTOOLAlbumPanel_SIZE, long style = SYMBOL_STAMPTOOLAlbumPanel_STYLE );
 
-    ///  @brief Destroy the Album Design Panel object
-    ///  
     ~AlbumPanel( );
 
-    ///  @brief 
-    ///  
-    ///  @param parent 
-    ///  @param id 
-    ///  @param pos 
-    ///  @param size 
-    ///  @param style 
-    ///  @return true 
-    ///  @return false 
+    void Clear( );
+
     bool Create( wxWindow* parent, wxWindowID id = SYMBOL_STAMPTOOLAlbumPanel_IDNAME, const wxPoint& pos = SYMBOL_STAMPTOOLAlbumPanel_POSITION, const wxSize& size = SYMBOL_STAMPTOOLAlbumPanel_SIZE, long style = SYMBOL_STAMPTOOLAlbumPanel_STYLE );
 
-    ///  @brief Create a Controls object
-    ///  
-    void CreateControls( );
     wxPanel* CreateAlbumImageLayoutPanel( wxWindow* parent );
+
+    void CreateControls( );
 
     wxPanel* CreateDetailsScrolledWindow( wxWindow* parent );
 
     wxSplitterWindow* CreateImageDetailsSplitterWindow( wxWindow* parent );
 
-    void ShowDetails( Design::AlbumBase* albumBase );
-
-    ///  @brief 
-    ///  
-    void Init( );
-
-    ///  @brief Get the Album Design Tree Panel object
-    ///  
-    ///  @return AlbumTreePanel* 
     AlbumTreePanel* GetAlbumTreePanel( ) {
         return m_albumTreePanel;
     };
 
+    void Init( );
+
     void NewDesign( );
+
+    void OnGeneratePDFClick( wxCommandEvent& event );
+
+    void OnManageClick( wxCommandEvent& event );
+
+    void OnSplitterwindowSashPosChanged( wxSplitterEvent& event );
+
+    void OnZoomsliderUpdated( wxCommandEvent& event );
 
     void OpenDesign( );
 
     void SaveAsDesign( );
 
-    ///  @brief Set the Album List Selection object
-    ///  
-    ///  @param i 
     void SetAlbumListSelection( int i )
     {
         m_albumListCtrl->SetSelection( i );
     };
 
-    ///  @brief 
-    ///  
-    ///  @return true 
-    ///  @return false 
-    static bool ShowToolTips( );
-
-    ///  @brief Set the Sash Position object
-    ///  
-    ///  @param pos 
     void SetSashPosition( int pos ) {
         m_albumVerticalSplitterWindow->SetSashPosition( pos );
     };
 
-    ///  @brief Set the Album List Strings object
-    ///  
-    ///  @param choices 
-    // void SetAlbumListStrings( wxArrayString& choices )
-    // {
-    //     m_albumListCtrl->Clear( );
-    //     m_albumListCtrl->Append( choices );
-    // };
+    void ShowDetails( Design::AlbumBase* albumBase );
 
-    ///  @brief 
-    ///  
-    ///  @param event   
-    void OnGeneratePDFClick( wxCommandEvent& event );
-
-    //void OnAlbumChoiceSelected( wxCommandEvent& event );
-
-    ///  @brief 
-    ///  
-    ///  @param event 
-    void OnZoomsliderUpdated( wxCommandEvent& event );
-
-    ///  @brief 
-    ///  
-    ///  @param event 
-    void OnManageClick( wxCommandEvent& event );
-
-    void OnSplitterwindowSashPosChanged( wxSplitterEvent& event );
+    static bool ShowToolTips( );
 
 private:
     wxSplitterWindow* m_albumVerticalSplitterWindow;
@@ -200,11 +147,11 @@ private:
     ColDetailsPanel* m_colDetailsPanel;
     RowDetailsPanel* m_rowDetailsPanel;
     StampDetailsPanel* m_stampDetailsPanel;
-    TestDetailsPanel* m_testDetailsPanel;
+    //TestDetailsPanel* m_testDetailsPanel;
     wxChoice* m_albumListCtrl;
 
     wxSplitterWindow* m_imageDetailsSplitterWindow;
-    wxPanel* theAlbumLayoutPanel;
+
     wxPanel* m_detailsScrolledWindow;
 };
 

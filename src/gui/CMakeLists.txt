@@ -19,8 +19,9 @@ add_library( GuiFiles SHARED
     CatalogPanel.cpp 
     CatalogTreeCtrl.cpp
     CharacteristicsPanel.cpp 
-    ColDetailsPanel.cpp 
+    ColDetailsPanel.cpp
     DefinePeriodsPanel.cpp
+    EditProjectDetails.cpp 
     AlbumTreeCtrl.cpp 
     FileCreateDialog.cpp
     GenerateList.cpp
@@ -33,14 +34,13 @@ add_library( GuiFiles SHARED
     LabeledTextBox.cpp
     NewStampDialog.cpp 
     HelperPanel.cpp
-    PageDetailsPanel.cpp
     RemoveVolumeDialog.cpp    
-    RowDetailsPanel.cpp 
-    SettingsDialog.cpp
+    PreferencesDialog.cpp
     SortOrderPanel.cpp
     StampDescriptionPanel.cpp 
     StampDetailsPanel.cpp
-    TestDetailsPanel.cpp
+    RowDetailsPanel.cpp
+    PageDetailsPanel.cpp
     TOCTreeCtrl.cpp
     AlbumTOCTreeCtrl.cpp
     CatalogTOCTreeCtrl.cpp

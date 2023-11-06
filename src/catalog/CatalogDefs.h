@@ -39,7 +39,7 @@ namespace Catalog {
     /// @enum CatalogBaseType
     ///  @brief Enum defining Entry node types. One of NT_Catalog = 0, NT_Country, NT_Period,
     ///  NT_Decade, NT_Year, NT_Emission, NT_Status, NT_Condition, NT_Entry,
-    ///  NT_Specimen, NT_CatalogCode, NT_None
+    ///  NT_Inventory, NT_Item, NT_None
     typedef enum
     {
         NT_Catalog = 0,
@@ -51,27 +51,15 @@ namespace Catalog {
         NT_Status,
         NT_Condition,
         NT_Entry,
-        NT_Specimen,
-        NT_CatalogCode,
+        NT_Inventory,
+        NT_Item,
         NT_None,
         NT_NbrTypes
     } CatalogBaseType;
 
 
-    //     /// @enum  
-    //    ///  @brief Enum defining catalog code data types;
-    //     /// 
-    //     ///  This represents data for catalog code entry. 
-    //     typedef enum
-    //     {
-    //         CC_ID,
-    //         CC_Country,
-    //         CC_Catalog,
-    //         CC_NbrTypes
-    //     } CatalogCodeTypes;
 
-        /// @enum CheckedStatusType
-        ///  @brief Enum defining the status of a given entry.
+    /// ST_Unchecked , ST_Checked,, ST_NbrCheckedStatusTypes
     typedef enum
     {
         ST_Unchecked = 0,
@@ -79,15 +67,7 @@ namespace Catalog {
         ST_NbrCheckedStatusTypes
     } CheckedStatusType;
 
-    // ///  @enum  ClassificationTypes
-    // /// @brief Valid values of Classification Type. One of CT_Title = 0, CT_PreferredCatalog, CT_ImageDirectory,
-    // typedef enum
-    // {
-    //     CT_Title = 0,
-    //     CT_PreferredCatalog,
-    //     CT_ImageDirectory,
-    //     CT_NbrTypes
-    // } ClassificationTypes;
+
 
     ///  @enum DataTypes
     ///  @brief Enum defining data types; i.e., fields in a entry. One of  DT_Name,
@@ -205,7 +185,7 @@ namespace Catalog {
     /// @brief Enum defining item data types;
     /// 
     /// This represents data kept for actual physical stamps in the collection.
-    /// One of IDT_Type, IDT_Condition, IDT_Value, IDT_Location, IDT_Remarks,   
+    /// One of IDT_Collection, IDT_InventoryStatus, IDT_Type, IDT_Condition, IDT_Value, IDT_Remarks  
     typedef enum
     {
         IDT_Collection,
@@ -213,7 +193,6 @@ namespace Catalog {
         IDT_Type,
         IDT_Condition,
         IDT_Value,
-        IDT_Location,
         IDT_Remarks,
         IDT_NbrTypes
     } ItemDataTypes;

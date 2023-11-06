@@ -40,23 +40,32 @@
 #include "catalog/CatalogBase.h"
 #include "utils/XMLUtilities.h"
 
-  
+
 namespace Catalog {
+
+    //--------------
 
     double CatalogBase::GetNodeAttrDbl( wxString name )
     {
         return Utils::GetAttrDbl( m_catXMLNode, name );
     };
 
+    //--------------
+
     wxString CatalogBase::GetNodeAttrStr( wxString name )
     {
         return Utils::GetAttrStr( m_catXMLNode, name );
     };
 
+    //--------------
+
+
     void CatalogBase::SetNodeAttrDbl( wxString name, double val )
     {
         Utils::SetAttrDbl( m_catXMLNode, name, val );
     };
+
+    //--------------
 
     void CatalogBase::SetNodeAttrStr( wxString name, wxString val )
     {

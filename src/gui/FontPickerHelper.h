@@ -25,12 +25,12 @@
 #ifndef _FONTPICKERHELPER_H_
 #define _FONTPICKERHELPER_H_
 
-
-
-#include "gui/AlbumTreeCtrl.h"
 #include <wx/fontpicker.h>
 #include <wx/font.h>
 #include <wx/clrpicker.h>
+#include <wx/statbox.h>
+
+#include "gui/AlbumTreeCtrl.h"
 #include "gui/GuiDefs.h"
 
  ///  @brief Helper class to group repetitive control construction sequence
@@ -40,19 +40,8 @@ class FontPicker
 
 public:
 
-    ///  @brief create static, font picker color picker and default button t=ctrls
-    ///  
-    ///  @param parent 
-    ///  @param verticalSizer 
-    ///  @param staticText 
-    ///  @param idStatic 
-    ///  @param idFontPicker 
-    ///  @param idColorPicker 
-    ///  @param buttonText 
-    ///  @param idDefaultButton 
-    ///  @param font 
-    ///  @param color 
-    FontPicker( wxWindow* parent, wxBoxSizer* verticalSizer,
+
+    FontPicker( wxWindow* parent, wxBoxSizer* inSizer,
         wxString staticText, wxString buttonText, int& lastID,
         const wxFont& font = wxNullFont,
         const wxColour& color = *wxStockGDI::GetColour( wxStockGDI::COLOUR_BLACK ) )
@@ -61,24 +50,29 @@ public:
         m_font = font;
         m_color = color;
 
-        m_horizontalSizer = new wxBoxSizer( wxHORIZONTAL );
-        verticalSizer->Add( m_horizontalSizer, 0, wxGROW | wxALL, 5 );
+        wxStaticBox* itemStaticBoxSizerStatic = new wxStaticBox( parent, wxID_ANY, staticText );
+        wxStaticBoxSizer* itemStaticBoxSizer = new wxStaticBoxSizer( itemStaticBoxSizerStatic, wxHORIZONTAL );
+        inSizer->Add( itemStaticBoxSizer, 0, wxGROW | wxALL, 2 );
 
-        wxStaticText* FontStatic = new wxStaticText( parent, ++lastID, staticText, wxDefaultPosition, wxDefaultSize, 0 );
-        m_horizontalSizer->Add( FontStatic, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+
+        // itemStaticBoxSizer = new wxBoxSizer( wxHORIZONTAL );
+        // verticalSizer->Add( m_horizontalSizer, 0, wxGROW | wxALL, 5 );
+
+        // wxStaticText* FontStatic = new wxStaticText( parent, ++lastID, staticText, wxDefaultPosition, wxDefaultSize, 0 );
+         //itemStaticBoxSizer->Add( FontStatic, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
         m_fontPicker = new wxFontPickerCtrl( parent, ++lastID,
             m_font, wxDefaultPosition,
             wxDefaultSize, wxFNTP_DEFAULT_STYLE );
-        m_horizontalSizer->Add( m_fontPicker, 0, wxGROW | wxALL, 5 );
+        itemStaticBoxSizer->Add( m_fontPicker, 1, wxGROW | wxALL, 5 );
 
         m_colorPicker = new wxColourPickerCtrl( parent, ++lastID,
             m_color, wxDefaultPosition,
             wxSize( 40, -1 ), wxCLRP_DEFAULT_STYLE );
-        m_horizontalSizer->Add( m_colorPicker, 0, wxGROW | wxALL, 5 );
+        itemStaticBoxSizer->Add( m_colorPicker, 0, wxGROW | wxALL, 5 );
 
         m_defaultButton = new wxButton( parent, ++lastID, buttonText, wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT );
-        m_horizontalSizer->Add( m_defaultButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+        itemStaticBoxSizer->Add( m_defaultButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
         // m_horizontalSizer->Add( 5, 5, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 

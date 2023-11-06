@@ -27,12 +27,24 @@
 
 #include "utils/StampList.h"
 
-namespace Design { class AlbumData; };
-namespace Catalog { class CatalogData; };
-namespace Inventory { class CollectionList; };
-namespace Catalog { class StampMountData; };
-namespace Utils { class Project; };
-namespace Utils { class Settings; };
+namespace Design {
+    class AlbumData;
+};
+namespace Catalog {
+    class CatalogData;
+};
+namespace Inventory {
+    class CollectionList;
+};
+namespace Catalog {
+    class StampMountData;
+};
+namespace Utils {
+    class Project;
+};
+namespace Utils {
+    class Settings;
+};
 
 // Links to all the data and controls needed for Album design
 class AppData
@@ -46,6 +58,9 @@ public:
     ///@brief Destroy the Tool Data object
     ///
     ~AppData( ) { };
+
+
+    void Clear( );
 
     void SetCaption( );
 
@@ -61,33 +76,27 @@ public:
 
     Inventory::CollectionList* GetCollectionList( );
 
-    Catalog::StampMountData* GetStampMountData( );
-
-    ///@brief Get the Project object
-    ///@return Utils::Project* 
     Utils::Project* GetProject( );
 
-    ///@brief Get the Settings object
-    ///@return Utils::Settings* 
     Utils::Settings* GetSettings( );
 
-    ///  @brief Get the Stamp Album Catalog Link object
-    ///  
-    ///  @return Utils::StampList* 
+    Catalog::StampMountData* GetStampMountData( );
+
     Utils::StampList* GetStampAlbumCatalogLink( );
 
-    ///@brief 
-    ///
     void InitAppData( );
-
 
     ///  @brief Is project dirty?
     ///  
     ///  @return true 
     ///  @return false 
-    bool isDirty( ) { return m_dirty; };
+    bool isDirty( ) {
+        return m_dirty;
+    };
 
-    void SetDirty( bool val = true ) { m_dirty = val; };
+    void SetDirty( bool val = true ) {
+        m_dirty = val;
+    };
 
 
 private:

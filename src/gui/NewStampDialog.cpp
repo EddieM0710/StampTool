@@ -115,7 +115,7 @@ NewStampDialog::~NewStampDialog( )
 void NewStampDialog::Init( )
 {
     // NewStampDialog member initialisation
-    m_ID = NULL;
+  //  m_ID = NULL;
     m_name = NULL;
     m_emission = NULL;
     m_format = NULL;
@@ -141,10 +141,13 @@ void NewStampDialog::CreateControls( )
     wxBoxSizer* itemBoxSizer1 = new wxBoxSizer( wxVERTICAL );
     itemDialog1->SetSizer( itemBoxSizer1 );
 
-    m_ID = new LabeledTextBox( itemDialog1, ID_IDLABELEDTEXTBOX, wxDefaultPosition, wxDefaultSize, 0 );
-    if ( NewStampDialog::ShowToolTips( ) )
-        m_ID->SetToolTip( _( "Enter unique ID" ) );
-    itemBoxSizer1->Add( m_ID, 0, wxGROW | wxALL, 2 );
+    // m_ID = new LabeledTextBox( itemDialog1, ID_IDLABELEDTEXTBOX, wxDefaultPosition, wxDefaultSize, 0 );
+    // if ( NewStampDialog::ShowToolTips( ) )
+    //     m_ID->SetToolTip( _( "Enter unique ID" ) );
+    // itemBoxSizer1->Add( m_ID, 0, wxGROW | wxALL, 2 );
+
+    m_catNbr = new LabeledTextBox( itemDialog1, ID_CATNBRTEXTBOX, wxDefaultPosition, wxDefaultSize, 0 );
+    itemBoxSizer1->Add( m_catNbr, 0, wxGROW | wxALL, 2 );
 
     m_name = new LabeledTextBox( itemDialog1, ID_NAMELABELEDTEXTBOX, wxDefaultPosition, wxDefaultSize, 0 );
     itemBoxSizer1->Add( m_name, 0, wxGROW | wxALL, 2 );
@@ -223,9 +226,6 @@ void NewStampDialog::CreateControls( )
     m_catalog = new LabeledTextBox( itemDialog1, ID_CATALOGTEXTBOX, wxDefaultPosition, wxDefaultSize, 0 );
     itemBoxSizer1->Add( m_catalog, 0, wxGROW | wxALL, 2 );
 
-    m_catNbr = new LabeledTextBox( itemDialog1, ID_CATNBRTEXTBOX, wxDefaultPosition, wxDefaultSize, 0 );
-    itemBoxSizer1->Add( m_catNbr, 0, wxGROW | wxALL, 2 );
-
     wxBoxSizer* itemBoxSizer2 = new wxBoxSizer( wxHORIZONTAL );
     itemBoxSizer1->Add( itemBoxSizer2, 0, wxGROW | wxALL, 2 );
 
@@ -262,10 +262,10 @@ void NewStampDialog::CreateControls( )
     m_format->SetLabel( "Format" );
     m_width->SetLabel( "Width" );
     m_height->SetLabel( "Height" );
-    m_ID->SetLabel( "ID" );
+    //m_ID->SetLabel( "" );
     m_name->SetLabel( "Name" );
     m_catalog->SetLabel( "Catalog" );
-    m_catNbr->SetLabel( "Nbr" );
+    m_catNbr->SetLabel( "Catalog Code" );
     m_country->SetLabel( "Country" );
 }
 
@@ -321,12 +321,21 @@ void NewStampDialog::OnCancelClick( wxCommandEvent& event )
 
 void NewStampDialog::UpdateStamp( )
 {
-
-    if ( m_country->IsModified( ) )
-    {
-        //        m_stamp->SetDirty( );
-        //        m_stamp->SetCountryID( m_country->GetValue( ) );
-    }
+    m_stamp->SetIssuedDate( m_issueDate->GetValue( ) );
+    m_stamp->SetEmission( m_emission->GetStringSelection( ) );
+    m_stamp->SetFormat( m_format->GetStringSelection( ) );
+    m_stamp->SetWidth( m_width->GetValue( ) );
+    m_stamp->SetHeight( m_height->GetValue( ) );
+    //m_stamp->SetID( m_ID->GetValue( ) );
+    m_stamp->SetName( m_name->GetValue( ) );
+    // m_stamp->SetC( m_catalog->GetValue( ) );
+    m_stamp->SetCatalogCodes( m_catNbr->GetValue( ) );
+    m_stamp->SetCountry( m_country->GetValue( ) );
+    // if ( m_country->IsModified( ) )
+    // {
+    //     //        m_stamp->SetDirty( );
+    //     //        m_stamp->SetCountryID( m_country->GetValue( ) );
+    // }
 
 }
 /*
@@ -376,7 +385,7 @@ void NewStampDialog::SetStamp( Catalog::Entry* stamp )
     m_stamp = stamp;
     if ( m_stamp->IsOK( ) )
     {
-        m_ID->SetValue( m_stamp->GetID( ) );
+        // m_ID->SetValue( m_stamp->GetID( ) );
         m_name->SetValue( m_stamp->GetName( ) );
         m_issueDate->SetValue( m_stamp->GetAttr( Catalog::DT_Issued_on ) );
         SetChoice( m_emission, m_stamp->GetEmission( ) );

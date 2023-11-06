@@ -46,11 +46,6 @@
 wxPdfArrayDouble defaultDash;
 
 
-int LastVolumeID = IDCatalogMenuID;
-int GetNextVolumeID( )
-{
-    return ++LastVolumeID;
-}
 
 void DrawLabelPDF( wxPdfDocument* doc, const wxString& text,
     RealPoint pos,

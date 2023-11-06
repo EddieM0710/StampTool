@@ -1,5 +1,5 @@
 /**
- * @file Specimen.h
+ * @file InventoryItem.h
  * @author Eddie Monroe ( )
  * @brief This is a wrapper of an wxXmlNode for
  * safe/convenient getting/putting.
@@ -23,8 +23,8 @@
  *
  */
 
-#ifndef Instance_h
-#define Instance_h
+#ifndef InventoryItem_h
+#define InventoryItem_h
 
 #include <vector>
 #include <wx/dataview.h>
@@ -40,34 +40,34 @@ namespace Catalog {
     /**
      * @brief This is a wrapper of an wxXmlNode for
      * safe/convenient getting/putting.
-     * @see CatalogBase, Stamp, Specimen
+     * @see CatalogBase, Stamp, InventoryItem
      *
      */
-    class Specimen : public CatalogBase
+    class InventoryItem : public CatalogBase
     {
 
     public:
 
-        ///  @brief Construct a new Specimen object
+        ///  @brief Construct a new InventoryItem object
         ///  
-        Specimen( ) : CatalogBase( )
+        InventoryItem( ) : CatalogBase( )
         {
-            SetNodeType( NT_Specimen );
+            SetNodeType( Catalog::NT_Inventory );
             IsOK( );
         };
 
-        ///  @brief Construct a new Specimen object
+        ///  @brief Construct a new InventoryItem object
         ///  
         ///  @param ele 
-        Specimen( wxXmlNode* ele ) : CatalogBase( ele )
+        InventoryItem( wxXmlNode* ele ) : CatalogBase( ele )
         {
-            SetNodeType( NT_Specimen );
+            SetNodeType( Catalog::NT_Inventory );
             IsOK( );
         };
 
-        ///  @brief Destroy the Specimen object
+        ///  @brief Destroy the InventoryItem object
         ///  
-        ~Specimen( ) { };
+        ~InventoryItem( ) { };
 
         ///  @brief Get the attribute value of type
         ///  
@@ -78,41 +78,51 @@ namespace Catalog {
         ///  @brief Get the IDT_Condition Attribute
         ///  
         ///  @return wxString 
-        wxString GetCondition( ) { return GetAttr( IDT_Condition ); };
+        wxString GetCondition( ) {
+            return GetAttr( IDT_Condition );
+        };
 
         /**
-         * @brief Fills the input vector with the specimen values and returns the element pointer for convenience
+         * @brief Fills the input vector with the InventoryItem values and returns the element pointer for convenience
          *
          * @param data
          * @return wxXmlNode*
          */
         wxXmlNode* GetData( wxVector<wxVariant>* data );
 
-        ///  @brief Get the IDT_Location Attribute
-        ///  
-        ///  @return wxString 
-        wxString GetLocation( ) { return GetAttr( IDT_Location ); };
+        // ///  @brief Get the IDT_Location Attribute
+        // ///  
+        // ///  @return wxString 
+        // wxString GetLocation( ) { return GetAttr( IDT_Location ); };
 
         ///  @brief Get the IDT_Remarks  Attribute
         ///  
         ///  @return wxString 
-        wxString GetRemarks( ) { return GetAttr( IDT_Remarks ); };
+        wxString GetRemarks( ) {
+            return GetAttr( IDT_Remarks );
+        };
 
         ///  @brief Get the IDT_Type Attribute
         ///  
         ///  @return wxString 
-        wxString GetType( ) { return GetAttr( IDT_Type ); };
+        wxString GetType( ) {
+            return GetAttr( IDT_Type );
+        };
 
         ///  @brief Convenience function. Same as GetAttr( type )
         ///  
         ///  @param type 
         ///  @return wxString 
-        wxString GetVal( ItemDataTypes type ) { return GetAttr( type ); };
+        wxString GetVal( ItemDataTypes type ) {
+            return GetAttr( type );
+        };
 
         ///  @brief Get the IDT_Value Attribute
         ///  
         ///  @return wxString 
-        wxString GetValue( ) { return GetAttr( IDT_Value ); };
+        wxString GetValue( ) {
+            return GetAttr( IDT_Value );
+        };
 
         ///  @brief Sanity check instance
         ///  
@@ -129,33 +139,38 @@ namespace Catalog {
         ///  @brief Set the IDT_Condition Attribute
         ///  
         ///  @param val 
-        void SetCondition( wxString val ) { SetAttr( IDT_Condition, val ); };
-
-        ///  @brief Set the IDT_Location Attribute
-        ///  
-        ///  @param val 
-        void SetLocation( wxString val ) { SetAttr( IDT_Location, val ); };
+        void SetCondition( wxString val ) {
+            SetAttr( IDT_Condition, val );
+        };
 
         ///  @brief Set the IDT_RemarksV Attribute
         ///  
         ///  @param val 
-        void SetRemarks( wxString val ) { SetAttr( IDT_Remarks, val ); };
+        void SetRemarks( wxString val ) {
+            SetAttr( IDT_Remarks, val );
+        };
 
         ///  @brief Set the IDT_Type Attribute
         ///  
         ///  @param val 
-        void SetType( wxString val ) { SetAttr( IDT_Type, val ); };
+        void SetType( wxString val ) {
+            SetAttr( IDT_Type, val );
+        };
 
         ///  @brief Convenience function. Same as SGetAttr( type )
         ///  
         ///  @param type 
         ///  @param val 
-        void SetVal( ItemDataTypes type, wxString val ) { SetAttr( type, val ); };
+        void SetVal( ItemDataTypes type, wxString val ) {
+            SetAttr( type, val );
+        };
 
         ///  @brief Set the IDT_Value Attribute
         ///  
         ///  @param val 
-        void SetValue( wxString val ) { SetAttr( IDT_Value, val ); };
+        void SetValue( wxString val ) {
+            SetAttr( IDT_Value, val );
+        };
 
     private:
         bool m_OK;

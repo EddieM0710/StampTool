@@ -90,69 +90,52 @@ CatalogTOCTreeCtrl::CatalogTOCTreeCtrl( wxWindow* parent, const wxWindowID id,
    //    CreateImageList( );
 }
 
+//--------------
+
+Catalog::CatalogVolume* CatalogTOCTreeCtrl::GetCurrVolume( )
+{
+    wxTreeItemId currId = GetCurrentTreeID( );
+    if ( currId.IsOk( ) )
+    {
+        TOCTreeItemData* data = ( TOCTreeItemData* ) GetItemData( currId );
+        if ( data )
+        {
+            Utils::TOCBaseType type = data->GetType( );
+            if ( type == Utils::TOC_Volume )
+            {
+                return ( Catalog::CatalogVolume* ) data->GetVolume( );
+            }
+        }
+    }
+    return ( Catalog::CatalogVolume* ) 0;
+}
+
+//--------------
+
 wxXmlNode* CatalogTOCTreeCtrl::GetCurrVolumeRoot( )
 {
-    TOCTreeItemData* data = ( TOCTreeItemData* ) GetItemData( GetCurrentTreeID( ) );
-    Utils::TOCBaseType type = data->GetType( );
-    if ( type == Utils::TOC_Volume )
+    wxTreeItemId currId = GetCurrentTreeID( );
+    if ( currId.IsOk( ) )
     {
-        Catalog::CatalogVolume* vol = ( Catalog::CatalogVolume* ) data->GetVolume( );
-        if ( vol )
+        TOCTreeItemData* data = ( TOCTreeItemData* ) GetItemData( currId );
+        if ( data )
         {
-            return vol->GetDoc( )->GetRoot( );
+            Utils::TOCBaseType type = data->GetType( );
+            if ( type == Utils::TOC_Volume )
+            {
+                Catalog::CatalogVolume* vol = ( Catalog::CatalogVolume* ) data->GetVolume( );
+                if ( vol )
+                {
+                    return vol->GetDoc( )->GetRoot( );
+                }
+            }
         }
     }
     return ( wxXmlNode* ) 0;
 }
 
-void CatalogTOCTreeCtrl::OnSelChanged( wxTreeEvent& event )
-{
-    wxTreeItemId itemId = event.GetItem( );
-    TOCTreeItemData* data = ( TOCTreeItemData* ) GetItemData( itemId );
-    Utils::TOCBaseType type = data->GetType( );
-    if ( type == Utils::TOC_Volume )
-    {
-        SetCurrentTreeID( itemId );
-        TOCTreeItemData* data = ( TOCTreeItemData* ) GetItemData( itemId );
-        wxString name = GetItemText( itemId );
-        GetCatalogData( )->GetCatalogTreePanel( )->GetVolumeListCtrl( )->SetValue( name );
+//--------------
 
-        GetCatalogData( )->GetCatalogList( )->SetCatalogVolume( ( Catalog::CatalogVolume* ) data->GetVolume( ) );
-
-        GenerateList* generateListPanel = GetCatalogData( )->GetGenerateListPanel( );
-
-        if ( generateListPanel == ( GenerateList* ) GetFrame( )->GetStampToolPanel( )->GetPage( ) )
-        {
-            generateListPanel->UpdateGrid( );
-        }
-        else
-        {
-            //  GetFrame( )->GetStampToolPanel( )->GetCatalogPagePanel( )->SetNotebookPage( 1 );
-        }
-        GetCatalogData( )->GetCatalogTreeCtrl( )->LoadTree( );
-        //       GetCatalogData( )->GetCatalogTreePanel( )->SetNotebookPage( 1 );
-               //   GetCatalogData( )->SetCurrentStamp( xmlNode );
-    }
-
-    event.Skip( );
-}
-
-
-void  CatalogTOCTreeCtrl::LinkMenuItemToTreeItem( int id, wxTreeItemId treeId )
-{
-    GetCatalogData( )->GetCatalogList( )->Insert( id, treeId );
-}
-
-void CatalogTOCTreeCtrl::ReSortTree( )
-{
-
-    ClearTree( );
-
-    Catalog::CatalogVolume* catalogVolume = GetCatalogVolume( );
-    catalogVolume->ReSortTree( );
-
-    LoadTree( );
-}
 
 void CatalogTOCTreeCtrl::EditDetailsDialog( TOCTreeCtrl* parent )
 {
@@ -160,16 +143,32 @@ void CatalogTOCTreeCtrl::EditDetailsDialog( TOCTreeCtrl* parent )
 }
 
 
+//--------------
+
+
+void  CatalogTOCTreeCtrl::LinkMenuItemToTreeItem( int id, wxTreeItemId treeId )
+{
+    GetCatalogData( )->GetCatalogList( )->Insert( id, treeId );
+}
+
+//--------------
+
+
 void CatalogTOCTreeCtrl::LoadTree( )
 {
+    // get the project xml node where the catalog list starts.
     wxXmlNode* TOCNode = GetProject( )->GetCatalogListNode( );
 
-    // first make sure all the links to the items are gone
+    // Since we are creating the tree new we don't need the old menu links.
+    // Make sure all the links to the items are gone.
     Utils::StampList* stampList = GetStampAlbumCatalogLink( );
     stampList->ClearCatalogLinks( );
 
     TOCTreeCtrl::LoadTree( TOCNode, "CatalogList" );
 }
+
+//--------------
+
 
 void CatalogTOCTreeCtrl::OnRightDClick( wxMouseEvent& event )
 {
@@ -180,10 +179,8 @@ void CatalogTOCTreeCtrl::OnRightDClick( wxMouseEvent& event )
     {
         SetCurrentTreeID( itemId );
         TOCTreeItemData* data = ( TOCTreeItemData* ) GetItemData( itemId );
-        wxString name = GetItemText( itemId );
-        GetCatalogData( )->GetCatalogTreePanel( )->GetVolumeListCtrl( )->SetValue( name );
-
-        GetCatalogData( )->GetCatalogList( )->SetCatalogVolume( ( Catalog::CatalogVolume* ) data->GetVolume( ) );
+        GetCatalogData( )->GetCatalogList( )->SetCurrentVolume( ( Catalog::CatalogVolume* ) data->GetVolume( ) );
+        GetCatalogData( )->GetCatalogPanel( )->SetVolumeListCtrl( );
 
         GenerateList* generateListPanel = GetCatalogData( )->GetGenerateListPanel( );
 
@@ -195,15 +192,56 @@ void CatalogTOCTreeCtrl::OnRightDClick( wxMouseEvent& event )
         {
             GetFrame( )->GetStampToolPanel( )->GetCatalogPagePanel( )->SetNotebookPage( 1 );
         }
-        GetCatalogData( )->GetCatalogTreeCtrl( )->LoadTree( );
-        //       GetCatalogData( )->GetCatalogTreePanel( )->SetNotebookPage( 1 );
-               //   GetCatalogData( )->SetCurrentStamp( xmlNode );
+        GetCatalogTreeCtrl( )->LoadCatalogTree( );
     }
-
-
 
     ////@begin wxEVT_RIGHT_DCLICK event handler for ID_TREECTRL in SplitterTest.
         // Before editing this code, remove the block markers.
     event.Skip( );
     ////@end wxEVT_RIGHT_DCLICK event handler for ID_TREECTRL in SplitterTest. 
 }
+
+//--------------
+
+void CatalogTOCTreeCtrl::OnSelChanged( wxTreeEvent& event )
+{
+    wxTreeItemId itemId = event.GetItem( );
+    TOCTreeItemData* data = ( TOCTreeItemData* ) GetItemData( itemId );
+    Utils::TOCBaseType type = data->GetType( );
+    if ( type == Utils::TOC_Volume )
+    {
+        SetCurrentTreeID( itemId );
+        TOCTreeItemData* data = ( TOCTreeItemData* ) GetItemData( itemId );
+
+        GetCatalogData( )->GetCatalogList( )->SetCurrentVolume( ( Catalog::CatalogVolume* ) data->GetVolume( ) );
+        GetCatalogData( )->GetCatalogPanel( )->SetVolumeListCtrl( );
+
+        GenerateList* generateListPanel = GetCatalogData( )->GetGenerateListPanel( );
+
+        if ( generateListPanel == ( GenerateList* ) GetFrame( )->GetStampToolPanel( )->GetPage( ) )
+        {
+            generateListPanel->UpdateGrid( );
+        }
+        else
+        {
+            //  GetFrame( )->GetStampToolPanel( )->GetCatalogPagePanel( )->SetNotebookPage( 1 );
+        }
+        GetCatalogTreeCtrl( )->LoadCatalogTree( );
+    }
+
+    event.Skip( );
+}
+
+//--------------
+
+
+void CatalogTOCTreeCtrl::ReSortTree( )
+{
+    Clear( );
+
+    Catalog::CatalogVolume* catalogVolume = GetCatalogVolume( );
+    catalogVolume->ReSortTree( );
+
+    LoadTree( );
+}
+

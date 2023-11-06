@@ -95,6 +95,12 @@ AlbumImagePanel::~AlbumImagePanel( )
 
 //--------------
 
+void AlbumImagePanel::Clear( )
+{
+}
+
+//--------------
+
 bool AlbumImagePanel::Create( wxWindow* parent, wxWindowID id, const wxPoint& pos,
     const wxSize& size, long style )
 {
@@ -114,6 +120,7 @@ void AlbumImagePanel::CreateControls( )
 {
     m_once = false;
     m_zoom = .4;
+    EnableScrolling( true, true );
     Refresh( );
 }
 
@@ -124,7 +131,6 @@ void AlbumImagePanel::CreateControls( )
 //     wxPoint newPoint( pt.x + node->GetXPos( ), pt.y + node->GetYPos( ) );
 //     wxRect rect( pt.x, pt.y, node->GetWidth( ), node->GetHeight( ) );
 //     dc.DrawRectangle( rect );
-
 //     wxTreeItemIdValue cookie;
 //     wxTreeItemId nodeID = node->GetTreeItemId( );
 //     wxTreeItemId childID = GetAlbumTreeCtrl( )->GetFirstChild( nodeID, cookie );
@@ -416,7 +422,8 @@ void AlbumImagePanel::OnPaint( wxPaintEvent& event )
                 if ( m_once == false )
                 {
                     m_once = true;
-                    SetScrollbars( 1, 1, 1.5 * width, 1.5 * height, 0, 0 );
+                    SetScrollbars( 1, 1, 2 * width / m_userScale, 2 * height / m_userScale, 0, 0 );
+                    EnableScrolling( true, true );
                 }
 
                 dc.SetPen( *wxRED_PEN );

@@ -49,10 +49,6 @@ class GenerateList;
 #define SYMBOL_STAMPTOOLPANEL_POSITION wxDefaultPosition
 
 
-
-
-
-
 /**
  * @brief StampToolPanel is the main window class for the application,
  * It contains wxNotebook with the the StampDescriptionPanel and AlbumPanel as pages.
@@ -81,57 +77,50 @@ public:
         ID_DESIGNSPLITTERWINDOW
     };
 
-
-
-    /**
-     * @brief Default Constructor a new StampToolPanel object
-     * @details Must be used in conjunction with Create.
-     *
-     */
     StampToolPanel( );
 
-    /**
-     * @brief Construct a new StampToolPanel object
-     *
-     * @param  parent	The parent window.
-     * @param  id	An identifier for the panel. wxID_ANY is taken to mean a default.
-     * @param  pos	The panel position. The value wxDefaultPosition indicates a default position, chosen by either the windowing system or wxWidgets, depending on platform.
-     * @param  size	The panel size. The value wxDefaultSize indicates a default size, chosen by either the windowing system or wxWidgets, depending on platform.
-     * @param  style	The window style.
-     * @see wxPanel.
-     */
     StampToolPanel( wxWindow* parent,
         wxWindowID id = ID_STAMPTOOLPANEL,
         const wxPoint& pos = SYMBOL_STAMPTOOLPANEL_POSITION,
         const wxSize& size = SYMBOL_STAMPTOOLPANEL_SIZE,
         long style = SYMBOL_STAMPTOOLPANEL_STYLE );
 
-    /**
-     * @brief  Used for two-step panel construction.
-     * Use with default constructor.
-     *
-     * @param  parent	The parent window.
-     * @param  id	An identifier for the panel. wxID_ANY is taken to mean a default.
-     * @param  pos	The panel position. The value wxDefaultPosition indicates a default position, chosen by either the windowing system or wxWidgets, depending on platform.
-     * @param  size	The panel size. The value wxDefaultSize indicates a default size, chosen by either the windowing system or wxWidgets, depending on platform.
-     * @param  style	The window style.
-     * @return bool
-     *
-     */
     bool Create( wxWindow* parent,
         wxWindowID id = ID_STAMPTOOLPANEL,
         const wxPoint& pos = SYMBOL_STAMPTOOLPANEL_POSITION,
         const wxSize& size = SYMBOL_STAMPTOOLPANEL_SIZE,
         long style = SYMBOL_STAMPTOOLPANEL_STYLE );
 
-
     ~StampToolPanel( );
-
-    void Init( );
 
     void CreateControls( );
 
+    AlbumPanel* GetAlbumPanel( ) {
+        return m_albumAlbumPanel;
+    };
+
+    AlbumTreePanel* GetAlbumTreePanel( ) {
+        return m_albumAlbumPanel->GetAlbumTreePanel( );
+    };
+
+    CatalogPanel* GetCatalogPagePanel( ) {
+        return m_catalogPanel;
+    };
+
+    GenerateList* GetGenerateListPanel( ) {
+        return m_generateListPanel;
+    };
+
+    wxWindow* GetPage( )
+    {
+        return m_notebook->GetPage( m_notebook->GetSelection( ) );
+    }
+
+    void Init( );
+
     bool ShouldShowStates( );
+
+    static bool ShowToolTips( );
 
     void OnNotebookPageChanged( wxNotebookEvent& event );
 
@@ -139,37 +128,18 @@ public:
 
     void OnTitleTextUpdated( wxCommandEvent& event );
 
-    static bool ShowToolTips( );
-
-    void UpdateStatus( );
-
-    CatalogPanel* GetCatalogPagePanel( ) {
-        return m_catalogTreePanel;
-    };
-    AlbumTreePanel* GetAlbumTreePanel( ) {
-        return m_albumAlbumPanel->GetAlbumTreePanel( );
-    };
-    AlbumPanel* GetAlbumPanel( ) {
-        return m_albumAlbumPanel;
-    };
-    GenerateList* GetGenerateListPanel( ) {
-        return m_generateListPanel;
-    };
-
-
     void SetPage( int page )
     {
         m_notebook->SetSelection( page );
     }
 
-    wxWindow* GetPage( )
-    {
-        return m_notebook->GetPage( m_notebook->GetSelection( ) );
-    }
+    void UpdateStatus( );
+
+private:
 
     wxNotebook* m_notebook;
     wxFlexGridSizer* m_sizer;
-    CatalogPanel* m_catalogTreePanel;
+    CatalogPanel* m_catalogPanel;
     //CatalogPanel* xm_albumPageCatTreePanel;
     wxSplitterWindow* m_stampToolSplitter;
     //wxSplitterWindow* m_albumNotebookPage;

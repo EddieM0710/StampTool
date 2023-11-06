@@ -60,100 +60,41 @@ public:
         ID_IMAGEDIRBUTTON
     };
 
-    ///  @brief Construct a new Catalog Details Dialog object
-    ///  
+
     CatalogDetailsDialog( );
 
-    ///  @brief Construct a new Catalog Details Dialog object
-    ///  
-    ///  @param parent 
-    ///  @param id 
-    ///  @param caption 
-    ///  @param pos 
-    ///  @param size 
-    ///  @param style 
     CatalogDetailsDialog( wxWindow* parent, wxWindowID id = SYMBOL_CATALOGDETAILSDIALOG_IDNAME, const wxString& caption = SYMBOL_CATALOGDETAILSDIALOG_TITLE, const wxPoint& pos = SYMBOL_CATALOGDETAILSDIALOG_POSITION, const wxSize& size = SYMBOL_CATALOGDETAILSDIALOG_SIZE, long style = SYMBOL_CATALOGDETAILSDIALOG_STYLE );
 
-    ///  @brief Destroy the Catalog Details Dialog object
-    ///  
     ~CatalogDetailsDialog( );
 
-    ///  @brief 
-    ///  
-    ///  @param parent 
-    ///  @param id 
-    ///  @param caption 
-    ///  @param pos 
-    ///  @param size 
-    ///  @param style 
-    ///  @return true 
-    ///  @return false 
     bool Create( wxWindow* parent, wxWindowID id = SYMBOL_CATALOGDETAILSDIALOG_IDNAME, const wxString& caption = SYMBOL_CATALOGDETAILSDIALOG_TITLE, const wxPoint& pos = SYMBOL_CATALOGDETAILSDIALOG_POSITION, const wxSize& size = SYMBOL_CATALOGDETAILSDIALOG_SIZE, long style = SYMBOL_CATALOGDETAILSDIALOG_STYLE );
 
-    ///  @brief Create a Controls object
-    ///  
     void CreateControls( );
 
     wxString GetCatalogPath( );
 
-
-    ///  @brief Get the Name object
-    ///  
-    ///  @return wxString 
     wxString GetName( );
 
-    ///  @brief Get the Image Path object
-    ///  
-    ///  @return wxString 
     wxString GetImagePath( );
 
-    ///  @brief 
-    ///  
     void Init( );
 
-    ///  @brief 
-    ///  
-    ///  @return true 
-    ///  @return false 
     bool IsNameModified( );
 
-    ///  @brief 
-    ///  
-    ///  @param event 
-    void OnOkClick( wxCommandEvent& event );
-
-    ///  @brief 
-    ///  
-    ///  @param event 
     void OnCatDirClick( wxCommandEvent& event );
-    // void OnImageDirClick( wxCommandEvent& event );
+
+    void OnOkClick( wxCommandEvent& event );
 
     void SetCatalogFilename( wxString filename );
 
-    ///  @brief Set the Design Tree I D object
-    ///  
-    ///  @param id 
     void SetDesignTreeID( wxTreeItemId id );
 
-    ///  @brief Set the Image Path object
-    ///  
-    ///  @param str 
     void SetImagePath( wxString str );
 
-    ///  @brief Set the Name object
-    ///  
-    ///  @param str 
     void SetName( wxString str );
 
-    ///  @brief Set the Name Modified object
-    ///  
-    ///  @param state 
     void SetNameModified( bool state );
 
-    ///  @brief 
-    ///  
-    ///  @return true 
-    ///  @return false 
     static bool ShowToolTips( );
 
 private:

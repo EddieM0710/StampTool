@@ -44,16 +44,18 @@
 #include "Defs.h"
 #include "Settings.h"
 
+#include "gui/AppData.h"
+
 #include "gui/StampToolPanel.h"
 #include "gui/CatalogPanel.h"
 #include "gui/AlbumPanel.h"
 #include "catalog/CatalogData.h"
 #include "design/Album.h"
 #include "design/AlbumData.h"
- //#include "gui/DefinePeriodsDialog.h"
+#include "gui/EditProjectDetails.h"
 #include "gui/AlbumTreePanel.h"
 #include "gui/SortOrderPanel.h"
-#include "gui/SettingsDialog.h"
+#include "gui/PreferencesDialog.h"
 #include "gui/FileCreateDialog.h"
 #include "gui/StampToolFrame.h"
 #include "gui/AlbumImagePanel.h"
@@ -85,17 +87,19 @@ BEGIN_EVENT_TABLE( StampToolFrame, wxFrame )
 EVT_CLOSE( StampToolFrame::OnCloseWindow )
 EVT_ICONIZE( StampToolFrame::OnIconize )
 EVT_MAXIMIZE( StampToolFrame::OnMaximize )
+EVT_MENU( ID_CLOSEPROJECT, StampToolFrame::OnCloseProjectClick )
 EVT_MENU( ID_NEWPROJECT, StampToolFrame::OnNewProjectClick )
 EVT_MENU( ID_OPENPROJECT, StampToolFrame::OnOpenProjectClick )
 EVT_MENU( ID_SAVEPROJECT, StampToolFrame::OnSaveProjectClick )
 EVT_MENU( ID_SAVECATALOG, StampToolFrame::OnSaveCatalogClick )
 EVT_MENU( ID_SAVEASPROJECT, StampToolFrame::OnSaveasProjectClick )
+EVT_MENU( ID_PROJECTDETAILS, StampToolFrame::OnEditProjectDetailsClick )
 EVT_MENU( wxID_EXIT, StampToolFrame::OnExitClick )
 EVT_MENU( ID_TEXTSERCHMENUITEM, StampToolFrame::OnTextSearchMenuItemClick )
 EVT_MENU( ID_SORTORDER, StampToolFrame::OnSortOrderClick )
 EVT_MENU( ID_ITEMVIEW, StampToolFrame::OnItemviewClick )
 EVT_MENU( ID_DEFINEPERIOD, StampToolFrame::OnDefinePeriodClick )
-EVT_MENU( ID_SETTINGS, StampToolFrame::OnSettingsClick )
+EVT_MENU( ID_PREFERENCES, StampToolFrame::OnPreferencesClick )
 EVT_MENU( ID_NEWCATALOG, StampToolFrame::OnNewCatalogClick )
 EVT_MENU( ID_OPENCATALOG, StampToolFrame::OnOpenCatalogClick )
 EVT_MENU( ID_CSVIMPORT, StampToolFrame::OnImportCatalogClick )
@@ -109,22 +113,14 @@ EVT_MENU( ID_SAVEDESIGN, StampToolFrame::OnSaveDesignClick )
 END_EVENT_TABLE( )
 
 
+//-------
+
 StampToolFrame::StampToolFrame( )
 {
     Init( );
 }
 
-
-void StampToolFrame::InitLoad( )
-{
-    if ( GetSettings( )->GetLoadLastFileAtStartUp( ) )
-    {
-        GetProject( )->LoadProjectXML( );
-        GetProject( )->LoadData( );
-    }
-}
-
-
+//-------
 
 StampToolFrame::StampToolFrame( wxWindow* parent, wxWindowID id,
     const wxString& caption,
@@ -136,6 +132,27 @@ StampToolFrame::StampToolFrame( wxWindow* parent, wxWindowID id,
 
 }
 
+//-------
+
+StampToolFrame::~StampToolFrame( )
+{
+    int a = 1;
+}
+
+//-------
+
+void StampToolFrame::CloseProject( )
+{
+
+    if ( !GetProject( )->ContinueIfDirty( this ) )
+    {
+        return;
+    }
+
+    GetAppData( )->Clear( );
+
+    GetProject( )->CloseProject( );
+}
 
 bool StampToolFrame::Create( wxWindow* parent, wxWindowID id,
     const wxString& caption, const wxPoint& pos,
@@ -152,33 +169,7 @@ bool StampToolFrame::Create( wxWindow* parent, wxWindowID id,
     return true;
 }
 
-
-StampToolFrame::~StampToolFrame( )
-{
-    int a = 1;
-}
-
-void StampToolFrame::Init( )
-{
-    //    m_stamp = new Catalog::Stamp( );
-    m_stampToolPanel = NULL;
-
-
-    // m_settings = new Utils::Settings( );
-    // m_project = new Utils::Project( );
-    // m_StampAlbumCatalogLink = new Utils::StampList( );
-
-    // m_project->InitProject( );
-    // m_settings->InitSettings( );
-
-    // if ( m_settings->GetLoadLastFileAtStartUp( ) )
-    // {
-    //     m_project->SetProjectFilename( m_settings->GetLastFile( ) );
-    // }
-
-}
-
-
+//-------
 
 void StampToolFrame::CreateControls( )
 {
@@ -193,10 +184,11 @@ void StampToolFrame::CreateControls( )
     m_fileMenu->Append( ID_SAVEASPROJECT, _( "Save As" ), wxEmptyString, wxITEM_NORMAL );
     m_fileMenu->AppendSeparator( );
 
-    m_fileMenu->Append( ID_OPENCATALOG, _( "Open Catalog" ), wxEmptyString, wxITEM_NORMAL );
+    m_fileMenu->Append( ID_CLOSEPROJECT, _( "Close Project" ), wxEmptyString, wxITEM_NORMAL );
 
     m_fileMenu->AppendSeparator( );
-    m_fileMenu->Append( ID_SETTINGS, _( "Preferences" ), wxEmptyString, wxITEM_NORMAL );
+    m_fileMenu->Append( ID_PROJECTDETAILS, _( "Project Details" ), wxEmptyString, wxITEM_NORMAL );
+    m_fileMenu->Append( ID_PREFERENCES, _( "Preferences" ), wxEmptyString, wxITEM_NORMAL );
 
     m_fileMenu->AppendSeparator( );
 
@@ -249,22 +241,63 @@ void StampToolFrame::CreateControls( )
     m_albumTreePanel = m_stampToolPanel->GetAlbumTreePanel( );
 }
 
-CatalogPanel* StampToolFrame::GetCatalogPagePanel( )
+//-------
+
+void StampToolFrame::Init( )
 {
-    return m_stampToolPanel->GetCatalogPagePanel( );
+    //    m_stamp = new Catalog::Stamp( );
+    m_stampToolPanel = NULL;
+
+
+    // m_settings = new Utils::Settings( );
+    // m_project = new Utils::Project( );
+    // m_StampAlbumCatalogLink = new Utils::StampList( );
+
+    // m_project->InitProject( );
+    // m_settings->InitSettings( );
+
+    // if ( m_settings->GetLoadLastFileAtStartUp( ) )
+    // {
+    //     m_project->SetProjectFilename( m_settings->GetLastFile( ) );
+    // }
+
 }
 
+//-------
+
+void StampToolFrame::InitLoad( )
+{
+
+    wxString str = GetProject( )->GetProjectFilename( );
+    if ( !str.IsEmpty( ) )
+    {
+        wxFileName filename( str );
+        if ( filename.Exists( ) )
+        {
+            GetProject( )->LoadProjectXML( );
+            GetProject( )->LoadData( );
+            return;
+        }
+    }
+    GetProject( )->FileNewProject( "UndefinedName.spt" );
+
+}
+
+//-------
 
 AlbumPanel* StampToolFrame::GetAlbumPanel( )
 {
     return m_stampToolPanel->GetAlbumPanel( );
 }
 
-bool StampToolFrame::ShowToolTips( )
+//-------
+
+CatalogPanel* StampToolFrame::GetCatalogPagePanel( )
 {
-    return true;
+    return m_stampToolPanel->GetCatalogPagePanel( );
 }
 
+//-------
 
 int StampToolFrame::DoQueryMerge( int& mergeMethod )
 {
@@ -283,6 +316,7 @@ int StampToolFrame::DoQueryMerge( int& mergeMethod )
     return mergeOverwriteQuery;
 }
 
+//-------
 
 void StampToolFrame::DoRecentSelection( wxCommandEvent& event )
 {
@@ -313,7 +347,7 @@ void StampToolFrame::DoRecentSelection( wxCommandEvent& event )
     event.Skip( );
 }
 
-
+//-------
 
 void StampToolFrame::DoDefinePeriodDialog( )
 {
@@ -329,175 +363,36 @@ void StampToolFrame::DoDefinePeriodDialog( )
     // }
 }
 
+//-------
 
-void StampToolFrame::OnNewProjectClick( wxCommandEvent& event )
+void StampToolFrame::DoEditProjectDetailsDialog( )
 {
-    NewProject( );
-    event.Skip( );
-}
-
-void StampToolFrame::OnOpenProjectClick( wxCommandEvent& event )
-{
-    OpenProject( );
-    event.Skip( );
-}
-
-void StampToolFrame::OnSaveProjectClick( wxCommandEvent& event )
-{
-    GetProject( )->FileSaveProject( );
-    event.Skip( );
-}
-
-void StampToolFrame::OnSaveCatalogClick( wxCommandEvent& event )
-{
-    Catalog::CatalogVolume* vol = GetCatalogData( )->GetCatalogList( )->GetCatalogVolume( );
-    if ( vol )
-    {
-        vol->Save( );
-    }
-    event.Skip( );
-}
-
-// void StampToolFrame::OnSaveDesignClick( wxCommandEvent& event )
-// {
-//     GetAlbumData( )->FileSave( );
-//     event.Skip( );
-// }
-
-void StampToolFrame::OnExitClick( wxCommandEvent& event )
-{
-    GetSettings( )->Save( );
-    Close( );
-    event.Skip( );
-}
-
-void StampToolFrame::OnSaveasProjectClick( wxCommandEvent& event )
-{
-    SaveAsProject( );
-    event.Skip( );
-}
-
-void StampToolFrame::OnCloseWindow( wxCloseEvent& event )
-{
-    event.Skip( );
-}
-
-
-
-void StampToolFrame::OnDefinePeriodClick( wxCommandEvent& event )
-{
-    DoDefinePeriodDialog( );
-    event.Skip( );
-}
-
-void StampToolFrame::OnIconize( wxIconizeEvent& event )
-{
-    event.Skip( );
-}
-
-
-
-void StampToolFrame::OnItemviewClick( wxCommandEvent& event )
-{
-    event.Skip( );
-}
-
-
-void StampToolFrame::OnMaximize( wxMaximizeEvent& event )
-{
-    event.Skip( );
-}
-
-
-void StampToolFrame::OnMergeClick( wxCommandEvent& event )
-{
-    event.Skip( );
-}
-
-// void StampToolFrame::OnGeneratePDFClick( wxCommandEvent& event )
-// {
-//     //AlbumImagePanel*
-//     GetAlbumVolume( )->GetAlbum( )->MakePDFAlbum( );
-// }
-void StampToolFrame::OnSettingsClick( wxCommandEvent& event )
-{
-    DoSettingsDialog( );
-    event.Skip( );
-}
-
-void StampToolFrame::OnOpenCatalogClick( wxCommandEvent& event )
-{
-    GetCatalogPagePanel( )->OpenCatalog( );
-    event.Skip( );
-}
-void StampToolFrame::OnNewCatalogClick( wxCommandEvent& event )
-{
-    GetCatalogPagePanel( )->NewCatalogDialog( );
-    event.Skip( );
-}
-
-void StampToolFrame::OnImportCatalogClick( wxCommandEvent& event )
-{
-    GetCatalogPagePanel( )->DoCSVImport( );
-    event.Skip( );
-}
-
-void StampToolFrame::OnRemoveCatalogClick( wxCommandEvent& event )
-{
-    GetCatalogPagePanel( )->RemoveVolume( );
-    event.Skip( );
-}
-void StampToolFrame::OnNewDesignClick( wxCommandEvent& event )
-{
-    GetAlbumPanel( )->NewDesign( );
-    event.Skip( );
-}
-void StampToolFrame::OnOpenDesignClick( wxCommandEvent& event )
-{
-    GetAlbumPanel( )->OpenDesign( );
-    event.Skip( );
-}
-
-void StampToolFrame::OnGeneratePDFClick( wxCommandEvent& event )
-{
-    GetAlbumVolume( )->GetAlbum( )->MakePDFAlbum( );
-    //GetAlbumPanel( )->OnGeneratePDFClick( );
-    event.Skip( );
-}
-
-void StampToolFrame::OnOpenPDFClick( wxCommandEvent& event )
-{
-    OpenPdf( );
-    event.Skip( );
-}
-
-
-void StampToolFrame::OnRemoveDesignClick( wxCommandEvent& event )
-{
-    //  GetCatalogPagePanel( )->RemoveVolume( );
-     // GetAlbumPagePanel( )->RemoveVolume( );
-    event.Skip( );
-}
-
-void StampToolFrame::OnSaveDesignClick( wxCommandEvent& event )
-{
-    GetAlbumData( )->FileSave( );
-    event.Skip( );
-}
-void StampToolFrame::DoSettingsDialog( )
-{
-    SettingsDialog settingsDialog( this, ID_SETTINGSDIALOG,
+    EditProjectDetails dialog( this, ID_EDITPROJECTDETAILS,
         _( "Define Preferences" ) );
 
-    if ( settingsDialog.ShowModal( ) == wxID_CANCEL )
+    if ( dialog.ShowModal( ) == wxID_CANCEL )
         return; // the user changed idea..
 
-    if ( settingsDialog.IsDirty( ) )
+}
+
+//-------
+
+void StampToolFrame::DoPreferencesDialog( )
+{
+    PreferencesDialog preferencesDialog( this, ID_PREFERENCESDIALOG,
+        _( "Define Preferences" ) );
+
+    if ( preferencesDialog.ShowModal( ) == wxID_CANCEL )
+        return; // the user changed idea..
+
+    if ( preferencesDialog.IsDirty( ) )
     {
         // Save settings
         // resort tree
     }
 }
+
+//-------
 
 void StampToolFrame::DoSortOrderDialog( )
 {
@@ -514,24 +409,12 @@ void StampToolFrame::DoSortOrderDialog( )
     //     }
 }
 
-
-void StampToolFrame::OnSortOrderClick( wxCommandEvent& event )
-{
-    DoSortOrderDialog( );
-    event.Skip( );
-}
-
-
-
-void StampToolFrame::OnTextSearchMenuItemClick( wxCommandEvent& event )
-{
-    event.Skip( );
-}
+//-------
 
 void StampToolFrame::NewProject( )
 {
 
-    if ( IsDirty( ) )
+    if ( GetProject( )->IsDirty( ) )
     {
         // query whether to save first 
         wxMessageDialog* dlg = new wxMessageDialog(
@@ -547,6 +430,8 @@ void StampToolFrame::NewProject( )
             return;
         }
     }
+
+    GetFrame( )->CloseProject( );
 
     FileCreateDialog fileDialog( this, 12355, _( "Select the Filename and Directory for the Project file." ) );
     wxGetCwd( );
@@ -564,11 +449,246 @@ void StampToolFrame::NewProject( )
     GetProject( )->FileNewProject( fileDialog.GetFile( ) );
 }
 
+//-------
+
+// void StampToolFrame::OnSaveDesignClick( wxCommandEvent& event )
+// {
+//     GetAlbumData( )->FileSave( );
+//     event.Skip( );
+// }
+
+//-------
+
+void StampToolFrame::OnExitClick( wxCommandEvent& event )
+{
+    GetSettings( )->Save( );
+    Close( );
+    event.Skip( );
+}
+
+//-------
+
+void StampToolFrame::OnCloseProjectClick( wxCommandEvent& event )
+{
+    CloseProject( );
+    event.Skip( );
+}
+
+//-------
+
+void StampToolFrame::OnCloseWindow( wxCloseEvent& event )
+{
+    event.Skip( );
+}
+
+//-------
+
+void StampToolFrame::OnDefinePeriodClick( wxCommandEvent& event )
+{
+    DoDefinePeriodDialog( );
+    event.Skip( );
+}
+
+//-------
+
+void StampToolFrame::OnGeneratePDFClick( wxCommandEvent& event )
+{
+    GetAlbumVolume( )->GetAlbum( )->MakePDFAlbum( );
+    //GetAlbumPanel( )->OnGeneratePDFClick( );
+    event.Skip( );
+}
+
+//-------
+
+void StampToolFrame::OnIconize( wxIconizeEvent& event )
+{
+    event.Skip( );
+}
+
+//-------
+
+void StampToolFrame::OnImportCatalogClick( wxCommandEvent& event )
+{
+    GetCatalogPagePanel( )->DoCSVImport( );
+    event.Skip( );
+}
+
+//-------
+
+void StampToolFrame::OnItemviewClick( wxCommandEvent& event )
+{
+    event.Skip( );
+}
+
+//-------
+
+void StampToolFrame::OnMaximize( wxMaximizeEvent& event )
+{
+    event.Skip( );
+}
+
+//-------
+
+void StampToolFrame::OnNewProjectClick( wxCommandEvent& event )
+{
+    NewProject( );
+    event.Skip( );
+}
+
+
+//-------
+
+void StampToolFrame::OnOpenCatalogClick( wxCommandEvent& event )
+{
+    GetCatalogPagePanel( )->OpenCatalog( );
+    event.Skip( );
+}
+
+//-------
+
+void StampToolFrame::OnMergeClick( wxCommandEvent& event )
+{
+    event.Skip( );
+}
+
+//-------
+
+void StampToolFrame::OnNewCatalogClick( wxCommandEvent& event )
+{
+    GetCatalogPagePanel( )->NewCatalogDialog( );
+    event.Skip( );
+}
+
+//-------
+
+void StampToolFrame::OnNewDesignClick( wxCommandEvent& event )
+{
+    GetAlbumPanel( )->NewDesign( );
+    event.Skip( );
+}
+
+//-------
+
+void StampToolFrame::OnOpenDesignClick( wxCommandEvent& event )
+{
+    GetAlbumPanel( )->OpenDesign( );
+    event.Skip( );
+}
+
+//-------
+
+void StampToolFrame::OnEditProjectDetailsClick( wxCommandEvent& event )
+{
+    DoEditProjectDetailsDialog( );
+    event.Skip( );
+}
+
+//-------
+
+void StampToolFrame::OnOpenPDFClick( wxCommandEvent& event )
+{
+    OpenPdf( );
+    event.Skip( );
+}
+
+//-------
+
+void StampToolFrame::OnOpenProjectClick( wxCommandEvent& event )
+{
+    OpenProject( );
+    event.Skip( );
+}
+
+//-------
+
+void StampToolFrame::OnRemoveCatalogClick( wxCommandEvent& event )
+{
+    GetCatalogPagePanel( )->RemoveVolume( );
+    event.Skip( );
+}
+
+//-------
+
+void StampToolFrame::OnRemoveDesignClick( wxCommandEvent& event )
+{
+    //  GetCatalogPagePanel( )->RemoveVolume( );
+     // GetAlbumPagePanel( )->RemoveVolume( );
+    event.Skip( );
+}
+
+//-------
+
+void StampToolFrame::OnSaveasProjectClick( wxCommandEvent& event )
+{
+    SaveAsProject( );
+    event.Skip( );
+}
+
+//-------
+
+void StampToolFrame::OnSaveDesignClick( wxCommandEvent& event )
+{
+    GetAlbumData( )->FileSave( );
+    event.Skip( );
+}
+
+//-------
+
+void StampToolFrame::OnSaveProjectClick( wxCommandEvent& event )
+{
+    GetProject( )->FileSaveProject( );
+    event.Skip( );
+}
+
+//-------
+
+void StampToolFrame::OnSaveCatalogClick( wxCommandEvent& event )
+{
+    Catalog::CatalogVolume* vol = ( Catalog::CatalogVolume* ) GetCatalogData( )->GetCatalogList( )->GetVolume( );
+    if ( vol )
+    {
+        vol->Save( );
+    }
+    event.Skip( );
+}
+
+//-------
+
+// void StampToolFrame::OnGeneratePDFClick( wxCommandEvent& event )
+// {
+//     //AlbumImagePanel*
+//     GetAlbumVolume( )->GetAlbum( )->MakePDFAlbum( );
+// }
+
+//-------
+
+void StampToolFrame::OnPreferencesClick( wxCommandEvent& event )
+{
+    DoPreferencesDialog( );
+    event.Skip( );
+}
+
+//-------
+
+void StampToolFrame::OnSortOrderClick( wxCommandEvent& event )
+{
+    DoSortOrderDialog( );
+    event.Skip( );
+}
+
+//-------
+
+void StampToolFrame::OnTextSearchMenuItemClick( wxCommandEvent& event )
+{
+    event.Skip( );
+}
+
+//-------
 
 void StampToolFrame::OpenProject( )
 {
 
-    if ( IsDirty( ) )
+    if ( GetProject( )->IsDirty( ) )
     {
         // query whether to save first 
         wxMessageDialog* dlg = new wxMessageDialog(
@@ -612,6 +732,7 @@ void StampToolFrame::OpenProject( )
 
 }
 
+//-------
 
 void StampToolFrame::OpenPdf( )
 {
@@ -643,6 +764,8 @@ void StampToolFrame::OpenPdf( )
 
 }
 
+
+//-------
 
 int StampToolFrame::QueryMerge( int& mergeMethod )
 {
@@ -696,6 +819,8 @@ int StampToolFrame::QueryMerge( int& mergeMethod )
     }
 }
 
+//-------
+
 void StampToolFrame::SaveAsProject( )
 {
     wxFileName lastFile( GetSettings( )->GetLastFile( ) );
@@ -711,6 +836,7 @@ void StampToolFrame::SaveAsProject( )
     GetProject( )->FileSaveAsProject( filename );
 }
 
+//-------
 
 void StampToolFrame::SetupRecentMenu( )
 {
@@ -753,12 +879,19 @@ void StampToolFrame::SetupRecentMenu( )
     // }
 }
 
+//-------
 
+bool StampToolFrame::ShowToolTips( )
+{
+    return true;
+}
 
-
+//-------
 
 void StampToolFrame::UpdateStatus( ) {
     m_stampToolPanel->UpdateStatus( );
 }
+
+//-------
 
 

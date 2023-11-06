@@ -52,7 +52,7 @@ namespace Utils {
 
         wxXmlNode* AddChild( wxXmlNode* child );
 
-        bool ClearArray( );
+        bool Clear( );
 
         void dumpArray( wxArrayString& array );
 
@@ -74,13 +74,19 @@ namespace Utils {
 
         void Insert( wxString str, Utils::Volume* vol );
 
-        virtual Volume* NewVolumeInstance( ) = 0;
+        virtual Volume* NewVolumeInstance( wxString filename ) = 0;
+
+        void RemoveVolume( wxString name );
+
+        void RemoveVolume( Volume* vol );
+
+        void SaveDirtyVolumes( );
 
         void SaveVolumes( );
 
         //        void Load( );
 
-        void SetVolume( Volume* vol );
+        void SetCurrentVolume( Volume* vol );
 
 
     private:

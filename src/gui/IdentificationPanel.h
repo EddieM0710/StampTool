@@ -63,7 +63,6 @@ public:
         ID_COUNTRYTEXTBOX,
         ID_PEFORATIONTEXTBOX,
         ID_PRINTINGTEXTBOX,
-        ID_EDITCHECKBOX,
         ID_WIDTHLABELEDTEXTBOX,
         ID_HEIGHTLABELEDTEXTBOX,
         ID_LINKTEXTBOX,
@@ -78,146 +77,90 @@ public:
 
 
 
-    /**
-     * @brief Default Constructor a new IdentificationPanel object
-     * @details Must be used in conjunction with Create.
-     *
-     */
+
     IdentificationPanel( );
 
-    /**
-     * @brief Construct a new IdentificationPanel object
-     *
-     * @param  parent	The parent window.
-     * @param  id	An identifier for the panel. wxID_ANY is taken to mean a default.
-     * @param  pos	The panel position. The value wxDefaultPosition indicates a default position, chosen by either the windowing system or wxWidgets, depending on platform.
-     * @param  size	The panel size. The value wxDefaultSize indicates a default size, chosen by either the windowing system or wxWidgets, depending on platform.
-     * @param  style	The window style.
-     * @see wxPanel.
-     */
+
     IdentificationPanel( wxWindow* parent,
         wxWindowID id = SYMBOL_IDENTIFICATIONPANEL_IDNAME,
         const wxPoint& pos = SYMBOL_IDENTIFICATIONPANEL_POSITION,
         const wxSize& size = SYMBOL_IDENTIFICATIONPANEL_SIZE,
         long style = SYMBOL_IDENTIFICATIONPANEL_STYLE );
 
-    /**
-     * @brief  Used for two-step panel construction.
-     * Use with default constructor.
-     *
-     * @param  parent	The parent window.
-     * @param  id	An identifier for the panel. wxID_ANY is taken to mean a default.
-     * @param  pos	The panel position. The value wxDefaultPosition indicates a default position, chosen by either the windowing system or wxWidgets, depending on platform.
-     * @param  size	The panel size. The value wxDefaultSize indicates a default size, chosen by either the windowing system or wxWidgets, depending on platform.
-     * @param  style	The window style.
-     * @return bool
-     *
-     */
+
+    void Clear( );
+
     bool Create( wxWindow* parent,
         wxWindowID id = SYMBOL_IDENTIFICATIONPANEL_IDNAME,
         const wxPoint& pos = SYMBOL_IDENTIFICATIONPANEL_POSITION,
         const wxSize& size = SYMBOL_IDENTIFICATIONPANEL_SIZE,
         long style = SYMBOL_IDENTIFICATIONPANEL_STYLE );
 
-
     ~IdentificationPanel( );
 
     void Init( );
 
-    /**
-     * @brief Creates the controls and sizers
-     *
-     */
     void CreateControls( );
 
-    /**
-    * @brief   ID_STATUSCHOICE
-    *
-    * @param event   Contains information about command events
-    */
-    //void OnStatuschoiceSelected( wxCommandEvent& event );
+    void OnCatalogCodesChanged( wxCommandEvent& event );
 
-    /**
-     * @brief    ID_EMISSIONCHOICE
-     *
-     * @param event   Contains information about command events
-     */
-    void OnEmissionchoiceSelected( wxCommandEvent& event );
+    void OnColnectButtonClick( wxCommandEvent& event );
 
-    /**
-     * @brief   ID_FORMATCHOICE
-     *
-     * @param event   Contains information about command events
-     */
-    void OnFormatchoiceSelected( wxCommandEvent& event );
+    void OnComboboxSelected( wxCommandEvent& event );
 
-    void OnSeriesUpdated( wxCommandEvent& event );
-    void OnIssuedUpdated( wxCommandEvent& event );
-    void OnThemeUpdated( wxCommandEvent& event );
+    void OnComboboxUpdated( wxCommandEvent& event );
+
     void OnCountryUpdated( wxCommandEvent& event );
-    void OnNameUpdated( wxCommandEvent& event );
-    void OnIDUpdated( wxCommandEvent& event );
-    void OnWidthUpdated( wxCommandEvent& event );
-    void OnHeightUpdated( wxCommandEvent& event );
-    void OnPerforationUpdated( wxCommandEvent& event );
-    void OnPrintingUpdated( wxCommandEvent& event );
-    void OnLinkUpdated( wxCommandEvent& event );
-    void OnImageUpdated( wxCommandEvent& event );
-    void OnEditCheckBox( wxCommandEvent& event );
-    void SetDataEditable( bool val = true );
-    void OnColnectButtonClick( wxCommandEvent& event );;
 
     void OneBayButtonClick( wxCommandEvent& event );
 
-    void OnNPMButtonClick( wxCommandEvent& event );
-    void OnComboboxSelected( wxCommandEvent& event );
-    void OnComboboxUpdated( wxCommandEvent& event );
 
-    /**
-     * @brief ShowToolTips
-     *
-     * @return bool
-     */
+    void OnEmissionchoiceSelected( wxCommandEvent& event );
+
+    void OnFormatchoiceSelected( wxCommandEvent& event );
+
+    void OnHeightUpdated( wxCommandEvent& event );
+
+    void OnIDUpdated( wxCommandEvent& event );
+
+    void OnImageUpdated( wxCommandEvent& event );
+
+    void OnIssuedUpdated( wxCommandEvent& event );
+
+    void OnLinkUpdated( wxCommandEvent& event );
+
+    void OnNameUpdated( wxCommandEvent& event );
+
+    void OnNPMButtonClick( wxCommandEvent& event );
+
+    void OnPerforationUpdated( wxCommandEvent& event );
+
+    void OnPrintingUpdated( wxCommandEvent& event );
+
+    void OnSeriesUpdated( wxCommandEvent& event );
+
+    void OnThemeUpdated( wxCommandEvent& event );
+
+    void OnWidthUpdated( wxCommandEvent& event );
+
     static bool ShowToolTips( );
 
-    /**
-     * @brief Set the Choice object
-     *
-     * @param ctrl  pointer to choice control to set
-     * @param str   value to set the choice to.
-     */
     void SetChoice( wxChoice* ctrl, wxString str );
 
-    /**
-     * @brief Set the Choice object
-     *
-     * @param ctrl  pointer to choice control to set
-     * @param ndx  selection index of the choice
-     */
     void SetChoice( wxChoice* ctrl, int ndx );
 
-    /**
-     * @brief Set the Stamp object
-     *
-     * @param stamp
-     */
-    void UpdatePanel( );//Catalog::Entry* stamp );
+    void SetDataEditable( bool val = true );
+
+    void UpdatePanel( );
+
     void UpdateStampValue( Catalog::DataTypes dt, wxTextCtrl* textBox );
 
-    /**
-     * @brief
-     *
-     */
     void UpdateStatus( );
 
 
 
-
-
 private:
-    wxCheckBox* m_editCheckbox;
-    //    wxTextCtrl* m_ID;        ///< ID display
-        //    wxChoice* m_status;          ///< Stamp Status wxChoice
+
     wxTextCtrl* m_name;      ///< Stamp Name display
     wxChoice* m_emission;        ///<  Stamp Emission wxChoice
     wxChoice* m_format;          ///<  Stamp Format wxChoice
@@ -230,11 +173,9 @@ private:
     wxTextCtrl* m_width;   ///< Stamp width display
     wxTextCtrl* m_height;   ///< Stamp height display
     wxTextCtrl* m_catCode;
-    //wxTextCtrl* m_stampMount;
     wxComboBox* mountComboBox;
 
     wxTextCtrl* m_link;
-    // wxTextCtrl* m_catCodes;
     wxTextCtrl* m_imageName;
 };
 

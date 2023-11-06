@@ -57,10 +57,11 @@ enum {
     ID_DEFINEPERIOD,
     ID_RECENT,
     ID_RECENTMENU,
-    ID_SETTINGS,
-    ID_MERGE,
     ID_PREFERENCES,
+    ID_MERGE,
+    ID_PROJECTDETAILS,
     ID_CSVIMPORT,
+    ID_CLOSEPROJECT,
     ID_OPENPROJECT,
     ID_OPENDESIGN,
     ID_OPENCATALOG,
@@ -105,23 +106,9 @@ class StampToolFrame : public wxFrame
 
 public:
 
-    /**
-     * @brief Default Constructor a new StampToolFrame object
-     * @details Must be used in conjunction with Create.
-     *
-     */
+
     StampToolFrame( );
 
-    /**
-     * @brief Construct a new StampToolFrame object
-     *
-     * @param  parent	The parent window.
-     * @param  id	An identifier for the panel. wxID_ANY is taken to mean a default.
-     * @param  pos	The panel position. The value wxDefaultPosition indicates a default position, chosen by either the windowing system or wxWidgets, depending on platform.
-     * @param  size	The panel size. The value wxDefaultSize indicates a default size, chosen by either the windowing system or wxWidgets, depending on platform.
-     * @param  style	The window style.
-     * @see wxPanel.
-     */
     StampToolFrame( wxWindow* parent,
         wxWindowID id = SYMBOL_STAMPTOOLFRAME_IDNAME,
         const wxString& caption = SYMBOL_STAMPTOOLFRAME_TITLE,
@@ -129,18 +116,11 @@ public:
         const wxSize& size = SYMBOL_STAMPTOOLFRAME_SIZE,
         long style = SYMBOL_STAMPTOOLFRAME_STYLE );
 
-    /**
-     * @brief  Used for two-step panel construction.
-     * Use with default constructor.
-     *
-     * @param  parent	The parent window.
-     * @param  id	An identifier for the panel. wxID_ANY is taken to mean a default.
-     * @param  pos	The panel position. The value wxDefaultPosition indicates a default position, chosen by either the windowing system or wxWidgets, depending on platform.
-     * @param  size	The panel size. The value wxDefaultSize indicates a default size, chosen by either the windowing system or wxWidgets, depending on platform.
-     * @param  style	The window style.
-     * @return bool
-     *
-     */
+
+    ~StampToolFrame( );
+
+    void CloseProject( );
+
     bool Create( wxWindow* parent,
         wxWindowID id = SYMBOL_STAMPTOOLFRAME_IDNAME,
         const wxString& caption = SYMBOL_STAMPTOOLFRAME_TITLE,
@@ -148,97 +128,19 @@ public:
         const wxSize& size = SYMBOL_STAMPTOOLFRAME_SIZE,
         long style = SYMBOL_STAMPTOOLFRAME_STYLE );
 
-    ~StampToolFrame( );
-
-    void SetCaption( wxString caption )
-    {
-        wxString str = SYMBOL_STAMPTOOLFRAME_TITLE + " - " + caption;
-        SetTitle( str );
-    }
-    /**
-     * @brief   Initialises member variables
-     *
-     */
-    void Init( );
-
-    /**
-     * @brief Creates the controls and sizers
-     *
-     */
     void CreateControls( );
-
-    void OnCloseWindow( wxCloseEvent& event );
-
-    void OnIconize( wxIconizeEvent& event );
-
-    void OnMaximize( wxMaximizeEvent& event );
-
-    void OnNewProjectClick( wxCommandEvent& event );
-
-    void OnOpenProjectClick( wxCommandEvent& event );
-
-    void OnSaveProjectClick( wxCommandEvent& event );
-
-    void OnSaveCatalogClick( wxCommandEvent& event );
-
-    void OnSaveasProjectClick( wxCommandEvent& event );
-
-    //void OnGeneratePDFClick( wxCommandEvent& event );
-
-    void OnExitClick( wxCommandEvent& event );
-
-    void OnTextSearchMenuItemClick( wxCommandEvent& event );
-
-    void OnSortOrderClick( wxCommandEvent& event );
-
-    void OnItemviewClick( wxCommandEvent& event );
-
-    void OnDefinePeriodClick( wxCommandEvent& event );
-
-    void OnSettingsClick( wxCommandEvent& event );
-
-    void OnOpenCatalogClick( wxCommandEvent& event );
-    void OnNewCatalogClick( wxCommandEvent& event );
-    void OnImportCatalogClick( wxCommandEvent& event );
-    void OnRemoveCatalogClick( wxCommandEvent& event );
-    void OnNewDesignClick( wxCommandEvent& event );
-    void OnOpenDesignClick( wxCommandEvent& event );
-    void OnGeneratePDFClick( wxCommandEvent& event );
-    void OnOpenPDFClick( wxCommandEvent& event );
-    void OnRemoveDesignClick( wxCommandEvent& event );
-    void OnSaveDesignClick( wxCommandEvent& event );
-    void OnMergeClick( wxCommandEvent& event );
-
-    void SetupRecentMenu( );
-
-    void DoRecentSelection( wxCommandEvent& event );
-
-    void OnRecentmenuUpdate( wxUpdateUIEvent& event );
 
     void DoDefinePeriodDialog( );
 
-    void DoSettingsDialog( );
+    int DoQueryMerge( int& mergeMethod );
 
-    static bool ShowToolTips( );
-
-    void UpdateStatus( );
-
-    void NewProject( );
-
-    void OpenPdf( );
-    void OpenProject( );
-
-    void SaveProject( );
-
-    void SaveAsProject( );
-
-    void InitLoad( );
+    void DoRecentSelection( wxCommandEvent& event );
 
     void DoSortOrderDialog( );
 
-    int QueryMerge( int& mergeMethod );
+    void DoEditProjectDetailsDialog( );
 
-    int DoQueryMerge( int& mergeMethod );
+    void DoPreferencesDialog( );
 
     StampToolPanel* GetStampToolPanel( ) {
         return m_stampToolPanel;
@@ -248,11 +150,98 @@ public:
 
     AlbumPanel* GetAlbumPanel( );
 
+    void Init( );
+
+    void InitLoad( );
+
+    void NewProject( );
+
+    void OnCloseProjectClick( wxCommandEvent& event );
+
+    void OnCloseWindow( wxCloseEvent& event );
+
+    void OnDefinePeriodClick( wxCommandEvent& event );
+
+    void OnEditProjectDetailsClick( wxCommandEvent& event );
+
+    void OnExitClick( wxCommandEvent& event );
+
+    void OnGeneratePDFClick( wxCommandEvent& event );
+
+    void OnIconize( wxIconizeEvent& event );
+
+    void OnImportCatalogClick( wxCommandEvent& event );
+
+    void OnItemviewClick( wxCommandEvent& event );
+
+    void OnMaximize( wxMaximizeEvent& event );
+
+    void OnMergeClick( wxCommandEvent& event );
+
+    void OnNewCatalogClick( wxCommandEvent& event );
+
+    void OnNewDesignClick( wxCommandEvent& event );
+
+    void OnNewProjectClick( wxCommandEvent& event );
+
+    void OnOpenCatalogClick( wxCommandEvent& event );
+
+    void OnOpenDesignClick( wxCommandEvent& event );
+
+    void OnOpenPDFClick( wxCommandEvent& event );
+
+    void OnOpenProjectClick( wxCommandEvent& event );
+
+    void OnRecentmenuUpdate( wxUpdateUIEvent& event );
+
+    void OnRemoveCatalogClick( wxCommandEvent& event );
+
+    void OnRemoveDesignClick( wxCommandEvent& event );
+
+    void OnSaveProjectClick( wxCommandEvent& event );
+
+    void OnSaveCatalogClick( wxCommandEvent& event );
+
+    void OnSaveDesignClick( wxCommandEvent& event );
+
+    void OnSaveasProjectClick( wxCommandEvent& event );
+
+    void OnPreferencesClick( wxCommandEvent& event );
+
+    void OnSortOrderClick( wxCommandEvent& event );
+
+    //void OnGeneratePDFClick( wxCommandEvent& event );
+
+    void OnTextSearchMenuItemClick( wxCommandEvent& event );
+
+    void OpenPdf( );
+
+    void OpenProject( );
+
+    int QueryMerge( int& mergeMethod );
+
+    void SetCaption( wxString caption )
+    {
+        wxString str = SYMBOL_STAMPTOOLFRAME_TITLE + " - " + caption;
+        SetTitle( str );
+    }
+    void SetupRecentMenu( );
+
+    void SaveProject( );
+
+    void SaveAsProject( );
+
+    static bool ShowToolTips( );
+
+    void UpdateStatus( );
+
+private:
     StampToolPanel* m_stampToolPanel;
 
     AlbumTreePanel* m_albumTreePanel;
 
     AlbumPanel* m_albumAlbumPanel;
+
 
     // container data classification sort order
     wxArrayInt m_sortOrder;
@@ -264,10 +253,12 @@ public:
     wxMenu* m_recentMenu;
     wxMenu* m_preferencesMenu;
     wxMenu* m_importMenu;
+
     typedef struct {
         wxMenuItem* item;
         int id;
     } RecentListItem;
+
     std::vector<RecentListItem*> m_menuItemList;
 
 };

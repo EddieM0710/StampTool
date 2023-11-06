@@ -39,6 +39,7 @@
 #include <wx/utils.h> 
 #include "wx/xml/xml.h"
 #include <wx/utils.h>
+#include <wx/stdpaths.h>
 
 #include "Defs.h"
 #include "utils/Settings.h"
@@ -78,28 +79,123 @@ namespace Utils {
         m_defaultSortOrder.Add( Catalog::NT_Year );
         m_defaultSortOrder.Add( Catalog::NT_Emission );
 
-        wxString homeDir = wxGetHomeDir( );
-        wxFileName* fileName = new wxFileName( homeDir, "" );
-        if ( fileName->DirExists( ) )
-        {
-            fileName->AppendDir( ".config" );
-            if ( !fileName->DirExists( ) )
-            {
-                fileName->Mkdir( );
-            }
-            fileName->AppendDir( "StampTool" );
-            if ( !fileName->DirExists( ) )
-            {
-                fileName->Mkdir( );
-            }
-            wxString str = fileName->GetFullPath( );
-            SetConfigurationDirectory( fileName->GetFullPath( ) );
-        }
+        SetConfigurationDirectory( );
 
         Load( );
 
     };
-    //    
+    void Settings::SetConfigurationDirectory( )
+    {
+        wxStandardPaths& stdPaths = wxStandardPaths::Get( );
+        stdPaths.SetFileLayout( wxStandardPaths::FileLayout_XDG );
+        stdPaths.UseAppInfo( wxStandardPaths::AppInfo_AppName );
+        wxString settingsDir = stdPaths.GetUserLocalDataDir( );
+        wxFileName* fileName = new wxFileName( settingsDir, "" );
+        if ( !fileName->DirExists( ) )
+        {
+            fileName->Mkdir( );
+        }
+        wxString str = fileName->GetFullPath( );
+        m_configurationDirectory = str.Trim( ); m_dirty = true;
+    };
+
+    void Settings::SetAppDataDirectory( )
+    {
+
+        wxStandardPaths& stdPaths = wxStandardPaths::Get( );
+
+        stdPaths.SetFileLayout( wxStandardPaths::FileLayout_XDG );
+        stdPaths.UseAppInfo( wxStandardPaths::AppInfo_AppName );
+
+
+        // wxString appDataDir = stdPaths.GetAppDocumentsDir( );
+        const wxString docsDir = stdPaths.GetDocumentsDir( );
+        wxString subdir( docsDir );
+
+        if ( stdPaths.UsesAppInfo( wxStandardPaths::AppInfo_VendorName ) )
+        {
+            subdir = AppendPathComponent( subdir, wxTheApp->GetVendorName( ) );
+        }
+
+        if ( stdPaths.UsesAppInfo( wxStandardPaths::AppInfo_AppName ) )
+        {
+            subdir = AppendPathComponent( subdir, wxTheApp->GetAppName( ) );
+        }
+
+
+        wxString appDocsDir = subdir;
+
+
+        wxFileName* fileName = new wxFileName( appDocsDir, "" );
+        if ( !fileName->DirExists( ) )
+        {
+            fileName->Mkdir( );
+        }
+        wxString str = fileName->GetFullPath( );
+        m_appDataDirectory = str.Trim( ); m_dirty = true;
+    };
+
+    wxString Settings::AppendPathComponent( const wxString& dir, const wxString& component )
+    {
+        wxString subdir( dir );
+
+        // empty string indicates that an error has occurred, don't touch it then
+        if ( !subdir.empty( ) )
+        {
+            if ( !component.empty( ) )
+            {
+                const wxChar ch = *( subdir.end( ) - 1 );
+                if ( !wxFileName::IsPathSeparator( ch ) && ch != wxT( '.' ) )
+                    subdir += wxFileName::GetPathSeparator( );
+
+                subdir += component;
+            }
+        }
+
+        return subdir;
+    }
+
+    // wxString Settings::AppendAppInfo(const wxString& dir) const
+    // {
+    //     wxString subdir(dir);
+
+    //     if ( UsesAppInfo(AppInfo_VendorName) )
+    //     {
+    //         subdir = AppendPathComponent(subdir, wxTheApp->GetVendorName());
+    //     }
+
+    //     if ( UsesAppInfo(AppInfo_AppName) )
+    //     {
+    //         subdir = AppendPathComponent(subdir, wxTheApp->GetAppName());
+    //     }
+
+    //     return subdir;
+    // }
+
+
+
+        // void Settings::NewAppData( )
+        // {
+
+        //     wxDirDialog  dirDialog( this, 12355, _( "Select the Filename and Directory for the Application Data" ) );
+        //     wxGetCwd( );
+        //     fileDialog.SetDefaultDirectory( wxGetCwd( ) );
+        //     fileDialog.SetDefaultFilename( _( "unnamed.spt" ) );
+        //     fileDialog.SetWildCard( _( "Stamp Tools Project files(*.spt)|*.spt" ) );
+
+        //     if ( fileDialog.ShowModal( ) == wxID_CANCEL )
+        //     {
+        //         return;
+        //     }
+        //     wxString dir = fileDialog.GetDir( );
+        //     wxSetWorkingDirectory( dir );
+
+        //     GetProject( )->FileNewProject( fileDialog.GetFile( ) );
+        // }
+
+
+
+            //    
     void Settings::SetDirty( bool state )
     {
         m_dirty = state;
@@ -147,20 +243,40 @@ namespace Utils {
         return Catalog::NT_None;
     }
 
-    wxFont Settings::GetNbrFont( ) { return GetFontList( )->GetFont( FontPreference[ Design::AT_NbrFontType ] ); };
-    wxColour Settings::GetNbrColor( ) { return GetFontList( )->GetColor( FontPreference[ Design::AT_NbrFontType ] );; };
+    wxFont Settings::GetNbrFont( ) {
+        return GetFontList( )->GetFont( FontPreference[ Design::AT_NbrFontType ] );
+    };
+    wxColour Settings::GetNbrColor( ) {
+        return GetFontList( )->GetColor( FontPreference[ Design::AT_NbrFontType ] );;
+    };
 
-    wxFont Settings::GetNameFont( ) { return GetFontList( )->GetFont( FontPreference[ Design::AT_NameFontType ] ); };
-    wxColour Settings::GetNameColor( ) { return GetFontList( )->GetColor( FontPreference[ Design::AT_NameFontType ] );; };
+    wxFont Settings::GetNameFont( ) {
+        return GetFontList( )->GetFont( FontPreference[ Design::AT_NameFontType ] );
+    };
+    wxColour Settings::GetNameColor( ) {
+        return GetFontList( )->GetColor( FontPreference[ Design::AT_NameFontType ] );;
+    };
 
-    wxFont Settings::GetTitleFont( ) { return GetFontList( )->GetFont( FontPreference[ Design::AT_TitleFontType ] ); };
-    wxColour Settings::GetTitleColor( ) { return GetFontList( )->GetColor( FontPreference[ Design::AT_TitleFontType ] ); };
+    wxFont Settings::GetTitleFont( ) {
+        return GetFontList( )->GetFont( FontPreference[ Design::AT_TitleFontType ] );
+    };
+    wxColour Settings::GetTitleColor( ) {
+        return GetFontList( )->GetColor( FontPreference[ Design::AT_TitleFontType ] );
+    };
 
-    wxFont Settings::GetSubTitleFont( ) { return GetFontList( )->GetFont( FontPreference[ Design::AT_SubTitleFontType ] ); };
-    wxColour Settings::GetSubTitleColor( ) { return GetFontList( )->GetColor( FontPreference[ Design::AT_TitleFontType ] ); };
+    wxFont Settings::GetSubTitleFont( ) {
+        return GetFontList( )->GetFont( FontPreference[ Design::AT_SubTitleFontType ] );
+    };
+    wxColour Settings::GetSubTitleColor( ) {
+        return GetFontList( )->GetColor( FontPreference[ Design::AT_TitleFontType ] );
+    };
 
-    wxFont Settings::GetTextFont( ) { return GetFontList( )->GetFont( FontPreference[ Design::AT_TextFontType ] ); };
-    wxColour Settings::GetTextColor( ) { return GetFontList( )->GetColor( FontPreference[ Design::AT_TextFontType ] ); };
+    wxFont Settings::GetTextFont( ) {
+        return GetFontList( )->GetFont( FontPreference[ Design::AT_TextFontType ] );
+    };
+    wxColour Settings::GetTextColor( ) {
+        return GetFontList( )->GetColor( FontPreference[ Design::AT_TextFontType ] );
+    };
 
 
     //    
@@ -225,8 +341,14 @@ namespace Utils {
 
         wxXmlNode* settings = NewNode( &doc, "Settings" );
 
+        wxXmlNode* child = NewNode( settings, "AppDataDirectory" );
+        if ( child )
+        {
+            wxString appDataDir = child->GetAttribute( "Name" );
+            child->AddAttribute( "Name", m_appDataDirectory );
+        }
 
-        wxXmlNode* child = NewNode( settings, "LastFile" );
+        child = NewNode( settings, "LastFile" );
         if ( child )
         {
             child->AddAttribute( "LoadLastFileAtStartUp", Bool2String( GetLoadLastFileAtStartUp( ) ) );
@@ -386,6 +508,10 @@ namespace Utils {
 
         wxFont font( *wxNORMAL_FONT );
 
+        SetAppDataDirectory( );
+        wxFileName lf( m_appDataDirectory );
+        wxSetWorkingDirectory( lf.GetPath( ) );
+
     }
 
     void Settings::Load( )
@@ -412,6 +538,10 @@ namespace Utils {
 
         if ( !ok )
         {
+            SetAppDataDirectory( );
+
+            wxString appDir = GetAppDataDirectory( );
+
             SetDirty( );
             // Loading the settings.xml file failed
             // Save defaults here and return
@@ -460,12 +590,15 @@ namespace Utils {
             if ( m_lowerDivision.IsEmpty( ) )
             {
                 m_lowerDivision = m_defaultLowerDivision;
+                SetDirty( );
+
             }
 
             m_upperDivision = child->GetAttribute( "UpperDivision" );
             if ( m_upperDivision.IsEmpty( ) )
             {
                 m_upperDivision = m_defaultUpperDivision;
+                SetDirty( );
             }
         }
 
@@ -477,18 +610,50 @@ namespace Utils {
             if ( m_lowerPeriod.IsEmpty( ) )
             {
                 m_lowerPeriod = m_defaultLowerPeriod;
+                SetDirty( );
             }
             m_middlePeriod = child->GetAttribute( "MiddlePeriod" );
             if ( m_middlePeriod.IsEmpty( ) )
             {
                 m_middlePeriod = m_defaultMiddlePeriod;
+                SetDirty( );
             }
             m_upperPeriod = child->GetAttribute( "UpperPeriod" );
             if ( m_upperPeriod.IsEmpty( ) )
             {
                 m_upperPeriod = m_defaultUpperPeriod;
+                SetDirty( );
             }
         }
+
+        child = FirstChildElement( root, "AppDataDirectory" );
+        if ( child )
+        {
+            wxString appDataDir = child->GetAttribute( "Name" );
+            if ( appDataDir.IsEmpty( ) )
+            {
+                SetAppDataDirectory( );
+                wxFileName lf( m_appDataDirectory, "" );
+                wxSetWorkingDirectory( lf.GetPath( ) );
+                SetDirty( );
+            }
+            else
+            {
+                wxFileName lf( appDataDir );
+                if ( lf.DirExists( ) )
+                {
+                    m_appDataDirectory = appDataDir;
+                    wxSetWorkingDirectory( lf.GetPath( ) );
+                }
+                else
+                {
+                    SetAppDataDirectory( );
+                    wxFileName lf( m_appDataDirectory );
+                    wxSetWorkingDirectory( lf.GetPath( ) );
+                }
+            }
+        }
+
 
         child = FirstChildElement( root, "LastFile" );
         if ( child )
@@ -507,11 +672,15 @@ namespace Utils {
                     m_lastFile = file->GetAttribute( "Name" );
                     if ( m_lastFile.IsEmpty( ) )
                     {
-                        m_lastFile = wxGetHomeDir( );
+                        wxString dir = GetAppDataDirectory( );
+                        wxFileName lf( dir, "" );
+                        wxSetWorkingDirectory( lf.GetPath( ) );
                     }
-
-                    wxFileName lf( m_lastFile );
-                    wxSetWorkingDirectory( lf.GetPath( ) );
+                    else
+                    {
+                        wxFileName lf( m_lastFile );
+                        wxSetWorkingDirectory( lf.GetPath( ) );
+                    }
                 }
             }
         }

@@ -47,17 +47,13 @@ namespace Design {
 
     public:
 
-
         AlbumList( ) : Utils::VolumeList( ) { };
 
         ~AlbumList( ) { };
 
+        Design::AlbumVolume* AddNewVolume( wxString filename );
 
-        bool IsOK( );
-
-        void LoadAlbums( );
-
-        Design::AlbumVolume* NewVolumeInstance( );
+        Design::AlbumVolume* NewVolumeInstance( wxString filename );
 
     private:
     };

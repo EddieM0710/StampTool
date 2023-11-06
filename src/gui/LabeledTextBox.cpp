@@ -232,7 +232,7 @@ void LabeledTextBox::OnTextctrlTextUpdated( wxCommandEvent& event )
     {
         // m_value->GetBackgroundColour( );
         // m_value->SetBackgroundColour( );
-        SetDirty( );
+//        SetDirty( );
         //        m_stamp->SetAttr( m_type, m_idText->GetValue( ) );
         m_value->SetModified( true );
     }

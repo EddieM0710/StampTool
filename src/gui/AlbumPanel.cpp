@@ -45,13 +45,14 @@
 #include "gui/PageDetailsPanel.h"
 #include "gui/ColDetailsPanel.h"
 #include "gui/RowDetailsPanel.h"
-#include "gui/TestDetailsPanel.h"
+ //#include "gui/TestDetailsPanel.h"
 #include "gui/StampDetailsPanel.h"
- //#include "gui/AppData.h" 
+#include "gui/AppData.h" 
 #include "gui/LabeledTextBox.h"
 #include "gui/FileCreateDialog.h"
 #include "design/AlbumData.h"
 #include "design/Album.h"
+#include "design/AlbumVolume.h"
 #include "gui/CatalogTreeCtrl.h"
 #include "utils/Project.h"
 #include "catalog/CatalogData.h"
@@ -90,6 +91,12 @@ AlbumPanel::AlbumPanel( wxWindow* parent, wxWindowID id, const wxPoint& pos, con
 AlbumPanel::~AlbumPanel( )
 {
 }
+
+void AlbumPanel::Clear( )
+{
+
+}
+
 
 //--------------
 
@@ -187,25 +194,31 @@ wxPanel* AlbumPanel::CreateDetailsScrolledWindow( wxWindow* parent )
 
     m_albumDetailsPanel = new AlbumDetailsPanel( detailsScrolledWindow, 23150, "str", wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
     m_albumDetailsPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
-    itemBoxSizer8->Add( m_albumDetailsPanel, 0, wxGROW | wxALL, 0 );
+    itemBoxSizer8->Add( m_albumDetailsPanel, 1, wxGROW | wxALL, 0 );
 
     m_pageDetailsPanel = new PageDetailsPanel( detailsScrolledWindow, 23251, "str", wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
     m_pageDetailsPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
-    itemBoxSizer8->Add( m_pageDetailsPanel, 0, wxGROW | wxALL, 0 );
+    itemBoxSizer8->Add( m_pageDetailsPanel, 1, wxGROW | wxALL, 0 );
 
     m_colDetailsPanel = new ColDetailsPanel( detailsScrolledWindow, 23352, "str", wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
     m_colDetailsPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
-    itemBoxSizer8->Add( m_colDetailsPanel, 0, wxGROW | wxALL, 0 );
+    itemBoxSizer8->Add( m_colDetailsPanel, 1, wxGROW | wxALL, 0 );
 
     m_rowDetailsPanel = new RowDetailsPanel( detailsScrolledWindow, 23353, "str", wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
     m_rowDetailsPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
-    itemBoxSizer8->Add( m_rowDetailsPanel, 0, wxGROW | wxALL, 0 );
+    itemBoxSizer8->Add( m_rowDetailsPanel, 1, wxGROW | wxALL, 0 );
 
     m_stampDetailsPanel = new StampDetailsPanel( detailsScrolledWindow, 25454, "str", wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
     m_stampDetailsPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
-    itemBoxSizer8->Add( m_stampDetailsPanel, 0, wxGROW | wxALL, 0 );
+    itemBoxSizer8->Add( m_stampDetailsPanel, 1, wxGROW | wxALL, 0 );
 
+    m_albumDetailsPanel->Hide( );
+    m_pageDetailsPanel->Hide( );
+    m_colDetailsPanel->Hide( );
+    m_rowDetailsPanel->Hide( );
+    m_stampDetailsPanel->Hide( );
 
+    Layout( );
 
     return detailsScrolledWindow;
 }
@@ -309,7 +322,7 @@ wxPanel* AlbumPanel::CreateAlbumImageLayoutPanel( wxWindow* parent )
 
     m_albumImagePanel =
         new AlbumImagePanel( albumImageLayoutPanel, ID_ALBUMALBUMIMAGEPANEL, wxDefaultPosition,
-            wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL | wxFULL_REPAINT_ON_RESIZE );
+            wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL | wxFULL_REPAINT_ON_RESIZE | wxHSCROLL | wxVSCROLL );
 
     m_albumImagePanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
 
@@ -361,7 +374,6 @@ void AlbumPanel::OnManageClick( wxCommandEvent& event )
     wxMenu m_designMenu;
     m_designMenu.Append( ID_NEWDESIGN, _( "New Design File" ), wxEmptyString, wxITEM_NORMAL );
     m_designMenu.Append( ID_OPENDESIGN, _( "Open Design File" ), wxEmptyString, wxITEM_NORMAL );
-    m_designMenu.Append( ID_REMOVEDESIGN, _( "Remove Design File" ), wxEmptyString, wxITEM_NORMAL );
     m_designMenu.Append( ID_GENERATEPDF, _( "Generate PDF Album" ), wxEmptyString, wxITEM_NORMAL );
 
     switch ( GetPopupMenuSelectionFromUser( m_designMenu ) )
@@ -376,10 +388,7 @@ void AlbumPanel::OnManageClick( wxCommandEvent& event )
             OpenDesign( );
             break;
         }
-        case ID_REMOVEDESIGN:
-        {
-            break;
-        }
+
         case ID_GENERATEPDF:
         {
             break;
@@ -392,7 +401,12 @@ void AlbumPanel::OnManageClick( wxCommandEvent& event )
 //GUI interface for creating new design
 void AlbumPanel::NewDesign( )
 {
+    Design::AlbumVolume* vol = GetAlbumVolume( );
 
+    if ( vol && !vol->ContinueIfDirty( this ) )
+    {
+        return;
+    }
     FileCreateDialog fileDialog( this, 12355, _( "Select the Filename and Directory for the Design file." ) );
     wxGetCwd( );
     fileDialog.SetDefaultDirectory( wxGetCwd( ) );
@@ -407,17 +421,18 @@ void AlbumPanel::NewDesign( )
     wxFileName designFile( fileDialog.GetPath( ) );
     designFile.MakeRelativeTo( cwd );
     GetAlbumData( )->LoadNew( designFile.GetFullPath( ) );
-    SetDirty( );
+    //vol->SetDirty( true );
 
 }
 
 void AlbumPanel::OpenDesign( )
 {
-    wxFileName lastFile( GetProject( )->GetDesignFilename( ) );
-    lastFile.SetExt( "alb" );
+
+    wxString path = wxGetCwd( );
+
     wxFileDialog openFileDialog(
         this, _( "Open Album Design file" ),
-        lastFile.GetPath( ), lastFile.GetFullName( ),
+        path, "",
         "Album Design files(*.alb)|*.alb", wxFD_OPEN | wxFD_FILE_MUST_EXIST );
     if ( openFileDialog.ShowModal( ) == wxID_CANCEL )
     {
@@ -433,9 +448,16 @@ void AlbumPanel::OpenDesign( )
 
 void AlbumPanel::SaveAsDesign( )
 {
-    if ( GetCatalogVolume( ) )
+    if ( GetAlbumVolume( ) )
     {
-        wxFileName lastFile( GetProject( )->GetDesignFilename( ) );
+        Design::AlbumVolume* vol = GetAlbumData( )->GetAlbumVolume( );
+        wxString filename = "";
+        if ( vol )
+        {
+            filename = vol->GetFilename( );
+        }
+
+        wxFileName lastFile( filename );
         lastFile.SetExt( "alb" );
         wxFileDialog saveFileDialog(
             this, _( "Album Design file" ),
@@ -444,8 +466,8 @@ void AlbumPanel::SaveAsDesign( )
         if ( saveFileDialog.ShowModal( ) == wxID_CANCEL )
             return;
 
-        wxString filename = saveFileDialog.GetPath( );
-        GetAlbumData( )->FileSaveAs( filename );
+        wxString newPath = saveFileDialog.GetPath( );
+        GetAlbumData( )->FileSaveAs( newPath );
     }
 }
 

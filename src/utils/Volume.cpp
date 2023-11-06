@@ -37,6 +37,7 @@
 #include <wx/filename.h>
 #include <wx/filefn.h>
 #include <wx/wfstream.h>
+#include <wx/txtstrm.h>
 #include <wx/string.h>
 #include "wx/xml/xml.h"
 #include <wx/msgdlg.h>
@@ -68,6 +69,25 @@ namespace Utils
         delete m_doc;
     }
 
+    bool  Volume::ContinueIfDirty( wxWindow* parent ){
+        if ( IsDirty( ) )
+        {
+            // query whether to save first 
+            wxMessageDialog* dlg = new wxMessageDialog(
+                parent,
+                wxT( "The current data has been changed but not saved. \n"\
+                    "Select \"OK\" to close the file losing the changes.\n"\
+                    "Or select \"Cancel\" to quit file open process.\n" ),
+                wxT( "2 ! Unsaved modifications.\n" ),
+                wxOK | wxCANCEL | wxCENTER );
+            int rsp = dlg->ShowModal( );
+            if ( rsp == wxID_CANCEL )
+            {
+                return false;
+            }
+        }
+        return true;
+    }
 
     wxString Volume::GetPath( )
     {
@@ -93,11 +113,13 @@ namespace Utils
         }
         return "";
     };
+
+
     void Volume::Load( )
     {
         LoadXML( );
         wxString name = GetName( );
-        if ( !name.IsEmpty( ) )
+        if ( name.IsEmpty( ) )
         {
             name = GetFilename( );
             wxFileName fn( name );
@@ -147,14 +169,14 @@ namespace Utils
             {
                 m_doc = NewDocument( );
             }
-            wxXmlNode* Volume = m_doc->GetRoot( );
-            if ( Volume )
+            wxXmlNode* volRoot = m_doc->GetRoot( );
+            if ( volRoot )
             {
-                wxString name = Volume->GetName( );
+                wxString name = volRoot->GetName( );
 
                 if ( name.Length( ) == 0 )
                 {
-                    Volume->SetName( m_filename );
+                    volRoot->SetName( m_filename );
                 }
             }
         }
@@ -183,7 +205,8 @@ namespace Utils
 
     wxXmlDocument* Volume::NewDocument( )
     {
-        delete m_doc;
+        if ( m_doc )
+            delete m_doc;
         m_doc = new wxXmlDocument( );
         wxXmlNode* root = new wxXmlNode( wxXML_ELEMENT_NODE, m_type );
         m_doc->SetRoot( root );
@@ -197,18 +220,18 @@ namespace Utils
         return m_doc;
     };
 
-    void Volume::Save( )
-    {
-        wxString filename = m_filename;
-        if ( wxFileExists( filename ) )
-        {
-            wxFileName bakFile( filename );
-            bakFile.SetExt( "bak" );
-            wxRenameFile( filename, bakFile.GetFullPath( ), true );
-        }
-        m_doc->Save( filename );
-        SetDirty( false );
-    }
+    // void Volume::Save( )
+    // {
+    //     wxString filename = m_filename;
+    //     if ( wxFileExists( filename ) )
+    //     {
+    //         wxFileName bakFile( filename );
+    //         bakFile.SetExt( "bak" );
+    //         wxRenameFile( filename, bakFile.GetFullPath( ), true );
+    //     }
+    //     m_doc->Save( filename );
+    //     SetDirty( false );
+    // }
 
     void Volume::SetDirty( bool state )
     {

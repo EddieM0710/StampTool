@@ -25,9 +25,6 @@
 
 namespace Inventory {
 
-    //void CollectionData::LoadData2( ) { LoadData( ); };
-
-
 
     void CollectionData::SetDirty( bool state )
     {

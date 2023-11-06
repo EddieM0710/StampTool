@@ -57,8 +57,8 @@ namespace Catalog {
         "Status",
         "Condition",
         "Entry",
-        "Specimen",
-        "CatalogCode",
+        "Inventory",
+        "Item",
         "None" };
 
     // const wxString CatalogCodeNames[ CC_NbrTypes ]
@@ -134,8 +134,7 @@ namespace Catalog {
 
 
     const wxString ItemDataNames[ IDT_NbrTypes ]
-        = { wxT( "Collection" ), wxT( "Status" ), wxT( "Type" ), wxT( "Condition" ), wxT( "Value" ), wxT( "Location" ),
-        wxT( "Remarks" ) };
+        = { wxT( "Collection" ), wxT( "Status" ), wxT( "Type" ), wxT( "Condition" ), wxT( "Value" ), wxT( "Remarks" ) };
 
 
     const wxString XMLDataNames[ DT_NbrTypes ] = {

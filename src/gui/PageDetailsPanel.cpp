@@ -147,7 +147,7 @@ void PageDetailsPanel::CreateControls( )
         wxCommandEventHandler( PageDetailsPanel::OnTitleDefaultClick ) );
 
 
-    FontPicker* titleFontPicker = SetupFontPicker( theDialog, m_leftColumnVerticalSizer, lastID,
+    SetupFontPicker( theDialog, m_leftColumnVerticalSizer, lastID,
         _( "SubTitle" ), _( "Default" ),
         m_subTitleFontPicker, m_subTitleColorPicker,
         wxFontPickerEventHandler( PageDetailsPanel::OnSubTitleFontPicker ),
@@ -155,18 +155,28 @@ void PageDetailsPanel::CreateControls( )
         wxCommandEventHandler( PageDetailsPanel::OnSubTitleDefaultClick ) );
 
 
-    wxBoxSizer* firstRowHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
-    m_leftColumnVerticalSizer->Add( firstRowHorizontalSizer, 0, wxGROW | wxALL, 0 );
+    // wxBoxSizer* firstRowHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
+    // m_leftColumnVerticalSizer->Add( firstRowHorizontalSizer, 0, wxGROW | wxALL, 0 );
 
-    wxStaticText* orientationStatic = new wxStaticText(
-        theDialog, wxID_STATIC, _( "Orientation:" ), wxDefaultPosition, wxDefaultSize, 0 );
-    firstRowHorizontalSizer->Add( orientationStatic, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
     wxArrayString m_orientationChoiceStrings( 2, Design::OrientationStrings );
-    m_orientationChoice = new wxChoice( theDialog, ID_ORIENTATIONCHOICE, wxDefaultPosition, wxDefaultSize, m_orientationChoiceStrings, 0 );
+    m_orientationChoice = SetupChoice( theDialog, m_leftColumnVerticalSizer, ++lastID,
+        _( "Orientation:" ), m_orientationChoiceStrings,
+        wxCommandEventHandler( PageDetailsPanel::OnOrientationchoiceSelected ) );
     m_orientationChoice->SetSelection( Design::AT_Portrait );
 
-    firstRowHorizontalSizer->Add( m_orientationChoice, 1, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+
+
+
+    // wxStaticText* orientationStatic = new wxStaticText(
+    //     theDialog, wxID_STATIC, _( "Orientation:" ), wxDefaultPosition, wxDefaultSize, 0 );
+    // firstRowHorizontalSizer->Add( orientationStatic, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+
+    // wxArrayString m_orientationChoiceStrings( 2, Design::OrientationStrings );
+    // m_orientationChoice = new wxChoice( theDialog, ID_ORIENTATIONCHOICE, wxDefaultPosition, wxDefaultSize, m_orientationChoiceStrings, 0 );
+    // m_orientationChoice->SetSelection( Design::AT_Portrait );
+
+    // firstRowHorizontalSizer->Add( m_orientationChoice, 1, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
     //>>error list ctrls
     wxBoxSizer* itemBoxSizer3 = new wxBoxSizer( wxHORIZONTAL );

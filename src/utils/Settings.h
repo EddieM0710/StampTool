@@ -52,21 +52,49 @@ namespace Utils {
         ~Settings( ) { };
 
         void InitSettings( );
+        void NewAppData( );
+        wxString GetConfigurationDirectory( ) {
+            return m_configurationDirectory;
+        };
+        wxString GetAppDataDirectory( ){
+            return m_appDataDirectory;
+        };
 
-        wxString GetConfigurationDirectory( ) { return m_configurationDirectory; };
         //wxString GetImageDirectory( ) { return m_imageDirectory; };
-        wxString GetCatalogID( ) { return m_catalogID; };
-        wxString GetCountryID( ) { return m_countryID; };
+        wxString GetCatalogID( ) {
+            return m_catalogID;
+        };
+        wxString GetCountryID( ) {
+            return m_countryID;
+        };
 
-        wxString GetLastCollection( ) { return m_lastCollection; };
-        wxString GetCollectionFile( ) { return m_CollectionFile; };
-        bool GetLoadLastFileAtStartUp( ) { return m_loadLastFileAtStartUp; };
-        wxString GetLowerDivision( ) { return m_lowerDivision; };
-        wxString GetLowerPeriod( ) { return m_lowerPeriod; };
-        wxString GetMiddlePeriod( ) { return m_middlePeriod; };
-        wxArrayInt* GetSortOrder( ) { return &m_sortOrder; };
-        wxString GetUpperDivision( ) { return m_upperDivision; };
-        wxString GetUpperPeriod( ) { return m_upperPeriod; };
+        wxString GetLastCollection( ) {
+            return m_lastCollection;
+        };
+        wxString GetCollectionFile( ) {
+            return m_CollectionFile;
+        };
+        bool GetLoadLastFileAtStartUp( ) {
+            return m_loadLastFileAtStartUp;
+        };
+        wxString GetLowerDivision( ) {
+            return m_lowerDivision;
+        };
+        wxString GetLowerPeriod( ) {
+            return m_lowerPeriod;
+        };
+        wxString GetMiddlePeriod( ) {
+            return m_middlePeriod;
+        };
+        wxArrayInt* GetSortOrder( ) {
+            return &m_sortOrder;
+        };
+        wxString GetUpperDivision( ) {
+            return m_upperDivision;
+        };
+        wxString GetUpperPeriod( ) {
+            return m_upperPeriod;
+        };
 
         wxFont GetNbrFont( );
         wxColour GetNbrColor( );
@@ -84,37 +112,74 @@ namespace Utils {
         wxColour GetTextColor( );
 
 
-        int GetFontNdxPreference( Design::FontUsageType fontType ) { return FontPreference[ fontType ]; };
-        void SetFontNdxPreference( Design::FontUsageType fontType, int ndx ) { FontPreference[ fontType ] = ndx; };
+        int GetFontNdxPreference( Design::FontUsageType fontType ) {
+            return FontPreference[ fontType ];
+        };
+        void SetFontNdxPreference( Design::FontUsageType fontType, int ndx ) {
+            FontPreference[ fontType ] = ndx;
+        };
 
-        void SetConfigurationDirectory( wxString val ) { m_configurationDirectory = val.Trim( ); m_dirty = true; };
+        void SetConfigurationDirectory( );
+        void SetAppDataDirectory( );
+        wxString AppendPathComponent( const wxString& dir, const wxString& component );
+
         //void SetImageDirectory( wxString val ) { m_imageDirectory = val.Trim( );m_dirty = true; };
-        void SetCatalogID( wxString val ) { m_catalogID = val.Trim( ); m_dirty = true; };
-        void SetCountryID( wxString val ) { m_countryID = val.Trim( ); m_dirty = true; };
-        void SetLastCollection( wxString str ) { m_lastCollection = str; };
-        void SetCollectionFile( wxString str ) { m_CollectionFile = str; };
-        void SetLoadLastFileAtStartUp( bool state = true ) { m_loadLastFileAtStartUp = state; };
-        void SetLowerDivision( wxString val ) { m_lowerDivision = val.Trim( ); m_dirty = true; };
-        void SetLowerPeriod( wxString val ) { m_lowerPeriod = val.Trim( ); m_dirty = true; };
-        void SetMiddlePeriod( wxString val ) { m_middlePeriod = val.Trim( ); m_dirty = true; };
-        void SetUpperDivision( wxString val ) { m_upperDivision = val.Trim( ); m_dirty = true; };
-        void SetUpperPeriod( wxString val ) { m_upperPeriod = m_configurationDirectory.Trim( ); m_dirty = true; };
+        void SetCatalogID( wxString val ) {
+            m_catalogID = val.Trim( ); m_dirty = true;
+        };
+        void SetCountryID( wxString val ) {
+            m_countryID = val.Trim( ); m_dirty = true;
+        };
+        void SetLastCollection( wxString str ) {
+            m_lastCollection = str;
+        };
+        void SetCollectionFile( wxString str ) {
+            m_CollectionFile = str;
+        };
+        void SetLoadLastFileAtStartUp( bool state = true ) {
+            m_loadLastFileAtStartUp = state;
+        };
+        void SetLowerDivision( wxString val ) {
+            m_lowerDivision = val.Trim( ); m_dirty = true;
+        };
+        void SetLowerPeriod( wxString val ) {
+            m_lowerPeriod = val.Trim( ); m_dirty = true;
+        };
+        void SetMiddlePeriod( wxString val ) {
+            m_middlePeriod = val.Trim( ); m_dirty = true;
+        };
+        void SetUpperDivision( wxString val ) {
+            m_upperDivision = val.Trim( ); m_dirty = true;
+        };
+        void SetUpperPeriod( wxString val ) {
+            m_upperPeriod = m_configurationDirectory.Trim( ); m_dirty = true;
+        };
 
         int GetNextSortClassification( int current );
         void SetSettingValue( wxString& setting, wxXmlNode* parent, wxString childName, wxString defaultVal );
         void SetLastFile( wxString file );
-        inline wxString GetLastFile( ) { return m_lastFile; };
+        inline wxString GetLastFile( ) {
+            return m_lastFile;
+        };
 
         void Load( );
         void Save( );
 
 
         void AddRecent( wxString filename );
-        wxArrayString* GetRecentArray( ) { return &m_recentFiles; };
-        void SetNbrRecentPreference( int val ) { m_nbrRecentPreference = val; m_dirty = true; };
-        int GetNbrRecentPreference( ) { return m_nbrRecentPreference; };
+        wxArrayString* GetRecentArray( ) {
+            return &m_recentFiles;
+        };
+        void SetNbrRecentPreference( int val ) {
+            m_nbrRecentPreference = val; m_dirty = true;
+        };
+        int GetNbrRecentPreference( ) {
+            return m_nbrRecentPreference;
+        };
         void SetDirty( bool state = true );
-        bool isDirty( ) { return m_dirty; };
+        bool isDirty( ) {
+            return m_dirty;
+        };
         void SetDefaults( );
         wxString GetCatCodePrefix( )
         {
@@ -129,13 +194,20 @@ namespace Utils {
             }
             return str;
         };
-        bool IsCatalogVolumeEditable( ) { return m_catalogVolumeEditable; };
-        void SetCatalogVolumeEditable( bool val = true ) { m_catalogVolumeEditable = val; };
-        bool IsCatalogVolumeEditableByDefault( ) { return m_catalogVolumeEditableDefault; };
-        void SetCatalogVolumeEditableDefault( bool val = true ) { m_catalogVolumeEditableDefault = val; };
+        bool IsCatalogVolumeEditable( ) {
+            return m_catalogVolumeEditable;
+        };
+        void SetCatalogVolumeEditable( bool val = true ) {
+            m_catalogVolumeEditable = val;
+        };
+        bool IsCatalogVolumeEditableByDefault( ) {
+            return m_catalogVolumeEditableDefault;
+        };
+        void SetCatalogVolumeEditableDefault( bool val = true ) {
+            m_catalogVolumeEditableDefault = val;
+        };
 
         void DumpFont( wxString Level = "" );
-
 
 
 
@@ -145,7 +217,8 @@ namespace Utils {
         wxString m_CollectionFile;
         wxString m_lastCollection;
         wxString m_configurationDirectory;
-
+        wxString m_appDataDirectory;
+        //wxStandardPaths& stdPaths;
         wxString m_countryID;
         wxString m_catalogID;
         wxArrayInt m_sortOrder;

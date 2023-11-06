@@ -39,6 +39,7 @@
  //#include "catalog/CatalogCode.h"
 #include "utils/CSV.h"
 #include "utils/Settings.h"
+#include "utils/Project.h"
 #include "Defs.h"
 #include "catalog/Entry.h"
 #include "catalog/CatalogCode.h"
@@ -121,7 +122,7 @@ namespace Utils {
     bool CSVData::GetIDNbr( wxString catCodes, wxString& id )
     {
         wxStringTokenizer tokenizer( catCodes, "," );
-        wxString codePrefix = GetSettings( )->GetCatCodePrefix( );
+        wxString codePrefix = GetProject( )->GetProjectCatalogCode( );
         wxString valStr;
         wxString rest;
         while ( tokenizer.HasMoreTokens( ) )
@@ -276,22 +277,22 @@ namespace Utils {
 
                                 Catalog::DataTypes entryType = m_csvColMap.at( csvCol );
 
-                                if ( entryType > 0 )
+                                if ( entryType >= 0 )
                                 {
                                     Utils::SetAttrStr( entryElement, Catalog::XMLDataNames[ entryType ], valStr );
                                     wxString id = "";
                                     if ( entryType == Catalog::DT_Catalog_Codes )
                                     {
                                         Catalog::CatalogCode catCodes( valStr );
-                                        wxString code = catCodes.GetPreferredCatalogCode( GetSettings( )->GetCatalogID( ) );
+                                        wxString code = catCodes.GetPreferredCatalogCode( GetProject( )->GetProjectCatalogCode( ) );
 
-                                        //  wxString code = Catalog::GetPreferredCatalogCode( valStr, GetSettings( )->GetCatalogID( ) );
+                                        //  wxString code = Catalog::GetPreferredCatalogCode( valStr, GetProject( )->GetCatalogID( ) );
 
                                           //entryNode.SetID( code );
                                           // //entryNode->ProcessCatalogCodes( valStr );
                                           // if ( GetIDNbr( valStr, id ) )
                                           // {
-                                          //     wxString codePrefix = GetSettings( )->GetCatCodePrefix( );
+                                          //     wxString codePrefix = GetProject( )->GetCatCodePrefix( );
 
                                           //     emtryno
                                           //     entryNode.SetID( id );

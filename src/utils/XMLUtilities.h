@@ -83,6 +83,7 @@ namespace Utils {
     typedef std::vector<wxXmlNode*> wxXmlNodeArray;
 
     wxXmlNode* NewNode( wxXmlNode* parent, wxString name );
+
     wxXmlNode* NewNode( wxXmlDocument* parent, wxString name );
 
     bool DeleteAttribute( wxXmlNode* node, wxString attrName );

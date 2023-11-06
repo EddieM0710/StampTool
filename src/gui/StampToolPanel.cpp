@@ -61,11 +61,14 @@ EVT_NOTEBOOK_PAGE_CHANGED( ID_NOTEBOOK, StampToolPanel::OnNotebookPageChanged )
 EVT_TEXT( ID_TITLETEXTCTRL, StampToolPanel::OnTitleTextUpdated )
 END_EVENT_TABLE( )
 
+///-------
 
 StampToolPanel::StampToolPanel( )
 {
     Init( );
 }
+
+///-------
 
 StampToolPanel::StampToolPanel( wxWindow* parent, wxWindowID id,
     const wxPoint& pos, const wxSize& size,
@@ -74,6 +77,15 @@ StampToolPanel::StampToolPanel( wxWindow* parent, wxWindowID id,
     Init( );
     Create( parent, id, pos, size, style );
 }
+
+///-------
+
+StampToolPanel::~StampToolPanel( )
+{
+
+}
+
+///-------
 
 bool StampToolPanel::Create( wxWindow* parent, wxWindowID id,
     const wxPoint& pos, const wxSize& size,
@@ -88,17 +100,7 @@ bool StampToolPanel::Create( wxWindow* parent, wxWindowID id,
     return true;
 }
 
-StampToolPanel::~StampToolPanel( )
-{
-
-}
-
-void StampToolPanel::Init( )
-{
-
-    m_notebook = NULL;
-    m_sizer = NULL;
-}
+///-------
 
 void StampToolPanel::CreateControls( )
 {
@@ -117,20 +119,20 @@ void StampToolPanel::CreateControls( )
     m_stampToolSplitter->SetMinimumPaneSize( 20 );
     panelHorizontalBoxSizer->Add( m_stampToolSplitter, 1, wxGROW | wxALL, 0 );
 
-    m_catalogTreePanel = new CatalogPanel( m_stampToolSplitter, ID_CATALOGPAGE,
+    m_catalogPanel = new CatalogPanel( m_stampToolSplitter, ID_CATALOGPAGE,
         wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
 
-    GetCatalogData( )->SetCatalogTreePanel( m_catalogTreePanel );
-    GetCatalogData( )->SetCatalogTreeCtrl( m_catalogTreePanel->GetCatalogTree( ) );
-    m_catalogTreePanel->GetCatalogTree( )->SetStates( false );
+    GetCatalogData( )->SetCatalogPanel( m_catalogPanel );
+    GetCatalogData( )->SetCatalogTreeCtrl( m_catalogPanel->GetCatalogTree( ) );
+    m_catalogPanel->GetCatalogTree( )->SetStates( false );
 
-    GetCatalogData( )->SetCatalogTOCTreeCtrl( m_catalogTreePanel->GetTOCTree( ) );
+    GetCatalogData( )->SetCatalogTOCTreeCtrl( m_catalogPanel->GetTOCTree( ) );
 
     m_notebook = new wxNotebook( m_stampToolSplitter,
         ID_NOTEBOOK, wxDefaultPosition,
         wxDefaultSize, wxBK_LEFT );
 
-    m_stampToolSplitter->SplitVertically( m_catalogTreePanel, m_notebook, 500 );
+    m_stampToolSplitter->SplitVertically( m_catalogPanel, m_notebook, 500 );
 
     m_stampDescriptionPanel = new StampDescriptionPanel( m_notebook,
         ID_DESCRIPTIONPANELFOREIGN, wxDefaultPosition,
@@ -158,18 +160,16 @@ void StampToolPanel::CreateControls( )
 
 }
 
+///-------
 
-
-bool StampToolPanel::ShowToolTips( )
+void StampToolPanel::Init( )
 {
-    return true;
+
+    m_notebook = NULL;
+    m_sizer = NULL;
 }
 
-
-void StampToolPanel::UpdateStatus( )
-{
-    m_stampDescriptionPanel->UpdateStatus( );
-}
+///-------
 
 bool StampToolPanel::ShouldShowStates( )
 {
@@ -181,6 +181,7 @@ bool StampToolPanel::ShouldShowStates( )
     return false;
 }
 
+///-------
 
 void StampToolPanel::OnNotebookPageChanged( wxNotebookEvent& event )
 {
@@ -190,16 +191,18 @@ void StampToolPanel::OnNotebookPageChanged( wxNotebookEvent& event )
 
     if ( page != m_stampDescriptionPanel )
     {
-        m_catalogTreePanel->GetCatalogTree( )->SetStates( true );
-        m_catalogTreePanel->GetCatalogTree( )->LoadTree( );
+        m_catalogPanel->GetCatalogTree( )->SetStates( true );
+        m_catalogPanel->GetCatalogTree( )->LoadCatalogTree( );
     }
     else //if ( page == m_stampDescriptionPanel )
     {
-        m_catalogTreePanel->GetCatalogTree( )->SetStates( false );
-        m_catalogTreePanel->GetCatalogTree( )->LoadTree( );
+        m_catalogPanel->GetCatalogTree( )->SetStates( false );
+        m_catalogPanel->GetCatalogTree( )->LoadCatalogTree( );
     }
     event.Skip( );
 }
+
+///-------
 
 void StampToolPanel::OnPDF( wxString filename )
 {
@@ -223,12 +226,25 @@ void StampToolPanel::OnPDF( wxString filename )
     }
 }
 
-
-/*
- *   ID_TITLETEXTCTRL
- */
+///-------
 
 void StampToolPanel::OnTitleTextUpdated( wxCommandEvent& event )
 {
     event.Skip( );
 }
+
+///-------
+
+bool StampToolPanel::ShowToolTips( )
+{
+    return true;
+}
+
+///-------
+
+void StampToolPanel::UpdateStatus( )
+{
+    m_stampDescriptionPanel->UpdateStatus( );
+}
+
+///-------

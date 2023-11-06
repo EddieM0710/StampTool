@@ -20,17 +20,45 @@
 
 namespace Inventory {
 
-    void CollectionList::Save( wxXmlNode* parent )
+    //-------
+
+    void CollectionList::AddCollection( wxString name, wxString description, wxString location )
     {
-        for ( Inventory::CollectionArray::iterator it = std::begin( m_list );
+        Collection* item = new Collection( name, description, location );
+        m_list.push_back( item );
+        BuildStrings( );
+    };
+
+    //-------
+
+    void CollectionList::BuildStrings( )
+    {
+        m_nameArray.Clear( );
+        for ( CollectionArray::iterator it = std::begin( m_list );
             it != std::end( m_list );
             ++it )
         {
-            Inventory::Collection* collection = ( Inventory::Collection* ) ( *it );
-            wxXmlNode* child = Utils::NewNode( parent, "Collection" );
-            collection->Save( child );
+            Collection* collection = ( Inventory::Collection* ) ( *it );
+            m_nameArray.Add( collection->GetName( ) );
         }
+    };
+
+
+    //-------
+    void CollectionList::Clear( )
+    {
+        m_currCollection = "";
+        m_nameArray.Clear( );
+        m_list.clear( );;
     }
+
+    //-------
+
+    Collection* CollectionList::GetCollection( int ndx ) {
+        return m_list[ ndx ];
+    };
+
+    //-------
 
     void CollectionList::Load( wxXmlNode* parent )
     {
@@ -51,12 +79,14 @@ namespace Inventory {
 
     }
 
+    //-------
+
     void CollectionList::SetDefaultCollection( )
     {
         wxString lastCollection = GetSettings( )->GetLastCollection( );
         if ( lastCollection.IsEmpty( ) )
         {
-            lastCollection = "Mint";
+            lastCollection = "Primary";
         }
         Collection* collection = FindCollection( lastCollection );
         if ( collection )
@@ -78,6 +108,9 @@ namespace Inventory {
             }
         }
     }
+
+    //-------
+
     Inventory::Collection* CollectionList::FindCollection( wxString name )
     {
         for ( Inventory::CollectionArray::iterator it = std::begin( m_list );
@@ -94,34 +127,41 @@ namespace Inventory {
         return  ( Inventory::Collection* ) 0;
     }
 
-    void CollectionList::AddCollection( wxString name, wxString description, wxString location )
-    {
-        Collection* item = new Collection( name, description, location );
-        m_list.push_back( item );
-        BuildStrings( );
-    };
-
-
-    void CollectionList::BuildStrings( )
-    {
-        m_nameArray.Clear( );
-        for ( CollectionArray::iterator it = std::begin( m_list );
-            it != std::end( m_list );
-            ++it )
-        {
-            Collection* collection = ( Inventory::Collection* ) ( *it );
-            m_nameArray.Add( collection->GetName( ) );
-        }
-    };
-
-    Collection* CollectionList::GetCurrentCollection( ) { return FindCollection( m_currCollection ); };
+    //-------
 
     wxArrayString& CollectionList::GetNameStrings( )
     {
         return m_nameArray;
     };
 
-    wxString CollectionList::GetCurrentName( ) { return m_currCollection; };
+    //-------
+
+    Collection* CollectionList::GetCurrentCollection( ) {
+        return FindCollection( m_currCollection );
+    };
+
+    //-------
+
+    wxString CollectionList::GetCurrentName( ) {
+        return m_currCollection;
+    };
+
+    //-------
+
+    void CollectionList::Save( wxXmlNode* parent )
+    {
+
+        for ( Inventory::CollectionArray::iterator it = std::begin( m_list );
+            it != std::end( m_list );
+            ++it )
+        {
+            Inventory::Collection* collection = ( Inventory::Collection* ) ( *it );
+            wxXmlNode* child = Utils::NewNode( parent, "Collection" );
+            collection->Save( child );
+        }
+    }
+
+    //-------
 
     bool CollectionList::SetCurrentCollection( wxString str )
     {
@@ -135,5 +175,7 @@ namespace Inventory {
         }
         return false;
     };
+
+    //-------
 
 }

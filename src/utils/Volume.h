@@ -52,6 +52,8 @@ namespace Utils {
 
         ~Volume( );
 
+        bool  ContinueIfDirty( wxWindow* parent );
+
         bool operator>( Volume* rhs );
 
         bool operator<( Volume* rhs );

@@ -45,7 +45,7 @@ namespace Catalog {
     typedef std::unordered_map< std::string, CatalogVolume*  > CatalogVolumeArray;
     typedef std::unordered_map< int, wxTreeItemId > CatalogMenuIDArray;
 
-    CatalogVolume* NewCatalogVolumeInstance( );
+    //CatalogVolume* NewCatalogVolumeInstance( );
 
     class CatalogVolume : public Utils::Volume
     {
@@ -56,23 +56,23 @@ namespace Catalog {
 
         ~CatalogVolume( );
 
-        bool operator>( CatalogVolume* rhs )
-        {
-            if ( GetName( ).Cmp( rhs->GetName( ) ) > 0 )
-            {
-                return true;
-            }
-            return false;
-        }
+        // bool operator>( CatalogVolume* rhs )
+        // {
+        //     if ( GetName( ).Cmp( rhs->GetName( ) ) > 0 )
+        //     {
+        //         return true;
+        //     }
+        //     return false;
+        // }
 
-        bool operator<( CatalogVolume* rhs )
-        {
-            if ( GetName( ).Cmp( rhs->GetName( ) ) > 0 )
-            {
-                return false;
-            }
-            return true;
-        }
+        // bool operator<( CatalogVolume* rhs )
+        // {
+        //     if ( GetName( ).Cmp( rhs->GetName( ) ) > 0 )
+        //     {
+        //         return false;
+        //     }
+        //     return true;
+        // }
 
 
 
@@ -82,7 +82,7 @@ namespace Catalog {
 
         bool FixupInventoryStatus( );
 
-        void Load( );
+        //void Load( );
 
         bool LoadCSV( wxString filename );
 
@@ -98,6 +98,9 @@ namespace Catalog {
 
         void Save( );
 
+        void SaveXML( );
+
+
 
         /// this looks through the xml tree and makes related entries of childType a child of the parent type
         void StructureCatalogVolume( Catalog::FormatType parentType,
@@ -108,9 +111,14 @@ namespace Catalog {
 
         bool UpdateMount( );
 
+        void LoadDefaultDocument( wxString volName );
+
+
     private:
 
     };
+
+    //CatalogVolume* NewCatalogVolume( );
 
 }
 #endif

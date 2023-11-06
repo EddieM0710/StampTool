@@ -398,7 +398,7 @@ Utils::StampLink* AlbumTreeCtrl::AppendStamp( wxTreeItemId catTreeID )
 
 //--------------
 
-void AlbumTreeCtrl::ClearDesignTree( )
+void AlbumTreeCtrl::Clear( )
 {
     // first make sure all the links to the items are gone
     Utils::StampList* stampList = GetStampAlbumCatalogLink( );
@@ -737,7 +737,7 @@ bool AlbumTreeCtrl::IsElement( wxTreeItemId item, Design::AlbumBase* ele )
 
 void AlbumTreeCtrl::LoadTree( )
 {
-    ClearDesignTree( );
+    Clear( );
     Design::AlbumVolume* volume = GetAlbumVolume( );
     if ( volume )
     {

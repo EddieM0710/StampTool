@@ -50,7 +50,12 @@ namespace Design {
         void InitParameters( );
 
         bool CalculateSpacing( ) {
-            return String2Bool( GetAttrStr( AT_CalculateSpacing ) );
+            wxString str = GetAttrStr( AT_CalculateSpacing );
+            if ( str.IsEmpty( ) )
+            {
+                return true;
+            }
+            return String2Bool( str, true );
         };
 
         void Draw( wxDC& dc, double x, double y );

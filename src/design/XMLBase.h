@@ -53,176 +53,100 @@ namespace Design {
 
     public:
 
-        /**
-         * @brief Unused; Construct a new Album Design Object object
-         *
-         */
+
         XMLBase( ) {  };
 
-        /**
-         * @brief Construct a new Album Design Object
-         *
-         * @param name
-         */
         XMLBase( wxXmlNode* ele );
 
-        ///  @brief Destroy the XMLBase object
-        ///  
         ~XMLBase( );
 
-        ///  @brief 
-        ///  
-        ///  @param ndx 
-        ///  @return Attribute* 
-        Attribute* AttributeItem( int ndx ) { return m_attrArray.at( ndx ); };
+        Attribute* AttributeItem( int ndx ) {
+            return m_attrArray.at( ndx );
+        };
 
         void DeleteAttribute( wxString name );
 
-        ///  @brief 
-        ///  
-        ///  @param name 
-        ///  @return Attribute* 
         Attribute* FindAttr( wxString name );
 
         void DumpAttr( );
 
-        ///  @brief Get the Attr Str object
-        ///  
-        ///  @param name 
-        ///  @return wxString 
         wxString GetAttrStr( wxString name );
 
-        ///  @brief Get the Attr Str object
-        ///  
-        ///  @param type 
-        ///  @return wxString 
         wxString GetAttrStr( AlbumAttrType type );
 
-        ///  @brief Get the Attr Dbl object
-        ///  
-        ///  @param type 
-        ///  @return double 
         double GetAttrDbl( AlbumAttrType type );
 
-        ///  @brief Get the Attr Dbl object
-        ///  
-        ///  @param name 
-        ///  @return double 
         double GetAttrDbl( wxString name );
 
-        ///  @brief Get the Line Number object
-        ///  
-        ///  @return int 
-        int GetLineNumber( ) { return m_lineNbr; };
+        int GetLineNumber( ) {
+            return m_lineNbr;
+        };
 
-        ///  @brief Get the Nbr Attr object
-        ///  
-        ///  @return int 
-        int GetNbrAttr( ) { return m_attrArray.size( ); };
+        int GetNbrAttr( ) {
+            return m_attrArray.size( );
+        };
 
-        ///  @brief Get the Nbr Children object
-        ///  
-        ///  @return int 
         int GetNbrChildren( );
 
-        ///  @brief Get the Node Type object
-        ///  
-        ///  @return AlbumBaseType 
-        AlbumBaseType GetNodeType( ) { return ( AlbumBaseType ) m_nodeType; };
+        AlbumBaseType GetNodeType( ) {
+            return ( AlbumBaseType ) m_nodeType;
+        };
 
-        ///  @brief Get the Node Status object
-        ///  
-        ///  @return NodeStatus 
-        NodeStatus GetNodeStatus( ) { return m_nodeValid; };
+        NodeStatus GetNodeStatus( ) {
+            return m_nodeValid;
+        };
 
-        ///  @brief Get the Object Name object
-        ///  
-        ///  @return wxString 
-        wxString GetObjectName( ) { return m_objectName; };
+        wxString GetObjectName( ) {
+            return m_objectName;
+        };
 
-        ///  @brief Get the Object Text object
-        ///  
-        ///  @return wxString 
-        wxString GetObjectText( ) { return m_text; };
+        wxString GetObjectText( ) {
+            return m_text;
+        };
 
-        ///  @brief Get the Text object
-        ///  
-        ///  @return wxString 
-        wxString GetText( ) { return m_text; }
+        wxString GetText( ) {
+            return m_text;
+        }
 
-        ///  @brief 
-        ///  
-        ///  @param type 
-        ///  @return true 
-        ///  @return false 
-        bool IsNodeType( AlbumBaseType type ) { return ( type == m_nodeType ); };
+        bool IsNodeType( AlbumBaseType type ) {
+            return ( type == m_nodeType );
+        };
 
-        ///  @brief 
-        ///  
-        ///  @param thisObject 
-        ///  @return true 
-        ///  @return false 
         bool LoadAttributes( wxXmlNode* thisObject );
 
-        ///  @brief 
-        ///  
-        ///  @param xmlNode 
         virtual void Save( wxXmlNode* xmlNode ) = 0;
 
-        ///  @brief Set the Attribute object
-        ///  
-        ///  @param xmlNode 
-        ///  @param type 
         void SetAttribute( wxXmlNode* xmlNode, AlbumAttrType type );
 
-        ///  @brief Set the Attr Str object
-        ///  
-        ///  @param name 
-        ///  @param val 
         void SetAttrStr( wxString name, wxString val );
 
-        ///  @brief Set the Attr Str object
-        ///  
-        ///  @param type 
-        ///  @param val 
         void SetAttrStr( AlbumAttrType type, wxString val );
 
-        ///  @brief Set the Attr Dbl object
-        ///  
-        ///  @param type 
-        ///  @param val 
         void SetAttrDbl( AlbumAttrType type, double val );
 
-        ///  @brief Set the Line Number object
-        ///  
-        ///  @param nbr 
-        void SetLineNumber( int nbr ) { m_lineNbr = nbr; };
+        void SetLineNumber( int nbr ) {
+            m_lineNbr = nbr;
+        };
 
-        ///  @brief Set the Object Name object
-        ///  
-        ///  @param name 
-        void SetObjectName( wxString name ) { m_objectName = name; }
+        void SetObjectName( wxString name ) {
+            m_objectName = name;
+        }
 
-        ///  @brief Set the Object Text object
-        ///  
-        ///  @param text 
-        void SetObjectText( wxString text ) { m_text = text; }
+        void SetObjectText( wxString text ) {
+            m_text = text;
+        }
 
-        ///  @brief Set the Node Type object
-        ///  
-        ///  @param type 
-        void SetNodeType( AlbumBaseType type ) { m_nodeType = type; };
+        void SetNodeType( AlbumBaseType type ) {
+            m_nodeType = type;
+        };
 
-        ///  @brief 
-        ///  
-        ///  @return true 
-        ///  @return false 
-        bool IsStatusOK( ) { return ( m_nodeValid != AT_FATAL ); };
+        bool IsStatusOK( ) {
+            return ( m_nodeValid != AT_FATAL );
+        };
 
-        ///  @brief Set the Node Status object
-        ///  
-        ///  @param status 
-        void SetNodeStatus( NodeStatus status ) { m_nodeValid = status; };
+        void SetNodeStatus( NodeStatus status ) {
+            m_nodeValid = status;
+        };
 
     private:
 

@@ -39,270 +39,107 @@
 #include "gui/CatalogPanel.h"
 #include "catalog/CatalogData.h"
 #include "utils/XMLUtilities.h"
-#include "gui/TOCTreeCtrl.h"
+#include "gui/CatalogTOCTreeCtrl.h"
 
 #include "Defs.h"
 
 
 namespace Catalog {
 
-    bool CatalogList::ClearCatalogArray( )
+
+    Catalog::CatalogVolume* CatalogList::NewVolumeInstance( wxString filename )
     {
-        m_catalogArray.clear( );
-        return true;
+        Catalog::CatalogVolume* catalogVolume = new Catalog::CatalogVolume( );
+        SetCurrentVolume( catalogVolume );
+        catalogVolume->SetFilename( filename );
+        return catalogVolume;
     }
 
-    void CatalogList::dumpArray( wxArrayString& array )
+    Catalog::CatalogVolume* CatalogList::AddNewVolume( wxString filename )
     {
-        for ( int j = 0; j < array.Count( ); j++ )
-        {
-            wxString str = array.Item( j );
-            std::cout << str << " ";
-        }
-        std::cout << "\n";
+        // make the volume
+        Catalog::CatalogVolume* vol = NewVolumeInstance( filename );
+
+        wxFileName catFile( filename );
+        wxString volName = catFile.GetName( );
+        vol->LoadDefaultDocument( volName );
+
+        // Add it to the ProjectList
+        wxXmlNode* newNode = GetProject( )->AddNewCatalogVolume( filename, volName );
+
+        // Add it to the catalog List
+        Insert( volName, vol );
+
+        // Add it to the tree
+        wxTreeItemId treeRootID = GetCatalogTOCTreeCtrl( )->GetRootItem( );
+
+        GetCatalogTOCTreeCtrl( )->AddChild( treeRootID, newNode, GetCatalogTOCTreeCtrl( )->GetMenu( ) );
+
+        return vol;
     }
-    // void CatalogList::SortNameArray( )
-    // {
-    //     wxArrayString oldNameStrings = m_volumeNameStrings;
-    //     m_volumeNameStrings.Clear( );
-    //     for ( int j = 0; j < oldNameStrings.Count( ); j++ )
-    //     {
-    //         wxString str = oldNameStrings.Item( j );
-    //         if ( j == 0 )
-    //         {
-    //             m_volumeNameStrings.Add( str );
-    //         }
-    //         else
-    //         {
-    //             bool done = false;
-    //             for ( int i = 0; i < m_volumeNameStrings.Count( ); i++ )
-    //             {
-    //                 wxString test = m_volumeNameStrings.Item( i );
-    //                 if ( test.Cmp( str ) < 0 )
-    //                 {
-    //                     m_volumeNameStrings.Insert( str, i );
-    //                     done = true;
-    //                     break;
-    //                 }
-    //             }
-    //             if ( !done )
-    //             {
-    //                 m_volumeNameStrings.Add( str );
-    //             }
-    //         }
-    //         // dumpArray( m_volumeNameStrings );
-    //     }
-    // }
 
-    // void CatalogList::BuildVolumeNameStrings( )
-    // {
-    //     // m_volumeNameStrings.Clear( );
-    //     // for ( Catalog::CatalogVolumeArray::iterator it = std::begin( m_catalogArray );
-    //     //     it != std::end( m_catalogArray );
-    //     //     ++it )
-    //     // {
-    //     //     Catalog::CatalogVolume* volume = ( Catalog::CatalogVolume* ) ( *it );
-    //     //     m_volumeNameStrings.Add( volume->GetVolumeName( ) );
-    //     // }
-    //     // SortNameArray( );
-    // }
 
-    Catalog::CatalogVolume* CatalogList::GetCatalogVolume( )
+    bool CatalogList::ImportCSV( wxString csvFilename )
     {
-        if ( m_currVolume )
+        wxFileName csvFile( csvFilename );
+        wxString ext = csvFile.GetExt( );
+        if ( !ext.CmpNoCase( "csv" ) )
         {
-            if ( !m_catalogArray.empty( ) )
+
+            wxString cwd = wxGetCwd( );
+            wxFileName catalogFile;// = csvFile;
+            catalogFile.SetPath( cwd );
+
+            wxString volName = csvFile.GetName( );
+            catalogFile.SetName( volName );
+            catalogFile.SetExt( "cat" );
+
+            // Get then name to save as
+            wxFileDialog openFileDialog(
+                GetFrame( ), _( "Select directory and file to save the new cat file to." ),
+                wxGetCwd( ),
+                catalogFile.GetFullName( ),
+                "Catalog XML files(*.cat)|*.cat", wxFD_SAVE | wxFD_OVERWRITE_PROMPT );
+            if ( openFileDialog.ShowModal( ) == wxID_CANCEL )
             {
-                return m_currVolume;
+                return  false; // the user changed idea...
             }
-        }
-        return ( Catalog::CatalogVolume* ) 0;
-    };
+            wxFileName catFile( openFileDialog.GetPath( ) );
+            catFile.MakeRelativeTo( cwd );
 
-    // void CatalogList::Load( )
-    // {
-
-    //     for ( Catalog::CatalogVolumeArray::iterator it = std::begin( m_catalogArray );
-    //         it != std::end( m_catalogArray );
-    //         ++it )
-    //     {
-    //         Catalog::CatalogVolume* volume = ( Catalog::CatalogVolume* ) ( *it );
-    //         volume->Load( );
-    //         // std::cout << " Loaded " << volume->GetVolumeName( ) << "\n";
-    //     }
-
-    //     // if ( m_catalogArray.size( ) > 1 )
-    //     // {
-    //     //     sort( std::begin( m_catalogArray ), std::end( m_catalogArray ) );
-    //     // }
-
-    //     m_volumeNameStrings.Clear( );
-    //     for ( Catalog::CatalogVolumeArray::iterator it = std::begin( m_catalogArray );
-    //         it != std::end( m_catalogArray );
-    //         ++it )
-    //     {
-    //         Catalog::CatalogVolume* volume = ( Catalog::CatalogVolume* ) ( *it );
-    //         m_volumeNameStrings.Add( volume->GetVolumeName( ) );
-    //     }
-    //     Catalog::CatalogVolume* volume = ( Catalog::CatalogVolume* ) ( *std::begin( m_catalogArray ) );
-
-    //     m_currVolume = volume;
-
-    // };
-
-
-    // Catalog::CatalogVolume* CatalogList::FindVolume( wxString str )
-    // {
-
-
-    //     Catalog::CatalogVolume* vol = m_catalogArray.at( str.ToStdString( ) );
-    //     return m_catalogArray[ str.ToStdString( ) ];
-
-    // }
-    void CatalogList::Insert( int id, wxTreeItemId treeId )
-    {
-        m_menuIDArray.insert( std::make_pair( id, treeId ) );
-    }
-
-    wxTreeItemId CatalogList::FindMenuID( int id )
-    {
-        CatalogMenuIDArray::iterator itr = FindMenuIDIterator( id );
-        if ( itr != m_menuIDArray.end( ) )
-        {
-            return itr->second;
-        }
-
-        return wxTreeItemId( 0 );
-    }
-
-    CatalogMenuIDArray::iterator CatalogList::FindMenuIDIterator( int id )
-    {
-        CatalogMenuIDArray::iterator itr;
-        int i = m_menuIDArray.size( );
-
-        for ( itr = m_menuIDArray.begin( );
-            itr != m_menuIDArray.end( ); itr++ )
-        {
-            int currID = itr->first;
-            if ( currID == id )
+            // Make a new volume
+            wxString newFile = catFile.GetFullPath( );
+            Catalog::CatalogVolume* catalogVolume = NewVolumeInstance( newFile );
+            bool readStatus = catalogVolume->LoadCSV( csvFile.GetFullPath( ) );
+            if ( readStatus )
             {
-                return itr;
+                // Add it to the ProjectList
+                wxXmlNode* newNode = GetProject( )->AddNewCatalogVolume( newFile, volName );
+
+
+                // Add it to the catalog List
+                Insert( volName, catalogVolume );
+
+                // Add it to the tree
+                wxTreeItemId treeRootID = GetCatalogTOCTreeCtrl( )->GetRootItem( );
+                GetCatalogTOCTreeCtrl( )->AddChild( treeRootID, newNode, GetCatalogTOCTreeCtrl( )->GetMenu( ) );
+
             }
+            return readStatus;
         }
-        return m_menuIDArray.end( );
-    };
-
-    void CatalogList::Insert( wxString str, Catalog::CatalogVolume* vol )
-    {
-        m_catalogArray.insert( std::make_pair( str, vol ) );
+        return false;
     }
 
-    Catalog::CatalogVolume* CatalogList::FindVolume( wxString str )
-    {
-        CatalogVolumeArray::iterator itr = FindVolumeIterator( str );
-        if ( itr != m_catalogArray.end( ) )
-        {
-            return itr->second;
-        }
 
-        return ( Catalog::CatalogVolume* ) 0;
+    Catalog::CatalogVolume* CatalogList::NewCatalogVolume( wxString filename )
+    {
+        CatalogVolume* vol = new CatalogVolume( );
+        vol->SetFilename( filename );
+        vol->Load( );
+
+        wxString volName = vol->GetName( );
+        Catalog::CatalogList* list = GetCatalogData( )->GetCatalogList( );
+        list->SetCurrentVolume( vol );
+        return vol;
     }
-
-    CatalogVolumeArray::iterator CatalogList::FindVolumeIterator( wxString str )
-    {
-        CatalogVolumeArray::iterator itr;
-        int i = m_catalogArray.size( );
-
-        for ( itr = m_catalogArray.begin( );
-            itr != m_catalogArray.end( ); itr++ )
-        {
-            CatalogVolume* vol = itr->second;
-            if ( !str.Cmp( vol->GetName( ) ) )
-            {
-                return itr;
-            }
-        }
-        return m_catalogArray.end( );
-    };
-
-    // int CatalogList::FindVolumeNameArrayNdx( wxString str )
-    // {
-    //     for ( int i = 0; i < m_volumeNameStrings.Count( ); i++ )
-    //     {
-    //         wxString name = ( Catalog::CatalogVolume* ) ( m_volumeNameStrings.Item( i ) );
-    //         if ( !str.Cmp( name ) )
-    //         {
-    //             return i;
-    //         }
-    //     }
-    //     return 0;
-    // }
-    // Catalog::CatalogVolume* CatalogList::NewCatalogVolume( )
-    // {
-    //     Catalog::CatalogVolume* catalogVolume = Catalog::NewCatalogVolumeInstance( );
-    //     m_catalogArray.insert( catalogVolume );
-    //     return catalogVolume;
-    // };
-
-    void CatalogList::SaveCatalogVolumes( )
-    {
-        Catalog::CatalogVolumeArray::iterator it = m_catalogArray.begin( );
-
-        // Iterate through the map and print the elements
-        while ( it != m_catalogArray.end( ) )
-        {
-            Catalog::CatalogVolume* volume = ( Catalog::CatalogVolume* ) ( it->second );
-            volume->Save( );
-            ++it;
-        }
-    };
-
-    void CatalogList::SetCatalogVolume( CatalogVolume* vol ) {
-        m_currVolume = vol;
-        //        GetCatalogData( )->LoadCatalogTree( );
-    };
-
-    int WayToSort( Catalog::CatalogVolume* sect1, Catalog::CatalogVolume* sect2 )
-    {
-        wxString name1 = sect1->GetName( );
-        wxString name2 = sect2->GetName( );
-        return name1.compare( name2 );
-    }
-    //
-
-    wxXmlNode* CatalogList::AddChild( wxXmlNode* child )
-    {
-        wxString label;
-
-        wxString nodeName = child->GetName( );
-        Utils::TOCBaseType  nodeType = Utils::FindTOCBaseType( nodeName );
-        if ( nodeType == Utils::TOC_Volume )
-        {
-            wxString filename = Utils::GetAttrStr( child, "FileName" );
-            Catalog::CatalogVolume* vol = Catalog::NewCatalogVolumeInstance( );
-            vol->SetFilename( filename );
-            vol->Load( );
-            wxString volName = vol->GetName( );
-            Utils::SetAttrStr( child, "VolumeName", volName );
-
-            Insert( volName, vol );
-            SetCatalogVolume( vol );
-        }
-        // else if ( nodeType == Utils::TOC_Section )
-        // {
-        //     wxString volName = GetAttrStr( child, "Name" );
-        // }
-        // now do it all again for this entrys children
-        wxXmlNode* grandChild = child->GetChildren( );
-        while ( grandChild )
-        {
-
-            // start adding child elements to it.
-            AddChild( grandChild );
-            grandChild = grandChild->GetNext( );
-        }
-
-        return child;
-    }
-
 }

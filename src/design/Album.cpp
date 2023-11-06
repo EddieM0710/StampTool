@@ -44,6 +44,7 @@
 #include "utils/XMLUtilities.h"
 #include "utils/FontList.h"
 #include "utils/Settings.h"
+#include "utils/Project.h"
 #include "gui/AlbumTreeCtrl.h"
  //#include "StampToolApp.h"
 
@@ -251,7 +252,7 @@ namespace Design {
         wxString cat = GetAttrStr( AT_Catalog );
         if ( cat.IsEmpty( ) )
         {
-            cat = GetSettings( )->GetCatalogID( );
+            cat = GetProject( )->GetProjectCatalogCode( );
         }
         return cat;
     };
@@ -272,6 +273,100 @@ namespace Design {
             return GetAlbum( )->GetColor( fontType );
         }
     }
+
+    wxString Album::GetDefaultValStr( AlbumAttrType type )
+    {
+        if ( type == AT_SelvageHeight )
+        {
+            return  wxString::Format( "%4.1f", m_defaultSelvageHeight );
+        }
+        else if ( type == AT_SelvageWidth )
+        {
+            return   wxString::Format( "%4.1f", m_defaultSelvageWidth );
+        }
+        else if ( type == AT_MountAllowanceHeight )
+        {
+            return   wxString::Format( "%4.1f", m_defaultMountAllowanceHeight );
+        }
+        else if ( type == AT_MountAllowanceWidth )
+        {
+            return   wxString::Format( "%4.1f", m_defaultMountAllowanceWidth );
+        }
+        else if ( type == AT_Catalog )
+        {
+            return  GetCatalog( );
+        }
+        else
+            return "";
+    };
+
+    double Album::GetDefaultVal( AlbumAttrType type )
+    {
+        if ( type == AT_SelvageHeight )
+        {
+            return m_defaultSelvageHeight;
+        }
+        else if ( type == AT_SelvageWidth )
+        {
+            return m_defaultSelvageWidth;
+        }
+        else if ( type == AT_MountAllowanceHeight )
+        {
+            return m_defaultMountAllowanceHeight;
+        }
+        else if ( type == AT_MountAllowanceWidth )
+        {
+            return m_defaultMountAllowanceWidth;
+        }
+        return 0;
+    };
+
+    // wxString Album::GetDefaultValStr( AlbumAttrType type )
+    // {
+    //     if ( type == AT_SelvageHeight )
+    //     {
+    //         return  wxString::Format( "%4.1f", m_defaultSelvageHeight );
+    //     }
+    //     else if ( type == AT_SelvageWidth )
+    //     {
+    //         return   wxString::Format( "%4.1f", m_defaultSelvageWidth );
+    //     }
+    //     else if ( type == AT_MountAllowanceHeight )
+    //     {
+    //         return   wxString::Format( "%4.1f", m_defaultMountAllowanceHeight );
+    //     }
+    //     else if ( type == AT_MountAllowanceWidth )
+    //     {
+    //         return   wxString::Format( "%4.1f", m_defaultMountAllowanceWidth );
+    //     }
+    //     else if ( type == AT_Catalog )
+    //     {
+    //         return  GetCatalog( );
+    //     }
+    //     else
+    //         return "";
+    // };
+
+    // double Album::GetDefaultVal( AlbumAttrType type )
+    // {
+    //     if ( type == AT_SelvageHeight )
+    //     {
+    //         return m_defaultSelvageHeight;
+    //     }
+    //     else if ( type == AT_SelvageWidth )
+    //     {
+    //         return m_defaultSelvageWidth;
+    //     }
+    //     else if ( type == AT_MountAllowanceHeight )
+    //     {
+    //         return m_defaultMountAllowanceHeight;
+    //     }
+    //     else if ( type == AT_MountAllowanceWidth )
+    //     {
+    //         return m_defaultMountAllowanceWidth;
+    //     }
+    //     return 0;
+    // };
 
     wxString Album::GetDocName( ) {
         return  GetAttrStr( "Name" );

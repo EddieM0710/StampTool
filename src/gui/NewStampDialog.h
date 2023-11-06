@@ -57,7 +57,7 @@ class LabeledTextBox;
 class NewStampDialog : public wxDialog
 {
     DECLARE_DYNAMIC_CLASS( NewStampDialog )
-        DECLARE_EVENT_TABLE( )
+    DECLARE_EVENT_TABLE( )
 
 public:
     enum NewStampDialogGuiDefs
@@ -74,7 +74,7 @@ public:
         ID_HEIGHTTEXTBOX
     };
 
-    
+
 
     NewStampDialog( );
     NewStampDialog( wxWindow* parent, wxWindowID id = SYMBOL_NEWSTAMPDIALOG_IDNAME, const wxString& caption = SYMBOL_NEWSTAMPDIALOG_TITLE, const wxPoint& pos = SYMBOL_NEWSTAMPDIALOG_POSITION, const wxSize& size = SYMBOL_NEWSTAMPDIALOG_SIZE, long style = SYMBOL_NEWSTAMPDIALOG_STYLE );
@@ -113,13 +113,13 @@ public:
     void SetChoice( wxChoice* ctrl, wxString str );
     void SetStamp( Catalog::Entry* stamp );
 
-    
 
 
 
 
-        // NewStampDialog member variables
-    LabeledTextBox* m_ID;
+
+    // NewStampDialog member variables
+//LabeledTextBox* m_ID;
     LabeledTextBox* m_name;
     wxChoice* m_emission;
     wxChoice* m_format;

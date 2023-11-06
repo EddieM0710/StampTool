@@ -70,15 +70,14 @@ EVT_TEXT_MAXLEN( ID_BKGNDTEXTCTRL, StampDescriptionPanel::OnBkgndtextctrlMaxLen 
 //EVT_SPLITTER_SASH_POS_CHANGED( ID_HORIZONTALLITTERWINDOW, StampDescriptionPanel::OnSplitterwindowSashPosChanged )
 
 END_EVENT_TABLE( )
-;  // silly business; The above macro screws up the formatter
 
-/*
-* StampDescriptionPanel constructors
-*/
+//-------
 
 StampDescriptionPanel::StampDescriptionPanel( void ) {
     Init( );
 }
+
+//-------
 
 
 
@@ -90,9 +89,8 @@ StampDescriptionPanel::StampDescriptionPanel( wxWindow* parent, wxWindowID id,
     Create( parent, id, pos, size, style );
 }
 
-/*
- * StampDescriptionPanel creator
- */
+//-------
+
 
 bool StampDescriptionPanel::Create( wxWindow* parent, wxWindowID id,
     const wxPoint& pos, const wxSize& size,
@@ -112,9 +110,8 @@ bool StampDescriptionPanel::Create( wxWindow* parent, wxWindowID id,
     return true;
 }
 
-/*
- * StampDescriptionPanel destructor
- */
+//-------
+
 
 StampDescriptionPanel::~StampDescriptionPanel( void )
 {
@@ -122,9 +119,18 @@ StampDescriptionPanel::~StampDescriptionPanel( void )
     // StampDescriptionPanel destruction
 }
 
-/*
- * Member initialisation
- */
+//-------
+
+void StampDescriptionPanel::Clear( )
+{
+
+    m_identificationPanel->Clear( );
+    m_zoomSlider->SetValue( 100 );
+    m_stampImage->Clear( );
+    m_inventoryPanel->Clear( );
+}
+
+//-------
 
 void StampDescriptionPanel::Init( void )
 {
@@ -133,17 +139,9 @@ void StampDescriptionPanel::Init( void )
     m_zoomSlider = NULL;
     m_stampImage = NULL;
     m_inventoryPanel = NULL;
-    //    m_characteristicsPanel = NULL;
-   // m_miscellaneousDataPanel = NULL;
-    //$    m_description = NULL;
-    //$    m_bkgndText = NULL;
-        // StampDescriptionPanel member initialisation
-    //m_stamp = NULL;
 }
 
-/*
- * Control creation for StampDescriptionPanel
- */
+//-------
 
 void StampDescriptionPanel::CreateControls( void )
 {
@@ -249,6 +247,7 @@ void StampDescriptionPanel::CreateControls( void )
     m_stampImage->SetBitmap( filename );
 }
 
+//-------
 
 void StampDescriptionPanel::OnSplitterwindowSashPosChanged( wxSplitterEvent& event )
 {
@@ -257,71 +256,21 @@ void StampDescriptionPanel::OnSplitterwindowSashPosChanged( wxSplitterEvent& eve
     event.Skip( );
 }
 
-/*
- *
- *
- *  COMMAND_TEXT_MAXLEN event handler for ID_BKGNDTEXTCTRL
- */
+//-------
 
 void StampDescriptionPanel::OnBkgndtextctrlMaxLen( wxCommandEvent& event )
 {
     event.Skip( );
 }
 
-/*
- *
- *
- *  LEAVE_WINDOW event handler for ID_BKGNDTEXTCTRL
- */
+//-------
 
 void StampDescriptionPanel::OnLeaveWindow( wxMouseEvent& event )
 {
     event.Skip( );
 }
 
-/*
- *
- *
- *
- */
-
-bool StampDescriptionPanel::ShowToolTips( void ) {
-    return true;
-}
-
-
-
-
-/*
- * UpdateStatus
- *
- */
-
-void StampDescriptionPanel::UpdateStatus( void )
-{
-    m_inventoryPanel->UpdatePanel( );
-}
-
-/*
- *
- *  COMMAND_SLIDER_UPDATED event handler for ID_SLIDER
- *
- */
-
-void StampDescriptionPanel::OnZoomsliderUpdated( wxCommandEvent& event )
-{
-    int val = m_zoomSlider->GetValue( );
-    double zoom = ( double ) val / 100.0;
-    m_stampImage->SetZoom( zoom );
-
-    event.Skip( );
-}
-
-/*
- *
- *
- *   ID_BKGNDTEXTCTRL
- */
+//-------
 
 void StampDescriptionPanel::OnBkGndTextUpdated( wxCommandEvent& event )
 {
@@ -336,9 +285,7 @@ void StampDescriptionPanel::OnBkGndTextUpdated( wxCommandEvent& event )
     event.Skip( );
 }
 
-/*
- *   ID_DESCRIPTIONTEXTCTRL
- */
+//-------
 
 void StampDescriptionPanel::OnDescriptionTextctrlTextUpdated( wxCommandEvent& event )
 {
@@ -353,27 +300,7 @@ void StampDescriptionPanel::OnDescriptionTextctrlTextUpdated( wxCommandEvent& ev
     event.Skip( );
 }
 
-/*
- *
- * initializes the StampDescriptionPanel with new stamp values
- */
-
-void StampDescriptionPanel::UpdatePanel( )
-{
-    Catalog::Entry stamp( GetCatalogData( )->GetCurrentStamp( ) );
-
-    m_inventoryPanel->UpdatePanel( );
-    m_identificationPanel->UpdatePanel( );
-    wxString imageFile = stamp.FindImageName( );
-    m_stampImage->SetBitmap( imageFile );
-}
-
-void StampDescriptionPanel::SetDataEditable( bool val )
-{
-    m_inventoryPanel->SetDataEditable( val );
-    m_identificationPanel->SetDataEditable( val );
-}
-
+//-------
 
 void StampDescriptionPanel::OnNotebooksplitterwindowSashPosChanged( wxSplitterEvent& event )
 {
@@ -381,4 +308,49 @@ void StampDescriptionPanel::OnNotebooksplitterwindowSashPosChanged( wxSplitterEv
     event.Skip( );
 }
 
+//-------
+
+void StampDescriptionPanel::OnZoomsliderUpdated( wxCommandEvent& event )
+{
+    int val = m_zoomSlider->GetValue( );
+    double zoom = ( double ) val / 100.0;
+    m_stampImage->SetZoom( zoom );
+
+    event.Skip( );
+}
+
+//-------
+
+void StampDescriptionPanel::SetDataEditable( bool val )
+{
+    m_inventoryPanel->SetDataEditable( val );
+    m_identificationPanel->SetDataEditable( val );
+}
+
+//-------
+
+bool StampDescriptionPanel::ShowToolTips( void ) {
+    return true;
+}
+
+//-------
+
+void StampDescriptionPanel::UpdateStatus( void )
+{
+    m_inventoryPanel->UpdateInventoryGrid( );
+}
+
+//-------
+
+void StampDescriptionPanel::UpdatePanel( )
+{
+    Catalog::Entry stamp( GetCatalogData( )->GetCurrentStamp( ) );
+
+    m_inventoryPanel->UpdateInventoryGrid( );
+    m_identificationPanel->UpdatePanel( );
+    wxString imageFile = stamp.FindImageName( );
+    m_stampImage->SetBitmap( imageFile );
+}
+
+//-------
 

@@ -65,7 +65,7 @@ namespace Design {
         void InitParameters( );
 
         bool CalculateSpacing( ) {
-            return String2Bool( GetAttrStr( AT_CalculateSpacing ) );
+            return String2Bool( GetAttrStr( AT_CalculateSpacing ), true );
         };
 
         /*

@@ -52,25 +52,12 @@ IMPLEMENT_DYNAMIC_CLASS( IdentificationPanel, HelperPanel )
 
 BEGIN_EVENT_TABLE( IdentificationPanel, HelperPanel )
 
-//EVT_CHOICE( ID_STATUSCHOICE, IdentificationPanel::OnStatuschoiceSelected )
+
 EVT_CHOICE( ID_EMISSIONCHOICE, IdentificationPanel::OnEmissionchoiceSelected )
 EVT_CHOICE( ID_FORMATCHOICE, IdentificationPanel::OnFormatchoiceSelected )
-// EVT_TEXT( ID_ISSUEDTEXTBOX, IdentificationPanel::OnTextctrlTextUpdated )
-// EVT_TEXT( ID_SERIESTEXTBOX, IdentificationPanel::OnTextctrlTextUpdated )
-// EVT_TEXT( ID_THEMETEXTBOX, IdentificationPanel::OnTextctrlTextUpdated )
-// EVT_TEXT( ID_COUNTRYTEXTBOX, IdentificationPanel::OnTextctrlTextUpdated )
-// EVT_TEXT( ID_NAMELABELEDTEXTBOX, IdentificationPanel::OnTextctrlTextUpdated )
-// EVT_TEXT( ID_IDLABELEDTEXTBOX, IdentificationPanel::OnTextctrlTextUpdated )
-// EVT_TEXT( ID_WIDTHLABELEDTEXTBOX, IdentificationPanel::OnTextctrlTextUpdated )
-// EVT_TEXT( ID_HEIGHTLABELEDTEXTBOX, IdentificationPanel::OnTextctrlTextUpdated )
-
-
 EVT_BUTTON( ID_COLNECTBUTTON, IdentificationPanel::OnColnectButtonClick )
 EVT_BUTTON( ID_EBAYBUTTON, IdentificationPanel::OneBayButtonClick )
 EVT_BUTTON( ID_NPMBUTTON, IdentificationPanel::OnNPMButtonClick )
-
-EVT_CHECKBOX( ID_EDITCHECKBOX, IdentificationPanel::OnEditCheckBox )
-
 EVT_COMBOBOX( ID_STAMPMOUNTTEXTBOX, IdentificationPanel::OnComboboxSelected )
 EVT_TEXT( ID_STAMPMOUNTTEXTBOX, IdentificationPanel::OnComboboxUpdated )
 
@@ -87,6 +74,26 @@ IdentificationPanel::IdentificationPanel( wxWindow* parent, wxWindowID id,
 {
     Init( );
     Create( parent, id, pos, size, style );
+}
+
+
+void IdentificationPanel::Clear( )
+{
+    m_name->ChangeValue( "" );
+    m_emission->SetSelection( 0 );
+    m_format->SetSelection( 0 );
+    m_issueDate->ChangeValue( "" );
+    m_series->ChangeValue( "" );
+    m_themes->ChangeValue( "" );
+    m_country->ChangeValue( "" );
+    m_perforation->ChangeValue( "" );
+    m_printing->ChangeValue( "" );
+    m_width->ChangeValue( "" );
+    m_height->ChangeValue( "" );
+    m_catCode->ChangeValue( "" );
+    mountComboBox->SetSelection( 0 );
+    m_link->ChangeValue( "" );
+    m_imageName->ChangeValue( "" );
 }
 
 
@@ -143,28 +150,27 @@ void IdentificationPanel::CreateControls( )
     wxBoxSizer* panelVerticalSizer = new wxBoxSizer( wxVERTICAL );
     thePanel->SetSizer( panelVerticalSizer );
 
-    wxBoxSizer* idHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
-    panelVerticalSizer->Add( idHorizontalSizer, 1, wxGROW | wxALL, 2 );
-
-    // m_editCheckbox = new wxCheckBox( thePanel, ++lastID, _( "Edit" ), wxDefaultPosition, wxDefaultSize, 0 );
-    // m_editCheckbox->SetValue( false );
-    // idHorizontalSizer->Add( m_editCheckbox, 0, wxALIGN_CENTRE_VERTICAL | wxALL, 0 );
+    // wxBoxSizer* idHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
+    // catCodeVerticalSizer->Add( idHorizontalSizer, 1, wxGROW | wxALL, 2 );
 
 
-    wxBoxSizer* itemBoxSizer1 = new wxBoxSizer( wxHORIZONTAL );
-    panelVerticalSizer->Add( itemBoxSizer1, 0, wxGROW | wxALL, 2 );
+    // wxBoxSizer* itemBoxSizer1 = new wxBoxSizer( wxHORIZONTAL );
+    // panelVerticalSizer->Add( itemBoxSizer1, 0, wxGROW | wxALL, 2 );
 
-    wxBoxSizer* catCodeVerticalSizer = new wxBoxSizer( wxVERTICAL );
-    itemBoxSizer1->Add( catCodeVerticalSizer, 1, wxGROW | wxALL, 2 );
+    // wxBoxSizer* catCodeVerticalSizer = new wxBoxSizer( wxVERTICAL );
+    // itemBoxSizer1->Add( catCodeVerticalSizer, 1, wxGROW | wxALL, 2 );
 
 
 
-    wxStaticText* m_catcodeStatic = new wxStaticText( thePanel, wxID_STATIC, _( "CatalogCodes" ), wxDefaultPosition, wxDefaultSize, 0 );
+    // wxStaticText* m_catcodeStatic = new wxStaticText( thePanel, wxID_STATIC, _( "CatalogCodes" ), wxDefaultPosition, wxDefaultSize, 0 );
 
-    catCodeVerticalSizer->Add( m_catcodeStatic, 0, wxALIGN_LEFT | wxALL, 0 );
+    // catCodeVerticalSizer->Add( m_catcodeStatic, 0, wxALIGN_LEFT | wxALL, 0 );
 
-    m_catCode = new wxTextCtrl( thePanel, ++lastID, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE );
-    catCodeVerticalSizer->Add( m_catCode, 1, wxGROW | wxALL, 0 );
+    // m_catCode = new wxTextCtrl( thePanel, ++lastID, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE );
+    // catCodeVerticalSizer->Add( m_catCode, 1, wxGROW | wxALL, 0 );
+
+    m_catCode = SetupMultilineLabeledText( thePanel, panelVerticalSizer, lastID, "Catalog Codes", true,
+        wxCommandEventHandler( IdentificationPanel::OnCatalogCodesChanged ) );
 
 
     m_name = SetupLabelText( thePanel, panelVerticalSizer, ++lastID, "Name", true, wxCommandEventHandler( IdentificationPanel::OnNameUpdated ) );
@@ -467,6 +473,10 @@ void IdentificationPanel::SetDataEditable( bool val )
 }
 
 
+void IdentificationPanel::OnCatalogCodesChanged( wxCommandEvent& event )
+{
+}
+
 void IdentificationPanel::OnComboboxSelected( wxCommandEvent& event )
 {
     event.Skip( );
@@ -476,13 +486,6 @@ void IdentificationPanel::OnComboboxUpdated( wxCommandEvent& event )
 {
     Catalog::Entry stamp( GetCatalogData( )->GetCurrentStamp( ) );
     stamp.SetAttr( Catalog::DT_StampMount, mountComboBox->GetStringSelection( ) );
-    event.Skip( );
-}
-void IdentificationPanel::OnEditCheckBox( wxCommandEvent& event )
-{
-    bool val = m_editCheckbox->GetValue( );
-    GetSettings( )->SetCatalogVolumeEditable( val );
-    GetCatalogData( )->GetDescriptionPanel( )->SetDataEditable( val );
     event.Skip( );
 }
 

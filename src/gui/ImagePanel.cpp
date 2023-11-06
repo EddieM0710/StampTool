@@ -77,22 +77,15 @@ EVT_MENU( wxID_ZOOM_OUT, ImagePanel::OnZoom )
 EVT_MENU( wxID_ZOOM_100, ImagePanel::OnZoom )
 
 END_EVENT_TABLE( )
-;  // silly business; The above macro screws up the formatter
 
-/*
- * ImagePanel constructors
- *
- */
+//-------
 
 ImagePanel::ImagePanel( )
 {
     Init( );
 }
 
-/*
- * ImagePanel constructors
- *
- */
+//-------
 
 ImagePanel::ImagePanel( wxWindow* parent, wxWindowID id, const wxPoint& pos,
     const wxSize& size, long style )
@@ -100,11 +93,6 @@ ImagePanel::ImagePanel( wxWindow* parent, wxWindowID id, const wxPoint& pos,
     Init( );
     Create( parent, id, pos, size, style );
 }
-
-/*
- * ImagePanel creator
- *
- */
 
 bool ImagePanel::Create( wxWindow* parent, wxWindowID id, const wxPoint& pos,
     const wxSize& size, long style )
@@ -119,48 +107,42 @@ bool ImagePanel::Create( wxWindow* parent, wxWindowID id, const wxPoint& pos,
     return true;
 }
 
-/*
- * ImagePanel destructor
- *
- */
+//-------
 
 ImagePanel::~ImagePanel( )
 {
-    // ImagePanel destruction
-    // ImagePanel destruction
+
 }
 
-/*
- * Member initialisation
- *
- */
+//-------
+
+void ImagePanel::Clear( )
+{
+    m_zoom = .9;
+}
+
+//-------
 
 void ImagePanel::Init( )
 {
-    //   this->SetScrollbars( 10, 10, 1000, 1000 );
-     // ImagePanel member initialisation
-     // ImagePanel member initialisation
+
 }
 
-/*
- * Control creation for ImagePanel
- *
- */
+//-------
 
 void ImagePanel::CreateControls( )
 {
 
 }
 
+//-------
+
 bool ImagePanel::ShowToolTips( )
 {
     return true;
 }
 
-/*
- * SetBitmap
- *
- */
+//-------
 
 void ImagePanel::SetBitmap( wxString filename )
 {
@@ -203,14 +185,7 @@ void ImagePanel::SetBitmap( wxString filename )
     Show( );
 }
 
-// void ImagePanel::SetStamp( Catalog::Entry* stamp )
-// {
-//     m_stamp = stamp;
-// }
-/*
- * OnResize
- *
- */
+//-------
 
 void ImagePanel::OnResize( wxCommandEvent& WXUNUSED( event ) )
 {
@@ -221,10 +196,7 @@ void ImagePanel::OnResize( wxCommandEvent& WXUNUSED( event ) )
     m_bitmap = wxBitmap( img );
 }
 
-/*
- * SetZoom
- *
- */
+//-------
 
 void ImagePanel::SetZoom( double zoom )
 {
@@ -232,10 +204,8 @@ void ImagePanel::SetZoom( double zoom )
     Refresh( );
 }
 
-/*
- * OnZoom
- *
- */
+//-------
+
 
 void ImagePanel::OnZoom( wxCommandEvent& event )
 {
@@ -248,10 +218,8 @@ void ImagePanel::OnZoom( wxCommandEvent& event )
     Refresh( );
 }
 
-/*
- *  ID_IMAGEPANEL
- *
- */
+//-------
+
 
 void ImagePanel::OnPaint( wxPaintEvent& event )
 {
@@ -288,20 +256,14 @@ void ImagePanel::OnPaint( wxPaintEvent& event )
 
 }
 
+//-------
 
-/*
- *  ID_IMAGEPANEL
- *
- */
 
 void ImagePanel::OnContextMenu( wxContextMenuEvent& event )
 {
     wxPoint screenpt = event.GetPosition( );
     wxPoint clientpt = ScreenToClient( clientpt );
 
-    // wxLogMessage( "OnItemMenu for item \"%s\" at screen coords ( %i, %i )", 
-    //              item ? item->GetDesc( ) : wxString( "unknown" ), screenpt.x, 
-    //              screenpt.y );
 
     wxMenu menu( "Image Menu" );
 
@@ -316,3 +278,5 @@ void ImagePanel::OnContextMenu( wxContextMenuEvent& event )
     PopupMenu( &menu );
     event.Skip( );
 }
+
+//-------

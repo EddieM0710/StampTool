@@ -48,10 +48,7 @@ namespace Catalog {
      */
     class CatalogCode
     {
-        /**
-           * @brief Construct a new CatalogCode object
-           *
-           */
+
         CatalogCode( )
         {
 
@@ -59,27 +56,19 @@ namespace Catalog {
 
     public:
 
-        /**
-         * @brief Construct a new CatalogCode object
-         *
-         * @param entry
-         */
         CatalogCode( wxString codeList );
 
-        /**
-         * @brief Destroy the CatalogCode object
-         *
-         */
         ~CatalogCode( ) { };
 
         wxString FindImageName( );
 
-        wxString GetPreferredCatalogCode( wxString cat );
-
-        bool IsCatalogCode( wxString catCode );
         wxArrayString& GetCodes( ){
             return m_codes;
         };
+
+        wxString GetPreferredCatalogCode( wxString cat );
+
+        bool IsCatalogCode( wxString catCode );
 
     private:
         wxArrayString m_codes;

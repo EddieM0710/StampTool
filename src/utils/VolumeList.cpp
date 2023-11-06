@@ -43,6 +43,7 @@
 
 namespace Utils {
 
+
     wxXmlNode* VolumeList::AddChild( wxXmlNode* child )
     {
         wxString label;
@@ -51,15 +52,19 @@ namespace Utils {
         Utils::TOCBaseType  nodeType = Utils::FindTOCBaseType( nodeName );
         if ( nodeType == Utils::TOC_Volume )
         {
+
+            // make the volume
             wxString filename = Utils::GetAttrStr( child, "FileName" );
-            Utils::Volume* vol = NewVolumeInstance( );
-            vol->SetFilename( filename );
+            Utils::Volume* vol = NewVolumeInstance( filename );
+
             vol->Load( );
+
             wxString volName = vol->GetName( );
             Utils::SetAttrStr( child, "VolumeName", volName );
 
+            // Add it to the catalog List
             Insert( volName, vol );
-            SetVolume( vol );
+
         }
 
         // now do it all again for this entrys children
@@ -73,9 +78,12 @@ namespace Utils {
         return child;
     }
 
-    bool VolumeList::ClearArray( )
+    bool VolumeList::Clear( )
     {
+        // I'm not clear on whether this does a delete on the underlying object
+        // i.e., this may be a huge memory leak
         m_volumeArray.clear( );
+        m_menuIDArray.clear( );
         return true;
     }
 
@@ -88,8 +96,6 @@ namespace Utils {
         }
         std::cout << "\n";
     }
-
-
 
     wxTreeItemId VolumeList::FindMenuID( int id )
     {
@@ -160,36 +166,6 @@ namespace Utils {
         return ( Utils::Volume* ) 0;
     };
 
-    // void VolumeList::Load( )
-    // {
-
-    //     for ( Utils::VolumeArray::iterator it = std::begin( m_volumeArray );
-    //         it != std::end( m_volumeArray );
-    //         ++it )
-    //     {
-    //         Utils::Volume* volume = ( Utils::Volume* ) ( *it );
-    //         volume->Load( );
-    //         // std::cout << " Loaded " << volume->GetName( ) << "\n";
-    //     }
-
-    //     // if ( m_volumeArray.size( ) > 1 )
-    //     // {
-    //     //     sort( std::begin( m_volumeArray ), std::end( m_volumeArray ) );
-    //     // }
-
-    //     m_volumeNameStrings.Clear( );
-    //     for ( Utils::VolumeArray::iterator it = std::begin( m_volumeArray );
-    //         it != std::end( m_volumeArray );
-    //         ++it )
-    //     {
-    //         Utils::Volume* volume = ( Utils::Volume* ) ( *it );
-    //         m_volumeNameStrings.Add( volume->GetName( ) );
-    //     }
-    //     Utils::Volume* volume = ( Utils::Volume* ) ( *std::begin( m_volumeArray ) );
-
-    //     m_currVolume = volume;
-
-    // };
 
     void VolumeList::Insert( int id, wxTreeItemId treeId )
     {
@@ -200,6 +176,34 @@ namespace Utils {
     {
         m_volumeArray.insert( std::make_pair( str, vol ) );
     }
+
+    void VolumeList::RemoveVolume( wxString name )
+    {
+        VolumeArray::iterator itr = FindVolumeIterator( name );
+        m_volumeArray.erase( itr );
+    }
+
+    void VolumeList::RemoveVolume( Volume* vol )
+    {
+        wxString name = vol->GetName( );
+        RemoveVolume( name );
+    }
+
+    void VolumeList::SaveDirtyVolumes( )
+    {
+        Utils::VolumeArray::iterator it = m_volumeArray.begin( );
+
+        // Iterate through the map and print the elements
+        while ( it != m_volumeArray.end( ) )
+        {
+            Utils::Volume* volume = ( Utils::Volume* ) ( it->second );
+            if ( volume->IsDirty( ) )
+            {
+                volume->Save( );
+            }
+            ++it;
+        }
+    };
 
     void VolumeList::SaveVolumes( )
     {
@@ -214,7 +218,7 @@ namespace Utils {
         }
     };
 
-    void VolumeList::SetVolume( Volume* vol ) {
+    void VolumeList::SetCurrentVolume( Volume* vol ) {
         m_currVolume = vol;
     };
 

@@ -37,7 +37,7 @@
 #include <wx/arrimpl.cpp>
 #include <wx/msgdlg.h>
 
-#include "catalog/CSV.h"
+#include "catalog/MountCSV.h"
 
 
 #include <wx/tokenzr.h>
@@ -50,7 +50,7 @@
 
 namespace Catalog {
     wxString MountDataTypeNames[ MT_NbrDatatypes ] =
-    { "Year","ItemID","Description","SinglesSize","MultiplesSize","PlateBlockSize","SheetSize" };
+    { "Year", "ItemID", "Description", "SinglesSize", "MultiplesSize", "PlateBlockSize", "SheetSize" };
 
     bool MountCSVData::ReadDataFile( wxString& filename )
     {
@@ -116,7 +116,7 @@ namespace Catalog {
     bool MountCSVData::GetIDNbr( wxString catCodes, wxString& id )
     {
         // wxStringTokenizer tokenizer( catCodes, "," );
-        // wxString codePrefix = GetSettings( )->GetCatCodePrefix( );
+        // wxString codePrefix = GetProject( )->GetCatCodePrefix( );
         // wxString valStr;
         // wxString rest;
         // while ( tokenizer.HasMoreTokens( ) )
@@ -276,7 +276,7 @@ namespace Catalog {
                                 //     //entryNode->ProcessCatalogCodes( valStr );
                                 //     if ( GetIDNbr( valStr, id ) )
                                 //     {
-                                //         // wxString codePrefix = GetSettings( )->GetCatCodePrefix( );
+                                //         // wxString codePrefix = GetProject( )->GetCatCodePrefix( );
 
                                 //         // entryNode->SetID( id );
                                 //         // id = entryNode->GetID( );

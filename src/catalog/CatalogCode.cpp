@@ -50,28 +50,8 @@
 
 namespace Catalog {
 
-    wxString MakeImageName( wxString catCode )
-    {
-        catCode.Trim( true );
-        catCode.Trim( false );
+    //--------------
 
-        catCode.Replace( ":", "_" );
-        catCode.Replace( " ", "_" );
-        catCode.Append( ".jpg" );
-        return catCode;
-    }
-    void GetCodes( wxString catCodeStr, wxString& catalog, wxString& country, wxString& code )
-    {
-        catCodeStr.Trim( );
-        catCodeStr.Trim( false );
-
-        int pos = catCodeStr.Find( ":" );
-        catalog = catCodeStr.Mid( 0, pos );
-        catCodeStr = catCodeStr.Mid( pos + 1 );
-        pos = catCodeStr.Find( " " );
-        country = catCodeStr.Mid( 0, pos );
-        code = catCodeStr.Mid( pos + 1 );
-    }
     CatalogCode::CatalogCode( wxString codeList )
     {
         m_codeList = codeList;
@@ -93,6 +73,23 @@ namespace Catalog {
         }
     };
 
+    //--------------
+
+    void GetCodes( wxString catCodeStr, wxString& catalog, wxString& country, wxString& code )
+    {
+        catCodeStr.Trim( );
+        catCodeStr.Trim( false );
+
+        int pos = catCodeStr.Find( ":" );
+        catalog = catCodeStr.Mid( 0, pos );
+        catCodeStr = catCodeStr.Mid( pos + 1 );
+        pos = catCodeStr.Find( " " );
+        country = catCodeStr.Mid( 0, pos );
+        code = catCodeStr.Mid( pos + 1 );
+    }
+
+    //--------------
+
     wxString CatalogCode::GetPreferredCatalogCode( wxString cat )
     {
         if ( m_codes.IsEmpty( ) )  return "";
@@ -106,12 +103,11 @@ namespace Catalog {
         return m_codes[ 0 ];
     }
 
+    //--------------
 
     wxString CatalogCode::FindImageName( )
     {
-        wxString preferredName = MakeImageName(
-            GetPreferredCatalogCode(
-                GetSettings( )->GetCatalogID( ) ) );
+        wxString preferredName = MakeImageName( GetPreferredCatalogCode( GetProject( )->GetProjectCatalogCode( ) ) );
         wxString  str = GetProject( )->GetImageFullPath( preferredName );
 
         if ( GetProject( )->ImageExists( str ) )
@@ -134,6 +130,8 @@ namespace Catalog {
         return preferredName;
     }
 
+    //--------------
+
     bool CatalogCode::IsCatalogCode( wxString catCode )
     {
         for ( size_t k = 0; k < m_codes.GetCount( ); k++ )
@@ -144,5 +142,18 @@ namespace Catalog {
             }
         }
         return false;
+    }
+
+    //--------------
+
+    wxString MakeImageName( wxString catCode )
+    {
+        catCode.Trim( true );
+        catCode.Trim( false );
+
+        catCode.Replace( ":", "_" );
+        catCode.Replace( " ", "_" );
+        catCode.Append( ".jpg" );
+        return catCode;
     }
 }

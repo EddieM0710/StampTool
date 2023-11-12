@@ -358,3 +358,34 @@ void HelperPanel::VerticalSpacer( wxBoxSizer* inSizer )
 }
 
 //--------------
+
+
+wxCheckListBox* HelperPanel::SetupCheckListBox( wxWindow* parent, wxBoxSizer* inSizer, int& lastID,
+    wxString label, wxArrayString& array,
+    wxObjectEventFunction  allButtonEventHandler,
+    wxObjectEventFunction  clearButtonEventHandler )
+{
+    wxStaticBox* itemStaticBoxSizerStatic = new wxStaticBox( parent, wxID_ANY, label );
+    wxStaticBoxSizer* itemStaticBoxSizer = new wxStaticBoxSizer( itemStaticBoxSizerStatic, wxVERTICAL );
+    inSizer->Add( itemStaticBoxSizer, 0, wxGROW | wxALL, 2 );
+
+    wxBoxSizer* horizontalSizer = new wxBoxSizer( wxHORIZONTAL );
+    itemStaticBoxSizer->Add( horizontalSizer, 2, wxGROW | wxALL, 5 );
+
+    wxButton* allButton = new wxButton( parent, lastID++, _( "All" ), wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT );
+    horizontalSizer->Add( allButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+
+    if ( allButtonEventHandler )
+        Connect( allButton->GetId( ), wxEVT_CHOICE, allButtonEventHandler );
+
+    wxButton* clearButton = new wxButton( parent, lastID++, _( "Clear" ), wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT );
+    horizontalSizer->Add( clearButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+
+    if ( clearButtonEventHandler )
+        Connect( clearButton->GetId( ), wxEVT_CHOICE, clearButtonEventHandler );
+
+    wxCheckListBox* listCtrl = new wxCheckListBox( parent, lastID++, wxDefaultPosition, wxSize( -1, 100 ), array, wxLB_MULTIPLE | wxLB_HSCROLL );
+    itemStaticBoxSizer->Add( listCtrl, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 5 );
+
+    return listCtrl;
+}

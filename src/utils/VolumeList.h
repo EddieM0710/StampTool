@@ -74,6 +74,8 @@ namespace Utils {
 
         void Insert( wxString str, Utils::Volume* vol );
 
+        void MakeNameArray( wxArrayString& array );
+
         virtual Volume* NewVolumeInstance( wxString filename ) = 0;
 
         void RemoveVolume( wxString name );

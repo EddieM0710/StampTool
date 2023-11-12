@@ -346,7 +346,6 @@ namespace Design {
                     minWidth = child->GetMinWidth( );
                 }
                 minHeight += child->GetMinHeight( );
-
             }
 
             childID = GetAlbumTreeCtrl( )->GetNextChild( parentID, cookie );
@@ -363,57 +362,10 @@ namespace Design {
         SetMinWidth( minWidth );
         SetMinHeight( minHeight );
 
+
         GetErrorArray( )->Empty( );
 
         return ( ValidateNode( ) != AT_FATAL );
-    }
-
-    void Page::UpdateSizes( )
-    {
-        //figure out how many rows or cols there are to calculate the child spacing
-        int nbrRows = 0;
-        int nbrCols = 0;
-        int nbrStamps = 0;
-        ValidateChildType( nbrRows, nbrCols, nbrStamps );
-
-
-        // Set the height and width of each child row or column
-        wxTreeItemIdValue cookie;
-        wxTreeItemId parentID = GetTreeItemId( );
-        wxTreeItemId childID = GetAlbumTreeCtrl( )->GetFirstChild( parentID, cookie );
-        while ( childID.IsOk( ) )
-        {
-            AlbumBaseType type = ( AlbumBaseType ) GetAlbumTreeCtrl( )->GetItemType( childID );
-            LayoutBase* child = ( LayoutBase* ) GetAlbumTreeCtrl( )->GetItemNode( childID );
-            double leftPadding = 0;
-            double rightPadding = 0;
-            double topPadding = 0;
-            double bottomPadding = 0;
-            switch ( type )
-            {
-                case AT_Row:
-                {
-                    Row* row = ( Row* ) child;
-                    row->SetWidth( GetWidth( ) - row->GetLeftContentMargin( ) - row->GetRightContentMargin( ) - 2 * GetBorderSize( ) );
-                    break;
-                }
-                case AT_Col:
-                {
-                    Column* col = ( Column* ) child;
-                    if ( col->GetShowTitle( ) )
-                    {
-                        col->SetHeight( GetHeight( ) - GetTitleFrame( )->GetHeight( ) - col->GetTopContentMargin( ) - col->GetBottomContentMargin( ) - 2 * GetBorderSize( ) );
-                    }
-                    else
-                    {
-                        col->SetHeight( GetHeight( ) - col->GetTopContentMargin( ) - col->GetBottomContentMargin( ) - 2 * GetBorderSize( ) );
-                    }
-                    break;
-                }
-            }
-            child->UpdateSizes( );
-            childID = GetAlbumTreeCtrl( )->GetNextChild( parentID, cookie );
-        }
     }
 
 
@@ -499,6 +451,60 @@ namespace Design {
         }
 
 
+    }
+
+    void Page::UpdateSizes( )
+    {
+        //figure out how many rows or cols there are to calculate the child spacing
+        int nbrRows = 0;
+        int nbrCols = 0;
+        int nbrStamps = 0;
+        ValidateChildType( nbrRows, nbrCols, nbrStamps );
+
+        // Set the height and width of each child row or column
+        wxTreeItemIdValue cookie;
+        wxTreeItemId parentID = GetTreeItemId( );
+        LayoutBase* parent = ( LayoutBase* ) GetAlbumTreeCtrl( )->GetItemNode( parentID );
+        int nbrChildren = parent->GetNbrChildren( );
+
+        wxTreeItemId childID = GetAlbumTreeCtrl( )->GetFirstChild( parentID, cookie );
+        while ( childID.IsOk( ) )
+        {
+            AlbumBaseType type = ( AlbumBaseType ) GetAlbumTreeCtrl( )->GetItemType( childID );
+            LayoutBase* child = ( LayoutBase* ) GetAlbumTreeCtrl( )->GetItemNode( childID );
+            double leftPadding = 0;
+            double rightPadding = 0;
+            double topPadding = 0;
+            double bottomPadding = 0;
+            switch ( type )
+            {
+                case AT_Row:
+                {
+                    Row* row = ( Row* ) child;
+                    row->SetWidth( GetWidth( ) - row->GetLeftContentMargin( ) - row->GetRightContentMargin( ) - 2 * GetBorderSize( ) );
+                    child->SetHeight( child->GetMinHeight( ) + ( GetHeight( ) - GetMinHeight( ) ) / ( nbrChildren + 1 ) - GetLeftContentMargin( ) );
+                    break;
+                }
+                case AT_Col:
+                {
+                    Column* col = ( Column* ) child;
+                    if ( col->GetShowTitle( ) )
+                    {
+                        col->SetHeight( GetHeight( ) - GetTitleFrame( )->GetHeight( ) - col->GetTopContentMargin( ) - col->GetBottomContentMargin( ) - 2 * GetBorderSize( ) );
+                        child->SetWidth( child->GetMinWidth( ) + ( GetWidth( ) - GetMinWidth( ) ) / ( nbrChildren + 1 ) - GetRightContentMargin( ) );
+                    }
+                    else
+                    {
+                        col->SetHeight( GetHeight( ) - col->GetTopContentMargin( ) - col->GetBottomContentMargin( ) - 2 * GetBorderSize( ) );
+                        child->SetWidth( child->GetMinWidth( ) + ( GetWidth( ) - GetMinWidth( ) ) / ( nbrChildren + 1 ) - GetRightContentMargin( ) );
+                    }
+                    break;
+                }
+            }
+            child->UpdateSizes( );
+
+            childID = GetAlbumTreeCtrl( )->GetNextChild( parentID, cookie );
+        }
     }
 
     NodeStatus Page::ValidateNode( )

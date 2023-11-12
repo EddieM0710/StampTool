@@ -54,27 +54,40 @@ namespace Design {
         // Draw object in pdf; position in MM
         void DrawPDF( wxPdfDocument* doc, double x, double y );
 
-        wxString GetBorderFileName( ) { return m_borderFileName; };
+        wxString GetBorderFileName( ) {
+            return m_borderFileName;
+        };
 
         // Get the Bottom PageMargin 
-        double GetBottomPageMargin( ) { return m_bottomPageMargin; };
+        double GetBottomPageMargin( ) {
+            return m_bottomPageMargin;
+        };
 
         // Get the Border Size 
-        double GetBorderSize( ) { return m_borderSize; };
+        double GetBorderSize( ) {
+            return m_borderSize;
+        };
 
         // Get the Left PageMargin 
-        double GetLeftPageMargin( ) { return m_leftPageMargin; };
+        double GetLeftPageMargin( ) {
+            return m_leftPageMargin;
+        };
 
         //Get the Right PageMargin
-        double GetRightPageMargin( ) { return m_rightPageMargin; };
+        double GetRightPageMargin( ) {
+            return m_rightPageMargin;
+        };
 
         TitleFrame* GetTitleFrame( );
 
         wxString GetTitleString( );
         wxString  GetSubTitleString( );
 
+
         // Get the Top PageMargin 
-        double GetTopPageMargin( ) { return m_topPageMargin; };
+        double GetTopPageMargin( ) {
+            return m_topPageMargin;
+        };
 
         void ReportLayout( );
 
@@ -83,25 +96,37 @@ namespace Design {
         void SaveFonts( wxXmlNode* parent );
 
         // Set the Border Size 
-        void SetBorderSize( double val ) { m_borderSize = val; };
+        void SetBorderSize( double val ) {
+            m_borderSize = val;
+        };
 
-        void SetBorderFilename( wxString str ) { m_borderFileName = str; };
+        void SetBorderFilename( wxString str ) {
+            m_borderFileName = str;
+        };
 
         // Set the Bottom PageMargin 
-        void SetBottomPageMargin( double val ) { m_bottomPageMargin = val; };
+        void SetBottomPageMargin( double val ) {
+            m_bottomPageMargin = val;
+        };
 
         void SetContentFrame( );
 
         // Set the Left PageMargin 
-        void SetLeftPageMargin( double val ) { m_leftPageMargin = val; };
+        void SetLeftPageMargin( double val ) {
+            m_leftPageMargin = val;
+        };
 
         // Set the Right PageMargin 
-        void SetRightPageMargin( double val ) { m_rightPageMargin = val; };
+        void SetRightPageMargin( double val ) {
+            m_rightPageMargin = val;
+        };
 
         void SetTitleString( wxString str );
         void  SetSubTitleString( wxString str );
         // Set the Top PageMargin 
-        void SetTopPageMargin( double val ) { m_topPageMargin = val; };
+        void SetTopPageMargin( double val ) {
+            m_topPageMargin = val;
+        };
 
         void LoadFonts( wxXmlNode* node );
 
@@ -145,7 +170,9 @@ namespace Design {
             Init( );
         };
 
-        bool IsDefaultOrientation( ) { return GetAlbum( )->IsDefaultOrientation( GetOrientation( ) ); };
+        bool IsDefaultOrientation( ) {
+            return GetAlbum( )->IsDefaultOrientation( GetOrientation( ) );
+        };
     private:
 
         double m_topPageMargin;
@@ -153,6 +180,7 @@ namespace Design {
         double m_rightPageMargin;
         double m_leftPageMargin;
         double m_borderSize;
+        Design::AlbumBaseType m_pageType;
         Frame m_contentFrame;
         wxString m_borderFileName;
         DebugString m_debugString;

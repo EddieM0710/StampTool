@@ -61,8 +61,8 @@ namespace Design {
     {
         SetNodeType( AT_Stamp );
         SetObjectName( AlbumBaseNames[ AT_Stamp ] );
-        SetShowNbr( true );
-        SetShowTitle( true );
+        // SetShowNbr( true );
+        // SetShowTitle( true );
         SetShowSubTitle( false );
 
         m_nameFrame = new LabelFrame( Design::AT_NameFontType );
@@ -80,8 +80,8 @@ namespace Design {
     {
         SetNodeType( AT_Stamp );
         SetObjectName( AlbumBaseNames[ GetNodeType( ) ] );
-        SetShowNbr( true );
-        SetShowTitle( true );
+        //  SetShowNbr( true );
+         // SetShowTitle( true );
         SetShowSubTitle( false );
 
         m_nameFrame = new LabelFrame( Design::AT_NameFontType );
@@ -178,8 +178,15 @@ namespace Design {
                 dc.SetPen( *wxTRANSPARENT_PEN );
                 m_stampImageFrame.Draw( dc, xImagePos, yImagePos );
             }
-
-            GetNameFrame( )->Draw( dc, xInnerPos, yInnerPos );
+            if ( GetShowTitle( ) )
+            {
+                GetNameFrame( )->Draw( dc, xInnerPos, yInnerPos );
+            }
+            else
+            {
+                //                std::cout << GetNameFrame( )->GetString( ) << "\n";
+                int a = 1;
+            }
 
             if ( GetShowNbr( ) )
             {
@@ -234,7 +241,10 @@ namespace Design {
             //m_stampImageFrame.DrawPDF( dc, xImagePos, yImagePos );
         }
 
-        GetNameFrame( )->DrawPDF( doc, xInnerPos, yInnerPos );
+        if ( GetShowTitle( ) )
+        {
+            GetNameFrame( )->DrawPDF( doc, xInnerPos, yInnerPos );
+        }
 
         if ( GetShowNbr( ) )
         {
@@ -851,9 +861,18 @@ namespace Design {
         SetWidth( m_borderFrame.GetWidth( ) + 2 * GetStampMargin( ) );
 
         // the height of the stamp object is the border frame height + border + title height 
-        SetHeight( GetNameFrame( )->GetHeight( ) + m_borderFrame.GetHeight( ) + 1 /** GetStampMargin( )*/ );
+        if ( GetShowTitle( ) )
+        {
+            SetHeight( GetNameFrame( )->GetHeight( ) + m_borderFrame.GetHeight( ) + 1 /** GetStampMargin( )*/ );
+        }
+        else
+        {
+            SetHeight( m_borderFrame.GetHeight( ) + 1 /** GetStampMargin( )*/ );
+        }
+
         SetMinWidth( GetWidth( ) );
         SetMinHeight( GetHeight( ) );
+
 
         // the NameFrame vals are determined by the outer stamp object width, the text and the font.
         // note the name is centered in the outside stamp object
@@ -878,6 +897,7 @@ namespace Design {
 
     void Stamp::UpdateSizes( )
     {
+
     }
 
 
@@ -897,21 +917,27 @@ namespace Design {
 
         // the image is horizontally centered within the m_borderFrame.
         m_stampImageFrame.SetXPos( m_borderFrame.GetXPos( ) + ( m_borderFrame.GetWidth( ) - m_stampImageFrame.GetWidth( ) ) / 2 );
-
-        if ( GetTitleLocation( ) == AT_TitleLocationBottom )
+        if ( GetShowTitle( ) )
         {
-            //if the title is on the bottom then the border frame is on top
-            m_borderFrame.SetYPos( 0 );
-            // and the name is just below the m_borderFrame
-            m_nameFrame->SetYPos( m_borderFrame.GetHeight( ) + 1 );
+            if ( GetTitleLocation( ) == AT_TitleLocationBottom )
+            {
+                //if the title is on the bottom then the border frame is on top
+                m_borderFrame.SetYPos( 0 );
+                // and the name is just below the m_borderFrame
+                m_nameFrame->SetYPos( m_borderFrame.GetHeight( ) + 1 );
+            }
+            else
+            {
+                // if the name is on top then no offset for the name frame
+                m_nameFrame->SetYPos( 0 );
+                // and the border is just under that
+
+                m_borderFrame.SetYPos( GetNameFrame( )->GetHeight( ) + 1 );
+            }
         }
         else
         {
-            // if the name is on top then no offset for the name frame
-            m_nameFrame->SetYPos( 0 );
-            // and the border is just under that
-
-            m_borderFrame.SetYPos( GetNameFrame( )->GetHeight( ) + 1 );
+            m_borderFrame.SetYPos( 0 );
         }
         // center the image vertically within the m_borderFrame
         // note the image offsets from the m_borderFrame

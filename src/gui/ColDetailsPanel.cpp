@@ -40,6 +40,7 @@
  //#include "gui/TitleHelper.h"
 #include "design/Column.h"
 #include "design/Album.h"
+#include "design/TitleFrame.h"
 #include "utils/FontList.h"
 
 IMPLEMENT_DYNAMIC_CLASS( ColDetailsPanel, HelperPanel )
@@ -108,13 +109,17 @@ void ColDetailsPanel::CreateControls( )
     m_dialogVerticalSizer->Add( firstRowHorizontalSizer, 0, wxGROW | wxALL, 0 );
 
 
-    m_frameCheckbox = new wxCheckBox( theDialog, ID_FRAMECHECKBOX, _( "Show Frame" ), wxDefaultPosition, wxDefaultSize, 0 );
-    m_frameCheckbox->SetValue( false );
-    m_dialogVerticalSizer->Add( m_frameCheckbox, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 5 );
-    //>> first row ctrls
-
-
     int lastID = ID_LastID;
+
+    m_frameCheckbox = SetupCheckBox( theDialog, firstRowHorizontalSizer, lastID,
+        ( "Show Frame" ), wxCommandEventHandler( ColDetailsPanel::OnFrameCheckboxClick ) );
+    m_frameCheckbox->SetValue( false );
+
+    // m_frameCheckbox = new wxCheckBox( theDialog, ID_FRAMECHECKBOX, _( "Show Frame" ), wxDefaultPosition, wxDefaultSize, 0 );
+    // m_frameCheckbox->SetValue( false );
+    // m_dialogVerticalSizer->Add( m_frameCheckbox, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 5 );
+    // //>> first row ctrls
+
 
     m_titleHelper = SetupTitleHelper( theDialog, m_dialogVerticalSizer, lastID, DefaultTitleHelperStyle,
         wxCommandEventHandler( ColDetailsPanel::OnTitleCheckboxClick ),
@@ -265,8 +270,8 @@ void ColDetailsPanel::UpdateControls( )
     SetShowTitle( m_col->GetShowTitle( ) );
     SetShowSubTitle( m_col->GetShowSubTitle( ) );
     SetShowFrame( m_col->GetShowFrame( ) );
-    SetTitleFont( m_col->GetTitleFrame( )->GetFont( ) );
-    SetTitleColor( m_col->GetTitleFrame( )->GetColor( ) );
+    SetTitleFont( m_col->GetTitleFrame( )->GetHeadingFont( ) );
+    SetTitleColor( m_col->GetTitleFrame( )->GetHeadingColor( ) );
     m_col->GetTitleLocationType( );
 }
 
@@ -361,7 +366,7 @@ void ColDetailsPanel::OnOkClick( wxCommandEvent& event )
     m_col->SetShowTitle( GetShowTitle( ) );
     m_col->SetShowSubTitle( GetShowSubTitle( ) );
 
-    m_col->GetTitleFrame( )->SetFont( GetTitleFont( ), GetTitleColor( ) );
+    m_col->GetTitleFrame( )->SetHeadingFont( GetTitleFont( ), GetTitleColor( ) );
     // m_col->SetTitleLocation( m_titleLocation );
     m_col->SetCalculateSpacing( CalculateSpacing( ) );
     m_col->SetFixedSpacingSize( GetFixedSpacing( ) );
@@ -388,6 +393,11 @@ void ColDetailsPanel::OnDefaultRadioButtonSelected( wxCommandEvent& event )
 }
 
 //--------------
+
+void ColDetailsPanel::OnFrameCheckboxClick( wxCommandEvent& event )
+{
+    m_col->SetShowFrame( m_frameCheckbox->GetValue( ) );
+}
 
 void ColDetailsPanel::OnTopRadioButtonSelected( wxCommandEvent& event )
 {
@@ -457,31 +467,48 @@ void ColDetailsPanel::OnSubTitleDefaultClick( wxCommandEvent& event )
 
 void ColDetailsPanel::OnTitleFontPicker( wxFontPickerEvent& event )
 {
+    m_col->GetTitleFrame( )->SetHeadingFont( m_titleFontPicker->GetSelectedFont( ), m_titleColorPicker->GetColour( ) );
+
+    m_col->GetTitleFrame( )->SetHeadingFont(
+        m_titleFontPicker->GetSelectedFont( ),
+        m_titleColorPicker->GetColour( ) );
+
 }
 void ColDetailsPanel::OnTitleColorPicker( wxColourPickerEvent& event )
 {
+    m_col->GetTitleFrame( )->SetHeadingFont(
+        m_titleFontPicker->GetSelectedFont( ),
+        m_titleColorPicker->GetColour( ) );
 }
 
 void ColDetailsPanel::OnSubTitleFontPicker( wxFontPickerEvent& event )
 {
+    m_col->GetTitleFrame( )->SetSubHeadingFont(
+        m_subTitleFontPicker->GetSelectedFont( ),
+        m_subTitleColorPicker->GetColour( ) );
 }
 void ColDetailsPanel::OnSubTitleColorPicker( wxColourPickerEvent& event )
 {
+    m_col->GetTitleFrame( )->SetSubHeadingFont(
+        m_subTitleFontPicker->GetSelectedFont( ),
+        m_subTitleColorPicker->GetColour( ) );
+
 }
 
 
 
 void ColDetailsPanel::OnTitleCheckboxClick( wxCommandEvent& event )
 {
+    m_col->SetShowTitle( m_titleHelper->titleCheckbox->GetValue( ) );
     UpdateTitleState( m_titleHelper );
-
-    m_dialogVerticalSizer->Layout( );
+    Layout( );
 }
 
 
 
 void ColDetailsPanel::OnSubTitleCheckboxClick( wxCommandEvent& event )
 {
+    m_col->SetShowSubTitle( m_titleHelper->subTitleCheckbox->GetValue( ) );
     UpdateSubTitleState( m_titleHelper );
-    m_dialogVerticalSizer->Layout( );
+    Layout( );
 };

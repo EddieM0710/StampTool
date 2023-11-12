@@ -165,9 +165,8 @@ public:
     ///  @param event 
     void OnDefaultRadioButtonSelected( wxCommandEvent& event );
 
-    ///  @brief 
-    ///  
-    ///  @param event 
+    void OnFrameCheckboxClick( wxCommandEvent& event );
+
     void OnTopRadioButtonSelected( wxCommandEvent& event );
 
     ///  @brief 

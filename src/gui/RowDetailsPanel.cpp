@@ -40,7 +40,7 @@
 #include "gui/LabeledTextBox.h"
 #include "gui/FontPickerHelper.h"
 #include "design/Row.h"
- //#include "design/DesignDefs.h"
+#include "design/TitleFrame.h"
 #include "design/Album.h"
 #include "utils/FontList.h"
 
@@ -243,7 +243,7 @@ void RowDetailsPanel::UpdateControls( )
     SetShowTitle( m_row->GetShowTitle( ) );
     SetShowSubTitle( m_row->GetShowSubTitle( ) );
     SetShowFrame( m_row->GetShowFrame( ) );
-    SetColor( m_row->GetTitleFrame( )->GetColor( ) );
+    SetColor( m_row->GetTitleFrame( )->GetHeadingColor( ) );
     SetTitleLocation( );
     SetFixedSpacingSize( m_row->GetFixedSpacing( ) );
     SetCalculateSpacing( m_row->CalculateSpacing( ) );

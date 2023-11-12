@@ -501,12 +501,21 @@ void InventoryPanel::UpdateInventoryGrid( )
                 if ( entry.HasInventoryItem( ) )
                 {
                     wxString currCollection = GetCollectionList( )->GetCurrentName( );
+                    //wxString excludeStr = Catalog::InventoryStatusStrings[ Catalog::ST_Exclude ];
                     wxXmlNode* ele = entry.GetInventory( )->GetChildren( );
                     while ( ele )
                     {
                         wxString str = Utils::GetAttrStr( ele, Catalog::ItemDataNames[ Catalog::IDT_Collection ] );
                         if ( !currCollection.Cmp( str ) )
                         {
+                            // wxString currStatus = Utils::GetAttrStr( ele, Catalog::ItemDataNames[ Catalog::IDT_InventoryStatus ] );
+
+                            // if ( excludeStr.Cmp( currStatus ) )
+                            // {
+                            // entryNode->RemoveChild(ele);
+                            // }
+                            // else
+                            // {
                             AddRow( ele );
                             for ( int i = 1; i < Catalog::IDT_NbrTypes; i++ )
                             {
@@ -514,6 +523,7 @@ void InventoryPanel::UpdateInventoryGrid( )
                                 m_grid->SetCellValue( row, i - 1, str );
                             }
                             row++;
+                            // }
                         }
                         ele = ele->GetNext( );
                     }

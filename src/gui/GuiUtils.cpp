@@ -393,7 +393,7 @@ void DrawImage( wxDC& dc, wxImage image, double x, double y, double w, double h 
     {
         //Draw the stamp image
 
-        if ( w <= 0.01 || h <= 0.01 )
+        if ( w <= 10 || h <= 10 )
         {
             h = 10;
             w = 10;

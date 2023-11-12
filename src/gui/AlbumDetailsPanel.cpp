@@ -142,21 +142,21 @@ wxPanel* AlbumDetailsPanel::SetupPageDetailsPanel( wxWindow* parent, int& lastID
     detailsHorizontalSizer->Add( rightColumnVerticalSizer, 1, wxGROW | wxALL, 0 );
 
 
-    SetupFontPicker( pageDetailsPanel, rightColumnVerticalSizer, lastID,
+    SetupFontPicker( pageDetailsPanel, leftColumnVerticalSizer, lastID,
         _( "Title Font" ), _( "Default" ),
         m_titleFontPicker, m_titleColorPicker,
         wxFontPickerEventHandler( AlbumDetailsPanel::OnTitleFontPicker ),
         wxColourPickerEventHandler( AlbumDetailsPanel::OnTitleColorPicker ),
         wxCommandEventHandler( AlbumDetailsPanel::OnTitleDefaultClick ) );
 
-    SetupFontPicker( pageDetailsPanel, rightColumnVerticalSizer, lastID,
+    SetupFontPicker( pageDetailsPanel, leftColumnVerticalSizer, lastID,
         _( "SubTitle Font" ), _( "Default" ),
         m_subTitleFontPicker, m_subTitleColorPicker,
         wxFontPickerEventHandler( AlbumDetailsPanel::OnSubTitleFontPicker ),
         wxColourPickerEventHandler( AlbumDetailsPanel::OnSubTitleColorPicker ),
         wxCommandEventHandler( AlbumDetailsPanel::OnSubTitleDefaultClick ) );
 
-    SetupFontPicker( pageDetailsPanel, rightColumnVerticalSizer, lastID,
+    SetupFontPicker( pageDetailsPanel, leftColumnVerticalSizer, lastID,
         _( "Text Font" ), _( "Default" ),
         m_textFontPicker, m_textColorPicker,
         wxFontPickerEventHandler( AlbumDetailsPanel::OnTextFontPicker ),
@@ -260,7 +260,7 @@ wxPanel* AlbumDetailsPanel::SetupPageDetailsPanel( wxWindow* parent, int& lastID
 
     wxArrayString m_orientationChoiceStrings( 2, Design::OrientationStrings );
     m_orientationChoice = SetupChoice( pageDetailsPanel, rightColumnVerticalSizer, ++lastID,
-        _( "1Orientation:" ), m_orientationChoiceStrings,
+        _( "Orientation:" ), m_orientationChoiceStrings,
         wxCommandEventHandler( AlbumDetailsPanel::OnOrientationChoice ) );
     m_orientationChoice->SetSelection( Design::AT_Portrait );
     return pageDetailsPanel;
@@ -316,7 +316,7 @@ wxPanel* AlbumDetailsPanel::SetupStampDetailsPanel( wxWindow* parent, int& lastI
         _( "Show Catalog Nbr" ), wxCommandEventHandler( AlbumDetailsPanel::OnBorderSize ) );
 
     m_grayScaleImagesCheckbox = SetupCheckBox( stampDetailsPanel, stampRightVerticalSizer, ++lastID,
-        _( "Show Grayscale Images" ), wxCommandEventHandler( AlbumDetailsPanel::OnBorderSize ) );
+        _( "Show Grayscale Images" ), wxCommandEventHandler( AlbumDetailsPanel::OnGrayscale ) );
 
     m_catalog = SetupLabelText( stampDetailsPanel, stampRightVerticalSizer, lastID,
         _( "Catalog Code" ), true, wxCommandEventHandler( AlbumDetailsPanel::OnCatalogCode ) );
@@ -998,6 +998,16 @@ void AlbumDetailsPanel::OnCatalogCode( wxCommandEvent& event )
     wxString cat = m_catalog->GetValue( );
     m_album->SetCatalog( cat );
 }
+void AlbumDetailsPanel::OnGrayscale( wxCommandEvent& event )
+{
+    m_album->SetGrayScaleImages( m_grayScaleImagesCheckbox->GetValue( ) );
+}
+
+void AlbumDetailsPanel::OnShowNbr( wxCommandEvent& event )
+{
+    m_album->SetShowNbr( m_nbrCheckbox->GetValue( ) );
+}
+
 void AlbumDetailsPanel::OnOrientationChoice( wxCommandEvent& event )
 {
     m_album->SetDefaultOrientation( Design::OrientationStrings[ m_orientationChoice->GetSelection( ) ] );

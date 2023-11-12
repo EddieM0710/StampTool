@@ -12,6 +12,8 @@ add_library( GuiFiles SHARED
     StampToolFrame.cpp
     AppData.cpp
     StampToolPanel.cpp
+    ExportDialog.cpp 
+    ExportPanel.cpp 
     AlbumPanel.cpp 
     AlbumTreePanel.cpp 
     AlbumDetailsPanel.cpp

@@ -201,6 +201,10 @@ public:
 
     void OnCatalogCode( wxCommandEvent& event );
 
+    void OnGrayscale( wxCommandEvent& event );
+
+    void OnShowNbr( wxCommandEvent& event );
+
     void OnOkClick( wxCommandEvent& event );
 
     void OnTextDefaultClick( wxCommandEvent& event );

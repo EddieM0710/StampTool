@@ -177,6 +177,20 @@ namespace Utils {
         m_volumeArray.insert( std::make_pair( str, vol ) );
     }
 
+    void VolumeList::MakeNameArray( wxArrayString& array )
+    {
+        array.Clear( );
+        VolumeArray::iterator itr;
+        int i = m_volumeArray.size( );
+
+        for ( itr = m_volumeArray.begin( );
+            itr != m_volumeArray.end( ); itr++ )
+        {
+            Volume* vol = itr->second;
+            array.Add( vol->GetName( ) );
+        }
+    };
+
     void VolumeList::RemoveVolume( wxString name )
     {
         VolumeArray::iterator itr = FindVolumeIterator( name );

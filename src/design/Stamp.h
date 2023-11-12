@@ -228,7 +228,9 @@ namespace Design {
 
         void SetTitleLocation( TitleLocation loc );
 
+
         /**
+         *
         * @brief UpdateMinimumSize
         * Calculates the minimum Height and width of the object. It drills down to
         * the lowest layout object with an actual size and begins calculating the
@@ -266,12 +268,10 @@ namespace Design {
         double m_mountAllowanceHeight;
         double m_mountAllowanceWidth;
 
-        bool m_showCatNbr;
 
-        bool m_showTitle;
         wxString m_imageFilename;
         wxImage m_image;
-        DebugString m_debugString;
+        // DebugString m_debugString;
     };
 }
 #endif

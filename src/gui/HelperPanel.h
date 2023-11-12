@@ -28,6 +28,7 @@
 #include <wx/fontpicker.h>
 #include <wx/clrpicker.h>
 #include <wx/radiobut.h>
+#include <wx/checklst.h>
 
 #include "gui/GuiDefs.h"
 #include "gui/AlbumTreeCtrl.h"
@@ -88,6 +89,11 @@ public:
 
     wxCheckBox* SetupCheckBox( wxWindow* parent, wxBoxSizer* sizer,
         int& lastID, wxString label, wxObjectEventFunction  eventHandler );
+
+    wxCheckListBox* SetupCheckListBox( wxWindow* parent, wxBoxSizer* inSizer, int& lastID,
+        wxString label, wxArrayString& array,
+        wxObjectEventFunction  allButtonEventHandler,
+        wxObjectEventFunction  clearButtonEventHandler );
 
     wxChoice* SetupChoice( wxWindow* parent, wxBoxSizer* sizer,
         int& lastID, wxString label,

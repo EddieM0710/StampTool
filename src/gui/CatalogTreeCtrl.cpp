@@ -1182,18 +1182,18 @@ void CatalogTreeCtrl::SetInventoryStatus( wxXmlNode* node, Catalog::InventorySta
 
     if ( item )
     {
-        if ( newType == Catalog::ST_Exclude )
-        {
-            // don't have a specimen child
-            node->RemoveChild( item );
-        }
-        else
-        {
+        // if ( newType == Catalog::ST_Exclude )
+        // {
+        //     // don't have a specimen child
+        //     node->RemoveChild( item );
+        // }
+        // else
+        // {
             // make the item the new type
-            Utils::SetAttrStr( item,
-                Catalog::ItemDataNames[ Catalog::IDT_InventoryStatus ],
-                Catalog::InventoryStatusStrings[ newType ] );
-        }
+        Utils::SetAttrStr( item,
+            Catalog::ItemDataNames[ Catalog::IDT_InventoryStatus ],
+            Catalog::InventoryStatusStrings[ newType ] );
+        // }
     }
     else
     {

@@ -132,7 +132,7 @@ void AlbumPanel::CreateControls( )
 
     m_imageDetailsSplitterWindow = CreateImageDetailsSplitterWindow( m_albumVerticalSplitterWindow );
 
-    // put the tree and the image panel into t he splitter window
+    // put the tree and the image panel into the splitter window
     m_albumVerticalSplitterWindow->SplitVertically( m_albumTreePanel, m_imageDetailsSplitterWindow, 400 );
 
     ////
@@ -166,8 +166,8 @@ wxSplitterWindow* AlbumPanel::CreateImageDetailsSplitterWindow( wxWindow* parent
     parent->SetSizer( splitterWindowVerticalSizer );
 
     wxSplitterWindow* imageDetailsSplitterWindow = new wxSplitterWindow( parent, ID_HORIZONTALALBUMSPLITTERWINDOW1, wxDefaultPosition, wxDefaultSize, wxSP_3DBORDER | wxSP_3DSASH | wxNO_BORDER );
-    // imageDetailsSplitterWindow->SetMinimumPaneSize( 50 );
-     ////
+    imageDetailsSplitterWindow->SetMinimumPaneSize( 50 );
+
     splitterWindowVerticalSizer->Add( imageDetailsSplitterWindow, 1, wxGROW | wxALL, 5 );
 
     // album Image Layout Panel

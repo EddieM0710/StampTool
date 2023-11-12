@@ -32,6 +32,7 @@
 
 namespace Design {
 
+    class TitleFrame;
     /**
      * @brief Row layout object; Inherits from LayoutBase.  The Row can contain Column or Stamp objects.
      *
@@ -57,6 +58,15 @@ namespace Design {
             }
             return String2Bool( str, true );
         };
+        wxString GetTitleString( );
+
+        wxString GetSubTitleString( );
+
+        void SetTitleString( wxString str );
+
+        void SetSubTitleString( wxString str );
+
+        TitleFrame* GetTitleFrame( );
 
         void Draw( wxDC& dc, double x, double y );
 
@@ -70,7 +80,7 @@ namespace Design {
             return GetAttrDbl( AT_FixedSpacingSize );
         };
 
-        LabelFrame* GetTitleFrame( );
+
 
         void LoadFonts( wxXmlNode* node );
 
@@ -88,9 +98,6 @@ namespace Design {
             SetAttrStr( AT_CalculateSpacing, Bool2String( val ) );
         };
 
-        wxString GetTitleString( );
-
-        void SetTitleString( wxString str );
 
         bool UpdateMinimumSize( );
 
@@ -115,7 +122,7 @@ namespace Design {
     private:
 
         DebugString m_debugString;
-        LabelFrame* m_titleFrame;
+        TitleFrame* m_titleFrame;
 
     };
 

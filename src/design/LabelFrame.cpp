@@ -161,28 +161,25 @@ namespace Design {
         m_multiLineString = m_string;
         m_maxWidth = width;
 
-        if ( width > 0 )
+        if ( width > 0 && !m_string.IsEmpty( ) )
         {
             wxFont font = GetFont( );
-            int point = font.GetPointSize( );
             if ( font == wxNullFont )
             {
                 font = *wxNORMAL_FONT;
             }
 
-            //   GetAlbumImagePanel( )->MakeMultiLine( m_multiLineString, font, width );
             // first break into lines if necessary then get the actual multi line text extent
             m_stringTextExtent = GetAlbumImagePanel( )->MakeMultiLine( m_multiLineString, font, width );
-            // std::cout << "LabelFrame::UpdateString " << m_string << "  "
-            //     << width << "  x:" << m_stringTextExtent.x
-            //     << " y" << m_stringTextExtent.y
-            //     << "point:" << point << "\n";
+
+            // unnecessary to calc center as drawing will center
             SetWidth( m_maxWidth );
             SetHeight( m_stringTextExtent.y );
             SetMinWidth( m_maxWidth );
             SetMinHeight( m_stringTextExtent.y );
             SetXPos( 0 );
             SetYPos( 0 );
+            CheckLayout( m_string );
         }
         else
         {
@@ -193,5 +190,5 @@ namespace Design {
             SetXPos( 0 );
             SetYPos( 0 );
         }
-    };
+    }
 }

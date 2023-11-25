@@ -231,31 +231,31 @@ void ColDetailsPanel::CreateControls( )
 }
 
 //--------------
-Design::TitleLocation  ColDetailsPanel::GetTitleLocation( )
+Design::StampNameLocation  ColDetailsPanel::GetTitleLocation( )
 {
     if ( m_topButton->GetValue( ) )
     {
-        return Design::AT_TitleLocationTop;
+        return Design::AT_StampNameLocationTop;
     }
     if ( m_bottomButton->GetValue( ) )
     {
-        return Design::AT_TitleLocationBottom;
+        return Design::AT_StampNameLocationBottom;
     }
-    return Design::AT_TitleLocationDefault;
+    return Design::AT_StampNameLocationDefault;
 }
 
 void ColDetailsPanel::SetTitleLocation( )
 {
-    Design::TitleLocation titleLocation = m_col->GetTitleLocationType( );
-    if ( titleLocation == Design::AT_TitleLocationTop )
+    Design::StampNameLocation titleLocation = m_col->GetDefaultStampNameLocationType( );
+    if ( titleLocation == Design::AT_StampNameLocationTop )
     {
         m_topButton->SetValue( true );
     }
-    else if ( titleLocation == Design::AT_TitleLocationBottom )
+    else if ( titleLocation == Design::AT_StampNameLocationBottom )
     {
         m_bottomButton->SetValue( true );
     }
-    else //if ( titleLocation == Design::AT_TitleLocationDefault )
+    else //if ( titleLocation == Design::AT_StampNameLocationDefault )
     {
         m_defaultButton->SetValue( true );;
     }
@@ -272,7 +272,7 @@ void ColDetailsPanel::UpdateControls( )
     SetShowFrame( m_col->GetShowFrame( ) );
     SetTitleFont( m_col->GetTitleFrame( )->GetHeadingFont( ) );
     SetTitleColor( m_col->GetTitleFrame( )->GetHeadingColor( ) );
-    m_col->GetTitleLocationType( );
+    //   m_col->GetDefaultStampNameLocationType( );
 }
 
 
@@ -379,7 +379,7 @@ void ColDetailsPanel::OnOkClick( wxCommandEvent& event )
 
 void ColDetailsPanel::OnBottomRadioButtonSelected( wxCommandEvent& event )
 {
-    m_titleLocation = Design::AT_TitleLocationBottom;
+    m_titleLocation = Design::AT_StampNameLocationBottom;
     event.Skip( );
 
 }
@@ -388,7 +388,7 @@ void ColDetailsPanel::OnBottomRadioButtonSelected( wxCommandEvent& event )
 
 void ColDetailsPanel::OnDefaultRadioButtonSelected( wxCommandEvent& event )
 {
-    m_titleLocation = Design::AT_TitleLocationDefault;
+    m_titleLocation = Design::AT_StampNameLocationDefault;
     event.Skip( );
 }
 
@@ -401,7 +401,7 @@ void ColDetailsPanel::OnFrameCheckboxClick( wxCommandEvent& event )
 
 void ColDetailsPanel::OnTopRadioButtonSelected( wxCommandEvent& event )
 {
-    m_titleLocation = Design::AT_TitleLocationTop;
+    m_titleLocation = Design::AT_StampNameLocationTop;
     event.Skip( );
 }
 

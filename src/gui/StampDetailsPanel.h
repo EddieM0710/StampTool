@@ -249,7 +249,7 @@ private:
     wxStaticBox* m_TitleLocationBox;
     wxStaticBoxSizer* m_titleLocationVSizer;
     wxBoxSizer* m_titleLocationHSizer;
-    Design::TitleLocation m_titleLocation;
+    Design::StampNameLocation m_titleLocation;
     wxRadioButton* m_topButton;
     wxRadioButton* m_bottomButton;
     wxRadioButton* m_defaultButton;

@@ -89,6 +89,7 @@ namespace Design {
         AT_MountAllowanceHeight,
         AT_MountAllowanceWidth,
         AT_StampNameLocation,
+        AT_StampAlignmentMode,
         AT_StampMargin,
         AT_CollapseState,
         AT_Catalog,
@@ -116,6 +117,13 @@ namespace Design {
         AT_NbrAlbumTypes,
         AT_None = 999
     } AlbumBaseType;
+
+    typedef enum
+    {
+        PT_RowPage = AT_Row, // First level children are in a row
+        PT_ColumnPage = AT_Col, // First level children are in a col
+        PT_None = AT_None
+    } PageType;
 
     typedef enum {
         AT_TitleFontType,
@@ -151,11 +159,19 @@ namespace Design {
 
     typedef enum
     {
-        AT_TitleLocationTop,
-        AT_TitleLocationBottom,
-        AT_TitleLocationDefault,
-        AT_NbrTitleLocations
-    } TitleLocation;
+        AT_StampNameLocationTop,
+        AT_StampNameLocationBottom,
+        AT_StampNameLocationDefault,
+        AT_NbrStampNameLocations
+    } StampNameLocation;
+
+    typedef enum {
+        AlignTop = 0,
+        AlignMiddle,
+        AlignBottom,
+        AlignDefault,
+        NbrAlignmentModes
+    } AlignmentMode;
 
     Album* GetAlbum( void );
 
@@ -163,7 +179,9 @@ namespace Design {
 
     bool IsAlbumBaseTypeValid( AlbumBaseType type );
 
-    TitleLocation FindTitleLocationType( wxString name );
+    StampNameLocation FindStampLocationType( wxString name );
+
+    AlignmentMode FindAlignmentModeType( wxString name );
 
     AlbumAttrType FindAlbumAttrType( wxString name );
 
@@ -197,7 +215,8 @@ namespace Design {
 
     extern int DefaultPointSize[ AT_NbrFontUsageTypes ];
     extern wxString FontUsageTypeStrings[ AT_NbrFontUsageTypes ];
-    extern wxString StampTitleLocationStrings[ AT_NbrTitleLocations ];
+    extern wxString StampNameLocationStrings[ AT_NbrStampNameLocations ];
+    extern wxString StampAlignmentModeStrings[ NbrAlignmentModes ];
 
 }
 

@@ -127,8 +127,8 @@ void RowDetailsPanel::CreateControls( )
     wxBoxSizer* m_leftColumnVerticalSizer = new wxBoxSizer( wxVERTICAL );
     detailsHorizontalSizer->Add( m_leftColumnVerticalSizer, 1, wxGROW | wxALL, 0 );
 
-    wxBoxSizer* m_rightColumnVerticalSizer = new wxBoxSizer( wxVERTICAL );
-    detailsHorizontalSizer->Add( m_rightColumnVerticalSizer, 1, wxGROW | wxALL, 0 );
+    //  wxBoxSizer* m_rightColumnVerticalSizer = new wxBoxSizer( wxVERTICAL );
+    //  detailsHorizontalSizer->Add( m_rightColumnVerticalSizer, 1, wxGROW | wxALL, 0 );
 
     wxBoxSizer* firstRowHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
     m_leftColumnVerticalSizer->Add( firstRowHorizontalSizer, 0, wxGROW | wxALL, 5 );
@@ -169,7 +169,7 @@ void RowDetailsPanel::CreateControls( )
 
 
     wxBoxSizer* titleLocationVSizer;
-    wxStaticBox* titleLocationBox = SetupBoxSizer( theDialog, m_rightColumnVerticalSizer, "Member Title Location", lastID, titleLocationVSizer, wxHORIZONTAL );
+    wxStaticBox* titleLocationBox = SetupBoxSizer( theDialog, m_leftColumnVerticalSizer, "Member Title Location", lastID, titleLocationVSizer, wxHORIZONTAL );
 
     m_defaultButton = SetupRadioButton( titleLocationBox, titleLocationVSizer, lastID, _( "Default" ), false,
         wxCommandEventHandler( RowDetailsPanel::OnDefaultRadioButtonSelected ) );
@@ -178,11 +178,30 @@ void RowDetailsPanel::CreateControls( )
         wxCommandEventHandler( RowDetailsPanel::OnTopRadioButtonSelected ) );
 
     m_bottomButton = SetupRadioButton( titleLocationBox, titleLocationVSizer, lastID, _( "Bottom" ), false,
-        wxCommandEventHandler( RowDetailsPanel::OnTopRadioButtonSelected ) );
+        wxCommandEventHandler( RowDetailsPanel::OnBottomRadioButtonSelected ) );
+
+
+
+
+    wxBoxSizer* alignmentModeVSizer;
+    wxStaticBox* alignmentModeBox = SetupBoxSizer( theDialog, m_leftColumnVerticalSizer, "Member Stamp Alignment Mode", lastID, alignmentModeVSizer, wxHORIZONTAL );
+
+    m_alignDefaultButton = SetupRadioButton( alignmentModeBox, alignmentModeVSizer, lastID, _( "Default" ), true,
+        wxCommandEventHandler( RowDetailsPanel::OnAlignmentModeButtonSelected ) );
+
+    m_alignTopButton = SetupRadioButton( alignmentModeBox, alignmentModeVSizer, lastID, _( "Top" ), false,
+        wxCommandEventHandler( RowDetailsPanel::OnAlignmentModeButtonSelected ) );
+
+    m_alignMiddleButton = SetupRadioButton( alignmentModeBox, alignmentModeVSizer, lastID, _( "Middle" ), false,
+        wxCommandEventHandler( RowDetailsPanel::OnAlignmentModeButtonSelected ) );
+
+    m_alignBottomButton = SetupRadioButton( alignmentModeBox, alignmentModeVSizer, lastID, _( "Bottom" ), false,
+        wxCommandEventHandler( RowDetailsPanel::OnAlignmentModeButtonSelected ) );
+
 
 
     wxBoxSizer* memberPositionVSizer;
-    wxStaticBox* memberPositionStaticBox = SetupBoxSizer( theDialog, m_rightColumnVerticalSizer, "Member Position", lastID, memberPositionVSizer, wxHORIZONTAL );
+    wxStaticBox* memberPositionStaticBox = SetupBoxSizer( theDialog, m_leftColumnVerticalSizer, "Member Position", lastID, memberPositionVSizer, wxHORIZONTAL );
 
     m_positionCalculated = SetupRadioButton( memberPositionStaticBox, memberPositionVSizer, lastID, _( "Calculated" ), true,
         wxCommandEventHandler( RowDetailsPanel::OnCalculatedClick ) );
@@ -203,7 +222,7 @@ void RowDetailsPanel::CreateControls( )
 
     //>>error list ctrls
     wxBoxSizer* errorListSizer = new wxBoxSizer( wxHORIZONTAL );
-    m_rightColumnVerticalSizer->Add( errorListSizer, 2, wxGROW | wxALL, 5 );
+    m_leftColumnVerticalSizer->Add( errorListSizer, 2, wxGROW | wxALL, 5 );
 
     wxArrayString m_statusListStrings;
     m_statusList = new wxListBox( theDialog, ID_LISTCTRL, wxDefaultPosition, wxDefaultSize, m_statusListStrings, wxLB_SINGLE );
@@ -211,28 +230,49 @@ void RowDetailsPanel::CreateControls( )
     //<< error list ctrls
 
 }
-Design::TitleLocation  RowDetailsPanel::GetTitleLocationType( )
-{
-    return m_titleLocation;
-}
+// Design::StampNameLocation  RowDetailsPanel::GetTitleLocationType( )
+// {
+//     return m_titleLocation;
+// }
 
 
 void RowDetailsPanel::SetTitleLocation( )
 {
 
-    m_titleLocation = m_row->GetTitleLocationType( );
-    if ( m_titleLocation == Design::AT_TitleLocationTop )
+    m_titleLocation = m_row->GetDefaultStampNameLocationType( );
+    if ( m_titleLocation == Design::AT_StampNameLocationTop )
     {
         m_topButton->SetValue( true );
     }
-    else if ( m_titleLocation == Design::AT_TitleLocationBottom )
+    else if ( m_titleLocation == Design::AT_StampNameLocationBottom )
     {
         m_bottomButton->SetValue( true );
     }
 
-    else //if ( m_titleLocation == Design::AT_TitleLocationDefault )
+    else //if ( m_titleLocation == Design::AT_StampNameLocationDefault )
     {
         m_defaultButton->SetValue( true );;
+    }
+}
+
+void RowDetailsPanel::SetAlignmentMode( )
+{
+    Design::AlignmentMode mode = m_row->GetAlignmentModeType( );
+    if ( mode == Design::AlignTop )
+    {
+        m_alignTopButton->SetValue( true );
+    }
+    else if ( mode == Design::AlignMiddle )
+    {
+        m_alignMiddleButton->SetValue( true );
+    }
+    else if ( mode == Design::AlignBottom )
+    {
+        m_alignBottomButton->SetValue( true );
+    }
+    else
+    {
+        m_alignDefaultButton->SetValue( true );;
     }
 }
 
@@ -245,6 +285,7 @@ void RowDetailsPanel::UpdateControls( )
     SetShowFrame( m_row->GetShowFrame( ) );
     SetColor( m_row->GetTitleFrame( )->GetHeadingColor( ) );
     SetTitleLocation( );
+    SetAlignmentMode( );
     SetFixedSpacingSize( m_row->GetFixedSpacing( ) );
     SetCalculateSpacing( m_row->CalculateSpacing( ) );
 
@@ -325,12 +366,33 @@ void RowDetailsPanel::SetCalculateSpacing( bool val )
 };
 
 
+void RowDetailsPanel::OnAlignmentModeButtonSelected( wxCommandEvent& event )
+{
+    if ( m_alignTopButton->GetValue( ) )
+    {
+        m_row->SetAlignmentModeType( Design::AlignTop );
+    }
+    else if ( m_alignMiddleButton->GetValue( ) )
+    {
+        m_row->SetAlignmentModeType( Design::AlignMiddle );
+    }
+    else if ( m_alignBottomButton->GetValue( ) )
+    {
+        m_row->SetAlignmentModeType( Design::AlignBottom );
+    }
+    else if ( m_alignDefaultButton->GetValue( ) )
+    {
+        m_row->SetAlignmentModeType( Design::AlignDefault );
+    }
+    event.Skip( );
+}
+
 void RowDetailsPanel::OnTopRadioButtonSelected( wxCommandEvent& event )
 {
     if ( m_topButton->GetValue( ) )
     {
-        m_titleLocation = Design::AT_TitleLocationTop;
-        m_row->SetTitleLocation( m_titleLocation );
+        m_titleLocation = Design::AT_StampNameLocationTop;
+        m_row->SetDefaultStampNameLocationType( m_titleLocation );
     }
     event.Skip( );
 }
@@ -339,8 +401,8 @@ void RowDetailsPanel::OnBottomRadioButtonSelected( wxCommandEvent& event )
 {
     if ( m_bottomButton->GetValue( ) )
     {
-        m_titleLocation = Design::AT_TitleLocationBottom;
-        m_row->SetTitleLocation( m_titleLocation );
+        m_titleLocation = Design::AT_StampNameLocationBottom;
+        m_row->SetDefaultStampNameLocationType( m_titleLocation );
     }
     event.Skip( );
 }
@@ -349,8 +411,8 @@ void RowDetailsPanel::OnDefaultRadioButtonSelected( wxCommandEvent& event )
 {
     if ( m_defaultButton->GetValue( ) )
     {
-        m_titleLocation = Design::AT_TitleLocationDefault;
-        m_row->SetTitleLocation( m_titleLocation );
+        m_titleLocation = Design::AT_StampNameLocationDefault;
+        m_row->SetDefaultStampNameLocationType( m_titleLocation );
     }
     event.Skip( );
 }

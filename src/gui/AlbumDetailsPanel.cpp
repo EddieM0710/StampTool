@@ -138,8 +138,8 @@ wxPanel* AlbumDetailsPanel::SetupPageDetailsPanel( wxWindow* parent, int& lastID
     wxBoxSizer* leftColumnVerticalSizer = new wxBoxSizer( wxVERTICAL );
     detailsHorizontalSizer->Add( leftColumnVerticalSizer, 1, wxGROW | wxALL, 0 );
 
-    wxBoxSizer* rightColumnVerticalSizer = new wxBoxSizer( wxVERTICAL );
-    detailsHorizontalSizer->Add( rightColumnVerticalSizer, 1, wxGROW | wxALL, 0 );
+    //  wxBoxSizer* rightColumnVerticalSizer = new wxBoxSizer( wxVERTICAL );
+    //  detailsHorizontalSizer->Add( rightColumnVerticalSizer, 1, wxGROW | wxALL, 0 );
 
 
     SetupFontPicker( pageDetailsPanel, leftColumnVerticalSizer, lastID,
@@ -189,7 +189,7 @@ wxPanel* AlbumDetailsPanel::SetupPageDetailsPanel( wxWindow* parent, int& lastID
 
 
     wxBoxSizer* pageBoxVSizer;
-    wxStaticBox* pageBox = SetupBoxSizer( pageDetailsPanel, rightColumnVerticalSizer,
+    wxStaticBox* pageBox = SetupBoxSizer( pageDetailsPanel, leftColumnVerticalSizer,
         "Page Size", lastID, pageBoxVSizer, wxVERTICAL );
 
 
@@ -212,7 +212,7 @@ wxPanel* AlbumDetailsPanel::SetupPageDetailsPanel( wxWindow* parent, int& lastID
 
 
     wxBoxSizer* marginBoxVSizer;
-    wxStaticBox* marginBox = SetupBoxSizer( pageDetailsPanel, rightColumnVerticalSizer,
+    wxStaticBox* marginBox = SetupBoxSizer( pageDetailsPanel, leftColumnVerticalSizer,
         "Margin", lastID, marginBoxVSizer, wxVERTICAL );
 
     wxBoxSizer* itemBoxSizer7 = new wxBoxSizer( wxHORIZONTAL );
@@ -247,7 +247,7 @@ wxPanel* AlbumDetailsPanel::SetupPageDetailsPanel( wxWindow* parent, int& lastID
 
 
     wxBoxSizer* borderBoxSizer;
-    wxStaticBox* borderBox = SetupBoxSizer( pageDetailsPanel, rightColumnVerticalSizer,
+    wxStaticBox* borderBox = SetupBoxSizer( pageDetailsPanel, leftColumnVerticalSizer,
         "Border", lastID, borderBoxSizer, wxVERTICAL );
 
     m_borderFilename = SetupLabelText( borderBox, borderBoxSizer, lastID,
@@ -259,7 +259,7 @@ wxPanel* AlbumDetailsPanel::SetupPageDetailsPanel( wxWindow* parent, int& lastID
 
 
     wxArrayString m_orientationChoiceStrings( 2, Design::OrientationStrings );
-    m_orientationChoice = SetupChoice( pageDetailsPanel, rightColumnVerticalSizer, ++lastID,
+    m_orientationChoice = SetupChoice( pageDetailsPanel, leftColumnVerticalSizer, ++lastID,
         _( "Orientation:" ), m_orientationChoiceStrings,
         wxCommandEventHandler( AlbumDetailsPanel::OnOrientationChoice ) );
     m_orientationChoice->SetSelection( Design::AT_Portrait );
@@ -276,6 +276,21 @@ wxPanel* AlbumDetailsPanel::SetupRowColDetailsPanel( wxWindow* parent, int& last
 
     wxBoxSizer* rowColVerticalSizer = new wxBoxSizer( wxVERTICAL );
     rowColDetailsPanel->SetSizer( rowColVerticalSizer );
+
+
+    wxBoxSizer* locationSizer;
+    wxStaticBox* locationBox = SetupBoxSizer( rowColDetailsPanel, rowColVerticalSizer,
+        "Name Location", lastID, locationSizer, wxHORIZONTAL );
+
+    m_topButton = SetupRadioButton( locationBox, locationSizer, lastID, _( "Top" ), true,
+        wxCommandEventHandler( AlbumDetailsPanel::OnNameLocationButtonSelected ) );
+    m_topButton->SetToolTip( _( "Name above Stamp." ) );
+
+    m_bottomButton = SetupRadioButton( locationBox, locationSizer, lastID, _( "Bottom" ), false,
+        wxCommandEventHandler( AlbumDetailsPanel::OnNameLocationButtonSelected ) );
+    m_bottomButton->SetToolTip( _( "Name below Stamp." ) );
+
+
     return rowColDetailsPanel;
 
 }
@@ -292,19 +307,19 @@ wxPanel* AlbumDetailsPanel::SetupStampDetailsPanel( wxWindow* parent, int& lastI
     stampDetailsPanel->SetSizer( stampHorizontalSizer );
 
     wxBoxSizer* stampLeftVerticalSizer = new wxBoxSizer( wxVERTICAL );
-    stampHorizontalSizer->Add( stampLeftVerticalSizer, 0, wxGROW | wxALL, 0 );
+    stampHorizontalSizer->Add( stampLeftVerticalSizer, 1, wxGROW | wxALL, 0 );
 
-    wxBoxSizer* stampRightVerticalSizer = new wxBoxSizer( wxVERTICAL );
-    stampHorizontalSizer->Add( stampRightVerticalSizer, 0, wxGROW | wxALL, 0 );
+    //  wxBoxSizer* stampRightVerticalSizer = new wxBoxSizer( wxVERTICAL );
+    //  stampHorizontalSizer->Add( stampRightVerticalSizer, 0, wxGROW | wxALL, 0 );
 
-    SetupFontPicker( stampDetailsPanel, stampRightVerticalSizer, lastID,
+    SetupFontPicker( stampDetailsPanel, stampLeftVerticalSizer, lastID,
         _( "Default Catalog Nbr Font" ), _( "Default" ),
         m_nbrFontPicker, m_nbrColorPicker,
         wxFontPickerEventHandler( AlbumDetailsPanel::OnNbrFontPicker ),
         wxColourPickerEventHandler( AlbumDetailsPanel::OnNbrColorPicker ),
         wxCommandEventHandler( AlbumDetailsPanel::OnNbrDefaultClick ) );
 
-    SetupFontPicker( stampDetailsPanel, stampRightVerticalSizer, lastID,
+    SetupFontPicker( stampDetailsPanel, stampLeftVerticalSizer, lastID,
         _( "Default Name Font" ), _( "Default" ),
         m_nameFontPicker, m_nameColorPicker,
         wxFontPickerEventHandler( AlbumDetailsPanel::OnNameFontPicker ),
@@ -312,28 +327,32 @@ wxPanel* AlbumDetailsPanel::SetupStampDetailsPanel( wxWindow* parent, int& lastI
         wxCommandEventHandler( AlbumDetailsPanel::OnNameDefaultClick ) );
 
 
-    m_nbrCheckbox = SetupCheckBox( stampDetailsPanel, stampRightVerticalSizer, ++lastID,
+    m_nbrCheckbox = SetupCheckBox( stampDetailsPanel, stampLeftVerticalSizer, ++lastID,
         _( "Show Catalog Nbr" ), wxCommandEventHandler( AlbumDetailsPanel::OnBorderSize ) );
 
-    m_grayScaleImagesCheckbox = SetupCheckBox( stampDetailsPanel, stampRightVerticalSizer, ++lastID,
+    m_grayScaleImagesCheckbox = SetupCheckBox( stampDetailsPanel, stampLeftVerticalSizer, ++lastID,
         _( "Show Grayscale Images" ), wxCommandEventHandler( AlbumDetailsPanel::OnGrayscale ) );
 
-    m_catalog = SetupLabelText( stampDetailsPanel, stampRightVerticalSizer, lastID,
+    m_catalog = SetupLabelText( stampDetailsPanel, stampLeftVerticalSizer, lastID,
         _( "Catalog Code" ), true, wxCommandEventHandler( AlbumDetailsPanel::OnCatalogCode ) );
 
 
 
-    wxBoxSizer* locationSizer;
-    wxStaticBox* locationBox = SetupBoxSizer( stampDetailsPanel, stampLeftVerticalSizer,
-        "Name Location", lastID, locationSizer, wxHORIZONTAL );
+    wxBoxSizer* alignmentizer;
+    wxStaticBox* alignmentBox = SetupBoxSizer( stampDetailsPanel, stampLeftVerticalSizer,
+        "Default Member Alignment", lastID, alignmentizer, wxHORIZONTAL );
 
-    m_topButton = SetupRadioButton( locationBox, locationSizer, lastID, _( "Top" ), true,
-        wxCommandEventHandler( AlbumDetailsPanel::OnNameLocationButtonSelected ) );
-    m_topButton->SetToolTip( _( "Name above Stamp." ) );
+    m_alignTop = SetupRadioButton( alignmentBox, alignmentizer, lastID, _( "Top" ), true,
+        wxCommandEventHandler( AlbumDetailsPanel::OnAlignmentButtonSelected ) );
+    m_alignTop->SetToolTip( _( "Align Top of Stamps." ) );
 
-    m_bottomButton = SetupRadioButton( locationBox, locationSizer, lastID, _( "Bottom" ), false,
-        wxCommandEventHandler( AlbumDetailsPanel::OnNameLocationButtonSelected ) );
-    m_bottomButton->SetToolTip( _( "Name below Stamp." ) );
+    m_alignMiddle = SetupRadioButton( alignmentBox, alignmentizer, lastID, _( "Middle" ), false,
+        wxCommandEventHandler( AlbumDetailsPanel::OnAlignmentButtonSelected ) );
+    m_alignMiddle->SetToolTip( _( "Align middle of Stamps." ) );
+
+    m_alignBottom = SetupRadioButton( alignmentBox, alignmentizer, lastID, _( "Bottom" ), false,
+        wxCommandEventHandler( AlbumDetailsPanel::OnAlignmentButtonSelected ) );
+    m_alignBottom->SetToolTip( _( "Align bottom of Stamps." ) );
 
     return stampDetailsPanel;
 }
@@ -856,24 +875,33 @@ void AlbumDetailsPanel::OnOverSizeCheckBoxClick( wxCommandEvent& event )
 
 }
 
-//--------------
-void AlbumDetailsPanel::OnPaperHeight( wxCommandEvent& event )
-{
-    wxString valAlbum = m_album->GetPaperHeightStr( );
-    wxString valLocal = m_paperHeight->GetValue( );
-    if ( valAlbum.Cmp( valLocal ) )
-    {
-        m_album->SetPaperHeight( valLocal );
-    }
-    event.Skip( );
+// //--------------
+// void AlbumDetailsPanel::OnPaperHeight( wxCommandEvent& event )
+// {
+//     wxString valAlbum = m_album->GetPaperHeightStr( );
+//     wxString valLocal = m_paperHeight->GetValue( );
+//     if ( valAlbum.Cmp( valLocal ) )
+//     {
+//         m_album->SetPaperHeight( valLocal );
+//     }
+//     event.Skip( );
 
-}
+// }
 
 void AlbumDetailsPanel::OnNbrFontPicker( wxFontPickerEvent& event )
 {
     m_album->SetFont( Design::AT_NbrFontType, GetNbrFont( ), GetNbrColor( ) );
     event.Skip( );
 }
+
+
+void AlbumDetailsPanel::OnNameColorPicker( wxColourPickerEvent& event )
+
+{
+    m_album->SetFont( Design::AT_NameFontType, GetNameFont( ), GetNameColor( ) );
+    event.Skip( );
+}
+
 
 void AlbumDetailsPanel::OnNbrColorPicker( wxColourPickerEvent& event )
 {
@@ -888,7 +916,7 @@ void AlbumDetailsPanel::OnNameFontPicker( wxFontPickerEvent& event )
 
 }
 
-void AlbumDetailsPanel::OnNameColorPicker( wxColourPickerEvent& event )
+void AlbumDetailsPanel::OnPaperHeight( wxCommandEvent& event )
 {
     wxString valAlbum = m_album->GetPaperHeightStr( );
     wxString valLocal = m_paperHeight->GetValue( );
@@ -900,37 +928,32 @@ void AlbumDetailsPanel::OnNameColorPicker( wxColourPickerEvent& event )
 
 void AlbumDetailsPanel::OnPaperWidth( wxCommandEvent& event )
 {
-    wxString valAlbum = m_album->GetPaperHeightStr( );
-    wxString valLocal = m_paperHeight->GetValue( );
+    wxString valAlbum = m_album->GetPaperWidthStr( );
+    wxString valLocal = m_paperWidth->GetValue( );
     if ( valAlbum.Cmp( valLocal ) )
     {
-        m_album->SetPaperHeight( valLocal );
+        m_album->SetPaperWidth( valLocal );
     }
 }
 
 void AlbumDetailsPanel::OnPageHeight( wxCommandEvent& event )
 {
-
-    double valAlbum = m_album->GetPageHeight( );
-    double valLocal = 0;
-    wxString valLocalStr = m_pageWidth->GetValue( );
-    valLocalStr.ToDouble( &valLocal );
-    if ( valAlbum != valLocal )
+    wxString valAlbum = m_album->GetPageHeightStr( );
+    wxString valLocal = m_pageHeight->GetValue( );
+    if ( valAlbum.Cmp( valLocal ) )
     {
-        m_album->SetPageHeight( valLocalStr );
+        m_album->SetPageHeight( valLocal );
     }
 }
 
 void AlbumDetailsPanel::OnPageWidth( wxCommandEvent& event )
 {
-    double valAlbum = m_album->GetWidth( );
-    double valLocal = 0;
-    wxString valLocalStr = m_pageWidth->GetValue( );
-    valLocalStr.ToDouble( &valLocal );
+    wxString valAlbum = m_album->GetPageWidthStr( );
+    wxString valLocal = m_pageWidth->GetValue( );
 
-    if ( valAlbum != valLocal )
+    if ( valAlbum.Cmp( valLocal ) )
     {
-        m_album->SetPageWidth( valLocalStr );
+        m_album->SetPageWidth( valLocal );
     }
 }
 
@@ -1013,18 +1036,45 @@ void AlbumDetailsPanel::OnOrientationChoice( wxCommandEvent& event )
     m_album->SetDefaultOrientation( Design::OrientationStrings[ m_orientationChoice->GetSelection( ) ] );
 }
 
-void AlbumDetailsPanel::OnNameLocationButtonSelected( wxCommandEvent& event )
+void AlbumDetailsPanel::OnAlignmentButtonSelected( wxCommandEvent& event )
 {
-    bool top;
-    Design::TitleLocation currLoc = m_album->GetTitleLocationType( );
-    Design::TitleLocation localLoc = Design::AT_TitleLocationBottom;
-    if ( m_topButton->GetValue( ) )
+    Design::AlignmentMode currLoc = m_album->GetAlignmentModeType( );
+    Design::AlignmentMode localLoc = Design::AlignTop;
+    if ( m_alignTop->GetValue( ) )
     {
-        localLoc = Design::AT_TitleLocationTop;
+        localLoc = Design::AlignTop;
+    }
+    else if ( m_alignBottom->GetValue( ) )
+    {
+        localLoc = Design::AlignBottom;
+    }
+    else if ( m_alignMiddle->GetValue( ) )
+    {
+        localLoc = Design::AlignMiddle;
+    }
+    else
+    {
+        localLoc = Design::AlignTop;
     }
     if ( currLoc != localLoc )
     {
-        m_album->SetTitleLocationType( localLoc );
+        m_album->SetAlignmentModeType( localLoc );
+    }
+}
+
+
+void AlbumDetailsPanel::OnNameLocationButtonSelected( wxCommandEvent& event )
+{
+    bool top;
+    Design::StampNameLocation currLoc = m_album->GetDefaultStampNameLocationType( );
+    Design::StampNameLocation localLoc = Design::AT_StampNameLocationBottom;
+    if ( m_topButton->GetValue( ) )
+    {
+        localLoc = Design::AT_StampNameLocationTop;
+    }
+    if ( currLoc != localLoc )
+    {
+        m_album->SetDefaultStampNameLocationType( localLoc );
     }
 }
 
@@ -1032,15 +1082,35 @@ void AlbumDetailsPanel::OnNameLocationButtonSelected( wxCommandEvent& event )
 
 void AlbumDetailsPanel::SetStampNameLocation( )
 {
-    Design::TitleLocation loc = m_album->GetTitleLocationType( );
-    if ( loc == Design::AT_TitleLocationBottom )
+    Design::StampNameLocation loc = m_album->GetDefaultStampNameLocationType( );
+    if ( loc == Design::AT_StampNameLocationBottom )
     {
-        m_stampNameLocation = Design::AT_TitleLocationBottom;
+        m_stampNameLocation = Design::AT_StampNameLocationBottom;
         m_bottomButton->SetValue( true );
     }
     else
     {
-        m_stampNameLocation = Design::AT_TitleLocationTop;
+        m_stampNameLocation = Design::AT_StampNameLocationTop;
+        m_topButton->SetValue( true );
+    }
+}
+
+void AlbumDetailsPanel::SetAlignmentMode( )
+{
+    Design::AlignmentMode loc = m_album->GetAlignmentModeType( );
+    if ( loc == Design::AlignBottom )
+    {
+        m_alignmentMode = loc;
+        m_alignBottom->SetValue( true );
+    }
+    else   if ( loc == Design::AlignMiddle )
+    {
+        m_alignmentMode = loc;
+        m_alignBottom->SetValue( true );
+    }
+    else
+    {
+        m_alignmentMode = Design::AlignTop;
         m_topButton->SetValue( true );
     }
 }
@@ -1073,6 +1143,7 @@ void AlbumDetailsPanel::UpdateControls( )
     SetNameColor( m_album->GetColor( Design::AT_NameFontType ) );
     SetName( m_album->GetAttrStr( Design::AT_Name ) );
     SetStampNameLocation( );
+    SetAlignmentMode( );
     SetCatalog( m_album->GetCatalog( ) );
 
 
@@ -1085,16 +1156,16 @@ void AlbumDetailsPanel::OnOrientationchoiceSelected( wxCommandEvent& event )
 
 
 
-void AlbumDetailsPanel::OnTopRadioButtonSelected( wxCommandEvent& event )
-{
-    m_stampNameLocation = Design::AT_TitleLocationBottom;
-    event.Skip( );
-}
+// void AlbumDetailsPanel::OnTopRadioButtonSelected( wxCommandEvent& event )
+// {
+//     m_stampNameLocation = Design::AT_StampNameLocationBottom;
+//     event.Skip( );
+// }
 
 
-void AlbumDetailsPanel::OnBottomRadioButtonSelected( wxCommandEvent& event )
-{
-    m_stampNameLocation = Design::AT_TitleLocationBottom;
-    event.Skip( );
-}
+// void AlbumDetailsPanel::OnBottomRadioButtonSelected( wxCommandEvent& event )
+// {
+//     m_stampNameLocation = Design::AT_StampNameLocationBottom;
+//     event.Skip( );
+// }
 

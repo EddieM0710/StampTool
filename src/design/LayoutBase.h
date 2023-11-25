@@ -78,7 +78,7 @@ namespace Design {
 
         wxString DumpFrame( )
         {
-            return m_frame.LayoutString( );
+            return m_frame.Layout( );
         };
 
         void DumpLayout( double x, double y );
@@ -154,7 +154,7 @@ namespace Design {
             return "";
         };
 
-        // TitleLocation GetTitleLocation( );
+        // StampNameLocation GetTitleLocation( );
 
         /*
          * @brief Get Layout element position within parent element
@@ -190,7 +190,7 @@ namespace Design {
 
         bool IsInClient( double x, double y, wxString indent = "" );
 
-        //bool IsTitleLocation( TitleLocation loc );
+        //bool IsTitleLocation( StampNameLocation loc );
 
 
         virtual void LoadFonts( wxXmlNode* node ) = 0;
@@ -244,7 +244,7 @@ namespace Design {
         };
 
 
-        //void SetTitleLocation( TitleLocation loc ) { m_titleLocation = loc; };
+        //void SetTitleLocation( StampNameLocation loc ) { m_titleLocation = loc; };
 
         /*
          * @brief  Set Layout element position
@@ -301,6 +301,10 @@ namespace Design {
         wxString Layout( )
         {
             return m_frame.Layout( );
+        }
+        void CheckLayout( )
+        {
+            m_frame.CheckLayout( GetObjectName( ) );
         }
     protected:
         Frame m_frame;

@@ -69,7 +69,7 @@ namespace Design {
 
         UpdateString( GetTextFrame( ), contentWidth );
 
-        // if ( IsTitleLocation( AT_TitleLocationBottom ) )
+        // if ( IsTitleLocation( AT_StampNameLocationBottom ) )
         // {
         //     m_textBoxFrame.SetXPos( ( GetWidth( ) - m_textBoxFrame.GetWidth( ) ) / 2 );
         //     m_textBoxFrame.SetYPos( topPadding );
@@ -144,7 +144,7 @@ namespace Design {
 
     void TextBox::DumpText( wxTextCtrl* ctrl )
     {
-        *ctrl << DumpFrame( );
+        //   *ctrl << DumpFrame( );
     }
 
     //--------------
@@ -171,19 +171,27 @@ namespace Design {
 
     //--------------
 
-    LabelFrame* TextBox::GetTextFrame( ) { return m_textFrame; };
+    LabelFrame* TextBox::GetTextFrame( ) {
+        return m_textFrame;
+    };
 
     //--------------
 
-    wxString  TextBox::GetTextString( ) { return m_textFrame->GetString( ); };
+    wxString  TextBox::GetTextString( ) {
+        return m_textFrame->GetString( );
+    };
 
     //--------------
 
-    LabelFrame* TextBox::GetTitleFrame( ) { return m_titleFrame; };
+    LabelFrame* TextBox::GetTitleFrame( ) {
+        return m_titleFrame;
+    };
 
     //--------------
 
-    wxString  TextBox::GetTitleString( ) { return m_titleFrame->GetString( ); };
+    wxString  TextBox::GetTitleString( ) {
+        return m_titleFrame->GetString( );
+    };
 
     //--------------
 
@@ -283,6 +291,8 @@ namespace Design {
 
     NodeStatus TextBox::ValidateNode( )
     {
+        CheckLayout( );
+
         NodeStatus status = AT_OK;
         // wxString str;
 

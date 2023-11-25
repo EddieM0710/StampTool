@@ -69,10 +69,6 @@ namespace Design {
 
         void SetBorderFilename( wxString filename );
 
-        double GetBottomPageMargin( );
-
-        wxString GetBottomPageMarginStr( );
-
         wxString GetCatalog( );
 
         wxColour GetColor( FontUsageType fontType );
@@ -110,13 +106,13 @@ namespace Design {
 
         double GetPageWidth( );
 
+        wxString GetPageWidthStr( );
+
         double GetPaperWidth( );
 
         wxString GetPaperWidthStr( );
 
         double GetPaperHeight( );
-
-        wxString GetPageWidthStr( );
 
         double GetRightPageMargin( );
 
@@ -126,13 +122,21 @@ namespace Design {
             return String2Bool( GetAttrStr( AT_ShowCatNbr ) );
         };
 
-        wxString GetTitleLocation( );
+        wxString GetStampNameLocation( );
 
-        TitleLocation  GetTitleLocationType( );
+        StampNameLocation  GetDefaultStampNameLocationType( );
+
+        Design::AlignmentMode  GetAlignmentModeType( );
+
+        //wxString GetAlignmentMode( );
 
         double GetTopPageMargin( );
 
         wxString GetTopPageMarginStr( );
+
+        double GetBottomPageMargin( );
+
+        wxString GetBottomPageMarginStr( );
 
         bool GetShowTitle( ) {
             return String2Bool( GetAttrStr( AT_ShowTitle ) );
@@ -162,8 +166,6 @@ namespace Design {
 
         void SaveFonts( wxXmlNode* parent );
 
-        void SetBottomPageMargin( wxString str );
-
         void SetCatalog( wxString str );
 
         void SetDocName( wxString str );
@@ -188,6 +190,7 @@ namespace Design {
 
         void SetRightPageMargin( wxString str );
 
+        void SetBottomPageMargin( wxString str );
 
         void SetTopPageMargin( wxString str );
 
@@ -208,9 +211,13 @@ namespace Design {
             SetAttrStr( AT_ShowCatNbr, Bool2String( val ) );
         };
 
-        void SetTitleLocation( TitleLocation loc );
+        void SetDefaultStampNameLocation( StampNameLocation loc );
 
-        void SetTitleLocationType( TitleLocation loc );
+        void SetDefaultStampNameLocationType( StampNameLocation loc );
+
+        void SetAlignmentMode( AlignmentMode loc );
+
+        void SetAlignmentModeType( AlignmentMode loc );
 
         /**
          * @brief UpdateMinimumSize drills down to the lowest layout object with an actual size

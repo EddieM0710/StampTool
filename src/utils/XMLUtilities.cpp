@@ -263,6 +263,11 @@ namespace Utils {
 
     void SetAttrStr( wxXmlNode* node, wxString name, wxString val )
     {
+        if ( val.IsEmpty( ) )
+        {
+            node->DeleteAttribute( name );
+            return;
+        }
         wxXmlAttribute* attr = GetAttribute( node, name );
         if ( attr )
         {

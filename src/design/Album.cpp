@@ -118,11 +118,11 @@ namespace Design {
         {
             SetBorderSize( "4" );
         }
-        wxString location = GetTitleLocation( );
-        if ( location.Cmp( Design::StampTitleLocationStrings[ AT_TitleLocationTop ] ) &&
-            location.Cmp( Design::StampTitleLocationStrings[ AT_TitleLocationBottom ] ) )
+        wxString location = GetStampNameLocation( );
+        if ( location.Cmp( Design::StampNameLocationStrings[ AT_StampNameLocationTop ] ) &&
+            location.Cmp( Design::StampNameLocationStrings[ AT_StampNameLocationBottom ] ) )
         {
-            SetTitleLocation( AT_TitleLocationTop );
+            SetDefaultStampNameLocation( AT_StampNameLocationTop );
         }
 
 
@@ -321,52 +321,6 @@ namespace Design {
         return 0;
     };
 
-    // wxString Album::GetDefaultValStr( AlbumAttrType type )
-    // {
-    //     if ( type == AT_SelvageHeight )
-    //     {
-    //         return  wxString::Format( "%4.1f", m_defaultSelvageHeight );
-    //     }
-    //     else if ( type == AT_SelvageWidth )
-    //     {
-    //         return   wxString::Format( "%4.1f", m_defaultSelvageWidth );
-    //     }
-    //     else if ( type == AT_MountAllowanceHeight )
-    //     {
-    //         return   wxString::Format( "%4.1f", m_defaultMountAllowanceHeight );
-    //     }
-    //     else if ( type == AT_MountAllowanceWidth )
-    //     {
-    //         return   wxString::Format( "%4.1f", m_defaultMountAllowanceWidth );
-    //     }
-    //     else if ( type == AT_Catalog )
-    //     {
-    //         return  GetCatalog( );
-    //     }
-    //     else
-    //         return "";
-    // };
-
-    // double Album::GetDefaultVal( AlbumAttrType type )
-    // {
-    //     if ( type == AT_SelvageHeight )
-    //     {
-    //         return m_defaultSelvageHeight;
-    //     }
-    //     else if ( type == AT_SelvageWidth )
-    //     {
-    //         return m_defaultSelvageWidth;
-    //     }
-    //     else if ( type == AT_MountAllowanceHeight )
-    //     {
-    //         return m_defaultMountAllowanceHeight;
-    //     }
-    //     else if ( type == AT_MountAllowanceWidth )
-    //     {
-    //         return m_defaultMountAllowanceWidth;
-    //     }
-    //     return 0;
-    // };
 
     wxString Album::GetDocName( ) {
         return  GetAttrStr( "Name" );
@@ -382,14 +336,10 @@ namespace Design {
         int ndx = DefaultFonts[ fontType ];
         if ( GetFontList( )->IsValidFontNdx( ndx ) )
         {
-            // std::cout << "       Album::GetFontNdx from album " << Design::FontUsageTypeStrings[ fontType ]
-            //     << " ndx:" << DefaultFonts[ fontType ] << "\n";
             return DefaultFonts[ fontType ];
         }
         else
         {
-            // std::cout << "       Album::GetFontNdx from settings " << Design::FontUsageTypeStrings[ fontType ]
-            //     << " ndx:" << GetSettings( )->GetFontNdxPreference( fontType ) << "\n";
             return GetSettings( )->GetFontNdxPreference( fontType );
         }
     };
@@ -400,9 +350,6 @@ namespace Design {
         return GetSettings( )->GetFontNdxPreference( fontType );
     }
 
-    double Album::GetHeight( ) {
-        return GetAttrDbl( AT_PageHeight );
-    };
 
     double Album::GetLeftPageMargin( ) {
         return GetAttrDbl( AT_LeftPageMargin );
@@ -412,16 +359,6 @@ namespace Design {
         return GetAttrStr( AT_LeftPageMargin );
     };
 
-    double Album::GetPageHeight( ) {
-        return GetAttrDbl( AT_PageHeight );
-    };
-
-    wxString Album::GetPageHeightStr( ) {
-        return GetAttrStr( AT_PageHeight );
-    };
-    wxString Album::GetPaperHeightStr( ) {
-        return GetAttrStr( AT_PaperHeight );
-    };
 
     void Album::GetPageParameters( wxString& width,
         wxString& height,
@@ -438,33 +375,71 @@ namespace Design {
         leftPageMargin = GetAttrStr( AT_LeftPageMargin );
     };
 
-    wxString Album::GetTitleLocation( )
+    wxString Album::GetStampNameLocation( )
     {
         return GetAttrStr( AT_StampNameLocation );
     }
 
-    TitleLocation  Album::GetTitleLocationType( )
+    StampNameLocation  Album::GetDefaultStampNameLocationType( )
     {
-        TitleLocation loc = FindTitleLocationType( GetAttrStr( AT_StampNameLocation ) );
-        if ( ( loc != AT_TitleLocationBottom ) && ( loc != AT_TitleLocationTop ) )
+        StampNameLocation loc = FindStampLocationType( GetAttrStr( AT_StampNameLocation ) );
+        if ( ( loc != AT_StampNameLocationBottom ) && ( loc != AT_StampNameLocationTop ) )
         {
-            loc = AT_TitleLocationTop;
-            SetTitleLocationType( loc );
+            loc = AT_StampNameLocationTop;
+            SetDefaultStampNameLocationType( loc );
         }
-        return FindTitleLocationType( GetAttrStr( AT_StampNameLocation ) );
+        return FindStampLocationType( GetAttrStr( AT_StampNameLocation ) );
     };
 
-    double Album::GetPaperWidth( ) {
-        return GetAttrDbl( AT_PaperWidth );
+
+    // wxString Album::GetAlignmentMode( )
+    // {
+    //     return GetAttrStr( AT_StampAlignmentMode );
+    // }
+
+
+    Design::AlignmentMode  Album::GetAlignmentModeType( )
+    {
+        AlignmentMode loc = FindAlignmentModeType( GetAttrStr( AT_StampAlignmentMode ) );
+        if ( ( loc != AlignBottom ) && ( loc != AlignMiddle ) && ( loc != AlignTop ) )
+        {
+            loc = AlignTop;
+            SetAlignmentModeType( loc );
+        }
+        return FindAlignmentModeType( GetAttrStr( AT_StampAlignmentMode ) );
+    };
+
+
+
+    double Album::GetPageHeight( ) {
+        return GetAttrDbl( AT_PageHeight );
+    };
+
+    double Album::GetHeight( ) {
+        return GetPageHeight( );
+
+    };
+    wxString Album::GetPageHeightStr( ) {
+        return GetAttrStr( AT_PageHeight );
     };
 
     double Album::GetPaperHeight( ) {
         return GetAttrDbl( AT_PaperHeight );
     };
 
+
+    wxString Album::GetPaperHeightStr( ) {
+        return GetAttrStr( AT_PaperHeight );
+    };
+
+    double Album::GetPaperWidth( ) {
+        return GetAttrDbl( AT_PaperWidth );
+    };
+
     wxString Album::GetPaperWidthStr( ) {
         return GetAttrStr( AT_PaperWidth );
     };
+
 
     double Album::GetPageWidth( ) {
         return GetAttrDbl( AT_PageWidth );
@@ -472,6 +447,10 @@ namespace Design {
 
     wxString Album::GetPageWidthStr( ) {
         return GetAttrStr( AT_PageWidth );
+    };
+
+    double Album::GetWidth( ) {
+        return GetPageWidth( );
     };
 
     double Album::GetRightPageMargin( ) {
@@ -490,9 +469,6 @@ namespace Design {
         return GetAttrStr( AT_TopPageMargin );
     };
 
-    double Album::GetWidth( ) {
-        return GetAttrDbl( AT_PageWidth );
-    };
 
     bool Album::IsDefaultFont( FontUsageType fontType, int ndx )
     {
@@ -548,7 +524,6 @@ namespace Design {
 
     void Album::MakeAlbum( )
     {
-
         UpdateMinimumSize( );
         UpdateSizes( );
         UpdatePositions( );
@@ -735,18 +710,35 @@ namespace Design {
         SetAttrStr( AT_TopPageMargin, str );
     };
 
-    void Album::SetTitleLocation( TitleLocation loc )
+    void Album::SetDefaultStampNameLocation( StampNameLocation loc )
     {
-        SetAttrStr( AT_StampNameLocation, StampTitleLocationStrings[ loc ] );
+        SetAttrStr( AT_StampNameLocation, StampNameLocationStrings[ loc ] );
     }
-    void Album::SetTitleLocationType( TitleLocation loc )
+    void Album::SetDefaultStampNameLocationType( StampNameLocation loc )
     {
-        if ( ( loc != AT_TitleLocationBottom ) && ( loc != AT_TitleLocationTop ) )
+        if ( ( loc != AT_StampNameLocationBottom ) && ( loc != AT_StampNameLocationTop ) )
         {
-            loc = AT_TitleLocationTop;
+            loc = AT_StampNameLocationTop;
         }
-        SetAttrStr( AT_StampNameLocation, StampTitleLocationStrings[ loc ] );
+        SetAttrStr( AT_StampNameLocation, StampNameLocationStrings[ loc ] );
     };
+
+
+
+    void Album::SetAlignmentMode( AlignmentMode loc )
+    {
+        SetAttrStr( AT_StampAlignmentMode, StampAlignmentModeStrings[ loc ] );
+    }
+
+    void Album::SetAlignmentModeType( AlignmentMode loc )
+    {
+        if ( ( loc != AlignBottom ) && ( loc != AlignTop ) )
+        {
+            loc = AlignTop;
+        }
+        SetAttrStr( AT_StampAlignmentMode, StampAlignmentModeStrings[ loc ] );
+    };
+
 
     void Album::SetFontNdx( FontUsageType fontType, int ndx )
     {

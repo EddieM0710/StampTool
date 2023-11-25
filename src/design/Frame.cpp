@@ -27,7 +27,7 @@
 #include "design/Frame.h"
 #include "gui/GuiUtils.h"
 #include <wx/math.h> 
-
+#define LOOP 0
 namespace Design {
 
     Frame::Frame( )
@@ -36,14 +36,14 @@ namespace Design {
     };
     Frame::~Frame( ) { };
 
-    void Frame::Init( )
+    void Frame::Init( double x, double y, double w, double h, double mw, double  mh )
     {
-        m_xPos = 0.0;
-        m_yPos = 0.0;
-        m_width = 0.0;
-        m_height = 0.0;
-        m_minWidth = 0.0;
-        m_minHeight = 0.0;
+        m_xPos = x;
+        m_yPos = y;
+        m_width = w;
+        m_height = h;
+        m_minWidth = mw;
+        m_minHeight = mh;
     }
     /*
      * @brief Draw object on screen
@@ -63,121 +63,158 @@ namespace Design {
     };
 
     double Frame::GetHeight( ) {
+        if ( m_height < 0 )
+        {
+            //       ReportLayout( "GetHeight " );
+
+        }
         return m_height;
     };
 
     double Frame::GetMinWidth( ) {
+        if ( m_minWidth < 0 )
+        {
+            //        ReportLayout( "GetMinWidth " );
+        }
         return m_minWidth;
     };
 
     double Frame::GetMinHeight( ) {
+        if ( m_minHeight < 0 )
+        {
+            //       ReportLayout( "GetMinHeight " );
+        }
         return m_minHeight;
     };
 
     double Frame::GetXPos( ) {
+        if ( m_xPos < 0 )
+        {
+            //       ReportLayout( "SetHeight " );
+        }
         return m_xPos;
     };
 
     double Frame::GetYPos( ) {
+        if ( m_yPos < 0 )
+        {
+            //       ReportLayout( "GetYPos " );
+        }
         return m_yPos;
     };
 
+
     double Frame::GetWidth( ) {
+        if ( m_width < 0 )
+        {
+            //      ReportLayout( "GetWidth " );
+        }
         return m_width;
     };
 
-    wxString Frame::LayoutString( )
-    {
-        //        str = wxString::Format( " \n \n Frame  xPos:%7.2f  yPos:%7.2f\n     width:%7.2f  height:%7.2f\n     MinWidth:%7.2f  MinHeight:%7.2f\n", 
-        //        GetXPos( ), GetYPos( ),  GetWidth( ), GetHeight( ), GetMinWidth(), GetMinHeight());
-        wxString str;
-        str << " Frame Pos( "
-            << GetXPos( ) << ", " << GetYPos( )
-            << " ) , Size( " << GetWidth( ) << ", " << GetHeight( )
-            << " ), MinSize( " << GetMinWidth( ) << ", " << GetMinHeight( ) << " )\n";
-
-
-        return str;
-    }
-    wxString Frame::ReportLayout( wxString indent )
-    {
-        wxString str;
-        str << LayoutString( );
-        std::cout << str;
-        return str;
-    }
 
     void Frame::SetHeight( double val )
     {
         m_height = val;
+        if ( m_height < 0 )
+        {
+            //      ReportLayout( "SetHeight " );
+        }
     };
 
     void Frame::SetMinHeight( double val )
     {
         m_minHeight = val;
+        if ( m_minHeight < 0 )
+        {
+            //      ReportLayout( "SetMinHeight " );
+        }
     };
 
     void Frame::SetMinWidth( double val )
     {
         m_minWidth = val;
+        if ( m_minWidth < 0 )
+        {
+            //     ReportLayout( "SetMinWidth " );
+
+        }
     };
 
     void Frame::SetXPos( double val )
     {
         m_xPos = val;
+        if ( m_xPos < 0 )
+        {
+            ReportLayout( "SetXPos " );
+        }
     };
 
     void Frame::SetYPos( double val )
     {
         m_yPos = val;
+        if ( m_yPos < 0 )
+        {
+            //       ReportLayout( "SetYPos " );
+        }
     };
 
     void Frame::SetWidth( double val )
     {
         m_width = val;
+        if ( m_width < 0 )
+        {
+            //        ReportLayout( "SetWidth " );
+        }
     };
 
-    // void Frame::Check( )
-    // {
-
-    //     if ( ( m_xPos < 0 ) || ( m_yPos < 0 )
-    //         || ( m_width < 0 ) || ( m_height < 0 )
-    //         || ( m_minHeight < 0 ) || ( m_minWidth < 0 )
-    //         || wxIsNaN( m_xPos ) || wxIsNaN( m_yPos )
-    //         || wxIsNaN( m_width ) || wxIsNaN( m_height )
-    //         || wxIsNaN( m_minWidth ) || wxIsNaN( m_minHeight ) )
-    //     {
-    //         std::cout << "frame error " << Layout( ) << "\n";
-
-    //         while ( 0 )
-    //         {
-    //         };
-    //     }
-    // }
-
-    // wxString Frame::Layout( )
-    // {
-    //     wxString str = wxString::Format( "   pos( %.1f, %.1f)  size( %.1f, %.1f)  minSize( %.1f, %.1f)",
-    //         m_xPos, m_yPos, m_width, m_height, m_minHeight );
-    //     return str;
-    // }
-
-    wxString Frame::WriteLayout( wxString prefix )
+    wxString Frame::DumpPos( )
     {
-        wxString str;
-        str << prefix;
+        wxString str = wxString::Format( "   pos( %.1f, %.1f)",
+            m_xPos, m_yPos );
+        return str;
+    }
+
+    wxString Frame::DumpSize( )
+    {
+        wxString str = wxString::Format( "   size( %.1f, %.1f)",
+            m_width, m_height );
+        return str;
+    }
+    wxString Frame::DumpMinSize( )
+    {
+        wxString str = wxString::Format( "   minSize( %.1f, %.1f)",
+            m_minWidth, m_minHeight );
+        return str;
+    }
+
+    wxString Frame::ReportLayout( wxString prefix )
+    {
+        wxString str = Layout( );;
+        std::cout << prefix << str;
+        return str;
+    }
+
+    wxString Frame::Layout( )
+    {
+        wxString str = DumpPos( ) + DumpSize( ) + DumpMinSize( );
+        return str;
+    }
+
+    void Frame::CheckLayout( wxString prefix )
+    {
+
         if ( ( GetXPos( ) < 0 ) || ( GetYPos( ) < 0 ) )
         {
-            str << "invalid position\n";
+            std::cout << prefix << "invalid position" << DumpPos( ) << "\n";
         }
         if ( ( GetWidth( ) < 0 ) || ( GetHeight( ) < 0 ) )
         {
-            str << "invalid Size\n";
+            std::cout << prefix << "invalid Size" << DumpSize( ) << "\n";
         }
         if ( ( GetMinHeight( ) < 0 ) || ( GetMinWidth( ) < 0 ) )
         {
-            str << "invalid Height/width\n";
+            std::cout << prefix << "invalid Height/width" << DumpMinSize( ) << "\n";
         }
-        return str;
     };
 }

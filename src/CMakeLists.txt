@@ -1,14 +1,8 @@
 
 configure_file( StampToolConfig.h.in StampToolConfig.h )
 
-set( wxWidgets_ROOT_DIR "/sandbox/Applications/wx/wxWidgets-3.2.2.1" )
-message (" $ENV{LD_LIBRARY_PATH}" )
-#set( ENV{LD_LIBRARY_PATH} "/usr/local/lib:/sandbox/Applications/wx/wxpdfdoc-main/build-gtk" )
-set( ENV{LD_LIBRARY_PATH} "/usr/local/lib" )
-#set( ENV{WXPDF_FONTPATH} "/sandbox/Applications/wx/wxpdfdoc-main/lib/fonts" )
-set( ENV{WXPDF_FONTPATH} "/sandbox/Applications/wx/wxpdfdoc-main/lib/fonts" )
-message (" LD_LIBRARY_PATH  $ENV{LD_LIBRARY_PATH}" )
-find_package( wxWidgets COMPONENTS core base xml net pdfdoc REQUIRED )
+
+find_package( wxWidgets COMPONENTS core base xml net  REQUIRED )
 
 
 set( CMAKE_RUNTIME_OUTPUT_DIRECTORY ${build_Directory} )
@@ -33,6 +27,7 @@ add_subdirectory (catalog)
 add_subdirectory (design)
 add_subdirectory (collection)
 add_subdirectory (toc)
+add_subdirectory (thirdparty)
 
 add_executable ( StampTool 
     StampToolApp.cpp
@@ -48,6 +43,7 @@ target_link_libraries (StampTool LINK_PUBLIC debug
      CollectionFiles  
      TOCFiles
      Utils
+     wxPdfDoc
     ${wxWidgets_LIBRARIES}
     )
 

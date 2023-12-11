@@ -121,6 +121,7 @@ public:
     void OnDefaultRadioButtonSelected( wxCommandEvent& event );
     void OnTopRadioButtonSelected( wxCommandEvent& event );
     void OnBottomRadioButtonSelected( wxCommandEvent& event );
+    void OnAlignmentModeButtonSelected( wxCommandEvent& event );
     void OnTitleDefaultClick( wxCommandEvent& event );
 
     void OnFixedClick( wxCommandEvent& event );
@@ -136,7 +137,9 @@ public:
     bool GetShowSubTitle( );
     bool GetShowFrame( );
     void SetTitleLocation( );
-    Design::TitleLocation GetTitleLocationType( );
+    void SetAlignmentMode( );
+
+    Design::StampNameLocation GetTitleLocationType( );
     void SetCalculateSpacing( bool val );
     void SetFixedSpacingSize( wxString str ) {
         //     m_positionFixedSize->SetValue( str );
@@ -181,14 +184,21 @@ private:
     wxTextCtrl* positionTextCtrl;
     Design::Row* m_row;
     wxTreeItemId m_designTreeID;
-    wxStaticBox* m_TitleLocationBox;
-    wxStaticBoxSizer* m_titleLocationVSizer;
-    wxBoxSizer* m_titleLocationHSizer;
-    Design::TitleLocation m_titleLocation;
+
+    // wxStaticBox* m_TitleLocationBox;
+     //wxStaticBoxSizer* m_titleLocationVSizer;
+     //wxBoxSizer* m_titleLocationHSizer;
+    Design::StampNameLocation m_titleLocation;
+
     wxRadioButton* m_topButton;
     wxRadioButton* m_bottomButton;
-
     wxRadioButton* m_defaultButton;
+
+    wxRadioButton* m_alignTopButton;
+    wxRadioButton* m_alignMiddleButton;
+    wxRadioButton* m_alignBottomButton;
+    wxRadioButton* m_alignDefaultButton;
+
     wxRadioButton* m_positionCalculated;
     wxRadioButton* m_positionFixed;
     wxTextCtrl* m_positionFixedSize;

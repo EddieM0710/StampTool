@@ -180,7 +180,7 @@ namespace Design {
         double m_rightPageMargin;
         double m_leftPageMargin;
         double m_borderSize;
-        Design::AlbumBaseType m_pageType;
+        Design::PageType m_pageType;
         Frame m_contentFrame;
         wxString m_borderFileName;
         DebugString m_debugString;

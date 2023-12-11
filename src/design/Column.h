@@ -117,13 +117,13 @@ namespace Design {
 
         NodeStatus ValidateNode( );
 
-        void SetTitleLocation( TitleLocation loc );
+        void SetDefaultStampNameLocation( StampNameLocation loc );
 
-        wxString GetTitleLocation( );
+        wxString GetStampNameLocation( );
 
-        TitleLocation  GetTitleLocationType( );
+        StampNameLocation  GetDefaultStampNameLocationType( );
 
-        void SetTitleLocationType( TitleLocation loc );
+        void SetDefaultStampNameLocationType( StampNameLocation loc );
 
     private:
         // bool m_showTitle;

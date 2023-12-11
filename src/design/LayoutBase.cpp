@@ -42,21 +42,21 @@ namespace Design {
     LayoutBase::LayoutBase( ) : AlbumBase( )
     {
 
-        // SetTitleLocation( Design::AT_TitleLocationDefault );
+        // SetTitleLocation( Design::AT_StampNameLocationDefault );
 
     };
 
 
     LayoutBase::LayoutBase( wxXmlNode* node ) : AlbumBase( node )
     {
-        // SetTitleLocation( Design::AT_TitleLocationDefault );
+        // SetTitleLocation( Design::AT_StampNameLocationDefault );
     };
 
 
     void LayoutBase::DumpLayout( double x, double y )
     {
         AlbumBaseType type = GetNodeType( );
-        m_frame.WriteLayout( GetObjectName( ) );
+        m_frame.CheckLayout( GetObjectName( ) );
         wxTreeItemIdValue cookie;
         wxTreeItemId parentID = GetTreeItemId( );
         wxTreeItemId childID = GetAlbumTreeCtrl( )->GetFirstChild( parentID, cookie );
@@ -139,14 +139,14 @@ namespace Design {
     }
 
 
-    // TitleLocation LayoutBase::GetTitleLocation( )
+    // StampNameLocation LayoutBase::GetTitleLocation( )
     // {
-    //     if ( m_titleLocation == AT_TitleLocationDefault )
+    //     if ( m_titleLocation == AT_StampNameLocationDefault )
     //     {
     //         LayoutBase* parent = ( LayoutBase* ) GetParent( );
     //         if ( !parent )
     //         {
-    //             return AT_TitleLocationBottom;
+    //             return AT_StampNameLocationBottom;
     //         }
     //         return parent->GetTitleLocation( );
     //     }
@@ -187,7 +187,7 @@ namespace Design {
         return false;
     }
 
-    // bool LayoutBase::IsTitleLocation( TitleLocation loc )
+    // bool LayoutBase::IsTitleLocation( StampNameLocation loc )
     // {
     //     return( GetTitleLocation( ) == loc );
     // }
@@ -271,7 +271,6 @@ namespace Design {
     // calculate the label frame based on the available width and the text length
     void LayoutBase::UpdateString( Design::LabelFrame* frame, double width )
     {
-
         frame->UpdateString( width );
     };
 

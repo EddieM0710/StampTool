@@ -405,13 +405,13 @@ void AlbumImagePanel::OnPaint( wxPaintEvent& event )
                 double height;
                 if ( Design::IsPortrait( pageNode->GetOrientation( ) ) )
                 {
-                    width = album->GetAttrDbl( Design::AT_PageWidth );
-                    height = album->GetAttrDbl( Design::AT_PageHeight );
+                    width = album->GetWidth( );
+                    height = album->GetHeight( );
                 }
                 else
                 {
-                    height = album->GetAttrDbl( Design::AT_PageWidth );
-                    width = album->GetAttrDbl( Design::AT_PageHeight );
+                    height = album->GetWidth( );
+                    width = album->GetHeight( );
                 }
 
                 m_userScale = ( .5 - ( .4 - m_zoom ) );
@@ -431,6 +431,7 @@ void AlbumImagePanel::OnPaint( wxPaintEvent& event )
                 DrawRectangle( dc, 0, 0, width, height );
 
                 dc.SetPen( *wxBLACK_PEN );
+                // DrawRectangle( dc, 10, 10, 10, 10 );
 
                 pageNode->Draw( dc, 0, 0 );
             }

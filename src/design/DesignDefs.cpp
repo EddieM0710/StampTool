@@ -104,6 +104,7 @@ namespace Design {
         "MountAllowanceHeight",
         "MountAllowanceWidth",
         "StampNameLocation",
+        "StampAlignmentMode",
         "StampMargin",
         "CollapseState",
         "Catalog",
@@ -137,25 +138,47 @@ namespace Design {
         "Text",
         "CatNbr"
     };
-    wxString StampTitleLocationStrings[ AT_NbrTitleLocations ] = {
+
+    wxString StampNameLocationStrings[ AT_NbrStampNameLocations ] = {
         "Top",
         "Bottom",
         "Default"
     };
 
+    wxString StampAlignmentModeStrings[ NbrAlignmentModes ] = {
+        "Top",
+        "Middle",
+        "Bottom",
+        "Default"
+    };
 
-    TitleLocation FindTitleLocationType( wxString name )
+
+    StampNameLocation FindStampLocationType( wxString name )
     {
         wxString baseName;
-        for ( int i = 0; i < AT_NbrTitleLocations; i++ )
+        for ( int i = 0; i < AT_NbrStampNameLocations; i++ )
         {
-            baseName = StampTitleLocationStrings[ i ];
+            baseName = StampNameLocationStrings[ i ];
             if ( !name.Cmp( baseName ) )
             {
-                return ( TitleLocation ) i;
+                return ( StampNameLocation ) i;
             }
         }
-        return  AT_TitleLocationDefault;
+        return  AT_StampNameLocationDefault;
+    };
+
+    AlignmentMode FindAlignmentModeType( wxString name )
+    {
+        wxString baseName;
+        for ( int i = 0; i < NbrAlignmentModes; i++ )
+        {
+            baseName = StampAlignmentModeStrings[ i ];
+            if ( !name.Cmp( baseName ) )
+            {
+                return ( AlignmentMode ) i;
+            }
+        }
+        return  AlignDefault;
     };
 
     AlbumAttrType FindAlbumAttrType( wxString name )

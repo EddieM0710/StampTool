@@ -123,6 +123,10 @@ void AlbumPanel::CreateControls( )
     wxBoxSizer* SplitterWindowHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
     theAlbumLayoutPanelVerticalSizer->Add( SplitterWindowHorizontalSizer, 0, wxGROW | wxALL, 0 );
 
+
+
+
+
     m_albumVerticalSplitterWindow = new wxSplitterWindow( theAlbumPanel, ID_SECONDARYSPLITTERWINDOW, wxDefaultPosition, wxDefaultSize, wxSP_3DBORDER | wxSP_3DSASH | wxNO_BORDER );
     m_albumVerticalSplitterWindow->SetMinimumPaneSize( 50 );
     theAlbumLayoutPanelVerticalSizer->Add( m_albumVerticalSplitterWindow, 1, wxGROW | wxALL, 5 );
@@ -159,23 +163,47 @@ void AlbumPanel::OnSplitterwindowSashPosChanged( wxSplitterEvent& event )
 }
 
 
-wxSplitterWindow* AlbumPanel::CreateImageDetailsSplitterWindow( wxWindow* parent )
+wxNotebook* AlbumPanel::CreateImageDetailsSplitterWindow( wxWindow* parent )
 {
 
-    wxBoxSizer* splitterWindowVerticalSizer = new wxBoxSizer( wxVERTICAL );
-    parent->SetSizer( splitterWindowVerticalSizer );
+    //@@@@@@
+    int lastID = ID_LastID;
+    wxBoxSizer* theDialogVerticalSizer = new wxBoxSizer( wxVERTICAL );
+    parent->SetSizer( theDialogVerticalSizer );
 
-    wxSplitterWindow* imageDetailsSplitterWindow = new wxSplitterWindow( parent, ID_HORIZONTALALBUMSPLITTERWINDOW1, wxDefaultPosition, wxDefaultSize, wxSP_3DBORDER | wxSP_3DSASH | wxNO_BORDER );
-    imageDetailsSplitterWindow->SetMinimumPaneSize( 50 );
+    wxBoxSizer* notebookHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
+    theDialogVerticalSizer->Add( notebookHorizontalSizer, 1, wxGROW | wxALL, 5 );
 
-    splitterWindowVerticalSizer->Add( imageDetailsSplitterWindow, 1, wxGROW | wxALL, 5 );
+    wxNotebook* notebook = new wxNotebook( parent, ++lastID,
+        wxDefaultPosition, wxDefaultSize, wxBK_LEFT );
+    notebookHorizontalSizer->Add( notebook, 1, wxGROW | wxALL, 5 );
+
 
     // album Image Layout Panel
-    wxPanel* albumImageLayoutPanel = CreateAlbumImageLayoutPanel( imageDetailsSplitterWindow );
+    wxPanel* albumImageLayoutPanel = CreateAlbumImageLayoutPanel( notebook );
 
-    m_detailsScrolledWindow = CreateDetailsScrolledWindow( imageDetailsSplitterWindow );
-    imageDetailsSplitterWindow->SplitHorizontally( albumImageLayoutPanel, m_detailsScrolledWindow, 550 );
-    return imageDetailsSplitterWindow;
+    notebook->AddPage( albumImageLayoutPanel, _( "Layout" ) );
+
+    m_detailsScrolledWindow = CreateDetailsScrolledWindow( notebook );
+    notebook->AddPage( m_detailsScrolledWindow, _( "Details" ) );
+
+    //@@@@@@
+
+        // wxBoxSizer* splitterWindowVerticalSizer = new wxBoxSizer( wxVERTICAL );
+        // parent->SetSizer( splitterWindowVerticalSizer );
+
+        // wxSplitterWindow* imageDetailsSplitterWindow = new wxSplitterWindow( parent, ID_HORIZONTALALBUMSPLITTERWINDOW1, wxDefaultPosition, wxDefaultSize, wxSP_3DBORDER | wxSP_3DSASH | wxNO_BORDER );
+        // imageDetailsSplitterWindow->SetMinimumPaneSize( 50 );
+
+        // splitterWindowVerticalSizer->Add( imageDetailsSplitterWindow, 1, wxGROW | wxALL, 5 );
+
+        // // album Image Layout Panel
+        // wxPanel* albumImageLayoutPanel = CreateAlbumImageLayoutPanel( imageDetailsSplitterWindow );
+
+        // m_detailsScrolledWindow = CreateDetailsScrolledWindow( imageDetailsSplitterWindow );
+        // imageDetailsSplitterWindow->SplitHorizontally( albumImageLayoutPanel, m_detailsScrolledWindow, 550 );
+        // return imageDetailsSplitterWindow;
+    return notebook;
 }
 
 wxPanel* AlbumPanel::CreateDetailsScrolledWindow( wxWindow* parent )

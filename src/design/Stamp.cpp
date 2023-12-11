@@ -62,13 +62,14 @@ namespace Design {
         SetNodeType( AT_Stamp );
         SetObjectName( AlbumBaseNames[ AT_Stamp ] );
         // SetShowNbr( true );
-        // SetShowTitle( true );
-        SetShowSubTitle( false );
+        //SetShowTitle( true );
+        //SetShowSubTitle( false );
 
         m_nameFrame = new LabelFrame( Design::AT_NameFontType );
         m_nameFrame->SetString( "name" );
         m_nbrFrame = new LabelFrame( Design::AT_NbrFontType );
         m_nbrFrame->SetString( "Nbr" );
+        m_frame.Init( );
         InitParameters( );
 
     }
@@ -80,12 +81,13 @@ namespace Design {
     {
         SetNodeType( AT_Stamp );
         SetObjectName( AlbumBaseNames[ GetNodeType( ) ] );
-        //  SetShowNbr( true );
-         // SetShowTitle( true );
-        SetShowSubTitle( false );
+        //SetShowNbr( true );
+        //SetShowTitle( true );
+        //SetShowSubTitle( false );
 
         m_nameFrame = new LabelFrame( Design::AT_NameFontType );
         m_nbrFrame = new LabelFrame( Design::AT_NbrFontType );
+        m_frame.Init( );
 
         InitParameters( );
         //  GetNameString
@@ -106,7 +108,7 @@ namespace Design {
 
     void Stamp::CalculateYPos( double yPos, double height )
     {
-        if ( GetTitleLocation( ) == AT_TitleLocationBottom )
+        if ( GetStampNameLocationType( ) == AT_StampNameLocationBottom )
         {
             SetYPos( yPos );
         }
@@ -258,8 +260,8 @@ namespace Design {
     void Stamp::DumpStamp( wxTextCtrl* ctrl )
     {
         *ctrl << DumpFrame( );
-        *ctrl << m_borderFrame.LayoutString( );
-        *ctrl << m_stampImageFrame.LayoutString( );
+        *ctrl << m_borderFrame.Layout( );
+        *ctrl << m_stampImageFrame.Layout( );
     }
 
 
@@ -294,20 +296,24 @@ namespace Design {
 
     //--------------  
 
-    TitleLocation  Stamp::GetDefaultTitleLocation( )
+    StampNameLocation  Stamp::GetDefaultStampNameLocation( )
     {
         Design::AlbumBase* node = GetParent( );
         Design::AlbumBaseType type = node->GetNodeType( );
-        TitleLocation defaultLoc = AT_TitleLocationDefault;
+        StampNameLocation defaultLoc = AT_StampNameLocationDefault;
         if ( type == Design::AT_Row )
         {
             Design::Row* row = ( Design::Row* ) node;
-            defaultLoc = row->GetTitleLocationType( );
+            defaultLoc = row->GetDefaultStampNameLocationType( );
         }
         else if ( type = Design::AT_Col )
         {
             Design::Column* col = ( Design::Column* ) node;
-            defaultLoc = col->GetTitleLocationType( );
+            defaultLoc = col->GetDefaultStampNameLocationType( );
+        }
+        else
+        {
+            defaultLoc = GetAlbum( )->GetDefaultStampNameLocationType( );
         }
         return  defaultLoc;
     }
@@ -449,20 +455,21 @@ namespace Design {
         return GetAttrStr( AT_ImageName );
     }
 
+    //--------------
+
+    wxString Stamp::GetStampNameLocation( )
+    {
+        return GetAttrStr( AT_StampNameLocation );
+    }
 
     //--------------
 
-    TitleLocation Stamp::GetTitleLocation( )
+    StampNameLocation Stamp::GetStampNameLocationType( )
     {
-        TitleLocation defaultLoc = GetDefaultTitleLocation( );
-        TitleLocation loc = FindTitleLocationType( GetAttrStr( AT_StampNameLocation ) );
-        if ( ( loc == defaultLoc ) )// && ( loc != AT_TitleLocationDefault ) )
+        StampNameLocation loc = FindStampLocationType( GetStampNameLocation( ) );
+        if ( loc == AT_StampNameLocationDefault )
         {
-            SetTitleLocation( AT_TitleLocationDefault );
-        }
-        if ( loc == AT_TitleLocationDefault )
-        {
-            return defaultLoc;
+            return GetDefaultStampNameLocation( );
         }
         return loc;
     };
@@ -635,7 +642,7 @@ namespace Design {
         if ( IsDefaultVal( AT_MountAllowanceWidth ) ) SetAttribute( xmlNode, AT_MountAllowanceWidth );
         SetAttribute( xmlNode, AT_Link );
         SetAttribute( xmlNode, AT_ShowTitle );
-        SetAttribute( xmlNode, AT_ShowSubTitle );
+        //SetAttribute( xmlNode, AT_ShowSubTitle );
         SetAttribute( xmlNode, AT_ShowCatNbr );
         SetAttribute( xmlNode, AT_ImageName );
         SaveFonts( xmlNode );
@@ -835,14 +842,14 @@ namespace Design {
 
     //--------------
 
-    void Stamp::SetTitleLocation( TitleLocation loc )
+    void Stamp::SetStampNameLocation( StampNameLocation loc )
     {
-        TitleLocation defaultLoc = GetDefaultTitleLocation( );
+        StampNameLocation defaultLoc = GetDefaultStampNameLocation( );
         if ( loc == defaultLoc )
         {
-            loc = AT_TitleLocationDefault;
+            loc = AT_StampNameLocationDefault;
         }
-        SetAttrStr( AT_StampNameLocation, StampTitleLocationStrings[ loc ] );
+        SetAttrStr( AT_StampNameLocation, StampNameLocationStrings[ loc ] );
     };
 
 
@@ -919,7 +926,7 @@ namespace Design {
         m_stampImageFrame.SetXPos( m_borderFrame.GetXPos( ) + ( m_borderFrame.GetWidth( ) - m_stampImageFrame.GetWidth( ) ) / 2 );
         if ( GetShowTitle( ) )
         {
-            if ( GetTitleLocation( ) == AT_TitleLocationBottom )
+            if ( GetStampNameLocationType( ) == AT_StampNameLocationBottom )
             {
                 //if the title is on the bottom then the border frame is on top
                 m_borderFrame.SetYPos( 0 );
@@ -953,6 +960,7 @@ namespace Design {
 
     NodeStatus Stamp::ValidateNode( )
     {
+        CheckLayout( );
 
         NodeStatus status = AT_OK;
         wxString filename = GetStampImageFilename( );

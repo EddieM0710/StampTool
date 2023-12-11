@@ -80,8 +80,6 @@ namespace Design {
             return GetAttrDbl( AT_FixedSpacingSize );
         };
 
-
-
         void LoadFonts( wxXmlNode* node );
 
         void ReportLayout( );
@@ -98,7 +96,6 @@ namespace Design {
             SetAttrStr( AT_CalculateSpacing, Bool2String( val ) );
         };
 
-
         bool UpdateMinimumSize( );
 
         /**
@@ -113,12 +110,23 @@ namespace Design {
 
         NodeStatus ValidateNode( );
 
-        void SetTitleLocation( TitleLocation loc );
-        wxString GetTitleLocation( );
 
-        TitleLocation  GetTitleLocationType( );
-        void SetTitleLocationType( TitleLocation loc );
+        void SetDefaultStampNameLocation( StampNameLocation loc );
 
+        wxString GetStampNameLocation( );
+
+        StampNameLocation  GetDefaultStampNameLocationType( );
+
+        void SetDefaultStampNameLocationType( StampNameLocation loc );
+
+
+        //  wxString GetAlignmentMode( );
+
+        void SetAlignmentMode( AlignmentMode loc );
+
+        void SetAlignmentModeType( AlignmentMode loc );
+
+        AlignmentMode  GetAlignmentModeType( );
     private:
 
         DebugString m_debugString;

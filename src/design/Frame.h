@@ -43,7 +43,7 @@ namespace Design {
 
         ~Frame( );
 
-        void Init( );
+        void Init( double x = 0.0, double y = 0.0, double w = 0.0, double h = 0.0, double mw = 0.0, double mh = 0.0 );
 
         /*
           * @brief Draw object on screen
@@ -81,8 +81,7 @@ namespace Design {
         double GetWidth( );
 
 
-        wxString ReportLayout( wxString indent = "" );
-        wxString LayoutString( );
+        wxString ReportLayout( wxString prefix = "" );
 
         void SetHeight( double val );
 
@@ -96,15 +95,22 @@ namespace Design {
 
         void SetWidth( double val );
 
-        wxString WriteLayout( wxString prefix );
+        //wxString DumpLayout( wxString prefix );
         wxString Layout( );
-        //   void Check( );
+
+        void CheckLayout( wxString prefix = "" );
+
+        wxString DumpPos( );
+
+        wxString DumpSize( );
+
+        wxString DumpMinSize( );
 
         wxRect GetRect( ) {
             return wxRect( GetXPos( ), GetYPos( ), GetWidth( ), GetHeight( ) );
         };
 
-    protected:
+    private:
 
         double m_xPos;
         double m_yPos;

@@ -64,12 +64,12 @@ namespace Design {
         SetLeftContentMargin( 2 );
         SetRightContentMargin( 2 );
 
-        wxString location = GetTitleLocation( );
-        if ( location.Cmp( Design::StampTitleLocationStrings[ AT_TitleLocationTop ] ) &&
-            location.Cmp( Design::StampTitleLocationStrings[ AT_TitleLocationBottom ] ) &&
-            location.Cmp( Design::StampTitleLocationStrings[ AT_TitleLocationDefault ] ) )
+        wxString location = GetStampNameLocation( );
+        if ( location.Cmp( Design::StampNameLocationStrings[ AT_StampNameLocationTop ] ) &&
+            location.Cmp( Design::StampNameLocationStrings[ AT_StampNameLocationBottom ] ) &&
+            location.Cmp( Design::StampNameLocationStrings[ AT_StampNameLocationDefault ] ) )
         {
-            SetTitleLocation( AT_TitleLocationDefault );
+            SetDefaultStampNameLocation( AT_StampNameLocationDefault );
         }
 
 
@@ -222,29 +222,35 @@ namespace Design {
         while ( childID.IsOk( ) )
         {
             LayoutBase* child = ( LayoutBase* ) GetAlbumTreeCtrl( )->GetItemNode( childID );
+
+            // calc the min size ror this items children
             child->UpdateMinimumSize( );
+
+            // keep the max min width
+
             if ( child->GetMinWidth( ) > minWidth )
             {
                 minWidth = child->GetMinWidth( );
             }
+
+            // keep running total of min child height
             minHeight += child->GetMinHeight( );
             childID = GetAlbumTreeCtrl( )->GetNextChild( parentID, cookie );
         }
 
+        GetTitleFrame( )->Init( );
         if ( GetShowTitle( ) )
         {
             // update the title frame
             m_titleFrame->UpdateString( minWidth, minWidth );
 
-            SetHeight( GetHeight( ) + GetTitleFrame( )->GetHeight( ) );
+            //***
+            // SetHeight( GetHeight( ) + GetTitleFrame( )->GetHeight( ) );
 
-            // Allow 3 times the title height
+                        // add the title height
             minHeight += GetTitleFrame( )->GetHeight( );
-            GetTitleFrame( )->SetYPos( 0 );// GetTitleFrame( )->GetHeight( ) );
-        }
-        else
-        {
-            GetTitleFrame( )->Init( );
+
+            GetTitleFrame( )->SetYPos( 0 );
         }
 
         SetMinHeight( minHeight
@@ -253,6 +259,8 @@ namespace Design {
         SetMinWidth( minWidth
             + GetLeftContentMargin( )
             + GetRightContentMargin( ) );
+
+        GetErrorArray( )->Empty( );
 
         return true;
     }
@@ -263,31 +271,46 @@ namespace Design {
         // go to the bottom of each child container object ( row, column, page ) 
         // and begin filling in position relative to the parent
 
-        int nbrRows = 0;
-        int nbrCols = 0;
-        int nbrStamps = 0;
-        ValidateChildType( nbrRows, nbrCols, nbrStamps );
+       // calc space used by children
+         // this means looping through the children and getting the actual sizes 
+         // of the children, not their calculated min size
+        wxTreeItemIdValue cookie;
+        wxTreeItemId parentID = GetTreeItemId( );
+        LayoutBase* parent = ( LayoutBase* ) GetAlbumTreeCtrl( )->GetItemNode( parentID );
+        int nbrChildren = parent->GetNbrChildren( );
+
+        wxTreeItemId childID = GetAlbumTreeCtrl( )->GetFirstChild( parentID, cookie );
+        double actualWidth = 0;
+        double actualHeight = 0;
+        while ( childID.IsOk( ) )
+        {
+            LayoutBase* child = ( LayoutBase* ) GetAlbumTreeCtrl( )->GetItemNode( childID );
+            actualHeight += child->GetHeight( );
+            childID = GetAlbumTreeCtrl( )->GetNextChild( parentID, cookie );
+        }
 
         double xPos = 0;
         double yPos = GetTopContentMargin( );//0;
         //First calc title position  
         if ( GetShowTitle( ) )
         {
-            GetTitleFrame( )->SetXPos( 0 + ( GetWidth( ) - GetTitleFrame( )->GetWidth( ) ) / 2 );
+            GetTitleFrame( )->SetXPos( ( GetWidth( ) - GetTitleFrame( )->GetWidth( ) ) / 2 );
             GetTitleFrame( )->SetYPos( 2 );
             // allow for space above title, title height and that much again for nice spaing
-            yPos += GetTitleFrame( )->GetHeight( );
+            yPos += GetTitleFrame( )->GetHeight( ) + 2 * GetTopContentMargin( );
         }
         else
         {
             GetTitleFrame( )->Init( );
+            yPos = GetTopContentMargin( );
         }
+
         // this is a col so we are positioning children down the page
         //double spacing = ( GetHeight( ) - GetMinHeight( ) ) / ( nbrRows + nbrStamps + 1 );
         double spacing = 4;
         if ( CalculateSpacing( ) )
         {
-            spacing = ( GetHeight( ) - GetMinHeight( ) ) / ( nbrRows + nbrStamps + 1 );
+            spacing = ( GetHeight( ) - actualHeight ) / ( nbrChildren + 1 );
 
             // inital x/y pos within the row
             yPos += spacing;
@@ -295,24 +318,17 @@ namespace Design {
         else
         {
             spacing = GetFixedSpacingDbl( );
-            yPos += ( ( GetHeight( ) - GetMinHeight( ) ) - ( nbrRows + nbrStamps - 1 ) * spacing ) / 2;
+            yPos += ( ( GetHeight( )
+                - actualHeight )
+                - ( nbrChildren - 1 ) * spacing ) / 2;
         }
 
-        //  if ( GetShowTitle( ) ) yPos += GetTitleFrame( )->GetHeight( );
-
-        wxTreeItemIdValue cookie;
-        wxTreeItemId parentID = GetTreeItemId( );
-        wxTreeItemId childID = GetAlbumTreeCtrl( )->GetFirstChild( parentID, cookie );
+        childID = GetAlbumTreeCtrl( )->GetFirstChild( parentID, cookie );
         while ( childID.IsOk( ) )
         {
             LayoutBase* child = ( LayoutBase* ) GetAlbumTreeCtrl( )->GetItemNode( childID );
             child->SetXPos( xPos );
             child->SetYPos( yPos );
-            //calc position of next child
-
-            //something curious here
-            //needs to be looked at
-            //a col can have a stamp or row child
 
 
             child->UpdatePositions( );
@@ -327,28 +343,26 @@ namespace Design {
 
     void Column::UpdateSizes( )
     {
-        //SetWidth( GetMinWidth( ) );
-        std::cout << m_titleFrame->GetSubHeadingString( ) << " col w:" << GetWidth( ) << " h:" << GetHeight( ) << "\n";
-        std::cout << m_titleFrame->GetSubHeadingString( ) << " col parent w:" << GetWidth( ) << " h:" << GetHeight( ) << "\n";
-
         // Set the height and width of each child  column
         // Stamps have fixed height and width
         wxTreeItemIdValue cookie;
         wxTreeItemId parentID = GetTreeItemId( );
         LayoutBase* parent = ( LayoutBase* ) GetAlbumTreeCtrl( )->GetItemNode( parentID );
         int nbrChildren = parent->GetNbrChildren( );
-        // SetWidth( parent->GetWidth( ) - parent->GetLeftContentMargin( ) - parent->GetRightContentMargin( ) );
-          // std::cout << m_titleFrame->GetSubHeadingString( ) << " col  " << parent->GetWidth( ) << "\n";
-          // std::cout << m_titleFrame->GetSubHeadingString( ) << " col parent w:" << parent->GetWidth( ) << " h:" << parent->GetHeight( ) << "\n";
 
         wxTreeItemId childID = GetAlbumTreeCtrl( )->GetFirstChild( parentID, cookie );
         while ( childID.IsOk( ) )
         {
             LayoutBase* child = ( LayoutBase* ) GetAlbumTreeCtrl( )->GetItemNode( childID );
-            if ( child->IsNodeType( AT_Row ) )
+            if ( child->IsNodeType( AT_Row ) ) // i.e., stamps are fixed don't try to change them
             {
-                child->SetWidth( GetWidth( ) - GetLeftContentMargin( ) - GetRightContentMargin( ) );
-                child->SetHeight( child->GetMinHeight( ) + ( GetHeight( ) - GetMinHeight( ) ) / ( nbrChildren + 1 ) - GetLeftContentMargin( ) );
+                child->SetWidth( GetWidth( )
+                    - GetLeftContentMargin( )
+                    - GetRightContentMargin( ) );
+                child->SetHeight( child->GetMinHeight( )
+                    + ( GetHeight( ) - GetMinHeight( ) ) / ( 2 * nbrChildren )
+                    - GetLeftContentMargin( )
+                    - GetRightContentMargin( ) );
             }
             child->UpdateSizes( );
 
@@ -359,6 +373,8 @@ namespace Design {
 
     NodeStatus Column::ValidateNode( )
     {
+        CheckLayout( );
+
         NodeStatus status = AT_OK;
         if ( !HasChildren( ) )
         {
@@ -399,33 +415,42 @@ namespace Design {
         return status;
     }
 
-    wxString Column::GetTitleLocation( )
+    //*******
+
+    wxString Column::GetStampNameLocation( )
     {
         return GetAttrStr( AT_StampNameLocation );
     }
-    void Column::SetTitleLocation( TitleLocation loc )
-    {
-        SetAttrStr( AT_StampNameLocation, StampTitleLocationStrings[ loc ] );
-    }
 
-    TitleLocation  Column::GetTitleLocationType( )
+    //*******
+
+    // void Column::SetDefaultStampNameLocation( StampNameLocation loc )
+    // {
+    //     SetAttrStr( AT_StampNameLocation, StampNameLocationStrings[ loc ] );
+    // }
+
+    //*******
+
+    StampNameLocation  Column::GetDefaultStampNameLocationType( )
     {
-        TitleLocation loc = FindTitleLocationType( GetAttrStr( AT_StampNameLocation ) );
-        TitleLocation defaultLoc = GetAlbum( )->GetTitleLocationType( );
-        if ( ( loc == defaultLoc ) && ( loc != AT_TitleLocationDefault ) )
+        StampNameLocation loc = FindStampLocationType( GetAttrStr( AT_StampNameLocation ) );
+        StampNameLocation defaultLoc = GetAlbum( )->GetDefaultStampNameLocationType( );
+        if ( ( loc == defaultLoc ) && ( loc != AT_StampNameLocationDefault ) )
         {
-            SetTitleLocationType( AT_TitleLocationDefault );
+            SetDefaultStampNameLocation( AT_StampNameLocationDefault );
         }
         return loc;
     };
 
-    void Column::SetTitleLocationType( TitleLocation loc )
+    //*******
+
+    void Column::SetDefaultStampNameLocation( StampNameLocation loc )
     {
-        TitleLocation defaultLoc = GetAlbum( )->GetTitleLocationType( );
-        if ( ( loc == defaultLoc ) && ( loc != AT_TitleLocationDefault ) )
+        StampNameLocation defaultLoc = GetAlbum( )->GetDefaultStampNameLocationType( );
+        if ( ( loc == defaultLoc ) && ( loc != AT_StampNameLocationDefault ) )
         {
-            loc = AT_TitleLocationDefault;
+            loc = AT_StampNameLocationDefault;
         }
-        SetAttrStr( AT_StampNameLocation, StampTitleLocationStrings[ loc ] );
+        SetAttrStr( AT_StampNameLocation, StampNameLocationStrings[ loc ] );
     };
 }

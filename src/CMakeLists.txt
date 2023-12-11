@@ -1,10 +1,17 @@
 
 configure_file( StampToolConfig.h.in StampToolConfig.h )
 
+<<<<<<< HEAD
 set( wxWidgets_ROOT_DIR "$ENV{WXWIN}" )
 set( wxWidgets_include "$ENV{WXWIN}/include" )
 set( ENV{LD_LIBRARY_PATH} "/usr/local/lib" )
 set( WXPDF_FONTPATH "$ENV{WXPDFDOC}/lib/fonts" )
+=======
+
+find_package( wxWidgets COMPONENTS core base xml net  REQUIRED )
+
+
+>>>>>>> b7d55a44b506ee4d69b50fa6ebf94e1a79ea201a
 set( CMAKE_RUNTIME_OUTPUT_DIRECTORY ${build_Directory} )
 
 message( "wxWidgets_ROOT_DIR ${wxWidgets_ROOT_DIR}")
@@ -41,6 +48,7 @@ add_subdirectory (catalog)
 add_subdirectory (design)
 add_subdirectory (collection)
 add_subdirectory (toc)
+add_subdirectory (thirdparty)
 
 add_executable ( StampTool 
     StampToolApp.cpp
@@ -55,6 +63,7 @@ target_link_libraries (StampTool LINK_PUBLIC debug
      CollectionFiles  
      TOCFiles
      Utils
+     wxPdfDoc
     ${wxWidgets_LIBRARIES}
     )
 

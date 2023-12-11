@@ -180,7 +180,7 @@ void PageDetailsPanel::CreateControls( )
 
     //>>error list ctrls
     wxBoxSizer* itemBoxSizer3 = new wxBoxSizer( wxHORIZONTAL );
-    m_rightColumnVerticalSizer->Add( itemBoxSizer3, 2, wxGROW | wxALL, 0 );
+    m_leftColumnVerticalSizer->Add( itemBoxSizer3, 2, wxGROW | wxALL, 0 );
 
     wxArrayString m_statusListStrings;
     m_statusList = new wxListBox( theDialog, ID_ERRORLISTCTRL, wxDefaultPosition, wxDefaultSize, m_statusListStrings, wxLB_SINGLE );

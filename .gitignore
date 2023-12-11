@@ -2,6 +2,7 @@ build/
 projects/
 sample/
 doc/
+src/wxpdfdoc-main
 .gitignore
 .vscode/tasks.json
 sample/Vatican/2020/en_stamps_csv_list_country_95-Vatican_City_year_2020.cat.bak

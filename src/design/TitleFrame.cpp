@@ -45,20 +45,24 @@ namespace Design {
         delete m_subHeadingFrame;
     };
 
-
-
     void TitleFrame::Draw( wxDC& dc, double x, double y )
     {
         m_headingFrame->Draw( dc, x + GetXPos( ), y + GetYPos( ) );
-        m_subHeadingFrame->Draw( dc, x + GetXPos( ), y + GetYPos( ) );
+        if ( m_parent->GetShowSubTitle( ) )
+        {
+            m_subHeadingFrame->Draw( dc, x + GetXPos( ), y + GetYPos( ) );
+        }
     };
 
     void TitleFrame::DrawPDF( wxPdfDocument* doc, double x, double y )
     {
         m_headingFrame->DrawPDF( doc, x + GetXPos( ), y + GetYPos( ) );
-        m_subHeadingFrame->DrawPDF( doc, x + GetXPos( ), y + GetYPos( ) );
-
+        if ( m_parent->GetShowSubTitle( ) )
+        {
+            m_subHeadingFrame->DrawPDF( doc, x + GetXPos( ), y + GetYPos( ) );
+        }
     };
+
     void TitleFrame::LoadFonts( wxXmlNode* node )
     {
         m_headingFrame->LoadFont( node );
@@ -93,8 +97,7 @@ namespace Design {
         return m_subHeadingFrame->GetString( );
     };
 
-    /// @brief 
-    /// @param str 
+
     void TitleFrame::SetHeadingString( wxString str )
     {
         m_headingFrame->SetString( str );
@@ -107,18 +110,35 @@ namespace Design {
 
     void TitleFrame::UpdateString( double titleWidth, double subTitleWidth )
     {
-        m_headingFrame->UpdateString( titleWidth );
-        m_subHeadingFrame->UpdateString( subTitleWidth );
-        SetHeight( m_headingFrame->GetHeight( ) + m_subHeadingFrame->GetHeight( ) );
-        SetWidth( std::max( titleWidth, subTitleWidth ) );
-        SetMinHeight( m_headingFrame->GetMinHeight( )
-            + m_subHeadingFrame->GetMinHeight( )
-            + GetAlbum( )->GetTopContentMargin( ) );
-        SetMinWidth( std::max( titleWidth, subTitleWidth ) );
-        SetXPos( m_headingFrame->GetXPos( ) );
-        SetYPos( m_headingFrame->GetYPos( ) );
-        m_subHeadingFrame->SetYPos( m_headingFrame->GetHeight( ) );
+        if ( m_parent->GetShowTitle( ) )
+        {
+            m_headingFrame->UpdateString( titleWidth );
 
+            if ( m_parent->GetShowSubTitle( ) )
+            {
+                m_subHeadingFrame->UpdateString( subTitleWidth );
+            }
+            else
+            {
+                m_subHeadingFrame->Init( );
+            }
 
+            // set 2 * subHeading height to allow for spacing between title and subtitle
+            SetMinHeight( m_headingFrame->GetMinHeight( )
+                + 2 * m_subHeadingFrame->GetMinHeight( ) );
+            SetMinWidth( std::max( titleWidth, subTitleWidth ) );
+
+            SetHeight( GetMinHeight( ) );
+            SetWidth( GetMinWidth( ) );
+
+            SetXPos( m_headingFrame->GetXPos( ) );
+            SetYPos( m_headingFrame->GetYPos( ) );
+
+            if ( m_subHeadingFrame->GetHeight( ) > 0 )
+            {
+                m_subHeadingFrame->SetYPos( m_headingFrame->GetHeight( )
+                    + m_subHeadingFrame->GetMinHeight( ) ); //allow for space between title and subtitle
+            }
+        }
     };
 }

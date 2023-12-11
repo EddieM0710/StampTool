@@ -28,6 +28,7 @@
 #include "gui/GuiDefs.h"
 #include <wx/slider.h>
 #include <wx/choice.h>
+#include "wx/notebook.h"
 
 class wxSplitterWindow;
 class wxTreeCtrl;
@@ -80,7 +81,8 @@ public:
         ID_GENERATEPDF,
         ID_DETAILSSCROLLEDWINDOW,
         ID_HORIZONTALALBUMSPLITTERWINDOW1,
-        ID_ALBUMLAYOUTPANEL
+        ID_ALBUMLAYOUTPANEL,
+        ID_LastID
     };
 
 
@@ -100,7 +102,7 @@ public:
 
     wxPanel* CreateDetailsScrolledWindow( wxWindow* parent );
 
-    wxSplitterWindow* CreateImageDetailsSplitterWindow( wxWindow* parent );
+    wxNotebook* CreateImageDetailsSplitterWindow( wxWindow* parent );
 
     AlbumTreePanel* GetAlbumTreePanel( ) {
         return m_albumTreePanel;
@@ -150,7 +152,7 @@ private:
     //TestDetailsPanel* m_testDetailsPanel;
     wxChoice* m_albumListCtrl;
 
-    wxSplitterWindow* m_imageDetailsSplitterWindow;
+    wxNotebook* m_imageDetailsSplitterWindow;
 
     wxPanel* m_detailsScrolledWindow;
 };

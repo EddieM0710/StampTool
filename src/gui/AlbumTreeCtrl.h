@@ -145,7 +145,6 @@ public:
     ///  @return false 
     bool IsOk( )
     {
-        this->m_ok;
         if ( m_ok == 0x12345 )return true;
         return false;
     }

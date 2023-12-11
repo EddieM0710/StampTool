@@ -75,13 +75,17 @@ namespace Design {
 
         void DumpStamp( wxTextCtrl* positionTextCtrl );
 
+        Design::Frame* GetBorderFrame( ){
+
+            return &m_borderFrame;
+        }
         wxString GetCatalogNbr( );
 
         wxString GetCatalog( );
 
         wxString GetCatalogCodes( );
 
-        TitleLocation  GetDefaultTitleLocation( );
+        StampNameLocation  GetDefaultStampNameLocation( );
 
         wxImage GetImage( );
 
@@ -123,12 +127,12 @@ namespace Design {
         };
 
         bool GetShowTitle( ) {
-            return String2Bool( GetAttrStr( AT_ShowTitle ) );
+            return String2Bool( GetAttrStr( AT_ShowTitle ), true );
         };
 
-        bool GetShowSubTitle( ) {
-            return String2Bool( GetAttrStr( AT_ShowSubTitle ) );
-        };
+        // bool GetShowSubTitle( ) {
+        //     return String2Bool( GetAttrStr( AT_ShowSubTitle ) );
+        // };
 
         double GetStampHeight( ) {
             return m_stampFrame.GetHeight( );
@@ -154,7 +158,9 @@ namespace Design {
 
         wxString GetStampWidthStr( );
 
-        TitleLocation  GetTitleLocation( );
+        wxString GetStampNameLocation( );
+
+        StampNameLocation  GetStampNameLocationType( );
 
         void InitParameters( );
 
@@ -172,9 +178,9 @@ namespace Design {
             SetAttrStr( AT_ShowTitle, Bool2String( val ) );
         };
 
-        void SetShowSubTitle( bool val ) {
-            SetAttrStr( AT_ShowSubTitle, Bool2String( val ) );
-        };
+        // void SetShowSubTitle( bool val ) {
+        //     SetAttrStr( AT_ShowSubTitle, Bool2String( val ) );
+        // };
 
         void SetStampMarginStr( wxString str ) {
             return SetAttrStr( Design::AT_StampMargin, str );
@@ -226,7 +232,7 @@ namespace Design {
 
         wxString MakeDisplayNbr( );
 
-        void SetTitleLocation( TitleLocation loc );
+        void SetStampNameLocation( StampNameLocation loc );
 
 
         /**

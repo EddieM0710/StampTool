@@ -143,7 +143,7 @@ public:
 
     wxString GetTopPageMargin( );
 
-    Design::TitleLocation GetDefaultStampNameLocation( )
+    Design::StampNameLocation GetDefaultStampNameLocation( )
     {
         return m_stampNameLocation;
     }
@@ -199,6 +199,8 @@ public:
 
     void OnNameLocationButtonSelected( wxCommandEvent& event );
 
+    void OnAlignmentButtonSelected( wxCommandEvent& event );
+
     void OnCatalogCode( wxCommandEvent& event );
 
     void OnGrayscale( wxCommandEvent& event );
@@ -219,9 +221,9 @@ public:
 
     void OnTitleColorPicker( wxColourPickerEvent& event );
 
-    void OnTopRadioButtonSelected( wxCommandEvent& event );
+    //void OnTopRadioButtonSelected( wxCommandEvent& event );
 
-    void OnBottomRadioButtonSelected( wxCommandEvent& event );
+    //void OnBottomRadioButtonSelected( wxCommandEvent& event );
 
 
     void OnOrientationchoiceSelected( wxCommandEvent& event );
@@ -303,6 +305,8 @@ public:
 
     void SetStampNameLocation( );
 
+    void SetAlignmentMode( );
+
     static bool ShowToolTips( );
 
     void UpdateControls( );
@@ -336,13 +340,17 @@ private:
     wxFontPickerCtrl* m_textFontPicker;
     wxColourPickerCtrl* m_textColorPicker;
 
-    wxStaticBox* m_stampNameLocationBox;
-    wxStaticBoxSizer* m_stampNameLocationVSizer;
-    wxBoxSizer* m_stampNameLocationHSizer;
-    Design::TitleLocation m_stampNameLocation;
+    //wxStaticBox* m_stampNameLocationBox;
+   // wxStaticBoxSizer* m_stampNameLocationVSizer;
+    //wxBoxSizer* m_stampNameLocationHSizer;
+    Design::StampNameLocation m_stampNameLocation;
     wxRadioButton* m_topButton;
     wxRadioButton* m_bottomButton;
 
+    Design::AlignmentMode m_alignmentMode;
+    wxRadioButton* m_alignTop;
+    wxRadioButton* m_alignMiddle;
+    wxRadioButton* m_alignBottom;
     wxTextCtrl* m_catalog;
     wxRadioButton* m_defaultButton;
     wxButton* m_validate;

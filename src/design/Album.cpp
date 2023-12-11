@@ -52,7 +52,7 @@
 
 namespace Design {
 
-    Album::Album( wxXmlNode* node ) : AlbumBase( node )
+    Album::Album(   wxXmlNode* node ) : AlbumBase( node )
     {
         SetNodeType( AT_Album );
         InitParameters( );

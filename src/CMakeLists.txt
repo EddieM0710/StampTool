@@ -1,20 +1,28 @@
 
 configure_file( StampToolConfig.h.in StampToolConfig.h )
 
-set( wxWidgets_ROOT_DIR "/sandbox/Applications/wx/wxWidgets-3.2.2.1" )
-message (" $ENV{LD_LIBRARY_PATH}" )
-#set( ENV{LD_LIBRARY_PATH} "/usr/local/lib:/sandbox/Applications/wx/wxpdfdoc-main/build-gtk" )
+set( wxWidgets_ROOT_DIR "$ENV{WXWIN}" )
+set( wxWidgets_include "$ENV{WXWIN}/include" )
 set( ENV{LD_LIBRARY_PATH} "/usr/local/lib" )
-#set( ENV{WXPDF_FONTPATH} "/sandbox/Applications/wx/wxpdfdoc-main/lib/fonts" )
-set( ENV{WXPDF_FONTPATH} "/sandbox/Applications/wx/wxpdfdoc-main/lib/fonts" )
-message (" LD_LIBRARY_PATH  $ENV{LD_LIBRARY_PATH}" )
-find_package( wxWidgets COMPONENTS core base xml net pdfdoc REQUIRED )
-
-
+set( WXPDF_FONTPATH "$ENV{WXPDFDOC}/lib/fonts" )
 set( CMAKE_RUNTIME_OUTPUT_DIRECTORY ${build_Directory} )
 
-include( "${wxWidgets_USE_FILE}" )
+message( "wxWidgets_ROOT_DIR ${wxWidgets_ROOT_DIR}")
+message( "wxWidgets_include ${wxWidgets_include}")
+
+message( "LD_LIBRARY_PATH  $ENV{LD_LIBRARY_PATH}" )
+message( "WXPDDOC $ENV{WXPDFDOC} ")
+message( "WXPDF_FONTPATH ${WXPDF_FONTPATH} ")
+message( "CMAKE_CURRENT_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}" )
+message( "build_Directory ${build_Directory}" )
+message( "src_Directory ${src_Directory}" )
+
+find_package( wxWidgets COMPONENTS core base xml net REQUIRED )
+message( "wxWidgets_LIBRARIES ${wxWidgets_LIBRARIES}")
 message( "wxWidgets_USE_FILE ${wxWidgets_USE_FILE}")
+
+
+include( "${wxWidgets_USE_FILE}" )
 
 include_directories(  ${StampTool_Source_Directory} 
 ${StampTool_GuiFiles_Source_Directory}
@@ -39,7 +47,6 @@ add_executable ( StampTool
     Defs.cpp
 )
 message ("test-")
-message ("${wxWidgets_LIBRARIES}")
 
 target_link_libraries (StampTool LINK_PUBLIC debug
      GuiFiles  

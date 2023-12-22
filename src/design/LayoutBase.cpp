@@ -42,14 +42,14 @@ namespace Design {
     LayoutBase::LayoutBase( ) : AlbumBase( )
     {
 
-        // SetTitleLocation( Design::AT_StampNameLocationDefault );
+        // SetTitleLocation( Design::AT_StampNamePositionDefault );
 
     };
 
 
     LayoutBase::LayoutBase( wxXmlNode* node ) : AlbumBase( node )
     {
-        // SetTitleLocation( Design::AT_StampNameLocationDefault );
+        // SetTitleLocation( Design::AT_StampNamePositionDefault );
     };
 
 
@@ -139,14 +139,14 @@ namespace Design {
     }
 
 
-    // StampNameLocation LayoutBase::GetTitleLocation( )
+    // StampNamePosition LayoutBase::GetTitleLocation( )
     // {
-    //     if ( m_titleLocation == AT_StampNameLocationDefault )
+    //     if ( m_titleLocation == AT_StampNamePositionDefault )
     //     {
     //         LayoutBase* parent = ( LayoutBase* ) GetParent( );
     //         if ( !parent )
     //         {
-    //             return AT_StampNameLocationBottom;
+    //             return AT_StampNamePositionBottom;
     //         }
     //         return parent->GetTitleLocation( );
     //     }
@@ -187,7 +187,7 @@ namespace Design {
         return false;
     }
 
-    // bool LayoutBase::IsTitleLocation( StampNameLocation loc )
+    // bool LayoutBase::IsTitleLocation( StampNamePosition loc )
     // {
     //     return( GetTitleLocation( ) == loc );
     // }

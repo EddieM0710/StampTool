@@ -119,7 +119,7 @@ wxStaticBox* HelperPanel::SetupBoxSizer( wxWindow* parent, wxBoxSizer* inSizer, 
     wxStaticBox* box = new wxStaticBox( parent, ++lastID, name );
 
     boxSizer = new wxStaticBoxSizer( box, orientation );
-    inSizer->Add( boxSizer, 0, wxGROW | wxALL, 5 );
+    inSizer->Add( boxSizer, 0, wxALL, 5 );
 
     return box;
 }

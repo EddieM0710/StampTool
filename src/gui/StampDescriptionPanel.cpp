@@ -151,7 +151,7 @@ void StampDescriptionPanel::CreateControls( void )
     thisPanel->SetSizer( topVerticalSizer );
 
     wxBoxSizer* topHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
-    topVerticalSizer->Add( topHorizontalSizer, 1, wxGROW | wxALL, 5 );
+    topVerticalSizer->Add( topHorizontalSizer, 1, wxGROW | wxALL, 0 );
 
     wxSplitterWindow* horizontalSplitterWindow = new wxSplitterWindow(
         thisPanel, ID_HORIZONTALLITTERWINDOW, wxDefaultPosition,
@@ -169,7 +169,7 @@ void StampDescriptionPanel::CreateControls( void )
 
     wxBoxSizer* stampAndImageHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
 
-    stampAndImageVerticalSizer->Add( stampAndImageHorizontalSizer, 1, wxGROW | wxALL, 5 );
+    stampAndImageVerticalSizer->Add( stampAndImageHorizontalSizer, 1, wxGROW | wxALL, 0 );
 
     wxSplitterWindow* stampAndImageVerticalSplitterWindow = new wxSplitterWindow(
         stampAndImagePanel, ID_DESCRIPTIONSPLITTERWINDOW, wxDefaultPosition,
@@ -182,14 +182,14 @@ void StampDescriptionPanel::CreateControls( void )
     stampAndImageVerticalSplitterWindow->SetSizer( vSizer );
 
     wxBoxSizer* hSizer = new wxBoxSizer( wxHORIZONTAL );
-    vSizer->Add( hSizer, 1, wxGROW | wxALL, 5 );
+    vSizer->Add( hSizer, 1, wxGROW | wxALL, 0 );
 
 
     m_identificationPanel = new IdentificationPanel(
         stampAndImageVerticalSplitterWindow,
         ID_IDENTIFICATIONPANELFORIEGN, wxDefaultPosition,
         wxDefaultSize, 0 );
-    hSizer->Add( m_identificationPanel, 1, wxGROW | wxALL, 5 );
+    hSizer->Add( m_identificationPanel, 1, wxGROW | wxALL, 0 );
 
     //   wxBoxSizer* identificationPanelVerticalSizer = new wxBoxSizer( wxVERTICAL );
     //   m_identificationPanel->SetSizer( identificationPanelVerticalSizer );
@@ -207,11 +207,11 @@ void StampDescriptionPanel::CreateControls( void )
     StampImagePanel->SetSizer( stampImageVerticalSizer );
 
     wxBoxSizer* stampImageHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
-    stampImageVerticalSizer->Add( stampImageHorizontalSizer, 0, wxGROW | wxALL, 5 );
+    stampImageVerticalSizer->Add( stampImageHorizontalSizer, 0, wxGROW | wxALL, 0 );
 
     wxStaticText* zoomStaticText = new wxStaticText(
         StampImagePanel, wxID_STATIC, _( "Zoom" ), wxDefaultPosition, wxDefaultSize, 0 );
-    stampImageHorizontalSizer->Add( zoomStaticText, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+    stampImageHorizontalSizer->Add( zoomStaticText, 0, wxALIGN_CENTER_VERTICAL | wxALL, 0 );
 
     m_zoomSlider =
         new wxSlider( StampImagePanel, ID_ZOOMSLIDER, 100, 25, 300, wxDefaultPosition,
@@ -224,13 +224,13 @@ void StampDescriptionPanel::CreateControls( void )
     stampImageVerticalSizer->Add( m_stampImage, 1, wxGROW | wxALL, 0 );
 
     stampAndImageVerticalSplitterWindow->SplitVertically( m_identificationPanel, StampImagePanel, 200 );
-    stampAndImageVerticalSizer->Add( stampAndImageVerticalSplitterWindow, 1, wxGROW | wxALL, 5 );
+    stampAndImageVerticalSizer->Add( stampAndImageVerticalSplitterWindow, 1, wxGROW | wxALL, 0 );
 
     m_inventoryPanel = new InventoryPanel( horizontalSplitterWindow, ID_INVENTORYPANEL, wxDefaultPosition,
         wxDefaultSize, wxSIMPLE_BORDER );
 
     horizontalSplitterWindow->SplitHorizontally( stampAndImagePanel, m_inventoryPanel, 500 );
-    topHorizontalSizer->Add( horizontalSplitterWindow, 1, wxGROW | wxALL, 5 );
+    topHorizontalSizer->Add( horizontalSplitterWindow, 1, wxGROW | wxALL, 0 );
 
 
     // // display a random image until one is selected

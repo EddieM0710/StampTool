@@ -38,6 +38,9 @@ namespace Design {
     class AlbumBase;
     class Album;
     class FontList;
+    class PageDefaults;
+    class FrameDefaults;
+    class StampDefaults;
 
     typedef enum
     {
@@ -88,12 +91,13 @@ namespace Design {
         AT_SubTitle,
         AT_MountAllowanceHeight,
         AT_MountAllowanceWidth,
-        AT_StampNameLocation,
+        AT_StampNamePosition,
         AT_StampAlignmentMode,
         AT_StampMargin,
         AT_CollapseState,
         AT_Catalog,
         AT_Catalog_Codes,
+        AT_LayoutType,
         AT_NbrAttrTypes,
         AT_NOTYPE
     } AlbumAttrType;
@@ -117,6 +121,16 @@ namespace Design {
         AT_NbrAlbumTypes,
         AT_None = 999
     } AlbumBaseType;
+
+    typedef enum
+    {
+        LT_Page = 0,
+        LT_Frame,
+        LT_Stamp,
+        LT_Text,
+        NbrLayoutTypes
+    } LayoutType;
+
 
     typedef enum
     {
@@ -159,29 +173,32 @@ namespace Design {
 
     typedef enum
     {
-        AT_StampNameLocationTop,
-        AT_StampNameLocationBottom,
-        AT_StampNameLocationDefault,
-        AT_NbrStampNameLocations
-    } StampNameLocation;
+        AT_StampNamePositionTop,
+        AT_StampNamePositionBottom,
+        AT_NbrStampNamePositions
+    } StampNamePosType;
 
     typedef enum {
         AlignTop = 0,
         AlignMiddle,
         AlignBottom,
-        AlignDefault,
+        //        AlignDefault,
         NbrAlignmentModes
-    } AlignmentMode;
+    } AlignmentModeType;
 
     Album* GetAlbum( void );
+
+    PageDefaults* AlbumPageDefaults( );
+    FrameDefaults* AlbumFrameDefaults( );
+    StampDefaults* AlbumStampDefaults( );
 
     AlbumVolume* GetAlbumVolume( void );
 
     bool IsAlbumBaseTypeValid( AlbumBaseType type );
 
-    StampNameLocation FindStampLocationType( wxString name );
+    StampNamePosType FindStampLocationType( wxString name );
 
-    AlignmentMode FindAlignmentModeType( wxString name );
+    AlignmentModeType FindAlignmentModeType( wxString name );
 
     AlbumAttrType FindAlbumAttrType( wxString name );
 
@@ -212,10 +229,12 @@ namespace Design {
     bool IsPortrait( wxString orientation );
 
     extern wxString AttrNameStrings[ AT_NbrAttrTypes ];
+    extern wxString LayoutTypeStrings[ NbrLayoutTypes ];
+
 
     extern int DefaultPointSize[ AT_NbrFontUsageTypes ];
     extern wxString FontUsageTypeStrings[ AT_NbrFontUsageTypes ];
-    extern wxString StampNameLocationStrings[ AT_NbrStampNameLocations ];
+    extern wxString StampNamePositionStrings[ AT_NbrStampNamePositions ];
     extern wxString StampAlignmentModeStrings[ NbrAlignmentModes ];
 
 }

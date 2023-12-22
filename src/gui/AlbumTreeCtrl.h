@@ -129,6 +129,10 @@ public:
     ///  
     ///  @return Design::AlbumBaseType 
     Design::AlbumBaseType GetType( ) {
+        if ( !IsOk( ) )
+        {
+            int a = 0;
+        }
         return m_type;
     };
 
@@ -136,6 +140,10 @@ public:
     ///  
     ///  @return Utils::StampLink* 
     Utils::StampLink* GetStampLink( ) {
+        if ( !IsOk( ) )
+        {
+            int a = 0;
+        }
         return m_stampLink;
     };
 
@@ -153,6 +161,10 @@ public:
     ///  
     ///  @param desc 
     void SetDesc( wxString desc ) {
+        if ( !IsOk( ) )
+        {
+            int a = 0;
+        }
         m_desc = desc;
     };
 
@@ -160,20 +172,27 @@ public:
     ///  
     ///  @param ele 
     void SetNodeElement( Design::AlbumBase* ele ) {
+        if ( !IsOk( ) )
+        {
+            int a = 0;
+        }
         m_element = ele;
     };
 
     ///  @brief Set the Stamp Link object
     ///  
     ///  @param link 
-    void SetStampLink( Utils::StampLink* link ) {
-        m_stampLink = link;
-    };
+    void SetStampLink( Utils::StampLink* link );
+
 
     ///  @brief Set the Type object
     ///  
     ///  @param type 
     void SetType( Design::AlbumBaseType type ) {
+        if ( !IsOk( ) )
+        {
+            int a = 0;
+        }
         m_type = type;
     };
 
@@ -210,6 +229,12 @@ public:
 
     virtual ~AlbumTreeCtrl( void ) {
         m_OK = 0;
+    }
+
+    bool IsOk( )
+    {
+        if ( m_OK == 0x12345 )return true;
+        return false;
     }
 
     wxTreeItemId AddChild( wxTreeItemId parent, wxXmlNode* child );
@@ -252,6 +277,9 @@ public:
         return m_currentTreeID;
     };
 
+    wxTreeItemId GetPageTreeID( ) {
+        return m_currPageID;
+    };
     Design::IconID GetIconId( Design::Stamp* stamp );
 
     //wxString GetImageFullPath( wxTreeItemId catTreeID );
@@ -336,6 +364,7 @@ public:
     // void ShowStampDetails( wxTreeItemId id );
 
     // void ShowRowDetails( wxTreeItemId id, Design::AlbumBase* node );
+    void Update( );
 
     void UpdateItemPageLayout( wxTreeItemId id );
 
@@ -355,12 +384,7 @@ public:
 
 private:
     int m_OK;
-    /**
-     * @brief
-     *
-     * @param  name
-     * @param  event
-     */
+
     void LogEvent( const wxString& name, const wxTreeEvent& event );
 
     int m_imageSize;            // current size of images

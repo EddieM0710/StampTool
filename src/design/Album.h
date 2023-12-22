@@ -29,11 +29,14 @@
 #include "design/AlbumBase.h"
 #include "design/DesignDefs.h"
  //#include "utils/Project.h"
-//#include "utils/FontNdx.h"
+#include "design/PageDefaults.h"
+#include "design/FrameDefaults.h"
+#include "design/StampDefaults.h"
 #include <wx/pdfdc.h>
 
 
 namespace Design {
+
 
     /**
      * @brief Album layout object; inherits from LayoutBase.
@@ -50,6 +53,7 @@ namespace Design {
         ~Album( ) { };
 
         void InitParameters( );
+        void SetHardDefaults( );
 
         wxString DrawPDF( );
 
@@ -57,25 +61,12 @@ namespace Design {
 
         void DumpLayout( );
 
-        double GetBorderSize( );
 
-        wxString GetBorderSizeStr( );
-
-        void SetBorderSize( wxString str );
-
-        //void SetBorderFilename( wxString str );
-
-        wxString GetBorderFileName( );
-
-        void SetBorderFilename( wxString filename );
 
         wxString GetCatalog( );
 
         wxColour GetColor( FontUsageType fontType );
 
-        wxString GetDefaultValStr( AlbumAttrType type );
-
-        double GetDefaultVal( AlbumAttrType type );
 
         wxString GetDocName( );
 
@@ -85,76 +76,13 @@ namespace Design {
 
         int GetFontNdxPreference( FontUsageType fontType );
 
-        bool GetGrayScaleImages( ) {
-            return String2Bool( GetAttrStr( AT_GrayScaleImages ) );
-        };
 
-        double GetHeight( );
-
-        double GetLeftPageMargin( );
-
-        wxString GetLeftPageMarginStr( );
-
-        double GetPageHeight( );
-
-        wxString GetPageHeightStr( );
-
-        wxString GetPaperHeightStr( );
-
-        void GetPageParameters( wxString& width, wxString& height, wxString& topPageMargin,
-            wxString& bottomPageMargin, wxString& rightPageMargin, wxString& leftPageMargin );
-
-        double GetPageWidth( );
-
-        wxString GetPageWidthStr( );
-
-        double GetPaperWidth( );
-
-        wxString GetPaperWidthStr( );
-
-        double GetPaperHeight( );
-
-        double GetRightPageMargin( );
-
-        wxString GetRightPageMarginStr( );
-
-        bool GetShowNbr( ) {
-            return String2Bool( GetAttrStr( AT_ShowCatNbr ) );
-        };
-
-        wxString GetStampNameLocation( );
-
-        StampNameLocation  GetDefaultStampNameLocationType( );
-
-        Design::AlignmentMode  GetAlignmentModeType( );
-
-        //wxString GetAlignmentMode( );
-
-        double GetTopPageMargin( );
-
-        wxString GetTopPageMarginStr( );
-
-        double GetBottomPageMargin( );
-
-        wxString GetBottomPageMarginStr( );
-
-        bool GetShowTitle( ) {
-            return String2Bool( GetAttrStr( AT_ShowTitle ) );
-        };
-
-        bool GetShowSubTitle( ) {
-            return String2Bool( GetAttrStr( AT_ShowSubTitle ) );
-        };
-
-        bool GetOverSizePaper( ) {
-            return String2Bool( GetAttrStr( AT_OverSizePaper ) );
-        };
-
-        double GetWidth( );
 
         bool IsDefaultFont( FontUsageType fontType, int ndx );
 
         void LoadFonts( wxXmlNode* node );
+
+        void LoadDefaults( wxXmlNode* node );
 
         void MakeAlbum( );
 
@@ -174,50 +102,6 @@ namespace Design {
 
         void SetFontNdx( FontUsageType fontType, int ndx );
 
-        void SetGrayScaleImages( bool val = true ) {
-            SetAttrStr( AT_GrayScaleImages, Bool2String( val ) );
-        };
-
-        void SetLeftPageMargin( wxString str );
-
-        void SetPageHeight( wxString str );
-
-        void SetPageWidth( wxString str );
-
-        void SetPaperHeight( wxString str );
-
-        void SetPaperWidth( wxString str );
-
-        void SetRightPageMargin( wxString str );
-
-        void SetBottomPageMargin( wxString str );
-
-        void SetTopPageMargin( wxString str );
-
-        void SetShowTitle( bool val ) {
-            SetAttrStr( AT_ShowTitle, Bool2String( val ) );
-        };
-
-        void SetShowSubTitle( bool val ) {
-            SetAttrStr( AT_ShowSubTitle, Bool2String( val ) );
-        };
-
-        void SetOverSizePaper( bool val ) {
-            SetAttrStr( AT_OverSizePaper, Bool2String( val ) );
-        };
-
-
-        void SetShowNbr( bool val ) {
-            SetAttrStr( AT_ShowCatNbr, Bool2String( val ) );
-        };
-
-        void SetDefaultStampNameLocation( StampNameLocation loc );
-
-        void SetDefaultStampNameLocationType( StampNameLocation loc );
-
-        void SetAlignmentMode( AlignmentMode loc );
-
-        void SetAlignmentModeType( AlignmentMode loc );
 
         /**
          * @brief UpdateMinimumSize drills down to the lowest layout object with an actual size
@@ -237,20 +121,17 @@ namespace Design {
 
         NodeStatus ValidateNode( );
 
-        wxString GetDefaultOrientation( ) {
-            return GetAttrStr( Design::AT_Orientation );
-        };
 
-        void SetDefaultOrientation( wxString orientation )
-        {
-            SetAttrStr( Design::AT_Orientation, orientation );
+        PageDefaults* AlbumPageDefaults( ) {
+            return &m_pageDefaults;
         };
-
-        bool IsDefaultOrientation( wxString orientation )
-        {
-            return ( !orientation.Cmp( GetAttrStr( Design::AT_Orientation ) ) );
+        FrameDefaults* AlbumFrameDefaults( ) {
+            return &m_frameDefaults;
         };
-
+        StampDefaults* AlbumStampDefaults( ) {
+            return &m_stampDefaults;
+        };
+        void FixupNode( );
     private:
 
         int DefaultFonts[ AT_NbrFontUsageTypes ];
@@ -259,7 +140,10 @@ namespace Design {
         const double m_defaultSelvageWidth = 0;
         const double m_defaultMountAllowanceHeight = 5;
         const double m_defaultMountAllowanceWidth = 4;
-        //  PageOrientation m_defaultOrientation;
+
+        PageDefaults m_pageDefaults;
+        FrameDefaults m_frameDefaults;
+        StampDefaults m_stampDefaults;
 
     };
 }

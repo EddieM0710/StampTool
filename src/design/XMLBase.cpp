@@ -129,7 +129,7 @@ namespace Design {
         {
             return attr->GetValue( );
         }
-        return wxString( "" );
+        return wxT( "" );
     }
 
     //--------------

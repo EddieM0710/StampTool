@@ -90,6 +90,15 @@ wxColour ItemBackgroundColour[ 3 ] = { wxNullColour, *wxYELLOW, *wxRED };
 
 //--------------
 
+void DesignTreeItemData::SetStampLink( Utils::StampLink* link ) {
+    if ( !IsOk( ) )
+    {
+        int a = 0;
+    }
+    m_stampLink = link;
+};
+
+
 AlbumTreeCtrl::AlbumTreeCtrl( wxWindow* parent, const wxWindowID id,
     const wxPoint& pos, const wxSize& size,
     long style )
@@ -159,6 +168,7 @@ void AlbumTreeCtrl::UpdateAlbumStampEntries( wxTreeItemId treeID )
 }
 //--------------
 
+
 // AddChild adds wxXmlNode as a item in the tree.  It is recursively called to
 // create sort nodes as necessary to find the proper place for the child
 wxTreeItemId AlbumTreeCtrl::AddChild( wxTreeItemId parent, wxXmlNode* child )
@@ -193,6 +203,7 @@ wxTreeItemId AlbumTreeCtrl::AddChild( wxTreeItemId parent, wxXmlNode* child )
                 if ( nodeType == Design::AT_Album )
                 {
                     GetAlbumVolume( )->SetAlbum( ( Design::Album* ) node );
+                    ( ( Design::Album* ) node )->FixupNode( );
                 }
                 label = name;
                 wxString title = node->GetAttrStr( Design::AT_Name );
@@ -484,6 +495,9 @@ Design::Stamp* AlbumTreeCtrl::CreateNewStamp( wxTreeItemId catTreeID )
         newStamp->SetStampHeight( stamp.GetHeight( ) );
         newStamp->SetStampWidth( stamp.GetWidth( ) );
         newStamp->SetStampImageFilename( stamp.FindImageName( ) );
+        newStamp->SetShowTitle( newStamp->GetShowTitle( ) );
+        newStamp->SetShowNbr( newStamp->GetShowNbr( ) );
+
     }
     else
     {
@@ -986,16 +1000,15 @@ void AlbumTreeCtrl::OnSelChanged( wxTreeEvent& event )
 
     Design::AlbumBase* albumBase = ( Design::AlbumBase* ) GetItemNode( itemId );
     GetFrame( )->GetAlbumPanel( )->ShowDetails( albumBase );
-
+    bool status1 = itemId.IsOk( );
     wxTreeItemId pageId = GetPage( itemId );
+    bool status2 = pageId.IsOk( );
     if ( pageId.IsOk( ) )
     {
-        {
-
-            m_currPageID = pageId;
-            MakePage( pageId );
-            GetAlbumImagePanel( )->Refresh( );
-        }
+        m_currPageID = pageId;
+        bool status3 = m_currPageID.IsOk( );
+        MakePage( pageId );
+        GetAlbumImagePanel( )->Refresh( );
     }
     else
     {
@@ -1151,7 +1164,7 @@ void AlbumTreeCtrl::SetItemStampLink( wxTreeItemId albumID, Utils::StampLink* li
     if ( albumID.IsOk( ) )
     {
         DesignTreeItemData* data = ( DesignTreeItemData* ) GetItemData( albumID );
-        if ( data )
+        if ( data->IsOk( ) )
         {
             data->SetStampLink( link );
         }
@@ -1380,6 +1393,19 @@ void AlbumTreeCtrl::ShowMenu( wxTreeItemId id, const wxPoint& pt )
 //     return;
 
 //     }
+void AlbumTreeCtrl::Update( )
+{
+
+    //update layout
+    UpdateItemPageLayout( m_currPageID );
+
+    //force a repaint of the current page
+    GetAlbumImagePanel( )->Refresh( );
+
+    // Design::NodeStatus status = stamp->ValidateNode( );
+
+     //SetItemBackgroundColour( treeID, ItemBackgroundColour[ status ] );
+}
 
 // //--------------
 
@@ -1533,7 +1559,7 @@ Design::NodeStatus  AlbumTreeCtrl::UpdateTreeItem( wxTreeItemId childID, Design:
     wxTreeItemId  pageID = GetPage( childID );
     Design::Page* page = ( Design::Page* ) GetItemNode( pageID );
     page->Init( );
-    page->SetBorderFilename( Design::GetAlbum( )->GetBorderFileName( ) );
+    page->SetBorderFilename( Design::AlbumPageDefaults( )->BorderFilename( ) );
     page->UpdateMinimumSize( );
     page->UpdateSizes( );
     page->UpdatePositions( );

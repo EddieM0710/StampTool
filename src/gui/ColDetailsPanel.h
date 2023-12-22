@@ -132,7 +132,7 @@ public:
     ///  
     ///  @return true 
     ///  @return false 
-    bool GetShowFrame( );
+    bool GetShow( );
 
     ///  @brief Get the Title Font object
     ///  
@@ -167,12 +167,6 @@ public:
 
     void OnFrameCheckboxClick( wxCommandEvent& event );
 
-    void OnTopRadioButtonSelected( wxCommandEvent& event );
-
-    ///  @brief 
-    ///  
-    ///  @param event 
-    void OnBottomRadioButtonSelected( wxCommandEvent& event );
 
     ///  @brief 
     ///  
@@ -215,7 +209,7 @@ public:
     ///  @brief Set the Show Frame object
     ///  
     ///  @param state 
-    void SetShowFrame( bool state = false );
+    void SetShow( bool state = false );
 
     ///  @brief Set the Title Color object
     ///  
@@ -230,7 +224,7 @@ public:
     ///  @brief Set the Title Layout Location object
     ///  
     void SetTitleLocation( );
-    Design::StampNameLocation  GetTitleLocation( );
+    Design::StampNamePosType  GetTitleLocation( );
 
     ///  @brief 
     ///  
@@ -281,12 +275,7 @@ private:
     wxTextCtrl* positionTextCtrl;
     Design::Column* m_col;
     wxTreeItemId m_designTreeID;
-    wxStaticBox* m_TitleLocationBox;
-    wxStaticBoxSizer* m_titleLocationVSizer;
-    wxBoxSizer* m_titleLocationHSizer;
-    Design::StampNameLocation m_titleLocation;
-    wxRadioButton* m_topButton;
-    wxRadioButton* m_bottomButton;
+
 
     wxRadioButton* m_defaultButton;
     wxRadioButton* m_positionCalculated;

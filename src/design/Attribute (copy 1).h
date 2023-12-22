@@ -51,7 +51,7 @@ namespace Design {
          * @param name
          * @param value
          */
-        Attribute( const wxString name, const wxString value ) {
+        Attribute( const char* name, const char* value ) {
             SetName( name );
             SetValue( value );
         };
@@ -59,8 +59,8 @@ namespace Design {
         ///  @brief Destroy the Attribute object
         ///  
         ~Attribute( ) {
-            // delete m_name;
-             //delete m_value;
+            delete m_name;
+            delete m_value;
         };
 
         /**
@@ -68,26 +68,23 @@ namespace Design {
          *
          * @return wxString
          */
-        inline wxString GetName( ) {
-            return m_name;
-        };
+        inline char* GetName( ) { return m_name; };
 
         /**
          * @brief Get the attributes Value
          *
          * @return wxString
          */
-        inline wxString GetValue( ) {
-            return m_value;
-        };
+        inline char* GetValue( ) { return m_value; };
 
         /**
          * @brief Set the attribute Name
          *
          * @param name
          */
-        inline void SetName( const wxString name ) {
-            m_name = name;
+        inline void SetName( const char* name ) {
+            m_name = ( char* ) malloc( strlen( name ) + 1 );
+            strcpy( m_name, name );
         };
 
         /**
@@ -95,13 +92,14 @@ namespace Design {
          *
          * @param value
          */
-        inline void SetValue( const wxString value ) {
-            m_value = value;
+        inline void SetValue( const char* value ) {
+            m_value = ( char* ) malloc( strlen( value ) + 1 );
+            strcpy( m_value, value );
         };
 
     private:
-        wxString m_name;
-        wxString m_value;
+        char* m_name;
+        char* m_value;
     };
 
     typedef std::vector<Attribute*> LayoutAttributeArray;

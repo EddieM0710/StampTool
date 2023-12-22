@@ -124,22 +124,65 @@ void PageDetailsPanel::CreateControls( )
     wxBoxSizer* detailsHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
     theDialog->SetSizer( detailsHorizontalSizer );
 
-    m_leftColumnVerticalSizer = new wxBoxSizer( wxVERTICAL );
-    detailsHorizontalSizer->Add( m_leftColumnVerticalSizer, 1, wxGROW | wxALL, 0 );
-
-    wxBoxSizer* m_rightColumnVerticalSizer = new wxBoxSizer( wxVERTICAL );
-    detailsHorizontalSizer->Add( m_rightColumnVerticalSizer, 1, wxGROW | wxALL, 0 );
 
 
     int lastID = ID_LastID;
 
-    m_titleHelper = SetupTitleHelper( theDialog, m_leftColumnVerticalSizer, lastID, DefaultTitleHelperStyle,
+    wxNotebook* focusNotebook = new wxNotebook( theDialog, ++lastID,
+        wxDefaultPosition, wxDefaultSize, wxBK_LEFT );
+    focusNotebook->SetPadding( wxSize( 1, 1 ) );
+    detailsHorizontalSizer->Add( focusNotebook, 1, wxGROW | wxALL, 5 );
+
+    wxPanel* commonPanel = new wxPanel( focusNotebook, ++lastID, wxDefaultPosition,
+        wxDefaultSize, wxTAB_TRAVERSAL );
+    commonPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
+
+    wxBoxSizer* commonHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
+    commonPanel->SetSizer( commonHorizontalSizer );
+
+
+    wxBoxSizer* leftCommonVerticalSizer = new wxBoxSizer( wxVERTICAL );
+    commonHorizontalSizer->Add( leftCommonVerticalSizer, 1, wxGROW | wxALL, 0 );
+
+    wxBoxSizer* middleCommonVerticalSizer = new wxBoxSizer( wxVERTICAL );
+    commonHorizontalSizer->Add( middleCommonVerticalSizer, 1, wxGROW | wxALL, 0 );
+
+    wxBoxSizer* rightCommonVerticalSizer = new wxBoxSizer( wxVERTICAL );
+    commonHorizontalSizer->Add( rightCommonVerticalSizer, 1, wxGROW | wxALL, 0 );
+
+
+    focusNotebook->AddPage( commonPanel, _( "Basic" ) );
+
+
+
+    wxPanel* advancedPanel = new wxPanel( focusNotebook, ++lastID, wxDefaultPosition,
+        wxDefaultSize, wxTAB_TRAVERSAL );
+    advancedPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
+
+    wxBoxSizer* advancedHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
+    advancedPanel->SetSizer( advancedHorizontalSizer );
+
+
+    wxBoxSizer* leftAdvancedVerticalSizer = new wxBoxSizer( wxVERTICAL );
+    advancedHorizontalSizer->Add( leftAdvancedVerticalSizer, 1, wxGROW | wxALL, 0 );
+
+    wxBoxSizer* middleAdvancedVerticalSizer = new wxBoxSizer( wxVERTICAL );
+    advancedHorizontalSizer->Add( middleAdvancedVerticalSizer, 1, wxGROW | wxALL, 0 );
+
+    wxBoxSizer* rightAdvancedVerticalSizer = new wxBoxSizer( wxVERTICAL );
+    advancedHorizontalSizer->Add( rightAdvancedVerticalSizer, 1, wxGROW | wxALL, 0 );
+
+    focusNotebook->AddPage( advancedPanel, _( "Special" ) );
+
+
+
+    m_titleHelper = SetupTitleHelper( commonPanel, leftCommonVerticalSizer, lastID, DefaultTitleHelperStyle,
         wxCommandEventHandler( PageDetailsPanel::OnTitleCheckboxClick ),
         wxCommandEventHandler( PageDetailsPanel::OnTitleTextChanged ),
         wxCommandEventHandler( PageDetailsPanel::OnSubTitleCheckboxClick ),
         wxCommandEventHandler( PageDetailsPanel::OnSubTitleTextChanged ) );
 
-    SetupFontPicker( theDialog, m_leftColumnVerticalSizer, lastID,
+    SetupFontPicker( advancedPanel, leftAdvancedVerticalSizer, lastID,
         _( "Title" ), _( "Default" ),
         m_titleFontPicker, m_titleColorPicker,
         wxFontPickerEventHandler( PageDetailsPanel::OnTitleFontPicker ),
@@ -147,7 +190,7 @@ void PageDetailsPanel::CreateControls( )
         wxCommandEventHandler( PageDetailsPanel::OnTitleDefaultClick ) );
 
 
-    SetupFontPicker( theDialog, m_leftColumnVerticalSizer, lastID,
+    SetupFontPicker( advancedPanel, leftAdvancedVerticalSizer, lastID,
         _( "SubTitle" ), _( "Default" ),
         m_subTitleFontPicker, m_subTitleColorPicker,
         wxFontPickerEventHandler( PageDetailsPanel::OnSubTitleFontPicker ),
@@ -160,7 +203,7 @@ void PageDetailsPanel::CreateControls( )
 
 
     wxArrayString m_orientationChoiceStrings( 2, Design::OrientationStrings );
-    m_orientationChoice = SetupChoice( theDialog, m_leftColumnVerticalSizer, ++lastID,
+    m_orientationChoice = SetupChoice( commonPanel, middleCommonVerticalSizer, ++lastID,
         _( "Orientation:" ), m_orientationChoiceStrings,
         wxCommandEventHandler( PageDetailsPanel::OnOrientationchoiceSelected ) );
     m_orientationChoice->SetSelection( Design::AT_Portrait );
@@ -180,10 +223,10 @@ void PageDetailsPanel::CreateControls( )
 
     //>>error list ctrls
     wxBoxSizer* itemBoxSizer3 = new wxBoxSizer( wxHORIZONTAL );
-    m_leftColumnVerticalSizer->Add( itemBoxSizer3, 2, wxGROW | wxALL, 0 );
+    rightCommonVerticalSizer->Add( itemBoxSizer3, 2, wxGROW | wxALL, 0 );
 
     wxArrayString m_statusListStrings;
-    m_statusList = new wxListBox( theDialog, ID_ERRORLISTCTRL, wxDefaultPosition, wxDefaultSize, m_statusListStrings, wxLB_SINGLE );
+    m_statusList = new wxListBox( commonPanel, ID_ERRORLISTCTRL, wxDefaultPosition, wxDefaultSize, m_statusListStrings, wxLB_SINGLE );
     //m_statusList = new wxListBox( theDialog, ID_ERRORLISTCTRL, wxDefaultPosition, wxSize( 100, 100 ), wxLC_REPORT | wxLC_EDIT_LABELS | wxSIMPLE_BORDER );
     itemBoxSizer3->Add( m_statusList, 2, wxGROW | wxALL, 0 );
     Layout( );
@@ -198,7 +241,7 @@ void PageDetailsPanel::UpdateControls( )
     SetTitleColor( m_page->GetTitleFrame( )->GetHeadingColor( ) );
     SetSubTitleFont( m_page->GetTitleFrame( )->GetSubHeadingFont( ) );
     SetSubTitleColor( m_page->GetTitleFrame( )->GetSubHeadingColor( ) );
-    SetOrientation( m_page->GetOrientation( ) );
+    SetOrientation( m_page->Orientation( ) );
     SetShowTitle( m_page->GetShowTitle( ) );
     SetShowSubTitle( m_page->GetShowSubTitle( ) );
 
@@ -291,7 +334,7 @@ void PageDetailsPanel::SetShowSubTitle( bool state )
     m_titleHelper->subTitleCheckbox->SetValue( state );
     UpdateSubTitleState( m_titleHelper );
 };
-void PageDetailsPanel::SetShowFrame( bool state )
+void PageDetailsPanel::SetShow( bool state )
 {
     m_frameCheckbox->SetValue( state );
 };
@@ -305,7 +348,7 @@ bool PageDetailsPanel::GetShowSubTitle( )
     return m_titleHelper->subTitleCheckbox->IsChecked( );
 };;
 
-bool PageDetailsPanel::GetShowFrame( )
+bool PageDetailsPanel::GetShow( )
 {
     return m_frameCheckbox->IsChecked( );
 };
@@ -327,7 +370,7 @@ void PageDetailsPanel::OnTitleDefaultClick( wxCommandEvent& event )
 
 void PageDetailsPanel::OnOrientationchoiceSelected( wxCommandEvent& event )
 {
-    m_page->SetOrientation( Design::OrientationStrings[ m_orientationChoice->GetSelection( ) ] );
+    m_page->Orientation( Design::OrientationStrings[ m_orientationChoice->GetSelection( ) ] );
     ////@begin wxEVT_COMMAND_CHOICE_SELECTED event handler for ID_ORIENTATIONCHOICE in PageDetailsPanel.
         // Before editing this code, remove the block markers.
     event.Skip( );
@@ -363,6 +406,7 @@ void PageDetailsPanel::OnTitleCheckboxClick( wxCommandEvent& event )
 {
     m_page->SetShowTitle( m_titleHelper->titleCheckbox->GetValue( ) );
     UpdateTitleState( m_titleHelper );
+    GetAlbumTreeCtrl( )->GetCurrentTreeID( );
     m_leftColumnVerticalSizer->Layout( );
 }
 

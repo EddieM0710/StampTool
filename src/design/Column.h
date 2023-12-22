@@ -58,6 +58,16 @@ namespace Design {
 
         void SetSubTitleString( wxString str );
 
+        bool GetShowNbr( ) {
+            return false;
+        };
+
+        bool GetShowTitle( ) {
+            return String2Bool( GetAttrStr( AT_ShowTitle ) );
+        };
+        bool GetShowSubTitle( ) {
+            return String2Bool( GetAttrStr( AT_ShowSubTitle ) );
+        };
 
         TitleFrame* GetTitleFrame( );
 
@@ -92,6 +102,18 @@ namespace Design {
 
         void SetTitleString( wxString str );
 
+
+        void SetShowTitle( bool val ) {
+            SetAttrStr( AT_ShowTitle, Bool2String( val ) );
+        };
+
+        void SetShowSubTitle( bool val ) {
+            SetAttrStr( AT_ShowSubTitle, Bool2String( val ) );
+        };
+
+        void SetShowNbr( bool val ){};
+
+
         /**
          * @brief UpdateMinimumSize
          * Calculates the minimum Height and width of the object. It drills down to
@@ -117,13 +139,13 @@ namespace Design {
 
         NodeStatus ValidateNode( );
 
-        void SetDefaultStampNameLocation( StampNameLocation loc );
+        //      void SetDefaultStampNamePosition( StampNamePosType loc );
 
-        wxString GetStampNameLocation( );
+        //      wxString GetStampNamePosition( );
 
-        StampNameLocation  GetDefaultStampNameLocationType( );
+        StampNamePosType  GetDefaultStampNamePositionType( );
 
-        void SetDefaultStampNameLocationType( StampNameLocation loc );
+        //     void SetDefaultStampNamePositionType( StampNamePosType loc );
 
     private:
         // bool m_showTitle;

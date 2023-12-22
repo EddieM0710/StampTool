@@ -47,9 +47,6 @@ IMPLEMENT_DYNAMIC_CLASS( ColDetailsPanel, HelperPanel )
 
 BEGIN_EVENT_TABLE( ColDetailsPanel, HelperPanel )
 EVT_BUTTON( wxID_OK, ColDetailsPanel::OnOkClick )
-EVT_RADIOBUTTON( ID_DEFAULTRADIOBUTTON, ColDetailsPanel::OnDefaultRadioButtonSelected )
-EVT_RADIOBUTTON( ID_TOPRADIOBUTTON, ColDetailsPanel::OnTopRadioButtonSelected )
-EVT_RADIOBUTTON( ID_BOTTOMRADIOBUTTON, ColDetailsPanel::OnBottomRadioButtonSelected )
 //EVT_BUTTON( ID_COLDEFAULTFONTBUTTON, ColDetailsPanel::OnTitleDefaultClick )
 
 END_EVENT_TABLE( )
@@ -176,26 +173,6 @@ void ColDetailsPanel::CreateControls( )
     //     wxCommandEventHandler( ColDetailsPanel::OnSubTitleCheckboxClick ) );
     //@@@
 
-    m_TitleLocationBox = new wxStaticBox( theDialog, wxID_ANY, _( "Member Title Location" ) );
-    m_titleLocationVSizer = new wxStaticBoxSizer( m_TitleLocationBox, wxVERTICAL );
-    m_dialogVerticalSizer->Add( m_titleLocationVSizer, 1, wxGROW | wxALL, 5 );
-
-    m_titleLocationHSizer = new wxBoxSizer( wxHORIZONTAL );
-    m_titleLocationVSizer->Add( m_titleLocationHSizer, 1, wxGROW | wxALL, 0 );
-
-    m_defaultButton = new wxRadioButton( m_titleLocationVSizer->GetStaticBox( ), ID_DEFAULTRADIOBUTTON, _( "Default" ), wxDefaultPosition, wxDefaultSize, 0 );
-    m_defaultButton->SetValue( false );
-    m_titleLocationHSizer->Add( m_defaultButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
-
-    m_topButton = new wxRadioButton( m_titleLocationVSizer->GetStaticBox( ), ID_TOPRADIOBUTTON, _( "Top" ), wxDefaultPosition, wxDefaultSize, 0 );
-    m_topButton->SetValue( true );
-    m_titleLocationHSizer->Add( m_topButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
-
-    m_bottomButton = new wxRadioButton( m_titleLocationVSizer->GetStaticBox( ), ID_BOTTOMRADIOBUTTON, _( "Bottom" ), wxDefaultPosition, wxDefaultSize, 0 );
-    m_bottomButton->SetValue( false );
-    m_titleLocationHSizer->Add( m_bottomButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
-
-
 
     wxStaticBox* memberPositionStaticBox = new wxStaticBox( theDialog, wxID_ANY, _( "Member Position" ) );
     wxStaticBoxSizer* memberPositionStaticBoxSizer = new wxStaticBoxSizer( memberPositionStaticBox, wxHORIZONTAL );
@@ -230,36 +207,8 @@ void ColDetailsPanel::CreateControls( )
 
 }
 
-//--------------
-Design::StampNameLocation  ColDetailsPanel::GetTitleLocation( )
-{
-    if ( m_topButton->GetValue( ) )
-    {
-        return Design::AT_StampNameLocationTop;
-    }
-    if ( m_bottomButton->GetValue( ) )
-    {
-        return Design::AT_StampNameLocationBottom;
-    }
-    return Design::AT_StampNameLocationDefault;
-}
 
-void ColDetailsPanel::SetTitleLocation( )
-{
-    Design::StampNameLocation titleLocation = m_col->GetDefaultStampNameLocationType( );
-    if ( titleLocation == Design::AT_StampNameLocationTop )
-    {
-        m_topButton->SetValue( true );
-    }
-    else if ( titleLocation == Design::AT_StampNameLocationBottom )
-    {
-        m_bottomButton->SetValue( true );
-    }
-    else //if ( titleLocation == Design::AT_StampNameLocationDefault )
-    {
-        m_defaultButton->SetValue( true );;
-    }
-}
+
 
 //--------------
 
@@ -269,10 +218,10 @@ void ColDetailsPanel::UpdateControls( )
     //SetTitle ( m_col->GetTitleString ( ) );
     SetShowTitle( m_col->GetShowTitle( ) );
     SetShowSubTitle( m_col->GetShowSubTitle( ) );
-    SetShowFrame( m_col->GetShowFrame( ) );
+    SetShow( m_col->GetShow( ) );
     SetTitleFont( m_col->GetTitleFrame( )->GetHeadingFont( ) );
     SetTitleColor( m_col->GetTitleFrame( )->GetHeadingColor( ) );
-    //   m_col->GetDefaultStampNameLocationType( );
+    //   m_col->GetDefaultStampNamePositionType( );
 }
 
 
@@ -304,7 +253,7 @@ bool ColDetailsPanel::GetShowSubTitle( ) {
 
 //--------------
 
-bool ColDetailsPanel::GetShowFrame( ) {
+bool ColDetailsPanel::GetShow( ) {
     return m_frameCheckbox->IsChecked( );
 };
 
@@ -323,7 +272,7 @@ void ColDetailsPanel::SetShowSubTitle( bool state ) {
 
 //--------------
 
-void ColDetailsPanel::SetShowFrame( bool state ) {
+void ColDetailsPanel::SetShow( bool state ) {
     m_frameCheckbox->SetValue( state );
 };
 
@@ -362,12 +311,11 @@ void ColDetailsPanel::OnOkClick( wxCommandEvent& event )
 
     // m_col->SetTitleString ( GetTitle ( ) );
 
-    m_col->SetShowFrame( GetShowFrame( ) );
+    m_col->SetShow( GetShow( ) );
     m_col->SetShowTitle( GetShowTitle( ) );
     m_col->SetShowSubTitle( GetShowSubTitle( ) );
 
     m_col->GetTitleFrame( )->SetHeadingFont( GetTitleFont( ), GetTitleColor( ) );
-    // m_col->SetTitleLocation( m_titleLocation );
     m_col->SetCalculateSpacing( CalculateSpacing( ) );
     m_col->SetFixedSpacingSize( GetFixedSpacing( ) );
 
@@ -375,34 +323,12 @@ void ColDetailsPanel::OnOkClick( wxCommandEvent& event )
 
 }
 
-//--------------
-
-void ColDetailsPanel::OnBottomRadioButtonSelected( wxCommandEvent& event )
-{
-    m_titleLocation = Design::AT_StampNameLocationBottom;
-    event.Skip( );
-
-}
-
-//--------------
-
-void ColDetailsPanel::OnDefaultRadioButtonSelected( wxCommandEvent& event )
-{
-    m_titleLocation = Design::AT_StampNameLocationDefault;
-    event.Skip( );
-}
 
 //--------------
 
 void ColDetailsPanel::OnFrameCheckboxClick( wxCommandEvent& event )
 {
-    m_col->SetShowFrame( m_frameCheckbox->GetValue( ) );
-}
-
-void ColDetailsPanel::OnTopRadioButtonSelected( wxCommandEvent& event )
-{
-    m_titleLocation = Design::AT_StampNameLocationTop;
-    event.Skip( );
+    m_col->SetShow( m_frameCheckbox->GetValue( ) );
 }
 
 //--------------

@@ -125,14 +125,14 @@ public:
     wxString GetSubTitle( );
     void SetShowTitle( bool state = false );
     void SetShowSubTitle( bool state = false );
-    void SetShowFrame( bool state = false );
+    void SetShow( bool state = false );
     void SetTitleColor( wxColour color );
     void SetTitleFont( wxFont font );
     void SetSubTitleColor( wxColour color );
     void SetSubTitleFont( wxFont font );
     bool GetShowTitle( );
     bool GetShowSubTitle( );
-    bool GetShowFrame( );
+    bool GetShow( );
 
     void OnOrientationchoiceSelected( wxCommandEvent& event );
     wxString GetOrientation( ) {

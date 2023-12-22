@@ -2,12 +2,17 @@
 configure_file( StampToolConfig.h.in StampToolConfig.h )
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 set( wxWidgets_ROOT_DIR "$ENV{WXWIN}" )
 set( wxWidgets_include "$ENV{WXWIN}/include" )
 set( ENV{LD_LIBRARY_PATH} "/usr/local/lib" )
 set( WXPDF_FONTPATH "$ENV{WXPDFDOC}/lib/fonts" )
 =======
 
+=======
+find_library( myVar wx_gtk3u_core-3.2 )
+message ( " --- ${myVar}")
+>>>>>>> e6493a5 (rework default handling and extensive layout change)
 find_package( wxWidgets COMPONENTS core base xml net  REQUIRED )
 
 
@@ -54,7 +59,12 @@ add_executable ( StampTool
     StampToolApp.cpp
     Defs.cpp
 )
+<<<<<<< HEAD
 message ("test-")
+=======
+
+message ("---- wxWidgets_LIBRARIES ${wxWidgets_LIBRARIES}")
+>>>>>>> e6493a5 (rework default handling and extensive layout change)
 
 target_link_libraries (StampTool LINK_PUBLIC debug
      GuiFiles  

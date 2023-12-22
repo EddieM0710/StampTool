@@ -131,11 +131,7 @@ public:
 
     void SetCatCodes( );
 
-    void OnDefaultRadioButtonSelected( wxCommandEvent& event );
-
-    void OnTopRadioButtonSelected( wxCommandEvent& event );
-
-    void OnBottomRadioButtonSelected( wxCommandEvent& event );
+    void OnNamePositionButtonSelected( wxCommandEvent& event );
 
     void OnNameFontPicker( wxFontPickerEvent& event );
 
@@ -249,7 +245,7 @@ private:
     wxStaticBox* m_TitleLocationBox;
     wxStaticBoxSizer* m_titleLocationVSizer;
     wxBoxSizer* m_titleLocationHSizer;
-    Design::StampNameLocation m_titleLocation;
+    // Design::StampNameLocation m_titleLocation;
     wxRadioButton* m_topButton;
     wxRadioButton* m_bottomButton;
     wxRadioButton* m_defaultButton;

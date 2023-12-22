@@ -103,14 +103,16 @@ namespace Design {
         "SubTitle",
         "MountAllowanceHeight",
         "MountAllowanceWidth",
-        "StampNameLocation",
+        "StampNamePosition",
         "StampAlignmentMode",
         "StampMargin",
         "CollapseState",
         "Catalog",
-        "CatalogCodes"
+        "CatalogCodes",
+        "LayoutType"
     };
     wxString OrientationStrings[ 2 ] = { "Portrait", "Landscape" };
+    wxString LayoutTypeStrings[ NbrLayoutTypes ] = { "Page", "Frame", "Stamp", "Text" };
 
     bool IsPortrait( wxString orientation )
     {
@@ -139,35 +141,28 @@ namespace Design {
         "CatNbr"
     };
 
-    wxString StampNameLocationStrings[ AT_NbrStampNameLocations ] = {
+    wxString StampNamePositionStrings[ AT_NbrStampNamePositions ] = {
         "Top",
-        "Bottom",
-        "Default"
+        "Bottom"
     };
 
     wxString StampAlignmentModeStrings[ NbrAlignmentModes ] = {
         "Top",
         "Middle",
-        "Bottom",
-        "Default"
+        "Bottom"
     };
 
 
-    StampNameLocation FindStampLocationType( wxString name )
+    StampNamePosType FindStampLocationType( wxString name )
     {
-        wxString baseName;
-        for ( int i = 0; i < AT_NbrStampNameLocations; i++ )
+        if ( !name.Cmp( StampNamePositionStrings[ AT_StampNamePositionBottom ] ) )
         {
-            baseName = StampNameLocationStrings[ i ];
-            if ( !name.Cmp( baseName ) )
-            {
-                return ( StampNameLocation ) i;
-            }
+            return AT_StampNamePositionBottom;
         }
-        return  AT_StampNameLocationDefault;
+        return  AT_StampNamePositionTop;
     };
 
-    AlignmentMode FindAlignmentModeType( wxString name )
+    AlignmentModeType FindAlignmentModeType( wxString name )
     {
         wxString baseName;
         for ( int i = 0; i < NbrAlignmentModes; i++ )
@@ -175,10 +170,10 @@ namespace Design {
             baseName = StampAlignmentModeStrings[ i ];
             if ( !name.Cmp( baseName ) )
             {
-                return ( AlignmentMode ) i;
+                return ( AlignmentModeType ) i;
             }
         }
-        return  AlignDefault;
+        return  AlignTop;
     };
 
     AlbumAttrType FindAlbumAttrType( wxString name )
@@ -233,6 +228,15 @@ namespace Design {
         return ( Album* ) 0;
     }
 
+    PageDefaults* AlbumPageDefaults( ) {
+        return  GetAlbum( )->AlbumPageDefaults( );
+    };
+    FrameDefaults* AlbumFrameDefaults( ) {
+        return  GetAlbum( )->AlbumFrameDefaults( );
+    };
+    StampDefaults* AlbumStampDefaults( ) {
+        return GetAlbum( )->AlbumStampDefaults( );
+    };
 
     AlbumVolume* GetAlbumVolume( void )
     {
@@ -322,6 +326,7 @@ namespace Design {
         if ( type == AT_Album )
         {
             object = ( AlbumBase* )new Album( node );
+            //   ( ( Album* ) object )->DumpLayout( );
         }
         if ( type == AT_Page )
         {

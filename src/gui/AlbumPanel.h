@@ -97,6 +97,7 @@ public:
     bool Create( wxWindow* parent, wxWindowID id = SYMBOL_STAMPTOOLAlbumPanel_IDNAME, const wxPoint& pos = SYMBOL_STAMPTOOLAlbumPanel_POSITION, const wxSize& size = SYMBOL_STAMPTOOLAlbumPanel_SIZE, long style = SYMBOL_STAMPTOOLAlbumPanel_STYLE );
 
     wxPanel* CreateAlbumImageLayoutPanel( wxWindow* parent );
+    wxSplitterWindow* CreateTreeLayoutWindow( wxWindow* parent, int& id );
 
     void CreateControls( );
 
@@ -152,7 +153,7 @@ private:
     //TestDetailsPanel* m_testDetailsPanel;
     wxChoice* m_albumListCtrl;
 
-    wxNotebook* m_imageDetailsSplitterWindow;
+    wxPanel* m_imageLayoutWindow;
 
     wxPanel* m_detailsScrolledWindow;
 };

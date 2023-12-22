@@ -57,28 +57,90 @@ namespace Design {
         {
             m_titleFrame->Init( );
         }
-        SetTopContentMargin( 2 );
-        SetBottomContentMargin( 2 );
-        SetLeftContentMargin( 2 );
-        SetRightContentMargin( 2 );
+        // SetTopContentMargin( 2 );
+        // SetBottomContentMargin( 2 );
+        // SetLeftContentMargin( 2 );
+        // SetRightContentMargin( 2 );
 
-        Design::StampNameLocation location = GetDefaultStampNameLocationType( );
-        if ( location != AT_StampNameLocationTop &&
-            location != AT_StampNameLocationBottom &&
-            location != AT_StampNameLocationDefault )
-        {
-            SetDefaultStampNameLocation( AT_StampNameLocationDefault );
-        }
 
-        AlignmentMode align = GetAlignmentModeType( );
-        if ( align != AlignTop && align != AlignBottom && align != AlignMiddle )
-        {
-            SetAlignmentMode( AlignDefault );
-        }
+
+        // AlignmentModeType align = GetAlignmentModeType( );
+        // if ( align != AlignTop && align != AlignBottom && align != AlignMiddle )
+        // {
+        //     SetAlignmentMode( AlignDefault );
+        // }
         // CalculateSpacing="true">
 
     }
 
+
+    double Row::GetRowAttributeDbl( Design::AlbumAttrType type )
+    {
+        wxString val = GetAttrStr( type );
+        if ( val.IsEmpty( ) )
+        {
+            return  Design::AlbumFrameDefaults( )->GetAttrDbl( type );
+        }
+        return  GetAttrDbl( type );
+    }
+
+    wxString Row::GetRowAttributeStr( Design::AlbumAttrType type )
+    {
+        wxString val = GetAttrStr( type );
+        if ( val.IsEmpty( ) )
+        {
+            return  Design::AlbumFrameDefaults( )->GetAttrStr( type );
+        }
+        return val;
+    }
+    //--------------
+
+    bool Row::GetRowAttributeBool( Design::AlbumAttrType type )
+    {
+        wxString catStr = GetAttrStr( type );
+        if ( catStr.IsEmpty( ) )
+        {
+            catStr = AlbumFrameDefaults( )->GetAttrStr( type );
+        }
+        return String2Bool( catStr );
+    }
+
+    void Row::SetRowAttributeStr( Design::AlbumAttrType type, wxString val )
+    {
+        if ( IsDefaultVal( type, val ) )
+        {
+            DeleteAttribute( AttrNameStrings[ type ] );
+        }
+        else
+        {
+            SetAttrStr( type, val );
+        }
+    }
+    void Row::SetRowAttributeDbl( Design::AlbumAttrType type, double val )
+    {
+        wxString str = wxString::Format( "%4.1f", val );
+        SetRowAttributeStr( type, str );
+    }
+
+
+    void Row::SetRowAttributeBool( Design::AlbumAttrType type, bool val )
+    {
+        wxString str = Bool2String( val );
+        SetRowAttributeStr( type, str );
+
+    }
+
+    //--------------
+
+    bool Row::IsDefaultVal( AlbumAttrType type )
+    {
+        return AlbumFrameDefaults( )->IsEqual( type, GetAttrStr( type ) );
+    }
+
+    bool Row::IsDefaultVal( AlbumAttrType type, wxString val )
+    {
+        return AlbumFrameDefaults( )->IsEqual( type, val );
+    }
 
 
     wxString Row::GetTitleString( )
@@ -120,7 +182,7 @@ namespace Design {
 
             dc.SetPen( *wxBLACK_PEN );
 
-            if ( GetShowFrame( ) )
+            if ( GetShow( ) )
             {
                 m_frame.Draw( dc, x, y );
             }
@@ -153,7 +215,7 @@ namespace Design {
     {
         double leftPadding = 0;
         double topPadding = 0;
-        if ( GetShowFrame( ) )
+        if ( GetShow( ) )
         {
 
             wxPdfLineStyle currStyle = PDFLineStyle( doc, *wxBLACK, .2 );
@@ -202,13 +264,12 @@ namespace Design {
     void Row::Save( wxXmlNode* xmlNode )
     {
         SetAttribute( xmlNode, AT_Name );
-        SetAttribute( xmlNode, AT_ShowTitle );
-        SetAttribute( xmlNode, AT_ShowSubTitle );
-        SetAttribute( xmlNode, AT_ShowFrame );
-        SetAttribute( xmlNode, AT_SubTitle );
-        SetAttribute( xmlNode, AT_StampNameLocation );
-        SetAttribute( xmlNode, AT_CalculateSpacing );
-        SetAttribute( xmlNode, AT_ShowFrame );
+        if ( !IsDefaultVal( AT_ShowTitle ) ) SetAttribute( xmlNode, AT_ShowTitle );
+        if ( !IsDefaultVal( AT_ShowSubTitle ) ) SetAttribute( xmlNode, AT_ShowSubTitle );
+        if ( !IsDefaultVal( AT_ShowFrame ) ) SetAttribute( xmlNode, AT_ShowFrame );
+        if ( !IsDefaultVal( AT_SubTitle ) ) SetAttribute( xmlNode, AT_SubTitle );
+        if ( !IsDefaultVal( AT_CalculateSpacing ) ) SetAttribute( xmlNode, AT_CalculateSpacing );
+        if ( !IsDefaultVal( AT_ShowFrame ) ) SetAttribute( xmlNode, AT_ShowFrame );
 
 
         SaveFonts( xmlNode );
@@ -400,13 +461,10 @@ namespace Design {
 
             if ( child->IsNodeType( AT_Stamp ) )
             {
-                Design::AlignmentMode m_stampAlign = GetAlignmentModeType( );
-                if ( m_stampAlign == AlignDefault )
-                {
-                    m_stampAlign = GetAlbum( )->GetAlignmentModeType( );
-                }
-                Stamp* stamp = ( Stamp* ) child;
+                Design::AlignmentModeType stampAlign = GetAlignmentModeType( );
 
+                Stamp* stamp = ( Stamp* ) child;
+                Design::StampNamePosType stampNamePosition = stamp->GetStampNamePositionType( );
                 // std::cout << stamp->GetNameFrame( )->GetString( ) << "\n";
 
                 if ( maxTitleHeight < stamp->GetNameFrame( )->GetHeight( ) )
@@ -420,10 +478,10 @@ namespace Design {
                     {
                     };
                 }
-                if ( stamp->GetStampNameLocationType( ) == AT_StampNameLocationTop )
+                if ( stampNamePosition == AT_StampNamePositionTop )
                 {
                     // align stamp top
-                    if ( m_stampAlign == AlignTop )
+                    if ( stampAlign == AlignTop )
                     {
                         child->SetYPos( yPos
                             + childTop
@@ -431,7 +489,7 @@ namespace Design {
                             - stamp->GetNameFrame( )->GetHeight( ) );
                     }
                     // align stamp bottom
-                    else if ( m_stampAlign == AlignBottom )
+                    else if ( stampAlign == AlignBottom )
                     {
                         child->SetYPos( yPos
                             + childTop
@@ -439,7 +497,7 @@ namespace Design {
                             - stamp->GetHeight( ) );
                     }
                     // align stamp middle
-                    else if ( m_stampAlign == AlignMiddle )
+                    else if ( stampAlign == AlignMiddle )
                     {
                         child->SetYPos( yPos
                             + childTop
@@ -449,16 +507,16 @@ namespace Design {
                             - stamp->GetBorderFrame( )->GetHeight( ) / 2 );
                     }
                 }
-                else if ( stamp->GetStampNameLocationType( ) == AT_StampNameLocationBottom )
+                else if ( stampNamePosition == AT_StampNamePositionBottom )
                 {
                     // align stamp top
-                    if ( m_stampAlign == AlignTop )
+                    if ( stampAlign == AlignTop )
                     {
                         child->SetYPos( yPos
                             + childTop );
                     }
                     // align stamp bottom
-                    if ( m_stampAlign == AlignBottom )
+                    if ( stampAlign == AlignBottom )
                     {
                         child->SetYPos( yPos
                             + childTop
@@ -466,7 +524,7 @@ namespace Design {
                             - stamp->GetBorderFrame( )->GetHeight( ) );
                     }
                     // align stamp middle
-                    if ( m_stampAlign == AlignMiddle )
+                    if ( stampAlign == AlignMiddle )
                     {
                         child->SetYPos( yPos
                             + childTop
@@ -565,50 +623,6 @@ namespace Design {
         return status;
     }
 
-    // Stamp Name Location functions
-
-    //******* 
-
-    wxString Row::GetStampNameLocation( )
-    {
-        return GetAttrStr( AT_StampNameLocation );
-    }
-
-    //******* 
-
-    StampNameLocation  Row::GetDefaultStampNameLocationType( )
-    {
-        StampNameLocation loc = FindStampLocationType( GetStampNameLocation( ) );
-        if ( loc == AT_StampNameLocationDefault )
-        {
-            return GetAlbum( )->GetDefaultStampNameLocationType( );
-        }
-        return loc;
-
-    };
-
-    //******* 
-
-    void Row::SetDefaultStampNameLocation( StampNameLocation loc )
-    {
-        SetAttrStr( AT_StampNameLocation, StampNameLocationStrings[ loc ] );
-    }
-
-    //******* 
-
-    void Row::SetDefaultStampNameLocationType( StampNameLocation loc )
-    {
-        StampNameLocation defaultLoc = GetAlbum( )->GetDefaultStampNameLocationType( );
-        if ( loc == defaultLoc )
-        {
-            SetAttrStr( AT_StampNameLocation, "" );
-        }
-        else
-        {
-            SetDefaultStampNameLocation( loc );
-        }
-    };
-
     //******* 
 
     // Stamp Alignment functions
@@ -620,31 +634,36 @@ namespace Design {
 
     //******* 
 
-    void Row::SetAlignmentMode( AlignmentMode loc )
+    void Row::SetAlignmentMode( AlignmentModeType loc )
     {
-        SetAttrStr( AT_StampAlignmentMode, StampAlignmentModeStrings[ loc ] );
+        SetRowAttributeStr( AT_StampAlignmentMode, StampAlignmentModeStrings[ loc ] );
+    }
+
+    void Row::SetAlignmentMode( wxString str )
+    {
+        SetRowAttributeStr( AT_StampAlignmentMode, str );
     }
 
     //******* 
 
-    AlignmentMode  Row::GetAlignmentModeType( )
+    AlignmentModeType  Row::GetAlignmentModeType( )
     {
-        return FindAlignmentModeType( GetAttrStr( AT_StampAlignmentMode ) );
-    };
-
-    //******* 
-
-    void Row::SetAlignmentModeType( AlignmentMode loc )
-    {
-        AlignmentMode defaultLoc = GetAlbum( )->GetAlignmentModeType( );
-        if ( loc == defaultLoc )
-        {
-            SetAttrStr( AT_StampAlignmentMode, "" );
-        }
-        else
-        {
-            SetAttrStr( AT_StampAlignmentMode, StampAlignmentModeStrings[ loc ] );
-        }
-    };
-
+        return  FindAlignmentModeType( GetRowAttributeStr( AT_StampAlignmentMode ) );
+    }
 }
+//******* 
+
+//     void Row::SetAlignmentModeType( AlignmentModeType loc )
+//     {
+//         AlignmentModeType defaultLoc = FindAlignmentModeType( AlbumFrameDefaults( )->AlignmentMode( ) );
+//         if ( loc == defaultLoc )
+//         {
+//             SetAttrStr( AT_StampAlignmentMode, "" );
+//         }
+//         else
+//         {
+//             SetAttrStr( AT_StampAlignmentMode, StampAlignmentModeStrings[ loc ] );
+//         }
+//     };
+
+// }

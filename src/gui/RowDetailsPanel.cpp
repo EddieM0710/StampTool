@@ -124,24 +124,62 @@ void RowDetailsPanel::CreateControls( )
     wxBoxSizer* detailsHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
     theDialog->SetSizer( detailsHorizontalSizer );
 
-    wxBoxSizer* m_leftColumnVerticalSizer = new wxBoxSizer( wxVERTICAL );
-    detailsHorizontalSizer->Add( m_leftColumnVerticalSizer, 1, wxGROW | wxALL, 0 );
-
-    //  wxBoxSizer* m_rightColumnVerticalSizer = new wxBoxSizer( wxVERTICAL );
-    //  detailsHorizontalSizer->Add( m_rightColumnVerticalSizer, 1, wxGROW | wxALL, 0 );
-
-    wxBoxSizer* firstRowHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
-    m_leftColumnVerticalSizer->Add( firstRowHorizontalSizer, 0, wxGROW | wxALL, 5 );
-
 
     int lastID = ID_LastID;
 
-    m_frameCheckbox = SetupCheckBox( theDialog, firstRowHorizontalSizer, lastID,
+    wxNotebook* focusNotebook = new wxNotebook( theDialog, ++lastID,
+        wxDefaultPosition, wxDefaultSize, wxBK_LEFT );
+    focusNotebook->SetPadding( wxSize( 1, 1 ) );
+    detailsHorizontalSizer->Add( focusNotebook, 1, wxGROW | wxALL, 5 );
+
+    wxPanel* commonPanel = new wxPanel( focusNotebook, ++lastID, wxDefaultPosition,
+        wxDefaultSize, wxTAB_TRAVERSAL );
+    commonPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
+
+    wxBoxSizer* commonHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
+    commonPanel->SetSizer( commonHorizontalSizer );
+
+
+    wxBoxSizer* leftCommonVerticalSizer = new wxBoxSizer( wxVERTICAL );
+    commonHorizontalSizer->Add( leftCommonVerticalSizer, 1, wxGROW | wxALL, 0 );
+
+    wxBoxSizer* middleCommonVerticalSizer = new wxBoxSizer( wxVERTICAL );
+    commonHorizontalSizer->Add( middleCommonVerticalSizer, 1, wxGROW | wxALL, 0 );
+
+    wxBoxSizer* rightCommonVerticalSizer = new wxBoxSizer( wxVERTICAL );
+    commonHorizontalSizer->Add( rightCommonVerticalSizer, 1, wxGROW | wxALL, 0 );
+
+
+    focusNotebook->AddPage( commonPanel, _( "Basic" ) );
+
+
+
+    wxPanel* advancedPanel = new wxPanel( focusNotebook, ++lastID, wxDefaultPosition,
+        wxDefaultSize, wxTAB_TRAVERSAL );
+    advancedPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
+
+    wxBoxSizer* advancedHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
+    advancedPanel->SetSizer( advancedHorizontalSizer );
+
+
+    wxBoxSizer* leftAdvancedVerticalSizer = new wxBoxSizer( wxVERTICAL );
+    advancedHorizontalSizer->Add( leftAdvancedVerticalSizer, 1, wxGROW | wxALL, 0 );
+
+    wxBoxSizer* middleAdvancedVerticalSizer = new wxBoxSizer( wxVERTICAL );
+    advancedHorizontalSizer->Add( middleAdvancedVerticalSizer, 1, wxGROW | wxALL, 0 );
+
+    wxBoxSizer* rightAdvancedVerticalSizer = new wxBoxSizer( wxVERTICAL );
+    advancedHorizontalSizer->Add( rightAdvancedVerticalSizer, 1, wxGROW | wxALL, 0 );
+
+    focusNotebook->AddPage( advancedPanel, _( "Special" ) );
+
+
+    m_frameCheckbox = SetupCheckBox( commonPanel, leftCommonVerticalSizer, lastID,
         ( "Show Frame" ), wxCommandEventHandler( RowDetailsPanel::OnFrameCheckboxClick ) );
     m_frameCheckbox->SetValue( false );
 
 
-    m_titleHelper = SetupTitleHelper( theDialog, m_leftColumnVerticalSizer, lastID, DefaultTitleHelperStyle,
+    m_titleHelper = SetupTitleHelper( commonPanel, leftCommonVerticalSizer, lastID, DefaultTitleHelperStyle,
         wxCommandEventHandler( RowDetailsPanel::OnTitleCheckboxClick ),
         wxCommandEventHandler( RowDetailsPanel::OnTitleTextChanged ),
         wxCommandEventHandler( RowDetailsPanel::OnSubTitleCheckboxClick ),
@@ -152,7 +190,7 @@ void RowDetailsPanel::CreateControls( )
     //wxStaticBox* fontBox = SetupBoxSizer( theDialog, m_leftColumnVerticalSizer, "Font", lastID, fontboxSizer, wxVERTICAL );
 
 
-    SetupFontPicker( theDialog, m_leftColumnVerticalSizer, lastID,
+    SetupFontPicker( advancedPanel, leftAdvancedVerticalSizer, lastID,
         _( "Title Font" ), _( "Default" ),
         m_titleFontPicker, m_titleColorPicker,
         wxFontPickerEventHandler( RowDetailsPanel::OnTitleFontPicker ),
@@ -160,7 +198,7 @@ void RowDetailsPanel::CreateControls( )
         wxCommandEventHandler( RowDetailsPanel::OnTitleDefaultClick ) );
 
 
-    SetupFontPicker( theDialog, m_leftColumnVerticalSizer, lastID,
+    SetupFontPicker( advancedPanel, leftAdvancedVerticalSizer, lastID,
         _( "SubTitle Font" ), _( "Default" ),
         m_subTitleFontPicker, m_subTitleColorPicker,
         wxFontPickerEventHandler( RowDetailsPanel::OnSubTitleFontPicker ),
@@ -168,26 +206,11 @@ void RowDetailsPanel::CreateControls( )
         wxCommandEventHandler( RowDetailsPanel::OnSubTitleDefaultClick ) );
 
 
-    wxBoxSizer* titleLocationVSizer;
-    wxStaticBox* titleLocationBox = SetupBoxSizer( theDialog, m_leftColumnVerticalSizer, "Member Title Location", lastID, titleLocationVSizer, wxHORIZONTAL );
-
-    m_defaultButton = SetupRadioButton( titleLocationBox, titleLocationVSizer, lastID, _( "Default" ), false,
-        wxCommandEventHandler( RowDetailsPanel::OnDefaultRadioButtonSelected ) );
-
-    m_topButton = SetupRadioButton( titleLocationBox, titleLocationVSizer, lastID, _( "Top" ), false,
-        wxCommandEventHandler( RowDetailsPanel::OnTopRadioButtonSelected ) );
-
-    m_bottomButton = SetupRadioButton( titleLocationBox, titleLocationVSizer, lastID, _( "Bottom" ), false,
-        wxCommandEventHandler( RowDetailsPanel::OnBottomRadioButtonSelected ) );
-
 
 
 
     wxBoxSizer* alignmentModeVSizer;
-    wxStaticBox* alignmentModeBox = SetupBoxSizer( theDialog, m_leftColumnVerticalSizer, "Member Stamp Alignment Mode", lastID, alignmentModeVSizer, wxHORIZONTAL );
-
-    m_alignDefaultButton = SetupRadioButton( alignmentModeBox, alignmentModeVSizer, lastID, _( "Default" ), true,
-        wxCommandEventHandler( RowDetailsPanel::OnAlignmentModeButtonSelected ) );
+    wxStaticBox* alignmentModeBox = SetupBoxSizer( commonPanel, middleCommonVerticalSizer, "Member Stamp Alignment Mode", lastID, alignmentModeVSizer, wxHORIZONTAL );
 
     m_alignTopButton = SetupRadioButton( alignmentModeBox, alignmentModeVSizer, lastID, _( "Top" ), false,
         wxCommandEventHandler( RowDetailsPanel::OnAlignmentModeButtonSelected ) );
@@ -201,7 +224,7 @@ void RowDetailsPanel::CreateControls( )
 
 
     wxBoxSizer* memberPositionVSizer;
-    wxStaticBox* memberPositionStaticBox = SetupBoxSizer( theDialog, m_leftColumnVerticalSizer, "Member Position", lastID, memberPositionVSizer, wxHORIZONTAL );
+    wxStaticBox* memberPositionStaticBox = SetupBoxSizer( commonPanel, middleCommonVerticalSizer, "Member Position", lastID, memberPositionVSizer, wxHORIZONTAL );
 
     m_positionCalculated = SetupRadioButton( memberPositionStaticBox, memberPositionVSizer, lastID, _( "Calculated" ), true,
         wxCommandEventHandler( RowDetailsPanel::OnCalculatedClick ) );
@@ -222,42 +245,24 @@ void RowDetailsPanel::CreateControls( )
 
     //>>error list ctrls
     wxBoxSizer* errorListSizer = new wxBoxSizer( wxHORIZONTAL );
-    m_leftColumnVerticalSizer->Add( errorListSizer, 2, wxGROW | wxALL, 5 );
+    rightCommonVerticalSizer->Add( errorListSizer, 2, wxGROW | wxALL, 5 );
 
     wxArrayString m_statusListStrings;
-    m_statusList = new wxListBox( theDialog, ID_LISTCTRL, wxDefaultPosition, wxDefaultSize, m_statusListStrings, wxLB_SINGLE );
+    m_statusList = new wxListBox( commonPanel, ID_LISTCTRL, wxDefaultPosition, wxDefaultSize, m_statusListStrings, wxLB_SINGLE );
     errorListSizer->Add( m_statusList, 2, wxGROW | wxALL, 0 );
     //<< error list ctrls
 
 }
-// Design::StampNameLocation  RowDetailsPanel::GetTitleLocationType( )
+// Design::StampNamePositionType  RowDetailsPanel::GetTitleLocationType( )
 // {
 //     return m_titleLocation;
 // }
 
 
-void RowDetailsPanel::SetTitleLocation( )
-{
-
-    m_titleLocation = m_row->GetDefaultStampNameLocationType( );
-    if ( m_titleLocation == Design::AT_StampNameLocationTop )
-    {
-        m_topButton->SetValue( true );
-    }
-    else if ( m_titleLocation == Design::AT_StampNameLocationBottom )
-    {
-        m_bottomButton->SetValue( true );
-    }
-
-    else //if ( m_titleLocation == Design::AT_StampNameLocationDefault )
-    {
-        m_defaultButton->SetValue( true );;
-    }
-}
 
 void RowDetailsPanel::SetAlignmentMode( )
 {
-    Design::AlignmentMode mode = m_row->GetAlignmentModeType( );
+    Design::AlignmentModeType mode = m_row->GetAlignmentModeType( );
     if ( mode == Design::AlignTop )
     {
         m_alignTopButton->SetValue( true );
@@ -282,9 +287,9 @@ void RowDetailsPanel::UpdateControls( )
     SetTitle( m_row->GetTitleString( ) );
     SetShowTitle( m_row->GetShowTitle( ) );
     SetShowSubTitle( m_row->GetShowSubTitle( ) );
-    SetShowFrame( m_row->GetShowFrame( ) );
+    SetShow( m_row->GetShow( ) );
     SetColor( m_row->GetTitleFrame( )->GetHeadingColor( ) );
-    SetTitleLocation( );
+    // SetTitleLocation( );
     SetAlignmentMode( );
     SetFixedSpacingSize( m_row->GetFixedSpacing( ) );
     SetCalculateSpacing( m_row->CalculateSpacing( ) );
@@ -312,7 +317,7 @@ bool RowDetailsPanel::GetShowSubTitle( ) {
     return m_titleHelper->subTitleCheckbox->IsChecked( );
 
 };;
-bool RowDetailsPanel::GetShowFrame( ) {
+bool RowDetailsPanel::GetShow( ) {
     return m_frameCheckbox->IsChecked( );
 
 };
@@ -324,7 +329,7 @@ void RowDetailsPanel::SetShowTitle( bool state ) {
 void RowDetailsPanel::SetShowSubTitle( bool state ) {
     //   m_titleHelper->subTitleCheckbox->SetValue( state );
 };
-void RowDetailsPanel::SetShowFrame( bool state ) {
+void RowDetailsPanel::SetShow( bool state ) {
     m_frameCheckbox->SetValue( state );
 };
 
@@ -370,50 +375,17 @@ void RowDetailsPanel::OnAlignmentModeButtonSelected( wxCommandEvent& event )
 {
     if ( m_alignTopButton->GetValue( ) )
     {
-        m_row->SetAlignmentModeType( Design::AlignTop );
+        m_row->SetAlignmentMode( Design::AlignTop );
     }
     else if ( m_alignMiddleButton->GetValue( ) )
     {
-        m_row->SetAlignmentModeType( Design::AlignMiddle );
+        m_row->SetAlignmentMode( Design::AlignMiddle );
     }
     else if ( m_alignBottomButton->GetValue( ) )
     {
-        m_row->SetAlignmentModeType( Design::AlignBottom );
+        m_row->SetAlignmentMode( Design::AlignBottom );
     }
-    else if ( m_alignDefaultButton->GetValue( ) )
-    {
-        m_row->SetAlignmentModeType( Design::AlignDefault );
-    }
-    event.Skip( );
-}
 
-void RowDetailsPanel::OnTopRadioButtonSelected( wxCommandEvent& event )
-{
-    if ( m_topButton->GetValue( ) )
-    {
-        m_titleLocation = Design::AT_StampNameLocationTop;
-        m_row->SetDefaultStampNameLocationType( m_titleLocation );
-    }
-    event.Skip( );
-}
-
-void RowDetailsPanel::OnBottomRadioButtonSelected( wxCommandEvent& event )
-{
-    if ( m_bottomButton->GetValue( ) )
-    {
-        m_titleLocation = Design::AT_StampNameLocationBottom;
-        m_row->SetDefaultStampNameLocationType( m_titleLocation );
-    }
-    event.Skip( );
-}
-
-void RowDetailsPanel::OnDefaultRadioButtonSelected( wxCommandEvent& event )
-{
-    if ( m_defaultButton->GetValue( ) )
-    {
-        m_titleLocation = Design::AT_StampNameLocationDefault;
-        m_row->SetDefaultStampNameLocationType( m_titleLocation );
-    }
     event.Skip( );
 }
 
@@ -484,7 +456,7 @@ void RowDetailsPanel::OnSubTitleDefaultClick( wxCommandEvent& event )
 
 void RowDetailsPanel::OnFrameCheckboxClick( wxCommandEvent& event )
 {
-    m_row->SetShowFrame( m_frameCheckbox->GetValue( ) );
+    m_row->SetShow( m_frameCheckbox->GetValue( ) );
 }
 
 void RowDetailsPanel::OnTitleCheckboxClick( wxCommandEvent& event )

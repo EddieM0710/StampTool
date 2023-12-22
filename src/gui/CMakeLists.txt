@@ -26,6 +26,7 @@ add_library( GuiFiles SHARED
     EditProjectDetails.cpp 
     AlbumTreeCtrl.cpp 
     FileCreateDialog.cpp
+    FontDefaultsPanel.cpp
     GenerateList.cpp
     GenerateListSettings.cpp
     GuiUtils.cpp
@@ -41,8 +42,11 @@ add_library( GuiFiles SHARED
     SortOrderPanel.cpp
     StampDescriptionPanel.cpp 
     StampDetailsPanel.cpp
+    StampDefaultsPanel.cpp
     RowDetailsPanel.cpp
+    FrameDefaultsPanel.cpp
     PageDetailsPanel.cpp
+    PageDefaultsPanel.cpp
     TOCTreeCtrl.cpp
     AlbumTOCTreeCtrl.cpp
     CatalogTOCTreeCtrl.cpp

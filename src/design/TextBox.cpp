@@ -56,7 +56,7 @@ namespace Design {
         double rightPadding = 0;
         double topPadding = 0;
         double bottomPadding = 0;
-        // if ( GetShowFrame( ) )
+        // if ( GetShow( ) )
         // {
         //     leftPadding = GetLeftContentMargin( );
         //     rightPadding = GetRightContentMargin( );
@@ -69,7 +69,7 @@ namespace Design {
 
         UpdateString( GetTextFrame( ), contentWidth );
 
-        // if ( IsTitleLocation( AT_StampNameLocationBottom ) )
+        // if ( IsTitleLocation( AT_StampNamePositionBottom ) )
         // {
         //     m_textBoxFrame.SetXPos( ( GetWidth( ) - m_textBoxFrame.GetWidth( ) ) / 2 );
         //     m_textBoxFrame.SetYPos( topPadding );

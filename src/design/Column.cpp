@@ -40,7 +40,7 @@ namespace Design {
     Column::Column( wxXmlNode* node ) : LayoutBase( node ) {
         SetNodeType( AT_Col );
         SetObjectName( AlbumBaseNames[ GetNodeType( ) ] );
-        SetShowFrame( false );
+        SetShow( false );
         SetShowTitle( false );
         SetShowSubTitle( false );
         SetFixedSpacingSize( "4" );
@@ -64,13 +64,12 @@ namespace Design {
         SetLeftContentMargin( 2 );
         SetRightContentMargin( 2 );
 
-        wxString location = GetStampNameLocation( );
-        if ( location.Cmp( Design::StampNameLocationStrings[ AT_StampNameLocationTop ] ) &&
-            location.Cmp( Design::StampNameLocationStrings[ AT_StampNameLocationBottom ] ) &&
-            location.Cmp( Design::StampNameLocationStrings[ AT_StampNameLocationDefault ] ) )
-        {
-            SetDefaultStampNameLocation( AT_StampNameLocationDefault );
-        }
+        // wxString location = GetStampNamePosition( );
+        // if ( location.Cmp( Design::StampNamePositionStrings[ AT_StampNamePositionTop ] ) &&
+        //     location.Cmp( Design::StampNamePositionStrings[ AT_StampNamePositionBottom ] ) )
+        // {
+        //     SetDefaultStampNamePosition( AT_StampNamePositionTop );
+        // }
 
 
         // CalculateSpacing="true">
@@ -117,7 +116,7 @@ namespace Design {
 
             dc.SetPen( *wxBLACK_PEN );
 
-            if ( GetShowFrame( ) )
+            if ( GetShow( ) )
             {
                 m_frame.Draw( dc, x, y );
             }
@@ -149,7 +148,7 @@ namespace Design {
         double leftPadding = 0;
         double topPadding = 0;
         //  dc.SetPen( *wxBLACK_PEN );
-        if ( GetShowFrame( ) )
+        if ( GetShow( ) )
         {
             wxPdfLineStyle currStyle = PDFLineStyle( doc, *wxBLACK, .2 );
             m_frame.DrawPDF( doc, x, y );
@@ -415,42 +414,7 @@ namespace Design {
         return status;
     }
 
-    //*******
-
-    wxString Column::GetStampNameLocation( )
-    {
-        return GetAttrStr( AT_StampNameLocation );
-    }
 
     //*******
 
-    // void Column::SetDefaultStampNameLocation( StampNameLocation loc )
-    // {
-    //     SetAttrStr( AT_StampNameLocation, StampNameLocationStrings[ loc ] );
-    // }
-
-    //*******
-
-    StampNameLocation  Column::GetDefaultStampNameLocationType( )
-    {
-        StampNameLocation loc = FindStampLocationType( GetAttrStr( AT_StampNameLocation ) );
-        StampNameLocation defaultLoc = GetAlbum( )->GetDefaultStampNameLocationType( );
-        if ( ( loc == defaultLoc ) && ( loc != AT_StampNameLocationDefault ) )
-        {
-            SetDefaultStampNameLocation( AT_StampNameLocationDefault );
-        }
-        return loc;
-    };
-
-    //*******
-
-    void Column::SetDefaultStampNameLocation( StampNameLocation loc )
-    {
-        StampNameLocation defaultLoc = GetAlbum( )->GetDefaultStampNameLocationType( );
-        if ( ( loc == defaultLoc ) && ( loc != AT_StampNameLocationDefault ) )
-        {
-            loc = AT_StampNameLocationDefault;
-        }
-        SetAttrStr( AT_StampNameLocation, StampNameLocationStrings[ loc ] );
-    };
 }

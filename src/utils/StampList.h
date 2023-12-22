@@ -47,20 +47,26 @@ namespace Utils {
 
 
         /// @brief Construct a new Stamp Link object
-        StampLink( ) { m_designTreeID = 0; m_catTreeID = 0; };
+        StampLink( ) {
+            m_designTreeID = 0; m_catTreeID = 0;
+        };
 
         /**
          * @brief Destroy the Stamp Link object
          *
          */
-        ~StampLink( ) { Clear( ); };
+        ~StampLink( ) {
+            Clear( );
+        };
 
         /**
          * @brief Get the Design/Album Tree ID
          *
          * @return wxTreeItemId
          */
-        inline wxTreeItemId GetDesignTreeID( ) { return m_designTreeID; };
+        inline wxTreeItemId GetDesignTreeID( ) {
+            return m_designTreeID;
+        };
 
         /**
          * @brief Set the Design/Album Tree id
@@ -68,7 +74,9 @@ namespace Utils {
          * @param id
          */
 
-        inline void SetDesignTreeID( wxTreeItemId id ) { m_designTreeID = id; };
+        inline void SetDesignTreeID( wxTreeItemId id ) {
+            m_designTreeID = id;
+        };
 
         //        inline Design::Stamp* GetAlbumStamp( ) { return m_albumStamp; };
         //        inline void SetAlbumStamp( Design::Stamp* stamp ) { m_albumStamp = stamp; };
@@ -78,14 +86,18 @@ namespace Utils {
                  *
                  * @return wxTreeItemId
                  */
-        inline wxTreeItemId GetCatTreeID( ) { return m_catTreeID; };
+        inline wxTreeItemId GetCatTreeID( ) {
+            return m_catTreeID;
+        };
 
         /**
          * @brief Set the Catalog Tree id
          *
          * @param id
          */
-        inline void SetCatTreeID( wxTreeItemId id ) { m_catTreeID = id; };
+        inline void SetCatTreeID( wxTreeItemId id ) {
+            m_catTreeID = id;
+        };
 
         //        inline wxXmlNode* GetCatNode( ) { return m_catNode; };
         //        inline void SetCatNode( wxXmlNode* stamp ) { m_catNode = stamp; };
@@ -121,8 +133,6 @@ namespace Utils {
          */
         inline bool IsStamp( wxString id );
 
-
-
     private:
         wxTreeItemId m_designTreeID;
         wxTreeItemId m_catTreeID;
@@ -151,7 +161,9 @@ namespace Utils {
          * @brief Destroy the Stamp List object
          *
          */
-        ~StampList( ) { Clear( ); };
+        ~StampList( ) {
+            Clear( );
+        };
 
         /**
          * @brief Clears all the links then deletes them

@@ -56,76 +56,11 @@ namespace Design {
     {
         SetNodeType( AT_Album );
         InitParameters( );
-
     }
 
 
     void Album::InitParameters( )
     {
-        wxString orientation = GetDefaultOrientation( );
-        if ( orientation.Cmp( OrientationStrings[ Design::AT_Portrait ] ) &&
-            orientation.Cmp( OrientationStrings[ Design::AT_Landscape ] ) )
-        {
-            SetAttrStr( Design::AT_Orientation, OrientationStrings[ Design::AT_Portrait ] );
-        }
-        for ( int i = 0; i < Design::AT_NbrFontUsageTypes; i++ )
-        {
-            DefaultFonts[ i ] = -1;
-        };
-        if ( GetPaperWidth( ) <= 0 )
-        {
-            SetPaperWidth( "208.25" );
-        }
-        if ( GetPaperHeight( ) <= 0 )
-        {
-            SetPaperHeight( "269.5" );
-        }
-
-        if ( GetOverSizePaper( ) )
-        {
-            if ( GetPageWidth( ) <= 0 )
-            {
-                SetPageWidth( "208.25" );
-            }
-            if ( GetPageHeight( ) <= 0 )
-            {
-                SetPageHeight( "269.5" );
-            }
-        }
-        if ( GetTopPageMargin( ) < 0 )
-        {
-            SetTopPageMargin( "12" );
-        }
-        if ( GetBottomPageMargin( ) < 0 )
-        {
-            SetBottomPageMargin( "12" );
-        }
-        if ( GetRightPageMargin( ) < 0 )
-        {
-            SetRightPageMargin( "12" );
-        }
-        if ( GetLeftPageMargin( ) < 0 )
-        {
-            SetLeftPageMargin( "12" );
-        }
-
-
-        if ( GetBorderFileName( ).IsEmpty( ) )
-        {
-            SetBorderFilename( "big_and_little_line.jpg" );
-        }
-        if ( GetBorderSize( ) < 0 )
-        {
-            SetBorderSize( "4" );
-        }
-        wxString location = GetStampNameLocation( );
-        if ( location.Cmp( Design::StampNameLocationStrings[ AT_StampNameLocationTop ] ) &&
-            location.Cmp( Design::StampNameLocationStrings[ AT_StampNameLocationBottom ] ) )
-        {
-            SetDefaultStampNameLocation( AT_StampNameLocationTop );
-        }
-
-
     }
     wxString Album::DrawPDF( )
     {
@@ -162,7 +97,7 @@ namespace Design {
 
             // set the layout parameters into the child
             Page* page = ( Page* ) GetAlbumTreeCtrl( )->GetItemNode( childID );
-            if ( Design::IsPortrait( page->GetOrientation( ) ) )
+            if ( Design::IsPortrait( page->Orientation( ) ) )
             {
                 doc->AddPage( wxPORTRAIT );
                 page->DrawPDF( doc, width, height );
@@ -228,25 +163,6 @@ namespace Design {
         }
     }
 
-    double Album::GetBorderSize( ) {
-        return GetAttrDbl( AT_BorderSize );
-    };
-
-    wxString Album::GetBorderSizeStr( ) {
-        return GetAttrStr( AT_BorderSize );
-    };
-
-    wxString Album::GetBorderFileName( ) {
-        return GetAttrStr( AT_BorderFileName );
-    };
-
-    double Album::GetBottomPageMargin( ) {
-        return GetAttrDbl( AT_BottomPageMargin );
-    };
-
-    wxString Album::GetBottomPageMarginStr( ) {
-        return GetAttrStr( AT_BottomPageMargin );
-    };
 
     wxString Album::GetCatalog( ) {
         wxString cat = GetAttrStr( AT_Catalog );
@@ -274,52 +190,6 @@ namespace Design {
         }
     }
 
-    wxString Album::GetDefaultValStr( AlbumAttrType type )
-    {
-        if ( type == AT_SelvageHeight )
-        {
-            return  wxString::Format( "%4.1f", m_defaultSelvageHeight );
-        }
-        else if ( type == AT_SelvageWidth )
-        {
-            return   wxString::Format( "%4.1f", m_defaultSelvageWidth );
-        }
-        else if ( type == AT_MountAllowanceHeight )
-        {
-            return   wxString::Format( "%4.1f", m_defaultMountAllowanceHeight );
-        }
-        else if ( type == AT_MountAllowanceWidth )
-        {
-            return   wxString::Format( "%4.1f", m_defaultMountAllowanceWidth );
-        }
-        else if ( type == AT_Catalog )
-        {
-            return  GetCatalog( );
-        }
-        else
-            return "";
-    };
-
-    double Album::GetDefaultVal( AlbumAttrType type )
-    {
-        if ( type == AT_SelvageHeight )
-        {
-            return m_defaultSelvageHeight;
-        }
-        else if ( type == AT_SelvageWidth )
-        {
-            return m_defaultSelvageWidth;
-        }
-        else if ( type == AT_MountAllowanceHeight )
-        {
-            return m_defaultMountAllowanceHeight;
-        }
-        else if ( type == AT_MountAllowanceWidth )
-        {
-            return m_defaultMountAllowanceWidth;
-        }
-        return 0;
-    };
 
 
     wxString Album::GetDocName( ) {
@@ -351,123 +221,6 @@ namespace Design {
     }
 
 
-    double Album::GetLeftPageMargin( ) {
-        return GetAttrDbl( AT_LeftPageMargin );
-    };
-
-    wxString Album::GetLeftPageMarginStr( ) {
-        return GetAttrStr( AT_LeftPageMargin );
-    };
-
-
-    void Album::GetPageParameters( wxString& width,
-        wxString& height,
-        wxString& topPageMargin,
-        wxString& bottomPageMargin,
-        wxString& rightPageMargin,
-        wxString& leftPageMargin )
-    {
-        width = GetAttrStr( AT_PageWidth );
-        height = GetAttrStr( AT_PageHeight );
-        topPageMargin = GetAttrStr( AT_TopPageMargin );
-        bottomPageMargin = GetAttrStr( AT_BottomPageMargin );
-        rightPageMargin = GetAttrStr( AT_RightPageMargin );
-        leftPageMargin = GetAttrStr( AT_LeftPageMargin );
-    };
-
-    wxString Album::GetStampNameLocation( )
-    {
-        return GetAttrStr( AT_StampNameLocation );
-    }
-
-    StampNameLocation  Album::GetDefaultStampNameLocationType( )
-    {
-        StampNameLocation loc = FindStampLocationType( GetAttrStr( AT_StampNameLocation ) );
-        if ( ( loc != AT_StampNameLocationBottom ) && ( loc != AT_StampNameLocationTop ) )
-        {
-            loc = AT_StampNameLocationTop;
-            SetDefaultStampNameLocationType( loc );
-        }
-        return FindStampLocationType( GetAttrStr( AT_StampNameLocation ) );
-    };
-
-
-    // wxString Album::GetAlignmentMode( )
-    // {
-    //     return GetAttrStr( AT_StampAlignmentMode );
-    // }
-
-
-    Design::AlignmentMode  Album::GetAlignmentModeType( )
-    {
-        AlignmentMode loc = FindAlignmentModeType( GetAttrStr( AT_StampAlignmentMode ) );
-        if ( ( loc != AlignBottom ) && ( loc != AlignMiddle ) && ( loc != AlignTop ) )
-        {
-            loc = AlignTop;
-            SetAlignmentModeType( loc );
-        }
-        return FindAlignmentModeType( GetAttrStr( AT_StampAlignmentMode ) );
-    };
-
-
-
-    double Album::GetPageHeight( ) {
-        return GetAttrDbl( AT_PageHeight );
-    };
-
-    double Album::GetHeight( ) {
-        return GetPageHeight( );
-
-    };
-    wxString Album::GetPageHeightStr( ) {
-        return GetAttrStr( AT_PageHeight );
-    };
-
-    double Album::GetPaperHeight( ) {
-        return GetAttrDbl( AT_PaperHeight );
-    };
-
-
-    wxString Album::GetPaperHeightStr( ) {
-        return GetAttrStr( AT_PaperHeight );
-    };
-
-    double Album::GetPaperWidth( ) {
-        return GetAttrDbl( AT_PaperWidth );
-    };
-
-    wxString Album::GetPaperWidthStr( ) {
-        return GetAttrStr( AT_PaperWidth );
-    };
-
-
-    double Album::GetPageWidth( ) {
-        return GetAttrDbl( AT_PageWidth );
-    };
-
-    wxString Album::GetPageWidthStr( ) {
-        return GetAttrStr( AT_PageWidth );
-    };
-
-    double Album::GetWidth( ) {
-        return GetPageWidth( );
-    };
-
-    double Album::GetRightPageMargin( ) {
-        return GetAttrDbl( AT_RightPageMargin );
-    };
-
-    wxString Album::GetRightPageMarginStr( ) {
-        return GetAttrStr( AT_RightPageMargin );
-    };
-
-    double Album::GetTopPageMargin( ) {
-        return GetAttrDbl( AT_TopPageMargin );
-    };
-
-    wxString Album::GetTopPageMarginStr( ) {
-        return GetAttrStr( AT_TopPageMargin );
-    };
 
 
     bool Album::IsDefaultFont( FontUsageType fontType, int ndx )
@@ -521,6 +274,236 @@ namespace Design {
             }
         }
     }
+    void Album::FixupNode( )
+    {
+
+        for ( int j = 0; j < AT_NbrAttrTypes; j++ )
+        {
+            AlbumAttrType i = ( AlbumAttrType ) j;
+            wxString str = GetAttrStr( i );
+            if ( !str.IsEmpty( ) )
+            {
+                if ( i == AT_PageWidth )
+                {
+                    m_pageDefaults.SetAttrStr( i, str );
+                    DeleteAttribute( AttrNameStrings[ i ] );
+                }
+                else  if ( i == AT_PageHeight )
+                {
+                    m_pageDefaults.SetAttrStr( i, str );
+                    DeleteAttribute( AttrNameStrings[ i ] );
+                }
+                else  if ( i == AT_TopPageMargin )
+                {
+                    m_pageDefaults.SetAttrStr( i, str );
+                    DeleteAttribute( AttrNameStrings[ i ] );
+                }
+                else  if ( i == AT_BottomPageMargin )
+                {
+                    m_pageDefaults.SetAttrStr( i, str );
+                    DeleteAttribute( AttrNameStrings[ i ] );
+                }
+                else  if ( i == AT_RightPageMargin )
+                {
+                    m_pageDefaults.SetAttrStr( i, str );
+                    DeleteAttribute( AttrNameStrings[ i ] );
+                }
+                else  if ( i == AT_LeftPageMargin )
+                {
+                    m_pageDefaults.SetAttrStr( i, str );
+                    DeleteAttribute( AttrNameStrings[ i ] );
+                }
+                else  if ( i == AT_BorderFileName )
+                {
+                    m_pageDefaults.SetAttrStr( i, str );
+                    DeleteAttribute( AttrNameStrings[ i ] );
+                }
+                else  if ( i == AT_BorderSize )
+                {
+                    m_pageDefaults.SetAttrStr( i, str );
+                    DeleteAttribute( AttrNameStrings[ i ] );
+                }
+                else  if ( i == AT_ShowTitle )
+                {
+                    m_pageDefaults.SetAttrStr( i, str );
+                    DeleteAttribute( AttrNameStrings[ i ] );
+                }
+                else  if ( i == AT_ShowSubTitle )
+                {
+                    m_pageDefaults.SetAttrStr( i, str );
+                    DeleteAttribute( AttrNameStrings[ i ] );
+                }
+                else  if ( i == AT_ShowCatNbr )
+                {
+                    m_stampDefaults.SetAttrStr( i, str );
+                    DeleteAttribute( AttrNameStrings[ i ] );
+                }
+                else  if ( i == AT_ShowFrame )
+                {
+                    m_frameDefaults.SetAttrStr( i, str );
+                    DeleteAttribute( AttrNameStrings[ i ] );
+                }
+                else  if ( i == AT_ShowImage )
+                {
+                    m_stampDefaults.SetAttrStr( i, str );
+                    DeleteAttribute( AttrNameStrings[ i ] );
+                }
+                else  if ( i == AT_Orientation )
+                {
+                    m_pageDefaults.SetAttrStr( i, str );
+                    DeleteAttribute( AttrNameStrings[ i ] );
+                }
+                else  if ( i == AT_GrayScaleImages )
+                {
+                    m_stampDefaults.SetAttrStr( i, str );
+                    DeleteAttribute( AttrNameStrings[ i ] );
+                }
+                else  if ( i == AT_TopContentMargin )
+                {
+                    m_pageDefaults.SetAttrStr( i, str );
+                    DeleteAttribute( AttrNameStrings[ i ] );
+                }
+                else  if ( i == AT_BottomContentMargin )
+                {
+                    m_pageDefaults.SetAttrStr( i, str );
+                    DeleteAttribute( AttrNameStrings[ i ] );
+                }
+                else  if ( i == AT_LeftContentMargin )
+                {
+                    m_pageDefaults.SetAttrStr( i, str );
+                    DeleteAttribute( AttrNameStrings[ i ] );
+                }
+                else  if ( i == AT_RightContentMargin )
+                {
+                    m_pageDefaults.SetAttrStr( i, str );
+                    DeleteAttribute( AttrNameStrings[ i ] );
+                }
+                else  if ( i == AT_CalculateSpacing )
+                {
+                    m_frameDefaults.SetAttrStr( i, str );
+                    DeleteAttribute( AttrNameStrings[ i ] );
+                }
+                else  if ( i == AT_FixedSpacingSize )
+                {
+                    m_frameDefaults.SetAttrStr( i, str );
+                    DeleteAttribute( AttrNameStrings[ i ] );
+                }
+                else  if ( i == AT_OverSizePaper )
+                {
+                    m_pageDefaults.SetAttrStr( i, str );
+                    DeleteAttribute( AttrNameStrings[ i ] );
+                }
+                else  if ( i == AT_PaperHeight )
+                {
+                    m_pageDefaults.SetAttrStr( i, str );
+                    DeleteAttribute( AttrNameStrings[ i ] );
+                }
+                else  if ( i == AT_PaperWidth )
+                {
+                    m_pageDefaults.SetAttrStr( i, str );
+                    DeleteAttribute( AttrNameStrings[ i ] );
+                }
+                else  if ( i == AT_SelvageHeight )
+                {
+                    m_stampDefaults.SetAttrStr( i, str );
+                    DeleteAttribute( AttrNameStrings[ i ] );
+                }
+                else  if ( i == AT_SelvageWidth )
+                {
+                    m_stampDefaults.SetAttrStr( i, str );
+                    DeleteAttribute( AttrNameStrings[ i ] );
+                }
+                else  if ( i == AT_MountAllowanceHeight )
+                {
+                    m_stampDefaults.SetAttrStr( i, str );
+                    DeleteAttribute( AttrNameStrings[ i ] );
+                }
+                else  if ( i == AT_MountAllowanceWidth )
+                {
+                    m_stampDefaults.SetAttrStr( i, str );
+                    DeleteAttribute( AttrNameStrings[ i ] );
+                }
+                else  if ( i == AT_StampNamePosition )
+                {
+                    m_stampDefaults.SetAttrStr( i, str );
+                    DeleteAttribute( AttrNameStrings[ i ] );
+                }
+                else  if ( i == AT_StampAlignmentMode )
+                {
+                    m_frameDefaults.SetAttrStr( i, str );
+                    DeleteAttribute( AttrNameStrings[ i ] );
+                }
+                else  if ( i == AT_StampMargin )
+                {
+                    m_stampDefaults.SetAttrStr( i, str );
+                    DeleteAttribute( AttrNameStrings[ i ] );
+                }
+                else  if ( i == AT_Catalog )
+                {
+                    m_stampDefaults.SetAttrStr( i, str );
+                    DeleteAttribute( AttrNameStrings[ i ] );
+                }
+            }
+        }
+    }
+
+    void Album::LoadDefaults( wxXmlNode* node )
+    {
+
+        wxXmlNode* defaults = Utils::FirstChildElement( node, "Defaults" );
+        if ( defaults )
+        {
+            wxXmlNode* child = defaults->GetChildren( );
+            while ( child )
+            {
+                wxString name = child->GetName( );
+                if ( name.Cmp( LayoutTypeStrings[ LT_Page ] ) )
+                {
+                    wxXmlAttribute* attr = child->GetAttributes( );
+                    while ( attr )
+                    {
+                        wxString attrName = attr->GetName( );
+                        if ( attrName.Cmp( AttrNameStrings[ AT_LayoutType ] ) )
+                        {
+                            wxString attrVal = attr->GetValue( );
+                            m_pageDefaults.SetAttrStr( attrName, attrVal );
+                        }
+                        attr = attr->GetNext( );
+                    }
+                }
+                else  if ( name.Cmp( LayoutTypeStrings[ LT_Stamp ] ) )
+                {
+                    wxXmlAttribute* attr = child->GetAttributes( );
+                    while ( attr )
+                    {
+                        wxString attrName = attr->GetName( );
+                        if ( attrName.Cmp( AttrNameStrings[ AT_LayoutType ] ) )
+                        {
+                            wxString attrVal = attr->GetValue( );
+                            m_stampDefaults.SetAttrStr( attrName, attrVal );
+                        }
+                        attr = attr->GetNext( );
+                    }
+                }
+                else  if ( name.Cmp( LayoutTypeStrings[ LT_Frame ] ) )
+                {
+                    wxXmlAttribute* attr = child->GetAttributes( );
+                    while ( attr )
+                    {
+                        wxString attrName = attr->GetName( );
+                        if ( attrName.Cmp( AttrNameStrings[ AT_LayoutType ] ) )
+                        {
+                            wxString attrVal = attr->GetValue( );
+                            m_frameDefaults.SetAttrStr( attrName, attrVal );
+                        }
+                        attr = attr->GetNext( );
+                    }
+                }
+                child = child->GetNext( );
+            }
+        }
+    }
+
 
     void Album::MakeAlbum( )
     {
@@ -539,6 +522,9 @@ namespace Design {
         MakeAlbum( );
         wxString outName = DrawPDF( );
     }
+    // SaveDefault( Design::AlbumAttrType type )
+    // {
+    // }
 
     void Album::Save( wxXmlNode* xmlNode )
     {
@@ -556,9 +542,12 @@ namespace Design {
         SetAttribute( xmlNode, AT_BorderSize );
         SetAttribute( xmlNode, AT_ShowCatNbr );
         SetAttribute( xmlNode, AT_ShowTitle );
-        SetAttribute( xmlNode, AT_SubTitle );
+        SetAttribute( xmlNode, AT_ShowTitle );
+        SetAttribute( xmlNode, AT_ShowTitle );
+        SetAttribute( xmlNode, AT_ShowSubTitle );
+        SetAttribute( xmlNode, AT_ShowSubTitle );
         SetAttribute( xmlNode, AT_GrayScaleImages );
-        SetAttribute( xmlNode, AT_StampNameLocation );
+        SetAttribute( xmlNode, AT_StampNamePosition );
         SetAttribute( xmlNode, AT_Orientation );
         SaveFonts( xmlNode );
     }
@@ -623,18 +612,6 @@ namespace Design {
         }
     }
 
-    void Album::SetBorderSize( wxString str ) {
-        SetAttrStr( AT_BorderSize, str );
-    };
-
-    void Album::SetBorderFilename( wxString str ) {
-        SetAttrStr( AT_BorderFileName, str );
-    };
-
-    void Album::SetBottomPageMargin( wxString str ) {
-        SetAttrStr( AT_BottomPageMargin, str );
-    };
-
     void Album::SetCatalog( wxString str )
     {
 
@@ -681,64 +658,6 @@ namespace Design {
         }
     }
 
-    void Album::SetLeftPageMargin( wxString str ) {
-        SetAttrStr( AT_LeftPageMargin, str );
-    };
-
-    void Album::SetPageHeight( wxString str ) {
-        SetAttrStr( AT_PageHeight, str );
-    };
-
-    void Album::SetPageWidth( wxString str ) {
-        SetAttrStr( AT_PageWidth, str );
-    };
-
-    void Album::SetPaperHeight( wxString str ) {
-        SetAttrStr( AT_PaperHeight, str );
-    };
-
-    void Album::SetPaperWidth( wxString str ) {
-        SetAttrStr( AT_PaperWidth, str );
-    };
-
-
-    void Album::SetRightPageMargin( wxString str ) {
-        SetAttrStr( AT_RightPageMargin, str );
-    };
-
-    void Album::SetTopPageMargin( wxString str ) {
-        SetAttrStr( AT_TopPageMargin, str );
-    };
-
-    void Album::SetDefaultStampNameLocation( StampNameLocation loc )
-    {
-        SetAttrStr( AT_StampNameLocation, StampNameLocationStrings[ loc ] );
-    }
-    void Album::SetDefaultStampNameLocationType( StampNameLocation loc )
-    {
-        if ( ( loc != AT_StampNameLocationBottom ) && ( loc != AT_StampNameLocationTop ) )
-        {
-            loc = AT_StampNameLocationTop;
-        }
-        SetAttrStr( AT_StampNameLocation, StampNameLocationStrings[ loc ] );
-    };
-
-
-
-    void Album::SetAlignmentMode( AlignmentMode loc )
-    {
-        SetAttrStr( AT_StampAlignmentMode, StampAlignmentModeStrings[ loc ] );
-    }
-
-    void Album::SetAlignmentModeType( AlignmentMode loc )
-    {
-        if ( ( loc != AlignBottom ) && ( loc != AlignTop ) )
-        {
-            loc = AlignTop;
-        }
-        SetAttrStr( AT_StampAlignmentMode, StampAlignmentModeStrings[ loc ] );
-    };
-
 
     void Album::SetFontNdx( FontUsageType fontType, int ndx )
     {
@@ -764,7 +683,7 @@ namespace Design {
                     Page* page = ( Page* ) GetAlbumTreeCtrl( )->GetItemNode( childID );
 
                     page->Init( );
-                    page->SetBorderFilename( GetBorderFileName( ) );
+                    page->SetBorderFilename( m_pageDefaults.BorderFilename( ) );
                     page->UpdateMinimumSize( );
                     break;
                 }
@@ -815,12 +734,12 @@ namespace Design {
     NodeStatus Album::ValidateNode( )
     {
         NodeStatus status = AT_OK;
-        if ( GetPageHeight( ) <= 0.0 )
+        if ( m_pageDefaults.PageHeight( ) <= 0.0 )
         {
             // "Must define the page height.\n";
             status = AT_FATAL;
         }
-        if ( GetPageWidth( ) <= 0.0 )
+        if ( m_pageDefaults.PageWidth( ) <= 0.0 )
         {
             //   "Must define the page width.\n";
             status = AT_FATAL;

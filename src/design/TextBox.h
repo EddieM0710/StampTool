@@ -146,8 +146,18 @@ namespace Design {
         ///  
         ///  @return true 
         ///  @return false 
-        bool GetShowTitle( ) { return String2Bool( GetAttrStr( AT_ShowTitle ) ); };
-        bool GetShowSubTitle( ) { return String2Bool( GetAttrStr( AT_ShowSubTitle ) ); };
+        bool GetShowTitle( ) {
+            return String2Bool( GetAttrStr( AT_ShowTitle ) );
+        };
+        bool GetShowSubTitle( ) {
+            return String2Bool( GetAttrStr( AT_ShowSubTitle ) );
+        };
+
+        void SetShowNbr( bool val ){};
+        bool GetShowNbr( ) {
+            return false;
+        };
+
 
         ///  @brief Get the Text Frame object
         ///  
@@ -186,8 +196,12 @@ namespace Design {
         ///  @brief Set the Show Title object
         ///  
         ///  @param val 
-        void SetShowTitle( bool val ) { SetAttrStr( AT_ShowTitle, Bool2String( val ) ); };
-        void SetShowSubTitle( bool val ) { SetAttrStr( AT_ShowSubTitle, Bool2String( val ) ); };
+        void SetShowTitle( bool val ) {
+            SetAttrStr( AT_ShowTitle, Bool2String( val ) );
+        };
+        void SetShowSubTitle( bool val ) {
+            SetAttrStr( AT_ShowSubTitle, Bool2String( val ) );
+        };
 
         ///  @brief Set the Text String object
         ///  

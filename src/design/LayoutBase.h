@@ -115,23 +115,24 @@ namespace Design {
             return m_frame.GetMinWidth( );
         };
 
-        bool GetShowFrame( ) {
+        bool GetShow( ) {
             return String2Bool( GetAttrStr( AT_ShowFrame ) );
         };
 
         //        bool GetShowImage( ){ return String2Bool( GetAttrStr( AT_ShowImage ) ); };
         //        void SetShowImage( bool val ){ SetAttrStr( AT_ShowImage, Bool2String( val ) ); };
 
-        bool GetShowNbr( ) {
-            return String2Bool( GetAttrStr( AT_ShowCatNbr ) );
-        };
+        bool GetShowNbr( );
+        //     return String2Bool( GetAttrStr( AT_ShowCatNbr ) );
+        // };
 
-        bool GetShowTitle( ) {
-            return String2Bool( GetAttrStr( AT_ShowTitle ) );
-        };
-        bool GetShowSubTitle( ) {
-            return String2Bool( GetAttrStr( AT_ShowSubTitle ) );
-        };
+        virtual bool GetShowTitle( ) = 0;
+        //     return String2Bool( GetAttrStr( AT_ShowTitle ) );
+        // };
+
+        virtual bool GetShowSubTitle( ) = 0;
+        //     return String2Bool( GetAttrStr( AT_ShowSubTitle ) );
+        // };
 
         wxString GetString( Design::FontUsageType fontType )
         {
@@ -154,7 +155,7 @@ namespace Design {
             return "";
         };
 
-        // StampNameLocation GetTitleLocation( );
+        // StampNamePosition GetTitleLocation( );
 
         /*
          * @brief Get Layout element position within parent element
@@ -190,7 +191,7 @@ namespace Design {
 
         bool IsInClient( double x, double y, wxString indent = "" );
 
-        //bool IsTitleLocation( StampNameLocation loc );
+        //bool IsTitleLocation( StampNamePosition loc );
 
 
         virtual void LoadFonts( wxXmlNode* node ) = 0;
@@ -227,24 +228,24 @@ namespace Design {
             m_frame.SetMinWidth( val );
         };
 
-        void SetShowFrame( bool val ) {
+        void SetShow( bool val ) {
             SetAttrStr( AT_ShowFrame, Bool2String( val ) );
         };
 
-        void SetShowNbr( bool val ) {
-            SetAttrStr( AT_ShowCatNbr, Bool2String( val ) );
-        };
+        void SetShowNbr( bool val );
+        //     SetAttrStr( AT_ShowCatNbr, Bool2String( val ) );
+        // };
 
-        void SetShowTitle( bool val ) {
-            SetAttrStr( AT_ShowTitle, Bool2String( val ) );
-        };
+        virtual void SetShowTitle( bool val ) = 0;
+        //     SetAttrStr( AT_ShowTitle, Bool2String( val ) );
+        // };
 
-        void SetShowSubTitle( bool val ) {
-            SetAttrStr( AT_ShowSubTitle, Bool2String( val ) );
-        };
+        virtual void SetShowSubTitle( bool val ) = 0;
+        //     SetAttrStr( AT_ShowSubTitle, Bool2String( val ) );
+        // };
 
 
-        //void SetTitleLocation( StampNameLocation loc ) { m_titleLocation = loc; };
+        //void SetTitleLocation( StampNamePosition loc ) { m_titleLocation = loc; };
 
         /*
          * @brief  Set Layout element position

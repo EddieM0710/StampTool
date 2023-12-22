@@ -403,15 +403,15 @@ void AlbumImagePanel::OnPaint( wxPaintEvent& event )
 
                 double width;
                 double height;
-                if ( Design::IsPortrait( pageNode->GetOrientation( ) ) )
+                if ( Design::IsPortrait( pageNode->Orientation( ) ) )
                 {
-                    width = album->GetWidth( );
-                    height = album->GetHeight( );
+                    width = album->AlbumPageDefaults( )->GetWidth( );
+                    height = album->AlbumPageDefaults( )->GetHeight( );
                 }
                 else
                 {
-                    height = album->GetWidth( );
-                    width = album->GetHeight( );
+                    height = album->AlbumPageDefaults( )->GetWidth( );
+                    width = album->AlbumPageDefaults( )->GetHeight( );
                 }
 
                 m_userScale = ( .5 - ( .4 - m_zoom ) );

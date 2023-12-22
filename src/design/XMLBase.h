@@ -108,6 +108,16 @@ namespace Design {
             return m_text;
         }
 
+        bool IsEqual( AlbumAttrType type, wxString val )
+        {
+            return !val.Cmp( GetAttrStr( type ) );
+        }
+
+        bool IsEqualDbl( AlbumAttrType type, double val )
+        {
+            return ( val == GetAttrDbl( type ) );
+        }
+
         bool IsNodeType( AlbumBaseType type ) {
             return ( type == m_nodeType );
         };

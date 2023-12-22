@@ -118,9 +118,7 @@ public:
 
     //   wxID_OK
     void OnOkClick( wxCommandEvent& event );
-    void OnDefaultRadioButtonSelected( wxCommandEvent& event );
-    void OnTopRadioButtonSelected( wxCommandEvent& event );
-    void OnBottomRadioButtonSelected( wxCommandEvent& event );
+
     void OnAlignmentModeButtonSelected( wxCommandEvent& event );
     void OnTitleDefaultClick( wxCommandEvent& event );
 
@@ -130,16 +128,15 @@ public:
     void SetNameModified( bool state );
     void SetShowTitle( bool state = false );
     void SetShowSubTitle( bool state = false );
-    void SetShowFrame( bool state = false );
+    void SetShow( bool state = false );
     void SetColor( wxColour color );
     void SetFont( wxFont font );
     bool GetShowTitle( );
     bool GetShowSubTitle( );
-    bool GetShowFrame( );
-    void SetTitleLocation( );
+    bool GetShow( );
+    //  void SetTitleLocation( );
     void SetAlignmentMode( );
-
-    Design::StampNameLocation GetTitleLocationType( );
+    Design::StampNamePosType GetTitleLocationType( );
     void SetCalculateSpacing( bool val );
     void SetFixedSpacingSize( wxString str ) {
         //     m_positionFixedSize->SetValue( str );
@@ -188,7 +185,7 @@ private:
     // wxStaticBox* m_TitleLocationBox;
      //wxStaticBoxSizer* m_titleLocationVSizer;
      //wxBoxSizer* m_titleLocationHSizer;
-    Design::StampNameLocation m_titleLocation;
+    Design::StampNamePosType m_titleLocation;
 
     wxRadioButton* m_topButton;
     wxRadioButton* m_bottomButton;

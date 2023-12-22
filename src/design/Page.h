@@ -128,6 +128,28 @@ namespace Design {
             m_topPageMargin = val;
         };
 
+        bool GetShowTitle( ) {
+            return String2Bool( GetAttrStr( AT_ShowTitle ) );
+        };
+
+        bool GetShowSubTitle( ) {
+            return String2Bool( GetAttrStr( AT_ShowSubTitle ) );
+        };
+
+        void SetShowNbr( bool val ){};
+
+        bool GetShowNbr( ) {
+            return false;
+        };
+
+        void SetShowTitle( bool val ) {
+            SetAttrStr( AT_ShowTitle, Bool2String( val ) );
+        };
+
+        void SetShowSubTitle( bool val ) {
+            SetAttrStr( AT_ShowSubTitle, Bool2String( val ) );
+        };
+
         void LoadFonts( wxXmlNode* node );
 
 
@@ -155,23 +177,25 @@ namespace Design {
         void UpdateLayout( );
 
         NodeStatus ValidateNode( );
-        wxString GetOrientation( )
+
+        wxString Orientation( )
         {
             wxString orientation = GetAttrStr( AT_Orientation );
             if ( orientation.IsEmpty( ) )
             {
-                return GetAlbum( )->GetDefaultOrientation( );
+                return AlbumPageDefaults( )->Orientation( );
             }
             return orientation;
         };
-        void SetOrientation( wxString orientation )
+
+        void Orientation( wxString orientation )
         {
             SetAttrStr( AT_Orientation, orientation );
             Init( );
         };
 
-        bool IsDefaultOrientation( ) {
-            return GetAlbum( )->IsDefaultOrientation( GetOrientation( ) );
+        bool IsOrientation( ) {
+            return AlbumPageDefaults( )->IsOrientation( Orientation( ) );
         };
     private:
 

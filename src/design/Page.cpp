@@ -53,35 +53,36 @@ namespace Design {
     void Page::Init( )
     {
         Album* album = GetAlbum( );
-        if ( album )
+        PageDefaults* parameters = AlbumPageDefaults( );
+        if ( parameters )
         {
-            if ( Design::IsPortrait( GetOrientation( ) ) )
+            if ( Design::IsPortrait( Orientation( ) ) )
             {
 
                 // the page frame takes into account the pageMargins, the border is within this
-                SetXPos( album->GetLeftPageMargin( ) );
-                SetYPos( album->GetTopPageMargin( ) );
-                SetWidth( album->GetWidth( ) - album->GetRightPageMargin( ) - album->GetLeftPageMargin( ) );
-                SetHeight( album->GetHeight( ) - album->GetTopPageMargin( ) - album->GetBottomPageMargin( ) );
-                SetTopPageMargin( album->GetTopPageMargin( ) );
-                SetBottomPageMargin( album->GetBottomPageMargin( ) );
-                SetRightPageMargin( album->GetRightPageMargin( ) );
-                SetLeftPageMargin( album->GetLeftPageMargin( ) );
-                SetBorderSize( album->GetBorderSize( ) );
+                SetXPos( parameters->LeftMargin( ) );
+                SetYPos( parameters->GetTopMargin( ) );
+                SetWidth( parameters->GetWidth( ) - parameters->RightMargin( ) - parameters->LeftMargin( ) );
+                SetHeight( parameters->GetHeight( ) - parameters->GetTopMargin( ) - parameters->BottomMargin( ) );
+                SetTopPageMargin( parameters->GetTopMargin( ) );
+                SetBottomPageMargin( parameters->BottomMargin( ) );
+                SetRightPageMargin( parameters->RightMargin( ) );
+                SetLeftPageMargin( parameters->LeftMargin( ) );
+                SetBorderSize( parameters->BorderSize( ) );
             }
             else
             {
                 //SetBorder( m_border );
                 // the page frame takes into account the pageMargins, the border is within this
-                SetXPos( album->GetTopPageMargin( ) );
-                SetYPos( album->GetLeftPageMargin( ) );
-                SetHeight( album->GetWidth( ) - album->GetRightPageMargin( ) - album->GetLeftPageMargin( ) );
-                SetWidth( album->GetHeight( ) - album->GetTopPageMargin( ) - album->GetBottomPageMargin( ) );
-                SetTopPageMargin( album->GetLeftPageMargin( ) );
-                SetBottomPageMargin( album->GetRightPageMargin( ) );
-                SetRightPageMargin( album->GetBottomPageMargin( ) );
-                SetLeftPageMargin( album->GetTopPageMargin( ) );
-                SetBorderSize( album->GetBorderSize( ) );
+                SetXPos( parameters->GetTopMargin( ) );
+                SetYPos( parameters->LeftMargin( ) );
+                SetHeight( parameters->GetWidth( ) - parameters->RightMargin( ) - parameters->LeftMargin( ) );
+                SetWidth( parameters->GetHeight( ) - parameters->GetTopMargin( ) - parameters->BottomMargin( ) );
+                SetTopPageMargin( parameters->LeftMargin( ) );
+                SetBottomPageMargin( parameters->RightMargin( ) );
+                SetRightPageMargin( parameters->BottomMargin( ) );
+                SetLeftPageMargin( parameters->GetTopMargin( ) );
+                SetBorderSize( parameters->BorderSize( ) );
             }
         }
     }
@@ -131,19 +132,19 @@ namespace Design {
 
         double xPos = GetLeftPageMargin( );
         double yPos = GetTopPageMargin( );
-        double width = GetAlbum( )->GetWidth( );
-        double height = GetAlbum( )->GetHeight( );
+        double width = AlbumPageDefaults( )->GetWidth( );
+        double height = AlbumPageDefaults( )->GetHeight( );
 
         wxImage image = GetProject( )->GetImage( borderName );
         doc->Image( borderName, image, xPos, yPos,
             GetWidth( ),
             GetHeight( ) );
 
-        if ( GetAlbum( )->GetOverSizePaper( ) )
+        if ( AlbumPageDefaults( )->OverSizePaper( ) )
         {
             wxPdfLineStyle currStyle = PDFLineStyle( doc, *wxBLACK, .2, defaultDash );
 
-            if ( Design::IsPortrait( GetOrientation( ) ) )
+            if ( Design::IsPortrait( Orientation( ) ) )
             {
                 doc->Line( 0, height, width, height );
                 doc->Line( width, 0, width, height );
@@ -236,11 +237,10 @@ namespace Design {
         SetAttribute( xmlNode, AT_Name );
         SetAttribute( xmlNode, AT_ShowTitle );
         SetAttribute( xmlNode, AT_ShowSubTitle );
-        SetAttribute( xmlNode, AT_ShowSubTitle );
         SetAttribute( xmlNode, AT_SubTitle );
         SetAttribute( xmlNode, AT_ShowFrame );
 
-        if ( !GetAlbum( )->IsDefaultOrientation( GetOrientation( ) ) )
+        if ( !AlbumPageDefaults( )->IsOrientation( Orientation( ) ) )
         {
             SetAttribute( xmlNode, AT_Orientation );
         }
@@ -517,7 +517,7 @@ namespace Design {
                     - GetLeftContentMargin( )
                     - GetRightContentMargin( )
                     - 2 * GetBorderSize( ) );
-                if ( child->GetShowTitle( ) )
+                if ( ( ( Row* ) child )->GetShowTitle( ) )
                 {
                     child->SetHeight( childHeight
                         - GetTitleFrame( )->GetHeight( ) ); //allow for title

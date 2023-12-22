@@ -50,21 +50,48 @@ namespace Design {
 
         void InitParameters( );
 
+        double GetRowAttributeDbl( Design::AlbumAttrType type );
+        wxString GetRowAttributeStr( Design::AlbumAttrType type );
+        bool GetRowAttributeBool( Design::AlbumAttrType type );
+
+        void SetRowAttributeBool( Design::AlbumAttrType type, bool val );
+        void SetRowAttributeDbl( Design::AlbumAttrType type, double val );
+        void SetRowAttributeStr( Design::AlbumAttrType type, wxString val );
+
         bool CalculateSpacing( ) {
-            wxString str = GetAttrStr( AT_CalculateSpacing );
-            if ( str.IsEmpty( ) )
-            {
-                return true;
-            }
-            return String2Bool( str, true );
+            return GetRowAttributeBool( AT_CalculateSpacing );
         };
         wxString GetTitleString( );
 
         wxString GetSubTitleString( );
 
+        bool GetShowTitle( ) {
+            return GetRowAttributeBool( AT_ShowTitle );
+        };
+        bool GetShowSubTitle( ) {
+            return GetRowAttributeBool( AT_ShowSubTitle );
+        };
+
+        // void SetShowNbr( bool val ){};
+        // bool GetShowNbr( ) {
+        //     return false;
+        // };
+
         void SetTitleString( wxString str );
 
         void SetSubTitleString( wxString str );
+
+        void SetShowTitle( bool val ) {
+            SetRowAttributeBool( AT_ShowTitle, val );
+        };
+
+        void SetShowSubTitle( bool val ) {
+            SetRowAttributeBool( AT_ShowSubTitle, val );
+        };
+
+        bool IsDefaultVal( AlbumAttrType type );
+
+        bool IsDefaultVal( AlbumAttrType type, wxString val );
 
         TitleFrame* GetTitleFrame( );
 
@@ -73,11 +100,11 @@ namespace Design {
         void DrawPDF( wxPdfDocument* doc, double x, double y );
 
         wxString GetFixedSpacing( ) {
-            return GetAttrStr( AT_FixedSpacingSize );
+            return GetRowAttributeStr( AT_FixedSpacingSize );
         };
 
         double GetFixedSpacingDbl( ) {
-            return GetAttrDbl( AT_FixedSpacingSize );
+            return GetRowAttributeDbl( AT_FixedSpacingSize );
         };
 
         void LoadFonts( wxXmlNode* node );
@@ -89,11 +116,11 @@ namespace Design {
         void Save( wxXmlNode* xmlNode );
 
         void SetFixedSpacingSize( wxString str ) {
-            SetAttrStr( AT_FixedSpacingSize, str );
+            SetRowAttributeStr( AT_FixedSpacingSize, str );
         };
 
         void SetCalculateSpacing( bool val ) {
-            SetAttrStr( AT_CalculateSpacing, Bool2String( val ) );
+            SetRowAttributeBool( AT_CalculateSpacing, val );
         };
 
         bool UpdateMinimumSize( );
@@ -111,22 +138,19 @@ namespace Design {
         NodeStatus ValidateNode( );
 
 
-        void SetDefaultStampNameLocation( StampNameLocation loc );
-
-        wxString GetStampNameLocation( );
-
-        StampNameLocation  GetDefaultStampNameLocationType( );
-
-        void SetDefaultStampNameLocationType( StampNameLocation loc );
-
 
         //  wxString GetAlignmentMode( );
 
-        void SetAlignmentMode( AlignmentMode loc );
+        void SetAlignmentMode( AlignmentModeType loc );
 
-        void SetAlignmentModeType( AlignmentMode loc );
+        void SetAlignmentMode( wxString str );
 
-        AlignmentMode  GetAlignmentModeType( );
+        // void SetAlignmentModeType( AlignmentModeType loc );
+
+        AlignmentModeType  GetAlignmentModeType( );
+
+
+
     private:
 
         DebugString m_debugString;

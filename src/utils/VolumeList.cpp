@@ -49,7 +49,7 @@ namespace Utils {
         wxString label;
 
         wxString nodeName = child->GetName( );
-        Utils::TOCBaseType  nodeType = Utils::FindTOCBaseType( nodeName );
+        Utils::TOCBaseType  nodeType = FindTOCBaseType( nodeName );
         if ( nodeType == Utils::TOC_Volume )
         {
 

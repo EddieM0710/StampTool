@@ -35,7 +35,7 @@
 
 namespace Design {
 
-
+    //----------------
 
     Column::Column( wxXmlNode* node ) : LayoutBase( node ) {
         SetNodeType( AT_Col );
@@ -51,6 +51,7 @@ namespace Design {
 
     };
 
+    //----------------
 
     void Column::InitParameters( )
     {
@@ -63,28 +64,23 @@ namespace Design {
         SetBottomContentMargin( 2 );
         SetLeftContentMargin( 2 );
         SetRightContentMargin( 2 );
-
-        // wxString location = GetStampNamePosition( );
-        // if ( location.Cmp( Design::StampNamePositionStrings[ AT_StampNamePositionTop ] ) &&
-        //     location.Cmp( Design::StampNamePositionStrings[ AT_StampNamePositionBottom ] ) )
-        // {
-        //     SetDefaultStampNamePosition( AT_StampNamePositionTop );
-        // }
-
-
-        // CalculateSpacing="true">
-
     }
+
+    //----------------
 
     TitleFrame* Column::GetTitleFrame( )
     {
         return m_titleFrame;
     };
 
+    //----------------
+
     wxString Column::GetTitleString( )
     {
         return m_titleFrame->GetHeadingString( );
     };
+
+    //----------------
 
     void Column::SetTitleString( wxString str )
     {
@@ -92,10 +88,14 @@ namespace Design {
         m_titleFrame->SetHeadingString( str );
     };
 
+    //----------------
+
     wxString Column::GetSubTitleString( )
     {
         return m_titleFrame->GetHeadingString( );
     };
+
+    //----------------
 
     void Column::SetSubTitleString( wxString str )
     {
@@ -103,8 +103,7 @@ namespace Design {
         m_titleFrame->SetSubHeadingString( str );
     };
 
-
-
+    //----------------
 
     void Column::Draw( wxDC& dc, double x, double y )
     {
@@ -143,6 +142,9 @@ namespace Design {
             }
         }
     }
+
+    //----------------
+
     void Column::DrawPDF( wxPdfDocument* doc, double x, double y )
     {
         double leftPadding = 0;
@@ -175,6 +177,7 @@ namespace Design {
         }
     }
 
+    //----------------
 
     void Column::LoadFonts( wxXmlNode* node )
     {
@@ -185,12 +188,15 @@ namespace Design {
         }
     }
 
+    //----------------
+
     void Column::ReportLayout( )
     {
         std::cout << "Layout for Column " << "\n ";
         ReportLayoutFrame( );
     };
 
+    //----------------
 
     void Column::Save( wxXmlNode* xmlNode )
     {
@@ -201,10 +207,14 @@ namespace Design {
         SaveFonts( xmlNode );
     }
 
+    //----------------
+
     void Column::SaveFonts( wxXmlNode* parent )
     {
         m_titleFrame->SaveFonts( parent );
     }
+
+    //----------------
 
     bool Column::UpdateMinimumSize( )
     {
@@ -263,8 +273,9 @@ namespace Design {
 
         return true;
     }
+    //----------------
 
-    // calculate the column layout based on child parameters
+        // calculate the column layout based on child parameters
     void Column::UpdatePositions( )
     {
         // go to the bottom of each child container object ( row, column, page ) 
@@ -340,6 +351,8 @@ namespace Design {
         ValidateNode( );
     }
 
+    //----------------
+
     void Column::UpdateSizes( )
     {
         // Set the height and width of each child  column
@@ -369,6 +382,8 @@ namespace Design {
         }
 
     }
+
+    //----------------
 
     NodeStatus Column::ValidateNode( )
     {
@@ -403,12 +418,17 @@ namespace Design {
             if ( status == AT_FATAL )
             {
                 GetAlbumTreeCtrl( )->SetItemBackgroundColour( id, *wxRED );
-                std::cout << GetAlbumTreeCtrl( )->GetItemText( id ) << "Fatal\n";
+                std::cout << GetAlbumTreeCtrl( )->GetItemText( id ) << " Fatal\n";
             }
             else if ( status == AT_WARNING )
             {
                 GetAlbumTreeCtrl( )->SetItemBackgroundColour( id, *wxYELLOW );
                 std::cout << GetAlbumTreeCtrl( )->GetItemText( id ) << " Warning\n";
+            }
+            else
+            {
+                GetAlbumTreeCtrl( )->SetItemBackgroundColour( id, *wxWHITE );
+                //std::cout << GetAlbumTreeCtrl( )->GetItemText( id ) << " OK\n";
             }
         }
         return status;

@@ -98,6 +98,7 @@ void DesignTreeItemData::SetStampLink( Utils::StampLink* link ) {
     m_stampLink = link;
 };
 
+//----------------
 
 AlbumTreeCtrl::AlbumTreeCtrl( wxWindow* parent, const wxWindowID id,
     const wxPoint& pos, const wxSize& size,
@@ -166,8 +167,8 @@ void AlbumTreeCtrl::UpdateAlbumStampEntries( wxTreeItemId treeID )
         }
     }
 }
-//--------------
 
+//--------------
 
 // AddChild adds wxXmlNode as a item in the tree.  It is recursively called to
 // create sort nodes as necessary to find the proper place for the child
@@ -347,6 +348,8 @@ Design::TextBox* AlbumTreeCtrl::AddTextTreeItem( wxTreeItemId parentID, Design::
     return newText;
 }
 
+//----------------
+
 Utils::StampLink* AlbumTreeCtrl::AppendStamp( wxTreeItemId catTreeID )
 {
 
@@ -492,8 +495,8 @@ Design::Stamp* AlbumTreeCtrl::CreateNewStamp( wxTreeItemId catTreeID )
 
         newStamp->SetAttrStr( Design::AT_CatNbr, stamp.GetID( ) );
         newStamp->SetAttrStr( Design::AT_Name, stamp.GetName( ) );
-        newStamp->SetStampHeight( stamp.GetHeight( ) );
-        newStamp->SetStampWidth( stamp.GetWidth( ) );
+        newStamp->SetActualStampHeight( stamp.GetHeight( ) );
+        newStamp->SetActualStampWidth( stamp.GetWidth( ) );
         newStamp->SetStampImageFilename( stamp.FindImageName( ) );
         newStamp->SetShowTitle( newStamp->GetShowTitle( ) );
         newStamp->SetShowNbr( newStamp->GetShowNbr( ) );
@@ -510,9 +513,9 @@ Design::Stamp* AlbumTreeCtrl::CreateNewStamp( wxTreeItemId catTreeID )
         wxString title = "New Title";
         newStamp->SetAttrStr( Design::AT_Name, title );
         wxString height = "10.0";
-        newStamp->SetStampHeight( height );
+        newStamp->SetActualStampHeight( height );
         wxString width = "10.0";
-        newStamp->SetStampWidth( width );
+        newStamp->SetActualStampWidth( width );
     }
     return newStamp;
 }
@@ -1393,6 +1396,9 @@ void AlbumTreeCtrl::ShowMenu( wxTreeItemId id, const wxPoint& pt )
 //     return;
 
 //     }
+
+//----------------
+
 void AlbumTreeCtrl::Update( )
 {
 
@@ -1647,6 +1653,7 @@ void AlbumTreeCtrl::ValidateTree( )
     }
 }
 
+//----------------
 
 void AlbumTreeCtrl::OnTreectrlItemCollapsed( wxTreeEvent& event )
 {
@@ -1654,6 +1661,7 @@ void AlbumTreeCtrl::OnTreectrlItemCollapsed( wxTreeEvent& event )
     event.Skip( );
 }
 
+//----------------
 
 void AlbumTreeCtrl::OnTreectrlItemExpanded( wxTreeEvent& event )
 {

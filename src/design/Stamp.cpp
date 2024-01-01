@@ -53,17 +53,12 @@ namespace Design {
     const double BorderAllowancePercent = .1;
     const double ImagePercentOfActual = .75;
 
-
-
     //--------------
 
     Stamp::Stamp( ) : LayoutBase( ( wxXmlNode* ) 0 )
     {
         SetNodeType( AT_Stamp );
         SetObjectName( AlbumBaseNames[ AT_Stamp ] );
-        // SetShowNbr( true );
-        //SetShowTitle( true );
-        //SetShowSubTitle( false );
 
         m_nameFrame = new LabelFrame( Design::AT_NameFontType );
         m_nameFrame->SetString( "name" );
@@ -71,9 +66,7 @@ namespace Design {
         m_nbrFrame->SetString( "Nbr" );
         m_frame.Init( );
         InitParameters( );
-
     }
-
 
     //--------------
 
@@ -81,28 +74,18 @@ namespace Design {
     {
         SetNodeType( AT_Stamp );
         SetObjectName( AlbumBaseNames[ GetNodeType( ) ] );
-        //SetShowNbr( true );
-        //SetShowTitle( true );
-        //SetShowSubTitle( false );
 
         m_nameFrame = new LabelFrame( Design::AT_NameFontType );
         m_nbrFrame = new LabelFrame( Design::AT_NbrFontType );
+        m_nameFrame->SetString( GetAttrStr( AT_Name ) );
+
+        wxString str = MakeDisplayNbr( );
+        m_nbrFrame->SetString( str );
+
         m_frame.Init( );
 
         InitParameters( );
-        //  GetNameString
-        m_nameFrame->SetString( GetAttrStr( AT_Name ) );
-        wxFont font = m_nameFrame->GetFont( );
-        int point = font.GetPointSize( );
-
-        wxString str = MakeDisplayNbr( );
-
-        // int pos = str.Find( " " );
-        // str = str.substr( pos + 1 );
-        m_nbrFrame->SetString( str );
-        //  CalcFrame( );
     };
-
 
     //--------------
 
@@ -118,14 +101,12 @@ namespace Design {
         }
     }
 
-
     //--------------
 
     void DrawRotated( wxDC& dc, double x, double y )
     {
 
     }
-
 
     //--------------
 
@@ -134,11 +115,7 @@ namespace Design {
         Design::NodeStatus status = GetNodeStatus( );
         if ( status != Design::AT_FATAL )
         {
-            //Draw the outer frame transparent
-            //m_frame.Draw( dc, x, y );
-
             SetClientDimensions( dc, x + GetXPos( ), y + GetYPos( ), GetMinWidth( ), GetMinHeight( ) );
-
 
             //Draw the Stamp frame
             double xInnerPos = x + GetXPos( );
@@ -262,7 +239,6 @@ namespace Design {
         *ctrl << m_stampImageFrame.Layout( );
     }
 
-
     //--------------
 
     wxString Stamp::GetCatalogCodes( )
@@ -303,13 +279,11 @@ namespace Design {
         return m_nameFrame;
     };
 
-
     //--------------
 
     wxString  Stamp::GetNameString( ) {
         return m_nameFrame->GetString( );
     };
-
 
     //--------------
 
@@ -317,14 +291,13 @@ namespace Design {
         return m_nbrFrame;
     };
 
-
     //--------------
 
     wxString  Stamp::GetNbrString( ) {
         return GetAttrStr( AT_CatNbr );
     };
 
-
+    //----------------
 
     double Stamp::GetStampAttributeDbl( Design::AlbumAttrType type )
     {
@@ -336,6 +309,8 @@ namespace Design {
         return  GetAttrDbl( type );
     }
 
+    //----------------
+
     wxString Stamp::GetStampAttributeStr( Design::AlbumAttrType type )
     {
         wxString val = GetAttrStr( type );
@@ -345,6 +320,7 @@ namespace Design {
         }
         return val;
     }
+
     //--------------
 
     bool Stamp::GetStampAttributeBool( Design::AlbumAttrType type )
@@ -357,23 +333,20 @@ namespace Design {
         return String2Bool( catStr );
     }
 
-
-
     //--------------
 
-    double Stamp::GetStampWidth( )
+    double Stamp::GetActualStampWidth( )
     {
-        return m_stampFrame.GetWidth( );
+        return m_actualStampFrame.GetWidth( );
     };
 
 
     //--------------
 
-    wxString Stamp::GetStampWidthStr( )
+    wxString Stamp::GetActualStampWidthStr( )
     {
         return GetAttrStr( Design::AT_Width );
     };
-
 
     //--------------
 
@@ -396,30 +369,32 @@ namespace Design {
         return FindStampLocationType( GetStampNamePosition( ) );
     };
 
-
     //--------------
 
     void Stamp::InitParameters( )
     {
+
         wxString height = GetAttrStr( Design::AT_Height );
         if ( height.IsEmpty( ) )
         {
-            SetStampHeight( "10.0" );
+            SetActualStampHeight( "10.0" );
         }
         else
         {
-            SetStampHeight( height );
+            SetActualStampHeight( height );
         }
 
         wxString width = GetAttrStr( Design::AT_Width );
         if ( height.IsEmpty( ) )
         {
-            SetStampWidth( "10.0" );
+            SetActualStampWidth( "10.0" );
         }
         else
         {
-            SetStampWidth( width );
+            SetActualStampWidth( width );
         }
+
+        SetFixedParms( );
 
         wxString str = GetCatalogCodes( );
         if ( !str.IsEmpty( ) )
@@ -431,13 +406,14 @@ namespace Design {
         }
     }
 
-
     //--------------
 
     bool Stamp::IsDefaultVal( AlbumAttrType type )
     {
         return AlbumStampDefaults( )->IsEqual( type, GetAttrStr( type ) );
     }
+
+    //----------------
 
     bool Stamp::IsDefaultVal( AlbumAttrType type, wxString val )
     {
@@ -456,7 +432,6 @@ namespace Design {
             m_nbrFrame->LoadFont( fonts );
         }
     }
-
 
     //--------------
 
@@ -478,7 +453,6 @@ namespace Design {
         }
     }
 
-
     //--------------
 
     wxImage Stamp::RescaleImage( )
@@ -498,7 +472,6 @@ namespace Design {
         return image;
     }
 
-
     //--------------
 
     void Stamp::ReportLayout( )
@@ -508,12 +481,10 @@ namespace Design {
         std::cout << "Layout for Stamp ID " << id << "\nOuter ";
         ReportLayoutFrame( );
         std::cout << "\nInner ";
-        m_stampFrame.ReportLayout( );
+        m_actualStampFrame.ReportLayout( );
         std::cout << "\nImage ";
         m_stampImageFrame.ReportLayout( );
     };
-
-
 
     //--------------
 
@@ -537,7 +508,6 @@ namespace Design {
         SaveFonts( xmlNode );
     }
 
-
     //--------------
 
     void Stamp::SaveFonts( wxXmlNode* parent )
@@ -552,7 +522,6 @@ namespace Design {
             }
         }
     }
-
 
     //--------------
 
@@ -569,14 +538,12 @@ namespace Design {
         }
     }
 
-
     //--------------
 
     void Stamp::SetCatalogCodes( wxString catCodes )
     {
         SetAttrStr( AT_Catalog_Codes, catCodes );
     }
-
 
     //--------------
 
@@ -585,7 +552,6 @@ namespace Design {
         SetAttrStr( AT_Name, str );
         m_nameFrame->SetString( str );
     };
-
 
     //--------------
 
@@ -596,8 +562,7 @@ namespace Design {
         GetNbrFrame( )->SetString( displalyString );
     };
 
-
-
+    //----------------
 
     void Stamp::SetStampAttributeStr( Design::AlbumAttrType type, wxString val )
     {
@@ -616,12 +581,15 @@ namespace Design {
         }
     }
 
+    //----------------
+
     void Stamp::SetStampAttributeDbl( Design::AlbumAttrType type, double val )
     {
         wxString str = wxString::Format( "%4.1f", val );
         SetStampAttributeStr( type, str );
     }
 
+    //----------------
 
     void Stamp::SetStampAttributeBool( Design::AlbumAttrType type, bool val )
     {
@@ -632,29 +600,22 @@ namespace Design {
 
     //--------------
 
-
-
-
-    //--------------
-
-    void Stamp::SetStampHeight( double val )
+    void Stamp::SetActualStampHeight( double val )
     {
-        m_stampFrame.SetHeight( val );
+        m_actualStampFrame.SetHeight( val );
         wxString str = wxString::Format( "%4.1f", val );
         SetAttrStr( Design::AT_Height, str );
     };
 
-
     //--------------
 
-    void Stamp::SetStampHeight( wxString str )
+    void Stamp::SetActualStampHeight( wxString str )
     {
         SetAttrStr( Design::AT_Height, str );
         double val;
         bool ok = str.ToDouble( &val );
-        m_stampFrame.SetHeight( val );
+        m_actualStampFrame.SetHeight( val );
     };
-
 
     //--------------
 
@@ -665,29 +626,26 @@ namespace Design {
         m_image = GetImageFromFilename( filename );
     }
 
-
     //--------------
 
-    void Stamp::SetStampWidth( double val )
+    void Stamp::SetActualStampWidth( double val )
     {
-        m_stampFrame.SetWidth( val );
+        m_actualStampFrame.SetWidth( val );
         wxString str = wxString::Format( "%4.1f", val );
         SetAttrStr( Design::AT_Width, str );
         UpdateMinimumSize( );
         UpdatePositions( );
     };
 
-
     //--------------
 
-    void Stamp::SetStampWidth( wxString str )
+    void Stamp::SetActualStampWidth( wxString str )
     {
         SetAttrStr( Design::AT_Width, str );
         double val;
         bool ok = str.ToDouble( &val );
-        m_stampFrame.SetWidth( val );
+        m_actualStampFrame.SetWidth( val );
     };
-
 
     //--------------
 
@@ -696,20 +654,22 @@ namespace Design {
         SetStampAttributeStr( AT_StampNamePosition, StampNamePositionStrings[ loc ] );
     };
 
-
     //--------------
 
-    bool Stamp::UpdateMinimumSize( )
+    void Stamp::SetFixedParms( )
     {
-        //  border allowance for one edge
-        SetStampMargin( 4 );
 
-        // everything is basedfrom the actual stamp m_stampFrame
-        m_borderFrame.SetHeight( m_stampFrame.GetHeight( ) + GetSelvageHeight( ) + GetMountAllowanceHeight( ) );
-        m_borderFrame.SetWidth( m_stampFrame.GetWidth( ) + GetSelvageWidth( ) + GetMountAllowanceWidth( ) );
+        // everything is basedfrom the actual stamp m_actualStampFrame
+        m_borderFrame.SetHeight( m_actualStampFrame.GetHeight( ) + GetSelvageHeight( ) + GetMountAllowanceHeight( ) );
+        m_borderFrame.SetWidth( m_actualStampFrame.GetWidth( ) + GetSelvageWidth( ) + GetMountAllowanceWidth( ) );
 
         // The width of the stamp object is the m_borderFrame width + margin
         SetWidth( m_borderFrame.GetWidth( ) + 2 * GetStampMargin( ) );
+
+        // The NameFrame vals are determined by the outer stamp object width, the text and the font.
+        // The string may be divided between several lines affecting height.
+        // Note the name is centered in the outside stamp object
+        UpdateString( GetNameFrame( ), GetWidth( ) );
 
         // the height of the stamp object is the border frame height + border + title height 
         if ( GetShowTitle( ) )
@@ -725,16 +685,18 @@ namespace Design {
         SetMinHeight( GetHeight( ) );
 
 
-        // the NameFrame vals are determined by the outer stamp object width, the text and the font.
-        // note the name is centered in the outside stamp object
-        UpdateString( GetNameFrame( ), GetWidth( ) );
 
         // the NbrFrame vals are determined by stamp frame width, the text and the font
         // note the nbr is centered in the m_borderFrame
         UpdateString( GetNbrFrame( ), m_borderFrame.GetWidth( ) );
 
-        m_stampImageFrame.SetWidth( m_stampFrame.GetWidth( ) * ImagePercentOfActual );
-        m_stampImageFrame.SetHeight( m_stampFrame.GetHeight( ) * ImagePercentOfActual );
+        m_stampImageFrame.SetWidth( m_actualStampFrame.GetWidth( ) * ImagePercentOfActual );
+        m_stampImageFrame.SetHeight( m_actualStampFrame.GetHeight( ) * ImagePercentOfActual );
+
+    }
+    bool Stamp::UpdateMinimumSize( )
+    {
+        SetFixedParms( );
 
         if ( ValidateNode( ) == AT_FATAL )
         {
@@ -743,14 +705,12 @@ namespace Design {
         return true;
     }
 
-
     //--------------
 
     void Stamp::UpdateSizes( )
     {
 
     }
-
 
     //--------------
 
@@ -796,9 +756,7 @@ namespace Design {
         m_nbrFrame->SetYPos( m_stampImageFrame.GetYPos( ) + m_stampImageFrame.GetHeight( ) );
 
         ValidateNode( );
-
     }
-
 
     //--------------
 
@@ -819,14 +777,15 @@ namespace Design {
             status = AT_WARNING;
         }
 
-        if ( m_stampFrame.GetHeight( ) <= 0.01 )
+        if ( m_actualStampFrame.GetHeight( ) <= 0.01 )
         {
             str = wxString::Format( "Invalid Stamp Height.\n" );
             GetErrorArray( )->Add( str );
             //SetError( AT_InvalidHeight, AT_FATAL );
             status = AT_FATAL;
         }
-        if ( m_stampFrame.GetWidth( ) <= 0.01 )
+
+        if ( m_actualStampFrame.GetWidth( ) <= 0.01 )
         {
             str = wxString::Format( "Invalid Stamp Width.\n" );
             GetErrorArray( )->Add( str );
@@ -839,15 +798,22 @@ namespace Design {
             if ( status == AT_FATAL )
             {
                 GetAlbumTreeCtrl( )->SetItemBackgroundColour( id, *wxRED );
-                std::cout << GetAlbumTreeCtrl( )->GetItemText( id ) << "Fatal\n";
+                std::cout << GetAlbumTreeCtrl( )->GetItemText( id ) << " Fatal\n";
             }
             else if ( status == AT_WARNING )
             {
                 GetAlbumTreeCtrl( )->SetItemBackgroundColour( id, *wxYELLOW );
                 std::cout << GetAlbumTreeCtrl( )->GetItemText( id ) << " Warning\n";
             }
+            else
+            {
+                GetAlbumTreeCtrl( )->SetItemBackgroundColour( id, *wxWHITE );
+                //std::cout << GetAlbumTreeCtrl( )->GetItemText( id ) << " OK\n";
+            }
         }
         return status;
     }
+
+    //----------------
 
 }

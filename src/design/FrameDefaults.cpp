@@ -40,23 +40,33 @@
 
 namespace Design {
 
+    //----------------
+
     FrameDefaults::FrameDefaults( ) : Defaults( ( wxXmlNode* ) 0 )
     {
         InitParameters( );
     };
+
+    //----------------
 
     FrameDefaults::FrameDefaults( wxXmlNode* xmlNode ) : Defaults( xmlNode )
     {
         InitParameters( );
     };
 
+    //----------------
+
     FrameDefaults::~FrameDefaults( )
     {
     };
 
+    //----------------
+
     void FrameDefaults::Save( wxXmlNode* xmlNode )
     {
     };
+
+    //----------------
 
     void FrameDefaults::InitParameters( )
     {
@@ -74,15 +84,7 @@ namespace Design {
         /***/ //NameLocation
     }
 
-
-
-
-
-    // wxString FrameDefaults::GetAlignmentMode( )
-    // {
-    //     return GetAttrStr( AT_StampAlignmentMode );
-    // }
-
+    //----------------
 
     Design::AlignmentModeType  FrameDefaults::GetAlignmentModeType( )
     {
@@ -95,13 +97,14 @@ namespace Design {
         return FindAlignmentModeType( GetAttrStr( AT_StampAlignmentMode ) );
     };
 
-
-
+    //----------------
 
     void FrameDefaults::SetAlignmentMode( AlignmentModeType loc )
     {
         SetAttrStr( AT_StampAlignmentMode, StampAlignmentModeStrings[ loc ] );
     }
+
+    //----------------
 
     void FrameDefaults::SetAlignmentModeType( AlignmentModeType loc )
     {
@@ -112,32 +115,6 @@ namespace Design {
         SetAttrStr( AT_StampAlignmentMode, StampAlignmentModeStrings[ loc ] );
     };
 
-
-    // Design::AlignmentModeType  PageDefaults::GetAlignmentModeType( )
-    // {
-    //     AlignmentModeType loc = FindAlignmentModeType( GetAttrStr( AT_StampAlignmentMode ) );
-    //     if ( ( loc != AlignBottom ) && ( loc != AlignMiddle ) && ( loc != AlignTop ) )
-    //     {
-    //         loc = AlignTop;
-    //         SetAlignmentModeType( loc );
-    //     }
-    //     return FindAlignmentModeType( GetAttrStr( AT_StampAlignmentMode ) );
-    // };
-
-
-
-    // void PageDefaults::SetAlignmentMode( AlignmentModeType loc )
-    // {
-    //     SetAttrStr( AT_StampAlignmentMode, StampAlignmentModeStrings[ loc ] );
-    // }
-
-    // void PageDefaults::SetAlignmentModeType( AlignmentModeType loc )
-    // {
-    //     if ( ( loc != AlignBottom ) && ( loc != AlignTop ) )
-    //     {
-    //         loc = AlignTop;
-    //     }
-    //     SetAttrStr( AT_StampAlignmentMode, StampAlignmentModeStrings[ loc ] );
-    // };
+    //----------------
 
 }

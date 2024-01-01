@@ -30,11 +30,20 @@
 #define LOOP 0
 namespace Design {
 
+    //----------------
+
     Frame::Frame( )
     {
         Init( );
     };
-    Frame::~Frame( ) { };
+
+    //----------------
+
+    Frame::~Frame( )
+    {
+    };
+
+    //----------------
 
     void Frame::Init( double x, double y, double w, double h, double mw, double  mh )
     {
@@ -45,22 +54,22 @@ namespace Design {
         m_minWidth = mw;
         m_minHeight = mh;
     }
-    /*
-     * @brief Draw object on screen
-     *
-     * @param dc current device context
-     * @param x position in MM
-     * @param y position in MM
-     */
+
+    //----------------
+
     void Frame::Draw( wxDC& dc, double x, double y )
     {
         DrawRectangle( dc, x + GetXPos( ), y + GetYPos( ), GetWidth( ), GetHeight( ) );
     };
 
+    //----------------
+
     void Frame::DrawPDF( wxPdfDocument* doc, double x, double y )
     {
         DrawRectanglePDF( doc, x + GetXPos( ), y + GetYPos( ), GetWidth( ), GetHeight( ) );
     };
+
+    //----------------
 
     double Frame::GetHeight( ) {
         if ( m_height < 0 )
@@ -71,6 +80,8 @@ namespace Design {
         return m_height;
     };
 
+    //----------------
+
     double Frame::GetMinWidth( ) {
         if ( m_minWidth < 0 )
         {
@@ -78,6 +89,8 @@ namespace Design {
         }
         return m_minWidth;
     };
+
+    //----------------
 
     double Frame::GetMinHeight( ) {
         if ( m_minHeight < 0 )
@@ -87,6 +100,8 @@ namespace Design {
         return m_minHeight;
     };
 
+    //----------------
+
     double Frame::GetXPos( ) {
         if ( m_xPos < 0 )
         {
@@ -94,6 +109,8 @@ namespace Design {
         }
         return m_xPos;
     };
+
+    //----------------
 
     double Frame::GetYPos( ) {
         if ( m_yPos < 0 )
@@ -103,6 +120,7 @@ namespace Design {
         return m_yPos;
     };
 
+    //----------------
 
     double Frame::GetWidth( ) {
         if ( m_width < 0 )
@@ -112,6 +130,7 @@ namespace Design {
         return m_width;
     };
 
+    //----------------
 
     void Frame::SetHeight( double val )
     {
@@ -122,6 +141,8 @@ namespace Design {
         }
     };
 
+    //----------------
+
     void Frame::SetMinHeight( double val )
     {
         m_minHeight = val;
@@ -130,6 +151,8 @@ namespace Design {
             //      ReportLayout( "SetMinHeight " );
         }
     };
+
+    //----------------
 
     void Frame::SetMinWidth( double val )
     {
@@ -141,6 +164,8 @@ namespace Design {
         }
     };
 
+    //----------------
+
     void Frame::SetXPos( double val )
     {
         m_xPos = val;
@@ -149,6 +174,8 @@ namespace Design {
             ReportLayout( "SetXPos " );
         }
     };
+
+    //----------------
 
     void Frame::SetYPos( double val )
     {
@@ -159,6 +186,8 @@ namespace Design {
         }
     };
 
+    //----------------
+
     void Frame::SetWidth( double val )
     {
         m_width = val;
@@ -168,6 +197,8 @@ namespace Design {
         }
     };
 
+    //----------------
+
     wxString Frame::DumpPos( )
     {
         wxString str = wxString::Format( "   pos( %.1f, %.1f)",
@@ -175,18 +206,25 @@ namespace Design {
         return str;
     }
 
+    //----------------
+
     wxString Frame::DumpSize( )
     {
         wxString str = wxString::Format( "   size( %.1f, %.1f)",
             m_width, m_height );
         return str;
     }
+
+    //----------------
+
     wxString Frame::DumpMinSize( )
     {
         wxString str = wxString::Format( "   minSize( %.1f, %.1f)",
             m_minWidth, m_minHeight );
         return str;
     }
+
+    //----------------
 
     wxString Frame::ReportLayout( wxString prefix )
     {
@@ -195,26 +233,33 @@ namespace Design {
         return str;
     }
 
+    //----------------
+
     wxString Frame::Layout( )
     {
         wxString str = DumpPos( ) + DumpSize( ) + DumpMinSize( );
         return str;
     }
 
+    //----------------
+
     void Frame::CheckLayout( wxString prefix )
     {
 
         if ( ( GetXPos( ) < 0 ) || ( GetYPos( ) < 0 ) )
         {
-            std::cout << prefix << "invalid position" << DumpPos( ) << "\n";
+            std::cout << prefix << " invalid position" << DumpPos( ) << "\n";
         }
         if ( ( GetWidth( ) < 0 ) || ( GetHeight( ) < 0 ) )
         {
-            std::cout << prefix << "invalid Size" << DumpSize( ) << "\n";
+            std::cout << prefix << " invalid Size" << DumpSize( ) << "\n";
         }
         if ( ( GetMinHeight( ) < 0 ) || ( GetMinWidth( ) < 0 ) )
         {
-            std::cout << prefix << "invalid Height/width" << DumpMinSize( ) << "\n";
+            std::cout << prefix << " invalid Height/width" << DumpMinSize( ) << "\n";
         }
     };
+
+    //----------------
+
 }

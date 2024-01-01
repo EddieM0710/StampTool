@@ -39,19 +39,21 @@
 
 namespace Design {
 
+    //----------------
+
     LayoutBase::LayoutBase( ) : AlbumBase( )
     {
-
         // SetTitleLocation( Design::AT_StampNamePositionDefault );
-
     };
 
+    //----------------
 
     LayoutBase::LayoutBase( wxXmlNode* node ) : AlbumBase( node )
     {
         // SetTitleLocation( Design::AT_StampNamePositionDefault );
     };
 
+    //----------------
 
     void LayoutBase::DumpLayout( double x, double y )
     {
@@ -74,6 +76,8 @@ namespace Design {
         }
     }
 
+    //----------------
+
     void LayoutBase::DumpObjectLayout( wxString indent )
     {
         indent += "    ";
@@ -90,25 +94,26 @@ namespace Design {
         {
             AlbumBaseType type = ( AlbumBaseType ) GetAlbumTreeCtrl( )->GetItemType( childID );
             LayoutBase* child = ( LayoutBase* ) GetAlbumTreeCtrl( )->GetItemNode( childID );
-            //layout everything except the title
-//@@@            if ( type != AT_Title )
- //@@@            {
- //@@@                child->DumpObjectLayout( indent );
- //@@@            }
+
+            //@@@            if ( type != AT_Title )
+             //@@@            {
+             //@@@                child->DumpObjectLayout( indent );
+             //@@@            }
             childID = GetAlbumTreeCtrl( )->GetNextChild( thisID, cookie );
         }
-
     }
+
+    //----------------
 
     LayoutBase* LayoutBase::FindObjectByPos( double x, double y, wxString indent )
     {
         indent += "    ";
         Design::AlbumBaseType type = GetNodeType( );
         wxString name = Design::AlbumBaseNames[ type ];
-        // std::cout << indent << name
-        //     << " pnt(" << x << "," << y << ") "
-        //     << " pos(" << m_clientDimensions.GetXPos( ) << "," << m_clientDimensions.GetYPos( ) << ") "
-        //     << " size(" << m_clientDimensions.GetWidth( ) << "," << m_clientDimensions.GetHeight( ) << ")\n";
+        std::cout << indent << name
+            << " pnt(" << x << "," << y << ") "
+            << " pos(" << m_clientDimensions.GetXPos( ) << "," << m_clientDimensions.GetYPos( ) << ") "
+            << " size(" << m_clientDimensions.GetWidth( ) << "," << m_clientDimensions.GetHeight( ) << ")  \n";
         if ( IsInClient( x, y, indent ) )
         {
             wxTreeItemId thisID = GetTreeItemId( );
@@ -119,42 +124,29 @@ namespace Design {
                 AlbumBaseType type = ( AlbumBaseType ) GetAlbumTreeCtrl( )->GetItemType( childID );
                 LayoutBase* child = ( LayoutBase* ) GetAlbumTreeCtrl( )->GetItemNode( childID );
                 //layout everything except the title
-  //@@@               if ( type != AT_Title )
-//@@@                 {
- //@@@                    LayoutBase* foundChild = child->FindObjectByPos( x, y, indent );
- //@@@                    if ( foundChild )
- //@@@                    {
- //@@@                        Design::AlbumBaseType type = foundChild->GetNodeType( );
- //@@@                        //std::cout << indent << "foundChild \n";
-//@@@                        return foundChild;
- //@@@                    }
-  //@@@           }
+                //if ( type != AT_Title )
+                //{
+                LayoutBase* foundChild = child->FindObjectByPos( x, y, indent );
+                if ( foundChild )
+                {
+                    Design::AlbumBaseType type = foundChild->GetNodeType( );
+                    std::cout << indent << "foundChild " << child->GetText( ) << " \n";
+
+                    return foundChild;
+                }
+                // }
                 childID = GetAlbumTreeCtrl( )->GetNextChild( thisID, cookie );
             }
-            // std::cout << indent << "Success \n";
+
+            std::cout << indent << "Success \n";
             return this;
         }
-        //std::cout << indent << "fail \n";
+        std::cout << indent << "fail \n";
         return ( LayoutBase* ) 0;
     }
 
+    //----------------
 
-    // StampNamePosition LayoutBase::GetTitleLocation( )
-    // {
-    //     if ( m_titleLocation == AT_StampNamePositionDefault )
-    //     {
-    //         LayoutBase* parent = ( LayoutBase* ) GetParent( );
-    //         if ( !parent )
-    //         {
-    //             return AT_StampNamePositionBottom;
-    //         }
-    //         return parent->GetTitleLocation( );
-    //     }
-    //     else
-    //     {
-    //         return m_titleLocation;
-    //     }
-    // }
     bool LayoutBase::IsInClient( double x, double y, wxString indent )
     {
         Design::AlbumBaseType type = GetNodeType( );
@@ -164,33 +156,28 @@ namespace Design {
         double miny = m_clientDimensions.GetYPos( );
         double maxy = miny + m_clientDimensions.GetHeight( );
 
-        if ( x > minx && x < maxx )
-        {
-            if ( y > miny && y < maxy )
-            {
 
+        if ( x >= minx && x <= maxx )
+        {
+            if ( y >= miny && y <= maxy )
+            {
                 return true;
             }
             else
             {
-                // std::cout << indent << name << " Failed y" << y << " min:" << miny << " max:" << maxy << "\n";
-                 //std::cout << indent << name << " Failed x" << x << " min:" << minx << " max:" << maxx << "\n";
-
+                std::cout << indent << name << " Failed y" << y << " min:" << miny << " max:" << maxy << "\n";
+                //  std::cout << indent << name << " Failed x" << x << " min:" << minx << " max:" << maxx << "\n";
             }
         }
         else
         {
-            // std::cout << indent << name << " Failed x" << x << " min:" << minx << " max:" << maxx << "\n";
+            std::cout << indent << name << " Failed x" << x << " min:" << minx << " max:" << maxx << "\n";
             // std::cout << indent << name << " Failed y" << y << " min:" << miny << " max:" << maxy << "\n";
-
         }
         return false;
     }
 
-    // bool LayoutBase::IsTitleLocation( StampNamePosition loc )
-    // {
-    //     return( GetTitleLocation( ) == loc );
-    // }
+    //----------------
 
     void LayoutBase::ReportLayoutFrame( wxString indent )
     {
@@ -201,6 +188,8 @@ namespace Design {
         m_clientDimensions.ReportLayout( indent );
     };
 
+    //----------------
+
     void LayoutBase::ReportLayoutError( wxString funct, wxString err, bool fatal )
     {
         wxString funcStr = wxString::Format( "%s::%s", AttrNameStrings[ GetNodeType( ) ], funct );
@@ -208,6 +197,7 @@ namespace Design {
         ReportError( funcStr, msgStr, fatal );
     }
 
+    //----------------
 
     void LayoutBase::SetClientDimensions( wxDC& dc, double x, double y, double width, double height, double minWidth, double minHeight )
     {
@@ -222,6 +212,8 @@ namespace Design {
         m_clientDimensions.SetMinHeight( minSize.y );
         m_clientDimensions.SetMinWidth( minSize.x );
     };
+
+    //----------------
 
     void LayoutBase::ValidateChildType( int& nbrRows, int& nbrCols, int& nbrLeaf )
     {
@@ -268,12 +260,14 @@ namespace Design {
         }
     }
 
-    // calculate the label frame based on the available width and the text length
+    //----------------
+
+        // calculate the label frame based on the available width and the text length
     void LayoutBase::UpdateString( Design::LabelFrame* frame, double width )
     {
         frame->UpdateString( width );
     };
 
-
+    //----------------
 
 }

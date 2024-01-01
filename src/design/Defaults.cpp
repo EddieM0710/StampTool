@@ -40,11 +40,15 @@
 
 namespace Design {
 
+    //----------------
+
     Defaults::Defaults( ) : XMLBase( ( wxXmlNode* ) 0 )
     {
         //ApplicationDefault.Alloc( AT_NbrAttrTypes );
         //  ApplicationDefault.Clear( );
     };
+
+    //----------------
 
     Defaults::Defaults( wxXmlNode* xmlNode ) : XMLBase( xmlNode )
     {
@@ -52,7 +56,13 @@ namespace Design {
         //  ApplicationDefault.Clear( );
     };
 
-    Defaults::~Defaults( ){};
+    //----------------
+
+    Defaults::~Defaults( )
+    {
+    };
+
+    //----------------
 
 
     void Defaults::Save( wxXmlNode* xmlNode, Design::AlbumAttrType type )
@@ -61,6 +71,8 @@ namespace Design {
         if ( !ApplicationDefault[ type ].IsEmpty( ) && !IsEqual( type, ApplicationDefault[ type ] ) )
             SetAttribute( xmlNode, type );
     }
+
+    //----------------
 
     void Defaults::Set( Design::AlbumAttrType type, wxString str )
     {
@@ -73,6 +85,9 @@ namespace Design {
             SetAttrStr( type, str );
         }
     }
+
+    //----------------
+
     void Defaults::SetDbl( Design::AlbumAttrType type, double val )
     {
         double defVal;
@@ -87,6 +102,8 @@ namespace Design {
         }
     }
 
+    //----------------
+
     wxString Defaults::Get( Design::AlbumAttrType type )
     {
         wxString str = GetAttrStr( type );
@@ -99,6 +116,8 @@ namespace Design {
             return str;
         }
     }
+
+    //----------------
 
     double Defaults::GetDbl( Design::AlbumAttrType type )
     {
@@ -121,4 +140,7 @@ namespace Design {
             return GetAttrDbl( type );
         }
     }
+
+    //----------------
+
 }

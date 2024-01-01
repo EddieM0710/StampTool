@@ -253,9 +253,6 @@ void StampDefaultsPanel::CreateControls( )
     m_rightContentMargin = SetupLabelText( contenrMarginBox, itemBoxSizer110, lastID,
         _( "Right" ), false, wxCommandEventHandler( StampDefaultsPanel::OnRightContentMargin ) );
     m_rightContentMargin->SetToolTip( _( "Content right margin in mm." ) );
-
-
-
 }
 
 //--------------
@@ -281,37 +278,43 @@ void StampDefaultsPanel::UpdateControls( )
     // wxCheckBox* m_ImagesCheckbox;
 
 }
+
 //--------------
-
-
 
 void StampDefaultsPanel::SetSelvageHeight( wxString selvageHeight )
 {
     m_selvageHeight->ChangeValue( selvageHeight );
 }
 
+//----------------
+
 void StampDefaultsPanel::SetSelvageWidth( wxString selvageWidth )
 {
     m_selvageWidth->ChangeValue( selvageWidth );
 }
+
+//----------------
 
 void StampDefaultsPanel::SetMountAllowanceHeight( wxString mountAllowanceHeight )
 {
     m_mountAllowanceHeight->ChangeValue( mountAllowanceHeight );
 }
 
+//----------------
+
 void StampDefaultsPanel::SetMountAllowanceWidth( wxString mountAllowanceWidth )
 {
     m_mountAllowanceWidth->ChangeValue( mountAllowanceWidth );
 }
+
+//----------------
 
 void StampDefaultsPanel::SetStampMargin( wxString stampMargin )
 {
     m_StampMargin->ChangeValue( stampMargin );
 }
 
-
-
+//----------------
 
 void StampDefaultsPanel::SetupDialog( Design::Page* page )
 {
@@ -330,6 +333,8 @@ bool StampDefaultsPanel::ShowToolTips( )
 wxString StampDefaultsPanel::GetCatalog( ) {
     return m_catalog->GetValue( );
 };
+
+//----------------
 
 void StampDefaultsPanel::SetCatalog( wxString catCode )
 {
@@ -374,14 +379,12 @@ void StampDefaultsPanel::SetGrayScaleImages( bool val ) {
 
 //--------------
 
-// bool StampDefaultsPanel::GetGrayScaleImages( ) {
-//     //  return m_grayScaleImagesCheckbox->GetValue( );
-// }
-
 void StampDefaultsPanel::OnCatalogCode( wxCommandEvent& event )
 {
     wxString cat = m_catalog->GetValue( );
     Design::AlbumStampDefaults( )->Catalog( cat );
+    Update( );
+    event.Skip( );
 }
 
 //--------------
@@ -389,6 +392,8 @@ void StampDefaultsPanel::OnCatalogCode( wxCommandEvent& event )
 void StampDefaultsPanel::OnGrayscale( wxCommandEvent& event )
 {
     Design::AlbumStampDefaults( )->GrayScaleImages( m_grayScaleImagesCheckbox->GetValue( ) );
+    Update( );
+    event.Skip( );
 }
 
 //--------------
@@ -396,6 +401,8 @@ void StampDefaultsPanel::OnGrayscale( wxCommandEvent& event )
 void StampDefaultsPanel::OnShowImages( wxCommandEvent& event )
 {
     Design::AlbumStampDefaults( )->ShowImage( m_ImagesCheckbox->GetValue( ) );
+    Update( );
+    event.Skip( );
 }
 
 //--------------
@@ -403,14 +410,17 @@ void StampDefaultsPanel::OnShowImages( wxCommandEvent& event )
 void StampDefaultsPanel::OnShowNbr( wxCommandEvent& event )
 {
     Design::AlbumStampDefaults( )->ShowNbr( m_nbrCheckbox->GetValue( ) );
+    Update( );
+    event.Skip( );
 }
-
 
 //--------------
 
 void StampDefaultsPanel::OnShowName( wxCommandEvent& event )
 {
     Design::AlbumStampDefaults( )->ShowNbr( m_stampTitleCheckbox->GetValue( ) );
+    Update( );
+    event.Skip( );
 }
 
 //--------------
@@ -426,12 +436,19 @@ void StampDefaultsPanel::OnNameLocationButtonSelected( wxCommandEvent& event )
     {
         Design::AlbumStampDefaults( )->StampNamePosition( Design::AT_StampNamePositionBottom );
     }
+    Update( );
+
+    event.Skip( );
 }
 
+//----------------
 
 void StampDefaultsPanel::OnStampMargin( wxCommandEvent& event )
 {
     Design::AlbumStampDefaults( )->StampMargin( m_StampMargin->GetValue( ) );
+    Update( );
+
+    event.Skip( );
 }
 
 //--------------
@@ -448,12 +465,14 @@ void StampDefaultsPanel::SetStampNamePosition( Design::StampNamePosType type )
     }
 }
 
-
 //--------------
 
 void StampDefaultsPanel::OnTopContentMargin( wxCommandEvent& event )
 {
     Design::AlbumFrameDefaults( )->TopContentMargin( m_topContentMargin->GetValue( ) );
+    Update( );
+
+    event.Skip( );
 }
 
 //--------------
@@ -461,6 +480,9 @@ void StampDefaultsPanel::OnTopContentMargin( wxCommandEvent& event )
 void StampDefaultsPanel::OnBottomContentMargin( wxCommandEvent& event )
 {
     Design::AlbumFrameDefaults( )->BottomContentMargin( m_bottomContentMargin->GetValue( ) );
+    Update( );
+
+    event.Skip( );
 }
 
 //--------------
@@ -468,6 +490,9 @@ void StampDefaultsPanel::OnBottomContentMargin( wxCommandEvent& event )
 void StampDefaultsPanel::OnLeftContentMargin( wxCommandEvent& event )
 {
     Design::AlbumFrameDefaults( )->LeftContentMargin( m_leftContentMargin->GetValue( ) );
+    Update( );
+
+    event.Skip( );
 }
 
 //--------------
@@ -475,6 +500,9 @@ void StampDefaultsPanel::OnLeftContentMargin( wxCommandEvent& event )
 void StampDefaultsPanel::OnRightContentMargin( wxCommandEvent& event )
 {
     Design::AlbumFrameDefaults( )->RightContentMargin( m_rightContentMargin->GetValue( ) );
+    Update( );
+
+    event.Skip( );
 }
 
 //-------
@@ -485,6 +513,9 @@ void StampDefaultsPanel::OnSelvageHeight( wxCommandEvent& event )
     double val;
     str.ToDouble( &val );
     Design::AlbumStampDefaults( )->SelvageHeight( val );
+    Update( );
+
+    event.Skip( );
 };
 
 //-------
@@ -495,6 +526,9 @@ void StampDefaultsPanel::OnSelvageWidth( wxCommandEvent& event )
     double val;
     str.ToDouble( &val );
     Design::AlbumStampDefaults( )->SelvageWidth( val );
+    Update( );
+
+    event.Skip( );
 };
 
 //-------
@@ -505,6 +539,9 @@ void StampDefaultsPanel::OnMountAllowanceHeight( wxCommandEvent& event )
     double val;
     str.ToDouble( &val );
     Design::AlbumStampDefaults( )->MountAllowanceHeight( val );
+    Update( );
+
+    event.Skip( );
 };
 
 //-------
@@ -515,6 +552,9 @@ void StampDefaultsPanel::OnMountAllowanceWidth( wxCommandEvent& event )
     double val;
     str.ToDouble( &val );
     Design::AlbumStampDefaults( )->MountAllowanceWidth( val );
+    Update( );
+
+    event.Skip( );
 };
 
 //--------------
@@ -543,4 +583,10 @@ void StampDefaultsPanel::SetLeftContentMargin( wxString leftContentMargin )
 void StampDefaultsPanel::SetRightContentMargin( wxString rightPageMargin )
 {
     m_rightContentMargin->ChangeValue( rightPageMargin );
+}
+//-------
+
+void StampDefaultsPanel::Update( )
+{
+    GetAlbumTreeCtrl( )->Update( );
 }

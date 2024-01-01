@@ -52,30 +52,19 @@
 #include <wx/datstrm.h>
 #include <wx/mstream.h>
 #include <wx/log.h>
-//#include "StampToolApp.h"
 
-//wxDECLARE_APP( StampToolApp );
-/*
- * ImagePanel type definition
- */
 
 IMPLEMENT_DYNAMIC_CLASS( ImagePanel, wxPanel )
-; // Formatting silly business; The above macro screws up the formatter but the semicolon fixes it
 
-/*
- * ImagePanel event table definition
- */
 
 BEGIN_EVENT_TABLE( ImagePanel, wxPanel )
 
 // ImagePanel event table entries
 EVT_PAINT( ImagePanel::OnPaint )
 EVT_CONTEXT_MENU( ImagePanel::OnContextMenu )
-//EVT_MENU( ID_RESIZE, ImagePanel::OnResize )
 EVT_MENU( wxID_ZOOM_IN, ImagePanel::OnZoom )
 EVT_MENU( wxID_ZOOM_OUT, ImagePanel::OnZoom )
 EVT_MENU( wxID_ZOOM_100, ImagePanel::OnZoom )
-
 END_EVENT_TABLE( )
 
 //-------
@@ -93,6 +82,8 @@ ImagePanel::ImagePanel( wxWindow* parent, wxWindowID id, const wxPoint& pos,
     Init( );
     Create( parent, id, pos, size, style );
 }
+
+//----------------
 
 bool ImagePanel::Create( wxWindow* parent, wxWindowID id, const wxPoint& pos,
     const wxSize& size, long style )

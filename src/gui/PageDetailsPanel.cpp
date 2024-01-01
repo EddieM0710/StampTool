@@ -407,7 +407,7 @@ void PageDetailsPanel::OnTitleCheckboxClick( wxCommandEvent& event )
     m_page->SetShowTitle( m_titleHelper->titleCheckbox->GetValue( ) );
     UpdateTitleState( m_titleHelper );
     GetAlbumTreeCtrl( )->GetCurrentTreeID( );
-    m_leftColumnVerticalSizer->Layout( );
+    //  m_leftColumnVerticalSizer->Layout( );
 }
 
 void PageDetailsPanel::OnTitleTextChanged( wxCommandEvent& event )
@@ -439,4 +439,23 @@ void PageDetailsPanel::OnSubTitleFontPicker( wxFontPickerEvent& event )
 void PageDetailsPanel::OnSubTitleColorPicker( wxColourPickerEvent& event )
 {
     m_page->GetTitleFrame( )->SetSubHeadingFont( m_subTitleFontPicker->GetSelectedFont( ), m_subTitleColorPicker->GetColour( ) );
+}
+
+//-------
+
+void PageDetailsPanel::SetStatusList( )
+{
+    m_statusList->Clear( );
+    wxArrayString* errors = m_page->GetErrorArray( );
+    if ( !errors->IsEmpty( ) )
+    {
+        m_statusList->InsertItems( *errors, 0 );
+    }
+}
+//-------
+
+void PageDetailsPanel::Update( )
+{
+    GetAlbumTreeCtrl( )->Update( );
+    SetStatusList( );
 }

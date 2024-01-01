@@ -51,7 +51,7 @@ namespace Design {
     /// the Object is built up of several subframes objects. The outer object is the LayoutBase frame.
     /// Inside the LayoutBase frame is the m_borderFrame, which has the visible frame
     /// for the layout, and the title text.
-    /// The m_stampFrame is not visible contains the actual parameters of the physical stamp.
+    /// The m_actualStampFrame is not visible contains the actual parameters of the physical stamp.
     /// The m_stampImageFrame and the m_nbrFrame is embedded in the m_borderFrame and is the image of the object.
     /// The LayoutBase for this object contains the frame parameters for the stamp Album object.
     ///  These parameters are all in MM.
@@ -170,11 +170,11 @@ namespace Design {
         //     return String2Bool( GetAttrStr( AT_ShowSubTitle ) );
         // };
 
-        double GetStampHeight( ) {
-            return m_stampFrame.GetHeight( );
+        double GetActualStampHeight( ) {
+            return m_actualStampFrame.GetHeight( );
         };
 
-        wxString GetStampHeightStr( ) {
+        wxString GetActualStampHeightStr( ) {
             return GetAttrStr( Design::AT_Height );
         };
 
@@ -190,9 +190,9 @@ namespace Design {
             return GetAttrDbl( Design::AT_StampMargin );
         };
 
-        double GetStampWidth( );
+        double GetActualStampWidth( );
 
-        wxString GetStampWidthStr( );
+        wxString GetActualStampWidthStr( );
 
         wxString GetStampNamePosition( );
 
@@ -282,18 +282,19 @@ namespace Design {
             SetAttrStr( AT_ShowCatNbr, Bool2String( val ) );
         };
 
-        void SetStampHeight( double val );
+        void SetActualStampHeight( double val );
 
-        void SetStampHeight( wxString str );
+        void SetActualStampHeight( wxString str );
 
-        void SetStampWidth( double val );
+        void SetActualStampWidth( double val );
 
-        void SetStampWidth( wxString str );
+        void SetActualStampWidth( wxString str );
 
         wxString MakeDisplayNbr( );
 
         void SetStampNamePosition( StampNamePosType loc );
 
+        void SetFixedParms( );
 
         /**
          *
@@ -316,10 +317,10 @@ namespace Design {
         /// It is the actual stamp + selvage + mount allowance.
         Frame m_borderFrame;
 
-        /// @brief  The m_stampFrame has the parameters of the actual Stamp.
-        /// the m_stampFrame is never actually drawn but all the other parts of this object 
+        /// @brief  The m_actualStampFrame has the parameters of the actual Stamp.
+        /// the m_actualStampFrame is never actually drawn but all the other parts of this object 
         /// are based on this frame. If these parameters are not set then things go very bad.
-        Frame m_stampFrame;
+        Frame m_actualStampFrame;
 
         /// @brief  The m_stampImageFrame has the parameters for the printed album image. 
         // It is 10% smaller than the actual stamp.

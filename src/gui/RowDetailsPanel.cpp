@@ -44,28 +44,8 @@
 #include "design/Album.h"
 #include "utils/FontList.h"
 
-
- /*
-  * RowDetailsPanel type definition
-  */
 IMPLEMENT_DYNAMIC_CLASS( RowDetailsPanel, HelperPanel )
 
-
-/*
- * RowDetailsPanel event table definition
- */
-    BEGIN_EVENT_TABLE( RowDetailsPanel, HelperPanel )
-    // EVT_RADIOBUTTON( ID_DEFAULTRADIOBUTTON, RowDetailsPanel::OnDefaultRadioButtonSelected )
-    // EVT_RADIOBUTTON( ID_TOPRADIOBUTTON, RowDetailsPanel::OnTopRadioButtonSelected )
-    // EVT_RADIOBUTTON( ID_BOTTOMRADIOBUTTON, RowDetailsPanel::OnBottomRadioButtonSelected )
-    // EVT_RADIOBUTTON( ID_CALCULATEDRADIOBUTTON, RowDetailsPanel::OnCalculatedClick )
-    // EVT_RADIOBUTTON( ID_FIXEDRADIOBUTTON, RowDetailsPanel::OnFixedClick )
-    END_EVENT_TABLE( )
-    ;
-
-/*
- * RowDetailsPanel constructors
- */
 
 RowDetailsPanel::RowDetailsPanel( )
 {
@@ -78,10 +58,6 @@ RowDetailsPanel::RowDetailsPanel( wxWindow* parent, wxWindowID id, const wxStrin
     Create( parent, id, caption, pos, size, style );
 }
 
-
-/*
- * RowDetailsPanel creator
- */
 
 bool RowDetailsPanel::Create( wxWindow* parent, wxWindowID id, const wxString& caption, const wxPoint& pos, const wxSize& size, long style )
 {
@@ -99,13 +75,10 @@ bool RowDetailsPanel::Create( wxWindow* parent, wxWindowID id, const wxString& c
     return true;
 }
 
-
-
 RowDetailsPanel::~RowDetailsPanel( )
 {
 
 }
-
 
 void RowDetailsPanel::Init( )
 {
@@ -113,9 +86,6 @@ void RowDetailsPanel::Init( )
     m_frameCheckbox = NULL;
     m_statusList = NULL;
 }
-
-
-
 
 void RowDetailsPanel::CreateControls( )
 {
@@ -186,10 +156,6 @@ void RowDetailsPanel::CreateControls( )
         wxCommandEventHandler( RowDetailsPanel::OnSubTitleTextChanged ) );
 
 
-    //wxBoxSizer* fontboxSizer;
-    //wxStaticBox* fontBox = SetupBoxSizer( theDialog, m_leftColumnVerticalSizer, "Font", lastID, fontboxSizer, wxVERTICAL );
-
-
     SetupFontPicker( advancedPanel, leftAdvancedVerticalSizer, lastID,
         _( "Title Font" ), _( "Default" ),
         m_titleFontPicker, m_titleColorPicker,
@@ -204,9 +170,6 @@ void RowDetailsPanel::CreateControls( )
         wxFontPickerEventHandler( RowDetailsPanel::OnSubTitleFontPicker ),
         wxColourPickerEventHandler( RowDetailsPanel::OnSubTitleColorPicker ),
         wxCommandEventHandler( RowDetailsPanel::OnSubTitleDefaultClick ) );
-
-
-
 
 
     wxBoxSizer* alignmentModeVSizer;
@@ -243,20 +206,15 @@ void RowDetailsPanel::CreateControls( )
 
 
 
-    //>>error list ctrls
     wxBoxSizer* errorListSizer = new wxBoxSizer( wxHORIZONTAL );
     rightCommonVerticalSizer->Add( errorListSizer, 2, wxGROW | wxALL, 5 );
 
     wxArrayString m_statusListStrings;
     m_statusList = new wxListBox( commonPanel, ID_LISTCTRL, wxDefaultPosition, wxDefaultSize, m_statusListStrings, wxLB_SINGLE );
     errorListSizer->Add( m_statusList, 2, wxGROW | wxALL, 0 );
-    //<< error list ctrls
+
 
 }
-// Design::StampNamePositionType  RowDetailsPanel::GetTitleLocationType( )
-// {
-//     return m_titleLocation;
-// }
 
 
 
@@ -385,6 +343,7 @@ void RowDetailsPanel::OnAlignmentModeButtonSelected( wxCommandEvent& event )
     {
         m_row->SetAlignmentMode( Design::AlignBottom );
     }
+    Update( );
 
     event.Skip( );
 }
@@ -394,12 +353,14 @@ void RowDetailsPanel::OnCalculatedClick( wxCommandEvent& event )
 {
     m_positionFixedSize->Enable( false );
     m_row->SetCalculateSpacing( true );
+    Update( );
     event.Skip( );
 }
 void RowDetailsPanel::OnFixedClick( wxCommandEvent& event )
 {
     m_positionFixedSize->Enable( true );
     m_row->SetCalculateSpacing( false );
+    Update( );
     event.Skip( );
 }
 
@@ -409,9 +370,11 @@ void RowDetailsPanel::OnTitleTextChanged( wxCommandEvent& event )
 {
     wxString title = m_titleHelper->titleLabel->GetValue( );
     m_row->SetTitleString( title );
+    Update( );
 }
 void RowDetailsPanel::OnSubTitleTextChanged( wxCommandEvent& event )
 {
+    Update( );
     //     wxString title = m_titleHelper->subTitleLabel->GetValue( );
     //     m_row->SetSubTitleString( title );
 }
@@ -419,16 +382,20 @@ void RowDetailsPanel::OnSubTitleTextChanged( wxCommandEvent& event )
 
 void RowDetailsPanel::OnTitleFontPicker( wxFontPickerEvent& event )
 {
+    Update( );
 }
 void RowDetailsPanel::OnTitleColorPicker( wxColourPickerEvent& event )
 {
+    Update( );
 }
 
 void RowDetailsPanel::OnSubTitleFontPicker( wxFontPickerEvent& event )
 {
+    Update( );
 }
 void RowDetailsPanel::OnSubTitleColorPicker( wxColourPickerEvent& event )
 {
+    Update( );
 }
 void RowDetailsPanel::OnTitleDefaultClick( wxCommandEvent& event )
 {
@@ -438,6 +405,7 @@ void RowDetailsPanel::OnTitleDefaultClick( wxCommandEvent& event )
     wxColour color = fontList->GetColor( ndx );
     m_titleFontPicker->SetSelectedFont( font );
     m_titleColorPicker->SetColour( color );
+    Update( );
     event.Skip( );
 }
 
@@ -451,23 +419,44 @@ void RowDetailsPanel::OnSubTitleDefaultClick( wxCommandEvent& event )
     wxColour color = fontList->GetColor( ndx );
     m_subTitleFontPicker->SetSelectedFont( font );
     m_subTitleColorPicker->SetColour( color );
+    Update( );
     event.Skip( );
 }
 
 void RowDetailsPanel::OnFrameCheckboxClick( wxCommandEvent& event )
 {
     m_row->SetShow( m_frameCheckbox->GetValue( ) );
+    Update( );
 }
 
 void RowDetailsPanel::OnTitleCheckboxClick( wxCommandEvent& event )
 {
     m_row->SetShowTitle( m_titleHelper->titleCheckbox->GetValue( ) );
     UpdateTitleState( m_titleHelper );
-    Layout( );
+    Update( );
 }
 
 void RowDetailsPanel::OnSubTitleCheckboxClick( wxCommandEvent& event )
 {
     UpdateSubTitleState( m_titleHelper );
-    Layout( );
+    Update( );
 };
+
+//-------
+
+void RowDetailsPanel::SetStatusList( )
+{
+    m_statusList->Clear( );
+    wxArrayString* errors = m_row->GetErrorArray( );
+    if ( !errors->IsEmpty( ) )
+    {
+        m_statusList->InsertItems( *errors, 0 );
+    }
+}
+//-------
+
+void RowDetailsPanel::Update( )
+{
+    GetAlbumTreeCtrl( )->Update( );
+    SetStatusList( );
+}

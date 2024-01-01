@@ -49,16 +49,7 @@
 #include "utils/Settings.h"
 #include "Defs.h"
 
-
 IMPLEMENT_DYNAMIC_CLASS( PageDefaultsPanel, HelperPanel )
-
-
-BEGIN_EVENT_TABLE( PageDefaultsPanel, HelperPanel )
-// EVT_BUTTON( ID_TITLEDEFAULTBUTTON, PageDefaultsPanel::OnTitleDefaultClick )
-EVT_CHOICE( ID_ORIENTATIONCHOICE, PageDefaultsPanel::OnOrientationchoiceSelected )
-END_EVENT_TABLE( )
-
-;
 
 //--------------
 
@@ -416,14 +407,6 @@ bool PageDefaultsPanel::ShowToolTips( )
 
 //--------------
 
-void PageDefaultsPanel::OnOrientationchoiceSelected( wxCommandEvent& event )
-{
-    Design::AlbumPageDefaults( )->Orientation( Design::OrientationStrings[ m_orientationChoice->GetSelection( ) ] );
-    event.Skip( );
-}
-
-//--------------
-
 
 void PageDefaultsPanel::OnSubTitleCheckboxClick( wxCommandEvent& event )
 {
@@ -551,6 +534,8 @@ void PageDefaultsPanel::SetOverSizePaper( bool state ) {
 void PageDefaultsPanel::OnTopContentMargin( wxCommandEvent& event )
 {
     Design::AlbumPageDefaults( )->TopContentMargin( Design::AlbumPageDefaults( )->TopContentMarginStr( ) );
+    Update( );
+    event.Skip( );
 }
 
 //--------------
@@ -558,6 +543,9 @@ void PageDefaultsPanel::OnTopContentMargin( wxCommandEvent& event )
 void PageDefaultsPanel::OnBottomContentMargin( wxCommandEvent& event )
 {
     Design::AlbumPageDefaults( )->BottomContentMargin( Design::AlbumPageDefaults( )->BottomContentMarginStr( ) );
+
+    Update( );
+    event.Skip( );
 }
 
 //--------------
@@ -565,6 +553,9 @@ void PageDefaultsPanel::OnBottomContentMargin( wxCommandEvent& event )
 void PageDefaultsPanel::OnLeftContentMargin( wxCommandEvent& event )
 {
     Design::AlbumPageDefaults( )->LeftContentMargin( Design::AlbumPageDefaults( )->LeftContentMarginStr( ) );
+    Update( );
+    event.Skip( );
+
 }
 
 //--------------
@@ -572,6 +563,9 @@ void PageDefaultsPanel::OnLeftContentMargin( wxCommandEvent& event )
 void PageDefaultsPanel::OnRightContentMargin( wxCommandEvent& event )
 {
     Design::AlbumPageDefaults( )->RightContentMargin( Design::AlbumPageDefaults( )->RightContentMarginStr( ) );
+
+    Update( );
+    event.Skip( );
 }
 
 //--------------
@@ -579,6 +573,8 @@ void PageDefaultsPanel::OnRightContentMargin( wxCommandEvent& event )
 void PageDefaultsPanel::OnOverSizeCheckBoxClick( wxCommandEvent& event )
 {
     Design::AlbumPageDefaults( )->OverSizePaper( m_overSizeCheckbox->IsChecked( ) );
+
+    Update( );
     event.Skip( );
 }
 
@@ -587,6 +583,9 @@ void PageDefaultsPanel::OnOverSizeCheckBoxClick( wxCommandEvent& event )
 void PageDefaultsPanel::OnPaperHeight( wxCommandEvent& event )
 {
     Design::AlbumPageDefaults( )->PaperHeight( Design::AlbumPageDefaults( )->PaperHeightStr( ) );
+
+    Update( );
+    event.Skip( );
 }
 
 //--------------
@@ -594,6 +593,9 @@ void PageDefaultsPanel::OnPaperHeight( wxCommandEvent& event )
 void PageDefaultsPanel::OnPaperWidth( wxCommandEvent& event )
 {
     Design::AlbumPageDefaults( )->PaperWidth( Design::AlbumPageDefaults( )->PaperWidthStr( ) );
+
+    Update( );
+    event.Skip( );
 }
 
 //--------------
@@ -601,6 +603,9 @@ void PageDefaultsPanel::OnPaperWidth( wxCommandEvent& event )
 void PageDefaultsPanel::OnPageHeight( wxCommandEvent& event )
 {
     Design::AlbumPageDefaults( )->PageHeight( Design::AlbumPageDefaults( )->PageHeightStr( ) );
+
+    Update( );
+    event.Skip( );
 }
 
 //--------------
@@ -608,6 +613,9 @@ void PageDefaultsPanel::OnPageHeight( wxCommandEvent& event )
 void PageDefaultsPanel::OnPageWidth( wxCommandEvent& event )
 {
     Design::AlbumPageDefaults( )->PageWidth( Design::AlbumPageDefaults( )->PageWidthStr( ) );
+
+    Update( );
+    event.Skip( );
 }
 
 //--------------
@@ -615,6 +623,9 @@ void PageDefaultsPanel::OnPageWidth( wxCommandEvent& event )
 void PageDefaultsPanel::OnTopPageMargin( wxCommandEvent& event )
 {
     Design::AlbumPageDefaults( )->TopMargin( Design::AlbumPageDefaults( )->TopMarginStr( ) );
+
+    Update( );
+    event.Skip( );
 }
 
 //--------------
@@ -622,6 +633,9 @@ void PageDefaultsPanel::OnTopPageMargin( wxCommandEvent& event )
 void PageDefaultsPanel::OnBottomPageMargin( wxCommandEvent& event )
 {
     Design::AlbumPageDefaults( )->BottomMargin( Design::AlbumPageDefaults( )->BottomMarginStr( ) );
+
+    Update( );
+    event.Skip( );
 }
 
 //--------------
@@ -629,6 +643,10 @@ void PageDefaultsPanel::OnBottomPageMargin( wxCommandEvent& event )
 void PageDefaultsPanel::OnLeftPageMargin( wxCommandEvent& event )
 {
     Design::AlbumPageDefaults( )->LeftMargin( Design::AlbumPageDefaults( )->LeftMarginStr( ) );
+
+    Update( );
+    event.Skip( );
+
 }
 
 //--------------
@@ -636,6 +654,10 @@ void PageDefaultsPanel::OnLeftPageMargin( wxCommandEvent& event )
 void PageDefaultsPanel::OnRightPageMargin( wxCommandEvent& event )
 {
     Design::AlbumPageDefaults( )->RightMargin( Design::AlbumPageDefaults( )->RightMarginStr( ) );
+
+
+    Update( );
+    event.Skip( );
 }
 
 //--------------
@@ -643,6 +665,9 @@ void PageDefaultsPanel::OnRightPageMargin( wxCommandEvent& event )
 void PageDefaultsPanel::OnBorderFilename( wxCommandEvent& event )
 {
     Design::AlbumPageDefaults( )->BorderFilename( Design::AlbumPageDefaults( )->BorderFilename( ) );
+
+    Update( );
+    event.Skip( );
 }
 
 //--------------
@@ -650,6 +675,9 @@ void PageDefaultsPanel::OnBorderFilename( wxCommandEvent& event )
 void PageDefaultsPanel::OnBorderSize( wxCommandEvent& event )
 {
     Design::AlbumPageDefaults( )->BorderSize( Design::AlbumPageDefaults( )->BorderSizeStr( ) );
+
+    Update( );
+    event.Skip( );
 }
 
 //--------------
@@ -657,4 +685,13 @@ void PageDefaultsPanel::OnBorderSize( wxCommandEvent& event )
 void PageDefaultsPanel::OnOrientationChoice( wxCommandEvent& event )
 {
     Design::AlbumPageDefaults( )->Orientation( Design::OrientationStrings[ m_orientationChoice->GetSelection( ) ] );
+
+    Update( );
+    event.Skip( );
+}
+//-------
+
+void PageDefaultsPanel::Update( )
+{
+    GetAlbumTreeCtrl( )->Update( );
 }

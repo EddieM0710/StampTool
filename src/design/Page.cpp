@@ -38,6 +38,8 @@
 
 namespace Design {
 
+    //----------------
+
     Page::Page( wxXmlNode* node ) : LayoutBase( node )
     {
         SetNodeType( AT_Page );
@@ -46,9 +48,9 @@ namespace Design {
         m_titleFrame->SetHeadingString( GetAttrStr( AT_Name ) );
         m_titleFrame->SetSubHeadingString( GetAttrStr( AT_SubTitle ) );
         m_pageType = Design::PT_None;
-
-
     };
+
+    //----------------
 
     void Page::Init( )
     {
@@ -60,8 +62,8 @@ namespace Design {
             {
 
                 // the page frame takes into account the pageMargins, the border is within this
-                SetXPos( parameters->LeftMargin( ) );
-                SetYPos( parameters->GetTopMargin( ) );
+                SetXPos( 0 );//parameters->LeftMargin( ) );
+                SetYPos( 0 );//parameters->GetTopMargin( ) );
                 SetWidth( parameters->GetWidth( ) - parameters->RightMargin( ) - parameters->LeftMargin( ) );
                 SetHeight( parameters->GetHeight( ) - parameters->GetTopMargin( ) - parameters->BottomMargin( ) );
                 SetTopPageMargin( parameters->GetTopMargin( ) );
@@ -74,8 +76,8 @@ namespace Design {
             {
                 //SetBorder( m_border );
                 // the page frame takes into account the pageMargins, the border is within this
-                SetXPos( parameters->GetTopMargin( ) );
-                SetYPos( parameters->LeftMargin( ) );
+                SetXPos( 0 );//parameters->GetTopMargin( ) );
+                SetYPos( 0 );//parameters->LeftMargin( ) );
                 SetHeight( parameters->GetWidth( ) - parameters->RightMargin( ) - parameters->LeftMargin( ) );
                 SetWidth( parameters->GetHeight( ) - parameters->GetTopMargin( ) - parameters->BottomMargin( ) );
                 SetTopPageMargin( parameters->LeftMargin( ) );
@@ -86,17 +88,20 @@ namespace Design {
             }
         }
     }
+
+    //----------------
+
     void Page::Draw( wxDC& dc, double x, double y )
     {
         dc.SetPen( *wxBLACK_PEN );
-
-        SetClientDimensions( dc, x + GetXPos( ), y + GetYPos( ), GetWidth( ), GetHeight( ) );
+        SetClientDimensions( dc, x + m_contentFrame.GetXPos( ), y + m_contentFrame.GetYPos( ), GetWidth( ), GetHeight( ) );
 
         wxString borderName = GetBorderFileName( );
         double xPos = x + GetLeftPageMargin( );
         double yPos = y + GetTopPageMargin( );
 
         wxImage image = GetProject( )->GetImage( borderName );
+        wxFont font = dc.GetFont( );
 
         DrawImage( dc, image,
             xPos, yPos,
@@ -125,6 +130,8 @@ namespace Design {
             childID = GetAlbumTreeCtrl( )->GetNextChild( parentID, cookie );
         }
     }
+
+    //----------------
 
     void Page::DrawPDF( wxPdfDocument* doc, double x, double y )
     {
@@ -180,16 +187,21 @@ namespace Design {
         }
     }
 
+    //----------------
 
     TitleFrame* Page::GetTitleFrame( )
     {
         return m_titleFrame;
     };
 
+    //----------------
+
     wxString  Page::GetTitleString( )
     {
         return m_titleFrame->GetHeadingString( );
     };
+
+    //----------------
 
     void  Page::SetTitleString( wxString str )
     {
@@ -197,16 +209,22 @@ namespace Design {
         m_titleFrame->SetHeadingString( str );
     };
 
+    //----------------
+
     wxString  Page::GetSubTitleString( )
     {
         return m_titleFrame->GetHeadingString( );
     };
+
+    //----------------
 
     void  Page::SetSubTitleString( wxString str )
     {
         SetAttrStr( AT_SubTitle, str );
         m_titleFrame->SetSubHeadingString( str );
     };
+
+    //----------------
 
     void Page::LoadFonts( wxXmlNode* node )
     {
@@ -216,6 +234,8 @@ namespace Design {
             m_titleFrame->LoadFonts( fonts );
         }
     }
+
+    //----------------
 
     void Page::ReportLayout( )
     {
@@ -231,6 +251,7 @@ namespace Design {
         std::cout << str;
     };
 
+    //----------------
 
     void Page::Save( wxXmlNode* xmlNode )
     {
@@ -251,22 +272,28 @@ namespace Design {
         SaveFonts( xmlNode );
     }
 
+    //----------------
+
     void Page::SaveFonts( wxXmlNode* parent )
     {
         m_titleFrame->SaveFonts( parent );
     }
 
+    //----------------
+
     void Page::SetContentFrame( )
     {
-        m_contentFrame.SetXPos( GetXPos( ) + GetLeftContentMargin( ) + GetBorderSize( ) );
-        m_contentFrame.SetYPos( GetYPos( ) + GetTopContentMargin( ) );
+        m_contentFrame.SetXPos( GetXPos( ) + GetLeftPageMargin( ) + GetBorderSize( ) );
+        m_contentFrame.SetYPos( GetYPos( ) + GetTopPageMargin( ) + GetBorderSize( ) );
         m_contentFrame.SetWidth( GetWidth( )
-            - GetLeftContentMargin( ) - GetRightContentMargin( )
+            - GetLeftPageMargin( ) - GetRightPageMargin( )
             - 2 * GetBorderSize( ) );
         m_contentFrame.SetHeight( GetHeight( )
-            - GetTopContentMargin( ) - GetBottomContentMargin( )
+            - GetTopPageMargin( ) - GetBottomPageMargin( )
             - 2 * GetBorderSize( ) );
     }
+
+    //----------------
 
     void Page::UpdateLayout( )
     {
@@ -274,6 +301,8 @@ namespace Design {
         UpdateSizes( );
         UpdatePositions( );
     }
+
+    //----------------
 
     bool Page::UpdateMinimumSize( )
     {
@@ -368,6 +397,7 @@ namespace Design {
         return ( ValidateNode( ) != AT_FATAL );
     }
 
+    //----------------
 
     void Page::UpdatePositions( )
     {
@@ -469,9 +499,9 @@ namespace Design {
 
             childID = GetAlbumTreeCtrl( )->GetNextChild( parentID, cookie );
         }
-
-
     }
+
+    //----------------
 
     void Page::UpdateSizes( )
     {
@@ -533,6 +563,8 @@ namespace Design {
         }
     }
 
+    //----------------
+
     NodeStatus Page::ValidateNode( )
     {
 
@@ -544,14 +576,17 @@ namespace Design {
             if ( GetHeight( ) <= 0.0 )
             {
                 wxString str;
-                str = wxString::Format( "Terminal leaf node must define the height. height:>>%7.2f<< \n", GetHeight( ) );
+                str = wxString::Format( "Terminal leaf node must define the height. height:>>%7.2f<< \n",
+                    GetHeight( ) );
                 GetErrorArray( )->Add( str );
                 status = AT_FATAL;
+
             }
             if ( GetWidth( ) <= 0.0 )
             {
                 wxString str;
-                str = wxString::Format( "Terminal leaf node must define the width. width:>>%7.2f<< \n", GetWidth( ) );
+                str = wxString::Format( "Terminal leaf node must define the width. width:>>%7.2f<< \n",
+                    GetWidth( ) );
                 GetErrorArray( )->Add( str );
                 status = AT_FATAL;
             }
@@ -559,7 +594,8 @@ namespace Design {
         if ( GetWidth( ) < GetMinWidth( ) )
         {
             wxString str;
-            str = wxString::Format( "Children too big for page. width:%7.2f  min width:%7.2f\n", GetWidth( ), GetMinWidth( ) );
+            str = wxString::Format( "Children too big for page. width:%7.2f  min width:%7.2f\n",
+                GetWidth( ), GetMinWidth( ) );
             GetErrorArray( )->Add( str );
             status = AT_WARNING;
             // ReportLayoutError( " UpdateMinimumSize", "Children too big for page", true );
@@ -568,14 +604,36 @@ namespace Design {
         if ( GetHeight( ) < GetMinHeight( ) )
         {
             wxString str;
-            str = wxString::Format( "Children too big for page. height:%7.2f  min height:%7.2f\n", GetHeight( ), GetMinHeight( ) );
+            str = wxString::Format( "Children too big for page. height:%7.2f  min height:%7.2f\n",
+                GetHeight( ), GetMinHeight( ) );
             GetErrorArray( )->Add( str );
             status = AT_WARNING;
             // ReportLayoutError( " UpdateMinimumSize", "Children too big for page", true );
         }
-
+        m_nodeValid = status;
+        wxTreeItemId id = GetTreeItemId( );
+        if ( id.IsOk( ) )
+        {
+            if ( status == AT_FATAL )
+            {
+                GetAlbumTreeCtrl( )->SetItemBackgroundColour( id, *wxRED );
+                std::cout << GetAlbumTreeCtrl( )->GetItemText( id ) << " Fatal\n";
+            }
+            else if ( status == AT_WARNING )
+            {
+                GetAlbumTreeCtrl( )->SetItemBackgroundColour( id, *wxYELLOW );
+                std::cout << GetAlbumTreeCtrl( )->GetItemText( id ) << " Warning\n";
+            }
+            else
+            {
+                GetAlbumTreeCtrl( )->SetItemBackgroundColour( id, *wxWHITE );
+                //std::cout << GetAlbumTreeCtrl( )->GetItemText( id ) << " OK\n";
+            }
+        }
         return status;
     }
+
+    //----------------
 
 }
 

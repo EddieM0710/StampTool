@@ -51,14 +51,12 @@
 #include "design/Stamp.h"
 #include "design/AlbumData.h"
 #include "gui/AlbumTreeCtrl.h"
- //#include "gui/AppData.h"
 
-  // namespace for all Album design 
 namespace Design {
 
     wxRealPoint  DeviceUnitsPerMM;
 
-
+    //----------------
 
     wxString AttrNameStrings[ AT_NbrAttrTypes ] = {
         "Name",
@@ -111,13 +109,23 @@ namespace Design {
         "CatalogCodes",
         "LayoutType"
     };
+
+    //----------------
+
     wxString OrientationStrings[ 2 ] = { "Portrait", "Landscape" };
+
+    //----------------
+
     wxString LayoutTypeStrings[ NbrLayoutTypes ] = { "Page", "Frame", "Stamp", "Text" };
+
+    //----------------
 
     bool IsPortrait( wxString orientation )
     {
         return !orientation.Cmp( OrientationStrings[ AT_Portrait ] );
     };
+
+    //----------------
 
     wxString AlbumBaseNames[ AT_NbrAlbumTypes ] = {
         "Album",
@@ -125,13 +133,15 @@ namespace Design {
         "Row",
         "Col",
         "TextBox",
-        //@@@  "Title",
         "TitlePage",
         "Stamp",
         "Font" };
 
+    //----------------
 
     int DefaultPointSize[ AT_NbrFontUsageTypes ] = { 12, 10, 10, 10, 8 };
+
+    //----------------
 
     wxString FontUsageTypeStrings[ AT_NbrFontUsageTypes ] = {
         "Title",
@@ -141,10 +151,14 @@ namespace Design {
         "CatNbr"
     };
 
+    //----------------
+
     wxString StampNamePositionStrings[ AT_NbrStampNamePositions ] = {
         "Top",
         "Bottom"
     };
+
+    //----------------
 
     wxString StampAlignmentModeStrings[ NbrAlignmentModes ] = {
         "Top",
@@ -152,6 +166,7 @@ namespace Design {
         "Bottom"
     };
 
+    //----------------
 
     StampNamePosType FindStampLocationType( wxString name )
     {
@@ -161,6 +176,8 @@ namespace Design {
         }
         return  AT_StampNamePositionTop;
     };
+
+    //----------------
 
     AlignmentModeType FindAlignmentModeType( wxString name )
     {
@@ -176,6 +193,8 @@ namespace Design {
         return  AlignTop;
     };
 
+    //----------------
+
     AlbumAttrType FindAlbumAttrType( wxString name )
     {
         wxString attrName;
@@ -189,6 +208,8 @@ namespace Design {
         }
         return ( AlbumAttrType ) -1;
     };
+
+    //----------------
 
     AlbumBaseType FindAlbumBaseType( wxString name )
     {
@@ -204,6 +225,8 @@ namespace Design {
         return ( AlbumBaseType ) -1;
     };
 
+    //----------------
+
     FontUsageType FindFontUsageType( wxString name )
     {
         wxString usageStr;
@@ -218,6 +241,8 @@ namespace Design {
         return ( FontUsageType ) -1;
     };
 
+    //----------------
+
     Album* GetAlbum( void )
     {
         AlbumVolume* albumVolume = GetAlbumVolume( );
@@ -228,15 +253,25 @@ namespace Design {
         return ( Album* ) 0;
     }
 
+    //----------------
+
     PageDefaults* AlbumPageDefaults( ) {
         return  GetAlbum( )->AlbumPageDefaults( );
     };
+
+    //----------------
+
     FrameDefaults* AlbumFrameDefaults( ) {
         return  GetAlbum( )->AlbumFrameDefaults( );
     };
+
+    //----------------
+
     StampDefaults* AlbumStampDefaults( ) {
         return GetAlbum( )->AlbumStampDefaults( );
     };
+
+    //----------------
 
     AlbumVolume* GetAlbumVolume( void )
     {
@@ -248,7 +283,7 @@ namespace Design {
         return ( AlbumVolume* ) 0;
     };
 
-
+    //----------------
 
     LayoutBase* GetSelectedNodePage( )
     {
@@ -292,6 +327,8 @@ namespace Design {
         return ( LayoutBase* ) 0;
     }
 
+    //----------------
+
     void InitDesignDefs( ScaleClient client )
     {
 
@@ -309,15 +346,17 @@ namespace Design {
         }
     }
 
+    //----------------
+
     bool IsAlbumBaseTypeValid( AlbumBaseType type )
     {
         return ( type >= AT_Album && type < AT_NbrAlbumTypes );
     };
 
+    //----------------
+
     AlbumBase* MakeNode( wxXmlNode* node )
     {
-
-
         wxString nodeName = node->GetName( );
         AlbumBaseType type = FindAlbumBaseType( nodeName );
 
@@ -350,4 +389,7 @@ namespace Design {
         }
         return object;
     }
+
+    //----------------
+
 }

@@ -46,33 +46,117 @@
 #include "utils/Settings.h"
 #include "utils/Project.h"
 #include "gui/AlbumTreeCtrl.h"
- //#include "StampToolApp.h"
 
- //wxDECLARE_APP( StampToolApp );
 
 namespace Design {
 
-    Album::Album(   wxXmlNode* node ) : AlbumBase( node )
+    //----------------
+
+    Album::Album( wxXmlNode* node ) : AlbumBase( node )
     {
         SetNodeType( AT_Album );
         InitParameters( );
     }
 
+    //----------------
 
     void Album::InitParameters( )
     {
     }
+
+    //----------------
+
+    double Album::GetAlbumAttributeDbl( Design::AlbumAttrType type )
+    {
+        wxString val = GetAttrStr( type );
+        if ( val.IsEmpty( ) )
+        {
+            return  Design::AlbumPageDefaults( )->GetAttrDbl( type );
+        }
+        return  GetAttrDbl( type );
+    }
+
+    //----------------
+
+    wxString Album::GetAlbumAttributeStr( Design::AlbumAttrType type )
+    {
+        wxString val = GetAttrStr( type );
+        if ( val.IsEmpty( ) )
+        {
+            return  Design::AlbumPageDefaults( )->GetAttrStr( type );
+        }
+        return val;
+    }
+
+    //--------------
+
+    bool Album::GetAlbumAttributeBool( Design::AlbumAttrType type )
+    {
+        wxString catStr = GetAttrStr( type );
+        if ( catStr.IsEmpty( ) )
+        {
+            catStr = AlbumPageDefaults( )->GetAttrStr( type );
+        }
+        return String2Bool( catStr );
+    }
+
+    //----------------
+
+    void Album::SetAlbumAttributeStr( Design::AlbumAttrType type, wxString val )
+    {
+        if ( IsDefaultVal( type, val ) )
+        {
+            DeleteAttribute( AttrNameStrings[ type ] );
+        }
+        else
+        {
+            SetAttrStr( type, val );
+        }
+    }
+
+    //----------------
+
+    void Album::SetAlbumAttributeDbl( Design::AlbumAttrType type, double val )
+    {
+        wxString str = wxString::Format( "%4.1f", val );
+        SetAlbumAttributeStr( type, str );
+    }
+
+    //----------------
+
+    void Album::SetAlbumAttributeBool( Design::AlbumAttrType type, bool val )
+    {
+        wxString str = Bool2String( val );
+        SetAlbumAttributeStr( type, str );
+
+    }
+
+    //--------------
+
+    bool Album::IsDefaultVal( AlbumAttrType type )
+    {
+        return AlbumFrameDefaults( )->IsEqual( type, GetAttrStr( type ) );
+    }
+
+    //----------------
+
+    bool Album::IsDefaultVal( AlbumAttrType type, wxString val )
+    {
+        return AlbumFrameDefaults( )->IsEqual( type, val );
+    }
+
+    //----------------
+
     wxString Album::DrawPDF( )
     {
-
         wxString docName = GetDocName( );
         docName += ".pdf";
         wxFileName outFile( docName );
         outFile.MakeAbsolute( );
         wxString fullPath = outFile.GetFullPath( );
 
-        double width = GetAttrDbl( AT_PaperWidth );
-        double height = GetAttrDbl( AT_PaperHeight );
+        double width = GetAlbumAttributeDbl( AT_PaperWidth );
+        double height = GetAlbumAttributeDbl( AT_PaperHeight );
         wxPdfDocument* doc = new wxPdfDocument( wxPORTRAIT, width, height );
 
         wxPdfDC pdfDC( doc, doc->GetPageWidth( ), doc->GetPageHeight( ) );
@@ -86,7 +170,6 @@ namespace Design {
         DeviceUnitsPerMM.x = pdfPPI.x / 25.4;
         DeviceUnitsPerMM.y = pdfPPI.y / 25.4;
         pdfDC.SetUserScale( DeviceUnitsPerMM.x, DeviceUnitsPerMM.y );
-
 
         wxTreeItemIdValue cookie;
         wxTreeItemId parentID = GetTreeItemId( );
@@ -109,7 +192,6 @@ namespace Design {
             }
 
             childID = GetAlbumTreeCtrl( )->GetNextChild( parentID, cookie );
-
         }
         doc->SaveAsFile( fullPath );
 
@@ -120,12 +202,12 @@ namespace Design {
             wxOK | wxCENTER );
         int rsp = dlg->ShowModal( );
         return docName;
-
     }
+
+    //----------------
 
     void Album::DumpFont( wxString Level )
     {
-
         int ndx = DefaultFonts[ AT_NbrFontType ];
         std::cout << Level << "CatNbr font " << GetFontList( )->GetFont( ndx ).GetNativeFontInfoUserDesc( )
             << "  color " << GetFontList( )->GetColor( ndx ).GetAsString( )
@@ -141,6 +223,8 @@ namespace Design {
             << "  color " << GetFontList( )->GetColor( ndx ).GetAsString( )
             << "  Ndx " << ndx << std::endl;
     };
+
+    //----------------
 
     void Album::DumpLayout( )
     {
@@ -163,6 +247,7 @@ namespace Design {
         }
     }
 
+    //----------------
 
     wxString Album::GetCatalog( ) {
         wxString cat = GetAttrStr( AT_Catalog );
@@ -172,6 +257,8 @@ namespace Design {
         }
         return cat;
     };
+
+    //----------------
 
     wxColour Album::GetColor( FontUsageType fontType )
     {
@@ -190,16 +277,20 @@ namespace Design {
         }
     }
 
-
+    //----------------
 
     wxString Album::GetDocName( ) {
         return  GetAttrStr( "Name" );
     };
 
+    //----------------
+
     wxFont Album::GetFont( FontUsageType fontType )
     {
         return GetFontList( )->GetFont( GetFontNdx( fontType ) );
     };
+
+    //----------------
 
     int Album::GetFontNdx( FontUsageType fontType )
     {
@@ -214,27 +305,27 @@ namespace Design {
         }
     };
 
+    //----------------
 
     int Album::GetFontNdxPreference( FontUsageType fontType )
     {
         return GetSettings( )->GetFontNdxPreference( fontType );
     }
 
-
-
+    //----------------
 
     bool Album::IsDefaultFont( FontUsageType fontType, int ndx )
     {
         return ( ndx == GetFontNdx( fontType ) );
     }
 
+    //----------------
+
     void Album::LoadFonts( wxXmlNode* node )
     {
-
         wxXmlNode* fonts = Utils::FirstChildElement( node, "Fonts" );
         if ( fonts )
         {
-
             Design::AlbumBaseType nodeType = GetNodeType( );
 
             DefaultFonts[ AT_NbrFontType ] = GetFontList( )->LoadFont( fonts, Design::AT_NbrFontType );
@@ -274,6 +365,9 @@ namespace Design {
             }
         }
     }
+
+    //----------------
+
     void Album::FixupNode( )
     {
 
@@ -447,9 +541,10 @@ namespace Design {
         }
     }
 
+    //----------------
+
     void Album::LoadDefaults( wxXmlNode* node )
     {
-
         wxXmlNode* defaults = Utils::FirstChildElement( node, "Defaults" );
         if ( defaults )
         {
@@ -504,6 +599,7 @@ namespace Design {
         }
     }
 
+    //----------------
 
     void Album::MakeAlbum( )
     {
@@ -512,19 +608,22 @@ namespace Design {
         UpdatePositions( );
     }
 
+    //----------------
+
     void Album::MakeDefaultFont( FontUsageType fontType )
     {
         GetFontList( )->MakeDefault( DefaultFonts[ fontType ] );
     };
+
+    //----------------
 
     void Album::MakePDFAlbum( )
     {
         MakeAlbum( );
         wxString outName = DrawPDF( );
     }
-    // SaveDefault( Design::AlbumAttrType type )
-    // {
-    // }
+
+    //----------------
 
     void Album::Save( wxXmlNode* xmlNode )
     {
@@ -551,6 +650,8 @@ namespace Design {
         SetAttribute( xmlNode, AT_Orientation );
         SaveFonts( xmlNode );
     }
+
+    //----------------
 
     void Album::SaveFonts( wxXmlNode* parent )
     {
@@ -612,6 +713,8 @@ namespace Design {
         }
     }
 
+    //----------------
+
     void Album::SetCatalog( wxString str )
     {
 
@@ -641,9 +744,13 @@ namespace Design {
         }
     };
 
+    //----------------
+
     void Album::SetDocName( wxString str ) {
         SetAttrStr( AT_Name, str );
     };
+
+    //----------------
 
     void Album::SetFont( FontUsageType fontType, wxFont font, wxColour color )
     {
@@ -658,12 +765,14 @@ namespace Design {
         }
     }
 
+    //----------------
 
     void Album::SetFontNdx( FontUsageType fontType, int ndx )
     {
         DefaultFonts[ fontType ] = ndx;
     };
 
+    //----------------
 
     bool Album::UpdateMinimumSize( )
     {
@@ -695,6 +804,8 @@ namespace Design {
         return true;
     }
 
+    //----------------
+
     void Album::UpdatePositions( )
     {
         // go to the bottom of each child container object ( row, column, page )
@@ -712,6 +823,8 @@ namespace Design {
         }
     }
 
+    //----------------
+
     void Album::UpdateSizes( )
     {
         // go to the bottom of each child container object ( row, column, page )
@@ -728,8 +841,9 @@ namespace Design {
             child->UpdateSizes( );
             childID = GetAlbumTreeCtrl( )->GetNextChild( parentID, cookie );
         }
-
     }
+
+    //----------------
 
     NodeStatus Album::ValidateNode( )
     {
@@ -748,5 +862,6 @@ namespace Design {
         return status;
     }
 
+    //----------------
 
 }

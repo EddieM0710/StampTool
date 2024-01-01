@@ -34,20 +34,12 @@
 #include "gui/HelperPanel.h"
 
 
- /*
-  * Forward declarations
-  */
 class LabeledTextBox;
 class wxListCtrl;
 class TitleHelper;
 namespace Design {
     class Row;
 };
-
-/*
- * Control identifiers
- */
-
 
 
 #define SYMBOL_ROWDETAILSDIALOG_STYLE wxCAPTION | wxRESIZE_BORDER | wxSYSTEM_MENU | wxCLOSE_BOX | wxTAB_TRAVERSAL
@@ -57,15 +49,9 @@ namespace Design {
 #define SYMBOL_ROWDETAILSDIALOG_POSITION wxDefaultPosition
 
 
-
- /*
-  * RowDetailsPanel class declaration
-  */
-
 class RowDetailsPanel : public HelperPanel
 {
     DECLARE_DYNAMIC_CLASS( RowDetailsPanel )
-    DECLARE_EVENT_TABLE( )
 
 public:
     enum RowDetailsPanelGuiDefs {
@@ -114,9 +100,6 @@ public:
 
     void SetupDialog( Design::Row* row );
 
-    // RowDetailsPanel event handler declarations
-
-    //   wxID_OK
     void OnOkClick( wxCommandEvent& event );
 
     void OnAlignmentModeButtonSelected( wxCommandEvent& event );
@@ -134,7 +117,6 @@ public:
     bool GetShowTitle( );
     bool GetShowSubTitle( );
     bool GetShow( );
-    //  void SetTitleLocation( );
     void SetAlignmentMode( );
     Design::StampNamePosType GetTitleLocationType( );
     void SetCalculateSpacing( bool val );
@@ -154,7 +136,6 @@ public:
     bool IsNameModified( );
 
 
-    // void OnTitleDefaultClick( wxCommandEvent& event );
     void OnSubTitleDefaultClick( wxCommandEvent& event );
     void OnTitleCheckboxClick( wxCommandEvent& event );
     void OnSubTitleCheckboxClick( wxCommandEvent& event );
@@ -171,6 +152,12 @@ public:
 
     void OnTitleTextChanged( wxCommandEvent& event );
     void OnSubTitleTextChanged( wxCommandEvent& event );
+
+
+    void SetStatusList( );
+
+    void Update( );
+
 private:
 
 

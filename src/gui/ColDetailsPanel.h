@@ -261,6 +261,10 @@ public:
     void OnSubTitleFontPicker( wxFontPickerEvent& event );
     void OnSubTitleColorPicker( wxColourPickerEvent& event );
 
+    void SetStatusList( );
+
+    void Update( );
+
 
 private:
 

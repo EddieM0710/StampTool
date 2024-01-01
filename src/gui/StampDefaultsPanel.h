@@ -197,6 +197,9 @@ public:
 
     void SetStampMargin( wxString m_StampMargin );
 
+    void Update( );
+
+
 private:
 
     wxCheckBox* m_nbrCheckbox;

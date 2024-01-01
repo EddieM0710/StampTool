@@ -63,23 +63,23 @@ IMPLEMENT_DYNAMIC_CLASS( StampDetailsPanel, HelperPanel )
 /*
  * StampDetailsPanel event table definition
  */
- /**
-  * BEGIN_EVENT_TABLE
-  *
-  * @param  {StampDetailsPanel} undefined :
-  * @param  {wxDialog} undefined           :
-  */
-    BEGIN_EVENT_TABLE( StampDetailsPanel, HelperPanel )
-    // EVT_BUTTON( ID_REFRESHBUTTON, StampDetailsPanel::OnRefreshButtonClick )
-    // EVT_BUTTON( wxID_CANCEL, StampDetailsPanel::OnCancelClick )
-    // EVT_BUTTON( wxID_OK, StampDetailsPanel::OnOkClick )
-    EVT_CHECKBOX( ID_CATNBRCHECKBOX, StampDetailsPanel::OnCatNbrCheckboxClick )
-    // EVT_RADIOBUTTON( ID_DEFAULTRADIOBUTTON, StampDetailsPanel::OnDefaultRadioButtonSelected )
-    EVT_RADIOBUTTON( ID_TOPRADIOBUTTON, StampDetailsPanel::OnNamePositionButtonSelected )
-    EVT_RADIOBUTTON( ID_BOTTOMRADIOBUTTON, StampDetailsPanel::OnNamePositionButtonSelected )
-    END_EVENT_TABLE( )
+ //  /**
+ //   * BEGIN_EVENT_TABLE
+ //   *
+ //   * @param  {StampDetailsPanel} undefined :
+ //   * @param  {wxDialog} undefined           :
+ //   */
+ //     BEGIN_EVENT_TABLE( StampDetailsPanel, HelperPanel )
+ //     // EVT_BUTTON( ID_REFRESHBUTTON, StampDetailsPanel::OnRefreshButtonClick )
+ //     // EVT_BUTTON( wxID_CANCEL, StampDetailsPanel::OnCancelClick )
+ //     // EVT_BUTTON( wxID_OK, StampDetailsPanel::OnOkClick )
+ //     EVT_CHECKBOX( ID_CATNBRCHECKBOX, StampDetailsPanel::OnCatNbrCheckboxClick )
+ //     // EVT_RADIOBUTTON( ID_DEFAULTRADIOBUTTON, StampDetailsPanel::OnDefaultRadioButtonSelected )
+ //     EVT_RADIOBUTTON( ID_TOPRADIOBUTTON, StampDetailsPanel::OnNamePositionButtonSelected )
+ //     EVT_RADIOBUTTON( ID_BOTTOMRADIOBUTTON, StampDetailsPanel::OnNamePositionButtonSelected )
+ //     END_EVENT_TABLE( )
 
-    //-------
+ //     //-------
 
     StampDetailsPanel::StampDetailsPanel( )
 {
@@ -159,8 +159,6 @@ void StampDetailsPanel::CreateControls( )
 
     focusNotebook->AddPage( commonPanel, _( "Basic" ) );
 
-
-
     wxPanel* advancedPanel = new wxPanel( focusNotebook, ++lastID, wxDefaultPosition,
         wxDefaultSize, wxTAB_TRAVERSAL );
     advancedPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
@@ -181,21 +179,24 @@ void StampDetailsPanel::CreateControls( )
     focusNotebook->AddPage( advancedPanel, _( "Special" ) );
 
 
-
-    ////////////
     wxBoxSizer* checkBoxHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
     leftCommonVerticalSizer->Add( checkBoxHorizontalSizer, 0, wxGROW | wxALL, 0 );
 
-    m_nbrCheckbox = new wxCheckBox( commonPanel, ID_CATNBRCHECKBOX, _( "Show ID" ), wxDefaultPosition, wxDefaultSize, 0 );
+    m_nbrCheckbox = SetupCheckBox( commonPanel, checkBoxHorizontalSizer, ++lastID,
+        _( "Show ID" ), wxCommandEventHandler( StampDetailsPanel::OnCatNbrCheckboxClick ) );
+
+
     m_nbrCheckbox->SetValue( false );
-    checkBoxHorizontalSizer->Add( m_nbrCheckbox, 0, wxALIGN_LEFT | wxALL, 5 );
+    //   checkBoxHorizontalSizer->Add( m_nbrCheckbox, 0, wxALIGN_LEFT | wxALL, 5 );
 
 
 
-    m_catCode = SetupMultilineLabeledText( advancedPanel, middleAdvancedVerticalSizer, lastID, "Catalog Codes", true,
+    m_catCode = SetupMultilineLabeledText( advancedPanel, middleAdvancedVerticalSizer, lastID,
+        "Catalog Codes", true,
         wxCommandEventHandler( StampDetailsPanel::OnCatalogCodesChanged ) );
 
-    m_catNbr = new wxComboBox( commonPanel, ID_IDLABELTEXTBOX, wxEmptyString, wxDefaultPosition, wxDefaultSize, m_catCodesStringArray, wxCB_DROPDOWN );
+    m_catNbr = new wxComboBox( commonPanel, ID_IDLABELTEXTBOX, wxEmptyString,
+        wxDefaultPosition, wxDefaultSize, m_catCodesStringArray, wxCB_DROPDOWN );
     leftCommonVerticalSizer->Add( m_catNbr, 0, wxGROW | wxALL, 5 );
 
     Connect( ID_IDLABELTEXTBOX, wxEVT_COMBOBOX, wxCommandEventHandler( StampDetailsPanel::OnCatNbrComboBoxSel ) );
@@ -239,11 +240,12 @@ void StampDetailsPanel::CreateControls( )
     wxStaticBox* locationBox = SetupBoxSizer( commonPanel, middleCommonVerticalSizer,
         "Stamp Name Location", lastID, locationSizer, wxHORIZONTAL );
 
-    m_topButton = SetupRadioButton( locationBox, locationSizer, lastID, _( "Top" ), true,
-        wxCommandEventHandler( StampDetailsPanel::OnNamePositionButtonSelected ) );
+    m_topButton = SetupRadioButton( locationBox, locationSizer, lastID,
+        _( "Top" ), true, wxCommandEventHandler( StampDetailsPanel::OnNamePositionButtonSelected ) );
     m_topButton->SetToolTip( _( "Name above Stamp." ) );
 
-    m_bottomButton = SetupRadioButton( locationBox, locationSizer, lastID, _( "Bottom" ), false,
+    m_bottomButton = SetupRadioButton( locationBox, locationSizer, lastID,
+        _( "Bottom" ), false,
         wxCommandEventHandler( StampDetailsPanel::OnNamePositionButtonSelected ) );
     m_bottomButton->SetToolTip( _( "Name below Stamp." ) );
 
@@ -252,36 +254,47 @@ void StampDetailsPanel::CreateControls( )
 
 
 
-    m_imagePath = SetupLabelText( advancedPanel, middleAdvancedVerticalSizer, lastID, _( "Image Name" ), true, wxCommandEventHandler( StampDetailsPanel::OnMountAllowanceWidth ) );
+    m_imagePath = SetupLabelText( advancedPanel, middleAdvancedVerticalSizer, lastID,
+        _( "Image Name" ), true, wxCommandEventHandler( StampDetailsPanel::OnMountAllowanceWidth ) );
 
     wxBoxSizer* stampboxSizer;
-    wxStaticBox* stampboxBox = SetupBoxSizer( commonPanel, leftCommonVerticalSizer, "Stamp", lastID, stampboxSizer, wxHORIZONTAL );
+    wxStaticBox* stampboxBox = SetupBoxSizer( commonPanel, leftCommonVerticalSizer,
+        "Stamp", lastID, stampboxSizer, wxHORIZONTAL );
 
-    m_height = SetupLabelText( stampboxBox, stampboxSizer, lastID, _( "Height" ), false, wxCommandEventHandler( StampDetailsPanel::OnHeight ) );
+    m_height = SetupLabelText( stampboxBox, stampboxSizer, lastID,
+        _( "Height" ), false, wxCommandEventHandler( StampDetailsPanel::OnHeight ) );
 
-    m_width = SetupLabelText( stampboxBox, stampboxSizer, lastID, _( "Width" ), false, wxCommandEventHandler( StampDetailsPanel::OnWidth ) );
+    m_width = SetupLabelText( stampboxBox, stampboxSizer, lastID,
+        _( "Width" ), false, wxCommandEventHandler( StampDetailsPanel::OnWidth ) );
 
 
     wxBoxSizer* selvageBoxSizer;
-    wxStaticBox* selvageBox = SetupBoxSizer( advancedPanel, rightAdvancedVerticalSizer, "Selvage", lastID, selvageBoxSizer, wxHORIZONTAL );
+    wxStaticBox* selvageBox = SetupBoxSizer( advancedPanel, rightAdvancedVerticalSizer,
+        "Selvage", lastID, selvageBoxSizer, wxHORIZONTAL );
 
-    m_selvageHeight = SetupLabelText( selvageBox, selvageBoxSizer, lastID, _( "Height" ), false, wxCommandEventHandler( StampDetailsPanel::OnSelvageHeight ) );
+    m_selvageHeight = SetupLabelText( selvageBox, selvageBoxSizer, lastID,
+        _( "Height" ), false, wxCommandEventHandler( StampDetailsPanel::OnSelvageHeight ) );
 
-    m_selvageWidth = SetupLabelText( selvageBox, selvageBoxSizer, lastID, _( "Width" ), false, wxCommandEventHandler( StampDetailsPanel::OnSelvageWidth ) );
+    m_selvageWidth = SetupLabelText( selvageBox, selvageBoxSizer, lastID,
+        _( "Width" ), false, wxCommandEventHandler( StampDetailsPanel::OnSelvageWidth ) );
 
 
     wxBoxSizer* mountBoxSizer;
-    wxStaticBox* mountSize = SetupBoxSizer( advancedPanel, rightAdvancedVerticalSizer, "Mount Allowance", lastID, mountBoxSizer, wxHORIZONTAL );
+    wxStaticBox* mountSize = SetupBoxSizer( advancedPanel, rightAdvancedVerticalSizer,
+        "Mount Allowance", lastID, mountBoxSizer, wxHORIZONTAL );
 
-    m_mountAllowanceHeight = SetupLabelText( mountSize, mountBoxSizer, lastID, _( "Height" ), false, wxCommandEventHandler( StampDetailsPanel::OnMountAllowanceHeight ) );
+    m_mountAllowanceHeight = SetupLabelText( mountSize, mountBoxSizer, lastID,
+        _( "Height" ), false, wxCommandEventHandler( StampDetailsPanel::OnMountAllowanceHeight ) );
 
-    m_mountAllowanceWidth = SetupLabelText( mountSize, mountBoxSizer, lastID, _( "Width" ), false, wxCommandEventHandler( StampDetailsPanel::OnMountAllowanceWidth ) );
+    m_mountAllowanceWidth = SetupLabelText( mountSize, mountBoxSizer, lastID,
+        _( "Width" ), false, wxCommandEventHandler( StampDetailsPanel::OnMountAllowanceWidth ) );
 
 
     wxBoxSizer* statusSizer = new wxBoxSizer( wxHORIZONTAL );
     rightCommonVerticalSizer->Add( statusSizer, 1, wxGROW | wxALL, 5 );
 
-    m_statusList = new wxListBox( commonPanel, ID_LISTCTRL, wxDefaultPosition, wxDefaultSize, m_statusListStrings, wxLB_SINGLE );
+    m_statusList = new wxListBox( commonPanel, ++lastID, wxDefaultPosition,
+        wxDefaultSize, m_statusListStrings, wxLB_SINGLE );
 
     statusSizer->Add( m_statusList, 1, wxGROW | wxALL, 5 );
 
@@ -430,25 +443,19 @@ void StampDetailsPanel::OnNamePositionButtonSelected( wxCommandEvent& event )
         m_stamp->SetStampNamePosition( Design::AT_StampNamePositionBottom );
 
     }
-    GetAlbumTreeCtrl( )->Update( );
-    // wxTreeItemId id = GetAlbumTreeCtrl( )->GetPageTreeID( );
-    // if ( id.IsOk( ) )
-    // {
-    //     GetAlbumTreeCtrl( )->UpdateItemPageLayout( id );
-    //     GetAlbumImagePanel( )->Refresh( );
-    // }
-    // else
-    // {
-    //     std::cout << "StampDetailsPanel::OnNamePositionButtonSelected Invalid PageId.\n";
-    // }
+
+    Update( );
+
     event.Skip( );
 }
 
 
 void StampDetailsPanel::OnCatalogCodesChanged( wxCommandEvent& event )
 {
-    GetAlbumTreeCtrl( )->Update( );
 
+    Update( );
+
+    event.Skip( );
 }
 
 //-------
@@ -460,8 +467,10 @@ void StampDetailsPanel::OnCatNbrComboBoxSel( wxCommandEvent& event )
     int pos = catNbr.Find( ":" );
     wxString cat = catNbr.Mid( 0, pos );
     m_stamp->SetCatalog( cat );
-    GetAlbumTreeCtrl( )->Update( );
 
+    Update( );
+
+    event.Skip( );
 }
 
 //-------
@@ -470,7 +479,9 @@ void StampDetailsPanel::OnNameFontPicker( wxFontPickerEvent& event )
 {
     // wxEventType = event.GetEventType( );
     m_stamp->GetNameFrame( )->SetFont( m_nameFontPicker->GetSelectedFont( ), m_nameColorPicker->GetColour( ) );
-    GetAlbumTreeCtrl( )->Update( );
+
+    Update( );
+
     event.Skip( );
 }
 
@@ -479,7 +490,9 @@ void StampDetailsPanel::OnNameFontPicker( wxFontPickerEvent& event )
 void  StampDetailsPanel::OnNameColorPicker( wxColourPickerEvent& event )
 {
     m_stamp->GetNameFrame( )->SetFont( m_nameFontPicker->GetSelectedFont( ), m_nameColorPicker->GetColour( ) );
-    GetAlbumTreeCtrl( )->Update( );
+
+    Update( );
+
     event.Skip( );
 }
 
@@ -488,7 +501,9 @@ void  StampDetailsPanel::OnNameColorPicker( wxColourPickerEvent& event )
 void StampDetailsPanel::OnNbrFontPicker( wxFontPickerEvent& event )
 {
     m_stamp->GetNbrFrame( )->SetFont( m_nbrFontPicker->GetSelectedFont( ), m_nbrColorPicker->GetColour( ) );
-    GetAlbumTreeCtrl( )->Update( );
+
+    Update( );
+
     event.Skip( );
 }
 
@@ -497,7 +512,9 @@ void StampDetailsPanel::OnNbrFontPicker( wxFontPickerEvent& event )
 void  StampDetailsPanel::OnNbrColorPicker( wxColourPickerEvent& event )
 {
     m_stamp->GetNbrFrame( )->SetFont( m_nbrFontPicker->GetSelectedFont( ), m_nbrColorPicker->GetColour( ) );
-    GetAlbumTreeCtrl( )->Update( );
+
+    Update( );
+
     event.Skip( );
 }
 
@@ -511,7 +528,8 @@ void StampDetailsPanel::OnNbrDefaultClick( wxCommandEvent& event )
     wxColour color = fontList->GetColor( ndx );
     m_nbrFontPicker->SetSelectedFont( font );
     m_nbrColorPicker->SetColour( color );
-    GetAlbumTreeCtrl( )->Update( );
+
+    Update( );
 
     event.Skip( );
 }
@@ -526,7 +544,9 @@ void StampDetailsPanel::OnNameDefaultClick( wxCommandEvent& event )
     wxColour color = fontList->GetColor( ndx );
     m_nameFontPicker->SetSelectedFont( font );
     m_nameColorPicker->SetColour( color );
-    GetAlbumTreeCtrl( )->Update( );
+
+    Update( );
+
     event.Skip( );
 }
 
@@ -540,7 +560,9 @@ void StampDetailsPanel::OnSubTitleDefaultClick( wxCommandEvent& event )
     wxColour color = fontList->GetColor( ndx );
     m_subTitleFontPicker->SetSelectedFont( font );
     m_subTitleColorPicker->SetColour( color );
-    GetAlbumTreeCtrl( )->Update( );
+
+    Update( );
+
     event.Skip( );
 }
 
@@ -557,7 +579,10 @@ void  StampDetailsPanel::OnNameTextChanged( wxCommandEvent& event )
 {
     wxString title = m_titleHelper->titleLabel->GetValue( );
     m_stamp->SetNameString( title );
-    GetAlbumTreeCtrl( )->Update( );
+
+    Update( );
+
+    event.Skip( );
 };
 
 void StampDetailsPanel::OnSubTitleTextChanged( wxCommandEvent& event )
@@ -570,9 +595,10 @@ void StampDetailsPanel::OnNameCheckboxClick( wxCommandEvent& event )
 {
     UpdateTitleState( m_titleHelper );
     m_stamp->SetShowTitle( m_titleHelper->titleCheckbox->GetValue( ) );
-    GetAlbumTreeCtrl( )->Update( );
 
-    Layout( );
+    Update( );
+
+    event.Skip( );
 }
 
 //-------
@@ -581,11 +607,11 @@ void StampDetailsPanel::OnCatNbrCheckboxClick( wxCommandEvent& event )
 {
     bool state = m_nbrCheckbox->GetValue( );
     m_stamp->SetShowNbr( state );
-    GetAlbumTreeCtrl( )->Update( );
-    Layout( );
-}
 
-//-------
+    Update( );
+
+    event.Skip( );
+}
 
 //-------
 
@@ -594,9 +620,11 @@ void StampDetailsPanel::OnHeight( wxCommandEvent& event )
     wxString str = m_height->GetValue( );
     double val;
     str.ToDouble( &val );
-    m_stamp->SetStampHeight( val );
-    GetAlbumTreeCtrl( )->Update( );
-    Layout( );
+    m_stamp->SetActualStampHeight( val );
+
+    Update( );
+
+    event.Skip( );
 };
 
 //-------
@@ -606,9 +634,11 @@ void StampDetailsPanel::OnWidth( wxCommandEvent& event )
     wxString str = m_width->GetValue( );
     double val;
     str.ToDouble( &val );
-    m_stamp->SetStampWidth( val );
-    GetAlbumTreeCtrl( )->Update( );
-    Layout( );
+    m_stamp->SetActualStampWidth( val );
+
+    Update( );
+
+    event.Skip( );
 };
 
 //-------
@@ -619,8 +649,9 @@ void StampDetailsPanel::OnSelvageHeight( wxCommandEvent& event )
     double val;
     str.ToDouble( &val );
     m_stamp->SetSelvageHeight( val );
-    GetAlbumTreeCtrl( )->Update( );
-    Layout( );
+
+    Update( );
+
 };
 
 //-------
@@ -631,8 +662,10 @@ void StampDetailsPanel::OnSelvageWidth( wxCommandEvent& event )
     double val;
     str.ToDouble( &val );
     m_stamp->SetSelvageWidth( val );
-    GetAlbumTreeCtrl( )->Update( );
-    Layout( );
+
+    Update( );
+
+    event.Skip( );
 };
 
 //-------
@@ -643,8 +676,10 @@ void StampDetailsPanel::OnMountAllowanceHeight( wxCommandEvent& event )
     double val;
     str.ToDouble( &val );
     m_stamp->SetSelvageHeight( val );
-    GetAlbumTreeCtrl( )->Update( );
-    Layout( );
+
+    Update( );
+
+    event.Skip( );
 };
 
 //-------
@@ -655,25 +690,21 @@ void StampDetailsPanel::OnMountAllowanceWidth( wxCommandEvent& event )
     double val;
     str.ToDouble( &val );
     m_stamp->SetMountAllowanceWidth( val );
-    GetAlbumTreeCtrl( )->Update( );
-    Layout( );
+
+    Update( );
+
+    event.Skip( );
 };
 
 //-------
 
 void StampDetailsPanel::SetupDialog( Design::Stamp* stamp )
 {
-
     m_stamp = stamp;
     UpdateControls( );
-
-    wxArrayString* errors = m_stamp->GetErrorArray( );
-    if ( !errors->IsEmpty( ) )
-    {
-        m_statusList->InsertItems( *errors, 0 );
-    }
-
+    SetStatusList( );
 };
+
 
 //-------
 
@@ -861,8 +892,8 @@ void StampDetailsPanel::UpdateControls( )
 {
     SetCatCodes( );
 
-    SetHeight( m_stamp->GetStampHeightStr( ) );
-    SetWidth( m_stamp->GetStampWidthStr( ) );
+    SetHeight( m_stamp->GetActualStampHeightStr( ) );
+    SetWidth( m_stamp->GetActualStampWidthStr( ) );
 
     SetSelvageHeight( m_stamp->GetSelvageHeightStr( ) );
     SetSelvageWidth( m_stamp->GetSelvageWidthStr( ) );
@@ -885,3 +916,20 @@ void StampDetailsPanel::UpdateControls( )
 }
 
 //-------
+
+void StampDetailsPanel::SetStatusList( )
+{
+    m_statusList->Clear( );
+    wxArrayString* errors = m_stamp->GetErrorArray( );
+    if ( !errors->IsEmpty( ) )
+    {
+        m_statusList->InsertItems( *errors, 0 );
+    }
+}
+//-------
+
+void StampDetailsPanel::Update( )
+{
+    GetAlbumTreeCtrl( )->Update( );
+    SetStatusList( );
+}

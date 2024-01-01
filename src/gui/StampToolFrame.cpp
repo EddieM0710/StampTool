@@ -161,8 +161,6 @@ bool StampToolFrame::Create( wxWindow* parent, wxWindowID id,
 
     wxFrame::Create( parent, id, caption, pos, size, style );
 
-    // this->SetFont( wxFont( 12, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL,
-    //     wxFONTWEIGHT_NORMAL, false, wxT( "Ubuntu" ) ) );
     CreateControls( );
     Centre( );
 
@@ -200,9 +198,7 @@ void StampToolFrame::CreateControls( )
     itemMenu5->Append( ID_ADDCOLLECTION, _( "Add Collection File" ), wxEmptyString, wxITEM_NORMAL );
     itemMenu5->Append( ID_OPENCOLLECTION, _( "Open Collection File" ), wxEmptyString, wxITEM_NORMAL );
 
-
     wxMenu* itemMenu3 = new wxMenu;
-    //itemMenu3->Append( ID_TEXTSERCHMENUITEM, _( "Text Search" ), wxEmptyString, wxITEM_NORMAL );
 
     itemMenu3->Append( ID_NEWCATALOG, _( "New Catalog" ), wxEmptyString, wxITEM_NORMAL );
     itemMenu3->Append( ID_OPENCATALOG, _( "Open Catalog" ), wxEmptyString, wxITEM_NORMAL );
@@ -247,20 +243,6 @@ void StampToolFrame::Init( )
 {
     //    m_stamp = new Catalog::Stamp( );
     m_stampToolPanel = NULL;
-
-
-    // m_settings = new Utils::Settings( );
-    // m_project = new Utils::Project( );
-    // m_StampAlbumCatalogLink = new Utils::StampList( );
-
-    // m_project->InitProject( );
-    // m_settings->InitSettings( );
-
-    // if ( m_settings->GetLoadLastFileAtStartUp( ) )
-    // {
-    //     m_project->SetProjectFilename( m_settings->GetLastFile( ) );
-    // }
-
 }
 
 //-------
@@ -280,7 +262,6 @@ void StampToolFrame::InitLoad( )
         }
     }
     GetProject( )->FileNewProject( "UndefinedName.spt" );
-
 }
 
 //-------
@@ -341,9 +322,6 @@ void StampToolFrame::DoRecentSelection( wxCommandEvent& event )
         return;
     }
 
-    //    m_catalogPanel->LoadCatalog( );
-
-
     event.Skip( );
 }
 
@@ -351,16 +329,7 @@ void StampToolFrame::DoRecentSelection( wxCommandEvent& event )
 
 void StampToolFrame::DoDefinePeriodDialog( )
 {
-    // DefinePeriodsDialog definePeriodsDialog( this, ID_DEFINEPERIODSDIALOG,  _( "Define Periods Order" ) );
 
-    // if ( definePeriodsDialog.ShowModal( ) == wxID_CANCEL )
-    //     return; // the user changed idea..
-
-    // if ( definePeriodsDialog.IsDirty( ) )
-    // { 
-    //     // Save settings
-    //     // resort tree
-    // }
 }
 
 //-------
@@ -654,14 +623,6 @@ void StampToolFrame::OnSaveCatalogClick( wxCommandEvent& event )
 
 //-------
 
-// void StampToolFrame::OnGeneratePDFClick( wxCommandEvent& event )
-// {
-//     //AlbumImagePanel*
-//     GetAlbumVolume( )->GetAlbum( )->MakePDFAlbum( );
-// }
-
-//-------
-
 void StampToolFrame::OnPreferencesClick( wxCommandEvent& event )
 {
     DoPreferencesDialog( );
@@ -687,7 +648,6 @@ void StampToolFrame::OnTextSearchMenuItemClick( wxCommandEvent& event )
 
 void StampToolFrame::OpenProject( )
 {
-
     if ( GetProject( )->IsDirty( ) )
     {
         // query whether to save first 
@@ -727,9 +687,7 @@ void StampToolFrame::OpenProject( )
         return;
     }
 
-
     GetProject( )->FileOpenProject( filename );
-
 }
 
 //-------
@@ -761,9 +719,7 @@ void StampToolFrame::OpenPdf( )
     }
 
     GetStampToolPanel( )->OnPDF( filename );
-
 }
-
 
 //-------
 

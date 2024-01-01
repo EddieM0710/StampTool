@@ -142,6 +142,10 @@ public:
 
     void SetRightContentMargin( wxString contentMargin );
 
+    void Update( );
+
+
+
 
 private:
 

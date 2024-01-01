@@ -24,10 +24,6 @@
 #ifndef _PageDefaultsPANEL_H_
 #define _PageDefaultsPANEL_H_
 
-/*
- * Includes
- */
-
 #include "wx/listctrl.h"
 #include <wx/fontpicker.h>
 #include <wx/clrpicker.h>
@@ -36,10 +32,6 @@
 #include "gui/GuiDefs.h"
 #include "design/Album.h"
 #include "gui/HelperPanel.h"
-
- /*
-  * Forward declarations
-  */
 
 class LabeledTextBox;
 class wxListCtrl;
@@ -61,7 +53,6 @@ namespace Design {
 class PageDefaultsPanel : public HelperPanel
 {
     DECLARE_DYNAMIC_CLASS( PageDefaultsPanel )
-    DECLARE_EVENT_TABLE( )
 
 public:
 
@@ -222,6 +213,9 @@ public:
     void SetLeftContentMargin( wxString contentMargin );
 
     void SetRightContentMargin( wxString contentMargin );
+
+    void Update( );
+
 
 private:
     wxTextCtrl* m_paperHeight;

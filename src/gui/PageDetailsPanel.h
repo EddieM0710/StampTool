@@ -95,7 +95,10 @@ public:
 
 
     PageDetailsPanel( );
-    PageDetailsPanel( wxWindow* parent, wxWindowID id = SYMBOL_PAGEDETAILSPANEL_IDNAME, const wxString& caption = SYMBOL_PAGEDETAILSPANEL_TITLE, const wxPoint& pos = SYMBOL_PAGEDETAILSPANEL_POSITION, const wxSize& size = SYMBOL_PAGEDETAILSPANEL_SIZE, long style = SYMBOL_PAGEDETAILSPANEL_STYLE );
+    PageDetailsPanel( wxWindow* parent, wxWindowID id = SYMBOL_PAGEDETAILSPANEL_IDNAME,
+    const wxString& caption = SYMBOL_PAGEDETAILSPANEL_TITLE, 
+    const wxPoint& pos = SYMBOL_PAGEDETAILSPANEL_POSITION,
+     const wxSize& size = SYMBOL_PAGEDETAILSPANEL_SIZE, long style = SYMBOL_PAGEDETAILSPANEL_STYLE );
 
 
     bool Create( wxWindow* parent, wxWindowID id = SYMBOL_PAGEDETAILSPANEL_IDNAME, const wxString& caption = SYMBOL_PAGEDETAILSPANEL_TITLE, const wxPoint& pos = SYMBOL_PAGEDETAILSPANEL_POSITION, const wxSize& size = SYMBOL_PAGEDETAILSPANEL_SIZE, long style = SYMBOL_PAGEDETAILSPANEL_STYLE );
@@ -156,6 +159,10 @@ public:
 
     void  OnSubTitleFontPicker( wxFontPickerEvent& event );
     void  OnSubTitleColorPicker( wxColourPickerEvent& event );
+
+    void SetStatusList( );
+
+    void Update( );
 
 private:
     // LabeledTextBox* m_name;

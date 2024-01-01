@@ -438,3 +438,22 @@ void ColDetailsPanel::OnSubTitleCheckboxClick( wxCommandEvent& event )
     UpdateSubTitleState( m_titleHelper );
     Layout( );
 };
+
+//-------
+
+void ColDetailsPanel::SetStatusList( )
+{
+    m_statusList->Clear( );
+    wxArrayString* errors = m_col->GetErrorArray( );
+    if ( !errors->IsEmpty( ) )
+    {
+        m_statusList->InsertItems( *errors, 0 );
+    }
+}
+//-------
+
+void ColDetailsPanel::Update( )
+{
+    GetAlbumTreeCtrl( )->Update( );
+    SetStatusList( );
+}

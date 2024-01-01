@@ -47,13 +47,29 @@ namespace Design {
 
     public:
 
-
         Album( wxXmlNode* node );
 
         ~Album( ) { };
 
         void InitParameters( );
+
         void SetHardDefaults( );
+
+        double GetAlbumAttributeDbl( Design::AlbumAttrType type );
+
+        wxString GetAlbumAttributeStr( Design::AlbumAttrType type );
+
+        bool GetAlbumAttributeBool( Design::AlbumAttrType type );
+
+        void SetAlbumAttributeBool( Design::AlbumAttrType type, bool val );
+
+        void SetAlbumAttributeDbl( Design::AlbumAttrType type, double val );
+
+        void SetAlbumAttributeStr( Design::AlbumAttrType type, wxString val );
+
+        bool IsDefaultVal( AlbumAttrType type );
+
+        bool IsDefaultVal( AlbumAttrType type, wxString val );
 
         wxString DrawPDF( );
 
@@ -61,12 +77,9 @@ namespace Design {
 
         void DumpLayout( );
 
-
-
         wxString GetCatalog( );
 
         wxColour GetColor( FontUsageType fontType );
-
 
         wxString GetDocName( );
 
@@ -75,8 +88,6 @@ namespace Design {
         int GetFontNdx( FontUsageType fontType );
 
         int GetFontNdxPreference( FontUsageType fontType );
-
-
 
         bool IsDefaultFont( FontUsageType fontType, int ndx );
 
@@ -121,19 +132,21 @@ namespace Design {
 
         NodeStatus ValidateNode( );
 
-
         PageDefaults* AlbumPageDefaults( ) {
             return &m_pageDefaults;
         };
+
         FrameDefaults* AlbumFrameDefaults( ) {
             return &m_frameDefaults;
         };
+
         StampDefaults* AlbumStampDefaults( ) {
             return &m_stampDefaults;
         };
-        void FixupNode( );
-    private:
 
+        void FixupNode( );
+
+    private:
         int DefaultFonts[ AT_NbrFontUsageTypes ];
 
         const double m_defaultSelvageHeight = 0;
@@ -144,7 +157,6 @@ namespace Design {
         PageDefaults m_pageDefaults;
         FrameDefaults m_frameDefaults;
         StampDefaults m_stampDefaults;
-
     };
 }
 #endif

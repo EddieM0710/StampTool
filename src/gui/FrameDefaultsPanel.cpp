@@ -282,6 +282,8 @@ void FrameDefaultsPanel::OnSubTitleCheckboxClick( wxCommandEvent& event )
 {
     Design::AlbumFrameDefaults( )->ShowSubTitle( m_titleHelper->subTitleCheckbox->GetValue( ) );
     UpdateSubTitleState( m_titleHelper );
+    Update( );
+    event.Skip( );
 };
 
 //----------
@@ -290,6 +292,8 @@ void FrameDefaultsPanel::OnTitleCheckboxClick( wxCommandEvent& event )
 {
     Design::AlbumFrameDefaults( )->ShowTitle( m_titleHelper->titleCheckbox->GetValue( ) );
     UpdateTitleState( m_titleHelper );
+    Update( );
+    event.Skip( );
 }
 
 //----------
@@ -314,6 +318,8 @@ void FrameDefaultsPanel::SetFixedSpacing( )
 void FrameDefaultsPanel::OnFrameCheckboxClick( wxCommandEvent& event )
 {
     Design::AlbumFrameDefaults( )->ShowFrame( m_frameCheckbox->GetValue( ) );
+    Update( );
+    event.Skip( );
 }
 
 //----------
@@ -326,6 +332,8 @@ void FrameDefaultsPanel::OnTopContentMargin( wxCommandEvent& event )
     {
         Design::AlbumFrameDefaults( )->TopContentMargin( valLocal );
     }
+    Update( );
+    event.Skip( );
 }
 
 //----------
@@ -338,6 +346,8 @@ void FrameDefaultsPanel::OnBottomContentMargin( wxCommandEvent& event )
     {
         Design::AlbumFrameDefaults( )->BottomContentMargin( valLocal );
     }
+    Update( );
+    event.Skip( );
 }
 
 //----------
@@ -350,6 +360,8 @@ void FrameDefaultsPanel::OnLeftContentMargin( wxCommandEvent& event )
     {
         Design::AlbumFrameDefaults( )->LeftContentMargin( valLocal );
     }
+    Update( );
+    event.Skip( );
 }
 
 //----------
@@ -362,6 +374,8 @@ void FrameDefaultsPanel::OnRightContentMargin( wxCommandEvent& event )
     {
         Design::AlbumFrameDefaults( )->RightContentMargin( valLocal );
     }
+    Update( );
+    event.Skip( );
 }
 
 // //----------
@@ -405,6 +419,7 @@ void FrameDefaultsPanel::OnFixedClick( wxCommandEvent& event )
         m_fixedSpaceSize->Enable( false );
     }
 
+    Update( );
     event.Skip( );
 }
 
@@ -444,6 +459,8 @@ void FrameDefaultsPanel::OnAlignmentModeButtonSelected( wxCommandEvent& event )
     {
         Design::AlbumFrameDefaults( )->SetAlignmentModeType( Design::AlignBottom );
     }
+
+    Update( );
     event.Skip( );
 }
 
@@ -474,4 +491,10 @@ void FrameDefaultsPanel::SetLeftContentMargin( wxString leftContentMargin )
 void FrameDefaultsPanel::SetRightContentMargin( wxString rightPageMargin )
 {
     m_rightContentMargin->ChangeValue( rightPageMargin );
+}
+//-------
+
+void FrameDefaultsPanel::Update( )
+{
+    GetAlbumTreeCtrl( )->Update( );
 }

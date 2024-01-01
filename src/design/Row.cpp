@@ -38,6 +38,8 @@
 
 namespace Design {
 
+    //----------------
+
     Row::Row( wxXmlNode* node ) : LayoutBase( node )
     {
         SetNodeType( AT_Row );
@@ -49,6 +51,7 @@ namespace Design {
         InitParameters( );
     };
 
+    //----------------
 
     void Row::InitParameters( )
     {
@@ -73,6 +76,7 @@ namespace Design {
 
     }
 
+    //----------------
 
     double Row::GetRowAttributeDbl( Design::AlbumAttrType type )
     {
@@ -83,6 +87,8 @@ namespace Design {
         }
         return  GetAttrDbl( type );
     }
+
+    //----------------
 
     wxString Row::GetRowAttributeStr( Design::AlbumAttrType type )
     {
@@ -105,6 +111,8 @@ namespace Design {
         return String2Bool( catStr );
     }
 
+    //----------------
+
     void Row::SetRowAttributeStr( Design::AlbumAttrType type, wxString val )
     {
         if ( IsDefaultVal( type, val ) )
@@ -116,12 +124,16 @@ namespace Design {
             SetAttrStr( type, val );
         }
     }
+
+    //----------------
+
     void Row::SetRowAttributeDbl( Design::AlbumAttrType type, double val )
     {
         wxString str = wxString::Format( "%4.1f", val );
         SetRowAttributeStr( type, str );
     }
 
+    //----------------
 
     void Row::SetRowAttributeBool( Design::AlbumAttrType type, bool val )
     {
@@ -137,16 +149,21 @@ namespace Design {
         return AlbumFrameDefaults( )->IsEqual( type, GetAttrStr( type ) );
     }
 
+    //----------------
+
     bool Row::IsDefaultVal( AlbumAttrType type, wxString val )
     {
         return AlbumFrameDefaults( )->IsEqual( type, val );
     }
 
+    //----------------
 
     wxString Row::GetTitleString( )
     {
         return m_titleFrame->GetHeadingString( );
     };
+
+    //----------------
 
     void Row::SetTitleString( wxString str )
     {
@@ -154,10 +171,14 @@ namespace Design {
         m_titleFrame->SetHeadingString( str );
     };
 
+    //----------------
+
     wxString Row::GetSubTitleString( )
     {
         return m_titleFrame->GetHeadingString( );
     };
+
+    //----------------
 
     void Row::SetSubTitleString( wxString str )
     {
@@ -165,11 +186,14 @@ namespace Design {
         m_titleFrame->SetSubHeadingString( str );
     };
 
+    //----------------
 
     TitleFrame* Row::GetTitleFrame( )
     {
         return m_titleFrame;
     };
+
+    //----------------
 
     void Row::Draw( wxDC& dc, double x, double y )
     {
@@ -181,12 +205,13 @@ namespace Design {
             double topPadding = 0;
 
             dc.SetPen( *wxBLACK_PEN );
-
+            // dc.DrawRectangle( wxRect( x, y, 10, 8 ) );
+            // dc.DrawLabel( "Row", wxRect( x, y, 10, 8 ) );
+             //     dc.DrawText( "Row", x, y );
             if ( GetShow( ) )
             {
                 m_frame.Draw( dc, x, y );
             }
-
             SetClientDimensions( dc, x + GetXPos( ), y + GetYPos( ), GetWidth( ), GetHeight( ) );
 
             double xPos = x + GetXPos( );
@@ -210,6 +235,8 @@ namespace Design {
             }
         }
     }
+
+    //----------------
 
     void Row::DrawPDF( wxPdfDocument* doc, double x, double y )
     {
@@ -246,11 +273,14 @@ namespace Design {
         }
     };
 
+    //----------------
 
     void Row::LoadFonts( wxXmlNode* node )
     {
         m_titleFrame->SaveFonts( node );
     }
+
+    //----------------
 
     void Row::ReportLayout( )
     {
@@ -258,8 +288,7 @@ namespace Design {
         ReportLayoutFrame( );
     };
 
-
-
+    //----------------
 
     void Row::Save( wxXmlNode* xmlNode )
     {
@@ -275,11 +304,15 @@ namespace Design {
         SaveFonts( xmlNode );
     }
 
+    //----------------
+
 
     void Row::SaveFonts( wxXmlNode* parent )
     {
         m_titleFrame->SaveFonts( parent );
     }
+
+    //----------------
 
     bool Row::UpdateMinimumSize( )
     {
@@ -340,7 +373,9 @@ namespace Design {
         return true;
     }
 
-    // calculate the row layout based on child parameters
+    //----------------
+
+        // calculate the row layout based on child parameters
     void Row::UpdatePositions( )
     {
         // go to the bottom of each child container object ( row, column, page ) 
@@ -405,7 +440,6 @@ namespace Design {
             GetTitleFrame( )->Init( );
             yPos = GetTopContentMargin( );
         }
-
 
         double spacing = 4;
         // this is a row so we are positioning children across the page
@@ -538,7 +572,6 @@ namespace Design {
                 child->SetYPos( yPos + childTop );
             }
 
-
             child->UpdatePositions( );
 
             xPos += child->GetWidth( ) + spacing;
@@ -548,6 +581,8 @@ namespace Design {
         ValidateNode( );
 
     }
+
+    //----------------
 
     void Row::UpdateSizes( )
     {
@@ -579,6 +614,8 @@ namespace Design {
 
     }
 
+    //----------------
+
     NodeStatus Row::ValidateNode( )
     {
         CheckLayout( );
@@ -603,7 +640,6 @@ namespace Design {
                 status = AT_FATAL;
             }
         }
-
         m_nodeValid = status;
         wxTreeItemId id = GetTreeItemId( );
         if ( id.IsOk( ) )
@@ -611,59 +647,43 @@ namespace Design {
             if ( status == AT_FATAL )
             {
                 GetAlbumTreeCtrl( )->SetItemBackgroundColour( id, *wxRED );
-                std::cout << GetAlbumTreeCtrl( )->GetItemText( id ) << "Fatal\n";
+                std::cout << GetAlbumTreeCtrl( )->GetItemText( id ) << " Fatal\n";
             }
             else if ( status == AT_WARNING )
             {
                 GetAlbumTreeCtrl( )->SetItemBackgroundColour( id, *wxYELLOW );
                 std::cout << GetAlbumTreeCtrl( )->GetItemText( id ) << " Warning\n";
             }
+            else
+            {
+                GetAlbumTreeCtrl( )->SetItemBackgroundColour( id, *wxWHITE );
+                //std::cout << GetAlbumTreeCtrl( )->GetItemText( id ) << " OK\n";
+            }
         }
-
         return status;
     }
 
-    //******* 
-
-    // Stamp Alignment functions
-
-    // wxString Row::GetAlignmentMode( )
-    // {
-    //     return GetAttrStr( AT_StampAlignmentMode );
-    // }
-
-    //******* 
+    //----------------
 
     void Row::SetAlignmentMode( AlignmentModeType loc )
     {
         SetRowAttributeStr( AT_StampAlignmentMode, StampAlignmentModeStrings[ loc ] );
     }
 
+    //----------------
+
     void Row::SetAlignmentMode( wxString str )
     {
         SetRowAttributeStr( AT_StampAlignmentMode, str );
     }
 
-    //******* 
+    //----------------
 
     AlignmentModeType  Row::GetAlignmentModeType( )
     {
         return  FindAlignmentModeType( GetRowAttributeStr( AT_StampAlignmentMode ) );
     }
+
+    //----------------
+
 }
-//******* 
-
-//     void Row::SetAlignmentModeType( AlignmentModeType loc )
-//     {
-//         AlignmentModeType defaultLoc = FindAlignmentModeType( AlbumFrameDefaults( )->AlignmentMode( ) );
-//         if ( loc == defaultLoc )
-//         {
-//             SetAttrStr( AT_StampAlignmentMode, "" );
-//         }
-//         else
-//         {
-//             SetAttrStr( AT_StampAlignmentMode, StampAlignmentModeStrings[ loc ] );
-//         }
-//     };
-
-// }

@@ -434,7 +434,7 @@ wxPanel* AlbumPanel::CreateAlbumImageLayoutPanel( wxWindow* parent )
     zoomHorizontalSizer->Add( zoomStatic, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
     m_zoomSlider =
-        new wxSlider( albumImageLayoutPanel, ID_ALBUMZOOMSLIDER, 50, 10, 100, wxDefaultPosition,
+        new wxSlider( albumImageLayoutPanel, ID_ALBUMZOOMSLIDER, 90, 10, 200, wxDefaultPosition,
             wxDefaultSize, wxSL_HORIZONTAL );
     zoomHorizontalSizer->Add( m_zoomSlider, 2, wxGROW | wxALL, 0 );
 

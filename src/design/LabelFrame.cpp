@@ -28,9 +28,11 @@
 #include "utils/FontList.h"
 
 #include "gui/GuiUtils.h"
-
+#include <wx/tokenzr.h>
 
 namespace Design {
+
+    //------------
 
     wxColour LabelFrame::GetColor( )
     {
@@ -44,6 +46,8 @@ namespace Design {
             return GetFontList( )->GetColor( GetAlbum( )->GetFontNdx( m_fontType ) );
         }
     }
+
+    //------------
 
     wxFont LabelFrame::GetFont( )
     {
@@ -63,36 +67,40 @@ namespace Design {
         }
     }
 
+    //------------
+
     void LabelFrame::Draw( wxDC& dc, double x, double y )
     {
         RealPoint pos = GetPosition( );
-        RealSize size = GetSize( );
+        RealPoint size = GetSize( );
         pos.x += x;
         pos.y += y;
+
         wxString id = m_multiLineString;
 
-        wxFont font( GetFont( ) );
+        wxFont font = GetFont( );
         if ( font.IsOk( ) )
         {
-            wxDCFontChanger( dc, font );
-
-            wxFont origFont = font;
+            wxFont origFont = dc.GetFont( );
             wxColor origColor = dc.GetTextForeground( );
             wxColor color = GetColor( );
             dc.SetTextForeground( color );
-            int point = font.GetPointSize( );
-            font.SetPointSize( point );
-            wxSize pixelSize = font.GetPixelSize( );
-            double usX, usY;
-            dc.GetUserScale( &usX, &usY );
-            pixelSize.x = pixelSize.x * usX;
-            pixelSize.y = pixelSize.y * usY;
-            font.SetPixelSize( pixelSize );
+
+            double pointSize = font.GetFractionalPointSize( );
+            font.SetFractionalPointSize( pointSize * .31 );
+
             dc.SetFont( font );
-            DrawLabel( dc, id, pos, size, wxALIGN_CENTER );
+
+            wxRect rect( pos.x, pos.y, size.x, size.y );
+
+            dc.DrawLabel( id, rect, wxALIGN_CENTER );
+
             dc.SetTextForeground( origColor );
+            dc.SetFont( origFont );
         }
     };
+
+    //------------
 
     void LabelFrame::DrawPDF( wxPdfDocument* doc, double x, double y )
     {
@@ -110,11 +118,15 @@ namespace Design {
         doc->MultiCell( GetWidth( ), h, m_multiLineString, 0, wxPDF_ALIGN_CENTER );
     };
 
+    //------------
+
     void LabelFrame::LoadFont( wxXmlNode* node )
     {
         m_FontNdx = GetFontList( )->LoadFont( node, m_fontType );
         SetFontNdx( m_FontNdx );
     };
+
+    //------------
 
     void LabelFrame::SaveFont( wxXmlNode* fonts )
     {
@@ -127,16 +139,16 @@ namespace Design {
         }
     }
 
+    //------------
+
     int LabelFrame::SetFont( wxFont newFont, wxColour newColor )
     {
-        //std::cout << m_string << " " << newColor.GetAsString( ) << "\n";
         m_FontNdx = GetFontList( )->AddNewFont( newFont, newColor );
-
-        // std::cout << "LabelFrame::SetFont ndx:" << m_FontNdx << " " << newFont.GetNativeFontInfoDesc( ) << "\n";
         Utils::Font* font = GetFontList( )->GetMyFont( m_FontNdx );
-        //std::cout << "LabelFrame::SetFont " << Design::FontUsageTypeStrings[ m_FontNdx ] << " " << font->GetNativeInfoStr( ) << "\n";
         return m_FontNdx;
     };
+
+    //------------
 
     void LabelFrame::SetFontNdx( int ndx )
     {
@@ -144,18 +156,15 @@ namespace Design {
         if ( font )
         {
             int pnt = font->GetPointSize( );
-
-            // std::cout << "LabelFrame::SetFontNdx " << m_string
-            //     << " ndx:" << ndx
-            //     << " pnt:" << pnt
-            //     << " family:" << font->GetNativeInfoStr( ) << "\n";
-
             m_FontNdx = ndx;
             return;
         }
         m_FontNdx = -1;
 
     };
+
+    //------------
+
     void LabelFrame::UpdateString( double width )
     {
         m_multiLineString = m_string;
@@ -191,4 +200,7 @@ namespace Design {
             SetYPos( 0 );
         }
     }
+
+    //----------------
+
 }

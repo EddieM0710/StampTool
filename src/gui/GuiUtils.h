@@ -67,12 +67,14 @@ wxPen DCLineStyle( wxDC& dc, wxColour colour = *wxBLACK, double  width = -1, wxP
 // get current line style to return; sets parameters; returns unchanged current line style so original can be reset
 wxPdfLineStyle PDFLineStyle( wxPdfDocument* doc, wxColour colour = *wxBLACK, double  width = -1, const wxPdfArrayDouble& dash = wxPdfArrayDouble( ) );
 
-wxSize LogicalToDeviceRel( wxDC& dc,
-    double x, double y );
+// wxSize LogicalToDeviceRel( wxDC& dc,
+//     double x, double y );
 
 double GetHeightChars( double pt );
 
 double GetMultiLineTextHeight( wxString text, wxFont* font, double width );
+
+void DrawText( wxDC& dc, wxString& str, wxRect& rect, bool draw );
 
 void DrawTitle( wxDC& dc, wxString title,
     RealPoint pos,

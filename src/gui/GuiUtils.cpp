@@ -45,7 +45,7 @@
 
 wxPdfArrayDouble defaultDash;
 
-
+//----------------
 
 void DrawLabelPDF( wxPdfDocument* doc, const wxString& text,
     RealPoint pos,
@@ -60,6 +60,7 @@ void DrawLabelPDF( wxPdfDocument* doc, const wxString& text,
 
 }
 
+//----------------
 
 void DrawText( wxDC& dc, wxString& str, wxRect& rect, bool draw ) {
     wxCoord w, h;
@@ -67,10 +68,10 @@ void DrawText( wxDC& dc, wxString& str, wxRect& rect, bool draw ) {
     // rect.y = rect.y * ScaleY;
     // rect.width = rect.width * ScaleX;
     // rect.height = rect.height * ScaleY;
-    rect.x = dc.LogicalToDeviceX( rect.x );
-    rect.y = dc.LogicalToDeviceY( rect.y );
-    rect.width = dc.LogicalToDeviceXRel( rect.width );;
-    rect.height = dc.LogicalToDeviceXRel( rect.height );;
+    // rect.x = dc.LogicalToDeviceX( rect.x );
+    // rect.y = dc.LogicalToDeviceY( rect.y );
+    // rect.width = dc.LogicalToDeviceXRel( rect.width );;
+    // rect.height = dc.LogicalToDeviceXRel( rect.height );;
     wxCoord x = rect.x,
         y = rect.y;
 
@@ -158,18 +159,29 @@ void DrawText( wxDC& dc, wxString& str, wxRect& rect, bool draw ) {
     } // end for()
 }
 
+//----------------
+
 void DrawLabel( wxDC& dc, const wxString& text,
     RealPoint pos,
     RealSize size,
     int  	alignment,
     int  	indexAccel )
 {
-    wxPoint posDevice = dc.LogicalToDevice( pos );
-    wxSize sizeDevice = dc.LogicalToDeviceRel( wxSize( size.x, size.y ) );
+    // dc.GetMultiLineTextExtent( )
 
-    // wxRect rect ( pos.x * ScaleX, pos.y * ScaleY, size.x * ScaleX, size.y * ScaleY );
-    dc.DrawLabel( text, wxRect( posDevice, sizeDevice ), alignment, indexAccel );
+         // GetMultiLineTextExtent( const wxString & string,
+         //     wxCoord * width,
+         //     wxCoord * height,
+         //     wxCoord * heightLine = ( wxCoord* ) __null,
+         //     const wxFont * font = ( const wxFont* )
+         //     dc.DrawRectangle( wxRect( pos.x, pos.y, size.x, size.y ) );
+
+    wxRect rect( pos.x, pos.y, size.x, size.y );
+
+    dc.DrawLabel( text, rect, alignment, indexAccel );
 }
+
+//----------------
 
 void DrawTitle( wxDC& dc, wxString title, RealPoint pos, RealSize size )
 {
@@ -185,6 +197,9 @@ void DrawTitle( wxDC& dc, wxString title, RealPoint pos, RealSize size )
     DrawLabel( dc, id, pos, size, wxALIGN_CENTER_HORIZONTAL );
 
 }
+
+//----------------
+
 double GetHeightChars( double pt )
 {
     double height = 100;
@@ -204,6 +219,8 @@ double GetHeightChars( double pt )
     return height;
 }
 
+//----------------
+
 double GetMultiLineTextHeight( wxString text, wxFont* font, double width )
 {
     double lineHeight = GetHeightChars( font->GetPointSize( ) );
@@ -215,6 +232,8 @@ double GetMultiLineTextHeight( wxString text, wxFont* font, double width )
     doc.MultiCell( width, lineHeight, text, 0, wxPDF_ALIGN_CENTER );
     return doc.GetY( );
 }
+
+//----------------
 
 void DrawTitlePDF( wxPdfDocument* doc, wxString title, RealPoint pos, RealSize size )
 {
@@ -234,6 +253,8 @@ void DrawTitlePDF( wxPdfDocument* doc, wxString title, RealPoint pos, RealSize s
     doc->MultiCell( size.x, lineHeight, id, 0, wxPDF_ALIGN_CENTER );
 }
 
+//----------------
+
 // wxSize LogicalToDeviceRel( wxDC& dc, double x, double y )
 // {
 //     wxPoint point( x, y );
@@ -241,6 +262,8 @@ void DrawTitlePDF( wxPdfDocument* doc, wxString title, RealPoint pos, RealSize s
 //     wxSize size( point.x, point.y );
 //     return size;
 // }
+
+//----------------
 
 wxPen DCLineStyle( wxDC& dc, wxColour colour, double  width, wxPenStyle style )
 {
@@ -253,6 +276,8 @@ wxPen DCLineStyle( wxDC& dc, wxColour colour, double  width, wxPenStyle style )
     return currStyle;
 }
 
+//----------------
+
 wxPdfLineStyle PDFLineStyle( wxPdfDocument* doc, wxColour colour, double  width, const wxPdfArrayDouble& dash )
 {
     wxPdfLineStyle currStyle = doc->GetLineStyle( );
@@ -264,21 +289,27 @@ wxPdfLineStyle PDFLineStyle( wxPdfDocument* doc, wxColour colour, double  width,
     return currStyle;
 }
 
+//----------------
+
 void DrawRectanglePDF( wxPdfDocument* doc, double x, double y, double width, double height )
 {
     doc->Rect( x, y, width, height, wxPDF_STYLE_DRAW );
 }
 
+//----------------
+
 // inputs are in mm
 void DrawRectangle( wxDC& dc, double x, double y, double width, double height )
 {
-    wxPoint posDevice = dc.LogicalToDevice( wxPoint( x, y ) );
-    wxSize sizeDevice = dc.LogicalToDeviceRel( wxSize( width, height ) );
+
+    wxPoint posDevice( x, y );
+    wxSize sizeDevice( width, height );
 
     //Scale to client logical units
     dc.DrawRectangle( wxRect( posDevice, sizeDevice ) );
-    //  dc.DrawRectangle( x * ScaleX, y * ScaleY, width * ScaleX, height * ScaleY );
 };
+
+//----------------
 
 wxImage GetImageFromFilename( wxString filename )
 {
@@ -312,6 +343,8 @@ wxImage GetImageFromFilename( wxString filename )
     return image;
 }
 
+//----------------
+
 // void DrawImagePDF( wxPdfDocument* doc, wxImage image, double x, double y, double w, double h )
 // {
 
@@ -319,6 +352,8 @@ wxImage GetImageFromFilename( wxString filename )
 //      // Draw jpeg image
 //   //   doc->Image( fileName, x, y, w, h );
 //     doc->Image( fileName, image, x, y, w, h );
+
+//----------------
 
 void  BlitResize( wxDC& dc, wxImage image, double x, double y, double w, double h )
 {
@@ -358,12 +393,15 @@ void  BlitResize( wxDC& dc, wxImage image, double x, double y, double w, double 
     dc.DrawBitmap( bmpOut, x, y, false );
 }
 
+//----------------
 
 // void RescaleImage( wxDC& dc, wxImage image, double x, double y, double w, double h )
 // {
 //     wxBitmap bitmap( image.Scale( w * ScaleX, h * ScaleY, wxIMAGE_QUALITY_HIGH ) );
 //     dc.DrawBitmap( bitmap, x * ScaleX, y * ScaleY, false );
 // }
+
+//----------------
 
 void Kluge( wxDC& dc, wxImage image, double x, double y, double w, double h )
 {
@@ -387,6 +425,8 @@ void Kluge( wxDC& dc, wxImage image, double x, double y, double w, double h )
 
 }
 
+//----------------
+
 void DrawImage( wxDC& dc, wxImage image, double x, double y, double w, double h )
 {
     if ( image.IsOk( ) )
@@ -399,10 +439,14 @@ void DrawImage( wxDC& dc, wxImage image, double x, double y, double w, double h 
             w = 10;
         }
         dc.SetTextForeground( *wxBLACK );
-        int xDevice = dc.LogicalToDeviceX( x );
-        int yDevice = dc.LogicalToDeviceY( y );
-        int widthDevice = dc.LogicalToDeviceXRel( w );
-        int heightDevice = dc.LogicalToDeviceYRel( h );
+        // int xDevice = dc.LogicalToDeviceX( x );
+        // int yDevice = dc.LogicalToDeviceY( y );
+        // int widthDevice = dc.LogicalToDeviceXRel( w );
+        // int heightDevice = dc.LogicalToDeviceYRel( h );
+        int xDevice = x;
+        int yDevice = y;
+        int widthDevice = w;
+        int heightDevice = h;
 
         image.Rescale( widthDevice, heightDevice, wxIMAGE_QUALITY_HIGH );
         //image.Rescale( w * ScaleX, h * ScaleY, wxIMAGE_QUALITY_HIGH );
@@ -415,6 +459,8 @@ void DrawImage( wxDC& dc, wxImage image, double x, double y, double w, double h 
 
     }
 };
+
+//----------------
 
 int CompareID( wxString id1, wxString id2 )
 {
@@ -477,8 +523,9 @@ int CompareID( wxString id1, wxString id2 )
         }
     }
     return stat;
-
 }
+
+//----------------
 
 ComparisonResultType CompareDates( wxString date1, wxString date2 )
 {
@@ -523,3 +570,6 @@ ComparisonResultType CompareDates( wxString date1, wxString date2 )
         return CompareGreater;
     }
 }
+
+//----------------
+

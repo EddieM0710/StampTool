@@ -48,6 +48,22 @@ namespace Design {
 
         void Init( );
 
+        double GetPageAttributeDbl( Design::AlbumAttrType type );
+
+        wxString GetPageAttributeStr( Design::AlbumAttrType type );
+
+        bool GetPageAttributeBool( Design::AlbumAttrType type, bool defVal = false );
+
+        void SetPageAttributeBool( Design::AlbumAttrType type, bool val );
+
+        void SetPageAttributeDbl( Design::AlbumAttrType type, double val );
+
+        void SetPageAttributeStr( Design::AlbumAttrType type, wxString val );
+
+        bool IsDefaultVal( AlbumAttrType type );
+
+        bool IsDefaultVal( AlbumAttrType type, wxString val );
+
         // Draw object on screen; position in MM
         void Draw( wxDC& dc, double x, double y );
 
@@ -55,38 +71,56 @@ namespace Design {
         void DrawPDF( wxPdfDocument* doc, double x, double y );
 
         wxString GetBorderFileName( ) {
-            return m_borderFileName;
+            return GetPageAttributeStr( Design::AT_BorderFileName );
         };
 
         // Get the Bottom PageMargin 
         double GetBottomPageMargin( ) {
-            return m_bottomPageMargin;
+            return GetPageAttributeDbl( Design::AT_BottomPageMargin );
         };
+
+        wxString GetBottomPageMarginStr( ) {
+            return GetPageAttributeStr( Design::AT_BottomPageMargin );
+        };
+
 
         // Get the Border Size 
         double GetBorderSize( ) {
-            return m_borderSize;
+            return GetPageAttributeDbl( Design::AT_BorderSize );
         };
+
+        wxString GetLeftPageMarginStr( ) {
+            return GetPageAttributeStr( Design::AT_LeftPageMargin );
+        };
+
 
         // Get the Left PageMargin 
         double GetLeftPageMargin( ) {
-            return m_leftPageMargin;
+            return  GetPageAttributeDbl( Design::AT_LeftPageMargin );
         };
 
         //Get the Right PageMargin
         double GetRightPageMargin( ) {
-            return m_rightPageMargin;
+            return GetPageAttributeDbl( Design::AT_RightPageMargin );
+        };
+
+        wxString GetRightPageMarginStr( ) {
+            return GetPageAttributeStr( Design::AT_RightPageMargin );
         };
 
         TitleFrame* GetTitleFrame( );
 
         wxString GetTitleString( );
-        wxString  GetSubTitleString( );
+        wxString GetSubTitleString( );
 
 
         // Get the Top PageMargin 
         double GetTopPageMargin( ) {
-            return m_topPageMargin;
+            return GetPageAttributeDbl( Design::AT_TopPageMargin );
+        };
+
+        wxString GetTopPageMarginStr( ) {
+            return GetPageAttributeStr( Design::AT_TopPageMargin );
         };
 
         void ReportLayout( );
@@ -97,43 +131,49 @@ namespace Design {
 
         // Set the Border Size 
         void SetBorderSize( double val ) {
-            m_borderSize = val;
+            SetPageAttributeDbl( Design::AT_BorderSize, val );
         };
 
         void SetBorderFilename( wxString str ) {
-            m_borderFileName = str;
+            SetPageAttributeStr( Design::AT_BorderFileName, str );
         };
 
         // Set the Bottom PageMargin 
         void SetBottomPageMargin( double val ) {
-            m_bottomPageMargin = val;
+            SetPageAttributeDbl( Design::AT_BottomPageMargin, val );
         };
 
+        // content Frame is space within the page border.
+        // From the page layout edge takes into account page margin and border
         void SetContentFrame( );
 
         // Set the Left PageMargin 
         void SetLeftPageMargin( double val ) {
-            m_leftPageMargin = val;
+            SetPageAttributeDbl( Design::AT_LeftPageMargin, val );
         };
 
         // Set the Right PageMargin 
         void SetRightPageMargin( double val ) {
-            m_rightPageMargin = val;
+            SetPageAttributeDbl( Design::AT_RightPageMargin, val );
         };
 
         void SetTitleString( wxString str );
         void  SetSubTitleString( wxString str );
         // Set the Top PageMargin 
         void SetTopPageMargin( double val ) {
-            m_topPageMargin = val;
+            SetPageAttributeDbl( Design::AT_TopPageMargin, val );
         };
 
         bool GetShowTitle( ) {
-            return String2Bool( GetAttrStr( AT_ShowTitle ) );
+            return GetPageAttributeBool( Design::AT_ShowTitle );
+        };
+
+        bool GetShowBorder( ) {
+            return GetPageAttributeBool( Design::AT_ShowBorder, true );
         };
 
         bool GetShowSubTitle( ) {
-            return String2Bool( GetAttrStr( AT_ShowSubTitle ) );
+            return GetPageAttributeBool( Design::AT_ShowSubTitle );
         };
 
         void SetShowNbr( bool val ){};
@@ -143,11 +183,30 @@ namespace Design {
         };
 
         void SetShowTitle( bool val ) {
-            SetAttrStr( AT_ShowTitle, Bool2String( val ) );
+            SetPageAttributeBool( Design::AT_ShowTitle, val );
+        };
+
+        void SetShowBorder( bool val ) {
+            if ( IsDefaultVal( Design::AT_ShowBorder, Bool2String( val ) ) )
+            {
+                DeleteAttribute( Design::AT_ShowBorder );
+            }
+            else
+            {
+                SetPageAttributeBool( Design::AT_ShowBorder, val );
+            }
+            if ( val )
+            {
+                DeleteAttribute( Design::AT_BorderSize );
+            }
+            else
+            {
+                SetAttrDbl( Design::AT_BorderSize, 0.0 );
+            }
         };
 
         void SetShowSubTitle( bool val ) {
-            SetAttrStr( AT_ShowSubTitle, Bool2String( val ) );
+            SetPageAttributeBool( AT_ShowSubTitle, val );
         };
 
         void LoadFonts( wxXmlNode* node );
@@ -180,17 +239,12 @@ namespace Design {
 
         wxString Orientation( )
         {
-            wxString orientation = GetAttrStr( AT_Orientation );
-            if ( orientation.IsEmpty( ) )
-            {
-                return AlbumPageDefaults( )->Orientation( );
-            }
-            return orientation;
+            return GetPageAttributeStr( Design::AT_Orientation );
         };
 
         void Orientation( wxString orientation )
         {
-            SetAttrStr( AT_Orientation, orientation );
+            SetPageAttributeStr( AT_Orientation, orientation );
             Init( );
         };
 
@@ -199,14 +253,14 @@ namespace Design {
         };
     private:
 
-        double m_topPageMargin;
-        double m_bottomPageMargin;
-        double m_rightPageMargin;
-        double m_leftPageMargin;
-        double m_borderSize;
+
         Design::PageType m_pageType;
+
+        // Content Frame is space within the page border.
+        // From the page layout edge takes into account page margin and border
         Frame m_contentFrame;
-        wxString m_borderFileName;
+
+
         DebugString m_debugString;
         TitleFrame* m_titleFrame;
         //        PageOrientation m_orientation;

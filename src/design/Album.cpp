@@ -135,14 +135,14 @@ namespace Design {
 
     bool Album::IsDefaultVal( AlbumAttrType type )
     {
-        return AlbumFrameDefaults( )->IsEqual( type, GetAttrStr( type ) );
+        return AlbumPageDefaults( )->IsEqual( type, GetAttrStr( type ) );
     }
 
     //----------------
 
     bool Album::IsDefaultVal( AlbumAttrType type, wxString val )
     {
-        return AlbumFrameDefaults( )->IsEqual( type, val );
+        return AlbumPageDefaults( )->IsEqual( type, val );
     }
 
     //----------------
@@ -413,6 +413,11 @@ namespace Design {
                     DeleteAttribute( AttrNameStrings[ i ] );
                 }
                 else  if ( i == AT_BorderSize )
+                {
+                    m_pageDefaults.SetAttrStr( i, str );
+                    DeleteAttribute( AttrNameStrings[ i ] );
+                }
+                else  if ( i == AT_ShowBorder )
                 {
                     m_pageDefaults.SetAttrStr( i, str );
                     DeleteAttribute( AttrNameStrings[ i ] );

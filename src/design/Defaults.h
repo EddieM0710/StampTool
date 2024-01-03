@@ -46,9 +46,13 @@ namespace Design {
 
         void SetDbl( Design::AlbumAttrType type, double str );
 
+        void Set( Design::AlbumAttrType type, bool val );
+
         wxString Get( Design::AlbumAttrType type );
 
         double GetDbl( Design::AlbumAttrType type );
+
+        bool GetBool( Design::AlbumAttrType type, bool defVal = false );
 
     protected:
         wxString ApplicationDefault[ AT_NbrAttrTypes ];

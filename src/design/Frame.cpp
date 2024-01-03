@@ -72,61 +72,36 @@ namespace Design {
     //----------------
 
     double Frame::GetHeight( ) {
-        if ( m_height < 0 )
-        {
-            //       ReportLayout( "GetHeight " );
-
-        }
         return m_height;
     };
 
     //----------------
 
     double Frame::GetMinWidth( ) {
-        if ( m_minWidth < 0 )
-        {
-            //        ReportLayout( "GetMinWidth " );
-        }
         return m_minWidth;
     };
 
     //----------------
 
     double Frame::GetMinHeight( ) {
-        if ( m_minHeight < 0 )
-        {
-            //       ReportLayout( "GetMinHeight " );
-        }
         return m_minHeight;
     };
 
     //----------------
 
     double Frame::GetXPos( ) {
-        if ( m_xPos < 0 )
-        {
-            //       ReportLayout( "SetHeight " );
-        }
         return m_xPos;
     };
 
     //----------------
 
     double Frame::GetYPos( ) {
-        if ( m_yPos < 0 )
-        {
-            //       ReportLayout( "GetYPos " );
-        }
         return m_yPos;
     };
 
     //----------------
 
     double Frame::GetWidth( ) {
-        if ( m_width < 0 )
-        {
-            //      ReportLayout( "GetWidth " );
-        }
         return m_width;
     };
 
@@ -135,10 +110,6 @@ namespace Design {
     void Frame::SetHeight( double val )
     {
         m_height = val;
-        if ( m_height < 0 )
-        {
-            //      ReportLayout( "SetHeight " );
-        }
     };
 
     //----------------
@@ -146,10 +117,6 @@ namespace Design {
     void Frame::SetMinHeight( double val )
     {
         m_minHeight = val;
-        if ( m_minHeight < 0 )
-        {
-            //      ReportLayout( "SetMinHeight " );
-        }
     };
 
     //----------------
@@ -157,11 +124,6 @@ namespace Design {
     void Frame::SetMinWidth( double val )
     {
         m_minWidth = val;
-        if ( m_minWidth < 0 )
-        {
-            //     ReportLayout( "SetMinWidth " );
-
-        }
     };
 
     //----------------
@@ -169,10 +131,6 @@ namespace Design {
     void Frame::SetXPos( double val )
     {
         m_xPos = val;
-        if ( m_xPos < 0 )
-        {
-            ReportLayout( "SetXPos " );
-        }
     };
 
     //----------------
@@ -180,10 +138,6 @@ namespace Design {
     void Frame::SetYPos( double val )
     {
         m_yPos = val;
-        if ( m_yPos < 0 )
-        {
-            //       ReportLayout( "SetYPos " );
-        }
     };
 
     //----------------
@@ -191,10 +145,6 @@ namespace Design {
     void Frame::SetWidth( double val )
     {
         m_width = val;
-        if ( m_width < 0 )
-        {
-            //        ReportLayout( "SetWidth " );
-        }
     };
 
     //----------------

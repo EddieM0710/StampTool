@@ -53,6 +53,7 @@ namespace Design {
         AT_LeftPageMargin,
         AT_BorderFileName,
         AT_BorderSize,
+        AT_ShowBorder,
         AT_Height,
         AT_Width,
         AT_XPos,

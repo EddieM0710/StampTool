@@ -64,6 +64,24 @@ namespace Design {
             SetDbl( AT_BorderSize, val );
         };
 
+
+
+
+        double ShowBorder( ) {
+            return GetDbl( AT_ShowBorder );
+        };
+        bool   ShowBorderBool( ) {
+            return GetBool( AT_ShowBorder, true );
+        };
+
+        void ShowBorder( wxString str ) {
+            Set( AT_ShowBorder, str );
+        };
+
+        void ShowBorder( bool val ) {
+            Set( AT_ShowBorder, val );
+        };
+
         void BorderFilename( wxString str ) {
             Set( AT_BorderFileName, str );
         };
@@ -123,7 +141,7 @@ namespace Design {
             Set( AT_RightPageMargin, str );
         };
 
-        double GetTopMargin( ) {
+        double TopMargin( ) {
             return GetDbl( AT_TopPageMargin );
         };
 

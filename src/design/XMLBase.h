@@ -66,6 +66,8 @@ namespace Design {
 
         void DeleteAttribute( wxString name );
 
+        void DeleteAttribute( AlbumAttrType type  );
+
         Attribute* FindAttr( wxString name );
 
         void DumpAttr( );
@@ -74,9 +76,13 @@ namespace Design {
 
         wxString GetAttrStr( AlbumAttrType type );
 
-        double GetAttrDbl( AlbumAttrType type );
+        double GetAttrDbl( AlbumAttrType type, double defVal = 0.0  );
 
-        double GetAttrDbl( wxString name );
+        double GetAttrDbl( wxString name, double defVal = 0.0  );
+
+        bool GetAttrBool( wxString name, bool defVal = false );
+
+        bool GetAttrBool( AlbumAttrType type, bool defVal  = false );
 
         int GetLineNumber( ) {
             return m_lineNbr;
@@ -131,6 +137,10 @@ namespace Design {
         void SetAttrStr( wxString name, wxString val );
 
         void SetAttrStr( AlbumAttrType type, wxString val );
+
+        void SetAttrBool( wxString name, bool val );
+
+        void SetAttrBool( AlbumAttrType type, bool val );
 
         void SetAttrDbl( AlbumAttrType type, double val );
 

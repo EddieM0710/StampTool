@@ -68,6 +68,7 @@ namespace Design {
         "LeftPageMargin",
         "BorderFileName",
         "BorderSize",
+        "ShowBorder",
         "Height",
         "Width",
         "XPos",

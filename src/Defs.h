@@ -211,6 +211,16 @@ inline const bool String2Bool( wxString str, bool defaultStr = false )
     }
 };
 
+inline const double String2Dbl( wxString str, double defval = 0.0 )
+{
+    double val;
+    if ( str.ToDouble( &val ) )
+    {
+        return val;
+    }
+    return defval;
+}
+
 /**
  * @brief Performs the initial instantiantion of all the sTart up data.
  *

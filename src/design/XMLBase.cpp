@@ -89,6 +89,12 @@ namespace Design {
     }
     //--------------
 
+    void XMLBase::DeleteAttribute( AlbumAttrType type )
+    {
+        DeleteAttribute( AttrNameStrings[ type ] );
+    }
+    //--------------
+
     void XMLBase::DumpAttr( )
     {
 
@@ -134,30 +140,36 @@ namespace Design {
 
     //--------------
 
-    wxString XMLBase::GetAttrStr( AlbumAttrType type )
+    wxString XMLBase::GetAttrStr( AlbumAttrType type ) 
     {
         return GetAttrStr( AttrNameStrings[ type ] );
     }
 
     //--------------
 
-    double XMLBase::GetAttrDbl( wxString name )
+    double XMLBase::GetAttrDbl( wxString name, double defVal )
     {
-        double val;
-        wxString str = GetAttrStr( name );
-
-        if ( str.ToDouble( &val ) )
-        {
-            return val;
-        }
-        return 0.0;
+        return String2Dbl( GetAttrStr( name ), defVal );
     }
 
     //--------------
 
-    double XMLBase::GetAttrDbl( AlbumAttrType type )
+    bool XMLBase::GetAttrBool( wxString name, bool defVal )
     {
-        return GetAttrDbl( AttrNameStrings[ type ] );
+        return String2Bool( GetAttrStr( name ), defVal );
+    }
+    //--------------
+
+    bool XMLBase::GetAttrBool( AlbumAttrType type, bool defVal )
+    {
+        return GetAttrBool( AttrNameStrings[ type ], defVal );
+    }
+
+    //--------------
+
+    double XMLBase::GetAttrDbl( AlbumAttrType type, double defVal )
+    {
+        return GetAttrDbl( AttrNameStrings[ type ], defVal );
     }
 
     //--------------
@@ -222,7 +234,26 @@ namespace Design {
             m_attrArray.push_back( attr );
         }
     }
+    //--------------
 
+    void XMLBase::SetAttrBool( wxString name, bool val )
+    {
+        Attribute* attr = FindAttr( name );
+        if ( attr )
+        {
+            attr->SetValue( Bool2String( val ) );
+        }
+        else
+        {
+            attr = new Attribute( name, Bool2String( val ) );
+            m_attrArray.push_back( attr );
+        }
+    }
+
+    void XMLBase::SetAttrBool( AlbumAttrType type, bool val )
+    {
+        SetAttrBool( AttrNameStrings[ type ], val );
+    }
     //--------------
 
     void XMLBase::SetAttrStr( AlbumAttrType type, wxString val )

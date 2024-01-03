@@ -96,9 +96,9 @@ public:
 
     PageDetailsPanel( );
     PageDetailsPanel( wxWindow* parent, wxWindowID id = SYMBOL_PAGEDETAILSPANEL_IDNAME,
-    const wxString& caption = SYMBOL_PAGEDETAILSPANEL_TITLE, 
-    const wxPoint& pos = SYMBOL_PAGEDETAILSPANEL_POSITION,
-     const wxSize& size = SYMBOL_PAGEDETAILSPANEL_SIZE, long style = SYMBOL_PAGEDETAILSPANEL_STYLE );
+        const wxString& caption = SYMBOL_PAGEDETAILSPANEL_TITLE,
+        const wxPoint& pos = SYMBOL_PAGEDETAILSPANEL_POSITION,
+        const wxSize& size = SYMBOL_PAGEDETAILSPANEL_SIZE, long style = SYMBOL_PAGEDETAILSPANEL_STYLE );
 
 
     bool Create( wxWindow* parent, wxWindowID id = SYMBOL_PAGEDETAILSPANEL_IDNAME, const wxString& caption = SYMBOL_PAGEDETAILSPANEL_TITLE, const wxPoint& pos = SYMBOL_PAGEDETAILSPANEL_POSITION, const wxSize& size = SYMBOL_PAGEDETAILSPANEL_SIZE, long style = SYMBOL_PAGEDETAILSPANEL_STYLE );
@@ -128,11 +128,20 @@ public:
     wxString GetSubTitle( );
     void SetShowTitle( bool state = false );
     void SetShowSubTitle( bool state = false );
+    void SetShowBorder( bool state );
+
     void SetShow( bool state = false );
     void SetTitleColor( wxColour color );
     void SetTitleFont( wxFont font );
     void SetSubTitleColor( wxColour color );
     void SetSubTitleFont( wxFont font );
+
+    void SetTopPageMargin( wxString str );
+    void SetBottomPageMargin( wxString str );
+    void SetLeftPageMargin( wxString str );
+    void SetRightPageMargin( wxString str );
+
+
     bool GetShowTitle( );
     bool GetShowSubTitle( );
     bool GetShow( );
@@ -160,6 +169,16 @@ public:
     void  OnSubTitleFontPicker( wxFontPickerEvent& event );
     void  OnSubTitleColorPicker( wxColourPickerEvent& event );
 
+    void OnTopPageMargin( wxCommandEvent& event );
+
+    void OnBottomPageMargin( wxCommandEvent& event );
+
+    void OnLeftPageMargin( wxCommandEvent& event );
+
+    void OnRightPageMargin( wxCommandEvent& event );
+
+    void OnShowBorderCheckBoxClick( wxCommandEvent& event );
+
     void SetStatusList( );
 
     void Update( );
@@ -171,6 +190,13 @@ private:
     wxCheckBox* m_frameCheckbox;
     wxChoice* m_orientationChoice;
     wxListBox* m_statusList;
+
+    wxTextCtrl* m_topPageMargin;
+    wxTextCtrl* m_bottomPageMargin;
+    wxTextCtrl* m_rightPageMargin;
+    wxTextCtrl* m_leftPageMargin;
+
+    wxCheckBox* m_showBorder;
     //wxFontPickerCtrl* m_titleFontPicker;
     //wxColourPickerCtrl* m_titleColorPicker;
     wxTextCtrl* positionTextCtrl;

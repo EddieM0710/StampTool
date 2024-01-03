@@ -125,7 +125,7 @@ namespace Design {
 
             // set 2 * subHeading height to allow for spacing between title and subtitle
             SetMinHeight( m_headingFrame->GetMinHeight( )
-                + 2 * m_subHeadingFrame->GetMinHeight( ) );
+                + 2 + m_subHeadingFrame->GetMinHeight( ) );
             SetMinWidth( std::max( titleWidth, subTitleWidth ) );
 
             SetHeight( GetMinHeight( ) );
@@ -137,7 +137,7 @@ namespace Design {
             if ( m_subHeadingFrame->GetHeight( ) > 0 )
             {
                 m_subHeadingFrame->SetYPos( m_headingFrame->GetHeight( )
-                    + m_subHeadingFrame->GetMinHeight( ) ); //allow for space between title and subtitle
+                    + 2 );//m_subHeadingFrame->GetMinHeight( ) ); //allow for space between title and subtitle
             }
         }
     };

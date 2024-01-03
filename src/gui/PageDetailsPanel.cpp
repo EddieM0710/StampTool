@@ -209,6 +209,44 @@ void PageDetailsPanel::CreateControls( )
     m_orientationChoice->SetSelection( Design::AT_Portrait );
 
 
+    wxBoxSizer* marginBoxVSizer;
+    wxStaticBox* marginBox = SetupBoxSizer( advancedPanel, middleAdvancedVerticalSizer,
+        "Page Margin", lastID, marginBoxVSizer, wxVERTICAL );
+
+    wxBoxSizer* itemBoxSizer7 = new wxBoxSizer( wxHORIZONTAL );
+    marginBoxVSizer->Add( itemBoxSizer7, 0, wxGROW | wxALL, 0 );
+
+    HorizontalSpacer( itemBoxSizer7 );
+
+    m_topPageMargin = SetupLabelText( marginBox, itemBoxSizer7, lastID,
+        _( "Top" ), false, wxCommandEventHandler( PageDetailsPanel::OnTopPageMargin ) );
+    m_topPageMargin->SetToolTip( _( "Page top margin in mm." ) );
+    HorizontalSpacer( itemBoxSizer7 );
+
+    m_bottomPageMargin = SetupLabelText( marginBox, itemBoxSizer7, lastID,
+        _( "Bottom" ), false, wxCommandEventHandler( PageDetailsPanel::OnBottomPageMargin ) );
+    m_bottomPageMargin->SetToolTip( _( "Page bottom margin in mm." ) );
+
+
+    wxBoxSizer* itemBoxSizer10 = new wxBoxSizer( wxHORIZONTAL );
+    marginBoxVSizer->Add( itemBoxSizer10, 0, wxGROW | wxALL, 0 );
+
+    HorizontalSpacer( itemBoxSizer10 );
+
+    m_leftPageMargin = SetupLabelText( marginBox, itemBoxSizer10, lastID,
+        _( "Left" ), false, wxCommandEventHandler( PageDetailsPanel::OnLeftPageMargin ) );
+    m_leftPageMargin->SetToolTip( _( "Page left margin in mm." ) );
+
+    HorizontalSpacer( itemBoxSizer10 );
+
+    m_rightPageMargin = SetupLabelText( marginBox, itemBoxSizer10, lastID,
+        _( "Right" ), false, wxCommandEventHandler( PageDetailsPanel::OnRightPageMargin ) );
+    m_rightPageMargin->SetToolTip( _( "Page right margin in mm." ) );
+
+
+    m_showBorder = SetupCheckBox( advancedPanel, rightAdvancedVerticalSizer, ++lastID,
+        _( "Show Border" ), wxCommandEventHandler( PageDetailsPanel::OnShowBorderCheckBoxClick ) );
+    m_showBorder->SetToolTip( _( "Show the page border." ) );
 
 
     // wxStaticText* orientationStatic = new wxStaticText(
@@ -244,7 +282,12 @@ void PageDetailsPanel::UpdateControls( )
     SetOrientation( m_page->Orientation( ) );
     SetShowTitle( m_page->GetShowTitle( ) );
     SetShowSubTitle( m_page->GetShowSubTitle( ) );
+    SetShowBorder( m_page->GetShowBorder( ) );
 
+    SetTopPageMargin( m_page->GetTopPageMarginStr( ) );
+    SetBottomPageMargin( m_page->GetBottomPageMarginStr( ) );
+    SetLeftPageMargin( m_page->GetLeftPageMarginStr( ) );
+    SetRightPageMargin( m_page->GetRightPageMarginStr( ) );
 
     // m_dialogVerticalSizer->Layout( );
 
@@ -334,6 +377,31 @@ void PageDetailsPanel::SetShowSubTitle( bool state )
     m_titleHelper->subTitleCheckbox->SetValue( state );
     UpdateSubTitleState( m_titleHelper );
 };
+
+void PageDetailsPanel::SetShowBorder( bool state )
+{
+    m_showBorder->SetValue( state );
+};
+
+void PageDetailsPanel::SetTopPageMargin( wxString str )
+{
+    m_topPageMargin->ChangeValue( str );
+}
+void PageDetailsPanel::SetBottomPageMargin( wxString str )
+{
+    m_bottomPageMargin->ChangeValue( str );
+}
+void PageDetailsPanel::SetLeftPageMargin( wxString str )
+{
+    m_leftPageMargin->ChangeValue( str );
+}
+void PageDetailsPanel::SetRightPageMargin( wxString str )
+{
+    m_rightPageMargin->ChangeValue( str );
+}
+
+
+
 void PageDetailsPanel::SetShow( bool state )
 {
     m_frameCheckbox->SetValue( state );
@@ -439,6 +507,55 @@ void PageDetailsPanel::OnSubTitleFontPicker( wxFontPickerEvent& event )
 void PageDetailsPanel::OnSubTitleColorPicker( wxColourPickerEvent& event )
 {
     m_page->GetTitleFrame( )->SetSubHeadingFont( m_subTitleFontPicker->GetSelectedFont( ), m_subTitleColorPicker->GetColour( ) );
+}
+
+//--------------
+
+void PageDetailsPanel::OnTopPageMargin( wxCommandEvent& event )
+{
+    double val;
+    m_topPageMargin->GetValue( ).ToDouble( &val );
+    m_page->SetTopPageMargin( val );
+    event.Skip( );
+}
+
+//--------------
+
+void PageDetailsPanel::OnBottomPageMargin( wxCommandEvent& event )
+{
+    double val;
+    m_bottomPageMargin->GetValue( ).ToDouble( &val );
+    m_page->SetBottomPageMargin( val );
+    event.Skip( );
+}
+
+//--------------
+
+void PageDetailsPanel::OnLeftPageMargin( wxCommandEvent& event )
+{
+    double val;
+    m_leftPageMargin->GetValue( ).ToDouble( &val );
+    m_page->SetLeftPageMargin( val );
+    event.Skip( );
+
+}
+
+//--------------
+
+void PageDetailsPanel::OnRightPageMargin( wxCommandEvent& event )
+{
+    double val;
+    m_rightPageMargin->GetValue( ).ToDouble( &val );
+    m_page->SetRightPageMargin( val );
+    event.Skip( );
+}
+
+//--------------
+
+void PageDetailsPanel::OnShowBorderCheckBoxClick( wxCommandEvent& event )
+{
+    m_page->SetShowBorder( m_showBorder->GetValue( ) );
+    event.Skip( );
 }
 
 //-------

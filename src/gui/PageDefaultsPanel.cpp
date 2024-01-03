@@ -253,9 +253,17 @@ void PageDefaultsPanel::CreateControls( )
     m_borderFilename = SetupLabelText( borderBox, borderBoxSizer, lastID,
         _( "Filename" ), true, wxCommandEventHandler( PageDefaultsPanel::OnBorderFilename ) );
     m_borderFilename->SetToolTip( _( "Filename of border image" ) );
-    m_borderSize = SetupLabelText( borderBox, borderBoxSizer, lastID,
+
+    wxBoxSizer* itemBorderBoxSizer = new wxBoxSizer( wxHORIZONTAL );
+    borderBoxSizer->Add( itemBorderBoxSizer, 0, wxGROW | wxALL, 0 );
+
+    m_borderSize = SetupLabelText( borderBox, itemBorderBoxSizer, lastID,
         _( "Size" ), false, wxCommandEventHandler( PageDefaultsPanel::OnBorderSize ) );
     m_borderSize->SetToolTip( _( "width of the border to be added to the margin for layout in mm." ) );
+
+    m_showBorder = SetupCheckBox( borderBox, itemBorderBoxSizer, ++lastID,
+        _( "Show Border" ), wxCommandEventHandler( PageDefaultsPanel::OnShowBorderCheckBoxClick ) );
+    m_showBorder->SetToolTip( _( "Show the page border." ) );
 
     m_titleHelper = SetupTitleHelper( commonPanel, leftCommonVerticalSizer, lastID, HasSubTitle,
         wxCommandEventHandler( PageDefaultsPanel::OnTitleCheckboxClick ),
@@ -680,6 +688,13 @@ void PageDefaultsPanel::OnBorderSize( wxCommandEvent& event )
     event.Skip( );
 }
 
+void PageDefaultsPanel::OnShowBorderCheckBoxClick( wxCommandEvent& event )
+{
+    Design::AlbumPageDefaults( )->ShowBorder( Design::AlbumPageDefaults( )->BorderSizeStr( ) );
+
+    Update( );
+    event.Skip( );
+}
 //--------------
 
 void PageDefaultsPanel::OnOrientationChoice( wxCommandEvent& event )

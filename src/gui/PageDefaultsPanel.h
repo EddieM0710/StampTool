@@ -172,6 +172,8 @@ public:
 
     void OnBorderSize( wxCommandEvent& event );
 
+    void OnShowBorderCheckBoxClick( wxCommandEvent& event );
+
     void OnTopContentMargin( wxCommandEvent& event );
 
     void OnBottomContentMargin( wxCommandEvent& event );
@@ -231,6 +233,7 @@ private:
     wxTextCtrl* m_rightContentMargin;
     wxTextCtrl* m_leftContentMargin;
     wxTextCtrl* m_borderSize;
+    wxCheckBox* m_showBorder;
     wxTextCtrl* m_borderFilename;
     wxCheckBox* m_overSizeCheckbox;
     wxChoice* m_orientationChoice;

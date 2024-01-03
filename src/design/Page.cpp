@@ -62,31 +62,118 @@ namespace Design {
             {
 
                 // the page frame takes into account the pageMargins, the border is within this
-                SetXPos( 0 );//parameters->LeftMargin( ) );
-                SetYPos( 0 );//parameters->GetTopMargin( ) );
-                SetWidth( parameters->GetWidth( ) - parameters->RightMargin( ) - parameters->LeftMargin( ) );
-                SetHeight( parameters->GetHeight( ) - parameters->GetTopMargin( ) - parameters->BottomMargin( ) );
-                SetTopPageMargin( parameters->GetTopMargin( ) );
+                SetTopPageMargin( parameters->TopMargin( ) );
                 SetBottomPageMargin( parameters->BottomMargin( ) );
                 SetRightPageMargin( parameters->RightMargin( ) );
                 SetLeftPageMargin( parameters->LeftMargin( ) );
-                SetBorderSize( parameters->BorderSize( ) );
+                SetXPos( parameters->LeftMargin( ) );
+                SetYPos( parameters->TopMargin( ) );
+                SetWidth( GetPageAttributeDbl( AT_PageWidth ) - parameters->RightMargin( ) - parameters->LeftMargin( ) );
+                SetHeight( GetPageAttributeDbl( AT_PageHeight ) - parameters->TopMargin( ) - parameters->BottomMargin( ) );
+                SetBorderSize( GetBorderSize( ) );
             }
             else
             {
                 //SetBorder( m_border );
                 // the page frame takes into account the pageMargins, the border is within this
-                SetXPos( 0 );//parameters->GetTopMargin( ) );
-                SetYPos( 0 );//parameters->LeftMargin( ) );
-                SetHeight( parameters->GetWidth( ) - parameters->RightMargin( ) - parameters->LeftMargin( ) );
-                SetWidth( parameters->GetHeight( ) - parameters->GetTopMargin( ) - parameters->BottomMargin( ) );
                 SetTopPageMargin( parameters->LeftMargin( ) );
                 SetBottomPageMargin( parameters->RightMargin( ) );
                 SetRightPageMargin( parameters->BottomMargin( ) );
-                SetLeftPageMargin( parameters->GetTopMargin( ) );
-                SetBorderSize( parameters->BorderSize( ) );
+                SetLeftPageMargin( parameters->TopMargin( ) );
+                SetXPos( parameters->TopMargin( ) );
+                SetYPos( parameters->LeftMargin( ) );
+                SetHeight( GetPageAttributeDbl( AT_PageWidth ) - parameters->RightMargin( ) - parameters->LeftMargin( ) );
+                SetWidth( GetPageAttributeDbl( AT_PageHeight ) - parameters->TopMargin( ) - parameters->BottomMargin( ) );
+
+                SetBorderSize( GetBorderSize( ) );
             }
         }
+    }
+
+    //----------------
+
+
+    double Page::GetPageAttributeDbl( Design::AlbumAttrType type )
+    {
+        wxString val = GetAttrStr( type );
+        if ( val.IsEmpty( ) )
+        {
+            return  Design::AlbumPageDefaults( )->GetAttrDbl( type );
+        }
+        return  GetAttrDbl( type );
+    }
+
+    //----------------
+
+    wxString Page::GetPageAttributeStr( Design::AlbumAttrType type )
+    {
+        wxString val = GetAttrStr( type );
+        if ( val.IsEmpty( ) )
+        {
+            return  Design::AlbumPageDefaults( )->GetAttrStr( type );
+        }
+        return val;
+    }
+
+    //--------------
+
+    bool Page::GetPageAttributeBool( Design::AlbumAttrType type, bool defVal )
+    {
+        wxString catStr = GetAttrStr( type );
+        if ( catStr.IsEmpty( ) )
+        {
+            catStr = AlbumPageDefaults( )->GetAttrStr( type );
+            if ( catStr.IsEmpty( ) )
+            {
+                return defVal;
+            }
+        }
+        return String2Bool( catStr );
+    }
+
+    //----------------
+
+    void Page::SetPageAttributeStr( Design::AlbumAttrType type, wxString val )
+    {
+        if ( IsDefaultVal( type, val ) )
+        {
+            DeleteAttribute( AttrNameStrings[ type ] );
+        }
+        else
+        {
+            SetAttrStr( type, val );
+        }
+    }
+
+    //----------------
+
+    void Page::SetPageAttributeDbl( Design::AlbumAttrType type, double val )
+    {
+        wxString str = wxString::Format( "%4.1f", val );
+        SetPageAttributeStr( type, str );
+    }
+
+    //----------------
+
+    void Page::SetPageAttributeBool( Design::AlbumAttrType type, bool val )
+    {
+        wxString str = Bool2String( val );
+        SetPageAttributeStr( type, str );
+
+    }
+
+    //--------------
+
+    bool Page::IsDefaultVal( AlbumAttrType type )
+    {
+        return AlbumPageDefaults( )->IsEqual( type, GetAttrStr( type ) );
+    }
+
+    //----------------
+
+    bool Page::IsDefaultVal( AlbumAttrType type, wxString val )
+    {
+        return AlbumPageDefaults( )->IsEqual( type, val );
     }
 
     //----------------
@@ -142,10 +229,13 @@ namespace Design {
         double width = AlbumPageDefaults( )->GetWidth( );
         double height = AlbumPageDefaults( )->GetHeight( );
 
-        wxImage image = GetProject( )->GetImage( borderName );
-        doc->Image( borderName, image, xPos, yPos,
-            GetWidth( ),
-            GetHeight( ) );
+        if ( GetShowBorder( ) )
+        {
+            wxImage image = GetProject( )->GetImage( borderName );
+            doc->Image( borderName, image, xPos, yPos,
+                GetWidth( ),
+                GetHeight( ) );
+        }
 
         if ( AlbumPageDefaults( )->OverSizePaper( ) )
         {
@@ -283,13 +373,13 @@ namespace Design {
 
     void Page::SetContentFrame( )
     {
-        m_contentFrame.SetXPos( GetXPos( ) + GetLeftPageMargin( ) + GetBorderSize( ) );
-        m_contentFrame.SetYPos( GetYPos( ) + GetTopPageMargin( ) + GetBorderSize( ) );
+        m_contentFrame.SetXPos( GetXPos( ) + GetBorderSize( ) );
+        m_contentFrame.SetYPos( GetYPos( ) + GetBorderSize( ) );
         m_contentFrame.SetWidth( GetWidth( )
-            - GetLeftPageMargin( ) - GetRightPageMargin( )
+            //- GetLeftPageMargin( ) - GetRightPageMargin( )
             - 2 * GetBorderSize( ) );
         m_contentFrame.SetHeight( GetHeight( )
-            - GetTopPageMargin( ) - GetBottomPageMargin( )
+            // - GetTopPageMargin( ) - GetBottomPageMargin( )
             - 2 * GetBorderSize( ) );
     }
 
@@ -311,7 +401,18 @@ namespace Design {
         int nbrCols = 0;
         int nbrStamps = 0;
         m_pageType = Design::PT_None;
-
+        SetXPos( GetLeftPageMargin( ) );
+        SetYPos( GetTopPageMargin( ) );
+        if ( Design::IsPortrait( Orientation( ) ) )
+        {
+            SetWidth( GetPageAttributeDbl( AT_PageWidth ) - GetRightPageMargin( ) - GetLeftPageMargin( ) );
+            SetHeight( GetPageAttributeDbl( AT_PageHeight ) - GetTopPageMargin( ) - GetBottomPageMargin( ) );
+        }
+        else
+        {
+            SetWidth( GetPageAttributeDbl( AT_PageHeight ) - GetRightPageMargin( ) - GetLeftPageMargin( ) );
+            SetHeight( GetPageAttributeDbl( AT_PageWidth ) - GetTopPageMargin( ) - GetBottomPageMargin( ) );
+        }
         double minWidth = 0.0;
         double minHeight = 0.0;
         // the page LayoutBase m_frame contains the parameters for the page.
@@ -442,7 +543,7 @@ namespace Design {
             GetTitleFrame( )->SetYPos( GetTopContentMargin( ) );
 
             // allow for space above title, title height and that much again for nice spaing
-            yPos = GetTitleFrame( )->GetHeight( ) + 2 * GetTopContentMargin( );
+            yPos = GetTitleFrame( )->GetHeight( ) + 2 + GetTopContentMargin( );
         }
         else
         {
@@ -459,6 +560,11 @@ namespace Design {
                 - actualHeight
                 - GetTopContentMargin( )
                 - GetBottomContentMargin( );
+            if ( GetShowTitle( ) )
+            {
+                totalExtraSpace -= GetTitleFrame( )->GetHeight( );
+            }
+
             spacing = totalExtraSpace / ( nbrChildren + 1 );
         }
         else // we are positioning them across the page

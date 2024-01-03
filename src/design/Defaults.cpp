@@ -104,6 +104,20 @@ namespace Design {
 
     //----------------
 
+    void Defaults::Set( Design::AlbumAttrType type, bool val )
+    {
+        if ( val == GetBool( type ) )
+        {
+            DeleteAttribute( AttrNameStrings[ type ] );
+        }
+        else
+        {
+            SetAttrStr( type, Bool2String( val ) );
+        }
+    }
+
+    //----------------
+
     wxString Defaults::Get( Design::AlbumAttrType type )
     {
         wxString str = GetAttrStr( type );
@@ -142,5 +156,20 @@ namespace Design {
     }
 
     //----------------
+ //----------------
 
+    bool Defaults::GetBool( Design::AlbumAttrType type, bool defVal )
+    {
+        wxString str = GetAttrStr( type );
+        if ( str.IsEmpty( ) )
+        {
+            return String2Bool( ApplicationDefault[ type ] );
+        }
+        else
+        {
+            return defVal;
+        }
+    }
+
+    //----------------
 }

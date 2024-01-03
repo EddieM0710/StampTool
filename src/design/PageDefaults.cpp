@@ -65,6 +65,7 @@ namespace Design {
         /***/       ApplicationDefault[ AT_LeftPageMargin ] = "18";
         /***/       ApplicationDefault[ AT_BorderFileName ] = "big_and_little_line.jpg";
         /***/        ApplicationDefault[ AT_BorderSize ] = "4";
+        /***/        ApplicationDefault[ AT_ShowBorder ] = "true";
         ApplicationDefault[ AT_ShowTitle ] = "true";
         ApplicationDefault[ AT_ShowSubTitle ] = "true";
         /***/       ApplicationDefault[ AT_Orientation ] = OrientationStrings[ Design::AT_Portrait ];

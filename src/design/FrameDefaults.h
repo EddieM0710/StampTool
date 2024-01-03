@@ -49,7 +49,7 @@ namespace Design {
 
 
         bool ShowTitle( ) {
-            return String2Bool( GetAttrStr( AT_ShowTitle ) );
+            return GetAttrBool( AT_ShowTitle );
         };
 
         void ShowTitle( bool val ) {
@@ -58,7 +58,7 @@ namespace Design {
 
 
         bool ShowSubTitle( ) {
-            return String2Bool( GetAttrStr( AT_ShowSubTitle ) );
+            return GetAttrBool( AT_ShowSubTitle );
         };
 
         void ShowSubTitle( bool val ) {
@@ -67,16 +67,16 @@ namespace Design {
 
 
         bool ShowFrame( ) {
-            return String2Bool( GetAttrStr( AT_ShowFrame ) );
+            return GetAttrBool( AT_ShowFrame ) );
         };
 
         void ShowFrame( bool val ) {
-            SetAttrStr( AT_ShowFrame, Bool2String( val ) );
+            SetAttrBool( AT_ShowFrame, val );
         };
 
         void SetShowNbr( bool val )
         {
-            SetAttrStr( AT_ShowCatNbr, Bool2String( val ) );
+            SetAttrBool( AT_ShowCatNbr, val );
         };
 
         void SetAlignmentMode( AlignmentModeType loc );
@@ -89,11 +89,11 @@ namespace Design {
 
 
         bool CalculateSpacing( ) {
-            return String2Bool( GetAttrStr( AT_CalculateSpacing ) );
+            return GetAttrBool( AT_CalculateSpacing, true );
         };
 
         void CalculateSpacing( bool val ) {
-            SetAttrStr( AT_CalculateSpacing, Bool2String( val ) );
+            SetAttrBool( AT_CalculateSpacing, val );
         };
 
         double FixedSpacing( )

@@ -165,11 +165,11 @@ namespace Design {
         // we can scale fonts and graphics
         // coords with a single setting
         pdfDC.SetMapModeStyle( wxPDF_MAPMODESTYLE_PDF );
-        pdfDC.SetMapMode( wxMM_POINTS );
+        pdfDC.SetMapMode( wxMM_TEXT );
         wxSize pdfPPI = pdfDC.GetPPI( );
-        DeviceUnitsPerMM.x = pdfPPI.x / 25.4;
-        DeviceUnitsPerMM.y = pdfPPI.y / 25.4;
-        pdfDC.SetUserScale( DeviceUnitsPerMM.x, DeviceUnitsPerMM.y );
+        PPMM.x = pdfPPI.x / 25.4;
+        PPMM.y = pdfPPI.y / 25.4;
+        pdfDC.SetUserScale( PPMM.x, PPMM.y );
 
         wxTreeItemIdValue cookie;
         wxTreeItemId parentID = GetTreeItemId( );

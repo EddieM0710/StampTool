@@ -67,7 +67,7 @@ namespace Design {
 
 
         bool ShowFrame( ) {
-            return GetAttrBool( AT_ShowFrame ) );
+            return GetAttrBool( AT_ShowFrame );
         };
 
         void ShowFrame( bool val ) {

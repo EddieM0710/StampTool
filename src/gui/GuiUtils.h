@@ -42,7 +42,7 @@ typedef enum {
 
 extern wxPdfArrayDouble defaultDash;
 
-
+wxSize GetPPMM( wxDC& dc );
 // extern double ScaleX;
 // extern double ScaleY;
 // extern RealPoint ScalePoint;

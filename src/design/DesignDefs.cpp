@@ -54,7 +54,7 @@
 
 namespace Design {
 
-    wxRealPoint  DeviceUnitsPerMM;
+    wxRealPoint  PPMM;
 
     //----------------
 
@@ -335,15 +335,15 @@ namespace Design {
 
         if ( client == DD_PDF )
         {
-            DeviceUnitsPerMM.x = 1;
-            DeviceUnitsPerMM.y = 1;
+            PPMM.x = 1;
+            PPMM.y = 1;
         }
         else //if ( client == DD_Display)
         {
 
             wxSize ppi = wxGetDisplayPPI( );
-            DeviceUnitsPerMM.x = ppi.x / 25.4;
-            DeviceUnitsPerMM.y = ppi.y / 25.4;
+            PPMM.x = ppi.x / 25.4;
+            PPMM.y = ppi.y / 25.4;
         }
     }
 

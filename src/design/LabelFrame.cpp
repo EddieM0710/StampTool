@@ -87,11 +87,12 @@ namespace Design {
             dc.SetTextForeground( color );
 
             double pointSize = font.GetFractionalPointSize( );
-            font.SetFractionalPointSize( pointSize * .31 );
+            //font.SetFractionalPointSize( pointSize * .31 );
 
             dc.SetFont( font );
+            wxSize scale = GetPPMM( dc );
 
-            wxRect rect( pos.x, pos.y, size.x, size.y );
+            wxRect rect( pos.x * scale.x, pos.y * scale.y, size.x * scale.x, size.y * scale.y );
 
             dc.DrawLabel( id, rect, wxALIGN_CENTER );
 
@@ -109,13 +110,25 @@ namespace Design {
         pos.y += y;
 
         wxFont font( GetFont( ) );
-        int pointSize = font.GetPointSize( ) + 1;
-        RealSize size( GetWidth( ), 0 + pointSize * .31 );
-        font.SetPointSize( pointSize );
+        int pointSize = font.GetPointSize( );
+        // pointSize -= 1;
+         // RealSize size( GetWidth( ), 0 + pointSize * .31 );
+         // font.SetPointSize( pointSize );
         doc->SetFont( font );
         doc->SetXY( pos.x, pos.y );
-        double h = GetHeightChars( pointSize );
-        doc->MultiCell( GetWidth( ), h, m_multiLineString, 0, wxPDF_ALIGN_CENTER );
+        double h = pointSize * 25.4 / 72;//GetHeightChars( pointSize ) / 2;
+
+        //  doc->MultiCell( GetWidth( ) * 1.05, h, m_multiLineString, wxPDF_BORDER_FRAME, wxPDF_ALIGN_CENTER );
+
+        wxArrayString lines = wxStringTokenize( m_multiLineString, "\n" );
+
+        size_t size = lines.GetCount( );
+        for ( size_t i = 0; i < size; i++ )
+        {
+            doc->Cell( GetWidth( ), h, lines[ i ], 0, 0, wxPDF_ALIGN_CENTER );
+            pos.y += h;
+            doc->SetXY( pos.x, pos.y );
+        }
     };
 
     //------------

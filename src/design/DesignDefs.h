@@ -221,7 +221,7 @@ namespace Design {
 
     // Conversion factor to convert from Pixels to MM. 
     // Screen units are in pixels. Album Design elements are in mm.
-    extern wxRealPoint  DeviceUnitsPerMM;
+    extern wxRealPoint  PPMM;
 
     extern wxString AlbumBaseNames[ AT_NbrAlbumTypes ];
 

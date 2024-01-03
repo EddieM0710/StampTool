@@ -45,6 +45,10 @@
 
 wxPdfArrayDouble defaultDash;
 
+wxSize GetPPMM( wxDC& dc )
+{
+    return dc.GetPPI( ) / 25.4;
+}
 //----------------
 
 void DrawLabelPDF( wxPdfDocument* doc, const wxString& text,
@@ -175,8 +179,8 @@ void DrawLabel( wxDC& dc, const wxString& text,
          //     wxCoord * heightLine = ( wxCoord* ) __null,
          //     const wxFont * font = ( const wxFont* )
          //     dc.DrawRectangle( wxRect( pos.x, pos.y, size.x, size.y ) );
-
-    wxRect rect( pos.x, pos.y, size.x, size.y );
+    wxSize scale = GetPPMM( dc );
+    wxRect rect( pos.x * scale.x, pos.y * scale.y, size.x * scale.x, size.y * scale.y );
 
     dc.DrawLabel( text, rect, alignment, indexAccel );
 }
@@ -193,6 +197,11 @@ void DrawTitle( wxDC& dc, wxString title, RealPoint pos, RealSize size )
     id.Trim( false );
 
     GetAlbumImagePanel( )->MakeMultiLine( id, font, size.x );
+    wxSize scale = GetPPMM( dc );
+    pos.x = pos.x * scale.x;
+    pos.y = pos.y * scale.y;
+    size.x = size.x * scale.x;
+    size.y = size.y * scale.y;
 
     DrawLabel( dc, id, pos, size, wxALIGN_CENTER_HORIZONTAL );
 
@@ -223,7 +232,7 @@ double GetHeightChars( double pt )
 
 double GetMultiLineTextHeight( wxString text, wxFont* font, double width )
 {
-    double lineHeight = GetHeightChars( font->GetPointSize( ) );
+    double lineHeight = GetHeightChars( font->GetPointSize( ) ) * Design::PPMM.y;
     text.Trim( );
     text.Trim( false );
     wxPdfDocument doc;
@@ -301,9 +310,10 @@ void DrawRectanglePDF( wxPdfDocument* doc, double x, double y, double width, dou
 // inputs are in mm
 void DrawRectangle( wxDC& dc, double x, double y, double width, double height )
 {
+    wxSize scale = GetPPMM( dc );
 
-    wxPoint posDevice( x, y );
-    wxSize sizeDevice( width, height );
+    wxPoint posDevice( x * scale.x, y * scale.y );
+    wxSize sizeDevice( width * scale.x, height * scale.y );
 
     //Scale to client logical units
     dc.DrawRectangle( wxRect( posDevice, sizeDevice ) );
@@ -443,10 +453,11 @@ void DrawImage( wxDC& dc, wxImage image, double x, double y, double w, double h 
         // int yDevice = dc.LogicalToDeviceY( y );
         // int widthDevice = dc.LogicalToDeviceXRel( w );
         // int heightDevice = dc.LogicalToDeviceYRel( h );
-        int xDevice = x;
-        int yDevice = y;
-        int widthDevice = w;
-        int heightDevice = h;
+        wxSize scale = GetPPMM( dc );
+        int xDevice = x * scale.x;
+        int yDevice = y * scale.y;
+        int widthDevice = w * scale.x;
+        int heightDevice = h * scale.y;
 
         image.Rescale( widthDevice, heightDevice, wxIMAGE_QUALITY_HIGH );
         //image.Rescale( w * ScaleX, h * ScaleY, wxIMAGE_QUALITY_HIGH );

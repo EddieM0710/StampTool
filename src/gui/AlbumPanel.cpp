@@ -434,7 +434,7 @@ wxPanel* AlbumPanel::CreateAlbumImageLayoutPanel( wxWindow* parent )
     zoomHorizontalSizer->Add( zoomStatic, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
     m_zoomSlider =
-        new wxSlider( albumImageLayoutPanel, ID_ALBUMZOOMSLIDER, 90, 10, 200, wxDefaultPosition,
+        new wxSlider( albumImageLayoutPanel, ID_ALBUMZOOMSLIDER, 100, 10, 200, wxDefaultPosition,
             wxDefaultSize, wxSL_HORIZONTAL );
     zoomHorizontalSizer->Add( m_zoomSlider, 2, wxGROW | wxALL, 0 );
 
@@ -478,7 +478,8 @@ void AlbumPanel::Init( )
 void AlbumPanel::OnZoomsliderUpdated( wxCommandEvent& event )
 {
     int val = m_zoomSlider->GetValue( );
-    double zoom = ( double ) val / 100.0;
+    std::cout << val << "  \n";
+    double zoom = ( double ) val / 200.0;
     m_albumImagePanel->SetZoom( zoom );
 
     event.Skip( );

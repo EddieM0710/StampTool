@@ -252,7 +252,7 @@ int GenerateList::GetStringLen( wxFont& font, wxString text )
 {
 
     wxClientDC dc( this );//= this->GetDC( );
-    dc.SetMapMode( wxMM_METRIC );
+    dc.SetMapMode( wxMM_TEXT );
     dc.SetFont( font );
 
     PrepareDC( dc );
@@ -264,8 +264,10 @@ int GenerateList::GetStringLen( wxFont& font, wxString text )
     int len = text.length( );
     if ( len > 0 )
     {
+        wxSize scale = GetPPMM( dc );
+
         wxSize ext = dc.GetTextExtent( text );
-        return ext.GetX( );
+        return ext.GetX( ) / scale.x;
     }
     return 25;
 }

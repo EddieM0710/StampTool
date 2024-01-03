@@ -123,7 +123,7 @@ void AlbumImagePanel::CreateControls( )
 wxSize AlbumImagePanel::GetLogicalTextExtent( wxString text, wxFont font )
 {
     wxClientDC dc( this );
-    dc.SetMapMode( wxMM_METRIC );
+    dc.SetMapMode( wxMM_TEXT );
     DoPrepareDC( dc );
     dc.SetUserScale( m_userScale, m_userScale );
     dc.SetFont( font );
@@ -144,14 +144,15 @@ wxSize  AlbumImagePanel::MakeMultiLine( wxString& text, wxFont font, double widt
 {
     wxClientDC  dc( this );
 
-    dc.SetMapMode( wxMM_METRIC );
+    dc.SetMapMode( wxMM_TEXT );
 
     dc.SetFont( font );
 
     //text is to be modified and returned; So we use a copy to work with.
     wxString str = text;
+    wxSize scale = GetPPMM( dc );
 
-    double widthDev = dc.LogicalToDeviceXRel( width );
+    double widthDev = width * scale.x;
 
     str.Trim( );
     str.Trim( false );
@@ -211,7 +212,8 @@ wxSize  AlbumImagePanel::MakeMultiLine( wxString& text, wxFont font, double widt
     }
     text = output;
     wxSize outSize = dc.GetMultiLineTextExtent( text );
-    outSize = dc.DeviceToLogicalRel( outSize );
+    outSize.x = outSize.x / scale.x;
+    outSize.y = outSize.y / scale.y;
     return outSize;
 }
 
@@ -322,7 +324,7 @@ void AlbumImagePanel::OnPaint( wxPaintEvent& event )
         wxPaintDC dc( this );
 
         DoPrepareDC( dc );
-        dc.SetMapMode( wxMM_METRIC );
+        dc.SetMapMode( wxMM_TEXT );
         dc.Clear( );
 
         wxFont font = *wxSWISS_FONT;
@@ -353,8 +355,8 @@ void AlbumImagePanel::OnPaint( wxPaintEvent& event )
                 if ( m_once == false )
                 {
                     m_once = true;
-                    // SetScrollbars( PpMM.x, PpMM.y, width * 2, height * 2, 0, 0 );
-                    SetScrollbars( 3, 3, 400, 400, 0, 0 );
+                    SetScrollbars( width / 20, height / 20, width, height, 0, 0 );
+                    //SetScrollbars( 30, 30, 400, 400, 0, 0 );
                 }
 
                 m_userScale = ( 1 - ( .9 - m_zoom ) );
@@ -385,7 +387,7 @@ void AlbumImagePanel::OnResize( wxCommandEvent& WXUNUSED( event ) )
 
     const wxSize size = GetClientSize( );
 
-    img.Rescale( size.x * Design::DeviceUnitsPerMM.x, size.y * Design::DeviceUnitsPerMM.y, wxIMAGE_QUALITY_HIGH );
+    img.Rescale( size.x, size.y, wxIMAGE_QUALITY_HIGH );
     m_bitmap = wxBitmap( img );
 }
 

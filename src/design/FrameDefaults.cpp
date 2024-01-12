@@ -64,6 +64,16 @@ namespace Design {
 
     void FrameDefaults::Save( wxXmlNode* xmlNode )
     {
+        Defaults::SaveDefault( xmlNode, AT_ShowTitle );
+        Defaults::SaveDefault( xmlNode, AT_ShowSubTitle );
+        Defaults::SaveDefault( xmlNode, AT_ShowFrame );
+        Defaults::SaveDefault( xmlNode, AT_TopContentMargin );
+        Defaults::SaveDefault( xmlNode, AT_BottomContentMargin );
+        Defaults::SaveDefault( xmlNode, AT_LeftContentMargin );
+        Defaults::SaveDefault( xmlNode, AT_RightContentMargin );
+        Defaults::SaveDefault( xmlNode, AT_CalculateSpacing );
+        Defaults::SaveDefault( xmlNode, AT_FixedSpacingSize );
+        Defaults::SaveDefault( xmlNode, AT_StampAlignmentMode );
     };
 
     //----------------
@@ -71,16 +81,17 @@ namespace Design {
     void FrameDefaults::InitParameters( )
     {
 
-        SetAttrStr( AT_ShowTitle, "false" );
-        SetAttrStr( AT_ShowSubTitle, "false" );
-        SetAttrStr( AT_ShowFrame, "false" );
-        SetAttrStr( AT_TopContentMargin, "2" );
-        SetAttrStr( AT_BottomContentMargin, "2" );
-        SetAttrStr( AT_LeftContentMargin, "2" );
-        SetAttrStr( AT_RightContentMargin, "2" );
-        SetAttrStr( AT_CalculateSpacing, "true" );
-        SetAttrStr( AT_FixedSpacingSize, "5" );
-        SetAttrStr( AT_StampAlignmentMode, StampAlignmentModeStrings[ AlignTop ] );
+
+        ApplicationDefault[ AT_ShowTitle ] = "false";
+        ApplicationDefault[ AT_ShowSubTitle ] = "false";
+        ApplicationDefault[ AT_ShowFrame ] = "false";
+        ApplicationDefault[ AT_TopContentMargin ] = Dbl2String( 2 );
+        ApplicationDefault[ AT_BottomContentMargin ] = Dbl2String( 2 );
+        ApplicationDefault[ AT_LeftContentMargin ] = Dbl2String( 2 );
+        ApplicationDefault[ AT_RightContentMargin ] = Dbl2String( 2 );
+        ApplicationDefault[ AT_CalculateSpacing ] = "true";
+        ApplicationDefault[ AT_FixedSpacingSize ] = Dbl2String( 5 );
+        ApplicationDefault[ AT_StampAlignmentMode ] = StampAlignmentModeStrings[ AlignTop ];
         /***/ //NameLocation
     }
 

@@ -318,8 +318,6 @@ namespace Catalog {
                     endOfData = true;
                 }
             }
-
-            // XMLDumpNode( ( wxXmlNode* )docRoot, "" );
         }
 
         return status;

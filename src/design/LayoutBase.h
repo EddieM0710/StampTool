@@ -76,46 +76,21 @@ namespace Design {
 
         virtual void Draw( wxDC& dc, double x, double y ) = 0;
 
-        wxString DumpFrame( )
-        {
-            return m_frame.Layout( );
-        };
-
-        void DumpLayout( double x, double y );
-
-        void DumpObjectLayout( wxString indent = "" );
-
         LayoutBase* FindObjectByPos( double x, double y, wxString indent = "" );
 
-
-        /*
-         * @brief Get Layout element height
-         *
-         * @return double - height in MM
-         */
         double GetHeight( ) {
             return m_frame.GetHeight( );
         };
 
-        /*
-         * @brief Get Layout element min height
-         *
-         * @return double - height in MM
-         */
         double GetMinHeight( ) {
             return m_frame.GetMinHeight( );
         };
 
-        /*
-         * @brief Get Layout element min width
-         *
-         * @return double - width in MM
-         */
         double GetMinWidth( ) {
             return m_frame.GetMinWidth( );
         };
 
-        bool GetShow( ) {
+        bool GetShowFrame( ) {
             return String2Bool( GetAttrStr( AT_ShowFrame ) );
         };
 
@@ -123,16 +98,10 @@ namespace Design {
         //        void SetShowImage( bool val ){ SetAttrStr( AT_ShowImage, Bool2String( val ) ); };
 
         bool GetShowNbr( );
-        //     return String2Bool( GetAttrStr( AT_ShowCatNbr ) );
-        // };
 
         virtual bool GetShowTitle( ) = 0;
-        //     return String2Bool( GetAttrStr( AT_ShowTitle ) );
-        // };
 
         virtual bool GetShowSubTitle( ) = 0;
-        //     return String2Bool( GetAttrStr( AT_ShowSubTitle ) );
-        // };
 
         wxString GetString( Design::FontUsageType fontType )
         {
@@ -155,6 +124,30 @@ namespace Design {
             return "";
         };
 
+        // double GetDefaultAttrDbl( Design::AlbumAttrType type )
+        // {
+        //     AlbumBaseType nodeType = GetNodeType( );
+        //     if ( nodeType == AT_Album )
+        //     {
+        //         return Design::AlbumPageDefaults( )->GetAttrDbl( type );
+        //     }
+        //     else if ( nodeType == AT_Page )
+        //     {
+        //         return Design::AlbumPageDefaults( )->GetAttrDbl( type );
+        //     }
+        //     else if ( nodeType == AT_Row )
+        //     {
+        //         return Design::AlbumFrameDefaults( )->GetAttrDbl( type );
+        //     }
+        //     else if ( nodeType == AT_Col )
+        //     {
+        //         return Design::AlbumFrameDefaults( )->GetAttrDbl( type );
+        //     }
+        //     else if ( nodeType == AT_Stamp )
+        //     {
+        //         return Design::AlbumStampDefaults( )->GetAttrDbl( type );
+        //     }
+        // }
         // StampNamePosition GetTitleLocation( );
 
         /*
@@ -228,7 +221,7 @@ namespace Design {
             m_frame.SetMinWidth( val );
         };
 
-        void SetShow( bool val ) {
+        void SetShowFrame( bool val ) {
             SetAttrStr( AT_ShowFrame, Bool2String( val ) );
         };
 
@@ -244,6 +237,37 @@ namespace Design {
         //     SetAttrStr( AT_ShowSubTitle, Bool2String( val ) );
         // };
 
+        void SetTopContentMargin( double val ) {
+            SetAlbumAttributeDbl( AT_TopContentMargin, val );
+        };
+
+        void SetBottomContentMargin( double val ) {
+            SetAlbumAttributeDbl( AT_BottomContentMargin, val );
+        };
+
+        void SetRightContentMargin( double val ) {
+            SetAlbumAttributeDbl( AT_RightContentMargin, val );
+        };
+
+        void SetLeftContentMargin( double val ) {
+            SetAlbumAttributeDbl( AT_LeftContentMargin, val );
+        };
+
+        double GetTopContentMargin( ) {
+            return GetAlbumAttributeDbl( AT_TopContentMargin );
+        };
+
+        double GetBottomContentMargin( ) {
+            return GetAlbumAttributeDbl( AT_BottomContentMargin );
+        };
+
+        double GetRightContentMargin( ) {
+            return GetAlbumAttributeDbl( AT_RightContentMargin );
+        };
+
+        double GetLeftContentMargin( ) {
+            return GetAlbumAttributeDbl( AT_LeftContentMargin );
+        };
 
         //void SetTitleLocation( StampNamePosition loc ) { m_titleLocation = loc; };
 
@@ -299,14 +323,6 @@ namespace Design {
 
         void ValidateChildType( int& nbrRows, int& nbrCols, int& nbrLeaf );
 
-        wxString Layout( )
-        {
-            return m_frame.Layout( );
-        }
-        void CheckLayout( )
-        {
-            m_frame.CheckLayout( GetObjectName( ) );
-        }
     protected:
         Frame m_frame;
         Frame m_clientDimensions;

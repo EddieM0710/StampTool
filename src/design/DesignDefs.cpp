@@ -201,7 +201,7 @@ namespace Design {
         wxString attrName;
         for ( int i = 0; i < AT_NbrAttrTypes; i++ )
         {
-            attrName = AlbumBaseNames[ i ];
+            attrName = AttrNameStrings[ i ];
             if ( !name.Cmp( attrName ) )
             {
                 return ( AlbumAttrType ) i;
@@ -366,16 +366,11 @@ namespace Design {
         if ( type == AT_Album )
         {
             object = ( AlbumBase* )new Album( node );
-            //   ( ( Album* ) object )->DumpLayout( );
         }
-        if ( type == AT_Page )
+        else if ( type == AT_Page )
         {
             object = ( AlbumBase* )new Page( node );
         }
-        // else if ( type == AT_Title )
-        // { 
-        //     object = ( AlbumBase* )new Title( node );
-        // }
         else if ( type == AT_Col )
         {
             object = ( AlbumBase* )new Column( node );

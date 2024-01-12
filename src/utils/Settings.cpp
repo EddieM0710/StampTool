@@ -800,25 +800,8 @@ namespace Utils {
                 fontStr = font->GetNativeInfoStr( );
             }
 
-            // std::cout << "FontPreference " << Design::FontUsageTypeStrings[ i ]
-            //     << " ndx " << FontPreference[ i ] << "   "
-            //     << fontStr << "\n";
         }
     }
-    void Settings::DumpFont( wxString Level )
-    {
-        // std::cout << Level << "CatNbr font " << GetNbrFont().GetNativeFontInfoUserDesc( )
-        //     << "  color " << GetNbrColor().GetAsString( )
-        //     << "  Ndx " << m_appPrefNbrFontNdx << "\n";
-        // std::cout << Level << "Name font " << GetNbrFont().GetNativeFontInfoUserDesc( )
-        //     << "  color " << GetNameColor().GetAsString( )
-        //     << "  Ndx " << m_appPrefNbrFontNdx << "\n";
-        // std::cout << Level << "Text font " <<GetTextFont().GetNativeFontInfoUserDesc( )
-        //     << "  color " << GetTextColor().GetAsString( )
-        //     << "  Ndx " << m_appPrefTextFontNdx << "\n";
-        // std::cout << Level << "Title font " << GetTitleFont().GetNativeFontInfoUserDesc( )
-        //     << "  color " << GetTitleColor().GetAsString( )
-        //     << "  Ndx " << m_appPrefTitleFontNdx << "\n";
-    };
+
 
 }

@@ -44,6 +44,8 @@ namespace Design {
     {
         SetNodeType( AT_Page );
         SetObjectName( AlbumBaseNames[ GetNodeType( ) ] );
+        SetDefaults( GetAlbumVolume( )->GetAlbum( )->AlbumPageDefaults( ) );
+
         m_titleFrame = new TitleFrame( this );
         m_titleFrame->SetHeadingString( GetAttrStr( AT_Name ) );
         m_titleFrame->SetSubHeadingString( GetAttrStr( AT_SubTitle ) );
@@ -55,126 +57,126 @@ namespace Design {
     void Page::Init( )
     {
         Album* album = GetAlbum( );
-        PageDefaults* parameters = AlbumPageDefaults( );
+        PageDefaults* parameters = ( PageDefaults* ) GetDefaults( );
         if ( parameters )
         {
             if ( Design::IsPortrait( Orientation( ) ) )
             {
 
                 // the page frame takes into account the pageMargins, the border is within this
-                SetTopPageMargin( parameters->TopMargin( ) );
-                SetBottomPageMargin( parameters->BottomMargin( ) );
-                SetRightPageMargin( parameters->RightMargin( ) );
-                SetLeftPageMargin( parameters->LeftMargin( ) );
-                SetXPos( parameters->LeftMargin( ) );
-                SetYPos( parameters->TopMargin( ) );
-                SetWidth( GetPageAttributeDbl( AT_PageWidth ) - parameters->RightMargin( ) - parameters->LeftMargin( ) );
-                SetHeight( GetPageAttributeDbl( AT_PageHeight ) - parameters->TopMargin( ) - parameters->BottomMargin( ) );
+                // SetTopPageMargin( parameters->TopMargin( ) );
+                // SetBottomPageMargin( parameters->BottomMargin( ) );
+                // SetRightPageMargin( parameters->RightMargin( ) );
+                // SetLeftPageMargin( parameters->LeftMargin( ) );
+                SetXPos( GetLeftPageMargin( ) );
+                SetYPos( GetTopPageMargin( ) );
+                SetWidth( parameters->PageWidth( ) - GetRightPageMargin( ) - GetLeftPageMargin( ) );
+                SetHeight( parameters->PageHeight( ) - GetTopPageMargin( ) - GetBottomPageMargin( ) );
                 SetBorderSize( GetBorderSize( ) );
             }
             else
             {
                 //SetBorder( m_border );
                 // the page frame takes into account the pageMargins, the border is within this
-                SetTopPageMargin( parameters->LeftMargin( ) );
-                SetBottomPageMargin( parameters->RightMargin( ) );
-                SetRightPageMargin( parameters->BottomMargin( ) );
-                SetLeftPageMargin( parameters->TopMargin( ) );
-                SetXPos( parameters->TopMargin( ) );
-                SetYPos( parameters->LeftMargin( ) );
-                SetHeight( GetPageAttributeDbl( AT_PageWidth ) - parameters->RightMargin( ) - parameters->LeftMargin( ) );
-                SetWidth( GetPageAttributeDbl( AT_PageHeight ) - parameters->TopMargin( ) - parameters->BottomMargin( ) );
+                // SetTopPageMargin( parameters->LeftMargin( ) );
+                // SetBottomPageMargin( parameters->RightMargin( ) );
+                // SetRightPageMargin( parameters->BottomMargin( ) );
+                // SetLeftPageMargin( parameters->TopMargin( ) );
+                SetXPos( GetLeftPageMargin( ) );
+                SetYPos( GetTopPageMargin( ) );
+                SetHeight( parameters->PageWidth( ) - GetTopPageMargin( ) - GetBottomPageMargin( ) );
+                SetWidth( parameters->PageHeight( ) - GetRightPageMargin( ) - GetLeftPageMargin( ) );
 
                 SetBorderSize( GetBorderSize( ) );
             }
         }
     }
 
-    //----------------
+    // //----------------
 
 
-    double Page::GetPageAttributeDbl( Design::AlbumAttrType type )
-    {
-        wxString val = GetAttrStr( type );
-        if ( val.IsEmpty( ) )
-        {
-            return  Design::AlbumPageDefaults( )->GetAttrDbl( type );
-        }
-        return  GetAttrDbl( type );
-    }
+    // double Page::GetPageAttributeDbl( Design::AlbumAttrType type )
+    // {
+    //     wxString val = GetAttrStr( type );
+    //     if ( val.IsEmpty( ) )
+    //     {
+    //         return  Design::AlbumPageDefaults( )->GetAttrDbl( type );
+    //     }
+    //     return  GetAttrDbl( type );
+    // }
 
-    //----------------
+    // //----------------
 
-    wxString Page::GetPageAttributeStr( Design::AlbumAttrType type )
-    {
-        wxString val = GetAttrStr( type );
-        if ( val.IsEmpty( ) )
-        {
-            return  Design::AlbumPageDefaults( )->GetAttrStr( type );
-        }
-        return val;
-    }
+    // wxString Page::GetPageAttributeStr( Design::AlbumAttrType type )
+    // {
+    //     wxString val = GetAttrStr( type );
+    //     if ( val.IsEmpty( ) )
+    //     {
+    //         return  Design::AlbumPageDefaults( )->GetAttrStr( type );
+    //     }
+    //     return val;
+    // }
 
-    //--------------
+    // //--------------
 
-    bool Page::GetPageAttributeBool( Design::AlbumAttrType type, bool defVal )
-    {
-        wxString catStr = GetAttrStr( type );
-        if ( catStr.IsEmpty( ) )
-        {
-            catStr = AlbumPageDefaults( )->GetAttrStr( type );
-            if ( catStr.IsEmpty( ) )
-            {
-                return defVal;
-            }
-        }
-        return String2Bool( catStr );
-    }
+    // bool Page::GetPageAttributeBool( Design::AlbumAttrType type, bool defVal )
+    // {
+    //     wxString catStr = GetAttrStr( type );
+    //     if ( catStr.IsEmpty( ) )
+    //     {
+    //         catStr = AlbumPageDefaults( )->GetAttrStr( type );
+    //         if ( catStr.IsEmpty( ) )
+    //         {
+    //             return defVal;
+    //         }
+    //     }
+    //     return String2Bool( catStr );
+    // }
 
-    //----------------
+    // //----------------
 
-    void Page::SetPageAttributeStr( Design::AlbumAttrType type, wxString val )
-    {
-        if ( IsDefaultVal( type, val ) )
-        {
-            DeleteAttribute( AttrNameStrings[ type ] );
-        }
-        else
-        {
-            SetAttrStr( type, val );
-        }
-    }
+    // void Page::SetPageAttributeStr( Design::AlbumAttrType type, wxString val )
+    // {
+    //     if ( IsDefaultVal( type, val ) )
+    //     {
+    //         DeleteAttribute( AttrNameStrings[ type ] );
+    //     }
+    //     else
+    //     {
+    //         SetAttrStr( type, val );
+    //     }
+    // }
 
-    //----------------
+    // //----------------
 
-    void Page::SetPageAttributeDbl( Design::AlbumAttrType type, double val )
-    {
-        wxString str = wxString::Format( "%4.1f", val );
-        SetPageAttributeStr( type, str );
-    }
+    // void Page::SetPageAttributeDbl( Design::AlbumAttrType type, double val )
+    // {
+    //     wxString str = wxString::Format( "%4.1f", val );
+    //     SetPageAttributeStr( type, str );
+    // }
 
-    //----------------
+    // //----------------
 
-    void Page::SetPageAttributeBool( Design::AlbumAttrType type, bool val )
-    {
-        wxString str = Bool2String( val );
-        SetPageAttributeStr( type, str );
+    // void Page::SetPageAttributeBool( Design::AlbumAttrType type, bool val )
+    // {
+    //     wxString str = Bool2String( val );
+    //     SetPageAttributeStr( type, str );
 
-    }
+    // }
 
-    //--------------
+    // //--------------
 
-    bool Page::IsDefaultVal( AlbumAttrType type )
-    {
-        return AlbumPageDefaults( )->IsEqual( type, GetAttrStr( type ) );
-    }
+    // bool Page::IsDefaultVal( AlbumAttrType type )
+    // {
+    //     return AlbumPageDefaults( )->IsEqual( type, GetAttrStr( type ) );
+    // }
 
-    //----------------
+    // //----------------
 
-    bool Page::IsDefaultVal( AlbumAttrType type, wxString val )
-    {
-        return AlbumPageDefaults( )->IsEqual( type, val );
-    }
+    // bool Page::IsDefaultVal( AlbumAttrType type, wxString val )
+    // {
+    //     return AlbumPageDefaults( )->IsEqual( type, val );
+    // }
 
     //----------------
 
@@ -183,18 +185,21 @@ namespace Design {
         dc.SetPen( *wxBLACK_PEN );
         SetClientDimensions( dc, x + m_contentFrame.GetXPos( ), y + m_contentFrame.GetYPos( ), GetWidth( ), GetHeight( ) );
 
-        wxString borderName = GetBorderFileName( );
         double xPos = x + GetLeftPageMargin( );
         double yPos = y + GetTopPageMargin( );
 
-        wxImage image = GetProject( )->GetImage( borderName );
-        wxFont font = dc.GetFont( );
+        if ( GetShowBorder( ) )
+        {
+            wxString borderName = GetBorderFileName( );
 
-        DrawImage( dc, image,
-            xPos, yPos,
-            GetWidth( ),
-            GetHeight( ) );
+            wxImage image = GetProject( )->GetImage( borderName );
+            wxFont font = dc.GetFont( );
 
+            DrawImage( dc, image,
+                xPos, yPos,
+                GetWidth( ),
+                GetHeight( ) );
+        }
         double leftPadding = 0;
         double rightPadding = 0;
         double topPadding = 0;
@@ -350,15 +355,14 @@ namespace Design {
         SetAttribute( xmlNode, AT_ShowSubTitle );
         SetAttribute( xmlNode, AT_SubTitle );
         SetAttribute( xmlNode, AT_ShowFrame );
+        if ( !IsDefaultVal( AT_ShowBorder ) ) SetAttribute( xmlNode, AT_ShowBorder );
+        if ( !IsDefaultVal( AT_TopPageMargin ) ) SetAttribute( xmlNode, AT_TopPageMargin );
+        if ( !IsDefaultVal( AT_BottomPageMargin ) ) SetAttribute( xmlNode, AT_BottomPageMargin );
+        if ( !IsDefaultVal( AT_LeftPageMargin ) ) SetAttribute( xmlNode, AT_LeftPageMargin );
+        if ( !IsDefaultVal( AT_RightPageMargin ) ) SetAttribute( xmlNode, AT_RightPageMargin );
 
-        if ( !AlbumPageDefaults( )->IsOrientation( Orientation( ) ) )
-        {
-            SetAttribute( xmlNode, AT_Orientation );
-        }
-        else
-        {
-            DeleteAttribute( AttrNameStrings[ AT_Orientation ] );
-        }
+        if ( !IsDefaultVal( AT_Orientation ) ) SetAttribute( xmlNode, AT_Orientation );
+
         SaveFonts( xmlNode );
     }
 
@@ -405,13 +409,13 @@ namespace Design {
         SetYPos( GetTopPageMargin( ) );
         if ( Design::IsPortrait( Orientation( ) ) )
         {
-            SetWidth( GetPageAttributeDbl( AT_PageWidth ) - GetRightPageMargin( ) - GetLeftPageMargin( ) );
-            SetHeight( GetPageAttributeDbl( AT_PageHeight ) - GetTopPageMargin( ) - GetBottomPageMargin( ) );
+            SetWidth( GetPageWidth( ) - GetRightPageMargin( ) - GetLeftPageMargin( ) );
+            SetHeight( GetPageHeight( ) - GetTopPageMargin( ) - GetBottomPageMargin( ) );
         }
         else
         {
-            SetWidth( GetPageAttributeDbl( AT_PageHeight ) - GetRightPageMargin( ) - GetLeftPageMargin( ) );
-            SetHeight( GetPageAttributeDbl( AT_PageWidth ) - GetTopPageMargin( ) - GetBottomPageMargin( ) );
+            SetWidth( GetPageHeight( ) - GetRightPageMargin( ) - GetLeftPageMargin( ) );
+            SetHeight( GetPageWidth( ) - GetTopPageMargin( ) - GetBottomPageMargin( ) );
         }
         double minWidth = 0.0;
         double minHeight = 0.0;

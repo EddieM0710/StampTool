@@ -50,244 +50,244 @@ namespace Design {
         void Save( wxXmlNode* xmlNode );
 
         double BorderSize( ) {
-            return GetDbl( AT_BorderSize );
+            return GetDefaultDbl( AT_BorderSize );
         };
         wxString BorderSizeStr( ) {
-            return Get( AT_BorderSize );
+            return GetDefault( AT_BorderSize );
         };
 
         void BorderSize( wxString str ) {
-            Set( AT_BorderSize, str );
+            SetDefault( AT_BorderSize, str );
         };
 
         void BorderSize( double val ) {
-            SetDbl( AT_BorderSize, val );
+            SetDefaultDbl( AT_BorderSize, val );
         };
 
 
 
 
         double ShowBorder( ) {
-            return GetDbl( AT_ShowBorder );
+            return GetDefaultDbl( AT_ShowBorder );
         };
         bool   ShowBorderBool( ) {
-            return GetBool( AT_ShowBorder, true );
+            return GetDefaultBool( AT_ShowBorder, true );
         };
 
         void ShowBorder( wxString str ) {
-            Set( AT_ShowBorder, str );
+            SetDefault( AT_ShowBorder, str );
         };
 
         void ShowBorder( bool val ) {
-            Set( AT_ShowBorder, val );
+            SetDefault( AT_ShowBorder, val );
         };
 
         void BorderFilename( wxString str ) {
-            Set( AT_BorderFileName, str );
+            SetDefault( AT_BorderFileName, str );
         };
         wxString BorderFilename( ) {
-            return Get( AT_BorderFileName );
+            return GetDefault( AT_BorderFileName );
         };
 
         double BottomMargin( ) {
-            return GetDbl( AT_BottomPageMargin );
+            return GetDefaultDbl( AT_BottomPageMargin );
         };
 
         wxString BottomMarginStr( ) {
-            return Get( AT_BottomPageMargin );
+            return GetDefault( AT_BottomPageMargin );
         };
 
         void BottomMargin( double val ) {
-            SetDbl( AT_BottomPageMargin, val );
+            SetDefaultDbl( AT_BottomPageMargin, val );
         };
 
         void BottomMargin( wxString str ) {
-            Set( AT_BottomPageMargin, str );
+            SetDefault( AT_BottomPageMargin, str );
         };
 
 
 
         double LeftMargin( ) {
-            return GetDbl( AT_LeftPageMargin );
+            return GetDefaultDbl( AT_LeftPageMargin );
         };
 
         wxString LeftMarginStr( ) {
-            return Get( AT_LeftPageMargin );
+            return GetDefault( AT_LeftPageMargin );
         };
 
         void LeftMargin( double val ) {
-            SetDbl( AT_LeftPageMargin, val );
+            SetDefaultDbl( AT_LeftPageMargin, val );
         };
 
         void LeftMargin( wxString str ) {
-            Set( AT_LeftPageMargin, str );
+            SetDefault( AT_LeftPageMargin, str );
         };
 
 
 
         double RightMargin( ) {
-            return GetDbl( AT_RightPageMargin );
+            return GetDefaultDbl( AT_RightPageMargin );
         };
 
         wxString RightMarginStr( ) {
-            return Get( AT_RightPageMargin );
+            return GetDefault( AT_RightPageMargin );
         };
 
         void RightMargin( double val ) {
-            SetDbl( AT_RightPageMargin, val );
+            SetDefaultDbl( AT_RightPageMargin, val );
         };
 
         void RightMargin( wxString str ) {
-            Set( AT_RightPageMargin, str );
+            SetDefault( AT_RightPageMargin, str );
         };
 
         double TopMargin( ) {
-            return GetDbl( AT_TopPageMargin );
+            return GetDefaultDbl( AT_TopPageMargin );
         };
 
         wxString TopMarginStr( ) {
-            return Get( AT_TopPageMargin );
+            return GetDefault( AT_TopPageMargin );
         };
 
         void TopMargin( double val ) {
-            SetDbl( AT_TopPageMargin, val );
+            SetDefaultDbl( AT_TopPageMargin, val );
         };
 
         void TopMargin( wxString str ) {
-            Set( AT_TopPageMargin, str );
+            SetDefault( AT_TopPageMargin, str );
         };
 
         double BottomContentMargin( ) {
-            return GetDbl( AT_BottomContentMargin );
+            return GetDefaultDbl( AT_BottomContentMargin );
         };
 
         wxString BottomContentMarginStr( ) {
-            return Get( AT_BottomContentMargin );
+            return GetDefault( AT_BottomContentMargin );
         };
 
         void BottomContentMargin( double val ) {
-            SetDbl( AT_BottomContentMargin, val );
+            SetDefaultDbl( AT_BottomContentMargin, val );
         };
 
         void BottomContentMargin( wxString str ) {
-            Set( AT_BottomContentMargin, str );
+            SetDefault( AT_BottomContentMargin, str );
         };
 
         double LeftContentMargin( ) {
-            return GetDbl( AT_LeftContentMargin );
+            return GetDefaultDbl( AT_LeftContentMargin );
         };
 
         wxString LeftContentMarginStr( ) {
-            return Get( AT_LeftContentMargin );
+            return GetDefault( AT_LeftContentMargin );
         };
 
         void LeftContentMargin( double val ) {
-            SetDbl( AT_LeftContentMargin, val );
+            SetDefaultDbl( AT_LeftContentMargin, val );
         };
 
         void LeftContentMargin( wxString str ) {
-            Set( AT_LeftContentMargin, str );
+            SetDefault( AT_LeftContentMargin, str );
         };
 
         double RightContentMargin( ) {
-            return GetDbl( AT_RightContentMargin );
+            return GetDefaultDbl( AT_RightContentMargin );
         };
 
         wxString RightContentMarginStr( ) {
-            return Get( AT_RightContentMargin );
+            return GetDefault( AT_RightContentMargin );
         };
 
         void RightContentMargin( double val ) {
-            SetDbl( AT_RightContentMargin, val );
+            SetDefaultDbl( AT_RightContentMargin, val );
         };
 
         void RightContentMargin( wxString str ) {
-            Set( AT_RightContentMargin, str );
+            SetDefault( AT_RightContentMargin, str );
         };
 
         double GetTopContentMargin( ) {
-            return GetDbl( AT_TopContentMargin );
+            return GetDefaultDbl( AT_TopContentMargin );
         };
 
         wxString TopContentMarginStr( ) {
-            return Get( AT_TopContentMargin );
+            return GetDefault( AT_TopContentMargin );
         };
 
         void TopContentMargin( double val ) {
-            SetDbl( AT_TopContentMargin, val );
+            SetDefaultDbl( AT_TopContentMargin, val );
         };
 
         void TopContentMargin( wxString str ) {
-            Set( AT_TopContentMargin, str );
+            SetDefault( AT_TopContentMargin, str );
         };
 
         double PageHeight( ) {
-            return GetDbl( AT_PageHeight );
+            return GetDefaultDbl( AT_PageHeight );
         };
 
         wxString PageHeightStr( ) {
-            return Get( AT_PageHeight );
+            return GetDefault( AT_PageHeight );
         };
 
         void PageHeight( double val ) {
-            SetDbl( AT_PageHeight, val );
+            SetDefaultDbl( AT_PageHeight, val );
         };
 
         void PageHeight( wxString str ) {
-            Set( AT_PageHeight, str );
+            SetDefault( AT_PageHeight, str );
         };
 
 
 
         double PageWidth( ) {
-            return GetDbl( AT_PageWidth );
+            return GetDefaultDbl( AT_PageWidth );
         };
 
         wxString PageWidthStr( ) {
-            return Get( AT_PageWidth );
+            return GetDefault( AT_PageWidth );
         };
 
         void PageWidth( double val ) {
-            SetDbl( AT_PageWidth, val );
+            SetDefaultDbl( AT_PageWidth, val );
         };
 
         void PageWidth( wxString str ) {
-            Set( AT_PageWidth, str );
+            SetDefault( AT_PageWidth, str );
         };
 
 
 
         double PaperHeight( ) {
-            return GetDbl( AT_PaperHeight );
+            return GetDefaultDbl( AT_PaperHeight );
         };
 
         wxString PaperHeightStr( ) {
-            return Get( AT_PaperHeight );
+            return GetDefault( AT_PaperHeight );
         };
 
         void PaperHeight( double val ) {
-            SetDbl( AT_PaperHeight, val );
+            SetDefaultDbl( AT_PaperHeight, val );
         };
 
         void PaperHeight( wxString str ) {
-            Set( AT_PaperHeight, str );
+            SetDefault( AT_PaperHeight, str );
         };
 
 
         double PaperWidth( ) {
-            return GetDbl( AT_PaperWidth );
+            return GetDefaultDbl( AT_PaperWidth );
         };
 
         wxString PaperWidthStr( ) {
-            return Get( AT_PaperWidth );
+            return GetDefault( AT_PaperWidth );
         };
 
         void PaperWidth( double val ) {
-            SetDbl( AT_PaperWidth, val );
+            SetDefaultDbl( AT_PaperWidth, val );
         };
 
         void PaperWidth( wxString str ) {
-            Set( AT_PaperWidth, str );
+            SetDefault( AT_PaperWidth, str );
         };
 
 
@@ -304,44 +304,44 @@ namespace Design {
             wxString& bottomPageMargin, wxString& rightPageMargin, wxString& leftPageMargin );
 
         bool ShowTitle( ) {
-            return String2Bool( Get( AT_ShowTitle ) );
+            return String2Bool( GetDefault( AT_ShowTitle ) );
         };
 
         void ShowTitle( bool val ) {
-            Set( AT_ShowTitle, Bool2String( val ) );
+            SetDefault( AT_ShowTitle, Bool2String( val ) );
         };
 
 
         bool ShowSubTitle( ) {
-            return String2Bool( Get( AT_ShowSubTitle ) );
+            return String2Bool( GetDefault( AT_ShowSubTitle ) );
         };
 
         void ShowSubTitle( bool val ) {
-            Set( AT_ShowSubTitle, Bool2String( val ) );
+            SetDefault( AT_ShowSubTitle, Bool2String( val ) );
         };
 
 
         bool OverSizePaper( ) {
-            return String2Bool( Get( AT_OverSizePaper ) );
+            return String2Bool( GetDefault( AT_OverSizePaper ) );
         };
 
         void OverSizePaper( bool val ) {
-            Set( AT_OverSizePaper, Bool2String( val ) );
+            SetDefault( AT_OverSizePaper, Bool2String( val ) );
         };
 
 
 
         void SetShowNbr( bool val ) {
-            Set( AT_ShowCatNbr, Bool2String( val ) );
+            SetDefault( AT_ShowCatNbr, Bool2String( val ) );
         };
 
         wxString Orientation( ) {
-            return Get( Design::AT_Orientation );
+            return GetDefault( Design::AT_Orientation );
         };
 
         void Orientation( wxString orientation )
         {
-            Set( Design::AT_Orientation, orientation );
+            SetDefault( Design::AT_Orientation, orientation );
         };
 
         bool IsOrientation( wxString orientation )

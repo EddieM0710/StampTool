@@ -111,12 +111,12 @@ public:
     void SetNameModified( bool state );
     void SetShowTitle( bool state = false );
     void SetShowSubTitle( bool state = false );
-    void SetShow( bool state = false );
+    void SetShowFrame( bool state = false );
     void SetColor( wxColour color );
     void SetFont( wxFont font );
     bool GetShowTitle( );
     bool GetShowSubTitle( );
-    bool GetShow( );
+    bool GetShowFrame( );
     void SetAlignmentMode( );
     Design::StampNamePosType GetTitleLocationType( );
     void SetCalculateSpacing( bool val );
@@ -136,6 +136,23 @@ public:
     bool IsNameModified( );
 
 
+    void OnTopContentMargin( wxCommandEvent& event );
+
+    void OnBottomContentMargin( wxCommandEvent& event );
+
+    void OnLeftContentMargin( wxCommandEvent& event );
+
+    void OnRightContentMargin( wxCommandEvent& event );
+
+    void OnShowBorderCheckBoxClick( wxCommandEvent& event );
+
+    void SetTopContentMargin( wxString contentMargin );
+
+    void SetBottomContentMargin( wxString contentMargin );
+
+    void SetLeftContentMargin( wxString contentMargin );
+
+    void SetRightContentMargin( wxString contentMargin );
     void OnSubTitleDefaultClick( wxCommandEvent& event );
     void OnTitleCheckboxClick( wxCommandEvent& event );
     void OnSubTitleCheckboxClick( wxCommandEvent& event );
@@ -177,6 +194,12 @@ private:
     wxRadioButton* m_topButton;
     wxRadioButton* m_bottomButton;
     wxRadioButton* m_defaultButton;
+
+    wxTextCtrl* m_topContentMargin;
+    wxTextCtrl* m_bottomContentMargin;
+    wxTextCtrl* m_rightContentMargin;
+    wxTextCtrl* m_leftContentMargin;
+
 
     wxRadioButton* m_alignTopButton;
     wxRadioButton* m_alignMiddleButton;

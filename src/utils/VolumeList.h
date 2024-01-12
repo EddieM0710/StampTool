@@ -54,8 +54,6 @@ namespace Utils {
 
         bool Clear( );
 
-        void dumpArray( wxArrayString& array );
-
         wxTreeItemId FindMenuID( int id );
 
         MenuIDArray::iterator FindMenuIDIterator( int id );

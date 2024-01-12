@@ -147,69 +147,20 @@ namespace Design {
         m_width = val;
     };
 
-    //----------------
-
-    wxString Frame::DumpPos( )
-    {
-        wxString str = wxString::Format( "   pos( %.1f, %.1f)",
-            m_xPos, m_yPos );
-        return str;
-    }
-
-    //----------------
-
-    wxString Frame::DumpSize( )
-    {
-        wxString str = wxString::Format( "   size( %.1f, %.1f)",
-            m_width, m_height );
-        return str;
-    }
-
-    //----------------
-
-    wxString Frame::DumpMinSize( )
-    {
-        wxString str = wxString::Format( "   minSize( %.1f, %.1f)",
-            m_minWidth, m_minHeight );
-        return str;
-    }
 
     //----------------
 
     wxString Frame::ReportLayout( wxString prefix )
     {
-        wxString str = Layout( );;
-        std::cout << prefix << str;
-        return str;
+        //  wxString str = Layout( );;
+         //  std::cout << prefix << str;
+        return "";
     }
 
-    //----------------
-
-    wxString Frame::Layout( )
-    {
-        wxString str = DumpPos( ) + DumpSize( ) + DumpMinSize( );
-        return str;
-    }
-
-    //----------------
-
-    void Frame::CheckLayout( wxString prefix )
-    {
-
-        if ( ( GetXPos( ) < 0 ) || ( GetYPos( ) < 0 ) )
-        {
-            std::cout << prefix << " invalid position" << DumpPos( ) << "\n";
-        }
-        if ( ( GetWidth( ) < 0 ) || ( GetHeight( ) < 0 ) )
-        {
-            std::cout << prefix << " invalid Size" << DumpSize( ) << "\n";
-        }
-        if ( ( GetMinHeight( ) < 0 ) || ( GetMinWidth( ) < 0 ) )
-        {
-            std::cout << prefix << " invalid Height/width" << DumpMinSize( ) << "\n";
-        }
-    };
-
-    //----------------
 
 }
+
+
+//----------------
+
+

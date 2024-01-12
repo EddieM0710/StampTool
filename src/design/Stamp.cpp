@@ -59,6 +59,7 @@ namespace Design {
     {
         SetNodeType( AT_Stamp );
         SetObjectName( AlbumBaseNames[ AT_Stamp ] );
+        SetDefaults( GetAlbumVolume( )->GetAlbum( )->AlbumStampDefaults( ) );
 
         m_nameFrame = new LabelFrame( Design::AT_NameFontType );
         m_nameFrame->SetString( "name" );
@@ -74,6 +75,8 @@ namespace Design {
     {
         SetNodeType( AT_Stamp );
         SetObjectName( AlbumBaseNames[ GetNodeType( ) ] );
+        SetDefaults( GetAlbumVolume( )->GetAlbum( )->AlbumStampDefaults( ) );
+
 
         m_nameFrame = new LabelFrame( Design::AT_NameFontType );
         m_nbrFrame = new LabelFrame( Design::AT_NbrFontType );
@@ -232,15 +235,6 @@ namespace Design {
 
     //--------------
 
-    void Stamp::DumpStamp( wxTextCtrl* ctrl )
-    {
-        *ctrl << DumpFrame( );
-        *ctrl << m_borderFrame.Layout( );
-        *ctrl << m_stampImageFrame.Layout( );
-    }
-
-    //--------------
-
     wxString Stamp::GetCatalogCodes( )
     {
         return GetAttrStr( Design::AT_Catalog_Codes );;
@@ -299,39 +293,39 @@ namespace Design {
 
     //----------------
 
-    double Stamp::GetStampAttributeDbl( Design::AlbumAttrType type )
-    {
-        wxString val = GetAttrStr( type );
-        if ( val.IsEmpty( ) )
-        {
-            return  Design::AlbumStampDefaults( )->GetAttrDbl( type );
-        }
-        return  GetAttrDbl( type );
-    }
+    // double Stamp::GetStampAttributeDbl( Design::AlbumAttrType type )
+    // {
+    //     wxString val = GetAttrStr( type );
+    //     if ( val.IsEmpty( ) )
+    //     {
+    //         return  Design::AlbumStampDefaults( )->GetAttrDbl( type );
+    //     }
+    //     return  GetAttrDbl( type );
+    // }
 
-    //----------------
+    // //----------------
 
-    wxString Stamp::GetStampAttributeStr( Design::AlbumAttrType type )
-    {
-        wxString val = GetAttrStr( type );
-        if ( val.IsEmpty( ) )
-        {
-            return  Design::AlbumStampDefaults( )->GetAttrStr( type );
-        }
-        return val;
-    }
+    // wxString Stamp::GetStampAttributeStr( Design::AlbumAttrType type )
+    // {
+    //     wxString val = GetAttrStr( type );
+    //     if ( val.IsEmpty( ) )
+    //     {
+    //         return  Design::AlbumStampDefaults( )->GetAttrStr( type );
+    //     }
+    //     return val;
+    // }
 
-    //--------------
+    // //--------------
 
-    bool Stamp::GetStampAttributeBool( Design::AlbumAttrType type )
-    {
-        wxString catStr = GetAttrStr( type );
-        if ( catStr.IsEmpty( ) )
-        {
-            catStr = AlbumStampDefaults( )->GetAttrStr( type );
-        }
-        return String2Bool( catStr );
-    }
+    // bool Stamp::GetStampAttributeBool( Design::AlbumAttrType type )
+    // {
+    //     wxString catStr = GetAttrStr( type );
+    //     if ( catStr.IsEmpty( ) )
+    //     {
+    //         catStr = AlbumStampDefaults( )->GetAttrStr( type );
+    //     }
+    //     return String2Bool( catStr );
+    // }
 
     //--------------
 
@@ -359,7 +353,7 @@ namespace Design {
 
     wxString Stamp::GetStampNamePosition( )
     {
-        return GetStampAttributeStr( AT_StampNamePosition );
+        return GetAlbumAttributeStr( AT_StampNamePosition );
     }
 
     //--------------
@@ -377,7 +371,7 @@ namespace Design {
         wxString height = GetAttrStr( Design::AT_Height );
         if ( height.IsEmpty( ) )
         {
-            SetActualStampHeight( "10.0" );
+            SetActualStampHeight( Dbl2String( 10.0 ) );
         }
         else
         {
@@ -387,7 +381,7 @@ namespace Design {
         wxString width = GetAttrStr( Design::AT_Width );
         if ( height.IsEmpty( ) )
         {
-            SetActualStampWidth( "10.0" );
+            SetActualStampWidth( Dbl2String( 10.0 ) );
         }
         else
         {
@@ -500,7 +494,10 @@ namespace Design {
         if ( !IsDefaultVal( AT_SelvageWidth ) ) SetAttribute( xmlNode, AT_SelvageWidth );
         if ( !IsDefaultVal( AT_MountAllowanceHeight ) ) SetAttribute( xmlNode, AT_MountAllowanceHeight );
         if ( !IsDefaultVal( AT_MountAllowanceWidth ) ) SetAttribute( xmlNode, AT_MountAllowanceWidth );
+
+
         SetAttribute( xmlNode, AT_Link );
+        if ( !IsDefaultVal( AT_ShowFrame ) ) SetAttribute( xmlNode, AT_ShowFrame );
         if ( !IsDefaultVal( AT_ShowTitle ) ) SetAttribute( xmlNode, AT_ShowTitle );
         //SetAttribute( xmlNode, AT_ShowSubTitle );
         if ( !IsDefaultVal( AT_ShowCatNbr ) ) SetAttribute( xmlNode, AT_ShowCatNbr );
@@ -562,49 +559,48 @@ namespace Design {
         GetNbrFrame( )->SetString( displalyString );
     };
 
-    //----------------
+    // //----------------
 
-    void Stamp::SetStampAttributeStr( Design::AlbumAttrType type, wxString val )
-    {
-        // The stamp attribute values are stored in the XMLBase that Stamp inherits from.
-        // Only those values that are different from the default values are saved.
-        // The default values are saved in StampDefaults.
-        // This allows for only the values different from the default to be saved in 
-        // the Album XML file and still retain full definition of the stamp.
-        if ( IsDefaultVal( type, val ) )
-        {
-            DeleteAttribute( AttrNameStrings[ type ] );
-        }
-        else
-        {
-            SetAttrStr( type, val );
-        }
-    }
+    // void Stamp::SetStampAttributeStr( Design::AlbumAttrType type, wxString val )
+    // {
+    //     // The stamp attribute values are stored in the XMLBase that Stamp inherits from.
+    //     // Only those values that are different from the default values are saved.
+    //     // The default values are saved in StampDefaults.
+    //     // This allows for only the values different from the default to be saved in 
+    //     // the Album XML file and still retain full definition of the stamp.
+    //     if ( IsDefaultVal( type, val ) )
+    //     {
+    //         DeleteAttribute( AttrNameStrings[ type ] );
+    //     }
+    //     else
+    //     {
+    //         SetAttrStr( type, val );
+    //     }
+    // }
 
-    //----------------
+    // //----------------
 
-    void Stamp::SetStampAttributeDbl( Design::AlbumAttrType type, double val )
-    {
-        wxString str = wxString::Format( "%4.1f", val );
-        SetStampAttributeStr( type, str );
-    }
+    // void Stamp::SetStampAttributeDbl( Design::AlbumAttrType type, double val )
+    // {
+    //     wxString str = wxString::Format( "%4.1f", val );
+    //     SetStampAttributeStr( type, str );
+    // }
 
-    //----------------
+    // //----------------
 
-    void Stamp::SetStampAttributeBool( Design::AlbumAttrType type, bool val )
-    {
-        wxString str = Bool2String( val );
-        SetStampAttributeStr( type, str );
+    // void Stamp::SetStampAttributeBool( Design::AlbumAttrType type, bool val )
+    // {
+    //     wxString str = Bool2String( val );
+    //     SetStampAttributeStr( type, str );
 
-    }
+    // }
 
     //--------------
 
     void Stamp::SetActualStampHeight( double val )
     {
         m_actualStampFrame.SetHeight( val );
-        wxString str = wxString::Format( "%4.1f", val );
-        SetAttrStr( Design::AT_Height, str );
+        SetAttrStr( Design::AT_Height, Dbl2String( val ) );
     };
 
     //--------------
@@ -651,7 +647,7 @@ namespace Design {
 
     void Stamp::SetStampNamePosition( StampNamePosType loc )
     {
-        SetStampAttributeStr( AT_StampNamePosition, StampNamePositionStrings[ loc ] );
+        SetAlbumAttributeStr( AT_StampNamePosition, StampNamePositionStrings[ loc ] );
     };
 
     //--------------
@@ -762,8 +758,6 @@ namespace Design {
 
     NodeStatus Stamp::ValidateNode( )
     {
-        CheckLayout( );
-
         NodeStatus status = AT_OK;
         wxString filename = GetStampImageFilename( );
         wxString str;// = GetProject( )->GetImageFullPath( filename );

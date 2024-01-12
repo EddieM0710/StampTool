@@ -239,6 +239,8 @@ public:
 
     wxTreeItemId AddChild( wxTreeItemId parent, wxXmlNode* child );
 
+    wxTreeItemId AddNode( Design::AlbumBaseType nodeType, wxTreeItemId parent, wxXmlNode* child );
+
     void AddColTreeItem( wxTreeItemId node );
 
     void AddPageTreeItem( wxTreeItemId node );

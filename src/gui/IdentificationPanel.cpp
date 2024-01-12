@@ -87,6 +87,7 @@ void IdentificationPanel::Clear( )
     m_themes->ChangeValue( "" );
     m_country->ChangeValue( "" );
     m_perforation->ChangeValue( "" );
+    m_gum->ChangeValue( "" );
     m_printing->ChangeValue( "" );
     m_width->ChangeValue( "" );
     m_height->ChangeValue( "" );
@@ -135,6 +136,7 @@ void IdentificationPanel::Init( )
     m_themes = NULL;
     m_country = NULL;
     m_perforation = NULL;
+    m_gum = NULL;
     m_printing = NULL;
     m_link = NULL;
     m_catCode = NULL;
@@ -231,6 +233,8 @@ void IdentificationPanel::CreateControls( )
 
     m_perforation = SetupLabelText( thePanel, panelVerticalSizer, ++lastID, "Perforation", true, wxCommandEventHandler( IdentificationPanel::OnPerforationUpdated ) );
 
+    m_gum = SetupLabelText( thePanel, panelVerticalSizer, ++lastID, "Gum", true, wxCommandEventHandler( IdentificationPanel::OnGumUpdated ) );
+
     m_printing = SetupLabelText( thePanel, panelVerticalSizer, ++lastID, "Printing", true, wxCommandEventHandler( IdentificationPanel::OnPrintingUpdated ) );
 
     wxBoxSizer* sizeHorizontalSizer;
@@ -249,14 +253,20 @@ void IdentificationPanel::CreateControls( )
     //   m_link->SetLabel( Catalog::DataTypeNames[ Catalog::DT_Link ] );
     //   m_imageName->SetLabel( "Image Name" );
 
-     //  wxBoxSizer* MountHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
-     //  panelVerticalSizer->Add( MountHorizontalSizer, 0, wxGROW | wxALL, 0 );
-    wxBoxSizer* MountHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
-    panelVerticalSizer->Add( MountHorizontalSizer, 0, wxGROW | wxALL, 0 );
+    wxBoxSizer* buttonHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
+    panelVerticalSizer->Add( buttonHorizontalSizer, 0, wxGROW | wxALL, 0 );
+
+    //  wxBoxSizer* MountHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
+    //  panelVerticalSizer->Add( MountHorizontalSizer, 0, wxGROW | wxALL, 0 );
+  // wxBoxSizer* MountHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
+   // panelVerticalSizer->Add( buttonHorizontalSizer, 0, wxGROW | wxALL, 0 );
 
     wxStaticText* mountStaticText = new wxStaticText( thePanel, wxID_STATIC, Catalog::DataTypeNames[ Catalog::DT_StampMount ],
         wxDefaultPosition, wxDefaultSize, 0 );
-    MountHorizontalSizer->Add( mountStaticText, 0, wxALIGN_CENTER_VERTICAL | wxALL, 0 );
+    buttonHorizontalSizer->Add( mountStaticText, 0, wxALIGN_CENTER_VERTICAL | wxALL, 0 );
+
+    // wxBoxSizer* MountHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
+     //panelVerticalSizer->Add( buttonHorizontalSizer, 0, wxGROW | wxALL, 0 );
 
     wxArrayString itemComboBox3Strings;
     for ( int i = 0; i < Catalog::NbrStampMounts; i++ )
@@ -265,13 +275,13 @@ void IdentificationPanel::CreateControls( )
     }
     mountComboBox = new wxComboBox( thePanel, ID_STAMPMOUNTTEXTBOX, wxEmptyString,
         wxDefaultPosition, wxDefaultSize, itemComboBox3Strings, wxCB_DROPDOWN );
-    MountHorizontalSizer->Add( mountComboBox, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+    buttonHorizontalSizer->Add( mountComboBox, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
 
 
     wxButton* itemButton10 = new wxButton( thePanel, ID_COLNECTBUTTON, _( "Colnect" ),
         wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT );
-    panelVerticalSizer->Add( itemButton10, 0, wxALIGN_LEFT | wxALL, 5 );
+    buttonHorizontalSizer->Add( itemButton10, 0, wxALIGN_LEFT | wxALL, 5 );
 
 
 
@@ -346,6 +356,13 @@ void IdentificationPanel::OnPerforationUpdated( wxCommandEvent& event )
     event.Skip( );
 
 }
+
+void IdentificationPanel::OnGumUpdated( wxCommandEvent& event )
+{
+    UpdateStampValue( Catalog::DT_Gum, m_gum );
+    event.Skip( );
+}
+
 void IdentificationPanel::OnPrintingUpdated( wxCommandEvent& event )
 {
     UpdateStampValue( Catalog::DT_Printing, m_printing );
@@ -440,6 +457,7 @@ void IdentificationPanel::UpdatePanel( )
         m_themes->ChangeValue( stamp.GetAttr( Catalog::DT_Themes ) );
         m_country->ChangeValue( stamp.GetAttr( Catalog::DT_Country ) );
         m_perforation->ChangeValue( stamp.GetAttr( Catalog::DT_Perforation ) );
+        m_gum->ChangeValue( stamp.GetAttr( Catalog::DT_Gum ) );
         m_printing->ChangeValue( stamp.GetAttr( Catalog::DT_Printing ) );
         //SetChoice( m_status, stamp.GetInventoryStatus( ) );
 
@@ -465,6 +483,7 @@ void IdentificationPanel::SetDataEditable( bool val )
     // m_status->Enable( val );
     m_country->SetEditable( val );
     m_perforation->SetEditable( val );
+    m_gum->SetEditable( val );
     m_printing->SetEditable( val );
     m_link->SetEditable( val );;
     //   m_catCodes->SetEditable( val );;

@@ -172,6 +172,8 @@ public:
 
     void OnImportCatalogClick( wxCommandEvent& event );
 
+    void OnMergeCatalogClick( wxCommandEvent& event );
+
     void OnItemviewClick( wxCommandEvent& event );
 
     void OnMaximize( wxMaximizeEvent& event );

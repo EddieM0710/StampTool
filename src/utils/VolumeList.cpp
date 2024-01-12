@@ -87,15 +87,6 @@ namespace Utils {
         return true;
     }
 
-    void VolumeList::dumpArray( wxArrayString& array )
-    {
-        for ( int j = 0; j < array.Count( ); j++ )
-        {
-            wxString str = array.Item( j );
-            std::cout << str << " ";
-        }
-        std::cout << "\n";
-    }
 
     wxTreeItemId VolumeList::FindMenuID( int id )
     {

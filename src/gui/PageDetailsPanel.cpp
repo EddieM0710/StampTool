@@ -198,10 +198,6 @@ void PageDetailsPanel::CreateControls( )
         wxCommandEventHandler( PageDetailsPanel::OnSubTitleDefaultClick ) );
 
 
-    // wxBoxSizer* firstRowHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
-    // m_leftColumnVerticalSizer->Add( firstRowHorizontalSizer, 0, wxGROW | wxALL, 0 );
-
-
     wxArrayString m_orientationChoiceStrings( 2, Design::OrientationStrings );
     m_orientationChoice = SetupChoice( commonPanel, middleCommonVerticalSizer, ++lastID,
         _( "Orientation:" ), m_orientationChoiceStrings,
@@ -244,9 +240,20 @@ void PageDetailsPanel::CreateControls( )
     m_rightPageMargin->SetToolTip( _( "Page right margin in mm." ) );
 
 
-    m_showBorder = SetupCheckBox( advancedPanel, rightAdvancedVerticalSizer, ++lastID,
+    wxBoxSizer* borderboxVSizer;
+    wxStaticBox* borderBox = SetupBoxSizer( advancedPanel, middleAdvancedVerticalSizer,
+        "Border", lastID, borderboxVSizer, wxVERTICAL );
+
+    wxBoxSizer* itemBorderBoxSizer = new wxBoxSizer( wxHORIZONTAL );
+    borderboxVSizer->Add( itemBorderBoxSizer, 0, wxGROW | wxALL, 0 );
+
+    m_showBorder = SetupCheckBox( borderBox, itemBorderBoxSizer, ++lastID,
         _( "Show Border" ), wxCommandEventHandler( PageDetailsPanel::OnShowBorderCheckBoxClick ) );
     m_showBorder->SetToolTip( _( "Show the page border." ) );
+
+    m_borderSize = SetupLabelText( borderBox, itemBorderBoxSizer, lastID,
+        _( "Size" ), false, wxCommandEventHandler( PageDetailsPanel::OnBorderSize ) );
+    m_borderSize->SetToolTip( _( "width of the border to be added to the margin for layout in mm." ) );
 
 
     // wxStaticText* orientationStatic = new wxStaticText(
@@ -267,6 +274,43 @@ void PageDetailsPanel::CreateControls( )
     m_statusList = new wxListBox( commonPanel, ID_ERRORLISTCTRL, wxDefaultPosition, wxDefaultSize, m_statusListStrings, wxLB_SINGLE );
     //m_statusList = new wxListBox( theDialog, ID_ERRORLISTCTRL, wxDefaultPosition, wxSize( 100, 100 ), wxLC_REPORT | wxLC_EDIT_LABELS | wxSIMPLE_BORDER );
     itemBoxSizer3->Add( m_statusList, 2, wxGROW | wxALL, 0 );
+
+
+
+    wxBoxSizer* contentMarginBoxVSizer;
+    wxStaticBox* contentMarginBox = SetupBoxSizer( advancedPanel, rightAdvancedVerticalSizer,
+        "Content Margin", lastID, contentMarginBoxVSizer, wxVERTICAL );
+
+    wxBoxSizer* itemBoxSizer17 = new wxBoxSizer( wxHORIZONTAL );
+    contentMarginBoxVSizer->Add( itemBoxSizer17, 0, wxGROW | wxALL, 0 );
+
+    HorizontalSpacer( itemBoxSizer17 );
+
+    m_topContentMargin = SetupLabelText( contentMarginBox, itemBoxSizer17, lastID,
+        _( "Top" ), false, wxCommandEventHandler( PageDetailsPanel::OnTopContentMargin ) );
+    m_topContentMargin->SetToolTip( _( "Content top margin in mm." ) );
+    HorizontalSpacer( itemBoxSizer17 );
+
+    m_bottomContentMargin = SetupLabelText( contentMarginBox, itemBoxSizer17, lastID,
+        _( "Bottom" ), false, wxCommandEventHandler( PageDetailsPanel::OnBottomContentMargin ) );
+    m_bottomContentMargin->SetToolTip( _( "Content bottom margin in mm." ) );
+
+
+    wxBoxSizer* itemBoxSizer110 = new wxBoxSizer( wxHORIZONTAL );
+    contentMarginBoxVSizer->Add( itemBoxSizer110, 0, wxGROW | wxALL, 0 );
+
+    HorizontalSpacer( itemBoxSizer110 );
+
+    m_leftContentMargin = SetupLabelText( contentMarginBox, itemBoxSizer110, lastID,
+        _( "Left" ), false, wxCommandEventHandler( PageDetailsPanel::OnLeftContentMargin ) );
+    m_leftContentMargin->SetToolTip( _( "Content left margin in mm." ) );
+
+    HorizontalSpacer( itemBoxSizer110 );
+
+    m_rightContentMargin = SetupLabelText( contentMarginBox, itemBoxSizer110, lastID,
+        _( "Right" ), false, wxCommandEventHandler( PageDetailsPanel::OnRightContentMargin ) );
+    m_topContentMargin->SetToolTip( _( "Content right margin in mm." ) );
+
     Layout( );
 }
 
@@ -283,11 +327,18 @@ void PageDetailsPanel::UpdateControls( )
     SetShowTitle( m_page->GetShowTitle( ) );
     SetShowSubTitle( m_page->GetShowSubTitle( ) );
     SetShowBorder( m_page->GetShowBorder( ) );
+    SetBorderSize( Design::AlbumPageDefaults( )->BorderSizeStr( ) );
 
     SetTopPageMargin( m_page->GetTopPageMarginStr( ) );
     SetBottomPageMargin( m_page->GetBottomPageMarginStr( ) );
     SetLeftPageMargin( m_page->GetLeftPageMarginStr( ) );
     SetRightPageMargin( m_page->GetRightPageMarginStr( ) );
+
+    SetTopContentMargin( Design::AlbumPageDefaults( )->TopContentMarginStr( ) );
+    SetBottomContentMargin( Design::AlbumPageDefaults( )->BottomContentMarginStr( ) );
+    SetLeftContentMargin( Design::AlbumPageDefaults( )->LeftContentMarginStr( ) );
+    SetRightContentMargin( Design::AlbumPageDefaults( )->RightContentMarginStr( ) );
+
 
     // m_dialogVerticalSizer->Layout( );
 
@@ -422,6 +473,35 @@ bool PageDetailsPanel::GetShow( )
 };
 
 
+//--------------
+
+void PageDetailsPanel::SetTopContentMargin( wxString topContentMargin )
+{
+    m_topContentMargin->ChangeValue( topContentMargin );
+}
+
+//--------------
+
+void PageDetailsPanel::SetBottomContentMargin( wxString bottomContentMargin )
+{
+    m_bottomContentMargin->ChangeValue( bottomContentMargin );
+}
+
+//--------------
+
+void PageDetailsPanel::SetLeftContentMargin( wxString leftContentMargin )
+{
+    m_leftContentMargin->ChangeValue( leftContentMargin );
+}
+
+//--------------
+
+void PageDetailsPanel::SetRightContentMargin( wxString rightPageMargin )
+{
+    m_rightContentMargin->ChangeValue( rightPageMargin );
+}
+
+
 void PageDetailsPanel::OnTitleDefaultClick( wxCommandEvent& event )
 {
     int ndx = Design::GetAlbum( )->GetFontNdx( Design::AT_TitleFontType );
@@ -451,7 +531,6 @@ void PageDetailsPanel::OnSubTitleCheckboxClick( wxCommandEvent& event )
 {
     m_page->SetShowSubTitle( m_titleHelper->subTitleCheckbox->GetValue( ) );
     UpdateSubTitleState( m_titleHelper );
-    m_leftColumnVerticalSizer->Layout( );
 };
 
 
@@ -475,7 +554,6 @@ void PageDetailsPanel::OnTitleCheckboxClick( wxCommandEvent& event )
     m_page->SetShowTitle( m_titleHelper->titleCheckbox->GetValue( ) );
     UpdateTitleState( m_titleHelper );
     GetAlbumTreeCtrl( )->GetCurrentTreeID( );
-    //  m_leftColumnVerticalSizer->Layout( );
 }
 
 void PageDetailsPanel::OnTitleTextChanged( wxCommandEvent& event )
@@ -555,6 +633,7 @@ void PageDetailsPanel::OnRightPageMargin( wxCommandEvent& event )
 void PageDetailsPanel::OnShowBorderCheckBoxClick( wxCommandEvent& event )
 {
     m_page->SetShowBorder( m_showBorder->GetValue( ) );
+    Refresh( );
     event.Skip( );
 }
 
@@ -575,4 +654,68 @@ void PageDetailsPanel::Update( )
 {
     GetAlbumTreeCtrl( )->Update( );
     SetStatusList( );
+}
+
+//--------------
+
+void PageDetailsPanel::OnTopContentMargin( wxCommandEvent& event )
+{
+    Design::AlbumPageDefaults( )->TopContentMargin( Design::AlbumPageDefaults( )->TopContentMarginStr( ) );
+    Update( );
+    event.Skip( );
+}
+
+//--------------
+
+void PageDetailsPanel::OnBottomContentMargin( wxCommandEvent& event )
+{
+    Design::AlbumPageDefaults( )->BottomContentMargin( Design::AlbumPageDefaults( )->BottomContentMarginStr( ) );
+
+    Update( );
+    event.Skip( );
+}
+
+//--------------
+
+void PageDetailsPanel::OnLeftContentMargin( wxCommandEvent& event )
+{
+    Design::AlbumPageDefaults( )->LeftContentMargin( Design::AlbumPageDefaults( )->LeftContentMarginStr( ) );
+    Update( );
+    event.Skip( );
+
+}
+
+//--------------
+
+void PageDetailsPanel::OnRightContentMargin( wxCommandEvent& event )
+{
+    Design::AlbumPageDefaults( )->RightContentMargin( Design::AlbumPageDefaults( )->RightContentMarginStr( ) );
+
+    Update( );
+    event.Skip( );
+}
+
+//--------------
+
+//--------------
+
+void PageDetailsPanel::SetBorderSize( wxString borderSize )
+{
+    m_borderSize->ChangeValue( borderSize );
+}
+
+//--------------
+
+wxString PageDetailsPanel::GetBorderSize( ) {
+    return m_borderSize->GetValue( );
+}
+
+//--------------
+
+void PageDetailsPanel::OnBorderSize( wxCommandEvent& event )
+{
+    m_page->SetBorderSize( GetBorderSize( ) );
+
+    Update( );
+    event.Skip( );
 }

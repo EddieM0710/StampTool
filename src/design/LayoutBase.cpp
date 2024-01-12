@@ -53,55 +53,7 @@ namespace Design {
         // SetTitleLocation( Design::AT_StampNamePositionDefault );
     };
 
-    //----------------
 
-    void LayoutBase::DumpLayout( double x, double y )
-    {
-        AlbumBaseType type = GetNodeType( );
-        m_frame.CheckLayout( GetObjectName( ) );
-        wxTreeItemIdValue cookie;
-        wxTreeItemId parentID = GetTreeItemId( );
-        wxTreeItemId childID = GetAlbumTreeCtrl( )->GetFirstChild( parentID, cookie );
-        while ( childID.IsOk( ) )
-        {
-            AlbumBaseType type = ( AlbumBaseType ) GetAlbumTreeCtrl( )->GetItemType( childID );
-            LayoutBase* child = ( LayoutBase* ) GetAlbumTreeCtrl( )->GetItemNode( childID );
-
-            double xPos = x + GetXPos( );
-            double yPos = y + GetYPos( );
-
-            child->DumpLayout( xPos, yPos );
-
-            childID = GetAlbumTreeCtrl( )->GetNextChild( parentID, cookie );
-        }
-    }
-
-    //----------------
-
-    void LayoutBase::DumpObjectLayout( wxString indent )
-    {
-        indent += "    ";
-        Design::AlbumBaseType type = GetNodeType( );
-        wxString name = Design::AlbumBaseNames[ type ];
-        // std::cout << "\n" << indent << name << " Pos( " << m_clientDimensions.GetXPos( )
-        //     << ", " << m_clientDimensions.GetYPos( )
-        //     << " ) Size( " << m_clientDimensions.GetWidth( ) << ", " << m_clientDimensions.GetHeight( ) << " )\n";
-
-        wxTreeItemId thisID = GetTreeItemId( );
-        wxTreeItemIdValue cookie;
-        wxTreeItemId childID = GetAlbumTreeCtrl( )->GetFirstChild( thisID, cookie );
-        while ( childID.IsOk( ) )
-        {
-            AlbumBaseType type = ( AlbumBaseType ) GetAlbumTreeCtrl( )->GetItemType( childID );
-            LayoutBase* child = ( LayoutBase* ) GetAlbumTreeCtrl( )->GetItemNode( childID );
-
-            //@@@            if ( type != AT_Title )
-             //@@@            {
-             //@@@                child->DumpObjectLayout( indent );
-             //@@@            }
-            childID = GetAlbumTreeCtrl( )->GetNextChild( thisID, cookie );
-        }
-    }
 
     //----------------
 

@@ -66,23 +66,21 @@ namespace Design {
 
         void DeleteAttribute( wxString name );
 
-        void DeleteAttribute( AlbumAttrType type  );
+        void DeleteAttribute( AlbumAttrType type );
 
         Attribute* FindAttr( wxString name );
-
-        void DumpAttr( );
 
         wxString GetAttrStr( wxString name );
 
         wxString GetAttrStr( AlbumAttrType type );
 
-        double GetAttrDbl( AlbumAttrType type, double defVal = 0.0  );
+        double GetAttrDbl( AlbumAttrType type, double defVal = 0.0 );
 
-        double GetAttrDbl( wxString name, double defVal = 0.0  );
+        double GetAttrDbl( wxString name, double defVal = 0.0 );
 
         bool GetAttrBool( wxString name, bool defVal = false );
 
-        bool GetAttrBool( AlbumAttrType type, bool defVal  = false );
+        bool GetAttrBool( AlbumAttrType type, bool defVal = false );
 
         int GetLineNumber( ) {
             return m_lineNbr;
@@ -168,6 +166,8 @@ namespace Design {
             m_nodeValid = status;
         };
 
+
+
     private:
 
         bool LoadChildren( wxXmlNode* parent );
@@ -182,6 +182,7 @@ namespace Design {
         LayoutAttributeArray m_attrArray;
         wxString m_text;
         NodeStatus m_nodeValid;
+
     };
 
 }

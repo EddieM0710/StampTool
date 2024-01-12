@@ -142,13 +142,6 @@ namespace Design {
 
     //--------------
 
-    void TextBox::DumpText( wxTextCtrl* ctrl )
-    {
-        //   *ctrl << DumpFrame( );
-    }
-
-    //--------------
-
     NodeStatus TextBox::GetStatus( )
     {
         NodeStatus status = AT_OK;
@@ -291,8 +284,6 @@ namespace Design {
 
     NodeStatus TextBox::ValidateNode( )
     {
-        CheckLayout( );
-
         NodeStatus status = AT_OK;
         // wxString str;
 

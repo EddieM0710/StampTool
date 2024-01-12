@@ -161,7 +161,7 @@ namespace Catalog {
         wxString childName = child->GetName( );
         wxString parentName = parent->GetName( );
         CatalogBaseType parentType = FindCatalogBaseType( parentName );
-        //        std::cout << "parent " << parentName << " type " << parentType << "   child " << childName << "\n";
+        std::cout << "parent " << parentName << " type " << parentType << "   child " << childName << "\n";
         if ( level > 6 )
         {
             std::cout << "Infinite loop\n";
@@ -172,7 +172,7 @@ namespace Catalog {
             Catalog::Entry entry( child );
             Catalog::CatalogBaseType sortType =
                 ( Catalog::CatalogBaseType ) GetSettings( )->GetNextSortClassification( ( int ) parentType );
-            //            std::cout << "parent next sortType" << CatalogBaseNames[ sortType ] << "\n";
+            std::cout << "parent next sortType" << CatalogBaseNames[ sortType ] << "\n";
             if ( ( sortType < NT_Catalog ) || ( sortType >= NT_Entry ) )
             {
                 // wxString id = entry.GetID( );
@@ -234,8 +234,8 @@ namespace Catalog {
 
                     nextNode->SetParent( parent );
                 }
-                //               std::cout << "nextNode " << nextNode->GetName( ) <<
-                Utils::GetAttrStr( nextNode, "Name" ) << "\n";
+                std::cout << "nextNode " << nextNode->GetName( ) <<
+                    Utils::GetAttrStr( nextNode, "Name" ) << "\n";
                 AddEntry( nextNode, child, level );
                 return;
             }

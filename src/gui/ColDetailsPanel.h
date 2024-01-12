@@ -132,7 +132,7 @@ public:
     ///  
     ///  @return true 
     ///  @return false 
-    bool GetShow( );
+    bool GetShowFrame( );
 
     ///  @brief Get the Title Font object
     ///  
@@ -249,6 +249,24 @@ public:
     ///  
     void UpdateControls( );
 
+    void OnTopContentMargin( wxCommandEvent& event );
+
+    void OnBottomContentMargin( wxCommandEvent& event );
+
+    void OnLeftContentMargin( wxCommandEvent& event );
+
+    void OnRightContentMargin( wxCommandEvent& event );
+
+    void OnShowBorderCheckBoxClick( wxCommandEvent& event );
+
+    void SetTopContentMargin( wxString contentMargin );
+
+    void SetBottomContentMargin( wxString contentMargin );
+
+    void SetLeftContentMargin( wxString contentMargin );
+
+    void SetRightContentMargin( wxString contentMargin );
+
     void OnSubTitleDefaultClick( wxCommandEvent& event );
     void OnTitleCheckboxClick( wxCommandEvent& event );
     void OnSubTitleCheckboxClick( wxCommandEvent& event );
@@ -268,10 +286,13 @@ public:
 
 private:
 
-    // LabeledTextBox* m_titleLabel;
-     //LabeledTextBox* m_subTitleLabel;
-     //wxCheckBox* m_titleCheckbox;
-     //wxCheckBox* m_subTitleCheckbox;
+
+    wxTextCtrl* m_topContentMargin;
+    wxTextCtrl* m_bottomContentMargin;
+    wxTextCtrl* m_rightContentMargin;
+    wxTextCtrl* m_leftContentMargin;
+
+
     wxCheckBox* m_frameCheckbox;
     wxListBox* m_statusList;
     wxFontPickerCtrl* m_titleFontPicker;

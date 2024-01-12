@@ -55,15 +55,6 @@ namespace Design {
 
     public:
 
-
-
-
-
-        /**
-         * @brief Construct a new TextBox object
-         *
-         * @param parent
-         */
         TextBox( wxXmlNode* node ) : LayoutBase( node )
         {
             SetNodeType( AT_Text );
@@ -79,8 +70,6 @@ namespace Design {
             m_textFrame->SetString( GetText( ) );
         };
 
-        ///  @brief Construct a new Text Box object
-        ///  
         TextBox( ) : LayoutBase( ( wxXmlNode* ) 0 )
         {
             SetNodeType( AT_Text );
@@ -97,55 +86,20 @@ namespace Design {
             m_textFrame->SetString( GetText( ) );
         };
 
-        /**
-         * @brief Destroy the TextBox object
-         *
-         */
         ~TextBox( ) { };
 
-        ///  @brief 
-        ///  
         void CalcFrame( );
 
-        ///  @brief 
-        ///  
         void ClearError( );
 
-        /*
-         * @brief Draw object on screen
-         *
-         * @param dc current device context
-         * @param x position in MM from page top
-         * @param y position in MM from page left
-         */
         void Draw( wxDC& dc, double x, double y );
 
-        ///  @brief 
-        ///  
-        ///  @param doc 
-        ///  @param x 
-        ///  @param y 
         void DrawPDF( wxPdfDocument* doc, double x, double y );
 
-        ///  @brief 
-        ///  
-        ///  @param positionTextCtrl 
-        void DumpText( wxTextCtrl* positionTextCtrl );
-
-        ///  @brief 
-        ///  
-        ///  @param node 
         void LoadFonts( wxXmlNode* node );
 
-        ///  @brief Get the Status object
-        ///  
-        ///  @return NodeStatus 
         NodeStatus GetStatus( );
 
-        ///  @brief Get the Show Title object
-        ///  
-        ///  @return true 
-        ///  @return false 
         bool GetShowTitle( ) {
             return String2Bool( GetAttrStr( AT_ShowTitle ) );
         };

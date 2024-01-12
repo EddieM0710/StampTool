@@ -205,6 +205,7 @@ wxTreeItemId AlbumTreeCtrl::AddChild( wxTreeItemId parent, wxXmlNode* child )
                 {
                     GetAlbumVolume( )->SetAlbum( ( Design::Album* ) node );
                     ( ( Design::Album* ) node )->FixupNode( );
+                    ( ( Design::Album* ) node )->LoadDefaults( child );
                 }
                 label = name;
                 wxString title = node->GetAttrStr( Design::AT_Name );
@@ -758,6 +759,7 @@ void AlbumTreeCtrl::LoadTree( )
     Design::AlbumVolume* volume = GetAlbumVolume( );
     if ( volume )
     {
+        volume->GetAlbum( );
         wxXmlDocument* doc = volume->GetDoc( );
         if ( doc && doc->IsOk( ) )
         {

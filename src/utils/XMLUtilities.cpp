@@ -310,8 +310,7 @@ namespace Utils {
 
     void SetAttrDbl( wxXmlNode* node, wxString name, double val )
     {
-        wxString str = wxString::Format( "%7.2f", val );
-        SetAttrStr( node, name, str );
+        SetAttrStr( node, name, Dbl2String(val)  );
     }
 
 

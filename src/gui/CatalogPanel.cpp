@@ -210,6 +210,12 @@ void CatalogPanel::CreateControls( )
 
 //--------------
 
+
+void CatalogPanel::DoMergeCatalog( )
+{
+
+}
+
 void CatalogPanel::DoCSVImport( )
 {
     Catalog::CatalogVolume* vol = GetCatalogVolume( );
@@ -535,6 +541,7 @@ void CatalogPanel::OnCSVImportClick( wxCommandEvent& event )
     DoCSVImport( );
     event.Skip( );
 }
+
 
 //--------------
 

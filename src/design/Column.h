@@ -49,7 +49,7 @@ namespace Design {
         void InitParameters( );
 
         bool CalculateSpacing( ) {
-            return String2Bool( GetAttrStr( AT_CalculateSpacing ), true );
+            return GetAlbumAttributeBool( AT_CalculateSpacing, true );
         };
 
         wxString GetTitleString( );
@@ -63,10 +63,10 @@ namespace Design {
         };
 
         bool GetShowTitle( ) {
-            return String2Bool( GetAttrStr( AT_ShowTitle ) );
+            return GetAlbumAttributeBool( AT_ShowTitle );
         };
         bool GetShowSubTitle( ) {
-            return String2Bool( GetAttrStr( AT_ShowSubTitle ) );
+            return GetAlbumAttributeBool( AT_ShowSubTitle );
         };
 
         TitleFrame* GetTitleFrame( );
@@ -85,8 +85,6 @@ namespace Design {
 
 
         void LoadFonts( wxXmlNode* node );
-
-        void ReportLayout( );
 
         void Save( wxXmlNode* xmlNode );
 

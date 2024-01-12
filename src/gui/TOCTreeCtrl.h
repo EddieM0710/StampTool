@@ -317,13 +317,7 @@ public:
 
     void ShowMenu( wxTreeItemId id, const wxPoint& pt );
 
-    //  void SortTree( wxTreeItemId parent );
-     // wxXmlNode* GetCurrVolumeRoot( );
-
     virtual void ReSortTree( ) = 0;
-
-    // void XMLDumpNode( wxTreeItemId item, wxString str );
-
 
 private:
 

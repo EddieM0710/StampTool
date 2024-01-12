@@ -111,14 +111,10 @@ namespace Design {
 
         wxFont font( GetFont( ) );
         int pointSize = font.GetPointSize( );
-        // pointSize -= 1;
-         // RealSize size( GetWidth( ), 0 + pointSize * .31 );
-         // font.SetPointSize( pointSize );
+
         doc->SetFont( font );
         doc->SetXY( pos.x, pos.y );
-        double h = pointSize * 25.4 / 72;//GetHeightChars( pointSize ) / 2;
-
-        //  doc->MultiCell( GetWidth( ) * 1.05, h, m_multiLineString, wxPDF_BORDER_FRAME, wxPDF_ALIGN_CENTER );
+        double h = pointSize * 25.4 / 72;
 
         wxArrayString lines = wxStringTokenize( m_multiLineString, "\n" );
 
@@ -201,7 +197,6 @@ namespace Design {
             SetMinHeight( m_stringTextExtent.y );
             SetXPos( 0 );
             SetYPos( 0 );
-            CheckLayout( m_string );
         }
         else
         {

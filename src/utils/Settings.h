@@ -207,10 +207,6 @@ namespace Utils {
             m_catalogVolumeEditableDefault = val;
         };
 
-        void DumpFont( wxString Level = "" );
-
-
-
     private:
         wxString m_lastFile;
         bool m_loadLastFileAtStartUp;

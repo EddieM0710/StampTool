@@ -56,25 +56,43 @@ namespace Design {
 
     void StampDefaults::Save( wxXmlNode* xmlNode )
     {
+        Defaults::SaveDefault( xmlNode, AT_ShowCatNbr );
+        Defaults::SaveDefault( xmlNode, AT_ShowTitle );
+        Defaults::SaveDefault( xmlNode, AT_ShowImage );
+        Defaults::SaveDefault( xmlNode, AT_GrayScaleImages );
+        Defaults::SaveDefault( xmlNode, AT_StampNamePosition );
+        Defaults::SaveDefault( xmlNode, AT_TopContentMargin );
+        Defaults::SaveDefault( xmlNode, AT_BottomContentMargin );
+        Defaults::SaveDefault( xmlNode, AT_LeftContentMargin );
+        Defaults::SaveDefault( xmlNode, AT_RightContentMargin );
+        Defaults::SaveDefault( xmlNode, AT_Orientation );
+        Defaults::SaveDefault( xmlNode, AT_SelvageHeight );
+        Defaults::SaveDefault( xmlNode, AT_SelvageWidth );
+        Defaults::SaveDefault( xmlNode, AT_MountAllowanceHeight );
+        Defaults::SaveDefault( xmlNode, AT_MountAllowanceWidth );
+        Defaults::SaveDefault( xmlNode, AT_StampNamePosition );
+        Defaults::SaveDefault( xmlNode, AT_StampMargin );
+        Defaults::SaveDefault( xmlNode, AT_Catalog );
     };
 
     void StampDefaults::InitParameters( )
     {
-        SetAttrStr( AT_ShowTitle, "true" );
-        SetAttrStr( AT_ShowCatNbr, "true" );
-        SetAttrStr( AT_ShowImage, "true" );
-        SetAttrStr( AT_GrayScaleImages, "false" );
-        SetAttrStr( AT_TopContentMargin, "2" );
-        SetAttrStr( AT_BottomContentMargin, "2" );
-        SetAttrStr( AT_LeftContentMargin, "2" );
-        SetAttrStr( AT_RightContentMargin, "2" );
-        SetAttrStr( AT_SelvageHeight, "0" );
-        SetAttrStr( AT_SelvageWidth, "0" );
-        SetAttrStr( AT_MountAllowanceHeight, "5" );
-        SetAttrStr( AT_MountAllowanceWidth, "4" );
-        SetAttrStr( AT_StampNamePosition, Design::StampNamePositionStrings[ AT_StampNamePositionTop ] );
-        SetAttrStr( AT_StampMargin, "2" );
-        SetAttrStr( AT_Catalog, "Mi" );
+
+        ApplicationDefault[ AT_ShowTitle ] = "true";
+        ApplicationDefault[ AT_ShowCatNbr ] = "true";
+        ApplicationDefault[ AT_ShowImage ] = "true";
+        ApplicationDefault[ AT_GrayScaleImages ] = "false";
+        ApplicationDefault[ AT_TopContentMargin ] = Dbl2String( 2 );
+        ApplicationDefault[ AT_BottomContentMargin ] = Dbl2String( 2 );
+        ApplicationDefault[ AT_LeftContentMargin ] = Dbl2String( 2 );
+        ApplicationDefault[ AT_RightContentMargin ] = Dbl2String( 2 );
+        ApplicationDefault[ AT_SelvageHeight ] = Dbl2String( 0 );
+        ApplicationDefault[ AT_SelvageWidth ] = Dbl2String( 0 );
+        ApplicationDefault[ AT_MountAllowanceHeight ] = Dbl2String( 5 );
+        ApplicationDefault[ AT_MountAllowanceWidth ] = Dbl2String( 4 );
+        ApplicationDefault[ AT_StampNamePosition ] = Design::StampNamePositionStrings[ AT_StampNamePositionTop ];
+        ApplicationDefault[ AT_StampMargin ] = Dbl2String( 2 );
+        ApplicationDefault[ AT_Catalog ] = "Mi";
     }
 
 

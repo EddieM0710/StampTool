@@ -43,6 +43,7 @@ namespace Design {
     Row::Row( wxXmlNode* node ) : LayoutBase( node )
     {
         SetNodeType( AT_Row );
+        SetDefaults( GetAlbumVolume( )->GetAlbum( )->AlbumFrameDefaults( ) );
 
         m_titleFrame = new TitleFrame( this );
         m_titleFrame->SetHeadingString( GetAttrStr( AT_Name ) );
@@ -60,101 +61,88 @@ namespace Design {
         {
             m_titleFrame->Init( );
         }
-        // SetTopContentMargin( 2 );
-        // SetBottomContentMargin( 2 );
-        // SetLeftContentMargin( 2 );
-        // SetRightContentMargin( 2 );
-
-
-
-        // AlignmentModeType align = GetAlignmentModeType( );
-        // if ( align != AlignTop && align != AlignBottom && align != AlignMiddle )
-        // {
-        //     SetAlignmentMode( AlignDefault );
-        // }
-        // CalculateSpacing="true">
 
     }
 
     //----------------
 
-    double Row::GetRowAttributeDbl( Design::AlbumAttrType type )
-    {
-        wxString val = GetAttrStr( type );
-        if ( val.IsEmpty( ) )
-        {
-            return  Design::AlbumFrameDefaults( )->GetAttrDbl( type );
-        }
-        return  GetAttrDbl( type );
-    }
+    // double Row::GetRowAttributeDbl( Design::AlbumAttrType type )
+    // {
+    //     wxString val = GetAttrStr( type );
+    //     if ( val.IsEmpty( ) )
+    //     {
+    //         return  Design::AlbumFrameDefaults( )->GetAttrDbl( type );
+    //     }
+    //     return  GetAttrDbl( type );
+    // }
 
-    //----------------
+    // //----------------
 
-    wxString Row::GetRowAttributeStr( Design::AlbumAttrType type )
-    {
-        wxString val = GetAttrStr( type );
-        if ( val.IsEmpty( ) )
-        {
-            return  Design::AlbumFrameDefaults( )->GetAttrStr( type );
-        }
-        return val;
-    }
-    //--------------
+    // wxString Row::GetRowAttributeStr( Design::AlbumAttrType type )
+    // {
+    //     wxString val = GetAttrStr( type );
+    //     if ( val.IsEmpty( ) )
+    //     {
+    //         return  Design::AlbumFrameDefaults( )->GetAttrStr( type );
+    //     }
+    //     return val;
+    // }
+    // //--------------
 
-    bool Row::GetRowAttributeBool( Design::AlbumAttrType type )
-    {
-        wxString catStr = GetAttrStr( type );
-        if ( catStr.IsEmpty( ) )
-        {
-            catStr = AlbumFrameDefaults( )->GetAttrStr( type );
-        }
-        return String2Bool( catStr );
-    }
+    // bool Row::GetRowAttributeBool( Design::AlbumAttrType type )
+    // {
+    //     wxString catStr = GetAttrStr( type );
+    //     if ( catStr.IsEmpty( ) )
+    //     {
+    //         catStr = AlbumFrameDefaults( )->GetAttrStr( type );
+    //     }
+    //     return String2Bool( catStr );
+    // }
 
-    //----------------
+    // //----------------
 
-    void Row::SetRowAttributeStr( Design::AlbumAttrType type, wxString val )
-    {
-        if ( IsDefaultVal( type, val ) )
-        {
-            DeleteAttribute( AttrNameStrings[ type ] );
-        }
-        else
-        {
-            SetAttrStr( type, val );
-        }
-    }
+    // void Row::SetRowAttributeStr( Design::AlbumAttrType type, wxString val )
+    // {
+    //     if ( IsDefaultVal( type, val ) )
+    //     {
+    //         DeleteAttribute( AttrNameStrings[ type ] );
+    //     }
+    //     else
+    //     {
+    //         SetAttrStr( type, val );
+    //     }
+    // }
 
-    //----------------
+    // //----------------
 
-    void Row::SetRowAttributeDbl( Design::AlbumAttrType type, double val )
-    {
-        wxString str = wxString::Format( "%4.1f", val );
-        SetRowAttributeStr( type, str );
-    }
+    // void Row::SetRowAttributeDbl( Design::AlbumAttrType type, double val )
+    // {
+    //     wxString str = wxString::Format( "%4.1f", val );
+    //     SetRowAttributeStr( type, str );
+    // }
 
-    //----------------
+    // //----------------
 
-    void Row::SetRowAttributeBool( Design::AlbumAttrType type, bool val )
-    {
-        wxString str = Bool2String( val );
-        SetRowAttributeStr( type, str );
+    // void Row::SetRowAttributeBool( Design::AlbumAttrType type, bool val )
+    // {
+    //     wxString str = Bool2String( val );
+    //     SetRowAttributeStr( type, str );
 
-    }
+    // }
 
-    //--------------
+    // //--------------
 
-    bool Row::IsDefaultVal( AlbumAttrType type )
-    {
-        return AlbumFrameDefaults( )->IsEqual( type, GetAttrStr( type ) );
-    }
+    // bool Row::IsDefaultVal( AlbumAttrType type )
+    // {
+    //     return AlbumFrameDefaults( )->IsEqual( type, GetAttrStr( type ) );
+    // }
 
-    //----------------
+    // //----------------
 
-    bool Row::IsDefaultVal( AlbumAttrType type, wxString val )
-    {
-        return AlbumFrameDefaults( )->IsEqual( type, val );
-    }
+    // bool Row::IsDefaultVal( AlbumAttrType type, wxString val )
+    // {
+    //     return AlbumFrameDefaults( )->IsEqual( type, val );
+    // }
 
     //----------------
 
@@ -208,7 +196,7 @@ namespace Design {
             // dc.DrawRectangle( wxRect( x, y, 10, 8 ) );
             // dc.DrawLabel( "Row", wxRect( x, y, 10, 8 ) );
              //     dc.DrawText( "Row", x, y );
-            if ( GetShow( ) )
+            if ( GetShowFrame( ) )
             {
                 m_frame.Draw( dc, x, y );
             }
@@ -242,7 +230,7 @@ namespace Design {
     {
         double leftPadding = 0;
         double topPadding = 0;
-        if ( GetShow( ) )
+        if ( GetShowFrame( ) )
         {
 
             wxPdfLineStyle currStyle = PDFLineStyle( doc, *wxBLACK, .2 );
@@ -579,7 +567,6 @@ namespace Design {
             childID = GetAlbumTreeCtrl( )->GetNextChild( parentID, cookie1 );
         }
         ValidateNode( );
-
     }
 
     //----------------
@@ -611,14 +598,12 @@ namespace Design {
             child->UpdateSizes( );
             childID = GetAlbumTreeCtrl( )->GetNextChild( parentID, cookie );
         }
-
     }
 
     //----------------
 
     NodeStatus Row::ValidateNode( )
     {
-        CheckLayout( );
         NodeStatus status = AT_OK;
         if ( !HasChildren( ) )
         {
@@ -667,21 +652,21 @@ namespace Design {
 
     void Row::SetAlignmentMode( AlignmentModeType loc )
     {
-        SetRowAttributeStr( AT_StampAlignmentMode, StampAlignmentModeStrings[ loc ] );
+        SetAlbumAttributeStr( AT_StampAlignmentMode, StampAlignmentModeStrings[ loc ] );
     }
 
     //----------------
 
     void Row::SetAlignmentMode( wxString str )
     {
-        SetRowAttributeStr( AT_StampAlignmentMode, str );
+        SetAlbumAttributeStr( AT_StampAlignmentMode, str );
     }
 
     //----------------
 
     AlignmentModeType  Row::GetAlignmentModeType( )
     {
-        return  FindAlignmentModeType( GetRowAttributeStr( AT_StampAlignmentMode ) );
+        return  FindAlignmentModeType( GetAlbumAttributeStr( AT_StampAlignmentMode ) );
     }
 
     //----------------

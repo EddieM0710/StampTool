@@ -428,9 +428,7 @@ namespace Catalog {
         bool status = false;
         status = csv->DoLoad( filename, m_mountDoc->GetRoot( ) );
         FixUpHyphenID( m_mountDoc );
-        //        Utils::XMLDump( m_mountDoc );
         m_mountDoc->Save( "StampMounts.xml" );
-        //  SetDirty( );
         delete csv;
         return m_mountDoc;
     };

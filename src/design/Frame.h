@@ -95,16 +95,6 @@ namespace Design {
 
         void SetWidth( double val );
 
-        //wxString DumpLayout( wxString prefix );
-        wxString Layout( );
-
-        void CheckLayout( wxString prefix = "" );
-
-        wxString DumpPos( );
-
-        wxString DumpSize( );
-
-        wxString DumpMinSize( );
 
         wxRect GetRect( ) {
             return wxRect( GetXPos( ), GetYPos( ), GetWidth( ), GetHeight( ) );

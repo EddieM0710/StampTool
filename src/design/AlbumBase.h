@@ -32,6 +32,7 @@
 
 namespace Design {
 
+    class Defaults;
 
     /**
      * @brief Base class for all layout objects. The layout objects are
@@ -47,61 +48,91 @@ namespace Design {
         AlbumBase( ) : XMLBase( ( wxXmlNode* ) 0 )
         {
 
-            SetTopContentMargin( 2 );
-            SetBottomContentMargin( 2 );
-            SetLeftContentMargin( 2 );
-            SetRightContentMargin( 2 );
+            // SetTopContentMargin( 2 );
+            // SetBottomContentMargin( 2 );
+            // SetLeftContentMargin( 2 );
+            // SetRightContentMargin( 2 );
         };
 
         AlbumBase( wxXmlNode* ele ) : XMLBase( ele )
         {
 
-            SetTopContentMargin( 2 );
-            SetBottomContentMargin( 2 );
-            SetLeftContentMargin( 2 );
-            SetRightContentMargin( 2 );
+            // SetTopContentMargin( 2 );
+            // SetBottomContentMargin( 2 );
+            // SetLeftContentMargin( 2 );
+            // SetRightContentMargin( 2 );
         }
 
         ~AlbumBase( );
 
-        wxArrayString* GetErrorArray( ) { return &m_errorArray; };
+        wxArrayString* GetErrorArray( ) {
+            return &m_errorArray;
+        };
 
         int GetNbrChildren( );
 
-        NodeStatus GetNodeStatus( ) { return m_nodeValid; };
+        NodeStatus GetNodeStatus( ) {
+            return m_nodeValid;
+        };
 
         AlbumBase* GetParent( );
 
-        wxTreeItemId GetTreeItemId( ) { return m_treeID; };
+        wxTreeItemId GetTreeItemId( ) {
+            return m_treeID;
+        };
 
         bool HasChildren( );
 
-        bool IsStatusOK( ) { return ( m_nodeValid != AT_FATAL ); };
+        bool IsStatusOK( ) {
+            return ( m_nodeValid != AT_FATAL );
+        };
 
         virtual void LoadFonts( wxXmlNode* node ) = 0;
 
-        void SetNodeStatus( NodeStatus status ) { m_nodeValid = status; };
+        void SetNodeStatus( NodeStatus status ) {
+            m_nodeValid = status;
+        };
 
-        void SetTreeItemId( wxTreeItemId id ) { m_treeID = id; };
+        void SetTreeItemId( wxTreeItemId id ) {
+            m_treeID = id;
+        };
 
         NodeStatus ValidateChildren( AlbumBase* node );
 
         virtual NodeStatus ValidateNode( ) = 0;
 
-        void SetTopContentMargin( double val ) { SetAttrDbl( AT_TopContentMargin, val ); };
-        void SetBottomContentMargin( double val ) { SetAttrDbl( AT_BottomContentMargin, val ); };
-        void SetRightContentMargin( double val ) { SetAttrDbl( AT_RightContentMargin, val ); };
-        void SetLeftContentMargin( double val ) { SetAttrDbl( AT_LeftContentMargin, val ); };
+        double GetAlbumAttributeDbl( Design::AlbumAttrType type );
 
-        double GetTopContentMargin( ) { return GetAttrDbl( AT_TopContentMargin ); };
-        double GetBottomContentMargin( ) { return GetAttrDbl( AT_BottomContentMargin ); };
-        double GetRightContentMargin( ) { return GetAttrDbl( AT_RightContentMargin ); };
-        double GetLeftContentMargin( ) { return GetAttrDbl( AT_LeftContentMargin ); };
+        wxString GetAlbumAttributeStr( Design::AlbumAttrType type );
 
+        bool GetAlbumAttributeBool( Design::AlbumAttrType type, bool defVal = false );
+
+        void SetAlbumAttributeBool( Design::AlbumAttrType type, bool val );
+
+        void SetAlbumAttributeDbl( Design::AlbumAttrType type, double val );
+
+        void SetAlbumAttributeStr( Design::AlbumAttrType type, wxString val );
+
+        bool IsDefaultVal( AlbumAttrType type );
+
+        bool IsDefaultVal( AlbumAttrType type, wxString val );
+
+        Defaults* GetDefaults( )
+        {
+            return m_albumDefaults;
+        }
+
+
+    protected:
+
+        void SetDefaults( Defaults* defaults ){
+            m_albumDefaults = defaults;
+        }
     private:
 
         wxTreeItemId m_treeID;
         wxArrayString m_errorArray;
+        Defaults* m_albumDefaults;
 
     protected:
 

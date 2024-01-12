@@ -283,7 +283,10 @@ void HelperPanel::UpdateTitleState( HelperPanel::TitleHelper* titleHelper )
         {
             titleHelper->subTitleCheckbox->Disable( );
             titleHelper->subTitleCheckbox->SetValue( state );
-            titleHelper->subTitleLabel->Disable( );
+            if ( titleHelper->subTitleLabel )
+            {
+                titleHelper->subTitleLabel->Disable( );
+            }
         }
     }
     if ( titleHelper->subTitleLabel )

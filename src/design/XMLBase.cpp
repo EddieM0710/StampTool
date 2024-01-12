@@ -48,7 +48,7 @@ namespace Design {
             SetObjectName( name );
             m_lineNbr = ele->GetLineNumber( );
 
-            //std::cout << "XMLBase::XMLBase " << name << " line:" << m_lineNbr << "\n";
+            //           std::cout << "XMLBase::XMLBase " << name << " line:" << m_lineNbr << "\n";
             LoadAttributes( ele );
             m_text = ele->GetNodeContent( );
         }
@@ -95,31 +95,19 @@ namespace Design {
     }
     //--------------
 
-    void XMLBase::DumpAttr( )
-    {
-
-        int cnt = m_attrArray.size( );
-        for ( int i = 0; i < cnt; i++ )
-        {
-            Attribute* attr = m_attrArray.at( i );
-            std::cout << "XMLBase::DumpAttr " << i << " " << attr->GetName( ) << " " << attr->GetValue( ) << "\n";
-        }
-    }
 
     Attribute* XMLBase::FindAttr( wxString name )
     {
-
-        int cnt = m_attrArray.size( );
-        for ( int i = 0; i < cnt; i++ )
+        LayoutAttributeArray::iterator it;
+        it = m_attrArray.begin( );
+        for ( it = m_attrArray.begin( );
+            it != m_attrArray.end( );
+            ++it )
         {
-            Attribute* attr = m_attrArray.at( i );
+            Attribute* attr = ( Attribute* ) ( *it );
             wxString attrName = attr->GetName( );
             if ( !attrName.Cmp( name ) )
             {
-                // if ( !name.Cmp( "ShowFrame" ) )
-                // {
-                //     std::cout << name << " " << attr->GetValue( ) << "\n";
-                // }
                 return attr;
             }
         }
@@ -140,7 +128,7 @@ namespace Design {
 
     //--------------
 
-    wxString XMLBase::GetAttrStr( AlbumAttrType type ) 
+    wxString XMLBase::GetAttrStr( AlbumAttrType type )
     {
         return GetAttrStr( AttrNameStrings[ type ] );
     }
@@ -190,8 +178,7 @@ namespace Design {
 
     void XMLBase::SetAttrDbl( AlbumAttrType type, double val )
     {
-        wxString str = wxString::Format( "%7.2f", val );
-        SetAttrStr( AttrNameStrings[ type ], str );
+        SetAttrStr( AttrNameStrings[ type ], Dbl2String( val ) );
     }
 
     //--------------
@@ -199,16 +186,51 @@ namespace Design {
     bool XMLBase::LoadAttributes( wxXmlNode* thisObject )
     {
         const wxXmlAttribute* attr = thisObject->GetAttributes( );
+        //std::cout << "    XMLBase::LoadAttributes  ";
         while ( attr )
         {
-            const char* name = attr->GetName( );
-            const char* val = attr->GetValue( );
-            //std::cout << "    XMLBase::LoadAttributes  " << name << "  " << val << "\n";
+            //const char* name = attr->GetName( );
+            wxString name( attr->GetName( ) );
+            wxString val( attr->GetValue( ) );
+            val = val.Trim( ).Trim( false );
+            AlbumAttrType type = FindAlbumAttrType( wxString( name ) );
+            if ( type == AT_PageWidth
+                || type == AT_PageHeight
+                || type == AT_TopPageMargin
+                || type == AT_BottomPageMargin
+                || type == AT_RightPageMargin
+                || type == AT_LeftPageMargin
+                || type == AT_BorderSize
+                || type == AT_Height
+                || type == AT_Width
+                || type == AT_XPos
+                || type == AT_YPos
+                || type == AT_MinHeight
+                || type == AT_MinWidth
+                || type == AT_TopContentMargin
+                || type == AT_BottomContentMargin
+                || type == AT_LeftContentMargin
+                || type == AT_RightContentMargin
+                || type == AT_FixedSpacingSize
+                || type == AT_PaperHeight
+                || type == AT_PaperWidth
+                || type == AT_SelvageHeight
+                || type == AT_SelvageWidth
+                || type == AT_MountAllowanceHeight
+                || type == AT_MountAllowanceWidth
+                || type == AT_StampMargin )
+            {
+                val = Dbl2String( String2Dbl( val ) );
+                //  val = str.c_str( );
+            }
+
+
+            // std::cout << "       " << name << ":" << val << "\n";
             Attribute* attribute = new Attribute( name, val );
             m_attrArray.push_back( attribute );
             attr = attr->GetNext( );
         }
-        // DumpAttr( );
+        std::cout;
         return true;
     }
 
@@ -260,5 +282,7 @@ namespace Design {
     {
         SetAttrStr( AttrNameStrings[ type ], val );
     }
+
+
 
 }

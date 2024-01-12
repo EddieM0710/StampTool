@@ -205,6 +205,41 @@ void ColDetailsPanel::CreateControls( )
     //<<error list ctrls
 
 
+
+    wxBoxSizer* contentMarginBoxVSizer;
+    wxStaticBox* contentMarginBox = SetupBoxSizer( theDialog, m_dialogVerticalSizer,
+        "Content Margin", lastID, contentMarginBoxVSizer, wxVERTICAL );
+
+    wxBoxSizer* itemBoxSizer17 = new wxBoxSizer( wxHORIZONTAL );
+    contentMarginBoxVSizer->Add( itemBoxSizer17, 0, wxGROW | wxALL, 0 );
+
+    HorizontalSpacer( itemBoxSizer17 );
+
+    m_topContentMargin = SetupLabelText( contentMarginBox, itemBoxSizer17, lastID,
+        _( "Top" ), false, wxCommandEventHandler( ColDetailsPanel::OnTopContentMargin ) );
+    m_topContentMargin->SetToolTip( _( "Content top margin in mm." ) );
+    HorizontalSpacer( itemBoxSizer17 );
+
+    m_bottomContentMargin = SetupLabelText( contentMarginBox, itemBoxSizer17, lastID,
+        _( "Bottom" ), false, wxCommandEventHandler( ColDetailsPanel::OnBottomContentMargin ) );
+    m_bottomContentMargin->SetToolTip( _( "Content bottom margin in mm." ) );
+
+
+    wxBoxSizer* itemBoxSizer110 = new wxBoxSizer( wxHORIZONTAL );
+    contentMarginBoxVSizer->Add( itemBoxSizer110, 0, wxGROW | wxALL, 0 );
+
+    HorizontalSpacer( itemBoxSizer110 );
+
+    m_leftContentMargin = SetupLabelText( contentMarginBox, itemBoxSizer110, lastID,
+        _( "Left" ), false, wxCommandEventHandler( ColDetailsPanel::OnLeftContentMargin ) );
+    m_leftContentMargin->SetToolTip( _( "Content left margin in mm." ) );
+
+    HorizontalSpacer( itemBoxSizer110 );
+
+    m_rightContentMargin = SetupLabelText( contentMarginBox, itemBoxSizer110, lastID,
+        _( "Right" ), false, wxCommandEventHandler( ColDetailsPanel::OnRightContentMargin ) );
+    m_topContentMargin->SetToolTip( _( "Content right margin in mm." ) );
+
 }
 
 
@@ -218,9 +253,16 @@ void ColDetailsPanel::UpdateControls( )
     //SetTitle ( m_col->GetTitleString ( ) );
     SetShowTitle( m_col->GetShowTitle( ) );
     SetShowSubTitle( m_col->GetShowSubTitle( ) );
-    SetShow( m_col->GetShow( ) );
+    SetShow( m_col->GetShowFrame( ) );
     SetTitleFont( m_col->GetTitleFrame( )->GetHeadingFont( ) );
     SetTitleColor( m_col->GetTitleFrame( )->GetHeadingColor( ) );
+
+
+    SetTopContentMargin( Design::AlbumPageDefaults( )->TopContentMarginStr( ) );
+    SetBottomContentMargin( Design::AlbumPageDefaults( )->BottomContentMarginStr( ) );
+    SetLeftContentMargin( Design::AlbumPageDefaults( )->LeftContentMarginStr( ) );
+    SetRightContentMargin( Design::AlbumPageDefaults( )->RightContentMarginStr( ) );
+
     //   m_col->GetDefaultStampNamePositionType( );
 }
 
@@ -253,7 +295,7 @@ bool ColDetailsPanel::GetShowSubTitle( ) {
 
 //--------------
 
-bool ColDetailsPanel::GetShow( ) {
+bool ColDetailsPanel::GetShowFrame( ) {
     return m_frameCheckbox->IsChecked( );
 };
 
@@ -311,7 +353,7 @@ void ColDetailsPanel::OnOkClick( wxCommandEvent& event )
 
     // m_col->SetTitleString ( GetTitle ( ) );
 
-    m_col->SetShow( GetShow( ) );
+    m_col->SetShowFrame( GetShowFrame( ) );
     m_col->SetShowTitle( GetShowTitle( ) );
     m_col->SetShowSubTitle( GetShowSubTitle( ) );
 
@@ -328,7 +370,7 @@ void ColDetailsPanel::OnOkClick( wxCommandEvent& event )
 
 void ColDetailsPanel::OnFrameCheckboxClick( wxCommandEvent& event )
 {
-    m_col->SetShow( m_frameCheckbox->GetValue( ) );
+    m_col->SetShowFrame( m_frameCheckbox->GetValue( ) );
 }
 
 //--------------
@@ -456,4 +498,71 @@ void ColDetailsPanel::Update( )
 {
     GetAlbumTreeCtrl( )->Update( );
     SetStatusList( );
+}
+
+//--------------
+
+void ColDetailsPanel::SetTopContentMargin( wxString topContentMargin )
+{
+    m_topContentMargin->ChangeValue( topContentMargin );
+}
+
+//--------------
+
+void ColDetailsPanel::SetBottomContentMargin( wxString bottomContentMargin )
+{
+    m_bottomContentMargin->ChangeValue( bottomContentMargin );
+}
+
+//--------------
+
+void ColDetailsPanel::SetLeftContentMargin( wxString leftContentMargin )
+{
+    m_leftContentMargin->ChangeValue( leftContentMargin );
+}
+
+//--------------
+
+void ColDetailsPanel::SetRightContentMargin( wxString rightPageMargin )
+{
+    m_rightContentMargin->ChangeValue( rightPageMargin );
+}
+
+//--------------
+
+void ColDetailsPanel::OnTopContentMargin( wxCommandEvent& event )
+{
+    Design::AlbumPageDefaults( )->TopContentMargin( Design::AlbumPageDefaults( )->TopContentMarginStr( ) );
+    Update( );
+    event.Skip( );
+}
+
+//--------------
+
+void ColDetailsPanel::OnBottomContentMargin( wxCommandEvent& event )
+{
+    Design::AlbumPageDefaults( )->BottomContentMargin( Design::AlbumPageDefaults( )->BottomContentMarginStr( ) );
+
+    Update( );
+    event.Skip( );
+}
+
+//--------------
+
+void ColDetailsPanel::OnLeftContentMargin( wxCommandEvent& event )
+{
+    Design::AlbumPageDefaults( )->LeftContentMargin( Design::AlbumPageDefaults( )->LeftContentMarginStr( ) );
+    Update( );
+    event.Skip( );
+
+}
+
+//--------------
+
+void ColDetailsPanel::OnRightContentMargin( wxCommandEvent& event )
+{
+    Design::AlbumPageDefaults( )->RightContentMargin( Design::AlbumPageDefaults( )->RightContentMarginStr( ) );
+
+    Update( );
+    event.Skip( );
 }

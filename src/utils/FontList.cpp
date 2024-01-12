@@ -86,23 +86,6 @@ namespace Utils {
 
     //-------
 
-    void FontList::DumpFonts( )
-    {
-        FontMap::iterator itr;
-
-        for ( itr = m_fontMap.begin( );
-            itr != m_fontMap.end( ); itr++ )
-        {
-            int key = itr->first;
-            wxFont font = itr->second->GetFont( );
-            wxColour color = itr->second->GetColor( );
-            int count = itr->second->Count( );
-        }
-
-    };
-
-    //-------
-
     int FontList::FindFont( Font* info )
     {
         FontMap::iterator itr = FindFontIterator( info->GetFont( ), info->GetColor( ) );

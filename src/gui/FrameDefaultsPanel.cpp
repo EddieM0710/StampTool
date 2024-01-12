@@ -207,7 +207,7 @@ void FrameDefaultsPanel::CreateControls( )
 
 
     wxBoxSizer* contentMarginBoxVSizer;
-    wxStaticBox* contenrMarginBox = SetupBoxSizer( advancedPanel, leftAdvancedVerticalSizer,
+    wxStaticBox* contentMarginBox = SetupBoxSizer( advancedPanel, leftAdvancedVerticalSizer,
         "Content Margin", lastID, contentMarginBoxVSizer, wxVERTICAL );
 
     wxBoxSizer* contentMarginBoxHSizer = new wxBoxSizer( wxHORIZONTAL );
@@ -215,12 +215,12 @@ void FrameDefaultsPanel::CreateControls( )
 
     HorizontalSpacer( contentMarginBoxHSizer );
 
-    m_topContentMargin = SetupLabelText( contenrMarginBox, contentMarginBoxHSizer, lastID,
+    m_topContentMargin = SetupLabelText( contentMarginBox, contentMarginBoxHSizer, lastID,
         _( "Top" ), false, wxCommandEventHandler( FrameDefaultsPanel::OnTopContentMargin ) );
     m_topContentMargin->SetToolTip( _( "Content top margin in mm." ) );
     HorizontalSpacer( contentMarginBoxHSizer );
 
-    m_bottomContentMargin = SetupLabelText( contenrMarginBox, contentMarginBoxHSizer, lastID,
+    m_bottomContentMargin = SetupLabelText( contentMarginBox, contentMarginBoxHSizer, lastID,
         _( "Bottom" ), false, wxCommandEventHandler( FrameDefaultsPanel::OnBottomContentMargin ) );
     m_bottomContentMargin->SetToolTip( _( "Content bottom margin in mm." ) );
 
@@ -230,13 +230,13 @@ void FrameDefaultsPanel::CreateControls( )
 
     HorizontalSpacer( itemBoxSizer110 );
 
-    m_leftContentMargin = SetupLabelText( contenrMarginBox, itemBoxSizer110, lastID,
+    m_leftContentMargin = SetupLabelText( contentMarginBox, itemBoxSizer110, lastID,
         _( "Left" ), false, wxCommandEventHandler( FrameDefaultsPanel::OnLeftContentMargin ) );
     m_leftContentMargin->SetToolTip( _( "Content left margin in mm." ) );
 
     HorizontalSpacer( itemBoxSizer110 );
 
-    m_rightContentMargin = SetupLabelText( contenrMarginBox, itemBoxSizer110, lastID,
+    m_rightContentMargin = SetupLabelText( contentMarginBox, itemBoxSizer110, lastID,
         _( "Right" ), false, wxCommandEventHandler( FrameDefaultsPanel::OnRightContentMargin ) );
     m_rightContentMargin->SetToolTip( _( "Content right margin in mm." ) );
 
@@ -253,8 +253,8 @@ void FrameDefaultsPanel::UpdateControls( )
     SetBottomContentMargin( Design::AlbumFrameDefaults( )->BottomContentMarginStr( ) );
     SetLeftContentMargin( Design::AlbumFrameDefaults( )->LeftContentMarginStr( ) );
     SetRightContentMargin( Design::AlbumFrameDefaults( )->RightContentMarginStr( ) );
-    m_titleHelper->subTitleCheckbox->SetValue( Design::AlbumPageDefaults( )->ShowSubTitle( ) );
-    m_titleHelper->titleCheckbox->SetValue( Design::AlbumPageDefaults( )->ShowTitle( ) );
+    m_titleHelper->subTitleCheckbox->SetValue( Design::AlbumFrameDefaults( )->ShowSubTitle( ) );
+    m_titleHelper->titleCheckbox->SetValue( Design::AlbumFrameDefaults( )->ShowTitle( ) );
 
     //memberSpacing
      //   Stampalignment

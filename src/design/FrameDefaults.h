@@ -112,67 +112,67 @@ namespace Design {
         }
 
         double BottomContentMargin( ) {
-            return GetDbl( AT_BottomContentMargin );
+            return GetDefaultDbl( AT_BottomContentMargin );
         };
 
         wxString BottomContentMarginStr( ) {
-            return Get( AT_BottomContentMargin );
+            return GetDefault( AT_BottomContentMargin );
         };
 
         void BottomContentMargin( double val ) {
-            SetDbl( AT_BottomContentMargin, val );
+            SetDefaultDbl( AT_BottomContentMargin, val );
         };
 
         void BottomContentMargin( wxString str ) {
-            Set( AT_BottomContentMargin, str );
+            SetDefault( AT_BottomContentMargin, str );
         };
 
         double LeftContentMargin( ) {
-            return GetDbl( AT_LeftContentMargin );
+            return GetDefaultDbl( AT_LeftContentMargin );
         };
 
         wxString LeftContentMarginStr( ) {
-            return Get( AT_LeftContentMargin );
+            return GetDefault( AT_LeftContentMargin );
         };
 
         void LeftContentMargin( double val ) {
-            SetDbl( AT_LeftContentMargin, val );
+            SetDefaultDbl( AT_LeftContentMargin, val );
         };
 
         void LeftContentMargin( wxString str ) {
-            Set( AT_LeftContentMargin, str );
+            SetDefault( AT_LeftContentMargin, str );
         };
 
         double RightContentMargin( ) {
-            return GetDbl( AT_RightContentMargin );
+            return GetDefaultDbl( AT_RightContentMargin );
         };
 
         wxString RightContentMarginStr( ) {
-            return Get( AT_RightContentMargin );
+            return GetDefault( AT_RightContentMargin );
         };
 
         void RightContentMargin( double val ) {
-            SetDbl( AT_RightContentMargin, val );
+            SetDefaultDbl( AT_RightContentMargin, val );
         };
 
         void RightContentMargin( wxString str ) {
-            Set( AT_RightContentMargin, str );
+            SetDefault( AT_RightContentMargin, str );
         };
 
         double GetTopContentMargin( ) {
-            return GetDbl( AT_TopContentMargin );
+            return GetDefaultDbl( AT_TopContentMargin );
         };
 
         wxString TopContentMarginStr( ) {
-            return Get( AT_TopContentMargin );
+            return GetDefault( AT_TopContentMargin );
         };
 
         void TopContentMargin( double val ) {
-            SetDbl( AT_TopContentMargin, val );
+            SetDefaultDbl( AT_TopContentMargin, val );
         };
 
         void TopContentMargin( wxString str ) {
-            Set( AT_TopContentMargin, str );
+            SetDefault( AT_TopContentMargin, str );
         };
 
 

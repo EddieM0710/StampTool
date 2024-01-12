@@ -221,7 +221,7 @@ void StampDefaultsPanel::CreateControls( )
 
 
     wxBoxSizer* contentMarginBoxVSizer;
-    wxStaticBox* contenrMarginBox = SetupBoxSizer( advancedPanel, rightAdvancedVerticalSizer,
+    wxStaticBox* contentMarginBox = SetupBoxSizer( advancedPanel, rightAdvancedVerticalSizer,
         "Content Margin", lastID, contentMarginBoxVSizer, wxVERTICAL );
 
     wxBoxSizer* contentMarginBoxHSizer = new wxBoxSizer( wxHORIZONTAL );
@@ -229,12 +229,12 @@ void StampDefaultsPanel::CreateControls( )
 
     HorizontalSpacer( contentMarginBoxHSizer );
 
-    m_topContentMargin = SetupLabelText( contenrMarginBox, contentMarginBoxHSizer, lastID,
+    m_topContentMargin = SetupLabelText( contentMarginBox, contentMarginBoxHSizer, lastID,
         _( "Top" ), false, wxCommandEventHandler( StampDefaultsPanel::OnTopContentMargin ) );
     m_topContentMargin->SetToolTip( _( "Content top margin in mm." ) );
     HorizontalSpacer( contentMarginBoxHSizer );
 
-    m_bottomContentMargin = SetupLabelText( contenrMarginBox, contentMarginBoxHSizer, lastID,
+    m_bottomContentMargin = SetupLabelText( contentMarginBox, contentMarginBoxHSizer, lastID,
         _( "Bottom" ), false, wxCommandEventHandler( StampDefaultsPanel::OnBottomContentMargin ) );
     m_bottomContentMargin->SetToolTip( _( "Content bottom margin in mm." ) );
 
@@ -244,13 +244,13 @@ void StampDefaultsPanel::CreateControls( )
 
     HorizontalSpacer( itemBoxSizer110 );
 
-    m_leftContentMargin = SetupLabelText( contenrMarginBox, itemBoxSizer110, lastID,
+    m_leftContentMargin = SetupLabelText( contentMarginBox, itemBoxSizer110, lastID,
         _( "Left" ), false, wxCommandEventHandler( StampDefaultsPanel::OnLeftContentMargin ) );
     m_leftContentMargin->SetToolTip( _( "Content left margin in mm." ) );
 
     HorizontalSpacer( itemBoxSizer110 );
 
-    m_rightContentMargin = SetupLabelText( contenrMarginBox, itemBoxSizer110, lastID,
+    m_rightContentMargin = SetupLabelText( contentMarginBox, itemBoxSizer110, lastID,
         _( "Right" ), false, wxCommandEventHandler( StampDefaultsPanel::OnRightContentMargin ) );
     m_rightContentMargin->SetToolTip( _( "Content right margin in mm." ) );
 }
@@ -263,7 +263,7 @@ void StampDefaultsPanel::UpdateControls( )
     SetShowStampTitle( Design::AlbumStampDefaults( )->ShowName( ) );
     SetGrayScaleImages( Design::AlbumStampDefaults( )->GrayScaleImages( ) );
 
-    SetCatalog( GetCatalog( ) );
+    SetCatalog( Design::AlbumStampDefaults( )->Catalog( ) );
 
     SetStampNamePosition( Design::AlbumStampDefaults( )->StampNamePositionType( ) );
     SetTopContentMargin( Design::AlbumStampDefaults( )->TopContentMarginStr( ) );

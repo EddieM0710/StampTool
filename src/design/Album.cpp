@@ -55,6 +55,7 @@ namespace Design {
     Album::Album( wxXmlNode* node ) : AlbumBase( node )
     {
         SetNodeType( AT_Album );
+        SetDefaults( &m_pageDefaults );
         InitParameters( );
     }
 
@@ -62,87 +63,6 @@ namespace Design {
 
     void Album::InitParameters( )
     {
-    }
-
-    //----------------
-
-    double Album::GetAlbumAttributeDbl( Design::AlbumAttrType type )
-    {
-        wxString val = GetAttrStr( type );
-        if ( val.IsEmpty( ) )
-        {
-            return  Design::AlbumPageDefaults( )->GetAttrDbl( type );
-        }
-        return  GetAttrDbl( type );
-    }
-
-    //----------------
-
-    wxString Album::GetAlbumAttributeStr( Design::AlbumAttrType type )
-    {
-        wxString val = GetAttrStr( type );
-        if ( val.IsEmpty( ) )
-        {
-            return  Design::AlbumPageDefaults( )->GetAttrStr( type );
-        }
-        return val;
-    }
-
-    //--------------
-
-    bool Album::GetAlbumAttributeBool( Design::AlbumAttrType type )
-    {
-        wxString catStr = GetAttrStr( type );
-        if ( catStr.IsEmpty( ) )
-        {
-            catStr = AlbumPageDefaults( )->GetAttrStr( type );
-        }
-        return String2Bool( catStr );
-    }
-
-    //----------------
-
-    void Album::SetAlbumAttributeStr( Design::AlbumAttrType type, wxString val )
-    {
-        if ( IsDefaultVal( type, val ) )
-        {
-            DeleteAttribute( AttrNameStrings[ type ] );
-        }
-        else
-        {
-            SetAttrStr( type, val );
-        }
-    }
-
-    //----------------
-
-    void Album::SetAlbumAttributeDbl( Design::AlbumAttrType type, double val )
-    {
-        wxString str = wxString::Format( "%4.1f", val );
-        SetAlbumAttributeStr( type, str );
-    }
-
-    //----------------
-
-    void Album::SetAlbumAttributeBool( Design::AlbumAttrType type, bool val )
-    {
-        wxString str = Bool2String( val );
-        SetAlbumAttributeStr( type, str );
-
-    }
-
-    //--------------
-
-    bool Album::IsDefaultVal( AlbumAttrType type )
-    {
-        return AlbumPageDefaults( )->IsEqual( type, GetAttrStr( type ) );
-    }
-
-    //----------------
-
-    bool Album::IsDefaultVal( AlbumAttrType type, wxString val )
-    {
-        return AlbumPageDefaults( )->IsEqual( type, val );
     }
 
     //----------------
@@ -206,51 +126,8 @@ namespace Design {
 
     //----------------
 
-    void Album::DumpFont( wxString Level )
-    {
-        int ndx = DefaultFonts[ AT_NbrFontType ];
-        std::cout << Level << "CatNbr font " << GetFontList( )->GetFont( ndx ).GetNativeFontInfoUserDesc( )
-            << "  color " << GetFontList( )->GetColor( ndx ).GetAsString( )
-            << "  Ndx " << ndx << std::endl;
-
-        ndx = DefaultFonts[ AT_TextFontType ];
-        std::cout << Level << "Text font " << GetFontList( )->GetFont( ndx ).GetNativeFontInfoUserDesc( )
-            << "  color " << GetFontList( )->GetColor( ndx ).GetAsString( )
-            << "  Ndx " << ndx << std::endl;
-
-        ndx = DefaultFonts[ AT_TitleFontType ];
-        std::cout << Level << "Title font " << GetFontList( )->GetFont( ndx ).GetNativeFontInfoUserDesc( )
-            << "  color " << GetFontList( )->GetColor( ndx ).GetAsString( )
-            << "  Ndx " << ndx << std::endl;
-    };
-
-    //----------------
-
-    void Album::DumpLayout( )
-    {
-        std::cout << "Album Parms w:" << GetAttrStr( AT_PageWidth )
-            << " h:" << GetAttrStr( AT_PageHeight )
-            << " tm:" << GetAttrStr( AT_TopPageMargin )
-            << " bm:" << GetAttrStr( AT_BottomPageMargin )
-            << " rm:" << GetAttrStr( AT_RightPageMargin )
-            << " lm:" << GetAttrStr( AT_LeftPageMargin ) << "\n";
-
-        wxTreeItemIdValue cookie;
-        wxTreeItemId parentID = GetTreeItemId( );
-        wxTreeItemId childID = GetAlbumTreeCtrl( )->GetFirstChild( parentID, cookie );
-        while ( childID.IsOk( ) )
-        {
-            LayoutBase* child = ( LayoutBase* ) GetAlbumTreeCtrl( )->GetItemNode( childID );
-
-            child->DumpLayout( 0, 0 );
-            childID = GetAlbumTreeCtrl( )->GetNextChild( parentID, cookie );
-        }
-    }
-
-    //----------------
-
     wxString Album::GetCatalog( ) {
-        wxString cat = GetAttrStr( AT_Catalog );
+        wxString cat = GetAlbumAttributeStr( AT_Catalog );
         if ( cat.IsEmpty( ) )
         {
             cat = GetProject( )->GetProjectCatalogCode( );
@@ -557,52 +434,53 @@ namespace Design {
             while ( child )
             {
                 wxString name = child->GetName( );
-                if ( name.Cmp( LayoutTypeStrings[ LT_Page ] ) )
+                if ( !name.Cmp( "Default" ) )
                 {
-                    wxXmlAttribute* attr = child->GetAttributes( );
-                    while ( attr )
+                    wxString layoutType = child->GetAttribute( "LayoutType" );
+                    if ( !layoutType.Cmp( LayoutTypeStrings[ LT_Page ] ) )
                     {
-                        wxString attrName = attr->GetName( );
-                        if ( attrName.Cmp( AttrNameStrings[ AT_LayoutType ] ) )
+                        wxXmlAttribute* attr = child->GetAttributes( );
+                        while ( attr )
                         {
+                            wxString attrName = attr->GetName( );
+
                             wxString attrVal = attr->GetValue( );
                             m_pageDefaults.SetAttrStr( attrName, attrVal );
+
+                            attr = attr->GetNext( );
                         }
-                        attr = attr->GetNext( );
                     }
-                }
-                else  if ( name.Cmp( LayoutTypeStrings[ LT_Stamp ] ) )
-                {
-                    wxXmlAttribute* attr = child->GetAttributes( );
-                    while ( attr )
+                    else  if ( !layoutType.Cmp( LayoutTypeStrings[ LT_Stamp ] ) )
                     {
-                        wxString attrName = attr->GetName( );
-                        if ( attrName.Cmp( AttrNameStrings[ AT_LayoutType ] ) )
+                        wxXmlAttribute* attr = child->GetAttributes( );
+                        while ( attr )
                         {
+                            wxString attrName = attr->GetName( );
+
                             wxString attrVal = attr->GetValue( );
                             m_stampDefaults.SetAttrStr( attrName, attrVal );
+
+                            attr = attr->GetNext( );
                         }
-                        attr = attr->GetNext( );
                     }
-                }
-                else  if ( name.Cmp( LayoutTypeStrings[ LT_Frame ] ) )
-                {
-                    wxXmlAttribute* attr = child->GetAttributes( );
-                    while ( attr )
+                    else  if ( !layoutType.Cmp( LayoutTypeStrings[ LT_Frame ] ) )
                     {
-                        wxString attrName = attr->GetName( );
-                        if ( attrName.Cmp( AttrNameStrings[ AT_LayoutType ] ) )
+                        wxXmlAttribute* attr = child->GetAttributes( );
+                        while ( attr )
                         {
+                            wxString attrName = attr->GetName( );
+
                             wxString attrVal = attr->GetValue( );
                             m_frameDefaults.SetAttrStr( attrName, attrVal );
+                            attr = attr->GetNext( );
                         }
-                        attr = attr->GetNext( );
                     }
                 }
                 child = child->GetNext( );
             }
         }
     }
+
 
     //----------------
 
@@ -654,6 +532,36 @@ namespace Design {
         SetAttribute( xmlNode, AT_StampNamePosition );
         SetAttribute( xmlNode, AT_Orientation );
         SaveFonts( xmlNode );
+        SaveDefaults( xmlNode );
+    }
+
+    //----------------
+    void Album::SaveDefaults( wxXmlNode* parent )
+    {
+        wxXmlNode* defaults = Utils::NewNode( parent, "Defaults" );
+        if ( defaults )
+        {
+            wxXmlNode* pageDefault = Utils::NewNode( defaults, "Default" );
+            if ( pageDefault )
+            {
+                Utils::SetAttrStr( pageDefault, AttrNameStrings[ AT_LayoutType ], LayoutTypeStrings[ LT_Page ] );
+                AlbumPageDefaults( )->Save( pageDefault );
+            }
+
+            wxXmlNode* frameDefault = Utils::NewNode( defaults, "Default" );
+            if ( frameDefault )
+            {
+                Utils::SetAttrStr( frameDefault, AttrNameStrings[ AT_LayoutType ], LayoutTypeStrings[ LT_Frame ] );
+                AlbumFrameDefaults( )->Save( frameDefault );
+            }
+
+            wxXmlNode* stampDefault = Utils::NewNode( defaults, "Default" );
+            if ( stampDefault )
+            {
+                Utils::SetAttrStr( stampDefault, AttrNameStrings[ AT_LayoutType ], LayoutTypeStrings[ LT_Stamp ] );
+                AlbumStampDefaults( )->Save( stampDefault );
+            }
+        }
     }
 
     //----------------

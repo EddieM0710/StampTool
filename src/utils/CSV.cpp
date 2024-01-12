@@ -339,8 +339,6 @@ namespace Utils {
                     }
                 }
             }
-
-            // XMLDumpNode( ( wxXmlNode* )docRoot, "" );
         }
         return status;
     };

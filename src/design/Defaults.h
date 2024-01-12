@@ -40,19 +40,19 @@ namespace Design {
 
         ~Defaults( );
 
-        void Save( wxXmlNode* xmlNode, Design::AlbumAttrType type );
+        void SaveDefault( wxXmlNode* xmlNode, Design::AlbumAttrType type );
 
-        void Set( Design::AlbumAttrType type, wxString str );
+        void SetDefault( Design::AlbumAttrType type, wxString str );
 
-        void SetDbl( Design::AlbumAttrType type, double str );
+        void SetDefaultDbl( Design::AlbumAttrType type, double str );
 
-        void Set( Design::AlbumAttrType type, bool val );
+        void SetDefault( Design::AlbumAttrType type, bool val );
 
-        wxString Get( Design::AlbumAttrType type );
+        wxString GetDefault( Design::AlbumAttrType type );
 
-        double GetDbl( Design::AlbumAttrType type );
+        double GetDefaultDbl( Design::AlbumAttrType type );
 
-        bool GetBool( Design::AlbumAttrType type, bool defVal = false );
+        bool GetDefaultBool( Design::AlbumAttrType type, bool defVal = false );
 
     protected:
         wxString ApplicationDefault[ AT_NbrAttrTypes ];

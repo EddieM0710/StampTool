@@ -57,51 +57,51 @@ namespace Design {
     void PageDefaults::SetApplicationDefaults( )
     {
 
-        /***/        ApplicationDefault[ AT_PageWidth ] = "208.25";
-        /***/       ApplicationDefault[ AT_PageHeight ] = "269.5";
-        /***/       ApplicationDefault[ AT_TopPageMargin ] = "12";
-        /***/        ApplicationDefault[ AT_BottomPageMargin ] = "12";
-        /***/       ApplicationDefault[ AT_RightPageMargin ] = "12";
-        /***/       ApplicationDefault[ AT_LeftPageMargin ] = "18";
+        /***/        ApplicationDefault[ AT_PageWidth ] = Dbl2String( 208.25 );
+        /***/       ApplicationDefault[ AT_PageHeight ] = Dbl2String( 269.5 );
+        /***/       ApplicationDefault[ AT_TopPageMargin ] = Dbl2String( 12.0 );
+        /***/        ApplicationDefault[ AT_BottomPageMargin ] = Dbl2String( 12 );
+        /***/       ApplicationDefault[ AT_RightPageMargin ] = Dbl2String( 12 );
+        /***/       ApplicationDefault[ AT_LeftPageMargin ] = Dbl2String( 18 );
         /***/       ApplicationDefault[ AT_BorderFileName ] = "big_and_little_line.jpg";
-        /***/        ApplicationDefault[ AT_BorderSize ] = "4";
+        /***/        ApplicationDefault[ AT_BorderSize ] = Dbl2String( 4 );
         /***/        ApplicationDefault[ AT_ShowBorder ] = "true";
         ApplicationDefault[ AT_ShowTitle ] = "true";
         ApplicationDefault[ AT_ShowSubTitle ] = "true";
         /***/       ApplicationDefault[ AT_Orientation ] = OrientationStrings[ Design::AT_Portrait ];
-        ApplicationDefault[ AT_TopContentMargin ] = "2";
-        ApplicationDefault[ AT_BottomContentMargin ] = "2";
-        ApplicationDefault[ AT_LeftContentMargin ] = "2";
-        ApplicationDefault[ AT_RightContentMargin ] = "2";
+        ApplicationDefault[ AT_TopContentMargin ] = Dbl2String( 2 );
+        ApplicationDefault[ AT_BottomContentMargin ] = Dbl2String( 2 );
+        ApplicationDefault[ AT_LeftContentMargin ] = Dbl2String( 2 );
+        ApplicationDefault[ AT_RightContentMargin ] = Dbl2String( 2 );
         /***/       ApplicationDefault[ AT_OverSizePaper ] = "false";
-        /***/        ApplicationDefault[ AT_PaperHeight ] = "269.5";
-        /***/        ApplicationDefault[ AT_PaperWidth ] = "208.25";
+        /***/        ApplicationDefault[ AT_PaperHeight ] = Dbl2String( 269.5 );
+        /***/        ApplicationDefault[ AT_PaperWidth ] = Dbl2String( 208.25 );
     }
 
 
 
     void PageDefaults::Save( wxXmlNode* xmlNode )
     {
-        Defaults::Save( xmlNode, AT_OverSizePaper );
-        Defaults::Save( xmlNode, AT_PaperHeight );
-        Defaults::Save( xmlNode, AT_PaperWidth );
-        Defaults::Save( xmlNode, AT_PageWidth );
-        Defaults::Save( xmlNode, AT_PageHeight );
-        Defaults::Save( xmlNode, AT_TopPageMargin );
-        Defaults::Save( xmlNode, AT_BottomPageMargin );
-        Defaults::Save( xmlNode, AT_RightPageMargin );
-        Defaults::Save( xmlNode, AT_LeftPageMargin );
-        Defaults::Save( xmlNode, AT_BorderFileName );
-        Defaults::Save( xmlNode, AT_BorderSize );
-        Defaults::Save( xmlNode, AT_ShowCatNbr );
-        Defaults::Save( xmlNode, AT_ShowTitle );
-        Defaults::Save( xmlNode, AT_ShowTitle );
-        Defaults::Save( xmlNode, AT_ShowTitle );
-        Defaults::Save( xmlNode, AT_ShowSubTitle );
-        Defaults::Save( xmlNode, AT_ShowSubTitle );
-        Defaults::Save( xmlNode, AT_GrayScaleImages );
-        Defaults::Save( xmlNode, AT_StampNamePosition );
-        Defaults::Save( xmlNode, AT_Orientation );
+        Defaults::SaveDefault( xmlNode, AT_OverSizePaper );
+        Defaults::SaveDefault( xmlNode, AT_PaperHeight );
+        Defaults::SaveDefault( xmlNode, AT_PaperWidth );
+        Defaults::SaveDefault( xmlNode, AT_PageWidth );
+        Defaults::SaveDefault( xmlNode, AT_PageHeight );
+        Defaults::SaveDefault( xmlNode, AT_TopPageMargin );
+        Defaults::SaveDefault( xmlNode, AT_BottomPageMargin );
+        Defaults::SaveDefault( xmlNode, AT_RightPageMargin );
+        Defaults::SaveDefault( xmlNode, AT_LeftPageMargin );
+        Defaults::SaveDefault( xmlNode, AT_BorderFileName );
+        Defaults::SaveDefault( xmlNode, AT_BorderSize );
+        Defaults::SaveDefault( xmlNode, AT_ShowCatNbr );
+        Defaults::SaveDefault( xmlNode, AT_ShowTitle );
+        Defaults::SaveDefault( xmlNode, AT_ShowTitle );
+        Defaults::SaveDefault( xmlNode, AT_ShowTitle );
+        Defaults::SaveDefault( xmlNode, AT_ShowSubTitle );
+        Defaults::SaveDefault( xmlNode, AT_ShowSubTitle );
+        Defaults::SaveDefault( xmlNode, AT_GrayScaleImages );
+        Defaults::SaveDefault( xmlNode, AT_StampNamePosition );
+        Defaults::SaveDefault( xmlNode, AT_Orientation );
 
     }
 

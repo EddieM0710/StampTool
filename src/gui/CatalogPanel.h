@@ -92,6 +92,8 @@ public:
 
     void DoCSVImport( );
 
+    void DoMergeCatalog( );
+
     CatalogTreeCtrl* GetCatalogTree( ) {
         return m_catalogTreeCtrl;
     };
@@ -122,6 +124,8 @@ public:
     void OnCSVImportClick( wxCommandEvent& event );
 
     void OnManageClick( wxCommandEvent& event );
+
+    void DoMergeCatalog( wxCommandEvent& event );
 
     void OnContextMenu( wxContextMenuEvent& event );
 

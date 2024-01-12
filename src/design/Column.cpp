@@ -40,7 +40,9 @@ namespace Design {
     Column::Column( wxXmlNode* node ) : LayoutBase( node ) {
         SetNodeType( AT_Col );
         SetObjectName( AlbumBaseNames[ GetNodeType( ) ] );
-        SetShow( false );
+        SetDefaults( GetAlbumVolume( )->GetAlbum( )->AlbumFrameDefaults( ) );
+
+        SetShowFrame( false );
         SetShowTitle( false );
         SetShowSubTitle( false );
         SetFixedSpacingSize( "4" );
@@ -60,10 +62,10 @@ namespace Design {
         {
             m_titleFrame->Init( );
         }
-        SetTopContentMargin( 2 );
-        SetBottomContentMargin( 2 );
-        SetLeftContentMargin( 2 );
-        SetRightContentMargin( 2 );
+        // SetTopContentMargin( 2 );
+        // SetBottomContentMargin( 2 );
+        // SetLeftContentMargin( 2 );
+        // SetRightContentMargin( 2 );
     }
 
     //----------------
@@ -115,7 +117,7 @@ namespace Design {
 
             dc.SetPen( *wxBLACK_PEN );
 
-            if ( GetShow( ) )
+            if ( GetShowFrame( ) )
             {
                 m_frame.Draw( dc, x, y );
             }
@@ -150,7 +152,7 @@ namespace Design {
         double leftPadding = 0;
         double topPadding = 0;
         //  dc.SetPen( *wxBLACK_PEN );
-        if ( GetShow( ) )
+        if ( GetShowFrame( ) )
         {
             wxPdfLineStyle currStyle = PDFLineStyle( doc, *wxBLACK, .2 );
             m_frame.DrawPDF( doc, x, y );
@@ -188,13 +190,7 @@ namespace Design {
         }
     }
 
-    //----------------
 
-    void Column::ReportLayout( )
-    {
-        std::cout << "Layout for Column " << "\n ";
-        ReportLayoutFrame( );
-    };
 
     //----------------
 
@@ -387,8 +383,6 @@ namespace Design {
 
     NodeStatus Column::ValidateNode( )
     {
-        CheckLayout( );
-
         NodeStatus status = AT_OK;
         if ( !HasChildren( ) )
         {

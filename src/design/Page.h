@@ -48,21 +48,21 @@ namespace Design {
 
         void Init( );
 
-        double GetPageAttributeDbl( Design::AlbumAttrType type );
+        // double GetPageAttributeDbl( Design::AlbumAttrType type );
 
-        wxString GetPageAttributeStr( Design::AlbumAttrType type );
+        // wxString GetPageAttributeStr( Design::AlbumAttrType type );
 
-        bool GetPageAttributeBool( Design::AlbumAttrType type, bool defVal = false );
+        // bool GetPageAttributeBool( Design::AlbumAttrType type, bool defVal = false );
 
-        void SetPageAttributeBool( Design::AlbumAttrType type, bool val );
+        // void SetPageAttributeBool( Design::AlbumAttrType type, bool val );
 
-        void SetPageAttributeDbl( Design::AlbumAttrType type, double val );
+        // void SetPageAttributeDbl( Design::AlbumAttrType type, double val );
 
-        void SetPageAttributeStr( Design::AlbumAttrType type, wxString val );
+        // void SetPageAttributeStr( Design::AlbumAttrType type, wxString val );
 
-        bool IsDefaultVal( AlbumAttrType type );
+        // bool IsDefaultVal( AlbumAttrType type );
 
-        bool IsDefaultVal( AlbumAttrType type, wxString val );
+        // bool IsDefaultVal( AlbumAttrType type, wxString val );
 
         // Draw object on screen; position in MM
         void Draw( wxDC& dc, double x, double y );
@@ -71,42 +71,52 @@ namespace Design {
         void DrawPDF( wxPdfDocument* doc, double x, double y );
 
         wxString GetBorderFileName( ) {
-            return GetPageAttributeStr( Design::AT_BorderFileName );
+            return GetAlbumAttributeStr( Design::AT_BorderFileName );
         };
 
         // Get the Bottom PageMargin 
         double GetBottomPageMargin( ) {
-            return GetPageAttributeDbl( Design::AT_BottomPageMargin );
+            return GetAlbumAttributeDbl( Design::AT_BottomPageMargin );
         };
 
         wxString GetBottomPageMarginStr( ) {
-            return GetPageAttributeStr( Design::AT_BottomPageMargin );
+            return GetAlbumAttributeStr( Design::AT_BottomPageMargin );
         };
 
 
         // Get the Border Size 
         double GetBorderSize( ) {
-            return GetPageAttributeDbl( Design::AT_BorderSize );
+            return GetAlbumAttributeDbl( Design::AT_BorderSize );
         };
 
         wxString GetLeftPageMarginStr( ) {
-            return GetPageAttributeStr( Design::AT_LeftPageMargin );
+            return GetAlbumAttributeStr( Design::AT_LeftPageMargin );
         };
 
 
         // Get the Left PageMargin 
         double GetLeftPageMargin( ) {
-            return  GetPageAttributeDbl( Design::AT_LeftPageMargin );
+            return  GetAlbumAttributeDbl( Design::AT_LeftPageMargin );
         };
 
         //Get the Right PageMargin
         double GetRightPageMargin( ) {
-            return GetPageAttributeDbl( Design::AT_RightPageMargin );
+            return GetAlbumAttributeDbl( Design::AT_RightPageMargin );
         };
 
         wxString GetRightPageMarginStr( ) {
-            return GetPageAttributeStr( Design::AT_RightPageMargin );
+            return GetAlbumAttributeStr( Design::AT_RightPageMargin );
         };
+
+        double GetPageWidth( ) {
+            return GetAlbumAttributeDbl( Design::AT_PageWidth );
+        };
+
+        double GetPageHeight( ) {
+            return GetAlbumAttributeDbl( Design::AT_PageHeight );
+        };
+
+
 
         TitleFrame* GetTitleFrame( );
 
@@ -116,11 +126,11 @@ namespace Design {
 
         // Get the Top PageMargin 
         double GetTopPageMargin( ) {
-            return GetPageAttributeDbl( Design::AT_TopPageMargin );
+            return GetAlbumAttributeDbl( Design::AT_TopPageMargin );
         };
 
         wxString GetTopPageMarginStr( ) {
-            return GetPageAttributeStr( Design::AT_TopPageMargin );
+            return GetAlbumAttributeStr( Design::AT_TopPageMargin );
         };
 
         void ReportLayout( );
@@ -131,16 +141,20 @@ namespace Design {
 
         // Set the Border Size 
         void SetBorderSize( double val ) {
-            SetPageAttributeDbl( Design::AT_BorderSize, val );
+            SetAlbumAttributeDbl( Design::AT_BorderSize, val );
+        };
+
+        void SetBorderSize( wxString val ) {
+            SetAlbumAttributeStr( Design::AT_BorderSize, val );
         };
 
         void SetBorderFilename( wxString str ) {
-            SetPageAttributeStr( Design::AT_BorderFileName, str );
+            SetAlbumAttributeStr( Design::AT_BorderFileName, str );
         };
 
         // Set the Bottom PageMargin 
         void SetBottomPageMargin( double val ) {
-            SetPageAttributeDbl( Design::AT_BottomPageMargin, val );
+            SetAlbumAttributeDbl( Design::AT_BottomPageMargin, val );
         };
 
         // content Frame is space within the page border.
@@ -149,31 +163,31 @@ namespace Design {
 
         // Set the Left PageMargin 
         void SetLeftPageMargin( double val ) {
-            SetPageAttributeDbl( Design::AT_LeftPageMargin, val );
+            SetAlbumAttributeDbl( Design::AT_LeftPageMargin, val );
         };
 
         // Set the Right PageMargin 
         void SetRightPageMargin( double val ) {
-            SetPageAttributeDbl( Design::AT_RightPageMargin, val );
+            SetAlbumAttributeDbl( Design::AT_RightPageMargin, val );
         };
 
         void SetTitleString( wxString str );
         void  SetSubTitleString( wxString str );
         // Set the Top PageMargin 
         void SetTopPageMargin( double val ) {
-            SetPageAttributeDbl( Design::AT_TopPageMargin, val );
+            SetAlbumAttributeDbl( Design::AT_TopPageMargin, val );
         };
 
         bool GetShowTitle( ) {
-            return GetPageAttributeBool( Design::AT_ShowTitle );
+            return GetAlbumAttributeBool( Design::AT_ShowTitle );
         };
 
         bool GetShowBorder( ) {
-            return GetPageAttributeBool( Design::AT_ShowBorder, true );
+            return GetAlbumAttributeBool( Design::AT_ShowBorder, true );
         };
 
         bool GetShowSubTitle( ) {
-            return GetPageAttributeBool( Design::AT_ShowSubTitle );
+            return GetAlbumAttributeBool( Design::AT_ShowSubTitle );
         };
 
         void SetShowNbr( bool val ){};
@@ -183,7 +197,7 @@ namespace Design {
         };
 
         void SetShowTitle( bool val ) {
-            SetPageAttributeBool( Design::AT_ShowTitle, val );
+            SetAlbumAttributeBool( Design::AT_ShowTitle, val );
         };
 
         void SetShowBorder( bool val ) {
@@ -193,7 +207,7 @@ namespace Design {
             }
             else
             {
-                SetPageAttributeBool( Design::AT_ShowBorder, val );
+                SetAlbumAttributeBool( Design::AT_ShowBorder, val );
             }
             if ( val )
             {
@@ -201,12 +215,12 @@ namespace Design {
             }
             else
             {
-                SetAttrDbl( Design::AT_BorderSize, 0.0 );
+                SetAlbumAttributeDbl( Design::AT_BorderSize, 0.0 );
             }
         };
 
         void SetShowSubTitle( bool val ) {
-            SetPageAttributeBool( AT_ShowSubTitle, val );
+            SetAlbumAttributeBool( AT_ShowSubTitle, val );
         };
 
         void LoadFonts( wxXmlNode* node );
@@ -239,17 +253,17 @@ namespace Design {
 
         wxString Orientation( )
         {
-            return GetPageAttributeStr( Design::AT_Orientation );
+            return GetAlbumAttributeStr( Design::AT_Orientation );
         };
 
         void Orientation( wxString orientation )
         {
-            SetPageAttributeStr( AT_Orientation, orientation );
+            SetAlbumAttributeStr( AT_Orientation, orientation );
             Init( );
         };
 
         bool IsOrientation( ) {
-            return AlbumPageDefaults( )->IsOrientation( Orientation( ) );
+            return ( ( PageDefaults* ) GetDefaults( ) )->IsOrientation( Orientation( ) );
         };
     private:
 

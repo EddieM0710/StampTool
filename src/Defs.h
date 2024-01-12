@@ -221,6 +221,11 @@ inline const double String2Dbl( wxString str, double defval = 0.0 )
     return defval;
 }
 
+inline const wxString Dbl2String( double val )
+{
+    return wxString::Format( "%.2f", val );
+}
+
 /**
  * @brief Performs the initial instantiantion of all the sTart up data.
  *

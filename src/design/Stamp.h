@@ -83,23 +83,21 @@ namespace Design {
 
         void DrawPDF( wxPdfDocument* doc, double x, double y );
 
-        void DumpStamp( wxTextCtrl* positionTextCtrl );
-
         Design::Frame* GetBorderFrame( ){
 
             return &m_borderFrame;
         }
 
-        wxString GetStampAttributeStr( Design::AlbumAttrType type );
+        // wxString GetStampAttributeStr( Design::AlbumAttrType type );
 
-        double GetStampAttributeDbl( Design::AlbumAttrType type );
+        // double GetStampAttributeDbl( Design::AlbumAttrType type );
 
-        bool GetStampAttributeBool( Design::AlbumAttrType type );
+        // bool GetStampAttributeBool( Design::AlbumAttrType type );
 
         wxString GetCatalogNbr( );
 
         wxString GetCatalog( ) {
-            return GetStampAttributeStr( Design::AT_Catalog );
+            return GetAlbumAttributeStr( Design::AT_Catalog );
         };
 
         wxString GetCatalogCodes( );
@@ -109,19 +107,19 @@ namespace Design {
         wxImage GetImage( );
 
         double GetMountAllowanceHeight( ){
-            return GetStampAttributeDbl( Design::AT_MountAllowanceHeight );
+            return GetAlbumAttributeDbl( Design::AT_MountAllowanceHeight );
         };
 
         wxString GetMountAllowanceHeightStr( ){
-            return GetStampAttributeStr( Design::AT_MountAllowanceHeight );
+            return GetAlbumAttributeStr( Design::AT_MountAllowanceHeight );
         };
 
         double GetMountAllowanceWidth( ){
-            return GetStampAttributeDbl( Design::AT_MountAllowanceWidth );
+            return GetAlbumAttributeDbl( Design::AT_MountAllowanceWidth );
         };
 
         wxString GetMountAllowanceWidthStr( ){
-            return GetStampAttributeStr( Design::AT_MountAllowanceWidth );
+            return GetAlbumAttributeStr( Design::AT_MountAllowanceWidth );
         };
 
         LabelFrame* GetNameFrame( );
@@ -134,36 +132,36 @@ namespace Design {
 
         double GetSelvageHeight( )
         {
-            return GetStampAttributeDbl( Design::AT_SelvageWidth );
+            return GetAlbumAttributeDbl( Design::AT_SelvageWidth );
         };
 
         wxString GetSelvageHeightStr( )
         {
-            return GetStampAttributeStr( Design::AT_SelvageWidth );
+            return GetAlbumAttributeStr( Design::AT_SelvageWidth );
         };
 
         double GetSelvageWidth( )
         {
-            return  GetStampAttributeDbl( Design::AT_SelvageWidth );
+            return  GetAlbumAttributeDbl( Design::AT_SelvageWidth );
         };
 
         wxString GetSelvageWidthStr( )
         {
-            return GetStampAttributeStr( Design::AT_SelvageWidth );
+            return GetAlbumAttributeStr( Design::AT_SelvageWidth );
         };
 
         bool GetShowNbr( )
         {
-            return GetStampAttributeBool( AT_ShowCatNbr );
+            return GetAlbumAttributeBool( AT_ShowCatNbr, true );
 
         };
 
         bool GetShowTitle( ) {
-            return GetStampAttributeBool( AT_ShowTitle );
+            return GetAlbumAttributeBool( AT_ShowTitle, true );
         };
 
         bool GetGrayScaleImages( ) {
-            return GetStampAttributeBool( AT_GrayScaleImages );
+            return GetAlbumAttributeBool( AT_GrayScaleImages, false );
         };
 
         // bool GetShowSubTitle( ) {
@@ -212,16 +210,16 @@ namespace Design {
 
         void Save( wxXmlNode* xmlNode );
 
-        void SetStampAttributeStr( Design::AlbumAttrType type, wxString val );
-        void SetStampAttributeDbl( Design::AlbumAttrType type, double val );
-        void SetStampAttributeBool( Design::AlbumAttrType type, bool val );
+        // void SetStampAttributeStr( Design::AlbumAttrType type, wxString val );
+        // void SetStampAttributeDbl( Design::AlbumAttrType type, double val );
+        // void SetStampAttributeBool( Design::AlbumAttrType type, bool val );
 
         void SetShowTitle( bool val ) {
-            SetStampAttributeBool( AT_ShowTitle, val );
+            SetAlbumAttributeBool( AT_ShowTitle, val );
         };
 
         void SetGrayScaleImages( bool val ) {
-            SetStampAttributeBool( AT_GrayScaleImages, val );
+            SetAlbumAttributeBool( AT_GrayScaleImages, val );
         };
 
         void SetShowSubTitle( bool val ) { };
@@ -230,11 +228,11 @@ namespace Design {
         };
 
         void SetStampMarginStr( wxString str ) {
-            return SetStampAttributeStr( Design::AT_StampMargin, str );
+            return SetAlbumAttributeStr( Design::AT_StampMargin, str );
         };
 
         void SetStampMargin( double val ) {
-            return SetStampAttributeDbl( Design::AT_StampMargin, val );
+            return SetAlbumAttributeDbl( Design::AT_StampMargin, val );
         };
 
         void SetStampImageFilename( wxString filename );
@@ -246,40 +244,40 @@ namespace Design {
         void SetCatalogCodes( wxString catCodes );
 
         void SetMountAllowanceHeight( double val ){
-            SetStampAttributeDbl( Design::AT_MountAllowanceHeight, val );
+            SetAlbumAttributeDbl( Design::AT_MountAllowanceHeight, val );
         }
 
         void SetMountAllowanceHeight( wxString val ){
-            SetStampAttributeStr( Design::AT_MountAllowanceHeight, val );
+            SetAlbumAttributeStr( Design::AT_MountAllowanceHeight, val );
         };
         void SetMountAllowanceWidth( double val ){
-            SetStampAttributeDbl( Design::AT_MountAllowanceWidth, val );
+            SetAlbumAttributeDbl( Design::AT_MountAllowanceWidth, val );
         }
         void SetMountAllowanceWidth( wxString val ){
-            SetStampAttributeStr( Design::AT_MountAllowanceWidth, val );
+            SetAlbumAttributeStr( Design::AT_MountAllowanceWidth, val );
         };
         void SetNbrString( wxString str );
 
         void SetNameString( wxString str );
 
         void SetSelvageHeight( double val )  {
-            SetStampAttributeDbl( Design::AT_SelvageHeight, val );
+            SetAlbumAttributeDbl( Design::AT_SelvageHeight, val );
         };
 
         void SetSelvageHeight( wxString str ){
-            SetStampAttributeStr( Design::AT_SelvageHeight, str );
+            SetAlbumAttributeStr( Design::AT_SelvageHeight, str );
         };
 
         void SetSelvageWidth( double val ) {
-            SetStampAttributeDbl( Design::AT_SelvageWidth, val );
+            SetAlbumAttributeDbl( Design::AT_SelvageWidth, val );
         };
 
         void SetSelvageWidth( wxString val )  {
-            SetStampAttributeStr( Design::AT_SelvageWidth, val );
+            SetAlbumAttributeStr( Design::AT_SelvageWidth, val );
         };
 
         void SetShowNbr( bool val ) {
-            SetAttrStr( AT_ShowCatNbr, Bool2String( val ) );
+            SetAlbumAttributeBool( AT_ShowCatNbr, val );
         };
 
         void SetActualStampHeight( double val );

@@ -103,6 +103,7 @@ EVT_MENU( ID_PREFERENCES, StampToolFrame::OnPreferencesClick )
 EVT_MENU( ID_NEWCATALOG, StampToolFrame::OnNewCatalogClick )
 EVT_MENU( ID_OPENCATALOG, StampToolFrame::OnOpenCatalogClick )
 EVT_MENU( ID_CSVIMPORT, StampToolFrame::OnImportCatalogClick )
+EVT_MENU( ID_MERGE StampToolFrame::OnMergeCatalogClick )
 EVT_MENU( ID_REMOVECATALOG, StampToolFrame::OnRemoveCatalogClick )
 EVT_MENU( ID_NEWDESIGN, StampToolFrame::OnNewDesignClick )
 EVT_MENU( ID_OPENDESIGN, StampToolFrame::OnOpenDesignClick )
@@ -205,6 +206,7 @@ void StampToolFrame::CreateControls( )
     itemMenu3->Append( ID_SAVECATALOG, _( "Save Catalog" ), wxEmptyString, wxITEM_NORMAL );
     itemMenu3->AppendSeparator( );
     itemMenu3->Append( ID_CSVIMPORT, _( "Import Catalog From CSV file" ), wxEmptyString, wxITEM_NORMAL );
+    itemMenu3->Append( ID_MERGE, _( "Merge catalogs" ), wxEmptyString, wxITEM_NORMAL );
     itemMenu3->AppendSeparator( );
     itemMenu3->Append( ID_REMOVECATALOG, _( "Remove Catalog" ), wxEmptyString, wxITEM_NORMAL );
     menuBar->Append( itemMenu3, _( "Catalog" ) );
@@ -479,6 +481,12 @@ void StampToolFrame::OnIconize( wxIconizeEvent& event )
 void StampToolFrame::OnImportCatalogClick( wxCommandEvent& event )
 {
     GetCatalogPagePanel( )->DoCSVImport( );
+    event.Skip( );
+}
+
+void OnMergeCatalogClick( wxCommandEvent& event )
+{
+    GetCatalogPagePanel( )->DoMergeCatalog( );
     event.Skip( );
 }
 

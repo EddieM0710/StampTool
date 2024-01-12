@@ -55,27 +55,23 @@ namespace Design {
 
         void SetHardDefaults( );
 
-        double GetAlbumAttributeDbl( Design::AlbumAttrType type );
+        // double GetAlbumAttributeDbl( Design::AlbumAttrType type );
 
-        wxString GetAlbumAttributeStr( Design::AlbumAttrType type );
+        // wxString GetAlbumAttributeStr( Design::AlbumAttrType type );
 
-        bool GetAlbumAttributeBool( Design::AlbumAttrType type );
+        // bool GetAlbumAttributeBool( Design::AlbumAttrType type );
 
-        void SetAlbumAttributeBool( Design::AlbumAttrType type, bool val );
+        // void SetAlbumAttributeBool( Design::AlbumAttrType type, bool val );
 
-        void SetAlbumAttributeDbl( Design::AlbumAttrType type, double val );
+        // void SetAlbumAttributeDbl( Design::AlbumAttrType type, double val );
 
-        void SetAlbumAttributeStr( Design::AlbumAttrType type, wxString val );
+        // void SetAlbumAttributeStr( Design::AlbumAttrType type, wxString val );
 
-        bool IsDefaultVal( AlbumAttrType type );
+        // bool IsDefaultVal( AlbumAttrType type );
 
-        bool IsDefaultVal( AlbumAttrType type, wxString val );
+        // bool IsDefaultVal( AlbumAttrType type, wxString val );
 
         wxString DrawPDF( );
-
-        void DumpFont( wxString Level );
-
-        void DumpLayout( );
 
         wxString GetCatalog( );
 
@@ -102,6 +98,8 @@ namespace Design {
         void MakePDFAlbum( );
 
         void Save( wxXmlNode* xmlNode );
+
+        void SaveDefaults( wxXmlNode* parent );
 
         void SaveFonts( wxXmlNode* parent );
 

@@ -55,8 +55,6 @@ namespace Utils {
 
         int DefaultFont( int pointSize );
 
-        void DumpFonts( );
-
         Font* FindMyFont( wxFont font, wxColor color );
 
         FontMap::iterator FindFontIterator( wxFont font, wxColor color );

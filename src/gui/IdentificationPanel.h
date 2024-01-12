@@ -135,6 +135,8 @@ public:
 
     void OnPerforationUpdated( wxCommandEvent& event );
 
+    void OnGumUpdated( wxCommandEvent& event );
+
     void OnPrintingUpdated( wxCommandEvent& event );
 
     void OnSeriesUpdated( wxCommandEvent& event );
@@ -169,6 +171,7 @@ private:
     wxTextCtrl* m_themes;    ///< Stamp Theme display
     wxTextCtrl* m_country;   ///< Stamp Country display
     wxTextCtrl* m_perforation;   ///< Stamp perforation display
+    wxTextCtrl* m_gum;
     wxTextCtrl* m_printing;   ///< Stamp printng display
     wxTextCtrl* m_width;   ///< Stamp width display
     wxTextCtrl* m_height;   ///< Stamp height display

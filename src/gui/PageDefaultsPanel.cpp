@@ -270,37 +270,37 @@ void PageDefaultsPanel::CreateControls( )
         wxCommandEventHandler( PageDefaultsPanel::OnSubTitleCheckboxClick ),
         wxCommandEventHandler( PageDefaultsPanel::OnSubTitleCheckboxClick ) );
 
-    wxBoxSizer* contenrMarginBoxVSizer;
-    wxStaticBox* contenrMarginBox = SetupBoxSizer( advancedPanel, rightAdvancedVerticalSizer,
-        "Content Margin", lastID, contenrMarginBoxVSizer, wxVERTICAL );
+    wxBoxSizer* contentMarginBoxVSizer;
+    wxStaticBox* contentMarginBox = SetupBoxSizer( advancedPanel, rightAdvancedVerticalSizer,
+        "Content Margin", lastID, contentMarginBoxVSizer, wxVERTICAL );
 
     wxBoxSizer* itemBoxSizer17 = new wxBoxSizer( wxHORIZONTAL );
-    contenrMarginBoxVSizer->Add( itemBoxSizer17, 0, wxGROW | wxALL, 0 );
+    contentMarginBoxVSizer->Add( itemBoxSizer17, 0, wxGROW | wxALL, 0 );
 
     HorizontalSpacer( itemBoxSizer17 );
 
-    m_topContentMargin = SetupLabelText( contenrMarginBox, itemBoxSizer17, lastID,
+    m_topContentMargin = SetupLabelText( contentMarginBox, itemBoxSizer17, lastID,
         _( "Top" ), false, wxCommandEventHandler( PageDefaultsPanel::OnTopContentMargin ) );
     m_topContentMargin->SetToolTip( _( "Content top margin in mm." ) );
     HorizontalSpacer( itemBoxSizer17 );
 
-    m_bottomContentMargin = SetupLabelText( contenrMarginBox, itemBoxSizer17, lastID,
+    m_bottomContentMargin = SetupLabelText( contentMarginBox, itemBoxSizer17, lastID,
         _( "Bottom" ), false, wxCommandEventHandler( PageDefaultsPanel::OnBottomContentMargin ) );
     m_bottomContentMargin->SetToolTip( _( "Content bottom margin in mm." ) );
 
 
     wxBoxSizer* itemBoxSizer110 = new wxBoxSizer( wxHORIZONTAL );
-    contenrMarginBoxVSizer->Add( itemBoxSizer110, 0, wxGROW | wxALL, 0 );
+    contentMarginBoxVSizer->Add( itemBoxSizer110, 0, wxGROW | wxALL, 0 );
 
     HorizontalSpacer( itemBoxSizer110 );
 
-    m_leftContentMargin = SetupLabelText( contenrMarginBox, itemBoxSizer110, lastID,
+    m_leftContentMargin = SetupLabelText( contentMarginBox, itemBoxSizer110, lastID,
         _( "Left" ), false, wxCommandEventHandler( PageDefaultsPanel::OnLeftContentMargin ) );
     m_leftContentMargin->SetToolTip( _( "Content left margin in mm." ) );
 
     HorizontalSpacer( itemBoxSizer110 );
 
-    m_rightContentMargin = SetupLabelText( contenrMarginBox, itemBoxSizer110, lastID,
+    m_rightContentMargin = SetupLabelText( contentMarginBox, itemBoxSizer110, lastID,
         _( "Right" ), false, wxCommandEventHandler( PageDefaultsPanel::OnRightContentMargin ) );
     m_topContentMargin->SetToolTip( _( "Content right margin in mm." ) );
 }
@@ -541,7 +541,7 @@ void PageDefaultsPanel::SetOverSizePaper( bool state ) {
 
 void PageDefaultsPanel::OnTopContentMargin( wxCommandEvent& event )
 {
-    Design::AlbumPageDefaults( )->TopContentMargin( Design::AlbumPageDefaults( )->TopContentMarginStr( ) );
+    Design::AlbumPageDefaults( )->TopContentMargin( m_topContentMargin->GetValue( ) );
     Update( );
     event.Skip( );
 }
@@ -550,7 +550,7 @@ void PageDefaultsPanel::OnTopContentMargin( wxCommandEvent& event )
 
 void PageDefaultsPanel::OnBottomContentMargin( wxCommandEvent& event )
 {
-    Design::AlbumPageDefaults( )->BottomContentMargin( Design::AlbumPageDefaults( )->BottomContentMarginStr( ) );
+    Design::AlbumPageDefaults( )->BottomContentMargin( m_bottomContentMargin->GetValue( ) );
 
     Update( );
     event.Skip( );
@@ -560,7 +560,7 @@ void PageDefaultsPanel::OnBottomContentMargin( wxCommandEvent& event )
 
 void PageDefaultsPanel::OnLeftContentMargin( wxCommandEvent& event )
 {
-    Design::AlbumPageDefaults( )->LeftContentMargin( Design::AlbumPageDefaults( )->LeftContentMarginStr( ) );
+    Design::AlbumPageDefaults( )->LeftContentMargin( m_leftContentMargin->GetValue( ) );
     Update( );
     event.Skip( );
 
@@ -570,7 +570,7 @@ void PageDefaultsPanel::OnLeftContentMargin( wxCommandEvent& event )
 
 void PageDefaultsPanel::OnRightContentMargin( wxCommandEvent& event )
 {
-    Design::AlbumPageDefaults( )->RightContentMargin( Design::AlbumPageDefaults( )->RightContentMarginStr( ) );
+    Design::AlbumPageDefaults( )->RightContentMargin( m_rightContentMargin->GetValue( ) );
 
     Update( );
     event.Skip( );
@@ -590,7 +590,7 @@ void PageDefaultsPanel::OnOverSizeCheckBoxClick( wxCommandEvent& event )
 
 void PageDefaultsPanel::OnPaperHeight( wxCommandEvent& event )
 {
-    Design::AlbumPageDefaults( )->PaperHeight( Design::AlbumPageDefaults( )->PaperHeightStr( ) );
+    Design::AlbumPageDefaults( )->PaperHeight( GetPaperHeight( ) );
 
     Update( );
     event.Skip( );
@@ -600,7 +600,7 @@ void PageDefaultsPanel::OnPaperHeight( wxCommandEvent& event )
 
 void PageDefaultsPanel::OnPaperWidth( wxCommandEvent& event )
 {
-    Design::AlbumPageDefaults( )->PaperWidth( Design::AlbumPageDefaults( )->PaperWidthStr( ) );
+    Design::AlbumPageDefaults( )->PaperWidth( GetPaperWidth( ) );
 
     Update( );
     event.Skip( );
@@ -610,7 +610,7 @@ void PageDefaultsPanel::OnPaperWidth( wxCommandEvent& event )
 
 void PageDefaultsPanel::OnPageHeight( wxCommandEvent& event )
 {
-    Design::AlbumPageDefaults( )->PageHeight( Design::AlbumPageDefaults( )->PageHeightStr( ) );
+    Design::AlbumPageDefaults( )->PageHeight( GetPageHeight( ) );
 
     Update( );
     event.Skip( );
@@ -620,7 +620,7 @@ void PageDefaultsPanel::OnPageHeight( wxCommandEvent& event )
 
 void PageDefaultsPanel::OnPageWidth( wxCommandEvent& event )
 {
-    Design::AlbumPageDefaults( )->PageWidth( Design::AlbumPageDefaults( )->PageWidthStr( ) );
+    Design::AlbumPageDefaults( )->PageWidth( GetPageWidth( ) );
 
     Update( );
     event.Skip( );
@@ -630,7 +630,7 @@ void PageDefaultsPanel::OnPageWidth( wxCommandEvent& event )
 
 void PageDefaultsPanel::OnTopPageMargin( wxCommandEvent& event )
 {
-    Design::AlbumPageDefaults( )->TopMargin( Design::AlbumPageDefaults( )->TopMarginStr( ) );
+    Design::AlbumPageDefaults( )->TopMargin( GetTopPageMargin( ) );
 
     Update( );
     event.Skip( );
@@ -640,7 +640,7 @@ void PageDefaultsPanel::OnTopPageMargin( wxCommandEvent& event )
 
 void PageDefaultsPanel::OnBottomPageMargin( wxCommandEvent& event )
 {
-    Design::AlbumPageDefaults( )->BottomMargin( Design::AlbumPageDefaults( )->BottomMarginStr( ) );
+    Design::AlbumPageDefaults( )->BottomMargin( GetBottomPageMargin( ) );
 
     Update( );
     event.Skip( );
@@ -650,7 +650,7 @@ void PageDefaultsPanel::OnBottomPageMargin( wxCommandEvent& event )
 
 void PageDefaultsPanel::OnLeftPageMargin( wxCommandEvent& event )
 {
-    Design::AlbumPageDefaults( )->LeftMargin( Design::AlbumPageDefaults( )->LeftMarginStr( ) );
+    Design::AlbumPageDefaults( )->LeftMargin( GetLeftPageMargin( ) );
 
     Update( );
     event.Skip( );
@@ -661,7 +661,7 @@ void PageDefaultsPanel::OnLeftPageMargin( wxCommandEvent& event )
 
 void PageDefaultsPanel::OnRightPageMargin( wxCommandEvent& event )
 {
-    Design::AlbumPageDefaults( )->RightMargin( Design::AlbumPageDefaults( )->RightMarginStr( ) );
+    Design::AlbumPageDefaults( )->RightMargin( GetRightPageMargin( ) );
 
 
     Update( );
@@ -672,7 +672,7 @@ void PageDefaultsPanel::OnRightPageMargin( wxCommandEvent& event )
 
 void PageDefaultsPanel::OnBorderFilename( wxCommandEvent& event )
 {
-    Design::AlbumPageDefaults( )->BorderFilename( Design::AlbumPageDefaults( )->BorderFilename( ) );
+    Design::AlbumPageDefaults( )->BorderFilename( GetBorderFilename( ) );
 
     Update( );
     event.Skip( );
@@ -682,7 +682,7 @@ void PageDefaultsPanel::OnBorderFilename( wxCommandEvent& event )
 
 void PageDefaultsPanel::OnBorderSize( wxCommandEvent& event )
 {
-    Design::AlbumPageDefaults( )->BorderSize( Design::AlbumPageDefaults( )->BorderSizeStr( ) );
+    Design::AlbumPageDefaults( )->BorderSize( GetBorderFilename( ) );
 
     Update( );
     event.Skip( );
@@ -690,7 +690,7 @@ void PageDefaultsPanel::OnBorderSize( wxCommandEvent& event )
 
 void PageDefaultsPanel::OnShowBorderCheckBoxClick( wxCommandEvent& event )
 {
-    Design::AlbumPageDefaults( )->ShowBorder( Design::AlbumPageDefaults( )->BorderSizeStr( ) );
+    Design::AlbumPageDefaults( )->ShowBorder( m_showBorder->GetValue( ) );
 
     Update( );
     event.Skip( );

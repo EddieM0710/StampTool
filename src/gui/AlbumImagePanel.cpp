@@ -113,7 +113,7 @@ bool AlbumImagePanel::Create( wxWindow* parent, wxWindowID id, const wxPoint& po
 void AlbumImagePanel::CreateControls( )
 {
     m_once = false;
-    m_zoom = 1;
+    m_zoom = .35;
     EnableScrolling( true, true );
     Refresh( );
 }
@@ -271,7 +271,7 @@ void AlbumImagePanel::OnContextMenu( wxContextMenuEvent& event )
         case wxID_ZOOM_100:
         {
 
-            m_zoom = .9;
+            m_zoom = .8;
             Refresh( );
             break;
         }
@@ -359,7 +359,7 @@ void AlbumImagePanel::OnPaint( wxPaintEvent& event )
                     //SetScrollbars( 30, 30, 400, 400, 0, 0 );
                 }
 
-                m_userScale = ( 1 - ( .9 - m_zoom ) );
+                m_userScale = ( 1 - ( .8 - m_zoom ) );
                 dc.SetUserScale( m_userScale, m_userScale );
 
                 dc.SetPen( *wxRED_PEN );

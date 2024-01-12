@@ -65,7 +65,7 @@ namespace Design {
     //----------------
 
 
-    void Defaults::Save( wxXmlNode* xmlNode, Design::AlbumAttrType type )
+    void Defaults::SaveDefault( wxXmlNode* xmlNode, Design::AlbumAttrType type )
     {
         // don't save it if it is equal to the App default
         if ( !ApplicationDefault[ type ].IsEmpty( ) && !IsEqual( type, ApplicationDefault[ type ] ) )
@@ -74,7 +74,7 @@ namespace Design {
 
     //----------------
 
-    void Defaults::Set( Design::AlbumAttrType type, wxString str )
+    void Defaults::SetDefault( Design::AlbumAttrType type, wxString str )
     {
         if ( str.IsEmpty( ) || IsEqual( type, ApplicationDefault[ type ] ) )
         {
@@ -88,7 +88,7 @@ namespace Design {
 
     //----------------
 
-    void Defaults::SetDbl( Design::AlbumAttrType type, double val )
+    void Defaults::SetDefaultDbl( Design::AlbumAttrType type, double val )
     {
         double defVal;
         bool isOK = ApplicationDefault[ type ].ToDouble( &defVal );
@@ -104,9 +104,9 @@ namespace Design {
 
     //----------------
 
-    void Defaults::Set( Design::AlbumAttrType type, bool val )
+    void Defaults::SetDefault( Design::AlbumAttrType type, bool val )
     {
-        if ( val == GetBool( type ) )
+        if ( val == GetDefaultBool( type ) )
         {
             DeleteAttribute( AttrNameStrings[ type ] );
         }
@@ -118,7 +118,7 @@ namespace Design {
 
     //----------------
 
-    wxString Defaults::Get( Design::AlbumAttrType type )
+    wxString Defaults::GetDefault( Design::AlbumAttrType type )
     {
         wxString str = GetAttrStr( type );
         if ( str.IsEmpty( ) )
@@ -133,16 +133,16 @@ namespace Design {
 
     //----------------
 
-    double Defaults::GetDbl( Design::AlbumAttrType type )
+    double Defaults::GetDefaultDbl( Design::AlbumAttrType type )
     {
         wxString str = GetAttrStr( type );
         if ( str.IsEmpty( ) )
         {
-            double defVal;
-            bool isOK = ApplicationDefault[ type ].ToDouble( &defVal );
+            double val;
+            bool isOK = ApplicationDefault[ type ].ToDouble( &val );
             if ( isOK )
             {
-                return defVal;
+                return val;
             }
             else
             {
@@ -158,7 +158,7 @@ namespace Design {
     //----------------
  //----------------
 
-    bool Defaults::GetBool( Design::AlbumAttrType type, bool defVal )
+    bool Defaults::GetDefaultBool( Design::AlbumAttrType type, bool defVal )
     {
         wxString str = GetAttrStr( type );
         if ( str.IsEmpty( ) )

@@ -177,9 +177,31 @@ public:
 
     void OnRightPageMargin( wxCommandEvent& event );
 
+    void OnTopContentMargin( wxCommandEvent& event );
+
+    void OnBottomContentMargin( wxCommandEvent& event );
+
+    void OnLeftContentMargin( wxCommandEvent& event );
+
+    void OnRightContentMargin( wxCommandEvent& event );
+
     void OnShowBorderCheckBoxClick( wxCommandEvent& event );
 
+    void SetTopContentMargin( wxString contentMargin );
+
+    void SetBottomContentMargin( wxString contentMargin );
+
+    void SetLeftContentMargin( wxString contentMargin );
+
+    void SetRightContentMargin( wxString contentMargin );
+
     void SetStatusList( );
+
+    void OnBorderSize( wxCommandEvent& event );
+
+    wxString GetBorderSize( );
+
+    void SetBorderSize( wxString size );
 
     void Update( );
 
@@ -196,7 +218,16 @@ private:
     wxTextCtrl* m_rightPageMargin;
     wxTextCtrl* m_leftPageMargin;
 
+    wxTextCtrl* m_topContentMargin;
+    wxTextCtrl* m_bottomContentMargin;
+    wxTextCtrl* m_rightContentMargin;
+    wxTextCtrl* m_leftContentMargin;
+
     wxCheckBox* m_showBorder;
+
+    wxTextCtrl* m_borderSize;
+
+
     //wxFontPickerCtrl* m_titleFontPicker;
     //wxColourPickerCtrl* m_titleColorPicker;
     wxTextCtrl* positionTextCtrl;
@@ -208,9 +239,6 @@ private:
     wxFontPickerCtrl* m_subTitleFontPicker;
     wxColourPickerCtrl* m_titleColorPicker;
     wxColourPickerCtrl* m_subTitleColorPicker;
-    wxBoxSizer* m_leftColumnVerticalSizer;
-    wxBoxSizer* m_rightColumnVerticalSizer;
-    ;
 };
 
 #endif

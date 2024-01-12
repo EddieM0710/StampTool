@@ -91,8 +91,6 @@ namespace Design {
         return false;
     };
 
-
-
     NodeStatus AlbumBase::ValidateChildren( AlbumBase* node )
     {
         if ( !node->IsStatusOK( ) )
@@ -101,7 +99,9 @@ namespace Design {
         }
         wxTreeItemIdValue cookie;
         wxTreeItemId parentID = GetTreeItemId( );
-        wxTreeItemId childID = GetAlbumTreeCtrl( )->GetFirstChild( parentID, cookie ); {
+        wxTreeItemId childID = GetAlbumTreeCtrl( )->GetFirstChild( parentID, cookie );
+        while ( childID )
+        {
             AlbumBaseType type = ( AlbumBaseType ) GetAlbumTreeCtrl( )->GetItemType( childID );
             LayoutBase* child = ( LayoutBase* ) GetAlbumTreeCtrl( )->GetItemNode( childID );
             if ( ValidateChildren( ( AlbumBase* ) child ) == AT_FATAL )
@@ -112,6 +112,91 @@ namespace Design {
             childID = GetAlbumTreeCtrl( )->GetNextChild( childID, cookie );
         }
         return AT_OK;
+    }
+
+    //----------------
+
+    double AlbumBase::GetAlbumAttributeDbl( Design::AlbumAttrType type )
+    {
+        wxString val = GetAttrStr( type );
+        if ( val.IsEmpty( ) )
+        {
+            return  m_albumDefaults->GetDefaultDbl( type );
+        }
+        return  GetAttrDbl( type );
+    }
+
+    //----------------
+
+    wxString AlbumBase::GetAlbumAttributeStr( Design::AlbumAttrType type )
+    {
+        wxString val = GetAttrStr( type );
+        if ( val.IsEmpty( ) )
+        {
+            return  GetDefaults( )->GetDefault( type );
+        }
+        return val;
+    }
+
+    //--------------
+
+
+    bool AlbumBase::GetAlbumAttributeBool( Design::AlbumAttrType type, bool defVal )
+    {
+        wxString catStr = GetAttrStr( type );
+        if ( catStr.IsEmpty( ) )
+        {
+            catStr = m_albumDefaults->GetDefault( type );
+            if ( catStr.IsEmpty( ) )
+            {
+                return defVal;
+            }
+        }
+        return String2Bool( catStr );
+    }
+
+    //----------------
+
+    void AlbumBase::SetAlbumAttributeStr( Design::AlbumAttrType type, wxString val )
+    {
+        if ( IsDefaultVal( type, val ) )
+        {
+            DeleteAttribute( AttrNameStrings[ type ] );
+        }
+        else
+        {
+            SetAttrStr( type, val );
+        }
+    }
+
+    //----------------
+
+    void AlbumBase::SetAlbumAttributeDbl( Design::AlbumAttrType type, double val )
+    {
+        SetAlbumAttributeStr( type, Dbl2String( val ) );
+    }
+
+    //----------------
+
+    void AlbumBase::SetAlbumAttributeBool( Design::AlbumAttrType type, bool val )
+    {
+        wxString str = Bool2String( val );
+        SetAlbumAttributeStr( type, str );
+
+    }
+
+    //--------------
+
+    bool AlbumBase::IsDefaultVal( AlbumAttrType type )
+    {
+        return m_albumDefaults->IsEqual( type, GetAttrStr( type ) );
+    }
+
+    //----------------
+
+    bool AlbumBase::IsDefaultVal( AlbumAttrType type, wxString val )
+    {
+        return m_albumDefaults->IsEqual( type, val );
     }
 
 }

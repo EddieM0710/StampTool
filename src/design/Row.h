@@ -50,26 +50,26 @@ namespace Design {
 
         void InitParameters( );
 
-        double GetRowAttributeDbl( Design::AlbumAttrType type );
-        wxString GetRowAttributeStr( Design::AlbumAttrType type );
-        bool GetRowAttributeBool( Design::AlbumAttrType type );
+        // double GetRowAttributeDbl( Design::AlbumAttrType type );
+        // wxString GetRowAttributeStr( Design::AlbumAttrType type );
+        // bool GetRowAttributeBool( Design::AlbumAttrType type );
 
-        void SetRowAttributeBool( Design::AlbumAttrType type, bool val );
-        void SetRowAttributeDbl( Design::AlbumAttrType type, double val );
-        void SetRowAttributeStr( Design::AlbumAttrType type, wxString val );
+        // void SetRowAttributeBool( Design::AlbumAttrType type, bool val );
+        // void SetRowAttributeDbl( Design::AlbumAttrType type, double val );
+        // void SetRowAttributeStr( Design::AlbumAttrType type, wxString val );
 
         bool CalculateSpacing( ) {
-            return GetRowAttributeBool( AT_CalculateSpacing );
+            return GetAlbumAttributeBool( AT_CalculateSpacing, true );
         };
         wxString GetTitleString( );
 
         wxString GetSubTitleString( );
 
         bool GetShowTitle( ) {
-            return GetRowAttributeBool( AT_ShowTitle );
+            return GetAlbumAttributeBool( AT_ShowTitle, false );
         };
         bool GetShowSubTitle( ) {
-            return GetRowAttributeBool( AT_ShowSubTitle );
+            return GetAlbumAttributeBool( AT_ShowSubTitle, false );
         };
 
         // void SetShowNbr( bool val ){};
@@ -82,16 +82,16 @@ namespace Design {
         void SetSubTitleString( wxString str );
 
         void SetShowTitle( bool val ) {
-            SetRowAttributeBool( AT_ShowTitle, val );
+            SetAlbumAttributeBool( AT_ShowTitle, val );
         };
 
         void SetShowSubTitle( bool val ) {
-            SetRowAttributeBool( AT_ShowSubTitle, val );
+            SetAlbumAttributeBool( AT_ShowSubTitle, val );
         };
 
-        bool IsDefaultVal( AlbumAttrType type );
+        // bool IsDefaultVal( AlbumAttrType type );
 
-        bool IsDefaultVal( AlbumAttrType type, wxString val );
+        // bool IsDefaultVal( AlbumAttrType type, wxString val );
 
         TitleFrame* GetTitleFrame( );
 
@@ -100,11 +100,11 @@ namespace Design {
         void DrawPDF( wxPdfDocument* doc, double x, double y );
 
         wxString GetFixedSpacing( ) {
-            return GetRowAttributeStr( AT_FixedSpacingSize );
+            return GetAlbumAttributeStr( AT_FixedSpacingSize );
         };
 
         double GetFixedSpacingDbl( ) {
-            return GetRowAttributeDbl( AT_FixedSpacingSize );
+            return GetAlbumAttributeDbl( AT_FixedSpacingSize );
         };
 
         void LoadFonts( wxXmlNode* node );
@@ -116,11 +116,11 @@ namespace Design {
         void Save( wxXmlNode* xmlNode );
 
         void SetFixedSpacingSize( wxString str ) {
-            SetRowAttributeStr( AT_FixedSpacingSize, str );
+            SetAlbumAttributeStr( AT_FixedSpacingSize, str );
         };
 
         void SetCalculateSpacing( bool val ) {
-            SetRowAttributeBool( AT_CalculateSpacing, val );
+            SetAlbumAttributeBool( AT_CalculateSpacing, val );
         };
 
         bool UpdateMinimumSize( );

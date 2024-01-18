@@ -74,8 +74,6 @@ namespace Utils {
 
     void Settings::InitSettings( )
     {
-        m_defaultSortOrder.Add( Catalog::NT_Period );
-        m_defaultSortOrder.Add( Catalog::NT_Decade );
         m_defaultSortOrder.Add( Catalog::NT_Year );
         m_defaultSortOrder.Add( Catalog::NT_Emission );
 
@@ -459,8 +457,6 @@ namespace Utils {
         if ( m_sortOrder.Count( ) <= 0 )
         {
             SetDirty( );
-            m_sortOrder.Add( Catalog::NT_Period );
-            m_sortOrder.Add( Catalog::NT_Decade );
             m_sortOrder.Add( Catalog::NT_Year );
             m_sortOrder.Add( Catalog::NT_Emission );
         }

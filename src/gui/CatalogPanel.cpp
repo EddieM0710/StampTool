@@ -47,6 +47,7 @@
 #include "collection/Collection.h"
 #include "gui/FileCreateDialog.h"
 #include "gui/RemoveVolumeDialog.h"
+#include "gui/ComparePanel.h"
 
 IMPLEMENT_DYNAMIC_CLASS( CatalogPanel, wxPanel )
 
@@ -213,6 +214,11 @@ void CatalogPanel::CreateControls( )
 
 void CatalogPanel::DoMergeCatalog( )
 {
+    ComparePanel comparePanel( this, ID_PREFERENCESDIALOG,
+        _( "Merge Catalogs" ) );
+
+    if ( comparePanel.ShowModal( ) == wxID_CANCEL )
+        return; // the user changed idea..
 
 }
 

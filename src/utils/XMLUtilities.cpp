@@ -287,8 +287,8 @@ namespace Utils {
         {
             wxString name = attr->GetName( );
             wxString val = attr->GetValue( );
-            //std::cout << "   \"" << name << "\"=\"" << val << "\"\n";
-            src->AddAttribute( name, val );
+            std::cout << "   \"" << name << "\"=\"" << val << "\"\n";
+            dest->AddAttribute( name, val );
             attr = attr->GetNext( );
         }
 
@@ -298,7 +298,7 @@ namespace Utils {
         while ( child )
         {
             wxString name = child->GetName( );
-            //std::cout << name << "\n";
+            std::cout << name << "\n";
             wxXmlNode* clone = NewNode( dest, child->GetName( ) );
             CopyNode( child, clone );
             child = child->GetNext( );
@@ -310,7 +310,7 @@ namespace Utils {
 
     void SetAttrDbl( wxXmlNode* node, wxString name, double val )
     {
-        SetAttrStr( node, name, Dbl2String(val)  );
+        SetAttrStr( node, name, Dbl2String( val ) );
     }
 
 

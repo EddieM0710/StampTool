@@ -47,6 +47,7 @@ namespace Catalog {
         };
 
         ~CatalogBase( ) {
+            SetNodeType( CatalogBaseType::NT_None );
             SetXMLCatNode( ( wxXmlNode* ) 0 );
         };
 

@@ -103,7 +103,7 @@ EVT_MENU( ID_PREFERENCES, StampToolFrame::OnPreferencesClick )
 EVT_MENU( ID_NEWCATALOG, StampToolFrame::OnNewCatalogClick )
 EVT_MENU( ID_OPENCATALOG, StampToolFrame::OnOpenCatalogClick )
 EVT_MENU( ID_CSVIMPORT, StampToolFrame::OnImportCatalogClick )
-EVT_MENU( ID_MERGE StampToolFrame::OnMergeCatalogClick )
+EVT_MENU( ID_MERGE, StampToolFrame::OnMergeCatalogClick )
 EVT_MENU( ID_REMOVECATALOG, StampToolFrame::OnRemoveCatalogClick )
 EVT_MENU( ID_NEWDESIGN, StampToolFrame::OnNewDesignClick )
 EVT_MENU( ID_OPENDESIGN, StampToolFrame::OnOpenDesignClick )
@@ -484,7 +484,7 @@ void StampToolFrame::OnImportCatalogClick( wxCommandEvent& event )
     event.Skip( );
 }
 
-void OnMergeCatalogClick( wxCommandEvent& event )
+void StampToolFrame::OnMergeCatalogClick( wxCommandEvent& event )
 {
     GetCatalogPagePanel( )->DoMergeCatalog( );
     event.Skip( );

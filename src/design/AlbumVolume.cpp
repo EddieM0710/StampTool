@@ -153,9 +153,11 @@ namespace Design {
             wxTreeItemId albumID = GetAlbumTreeCtrl( )->GetRootItem( );
             Design::Album* album = ( Design::Album* ) GetAlbumTreeCtrl( )->GetItemNode( albumID );
 
+            // Out with the old
             wxXmlNode* root = GetDoc( )->DetachRoot( );
             root->~wxXmlNode( );
 
+            //in with the new
             wxXmlNode* xmlNode = Utils::NewNode( GetDoc( ), Design::AlbumBaseNames[ Design::AT_Album ] );
             albumID = GetAlbumTreeCtrl( )->GetRootItem( );
             album->Save( xmlNode );

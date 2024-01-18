@@ -83,7 +83,12 @@ public:
 
 
     PreferencesDialog( );
-    PreferencesDialog( wxWindow* parent, wxWindowID id = SYMBOL_PreferencesDialog_IDNAME, const wxString& caption = SYMBOL_PreferencesDialog_TITLE, const wxPoint& pos = SYMBOL_PreferencesDialog_POSITION, const wxSize& size = SYMBOL_PreferencesDialog_SIZE, long style = SYMBOL_PreferencesDialog_STYLE );
+    PreferencesDialog( wxWindow* parent,
+        wxWindowID id = SYMBOL_PreferencesDialog_IDNAME,
+        const wxString& caption = SYMBOL_PreferencesDialog_TITLE,
+        const wxPoint& pos = SYMBOL_PreferencesDialog_POSITION,
+        const wxSize& size = SYMBOL_PreferencesDialog_SIZE,
+        long style = SYMBOL_PreferencesDialog_STYLE );
 
 
     bool Create( wxWindow* parent, wxWindowID id = SYMBOL_PreferencesDialog_IDNAME, const wxString& caption = SYMBOL_PreferencesDialog_TITLE, const wxPoint& pos = SYMBOL_PreferencesDialog_POSITION, const wxSize& size = SYMBOL_PreferencesDialog_SIZE, long style = SYMBOL_PreferencesDialog_STYLE );

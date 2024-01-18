@@ -21,6 +21,7 @@ Entry.cpp
 InventoryItem.cpp
 StampMount.cpp 
 MountCSV.cpp 
+MergeList.cpp 
 )
 
 

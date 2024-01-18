@@ -50,6 +50,8 @@ add_library( GuiFiles SHARED
     TOCTreeCtrl.cpp
     AlbumTOCTreeCtrl.cpp
     CatalogTOCTreeCtrl.cpp
+    CompEntry.cpp 
+    ComparePanel.cpp 
 )
 
 

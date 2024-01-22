@@ -184,7 +184,7 @@ void CompEntry::OnMergeEntryTextUpdated( wxCommandEvent& event )
     event.Skip( );
 }
 
-void CompEntry::Update( Catalog::MergeEntry* mergeEntry, Catalog::DataTypes type )
+void CompEntry::Update( Catalog::MergeData* mergeEntry, Catalog::DataTypes type )
 {
     m_type = type;
     m_targetFileEntry = mergeEntry->GetTargetEntry( );

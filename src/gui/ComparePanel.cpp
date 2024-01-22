@@ -37,6 +37,7 @@
 #include "catalog/CatalogData.h"
 #include "catalog/CatalogList.h"
 #include "gui/CompEntry.h"
+#include "gui/CompareTreeCtrl.h"
 #include "art/down.xpm"
 #include "art/up.xpm"
 #include "art/copy.xpm"
@@ -165,6 +166,7 @@ void ComparePanel::CreateControls( )
     m_targetFile = new wxChoice( targetFileSizer->GetStaticBox( ), ID_TARGETFILE,
         wxDefaultPosition, wxDefaultSize,
         m_catalogListCtrlStrings );
+    m_targetFile->SetSelection( 0 );
     Connect( ID_TARGETFILE, wxEVT_CHOICE, wxCommandEventHandler( ComparePanel::OnTargetFileTextUpdated ) );
 
     targetFileSizer->Add( m_targetFile, 1, wxGROW | wxTOP, 5 );
@@ -182,6 +184,7 @@ void ComparePanel::CreateControls( )
     m_mergeFile = new wxChoice( mergeFileSizer->GetStaticBox( ), ID_MERGEFILE,
         wxDefaultPosition, wxDefaultSize,
         m_catalogListCtrlStrings );
+    m_mergeFile->SetSelection( 0 );
     Connect( ID_MERGEFILE, wxEVT_CHOICE, wxCommandEventHandler( ComparePanel::OnMergeFileTextUpdated ) );
 
     mergeFileSizer->Add( m_mergeFile, 1, wxGROW | wxTOP, 5 );
@@ -207,14 +210,17 @@ void ComparePanel::CreateControls( )
 
     //wxListCtrl* itemListCtrl4 = new wxListCtrl( itemScrolledWindow2, ID_LISTCTRL, wxDefaultPosition, wxSize(100, 100), wxLC_REPORT );
 
-    m_listBox = new wxListView( entryListScrolledWindow, ID_LISTCTRL, wxDefaultPosition, wxDefaultSize, wxLC_REPORT | wxLC_SINGLE_SEL );
-    entryListVerticalSizer->Add( m_listBox, 1, wxGROW | wxALL, 5 );
+    // m_listBox = new wxListView( entryListScrolledWindow, ID_LISTCTRL, wxDefaultPosition, wxDefaultSize, wxLC_REPORT | wxLC_SINGLE_SEL );
+    // entryListVerticalSizer->Add( m_listBox, 1, wxGROW | wxALL, 5 );
+
+    m_compareTreeCtrl = new CompareTreeCtrl( entryListScrolledWindow, ID_LISTCTRL, wxDefaultPosition, wxDefaultSize, wxTR_HAS_BUTTONS | wxTR_FULL_ROW_HIGHLIGHT | wxTR_SINGLE | wxSUNKEN_BORDER | wxTR_DEFAULT_STYLE );
+    entryListVerticalSizer->Add( m_compareTreeCtrl, 1, wxGROW | wxALL, 0 );
+    m_compareTreeCtrl->SetComparePanel( this );
 
     entryListScrolledWindow->FitInside( );
-    // Connect( ID_LISTCTRL, wxEVT_LIST_ITEM_SELECTED, wxCommandEventHandler( ComparePanel::OnListCtrlSelected ) );
 
 
-     //Attrib Diff panel
+    //Attrib Diff panel
 
 
     wxPanel* mainAttributePanel = new wxPanel( mainSplitterWindow, ID_PANEL, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
@@ -243,7 +249,7 @@ void ComparePanel::CreateControls( )
     entrySelectBoxSizer->Add( compareStaticBoxSizer, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
     wxBoxSizer* radioButtonVSizer = new wxBoxSizer( wxVERTICAL );
-    compareStaticBoxSizer->Add( radioButtonVSizer, 1, wxALIGN_TOP | wxALL, 5 );
+    compareStaticBoxSizer->Add( radioButtonVSizer, 0, wxALIGN_TOP | wxALL, 5 );
 
     m_deepCompare = new wxRadioButton( compareStaticBoxSizer->GetStaticBox( ), ID_DEEPRADIOBUTTON, _( "Deep" ), wxDefaultPosition, wxDefaultSize, 0 );
     m_deepCompare->SetValue( false );
@@ -254,7 +260,7 @@ void ComparePanel::CreateControls( )
     radioButtonVSizer->Add( m_SelectedCompare, 0, wxALIGN_LEFT | wxALL, 5 );
 
     wxBoxSizer* checkBoxVSizer = new wxBoxSizer( wxVERTICAL );
-    compareStaticBoxSizer->Add( checkBoxVSizer, 2, wxGROW | wxALL, 5 );
+    compareStaticBoxSizer->Add( checkBoxVSizer, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
 
 
@@ -263,8 +269,8 @@ void ComparePanel::CreateControls( )
     {
         m_CompareCheckBoxStrings.Add( Catalog::DataTypeNames[ ( Catalog::DataTypes ) i ] );
     }
-    m_CompareCheckBox = new wxCheckListBox( compareStaticBoxSizer->GetStaticBox( ), ID_CHECKLISTBOX, wxDefaultPosition, wxDefaultSize, m_CompareCheckBoxStrings, wxLB_MULTIPLE | wxLB_ALWAYS_SB );
-    checkBoxVSizer->Add( m_CompareCheckBox, 1, wxGROW | wxALL, 5 );
+    m_CompareCheckBox = new wxCheckListBox( compareStaticBoxSizer->GetStaticBox( ), ID_CHECKLISTBOX, wxDefaultPosition, wxSize( -1, 40 ), m_CompareCheckBoxStrings, wxLB_MULTIPLE | wxLB_ALWAYS_SB );
+    checkBoxVSizer->Add( m_CompareCheckBox, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 5 );
 
 
     // wxStaticBox* showStaticBoxSizer = new wxStaticBox( mainAttributePanel, wxID_ANY, _( "Show" ) );
@@ -316,7 +322,7 @@ void ComparePanel::CreateControls( )
 
 
     wxScrolledWindow* attributeScrolledWindow = new wxScrolledWindow( mainAttributePanel, ID_SCROLLEDWINDOW, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxHSCROLL | wxVSCROLL );
-    entryDiffVerticalSizer->Add( attributeScrolledWindow, 1, wxGROW | wxALL, 5 );
+    entryDiffVerticalSizer->Add( attributeScrolledWindow, 2, wxGROW | wxALL, 5 );
     attributeScrolledWindow->SetScrollbars( 1, 1, 0, 0 );
     wxBoxSizer* attribiteVerticalSizer = new wxBoxSizer( wxVERTICAL );
     attributeScrolledWindow->SetSizer( attribiteVerticalSizer );
@@ -399,35 +405,34 @@ wxIcon ComparePanel::GetIconResource( const wxString& name )
 void ComparePanel::OnTargetFileTextUpdated( wxCommandEvent& event )
 {
     m_mergeList->SetTargetRoot( ( wxXmlNode* ) 0 );
-    m_listBox->ClearAll( );
+    m_compareTreeCtrl->Clear( );
     m_mergeList->Clear( );
 
-    wxListItem itemCol;
-    itemCol.SetText( "Entries                                  " );
-    itemCol.SetImage( -1 );
-    itemCol.SetWidth( 300 );
-    m_listBox->InsertColumn( 0, itemCol );
-    m_listBox->SetColumnWidth( 0, wxLIST_AUTOSIZE_USEHEADER );
+    // wxListItem itemCol;
+    // itemCol.SetText( "Entries                                  " );
+    // itemCol.SetImage( -1 );
+    // itemCol.SetWidth( 300 );
+    // m_listBox->InsertColumn( 0, itemCol );
+    // m_listBox->SetColumnWidth( 0, wxLIST_AUTOSIZE_USEHEADER );
 
     int sel = m_targetFile->GetSelection( );
 
     wxString str = m_catalogListCtrlStrings[ sel ];
     m_targetVolume = GetCatalogData( )->GetCatalogList( )->FindVolume( str );
-    m_mergeList->SetTargetRoot( m_targetVolume->GetDoc( )->GetRoot( ) );
-    m_mergeList->LoadEntryList( );
-    m_mergeList->AddMergeToEntryList( );
-    m_mergeList->SetStatus( );
-    int pos = 0;
-    Catalog::MergeEntryList* list = m_mergeList->GetMergeList( );
-    for ( Catalog::MergeEntryList::iterator it = std::begin( *list );
-        it != std::end( *list );
-        ++it )
-    {
-        Catalog::MergeEntry* mergeEntry = ( Catalog::MergeEntry* ) ( *it );
-        m_listBox->InsertItem( pos, mergeEntry->GetName( ), 0 );
-        m_listBox->SetItemData( pos, ( long ) mergeEntry );
-        m_listBox->SetItemBackgroundColour( pos, mergeEntry->GetColour( ) );
+    // m_mergeList->SetTargetRoot( m_targetVolume->GetDoc( )->GetRoot( ) );
+    if ( m_targetVolume )
+        m_compareTreeCtrl->LoadCompareTree( m_targetVolume->GetDoc( )->GetRoot( ) );
 
+
+    sel = m_mergeFile->GetSelection( );
+    if ( sel >= 0 && sel < m_catalogListCtrlStrings.Count( ) )
+    {
+        str = m_catalogListCtrlStrings[ sel ];
+        m_mergeVolume = GetCatalogData( )->GetCatalogList( )->FindVolume( str );
+        if ( m_mergeVolume )
+            m_compareTreeCtrl->LoadMergeToCompareTree( m_mergeVolume->GetDoc( )->GetRoot( ) );
+
+        m_mergeList->SetStatus( );
     }
     event.Skip( );
 }
@@ -435,52 +440,50 @@ void ComparePanel::OnTargetFileTextUpdated( wxCommandEvent& event )
 void ComparePanel::SetBackground( )
 {
 
-    m_mergeList->SetStatus( );
+    // m_mergeList->SetStatus( );
 
-    int pos = 0;
-    Catalog::MergeEntryList* list = m_mergeList->GetMergeList( );
-    for ( Catalog::MergeEntryList::iterator it = std::begin( *list );
-        it != std::end( *list );
-        ++it )
-    {
-        Catalog::MergeEntry* mergeEntry = ( Catalog::MergeEntry* ) ( *it );
-        m_listBox->SetItemBackgroundColour( pos, mergeEntry->GetColour( ) );
+    // int pos = 0;
+    // Catalog::MergeEntryList* list = m_mergeList->GetMergeList( );
+    // for ( Catalog::MergeEntryList::iterator it = std::begin( *list );
+    //     it != std::end( *list );
+    //     ++it )
+    // {
+    //     Catalog::MergeData* mergeEntry = ( Catalog::MergeData* ) ( *it );
+    //     m_listBox->SetItemBackgroundColour( pos, mergeEntry->GetColour( ) );
 
-    }
+    // }
 }
 
 void ComparePanel::OnMergeFileTextUpdated( wxCommandEvent& event )
 {
-    m_listBox->ClearAll( );
+    m_compareTreeCtrl->Clear( );
     m_mergeList->Clear( );
 
 
-    wxListItem itemCol;
-    itemCol.SetText( "Entries                                  " );
-    itemCol.SetImage( -1 );
-    itemCol.SetWidth( 300 );
-    m_listBox->InsertColumn( 0, itemCol );
-    m_listBox->SetColumnWidth( 0, wxLIST_AUTOSIZE_USEHEADER );
+    // wxListItem itemCol;
+    // itemCol.SetText( "Entries                                  " );
+    // itemCol.SetImage( -1 );
+    // itemCol.SetWidth( 300 );
+    // m_listBox->InsertColumn( 0, itemCol );
+    // m_listBox->SetColumnWidth( 0, wxLIST_AUTOSIZE_USEHEADER );
 
 
-    int sel = m_mergeFile->GetSelection( );
-
+    int sel = m_targetFile->GetSelection( );
     wxString str = m_catalogListCtrlStrings[ sel ];
-    m_mergeVolume = GetCatalogData( )->GetCatalogList( )->FindVolume( str );
-    m_mergeList->SetMergeRoot( m_mergeVolume->GetDoc( )->GetRoot( ) );
-    m_mergeList->LoadEntryList( );
-    m_mergeList->AddMergeToEntryList( );
-    m_mergeList->SetStatus( );
-    int pos = 0;
-    Catalog::MergeEntryList* list = m_mergeList->GetMergeList( );
-    for ( Catalog::MergeEntryList::iterator it = std::begin( *list );
-        it != std::end( *list );
-        ++it )
+    if ( m_targetVolume )
+        m_targetVolume = GetCatalogData( )->GetCatalogList( )->FindVolume( str );
+
+    m_compareTreeCtrl->LoadCompareTree( m_targetVolume->GetDoc( )->GetRoot( ) );
+
+    sel = m_mergeFile->GetSelection( );
+    if ( sel >= 0 && sel < m_catalogListCtrlStrings.Count( ) )
     {
-        Catalog::MergeEntry* mergeEntry = ( Catalog::MergeEntry* ) ( *it );
-        m_listBox->InsertItem( pos, mergeEntry->GetName( ), 0 );
-        m_listBox->SetItemData( pos, ( long ) mergeEntry );
-        m_listBox->SetItemBackgroundColour( pos, mergeEntry->GetColour( ) );
+        str = m_catalogListCtrlStrings[ sel ];
+        m_mergeVolume = GetCatalogData( )->GetCatalogList( )->FindVolume( str );
+        if ( m_mergeVolume )
+            m_compareTreeCtrl->LoadMergeToCompareTree( m_mergeVolume->GetDoc( )->GetRoot( ) );
+
+        m_mergeList->SetStatus( );
     }
     event.Skip( );
 }
@@ -489,23 +492,26 @@ void ComparePanel::OnMergeFileTextUpdated( wxCommandEvent& event )
 
 void ComparePanel::OnNextentryClick( wxCommandEvent& event )
 {
-    long sel = m_listBox->GetFocusedItem( );
-    sel += 1;
-    if ( sel < m_listBox->GetItemCount( ) )
+
+    wxTreeItemId sel = m_compareTreeCtrl->GetSelection( );
+    sel = m_compareTreeCtrl->FindNextEntryItem( sel );
+    if ( sel.IsOk( ) )
     {
-        m_listBox->Select( sel );
+        m_compareTreeCtrl->SelectItem( sel );
     }
+
     event.Skip( );
 }
 
 
 void ComparePanel::OnPrevEntryClick( wxCommandEvent& event )
 {
-    long sel = m_listBox->GetFocusedItem( );
-    sel -= 1;
-    if ( sel > 0 )
+
+    wxTreeItemId sel = m_compareTreeCtrl->GetSelection( );
+    sel = m_compareTreeCtrl->FindPrevEntryItem( sel );
+    if ( sel.IsOk( ) )
     {
-        m_listBox->Select( sel );
+        m_compareTreeCtrl->SelectItem( sel );
     }
     event.Skip( );
 }
@@ -526,28 +532,28 @@ void ComparePanel::OnShowallSelected( wxCommandEvent& event )
 
 void ComparePanel::OnCopyAllClick( wxCommandEvent& event )
 {
-    long sel = m_listBox->GetFocusedItem( );
+    // long sel = m_listBox->GetFocusedItem( );
 
-    Catalog::MergeEntry* mergeEntry = ( Catalog::MergeEntry* ) m_listBox->GetItemData( sel );
-    Catalog::Entry* targetCatEntry = mergeEntry->GetTargetEntry( );
-    Catalog::Entry* mergeCatEntry = mergeEntry->GetMergeEntry( );
-    if ( !targetCatEntry )
-    {
-        wxXmlNode* node = mergeCatEntry->GetCatXMLNode( );
+    // Catalog::MergeData* mergeEntry = ( Catalog::MergeData* ) m_listBox->GetItemData( sel );
+    // Catalog::Entry* targetCatEntry = mergeEntry->GetTargetEntry( );
+    // Catalog::Entry* mergeCatEntry = mergeEntry->GetMergeEntry( );
+    // if ( !targetCatEntry )
+    // {
+    //     wxXmlNode* node = mergeCatEntry->GetCatXMLNode( );
 
-        wxXmlNode* newTargetNode = new wxXmlNode( 0, wxXML_ELEMENT_NODE, node->GetName( ) );
+    //     wxXmlNode* newTargetNode = new wxXmlNode( 0, wxXML_ELEMENT_NODE, node->GetName( ) );
 
-        Utils::CopyNode( node, newTargetNode );
-        wxXmlNode* root = m_mergeList->GetTargetRoot( );
-        Catalog::AddEntry( root, newTargetNode, 0 );
-    }
-    else
-    {
-        for ( int i = 0; i < Catalog::DT_NbrTypes; i++ )
-        {
-            m_compEntry[ i ]->CopyAttribute( );
-        }
-    }
+    //     Utils::CopyNode( node, newTargetNode );
+    //     wxXmlNode* root = m_mergeList->GetTargetRoot( );
+    //     Catalog::AddEntry( root, newTargetNode, 0 );
+    // }
+    // else
+    // {
+    //     for ( int i = 0; i < Catalog::DT_NbrTypes; i++ )
+    //     {
+    //         m_compEntry[ i ]->CopyAttribute( );
+    //     }
+    // }
     event.Skip( );
 }
 
@@ -588,14 +594,13 @@ void ComparePanel::OnClear( wxCommandEvent& event )
 
 void ComparePanel::OnListCtrlSelected( wxListEvent& event )
 {
-    wxListItem item = event.GetItem( );
-    Catalog::MergeEntry* mergeEntry = ( Catalog::MergeEntry* ) item.GetData( );
-    UpdataCompEntryTable( item );
+    // wxListItem item = event.GetItem( );
+    // Catalog::MergeData* mergeEntry = ( Catalog::MergeData* ) item.GetData( );
+    // UpdateCompEntryTable(  mergeEntry  );
 }
 
-void ComparePanel::UpdataCompEntryTable( wxListItem& item )
+void ComparePanel::UpdateCompEntryTable( Catalog::MergeData* mergeEntry )
 {
-    Catalog::MergeEntry* mergeEntry = ( Catalog::MergeEntry* ) m_listBox->GetItemData( item );
     Catalog::Entry* targetCatEntry = mergeEntry->GetTargetEntry( );
     Catalog::Entry* mergeCatEntry = mergeEntry->GetMergeEntry( );
     if ( !mergeCatEntry )

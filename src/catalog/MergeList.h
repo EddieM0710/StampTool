@@ -38,22 +38,23 @@ class ComparePanel;
 namespace Catalog
 {
     typedef enum {
-        MS_Undefined = -1,
-        MS_Same = 0,
-        MS_Different,
+        MS_None = 0,
         MS_TargetMissing,
-        MS_MergeMissing
+        MS_MergeMissing,
+        MS_Same,
+        MS_Different,
+        MS_Undefined
     } MergeStatus;
 
-    class MergeEntry
+    class MergeData
     {
     public:
 
-        MergeEntry( ComparePanel* parent );
+        MergeData( ComparePanel* parent );
 
-        MergeEntry( wxXmlNode* targetEntry, wxXmlNode* mergeEntry );
+        MergeData( wxXmlNode* targetEntry, wxXmlNode* mergeEntry );
 
-        ~MergeEntry( );
+        ~MergeData( );
 
         void SetTargetEntry( wxXmlNode* targetEntry );
 
@@ -65,7 +66,7 @@ namespace Catalog
 
         MergeStatus GetStatus( );
 
-        void SetStatus( );
+        MergeStatus SetStatus( );
 
         Entry* GetTargetEntry( );
 
@@ -88,7 +89,7 @@ namespace Catalog
 
 
 
-    typedef std::vector<MergeEntry*> MergeEntryList;
+    typedef std::vector<MergeData*> MergeEntryList;
 
 
 
@@ -112,7 +113,7 @@ namespace Catalog
 
         void AddMergeEntryList( wxXmlNode* node );
 
-        MergeEntry* FindTargetEntryForNewEntry( Entry* entry, DataTypes type );
+        MergeData* FindTargetEntryForNewEntry( Entry* entry, DataTypes type );
 
         void AddMergeToEntryList( wxXmlNode* node );
 

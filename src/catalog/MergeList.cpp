@@ -42,7 +42,7 @@ namespace Catalog
 {
     //--------------
 
-    MergeEntry::MergeEntry( ComparePanel* parent ){
+    MergeData::MergeData( ComparePanel* parent ){
         m_status = MS_Undefined;
         m_targetEntry = ( Entry* ) 0;
         m_mergeEntry = ( Entry* ) 0;
@@ -51,7 +51,7 @@ namespace Catalog
 
     //--------------
 
-    MergeEntry::MergeEntry( wxXmlNode* targetEntry, wxXmlNode* mergeEntry )
+    MergeData::MergeData( wxXmlNode* targetEntry, wxXmlNode* mergeEntry )
     {
         m_status = MS_Undefined;
         m_targetEntry = new Entry( targetEntry );
@@ -69,7 +69,7 @@ namespace Catalog
 
     //--------------
 
-    MergeEntry::~MergeEntry( )
+    MergeData::~MergeData( )
     {
         if ( m_targetEntry )
             delete m_targetEntry;
@@ -82,7 +82,7 @@ namespace Catalog
 
     //--------------
 
-    wxString MergeEntry::GetName( )
+    wxString MergeData::GetName( )
     {
         wxString name = "";
         if ( m_targetEntry )
@@ -101,7 +101,7 @@ namespace Catalog
     }
     //--------------
 
-    int MergeEntry::cmp( DataTypes type ){
+    int MergeData::cmp( DataTypes type ){
         if ( m_targetEntry->GetCatXMLNode( ) && m_mergeEntry->GetCatXMLNode( ) )
         {
             return ( m_comparePanel->CompareEnabled( ( int ) type ) &&
@@ -110,40 +110,41 @@ namespace Catalog
         return false;
     };
 
-    MergeStatus MergeEntry::GetStatus( ){
+    MergeStatus MergeData::GetStatus( ){
         return m_status;
     };
 
     //--------------
 
-    void MergeEntry::SetStatus( ){
+    MergeStatus MergeData::SetStatus( ){
         if ( !m_targetEntry || m_targetEntry == ( Entry* ) 0x8000000000000000 )
         {
             m_status = MS_TargetMissing;
-            return;
+            return m_status;
         }
         else if ( !m_mergeEntry || m_mergeEntry == ( Entry* ) 0x8000000000000000 )
         {
             m_status = MS_MergeMissing;
-            return;
+            return m_status;
         }
         for ( int i = 0; i < DT_NbrTypes; i++ )
         {
             if ( cmp( ( DataTypes ) i ) )
             {
                 m_status = MS_Different;
-                return;
+                return m_status;
             }
             else
             {
                 m_status = MS_Same;
             }
         }
+        return MS_Undefined;
     };
 
     //--------------
 
-    void MergeEntry::SetTargetEntry( wxXmlNode* targetEntry ){
+    void MergeData::SetTargetEntry( wxXmlNode* targetEntry ){
         m_status = MS_Undefined;
         m_targetEntry = new Entry( targetEntry );
         if ( m_name.IsEmpty( ) && m_targetEntry )
@@ -154,7 +155,7 @@ namespace Catalog
 
     //--------------
 
-    void  MergeEntry::SetMergeEntry( wxXmlNode* mergeEntry ){
+    void  MergeData::SetMergeEntry( wxXmlNode* mergeEntry ){
         m_status = MS_Undefined;
         m_mergeEntry = new Entry( mergeEntry );
         if ( m_name.IsEmpty( ) && m_mergeEntry )
@@ -165,7 +166,7 @@ namespace Catalog
 
     //--------------
 
-    wxColour  MergeEntry::GetColour( )
+    wxColour  MergeData::GetColour( )
     {
         if ( m_status == MS_Undefined )
         {
@@ -196,19 +197,19 @@ namespace Catalog
 
     //--------------
 
-    Entry* MergeEntry::GetTargetEntry( ){
+    Entry* MergeData::GetTargetEntry( ){
         return   m_targetEntry;
     }
 
     //--------------
 
-    Entry* MergeEntry::GetMergeEntry( ){
+    Entry* MergeData::GetMergeEntry( ){
         return m_mergeEntry;
     }
 
     //--------------
 
-    wxString MergeEntry::GetTargetAttribute( DataTypes type ){
+    wxString MergeData::GetTargetAttribute( DataTypes type ){
         if ( m_targetEntry )
         {
             return  m_targetEntry->GetAttr( type );
@@ -221,7 +222,7 @@ namespace Catalog
 
     //--------------
 
-    wxString MergeEntry::GetMergeAttribute( DataTypes type ){
+    wxString MergeData::GetMergeAttribute( DataTypes type ){
         if ( m_mergeEntry )
         {
             return  m_mergeEntry->GetAttr( type );
@@ -271,7 +272,7 @@ namespace Catalog
     {
         if ( !node->GetName( ).Cmp( CatalogBaseNames[ NT_Entry ] ) )
         {
-            MergeEntry* entry = new MergeEntry( m_comparePanel );
+            MergeData* entry = new MergeData( m_comparePanel );
             entry->SetTargetEntry( node );
             m_mergeList.push_back( entry );
         }
@@ -304,7 +305,7 @@ namespace Catalog
     {
         if ( !node->GetName( ).Cmp( CatalogBaseNames[ NT_Entry ] ) )
         {
-            MergeEntry* entry = new MergeEntry( m_comparePanel );
+            MergeData* entry = new MergeData( m_comparePanel );
             entry->SetMergeEntry( node );
             m_mergeList.push_back( entry );
         }
@@ -318,20 +319,20 @@ namespace Catalog
 
     //--------------
 
-    MergeEntry* MergeList::FindTargetEntryForNewEntry( Entry* entry, DataTypes type )
+    MergeData* MergeList::FindTargetEntryForNewEntry( Entry* entry, DataTypes type )
     {
         wxString entryVal = entry->GetAttr( type );
         for ( MergeEntryList::iterator it = std::begin( m_mergeList );
             it != std::end( m_mergeList );
             ++it )
         {
-            MergeEntry* mergeEntry = ( MergeEntry* ) ( *it );
+            MergeData* mergeEntry = ( MergeData* ) ( *it );
             if ( !entryVal.Cmp( mergeEntry->GetTargetAttribute( type ) ) )
             {
                 return mergeEntry;
             }
         }
-        return ( MergeEntry* ) 0;
+        return ( MergeData* ) 0;
     }
 
     //--------------
@@ -341,14 +342,14 @@ namespace Catalog
         if ( node )
         {
             Entry entry( node );
-            MergeEntry* mergeEntry = FindTargetEntryForNewEntry( &entry, DT_Link );
+            MergeData* mergeEntry = FindTargetEntryForNewEntry( &entry, DT_Link );
             if ( mergeEntry )
             {
                 mergeEntry->SetMergeEntry( node );
             }
             else
             {
-                MergeEntry* entry = new MergeEntry( m_comparePanel );
+                MergeData* entry = new MergeData( m_comparePanel );
                 entry->SetMergeEntry( node );
                 m_mergeList.push_back( entry );
             }
@@ -396,7 +397,7 @@ namespace Catalog
             it != std::end( m_mergeList );
             ++it )
         {
-            MergeEntry* mergeEntry = ( MergeEntry* ) ( *it );
+            MergeData* mergeEntry = ( MergeData* ) ( *it );
             mergeEntry->SetStatus( );
         }
     }
@@ -413,7 +414,7 @@ namespace Catalog
         {
             for ( int i = len - 1; i >= 0; i-- )
             {
-                MergeEntry* entry = m_mergeList[ i ];
+                MergeData* entry = m_mergeList[ i ];
                 delete entry;
                 m_mergeList.pop_back( );
             }

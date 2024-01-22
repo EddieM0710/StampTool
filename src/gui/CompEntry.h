@@ -107,7 +107,7 @@ public:
         return m_mergeVal->GetValue( );;
     };
 
-    void Update( Catalog::MergeEntry* mergeEntry, Catalog::DataTypes type );
+    void Update( Catalog::MergeData* mergeEntry, Catalog::DataTypes type );
 
     void SetComparePanel( ComparePanel* comparePanel ){
         m_comparePanel = comparePanel;

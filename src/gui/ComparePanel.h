@@ -60,7 +60,7 @@
 #define SYMBOL_COMPAREPANEL_POSITION wxDefaultPosition
 
 class CompEntry;
-
+class CompareTreeCtrl;
 
 class ComparePanel : public wxDialog
 {
@@ -146,7 +146,7 @@ public:
 
     static bool ShowToolTips( );
 
-    void UpdataCompEntryTable( wxListItem& item );
+    void UpdateCompEntryTable( Catalog::MergeData* mergeEntry );
     void OnListCtrlSelected( wxListEvent& event );
 
     wxChoice* m_targetFile;
@@ -156,7 +156,7 @@ public:
     wxBitmapButton* m_merge;
     wxBitmapButton* m_undo;
     wxTextCtrl* m_mergeVal;
-    wxListView* m_listBox;
+    // wxListView* m_listBox;
     wxBitmapButton* m_copyAllButton;
 
     wxRadioButton* m_deepCompare;
@@ -168,6 +168,8 @@ public:
     Utils::Volume* m_mergeVolume;
     Catalog::MergeList* m_mergeList;
     CompEntry* m_compEntry[ Catalog::DT_NbrTypes ];
+    CompareTreeCtrl* m_compareTreeCtrl;
+
 };
 
 #endif

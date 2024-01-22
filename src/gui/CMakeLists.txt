@@ -20,6 +20,7 @@ add_library( GuiFiles SHARED
     AlbumImagePanel.cpp 
     CatalogPanel.cpp 
     CatalogTreeCtrl.cpp
+    CompareTreeCtrl.cpp
     CharacteristicsPanel.cpp 
     ColDetailsPanel.cpp
     DefinePeriodsPanel.cpp

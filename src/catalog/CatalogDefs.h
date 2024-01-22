@@ -54,7 +54,8 @@ namespace Catalog {
         NT_Inventory,
         NT_Item,
         NT_None,
-        NT_NbrTypes
+        NT_NbrTypes,
+        NT_Foriegn
     } CatalogBaseType;
 
 

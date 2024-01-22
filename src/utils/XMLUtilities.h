@@ -118,46 +118,20 @@ namespace Utils {
     extern int frameIndex;
     extern int imageIndex;
 
-    /**
-     * @brief get the next z index
-     *
-     * @param str
-     * @return char*
-     */
+
     char* GetZIndex( char* str );
 
-    /**
-     * @brief Get the  next Image Name index
-     *
-     * @param str
-     * @return char*
-     */
+
     char* GetImageName( char* str );
 
-    /**
-     * @brief Get the next Frame Name ndx
-     *
-     * @param str
-     * @return char*
-     */
+
     char* GetFrameName( char* str );
 
     wxString GetTextStyleName( wxString& str );
-    /**
-     * @brief Get the next Draw Name inde
-     *
-     * @param str
-     * @return char*
-     */
+
     char* GetDrawName( char* str );
 
-    /**
-     * @brief Convert a double to astring with an "indemenion attached"
-     *
-     * @param str
-     * @param nbr
-     * @return char*
-     */
+
     char* DoubleToMMString( char* str, double nbr );
 
 

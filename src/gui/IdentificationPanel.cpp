@@ -82,6 +82,7 @@ void IdentificationPanel::Clear( )
     m_name->ChangeValue( "" );
     m_emission->SetSelection( 0 );
     m_format->SetSelection( 0 );
+    m_description->ChangeValue( "" );
     m_issueDate->ChangeValue( "" );
     m_series->ChangeValue( "" );
     m_themes->ChangeValue( "" );
@@ -131,6 +132,7 @@ void IdentificationPanel::Init( )
     m_height = NULL;
     m_emission = NULL;
     m_format = NULL;
+    m_description = NULL;
     m_issueDate = NULL;
     m_series = NULL;
     m_themes = NULL;
@@ -147,8 +149,14 @@ void IdentificationPanel::Init( )
 void IdentificationPanel::CreateControls( )
 {
 
-    IdentificationPanel* thePanel = this;
+    IdentificationPanel* theMainPanel = this;
     int lastID = ID_IDLABELEDTEXTBOX;
+    wxBoxSizer* topPanelVerticalSizer = new wxBoxSizer( wxVERTICAL );
+    theMainPanel->SetSizer( topPanelVerticalSizer );
+
+    wxScrolledWindow* thePanel = new wxScrolledWindow( theMainPanel, ID_SCROLLEDWINDOW2, wxDefaultPosition, wxSize( 100, 100 ), wxSUNKEN_BORDER | wxHSCROLL | wxVSCROLL );
+    thePanel->SetScrollbars( 1, 1, 0, 0 );
+    topPanelVerticalSizer->Add( thePanel, 1, wxGROW | wxALL, 0 );
     wxBoxSizer* panelVerticalSizer = new wxBoxSizer( wxVERTICAL );
     thePanel->SetSizer( panelVerticalSizer );
 
@@ -244,6 +252,8 @@ void IdentificationPanel::CreateControls( )
     m_height = SetupLabelText( sizeBox, sizeHorizontalSizer, ++lastID, "Height", false, wxCommandEventHandler( IdentificationPanel::OnHeightUpdated ) );
 
     m_link = SetupLabelText( thePanel, panelVerticalSizer, ++lastID, "Link", true, wxCommandEventHandler( IdentificationPanel::OnLinkUpdated ) );
+
+    m_description = SetupLabelText( thePanel, panelVerticalSizer, ++lastID, "Description", true, wxCommandEventHandler( IdentificationPanel::OnDescriptionUpdated ) );
 
     // wxBoxSizer* itemBoxSizer8 = new wxBoxSizer( wxHORIZONTAL );
    //  panelVerticalSizer->Add( itemBoxSizer8, 1, wxGROW | wxALL, 5 );
@@ -363,6 +373,11 @@ void IdentificationPanel::OnGumUpdated( wxCommandEvent& event )
     event.Skip( );
 }
 
+void IdentificationPanel::OnDescriptionUpdated( wxCommandEvent& event )
+{
+    UpdateStampValue( Catalog::DT_Description, m_description );
+    event.Skip( );
+}
 void IdentificationPanel::OnPrintingUpdated( wxCommandEvent& event )
 {
     UpdateStampValue( Catalog::DT_Printing, m_printing );
@@ -453,6 +468,7 @@ void IdentificationPanel::UpdatePanel( )
         m_issueDate->SetValue( stamp.GetAttr( Catalog::DT_Issued_on ) );
         SetChoice( m_emission, stamp.GetEmission( ) );
         SetChoice( m_format, stamp.GetFormat( ) );
+        m_description->ChangeValue( stamp.GetAttr( Catalog::DT_Description ) );
         m_series->ChangeValue( stamp.GetAttr( Catalog::DT_Series ) );
         m_themes->ChangeValue( stamp.GetAttr( Catalog::DT_Themes ) );
         m_country->ChangeValue( stamp.GetAttr( Catalog::DT_Country ) );
@@ -474,6 +490,7 @@ void IdentificationPanel::SetDataEditable( bool val )
     m_issueDate->SetEditable( val );
     m_emission->Enable( val );
     m_format->Enable( val );
+    m_description->Enable( val );
     m_themes->SetEditable( val );
     //   m_ID->SetEditable( val );
     m_name->SetEditable( val );

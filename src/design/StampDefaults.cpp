@@ -88,8 +88,8 @@ namespace Design {
         ApplicationDefault[ AT_RightContentMargin ] = Dbl2String( 2 );
         ApplicationDefault[ AT_SelvageHeight ] = Dbl2String( 0 );
         ApplicationDefault[ AT_SelvageWidth ] = Dbl2String( 0 );
-        ApplicationDefault[ AT_MountAllowanceHeight ] = Dbl2String( 5 );
-        ApplicationDefault[ AT_MountAllowanceWidth ] = Dbl2String( 4 );
+        ApplicationDefault[ AT_MountAllowanceHeight ] = Dbl2String( 6 );
+        ApplicationDefault[ AT_MountAllowanceWidth ] = Dbl2String( 6 );
         ApplicationDefault[ AT_StampNamePosition ] = Design::StampNamePositionStrings[ AT_StampNamePositionTop ];
         ApplicationDefault[ AT_StampMargin ] = Dbl2String( 2 );
         ApplicationDefault[ AT_Catalog ] = "Mi";

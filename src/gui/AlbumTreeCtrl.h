@@ -80,7 +80,7 @@ public:
     DesignTreeItemData( Design::AlbumBaseType type, const wxString desc,
         Design::AlbumBase* ele = 0, Utils::StampLink* stampLink = 0 )
     {
-        m_ok = 0x12345;
+
         m_type = type;
         m_desc = desc;
         m_element = ele;
@@ -92,7 +92,7 @@ public:
     ///  @param data 
     DesignTreeItemData( DesignTreeItemData& data )
     {
-        m_ok = 0x12345;
+
         m_type = data.GetType( );
         m_desc = data.GetDesc( );
         m_element = data.GetNodeElement( );
@@ -103,7 +103,7 @@ public:
     ///  
     ~DesignTreeItemData( )
     {
-        m_ok = 0;
+
         m_type = Design::AT_None;
         m_desc = "";
         m_element = 0;
@@ -129,10 +129,7 @@ public:
     ///  
     ///  @return Design::AlbumBaseType 
     Design::AlbumBaseType GetType( ) {
-        if ( !IsOk( ) )
-        {
-            int a = 0;
-        }
+
         return m_type;
     };
 
@@ -140,10 +137,7 @@ public:
     ///  
     ///  @return Utils::StampLink* 
     Utils::StampLink* GetStampLink( ) {
-        if ( !IsOk( ) )
-        {
-            int a = 0;
-        }
+
         return m_stampLink;
     };
 
@@ -151,20 +145,17 @@ public:
     ///  
     ///  @return true 
     ///  @return false 
-    bool IsOk( )
-    {
-        if ( m_ok == 0x12345 )return true;
-        return false;
-    }
+    // bool IsOk( )
+    // {
+    //     if ( m_ok == 0x12345 )return true;
+    //     return false;
+    // }
 
     ///  @brief Set the Desc object
     ///  
     ///  @param desc 
     void SetDesc( wxString desc ) {
-        if ( !IsOk( ) )
-        {
-            int a = 0;
-        }
+
         m_desc = desc;
     };
 
@@ -172,10 +163,7 @@ public:
     ///  
     ///  @param ele 
     void SetNodeElement( Design::AlbumBase* ele ) {
-        if ( !IsOk( ) )
-        {
-            int a = 0;
-        }
+
         m_element = ele;
     };
 
@@ -189,15 +177,12 @@ public:
     ///  
     ///  @param type 
     void SetType( Design::AlbumBaseType type ) {
-        if ( !IsOk( ) )
-        {
-            int a = 0;
-        }
+
         m_type = type;
     };
 
 private:
-    int m_ok;
+
     Design::AlbumBase* m_element;
     wxString m_desc;
     Design::AlbumBaseType m_type;
@@ -220,7 +205,7 @@ public:
 
 
     AlbumTreeCtrl( ) {
-        m_OK = 0x12345;
+
     }
 
     AlbumTreeCtrl( wxWindow* parent, const wxWindowID id, const wxPoint& pos,
@@ -228,14 +213,14 @@ public:
 
 
     virtual ~AlbumTreeCtrl( void ) {
-        m_OK = 0;
+
     }
 
-    bool IsOk( )
-    {
-        if ( m_OK == 0x12345 )return true;
-        return false;
-    }
+    // bool IsOk( )
+    // {
+    //     if ( m_OK == 0x12345 )return true;
+    //     return false;
+    // }
 
     wxTreeItemId AddChild( wxTreeItemId parent, wxXmlNode* child );
 
@@ -385,7 +370,7 @@ public:
     void UpdateAlbumStampEntries( wxTreeItemId treeID );
 
 private:
-    int m_OK;
+    static int m_OK;
 
     void LogEvent( const wxString& name, const wxTreeEvent& event );
 

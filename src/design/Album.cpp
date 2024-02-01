@@ -102,13 +102,21 @@ namespace Design {
             Page* page = ( Page* ) GetAlbumTreeCtrl( )->GetItemNode( childID );
             if ( Design::IsPortrait( page->Orientation( ) ) )
             {
-                doc->AddPage( wxPORTRAIT );
+                doc->AddPage( wxPORTRAIT, wxPAPER_A3 );
                 page->DrawPDF( doc, width, height );
             }
             else
             {
-                doc->AddPage( wxLANDSCAPE, width, height );
-                page->DrawPDF( doc, height, width );
+                int offset = 0; ( GetAlbumAttributeDbl( AT_PaperWidth ) - GetAlbumAttributeDbl( AT_PageHeight ) ) / 2;
+                std::cout << "PAPER " << GetAlbumAttributeDbl( AT_PaperWidth ) << "  " << GetAlbumAttributeDbl( AT_PaperHeight ) << "\n";
+                std::cout << "PAGE " << GetAlbumAttributeDbl( AT_PageWidth ) << "  " << GetAlbumAttributeDbl( AT_PageHeight ) << "\n";
+                std::cout << "Offset " << offset << "\n";
+                doc->AddPage( wxPORTRAIT, wxPAPER_A3 );
+                //doc->Rotate( -90, 20 + GetAlbumAttributeDbl( AT_PageWidth ) / 2, 4 + GetAlbumAttributeDbl( AT_PageHeight ) / 2 );
+                doc->Rotate( 90, ( GetAlbumAttributeDbl( AT_PageHeight ) / 2 ) + 0, ( GetAlbumAttributeDbl( AT_PageWidth ) / 2 ) + 18 );
+                //  doc->AddPage( wxLANDSCAPE, width, height );
+                page->DrawPDF( doc, width, height );
+
             }
 
             childID = GetAlbumTreeCtrl( )->GetNextChild( parentID, cookie );

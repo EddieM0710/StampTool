@@ -122,10 +122,17 @@ namespace Design {
             {
                 m_subHeadingFrame->Init( );
             }
-
+            double minHeight = 2;
+            if ( GetShowHeading( ) )
+            {
+                minHeight += m_headingFrame->GetMinHeight( );
+            }
+            if ( GetShowSubHeading( ) )
+            {
+                minHeight += m_subHeadingFrame->GetMinHeight( );
+            }
             // set 2 * subHeading height to allow for spacing between title and subtitle
-            SetMinHeight( m_headingFrame->GetMinHeight( )
-                + 2 + m_subHeadingFrame->GetMinHeight( ) );
+            SetMinHeight( minHeight );
             SetMinWidth( std::max( titleWidth, subTitleWidth ) );
 
             SetHeight( GetMinHeight( ) );

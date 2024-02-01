@@ -45,12 +45,12 @@ namespace Utils {
     {
         wxString id = "";
         AlbumTreeCtrl* albumTreeCtrl = GetAlbumTreeCtrl( );
-        if ( albumTreeCtrl->IsOk( ) && m_designTreeID.IsOk( ) )
+        if ( albumTreeCtrl && m_designTreeID )
         {
 
             wxClientData* clientData = albumTreeCtrl->GetItemData( m_designTreeID );
             DesignTreeItemData* data = ( DesignTreeItemData* ) clientData;
-            if ( data && data->IsOk( ) )
+            if ( data )
             {
                 if ( data->GetType( ) == Design::AT_Stamp )
                 {

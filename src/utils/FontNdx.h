@@ -49,7 +49,7 @@ namespace Utils {
         void Set( int ndx );
 
         void MakeDefault( );
-        bool IsOk( ) { return ( m_ndx >= 0 ); };
+        //   bool IsOk( ) { return ( m_ndx >= 0 ); };
         Utils::Font* GetFont( );
     private:
         FontList* m_fontList;

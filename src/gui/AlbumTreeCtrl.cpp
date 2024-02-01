@@ -91,10 +91,7 @@ wxColour ItemBackgroundColour[ 3 ] = { wxNullColour, *wxYELLOW, *wxRED };
 //--------------
 
 void DesignTreeItemData::SetStampLink( Utils::StampLink* link ) {
-    if ( !IsOk( ) )
-    {
-        int a = 0;
-    }
+
     m_stampLink = link;
 };
 
@@ -106,7 +103,7 @@ AlbumTreeCtrl::AlbumTreeCtrl( wxWindow* parent, const wxWindowID id,
     : wxTreeCtrl( parent, id, pos, size, style )
 
 {
-    m_OK = 0x12345;
+
     m_reverseSort = true;
 
     CreateImageList( );
@@ -656,6 +653,7 @@ wxTreeItemId AlbumTreeCtrl::GetPage( wxTreeItemId id )
                 Design::AlbumBaseType childType = GetItemType( childID );
                 return childID;
             }
+            return ( wxTreeItemId ) 0;
         }
         else if ( type == Design::AT_Page )
         {
@@ -719,11 +717,10 @@ Design::AlbumBaseType AlbumTreeCtrl::GetItemType( wxTreeItemId albumID )
     {
 
         DesignTreeItemData* data = ( DesignTreeItemData* ) GetItemData( albumID );
-        if ( !data->IsOk( ) )
+        if ( data )
         {
-            int a = 1;
+            return data->GetType( );
         }
-        return data->GetType( );
     }
     return ( Design::AlbumBaseType ) Design::AT_NOTYPE;
 };
@@ -1004,6 +1001,13 @@ void AlbumTreeCtrl::OnSelChanged( wxTreeEvent& event )
     wxString desc = GetItemDesc( itemId );
 
     Design::AlbumBase* albumBase = ( Design::AlbumBase* ) GetItemNode( itemId );
+    Design::AlbumBaseType type = albumBase->GetNodeType( );
+    if ( type == Design::AT_Stamp )
+    {
+        Design::Stamp* stamp = ( Design::Stamp* ) albumBase;
+        wxString catNbr = stamp->GetCatalogNbr( );
+        GetCatalogTreeCtrl( )->SelectStamp( catNbr );
+    }
     GetFrame( )->GetAlbumPanel( )->ShowDetails( albumBase );
     bool status1 = itemId.IsOk( );
     wxTreeItemId pageId = GetPage( itemId );
@@ -1169,7 +1173,7 @@ void AlbumTreeCtrl::SetItemStampLink( wxTreeItemId albumID, Utils::StampLink* li
     if ( albumID.IsOk( ) )
     {
         DesignTreeItemData* data = ( DesignTreeItemData* ) GetItemData( albumID );
-        if ( data->IsOk( ) )
+        if ( data )
         {
             data->SetStampLink( link );
         }

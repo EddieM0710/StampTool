@@ -254,7 +254,7 @@ namespace Design {
             else
             {
                 doc->Line( 0, width, height, width );
-                doc->Line( height, 0, height, width );
+                doc->Line( 0, 0, 0, width );
             }
             doc->SetLineStyle( currStyle );
         }
@@ -491,11 +491,11 @@ namespace Design {
         }
 
         SetMinWidth( minWidth
-            + GetTopContentMargin( )
-            + GetBottomContentMargin( ) );
-        SetMinHeight( minHeight
             + GetLeftContentMargin( )
             + GetRightContentMargin( ) );
+        SetMinHeight( minHeight
+            + GetTopContentMargin( )
+            + GetBottomContentMargin( ) );
 
         GetErrorArray( )->Empty( );
 

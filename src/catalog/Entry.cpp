@@ -726,11 +726,11 @@ namespace Catalog {
         if ( GetCatXMLNode( )
             && !CatalogBaseNames[ NT_Entry ].Cmp( GetCatXMLNode( )->GetName( ) ) )
         {
-            m_OK = true;
-            return m_OK;
+
+            return true;
         }
-        m_OK = false;
-        return m_OK;
+
+        return false;
     };
 
     //-------

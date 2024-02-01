@@ -421,7 +421,7 @@ namespace Design {
             GetTitleFrame( )->SetYPos( GetRightContentMargin( ) );
             // Children start just below the title Frame
             // allow for space above title and space above and below it
-            yPos = GetTitleFrame( )->GetHeight( ) + GetTopContentMargin( ) + GetBottomContentMargin( );
+            yPos = GetTitleFrame( )->GetHeight( );// + GetTopContentMargin( )+ GetBottomContentMargin( );
         }
         else
         {

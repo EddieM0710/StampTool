@@ -188,16 +188,43 @@ void StampToolPanel::OnNotebookPageChanged( wxNotebookEvent& event )
     int sel = m_notebook->GetSelection( );
 
     wxWindow* page = m_notebook->GetPage( sel );
-
+    wxString catCode = "";
     if ( page != m_stampDescriptionPanel )
     {
+        wxTreeItemId selId = m_catalogPanel->GetCatalogTree( )->GetSelection( );
+        m_catalogPanel->GetCatalogTree( )->GetItemNode( selId );
+        Catalog::CatalogBaseType type = m_catalogPanel->GetCatalogTree( )->GetItemType( selId );
+        if ( type == Catalog::NT_Entry )
+        {
+            wxXmlNode* node = m_catalogPanel->GetCatalogTree( )->GetItemNode( selId );
+            Catalog::Entry* entry = new Catalog::Entry( node );
+            catCode = entry->GetID( );
+
+        }
         m_catalogPanel->GetCatalogTree( )->SetStates( true );
         m_catalogPanel->GetCatalogTree( )->LoadCatalogTree( );
+        if ( !catCode.IsEmpty( ) )
+        {
+            GetCatalogTreeCtrl( )->SelectStamp( catCode );
+        }
     }
     else //if ( page == m_stampDescriptionPanel )
     {
+        wxTreeItemId selId = m_catalogPanel->GetCatalogTree( )->GetSelection( );
+        m_catalogPanel->GetCatalogTree( )->GetItemNode( selId );
+        Catalog::CatalogBaseType type = m_catalogPanel->GetCatalogTree( )->GetItemType( selId );
+        if ( type == Catalog::NT_Entry )
+        {
+            wxXmlNode* node = m_catalogPanel->GetCatalogTree( )->GetItemNode( selId );
+            Catalog::Entry* entry = new Catalog::Entry( node );
+            catCode = entry->GetID( );
+        }
         m_catalogPanel->GetCatalogTree( )->SetStates( false );
         m_catalogPanel->GetCatalogTree( )->LoadCatalogTree( );
+        if ( !catCode.IsEmpty( ) )
+        {
+            GetCatalogTreeCtrl( )->SelectStamp( catCode );
+        }
     }
     event.Skip( );
 }

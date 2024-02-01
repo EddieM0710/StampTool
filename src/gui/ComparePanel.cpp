@@ -305,8 +305,8 @@ void ComparePanel::CreateControls( )
     m_copyAllButton->SetName( wxT( "mergeAll" ) );
     attributeHeaderBoxSizer->Add( m_copyAllButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
-    EVT_BUTTON( ID_COPYALL, ComparePanel::OnCopyAllClick )
-        Connect( ID_COPYALL, wxEVT_BUTTON, wxCommandEventHandler( ComparePanel::OnCopyAllClick ) );
+    // EVT_BUTTON( ID_COPYALL, ComparePanel::OnCopyAllClick )
+    Connect( ID_COPYALL, wxEVT_BUTTON, wxCommandEventHandler( ComparePanel::OnCopyAllClick ) );
 
     wxBitmapButton* undoCopyAllButton = new wxBitmapButton( mainAttributePanel, ID_UNDOCOPYALL, wxBitmap( redo_xpm ), wxDefaultPosition, wxDefaultSize, wxBU_AUTODRAW );
     if ( ComparePanel::ShowToolTips( ) )
@@ -533,27 +533,30 @@ void ComparePanel::OnShowallSelected( wxCommandEvent& event )
 void ComparePanel::OnCopyAllClick( wxCommandEvent& event )
 {
     // long sel = m_listBox->GetFocusedItem( );
+    wxTreeItemId sel = m_compareTreeCtrl->GetSelection( );
 
-    // Catalog::MergeData* mergeEntry = ( Catalog::MergeData* ) m_listBox->GetItemData( sel );
-    // Catalog::Entry* targetCatEntry = mergeEntry->GetTargetEntry( );
-    // Catalog::Entry* mergeCatEntry = mergeEntry->GetMergeEntry( );
-    // if ( !targetCatEntry )
-    // {
-    //     wxXmlNode* node = mergeCatEntry->GetCatXMLNode( );
 
-    //     wxXmlNode* newTargetNode = new wxXmlNode( 0, wxXML_ELEMENT_NODE, node->GetName( ) );
+    CompareTreeItemData* data = ( CompareTreeItemData* ) m_compareTreeCtrl->GetItemData( sel );
+    Catalog::MergeData* mergeEntry = ( Catalog::MergeData* ) data->GetMergeData( );;
+    Catalog::Entry* targetCatEntry = mergeEntry->GetTargetEntry( );
+    Catalog::Entry* mergeCatEntry = mergeEntry->GetMergeEntry( );
+    if ( !targetCatEntry )
+    {
+        wxXmlNode* node = mergeCatEntry->GetCatXMLNode( );
 
-    //     Utils::CopyNode( node, newTargetNode );
-    //     wxXmlNode* root = m_mergeList->GetTargetRoot( );
-    //     Catalog::AddEntry( root, newTargetNode, 0 );
-    // }
-    // else
-    // {
-    //     for ( int i = 0; i < Catalog::DT_NbrTypes; i++ )
-    //     {
-    //         m_compEntry[ i ]->CopyAttribute( );
-    //     }
-    // }
+        wxXmlNode* newTargetNode = new wxXmlNode( 0, wxXML_ELEMENT_NODE, node->GetName( ) );
+
+        Utils::CopyNode( node, newTargetNode );
+        wxXmlNode* root = m_mergeList->GetTargetRoot( );
+        Catalog::AddEntry( root, newTargetNode, 0 );
+    }
+    else
+    {
+        for ( int i = 0; i < Catalog::DT_NbrTypes; i++ )
+        {
+            m_compEntry[ i ]->CopyAttribute( );
+        }
+    }
     event.Skip( );
 }
 

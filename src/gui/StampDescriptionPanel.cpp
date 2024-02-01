@@ -156,7 +156,7 @@ void StampDescriptionPanel::CreateControls( void )
     wxSplitterWindow* horizontalSplitterWindow = new wxSplitterWindow(
         thisPanel, ID_HORIZONTALLITTERWINDOW, wxDefaultPosition,
         wxDefaultSize, wxSP_3DBORDER | wxSP_3DSASH | wxNO_BORDER );
-    horizontalSplitterWindow->SetSashPosition( 100 );
+    horizontalSplitterWindow->SetSashPosition( 200 );
     horizontalSplitterWindow->SetMinimumPaneSize( 50 );
     horizontalSplitterWindow->SetSashGravity( 0.2 );
 

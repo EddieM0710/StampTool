@@ -72,7 +72,8 @@ public:
         ID_NPMBUTTON,
         ID_CATCODETEXTBOX,
         ID_STAMPMOUNTTEXTBOX,
-        ID_IMAGENAMETEXTBOX
+        ID_IMAGENAMETEXTBOX,
+        ID_SCROLLEDWINDOW2
     };
 
 
@@ -137,6 +138,8 @@ public:
 
     void OnGumUpdated( wxCommandEvent& event );
 
+    void OnDescriptionUpdated( wxCommandEvent& event );
+
     void OnPrintingUpdated( wxCommandEvent& event );
 
     void OnSeriesUpdated( wxCommandEvent& event );
@@ -177,7 +180,7 @@ private:
     wxTextCtrl* m_height;   ///< Stamp height display
     wxTextCtrl* m_catCode;
     wxComboBox* mountComboBox;
-
+    wxTextCtrl* m_description;
     wxTextCtrl* m_link;
     wxTextCtrl* m_imageName;
 };

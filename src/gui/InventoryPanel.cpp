@@ -541,7 +541,7 @@ void InventoryPanel::UpdateInventory( )
     //set the new selection
     Inventory::Collection* col = GetCollectionList( )->GetCurrentCollection( );
 
-    if ( SetCollectionListCtrl( col ) )
+    if ( col && SetCollectionListCtrl( col ) )
     {
         //update the inventory
         UpdateInventoryGrid( );

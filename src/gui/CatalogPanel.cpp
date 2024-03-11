@@ -768,8 +768,12 @@ void CatalogPanel::SetVolumeListCtrl( )
     // TOCTreeItemData* data = ( TOCTreeItemData* ) m_tocTreeCtrl->GetItemData( treeId );
     wxString volName = m_tocTreeCtrl->GetItemText( treeId );
 
+    wxString colName = "";
     Inventory::Collection* collection = GetCollectionList( )->GetCurrentCollection( );
-    wxString colName = collection->GetName( );
+    if ( collection )
+    {
+        colName = collection->GetName( );
+    }
 
     m_volumeListCtrl->SetValue( volName + " - " + colName );
 }

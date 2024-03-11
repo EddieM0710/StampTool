@@ -352,15 +352,28 @@ namespace Utils {
 
         // Get Albums
         m_albumListNode = FirstChildElement( projectRoot, "AlbumList" );
-        GetAlbumData( )->GetAlbumList( ).AddChild( m_albumListNode );
+        if ( m_albumListNode )
+        {
+            GetAlbumData( )->GetAlbumList( ).AddChild( m_albumListNode );
+        }
+        else
+        {
+            m_albumListNode = NewNode( projectRoot, "AlbumList" );
+        }
 
         // Get Mounts
         wxXmlDocument* mountDoc = GetCatalogData( )->LoadMountCSV( );
 
         // Get Catalogs
         m_catalogListNode = FirstChildElement( projectRoot, "CatalogList" );
-        GetCatalogData( )->GetCatalogList( )->AddChild( m_catalogListNode );
-
+        if ( m_catalogListNode )
+        {
+            GetCatalogData( )->GetCatalogList( )->AddChild( m_catalogListNode );
+        }
+        else
+        {
+            m_catalogListNode = NewNode( projectRoot, "CatalogList" );
+        }
         GetSettings( )->SetLastFile( m_projectFilename );
 
         SetDirty( false );

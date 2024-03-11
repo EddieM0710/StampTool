@@ -63,6 +63,7 @@
 #include "gui/CatalogTOCTreeCtrl.h"
 #include "gui/AlbumTreeCtrl.h"
 #include "gui/NewStampDialog.h"
+#include "gui/ImageGalleryPanel.h"
 
 //wxDECLARE_APP( StampToolApp );
 
@@ -897,6 +898,29 @@ void CatalogTreeCtrl::LogEvent( const wxString& name, const wxTreeEvent& event )
 
 //--------------
 
+void  CatalogTreeCtrl::CountEntryTypes( wxTreeItemId parent, int& count )
+{
+    CatalogTreeItemData* data = ( CatalogTreeItemData* ) GetItemData( parent );
+    Catalog::CatalogBaseType type = data->GetType( );
+    if ( type == Catalog::NT_Entry )
+    {
+        count++;
+    }
+    wxTreeItemIdValue cookie;
+    wxTreeItemId child = GetFirstChild( parent, cookie );
+    while ( child.IsOk( ) )
+    {
+        CountEntryTypes( child, count );
+        child = GetNextChild( parent, cookie );
+    }
+}
+void CatalogTreeCtrl::CountEntryTypes( )
+{
+    wxTreeItemId child = GetRootItem( );
+    m_nbrEntryTypes = 0;
+    CountEntryTypes( child, m_nbrEntryTypes );
+}
+
 void CatalogTreeCtrl::LoadCatalogTree( )
 {
     Clear( );
@@ -935,7 +959,11 @@ void CatalogTreeCtrl::LoadCatalogTree( )
                 child = child->GetNext( );
             }
 
-            // update the Album stamp link list with new volume entries
+            //    CountEntryTypes( );
+
+            //    GetCatalogData( )->GetImageGalleryPanel( )->DrawBitmap( );
+
+                // update the Album stamp link list with new volume entries
             GetAlbumTreeCtrl( )->UpdateStampList( );
             SetStates( GetFrame( )->GetStampToolPanel( )->ShouldShowStates( ) );
             Expand( rootID );

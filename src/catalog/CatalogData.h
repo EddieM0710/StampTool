@@ -45,6 +45,8 @@ class StampDescriptionPanel;
 class CatalogPanel;
 class InventoryPanel;
 class GenerateList;
+class ImageGalleryPanel;
+
 
 namespace Catalog
 {
@@ -125,6 +127,14 @@ namespace Catalog
             m_generateListPanel = generateListPanel;
         };
 
+        void SetImageGalleryPanel( ImageGalleryPanel* imageGalleryPanel ) {
+            m_imageGalleryPanel = imageGalleryPanel;
+        };
+
+        ImageGalleryPanel* GetImageGalleryPanel( ) {
+            return m_imageGalleryPanel;
+        };
+
 
         void SetCatalogPanel( CatalogPanel* catalogPanel ) {
             m_catalogPanel = catalogPanel;
@@ -144,7 +154,7 @@ namespace Catalog
         CatalogTOCTreeCtrl* m_catalogTocTreeCtrl;
         StampDescriptionPanel* m_stampDescriptionPanel;
         GenerateList* m_generateListPanel;
-
+        ImageGalleryPanel* m_imageGalleryPanel;
         CatalogPanel* m_catalogPanel;
     };
 }

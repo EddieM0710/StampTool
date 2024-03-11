@@ -100,17 +100,17 @@ namespace Design {
 
         double SelvageHeight( )
         {
-            return GetAttrDbl( AT_SelvageHeight );
+            return GetDefaultDbl( AT_SelvageHeight );
         }
 
         wxString SelvageHeightStr( )
         {
-            return GetAttrStr( AT_SelvageHeight );
+            return GetDefault( AT_SelvageHeight );
         }
 
         void SelvageHeight( double val )
         {
-            SetAttrDbl( AT_SelvageHeight, val );
+            SetDefaultDbl( AT_SelvageHeight, val );
         }
 
         bool IsDefaultSelvageHeight( wxString str )
@@ -122,17 +122,17 @@ namespace Design {
 
         double SelvageWidth( )
         {
-            return GetAttrDbl( AT_SelvageWidth );
+            return GetDefaultDbl( AT_SelvageWidth );
         }
 
         wxString SelvageWidthStr( )
         {
-            return GetAttrStr( AT_SelvageWidth );
+            return GetDefault( AT_SelvageWidth );
         }
 
         void SelvageWidth( double val )
         {
-            SetAttrDbl( AT_SelvageWidth, val );
+            SetDefaultDbl( AT_SelvageWidth, val );
         }
 
         bool IsDefaultSelvageWidth( wxString str )
@@ -142,17 +142,22 @@ namespace Design {
 
         double MountAllowanceHeight( )
         {
-            return GetAttrDbl( AT_MountAllowanceHeight );
+            return GetDefaultDbl( AT_MountAllowanceHeight );
         }
+
         wxString MountAllowanceHeightStr( )
         {
-            return GetAttrStr( AT_MountAllowanceHeight );
+            return GetDefault( AT_MountAllowanceHeight );
         }
 
         void MountAllowanceHeight( double val )
         {
-            SetAttrDbl( AT_MountAllowanceHeight, val );
+            SetDefaultDbl( AT_MountAllowanceHeight, val );
         }
+
+        void MountAllowanceHeight( wxString str ) {
+            SetDefault( AT_MountAllowanceHeight, str );
+        };
 
         bool IsDefaultMountAllowanceHeight( wxString str )
         {
@@ -162,17 +167,17 @@ namespace Design {
 
         double MountAllowanceWidth( )
         {
-            return GetAttrDbl( AT_MountAllowanceWidth );
+            return GetDefaultDbl( AT_MountAllowanceWidth );
         }
 
         wxString MountAllowanceWidthStr( )
         {
-            return GetAttrStr( AT_MountAllowanceWidth );
+            return GetDefault( AT_MountAllowanceWidth );
         }
 
         void MountAllowanceWidth( double val )
         {
-            SetAttrDbl( AT_MountAllowanceWidth, val );
+            SetDefaultDbl( AT_MountAllowanceWidth, val );
         }
 
         bool IsDefaultMountAllowanceWidth( wxString str )

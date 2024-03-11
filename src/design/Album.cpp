@@ -74,10 +74,22 @@ namespace Design {
         wxFileName outFile( docName );
         outFile.MakeAbsolute( );
         wxString fullPath = outFile.GetFullPath( );
+        double pageWidth = AlbumPageDefaults( )->PageWidth( );
+        double pageHeight = AlbumPageDefaults( )->PageHeight( );;
+        double paperWidth;
+        double paperHeight;
+        if ( AlbumPageDefaults( )->OverSizePaper( ) )
+        {
+            paperWidth = AlbumPageDefaults( )->PaperWidth( );
+            paperHeight = AlbumPageDefaults( )->PaperHeight( );
+        }
+        else
+        {
+            paperWidth = pageWidth;
+            paperHeight = pageHeight;
+        }
 
-        double width = GetAlbumAttributeDbl( AT_PaperWidth );
-        double height = GetAlbumAttributeDbl( AT_PaperHeight );
-        wxPdfDocument* doc = new wxPdfDocument( wxPORTRAIT, width, height );
+        wxPdfDocument* doc = new wxPdfDocument( wxPORTRAIT, paperWidth, paperHeight );
 
         wxPdfDC pdfDC( doc, doc->GetPageWidth( ), doc->GetPageHeight( ) );
 
@@ -102,20 +114,21 @@ namespace Design {
             Page* page = ( Page* ) GetAlbumTreeCtrl( )->GetItemNode( childID );
             if ( Design::IsPortrait( page->Orientation( ) ) )
             {
-                doc->AddPage( wxPORTRAIT, wxPAPER_A3 );
-                page->DrawPDF( doc, width, height );
+                doc->AddPage( wxPORTRAIT, paperWidth, paperHeight );
+                page->DrawPDF( doc, paperWidth, paperHeight );
             }
             else
             {
-                int offset = 0; ( GetAlbumAttributeDbl( AT_PaperWidth ) - GetAlbumAttributeDbl( AT_PageHeight ) ) / 2;
-                std::cout << "PAPER " << GetAlbumAttributeDbl( AT_PaperWidth ) << "  " << GetAlbumAttributeDbl( AT_PaperHeight ) << "\n";
-                std::cout << "PAGE " << GetAlbumAttributeDbl( AT_PageWidth ) << "  " << GetAlbumAttributeDbl( AT_PageHeight ) << "\n";
+                int offset = 0;
+                // ( GetAlbumAttributeDbl( AT_PaperWidth ) - GetAlbumAttributeDbl( AT_PageHeight ) ) / 2;
+                std::cout << "PAPER " << paperWidth << "  " << paperHeight << "\n";
+                std::cout << "PAGE " << pageWidth << "  " << pageHeight << "\n";
                 std::cout << "Offset " << offset << "\n";
-                doc->AddPage( wxPORTRAIT, wxPAPER_A3 );
+                doc->AddPage( wxPORTRAIT, paperWidth, paperHeight );
                 //doc->Rotate( -90, 20 + GetAlbumAttributeDbl( AT_PageWidth ) / 2, 4 + GetAlbumAttributeDbl( AT_PageHeight ) / 2 );
-                doc->Rotate( 90, ( GetAlbumAttributeDbl( AT_PageHeight ) / 2 ) + 0, ( GetAlbumAttributeDbl( AT_PageWidth ) / 2 ) + 18 );
+                doc->Rotate( 90, ( pageHeight / 2 ) + 0, ( pageWidth / 2 ) + 18 );
                 //  doc->AddPage( wxLANDSCAPE, width, height );
-                page->DrawPDF( doc, width, height );
+                page->DrawPDF( doc, paperWidth, paperHeight );
 
             }
 

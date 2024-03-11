@@ -47,7 +47,7 @@
 #include "gui/GenerateList.h"
 #include "gui/CatalogTreeCtrl.h"
 #include "gui/GuiUtils.h"
-
+#include "gui/ImageGalleryPanel.h"
 #include "wx/pdfdc.h"
 #include "wx/pdffontmanager.h"
 #include "wx/pdfprint.h"
@@ -154,9 +154,31 @@ void StampToolPanel::CreateControls( )
 
     m_notebook->AddPage( m_generateListPanel, _( "  List  " ) );
 
+
+
+    // wxPanel* panel = new wxPanel( m_notebook, ID_IMAGEALLERYPANEL, wxDefaultPosition,
+    //     wxDefaultSize, wxTAB_TRAVERSAL );
+    // panel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
+
+    // wxBoxSizer* verticalSizer = new wxBoxSizer( wxVERTICAL );
+    // panel->SetSizer( verticalSizer );
+
+    // wxBoxSizer* horizontalSizer = new wxBoxSizer( wxHORIZONTAL );
+    // verticalSizer->Add( horizontalSizer, 1, wxGROW | wxALL, 5 );
+
+    // m_imageGalleryPanel = new ImageGalleryPanel( m_notebook,
+    //     ID_IMAGEALLERYPANEL1, wxDefaultPosition,
+    //     wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
+    // // horizontalSizer->Add( m_imageGalleryPanel, 1, wxGROW | wxALL, 5 );
+
+    // m_notebook->AddPage( m_imageGalleryPanel, _( "  Gallery  " ) );
+
+
     GetCatalogData( )->SetDescriptionPanel( m_stampDescriptionPanel );
 
     GetCatalogData( )->SetGenerateListPanel( m_generateListPanel );
+
+    GetCatalogData( )->SetImageGalleryPanel( m_imageGalleryPanel );
 
 }
 

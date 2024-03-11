@@ -40,7 +40,7 @@ class wxNotebook;
 class wxFlexGridSizer;
 class StampDescriptionPanel;
 class GenerateList;
-
+class ImageGalleryPanel;
 
 
 #define SYMBOL_STAMPTOOLPANEL_STYLE wxTAB_TRAVERSAL
@@ -73,6 +73,8 @@ public:
         ID_STAMPTOOL,
         ID_ALBUMSPLITTERWINDOWFOREIGN,
         ID_GENERTELISTFOREIGN,
+        ID_IMAGEALLERYPANEL,
+        ID_IMAGEALLERYPANEL1,
         ID_DESIGNPAGE,
         ID_DESIGNSPLITTERWINDOW
     };
@@ -148,6 +150,7 @@ private:
     AlbumPanel* m_albumAlbumPanel;
     StampDescriptionPanel* m_stampDescriptionPanel;
     GenerateList* m_generateListPanel;
+    ImageGalleryPanel* m_imageGalleryPanel;
     //    WebViewPanel* m_webViewPanel;
 };
 

@@ -34,6 +34,7 @@ add_library( GuiFiles SHARED
     IconDefs.cpp
     IdentificationPanel.cpp
     ImagePanel.cpp
+    ImageGalleryPanel.cpp
     InventoryPanel.cpp
     LabeledTextBox.cpp
     NewStampDialog.cpp 

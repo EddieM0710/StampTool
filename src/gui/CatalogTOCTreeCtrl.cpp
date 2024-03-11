@@ -118,7 +118,7 @@ wxXmlNode* CatalogTOCTreeCtrl::GetCurrVolumeRoot( )
     if ( currId.IsOk( ) )
     {
         TOCTreeItemData* data = ( TOCTreeItemData* ) GetItemData( currId );
-        if ( data )
+        if ( data && data->IsOK( ) )
         {
             Utils::TOCBaseType type = data->GetType( );
             if ( type == Utils::TOC_Volume )

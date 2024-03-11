@@ -178,6 +178,11 @@ public:
 
     ComparisonResultType CompareDates( wxString date1, wxString date2 );
 
+    void CountEntryTypes( );
+
+    void  CountEntryTypes( wxTreeItemId parent, int& count );
+
+
     CatalogTreeItemData* CreateChildData( wxXmlNode* child,
         wxString& label,
         Catalog::IconID& icon,
@@ -244,6 +249,10 @@ public:
     Catalog::CatalogBaseType GetItemType( wxTreeItemId id );
 
     wxXmlNode* GetNewEntry( wxTreeItemId itemId );
+
+    int GetNbrEntryTypes( ){
+        return m_nbrEntryTypes;
+    };
 
     wxXmlNode* GetSelectionNode( );
 
@@ -327,11 +336,8 @@ public:
 
 private:
 
+    int m_nbrEntryTypes;
 
-    ///  @brief 
-    ///  
-    ///  @param name 
-    ///  @param event 
     void LogEvent( const wxString& name, const wxTreeEvent& event );
 
     bool m_reverseSort;         // flag for OnCompareItems

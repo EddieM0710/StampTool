@@ -149,7 +149,7 @@ namespace Design {
 
         const double m_defaultSelvageHeight = 0;
         const double m_defaultSelvageWidth = 0;
-        const double m_defaultMountAllowanceHeight = 5;
+        const double m_defaultMountAllowanceHeight = 7;
         const double m_defaultMountAllowanceWidth = 4;
 
         PageDefaults m_pageDefaults;

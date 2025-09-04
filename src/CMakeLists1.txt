@@ -1,0 +1,37 @@
+
+set( wxWidgets_ROOT_DIR "/sandbox/Applications/wx/wxWidgets-3.2.2.1" )
+#message (" $ENV{LD_LIBRARY_PATH}" )
+#set( ENV{LD_LIBRARY_PATH} "/usr/local/lib:/sandbox/Applications/wx/wxpdfdoc-main/build-gtk" )
+set( ENV{LD_LIBRARY_PATH} "/usr/local/lib" )
+set( ENV{WXPDF_FONTPATH} "/sandbox/Applications/wx/wxpdfdoc-main/lib/fonts" )
+
+configure_file( StampToolConfig.h.in StampToolConfig.h )
+
+include( "${wxWidgets_USE_FILE}" )
+message( "wxWidgets_USE_FILE ${wxWidgets_USE_FILE}")
+
+# compile the parts
+add_subdirectory (utils)
+add_subdirectory (gui)
+add_subdirectory (catalog)
+add_subdirectory (design)
+add_subdirectory (collection)
+add_subdirectory (toc)
+
+# build the exe
+add_executable ( StampTool 
+    ${src_Directory}/StampToolApp.cpp
+    ${src_Directory}/Defs.cpp
+)
+
+#target_include_directories(StampTool PRIVATE ${wxWidgets_INCLUDE_DIRS})
+
+target_link_libraries (StampTool LINK_PUBLIC debug
+     GuiFiles  
+     DesignFiles
+     CatalogFiles  
+     CollectionFiles  
+     TOCFiles
+     Utils
+    ${wxWidgets_LIBRARIES}
+    )   

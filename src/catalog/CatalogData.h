@@ -63,6 +63,8 @@ namespace Catalog
 
         void Clear( );
 
+        void FindStamp( );
+
         void FileOpen( wxString filename );
 
         void FileSave( );

@@ -134,6 +134,14 @@ namespace Catalog {
 
         wxString GetInventoryStatus( );///< Get the Inventory Status field
 
+        void WriteInventory( std::ofstream& text );
+
+        void WriteInventoryItem( std::ofstream& text, wxXmlNode* child );
+
+        bool ClipText( wxString in, wxString& out, int fieldLength, wxString& remainder );
+
+        void WriteListEntry( std::ofstream& text );
+
         InventoryStatusType GetInventoryStatusType( );
 
         wxString GetIssuedDate( ); ///< Get the entry Issue data field 

@@ -38,14 +38,14 @@
 #endif
 
 #include "Defs.h"
-#include "CatalogDefs.h"
-#include "DesignDefs.h"
-#include "CatalogVolume.h"
+#include "catalog/CatalogDefs.h"
+#include "design/DesignDefs.h"
+#include "catalog/CatalogVolume.h"
 #include "catalog/CatalogData.h"
 #include "catalog/StampMount.h"
 #include "collection/CollectionData.h"
 #include "design/AlbumData.h"
-#include "Settings.h"
+#include "utils/Settings.h"
 #include "utils/Project.h"
 #include "gui/AppData.h"
 #include "gui/CatalogTOCTreeCtrl.h"

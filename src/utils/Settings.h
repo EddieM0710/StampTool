@@ -158,14 +158,22 @@ namespace Utils {
         int GetNextSortClassification( int current );
         void SetSettingValue( wxString& setting, wxXmlNode* parent, wxString childName, wxString defaultVal );
         void SetLastFile( wxString file );
+        void SetLastListFile( wxString file );
         inline wxString GetLastFile( ) {
             return m_lastFile;
+        };
+        inline wxString GetLastListFile( ) {
+            return m_lastListFile;
         };
 
         void Load( );
         void Save( );
 
-
+        void SetApplicationDefaults( );
+        void LoadLayoutPreference( wxXmlNode* node );
+        wxString* GetLayoutPreferences( Design::LayoutType type ){
+            return ApplicationLayoutPreference[ type ];
+        }
         void AddRecent( wxString filename );
         wxArrayString* GetRecentArray( ) {
             return &m_recentFiles;
@@ -209,6 +217,7 @@ namespace Utils {
 
     private:
         wxString m_lastFile;
+        wxString m_lastListFile;
         bool m_loadLastFileAtStartUp;
         wxString m_CollectionFile;
         wxString m_lastCollection;
@@ -242,7 +251,8 @@ namespace Utils {
         const wxString m_defaultMiddlePeriod = "Classical";
         const wxString m_defaultUpperPeriod = "Modern";
 
-
+        wxString ApplicationLayoutDefault[ Design::NbrLayoutTypes ][ Design::AT_NbrAttrTypes ];
+        wxString ApplicationLayoutPreference[ Design::NbrLayoutTypes ][ Design::AT_NbrAttrTypes ];
 
         int FontPreference[ Design::AT_NbrFontUsageTypes ];
         const wxColour m_defaultFontColor = *wxBLACK;

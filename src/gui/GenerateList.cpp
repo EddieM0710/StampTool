@@ -32,8 +32,16 @@
 #include "wx/wx.h"
 #endif
 
+//#include <wx/wfstream.h>
+//#include <wx/txtstrm.h>
+#include <iomanip>
 
+#include <fstream>
+
+//#include <wx/txtstrm.h>
 #include "Defs.h"
+#include "Settings.h"
+
 #include "GenerateList.h"
 #include "GenerateListSettings.h"
 #include "catalog/CatalogDefs.h"
@@ -70,8 +78,7 @@ GenerateList::GenerateList( wxWindow* parent, wxWindowID id, const wxPoint& pos,
 //--------------
 
 GenerateList::~GenerateList( )
-{
-}
+{ }
 
 //--------------
 
@@ -123,8 +130,11 @@ void GenerateList::CreateControls( )
     wxBoxSizer* itemBoxSizer1 = new wxBoxSizer( wxHORIZONTAL );
     itemBoxSizer2->Add( itemBoxSizer1, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 5 );
 
-    wxButton* itemButton1 = new wxButton( itemPanel1, ID_SETLISTPREFSBUTTON, _( "Set List Preferences" ), wxDefaultPosition, wxDefaultSize, 0 );
+    wxButton* itemButton1 = new wxButton( itemPanel1, ID_SETLISTPREFSBUTTON, _( "Generate" ), wxDefaultPosition, wxDefaultSize, 0 );
     itemBoxSizer1->Add( itemButton1, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+
+    m_writeButton = new wxButton( itemPanel1, ID_WRITEBUTTON, _( "Save" ), wxDefaultPosition, wxDefaultSize, 0 );
+    itemBoxSizer1->Add( m_writeButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
     m_gridCtrl = new wxGrid( itemPanel1, ID_GRIDCTRL, wxDefaultPosition, wxSize( 200, 150 ), wxSUNKEN_BORDER | wxHSCROLL | wxVSCROLL );
     m_gridCtrl->SetDefaultColSize( 100 );
@@ -134,17 +144,14 @@ void GenerateList::CreateControls( )
     m_gridCtrl->CreateGrid( 0, 9, wxGrid::wxGridSelectCells );
     itemBoxSizer2->Add( m_gridCtrl, 1, wxGROW | wxALL, 5 );
 
-    wxBoxSizer* itemBoxSizer8 = new wxBoxSizer( wxHORIZONTAL );
-    itemBoxSizer2->Add( itemBoxSizer8, 0, wxGROW | wxALL, 5 );
+    // wxBoxSizer* itemBoxSizer8 = new wxBoxSizer( wxHORIZONTAL );
+    // itemBoxSizer2->Add( itemBoxSizer8, 0, wxGROW | wxALL, 5 );
 
-    m_writeButton = new wxButton( itemPanel1, ID_WRITEBUTTON, _( "Write" ), wxDefaultPosition, wxDefaultSize, 0 );
-    itemBoxSizer8->Add( m_writeButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+    // wxStaticText* itemStaticText10 = new wxStaticText( itemPanel1, wxID_STATIC, _( "file name" ), wxDefaultPosition, wxDefaultSize, 0 );
+    // itemBoxSizer8->Add( itemStaticText10, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
-    wxStaticText* itemStaticText10 = new wxStaticText( itemPanel1, wxID_STATIC, _( "file name" ), wxDefaultPosition, wxDefaultSize, 0 );
-    itemBoxSizer8->Add( itemStaticText10, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
-
-    m_filename = new wxTextCtrl( itemPanel1, ID_FILENAMETEXTCTRL, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
-    itemBoxSizer8->Add( m_filename, 1, wxGROW | wxALL, 5 );
+    // m_filename = new wxTextCtrl( itemPanel1, ID_FILENAMETEXTCTRL, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+    // itemBoxSizer8->Add( m_filename, 1, wxGROW | wxALL, 5 );
 
     // GenerateList content construction
     m_gridCtrl->SetColLabelValue( 0, "ID" );
@@ -323,12 +330,112 @@ void GenerateList::OnSetListPrefsButtonClick( wxCommandEvent& event )
 
 void GenerateList::OnWriteButtonClick( wxCommandEvent& event )
 {
-    UpdateGrid( );
+    SaveAs( );
 
     event.Skip( );
 }
 
 //--------------
+
+void GenerateList::SaveAs( )
+{
+    wxFileName lastFile( GetSettings( )->GetLastListFile( ) );
+    lastFile.SetExt( "txt" );
+    wxFileDialog saveFileDialog(
+        this, _( "Save List to text file" ),
+        lastFile.GetPath( ), lastFile.GetFullName( ),
+        "List files(*.txt)|*.txt", wxFD_SAVE | wxFD_OVERWRITE_PROMPT );
+    if ( saveFileDialog.ShowModal( ) == wxID_CANCEL )
+        return;
+
+    wxString filename = saveFileDialog.GetPath( );
+    GetSettings( )->SetLastListFile( filename );
+    Save( filename );
+
+}
+
+//--------------
+
+
+void GenerateList::Save( wxString filename )
+{
+    bool status = false;
+
+    std::ofstream ostream( filename, std::ios::out );
+    if ( !ostream.fail( ) )
+    {
+        Catalog::CatalogVolume* catalogVolume = GetCatalogVolume( );
+        if ( catalogVolume )
+        {
+            wxXmlDocument* entryDoc = catalogVolume->GetDoc( );
+            wxXmlNode* root = entryDoc->GetRoot( );
+
+            if ( root )
+            {
+                catalogVolume->GetBaseName( );
+                ostream << "Inventory Report for " << catalogVolume->GetBaseName( ) << " \n\n";
+
+                WriteList( root, ostream );
+            }
+        }
+
+    }
+}
+//--------------
+void GenerateList::WriteList( wxXmlNode* parent, std::ofstream& ostream )
+{
+    wxXmlNode* child = parent->GetChildren( );
+    while ( child )
+    {
+        if ( !child->GetName( ).compare( "Entry" ) )
+        {
+            Catalog::Entry entry( child );
+            if ( CheckStatus( &entry ) && CheckEmission( &entry ) && CheckFormat( &entry ) )
+            {
+                entry.WriteListEntry( ostream );
+            }
+        }
+        WriteList( child, ostream );
+        child = child->GetNext( );
+    }
+}
+
+// bool GenerateList::MakeListAttributeString( wxString in, wxString& out, int fieldLength, wxString& remainder )
+// {
+//     if ( in.Length( ) <= fieldLength )
+//     {
+//         out = in;
+//         remainder = "";
+//         return false;
+//     }
+//     else
+//     {
+//         out = in.substr( 0, fieldLength );
+//         remainder = in.substr( fieldLength );
+
+//         return true;
+//     }
+// }
+
+// void GenerateList::WriteListEntry( Catalog::Entry* entry, std::ofstream& text )
+// {
+
+//     text << std::setw( 20 ) << std::left << entry->GetID( ) << " ";
+//     text << std::setw( 15 ) << std::right << entry->GetInventoryStatus( ) << " ";
+//     wxString remainder = "";
+//     wxString in = entry->GetName( );
+//     wxString out = "";
+//     bool newline = MakeListAttributeString( in, out, 30, remainder );
+//     text << std::setw( 30 ) << out << " ";
+//     text << std::setw( 15 ) << entry->GetEmission( ) << " ";
+//     text << std::setw( 15 ) << entry->GetFormat( ) << " ";
+//     text << std::setw( 10 ) << entry->GetMount( ) << "\n";
+//     while ( newline )
+//     {
+//         newline = MakeListAttributeString( remainder, out, 20, remainder );
+//         text << std::setw( 37 ) << " " << std::left << std::setw( 30 ) << out << "\n";
+//     }
+// }
 
 void GenerateList::ShowRow( Catalog::Entry* entry, int row )
 {
@@ -358,19 +465,6 @@ void GenerateList::ShowRow( Catalog::Entry* entry, int row )
     m_gridCtrl->SetCellValue( row, 6, entry->GetWidth( ) );
     m_gridCtrl->SetCellValue( row, 7, entry->GetHeight( ) );
     m_gridCtrl->SetCellValue( row, 8, entry->GetMount( ) );
-
-    // wxString height = entry->GetHeight( );
-    // wxString width = entry->GetWidth( );
-    // if ( height.IsEmpty( ) || width.IsEmpty( ) )
-    // {
-    //     m_gridCtrl->SetCellValue( row, 6, "Size Missing" );
-    // }
-    // else
-    // {
-    //     m_gridCtrl->SetCellValue( row, 6, "" );
-
-    // }
-
 }
 
 //--------------
@@ -402,6 +496,7 @@ void GenerateList::UpdateGrid( )
     }
 }
 
+
 //--------------
 
 void GenerateList::WriteEntries( wxXmlNode* parent, int& row )
@@ -423,6 +518,8 @@ void GenerateList::WriteEntries( wxXmlNode* parent, int& row )
     }
 }
 
+//--------------
+
 
 void GenerateList::OnCellLeftClick( wxGridEvent& event )
 {
@@ -432,6 +529,8 @@ void GenerateList::OnCellLeftClick( wxGridEvent& event )
     event.Skip( );
 }
 
+
+//--------------
 
 void GenerateList::OnLabelLeftClick( wxGridEvent& event )
 {

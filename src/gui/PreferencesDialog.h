@@ -101,6 +101,7 @@ public:
 
 
     void CreateControls( );
+    wxPanel* CreateNotebookDetailsPanel( wxWindow* parent );
 
     // PreferencesDialog event handler declarations
 

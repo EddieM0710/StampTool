@@ -60,6 +60,23 @@ namespace Catalog
         // UpdateCatalogVolumeStrings( );
         // LoadCatalogTree( );
     }
+    // void CatalogData::FindStamp( )
+    // {
+    //     m_catalogList.GetArray( );
+
+    //     Utils::VolumeArray* array = m_catalogList.GetArray( );
+
+    //     Utils::VolumeArray::iterator it = array->begin( );
+
+    //     // Iterate through the map and print the elements
+    //     while ( it != array->end( ) )
+    //     {
+    //         Utils::Volume* volume = ( Utils::Volume* ) ( it->second );
+    //         volume->Find( );
+    //         ++it;
+    //     }
+    // };
+
 
     void CatalogData::FileSave( )
     {

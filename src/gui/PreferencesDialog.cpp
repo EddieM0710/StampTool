@@ -147,29 +147,10 @@ void PreferencesDialog::Init( )
     // PreferencesDialog member initialisation
 }
 
-
-/*
- * Control creation for PreferencesDialog
- */
-
-void PreferencesDialog::CreateControls( )
+wxPanel* PreferencesDialog::CreateNotebookDetailsPanel( wxWindow* parent )
 {
-    // PreferencesDialog content construction
 
-    PreferencesDialog* theDialog = this;
-
-    wxBoxSizer* theDialogVerticalSizer = new wxBoxSizer( wxVERTICAL );
-    theDialog->SetSizer( theDialogVerticalSizer );
-
-    // wxBoxSizer* itemBoxSizer3 = new wxBoxSizer( wxHORIZONTAL );
-    // theDialogVerticalSizer->Add( itemBoxSizer3, 1, wxGROW | wxALL, 5 );
-
-    wxBoxSizer* theDialogHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
-    theDialogVerticalSizer->Add( theDialogHorizontalSizer, 2, wxGROW | wxALL, 5 );
-
-    wxNotebook* notebook = new wxNotebook( theDialog, ID_NOTEBOOK, wxDefaultPosition, wxDefaultSize, wxBK_DEFAULT );
-
-    wxPanel* notebookDetailsPanel = new wxPanel( notebook, ID_NOTEBOOKDETAILSPANEL, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
+    wxPanel* notebookDetailsPanel = new wxPanel( parent, ID_NOTEBOOKDETAILSPANEL, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
     notebookDetailsPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
 
     wxBoxSizer* detailsVerticalSizer = new wxBoxSizer( wxVERTICAL );
@@ -221,6 +202,85 @@ void PreferencesDialog::CreateControls( )
 
     m_recentListSize = new wxTextCtrl( notebookDetailsPanel, ID_RECENTSIZETEXTCTRL, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
     recentHorizontalSizer->Add( m_recentListSize, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+
+    return notebookDetailsPanel;
+}
+/*
+ * Control creation for PreferencesDialog
+ */
+
+void PreferencesDialog::CreateControls( )
+{
+    // PreferencesDialog content construction
+
+    PreferencesDialog* theDialog = this;
+
+    wxBoxSizer* theDialogVerticalSizer = new wxBoxSizer( wxVERTICAL );
+    theDialog->SetSizer( theDialogVerticalSizer );
+
+    // wxBoxSizer* itemBoxSizer3 = new wxBoxSizer( wxHORIZONTAL );
+    // theDialogVerticalSizer->Add( itemBoxSizer3, 1, wxGROW | wxALL, 5 );
+
+    wxBoxSizer* theDialogHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
+    theDialogVerticalSizer->Add( theDialogHorizontalSizer, 2, wxGROW | wxALL, 5 );
+
+    wxNotebook* notebook = new wxNotebook( theDialog, ID_NOTEBOOK, wxDefaultPosition, wxDefaultSize, wxBK_DEFAULT );
+
+    wxPanel* notebookDetailsPanel = CreateNotebookDetailsPanel( notebook );
+
+
+    // new wxPanel( notebook, ID_NOTEBOOKDETAILSPANEL, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
+    // notebookDetailsPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
+
+    // wxBoxSizer* detailsVerticalSizer = new wxBoxSizer( wxVERTICAL );
+    // notebookDetailsPanel->SetSizer( detailsVerticalSizer );
+
+    // wxBoxSizer* imageHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
+    // detailsVerticalSizer->Add( imageHorizontalSizer, 0, wxGROW | wxALL, 5 );
+
+    // wxStaticText* itemStaticText1 = new wxStaticText( notebookDetailsPanel, wxID_STATIC, _( "Image Directory" ), wxDefaultPosition, wxDefaultSize, 0 );
+    // imageHorizontalSizer->Add( itemStaticText1, 1, wxALIGN_CENTER_VERTICAL | wxLEFT | wxTOP | wxBOTTOM, 5 );
+
+    // m_imageDirectory = new wxTextCtrl( notebookDetailsPanel, ID_IMAGEDIRECTORTEXTBOX, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+    // imageHorizontalSizer->Add( m_imageDirectory, 3, wxGROW | wxALL, 5 );
+
+    // // wxBoxSizer* itemBoxSizer5 = new wxBoxSizer( wxHORIZONTAL );
+    // // theDialogVerticalSizer->Add( itemBoxSizer5, 1, wxGROW | wxALL, 5 );
+
+    // // wxStaticText* itemStaticText3 = new wxStaticText( notebookDetailsPanel, wxID_STATIC, _( "Working Directory" ), wxDefaultPosition, wxDefaultSize, 0 );
+    // // itemBoxSizer5->Add( itemStaticText3, 0, wxALIGN_CENTER_VERTICAL | wxLEFT | wxTOP | wxBOTTOM, 5 );
+
+    // wxBoxSizer* codePrefHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
+    // detailsVerticalSizer->Add( codePrefHorizontalSizer, 0, wxGROW | wxALL, 5 );
+
+    // wxStaticText* itemStaticText5 = new wxStaticText( notebookDetailsPanel, wxID_STATIC, _( "Country Code" ), wxDefaultPosition, wxDefaultSize, 0 );
+    // codePrefHorizontalSizer->Add( itemStaticText5, 0, wxALIGN_CENTER_VERTICAL | wxLEFT | wxTOP | wxBOTTOM, 5 );
+
+    // m_country = new wxTextCtrl( notebookDetailsPanel, ID_COUNTRYTEXTBOX, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+    // codePrefHorizontalSizer->Add( m_country, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+
+    // codePrefHorizontalSizer->Add( 10, 5, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+
+    // wxStaticText* itemStaticText8 = new wxStaticText( notebookDetailsPanel, wxID_STATIC, _( "Catalog Code" ), wxDefaultPosition, wxDefaultSize, 0 );
+    // codePrefHorizontalSizer->Add( itemStaticText8, 0, wxALIGN_CENTER_VERTICAL | wxLEFT | wxTOP | wxBOTTOM, 5 );
+
+    // m_catalog = new wxTextCtrl( notebookDetailsPanel, ID_CATALOGTEXTBOX, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+    // codePrefHorizontalSizer->Add( m_catalog, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+
+    // wxBoxSizer* recentHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
+    // detailsVerticalSizer->Add( recentHorizontalSizer, 0, wxGROW | wxALL, 5 );
+
+    // m_loadLastFileAtStartUp = new wxCheckBox( notebookDetailsPanel, ID_OPENLASTCHECKBOX, _( "Load Last File at Startup" ), wxDefaultPosition, wxDefaultSize, 0 );
+    // m_loadLastFileAtStartUp->SetValue( false );
+    // recentHorizontalSizer->Add( m_loadLastFileAtStartUp, 2, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+
+    // recentHorizontalSizer->Add( 20, 5, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+
+    // wxStaticText* itemStaticText2 = new wxStaticText( notebookDetailsPanel, wxID_STATIC, _( "Size of RecentList" ), wxDefaultPosition, wxDefaultSize, 0 );
+    // recentHorizontalSizer->Add( itemStaticText2, 0, wxALIGN_CENTER_VERTICAL | wxLEFT | wxTOP | wxBOTTOM, 5 );
+
+    // m_recentListSize = new wxTextCtrl( notebookDetailsPanel, ID_RECENTSIZETEXTCTRL, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+    // recentHorizontalSizer->Add( m_recentListSize, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
 
     notebook->AddPage( notebookDetailsPanel, _( "Details" ) );

@@ -1,25 +1,89 @@
+
+// #define stampIconPixels \
+//     "..XXX..XXX..XX..",\
+//     "X..X....X......X",\
+//     "X.X...........XX",\
+//     "X.....XXXXX....X",\
+//     "....XXXXXXXX....",\
+//     "....XXX...XX....",\
+//     "X...XXX...XX...X",\
+//     "XX..XXX.XXXX..XX",\
+//     "XX..XXXX.XXX..XX",\
+//     "X...XX...XXX...X",\
+//     "....XX...XXX....",\
+//     "....XXXXXXXX....",\
+//     "X....XXXXX.....X",\
+//     "XX............XX",\
+//     "X..X...XX......X",\
+//     "..XXX..XXXX..XX." 
+
+// static const char RGB_Black[] = "#000000";
+// #define RGB_DarkBlue    "#000080"
+// #define RGB_Blue    "#0000FF"
+// #define RGB_DarkGreen      "#008000"
+// #define RGB_Green     "#00FF00"
+// #define RGB_LightBlue     "#00FFFF"
+// #define RGB_Purple     "#800080"
+// #define RGB_Olive     "#808000"
+// #define RGB_Gray     "#808080"
+// #define RGB_Red     "#FF0000"
+// #define RGB_Orange     "#FF8000"
+// #define RGB_Pink     "#FF80FF"
+// #define RGB_Yellow     "#FFFF00"
+// #define RGB_LightYellow     "#FFFF80"
+// static const char RGB_White[] =     "#FFFFFF";
+// // #008080,
+// // #0080FF,
+// // #00FF80,
+// // #800000,
+// // #8000FF,
+// // #8080FF,
+// // #80FF00,
+// // #80FF80,
+// // #80FFFF,
+
+// // #FF0080,
+// // #FF00FF,
+// // #FF8080,
+
+
 /* XPM */
-static const char *StampBlack[] = {
-/* columns rows colors chars-per-pixel */
-"16 16 2 1 ",
-"X c #FFFFFF",
-". c #000000",
-/* pixels */
-//234567890123456
-"..XXX..XXX..XX..",//1
-"X..X....X......X",//2
-"X.X...........XX",//3
-"X.....XXXXX....X",//4
-"....XXXXXXXX....",//5
-"....XXX...XX....",//6
-"X...XXX...XX...X",//7
-"XX..XXX.XXXX..XX",//8
-"XX..XXXX.XXX..XX",//9
-"X...XX...XXX...X",//10
-"....XX...XXX....",//11
-"....XXXXXXXX....",//12
-"X....XXXXX.....X",//13
-"XX............XX",//14
-"X..X...XX......X",//15
-"..XXX..XXXX..XX." //16
+static const char* StampBlack[ ] = {
+    /* columns rows colors chars-per-pixel */
+    "16 16 2 1 ",
+    "X c #FFFFFF",
+    ". c #000000",
+    /* pixels */\
+    /*234567890123456*/\
+    "..XXX..XXX..XX..", \
+    "X..X....X......X", \
+    "X.X...........XX", \
+    "X.....XXXXX....X", \
+    "....XXXXXXXX....", \
+    "....XXX...XX....", \
+    "X...XXX...XX...X", \
+    "XX..XXX.XXXX..XX", \
+    "XX..XXXX.XXX..XX", \
+    "X...XX...XXX...X", \
+    "....XX...XXX....", \
+    "....XXXXXXXX....", \
+    "X....XXXXX.....X", \
+    "XX............XX", \
+    "X..X...XX......X", \
+    "..XXX..XXXX..XX." \
 };
+// static char backPrefix[ ] = "X c ";
+// static char forePrefix[ ] = ". c ";
+// #define XPMBackgroundString( background ) backPrefix + background
+// #define XPMForegroundString( foreground ) forePrefix + foreground
+
+// #define stampXPM( name, foreground, background ) \
+//     char* name[] = {\
+//     "16 16 2 1 ",\
+//     XPMBackgroundString( background ),\
+//     XPMForegroundString( foreground ),\
+//     stampIconPixels \
+// };
+// char* test =  {XPMBackgroundString( RGB_Black );};
+
+// stampXPM( StampBlack, RGB_Black, RGB_White );

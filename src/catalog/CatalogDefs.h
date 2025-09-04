@@ -165,6 +165,7 @@ namespace Catalog {
         FT_Gutter_Pair,
         FT_Stamp_with_Attached_Label,
         FT_Tete_Beche,
+        FT_Full_Pane,
         FT_NbrTypes
     } FormatType;
 

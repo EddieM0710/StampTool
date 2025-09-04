@@ -149,6 +149,8 @@ public:
     ///  @param event 
     void OnWriteButtonClick( wxCommandEvent& event );
 
+    void SaveAs( );
+
     ///  @brief 
     ///  
     ///  @param entry 
@@ -169,7 +171,13 @@ public:
     ///  
     ///  @param parent 
     ///  @param row 
+
     void WriteEntries( wxXmlNode* parent, int& row );
+
+    void Save( wxString filename );
+    void WriteList( wxXmlNode* parent, std::ofstream& ostream );
+    void WriteListEntry( Catalog::Entry* entry, std::ofstream& ostream );
+    bool MakeListAttributeString( wxString in, wxString& out, int fieldLength, wxString& remainder );
 
 private:
     wxGrid* m_gridCtrl;

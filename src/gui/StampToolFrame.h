@@ -29,8 +29,8 @@
 
 #include <vector>
 #include "wx/frame.h"
-#include "gui/GuiDefs.h"
 #include "utils/StampList.h"
+#include "gui/GuiDefs.h"
 
  //namespace Catalog { class Stamp; };
 

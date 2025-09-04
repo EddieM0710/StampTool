@@ -385,6 +385,10 @@ void PageDetailsPanel::SetTitleColor( wxColour color )
 
 void PageDetailsPanel::SetSubTitleFont( wxFont font )
 {
+    if ( !font.IsOk( ) )
+    {
+        std::cout << "Font invalid\n";
+    }
     m_subTitleFontPicker->SetSelectedFont( font );
 }
 

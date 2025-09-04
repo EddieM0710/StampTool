@@ -38,6 +38,7 @@
 #include "wx/wx.h"
 #endif
 
+#include "catalog/CatalogDefs.h"
 #include "utils/Project.h"
 #include "utils/Settings.h"
 #include "utils/XMLUtilities.h"
@@ -127,7 +128,8 @@ namespace Catalog {
         wxT( "Booklet Pane" ),
         wxT( "Gutter Pair" ),
         wxT( "Entry with Attached Label" ),
-        wxT( "Tete-Beche" ) };
+        wxT( "Tete-Beche" ),
+        wxT( "Full Pane" ) };
 
     const wxString InventoryStatusStrings[ ST_NbrInventoryStatusTypes ]
         = { wxT( "None" ), wxT( "Missing" ), wxT( "Ordered" ), wxT( "Own" ), wxT( "Own Variant" ), wxT( "Exclude" ) };

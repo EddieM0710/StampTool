@@ -55,14 +55,24 @@ namespace Design {
         int ndx = m_FontNdx;
         if ( GetFontList( )->IsValidFontNdx( ndx ) )
         {
-            //std::cout << "LabelFrame::GetFont from this. " << m_string << "  usage:" << usage << " ndx:" << ndx << " " << GetFontList( )->GetMyFont( ndx )->GetNativeInfoStr( ) << "\n";
+            std::cout << "LabelFrame::GetFont from this. " << m_string << "  usage:" << usage << " ndx:" << ndx << " " << GetFontList( )->GetMyFont( ndx )->GetNativeInfoStr( ) << "\n";
 
             return GetFontList( )->GetFont( ndx );
         }
         else
         {
             ndx = GetAlbum( )->GetFontNdx( m_fontType );
-            //std::cout << "LabelFrame::GetFont from album. usage:" << usage << " ndx:" << ndx << " " << GetFontList( )->GetMyFont( ndx )->GetNativeInfoStr( ) << "\n";
+            std::cout << "LabelFrame::GetFont from album. usage:" << usage
+                << " ndx:" << ndx << " " << "\n";
+            Utils::Font* defaultFont = GetFontList( )->GetMyFont( ndx );
+            if ( defaultFont != 0 )
+            {
+                std::cout << GetFontList( )->GetMyFont( ndx )->GetNativeInfoStr( ) << "\n";
+            }
+            else
+            {
+                std::cout << "Font Not Found.\n";
+            }
             return GetFontList( )->GetFont( GetAlbum( )->GetFontNdx( m_fontType ) );
         }
     }
@@ -116,7 +126,7 @@ namespace Design {
         doc->SetXY( pos.x, pos.y );
         double h = pointSize * 25.4 / 72;
 
-        wxArrayString lines = wxStringTokenize( m_multiLineString, "\n" );
+        wxArrayString lines = wxStringTokenize( m_multiLineString, "\n", wxTOKEN_DEFAULT );
 
         size_t size = lines.GetCount( );
         for ( size_t i = 0; i < size; i++ )
@@ -182,10 +192,11 @@ namespace Design {
         if ( width > 0 && !m_string.IsEmpty( ) )
         {
             wxFont font = GetFont( );
-            if ( font == wxNullFont )
+            if ( font == wxNullFont || !font.IsOk( ) )
             {
                 font = *wxNORMAL_FONT;
             }
+
 
             // first break into lines if necessary then get the actual multi line text extent
             m_stringTextExtent = GetAlbumImagePanel( )->MakeMultiLine( m_multiLineString, font, width );

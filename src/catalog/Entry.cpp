@@ -33,16 +33,22 @@
 #include "wx/wx.h"
 #endif
 
+#include <iomanip>
+#include <fstream>
+#include <cstdio>
+
+#include <wx/datetime.h>
+#include <wx/strconv.h>
+#include <wx/tokenzr.h>
+
  //#include "catalog/CatalogCode.h"
 #include "Defs.h"
 #include "Settings.h"
 #include "utils/Project.h"
 #include "catalog/Entry.h"
 #include "catalog/CatalogCode.h"
-#include <wx/datetime.h>
-#include <wx/strconv.h>
-#include <wx/tokenzr.h>
-#include <cstdio>
+
+
 #include "utils/XMLUtilities.h"
 #include "collection/CollectionList.h"
 
@@ -447,7 +453,82 @@ namespace Catalog {
         }
         return ( InventoryStatusType ) ST_Exclude;
     }
+    //-------
+    void Entry::WriteInventoryItem( std::ofstream& text, wxXmlNode* child )
+    {
 
+        text << std::setw( 10 ) << " " << std::setw( 15 ) << child->GetAttribute( Catalog::ItemDataNames[ IDT_InventoryStatus ], "Exclude" );
+        text << std::setw( 10 ) << child->GetAttribute( Catalog::ItemDataNames[ IDT_Type ], " " );
+        text << std::setw( 10 ) << child->GetAttribute( Catalog::ItemDataNames[ IDT_Condition ], " " );
+        text << std::setw( 10 ) << child->GetAttribute( Catalog::ItemDataNames[ IDT_Value ], " " );
+
+        wxString remainder = "";
+        wxString in = child->GetAttribute( Catalog::ItemDataNames[ IDT_Remarks ], " " );
+        wxString out = "";
+        bool newline = ClipText( in, out, 30, remainder );
+        text << std::setw( 30 ) << out << "\n";
+        while ( newline )
+        {
+            newline = ClipText( remainder, out, 30, remainder );
+            text << std::setw( 49 ) << " " << std::left << std::setw( 30 ) << out << "\n";
+        }
+    }
+
+    void Entry::WriteInventory( std::ofstream& text )
+    {
+        wxString currCollection = GetCollectionList( )->GetCurrentName( );
+        wxXmlNode* ele = GetCatXMLNode( );
+        if ( HasInventoryItem( ) )
+        {
+            wxXmlNode* inventory = GetInventory( );
+            wxXmlNode* child = GetFirstInventoryItem( currCollection );
+            while ( child )
+            {
+                WriteInventoryItem( text, child );
+                child = child->GetNext( );
+            }
+        }
+        return;
+    }
+
+
+    bool Entry::ClipText( wxString in, wxString& out, int fieldLength, wxString& remainder )
+    {
+        if ( in.Length( ) <= fieldLength )
+        {
+            out = in;
+            remainder = "";
+            return false;
+        }
+        else
+        {
+            out = in.substr( 0, fieldLength );
+            remainder = in.substr( fieldLength );
+
+            return true;
+        }
+    }
+
+    void Entry::WriteListEntry( std::ofstream& text )
+    {
+
+        text << std::setw( 20 ) << std::left << GetID( ) << " ";
+        //text << std::setw( 15 ) << std::right << GetInventoryStatus( ) << " ";
+        wxString remainder = "";
+        wxString in = GetName( );
+        wxString out = "";
+        bool newline = ClipText( in, out, 40, remainder );
+        text << std::setw( 40 ) << out << " ";
+        text << std::setw( 15 ) << GetEmission( ) << " ";
+        text << std::setw( 15 ) << GetFormat( ) << " ";
+        text << std::setw( 10 ) << GetMount( ) << "\n";
+        // while ( newline )
+        // {
+        //     newline = ClipText( remainder, out, 50, remainder );
+        //     text << std::setw( 21 ) << " " << std::left << std::setw( 30 ) << out << "\n";
+        // }
+        WriteInventory( text );
+    }
 
     //-------
 

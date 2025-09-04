@@ -69,8 +69,7 @@ namespace Utils {
     }
 
     XMLIterator::~XMLIterator( )
-    {
-    }
+    { }
 
     wxXmlNode* XMLIterator::First( )
     {
@@ -409,6 +408,7 @@ namespace Utils {
             text << "<?xml version = \"1.0\" encoding = \"UTF-8\"?>\n\n";
             wxXmlNode* root = doc->GetRoot( );
             SaveChild( textPtr, root, "" );
+
         }
     }
     void SaveAttributes( wxTextOutputStream* text, wxXmlNode* node, wxString level )

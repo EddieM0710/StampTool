@@ -35,6 +35,7 @@
 
 
 #include "utils/XMLUtilities.h"
+#include "utils/Settings.h"
 #include "design/PageDefaults.h"
 
 
@@ -42,12 +43,14 @@ namespace Design {
 
     PageDefaults::PageDefaults( ) : Design::Defaults( ( wxXmlNode* ) 0 )
     {
-        SetApplicationDefaults( );
+        ApplicationDefault = GetSettings( )->GetLayoutPreferences( Design::LT_Page );
+        //SetApplicationDefaults( );
     };
 
     PageDefaults::PageDefaults( wxXmlNode* xmlNode ) : Defaults( xmlNode )
     {
-        SetApplicationDefaults( );
+        ApplicationDefault = GetSettings( )->GetLayoutPreferences( Design::LT_Page );
+        //SetApplicationDefaults( );
     };
 
     PageDefaults::~PageDefaults( )

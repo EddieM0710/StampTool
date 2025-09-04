@@ -25,7 +25,7 @@
 #ifndef AppData_h
 #define AppData_h
 
-#include "utils/StampList.h"
+ //#include "utils/StampList.h"
 
 namespace Design {
     class AlbumData;

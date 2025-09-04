@@ -35,6 +35,7 @@
 
 
 #include "utils/XMLUtilities.h"
+#include "utils/Settings.h"
 #include "design/FrameDefaults.h"
 
 
@@ -44,14 +45,16 @@ namespace Design {
 
     FrameDefaults::FrameDefaults( ) : Defaults( ( wxXmlNode* ) 0 )
     {
-        InitParameters( );
+        ApplicationDefault = GetSettings( )->GetLayoutPreferences( Design::LT_Frame );
+        //InitParameters( );
     };
 
     //----------------
 
     FrameDefaults::FrameDefaults( wxXmlNode* xmlNode ) : Defaults( xmlNode )
     {
-        InitParameters( );
+        ApplicationDefault = GetSettings( )->GetLayoutPreferences( Design::LT_Frame );
+        //InitParameters( );
     };
 
     //----------------

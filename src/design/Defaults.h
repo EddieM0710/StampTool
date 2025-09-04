@@ -54,8 +54,12 @@ namespace Design {
 
         bool GetDefaultBool( Design::AlbumAttrType type, bool defVal = false );
 
+        wxString GetApplicationDefault( Design::AlbumAttrType type )
+        {
+            return ApplicationDefault[ type ];
+        };
     protected:
-        wxString ApplicationDefault[ AT_NbrAttrTypes ];
+        wxString* ApplicationDefault;
 
     };
 };

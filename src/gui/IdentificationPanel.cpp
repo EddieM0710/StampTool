@@ -213,16 +213,20 @@ void IdentificationPanel::CreateControls( )
      //formatHorizontalSizer->Add( formatStaticText, 0, wxALIGN_LEFT | wxALL, 0 );
 
     wxArrayString m_formatStrings;
-    m_formatStrings.Add( _( "Unknown" ) );
-    m_formatStrings.Add( _( "Stamp" ) );
-    m_formatStrings.Add( _( "Se-tenant" ) );
-    m_formatStrings.Add( _( "Mini Sheet" ) );
-    m_formatStrings.Add( _( "Souvenir Sheet" ) );
-    m_formatStrings.Add( _( "Booklet" ) );
-    m_formatStrings.Add( _( "Booklet Pane" ) );
-    m_formatStrings.Add( _( "Gutter Pair" ) );
-    m_formatStrings.Add( _( "Stamp with Attached Label" ) );
-    m_formatStrings.Add( _( "Tete-Beche" ) );
+    for ( int i = 0; i < Catalog::FT_NbrTypes; i++ )
+    {
+        m_formatStrings.Add( _( Catalog::FormatStrings[ i ] ) );
+        // m_formatStrings.Add( _( "Unknown" ) );
+        // m_formatStrings.Add( _( "Stamp" ) );
+        // m_formatStrings.Add( _( "Se-tenant" ) );
+        // m_formatStrings.Add( _( "Mini Sheet" ) );
+        // m_formatStrings.Add( _( "Souvenir Sheet" ) );
+        // m_formatStrings.Add( _( "Booklet" ) );
+        // m_formatStrings.Add( _( "Booklet Pane" ) );
+        // m_formatStrings.Add( _( "Gutter Pair" ) );
+        // m_formatStrings.Add( _( "Stamp with Attached Label" ) );
+        // m_formatStrings.Add( _( "Tete-Beche" ) );
+    }
 
     //m_format = new wxChoice( thePanel, ++lastID, wxDefaultPosition, wxDefaultSize, m_formatStrings, 0 );
    // formatHorizontalSizer->Add( m_format, 1, wxGROW | wxALL, 1 );
@@ -510,8 +514,7 @@ void IdentificationPanel::SetDataEditable( bool val )
 
 
 void IdentificationPanel::OnCatalogCodesChanged( wxCommandEvent& event )
-{
-}
+{ }
 
 void IdentificationPanel::OnComboboxSelected( wxCommandEvent& event )
 {

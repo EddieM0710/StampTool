@@ -149,7 +149,7 @@ namespace Utils
                 int rsp = dlg->ShowModal( );
                 return;
             }
-
+            std::cout << "Loading " << m_filename << "\n";
             if ( !m_doc->Load( stream ) )
             {
                 int err = stream.GetLastError( );

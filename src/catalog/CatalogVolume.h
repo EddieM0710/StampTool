@@ -32,8 +32,8 @@
 #include <functional>
 
 #include "CatalogDefs.h"
-#include "utils/XMLUtilities.h"
 #include "utils/Volume.h"
+#include "utils/XMLUtilities.h"
 
  //namespace Utils { class ImageRepository; };
 

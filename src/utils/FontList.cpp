@@ -199,6 +199,11 @@ namespace Utils {
         ndx = AddNewFont( font, color );
         GetSettings( )->SetFontNdxPreference( Design::AT_TitleFontType, ndx );
 
+        font = GetSettings( )->GetSubTitleFont( );
+        color = GetSettings( )->GetSubTitleColor( );
+        ndx = AddNewFont( font, color );
+        GetSettings( )->SetFontNdxPreference( Design::AT_SubTitleFontType, ndx );
+
         font = GetSettings( )->GetNameFont( );
         color = GetSettings( )->GetNameColor( );
         ndx = AddNewFont( font, color );

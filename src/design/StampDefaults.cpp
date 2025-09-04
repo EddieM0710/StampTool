@@ -35,6 +35,7 @@
 
 
 #include "utils/XMLUtilities.h"
+#include "utils/Settings.h"
 #include "design/StampDefaults.h"
 
 
@@ -42,12 +43,14 @@ namespace Design {
 
     StampDefaults::StampDefaults( ) : Defaults( ( wxXmlNode* ) 0 )
     {
-        InitParameters( );
+        ApplicationDefault = GetSettings( )->GetLayoutPreferences( Design::LT_Stamp );
+        //InitParameters( );
     };
 
     StampDefaults::StampDefaults( wxXmlNode* xmlNode ) : Defaults( xmlNode )
     {
-        InitParameters( );
+        ApplicationDefault = GetSettings( )->GetLayoutPreferences( Design::LT_Stamp );
+        //InitParameters( );
     };
 
     StampDefaults::~StampDefaults( )

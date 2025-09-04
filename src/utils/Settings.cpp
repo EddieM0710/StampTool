@@ -69,8 +69,7 @@ namespace Utils {
     }
 
     Settings::Settings( )
-    {
-    };
+    { };
 
     void Settings::InitSettings( )
     {
@@ -290,6 +289,11 @@ namespace Utils {
         SetDirty( );
     };
 
+    void Settings::SetLastListFile( wxString file )
+    {
+        m_lastListFile = file;
+        SetDirty( );
+    };
 
     // 
     void Settings::AddRecent( wxString filename )
@@ -750,6 +754,13 @@ namespace Utils {
             GetCollectionList( )->SetDefaultCollection( );
         }
 
+        SetApplicationDefaults( );
+        child = FirstChildElement( root, "Defaults" );
+        if ( child )
+        {
+            LoadLayoutPreference( child );
+        }
+
         child = FirstChildElement( root, "Fonts" );
         if ( child )
             //else if ( !name.Cmp( "Fonts" ) )
@@ -799,5 +810,130 @@ namespace Utils {
         }
     }
 
+    void Settings::SetApplicationDefaults( )
+    {
+
+        ApplicationLayoutDefault[ Design::LT_Page ][ Design::AT_PageWidth ] = Dbl2String( 208.25 );
+        ApplicationLayoutDefault[ Design::LT_Page ][ Design::AT_PageHeight ] = Dbl2String( 269.5 );
+        ApplicationLayoutDefault[ Design::LT_Page ][ Design::AT_TopPageMargin ] = Dbl2String( 12.0 );
+        ApplicationLayoutDefault[ Design::LT_Page ][ Design::AT_BottomPageMargin ] = Dbl2String( 12 );
+        ApplicationLayoutDefault[ Design::LT_Page ][ Design::AT_RightPageMargin ] = Dbl2String( 12 );
+        ApplicationLayoutDefault[ Design::LT_Page ][ Design::AT_LeftPageMargin ] = Dbl2String( 18 );
+        ApplicationLayoutDefault[ Design::LT_Page ][ Design::AT_BorderFileName ] = "big_and_little_line.jpg";
+        ApplicationLayoutDefault[ Design::LT_Page ][ Design::AT_BorderSize ] = Dbl2String( 4 );
+        ApplicationLayoutDefault[ Design::LT_Page ][ Design::AT_ShowBorder ] = "true";
+        ApplicationLayoutDefault[ Design::LT_Page ][ Design::AT_ShowTitle ] = "true";
+        ApplicationLayoutDefault[ Design::LT_Page ][ Design::AT_ShowSubTitle ] = "true";
+        ApplicationLayoutDefault[ Design::LT_Page ][ Design::AT_Orientation ] = Design::OrientationStrings[ Design::AT_Portrait ];
+        ApplicationLayoutDefault[ Design::LT_Page ][ Design::AT_TopContentMargin ] = Dbl2String( 2 );
+        ApplicationLayoutDefault[ Design::LT_Page ][ Design::AT_BottomContentMargin ] = Dbl2String( 2 );
+        ApplicationLayoutDefault[ Design::LT_Page ][ Design::AT_LeftContentMargin ] = Dbl2String( 2 );
+        ApplicationLayoutDefault[ Design::LT_Page ][ Design::AT_RightContentMargin ] = Dbl2String( 2 );
+        ApplicationLayoutDefault[ Design::LT_Page ][ Design::AT_OverSizePaper ] = "false";
+        ApplicationLayoutDefault[ Design::LT_Page ][ Design::AT_PaperHeight ] = Dbl2String( 269.5 );
+        ApplicationLayoutDefault[ Design::LT_Page ][ Design::AT_PaperWidth ] = Dbl2String( 208.25 );
+        ApplicationLayoutDefault[ Design::LT_Stamp ][ Design::AT_ShowTitle ] = "true";
+        ApplicationLayoutDefault[ Design::LT_Stamp ][ Design::AT_ShowCatNbr ] = "true";
+        ApplicationLayoutDefault[ Design::LT_Stamp ][ Design::AT_ShowImage ] = "true";
+        ApplicationLayoutDefault[ Design::LT_Stamp ][ Design::AT_GrayScaleImages ] = "false";
+        ApplicationLayoutDefault[ Design::LT_Stamp ][ Design::AT_TopContentMargin ] = Dbl2String( 2 );
+        ApplicationLayoutDefault[ Design::LT_Stamp ][ Design::AT_BottomContentMargin ] = Dbl2String( 2 );
+        ApplicationLayoutDefault[ Design::LT_Stamp ][ Design::AT_LeftContentMargin ] = Dbl2String( 2 );
+        ApplicationLayoutDefault[ Design::LT_Stamp ][ Design::AT_RightContentMargin ] = Dbl2String( 2 );
+        ApplicationLayoutDefault[ Design::LT_Stamp ][ Design::AT_SelvageHeight ] = Dbl2String( 0 );
+        ApplicationLayoutDefault[ Design::LT_Stamp ][ Design::AT_SelvageWidth ] = Dbl2String( 0 );
+        ApplicationLayoutDefault[ Design::LT_Stamp ][ Design::AT_MountAllowanceHeight ] = Dbl2String( 6 );
+        ApplicationLayoutDefault[ Design::LT_Stamp ][ Design::AT_MountAllowanceWidth ] = Dbl2String( 6 );
+        ApplicationLayoutDefault[ Design::LT_Stamp ][ Design::AT_StampNamePosition ] = Design::StampNamePositionStrings[ Design::AT_StampNamePositionTop ];
+        ApplicationLayoutDefault[ Design::LT_Stamp ][ Design::AT_StampMargin ] = Dbl2String( 2 );
+        ApplicationLayoutDefault[ Design::LT_Stamp ][ Design::AT_Catalog ] = "Mi";
+        ApplicationLayoutDefault[ Design::LT_Frame ][ Design::AT_ShowTitle ] = "false";
+        ApplicationLayoutDefault[ Design::LT_Frame ][ Design::AT_ShowSubTitle ] = "false";
+        ApplicationLayoutDefault[ Design::LT_Frame ][ Design::AT_ShowFrame ] = "false";
+        ApplicationLayoutDefault[ Design::LT_Frame ][ Design::AT_TopContentMargin ] = Dbl2String( 2 );
+        ApplicationLayoutDefault[ Design::LT_Frame ][ Design::AT_BottomContentMargin ] = Dbl2String( 2 );
+        ApplicationLayoutDefault[ Design::LT_Frame ][ Design::AT_LeftContentMargin ] = Dbl2String( 2 );
+        ApplicationLayoutDefault[ Design::LT_Frame ][ Design::AT_RightContentMargin ] = Dbl2String( 2 );
+        ApplicationLayoutDefault[ Design::LT_Frame ][ Design::AT_CalculateSpacing ] = "true";
+        ApplicationLayoutDefault[ Design::LT_Frame ][ Design::AT_FixedSpacingSize ] = Dbl2String( 5 );
+        ApplicationLayoutDefault[ Design::LT_Frame ][ Design::AT_StampAlignmentMode ] = Design::StampAlignmentModeStrings[ Design::AlignTop ];
+        for ( int layout = Design::LT_Page; layout < Design::NbrLayoutTypes; layout++ )
+        {
+            for ( int attrType = Design::AT_Name; attrType < Design::AT_NbrAttrTypes; attrType++ )
+            {
+                ApplicationLayoutPreference[ layout ][ attrType ] = ApplicationLayoutDefault[ layout ][ attrType ];
+                std::cout << Design::LayoutTypeStrings[ layout ] << " "
+                    << Design::AttrNameStrings[ attrType ] << " "
+                    << ApplicationLayoutPreference[ layout ][ attrType ] << "\n";
+            }
+        }
+
+    }
+
+    void Settings::LoadLayoutPreference( wxXmlNode* node )
+    {
+
+        wxXmlNode* defaults = Utils::FirstChildElement( node, "Defaults" );
+        if ( defaults )
+        {
+            wxXmlNode* child = defaults->GetChildren( );
+            while ( child )
+            {
+                wxString name = child->GetName( );
+                if ( !name.Cmp( "Default" ) )
+                {
+                    wxString layoutType = child->GetAttribute( "LayoutType" );
+                    if ( !layoutType.Cmp( Design::LayoutTypeStrings[ Design::LT_Page ] ) )
+                    {
+                        wxXmlAttribute* attr = child->GetAttributes( );
+                        while ( attr )
+                        {
+                            wxString attrName = attr->GetName( );
+                            wxString attrVal = attr->GetValue( );
+                            Design::AlbumAttrType attrType = Design::FindAlbumAttrType( attrName );
+                            if ( attrType >= 0 )
+                            {
+                                ApplicationLayoutPreference[ Design::LT_Page ][ attrType ] = attrVal;
+                            }
+
+                            attr = attr->GetNext( );
+                        }
+                    }
+                    else  if ( !layoutType.Cmp( Design::LayoutTypeStrings[ Design::LT_Stamp ] ) )
+                    {
+                        wxXmlAttribute* attr = child->GetAttributes( );
+                        while ( attr )
+                        {
+                            wxString attrName = attr->GetName( );
+                            wxString attrVal = attr->GetValue( );
+                            Design::AlbumAttrType attrType = Design::FindAlbumAttrType( attrName );
+                            if ( attrType >= 0 )
+                            {
+                                ApplicationLayoutPreference[ Design::LT_Stamp ][ attrType ] = attrVal;
+                            }
+                            attr = attr->GetNext( );
+                        }
+                    }
+                    else  if ( !layoutType.Cmp( Design::LayoutTypeStrings[ Design::LT_Frame ] ) )
+                    {
+                        wxXmlAttribute* attr = child->GetAttributes( );
+                        while ( attr )
+                        {
+                            wxString attrName = attr->GetName( );
+
+                            wxString attrVal = attr->GetValue( );
+                            Design::AlbumAttrType attrType = Design::FindAlbumAttrType( attrName );
+                            if ( attrType >= 0 )
+                            {
+                                ApplicationLayoutPreference[ Design::LT_Frame ][ attrType ] = attrVal;
+                            }
+                            attr = attr->GetNext( );
+                        }
+                    }
+                }
+                child = child->GetNext( );
+            }
+        }
+    }
 
 }

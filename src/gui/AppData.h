@@ -78,7 +78,7 @@ public:
 
     Utils::Project* GetProject( );
 
-    Utils::Settings* GetSettings( );
+    Utils::Settings* GetAppSettings( );
 
     Catalog::StampMountData* GetStampMountData( );
 

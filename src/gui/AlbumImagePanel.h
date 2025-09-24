@@ -24,7 +24,7 @@
 
 #ifndef _ALBUMIMAGEPANEL_H_
 #define _ALBUMIMAGEPANEL_H_
-
+#include <wx/scrolwin.h>
 #include "gui/GuiDefs.h"
 #include "design/LayoutBase.h"
 

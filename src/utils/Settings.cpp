@@ -87,7 +87,7 @@ namespace Utils {
         stdPaths.SetFileLayout( wxStandardPaths::FileLayout_XDG );
         stdPaths.UseAppInfo( wxStandardPaths::AppInfo_AppName );
         wxString settingsDir = stdPaths.GetUserLocalDataDir( );
-        wxFileName* fileName = new wxFileName( settingsDir, "" );
+        wxFileName* fileName = new wxFileName( settingsDir );
         if ( !fileName->DirExists( ) )
         {
             fileName->Mkdir( );
@@ -177,7 +177,7 @@ namespace Utils {
         //     wxDirDialog  dirDialog( this, 12355, _( "Select the Filename and Directory for the Application Data" ) );
         //     wxGetCwd( );
         //     fileDialog.SetDefaultDirectory( wxGetCwd( ) );
-        //     fileDialog.SetDefaultFilename( _( "unnamed.spt" ) );
+        //     fileDialog.SetDefaultFilename( _( ""UndefinedName.spt"" ) );
         //     fileDialog.SetWildCard( _( "Stamp Tools Project files(*.spt)|*.spt" ) );
 
         //     if ( fileDialog.ShowModal( ) == wxID_CANCEL )

@@ -62,7 +62,7 @@ enum GuiDefs {
     ID_CatalogTOCTreeCtrl = 13400,
     ID_TOCTreeCtrl = 13500,
     ID_AlbumTOCTreeCtrl = 13600,
-    ID_EDITPROJECTDETAILS = 13700,
+    //ID_EDITPROJECTDETAILS = 13700,
     ID_EXPORTDIALOG = 13800,
     ID_EXPORTPANEL = 13900,
     IDCatalogMenuID = 20000,

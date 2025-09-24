@@ -49,6 +49,7 @@
 
 #include "utils/Project.h"
 
+
  //#include "StampToolApp.h"
 #include "design/AlbumVolume.h"
 #include "design/DesignDefs.h"
@@ -1597,7 +1598,7 @@ void AlbumTreeCtrl::Validate( wxTreeItemId id )
     while ( id.IsOk( ) )
     {
         Validate( id );
-        id = GetNext( id );
+        id = GetNextChild( id, cookie  );
     }
 }
 

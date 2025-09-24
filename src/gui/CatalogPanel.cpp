@@ -765,17 +765,22 @@ void CatalogPanel::OnSpinbuttonUpdated( wxSpinEvent& event )
 void CatalogPanel::SetVolumeListCtrl( )
 {
     wxTreeItemId treeId = GetCatalogTOCTreeCtrl( )->GetSelection( );
-    // TOCTreeItemData* data = ( TOCTreeItemData* ) m_tocTreeCtrl->GetItemData( treeId );
-    wxString volName = m_tocTreeCtrl->GetItemText( treeId );
-
-    wxString colName = "";
-    Inventory::Collection* collection = GetCollectionList( )->GetCurrentCollection( );
-    if ( collection )
+    //TestFix
+    if ( treeId.IsOk() )
     {
-        colName = collection->GetName( );
-    }
+    //EndTestFix
+        // TOCTreeItemData* data = ( TOCTreeItemData* ) m_tocTreeCtrl->GetItemData( treeId );
+        wxString volName = m_tocTreeCtrl->GetItemText( treeId );
 
-    m_volumeListCtrl->SetValue( volName + " - " + colName );
+        wxString colName = "";
+        Inventory::Collection* collection = GetCollectionList( )->GetCurrentCollection( );
+        if ( collection )
+        {
+            colName = collection->GetName( );
+        }
+
+        m_volumeListCtrl->SetValue( volName + " - " + colName );
+    }
 }
 
 //--------------

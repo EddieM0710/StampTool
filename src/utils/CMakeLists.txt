@@ -1,35 +1,9 @@
-message ( "Building Utils" )
-message ( "Source_Directory: ${StampTool_Source_Directory}")
-message ( "Design dir: ${StampTool_DesignFiles_Source_Directory}")
-message ( "Catalog dir: ${StampTool_CatalogFiles_Source_Directory}")
-message ( "Mount dir: ${StampTool_MountFiles_Source_Directory}")
-message ( "Gui dir: ${StampTool_CatalogFiles_Source_Directory}")
-message ( "Catalog dir: ${StampTool_UtilsFiles_Source_Directory}")
-message ( "Catalog dir: ${StampTool_CollectionFiles_Source_Directory}")
-message ( "TOCFiles dir: ${StampTool_TOCFiles_Source_Directory}")
-message ( " " )
+message ( "------Configuring Utils------" )
 
-include( "${wxWidgets_USE_FILE}")
+file(GLOB UTIL_SOURCES CONFIGURE_DEPENDS
+     "${CMAKE_CURRENT_SOURCE_DIR}/*.cpp")
 
-include_directories(   ${StampTool_Source_Directory} 
-					${StampTool_GuiFiles_Source_Directory}
-					${StampTool_UtilsFiles_Source_Directory}
-					${StampTool_DesignFiles_Source_Directory}
-					${StampTool_CatalogFiles_Source_Directory} 
-					${StampTool_TOCFiles_Source_Directory} 
-					${StampTool_CollectionFiles_Source_Directory} )
+add_library(UtilityFiles OBJECT ${UTIL_SOURCES})
 
-add_library( Utils SHARED 
-    CSV.cpp
-    DebugString.cpp
-    Project.cpp
-    Settings.cpp 
-    StampList.cpp 
-    Font.cpp
-    FontList.cpp
-    Volume.cpp 
-    VolumeList.cpp 
-    XMLUtilities.cpp 
-)
-
-
+# inherit wx include dirs/defs/libs
+target_link_libraries(UtilityFiles PUBLIC project_wx stamp_includes project_pdfdoc )

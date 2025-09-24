@@ -60,14 +60,16 @@ DefinePeriodsPanel::DefinePeriodsPanel( wxWindow* parent, wxWindowID id, const w
 {
     Init( );
     Create( parent, id, pos, size, style );
+    InitControls();
+}
+void DefinePeriodsPanel::InitControls()
+{
     m_antiqueTextBox->SetValue( GetSettings( )->GetLowerPeriod( ) );
     m_AntiqueYear->SetValue( GetSettings( )->GetLowerDivision( ) );
     m_classicTextBox->SetValue( GetSettings( )->GetMiddlePeriod( ) );
     m_modernTextBox->SetValue( GetSettings( )->GetUpperPeriod( ) );
     m_modernYear->SetValue( GetSettings( )->GetUpperDivision( ) );
-
 }
-
 //--------------
 
 DefinePeriodsPanel::~DefinePeriodsPanel( )
@@ -188,10 +190,9 @@ void DefinePeriodsPanel::OnModernTextUpdated( wxCommandEvent& event )
 }
 
 //--------------
-
-void DefinePeriodsPanel::OnOkClick( )
+void DefinePeriodsPanel::Update( )
 {
-    if ( m_antiqueTextBox->IsModified( ) )
+        if ( m_antiqueTextBox->IsModified( ) )
     {
         GetSettings( )->SetDirty( );
         GetSettings( )->SetLowerPeriod( m_antiqueTextBox->GetValue( ) );
@@ -221,6 +222,10 @@ void DefinePeriodsPanel::OnOkClick( )
         GetSettings( )->SetUpperDivision( m_modernYear->GetValue( ) );
         m_modernYear->SetModified( false );
     }
+}
+void DefinePeriodsPanel::OnOkClick( )
+{
+    Update();
 }
 
 //--------------

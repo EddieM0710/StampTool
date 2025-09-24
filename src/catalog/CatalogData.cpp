@@ -144,7 +144,7 @@ namespace Catalog
     {
         m_stamp = xmlNode;
         GetDescriptionPanel( )->UpdatePanel( );
-        GetDescriptionPanel( )->Show( );
+        //GetDescriptionPanel( )->Show( );
     };
 
     void CatalogData::UpdateCatalogPanels( )

@@ -361,7 +361,7 @@ void GenerateList::Save( wxString filename )
 {
     bool status = false;
 
-    std::ofstream ostream( filename, std::ios::out );
+    std::ofstream ostream( filename.char_str(), std::ios::out );
     if ( !ostream.fail( ) )
     {
         Catalog::CatalogVolume* catalogVolume = GetCatalogVolume( );

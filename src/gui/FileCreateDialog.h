@@ -26,7 +26,7 @@
 #define _FILECREATEDIALOG_H_
 
 #include "gui/GuiDefs.h"
-
+#include <wx/filectrl.h>
 #define SYMBOL_FILECREATEDIALOG_STYLE wxCAPTION | wxRESIZE_BORDER | wxSYSTEM_MENU | wxCLOSE_BOX | wxTAB_TRAVERSAL
 #define SYMBOL_FILECREATEDIALOG_TITLE _( "Select file and directory" )
 #define SYMBOL_FILECREATEDIALOG_IDNAME ID_FILECREATEDIALOG

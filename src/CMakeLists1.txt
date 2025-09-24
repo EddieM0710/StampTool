@@ -7,8 +7,6 @@ set( ENV{WXPDF_FONTPATH} "/sandbox/Applications/wx/wxpdfdoc-main/lib/fonts" )
 
 configure_file( StampToolConfig.h.in StampToolConfig.h )
 
-include( "${wxWidgets_USE_FILE}" )
-message( "wxWidgets_USE_FILE ${wxWidgets_USE_FILE}")
 
 # compile the parts
 add_subdirectory (utils)

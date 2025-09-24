@@ -119,7 +119,7 @@ void FrameDefaultsPanel::CreateControls( )
     int lastID = ID_LastID;
 
     wxNotebook* focusNotebook = new wxNotebook( thePanel, ++lastID,
-        wxDefaultPosition, wxDefaultSize, wxBK_LEFT );
+        wxDefaultPosition, wxDefaultSize, wxBK_TOP );
     focusNotebook->SetPadding( wxSize( 1, 1 ) );
     rowColHorizontalSizer->Add( focusNotebook, 1, wxGROW | wxALL, 5 );
 

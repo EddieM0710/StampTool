@@ -139,15 +139,32 @@ void SortOrderPanel::CreateControls( )
     wxBoxSizer* itemBoxSizer2 = new wxBoxSizer( wxVERTICAL );
     itemDialog1->SetSizer( itemBoxSizer2 );
 
-    wxTextCtrl* itemTextCtrl3 = new wxTextCtrl(
-        itemDialog1, ID_SORTORDERTEXTCTRL,
-        _( "Select the order of the levels of the tree. Selecting none will remove the level from view. Use the Item view dialog to determine what items will be displayed." ),
-        wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE );
-    itemTextCtrl3->Enable( false );
-    itemBoxSizer2->Add( itemTextCtrl3, 2, wxGROW | wxALL, 5 );
+    //wxTextCtrl* itemTextCtrl3 = new wxTextCtrl(
+     //   itemDialog1, ID_SORTORDERTEXTCTRL,
+        
+      //  wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE );
+   // itemTextCtrl3->Enable( false );
+
+ wxStaticText* itemTextCtrl30
+    = new wxStaticText( itemDialog1, wxID_STATIC, 
+            _( "Select the order of the levels of the tree." ),
+            wxDefaultPosition, wxDefaultSize, 0 );  
+    itemBoxSizer2->Add( itemTextCtrl30, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 5 );
+
+ wxStaticText* itemTextCtrl31
+    = new wxStaticText( itemDialog1, wxID_STATIC, 
+            _( "Selecting none will remove the level from view." ),
+            wxDefaultPosition, wxDefaultSize, 0 );  
+    itemBoxSizer2->Add( itemTextCtrl31, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 1 );
+
+ wxStaticText* itemTextCtrl32
+    = new wxStaticText( itemDialog1, wxID_STATIC, 
+            _( "Use the Item view dialog to determine what items will be displayed." ),
+            wxDefaultPosition, wxDefaultSize, 0 );  
+    itemBoxSizer2->Add( itemTextCtrl32, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 1 );
 
     wxBoxSizer* itemBoxSizer4 = new wxBoxSizer( wxHORIZONTAL );
-    itemBoxSizer2->Add( itemBoxSizer4, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 5 );
+    itemBoxSizer2->Add( itemBoxSizer4, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 1 );
 
     wxStaticText* itemStaticText5
         = new wxStaticText( itemDialog1, wxID_STATIC, _( "First Sort" ),
@@ -176,7 +193,7 @@ void SortOrderPanel::CreateControls( )
     itemBoxSizer7->Add( m_secondSort, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
     wxBoxSizer* itemBoxSizer10 = new wxBoxSizer( wxHORIZONTAL );
-    itemBoxSizer2->Add( itemBoxSizer10, 1, wxALIGN_CENTER_HORIZONTAL | wxALL, 5 );
+    itemBoxSizer2->Add( itemBoxSizer10, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 5 );
 
     wxStaticText* itemStaticText11
         = new wxStaticText( itemDialog1, wxID_STATIC, _( "Third Sort" ),
@@ -190,7 +207,7 @@ void SortOrderPanel::CreateControls( )
     itemBoxSizer10->Add( m_thirdSort, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
     wxBoxSizer* itemBoxSizer13 = new wxBoxSizer( wxHORIZONTAL );
-    itemBoxSizer2->Add( itemBoxSizer13, 1, wxALIGN_CENTER_HORIZONTAL | wxALL, 5 );
+    itemBoxSizer2->Add( itemBoxSizer13, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 5 );
 
     wxStaticText* itemStaticText14
         = new wxStaticText( itemDialog1, wxID_STATIC, _( "Forth Sort" ),
@@ -204,7 +221,7 @@ void SortOrderPanel::CreateControls( )
     itemBoxSizer13->Add( m_forthSort, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
     wxBoxSizer* itemBoxSizer16 = new wxBoxSizer( wxHORIZONTAL );
-    itemBoxSizer2->Add( itemBoxSizer16, 1, wxALIGN_CENTER_HORIZONTAL | wxALL, 5 );
+    itemBoxSizer2->Add( itemBoxSizer16, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 5 );
 
     wxStaticText* itemStaticText17
         = new wxStaticText( itemDialog1, wxID_STATIC, _( "Fifth Sort" ),
@@ -217,6 +234,10 @@ void SortOrderPanel::CreateControls( )
         wxDefaultSize, m_fifthSortStrings, 0 );
     itemBoxSizer16->Add( m_fifthSort, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
+}
+
+void SortOrderPanel::InitSortControls()
+{
 
     wxArrayInt* sortOrder = GetSettings( )->GetSortOrder( );
 
@@ -271,8 +292,6 @@ void SortOrderPanel::CreateControls( )
     }
 }
 
-
-
 bool SortOrderPanel::ShowToolTips( )
 {
     return true;
@@ -308,8 +327,7 @@ void SortOrderPanel::OnChoice4Selected( wxCommandEvent& event )
     event.Skip( );
 }
 
-
-void SortOrderPanel::OnOkClick( )
+void SortOrderPanel::Update()
 {
     wxArrayInt* sortOrder = GetSettings( )->GetSortOrder( );
 
@@ -363,5 +381,8 @@ void SortOrderPanel::OnOkClick( )
         sortOrder->Item( 4 ) = sel;
         GetSettings( )->SetDirty( );
     }
-
+}
+void SortOrderPanel::OnOkClick( )
+{
+Update();
 }

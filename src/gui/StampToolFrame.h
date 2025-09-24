@@ -138,7 +138,7 @@ public:
 
     void DoSortOrderDialog( );
 
-    void DoEditProjectDetailsDialog( );
+   // void DoEditProjectDetailsDialog( );
 
     void DoPreferencesDialog( );
 
@@ -162,7 +162,7 @@ public:
 
     void OnDefinePeriodClick( wxCommandEvent& event );
 
-    void OnEditProjectDetailsClick( wxCommandEvent& event );
+   // void OnEditProjectDetailsClick( wxCommandEvent& event );
 
     void OnExitClick( wxCommandEvent& event );
 

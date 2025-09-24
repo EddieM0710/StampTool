@@ -1,27 +1,53 @@
 {
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
-    "version": "0.2.0",
-    "configurations": [
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "StampTool (Debug, Winlibs)",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${command:cmake.launchTargetPath}",
+      "cwd": "${workspaceFolder}",
+      "MIMode": "gdb",
+      "miDebuggerPath": "C:/mingw64/bin/gdb.exe",
+      "miDebuggerArgs": "-readnow",
+      "externalConsole": false,
+      "stopAtEntry": false,
+      "environment": [
         {
-            "name": "(gdb) Launch",
-            "type": "cppdbg",
-            "request": "launch",
-            "program": "/sandbox/Development/StampTool/build/StampTool",
-            "args": [],
-            "stopAtEntry": false,
-            "cwd": "${workspaceFolder}",
-            "environment": [],
-            "externalConsole": false,
-            "MIMode": "gdb",
-            "setupCommands": [
-                {
-                    "description": "Enable pretty-printing for gdb",
-                    "text": "-enable-pretty-printing",
-                    "ignoreFailures": true
-                }
-            ]
+          "name": "PATH",
+          "value": "C:/mingw64/bin;C:/mingw64/local-wx-debug/bin;C:/mingw64/local-wx-debug/lib/gcc_x64_dll;C:/mingw64/local-wxpdfdoc-debug/bin;C:/mingw64/local-wxpdfdoc-debug/lib/gcc_x64_dll;C:/mingw64/local-3rdparty-debug/bin;${env:PATH}"
         }
-    ]
+      ],
+      "logging": { "engineLogging": true, "trace": true, "traceResponse": true },
+      "setupCommands": [
+        { "text": "handle SIGSEGV stop print nopass" },
+        { "text": "show substitute-path" },
+        { "text": "show environment PATH" }
+      ]
+    },
+    {
+      "name": "StampTool (Release, Winlibs)",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${command:cmake.launchTargetPath}",
+      "cwd": "${workspaceFolder}",
+      "MIMode": "gdb",
+      "miDebuggerPath": "C:/mingw64/bin/gdb.exe",
+      "miDebuggerArgs": "-readnow",
+      "externalConsole": false,
+      "stopAtEntry": false,
+      "environment": [
+        {
+          "name": "PATH",
+          "value": "C:/mingw64/bin;C:/mingw64/local-wx-release/bin;C:/mingw64/local-wx-release/lib/gcc_x64_dll;C:/mingw64/local-wxpdfdoc-release/bin;C:/mingw64/local-wxpdfdoc-release/lib/gcc_x64_dll;C:/mingw64/local-3rdparty-release/bin;${env:PATH}"
+        }
+      ],
+      "logging": { "engineLogging": true, "trace": true, "traceResponse": true },
+      "setupCommands": [
+        { "text": "handle SIGSEGV stop print nopass" },
+        { "text": "show substitute-path" },
+        { "text": "show environment PATH" }
+      ]
+    }
+  ]
 }

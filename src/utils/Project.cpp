@@ -82,7 +82,7 @@ namespace Utils {
         m_albumListNode = 0;
 
         m_imageDirectory = wxGetCwd( );
-        m_projectFilename = "Undefined.spt";
+        m_projectFilename = "UndefinedName.spt";
     }
 
     //-------
@@ -471,8 +471,6 @@ namespace Utils {
             //query for valid filename
             m_projectFilename = "UndefinedName.spt";
         }
-
-
         if ( wxFileExists( m_projectFilename ) )
         {
             wxFileName bakFile( m_projectFilename );
@@ -576,10 +574,16 @@ namespace Utils {
 
     void Project::SetProjectFilename( wxString name )
     {
-        m_projectFilename = name;
+        if ( name.IsEmpty() )
+        {
+            m_projectFilename = "UndefinedName.spt";  
+        }
+        else 
+        {
+            m_projectFilename = name;
+        }
         GetSettings( )->SetLastFile( m_projectFilename );
         SetCaption( );
-
     };
 
     //-------

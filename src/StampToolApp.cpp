@@ -76,6 +76,8 @@ void StampToolApp::Init( )
 
 bool StampToolApp::OnInit( )
 {
+    m_frame = (StampToolFrame*)0;
+    m_AppData = (AppData*)0 ;
 
     // Remove the comment markers above and below this block
     // to make permanent changes to the code.
@@ -98,10 +100,14 @@ bool StampToolApp::OnInit( )
     wxImage::AddHandler( new wxGIFHandler );
 #endif
     SetAppName( "StampTool" );
+
     m_AppData = new AppData( );
+    
     m_AppData->InitAppData( );
 
     m_frame = new StampToolFrame( NULL );
+
+
     //  m_frame->SetupRecentMenu( );    
     m_frame->InitLoad( );
     m_AppData->SetCaption( );

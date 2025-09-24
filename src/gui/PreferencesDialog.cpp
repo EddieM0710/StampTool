@@ -47,6 +47,7 @@
 #include "collection/Collection.h"
 #include <wx/font.h>
 #include <wx/colour.h>
+#include <wx/filepicker.h>
 #include "utils/FontList.h"
 
  // XPM images
@@ -73,7 +74,10 @@ IMPLEMENT_DYNAMIC_CLASS( PreferencesDialog, wxDialog )
     EVT_CHECKBOX( ID_OPENLASTCHECKBOX, PreferencesDialog::OnOpenlastcheckboxClick )
     EVT_TEXT( ID_RECENTSIZETEXTCTRL, PreferencesDialog::OnRecentsizetextctrlTextUpdated )
     EVT_BUTTON( wxID_OK, PreferencesDialog::OnOkClick )
-    // PreferencesDialog event table entries
+    EVT_BUTTON( ID_DIRPICKERBTN, PreferencesDialog::BrowseForDir )
+EVT_NOTEBOOK_PAGE_CHANGED( ID_NOTEBOOK, PreferencesDialog::OnNotebookPageChanged )
+    
+   // PreferencesDialog event table entries
 
     END_EVENT_TABLE( )
 
@@ -91,12 +95,18 @@ PreferencesDialog::PreferencesDialog( wxWindow* parent, wxWindowID id, const wxS
 {
     Init( );
     Create( parent, id, caption, pos, size, style );
-    //m_imageDirectory->SetValue( GetSettings( )->GetImageDirectory( ) );
+    InitDetailsPanel( );
+}
+
+void PreferencesDialog::InitDetailsPanel( )
+{
+    m_imageDirectory->SetValue( GetProject( )->GetImageDirectory( ) );
     m_country->SetValue( GetProject( )->GetProjectCatalogCode( ) );
     m_catalog->SetValue( GetProject( )->GetProjectCountryID( ) );
     m_loadLastFileAtStartUp->SetValue( GetSettings( )->GetLoadLastFileAtStartUp( ) );
     wxString str = wxString::Format( "%i", GetSettings( )->GetNbrRecentPreference( ) );
     m_recentListSize->SetValue( str );
+
 }
 
 
@@ -150,165 +160,76 @@ void PreferencesDialog::Init( )
 wxPanel* PreferencesDialog::CreateNotebookDetailsPanel( wxWindow* parent )
 {
 
-    wxPanel* notebookDetailsPanel = new wxPanel( parent, ID_NOTEBOOKDETAILSPANEL, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
-    notebookDetailsPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
+    wxPanel* preferencesDetailsPanel = new wxPanel( parent, ID_NOTEBOOKDETAILSPANEL, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
+    preferencesDetailsPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
 
     wxBoxSizer* detailsVerticalSizer = new wxBoxSizer( wxVERTICAL );
-    notebookDetailsPanel->SetSizer( detailsVerticalSizer );
+    preferencesDetailsPanel->SetSizer( detailsVerticalSizer );
 
     wxBoxSizer* imageHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
     detailsVerticalSizer->Add( imageHorizontalSizer, 0, wxGROW | wxALL, 5 );
 
-    wxStaticText* itemStaticText1 = new wxStaticText( notebookDetailsPanel, wxID_STATIC, _( "Image Directory" ), wxDefaultPosition, wxDefaultSize, 0 );
+    wxStaticText* itemStaticText1 = new wxStaticText( preferencesDetailsPanel, wxID_STATIC, _( "Image Directory" ), wxDefaultPosition, wxDefaultSize, 0 );
     imageHorizontalSizer->Add( itemStaticText1, 1, wxALIGN_CENTER_VERTICAL | wxLEFT | wxTOP | wxBOTTOM, 5 );
 
-    m_imageDirectory = new wxTextCtrl( notebookDetailsPanel, ID_IMAGEDIRECTORTEXTBOX, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+    m_imageDirectory = new wxTextCtrl( preferencesDetailsPanel, ID_IMAGEDIRECTORTEXTBOX, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
     imageHorizontalSizer->Add( m_imageDirectory, 3, wxGROW | wxALL, 5 );
+
+    wxButton* browseButton = new wxButton( preferencesDetailsPanel, ID_DIRPICKERBTN, _( "Browse" ), wxDefaultPosition, wxDefaultSize, 0 );
+    imageHorizontalSizer->Add( browseButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
     // wxBoxSizer* itemBoxSizer5 = new wxBoxSizer( wxHORIZONTAL );
     // theDialogVerticalSizer->Add( itemBoxSizer5, 1, wxGROW | wxALL, 5 );
 
-    // wxStaticText* itemStaticText3 = new wxStaticText( notebookDetailsPanel, wxID_STATIC, _( "Working Directory" ), wxDefaultPosition, wxDefaultSize, 0 );
+    // wxStaticText* itemStaticText3 = new wxStaticText( preferencesDetailsPanel, wxID_STATIC, _( "Working Directory" ), wxDefaultPosition, wxDefaultSize, 0 );
     // itemBoxSizer5->Add( itemStaticText3, 0, wxALIGN_CENTER_VERTICAL | wxLEFT | wxTOP | wxBOTTOM, 5 );
 
     wxBoxSizer* codePrefHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
     detailsVerticalSizer->Add( codePrefHorizontalSizer, 0, wxGROW | wxALL, 5 );
 
-    wxStaticText* itemStaticText5 = new wxStaticText( notebookDetailsPanel, wxID_STATIC, _( "Country Code" ), wxDefaultPosition, wxDefaultSize, 0 );
+    wxStaticText* itemStaticText5 = new wxStaticText( preferencesDetailsPanel, wxID_STATIC, _( "Country Code" ), wxDefaultPosition, wxDefaultSize, 0 );
     codePrefHorizontalSizer->Add( itemStaticText5, 0, wxALIGN_CENTER_VERTICAL | wxLEFT | wxTOP | wxBOTTOM, 5 );
 
-    m_country = new wxTextCtrl( notebookDetailsPanel, ID_COUNTRYTEXTBOX, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+    m_country = new wxTextCtrl( preferencesDetailsPanel, ID_COUNTRYTEXTBOX, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
     codePrefHorizontalSizer->Add( m_country, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
     codePrefHorizontalSizer->Add( 10, 5, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
-    wxStaticText* itemStaticText8 = new wxStaticText( notebookDetailsPanel, wxID_STATIC, _( "Catalog Code" ), wxDefaultPosition, wxDefaultSize, 0 );
+    wxStaticText* itemStaticText8 = new wxStaticText( preferencesDetailsPanel, wxID_STATIC, _( "Catalog Code" ), wxDefaultPosition, wxDefaultSize, 0 );
     codePrefHorizontalSizer->Add( itemStaticText8, 0, wxALIGN_CENTER_VERTICAL | wxLEFT | wxTOP | wxBOTTOM, 5 );
 
-    m_catalog = new wxTextCtrl( notebookDetailsPanel, ID_CATALOGTEXTBOX, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+    m_catalog = new wxTextCtrl( preferencesDetailsPanel, ID_CATALOGTEXTBOX, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
     codePrefHorizontalSizer->Add( m_catalog, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
     wxBoxSizer* recentHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
     detailsVerticalSizer->Add( recentHorizontalSizer, 0, wxGROW | wxALL, 5 );
 
-    m_loadLastFileAtStartUp = new wxCheckBox( notebookDetailsPanel, ID_OPENLASTCHECKBOX, _( "Load Last File at Startup" ), wxDefaultPosition, wxDefaultSize, 0 );
+    m_loadLastFileAtStartUp = new wxCheckBox( preferencesDetailsPanel, ID_OPENLASTCHECKBOX, _( "Load Last File at Startup" ), wxDefaultPosition, wxDefaultSize, 0 );
     m_loadLastFileAtStartUp->SetValue( false );
     recentHorizontalSizer->Add( m_loadLastFileAtStartUp, 2, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
     recentHorizontalSizer->Add( 20, 5, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
-    wxStaticText* itemStaticText2 = new wxStaticText( notebookDetailsPanel, wxID_STATIC, _( "Size of RecentList" ), wxDefaultPosition, wxDefaultSize, 0 );
+    wxStaticText* itemStaticText2 = new wxStaticText( preferencesDetailsPanel, wxID_STATIC, _( "Size of RecentList" ), wxDefaultPosition, wxDefaultSize, 0 );
     recentHorizontalSizer->Add( itemStaticText2, 0, wxALIGN_CENTER_VERTICAL | wxLEFT | wxTOP | wxBOTTOM, 5 );
 
-    m_recentListSize = new wxTextCtrl( notebookDetailsPanel, ID_RECENTSIZETEXTCTRL, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+    m_recentListSize = new wxTextCtrl( preferencesDetailsPanel, ID_RECENTSIZETEXTCTRL, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
     recentHorizontalSizer->Add( m_recentListSize, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
-    return notebookDetailsPanel;
+    return preferencesDetailsPanel;
 }
-/*
- * Control creation for PreferencesDialog
- */
 
-void PreferencesDialog::CreateControls( )
+wxPanel* PreferencesDialog::CreateNotebookFontsPanel( wxWindow* parent )
 {
-    // PreferencesDialog content construction
 
-    PreferencesDialog* theDialog = this;
-
-    wxBoxSizer* theDialogVerticalSizer = new wxBoxSizer( wxVERTICAL );
-    theDialog->SetSizer( theDialogVerticalSizer );
-
-    // wxBoxSizer* itemBoxSizer3 = new wxBoxSizer( wxHORIZONTAL );
-    // theDialogVerticalSizer->Add( itemBoxSizer3, 1, wxGROW | wxALL, 5 );
-
-    wxBoxSizer* theDialogHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
-    theDialogVerticalSizer->Add( theDialogHorizontalSizer, 2, wxGROW | wxALL, 5 );
-
-    wxNotebook* notebook = new wxNotebook( theDialog, ID_NOTEBOOK, wxDefaultPosition, wxDefaultSize, wxBK_DEFAULT );
-
-    wxPanel* notebookDetailsPanel = CreateNotebookDetailsPanel( notebook );
-
-
-    // new wxPanel( notebook, ID_NOTEBOOKDETAILSPANEL, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
-    // notebookDetailsPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
-
-    // wxBoxSizer* detailsVerticalSizer = new wxBoxSizer( wxVERTICAL );
-    // notebookDetailsPanel->SetSizer( detailsVerticalSizer );
-
-    // wxBoxSizer* imageHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
-    // detailsVerticalSizer->Add( imageHorizontalSizer, 0, wxGROW | wxALL, 5 );
-
-    // wxStaticText* itemStaticText1 = new wxStaticText( notebookDetailsPanel, wxID_STATIC, _( "Image Directory" ), wxDefaultPosition, wxDefaultSize, 0 );
-    // imageHorizontalSizer->Add( itemStaticText1, 1, wxALIGN_CENTER_VERTICAL | wxLEFT | wxTOP | wxBOTTOM, 5 );
-
-    // m_imageDirectory = new wxTextCtrl( notebookDetailsPanel, ID_IMAGEDIRECTORTEXTBOX, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
-    // imageHorizontalSizer->Add( m_imageDirectory, 3, wxGROW | wxALL, 5 );
-
-    // // wxBoxSizer* itemBoxSizer5 = new wxBoxSizer( wxHORIZONTAL );
-    // // theDialogVerticalSizer->Add( itemBoxSizer5, 1, wxGROW | wxALL, 5 );
-
-    // // wxStaticText* itemStaticText3 = new wxStaticText( notebookDetailsPanel, wxID_STATIC, _( "Working Directory" ), wxDefaultPosition, wxDefaultSize, 0 );
-    // // itemBoxSizer5->Add( itemStaticText3, 0, wxALIGN_CENTER_VERTICAL | wxLEFT | wxTOP | wxBOTTOM, 5 );
-
-    // wxBoxSizer* codePrefHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
-    // detailsVerticalSizer->Add( codePrefHorizontalSizer, 0, wxGROW | wxALL, 5 );
-
-    // wxStaticText* itemStaticText5 = new wxStaticText( notebookDetailsPanel, wxID_STATIC, _( "Country Code" ), wxDefaultPosition, wxDefaultSize, 0 );
-    // codePrefHorizontalSizer->Add( itemStaticText5, 0, wxALIGN_CENTER_VERTICAL | wxLEFT | wxTOP | wxBOTTOM, 5 );
-
-    // m_country = new wxTextCtrl( notebookDetailsPanel, ID_COUNTRYTEXTBOX, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
-    // codePrefHorizontalSizer->Add( m_country, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
-
-    // codePrefHorizontalSizer->Add( 10, 5, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
-
-    // wxStaticText* itemStaticText8 = new wxStaticText( notebookDetailsPanel, wxID_STATIC, _( "Catalog Code" ), wxDefaultPosition, wxDefaultSize, 0 );
-    // codePrefHorizontalSizer->Add( itemStaticText8, 0, wxALIGN_CENTER_VERTICAL | wxLEFT | wxTOP | wxBOTTOM, 5 );
-
-    // m_catalog = new wxTextCtrl( notebookDetailsPanel, ID_CATALOGTEXTBOX, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
-    // codePrefHorizontalSizer->Add( m_catalog, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
-
-    // wxBoxSizer* recentHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
-    // detailsVerticalSizer->Add( recentHorizontalSizer, 0, wxGROW | wxALL, 5 );
-
-    // m_loadLastFileAtStartUp = new wxCheckBox( notebookDetailsPanel, ID_OPENLASTCHECKBOX, _( "Load Last File at Startup" ), wxDefaultPosition, wxDefaultSize, 0 );
-    // m_loadLastFileAtStartUp->SetValue( false );
-    // recentHorizontalSizer->Add( m_loadLastFileAtStartUp, 2, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
-
-    // recentHorizontalSizer->Add( 20, 5, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
-
-    // wxStaticText* itemStaticText2 = new wxStaticText( notebookDetailsPanel, wxID_STATIC, _( "Size of RecentList" ), wxDefaultPosition, wxDefaultSize, 0 );
-    // recentHorizontalSizer->Add( itemStaticText2, 0, wxALIGN_CENTER_VERTICAL | wxLEFT | wxTOP | wxBOTTOM, 5 );
-
-    // m_recentListSize = new wxTextCtrl( notebookDetailsPanel, ID_RECENTSIZETEXTCTRL, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
-    // recentHorizontalSizer->Add( m_recentListSize, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
-
-
-    notebook->AddPage( notebookDetailsPanel, _( "Details" ) );
-
-    m_sortOrderPanel =
-        new SortOrderPanel( notebook, ID_SORTORDERPANEL, wxDefaultPosition,
-            wxSize( 100, 100 ), wxSIMPLE_BORDER );
-
-    notebook->AddPage( m_sortOrderPanel, _( "Sort Order" ) );
-
-    m_definePeriodsPanel =
-        new DefinePeriodsPanel( notebook, ID_DEFINEPERIODSPANEL, wxDefaultPosition,
-            wxSize( 100, 100 ), wxSIMPLE_BORDER );
-
-    notebook->AddPage( m_definePeriodsPanel, _( "Define Periods" ) );
-
-
-
-    wxPanel* notebookFontsPanel = new wxPanel( notebook, ID_NOTEBOOKFONTSPANEL, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
-    notebookFontsPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
+    wxPanel* fontsPanel = new wxPanel( parent, ID_NOTEBOOKFONTSPANEL, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
+    fontsPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
 
     wxBoxSizer* fontsVerticalSizer = new wxBoxSizer( wxVERTICAL );
-    notebookFontsPanel->SetSizer( fontsVerticalSizer );
+    fontsPanel->SetSizer( fontsVerticalSizer );
 
     wxBoxSizer* fontsHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
     fontsVerticalSizer->Add( fontsHorizontalSizer, 0, wxGROW | wxALL, 5 );
-
-
 
     wxFont catNbrFont = GetSettings( )->GetNbrFont( );
     wxColour catNbrColor = GetSettings( )->GetNbrColor( );
@@ -319,48 +240,45 @@ void PreferencesDialog::CreateControls( )
 
     int lastID = ID_LastID;
 
-
     FontPicker* catNbrFontPickerHelper = new FontPicker(
-        notebookFontsPanel, fontsVerticalSizer,
+        fontsPanel, fontsVerticalSizer,
         _( "Default Stamp Nbr Font" ), _( "Default" ), lastID,
         catNbrFont, catNbrColor );
     m_nbrFontPicker = catNbrFontPickerHelper->GetFontPickerCtrl( );
     m_nbrColorPicker = catNbrFontPickerHelper->GetColourPickerCtrl( );
 
     FontPicker* titleFontPickerHelper = new FontPicker(
-        notebookFontsPanel, fontsVerticalSizer,
+        fontsPanel, fontsVerticalSizer,
         _( "Default Title Font" ), _( "Default" ), lastID,
         titleFont, titleColor );
     m_titleFontPicker = titleFontPickerHelper->GetFontPickerCtrl( );
     m_titleColorPicker = titleFontPickerHelper->GetColourPickerCtrl( );
 
-
     FontPicker* textFontPickerHelper = new FontPicker(
-        notebookFontsPanel, fontsVerticalSizer,
+        fontsPanel, fontsVerticalSizer,
         _( "Default Text Font" ), _( "Default" ), lastID,
         textFont, textColor );
     m_textFontPicker = textFontPickerHelper->GetFontPickerCtrl( );
     m_textColorPicker = textFontPickerHelper->GetColourPickerCtrl( );
 
-
     FontPicker* nameFontPickerHelper = new FontPicker(
-        notebookFontsPanel, fontsVerticalSizer,
+        fontsPanel, fontsVerticalSizer,
         _( "Default Stamp Name Font" ), _( "Default" ), lastID,
         textFont, textColor );
     m_nameFontPicker = nameFontPickerHelper->GetFontPickerCtrl( );
     m_nameColorPicker = nameFontPickerHelper->GetColourPickerCtrl( );
-
-    notebook->AddPage( notebookFontsPanel, _( "Fonts" ) );
-
-
-
-    wxPanel* notebookCollectionPanel = new wxPanel( notebook, ID_NOTEBOOKCOLLECTIONPANEL, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
-    notebookCollectionPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
+    return fontsPanel;
+}
+wxPanel* PreferencesDialog::CreateCollectionPanel( wxWindow* parent )
+{
+    
+    wxPanel* preferencesCollectionPanel = new wxPanel( m_notebook, ID_NOTEBOOKCOLLECTIONPANEL, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
+    preferencesCollectionPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
 
     wxBoxSizer* collectionVerticalSizer = new wxBoxSizer( wxVERTICAL );
-    notebookCollectionPanel->SetSizer( collectionVerticalSizer );
+    preferencesCollectionPanel->SetSizer( collectionVerticalSizer );
 
-    m_grid = new wxGrid( notebookCollectionPanel, ID_COLLECTIONGRID, wxDefaultPosition, wxSize( 300, 100 ),
+    m_grid = new wxGrid( preferencesCollectionPanel, ID_COLLECTIONGRID, wxDefaultPosition, wxSize( 100, 100 ),
         wxHSCROLL | wxVSCROLL );
     m_grid->SetDefaultColSize( 100 );
     m_grid->SetDefaultRowSize( 25 );
@@ -382,12 +300,53 @@ void PreferencesDialog::CreateControls( )
         m_grid->SetCellValue( i, 1, collection->GetDescription( ) );
         m_grid->SetCellValue( i, 2, collection->GetLocation( ) );
     }
+    return preferencesCollectionPanel;
+}
+/*
+ * Control creation for PreferencesDialog
+ */
 
-    notebook->AddPage( notebookCollectionPanel, _( "Collection" ) );
+void PreferencesDialog::CreateControls( )
+{
+    // PreferencesDialog content construction
+
+    PreferencesDialog* theDialog = this;
+
+    wxBoxSizer* theDialogVerticalSizer = new wxBoxSizer( wxVERTICAL );
+    theDialog->SetSizer( theDialogVerticalSizer );
+
+    // wxBoxSizer* itemBoxSizer3 = new wxBoxSizer( wxHORIZONTAL );
+    // theDialogVerticalSizer->Add( itemBoxSizer3, 1, wxGROW | wxALL, 5 );
+
+    wxBoxSizer* theDialogHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
+    theDialogVerticalSizer->Add( theDialogHorizontalSizer, 2, wxGROW | wxALL, 5 );
+
+    m_notebook = new wxNotebook( theDialog, ID_NOTEBOOK, wxDefaultPosition, wxDefaultSize, wxBK_DEFAULT );
+
+    m_DetailsPanel = CreateNotebookDetailsPanel( m_notebook );
+    m_notebook->AddPage( m_DetailsPanel, _( "Details" ) );
+
+    m_SortOrderPanel =
+        new SortOrderPanel( m_notebook, ID_SORTORDERPANEL, wxDefaultPosition,
+            wxSize( 100, 100 ), wxSIMPLE_BORDER );
+    m_notebook->AddPage( m_SortOrderPanel, _( "Sort Order" ) );
 
 
-    theDialogHorizontalSizer->Add( notebook, 2, wxGROW | wxALL, 5 );
+    m_DefinePeriodsPanel =
+        new DefinePeriodsPanel( m_notebook, ID_DEFINEPERIODSPANEL, wxDefaultPosition,
+            wxSize( 100, 100 ), wxSIMPLE_BORDER );
+    m_notebook->AddPage( m_DefinePeriodsPanel, _( "Define Periods" ) );
 
+
+    m_FontsPanel = CreateNotebookFontsPanel( m_notebook );
+    m_notebook->AddPage( m_FontsPanel, _( "Fonts" ) );
+
+
+    m_CollectionPanel = CreateCollectionPanel( m_notebook );
+    m_notebook->AddPage( m_CollectionPanel, _( "Collection" ) );
+
+
+    theDialogHorizontalSizer->Add( m_notebook, 2, wxGROW | wxALL, 5 );
 
     wxBoxSizer* dialogCtrlButtonSizer = new wxBoxSizer( wxHORIZONTAL );
     theDialogVerticalSizer->Add( dialogCtrlButtonSizer, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 5 );
@@ -399,6 +358,8 @@ void PreferencesDialog::CreateControls( )
     dialogCtrlButtonSizer->Add( itemButton14, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
     // PreferencesDialog content construction
+
+    m_SortOrderPanel->InitSortControls();
 }
 
 
@@ -409,7 +370,55 @@ bool PreferencesDialog::ShowToolTips( )
     return true;
 }
 
+void PreferencesDialog::OnNotebookPageChanged( wxNotebookEvent& event )
+{
+    int newPageNdx = m_notebook->GetSelection( );
+    int oldPageNdx = event.GetOldSelection();
+    wxWindow* newPage = m_notebook->GetPage( newPageNdx );
+     wxWindow* oldPage = m_notebook->GetPage( oldPageNdx );
+     if (oldPage == m_DetailsPanel)
+     {
+         UpdateDetails();
+     }
+     else if (oldPage == m_SortOrderPanel)
+     {
+         m_SortOrderPanel->Update();
+     }
+     else if (oldPage == m_DefinePeriodsPanel)
+     {
+         m_DefinePeriodsPanel->Update();
+     }
+     else if (oldPage == m_FontsPanel)
+     {
+   
+         UpdateFonts();
+     }
+     else if (oldPage == m_CollectionPanel)
+     {
+         UpdateCollectionList();
+     }
 
+    //  if (newPage == m_DetailsPanel)
+    //  {
+    //     InitDetailsPanel();
+    //  }
+    //  else if (newPage == m_SortOrderPanel)
+    //  {
+    //      m_SortOrderPanel->InitSortControls( );
+    //  }
+    //  else if (newPage == m_DefinePeriodsPanel)
+    //  {
+    //      m_DefinePeriodsPanel->InitControls( );
+    //  }
+    //  else if (newPage == m_FontsPanel)
+    //  {
+    //      InitFonts();
+    //  }
+    //  else if (newPage == m_CollectionPanel)
+    //  {
+    //     InitCollectionGrid();
+    //  }
+}
 /*
  *   ID_IMAGEDIRECTORTEXTBOX
  */
@@ -436,6 +445,22 @@ void PreferencesDialog::OnCountrytextboxTextUpdated( wxCommandEvent& event )
 
 }
 
+void PreferencesDialog::BrowseForDir( wxCommandEvent& event )
+{
+    wxString value = m_imageDirectory->GetValue();
+    wxDirDialog dlg( this,
+                    "Select the Art directory:",
+                    value,
+                    0);
+
+    if ( dlg.ShowModal() == wxID_OK )
+    {
+        m_imageDirectory->SetValue( dlg.GetPath( ) );
+        m_imageDirectory->SetModified( true );
+    }
+
+    event.Skip( );
+}
 
 /*
  *   ID_CATALOGTEXTBOX
@@ -480,9 +505,9 @@ void PreferencesDialog::OnRecentsizetextctrlTextUpdated( wxCommandEvent& event )
 
 void PreferencesDialog::OnOkClick( wxCommandEvent& event )
 {
-    UpdateSettings( );
-    m_definePeriodsPanel->OnOkClick( );
-    m_sortOrderPanel->OnOkClick( );
+    UpdateFonts( );
+    m_DefinePeriodsPanel->OnOkClick( );
+    m_SortOrderPanel->OnOkClick( );
 
     if ( GetSettings( )->isDirty( ) )
         GetSettings( )->Save( );
@@ -492,13 +517,13 @@ void PreferencesDialog::OnOkClick( wxCommandEvent& event )
 
 }
 
-void PreferencesDialog::UpdateSettings( )
+void PreferencesDialog::UpdateDetails()
 {
 
     if ( m_imageDirectory->IsModified( ) )
     {
         GetSettings( )->SetDirty( );
-        //GetSettings( )->SetImageDirectory( m_imageDirectory->GetValue( ) );
+        GetProject( )->SetImageDirectory( m_imageDirectory->GetValue( ) );
         m_imageDirectory->SetModified( false );
     }
 
@@ -539,6 +564,40 @@ void PreferencesDialog::UpdateSettings( )
         m_recentListSize->SetModified( false );
     }
 
+}
+
+// void PreferencesDialog::UpdateFonts()
+// {
+
+//     wxFont titleFont = m_titleFontPicker->GetSelectedFont( );
+//     wxColour titleColor = m_titleColorPicker->GetColour( );
+//     int ndx = GetFontList( )->AddNewFont( titleFont, titleColor );
+//     GetSettings( )->SetFontNdxPreference( Design::AT_TitleFontType, ndx );
+
+//     wxFont catNbrFont = m_nbrFontPicker->GetSelectedFont( );
+//     wxColour catNbrColor = m_nbrColorPicker->GetColour( );
+//     ndx = GetFontList( )->AddNewFont( catNbrFont, catNbrColor );
+//     GetSettings( )->SetFontNdxPreference( Design::AT_NbrFontType, ndx );
+
+//     wxFont textFont = m_textFontPicker->GetSelectedFont( );
+//     wxColour textColor = m_textColorPicker->GetColour( );
+//     ndx = GetFontList( )->AddNewFont( textFont, textColor );
+//     GetSettings( )->SetFontNdxPreference( Design::AT_TextFontType, ndx );
+
+//     wxFont nameFont = m_nameFontPicker->GetSelectedFont( );
+//     wxColour nameColor = m_nameColorPicker->GetColour( );
+//     ndx = GetFontList( )->AddNewFont( nameFont, nameColor );
+//     GetSettings( )->SetFontNdxPreference( Design::AT_NameFontType, ndx );
+
+//     GetFontList( )->InitFonts( );
+
+// }
+
+
+
+void PreferencesDialog::UpdateFonts( )
+{
+
     wxFont titleFont = m_titleFontPicker->GetSelectedFont( );
     wxColour titleColor = m_titleColorPicker->GetColour( );
     int ndx = GetFontList( )->AddNewFont( titleFont, titleColor );
@@ -559,8 +618,35 @@ void PreferencesDialog::UpdateSettings( )
     ndx = GetFontList( )->AddNewFont( nameFont, nameColor );
     GetSettings( )->SetFontNdxPreference( Design::AT_NameFontType, ndx );
 
-    GetFontList( )->InitFonts( );
+   // GetFontList( )->InitFonts( );
 
     if ( GetSettings( )->isDirty( ) )
         GetSettings( )->Save( );
+}
+
+void PreferencesDialog::UpdateCollectionList()
+{
+    int cnt = m_grid->GetNumberRows( );
+    Inventory::CollectionList *collectionList = GetCollectionList( );
+    collectionList->Clear();
+     for ( int i = 0; i < cnt; i++ )
+    {
+     collectionList->AddCollection(  m_grid->GetCellValue( i, 0 ), m_grid->GetCellValue( i, 1),  m_grid->GetCellValue( i, 2) );
+    }
+}
+
+void PreferencesDialog::InitCollectionGrid()
+{
+    int cnt = m_grid->GetNumberRows( );
+    int nbrcollections = GetCollectionList( )->GetNameArray( ).Count( );
+    m_grid->DeleteRows(0, nbrcollections);
+    for ( int i = 0; i < nbrcollections; i++ )
+    {
+        m_grid->InsertRows( cnt, 1 );
+        cnt++;
+        Inventory::Collection* collection = GetCollectionList( )->GetCollection( i );
+        m_grid->SetCellValue( i, 0, collection->GetName( ) );
+        m_grid->SetCellValue( i, 1, collection->GetDescription( ) );
+        m_grid->SetCellValue( i, 2, collection->GetLocation( ) );
+    }
 }

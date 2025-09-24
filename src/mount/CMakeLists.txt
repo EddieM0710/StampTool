@@ -1,26 +1,9 @@
-message ( "Building Mount" )
+message ( "------Configuring Mount------" )
 
-include( "${wxWidgets_USE_FILE}")
+file(GLOB MOUNT_SOURCES CONFIGURE_DEPENDS
+     "${CMAKE_CURRENT_SOURCE_DIR}/*.cpp")
 
-message ( "Source_Directory: ${StampTool_Source_Directory}")
-message ( "Design dir: ${StampTool_DesignFiles_Source_Directory}")
-message ( "Catalog dir: ${StampTool_CatalogFiles_Source_Directory}")
-message ( "Mount dir: ${StampTool_MountFiles_Source_Directory}")
-message ( "Gui dir: ${StampTool_CatalogFiles_Source_Directory}")
-message ( "Catalog dir: ${StampTool_UtilsFiles_Source_Directory}")
-message ( "Catalog dir: ${StampTool_CollectionFiles_Source_Directory}")
-message ( "TOCFiles dir: ${StampTool_TOCFiles_Source_Directory}")
-message ( " " )
+add_library(MountFiles OBJECT ${MOUNT_SOURCES})
 
-include_directories(  ${StampTool_Source_Directory} 
-					${StampTool_GuiFiles_Source_Directory}
-					${StampTool_UtilsFiles_Source_Directory}
-					${StampTool_DesignFiles_Source_Directory}
-					${StampTool_CatalogFiles_Source_Directory} 
-					${StampTool_TOCFiles_Source_Directory} 
-					${StampTool_CollectionFiles_Source_Directory} )
-
-add_library( MountFiles SHARED
-)
-
-
+# inherit wx include dirs/defs/libs
+target_link_libraries(MountFiles PUBLIC project_wx stamp_includes project_pdfdoc )

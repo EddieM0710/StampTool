@@ -47,7 +47,7 @@
 #include "gui/GenerateList.h"
 #include "gui/CatalogTreeCtrl.h"
 #include "gui/GuiUtils.h"
-#include "gui/ImageGalleryPanel.h"
+//#include "gui/ImageGalleryPanel.h"
 #include "wx/pdfdc.h"
 #include "wx/pdffontmanager.h"
 #include "wx/pdfprint.h"
@@ -130,7 +130,7 @@ void StampToolPanel::CreateControls( )
 
     m_notebook = new wxNotebook( m_stampToolSplitter,
         ID_NOTEBOOK, wxDefaultPosition,
-        wxDefaultSize, wxBK_LEFT );
+        wxDefaultSize, wxBK_TOP );
 
     m_stampToolSplitter->SplitVertically( m_catalogPanel, m_notebook, 500 );
 
@@ -154,39 +154,19 @@ void StampToolPanel::CreateControls( )
 
     m_notebook->AddPage( m_generateListPanel, _( "  List  " ) );
 
-
-
-    // wxPanel* panel = new wxPanel( m_notebook, ID_IMAGEALLERYPANEL, wxDefaultPosition,
-    //     wxDefaultSize, wxTAB_TRAVERSAL );
-    // panel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
-
-    // wxBoxSizer* verticalSizer = new wxBoxSizer( wxVERTICAL );
-    // panel->SetSizer( verticalSizer );
-
-    // wxBoxSizer* horizontalSizer = new wxBoxSizer( wxHORIZONTAL );
-    // verticalSizer->Add( horizontalSizer, 1, wxGROW | wxALL, 5 );
-
-    // m_imageGalleryPanel = new ImageGalleryPanel( m_notebook,
-    //     ID_IMAGEALLERYPANEL1, wxDefaultPosition,
-    //     wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
-    // // horizontalSizer->Add( m_imageGalleryPanel, 1, wxGROW | wxALL, 5 );
-
-    // m_notebook->AddPage( m_imageGalleryPanel, _( "  Gallery  " ) );
-
-
     GetCatalogData( )->SetDescriptionPanel( m_stampDescriptionPanel );
 
     GetCatalogData( )->SetGenerateListPanel( m_generateListPanel );
-
-    GetCatalogData( )->SetImageGalleryPanel( m_imageGalleryPanel );
 
 }
 
 ///-------
 
-void StampToolPanel::Init( )
+void StampToolPanel::Init()
 {
-
+    m_stampDescriptionPanel = NULL;
+    m_generateListPanel = NULL;
+    m_albumAlbumPanel = NULL;
     m_notebook = NULL;
     m_sizer = NULL;
 }
@@ -210,6 +190,28 @@ void StampToolPanel::OnNotebookPageChanged( wxNotebookEvent& event )
     int sel = m_notebook->GetSelection( );
 
     wxWindow* page = m_notebook->GetPage( sel );
+
+   // TESTFIX
+    if ( page == m_stampDescriptionPanel )
+    {  
+        m_stampDescriptionPanel->Show();
+        m_generateListPanel->Hide();
+        m_albumAlbumPanel->Hide();
+    }
+    else if ( page == m_generateListPanel )
+    {  
+        m_stampDescriptionPanel->Hide();
+        m_generateListPanel->Show();
+        m_albumAlbumPanel->Hide();
+    }
+    else if ( page == m_albumAlbumPanel )
+    {  
+        m_stampDescriptionPanel->Hide();
+        m_generateListPanel->Hide();
+        m_albumAlbumPanel->Show();
+    }
+        // ENDTESTFIX
+
     wxString catCode = "";
     if ( page != m_stampDescriptionPanel )
     {
@@ -248,6 +250,7 @@ void StampToolPanel::OnNotebookPageChanged( wxNotebookEvent& event )
             GetCatalogTreeCtrl( )->SelectStamp( catCode );
         }
     }
+    Layout();
     event.Skip( );
 }
 

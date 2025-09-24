@@ -265,7 +265,7 @@ wxNotebook* AlbumPanel::CreateImageDetailsSplitterWindow( wxWindow* parent )
     theDialogVerticalSizer->Add( notebookHorizontalSizer, 1, wxGROW | wxALL, 5 );
 
     wxNotebook* notebook = new wxNotebook( parent, ++lastID,
-        wxDefaultPosition, wxDefaultSize, wxBK_LEFT );
+        wxDefaultPosition, wxDefaultSize, wxBK_TOP );
     notebookHorizontalSizer->Add( notebook, 1, wxGROW | wxALL, 5 );
 
 

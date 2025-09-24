@@ -32,7 +32,7 @@
 #define SYMBOL_SORTORDERPANEL_STYLE  wxTAB_TRAVERSAL
 #define SYMBOL_SORTORDERPANEL_TITLE _( "SortOrderPanel" )
 #define SYMBOL_SORTORDERPANEL_IDNAME ID_SORTORDERPANEL
-#define SYMBOL_SORTORDERPANEL_SIZE wxSize( 400, 300 )
+#define SYMBOL_SORTORDERPANEL_SIZE wxSize( 100, 100 )
 #define SYMBOL_SORTORDERPANEL_POSITION wxDefaultPosition
 
 
@@ -123,6 +123,8 @@ public:
 
     void OnOkClick( );
 
+    void Update();
+    void InitSortControls();
 
     static bool ShowToolTips( );
     bool IsDirty( ) { return m_dirty; };

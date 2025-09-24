@@ -193,7 +193,7 @@ namespace Catalog {
             {
                 wxString nodeName = CatalogBaseNames[ sortType ];
                 wxString name = entry.GetClassificationName( &entry, sortType );
-                const char* nodeNameStr = nodeName;
+                const char* nodeNameStr = nodeName.c_str();
 
                 wxXmlNode* nextNode = Utils::FirstChildElement( parent, nodeNameStr );
                 while ( nextNode )

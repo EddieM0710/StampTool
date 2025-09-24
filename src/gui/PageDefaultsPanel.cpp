@@ -109,7 +109,7 @@ void PageDefaultsPanel::CreateControls( )
     thePanel->SetSizer( detailsHorizontalSizer );
 
     wxNotebook* focusNotebook = new wxNotebook( thePanel, ++lastID,
-        wxDefaultPosition, wxDefaultSize, wxBK_LEFT );
+        wxDefaultPosition, wxDefaultSize, wxBK_TOP );
     focusNotebook->SetPadding( wxSize( 1, 1 ) );
     detailsHorizontalSizer->Add( focusNotebook, 1, wxGROW | wxALL, 5 );
 

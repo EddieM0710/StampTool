@@ -29,7 +29,7 @@
 #define SYMBOL_DEFINEPERIODSPANEL_STYLE  wxTAB_TRAVERSAL
 #define SYMBOL_DEFINEPERIODSPANEL_TITLE _( "DefinePeriods" )
 #define SYMBOL_DEFINEPERIODSPANEL_IDNAME ID_DEFINEPERIODSPANEL
-#define SYMBOL_DEFINEPERIODSPANEL_SIZE wxSize( 400, 300 )
+#define SYMBOL_DEFINEPERIODSPANEL_SIZE wxSize( 100, 100 )
 #define SYMBOL_DEFINEPERIODSPANEL_POSITION wxDefaultPosition
 
 class DefinePeriodsPanel : public wxPanel
@@ -129,6 +129,10 @@ public:
     ///  @return true 
     ///  @return false 
     static bool ShowToolTips( );
+
+    void InitControls();
+
+    void Update( );
 
 private:
     // DefinePeriodsPanel member variables

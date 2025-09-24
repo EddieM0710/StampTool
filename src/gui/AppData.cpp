@@ -110,7 +110,7 @@ Utils::Project* AppData::GetProject( ) {
 
 //--------
 
-Utils::Settings* AppData::GetSettings( ) {
+Utils::Settings* AppData::GetAppSettings( ) {
     return m_settings;
 };
 

@@ -52,7 +52,7 @@
 #include "catalog/CatalogData.h"
 #include "design/Album.h"
 #include "design/AlbumData.h"
-#include "gui/EditProjectDetails.h"
+//#include "gui/EditProjectDetails.h"
 #include "gui/AlbumTreePanel.h"
 #include "gui/SortOrderPanel.h"
 #include "gui/PreferencesDialog.h"
@@ -93,7 +93,7 @@ EVT_MENU( ID_OPENPROJECT, StampToolFrame::OnOpenProjectClick )
 EVT_MENU( ID_SAVEPROJECT, StampToolFrame::OnSaveProjectClick )
 EVT_MENU( ID_SAVECATALOG, StampToolFrame::OnSaveCatalogClick )
 EVT_MENU( ID_SAVEASPROJECT, StampToolFrame::OnSaveasProjectClick )
-EVT_MENU( ID_PROJECTDETAILS, StampToolFrame::OnEditProjectDetailsClick )
+//EVT_MENU( ID_PROJECTDETAILS, StampToolFrame::OnEditProjectDetailsClick )
 EVT_MENU( wxID_EXIT, StampToolFrame::OnExitClick )
 EVT_MENU( ID_TEXTSERCHMENUITEM, StampToolFrame::OnTextSearchMenuItemClick )
 EVT_MENU( ID_SORTORDER, StampToolFrame::OnSortOrderClick )
@@ -186,7 +186,7 @@ void StampToolFrame::CreateControls( )
     m_fileMenu->Append( ID_CLOSEPROJECT, _( "Close Project" ), wxEmptyString, wxITEM_NORMAL );
 
     m_fileMenu->AppendSeparator( );
-    m_fileMenu->Append( ID_PROJECTDETAILS, _( "Project Details" ), wxEmptyString, wxITEM_NORMAL );
+   // m_fileMenu->Append( ID_PROJECTDETAILS, _( "Project Details" ), wxEmptyString, wxITEM_NORMAL );
     m_fileMenu->Append( ID_PREFERENCES, _( "Preferences" ), wxEmptyString, wxITEM_NORMAL );
 
     m_fileMenu->AppendSeparator( );
@@ -336,15 +336,15 @@ void StampToolFrame::DoDefinePeriodDialog( )
 
 //-------
 
-void StampToolFrame::DoEditProjectDetailsDialog( )
-{
-    EditProjectDetails dialog( this, ID_EDITPROJECTDETAILS,
-        _( "Define Preferences" ) );
+// void StampToolFrame::DoEditProjectDetailsDialog( )
+// {
+//     EditProjectDetails dialog( this, ID_EDITPROJECTDETAILS,
+//         _( "Define Preferences" ) );
 
-    if ( dialog.ShowModal( ) == wxID_CANCEL )
-        return; // the user changed idea..
+//     if ( dialog.ShowModal( ) == wxID_CANCEL )
+//         return; // the user changed idea..
 
-}
+// }
 
 //-------
 
@@ -407,7 +407,7 @@ void StampToolFrame::NewProject( )
     FileCreateDialog fileDialog( this, 12355, _( "Select the Filename and Directory for the Project file." ) );
     wxGetCwd( );
     fileDialog.SetDefaultDirectory( wxGetCwd( ) );
-    fileDialog.SetDefaultFilename( _( "unnamed.spt" ) );
+    fileDialog.SetDefaultFilename( _( "UndefinedName.spt" ) );
     fileDialog.SetWildCard( _( "Stamp Tools Project files(*.spt)|*.spt" ) );
 
     if ( fileDialog.ShowModal( ) == wxID_CANCEL )
@@ -554,11 +554,11 @@ void StampToolFrame::OnOpenDesignClick( wxCommandEvent& event )
 
 //-------
 
-void StampToolFrame::OnEditProjectDetailsClick( wxCommandEvent& event )
-{
-    DoEditProjectDetailsDialog( );
-    event.Skip( );
-}
+// void StampToolFrame::OnEditProjectDetailsClick( wxCommandEvent& event )
+// {
+//     DoEditProjectDetailsDialog( );
+//     event.Skip( );
+// }
 
 //-------
 

@@ -25,6 +25,7 @@
 #define _ALBUMSPLITTERWIINDOW_H_
 #include "wx/splitter.h"
 #include "wx/treectrl.h"
+#include <wx/panel.h>
 #include "gui/GuiDefs.h"
 #include <wx/slider.h>
 #include <wx/choice.h>

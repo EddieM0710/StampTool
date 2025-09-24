@@ -43,7 +43,7 @@ class DefinePeriodsPanel;
 #define SYMBOL_PreferencesDialog_STYLE wxCAPTION | wxRESIZE_BORDER | wxSYSTEM_MENU | wxCLOSE_BOX | wxTAB_TRAVERSAL
 #define SYMBOL_PreferencesDialog_TITLE _( "PreferencesDialog" )
 #define SYMBOL_PreferencesDialog_IDNAME ID_PREFERENCESDIALOG
-#define SYMBOL_PreferencesDialog_SIZE wxSize( 600, 300 )
+#define SYMBOL_PreferencesDialog_SIZE wxSize( 100, 100 )
 #define SYMBOL_PreferencesDialog_POSITION wxDefaultPosition
 
 
@@ -56,6 +56,7 @@ public:
     enum PreferencesDialogGuiDefs
     {
         ID_IMAGEDIRECTORTEXTBOX = ID_PREFERENCESDIALOG + 1,
+        ID_DIRPICKERBTN,
         ID_COUNTRYTEXTBOX,
         ID_CATALOGTEXTBOX,
         ID_OPENLASTCHECKBOX,
@@ -103,6 +104,9 @@ public:
     void CreateControls( );
     wxPanel* CreateNotebookDetailsPanel( wxWindow* parent );
 
+    wxPanel* CreateNotebookFontsPanel( wxWindow* parent );
+    wxPanel* CreateCollectionPanel( wxWindow* parent );
+
     // PreferencesDialog event handler declarations
 
         //   ID_IMAGEDIRECTORTEXTBOX
@@ -117,13 +121,15 @@ public:
     //   ID_OPENLASTCHECKBOX
     void OnOpenlastcheckboxClick( wxCommandEvent& event );
 
+    void OnNotebookPageChanged( wxNotebookEvent& event );
+
     //   ID_RECENTSIZETEXTCTRL
     void OnRecentsizetextctrlTextUpdated( wxCommandEvent& event );
 
     // PreferencesDialog event handler declarations
     void OnOkClick( wxCommandEvent& event );
 
-
+    void BrowseForDir( wxCommandEvent& event );
 
     static bool ShowToolTips( );
 
@@ -131,20 +137,33 @@ public:
         return m_dirty;
     };
 
-    void UpdateSettings( );
+    void UpdateDetails();
 
+    void InitDetailsPanel( );
+
+    void UpdateFonts();
+
+   // void UpdateFonts( );
+
+    void UpdateCollectionList();
+
+    void InitCollectionGrid();
 
 
 
 
     // PreferencesDialog member variables
+    wxNotebook* m_notebook;
+    wxPanel* m_DetailsPanel;
+    SortOrderPanel* m_SortOrderPanel;
+    DefinePeriodsPanel* m_DefinePeriodsPanel;
+    wxPanel* m_FontsPanel;
+    wxPanel* m_CollectionPanel;
     wxTextCtrl* m_imageDirectory;
     wxTextCtrl* m_country;
     wxTextCtrl* m_catalog;
     wxCheckBox* m_loadLastFileAtStartUp;
     wxTextCtrl* m_recentListSize;
-    SortOrderPanel* m_sortOrderPanel;
-    DefinePeriodsPanel* m_definePeriodsPanel;
     wxFontPickerCtrl* m_titleFontPicker;
     wxColourPickerCtrl* m_titleColorPicker;
     wxFontPickerCtrl* m_nbrFontPicker;

@@ -126,7 +126,7 @@ Utils::Project* GetProject( ) {
 
 Utils::Settings* GetSettings( )
 {
-    return GetAppData( )->GetSettings( );
+    return GetAppData( )->GetAppSettings( );
 };
 
 Utils::StampList* GetStampAlbumCatalogLink( ) {

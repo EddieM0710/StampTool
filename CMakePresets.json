@@ -1,0 +1,46 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": { "major": 3, "minor": 5 },
+  "configurePresets": [
+    {
+      "name": "Debug",
+      "displayName": "WINLIBS Debug",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build-Debug",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "CMAKE_PREFIX_PATH": "C:/mingw64/local-wx-debug;C:/mingw64/local-wxpdfdoc-debug",
+        "CMAKE_C_COMPILER": "C:/mingw64/bin/cc.exe",
+        "CMAKE_CXX_COMPILER": "C:/mingw64/bin/c++.exe",
+        "CMAKE_MAKE_PROGRAM": "C:/mingw64/bin/ninja.exe",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+      }
+    },
+    {
+      "name": "Release",
+      "displayName": "WINLIBS Release",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build-Release",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "CMAKE_PREFIX_PATH": "C:/mingw64/local-wx-release;C:/mingw64/local-wxpdfdoc-release",
+        "CMAKE_C_COMPILER": "C:/mingw64/bin/cc.exe",
+        "CMAKE_CXX_COMPILER": "C:/mingw64/bin/c++.exe",
+        "CMAKE_MAKE_PROGRAM": "C:/mingw64/bin/ninja.exe",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "Debug",
+      "configurePreset": "Debug",
+      "verbose": true
+    },
+    {
+      "name": "Release",
+      "configurePreset": "Release",
+      "verbose": true
+    }
+  ]
+}

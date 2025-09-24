@@ -111,15 +111,13 @@ void StampDefaultsPanel::CreateControls( )
 {
     StampDefaultsPanel* stampDefaultsPanel = this;
 
-
     wxBoxSizer* stampHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
     stampDefaultsPanel->SetSizer( stampHorizontalSizer );
-
 
     int lastID = ID_LastID;
 
     wxNotebook* focusNotebook = new wxNotebook( stampDefaultsPanel, ++lastID,
-        wxDefaultPosition, wxDefaultSize, wxBK_LEFT );
+        wxDefaultPosition, wxDefaultSize, wxBK_TOP );
     focusNotebook->SetPadding( wxSize( 1, 1 ) );
     stampHorizontalSizer->Add( focusNotebook, 1, wxGROW | wxALL, 5 );
 

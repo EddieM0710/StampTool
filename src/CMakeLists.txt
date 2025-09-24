@@ -1,37 +1,38 @@
 configure_file( StampToolConfig.h.in StampToolConfig.h )
 
-#target_include_directories(StampTool PRIVATE  ${StampTool_Source_Directory} 
-#                ${StampTool_GuiFiles_Source_Directory}
-#                ${StampTool_UtilsFiles_Source_Directory}
-#                ${StampTool_DesignFiles_Source_Directory}
-#                ${StampTool_CatalogFiles_Source_Directory} 
-#                ${StampTool_CollectionFiles_Source_Directory} 
-#                ${StampTool_TOCFiles_Source_Directory} 
-#)
- 
 # build libraries
 add_subdirectory (utils)
-add_subdirectory (gui)
-add_subdirectory (catalog)
-add_subdirectory (design)
 add_subdirectory (collection)
 add_subdirectory (toc)
+add_subdirectory (catalog)
+add_subdirectory (design)
+add_subdirectory (gui)
+
 
 include_directories(  ${StampTool_Source_Directory} )
 
 #build exe
-add_executable(StampTool )
-target_sources(StampTool PRIVATE StampToolApp.cpp Defs.cpp)
+add_executable(StampTool 
+  $<TARGET_OBJECTS:UtilityFiles>
+  $<TARGET_OBJECTS:GuiFiles>
+  $<TARGET_OBJECTS:CatalogFiles>
+  $<TARGET_OBJECTS:DesignFiles>
+  $<TARGET_OBJECTS:CollectionFiles> 
+  $<TARGET_OBJECTS:TOCFiles>
+     StampToolApp.cpp 
+     Defs.cpp)
+     
+target_link_options(StampTool PRIVATE "$<$<CONFIG:Debug>:-mconsole>")
 
-target_link_libraries (StampTool PRIVATE
-#LINK_PUBLIC debug
-     GuiFiles  
-     DesignFiles
-     CatalogFiles  
-     CollectionFiles  
-     TOCFiles
-     Utils
+target_link_libraries(StampTool PRIVATE 
      ${wxWidgets_LIBRARIES}
-    )
+     project_wx 
+     stamp_includes 
+     project_pdfdoc)
 
+# target_link_options(StampTool PRIVATE "-Wl,--start-group")
+
+
+
+# target_link_options(StampTool PRIVATE "-Wl,--end-group")
     

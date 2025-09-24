@@ -100,6 +100,7 @@ bool StampDescriptionPanel::Create( wxWindow* parent, wxWindowID id,
     SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
     wxPanel::Create( parent, id, pos, size, style );
 
+
     CreateControls( );
     if ( GetSizer( ) )
     {

@@ -461,11 +461,17 @@ void InventoryPanel::ShowRow( int row )
 
 bool InventoryPanel::SetCollectionListCtrl( Inventory::Collection* collection )
 {
-    bool status = m_collectionListCtrl->SetStringSelection( collection->GetName( ) );
-    if ( status )
-    {
-        m_location->SetValue( collection->GetLocation( ) );
-        m_description->SetValue( collection->GetDescription( ) );
+    //testfix
+    bool status = false;
+    if ( collection )
+        {
+    //endtestfix
+        status = m_collectionListCtrl->SetStringSelection( collection->GetName( ) );
+        if ( status )
+        {
+            m_location->SetValue( collection->GetLocation( ) );
+            m_description->SetValue( collection->GetDescription( ) );
+        }
     }
     return status;
 }

@@ -1,0 +1,1018 @@
+\doxysection{Col\+Details\+Panel Class Reference}
+\hypertarget{class_col_details_panel}{}\label{class_col_details_panel}\index{ColDetailsPanel@{ColDetailsPanel}}
+
+
+{\ttfamily \#include $<$Col\+Details\+Panel.\+h$>$}
+
+Inheritance diagram for Col\+Details\+Panel\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_col_details_panel}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{class_col_details_panel_a89de6cb1bb1c59f7ae6d0a197874445c}{Col\+Details\+Panel\+Gui\+Defs}} \{ \newline
+\mbox{\hyperlink{class_col_details_panel_a89de6cb1bb1c59f7ae6d0a197874445ca0903582b44ca3e5c16fffb500d4f6007}{ID\+\_\+\+NAMELABELEDTEXTBOX}} = ID\+\_\+\+COLDETAILSDIALOG + 1
+, \mbox{\hyperlink{class_col_details_panel_a89de6cb1bb1c59f7ae6d0a197874445cae7de15a146661830812bd01e585a2ccd}{ID\+\_\+\+COLTITLECHECKBOX}}
+, \mbox{\hyperlink{class_col_details_panel_a89de6cb1bb1c59f7ae6d0a197874445cac4d2d1d493835e98d9b52e5bb890504c}{ID\+\_\+\+COLSUBTITLECHECKBOX}}
+, \mbox{\hyperlink{class_col_details_panel_a89de6cb1bb1c59f7ae6d0a197874445ca9d907eb3449506f63dc6d30fe1252e1a}{ID\+\_\+\+FRAMECHECKBOX}}
+, \newline
+\mbox{\hyperlink{class_col_details_panel_a89de6cb1bb1c59f7ae6d0a197874445ca304dc7065a51c7b181efa60b515bccab}{ID\+\_\+\+LISTCTRL}}
+, \mbox{\hyperlink{class_col_details_panel_a89de6cb1bb1c59f7ae6d0a197874445ca6d3b1d640c49202ce70a90e05e6ea219}{ID\+\_\+\+COLNAMEPANEL}}
+, \mbox{\hyperlink{class_col_details_panel_a89de6cb1bb1c59f7ae6d0a197874445cadd42d69ea6b1d83a118010b634b593e0}{ID\+\_\+\+COLDEFAULTFONTBUTTON}}
+, \mbox{\hyperlink{class_col_details_panel_a89de6cb1bb1c59f7ae6d0a197874445ca2243676767e37308db3288f90aad3aab}{ID\+\_\+\+COLLAYOUTPANEL}}
+, \newline
+\mbox{\hyperlink{class_col_details_panel_a89de6cb1bb1c59f7ae6d0a197874445ca90760bef0e3f32d78ad4945b18d93786}{ID\+\_\+\+COLLAYOUTTEXTCTRL}}
+, \mbox{\hyperlink{class_col_details_panel_a89de6cb1bb1c59f7ae6d0a197874445ca0f072a2d013cfde81a59a4e959396f00}{ID\+\_\+\+DEFAULTFONTBUTTON}}
+, \mbox{\hyperlink{class_col_details_panel_a89de6cb1bb1c59f7ae6d0a197874445ca36092341a86bb636c3af31c8aa6f1afe}{ID\+\_\+\+DEFAULTRADIOBUTTON}}
+, \mbox{\hyperlink{class_col_details_panel_a89de6cb1bb1c59f7ae6d0a197874445caa1809516adf0500a9bd9126d9d9ace94}{ID\+\_\+\+TOPRADIOBUTTON}}
+, \newline
+\mbox{\hyperlink{class_col_details_panel_a89de6cb1bb1c59f7ae6d0a197874445ca7aaf86d19a03e3d007bd8e82dfeeb29b}{ID\+\_\+\+BOTTOMRADIOBUTTON}}
+, \mbox{\hyperlink{class_col_details_panel_a89de6cb1bb1c59f7ae6d0a197874445caf7589af95cd66a6b4f9194d5c8a99455}{ID\+\_\+\+CALCULATEDRADIOBUTTON}}
+, \mbox{\hyperlink{class_col_details_panel_a89de6cb1bb1c59f7ae6d0a197874445ca6cd48910382f014c220077f6cb5cac88}{ID\+\_\+\+FIXEDRADIOBUTTON}}
+, \mbox{\hyperlink{class_col_details_panel_a89de6cb1bb1c59f7ae6d0a197874445cae83c574d1b40de490b2064016023eba8}{ID\+\_\+\+FIXEDSIZETEXTCTRL}}
+, \newline
+\mbox{\hyperlink{class_col_details_panel_a89de6cb1bb1c59f7ae6d0a197874445ca4783a34648c596a59f59825c7ffcf7cb}{ID\+\_\+\+Last\+ID}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_col_details_panel_a4e88694c8c43a989a89bf062e2b445c8}{Col\+Details\+Panel}} ()
+\begin{DoxyCompactList}\small\item\em Construct a new Col Details Dialog object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_col_details_panel_ae57f23792a43b558b9e722756300d556}{Col\+Details\+Panel}} (wx\+Window \texorpdfstring{$\ast$}{*}parent, wx\+Window\+ID id=\mbox{\hyperlink{_col_details_panel_8h_a68796d807486ef7be6fbe878a757c13b}{SYMBOL\+\_\+\+COLDETAILSDIALOG\+\_\+\+IDNAME}}, const wx\+String \&caption=\mbox{\hyperlink{_col_details_panel_8h_a85549aed479c6ea5125db5b174922f52}{SYMBOL\+\_\+\+COLDETAILSDIALOG\+\_\+\+TITLE}}, const wx\+Point \&pos=\mbox{\hyperlink{_col_details_panel_8h_a7ab47cce74e59be676bc3c10a958b45b}{SYMBOL\+\_\+\+COLDETAILSDIALOG\+\_\+\+POSITION}}, const wx\+Size \&size=\mbox{\hyperlink{_col_details_panel_8h_a875b29cfdb682afb4a92a3c4ada15aa7}{SYMBOL\+\_\+\+COLDETAILSDIALOG\+\_\+\+SIZE}}, long style=\mbox{\hyperlink{_col_details_panel_8h_af35ad81ae39e1e5a4898deb2a123021b}{SYMBOL\+\_\+\+COLDETAILSDIALOG\+\_\+\+STYLE}})
+\begin{DoxyCompactList}\small\item\em Construct a new Col Details Dialog object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_col_details_panel_a4d4950ef6d089ddecf50922bc0761869}{\texorpdfstring{$\sim$}{\string~}\+Col\+Details\+Panel}} ()
+\begin{DoxyCompactList}\small\item\em Destroy the Col Details Dialog object. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_col_details_panel_a9b5a770cb3e442aa0fb53482f2c9c2e0}{Create}} (wx\+Window \texorpdfstring{$\ast$}{*}parent, wx\+Window\+ID id=\mbox{\hyperlink{_col_details_panel_8h_a68796d807486ef7be6fbe878a757c13b}{SYMBOL\+\_\+\+COLDETAILSDIALOG\+\_\+\+IDNAME}}, const wx\+String \&caption=\mbox{\hyperlink{_col_details_panel_8h_a85549aed479c6ea5125db5b174922f52}{SYMBOL\+\_\+\+COLDETAILSDIALOG\+\_\+\+TITLE}}, const wx\+Point \&pos=\mbox{\hyperlink{_col_details_panel_8h_a7ab47cce74e59be676bc3c10a958b45b}{SYMBOL\+\_\+\+COLDETAILSDIALOG\+\_\+\+POSITION}}, const wx\+Size \&size=\mbox{\hyperlink{_col_details_panel_8h_a875b29cfdb682afb4a92a3c4ada15aa7}{SYMBOL\+\_\+\+COLDETAILSDIALOG\+\_\+\+SIZE}}, long style=\mbox{\hyperlink{_col_details_panel_8h_af35ad81ae39e1e5a4898deb2a123021b}{SYMBOL\+\_\+\+COLDETAILSDIALOG\+\_\+\+STYLE}})
+\item 
+void \mbox{\hyperlink{class_col_details_panel_a1ee0402cf9d5b4f8a731bc1d9ce6c142}{Create\+Controls}} ()
+\begin{DoxyCompactList}\small\item\em Create a Controls object. \end{DoxyCompactList}\item 
+wx\+String \mbox{\hyperlink{class_col_details_panel_a6b753a7dad3899c1cb399cb5ffebfdd1}{Get\+Fixed\+Spacing}} ()
+\begin{DoxyCompactList}\small\item\em Get the Fixed Spacing object. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_col_details_panel_a6f17cc537981e788770ca94442fea1fb}{Get\+Show\+Title}} ()
+\begin{DoxyCompactList}\small\item\em Get the Show Title object. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_col_details_panel_aa8ef9268a5654ed6605989160b762801}{Get\+Show\+Sub\+Title}} ()
+\item 
+bool \mbox{\hyperlink{class_col_details_panel_a11a5fe1ef9b1310b1cc59d87dcd6e943}{Get\+Show\+Frame}} ()
+\begin{DoxyCompactList}\small\item\em Get the Show Frame object. \end{DoxyCompactList}\item 
+wx\+Font \mbox{\hyperlink{class_col_details_panel_a44a9dfe16e6345d962e7075bff004e6c}{Get\+Title\+Font}} ()
+\begin{DoxyCompactList}\small\item\em Get the Title Font object. \end{DoxyCompactList}\item 
+wx\+String \mbox{\hyperlink{class_col_details_panel_ab849e0d51b20a9c45b86b8abe73d283f}{Get\+Title}} ()
+\item 
+wx\+Colour \mbox{\hyperlink{class_col_details_panel_a2b738134de247b60beb15cce75239e59}{Get\+Title\+Color}} ()
+\begin{DoxyCompactList}\small\item\em Get the Title Color object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_col_details_panel_ab9ee769bd45f727204d2f9f8faeca235}{Init}} ()
+\item 
+bool \mbox{\hyperlink{class_col_details_panel_a6eeb9c0605e8f36c5eb0221763c82851}{Is\+Name\+Modified}} ()
+\item 
+void \mbox{\hyperlink{class_col_details_panel_aa72cc97df58f5903127fdc88bc20c64d}{On\+Ok\+Click}} (wx\+Command\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_col_details_panel_a2d9853b605525a37316863ace1fa5069}{On\+Default\+Radio\+Button\+Selected}} (wx\+Command\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_col_details_panel_ac7d7fccda5e09f5931712f61702098a9}{On\+Frame\+Checkbox\+Click}} (wx\+Command\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_col_details_panel_a0160c54c84add117f07f1953c1dcbcdb}{On\+Title\+Default\+Click}} (wx\+Command\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_col_details_panel_a64910a187c7d8b88862e43b323ad0949}{On\+Fixed\+Click}} (wx\+Command\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_col_details_panel_a482d8c453f05692abe14ab8c505b9538}{On\+Calculated\+Click}} (wx\+Command\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_col_details_panel_aa02f88408264948f470b15ff21fb8cdf}{Set\+Calculate\+Spacing}} (bool val)
+\begin{DoxyCompactList}\small\item\em Set the Calculate Spacing object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_col_details_panel_abebe75d1a0c134041e600de98aae6d56}{Set\+Fixed\+Spacing\+Size}} (wx\+String str)
+\begin{DoxyCompactList}\small\item\em Set the Fixed Spacing Size object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_col_details_panel_a15b7c1eda6a849c5f8a8a410693d3b2c}{Set\+Name\+Modified}} (bool state)
+\begin{DoxyCompactList}\small\item\em Set the Name Modified object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_col_details_panel_afd084c1301bde324182d04f8841ff9ee}{Set\+Show\+Title}} (bool state=false)
+\begin{DoxyCompactList}\small\item\em Set the Show Title object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_col_details_panel_aeaca13f3d487cf27ed6b84dba70454ca}{Set\+Show\+Sub\+Title}} (bool state=false)
+\item 
+void \mbox{\hyperlink{class_col_details_panel_a9357fbaa0e7ad58def831919815d803c}{Set\+Show}} (bool state=false)
+\begin{DoxyCompactList}\small\item\em Set the Show Frame object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_col_details_panel_a09e5c22c055e111f8df5735d9554dd44}{Set\+Title\+Color}} (wx\+Colour color)
+\begin{DoxyCompactList}\small\item\em Set the Title Color object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_col_details_panel_ada836f8979d92fd6dd037ad145934ecd}{Set\+Title\+Font}} (wx\+Font font)
+\begin{DoxyCompactList}\small\item\em Set the Title Font object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_col_details_panel_a9613b6e29271fdf8fbd52cbb12b478f7}{Set\+Title\+Location}} ()
+\begin{DoxyCompactList}\small\item\em Set the Title Layout Location object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespace_design_a6d899bd1f7046bbf5a613e85bd83f0c3}{Design\+::\+Stamp\+Name\+Pos\+Type}} \mbox{\hyperlink{class_col_details_panel_ad090faf1f962ca3a56b1082e00ed321f}{Get\+Title\+Location}} ()
+\item 
+bool \mbox{\hyperlink{class_col_details_panel_adda1898fac68030e4a455086638d0c8f}{Calculate\+Spacing}} ()
+\item 
+void \mbox{\hyperlink{class_col_details_panel_aba5c7ec88a9d2301af8be236bb1c5f4d}{Setup\+Dialog}} (\mbox{\hyperlink{class_design_1_1_column}{Design\+::\+Column}} \texorpdfstring{$\ast$}{*}col)
+\item 
+void \mbox{\hyperlink{class_col_details_panel_ac9460a16691960ad6d12fba7b5fda017}{Update\+Controls}} ()
+\item 
+void \mbox{\hyperlink{class_col_details_panel_a37dbe07df87b109530a66444ac73f8c2}{On\+Top\+Content\+Margin}} (wx\+Command\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_col_details_panel_a3e060692f255578eb28844e305936ccd}{On\+Bottom\+Content\+Margin}} (wx\+Command\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_col_details_panel_a0fb8b41bbd72ce9685bf3dbf910c85ce}{On\+Left\+Content\+Margin}} (wx\+Command\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_col_details_panel_a6a6b055e7bc6f54d7091242717fde02c}{On\+Right\+Content\+Margin}} (wx\+Command\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_col_details_panel_a2183c39b013eab5ea41bd19b73d41c24}{On\+Show\+Border\+Check\+Box\+Click}} (wx\+Command\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_col_details_panel_ac777153988949c11cf29b32f8b878fe1}{Set\+Top\+Content\+Margin}} (wx\+String content\+Margin)
+\item 
+void \mbox{\hyperlink{class_col_details_panel_a03482174f70a934a070daeb0217abce8}{Set\+Bottom\+Content\+Margin}} (wx\+String content\+Margin)
+\item 
+void \mbox{\hyperlink{class_col_details_panel_a6af0e8183db9003e8012e3ff8d1e83c6}{Set\+Left\+Content\+Margin}} (wx\+String content\+Margin)
+\item 
+void \mbox{\hyperlink{class_col_details_panel_a888307b1696d816a95f63ddcaba9d5f5}{Set\+Right\+Content\+Margin}} (wx\+String content\+Margin)
+\item 
+void \mbox{\hyperlink{class_col_details_panel_aa707a1c4f85a29e37bca66f61a356963}{On\+Sub\+Title\+Default\+Click}} (wx\+Command\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_col_details_panel_a3f4795aeb9bb92e6cd78e97dc582e584}{On\+Title\+Checkbox\+Click}} (wx\+Command\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_col_details_panel_ab5fb1266c5a828c228aaeb80b7ab2953}{On\+Sub\+Title\+Checkbox\+Click}} (wx\+Command\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_col_details_panel_ac1d962ee60eee8c118ca35cb6802bb20}{On\+Title\+Text\+Changed}} (wx\+Command\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_col_details_panel_a50f7b4aa6eda8e78caf6db3955f59688}{On\+Sub\+Title\+Text\+Changed}} (wx\+Command\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_col_details_panel_a86814544b513fcd5d685e43c530d43d6}{On\+Title\+Font\+Picker}} (wx\+Font\+Picker\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_col_details_panel_add1a7f05338c9002a6efdca52da81067}{On\+Title\+Color\+Picker}} (wx\+Colour\+Picker\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_col_details_panel_a478ee57311657275e4bfc94589b715e8}{On\+Sub\+Title\+Font\+Picker}} (wx\+Font\+Picker\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_col_details_panel_a5669acb75deb0fa3d05eb5151e718a91}{On\+Sub\+Title\+Color\+Picker}} (wx\+Colour\+Picker\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_col_details_panel_a30fb4f2b8be3fb52073f51b7c6fcd76c}{Set\+Status\+List}} ()
+\item 
+void \mbox{\hyperlink{class_col_details_panel_a8adeecbaf8d61a58a4f5bde9702bb9b0}{Update}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_helper_panel}{Helper\+Panel}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_helper_panel_a1a0380f0351c504df04ccd0924c72e18}{Helper\+Panel}} ()
+\item 
+\mbox{\hyperlink{class_helper_panel_a709e26a2b2b12b98c4b689b87cd4a169}{Helper\+Panel}} (wx\+Window \texorpdfstring{$\ast$}{*}parent, wx\+Window\+ID id=\mbox{\hyperlink{_helper_panel_8h_a43ef01d6303731cc166949270842b4d7}{SYMBOL\+\_\+\+HELPERPANEL\+\_\+\+IDNAME}}, const wx\+String \&caption=\mbox{\hyperlink{_helper_panel_8h_a275f45e4abf505d4c167b95b1782e8b2}{SYMBOL\+\_\+\+HELPERPANEL\+\_\+\+TITLE}}, const wx\+Point \&pos=\mbox{\hyperlink{_helper_panel_8h_ad0f2b83a41d1b39a2acbd31d28e7ffd3}{SYMBOL\+\_\+\+HELPERPANEL\+\_\+\+POSITION}}, const wx\+Size \&size=\mbox{\hyperlink{_helper_panel_8h_a5d91705fcb0aab6893c9748c1c23e631}{SYMBOL\+\_\+\+HELPERPANEL\+\_\+\+SIZE}}, long style=\mbox{\hyperlink{_helper_panel_8h_afb122ebc3d5dd65dfa6e31a66a09468a}{SYMBOL\+\_\+\+HELPERPANEL\+\_\+\+STYLE}})
+\item 
+\mbox{\hyperlink{class_helper_panel_aa1048ceba004a9d78dd3dfdfd7235d30}{\texorpdfstring{$\sim$}{\string~}\+Helper\+Panel}} ()
+\item 
+bool \mbox{\hyperlink{class_helper_panel_ac472c619263683e2623f52fefe4f5429}{Create}} (wx\+Window \texorpdfstring{$\ast$}{*}parent, wx\+Window\+ID id=\mbox{\hyperlink{_helper_panel_8h_a43ef01d6303731cc166949270842b4d7}{SYMBOL\+\_\+\+HELPERPANEL\+\_\+\+IDNAME}}, const wx\+String \&caption=\mbox{\hyperlink{_helper_panel_8h_a275f45e4abf505d4c167b95b1782e8b2}{SYMBOL\+\_\+\+HELPERPANEL\+\_\+\+TITLE}}, const wx\+Point \&pos=\mbox{\hyperlink{_helper_panel_8h_ad0f2b83a41d1b39a2acbd31d28e7ffd3}{SYMBOL\+\_\+\+HELPERPANEL\+\_\+\+POSITION}}, const wx\+Size \&size=\mbox{\hyperlink{_helper_panel_8h_a5d91705fcb0aab6893c9748c1c23e631}{SYMBOL\+\_\+\+HELPERPANEL\+\_\+\+SIZE}}, long style=\mbox{\hyperlink{_helper_panel_8h_afb122ebc3d5dd65dfa6e31a66a09468a}{SYMBOL\+\_\+\+HELPERPANEL\+\_\+\+STYLE}})
+\item 
+void \mbox{\hyperlink{class_helper_panel_affb4be8df264e76bb3a7d672c2ca79b1}{Create\+Controls}} ()
+\item 
+void \mbox{\hyperlink{class_helper_panel_a01583cec05afb087892fee8f5f660635}{Init}} ()
+\item 
+wx\+Static\+Box \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_helper_panel_a06667439fcca3f8a4b0fab10db82506e}{Setup\+Box\+Sizer}} (wx\+Window \texorpdfstring{$\ast$}{*}parent, wx\+Box\+Sizer \texorpdfstring{$\ast$}{*}in\+Sizer, wx\+String name, int \&last\+ID, wx\+Box\+Sizer \texorpdfstring{$\ast$}{*}\&box\+Sizer, wx\+Orientation orientation)
+\item 
+wx\+Check\+Box \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_helper_panel_a1b4758d163544a7a2c73a37f8bd6d422}{Setup\+Check\+Box}} (wx\+Window \texorpdfstring{$\ast$}{*}parent, wx\+Box\+Sizer \texorpdfstring{$\ast$}{*}sizer, int \&last\+ID, wx\+String label, wx\+Object\+Event\+Function event\+Handler)
+\item 
+wx\+Check\+List\+Box \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_helper_panel_a61eec7f5e1bd6d2bb0d9a12a6d31c91c}{Setup\+Check\+List\+Box}} (wx\+Window \texorpdfstring{$\ast$}{*}parent, wx\+Box\+Sizer \texorpdfstring{$\ast$}{*}in\+Sizer, int \&last\+ID, wx\+String label, wx\+Array\+String \&array, wx\+Object\+Event\+Function all\+Button\+Event\+Handler, wx\+Object\+Event\+Function clear\+Button\+Event\+Handler)
+\item 
+wx\+Choice \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_helper_panel_adeabf7f045a9b29dfe04ea9e25361682}{Setup\+Choice}} (wx\+Window \texorpdfstring{$\ast$}{*}parent, wx\+Box\+Sizer \texorpdfstring{$\ast$}{*}sizer, int \&last\+ID, wx\+String label, wx\+Array\+String choice\+Strings, wx\+Object\+Event\+Function event\+Handler)
+\item 
+\mbox{\hyperlink{class_font_picker}{Font\+Picker}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_helper_panel_ac79099a8adb61042c70b2aaa474b6491}{Setup\+Font\+Picker}} (wx\+Window \texorpdfstring{$\ast$}{*}parent, wx\+Box\+Sizer \texorpdfstring{$\ast$}{*}vertical\+Sizer, int \&last\+ID, wx\+String static\+Text, wx\+String button\+Text, wx\+Font\+Picker\+Ctrl \texorpdfstring{$\ast$}{*}\&font\+Ctrl, wx\+Colour\+Picker\+Ctrl \texorpdfstring{$\ast$}{*}\&color\+Ctrl, wx\+Object\+Event\+Function font\+Picker, wx\+Object\+Event\+Function color\+Picker, wx\+Object\+Event\+Function default\+Button\+Handler)
+\item 
+wx\+Text\+Ctrl \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_helper_panel_acdac2c77789965bc2e300f50c66f7f11}{Setup\+Label\+Text}} (wx\+Window \texorpdfstring{$\ast$}{*}parent, wx\+Box\+Sizer \texorpdfstring{$\ast$}{*}vertical\+Sizer, int \&last\+ID, wx\+String label, bool grow, wx\+Object\+Event\+Function event\+Handler)
+\item 
+wx\+Text\+Ctrl \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_helper_panel_a5df2fc90855ddcb14834784daa120249}{Setup\+Multiline\+Labeled\+Text}} (wx\+Window \texorpdfstring{$\ast$}{*}parent, wx\+Box\+Sizer \texorpdfstring{$\ast$}{*}in\+Sizer, int \&last\+ID, wx\+String label, bool grow, wx\+Object\+Event\+Function event\+Handler)
+\item 
+wx\+Radio\+Button \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_helper_panel_a7b5279a0f4b91c9f19fbd088edceada3}{Setup\+Radio\+Button}} (wx\+Window \texorpdfstring{$\ast$}{*}parent, wx\+Box\+Sizer \texorpdfstring{$\ast$}{*}sizer, int \&last\+ID, wx\+String label, bool init\+Value, wx\+Object\+Event\+Function event\+Handler)
+\item 
+\mbox{\hyperlink{struct_helper_panel_1_1_title_helper}{Title\+Helper}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_helper_panel_a11bffa5d90019ee00eaff4edf86832a2}{Setup\+Title\+Helper}} (wx\+Window \texorpdfstring{$\ast$}{*}parent, wx\+Box\+Sizer \texorpdfstring{$\ast$}{*}vertical\+Sizer, int \&id\+Last, int style=\mbox{\hyperlink{_helper_panel_8h_a5b55945efe6cc32320681102c8343296}{Default\+Title\+Helper\+Style}}, wx\+Object\+Event\+Function title\+Check\+Box\+Event\+Handler=(wx\+Event\+Function) 0, wx\+Object\+Event\+Function title\+Event\+Handler=(wx\+Event\+Function) 0, wx\+Object\+Event\+Function sub\+Title\+Check\+Box\+Eevent\+Handler=(wx\+Event\+Function) 0, wx\+Object\+Event\+Function sub\+Title\+Event\+Handler=(wx\+Event\+Function) 0)
+\item 
+void \mbox{\hyperlink{class_helper_panel_a106781fc496e192caeb765add7bd8a30}{Update\+Sub\+Title\+State}} (\mbox{\hyperlink{struct_helper_panel_1_1_title_helper}{Helper\+Panel\+::\+Title\+Helper}} \texorpdfstring{$\ast$}{*}title\+Helper)
+\item 
+void \mbox{\hyperlink{class_helper_panel_a97f0816a8c7870a3ce034f07f58e16fa}{Update\+Title\+State}} (\mbox{\hyperlink{struct_helper_panel_1_1_title_helper}{Helper\+Panel\+::\+Title\+Helper}} \texorpdfstring{$\ast$}{*}title\+Helper)
+\item 
+void \mbox{\hyperlink{class_helper_panel_aeb681ca7182038b57f0c604e06c86b19}{Set\+Sub\+Title\+Checkbox\+Value}} (\mbox{\hyperlink{struct_helper_panel_1_1_title_helper}{Helper\+Panel\+::\+Title\+Helper}} \texorpdfstring{$\ast$}{*}title\+Helper, bool state)
+\item 
+void \mbox{\hyperlink{class_helper_panel_a52772322bcf8d12a272fa8096da0e799}{Set\+Title\+Checkbox\+Value}} (\mbox{\hyperlink{struct_helper_panel_1_1_title_helper}{Helper\+Panel\+::\+Title\+Helper}} \texorpdfstring{$\ast$}{*}title\+Helper, bool state)
+\item 
+wx\+Static\+Box \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_helper_panel_a12058e5b1f127f47cef7d15b9f4d7039}{Setup\+Static\+Box}} (wx\+Window \texorpdfstring{$\ast$}{*}parent, wx\+Box\+Sizer \texorpdfstring{$\ast$}{*}in\+Sizer, wx\+Box\+Sizer \texorpdfstring{$\ast$}{*}out\+Box\+Sizer)
+\item 
+void \mbox{\hyperlink{class_helper_panel_ad1e7b95d260c42031c75899e0c68cd7c}{Horizontal\+Spacer}} (wx\+Box\+Sizer \texorpdfstring{$\ast$}{*}in\+Sizer)
+\item 
+void \mbox{\hyperlink{class_helper_panel_abb81bec04632873569caa34eff4ed4f0}{Vertical\+Spacer}} (wx\+Box\+Sizer \texorpdfstring{$\ast$}{*}in\+Sizer)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static bool \mbox{\hyperlink{class_col_details_panel_a952a4edeab0457cb1b79f0461457b933}{Show\+Tool\+Tips}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_col_details_panel_8h_source_l00049}{49}} of file \mbox{\hyperlink{_col_details_panel_8h_source}{Col\+Details\+Panel.\+h}}.
+
+
+
+\label{doc-enum-members}
+\Hypertarget{class_col_details_panel_doc-enum-members}
+\doxysubsection{Member Enumeration Documentation}
+\Hypertarget{class_col_details_panel_a89de6cb1bb1c59f7ae6d0a197874445c}\index{ColDetailsPanel@{ColDetailsPanel}!ColDetailsPanelGuiDefs@{ColDetailsPanelGuiDefs}}
+\index{ColDetailsPanelGuiDefs@{ColDetailsPanelGuiDefs}!ColDetailsPanel@{ColDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{ColDetailsPanelGuiDefs}{ColDetailsPanelGuiDefs}}
+{\footnotesize\ttfamily \label{class_col_details_panel_a89de6cb1bb1c59f7ae6d0a197874445c} 
+enum \mbox{\hyperlink{class_col_details_panel_a89de6cb1bb1c59f7ae6d0a197874445c}{Col\+Details\+Panel\+::\+Col\+Details\+Panel\+Gui\+Defs}}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_NAMELABELEDTEXTBOX@{ID\_NAMELABELEDTEXTBOX}!ColDetailsPanel@{ColDetailsPanel}}\index{ColDetailsPanel@{ColDetailsPanel}!ID\_NAMELABELEDTEXTBOX@{ID\_NAMELABELEDTEXTBOX}}}\Hypertarget{class_col_details_panel_a89de6cb1bb1c59f7ae6d0a197874445ca0903582b44ca3e5c16fffb500d4f6007}\label{class_col_details_panel_a89de6cb1bb1c59f7ae6d0a197874445ca0903582b44ca3e5c16fffb500d4f6007} 
+ID\+\_\+\+NAMELABELEDTEXTBOX&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_COLTITLECHECKBOX@{ID\_COLTITLECHECKBOX}!ColDetailsPanel@{ColDetailsPanel}}\index{ColDetailsPanel@{ColDetailsPanel}!ID\_COLTITLECHECKBOX@{ID\_COLTITLECHECKBOX}}}\Hypertarget{class_col_details_panel_a89de6cb1bb1c59f7ae6d0a197874445cae7de15a146661830812bd01e585a2ccd}\label{class_col_details_panel_a89de6cb1bb1c59f7ae6d0a197874445cae7de15a146661830812bd01e585a2ccd} 
+ID\+\_\+\+COLTITLECHECKBOX&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_COLSUBTITLECHECKBOX@{ID\_COLSUBTITLECHECKBOX}!ColDetailsPanel@{ColDetailsPanel}}\index{ColDetailsPanel@{ColDetailsPanel}!ID\_COLSUBTITLECHECKBOX@{ID\_COLSUBTITLECHECKBOX}}}\Hypertarget{class_col_details_panel_a89de6cb1bb1c59f7ae6d0a197874445cac4d2d1d493835e98d9b52e5bb890504c}\label{class_col_details_panel_a89de6cb1bb1c59f7ae6d0a197874445cac4d2d1d493835e98d9b52e5bb890504c} 
+ID\+\_\+\+COLSUBTITLECHECKBOX&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_FRAMECHECKBOX@{ID\_FRAMECHECKBOX}!ColDetailsPanel@{ColDetailsPanel}}\index{ColDetailsPanel@{ColDetailsPanel}!ID\_FRAMECHECKBOX@{ID\_FRAMECHECKBOX}}}\Hypertarget{class_col_details_panel_a89de6cb1bb1c59f7ae6d0a197874445ca9d907eb3449506f63dc6d30fe1252e1a}\label{class_col_details_panel_a89de6cb1bb1c59f7ae6d0a197874445ca9d907eb3449506f63dc6d30fe1252e1a} 
+ID\+\_\+\+FRAMECHECKBOX&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_LISTCTRL@{ID\_LISTCTRL}!ColDetailsPanel@{ColDetailsPanel}}\index{ColDetailsPanel@{ColDetailsPanel}!ID\_LISTCTRL@{ID\_LISTCTRL}}}\Hypertarget{class_col_details_panel_a89de6cb1bb1c59f7ae6d0a197874445ca304dc7065a51c7b181efa60b515bccab}\label{class_col_details_panel_a89de6cb1bb1c59f7ae6d0a197874445ca304dc7065a51c7b181efa60b515bccab} 
+ID\+\_\+\+LISTCTRL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_COLNAMEPANEL@{ID\_COLNAMEPANEL}!ColDetailsPanel@{ColDetailsPanel}}\index{ColDetailsPanel@{ColDetailsPanel}!ID\_COLNAMEPANEL@{ID\_COLNAMEPANEL}}}\Hypertarget{class_col_details_panel_a89de6cb1bb1c59f7ae6d0a197874445ca6d3b1d640c49202ce70a90e05e6ea219}\label{class_col_details_panel_a89de6cb1bb1c59f7ae6d0a197874445ca6d3b1d640c49202ce70a90e05e6ea219} 
+ID\+\_\+\+COLNAMEPANEL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_COLDEFAULTFONTBUTTON@{ID\_COLDEFAULTFONTBUTTON}!ColDetailsPanel@{ColDetailsPanel}}\index{ColDetailsPanel@{ColDetailsPanel}!ID\_COLDEFAULTFONTBUTTON@{ID\_COLDEFAULTFONTBUTTON}}}\Hypertarget{class_col_details_panel_a89de6cb1bb1c59f7ae6d0a197874445cadd42d69ea6b1d83a118010b634b593e0}\label{class_col_details_panel_a89de6cb1bb1c59f7ae6d0a197874445cadd42d69ea6b1d83a118010b634b593e0} 
+ID\+\_\+\+COLDEFAULTFONTBUTTON&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_COLLAYOUTPANEL@{ID\_COLLAYOUTPANEL}!ColDetailsPanel@{ColDetailsPanel}}\index{ColDetailsPanel@{ColDetailsPanel}!ID\_COLLAYOUTPANEL@{ID\_COLLAYOUTPANEL}}}\Hypertarget{class_col_details_panel_a89de6cb1bb1c59f7ae6d0a197874445ca2243676767e37308db3288f90aad3aab}\label{class_col_details_panel_a89de6cb1bb1c59f7ae6d0a197874445ca2243676767e37308db3288f90aad3aab} 
+ID\+\_\+\+COLLAYOUTPANEL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_COLLAYOUTTEXTCTRL@{ID\_COLLAYOUTTEXTCTRL}!ColDetailsPanel@{ColDetailsPanel}}\index{ColDetailsPanel@{ColDetailsPanel}!ID\_COLLAYOUTTEXTCTRL@{ID\_COLLAYOUTTEXTCTRL}}}\Hypertarget{class_col_details_panel_a89de6cb1bb1c59f7ae6d0a197874445ca90760bef0e3f32d78ad4945b18d93786}\label{class_col_details_panel_a89de6cb1bb1c59f7ae6d0a197874445ca90760bef0e3f32d78ad4945b18d93786} 
+ID\+\_\+\+COLLAYOUTTEXTCTRL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_DEFAULTFONTBUTTON@{ID\_DEFAULTFONTBUTTON}!ColDetailsPanel@{ColDetailsPanel}}\index{ColDetailsPanel@{ColDetailsPanel}!ID\_DEFAULTFONTBUTTON@{ID\_DEFAULTFONTBUTTON}}}\Hypertarget{class_col_details_panel_a89de6cb1bb1c59f7ae6d0a197874445ca0f072a2d013cfde81a59a4e959396f00}\label{class_col_details_panel_a89de6cb1bb1c59f7ae6d0a197874445ca0f072a2d013cfde81a59a4e959396f00} 
+ID\+\_\+\+DEFAULTFONTBUTTON&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_DEFAULTRADIOBUTTON@{ID\_DEFAULTRADIOBUTTON}!ColDetailsPanel@{ColDetailsPanel}}\index{ColDetailsPanel@{ColDetailsPanel}!ID\_DEFAULTRADIOBUTTON@{ID\_DEFAULTRADIOBUTTON}}}\Hypertarget{class_col_details_panel_a89de6cb1bb1c59f7ae6d0a197874445ca36092341a86bb636c3af31c8aa6f1afe}\label{class_col_details_panel_a89de6cb1bb1c59f7ae6d0a197874445ca36092341a86bb636c3af31c8aa6f1afe} 
+ID\+\_\+\+DEFAULTRADIOBUTTON&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_TOPRADIOBUTTON@{ID\_TOPRADIOBUTTON}!ColDetailsPanel@{ColDetailsPanel}}\index{ColDetailsPanel@{ColDetailsPanel}!ID\_TOPRADIOBUTTON@{ID\_TOPRADIOBUTTON}}}\Hypertarget{class_col_details_panel_a89de6cb1bb1c59f7ae6d0a197874445caa1809516adf0500a9bd9126d9d9ace94}\label{class_col_details_panel_a89de6cb1bb1c59f7ae6d0a197874445caa1809516adf0500a9bd9126d9d9ace94} 
+ID\+\_\+\+TOPRADIOBUTTON&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_BOTTOMRADIOBUTTON@{ID\_BOTTOMRADIOBUTTON}!ColDetailsPanel@{ColDetailsPanel}}\index{ColDetailsPanel@{ColDetailsPanel}!ID\_BOTTOMRADIOBUTTON@{ID\_BOTTOMRADIOBUTTON}}}\Hypertarget{class_col_details_panel_a89de6cb1bb1c59f7ae6d0a197874445ca7aaf86d19a03e3d007bd8e82dfeeb29b}\label{class_col_details_panel_a89de6cb1bb1c59f7ae6d0a197874445ca7aaf86d19a03e3d007bd8e82dfeeb29b} 
+ID\+\_\+\+BOTTOMRADIOBUTTON&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_CALCULATEDRADIOBUTTON@{ID\_CALCULATEDRADIOBUTTON}!ColDetailsPanel@{ColDetailsPanel}}\index{ColDetailsPanel@{ColDetailsPanel}!ID\_CALCULATEDRADIOBUTTON@{ID\_CALCULATEDRADIOBUTTON}}}\Hypertarget{class_col_details_panel_a89de6cb1bb1c59f7ae6d0a197874445caf7589af95cd66a6b4f9194d5c8a99455}\label{class_col_details_panel_a89de6cb1bb1c59f7ae6d0a197874445caf7589af95cd66a6b4f9194d5c8a99455} 
+ID\+\_\+\+CALCULATEDRADIOBUTTON&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_FIXEDRADIOBUTTON@{ID\_FIXEDRADIOBUTTON}!ColDetailsPanel@{ColDetailsPanel}}\index{ColDetailsPanel@{ColDetailsPanel}!ID\_FIXEDRADIOBUTTON@{ID\_FIXEDRADIOBUTTON}}}\Hypertarget{class_col_details_panel_a89de6cb1bb1c59f7ae6d0a197874445ca6cd48910382f014c220077f6cb5cac88}\label{class_col_details_panel_a89de6cb1bb1c59f7ae6d0a197874445ca6cd48910382f014c220077f6cb5cac88} 
+ID\+\_\+\+FIXEDRADIOBUTTON&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_FIXEDSIZETEXTCTRL@{ID\_FIXEDSIZETEXTCTRL}!ColDetailsPanel@{ColDetailsPanel}}\index{ColDetailsPanel@{ColDetailsPanel}!ID\_FIXEDSIZETEXTCTRL@{ID\_FIXEDSIZETEXTCTRL}}}\Hypertarget{class_col_details_panel_a89de6cb1bb1c59f7ae6d0a197874445cae83c574d1b40de490b2064016023eba8}\label{class_col_details_panel_a89de6cb1bb1c59f7ae6d0a197874445cae83c574d1b40de490b2064016023eba8} 
+ID\+\_\+\+FIXEDSIZETEXTCTRL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_LastID@{ID\_LastID}!ColDetailsPanel@{ColDetailsPanel}}\index{ColDetailsPanel@{ColDetailsPanel}!ID\_LastID@{ID\_LastID}}}\Hypertarget{class_col_details_panel_a89de6cb1bb1c59f7ae6d0a197874445ca4783a34648c596a59f59825c7ffcf7cb}\label{class_col_details_panel_a89de6cb1bb1c59f7ae6d0a197874445ca4783a34648c596a59f59825c7ffcf7cb} 
+ID\+\_\+\+Last\+ID&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{_col_details_panel_8h_source_l00056}{56}} of file \mbox{\hyperlink{_col_details_panel_8h_source}{Col\+Details\+Panel.\+h}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_col_details_panel_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_col_details_panel_a4e88694c8c43a989a89bf062e2b445c8}\index{ColDetailsPanel@{ColDetailsPanel}!ColDetailsPanel@{ColDetailsPanel}}
+\index{ColDetailsPanel@{ColDetailsPanel}!ColDetailsPanel@{ColDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{ColDetailsPanel()}{ColDetailsPanel()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_col_details_panel_a4e88694c8c43a989a89bf062e2b445c8} 
+Col\+Details\+Panel\+::\+Col\+Details\+Panel (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Construct a new Col Details Dialog object. 
+
+
+
+Definition at line \mbox{\hyperlink{_col_details_panel_8cpp_source_l00056}{56}} of file \mbox{\hyperlink{_col_details_panel_8cpp_source}{Col\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_col_details_panel_ae57f23792a43b558b9e722756300d556}\index{ColDetailsPanel@{ColDetailsPanel}!ColDetailsPanel@{ColDetailsPanel}}
+\index{ColDetailsPanel@{ColDetailsPanel}!ColDetailsPanel@{ColDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{ColDetailsPanel()}{ColDetailsPanel()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_col_details_panel_ae57f23792a43b558b9e722756300d556} 
+Col\+Details\+Panel\+::\+Col\+Details\+Panel (\begin{DoxyParamCaption}\item[{wx\+Window \texorpdfstring{$\ast$}{*}}]{parent}{, }\item[{wx\+Window\+ID}]{id}{ = {\ttfamily \mbox{\hyperlink{_col_details_panel_8h_a68796d807486ef7be6fbe878a757c13b}{SYMBOL\+\_\+\+COLDETAILSDIALOG\+\_\+\+IDNAME}}}, }\item[{const wx\+String \&}]{caption}{ = {\ttfamily \mbox{\hyperlink{_col_details_panel_8h_a85549aed479c6ea5125db5b174922f52}{SYMBOL\+\_\+\+COLDETAILSDIALOG\+\_\+\+TITLE}}}, }\item[{const wx\+Point \&}]{pos}{ = {\ttfamily \mbox{\hyperlink{_col_details_panel_8h_a7ab47cce74e59be676bc3c10a958b45b}{SYMBOL\+\_\+\+COLDETAILSDIALOG\+\_\+\+POSITION}}}, }\item[{const wx\+Size \&}]{size}{ = {\ttfamily \mbox{\hyperlink{_col_details_panel_8h_a875b29cfdb682afb4a92a3c4ada15aa7}{SYMBOL\+\_\+\+COLDETAILSDIALOG\+\_\+\+SIZE}}}, }\item[{long}]{style}{ = {\ttfamily \mbox{\hyperlink{_col_details_panel_8h_af35ad81ae39e1e5a4898deb2a123021b}{SYMBOL\+\_\+\+COLDETAILSDIALOG\+\_\+\+STYLE}}}}\end{DoxyParamCaption})}
+
+
+
+Construct a new Col Details Dialog object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent} & \\
+\hline
+{\em id} & \\
+\hline
+{\em caption} & \\
+\hline
+{\em pos} & \\
+\hline
+{\em size} & \\
+\hline
+{\em style} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_col_details_panel_8cpp_source_l00063}{63}} of file \mbox{\hyperlink{_col_details_panel_8cpp_source}{Col\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_col_details_panel_a4d4950ef6d089ddecf50922bc0761869}\index{ColDetailsPanel@{ColDetailsPanel}!````~ColDetailsPanel@{\texorpdfstring{$\sim$}{\string~}ColDetailsPanel}}
+\index{````~ColDetailsPanel@{\texorpdfstring{$\sim$}{\string~}ColDetailsPanel}!ColDetailsPanel@{ColDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}ColDetailsPanel()}{\string~ColDetailsPanel()}}
+{\footnotesize\ttfamily \label{class_col_details_panel_a4d4950ef6d089ddecf50922bc0761869} 
+Col\+Details\+Panel\+::\texorpdfstring{$\sim$}{\string~}\+Col\+Details\+Panel (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Destroy the Col Details Dialog object. 
+
+
+
+Definition at line \mbox{\hyperlink{_col_details_panel_8cpp_source_l00071}{71}} of file \mbox{\hyperlink{_col_details_panel_8cpp_source}{Col\+Details\+Panel.\+cpp}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_col_details_panel_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_col_details_panel_adda1898fac68030e4a455086638d0c8f}\index{ColDetailsPanel@{ColDetailsPanel}!CalculateSpacing@{CalculateSpacing}}
+\index{CalculateSpacing@{CalculateSpacing}!ColDetailsPanel@{ColDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{CalculateSpacing()}{CalculateSpacing()}}
+{\footnotesize\ttfamily \label{class_col_details_panel_adda1898fac68030e4a455086638d0c8f} 
+bool Col\+Details\+Panel\+::\+Calculate\+Spacing (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_col_details_panel_8h_source_l00233}{233}} of file \mbox{\hyperlink{_col_details_panel_8h_source}{Col\+Details\+Panel.\+h}}.
+
+\Hypertarget{class_col_details_panel_a9b5a770cb3e442aa0fb53482f2c9c2e0}\index{ColDetailsPanel@{ColDetailsPanel}!Create@{Create}}
+\index{Create@{Create}!ColDetailsPanel@{ColDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{Create()}{Create()}}
+{\footnotesize\ttfamily \label{class_col_details_panel_a9b5a770cb3e442aa0fb53482f2c9c2e0} 
+bool Col\+Details\+Panel\+::\+Create (\begin{DoxyParamCaption}\item[{wx\+Window \texorpdfstring{$\ast$}{*}}]{parent}{, }\item[{wx\+Window\+ID}]{id}{ = {\ttfamily \mbox{\hyperlink{_col_details_panel_8h_a68796d807486ef7be6fbe878a757c13b}{SYMBOL\+\_\+\+COLDETAILSDIALOG\+\_\+\+IDNAME}}}, }\item[{const wx\+String \&}]{caption}{ = {\ttfamily \mbox{\hyperlink{_col_details_panel_8h_a85549aed479c6ea5125db5b174922f52}{SYMBOL\+\_\+\+COLDETAILSDIALOG\+\_\+\+TITLE}}}, }\item[{const wx\+Point \&}]{pos}{ = {\ttfamily \mbox{\hyperlink{_col_details_panel_8h_a7ab47cce74e59be676bc3c10a958b45b}{SYMBOL\+\_\+\+COLDETAILSDIALOG\+\_\+\+POSITION}}}, }\item[{const wx\+Size \&}]{size}{ = {\ttfamily \mbox{\hyperlink{_col_details_panel_8h_a875b29cfdb682afb4a92a3c4ada15aa7}{SYMBOL\+\_\+\+COLDETAILSDIALOG\+\_\+\+SIZE}}}, }\item[{long}]{style}{ = {\ttfamily \mbox{\hyperlink{_col_details_panel_8h_af35ad81ae39e1e5a4898deb2a123021b}{SYMBOL\+\_\+\+COLDETAILSDIALOG\+\_\+\+STYLE}}}}\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent} & \\
+\hline
+{\em id} & \\
+\hline
+{\em caption} & \\
+\hline
+{\em pos} & \\
+\hline
+{\em size} & \\
+\hline
+{\em style} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_col_details_panel_8cpp_source_l00077}{77}} of file \mbox{\hyperlink{_col_details_panel_8cpp_source}{Col\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_col_details_panel_a1ee0402cf9d5b4f8a731bc1d9ce6c142}\index{ColDetailsPanel@{ColDetailsPanel}!CreateControls@{CreateControls}}
+\index{CreateControls@{CreateControls}!ColDetailsPanel@{ColDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{CreateControls()}{CreateControls()}}
+{\footnotesize\ttfamily \label{class_col_details_panel_a1ee0402cf9d5b4f8a731bc1d9ce6c142} 
+void Col\+Details\+Panel\+::\+Create\+Controls (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Create a Controls object. 
+
+
+
+Definition at line \mbox{\hyperlink{_col_details_panel_8cpp_source_l00095}{95}} of file \mbox{\hyperlink{_col_details_panel_8cpp_source}{Col\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_col_details_panel_a6b753a7dad3899c1cb399cb5ffebfdd1}\index{ColDetailsPanel@{ColDetailsPanel}!GetFixedSpacing@{GetFixedSpacing}}
+\index{GetFixedSpacing@{GetFixedSpacing}!ColDetailsPanel@{ColDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{GetFixedSpacing()}{GetFixedSpacing()}}
+{\footnotesize\ttfamily \label{class_col_details_panel_a6b753a7dad3899c1cb399cb5ffebfdd1} 
+wx\+String Col\+Details\+Panel\+::\+Get\+Fixed\+Spacing (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the Fixed Spacing object. 
+
+\begin{DoxyReturn}{Returns}
+wx\+String 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_col_details_panel_8h_source_l00120}{120}} of file \mbox{\hyperlink{_col_details_panel_8h_source}{Col\+Details\+Panel.\+h}}.
+
+\Hypertarget{class_col_details_panel_a11a5fe1ef9b1310b1cc59d87dcd6e943}\index{ColDetailsPanel@{ColDetailsPanel}!GetShowFrame@{GetShowFrame}}
+\index{GetShowFrame@{GetShowFrame}!ColDetailsPanel@{ColDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{GetShowFrame()}{GetShowFrame()}}
+{\footnotesize\ttfamily \label{class_col_details_panel_a11a5fe1ef9b1310b1cc59d87dcd6e943} 
+bool Col\+Details\+Panel\+::\+Get\+Show\+Frame (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Get the Show Frame object. 
+
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_col_details_panel_8cpp_source_l00298}{298}} of file \mbox{\hyperlink{_col_details_panel_8cpp_source}{Col\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_col_details_panel_aa8ef9268a5654ed6605989160b762801}\index{ColDetailsPanel@{ColDetailsPanel}!GetShowSubTitle@{GetShowSubTitle}}
+\index{GetShowSubTitle@{GetShowSubTitle}!ColDetailsPanel@{ColDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{GetShowSubTitle()}{GetShowSubTitle()}}
+{\footnotesize\ttfamily \label{class_col_details_panel_aa8ef9268a5654ed6605989160b762801} 
+bool Col\+Details\+Panel\+::\+Get\+Show\+Sub\+Title (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_col_details_panel_8cpp_source_l00292}{292}} of file \mbox{\hyperlink{_col_details_panel_8cpp_source}{Col\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_col_details_panel_a6f17cc537981e788770ca94442fea1fb}\index{ColDetailsPanel@{ColDetailsPanel}!GetShowTitle@{GetShowTitle}}
+\index{GetShowTitle@{GetShowTitle}!ColDetailsPanel@{ColDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{GetShowTitle()}{GetShowTitle()}}
+{\footnotesize\ttfamily \label{class_col_details_panel_a6f17cc537981e788770ca94442fea1fb} 
+bool Col\+Details\+Panel\+::\+Get\+Show\+Title (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Get the Show Title object. 
+
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_col_details_panel_8cpp_source_l00288}{288}} of file \mbox{\hyperlink{_col_details_panel_8cpp_source}{Col\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_col_details_panel_ab849e0d51b20a9c45b86b8abe73d283f}\index{ColDetailsPanel@{ColDetailsPanel}!GetTitle@{GetTitle}}
+\index{GetTitle@{GetTitle}!ColDetailsPanel@{ColDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{GetTitle()}{GetTitle()}}
+{\footnotesize\ttfamily \label{class_col_details_panel_ab849e0d51b20a9c45b86b8abe73d283f} 
+wx\+String Col\+Details\+Panel\+::\+Get\+Title (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_col_details_panel_8cpp_source_l00302}{302}} of file \mbox{\hyperlink{_col_details_panel_8cpp_source}{Col\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_col_details_panel_a2b738134de247b60beb15cce75239e59}\index{ColDetailsPanel@{ColDetailsPanel}!GetTitleColor@{GetTitleColor}}
+\index{GetTitleColor@{GetTitleColor}!ColDetailsPanel@{ColDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{GetTitleColor()}{GetTitleColor()}}
+{\footnotesize\ttfamily \label{class_col_details_panel_a2b738134de247b60beb15cce75239e59} 
+wx\+Colour Col\+Details\+Panel\+::\+Get\+Title\+Color (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Get the Title Color object. 
+
+\begin{DoxyReturn}{Returns}
+wx\+Colour 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_col_details_panel_8cpp_source_l00331}{331}} of file \mbox{\hyperlink{_col_details_panel_8cpp_source}{Col\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_col_details_panel_a44a9dfe16e6345d962e7075bff004e6c}\index{ColDetailsPanel@{ColDetailsPanel}!GetTitleFont@{GetTitleFont}}
+\index{GetTitleFont@{GetTitleFont}!ColDetailsPanel@{ColDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{GetTitleFont()}{GetTitleFont()}}
+{\footnotesize\ttfamily \label{class_col_details_panel_a44a9dfe16e6345d962e7075bff004e6c} 
+wx\+Font Col\+Details\+Panel\+::\+Get\+Title\+Font (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Get the Title Font object. 
+
+\begin{DoxyReturn}{Returns}
+wx\+Font 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_col_details_panel_8cpp_source_l00325}{325}} of file \mbox{\hyperlink{_col_details_panel_8cpp_source}{Col\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_col_details_panel_ad090faf1f962ca3a56b1082e00ed321f}\index{ColDetailsPanel@{ColDetailsPanel}!GetTitleLocation@{GetTitleLocation}}
+\index{GetTitleLocation@{GetTitleLocation}!ColDetailsPanel@{ColDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{GetTitleLocation()}{GetTitleLocation()}}
+{\footnotesize\ttfamily \label{class_col_details_panel_ad090faf1f962ca3a56b1082e00ed321f} 
+\mbox{\hyperlink{namespace_design_a6d899bd1f7046bbf5a613e85bd83f0c3}{Design\+::\+Stamp\+Name\+Pos\+Type}} Col\+Details\+Panel\+::\+Get\+Title\+Location (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_col_details_panel_ab9ee769bd45f727204d2f9f8faeca235}\index{ColDetailsPanel@{ColDetailsPanel}!Init@{Init}}
+\index{Init@{Init}!ColDetailsPanel@{ColDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily \label{class_col_details_panel_ab9ee769bd45f727204d2f9f8faeca235} 
+void Col\+Details\+Panel\+::\+Init (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_col_details_panel_8cpp_source_l00337}{337}} of file \mbox{\hyperlink{_col_details_panel_8cpp_source}{Col\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_col_details_panel_a6eeb9c0605e8f36c5eb0221763c82851}\index{ColDetailsPanel@{ColDetailsPanel}!IsNameModified@{IsNameModified}}
+\index{IsNameModified@{IsNameModified}!ColDetailsPanel@{ColDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{IsNameModified()}{IsNameModified()}}
+{\footnotesize\ttfamily \label{class_col_details_panel_a6eeb9c0605e8f36c5eb0221763c82851} 
+bool Col\+Details\+Panel\+::\+Is\+Name\+Modified (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_col_details_panel_8cpp_source_l00345}{345}} of file \mbox{\hyperlink{_col_details_panel_8cpp_source}{Col\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_col_details_panel_a3e060692f255578eb28844e305936ccd}\index{ColDetailsPanel@{ColDetailsPanel}!OnBottomContentMargin@{OnBottomContentMargin}}
+\index{OnBottomContentMargin@{OnBottomContentMargin}!ColDetailsPanel@{ColDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{OnBottomContentMargin()}{OnBottomContentMargin()}}
+{\footnotesize\ttfamily \label{class_col_details_panel_a3e060692f255578eb28844e305936ccd} 
+void Col\+Details\+Panel\+::\+On\+Bottom\+Content\+Margin (\begin{DoxyParamCaption}\item[{wx\+Command\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_col_details_panel_8cpp_source_l00542}{542}} of file \mbox{\hyperlink{_col_details_panel_8cpp_source}{Col\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_col_details_panel_a482d8c453f05692abe14ab8c505b9538}\index{ColDetailsPanel@{ColDetailsPanel}!OnCalculatedClick@{OnCalculatedClick}}
+\index{OnCalculatedClick@{OnCalculatedClick}!ColDetailsPanel@{ColDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{OnCalculatedClick()}{OnCalculatedClick()}}
+{\footnotesize\ttfamily \label{class_col_details_panel_a482d8c453f05692abe14ab8c505b9538} 
+void Col\+Details\+Panel\+::\+On\+Calculated\+Click (\begin{DoxyParamCaption}\item[{wx\+Command\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_col_details_panel_a2d9853b605525a37316863ace1fa5069}\index{ColDetailsPanel@{ColDetailsPanel}!OnDefaultRadioButtonSelected@{OnDefaultRadioButtonSelected}}
+\index{OnDefaultRadioButtonSelected@{OnDefaultRadioButtonSelected}!ColDetailsPanel@{ColDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{OnDefaultRadioButtonSelected()}{OnDefaultRadioButtonSelected()}}
+{\footnotesize\ttfamily \label{class_col_details_panel_a2d9853b605525a37316863ace1fa5069} 
+void Col\+Details\+Panel\+::\+On\+Default\+Radio\+Button\+Selected (\begin{DoxyParamCaption}\item[{wx\+Command\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_col_details_panel_a64910a187c7d8b88862e43b323ad0949}\index{ColDetailsPanel@{ColDetailsPanel}!OnFixedClick@{OnFixedClick}}
+\index{OnFixedClick@{OnFixedClick}!ColDetailsPanel@{ColDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{OnFixedClick()}{OnFixedClick()}}
+{\footnotesize\ttfamily \label{class_col_details_panel_a64910a187c7d8b88862e43b323ad0949} 
+void Col\+Details\+Panel\+::\+On\+Fixed\+Click (\begin{DoxyParamCaption}\item[{wx\+Command\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_col_details_panel_ac7d7fccda5e09f5931712f61702098a9}\index{ColDetailsPanel@{ColDetailsPanel}!OnFrameCheckboxClick@{OnFrameCheckboxClick}}
+\index{OnFrameCheckboxClick@{OnFrameCheckboxClick}!ColDetailsPanel@{ColDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{OnFrameCheckboxClick()}{OnFrameCheckboxClick()}}
+{\footnotesize\ttfamily \label{class_col_details_panel_ac7d7fccda5e09f5931712f61702098a9} 
+void Col\+Details\+Panel\+::\+On\+Frame\+Checkbox\+Click (\begin{DoxyParamCaption}\item[{wx\+Command\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_col_details_panel_8cpp_source_l00371}{371}} of file \mbox{\hyperlink{_col_details_panel_8cpp_source}{Col\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_col_details_panel_a0fb8b41bbd72ce9685bf3dbf910c85ce}\index{ColDetailsPanel@{ColDetailsPanel}!OnLeftContentMargin@{OnLeftContentMargin}}
+\index{OnLeftContentMargin@{OnLeftContentMargin}!ColDetailsPanel@{ColDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{OnLeftContentMargin()}{OnLeftContentMargin()}}
+{\footnotesize\ttfamily \label{class_col_details_panel_a0fb8b41bbd72ce9685bf3dbf910c85ce} 
+void Col\+Details\+Panel\+::\+On\+Left\+Content\+Margin (\begin{DoxyParamCaption}\item[{wx\+Command\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_col_details_panel_8cpp_source_l00552}{552}} of file \mbox{\hyperlink{_col_details_panel_8cpp_source}{Col\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_col_details_panel_aa72cc97df58f5903127fdc88bc20c64d}\index{ColDetailsPanel@{ColDetailsPanel}!OnOkClick@{OnOkClick}}
+\index{OnOkClick@{OnOkClick}!ColDetailsPanel@{ColDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{OnOkClick()}{OnOkClick()}}
+{\footnotesize\ttfamily \label{class_col_details_panel_aa72cc97df58f5903127fdc88bc20c64d} 
+void Col\+Details\+Panel\+::\+On\+Ok\+Click (\begin{DoxyParamCaption}\item[{wx\+Command\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_col_details_panel_8cpp_source_l00351}{351}} of file \mbox{\hyperlink{_col_details_panel_8cpp_source}{Col\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_col_details_panel_a6a6b055e7bc6f54d7091242717fde02c}\index{ColDetailsPanel@{ColDetailsPanel}!OnRightContentMargin@{OnRightContentMargin}}
+\index{OnRightContentMargin@{OnRightContentMargin}!ColDetailsPanel@{ColDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{OnRightContentMargin()}{OnRightContentMargin()}}
+{\footnotesize\ttfamily \label{class_col_details_panel_a6a6b055e7bc6f54d7091242717fde02c} 
+void Col\+Details\+Panel\+::\+On\+Right\+Content\+Margin (\begin{DoxyParamCaption}\item[{wx\+Command\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_col_details_panel_8cpp_source_l00562}{562}} of file \mbox{\hyperlink{_col_details_panel_8cpp_source}{Col\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_col_details_panel_a2183c39b013eab5ea41bd19b73d41c24}\index{ColDetailsPanel@{ColDetailsPanel}!OnShowBorderCheckBoxClick@{OnShowBorderCheckBoxClick}}
+\index{OnShowBorderCheckBoxClick@{OnShowBorderCheckBoxClick}!ColDetailsPanel@{ColDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{OnShowBorderCheckBoxClick()}{OnShowBorderCheckBoxClick()}}
+{\footnotesize\ttfamily \label{class_col_details_panel_a2183c39b013eab5ea41bd19b73d41c24} 
+void Col\+Details\+Panel\+::\+On\+Show\+Border\+Check\+Box\+Click (\begin{DoxyParamCaption}\item[{wx\+Command\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_col_details_panel_ab5fb1266c5a828c228aaeb80b7ab2953}\index{ColDetailsPanel@{ColDetailsPanel}!OnSubTitleCheckboxClick@{OnSubTitleCheckboxClick}}
+\index{OnSubTitleCheckboxClick@{OnSubTitleCheckboxClick}!ColDetailsPanel@{ColDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{OnSubTitleCheckboxClick()}{OnSubTitleCheckboxClick()}}
+{\footnotesize\ttfamily \label{class_col_details_panel_ab5fb1266c5a828c228aaeb80b7ab2953} 
+void Col\+Details\+Panel\+::\+On\+Sub\+Title\+Checkbox\+Click (\begin{DoxyParamCaption}\item[{wx\+Command\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_col_details_panel_8cpp_source_l00477}{477}} of file \mbox{\hyperlink{_col_details_panel_8cpp_source}{Col\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_col_details_panel_a5669acb75deb0fa3d05eb5151e718a91}\index{ColDetailsPanel@{ColDetailsPanel}!OnSubTitleColorPicker@{OnSubTitleColorPicker}}
+\index{OnSubTitleColorPicker@{OnSubTitleColorPicker}!ColDetailsPanel@{ColDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{OnSubTitleColorPicker()}{OnSubTitleColorPicker()}}
+{\footnotesize\ttfamily \label{class_col_details_panel_a5669acb75deb0fa3d05eb5151e718a91} 
+void Col\+Details\+Panel\+::\+On\+Sub\+Title\+Color\+Picker (\begin{DoxyParamCaption}\item[{wx\+Colour\+Picker\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_col_details_panel_8cpp_source_l00458}{458}} of file \mbox{\hyperlink{_col_details_panel_8cpp_source}{Col\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_col_details_panel_aa707a1c4f85a29e37bca66f61a356963}\index{ColDetailsPanel@{ColDetailsPanel}!OnSubTitleDefaultClick@{OnSubTitleDefaultClick}}
+\index{OnSubTitleDefaultClick@{OnSubTitleDefaultClick}!ColDetailsPanel@{ColDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{OnSubTitleDefaultClick()}{OnSubTitleDefaultClick()}}
+{\footnotesize\ttfamily \label{class_col_details_panel_aa707a1c4f85a29e37bca66f61a356963} 
+void Col\+Details\+Panel\+::\+On\+Sub\+Title\+Default\+Click (\begin{DoxyParamCaption}\item[{wx\+Command\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_col_details_panel_8cpp_source_l00425}{425}} of file \mbox{\hyperlink{_col_details_panel_8cpp_source}{Col\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_col_details_panel_a478ee57311657275e4bfc94589b715e8}\index{ColDetailsPanel@{ColDetailsPanel}!OnSubTitleFontPicker@{OnSubTitleFontPicker}}
+\index{OnSubTitleFontPicker@{OnSubTitleFontPicker}!ColDetailsPanel@{ColDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{OnSubTitleFontPicker()}{OnSubTitleFontPicker()}}
+{\footnotesize\ttfamily \label{class_col_details_panel_a478ee57311657275e4bfc94589b715e8} 
+void Col\+Details\+Panel\+::\+On\+Sub\+Title\+Font\+Picker (\begin{DoxyParamCaption}\item[{wx\+Font\+Picker\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_col_details_panel_8cpp_source_l00452}{452}} of file \mbox{\hyperlink{_col_details_panel_8cpp_source}{Col\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_col_details_panel_a50f7b4aa6eda8e78caf6db3955f59688}\index{ColDetailsPanel@{ColDetailsPanel}!OnSubTitleTextChanged@{OnSubTitleTextChanged}}
+\index{OnSubTitleTextChanged@{OnSubTitleTextChanged}!ColDetailsPanel@{ColDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{OnSubTitleTextChanged()}{OnSubTitleTextChanged()}}
+{\footnotesize\ttfamily \label{class_col_details_panel_a50f7b4aa6eda8e78caf6db3955f59688} 
+void Col\+Details\+Panel\+::\+On\+Sub\+Title\+Text\+Changed (\begin{DoxyParamCaption}\item[{wx\+Command\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_col_details_panel_8cpp_source_l00421}{421}} of file \mbox{\hyperlink{_col_details_panel_8cpp_source}{Col\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_col_details_panel_a3f4795aeb9bb92e6cd78e97dc582e584}\index{ColDetailsPanel@{ColDetailsPanel}!OnTitleCheckboxClick@{OnTitleCheckboxClick}}
+\index{OnTitleCheckboxClick@{OnTitleCheckboxClick}!ColDetailsPanel@{ColDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{OnTitleCheckboxClick()}{OnTitleCheckboxClick()}}
+{\footnotesize\ttfamily \label{class_col_details_panel_a3f4795aeb9bb92e6cd78e97dc582e584} 
+void Col\+Details\+Panel\+::\+On\+Title\+Checkbox\+Click (\begin{DoxyParamCaption}\item[{wx\+Command\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_col_details_panel_8cpp_source_l00468}{468}} of file \mbox{\hyperlink{_col_details_panel_8cpp_source}{Col\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_col_details_panel_add1a7f05338c9002a6efdca52da81067}\index{ColDetailsPanel@{ColDetailsPanel}!OnTitleColorPicker@{OnTitleColorPicker}}
+\index{OnTitleColorPicker@{OnTitleColorPicker}!ColDetailsPanel@{ColDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{OnTitleColorPicker()}{OnTitleColorPicker()}}
+{\footnotesize\ttfamily \label{class_col_details_panel_add1a7f05338c9002a6efdca52da81067} 
+void Col\+Details\+Panel\+::\+On\+Title\+Color\+Picker (\begin{DoxyParamCaption}\item[{wx\+Colour\+Picker\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_col_details_panel_8cpp_source_l00445}{445}} of file \mbox{\hyperlink{_col_details_panel_8cpp_source}{Col\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_col_details_panel_a0160c54c84add117f07f1953c1dcbcdb}\index{ColDetailsPanel@{ColDetailsPanel}!OnTitleDefaultClick@{OnTitleDefaultClick}}
+\index{OnTitleDefaultClick@{OnTitleDefaultClick}!ColDetailsPanel@{ColDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{OnTitleDefaultClick()}{OnTitleDefaultClick()}}
+{\footnotesize\ttfamily \label{class_col_details_panel_a0160c54c84add117f07f1953c1dcbcdb} 
+void Col\+Details\+Panel\+::\+On\+Title\+Default\+Click (\begin{DoxyParamCaption}\item[{wx\+Command\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_col_details_panel_8cpp_source_l00406}{406}} of file \mbox{\hyperlink{_col_details_panel_8cpp_source}{Col\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_col_details_panel_a86814544b513fcd5d685e43c530d43d6}\index{ColDetailsPanel@{ColDetailsPanel}!OnTitleFontPicker@{OnTitleFontPicker}}
+\index{OnTitleFontPicker@{OnTitleFontPicker}!ColDetailsPanel@{ColDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{OnTitleFontPicker()}{OnTitleFontPicker()}}
+{\footnotesize\ttfamily \label{class_col_details_panel_a86814544b513fcd5d685e43c530d43d6} 
+void Col\+Details\+Panel\+::\+On\+Title\+Font\+Picker (\begin{DoxyParamCaption}\item[{wx\+Font\+Picker\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_col_details_panel_8cpp_source_l00436}{436}} of file \mbox{\hyperlink{_col_details_panel_8cpp_source}{Col\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_col_details_panel_ac1d962ee60eee8c118ca35cb6802bb20}\index{ColDetailsPanel@{ColDetailsPanel}!OnTitleTextChanged@{OnTitleTextChanged}}
+\index{OnTitleTextChanged@{OnTitleTextChanged}!ColDetailsPanel@{ColDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{OnTitleTextChanged()}{OnTitleTextChanged()}}
+{\footnotesize\ttfamily \label{class_col_details_panel_ac1d962ee60eee8c118ca35cb6802bb20} 
+void Col\+Details\+Panel\+::\+On\+Title\+Text\+Changed (\begin{DoxyParamCaption}\item[{wx\+Command\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_col_details_panel_8cpp_source_l00418}{418}} of file \mbox{\hyperlink{_col_details_panel_8cpp_source}{Col\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_col_details_panel_a37dbe07df87b109530a66444ac73f8c2}\index{ColDetailsPanel@{ColDetailsPanel}!OnTopContentMargin@{OnTopContentMargin}}
+\index{OnTopContentMargin@{OnTopContentMargin}!ColDetailsPanel@{ColDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{OnTopContentMargin()}{OnTopContentMargin()}}
+{\footnotesize\ttfamily \label{class_col_details_panel_a37dbe07df87b109530a66444ac73f8c2} 
+void Col\+Details\+Panel\+::\+On\+Top\+Content\+Margin (\begin{DoxyParamCaption}\item[{wx\+Command\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_col_details_panel_8cpp_source_l00533}{533}} of file \mbox{\hyperlink{_col_details_panel_8cpp_source}{Col\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_col_details_panel_a03482174f70a934a070daeb0217abce8}\index{ColDetailsPanel@{ColDetailsPanel}!SetBottomContentMargin@{SetBottomContentMargin}}
+\index{SetBottomContentMargin@{SetBottomContentMargin}!ColDetailsPanel@{ColDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{SetBottomContentMargin()}{SetBottomContentMargin()}}
+{\footnotesize\ttfamily \label{class_col_details_panel_a03482174f70a934a070daeb0217abce8} 
+void Col\+Details\+Panel\+::\+Set\+Bottom\+Content\+Margin (\begin{DoxyParamCaption}\item[{wx\+String}]{content\+Margin}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_col_details_panel_8cpp_source_l00512}{512}} of file \mbox{\hyperlink{_col_details_panel_8cpp_source}{Col\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_col_details_panel_aa02f88408264948f470b15ff21fb8cdf}\index{ColDetailsPanel@{ColDetailsPanel}!SetCalculateSpacing@{SetCalculateSpacing}}
+\index{SetCalculateSpacing@{SetCalculateSpacing}!ColDetailsPanel@{ColDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{SetCalculateSpacing()}{SetCalculateSpacing()}}
+{\footnotesize\ttfamily \label{class_col_details_panel_aa02f88408264948f470b15ff21fb8cdf} 
+void Col\+Details\+Panel\+::\+Set\+Calculate\+Spacing (\begin{DoxyParamCaption}\item[{bool}]{val}{}\end{DoxyParamCaption})}
+
+
+
+Set the Calculate Spacing object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em val} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_col_details_panel_8cpp_source_l00378}{378}} of file \mbox{\hyperlink{_col_details_panel_8cpp_source}{Col\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_col_details_panel_abebe75d1a0c134041e600de98aae6d56}\index{ColDetailsPanel@{ColDetailsPanel}!SetFixedSpacingSize@{SetFixedSpacingSize}}
+\index{SetFixedSpacingSize@{SetFixedSpacingSize}!ColDetailsPanel@{ColDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{SetFixedSpacingSize()}{SetFixedSpacingSize()}}
+{\footnotesize\ttfamily \label{class_col_details_panel_abebe75d1a0c134041e600de98aae6d56} 
+void Col\+Details\+Panel\+::\+Set\+Fixed\+Spacing\+Size (\begin{DoxyParamCaption}\item[{wx\+String}]{str}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set the Fixed Spacing Size object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_col_details_panel_8h_source_l00194}{194}} of file \mbox{\hyperlink{_col_details_panel_8h_source}{Col\+Details\+Panel.\+h}}.
+
+\Hypertarget{class_col_details_panel_a6af0e8183db9003e8012e3ff8d1e83c6}\index{ColDetailsPanel@{ColDetailsPanel}!SetLeftContentMargin@{SetLeftContentMargin}}
+\index{SetLeftContentMargin@{SetLeftContentMargin}!ColDetailsPanel@{ColDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{SetLeftContentMargin()}{SetLeftContentMargin()}}
+{\footnotesize\ttfamily \label{class_col_details_panel_a6af0e8183db9003e8012e3ff8d1e83c6} 
+void Col\+Details\+Panel\+::\+Set\+Left\+Content\+Margin (\begin{DoxyParamCaption}\item[{wx\+String}]{content\+Margin}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_col_details_panel_8cpp_source_l00519}{519}} of file \mbox{\hyperlink{_col_details_panel_8cpp_source}{Col\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_col_details_panel_a15b7c1eda6a849c5f8a8a410693d3b2c}\index{ColDetailsPanel@{ColDetailsPanel}!SetNameModified@{SetNameModified}}
+\index{SetNameModified@{SetNameModified}!ColDetailsPanel@{ColDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{SetNameModified()}{SetNameModified()}}
+{\footnotesize\ttfamily \label{class_col_details_panel_a15b7c1eda6a849c5f8a8a410693d3b2c} 
+void Col\+Details\+Panel\+::\+Set\+Name\+Modified (\begin{DoxyParamCaption}\item[{bool}]{state}{}\end{DoxyParamCaption})}
+
+
+
+Set the Name Modified object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_col_details_panel_a888307b1696d816a95f63ddcaba9d5f5}\index{ColDetailsPanel@{ColDetailsPanel}!SetRightContentMargin@{SetRightContentMargin}}
+\index{SetRightContentMargin@{SetRightContentMargin}!ColDetailsPanel@{ColDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{SetRightContentMargin()}{SetRightContentMargin()}}
+{\footnotesize\ttfamily \label{class_col_details_panel_a888307b1696d816a95f63ddcaba9d5f5} 
+void Col\+Details\+Panel\+::\+Set\+Right\+Content\+Margin (\begin{DoxyParamCaption}\item[{wx\+String}]{content\+Margin}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_col_details_panel_8cpp_source_l00526}{526}} of file \mbox{\hyperlink{_col_details_panel_8cpp_source}{Col\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_col_details_panel_a9357fbaa0e7ad58def831919815d803c}\index{ColDetailsPanel@{ColDetailsPanel}!SetShow@{SetShow}}
+\index{SetShow@{SetShow}!ColDetailsPanel@{ColDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{SetShow()}{SetShow()}}
+{\footnotesize\ttfamily \label{class_col_details_panel_a9357fbaa0e7ad58def831919815d803c} 
+void Col\+Details\+Panel\+::\+Set\+Show (\begin{DoxyParamCaption}\item[{bool}]{state}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+
+
+Set the Show Frame object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_col_details_panel_8cpp_source_l00317}{317}} of file \mbox{\hyperlink{_col_details_panel_8cpp_source}{Col\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_col_details_panel_aeaca13f3d487cf27ed6b84dba70454ca}\index{ColDetailsPanel@{ColDetailsPanel}!SetShowSubTitle@{SetShowSubTitle}}
+\index{SetShowSubTitle@{SetShowSubTitle}!ColDetailsPanel@{ColDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{SetShowSubTitle()}{SetShowSubTitle()}}
+{\footnotesize\ttfamily \label{class_col_details_panel_aeaca13f3d487cf27ed6b84dba70454ca} 
+void Col\+Details\+Panel\+::\+Set\+Show\+Sub\+Title (\begin{DoxyParamCaption}\item[{bool}]{state}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_col_details_panel_8cpp_source_l00311}{311}} of file \mbox{\hyperlink{_col_details_panel_8cpp_source}{Col\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_col_details_panel_afd084c1301bde324182d04f8841ff9ee}\index{ColDetailsPanel@{ColDetailsPanel}!SetShowTitle@{SetShowTitle}}
+\index{SetShowTitle@{SetShowTitle}!ColDetailsPanel@{ColDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{SetShowTitle()}{SetShowTitle()}}
+{\footnotesize\ttfamily \label{class_col_details_panel_afd084c1301bde324182d04f8841ff9ee} 
+void Col\+Details\+Panel\+::\+Set\+Show\+Title (\begin{DoxyParamCaption}\item[{bool}]{state}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+
+
+Set the Show Title object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_col_details_panel_8cpp_source_l00308}{308}} of file \mbox{\hyperlink{_col_details_panel_8cpp_source}{Col\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_col_details_panel_a30fb4f2b8be3fb52073f51b7c6fcd76c}\index{ColDetailsPanel@{ColDetailsPanel}!SetStatusList@{SetStatusList}}
+\index{SetStatusList@{SetStatusList}!ColDetailsPanel@{ColDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{SetStatusList()}{SetStatusList()}}
+{\footnotesize\ttfamily \label{class_col_details_panel_a30fb4f2b8be3fb52073f51b7c6fcd76c} 
+void Col\+Details\+Panel\+::\+Set\+Status\+List (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_col_details_panel_8cpp_source_l00486}{486}} of file \mbox{\hyperlink{_col_details_panel_8cpp_source}{Col\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_col_details_panel_a09e5c22c055e111f8df5735d9554dd44}\index{ColDetailsPanel@{ColDetailsPanel}!SetTitleColor@{SetTitleColor}}
+\index{SetTitleColor@{SetTitleColor}!ColDetailsPanel@{ColDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{SetTitleColor()}{SetTitleColor()}}
+{\footnotesize\ttfamily \label{class_col_details_panel_a09e5c22c055e111f8df5735d9554dd44} 
+void Col\+Details\+Panel\+::\+Set\+Title\+Color (\begin{DoxyParamCaption}\item[{wx\+Colour}]{color}{}\end{DoxyParamCaption})}
+
+
+
+Set the Title Color object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em color} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_col_details_panel_8cpp_source_l00401}{401}} of file \mbox{\hyperlink{_col_details_panel_8cpp_source}{Col\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_col_details_panel_ada836f8979d92fd6dd037ad145934ecd}\index{ColDetailsPanel@{ColDetailsPanel}!SetTitleFont@{SetTitleFont}}
+\index{SetTitleFont@{SetTitleFont}!ColDetailsPanel@{ColDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{SetTitleFont()}{SetTitleFont()}}
+{\footnotesize\ttfamily \label{class_col_details_panel_ada836f8979d92fd6dd037ad145934ecd} 
+void Col\+Details\+Panel\+::\+Set\+Title\+Font (\begin{DoxyParamCaption}\item[{wx\+Font}]{font}{}\end{DoxyParamCaption})}
+
+
+
+Set the Title Font object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em font} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_col_details_panel_8cpp_source_l00395}{395}} of file \mbox{\hyperlink{_col_details_panel_8cpp_source}{Col\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_col_details_panel_a9613b6e29271fdf8fbd52cbb12b478f7}\index{ColDetailsPanel@{ColDetailsPanel}!SetTitleLocation@{SetTitleLocation}}
+\index{SetTitleLocation@{SetTitleLocation}!ColDetailsPanel@{ColDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{SetTitleLocation()}{SetTitleLocation()}}
+{\footnotesize\ttfamily \label{class_col_details_panel_a9613b6e29271fdf8fbd52cbb12b478f7} 
+void Col\+Details\+Panel\+::\+Set\+Title\+Location (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Set the Title Layout Location object. 
+
+\Hypertarget{class_col_details_panel_ac777153988949c11cf29b32f8b878fe1}\index{ColDetailsPanel@{ColDetailsPanel}!SetTopContentMargin@{SetTopContentMargin}}
+\index{SetTopContentMargin@{SetTopContentMargin}!ColDetailsPanel@{ColDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{SetTopContentMargin()}{SetTopContentMargin()}}
+{\footnotesize\ttfamily \label{class_col_details_panel_ac777153988949c11cf29b32f8b878fe1} 
+void Col\+Details\+Panel\+::\+Set\+Top\+Content\+Margin (\begin{DoxyParamCaption}\item[{wx\+String}]{content\+Margin}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_col_details_panel_8cpp_source_l00505}{505}} of file \mbox{\hyperlink{_col_details_panel_8cpp_source}{Col\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_col_details_panel_aba5c7ec88a9d2301af8be236bb1c5f4d}\index{ColDetailsPanel@{ColDetailsPanel}!SetupDialog@{SetupDialog}}
+\index{SetupDialog@{SetupDialog}!ColDetailsPanel@{ColDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{SetupDialog()}{SetupDialog()}}
+{\footnotesize\ttfamily \label{class_col_details_panel_aba5c7ec88a9d2301af8be236bb1c5f4d} 
+void Col\+Details\+Panel\+::\+Setup\+Dialog (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_design_1_1_column}{Design\+::\+Column}} \texorpdfstring{$\ast$}{*}}]{col}{}\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em tree\+ID} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_col_details_panel_8cpp_source_l00272}{272}} of file \mbox{\hyperlink{_col_details_panel_8cpp_source}{Col\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_col_details_panel_a952a4edeab0457cb1b79f0461457b933}\index{ColDetailsPanel@{ColDetailsPanel}!ShowToolTips@{ShowToolTips}}
+\index{ShowToolTips@{ShowToolTips}!ColDetailsPanel@{ColDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{ShowToolTips()}{ShowToolTips()}}
+{\footnotesize\ttfamily \label{class_col_details_panel_a952a4edeab0457cb1b79f0461457b933} 
+bool Col\+Details\+Panel\+::\+Show\+Tool\+Tips (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+\Hypertarget{class_col_details_panel_a8adeecbaf8d61a58a4f5bde9702bb9b0}\index{ColDetailsPanel@{ColDetailsPanel}!Update@{Update}}
+\index{Update@{Update}!ColDetailsPanel@{ColDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{class_col_details_panel_a8adeecbaf8d61a58a4f5bde9702bb9b0} 
+void Col\+Details\+Panel\+::\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_col_details_panel_8cpp_source_l00497}{497}} of file \mbox{\hyperlink{_col_details_panel_8cpp_source}{Col\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_col_details_panel_ac9460a16691960ad6d12fba7b5fda017}\index{ColDetailsPanel@{ColDetailsPanel}!UpdateControls@{UpdateControls}}
+\index{UpdateControls@{UpdateControls}!ColDetailsPanel@{ColDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{UpdateControls()}{UpdateControls()}}
+{\footnotesize\ttfamily \label{class_col_details_panel_ac9460a16691960ad6d12fba7b5fda017} 
+void Col\+Details\+Panel\+::\+Update\+Controls (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_col_details_panel_8cpp_source_l00251}{251}} of file \mbox{\hyperlink{_col_details_panel_8cpp_source}{Col\+Details\+Panel.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/femon/\+Development/wx/clone\+Test/\+Stamp\+Tool/src/gui/\mbox{\hyperlink{_col_details_panel_8h}{Col\+Details\+Panel.\+h}}\item 
+C\+:/\+Users/femon/\+Development/wx/clone\+Test/\+Stamp\+Tool/src/gui/\mbox{\hyperlink{_col_details_panel_8cpp}{Col\+Details\+Panel.\+cpp}}\end{DoxyCompactItemize}

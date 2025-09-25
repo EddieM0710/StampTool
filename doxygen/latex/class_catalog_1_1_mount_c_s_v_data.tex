@@ -1,0 +1,286 @@
+\doxysection{Catalog\+::Mount\+CSVData Class Reference}
+\hypertarget{class_catalog_1_1_mount_c_s_v_data}{}\label{class_catalog_1_1_mount_c_s_v_data}\index{Catalog::MountCSVData@{Catalog::MountCSVData}}
+
+
+read/write .csv files.  
+
+
+
+
+{\ttfamily \#include $<$Mount\+CSV.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_catalog_1_1_mount_c_s_v_data_af7662eec86c6a604d7985a92fd9e288a}{Mount\+CSVData}} (void)
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{class_catalog_1_1_mount_c_s_v_data}{Mount\+CSVData} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_catalog_1_1_mount_c_s_v_data_acd1122773a60d74683a922168e4685a5}{\texorpdfstring{$\sim$}{\string~}\+Mount\+CSVData}} (void)
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{class_catalog_1_1_mount_c_s_v_data}{Mount\+CSVData} object. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_catalog_1_1_mount_c_s_v_data_a8a556434d29ec524e75797a4d8196586}{Nbr\+Col\+Names}} (void)
+\begin{DoxyCompactList}\small\item\em Return the number of columes. \end{DoxyCompactList}\item 
+wx\+String \mbox{\hyperlink{class_catalog_1_1_mount_c_s_v_data_ab8e3c284b94e77775071e8cbae23d3e7}{Get\+Col\+Name}} (int col)
+\begin{DoxyCompactList}\small\item\em Get the Col Name object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_catalog_1_1_mount_c_s_v_data_a04a275dc1cb0a6cc132c2bfb0044dded}{Set\+Col\+Name}} (wx\+String name)
+\begin{DoxyCompactList}\small\item\em Adds a Col Name to the col string array. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_catalog_1_1_mount_c_s_v_data_a10b56e7f41df0fe239bab113b138e961}{Read\+Data\+File}} (wx\+String \&filename)
+\begin{DoxyCompactList}\small\item\em Opens the file for read and does appropriate initializations. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_catalog_1_1_mount_c_s_v_data_afbc80b825fa9f3612dbc7bd680407139}{Fix\+Up\+Line}} (wx\+String \&line, int line\+Nbr)
+\begin{DoxyCompactList}\small\item\em Try to fix the input line if it has embedded quotes and commas. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_catalog_1_1_mount_c_s_v_data_a6b01e95d85dd45329c8a81ec0cdca02b}{Read\+Text\+In\+Stream}} (wx\+File\+Input\+Stream \&file, wx\+Text\+Input\+Stream \&text)
+\begin{DoxyCompactList}\small\item\em Read the csv file line by line. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_catalog_1_1_mount_c_s_v_data_a5e3e947b3faa08d7a25084236db03b0c}{Make\+Col\+Map}} (void)
+\begin{DoxyCompactList}\small\item\em look thru the col string array and return the corresponding index \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_catalog_1_1_mount_c_s_v_data_a396b774ddded803f4628ca422ecaea5d}{Get\+IDNbr}} (wx\+String cat\+Codes, wx\+String \&id)
+\begin{DoxyCompactList}\small\item\em looks through the stamp catalog codes ( DT\+\_\+\+Catalog\+\_\+\+Codes ) and returns the ID for a stamp number entry that starts "{}\+Sn\+:\+US"{}. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_catalog_1_1_mount_c_s_v_data_aaedee99ac30e1d4501b90cf7d6510c71}{Do\+Load}} (wx\+String \&filename, wx\+Xml\+Node \texorpdfstring{$\ast$}{*}node\+Data)
+\begin{DoxyCompactList}\small\item\em entry point of file read \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+read/write .csv files. 
+
+Definition at line \mbox{\hyperlink{_mount_c_s_v_8h_source_l00065}{65}} of file \mbox{\hyperlink{_mount_c_s_v_8h_source}{Mount\+CSV.\+h}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_catalog_1_1_mount_c_s_v_data_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_catalog_1_1_mount_c_s_v_data_af7662eec86c6a604d7985a92fd9e288a}\index{Catalog::MountCSVData@{Catalog::MountCSVData}!MountCSVData@{MountCSVData}}
+\index{MountCSVData@{MountCSVData}!Catalog::MountCSVData@{Catalog::MountCSVData}}
+\doxysubsubsection{\texorpdfstring{MountCSVData()}{MountCSVData()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_mount_c_s_v_data_af7662eec86c6a604d7985a92fd9e288a} 
+Catalog\+::\+Mount\+CSVData\+::\+Mount\+CSVData (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct a new \doxylink{class_catalog_1_1_mount_c_s_v_data}{Mount\+CSVData} object. 
+
+
+
+Definition at line \mbox{\hyperlink{_mount_c_s_v_8h_source_l00074}{74}} of file \mbox{\hyperlink{_mount_c_s_v_8h_source}{Mount\+CSV.\+h}}.
+
+\Hypertarget{class_catalog_1_1_mount_c_s_v_data_acd1122773a60d74683a922168e4685a5}\index{Catalog::MountCSVData@{Catalog::MountCSVData}!````~MountCSVData@{\texorpdfstring{$\sim$}{\string~}MountCSVData}}
+\index{````~MountCSVData@{\texorpdfstring{$\sim$}{\string~}MountCSVData}!Catalog::MountCSVData@{Catalog::MountCSVData}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}MountCSVData()}{\string~MountCSVData()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_mount_c_s_v_data_acd1122773a60d74683a922168e4685a5} 
+Catalog\+::\+Mount\+CSVData\+::\texorpdfstring{$\sim$}{\string~}\+Mount\+CSVData (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Destroy the \doxylink{class_catalog_1_1_mount_c_s_v_data}{Mount\+CSVData} object. 
+
+
+
+Definition at line \mbox{\hyperlink{_mount_c_s_v_8h_source_l00080}{80}} of file \mbox{\hyperlink{_mount_c_s_v_8h_source}{Mount\+CSV.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_catalog_1_1_mount_c_s_v_data_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_catalog_1_1_mount_c_s_v_data_aaedee99ac30e1d4501b90cf7d6510c71}\index{Catalog::MountCSVData@{Catalog::MountCSVData}!DoLoad@{DoLoad}}
+\index{DoLoad@{DoLoad}!Catalog::MountCSVData@{Catalog::MountCSVData}}
+\doxysubsubsection{\texorpdfstring{DoLoad()}{DoLoad()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_mount_c_s_v_data_aaedee99ac30e1d4501b90cf7d6510c71} 
+bool Catalog\+::\+Mount\+CSVData\+::\+Do\+Load (\begin{DoxyParamCaption}\item[{wx\+String \&}]{filename}{, }\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{node\+Data}{}\end{DoxyParamCaption})}
+
+
+
+entry point of file read 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & file name to read \\
+\hline
+{\em node\+Data} & toplevel XML node to store the data \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_mount_c_s_v_8cpp_source_l00108}{108}} of file \mbox{\hyperlink{_mount_c_s_v_8cpp_source}{Mount\+CSV.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_mount_c_s_v_data_afbc80b825fa9f3612dbc7bd680407139}\index{Catalog::MountCSVData@{Catalog::MountCSVData}!FixUpLine@{FixUpLine}}
+\index{FixUpLine@{FixUpLine}!Catalog::MountCSVData@{Catalog::MountCSVData}}
+\doxysubsubsection{\texorpdfstring{FixUpLine()}{FixUpLine()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_mount_c_s_v_data_afbc80b825fa9f3612dbc7bd680407139} 
+bool Catalog\+::\+Mount\+CSVData\+::\+Fix\+Up\+Line (\begin{DoxyParamCaption}\item[{wx\+String \&}]{line}{, }\item[{int}]{line\+Nbr}{}\end{DoxyParamCaption})}
+
+
+
+Try to fix the input line if it has embedded quotes and commas. 
+
+Colnect csv export files seem to be good but opening in Office Calc/\+Excel then saving it back to a csv file frequently screws things up.
+
+
+\begin{DoxyParams}{Parameters}
+{\em line} & \+:line to be fixed \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_mount_c_s_v_8cpp_source_l00180}{180}} of file \mbox{\hyperlink{_mount_c_s_v_8cpp_source}{Mount\+CSV.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_mount_c_s_v_data_ab8e3c284b94e77775071e8cbae23d3e7}\index{Catalog::MountCSVData@{Catalog::MountCSVData}!GetColName@{GetColName}}
+\index{GetColName@{GetColName}!Catalog::MountCSVData@{Catalog::MountCSVData}}
+\doxysubsubsection{\texorpdfstring{GetColName()}{GetColName()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_mount_c_s_v_data_ab8e3c284b94e77775071e8cbae23d3e7} 
+wx\+String Catalog\+::\+Mount\+CSVData\+::\+Get\+Col\+Name (\begin{DoxyParamCaption}\item[{int}]{col}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the Col Name object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em col} & ; index for the column number \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+wx\+String ; returns th column name 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_mount_c_s_v_8h_source_l00095}{95}} of file \mbox{\hyperlink{_mount_c_s_v_8h_source}{Mount\+CSV.\+h}}.
+
+\Hypertarget{class_catalog_1_1_mount_c_s_v_data_a396b774ddded803f4628ca422ecaea5d}\index{Catalog::MountCSVData@{Catalog::MountCSVData}!GetIDNbr@{GetIDNbr}}
+\index{GetIDNbr@{GetIDNbr}!Catalog::MountCSVData@{Catalog::MountCSVData}}
+\doxysubsubsection{\texorpdfstring{GetIDNbr()}{GetIDNbr()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_mount_c_s_v_data_a396b774ddded803f4628ca422ecaea5d} 
+bool Catalog\+::\+Mount\+CSVData\+::\+Get\+IDNbr (\begin{DoxyParamCaption}\item[{wx\+String}]{cat\+Codes}{, }\item[{wx\+String \&}]{id}{}\end{DoxyParamCaption})}
+
+
+
+looks through the stamp catalog codes ( DT\+\_\+\+Catalog\+\_\+\+Codes ) and returns the ID for a stamp number entry that starts "{}\+Sn\+:\+US"{}. 
+
+this needs to be modified to return the id for any given catalog code in the list
+
+
+\begin{DoxyParams}{Parameters}
+{\em cat\+Codes} & the string of catalogs \\
+\hline
+{\em id} & returns the id of the stamp \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true true if an id was found else false 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_mount_c_s_v_8cpp_source_l00116}{116}} of file \mbox{\hyperlink{_mount_c_s_v_8cpp_source}{Mount\+CSV.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_mount_c_s_v_data_a5e3e947b3faa08d7a25084236db03b0c}\index{Catalog::MountCSVData@{Catalog::MountCSVData}!MakeColMap@{MakeColMap}}
+\index{MakeColMap@{MakeColMap}!Catalog::MountCSVData@{Catalog::MountCSVData}}
+\doxysubsubsection{\texorpdfstring{MakeColMap()}{MakeColMap()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_mount_c_s_v_data_a5e3e947b3faa08d7a25084236db03b0c} 
+void Catalog\+::\+Mount\+CSVData\+::\+Make\+Col\+Map (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+look thru the col string array and return the corresponding index 
+
+
+\begin{DoxyParams}{Parameters}
+{\em col\+Name} & \+: col name to search for. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int \+: index of col\+Name; wx\+NOT\+\_\+\+FOUND if not found
+\end{DoxyReturn}
+Create a map of csv col names to \doxylink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176}{Data\+Types} ( \doxylink{_defs_8h}{Defs.\+h} ) 
+
+Definition at line \mbox{\hyperlink{_mount_c_s_v_8cpp_source_l00162}{162}} of file \mbox{\hyperlink{_mount_c_s_v_8cpp_source}{Mount\+CSV.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_mount_c_s_v_data_a8a556434d29ec524e75797a4d8196586}\index{Catalog::MountCSVData@{Catalog::MountCSVData}!NbrColNames@{NbrColNames}}
+\index{NbrColNames@{NbrColNames}!Catalog::MountCSVData@{Catalog::MountCSVData}}
+\doxysubsubsection{\texorpdfstring{NbrColNames()}{NbrColNames()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_mount_c_s_v_data_a8a556434d29ec524e75797a4d8196586} 
+int Catalog\+::\+Mount\+CSVData\+::\+Nbr\+Col\+Names (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return the number of columes. 
+
+\begin{DoxyReturn}{Returns}
+int Return the number of columns 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_mount_c_s_v_8h_source_l00087}{87}} of file \mbox{\hyperlink{_mount_c_s_v_8h_source}{Mount\+CSV.\+h}}.
+
+\Hypertarget{class_catalog_1_1_mount_c_s_v_data_a10b56e7f41df0fe239bab113b138e961}\index{Catalog::MountCSVData@{Catalog::MountCSVData}!ReadDataFile@{ReadDataFile}}
+\index{ReadDataFile@{ReadDataFile}!Catalog::MountCSVData@{Catalog::MountCSVData}}
+\doxysubsubsection{\texorpdfstring{ReadDataFile()}{ReadDataFile()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_mount_c_s_v_data_a10b56e7f41df0fe239bab113b138e961} 
+bool Catalog\+::\+Mount\+CSVData\+::\+Read\+Data\+File (\begin{DoxyParamCaption}\item[{wx\+String \&}]{filename}{}\end{DoxyParamCaption})}
+
+
+
+Opens the file for read and does appropriate initializations. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & ; full path to the file to be read \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true ; true on successful open 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_mount_c_s_v_8cpp_source_l00055}{55}} of file \mbox{\hyperlink{_mount_c_s_v_8cpp_source}{Mount\+CSV.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_mount_c_s_v_data_a6b01e95d85dd45329c8a81ec0cdca02b}\index{Catalog::MountCSVData@{Catalog::MountCSVData}!ReadTextInStream@{ReadTextInStream}}
+\index{ReadTextInStream@{ReadTextInStream}!Catalog::MountCSVData@{Catalog::MountCSVData}}
+\doxysubsubsection{\texorpdfstring{ReadTextInStream()}{ReadTextInStream()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_mount_c_s_v_data_a6b01e95d85dd45329c8a81ec0cdca02b} 
+bool Catalog\+::\+Mount\+CSVData\+::\+Read\+Text\+In\+Stream (\begin{DoxyParamCaption}\item[{wx\+File\+Input\+Stream \&}]{file}{, }\item[{wx\+Text\+Input\+Stream \&}]{text}{}\end{DoxyParamCaption})}
+
+
+
+Read the csv file line by line. 
+
+This saves the read data into an XML tree structure. the text input stream is what is read but some status checking needs to be done and passing in the fil stream was the quick easy way to handle it.
+
+
+\begin{DoxyParams}{Parameters}
+{\em file} & file stream for the input file \\
+\hline
+{\em text} & Text Stream for the input file \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the file was succesfully read otherwise false. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_mount_c_s_v_8cpp_source_l00223}{223}} of file \mbox{\hyperlink{_mount_c_s_v_8cpp_source}{Mount\+CSV.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_mount_c_s_v_data_a04a275dc1cb0a6cc132c2bfb0044dded}\index{Catalog::MountCSVData@{Catalog::MountCSVData}!SetColName@{SetColName}}
+\index{SetColName@{SetColName}!Catalog::MountCSVData@{Catalog::MountCSVData}}
+\doxysubsubsection{\texorpdfstring{SetColName()}{SetColName()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_mount_c_s_v_data_a04a275dc1cb0a6cc132c2bfb0044dded} 
+void Catalog\+::\+Mount\+CSVData\+::\+Set\+Col\+Name (\begin{DoxyParamCaption}\item[{wx\+String}]{name}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Adds a Col Name to the col string array. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & the name of the new colun to add \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+size\+\_\+t the col index to which this string was assigned 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_mount_c_s_v_8h_source_l00103}{103}} of file \mbox{\hyperlink{_mount_c_s_v_8h_source}{Mount\+CSV.\+h}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/femon/\+Development/wx/clone\+Test/\+Stamp\+Tool/src/catalog/\mbox{\hyperlink{_mount_c_s_v_8h}{Mount\+CSV.\+h}}\item 
+C\+:/\+Users/femon/\+Development/wx/clone\+Test/\+Stamp\+Tool/src/catalog/\mbox{\hyperlink{_mount_c_s_v_8cpp}{Mount\+CSV.\+cpp}}\end{DoxyCompactItemize}

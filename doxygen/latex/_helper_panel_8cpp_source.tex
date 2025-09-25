@@ -1,0 +1,399 @@
+\doxysection{Helper\+Panel.\+cpp}
+\hypertarget{_helper_panel_8cpp_source}{}\label{_helper_panel_8cpp_source}\index{C:/Users/femon/Development/wx/cloneTest/StampTool/src/gui/HelperPanel.cpp@{C:/Users/femon/Development/wx/cloneTest/StampTool/src/gui/HelperPanel.cpp}}
+\mbox{\hyperlink{_helper_panel_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00002}00002\ \textcolor{comment}{\ *\ @file\ \ \ \ \ \ \ \ \ HelperPanel.cpp}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00003}00003\ \textcolor{comment}{\ *@brief}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00004}00004\ \textcolor{comment}{*\ @author\ \ \ \ \ \ Eddie\ Monroe}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00005}00005\ \textcolor{comment}{*\ Modified\ by:}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00006}00006\ \textcolor{comment}{*\ @author\ \ \ \ \ Wed\ 23\ Nov\ 2022\ 12:01:34\ CST}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00007}00007\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00008}00008\ \textcolor{comment}{*\ @copyright\ Copyright\ (\ c\ )\ 2024}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00009}00009\ \textcolor{comment}{\ *\ This\ file\ is\ part\ of\ StampTool.}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00010}00010\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00011}00011\ \textcolor{comment}{\ *\ StampTool\ is\ free\ software:\ you\ can\ redistribute\ it\ and/or\ modify\ it\ under\ the}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00012}00012\ \textcolor{comment}{\ *\ terms\ of\ the\ GNU\ General\ Public\ License\ as\ published\ by\ the\ Free\ Software\ Foundation,}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00013}00013\ \textcolor{comment}{\ *\ either\ version\ 3\ of\ the\ License,\ or\ any\ later\ version.}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00014}00014\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00015}00015\ \textcolor{comment}{\ *\ StampTool\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,\ but\ WITHOUT\ ANY}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00016}00016\ \textcolor{comment}{\ *\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of\ MERCHANTABILITY\ or\ FITNESS\ FOR\ A}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00017}00017\ \textcolor{comment}{\ *\ PARTICULAR\ PURPOSE.\ See\ the\ GNU\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00018}00018\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00019}00019\ \textcolor{comment}{\ *\ You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License\ along\ with}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00020}00020\ \textcolor{comment}{\ *\ StampTool.\ If\ not,\ see\ <https://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00021}00021\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00024}00024\ \textcolor{preprocessor}{\#include\ "{}wx/wxprec.h"{}}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00026}00026\ \textcolor{preprocessor}{\#ifdef\ \_\_BORLANDC\_\_}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00027}00027\ \textcolor{preprocessor}{\#pragma\ hdrstop}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00028}00028\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00030}00030\ \textcolor{preprocessor}{\#ifndef\ WX\_PRECOMP}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00031}00031\ \textcolor{preprocessor}{\#include\ "{}wx/wx.h"{}}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00032}00032\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00034}00034\ \textcolor{comment}{//\ \ includes}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00035}00035\ \textcolor{preprocessor}{\#include\ "{}wx/imaglist.h"{}}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00036}00036\ \textcolor{comment}{//\ \ includes}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00038}00038\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_helper_panel_8h}{gui/HelperPanel.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00039}00039\ \textcolor{comment}{//\#include\ "{}gui/LabeledTextBox.h"{}}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00041}00041\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_design_defs_8h}{design/DesignDefs.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00043}00043\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_settings_8h}{utils/Settings.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00045}00045\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_defs_8h}{Defs.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00048}00048\ IMPLEMENT\_DYNAMIC\_CLASS(\ \mbox{\hyperlink{class_helper_panel}{HelperPanel}},\ wxPanel\ )}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00050}00050\ BEGIN\_EVENT\_TABLE(\ \mbox{\hyperlink{class_helper_panel}{HelperPanel}},\ wxPanel\ )}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00052}00052\ END\_EVENT\_TABLE(\ )}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00054}00054\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00056}\mbox{\hyperlink{class_helper_panel_a1a0380f0351c504df04ccd0924c72e18}{00056}}\ \mbox{\hyperlink{class_helper_panel_a1a0380f0351c504df04ccd0924c72e18}{HelperPanel}}::\mbox{\hyperlink{class_helper_panel_a1a0380f0351c504df04ccd0924c72e18}{HelperPanel}}(\ )}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00057}00057\ \{}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00058}00058\ \ \ \ \ \mbox{\hyperlink{class_helper_panel_a01583cec05afb087892fee8f5f660635}{Init}}(\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00059}00059\ \}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00061}00061\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00063}\mbox{\hyperlink{class_helper_panel_a709e26a2b2b12b98c4b689b87cd4a169}{00063}}\ \mbox{\hyperlink{class_helper_panel_a1a0380f0351c504df04ccd0924c72e18}{HelperPanel::HelperPanel}}(\ wxWindow*\ parent,\ wxWindowID\ \textcolor{keywordtype}{id},\ \textcolor{keyword}{const}\ wxString\&\ caption,\ \textcolor{keyword}{const}\ wxPoint\&\ pos,\ \textcolor{keyword}{const}\ wxSize\&\ size,\ \textcolor{keywordtype}{long}\ style\ )}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00064}00064\ \{}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00065}00065\ \ \ \ \ \mbox{\hyperlink{class_helper_panel_a01583cec05afb087892fee8f5f660635}{Init}}(\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00066}00066\ \ \ \ \ \mbox{\hyperlink{class_helper_panel_ac472c619263683e2623f52fefe4f5429}{Create}}(\ parent,\ \textcolor{keywordtype}{id},\ caption,\ pos,\ size,\ style\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00067}00067\ \}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00069}00069\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00071}\mbox{\hyperlink{class_helper_panel_aa1048ceba004a9d78dd3dfdfd7235d30}{00071}}\ \mbox{\hyperlink{class_helper_panel_aa1048ceba004a9d78dd3dfdfd7235d30}{HelperPanel::\string~HelperPanel}}(\ )}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00072}00072\ \{}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00073}00073\ \}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00075}00075\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00077}\mbox{\hyperlink{class_helper_panel_a01583cec05afb087892fee8f5f660635}{00077}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_helper_panel_a01583cec05afb087892fee8f5f660635}{HelperPanel::Init}}(\ )}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00078}00078\ \{}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00080}00080\ \}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00082}00082\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00083}00083\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00084}\mbox{\hyperlink{class_helper_panel_ac472c619263683e2623f52fefe4f5429}{00084}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_helper_panel_ac472c619263683e2623f52fefe4f5429}{HelperPanel::Create}}(\ wxWindow*\ parent,\ wxWindowID\ \textcolor{keywordtype}{id},\ \textcolor{keyword}{const}\ wxString\&\ caption,\ \textcolor{keyword}{const}\ wxPoint\&\ pos,\ \textcolor{keyword}{const}\ wxSize\&\ size,\ \textcolor{keywordtype}{long}\ style\ )}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00085}00085\ \{}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00086}00086\ \ \ \ \ SetExtraStyle(\ wxWS\_EX\_VALIDATE\_RECURSIVELY\ |\ wxWS\_EX\_BLOCK\_EVENTS\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00087}00087\ \ \ \ \ wxPanel::Create(\ parent,\ \textcolor{keywordtype}{id},\ pos,\ size,\ style\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00088}00088\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00089}00089\ \}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00090}00090\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00091}00091\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00092}00092\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00093}\mbox{\hyperlink{class_helper_panel_ac79099a8adb61042c70b2aaa474b6491}{00093}}\ \mbox{\hyperlink{class_font_picker}{FontPicker}}*\ \mbox{\hyperlink{class_helper_panel_ac79099a8adb61042c70b2aaa474b6491}{HelperPanel::SetupFontPicker}}(}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00094}00094\ \ \ \ \ wxWindow*\ parent,\ wxBoxSizer*\ verticalSizer,\ \textcolor{keywordtype}{int}\&\ lastID,}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00095}00095\ \ \ \ \ wxString\ staticText,\ wxString\ buttonText,}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00096}00096\ \ \ \ \ wxFontPickerCtrl*\&\ fontCtrl,}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00097}00097\ \ \ \ \ wxColourPickerCtrl*\&\ colorCtrl,}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00098}00098\ \ \ \ \ wxObjectEventFunction\ \ fontPickerHandler,}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00099}00099\ \ \ \ \ wxObjectEventFunction\ \ colorPickerHandler,}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00100}00100\ \ \ \ \ wxObjectEventFunction\ \ defaultButtonHandler\ )}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00101}00101\ \{}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00102}00102\ \ \ \ \ \mbox{\hyperlink{class_font_picker}{FontPicker}}*\ fontPickerHelper\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_font_picker}{FontPicker}}(}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00103}00103\ \ \ \ \ \ \ \ \ parent,\ verticalSizer,}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00104}00104\ \ \ \ \ \ \ \ \ staticText,}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00105}00105\ \ \ \ \ \ \ \ \ buttonText,\ ++lastID,}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00106}00106\ \ \ \ \ \ \ \ \ *wxNORMAL\_FONT,\ *wxBLACK\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00107}00107\ \ \ \ \ fontCtrl\ =\ fontPickerHelper-\/>\mbox{\hyperlink{class_font_picker_a14dea74c2121398cfb8cb224480213cd}{GetFontPickerCtrl}}(\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00108}00108\ \ \ \ \ colorCtrl\ =\ fontPickerHelper-\/>\mbox{\hyperlink{class_font_picker_a771ba5f56676c493ec070699d2fc59dd}{GetColourPickerCtrl}}(\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00109}00109\ \ \ \ \ Connect(\ fontCtrl-\/>GetId(\ ),\ wxEVT\_FONTPICKER\_CHANGED,\ fontPickerHandler\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00110}00110\ \ \ \ \ Connect(\ colorCtrl-\/>GetId(\ ),\ wxEVT\_COLOURPICKER\_CHANGED,\ colorPickerHandler\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00111}00111\ \ \ \ \ Connect(\ fontPickerHelper-\/>\mbox{\hyperlink{class_font_picker_aa323939c1d8015af8c07d7fdcfed35ef}{GetDefaultButton}}(\ )-\/>GetId(\ ),\ wxEVT\_BUTTON,\ defaultButtonHandler\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00112}00112\ \ \ \ \ \textcolor{keywordflow}{return}\ fontPickerHelper;}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00113}00113\ \}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00114}00114\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00115}00115\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00116}00116\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00117}\mbox{\hyperlink{class_helper_panel_a06667439fcca3f8a4b0fab10db82506e}{00117}}\ wxStaticBox*\ \mbox{\hyperlink{class_helper_panel_a06667439fcca3f8a4b0fab10db82506e}{HelperPanel::SetupBoxSizer}}(\ wxWindow*\ parent,\ wxBoxSizer*\ inSizer,\ wxString\ name,\ \textcolor{keywordtype}{int}\&\ lastID,\ wxBoxSizer*\&\ boxSizer,\ wxOrientation\ orientation\ )}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00118}00118\ \{}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00119}00119\ \ \ \ \ wxStaticBox*\ box\ =\ \textcolor{keyword}{new}\ wxStaticBox(\ parent,\ ++lastID,\ name\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00120}00120\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00121}00121\ \ \ \ \ boxSizer\ =\ \textcolor{keyword}{new}\ wxStaticBoxSizer(\ box,\ orientation\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00122}00122\ \ \ \ \ inSizer-\/>Add(\ boxSizer,\ 0,\ wxALL,\ 5\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00123}00123\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00124}00124\ \ \ \ \ \textcolor{keywordflow}{return}\ box;}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00125}00125\ \}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00126}00126\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00127}00127\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00128}00128\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00129}\mbox{\hyperlink{class_helper_panel_acdac2c77789965bc2e300f50c66f7f11}{00129}}\ wxTextCtrl*\ \mbox{\hyperlink{class_helper_panel_acdac2c77789965bc2e300f50c66f7f11}{HelperPanel::SetupLabelText}}(\ wxWindow*\ parent,\ wxBoxSizer*\ inSizer,\ \textcolor{keywordtype}{int}\&\ lastID,\ wxString\ label,\ \textcolor{keywordtype}{bool}\ grow,}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00130}00130\ \ \ \ \ wxObjectEventFunction\ \ eventHandler\ )}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00131}00131\ \{}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00132}00132\ \ \ \ \ wxStaticBox*\ itemStaticBoxSizerStatic\ =\ \textcolor{keyword}{new}\ wxStaticBox(\ parent,\ wxID\_ANY,\ label\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00133}00133\ \ \ \ \ wxStaticBoxSizer*\ itemStaticBoxSizer\ =\ \textcolor{keyword}{new}\ wxStaticBoxSizer(\ itemStaticBoxSizerStatic,\ wxVERTICAL\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00134}00134\ \ \ \ \ inSizer-\/>Add(\ itemStaticBoxSizer,\ 0,\ wxGROW\ |\ wxALL,\ 2\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00135}00135\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00136}00136\ \ \ \ \ wxTextCtrl*\ itemTextCtrl\ =\ \textcolor{keyword}{new}\ wxTextCtrl(\ itemStaticBoxSizer-\/>GetStaticBox(\ ),\ ++lastID,}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00137}00137\ \ \ \ \ \ \ \ \ wxEmptyString,\ wxDefaultPosition,\ wxDefaultSize,\ wxNO\_BORDER\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00138}00138\ \ \ \ \ itemStaticBoxSizer-\/>Add(\ itemTextCtrl,\ 0,\ wxGROW\ |\ wxALL,\ 2\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00139}00139\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00140}00140\ \ \ \ \ Connect(\ itemTextCtrl-\/>GetId(\ ),\ wxEVT\_TEXT,\ eventHandler\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00141}00141\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00142}00142\ \ \ \ \ \textcolor{keywordflow}{return}\ itemTextCtrl;}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00143}00143\ \}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00144}00144\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00145}00145\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00146}00146\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00147}\mbox{\hyperlink{class_helper_panel_a5df2fc90855ddcb14834784daa120249}{00147}}\ wxTextCtrl*\ \mbox{\hyperlink{class_helper_panel_a5df2fc90855ddcb14834784daa120249}{HelperPanel::SetupMultilineLabeledText}}(\ wxWindow*\ parent,\ wxBoxSizer*\ inSizer,\ \textcolor{keywordtype}{int}\&\ lastID,\ wxString\ label,\ \textcolor{keywordtype}{bool}\ grow,}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00148}00148\ \ \ \ \ wxObjectEventFunction\ \ eventHandler\ )}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00149}00149\ \{}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00150}00150\ \ \ \ \ wxStaticBox*\ itemStaticBoxSizerStatic\ =\ \textcolor{keyword}{new}\ wxStaticBox(\ parent,\ wxID\_ANY,\ label\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00151}00151\ \ \ \ \ wxStaticBoxSizer*\ itemStaticBoxSizer\ =\ \textcolor{keyword}{new}\ wxStaticBoxSizer(\ itemStaticBoxSizerStatic,\ wxHORIZONTAL\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00152}00152\ \ \ \ \ inSizer-\/>Add(\ itemStaticBoxSizer,\ 0,\ wxGROW\ |\ wxALL,\ 2\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00153}00153\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00154}00154\ \ \ \ \ wxTextCtrl*\ itemTextCtrl\ =\ \textcolor{keyword}{new}\ wxTextCtrl(\ itemStaticBoxSizer-\/>GetStaticBox(\ ),\ ++lastID,}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00155}00155\ \ \ \ \ \ \ \ \ wxEmptyString,\ wxDefaultPosition,\ wxDefaultSize,\ wxTE\_MULTILINE\ |\ wxNO\_BORDER\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00156}00156\ \ \ \ \ itemStaticBoxSizer-\/>Add(\ itemTextCtrl,\ 1,\ wxALL,\ 0\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00157}00157\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00158}00158\ \ \ \ \ Connect(\ itemTextCtrl-\/>GetId(\ ),\ wxEVT\_TEXT,\ eventHandler\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00159}00159\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00160}00160\ \ \ \ \ \textcolor{keywordflow}{return}\ itemTextCtrl;}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00161}00161\ \}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00162}00162\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00163}00163\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00164}00164\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00165}\mbox{\hyperlink{class_helper_panel_a7b5279a0f4b91c9f19fbd088edceada3}{00165}}\ wxRadioButton*\ \mbox{\hyperlink{class_helper_panel_a7b5279a0f4b91c9f19fbd088edceada3}{HelperPanel::SetupRadioButton}}(\ wxWindow*\ parent,\ wxBoxSizer*\ sizer,\ \textcolor{keywordtype}{int}\&\ lastID,\ wxString\ label,\ \textcolor{keywordtype}{bool}\ initValue,\ wxObjectEventFunction\ \ eventHandler\ )}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00166}00166\ \{}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00167}00167\ \ \ \ \ wxRadioButton*\ radioButton\ =\ \textcolor{keyword}{new}\ wxRadioButton(\ parent,\ ++lastID,\ label,\ wxDefaultPosition,\ wxDefaultSize,\ 0\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00168}00168\ \ \ \ \ radioButton-\/>SetValue(\ initValue\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00169}00169\ \ \ \ \ sizer-\/>Add(\ radioButton,\ 0,\ wxALIGN\_CENTER\_VERTICAL\ |\ wxALL,\ 5\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00170}00170\ \ \ \ \ Connect(\ radioButton-\/>GetId(\ ),\ wxEVT\_RADIOBUTTON,\ eventHandler\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00171}00171\ \ \ \ \ \textcolor{keywordflow}{return}\ radioButton;}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00172}00172\ \}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00173}00173\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00174}00174\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00175}00175\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00176}\mbox{\hyperlink{class_helper_panel_a1b4758d163544a7a2c73a37f8bd6d422}{00176}}\ wxCheckBox*\ \mbox{\hyperlink{class_helper_panel_a1b4758d163544a7a2c73a37f8bd6d422}{HelperPanel::SetupCheckBox}}(\ wxWindow*\ parent,\ wxBoxSizer*\ sizer,\ \textcolor{keywordtype}{int}\&\ lastID,\ wxString\ label,\ wxObjectEventFunction\ \ eventHandler\ )}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00177}00177\ \{}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00178}00178\ \ \ \ \ wxCheckBox*\ checkbox\ =\ \textcolor{keyword}{new}\ wxCheckBox(\ parent,\ ++lastID,\ label,\ wxDefaultPosition,\ wxDefaultSize,\ 0\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00179}00179\ \ \ \ \ checkbox-\/>SetValue(\ \textcolor{keyword}{true}\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00180}00180\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00181}00181\ \ \ \ \ sizer-\/>Add(\ checkbox,\ 0,\ wxALIGN\_LEFT,\ 5\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00182}00182\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00183}00183\ \ \ \ \ Connect(\ checkbox-\/>GetId(\ ),\ wxEVT\_CHECKBOX,\ eventHandler\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00184}00184\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00185}00185\ \ \ \ \ \textcolor{keywordflow}{return}\ checkbox;}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00186}00186\ \}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00187}00187\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00188}00188\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00189}00189\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00190}\mbox{\hyperlink{class_helper_panel_adeabf7f045a9b29dfe04ea9e25361682}{00190}}\ wxChoice*\ \mbox{\hyperlink{class_helper_panel_adeabf7f045a9b29dfe04ea9e25361682}{HelperPanel::SetupChoice}}(\ wxWindow*\ parent,\ wxBoxSizer*\ sizer,\ \textcolor{keywordtype}{int}\&\ lastID,\ wxString\ label,}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00191}00191\ \ \ \ \ wxArrayString\ choiceStrings,\ wxObjectEventFunction\ \ eventHandler\ )}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00192}00192\ \{}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00193}00193\ \ \ \ \ wxStaticBox*\ itemStaticBoxSizerStatic\ =\ \textcolor{keyword}{new}\ wxStaticBox(\ parent,\ wxID\_ANY,\ label\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00194}00194\ \ \ \ \ wxStaticBoxSizer*\ itemStaticBoxSizer\ =\ \textcolor{keyword}{new}\ wxStaticBoxSizer(\ itemStaticBoxSizerStatic,\ wxVERTICAL\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00195}00195\ \ \ \ \ sizer-\/>Add(\ itemStaticBoxSizer,\ 0,\ wxGROW\ |\ wxALL,\ 0\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00196}00196\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00197}00197\ \ \ \ \ wxChoice*\ choice\ =\ \textcolor{keyword}{new}\ wxChoice(\ parent,\ ++lastID,\ wxDefaultPosition,\ wxDefaultSize,\ choiceStrings,\ 0\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00198}00198\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00199}00199\ \ \ \ \ itemStaticBoxSizer-\/>Add(\ choice,\ 1,\ wxGROW\ |\ wxALL,\ 0\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00200}00200\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00201}00201\ \ \ \ \ Connect(\ choice-\/>GetId(\ ),\ wxEVT\_CHOICE,\ eventHandler\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00202}00202\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00203}00203\ \ \ \ \ \textcolor{keywordflow}{return}\ choice;}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00204}00204\ \}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00205}00205\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00206}00206\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00207}00207\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00208}\mbox{\hyperlink{class_helper_panel_a11bffa5d90019ee00eaff4edf86832a2}{00208}}\ \mbox{\hyperlink{struct_helper_panel_1_1_title_helper}{HelperPanel::TitleHelper}}*\ \mbox{\hyperlink{class_helper_panel_a11bffa5d90019ee00eaff4edf86832a2}{HelperPanel::SetupTitleHelper}}(\ wxWindow*\ parent,\ wxBoxSizer*\ inSizer,\ \textcolor{keywordtype}{int}\&\ idLast,}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00209}00209\ \ \ \ \ \textcolor{keywordtype}{int}\ style,}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00210}00210\ \ \ \ \ wxObjectEventFunction\ titleCheckBoxEventHandler,}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00211}00211\ \ \ \ \ wxObjectEventFunction\ titleEventHandler,}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00212}00212\ \ \ \ \ wxObjectEventFunction\ subTitleCheckBoxEeventHandler,}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00213}00213\ \ \ \ \ wxObjectEventFunction\ subTitleEventHandler\ )}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00214}00214\ \{}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00215}00215\ \ \ \ \ \mbox{\hyperlink{struct_helper_panel_1_1_title_helper}{TitleHelper}}*\ titleHelper\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{struct_helper_panel_1_1_title_helper}{TitleHelper}};}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00216}00216\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00217}00217\ \ \ \ \ wxBoxSizer*\ horizontalSizer\ =\ \textcolor{keyword}{new}\ wxBoxSizer(\ wxHORIZONTAL\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00218}00218\ \ \ \ \ inSizer-\/>Add(\ horizontalSizer,\ 0,\ wxGROW\ |\ wxALL,\ 5\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00219}00219\ \ \ \ \ titleHelper-\/>\mbox{\hyperlink{struct_helper_panel_1_1_title_helper_a896157b97f4b4a488aea028463058f5a}{titleCheckbox}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00220}00220\ \ \ \ \ titleHelper-\/>\mbox{\hyperlink{struct_helper_panel_1_1_title_helper_a52631e97a9c935b228f8478f307f2539}{subTitleCheckbox}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00221}00221\ \ \ \ \ titleHelper-\/>\mbox{\hyperlink{struct_helper_panel_1_1_title_helper_ad31bf9f65d0b0e9f7d82be737836360e}{titleLabel}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00222}00222\ \ \ \ \ titleHelper-\/>\mbox{\hyperlink{struct_helper_panel_1_1_title_helper_a4465bb4c0834a98ebdacb1f40bb4b6ec}{subTitleLabel}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00223}00223\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00224}00224\ \ \ \ \ titleHelper-\/>\mbox{\hyperlink{struct_helper_panel_1_1_title_helper_a896157b97f4b4a488aea028463058f5a}{titleCheckbox}}\ =\ \mbox{\hyperlink{class_helper_panel_a1b4758d163544a7a2c73a37f8bd6d422}{SetupCheckBox}}(\ parent,\ horizontalSizer,\ idLast,\ \_(\ \textcolor{stringliteral}{"{}Show\ Title"{}}\ ),\ titleCheckBoxEventHandler\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00225}00225\ \ \ \ \ titleHelper-\/>\mbox{\hyperlink{struct_helper_panel_1_1_title_helper_a896157b97f4b4a488aea028463058f5a}{titleCheckbox}}-\/>SetValue(\ \textcolor{keyword}{false}\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00226}00226\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ style\ \&\ \mbox{\hyperlink{_helper_panel_8h_adb7b683547f25e49d23ff3731ddcb2c8}{HasSubTitle}}\ )}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00227}00227\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00228}00228\ \ \ \ \ \ \ \ \ titleHelper-\/>\mbox{\hyperlink{struct_helper_panel_1_1_title_helper_a52631e97a9c935b228f8478f307f2539}{subTitleCheckbox}}\ =\ \mbox{\hyperlink{class_helper_panel_a1b4758d163544a7a2c73a37f8bd6d422}{SetupCheckBox}}(\ parent,\ horizontalSizer,\ idLast,\ \_(\ \textcolor{stringliteral}{"{}Show\ SubTitle"{}}\ ),\ subTitleCheckBoxEeventHandler\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00229}00229\ \ \ \ \ \ \ \ \ titleHelper-\/>\mbox{\hyperlink{struct_helper_panel_1_1_title_helper_a52631e97a9c935b228f8478f307f2539}{subTitleCheckbox}}-\/>SetValue(\ \textcolor{keyword}{false}\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00230}00230\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00231}00231\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ style\ \&\ \mbox{\hyperlink{_helper_panel_8h_a02660f5dfe71ba96053caf152b5ed858}{HasTextCtrl}}\ )}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00232}00232\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00233}00233\ \ \ \ \ \ \ \ \ titleHelper-\/>\mbox{\hyperlink{struct_helper_panel_1_1_title_helper_ad31bf9f65d0b0e9f7d82be737836360e}{titleLabel}}\ =\ \mbox{\hyperlink{class_helper_panel_acdac2c77789965bc2e300f50c66f7f11}{SetupLabelText}}(\ parent,\ inSizer,\ idLast,\ \_(\ \textcolor{stringliteral}{"{}Title"{}}\ ),\ \textcolor{keyword}{true},\ titleEventHandler\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00234}00234\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ style\ \&\ \mbox{\hyperlink{_helper_panel_8h_adb7b683547f25e49d23ff3731ddcb2c8}{HasSubTitle}}\ )}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00235}00235\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00236}00236\ \ \ \ \ \ \ \ \ \ \ \ \ titleHelper-\/>\mbox{\hyperlink{struct_helper_panel_1_1_title_helper_a4465bb4c0834a98ebdacb1f40bb4b6ec}{subTitleLabel}}\ =\ \mbox{\hyperlink{class_helper_panel_acdac2c77789965bc2e300f50c66f7f11}{SetupLabelText}}(\ parent,\ inSizer,\ idLast,\ \_(\ \textcolor{stringliteral}{"{}Sub\ Title"{}}\ ),\ \textcolor{keyword}{true},\ subTitleEventHandler\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00237}00237\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00238}00238\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00239}00239\ \ \ \ \ \textcolor{keywordflow}{return}\ titleHelper;}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00240}00240\ \}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00241}00241\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00242}00242\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00243}00243\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00244}\mbox{\hyperlink{class_helper_panel_a52772322bcf8d12a272fa8096da0e799}{00244}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_helper_panel_a52772322bcf8d12a272fa8096da0e799}{HelperPanel::SetTitleCheckboxValue}}(\ \mbox{\hyperlink{struct_helper_panel_1_1_title_helper}{HelperPanel::TitleHelper}}*\ titleHelper,\ \textcolor{keywordtype}{bool}\ state\ )}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00245}00245\ \{}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00246}00246\ \ \ \ \ titleHelper-\/>\mbox{\hyperlink{struct_helper_panel_1_1_title_helper_a896157b97f4b4a488aea028463058f5a}{titleCheckbox}}-\/>SetValue(\ state\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00247}00247\ \ \ \ \ \mbox{\hyperlink{class_helper_panel_a97f0816a8c7870a3ce034f07f58e16fa}{UpdateTitleState}}(\ titleHelper\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00248}00248\ \};}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00249}00249\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00250}00250\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00251}00251\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00252}\mbox{\hyperlink{class_helper_panel_aeb681ca7182038b57f0c604e06c86b19}{00252}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_helper_panel_aeb681ca7182038b57f0c604e06c86b19}{HelperPanel::SetSubTitleCheckboxValue}}(\ \mbox{\hyperlink{struct_helper_panel_1_1_title_helper}{HelperPanel::TitleHelper}}*\ titleHelper,\ \textcolor{keywordtype}{bool}\ state\ )}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00253}00253\ \{}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00254}00254\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00255}00255\ \ \ \ \ titleHelper-\/>\mbox{\hyperlink{struct_helper_panel_1_1_title_helper_a52631e97a9c935b228f8478f307f2539}{subTitleCheckbox}}-\/>SetValue(\ state\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00256}00256\ \ \ \ \ \mbox{\hyperlink{class_helper_panel_a106781fc496e192caeb765add7bd8a30}{UpdateSubTitleState}}(\ titleHelper\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00257}00257\ \};}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00258}00258\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00259}00259\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00260}00260\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00261}\mbox{\hyperlink{class_helper_panel_a97f0816a8c7870a3ce034f07f58e16fa}{00261}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_helper_panel_a97f0816a8c7870a3ce034f07f58e16fa}{HelperPanel::UpdateTitleState}}(\ \mbox{\hyperlink{struct_helper_panel_1_1_title_helper}{HelperPanel::TitleHelper}}*\ titleHelper\ )}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00262}00262\ \{}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00263}00263\ \ \ \ \ \textcolor{keywordtype}{bool}\ state\ =\ titleHelper-\/>\mbox{\hyperlink{struct_helper_panel_1_1_title_helper_a896157b97f4b4a488aea028463058f5a}{titleCheckbox}}-\/>GetValue(\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00264}00264\ \ \ \ \ titleHelper-\/>\mbox{\hyperlink{struct_helper_panel_1_1_title_helper_a896157b97f4b4a488aea028463058f5a}{titleCheckbox}}-\/>Show(\ \textcolor{keyword}{true}\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00265}00265\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ state\ )}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00266}00266\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00267}00267\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ titleHelper-\/>\mbox{\hyperlink{struct_helper_panel_1_1_title_helper_ad31bf9f65d0b0e9f7d82be737836360e}{titleLabel}}\ )}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00268}00268\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00269}00269\ \ \ \ \ \ \ \ \ \ \ \ \ titleHelper-\/>\mbox{\hyperlink{struct_helper_panel_1_1_title_helper_ad31bf9f65d0b0e9f7d82be737836360e}{titleLabel}}-\/>Enable(\ state\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00270}00270\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00271}00271\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ titleHelper-\/>\mbox{\hyperlink{struct_helper_panel_1_1_title_helper_a52631e97a9c935b228f8478f307f2539}{subTitleCheckbox}}\ )}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00272}00272\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00273}00273\ \ \ \ \ \ \ \ \ \ \ \ \ titleHelper-\/>\mbox{\hyperlink{struct_helper_panel_1_1_title_helper_a52631e97a9c935b228f8478f307f2539}{subTitleCheckbox}}-\/>Enable(\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00274}00274\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00275}00275\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00276}00276\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00277}00277\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00278}00278\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ titleHelper-\/>\mbox{\hyperlink{struct_helper_panel_1_1_title_helper_ad31bf9f65d0b0e9f7d82be737836360e}{titleLabel}}\ )}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00279}00279\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00280}00280\ \ \ \ \ \ \ \ \ \ \ \ \ titleHelper-\/>\mbox{\hyperlink{struct_helper_panel_1_1_title_helper_ad31bf9f65d0b0e9f7d82be737836360e}{titleLabel}}-\/>Disable(\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00281}00281\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00282}00282\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ titleHelper-\/>\mbox{\hyperlink{struct_helper_panel_1_1_title_helper_a52631e97a9c935b228f8478f307f2539}{subTitleCheckbox}}\ )}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00283}00283\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00284}00284\ \ \ \ \ \ \ \ \ \ \ \ \ titleHelper-\/>\mbox{\hyperlink{struct_helper_panel_1_1_title_helper_a52631e97a9c935b228f8478f307f2539}{subTitleCheckbox}}-\/>Disable(\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00285}00285\ \ \ \ \ \ \ \ \ \ \ \ \ titleHelper-\/>\mbox{\hyperlink{struct_helper_panel_1_1_title_helper_a52631e97a9c935b228f8478f307f2539}{subTitleCheckbox}}-\/>SetValue(\ state\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00286}00286\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ titleHelper-\/>\mbox{\hyperlink{struct_helper_panel_1_1_title_helper_a4465bb4c0834a98ebdacb1f40bb4b6ec}{subTitleLabel}}\ )}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00287}00287\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00288}00288\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ titleHelper-\/>\mbox{\hyperlink{struct_helper_panel_1_1_title_helper_a4465bb4c0834a98ebdacb1f40bb4b6ec}{subTitleLabel}}-\/>Disable(\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00289}00289\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00290}00290\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00291}00291\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00292}00292\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ titleHelper-\/>\mbox{\hyperlink{struct_helper_panel_1_1_title_helper_a4465bb4c0834a98ebdacb1f40bb4b6ec}{subTitleLabel}}\ )}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00293}00293\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00294}00294\ \ \ \ \ \ \ \ \ titleHelper-\/>\mbox{\hyperlink{struct_helper_panel_1_1_title_helper_a4465bb4c0834a98ebdacb1f40bb4b6ec}{subTitleLabel}}-\/>Show(\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00295}00295\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00296}00296\ \}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00297}00297\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00298}00298\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00299}00299\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00300}\mbox{\hyperlink{class_helper_panel_a106781fc496e192caeb765add7bd8a30}{00300}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_helper_panel_a106781fc496e192caeb765add7bd8a30}{HelperPanel::UpdateSubTitleState}}(\ \mbox{\hyperlink{struct_helper_panel_1_1_title_helper}{HelperPanel::TitleHelper}}*\ titleHelper\ )}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00301}00301\ \{}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00302}00302\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ titleHelper-\/>\mbox{\hyperlink{struct_helper_panel_1_1_title_helper_a52631e97a9c935b228f8478f307f2539}{subTitleCheckbox}}\ )}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00303}00303\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00304}00304\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ state\ =\ titleHelper-\/>\mbox{\hyperlink{struct_helper_panel_1_1_title_helper_a52631e97a9c935b228f8478f307f2539}{subTitleCheckbox}}-\/>GetValue(\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00305}00305\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ state\ )}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00306}00306\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00307}00307\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//titleHelper-\/>subTitleCheckbox-\/>Enable(\ );}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00308}00308\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ titleHelper-\/>\mbox{\hyperlink{struct_helper_panel_1_1_title_helper_a4465bb4c0834a98ebdacb1f40bb4b6ec}{subTitleLabel}}\ )}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00309}00309\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00310}00310\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ titleHelper-\/>\mbox{\hyperlink{struct_helper_panel_1_1_title_helper_a4465bb4c0834a98ebdacb1f40bb4b6ec}{subTitleLabel}}-\/>Enable(\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00311}00311\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00312}00312\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00313}00313\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00314}00314\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00315}00315\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//titleHelper-\/>subTitleCheckbox-\/>Disable(\ );}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00316}00316\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ titleHelper-\/>\mbox{\hyperlink{struct_helper_panel_1_1_title_helper_a4465bb4c0834a98ebdacb1f40bb4b6ec}{subTitleLabel}}\ )}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00317}00317\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00318}00318\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ titleHelper-\/>\mbox{\hyperlink{struct_helper_panel_1_1_title_helper_a4465bb4c0834a98ebdacb1f40bb4b6ec}{subTitleLabel}}-\/>Disable(\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00319}00319\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00320}00320\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00321}00321\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00322}00322\ \}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00323}00323\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00324}00324\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00325}00325\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00326}\mbox{\hyperlink{class_helper_panel_a12058e5b1f127f47cef7d15b9f4d7039}{00326}}\ wxStaticBox*\ \mbox{\hyperlink{class_helper_panel_a12058e5b1f127f47cef7d15b9f4d7039}{HelperPanel::SetupStaticBox}}(\ wxWindow*\ parent,\ wxBoxSizer*\ inSizer,\ wxBoxSizer*\ outBoxSizer\ )}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00327}00327\ \{}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00328}00328\ \ \ \ \ wxStaticBox*\ staticBox\ =\ \textcolor{keyword}{new}\ wxStaticBox(\ parent,\ wxID\_ANY,\ \_(\ \textcolor{stringliteral}{"{}Name\ Location"{}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00329}00329\ \ \ \ \ outBoxSizer\ =\ \textcolor{keyword}{new}\ wxStaticBoxSizer(\ staticBox,\ wxVERTICAL\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00330}00330\ \ \ \ \ inSizer-\/>Add(\ outBoxSizer,\ 0,\ wxGROW\ |\ wxALL,\ 5\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00331}00331\ \ \ \ \ \textcolor{keywordflow}{return}\ staticBox;}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00332}00332\ \}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00333}00333\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00334}00334\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00335}00335\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00336}\mbox{\hyperlink{class_helper_panel_affb4be8df264e76bb3a7d672c2ca79b1}{00336}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_helper_panel_affb4be8df264e76bb3a7d672c2ca79b1}{HelperPanel::CreateControls}}(\ )}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00337}00337\ \{}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00338}00338\ \ \ \ \ \mbox{\hyperlink{class_helper_panel_a1a0380f0351c504df04ccd0924c72e18}{HelperPanel}}*\ theDialog\ =\ \textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00339}00339\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00340}00340\ \ \ \ \ wxBoxSizer*\ theDialogVerticalSizer\ =\ \textcolor{keyword}{new}\ wxBoxSizer(\ wxVERTICAL\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00341}00341\ \ \ \ \ theDialog-\/>SetSizer(\ theDialogVerticalSizer\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00342}00342\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00343}00343\ \ \ \ \ wxBoxSizer*\ notebookHorizontalSizer\ =\ \textcolor{keyword}{new}\ wxBoxSizer(\ wxHORIZONTAL\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00344}00344\ \ \ \ \ theDialogVerticalSizer-\/>Add(\ notebookHorizontalSizer,\ 2,\ wxGROW\ |\ wxALL,\ 5\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00345}00345\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00346}00346\ \}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00347}00347\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00348}00348\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00349}00349\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00350}\mbox{\hyperlink{class_helper_panel_ad1e7b95d260c42031c75899e0c68cd7c}{00350}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_helper_panel_ad1e7b95d260c42031c75899e0c68cd7c}{HelperPanel::HorizontalSpacer}}(\ wxBoxSizer*\ inSizer\ )}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00351}00351\ \{}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00352}00352\ \ \ \ \ inSizer-\/>Add(\ 5,\ 5,\ 0,\ wxALIGN\_CENTER\_VERTICAL\ |\ wxALL,\ 5\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00353}00353\ \}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00354}00354\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00355}00355\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00356}00356\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00357}00357\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00358}\mbox{\hyperlink{class_helper_panel_abb81bec04632873569caa34eff4ed4f0}{00358}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_helper_panel_abb81bec04632873569caa34eff4ed4f0}{HelperPanel::VerticalSpacer}}(\ wxBoxSizer*\ inSizer\ )}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00359}00359\ \{}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00360}00360\ \ \ \ \ inSizer-\/>Add(\ 5,\ 5,\ 0,\ wxALIGN\_CENTER\_HORIZONTAL\ |\ wxALL,\ 5\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00361}00361\ \}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00362}00362\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00363}00363\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00364}00364\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00365}00365\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00366}\mbox{\hyperlink{class_helper_panel_a61eec7f5e1bd6d2bb0d9a12a6d31c91c}{00366}}\ wxCheckListBox*\ \mbox{\hyperlink{class_helper_panel_a61eec7f5e1bd6d2bb0d9a12a6d31c91c}{HelperPanel::SetupCheckListBox}}(\ wxWindow*\ parent,\ wxBoxSizer*\ inSizer,\ \textcolor{keywordtype}{int}\&\ lastID,}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00367}00367\ \ \ \ \ wxString\ label,\ wxArrayString\&\ array,}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00368}00368\ \ \ \ \ wxObjectEventFunction\ \ allButtonEventHandler,}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00369}00369\ \ \ \ \ wxObjectEventFunction\ \ clearButtonEventHandler\ )}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00370}00370\ \{}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00371}00371\ \ \ \ \ wxStaticBox*\ itemStaticBoxSizerStatic\ =\ \textcolor{keyword}{new}\ wxStaticBox(\ parent,\ wxID\_ANY,\ label\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00372}00372\ \ \ \ \ wxStaticBoxSizer*\ itemStaticBoxSizer\ =\ \textcolor{keyword}{new}\ wxStaticBoxSizer(\ itemStaticBoxSizerStatic,\ wxVERTICAL\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00373}00373\ \ \ \ \ inSizer-\/>Add(\ itemStaticBoxSizer,\ 0,\ wxGROW\ |\ wxALL,\ 2\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00374}00374\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00375}00375\ \ \ \ \ wxBoxSizer*\ horizontalSizer\ =\ \textcolor{keyword}{new}\ wxBoxSizer(\ wxHORIZONTAL\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00376}00376\ \ \ \ \ itemStaticBoxSizer-\/>Add(\ horizontalSizer,\ 2,\ wxGROW\ |\ wxALL,\ 5\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00377}00377\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00378}00378\ \ \ \ \ wxButton*\ allButton\ =\ \textcolor{keyword}{new}\ wxButton(\ parent,\ lastID++,\ \_(\ \textcolor{stringliteral}{"{}All"{}}\ ),\ wxDefaultPosition,\ wxDefaultSize,\ wxBU\_EXACTFIT\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00379}00379\ \ \ \ \ horizontalSizer-\/>Add(\ allButton,\ 0,\ wxALIGN\_CENTER\_VERTICAL\ |\ wxALL,\ 5\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00380}00380\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00381}00381\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ allButtonEventHandler\ )}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00382}00382\ \ \ \ \ \ \ \ \ Connect(\ allButton-\/>GetId(\ ),\ wxEVT\_CHOICE,\ allButtonEventHandler\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00383}00383\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00384}00384\ \ \ \ \ wxButton*\ clearButton\ =\ \textcolor{keyword}{new}\ wxButton(\ parent,\ lastID++,\ \_(\ \textcolor{stringliteral}{"{}Clear"{}}\ ),\ wxDefaultPosition,\ wxDefaultSize,\ wxBU\_EXACTFIT\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00385}00385\ \ \ \ \ horizontalSizer-\/>Add(\ clearButton,\ 0,\ wxALIGN\_CENTER\_VERTICAL\ |\ wxALL,\ 5\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00386}00386\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00387}00387\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ clearButtonEventHandler\ )}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00388}00388\ \ \ \ \ \ \ \ \ Connect(\ clearButton-\/>GetId(\ ),\ wxEVT\_CHOICE,\ clearButtonEventHandler\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00389}00389\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00390}00390\ \ \ \ \ wxCheckListBox*\ listCtrl\ =\ \textcolor{keyword}{new}\ wxCheckListBox(\ parent,\ lastID++,\ wxDefaultPosition,\ wxSize(\ -\/1,\ 100\ ),\ array,\ wxLB\_MULTIPLE\ |\ wxLB\_HSCROLL\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00391}00391\ \ \ \ \ itemStaticBoxSizer-\/>Add(\ listCtrl,\ 0,\ wxALIGN\_CENTER\_HORIZONTAL\ |\ wxALL,\ 5\ );}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00392}00392\ }
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00393}00393\ \ \ \ \ \textcolor{keywordflow}{return}\ listCtrl;}
+\DoxyCodeLine{\Hypertarget{_helper_panel_8cpp_source_l00394}00394\ \}}
+
+\end{DoxyCode}

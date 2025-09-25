@@ -1,0 +1,1400 @@
+\doxysection{Catalog\+::Entry Class Reference}
+\hypertarget{class_catalog_1_1_entry}{}\label{class_catalog_1_1_entry}\index{Catalog::Entry@{Catalog::Entry}}
+
+
+This is a wrapper of an wx\+Xml\+Node for safe/convenient getting/putting.  
+
+
+
+
+{\ttfamily \#include $<$Entry.\+h$>$}
+
+Inheritance diagram for Catalog\+::Entry\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_catalog_1_1_entry}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_catalog_1_1_entry_af7d24ac54953684629b9ece65223f188}{Entry}} ()
+\item 
+\mbox{\hyperlink{class_catalog_1_1_entry_ac3a4e115c6396a5a90a8e3f71d0941f4}{Entry}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}entry)
+\item 
+\mbox{\hyperlink{class_catalog_1_1_entry_ae380184714bf3195d895bbea31f9e845}{\texorpdfstring{$\sim$}{\string~}\+Entry}} ()
+\item 
+wx\+Xml\+Node \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_catalog_1_1_entry_ad5b425205fa15c6928928ba3a76354f7}{Add\+New\+Inventory\+Item}} (wx\+String collection, \mbox{\hyperlink{namespace_catalog_a7bc076b172809c869ab8fef63c49e8c3}{Catalog\+::\+Inventory\+Status\+Type}} type)
+\item 
+\mbox{\hyperlink{namespace_catalog_ae547094e129067e4932fdc46084369a8}{Checked\+Status\+Type}} \mbox{\hyperlink{class_catalog_1_1_entry_ad840ad436e0e859b9762da006cb32784}{Get\+Checked\+Status\+Type}} ()
+\item 
+void \mbox{\hyperlink{class_catalog_1_1_entry_a23ca3dba947d3f518d67376b97b99a11}{Delete\+Code}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}delete\+This\+Node)
+\item 
+void \mbox{\hyperlink{class_catalog_1_1_entry_a0c003202832067a262b76ac64d400be7}{Delete\+Specimen}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}delete\+This\+Node)
+\item 
+\mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176}{Data\+Types}} \mbox{\hyperlink{class_catalog_1_1_entry_af5c6a3c8aa1f2e78cbc5a3f2c758f09a}{Find\+Data\+Type}} (wx\+String name)
+\item 
+wx\+String \mbox{\hyperlink{class_catalog_1_1_entry_a93fce11372c365ae5f87608e000f043b}{Get\+Accuracy}} ()
+\begin{DoxyCompactList}\small\item\em Get the entry Accuracy field. \end{DoxyCompactList}\item 
+wx\+String \mbox{\hyperlink{class_catalog_1_1_entry_a835a5ef5260df9ab588e3c82ef894873}{Get\+Attr}} (\mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176}{Data\+Types}} type)
+\item 
+wx\+String \mbox{\hyperlink{class_catalog_1_1_entry_a0224c675bdb1ceea9811c07c605ddc19}{Get\+Background}} ()
+\item 
+wx\+String \mbox{\hyperlink{class_catalog_1_1_entry_ae0064822b640ef573d669e4ebdd0dbb8}{Get\+Catalog\+Codes}} ()
+\begin{DoxyCompactList}\small\item\em Get the entry \doxylink{namespace_catalog}{Catalog} Codes field. \end{DoxyCompactList}\item 
+wx\+String \mbox{\hyperlink{class_catalog_1_1_entry_a156ba39e7f7dc3cc16554c849a098363}{Find\+Image\+Name}} ()
+\item 
+wx\+String \mbox{\hyperlink{class_catalog_1_1_entry_a5be5b94915da8b2a20f8de86b8ae78fa}{Get\+Classification\+Name}} (\mbox{\hyperlink{class_catalog_1_1_entry}{Entry}} \texorpdfstring{$\ast$}{*}entry, \mbox{\hyperlink{namespace_catalog_a86f503ced35b06e6427477ddab27c6be}{Catalog\+Base\+Type}} type)
+\item 
+wx\+Xml\+Node \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_catalog_1_1_entry_a2a4777994cba245949cfa457e6f2d7ed}{Get\+Code\+For\+Catalog}} (const char \texorpdfstring{$\ast$}{*}catalog)
+\begin{DoxyCompactList}\small\item\em Get the \doxylink{class_catalog_1_1_catalog_code}{Catalog\+Code} for the input catalog code. \end{DoxyCompactList}\item 
+wx\+String \mbox{\hyperlink{class_catalog_1_1_entry_a170e277f3bb9cd81ea4069becb2f87ac}{Get\+Colors}} ()
+\begin{DoxyCompactList}\small\item\em Get the entry Colors field. \end{DoxyCompactList}\item 
+wx\+String \mbox{\hyperlink{class_catalog_1_1_entry_a5c255e272d52da33d5652987eaefefee}{Get\+Country}} ()
+\begin{DoxyCompactList}\small\item\em Get the entry country field. \end{DoxyCompactList}\item 
+wx\+String \mbox{\hyperlink{class_catalog_1_1_entry_a942cc10158a8dabccb1df804aa120e97}{Get\+Currency}} ()
+\begin{DoxyCompactList}\small\item\em Get the entry Currency field. \end{DoxyCompactList}\item 
+wx\+String \mbox{\hyperlink{class_catalog_1_1_entry_ae3818d7e55ad614f0ede63a2d53cbd13}{Get\+Decade}} ()
+\item 
+wx\+String \mbox{\hyperlink{class_catalog_1_1_entry_a50d233d795600056c54c523dec228e4b}{Get\+Description}} ()
+\begin{DoxyCompactList}\small\item\em Get the entry Description field. \end{DoxyCompactList}\item 
+wx\+String \mbox{\hyperlink{class_catalog_1_1_entry_a19074b395fb9d8be8c6e1a3fd9719526}{Get\+Emission}} ()
+\begin{DoxyCompactList}\small\item\em Get the entry emission field. \end{DoxyCompactList}\item 
+wx\+String \mbox{\hyperlink{class_catalog_1_1_entry_ac9e853fd29d112a5c75ac89876b90536}{Get\+Expiry\+Date}} ()
+\begin{DoxyCompactList}\small\item\em Get the entry Expiry Date field. \end{DoxyCompactList}\item 
+wx\+String \mbox{\hyperlink{class_catalog_1_1_entry_ad1179b7e960e5dbc17f84b9f2df9aa3b}{Get\+Face\+Value}} ()
+\begin{DoxyCompactList}\small\item\em Get the entry Face\+Value field. \end{DoxyCompactList}\item 
+wx\+Xml\+Node \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_catalog_1_1_entry_aa474a146aec551822fce207c60261dcb}{Get\+First\+Inventory\+Item}} ()
+\item 
+wx\+Xml\+Node \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_catalog_1_1_entry_ae603ac64a0dae43e21bcdfa4bf1f00db}{Get\+First\+Inventory\+Item}} (wx\+String collection\+Name)
+\item 
+wx\+String \mbox{\hyperlink{class_catalog_1_1_entry_a4dc11fe62e108d49bb62787a26b365ed}{Get\+Format}} ()
+\begin{DoxyCompactList}\small\item\em Get the entry Format field. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespace_catalog_a2ff17ae8cd4986617c22e54b7cf50f89}{Format\+Type}} \mbox{\hyperlink{class_catalog_1_1_entry_a547753f86077f387d2aa48f8498f7534}{Get\+Format\+Type}} ()
+\item 
+wx\+String \mbox{\hyperlink{class_catalog_1_1_entry_a85a3f7b395ed74723fcda90135f918a3}{Get\+Gum}} ()
+\begin{DoxyCompactList}\small\item\em Get the entry Gum field. \end{DoxyCompactList}\item 
+wx\+String \mbox{\hyperlink{class_catalog_1_1_entry_af55edb509f4b536f6996fa727b6607e8}{Get\+Height}} ()
+\begin{DoxyCompactList}\small\item\em Get the entry height field. \end{DoxyCompactList}\item 
+wx\+Xml\+Node \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_catalog_1_1_entry_acfee91b0987aa2be168a124d13cdf3ec}{Get\+Inventory}} ()
+\item 
+wx\+String \mbox{\hyperlink{class_catalog_1_1_entry_aefb31d94353934ed952f9a3520404341}{Get\+Mount}} ()
+\item 
+wx\+String \mbox{\hyperlink{class_catalog_1_1_entry_a1a13c18f7faaf5d9f18bb3cd52c2be19}{Get\+ID}} ()
+\begin{DoxyCompactList}\small\item\em Get the entry ID. \end{DoxyCompactList}\item 
+wx\+String \mbox{\hyperlink{class_catalog_1_1_entry_a4d13e84d9e66cb19b1f2bc989bdb8b22}{Get\+Inventory\+Status}} ()
+\begin{DoxyCompactList}\small\item\em Get the \doxylink{namespace_inventory}{Inventory} Status field. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_catalog_1_1_entry_a7066d278856ec20f77623377768a15fb}{Write\+Inventory}} (std\+::ofstream \&text)
+\item 
+void \mbox{\hyperlink{class_catalog_1_1_entry_a23a017705f0277dd0b57213b229ff41a}{Write\+Inventory\+Item}} (std\+::ofstream \&text, wx\+Xml\+Node \texorpdfstring{$\ast$}{*}child)
+\item 
+bool \mbox{\hyperlink{class_catalog_1_1_entry_a70680046a7ba160be212a8f911ac27b3}{Clip\+Text}} (wx\+String in, wx\+String \&out, int field\+Length, wx\+String \&remainder)
+\item 
+void \mbox{\hyperlink{class_catalog_1_1_entry_a7067d700d2c87902388eb1fdc1038cec}{Write\+List\+Entry}} (std\+::ofstream \&text)
+\item 
+\mbox{\hyperlink{namespace_catalog_a7bc076b172809c869ab8fef63c49e8c3}{Inventory\+Status\+Type}} \mbox{\hyperlink{class_catalog_1_1_entry_a5684efb6c4a7a59f4ebf60defdd54cd8}{Get\+Inventory\+Status\+Type}} ()
+\item 
+wx\+String \mbox{\hyperlink{class_catalog_1_1_entry_adfeac3f5a3a0fcbe772f40da2219ad60}{Get\+Issued\+Date}} ()
+\begin{DoxyCompactList}\small\item\em Get the entry Issue data field. \end{DoxyCompactList}\item 
+wx\+String \mbox{\hyperlink{class_catalog_1_1_entry_a89936a82328ff252c3978ba40afdb96f}{Get\+Label}} ()
+\item 
+wx\+String \mbox{\hyperlink{class_catalog_1_1_entry_ad4fb0a6841f02b02927c9d0bef51f69c}{Get\+Link}} ()
+\begin{DoxyCompactList}\small\item\em Get the entry Link field. \end{DoxyCompactList}\item 
+wx\+String \mbox{\hyperlink{class_catalog_1_1_entry_a306b6ac1e1d3d2303473fdaf3b7a2c1b}{Get\+Name}} ()
+\begin{DoxyCompactList}\small\item\em Get the entry title field. \end{DoxyCompactList}\item 
+wx\+String \mbox{\hyperlink{class_catalog_1_1_entry_aca2762c761dfadf748e491ad5c10b9f2}{Get\+Paper}} ()
+\begin{DoxyCompactList}\small\item\em Get the entry paper field. \end{DoxyCompactList}\item 
+wx\+String \mbox{\hyperlink{class_catalog_1_1_entry_a66d7c400a1d7552c0f6d6b9a6a63c8fe}{Get\+Perforation}} ()
+\begin{DoxyCompactList}\small\item\em Get the entry Perforation field. \end{DoxyCompactList}\item 
+wx\+String \mbox{\hyperlink{class_catalog_1_1_entry_a2ae06ea8d7d6d359ce88deb63ccc15d9}{Get\+Period}} ()
+\item 
+wx\+String \mbox{\hyperlink{class_catalog_1_1_entry_a3fac3acb8d752ace53d00907e1ad5602}{Get\+Preferred\+Code}} ()
+\item 
+wx\+String \mbox{\hyperlink{class_catalog_1_1_entry_aed9dbb49195116b4f73a0f51d1c2ee58}{Get\+Printing}} ()
+\begin{DoxyCompactList}\small\item\em Get the entry Printing field. \end{DoxyCompactList}\item 
+wx\+String \mbox{\hyperlink{class_catalog_1_1_entry_a5fad2b7c7e684519286364f4d2876e36}{Get\+Print\+Run}} ()
+\begin{DoxyCompactList}\small\item\em Get the entry Print\+Run field. \end{DoxyCompactList}\item 
+wx\+String \mbox{\hyperlink{class_catalog_1_1_entry_a55fea92e3964bac31d3df30a77fad25f}{Get\+Score}} ()
+\begin{DoxyCompactList}\small\item\em Get the entry Score field. \end{DoxyCompactList}\item 
+wx\+String \mbox{\hyperlink{class_catalog_1_1_entry_acddf894f2273a7397bb97d8230ce9f16}{Get\+Series}} ()
+\begin{DoxyCompactList}\small\item\em Get the entry series field. \end{DoxyCompactList}\item 
+wx\+Xml\+Node \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_catalog_1_1_entry_ac26d506bddf74e744762f1d6d9572c65}{Get\+Item}} (wx\+String collection)
+\item 
+wx\+String \mbox{\hyperlink{class_catalog_1_1_entry_a78b7b628bd5709a97f1ba9f7422b302e}{Get\+Themes}} ()
+\begin{DoxyCompactList}\small\item\em Get the entry Themes field. \end{DoxyCompactList}\item 
+wx\+String \mbox{\hyperlink{class_catalog_1_1_entry_a3a6a640e3e46362c2e82c82dd8f349db}{Get\+Val}} (\mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176}{Data\+Types}} type)
+\item 
+wx\+String \mbox{\hyperlink{class_catalog_1_1_entry_a008f62dfa69caf398c6d1613c3b219c6}{Get\+Variant}} ()
+\begin{DoxyCompactList}\small\item\em Get the entry Variant field. \end{DoxyCompactList}\item 
+wx\+String \mbox{\hyperlink{class_catalog_1_1_entry_aace071312572cc0243059ec11c40fa92}{Get\+Watermark}} ()
+\begin{DoxyCompactList}\small\item\em Get the entry Watermark field. \end{DoxyCompactList}\item 
+wx\+String \mbox{\hyperlink{class_catalog_1_1_entry_a8c358d50c2c28b26a3498a88a2d20506}{Get\+Width}} ()
+\begin{DoxyCompactList}\small\item\em Get the entry Width field. \end{DoxyCompactList}\item 
+wx\+String \mbox{\hyperlink{class_catalog_1_1_entry_ac2473ec55db3d83cbc8af29f199c6be8}{Get\+Year}} ()
+\item 
+bool \mbox{\hyperlink{class_catalog_1_1_entry_a975f781f84be5999846c946e6846045c}{Has\+Inventory\+Item}} ()
+\item 
+bool \mbox{\hyperlink{class_catalog_1_1_entry_a91cd540b0b34d51597da1480ab20ddac}{Is\+Catalog\+Code}} (wx\+String cat\+Code)
+\item 
+bool \mbox{\hyperlink{class_catalog_1_1_entry_abce0b35577e372c7d4e6c418662041ed}{Is\+Multiple}} ()
+\begin{DoxyCompactList}\small\item\em Is this a stamp type that has stamp cildren, e.\+g., a setenant or souviner sheet. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_catalog_1_1_entry_a26f3ce59021eafc38181f8244aae5d05}{Is\+OK}} ()
+\item 
+void \mbox{\hyperlink{class_catalog_1_1_entry_a8b305ac433fbfee790a2bec12acc08a1}{Set\+Attr}} (\mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176}{Data\+Types}} type, wx\+String val)
+\item 
+void \mbox{\hyperlink{class_catalog_1_1_entry_a0af9afda3d2ad2a8c79214805e28cce9}{Set\+Accuracy}} (wx\+String val)
+\begin{DoxyCompactList}\small\item\em Get the entry Accuracy field. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_catalog_1_1_entry_a2b3572edf8ef73e1fb3a819e58f72f34}{Set\+Background}} (wx\+String val)
+\item 
+void \mbox{\hyperlink{class_catalog_1_1_entry_a02c9b8183aa61314a1c629fcb6b918a5}{Set\+Catalog\+Codes}} (wx\+String val)
+\begin{DoxyCompactList}\small\item\em Get the entry Catalog\+Codes field. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_catalog_1_1_entry_ad132d3ea993c397eafa4de10e09cc229}{Set\+Colors}} (wx\+String val)
+\begin{DoxyCompactList}\small\item\em Get the entry Colors field. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_catalog_1_1_entry_a995c70e69513d79b17d62f91590b7a5c}{Set\+Country}} (wx\+String val)
+\begin{DoxyCompactList}\small\item\em Get the entry Country field. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_catalog_1_1_entry_aad65318bf782aa99032471f7df7360e0}{Set\+Currency}} (wx\+String val)
+\begin{DoxyCompactList}\small\item\em Get the entry Currency field. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_catalog_1_1_entry_a6909bdbd4f61058db504630ea3321916}{Set\+Description}} (wx\+String val)
+\begin{DoxyCompactList}\small\item\em Get the entry Description field. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_catalog_1_1_entry_a549843e2138e774772e33ae0779e2039}{Set\+Emission}} (wx\+String val)
+\begin{DoxyCompactList}\small\item\em Get the entry Emission field. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_catalog_1_1_entry_a136d77514f91c0f68d3f36cb935d758f}{Set\+Expiry\+Date}} (wx\+String val)
+\begin{DoxyCompactList}\small\item\em Get the entry Expiry\+Date field. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_catalog_1_1_entry_afd826485ca1b2c0dcea9d50823f807eb}{Set\+Face\+Value}} (wx\+String val)
+\begin{DoxyCompactList}\small\item\em Get the entry Face\+Value field. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_catalog_1_1_entry_a401d45d2d5b9875752330dd6679953f2}{Set\+Format}} (wx\+String val)
+\begin{DoxyCompactList}\small\item\em Get the entry Format field. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_catalog_1_1_entry_a6932e8edd9fe132cbda338ada52bcb9e}{Set\+Format\+Type}} (\mbox{\hyperlink{namespace_catalog_a2ff17ae8cd4986617c22e54b7cf50f89}{Format\+Type}} type)
+\item 
+void \mbox{\hyperlink{class_catalog_1_1_entry_a6c27ed8db695f23622997e8a3ddc852e}{Set\+Gum}} (wx\+String val)
+\begin{DoxyCompactList}\small\item\em Get the entry Gum field. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_catalog_1_1_entry_a3f181d5877aaf9cf16fb5eb3d98e4132}{Set\+Height}} (wx\+String val)
+\begin{DoxyCompactList}\small\item\em Get the entry Height field. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_catalog_1_1_entry_a05038491ca111c83dd6bfb1fa660f514}{Set\+ID}} (wx\+String val)
+\begin{DoxyCompactList}\small\item\em Get the entry ID field. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_catalog_1_1_entry_a7c15130d2310e4a6099ce6d506206325}{Set\+Issued\+Date}} (wx\+String val)
+\begin{DoxyCompactList}\small\item\em Get the entry Issued\+Date field. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_catalog_1_1_entry_a1125713bf80c33758e6661e434e65b65}{Set\+Link}} (wx\+String val)
+\begin{DoxyCompactList}\small\item\em Get the entry Link field. \end{DoxyCompactList}\item 
+wx\+Xml\+Node \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_catalog_1_1_entry_a33a08d76d43f7d7526df3ea6f5697af5}{Get\+Next\+Inventory\+Item}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}node, wx\+String collection\+Name)
+\item 
+void \mbox{\hyperlink{class_catalog_1_1_entry_aedc0c77846860ea0f9b8295133889c83}{Set\+Name}} (wx\+String val)
+\begin{DoxyCompactList}\small\item\em Get the entry Name field. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_catalog_1_1_entry_a2b4968983642e358001371b215bfe7ec}{Set\+Paper}} (wx\+String val)
+\begin{DoxyCompactList}\small\item\em Get the entry Paper field. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_catalog_1_1_entry_af9f8b5ee75c0081d0f72181b8bce42e5}{Set\+Perforation}} (wx\+String val)
+\begin{DoxyCompactList}\small\item\em Get the entry Perforation field. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_catalog_1_1_entry_a028c0db9cf11dc26288a56c35d3c2e99}{Set\+Printing}} (wx\+String val)
+\begin{DoxyCompactList}\small\item\em Get the entry Printing field ;. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_catalog_1_1_entry_a0f2e798b587e15147fc7f40ff90332e7}{Set\+Print\+Run}} (wx\+String val)
+\begin{DoxyCompactList}\small\item\em Get the entry Print\+Run field. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_catalog_1_1_entry_a75fa3cfc5fed31a5123f455922b2921a}{Set\+Score}} (wx\+String val)
+\begin{DoxyCompactList}\small\item\em Get the entry Score field. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_catalog_1_1_entry_a6f603952a3ef8084e3226bdcb6c83fb4}{Set\+Series}} (wx\+String val)
+\begin{DoxyCompactList}\small\item\em Get the entry Series field. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_catalog_1_1_entry_a3132872d1fca5cc2fbc0f2b6094f1d7b}{Set\+Themes}} (wx\+String val)
+\begin{DoxyCompactList}\small\item\em Get the entry Themes field. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_catalog_1_1_entry_a73f50c73a0c70fd374e9b6914facbf15}{Set\+Val}} (\mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176}{Data\+Types}} type, wx\+String val)
+\item 
+void \mbox{\hyperlink{class_catalog_1_1_entry_a2018d9609ea437201645b74d26c59b48}{Set\+Variant}} (wx\+String val)
+\begin{DoxyCompactList}\small\item\em Get the entry Variant field. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_catalog_1_1_entry_aefc3c97afe65d69a92986b351200aee0}{Set\+Watermark}} (wx\+String val)
+\begin{DoxyCompactList}\small\item\em Get the entry Watermark field. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_catalog_1_1_entry_ac75ad00a180ca8823fca5776669a0873}{Set\+Width}} (wx\+String val)
+\begin{DoxyCompactList}\small\item\em Get the entry Width field. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_catalog_1_1_catalog_base}{Catalog\+::\+Catalog\+Base}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_catalog_1_1_catalog_base_a8b9ece6806489f6cd0bcd6aa39eb17a8}{Catalog\+Base}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}ele)
+\item 
+\mbox{\hyperlink{class_catalog_1_1_catalog_base_abac3dd13dc14aa6c47ebbdd78dd24e78}{\texorpdfstring{$\sim$}{\string~}\+Catalog\+Base}} ()
+\item 
+wx\+Xml\+Node \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_catalog_1_1_catalog_base_a20c800594b9f7d8e1a965252cfab3c93}{Get\+Cat\+XMLNode}} ()
+\item 
+wx\+Xml\+Node \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_catalog_1_1_catalog_base_a6c34ff464a7303a6525cc6248bba9266}{Get\+First\+Child}} ()
+\item 
+wx\+String \mbox{\hyperlink{class_catalog_1_1_catalog_base_ad4b7489a8a1f18eebf39f20946c5d9ce}{Get\+Node\+Attr\+Str}} (wx\+String name)
+\item 
+double \mbox{\hyperlink{class_catalog_1_1_catalog_base_a40c67de1b176d5aa45c20dee0d4ffc6e}{Get\+Node\+Attr\+Dbl}} (wx\+String name)
+\item 
+\mbox{\hyperlink{namespace_catalog_a86f503ced35b06e6427477ddab27c6be}{Catalog\+Base\+Type}} \mbox{\hyperlink{class_catalog_1_1_catalog_base_a04468447aa0091bc6030ae768bf4c256}{Get\+Node\+Type}} ()
+\item 
+void \mbox{\hyperlink{class_catalog_1_1_catalog_base_acfff9a14c74a6068f7c77f365687b16d}{Set\+Node\+Attr\+Str}} (wx\+String name, wx\+String val)
+\item 
+void \mbox{\hyperlink{class_catalog_1_1_catalog_base_a1fc4ebc318db1def6be9931d6257ff76}{Set\+Node\+Attr\+Dbl}} (wx\+String name, double val)
+\item 
+void \mbox{\hyperlink{class_catalog_1_1_catalog_base_af9b0c273a3d23cda1693bc20daef6ce2}{Set\+Node\+Type}} (\mbox{\hyperlink{namespace_catalog_a86f503ced35b06e6427477ddab27c6be}{Catalog\+Base\+Type}} type)
+\item 
+void \mbox{\hyperlink{class_catalog_1_1_catalog_base_ad9dd1219516a68d1123431ffcd8933fc}{Set\+XMLCat\+Node}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}node)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_catalog_1_1_catalog_base}{Catalog\+::\+Catalog\+Base}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_catalog_1_1_catalog_base_a613406c607f4dcc6cdd3ffddd8c18523}{Catalog\+Base}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This is a wrapper of an wx\+Xml\+Node for safe/convenient getting/putting. 
+
+\begin{DoxySeeAlso}{See also}
+\doxylink{class_catalog_1_1_catalog_base}{Catalog\+Base}, Specimen 
+\end{DoxySeeAlso}
+
+
+Definition at line \mbox{\hyperlink{_entry_8h_source_l00045}{45}} of file \mbox{\hyperlink{_entry_8h_source}{Entry.\+h}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_catalog_1_1_entry_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_catalog_1_1_entry_af7d24ac54953684629b9ece65223f188}\index{Catalog::Entry@{Catalog::Entry}!Entry@{Entry}}
+\index{Entry@{Entry}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{Entry()}{Entry()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_af7d24ac54953684629b9ece65223f188} 
+Catalog\+::\+Entry\+::\+Entry (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8h_source_l00051}{51}} of file \mbox{\hyperlink{_entry_8h_source}{Entry.\+h}}.
+
+\Hypertarget{class_catalog_1_1_entry_ac3a4e115c6396a5a90a8e3f71d0941f4}\index{Catalog::Entry@{Catalog::Entry}!Entry@{Entry}}
+\index{Entry@{Entry}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{Entry()}{Entry()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_ac3a4e115c6396a5a90a8e3f71d0941f4} 
+Catalog\+::\+Entry\+::\+Entry (\begin{DoxyParamCaption}\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{entry}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8h_source_l00057}{57}} of file \mbox{\hyperlink{_entry_8h_source}{Entry.\+h}}.
+
+\Hypertarget{class_catalog_1_1_entry_ae380184714bf3195d895bbea31f9e845}\index{Catalog::Entry@{Catalog::Entry}!````~Entry@{\texorpdfstring{$\sim$}{\string~}Entry}}
+\index{````~Entry@{\texorpdfstring{$\sim$}{\string~}Entry}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Entry()}{\string~Entry()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_ae380184714bf3195d895bbea31f9e845} 
+Catalog\+::\+Entry\+::\texorpdfstring{$\sim$}{\string~}\+Entry (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8h_source_l00064}{64}} of file \mbox{\hyperlink{_entry_8h_source}{Entry.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_catalog_1_1_entry_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_catalog_1_1_entry_ad5b425205fa15c6928928ba3a76354f7}\index{Catalog::Entry@{Catalog::Entry}!AddNewInventoryItem@{AddNewInventoryItem}}
+\index{AddNewInventoryItem@{AddNewInventoryItem}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{AddNewInventoryItem()}{AddNewInventoryItem()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_ad5b425205fa15c6928928ba3a76354f7} 
+wx\+Xml\+Node \texorpdfstring{$\ast$}{*} Catalog\+::\+Entry\+::\+Add\+New\+Inventory\+Item (\begin{DoxyParamCaption}\item[{wx\+String}]{collection}{, }\item[{\mbox{\hyperlink{namespace_catalog_a7bc076b172809c869ab8fef63c49e8c3}{Catalog\+::\+Inventory\+Status\+Type}}}]{type}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8cpp_source_l00144}{144}} of file \mbox{\hyperlink{_entry_8cpp_source}{Entry.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_entry_a70680046a7ba160be212a8f911ac27b3}\index{Catalog::Entry@{Catalog::Entry}!ClipText@{ClipText}}
+\index{ClipText@{ClipText}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{ClipText()}{ClipText()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_a70680046a7ba160be212a8f911ac27b3} 
+bool Catalog\+::\+Entry\+::\+Clip\+Text (\begin{DoxyParamCaption}\item[{wx\+String}]{in}{, }\item[{wx\+String \&}]{out}{, }\item[{int}]{field\+Length}{, }\item[{wx\+String \&}]{remainder}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8cpp_source_l00495}{495}} of file \mbox{\hyperlink{_entry_8cpp_source}{Entry.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_entry_a23ca3dba947d3f518d67376b97b99a11}\index{Catalog::Entry@{Catalog::Entry}!DeleteCode@{DeleteCode}}
+\index{DeleteCode@{DeleteCode}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{DeleteCode()}{DeleteCode()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_a23ca3dba947d3f518d67376b97b99a11} 
+void Catalog\+::\+Entry\+::\+Delete\+Code (\begin{DoxyParamCaption}\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{delete\+This\+Node}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8cpp_source_l00178}{178}} of file \mbox{\hyperlink{_entry_8cpp_source}{Entry.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_entry_a0c003202832067a262b76ac64d400be7}\index{Catalog::Entry@{Catalog::Entry}!DeleteSpecimen@{DeleteSpecimen}}
+\index{DeleteSpecimen@{DeleteSpecimen}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{DeleteSpecimen()}{DeleteSpecimen()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_a0c003202832067a262b76ac64d400be7} 
+void Catalog\+::\+Entry\+::\+Delete\+Specimen (\begin{DoxyParamCaption}\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{delete\+This\+Node}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8cpp_source_l00167}{167}} of file \mbox{\hyperlink{_entry_8cpp_source}{Entry.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_entry_af5c6a3c8aa1f2e78cbc5a3f2c758f09a}\index{Catalog::Entry@{Catalog::Entry}!FindDataType@{FindDataType}}
+\index{FindDataType@{FindDataType}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{FindDataType()}{FindDataType()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_af5c6a3c8aa1f2e78cbc5a3f2c758f09a} 
+\mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176}{Data\+Types}} Catalog\+::\+Entry\+::\+Find\+Data\+Type (\begin{DoxyParamCaption}\item[{wx\+String}]{name}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8cpp_source_l00195}{195}} of file \mbox{\hyperlink{_entry_8cpp_source}{Entry.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_entry_a156ba39e7f7dc3cc16554c849a098363}\index{Catalog::Entry@{Catalog::Entry}!FindImageName@{FindImageName}}
+\index{FindImageName@{FindImageName}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{FindImageName()}{FindImageName()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_a156ba39e7f7dc3cc16554c849a098363} 
+wx\+String Catalog\+::\+Entry\+::\+Find\+Image\+Name (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8cpp_source_l00060}{60}} of file \mbox{\hyperlink{_entry_8cpp_source}{Entry.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_entry_a93fce11372c365ae5f87608e000f043b}\index{Catalog::Entry@{Catalog::Entry}!GetAccuracy@{GetAccuracy}}
+\index{GetAccuracy@{GetAccuracy}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{GetAccuracy()}{GetAccuracy()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_a93fce11372c365ae5f87608e000f043b} 
+wx\+String Catalog\+::\+Entry\+::\+Get\+Accuracy (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Get the entry Accuracy field. 
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8cpp_source_l00189}{189}} of file \mbox{\hyperlink{_entry_8cpp_source}{Entry.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_entry_a835a5ef5260df9ab588e3c82ef894873}\index{Catalog::Entry@{Catalog::Entry}!GetAttr@{GetAttr}}
+\index{GetAttr@{GetAttr}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{GetAttr()}{GetAttr()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_a835a5ef5260df9ab588e3c82ef894873} 
+wx\+String Catalog\+::\+Entry\+::\+Get\+Attr (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176}{Data\+Types}}}]{type}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8cpp_source_l00209}{209}} of file \mbox{\hyperlink{_entry_8cpp_source}{Entry.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_entry_a0224c675bdb1ceea9811c07c605ddc19}\index{Catalog::Entry@{Catalog::Entry}!GetBackground@{GetBackground}}
+\index{GetBackground@{GetBackground}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{GetBackground()}{GetBackground()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_a0224c675bdb1ceea9811c07c605ddc19} 
+wx\+String Catalog\+::\+Entry\+::\+Get\+Background (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8h_source_l00082}{82}} of file \mbox{\hyperlink{_entry_8h_source}{Entry.\+h}}.
+
+\Hypertarget{class_catalog_1_1_entry_ae0064822b640ef573d669e4ebdd0dbb8}\index{Catalog::Entry@{Catalog::Entry}!GetCatalogCodes@{GetCatalogCodes}}
+\index{GetCatalogCodes@{GetCatalogCodes}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{GetCatalogCodes()}{GetCatalogCodes()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_ae0064822b640ef573d669e4ebdd0dbb8} 
+wx\+String Catalog\+::\+Entry\+::\+Get\+Catalog\+Codes (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Get the entry \doxylink{namespace_catalog}{Catalog} Codes field. 
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8cpp_source_l00225}{225}} of file \mbox{\hyperlink{_entry_8cpp_source}{Entry.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_entry_ad840ad436e0e859b9762da006cb32784}\index{Catalog::Entry@{Catalog::Entry}!GetCheckedStatusType@{GetCheckedStatusType}}
+\index{GetCheckedStatusType@{GetCheckedStatusType}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{GetCheckedStatusType()}{GetCheckedStatusType()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_ad840ad436e0e859b9762da006cb32784} 
+\mbox{\hyperlink{namespace_catalog_ae547094e129067e4932fdc46084369a8}{Checked\+Status\+Type}} Catalog\+::\+Entry\+::\+Get\+Checked\+Status\+Type (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_catalog_1_1_entry_a5be5b94915da8b2a20f8de86b8ae78fa}\index{Catalog::Entry@{Catalog::Entry}!GetClassificationName@{GetClassificationName}}
+\index{GetClassificationName@{GetClassificationName}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{GetClassificationName()}{GetClassificationName()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_a5be5b94915da8b2a20f8de86b8ae78fa} 
+wx\+String Catalog\+::\+Entry\+::\+Get\+Classification\+Name (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_catalog_1_1_entry}{Entry}} \texorpdfstring{$\ast$}{*}}]{entry}{, }\item[{\mbox{\hyperlink{namespace_catalog_a86f503ced35b06e6427477ddab27c6be}{Catalog\+Base\+Type}}}]{type}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8cpp_source_l00231}{231}} of file \mbox{\hyperlink{_entry_8cpp_source}{Entry.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_entry_a2a4777994cba245949cfa457e6f2d7ed}\index{Catalog::Entry@{Catalog::Entry}!GetCodeForCatalog@{GetCodeForCatalog}}
+\index{GetCodeForCatalog@{GetCodeForCatalog}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{GetCodeForCatalog()}{GetCodeForCatalog()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_a2a4777994cba245949cfa457e6f2d7ed} 
+wx\+Xml\+Node \texorpdfstring{$\ast$}{*} Catalog\+::\+Entry\+::\+Get\+Code\+For\+Catalog (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{catalog}{}\end{DoxyParamCaption})}
+
+
+
+Get the \doxylink{class_catalog_1_1_catalog_code}{Catalog\+Code} for the input catalog code. 
+
+ids differ based on the reference catalog. this function will return the id associated with the input catalog or if there is no id for that catalog then the first one found regardless of the catalog. \Hypertarget{class_catalog_1_1_entry_a170e277f3bb9cd81ea4069becb2f87ac}\index{Catalog::Entry@{Catalog::Entry}!GetColors@{GetColors}}
+\index{GetColors@{GetColors}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{GetColors()}{GetColors()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_a170e277f3bb9cd81ea4069becb2f87ac} 
+wx\+String Catalog\+::\+Entry\+::\+Get\+Colors (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Get the entry Colors field. 
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8cpp_source_l00272}{272}} of file \mbox{\hyperlink{_entry_8cpp_source}{Entry.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_entry_a5c255e272d52da33d5652987eaefefee}\index{Catalog::Entry@{Catalog::Entry}!GetCountry@{GetCountry}}
+\index{GetCountry@{GetCountry}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{GetCountry()}{GetCountry()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_a5c255e272d52da33d5652987eaefefee} 
+wx\+String Catalog\+::\+Entry\+::\+Get\+Country (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Get the entry country field. 
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8cpp_source_l00278}{278}} of file \mbox{\hyperlink{_entry_8cpp_source}{Entry.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_entry_a942cc10158a8dabccb1df804aa120e97}\index{Catalog::Entry@{Catalog::Entry}!GetCurrency@{GetCurrency}}
+\index{GetCurrency@{GetCurrency}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{GetCurrency()}{GetCurrency()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_a942cc10158a8dabccb1df804aa120e97} 
+wx\+String Catalog\+::\+Entry\+::\+Get\+Currency (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Get the entry Currency field. 
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8cpp_source_l00284}{284}} of file \mbox{\hyperlink{_entry_8cpp_source}{Entry.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_entry_ae3818d7e55ad614f0ede63a2d53cbd13}\index{Catalog::Entry@{Catalog::Entry}!GetDecade@{GetDecade}}
+\index{GetDecade@{GetDecade}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{GetDecade()}{GetDecade()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_ae3818d7e55ad614f0ede63a2d53cbd13} 
+wx\+String Catalog\+::\+Entry\+::\+Get\+Decade (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8cpp_source_l00290}{290}} of file \mbox{\hyperlink{_entry_8cpp_source}{Entry.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_entry_a50d233d795600056c54c523dec228e4b}\index{Catalog::Entry@{Catalog::Entry}!GetDescription@{GetDescription}}
+\index{GetDescription@{GetDescription}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{GetDescription()}{GetDescription()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_a50d233d795600056c54c523dec228e4b} 
+wx\+String Catalog\+::\+Entry\+::\+Get\+Description (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Get the entry Description field. 
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8cpp_source_l00308}{308}} of file \mbox{\hyperlink{_entry_8cpp_source}{Entry.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_entry_a19074b395fb9d8be8c6e1a3fd9719526}\index{Catalog::Entry@{Catalog::Entry}!GetEmission@{GetEmission}}
+\index{GetEmission@{GetEmission}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{GetEmission()}{GetEmission()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_a19074b395fb9d8be8c6e1a3fd9719526} 
+wx\+String Catalog\+::\+Entry\+::\+Get\+Emission (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Get the entry emission field. 
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8cpp_source_l00314}{314}} of file \mbox{\hyperlink{_entry_8cpp_source}{Entry.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_entry_ac9e853fd29d112a5c75ac89876b90536}\index{Catalog::Entry@{Catalog::Entry}!GetExpiryDate@{GetExpiryDate}}
+\index{GetExpiryDate@{GetExpiryDate}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{GetExpiryDate()}{GetExpiryDate()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_ac9e853fd29d112a5c75ac89876b90536} 
+wx\+String Catalog\+::\+Entry\+::\+Get\+Expiry\+Date (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Get the entry Expiry Date field. 
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8cpp_source_l00320}{320}} of file \mbox{\hyperlink{_entry_8cpp_source}{Entry.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_entry_ad1179b7e960e5dbc17f84b9f2df9aa3b}\index{Catalog::Entry@{Catalog::Entry}!GetFaceValue@{GetFaceValue}}
+\index{GetFaceValue@{GetFaceValue}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{GetFaceValue()}{GetFaceValue()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_ad1179b7e960e5dbc17f84b9f2df9aa3b} 
+wx\+String Catalog\+::\+Entry\+::\+Get\+Face\+Value (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Get the entry Face\+Value field. 
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8cpp_source_l00326}{326}} of file \mbox{\hyperlink{_entry_8cpp_source}{Entry.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_entry_aa474a146aec551822fce207c60261dcb}\index{Catalog::Entry@{Catalog::Entry}!GetFirstInventoryItem@{GetFirstInventoryItem}}
+\index{GetFirstInventoryItem@{GetFirstInventoryItem}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{GetFirstInventoryItem()}{GetFirstInventoryItem()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_aa474a146aec551822fce207c60261dcb} 
+wx\+Xml\+Node \texorpdfstring{$\ast$}{*} Catalog\+::\+Entry\+::\+Get\+First\+Inventory\+Item (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8cpp_source_l00344}{344}} of file \mbox{\hyperlink{_entry_8cpp_source}{Entry.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_entry_ae603ac64a0dae43e21bcdfa4bf1f00db}\index{Catalog::Entry@{Catalog::Entry}!GetFirstInventoryItem@{GetFirstInventoryItem}}
+\index{GetFirstInventoryItem@{GetFirstInventoryItem}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{GetFirstInventoryItem()}{GetFirstInventoryItem()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_ae603ac64a0dae43e21bcdfa4bf1f00db} 
+wx\+Xml\+Node \texorpdfstring{$\ast$}{*} Catalog\+::\+Entry\+::\+Get\+First\+Inventory\+Item (\begin{DoxyParamCaption}\item[{wx\+String}]{collection\+Name}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8cpp_source_l00354}{354}} of file \mbox{\hyperlink{_entry_8cpp_source}{Entry.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_entry_a4dc11fe62e108d49bb62787a26b365ed}\index{Catalog::Entry@{Catalog::Entry}!GetFormat@{GetFormat}}
+\index{GetFormat@{GetFormat}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{GetFormat()}{GetFormat()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_a4dc11fe62e108d49bb62787a26b365ed} 
+wx\+String Catalog\+::\+Entry\+::\+Get\+Format (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Get the entry Format field. 
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8cpp_source_l00372}{372}} of file \mbox{\hyperlink{_entry_8cpp_source}{Entry.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_entry_a547753f86077f387d2aa48f8498f7534}\index{Catalog::Entry@{Catalog::Entry}!GetFormatType@{GetFormatType}}
+\index{GetFormatType@{GetFormatType}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{GetFormatType()}{GetFormatType()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_a547753f86077f387d2aa48f8498f7534} 
+\mbox{\hyperlink{namespace_catalog_a2ff17ae8cd4986617c22e54b7cf50f89}{Format\+Type}} Catalog\+::\+Entry\+::\+Get\+Format\+Type (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8cpp_source_l00378}{378}} of file \mbox{\hyperlink{_entry_8cpp_source}{Entry.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_entry_a85a3f7b395ed74723fcda90135f918a3}\index{Catalog::Entry@{Catalog::Entry}!GetGum@{GetGum}}
+\index{GetGum@{GetGum}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{GetGum()}{GetGum()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_a85a3f7b395ed74723fcda90135f918a3} 
+wx\+String Catalog\+::\+Entry\+::\+Get\+Gum (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Get the entry Gum field. 
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8cpp_source_l00394}{394}} of file \mbox{\hyperlink{_entry_8cpp_source}{Entry.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_entry_af55edb509f4b536f6996fa727b6607e8}\index{Catalog::Entry@{Catalog::Entry}!GetHeight@{GetHeight}}
+\index{GetHeight@{GetHeight}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{GetHeight()}{GetHeight()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_af55edb509f4b536f6996fa727b6607e8} 
+wx\+String Catalog\+::\+Entry\+::\+Get\+Height (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Get the entry height field. 
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8cpp_source_l00400}{400}} of file \mbox{\hyperlink{_entry_8cpp_source}{Entry.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_entry_a1a13c18f7faaf5d9f18bb3cd52c2be19}\index{Catalog::Entry@{Catalog::Entry}!GetID@{GetID}}
+\index{GetID@{GetID}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{GetID()}{GetID()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_a1a13c18f7faaf5d9f18bb3cd52c2be19} 
+wx\+String Catalog\+::\+Entry\+::\+Get\+ID (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Get the entry ID. 
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8cpp_source_l00424}{424}} of file \mbox{\hyperlink{_entry_8cpp_source}{Entry.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_entry_acfee91b0987aa2be168a124d13cdf3ec}\index{Catalog::Entry@{Catalog::Entry}!GetInventory@{GetInventory}}
+\index{GetInventory@{GetInventory}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{GetInventory()}{GetInventory()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_acfee91b0987aa2be168a124d13cdf3ec} 
+wx\+Xml\+Node \texorpdfstring{$\ast$}{*} Catalog\+::\+Entry\+::\+Get\+Inventory (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8cpp_source_l00406}{406}} of file \mbox{\hyperlink{_entry_8cpp_source}{Entry.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_entry_a4d13e84d9e66cb19b1f2bc989bdb8b22}\index{Catalog::Entry@{Catalog::Entry}!GetInventoryStatus@{GetInventoryStatus}}
+\index{GetInventoryStatus@{GetInventoryStatus}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{GetInventoryStatus()}{GetInventoryStatus()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_a4d13e84d9e66cb19b1f2bc989bdb8b22} 
+wx\+String Catalog\+::\+Entry\+::\+Get\+Inventory\+Status (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Get the \doxylink{namespace_inventory}{Inventory} Status field. 
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8cpp_source_l00432}{432}} of file \mbox{\hyperlink{_entry_8cpp_source}{Entry.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_entry_a5684efb6c4a7a59f4ebf60defdd54cd8}\index{Catalog::Entry@{Catalog::Entry}!GetInventoryStatusType@{GetInventoryStatusType}}
+\index{GetInventoryStatusType@{GetInventoryStatusType}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{GetInventoryStatusType()}{GetInventoryStatusType()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_a5684efb6c4a7a59f4ebf60defdd54cd8} 
+\mbox{\hyperlink{namespace_catalog_a7bc076b172809c869ab8fef63c49e8c3}{Inventory\+Status\+Type}} Catalog\+::\+Entry\+::\+Get\+Inventory\+Status\+Type (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8cpp_source_l00440}{440}} of file \mbox{\hyperlink{_entry_8cpp_source}{Entry.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_entry_adfeac3f5a3a0fcbe772f40da2219ad60}\index{Catalog::Entry@{Catalog::Entry}!GetIssuedDate@{GetIssuedDate}}
+\index{GetIssuedDate@{GetIssuedDate}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{GetIssuedDate()}{GetIssuedDate()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_adfeac3f5a3a0fcbe772f40da2219ad60} 
+wx\+String Catalog\+::\+Entry\+::\+Get\+Issued\+Date (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Get the entry Issue data field. 
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8cpp_source_l00535}{535}} of file \mbox{\hyperlink{_entry_8cpp_source}{Entry.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_entry_ac26d506bddf74e744762f1d6d9572c65}\index{Catalog::Entry@{Catalog::Entry}!GetItem@{GetItem}}
+\index{GetItem@{GetItem}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{GetItem()}{GetItem()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_ac26d506bddf74e744762f1d6d9572c65} 
+wx\+Xml\+Node \texorpdfstring{$\ast$}{*} Catalog\+::\+Entry\+::\+Get\+Item (\begin{DoxyParamCaption}\item[{wx\+String}]{collection}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8cpp_source_l00092}{92}} of file \mbox{\hyperlink{_entry_8cpp_source}{Entry.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_entry_a89936a82328ff252c3978ba40afdb96f}\index{Catalog::Entry@{Catalog::Entry}!GetLabel@{GetLabel}}
+\index{GetLabel@{GetLabel}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{GetLabel()}{GetLabel()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_a89936a82328ff252c3978ba40afdb96f} 
+wx\+String Catalog\+::\+Entry\+::\+Get\+Label (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8cpp_source_l00541}{541}} of file \mbox{\hyperlink{_entry_8cpp_source}{Entry.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_entry_ad4fb0a6841f02b02927c9d0bef51f69c}\index{Catalog::Entry@{Catalog::Entry}!GetLink@{GetLink}}
+\index{GetLink@{GetLink}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{GetLink()}{GetLink()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_ad4fb0a6841f02b02927c9d0bef51f69c} 
+wx\+String Catalog\+::\+Entry\+::\+Get\+Link (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Get the entry Link field. 
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8cpp_source_l00571}{571}} of file \mbox{\hyperlink{_entry_8cpp_source}{Entry.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_entry_aefb31d94353934ed952f9a3520404341}\index{Catalog::Entry@{Catalog::Entry}!GetMount@{GetMount}}
+\index{GetMount@{GetMount}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{GetMount()}{GetMount()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_aefb31d94353934ed952f9a3520404341} 
+wx\+String Catalog\+::\+Entry\+::\+Get\+Mount (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8cpp_source_l00418}{418}} of file \mbox{\hyperlink{_entry_8cpp_source}{Entry.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_entry_a306b6ac1e1d3d2303473fdaf3b7a2c1b}\index{Catalog::Entry@{Catalog::Entry}!GetName@{GetName}}
+\index{GetName@{GetName}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{GetName()}{GetName()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_a306b6ac1e1d3d2303473fdaf3b7a2c1b} 
+wx\+String Catalog\+::\+Entry\+::\+Get\+Name (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Get the entry title field. 
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8cpp_source_l00577}{577}} of file \mbox{\hyperlink{_entry_8cpp_source}{Entry.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_entry_a33a08d76d43f7d7526df3ea6f5697af5}\index{Catalog::Entry@{Catalog::Entry}!GetNextInventoryItem@{GetNextInventoryItem}}
+\index{GetNextInventoryItem@{GetNextInventoryItem}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{GetNextInventoryItem()}{GetNextInventoryItem()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_a33a08d76d43f7d7526df3ea6f5697af5} 
+wx\+Xml\+Node \texorpdfstring{$\ast$}{*} Catalog\+::\+Entry\+::\+Get\+Next\+Inventory\+Item (\begin{DoxyParamCaption}\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{node}{, }\item[{wx\+String}]{collection\+Name}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8cpp_source_l00584}{584}} of file \mbox{\hyperlink{_entry_8cpp_source}{Entry.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_entry_aca2762c761dfadf748e491ad5c10b9f2}\index{Catalog::Entry@{Catalog::Entry}!GetPaper@{GetPaper}}
+\index{GetPaper@{GetPaper}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{GetPaper()}{GetPaper()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_aca2762c761dfadf748e491ad5c10b9f2} 
+wx\+String Catalog\+::\+Entry\+::\+Get\+Paper (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Get the entry paper field. 
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8cpp_source_l00621}{621}} of file \mbox{\hyperlink{_entry_8cpp_source}{Entry.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_entry_a66d7c400a1d7552c0f6d6b9a6a63c8fe}\index{Catalog::Entry@{Catalog::Entry}!GetPerforation@{GetPerforation}}
+\index{GetPerforation@{GetPerforation}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{GetPerforation()}{GetPerforation()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_a66d7c400a1d7552c0f6d6b9a6a63c8fe} 
+wx\+String Catalog\+::\+Entry\+::\+Get\+Perforation (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Get the entry Perforation field. 
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8cpp_source_l00627}{627}} of file \mbox{\hyperlink{_entry_8cpp_source}{Entry.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_entry_a2ae06ea8d7d6d359ce88deb63ccc15d9}\index{Catalog::Entry@{Catalog::Entry}!GetPeriod@{GetPeriod}}
+\index{GetPeriod@{GetPeriod}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{GetPeriod()}{GetPeriod()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_a2ae06ea8d7d6d359ce88deb63ccc15d9} 
+wx\+String Catalog\+::\+Entry\+::\+Get\+Period (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8cpp_source_l00633}{633}} of file \mbox{\hyperlink{_entry_8cpp_source}{Entry.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_entry_a3fac3acb8d752ace53d00907e1ad5602}\index{Catalog::Entry@{Catalog::Entry}!GetPreferredCode@{GetPreferredCode}}
+\index{GetPreferredCode@{GetPreferredCode}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{GetPreferredCode()}{GetPreferredCode()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_a3fac3acb8d752ace53d00907e1ad5602} 
+wx\+String Catalog\+::\+Entry\+::\+Get\+Preferred\+Code (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8cpp_source_l00600}{600}} of file \mbox{\hyperlink{_entry_8cpp_source}{Entry.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_entry_aed9dbb49195116b4f73a0f51d1c2ee58}\index{Catalog::Entry@{Catalog::Entry}!GetPrinting@{GetPrinting}}
+\index{GetPrinting@{GetPrinting}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{GetPrinting()}{GetPrinting()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_aed9dbb49195116b4f73a0f51d1c2ee58} 
+wx\+String Catalog\+::\+Entry\+::\+Get\+Printing (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Get the entry Printing field. 
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8cpp_source_l00665}{665}} of file \mbox{\hyperlink{_entry_8cpp_source}{Entry.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_entry_a5fad2b7c7e684519286364f4d2876e36}\index{Catalog::Entry@{Catalog::Entry}!GetPrintRun@{GetPrintRun}}
+\index{GetPrintRun@{GetPrintRun}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{GetPrintRun()}{GetPrintRun()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_a5fad2b7c7e684519286364f4d2876e36} 
+wx\+String Catalog\+::\+Entry\+::\+Get\+Print\+Run (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Get the entry Print\+Run field. 
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8cpp_source_l00671}{671}} of file \mbox{\hyperlink{_entry_8cpp_source}{Entry.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_entry_a55fea92e3964bac31d3df30a77fad25f}\index{Catalog::Entry@{Catalog::Entry}!GetScore@{GetScore}}
+\index{GetScore@{GetScore}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{GetScore()}{GetScore()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_a55fea92e3964bac31d3df30a77fad25f} 
+wx\+String Catalog\+::\+Entry\+::\+Get\+Score (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Get the entry Score field. 
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8cpp_source_l00677}{677}} of file \mbox{\hyperlink{_entry_8cpp_source}{Entry.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_entry_acddf894f2273a7397bb97d8230ce9f16}\index{Catalog::Entry@{Catalog::Entry}!GetSeries@{GetSeries}}
+\index{GetSeries@{GetSeries}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{GetSeries()}{GetSeries()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_acddf894f2273a7397bb97d8230ce9f16} 
+wx\+String Catalog\+::\+Entry\+::\+Get\+Series (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Get the entry series field. 
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8cpp_source_l00683}{683}} of file \mbox{\hyperlink{_entry_8cpp_source}{Entry.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_entry_a78b7b628bd5709a97f1ba9f7422b302e}\index{Catalog::Entry@{Catalog::Entry}!GetThemes@{GetThemes}}
+\index{GetThemes@{GetThemes}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{GetThemes()}{GetThemes()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_a78b7b628bd5709a97f1ba9f7422b302e} 
+wx\+String Catalog\+::\+Entry\+::\+Get\+Themes (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Get the entry Themes field. 
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8cpp_source_l00690}{690}} of file \mbox{\hyperlink{_entry_8cpp_source}{Entry.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_entry_a3a6a640e3e46362c2e82c82dd8f349db}\index{Catalog::Entry@{Catalog::Entry}!GetVal@{GetVal}}
+\index{GetVal@{GetVal}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{GetVal()}{GetVal()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_a3a6a640e3e46362c2e82c82dd8f349db} 
+wx\+String Catalog\+::\+Entry\+::\+Get\+Val (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176}{Data\+Types}}}]{type}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8h_source_l00178}{178}} of file \mbox{\hyperlink{_entry_8h_source}{Entry.\+h}}.
+
+\Hypertarget{class_catalog_1_1_entry_a008f62dfa69caf398c6d1613c3b219c6}\index{Catalog::Entry@{Catalog::Entry}!GetVariant@{GetVariant}}
+\index{GetVariant@{GetVariant}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{GetVariant()}{GetVariant()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_a008f62dfa69caf398c6d1613c3b219c6} 
+wx\+String Catalog\+::\+Entry\+::\+Get\+Variant (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Get the entry Variant field. 
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8cpp_source_l00696}{696}} of file \mbox{\hyperlink{_entry_8cpp_source}{Entry.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_entry_aace071312572cc0243059ec11c40fa92}\index{Catalog::Entry@{Catalog::Entry}!GetWatermark@{GetWatermark}}
+\index{GetWatermark@{GetWatermark}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{GetWatermark()}{GetWatermark()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_aace071312572cc0243059ec11c40fa92} 
+wx\+String Catalog\+::\+Entry\+::\+Get\+Watermark (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Get the entry Watermark field. 
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8cpp_source_l00702}{702}} of file \mbox{\hyperlink{_entry_8cpp_source}{Entry.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_entry_a8c358d50c2c28b26a3498a88a2d20506}\index{Catalog::Entry@{Catalog::Entry}!GetWidth@{GetWidth}}
+\index{GetWidth@{GetWidth}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{GetWidth()}{GetWidth()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_a8c358d50c2c28b26a3498a88a2d20506} 
+wx\+String Catalog\+::\+Entry\+::\+Get\+Width (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Get the entry Width field. 
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8cpp_source_l00708}{708}} of file \mbox{\hyperlink{_entry_8cpp_source}{Entry.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_entry_ac2473ec55db3d83cbc8af29f199c6be8}\index{Catalog::Entry@{Catalog::Entry}!GetYear@{GetYear}}
+\index{GetYear@{GetYear}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{GetYear()}{GetYear()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_ac2473ec55db3d83cbc8af29f199c6be8} 
+wx\+String Catalog\+::\+Entry\+::\+Get\+Year (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8cpp_source_l00714}{714}} of file \mbox{\hyperlink{_entry_8cpp_source}{Entry.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_entry_a975f781f84be5999846c946e6846045c}\index{Catalog::Entry@{Catalog::Entry}!HasInventoryItem@{HasInventoryItem}}
+\index{HasInventoryItem@{HasInventoryItem}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{HasInventoryItem()}{HasInventoryItem()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_a975f781f84be5999846c946e6846045c} 
+bool Catalog\+::\+Entry\+::\+Has\+Inventory\+Item (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8cpp_source_l00765}{765}} of file \mbox{\hyperlink{_entry_8cpp_source}{Entry.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_entry_a91cd540b0b34d51597da1480ab20ddac}\index{Catalog::Entry@{Catalog::Entry}!IsCatalogCode@{IsCatalogCode}}
+\index{IsCatalogCode@{IsCatalogCode}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{IsCatalogCode()}{IsCatalogCode()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_a91cd540b0b34d51597da1480ab20ddac} 
+bool Catalog\+::\+Entry\+::\+Is\+Catalog\+Code (\begin{DoxyParamCaption}\item[{wx\+String}]{cat\+Code}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8cpp_source_l00069}{69}} of file \mbox{\hyperlink{_entry_8cpp_source}{Entry.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_entry_abce0b35577e372c7d4e6c418662041ed}\index{Catalog::Entry@{Catalog::Entry}!IsMultiple@{IsMultiple}}
+\index{IsMultiple@{IsMultiple}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{IsMultiple()}{IsMultiple()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_abce0b35577e372c7d4e6c418662041ed} 
+bool Catalog\+::\+Entry\+::\+Is\+Multiple (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Is this a stamp type that has stamp cildren, e.\+g., a setenant or souviner sheet. 
+
+\begin{DoxyReturn}{Returns}
+true =\texorpdfstring{$>$}{>} FT\+\_\+\+Se\+\_\+tenant, FT\+\_\+\+Mini\+\_\+\+Sheet, FT\+\_\+\+Souvenir\+\_\+\+Sheet, FT\+\_\+\+Booklet, FT\+\_\+\+Booklet\+\_\+\+Pane ) 
+
+false =\texorpdfstring{$>$}{>} otherwise 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_entry_8cpp_source_l00784}{784}} of file \mbox{\hyperlink{_entry_8cpp_source}{Entry.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_entry_a26f3ce59021eafc38181f8244aae5d05}\index{Catalog::Entry@{Catalog::Entry}!IsOK@{IsOK}}
+\index{IsOK@{IsOK}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{IsOK()}{IsOK()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_a26f3ce59021eafc38181f8244aae5d05} 
+bool Catalog\+::\+Entry\+::\+Is\+OK (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_catalog_1_1_catalog_base_a40ba46a2ab0e54242fc9b65e3a85bc4a}{Catalog\+::\+Catalog\+Base}}.
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8cpp_source_l00798}{798}} of file \mbox{\hyperlink{_entry_8cpp_source}{Entry.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_entry_a0af9afda3d2ad2a8c79214805e28cce9}\index{Catalog::Entry@{Catalog::Entry}!SetAccuracy@{SetAccuracy}}
+\index{SetAccuracy@{SetAccuracy}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{SetAccuracy()}{SetAccuracy()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_a0af9afda3d2ad2a8c79214805e28cce9} 
+void Catalog\+::\+Entry\+::\+Set\+Accuracy (\begin{DoxyParamCaption}\item[{wx\+String}]{val}{}\end{DoxyParamCaption})}
+
+
+
+Get the entry Accuracy field. 
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8cpp_source_l00819}{819}} of file \mbox{\hyperlink{_entry_8cpp_source}{Entry.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_entry_a8b305ac433fbfee790a2bec12acc08a1}\index{Catalog::Entry@{Catalog::Entry}!SetAttr@{SetAttr}}
+\index{SetAttr@{SetAttr}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{SetAttr()}{SetAttr()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_a8b305ac433fbfee790a2bec12acc08a1} 
+void Catalog\+::\+Entry\+::\+Set\+Attr (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176}{Data\+Types}}}]{type}{, }\item[{wx\+String}]{val}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8cpp_source_l00825}{825}} of file \mbox{\hyperlink{_entry_8cpp_source}{Entry.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_entry_a2b3572edf8ef73e1fb3a819e58f72f34}\index{Catalog::Entry@{Catalog::Entry}!SetBackground@{SetBackground}}
+\index{SetBackground@{SetBackground}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{SetBackground()}{SetBackground()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_a2b3572edf8ef73e1fb3a819e58f72f34} 
+void Catalog\+::\+Entry\+::\+Set\+Background (\begin{DoxyParamCaption}\item[{wx\+String}]{val}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8h_source_l00208}{208}} of file \mbox{\hyperlink{_entry_8h_source}{Entry.\+h}}.
+
+\Hypertarget{class_catalog_1_1_entry_a02c9b8183aa61314a1c629fcb6b918a5}\index{Catalog::Entry@{Catalog::Entry}!SetCatalogCodes@{SetCatalogCodes}}
+\index{SetCatalogCodes@{SetCatalogCodes}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{SetCatalogCodes()}{SetCatalogCodes()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_a02c9b8183aa61314a1c629fcb6b918a5} 
+void Catalog\+::\+Entry\+::\+Set\+Catalog\+Codes (\begin{DoxyParamCaption}\item[{wx\+String}]{val}{}\end{DoxyParamCaption})}
+
+
+
+Get the entry Catalog\+Codes field. 
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8cpp_source_l00835}{835}} of file \mbox{\hyperlink{_entry_8cpp_source}{Entry.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_entry_ad132d3ea993c397eafa4de10e09cc229}\index{Catalog::Entry@{Catalog::Entry}!SetColors@{SetColors}}
+\index{SetColors@{SetColors}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{SetColors()}{SetColors()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_ad132d3ea993c397eafa4de10e09cc229} 
+void Catalog\+::\+Entry\+::\+Set\+Colors (\begin{DoxyParamCaption}\item[{wx\+String}]{val}{}\end{DoxyParamCaption})}
+
+
+
+Get the entry Colors field. 
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8cpp_source_l00842}{842}} of file \mbox{\hyperlink{_entry_8cpp_source}{Entry.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_entry_a995c70e69513d79b17d62f91590b7a5c}\index{Catalog::Entry@{Catalog::Entry}!SetCountry@{SetCountry}}
+\index{SetCountry@{SetCountry}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{SetCountry()}{SetCountry()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_a995c70e69513d79b17d62f91590b7a5c} 
+void Catalog\+::\+Entry\+::\+Set\+Country (\begin{DoxyParamCaption}\item[{wx\+String}]{val}{}\end{DoxyParamCaption})}
+
+
+
+Get the entry Country field. 
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8cpp_source_l00848}{848}} of file \mbox{\hyperlink{_entry_8cpp_source}{Entry.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_entry_aad65318bf782aa99032471f7df7360e0}\index{Catalog::Entry@{Catalog::Entry}!SetCurrency@{SetCurrency}}
+\index{SetCurrency@{SetCurrency}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{SetCurrency()}{SetCurrency()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_aad65318bf782aa99032471f7df7360e0} 
+void Catalog\+::\+Entry\+::\+Set\+Currency (\begin{DoxyParamCaption}\item[{wx\+String}]{val}{}\end{DoxyParamCaption})}
+
+
+
+Get the entry Currency field. 
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8cpp_source_l00854}{854}} of file \mbox{\hyperlink{_entry_8cpp_source}{Entry.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_entry_a6909bdbd4f61058db504630ea3321916}\index{Catalog::Entry@{Catalog::Entry}!SetDescription@{SetDescription}}
+\index{SetDescription@{SetDescription}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{SetDescription()}{SetDescription()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_a6909bdbd4f61058db504630ea3321916} 
+void Catalog\+::\+Entry\+::\+Set\+Description (\begin{DoxyParamCaption}\item[{wx\+String}]{val}{}\end{DoxyParamCaption})}
+
+
+
+Get the entry Description field. 
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8cpp_source_l00860}{860}} of file \mbox{\hyperlink{_entry_8cpp_source}{Entry.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_entry_a549843e2138e774772e33ae0779e2039}\index{Catalog::Entry@{Catalog::Entry}!SetEmission@{SetEmission}}
+\index{SetEmission@{SetEmission}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{SetEmission()}{SetEmission()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_a549843e2138e774772e33ae0779e2039} 
+void Catalog\+::\+Entry\+::\+Set\+Emission (\begin{DoxyParamCaption}\item[{wx\+String}]{val}{}\end{DoxyParamCaption})}
+
+
+
+Get the entry Emission field. 
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8cpp_source_l00872}{872}} of file \mbox{\hyperlink{_entry_8cpp_source}{Entry.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_entry_a136d77514f91c0f68d3f36cb935d758f}\index{Catalog::Entry@{Catalog::Entry}!SetExpiryDate@{SetExpiryDate}}
+\index{SetExpiryDate@{SetExpiryDate}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{SetExpiryDate()}{SetExpiryDate()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_a136d77514f91c0f68d3f36cb935d758f} 
+void Catalog\+::\+Entry\+::\+Set\+Expiry\+Date (\begin{DoxyParamCaption}\item[{wx\+String}]{val}{}\end{DoxyParamCaption})}
+
+
+
+Get the entry Expiry\+Date field. 
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8cpp_source_l00866}{866}} of file \mbox{\hyperlink{_entry_8cpp_source}{Entry.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_entry_afd826485ca1b2c0dcea9d50823f807eb}\index{Catalog::Entry@{Catalog::Entry}!SetFaceValue@{SetFaceValue}}
+\index{SetFaceValue@{SetFaceValue}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{SetFaceValue()}{SetFaceValue()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_afd826485ca1b2c0dcea9d50823f807eb} 
+void Catalog\+::\+Entry\+::\+Set\+Face\+Value (\begin{DoxyParamCaption}\item[{wx\+String}]{val}{}\end{DoxyParamCaption})}
+
+
+
+Get the entry Face\+Value field. 
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8cpp_source_l00878}{878}} of file \mbox{\hyperlink{_entry_8cpp_source}{Entry.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_entry_a401d45d2d5b9875752330dd6679953f2}\index{Catalog::Entry@{Catalog::Entry}!SetFormat@{SetFormat}}
+\index{SetFormat@{SetFormat}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{SetFormat()}{SetFormat()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_a401d45d2d5b9875752330dd6679953f2} 
+void Catalog\+::\+Entry\+::\+Set\+Format (\begin{DoxyParamCaption}\item[{wx\+String}]{val}{}\end{DoxyParamCaption})}
+
+
+
+Get the entry Format field. 
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8cpp_source_l00884}{884}} of file \mbox{\hyperlink{_entry_8cpp_source}{Entry.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_entry_a6932e8edd9fe132cbda338ada52bcb9e}\index{Catalog::Entry@{Catalog::Entry}!SetFormatType@{SetFormatType}}
+\index{SetFormatType@{SetFormatType}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{SetFormatType()}{SetFormatType()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_a6932e8edd9fe132cbda338ada52bcb9e} 
+void Catalog\+::\+Entry\+::\+Set\+Format\+Type (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_catalog_a2ff17ae8cd4986617c22e54b7cf50f89}{Format\+Type}}}]{type}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8h_source_l00230}{230}} of file \mbox{\hyperlink{_entry_8h_source}{Entry.\+h}}.
+
+\Hypertarget{class_catalog_1_1_entry_a6c27ed8db695f23622997e8a3ddc852e}\index{Catalog::Entry@{Catalog::Entry}!SetGum@{SetGum}}
+\index{SetGum@{SetGum}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{SetGum()}{SetGum()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_a6c27ed8db695f23622997e8a3ddc852e} 
+void Catalog\+::\+Entry\+::\+Set\+Gum (\begin{DoxyParamCaption}\item[{wx\+String}]{val}{}\end{DoxyParamCaption})}
+
+
+
+Get the entry Gum field. 
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8cpp_source_l00890}{890}} of file \mbox{\hyperlink{_entry_8cpp_source}{Entry.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_entry_a3f181d5877aaf9cf16fb5eb3d98e4132}\index{Catalog::Entry@{Catalog::Entry}!SetHeight@{SetHeight}}
+\index{SetHeight@{SetHeight}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{SetHeight()}{SetHeight()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_a3f181d5877aaf9cf16fb5eb3d98e4132} 
+void Catalog\+::\+Entry\+::\+Set\+Height (\begin{DoxyParamCaption}\item[{wx\+String}]{val}{}\end{DoxyParamCaption})}
+
+
+
+Get the entry Height field. 
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8cpp_source_l00896}{896}} of file \mbox{\hyperlink{_entry_8cpp_source}{Entry.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_entry_a05038491ca111c83dd6bfb1fa660f514}\index{Catalog::Entry@{Catalog::Entry}!SetID@{SetID}}
+\index{SetID@{SetID}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{SetID()}{SetID()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_a05038491ca111c83dd6bfb1fa660f514} 
+void Catalog\+::\+Entry\+::\+Set\+ID (\begin{DoxyParamCaption}\item[{wx\+String}]{val}{}\end{DoxyParamCaption})}
+
+
+
+Get the entry ID field. 
+
+\Hypertarget{class_catalog_1_1_entry_a7c15130d2310e4a6099ce6d506206325}\index{Catalog::Entry@{Catalog::Entry}!SetIssuedDate@{SetIssuedDate}}
+\index{SetIssuedDate@{SetIssuedDate}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{SetIssuedDate()}{SetIssuedDate()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_a7c15130d2310e4a6099ce6d506206325} 
+void Catalog\+::\+Entry\+::\+Set\+Issued\+Date (\begin{DoxyParamCaption}\item[{wx\+String}]{val}{}\end{DoxyParamCaption})}
+
+
+
+Get the entry Issued\+Date field. 
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8cpp_source_l00902}{902}} of file \mbox{\hyperlink{_entry_8cpp_source}{Entry.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_entry_a1125713bf80c33758e6661e434e65b65}\index{Catalog::Entry@{Catalog::Entry}!SetLink@{SetLink}}
+\index{SetLink@{SetLink}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{SetLink()}{SetLink()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_a1125713bf80c33758e6661e434e65b65} 
+void Catalog\+::\+Entry\+::\+Set\+Link (\begin{DoxyParamCaption}\item[{wx\+String}]{val}{}\end{DoxyParamCaption})}
+
+
+
+Get the entry Link field. 
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8cpp_source_l00908}{908}} of file \mbox{\hyperlink{_entry_8cpp_source}{Entry.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_entry_aedc0c77846860ea0f9b8295133889c83}\index{Catalog::Entry@{Catalog::Entry}!SetName@{SetName}}
+\index{SetName@{SetName}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{SetName()}{SetName()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_aedc0c77846860ea0f9b8295133889c83} 
+void Catalog\+::\+Entry\+::\+Set\+Name (\begin{DoxyParamCaption}\item[{wx\+String}]{val}{}\end{DoxyParamCaption})}
+
+
+
+Get the entry Name field. 
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8cpp_source_l00914}{914}} of file \mbox{\hyperlink{_entry_8cpp_source}{Entry.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_entry_a2b4968983642e358001371b215bfe7ec}\index{Catalog::Entry@{Catalog::Entry}!SetPaper@{SetPaper}}
+\index{SetPaper@{SetPaper}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{SetPaper()}{SetPaper()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_a2b4968983642e358001371b215bfe7ec} 
+void Catalog\+::\+Entry\+::\+Set\+Paper (\begin{DoxyParamCaption}\item[{wx\+String}]{val}{}\end{DoxyParamCaption})}
+
+
+
+Get the entry Paper field. 
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8cpp_source_l00920}{920}} of file \mbox{\hyperlink{_entry_8cpp_source}{Entry.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_entry_af9f8b5ee75c0081d0f72181b8bce42e5}\index{Catalog::Entry@{Catalog::Entry}!SetPerforation@{SetPerforation}}
+\index{SetPerforation@{SetPerforation}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{SetPerforation()}{SetPerforation()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_af9f8b5ee75c0081d0f72181b8bce42e5} 
+void Catalog\+::\+Entry\+::\+Set\+Perforation (\begin{DoxyParamCaption}\item[{wx\+String}]{val}{}\end{DoxyParamCaption})}
+
+
+
+Get the entry Perforation field. 
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8cpp_source_l00926}{926}} of file \mbox{\hyperlink{_entry_8cpp_source}{Entry.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_entry_a028c0db9cf11dc26288a56c35d3c2e99}\index{Catalog::Entry@{Catalog::Entry}!SetPrinting@{SetPrinting}}
+\index{SetPrinting@{SetPrinting}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{SetPrinting()}{SetPrinting()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_a028c0db9cf11dc26288a56c35d3c2e99} 
+void Catalog\+::\+Entry\+::\+Set\+Printing (\begin{DoxyParamCaption}\item[{wx\+String}]{val}{}\end{DoxyParamCaption})}
+
+
+
+Get the entry Printing field ;. 
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8cpp_source_l00932}{932}} of file \mbox{\hyperlink{_entry_8cpp_source}{Entry.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_entry_a0f2e798b587e15147fc7f40ff90332e7}\index{Catalog::Entry@{Catalog::Entry}!SetPrintRun@{SetPrintRun}}
+\index{SetPrintRun@{SetPrintRun}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{SetPrintRun()}{SetPrintRun()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_a0f2e798b587e15147fc7f40ff90332e7} 
+void Catalog\+::\+Entry\+::\+Set\+Print\+Run (\begin{DoxyParamCaption}\item[{wx\+String}]{val}{}\end{DoxyParamCaption})}
+
+
+
+Get the entry Print\+Run field. 
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8cpp_source_l00938}{938}} of file \mbox{\hyperlink{_entry_8cpp_source}{Entry.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_entry_a75fa3cfc5fed31a5123f455922b2921a}\index{Catalog::Entry@{Catalog::Entry}!SetScore@{SetScore}}
+\index{SetScore@{SetScore}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{SetScore()}{SetScore()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_a75fa3cfc5fed31a5123f455922b2921a} 
+void Catalog\+::\+Entry\+::\+Set\+Score (\begin{DoxyParamCaption}\item[{wx\+String}]{val}{}\end{DoxyParamCaption})}
+
+
+
+Get the entry Score field. 
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8cpp_source_l00944}{944}} of file \mbox{\hyperlink{_entry_8cpp_source}{Entry.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_entry_a6f603952a3ef8084e3226bdcb6c83fb4}\index{Catalog::Entry@{Catalog::Entry}!SetSeries@{SetSeries}}
+\index{SetSeries@{SetSeries}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{SetSeries()}{SetSeries()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_a6f603952a3ef8084e3226bdcb6c83fb4} 
+void Catalog\+::\+Entry\+::\+Set\+Series (\begin{DoxyParamCaption}\item[{wx\+String}]{val}{}\end{DoxyParamCaption})}
+
+
+
+Get the entry Series field. 
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8cpp_source_l00950}{950}} of file \mbox{\hyperlink{_entry_8cpp_source}{Entry.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_entry_a3132872d1fca5cc2fbc0f2b6094f1d7b}\index{Catalog::Entry@{Catalog::Entry}!SetThemes@{SetThemes}}
+\index{SetThemes@{SetThemes}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{SetThemes()}{SetThemes()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_a3132872d1fca5cc2fbc0f2b6094f1d7b} 
+void Catalog\+::\+Entry\+::\+Set\+Themes (\begin{DoxyParamCaption}\item[{wx\+String}]{val}{}\end{DoxyParamCaption})}
+
+
+
+Get the entry Themes field. 
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8cpp_source_l00956}{956}} of file \mbox{\hyperlink{_entry_8cpp_source}{Entry.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_entry_a73f50c73a0c70fd374e9b6914facbf15}\index{Catalog::Entry@{Catalog::Entry}!SetVal@{SetVal}}
+\index{SetVal@{SetVal}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{SetVal()}{SetVal()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_a73f50c73a0c70fd374e9b6914facbf15} 
+void Catalog\+::\+Entry\+::\+Set\+Val (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176}{Data\+Types}}}]{type}{, }\item[{wx\+String}]{val}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8h_source_l00263}{263}} of file \mbox{\hyperlink{_entry_8h_source}{Entry.\+h}}.
+
+\Hypertarget{class_catalog_1_1_entry_a2018d9609ea437201645b74d26c59b48}\index{Catalog::Entry@{Catalog::Entry}!SetVariant@{SetVariant}}
+\index{SetVariant@{SetVariant}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{SetVariant()}{SetVariant()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_a2018d9609ea437201645b74d26c59b48} 
+void Catalog\+::\+Entry\+::\+Set\+Variant (\begin{DoxyParamCaption}\item[{wx\+String}]{val}{}\end{DoxyParamCaption})}
+
+
+
+Get the entry Variant field. 
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8cpp_source_l00962}{962}} of file \mbox{\hyperlink{_entry_8cpp_source}{Entry.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_entry_aefc3c97afe65d69a92986b351200aee0}\index{Catalog::Entry@{Catalog::Entry}!SetWatermark@{SetWatermark}}
+\index{SetWatermark@{SetWatermark}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{SetWatermark()}{SetWatermark()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_aefc3c97afe65d69a92986b351200aee0} 
+void Catalog\+::\+Entry\+::\+Set\+Watermark (\begin{DoxyParamCaption}\item[{wx\+String}]{val}{}\end{DoxyParamCaption})}
+
+
+
+Get the entry Watermark field. 
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8cpp_source_l00974}{974}} of file \mbox{\hyperlink{_entry_8cpp_source}{Entry.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_entry_ac75ad00a180ca8823fca5776669a0873}\index{Catalog::Entry@{Catalog::Entry}!SetWidth@{SetWidth}}
+\index{SetWidth@{SetWidth}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{SetWidth()}{SetWidth()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_ac75ad00a180ca8823fca5776669a0873} 
+void Catalog\+::\+Entry\+::\+Set\+Width (\begin{DoxyParamCaption}\item[{wx\+String}]{val}{}\end{DoxyParamCaption})}
+
+
+
+Get the entry Width field. 
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8cpp_source_l00968}{968}} of file \mbox{\hyperlink{_entry_8cpp_source}{Entry.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_entry_a7066d278856ec20f77623377768a15fb}\index{Catalog::Entry@{Catalog::Entry}!WriteInventory@{WriteInventory}}
+\index{WriteInventory@{WriteInventory}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{WriteInventory()}{WriteInventory()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_a7066d278856ec20f77623377768a15fb} 
+void Catalog\+::\+Entry\+::\+Write\+Inventory (\begin{DoxyParamCaption}\item[{std\+::ofstream \&}]{text}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8cpp_source_l00477}{477}} of file \mbox{\hyperlink{_entry_8cpp_source}{Entry.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_entry_a23a017705f0277dd0b57213b229ff41a}\index{Catalog::Entry@{Catalog::Entry}!WriteInventoryItem@{WriteInventoryItem}}
+\index{WriteInventoryItem@{WriteInventoryItem}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{WriteInventoryItem()}{WriteInventoryItem()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_a23a017705f0277dd0b57213b229ff41a} 
+void Catalog\+::\+Entry\+::\+Write\+Inventory\+Item (\begin{DoxyParamCaption}\item[{std\+::ofstream \&}]{text}{, }\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{child}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8cpp_source_l00457}{457}} of file \mbox{\hyperlink{_entry_8cpp_source}{Entry.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_entry_a7067d700d2c87902388eb1fdc1038cec}\index{Catalog::Entry@{Catalog::Entry}!WriteListEntry@{WriteListEntry}}
+\index{WriteListEntry@{WriteListEntry}!Catalog::Entry@{Catalog::Entry}}
+\doxysubsubsection{\texorpdfstring{WriteListEntry()}{WriteListEntry()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_entry_a7067d700d2c87902388eb1fdc1038cec} 
+void Catalog\+::\+Entry\+::\+Write\+List\+Entry (\begin{DoxyParamCaption}\item[{std\+::ofstream \&}]{text}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_entry_8cpp_source_l00512}{512}} of file \mbox{\hyperlink{_entry_8cpp_source}{Entry.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/femon/\+Development/wx/clone\+Test/\+Stamp\+Tool/src/catalog/\mbox{\hyperlink{_entry_8h}{Entry.\+h}}\item 
+C\+:/\+Users/femon/\+Development/wx/clone\+Test/\+Stamp\+Tool/src/catalog/\mbox{\hyperlink{_entry_8cpp}{Entry.\+cpp}}\end{DoxyCompactItemize}

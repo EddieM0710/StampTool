@@ -1,0 +1,27 @@
+var _design_defs_8cpp =
+[
+    [ "Design::AlbumFrameDefaults", "namespace_design.html#a342d9455df07585aa762c1be18724f90", null ],
+    [ "Design::AlbumPageDefaults", "namespace_design.html#aa4fea110dd291e5d5d0fd78ec9d6ff98", null ],
+    [ "Design::AlbumStampDefaults", "namespace_design.html#ac973715a5cfcda6fc6028a5286198e4b", null ],
+    [ "Design::FindAlbumAttrType", "namespace_design.html#afe7c9b03c8bdc34c825b312546065b83", null ],
+    [ "Design::FindAlbumBaseType", "namespace_design.html#a06b00762b0ce370fb98fdd70ac7d9d3c", null ],
+    [ "Design::FindAlignmentModeType", "namespace_design.html#a7afd338be906fc3816e6721ec5c6817a", null ],
+    [ "Design::FindFontUsageType", "namespace_design.html#a867f1223ccc1a10fdae9a28dd43466eb", null ],
+    [ "Design::FindStampLocationType", "namespace_design.html#a2aaa34bc44a82f76f74d6e6f011945bf", null ],
+    [ "Design::GetAlbum", "namespace_design.html#aaf913dbe97a6c57862a852f79cb54404", null ],
+    [ "Design::GetAlbumVolume", "namespace_design.html#a348ebdba188f193934c55b8f0ad00550", null ],
+    [ "Design::GetSelectedNodePage", "namespace_design.html#ade99086dccbbc5579bb9a0edbe0edfa5", null ],
+    [ "Design::InitDesignDefs", "namespace_design.html#a81cb9eeed8b200a49810c452f732dc56", null ],
+    [ "Design::IsAlbumBaseTypeValid", "namespace_design.html#a0f12cceacb248602141ce2d3dca6da6b", null ],
+    [ "Design::IsPortrait", "namespace_design.html#acda93570e5fda30e2608df376907778d", null ],
+    [ "Design::MakeNode", "namespace_design.html#aac217f371ec56287a4504c98d9530b89", null ],
+    [ "Design::AlbumBaseNames", "namespace_design.html#ab3742ad7971c04bd777b0fee90390d70", null ],
+    [ "Design::AttrNameStrings", "namespace_design.html#aa688e51eed6c13e36e48175b175073ad", null ],
+    [ "Design::DefaultPointSize", "namespace_design.html#aa4885175772a49d51fef791c56297455", null ],
+    [ "Design::FontUsageTypeStrings", "namespace_design.html#a5633022d39c0aebfb61c328332990d78", null ],
+    [ "Design::LayoutTypeStrings", "namespace_design.html#a22874362385d0bd60077262a6cbbf931", null ],
+    [ "Design::OrientationStrings", "namespace_design.html#a68f016e4c7c4fd45c002d095153930eb", null ],
+    [ "Design::PPMM", "namespace_design.html#a352c26b74797bf2adf2f67ff9b212e06", null ],
+    [ "Design::StampAlignmentModeStrings", "namespace_design.html#a5531e44b6223563fc30a7774c9352d9a", null ],
+    [ "Design::StampNamePositionStrings", "namespace_design.html#a04ebd7d62b02f5ae629ebdb6639b51b7", null ]
+];

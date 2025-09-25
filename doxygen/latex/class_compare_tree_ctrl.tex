@@ -1,0 +1,785 @@
+\doxysection{Compare\+Tree\+Ctrl Class Reference}
+\hypertarget{class_compare_tree_ctrl}{}\label{class_compare_tree_ctrl}\index{CompareTreeCtrl@{CompareTreeCtrl}}
+
+
+{\ttfamily \#include $<$Compare\+Tree\+Ctrl.\+h$>$}
+
+Inheritance diagram for Compare\+Tree\+Ctrl\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_compare_tree_ctrl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \{ \mbox{\hyperlink{class_compare_tree_ctrl_a5326d1cc45c052e702237d872f7e0c9dae55b46e33723d3f876fd7d8f512251e8}{Catalog\+List\+Tree\+\_\+\+Quit}} = wx\+ID\+\_\+\+EXIT
+, \mbox{\hyperlink{class_compare_tree_ctrl_a5326d1cc45c052e702237d872f7e0c9daa33bf5f176c0598f2b399528a9b9e57f}{Catalog\+List\+Tree\+\_\+\+About}} = wx\+ID\+\_\+\+ABOUT
+, \mbox{\hyperlink{class_compare_tree_ctrl_a5326d1cc45c052e702237d872f7e0c9dab43124eb59f1b17ff9ea300a5949ead1}{Catalog\+List\+Tree\+\_\+\+Colnect}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_compare_tree_ctrl_a10582d3851b7027c379e692e56aa0ec9}{Compare\+Tree\+Ctrl}} ()
+\item 
+\mbox{\hyperlink{class_compare_tree_ctrl_aaa2e0c11f7930f2e89bb91c1c530dd83}{Compare\+Tree\+Ctrl}} (wx\+Window \texorpdfstring{$\ast$}{*}parent, const wx\+Window\+ID id, const wx\+Point \&pos, const wx\+Size \&size, long style)
+\item 
+virtual \mbox{\hyperlink{class_compare_tree_ctrl_a9cff3bcfb44b1c58157e4c2abf125302}{\texorpdfstring{$\sim$}{\string~}\+Compare\+Tree\+Ctrl}} (void)
+\item 
+wx\+Tree\+Item\+Id \mbox{\hyperlink{class_compare_tree_ctrl_a5d68ba6a64f0b79408aec5c7e58ac8c1}{Add\+Child}} (wx\+Tree\+Item\+Id parent, wx\+Xml\+Node \texorpdfstring{$\ast$}{*}child)
+\begin{DoxyCompactList}\small\item\em Add\+Child adds wx\+Xml\+Node as a item in the tree. It is recursively called to create sort nodes as necessary to find the proper place for the child. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3a}{Catalog\+::\+Icon\+ID}} \mbox{\hyperlink{class_compare_tree_ctrl_a5e0872deb7a5c4e0944d16e4098785af}{Get\+Icon\+Id}} (\mbox{\hyperlink{class_catalog_1_1_entry}{Catalog\+::\+Entry}} \texorpdfstring{$\ast$}{*}entry, \mbox{\hyperlink{namespace_catalog_a10de14517a76cdd4e6b2bc1342142b07}{Catalog\+::\+Merge\+Status}} status)
+\item 
+void \mbox{\hyperlink{class_compare_tree_ctrl_aca5cac46fa3e4e9e4b57a3ce3c1020d3}{Add\+Entry}} (wx\+Tree\+Item\+Id id)
+\item 
+void \mbox{\hyperlink{class_compare_tree_ctrl_abe7f83d64056d11d46b6cfd9dc67f4c1}{Clear}} ()
+\item 
+\mbox{\hyperlink{_gui_utils_8h_a66b06809b27f311da0c50fba212270ea}{Comparison\+Result\+Type}} \mbox{\hyperlink{class_compare_tree_ctrl_a4cc5f64ba3e659c9d57b8f3e914ad3d3}{Compare\+Dates}} (wx\+String date1, wx\+String date2)
+\item 
+\mbox{\hyperlink{class_compare_tree_item_data}{Compare\+Tree\+Item\+Data}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_compare_tree_ctrl_ac0ff5000571f84448a9d3a67be2969d8}{Create\+Child\+Data}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}target\+Node, wx\+Xml\+Node \texorpdfstring{$\ast$}{*}merge\+Node, wx\+String \&label, \mbox{\hyperlink{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3a}{Catalog\+::\+Icon\+ID}} \&icon, \mbox{\hyperlink{namespace_catalog_a86f503ced35b06e6427477ddab27c6be}{Catalog\+::\+Catalog\+Base\+Type}} \&node\+Type)
+\item 
+void \mbox{\hyperlink{class_compare_tree_ctrl_ab7ea6b89668e1bddc2360f1baf1865ce}{Create\+State\+Image\+List}} ()
+\item 
+void \mbox{\hyperlink{class_compare_tree_ctrl_ac474521817da3c017932b1780a8b3408}{Create\+Image\+List}} ()
+\item 
+wx\+Tree\+Item\+Id \mbox{\hyperlink{class_compare_tree_ctrl_a55bfbc6bb6d1a527f8aa69bc7ebaeaaf}{Find\+First\+Entry\+Child}} (wx\+Tree\+Item\+Id id)
+\item 
+wx\+Tree\+Item\+Id \mbox{\hyperlink{class_compare_tree_ctrl_a8cf969d39227aea2f722960f7822e88a}{Find\+Tree\+Item\+ID}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}node)
+\item 
+wx\+Tree\+Item\+Id \mbox{\hyperlink{class_compare_tree_ctrl_ae296a02ca39a35621ce58750859f5a46}{Find\+Tree\+Item\+ID}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}node, wx\+Tree\+Item\+Id id)
+\item 
+wx\+Tree\+Item\+Id \mbox{\hyperlink{class_compare_tree_ctrl_a03ce52962fb3a18f3e6a49f359ab3c2f}{Find\+Tree\+Item\+ID}} (wx\+String stamp\+ID)
+\item 
+wx\+Tree\+Item\+Id \mbox{\hyperlink{class_compare_tree_ctrl_a94a16ac663118d990fb7edc65928aaeb}{Find\+Tree\+Item\+ID}} (wx\+String stamp\+ID, wx\+Tree\+Item\+Id id)
+\item 
+wx\+String \mbox{\hyperlink{class_compare_tree_ctrl_a93a873dde3ea4beb279a2b95260902c7}{Get\+Attribute}} (wx\+Tree\+Item\+Id cat\+Tree\+ID, wx\+String name)
+\item 
+wx\+String \mbox{\hyperlink{class_compare_tree_ctrl_aa36168b3e45e4ea70fb70ca82c242c74}{Get\+ID}} (wx\+Tree\+Item\+Id cat\+Tree\+ID)
+\item 
+wx\+String \mbox{\hyperlink{class_compare_tree_ctrl_abfa60c2cfb7593168354e71009d89010}{Get\+Image}} (wx\+Tree\+Item\+Id cat\+Tree\+ID)
+\item 
+wx\+String \mbox{\hyperlink{class_compare_tree_ctrl_aa6d483cc1b743ce3218a0b4228901e60}{Get\+Image\+Full\+Name}} (wx\+Tree\+Item\+Id cat\+Tree\+ID)
+\item 
+wx\+String \mbox{\hyperlink{class_compare_tree_ctrl_a7278f25b040b11629aad89762319a964}{Get\+Item\+Desc}} (wx\+Tree\+Item\+Id id)
+\item 
+wx\+String \mbox{\hyperlink{class_compare_tree_ctrl_ab5bf53c8d3e94f0481f48939af57a68f}{Get\+Item\+Image\+Full\+Name}} (wx\+Tree\+Item\+Id id)
+\item 
+wx\+Xml\+Node \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_compare_tree_ctrl_a13aecb3d09b9e308c1921392788a4341}{Get\+Item\+Node}} (wx\+Tree\+Item\+Id id)
+\item 
+\mbox{\hyperlink{namespace_catalog_a86f503ced35b06e6427477ddab27c6be}{Catalog\+::\+Catalog\+Base\+Type}} \mbox{\hyperlink{class_compare_tree_ctrl_ab04feeb667b45148f0a8cc7d54ae9631}{Get\+Item\+Type}} (wx\+Tree\+Item\+Id id)
+\item 
+wx\+Xml\+Node \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_compare_tree_ctrl_aadeaaa78b6ccf9379137e21907339151}{Get\+New\+Entry}} (wx\+Tree\+Item\+Id item\+Id)
+\item 
+wx\+Xml\+Node \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_compare_tree_ctrl_a945b71bee5b95589921b7b69003b9439}{Get\+Selection\+Node}} ()
+\item 
+void \mbox{\hyperlink{class_compare_tree_ctrl_a2fe6b0dcc4be277082d9b89e69b513aa}{Go\+To\+Colnect}} (wx\+Tree\+Item\+Id id)
+\item 
+wx\+Tree\+Item\+Id \mbox{\hyperlink{class_compare_tree_ctrl_a817ea593c13529fa1582677a47e9faf2}{Insert\+Child}} (wx\+Tree\+Item\+Id parent, wx\+Xml\+Node \texorpdfstring{$\ast$}{*}child, bool after=true)
+\item 
+bool \mbox{\hyperlink{class_compare_tree_ctrl_a9e94354c05a4d2b520e7d41797a73152}{Is\+Element}} (wx\+Tree\+Item\+Id item, wx\+String stamp\+ID)
+\item 
+bool \mbox{\hyperlink{class_compare_tree_ctrl_a31a97f4b88aee440943a9595ec6a805b}{Is\+Element}} (wx\+Tree\+Item\+Id item, wx\+Xml\+Node \texorpdfstring{$\ast$}{*}node)
+\item 
+void \mbox{\hyperlink{class_compare_tree_ctrl_a81164a79a81e5937e1bd60eac37f45b5}{Load\+Compare\+Tree}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}root)
+\item 
+virtual int \mbox{\hyperlink{class_compare_tree_ctrl_a6dfe3504bc8bde92b2376d811af675b3}{On\+Compare\+Items}} (const wx\+Tree\+Item\+Id \&i1, const wx\+Tree\+Item\+Id \&i2) wx\+OVERRIDE
+\item 
+void \mbox{\hyperlink{class_compare_tree_ctrl_a7c1b0a82ab2845e3e766b021b91ae8d0}{On\+Item\+Menu}} (wx\+Tree\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_compare_tree_ctrl_a8d8cd174a64a80940f00fb48755e53b3}{On\+Sel\+Changed}} (wx\+Tree\+Event \&event)
+\item 
+wx\+String \mbox{\hyperlink{class_compare_tree_ctrl_ab6600b48c7e9a4ed47c3e7a56000a3fd}{Get\+Desc}} (wx\+Tree\+Item\+Id item)
+\item 
+wx\+Tree\+Item\+Id \mbox{\hyperlink{class_compare_tree_ctrl_ad7d613823b3915083f1b14563024da25}{Find\+Next\+Item}} (wx\+Tree\+Item\+Id item\+Id)
+\item 
+wx\+Tree\+Item\+Id \mbox{\hyperlink{class_compare_tree_ctrl_aaf1b33b9162f0bfd5a9491c05df123e6}{Find\+Prev\+Item}} (wx\+Tree\+Item\+Id item\+Id)
+\item 
+wx\+Tree\+Item\+Id \mbox{\hyperlink{class_compare_tree_ctrl_a39957d5ebee48710aa2b52a80cc32e6e}{Find\+Next\+Entry\+Item}} (wx\+Tree\+Item\+Id item\+Id)
+\item 
+wx\+Tree\+Item\+Id \mbox{\hyperlink{class_compare_tree_ctrl_a760327a234572f37f23915be52c8c978}{Find\+Prev\+Entry\+Item}} (wx\+Tree\+Item\+Id item\+Id)
+\item 
+bool \mbox{\hyperlink{class_compare_tree_ctrl_ac1895f4c626c024bdf190f66dfdba275}{Is\+Entry\+Node}} (wx\+Tree\+Item\+Id item\+Id)
+\item 
+void \mbox{\hyperlink{class_compare_tree_ctrl_a2e904d7fc93f361c68af2d3c8f240422}{On\+Treectrl\+Item\+Collapsed}} (wx\+Tree\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_compare_tree_ctrl_a973f4400055eec15874cc75aa803f102}{On\+Treectrl\+Item\+Expanded}} (wx\+Tree\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_compare_tree_ctrl_a904b41014979e86bbd32b87871cc3772}{Set\+Attribute}} (wx\+Tree\+Item\+Id cat\+Tree\+ID, wx\+String name, wx\+String val)
+\item 
+void \mbox{\hyperlink{class_compare_tree_ctrl_a99a87e0a92b28cf0968aa7c354387441}{Select\+Stamp}} (wx\+String id)
+\item 
+void \mbox{\hyperlink{class_compare_tree_ctrl_a07bef4a8f96a9c6467369160ae415022}{Set\+Tree\+Item\+Collapse\+State}} (wx\+Tree\+Item\+Id child\+ID)
+\item 
+void \mbox{\hyperlink{class_compare_tree_ctrl_a9949c7c58821b84a338d0b461fdcad71}{Set\+Item\+Node}} (wx\+Tree\+Item\+Id id, wx\+Xml\+Node \texorpdfstring{$\ast$}{*}ele)
+\item 
+void \mbox{\hyperlink{class_compare_tree_ctrl_ab73c95df15a9e4e961190a4e726dcd9e}{Set\+Item\+Image\+Full\+Name}} (wx\+Tree\+Item\+Id id, wx\+String str)
+\item 
+void \mbox{\hyperlink{class_compare_tree_ctrl_a6ffa9d2792c4ece63cc9a54d2c641bc0}{Set\+Next\+State}} (const wx\+Tree\+Item\+Id \&item\+ID)
+\begin{DoxyCompactList}\small\item\em Set the checkbox of the item to the next state. Saves the new state. Sends message to Album tree to update. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_compare_tree_ctrl_a1250001f0cb351c0ec98d5e2eaf63c78}{Set\+Selection}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}node)
+\item 
+void \mbox{\hyperlink{class_compare_tree_ctrl_ac26b7219a6c65aa7c247a0a40df96412}{Set\+Type}} (wx\+Tree\+Item\+Id id, \mbox{\hyperlink{namespace_catalog_a86f503ced35b06e6427477ddab27c6be}{Catalog\+::\+Catalog\+Base\+Type}} type)
+\item 
+void \mbox{\hyperlink{class_compare_tree_ctrl_a8556c53f36426c6e565f0c9a1b6d3d38}{Show\+Menu}} (wx\+Tree\+Item\+Id id, const wx\+Point \&pt)
+\item 
+void \mbox{\hyperlink{class_compare_tree_ctrl_a9447a9e2dd86f39fe63c790ebe9139d7}{Set\+Compare\+Panel}} (\mbox{\hyperlink{class_compare_panel}{Compare\+Panel}} \texorpdfstring{$\ast$}{*}compare\+Panel)
+\item 
+\mbox{\hyperlink{class_compare_panel}{Compare\+Panel}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_compare_tree_ctrl_a6737fa28e9564e3c787fdc7f27fe31e4}{Get\+Compare\+Panel}} ()
+\item 
+wx\+Tree\+Item\+Id \mbox{\hyperlink{class_compare_tree_ctrl_ab4f75eef3cac3afdb28d4691ad59ee2e}{Find\+Target\+Entry\+For\+New\+Entry}} (wx\+Tree\+Item\+Id id, \mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176}{Catalog\+::\+Data\+Types}} type, wx\+String search\+Val)
+\item 
+wx\+Tree\+Item\+Id \mbox{\hyperlink{class_compare_tree_ctrl_aeb8dc3d021f167bd46ca6c81c27f9d28}{Find\+Target\+Entry\+For\+New\+Entry}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}node, \mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176}{Catalog\+::\+Data\+Types}} type)
+\item 
+void \mbox{\hyperlink{class_compare_tree_ctrl_aa24aeae7ba992e0a671b9baf5dbfabbd}{Add\+Merge\+To\+Entry\+List}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}node)
+\item 
+void \mbox{\hyperlink{class_compare_tree_ctrl_af2f96dd66083cbeb161f0a110661fb4a}{Load\+Merge\+To\+Compare\+Tree}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}merge\+Root)
+\item 
+wx\+Tree\+Item\+Id \mbox{\hyperlink{class_compare_tree_ctrl_a1c8a263425aa6d053e26aded0a8116fc}{Find\+Foriegn}} ()
+\item 
+wx\+Tree\+Item\+Id \mbox{\hyperlink{class_compare_tree_ctrl_af7b34b668b6bf812a43013b6e0719a23}{Copy\+Foriegn\+Child}} (wx\+Tree\+Item\+Id parent, wx\+Xml\+Node \texorpdfstring{$\ast$}{*}child)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_compare_tree_ctrl_8h_source_l00124}{124}} of file \mbox{\hyperlink{_compare_tree_ctrl_8h_source}{Compare\+Tree\+Ctrl.\+h}}.
+
+
+
+\label{doc-enum-members}
+\Hypertarget{class_compare_tree_ctrl_doc-enum-members}
+\doxysubsection{Member Enumeration Documentation}
+\Hypertarget{class_compare_tree_ctrl_a5326d1cc45c052e702237d872f7e0c9d}\doxysubsubsection{\texorpdfstring{anonymous enum}{anonymous enum}}
+{\footnotesize\ttfamily \label{class_compare_tree_ctrl_a5326d1cc45c052e702237d872f7e0c9d} 
+anonymous enum}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CatalogListTree\_Quit@{CatalogListTree\_Quit}!CompareTreeCtrl@{CompareTreeCtrl}}\index{CompareTreeCtrl@{CompareTreeCtrl}!CatalogListTree\_Quit@{CatalogListTree\_Quit}}}\Hypertarget{class_compare_tree_ctrl_a5326d1cc45c052e702237d872f7e0c9dae55b46e33723d3f876fd7d8f512251e8}\label{class_compare_tree_ctrl_a5326d1cc45c052e702237d872f7e0c9dae55b46e33723d3f876fd7d8f512251e8} 
+Catalog\+List\+Tree\+\_\+\+Quit&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CatalogListTree\_About@{CatalogListTree\_About}!CompareTreeCtrl@{CompareTreeCtrl}}\index{CompareTreeCtrl@{CompareTreeCtrl}!CatalogListTree\_About@{CatalogListTree\_About}}}\Hypertarget{class_compare_tree_ctrl_a5326d1cc45c052e702237d872f7e0c9daa33bf5f176c0598f2b399528a9b9e57f}\label{class_compare_tree_ctrl_a5326d1cc45c052e702237d872f7e0c9daa33bf5f176c0598f2b399528a9b9e57f} 
+Catalog\+List\+Tree\+\_\+\+About&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CatalogListTree\_Colnect@{CatalogListTree\_Colnect}!CompareTreeCtrl@{CompareTreeCtrl}}\index{CompareTreeCtrl@{CompareTreeCtrl}!CatalogListTree\_Colnect@{CatalogListTree\_Colnect}}}\Hypertarget{class_compare_tree_ctrl_a5326d1cc45c052e702237d872f7e0c9dab43124eb59f1b17ff9ea300a5949ead1}\label{class_compare_tree_ctrl_a5326d1cc45c052e702237d872f7e0c9dab43124eb59f1b17ff9ea300a5949ead1} 
+Catalog\+List\+Tree\+\_\+\+Colnect&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{_compare_tree_ctrl_8h_source_l00130}{130}} of file \mbox{\hyperlink{_compare_tree_ctrl_8h_source}{Compare\+Tree\+Ctrl.\+h}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_compare_tree_ctrl_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_compare_tree_ctrl_a10582d3851b7027c379e692e56aa0ec9}\index{CompareTreeCtrl@{CompareTreeCtrl}!CompareTreeCtrl@{CompareTreeCtrl}}
+\index{CompareTreeCtrl@{CompareTreeCtrl}!CompareTreeCtrl@{CompareTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{CompareTreeCtrl()}{CompareTreeCtrl()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_compare_tree_ctrl_a10582d3851b7027c379e692e56aa0ec9} 
+Compare\+Tree\+Ctrl\+::\+Compare\+Tree\+Ctrl (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_compare_tree_ctrl_8h_source_l00140}{140}} of file \mbox{\hyperlink{_compare_tree_ctrl_8h_source}{Compare\+Tree\+Ctrl.\+h}}.
+
+\Hypertarget{class_compare_tree_ctrl_aaa2e0c11f7930f2e89bb91c1c530dd83}\index{CompareTreeCtrl@{CompareTreeCtrl}!CompareTreeCtrl@{CompareTreeCtrl}}
+\index{CompareTreeCtrl@{CompareTreeCtrl}!CompareTreeCtrl@{CompareTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{CompareTreeCtrl()}{CompareTreeCtrl()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_compare_tree_ctrl_aaa2e0c11f7930f2e89bb91c1c530dd83} 
+Compare\+Tree\+Ctrl\+::\+Compare\+Tree\+Ctrl (\begin{DoxyParamCaption}\item[{wx\+Window \texorpdfstring{$\ast$}{*}}]{parent}{, }\item[{const wx\+Window\+ID}]{id}{, }\item[{const wx\+Point \&}]{pos}{, }\item[{const wx\+Size \&}]{size}{, }\item[{long}]{style}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source_l00149}{149}} of file \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source}{Compare\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_compare_tree_ctrl_a9cff3bcfb44b1c58157e4c2abf125302}\index{CompareTreeCtrl@{CompareTreeCtrl}!````~CompareTreeCtrl@{\texorpdfstring{$\sim$}{\string~}CompareTreeCtrl}}
+\index{````~CompareTreeCtrl@{\texorpdfstring{$\sim$}{\string~}CompareTreeCtrl}!CompareTreeCtrl@{CompareTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}CompareTreeCtrl()}{\string~CompareTreeCtrl()}}
+{\footnotesize\ttfamily \label{class_compare_tree_ctrl_a9cff3bcfb44b1c58157e4c2abf125302} 
+virtual Compare\+Tree\+Ctrl\+::\texorpdfstring{$\sim$}{\string~}\+Compare\+Tree\+Ctrl (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Definition at line \mbox{\hyperlink{_compare_tree_ctrl_8h_source_l00145}{145}} of file \mbox{\hyperlink{_compare_tree_ctrl_8h_source}{Compare\+Tree\+Ctrl.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_compare_tree_ctrl_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_compare_tree_ctrl_a5d68ba6a64f0b79408aec5c7e58ac8c1}\index{CompareTreeCtrl@{CompareTreeCtrl}!AddChild@{AddChild}}
+\index{AddChild@{AddChild}!CompareTreeCtrl@{CompareTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{AddChild()}{AddChild()}}
+{\footnotesize\ttfamily \label{class_compare_tree_ctrl_a5d68ba6a64f0b79408aec5c7e58ac8c1} 
+wx\+Tree\+Item\+Id Compare\+Tree\+Ctrl\+::\+Add\+Child (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{parent}{, }\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{child}{}\end{DoxyParamCaption})}
+
+
+
+Add\+Child adds wx\+Xml\+Node as a item in the tree. It is recursively called to create sort nodes as necessary to find the proper place for the child. 
+
+
+
+Definition at line \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source_l00196}{196}} of file \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source}{Compare\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_compare_tree_ctrl_aca5cac46fa3e4e9e4b57a3ce3c1020d3}\index{CompareTreeCtrl@{CompareTreeCtrl}!AddEntry@{AddEntry}}
+\index{AddEntry@{AddEntry}!CompareTreeCtrl@{CompareTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{AddEntry()}{AddEntry()}}
+{\footnotesize\ttfamily \label{class_compare_tree_ctrl_aca5cac46fa3e4e9e4b57a3ce3c1020d3} 
+void Compare\+Tree\+Ctrl\+::\+Add\+Entry (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{id}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source_l00245}{245}} of file \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source}{Compare\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_compare_tree_ctrl_aa24aeae7ba992e0a671b9baf5dbfabbd}\index{CompareTreeCtrl@{CompareTreeCtrl}!AddMergeToEntryList@{AddMergeToEntryList}}
+\index{AddMergeToEntryList@{AddMergeToEntryList}!CompareTreeCtrl@{CompareTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{AddMergeToEntryList()}{AddMergeToEntryList()}}
+{\footnotesize\ttfamily \label{class_compare_tree_ctrl_aa24aeae7ba992e0a671b9baf5dbfabbd} 
+void Compare\+Tree\+Ctrl\+::\+Add\+Merge\+To\+Entry\+List (\begin{DoxyParamCaption}\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{node}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source_l00819}{819}} of file \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source}{Compare\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_compare_tree_ctrl_abe7f83d64056d11d46b6cfd9dc67f4c1}\index{CompareTreeCtrl@{CompareTreeCtrl}!Clear@{Clear}}
+\index{Clear@{Clear}!CompareTreeCtrl@{CompareTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{Clear()}{Clear()}}
+{\footnotesize\ttfamily \label{class_compare_tree_ctrl_abe7f83d64056d11d46b6cfd9dc67f4c1} 
+void Compare\+Tree\+Ctrl\+::\+Clear (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source_l00325}{325}} of file \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source}{Compare\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_compare_tree_ctrl_a4cc5f64ba3e659c9d57b8f3e914ad3d3}\index{CompareTreeCtrl@{CompareTreeCtrl}!CompareDates@{CompareDates}}
+\index{CompareDates@{CompareDates}!CompareTreeCtrl@{CompareTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{CompareDates()}{CompareDates()}}
+{\footnotesize\ttfamily \label{class_compare_tree_ctrl_a4cc5f64ba3e659c9d57b8f3e914ad3d3} 
+\mbox{\hyperlink{_gui_utils_8h_a66b06809b27f311da0c50fba212270ea}{Comparison\+Result\+Type}} Compare\+Tree\+Ctrl\+::\+Compare\+Dates (\begin{DoxyParamCaption}\item[{wx\+String}]{date1}{, }\item[{wx\+String}]{date2}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_compare_tree_ctrl_af7b34b668b6bf812a43013b6e0719a23}\index{CompareTreeCtrl@{CompareTreeCtrl}!CopyForiegnChild@{CopyForiegnChild}}
+\index{CopyForiegnChild@{CopyForiegnChild}!CompareTreeCtrl@{CompareTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{CopyForiegnChild()}{CopyForiegnChild()}}
+{\footnotesize\ttfamily \label{class_compare_tree_ctrl_af7b34b668b6bf812a43013b6e0719a23} 
+wx\+Tree\+Item\+Id Compare\+Tree\+Ctrl\+::\+Copy\+Foriegn\+Child (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{parent}{, }\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{child}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source_l00886}{886}} of file \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source}{Compare\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_compare_tree_ctrl_ac0ff5000571f84448a9d3a67be2969d8}\index{CompareTreeCtrl@{CompareTreeCtrl}!CreateChildData@{CreateChildData}}
+\index{CreateChildData@{CreateChildData}!CompareTreeCtrl@{CompareTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{CreateChildData()}{CreateChildData()}}
+{\footnotesize\ttfamily \label{class_compare_tree_ctrl_ac0ff5000571f84448a9d3a67be2969d8} 
+\mbox{\hyperlink{class_compare_tree_item_data}{Compare\+Tree\+Item\+Data}} \texorpdfstring{$\ast$}{*} Compare\+Tree\+Ctrl\+::\+Create\+Child\+Data (\begin{DoxyParamCaption}\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{target\+Node}{, }\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{merge\+Node}{, }\item[{wx\+String \&}]{label}{, }\item[{\mbox{\hyperlink{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3a}{Catalog\+::\+Icon\+ID}} \&}]{icon}{, }\item[{\mbox{\hyperlink{namespace_catalog_a86f503ced35b06e6427477ddab27c6be}{Catalog\+::\+Catalog\+Base\+Type}} \&}]{node\+Type}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source_l00272}{272}} of file \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source}{Compare\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_compare_tree_ctrl_ac474521817da3c017932b1780a8b3408}\index{CompareTreeCtrl@{CompareTreeCtrl}!CreateImageList@{CreateImageList}}
+\index{CreateImageList@{CreateImageList}!CompareTreeCtrl@{CompareTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{CreateImageList()}{CreateImageList()}}
+{\footnotesize\ttfamily \label{class_compare_tree_ctrl_ac474521817da3c017932b1780a8b3408} 
+void Compare\+Tree\+Ctrl\+::\+Create\+Image\+List (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source_l00337}{337}} of file \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source}{Compare\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_compare_tree_ctrl_ab7ea6b89668e1bddc2360f1baf1865ce}\index{CompareTreeCtrl@{CompareTreeCtrl}!CreateStateImageList@{CreateStateImageList}}
+\index{CreateStateImageList@{CreateStateImageList}!CompareTreeCtrl@{CompareTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{CreateStateImageList()}{CreateStateImageList()}}
+{\footnotesize\ttfamily \label{class_compare_tree_ctrl_ab7ea6b89668e1bddc2360f1baf1865ce} 
+void Compare\+Tree\+Ctrl\+::\+Create\+State\+Image\+List (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source_l00344}{344}} of file \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source}{Compare\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_compare_tree_ctrl_a55bfbc6bb6d1a527f8aa69bc7ebaeaaf}\index{CompareTreeCtrl@{CompareTreeCtrl}!FindFirstEntryChild@{FindFirstEntryChild}}
+\index{FindFirstEntryChild@{FindFirstEntryChild}!CompareTreeCtrl@{CompareTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{FindFirstEntryChild()}{FindFirstEntryChild()}}
+{\footnotesize\ttfamily \label{class_compare_tree_ctrl_a55bfbc6bb6d1a527f8aa69bc7ebaeaaf} 
+wx\+Tree\+Item\+Id Compare\+Tree\+Ctrl\+::\+Find\+First\+Entry\+Child (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{id}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source_l00354}{354}} of file \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source}{Compare\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_compare_tree_ctrl_a1c8a263425aa6d053e26aded0a8116fc}\index{CompareTreeCtrl@{CompareTreeCtrl}!FindForiegn@{FindForiegn}}
+\index{FindForiegn@{FindForiegn}!CompareTreeCtrl@{CompareTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{FindForiegn()}{FindForiegn()}}
+{\footnotesize\ttfamily \label{class_compare_tree_ctrl_a1c8a263425aa6d053e26aded0a8116fc} 
+wx\+Tree\+Item\+Id Compare\+Tree\+Ctrl\+::\+Find\+Foriegn (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source_l00801}{801}} of file \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source}{Compare\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_compare_tree_ctrl_a39957d5ebee48710aa2b52a80cc32e6e}\index{CompareTreeCtrl@{CompareTreeCtrl}!FindNextEntryItem@{FindNextEntryItem}}
+\index{FindNextEntryItem@{FindNextEntryItem}!CompareTreeCtrl@{CompareTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{FindNextEntryItem()}{FindNextEntryItem()}}
+{\footnotesize\ttfamily \label{class_compare_tree_ctrl_a39957d5ebee48710aa2b52a80cc32e6e} 
+wx\+Tree\+Item\+Id Compare\+Tree\+Ctrl\+::\+Find\+Next\+Entry\+Item (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{item\+Id}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source_l01001}{1001}} of file \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source}{Compare\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_compare_tree_ctrl_ad7d613823b3915083f1b14563024da25}\index{CompareTreeCtrl@{CompareTreeCtrl}!FindNextItem@{FindNextItem}}
+\index{FindNextItem@{FindNextItem}!CompareTreeCtrl@{CompareTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{FindNextItem()}{FindNextItem()}}
+{\footnotesize\ttfamily \label{class_compare_tree_ctrl_ad7d613823b3915083f1b14563024da25} 
+wx\+Tree\+Item\+Id Compare\+Tree\+Ctrl\+::\+Find\+Next\+Item (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{item\+Id}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source_l01058}{1058}} of file \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source}{Compare\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_compare_tree_ctrl_a760327a234572f37f23915be52c8c978}\index{CompareTreeCtrl@{CompareTreeCtrl}!FindPrevEntryItem@{FindPrevEntryItem}}
+\index{FindPrevEntryItem@{FindPrevEntryItem}!CompareTreeCtrl@{CompareTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{FindPrevEntryItem()}{FindPrevEntryItem()}}
+{\footnotesize\ttfamily \label{class_compare_tree_ctrl_a760327a234572f37f23915be52c8c978} 
+wx\+Tree\+Item\+Id Compare\+Tree\+Ctrl\+::\+Find\+Prev\+Entry\+Item (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{item\+Id}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source_l01016}{1016}} of file \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source}{Compare\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_compare_tree_ctrl_aaf1b33b9162f0bfd5a9491c05df123e6}\index{CompareTreeCtrl@{CompareTreeCtrl}!FindPrevItem@{FindPrevItem}}
+\index{FindPrevItem@{FindPrevItem}!CompareTreeCtrl@{CompareTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{FindPrevItem()}{FindPrevItem()}}
+{\footnotesize\ttfamily \label{class_compare_tree_ctrl_aaf1b33b9162f0bfd5a9491c05df123e6} 
+wx\+Tree\+Item\+Id Compare\+Tree\+Ctrl\+::\+Find\+Prev\+Item (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{item\+Id}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source_l01034}{1034}} of file \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source}{Compare\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_compare_tree_ctrl_ab4f75eef3cac3afdb28d4691ad59ee2e}\index{CompareTreeCtrl@{CompareTreeCtrl}!FindTargetEntryForNewEntry@{FindTargetEntryForNewEntry}}
+\index{FindTargetEntryForNewEntry@{FindTargetEntryForNewEntry}!CompareTreeCtrl@{CompareTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{FindTargetEntryForNewEntry()}{FindTargetEntryForNewEntry()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_compare_tree_ctrl_ab4f75eef3cac3afdb28d4691ad59ee2e} 
+wx\+Tree\+Item\+Id Compare\+Tree\+Ctrl\+::\+Find\+Target\+Entry\+For\+New\+Entry (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{id}{, }\item[{\mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176}{Catalog\+::\+Data\+Types}}}]{type}{, }\item[{wx\+String}]{search\+Val}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source_l00771}{771}} of file \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source}{Compare\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_compare_tree_ctrl_aeb8dc3d021f167bd46ca6c81c27f9d28}\index{CompareTreeCtrl@{CompareTreeCtrl}!FindTargetEntryForNewEntry@{FindTargetEntryForNewEntry}}
+\index{FindTargetEntryForNewEntry@{FindTargetEntryForNewEntry}!CompareTreeCtrl@{CompareTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{FindTargetEntryForNewEntry()}{FindTargetEntryForNewEntry()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_compare_tree_ctrl_aeb8dc3d021f167bd46ca6c81c27f9d28} 
+wx\+Tree\+Item\+Id Compare\+Tree\+Ctrl\+::\+Find\+Target\+Entry\+For\+New\+Entry (\begin{DoxyParamCaption}\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{node}{, }\item[{\mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176}{Catalog\+::\+Data\+Types}}}]{type}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source_l00762}{762}} of file \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source}{Compare\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_compare_tree_ctrl_a03ce52962fb3a18f3e6a49f359ab3c2f}\index{CompareTreeCtrl@{CompareTreeCtrl}!FindTreeItemID@{FindTreeItemID}}
+\index{FindTreeItemID@{FindTreeItemID}!CompareTreeCtrl@{CompareTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{FindTreeItemID()}{FindTreeItemID()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \label{class_compare_tree_ctrl_a03ce52962fb3a18f3e6a49f359ab3c2f} 
+wx\+Tree\+Item\+Id Compare\+Tree\+Ctrl\+::\+Find\+Tree\+Item\+ID (\begin{DoxyParamCaption}\item[{wx\+String}]{stamp\+ID}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source_l00446}{446}} of file \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source}{Compare\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_compare_tree_ctrl_a94a16ac663118d990fb7edc65928aaeb}\index{CompareTreeCtrl@{CompareTreeCtrl}!FindTreeItemID@{FindTreeItemID}}
+\index{FindTreeItemID@{FindTreeItemID}!CompareTreeCtrl@{CompareTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{FindTreeItemID()}{FindTreeItemID()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \label{class_compare_tree_ctrl_a94a16ac663118d990fb7edc65928aaeb} 
+wx\+Tree\+Item\+Id Compare\+Tree\+Ctrl\+::\+Find\+Tree\+Item\+ID (\begin{DoxyParamCaption}\item[{wx\+String}]{stamp\+ID}{, }\item[{wx\+Tree\+Item\+Id}]{id}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source_l00410}{410}} of file \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source}{Compare\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_compare_tree_ctrl_a8cf969d39227aea2f722960f7822e88a}\index{CompareTreeCtrl@{CompareTreeCtrl}!FindTreeItemID@{FindTreeItemID}}
+\index{FindTreeItemID@{FindTreeItemID}!CompareTreeCtrl@{CompareTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{FindTreeItemID()}{FindTreeItemID()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \label{class_compare_tree_ctrl_a8cf969d39227aea2f722960f7822e88a} 
+wx\+Tree\+Item\+Id Compare\+Tree\+Ctrl\+::\+Find\+Tree\+Item\+ID (\begin{DoxyParamCaption}\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{node}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source_l00438}{438}} of file \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source}{Compare\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_compare_tree_ctrl_ae296a02ca39a35621ce58750859f5a46}\index{CompareTreeCtrl@{CompareTreeCtrl}!FindTreeItemID@{FindTreeItemID}}
+\index{FindTreeItemID@{FindTreeItemID}!CompareTreeCtrl@{CompareTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{FindTreeItemID()}{FindTreeItemID()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \label{class_compare_tree_ctrl_ae296a02ca39a35621ce58750859f5a46} 
+wx\+Tree\+Item\+Id Compare\+Tree\+Ctrl\+::\+Find\+Tree\+Item\+ID (\begin{DoxyParamCaption}\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{node}{, }\item[{wx\+Tree\+Item\+Id}]{id}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source_l00382}{382}} of file \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source}{Compare\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_compare_tree_ctrl_a93a873dde3ea4beb279a2b95260902c7}\index{CompareTreeCtrl@{CompareTreeCtrl}!GetAttribute@{GetAttribute}}
+\index{GetAttribute@{GetAttribute}!CompareTreeCtrl@{CompareTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{GetAttribute()}{GetAttribute()}}
+{\footnotesize\ttfamily \label{class_compare_tree_ctrl_a93a873dde3ea4beb279a2b95260902c7} 
+wx\+String Compare\+Tree\+Ctrl\+::\+Get\+Attribute (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{cat\+Tree\+ID}{, }\item[{wx\+String}]{name}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source_l00459}{459}} of file \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source}{Compare\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_compare_tree_ctrl_a6737fa28e9564e3c787fdc7f27fe31e4}\index{CompareTreeCtrl@{CompareTreeCtrl}!GetComparePanel@{GetComparePanel}}
+\index{GetComparePanel@{GetComparePanel}!CompareTreeCtrl@{CompareTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{GetComparePanel()}{GetComparePanel()}}
+{\footnotesize\ttfamily \label{class_compare_tree_ctrl_a6737fa28e9564e3c787fdc7f27fe31e4} 
+\mbox{\hyperlink{class_compare_panel}{Compare\+Panel}} \texorpdfstring{$\ast$}{*} Compare\+Tree\+Ctrl\+::\+Get\+Compare\+Panel (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source_l00167}{167}} of file \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source}{Compare\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_compare_tree_ctrl_ab6600b48c7e9a4ed47c3e7a56000a3fd}\index{CompareTreeCtrl@{CompareTreeCtrl}!GetDesc@{GetDesc}}
+\index{GetDesc@{GetDesc}!CompareTreeCtrl@{CompareTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{GetDesc()}{GetDesc()}}
+{\footnotesize\ttfamily \label{class_compare_tree_ctrl_ab6600b48c7e9a4ed47c3e7a56000a3fd} 
+wx\+String Compare\+Tree\+Ctrl\+::\+Get\+Desc (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{item}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source_l01052}{1052}} of file \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source}{Compare\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_compare_tree_ctrl_a5e0872deb7a5c4e0944d16e4098785af}\index{CompareTreeCtrl@{CompareTreeCtrl}!GetIconId@{GetIconId}}
+\index{GetIconId@{GetIconId}!CompareTreeCtrl@{CompareTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{GetIconId()}{GetIconId()}}
+{\footnotesize\ttfamily \label{class_compare_tree_ctrl_a5e0872deb7a5c4e0944d16e4098785af} 
+\mbox{\hyperlink{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3a}{Catalog\+::\+Icon\+ID}} Compare\+Tree\+Ctrl\+::\+Get\+Icon\+Id (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_catalog_1_1_entry}{Catalog\+::\+Entry}} \texorpdfstring{$\ast$}{*}}]{entry}{, }\item[{\mbox{\hyperlink{namespace_catalog_a10de14517a76cdd4e6b2bc1342142b07}{Catalog\+::\+Merge\+Status}}}]{status}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source_l00189}{189}} of file \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source}{Compare\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_compare_tree_ctrl_aa36168b3e45e4ea70fb70ca82c242c74}\index{CompareTreeCtrl@{CompareTreeCtrl}!GetID@{GetID}}
+\index{GetID@{GetID}!CompareTreeCtrl@{CompareTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{GetID()}{GetID()}}
+{\footnotesize\ttfamily \label{class_compare_tree_ctrl_aa36168b3e45e4ea70fb70ca82c242c74} 
+wx\+String Compare\+Tree\+Ctrl\+::\+Get\+ID (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{cat\+Tree\+ID}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source_l00473}{473}} of file \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source}{Compare\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_compare_tree_ctrl_abfa60c2cfb7593168354e71009d89010}\index{CompareTreeCtrl@{CompareTreeCtrl}!GetImage@{GetImage}}
+\index{GetImage@{GetImage}!CompareTreeCtrl@{CompareTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{GetImage()}{GetImage()}}
+{\footnotesize\ttfamily \label{class_compare_tree_ctrl_abfa60c2cfb7593168354e71009d89010} 
+wx\+String Compare\+Tree\+Ctrl\+::\+Get\+Image (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{cat\+Tree\+ID}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source_l00489}{489}} of file \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source}{Compare\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_compare_tree_ctrl_aa6d483cc1b743ce3218a0b4228901e60}\index{CompareTreeCtrl@{CompareTreeCtrl}!GetImageFullName@{GetImageFullName}}
+\index{GetImageFullName@{GetImageFullName}!CompareTreeCtrl@{CompareTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{GetImageFullName()}{GetImageFullName()}}
+{\footnotesize\ttfamily \label{class_compare_tree_ctrl_aa6d483cc1b743ce3218a0b4228901e60} 
+wx\+String Compare\+Tree\+Ctrl\+::\+Get\+Image\+Full\+Name (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{cat\+Tree\+ID}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source_l00579}{579}} of file \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source}{Compare\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_compare_tree_ctrl_a7278f25b040b11629aad89762319a964}\index{CompareTreeCtrl@{CompareTreeCtrl}!GetItemDesc@{GetItemDesc}}
+\index{GetItemDesc@{GetItemDesc}!CompareTreeCtrl@{CompareTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{GetItemDesc()}{GetItemDesc()}}
+{\footnotesize\ttfamily \label{class_compare_tree_ctrl_a7278f25b040b11629aad89762319a964} 
+wx\+String Compare\+Tree\+Ctrl\+::\+Get\+Item\+Desc (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{id}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source_l00505}{505}} of file \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source}{Compare\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_compare_tree_ctrl_ab5bf53c8d3e94f0481f48939af57a68f}\index{CompareTreeCtrl@{CompareTreeCtrl}!GetItemImageFullName@{GetItemImageFullName}}
+\index{GetItemImageFullName@{GetItemImageFullName}!CompareTreeCtrl@{CompareTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{GetItemImageFullName()}{GetItemImageFullName()}}
+{\footnotesize\ttfamily \label{class_compare_tree_ctrl_ab5bf53c8d3e94f0481f48939af57a68f} 
+wx\+String Compare\+Tree\+Ctrl\+::\+Get\+Item\+Image\+Full\+Name (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{id}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source_l00520}{520}} of file \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source}{Compare\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_compare_tree_ctrl_a13aecb3d09b9e308c1921392788a4341}\index{CompareTreeCtrl@{CompareTreeCtrl}!GetItemNode@{GetItemNode}}
+\index{GetItemNode@{GetItemNode}!CompareTreeCtrl@{CompareTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{GetItemNode()}{GetItemNode()}}
+{\footnotesize\ttfamily \label{class_compare_tree_ctrl_a13aecb3d09b9e308c1921392788a4341} 
+wx\+Xml\+Node \texorpdfstring{$\ast$}{*} Compare\+Tree\+Ctrl\+::\+Get\+Item\+Node (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{id}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source_l00535}{535}} of file \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source}{Compare\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_compare_tree_ctrl_ab04feeb667b45148f0a8cc7d54ae9631}\index{CompareTreeCtrl@{CompareTreeCtrl}!GetItemType@{GetItemType}}
+\index{GetItemType@{GetItemType}!CompareTreeCtrl@{CompareTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{GetItemType()}{GetItemType()}}
+{\footnotesize\ttfamily \label{class_compare_tree_ctrl_ab04feeb667b45148f0a8cc7d54ae9631} 
+\mbox{\hyperlink{namespace_catalog_a86f503ced35b06e6427477ddab27c6be}{Catalog\+::\+Catalog\+Base\+Type}} Compare\+Tree\+Ctrl\+::\+Get\+Item\+Type (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{id}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source_l00550}{550}} of file \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source}{Compare\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_compare_tree_ctrl_aadeaaa78b6ccf9379137e21907339151}\index{CompareTreeCtrl@{CompareTreeCtrl}!GetNewEntry@{GetNewEntry}}
+\index{GetNewEntry@{GetNewEntry}!CompareTreeCtrl@{CompareTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{GetNewEntry()}{GetNewEntry()}}
+{\footnotesize\ttfamily \label{class_compare_tree_ctrl_aadeaaa78b6ccf9379137e21907339151} 
+wx\+Xml\+Node \texorpdfstring{$\ast$}{*} Compare\+Tree\+Ctrl\+::\+Get\+New\+Entry (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{item\+Id}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source_l00564}{564}} of file \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source}{Compare\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_compare_tree_ctrl_a945b71bee5b95589921b7b69003b9439}\index{CompareTreeCtrl@{CompareTreeCtrl}!GetSelectionNode@{GetSelectionNode}}
+\index{GetSelectionNode@{GetSelectionNode}!CompareTreeCtrl@{CompareTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{GetSelectionNode()}{GetSelectionNode()}}
+{\footnotesize\ttfamily \label{class_compare_tree_ctrl_a945b71bee5b95589921b7b69003b9439} 
+wx\+Xml\+Node \texorpdfstring{$\ast$}{*} Compare\+Tree\+Ctrl\+::\+Get\+Selection\+Node (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source_l00571}{571}} of file \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source}{Compare\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_compare_tree_ctrl_a2fe6b0dcc4be277082d9b89e69b513aa}\index{CompareTreeCtrl@{CompareTreeCtrl}!GoToColnect@{GoToColnect}}
+\index{GoToColnect@{GoToColnect}!CompareTreeCtrl@{CompareTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{GoToColnect()}{GoToColnect()}}
+{\footnotesize\ttfamily \label{class_compare_tree_ctrl_a2fe6b0dcc4be277082d9b89e69b513aa} 
+void Compare\+Tree\+Ctrl\+::\+Go\+To\+Colnect (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{id}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source_l00598}{598}} of file \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source}{Compare\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_compare_tree_ctrl_a817ea593c13529fa1582677a47e9faf2}\index{CompareTreeCtrl@{CompareTreeCtrl}!InsertChild@{InsertChild}}
+\index{InsertChild@{InsertChild}!CompareTreeCtrl@{CompareTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{InsertChild()}{InsertChild()}}
+{\footnotesize\ttfamily \label{class_compare_tree_ctrl_a817ea593c13529fa1582677a47e9faf2} 
+wx\+Tree\+Item\+Id Compare\+Tree\+Ctrl\+::\+Insert\+Child (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{parent}{, }\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{child}{, }\item[{bool}]{after}{ = {\ttfamily true}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source_l00632}{632}} of file \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source}{Compare\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_compare_tree_ctrl_a9e94354c05a4d2b520e7d41797a73152}\index{CompareTreeCtrl@{CompareTreeCtrl}!IsElement@{IsElement}}
+\index{IsElement@{IsElement}!CompareTreeCtrl@{CompareTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{IsElement()}{IsElement()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_compare_tree_ctrl_a9e94354c05a4d2b520e7d41797a73152} 
+bool Compare\+Tree\+Ctrl\+::\+Is\+Element (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{item}{, }\item[{wx\+String}]{stamp\+ID}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source_l00711}{711}} of file \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source}{Compare\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_compare_tree_ctrl_a31a97f4b88aee440943a9595ec6a805b}\index{CompareTreeCtrl@{CompareTreeCtrl}!IsElement@{IsElement}}
+\index{IsElement@{IsElement}!CompareTreeCtrl@{CompareTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{IsElement()}{IsElement()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_compare_tree_ctrl_a31a97f4b88aee440943a9595ec6a805b} 
+bool Compare\+Tree\+Ctrl\+::\+Is\+Element (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{item}{, }\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{node}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source_l00696}{696}} of file \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source}{Compare\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_compare_tree_ctrl_ac1895f4c626c024bdf190f66dfdba275}\index{CompareTreeCtrl@{CompareTreeCtrl}!IsEntryNode@{IsEntryNode}}
+\index{IsEntryNode@{IsEntryNode}!CompareTreeCtrl@{CompareTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{IsEntryNode()}{IsEntryNode()}}
+{\footnotesize\ttfamily \label{class_compare_tree_ctrl_ac1895f4c626c024bdf190f66dfdba275} 
+bool Compare\+Tree\+Ctrl\+::\+Is\+Entry\+Node (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{item\+Id}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source_l00992}{992}} of file \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source}{Compare\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_compare_tree_ctrl_a81164a79a81e5937e1bd60eac37f45b5}\index{CompareTreeCtrl@{CompareTreeCtrl}!LoadCompareTree@{LoadCompareTree}}
+\index{LoadCompareTree@{LoadCompareTree}!CompareTreeCtrl@{CompareTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{LoadCompareTree()}{LoadCompareTree()}}
+{\footnotesize\ttfamily \label{class_compare_tree_ctrl_a81164a79a81e5937e1bd60eac37f45b5} 
+void Compare\+Tree\+Ctrl\+::\+Load\+Compare\+Tree (\begin{DoxyParamCaption}\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{root}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source_l00730}{730}} of file \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source}{Compare\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_compare_tree_ctrl_af2f96dd66083cbeb161f0a110661fb4a}\index{CompareTreeCtrl@{CompareTreeCtrl}!LoadMergeToCompareTree@{LoadMergeToCompareTree}}
+\index{LoadMergeToCompareTree@{LoadMergeToCompareTree}!CompareTreeCtrl@{CompareTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{LoadMergeToCompareTree()}{LoadMergeToCompareTree()}}
+{\footnotesize\ttfamily \label{class_compare_tree_ctrl_af2f96dd66083cbeb161f0a110661fb4a} 
+void Compare\+Tree\+Ctrl\+::\+Load\+Merge\+To\+Compare\+Tree (\begin{DoxyParamCaption}\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{merge\+Root}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source_l00941}{941}} of file \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source}{Compare\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_compare_tree_ctrl_a6dfe3504bc8bde92b2376d811af675b3}\index{CompareTreeCtrl@{CompareTreeCtrl}!OnCompareItems@{OnCompareItems}}
+\index{OnCompareItems@{OnCompareItems}!CompareTreeCtrl@{CompareTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{OnCompareItems()}{OnCompareItems()}}
+{\footnotesize\ttfamily \label{class_compare_tree_ctrl_a6dfe3504bc8bde92b2376d811af675b3} 
+int Compare\+Tree\+Ctrl\+::\+On\+Compare\+Items (\begin{DoxyParamCaption}\item[{const wx\+Tree\+Item\+Id \&}]{i1}{, }\item[{const wx\+Tree\+Item\+Id \&}]{i2}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Definition at line \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source_l00955}{955}} of file \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source}{Compare\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_compare_tree_ctrl_a7c1b0a82ab2845e3e766b021b91ae8d0}\index{CompareTreeCtrl@{CompareTreeCtrl}!OnItemMenu@{OnItemMenu}}
+\index{OnItemMenu@{OnItemMenu}!CompareTreeCtrl@{CompareTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{OnItemMenu()}{OnItemMenu()}}
+{\footnotesize\ttfamily \label{class_compare_tree_ctrl_a7c1b0a82ab2845e3e766b021b91ae8d0} 
+void Compare\+Tree\+Ctrl\+::\+On\+Item\+Menu (\begin{DoxyParamCaption}\item[{wx\+Tree\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source_l00979}{979}} of file \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source}{Compare\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_compare_tree_ctrl_a8d8cd174a64a80940f00fb48755e53b3}\index{CompareTreeCtrl@{CompareTreeCtrl}!OnSelChanged@{OnSelChanged}}
+\index{OnSelChanged@{OnSelChanged}!CompareTreeCtrl@{CompareTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{OnSelChanged()}{OnSelChanged()}}
+{\footnotesize\ttfamily \label{class_compare_tree_ctrl_a8d8cd174a64a80940f00fb48755e53b3} 
+void Compare\+Tree\+Ctrl\+::\+On\+Sel\+Changed (\begin{DoxyParamCaption}\item[{wx\+Tree\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source_l01085}{1085}} of file \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source}{Compare\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_compare_tree_ctrl_a2e904d7fc93f361c68af2d3c8f240422}\index{CompareTreeCtrl@{CompareTreeCtrl}!OnTreectrlItemCollapsed@{OnTreectrlItemCollapsed}}
+\index{OnTreectrlItemCollapsed@{OnTreectrlItemCollapsed}!CompareTreeCtrl@{CompareTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{OnTreectrlItemCollapsed()}{OnTreectrlItemCollapsed()}}
+{\footnotesize\ttfamily \label{class_compare_tree_ctrl_a2e904d7fc93f361c68af2d3c8f240422} 
+void Compare\+Tree\+Ctrl\+::\+On\+Treectrl\+Item\+Collapsed (\begin{DoxyParamCaption}\item[{wx\+Tree\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source_l01126}{1126}} of file \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source}{Compare\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_compare_tree_ctrl_a973f4400055eec15874cc75aa803f102}\index{CompareTreeCtrl@{CompareTreeCtrl}!OnTreectrlItemExpanded@{OnTreectrlItemExpanded}}
+\index{OnTreectrlItemExpanded@{OnTreectrlItemExpanded}!CompareTreeCtrl@{CompareTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{OnTreectrlItemExpanded()}{OnTreectrlItemExpanded()}}
+{\footnotesize\ttfamily \label{class_compare_tree_ctrl_a973f4400055eec15874cc75aa803f102} 
+void Compare\+Tree\+Ctrl\+::\+On\+Treectrl\+Item\+Expanded (\begin{DoxyParamCaption}\item[{wx\+Tree\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source_l01144}{1144}} of file \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source}{Compare\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_compare_tree_ctrl_a99a87e0a92b28cf0968aa7c354387441}\index{CompareTreeCtrl@{CompareTreeCtrl}!SelectStamp@{SelectStamp}}
+\index{SelectStamp@{SelectStamp}!CompareTreeCtrl@{CompareTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{SelectStamp()}{SelectStamp()}}
+{\footnotesize\ttfamily \label{class_compare_tree_ctrl_a99a87e0a92b28cf0968aa7c354387441} 
+void Compare\+Tree\+Ctrl\+::\+Select\+Stamp (\begin{DoxyParamCaption}\item[{wx\+String}]{id}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source_l01157}{1157}} of file \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source}{Compare\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_compare_tree_ctrl_a904b41014979e86bbd32b87871cc3772}\index{CompareTreeCtrl@{CompareTreeCtrl}!SetAttribute@{SetAttribute}}
+\index{SetAttribute@{SetAttribute}!CompareTreeCtrl@{CompareTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{SetAttribute()}{SetAttribute()}}
+{\footnotesize\ttfamily \label{class_compare_tree_ctrl_a904b41014979e86bbd32b87871cc3772} 
+void Compare\+Tree\+Ctrl\+::\+Set\+Attribute (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{cat\+Tree\+ID}{, }\item[{wx\+String}]{name}{, }\item[{wx\+String}]{val}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source_l01168}{1168}} of file \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source}{Compare\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_compare_tree_ctrl_a9447a9e2dd86f39fe63c790ebe9139d7}\index{CompareTreeCtrl@{CompareTreeCtrl}!SetComparePanel@{SetComparePanel}}
+\index{SetComparePanel@{SetComparePanel}!CompareTreeCtrl@{CompareTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{SetComparePanel()}{SetComparePanel()}}
+{\footnotesize\ttfamily \label{class_compare_tree_ctrl_a9447a9e2dd86f39fe63c790ebe9139d7} 
+void Compare\+Tree\+Ctrl\+::\+Set\+Compare\+Panel (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_compare_panel}{Compare\+Panel}} \texorpdfstring{$\ast$}{*}}]{compare\+Panel}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source_l00163}{163}} of file \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source}{Compare\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_compare_tree_ctrl_ab73c95df15a9e4e961190a4e726dcd9e}\index{CompareTreeCtrl@{CompareTreeCtrl}!SetItemImageFullName@{SetItemImageFullName}}
+\index{SetItemImageFullName@{SetItemImageFullName}!CompareTreeCtrl@{CompareTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{SetItemImageFullName()}{SetItemImageFullName()}}
+{\footnotesize\ttfamily \label{class_compare_tree_ctrl_ab73c95df15a9e4e961190a4e726dcd9e} 
+void Compare\+Tree\+Ctrl\+::\+Set\+Item\+Image\+Full\+Name (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{id}{, }\item[{wx\+String}]{str}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source_l01199}{1199}} of file \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source}{Compare\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_compare_tree_ctrl_a9949c7c58821b84a338d0b461fdcad71}\index{CompareTreeCtrl@{CompareTreeCtrl}!SetItemNode@{SetItemNode}}
+\index{SetItemNode@{SetItemNode}!CompareTreeCtrl@{CompareTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{SetItemNode()}{SetItemNode()}}
+{\footnotesize\ttfamily \label{class_compare_tree_ctrl_a9949c7c58821b84a338d0b461fdcad71} 
+void Compare\+Tree\+Ctrl\+::\+Set\+Item\+Node (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{id}{, }\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{ele}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source_l01183}{1183}} of file \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source}{Compare\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_compare_tree_ctrl_a6ffa9d2792c4ece63cc9a54d2c641bc0}\index{CompareTreeCtrl@{CompareTreeCtrl}!SetNextState@{SetNextState}}
+\index{SetNextState@{SetNextState}!CompareTreeCtrl@{CompareTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{SetNextState()}{SetNextState()}}
+{\footnotesize\ttfamily \label{class_compare_tree_ctrl_a6ffa9d2792c4ece63cc9a54d2c641bc0} 
+void Compare\+Tree\+Ctrl\+::\+Set\+Next\+State (\begin{DoxyParamCaption}\item[{const wx\+Tree\+Item\+Id \&}]{item\+ID}{}\end{DoxyParamCaption})}
+
+
+
+Set the checkbox of the item to the next state. Saves the new state. Sends message to Album tree to update. 
+
+
+
+Definition at line \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source_l01216}{1216}} of file \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source}{Compare\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_compare_tree_ctrl_a1250001f0cb351c0ec98d5e2eaf63c78}\index{CompareTreeCtrl@{CompareTreeCtrl}!SetSelection@{SetSelection}}
+\index{SetSelection@{SetSelection}!CompareTreeCtrl@{CompareTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{SetSelection()}{SetSelection()}}
+{\footnotesize\ttfamily \label{class_compare_tree_ctrl_a1250001f0cb351c0ec98d5e2eaf63c78} 
+void Compare\+Tree\+Ctrl\+::\+Set\+Selection (\begin{DoxyParamCaption}\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{node}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source_l01230}{1230}} of file \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source}{Compare\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_compare_tree_ctrl_a07bef4a8f96a9c6467369160ae415022}\index{CompareTreeCtrl@{CompareTreeCtrl}!SetTreeItemCollapseState@{SetTreeItemCollapseState}}
+\index{SetTreeItemCollapseState@{SetTreeItemCollapseState}!CompareTreeCtrl@{CompareTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{SetTreeItemCollapseState()}{SetTreeItemCollapseState()}}
+{\footnotesize\ttfamily \label{class_compare_tree_ctrl_a07bef4a8f96a9c6467369160ae415022} 
+void Compare\+Tree\+Ctrl\+::\+Set\+Tree\+Item\+Collapse\+State (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{child\+ID}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source_l01242}{1242}} of file \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source}{Compare\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_compare_tree_ctrl_ac26b7219a6c65aa7c247a0a40df96412}\index{CompareTreeCtrl@{CompareTreeCtrl}!SetType@{SetType}}
+\index{SetType@{SetType}!CompareTreeCtrl@{CompareTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{SetType()}{SetType()}}
+{\footnotesize\ttfamily \label{class_compare_tree_ctrl_ac26b7219a6c65aa7c247a0a40df96412} 
+void Compare\+Tree\+Ctrl\+::\+Set\+Type (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{id}{, }\item[{\mbox{\hyperlink{namespace_catalog_a86f503ced35b06e6427477ddab27c6be}{Catalog\+::\+Catalog\+Base\+Type}}}]{type}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source_l01259}{1259}} of file \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source}{Compare\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_compare_tree_ctrl_a8556c53f36426c6e565f0c9a1b6d3d38}\index{CompareTreeCtrl@{CompareTreeCtrl}!ShowMenu@{ShowMenu}}
+\index{ShowMenu@{ShowMenu}!CompareTreeCtrl@{CompareTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{ShowMenu()}{ShowMenu()}}
+{\footnotesize\ttfamily \label{class_compare_tree_ctrl_a8556c53f36426c6e565f0c9a1b6d3d38} 
+void Compare\+Tree\+Ctrl\+::\+Show\+Menu (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{id}{, }\item[{const wx\+Point \&}]{pt}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source_l01274}{1274}} of file \mbox{\hyperlink{_compare_tree_ctrl_8cpp_source}{Compare\+Tree\+Ctrl.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/femon/\+Development/wx/clone\+Test/\+Stamp\+Tool/src/gui/\mbox{\hyperlink{_compare_tree_ctrl_8h}{Compare\+Tree\+Ctrl.\+h}}\item 
+C\+:/\+Users/femon/\+Development/wx/clone\+Test/\+Stamp\+Tool/src/gui/\mbox{\hyperlink{_compare_tree_ctrl_8cpp}{Compare\+Tree\+Ctrl.\+cpp}}\end{DoxyCompactItemize}

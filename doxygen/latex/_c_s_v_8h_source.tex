@@ -1,0 +1,73 @@
+\doxysection{CSV.\+h}
+\hypertarget{_c_s_v_8h_source}{}\label{_c_s_v_8h_source}\index{C:/Users/femon/Development/wx/cloneTest/StampTool/src/utils/CSV.h@{C:/Users/femon/Development/wx/cloneTest/StampTool/src/utils/CSV.h}}
+\mbox{\hyperlink{_c_s_v_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8h_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_8h_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_8h_source_l00026}00026\ \textcolor{preprocessor}{\#ifndef\ CSVData\_H}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8h_source_l00027}00027\ \textcolor{preprocessor}{\#define\ CSVData\_H}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8h_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_8h_source_l00029}00029\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_catalog_defs_8h}{catalog/CatalogDefs.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8h_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_8h_source_l00031}00031\ \textcolor{preprocessor}{\#include\ "{}wx/xml/xml.h"{}}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8h_source_l00032}00032\ \ \textcolor{comment}{//\#include\ <wx/dynarray.h>}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8h_source_l00033}00033\ \textcolor{preprocessor}{\#include\ <wx/filename.h>}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8h_source_l00034}00034\ \textcolor{preprocessor}{\#include\ <wx/string.h>}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8h_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_8h_source_l00036}00036\ \textcolor{preprocessor}{\#include\ <wx/txtstrm.h>}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8h_source_l00037}00037\ \textcolor{preprocessor}{\#include\ <wx/wfstream.h>}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8h_source_l00038}00038\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8h_source_l00039}00039\ \textcolor{comment}{//namespace\ Catalog\ \{\ class\ DataTypes;\ \};}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8h_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_8h_source_l00041}\mbox{\hyperlink{_c_s_v_8h_a4bbce925a2ca9f426a77dbefeebe8388}{00041}}\ \textcolor{keyword}{typedef}\ std::vector<wxString>\ \mbox{\hyperlink{_c_s_v_8h_a4bbce925a2ca9f426a77dbefeebe8388}{StringArray}};}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8h_source_l00042}\mbox{\hyperlink{_c_s_v_8h_a6ff5938260f2d55fe34cf5a44100dfb2}{00042}}\ \textcolor{keyword}{typedef}\ std::vector<Catalog::DataTypes>\ \mbox{\hyperlink{_c_s_v_8h_a6ff5938260f2d55fe34cf5a44100dfb2}{DataTypesArray}};}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8h_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_8h_source_l00044}00044\ \ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_8h_source_l00045}00045\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_utils}{Utils}}\ \{}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8h_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_8h_source_l00047}\mbox{\hyperlink{_c_s_v_8h_ad19941886bdb416f5600a5f2cc111e81}{00047}}\ \textcolor{preprocessor}{\#define\ MaxNbrCSVCols\ 50}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8h_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_8h_source_l00053}\mbox{\hyperlink{class_utils_1_1_c_s_v_data}{00053}}\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_utils_1_1_c_s_v_data_a7c04357cdc093c5c6f97f13865ad8742}{CSVData}}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8h_source_l00054}00054\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8h_source_l00055}00055\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8h_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_8h_source_l00057}00057\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_8h_source_l00062}\mbox{\hyperlink{class_utils_1_1_c_s_v_data_a7c04357cdc093c5c6f97f13865ad8742}{00062}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_c_s_v_data_a7c04357cdc093c5c6f97f13865ad8742}{CSVData}}(\ \textcolor{keywordtype}{void}\ )\ \{\ \};}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8h_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_8h_source_l00068}\mbox{\hyperlink{class_utils_1_1_c_s_v_data_a7c3cbe5faf3ba985caf994aa3da753be}{00068}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_c_s_v_data_a7c3cbe5faf3ba985caf994aa3da753be}{\string~CSVData}}(\ \textcolor{keywordtype}{void}\ )\ \{\ \};}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8h_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_8h_source_l00075}\mbox{\hyperlink{class_utils_1_1_c_s_v_data_a81a3be9fd30edcc335b569bd476f0096}{00075}}\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_utils_1_1_c_s_v_data_a81a3be9fd30edcc335b569bd476f0096}{NbrColNames}}(\ \textcolor{keywordtype}{void}\ )\ \{\ \textcolor{keywordflow}{return}\ m\_csvColName.size(\ );\ \};}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8h_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_8h_source_l00083}\mbox{\hyperlink{class_utils_1_1_c_s_v_data_a04dc38da641efe09c938ff8555e5e493}{00083}}\ \ \ \ \ \ \ \ \ wxString\ \mbox{\hyperlink{class_utils_1_1_c_s_v_data_a04dc38da641efe09c938ff8555e5e493}{GetColName}}(\ \textcolor{keywordtype}{int}\ col\ )\ \{\ \textcolor{keywordflow}{return}\ m\_csvColName.at(\ col\ );\ \};}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8h_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_8h_source_l00091}\mbox{\hyperlink{class_utils_1_1_c_s_v_data_ac86a8224b468de55bbac002e78aea5c8}{00091}}\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_utils_1_1_c_s_v_data_ac86a8224b468de55bbac002e78aea5c8}{SetColName}}(\ wxString\ name\ )\ \{\ \textcolor{keywordflow}{return}\ m\_csvColName.push\_back(\ name\ );\ \};}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8h_source_l00092}00092\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_8h_source_l00099}00099\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_utils_1_1_c_s_v_data_a3514b15f3bc6683311b66b6dacf22d58}{ReadDataFile}}(\ wxString\&\ filename\ );}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8h_source_l00100}00100\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_8h_source_l00109}00109\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_utils_1_1_c_s_v_data_aaed6881fdc84c59ea662d9af63dc6bee}{FixUpLine}}(\ wxString\&\ line,\ \textcolor{keywordtype}{int}\ lineNbr\ );}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8h_source_l00110}00110\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_8h_source_l00124}00124\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_utils_1_1_c_s_v_data_a0bcda187ecd2008fb2af5646dcc3c6c1}{ReadTextInStream}}(\ wxFileInputStream\&\ file,\ wxTextInputStream\&\ text\ );}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8h_source_l00125}00125\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_8h_source_l00132}00132\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//int\ FindCol(\ wxString\&\ colName\ )\ \{\ m\_csvColName.Index(\ colName\ );\ \};}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8h_source_l00133}00133\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_8h_source_l00138}00138\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_utils_1_1_c_s_v_data_aa1523b5ab529b280bff66212d29c142a}{MakeColMap}}(\ \textcolor{keywordtype}{void}\ );}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8h_source_l00139}00139\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_8h_source_l00151}00151\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_utils_1_1_c_s_v_data_a2d74b6d8570cd5f8da5c3a4e835dfab9}{GetIDNbr}}(\ wxString\ catCodes,\ wxString\&\ \textcolor{keywordtype}{id}\ );}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8h_source_l00152}00152\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_8h_source_l00153}00153\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_8h_source_l00160}00160\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_utils_1_1_c_s_v_data_a2f0da66f5d89595fcaca1922113c2a26}{DoLoad}}(\ wxString\&\ filename,\ wxXmlNode*\ nodeData\ );}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8h_source_l00161}00161\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_8h_source_l00162}00162\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_8h_source_l00163}00163\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_8h_source_l00164}00164\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8h_source_l00165}00165\ \ \ \ \ \ \ \ \ wxString\ m\_filename;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8h_source_l00166}00166\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_c_s_v_8h_a4bbce925a2ca9f426a77dbefeebe8388}{StringArray}}\ m\_csvColName;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8h_source_l00167}00167\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_c_s_v_8h_a6ff5938260f2d55fe34cf5a44100dfb2}{DataTypesArray}}\ m\_csvColMap;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8h_source_l00168}00168\ \ \ \ \ \ \ \ \ wxXmlNode*\ m\_nodeData;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8h_source_l00169}00169\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ m\_lineCnt;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8h_source_l00170}00170\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8h_source_l00171}00171\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_8h_source_l00172}00172\ \}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8h_source_l00173}00173\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

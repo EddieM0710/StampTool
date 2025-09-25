@@ -1,0 +1,94 @@
+\doxysection{Sort\+Order\+Panel.\+h}
+\hypertarget{_sort_order_panel_8h_source}{}\label{_sort_order_panel_8h_source}\index{C:/Users/femon/Development/wx/cloneTest/StampTool/src/gui/SortOrderPanel.h@{C:/Users/femon/Development/wx/cloneTest/StampTool/src/gui/SortOrderPanel.h}}
+\mbox{\hyperlink{_sort_order_panel_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00026}00026\ \textcolor{preprocessor}{\#ifndef\ \_SORTORDERPANEL\_H\_}}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00027}00027\ \textcolor{preprocessor}{\#define\ \_SORTORDERPANEL\_H\_}}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00029}00029\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_gui_defs_8h}{gui/GuiDefs.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00032}\mbox{\hyperlink{_sort_order_panel_8h_acc8d0ccb4485d217601368e4e6eae5e1}{00032}}\ \textcolor{preprocessor}{\#define\ SYMBOL\_SORTORDERPANEL\_STYLE\ \ wxTAB\_TRAVERSAL}}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00033}\mbox{\hyperlink{_sort_order_panel_8h_ad75c49a947955aa9c8daf2135f640763}{00033}}\ \textcolor{preprocessor}{\#define\ SYMBOL\_SORTORDERPANEL\_TITLE\ \_(\ "{}SortOrderPanel"{}\ )}}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00034}\mbox{\hyperlink{_sort_order_panel_8h_afb4d04dcd7b495d9896e59df2298ba07}{00034}}\ \textcolor{preprocessor}{\#define\ SYMBOL\_SORTORDERPANEL\_IDNAME\ ID\_SORTORDERPANEL}}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00035}\mbox{\hyperlink{_sort_order_panel_8h_a08c84e996ba3124e92409276e0414797}{00035}}\ \textcolor{preprocessor}{\#define\ SYMBOL\_SORTORDERPANEL\_SIZE\ wxSize(\ 100,\ 100\ )}}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00036}\mbox{\hyperlink{_sort_order_panel_8h_afc9be879507f78964442ed73e687d078}{00036}}\ \textcolor{preprocessor}{\#define\ SYMBOL\_SORTORDERPANEL\_POSITION\ wxDefaultPosition}}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00039}\mbox{\hyperlink{class_sort_order_panel}{00039}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_sort_order_panel_a0df20d1c5302855db67a1cab0dee27e5}{SortOrderPanel}}\ :\ \textcolor{keyword}{public}\ wxPanel}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00040}00040\ \{}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00041}00041\ \ \ \ \ DECLARE\_DYNAMIC\_CLASS(\ \mbox{\hyperlink{class_sort_order_panel_a0df20d1c5302855db67a1cab0dee27e5}{SortOrderPanel}}\ )}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00042}00042\ \ \ \ \ DECLARE\_EVENT\_TABLE(\ )}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00044}00044\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00045}\mbox{\hyperlink{class_sort_order_panel_a3e84a0e49d462722d5c19c901cee3c15}{00045}}\ \ \ \ \ \textcolor{keyword}{enum}\ \mbox{\hyperlink{class_sort_order_panel_a3e84a0e49d462722d5c19c901cee3c15}{SortOrderPanelGuiDefs}}}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00046}00046\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00047}\mbox{\hyperlink{class_sort_order_panel_a3e84a0e49d462722d5c19c901cee3c15aca62f63ab1dd2c23074ad11b008cad26}{00047}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_sort_order_panel_a3e84a0e49d462722d5c19c901cee3c15aca62f63ab1dd2c23074ad11b008cad26}{ID\_SORTORDERTEXTCTRL}}\ =\ \mbox{\hyperlink{_gui_defs_8h_a6329898a126babcdaa295242c115a11ea897bc3870a2423d0d4400ebf22ed1eb5}{ID\_SORTORDERPANEL}}\ +\ 1,}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00048}\mbox{\hyperlink{class_sort_order_panel_a3e84a0e49d462722d5c19c901cee3c15a07f17d60d1034a0987fa4d1fffdda58f}{00048}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_sort_order_panel_a3e84a0e49d462722d5c19c901cee3c15a07f17d60d1034a0987fa4d1fffdda58f}{ID\_CHOICE}},}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00049}\mbox{\hyperlink{class_sort_order_panel_a3e84a0e49d462722d5c19c901cee3c15ab6a9c34c49509b55b69acebd2131a11e}{00049}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_sort_order_panel_a3e84a0e49d462722d5c19c901cee3c15ab6a9c34c49509b55b69acebd2131a11e}{ID\_CHOICE1}},}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00050}\mbox{\hyperlink{class_sort_order_panel_a3e84a0e49d462722d5c19c901cee3c15a97fd740ca66a825347efb581eebbe643}{00050}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_sort_order_panel_a3e84a0e49d462722d5c19c901cee3c15a97fd740ca66a825347efb581eebbe643}{ID\_CHOICE2}},}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00051}\mbox{\hyperlink{class_sort_order_panel_a3e84a0e49d462722d5c19c901cee3c15a71de68cd23b5b7fdfd3b6026225cabe1}{00051}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_sort_order_panel_a3e84a0e49d462722d5c19c901cee3c15a71de68cd23b5b7fdfd3b6026225cabe1}{ID\_CHOICE3}},}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00052}\mbox{\hyperlink{class_sort_order_panel_a3e84a0e49d462722d5c19c901cee3c15a3524e8364ab41a8d883b2644d06f7c31}{00052}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_sort_order_panel_a3e84a0e49d462722d5c19c901cee3c15a3524e8364ab41a8d883b2644d06f7c31}{ID\_CHOICE4}}}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00053}00053\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00062}00062\ \ \ \ \ \mbox{\hyperlink{class_sort_order_panel_a0df20d1c5302855db67a1cab0dee27e5}{SortOrderPanel}}(\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00074}00074\ \ \ \ \ \mbox{\hyperlink{class_sort_order_panel_a0df20d1c5302855db67a1cab0dee27e5}{SortOrderPanel}}(\ wxWindow*\ parent,}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00075}00075\ \ \ \ \ \ \ \ \ wxWindowID\ \textcolor{keywordtype}{id}\ =\ \mbox{\hyperlink{_sort_order_panel_8h_afb4d04dcd7b495d9896e59df2298ba07}{SYMBOL\_SORTORDERPANEL\_IDNAME}},}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00076}00076\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ wxPoint\&\ pos\ =\ \mbox{\hyperlink{_sort_order_panel_8h_afc9be879507f78964442ed73e687d078}{SYMBOL\_SORTORDERPANEL\_POSITION}},}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00077}00077\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ wxSize\&\ size\ =\ \mbox{\hyperlink{_sort_order_panel_8h_a08c84e996ba3124e92409276e0414797}{SYMBOL\_SORTORDERPANEL\_SIZE}},}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00078}00078\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{long}\ style\ =\ \mbox{\hyperlink{_sort_order_panel_8h_acc8d0ccb4485d217601368e4e6eae5e1}{SYMBOL\_SORTORDERPANEL\_STYLE}}\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00092}00092\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_sort_order_panel_afed49774513423c289dc71e0d921f5ac}{Create}}(\ wxWindow*\ parent,}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00093}00093\ \ \ \ \ \ \ \ \ wxWindowID\ \textcolor{keywordtype}{id}\ =\ \mbox{\hyperlink{_sort_order_panel_8h_afb4d04dcd7b495d9896e59df2298ba07}{SYMBOL\_SORTORDERPANEL\_IDNAME}},}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00094}00094\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ wxPoint\&\ pos\ =\ \mbox{\hyperlink{_sort_order_panel_8h_afc9be879507f78964442ed73e687d078}{SYMBOL\_SORTORDERPANEL\_POSITION}},}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00095}00095\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ wxSize\&\ size\ =\ \mbox{\hyperlink{_sort_order_panel_8h_a08c84e996ba3124e92409276e0414797}{SYMBOL\_SORTORDERPANEL\_SIZE}},}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00096}00096\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{long}\ style\ =\ \mbox{\hyperlink{_sort_order_panel_8h_acc8d0ccb4485d217601368e4e6eae5e1}{SYMBOL\_SORTORDERPANEL\_STYLE}}\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00097}00097\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00098}00098\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00099}00099\ \ \ \ \ \mbox{\hyperlink{class_sort_order_panel_a12e10aa42500ee045356f0698507a473}{\string~SortOrderPanel}}(\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00100}00100\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00105}00105\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sort_order_panel_a54b230c438f4ca1729de4c9df51ceea7}{Init}}(\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00106}00106\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00111}00111\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sort_order_panel_a4fadf70c1a1fcac3fcf450b91406dc15}{CreateControls}}(\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00112}00112\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00113}00113\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00114}00114\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sort_order_panel_ae5c98b489a32156d86fe32b1fe041e6b}{OnChoiceSelected}}(\ wxCommandEvent\&\ event\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00115}00115\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00116}00116\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sort_order_panel_aa2785dfcc4071a872a3e81bb0ee88535}{OnChoice1Selected}}(\ wxCommandEvent\&\ event\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00117}00117\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00118}00118\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sort_order_panel_a3fdd0ed31e0b1000f872aecd61eb2397}{OnChoice2Selected}}(\ wxCommandEvent\&\ event\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00119}00119\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00120}00120\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sort_order_panel_a9538c1d64ad5a11513677393dd6c00d0}{OnChoice3Selected}}(\ wxCommandEvent\&\ event\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00121}00121\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00122}00122\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sort_order_panel_af6621f557b16e770f67c092dd96edac0}{OnChoice4Selected}}(\ wxCommandEvent\&\ event\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00123}00123\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00124}00124\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sort_order_panel_a001fb894f0e7eef1ae7bb481136e7d5c}{OnOkClick}}(\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00125}00125\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00126}00126\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sort_order_panel_ab28feea609ae603852b6018221d39200}{Update}}();}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00127}00127\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sort_order_panel_a414403cefdb59c3998c8131f12008039}{InitSortControls}}();}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00128}00128\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00129}00129\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_sort_order_panel_a93c9f15988d9511a735196ea86fcb9dc}{ShowToolTips}}(\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00130}\mbox{\hyperlink{class_sort_order_panel_aeab7fb51db584dd78836a009853c0061}{00130}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_sort_order_panel_aeab7fb51db584dd78836a009853c0061}{IsDirty}}(\ )\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_sort_order_panel_a7d672392cfa9d152ebef84f8f85c7408}{m\_dirty}};\ \};}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00131}00131\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00132}00132\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00133}00133\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00134}00134\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00135}00135\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00136}\mbox{\hyperlink{class_sort_order_panel_a3595dbbaee5c7101367c0ee2e2c11ce1}{00136}}\ \ \ \ \ wxChoice*\ \mbox{\hyperlink{class_sort_order_panel_a3595dbbaee5c7101367c0ee2e2c11ce1}{m\_firstSort}};}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00137}\mbox{\hyperlink{class_sort_order_panel_a76607fc0b611e525325c115a83f238ba}{00137}}\ \ \ \ \ wxChoice*\ \mbox{\hyperlink{class_sort_order_panel_a76607fc0b611e525325c115a83f238ba}{m\_secondSort}};}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00138}\mbox{\hyperlink{class_sort_order_panel_a134d212f21985ac7b3be63bd0461c7d4}{00138}}\ \ \ \ \ wxChoice*\ \mbox{\hyperlink{class_sort_order_panel_a134d212f21985ac7b3be63bd0461c7d4}{m\_thirdSort}};}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00139}\mbox{\hyperlink{class_sort_order_panel_a8f2383ca11972f641d4e649b70f1ae0d}{00139}}\ \ \ \ \ wxChoice*\ \mbox{\hyperlink{class_sort_order_panel_a8f2383ca11972f641d4e649b70f1ae0d}{m\_forthSort}};}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00140}\mbox{\hyperlink{class_sort_order_panel_adc996249e862ffc9a3c98775919015b8}{00140}}\ \ \ \ \ wxChoice*\ \mbox{\hyperlink{class_sort_order_panel_adc996249e862ffc9a3c98775919015b8}{m\_fifthSort}};}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00141}\mbox{\hyperlink{class_sort_order_panel_a62ef62b0539062352c9014a8bfa639b8}{00141}}\ \ \ \ \ wxArrayString\ \mbox{\hyperlink{class_sort_order_panel_a62ef62b0539062352c9014a8bfa639b8}{m\_sortStrings}};}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00142}\mbox{\hyperlink{class_sort_order_panel_a7d672392cfa9d152ebef84f8f85c7408}{00142}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_sort_order_panel_a7d672392cfa9d152ebef84f8f85c7408}{m\_dirty}};}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00143}00143\ \};}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00144}00144\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8h_source_l00145}00145\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

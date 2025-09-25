@@ -1,0 +1,224 @@
+\doxysection{Utils\+::Stamp\+List Class Reference}
+\hypertarget{class_utils_1_1_stamp_list}{}\label{class_utils_1_1_stamp_list}\index{Utils::StampList@{Utils::StampList}}
+
+
+List of all the Stamp\+Links in the \doxylink{namespace_design}{Design} tree.  
+
+
+
+
+{\ttfamily \#include $<$Stamp\+List.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_utils_1_1_stamp_list_a32cf3bf36f7f94c25cc1a7d200be1204}{Stamp\+List}} ()
+\begin{DoxyCompactList}\small\item\em Construct a new Stamp List object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_utils_1_1_stamp_list_a74a68f6b20194ebbd1f3852b88d22561}{\texorpdfstring{$\sim$}{\string~}\+Stamp\+List}} ()
+\begin{DoxyCompactList}\small\item\em Destroy the Stamp List object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_utils_1_1_stamp_list_ae225b3ca8a1ee0eaa9e6f950ec8fd621}{Clear}} ()
+\begin{DoxyCompactList}\small\item\em Clears all the links then deletes them. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_utils_1_1_stamp_list_abbd9193ab37b21cfe21dc8a50a458b3e}{Find\+Stamp}} (wx\+String stamp\+ID)
+\begin{DoxyCompactList}\small\item\em Get the position of the stamp in the list. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_utils_1_1_stamp_link}{Stamp\+Link}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_utils_1_1_stamp_list_a1ff39236ad277d42f3dfbff7a715f3c4}{Add\+Stamp}} (wx\+String stamp\+Id)
+\begin{DoxyCompactList}\small\item\em returns the link if it exists or creates a new one and returns it. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_utils_1_1_stamp_list_af2be51d8b71cc31a27fb6d8c5e98ffce}{Set\+Cat\+Tree\+ID}} (wx\+String stamp\+ID, wx\+Tree\+Item\+Id tree\+ID)
+\begin{DoxyCompactList}\small\item\em Calls Find\+Stamp the inserts the Cat tree id. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_utils_1_1_stamp_list_ae25ef3bac68f76358282e929d0683c66}{Get\+Cat\+Tree\+ID}} (wx\+String stamp\+ID, wx\+Tree\+Item\+Id \&tree\+ID)
+\begin{DoxyCompactList}\small\item\em Calls Find\+Stamp and returns thr tree id. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_utils_1_1_stamp_link}{Stamp\+Link}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_utils_1_1_stamp_list_ae98ada8fe678b861c8f2b97766a647ef}{Find\+Stamp\+Link}} (wx\+String stamp\+ID)
+\begin{DoxyCompactList}\small\item\em Same as Find\+Stamp but returns the link pointer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_utils_1_1_stamp_list_a7f7ed23be63983c2333a909cccf78071}{Clear\+Catalog\+Links}} ()
+\begin{DoxyCompactList}\small\item\em Sets all catalog ids of all links to 0. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_utils_1_1_stamp_list_aa57e8265b074819108a93147a11aff04}{Delete\+Link}} (\mbox{\hyperlink{class_utils_1_1_stamp_link}{Stamp\+Link}} \texorpdfstring{$\ast$}{*}link)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+List of all the Stamp\+Links in the \doxylink{namespace_design}{Design} tree. 
+
+Definition at line \mbox{\hyperlink{_stamp_list_8h_source_l00149}{149}} of file \mbox{\hyperlink{_stamp_list_8h_source}{Stamp\+List.\+h}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_utils_1_1_stamp_list_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_utils_1_1_stamp_list_a32cf3bf36f7f94c25cc1a7d200be1204}\index{Utils::StampList@{Utils::StampList}!StampList@{StampList}}
+\index{StampList@{StampList}!Utils::StampList@{Utils::StampList}}
+\doxysubsubsection{\texorpdfstring{StampList()}{StampList()}}
+{\footnotesize\ttfamily \label{class_utils_1_1_stamp_list_a32cf3bf36f7f94c25cc1a7d200be1204} 
+Utils\+::\+Stamp\+List\+::\+Stamp\+List (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct a new Stamp List object. 
+
+
+
+Definition at line \mbox{\hyperlink{_stamp_list_8h_source_l00159}{159}} of file \mbox{\hyperlink{_stamp_list_8h_source}{Stamp\+List.\+h}}.
+
+\Hypertarget{class_utils_1_1_stamp_list_a74a68f6b20194ebbd1f3852b88d22561}\index{Utils::StampList@{Utils::StampList}!````~StampList@{\texorpdfstring{$\sim$}{\string~}StampList}}
+\index{````~StampList@{\texorpdfstring{$\sim$}{\string~}StampList}!Utils::StampList@{Utils::StampList}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}StampList()}{\string~StampList()}}
+{\footnotesize\ttfamily \label{class_utils_1_1_stamp_list_a74a68f6b20194ebbd1f3852b88d22561} 
+Utils\+::\+Stamp\+List\+::\texorpdfstring{$\sim$}{\string~}\+Stamp\+List (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Destroy the Stamp List object. 
+
+
+
+Definition at line \mbox{\hyperlink{_stamp_list_8h_source_l00164}{164}} of file \mbox{\hyperlink{_stamp_list_8h_source}{Stamp\+List.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_utils_1_1_stamp_list_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_utils_1_1_stamp_list_a1ff39236ad277d42f3dfbff7a715f3c4}\index{Utils::StampList@{Utils::StampList}!AddStamp@{AddStamp}}
+\index{AddStamp@{AddStamp}!Utils::StampList@{Utils::StampList}}
+\doxysubsubsection{\texorpdfstring{AddStamp()}{AddStamp()}}
+{\footnotesize\ttfamily \label{class_utils_1_1_stamp_list_a1ff39236ad277d42f3dfbff7a715f3c4} 
+\mbox{\hyperlink{class_utils_1_1_stamp_link}{Stamp\+Link}} \texorpdfstring{$\ast$}{*} Utils\+::\+Stamp\+List\+::\+Add\+Stamp (\begin{DoxyParamCaption}\item[{wx\+String}]{stamp\+Id}{}\end{DoxyParamCaption})}
+
+
+
+returns the link if it exists or creates a new one and returns it. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em stamp\+Id} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Stamp\+Link\texorpdfstring{$\ast$}{*} 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_stamp_list_8cpp_source_l00155}{155}} of file \mbox{\hyperlink{_stamp_list_8cpp_source}{Stamp\+List.\+cpp}}.
+
+\Hypertarget{class_utils_1_1_stamp_list_ae225b3ca8a1ee0eaa9e6f950ec8fd621}\index{Utils::StampList@{Utils::StampList}!Clear@{Clear}}
+\index{Clear@{Clear}!Utils::StampList@{Utils::StampList}}
+\doxysubsubsection{\texorpdfstring{Clear()}{Clear()}}
+{\footnotesize\ttfamily \label{class_utils_1_1_stamp_list_ae225b3ca8a1ee0eaa9e6f950ec8fd621} 
+void Utils\+::\+Stamp\+List\+::\+Clear (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Clears all the links then deletes them. 
+
+
+
+Definition at line \mbox{\hyperlink{_stamp_list_8cpp_source_l00102}{102}} of file \mbox{\hyperlink{_stamp_list_8cpp_source}{Stamp\+List.\+cpp}}.
+
+\Hypertarget{class_utils_1_1_stamp_list_a7f7ed23be63983c2333a909cccf78071}\index{Utils::StampList@{Utils::StampList}!ClearCatalogLinks@{ClearCatalogLinks}}
+\index{ClearCatalogLinks@{ClearCatalogLinks}!Utils::StampList@{Utils::StampList}}
+\doxysubsubsection{\texorpdfstring{ClearCatalogLinks()}{ClearCatalogLinks()}}
+{\footnotesize\ttfamily \label{class_utils_1_1_stamp_list_a7f7ed23be63983c2333a909cccf78071} 
+void Utils\+::\+Stamp\+List\+::\+Clear\+Catalog\+Links (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Sets all catalog ids of all links to 0. 
+
+
+
+Definition at line \mbox{\hyperlink{_stamp_list_8cpp_source_l00119}{119}} of file \mbox{\hyperlink{_stamp_list_8cpp_source}{Stamp\+List.\+cpp}}.
+
+\Hypertarget{class_utils_1_1_stamp_list_aa57e8265b074819108a93147a11aff04}\index{Utils::StampList@{Utils::StampList}!DeleteLink@{DeleteLink}}
+\index{DeleteLink@{DeleteLink}!Utils::StampList@{Utils::StampList}}
+\doxysubsubsection{\texorpdfstring{DeleteLink()}{DeleteLink()}}
+{\footnotesize\ttfamily \label{class_utils_1_1_stamp_list_aa57e8265b074819108a93147a11aff04} 
+void Utils\+::\+Stamp\+List\+::\+Delete\+Link (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_utils_1_1_stamp_link}{Stamp\+Link}} \texorpdfstring{$\ast$}{*}}]{link}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_stamp_list_8h_source_l00215}{215}} of file \mbox{\hyperlink{_stamp_list_8h_source}{Stamp\+List.\+h}}.
+
+\Hypertarget{class_utils_1_1_stamp_list_abbd9193ab37b21cfe21dc8a50a458b3e}\index{Utils::StampList@{Utils::StampList}!FindStamp@{FindStamp}}
+\index{FindStamp@{FindStamp}!Utils::StampList@{Utils::StampList}}
+\doxysubsubsection{\texorpdfstring{FindStamp()}{FindStamp()}}
+{\footnotesize\ttfamily \label{class_utils_1_1_stamp_list_abbd9193ab37b21cfe21dc8a50a458b3e} 
+int Utils\+::\+Stamp\+List\+::\+Find\+Stamp (\begin{DoxyParamCaption}\item[{wx\+String}]{stamp\+ID}{}\end{DoxyParamCaption})}
+
+
+
+Get the position of the stamp in the list. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em stamp\+ID} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_stamp_list_8cpp_source_l00129}{129}} of file \mbox{\hyperlink{_stamp_list_8cpp_source}{Stamp\+List.\+cpp}}.
+
+\Hypertarget{class_utils_1_1_stamp_list_ae98ada8fe678b861c8f2b97766a647ef}\index{Utils::StampList@{Utils::StampList}!FindStampLink@{FindStampLink}}
+\index{FindStampLink@{FindStampLink}!Utils::StampList@{Utils::StampList}}
+\doxysubsubsection{\texorpdfstring{FindStampLink()}{FindStampLink()}}
+{\footnotesize\ttfamily \label{class_utils_1_1_stamp_list_ae98ada8fe678b861c8f2b97766a647ef} 
+\mbox{\hyperlink{class_utils_1_1_stamp_link}{Stamp\+Link}} \texorpdfstring{$\ast$}{*} Utils\+::\+Stamp\+List\+::\+Find\+Stamp\+Link (\begin{DoxyParamCaption}\item[{wx\+String}]{stamp\+ID}{}\end{DoxyParamCaption})}
+
+
+
+Same as Find\+Stamp but returns the link pointer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em stamp\+ID} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Stamp\+Link\texorpdfstring{$\ast$}{*} 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_stamp_list_8cpp_source_l00145}{145}} of file \mbox{\hyperlink{_stamp_list_8cpp_source}{Stamp\+List.\+cpp}}.
+
+\Hypertarget{class_utils_1_1_stamp_list_ae25ef3bac68f76358282e929d0683c66}\index{Utils::StampList@{Utils::StampList}!GetCatTreeID@{GetCatTreeID}}
+\index{GetCatTreeID@{GetCatTreeID}!Utils::StampList@{Utils::StampList}}
+\doxysubsubsection{\texorpdfstring{GetCatTreeID()}{GetCatTreeID()}}
+{\footnotesize\ttfamily \label{class_utils_1_1_stamp_list_ae25ef3bac68f76358282e929d0683c66} 
+bool Utils\+::\+Stamp\+List\+::\+Get\+Cat\+Tree\+ID (\begin{DoxyParamCaption}\item[{wx\+String}]{stamp\+ID}{, }\item[{wx\+Tree\+Item\+Id \&}]{tree\+ID}{}\end{DoxyParamCaption})}
+
+
+
+Calls Find\+Stamp and returns thr tree id. 
+
+
+
+Definition at line \mbox{\hyperlink{_stamp_list_8cpp_source_l00176}{176}} of file \mbox{\hyperlink{_stamp_list_8cpp_source}{Stamp\+List.\+cpp}}.
+
+\Hypertarget{class_utils_1_1_stamp_list_af2be51d8b71cc31a27fb6d8c5e98ffce}\index{Utils::StampList@{Utils::StampList}!SetCatTreeID@{SetCatTreeID}}
+\index{SetCatTreeID@{SetCatTreeID}!Utils::StampList@{Utils::StampList}}
+\doxysubsubsection{\texorpdfstring{SetCatTreeID()}{SetCatTreeID()}}
+{\footnotesize\ttfamily \label{class_utils_1_1_stamp_list_af2be51d8b71cc31a27fb6d8c5e98ffce} 
+void Utils\+::\+Stamp\+List\+::\+Set\+Cat\+Tree\+ID (\begin{DoxyParamCaption}\item[{wx\+String}]{stamp\+ID}{, }\item[{wx\+Tree\+Item\+Id}]{tree\+ID}{}\end{DoxyParamCaption})}
+
+
+
+Calls Find\+Stamp the inserts the Cat tree id. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em stamp\+ID} & \\
+\hline
+{\em tree\+ID} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_stamp_list_8cpp_source_l00168}{168}} of file \mbox{\hyperlink{_stamp_list_8cpp_source}{Stamp\+List.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/femon/\+Development/wx/clone\+Test/\+Stamp\+Tool/src/utils/\mbox{\hyperlink{_stamp_list_8h}{Stamp\+List.\+h}}\item 
+C\+:/\+Users/femon/\+Development/wx/clone\+Test/\+Stamp\+Tool/src/utils/\mbox{\hyperlink{_stamp_list_8cpp}{Stamp\+List.\+cpp}}\end{DoxyCompactItemize}

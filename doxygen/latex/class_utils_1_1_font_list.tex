@@ -1,0 +1,292 @@
+\doxysection{Utils\+::Font\+List Class Reference}
+\hypertarget{class_utils_1_1_font_list}{}\label{class_utils_1_1_font_list}\index{Utils::FontList@{Utils::FontList}}
+
+
+{\ttfamily \#include $<$Font\+List.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_utils_1_1_font_list_aaf0b2233c8307019e1ebaf8d313f0f04}{Font\+List}} ()
+\item 
+\mbox{\hyperlink{class_utils_1_1_font_list_a4cbcd90fb92ab5017fb4ed57076f6ead}{\texorpdfstring{$\sim$}{\string~}\+Font\+List}} ()
+\item 
+int \mbox{\hyperlink{class_utils_1_1_font_list_a10b97ab34dd0a46094bd3ccb793fe8d3}{Add\+New\+Font}} (wx\+Font font, wx\+Colour color)
+\item 
+void \mbox{\hyperlink{class_utils_1_1_font_list_a776d8e78d8546febb8f5f870ede6f2f7}{Clear}} ()
+\item 
+int \mbox{\hyperlink{class_utils_1_1_font_list_ac11bda01e3bac215d32817136f7fa308}{Default\+Font}} (int point\+Size)
+\item 
+\mbox{\hyperlink{class_utils_1_1_font}{Font}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_utils_1_1_font_list_a5e3caa4fb6b55650655d44fabfb3d52c}{Find\+My\+Font}} (wx\+Font font, wx\+Color color)
+\item 
+Font\+Map\+::iterator \mbox{\hyperlink{class_utils_1_1_font_list_a8abb681729c1502b3f3260c211b69837}{Find\+Font\+Iterator}} (wx\+Font font, wx\+Color color)
+\item 
+int \mbox{\hyperlink{class_utils_1_1_font_list_a3f50ee6be4b9fca727aadca200e1969d}{Find\+Font}} (wx\+Font font, wx\+Color color)
+\item 
+int \mbox{\hyperlink{class_utils_1_1_font_list_a6946f3a902211c11d0c73809aab23063}{Find\+Font}} (\mbox{\hyperlink{class_utils_1_1_font}{Font}} \texorpdfstring{$\ast$}{*}info)
+\item 
+wx\+Font \mbox{\hyperlink{class_utils_1_1_font_list_a5e142b46cb46ed693164f35fa368fe9b}{Get\+Font}} (int ndx)
+\item 
+int \mbox{\hyperlink{class_utils_1_1_font_list_a01a314d15185543dc648129a2ac645ff}{Get\+Font\+Count}} ()
+\item 
+wx\+Colour \mbox{\hyperlink{class_utils_1_1_font_list_ab7e4d2707d76c4edeb8ddb461dee8945}{Get\+Color}} (int ndx)
+\item 
+void \mbox{\hyperlink{class_utils_1_1_font_list_a2a3296331ea2dd7f7184fd4635dbb29b}{Init\+Fonts}} ()
+\item 
+bool \mbox{\hyperlink{class_utils_1_1_font_list_ac386a31443cc33e99b44ae080d8bdb32}{Is\+Valid\+Font\+Ndx}} (int ndx)
+\item 
+\mbox{\hyperlink{class_utils_1_1_font}{Font}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_utils_1_1_font_list_a3fbc8aae91bb732d0218bb663b887e0a}{Get\+My\+Font}} (int ndx)
+\item 
+\mbox{\hyperlink{class_utils_1_1_font}{Font}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_utils_1_1_font_list_a8d7c7ab1c9309f333d259a15a8eed439}{Get\+My\+Font}} (Font\+Map\+::iterator itr)
+\item 
+\mbox{\hyperlink{namespace_utils_afb0a672162c0ac84ca53571ff06bb7d2}{Font\+Map}} \& \mbox{\hyperlink{class_utils_1_1_font_list_ae36cadee81415558bfc4eda8c9edf2af}{Get\+Font\+Map}} ()
+\item 
+\mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4}{Design\+::\+Font\+Usage\+Type}} \mbox{\hyperlink{class_utils_1_1_font_list_a762c19298674cde94492c7bc81bc1fcd}{Load}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}font\+Node, wx\+String native\+String, wx\+String color)
+\item 
+std\+::size\+\_\+t \mbox{\hyperlink{class_utils_1_1_font_list_a9c84c90a86a699aaf73c29f54fb27854}{Erase}} (int ndx)
+\item 
+int \mbox{\hyperlink{class_utils_1_1_font_list_ac42177adfdd0d028a29720f76da78ab5}{Load\+Font}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}parent, \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4}{Design\+::\+Font\+Usage\+Type}} type)
+\item 
+void \mbox{\hyperlink{class_utils_1_1_font_list_a22c1085c965cdf24ab7000b7056f6813}{Make\+Default}} (int ndx)
+\item 
+void \mbox{\hyperlink{class_utils_1_1_font_list_a7bb99494cab04e43e161459a07bbb7ec}{Save\+Font}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}parent, int ndx, \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4}{Design\+::\+Font\+Usage\+Type}} type)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_font_list_8h_source_l00039}{39}} of file \mbox{\hyperlink{_font_list_8h_source}{Font\+List.\+h}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_utils_1_1_font_list_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_utils_1_1_font_list_aaf0b2233c8307019e1ebaf8d313f0f04}\index{Utils::FontList@{Utils::FontList}!FontList@{FontList}}
+\index{FontList@{FontList}!Utils::FontList@{Utils::FontList}}
+\doxysubsubsection{\texorpdfstring{FontList()}{FontList()}}
+{\footnotesize\ttfamily \label{class_utils_1_1_font_list_aaf0b2233c8307019e1ebaf8d313f0f04} 
+Utils\+::\+Font\+List\+::\+Font\+List (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_font_list_8h_source_l00043}{43}} of file \mbox{\hyperlink{_font_list_8h_source}{Font\+List.\+h}}.
+
+\Hypertarget{class_utils_1_1_font_list_a4cbcd90fb92ab5017fb4ed57076f6ead}\index{Utils::FontList@{Utils::FontList}!````~FontList@{\texorpdfstring{$\sim$}{\string~}FontList}}
+\index{````~FontList@{\texorpdfstring{$\sim$}{\string~}FontList}!Utils::FontList@{Utils::FontList}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}FontList()}{\string~FontList()}}
+{\footnotesize\ttfamily \label{class_utils_1_1_font_list_a4cbcd90fb92ab5017fb4ed57076f6ead} 
+Utils\+::\+Font\+List\+::\texorpdfstring{$\sim$}{\string~}\+Font\+List (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_font_list_8h_source_l00048}{48}} of file \mbox{\hyperlink{_font_list_8h_source}{Font\+List.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_utils_1_1_font_list_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_utils_1_1_font_list_a10b97ab34dd0a46094bd3ccb793fe8d3}\index{Utils::FontList@{Utils::FontList}!AddNewFont@{AddNewFont}}
+\index{AddNewFont@{AddNewFont}!Utils::FontList@{Utils::FontList}}
+\doxysubsubsection{\texorpdfstring{AddNewFont()}{AddNewFont()}}
+{\footnotesize\ttfamily \label{class_utils_1_1_font_list_a10b97ab34dd0a46094bd3ccb793fe8d3} 
+int Utils\+::\+Font\+List\+::\+Add\+New\+Font (\begin{DoxyParamCaption}\item[{wx\+Font}]{font}{, }\item[{wx\+Colour}]{color}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_font_list_8cpp_source_l00050}{50}} of file \mbox{\hyperlink{_font_list_8cpp_source}{Font\+List.\+cpp}}.
+
+\Hypertarget{class_utils_1_1_font_list_a776d8e78d8546febb8f5f870ede6f2f7}\index{Utils::FontList@{Utils::FontList}!Clear@{Clear}}
+\index{Clear@{Clear}!Utils::FontList@{Utils::FontList}}
+\doxysubsubsection{\texorpdfstring{Clear()}{Clear()}}
+{\footnotesize\ttfamily \label{class_utils_1_1_font_list_a776d8e78d8546febb8f5f870ede6f2f7} 
+void Utils\+::\+Font\+List\+::\+Clear (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_font_list_8h_source_l00052}{52}} of file \mbox{\hyperlink{_font_list_8h_source}{Font\+List.\+h}}.
+
+\Hypertarget{class_utils_1_1_font_list_ac11bda01e3bac215d32817136f7fa308}\index{Utils::FontList@{Utils::FontList}!DefaultFont@{DefaultFont}}
+\index{DefaultFont@{DefaultFont}!Utils::FontList@{Utils::FontList}}
+\doxysubsubsection{\texorpdfstring{DefaultFont()}{DefaultFont()}}
+{\footnotesize\ttfamily \label{class_utils_1_1_font_list_ac11bda01e3bac215d32817136f7fa308} 
+int Utils\+::\+Font\+List\+::\+Default\+Font (\begin{DoxyParamCaption}\item[{int}]{point\+Size}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_font_list_8cpp_source_l00075}{75}} of file \mbox{\hyperlink{_font_list_8cpp_source}{Font\+List.\+cpp}}.
+
+\Hypertarget{class_utils_1_1_font_list_a9c84c90a86a699aaf73c29f54fb27854}\index{Utils::FontList@{Utils::FontList}!Erase@{Erase}}
+\index{Erase@{Erase}!Utils::FontList@{Utils::FontList}}
+\doxysubsubsection{\texorpdfstring{Erase()}{Erase()}}
+{\footnotesize\ttfamily \label{class_utils_1_1_font_list_a9c84c90a86a699aaf73c29f54fb27854} 
+std\+::size\+\_\+t Utils\+::\+Font\+List\+::\+Erase (\begin{DoxyParamCaption}\item[{int}]{ndx}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_font_list_8h_source_l00089}{89}} of file \mbox{\hyperlink{_font_list_8h_source}{Font\+List.\+h}}.
+
+\Hypertarget{class_utils_1_1_font_list_a6946f3a902211c11d0c73809aab23063}\index{Utils::FontList@{Utils::FontList}!FindFont@{FindFont}}
+\index{FindFont@{FindFont}!Utils::FontList@{Utils::FontList}}
+\doxysubsubsection{\texorpdfstring{FindFont()}{FindFont()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_utils_1_1_font_list_a6946f3a902211c11d0c73809aab23063} 
+int Utils\+::\+Font\+List\+::\+Find\+Font (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_utils_1_1_font}{Font}} \texorpdfstring{$\ast$}{*}}]{info}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_font_list_8cpp_source_l00089}{89}} of file \mbox{\hyperlink{_font_list_8cpp_source}{Font\+List.\+cpp}}.
+
+\Hypertarget{class_utils_1_1_font_list_a3f50ee6be4b9fca727aadca200e1969d}\index{Utils::FontList@{Utils::FontList}!FindFont@{FindFont}}
+\index{FindFont@{FindFont}!Utils::FontList@{Utils::FontList}}
+\doxysubsubsection{\texorpdfstring{FindFont()}{FindFont()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_utils_1_1_font_list_a3f50ee6be4b9fca727aadca200e1969d} 
+int Utils\+::\+Font\+List\+::\+Find\+Font (\begin{DoxyParamCaption}\item[{wx\+Font}]{font}{, }\item[{wx\+Color}]{color}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_utils_1_1_font_list_a8abb681729c1502b3f3260c211b69837}\index{Utils::FontList@{Utils::FontList}!FindFontIterator@{FindFontIterator}}
+\index{FindFontIterator@{FindFontIterator}!Utils::FontList@{Utils::FontList}}
+\doxysubsubsection{\texorpdfstring{FindFontIterator()}{FindFontIterator()}}
+{\footnotesize\ttfamily \label{class_utils_1_1_font_list_a8abb681729c1502b3f3260c211b69837} 
+Font\+Map\+::iterator Utils\+::\+Font\+List\+::\+Find\+Font\+Iterator (\begin{DoxyParamCaption}\item[{wx\+Font}]{font}{, }\item[{wx\+Color}]{color}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_font_list_8cpp_source_l00104}{104}} of file \mbox{\hyperlink{_font_list_8cpp_source}{Font\+List.\+cpp}}.
+
+\Hypertarget{class_utils_1_1_font_list_a5e3caa4fb6b55650655d44fabfb3d52c}\index{Utils::FontList@{Utils::FontList}!FindMyFont@{FindMyFont}}
+\index{FindMyFont@{FindMyFont}!Utils::FontList@{Utils::FontList}}
+\doxysubsubsection{\texorpdfstring{FindMyFont()}{FindMyFont()}}
+{\footnotesize\ttfamily \label{class_utils_1_1_font_list_a5e3caa4fb6b55650655d44fabfb3d52c} 
+\mbox{\hyperlink{class_utils_1_1_font}{Font}} \texorpdfstring{$\ast$}{*} Utils\+::\+Font\+List\+::\+Find\+My\+Font (\begin{DoxyParamCaption}\item[{wx\+Font}]{font}{, }\item[{wx\+Color}]{color}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_font_list_8cpp_source_l00122}{122}} of file \mbox{\hyperlink{_font_list_8cpp_source}{Font\+List.\+cpp}}.
+
+\Hypertarget{class_utils_1_1_font_list_ab7e4d2707d76c4edeb8ddb461dee8945}\index{Utils::FontList@{Utils::FontList}!GetColor@{GetColor}}
+\index{GetColor@{GetColor}!Utils::FontList@{Utils::FontList}}
+\doxysubsubsection{\texorpdfstring{GetColor()}{GetColor()}}
+{\footnotesize\ttfamily \label{class_utils_1_1_font_list_ab7e4d2707d76c4edeb8ddb461dee8945} 
+wx\+Colour Utils\+::\+Font\+List\+::\+Get\+Color (\begin{DoxyParamCaption}\item[{int}]{ndx}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_font_list_8cpp_source_l00146}{146}} of file \mbox{\hyperlink{_font_list_8cpp_source}{Font\+List.\+cpp}}.
+
+\Hypertarget{class_utils_1_1_font_list_a5e142b46cb46ed693164f35fa368fe9b}\index{Utils::FontList@{Utils::FontList}!GetFont@{GetFont}}
+\index{GetFont@{GetFont}!Utils::FontList@{Utils::FontList}}
+\doxysubsubsection{\texorpdfstring{GetFont()}{GetFont()}}
+{\footnotesize\ttfamily \label{class_utils_1_1_font_list_a5e142b46cb46ed693164f35fa368fe9b} 
+wx\+Font Utils\+::\+Font\+List\+::\+Get\+Font (\begin{DoxyParamCaption}\item[{int}]{ndx}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_font_list_8cpp_source_l00135}{135}} of file \mbox{\hyperlink{_font_list_8cpp_source}{Font\+List.\+cpp}}.
+
+\Hypertarget{class_utils_1_1_font_list_a01a314d15185543dc648129a2ac645ff}\index{Utils::FontList@{Utils::FontList}!GetFontCount@{GetFontCount}}
+\index{GetFontCount@{GetFontCount}!Utils::FontList@{Utils::FontList}}
+\doxysubsubsection{\texorpdfstring{GetFontCount()}{GetFontCount()}}
+{\footnotesize\ttfamily \label{class_utils_1_1_font_list_a01a314d15185543dc648129a2ac645ff} 
+int Utils\+::\+Font\+List\+::\+Get\+Font\+Count (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_font_list_8cpp_source_l00157}{157}} of file \mbox{\hyperlink{_font_list_8cpp_source}{Font\+List.\+cpp}}.
+
+\Hypertarget{class_utils_1_1_font_list_ae36cadee81415558bfc4eda8c9edf2af}\index{Utils::FontList@{Utils::FontList}!GetFontMap@{GetFontMap}}
+\index{GetFontMap@{GetFontMap}!Utils::FontList@{Utils::FontList}}
+\doxysubsubsection{\texorpdfstring{GetFontMap()}{GetFontMap()}}
+{\footnotesize\ttfamily \label{class_utils_1_1_font_list_ae36cadee81415558bfc4eda8c9edf2af} 
+\mbox{\hyperlink{namespace_utils_afb0a672162c0ac84ca53571ff06bb7d2}{Font\+Map}} \& Utils\+::\+Font\+List\+::\+Get\+Font\+Map (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_font_list_8h_source_l00082}{82}} of file \mbox{\hyperlink{_font_list_8h_source}{Font\+List.\+h}}.
+
+\Hypertarget{class_utils_1_1_font_list_a8d7c7ab1c9309f333d259a15a8eed439}\index{Utils::FontList@{Utils::FontList}!GetMyFont@{GetMyFont}}
+\index{GetMyFont@{GetMyFont}!Utils::FontList@{Utils::FontList}}
+\doxysubsubsection{\texorpdfstring{GetMyFont()}{GetMyFont()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_utils_1_1_font_list_a8d7c7ab1c9309f333d259a15a8eed439} 
+\mbox{\hyperlink{class_utils_1_1_font}{Font}} \texorpdfstring{$\ast$}{*} Utils\+::\+Font\+List\+::\+Get\+My\+Font (\begin{DoxyParamCaption}\item[{Font\+Map\+::iterator}]{itr}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_font_list_8cpp_source_l00175}{175}} of file \mbox{\hyperlink{_font_list_8cpp_source}{Font\+List.\+cpp}}.
+
+\Hypertarget{class_utils_1_1_font_list_a3fbc8aae91bb732d0218bb663b887e0a}\index{Utils::FontList@{Utils::FontList}!GetMyFont@{GetMyFont}}
+\index{GetMyFont@{GetMyFont}!Utils::FontList@{Utils::FontList}}
+\doxysubsubsection{\texorpdfstring{GetMyFont()}{GetMyFont()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_utils_1_1_font_list_a3fbc8aae91bb732d0218bb663b887e0a} 
+\mbox{\hyperlink{class_utils_1_1_font}{Font}} \texorpdfstring{$\ast$}{*} Utils\+::\+Font\+List\+::\+Get\+My\+Font (\begin{DoxyParamCaption}\item[{int}]{ndx}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_font_list_8cpp_source_l00163}{163}} of file \mbox{\hyperlink{_font_list_8cpp_source}{Font\+List.\+cpp}}.
+
+\Hypertarget{class_utils_1_1_font_list_a2a3296331ea2dd7f7184fd4635dbb29b}\index{Utils::FontList@{Utils::FontList}!InitFonts@{InitFonts}}
+\index{InitFonts@{InitFonts}!Utils::FontList@{Utils::FontList}}
+\doxysubsubsection{\texorpdfstring{InitFonts()}{InitFonts()}}
+{\footnotesize\ttfamily \label{class_utils_1_1_font_list_a2a3296331ea2dd7f7184fd4635dbb29b} 
+void Utils\+::\+Font\+List\+::\+Init\+Fonts (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_font_list_8cpp_source_l00182}{182}} of file \mbox{\hyperlink{_font_list_8cpp_source}{Font\+List.\+cpp}}.
+
+\Hypertarget{class_utils_1_1_font_list_ac386a31443cc33e99b44ae080d8bdb32}\index{Utils::FontList@{Utils::FontList}!IsValidFontNdx@{IsValidFontNdx}}
+\index{IsValidFontNdx@{IsValidFontNdx}!Utils::FontList@{Utils::FontList}}
+\doxysubsubsection{\texorpdfstring{IsValidFontNdx()}{IsValidFontNdx()}}
+{\footnotesize\ttfamily \label{class_utils_1_1_font_list_ac386a31443cc33e99b44ae080d8bdb32} 
+bool Utils\+::\+Font\+List\+::\+Is\+Valid\+Font\+Ndx (\begin{DoxyParamCaption}\item[{int}]{ndx}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_font_list_8cpp_source_l00216}{216}} of file \mbox{\hyperlink{_font_list_8cpp_source}{Font\+List.\+cpp}}.
+
+\Hypertarget{class_utils_1_1_font_list_a762c19298674cde94492c7bc81bc1fcd}\index{Utils::FontList@{Utils::FontList}!Load@{Load}}
+\index{Load@{Load}!Utils::FontList@{Utils::FontList}}
+\doxysubsubsection{\texorpdfstring{Load()}{Load()}}
+{\footnotesize\ttfamily \label{class_utils_1_1_font_list_a762c19298674cde94492c7bc81bc1fcd} 
+\mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4}{Design\+::\+Font\+Usage\+Type}} Utils\+::\+Font\+List\+::\+Load (\begin{DoxyParamCaption}\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{font\+Node}{, }\item[{wx\+String}]{native\+String}{, }\item[{wx\+String}]{color}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_font_list_8cpp_source_l00227}{227}} of file \mbox{\hyperlink{_font_list_8cpp_source}{Font\+List.\+cpp}}.
+
+\Hypertarget{class_utils_1_1_font_list_ac42177adfdd0d028a29720f76da78ab5}\index{Utils::FontList@{Utils::FontList}!LoadFont@{LoadFont}}
+\index{LoadFont@{LoadFont}!Utils::FontList@{Utils::FontList}}
+\doxysubsubsection{\texorpdfstring{LoadFont()}{LoadFont()}}
+{\footnotesize\ttfamily \label{class_utils_1_1_font_list_ac42177adfdd0d028a29720f76da78ab5} 
+int Utils\+::\+Font\+List\+::\+Load\+Font (\begin{DoxyParamCaption}\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{parent}{, }\item[{\mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4}{Design\+::\+Font\+Usage\+Type}}}]{type}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_font_list_8cpp_source_l00240}{240}} of file \mbox{\hyperlink{_font_list_8cpp_source}{Font\+List.\+cpp}}.
+
+\Hypertarget{class_utils_1_1_font_list_a22c1085c965cdf24ab7000b7056f6813}\index{Utils::FontList@{Utils::FontList}!MakeDefault@{MakeDefault}}
+\index{MakeDefault@{MakeDefault}!Utils::FontList@{Utils::FontList}}
+\doxysubsubsection{\texorpdfstring{MakeDefault()}{MakeDefault()}}
+{\footnotesize\ttfamily \label{class_utils_1_1_font_list_a22c1085c965cdf24ab7000b7056f6813} 
+void Utils\+::\+Font\+List\+::\+Make\+Default (\begin{DoxyParamCaption}\item[{int}]{ndx}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_font_list_8cpp_source_l00277}{277}} of file \mbox{\hyperlink{_font_list_8cpp_source}{Font\+List.\+cpp}}.
+
+\Hypertarget{class_utils_1_1_font_list_a7bb99494cab04e43e161459a07bbb7ec}\index{Utils::FontList@{Utils::FontList}!SaveFont@{SaveFont}}
+\index{SaveFont@{SaveFont}!Utils::FontList@{Utils::FontList}}
+\doxysubsubsection{\texorpdfstring{SaveFont()}{SaveFont()}}
+{\footnotesize\ttfamily \label{class_utils_1_1_font_list_a7bb99494cab04e43e161459a07bbb7ec} 
+void Utils\+::\+Font\+List\+::\+Save\+Font (\begin{DoxyParamCaption}\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{parent}{, }\item[{int}]{ndx}{, }\item[{\mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4}{Design\+::\+Font\+Usage\+Type}}}]{type}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_font_list_8cpp_source_l00296}{296}} of file \mbox{\hyperlink{_font_list_8cpp_source}{Font\+List.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/femon/\+Development/wx/clone\+Test/\+Stamp\+Tool/src/utils/\mbox{\hyperlink{_font_list_8h}{Font\+List.\+h}}\item 
+C\+:/\+Users/femon/\+Development/wx/clone\+Test/\+Stamp\+Tool/src/utils/\mbox{\hyperlink{_font_list_8cpp}{Font\+List.\+cpp}}\end{DoxyCompactItemize}

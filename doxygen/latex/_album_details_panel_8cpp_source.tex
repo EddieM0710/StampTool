@@ -1,0 +1,246 @@
+\doxysection{Album\+Details\+Panel.\+cpp}
+\hypertarget{_album_details_panel_8cpp_source}{}\label{_album_details_panel_8cpp_source}\index{C:/Users/femon/Development/wx/cloneTest/StampTool/src/gui/AlbumDetailsPanel.cpp@{C:/Users/femon/Development/wx/cloneTest/StampTool/src/gui/AlbumDetailsPanel.cpp}}
+\mbox{\hyperlink{_album_details_panel_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00002}00002\ \textcolor{comment}{\ *\ @file\ \ AlbumDetailsPanel.cpp}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00003}00003\ \textcolor{comment}{\ *@brief}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00004}00004\ \textcolor{comment}{*\ @author\ Eddie\ Monroe}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00005}00005\ \textcolor{comment}{*\ Modified\ by:}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00006}00006\ \textcolor{comment}{*\ @author\ Wed\ 23\ Nov\ 2022\ 12:01:34\ CST}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00007}00007\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00008}00008\ \textcolor{comment}{*\ @copyright\ Copyright\ (\ c\ )\ 2024}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00009}00009\ \textcolor{comment}{\ *\ This\ file\ is\ part\ of\ StampTool.}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00010}00010\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00011}00011\ \textcolor{comment}{\ *\ StampTool\ is\ free\ software:\ you\ can\ redistribute\ it\ and/or\ modify\ it\ under\ the}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00012}00012\ \textcolor{comment}{\ *\ terms\ of\ the\ GNU\ General\ Public\ License\ as\ published\ by\ the\ Free\ Software\ Foundation,}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00013}00013\ \textcolor{comment}{\ *\ either\ version\ 3\ of\ the\ License,\ or\ any\ later\ version.}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00014}00014\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00015}00015\ \textcolor{comment}{\ *\ StampTool\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,\ but\ WITHOUT\ ANY}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00016}00016\ \textcolor{comment}{\ *\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of\ MERCHANTABILITY\ or\ FITNESS\ FOR\ A}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00017}00017\ \textcolor{comment}{\ *\ PARTICULAR\ PURPOSE.\ See\ the\ GNU\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00018}00018\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00019}00019\ \textcolor{comment}{\ *\ You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License\ along\ with}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00020}00020\ \textcolor{comment}{\ *\ StampTool.\ If\ not,\ see\ <https://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00021}00021\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00024}00024\ \textcolor{preprocessor}{\#include\ "{}wx/wxprec.h"{}}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00026}00026\ \textcolor{preprocessor}{\#ifdef\ \_\_BORLANDC\_\_}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00027}00027\ \textcolor{preprocessor}{\#pragma\ hdrstop}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00028}00028\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00030}00030\ \textcolor{preprocessor}{\#ifndef\ WX\_PRECOMP}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00031}00031\ \textcolor{preprocessor}{\#include\ "{}wx/wx.h"{}}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00032}00032\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00033}00033\ \textcolor{preprocessor}{\#include\ "{}wx/notebook.h"{}}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00035}00035\ \textcolor{comment}{//\ includes}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00036}00036\ \textcolor{preprocessor}{\#include\ "{}wx/imaglist.h"{}}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00037}00037\ \textcolor{comment}{//\ includes}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00038}00038\ \textcolor{preprocessor}{\#include\ "{}wx/treectrl.h"{}}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00039}00039\ \textcolor{preprocessor}{\#include\ <wx/fontdlg.h>}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00040}00040\ \textcolor{preprocessor}{\#include\ <wx/fontdata.h>}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00042}00042\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_album_details_panel_8h}{gui/AlbumDetailsPanel.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00043}00043\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_font_defaults_panel_8h}{gui/FontDefaultsPanel.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00044}00044\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_page_defaults_panel_8h}{gui/PageDefaultsPanel.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00045}00045\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_frame_defaults_panel_8h}{gui/FrameDefaultsPanel.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00046}00046\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_stamp_defaults_panel_8h}{gui/StampDefaultsPanel.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00047}00047\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_labeled_text_box_8h}{gui/LabeledTextBox.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00048}00048\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_catalog_tree_ctrl_8h}{gui/CatalogTreeCtrl.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00049}00049\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_font_picker_helper_8h}{gui/FontPickerHelper.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00050}00050\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_design_defs_8h}{design/DesignDefs.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00051}00051\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_album_8h}{design/Album.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00052}00052\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_stamp_list_8h}{utils/StampList.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00053}00053\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_settings_8h}{utils/Settings.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00054}00054\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_font_list_8h}{utils/FontList.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00055}00055\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_defs_8h}{Defs.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00058}00058\ IMPLEMENT\_DYNAMIC\_CLASS(\ \mbox{\hyperlink{class_album_details_panel}{AlbumDetailsPanel}},\ \mbox{\hyperlink{class_helper_panel}{HelperPanel}}\ )}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00061}00061\ BEGIN\_EVENT\_TABLE(\ \mbox{\hyperlink{class_album_details_panel}{AlbumDetailsPanel}},\ \mbox{\hyperlink{class_helper_panel}{HelperPanel}}\ )}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00063}00063\ END\_EVENT\_TABLE(\ )}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00065}00065\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00067}\mbox{\hyperlink{class_album_details_panel_ad5ee91b2123453ba194e2cdfa68f8e07}{00067}}\ \mbox{\hyperlink{class_album_details_panel_ad5ee91b2123453ba194e2cdfa68f8e07}{AlbumDetailsPanel}}::\mbox{\hyperlink{class_album_details_panel_ad5ee91b2123453ba194e2cdfa68f8e07}{AlbumDetailsPanel}}(\ )}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00068}00068\ \{}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00069}00069\ \ \ \ \ \mbox{\hyperlink{class_album_details_panel_a273e22c0a1e7f78af5900686ec52f2cf}{Init}}(\ );}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00070}00070\ \}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00072}00072\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00074}\mbox{\hyperlink{class_album_details_panel_a9b5758deda8f99aa206ef83680004b61}{00074}}\ \mbox{\hyperlink{class_album_details_panel_ad5ee91b2123453ba194e2cdfa68f8e07}{AlbumDetailsPanel::AlbumDetailsPanel}}(\ wxWindow*\ parent,\ wxWindowID\ \textcolor{keywordtype}{id},\ \textcolor{keyword}{const}\ wxString\&\ caption,\ \textcolor{keyword}{const}\ wxPoint\&\ pos,\ \textcolor{keyword}{const}\ wxSize\&\ size,\ \textcolor{keywordtype}{long}\ style\ )}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00075}00075\ \{}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00076}00076\ \ \ \ \ \mbox{\hyperlink{class_album_details_panel_a273e22c0a1e7f78af5900686ec52f2cf}{Init}}(\ );}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00077}00077\ \ \ \ \ \mbox{\hyperlink{class_album_details_panel_a4426c09ff235af812c391c684f3edf36}{Create}}(\ parent,\ \textcolor{keywordtype}{id},\ caption,\ pos,\ size,\ style\ );}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00078}00078\ \}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00080}00080\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00082}\mbox{\hyperlink{class_album_details_panel_a8945c733c17142646bd918d226891b89}{00082}}\ \mbox{\hyperlink{class_album_details_panel_a8945c733c17142646bd918d226891b89}{AlbumDetailsPanel::\string~AlbumDetailsPanel}}(\ )}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00083}00083\ \{}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00084}00084\ \}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00086}00086\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00087}00087\ }
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00088}\mbox{\hyperlink{class_album_details_panel_a4426c09ff235af812c391c684f3edf36}{00088}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_album_details_panel_a4426c09ff235af812c391c684f3edf36}{AlbumDetailsPanel::Create}}(\ wxWindow*\ parent,\ wxWindowID\ \textcolor{keywordtype}{id},\ \textcolor{keyword}{const}\ wxString\&\ caption,\ \textcolor{keyword}{const}\ wxPoint\&\ pos,\ \textcolor{keyword}{const}\ wxSize\&\ size,\ \textcolor{keywordtype}{long}\ style\ )}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00089}00089\ \{}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00090}00090\ \ \ \ \ SetExtraStyle(\ wxWS\_EX\_VALIDATE\_RECURSIVELY\ |\ wxWS\_EX\_BLOCK\_EVENTS\ );}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00091}00091\ \ \ \ \ \textcolor{comment}{//\ wxDialog::Create(\ parent,\ id,\ caption,\ pos,\ size,\ style\ );}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00092}00092\ \ \ \ \ wxPanel::Create(\ parent,\ \textcolor{keywordtype}{id},\ pos,\ size,\ style\ );}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00093}00093\ }
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00094}00094\ \ \ \ \ \textcolor{comment}{//(\ notebook,\ ID\_PAGEDETAILSPANEL,\ wxDefaultPosition,\ wxDefaultSize,\ wxNO\_BORDER\ |\ wxTAB\_TRAVERSAL\ );}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00095}00095\ \ \ \ \ SetExtraStyle(\ wxWS\_EX\_VALIDATE\_RECURSIVELY\ );}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00096}00096\ }
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00097}00097\ }
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00098}00098\ \ \ \ \ \mbox{\hyperlink{class_album_details_panel_a993c301d52d22fa4b62779cdbeac04f5}{CreateControls}}(\ );}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00099}00099\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ GetSizer(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00100}00100\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00101}00101\ \ \ \ \ \ \ \ \ GetSizer(\ )-\/>SetSizeHints(\ \textcolor{keyword}{this}\ );}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00102}00102\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00103}00103\ \ \ \ \ Centre(\ );}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00104}00104\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00105}00105\ \}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00106}00106\ }
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00107}\mbox{\hyperlink{class_album_details_panel_a993c301d52d22fa4b62779cdbeac04f5}{00107}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_album_details_panel_a993c301d52d22fa4b62779cdbeac04f5}{AlbumDetailsPanel::CreateControls}}(\ )}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00108}00108\ \{}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00109}00109\ \ \ \ \ theDialog\ =\ \textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00110}00110\ }
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00111}00111\ \ \ \ \ \textcolor{keywordtype}{int}\ lastID\ =\ \mbox{\hyperlink{_gui_defs_8h_a6329898a126babcdaa295242c115a11ea2c74250c43b03b948bed6a25563d81ea}{ID\_ALBUMDETAILSDIALOG}}\ +\ 1;}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00112}00112\ }
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00113}00113\ }
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00114}00114\ \ \ \ \ wxBoxSizer*\ theDialogVerticalSizer\ =\ \textcolor{keyword}{new}\ wxBoxSizer(\ wxVERTICAL\ );}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00115}00115\ \ \ \ \ theDialog-\/>SetSizer(\ theDialogVerticalSizer\ );}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00116}00116\ }
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00117}00117\ \ \ \ \ wxBoxSizer*\ notebookHorizontalSizer\ =\ \textcolor{keyword}{new}\ wxBoxSizer(\ wxHORIZONTAL\ );}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00118}00118\ \ \ \ \ theDialogVerticalSizer-\/>Add(\ notebookHorizontalSizer,\ 1,\ wxGROW\ |\ wxALL,\ 0\ );}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00119}00119\ }
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00120}00120\ \ \ \ \ wxNotebook*\ notebook\ =\ \textcolor{keyword}{new}\ wxNotebook(\ theDialog,\ ++lastID,}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00121}00121\ \ \ \ \ \ \ \ \ wxDefaultPosition,\ wxDefaultSize,\ wxBK\_DEFAULT\ );}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00122}00122\ \ \ \ \ notebookHorizontalSizer-\/>Add(\ notebook,\ 1,\ wxGROW\ |\ wxALL,\ 0\ );}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00123}00123\ }
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00124}00124\ \ \ \ \ wxPanel*\ m\_albumSettingsPanel\ =\ \textcolor{keyword}{new}\ wxPanel(\ notebook,\ ++lastID,\ wxDefaultPosition,}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00125}00125\ \ \ \ \ \ \ \ \ wxDefaultSize,\ wxTAB\_TRAVERSAL\ );}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00126}00126\ \ \ \ \ m\_albumSettingsPanel-\/>SetExtraStyle(\ wxWS\_EX\_VALIDATE\_RECURSIVELY\ );}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00127}00127\ }
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00128}00128\ \ \ \ \ wxBoxSizer*\ detailsVerticalSizer\ =\ \textcolor{keyword}{new}\ wxBoxSizer(\ wxHORIZONTAL\ );}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00129}00129\ \ \ \ \ m\_albumSettingsPanel-\/>SetSizer(\ detailsVerticalSizer\ );}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00130}00130\ }
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00131}00131\ \ \ \ \ wxBoxSizer*\ detailsHorizontalSizer\ =\ \textcolor{keyword}{new}\ wxBoxSizer(\ wxHORIZONTAL\ );}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00132}00132\ \ \ \ \ detailsVerticalSizer-\/>Add(\ detailsHorizontalSizer,\ 1,\ wxGROW\ |\ wxALL,\ 5\ );}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00133}00133\ }
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00134}00134\ \ \ \ \ \textcolor{comment}{//\ m\_name\ =\ SetupLabelText(\ m\_albumSettingsPanel,\ detailsVerticalSizer,\ ++lastID,}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00135}00135\ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \_(\ "{}Name"{}\ ),\ true,\ wxCommandEventHandler(\ AlbumDetailsPanel::OnNameClick\ )\ );}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00136}00136\ }
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00137}00137\ \ \ \ \ wxStaticBox*\ itemStaticBoxSizerStatic\ =\ \textcolor{keyword}{new}\ wxStaticBox(\ m\_albumSettingsPanel,\ wxID\_ANY,\ \_(\ \textcolor{stringliteral}{"{}Name"{}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00138}00138\ \ \ \ \ wxStaticBoxSizer*\ itemStaticBoxSizer\ =\ \textcolor{keyword}{new}\ wxStaticBoxSizer(\ itemStaticBoxSizerStatic,\ wxHORIZONTAL\ );}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00139}00139\ \ \ \ \ detailsHorizontalSizer-\/>Add(\ itemStaticBoxSizer,\ 1,\ wxGROW\ |\ wxALL,\ 2\ );}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00140}00140\ }
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00141}00141\ \ \ \ \ m\_name\ =\ \textcolor{keyword}{new}\ wxTextCtrl(\ itemStaticBoxSizer-\/>GetStaticBox(\ ),\ ++lastID,}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00142}00142\ \ \ \ \ \ \ \ \ wxEmptyString,\ wxDefaultPosition,\ wxDefaultSize,\ wxNO\_BORDER\ );}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00143}00143\ \ \ \ \ itemStaticBoxSizer-\/>Add(\ m\_name,\ 1,\ wxGROW\ |\ wxALL,\ 2\ );}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00144}00144\ }
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00145}00145\ \ \ \ \ Connect(\ m\_name-\/>GetId(\ ),\ wxEVT\_TEXT,\ wxCommandEventHandler(\ \mbox{\hyperlink{class_album_details_panel_a61a334087e70bde3a6904478d4154abb}{AlbumDetailsPanel::OnNameClick}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00146}00146\ }
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00147}00147\ }
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00148}00148\ }
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00149}00149\ \ \ \ \ notebook-\/>AddPage(\ m\_albumSettingsPanel,\ \_(\ \textcolor{stringliteral}{"{}Album\ Settings"{}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00150}00150\ }
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00151}00151\ }
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00152}00152\ \ \ \ \ m\_fontDetailsPanel\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_font_defaults_panel}{FontDefaultsPanel}}(\ notebook,\ ++lastID,\ \textcolor{stringliteral}{"{}"{}},}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00153}00153\ \ \ \ \ \ \ \ \ wxDefaultPosition,\ wxDefaultSize,\ wxNO\_BORDER\ |\ wxTAB\_TRAVERSAL\ );}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00154}00154\ \ \ \ \ m\_fontDetailsPanel-\/>SetExtraStyle(\ wxWS\_EX\_VALIDATE\_RECURSIVELY\ );}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00155}00155\ \ \ \ \ notebook-\/>AddPage(\ m\_fontDetailsPanel,\ \_(\ \textcolor{stringliteral}{"{}Font\ Defaults"{}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00156}00156\ }
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00157}00157\ }
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00158}00158\ \ \ \ \ m\_pageDetailsPanel\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_page_defaults_panel}{PageDefaultsPanel}}(\ notebook,\ ++lastID,\ \textcolor{stringliteral}{"{}"{}},}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00159}00159\ \ \ \ \ \ \ \ \ wxDefaultPosition,\ wxDefaultSize,\ wxNO\_BORDER\ |\ wxTAB\_TRAVERSAL\ );}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00160}00160\ \ \ \ \ m\_pageDetailsPanel-\/>SetExtraStyle(\ wxWS\_EX\_VALIDATE\_RECURSIVELY\ );}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00161}00161\ \ \ \ \ notebook-\/>AddPage(\ m\_pageDetailsPanel,\ \_(\ \textcolor{stringliteral}{"{}Page\ Defaults"{}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00162}00162\ }
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00163}00163\ }
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00164}00164\ \ \ \ \ m\_frameDetailsPanel\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_frame_defaults_panel}{FrameDefaultsPanel}}(\ notebook,\ ++lastID,\ \textcolor{stringliteral}{"{}"{}},}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00165}00165\ \ \ \ \ \ \ \ \ wxDefaultPosition,\ wxDefaultSize,\ wxNO\_BORDER\ |\ wxTAB\_TRAVERSAL\ );}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00166}00166\ \ \ \ \ m\_frameDetailsPanel-\/>SetExtraStyle(\ wxWS\_EX\_VALIDATE\_RECURSIVELY\ );}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00167}00167\ \ \ \ \ notebook-\/>AddPage(\ m\_frameDetailsPanel,\ \_(\ \textcolor{stringliteral}{"{}Row/Col\ Defaults"{}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00168}00168\ }
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00169}00169\ \ \ \ \ m\_stampDetailsPanel\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_stamp_defaults_panel}{StampDefaultsPanel}}(\ notebook,\ ++lastID,\ \textcolor{stringliteral}{"{}"{}},}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00170}00170\ \ \ \ \ \ \ \ \ wxDefaultPosition,\ wxDefaultSize,\ wxNO\_BORDER\ |\ wxTAB\_TRAVERSAL\ );}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00171}00171\ \ \ \ \ m\_stampDetailsPanel-\/>SetExtraStyle(\ wxWS\_EX\_VALIDATE\_RECURSIVELY\ );}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00172}00172\ \ \ \ \ notebook-\/>AddPage(\ m\_stampDetailsPanel,\ \_(\ \textcolor{stringliteral}{"{}Stamp\ Defaults"{}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00173}00173\ }
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00174}00174\ \ \ \ \ Layout(\ );}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00175}00175\ }
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00176}00176\ \ \ \ \ m\_name-\/>SetToolTip(\ \textcolor{stringliteral}{"{}Name\ of\ Album"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00177}00177\ \ \ \ \ \textcolor{comment}{//\ m\_paperHeight-\/>SetToolTip(\ "{}Height\ of\ paper\ in\ printer\ (in\ mm)"{}\ );}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00178}00178\ \}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00179}00179\ }
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00180}00180\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00181}00181\ }
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00182}\mbox{\hyperlink{class_album_details_panel_a2107286a599c7100f8a9a79734d09952}{00182}}\ wxString\ \mbox{\hyperlink{class_album_details_panel_a2107286a599c7100f8a9a79734d09952}{AlbumDetailsPanel::GetName}}(\ )\ \{}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00183}00183\ \ \ \ \ \textcolor{keywordflow}{return}\ m\_name-\/>GetValue(\ );}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00184}00184\ \}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00185}00185\ }
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00186}00186\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00187}00187\ }
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00188}\mbox{\hyperlink{class_album_details_panel_a273e22c0a1e7f78af5900686ec52f2cf}{00188}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_album_details_panel_a273e22c0a1e7f78af5900686ec52f2cf}{AlbumDetailsPanel::Init}}(\ )}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00189}00189\ \{}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00190}00190\ \ \ \ \ m\_name\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00191}00191\ \ \ \ \ \textcolor{comment}{//\ m\_pageHeight\ =\ NULL;}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00192}00192\ \ \ \ \ \textcolor{comment}{//\ m\_pageWidth\ =\ NULL;}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00193}00193\ \ \ \ \ \textcolor{comment}{//\ m\_topPageMargin\ =\ NULL;}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00194}00194\ \ \ \ \ \textcolor{comment}{//\ m\_bottomPageMargin\ =\ NULL;}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00195}00195\ \ \ \ \ \textcolor{comment}{//\ m\_rightPageMargin\ =\ NULL;}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00196}00196\ \ \ \ \ \textcolor{comment}{//\ m\_leftPageMargin\ =\ NULL;}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00197}00197\ \ \ \ \ \textcolor{comment}{//\ m\_borderSize\ =\ NULL;}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00198}00198\ \ \ \ \ m\_validate\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00199}00199\ \}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00200}00200\ }
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00201}00201\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00202}00202\ }
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00203}\mbox{\hyperlink{class_album_details_panel_a9c7fdd9c3a11bb8adedadd7c3f63a6b6}{00203}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_album_details_panel_a9c7fdd9c3a11bb8adedadd7c3f63a6b6}{AlbumDetailsPanel::SetupDialog}}(\ \mbox{\hyperlink{class_design_1_1_album}{Design::Album}}*\ album\ )}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00204}00204\ \{}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00205}00205\ \ \ \ \ m\_album\ =\ album;}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00206}00206\ \ \ \ \ \mbox{\hyperlink{class_album_details_panel_a4185d8f56108d8736701762da9454e2e}{UpdateControls}}(\ );}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00207}00207\ }
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00208}00208\ \};}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00209}00209\ }
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00210}00210\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00211}00211\ }
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00212}\mbox{\hyperlink{class_album_details_panel_af725993cbcf30a19abbef7ede551b139}{00212}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_album_details_panel_af725993cbcf30a19abbef7ede551b139}{AlbumDetailsPanel::ShowToolTips}}(\ )}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00213}00213\ \{}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00214}00214\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00215}00215\ \}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00216}00216\ }
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00217}00217\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00218}00218\ }
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00219}\mbox{\hyperlink{class_album_details_panel_a61a334087e70bde3a6904478d4154abb}{00219}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_album_details_panel_a61a334087e70bde3a6904478d4154abb}{AlbumDetailsPanel::OnNameClick}}(\ wxCommandEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00220}00220\ \{}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00221}00221\ \ \ \ \ wxString\ docName\ =\ m\_album-\/>GetDocName(\ );}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00222}00222\ \ \ \ \ wxString\ name\ =\ m\_name-\/>GetValue(\ );}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00223}00223\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ docName.Cmp(\ name\ )\ )}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00224}00224\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00225}00225\ \ \ \ \ \ \ \ \ m\_album-\/>SetDocName(\ name\ );}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00226}00226\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00227}00227\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00228}00228\ }
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00229}00229\ \}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00230}00230\ }
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00231}00231\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00232}00232\ }
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00233}\mbox{\hyperlink{class_album_details_panel_a4185d8f56108d8736701762da9454e2e}{00233}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_album_details_panel_a4185d8f56108d8736701762da9454e2e}{AlbumDetailsPanel::UpdateControls}}(\ )}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00234}00234\ \{}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00235}00235\ \ \ \ \ m\_pageDetailsPanel-\/>UpdateControls(\ );}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00236}00236\ \ \ \ \ m\_frameDetailsPanel-\/>UpdateControls(\ );}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00237}00237\ \ \ \ \ m\_stampDetailsPanel-\/>UpdateControls(\ );}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00238}00238\ }
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00239}00239\ \ \ \ \ SetName(\ m\_album-\/>AlbumStampDefaults(\ )-\/>GetAttrStr(\ \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364bea13d5598e62dba0d4b50b795c3cad504e}{Design::AT\_Name}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00240}00240\ \}}
+\DoxyCodeLine{\Hypertarget{_album_details_panel_8cpp_source_l00241}00241\ }
+
+\end{DoxyCode}

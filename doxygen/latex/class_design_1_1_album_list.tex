@@ -1,0 +1,129 @@
+\doxysection{Design\+::Album\+List Class Reference}
+\hypertarget{class_design_1_1_album_list}{}\label{class_design_1_1_album_list}\index{Design::AlbumList@{Design::AlbumList}}
+
+
+{\ttfamily \#include $<$Album\+List.\+h$>$}
+
+Inheritance diagram for Design\+::Album\+List\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_design_1_1_album_list}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_design_1_1_album_list_aed9ac858b403fec6a47d8125118f1040}{Album\+List}} ()
+\item 
+\mbox{\hyperlink{class_design_1_1_album_list_a0df839975997e897112acb1d07cff4d8}{\texorpdfstring{$\sim$}{\string~}\+Album\+List}} ()
+\item 
+\mbox{\hyperlink{class_design_1_1_album_volume}{Design\+::\+Album\+Volume}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_design_1_1_album_list_a70c01dde6e0ee6d04e5c0ec63546be3c}{Add\+New\+Volume}} (wx\+String filename)
+\item 
+\mbox{\hyperlink{class_design_1_1_album_volume}{Design\+::\+Album\+Volume}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_design_1_1_album_list_aca752cf1ad63ba0d8b6b4bbc240723ae}{New\+Volume\+Instance}} (wx\+String filename)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_utils_1_1_volume_list}{Utils\+::\+Volume\+List}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_utils_1_1_volume_list_aafb3398328644baaf92c84388df8a577}{Volume\+List}} ()
+\item 
+\mbox{\hyperlink{class_utils_1_1_volume_list_abf211ffa41d9b860867decf436ce5b94}{\texorpdfstring{$\sim$}{\string~}\+Volume\+List}} ()
+\item 
+wx\+Xml\+Node \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_utils_1_1_volume_list_abd40ffe153b1b26986cc05f33aa83c4a}{Add\+Child}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}child)
+\item 
+bool \mbox{\hyperlink{class_utils_1_1_volume_list_af5b9b1b4662680053e1f34b8df78fd15}{Clear}} ()
+\item 
+wx\+Tree\+Item\+Id \mbox{\hyperlink{class_utils_1_1_volume_list_a4d068a2736e07ebaaf0bf54a4aa5a8ac}{Find\+Menu\+ID}} (int id)
+\item 
+Menu\+IDArray\+::iterator \mbox{\hyperlink{class_utils_1_1_volume_list_a66f87d684de7268a050b34c66d84952c}{Find\+Menu\+IDIterator}} (int id)
+\item 
+\mbox{\hyperlink{class_utils_1_1_volume}{Utils\+::\+Volume}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_utils_1_1_volume_list_a943b0708393fc693c0fe7d59e27d9e96}{Find\+Volume}} (wx\+String str)
+\item 
+Volume\+Array\+::iterator \mbox{\hyperlink{class_utils_1_1_volume_list_a12c91cdf68c455c1d7c4d19471fe9e3e}{Find\+Volume\+Iterator}} (wx\+String str)
+\item 
+\mbox{\hyperlink{namespace_utils_aeee3fa6f7393338c50e7f323fa993989}{Utils\+::\+Volume\+Array}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_utils_1_1_volume_list_a715cb1f378294d281c4a9c7c90a60eaf}{Get\+Array}} ()
+\item 
+\mbox{\hyperlink{class_utils_1_1_volume}{Utils\+::\+Volume}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_utils_1_1_volume_list_a8c45e00867a115cce68f8ef768d7ac38}{Get\+Volume}} ()
+\item 
+void \mbox{\hyperlink{class_utils_1_1_volume_list_a3be25b5f8e4a75cf6a73b7d60986cb20}{Insert}} (int id, wx\+Tree\+Item\+Id tree\+Id)
+\item 
+void \mbox{\hyperlink{class_utils_1_1_volume_list_a99b5483956ded5de6622279aa4cbfa68}{Insert}} (wx\+String str, \mbox{\hyperlink{class_utils_1_1_volume}{Utils\+::\+Volume}} \texorpdfstring{$\ast$}{*}vol)
+\item 
+void \mbox{\hyperlink{class_utils_1_1_volume_list_ac6d9e736b10d8f6e0678421c89b39ec6}{Make\+Name\+Array}} (wx\+Array\+String \&array)
+\item 
+void \mbox{\hyperlink{class_utils_1_1_volume_list_a76617541736b6fa96ef227e42292246b}{Remove\+Volume}} (wx\+String name)
+\item 
+void \mbox{\hyperlink{class_utils_1_1_volume_list_a41690d66a9027b11224b98f051fd3eed}{Remove\+Volume}} (\mbox{\hyperlink{class_utils_1_1_volume}{Volume}} \texorpdfstring{$\ast$}{*}vol)
+\item 
+void \mbox{\hyperlink{class_utils_1_1_volume_list_a06d73bb39e9c6ebc5cf8cede367b5299}{Save\+Dirty\+Volumes}} ()
+\item 
+void \mbox{\hyperlink{class_utils_1_1_volume_list_acc5f386a0d13002f76d76cf9b630766f}{Save\+Volumes}} ()
+\item 
+void \mbox{\hyperlink{class_utils_1_1_volume_list_a7d1ce6fb8df681f2debf9a7b3b2430b3}{Set\+Current\+Volume}} (\mbox{\hyperlink{class_utils_1_1_volume}{Volume}} \texorpdfstring{$\ast$}{*}vol)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_album_list_8h_source_l00045}{45}} of file \mbox{\hyperlink{_album_list_8h_source}{Album\+List.\+h}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_design_1_1_album_list_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_design_1_1_album_list_aed9ac858b403fec6a47d8125118f1040}\index{Design::AlbumList@{Design::AlbumList}!AlbumList@{AlbumList}}
+\index{AlbumList@{AlbumList}!Design::AlbumList@{Design::AlbumList}}
+\doxysubsubsection{\texorpdfstring{AlbumList()}{AlbumList()}}
+{\footnotesize\ttfamily \label{class_design_1_1_album_list_aed9ac858b403fec6a47d8125118f1040} 
+Design\+::\+Album\+List\+::\+Album\+List (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_album_list_8h_source_l00050}{50}} of file \mbox{\hyperlink{_album_list_8h_source}{Album\+List.\+h}}.
+
+\Hypertarget{class_design_1_1_album_list_a0df839975997e897112acb1d07cff4d8}\index{Design::AlbumList@{Design::AlbumList}!````~AlbumList@{\texorpdfstring{$\sim$}{\string~}AlbumList}}
+\index{````~AlbumList@{\texorpdfstring{$\sim$}{\string~}AlbumList}!Design::AlbumList@{Design::AlbumList}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}AlbumList()}{\string~AlbumList()}}
+{\footnotesize\ttfamily \label{class_design_1_1_album_list_a0df839975997e897112acb1d07cff4d8} 
+Design\+::\+Album\+List\+::\texorpdfstring{$\sim$}{\string~}\+Album\+List (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_album_list_8h_source_l00052}{52}} of file \mbox{\hyperlink{_album_list_8h_source}{Album\+List.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_design_1_1_album_list_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_design_1_1_album_list_a70c01dde6e0ee6d04e5c0ec63546be3c}\index{Design::AlbumList@{Design::AlbumList}!AddNewVolume@{AddNewVolume}}
+\index{AddNewVolume@{AddNewVolume}!Design::AlbumList@{Design::AlbumList}}
+\doxysubsubsection{\texorpdfstring{AddNewVolume()}{AddNewVolume()}}
+{\footnotesize\ttfamily \label{class_design_1_1_album_list_a70c01dde6e0ee6d04e5c0ec63546be3c} 
+\mbox{\hyperlink{class_design_1_1_album_volume}{Design\+::\+Album\+Volume}} \texorpdfstring{$\ast$}{*} Design\+::\+Album\+List\+::\+Add\+New\+Volume (\begin{DoxyParamCaption}\item[{wx\+String}]{filename}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_list_8cpp_source_l00065}{65}} of file \mbox{\hyperlink{_album_list_8cpp_source}{Album\+List.\+cpp}}.
+
+\Hypertarget{class_design_1_1_album_list_aca752cf1ad63ba0d8b6b4bbc240723ae}\index{Design::AlbumList@{Design::AlbumList}!NewVolumeInstance@{NewVolumeInstance}}
+\index{NewVolumeInstance@{NewVolumeInstance}!Design::AlbumList@{Design::AlbumList}}
+\doxysubsubsection{\texorpdfstring{NewVolumeInstance()}{NewVolumeInstance()}}
+{\footnotesize\ttfamily \label{class_design_1_1_album_list_aca752cf1ad63ba0d8b6b4bbc240723ae} 
+\mbox{\hyperlink{class_design_1_1_album_volume}{Design\+::\+Album\+Volume}} \texorpdfstring{$\ast$}{*} Design\+::\+Album\+List\+::\+New\+Volume\+Instance (\begin{DoxyParamCaption}\item[{wx\+String}]{filename}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_utils_1_1_volume_list_ad46e91f261dfb4bd99bd0fc50e539d61}{Utils\+::\+Volume\+List}}.
+
+
+
+Definition at line \mbox{\hyperlink{_album_list_8cpp_source_l00056}{56}} of file \mbox{\hyperlink{_album_list_8cpp_source}{Album\+List.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/femon/\+Development/wx/clone\+Test/\+Stamp\+Tool/src/design/\mbox{\hyperlink{_album_list_8h}{Album\+List.\+h}}\item 
+C\+:/\+Users/femon/\+Development/wx/clone\+Test/\+Stamp\+Tool/src/design/\mbox{\hyperlink{_album_list_8cpp}{Album\+List.\+cpp}}\end{DoxyCompactItemize}

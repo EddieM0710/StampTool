@@ -1,0 +1,114 @@
+\doxysection{Catalog\+Details\+Dialog.\+h}
+\hypertarget{_catalog_details_dialog_8h_source}{}\label{_catalog_details_dialog_8h_source}\index{C:/Users/femon/Development/wx/cloneTest/StampTool/src/catalog/CatalogDetailsDialog.h@{C:/Users/femon/Development/wx/cloneTest/StampTool/src/catalog/CatalogDetailsDialog.h}}
+\mbox{\hyperlink{_catalog_details_dialog_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00002}00002\ \textcolor{comment}{\ *\ @file\ CatalogDetailsDialog.h}}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00003}00003\ \textcolor{comment}{\ *\ @author\ Eddie\ Monroe}}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00004}00004\ \textcolor{comment}{\ *\ @brief}}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00005}00005\ \textcolor{comment}{\ *\ @version\ 0.1}}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00006}00006\ \textcolor{comment}{\ *\ @date\ 2022-\/04-\/29}}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00007}00007\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00008}00008\ \textcolor{comment}{\ *\ @copyright\ Copyright\ (\ c\ )\ 2022}}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00009}00009\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00010}00010\ \textcolor{comment}{\ *\ This\ file\ is\ part\ of\ StampTool.}}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00011}00011\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00012}00012\ \textcolor{comment}{\ *\ StampTool\ is\ free\ software:\ you\ can\ redistribute\ it\ and/or\ modify\ it\ under\ the}}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00013}00013\ \textcolor{comment}{\ *\ terms\ of\ the\ GNU\ General\ Public\ License\ as\ published\ by\ the\ Free\ Software\ Foundation,}}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00014}00014\ \textcolor{comment}{\ *\ either\ version\ 3\ of\ the\ License,\ or\ any\ later\ version.}}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00015}00015\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00016}00016\ \textcolor{comment}{\ *\ StampTool\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,\ but\ WITHOUT\ ANY}}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00017}00017\ \textcolor{comment}{\ *\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of\ MERCHANTABILITY\ or\ FITNESS\ FOR\ A}}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00018}00018\ \textcolor{comment}{\ *\ PARTICULAR\ PURPOSE.\ See\ the\ GNU\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00019}00019\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00020}00020\ \textcolor{comment}{\ *\ You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License\ along\ with}}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00021}00021\ \textcolor{comment}{\ *\ StampTool.\ If\ not,\ see\ <https://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00022}00022\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00024}00024\ \textcolor{preprocessor}{\#ifndef\ \_CATALOGDETAILSDIALOG\_H\_}}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00025}00025\ \textcolor{preprocessor}{\#define\ \_CATALOGDETAILSDIALOG\_H\_}}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00027}00027\ \textcolor{preprocessor}{\#include\ "{}wx/listctrl.h"{}}}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00029}00029\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_album_tree_ctrl_8h}{gui/AlbumTreeCtrl.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00030}00030\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_gui_defs_8h}{gui/GuiDefs.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00032}00032\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_labeled_text_box}{LabeledTextBox}};}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00033}00033\ \textcolor{keyword}{class\ }wxListCtrl;}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00035}\mbox{\hyperlink{_catalog_details_dialog_8h_a9f2ea36940dc27b0bde951e0dfd8fa33}{00035}}\ \textcolor{preprocessor}{\#define\ SYMBOL\_CATALOGDETAILSDIALOG\_STYLE\ wxCAPTION\ |\ wxRESIZE\_BORDER\ |\ wxSYSTEM\_MENU\ |\ wxCLOSE\_BOX\ |\ wxTAB\_TRAVERSAL}}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00036}\mbox{\hyperlink{_catalog_details_dialog_8h_ab4450e9111ea62b9c99a6a30fedcb585}{00036}}\ \textcolor{preprocessor}{\#define\ SYMBOL\_CATALOGDETAILSDIALOG\_TITLE\ \_(\ "{}Import\ File\ Details\ Dialog"{}\ )}}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00037}\mbox{\hyperlink{_catalog_details_dialog_8h_a1700ea1d773f699d64cf1604aca63e40}{00037}}\ \textcolor{preprocessor}{\#define\ SYMBOL\_CATALOGDETAILSDIALOG\_IDNAME\ ID\_CATALOGDETAILSDIALOG}}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00038}\mbox{\hyperlink{_catalog_details_dialog_8h_a761e529d42c74e6862a08d24c243f3a4}{00038}}\ \textcolor{preprocessor}{\#define\ SYMBOL\_CATALOGDETAILSDIALOG\_SIZE\ wxSize(\ 800,\ 400\ )}}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00039}\mbox{\hyperlink{_catalog_details_dialog_8h_af5993fb51d0a4078bdc5b3c5c7f6aa33}{00039}}\ \textcolor{preprocessor}{\#define\ SYMBOL\_CATALOGDETAILSDIALOG\_POSITION\ wxDefaultPosition}}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00041}\mbox{\hyperlink{class_catalog_details_dialog}{00041}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_catalog_details_dialog_a14f65ee74b5767010ee5e155cbeee71c}{CatalogDetailsDialog}}\ :\ \textcolor{keyword}{public}\ wxDialog}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00042}00042\ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00043}00043\ \ \ \ \ DECLARE\_DYNAMIC\_CLASS(\ \mbox{\hyperlink{class_catalog_details_dialog_a14f65ee74b5767010ee5e155cbeee71c}{CatalogDetailsDialog}}\ )}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00044}00044\ \ \ \ \ DECLARE\_EVENT\_TABLE(\ )}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00046}00046\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00048}\mbox{\hyperlink{class_catalog_details_dialog_a29e4cbf4c534078f53c37a4e6bdb8406}{00048}}\ \ \ \ \ \textcolor{keyword}{enum}\ \mbox{\hyperlink{class_catalog_details_dialog_a29e4cbf4c534078f53c37a4e6bdb8406}{CatalogDetailsDialogGuiDefs}}}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00049}00049\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00050}\mbox{\hyperlink{class_catalog_details_dialog_a29e4cbf4c534078f53c37a4e6bdb8406aa686c9aa1cf94bd38a280634f4242b92}{00050}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_catalog_details_dialog_a29e4cbf4c534078f53c37a4e6bdb8406aa686c9aa1cf94bd38a280634f4242b92}{ID\_NAMELABELEDTEXTBOX}}\ =\ \mbox{\hyperlink{_gui_defs_8h_a6329898a126babcdaa295242c115a11ea59a501ab842b1cd7ab547ae7a5134dcd}{ID\_CATALOGDETAILSDIALOG}}\ +\ 1,}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00051}\mbox{\hyperlink{class_catalog_details_dialog_a29e4cbf4c534078f53c37a4e6bdb8406a4fc65ea7139f3bb2754d1f67e55424f9}{00051}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_catalog_details_dialog_a29e4cbf4c534078f53c37a4e6bdb8406a4fc65ea7139f3bb2754d1f67e55424f9}{ID\_IMAGEPATHTEXTBOX}},}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00052}\mbox{\hyperlink{class_catalog_details_dialog_a29e4cbf4c534078f53c37a4e6bdb8406a7fbd6430f85ed33305d17dc1713dadcd}{00052}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_catalog_details_dialog_a29e4cbf4c534078f53c37a4e6bdb8406a7fbd6430f85ed33305d17dc1713dadcd}{ID\_VOLUMETITLECHECKBOX}},}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00053}\mbox{\hyperlink{class_catalog_details_dialog_a29e4cbf4c534078f53c37a4e6bdb8406a8acc1ff8bcbaa1e5793d261f24c26680}{00053}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_catalog_details_dialog_a29e4cbf4c534078f53c37a4e6bdb8406a8acc1ff8bcbaa1e5793d261f24c26680}{ID\_FRAMECHECKBOX}},}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00054}\mbox{\hyperlink{class_catalog_details_dialog_a29e4cbf4c534078f53c37a4e6bdb8406a22880a732c6f94fad8a8e8ef6826601c}{00054}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_catalog_details_dialog_a29e4cbf4c534078f53c37a4e6bdb8406a22880a732c6f94fad8a8e8ef6826601c}{ID\_DEFAULTFONTBUTTON}},}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00055}\mbox{\hyperlink{class_catalog_details_dialog_a29e4cbf4c534078f53c37a4e6bdb8406a851f4112a8e494d1ae7b8610f2d2d20f}{00055}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_catalog_details_dialog_a29e4cbf4c534078f53c37a4e6bdb8406a851f4112a8e494d1ae7b8610f2d2d20f}{ID\_VOLUMENAMEPANEL}},}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00056}\mbox{\hyperlink{class_catalog_details_dialog_a29e4cbf4c534078f53c37a4e6bdb8406afdc4ce60bfc5eedfcee7e0dbf39a0039}{00056}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_catalog_details_dialog_a29e4cbf4c534078f53c37a4e6bdb8406afdc4ce60bfc5eedfcee7e0dbf39a0039}{ID\_VOLUMELAYOUTPANEL}},}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00057}\mbox{\hyperlink{class_catalog_details_dialog_a29e4cbf4c534078f53c37a4e6bdb8406ac36b929ebc957d071fe192807ecfe24c}{00057}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_catalog_details_dialog_a29e4cbf4c534078f53c37a4e6bdb8406ac36b929ebc957d071fe192807ecfe24c}{ID\_VOLUMELAYOUTTEXTCTRL}},}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00058}\mbox{\hyperlink{class_catalog_details_dialog_a29e4cbf4c534078f53c37a4e6bdb8406a17627394afcafbfcdac1ac0736bd6756}{00058}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_catalog_details_dialog_a29e4cbf4c534078f53c37a4e6bdb8406a17627394afcafbfcdac1ac0736bd6756}{ID\_VOLUMENOTEBOOK}},}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00059}\mbox{\hyperlink{class_catalog_details_dialog_a29e4cbf4c534078f53c37a4e6bdb8406a8a29a58f8ac8db225ac119bd44892e2e}{00059}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_catalog_details_dialog_a29e4cbf4c534078f53c37a4e6bdb8406a8a29a58f8ac8db225ac119bd44892e2e}{ID\_CATDIRBUTTON}},}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00060}\mbox{\hyperlink{class_catalog_details_dialog_a29e4cbf4c534078f53c37a4e6bdb8406a9e82e7ed6506cc7af4d9005df39702d0}{00060}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_catalog_details_dialog_a29e4cbf4c534078f53c37a4e6bdb8406a9e82e7ed6506cc7af4d9005df39702d0}{ID\_IMAGEDIRBUTTON}}}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00061}00061\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00064}00064\ \ \ \ \ \mbox{\hyperlink{class_catalog_details_dialog_a14f65ee74b5767010ee5e155cbeee71c}{CatalogDetailsDialog}}(\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00066}00066\ \ \ \ \ \mbox{\hyperlink{class_catalog_details_dialog_a14f65ee74b5767010ee5e155cbeee71c}{CatalogDetailsDialog}}(\ wxWindow*\ parent,\ wxWindowID\ \textcolor{keywordtype}{id}\ =\ \mbox{\hyperlink{_catalog_details_dialog_8h_a1700ea1d773f699d64cf1604aca63e40}{SYMBOL\_CATALOGDETAILSDIALOG\_IDNAME}},\ \textcolor{keyword}{const}\ wxString\&\ caption\ =\ \mbox{\hyperlink{_catalog_details_dialog_8h_ab4450e9111ea62b9c99a6a30fedcb585}{SYMBOL\_CATALOGDETAILSDIALOG\_TITLE}},\ \textcolor{keyword}{const}\ wxPoint\&\ pos\ =\ \mbox{\hyperlink{_catalog_details_dialog_8h_af5993fb51d0a4078bdc5b3c5c7f6aa33}{SYMBOL\_CATALOGDETAILSDIALOG\_POSITION}},\ \textcolor{keyword}{const}\ wxSize\&\ size\ =\ \mbox{\hyperlink{_catalog_details_dialog_8h_a761e529d42c74e6862a08d24c243f3a4}{SYMBOL\_CATALOGDETAILSDIALOG\_SIZE}},\ \textcolor{keywordtype}{long}\ style\ =\ \mbox{\hyperlink{_catalog_details_dialog_8h_a9f2ea36940dc27b0bde951e0dfd8fa33}{SYMBOL\_CATALOGDETAILSDIALOG\_STYLE}}\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00068}00068\ \ \ \ \ \mbox{\hyperlink{class_catalog_details_dialog_a74a9f88b579b95f61a1b67de634f7e4f}{\string~CatalogDetailsDialog}}(\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00070}00070\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_catalog_details_dialog_ae14cdbee81adc23ac687da968d6f6a3a}{Create}}(\ wxWindow*\ parent,\ wxWindowID\ \textcolor{keywordtype}{id}\ =\ \mbox{\hyperlink{_catalog_details_dialog_8h_a1700ea1d773f699d64cf1604aca63e40}{SYMBOL\_CATALOGDETAILSDIALOG\_IDNAME}},\ \textcolor{keyword}{const}\ wxString\&\ caption\ =\ \mbox{\hyperlink{_catalog_details_dialog_8h_ab4450e9111ea62b9c99a6a30fedcb585}{SYMBOL\_CATALOGDETAILSDIALOG\_TITLE}},\ \textcolor{keyword}{const}\ wxPoint\&\ pos\ =\ \mbox{\hyperlink{_catalog_details_dialog_8h_af5993fb51d0a4078bdc5b3c5c7f6aa33}{SYMBOL\_CATALOGDETAILSDIALOG\_POSITION}},\ \textcolor{keyword}{const}\ wxSize\&\ size\ =\ \mbox{\hyperlink{_catalog_details_dialog_8h_a761e529d42c74e6862a08d24c243f3a4}{SYMBOL\_CATALOGDETAILSDIALOG\_SIZE}},\ \textcolor{keywordtype}{long}\ style\ =\ \mbox{\hyperlink{_catalog_details_dialog_8h_a9f2ea36940dc27b0bde951e0dfd8fa33}{SYMBOL\_CATALOGDETAILSDIALOG\_STYLE}}\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00072}00072\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_details_dialog_a99055bdf530b8fb2a583640fd7a121b6}{CreateControls}}(\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00074}00074\ \ \ \ \ wxString\ \mbox{\hyperlink{class_catalog_details_dialog_a145eb4d7efed7e637da4ec881cd4ce1c}{GetCatalogPath}}(\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00076}00076\ \ \ \ \ wxString\ \mbox{\hyperlink{class_catalog_details_dialog_a798699a77be91cfcf2eea8cb0cff1181}{GetName}}(\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00078}\mbox{\hyperlink{class_catalog_details_dialog_aca51eb0b9e9a981b3e9de38bc3297e60}{00078}}\ \ \ \ \ wxString\ \mbox{\hyperlink{class_catalog_details_dialog_aca51eb0b9e9a981b3e9de38bc3297e60}{GetImagePath}}(\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00080}00080\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_details_dialog_a2eb4ccf9797834b6e105517548d38d0e}{Init}}(\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00082}00082\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_catalog_details_dialog_ad34b85ac7f9323a0da1458188644f2a6}{IsNameModified}}(\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00083}00083\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00084}00084\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_details_dialog_a9cb8910961cc8369fee62d778070dab0}{OnCatDirClick}}(\ wxCommandEvent\&\ event\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00086}00086\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_details_dialog_adbad27c43c0515032c7067660ec32b0a}{OnOkClick}}(\ wxCommandEvent\&\ event\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00087}00087\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00088}00088\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_details_dialog_a21f05eb36157a29ebc7d476b6522a2c8}{SetCatalogFilename}}(\ wxString\ filename\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00090}00090\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_details_dialog_ad260f74a05c2e1a6b6a4fd69de0dcbec}{SetDesignTreeID}}(\ wxTreeItemId\ \textcolor{keywordtype}{id}\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00091}00091\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00092}\mbox{\hyperlink{class_catalog_details_dialog_ab3ef9c453c28c0460c542e49a1941ce0}{00092}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_details_dialog_ab3ef9c453c28c0460c542e49a1941ce0}{SetImagePath}}(\ wxString\ str\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00093}00093\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00094}00094\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_details_dialog_a75687baf7e667e3963e0f4bf076ed96d}{SetName}}(\ wxString\ str\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00095}00095\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00096}00096\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_details_dialog_a77b5ddebf575ff98b76fc2019b9e1f38}{SetNameModified}}(\ \textcolor{keywordtype}{bool}\ state\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00097}00097\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00098}00098\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_catalog_details_dialog_a61f7932ed0dd7e7e097dd1065d56b081}{ShowToolTips}}(\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00099}00099\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00100}00100\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00101}00101\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00102}00102\ \ \ \ \ wxTreeItemId\ m\_designTreeID;}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00103}00103\ \ \ \ \ wxTextCtrl*\ m\_name;}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00104}00104\ \ \ \ \ \mbox{\hyperlink{class_labeled_text_box}{LabeledTextBox}}*\ m\_catPath;}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00105}00105\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00106}00106\ \};}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00107}00107\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8h_source_l00108}00108\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

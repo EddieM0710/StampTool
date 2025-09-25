@@ -1,0 +1,248 @@
+\doxysection{Inventory\+::Collection\+List Class Reference}
+\hypertarget{class_inventory_1_1_collection_list}{}\label{class_inventory_1_1_collection_list}\index{Inventory::CollectionList@{Inventory::CollectionList}}
+
+
+{\ttfamily \#include $<$Collection\+List.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_inventory_1_1_collection_list_aa33acafdb20f544511bcff938ed91210}{Collection\+List}} ()
+\item 
+\mbox{\hyperlink{class_inventory_1_1_collection_list_a588ae805d3e00cb5ea05029ee03ace14}{\texorpdfstring{$\sim$}{\string~}\+Collection\+List}} ()
+\item 
+void \mbox{\hyperlink{class_inventory_1_1_collection_list_a54f3c777ca9f62a00be665dd2f3a01d2}{Add\+Collection}} (\mbox{\hyperlink{class_inventory_1_1_collection}{Collection}} \texorpdfstring{$\ast$}{*}item)
+\item 
+void \mbox{\hyperlink{class_inventory_1_1_collection_list_a1832bb5deccdd4eebd156d9e3737ed63}{Add\+Collection}} (wx\+String name, wx\+String description, wx\+String location)
+\item 
+void \mbox{\hyperlink{class_inventory_1_1_collection_list_afacb51959cd9bb5be63f6dc4524dd027}{Build\+Strings}} ()
+\item 
+void \mbox{\hyperlink{class_inventory_1_1_collection_list_ac06f3a6d7f29ccf083edf7d2e1f420da}{Clear}} ()
+\item 
+\mbox{\hyperlink{class_inventory_1_1_collection}{Inventory\+::\+Collection}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_inventory_1_1_collection_list_a25ff731f643d17f0127710274887260e}{Find\+Collection}} (wx\+String name)
+\item 
+\mbox{\hyperlink{class_inventory_1_1_collection}{Collection}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_inventory_1_1_collection_list_aa862faeff92bdbf57d8fd828b711b980}{Get\+Collection}} (int ndx)
+\item 
+\mbox{\hyperlink{namespace_inventory_aecb754c0dd57e054e6763090bc483e08}{Collection\+Array}} \& \mbox{\hyperlink{class_inventory_1_1_collection_list_a5a9ffaa0b68399c86eed533cbc737264}{Get\+Collection\+List}} ()
+\item 
+\mbox{\hyperlink{class_inventory_1_1_collection}{Collection}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_inventory_1_1_collection_list_aaecdb26d296a6fe8bbe07b740b943ef4}{Get\+Current\+Collection}} ()
+\item 
+wx\+String \mbox{\hyperlink{class_inventory_1_1_collection_list_ac079b25af1d7982730bafaf1274783f9}{Get\+Current\+Name}} ()
+\item 
+wx\+String \mbox{\hyperlink{class_inventory_1_1_collection_list_ad5015cf7fa5c0b55813b603888e5f9fb}{Get\+Name}} (int i)
+\item 
+wx\+Array\+String \& \mbox{\hyperlink{class_inventory_1_1_collection_list_af2beda949fcd8071c7eceefcc0c0d6ab}{Get\+Name\+Array}} ()
+\item 
+wx\+Array\+String \& \mbox{\hyperlink{class_inventory_1_1_collection_list_aa087946118c602e741b475ded3f09600}{Get\+Name\+Strings}} ()
+\item 
+void \mbox{\hyperlink{class_inventory_1_1_collection_list_a1ed485914cfe1b2856e6b429e7924f04}{Load}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}parent)
+\item 
+void \mbox{\hyperlink{class_inventory_1_1_collection_list_af18206182eba954681d61a2ca1014457}{Save}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}parent)
+\item 
+void \mbox{\hyperlink{class_inventory_1_1_collection_list_a2034ad51027be0fe49d74d0f7a090186}{Set\+Default\+Collection}} ()
+\item 
+bool \mbox{\hyperlink{class_inventory_1_1_collection_list_a040a7d38298656f95921afa9ba767f45}{Set\+Current\+Collection}} (wx\+String str)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_collection_list_8h_source_l00019}{19}} of file \mbox{\hyperlink{_collection_list_8h_source}{Collection\+List.\+h}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_inventory_1_1_collection_list_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_inventory_1_1_collection_list_aa33acafdb20f544511bcff938ed91210}\index{Inventory::CollectionList@{Inventory::CollectionList}!CollectionList@{CollectionList}}
+\index{CollectionList@{CollectionList}!Inventory::CollectionList@{Inventory::CollectionList}}
+\doxysubsubsection{\texorpdfstring{CollectionList()}{CollectionList()}}
+{\footnotesize\ttfamily \label{class_inventory_1_1_collection_list_aa33acafdb20f544511bcff938ed91210} 
+Inventory\+::\+Collection\+List\+::\+Collection\+List (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collection_list_8h_source_l00022}{22}} of file \mbox{\hyperlink{_collection_list_8h_source}{Collection\+List.\+h}}.
+
+\Hypertarget{class_inventory_1_1_collection_list_a588ae805d3e00cb5ea05029ee03ace14}\index{Inventory::CollectionList@{Inventory::CollectionList}!````~CollectionList@{\texorpdfstring{$\sim$}{\string~}CollectionList}}
+\index{````~CollectionList@{\texorpdfstring{$\sim$}{\string~}CollectionList}!Inventory::CollectionList@{Inventory::CollectionList}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}CollectionList()}{\string~CollectionList()}}
+{\footnotesize\ttfamily \label{class_inventory_1_1_collection_list_a588ae805d3e00cb5ea05029ee03ace14} 
+Inventory\+::\+Collection\+List\+::\texorpdfstring{$\sim$}{\string~}\+Collection\+List (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collection_list_8h_source_l00024}{24}} of file \mbox{\hyperlink{_collection_list_8h_source}{Collection\+List.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_inventory_1_1_collection_list_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_inventory_1_1_collection_list_a54f3c777ca9f62a00be665dd2f3a01d2}\index{Inventory::CollectionList@{Inventory::CollectionList}!AddCollection@{AddCollection}}
+\index{AddCollection@{AddCollection}!Inventory::CollectionList@{Inventory::CollectionList}}
+\doxysubsubsection{\texorpdfstring{AddCollection()}{AddCollection()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_inventory_1_1_collection_list_a54f3c777ca9f62a00be665dd2f3a01d2} 
+void Inventory\+::\+Collection\+List\+::\+Add\+Collection (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_inventory_1_1_collection}{Collection}} \texorpdfstring{$\ast$}{*}}]{item}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collection_list_8h_source_l00026}{26}} of file \mbox{\hyperlink{_collection_list_8h_source}{Collection\+List.\+h}}.
+
+\Hypertarget{class_inventory_1_1_collection_list_a1832bb5deccdd4eebd156d9e3737ed63}\index{Inventory::CollectionList@{Inventory::CollectionList}!AddCollection@{AddCollection}}
+\index{AddCollection@{AddCollection}!Inventory::CollectionList@{Inventory::CollectionList}}
+\doxysubsubsection{\texorpdfstring{AddCollection()}{AddCollection()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_inventory_1_1_collection_list_a1832bb5deccdd4eebd156d9e3737ed63} 
+void Inventory\+::\+Collection\+List\+::\+Add\+Collection (\begin{DoxyParamCaption}\item[{wx\+String}]{name}{, }\item[{wx\+String}]{description}{, }\item[{wx\+String}]{location}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_collection_list_8cpp_source_l00025}{25}} of file \mbox{\hyperlink{_collection_list_8cpp_source}{Collection\+List.\+cpp}}.
+
+\Hypertarget{class_inventory_1_1_collection_list_afacb51959cd9bb5be63f6dc4524dd027}\index{Inventory::CollectionList@{Inventory::CollectionList}!BuildStrings@{BuildStrings}}
+\index{BuildStrings@{BuildStrings}!Inventory::CollectionList@{Inventory::CollectionList}}
+\doxysubsubsection{\texorpdfstring{BuildStrings()}{BuildStrings()}}
+{\footnotesize\ttfamily \label{class_inventory_1_1_collection_list_afacb51959cd9bb5be63f6dc4524dd027} 
+void Inventory\+::\+Collection\+List\+::\+Build\+Strings (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_collection_list_8cpp_source_l00034}{34}} of file \mbox{\hyperlink{_collection_list_8cpp_source}{Collection\+List.\+cpp}}.
+
+\Hypertarget{class_inventory_1_1_collection_list_ac06f3a6d7f29ccf083edf7d2e1f420da}\index{Inventory::CollectionList@{Inventory::CollectionList}!Clear@{Clear}}
+\index{Clear@{Clear}!Inventory::CollectionList@{Inventory::CollectionList}}
+\doxysubsubsection{\texorpdfstring{Clear()}{Clear()}}
+{\footnotesize\ttfamily \label{class_inventory_1_1_collection_list_ac06f3a6d7f29ccf083edf7d2e1f420da} 
+void Inventory\+::\+Collection\+List\+::\+Clear (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_collection_list_8cpp_source_l00048}{48}} of file \mbox{\hyperlink{_collection_list_8cpp_source}{Collection\+List.\+cpp}}.
+
+\Hypertarget{class_inventory_1_1_collection_list_a25ff731f643d17f0127710274887260e}\index{Inventory::CollectionList@{Inventory::CollectionList}!FindCollection@{FindCollection}}
+\index{FindCollection@{FindCollection}!Inventory::CollectionList@{Inventory::CollectionList}}
+\doxysubsubsection{\texorpdfstring{FindCollection()}{FindCollection()}}
+{\footnotesize\ttfamily \label{class_inventory_1_1_collection_list_a25ff731f643d17f0127710274887260e} 
+\mbox{\hyperlink{class_inventory_1_1_collection}{Inventory\+::\+Collection}} \texorpdfstring{$\ast$}{*} Inventory\+::\+Collection\+List\+::\+Find\+Collection (\begin{DoxyParamCaption}\item[{wx\+String}]{name}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_collection_list_8cpp_source_l00114}{114}} of file \mbox{\hyperlink{_collection_list_8cpp_source}{Collection\+List.\+cpp}}.
+
+\Hypertarget{class_inventory_1_1_collection_list_aa862faeff92bdbf57d8fd828b711b980}\index{Inventory::CollectionList@{Inventory::CollectionList}!GetCollection@{GetCollection}}
+\index{GetCollection@{GetCollection}!Inventory::CollectionList@{Inventory::CollectionList}}
+\doxysubsubsection{\texorpdfstring{GetCollection()}{GetCollection()}}
+{\footnotesize\ttfamily \label{class_inventory_1_1_collection_list_aa862faeff92bdbf57d8fd828b711b980} 
+\mbox{\hyperlink{class_inventory_1_1_collection}{Collection}} \texorpdfstring{$\ast$}{*} Inventory\+::\+Collection\+List\+::\+Get\+Collection (\begin{DoxyParamCaption}\item[{int}]{ndx}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_collection_list_8cpp_source_l00057}{57}} of file \mbox{\hyperlink{_collection_list_8cpp_source}{Collection\+List.\+cpp}}.
+
+\Hypertarget{class_inventory_1_1_collection_list_a5a9ffaa0b68399c86eed533cbc737264}\index{Inventory::CollectionList@{Inventory::CollectionList}!GetCollectionList@{GetCollectionList}}
+\index{GetCollectionList@{GetCollectionList}!Inventory::CollectionList@{Inventory::CollectionList}}
+\doxysubsubsection{\texorpdfstring{GetCollectionList()}{GetCollectionList()}}
+{\footnotesize\ttfamily \label{class_inventory_1_1_collection_list_a5a9ffaa0b68399c86eed533cbc737264} 
+\mbox{\hyperlink{namespace_inventory_aecb754c0dd57e054e6763090bc483e08}{Collection\+Array}} \& Inventory\+::\+Collection\+List\+::\+Get\+Collection\+List (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collection_list_8h_source_l00041}{41}} of file \mbox{\hyperlink{_collection_list_8h_source}{Collection\+List.\+h}}.
+
+\Hypertarget{class_inventory_1_1_collection_list_aaecdb26d296a6fe8bbe07b740b943ef4}\index{Inventory::CollectionList@{Inventory::CollectionList}!GetCurrentCollection@{GetCurrentCollection}}
+\index{GetCurrentCollection@{GetCurrentCollection}!Inventory::CollectionList@{Inventory::CollectionList}}
+\doxysubsubsection{\texorpdfstring{GetCurrentCollection()}{GetCurrentCollection()}}
+{\footnotesize\ttfamily \label{class_inventory_1_1_collection_list_aaecdb26d296a6fe8bbe07b740b943ef4} 
+\mbox{\hyperlink{class_inventory_1_1_collection}{Collection}} \texorpdfstring{$\ast$}{*} Inventory\+::\+Collection\+List\+::\+Get\+Current\+Collection (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_collection_list_8cpp_source_l00139}{139}} of file \mbox{\hyperlink{_collection_list_8cpp_source}{Collection\+List.\+cpp}}.
+
+\Hypertarget{class_inventory_1_1_collection_list_ac079b25af1d7982730bafaf1274783f9}\index{Inventory::CollectionList@{Inventory::CollectionList}!GetCurrentName@{GetCurrentName}}
+\index{GetCurrentName@{GetCurrentName}!Inventory::CollectionList@{Inventory::CollectionList}}
+\doxysubsubsection{\texorpdfstring{GetCurrentName()}{GetCurrentName()}}
+{\footnotesize\ttfamily \label{class_inventory_1_1_collection_list_ac079b25af1d7982730bafaf1274783f9} 
+wx\+String Inventory\+::\+Collection\+List\+::\+Get\+Current\+Name (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_collection_list_8cpp_source_l00145}{145}} of file \mbox{\hyperlink{_collection_list_8cpp_source}{Collection\+List.\+cpp}}.
+
+\Hypertarget{class_inventory_1_1_collection_list_ad5015cf7fa5c0b55813b603888e5f9fb}\index{Inventory::CollectionList@{Inventory::CollectionList}!GetName@{GetName}}
+\index{GetName@{GetName}!Inventory::CollectionList@{Inventory::CollectionList}}
+\doxysubsubsection{\texorpdfstring{GetName()}{GetName()}}
+{\footnotesize\ttfamily \label{class_inventory_1_1_collection_list_ad5015cf7fa5c0b55813b603888e5f9fb} 
+wx\+String Inventory\+::\+Collection\+List\+::\+Get\+Name (\begin{DoxyParamCaption}\item[{int}]{i}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collection_list_8h_source_l00049}{49}} of file \mbox{\hyperlink{_collection_list_8h_source}{Collection\+List.\+h}}.
+
+\Hypertarget{class_inventory_1_1_collection_list_af2beda949fcd8071c7eceefcc0c0d6ab}\index{Inventory::CollectionList@{Inventory::CollectionList}!GetNameArray@{GetNameArray}}
+\index{GetNameArray@{GetNameArray}!Inventory::CollectionList@{Inventory::CollectionList}}
+\doxysubsubsection{\texorpdfstring{GetNameArray()}{GetNameArray()}}
+{\footnotesize\ttfamily \label{class_inventory_1_1_collection_list_af2beda949fcd8071c7eceefcc0c0d6ab} 
+wx\+Array\+String \& Inventory\+::\+Collection\+List\+::\+Get\+Name\+Array (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collection_list_8h_source_l00053}{53}} of file \mbox{\hyperlink{_collection_list_8h_source}{Collection\+List.\+h}}.
+
+\Hypertarget{class_inventory_1_1_collection_list_aa087946118c602e741b475ded3f09600}\index{Inventory::CollectionList@{Inventory::CollectionList}!GetNameStrings@{GetNameStrings}}
+\index{GetNameStrings@{GetNameStrings}!Inventory::CollectionList@{Inventory::CollectionList}}
+\doxysubsubsection{\texorpdfstring{GetNameStrings()}{GetNameStrings()}}
+{\footnotesize\ttfamily \label{class_inventory_1_1_collection_list_aa087946118c602e741b475ded3f09600} 
+wx\+Array\+String \& Inventory\+::\+Collection\+List\+::\+Get\+Name\+Strings (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_collection_list_8cpp_source_l00132}{132}} of file \mbox{\hyperlink{_collection_list_8cpp_source}{Collection\+List.\+cpp}}.
+
+\Hypertarget{class_inventory_1_1_collection_list_a1ed485914cfe1b2856e6b429e7924f04}\index{Inventory::CollectionList@{Inventory::CollectionList}!Load@{Load}}
+\index{Load@{Load}!Inventory::CollectionList@{Inventory::CollectionList}}
+\doxysubsubsection{\texorpdfstring{Load()}{Load()}}
+{\footnotesize\ttfamily \label{class_inventory_1_1_collection_list_a1ed485914cfe1b2856e6b429e7924f04} 
+void Inventory\+::\+Collection\+List\+::\+Load (\begin{DoxyParamCaption}\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{parent}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_collection_list_8cpp_source_l00063}{63}} of file \mbox{\hyperlink{_collection_list_8cpp_source}{Collection\+List.\+cpp}}.
+
+\Hypertarget{class_inventory_1_1_collection_list_af18206182eba954681d61a2ca1014457}\index{Inventory::CollectionList@{Inventory::CollectionList}!Save@{Save}}
+\index{Save@{Save}!Inventory::CollectionList@{Inventory::CollectionList}}
+\doxysubsubsection{\texorpdfstring{Save()}{Save()}}
+{\footnotesize\ttfamily \label{class_inventory_1_1_collection_list_af18206182eba954681d61a2ca1014457} 
+void Inventory\+::\+Collection\+List\+::\+Save (\begin{DoxyParamCaption}\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{parent}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_collection_list_8cpp_source_l00151}{151}} of file \mbox{\hyperlink{_collection_list_8cpp_source}{Collection\+List.\+cpp}}.
+
+\Hypertarget{class_inventory_1_1_collection_list_a040a7d38298656f95921afa9ba767f45}\index{Inventory::CollectionList@{Inventory::CollectionList}!SetCurrentCollection@{SetCurrentCollection}}
+\index{SetCurrentCollection@{SetCurrentCollection}!Inventory::CollectionList@{Inventory::CollectionList}}
+\doxysubsubsection{\texorpdfstring{SetCurrentCollection()}{SetCurrentCollection()}}
+{\footnotesize\ttfamily \label{class_inventory_1_1_collection_list_a040a7d38298656f95921afa9ba767f45} 
+bool Inventory\+::\+Collection\+List\+::\+Set\+Current\+Collection (\begin{DoxyParamCaption}\item[{wx\+String}]{str}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_collection_list_8cpp_source_l00166}{166}} of file \mbox{\hyperlink{_collection_list_8cpp_source}{Collection\+List.\+cpp}}.
+
+\Hypertarget{class_inventory_1_1_collection_list_a2034ad51027be0fe49d74d0f7a090186}\index{Inventory::CollectionList@{Inventory::CollectionList}!SetDefaultCollection@{SetDefaultCollection}}
+\index{SetDefaultCollection@{SetDefaultCollection}!Inventory::CollectionList@{Inventory::CollectionList}}
+\doxysubsubsection{\texorpdfstring{SetDefaultCollection()}{SetDefaultCollection()}}
+{\footnotesize\ttfamily \label{class_inventory_1_1_collection_list_a2034ad51027be0fe49d74d0f7a090186} 
+void Inventory\+::\+Collection\+List\+::\+Set\+Default\+Collection (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_collection_list_8cpp_source_l00084}{84}} of file \mbox{\hyperlink{_collection_list_8cpp_source}{Collection\+List.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/femon/\+Development/wx/clone\+Test/\+Stamp\+Tool/src/collection/\mbox{\hyperlink{_collection_list_8h}{Collection\+List.\+h}}\item 
+C\+:/\+Users/femon/\+Development/wx/clone\+Test/\+Stamp\+Tool/src/collection/\mbox{\hyperlink{_collection_list_8cpp}{Collection\+List.\+cpp}}\end{DoxyCompactItemize}

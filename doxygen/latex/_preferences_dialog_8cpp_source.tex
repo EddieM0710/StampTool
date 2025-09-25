@@ -1,0 +1,658 @@
+\doxysection{Preferences\+Dialog.\+cpp}
+\hypertarget{_preferences_dialog_8cpp_source}{}\label{_preferences_dialog_8cpp_source}\index{C:/Users/femon/Development/wx/cloneTest/StampTool/src/gui/PreferencesDialog.cpp@{C:/Users/femon/Development/wx/cloneTest/StampTool/src/gui/PreferencesDialog.cpp}}
+\mbox{\hyperlink{_preferences_dialog_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00002}00002\ \textcolor{comment}{\ *\ @file\ PreferencesDialog.cpp}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00003}00003\ \textcolor{comment}{\ *\ @author\ Eddie\ Monroe}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00004}00004\ \textcolor{comment}{\ *\ @brief}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00005}00005\ \textcolor{comment}{\ *\ @version\ 0.1}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00006}00006\ \textcolor{comment}{\ *\ @date\ 2022-\/01-\/12}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00007}00007\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00008}00008\ \textcolor{comment}{\ *\ @copyright\ Copyright\ (\ c\ )\ 2021}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00009}00009\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00010}00010\ \textcolor{comment}{\ *\ This\ file\ is\ part\ of\ StampTool.}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00011}00011\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00012}00012\ \textcolor{comment}{\ *\ StampTool\ is\ free\ software:\ you\ can\ redistribute\ it\ and/or\ modify\ it\ under\ the}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00013}00013\ \textcolor{comment}{\ *\ terms\ of\ the\ GNU\ General\ Public\ License\ as\ published\ by\ the\ Free\ Software\ Foundation,}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00014}00014\ \textcolor{comment}{\ *\ either\ version\ 3\ of\ the\ License,\ or\ any\ later\ version.}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00015}00015\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00016}00016\ \textcolor{comment}{\ *\ StampTool\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,\ but\ WITHOUT\ ANY}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00017}00017\ \textcolor{comment}{\ *\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of\ MERCHANTABILITY\ or\ FITNESS\ FOR\ A}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00018}00018\ \textcolor{comment}{\ *\ PARTICULAR\ PURPOSE.\ See\ the\ GNU\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00019}00019\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00020}00020\ \textcolor{comment}{\ *\ You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License\ along\ with}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00021}00021\ \textcolor{comment}{\ *\ StampTool.\ If\ not,\ see\ <https://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00022}00022\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00025}00025\ \textcolor{preprocessor}{\#include\ "{}wx/wxprec.h"{}}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00027}00027\ \textcolor{preprocessor}{\#ifdef\ \_\_BORLANDC\_\_}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00028}00028\ \textcolor{preprocessor}{\#pragma\ hdrstop}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00029}00029\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00031}00031\ \textcolor{preprocessor}{\#ifndef\ WX\_PRECOMP}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00032}00032\ \textcolor{preprocessor}{\#include\ "{}wx/wx.h"{}}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00033}00033\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00037}00037\ \textcolor{preprocessor}{\#include\ <wx/notebook.h>}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00039}00039\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_defs_8h}{Defs.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00040}00040\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_settings_8h}{utils/Settings.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00041}00041\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_project_8h}{utils/Project.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00042}00042\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_preferences_dialog_8h}{gui/PreferencesDialog.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00043}00043\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_sort_order_panel_8h}{gui/SortOrderPanel.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00044}00044\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_define_periods_panel_8h}{gui/DefinePeriodsPanel.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00045}00045\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_font_picker_helper_8h}{gui/FontPickerHelper.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00046}00046\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_collection_list_8h}{collection/CollectionList.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00047}00047\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_collection_8h}{collection/Collection.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00048}00048\ \textcolor{preprocessor}{\#include\ <wx/font.h>}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00049}00049\ \textcolor{preprocessor}{\#include\ <wx/colour.h>}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00050}00050\ \textcolor{preprocessor}{\#include\ <wx/filepicker.h>}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00051}00051\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_font_list_8h}{utils/FontList.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00053}00053\ \ \textcolor{comment}{//\ XPM\ images}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00054}00054\ \ \textcolor{comment}{//\ XPM\ images}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00057}00057\ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00058}00058\ \textcolor{comment}{\ \ *\ PreferencesDialog\ type\ definition}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00059}00059\ \textcolor{comment}{\ \ */}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00061}00061\ IMPLEMENT\_DYNAMIC\_CLASS(\ \mbox{\hyperlink{class_preferences_dialog}{PreferencesDialog}},\ wxDialog\ )}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00064}00064\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00065}00065\ \textcolor{comment}{\ *\ PreferencesDialog\ event\ table\ definition}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00066}00066\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00068}00068\ \ \ \ \ BEGIN\_EVENT\_TABLE(\ \mbox{\hyperlink{class_preferences_dialog}{PreferencesDialog}},\ wxDialog\ )}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00070}00070\ \ \ \ \ \textcolor{comment}{//\ PreferencesDialog\ event\ table\ entries}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00071}00071\ \ \ \ \ EVT\_TEXT(\ ID\_IMAGEDIRECTORTEXTBOX,\ \mbox{\hyperlink{class_preferences_dialog_a4b7581430887263981fd2c009cb5ff87}{PreferencesDialog::OnImagedirectortextboxTextUpdated}}\ )}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00072}00072\ \ \ \ \ EVT\_TEXT(\ ID\_COUNTRYTEXTBOX,\ \mbox{\hyperlink{class_preferences_dialog_a7ef0da49290efe24c66cad406598cca3}{PreferencesDialog::OnCountrytextboxTextUpdated}}\ )}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00073}00073\ \ \ \ \ EVT\_TEXT(\ ID\_CATALOGTEXTBOX,\ \mbox{\hyperlink{class_preferences_dialog_a21c35b2c83a4acaf8c89010917aed944}{PreferencesDialog::OnCatalogtextboxTextUpdated}}\ )}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00074}00074\ \ \ \ \ EVT\_CHECKBOX(\ ID\_OPENLASTCHECKBOX,\ \mbox{\hyperlink{class_preferences_dialog_a65d9c888f659eedf15280d3469c1b898}{PreferencesDialog::OnOpenlastcheckboxClick}}\ )}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00075}00075\ \ \ \ \ EVT\_TEXT(\ ID\_RECENTSIZETEXTCTRL,\ \mbox{\hyperlink{class_preferences_dialog_a412164a7760487192d52231450684330}{PreferencesDialog::OnRecentsizetextctrlTextUpdated}}\ )}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00076}00076\ \ \ \ \ EVT\_BUTTON(\ wxID\_OK,\ \mbox{\hyperlink{class_preferences_dialog_a3cc0b51e0176401d28d8268e8215194c}{PreferencesDialog::OnOkClick}}\ )}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00077}00077\ \ \ \ \ EVT\_BUTTON(\ ID\_DIRPICKERBTN,\ \mbox{\hyperlink{class_preferences_dialog_a3f8193e07706333cc64c3f4c401c82a4}{PreferencesDialog::BrowseForDir}}\ )}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00078}00078\ EVT\_NOTEBOOK\_PAGE\_CHANGED(\ ID\_NOTEBOOK,\ \mbox{\hyperlink{class_preferences_dialog_ada98879cb2028d526e70850df1ab0a1c}{PreferencesDialog::OnNotebookPageChanged}}\ )}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00079}00079\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00080}00080\ \ \ \ \textcolor{comment}{//\ PreferencesDialog\ event\ table\ entries}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00082}00082\ \ \ \ \ END\_EVENT\_TABLE(\ )}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00083}00083\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00085}00085\ \ \ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00086}00086\ \textcolor{comment}{\ \ \ \ \ *\ PreferencesDialog\ constructors}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00087}00087\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00088}00088\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00089}\mbox{\hyperlink{class_preferences_dialog_a1df27319c7ba9302b508adc546e3dd7a}{00089}}\ \ \ \ \ \mbox{\hyperlink{class_preferences_dialog_a1df27319c7ba9302b508adc546e3dd7a}{PreferencesDialog}}::\mbox{\hyperlink{class_preferences_dialog_a1df27319c7ba9302b508adc546e3dd7a}{PreferencesDialog}}(\ )}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00090}00090\ \{}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00091}00091\ \ \ \ \ \mbox{\hyperlink{class_preferences_dialog_a8329ae9bfc630ce41437e058cbf010df}{Init}}(\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00092}00092\ \}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00093}00093\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00094}\mbox{\hyperlink{class_preferences_dialog_a578e21cc180beca6803d98e205678c40}{00094}}\ \mbox{\hyperlink{class_preferences_dialog_a1df27319c7ba9302b508adc546e3dd7a}{PreferencesDialog::PreferencesDialog}}(\ wxWindow*\ parent,\ wxWindowID\ \textcolor{keywordtype}{id},\ \textcolor{keyword}{const}\ wxString\&\ caption,\ \textcolor{keyword}{const}\ wxPoint\&\ pos,\ \textcolor{keyword}{const}\ wxSize\&\ size,\ \textcolor{keywordtype}{long}\ style\ )}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00095}00095\ \{}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00096}00096\ \ \ \ \ \mbox{\hyperlink{class_preferences_dialog_a8329ae9bfc630ce41437e058cbf010df}{Init}}(\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00097}00097\ \ \ \ \ \mbox{\hyperlink{class_preferences_dialog_acf25c714f71d15ba1ca885bffd67eff0}{Create}}(\ parent,\ \textcolor{keywordtype}{id},\ caption,\ pos,\ size,\ style\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00098}00098\ \ \ \ \ \mbox{\hyperlink{class_preferences_dialog_a3b470d84eed0193a96b1a205517d6e61}{InitDetailsPanel}}(\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00099}00099\ \}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00100}00100\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00101}\mbox{\hyperlink{class_preferences_dialog_a3b470d84eed0193a96b1a205517d6e61}{00101}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_preferences_dialog_a3b470d84eed0193a96b1a205517d6e61}{PreferencesDialog::InitDetailsPanel}}(\ )}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00102}00102\ \{}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00103}00103\ \ \ \ \ \mbox{\hyperlink{class_preferences_dialog_a6897093e2c9e6e623f358b741abff55b}{m\_imageDirectory}}-\/>SetValue(\ \mbox{\hyperlink{_defs_8cpp_a21e576057406853f4fd5f371338b78b6}{GetProject}}(\ )-\/>GetImageDirectory(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00104}00104\ \ \ \ \ \mbox{\hyperlink{class_preferences_dialog_adf644f4982ad01e3c2bc62ff0b736e66}{m\_catalog}}-\/>SetValue(\ \mbox{\hyperlink{_defs_8cpp_a21e576057406853f4fd5f371338b78b6}{GetProject}}(\ )-\/>GetProjectCatalogCode(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00105}00105\ \ \ \ \ \mbox{\hyperlink{class_preferences_dialog_a390a30f65e661926d405b0d1a9a9f437}{m\_country}}-\/>SetValue(\ \mbox{\hyperlink{_defs_8cpp_a21e576057406853f4fd5f371338b78b6}{GetProject}}(\ )-\/>GetProjectCountryID(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00106}00106\ \ \ \ \ \mbox{\hyperlink{class_preferences_dialog_a86eb118bc8544fd1ef96c4027406db64}{m\_loadLastFileAtStartUp}}-\/>SetValue(\ \mbox{\hyperlink{_defs_8cpp_a22c90d4148252ff1fbca6b40d3312b23}{GetSettings}}(\ )-\/>GetLoadLastFileAtStartUp(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00107}00107\ \ \ \ \ wxString\ str\ =\ wxString::Format(\ \textcolor{stringliteral}{"{}\%i"{}},\ \mbox{\hyperlink{_defs_8cpp_a22c90d4148252ff1fbca6b40d3312b23}{GetSettings}}(\ )-\/>GetNbrRecentPreference(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00108}00108\ \ \ \ \ \mbox{\hyperlink{class_preferences_dialog_a6965cb7a5b265fddb3c551d28ebc918b}{m\_recentListSize}}-\/>SetValue(\ str\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00109}00109\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00110}00110\ \}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00111}00111\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00112}00112\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00113}00113\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00114}00114\ \textcolor{comment}{\ *\ PreferencesDialog\ creator}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00115}00115\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00116}00116\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00117}\mbox{\hyperlink{class_preferences_dialog_acf25c714f71d15ba1ca885bffd67eff0}{00117}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_preferences_dialog_acf25c714f71d15ba1ca885bffd67eff0}{PreferencesDialog::Create}}(\ wxWindow*\ parent,\ wxWindowID\ \textcolor{keywordtype}{id},\ \textcolor{keyword}{const}\ wxString\&\ caption,\ \textcolor{keyword}{const}\ wxPoint\&\ pos,\ \textcolor{keyword}{const}\ wxSize\&\ size,\ \textcolor{keywordtype}{long}\ style\ )}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00118}00118\ \{}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00119}00119\ \ \ \ \ \textcolor{comment}{//\ PreferencesDialog\ creation}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00120}00120\ \ \ \ \ SetExtraStyle(\ wxWS\_EX\_VALIDATE\_RECURSIVELY\ |\ wxWS\_EX\_BLOCK\_EVENTS\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00121}00121\ \ \ \ \ wxDialog::Create(\ parent,\ \textcolor{keywordtype}{id},\ caption,\ pos,\ size,\ style\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00122}00122\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00123}00123\ \ \ \ \ \mbox{\hyperlink{class_preferences_dialog_a81b51476f8265dbc7dbda2bceb7eea69}{CreateControls}}(\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00124}00124\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ GetSizer(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00125}00125\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00126}00126\ \ \ \ \ \ \ \ \ GetSizer(\ )-\/>SetSizeHints(\ \textcolor{keyword}{this}\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00127}00127\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00128}00128\ \ \ \ \ Centre(\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00129}00129\ \ \ \ \ \textcolor{comment}{//\ PreferencesDialog\ creation}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00130}00130\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00131}00131\ \}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00132}00132\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00133}00133\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00134}00134\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00135}00135\ \textcolor{comment}{\ *\ PreferencesDialog\ destructor}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00136}00136\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00137}00137\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00138}\mbox{\hyperlink{class_preferences_dialog_a0e3927d4dbbc927879b4c4906e728f2d}{00138}}\ \mbox{\hyperlink{class_preferences_dialog_a0e3927d4dbbc927879b4c4906e728f2d}{PreferencesDialog::\string~PreferencesDialog}}(\ )}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00139}00139\ \{}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00140}00140\ \ \ \ \ \textcolor{comment}{//\ PreferencesDialog\ destruction}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00141}00141\ \ \ \ \ \textcolor{comment}{//\ PreferencesDialog\ destruction}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00142}00142\ \}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00143}00143\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00144}00144\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00145}00145\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00146}00146\ \textcolor{comment}{\ *\ Member\ initialisation}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00147}00147\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00148}00148\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00149}\mbox{\hyperlink{class_preferences_dialog_a8329ae9bfc630ce41437e058cbf010df}{00149}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_preferences_dialog_a8329ae9bfc630ce41437e058cbf010df}{PreferencesDialog::Init}}(\ )}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00150}00150\ \{}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00151}00151\ \ \ \ \ \textcolor{comment}{//\ PreferencesDialog\ member\ initialisation}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00152}00152\ \ \ \ \ \mbox{\hyperlink{class_preferences_dialog_a6897093e2c9e6e623f358b741abff55b}{m\_imageDirectory}}\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00153}00153\ \ \ \ \ \mbox{\hyperlink{class_preferences_dialog_a390a30f65e661926d405b0d1a9a9f437}{m\_country}}\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00154}00154\ \ \ \ \ \mbox{\hyperlink{class_preferences_dialog_adf644f4982ad01e3c2bc62ff0b736e66}{m\_catalog}}\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00155}00155\ \ \ \ \ \mbox{\hyperlink{class_preferences_dialog_a86eb118bc8544fd1ef96c4027406db64}{m\_loadLastFileAtStartUp}}\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00156}00156\ \ \ \ \ \mbox{\hyperlink{class_preferences_dialog_a6965cb7a5b265fddb3c551d28ebc918b}{m\_recentListSize}}\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00157}00157\ \ \ \ \ \textcolor{comment}{//\ PreferencesDialog\ member\ initialisation}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00158}00158\ \}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00159}00159\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00160}\mbox{\hyperlink{class_preferences_dialog_a100f1663e02659f3c94a30c6a2fcb2f0}{00160}}\ wxPanel*\ \mbox{\hyperlink{class_preferences_dialog_a100f1663e02659f3c94a30c6a2fcb2f0}{PreferencesDialog::CreateNotebookDetailsPanel}}(\ wxWindow*\ parent\ )}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00161}00161\ \{}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00162}00162\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00163}00163\ \ \ \ \ wxPanel*\ preferencesDetailsPanel\ =\ \textcolor{keyword}{new}\ wxPanel(\ parent,\ \mbox{\hyperlink{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6a7a51158331859512f1ebc814b64d6aa7}{ID\_NOTEBOOKDETAILSPANEL}},\ wxDefaultPosition,\ wxDefaultSize,\ wxSUNKEN\_BORDER\ |\ wxTAB\_TRAVERSAL\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00164}00164\ \ \ \ \ preferencesDetailsPanel-\/>SetExtraStyle(\ wxWS\_EX\_VALIDATE\_RECURSIVELY\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00165}00165\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00166}00166\ \ \ \ \ wxBoxSizer*\ detailsVerticalSizer\ =\ \textcolor{keyword}{new}\ wxBoxSizer(\ wxVERTICAL\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00167}00167\ \ \ \ \ preferencesDetailsPanel-\/>SetSizer(\ detailsVerticalSizer\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00168}00168\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00169}00169\ \ \ \ \ wxBoxSizer*\ imageHorizontalSizer\ =\ \textcolor{keyword}{new}\ wxBoxSizer(\ wxHORIZONTAL\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00170}00170\ \ \ \ \ detailsVerticalSizer-\/>Add(\ imageHorizontalSizer,\ 0,\ wxGROW\ |\ wxALL,\ 5\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00171}00171\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00172}00172\ \ \ \ \ wxStaticText*\ itemStaticText1\ =\ \textcolor{keyword}{new}\ wxStaticText(\ preferencesDetailsPanel,\ wxID\_STATIC,\ \_(\ \textcolor{stringliteral}{"{}Image\ Directory"{}}\ ),\ wxDefaultPosition,\ wxDefaultSize,\ 0\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00173}00173\ \ \ \ \ imageHorizontalSizer-\/>Add(\ itemStaticText1,\ 1,\ wxALIGN\_CENTER\_VERTICAL\ |\ wxLEFT\ |\ wxTOP\ |\ wxBOTTOM,\ 5\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00174}00174\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00175}00175\ \ \ \ \ \mbox{\hyperlink{class_preferences_dialog_a6897093e2c9e6e623f358b741abff55b}{m\_imageDirectory}}\ =\ \textcolor{keyword}{new}\ wxTextCtrl(\ preferencesDetailsPanel,\ \mbox{\hyperlink{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6a26f07514ae6f6f64d7f08ddb25a07dfe}{ID\_IMAGEDIRECTORTEXTBOX}},\ wxEmptyString,\ wxDefaultPosition,\ wxDefaultSize,\ 0\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00176}00176\ \ \ \ \ imageHorizontalSizer-\/>Add(\ \mbox{\hyperlink{class_preferences_dialog_a6897093e2c9e6e623f358b741abff55b}{m\_imageDirectory}},\ 3,\ wxGROW\ |\ wxALL,\ 5\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00177}00177\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00178}00178\ \ \ \ \ wxButton*\ browseButton\ =\ \textcolor{keyword}{new}\ wxButton(\ preferencesDetailsPanel,\ \mbox{\hyperlink{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6ae6972beb1aff4e862a9fda6519c7ce91}{ID\_DIRPICKERBTN}},\ \_(\ \textcolor{stringliteral}{"{}Browse"{}}\ ),\ wxDefaultPosition,\ wxDefaultSize,\ 0\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00179}00179\ \ \ \ \ imageHorizontalSizer-\/>Add(\ browseButton,\ 0,\ wxALIGN\_CENTER\_VERTICAL\ |\ wxALL,\ 5\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00180}00180\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00181}00181\ \ \ \ \ \textcolor{comment}{//\ wxBoxSizer*\ itemBoxSizer5\ =\ new\ wxBoxSizer(\ wxHORIZONTAL\ );}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00182}00182\ \ \ \ \ \textcolor{comment}{//\ theDialogVerticalSizer-\/>Add(\ itemBoxSizer5,\ 1,\ wxGROW\ |\ wxALL,\ 5\ );}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00183}00183\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00184}00184\ \ \ \ \ \textcolor{comment}{//\ wxStaticText*\ itemStaticText3\ =\ new\ wxStaticText(\ preferencesDetailsPanel,\ wxID\_STATIC,\ \_(\ "{}Working\ Directory"{}\ ),\ wxDefaultPosition,\ wxDefaultSize,\ 0\ );}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00185}00185\ \ \ \ \ \textcolor{comment}{//\ itemBoxSizer5-\/>Add(\ itemStaticText3,\ 0,\ wxALIGN\_CENTER\_VERTICAL\ |\ wxLEFT\ |\ wxTOP\ |\ wxBOTTOM,\ 5\ );}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00186}00186\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00187}00187\ \ \ \ \ wxBoxSizer*\ codePrefHorizontalSizer\ =\ \textcolor{keyword}{new}\ wxBoxSizer(\ wxHORIZONTAL\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00188}00188\ \ \ \ \ detailsVerticalSizer-\/>Add(\ codePrefHorizontalSizer,\ 0,\ wxGROW\ |\ wxALL,\ 5\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00189}00189\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00190}00190\ \ \ \ \ wxStaticText*\ itemStaticText5\ =\ \textcolor{keyword}{new}\ wxStaticText(\ preferencesDetailsPanel,\ wxID\_STATIC,\ \_(\ \textcolor{stringliteral}{"{}Country\ Code"{}}\ ),\ wxDefaultPosition,\ wxDefaultSize,\ 0\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00191}00191\ \ \ \ \ codePrefHorizontalSizer-\/>Add(\ itemStaticText5,\ 0,\ wxALIGN\_CENTER\_VERTICAL\ |\ wxLEFT\ |\ wxTOP\ |\ wxBOTTOM,\ 5\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00192}00192\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00193}00193\ \ \ \ \ \mbox{\hyperlink{class_preferences_dialog_a390a30f65e661926d405b0d1a9a9f437}{m\_country}}\ =\ \textcolor{keyword}{new}\ wxTextCtrl(\ preferencesDetailsPanel,\ \mbox{\hyperlink{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6abde22fc63464967dfc002d4619e72297}{ID\_COUNTRYTEXTBOX}},\ wxEmptyString,\ wxDefaultPosition,\ wxDefaultSize,\ 0\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00194}00194\ \ \ \ \ codePrefHorizontalSizer-\/>Add(\ \mbox{\hyperlink{class_preferences_dialog_a390a30f65e661926d405b0d1a9a9f437}{m\_country}},\ 0,\ wxALIGN\_CENTER\_VERTICAL\ |\ wxALL,\ 5\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00195}00195\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00196}00196\ \ \ \ \ codePrefHorizontalSizer-\/>Add(\ 10,\ 5,\ 0,\ wxALIGN\_CENTER\_VERTICAL\ |\ wxALL,\ 5\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00197}00197\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00198}00198\ \ \ \ \ wxStaticText*\ itemStaticText8\ =\ \textcolor{keyword}{new}\ wxStaticText(\ preferencesDetailsPanel,\ wxID\_STATIC,\ \_(\ \textcolor{stringliteral}{"{}Catalog\ Code"{}}\ ),\ wxDefaultPosition,\ wxDefaultSize,\ 0\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00199}00199\ \ \ \ \ codePrefHorizontalSizer-\/>Add(\ itemStaticText8,\ 0,\ wxALIGN\_CENTER\_VERTICAL\ |\ wxLEFT\ |\ wxTOP\ |\ wxBOTTOM,\ 5\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00200}00200\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00201}00201\ \ \ \ \ \mbox{\hyperlink{class_preferences_dialog_adf644f4982ad01e3c2bc62ff0b736e66}{m\_catalog}}\ =\ \textcolor{keyword}{new}\ wxTextCtrl(\ preferencesDetailsPanel,\ \mbox{\hyperlink{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6ac59d11e8d4554c968aca8fa339b9c44d}{ID\_CATALOGTEXTBOX}},\ wxEmptyString,\ wxDefaultPosition,\ wxDefaultSize,\ 0\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00202}00202\ \ \ \ \ codePrefHorizontalSizer-\/>Add(\ \mbox{\hyperlink{class_preferences_dialog_adf644f4982ad01e3c2bc62ff0b736e66}{m\_catalog}},\ 0,\ wxALIGN\_CENTER\_VERTICAL\ |\ wxALL,\ 5\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00203}00203\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00204}00204\ \ \ \ \ wxBoxSizer*\ recentHorizontalSizer\ =\ \textcolor{keyword}{new}\ wxBoxSizer(\ wxHORIZONTAL\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00205}00205\ \ \ \ \ detailsVerticalSizer-\/>Add(\ recentHorizontalSizer,\ 0,\ wxGROW\ |\ wxALL,\ 5\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00206}00206\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00207}00207\ \ \ \ \ \mbox{\hyperlink{class_preferences_dialog_a86eb118bc8544fd1ef96c4027406db64}{m\_loadLastFileAtStartUp}}\ =\ \textcolor{keyword}{new}\ wxCheckBox(\ preferencesDetailsPanel,\ \mbox{\hyperlink{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6a384accd4e77bdf58506b0570b41c9b09}{ID\_OPENLASTCHECKBOX}},\ \_(\ \textcolor{stringliteral}{"{}Load\ Last\ File\ at\ Startup"{}}\ ),\ wxDefaultPosition,\ wxDefaultSize,\ 0\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00208}00208\ \ \ \ \ \mbox{\hyperlink{class_preferences_dialog_a86eb118bc8544fd1ef96c4027406db64}{m\_loadLastFileAtStartUp}}-\/>SetValue(\ \textcolor{keyword}{false}\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00209}00209\ \ \ \ \ recentHorizontalSizer-\/>Add(\ \mbox{\hyperlink{class_preferences_dialog_a86eb118bc8544fd1ef96c4027406db64}{m\_loadLastFileAtStartUp}},\ 2,\ wxALIGN\_CENTER\_VERTICAL\ |\ wxALL,\ 5\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00210}00210\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00211}00211\ \ \ \ \ recentHorizontalSizer-\/>Add(\ 20,\ 5,\ 0,\ wxALIGN\_CENTER\_VERTICAL\ |\ wxALL,\ 5\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00212}00212\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00213}00213\ \ \ \ \ wxStaticText*\ itemStaticText2\ =\ \textcolor{keyword}{new}\ wxStaticText(\ preferencesDetailsPanel,\ wxID\_STATIC,\ \_(\ \textcolor{stringliteral}{"{}Size\ of\ RecentList"{}}\ ),\ wxDefaultPosition,\ wxDefaultSize,\ 0\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00214}00214\ \ \ \ \ recentHorizontalSizer-\/>Add(\ itemStaticText2,\ 0,\ wxALIGN\_CENTER\_VERTICAL\ |\ wxLEFT\ |\ wxTOP\ |\ wxBOTTOM,\ 5\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00215}00215\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00216}00216\ \ \ \ \ \mbox{\hyperlink{class_preferences_dialog_a6965cb7a5b265fddb3c551d28ebc918b}{m\_recentListSize}}\ =\ \textcolor{keyword}{new}\ wxTextCtrl(\ preferencesDetailsPanel,\ \mbox{\hyperlink{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6a557ae3bce330d0a14adc35902ad9139a}{ID\_RECENTSIZETEXTCTRL}},\ wxEmptyString,\ wxDefaultPosition,\ wxDefaultSize,\ 0\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00217}00217\ \ \ \ \ recentHorizontalSizer-\/>Add(\ \mbox{\hyperlink{class_preferences_dialog_a6965cb7a5b265fddb3c551d28ebc918b}{m\_recentListSize}},\ 0,\ wxALIGN\_CENTER\_VERTICAL\ |\ wxALL,\ 5\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00218}00218\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00219}00219\ \ \ \ \ \textcolor{keywordflow}{return}\ preferencesDetailsPanel;}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00220}00220\ \}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00221}00221\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00222}\mbox{\hyperlink{class_preferences_dialog_a9bc06e2320a0915817418b48132185e5}{00222}}\ wxPanel*\ \mbox{\hyperlink{class_preferences_dialog_a9bc06e2320a0915817418b48132185e5}{PreferencesDialog::CreateNotebookFontsPanel}}(\ wxWindow*\ parent\ )}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00223}00223\ \{}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00224}00224\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00225}00225\ \ \ \ \ wxPanel*\ fontsPanel\ =\ \textcolor{keyword}{new}\ wxPanel(\ parent,\ \mbox{\hyperlink{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6aa77bd96f35b596381eaf76737520abf6}{ID\_NOTEBOOKFONTSPANEL}},\ wxDefaultPosition,\ wxDefaultSize,\ wxSUNKEN\_BORDER\ |\ wxTAB\_TRAVERSAL\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00226}00226\ \ \ \ \ fontsPanel-\/>SetExtraStyle(\ wxWS\_EX\_VALIDATE\_RECURSIVELY\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00227}00227\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00228}00228\ \ \ \ \ wxBoxSizer*\ fontsVerticalSizer\ =\ \textcolor{keyword}{new}\ wxBoxSizer(\ wxVERTICAL\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00229}00229\ \ \ \ \ fontsPanel-\/>SetSizer(\ fontsVerticalSizer\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00230}00230\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00231}00231\ \ \ \ \ wxBoxSizer*\ fontsHorizontalSizer\ =\ \textcolor{keyword}{new}\ wxBoxSizer(\ wxHORIZONTAL\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00232}00232\ \ \ \ \ fontsVerticalSizer-\/>Add(\ fontsHorizontalSizer,\ 0,\ wxGROW\ |\ wxALL,\ 5\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00233}00233\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00234}00234\ \ \ \ \ wxFont\ catNbrFont\ =\ \mbox{\hyperlink{_defs_8cpp_a22c90d4148252ff1fbca6b40d3312b23}{GetSettings}}(\ )-\/>\mbox{\hyperlink{class_utils_1_1_settings_aa20b46a3515b2054768dc7ed527131fd}{GetNbrFont}}(\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00235}00235\ \ \ \ \ wxColour\ catNbrColor\ =\ \mbox{\hyperlink{_defs_8cpp_a22c90d4148252ff1fbca6b40d3312b23}{GetSettings}}(\ )-\/>\mbox{\hyperlink{class_utils_1_1_settings_a0ac5e58e6c68512c1bb98aaf134b3fb6}{GetNbrColor}}(\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00236}00236\ \ \ \ \ wxFont\ titleFont\ =\ \mbox{\hyperlink{_defs_8cpp_a22c90d4148252ff1fbca6b40d3312b23}{GetSettings}}(\ )-\/>\mbox{\hyperlink{class_utils_1_1_settings_a03c3286b20be792b16df67d4380ed997}{GetTitleFont}}(\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00237}00237\ \ \ \ \ wxColour\ titleColor\ =\ \mbox{\hyperlink{_defs_8cpp_a22c90d4148252ff1fbca6b40d3312b23}{GetSettings}}(\ )-\/>\mbox{\hyperlink{class_utils_1_1_settings_aa4cbc20018146ab86a4aa41c04c6842e}{GetTitleColor}}(\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00238}00238\ \ \ \ \ wxFont\ textFont\ =\ \mbox{\hyperlink{_defs_8cpp_a22c90d4148252ff1fbca6b40d3312b23}{GetSettings}}(\ )-\/>\mbox{\hyperlink{class_utils_1_1_settings_aa5a32ddf0e2649e75403374402c3e30b}{GetTextFont}}(\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00239}00239\ \ \ \ \ wxColour\ textColor\ =\ \mbox{\hyperlink{_defs_8cpp_a22c90d4148252ff1fbca6b40d3312b23}{GetSettings}}(\ )-\/>\mbox{\hyperlink{class_utils_1_1_settings_a8db20c3ab1f615003aa8b4f2e0717fee}{GetTextColor}}(\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00240}00240\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00241}00241\ \ \ \ \ \textcolor{keywordtype}{int}\ lastID\ =\ \mbox{\hyperlink{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6ab8bb36623c3a485979e04ee9391e1ce2}{ID\_LastID}};}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00242}00242\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00243}00243\ \ \ \ \ \mbox{\hyperlink{class_font_picker}{FontPicker}}*\ catNbrFontPickerHelper\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_font_picker}{FontPicker}}(}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00244}00244\ \ \ \ \ \ \ \ \ fontsPanel,\ fontsVerticalSizer,}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00245}00245\ \ \ \ \ \ \ \ \ \_(\ \textcolor{stringliteral}{"{}Default\ Stamp\ Nbr\ Font"{}}\ ),\ \_(\ \textcolor{stringliteral}{"{}Default"{}}\ ),\ lastID,}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00246}00246\ \ \ \ \ \ \ \ \ catNbrFont,\ catNbrColor\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00247}00247\ \ \ \ \ \mbox{\hyperlink{class_preferences_dialog_af701ddbfce5e53178805dc8667a0897b}{m\_nbrFontPicker}}\ =\ catNbrFontPickerHelper-\/>\mbox{\hyperlink{class_font_picker_a14dea74c2121398cfb8cb224480213cd}{GetFontPickerCtrl}}(\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00248}00248\ \ \ \ \ \mbox{\hyperlink{class_preferences_dialog_a0b704ef5ce27505614d3d5397eb26bc8}{m\_nbrColorPicker}}\ =\ catNbrFontPickerHelper-\/>\mbox{\hyperlink{class_font_picker_a771ba5f56676c493ec070699d2fc59dd}{GetColourPickerCtrl}}(\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00249}00249\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00250}00250\ \ \ \ \ \mbox{\hyperlink{class_font_picker}{FontPicker}}*\ titleFontPickerHelper\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_font_picker}{FontPicker}}(}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00251}00251\ \ \ \ \ \ \ \ \ fontsPanel,\ fontsVerticalSizer,}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00252}00252\ \ \ \ \ \ \ \ \ \_(\ \textcolor{stringliteral}{"{}Default\ Title\ Font"{}}\ ),\ \_(\ \textcolor{stringliteral}{"{}Default"{}}\ ),\ lastID,}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00253}00253\ \ \ \ \ \ \ \ \ titleFont,\ titleColor\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00254}00254\ \ \ \ \ \mbox{\hyperlink{class_preferences_dialog_ac494b448dc176f076f14f6e842d70ddb}{m\_titleFontPicker}}\ =\ titleFontPickerHelper-\/>\mbox{\hyperlink{class_font_picker_a14dea74c2121398cfb8cb224480213cd}{GetFontPickerCtrl}}(\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00255}00255\ \ \ \ \ \mbox{\hyperlink{class_preferences_dialog_abe1d8f79e8134a342cd83f284d15449c}{m\_titleColorPicker}}\ =\ titleFontPickerHelper-\/>\mbox{\hyperlink{class_font_picker_a771ba5f56676c493ec070699d2fc59dd}{GetColourPickerCtrl}}(\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00256}00256\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00257}00257\ \ \ \ \ \mbox{\hyperlink{class_font_picker}{FontPicker}}*\ textFontPickerHelper\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_font_picker}{FontPicker}}(}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00258}00258\ \ \ \ \ \ \ \ \ fontsPanel,\ fontsVerticalSizer,}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00259}00259\ \ \ \ \ \ \ \ \ \_(\ \textcolor{stringliteral}{"{}Default\ Text\ Font"{}}\ ),\ \_(\ \textcolor{stringliteral}{"{}Default"{}}\ ),\ lastID,}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00260}00260\ \ \ \ \ \ \ \ \ textFont,\ textColor\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00261}00261\ \ \ \ \ \mbox{\hyperlink{class_preferences_dialog_a6c544a0852f5b8fc46f5ed51071f9d13}{m\_textFontPicker}}\ =\ textFontPickerHelper-\/>\mbox{\hyperlink{class_font_picker_a14dea74c2121398cfb8cb224480213cd}{GetFontPickerCtrl}}(\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00262}00262\ \ \ \ \ \mbox{\hyperlink{class_preferences_dialog_a0364ebac99c9eccb03866e0c932f4740}{m\_textColorPicker}}\ =\ textFontPickerHelper-\/>\mbox{\hyperlink{class_font_picker_a771ba5f56676c493ec070699d2fc59dd}{GetColourPickerCtrl}}(\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00263}00263\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00264}00264\ \ \ \ \ \mbox{\hyperlink{class_font_picker}{FontPicker}}*\ nameFontPickerHelper\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_font_picker}{FontPicker}}(}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00265}00265\ \ \ \ \ \ \ \ \ fontsPanel,\ fontsVerticalSizer,}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00266}00266\ \ \ \ \ \ \ \ \ \_(\ \textcolor{stringliteral}{"{}Default\ Stamp\ Name\ Font"{}}\ ),\ \_(\ \textcolor{stringliteral}{"{}Default"{}}\ ),\ lastID,}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00267}00267\ \ \ \ \ \ \ \ \ textFont,\ textColor\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00268}00268\ \ \ \ \ \mbox{\hyperlink{class_preferences_dialog_ad97c5f8ee56cda1e2f598c5407a5bcd7}{m\_nameFontPicker}}\ =\ nameFontPickerHelper-\/>\mbox{\hyperlink{class_font_picker_a14dea74c2121398cfb8cb224480213cd}{GetFontPickerCtrl}}(\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00269}00269\ \ \ \ \ \mbox{\hyperlink{class_preferences_dialog_a03f7b495bc623783cfbd3369758b284e}{m\_nameColorPicker}}\ =\ nameFontPickerHelper-\/>\mbox{\hyperlink{class_font_picker_a771ba5f56676c493ec070699d2fc59dd}{GetColourPickerCtrl}}(\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00270}00270\ \ \ \ \ \textcolor{keywordflow}{return}\ fontsPanel;}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00271}00271\ \}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00272}\mbox{\hyperlink{class_preferences_dialog_a0870902e646618fef7ef4d6ac397ece9}{00272}}\ wxPanel*\ \mbox{\hyperlink{class_preferences_dialog_a0870902e646618fef7ef4d6ac397ece9}{PreferencesDialog::CreateCollectionPanel}}(\ wxWindow*\ parent\ )}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00273}00273\ \{}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00274}00274\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00275}00275\ \ \ \ \ wxPanel*\ preferencesCollectionPanel\ =\ \textcolor{keyword}{new}\ wxPanel(\ \mbox{\hyperlink{class_preferences_dialog_a619c6628544d7108a0708b4d11c64faf}{m\_notebook}},\ \mbox{\hyperlink{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6ae2c5a2f9ab25fafa14d88a6cba6a6968}{ID\_NOTEBOOKCOLLECTIONPANEL}},\ wxDefaultPosition,\ wxDefaultSize,\ wxSUNKEN\_BORDER\ |\ wxTAB\_TRAVERSAL\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00276}00276\ \ \ \ \ preferencesCollectionPanel-\/>SetExtraStyle(\ wxWS\_EX\_VALIDATE\_RECURSIVELY\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00277}00277\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00278}00278\ \ \ \ \ wxBoxSizer*\ collectionVerticalSizer\ =\ \textcolor{keyword}{new}\ wxBoxSizer(\ wxVERTICAL\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00279}00279\ \ \ \ \ preferencesCollectionPanel-\/>SetSizer(\ collectionVerticalSizer\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00280}00280\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00281}00281\ \ \ \ \ \mbox{\hyperlink{class_preferences_dialog_a0951f86f2e65a189acc71eab6b7879f5}{m\_grid}}\ =\ \textcolor{keyword}{new}\ wxGrid(\ preferencesCollectionPanel,\ \mbox{\hyperlink{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6a15e48aee44f15f6cc77f931021e54acc}{ID\_COLLECTIONGRID}},\ wxDefaultPosition,\ wxSize(\ 100,\ 100\ ),}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00282}00282\ \ \ \ \ \ \ \ \ wxHSCROLL\ |\ wxVSCROLL\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00283}00283\ \ \ \ \ \mbox{\hyperlink{class_preferences_dialog_a0951f86f2e65a189acc71eab6b7879f5}{m\_grid}}-\/>SetDefaultColSize(\ 100\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00284}00284\ \ \ \ \ \mbox{\hyperlink{class_preferences_dialog_a0951f86f2e65a189acc71eab6b7879f5}{m\_grid}}-\/>SetDefaultRowSize(\ 25\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00285}00285\ \ \ \ \ \mbox{\hyperlink{class_preferences_dialog_a0951f86f2e65a189acc71eab6b7879f5}{m\_grid}}-\/>SetColLabelSize(\ 25\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00286}00286\ \ \ \ \ \mbox{\hyperlink{class_preferences_dialog_a0951f86f2e65a189acc71eab6b7879f5}{m\_grid}}-\/>SetRowLabelSize(\ 50\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00287}00287\ \ \ \ \ \mbox{\hyperlink{class_preferences_dialog_a0951f86f2e65a189acc71eab6b7879f5}{m\_grid}}-\/>CreateGrid(\ 0,\ 3,\ wxGrid::wxGridSelectCells\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00288}00288\ \ \ \ \ collectionVerticalSizer-\/>Add(\ \mbox{\hyperlink{class_preferences_dialog_a0951f86f2e65a189acc71eab6b7879f5}{m\_grid}},\ 1,\ wxGROW\ |\ wxALL,\ 5\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00289}00289\ \ \ \ \ \mbox{\hyperlink{class_preferences_dialog_a0951f86f2e65a189acc71eab6b7879f5}{m\_grid}}-\/>SetColLabelValue(\ 0,\ \textcolor{stringliteral}{"{}Name"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00290}00290\ \ \ \ \ \mbox{\hyperlink{class_preferences_dialog_a0951f86f2e65a189acc71eab6b7879f5}{m\_grid}}-\/>SetColLabelValue(\ 1,\ \textcolor{stringliteral}{"{}Description"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00291}00291\ \ \ \ \ \mbox{\hyperlink{class_preferences_dialog_a0951f86f2e65a189acc71eab6b7879f5}{m\_grid}}-\/>SetColLabelValue(\ 2,\ \textcolor{stringliteral}{"{}Location"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00292}00292\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00293}00293\ \ \ \ \ \textcolor{keywordtype}{int}\ cnt\ =\ \mbox{\hyperlink{class_preferences_dialog_a0951f86f2e65a189acc71eab6b7879f5}{m\_grid}}-\/>GetNumberRows(\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00294}00294\ \ \ \ \ \textcolor{keywordflow}{for}\ (\ \textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \mbox{\hyperlink{_defs_8cpp_a0697bb5076e0e3aac1d20bd9cf50d654}{GetCollectionList}}(\ )-\/>\mbox{\hyperlink{class_inventory_1_1_collection_list_af2beda949fcd8071c7eceefcc0c0d6ab}{GetNameArray}}(\ ).Count(\ );\ i++\ )}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00295}00295\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00296}00296\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_preferences_dialog_a0951f86f2e65a189acc71eab6b7879f5}{m\_grid}}-\/>InsertRows(\ cnt,\ 1\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00297}00297\ \ \ \ \ \ \ \ \ cnt++;}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00298}00298\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_inventory_1_1_collection}{Inventory::Collection}}*\ collection\ =\ \mbox{\hyperlink{_defs_8cpp_a0697bb5076e0e3aac1d20bd9cf50d654}{GetCollectionList}}(\ )-\/>\mbox{\hyperlink{class_inventory_1_1_collection_list_aa862faeff92bdbf57d8fd828b711b980}{GetCollection}}(\ i\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00299}00299\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_preferences_dialog_a0951f86f2e65a189acc71eab6b7879f5}{m\_grid}}-\/>SetCellValue(\ i,\ 0,\ collection-\/>\mbox{\hyperlink{class_inventory_1_1_collection_a151095209fdeb63eae1dd07737bca1b1}{GetName}}(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00300}00300\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_preferences_dialog_a0951f86f2e65a189acc71eab6b7879f5}{m\_grid}}-\/>SetCellValue(\ i,\ 1,\ collection-\/>\mbox{\hyperlink{class_inventory_1_1_collection_a845bae669a17d6fdf9aec3de4c215dd2}{GetDescription}}(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00301}00301\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_preferences_dialog_a0951f86f2e65a189acc71eab6b7879f5}{m\_grid}}-\/>SetCellValue(\ i,\ 2,\ collection-\/>\mbox{\hyperlink{class_inventory_1_1_collection_a4c7c072e3ed236fe0fe5a57b763a7d11}{GetLocation}}(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00302}00302\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00303}00303\ \ \ \ \ \textcolor{keywordflow}{return}\ preferencesCollectionPanel;}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00304}00304\ \}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00305}00305\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00306}00306\ \textcolor{comment}{\ *\ Control\ creation\ for\ PreferencesDialog}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00307}00307\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00308}00308\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00309}\mbox{\hyperlink{class_preferences_dialog_a81b51476f8265dbc7dbda2bceb7eea69}{00309}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_preferences_dialog_a81b51476f8265dbc7dbda2bceb7eea69}{PreferencesDialog::CreateControls}}(\ )}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00310}00310\ \{}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00311}00311\ \ \ \ \ \textcolor{comment}{//\ PreferencesDialog\ content\ construction}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00312}00312\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00313}00313\ \ \ \ \ \mbox{\hyperlink{class_preferences_dialog_a1df27319c7ba9302b508adc546e3dd7a}{PreferencesDialog}}*\ theDialog\ =\ \textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00314}00314\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00315}00315\ \ \ \ \ wxBoxSizer*\ theDialogVerticalSizer\ =\ \textcolor{keyword}{new}\ wxBoxSizer(\ wxVERTICAL\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00316}00316\ \ \ \ \ theDialog-\/>SetSizer(\ theDialogVerticalSizer\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00317}00317\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00318}00318\ \ \ \ \ \textcolor{comment}{//\ wxBoxSizer*\ itemBoxSizer3\ =\ new\ wxBoxSizer(\ wxHORIZONTAL\ );}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00319}00319\ \ \ \ \ \textcolor{comment}{//\ theDialogVerticalSizer-\/>Add(\ itemBoxSizer3,\ 1,\ wxGROW\ |\ wxALL,\ 5\ );}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00320}00320\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00321}00321\ \ \ \ \ wxBoxSizer*\ theDialogHorizontalSizer\ =\ \textcolor{keyword}{new}\ wxBoxSizer(\ wxHORIZONTAL\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00322}00322\ \ \ \ \ theDialogVerticalSizer-\/>Add(\ theDialogHorizontalSizer,\ 2,\ wxGROW\ |\ wxALL,\ 5\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00323}00323\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00324}00324\ \ \ \ \ \mbox{\hyperlink{class_preferences_dialog_a619c6628544d7108a0708b4d11c64faf}{m\_notebook}}\ =\ \textcolor{keyword}{new}\ wxNotebook(\ theDialog,\ \mbox{\hyperlink{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6abb531d32ab1d2d3159b69599ac57b2f5}{ID\_NOTEBOOK}},\ wxDefaultPosition,\ wxDefaultSize,\ wxBK\_DEFAULT\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00325}00325\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00326}00326\ \ \ \ \ \mbox{\hyperlink{class_preferences_dialog_a4ca1587fdef76606f40e3f50ece19477}{m\_DetailsPanel}}\ =\ \mbox{\hyperlink{class_preferences_dialog_a100f1663e02659f3c94a30c6a2fcb2f0}{CreateNotebookDetailsPanel}}(\ \mbox{\hyperlink{class_preferences_dialog_a619c6628544d7108a0708b4d11c64faf}{m\_notebook}}\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00327}00327\ \ \ \ \ \mbox{\hyperlink{class_preferences_dialog_a619c6628544d7108a0708b4d11c64faf}{m\_notebook}}-\/>AddPage(\ \mbox{\hyperlink{class_preferences_dialog_a4ca1587fdef76606f40e3f50ece19477}{m\_DetailsPanel}},\ \_(\ \textcolor{stringliteral}{"{}Details"{}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00328}00328\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00329}00329\ \ \ \ \ \mbox{\hyperlink{class_preferences_dialog_a8c201cb25185d7bfa27708c4cf13db80}{m\_SortOrderPanel}}\ =}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00330}00330\ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_sort_order_panel}{SortOrderPanel}}(\ \mbox{\hyperlink{class_preferences_dialog_a619c6628544d7108a0708b4d11c64faf}{m\_notebook}},\ \mbox{\hyperlink{_gui_defs_8h_a6329898a126babcdaa295242c115a11ea897bc3870a2423d0d4400ebf22ed1eb5}{ID\_SORTORDERPANEL}},\ wxDefaultPosition,}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00331}00331\ \ \ \ \ \ \ \ \ \ \ \ \ wxSize(\ 100,\ 100\ ),\ wxSIMPLE\_BORDER\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00332}00332\ \ \ \ \ \mbox{\hyperlink{class_preferences_dialog_a619c6628544d7108a0708b4d11c64faf}{m\_notebook}}-\/>AddPage(\ \mbox{\hyperlink{class_preferences_dialog_a8c201cb25185d7bfa27708c4cf13db80}{m\_SortOrderPanel}},\ \_(\ \textcolor{stringliteral}{"{}Sort\ Order"{}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00333}00333\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00334}00334\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00335}00335\ \ \ \ \ \mbox{\hyperlink{class_preferences_dialog_a2e306f73c50aab4d7786c7eb5548dc9b}{m\_DefinePeriodsPanel}}\ =}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00336}00336\ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_define_periods_panel}{DefinePeriodsPanel}}(\ \mbox{\hyperlink{class_preferences_dialog_a619c6628544d7108a0708b4d11c64faf}{m\_notebook}},\ \mbox{\hyperlink{_gui_defs_8h_a6329898a126babcdaa295242c115a11ea55fdb02d3d8b621e8e6d567a84b0b2e6}{ID\_DEFINEPERIODSPANEL}},\ wxDefaultPosition,}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00337}00337\ \ \ \ \ \ \ \ \ \ \ \ \ wxSize(\ 100,\ 100\ ),\ wxSIMPLE\_BORDER\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00338}00338\ \ \ \ \ \mbox{\hyperlink{class_preferences_dialog_a619c6628544d7108a0708b4d11c64faf}{m\_notebook}}-\/>AddPage(\ \mbox{\hyperlink{class_preferences_dialog_a2e306f73c50aab4d7786c7eb5548dc9b}{m\_DefinePeriodsPanel}},\ \_(\ \textcolor{stringliteral}{"{}Define\ Periods"{}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00339}00339\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00340}00340\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00341}00341\ \ \ \ \ \mbox{\hyperlink{class_preferences_dialog_a60c4adbac75eb1a27039b32c5774cfec}{m\_FontsPanel}}\ =\ \mbox{\hyperlink{class_preferences_dialog_a9bc06e2320a0915817418b48132185e5}{CreateNotebookFontsPanel}}(\ \mbox{\hyperlink{class_preferences_dialog_a619c6628544d7108a0708b4d11c64faf}{m\_notebook}}\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00342}00342\ \ \ \ \ \mbox{\hyperlink{class_preferences_dialog_a619c6628544d7108a0708b4d11c64faf}{m\_notebook}}-\/>AddPage(\ \mbox{\hyperlink{class_preferences_dialog_a60c4adbac75eb1a27039b32c5774cfec}{m\_FontsPanel}},\ \_(\ \textcolor{stringliteral}{"{}Fonts"{}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00343}00343\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00344}00344\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00345}00345\ \ \ \ \ \mbox{\hyperlink{class_preferences_dialog_a587387f9581f8623a9e3f7eace01d61b}{m\_CollectionPanel}}\ =\ \mbox{\hyperlink{class_preferences_dialog_a0870902e646618fef7ef4d6ac397ece9}{CreateCollectionPanel}}(\ \mbox{\hyperlink{class_preferences_dialog_a619c6628544d7108a0708b4d11c64faf}{m\_notebook}}\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00346}00346\ \ \ \ \ \mbox{\hyperlink{class_preferences_dialog_a619c6628544d7108a0708b4d11c64faf}{m\_notebook}}-\/>AddPage(\ \mbox{\hyperlink{class_preferences_dialog_a587387f9581f8623a9e3f7eace01d61b}{m\_CollectionPanel}},\ \_(\ \textcolor{stringliteral}{"{}Collection"{}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00347}00347\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00348}00348\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00349}00349\ \ \ \ \ theDialogHorizontalSizer-\/>Add(\ \mbox{\hyperlink{class_preferences_dialog_a619c6628544d7108a0708b4d11c64faf}{m\_notebook}},\ 2,\ wxGROW\ |\ wxALL,\ 5\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00350}00350\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00351}00351\ \ \ \ \ wxBoxSizer*\ dialogCtrlButtonSizer\ =\ \textcolor{keyword}{new}\ wxBoxSizer(\ wxHORIZONTAL\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00352}00352\ \ \ \ \ theDialogVerticalSizer-\/>Add(\ dialogCtrlButtonSizer,\ 0,\ wxALIGN\_CENTER\_HORIZONTAL\ |\ wxALL,\ 5\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00353}00353\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00354}00354\ \ \ \ \ wxButton*\ itemButton13\ =\ \textcolor{keyword}{new}\ wxButton(\ theDialog,\ wxID\_CANCEL,\ \_(\ \textcolor{stringliteral}{"{}Cancel"{}}\ ),\ wxDefaultPosition,\ wxDefaultSize,\ 0\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00355}00355\ \ \ \ \ dialogCtrlButtonSizer-\/>Add(\ itemButton13,\ 0,\ wxALIGN\_CENTER\_VERTICAL\ |\ wxALL,\ 5\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00356}00356\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00357}00357\ \ \ \ \ wxButton*\ itemButton14\ =\ \textcolor{keyword}{new}\ wxButton(\ theDialog,\ wxID\_OK,\ \_(\ \textcolor{stringliteral}{"{}OK"{}}\ ),\ wxDefaultPosition,\ wxDefaultSize,\ 0\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00358}00358\ \ \ \ \ dialogCtrlButtonSizer-\/>Add(\ itemButton14,\ 0,\ wxALIGN\_CENTER\_VERTICAL\ |\ wxALL,\ 5\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00359}00359\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00360}00360\ \ \ \ \ \textcolor{comment}{//\ PreferencesDialog\ content\ construction}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00361}00361\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00362}00362\ \ \ \ \ \mbox{\hyperlink{class_preferences_dialog_a8c201cb25185d7bfa27708c4cf13db80}{m\_SortOrderPanel}}-\/>InitSortControls();}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00363}00363\ \}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00364}00364\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00365}00365\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00366}00366\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00367}00367\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00368}\mbox{\hyperlink{class_preferences_dialog_a7a1afcf24018e26e117e9ed95e4ab27c}{00368}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_preferences_dialog_a7a1afcf24018e26e117e9ed95e4ab27c}{PreferencesDialog::ShowToolTips}}(\ )}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00369}00369\ \{}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00370}00370\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00371}00371\ \}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00372}00372\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00373}\mbox{\hyperlink{class_preferences_dialog_ada98879cb2028d526e70850df1ab0a1c}{00373}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_preferences_dialog_ada98879cb2028d526e70850df1ab0a1c}{PreferencesDialog::OnNotebookPageChanged}}(\ wxNotebookEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00374}00374\ \{}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00375}00375\ \ \ \ \ \textcolor{keywordtype}{int}\ newPageNdx\ =\ \mbox{\hyperlink{class_preferences_dialog_a619c6628544d7108a0708b4d11c64faf}{m\_notebook}}-\/>GetSelection(\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00376}00376\ \ \ \ \ \textcolor{keywordtype}{int}\ oldPageNdx\ =\ \textcolor{keyword}{event}.GetOldSelection();}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00377}00377\ \ \ \ \ wxWindow*\ newPage\ =\ \mbox{\hyperlink{class_preferences_dialog_a619c6628544d7108a0708b4d11c64faf}{m\_notebook}}-\/>GetPage(\ newPageNdx\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00378}00378\ \ \ \ \ \ wxWindow*\ oldPage\ =\ \mbox{\hyperlink{class_preferences_dialog_a619c6628544d7108a0708b4d11c64faf}{m\_notebook}}-\/>GetPage(\ oldPageNdx\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00379}00379\ \ \ \ \ \ \textcolor{keywordflow}{if}\ (oldPage\ ==\ \mbox{\hyperlink{class_preferences_dialog_a4ca1587fdef76606f40e3f50ece19477}{m\_DetailsPanel}})}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00380}00380\ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00381}00381\ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_preferences_dialog_a13a195aeb0affd55c6cb82290377ee8d}{UpdateDetails}}();}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00382}00382\ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00383}00383\ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (oldPage\ ==\ \mbox{\hyperlink{class_preferences_dialog_a8c201cb25185d7bfa27708c4cf13db80}{m\_SortOrderPanel}})}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00384}00384\ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00385}00385\ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_preferences_dialog_a8c201cb25185d7bfa27708c4cf13db80}{m\_SortOrderPanel}}-\/>Update();}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00386}00386\ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00387}00387\ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (oldPage\ ==\ \mbox{\hyperlink{class_preferences_dialog_a2e306f73c50aab4d7786c7eb5548dc9b}{m\_DefinePeriodsPanel}})}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00388}00388\ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00389}00389\ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_preferences_dialog_a2e306f73c50aab4d7786c7eb5548dc9b}{m\_DefinePeriodsPanel}}-\/>Update();}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00390}00390\ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00391}00391\ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (oldPage\ ==\ \mbox{\hyperlink{class_preferences_dialog_a60c4adbac75eb1a27039b32c5774cfec}{m\_FontsPanel}})}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00392}00392\ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00393}00393\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00394}00394\ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_preferences_dialog_a6d735c6336579417458b3a41db0fbaed}{UpdateFonts}}();}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00395}00395\ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00396}00396\ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (oldPage\ ==\ \mbox{\hyperlink{class_preferences_dialog_a587387f9581f8623a9e3f7eace01d61b}{m\_CollectionPanel}})}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00397}00397\ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00398}00398\ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_preferences_dialog_ad9b4a091645e69447bd59f58c68f3a1a}{UpdateCollectionList}}();}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00399}00399\ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00400}00400\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00401}00401\ \ \ \ \ \textcolor{comment}{//\ \ if\ (newPage\ ==\ m\_DetailsPanel)}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00402}00402\ \ \ \ \ \textcolor{comment}{//\ \ \{}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00403}00403\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ InitDetailsPanel();}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00404}00404\ \ \ \ \ \textcolor{comment}{//\ \ \}}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00405}00405\ \ \ \ \ \textcolor{comment}{//\ \ else\ if\ (newPage\ ==\ m\_SortOrderPanel)}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00406}00406\ \ \ \ \ \textcolor{comment}{//\ \ \{}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00407}00407\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ m\_SortOrderPanel-\/>InitSortControls(\ );}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00408}00408\ \ \ \ \ \textcolor{comment}{//\ \ \}}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00409}00409\ \ \ \ \ \textcolor{comment}{//\ \ else\ if\ (newPage\ ==\ m\_DefinePeriodsPanel)}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00410}00410\ \ \ \ \ \textcolor{comment}{//\ \ \{}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00411}00411\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ m\_DefinePeriodsPanel-\/>InitControls(\ );}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00412}00412\ \ \ \ \ \textcolor{comment}{//\ \ \}}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00413}00413\ \ \ \ \ \textcolor{comment}{//\ \ else\ if\ (newPage\ ==\ m\_FontsPanel)}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00414}00414\ \ \ \ \ \textcolor{comment}{//\ \ \{}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00415}00415\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ InitFonts();}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00416}00416\ \ \ \ \ \textcolor{comment}{//\ \ \}}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00417}00417\ \ \ \ \ \textcolor{comment}{//\ \ else\ if\ (newPage\ ==\ m\_CollectionPanel)}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00418}00418\ \ \ \ \ \textcolor{comment}{//\ \ \{}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00419}00419\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ InitCollectionGrid();}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00420}00420\ \ \ \ \ \textcolor{comment}{//\ \ \}}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00421}00421\ \}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00422}00422\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00423}00423\ \textcolor{comment}{\ *\ \ \ ID\_IMAGEDIRECTORTEXTBOX}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00424}00424\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00425}00425\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00426}\mbox{\hyperlink{class_preferences_dialog_a4b7581430887263981fd2c009cb5ff87}{00426}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_preferences_dialog_a4b7581430887263981fd2c009cb5ff87}{PreferencesDialog::OnImagedirectortextboxTextUpdated}}(\ wxCommandEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00427}00427\ \{}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00428}00428\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00429}00429\ \ \ \ \ \mbox{\hyperlink{class_preferences_dialog_a4e8f5f6e02e3daf4759dbb90d53c74d6}{m\_dirty}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00430}00430\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00431}00431\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00432}00432\ \}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00433}00433\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00434}00434\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00435}00435\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00436}00436\ \textcolor{comment}{\ *\ \ \ ID\_COUNTRYTEXTBOX}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00437}00437\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00438}00438\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00439}\mbox{\hyperlink{class_preferences_dialog_a7ef0da49290efe24c66cad406598cca3}{00439}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_preferences_dialog_a7ef0da49290efe24c66cad406598cca3}{PreferencesDialog::OnCountrytextboxTextUpdated}}(\ wxCommandEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00440}00440\ \{}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00441}00441\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00442}00442\ \ \ \ \ \mbox{\hyperlink{class_preferences_dialog_a4e8f5f6e02e3daf4759dbb90d53c74d6}{m\_dirty}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00443}00443\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00444}00444\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00445}00445\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00446}00446\ \}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00447}00447\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00448}\mbox{\hyperlink{class_preferences_dialog_a3f8193e07706333cc64c3f4c401c82a4}{00448}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_preferences_dialog_a3f8193e07706333cc64c3f4c401c82a4}{PreferencesDialog::BrowseForDir}}(\ wxCommandEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00449}00449\ \{}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00450}00450\ \ \ \ \ wxString\ value\ =\ \mbox{\hyperlink{class_preferences_dialog_a6897093e2c9e6e623f358b741abff55b}{m\_imageDirectory}}-\/>GetValue();}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00451}00451\ \ \ \ \ wxDirDialog\ dlg(\ \textcolor{keyword}{this},}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00452}00452\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Select\ the\ Art\ directory:"{}},}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00453}00453\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ value,}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00454}00454\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0);}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00455}00455\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00456}00456\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ dlg.ShowModal()\ ==\ wxID\_OK\ )}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00457}00457\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00458}00458\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_preferences_dialog_a6897093e2c9e6e623f358b741abff55b}{m\_imageDirectory}}-\/>SetValue(\ dlg.GetPath(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00459}00459\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_preferences_dialog_a6897093e2c9e6e623f358b741abff55b}{m\_imageDirectory}}-\/>SetModified(\ \textcolor{keyword}{true}\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00460}00460\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00461}00461\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00462}00462\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00463}00463\ \}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00464}00464\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00465}00465\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00466}00466\ \textcolor{comment}{\ *\ \ \ ID\_CATALOGTEXTBOX}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00467}00467\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00468}00468\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00469}\mbox{\hyperlink{class_preferences_dialog_a21c35b2c83a4acaf8c89010917aed944}{00469}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_preferences_dialog_a21c35b2c83a4acaf8c89010917aed944}{PreferencesDialog::OnCatalogtextboxTextUpdated}}(\ wxCommandEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00470}00470\ \{}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00471}00471\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00472}00472\ \ \ \ \ \mbox{\hyperlink{class_preferences_dialog_a4e8f5f6e02e3daf4759dbb90d53c74d6}{m\_dirty}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00473}00473\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00474}00474\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00475}00475\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00476}00476\ \}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00477}00477\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00478}00478\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00479}00479\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00480}00480\ \textcolor{comment}{\ *\ \ \ ID\_OPENLASTCHECKBOX}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00481}00481\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00482}00482\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00483}\mbox{\hyperlink{class_preferences_dialog_a65d9c888f659eedf15280d3469c1b898}{00483}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_preferences_dialog_a65d9c888f659eedf15280d3469c1b898}{PreferencesDialog::OnOpenlastcheckboxClick}}(\ wxCommandEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00484}00484\ \{}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00485}00485\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00486}00486\ \ \ \ \ \mbox{\hyperlink{class_preferences_dialog_a4e8f5f6e02e3daf4759dbb90d53c74d6}{m\_dirty}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00487}00487\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00488}00488\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00489}00489\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00490}00490\ \}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00491}00491\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00492}00492\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00493}00493\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00494}00494\ \textcolor{comment}{\ *\ \ \ ID\_RECENTSIZETEXTCTRL}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00495}00495\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00496}00496\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00497}\mbox{\hyperlink{class_preferences_dialog_a412164a7760487192d52231450684330}{00497}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_preferences_dialog_a412164a7760487192d52231450684330}{PreferencesDialog::OnRecentsizetextctrlTextUpdated}}(\ wxCommandEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00498}00498\ \{}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00499}00499\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00500}00500\ \ \ \ \ \mbox{\hyperlink{class_preferences_dialog_a4e8f5f6e02e3daf4759dbb90d53c74d6}{m\_dirty}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00501}00501\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00502}00502\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00503}00503\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00504}00504\ \}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00505}00505\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00506}\mbox{\hyperlink{class_preferences_dialog_a3cc0b51e0176401d28d8268e8215194c}{00506}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_preferences_dialog_a3cc0b51e0176401d28d8268e8215194c}{PreferencesDialog::OnOkClick}}(\ wxCommandEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00507}00507\ \{}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00508}00508\ \ \ \ \ \mbox{\hyperlink{class_preferences_dialog_a6d735c6336579417458b3a41db0fbaed}{UpdateFonts}}(\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00509}00509\ \ \ \ \ \mbox{\hyperlink{class_preferences_dialog_a2e306f73c50aab4d7786c7eb5548dc9b}{m\_DefinePeriodsPanel}}-\/>OnOkClick(\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00510}00510\ \ \ \ \ \mbox{\hyperlink{class_preferences_dialog_a8c201cb25185d7bfa27708c4cf13db80}{m\_SortOrderPanel}}-\/>OnOkClick(\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00511}00511\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00512}00512\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ \mbox{\hyperlink{_defs_8cpp_a22c90d4148252ff1fbca6b40d3312b23}{GetSettings}}(\ )-\/>isDirty(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00513}00513\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_defs_8cpp_a22c90d4148252ff1fbca6b40d3312b23}{GetSettings}}(\ )-\/>\mbox{\hyperlink{class_utils_1_1_settings_aa8033d8b0430b253332b0373fd2beb8d}{Save}}(\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00514}00514\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00515}00515\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00516}00516\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00517}00517\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00518}00518\ \}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00519}00519\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00520}\mbox{\hyperlink{class_preferences_dialog_a13a195aeb0affd55c6cb82290377ee8d}{00520}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_preferences_dialog_a13a195aeb0affd55c6cb82290377ee8d}{PreferencesDialog::UpdateDetails}}()}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00521}00521\ \{}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00522}00522\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00523}00523\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ \mbox{\hyperlink{class_preferences_dialog_a6897093e2c9e6e623f358b741abff55b}{m\_imageDirectory}}-\/>IsModified(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00524}00524\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00525}00525\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_defs_8cpp_a22c90d4148252ff1fbca6b40d3312b23}{GetSettings}}(\ )-\/>\mbox{\hyperlink{class_utils_1_1_settings_a60c816f60b9307a75cc063ef2826a8fc}{SetDirty}}(\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00526}00526\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_defs_8cpp_a21e576057406853f4fd5f371338b78b6}{GetProject}}(\ )-\/>\mbox{\hyperlink{class_utils_1_1_project_af543316f1e14506c56b5f6428a88d1f3}{SetImageDirectory}}(\ \mbox{\hyperlink{class_preferences_dialog_a6897093e2c9e6e623f358b741abff55b}{m\_imageDirectory}}-\/>GetValue(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00527}00527\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_preferences_dialog_a6897093e2c9e6e623f358b741abff55b}{m\_imageDirectory}}-\/>SetModified(\ \textcolor{keyword}{false}\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00528}00528\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00529}00529\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00530}00530\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ \mbox{\hyperlink{class_preferences_dialog_a390a30f65e661926d405b0d1a9a9f437}{m\_country}}-\/>IsModified(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00531}00531\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00532}00532\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_defs_8cpp_a22c90d4148252ff1fbca6b40d3312b23}{GetSettings}}(\ )-\/>\mbox{\hyperlink{class_utils_1_1_settings_a60c816f60b9307a75cc063ef2826a8fc}{SetDirty}}(\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00533}00533\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_defs_8cpp_a22c90d4148252ff1fbca6b40d3312b23}{GetSettings}}(\ )-\/>\mbox{\hyperlink{class_utils_1_1_settings_a784e120d6ac9c529abd4b0147657b1e4}{SetCountryID}}(\ \mbox{\hyperlink{class_preferences_dialog_a390a30f65e661926d405b0d1a9a9f437}{m\_country}}-\/>GetValue(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00534}00534\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_preferences_dialog_a390a30f65e661926d405b0d1a9a9f437}{m\_country}}-\/>SetModified(\ \textcolor{keyword}{false}\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00535}00535\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00536}00536\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00537}00537\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00538}00538\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ \mbox{\hyperlink{class_preferences_dialog_adf644f4982ad01e3c2bc62ff0b736e66}{m\_catalog}}-\/>IsModified(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00539}00539\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00540}00540\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_defs_8cpp_a22c90d4148252ff1fbca6b40d3312b23}{GetSettings}}(\ )-\/>\mbox{\hyperlink{class_utils_1_1_settings_a60c816f60b9307a75cc063ef2826a8fc}{SetDirty}}(\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00541}00541\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_defs_8cpp_a22c90d4148252ff1fbca6b40d3312b23}{GetSettings}}(\ )-\/>\mbox{\hyperlink{class_utils_1_1_settings_a9444e09eb1e6b69708ff2bda9092adfb}{SetCatalogID}}(\ \mbox{\hyperlink{class_preferences_dialog_adf644f4982ad01e3c2bc62ff0b736e66}{m\_catalog}}-\/>GetValue(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00542}00542\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_preferences_dialog_adf644f4982ad01e3c2bc62ff0b736e66}{m\_catalog}}-\/>SetModified(\ \textcolor{keyword}{false}\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00543}00543\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00544}00544\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00545}00545\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ \mbox{\hyperlink{class_preferences_dialog_a86eb118bc8544fd1ef96c4027406db64}{m\_loadLastFileAtStartUp}}-\/>GetValue(\ )\ !=\ \mbox{\hyperlink{_defs_8cpp_a22c90d4148252ff1fbca6b40d3312b23}{GetSettings}}(\ )-\/>GetLoadLastFileAtStartUp(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00546}00546\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00547}00547\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_defs_8cpp_a22c90d4148252ff1fbca6b40d3312b23}{GetSettings}}(\ )-\/>\mbox{\hyperlink{class_utils_1_1_settings_a60c816f60b9307a75cc063ef2826a8fc}{SetDirty}}(\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00548}00548\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_defs_8cpp_a22c90d4148252ff1fbca6b40d3312b23}{GetSettings}}(\ )-\/>\mbox{\hyperlink{class_utils_1_1_settings_acbad955311bd35e3f3aad68ceabe3928}{SetLoadLastFileAtStartUp}}(\ \mbox{\hyperlink{class_preferences_dialog_a86eb118bc8544fd1ef96c4027406db64}{m\_loadLastFileAtStartUp}}-\/>GetValue(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00549}00549\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00550}00550\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00551}00551\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00552}00552\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ \mbox{\hyperlink{class_preferences_dialog_a6965cb7a5b265fddb3c551d28ebc918b}{m\_recentListSize}}-\/>IsModified(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00553}00553\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00554}00554\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_defs_8cpp_a22c90d4148252ff1fbca6b40d3312b23}{GetSettings}}(\ )-\/>\mbox{\hyperlink{class_utils_1_1_settings_a60c816f60b9307a75cc063ef2826a8fc}{SetDirty}}(\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00555}00555\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{long}\ val;}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00556}00556\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ \mbox{\hyperlink{class_preferences_dialog_a6965cb7a5b265fddb3c551d28ebc918b}{m\_recentListSize}}-\/>GetValue(\ ).ToLong(\ \&val\ )\ )}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00557}00557\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00558}00558\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_defs_8cpp_a22c90d4148252ff1fbca6b40d3312b23}{GetSettings}}(\ )-\/>\mbox{\hyperlink{class_utils_1_1_settings_a062cd8d0554cc98cddcf7d9608e70dc5}{SetNbrRecentPreference}}(\ val\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00559}00559\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00560}00560\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00561}00561\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00562}00562\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_defs_8cpp_a22c90d4148252ff1fbca6b40d3312b23}{GetSettings}}(\ )-\/>\mbox{\hyperlink{class_utils_1_1_settings_a062cd8d0554cc98cddcf7d9608e70dc5}{SetNbrRecentPreference}}(\ 1\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00563}00563\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00564}00564\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_preferences_dialog_a6965cb7a5b265fddb3c551d28ebc918b}{m\_recentListSize}}-\/>SetModified(\ \textcolor{keyword}{false}\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00565}00565\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00566}00566\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00567}00567\ \}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00568}00568\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00569}00569\ \textcolor{comment}{//\ void\ PreferencesDialog::UpdateFonts()}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00570}00570\ \textcolor{comment}{//\ \{}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00571}00571\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00572}00572\ \textcolor{comment}{//\ \ \ \ \ wxFont\ titleFont\ =\ m\_titleFontPicker-\/>GetSelectedFont(\ );}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00573}00573\ \textcolor{comment}{//\ \ \ \ \ wxColour\ titleColor\ =\ m\_titleColorPicker-\/>GetColour(\ );}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00574}00574\ \textcolor{comment}{//\ \ \ \ \ int\ ndx\ =\ GetFontList(\ )-\/>AddNewFont(\ titleFont,\ titleColor\ );}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00575}00575\ \textcolor{comment}{//\ \ \ \ \ GetSettings(\ )-\/>SetFontNdxPreference(\ Design::AT\_TitleFontType,\ ndx\ );}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00576}00576\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00577}00577\ \textcolor{comment}{//\ \ \ \ \ wxFont\ catNbrFont\ =\ m\_nbrFontPicker-\/>GetSelectedFont(\ );}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00578}00578\ \textcolor{comment}{//\ \ \ \ \ wxColour\ catNbrColor\ =\ m\_nbrColorPicker-\/>GetColour(\ );}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00579}00579\ \textcolor{comment}{//\ \ \ \ \ ndx\ =\ GetFontList(\ )-\/>AddNewFont(\ catNbrFont,\ catNbrColor\ );}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00580}00580\ \textcolor{comment}{//\ \ \ \ \ GetSettings(\ )-\/>SetFontNdxPreference(\ Design::AT\_NbrFontType,\ ndx\ );}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00581}00581\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00582}00582\ \textcolor{comment}{//\ \ \ \ \ wxFont\ textFont\ =\ m\_textFontPicker-\/>GetSelectedFont(\ );}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00583}00583\ \textcolor{comment}{//\ \ \ \ \ wxColour\ textColor\ =\ m\_textColorPicker-\/>GetColour(\ );}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00584}00584\ \textcolor{comment}{//\ \ \ \ \ ndx\ =\ GetFontList(\ )-\/>AddNewFont(\ textFont,\ textColor\ );}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00585}00585\ \textcolor{comment}{//\ \ \ \ \ GetSettings(\ )-\/>SetFontNdxPreference(\ Design::AT\_TextFontType,\ ndx\ );}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00586}00586\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00587}00587\ \textcolor{comment}{//\ \ \ \ \ wxFont\ nameFont\ =\ m\_nameFontPicker-\/>GetSelectedFont(\ );}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00588}00588\ \textcolor{comment}{//\ \ \ \ \ wxColour\ nameColor\ =\ m\_nameColorPicker-\/>GetColour(\ );}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00589}00589\ \textcolor{comment}{//\ \ \ \ \ ndx\ =\ GetFontList(\ )-\/>AddNewFont(\ nameFont,\ nameColor\ );}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00590}00590\ \textcolor{comment}{//\ \ \ \ \ GetSettings(\ )-\/>SetFontNdxPreference(\ Design::AT\_NameFontType,\ ndx\ );}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00591}00591\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00592}00592\ \textcolor{comment}{//\ \ \ \ \ GetFontList(\ )-\/>InitFonts(\ );}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00593}00593\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00594}00594\ \textcolor{comment}{//\ \}}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00595}00595\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00596}00596\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00597}00597\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00598}\mbox{\hyperlink{class_preferences_dialog_a6d735c6336579417458b3a41db0fbaed}{00598}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_preferences_dialog_a6d735c6336579417458b3a41db0fbaed}{PreferencesDialog::UpdateFonts}}(\ )}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00599}00599\ \{}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00600}00600\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00601}00601\ \ \ \ \ wxFont\ titleFont\ =\ \mbox{\hyperlink{class_preferences_dialog_ac494b448dc176f076f14f6e842d70ddb}{m\_titleFontPicker}}-\/>GetSelectedFont(\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00602}00602\ \ \ \ \ wxColour\ titleColor\ =\ \mbox{\hyperlink{class_preferences_dialog_abe1d8f79e8134a342cd83f284d15449c}{m\_titleColorPicker}}-\/>GetColour(\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00603}00603\ \ \ \ \ \textcolor{keywordtype}{int}\ ndx\ =\ \mbox{\hyperlink{_defs_8cpp_a580d17030a54e4a9a5493f5763d11e12}{GetFontList}}(\ )-\/>\mbox{\hyperlink{class_utils_1_1_font_list_a10b97ab34dd0a46094bd3ccb793fe8d3}{AddNewFont}}(\ titleFont,\ titleColor\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00604}00604\ \ \ \ \ \mbox{\hyperlink{_defs_8cpp_a22c90d4148252ff1fbca6b40d3312b23}{GetSettings}}(\ )-\/>\mbox{\hyperlink{class_utils_1_1_settings_a30c435bd4ae36e9547423a0b8d32e9cc}{SetFontNdxPreference}}(\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4a078f3978681292ecf0627258c1cd1d1d}{Design::AT\_TitleFontType}},\ ndx\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00605}00605\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00606}00606\ \ \ \ \ wxFont\ catNbrFont\ =\ \mbox{\hyperlink{class_preferences_dialog_af701ddbfce5e53178805dc8667a0897b}{m\_nbrFontPicker}}-\/>GetSelectedFont(\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00607}00607\ \ \ \ \ wxColour\ catNbrColor\ =\ \mbox{\hyperlink{class_preferences_dialog_a0b704ef5ce27505614d3d5397eb26bc8}{m\_nbrColorPicker}}-\/>GetColour(\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00608}00608\ \ \ \ \ ndx\ =\ \mbox{\hyperlink{_defs_8cpp_a580d17030a54e4a9a5493f5763d11e12}{GetFontList}}(\ )-\/>\mbox{\hyperlink{class_utils_1_1_font_list_a10b97ab34dd0a46094bd3ccb793fe8d3}{AddNewFont}}(\ catNbrFont,\ catNbrColor\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00609}00609\ \ \ \ \ \mbox{\hyperlink{_defs_8cpp_a22c90d4148252ff1fbca6b40d3312b23}{GetSettings}}(\ )-\/>\mbox{\hyperlink{class_utils_1_1_settings_a30c435bd4ae36e9547423a0b8d32e9cc}{SetFontNdxPreference}}(\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4a0d94aa6c52078cbb63ce531ed26140b2}{Design::AT\_NbrFontType}},\ ndx\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00610}00610\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00611}00611\ \ \ \ \ wxFont\ textFont\ =\ \mbox{\hyperlink{class_preferences_dialog_a6c544a0852f5b8fc46f5ed51071f9d13}{m\_textFontPicker}}-\/>GetSelectedFont(\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00612}00612\ \ \ \ \ wxColour\ textColor\ =\ \mbox{\hyperlink{class_preferences_dialog_a0364ebac99c9eccb03866e0c932f4740}{m\_textColorPicker}}-\/>GetColour(\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00613}00613\ \ \ \ \ ndx\ =\ \mbox{\hyperlink{_defs_8cpp_a580d17030a54e4a9a5493f5763d11e12}{GetFontList}}(\ )-\/>\mbox{\hyperlink{class_utils_1_1_font_list_a10b97ab34dd0a46094bd3ccb793fe8d3}{AddNewFont}}(\ textFont,\ textColor\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00614}00614\ \ \ \ \ \mbox{\hyperlink{_defs_8cpp_a22c90d4148252ff1fbca6b40d3312b23}{GetSettings}}(\ )-\/>\mbox{\hyperlink{class_utils_1_1_settings_a30c435bd4ae36e9547423a0b8d32e9cc}{SetFontNdxPreference}}(\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4ac5d3d82b86b9c364230172d74fd70095}{Design::AT\_TextFontType}},\ ndx\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00615}00615\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00616}00616\ \ \ \ \ wxFont\ nameFont\ =\ \mbox{\hyperlink{class_preferences_dialog_ad97c5f8ee56cda1e2f598c5407a5bcd7}{m\_nameFontPicker}}-\/>GetSelectedFont(\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00617}00617\ \ \ \ \ wxColour\ nameColor\ =\ \mbox{\hyperlink{class_preferences_dialog_a03f7b495bc623783cfbd3369758b284e}{m\_nameColorPicker}}-\/>GetColour(\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00618}00618\ \ \ \ \ ndx\ =\ \mbox{\hyperlink{_defs_8cpp_a580d17030a54e4a9a5493f5763d11e12}{GetFontList}}(\ )-\/>\mbox{\hyperlink{class_utils_1_1_font_list_a10b97ab34dd0a46094bd3ccb793fe8d3}{AddNewFont}}(\ nameFont,\ nameColor\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00619}00619\ \ \ \ \ \mbox{\hyperlink{_defs_8cpp_a22c90d4148252ff1fbca6b40d3312b23}{GetSettings}}(\ )-\/>\mbox{\hyperlink{class_utils_1_1_settings_a30c435bd4ae36e9547423a0b8d32e9cc}{SetFontNdxPreference}}(\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4a7a0c5cdeb48aceab9b0167ab84cbcb27}{Design::AT\_NameFontType}},\ ndx\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00620}00620\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00621}00621\ \ \ \ \textcolor{comment}{//\ GetFontList(\ )-\/>InitFonts(\ );}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00622}00622\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00623}00623\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ \mbox{\hyperlink{_defs_8cpp_a22c90d4148252ff1fbca6b40d3312b23}{GetSettings}}(\ )-\/>isDirty(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00624}00624\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_defs_8cpp_a22c90d4148252ff1fbca6b40d3312b23}{GetSettings}}(\ )-\/>\mbox{\hyperlink{class_utils_1_1_settings_aa8033d8b0430b253332b0373fd2beb8d}{Save}}(\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00625}00625\ \}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00626}00626\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00627}\mbox{\hyperlink{class_preferences_dialog_ad9b4a091645e69447bd59f58c68f3a1a}{00627}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_preferences_dialog_ad9b4a091645e69447bd59f58c68f3a1a}{PreferencesDialog::UpdateCollectionList}}()}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00628}00628\ \{}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00629}00629\ \ \ \ \ \textcolor{keywordtype}{int}\ cnt\ =\ \mbox{\hyperlink{class_preferences_dialog_a0951f86f2e65a189acc71eab6b7879f5}{m\_grid}}-\/>GetNumberRows(\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00630}00630\ \ \ \ \ \mbox{\hyperlink{class_inventory_1_1_collection_list}{Inventory::CollectionList}}\ *collectionList\ =\ \mbox{\hyperlink{_defs_8cpp_a0697bb5076e0e3aac1d20bd9cf50d654}{GetCollectionList}}(\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00631}00631\ \ \ \ \ collectionList-\/>\mbox{\hyperlink{class_inventory_1_1_collection_list_ac06f3a6d7f29ccf083edf7d2e1f420da}{Clear}}();}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00632}00632\ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\ \textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ cnt;\ i++\ )}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00633}00633\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00634}00634\ \ \ \ \ \ collectionList-\/>\mbox{\hyperlink{class_inventory_1_1_collection_list_a54f3c777ca9f62a00be665dd2f3a01d2}{AddCollection}}(\ \ \mbox{\hyperlink{class_preferences_dialog_a0951f86f2e65a189acc71eab6b7879f5}{m\_grid}}-\/>GetCellValue(\ i,\ 0\ ),\ \mbox{\hyperlink{class_preferences_dialog_a0951f86f2e65a189acc71eab6b7879f5}{m\_grid}}-\/>GetCellValue(\ i,\ 1),\ \ \mbox{\hyperlink{class_preferences_dialog_a0951f86f2e65a189acc71eab6b7879f5}{m\_grid}}-\/>GetCellValue(\ i,\ 2)\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00635}00635\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00636}00636\ \}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00637}00637\ }
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00638}\mbox{\hyperlink{class_preferences_dialog_a89c69ffa44a231824cf182153c256578}{00638}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_preferences_dialog_a89c69ffa44a231824cf182153c256578}{PreferencesDialog::InitCollectionGrid}}()}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00639}00639\ \{}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00640}00640\ \ \ \ \ \textcolor{keywordtype}{int}\ cnt\ =\ \mbox{\hyperlink{class_preferences_dialog_a0951f86f2e65a189acc71eab6b7879f5}{m\_grid}}-\/>GetNumberRows(\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00641}00641\ \ \ \ \ \textcolor{keywordtype}{int}\ nbrcollections\ =\ \mbox{\hyperlink{_defs_8cpp_a0697bb5076e0e3aac1d20bd9cf50d654}{GetCollectionList}}(\ )-\/>\mbox{\hyperlink{class_inventory_1_1_collection_list_af2beda949fcd8071c7eceefcc0c0d6ab}{GetNameArray}}(\ ).Count(\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00642}00642\ \ \ \ \ \mbox{\hyperlink{class_preferences_dialog_a0951f86f2e65a189acc71eab6b7879f5}{m\_grid}}-\/>DeleteRows(0,\ nbrcollections);}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00643}00643\ \ \ \ \ \textcolor{keywordflow}{for}\ (\ \textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ nbrcollections;\ i++\ )}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00644}00644\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00645}00645\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_preferences_dialog_a0951f86f2e65a189acc71eab6b7879f5}{m\_grid}}-\/>InsertRows(\ cnt,\ 1\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00646}00646\ \ \ \ \ \ \ \ \ cnt++;}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00647}00647\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_inventory_1_1_collection}{Inventory::Collection}}*\ collection\ =\ \mbox{\hyperlink{_defs_8cpp_a0697bb5076e0e3aac1d20bd9cf50d654}{GetCollectionList}}(\ )-\/>\mbox{\hyperlink{class_inventory_1_1_collection_list_aa862faeff92bdbf57d8fd828b711b980}{GetCollection}}(\ i\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00648}00648\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_preferences_dialog_a0951f86f2e65a189acc71eab6b7879f5}{m\_grid}}-\/>SetCellValue(\ i,\ 0,\ collection-\/>\mbox{\hyperlink{class_inventory_1_1_collection_a151095209fdeb63eae1dd07737bca1b1}{GetName}}(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00649}00649\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_preferences_dialog_a0951f86f2e65a189acc71eab6b7879f5}{m\_grid}}-\/>SetCellValue(\ i,\ 1,\ collection-\/>\mbox{\hyperlink{class_inventory_1_1_collection_a845bae669a17d6fdf9aec3de4c215dd2}{GetDescription}}(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00650}00650\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_preferences_dialog_a0951f86f2e65a189acc71eab6b7879f5}{m\_grid}}-\/>SetCellValue(\ i,\ 2,\ collection-\/>\mbox{\hyperlink{class_inventory_1_1_collection_a4c7c072e3ed236fe0fe5a57b763a7d11}{GetLocation}}(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00651}00651\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_preferences_dialog_8cpp_source_l00652}00652\ \}}
+
+\end{DoxyCode}

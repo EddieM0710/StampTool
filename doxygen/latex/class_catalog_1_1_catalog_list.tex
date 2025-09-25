@@ -1,0 +1,158 @@
+\doxysection{Catalog\+::Catalog\+List Class Reference}
+\hypertarget{class_catalog_1_1_catalog_list}{}\label{class_catalog_1_1_catalog_list}\index{Catalog::CatalogList@{Catalog::CatalogList}}
+
+
+The array that contains all the catalogs.  
+
+
+
+
+{\ttfamily \#include $<$Catalog\+List.\+h$>$}
+
+Inheritance diagram for Catalog\+::Catalog\+List\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_catalog_1_1_catalog_list}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_catalog_1_1_catalog_list_aee0e7facf9fdfa724eecd4f89d21eff5}{Catalog\+List}} ()
+\item 
+\mbox{\hyperlink{class_catalog_1_1_catalog_list_a05b1c810f67a0f9ff1561d419f41af2b}{\texorpdfstring{$\sim$}{\string~}\+Catalog\+List}} ()
+\item 
+\mbox{\hyperlink{class_catalog_1_1_catalog_volume}{Catalog\+::\+Catalog\+Volume}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_catalog_1_1_catalog_list_a5026a8bdfd270d9816c6f210af8f2a34}{New\+Volume\+Instance}} (wx\+String filename)
+\item 
+\mbox{\hyperlink{class_catalog_1_1_catalog_volume}{Catalog\+::\+Catalog\+Volume}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_catalog_1_1_catalog_list_a11892a3c13b4070bb5e3dbe7e59bea5a}{Add\+New\+Volume}} (wx\+String filename)
+\item 
+bool \mbox{\hyperlink{class_catalog_1_1_catalog_list_a5f830ba72747e4261cfc3e99b9562a7c}{Import\+CSV}} (wx\+String csv\+Filename)
+\item 
+\mbox{\hyperlink{class_catalog_1_1_catalog_volume}{Catalog\+::\+Catalog\+Volume}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_catalog_1_1_catalog_list_a788235eaeca52c1f8aa571b0c042c6e8}{New\+Catalog\+Volume}} (wx\+String filename)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_utils_1_1_volume_list}{Utils\+::\+Volume\+List}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_utils_1_1_volume_list_aafb3398328644baaf92c84388df8a577}{Volume\+List}} ()
+\item 
+\mbox{\hyperlink{class_utils_1_1_volume_list_abf211ffa41d9b860867decf436ce5b94}{\texorpdfstring{$\sim$}{\string~}\+Volume\+List}} ()
+\item 
+wx\+Xml\+Node \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_utils_1_1_volume_list_abd40ffe153b1b26986cc05f33aa83c4a}{Add\+Child}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}child)
+\item 
+bool \mbox{\hyperlink{class_utils_1_1_volume_list_af5b9b1b4662680053e1f34b8df78fd15}{Clear}} ()
+\item 
+wx\+Tree\+Item\+Id \mbox{\hyperlink{class_utils_1_1_volume_list_a4d068a2736e07ebaaf0bf54a4aa5a8ac}{Find\+Menu\+ID}} (int id)
+\item 
+Menu\+IDArray\+::iterator \mbox{\hyperlink{class_utils_1_1_volume_list_a66f87d684de7268a050b34c66d84952c}{Find\+Menu\+IDIterator}} (int id)
+\item 
+\mbox{\hyperlink{class_utils_1_1_volume}{Utils\+::\+Volume}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_utils_1_1_volume_list_a943b0708393fc693c0fe7d59e27d9e96}{Find\+Volume}} (wx\+String str)
+\item 
+Volume\+Array\+::iterator \mbox{\hyperlink{class_utils_1_1_volume_list_a12c91cdf68c455c1d7c4d19471fe9e3e}{Find\+Volume\+Iterator}} (wx\+String str)
+\item 
+\mbox{\hyperlink{namespace_utils_aeee3fa6f7393338c50e7f323fa993989}{Utils\+::\+Volume\+Array}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_utils_1_1_volume_list_a715cb1f378294d281c4a9c7c90a60eaf}{Get\+Array}} ()
+\item 
+\mbox{\hyperlink{class_utils_1_1_volume}{Utils\+::\+Volume}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_utils_1_1_volume_list_a8c45e00867a115cce68f8ef768d7ac38}{Get\+Volume}} ()
+\item 
+void \mbox{\hyperlink{class_utils_1_1_volume_list_a3be25b5f8e4a75cf6a73b7d60986cb20}{Insert}} (int id, wx\+Tree\+Item\+Id tree\+Id)
+\item 
+void \mbox{\hyperlink{class_utils_1_1_volume_list_a99b5483956ded5de6622279aa4cbfa68}{Insert}} (wx\+String str, \mbox{\hyperlink{class_utils_1_1_volume}{Utils\+::\+Volume}} \texorpdfstring{$\ast$}{*}vol)
+\item 
+void \mbox{\hyperlink{class_utils_1_1_volume_list_ac6d9e736b10d8f6e0678421c89b39ec6}{Make\+Name\+Array}} (wx\+Array\+String \&array)
+\item 
+void \mbox{\hyperlink{class_utils_1_1_volume_list_a76617541736b6fa96ef227e42292246b}{Remove\+Volume}} (wx\+String name)
+\item 
+void \mbox{\hyperlink{class_utils_1_1_volume_list_a41690d66a9027b11224b98f051fd3eed}{Remove\+Volume}} (\mbox{\hyperlink{class_utils_1_1_volume}{Volume}} \texorpdfstring{$\ast$}{*}vol)
+\item 
+void \mbox{\hyperlink{class_utils_1_1_volume_list_a06d73bb39e9c6ebc5cf8cede367b5299}{Save\+Dirty\+Volumes}} ()
+\item 
+void \mbox{\hyperlink{class_utils_1_1_volume_list_acc5f386a0d13002f76d76cf9b630766f}{Save\+Volumes}} ()
+\item 
+void \mbox{\hyperlink{class_utils_1_1_volume_list_a7d1ce6fb8df681f2debf9a7b3b2430b3}{Set\+Current\+Volume}} (\mbox{\hyperlink{class_utils_1_1_volume}{Volume}} \texorpdfstring{$\ast$}{*}vol)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The array that contains all the catalogs. 
+
+Definition at line \mbox{\hyperlink{_catalog_list_8h_source_l00048}{48}} of file \mbox{\hyperlink{_catalog_list_8h_source}{Catalog\+List.\+h}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_catalog_1_1_catalog_list_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_catalog_1_1_catalog_list_aee0e7facf9fdfa724eecd4f89d21eff5}\index{Catalog::CatalogList@{Catalog::CatalogList}!CatalogList@{CatalogList}}
+\index{CatalogList@{CatalogList}!Catalog::CatalogList@{Catalog::CatalogList}}
+\doxysubsubsection{\texorpdfstring{CatalogList()}{CatalogList()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_catalog_list_aee0e7facf9fdfa724eecd4f89d21eff5} 
+Catalog\+::\+Catalog\+List\+::\+Catalog\+List (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_list_8h_source_l00055}{55}} of file \mbox{\hyperlink{_catalog_list_8h_source}{Catalog\+List.\+h}}.
+
+\Hypertarget{class_catalog_1_1_catalog_list_a05b1c810f67a0f9ff1561d419f41af2b}\index{Catalog::CatalogList@{Catalog::CatalogList}!````~CatalogList@{\texorpdfstring{$\sim$}{\string~}CatalogList}}
+\index{````~CatalogList@{\texorpdfstring{$\sim$}{\string~}CatalogList}!Catalog::CatalogList@{Catalog::CatalogList}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}CatalogList()}{\string~CatalogList()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_catalog_list_a05b1c810f67a0f9ff1561d419f41af2b} 
+Catalog\+::\+Catalog\+List\+::\texorpdfstring{$\sim$}{\string~}\+Catalog\+List (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_list_8h_source_l00057}{57}} of file \mbox{\hyperlink{_catalog_list_8h_source}{Catalog\+List.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_catalog_1_1_catalog_list_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_catalog_1_1_catalog_list_a11892a3c13b4070bb5e3dbe7e59bea5a}\index{Catalog::CatalogList@{Catalog::CatalogList}!AddNewVolume@{AddNewVolume}}
+\index{AddNewVolume@{AddNewVolume}!Catalog::CatalogList@{Catalog::CatalogList}}
+\doxysubsubsection{\texorpdfstring{AddNewVolume()}{AddNewVolume()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_catalog_list_a11892a3c13b4070bb5e3dbe7e59bea5a} 
+\mbox{\hyperlink{class_catalog_1_1_catalog_volume}{Catalog\+::\+Catalog\+Volume}} \texorpdfstring{$\ast$}{*} Catalog\+::\+Catalog\+List\+::\+Add\+New\+Volume (\begin{DoxyParamCaption}\item[{wx\+String}]{filename}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_list_8cpp_source_l00058}{58}} of file \mbox{\hyperlink{_catalog_list_8cpp_source}{Catalog\+List.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_catalog_list_a5f830ba72747e4261cfc3e99b9562a7c}\index{Catalog::CatalogList@{Catalog::CatalogList}!ImportCSV@{ImportCSV}}
+\index{ImportCSV@{ImportCSV}!Catalog::CatalogList@{Catalog::CatalogList}}
+\doxysubsubsection{\texorpdfstring{ImportCSV()}{ImportCSV()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_catalog_list_a5f830ba72747e4261cfc3e99b9562a7c} 
+bool Catalog\+::\+Catalog\+List\+::\+Import\+CSV (\begin{DoxyParamCaption}\item[{wx\+String}]{csv\+Filename}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_list_8cpp_source_l00082}{82}} of file \mbox{\hyperlink{_catalog_list_8cpp_source}{Catalog\+List.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_catalog_list_a788235eaeca52c1f8aa571b0c042c6e8}\index{Catalog::CatalogList@{Catalog::CatalogList}!NewCatalogVolume@{NewCatalogVolume}}
+\index{NewCatalogVolume@{NewCatalogVolume}!Catalog::CatalogList@{Catalog::CatalogList}}
+\doxysubsubsection{\texorpdfstring{NewCatalogVolume()}{NewCatalogVolume()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_catalog_list_a788235eaeca52c1f8aa571b0c042c6e8} 
+\mbox{\hyperlink{class_catalog_1_1_catalog_volume}{Catalog\+::\+Catalog\+Volume}} \texorpdfstring{$\ast$}{*} Catalog\+::\+Catalog\+List\+::\+New\+Catalog\+Volume (\begin{DoxyParamCaption}\item[{wx\+String}]{filename}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_list_8cpp_source_l00135}{135}} of file \mbox{\hyperlink{_catalog_list_8cpp_source}{Catalog\+List.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_catalog_list_a5026a8bdfd270d9816c6f210af8f2a34}\index{Catalog::CatalogList@{Catalog::CatalogList}!NewVolumeInstance@{NewVolumeInstance}}
+\index{NewVolumeInstance@{NewVolumeInstance}!Catalog::CatalogList@{Catalog::CatalogList}}
+\doxysubsubsection{\texorpdfstring{NewVolumeInstance()}{NewVolumeInstance()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_catalog_list_a5026a8bdfd270d9816c6f210af8f2a34} 
+\mbox{\hyperlink{class_catalog_1_1_catalog_volume}{Catalog\+::\+Catalog\+Volume}} \texorpdfstring{$\ast$}{*} Catalog\+::\+Catalog\+List\+::\+New\+Volume\+Instance (\begin{DoxyParamCaption}\item[{wx\+String}]{filename}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_utils_1_1_volume_list_ad46e91f261dfb4bd99bd0fc50e539d61}{Utils\+::\+Volume\+List}}.
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_list_8cpp_source_l00050}{50}} of file \mbox{\hyperlink{_catalog_list_8cpp_source}{Catalog\+List.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/femon/\+Development/wx/clone\+Test/\+Stamp\+Tool/src/catalog/\mbox{\hyperlink{_catalog_list_8h}{Catalog\+List.\+h}}\item 
+C\+:/\+Users/femon/\+Development/wx/clone\+Test/\+Stamp\+Tool/src/catalog/\mbox{\hyperlink{_catalog_list_8cpp}{Catalog\+List.\+cpp}}\end{DoxyCompactItemize}

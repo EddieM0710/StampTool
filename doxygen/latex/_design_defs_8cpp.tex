@@ -1,0 +1,76 @@
+\doxysection{C\+:/\+Users/femon/\+Development/wx/clone\+Test/\+Stamp\+Tool/src/design/\+Design\+Defs.cpp File Reference}
+\hypertarget{_design_defs_8cpp}{}\label{_design_defs_8cpp}\index{C:/Users/femon/Development/wx/cloneTest/StampTool/src/design/DesignDefs.cpp@{C:/Users/femon/Development/wx/cloneTest/StampTool/src/design/DesignDefs.cpp}}
+{\ttfamily \#include "{}wx/wxprec.\+h"{}}\newline
+{\ttfamily \#include "{}wx/wx.\+h"{}}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include "{}Design\+Defs.\+h"{}}\newline
+{\ttfamily \#include "{}Album\+Volume.\+h"{}}\newline
+{\ttfamily \#include "{}Defs.\+h"{}}\newline
+{\ttfamily \#include "{}utils/\+Project.\+h"{}}\newline
+{\ttfamily \#include "{}design/\+Album.\+h"{}}\newline
+{\ttfamily \#include "{}utils/\+Font\+List.\+h"{}}\newline
+{\ttfamily \#include "{}design/\+Page.\+h"{}}\newline
+{\ttfamily \#include "{}design/\+Row.\+h"{}}\newline
+{\ttfamily \#include "{}design/\+Column.\+h"{}}\newline
+{\ttfamily \#include "{}design/\+Stamp.\+h"{}}\newline
+{\ttfamily \#include "{}design/\+Album\+Data.\+h"{}}\newline
+{\ttfamily \#include "{}gui/\+Album\+Tree\+Ctrl.\+h"{}}\newline
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespace_design}{Design}}
+\begin{DoxyCompactList}\small\item\em \doxylink{_defs_8cpp_ab417854facaa35a9654d17c6585a2409}{wx\+DECLARE\+\_\+\+APP( Stamp\+Tool\+App )}; \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{namespace_design_acda93570e5fda30e2608df376907778d}{Design\+::\+Is\+Portrait}} (wx\+String orientation)
+\item 
+\mbox{\hyperlink{namespace_design_a6d899bd1f7046bbf5a613e85bd83f0c3}{Stamp\+Name\+Pos\+Type}} \mbox{\hyperlink{namespace_design_a2aaa34bc44a82f76f74d6e6f011945bf}{Design\+::\+Find\+Stamp\+Location\+Type}} (wx\+String name)
+\item 
+\mbox{\hyperlink{namespace_design_ab09b51b33b5ff322cce8f7d3e37caae5}{Alignment\+Mode\+Type}} \mbox{\hyperlink{namespace_design_a7afd338be906fc3816e6721ec5c6817a}{Design\+::\+Find\+Alignment\+Mode\+Type}} (wx\+String name)
+\item 
+\mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364be}{Album\+Attr\+Type}} \mbox{\hyperlink{namespace_design_afe7c9b03c8bdc34c825b312546065b83}{Design\+::\+Find\+Album\+Attr\+Type}} (wx\+String name)
+\item 
+\mbox{\hyperlink{namespace_design_a3b29aaf2cf27207bcb313e24b827f8b1}{Album\+Base\+Type}} \mbox{\hyperlink{namespace_design_a06b00762b0ce370fb98fdd70ac7d9d3c}{Design\+::\+Find\+Album\+Base\+Type}} (wx\+String name)
+\item 
+\mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4}{Font\+Usage\+Type}} \mbox{\hyperlink{namespace_design_a867f1223ccc1a10fdae9a28dd43466eb}{Design\+::\+Find\+Font\+Usage\+Type}} (wx\+String name)
+\item 
+\mbox{\hyperlink{class_design_1_1_album}{Album}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespace_design_aaf913dbe97a6c57862a852f79cb54404}{Design\+::\+Get\+Album}} (void)
+\item 
+\mbox{\hyperlink{class_design_1_1_page_defaults}{Page\+Defaults}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespace_design_aa4fea110dd291e5d5d0fd78ec9d6ff98}{Design\+::\+Album\+Page\+Defaults}} ()
+\item 
+\mbox{\hyperlink{class_design_1_1_frame_defaults}{Frame\+Defaults}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespace_design_a342d9455df07585aa762c1be18724f90}{Design\+::\+Album\+Frame\+Defaults}} ()
+\item 
+\mbox{\hyperlink{class_design_1_1_stamp_defaults}{Stamp\+Defaults}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespace_design_ac973715a5cfcda6fc6028a5286198e4b}{Design\+::\+Album\+Stamp\+Defaults}} ()
+\item 
+\mbox{\hyperlink{class_design_1_1_album_volume}{Album\+Volume}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespace_design_a348ebdba188f193934c55b8f0ad00550}{Design\+::\+Get\+Album\+Volume}} (void)
+\item 
+\mbox{\hyperlink{class_design_1_1_layout_base}{Layout\+Base}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespace_design_ade99086dccbbc5579bb9a0edbe0edfa5}{Design\+::\+Get\+Selected\+Node\+Page}} ()
+\item 
+void \mbox{\hyperlink{namespace_design_a81cb9eeed8b200a49810c452f732dc56}{Design\+::\+Init\+Design\+Defs}} (\mbox{\hyperlink{namespace_design_a50cde7727f2d80d10de313beb2179c8e}{Scale\+Client}} client=\mbox{\hyperlink{namespace_design_a50cde7727f2d80d10de313beb2179c8eaeaf588f6d0182deba760f4000c9c4e48}{DD\+\_\+\+Display}})
+\begin{DoxyCompactList}\small\item\em Performs the initial instantiantion of all the s\+Tart up data. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespace_design_a0f12cceacb248602141ce2d3dca6da6b}{Design\+::\+Is\+Album\+Base\+Type\+Valid}} (\mbox{\hyperlink{namespace_design_a3b29aaf2cf27207bcb313e24b827f8b1}{Album\+Base\+Type}} type)
+\item 
+\mbox{\hyperlink{class_design_1_1_album_base}{Album\+Base}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespace_design_aac217f371ec56287a4504c98d9530b89}{Design\+::\+Make\+Node}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}node)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+wx\+Real\+Point \mbox{\hyperlink{namespace_design_a352c26b74797bf2adf2f67ff9b212e06}{Design\+::\+PPMM}}
+\item 
+wx\+String \mbox{\hyperlink{namespace_design_aa688e51eed6c13e36e48175b175073ad}{Design\+::\+Attr\+Name\+Strings}} \mbox{[}\mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364bea02157829b81b081dff8fea17aed0ce71}{AT\+\_\+\+Nbr\+Attr\+Types}}\mbox{]}
+\item 
+wx\+String \mbox{\hyperlink{namespace_design_a68f016e4c7c4fd45c002d095153930eb}{Design\+::\+Orientation\+Strings}} \mbox{[}2\mbox{]} = \{ "{}Portrait"{}, "{}Landscape"{} \}
+\item 
+wx\+String \mbox{\hyperlink{namespace_design_a22874362385d0bd60077262a6cbbf931}{Design\+::\+Layout\+Type\+Strings}} \mbox{[}\mbox{\hyperlink{namespace_design_a92be0fe63f397600d1b789ced14bb086ae492e38c751cc4624b48cfbe1078af88}{Nbr\+Layout\+Types}}\mbox{]} = \{ "{}Page"{}, "{}Frame"{}, "{}Stamp"{}, "{}Text"{} \}
+\item 
+wx\+String \mbox{\hyperlink{namespace_design_ab3742ad7971c04bd777b0fee90390d70}{Design\+::\+Album\+Base\+Names}} \mbox{[}\mbox{\hyperlink{namespace_design_a3b29aaf2cf27207bcb313e24b827f8b1a0a217a59fb24b8e1784f9d6db904aa57}{AT\+\_\+\+Nbr\+Album\+Types}}\mbox{]}
+\item 
+int \mbox{\hyperlink{namespace_design_aa4885175772a49d51fef791c56297455}{Design\+::\+Default\+Point\+Size}} \mbox{[}\mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4afc9adabdde0c80dd0c02b444f080316b}{AT\+\_\+\+Nbr\+Font\+Usage\+Types}}\mbox{]} = \{ 12, 10, 10, 10, 8 \}
+\item 
+wx\+String \mbox{\hyperlink{namespace_design_a5633022d39c0aebfb61c328332990d78}{Design\+::\+Font\+Usage\+Type\+Strings}} \mbox{[}\mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4afc9adabdde0c80dd0c02b444f080316b}{AT\+\_\+\+Nbr\+Font\+Usage\+Types}}\mbox{]}
+\item 
+wx\+String \mbox{\hyperlink{namespace_design_a04ebd7d62b02f5ae629ebdb6639b51b7}{Design\+::\+Stamp\+Name\+Position\+Strings}} \mbox{[}\mbox{\hyperlink{namespace_design_a6d899bd1f7046bbf5a613e85bd83f0c3a92a58c55f4bd0c52796c34d87770fd1b}{AT\+\_\+\+Nbr\+Stamp\+Name\+Positions}}\mbox{]}
+\item 
+wx\+String \mbox{\hyperlink{namespace_design_a5531e44b6223563fc30a7774c9352d9a}{Design\+::\+Stamp\+Alignment\+Mode\+Strings}} \mbox{[}\mbox{\hyperlink{namespace_design_ab09b51b33b5ff322cce8f7d3e37caae5a5755e19d0aa82633a9a05251f78c3e21}{Nbr\+Alignment\+Modes}}\mbox{]}
+\end{DoxyCompactItemize}

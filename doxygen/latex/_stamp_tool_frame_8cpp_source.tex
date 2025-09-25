@@ -1,0 +1,845 @@
+\doxysection{Stamp\+Tool\+Frame.\+cpp}
+\hypertarget{_stamp_tool_frame_8cpp_source}{}\label{_stamp_tool_frame_8cpp_source}\index{C:/Users/femon/Development/wx/cloneTest/StampTool/src/gui/StampToolFrame.cpp@{C:/Users/femon/Development/wx/cloneTest/StampTool/src/gui/StampToolFrame.cpp}}
+\mbox{\hyperlink{_stamp_tool_frame_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00026}00026\ \textcolor{preprocessor}{\#include\ "{}wx/wxprec.h"{}}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00028}00028\ \textcolor{preprocessor}{\#ifdef\ \_\_BORLANDC\_\_}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00029}00029\ \textcolor{preprocessor}{\#pragma\ hdrstop}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00030}00030\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00032}00032\ \textcolor{preprocessor}{\#ifndef\ WX\_PRECOMP}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00033}00033\ \textcolor{preprocessor}{\#include\ "{}wx/wx.h"{}}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00034}00034\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00038}00038\ \textcolor{preprocessor}{\#include\ <wx/filefn.h>}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00039}00039\ \textcolor{preprocessor}{\#include\ <wx/filename.h>}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00040}00040\ \textcolor{preprocessor}{\#include\ <wx/filedlg.h>}\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00041}00041\ \textcolor{preprocessor}{\#include\ <wx/log.h>}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00042}00042\ \textcolor{preprocessor}{\#include\ <wx/wfstream.h>}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00044}00044\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_defs_8h}{Defs.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00045}00045\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_settings_8h}{Settings.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00047}00047\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_app_data_8h}{gui/AppData.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00049}00049\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_stamp_tool_panel_8h}{gui/StampToolPanel.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00050}00050\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_catalog_panel_8h}{gui/CatalogPanel.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00051}00051\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_album_panel_8h}{gui/AlbumPanel.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00052}00052\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_catalog_data_8h}{catalog/CatalogData.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00053}00053\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_album_8h}{design/Album.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00054}00054\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_album_data_8h}{design/AlbumData.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00055}00055\ \textcolor{comment}{//\#include\ "{}gui/EditProjectDetails.h"{}}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00056}00056\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_album_tree_panel_8h}{gui/AlbumTreePanel.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00057}00057\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_sort_order_panel_8h}{gui/SortOrderPanel.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00058}00058\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_preferences_dialog_8h}{gui/PreferencesDialog.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00059}00059\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_file_create_dialog_8h}{gui/FileCreateDialog.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00060}00060\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_stamp_tool_frame_8h}{gui/StampToolFrame.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00061}00061\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_album_image_panel_8h}{gui/AlbumImagePanel.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00064}00064\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_catalog_volume_8h}{catalog/CatalogVolume.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00065}00065\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_album_tree_ctrl_8h}{gui/AlbumTreeCtrl.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00066}00066\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_catalog_tree_ctrl_8h}{gui/CatalogTreeCtrl.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00069}00069\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_project_8h}{utils/Project.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00070}00070\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_c_s_v_8h}{utils/CSV.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00071}00071\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_x_m_l_utilities_8h}{utils/XMLUtilities.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00072}00072\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_entry_8h}{catalog/Entry.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00073}00073\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_catalog_volume_8h}{catalog/CatalogVolume.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00074}00074\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_album_data_8h}{design/AlbumData.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00077}00077\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_design_defs_8h}{design/DesignDefs.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00078}00078\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_album_volume_8h}{design/AlbumVolume.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00079}00079\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_album_base_8h}{design/AlbumBase.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00080}00080\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_album_8h}{design/Album.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00081}00081\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_stamp_8h}{design/Stamp.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00083}00083\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00084}00084\ \mbox{\hyperlink{_album_tree_ctrl_8cpp_a67b8d2869778621e44858ded32edbf98}{IMPLEMENT\_CLASS}}(\ \mbox{\hyperlink{class_stamp_tool_frame}{StampToolFrame}},\ wxFrame\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00086}00086\ BEGIN\_EVENT\_TABLE(\ \mbox{\hyperlink{class_stamp_tool_frame}{StampToolFrame}},\ wxFrame\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00087}00087\ EVT\_CLOSE(\ \mbox{\hyperlink{class_stamp_tool_frame_ac257b8b1aa6e7d71a37f49b1e22bc41a}{StampToolFrame::OnCloseWindow}}\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00088}00088\ EVT\_ICONIZE(\ \mbox{\hyperlink{class_stamp_tool_frame_a9b1b0d6deb4a06d9177b7abf4f083359}{StampToolFrame::OnIconize}}\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00089}00089\ EVT\_MAXIMIZE(\ \mbox{\hyperlink{class_stamp_tool_frame_a31f56e7241b992ee41cf915da750efe4}{StampToolFrame::OnMaximize}}\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00090}00090\ EVT\_MENU(\ \mbox{\hyperlink{_stamp_tool_frame_8h_ae0c2c2f8e300a3d2dd60020c109c1c20a7d4abf2acfbee139c69e26e35a016183}{ID\_CLOSEPROJECT}},\ \mbox{\hyperlink{class_stamp_tool_frame_a9faca8bbaf179ea115fd2defed1aa635}{StampToolFrame::OnCloseProjectClick}}\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00091}00091\ EVT\_MENU(\ \mbox{\hyperlink{_stamp_tool_frame_8h_ae0c2c2f8e300a3d2dd60020c109c1c20a55a542163f9782fab98386920f5b3e27}{ID\_NEWPROJECT}},\ \mbox{\hyperlink{class_stamp_tool_frame_a35e6f779c1949612f84d8d1ce2bac0c5}{StampToolFrame::OnNewProjectClick}}\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00092}00092\ EVT\_MENU(\ \mbox{\hyperlink{_stamp_tool_frame_8h_ae0c2c2f8e300a3d2dd60020c109c1c20af4e3b663bd0d028e505d4ab8ce9aa62f}{ID\_OPENPROJECT}},\ \mbox{\hyperlink{class_stamp_tool_frame_a8fb95077a8056633d3f8048380b4bb39}{StampToolFrame::OnOpenProjectClick}}\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00093}00093\ EVT\_MENU(\ \mbox{\hyperlink{_stamp_tool_frame_8h_ae0c2c2f8e300a3d2dd60020c109c1c20a4418fe96261aee8f35aac41d8d732fcc}{ID\_SAVEPROJECT}},\ \mbox{\hyperlink{class_stamp_tool_frame_aa2506b5e8baa43a6edc864283c623367}{StampToolFrame::OnSaveProjectClick}}\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00094}00094\ EVT\_MENU(\ \mbox{\hyperlink{_stamp_tool_frame_8h_ae0c2c2f8e300a3d2dd60020c109c1c20ab76c1e15573a281985b564c966b06954}{ID\_SAVECATALOG}},\ \mbox{\hyperlink{class_stamp_tool_frame_a20f432c35d143cc2285bed7b5d1a11ae}{StampToolFrame::OnSaveCatalogClick}}\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00095}00095\ EVT\_MENU(\ \mbox{\hyperlink{_stamp_tool_frame_8h_ae0c2c2f8e300a3d2dd60020c109c1c20a2271671250ddbc50dfdd8c1051f26d6c}{ID\_SAVEASPROJECT}},\ \mbox{\hyperlink{class_stamp_tool_frame_acd866fb941824c423627c542a21ab311}{StampToolFrame::OnSaveasProjectClick}}\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00096}00096\ \textcolor{comment}{//EVT\_MENU(\ ID\_PROJECTDETAILS,\ StampToolFrame::OnEditProjectDetailsClick\ )}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00097}00097\ EVT\_MENU(\ wxID\_EXIT,\ \mbox{\hyperlink{class_stamp_tool_frame_a74d43e1b00f06e606795390548dc46e4}{StampToolFrame::OnExitClick}}\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00098}00098\ EVT\_MENU(\ \mbox{\hyperlink{_stamp_tool_frame_8h_ae0c2c2f8e300a3d2dd60020c109c1c20a8c1e17b297c219cc3ca3f63a6734c3fc}{ID\_TEXTSERCHMENUITEM}},\ \mbox{\hyperlink{class_stamp_tool_frame_aef2d5ecc8926d06bdf1538618be04125}{StampToolFrame::OnTextSearchMenuItemClick}}\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00099}00099\ EVT\_MENU(\ \mbox{\hyperlink{_stamp_tool_frame_8h_ae0c2c2f8e300a3d2dd60020c109c1c20a182ddddb9108e37c84a0e9ef85e6eba5}{ID\_SORTORDER}},\ \mbox{\hyperlink{class_stamp_tool_frame_a3ba580efb39fbbf705c59c82e404b540}{StampToolFrame::OnSortOrderClick}}\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00100}00100\ EVT\_MENU(\ \mbox{\hyperlink{_stamp_tool_frame_8h_ae0c2c2f8e300a3d2dd60020c109c1c20a8d9a1107cd6e67e9d97bb8c2e86a0c7c}{ID\_ITEMVIEW}},\ \mbox{\hyperlink{class_stamp_tool_frame_a3203ff68df4cacb7c881812ceb37d9f3}{StampToolFrame::OnItemviewClick}}\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00101}00101\ EVT\_MENU(\ \mbox{\hyperlink{_stamp_tool_frame_8h_ae0c2c2f8e300a3d2dd60020c109c1c20aacb3056d85faf9b07b855b5dd1fe8325}{ID\_DEFINEPERIOD}},\ \mbox{\hyperlink{class_stamp_tool_frame_a766462d8417f0b6096f609caf63fd37a}{StampToolFrame::OnDefinePeriodClick}}\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00102}00102\ EVT\_MENU(\ \mbox{\hyperlink{_stamp_tool_frame_8h_ae0c2c2f8e300a3d2dd60020c109c1c20a2f92eab4976d93c69487f74e4b7c253e}{ID\_PREFERENCES}},\ \mbox{\hyperlink{class_stamp_tool_frame_a908247ebb9dfd917212110a27095dabc}{StampToolFrame::OnPreferencesClick}}\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00103}00103\ EVT\_MENU(\ \mbox{\hyperlink{_stamp_tool_frame_8h_ae0c2c2f8e300a3d2dd60020c109c1c20a910dbb5ede149f990074fe785c64179f}{ID\_NEWCATALOG}},\ \mbox{\hyperlink{class_stamp_tool_frame_a181a7e83c78b1340ef308a3ba5189449}{StampToolFrame::OnNewCatalogClick}}\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00104}00104\ EVT\_MENU(\ \mbox{\hyperlink{_stamp_tool_frame_8h_ae0c2c2f8e300a3d2dd60020c109c1c20aa6ebb0b3d9598ae045728d7a6d90661a}{ID\_OPENCATALOG}},\ \mbox{\hyperlink{class_stamp_tool_frame_a463aa7cc4b577dc3c045290ba79f3bae}{StampToolFrame::OnOpenCatalogClick}}\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00105}00105\ EVT\_MENU(\ \mbox{\hyperlink{_stamp_tool_frame_8h_ae0c2c2f8e300a3d2dd60020c109c1c20af860a3d20612e55c3bdd830cfec8a36f}{ID\_CSVIMPORT}},\ \mbox{\hyperlink{class_stamp_tool_frame_acfbbea8c072bcc6515068640c1417631}{StampToolFrame::OnImportCatalogClick}}\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00106}00106\ EVT\_MENU(\ \mbox{\hyperlink{_stamp_tool_frame_8h_ae0c2c2f8e300a3d2dd60020c109c1c20adad3974d0a3bd0947763b26cc90f667c}{ID\_MERGE}},\ \mbox{\hyperlink{class_stamp_tool_frame_a2dec8b75249de42d779e9901b1033a77}{StampToolFrame::OnMergeCatalogClick}}\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00107}00107\ EVT\_MENU(\ \mbox{\hyperlink{_stamp_tool_frame_8h_ae0c2c2f8e300a3d2dd60020c109c1c20a7c42348b31d51ff28554ee3740deb1c3}{ID\_REMOVECATALOG}},\ \mbox{\hyperlink{class_stamp_tool_frame_ae43c1e156bbac2fa6618b78989072213}{StampToolFrame::OnRemoveCatalogClick}}\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00108}00108\ EVT\_MENU(\ \mbox{\hyperlink{_stamp_tool_frame_8h_ae0c2c2f8e300a3d2dd60020c109c1c20aadbf1fc968e3adad839c8b5536be7eb4}{ID\_NEWDESIGN}},\ \mbox{\hyperlink{class_stamp_tool_frame_a30ce2e15053738760173744f174838ba}{StampToolFrame::OnNewDesignClick}}\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00109}00109\ EVT\_MENU(\ \mbox{\hyperlink{_stamp_tool_frame_8h_ae0c2c2f8e300a3d2dd60020c109c1c20a6133d39a594c6dfe86c2bf7d4ab39e3e}{ID\_OPENDESIGN}},\ \mbox{\hyperlink{class_stamp_tool_frame_ae7aac0a1ee5bf84cf0efc9d7b8ddc20d}{StampToolFrame::OnOpenDesignClick}}\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00110}00110\ EVT\_MENU(\ \mbox{\hyperlink{_stamp_tool_frame_8h_ae0c2c2f8e300a3d2dd60020c109c1c20a28a6055491f8b3578c1c328d988338c0}{ID\_GENERATEPDF}},\ \mbox{\hyperlink{class_stamp_tool_frame_a930ed2d31855648805c702c0b7addb6b}{StampToolFrame::OnGeneratePDFClick}}\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00111}00111\ EVT\_MENU(\ \mbox{\hyperlink{_stamp_tool_frame_8h_ae0c2c2f8e300a3d2dd60020c109c1c20a77523a703d26ab44d95a84f5809740db}{ID\_OPENPDF}},\ \mbox{\hyperlink{class_stamp_tool_frame_af1b9397571992a21812754153477a534}{StampToolFrame::OnOpenPDFClick}}\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00112}00112\ EVT\_MENU(\ \mbox{\hyperlink{_stamp_tool_frame_8h_ae0c2c2f8e300a3d2dd60020c109c1c20a1aff59bbcacab9daaaff72b02488e388}{ID\_REMOVEDESIGN}},\ \mbox{\hyperlink{class_stamp_tool_frame_a041e6976329fa9a8a6ffc4913398a96a}{StampToolFrame::OnRemoveDesignClick}}\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00113}00113\ EVT\_MENU(\ \mbox{\hyperlink{_stamp_tool_frame_8h_ae0c2c2f8e300a3d2dd60020c109c1c20af6a7c0c2ac43c07888f751a031982acc}{ID\_SAVEDESIGN}},\ \mbox{\hyperlink{class_stamp_tool_frame_ac993a72455ca1dfb786c15b39fbe90bc}{StampToolFrame::OnSaveDesignClick}}\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00114}00114\ END\_EVENT\_TABLE(\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00115}00115\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00116}00116\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00117}00117\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00118}00118\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00119}\mbox{\hyperlink{class_stamp_tool_frame_a352a43f3179e3c1025dafb26b261c6cf}{00119}}\ \mbox{\hyperlink{class_stamp_tool_frame_a352a43f3179e3c1025dafb26b261c6cf}{StampToolFrame}}::\mbox{\hyperlink{class_stamp_tool_frame_a352a43f3179e3c1025dafb26b261c6cf}{StampToolFrame}}(\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00120}00120\ \{}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00121}00121\ \ \ \ \ \mbox{\hyperlink{class_stamp_tool_frame_a57a696b99752ab8318711acde233955d}{Init}}(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00122}00122\ \}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00123}00123\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00124}00124\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00125}00125\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00126}\mbox{\hyperlink{class_stamp_tool_frame_a136e26645696b8c3b88d89deb7f21e2c}{00126}}\ \mbox{\hyperlink{class_stamp_tool_frame_a352a43f3179e3c1025dafb26b261c6cf}{StampToolFrame::StampToolFrame}}(\ wxWindow*\ parent,\ wxWindowID\ \textcolor{keywordtype}{id},}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00127}00127\ \ \ \ \ \textcolor{keyword}{const}\ wxString\&\ caption,}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00128}00128\ \ \ \ \ \textcolor{keyword}{const}\ wxPoint\&\ pos,\ \textcolor{keyword}{const}\ wxSize\&\ size,}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00129}00129\ \ \ \ \ \textcolor{keywordtype}{long}\ style\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00130}00130\ \{}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00131}00131\ \ \ \ \ \mbox{\hyperlink{class_stamp_tool_frame_a57a696b99752ab8318711acde233955d}{Init}}(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00132}00132\ \ \ \ \ \mbox{\hyperlink{class_stamp_tool_frame_afc11abd74497c5b96f64a4b8d98da314}{Create}}(\ parent,\ \textcolor{keywordtype}{id},\ caption,\ pos,\ size,\ style\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00133}00133\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00134}00134\ \}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00135}00135\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00136}00136\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00137}00137\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00138}\mbox{\hyperlink{class_stamp_tool_frame_a224539042861eadb163c5dec665a7ead}{00138}}\ \mbox{\hyperlink{class_stamp_tool_frame_a224539042861eadb163c5dec665a7ead}{StampToolFrame::\string~StampToolFrame}}(\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00139}00139\ \{}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00140}00140\ \ \ \ \ \textcolor{keywordtype}{int}\ a\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00141}00141\ \}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00142}00142\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00143}00143\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00144}00144\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00145}\mbox{\hyperlink{class_stamp_tool_frame_ac73c29c07a130b0c88b9bf017ef11cc1}{00145}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_stamp_tool_frame_ac73c29c07a130b0c88b9bf017ef11cc1}{StampToolFrame::CloseProject}}(\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00146}00146\ \{}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00147}00147\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00148}00148\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ !\mbox{\hyperlink{_defs_8cpp_a21e576057406853f4fd5f371338b78b6}{GetProject}}(\ )-\/>ContinueIfDirty(\ \textcolor{keyword}{this}\ )\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00149}00149\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00150}00150\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00151}00151\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00152}00152\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00153}00153\ \ \ \ \ \mbox{\hyperlink{_defs_8cpp_a5bc84fc875d3f55720a036ed44ce76d2}{GetAppData}}(\ )-\/>\mbox{\hyperlink{class_app_data_a153a3829ddb3e37deb93cfb46215ac90}{Clear}}(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00154}00154\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00155}00155\ \ \ \ \ \mbox{\hyperlink{_defs_8cpp_a21e576057406853f4fd5f371338b78b6}{GetProject}}(\ )-\/>\mbox{\hyperlink{class_utils_1_1_project_a0b9b342fb1544f54c2473387b4630d95}{CloseProject}}(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00156}00156\ \}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00157}00157\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00158}\mbox{\hyperlink{class_stamp_tool_frame_afc11abd74497c5b96f64a4b8d98da314}{00158}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_stamp_tool_frame_afc11abd74497c5b96f64a4b8d98da314}{StampToolFrame::Create}}(\ wxWindow*\ parent,\ wxWindowID\ \textcolor{keywordtype}{id},}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00159}00159\ \ \ \ \ \textcolor{keyword}{const}\ wxString\&\ caption,\ \textcolor{keyword}{const}\ wxPoint\&\ pos,}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00160}00160\ \ \ \ \ \textcolor{keyword}{const}\ wxSize\&\ size,\ \textcolor{keywordtype}{long}\ style\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00161}00161\ \{}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00162}00162\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00163}00163\ \ \ \ \ wxFrame::Create(\ parent,\ \textcolor{keywordtype}{id},\ caption,\ pos,\ size,\ style\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00164}00164\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00165}00165\ \ \ \ \ \mbox{\hyperlink{class_stamp_tool_frame_aa36d523e67624514908d9613625ccd35}{CreateControls}}(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00166}00166\ \ \ \ \ Centre(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00167}00167\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00168}00168\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00169}00169\ \}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00170}00170\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00171}00171\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00172}00172\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00173}\mbox{\hyperlink{class_stamp_tool_frame_aa36d523e67624514908d9613625ccd35}{00173}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_stamp_tool_frame_aa36d523e67624514908d9613625ccd35}{StampToolFrame::CreateControls}}(\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00174}00174\ \{}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00175}00175\ \ \ \ \ \mbox{\hyperlink{class_stamp_tool_frame_a352a43f3179e3c1025dafb26b261c6cf}{StampToolFrame}}*\ itemFrame1\ =\ \textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00176}00176\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00177}00177\ \ \ \ \ wxMenuBar*\ menuBar\ =\ \textcolor{keyword}{new}\ wxMenuBar;}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00178}00178\ \ \ \ \ m\_fileMenu\ =\ \textcolor{keyword}{new}\ wxMenu;}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00179}00179\ \ \ \ \ m\_newMenu\ =\ \textcolor{keyword}{new}\ wxMenu;}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00180}00180\ \ \ \ \ m\_fileMenu-\/>Append(\ \mbox{\hyperlink{_stamp_tool_frame_8h_ae0c2c2f8e300a3d2dd60020c109c1c20a55a542163f9782fab98386920f5b3e27}{ID\_NEWPROJECT}},\ \_(\ \textcolor{stringliteral}{"{}New"{}}\ ),\ \textcolor{stringliteral}{"{}New\ Project"{}},\ wxITEM\_NORMAL\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00181}00181\ \ \ \ \ m\_fileMenu-\/>Append(\ \mbox{\hyperlink{_stamp_tool_frame_8h_ae0c2c2f8e300a3d2dd60020c109c1c20af4e3b663bd0d028e505d4ab8ce9aa62f}{ID\_OPENPROJECT}},\ \_(\ \textcolor{stringliteral}{"{}Open"{}}\ ),\ wxEmptyString,\ wxITEM\_NORMAL\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00182}00182\ \ \ \ \ m\_fileMenu-\/>Append(\ \mbox{\hyperlink{_stamp_tool_frame_8h_ae0c2c2f8e300a3d2dd60020c109c1c20a4418fe96261aee8f35aac41d8d732fcc}{ID\_SAVEPROJECT}},\ \_(\ \textcolor{stringliteral}{"{}Save"{}}\ ),\ wxEmptyString,\ wxITEM\_NORMAL\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00183}00183\ \ \ \ \ m\_fileMenu-\/>Append(\ \mbox{\hyperlink{_stamp_tool_frame_8h_ae0c2c2f8e300a3d2dd60020c109c1c20a2271671250ddbc50dfdd8c1051f26d6c}{ID\_SAVEASPROJECT}},\ \_(\ \textcolor{stringliteral}{"{}Save\ As"{}}\ ),\ wxEmptyString,\ wxITEM\_NORMAL\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00184}00184\ \ \ \ \ m\_fileMenu-\/>AppendSeparator(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00185}00185\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00186}00186\ \ \ \ \ m\_fileMenu-\/>Append(\ \mbox{\hyperlink{_stamp_tool_frame_8h_ae0c2c2f8e300a3d2dd60020c109c1c20a7d4abf2acfbee139c69e26e35a016183}{ID\_CLOSEPROJECT}},\ \_(\ \textcolor{stringliteral}{"{}Close\ Project"{}}\ ),\ wxEmptyString,\ wxITEM\_NORMAL\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00187}00187\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00188}00188\ \ \ \ \ m\_fileMenu-\/>AppendSeparator(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00189}00189\ \ \ \ \textcolor{comment}{//\ m\_fileMenu-\/>Append(\ ID\_PROJECTDETAILS,\ \_(\ "{}Project\ Details"{}\ ),\ wxEmptyString,\ wxITEM\_NORMAL\ );}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00190}00190\ \ \ \ \ m\_fileMenu-\/>Append(\ \mbox{\hyperlink{_stamp_tool_frame_8h_ae0c2c2f8e300a3d2dd60020c109c1c20a2f92eab4976d93c69487f74e4b7c253e}{ID\_PREFERENCES}},\ \_(\ \textcolor{stringliteral}{"{}Preferences"{}}\ ),\ wxEmptyString,\ wxITEM\_NORMAL\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00191}00191\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00192}00192\ \ \ \ \ m\_fileMenu-\/>AppendSeparator(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00193}00193\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00194}00194\ \ \ \ \ m\_fileMenu-\/>Append(\ wxID\_EXIT,\ \_(\ \textcolor{stringliteral}{"{}Exit"{}}\ ),\ wxEmptyString,\ wxITEM\_NORMAL\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00195}00195\ \ \ \ \ menuBar-\/>Append(\ m\_fileMenu,\ \_(\ \textcolor{stringliteral}{"{}Project"{}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00196}00196\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00197}00197\ \ \ \ \ wxMenu*\ itemMenu5\ =\ \textcolor{keyword}{new}\ wxMenu;}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00198}00198\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00199}00199\ \ \ \ \ itemMenu5-\/>Append(\ \mbox{\hyperlink{_stamp_tool_frame_8h_ae0c2c2f8e300a3d2dd60020c109c1c20ae414776a01e6de4d17f312f3bb70e1b4}{ID\_ADDCOLLECTION}},\ \_(\ \textcolor{stringliteral}{"{}Add\ Collection\ File"{}}\ ),\ wxEmptyString,\ wxITEM\_NORMAL\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00200}00200\ \ \ \ \ itemMenu5-\/>Append(\ \mbox{\hyperlink{_stamp_tool_frame_8h_ae0c2c2f8e300a3d2dd60020c109c1c20a6c929221593da4b4dbd1dc54bec16d8c}{ID\_OPENCOLLECTION}},\ \_(\ \textcolor{stringliteral}{"{}Open\ Collection\ File"{}}\ ),\ wxEmptyString,\ wxITEM\_NORMAL\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00201}00201\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00202}00202\ \ \ \ \ wxMenu*\ itemMenu3\ =\ \textcolor{keyword}{new}\ wxMenu;}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00203}00203\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00204}00204\ \ \ \ \ itemMenu3-\/>Append(\ \mbox{\hyperlink{_stamp_tool_frame_8h_ae0c2c2f8e300a3d2dd60020c109c1c20a910dbb5ede149f990074fe785c64179f}{ID\_NEWCATALOG}},\ \_(\ \textcolor{stringliteral}{"{}New\ Catalog"{}}\ ),\ wxEmptyString,\ wxITEM\_NORMAL\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00205}00205\ \ \ \ \ itemMenu3-\/>Append(\ \mbox{\hyperlink{_stamp_tool_frame_8h_ae0c2c2f8e300a3d2dd60020c109c1c20aa6ebb0b3d9598ae045728d7a6d90661a}{ID\_OPENCATALOG}},\ \_(\ \textcolor{stringliteral}{"{}Open\ Catalog"{}}\ ),\ wxEmptyString,\ wxITEM\_NORMAL\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00206}00206\ \ \ \ \ itemMenu3-\/>Append(\ \mbox{\hyperlink{_stamp_tool_frame_8h_ae0c2c2f8e300a3d2dd60020c109c1c20ab76c1e15573a281985b564c966b06954}{ID\_SAVECATALOG}},\ \_(\ \textcolor{stringliteral}{"{}Save\ Catalog"{}}\ ),\ wxEmptyString,\ wxITEM\_NORMAL\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00207}00207\ \ \ \ \ itemMenu3-\/>AppendSeparator(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00208}00208\ \ \ \ \ itemMenu3-\/>Append(\ \mbox{\hyperlink{_stamp_tool_frame_8h_ae0c2c2f8e300a3d2dd60020c109c1c20af860a3d20612e55c3bdd830cfec8a36f}{ID\_CSVIMPORT}},\ \_(\ \textcolor{stringliteral}{"{}Import\ Catalog\ From\ CSV\ file"{}}\ ),\ wxEmptyString,\ wxITEM\_NORMAL\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00209}00209\ \ \ \ \ itemMenu3-\/>Append(\ \mbox{\hyperlink{_stamp_tool_frame_8h_ae0c2c2f8e300a3d2dd60020c109c1c20adad3974d0a3bd0947763b26cc90f667c}{ID\_MERGE}},\ \_(\ \textcolor{stringliteral}{"{}Merge\ catalogs"{}}\ ),\ wxEmptyString,\ wxITEM\_NORMAL\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00210}00210\ \ \ \ \ itemMenu3-\/>AppendSeparator(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00211}00211\ \ \ \ \ itemMenu3-\/>Append(\ \mbox{\hyperlink{_stamp_tool_frame_8h_ae0c2c2f8e300a3d2dd60020c109c1c20a7c42348b31d51ff28554ee3740deb1c3}{ID\_REMOVECATALOG}},\ \_(\ \textcolor{stringliteral}{"{}Remove\ Catalog"{}}\ ),\ wxEmptyString,\ wxITEM\_NORMAL\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00212}00212\ \ \ \ \ menuBar-\/>Append(\ itemMenu3,\ \_(\ \textcolor{stringliteral}{"{}Catalog"{}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00213}00213\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00214}00214\ \ \ \ \ wxMenu*\ itemMenu4\ =\ \textcolor{keyword}{new}\ wxMenu;}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00215}00215\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00216}00216\ \ \ \ \ itemMenu4-\/>Append(\ \mbox{\hyperlink{_stamp_tool_frame_8h_ae0c2c2f8e300a3d2dd60020c109c1c20aadbf1fc968e3adad839c8b5536be7eb4}{ID\_NEWDESIGN}},\ \_(\ \textcolor{stringliteral}{"{}New\ Album"{}}\ ),\ wxEmptyString,\ wxITEM\_NORMAL\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00217}00217\ \ \ \ \ itemMenu4-\/>Append(\ \mbox{\hyperlink{_stamp_tool_frame_8h_ae0c2c2f8e300a3d2dd60020c109c1c20a6133d39a594c6dfe86c2bf7d4ab39e3e}{ID\_OPENDESIGN}},\ \_(\ \textcolor{stringliteral}{"{}Open\ Album"{}}\ ),\ wxEmptyString,\ wxITEM\_NORMAL\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00218}00218\ \ \ \ \ itemMenu4-\/>Append(\ \mbox{\hyperlink{_stamp_tool_frame_8h_ae0c2c2f8e300a3d2dd60020c109c1c20af6a7c0c2ac43c07888f751a031982acc}{ID\_SAVEDESIGN}},\ \_(\ \textcolor{stringliteral}{"{}Save\ Album"{}}\ ),\ wxEmptyString,\ wxITEM\_NORMAL\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00219}00219\ \ \ \ \ itemMenu4-\/>AppendSeparator(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00220}00220\ \ \ \ \ itemMenu4-\/>Append(\ \mbox{\hyperlink{_stamp_tool_frame_8h_ae0c2c2f8e300a3d2dd60020c109c1c20a28a6055491f8b3578c1c328d988338c0}{ID\_GENERATEPDF}},\ \_(\ \textcolor{stringliteral}{"{}Generate\ Album\ PDF"{}}\ ),\ wxEmptyString,\ wxITEM\_NORMAL\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00221}00221\ \ \ \ \ itemMenu4-\/>Append(\ \mbox{\hyperlink{_stamp_tool_frame_8h_ae0c2c2f8e300a3d2dd60020c109c1c20a77523a703d26ab44d95a84f5809740db}{ID\_OPENPDF}},\ \_(\ \textcolor{stringliteral}{"{}Open\ PDF"{}}\ ),\ wxEmptyString,\ wxITEM\_NORMAL\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00222}00222\ \ \ \ \ itemMenu4-\/>AppendSeparator(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00223}00223\ \ \ \ \ itemMenu4-\/>Append(\ \mbox{\hyperlink{_stamp_tool_frame_8h_ae0c2c2f8e300a3d2dd60020c109c1c20a1aff59bbcacab9daaaff72b02488e388}{ID\_REMOVEDESIGN}},\ \_(\ \textcolor{stringliteral}{"{}Remove\ Album"{}}\ ),\ wxEmptyString,\ wxITEM\_NORMAL\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00224}00224\ \ \ \ \ menuBar-\/>Append(\ itemMenu4,\ \_(\ \textcolor{stringliteral}{"{}Album"{}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00225}00225\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00226}00226\ \ \ \ \ wxMenu*\ itemMenu7\ =\ \textcolor{keyword}{new}\ wxMenu;}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00227}00227\ \ \ \ \ itemMenu7-\/>Append(\ wxID\_ABOUT,\ \_(\ \textcolor{stringliteral}{"{}About"{}}\ ),\ wxEmptyString,\ wxITEM\_NORMAL\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00228}00228\ \ \ \ \ menuBar-\/>Append(\ itemMenu7,\ \_(\ \textcolor{stringliteral}{"{}Help"{}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00229}00229\ \ \ \ \ itemFrame1-\/>SetMenuBar(\ menuBar\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00230}00230\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00231}00231\ \ \ \ \ wxGridSizer*\ itemGridSizer1\ =\ \textcolor{keyword}{new}\ wxGridSizer(\ 1,\ 1,\ 0,\ 0\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00232}00232\ \ \ \ \ itemFrame1-\/>SetSizer(\ itemGridSizer1\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00233}00233\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00234}00234\ \ \ \ \ m\_stampToolPanel\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_stamp_tool_panel}{StampToolPanel}}(}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00235}00235\ \ \ \ \ \ \ \ \ itemFrame1,\ \mbox{\hyperlink{_stamp_tool_frame_8h_ae0c2c2f8e300a3d2dd60020c109c1c20a8d1e20c899557c0704e7cee358b54742}{ID\_STAMPTOOLPANELFOREIGN}},\ wxDefaultPosition,}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00236}00236\ \ \ \ \ \ \ \ \ wxSize(\ 100,\ 100\ ),\ wxSIMPLE\_BORDER\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00237}00237\ \ \ \ \ itemGridSizer1-\/>Add(\ m\_stampToolPanel,\ 1,\ wxGROW\ |\ wxALL,\ 0\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00238}00238\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00239}00239\ \ \ \ \ m\_albumTreePanel\ =\ m\_stampToolPanel-\/>GetAlbumTreePanel(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00240}00240\ \}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00241}00241\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00242}00242\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00243}00243\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00244}\mbox{\hyperlink{class_stamp_tool_frame_a57a696b99752ab8318711acde233955d}{00244}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_stamp_tool_frame_a57a696b99752ab8318711acde233955d}{StampToolFrame::Init}}(\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00245}00245\ \{}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00246}00246\ \ \ \ \ \textcolor{comment}{//\ \ \ \ m\_stamp\ =\ new\ Catalog::Stamp(\ );}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00247}00247\ \ \ \ \ m\_stampToolPanel\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00248}00248\ \}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00249}00249\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00250}00250\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00251}00251\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00252}\mbox{\hyperlink{class_stamp_tool_frame_a99389a7c6b211bc19c4911b033c8ff51}{00252}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_stamp_tool_frame_a99389a7c6b211bc19c4911b033c8ff51}{StampToolFrame::InitLoad}}(\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00253}00253\ \{}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00254}00254\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00255}00255\ \ \ \ \ wxString\ str\ =\ \mbox{\hyperlink{_defs_8cpp_a21e576057406853f4fd5f371338b78b6}{GetProject}}(\ )-\/>\mbox{\hyperlink{class_utils_1_1_project_abd8e69036c650714053d008bc1d02974}{GetProjectFilename}}(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00256}00256\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ !str.IsEmpty(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00257}00257\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00258}00258\ \ \ \ \ \ \ \ \ wxFileName\ filename(\ str\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00259}00259\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ filename.Exists(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00260}00260\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00261}00261\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_defs_8cpp_a21e576057406853f4fd5f371338b78b6}{GetProject}}(\ )-\/>\mbox{\hyperlink{class_utils_1_1_project_ab966277acfb683ca910ae2fbe9e7ed8a}{LoadProjectXML}}(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00262}00262\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_defs_8cpp_a21e576057406853f4fd5f371338b78b6}{GetProject}}(\ )-\/>\mbox{\hyperlink{class_utils_1_1_project_a38562c95fa39a05f946d48fff57a13e2}{LoadData}}(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00263}00263\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00264}00264\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00265}00265\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00266}00266\ \ \ \ \ \mbox{\hyperlink{_defs_8cpp_a21e576057406853f4fd5f371338b78b6}{GetProject}}(\ )-\/>\mbox{\hyperlink{class_utils_1_1_project_a8bf0c8d2c8eb185f95f022f3add8c000}{FileNewProject}}(\ \textcolor{stringliteral}{"{}UndefinedName.spt"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00267}00267\ \}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00268}00268\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00269}00269\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00270}00270\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00271}\mbox{\hyperlink{class_stamp_tool_frame_a6b222d9847744cfb420b7188ae93697b}{00271}}\ \mbox{\hyperlink{class_album_panel}{AlbumPanel}}*\ \mbox{\hyperlink{class_stamp_tool_frame_a6b222d9847744cfb420b7188ae93697b}{StampToolFrame::GetAlbumPanel}}(\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00272}00272\ \{}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00273}00273\ \ \ \ \ \textcolor{keywordflow}{return}\ m\_stampToolPanel-\/>GetAlbumPanel(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00274}00274\ \}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00275}00275\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00276}00276\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00277}00277\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00278}\mbox{\hyperlink{class_stamp_tool_frame_ad0ea66d3d869c9307cf0bc701bcf0f8a}{00278}}\ \mbox{\hyperlink{class_catalog_panel}{CatalogPanel}}*\ \mbox{\hyperlink{class_stamp_tool_frame_ad0ea66d3d869c9307cf0bc701bcf0f8a}{StampToolFrame::GetCatalogPagePanel}}(\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00279}00279\ \{}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00280}00280\ \ \ \ \ \textcolor{keywordflow}{return}\ m\_stampToolPanel-\/>GetCatalogPagePanel(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00281}00281\ \}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00282}00282\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00283}00283\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00284}00284\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00285}\mbox{\hyperlink{class_stamp_tool_frame_ac0b0848bfb880089ca943af5ab33d4c5}{00285}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_stamp_tool_frame_ac0b0848bfb880089ca943af5ab33d4c5}{StampToolFrame::DoQueryMerge}}(\ \textcolor{keywordtype}{int}\&\ mergeMethod\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00286}00286\ \{}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00287}00287\ \ \ \ \ wxXmlNode*\ docRoot\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00288}00288\ \ \ \ \ \textcolor{keywordtype}{int}\ mergeOverwriteQuery;}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00289}00289\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00290}00290\ \ \ \ \ \mbox{\hyperlink{class_catalog_1_1_catalog_volume}{Catalog::CatalogVolume}}*\ catalogVolume\ =\ \mbox{\hyperlink{_defs_8cpp_a855abbd61678119000e49e4df95cdf9b}{GetCatalogVolume}}(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00291}00291\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ catalogVolume\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00292}00292\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00293}00293\ \ \ \ \ \ \ \ \ mergeOverwriteQuery\ =\ \mbox{\hyperlink{class_stamp_tool_frame_abf2afe33112f734f7a435121a895f308}{QueryMerge}}(\ mergeMethod\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00294}00294\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00295}00295\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00296}00296\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00297}00297\ \ \ \ \ \ \ \ \ mergeOverwriteQuery\ =\ \mbox{\hyperlink{namespace_catalog_aa3cbcd4e21ffb2387b5f8956f82fe32cad5b0e290800aeae00409b33bf9d2e446}{Catalog::MO\_Cancel}};}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00298}00298\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00299}00299\ \ \ \ \ \textcolor{keywordflow}{return}\ mergeOverwriteQuery;}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00300}00300\ \}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00301}00301\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00302}00302\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00303}00303\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00304}\mbox{\hyperlink{class_stamp_tool_frame_a5b5bc1bcf6ff47f1ede93eece9d1b2a5}{00304}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_stamp_tool_frame_a5b5bc1bcf6ff47f1ede93eece9d1b2a5}{StampToolFrame::DoRecentSelection}}(\ wxCommandEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00305}00305\ \{}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00306}00306\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00307}00307\ \ \ \ \ \textcolor{keywordtype}{int}\ mergeMethod;}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00308}00308\ \ \ \ \ \textcolor{keywordtype}{int}\ mergeOverwriteQuery\ =\ \mbox{\hyperlink{class_stamp_tool_frame_ac0b0848bfb880089ca943af5ab33d4c5}{DoQueryMerge}}(\ mergeMethod\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00309}00309\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ mergeOverwriteQuery\ ==\ \mbox{\hyperlink{namespace_catalog_aa3cbcd4e21ffb2387b5f8956f82fe32cad5b0e290800aeae00409b33bf9d2e446}{Catalog::MO\_Cancel}}\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00310}00310\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00311}00311\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00312}00312\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00313}00313\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00314}00314\ \ \ \ \ \textcolor{comment}{//\ the\ id\ was\ calculated\ as\ ID\_RECENT\ +\ ndx\ +\ 1,\ so...}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00315}00315\ \ \ \ \ \textcolor{keywordtype}{int}\ \textcolor{keywordtype}{id}\ =\ \textcolor{keyword}{event}.GetId(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00316}00316\ \ \ \ \ \textcolor{keywordtype}{int}\ rcnt\ =\ \mbox{\hyperlink{_stamp_tool_frame_8h_ae0c2c2f8e300a3d2dd60020c109c1c20ae38f4f227cb603a04b5d5bac756a3e45}{ID\_RECENT}};}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00317}00317\ \ \ \ \ \textcolor{keywordtype}{int}\ ndx\ =\ \textcolor{keyword}{event}.GetId(\ )\ -\/\ rcnt\ -\/\ 1;}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00318}00318\ \ \ \ \ wxArrayString*\ recentList\ =\ \mbox{\hyperlink{_defs_8cpp_a22c90d4148252ff1fbca6b40d3312b23}{GetSettings}}(\ )-\/>\mbox{\hyperlink{class_utils_1_1_settings_ac1d5c38b1853e58b950776699bb28d08}{GetRecentArray}}(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00319}00319\ \ \ \ \ wxString\ filename\ =\ recentList-\/>Item(\ ndx\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00320}00320\ \ \ \ \ wxFileInputStream\ input\_stream(\ filename\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00321}00321\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ !input\_stream.IsOk(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00322}00322\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00323}00323\ \ \ \ \ \ \ \ \ wxLogError(\ \textcolor{stringliteral}{"{}StampToolFrame::DoRecentSelection\ Cannot\ open\ file\ '\%s'."{}},\ filename\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00324}00324\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00325}00325\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00326}00326\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00327}00327\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00328}00328\ \}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00329}00329\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00330}00330\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00331}00331\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00332}\mbox{\hyperlink{class_stamp_tool_frame_ad6eeef6df12e20418f47c8ff7fd1dcee}{00332}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_stamp_tool_frame_ad6eeef6df12e20418f47c8ff7fd1dcee}{StampToolFrame::DoDefinePeriodDialog}}(\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00333}00333\ \{}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00334}00334\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00335}00335\ \}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00336}00336\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00337}00337\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00338}00338\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00339}00339\ \textcolor{comment}{//\ void\ StampToolFrame::DoEditProjectDetailsDialog(\ )}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00340}00340\ \textcolor{comment}{//\ \{}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00341}00341\ \textcolor{comment}{//\ \ \ \ \ EditProjectDetails\ dialog(\ this,\ ID\_EDITPROJECTDETAILS,}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00342}00342\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \_(\ "{}Define\ Preferences"{}\ )\ );}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00343}00343\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00344}00344\ \textcolor{comment}{//\ \ \ \ \ if\ (\ dialog.ShowModal(\ )\ ==\ wxID\_CANCEL\ )}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00345}00345\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ return;\ //\ the\ user\ changed\ idea..}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00346}00346\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00347}00347\ \textcolor{comment}{//\ \}}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00348}00348\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00349}00349\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00350}00350\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00351}\mbox{\hyperlink{class_stamp_tool_frame_aeabb00eedfadfd94a39f53327cbff2f8}{00351}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_stamp_tool_frame_aeabb00eedfadfd94a39f53327cbff2f8}{StampToolFrame::DoPreferencesDialog}}(\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00352}00352\ \{}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00353}00353\ \ \ \ \ \mbox{\hyperlink{class_preferences_dialog}{PreferencesDialog}}\ preferencesDialog(\ \textcolor{keyword}{this},\ \mbox{\hyperlink{_gui_defs_8h_a6329898a126babcdaa295242c115a11ea0666dd1e1a05e851213dcc30ccb83f43}{ID\_PREFERENCESDIALOG}},}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00354}00354\ \ \ \ \ \ \ \ \ \_(\ \textcolor{stringliteral}{"{}Define\ Preferences"{}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00355}00355\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00356}00356\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ preferencesDialog.ShowModal(\ )\ ==\ wxID\_CANCEL\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00357}00357\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};\ \textcolor{comment}{//\ the\ user\ changed\ idea..}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00358}00358\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00359}00359\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ preferencesDialog.\mbox{\hyperlink{class_preferences_dialog_a9edabd135b5c336ff3c7f49b52566e03}{IsDirty}}(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00360}00360\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00361}00361\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Save\ settings}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00362}00362\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ resort\ tree}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00363}00363\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00364}00364\ \}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00365}00365\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00366}00366\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00367}00367\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00368}\mbox{\hyperlink{class_stamp_tool_frame_aa6ee670aa9a93e1d2e1b7e57bf7244ce}{00368}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_stamp_tool_frame_aa6ee670aa9a93e1d2e1b7e57bf7244ce}{StampToolFrame::DoSortOrderDialog}}(\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00369}00369\ \{}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00370}00370\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ SortOrderDialog\ sortOrderDialog(\ this,\ ID\_SORTORDERDIALOG,\ }}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00371}00371\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \_(\ "{}Define\ Sort\ Order"{}\ )\ );}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00372}00372\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00373}00373\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ if\ (\ sortOrderDialog.ShowModal(\ )\ ==\ wxID\_CANCEL\ )}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00374}00374\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ return;\ //\ the\ user\ changed\ idea..}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00375}00375\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00376}00376\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ if\ (\ sortOrderDialog.IsDirty(\ )\ )}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00377}00377\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \{\ }}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00378}00378\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ //\ Save\ settings}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00379}00379\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ //\ resort\ tree}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00380}00380\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \}}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00381}00381\ \}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00382}00382\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00383}00383\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00384}00384\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00385}\mbox{\hyperlink{class_stamp_tool_frame_a7a33236996d94600a97f548b8e052e0f}{00385}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_stamp_tool_frame_a7a33236996d94600a97f548b8e052e0f}{StampToolFrame::NewProject}}(\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00386}00386\ \{}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00387}00387\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00388}00388\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ \mbox{\hyperlink{_defs_8cpp_a21e576057406853f4fd5f371338b78b6}{GetProject}}(\ )-\/>IsDirty(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00389}00389\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00390}00390\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ query\ whether\ to\ save\ first\ }}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00391}00391\ \ \ \ \ \ \ \ \ wxMessageDialog*\ dlg\ =\ \textcolor{keyword}{new}\ wxMessageDialog(}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00392}00392\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{this},}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00393}00393\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}The\ current\ data\ has\ been\ changed\ but\ not\ saved.\ \(\backslash\)n"{}}\(\backslash\)}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00394}00394\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Select\ \(\backslash\)"{}OK\(\backslash\)"{}\ to\ close\ the\ file\ losing\ the\ changes.\(\backslash\)n"{}}\(\backslash\)}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00395}00395\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Or\ select\ \(\backslash\)"{}Cancel\(\backslash\)"{}\ to\ quit\ file\ open\ process.\(\backslash\)n"{}}\ ),}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00396}00396\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}\ Warning!\ Unsaved\ modifications.\(\backslash\)n"{}}\ ),}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00397}00397\ \ \ \ \ \ \ \ \ \ \ \ \ wxOK\ |\ wxCANCEL\ |\ wxCENTER\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00398}00398\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ rsp\ =\ dlg-\/>ShowModal(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00399}00399\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ rsp\ ==\ wxID\_CANCEL\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00400}00400\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00401}00401\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00402}00402\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00403}00403\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00404}00404\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00405}00405\ \ \ \ \ \mbox{\hyperlink{_defs_8cpp_abba9f47d8c9470ec708c79fb2c55f961}{GetFrame}}(\ )-\/>\mbox{\hyperlink{class_stamp_tool_frame_ac73c29c07a130b0c88b9bf017ef11cc1}{CloseProject}}(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00406}00406\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00407}00407\ \ \ \ \ \mbox{\hyperlink{class_file_create_dialog}{FileCreateDialog}}\ fileDialog(\ \textcolor{keyword}{this},\ 12355,\ \_(\ \textcolor{stringliteral}{"{}Select\ the\ Filename\ and\ Directory\ for\ the\ Project\ file."{}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00408}00408\ \ \ \ \ wxGetCwd(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00409}00409\ \ \ \ \ fileDialog.\mbox{\hyperlink{class_file_create_dialog_ad29e4dc08b9cd17f55fa3476ecb1a9eb}{SetDefaultDirectory}}(\ wxGetCwd(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00410}00410\ \ \ \ \ fileDialog.\mbox{\hyperlink{class_file_create_dialog_a0e2e9722fedcfc7a2d87a8b9b7d02740}{SetDefaultFilename}}(\ \_(\ \textcolor{stringliteral}{"{}UndefinedName.spt"{}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00411}00411\ \ \ \ \ fileDialog.\mbox{\hyperlink{class_file_create_dialog_ad0d383c556ff51bb125b84fa2147ed0a}{SetWildCard}}(\ \_(\ \textcolor{stringliteral}{"{}Stamp\ Tools\ Project\ files(*.spt)|*.spt"{}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00412}00412\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00413}00413\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ fileDialog.ShowModal(\ )\ ==\ wxID\_CANCEL\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00414}00414\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00415}00415\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00416}00416\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00417}00417\ \ \ \ \ wxString\ dir\ =\ fileDialog.\mbox{\hyperlink{class_file_create_dialog_a881fc4ec86ab3fa520a0aba6a8b08c04}{GetDir}}(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00418}00418\ \ \ \ \ wxSetWorkingDirectory(\ dir\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00419}00419\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00420}00420\ \ \ \ \ \mbox{\hyperlink{_defs_8cpp_a21e576057406853f4fd5f371338b78b6}{GetProject}}(\ )-\/>\mbox{\hyperlink{class_utils_1_1_project_a8bf0c8d2c8eb185f95f022f3add8c000}{FileNewProject}}(\ fileDialog.\mbox{\hyperlink{class_file_create_dialog_aae22424b315cfdc5a7b4316e833a8035}{GetFile}}(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00421}00421\ \}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00422}00422\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00423}00423\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00424}00424\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00425}00425\ \textcolor{comment}{//\ void\ StampToolFrame::OnSaveDesignClick(\ wxCommandEvent\&\ event\ )}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00426}00426\ \textcolor{comment}{//\ \{}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00427}00427\ \textcolor{comment}{//\ \ \ \ \ GetAlbumData(\ )-\/>FileSave(\ );}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00428}00428\ \textcolor{comment}{//\ \ \ \ \ event.Skip(\ );}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00429}00429\ \textcolor{comment}{//\ \}}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00430}00430\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00431}00431\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00432}00432\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00433}\mbox{\hyperlink{class_stamp_tool_frame_a74d43e1b00f06e606795390548dc46e4}{00433}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_stamp_tool_frame_a74d43e1b00f06e606795390548dc46e4}{StampToolFrame::OnExitClick}}(\ wxCommandEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00434}00434\ \{}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00435}00435\ \ \ \ \ \mbox{\hyperlink{_defs_8cpp_a22c90d4148252ff1fbca6b40d3312b23}{GetSettings}}(\ )-\/>\mbox{\hyperlink{class_utils_1_1_settings_aa8033d8b0430b253332b0373fd2beb8d}{Save}}(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00436}00436\ \ \ \ \ Close(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00437}00437\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00438}00438\ \}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00439}00439\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00440}00440\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00441}00441\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00442}\mbox{\hyperlink{class_stamp_tool_frame_a9faca8bbaf179ea115fd2defed1aa635}{00442}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_stamp_tool_frame_a9faca8bbaf179ea115fd2defed1aa635}{StampToolFrame::OnCloseProjectClick}}(\ wxCommandEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00443}00443\ \{}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00444}00444\ \ \ \ \ \mbox{\hyperlink{class_stamp_tool_frame_ac73c29c07a130b0c88b9bf017ef11cc1}{CloseProject}}(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00445}00445\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00446}00446\ \}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00447}00447\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00448}00448\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00449}00449\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00450}\mbox{\hyperlink{class_stamp_tool_frame_ac257b8b1aa6e7d71a37f49b1e22bc41a}{00450}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_stamp_tool_frame_ac257b8b1aa6e7d71a37f49b1e22bc41a}{StampToolFrame::OnCloseWindow}}(\ wxCloseEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00451}00451\ \{}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00452}00452\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00453}00453\ \}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00454}00454\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00455}00455\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00456}00456\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00457}\mbox{\hyperlink{class_stamp_tool_frame_a766462d8417f0b6096f609caf63fd37a}{00457}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_stamp_tool_frame_a766462d8417f0b6096f609caf63fd37a}{StampToolFrame::OnDefinePeriodClick}}(\ wxCommandEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00458}00458\ \{}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00459}00459\ \ \ \ \ \mbox{\hyperlink{class_stamp_tool_frame_ad6eeef6df12e20418f47c8ff7fd1dcee}{DoDefinePeriodDialog}}(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00460}00460\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00461}00461\ \}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00462}00462\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00463}00463\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00464}00464\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00465}\mbox{\hyperlink{class_stamp_tool_frame_a930ed2d31855648805c702c0b7addb6b}{00465}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_stamp_tool_frame_a930ed2d31855648805c702c0b7addb6b}{StampToolFrame::OnGeneratePDFClick}}(\ wxCommandEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00466}00466\ \{}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00467}00467\ \ \ \ \ \mbox{\hyperlink{_defs_8cpp_ab4cae36ca06e6a51d328e5c6c3118bd7}{GetAlbumVolume}}(\ )-\/>\mbox{\hyperlink{class_design_1_1_album_volume_ab13ead54dcb19d9a584f7a98c8c22e45}{GetAlbum}}(\ )-\/>\mbox{\hyperlink{class_design_1_1_album_a9087407a98c415bc646de9e0a47f0b73}{MakePDFAlbum}}(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00468}00468\ \ \ \ \ \textcolor{comment}{//GetAlbumPanel(\ )-\/>OnGeneratePDFClick(\ );}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00469}00469\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00470}00470\ \}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00471}00471\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00472}00472\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00473}00473\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00474}\mbox{\hyperlink{class_stamp_tool_frame_a9b1b0d6deb4a06d9177b7abf4f083359}{00474}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_stamp_tool_frame_a9b1b0d6deb4a06d9177b7abf4f083359}{StampToolFrame::OnIconize}}(\ wxIconizeEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00475}00475\ \{}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00476}00476\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00477}00477\ \}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00478}00478\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00479}00479\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00480}00480\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00481}\mbox{\hyperlink{class_stamp_tool_frame_acfbbea8c072bcc6515068640c1417631}{00481}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_stamp_tool_frame_acfbbea8c072bcc6515068640c1417631}{StampToolFrame::OnImportCatalogClick}}(\ wxCommandEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00482}00482\ \{}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00483}00483\ \ \ \ \ \mbox{\hyperlink{class_stamp_tool_frame_ad0ea66d3d869c9307cf0bc701bcf0f8a}{GetCatalogPagePanel}}(\ )-\/>\mbox{\hyperlink{class_catalog_panel_a70688d801c42c26c18db3e986f683c87}{DoCSVImport}}(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00484}00484\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00485}00485\ \}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00486}00486\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00487}\mbox{\hyperlink{class_stamp_tool_frame_a2dec8b75249de42d779e9901b1033a77}{00487}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_stamp_tool_frame_a2dec8b75249de42d779e9901b1033a77}{StampToolFrame::OnMergeCatalogClick}}(\ wxCommandEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00488}00488\ \{}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00489}00489\ \ \ \ \ \mbox{\hyperlink{class_stamp_tool_frame_ad0ea66d3d869c9307cf0bc701bcf0f8a}{GetCatalogPagePanel}}(\ )-\/>\mbox{\hyperlink{class_catalog_panel_acb5f999d503df6897a85f3f14d0c17cc}{DoMergeCatalog}}(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00490}00490\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00491}00491\ \}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00492}00492\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00493}00493\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00494}00494\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00495}\mbox{\hyperlink{class_stamp_tool_frame_a3203ff68df4cacb7c881812ceb37d9f3}{00495}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_stamp_tool_frame_a3203ff68df4cacb7c881812ceb37d9f3}{StampToolFrame::OnItemviewClick}}(\ wxCommandEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00496}00496\ \{}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00497}00497\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00498}00498\ \}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00499}00499\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00500}00500\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00501}00501\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00502}\mbox{\hyperlink{class_stamp_tool_frame_a31f56e7241b992ee41cf915da750efe4}{00502}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_stamp_tool_frame_a31f56e7241b992ee41cf915da750efe4}{StampToolFrame::OnMaximize}}(\ wxMaximizeEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00503}00503\ \{}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00504}00504\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00505}00505\ \}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00506}00506\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00507}00507\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00508}00508\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00509}\mbox{\hyperlink{class_stamp_tool_frame_a35e6f779c1949612f84d8d1ce2bac0c5}{00509}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_stamp_tool_frame_a35e6f779c1949612f84d8d1ce2bac0c5}{StampToolFrame::OnNewProjectClick}}(\ wxCommandEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00510}00510\ \{}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00511}00511\ \ \ \ \ \mbox{\hyperlink{class_stamp_tool_frame_a7a33236996d94600a97f548b8e052e0f}{NewProject}}(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00512}00512\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00513}00513\ \}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00514}00514\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00515}00515\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00516}00516\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00517}00517\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00518}\mbox{\hyperlink{class_stamp_tool_frame_a463aa7cc4b577dc3c045290ba79f3bae}{00518}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_stamp_tool_frame_a463aa7cc4b577dc3c045290ba79f3bae}{StampToolFrame::OnOpenCatalogClick}}(\ wxCommandEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00519}00519\ \{}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00520}00520\ \ \ \ \ \mbox{\hyperlink{class_stamp_tool_frame_ad0ea66d3d869c9307cf0bc701bcf0f8a}{GetCatalogPagePanel}}(\ )-\/>\mbox{\hyperlink{class_catalog_panel_a93a0716e56e085969ce3feb1952faf37}{OpenCatalog}}(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00521}00521\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00522}00522\ \}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00523}00523\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00524}00524\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00525}00525\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00526}\mbox{\hyperlink{class_stamp_tool_frame_a53a6002f019b757aa77bffd204b10d83}{00526}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_stamp_tool_frame_a53a6002f019b757aa77bffd204b10d83}{StampToolFrame::OnMergeClick}}(\ wxCommandEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00527}00527\ \{}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00528}00528\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00529}00529\ \}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00530}00530\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00531}00531\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00532}00532\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00533}\mbox{\hyperlink{class_stamp_tool_frame_a181a7e83c78b1340ef308a3ba5189449}{00533}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_stamp_tool_frame_a181a7e83c78b1340ef308a3ba5189449}{StampToolFrame::OnNewCatalogClick}}(\ wxCommandEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00534}00534\ \{}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00535}00535\ \ \ \ \ \mbox{\hyperlink{class_stamp_tool_frame_ad0ea66d3d869c9307cf0bc701bcf0f8a}{GetCatalogPagePanel}}(\ )-\/>\mbox{\hyperlink{class_catalog_panel_aeaf8538a091b7b51c9187e719c9bfe85}{NewCatalogDialog}}(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00536}00536\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00537}00537\ \}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00538}00538\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00539}00539\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00540}00540\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00541}\mbox{\hyperlink{class_stamp_tool_frame_a30ce2e15053738760173744f174838ba}{00541}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_stamp_tool_frame_a30ce2e15053738760173744f174838ba}{StampToolFrame::OnNewDesignClick}}(\ wxCommandEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00542}00542\ \{}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00543}00543\ \ \ \ \ \mbox{\hyperlink{class_stamp_tool_frame_a6b222d9847744cfb420b7188ae93697b}{GetAlbumPanel}}(\ )-\/>\mbox{\hyperlink{class_album_panel_a7f79ab8824599caf42ffeced4080a002}{NewDesign}}(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00544}00544\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00545}00545\ \}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00546}00546\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00547}00547\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00548}00548\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00549}\mbox{\hyperlink{class_stamp_tool_frame_ae7aac0a1ee5bf84cf0efc9d7b8ddc20d}{00549}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_stamp_tool_frame_ae7aac0a1ee5bf84cf0efc9d7b8ddc20d}{StampToolFrame::OnOpenDesignClick}}(\ wxCommandEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00550}00550\ \{}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00551}00551\ \ \ \ \ \mbox{\hyperlink{class_stamp_tool_frame_a6b222d9847744cfb420b7188ae93697b}{GetAlbumPanel}}(\ )-\/>\mbox{\hyperlink{class_album_panel_a0f415afd234838995bad927d6e57b04d}{OpenDesign}}(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00552}00552\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00553}00553\ \}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00554}00554\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00555}00555\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00556}00556\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00557}00557\ \textcolor{comment}{//\ void\ StampToolFrame::OnEditProjectDetailsClick(\ wxCommandEvent\&\ event\ )}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00558}00558\ \textcolor{comment}{//\ \{}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00559}00559\ \textcolor{comment}{//\ \ \ \ \ DoEditProjectDetailsDialog(\ );}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00560}00560\ \textcolor{comment}{//\ \ \ \ \ event.Skip(\ );}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00561}00561\ \textcolor{comment}{//\ \}}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00562}00562\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00563}00563\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00564}00564\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00565}\mbox{\hyperlink{class_stamp_tool_frame_af1b9397571992a21812754153477a534}{00565}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_stamp_tool_frame_af1b9397571992a21812754153477a534}{StampToolFrame::OnOpenPDFClick}}(\ wxCommandEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00566}00566\ \{}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00567}00567\ \ \ \ \ \mbox{\hyperlink{class_stamp_tool_frame_af585263ebcc800dd917b170c4d2a69e3}{OpenPdf}}(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00568}00568\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00569}00569\ \}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00570}00570\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00571}00571\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00572}00572\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00573}\mbox{\hyperlink{class_stamp_tool_frame_a8fb95077a8056633d3f8048380b4bb39}{00573}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_stamp_tool_frame_a8fb95077a8056633d3f8048380b4bb39}{StampToolFrame::OnOpenProjectClick}}(\ wxCommandEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00574}00574\ \{}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00575}00575\ \ \ \ \ \mbox{\hyperlink{class_stamp_tool_frame_a601f3e88d4f1f207c0d139d7a6198593}{OpenProject}}(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00576}00576\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00577}00577\ \}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00578}00578\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00579}00579\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00580}00580\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00581}\mbox{\hyperlink{class_stamp_tool_frame_ae43c1e156bbac2fa6618b78989072213}{00581}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_stamp_tool_frame_ae43c1e156bbac2fa6618b78989072213}{StampToolFrame::OnRemoveCatalogClick}}(\ wxCommandEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00582}00582\ \{}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00583}00583\ \ \ \ \ \mbox{\hyperlink{class_stamp_tool_frame_ad0ea66d3d869c9307cf0bc701bcf0f8a}{GetCatalogPagePanel}}(\ )-\/>\mbox{\hyperlink{class_catalog_panel_a77df077e092566e9d00a20bbe0dc2646}{RemoveVolume}}(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00584}00584\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00585}00585\ \}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00586}00586\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00587}00587\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00588}00588\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00589}\mbox{\hyperlink{class_stamp_tool_frame_a041e6976329fa9a8a6ffc4913398a96a}{00589}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_stamp_tool_frame_a041e6976329fa9a8a6ffc4913398a96a}{StampToolFrame::OnRemoveDesignClick}}(\ wxCommandEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00590}00590\ \{}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00591}00591\ \ \ \ \ \textcolor{comment}{//\ \ GetCatalogPagePanel(\ )-\/>RemoveVolume(\ );}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00592}00592\ \ \ \ \ \ \textcolor{comment}{//\ GetAlbumPagePanel(\ )-\/>RemoveVolume(\ );}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00593}00593\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00594}00594\ \}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00595}00595\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00596}00596\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00597}00597\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00598}\mbox{\hyperlink{class_stamp_tool_frame_acd866fb941824c423627c542a21ab311}{00598}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_stamp_tool_frame_acd866fb941824c423627c542a21ab311}{StampToolFrame::OnSaveasProjectClick}}(\ wxCommandEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00599}00599\ \{}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00600}00600\ \ \ \ \ \mbox{\hyperlink{class_stamp_tool_frame_a6f4f625113e353b3772e4113e3146275}{SaveAsProject}}(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00601}00601\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00602}00602\ \}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00603}00603\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00604}00604\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00605}00605\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00606}\mbox{\hyperlink{class_stamp_tool_frame_ac993a72455ca1dfb786c15b39fbe90bc}{00606}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_stamp_tool_frame_ac993a72455ca1dfb786c15b39fbe90bc}{StampToolFrame::OnSaveDesignClick}}(\ wxCommandEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00607}00607\ \{}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00608}00608\ \ \ \ \ \mbox{\hyperlink{_defs_8cpp_abfe02e117309f6c57d15ccbb3b57ac86}{GetAlbumData}}(\ )-\/>\mbox{\hyperlink{class_design_1_1_album_data_ab09076c4f9550f752f7830e701196676}{FileSave}}(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00609}00609\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00610}00610\ \}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00611}00611\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00612}00612\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00613}00613\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00614}\mbox{\hyperlink{class_stamp_tool_frame_aa2506b5e8baa43a6edc864283c623367}{00614}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_stamp_tool_frame_aa2506b5e8baa43a6edc864283c623367}{StampToolFrame::OnSaveProjectClick}}(\ wxCommandEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00615}00615\ \{}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00616}00616\ \ \ \ \ \mbox{\hyperlink{_defs_8cpp_a21e576057406853f4fd5f371338b78b6}{GetProject}}(\ )-\/>\mbox{\hyperlink{class_utils_1_1_project_a0a3ca282ae60e68ed644e040982b6539}{FileSaveProject}}(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00617}00617\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00618}00618\ \}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00619}00619\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00620}00620\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00621}00621\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00622}\mbox{\hyperlink{class_stamp_tool_frame_a20f432c35d143cc2285bed7b5d1a11ae}{00622}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_stamp_tool_frame_a20f432c35d143cc2285bed7b5d1a11ae}{StampToolFrame::OnSaveCatalogClick}}(\ wxCommandEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00623}00623\ \{}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00624}00624\ \ \ \ \ \mbox{\hyperlink{class_catalog_1_1_catalog_volume}{Catalog::CatalogVolume}}*\ vol\ =\ (\ \mbox{\hyperlink{class_catalog_1_1_catalog_volume}{Catalog::CatalogVolume}}*\ )\ \mbox{\hyperlink{_defs_8cpp_aca2d538bfb345a89bad68a1c9aa705ce}{GetCatalogData}}(\ )-\/>\mbox{\hyperlink{class_catalog_1_1_catalog_data_a273a581ec88d9622d57bf776341c63ab}{GetCatalogList}}(\ )-\/>\mbox{\hyperlink{class_utils_1_1_volume_list_a8c45e00867a115cce68f8ef768d7ac38}{GetVolume}}(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00625}00625\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ vol\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00626}00626\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00627}00627\ \ \ \ \ \ \ \ \ vol-\/>\mbox{\hyperlink{class_catalog_1_1_catalog_volume_a830a9488d2c567dd59d815649a438138}{Save}}(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00628}00628\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00629}00629\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00630}00630\ \}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00631}00631\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00632}00632\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00633}00633\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00634}\mbox{\hyperlink{class_stamp_tool_frame_a908247ebb9dfd917212110a27095dabc}{00634}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_stamp_tool_frame_a908247ebb9dfd917212110a27095dabc}{StampToolFrame::OnPreferencesClick}}(\ wxCommandEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00635}00635\ \{}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00636}00636\ \ \ \ \ \mbox{\hyperlink{class_stamp_tool_frame_aeabb00eedfadfd94a39f53327cbff2f8}{DoPreferencesDialog}}(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00637}00637\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00638}00638\ \}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00639}00639\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00640}00640\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00641}00641\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00642}\mbox{\hyperlink{class_stamp_tool_frame_a3ba580efb39fbbf705c59c82e404b540}{00642}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_stamp_tool_frame_a3ba580efb39fbbf705c59c82e404b540}{StampToolFrame::OnSortOrderClick}}(\ wxCommandEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00643}00643\ \{}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00644}00644\ \ \ \ \ \mbox{\hyperlink{class_stamp_tool_frame_aa6ee670aa9a93e1d2e1b7e57bf7244ce}{DoSortOrderDialog}}(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00645}00645\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00646}00646\ \}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00647}00647\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00648}00648\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00649}00649\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00650}\mbox{\hyperlink{class_stamp_tool_frame_aef2d5ecc8926d06bdf1538618be04125}{00650}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_stamp_tool_frame_aef2d5ecc8926d06bdf1538618be04125}{StampToolFrame::OnTextSearchMenuItemClick}}(\ wxCommandEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00651}00651\ \{}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00652}00652\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00653}00653\ \}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00654}00654\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00655}00655\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00656}00656\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00657}\mbox{\hyperlink{class_stamp_tool_frame_a601f3e88d4f1f207c0d139d7a6198593}{00657}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_stamp_tool_frame_a601f3e88d4f1f207c0d139d7a6198593}{StampToolFrame::OpenProject}}(\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00658}00658\ \{}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00659}00659\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ \mbox{\hyperlink{_defs_8cpp_a21e576057406853f4fd5f371338b78b6}{GetProject}}(\ )-\/>IsDirty(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00660}00660\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00661}00661\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ query\ whether\ to\ save\ first\ }}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00662}00662\ \ \ \ \ \ \ \ \ wxMessageDialog*\ dlg\ =\ \textcolor{keyword}{new}\ wxMessageDialog(}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00663}00663\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{this},}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00664}00664\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}The\ current\ data\ has\ been\ changed\ but\ not\ saved.\ \(\backslash\)n"{}}\(\backslash\)}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00665}00665\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Select\ \(\backslash\)"{}OK\(\backslash\)"{}\ to\ close\ the\ file\ losing\ the\ changes.\(\backslash\)n"{}}\(\backslash\)}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00666}00666\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Or\ select\ \(\backslash\)"{}Cancel\(\backslash\)"{}\ to\ quit\ file\ open\ process.\(\backslash\)n"{}}\ ),}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00667}00667\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}\ Warning!\ Unsaved\ modifications.\(\backslash\)n"{}}\ ),}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00668}00668\ \ \ \ \ \ \ \ \ \ \ \ \ wxOK\ |\ wxCANCEL\ |\ wxCENTER\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00669}00669\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ rsp\ =\ dlg-\/>ShowModal(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00670}00670\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ rsp\ ==\ wxID\_CANCEL\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00671}00671\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00672}00672\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00673}00673\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00674}00674\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00675}00675\ \ \ \ \ wxFileName\ lastFile(\ \mbox{\hyperlink{_defs_8cpp_a22c90d4148252ff1fbca6b40d3312b23}{GetSettings}}(\ )-\/>GetLastFile(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00676}00676\ \ \ \ \ lastFile.SetExt(\ \textcolor{stringliteral}{"{}xml"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00677}00677\ \ \ \ \ wxFileDialog\ openFileDialog(}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00678}00678\ \ \ \ \ \ \ \ \ \textcolor{keyword}{this},\ \_(\ \textcolor{stringliteral}{"{}Open\ Stamp\ Tools\ Project\ file"{}}\ ),}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00679}00679\ \ \ \ \ \ \ \ \ lastFile.GetPath(\ ),\ lastFile.GetFullName(\ ),}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00680}00680\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Stamp\ Tools\ Project\ files\ (*.spt)|*.spt"{}},}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00681}00681\ \ \ \ \ \ \ \ \ wxFD\_OPEN\ |\ wxFD\_FILE\_MUST\_EXIST\ |\ wxFD\_CHANGE\_DIR\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00682}00682\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ openFileDialog.ShowModal(\ )\ ==\ wxID\_CANCEL\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00683}00683\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00684}00684\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};\ \textcolor{comment}{//\ the\ user\ changed\ idea...}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00685}00685\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00686}00686\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00687}00687\ \ \ \ \ \textcolor{comment}{//\ proceed\ loading\ the\ file\ chosen\ by\ the\ user;}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00688}00688\ \ \ \ \ \textcolor{comment}{//\ this\ can\ be\ done\ with\ e.g.\ wxWidgets\ input\ streams:}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00689}00689\ \ \ \ \ wxString\ filename\ =\ openFileDialog.GetPath(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00690}00690\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00691}00691\ \ \ \ \ wxFileInputStream\ input\_stream(\ filename\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00692}00692\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ !input\_stream.IsOk(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00693}00693\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00694}00694\ \ \ \ \ \ \ \ \ wxLogError(\ \textcolor{stringliteral}{"{}StampToolFrame::OpenProject\ Cannot\ open\ file\ '\%s'."{}},\ filename\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00695}00695\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00696}00696\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00697}00697\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00698}00698\ \ \ \ \ \mbox{\hyperlink{_defs_8cpp_a21e576057406853f4fd5f371338b78b6}{GetProject}}(\ )-\/>\mbox{\hyperlink{class_utils_1_1_project_a4b3433f5508a8f2b85030aeb41bac249}{FileOpenProject}}(\ filename\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00699}00699\ \}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00700}00700\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00701}00701\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00702}00702\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00703}\mbox{\hyperlink{class_stamp_tool_frame_af585263ebcc800dd917b170c4d2a69e3}{00703}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_stamp_tool_frame_af585263ebcc800dd917b170c4d2a69e3}{StampToolFrame::OpenPdf}}(\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00704}00704\ \{}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00705}00705\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00706}00706\ \ \ \ \ wxFileName\ lastFile(\ \mbox{\hyperlink{_defs_8cpp_a22c90d4148252ff1fbca6b40d3312b23}{GetSettings}}(\ )-\/>GetLastFile(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00707}00707\ \ \ \ \ lastFile.SetExt(\ \textcolor{stringliteral}{"{}pdf"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00708}00708\ \ \ \ \ wxFileDialog\ openFileDialog(}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00709}00709\ \ \ \ \ \ \ \ \ \textcolor{keyword}{this},\ \_(\ \textcolor{stringliteral}{"{}Open\ PDF\ file"{}}\ ),}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00710}00710\ \ \ \ \ \ \ \ \ lastFile.GetPath(\ ),\ lastFile.GetFullName(\ ),}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00711}00711\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}PDF\ files\ (*.pdf)|*.pdf"{}},}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00712}00712\ \ \ \ \ \ \ \ \ wxFD\_OPEN\ |\ wxFD\_FILE\_MUST\_EXIST\ |\ wxFD\_CHANGE\_DIR\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00713}00713\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ openFileDialog.ShowModal(\ )\ ==\ wxID\_CANCEL\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00714}00714\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00715}00715\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};\ \textcolor{comment}{//\ the\ user\ changed\ idea...}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00716}00716\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00717}00717\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00718}00718\ \ \ \ \ \textcolor{comment}{//\ proceed\ loading\ the\ file\ chosen\ by\ the\ user;}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00719}00719\ \ \ \ \ \textcolor{comment}{//\ this\ can\ be\ done\ with\ e.g.\ wxWidgets\ input\ streams:}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00720}00720\ \ \ \ \ wxString\ filename\ =\ openFileDialog.GetPath(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00721}00721\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00722}00722\ \ \ \ \ wxFileInputStream\ input\_stream(\ filename\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00723}00723\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ !input\_stream.IsOk(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00724}00724\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00725}00725\ \ \ \ \ \ \ \ \ wxLogError(\ \textcolor{stringliteral}{"{}StampToolFrame::OpenPdf\ Cannot\ open\ file\ '\%s'."{}},\ filename\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00726}00726\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00727}00727\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00728}00728\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00729}00729\ \ \ \ \ \mbox{\hyperlink{class_stamp_tool_frame_acac361793d6983fa9249105197a690d7}{GetStampToolPanel}}(\ )-\/>\mbox{\hyperlink{class_stamp_tool_panel_a04865b7417ee985baee825c44225cdda}{OnPDF}}(\ filename\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00730}00730\ \}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00731}00731\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00732}00732\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00733}00733\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00734}\mbox{\hyperlink{class_stamp_tool_frame_abf2afe33112f734f7a435121a895f308}{00734}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_stamp_tool_frame_abf2afe33112f734f7a435121a895f308}{StampToolFrame::QueryMerge}}(\ \textcolor{keywordtype}{int}\&\ mergeMethod\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00735}00735\ \{}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00736}00736\ \ \ \ \ \textcolor{keyword}{const}\ wxString\ choices[\ ]\ =\ \{\ \textcolor{stringliteral}{"{}Merge"{}},\ \textcolor{stringliteral}{"{}Overwrite"{}}\ \};}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00737}00737\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00738}00738\ \ \ \ \ wxSingleChoiceDialog\ dialog(}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00739}00739\ \ \ \ \ \ \ \ \ \textcolor{keyword}{this},}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00740}00740\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Data\ already\ exists\(\backslash\)n"{}}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00741}00741\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}What\ do\ you\ want\ to\ do\ with\ the\ existing\ data?"{}},}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00742}00742\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Please\ select\ a\ value"{}},\ WXSIZEOF(\ choices\ ),\ choices,\ NULL,}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00743}00743\ \ \ \ \ \ \ \ \ wxDEFAULT\_DIALOG\_STYLE\ |\ wxOK\ |\ wxCANCEL\ |\ wxCENTRE\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00744}00744\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00745}00745\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ dialog.ShowModal(\ )\ ==\ wxID\_OK\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00746}00746\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00747}00747\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ sel\ =\ dialog.GetSelection(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00748}00748\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ sel\ ==\ 1\ )\ \textcolor{comment}{//\ overwrite}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00749}00749\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00750}00750\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{namespace_catalog_aa3cbcd4e21ffb2387b5f8956f82fe32ca9406657db8ef1ff76a3a3758f7c4e6df}{Catalog::MO\_Overwrite}};}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00751}00751\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00752}00752\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{comment}{//\ merge}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00753}00753\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00754}00754\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ wxString\ DispositionChoices[\ ]\ =\ \{}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00755}00755\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Add\ missing\ entries\ only."{}},}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00756}00756\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Add\ missing\ entries\ and\ missing\ fields\ in\ existing\ entries"{}},}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00757}00757\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Add\ missing\ entries\ and\ overwrite\ exixting\ fields\ in\ existing\ "{}}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00758}00758\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}entries"{}},}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00759}00759\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Add\ missing\ entries\ and\ query\ if\ fields\ differ."{}},\ \textcolor{stringliteral}{"{}Query\ All."{}}\ \};}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00760}00760\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00761}00761\ \ \ \ \ \ \ \ \ \ \ \ \ wxSingleChoiceDialog\ dispositionDialog(}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00762}00762\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{this},}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00763}00763\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Merging\ Data\(\backslash\)n"{}}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00764}00764\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}What\ do\ you\ want\ to\ do\ with\ the\ incoming\ data?"{}},}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00765}00765\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Please\ select\ a\ value"{}},\ WXSIZEOF(\ DispositionChoices\ ),}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00766}00766\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ DispositionChoices,\ NULL,}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00767}00767\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wxDEFAULT\_DIALOG\_STYLE\ |\ wxOK\ |\ wxCANCEL\ |\ wxCENTRE\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00768}00768\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00769}00769\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ dispositionDialog.ShowModal(\ )\ ==\ wxID\_OK\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00770}00770\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00771}00771\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mergeMethod\ =\ dispositionDialog.GetSelection(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00772}00772\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{namespace_catalog_aa3cbcd4e21ffb2387b5f8956f82fe32ca86981e8db6213a8c35e1945efa8dcad4}{Catalog::MO\_Merge}};}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00773}00773\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00774}00774\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00775}00775\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00776}00776\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{namespace_catalog_aa3cbcd4e21ffb2387b5f8956f82fe32cad5b0e290800aeae00409b33bf9d2e446}{Catalog::MO\_Cancel}};}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00777}00777\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00778}00778\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00779}00779\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00780}00780\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00781}00781\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00782}00782\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{namespace_catalog_aa3cbcd4e21ffb2387b5f8956f82fe32cad5b0e290800aeae00409b33bf9d2e446}{Catalog::MO\_Cancel}};}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00783}00783\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00784}00784\ \}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00785}00785\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00786}00786\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00787}00787\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00788}\mbox{\hyperlink{class_stamp_tool_frame_a6f4f625113e353b3772e4113e3146275}{00788}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_stamp_tool_frame_a6f4f625113e353b3772e4113e3146275}{StampToolFrame::SaveAsProject}}(\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00789}00789\ \{}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00790}00790\ \ \ \ \ wxFileName\ lastFile(\ \mbox{\hyperlink{_defs_8cpp_a22c90d4148252ff1fbca6b40d3312b23}{GetSettings}}(\ )-\/>GetLastFile(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00791}00791\ \ \ \ \ lastFile.SetExt(\ \textcolor{stringliteral}{"{}spt"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00792}00792\ \ \ \ \ wxFileDialog\ saveFileDialog(}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00793}00793\ \ \ \ \ \ \ \ \ \textcolor{keyword}{this},\ \_(\ \textcolor{stringliteral}{"{}StampTool\ Project\ spt\ file"{}}\ ),}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00794}00794\ \ \ \ \ \ \ \ \ lastFile.GetPath(\ ),\ lastFile.GetFullName(\ ),}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00795}00795\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Stamp\ Tool\ Project\ files(*.spt)|*.spt"{}},\ wxFD\_SAVE\ |\ wxFD\_OVERWRITE\_PROMPT\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00796}00796\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ saveFileDialog.ShowModal(\ )\ ==\ wxID\_CANCEL\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00797}00797\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00798}00798\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00799}00799\ \ \ \ \ wxString\ filename\ =\ saveFileDialog.GetPath(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00800}00800\ \ \ \ \ \mbox{\hyperlink{_defs_8cpp_a21e576057406853f4fd5f371338b78b6}{GetProject}}(\ )-\/>\mbox{\hyperlink{class_utils_1_1_project_a2289858d879da9e6cd40f8568259b2a1}{FileSaveAsProject}}(\ filename\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00801}00801\ \}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00802}00802\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00803}00803\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00804}00804\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00805}\mbox{\hyperlink{class_stamp_tool_frame_aa061217633d2d0f93b8babc076ff4d9b}{00805}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_stamp_tool_frame_aa061217633d2d0f93b8babc076ff4d9b}{StampToolFrame::SetupRecentMenu}}(\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00806}00806\ \{}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00807}00807\ \ \ \ \ \textcolor{comment}{//\ //\ first\ clobber\ each\ of\ the\ current\ menuItems\ and\ unbind\ them.}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00808}00808\ \ \ \ \ \textcolor{comment}{//\ if\ (\ m\_menuItemList.size(\ )\ >\ 0\ )}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00809}00809\ \ \ \ \ \textcolor{comment}{//\ \{\ }}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00810}00810\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ for\ (\ int\ i\ =\ 0;\ i\ <\ m\_menuItemList.size(\ );\ i++\ )}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00811}00811\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \{\ }}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00812}00812\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ RecentListItem*\ item\ =\ m\_menuItemList[\ i\ ];}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00813}00813\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ bool\ val\ =\ Unbind(\ \ MENU,\ \&StampToolFrame::DoRecentSelection,\ this,\ item-\/>id\ );}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00814}00814\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ m\_recentMenu-\/>Delete(\ item-\/>item\ );}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00815}00815\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ //\ \ item-\/>item-\/>\string~wxMenuItem(\ );}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00816}00816\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \}}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00817}00817\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ m\_menuItemList.clear(\ );\ //\ then\ clobber\ the\ list}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00818}00818\ \ \ \ \ \textcolor{comment}{//\ \}}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00819}00819\ \ \ \ \ \textcolor{comment}{//\ //\ then\ create\ all\ the\ new\ menuItems\ and\ bind\ them}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00820}00820\ \ \ \ \ \textcolor{comment}{//\ wxArrayString*\ recentList\ =\ GetSettings(\ )-\/>GetRecentArray(\ );}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00821}00821\ \ \ \ \ \textcolor{comment}{//\ int\ cnt\ =\ 0;}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00822}00822\ \ \ \ \ \textcolor{comment}{//\ for\ (\ int\ i\ =\ 0;\ i\ <\ recentList-\/>Count(\ );\ i++\ )}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00823}00823\ \ \ \ \ \textcolor{comment}{//\ \{\ }}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00824}00824\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ RecentListItem*\ listItem\ =\ new\ RecentListItem(\ );}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00825}00825\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ listItem-\/>id\ =\ ID\_RECENT\ +\ i\ +\ 1;}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00826}00826\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ wxString\ item\ =\ recentList-\/>Item(\ i\ );}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00827}00827\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ if\ (\ item.length(\ )\ >\ 0\ )}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00828}00828\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \{\ }}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00829}00829\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ cnt++;}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00830}00830\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ listItem-\/>item\ =\ m\_recentMenu-\/>Append(\ listItem-\/>id,\ item,\ wxEmptyString,\ wxITEM\_NORMAL\ );}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00831}00831\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00832}00832\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ Bind(\ \ MENU,\ \&StampToolFrame::DoRecentSelection,\ this,\ listItem-\/>id\ );}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00833}00833\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ m\_menuItemList.push\_back(\ listItem\ );}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00834}00834\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \}}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00835}00835\ \ \ \ \ \textcolor{comment}{//\ \}}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00836}00836\ \ \ \ \ \textcolor{comment}{//\ if\ (\ cnt\ >\ 0\ )}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00837}00837\ \ \ \ \ \textcolor{comment}{//\ \{\ }}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00838}00838\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ m\_fileMenu-\/>Enable(\ ID\_RECENT,\ true\ );}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00839}00839\ \ \ \ \ \textcolor{comment}{//\ \}}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00840}00840\ \ \ \ \ \textcolor{comment}{//\ else}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00841}00841\ \ \ \ \ \textcolor{comment}{//\ \{\ }}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00842}00842\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ m\_fileMenu-\/>Enable(\ ID\_RECENT,\ false\ );}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00843}00843\ \ \ \ \ \textcolor{comment}{//\ \}}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00844}00844\ \}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00845}00845\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00846}00846\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00847}00847\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00848}\mbox{\hyperlink{class_stamp_tool_frame_afdcc0bd701afcaa5a23d39a43142b32d}{00848}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_stamp_tool_frame_afdcc0bd701afcaa5a23d39a43142b32d}{StampToolFrame::ShowToolTips}}(\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00849}00849\ \{}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00850}00850\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00851}00851\ \}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00852}00852\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00853}00853\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00854}00854\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00855}\mbox{\hyperlink{class_stamp_tool_frame_a3b2f176947277c56e054d581594ea20c}{00855}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_stamp_tool_frame_a3b2f176947277c56e054d581594ea20c}{StampToolFrame::UpdateStatus}}(\ )\ \{}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00856}00856\ \ \ \ \ m\_stampToolPanel-\/>UpdateStatus(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00857}00857\ \}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00858}00858\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00859}00859\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00860}00860\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_frame_8cpp_source_l00861}00861\ }
+
+\end{DoxyCode}

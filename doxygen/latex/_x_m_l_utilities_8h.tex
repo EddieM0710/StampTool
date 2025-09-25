@@ -1,0 +1,107 @@
+\doxysection{C\+:/\+Users/femon/\+Development/wx/clone\+Test/\+Stamp\+Tool/src/utils/\+XMLUtilities.h File Reference}
+\hypertarget{_x_m_l_utilities_8h}{}\label{_x_m_l_utilities_8h}\index{C:/Users/femon/Development/wx/cloneTest/StampTool/src/utils/XMLUtilities.h@{C:/Users/femon/Development/wx/cloneTest/StampTool/src/utils/XMLUtilities.h}}
+{\ttfamily \#include "{}wx/xml/xml.\+h"{}}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include "{}catalog/\+Catalog\+Defs.\+h"{}}\newline
+{\ttfamily \#include "{}design/\+Design\+Defs.\+h"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_utils_1_1_x_m_l_iterator}{Utils\+::\+XMLIterator}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespace_utils}{Utils}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef std\+::vector$<$ wx\+Xml\+Node \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{namespace_utils_af54f9796bccf5cbc9c9fcb89cd8e824c}{Utils\+::wx\+Xml\+Node\+Array}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{namespace_utils_aff8ea290d3a6f7270c0a0e8fc2b58dba}{Utils\+::\+IDElement}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}ele)
+\item 
+wx\+Xml\+Node \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespace_utils_a156ddf8c893eba62f65ffa2a5860c766}{Utils\+::\+New\+Node}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}parent, wx\+String name)
+\item 
+wx\+Xml\+Node \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespace_utils_a4f95c3cd5e19c237876cbadcfced8db0}{Utils\+::\+New\+Node}} (wx\+Xml\+Document \texorpdfstring{$\ast$}{*}doc, wx\+String name)
+\item 
+bool \mbox{\hyperlink{namespace_utils_a19270795939c8167c1d8e467b84f2379}{Utils\+::\+Delete\+Attribute}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}node, wx\+String attr\+Name)
+\item 
+wx\+Xml\+Node \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespace_utils_ac982aeec9bf06c61495032e66e41d30f}{Utils\+::\+First\+Child\+Element}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}node, wx\+String name)
+\item 
+wx\+Xml\+Node \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespace_utils_a20b6fc56dbae2455f1b9ee08595ac918}{Utils\+::\+Get\+Next}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}node, wx\+String name)
+\item 
+wx\+Xml\+Attribute \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespace_utils_a0cf7591f8dca3719de0ef110784f0824}{Utils\+::\+Get\+Attribute}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}node, wx\+String attr\+Name)
+\item 
+wx\+String \mbox{\hyperlink{namespace_utils_a4b9bc624ff61c4a618c12b911b48110c}{Utils\+::\+Get\+Attr\+Str}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}node, wx\+String attr\+Name)
+\item 
+double \mbox{\hyperlink{namespace_utils_aa046de85e45b0c643530d600a0d8b2e0}{Utils\+::\+Get\+Attr\+Dbl}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}node, wx\+String attr\+Name)
+\item 
+void \mbox{\hyperlink{namespace_utils_acd4b52904d20e67e1b9570914c1c45a7}{Utils\+::\+Set\+Attr\+Str}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}node, wx\+String name, wx\+String val)
+\item 
+void \mbox{\hyperlink{namespace_utils_ad5e2d842159071641ed8e04dd56b807d}{Utils\+::\+Set\+Attr\+Dbl}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}node, wx\+String name, double val)
+\item 
+void \mbox{\hyperlink{namespace_utils_a299c4c79d05b5c053a03bccc1a46e729}{Utils\+::\+XMLDump}} (wx\+Xml\+Document \texorpdfstring{$\ast$}{*}doc)
+\item 
+void \mbox{\hyperlink{namespace_utils_a41d2f3984cc2355a4d7f4f87d862f65f}{Utils\+::\+XMLDump\+Node}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}node, wx\+String level)
+\item 
+void \mbox{\hyperlink{namespace_utils_ab55d9667828a6cd38c273648a06b5054}{Utils\+::\+Copy\+Node}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}src, wx\+Xml\+Node \texorpdfstring{$\ast$}{*}dest)
+\item 
+wx\+Xml\+Node \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespace_utils_a60f019bbfe264668e001a65e60c411db}{Utils\+::\+Add\+New\+Node}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}parent, wx\+Xml\+Node\+Type type, const wx\+String \&name)
+\item 
+wx\+Xml\+Node \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespace_utils_a7b2f6dc6534fc9deca77727d666c7afe}{Utils\+::\+Find\+First\+Child\+With\+Propertyof\+Value}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}element, wx\+String \&property, wx\+String \&value)
+\item 
+void \mbox{\hyperlink{namespace_utils_a572ed476a40be7cb31cdc0f52c0be012}{Utils\+::\+Add\+Comment}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}node, wx\+String name, wx\+String content)
+\item 
+void \mbox{\hyperlink{namespace_utils_a2f36e508a1382037cb5b8174c50b1b05}{Utils\+::\+Save}} (wx\+Xml\+Document \texorpdfstring{$\ast$}{*}doc, wx\+String filename)
+\item 
+void \mbox{\hyperlink{namespace_utils_a520fb2bd5694d07857d8ceaadaba2636}{Utils\+::\+Save\+Child}} (wx\+Text\+Output\+Stream \texorpdfstring{$\ast$}{*}text, wx\+Xml\+Node \texorpdfstring{$\ast$}{*}node, wx\+String level)
+\item 
+void \mbox{\hyperlink{namespace_utils_a042420a85be23883c3e293d3185f6642}{Utils\+::\+Save\+Attributes}} (wx\+Text\+Output\+Stream \texorpdfstring{$\ast$}{*}text, wx\+Xml\+Node \texorpdfstring{$\ast$}{*}node, wx\+String level)
+\item 
+\mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4}{Design\+::\+Font\+Usage\+Type}} \mbox{\hyperlink{namespace_utils_a4cc034f6f2b276279458fb5426bd9d67}{Utils\+::\+Load\+Font}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}font\+Node, wx\+String \&native\+String, wx\+String \&color)
+\item 
+void \mbox{\hyperlink{namespace_utils_ab42e7bb3c92cba2f30cf6f4dbf5859ca}{Utils\+::\+Save\+Font}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}parent, \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4}{Design\+::\+Font\+Usage\+Type}} type, wx\+Font font, wx\+Colour color)
+\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespace_utils_afea393f29a96e3327b04f718a3372917}{Utils\+::\+Get\+ZIndex}} (char \texorpdfstring{$\ast$}{*}str)
+\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespace_utils_aedcb00f7c21ab0a2d6cef5dec7fc1b22}{Utils\+::\+Get\+Image\+Name}} (char \texorpdfstring{$\ast$}{*}str)
+\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespace_utils_ae7ef76108d7d8193ba7f0edf2026bc32}{Utils\+::\+Get\+Frame\+Name}} (char \texorpdfstring{$\ast$}{*}str)
+\item 
+wx\+String \mbox{\hyperlink{namespace_utils_a9ad1087c313abbc250a501bc57337d48}{Utils\+::\+Get\+Text\+Style\+Name}} (wx\+String \&str)
+\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespace_utils_a4bd8564086b1c20198edd41cfffbfffe}{Utils\+::\+Get\+Draw\+Name}} (char \texorpdfstring{$\ast$}{*}str)
+\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespace_utils_ae99e826e7a34c13a30e51549c024b978}{Utils\+::\+Double\+To\+MMString}} (char \texorpdfstring{$\ast$}{*}str, double nbr)
+\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespace_utils_a339aad8cb75a8ed1f4e912e969c22e3f}{Utils\+::\+Int\+To\+Inch\+String}} (char \texorpdfstring{$\ast$}{*}str, int nbr)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Eddie Monroe ( ) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2021-\/02-\/25
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright ( c ) 2021
+\end{DoxyCopyright}
+This file is part of Stamp\+Tool.
+
+Stamp\+Tool is free software\+: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or any later version.
+
+Stamp\+Tool is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with Stamp\+Tool. If not, see \href{https://www.gnu.org/licenses/}{\texttt{https\+://www.\+gnu.\+org/licenses/}}. 
+
+Definition in file \mbox{\hyperlink{_x_m_l_utilities_8h_source}{XMLUtilities.\+h}}.
+

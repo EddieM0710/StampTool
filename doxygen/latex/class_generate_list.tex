@@ -1,0 +1,524 @@
+\doxysection{Generate\+List Class Reference}
+\hypertarget{class_generate_list}{}\label{class_generate_list}\index{GenerateList@{GenerateList}}
+
+
+{\ttfamily \#include $<$Generate\+List.\+h$>$}
+
+Inheritance diagram for Generate\+List\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_generate_list}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{class_generate_list_a475573d26a7cc2811250e94e0a1f14c9}{Generate\+List\+Gui\+Defs}} \{ \mbox{\hyperlink{class_generate_list_a475573d26a7cc2811250e94e0a1f14c9a7114f4f9109c8f1b738149807bbe1279}{ID\+\_\+\+SETLISTPREFSBUTTON}} = ID\+\_\+\+GENERATELIST + 1
+, \mbox{\hyperlink{class_generate_list_a475573d26a7cc2811250e94e0a1f14c9a07526bc921a31d38755a23ed6105b05d}{ID\+\_\+\+GRIDCTRL}}
+, \mbox{\hyperlink{class_generate_list_a475573d26a7cc2811250e94e0a1f14c9a9aa3f04bb8ebd7e2e97c7f050b436f52}{ID\+\_\+\+WRITEBUTTON}}
+, \mbox{\hyperlink{class_generate_list_a475573d26a7cc2811250e94e0a1f14c9ace762d49d7673fdd04697467fa491506}{ID\+\_\+\+FILENAMETEXTCTRL}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_generate_list_aceafbc642894da7fca46309f9909eeb3}{Generate\+List}} ()
+\begin{DoxyCompactList}\small\item\em Construct a new Generate List object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_generate_list_a3fffaf84d4ea0d2cfe151fed19450720}{Generate\+List}} (wx\+Window \texorpdfstring{$\ast$}{*}parent, wx\+Window\+ID id=\mbox{\hyperlink{_generate_list_8h_aa3bd0a963e9867d8950ca84c0c8db99e}{SYMBOL\+\_\+\+GENERATELIST\+\_\+\+IDNAME}}, const wx\+Point \&pos=\mbox{\hyperlink{_generate_list_8h_af67d06a0e5aaef8c095e9c3e6b4f9d5e}{SYMBOL\+\_\+\+GENERATELIST\+\_\+\+POSITION}}, const wx\+Size \&size=\mbox{\hyperlink{_generate_list_8h_a89efd10edd914e773b2006835e3cf51d}{SYMBOL\+\_\+\+GENERATELIST\+\_\+\+SIZE}}, long style=\mbox{\hyperlink{_generate_list_8h_ac0b0b3c863a1d99e4133f769b9138af7}{SYMBOL\+\_\+\+GENERATELIST\+\_\+\+STYLE}})
+\begin{DoxyCompactList}\small\item\em Construct a new Generate List object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_generate_list_a945cf75625b051f970b77d22255b4a40}{\texorpdfstring{$\sim$}{\string~}\+Generate\+List}} ()
+\begin{DoxyCompactList}\small\item\em Destroy the Generate List object. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_generate_list_a5015735a9c60eccb6e73d5b490adba75}{Add\+Entry}} (\mbox{\hyperlink{class_catalog_1_1_entry}{Catalog\+::\+Entry}} \texorpdfstring{$\ast$}{*}entry)
+\item 
+void \mbox{\hyperlink{class_generate_list_a76a0340008cf25f15846c2a0da115308}{Clear\+List}} ()
+\item 
+bool \mbox{\hyperlink{class_generate_list_af74184690c0decf6dcaf9bc905200caa}{Check\+Emission}} (\mbox{\hyperlink{class_catalog_1_1_entry}{Catalog\+::\+Entry}} \texorpdfstring{$\ast$}{*}entry)
+\item 
+bool \mbox{\hyperlink{class_generate_list_ac0aa2f58e7774bee71c396f856e630c6}{Check\+Format}} (\mbox{\hyperlink{class_catalog_1_1_entry}{Catalog\+::\+Entry}} \texorpdfstring{$\ast$}{*}entry)
+\item 
+bool \mbox{\hyperlink{class_generate_list_a8d0a66683752361b7c3031d9757d7ed2}{Check\+Status}} (\mbox{\hyperlink{class_catalog_1_1_entry}{Catalog\+::\+Entry}} \texorpdfstring{$\ast$}{*}entry)
+\item 
+bool \mbox{\hyperlink{class_generate_list_ae9ccce9854aaf9b4e479243544cc1f92}{Create}} (wx\+Window \texorpdfstring{$\ast$}{*}parent, wx\+Window\+ID id=\mbox{\hyperlink{_generate_list_8h_aa3bd0a963e9867d8950ca84c0c8db99e}{SYMBOL\+\_\+\+GENERATELIST\+\_\+\+IDNAME}}, const wx\+Point \&pos=\mbox{\hyperlink{_generate_list_8h_af67d06a0e5aaef8c095e9c3e6b4f9d5e}{SYMBOL\+\_\+\+GENERATELIST\+\_\+\+POSITION}}, const wx\+Size \&size=\mbox{\hyperlink{_generate_list_8h_a89efd10edd914e773b2006835e3cf51d}{SYMBOL\+\_\+\+GENERATELIST\+\_\+\+SIZE}}, long style=\mbox{\hyperlink{_generate_list_8h_ac0b0b3c863a1d99e4133f769b9138af7}{SYMBOL\+\_\+\+GENERATELIST\+\_\+\+STYLE}})
+\item 
+void \mbox{\hyperlink{class_generate_list_ada2a7c3eab6cccdb6c073c25068aacc1}{Create\+Controls}} ()
+\begin{DoxyCompactList}\small\item\em Create a Controls object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_generate_list_a17fc90e80c582d2d95806ee892883e49}{Do\+List\+Prefs}} ()
+\item 
+int \mbox{\hyperlink{class_generate_list_ab9dd5abc66748bafedeba0b14423bc29}{Get\+String\+Len}} (wx\+Font \&font, wx\+String text)
+\begin{DoxyCompactList}\small\item\em Get the String Len object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_generate_list_a77ba5a9d29118bb95fda26074b8bb33d}{Init}} ()
+\item 
+void \mbox{\hyperlink{class_generate_list_aa56b7fc8bfe8786c181784d4f7620c91}{On\+File\+Name\+Text\+Updated}} (wx\+Command\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_generate_list_a1593b7878a18e79c98d2dda88d5e9a61}{On\+Set\+List\+Prefs\+Button\+Click}} (wx\+Command\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_generate_list_aa0c0ff9d5ccb3002e21b20b1521a2685}{On\+Cell\+Left\+Click}} (wx\+Grid\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_generate_list_aa49365f9e3020d63f2aefe8cff6e34ca}{On\+Label\+Left\+Click}} (wx\+Grid\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_generate_list_a3c98cd369741e9972aa4146c338f3b81}{On\+Write\+Button\+Click}} (wx\+Command\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_generate_list_ac3ee4cc4525871b658cc02c66e077de8}{Save\+As}} ()
+\item 
+void \mbox{\hyperlink{class_generate_list_a6928a2ab48e8cee344c76493780c47c1}{Show\+Row}} (\mbox{\hyperlink{class_catalog_1_1_entry}{Catalog\+::\+Entry}} \texorpdfstring{$\ast$}{*}entry, int row)
+\item 
+void \mbox{\hyperlink{class_generate_list_ad82218f3de028e0fc3c0aef5485073b6}{Update\+Grid}} ()
+\item 
+void \mbox{\hyperlink{class_generate_list_a559537b302c31cf69c4702cb2b532d2c}{Write\+Entries}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}parent, int \&row)
+\item 
+void \mbox{\hyperlink{class_generate_list_ad8f31aa3b44a2e40d47886a7847da246}{Save}} (wx\+String filename)
+\item 
+void \mbox{\hyperlink{class_generate_list_abb6b706df3345a9f257b968b963e41fc}{Write\+List}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}parent, std\+::ofstream \&ostream)
+\item 
+void \mbox{\hyperlink{class_generate_list_a2ff1f8c368c63f6c574f4a391a2b9a75}{Write\+List\+Entry}} (\mbox{\hyperlink{class_catalog_1_1_entry}{Catalog\+::\+Entry}} \texorpdfstring{$\ast$}{*}entry, std\+::ofstream \&ostream)
+\item 
+bool \mbox{\hyperlink{class_generate_list_a9e0428971a5ffe1727e6868ae57448da}{Make\+List\+Attribute\+String}} (wx\+String in, wx\+String \&out, int field\+Length, wx\+String \&remainder)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static bool \mbox{\hyperlink{class_generate_list_a7b88ee50b39bb22a7040d635484b4273}{Show\+Tool\+Tips}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_generate_list_8h_source_l00046}{46}} of file \mbox{\hyperlink{_generate_list_8h_source}{Generate\+List.\+h}}.
+
+
+
+\label{doc-enum-members}
+\Hypertarget{class_generate_list_doc-enum-members}
+\doxysubsection{Member Enumeration Documentation}
+\Hypertarget{class_generate_list_a475573d26a7cc2811250e94e0a1f14c9}\index{GenerateList@{GenerateList}!GenerateListGuiDefs@{GenerateListGuiDefs}}
+\index{GenerateListGuiDefs@{GenerateListGuiDefs}!GenerateList@{GenerateList}}
+\doxysubsubsection{\texorpdfstring{GenerateListGuiDefs}{GenerateListGuiDefs}}
+{\footnotesize\ttfamily \label{class_generate_list_a475573d26a7cc2811250e94e0a1f14c9} 
+enum \mbox{\hyperlink{class_generate_list_a475573d26a7cc2811250e94e0a1f14c9}{Generate\+List\+::\+Generate\+List\+Gui\+Defs}}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_SETLISTPREFSBUTTON@{ID\_SETLISTPREFSBUTTON}!GenerateList@{GenerateList}}\index{GenerateList@{GenerateList}!ID\_SETLISTPREFSBUTTON@{ID\_SETLISTPREFSBUTTON}}}\Hypertarget{class_generate_list_a475573d26a7cc2811250e94e0a1f14c9a7114f4f9109c8f1b738149807bbe1279}\label{class_generate_list_a475573d26a7cc2811250e94e0a1f14c9a7114f4f9109c8f1b738149807bbe1279} 
+ID\+\_\+\+SETLISTPREFSBUTTON&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_GRIDCTRL@{ID\_GRIDCTRL}!GenerateList@{GenerateList}}\index{GenerateList@{GenerateList}!ID\_GRIDCTRL@{ID\_GRIDCTRL}}}\Hypertarget{class_generate_list_a475573d26a7cc2811250e94e0a1f14c9a07526bc921a31d38755a23ed6105b05d}\label{class_generate_list_a475573d26a7cc2811250e94e0a1f14c9a07526bc921a31d38755a23ed6105b05d} 
+ID\+\_\+\+GRIDCTRL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_WRITEBUTTON@{ID\_WRITEBUTTON}!GenerateList@{GenerateList}}\index{GenerateList@{GenerateList}!ID\_WRITEBUTTON@{ID\_WRITEBUTTON}}}\Hypertarget{class_generate_list_a475573d26a7cc2811250e94e0a1f14c9a9aa3f04bb8ebd7e2e97c7f050b436f52}\label{class_generate_list_a475573d26a7cc2811250e94e0a1f14c9a9aa3f04bb8ebd7e2e97c7f050b436f52} 
+ID\+\_\+\+WRITEBUTTON&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_FILENAMETEXTCTRL@{ID\_FILENAMETEXTCTRL}!GenerateList@{GenerateList}}\index{GenerateList@{GenerateList}!ID\_FILENAMETEXTCTRL@{ID\_FILENAMETEXTCTRL}}}\Hypertarget{class_generate_list_a475573d26a7cc2811250e94e0a1f14c9ace762d49d7673fdd04697467fa491506}\label{class_generate_list_a475573d26a7cc2811250e94e0a1f14c9ace762d49d7673fdd04697467fa491506} 
+ID\+\_\+\+FILENAMETEXTCTRL&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{_generate_list_8h_source_l00052}{52}} of file \mbox{\hyperlink{_generate_list_8h_source}{Generate\+List.\+h}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_generate_list_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_generate_list_aceafbc642894da7fca46309f9909eeb3}\index{GenerateList@{GenerateList}!GenerateList@{GenerateList}}
+\index{GenerateList@{GenerateList}!GenerateList@{GenerateList}}
+\doxysubsubsection{\texorpdfstring{GenerateList()}{GenerateList()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_generate_list_aceafbc642894da7fca46309f9909eeb3} 
+Generate\+List\+::\+Generate\+List (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Construct a new Generate List object. 
+
+
+
+Definition at line \mbox{\hyperlink{_generate_list_8cpp_source_l00065}{65}} of file \mbox{\hyperlink{_generate_list_8cpp_source}{Generate\+List.\+cpp}}.
+
+\Hypertarget{class_generate_list_a3fffaf84d4ea0d2cfe151fed19450720}\index{GenerateList@{GenerateList}!GenerateList@{GenerateList}}
+\index{GenerateList@{GenerateList}!GenerateList@{GenerateList}}
+\doxysubsubsection{\texorpdfstring{GenerateList()}{GenerateList()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_generate_list_a3fffaf84d4ea0d2cfe151fed19450720} 
+Generate\+List\+::\+Generate\+List (\begin{DoxyParamCaption}\item[{wx\+Window \texorpdfstring{$\ast$}{*}}]{parent}{, }\item[{wx\+Window\+ID}]{id}{ = {\ttfamily \mbox{\hyperlink{_generate_list_8h_aa3bd0a963e9867d8950ca84c0c8db99e}{SYMBOL\+\_\+\+GENERATELIST\+\_\+\+IDNAME}}}, }\item[{const wx\+Point \&}]{pos}{ = {\ttfamily \mbox{\hyperlink{_generate_list_8h_af67d06a0e5aaef8c095e9c3e6b4f9d5e}{SYMBOL\+\_\+\+GENERATELIST\+\_\+\+POSITION}}}, }\item[{const wx\+Size \&}]{size}{ = {\ttfamily \mbox{\hyperlink{_generate_list_8h_a89efd10edd914e773b2006835e3cf51d}{SYMBOL\+\_\+\+GENERATELIST\+\_\+\+SIZE}}}, }\item[{long}]{style}{ = {\ttfamily \mbox{\hyperlink{_generate_list_8h_ac0b0b3c863a1d99e4133f769b9138af7}{SYMBOL\+\_\+\+GENERATELIST\+\_\+\+STYLE}}}}\end{DoxyParamCaption})}
+
+
+
+Construct a new Generate List object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent} & \\
+\hline
+{\em id} & \\
+\hline
+{\em pos} & \\
+\hline
+{\em size} & \\
+\hline
+{\em style} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_generate_list_8cpp_source_l00072}{72}} of file \mbox{\hyperlink{_generate_list_8cpp_source}{Generate\+List.\+cpp}}.
+
+\Hypertarget{class_generate_list_a945cf75625b051f970b77d22255b4a40}\index{GenerateList@{GenerateList}!````~GenerateList@{\texorpdfstring{$\sim$}{\string~}GenerateList}}
+\index{````~GenerateList@{\texorpdfstring{$\sim$}{\string~}GenerateList}!GenerateList@{GenerateList}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}GenerateList()}{\string~GenerateList()}}
+{\footnotesize\ttfamily \label{class_generate_list_a945cf75625b051f970b77d22255b4a40} 
+Generate\+List\+::\texorpdfstring{$\sim$}{\string~}\+Generate\+List (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Destroy the Generate List object. 
+
+
+
+Definition at line \mbox{\hyperlink{_generate_list_8cpp_source_l00080}{80}} of file \mbox{\hyperlink{_generate_list_8cpp_source}{Generate\+List.\+cpp}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_generate_list_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_generate_list_a5015735a9c60eccb6e73d5b490adba75}\index{GenerateList@{GenerateList}!AddEntry@{AddEntry}}
+\index{AddEntry@{AddEntry}!GenerateList@{GenerateList}}
+\doxysubsubsection{\texorpdfstring{AddEntry()}{AddEntry()}}
+{\footnotesize\ttfamily \label{class_generate_list_a5015735a9c60eccb6e73d5b490adba75} 
+bool Generate\+List\+::\+Add\+Entry (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_catalog_1_1_entry}{Catalog\+::\+Entry}} \texorpdfstring{$\ast$}{*}}]{entry}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_generate_list_8cpp_source_l00085}{85}} of file \mbox{\hyperlink{_generate_list_8cpp_source}{Generate\+List.\+cpp}}.
+
+\Hypertarget{class_generate_list_af74184690c0decf6dcaf9bc905200caa}\index{GenerateList@{GenerateList}!CheckEmission@{CheckEmission}}
+\index{CheckEmission@{CheckEmission}!GenerateList@{GenerateList}}
+\doxysubsubsection{\texorpdfstring{CheckEmission()}{CheckEmission()}}
+{\footnotesize\ttfamily \label{class_generate_list_af74184690c0decf6dcaf9bc905200caa} 
+bool Generate\+List\+::\+Check\+Emission (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_catalog_1_1_entry}{Catalog\+::\+Entry}} \texorpdfstring{$\ast$}{*}}]{entry}{}\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em entry} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_generate_list_8cpp_source_l00209}{209}} of file \mbox{\hyperlink{_generate_list_8cpp_source}{Generate\+List.\+cpp}}.
+
+\Hypertarget{class_generate_list_ac0aa2f58e7774bee71c396f856e630c6}\index{GenerateList@{GenerateList}!CheckFormat@{CheckFormat}}
+\index{CheckFormat@{CheckFormat}!GenerateList@{GenerateList}}
+\doxysubsubsection{\texorpdfstring{CheckFormat()}{CheckFormat()}}
+{\footnotesize\ttfamily \label{class_generate_list_ac0aa2f58e7774bee71c396f856e630c6} 
+bool Generate\+List\+::\+Check\+Format (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_catalog_1_1_entry}{Catalog\+::\+Entry}} \texorpdfstring{$\ast$}{*}}]{entry}{}\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em entry} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_generate_list_8cpp_source_l00190}{190}} of file \mbox{\hyperlink{_generate_list_8cpp_source}{Generate\+List.\+cpp}}.
+
+\Hypertarget{class_generate_list_a8d0a66683752361b7c3031d9757d7ed2}\index{GenerateList@{GenerateList}!CheckStatus@{CheckStatus}}
+\index{CheckStatus@{CheckStatus}!GenerateList@{GenerateList}}
+\doxysubsubsection{\texorpdfstring{CheckStatus()}{CheckStatus()}}
+{\footnotesize\ttfamily \label{class_generate_list_a8d0a66683752361b7c3031d9757d7ed2} 
+bool Generate\+List\+::\+Check\+Status (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_catalog_1_1_entry}{Catalog\+::\+Entry}} \texorpdfstring{$\ast$}{*}}]{entry}{}\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em entry} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_generate_list_8cpp_source_l00171}{171}} of file \mbox{\hyperlink{_generate_list_8cpp_source}{Generate\+List.\+cpp}}.
+
+\Hypertarget{class_generate_list_a76a0340008cf25f15846c2a0da115308}\index{GenerateList@{GenerateList}!ClearList@{ClearList}}
+\index{ClearList@{ClearList}!GenerateList@{GenerateList}}
+\doxysubsubsection{\texorpdfstring{ClearList()}{ClearList()}}
+{\footnotesize\ttfamily \label{class_generate_list_a76a0340008cf25f15846c2a0da115308} 
+void Generate\+List\+::\+Clear\+List (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_generate_list_8cpp_source_l00099}{99}} of file \mbox{\hyperlink{_generate_list_8cpp_source}{Generate\+List.\+cpp}}.
+
+\Hypertarget{class_generate_list_ae9ccce9854aaf9b4e479243544cc1f92}\index{GenerateList@{GenerateList}!Create@{Create}}
+\index{Create@{Create}!GenerateList@{GenerateList}}
+\doxysubsubsection{\texorpdfstring{Create()}{Create()}}
+{\footnotesize\ttfamily \label{class_generate_list_ae9ccce9854aaf9b4e479243544cc1f92} 
+bool Generate\+List\+::\+Create (\begin{DoxyParamCaption}\item[{wx\+Window \texorpdfstring{$\ast$}{*}}]{parent}{, }\item[{wx\+Window\+ID}]{id}{ = {\ttfamily \mbox{\hyperlink{_generate_list_8h_aa3bd0a963e9867d8950ca84c0c8db99e}{SYMBOL\+\_\+\+GENERATELIST\+\_\+\+IDNAME}}}, }\item[{const wx\+Point \&}]{pos}{ = {\ttfamily \mbox{\hyperlink{_generate_list_8h_af67d06a0e5aaef8c095e9c3e6b4f9d5e}{SYMBOL\+\_\+\+GENERATELIST\+\_\+\+POSITION}}}, }\item[{const wx\+Size \&}]{size}{ = {\ttfamily \mbox{\hyperlink{_generate_list_8h_a89efd10edd914e773b2006835e3cf51d}{SYMBOL\+\_\+\+GENERATELIST\+\_\+\+SIZE}}}, }\item[{long}]{style}{ = {\ttfamily \mbox{\hyperlink{_generate_list_8h_ac0b0b3c863a1d99e4133f769b9138af7}{SYMBOL\+\_\+\+GENERATELIST\+\_\+\+STYLE}}}}\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent} & \\
+\hline
+{\em id} & \\
+\hline
+{\em pos} & \\
+\hline
+{\em size} & \\
+\hline
+{\em style} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_generate_list_8cpp_source_l00107}{107}} of file \mbox{\hyperlink{_generate_list_8cpp_source}{Generate\+List.\+cpp}}.
+
+\Hypertarget{class_generate_list_ada2a7c3eab6cccdb6c073c25068aacc1}\index{GenerateList@{GenerateList}!CreateControls@{CreateControls}}
+\index{CreateControls@{CreateControls}!GenerateList@{GenerateList}}
+\doxysubsubsection{\texorpdfstring{CreateControls()}{CreateControls()}}
+{\footnotesize\ttfamily \label{class_generate_list_ada2a7c3eab6cccdb6c073c25068aacc1} 
+void Generate\+List\+::\+Create\+Controls (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Create a Controls object. 
+
+
+
+Definition at line \mbox{\hyperlink{_generate_list_8cpp_source_l00123}{123}} of file \mbox{\hyperlink{_generate_list_8cpp_source}{Generate\+List.\+cpp}}.
+
+\Hypertarget{class_generate_list_a17fc90e80c582d2d95806ee892883e49}\index{GenerateList@{GenerateList}!DoListPrefs@{DoListPrefs}}
+\index{DoListPrefs@{DoListPrefs}!GenerateList@{GenerateList}}
+\doxysubsubsection{\texorpdfstring{DoListPrefs()}{DoListPrefs()}}
+{\footnotesize\ttfamily \label{class_generate_list_a17fc90e80c582d2d95806ee892883e49} 
+void Generate\+List\+::\+Do\+List\+Prefs (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_generate_list_8cpp_source_l00228}{228}} of file \mbox{\hyperlink{_generate_list_8cpp_source}{Generate\+List.\+cpp}}.
+
+\Hypertarget{class_generate_list_ab9dd5abc66748bafedeba0b14423bc29}\index{GenerateList@{GenerateList}!GetStringLen@{GetStringLen}}
+\index{GetStringLen@{GetStringLen}!GenerateList@{GenerateList}}
+\doxysubsubsection{\texorpdfstring{GetStringLen()}{GetStringLen()}}
+{\footnotesize\ttfamily \label{class_generate_list_ab9dd5abc66748bafedeba0b14423bc29} 
+int Generate\+List\+::\+Get\+String\+Len (\begin{DoxyParamCaption}\item[{wx\+Font \&}]{font}{, }\item[{wx\+String}]{text}{}\end{DoxyParamCaption})}
+
+
+
+Get the String Len object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em font} & \\
+\hline
+{\em text} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_generate_list_8cpp_source_l00258}{258}} of file \mbox{\hyperlink{_generate_list_8cpp_source}{Generate\+List.\+cpp}}.
+
+\Hypertarget{class_generate_list_a77ba5a9d29118bb95fda26074b8bb33d}\index{GenerateList@{GenerateList}!Init@{Init}}
+\index{Init@{Init}!GenerateList@{GenerateList}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily \label{class_generate_list_a77ba5a9d29118bb95fda26074b8bb33d} 
+void Generate\+List\+::\+Init (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_generate_list_8cpp_source_l00284}{284}} of file \mbox{\hyperlink{_generate_list_8cpp_source}{Generate\+List.\+cpp}}.
+
+\Hypertarget{class_generate_list_a9e0428971a5ffe1727e6868ae57448da}\index{GenerateList@{GenerateList}!MakeListAttributeString@{MakeListAttributeString}}
+\index{MakeListAttributeString@{MakeListAttributeString}!GenerateList@{GenerateList}}
+\doxysubsubsection{\texorpdfstring{MakeListAttributeString()}{MakeListAttributeString()}}
+{\footnotesize\ttfamily \label{class_generate_list_a9e0428971a5ffe1727e6868ae57448da} 
+bool Generate\+List\+::\+Make\+List\+Attribute\+String (\begin{DoxyParamCaption}\item[{wx\+String}]{in}{, }\item[{wx\+String \&}]{out}{, }\item[{int}]{field\+Length}{, }\item[{wx\+String \&}]{remainder}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_generate_list_aa0c0ff9d5ccb3002e21b20b1521a2685}\index{GenerateList@{GenerateList}!OnCellLeftClick@{OnCellLeftClick}}
+\index{OnCellLeftClick@{OnCellLeftClick}!GenerateList@{GenerateList}}
+\doxysubsubsection{\texorpdfstring{OnCellLeftClick()}{OnCellLeftClick()}}
+{\footnotesize\ttfamily \label{class_generate_list_aa0c0ff9d5ccb3002e21b20b1521a2685} 
+void Generate\+List\+::\+On\+Cell\+Left\+Click (\begin{DoxyParamCaption}\item[{wx\+Grid\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_generate_list_8cpp_source_l00524}{524}} of file \mbox{\hyperlink{_generate_list_8cpp_source}{Generate\+List.\+cpp}}.
+
+\Hypertarget{class_generate_list_aa56b7fc8bfe8786c181784d4f7620c91}\index{GenerateList@{GenerateList}!OnFileNameTextUpdated@{OnFileNameTextUpdated}}
+\index{OnFileNameTextUpdated@{OnFileNameTextUpdated}!GenerateList@{GenerateList}}
+\doxysubsubsection{\texorpdfstring{OnFileNameTextUpdated()}{OnFileNameTextUpdated()}}
+{\footnotesize\ttfamily \label{class_generate_list_aa56b7fc8bfe8786c181784d4f7620c91} 
+void Generate\+List\+::\+On\+File\+Name\+Text\+Updated (\begin{DoxyParamCaption}\item[{wx\+Command\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_generate_list_8cpp_source_l00313}{313}} of file \mbox{\hyperlink{_generate_list_8cpp_source}{Generate\+List.\+cpp}}.
+
+\Hypertarget{class_generate_list_aa49365f9e3020d63f2aefe8cff6e34ca}\index{GenerateList@{GenerateList}!OnLabelLeftClick@{OnLabelLeftClick}}
+\index{OnLabelLeftClick@{OnLabelLeftClick}!GenerateList@{GenerateList}}
+\doxysubsubsection{\texorpdfstring{OnLabelLeftClick()}{OnLabelLeftClick()}}
+{\footnotesize\ttfamily \label{class_generate_list_aa49365f9e3020d63f2aefe8cff6e34ca} 
+void Generate\+List\+::\+On\+Label\+Left\+Click (\begin{DoxyParamCaption}\item[{wx\+Grid\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_generate_list_8cpp_source_l00535}{535}} of file \mbox{\hyperlink{_generate_list_8cpp_source}{Generate\+List.\+cpp}}.
+
+\Hypertarget{class_generate_list_a1593b7878a18e79c98d2dda88d5e9a61}\index{GenerateList@{GenerateList}!OnSetListPrefsButtonClick@{OnSetListPrefsButtonClick}}
+\index{OnSetListPrefsButtonClick@{OnSetListPrefsButtonClick}!GenerateList@{GenerateList}}
+\doxysubsubsection{\texorpdfstring{OnSetListPrefsButtonClick()}{OnSetListPrefsButtonClick()}}
+{\footnotesize\ttfamily \label{class_generate_list_a1593b7878a18e79c98d2dda88d5e9a61} 
+void Generate\+List\+::\+On\+Set\+List\+Prefs\+Button\+Click (\begin{DoxyParamCaption}\item[{wx\+Command\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_generate_list_8cpp_source_l00322}{322}} of file \mbox{\hyperlink{_generate_list_8cpp_source}{Generate\+List.\+cpp}}.
+
+\Hypertarget{class_generate_list_a3c98cd369741e9972aa4146c338f3b81}\index{GenerateList@{GenerateList}!OnWriteButtonClick@{OnWriteButtonClick}}
+\index{OnWriteButtonClick@{OnWriteButtonClick}!GenerateList@{GenerateList}}
+\doxysubsubsection{\texorpdfstring{OnWriteButtonClick()}{OnWriteButtonClick()}}
+{\footnotesize\ttfamily \label{class_generate_list_a3c98cd369741e9972aa4146c338f3b81} 
+void Generate\+List\+::\+On\+Write\+Button\+Click (\begin{DoxyParamCaption}\item[{wx\+Command\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_generate_list_8cpp_source_l00331}{331}} of file \mbox{\hyperlink{_generate_list_8cpp_source}{Generate\+List.\+cpp}}.
+
+\Hypertarget{class_generate_list_ad8f31aa3b44a2e40d47886a7847da246}\index{GenerateList@{GenerateList}!Save@{Save}}
+\index{Save@{Save}!GenerateList@{GenerateList}}
+\doxysubsubsection{\texorpdfstring{Save()}{Save()}}
+{\footnotesize\ttfamily \label{class_generate_list_ad8f31aa3b44a2e40d47886a7847da246} 
+void Generate\+List\+::\+Save (\begin{DoxyParamCaption}\item[{wx\+String}]{filename}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_generate_list_8cpp_source_l00360}{360}} of file \mbox{\hyperlink{_generate_list_8cpp_source}{Generate\+List.\+cpp}}.
+
+\Hypertarget{class_generate_list_ac3ee4cc4525871b658cc02c66e077de8}\index{GenerateList@{GenerateList}!SaveAs@{SaveAs}}
+\index{SaveAs@{SaveAs}!GenerateList@{GenerateList}}
+\doxysubsubsection{\texorpdfstring{SaveAs()}{SaveAs()}}
+{\footnotesize\ttfamily \label{class_generate_list_ac3ee4cc4525871b658cc02c66e077de8} 
+void Generate\+List\+::\+Save\+As (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_generate_list_8cpp_source_l00340}{340}} of file \mbox{\hyperlink{_generate_list_8cpp_source}{Generate\+List.\+cpp}}.
+
+\Hypertarget{class_generate_list_a6928a2ab48e8cee344c76493780c47c1}\index{GenerateList@{GenerateList}!ShowRow@{ShowRow}}
+\index{ShowRow@{ShowRow}!GenerateList@{GenerateList}}
+\doxysubsubsection{\texorpdfstring{ShowRow()}{ShowRow()}}
+{\footnotesize\ttfamily \label{class_generate_list_a6928a2ab48e8cee344c76493780c47c1} 
+void Generate\+List\+::\+Show\+Row (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_catalog_1_1_entry}{Catalog\+::\+Entry}} \texorpdfstring{$\ast$}{*}}]{entry}{, }\item[{int}]{row}{}\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em entry} & \\
+\hline
+{\em row} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_generate_list_8cpp_source_l00440}{440}} of file \mbox{\hyperlink{_generate_list_8cpp_source}{Generate\+List.\+cpp}}.
+
+\Hypertarget{class_generate_list_a7b88ee50b39bb22a7040d635484b4273}\index{GenerateList@{GenerateList}!ShowToolTips@{ShowToolTips}}
+\index{ShowToolTips@{ShowToolTips}!GenerateList@{GenerateList}}
+\doxysubsubsection{\texorpdfstring{ShowToolTips()}{ShowToolTips()}}
+{\footnotesize\ttfamily \label{class_generate_list_a7b88ee50b39bb22a7040d635484b4273} 
+bool Generate\+List\+::\+Show\+Tool\+Tips (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_generate_list_8cpp_source_l00472}{472}} of file \mbox{\hyperlink{_generate_list_8cpp_source}{Generate\+List.\+cpp}}.
+
+\Hypertarget{class_generate_list_ad82218f3de028e0fc3c0aef5485073b6}\index{GenerateList@{GenerateList}!UpdateGrid@{UpdateGrid}}
+\index{UpdateGrid@{UpdateGrid}!GenerateList@{GenerateList}}
+\doxysubsubsection{\texorpdfstring{UpdateGrid()}{UpdateGrid()}}
+{\footnotesize\ttfamily \label{class_generate_list_ad82218f3de028e0fc3c0aef5485073b6} 
+void Generate\+List\+::\+Update\+Grid (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_generate_list_8cpp_source_l00479}{479}} of file \mbox{\hyperlink{_generate_list_8cpp_source}{Generate\+List.\+cpp}}.
+
+\Hypertarget{class_generate_list_a559537b302c31cf69c4702cb2b532d2c}\index{GenerateList@{GenerateList}!WriteEntries@{WriteEntries}}
+\index{WriteEntries@{WriteEntries}!GenerateList@{GenerateList}}
+\doxysubsubsection{\texorpdfstring{WriteEntries()}{WriteEntries()}}
+{\footnotesize\ttfamily \label{class_generate_list_a559537b302c31cf69c4702cb2b532d2c} 
+void Generate\+List\+::\+Write\+Entries (\begin{DoxyParamCaption}\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{parent}{, }\item[{int \&}]{row}{}\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent} & \\
+\hline
+{\em row} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_generate_list_8cpp_source_l00502}{502}} of file \mbox{\hyperlink{_generate_list_8cpp_source}{Generate\+List.\+cpp}}.
+
+\Hypertarget{class_generate_list_abb6b706df3345a9f257b968b963e41fc}\index{GenerateList@{GenerateList}!WriteList@{WriteList}}
+\index{WriteList@{WriteList}!GenerateList@{GenerateList}}
+\doxysubsubsection{\texorpdfstring{WriteList()}{WriteList()}}
+{\footnotesize\ttfamily \label{class_generate_list_abb6b706df3345a9f257b968b963e41fc} 
+void Generate\+List\+::\+Write\+List (\begin{DoxyParamCaption}\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{parent}{, }\item[{std\+::ofstream \&}]{ostream}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_generate_list_8cpp_source_l00385}{385}} of file \mbox{\hyperlink{_generate_list_8cpp_source}{Generate\+List.\+cpp}}.
+
+\Hypertarget{class_generate_list_a2ff1f8c368c63f6c574f4a391a2b9a75}\index{GenerateList@{GenerateList}!WriteListEntry@{WriteListEntry}}
+\index{WriteListEntry@{WriteListEntry}!GenerateList@{GenerateList}}
+\doxysubsubsection{\texorpdfstring{WriteListEntry()}{WriteListEntry()}}
+{\footnotesize\ttfamily \label{class_generate_list_a2ff1f8c368c63f6c574f4a391a2b9a75} 
+void Generate\+List\+::\+Write\+List\+Entry (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_catalog_1_1_entry}{Catalog\+::\+Entry}} \texorpdfstring{$\ast$}{*}}]{entry}{, }\item[{std\+::ofstream \&}]{ostream}{}\end{DoxyParamCaption})}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/femon/\+Development/wx/clone\+Test/\+Stamp\+Tool/src/gui/\mbox{\hyperlink{_generate_list_8h}{Generate\+List.\+h}}\item 
+C\+:/\+Users/femon/\+Development/wx/clone\+Test/\+Stamp\+Tool/src/gui/\mbox{\hyperlink{_generate_list_8cpp}{Generate\+List.\+cpp}}\end{DoxyCompactItemize}

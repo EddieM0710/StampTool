@@ -1,0 +1,470 @@
+\doxysection{Font\+Defaults\+Panel.\+cpp}
+\hypertarget{_font_defaults_panel_8cpp_source}{}\label{_font_defaults_panel_8cpp_source}\index{C:/Users/femon/Development/wx/cloneTest/StampTool/src/gui/FontDefaultsPanel.cpp@{C:/Users/femon/Development/wx/cloneTest/StampTool/src/gui/FontDefaultsPanel.cpp}}
+\mbox{\hyperlink{_font_defaults_panel_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00002}00002\ \textcolor{comment}{\ *\ @file\ \ FontDefaultsPanel.cpp}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00003}00003\ \textcolor{comment}{\ *\ @author\ Eddie\ Monroe}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00004}00004\ \textcolor{comment}{\ *\ @brief}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00005}00005\ \textcolor{comment}{\ *\ @version\ 0.1}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00006}00006\ \textcolor{comment}{\ *\ @date\ 2022-\/04-\/29}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00007}00007\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00008}00008\ \textcolor{comment}{\ *\ @copyright\ Copyright\ (\ c\ )\ 2022}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00009}00009\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00010}00010\ \textcolor{comment}{\ *\ This\ file\ is\ part\ of\ StampTool.}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00011}00011\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00012}00012\ \textcolor{comment}{\ *\ StampTool\ is\ free\ software:\ you\ can\ redistribute\ it\ and/or\ modify\ it\ under\ the}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00013}00013\ \textcolor{comment}{\ *\ terms\ of\ the\ GNU\ General\ Public\ License\ as\ published\ by\ the\ Free\ Software\ Foundation,}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00014}00014\ \textcolor{comment}{\ *\ either\ version\ 3\ of\ the\ License,\ or\ any\ later\ version.}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00015}00015\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00016}00016\ \textcolor{comment}{\ *\ StampTool\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,\ but\ WITHOUT\ ANY}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00017}00017\ \textcolor{comment}{\ *\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of\ MERCHANTABILITY\ or\ FITNESS\ FOR\ A}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00018}00018\ \textcolor{comment}{\ *\ PARTICULAR\ PURPOSE.\ See\ the\ GNU\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00019}00019\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00020}00020\ \textcolor{comment}{\ *\ You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License\ along\ with}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00021}00021\ \textcolor{comment}{\ *\ StampTool.\ If\ not,\ see\ <https://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00022}00022\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00025}00025\ \textcolor{preprocessor}{\#include\ "{}wx/wxprec.h"{}}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00027}00027\ \textcolor{preprocessor}{\#ifdef\ \_\_BORLANDC\_\_}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00028}00028\ \textcolor{preprocessor}{\#pragma\ hdrstop}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00029}00029\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00031}00031\ \textcolor{preprocessor}{\#ifndef\ WX\_PRECOMP}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00032}00032\ \textcolor{preprocessor}{\#include\ "{}wx/wx.h"{}}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00033}00033\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00035}00035\ \textcolor{preprocessor}{\#include\ "{}wx/imaglist.h"{}}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00036}00036\ \textcolor{preprocessor}{\#include\ <wx/arrstr.h>}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00038}00038\ \textcolor{preprocessor}{\#include\ "{}wx/notebook.h"{}}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00040}00040\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_font_defaults_panel_8h}{gui/FontDefaultsPanel.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00042}00042\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_labeled_text_box_8h}{gui/LabeledTextBox.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00043}00043\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_font_picker_helper_8h}{gui/FontPickerHelper.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00044}00044\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_title_frame_8h}{design/TitleFrame.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00045}00045\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_page_8h}{design/Page.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00046}00046\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_album_8h}{design/Album.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00047}00047\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_design_defs_8h}{design/DesignDefs.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00048}00048\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_font_list_8h}{utils/FontList.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00049}00049\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_settings_8h}{utils/Settings.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00050}00050\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_defs_8h}{Defs.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00053}00053\ IMPLEMENT\_DYNAMIC\_CLASS(\ \mbox{\hyperlink{class_font_defaults_panel}{FontDefaultsPanel}},\ \mbox{\hyperlink{class_helper_panel}{HelperPanel}}\ )}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00057}00057\ BEGIN\_EVENT\_TABLE(\ \mbox{\hyperlink{class_font_defaults_panel}{FontDefaultsPanel}},\ \mbox{\hyperlink{class_helper_panel}{HelperPanel}}\ )}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00059}00059\ END\_EVENT\_TABLE(\ )}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00062}00062\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00064}\mbox{\hyperlink{class_font_defaults_panel_afdfb2449770db1a39f7ae7398db5ea03}{00064}}\ \mbox{\hyperlink{class_font_defaults_panel_afdfb2449770db1a39f7ae7398db5ea03}{FontDefaultsPanel}}::\mbox{\hyperlink{class_font_defaults_panel_afdfb2449770db1a39f7ae7398db5ea03}{FontDefaultsPanel}}(\ )}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00065}00065\ \{}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00066}00066\ \ \ \ \ \mbox{\hyperlink{class_font_defaults_panel_add6de791d9cc5de70d22c1b9ca403763}{Init}}(\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00067}00067\ \}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00069}00069\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00071}\mbox{\hyperlink{class_font_defaults_panel_a41e707c8bd464a7ea1a8cfebe80ca02c}{00071}}\ \mbox{\hyperlink{class_font_defaults_panel_afdfb2449770db1a39f7ae7398db5ea03}{FontDefaultsPanel::FontDefaultsPanel}}(\ wxWindow*\ parent,\ wxWindowID\ \textcolor{keywordtype}{id},}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00072}00072\ \ \ \ \ \textcolor{keyword}{const}\ wxString\&\ caption,\ \textcolor{keyword}{const}\ wxPoint\&\ pos,\ \textcolor{keyword}{const}\ wxSize\&\ size,\ \textcolor{keywordtype}{long}\ style\ )}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00073}00073\ \{}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00074}00074\ \ \ \ \ \mbox{\hyperlink{class_font_defaults_panel_add6de791d9cc5de70d22c1b9ca403763}{Init}}(\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00075}00075\ \ \ \ \ \mbox{\hyperlink{class_font_defaults_panel_a9aacd8afdf3c5c44fed126717b558574}{Create}}(\ parent,\ \textcolor{keywordtype}{id},\ caption,\ pos,\ size,\ style\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00076}00076\ \}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00078}00078\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00080}\mbox{\hyperlink{class_font_defaults_panel_a9aacd8afdf3c5c44fed126717b558574}{00080}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_font_defaults_panel_a9aacd8afdf3c5c44fed126717b558574}{FontDefaultsPanel::Create}}(\ wxWindow*\ parent,\ wxWindowID\ \textcolor{keywordtype}{id},}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00081}00081\ \ \ \ \ \textcolor{keyword}{const}\ wxString\&\ caption,\ \textcolor{keyword}{const}\ wxPoint\&\ pos,\ \textcolor{keyword}{const}\ wxSize\&\ size,\ \textcolor{keywordtype}{long}\ style\ )}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00082}00082\ \{}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00083}00083\ \ \ \ \ SetExtraStyle(\ wxWS\_EX\_VALIDATE\_RECURSIVELY\ |\ wxWS\_EX\_BLOCK\_EVENTS\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00084}00084\ \ \ \ \ wxPanel::Create(\ parent,\ \textcolor{keywordtype}{id},\ pos,\ size,\ style\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00086}00086\ \ \ \ \ \mbox{\hyperlink{class_font_defaults_panel_a5da3b23bf59b9216355e56fa287d4188}{CreateControls}}(\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00087}00087\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ GetSizer(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00088}00088\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00089}00089\ \ \ \ \ \ \ \ \ GetSizer(\ )-\/>SetSizeHints(\ \textcolor{keyword}{this}\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00090}00090\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00091}00091\ \ \ \ \ Centre(\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00092}00092\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00093}00093\ \}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00094}00094\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00095}00095\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00096}00096\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00097}\mbox{\hyperlink{class_font_defaults_panel_a5ad151924667b7a91a0462c0d0a916f4}{00097}}\ \mbox{\hyperlink{class_font_defaults_panel_a5ad151924667b7a91a0462c0d0a916f4}{FontDefaultsPanel::\string~FontDefaultsPanel}}(\ )}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00098}00098\ \{}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00099}00099\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00100}00100\ \}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00101}00101\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00102}00102\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00103}00103\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00104}\mbox{\hyperlink{class_font_defaults_panel_add6de791d9cc5de70d22c1b9ca403763}{00104}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_font_defaults_panel_add6de791d9cc5de70d22c1b9ca403763}{FontDefaultsPanel::Init}}(\ )}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00105}00105\ \{}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00106}00106\ \}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00107}00107\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00108}00108\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00109}00109\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00110}\mbox{\hyperlink{class_font_defaults_panel_a5da3b23bf59b9216355e56fa287d4188}{00110}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_font_defaults_panel_a5da3b23bf59b9216355e56fa287d4188}{FontDefaultsPanel::CreateControls}}(\ )}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00111}00111\ \{}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00112}00112\ \ \ \ \ \mbox{\hyperlink{class_font_defaults_panel_afdfb2449770db1a39f7ae7398db5ea03}{FontDefaultsPanel}}*\ thePanel\ =\ \textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00113}00113\ \ \ \ \ \textcolor{keywordtype}{int}\ lastID\ =\ \mbox{\hyperlink{class_font_defaults_panel_a4f474425e90f9d9a93dbe21605706e9aa25e838bb2b4738c5827131ccf26f4462}{ID\_LastID}};}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00114}00114\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00115}00115\ \ \ \ \ wxBoxSizer*\ detailsHorizontalSizer\ =\ \textcolor{keyword}{new}\ wxBoxSizer(\ wxHORIZONTAL\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00116}00116\ \ \ \ \ thePanel-\/>SetSizer(\ detailsHorizontalSizer\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00117}00117\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00118}00118\ \ \ \ \ wxBoxSizer*\ leftColumnVerticalSizer\ =\ \textcolor{keyword}{new}\ wxBoxSizer(\ wxVERTICAL\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00119}00119\ \ \ \ \ detailsHorizontalSizer-\/>Add(\ leftColumnVerticalSizer,\ 1,\ wxGROW\ |\ wxALL,\ 0\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00120}00120\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00121}00121\ \ \ \ \ wxBoxSizer*\ middleColumnVerticalSizer\ =\ \textcolor{keyword}{new}\ wxBoxSizer(\ wxVERTICAL\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00122}00122\ \ \ \ \ detailsHorizontalSizer-\/>Add(\ middleColumnVerticalSizer,\ 1,\ wxGROW\ |\ wxALL,\ 0\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00123}00123\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00124}00124\ \ \ \ \ wxBoxSizer*\ rightColumnVerticalSizer\ =\ \textcolor{keyword}{new}\ wxBoxSizer(\ wxVERTICAL\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00125}00125\ \ \ \ \ detailsHorizontalSizer-\/>Add(\ rightColumnVerticalSizer,\ 1,\ wxGROW\ |\ wxALL,\ 0\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00126}00126\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00127}00127\ \ \ \ \ \mbox{\hyperlink{class_helper_panel_ac79099a8adb61042c70b2aaa474b6491}{SetupFontPicker}}(\ thePanel,\ leftColumnVerticalSizer,\ lastID,}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00128}00128\ \ \ \ \ \ \ \ \ \_(\ \textcolor{stringliteral}{"{}Title\ Font"{}}\ ),\ \_(\ \textcolor{stringliteral}{"{}Default"{}}\ ),}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00129}00129\ \ \ \ \ \ \ \ \ m\_titleFontPicker,\ m\_titleColorPicker,}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00130}00130\ \ \ \ \ \ \ \ \ wxFontPickerEventHandler(\ \mbox{\hyperlink{class_font_defaults_panel_a0ea992d3524a720b20b4127302724a28}{FontDefaultsPanel::OnTitleFontPicker}}\ ),}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00131}00131\ \ \ \ \ \ \ \ \ wxColourPickerEventHandler(\ \mbox{\hyperlink{class_font_defaults_panel_aed30d058e725e43b2a771f6759879cc4}{FontDefaultsPanel::OnTitleColorPicker}}\ ),}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00132}00132\ \ \ \ \ \ \ \ \ wxCommandEventHandler(\ \mbox{\hyperlink{class_font_defaults_panel_a23128a6be5d3be61b61255bd4c6cc2e3}{FontDefaultsPanel::OnTitleDefaultClick}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00133}00133\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00134}00134\ \ \ \ \ \mbox{\hyperlink{class_helper_panel_ac79099a8adb61042c70b2aaa474b6491}{SetupFontPicker}}(\ thePanel,\ leftColumnVerticalSizer,\ lastID,}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00135}00135\ \ \ \ \ \ \ \ \ \_(\ \textcolor{stringliteral}{"{}SubTitle\ Font"{}}\ ),\ \_(\ \textcolor{stringliteral}{"{}Default"{}}\ ),}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00136}00136\ \ \ \ \ \ \ \ \ m\_subTitleFontPicker,\ m\_subTitleColorPicker,}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00137}00137\ \ \ \ \ \ \ \ \ wxFontPickerEventHandler(\ \mbox{\hyperlink{class_font_defaults_panel_a230b22626f5488a6d021cd1b6bbf1a80}{FontDefaultsPanel::OnSubTitleFontPicker}}\ ),}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00138}00138\ \ \ \ \ \ \ \ \ wxColourPickerEventHandler(\ \mbox{\hyperlink{class_font_defaults_panel_a92c5885335648ce2842892100389c019}{FontDefaultsPanel::OnSubTitleColorPicker}}\ ),}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00139}00139\ \ \ \ \ \ \ \ \ wxCommandEventHandler(\ \mbox{\hyperlink{class_font_defaults_panel_a06c6a5f07039d93432028ab9efbdfdfc}{FontDefaultsPanel::OnSubTitleDefaultClick}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00140}00140\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00141}00141\ \ \ \ \ \mbox{\hyperlink{class_helper_panel_ac79099a8adb61042c70b2aaa474b6491}{SetupFontPicker}}(\ thePanel,\ middleColumnVerticalSizer,\ lastID,}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00142}00142\ \ \ \ \ \ \ \ \ \_(\ \textcolor{stringliteral}{"{}Text\ Font"{}}\ ),\ \_(\ \textcolor{stringliteral}{"{}Default"{}}\ ),}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00143}00143\ \ \ \ \ \ \ \ \ m\_textFontPicker,\ m\_textColorPicker,}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00144}00144\ \ \ \ \ \ \ \ \ wxFontPickerEventHandler(\ \mbox{\hyperlink{class_font_defaults_panel_a80d86f4eb928abc6943f9e90471e25e2}{FontDefaultsPanel::OnTextFontPicker}}\ ),}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00145}00145\ \ \ \ \ \ \ \ \ wxColourPickerEventHandler(\ \mbox{\hyperlink{class_font_defaults_panel_a29ec0e110d3743f5b964c019ad36802a}{FontDefaultsPanel::OnTextColorPicker}}\ ),}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00146}00146\ \ \ \ \ \ \ \ \ wxCommandEventHandler(\ \mbox{\hyperlink{class_font_defaults_panel_a51d631118d8b9a4185e29f4ea9f2e3d4}{FontDefaultsPanel::OnTextDefaultClick}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00147}00147\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00148}00148\ \ \ \ \ \mbox{\hyperlink{class_helper_panel_ac79099a8adb61042c70b2aaa474b6491}{SetupFontPicker}}(\ thePanel,\ middleColumnVerticalSizer,\ lastID,}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00149}00149\ \ \ \ \ \ \ \ \ \_(\ \textcolor{stringliteral}{"{}Default\ Catalog\ Nbr\ Font"{}}\ ),\ \_(\ \textcolor{stringliteral}{"{}Default"{}}\ ),}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00150}00150\ \ \ \ \ \ \ \ \ m\_nbrFontPicker,\ m\_nbrColorPicker,}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00151}00151\ \ \ \ \ \ \ \ \ wxFontPickerEventHandler(\ \mbox{\hyperlink{class_font_defaults_panel_ab1cc80124dfd62841d840ddd59808187}{FontDefaultsPanel::OnNbrFontPicker}}\ ),}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00152}00152\ \ \ \ \ \ \ \ \ wxColourPickerEventHandler(\ \mbox{\hyperlink{class_font_defaults_panel_ad5e4cea59e4e0b7317c124e094822f67}{FontDefaultsPanel::OnNbrColorPicker}}\ ),}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00153}00153\ \ \ \ \ \ \ \ \ wxCommandEventHandler(\ \mbox{\hyperlink{class_font_defaults_panel_a10a155347892d196eb223055abe23150}{FontDefaultsPanel::OnNbrDefaultClick}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00154}00154\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00155}00155\ \ \ \ \ \mbox{\hyperlink{class_helper_panel_ac79099a8adb61042c70b2aaa474b6491}{SetupFontPicker}}(\ thePanel,\ rightColumnVerticalSizer,\ lastID,}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00156}00156\ \ \ \ \ \ \ \ \ \_(\ \textcolor{stringliteral}{"{}Default\ Name\ Font"{}}\ ),\ \_(\ \textcolor{stringliteral}{"{}Default"{}}\ ),}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00157}00157\ \ \ \ \ \ \ \ \ m\_nameFontPicker,\ m\_nameColorPicker,}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00158}00158\ \ \ \ \ \ \ \ \ wxFontPickerEventHandler(\ \mbox{\hyperlink{class_font_defaults_panel_a9e12a565a4337ba0954cf9d1ba73cd6d}{FontDefaultsPanel::OnNameFontPicker}}\ ),}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00159}00159\ \ \ \ \ \ \ \ \ wxColourPickerEventHandler(\ \mbox{\hyperlink{class_font_defaults_panel_a588997111cbbcd7b554bcce92aa5e6ad}{FontDefaultsPanel::OnNameColorPicker}}\ ),}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00160}00160\ \ \ \ \ \ \ \ \ wxCommandEventHandler(\ \mbox{\hyperlink{class_font_defaults_panel_ab710d1ca1be86b28ef119f979a6b3a72}{FontDefaultsPanel::OnNameDefaultClick}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00161}00161\ \}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00162}00162\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00163}00163\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00164}00164\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00165}\mbox{\hyperlink{class_font_defaults_panel_ae712ba0f5bfe50fb70106f00926b36ce}{00165}}\ wxFont\ \mbox{\hyperlink{class_font_defaults_panel_ae712ba0f5bfe50fb70106f00926b36ce}{FontDefaultsPanel::GetSubTitleFont}}(\ )\ \{}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00166}00166\ \ \ \ \ \textcolor{keywordflow}{return}\ m\_subTitleFontPicker-\/>GetSelectedFont(\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00167}00167\ \}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00168}00168\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00169}00169\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00170}00170\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00171}\mbox{\hyperlink{class_font_defaults_panel_a3f54e32e49389e3bed14d7545e65d2c8}{00171}}\ wxColour\ \mbox{\hyperlink{class_font_defaults_panel_a3f54e32e49389e3bed14d7545e65d2c8}{FontDefaultsPanel::GetSubTitleColor}}(\ )\ \{}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00172}00172\ \ \ \ \ \textcolor{keywordflow}{return}\ m\_subTitleColorPicker-\/>GetColour(\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00173}00173\ \}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00174}00174\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00175}00175\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00176}00176\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00177}\mbox{\hyperlink{class_font_defaults_panel_aca68d93482e48fb0246e53d84fab94cb}{00177}}\ wxColour\ \mbox{\hyperlink{class_font_defaults_panel_aca68d93482e48fb0246e53d84fab94cb}{FontDefaultsPanel::GetTextColor}}(\ )\ \{}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00178}00178\ \ \ \ \ \textcolor{keywordflow}{return}\ m\_textColorPicker-\/>GetColour(\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00179}00179\ \}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00180}00180\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00181}00181\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00182}00182\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00183}\mbox{\hyperlink{class_font_defaults_panel_a35dc458d247c38fb6a670a24b608d3ac}{00183}}\ wxFont\ \mbox{\hyperlink{class_font_defaults_panel_a35dc458d247c38fb6a670a24b608d3ac}{FontDefaultsPanel::GetTextFont}}(\ )\ \{}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00184}00184\ \ \ \ \ \textcolor{keywordflow}{return}\ m\_textFontPicker-\/>GetSelectedFont(\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00185}00185\ \}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00186}00186\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00187}00187\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00188}00188\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00189}\mbox{\hyperlink{class_font_defaults_panel_a9aa8286ae5aecad98e0ef23b13590d51}{00189}}\ wxFont\ \mbox{\hyperlink{class_font_defaults_panel_a9aa8286ae5aecad98e0ef23b13590d51}{FontDefaultsPanel::GetTitleFont}}(\ )\ \{}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00190}00190\ \ \ \ \ \textcolor{keywordflow}{return}\ m\_titleFontPicker-\/>GetSelectedFont(\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00191}00191\ \}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00192}00192\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00193}00193\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00194}00194\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00195}\mbox{\hyperlink{class_font_defaults_panel_a679e3b0c4b0d7465ef3051c26a8451c2}{00195}}\ wxColour\ \mbox{\hyperlink{class_font_defaults_panel_a679e3b0c4b0d7465ef3051c26a8451c2}{FontDefaultsPanel::GetTitleColor}}(\ )\ \{}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00196}00196\ \ \ \ \ \textcolor{keywordflow}{return}\ m\_titleColorPicker-\/>GetColour(\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00197}00197\ \}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00198}00198\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00199}00199\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00200}00200\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00201}\mbox{\hyperlink{class_font_defaults_panel_a251a564c40c1e842870b09021402d677}{00201}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_font_defaults_panel_a251a564c40c1e842870b09021402d677}{FontDefaultsPanel::UpdateControls}}(\ )}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00202}00202\ \{}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00203}00203\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00204}00204\ \ \ \ \ \mbox{\hyperlink{class_font_defaults_panel_adec9934437ca48275fe3ea5acac6019d}{SetTitleFont}}(\ \mbox{\hyperlink{namespace_design_aaf913dbe97a6c57862a852f79cb54404}{Design::GetAlbum}}(\ )-\/>GetFont(\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4a078f3978681292ecf0627258c1cd1d1d}{Design::AT\_TitleFontType}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00205}00205\ \ \ \ \ \mbox{\hyperlink{class_font_defaults_panel_ace9e1034e0f9c006a81840cb3fbcbb39}{SetTitleColor}}(\ \mbox{\hyperlink{namespace_design_aaf913dbe97a6c57862a852f79cb54404}{Design::GetAlbum}}(\ )-\/>GetColor(\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4a078f3978681292ecf0627258c1cd1d1d}{Design::AT\_TitleFontType}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00206}00206\ \ \ \ \ \mbox{\hyperlink{class_font_defaults_panel_a0841c9fea578a86ef57aa260fa25a2a5}{SetSubTitleFont}}(\ \mbox{\hyperlink{namespace_design_aaf913dbe97a6c57862a852f79cb54404}{Design::GetAlbum}}(\ )-\/>GetFont(\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4ad65be88ee94a9ab38dc6cde177c3ab68}{Design::AT\_SubTitleFontType}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00207}00207\ \ \ \ \ \mbox{\hyperlink{class_font_defaults_panel_a8fc980938694727d1458d47e45122264}{SetSubTitleColor}}(\ \mbox{\hyperlink{namespace_design_aaf913dbe97a6c57862a852f79cb54404}{Design::GetAlbum}}(\ )-\/>GetColor(\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4ad65be88ee94a9ab38dc6cde177c3ab68}{Design::AT\_SubTitleFontType}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00208}00208\ \ \ \ \ \mbox{\hyperlink{class_font_defaults_panel_a2c86c7fc80a765bf1c1d2a8fd15732fe}{SetTextFont}}(\ \mbox{\hyperlink{namespace_design_aaf913dbe97a6c57862a852f79cb54404}{Design::GetAlbum}}(\ )-\/>GetFont(\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4ac5d3d82b86b9c364230172d74fd70095}{Design::AT\_TextFontType}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00209}00209\ \ \ \ \ \mbox{\hyperlink{class_font_defaults_panel_afbb789f3f74f6eb45287265d229296e8}{SetTextColor}}(\ \mbox{\hyperlink{namespace_design_aaf913dbe97a6c57862a852f79cb54404}{Design::GetAlbum}}(\ )-\/>GetColor(\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4ac5d3d82b86b9c364230172d74fd70095}{Design::AT\_TextFontType}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00210}00210\ \ \ \ \ \mbox{\hyperlink{class_font_defaults_panel_aa780af8e4a69f0f18ec82dd819353a01}{SetNbrFont}}(\ \mbox{\hyperlink{namespace_design_aaf913dbe97a6c57862a852f79cb54404}{Design::GetAlbum}}(\ )-\/>GetFont(\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4a0d94aa6c52078cbb63ce531ed26140b2}{Design::AT\_NbrFontType}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00211}00211\ \ \ \ \ \mbox{\hyperlink{class_font_defaults_panel_a60d378b9225ce169071248e9f6f1c95f}{SetNbrColor}}(\ \mbox{\hyperlink{namespace_design_aaf913dbe97a6c57862a852f79cb54404}{Design::GetAlbum}}(\ )-\/>GetColor(\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4a0d94aa6c52078cbb63ce531ed26140b2}{Design::AT\_NbrFontType}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00212}00212\ \ \ \ \ \mbox{\hyperlink{class_font_defaults_panel_a842d52a17e47d82dd4f11ac72579d655}{SetNameFont}}(\ \mbox{\hyperlink{namespace_design_aaf913dbe97a6c57862a852f79cb54404}{Design::GetAlbum}}(\ )-\/>GetFont(\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4a7a0c5cdeb48aceab9b0167ab84cbcb27}{Design::AT\_NameFontType}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00213}00213\ \ \ \ \ \mbox{\hyperlink{class_font_defaults_panel_a330936abb9c945af2950f633a3a60f25}{SetNameColor}}(\ \mbox{\hyperlink{namespace_design_aaf913dbe97a6c57862a852f79cb54404}{Design::GetAlbum}}(\ )-\/>GetColor(\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4a7a0c5cdeb48aceab9b0167ab84cbcb27}{Design::AT\_NameFontType}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00214}00214\ \}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00215}00215\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00216}00216\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00217}00217\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00218}\mbox{\hyperlink{class_font_defaults_panel_a5043e3434bfa8d5b6d7459d8f2104955}{00218}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_font_defaults_panel_a5043e3434bfa8d5b6d7459d8f2104955}{FontDefaultsPanel::SetupDialog}}(\ \mbox{\hyperlink{class_design_1_1_page}{Design::Page}}*\ page\ )}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00219}00219\ \{}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00220}00220\ \ \ \ \ \mbox{\hyperlink{class_font_defaults_panel_a251a564c40c1e842870b09021402d677}{UpdateControls}}(\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00221}00221\ \};}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00222}00222\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00223}00223\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00224}00224\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00225}\mbox{\hyperlink{class_font_defaults_panel_ae38ac43cc6e791605d305dd183487457}{00225}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_font_defaults_panel_ae38ac43cc6e791605d305dd183487457}{FontDefaultsPanel::ShowToolTips}}(\ )}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00226}00226\ \{}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00227}00227\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00228}00228\ \}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00229}00229\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00230}00230\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00231}00231\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00232}\mbox{\hyperlink{class_font_defaults_panel_a23128a6be5d3be61b61255bd4c6cc2e3}{00232}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_font_defaults_panel_a23128a6be5d3be61b61255bd4c6cc2e3}{FontDefaultsPanel::OnTitleDefaultClick}}(\ wxCommandEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00233}00233\ \{}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00234}00234\ \ \ \ \ \textcolor{keywordtype}{int}\ ndx\ =\ \mbox{\hyperlink{namespace_design_aaf913dbe97a6c57862a852f79cb54404}{Design::GetAlbum}}(\ )-\/>\mbox{\hyperlink{class_design_1_1_album_a531da6f3f997e39665c09122d3f4d229}{GetFontNdx}}(\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4a078f3978681292ecf0627258c1cd1d1d}{Design::AT\_TitleFontType}}\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00235}00235\ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_font_list}{Utils::FontList}}*\ fontList\ =\ \mbox{\hyperlink{_defs_8cpp_a580d17030a54e4a9a5493f5763d11e12}{GetFontList}}(\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00236}00236\ \ \ \ \ wxFont\ font\ =\ fontList-\/>\mbox{\hyperlink{class_utils_1_1_font_list_a5e142b46cb46ed693164f35fa368fe9b}{GetFont}}(\ ndx\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00237}00237\ \ \ \ \ wxColour\ color\ =\ fontList-\/>\mbox{\hyperlink{class_utils_1_1_font_list_ab7e4d2707d76c4edeb8ddb461dee8945}{GetColor}}(\ ndx\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00238}00238\ \ \ \ \ m\_titleFontPicker-\/>SetSelectedFont(\ font\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00239}00239\ \ \ \ \ m\_titleColorPicker-\/>SetColour(\ color\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00240}00240\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00241}00241\ \ \ \ \ \mbox{\hyperlink{namespace_design_aaf913dbe97a6c57862a852f79cb54404}{Design::GetAlbum}}(\ )-\/>\mbox{\hyperlink{class_design_1_1_album_a3c637bec920627a2ffea6f83dbde03e2}{SetFont}}(\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4a078f3978681292ecf0627258c1cd1d1d}{Design::AT\_TitleFontType}},\ font,\ color\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00242}00242\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00243}00243\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00244}00244\ \}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00245}00245\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00246}00246\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00247}00247\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00248}\mbox{\hyperlink{class_font_defaults_panel_a06c6a5f07039d93432028ab9efbdfdfc}{00248}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_font_defaults_panel_a06c6a5f07039d93432028ab9efbdfdfc}{FontDefaultsPanel::OnSubTitleDefaultClick}}(\ wxCommandEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00249}00249\ \{}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00250}00250\ \ \ \ \ \textcolor{keywordtype}{int}\ ndx\ =\ \mbox{\hyperlink{_defs_8cpp_a22c90d4148252ff1fbca6b40d3312b23}{GetSettings}}(\ )-\/>\mbox{\hyperlink{class_utils_1_1_settings_aba352b97853a1ddad7e85297060b780c}{GetFontNdxPreference}}(\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4ad65be88ee94a9ab38dc6cde177c3ab68}{Design::AT\_SubTitleFontType}}\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00251}00251\ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_font_list}{Utils::FontList}}*\ fontList\ =\ \mbox{\hyperlink{_defs_8cpp_a580d17030a54e4a9a5493f5763d11e12}{GetFontList}}(\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00252}00252\ \ \ \ \ wxFont\ font\ =\ fontList-\/>\mbox{\hyperlink{class_utils_1_1_font_list_a5e142b46cb46ed693164f35fa368fe9b}{GetFont}}(\ ndx\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00253}00253\ \ \ \ \ wxColour\ color\ =\ fontList-\/>\mbox{\hyperlink{class_utils_1_1_font_list_ab7e4d2707d76c4edeb8ddb461dee8945}{GetColor}}(\ ndx\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00254}00254\ \ \ \ \ m\_subTitleFontPicker-\/>SetSelectedFont(\ font\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00255}00255\ \ \ \ \ m\_subTitleColorPicker-\/>SetColour(\ color\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00256}00256\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00257}00257\ \ \ \ \ \mbox{\hyperlink{namespace_design_aaf913dbe97a6c57862a852f79cb54404}{Design::GetAlbum}}(\ )-\/>\mbox{\hyperlink{class_design_1_1_album_a3c637bec920627a2ffea6f83dbde03e2}{SetFont}}(\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4ad65be88ee94a9ab38dc6cde177c3ab68}{Design::AT\_SubTitleFontType}},\ font,\ color\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00258}00258\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00259}00259\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00260}00260\ \}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00261}00261\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00262}00262\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00263}00263\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00264}\mbox{\hyperlink{class_font_defaults_panel_a0ea992d3524a720b20b4127302724a28}{00264}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_font_defaults_panel_a0ea992d3524a720b20b4127302724a28}{FontDefaultsPanel::OnTitleFontPicker}}(\ wxFontPickerEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00265}00265\ \{}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00266}00266\ \ \ \ \ \mbox{\hyperlink{namespace_design_aaf913dbe97a6c57862a852f79cb54404}{Design::GetAlbum}}(\ )-\/>\mbox{\hyperlink{class_design_1_1_album_a3c637bec920627a2ffea6f83dbde03e2}{SetFont}}(\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4a078f3978681292ecf0627258c1cd1d1d}{Design::AT\_TitleFontType}},\ \mbox{\hyperlink{class_font_defaults_panel_a9aa8286ae5aecad98e0ef23b13590d51}{GetTitleFont}}(\ ),\ \mbox{\hyperlink{class_font_defaults_panel_a679e3b0c4b0d7465ef3051c26a8451c2}{GetTitleColor}}(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00267}00267\ \}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00268}00268\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00269}00269\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00270}00270\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00271}\mbox{\hyperlink{class_font_defaults_panel_aed30d058e725e43b2a771f6759879cc4}{00271}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_font_defaults_panel_aed30d058e725e43b2a771f6759879cc4}{FontDefaultsPanel::OnTitleColorPicker}}(\ wxColourPickerEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00272}00272\ \{}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00273}00273\ \ \ \ \ \mbox{\hyperlink{namespace_design_aaf913dbe97a6c57862a852f79cb54404}{Design::GetAlbum}}(\ )-\/>\mbox{\hyperlink{class_design_1_1_album_a3c637bec920627a2ffea6f83dbde03e2}{SetFont}}(\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4a078f3978681292ecf0627258c1cd1d1d}{Design::AT\_TitleFontType}},\ \mbox{\hyperlink{class_font_defaults_panel_a9aa8286ae5aecad98e0ef23b13590d51}{GetTitleFont}}(\ ),\ \mbox{\hyperlink{class_font_defaults_panel_a679e3b0c4b0d7465ef3051c26a8451c2}{GetTitleColor}}(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00274}00274\ \}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00275}00275\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00276}00276\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00277}00277\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00278}\mbox{\hyperlink{class_font_defaults_panel_a230b22626f5488a6d021cd1b6bbf1a80}{00278}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_font_defaults_panel_a230b22626f5488a6d021cd1b6bbf1a80}{FontDefaultsPanel::OnSubTitleFontPicker}}(\ wxFontPickerEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00279}00279\ \{}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00280}00280\ \ \ \ \ \mbox{\hyperlink{namespace_design_aaf913dbe97a6c57862a852f79cb54404}{Design::GetAlbum}}(\ )-\/>\mbox{\hyperlink{class_design_1_1_album_a3c637bec920627a2ffea6f83dbde03e2}{SetFont}}(\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4ad65be88ee94a9ab38dc6cde177c3ab68}{Design::AT\_SubTitleFontType}},\ \mbox{\hyperlink{class_font_defaults_panel_ae712ba0f5bfe50fb70106f00926b36ce}{GetSubTitleFont}}(\ ),\ \mbox{\hyperlink{class_font_defaults_panel_a3f54e32e49389e3bed14d7545e65d2c8}{GetSubTitleColor}}(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00281}00281\ \}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00282}00282\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00283}00283\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00284}00284\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00285}\mbox{\hyperlink{class_font_defaults_panel_a92c5885335648ce2842892100389c019}{00285}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_font_defaults_panel_a92c5885335648ce2842892100389c019}{FontDefaultsPanel::OnSubTitleColorPicker}}(\ wxColourPickerEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00286}00286\ \{}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00287}00287\ \ \ \ \ \mbox{\hyperlink{namespace_design_aaf913dbe97a6c57862a852f79cb54404}{Design::GetAlbum}}(\ )-\/>\mbox{\hyperlink{class_design_1_1_album_a3c637bec920627a2ffea6f83dbde03e2}{SetFont}}(\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4ad65be88ee94a9ab38dc6cde177c3ab68}{Design::AT\_SubTitleFontType}},\ \mbox{\hyperlink{class_font_defaults_panel_ae712ba0f5bfe50fb70106f00926b36ce}{GetSubTitleFont}}(\ ),\ \mbox{\hyperlink{class_font_defaults_panel_a3f54e32e49389e3bed14d7545e65d2c8}{GetSubTitleColor}}(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00288}00288\ \}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00289}00289\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00290}00290\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00291}00291\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00292}\mbox{\hyperlink{class_font_defaults_panel_a80d86f4eb928abc6943f9e90471e25e2}{00292}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_font_defaults_panel_a80d86f4eb928abc6943f9e90471e25e2}{FontDefaultsPanel::OnTextFontPicker}}(\ wxFontPickerEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00293}00293\ \{}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00294}00294\ \ \ \ \ \mbox{\hyperlink{namespace_design_aaf913dbe97a6c57862a852f79cb54404}{Design::GetAlbum}}(\ )-\/>\mbox{\hyperlink{class_design_1_1_album_a3c637bec920627a2ffea6f83dbde03e2}{SetFont}}(\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4ac5d3d82b86b9c364230172d74fd70095}{Design::AT\_TextFontType}},\ \mbox{\hyperlink{class_font_defaults_panel_a35dc458d247c38fb6a670a24b608d3ac}{GetTextFont}}(\ ),\ \mbox{\hyperlink{class_font_defaults_panel_aca68d93482e48fb0246e53d84fab94cb}{GetTextColor}}(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00295}00295\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00296}00296\ \}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00297}00297\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00298}00298\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00299}00299\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00300}\mbox{\hyperlink{class_font_defaults_panel_a29ec0e110d3743f5b964c019ad36802a}{00300}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_font_defaults_panel_a29ec0e110d3743f5b964c019ad36802a}{FontDefaultsPanel::OnTextColorPicker}}(\ wxColourPickerEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00301}00301\ \{}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00302}00302\ \ \ \ \ \mbox{\hyperlink{namespace_design_aaf913dbe97a6c57862a852f79cb54404}{Design::GetAlbum}}(\ )-\/>\mbox{\hyperlink{class_design_1_1_album_a3c637bec920627a2ffea6f83dbde03e2}{SetFont}}(\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4ac5d3d82b86b9c364230172d74fd70095}{Design::AT\_TextFontType}},\ \mbox{\hyperlink{class_font_defaults_panel_a35dc458d247c38fb6a670a24b608d3ac}{GetTextFont}}(\ ),\ \mbox{\hyperlink{class_font_defaults_panel_aca68d93482e48fb0246e53d84fab94cb}{GetTextColor}}(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00303}00303\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00304}00304\ \}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00305}00305\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00306}00306\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00307}00307\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00308}\mbox{\hyperlink{class_font_defaults_panel_a51d631118d8b9a4185e29f4ea9f2e3d4}{00308}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_font_defaults_panel_a51d631118d8b9a4185e29f4ea9f2e3d4}{FontDefaultsPanel::OnTextDefaultClick}}(\ wxCommandEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00309}00309\ \{}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00310}00310\ \ \ \ \ \textcolor{keywordtype}{int}\ ndx\ =\ \mbox{\hyperlink{_defs_8cpp_a22c90d4148252ff1fbca6b40d3312b23}{GetSettings}}(\ )-\/>\mbox{\hyperlink{class_utils_1_1_settings_aba352b97853a1ddad7e85297060b780c}{GetFontNdxPreference}}(\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4ac5d3d82b86b9c364230172d74fd70095}{Design::AT\_TextFontType}}\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00311}00311\ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_font_list}{Utils::FontList}}*\ fontList\ =\ \mbox{\hyperlink{_defs_8cpp_a580d17030a54e4a9a5493f5763d11e12}{GetFontList}}(\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00312}00312\ \ \ \ \ wxFont\ font\ =\ fontList-\/>\mbox{\hyperlink{class_utils_1_1_font_list_a5e142b46cb46ed693164f35fa368fe9b}{GetFont}}(\ ndx\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00313}00313\ \ \ \ \ wxColour\ color\ =\ fontList-\/>\mbox{\hyperlink{class_utils_1_1_font_list_ab7e4d2707d76c4edeb8ddb461dee8945}{GetColor}}(\ ndx\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00314}00314\ \ \ \ \ m\_textFontPicker-\/>SetSelectedFont(\ font\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00315}00315\ \ \ \ \ m\_textColorPicker-\/>SetColour(\ color\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00316}00316\ \ \ \ \ \mbox{\hyperlink{namespace_design_aaf913dbe97a6c57862a852f79cb54404}{Design::GetAlbum}}(\ )-\/>\mbox{\hyperlink{class_design_1_1_album_a3c637bec920627a2ffea6f83dbde03e2}{SetFont}}(\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4ac5d3d82b86b9c364230172d74fd70095}{Design::AT\_TextFontType}},\ font,\ color\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00317}00317\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00318}00318\ \}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00319}00319\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00320}00320\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00321}00321\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00322}\mbox{\hyperlink{class_font_defaults_panel_a2c86c7fc80a765bf1c1d2a8fd15732fe}{00322}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_font_defaults_panel_a2c86c7fc80a765bf1c1d2a8fd15732fe}{FontDefaultsPanel::SetTextFont}}(\ wxFont\ font\ )\ \{}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00323}00323\ \ \ \ \ m\_textFontPicker-\/>SetSelectedFont(\ font\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00324}00324\ \}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00325}00325\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00326}00326\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00327}00327\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00328}\mbox{\hyperlink{class_font_defaults_panel_adec9934437ca48275fe3ea5acac6019d}{00328}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_font_defaults_panel_adec9934437ca48275fe3ea5acac6019d}{FontDefaultsPanel::SetTitleFont}}(\ wxFont\ font\ )\ \{}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00329}00329\ \ \ \ \ m\_titleFontPicker-\/>SetSelectedFont(\ font\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00330}00330\ \}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00331}00331\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00332}00332\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00333}00333\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00334}\mbox{\hyperlink{class_font_defaults_panel_a842d52a17e47d82dd4f11ac72579d655}{00334}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_font_defaults_panel_a842d52a17e47d82dd4f11ac72579d655}{FontDefaultsPanel::SetNameFont}}(\ wxFont\ font\ )\ \{}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00335}00335\ \ \ \ \ m\_nameFontPicker-\/>SetSelectedFont(\ font\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00336}00336\ \}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00337}00337\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00338}\mbox{\hyperlink{class_font_defaults_panel_a0841c9fea578a86ef57aa260fa25a2a5}{00338}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_font_defaults_panel_a0841c9fea578a86ef57aa260fa25a2a5}{FontDefaultsPanel::SetSubTitleFont}}(\ wxFont\ font\ )\ \{}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00339}00339\ \ \ \ \ m\_subTitleFontPicker-\/>SetSelectedFont(\ font\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00340}00340\ \}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00341}00341\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00342}00342\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00343}00343\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00344}\mbox{\hyperlink{class_font_defaults_panel_a330936abb9c945af2950f633a3a60f25}{00344}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_font_defaults_panel_a330936abb9c945af2950f633a3a60f25}{FontDefaultsPanel::SetNameColor}}(\ wxColour\ color\ )\ \{}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00345}00345\ \ \ \ \ m\_nbrColorPicker-\/>SetColour(\ color\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00346}00346\ \}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00347}00347\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00348}00348\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00349}00349\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00350}\mbox{\hyperlink{class_font_defaults_panel_afbb789f3f74f6eb45287265d229296e8}{00350}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_font_defaults_panel_afbb789f3f74f6eb45287265d229296e8}{FontDefaultsPanel::SetTextColor}}(\ wxColour\ color\ )\ \{}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00351}00351\ \ \ \ \ m\_textColorPicker-\/>SetColour(\ color\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00352}00352\ \}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00353}00353\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00354}00354\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00355}00355\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00356}\mbox{\hyperlink{class_font_defaults_panel_ace9e1034e0f9c006a81840cb3fbcbb39}{00356}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_font_defaults_panel_ace9e1034e0f9c006a81840cb3fbcbb39}{FontDefaultsPanel::SetTitleColor}}(\ wxColour\ color\ )\ \{}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00357}00357\ \ \ \ \ m\_titleColorPicker-\/>SetColour(\ color\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00358}00358\ \}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00359}00359\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00360}\mbox{\hyperlink{class_font_defaults_panel_a8fc980938694727d1458d47e45122264}{00360}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_font_defaults_panel_a8fc980938694727d1458d47e45122264}{FontDefaultsPanel::SetSubTitleColor}}(\ wxColour\ color\ )\ \{}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00361}00361\ \ \ \ \ m\_subTitleColorPicker-\/>SetColour(\ color\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00362}00362\ \}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00363}00363\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00364}00364\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00365}00365\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00366}\mbox{\hyperlink{class_font_defaults_panel_aee317325c32136e20b34117938cd19f1}{00366}}\ wxFont\ \mbox{\hyperlink{class_font_defaults_panel_aee317325c32136e20b34117938cd19f1}{FontDefaultsPanel::GetNbrFont}}(\ )\ \{}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00367}00367\ \ \ \ \ \textcolor{keywordflow}{return}\ m\_nbrFontPicker-\/>GetSelectedFont(\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00368}00368\ \}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00369}00369\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00370}00370\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00371}00371\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00372}\mbox{\hyperlink{class_font_defaults_panel_a8a1acbebf6535b62adaf0f1ecbab2a49}{00372}}\ wxFont\ \mbox{\hyperlink{class_font_defaults_panel_a8a1acbebf6535b62adaf0f1ecbab2a49}{FontDefaultsPanel::GetNameFont}}(\ )\ \{}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00373}00373\ \ \ \ \ \textcolor{keywordflow}{return}\ m\_nameFontPicker-\/>GetSelectedFont(\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00374}00374\ \}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00375}00375\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00376}00376\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00377}00377\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00378}\mbox{\hyperlink{class_font_defaults_panel_a703307bc54ed35ed69118f794588dc9c}{00378}}\ wxColour\ \mbox{\hyperlink{class_font_defaults_panel_a703307bc54ed35ed69118f794588dc9c}{FontDefaultsPanel::GetNameColor}}(\ )\ \{}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00379}00379\ \ \ \ \ \textcolor{keywordflow}{return}\ m\_nameColorPicker-\/>GetColour(\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00380}00380\ \}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00381}00381\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00382}00382\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00383}00383\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00384}\mbox{\hyperlink{class_font_defaults_panel_aa920f2b1d9805058eaff1a8f509da7cf}{00384}}\ wxColour\ \mbox{\hyperlink{class_font_defaults_panel_aa920f2b1d9805058eaff1a8f509da7cf}{FontDefaultsPanel::GetNbrColor}}(\ )\ \{}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00385}00385\ \ \ \ \ \textcolor{keywordflow}{return}\ m\_nbrColorPicker-\/>GetColour(\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00386}00386\ \}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00387}00387\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00388}00388\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00389}00389\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00390}\mbox{\hyperlink{class_font_defaults_panel_aa780af8e4a69f0f18ec82dd819353a01}{00390}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_font_defaults_panel_aa780af8e4a69f0f18ec82dd819353a01}{FontDefaultsPanel::SetNbrFont}}(\ wxFont\ font\ )\ \{}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00391}00391\ \ \ \ \ m\_nbrFontPicker-\/>SetSelectedFont(\ font\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00392}00392\ \}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00393}00393\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00394}00394\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00395}00395\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00396}\mbox{\hyperlink{class_font_defaults_panel_a60d378b9225ce169071248e9f6f1c95f}{00396}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_font_defaults_panel_a60d378b9225ce169071248e9f6f1c95f}{FontDefaultsPanel::SetNbrColor}}(\ wxColour\ color\ )\ \{}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00397}00397\ \ \ \ \ m\_nbrColorPicker-\/>SetColour(\ color\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00398}00398\ \}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00399}00399\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00400}00400\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00401}00401\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00402}\mbox{\hyperlink{class_font_defaults_panel_a10a155347892d196eb223055abe23150}{00402}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_font_defaults_panel_a10a155347892d196eb223055abe23150}{FontDefaultsPanel::OnNbrDefaultClick}}(\ wxCommandEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00403}00403\ \{}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00404}00404\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00405}00405\ \ \ \ \ \textcolor{keywordtype}{int}\ ndx\ =\ \mbox{\hyperlink{_defs_8cpp_a22c90d4148252ff1fbca6b40d3312b23}{GetSettings}}(\ )-\/>\mbox{\hyperlink{class_utils_1_1_settings_aba352b97853a1ddad7e85297060b780c}{GetFontNdxPreference}}(\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4a0d94aa6c52078cbb63ce531ed26140b2}{Design::AT\_NbrFontType}}\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00406}00406\ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_font_list}{Utils::FontList}}*\ fontList\ =\ \mbox{\hyperlink{_defs_8cpp_a580d17030a54e4a9a5493f5763d11e12}{GetFontList}}(\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00407}00407\ \ \ \ \ wxFont\ font\ =\ fontList-\/>\mbox{\hyperlink{class_utils_1_1_font_list_a5e142b46cb46ed693164f35fa368fe9b}{GetFont}}(\ ndx\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00408}00408\ \ \ \ \ wxColour\ color\ =\ fontList-\/>\mbox{\hyperlink{class_utils_1_1_font_list_ab7e4d2707d76c4edeb8ddb461dee8945}{GetColor}}(\ ndx\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00409}00409\ \ \ \ \ m\_nbrFontPicker-\/>SetSelectedFont(\ font\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00410}00410\ \ \ \ \ m\_nbrColorPicker-\/>SetColour(\ color\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00411}00411\ \ \ \ \ \mbox{\hyperlink{namespace_design_aaf913dbe97a6c57862a852f79cb54404}{Design::GetAlbum}}(\ )-\/>\mbox{\hyperlink{class_design_1_1_album_a3c637bec920627a2ffea6f83dbde03e2}{SetFont}}(\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4a0d94aa6c52078cbb63ce531ed26140b2}{Design::AT\_NbrFontType}},\ font,\ color\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00412}00412\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00413}00413\ \}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00414}00414\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00415}00415\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00416}00416\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00417}\mbox{\hyperlink{class_font_defaults_panel_ab710d1ca1be86b28ef119f979a6b3a72}{00417}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_font_defaults_panel_ab710d1ca1be86b28ef119f979a6b3a72}{FontDefaultsPanel::OnNameDefaultClick}}(\ wxCommandEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00418}00418\ \{}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00419}00419\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00420}00420\ \ \ \ \ \textcolor{keywordtype}{int}\ ndx\ =\ \mbox{\hyperlink{_defs_8cpp_a22c90d4148252ff1fbca6b40d3312b23}{GetSettings}}(\ )-\/>\mbox{\hyperlink{class_utils_1_1_settings_aba352b97853a1ddad7e85297060b780c}{GetFontNdxPreference}}(\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4a0d94aa6c52078cbb63ce531ed26140b2}{Design::AT\_NbrFontType}}\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00421}00421\ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_font_list}{Utils::FontList}}*\ fontList\ =\ \mbox{\hyperlink{_defs_8cpp_a580d17030a54e4a9a5493f5763d11e12}{GetFontList}}(\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00422}00422\ \ \ \ \ wxFont\ font\ =\ fontList-\/>\mbox{\hyperlink{class_utils_1_1_font_list_a5e142b46cb46ed693164f35fa368fe9b}{GetFont}}(\ ndx\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00423}00423\ \ \ \ \ wxColour\ color\ =\ fontList-\/>\mbox{\hyperlink{class_utils_1_1_font_list_ab7e4d2707d76c4edeb8ddb461dee8945}{GetColor}}(\ ndx\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00424}00424\ \ \ \ \ m\_nameFontPicker-\/>SetSelectedFont(\ font\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00425}00425\ \ \ \ \ m\_nameColorPicker-\/>SetColour(\ color\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00426}00426\ \ \ \ \ \mbox{\hyperlink{namespace_design_aaf913dbe97a6c57862a852f79cb54404}{Design::GetAlbum}}(\ )-\/>\mbox{\hyperlink{class_design_1_1_album_a3c637bec920627a2ffea6f83dbde03e2}{SetFont}}(\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4a7a0c5cdeb48aceab9b0167ab84cbcb27}{Design::AT\_NameFontType}},\ font,\ color\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00427}00427\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00428}00428\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00429}00429\ \}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00430}00430\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00431}00431\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00432}00432\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00433}\mbox{\hyperlink{class_font_defaults_panel_ab1cc80124dfd62841d840ddd59808187}{00433}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_font_defaults_panel_ab1cc80124dfd62841d840ddd59808187}{FontDefaultsPanel::OnNbrFontPicker}}(\ wxFontPickerEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00434}00434\ \{}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00435}00435\ \ \ \ \ \mbox{\hyperlink{namespace_design_aaf913dbe97a6c57862a852f79cb54404}{Design::GetAlbum}}(\ )-\/>\mbox{\hyperlink{class_design_1_1_album_a3c637bec920627a2ffea6f83dbde03e2}{SetFont}}(\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4a0d94aa6c52078cbb63ce531ed26140b2}{Design::AT\_NbrFontType}},\ \mbox{\hyperlink{class_font_defaults_panel_aee317325c32136e20b34117938cd19f1}{GetNbrFont}}(\ ),\ \mbox{\hyperlink{class_font_defaults_panel_aa920f2b1d9805058eaff1a8f509da7cf}{GetNbrColor}}(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00436}00436\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00437}00437\ \}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00438}00438\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00439}00439\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00440}00440\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00441}\mbox{\hyperlink{class_font_defaults_panel_a588997111cbbcd7b554bcce92aa5e6ad}{00441}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_font_defaults_panel_a588997111cbbcd7b554bcce92aa5e6ad}{FontDefaultsPanel::OnNameColorPicker}}(\ wxColourPickerEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00442}00442\ \{}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00443}00443\ \ \ \ \ \mbox{\hyperlink{namespace_design_aaf913dbe97a6c57862a852f79cb54404}{Design::GetAlbum}}(\ )-\/>\mbox{\hyperlink{class_design_1_1_album_a3c637bec920627a2ffea6f83dbde03e2}{SetFont}}(\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4a7a0c5cdeb48aceab9b0167ab84cbcb27}{Design::AT\_NameFontType}},\ \mbox{\hyperlink{class_font_defaults_panel_a8a1acbebf6535b62adaf0f1ecbab2a49}{GetNameFont}}(\ ),\ \mbox{\hyperlink{class_font_defaults_panel_a703307bc54ed35ed69118f794588dc9c}{GetNameColor}}(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00444}00444\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00445}00445\ \}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00446}00446\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00447}00447\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00448}00448\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00449}\mbox{\hyperlink{class_font_defaults_panel_ad5e4cea59e4e0b7317c124e094822f67}{00449}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_font_defaults_panel_ad5e4cea59e4e0b7317c124e094822f67}{FontDefaultsPanel::OnNbrColorPicker}}(\ wxColourPickerEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00450}00450\ \{}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00451}00451\ \ \ \ \ \mbox{\hyperlink{namespace_design_aaf913dbe97a6c57862a852f79cb54404}{Design::GetAlbum}}(\ )-\/>\mbox{\hyperlink{class_design_1_1_album_a3c637bec920627a2ffea6f83dbde03e2}{SetFont}}(\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4a0d94aa6c52078cbb63ce531ed26140b2}{Design::AT\_NbrFontType}},\ \mbox{\hyperlink{class_font_defaults_panel_aee317325c32136e20b34117938cd19f1}{GetNbrFont}}(\ ),\ \mbox{\hyperlink{class_font_defaults_panel_aa920f2b1d9805058eaff1a8f509da7cf}{GetNbrColor}}(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00452}00452\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00453}00453\ \}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00454}00454\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00455}00455\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00456}00456\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00457}\mbox{\hyperlink{class_font_defaults_panel_a9e12a565a4337ba0954cf9d1ba73cd6d}{00457}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_font_defaults_panel_a9e12a565a4337ba0954cf9d1ba73cd6d}{FontDefaultsPanel::OnNameFontPicker}}(\ wxFontPickerEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00458}00458\ \{}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00459}00459\ \ \ \ \ \mbox{\hyperlink{namespace_design_aaf913dbe97a6c57862a852f79cb54404}{Design::GetAlbum}}(\ )-\/>\mbox{\hyperlink{class_design_1_1_album_a3c637bec920627a2ffea6f83dbde03e2}{SetFont}}(\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4a7a0c5cdeb48aceab9b0167ab84cbcb27}{Design::AT\_NameFontType}},\ \mbox{\hyperlink{class_font_defaults_panel_a8a1acbebf6535b62adaf0f1ecbab2a49}{GetNameFont}}(\ ),\ \mbox{\hyperlink{class_font_defaults_panel_a703307bc54ed35ed69118f794588dc9c}{GetNameColor}}(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00460}00460\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00461}00461\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00462}00462\ \}}
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00463}00463\ }
+\DoxyCodeLine{\Hypertarget{_font_defaults_panel_8cpp_source_l00464}00464\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+
+\end{DoxyCode}

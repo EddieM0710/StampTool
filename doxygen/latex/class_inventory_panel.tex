@@ -1,0 +1,483 @@
+\doxysection{Inventory\+Panel Class Reference}
+\hypertarget{class_inventory_panel}{}\label{class_inventory_panel}\index{InventoryPanel@{InventoryPanel}}
+
+
+{\ttfamily \#include $<$Inventory\+Panel.\+h$>$}
+
+Inheritance diagram for Inventory\+Panel\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_inventory_panel}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{class_inventory_panel_a4488a74024e15f9e59a297f9988c3743}{Inventory\+Panel\+Gui\+Defs}} \{ \newline
+\mbox{\hyperlink{class_inventory_panel_a4488a74024e15f9e59a297f9988c3743a21f06a0f2e0b2726bf9b8753b19a73ea}{ID\+\_\+\+INVENTORYGRID}} = ID\+\_\+\+INVENTORYPANEL + 1
+, \mbox{\hyperlink{class_inventory_panel_a4488a74024e15f9e59a297f9988c3743a9d88d10db1d78e9f471a0ca4bbb16242}{ID\+\_\+\+COLLECTIONALLBUTTON}}
+, \mbox{\hyperlink{class_inventory_panel_a4488a74024e15f9e59a297f9988c3743ad6f6f05f2a8c111b11a241808e1b801e}{ID\+\_\+\+COLLECTIONCLEARBUTTON}}
+, \mbox{\hyperlink{class_inventory_panel_a4488a74024e15f9e59a297f9988c3743a954c7eceeee0b860547a965bcbc10507}{ID\+\_\+\+COLLECTIONLISTBOX}}
+, \newline
+\mbox{\hyperlink{class_inventory_panel_a4488a74024e15f9e59a297f9988c3743a538f051edda9c9d316a6d7c7e648ed31}{ID\+\_\+\+COLLECTIONCHOICE}}
+, \mbox{\hyperlink{class_inventory_panel_a4488a74024e15f9e59a297f9988c3743ad6844a8219f9d7c939a049a283ae779d}{ID\+\_\+\+Add\+Item}}
+, \mbox{\hyperlink{class_inventory_panel_a4488a74024e15f9e59a297f9988c3743a3c7ea47d302363a504dfaa91506c42fe}{ID\+\_\+\+Delete\+Item}}
+, \mbox{\hyperlink{class_inventory_panel_a4488a74024e15f9e59a297f9988c3743afb9fc22d6dcd4a0ad6d34d7666e93b85}{ID\+\_\+\+Move\+Item\+Up}}
+, \newline
+\mbox{\hyperlink{class_inventory_panel_a4488a74024e15f9e59a297f9988c3743a15df14740b7a29d30635347f0e85ec3b}{ID\+\_\+\+Move\+Item\+Down}}
+, \mbox{\hyperlink{class_inventory_panel_a4488a74024e15f9e59a297f9988c3743afb5622e1c351de3cc7ebbde6ab141d41}{ID\+\_\+\+Move\+Item\+Top}}
+, \mbox{\hyperlink{class_inventory_panel_a4488a74024e15f9e59a297f9988c3743aabae65ed17889da51a54d8db59122003}{ID\+\_\+\+Move\+Item\+Bottom}}
+, \mbox{\hyperlink{class_inventory_panel_a4488a74024e15f9e59a297f9988c3743ab3a4be7ce1c8746a5820cb22451d721b}{ID\+\_\+\+Move}}
+, \newline
+\mbox{\hyperlink{class_inventory_panel_a4488a74024e15f9e59a297f9988c3743ae8b45cd8c4560067ecad3ce522bb5d5f}{ID\+\_\+\+Last}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_inventory_panel_ad332082a7a9acbfeb242a00e79e40f1d}{Inventory\+Panel}} ()
+\item 
+\mbox{\hyperlink{class_inventory_panel_ae4c2100070c0731f2bfe02c35bd60dd2}{Inventory\+Panel}} (wx\+Window \texorpdfstring{$\ast$}{*}parent, wx\+Window\+ID id=\mbox{\hyperlink{_inventory_panel_8h_a45d2366967b5a136b6f19b721b47efcc}{SYMBOL\+\_\+\+INVENTORYPANEL\+\_\+\+IDNAME}}, const wx\+Point \&pos=\mbox{\hyperlink{_inventory_panel_8h_a5ff23d1b2263e7722c902345e0aff115}{SYMBOL\+\_\+\+INVENTORYPANEL\+\_\+\+POSITION}}, const wx\+Size \&size=\mbox{\hyperlink{_inventory_panel_8h_ae2038710c3fc4950cbaceff6d83abf07}{SYMBOL\+\_\+\+INVENTORYPANEL\+\_\+\+SIZE}}, long style=\mbox{\hyperlink{_inventory_panel_8h_a879d1676f4beb2599d95da9c07de654a}{SYMBOL\+\_\+\+INVENTORYPANEL\+\_\+\+STYLE}})
+\item 
+bool \mbox{\hyperlink{class_inventory_panel_a7cd6ab37183ed589376bc77c67521042}{Create}} (wx\+Window \texorpdfstring{$\ast$}{*}parent, wx\+Window\+ID id=\mbox{\hyperlink{_inventory_panel_8h_a45d2366967b5a136b6f19b721b47efcc}{SYMBOL\+\_\+\+INVENTORYPANEL\+\_\+\+IDNAME}}, const wx\+Point \&pos=\mbox{\hyperlink{_inventory_panel_8h_a5ff23d1b2263e7722c902345e0aff115}{SYMBOL\+\_\+\+INVENTORYPANEL\+\_\+\+POSITION}}, const wx\+Size \&size=\mbox{\hyperlink{_inventory_panel_8h_ae2038710c3fc4950cbaceff6d83abf07}{SYMBOL\+\_\+\+INVENTORYPANEL\+\_\+\+SIZE}}, long style=\mbox{\hyperlink{_inventory_panel_8h_a879d1676f4beb2599d95da9c07de654a}{SYMBOL\+\_\+\+INVENTORYPANEL\+\_\+\+STYLE}})
+\item 
+\mbox{\hyperlink{class_inventory_panel_a80183d570e46b36d5264d3048de02947}{\texorpdfstring{$\sim$}{\string~}\+Inventory\+Panel}} ()
+\item 
+int \mbox{\hyperlink{class_inventory_panel_a90556b32b7669d2984f7b2cd25598a0a}{Add\+Row}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}ele)
+\item 
+wx\+Xml\+Node \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_inventory_panel_aad7bf4fa6da8c40a9723ebcdfd9b0cae}{Add\+New\+Inventory\+Item}} ()
+\item 
+void \mbox{\hyperlink{class_inventory_panel_a5676dc9b40f559d3c5a919cc0449219c}{Clear}} ()
+\item 
+void \mbox{\hyperlink{class_inventory_panel_a2d02483e49adac8215635b3696f71df5}{Create\+Controls}} ()
+\item 
+int \mbox{\hyperlink{class_inventory_panel_aa89191b9631db4df49fe1863d41e4065}{Get\+Checked\+Collection\+Items}} ()
+\item 
+void \mbox{\hyperlink{class_inventory_panel_abb8d5cf4fab651908893acc55a460dae}{Init}} ()
+\item 
+void \mbox{\hyperlink{class_inventory_panel_a10e685f8a05074504d88cab3b7912f03}{Init\+Row}} (int row)
+\item 
+int \mbox{\hyperlink{class_inventory_panel_a35ef013fbf1bef88171e61a3270d9bc7}{Make\+Bit\+Patern}} (wx\+Array\+Int \&array)
+\item 
+void \mbox{\hyperlink{class_inventory_panel_a261264add0cf0301b22409649a01320c}{On\+Cell\+Changed}} (wx\+Grid\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_inventory_panel_a36e9c772bbb0dc4de9451654e7235971}{On\+Collection\+Changed}} (wx\+Command\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_inventory_panel_accc610c5cb0c75cad8918fa904a13831}{On\+Context\+Popup}} (wx\+Command\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_inventory_panel_ad15789ac994f698506c7a2a6e6578f09}{On\+Context\+Menu}} (wx\+Context\+Menu\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_inventory_panel_a5860333abe349b2c09afac321852213d}{On\+Description\+Changed}} (wx\+Command\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_inventory_panel_a1460f4f6fb0e792d2065bab030e82d46}{On\+Location\+Changed}} (wx\+Command\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_inventory_panel_abd18af8d9374302674ebc78aa2a65f4d}{On\+Row\+Begin\+Move}} (wx\+Grid\+Event \&ev)
+\item 
+void \mbox{\hyperlink{class_inventory_panel_a8bf8c8a571c10544e7069b0d329614de}{Set\+Data\+Editable}} (bool val)
+\item 
+bool \mbox{\hyperlink{class_inventory_panel_ae57b4cf06aea0f08834842d52857377d}{Set\+Collection\+List\+Ctrl}} (\mbox{\hyperlink{class_inventory_1_1_collection}{Inventory\+::\+Collection}} \texorpdfstring{$\ast$}{*}collection)
+\item 
+void \mbox{\hyperlink{class_inventory_panel_a71c474ba9b209d8499e15a19d4a175f0}{Show\+Row}} (int row)
+\item 
+void \mbox{\hyperlink{class_inventory_panel_a21d0306a68ff83f1a8ef509997222b68}{Update\+Collection\+Choice}} ()
+\item 
+void \mbox{\hyperlink{class_inventory_panel_a280fba546d10ba3e4d258d452c3edde0}{Update\+Inventory}} ()
+\item 
+void \mbox{\hyperlink{class_inventory_panel_aa8388e0c374272a4d6ac637bc3b72619}{Update\+Inventory\+Grid}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_helper_panel}{Helper\+Panel}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_helper_panel_a1a0380f0351c504df04ccd0924c72e18}{Helper\+Panel}} ()
+\item 
+\mbox{\hyperlink{class_helper_panel_a709e26a2b2b12b98c4b689b87cd4a169}{Helper\+Panel}} (wx\+Window \texorpdfstring{$\ast$}{*}parent, wx\+Window\+ID id=\mbox{\hyperlink{_helper_panel_8h_a43ef01d6303731cc166949270842b4d7}{SYMBOL\+\_\+\+HELPERPANEL\+\_\+\+IDNAME}}, const wx\+String \&caption=\mbox{\hyperlink{_helper_panel_8h_a275f45e4abf505d4c167b95b1782e8b2}{SYMBOL\+\_\+\+HELPERPANEL\+\_\+\+TITLE}}, const wx\+Point \&pos=\mbox{\hyperlink{_helper_panel_8h_ad0f2b83a41d1b39a2acbd31d28e7ffd3}{SYMBOL\+\_\+\+HELPERPANEL\+\_\+\+POSITION}}, const wx\+Size \&size=\mbox{\hyperlink{_helper_panel_8h_a5d91705fcb0aab6893c9748c1c23e631}{SYMBOL\+\_\+\+HELPERPANEL\+\_\+\+SIZE}}, long style=\mbox{\hyperlink{_helper_panel_8h_afb122ebc3d5dd65dfa6e31a66a09468a}{SYMBOL\+\_\+\+HELPERPANEL\+\_\+\+STYLE}})
+\item 
+\mbox{\hyperlink{class_helper_panel_aa1048ceba004a9d78dd3dfdfd7235d30}{\texorpdfstring{$\sim$}{\string~}\+Helper\+Panel}} ()
+\item 
+bool \mbox{\hyperlink{class_helper_panel_ac472c619263683e2623f52fefe4f5429}{Create}} (wx\+Window \texorpdfstring{$\ast$}{*}parent, wx\+Window\+ID id=\mbox{\hyperlink{_helper_panel_8h_a43ef01d6303731cc166949270842b4d7}{SYMBOL\+\_\+\+HELPERPANEL\+\_\+\+IDNAME}}, const wx\+String \&caption=\mbox{\hyperlink{_helper_panel_8h_a275f45e4abf505d4c167b95b1782e8b2}{SYMBOL\+\_\+\+HELPERPANEL\+\_\+\+TITLE}}, const wx\+Point \&pos=\mbox{\hyperlink{_helper_panel_8h_ad0f2b83a41d1b39a2acbd31d28e7ffd3}{SYMBOL\+\_\+\+HELPERPANEL\+\_\+\+POSITION}}, const wx\+Size \&size=\mbox{\hyperlink{_helper_panel_8h_a5d91705fcb0aab6893c9748c1c23e631}{SYMBOL\+\_\+\+HELPERPANEL\+\_\+\+SIZE}}, long style=\mbox{\hyperlink{_helper_panel_8h_afb122ebc3d5dd65dfa6e31a66a09468a}{SYMBOL\+\_\+\+HELPERPANEL\+\_\+\+STYLE}})
+\item 
+void \mbox{\hyperlink{class_helper_panel_affb4be8df264e76bb3a7d672c2ca79b1}{Create\+Controls}} ()
+\item 
+void \mbox{\hyperlink{class_helper_panel_a01583cec05afb087892fee8f5f660635}{Init}} ()
+\item 
+wx\+Static\+Box \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_helper_panel_a06667439fcca3f8a4b0fab10db82506e}{Setup\+Box\+Sizer}} (wx\+Window \texorpdfstring{$\ast$}{*}parent, wx\+Box\+Sizer \texorpdfstring{$\ast$}{*}in\+Sizer, wx\+String name, int \&last\+ID, wx\+Box\+Sizer \texorpdfstring{$\ast$}{*}\&box\+Sizer, wx\+Orientation orientation)
+\item 
+wx\+Check\+Box \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_helper_panel_a1b4758d163544a7a2c73a37f8bd6d422}{Setup\+Check\+Box}} (wx\+Window \texorpdfstring{$\ast$}{*}parent, wx\+Box\+Sizer \texorpdfstring{$\ast$}{*}sizer, int \&last\+ID, wx\+String label, wx\+Object\+Event\+Function event\+Handler)
+\item 
+wx\+Check\+List\+Box \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_helper_panel_a61eec7f5e1bd6d2bb0d9a12a6d31c91c}{Setup\+Check\+List\+Box}} (wx\+Window \texorpdfstring{$\ast$}{*}parent, wx\+Box\+Sizer \texorpdfstring{$\ast$}{*}in\+Sizer, int \&last\+ID, wx\+String label, wx\+Array\+String \&array, wx\+Object\+Event\+Function all\+Button\+Event\+Handler, wx\+Object\+Event\+Function clear\+Button\+Event\+Handler)
+\item 
+wx\+Choice \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_helper_panel_adeabf7f045a9b29dfe04ea9e25361682}{Setup\+Choice}} (wx\+Window \texorpdfstring{$\ast$}{*}parent, wx\+Box\+Sizer \texorpdfstring{$\ast$}{*}sizer, int \&last\+ID, wx\+String label, wx\+Array\+String choice\+Strings, wx\+Object\+Event\+Function event\+Handler)
+\item 
+\mbox{\hyperlink{class_font_picker}{Font\+Picker}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_helper_panel_ac79099a8adb61042c70b2aaa474b6491}{Setup\+Font\+Picker}} (wx\+Window \texorpdfstring{$\ast$}{*}parent, wx\+Box\+Sizer \texorpdfstring{$\ast$}{*}vertical\+Sizer, int \&last\+ID, wx\+String static\+Text, wx\+String button\+Text, wx\+Font\+Picker\+Ctrl \texorpdfstring{$\ast$}{*}\&font\+Ctrl, wx\+Colour\+Picker\+Ctrl \texorpdfstring{$\ast$}{*}\&color\+Ctrl, wx\+Object\+Event\+Function font\+Picker, wx\+Object\+Event\+Function color\+Picker, wx\+Object\+Event\+Function default\+Button\+Handler)
+\item 
+wx\+Text\+Ctrl \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_helper_panel_acdac2c77789965bc2e300f50c66f7f11}{Setup\+Label\+Text}} (wx\+Window \texorpdfstring{$\ast$}{*}parent, wx\+Box\+Sizer \texorpdfstring{$\ast$}{*}vertical\+Sizer, int \&last\+ID, wx\+String label, bool grow, wx\+Object\+Event\+Function event\+Handler)
+\item 
+wx\+Text\+Ctrl \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_helper_panel_a5df2fc90855ddcb14834784daa120249}{Setup\+Multiline\+Labeled\+Text}} (wx\+Window \texorpdfstring{$\ast$}{*}parent, wx\+Box\+Sizer \texorpdfstring{$\ast$}{*}in\+Sizer, int \&last\+ID, wx\+String label, bool grow, wx\+Object\+Event\+Function event\+Handler)
+\item 
+wx\+Radio\+Button \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_helper_panel_a7b5279a0f4b91c9f19fbd088edceada3}{Setup\+Radio\+Button}} (wx\+Window \texorpdfstring{$\ast$}{*}parent, wx\+Box\+Sizer \texorpdfstring{$\ast$}{*}sizer, int \&last\+ID, wx\+String label, bool init\+Value, wx\+Object\+Event\+Function event\+Handler)
+\item 
+\mbox{\hyperlink{struct_helper_panel_1_1_title_helper}{Title\+Helper}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_helper_panel_a11bffa5d90019ee00eaff4edf86832a2}{Setup\+Title\+Helper}} (wx\+Window \texorpdfstring{$\ast$}{*}parent, wx\+Box\+Sizer \texorpdfstring{$\ast$}{*}vertical\+Sizer, int \&id\+Last, int style=\mbox{\hyperlink{_helper_panel_8h_a5b55945efe6cc32320681102c8343296}{Default\+Title\+Helper\+Style}}, wx\+Object\+Event\+Function title\+Check\+Box\+Event\+Handler=(wx\+Event\+Function) 0, wx\+Object\+Event\+Function title\+Event\+Handler=(wx\+Event\+Function) 0, wx\+Object\+Event\+Function sub\+Title\+Check\+Box\+Eevent\+Handler=(wx\+Event\+Function) 0, wx\+Object\+Event\+Function sub\+Title\+Event\+Handler=(wx\+Event\+Function) 0)
+\item 
+void \mbox{\hyperlink{class_helper_panel_a106781fc496e192caeb765add7bd8a30}{Update\+Sub\+Title\+State}} (\mbox{\hyperlink{struct_helper_panel_1_1_title_helper}{Helper\+Panel\+::\+Title\+Helper}} \texorpdfstring{$\ast$}{*}title\+Helper)
+\item 
+void \mbox{\hyperlink{class_helper_panel_a97f0816a8c7870a3ce034f07f58e16fa}{Update\+Title\+State}} (\mbox{\hyperlink{struct_helper_panel_1_1_title_helper}{Helper\+Panel\+::\+Title\+Helper}} \texorpdfstring{$\ast$}{*}title\+Helper)
+\item 
+void \mbox{\hyperlink{class_helper_panel_aeb681ca7182038b57f0c604e06c86b19}{Set\+Sub\+Title\+Checkbox\+Value}} (\mbox{\hyperlink{struct_helper_panel_1_1_title_helper}{Helper\+Panel\+::\+Title\+Helper}} \texorpdfstring{$\ast$}{*}title\+Helper, bool state)
+\item 
+void \mbox{\hyperlink{class_helper_panel_a52772322bcf8d12a272fa8096da0e799}{Set\+Title\+Checkbox\+Value}} (\mbox{\hyperlink{struct_helper_panel_1_1_title_helper}{Helper\+Panel\+::\+Title\+Helper}} \texorpdfstring{$\ast$}{*}title\+Helper, bool state)
+\item 
+wx\+Static\+Box \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_helper_panel_a12058e5b1f127f47cef7d15b9f4d7039}{Setup\+Static\+Box}} (wx\+Window \texorpdfstring{$\ast$}{*}parent, wx\+Box\+Sizer \texorpdfstring{$\ast$}{*}in\+Sizer, wx\+Box\+Sizer \texorpdfstring{$\ast$}{*}out\+Box\+Sizer)
+\item 
+void \mbox{\hyperlink{class_helper_panel_ad1e7b95d260c42031c75899e0c68cd7c}{Horizontal\+Spacer}} (wx\+Box\+Sizer \texorpdfstring{$\ast$}{*}in\+Sizer)
+\item 
+void \mbox{\hyperlink{class_helper_panel_abb81bec04632873569caa34eff4ed4f0}{Vertical\+Spacer}} (wx\+Box\+Sizer \texorpdfstring{$\ast$}{*}in\+Sizer)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static bool \mbox{\hyperlink{class_inventory_panel_a48bed673d55a5453b6662fb3beacc627}{Show\+Tool\+Tips}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_inventory_panel_8h_source_l00058}{58}} of file \mbox{\hyperlink{_inventory_panel_8h_source}{Inventory\+Panel.\+h}}.
+
+
+
+\label{doc-enum-members}
+\Hypertarget{class_inventory_panel_doc-enum-members}
+\doxysubsection{Member Enumeration Documentation}
+\Hypertarget{class_inventory_panel_a4488a74024e15f9e59a297f9988c3743}\index{InventoryPanel@{InventoryPanel}!InventoryPanelGuiDefs@{InventoryPanelGuiDefs}}
+\index{InventoryPanelGuiDefs@{InventoryPanelGuiDefs}!InventoryPanel@{InventoryPanel}}
+\doxysubsubsection{\texorpdfstring{InventoryPanelGuiDefs}{InventoryPanelGuiDefs}}
+{\footnotesize\ttfamily \label{class_inventory_panel_a4488a74024e15f9e59a297f9988c3743} 
+enum \mbox{\hyperlink{class_inventory_panel_a4488a74024e15f9e59a297f9988c3743}{Inventory\+Panel\+::\+Inventory\+Panel\+Gui\+Defs}}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_INVENTORYGRID@{ID\_INVENTORYGRID}!InventoryPanel@{InventoryPanel}}\index{InventoryPanel@{InventoryPanel}!ID\_INVENTORYGRID@{ID\_INVENTORYGRID}}}\Hypertarget{class_inventory_panel_a4488a74024e15f9e59a297f9988c3743a21f06a0f2e0b2726bf9b8753b19a73ea}\label{class_inventory_panel_a4488a74024e15f9e59a297f9988c3743a21f06a0f2e0b2726bf9b8753b19a73ea} 
+ID\+\_\+\+INVENTORYGRID&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_COLLECTIONALLBUTTON@{ID\_COLLECTIONALLBUTTON}!InventoryPanel@{InventoryPanel}}\index{InventoryPanel@{InventoryPanel}!ID\_COLLECTIONALLBUTTON@{ID\_COLLECTIONALLBUTTON}}}\Hypertarget{class_inventory_panel_a4488a74024e15f9e59a297f9988c3743a9d88d10db1d78e9f471a0ca4bbb16242}\label{class_inventory_panel_a4488a74024e15f9e59a297f9988c3743a9d88d10db1d78e9f471a0ca4bbb16242} 
+ID\+\_\+\+COLLECTIONALLBUTTON&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_COLLECTIONCLEARBUTTON@{ID\_COLLECTIONCLEARBUTTON}!InventoryPanel@{InventoryPanel}}\index{InventoryPanel@{InventoryPanel}!ID\_COLLECTIONCLEARBUTTON@{ID\_COLLECTIONCLEARBUTTON}}}\Hypertarget{class_inventory_panel_a4488a74024e15f9e59a297f9988c3743ad6f6f05f2a8c111b11a241808e1b801e}\label{class_inventory_panel_a4488a74024e15f9e59a297f9988c3743ad6f6f05f2a8c111b11a241808e1b801e} 
+ID\+\_\+\+COLLECTIONCLEARBUTTON&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_COLLECTIONLISTBOX@{ID\_COLLECTIONLISTBOX}!InventoryPanel@{InventoryPanel}}\index{InventoryPanel@{InventoryPanel}!ID\_COLLECTIONLISTBOX@{ID\_COLLECTIONLISTBOX}}}\Hypertarget{class_inventory_panel_a4488a74024e15f9e59a297f9988c3743a954c7eceeee0b860547a965bcbc10507}\label{class_inventory_panel_a4488a74024e15f9e59a297f9988c3743a954c7eceeee0b860547a965bcbc10507} 
+ID\+\_\+\+COLLECTIONLISTBOX&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_COLLECTIONCHOICE@{ID\_COLLECTIONCHOICE}!InventoryPanel@{InventoryPanel}}\index{InventoryPanel@{InventoryPanel}!ID\_COLLECTIONCHOICE@{ID\_COLLECTIONCHOICE}}}\Hypertarget{class_inventory_panel_a4488a74024e15f9e59a297f9988c3743a538f051edda9c9d316a6d7c7e648ed31}\label{class_inventory_panel_a4488a74024e15f9e59a297f9988c3743a538f051edda9c9d316a6d7c7e648ed31} 
+ID\+\_\+\+COLLECTIONCHOICE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_AddItem@{ID\_AddItem}!InventoryPanel@{InventoryPanel}}\index{InventoryPanel@{InventoryPanel}!ID\_AddItem@{ID\_AddItem}}}\Hypertarget{class_inventory_panel_a4488a74024e15f9e59a297f9988c3743ad6844a8219f9d7c939a049a283ae779d}\label{class_inventory_panel_a4488a74024e15f9e59a297f9988c3743ad6844a8219f9d7c939a049a283ae779d} 
+ID\+\_\+\+Add\+Item&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_DeleteItem@{ID\_DeleteItem}!InventoryPanel@{InventoryPanel}}\index{InventoryPanel@{InventoryPanel}!ID\_DeleteItem@{ID\_DeleteItem}}}\Hypertarget{class_inventory_panel_a4488a74024e15f9e59a297f9988c3743a3c7ea47d302363a504dfaa91506c42fe}\label{class_inventory_panel_a4488a74024e15f9e59a297f9988c3743a3c7ea47d302363a504dfaa91506c42fe} 
+ID\+\_\+\+Delete\+Item&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_MoveItemUp@{ID\_MoveItemUp}!InventoryPanel@{InventoryPanel}}\index{InventoryPanel@{InventoryPanel}!ID\_MoveItemUp@{ID\_MoveItemUp}}}\Hypertarget{class_inventory_panel_a4488a74024e15f9e59a297f9988c3743afb9fc22d6dcd4a0ad6d34d7666e93b85}\label{class_inventory_panel_a4488a74024e15f9e59a297f9988c3743afb9fc22d6dcd4a0ad6d34d7666e93b85} 
+ID\+\_\+\+Move\+Item\+Up&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_MoveItemDown@{ID\_MoveItemDown}!InventoryPanel@{InventoryPanel}}\index{InventoryPanel@{InventoryPanel}!ID\_MoveItemDown@{ID\_MoveItemDown}}}\Hypertarget{class_inventory_panel_a4488a74024e15f9e59a297f9988c3743a15df14740b7a29d30635347f0e85ec3b}\label{class_inventory_panel_a4488a74024e15f9e59a297f9988c3743a15df14740b7a29d30635347f0e85ec3b} 
+ID\+\_\+\+Move\+Item\+Down&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_MoveItemTop@{ID\_MoveItemTop}!InventoryPanel@{InventoryPanel}}\index{InventoryPanel@{InventoryPanel}!ID\_MoveItemTop@{ID\_MoveItemTop}}}\Hypertarget{class_inventory_panel_a4488a74024e15f9e59a297f9988c3743afb5622e1c351de3cc7ebbde6ab141d41}\label{class_inventory_panel_a4488a74024e15f9e59a297f9988c3743afb5622e1c351de3cc7ebbde6ab141d41} 
+ID\+\_\+\+Move\+Item\+Top&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_MoveItemBottom@{ID\_MoveItemBottom}!InventoryPanel@{InventoryPanel}}\index{InventoryPanel@{InventoryPanel}!ID\_MoveItemBottom@{ID\_MoveItemBottom}}}\Hypertarget{class_inventory_panel_a4488a74024e15f9e59a297f9988c3743aabae65ed17889da51a54d8db59122003}\label{class_inventory_panel_a4488a74024e15f9e59a297f9988c3743aabae65ed17889da51a54d8db59122003} 
+ID\+\_\+\+Move\+Item\+Bottom&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_Move@{ID\_Move}!InventoryPanel@{InventoryPanel}}\index{InventoryPanel@{InventoryPanel}!ID\_Move@{ID\_Move}}}\Hypertarget{class_inventory_panel_a4488a74024e15f9e59a297f9988c3743ab3a4be7ce1c8746a5820cb22451d721b}\label{class_inventory_panel_a4488a74024e15f9e59a297f9988c3743ab3a4be7ce1c8746a5820cb22451d721b} 
+ID\+\_\+\+Move&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_Last@{ID\_Last}!InventoryPanel@{InventoryPanel}}\index{InventoryPanel@{InventoryPanel}!ID\_Last@{ID\_Last}}}\Hypertarget{class_inventory_panel_a4488a74024e15f9e59a297f9988c3743ae8b45cd8c4560067ecad3ce522bb5d5f}\label{class_inventory_panel_a4488a74024e15f9e59a297f9988c3743ae8b45cd8c4560067ecad3ce522bb5d5f} 
+ID\+\_\+\+Last&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{_inventory_panel_8h_source_l00064}{64}} of file \mbox{\hyperlink{_inventory_panel_8h_source}{Inventory\+Panel.\+h}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_inventory_panel_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_inventory_panel_ad332082a7a9acbfeb242a00e79e40f1d}\index{InventoryPanel@{InventoryPanel}!InventoryPanel@{InventoryPanel}}
+\index{InventoryPanel@{InventoryPanel}!InventoryPanel@{InventoryPanel}}
+\doxysubsubsection{\texorpdfstring{InventoryPanel()}{InventoryPanel()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_inventory_panel_ad332082a7a9acbfeb242a00e79e40f1d} 
+Inventory\+Panel\+::\+Inventory\+Panel (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_inventory_panel_8cpp_source_l00067}{67}} of file \mbox{\hyperlink{_inventory_panel_8cpp_source}{Inventory\+Panel.\+cpp}}.
+
+\Hypertarget{class_inventory_panel_ae4c2100070c0731f2bfe02c35bd60dd2}\index{InventoryPanel@{InventoryPanel}!InventoryPanel@{InventoryPanel}}
+\index{InventoryPanel@{InventoryPanel}!InventoryPanel@{InventoryPanel}}
+\doxysubsubsection{\texorpdfstring{InventoryPanel()}{InventoryPanel()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_inventory_panel_ae4c2100070c0731f2bfe02c35bd60dd2} 
+Inventory\+Panel\+::\+Inventory\+Panel (\begin{DoxyParamCaption}\item[{wx\+Window \texorpdfstring{$\ast$}{*}}]{parent}{, }\item[{wx\+Window\+ID}]{id}{ = {\ttfamily \mbox{\hyperlink{_inventory_panel_8h_a45d2366967b5a136b6f19b721b47efcc}{SYMBOL\+\_\+\+INVENTORYPANEL\+\_\+\+IDNAME}}}, }\item[{const wx\+Point \&}]{pos}{ = {\ttfamily \mbox{\hyperlink{_inventory_panel_8h_a5ff23d1b2263e7722c902345e0aff115}{SYMBOL\+\_\+\+INVENTORYPANEL\+\_\+\+POSITION}}}, }\item[{const wx\+Size \&}]{size}{ = {\ttfamily \mbox{\hyperlink{_inventory_panel_8h_ae2038710c3fc4950cbaceff6d83abf07}{SYMBOL\+\_\+\+INVENTORYPANEL\+\_\+\+SIZE}}}, }\item[{long}]{style}{ = {\ttfamily \mbox{\hyperlink{_inventory_panel_8h_a879d1676f4beb2599d95da9c07de654a}{SYMBOL\+\_\+\+INVENTORYPANEL\+\_\+\+STYLE}}}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_inventory_panel_8cpp_source_l00073}{73}} of file \mbox{\hyperlink{_inventory_panel_8cpp_source}{Inventory\+Panel.\+cpp}}.
+
+\Hypertarget{class_inventory_panel_a80183d570e46b36d5264d3048de02947}\index{InventoryPanel@{InventoryPanel}!````~InventoryPanel@{\texorpdfstring{$\sim$}{\string~}InventoryPanel}}
+\index{````~InventoryPanel@{\texorpdfstring{$\sim$}{\string~}InventoryPanel}!InventoryPanel@{InventoryPanel}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}InventoryPanel()}{\string~InventoryPanel()}}
+{\footnotesize\ttfamily \label{class_inventory_panel_a80183d570e46b36d5264d3048de02947} 
+Inventory\+Panel\+::\texorpdfstring{$\sim$}{\string~}\+Inventory\+Panel (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_inventory_panel_8cpp_source_l00100}{100}} of file \mbox{\hyperlink{_inventory_panel_8cpp_source}{Inventory\+Panel.\+cpp}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_inventory_panel_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_inventory_panel_aad7bf4fa6da8c40a9723ebcdfd9b0cae}\index{InventoryPanel@{InventoryPanel}!AddNewInventoryItem@{AddNewInventoryItem}}
+\index{AddNewInventoryItem@{AddNewInventoryItem}!InventoryPanel@{InventoryPanel}}
+\doxysubsubsection{\texorpdfstring{AddNewInventoryItem()}{AddNewInventoryItem()}}
+{\footnotesize\ttfamily \label{class_inventory_panel_aad7bf4fa6da8c40a9723ebcdfd9b0cae} 
+wx\+Xml\+Node \texorpdfstring{$\ast$}{*} Inventory\+Panel\+::\+Add\+New\+Inventory\+Item (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_inventory_panel_8cpp_source_l00122}{122}} of file \mbox{\hyperlink{_inventory_panel_8cpp_source}{Inventory\+Panel.\+cpp}}.
+
+\Hypertarget{class_inventory_panel_a90556b32b7669d2984f7b2cd25598a0a}\index{InventoryPanel@{InventoryPanel}!AddRow@{AddRow}}
+\index{AddRow@{AddRow}!InventoryPanel@{InventoryPanel}}
+\doxysubsubsection{\texorpdfstring{AddRow()}{AddRow()}}
+{\footnotesize\ttfamily \label{class_inventory_panel_a90556b32b7669d2984f7b2cd25598a0a} 
+int Inventory\+Panel\+::\+Add\+Row (\begin{DoxyParamCaption}\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{ele}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_inventory_panel_8cpp_source_l00107}{107}} of file \mbox{\hyperlink{_inventory_panel_8cpp_source}{Inventory\+Panel.\+cpp}}.
+
+\Hypertarget{class_inventory_panel_a5676dc9b40f559d3c5a919cc0449219c}\index{InventoryPanel@{InventoryPanel}!Clear@{Clear}}
+\index{Clear@{Clear}!InventoryPanel@{InventoryPanel}}
+\doxysubsubsection{\texorpdfstring{Clear()}{Clear()}}
+{\footnotesize\ttfamily \label{class_inventory_panel_a5676dc9b40f559d3c5a919cc0449219c} 
+void Inventory\+Panel\+::\+Clear (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\texorpdfstring{$<$}{<} list containing each of the entries
+
+Definition at line \mbox{\hyperlink{_inventory_panel_8cpp_source_l00137}{137}} of file \mbox{\hyperlink{_inventory_panel_8cpp_source}{Inventory\+Panel.\+cpp}}.
+
+\Hypertarget{class_inventory_panel_a7cd6ab37183ed589376bc77c67521042}\index{InventoryPanel@{InventoryPanel}!Create@{Create}}
+\index{Create@{Create}!InventoryPanel@{InventoryPanel}}
+\doxysubsubsection{\texorpdfstring{Create()}{Create()}}
+{\footnotesize\ttfamily \label{class_inventory_panel_a7cd6ab37183ed589376bc77c67521042} 
+bool Inventory\+Panel\+::\+Create (\begin{DoxyParamCaption}\item[{wx\+Window \texorpdfstring{$\ast$}{*}}]{parent}{, }\item[{wx\+Window\+ID}]{id}{ = {\ttfamily \mbox{\hyperlink{_inventory_panel_8h_a45d2366967b5a136b6f19b721b47efcc}{SYMBOL\+\_\+\+INVENTORYPANEL\+\_\+\+IDNAME}}}, }\item[{const wx\+Point \&}]{pos}{ = {\ttfamily \mbox{\hyperlink{_inventory_panel_8h_a5ff23d1b2263e7722c902345e0aff115}{SYMBOL\+\_\+\+INVENTORYPANEL\+\_\+\+POSITION}}}, }\item[{const wx\+Size \&}]{size}{ = {\ttfamily \mbox{\hyperlink{_inventory_panel_8h_ae2038710c3fc4950cbaceff6d83abf07}{SYMBOL\+\_\+\+INVENTORYPANEL\+\_\+\+SIZE}}}, }\item[{long}]{style}{ = {\ttfamily \mbox{\hyperlink{_inventory_panel_8h_a879d1676f4beb2599d95da9c07de654a}{SYMBOL\+\_\+\+INVENTORYPANEL\+\_\+\+STYLE}}}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_inventory_panel_8cpp_source_l00083}{83}} of file \mbox{\hyperlink{_inventory_panel_8cpp_source}{Inventory\+Panel.\+cpp}}.
+
+\Hypertarget{class_inventory_panel_a2d02483e49adac8215635b3696f71df5}\index{InventoryPanel@{InventoryPanel}!CreateControls@{CreateControls}}
+\index{CreateControls@{CreateControls}!InventoryPanel@{InventoryPanel}}
+\doxysubsubsection{\texorpdfstring{CreateControls()}{CreateControls()}}
+{\footnotesize\ttfamily \label{class_inventory_panel_a2d02483e49adac8215635b3696f71df5} 
+void Inventory\+Panel\+::\+Create\+Controls (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_inventory_panel_8cpp_source_l00145}{145}} of file \mbox{\hyperlink{_inventory_panel_8cpp_source}{Inventory\+Panel.\+cpp}}.
+
+\Hypertarget{class_inventory_panel_aa89191b9631db4df49fe1863d41e4065}\index{InventoryPanel@{InventoryPanel}!GetCheckedCollectionItems@{GetCheckedCollectionItems}}
+\index{GetCheckedCollectionItems@{GetCheckedCollectionItems}!InventoryPanel@{InventoryPanel}}
+\doxysubsubsection{\texorpdfstring{GetCheckedCollectionItems()}{GetCheckedCollectionItems()}}
+{\footnotesize\ttfamily \label{class_inventory_panel_aa89191b9631db4df49fe1863d41e4065} 
+int Inventory\+Panel\+::\+Get\+Checked\+Collection\+Items (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_inventory_panel_abb8d5cf4fab651908893acc55a460dae}\index{InventoryPanel@{InventoryPanel}!Init@{Init}}
+\index{Init@{Init}!InventoryPanel@{InventoryPanel}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily \label{class_inventory_panel_abb8d5cf4fab651908893acc55a460dae} 
+void Inventory\+Panel\+::\+Init (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_inventory_panel_8cpp_source_l00227}{227}} of file \mbox{\hyperlink{_inventory_panel_8cpp_source}{Inventory\+Panel.\+cpp}}.
+
+\Hypertarget{class_inventory_panel_a10e685f8a05074504d88cab3b7912f03}\index{InventoryPanel@{InventoryPanel}!InitRow@{InitRow}}
+\index{InitRow@{InitRow}!InventoryPanel@{InventoryPanel}}
+\doxysubsubsection{\texorpdfstring{InitRow()}{InitRow()}}
+{\footnotesize\ttfamily \label{class_inventory_panel_a10e685f8a05074504d88cab3b7912f03} 
+void Inventory\+Panel\+::\+Init\+Row (\begin{DoxyParamCaption}\item[{int}]{row}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_inventory_panel_8cpp_source_l00234}{234}} of file \mbox{\hyperlink{_inventory_panel_8cpp_source}{Inventory\+Panel.\+cpp}}.
+
+\Hypertarget{class_inventory_panel_a35ef013fbf1bef88171e61a3270d9bc7}\index{InventoryPanel@{InventoryPanel}!MakeBitPatern@{MakeBitPatern}}
+\index{MakeBitPatern@{MakeBitPatern}!InventoryPanel@{InventoryPanel}}
+\doxysubsubsection{\texorpdfstring{MakeBitPatern()}{MakeBitPatern()}}
+{\footnotesize\ttfamily \label{class_inventory_panel_a35ef013fbf1bef88171e61a3270d9bc7} 
+int Inventory\+Panel\+::\+Make\+Bit\+Patern (\begin{DoxyParamCaption}\item[{wx\+Array\+Int \&}]{array}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_inventory_panel_8cpp_source_l00245}{245}} of file \mbox{\hyperlink{_inventory_panel_8cpp_source}{Inventory\+Panel.\+cpp}}.
+
+\Hypertarget{class_inventory_panel_a261264add0cf0301b22409649a01320c}\index{InventoryPanel@{InventoryPanel}!OnCellChanged@{OnCellChanged}}
+\index{OnCellChanged@{OnCellChanged}!InventoryPanel@{InventoryPanel}}
+\doxysubsubsection{\texorpdfstring{OnCellChanged()}{OnCellChanged()}}
+{\footnotesize\ttfamily \label{class_inventory_panel_a261264add0cf0301b22409649a01320c} 
+void Inventory\+Panel\+::\+On\+Cell\+Changed (\begin{DoxyParamCaption}\item[{wx\+Grid\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_inventory_panel_8cpp_source_l00260}{260}} of file \mbox{\hyperlink{_inventory_panel_8cpp_source}{Inventory\+Panel.\+cpp}}.
+
+\Hypertarget{class_inventory_panel_a36e9c772bbb0dc4de9451654e7235971}\index{InventoryPanel@{InventoryPanel}!OnCollectionChanged@{OnCollectionChanged}}
+\index{OnCollectionChanged@{OnCollectionChanged}!InventoryPanel@{InventoryPanel}}
+\doxysubsubsection{\texorpdfstring{OnCollectionChanged()}{OnCollectionChanged()}}
+{\footnotesize\ttfamily \label{class_inventory_panel_a36e9c772bbb0dc4de9451654e7235971} 
+void Inventory\+Panel\+::\+On\+Collection\+Changed (\begin{DoxyParamCaption}\item[{wx\+Command\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_inventory_panel_8cpp_source_l00406}{406}} of file \mbox{\hyperlink{_inventory_panel_8cpp_source}{Inventory\+Panel.\+cpp}}.
+
+\Hypertarget{class_inventory_panel_ad15789ac994f698506c7a2a6e6578f09}\index{InventoryPanel@{InventoryPanel}!OnContextMenu@{OnContextMenu}}
+\index{OnContextMenu@{OnContextMenu}!InventoryPanel@{InventoryPanel}}
+\doxysubsubsection{\texorpdfstring{OnContextMenu()}{OnContextMenu()}}
+{\footnotesize\ttfamily \label{class_inventory_panel_ad15789ac994f698506c7a2a6e6578f09} 
+void Inventory\+Panel\+::\+On\+Context\+Menu (\begin{DoxyParamCaption}\item[{wx\+Context\+Menu\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_inventory_panel_8cpp_source_l00277}{277}} of file \mbox{\hyperlink{_inventory_panel_8cpp_source}{Inventory\+Panel.\+cpp}}.
+
+\Hypertarget{class_inventory_panel_accc610c5cb0c75cad8918fa904a13831}\index{InventoryPanel@{InventoryPanel}!OnContextPopup@{OnContextPopup}}
+\index{OnContextPopup@{OnContextPopup}!InventoryPanel@{InventoryPanel}}
+\doxysubsubsection{\texorpdfstring{OnContextPopup()}{OnContextPopup()}}
+{\footnotesize\ttfamily \label{class_inventory_panel_accc610c5cb0c75cad8918fa904a13831} 
+void Inventory\+Panel\+::\+On\+Context\+Popup (\begin{DoxyParamCaption}\item[{wx\+Command\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_inventory_panel_8cpp_source_l00319}{319}} of file \mbox{\hyperlink{_inventory_panel_8cpp_source}{Inventory\+Panel.\+cpp}}.
+
+\Hypertarget{class_inventory_panel_a5860333abe349b2c09afac321852213d}\index{InventoryPanel@{InventoryPanel}!OnDescriptionChanged@{OnDescriptionChanged}}
+\index{OnDescriptionChanged@{OnDescriptionChanged}!InventoryPanel@{InventoryPanel}}
+\doxysubsubsection{\texorpdfstring{OnDescriptionChanged()}{OnDescriptionChanged()}}
+{\footnotesize\ttfamily \label{class_inventory_panel_a5860333abe349b2c09afac321852213d} 
+void Inventory\+Panel\+::\+On\+Description\+Changed (\begin{DoxyParamCaption}\item[{wx\+Command\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_inventory_panel_8cpp_source_l00419}{419}} of file \mbox{\hyperlink{_inventory_panel_8cpp_source}{Inventory\+Panel.\+cpp}}.
+
+\Hypertarget{class_inventory_panel_a1460f4f6fb0e792d2065bab030e82d46}\index{InventoryPanel@{InventoryPanel}!OnLocationChanged@{OnLocationChanged}}
+\index{OnLocationChanged@{OnLocationChanged}!InventoryPanel@{InventoryPanel}}
+\doxysubsubsection{\texorpdfstring{OnLocationChanged()}{OnLocationChanged()}}
+{\footnotesize\ttfamily \label{class_inventory_panel_a1460f4f6fb0e792d2065bab030e82d46} 
+void Inventory\+Panel\+::\+On\+Location\+Changed (\begin{DoxyParamCaption}\item[{wx\+Command\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_inventory_panel_8cpp_source_l00425}{425}} of file \mbox{\hyperlink{_inventory_panel_8cpp_source}{Inventory\+Panel.\+cpp}}.
+
+\Hypertarget{class_inventory_panel_abd18af8d9374302674ebc78aa2a65f4d}\index{InventoryPanel@{InventoryPanel}!OnRowBeginMove@{OnRowBeginMove}}
+\index{OnRowBeginMove@{OnRowBeginMove}!InventoryPanel@{InventoryPanel}}
+\doxysubsubsection{\texorpdfstring{OnRowBeginMove()}{OnRowBeginMove()}}
+{\footnotesize\ttfamily \label{class_inventory_panel_abd18af8d9374302674ebc78aa2a65f4d} 
+void Inventory\+Panel\+::\+On\+Row\+Begin\+Move (\begin{DoxyParamCaption}\item[{wx\+Grid\+Event \&}]{ev}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_inventory_panel_8cpp_source_l00431}{431}} of file \mbox{\hyperlink{_inventory_panel_8cpp_source}{Inventory\+Panel.\+cpp}}.
+
+\Hypertarget{class_inventory_panel_ae57b4cf06aea0f08834842d52857377d}\index{InventoryPanel@{InventoryPanel}!SetCollectionListCtrl@{SetCollectionListCtrl}}
+\index{SetCollectionListCtrl@{SetCollectionListCtrl}!InventoryPanel@{InventoryPanel}}
+\doxysubsubsection{\texorpdfstring{SetCollectionListCtrl()}{SetCollectionListCtrl()}}
+{\footnotesize\ttfamily \label{class_inventory_panel_ae57b4cf06aea0f08834842d52857377d} 
+bool Inventory\+Panel\+::\+Set\+Collection\+List\+Ctrl (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_inventory_1_1_collection}{Inventory\+::\+Collection}} \texorpdfstring{$\ast$}{*}}]{collection}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_inventory_panel_8cpp_source_l00462}{462}} of file \mbox{\hyperlink{_inventory_panel_8cpp_source}{Inventory\+Panel.\+cpp}}.
+
+\Hypertarget{class_inventory_panel_a8bf8c8a571c10544e7069b0d329614de}\index{InventoryPanel@{InventoryPanel}!SetDataEditable@{SetDataEditable}}
+\index{SetDataEditable@{SetDataEditable}!InventoryPanel@{InventoryPanel}}
+\doxysubsubsection{\texorpdfstring{SetDataEditable()}{SetDataEditable()}}
+{\footnotesize\ttfamily \label{class_inventory_panel_a8bf8c8a571c10544e7069b0d329614de} 
+void Inventory\+Panel\+::\+Set\+Data\+Editable (\begin{DoxyParamCaption}\item[{bool}]{val}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_inventory_panel_8cpp_source_l00443}{443}} of file \mbox{\hyperlink{_inventory_panel_8cpp_source}{Inventory\+Panel.\+cpp}}.
+
+\Hypertarget{class_inventory_panel_a71c474ba9b209d8499e15a19d4a175f0}\index{InventoryPanel@{InventoryPanel}!ShowRow@{ShowRow}}
+\index{ShowRow@{ShowRow}!InventoryPanel@{InventoryPanel}}
+\doxysubsubsection{\texorpdfstring{ShowRow()}{ShowRow()}}
+{\footnotesize\ttfamily \label{class_inventory_panel_a71c474ba9b209d8499e15a19d4a175f0} 
+void Inventory\+Panel\+::\+Show\+Row (\begin{DoxyParamCaption}\item[{int}]{row}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_inventory_panel_8cpp_source_l00450}{450}} of file \mbox{\hyperlink{_inventory_panel_8cpp_source}{Inventory\+Panel.\+cpp}}.
+
+\Hypertarget{class_inventory_panel_a48bed673d55a5453b6662fb3beacc627}\index{InventoryPanel@{InventoryPanel}!ShowToolTips@{ShowToolTips}}
+\index{ShowToolTips@{ShowToolTips}!InventoryPanel@{InventoryPanel}}
+\doxysubsubsection{\texorpdfstring{ShowToolTips()}{ShowToolTips()}}
+{\footnotesize\ttfamily \label{class_inventory_panel_a48bed673d55a5453b6662fb3beacc627} 
+bool Inventory\+Panel\+::\+Show\+Tool\+Tips (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{class_inventory_panel_a21d0306a68ff83f1a8ef509997222b68}\index{InventoryPanel@{InventoryPanel}!UpdateCollectionChoice@{UpdateCollectionChoice}}
+\index{UpdateCollectionChoice@{UpdateCollectionChoice}!InventoryPanel@{InventoryPanel}}
+\doxysubsubsection{\texorpdfstring{UpdateCollectionChoice()}{UpdateCollectionChoice()}}
+{\footnotesize\ttfamily \label{class_inventory_panel_a21d0306a68ff83f1a8ef509997222b68} 
+void Inventory\+Panel\+::\+Update\+Collection\+Choice (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_inventory_panel_8cpp_source_l00481}{481}} of file \mbox{\hyperlink{_inventory_panel_8cpp_source}{Inventory\+Panel.\+cpp}}.
+
+\Hypertarget{class_inventory_panel_a280fba546d10ba3e4d258d452c3edde0}\index{InventoryPanel@{InventoryPanel}!UpdateInventory@{UpdateInventory}}
+\index{UpdateInventory@{UpdateInventory}!InventoryPanel@{InventoryPanel}}
+\doxysubsubsection{\texorpdfstring{UpdateInventory()}{UpdateInventory()}}
+{\footnotesize\ttfamily \label{class_inventory_panel_a280fba546d10ba3e4d258d452c3edde0} 
+void Inventory\+Panel\+::\+Update\+Inventory (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_inventory_panel_8cpp_source_l00545}{545}} of file \mbox{\hyperlink{_inventory_panel_8cpp_source}{Inventory\+Panel.\+cpp}}.
+
+\Hypertarget{class_inventory_panel_aa8388e0c374272a4d6ac637bc3b72619}\index{InventoryPanel@{InventoryPanel}!UpdateInventoryGrid@{UpdateInventoryGrid}}
+\index{UpdateInventoryGrid@{UpdateInventoryGrid}!InventoryPanel@{InventoryPanel}}
+\doxysubsubsection{\texorpdfstring{UpdateInventoryGrid()}{UpdateInventoryGrid()}}
+{\footnotesize\ttfamily \label{class_inventory_panel_aa8388e0c374272a4d6ac637bc3b72619} 
+void Inventory\+Panel\+::\+Update\+Inventory\+Grid (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_inventory_panel_8cpp_source_l00488}{488}} of file \mbox{\hyperlink{_inventory_panel_8cpp_source}{Inventory\+Panel.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/femon/\+Development/wx/clone\+Test/\+Stamp\+Tool/src/gui/\mbox{\hyperlink{_inventory_panel_8h}{Inventory\+Panel.\+h}}\item 
+C\+:/\+Users/femon/\+Development/wx/clone\+Test/\+Stamp\+Tool/src/gui/\mbox{\hyperlink{_inventory_panel_8cpp}{Inventory\+Panel.\+cpp}}\end{DoxyCompactItemize}

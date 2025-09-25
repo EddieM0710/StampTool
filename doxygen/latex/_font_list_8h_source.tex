@@ -1,0 +1,90 @@
+\doxysection{Font\+List.\+h}
+\hypertarget{_font_list_8h_source}{}\label{_font_list_8h_source}\index{C:/Users/femon/Development/wx/cloneTest/StampTool/src/utils/FontList.h@{C:/Users/femon/Development/wx/cloneTest/StampTool/src/utils/FontList.h}}
+\mbox{\hyperlink{_font_list_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00025}00025\ \textcolor{preprocessor}{\#ifndef\ MyFont\_H}}
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00026}00026\ \textcolor{preprocessor}{\#define\ MyFont\_H}}
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00028}00028\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_design_defs_8h}{design/DesignDefs.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00029}00029\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_x_m_l_base_8h}{design/XMLBase.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00030}00030\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_font_8h}{utils/Font.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00031}00031\ \ \textcolor{comment}{//\#include\ "{}utils/FontNdx.h"{}}}
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00033}00033\ \ \ \textcolor{comment}{//\#include\ <vector>}}
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00035}00035\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_utils}{Utils}}\ \{}
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00037}00037\ \ \ \ \ \textcolor{comment}{//\ int\ FindFont(\ FontMap\&\ list,\ wxFont\ font,\ wxColor\ color\ );}}
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00039}\mbox{\hyperlink{class_utils_1_1_font_list}{00039}}\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_utils_1_1_font_list_aaf0b2233c8307019e1ebaf8d313f0f04}{FontList}}}
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00040}00040\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00041}00041\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00043}\mbox{\hyperlink{class_utils_1_1_font_list_aaf0b2233c8307019e1ebaf8d313f0f04}{00043}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_font_list_aaf0b2233c8307019e1ebaf8d313f0f04}{FontList}}(\ )}
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00044}00044\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ m\_fontMap.rehash(\ 10\ );}
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00046}00046\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00048}\mbox{\hyperlink{class_utils_1_1_font_list_a4cbcd90fb92ab5017fb4ed57076f6ead}{00048}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_font_list_a4cbcd90fb92ab5017fb4ed57076f6ead}{\string~FontList}}(\ )\ \{\};}
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00050}00050\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_utils_1_1_font_list_a10b97ab34dd0a46094bd3ccb793fe8d3}{AddNewFont}}(\ wxFont\ font,\ wxColour\ color\ );}
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00052}\mbox{\hyperlink{class_utils_1_1_font_list_a776d8e78d8546febb8f5f870ede6f2f7}{00052}}\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_utils_1_1_font_list_a776d8e78d8546febb8f5f870ede6f2f7}{Clear}}(\ )\{}
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ m\_fontMap.clear(\ );}
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00054}00054\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00056}00056\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_utils_1_1_font_list_ac11bda01e3bac215d32817136f7fa308}{DefaultFont}}(\ \textcolor{keywordtype}{int}\ pointSize\ );}
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00058}00058\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_font}{Font}}*\ \mbox{\hyperlink{class_utils_1_1_font_list_a5e3caa4fb6b55650655d44fabfb3d52c}{FindMyFont}}(\ wxFont\ font,\ wxColor\ color\ );}
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00060}00060\ \ \ \ \ \ \ \ \ FontMap::iterator\ \mbox{\hyperlink{class_utils_1_1_font_list_a8abb681729c1502b3f3260c211b69837}{FindFontIterator}}(\ wxFont\ font,\ wxColor\ color\ );}
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00062}\mbox{\hyperlink{class_utils_1_1_font_list_a3f50ee6be4b9fca727aadca200e1969d}{00062}}\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_utils_1_1_font_list_a3f50ee6be4b9fca727aadca200e1969d}{FindFont}}(\ wxFont\ font,\ wxColor\ color\ );}
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00064}00064\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_utils_1_1_font_list_a3f50ee6be4b9fca727aadca200e1969d}{FindFont}}(\ \mbox{\hyperlink{class_utils_1_1_font}{Font}}*\ info\ );}
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00066}00066\ \ \ \ \ \ \ \ \ wxFont\ \mbox{\hyperlink{class_utils_1_1_font_list_a5e142b46cb46ed693164f35fa368fe9b}{GetFont}}(\ \textcolor{keywordtype}{int}\ ndx\ );}
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00068}00068\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_utils_1_1_font_list_a01a314d15185543dc648129a2ac645ff}{GetFontCount}}(\ );}
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00070}00070\ \ \ \ \ \ \ \ \ wxColour\ \mbox{\hyperlink{class_utils_1_1_font_list_ab7e4d2707d76c4edeb8ddb461dee8945}{GetColor}}(\ \textcolor{keywordtype}{int}\ ndx\ );}
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00072}00072\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_utils_1_1_font_list_a2a3296331ea2dd7f7184fd4635dbb29b}{InitFonts}}(\ );}
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00074}00074\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_utils_1_1_font_list_ac386a31443cc33e99b44ae080d8bdb32}{IsValidFontNdx}}(\ \textcolor{keywordtype}{int}\ ndx\ );}
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00076}00076\ \ \ \ \ \ \ \ \ \textcolor{comment}{//bool\ IsValidFontNdx(\ int\ ndx\ )\ \{\ return\ IsValidFontNdx(\ ndx.Get(\ )\ );\ \};}}
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00078}00078\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_font}{Font}}*\ \mbox{\hyperlink{class_utils_1_1_font_list_a3fbc8aae91bb732d0218bb663b887e0a}{GetMyFont}}(\ \textcolor{keywordtype}{int}\ ndx\ );}
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00080}00080\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_font}{Font}}*\ \mbox{\hyperlink{class_utils_1_1_font_list_a3fbc8aae91bb732d0218bb663b887e0a}{GetMyFont}}(\ FontMap::iterator\ itr\ );}
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00082}\mbox{\hyperlink{class_utils_1_1_font_list_ae36cadee81415558bfc4eda8c9edf2af}{00082}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_utils_afb0a672162c0ac84ca53571ff06bb7d2}{FontMap}}\&\ \mbox{\hyperlink{class_utils_1_1_font_list_ae36cadee81415558bfc4eda8c9edf2af}{GetFontMap}}(\ )}
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00083}00083\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_fontMap;}
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00085}00085\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00086}00086\ }
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00087}00087\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4}{Design::FontUsageType}}\ \mbox{\hyperlink{class_utils_1_1_font_list_a762c19298674cde94492c7bc81bc1fcd}{Load}}(\ wxXmlNode*\ fontNode,\ wxString\ nativeString,\ wxString\ color\ );}
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00088}00088\ }
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00089}\mbox{\hyperlink{class_utils_1_1_font_list_a9c84c90a86a699aaf73c29f54fb27854}{00089}}\ \ \ \ \ \ \ \ \ std::size\_t\ \mbox{\hyperlink{class_utils_1_1_font_list_a9c84c90a86a699aaf73c29f54fb27854}{Erase}}(\ \textcolor{keywordtype}{int}\ ndx\ )}
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00090}00090\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00091}00091\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_fontMap.erase(\ ndx\ );}
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00092}00092\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00093}00093\ }
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00094}00094\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_utils_1_1_font_list_ac42177adfdd0d028a29720f76da78ab5}{LoadFont}}(\ wxXmlNode*\ parent,\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4}{Design::FontUsageType}}\ type\ );}
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00095}00095\ }
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00096}00096\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_utils_1_1_font_list_a22c1085c965cdf24ab7000b7056f6813}{MakeDefault}}(\ \textcolor{keywordtype}{int}\ ndx\ );}
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00097}00097\ }
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00098}00098\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_utils_1_1_font_list_a7bb99494cab04e43e161459a07bbb7ec}{SaveFont}}(\ wxXmlNode*\ parent,\ \textcolor{keywordtype}{int}\ ndx,\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4}{Design::FontUsageType}}\ type\ );}
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00099}00099\ }
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00100}00100\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00101}00101\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_utils_afb0a672162c0ac84ca53571ff06bb7d2}{FontMap}}\ m\_fontMap;}
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00102}00102\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00103}00103\ }
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00104}00104\ \}}
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00105}00105\ }
+\DoxyCodeLine{\Hypertarget{_font_list_8h_source_l00106}00106\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

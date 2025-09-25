@@ -1,0 +1,30 @@
+\doxysection{Debug\+String.\+cpp}
+\hypertarget{_debug_string_8cpp_source}{}\label{_debug_string_8cpp_source}\index{C:/Users/femon/Development/wx/cloneTest/StampTool/src/utils/DebugString.cpp@{C:/Users/femon/Development/wx/cloneTest/StampTool/src/utils/DebugString.cpp}}
+\mbox{\hyperlink{_debug_string_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_debug_string_8cpp_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{_debug_string_8cpp_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_debug_string_8cpp_source_l00026}00026\ \ }
+\DoxyCodeLine{\Hypertarget{_debug_string_8cpp_source_l00027}00027\ \textcolor{preprocessor}{\#include\ "{}wx/wxprec.h"{}}}
+\DoxyCodeLine{\Hypertarget{_debug_string_8cpp_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{_debug_string_8cpp_source_l00029}00029\ \textcolor{preprocessor}{\#ifdef\ \_\_BORLANDC\_\_}}
+\DoxyCodeLine{\Hypertarget{_debug_string_8cpp_source_l00030}00030\ \textcolor{preprocessor}{\#pragma\ hdrstop}}
+\DoxyCodeLine{\Hypertarget{_debug_string_8cpp_source_l00031}00031\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_debug_string_8cpp_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{_debug_string_8cpp_source_l00033}00033\ \textcolor{preprocessor}{\#ifndef\ WX\_PRECOMP}}
+\DoxyCodeLine{\Hypertarget{_debug_string_8cpp_source_l00034}00034\ \textcolor{preprocessor}{\#include\ "{}wx/wx.h"{}}}
+\DoxyCodeLine{\Hypertarget{_debug_string_8cpp_source_l00035}00035\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_debug_string_8cpp_source_l00036}00036\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_debug_string_8h}{utils/DebugString.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_debug_string_8cpp_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{_debug_string_8cpp_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{_debug_string_8cpp_source_l00039}\mbox{\hyperlink{class_debug_string_ab7c665115e62d601f91fe4092c6b4d44}{00039}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_debug_string_ab7c665115e62d601f91fe4092c6b4d44}{DebugString::Append}}(\ wxString\ str\ )}
+\DoxyCodeLine{\Hypertarget{_debug_string_8cpp_source_l00040}00040\ \{}
+\DoxyCodeLine{\Hypertarget{_debug_string_8cpp_source_l00041}00041\ \ \ \ \ m\_str\ +=\ str;}
+\DoxyCodeLine{\Hypertarget{_debug_string_8cpp_source_l00042}00042\ \ \ \ \ \textcolor{keywordtype}{int}\ size\ =\ m\_str.length();}
+\DoxyCodeLine{\Hypertarget{_debug_string_8cpp_source_l00043}00043\ \ \ \ \ \textcolor{keywordflow}{if}\ (size\ >\ m\_maxSize\ )}
+\DoxyCodeLine{\Hypertarget{_debug_string_8cpp_source_l00044}00044\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_debug_string_8cpp_source_l00045}00045\ \ \ \ \ \ \ \ \ m\_str\ =\ m\_str.Mid(\ size\ -\/\ m\_maxSize\ );}
+\DoxyCodeLine{\Hypertarget{_debug_string_8cpp_source_l00046}00046\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_debug_string_8cpp_source_l00047}00047\ \};}
+
+\end{DoxyCode}

@@ -1,0 +1,570 @@
+\doxysection{Gui\+Utils.\+cpp}
+\hypertarget{_gui_utils_8cpp_source}{}\label{_gui_utils_8cpp_source}\index{C:/Users/femon/Development/wx/cloneTest/StampTool/src/gui/GuiUtils.cpp@{C:/Users/femon/Development/wx/cloneTest/StampTool/src/gui/GuiUtils.cpp}}
+\mbox{\hyperlink{_gui_utils_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00025}00025\ \textcolor{preprocessor}{\#include\ "{}wx/wxprec.h"{}}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00027}00027\ \textcolor{preprocessor}{\#ifdef\ \_\_BORLANDC\_\_}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00028}00028\ \textcolor{preprocessor}{\#pragma\ hdrstop}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00029}00029\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00031}00031\ \textcolor{preprocessor}{\#ifndef\ WX\_PRECOMP}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00032}00032\ \textcolor{preprocessor}{\#include\ "{}wx/log.h"{}}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00033}00033\ \textcolor{preprocessor}{\#include\ "{}wx/wx.h"{}}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00034}00034\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00035}00035\ \textcolor{preprocessor}{\#include\ "{}wx/filename.h"{}}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00036}00036\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_gui_utils_8h}{gui/GuiUtils.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00037}00037\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_design_defs_8h}{design/DesignDefs.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00038}00038\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_project_8h}{utils/Project.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00039}00039\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_album_image_panel_8h}{gui/AlbumImagePanel.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00040}00040\ \textcolor{preprocessor}{\#include\ "{}art/NotFound.xpm"{}}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00041}00041\ \textcolor{preprocessor}{\#include\ "{}art/fleur\_di\_lis3.xpm"{}}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00042}00042\ \textcolor{preprocessor}{\#include\ <wx/dcmemory.h>}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00043}00043\ \textcolor{preprocessor}{\#include\ <wx/dcgraph.h>}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00044}00044\ \textcolor{preprocessor}{\#include\ <wx/tokenzr.h>}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00046}\mbox{\hyperlink{_gui_utils_8cpp_ac8cfda6ba2bba574d3dc2a67f14c430a}{00046}}\ wxPdfArrayDouble\ \mbox{\hyperlink{_gui_utils_8cpp_ac8cfda6ba2bba574d3dc2a67f14c430a}{defaultDash}};}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00048}\mbox{\hyperlink{_gui_utils_8cpp_a5f10a9cb5ce52b8cbede5962e5fcd63c}{00048}}\ wxSize\ \mbox{\hyperlink{_gui_utils_8cpp_a5f10a9cb5ce52b8cbede5962e5fcd63c}{GetPPMM}}(\ wxDC\&\ dc\ )}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00049}00049\ \{}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00050}00050\ \ \ \ \ \textcolor{keywordflow}{return}\ dc.GetPPI(\ )\ /\ 25.4;}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00051}00051\ \}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00052}00052\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00054}\mbox{\hyperlink{_gui_utils_8cpp_acc4524df440dc800ddb7f22de3c7df1f}{00054}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_gui_utils_8cpp_acc4524df440dc800ddb7f22de3c7df1f}{DrawLabelPDF}}(\ wxPdfDocument*\ doc,\ \textcolor{keyword}{const}\ wxString\&\ text,}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00055}00055\ \ \ \ \ \mbox{\hyperlink{_defs_8h_a213dea8a5ce1d84736c963a5cbfde8e0}{RealPoint}}\ pos,}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00056}00056\ \ \ \ \ \mbox{\hyperlink{_defs_8h_acd8ac2c7f3e4026c03e6a45ba79cf0c3}{RealSize}}\ size,}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00057}00057\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ alignment,}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00058}00058\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ border,}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00059}00059\ \ \ \ \ \textcolor{keywordtype}{bool}\ fill\ )}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00060}00060\ \{}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00061}00061\ \ \ \ \ doc-\/>SetXY(\ pos.x,\ pos.y\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00062}00062\ \ \ \ \ doc-\/>Write(\ 2,\ text\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00063}00063\ \ \ \ \ \textcolor{comment}{//doc-\/>Cell(\ size.x,\ size.y,\ text,\ border,\ 0,\ alignment,\ fill\ );}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00065}00065\ \}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00067}00067\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00069}\mbox{\hyperlink{_gui_utils_8cpp_a993f3fc2a082fd5d19b41ba9fa9958ea}{00069}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_gui_utils_8cpp_a993f3fc2a082fd5d19b41ba9fa9958ea}{DrawText}}(\ wxDC\&\ dc,\ wxString\&\ str,\ wxRect\&\ rect,\ \textcolor{keywordtype}{bool}\ draw\ )\ \{}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00070}00070\ \ \ \ \ wxCoord\ w,\ h;}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00071}00071\ \ \ \ \ \textcolor{comment}{//\ rect.x\ =\ rect.x\ *\ ScaleX;}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00072}00072\ \ \ \ \ \textcolor{comment}{//\ rect.y\ =\ rect.y\ *\ ScaleY;}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00073}00073\ \ \ \ \ \textcolor{comment}{//\ rect.width\ =\ rect.width\ *\ ScaleX;}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00074}00074\ \ \ \ \ \textcolor{comment}{//\ rect.height\ =\ rect.height\ *\ ScaleY;}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00075}00075\ \ \ \ \ \textcolor{comment}{//\ rect.x\ =\ dc.LogicalToDeviceX(\ rect.x\ );}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00076}00076\ \ \ \ \ \textcolor{comment}{//\ rect.y\ =\ dc.LogicalToDeviceY(\ rect.y\ );}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00077}00077\ \ \ \ \ \textcolor{comment}{//\ rect.width\ =\ dc.LogicalToDeviceXRel(\ rect.width\ );;}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00078}00078\ \ \ \ \ \textcolor{comment}{//\ rect.height\ =\ dc.LogicalToDeviceXRel(\ rect.height\ );;}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00079}00079\ \ \ \ \ wxCoord\ x\ =\ rect.x,}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00080}00080\ \ \ \ \ \ \ \ \ y\ =\ rect.y;}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00082}00082\ \ \ \ \ \textcolor{comment}{//\ zeroing\ height,\ in\ which\ the\ new\ height\ of\ the\ whole\ will\ be\ returned}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00083}00083\ \ \ \ \ rect.height\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00085}00085\ \ \ \ \ wxArrayString\ lines\ =\ wxStringTokenize(\ str,\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00086}00086\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00087}00087\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ size\ =\ lines.GetCount(\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00088}00088\ \ \ \ \ \textcolor{keywordflow}{for}\ (\ \textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ size;\ i++\ )}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00089}00089\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00090}00090\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00091}00091\ \ \ \ \ \ \ \ \ wxString\ line;}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00092}00092\ \ \ \ \ \ \ \ \ wxCoord\ width\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00093}00093\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00094}00094\ \ \ \ \ \ \ \ \ wxArrayString\ words\ =\ wxStringTokenize(\ lines[\ i\ ],\ \textcolor{stringliteral}{"{}\ "{}},\ wxTOKEN\_RET\_DELIMS\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00095}00095\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00096}00096\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\ \textcolor{keywordtype}{size\_t}\ k\ =\ 0;\ k\ <\ words.GetCount(\ );\ k++\ )}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00097}00097\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00098}00098\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ \ \ dc.GetTextExtent(\ words[\ k\ ],\ \&w,\ \&h\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00100}00100\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00101}00101\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ (\ width\ +=\ w\ )\ >\ rect.width\ )}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ larger,\ paint\ lines\ (text\ without\ the\ last\ word)}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ draw\ )}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00105}00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ dc.DrawText(\ line,\ x,\ y\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00106}00106\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00107}00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Increase\ the\ height\ and\ position\ to\ the\ next\ line}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00108}00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ y\ +=\ h;}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00109}00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rect.height\ +=\ h;}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00110}00110\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00111}00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ line\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00112}00112\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00113}00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ the\ width\ of\ the\ last\ word\ later\ attached\ to\ the\ line}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00114}00114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ width\ =\ w;}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00115}00115\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00116}00116\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00117}00117\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ a\ word\ larger\ than\ the\ entire\ line}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00118}00118\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ w\ >\ rect.width\ )}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00119}00119\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00120}00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wxString\ s;}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00121}00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ a\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00122}00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ len\ =\ words[\ k\ ].Length(\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00123}00123\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00124}00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\ \textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ len;\ i++\ )}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00125}00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00126}00126\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00127}00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ dc.GetTextExtent(\ words[\ k\ ][\ i\ ],\ \&w,\ \&h\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00128}00128\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00129}00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ (\ a\ +=\ w\ )\ >\ rect.width\ )}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00130}00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00131}00131\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00132}00132\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ draw\ )}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00133}00133\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ dc.DrawText(\ s,\ x,\ y\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00134}00134\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00135}00135\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ y\ +=\ h;}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00136}00136\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rect.height\ +=\ h;}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00137}00137\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00138}00138\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ s\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00139}00139\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ a\ =\ w;}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00140}00140\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00141}00141\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00142}00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ s\ <<\ words[\ k\ ][\ i\ ];}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00143}00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00144}00144\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00145}00145\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ words[\ k\ ]\ =\ s;\ \ \ \textcolor{comment}{//\ The\ word\ is\ the\ remnant}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00146}00146\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ width\ =\ a;\ \ \ \ \ \ \textcolor{comment}{//\ the\ width\ of\ this\ residue}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00147}00147\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00148}00148\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00149}00149\ \ \ \ \ \ \ \ \ \ \ \ \ line\ <<\ words[\ k\ ];}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00150}00150\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00151}00151\ \ \ \ \ \ \ \ \ \}\ \textcolor{comment}{//\ end\ for()}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00152}00152\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00153}00153\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ If\ there\ is\ something\ left\ (smaller\ than\ the\ line\ -\/\ the\ remnant)\ then\ namluj}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00154}00154\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ line\ !=\ \textcolor{stringliteral}{"{}"{}}\ )}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00155}00155\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00156}00156\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ draw\ )}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00157}00157\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ dc.DrawText(\ line,\ x,\ y\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00158}00158\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00159}00159\ \ \ \ \ \ \ \ \ \ \ \ \ y\ +=\ h;}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00160}00160\ \ \ \ \ \ \ \ \ \ \ \ \ rect.height\ +=\ h;}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00161}00161\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00162}00162\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00163}00163\ \ \ \ \ \}\ \textcolor{comment}{//\ end\ for()}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00164}00164\ \}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00165}00165\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00166}00166\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00167}00167\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00168}\mbox{\hyperlink{_gui_utils_8cpp_af5a667571fd5cd936dce1e30b8ae3279}{00168}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_gui_utils_8cpp_af5a667571fd5cd936dce1e30b8ae3279}{DrawLabel}}(\ wxDC\&\ dc,\ \textcolor{keyword}{const}\ wxString\&\ text,}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00169}00169\ \ \ \ \ \mbox{\hyperlink{_defs_8h_a213dea8a5ce1d84736c963a5cbfde8e0}{RealPoint}}\ pos,}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00170}00170\ \ \ \ \ \mbox{\hyperlink{_defs_8h_acd8ac2c7f3e4026c03e6a45ba79cf0c3}{RealSize}}\ size,}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00171}00171\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ alignment,}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00172}00172\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ indexAccel\ )}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00173}00173\ \{}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00174}00174\ \ \ \ \ \textcolor{comment}{//\ dc.GetMultiLineTextExtent(\ )}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00175}00175\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00176}00176\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ GetMultiLineTextExtent(\ const\ wxString\ \&\ string,}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00177}00177\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ wxCoord\ *\ width,}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00178}00178\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ wxCoord\ *\ height,}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00179}00179\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ wxCoord\ *\ heightLine\ =\ (\ wxCoord*\ )\ \_\_null,}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00180}00180\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ const\ wxFont\ *\ font\ =\ (\ const\ wxFont*\ )}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00181}00181\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ dc.DrawRectangle(\ wxRect(\ pos.x,\ pos.y,\ size.x,\ size.y\ )\ );}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00182}00182\ \ \ \ \ wxSize\ scale\ =\ \mbox{\hyperlink{_gui_utils_8cpp_a5f10a9cb5ce52b8cbede5962e5fcd63c}{GetPPMM}}(\ dc\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00183}00183\ \ \ \ \ wxRect\ rect(\ pos.x\ *\ scale.x,\ pos.y\ *\ scale.y,\ size.x\ *\ scale.x,\ size.y\ *\ scale.y\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00184}00184\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00185}00185\ \ \ \ \ dc.DrawLabel(\ text,\ rect,\ alignment,\ indexAccel\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00186}00186\ \}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00187}00187\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00188}00188\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00189}00189\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00190}\mbox{\hyperlink{_gui_utils_8cpp_a5d4206ed019b9406975a35aa3a5ae198}{00190}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_gui_utils_8cpp_a5d4206ed019b9406975a35aa3a5ae198}{DrawTitle}}(\ wxDC\&\ dc,\ wxString\ title,\ \mbox{\hyperlink{_defs_8h_a213dea8a5ce1d84736c963a5cbfde8e0}{RealPoint}}\ pos,\ \mbox{\hyperlink{_defs_8h_acd8ac2c7f3e4026c03e6a45ba79cf0c3}{RealSize}}\ size\ )}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00191}00191\ \{}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00192}00192\ \ \ \ \ wxString\ id;}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00193}00193\ \ \ \ \ wxFont\ font\ =\ dc.GetFont(\ );\textcolor{comment}{//(\ *wxNORMAL\_FONT\ );}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00194}00194\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00195}00195\ \ \ \ \ \textcolor{keywordtype}{id}\ =\ title;}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00196}00196\ \ \ \ \ \textcolor{keywordtype}{id}.Trim(\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00197}00197\ \ \ \ \ \textcolor{keywordtype}{id}.Trim(\ \textcolor{keyword}{false}\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00198}00198\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00199}00199\ \ \ \ \ \mbox{\hyperlink{_defs_8cpp_a914eee82e10c75454f69a9d5d021985f}{GetAlbumImagePanel}}(\ )-\/>\mbox{\hyperlink{class_album_image_panel_a01b968d6baa7ba6588c30d0889fe3251}{MakeMultiLine}}(\ \textcolor{keywordtype}{id},\ font,\ size.x\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00200}00200\ \ \ \ \ wxSize\ scale\ =\ \mbox{\hyperlink{_gui_utils_8cpp_a5f10a9cb5ce52b8cbede5962e5fcd63c}{GetPPMM}}(\ dc\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00201}00201\ \ \ \ \ pos.x\ =\ pos.x\ *\ scale.x;}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00202}00202\ \ \ \ \ pos.y\ =\ pos.y\ *\ scale.y;}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00203}00203\ \ \ \ \ size.x\ =\ size.x\ *\ scale.x;}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00204}00204\ \ \ \ \ size.y\ =\ size.y\ *\ scale.y;}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00205}00205\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00206}00206\ \ \ \ \ \mbox{\hyperlink{_gui_utils_8cpp_af5a667571fd5cd936dce1e30b8ae3279}{DrawLabel}}(\ dc,\ \textcolor{keywordtype}{id},\ pos,\ size,\ wxALIGN\_CENTER\_HORIZONTAL\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00207}00207\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00208}00208\ \}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00209}00209\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00210}00210\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00211}00211\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00212}\mbox{\hyperlink{_gui_utils_8cpp_a7ccabb8a51562aeba4b1fe80a104d982}{00212}}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{_gui_utils_8cpp_a7ccabb8a51562aeba4b1fe80a104d982}{GetHeightChars}}(\ \textcolor{keywordtype}{double}\ pt\ )}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00213}00213\ \{}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00214}00214\ \ \ \ \ \textcolor{keywordtype}{double}\ height\ =\ 100;}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00215}00215\ \ \ \ \ \textcolor{comment}{//\ Array\ matching\ character\ sizes\ and\ line\ heights}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00216}00216\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ nTable\ =\ 10;}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00217}00217\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ cTable[\ nTable\ ]\ =\ \{\ 6,\ 7,\ 8,\ 9,\ 10,\ 11,\ 12,\ 13,\ 14,\ 15\ \};}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00218}00218\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ hTable[\ nTable\ ]\ =\ \{\ 2,\ 2.5,\ 3,\ 4,\ 5,\ 6,\ 7,\ 8,\ 9,\ 10\ \};}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00219}00219\ \ \ \ \ \textcolor{keywordtype}{int}\ i;}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00220}00220\ \ \ \ \ \textcolor{keywordflow}{for}\ (\ i\ =\ 0;\ i\ <\ nTable;\ i++\ )}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00221}00221\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00222}00222\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ pt\ ==\ cTable[\ i\ ]\ )}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00223}00223\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00224}00224\ \ \ \ \ \ \ \ \ \ \ \ \ height\ =\ hTable[\ i\ ];}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00225}00225\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00226}00226\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00227}00227\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00228}00228\ \ \ \ \ \textcolor{keywordflow}{return}\ height;}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00229}00229\ \}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00230}00230\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00231}00231\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00232}00232\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00233}\mbox{\hyperlink{_gui_utils_8cpp_acd67d3534b5333f171a59fa7a245f429}{00233}}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{_gui_utils_8cpp_acd67d3534b5333f171a59fa7a245f429}{GetMultiLineTextHeight}}(\ wxString\ text,\ wxFont*\ font,\ \textcolor{keywordtype}{double}\ width\ )}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00234}00234\ \{}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00235}00235\ \ \ \ \ \textcolor{keywordtype}{double}\ lineHeight\ =\ \mbox{\hyperlink{_gui_utils_8cpp_a7ccabb8a51562aeba4b1fe80a104d982}{GetHeightChars}}(\ font-\/>GetPointSize(\ )\ )\ *\ \mbox{\hyperlink{namespace_design_a352c26b74797bf2adf2f67ff9b212e06}{Design::PPMM}}.y;}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00236}00236\ \ \ \ \ text.Trim(\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00237}00237\ \ \ \ \ text.Trim(\ \textcolor{keyword}{false}\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00238}00238\ \ \ \ \ wxPdfDocument\ doc;}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00239}00239\ \ \ \ \ doc.SetFont(\ *font\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00240}00240\ \ \ \ \ doc.SetXY(\ 0,\ 0\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00241}00241\ \ \ \ \ doc.MultiCell(\ width,\ lineHeight,\ text,\ 0,\ wxPDF\_ALIGN\_CENTER\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00242}00242\ \ \ \ \ \textcolor{keywordflow}{return}\ doc.GetY(\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00243}00243\ \}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00244}00244\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00245}00245\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00246}00246\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00247}\mbox{\hyperlink{_gui_utils_8cpp_aadd4ec38a788a3bc88c9be5f06d7468e}{00247}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_gui_utils_8cpp_aadd4ec38a788a3bc88c9be5f06d7468e}{DrawTitlePDF}}(\ wxPdfDocument*\ doc,\ wxString\ title,\ \mbox{\hyperlink{_defs_8h_a213dea8a5ce1d84736c963a5cbfde8e0}{RealPoint}}\ pos,\ \mbox{\hyperlink{_defs_8h_acd8ac2c7f3e4026c03e6a45ba79cf0c3}{RealSize}}\ size\ )}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00248}00248\ \{}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00249}00249\ \ \ \ \ wxString\ id;}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00250}00250\ \ \ \ \ wxFont\ font(\ *wxNORMAL\_FONT\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00251}00251\ \ \ \ \ font.SetPointSize(\ 10\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00252}00252\ \ \ \ \ doc-\/>SetFont(\ font\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00253}00253\ \ \ \ \ \textcolor{keywordtype}{id}\ =\ title;}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00254}00254\ \ \ \ \ \textcolor{keywordtype}{id}.Trim(\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00255}00255\ \ \ \ \ \textcolor{keywordtype}{id}.Trim(\ \textcolor{keyword}{false}\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00256}00256\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00257}00257\ \ \ \ \ wxPdfFont\ pdfFont\ =\ doc-\/>GetCurrentFont(\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00258}00258\ \ \ \ \ doc-\/>SetXY(\ pos.x,\ pos.y\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00259}00259\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00260}00260\ \ \ \ \ \textcolor{keywordtype}{double}\ lineHeight\ =\ \mbox{\hyperlink{_gui_utils_8cpp_a7ccabb8a51562aeba4b1fe80a104d982}{GetHeightChars}}(\ 10\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00261}00261\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00262}00262\ \ \ \ \ doc-\/>MultiCell(\ size.x,\ lineHeight,\ \textcolor{keywordtype}{id},\ 0,\ wxPDF\_ALIGN\_CENTER\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00263}00263\ \}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00264}00264\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00265}00265\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00266}00266\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00267}00267\ \textcolor{comment}{//\ wxSize\ LogicalToDeviceRel(\ wxDC\&\ dc,\ double\ x,\ double\ y\ )}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00268}00268\ \textcolor{comment}{//\ \{}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00269}00269\ \textcolor{comment}{//\ \ \ \ \ wxPoint\ point(\ x,\ y\ );}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00270}00270\ \textcolor{comment}{//\ \ \ \ \ point\ =\ dc.LogicalToDevice(\ wxCoord(\ x\ ),\ wxCoord(\ y\ )\ );}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00271}00271\ \textcolor{comment}{//\ \ \ \ \ wxSize\ size(\ point.x,\ point.y\ );}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00272}00272\ \textcolor{comment}{//\ \ \ \ \ return\ size;}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00273}00273\ \textcolor{comment}{//\ \}}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00274}00274\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00275}00275\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00276}00276\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00277}\mbox{\hyperlink{_gui_utils_8cpp_a37ee743b1ece20a103438d5d9da2447c}{00277}}\ wxPen\ \mbox{\hyperlink{_gui_utils_8cpp_a37ee743b1ece20a103438d5d9da2447c}{DCLineStyle}}(\ wxDC\&\ dc,\ wxColour\ colour,\ \textcolor{keywordtype}{double}\ \ width,\ wxPenStyle\ style\ )}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00278}00278\ \{}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00279}00279\ \ \ \ \ wxPen\ currStyle\ =\ dc.GetPen(\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00280}00280\ \ \ \ \ wxPen\ frameStyle(\ currStyle\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00281}00281\ \ \ \ \ frameStyle.SetColour(\ colour\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00282}00282\ \ \ \ \ frameStyle.SetStyle(\ style\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00283}00283\ \ \ \ \ frameStyle.SetWidth(\ width\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00284}00284\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00285}00285\ \ \ \ \ \textcolor{keywordflow}{return}\ currStyle;}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00286}00286\ \}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00287}00287\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00288}00288\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00289}00289\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00290}\mbox{\hyperlink{_gui_utils_8cpp_a7163bf0bb088407e87e8b7f27153e34f}{00290}}\ wxPdfLineStyle\ \mbox{\hyperlink{_gui_utils_8cpp_a7163bf0bb088407e87e8b7f27153e34f}{PDFLineStyle}}(\ wxPdfDocument*\ doc,\ wxColour\ colour,\ \textcolor{keywordtype}{double}\ \ width,\ \textcolor{keyword}{const}\ wxPdfArrayDouble\&\ dash\ )}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00291}00291\ \{}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00292}00292\ \ \ \ \ wxPdfLineStyle\ currStyle\ =\ doc-\/>GetLineStyle(\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00293}00293\ \ \ \ \ wxPdfLineStyle\ frameStyle(\ currStyle\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00294}00294\ \ \ \ \ frameStyle.SetColour(\ wxPdfColour(\ colour\ )\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00295}00295\ \ \ \ \ frameStyle.SetDash(\ dash\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00296}00296\ \ \ \ \ frameStyle.SetWidth(\ width\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00297}00297\ \ \ \ \ doc-\/>SetLineStyle(\ frameStyle\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00298}00298\ \ \ \ \ \textcolor{keywordflow}{return}\ currStyle;}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00299}00299\ \}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00300}00300\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00301}00301\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00302}00302\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00303}\mbox{\hyperlink{_gui_utils_8cpp_a16fcfaace30d06a6f22d19cf0d739e8d}{00303}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_gui_utils_8cpp_a16fcfaace30d06a6f22d19cf0d739e8d}{DrawRectanglePDF}}(\ wxPdfDocument*\ doc,\ \textcolor{keywordtype}{double}\ x,\ \textcolor{keywordtype}{double}\ y,\ \textcolor{keywordtype}{double}\ width,\ \textcolor{keywordtype}{double}\ height\ )}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00304}00304\ \{}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00305}00305\ \ \ \ \ doc-\/>Rect(\ x,\ y,\ width,\ height,\ wxPDF\_STYLE\_DRAW\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00306}00306\ \}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00307}00307\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00308}00308\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00309}00309\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00310}00310\ \textcolor{comment}{//\ inputs\ are\ in\ mm}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00311}\mbox{\hyperlink{_gui_utils_8cpp_aac893eec7cbdd9779d4ea2bcf55542f2}{00311}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_gui_utils_8cpp_aac893eec7cbdd9779d4ea2bcf55542f2}{DrawRectangle}}(\ wxDC\&\ dc,\ \textcolor{keywordtype}{double}\ x,\ \textcolor{keywordtype}{double}\ y,\ \textcolor{keywordtype}{double}\ width,\ \textcolor{keywordtype}{double}\ height\ )}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00312}00312\ \{}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00313}00313\ \ \ \ \ wxSize\ scale\ =\ \mbox{\hyperlink{_gui_utils_8cpp_a5f10a9cb5ce52b8cbede5962e5fcd63c}{GetPPMM}}(\ dc\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00314}00314\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00315}00315\ \ \ \ \ wxPoint\ posDevice(\ x\ *\ scale.x,\ y\ *\ scale.y\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00316}00316\ \ \ \ \ wxSize\ sizeDevice(\ width\ *\ scale.x,\ height\ *\ scale.y\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00317}00317\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00318}00318\ \ \ \ \ \textcolor{comment}{//Scale\ to\ client\ logical\ units}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00319}00319\ \ \ \ \ dc.DrawRectangle(\ wxRect(\ posDevice,\ sizeDevice\ )\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00320}00320\ \};}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00321}00321\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00322}00322\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00323}00323\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00324}\mbox{\hyperlink{_gui_utils_8cpp_a4930edb60ac7be279e2c248e81dcf8f2}{00324}}\ wxImage\ \mbox{\hyperlink{_gui_utils_8cpp_a4930edb60ac7be279e2c248e81dcf8f2}{GetImageFromFilename}}(\ wxString\ filename\ )}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00325}00325\ \{}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00326}00326\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00327}00327\ \ \ \ \ wxFileName\ fn;}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00328}00328\ \ \ \ \ wxImage\ image;}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00329}00329\ \ \ \ \ \textcolor{keywordtype}{bool}\ fileOK\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00330}00330\ \ \ \ \ wxString\ \ str\ =\ \mbox{\hyperlink{_defs_8cpp_a21e576057406853f4fd5f371338b78b6}{GetProject}}(\ )-\/>\mbox{\hyperlink{class_utils_1_1_project_a9b0f0b6ae7912654ddfeae3ebb28f81e}{GetImageFullPath}}(\ filename\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00331}00331\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00332}00332\ \ \ \ \ fn.Assign(\ str\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00333}00333\ \ \ \ \ \textcolor{comment}{//wxString\ fullpath\ =\ fn.GetFullPath(\ );}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00334}00334\ \ \ \ \ wxFileName\ fn3\ =\ fn;}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00335}00335\ \ \ \ \ \textcolor{comment}{//fn3.MakeAbsolute(\ );}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00336}00336\ \ \ \ \ wxString\ str1\ =\ fn3.GetFullPath(\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00337}00337\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ fn.FileExists(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00338}00338\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00339}00339\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ image.CanRead(\ str\ )\ )}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00340}00340\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00341}00341\ \ \ \ \ \ \ \ \ \ \ \ \ fileOK\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00342}00342\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00343}00343\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00344}00344\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ fileOK\ )}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00345}00345\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00346}00346\ \ \ \ \ \ \ \ \ image\ =\ wxImage(\ filename\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00347}00347\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00348}00348\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00349}00349\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00350}00350\ \ \ \ \ \ \ \ \ image\ =\ wxImage(\ fleur\_di\_lis\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00351}00351\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00352}00352\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00353}00353\ \ \ \ \ \textcolor{keywordflow}{return}\ image;}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00354}00354\ \}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00355}00355\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00356}00356\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00357}00357\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00358}00358\ \textcolor{comment}{//\ void\ DrawImagePDF(\ wxPdfDocument*\ doc,\ wxImage\ image,\ double\ x,\ double\ y,\ double\ w,\ double\ h\ )}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00359}00359\ \textcolor{comment}{//\ \{}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00360}00360\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00361}00361\ \textcolor{comment}{//\ \ \ \ \ //\ wxImage\ image\ =\ GetImageFromFilename(\ fileName\ );}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00362}00362\ \textcolor{comment}{//\ \ \ \ \ \ //\ Draw\ jpeg\ image}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00363}00363\ \textcolor{comment}{//\ \ \ //\ \ \ doc-\/>Image(\ fileName,\ x,\ y,\ w,\ h\ );}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00364}00364\ \textcolor{comment}{//\ \ \ \ \ doc-\/>Image(\ fileName,\ image,\ x,\ y,\ w,\ h\ );}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00365}00365\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00366}00366\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00367}00367\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00368}\mbox{\hyperlink{_gui_utils_8cpp_a761e03376c4255633786d8f7ec3f6870}{00368}}\ \textcolor{keywordtype}{void}\ \ \mbox{\hyperlink{_gui_utils_8cpp_a761e03376c4255633786d8f7ec3f6870}{BlitResize}}(\ wxDC\&\ dc,\ wxImage\ image,\ \textcolor{keywordtype}{double}\ x,\ \textcolor{keywordtype}{double}\ y,\ \textcolor{keywordtype}{double}\ w,\ \textcolor{keywordtype}{double}\ h\ )}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00369}00369\ \{}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00370}00370\ \ \ \ \ wxBitmap\ bmpIn(\ image\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00371}00371\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00372}00372\ \ \ \ \ \textcolor{keywordtype}{bool}\ antialiasing\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00373}00373\ \ \ \ \ wxSize\ sizeIn\ =\ bmpIn.GetSize(\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00374}00374\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00375}00375\ \ \ \ \ wxSize\ pixels\ =\ dc.GetSize(\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00376}00376\ \ \ \ \ wxSize\ mm\ =\ dc.GetSizeMM(\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00377}00377\ \ \ \ \ \mbox{\hyperlink{_defs_8h_acd8ac2c7f3e4026c03e6a45ba79cf0c3}{RealSize}}\ dcPixelsPerMM;}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00378}00378\ \ \ \ \ dcPixelsPerMM.x\ =\ pixels.x\ /\ mm.x;}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00379}00379\ \ \ \ \ dcPixelsPerMM.y\ =\ pixels.y\ /\ mm.y;}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00380}00380\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00381}00381\ \ \ \ \ \textcolor{keywordtype}{double}\ scale\ =\ w\ *\ dcPixelsPerMM.x\ /\ sizeIn.x;}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00382}00382\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00383}00383\ \ \ \ \ wxSize\ sizeOut(\ (\ \textcolor{keywordtype}{int}\ )\ w\ *\ dcPixelsPerMM.x\ *\ \mbox{\hyperlink{_defs_8cpp_a914eee82e10c75454f69a9d5d021985f}{GetAlbumImagePanel}}(\ )-\/>GetZoom(\ ),\ (\ \textcolor{keywordtype}{int}\ )\ h\ *\ dcPixelsPerMM.y\ *\ \mbox{\hyperlink{_defs_8cpp_a914eee82e10c75454f69a9d5d021985f}{GetAlbumImagePanel}}(\ )-\/>GetZoom(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00384}00384\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00385}00385\ \ \ \ \ wxBitmap\ bmpOut;}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00386}00386\ \ \ \ \ bmpOut.Create(\ sizeOut\ );\ \ \ \textcolor{comment}{//\ the\ final\ size}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00387}00387\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00388}00388\ \ \ \ \ wxMemoryDC\ inDC(\ bmpIn\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00389}00389\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00390}00390\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ antialiasing\ \&\&\ scale\ <\ 0.4\ )}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00391}00391\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00392}00392\ \ \ \ \ \ \ \ \ wxGCDC\ outDC(\ bmpOut\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00393}00393\ \ \ \ \ \ \ \ \ outDC.StretchBlit(\ wxPoint(\ 0,\ 0\ ),\ sizeOut,\ \&inDC,\ wxPoint(\ 0,\ 0\ ),\ sizeIn\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00394}00394\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00395}00395\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00396}00396\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00397}00397\ \ \ \ \ \ \ \ \ wxMemoryDC\ outDC(\ bmpOut\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00398}00398\ \ \ \ \ \ \ \ \ outDC.StretchBlit(\ wxPoint(\ 0,\ 0\ ),\ sizeOut,\ \&inDC,\ wxPoint(\ 0,\ 0\ ),\ sizeIn\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00399}00399\ \ \ \ \ \ \ \ \ outDC.SelectObject(\ wxNullBitmap\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00400}00400\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00401}00401\ \ \ \ \ inDC.SelectObject(\ wxNullBitmap\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00402}00402\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00403}00403\ \ \ \ \ dc.DrawBitmap(\ bmpOut,\ x,\ y,\ \textcolor{keyword}{false}\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00404}00404\ \}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00405}00405\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00406}00406\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00407}00407\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00408}00408\ \textcolor{comment}{//\ void\ RescaleImage(\ wxDC\&\ dc,\ wxImage\ image,\ double\ x,\ double\ y,\ double\ w,\ double\ h\ )}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00409}00409\ \textcolor{comment}{//\ \{}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00410}00410\ \textcolor{comment}{//\ \ \ \ \ wxBitmap\ bitmap(\ image.Scale(\ w\ *\ ScaleX,\ h\ *\ ScaleY,\ wxIMAGE\_QUALITY\_HIGH\ )\ );}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00411}00411\ \textcolor{comment}{//\ \ \ \ \ dc.DrawBitmap(\ bitmap,\ x\ *\ ScaleX,\ y\ *\ ScaleY,\ false\ );}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00412}00412\ \textcolor{comment}{//\ \}}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00413}00413\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00414}00414\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00415}00415\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00416}\mbox{\hyperlink{_gui_utils_8cpp_a455d54d44585768a3c62d4ee7d3d999c}{00416}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_gui_utils_8cpp_a455d54d44585768a3c62d4ee7d3d999c}{Kluge}}(\ wxDC\&\ dc,\ wxImage\ image,\ \textcolor{keywordtype}{double}\ x,\ \textcolor{keywordtype}{double}\ y,\ \textcolor{keywordtype}{double}\ w,\ \textcolor{keywordtype}{double}\ h\ )}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00417}00417\ \{}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00418}00418\ \ \ \ \ \textcolor{keywordtype}{double}\ xScale;}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00419}00419\ \ \ \ \ \textcolor{keywordtype}{double}\ yScale;}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00420}00420\ \ \ \ \ dc.GetUserScale(\ \&xScale,\ \&yScale\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00421}00421\ \ \ \ \ dc.SetUserScale(\ 1,\ 1\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00422}00422\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00423}00423\ \ \ \ \ wxSize\ size\ =\ image.GetSize(\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00424}00424\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00425}00425\ \ \ \ \ \textcolor{keywordtype}{double}\ imageScaleX\ =\ (\ w\ /\ size.x\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00426}00426\ \ \ \ \ \textcolor{keywordtype}{double}\ imageScaleY\ =\ (\ h\ /\ size.y\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00427}00427\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00428}00428\ \ \ \ \ \textcolor{keywordtype}{double}\ zoom\ =\ \mbox{\hyperlink{_defs_8cpp_a914eee82e10c75454f69a9d5d021985f}{GetAlbumImagePanel}}(\ )-\/>\mbox{\hyperlink{class_album_image_panel_aafbffa1f452cada87fdcbf237dd65109}{GetUserScale}}(\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00429}00429\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00430}00430\ \ \ \ \ dc.SetUserScale(\ imageScaleX\ *\ zoom,\ imageScaleY\ *\ zoom\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00431}00431\ \ \ \ \ wxBitmap\ bitmap(\ image\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00432}00432\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00433}00433\ \ \ \ \ dc.DrawBitmap(\ bitmap,\ x\ /\ imageScaleX,\ y\ /\ imageScaleY,\ \textcolor{keyword}{false}\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00434}00434\ \ \ \ \ dc.SetUserScale(\ xScale,\ yScale\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00435}00435\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00436}00436\ \}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00437}00437\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00438}00438\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00439}00439\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00440}\mbox{\hyperlink{_gui_utils_8cpp_a7531052ff11e4e5a5fd56dad9cc2c25f}{00440}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_gui_utils_8cpp_a7531052ff11e4e5a5fd56dad9cc2c25f}{DrawImage}}(\ wxDC\&\ dc,\ wxImage\ image,\ \textcolor{keywordtype}{double}\ x,\ \textcolor{keywordtype}{double}\ y,\ \textcolor{keywordtype}{double}\ w,\ \textcolor{keywordtype}{double}\ h\ )}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00441}00441\ \{}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00442}00442\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ image.IsOk(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00443}00443\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00444}00444\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Draw\ the\ stamp\ image}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00445}00445\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00446}00446\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ w\ <=\ 10\ ||\ h\ <=\ 10\ )}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00447}00447\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00448}00448\ \ \ \ \ \ \ \ \ \ \ \ \ h\ =\ 10;}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00449}00449\ \ \ \ \ \ \ \ \ \ \ \ \ w\ =\ 10;}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00450}00450\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00451}00451\ \ \ \ \ \ \ \ \ dc.SetTextForeground(\ *wxBLACK\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00452}00452\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ int\ xDevice\ =\ dc.LogicalToDeviceX(\ x\ );}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00453}00453\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ int\ yDevice\ =\ dc.LogicalToDeviceY(\ y\ );}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00454}00454\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ int\ widthDevice\ =\ dc.LogicalToDeviceXRel(\ w\ );}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00455}00455\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ int\ heightDevice\ =\ dc.LogicalToDeviceYRel(\ h\ );}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00456}00456\ \ \ \ \ \ \ \ \ wxSize\ scale\ =\ \mbox{\hyperlink{_gui_utils_8cpp_a5f10a9cb5ce52b8cbede5962e5fcd63c}{GetPPMM}}(\ dc\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00457}00457\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ xDevice\ =\ x\ *\ scale.x;}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00458}00458\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ yDevice\ =\ y\ *\ scale.y;}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00459}00459\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ widthDevice\ =\ w\ *\ scale.x;}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00460}00460\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ heightDevice\ =\ h\ *\ scale.y;}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00461}00461\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00462}00462\ \ \ \ \ \ \ \ \ image.Rescale(\ widthDevice,\ heightDevice,\ wxIMAGE\_QUALITY\_HIGH\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00463}00463\ \ \ \ \ \ \ \ \ \textcolor{comment}{//image.Rescale(\ w\ *\ ScaleX,\ h\ *\ ScaleY,\ wxIMAGE\_QUALITY\_HIGH\ );}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00464}00464\ \ \ \ \ \ \ \ \ wxBitmap\ bitmap(\ image\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00465}00465\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Kluge(\ dc,\ image,\ x,\ y,\ w,\ h\ );}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00466}00466\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00467}00467\ \ \ \ \ \ \ \ \ dc.DrawBitmap(\ bitmap,\ xDevice,\ yDevice,\ \textcolor{keyword}{false}\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00468}00468\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ dc.DrawBitmap(\ bitmap,\ x\ *\ ScaleX,\ y\ *\ ScaleY,\ false\ );}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00469}00469\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00470}00470\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00471}00471\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00472}00472\ \};}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00473}00473\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00474}00474\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00475}00475\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00476}\mbox{\hyperlink{_gui_utils_8cpp_a6c6fd5fdec556a5bd60c3cfbc4f66065}{00476}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{_gui_utils_8cpp_a6c6fd5fdec556a5bd60c3cfbc4f66065}{CompareID}}(\ wxString\ id1,\ wxString\ id2\ )}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00477}00477\ \{}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00478}00478\ \ \ \ \ id1\ =\ id1.Trim(\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00479}00479\ \ \ \ \ id1\ =\ id1.Trim(\ \textcolor{keyword}{false}\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00480}00480\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00481}00481\ \ \ \ \ \textcolor{keywordtype}{int}\ pos\ =\ id1.Find(\ \textcolor{stringliteral}{"{}:"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00482}00482\ \ \ \ \ wxString\ catalog1\ =\ id1.Mid(\ 0,\ pos\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00483}00483\ \ \ \ \ id1\ =\ id1.Mid(\ pos\ +\ 1\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00484}00484\ \ \ \ \ pos\ =\ id1.Find(\ \textcolor{stringliteral}{"{}\ "{}}\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00485}00485\ \ \ \ \ wxString\ country1\ =\ id1.Mid(\ 0,\ pos\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00486}00486\ \ \ \ \ wxString\ catCode1\ =\ id1.Mid(\ pos\ +\ 1\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00487}00487\ \ \ \ \ wxString\ prefix1\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00488}00488\ \ \ \ \ wxString\ code1\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00489}00489\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00490}00490\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ pos\ >\ 0\ )}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00491}00491\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00492}00492\ \ \ \ \ \ \ \ \ prefix1\ =\ catCode1.Mid(\ 0,\ pos\ -\/\ 1\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00493}00493\ \ \ \ \ \ \ \ \ code1\ =\ catCode1.Mid(\ pos\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00494}00494\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00495}00495\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00496}00496\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00497}00497\ \ \ \ \ \ \ \ \ code1\ =\ catCode1;}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00498}00498\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00499}00499\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00500}00500\ \ \ \ \ id2\ =\ id2.Trim(\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00501}00501\ \ \ \ \ id2\ =\ id2.Trim(\ \textcolor{keyword}{false}\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00502}00502\ \ \ \ \ pos\ =\ id2.Find(\ \textcolor{stringliteral}{"{}:"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00503}00503\ \ \ \ \ wxString\ catalog2\ =\ id2.Mid(\ 0,\ pos\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00504}00504\ \ \ \ \ id2\ =\ id2.Mid(\ pos\ +\ 1\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00505}00505\ \ \ \ \ pos\ =\ id2.Find(\ \textcolor{stringliteral}{"{}\ "{}}\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00506}00506\ \ \ \ \ wxString\ country2\ =\ id2.Mid(\ 0,\ pos\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00507}00507\ \ \ \ \ wxString\ catCode2\ =\ id2.Mid(\ pos\ +\ 1\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00508}00508\ \ \ \ \ pos\ =\ catCode2.find\_first\_of(\ \textcolor{stringliteral}{"{}0123456789"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00509}00509\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00510}00510\ \ \ \ \ wxString\ prefix2\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00511}00511\ \ \ \ \ wxString\ code2\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00512}00512\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00513}00513\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ pos\ >\ 0\ )}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00514}00514\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00515}00515\ \ \ \ \ \ \ \ \ prefix2\ =\ catCode2.Mid(\ 0,\ pos\ -\/\ 1\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00516}00516\ \ \ \ \ \ \ \ \ code2\ =\ catCode2.Mid(\ pos\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00517}00517\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00518}00518\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00519}00519\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00520}00520\ \ \ \ \ \ \ \ \ code2\ =\ catCode2;}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00521}00521\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00522}00522\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00523}00523\ \ \ \ \ \textcolor{keywordtype}{int}\ stat\ =\ country1.Cmp(\ country2\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00524}00524\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ !stat\ )}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00525}00525\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00526}00526\ \ \ \ \ \ \ \ \ stat\ =\ catalog1.Cmp(\ catalog2\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00527}00527\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ !stat\ )}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00528}00528\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00529}00529\ \ \ \ \ \ \ \ \ \ \ \ \ stat\ =\ code1.Cmp(\ code2\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00530}00530\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ !stat\ )}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00531}00531\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00532}00532\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ stat\ =\ prefix1.Cmp(\ prefix2\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00533}00533\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00534}00534\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00535}00535\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00536}00536\ \ \ \ \ \textcolor{keywordflow}{return}\ stat;}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00537}00537\ \}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00538}00538\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00539}00539\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00540}00540\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00541}\mbox{\hyperlink{_gui_utils_8cpp_a80e43fdb1d91b48ea9bda95b2d596091}{00541}}\ \mbox{\hyperlink{_gui_utils_8h_a66b06809b27f311da0c50fba212270ea}{ComparisonResultType}}\ \mbox{\hyperlink{_gui_utils_8cpp_a80e43fdb1d91b48ea9bda95b2d596091}{CompareDates}}(\ wxString\ date1,\ wxString\ date2\ )}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00542}00542\ \{}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00543}00543\ \ \ \ \ wxDateTime\ dt1;}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00544}00544\ \ \ \ \ wxDateTime\ dt2;}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00545}00545\ \ \ \ \ wxString::const\_iterator\ end;}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00546}00546\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ !dt1.ParseFormat(\ date1,\ \textcolor{stringliteral}{"{}\%Y-\/\%m-\/\%d"{}},\ \&end\ )\ )}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00547}00547\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00548}00548\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ !dt1.ParseFormat(\ date1,\ \textcolor{stringliteral}{"{}\%Y"{}},\ \&end\ )\ )}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00549}00549\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00550}00550\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ !dt1.ParseFormat(\ date1,\ \textcolor{stringliteral}{"{}\%Y-\/\%m"{}},\ \&end\ )\ )}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00551}00551\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00552}00552\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{_gui_utils_8h_a66b06809b27f311da0c50fba212270eaaab1a852d02b7308af3acec0a5e47cbe0}{CompareInvalid}};}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00553}00553\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00554}00554\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00555}00555\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00556}00556\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ !dt2.ParseFormat(\ date2,\ \textcolor{stringliteral}{"{}\%Y-\/\%m-\/\%d"{}},\ \&end\ )\ )}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00557}00557\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00558}00558\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ !dt2.ParseFormat(\ date2,\ \textcolor{stringliteral}{"{}\%Y"{}},\ \&end\ )\ )}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00559}00559\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00560}00560\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ !dt2.ParseFormat(\ date2,\ \textcolor{stringliteral}{"{}\%Y-\/\%m"{}},\ \&end\ )\ )}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00561}00561\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00562}00562\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{_gui_utils_8h_a66b06809b27f311da0c50fba212270eaaab1a852d02b7308af3acec0a5e47cbe0}{CompareInvalid}};}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00563}00563\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00564}00564\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00565}00565\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00566}00566\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ !dt1.IsValid(\ )\ ||\ !dt2.IsValid(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00567}00567\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00568}00568\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{_gui_utils_8h_a66b06809b27f311da0c50fba212270eaaab1a852d02b7308af3acec0a5e47cbe0}{CompareInvalid}};}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00569}00569\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00570}00570\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00571}00571\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ dt1.IsSameDate(\ dt2\ )\ )}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00572}00572\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00573}00573\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{_gui_utils_8h_a66b06809b27f311da0c50fba212270eaa74d5805bc0e440bd47f5f18d797e2fc0}{CompareEqual}};}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00574}00574\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00575}00575\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (\ dt1.IsEarlierThan(\ dt2\ )\ )}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00576}00576\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00577}00577\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{_gui_utils_8h_a66b06809b27f311da0c50fba212270eaaff1ea730dff3c027d8a76dac0007288b}{CompareLess}};}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00578}00578\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00579}00579\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00580}00580\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00581}00581\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{_gui_utils_8h_a66b06809b27f311da0c50fba212270eaa6da772161cf6c62141705d1b025ca2f1}{CompareGreater}};}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00582}00582\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00583}00583\ \}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00584}00584\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00585}00585\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8cpp_source_l00586}00586\ }
+
+\end{DoxyCode}

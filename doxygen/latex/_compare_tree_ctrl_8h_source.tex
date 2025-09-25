@@ -1,0 +1,260 @@
+\doxysection{Compare\+Tree\+Ctrl.\+h}
+\hypertarget{_compare_tree_ctrl_8h_source}{}\label{_compare_tree_ctrl_8h_source}\index{C:/Users/femon/Development/wx/cloneTest/StampTool/src/gui/CompareTreeCtrl.h@{C:/Users/femon/Development/wx/cloneTest/StampTool/src/gui/CompareTreeCtrl.h}}
+\mbox{\hyperlink{_compare_tree_ctrl_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00023}00023\ \textcolor{preprocessor}{\#ifndef\ CompareTreeCtrl\_H}}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00024}00024\ \textcolor{preprocessor}{\#define\ CompareTreeCtrl\_H}}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00026}00026\ \textcolor{preprocessor}{\#include\ <wx/treectrl.h>}}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00027}00027\ \textcolor{preprocessor}{\#include\ <wx/imaglist.h>}}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00028}00028\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_icon_defs_8h}{gui/IconDefs.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00029}00029\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_gui_utils_8h}{gui/GuiUtils.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00030}00030\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_entry_8h}{catalog/Entry.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00031}00031\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_merge_list_8h}{catalog/MergeList.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00032}00032\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_album_base_8h}{design/AlbumBase.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00036}00036\ \textcolor{keyword}{class\ }Stamp;}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00037}00037\ \textcolor{keyword}{class\ }CompareEntry;}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00038}00038\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_compare_tree_ctrl}{CompareTreeCtrl}};}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00041}00041\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00042}\mbox{\hyperlink{class_compare_tree_item_data}{00042}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_compare_tree_item_data_aec6b8f303cd8750d177ec986b853e856}{CompareTreeItemData}}\ :\ \textcolor{keyword}{public}\ wxTreeItemData}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00043}00043\ \{}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00044}00044\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00046}00046\ \ \ \ \ \mbox{\hyperlink{class_compare_tree_item_data_aec6b8f303cd8750d177ec986b853e856}{CompareTreeItemData}}(\ wxWindow*\ parent,\ \mbox{\hyperlink{namespace_catalog_a86f503ced35b06e6427477ddab27c6be}{Catalog::CatalogBaseType}}\ type,\ \textcolor{keyword}{const}\ wxString\ desc,\ wxXmlNode*\ targetNode\ =\ 0,\ wxXmlNode*\ mergeNode\ =\ 0\ );}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00048}\mbox{\hyperlink{class_compare_tree_item_data_a1982e0c9b0cbad2ddbd1474c8346d744}{00048}}\ \ \ \ \ \mbox{\hyperlink{class_compare_tree_item_data_a1982e0c9b0cbad2ddbd1474c8346d744}{\string~CompareTreeItemData}}(\ )}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00049}00049\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00050}00050\ \ \ \ \ \ \ \ \ m\_ok\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00051}00051\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00053}\mbox{\hyperlink{class_compare_tree_item_data_ad8560b456771f7f06e9ba351ded64517}{00053}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_compare_tree_item_data_ad8560b456771f7f06e9ba351ded64517}{Cmp}}(\ \mbox{\hyperlink{class_compare_tree_item_data_aec6b8f303cd8750d177ec986b853e856}{CompareTreeItemData}}*\ itemData2\ );}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00055}\mbox{\hyperlink{class_compare_tree_item_data_a07eccd0109c4ffff15734a85e10f4cf1}{00055}}\ \ \ \ \ wxString\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{class_compare_tree_item_data_a07eccd0109c4ffff15734a85e10f4cf1}{GetDesc}}(\ )\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00056}00056\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_desc;}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00057}00057\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00059}\mbox{\hyperlink{class_compare_tree_item_data_ab702f37abdb1963f5edb3341f1418ffe}{00059}}\ \ \ \ \ wxString\ \mbox{\hyperlink{class_compare_tree_item_data_ab702f37abdb1963f5edb3341f1418ffe}{GetImageFullName}}(\ )\ \{}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00060}00060\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_imageFullPath;}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00061}00061\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00063}\mbox{\hyperlink{class_compare_tree_item_data_a42f2b16c027e07fc6a72802a0b7b2d38}{00063}}\ \ \ \ \ wxXmlNode*\ \mbox{\hyperlink{class_compare_tree_item_data_a42f2b16c027e07fc6a72802a0b7b2d38}{GetNodeElement}}(\ \textcolor{keywordtype}{void}\ )\ \{}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00064}00064\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_element;}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00065}00065\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00068}\mbox{\hyperlink{class_compare_tree_item_data_a716856d402255e1525140c1905617186}{00068}}\ \ \ \ \ \mbox{\hyperlink{namespace_catalog_a86f503ced35b06e6427477ddab27c6be}{Catalog::CatalogBaseType}}\ \mbox{\hyperlink{class_compare_tree_item_data_a716856d402255e1525140c1905617186}{GetType}}(\ )\ \{}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00069}00069\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_type;}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00070}00070\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00072}\mbox{\hyperlink{class_compare_tree_item_data_abf07c3236b94f9f1e4f2cfb0e47f3101}{00072}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_compare_tree_item_data_abf07c3236b94f9f1e4f2cfb0e47f3101}{IsOK}}(\ )}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00073}00073\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00074}00074\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ m\_ok\ ==\ 12345\ )}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00075}00075\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00077}00077\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00078}00078\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00079}00079\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00082}\mbox{\hyperlink{class_compare_tree_item_data_a365cfda82139973ae2f8f34ce91110fc}{00082}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_compare_tree_item_data_a365cfda82139973ae2f8f34ce91110fc}{SetCatNode}}(\ wxXmlNode*\ ele\ )\ \{}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00083}00083\ \ \ \ \ \ \ \ \ m\_element\ =\ ele;}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00084}00084\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00086}00086\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00087}\mbox{\hyperlink{class_compare_tree_item_data_ad4c2bc2ea311c4037444fb05640f5ace}{00087}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_compare_tree_item_data_ad4c2bc2ea311c4037444fb05640f5ace}{SetType}}(\ \mbox{\hyperlink{namespace_catalog_a86f503ced35b06e6427477ddab27c6be}{Catalog::CatalogBaseType}}\ type\ )\ \{}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00088}00088\ \ \ \ \ \ \ \ \ m\_type\ =\ type;}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00089}00089\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00090}00090\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00091}00091\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00092}\mbox{\hyperlink{class_compare_tree_item_data_adc8cbdb3532b99f6884f7246b78897b3}{00092}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_compare_tree_item_data_adc8cbdb3532b99f6884f7246b78897b3}{SetImageFullName}}(\ wxString\ str\ )\ \{}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00093}00093\ \ \ \ \ \ \ \ \ m\_imageFullPath\ =\ str;}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00094}00094\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00095}00095\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00096}\mbox{\hyperlink{class_compare_tree_item_data_ad65f639775cd93d4624bdca2d7782b67}{00096}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_compare_tree_item_data_ad65f639775cd93d4624bdca2d7782b67}{SetMergeData}}(\ \mbox{\hyperlink{class_catalog_1_1_merge_data}{Catalog::MergeData}}*\ mergeData\ )}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00097}00097\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00098}00098\ \ \ \ \ \ \ \ \ m\_mergeData\ =\ mergeData;}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00099}00099\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00100}00100\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00101}\mbox{\hyperlink{class_compare_tree_item_data_a731efa26282a4dc2dc631140d58a7037}{00101}}\ \ \ \ \ \mbox{\hyperlink{class_catalog_1_1_merge_data}{Catalog::MergeData}}*\ \mbox{\hyperlink{class_compare_tree_item_data_a731efa26282a4dc2dc631140d58a7037}{GetMergeData}}(\ )}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00102}00102\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00103}00103\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_mergeData;}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00104}00104\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00105}00105\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00106}\mbox{\hyperlink{class_compare_tree_item_data_ab90c2adc106073bc8ddeea5d12616d27}{00106}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_compare_tree_item_data_ab90c2adc106073bc8ddeea5d12616d27}{SetTargetEntry}}(\ wxXmlNode*\ node\ )}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00107}00107\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00108}00108\ \ \ \ \ \ \ \ \ m\_mergeData-\/>SetTargetEntry(\ node\ );}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00109}00109\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00110}00110\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00111}00111\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00112}00112\ \ \ \ \ \mbox{\hyperlink{class_compare_tree_ctrl}{CompareTreeCtrl}}*\ m\_parent;}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00113}00113\ \ \ \ \ \mbox{\hyperlink{class_catalog_1_1_merge_data}{Catalog::MergeData}}*\ m\_mergeData;}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00114}00114\ \ \ \ \ \textcolor{keywordtype}{double}\ m\_ok;}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00115}00115\ \ \ \ \ wxXmlNode*\ m\_element;}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00116}00116\ \ \ \ \ wxString\ m\_desc;}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00117}00117\ \ \ \ \ \mbox{\hyperlink{namespace_catalog_a86f503ced35b06e6427477ddab27c6be}{Catalog::CatalogBaseType}}\ m\_type;}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00118}00118\ \ \ \ \ wxString\ m\_imageFullPath;}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00119}00119\ \};}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00120}00120\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00121}00121\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00122}00122\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00123}00123\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00124}\mbox{\hyperlink{class_compare_tree_ctrl}{00124}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_compare_tree_ctrl_a10582d3851b7027c379e692e56aa0ec9}{CompareTreeCtrl}}\ :\ \textcolor{keyword}{public}\ wxTreeCtrl}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00125}00125\ \{}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00126}00126\ \ \ \ \ \textcolor{comment}{//\ \ \ \ DECLARE\_DYNAMIC\_CLASS(\ CompareTreeCtrl\ )}}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00127}00127\ \ \ \ \ \textcolor{comment}{//\ \ \ \ DECLARE\_EVENT\_TABLE(\ )}}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00128}00128\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00129}00129\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00130}00130\ \ \ \ \ \textcolor{keyword}{enum}}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00131}00131\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00132}\mbox{\hyperlink{class_compare_tree_ctrl_a5326d1cc45c052e702237d872f7e0c9dae55b46e33723d3f876fd7d8f512251e8}{00132}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_compare_tree_ctrl_a5326d1cc45c052e702237d872f7e0c9dae55b46e33723d3f876fd7d8f512251e8}{CatalogListTree\_Quit}}\ =\ wxID\_EXIT,}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00133}\mbox{\hyperlink{class_compare_tree_ctrl_a5326d1cc45c052e702237d872f7e0c9daa33bf5f176c0598f2b399528a9b9e57f}{00133}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_compare_tree_ctrl_a5326d1cc45c052e702237d872f7e0c9daa33bf5f176c0598f2b399528a9b9e57f}{CatalogListTree\_About}}\ =\ wxID\_ABOUT,}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00134}\mbox{\hyperlink{class_compare_tree_ctrl_a5326d1cc45c052e702237d872f7e0c9dab43124eb59f1b17ff9ea300a5949ead1}{00134}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_compare_tree_ctrl_a5326d1cc45c052e702237d872f7e0c9dab43124eb59f1b17ff9ea300a5949ead1}{CatalogListTree\_Colnect}}}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00135}00135\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00136}00136\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00137}00137\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00138}00138\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00139}00139\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00140}\mbox{\hyperlink{class_compare_tree_ctrl_a10582d3851b7027c379e692e56aa0ec9}{00140}}\ \ \ \ \ \mbox{\hyperlink{class_compare_tree_ctrl_a10582d3851b7027c379e692e56aa0ec9}{CompareTreeCtrl}}(\ )\ \{\ \}}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00141}00141\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00142}00142\ \ \ \ \ \mbox{\hyperlink{class_compare_tree_ctrl_a10582d3851b7027c379e692e56aa0ec9}{CompareTreeCtrl}}(\ wxWindow*\ parent,\ \textcolor{keyword}{const}\ wxWindowID\ \textcolor{keywordtype}{id},\ \textcolor{keyword}{const}\ wxPoint\&\ pos,}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00143}00143\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ wxSize\&\ size,\ \textcolor{keywordtype}{long}\ style\ );}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00144}00144\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00145}\mbox{\hyperlink{class_compare_tree_ctrl_a9cff3bcfb44b1c58157e4c2abf125302}{00145}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_compare_tree_ctrl_a9cff3bcfb44b1c58157e4c2abf125302}{\string~CompareTreeCtrl}}(\ \textcolor{keywordtype}{void}\ )\ \{\ \}}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00146}00146\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00149}00149\ \ \ \ \ wxTreeItemId\ \mbox{\hyperlink{class_compare_tree_ctrl_a5d68ba6a64f0b79408aec5c7e58ac8c1}{AddChild}}(\ wxTreeItemId\ parent,\ wxXmlNode*\ child\ );}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00150}00150\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00151}00151\ \ \ \ \ \mbox{\hyperlink{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3a}{Catalog::IconID}}\ \mbox{\hyperlink{class_compare_tree_ctrl_a5e0872deb7a5c4e0944d16e4098785af}{GetIconId}}(\ \mbox{\hyperlink{class_catalog_1_1_entry}{Catalog::Entry}}*\ entry,\ \mbox{\hyperlink{namespace_catalog_a10de14517a76cdd4e6b2bc1342142b07}{Catalog::MergeStatus}}\ status\ );}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00152}00152\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00153}00153\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_compare_tree_ctrl_aca5cac46fa3e4e9e4b57a3ce3c1020d3}{AddEntry}}(\ wxTreeItemId\ \textcolor{keywordtype}{id}\ );}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00154}00154\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00155}00155\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_compare_tree_ctrl_abe7f83d64056d11d46b6cfd9dc67f4c1}{Clear}}(\ );}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00156}00156\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00157}\mbox{\hyperlink{class_compare_tree_ctrl_a4cc5f64ba3e659c9d57b8f3e914ad3d3}{00157}}\ \ \ \ \ \mbox{\hyperlink{_gui_utils_8h_a66b06809b27f311da0c50fba212270ea}{ComparisonResultType}}\ \mbox{\hyperlink{class_compare_tree_ctrl_a4cc5f64ba3e659c9d57b8f3e914ad3d3}{CompareDates}}(\ wxString\ date1,\ wxString\ date2\ );}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00158}00158\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00159}00159\ \ \ \ \ \mbox{\hyperlink{class_compare_tree_item_data}{CompareTreeItemData}}*\ \mbox{\hyperlink{class_compare_tree_ctrl_ac0ff5000571f84448a9d3a67be2969d8}{CreateChildData}}(\ wxXmlNode*\ targetNode,\ wxXmlNode*\ mergeNode,}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00160}00160\ \ \ \ \ \ \ \ \ wxString\&\ label,}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00161}00161\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3a}{Catalog::IconID}}\&\ icon,}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00162}00162\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_catalog_a86f503ced35b06e6427477ddab27c6be}{Catalog::CatalogBaseType}}\&\ nodeType\ );}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00163}00163\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00164}00164\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_compare_tree_ctrl_ab7ea6b89668e1bddc2360f1baf1865ce}{CreateStateImageList}}(\ );}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00165}00165\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00166}00166\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_compare_tree_ctrl_ac474521817da3c017932b1780a8b3408}{CreateImageList}}(\ );}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00167}00167\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00168}00168\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00169}00169\ \ \ \ \ wxTreeItemId\ \mbox{\hyperlink{class_compare_tree_ctrl_a55bfbc6bb6d1a527f8aa69bc7ebaeaaf}{FindFirstEntryChild}}(\ wxTreeItemId\ \textcolor{keywordtype}{id}\ );}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00170}00170\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00171}00171\ \ \ \ \ wxTreeItemId\ \mbox{\hyperlink{class_compare_tree_ctrl_a8cf969d39227aea2f722960f7822e88a}{FindTreeItemID}}(\ wxXmlNode*\ node\ );}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00172}00172\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00173}00173\ \ \ \ \ wxTreeItemId\ \mbox{\hyperlink{class_compare_tree_ctrl_a8cf969d39227aea2f722960f7822e88a}{FindTreeItemID}}(\ wxXmlNode*\ node,\ wxTreeItemId\ \textcolor{keywordtype}{id}\ );}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00174}00174\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00175}00175\ \ \ \ \ wxTreeItemId\ \mbox{\hyperlink{class_compare_tree_ctrl_a8cf969d39227aea2f722960f7822e88a}{FindTreeItemID}}(\ wxString\ stampID\ );}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00176}00176\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00177}00177\ \ \ \ \ wxTreeItemId\ \mbox{\hyperlink{class_compare_tree_ctrl_a8cf969d39227aea2f722960f7822e88a}{FindTreeItemID}}(\ wxString\ stampID,\ wxTreeItemId\ \textcolor{keywordtype}{id}\ );}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00178}00178\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00179}00179\ \ \ \ \ wxString\ \mbox{\hyperlink{class_compare_tree_ctrl_a93a873dde3ea4beb279a2b95260902c7}{GetAttribute}}(\ wxTreeItemId\ catTreeID,\ wxString\ name\ );}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00180}00180\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00181}00181\ \ \ \ \ wxString\ \mbox{\hyperlink{class_compare_tree_ctrl_aa36168b3e45e4ea70fb70ca82c242c74}{GetID}}(\ wxTreeItemId\ catTreeID\ );}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00182}00182\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00183}00183\ \ \ \ \ wxString\ \mbox{\hyperlink{class_compare_tree_ctrl_abfa60c2cfb7593168354e71009d89010}{GetImage}}(\ wxTreeItemId\ catTreeID\ );}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00184}00184\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00185}00185\ \ \ \ \ wxString\ \mbox{\hyperlink{class_compare_tree_ctrl_aa6d483cc1b743ce3218a0b4228901e60}{GetImageFullName}}(\ wxTreeItemId\ catTreeID\ );}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00186}00186\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00187}00187\ \ \ \ \ wxString\ \mbox{\hyperlink{class_compare_tree_ctrl_a7278f25b040b11629aad89762319a964}{GetItemDesc}}(\ wxTreeItemId\ \textcolor{keywordtype}{id}\ );}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00188}00188\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00189}00189\ \ \ \ \ wxString\ \mbox{\hyperlink{class_compare_tree_ctrl_ab5bf53c8d3e94f0481f48939af57a68f}{GetItemImageFullName}}(\ wxTreeItemId\ \textcolor{keywordtype}{id}\ );}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00190}00190\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00191}00191\ \ \ \ \ wxXmlNode*\ \mbox{\hyperlink{class_compare_tree_ctrl_a13aecb3d09b9e308c1921392788a4341}{GetItemNode}}(\ wxTreeItemId\ \textcolor{keywordtype}{id}\ );}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00192}00192\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00193}00193\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00194}00194\ \ \ \ \ \mbox{\hyperlink{namespace_catalog_a86f503ced35b06e6427477ddab27c6be}{Catalog::CatalogBaseType}}\ \mbox{\hyperlink{class_compare_tree_ctrl_ab04feeb667b45148f0a8cc7d54ae9631}{GetItemType}}(\ wxTreeItemId\ \textcolor{keywordtype}{id}\ );}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00195}00195\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00196}00196\ \ \ \ \ wxXmlNode*\ \mbox{\hyperlink{class_compare_tree_ctrl_aadeaaa78b6ccf9379137e21907339151}{GetNewEntry}}(\ wxTreeItemId\ itemId\ );}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00197}00197\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00198}00198\ \ \ \ \ wxXmlNode*\ \mbox{\hyperlink{class_compare_tree_ctrl_a945b71bee5b95589921b7b69003b9439}{GetSelectionNode}}(\ );}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00199}00199\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00200}00200\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_compare_tree_ctrl_a2fe6b0dcc4be277082d9b89e69b513aa}{GoToColnect}}(\ wxTreeItemId\ \textcolor{keywordtype}{id}\ );}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00201}00201\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00202}00202\ \ \ \ \ wxTreeItemId\ \mbox{\hyperlink{class_compare_tree_ctrl_a817ea593c13529fa1582677a47e9faf2}{InsertChild}}(\ wxTreeItemId\ parent,\ wxXmlNode*\ child,\ \textcolor{keywordtype}{bool}\ after\ =\ \textcolor{keyword}{true}\ );}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00203}00203\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00204}00204\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_compare_tree_ctrl_a9e94354c05a4d2b520e7d41797a73152}{IsElement}}(\ wxTreeItemId\ item,\ wxString\ stampID\ );}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00205}00205\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00206}00206\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_compare_tree_ctrl_a9e94354c05a4d2b520e7d41797a73152}{IsElement}}(\ wxTreeItemId\ item,\ wxXmlNode*\ node\ );}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00207}00207\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00208}00208\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_compare_tree_ctrl_a81164a79a81e5937e1bd60eac37f45b5}{LoadCompareTree}}(\ wxXmlNode*\ root\ );}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00209}00209\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00210}00210\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_compare_tree_ctrl_a6dfe3504bc8bde92b2376d811af675b3}{OnCompareItems}}(\ \textcolor{keyword}{const}\ wxTreeItemId\&\ i1,\ \textcolor{keyword}{const}\ wxTreeItemId\&\ i2\ )\ wxOVERRIDE;}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00211}00211\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00212}00212\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_compare_tree_ctrl_a7c1b0a82ab2845e3e766b021b91ae8d0}{OnItemMenu}}(\ wxTreeEvent\&\ event\ );}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00213}00213\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00214}00214\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_compare_tree_ctrl_a8d8cd174a64a80940f00fb48755e53b3}{OnSelChanged}}(\ wxTreeEvent\&\ event\ );}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00215}00215\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00216}00216\ \ \ \ \ wxString\ \mbox{\hyperlink{class_compare_tree_ctrl_ab6600b48c7e9a4ed47c3e7a56000a3fd}{GetDesc}}(\ wxTreeItemId\ item\ );}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00217}00217\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00218}00218\ \ \ \ \ wxTreeItemId\ \mbox{\hyperlink{class_compare_tree_ctrl_ad7d613823b3915083f1b14563024da25}{FindNextItem}}(\ wxTreeItemId\ itemId\ );}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00219}00219\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00220}00220\ \ \ \ \ wxTreeItemId\ \mbox{\hyperlink{class_compare_tree_ctrl_aaf1b33b9162f0bfd5a9491c05df123e6}{FindPrevItem}}(\ wxTreeItemId\ itemId\ );}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00221}00221\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00222}00222\ \ \ \ \ wxTreeItemId\ \mbox{\hyperlink{class_compare_tree_ctrl_a39957d5ebee48710aa2b52a80cc32e6e}{FindNextEntryItem}}(\ wxTreeItemId\ itemId\ );}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00223}00223\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00224}00224\ \ \ \ \ wxTreeItemId\ \mbox{\hyperlink{class_compare_tree_ctrl_a760327a234572f37f23915be52c8c978}{FindPrevEntryItem}}(\ wxTreeItemId\ itemId\ );}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00225}00225\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00226}00226\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_compare_tree_ctrl_ac1895f4c626c024bdf190f66dfdba275}{IsEntryNode}}(\ wxTreeItemId\ itemId\ );}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00227}00227\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00228}00228\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_compare_tree_ctrl_a2e904d7fc93f361c68af2d3c8f240422}{OnTreectrlItemCollapsed}}(\ wxTreeEvent\&\ event\ );}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00229}00229\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00230}00230\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_compare_tree_ctrl_a973f4400055eec15874cc75aa803f102}{OnTreectrlItemExpanded}}(\ wxTreeEvent\&\ event\ );}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00231}00231\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00232}00232\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_compare_tree_ctrl_a904b41014979e86bbd32b87871cc3772}{SetAttribute}}(\ wxTreeItemId\ catTreeID,\ wxString\ name,\ wxString\ val\ );}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00233}00233\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00234}00234\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_compare_tree_ctrl_a99a87e0a92b28cf0968aa7c354387441}{SelectStamp}}(\ wxString\ \textcolor{keywordtype}{id}\ );}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00235}00235\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00236}00236\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_compare_tree_ctrl_a07bef4a8f96a9c6467369160ae415022}{SetTreeItemCollapseState}}(\ wxTreeItemId\ childID\ );}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00237}00237\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00238}00238\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_compare_tree_ctrl_a9949c7c58821b84a338d0b461fdcad71}{SetItemNode}}(\ wxTreeItemId\ \textcolor{keywordtype}{id},\ wxXmlNode*\ ele\ );}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00239}00239\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00240}00240\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_compare_tree_ctrl_ab73c95df15a9e4e961190a4e726dcd9e}{SetItemImageFullName}}(\ wxTreeItemId\ \textcolor{keywordtype}{id},\ wxString\ str\ );}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00241}00241\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00244}00244\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_compare_tree_ctrl_a6ffa9d2792c4ece63cc9a54d2c641bc0}{SetNextState}}(\ \textcolor{keyword}{const}\ wxTreeItemId\&\ itemID\ );}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00245}00245\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00246}00246\ \ \ \ \ \textcolor{comment}{//Find\ th\ node\ and\ select\ it}}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00247}00247\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_compare_tree_ctrl_a1250001f0cb351c0ec98d5e2eaf63c78}{SetSelection}}(\ wxXmlNode*\ node\ );}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00248}00248\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00249}00249\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_compare_tree_ctrl_ac26b7219a6c65aa7c247a0a40df96412}{SetType}}(\ wxTreeItemId\ \textcolor{keywordtype}{id},\ \mbox{\hyperlink{namespace_catalog_a86f503ced35b06e6427477ddab27c6be}{Catalog::CatalogBaseType}}\ type\ );}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00250}00250\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00251}00251\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_compare_tree_ctrl_a8556c53f36426c6e565f0c9a1b6d3d38}{ShowMenu}}(\ wxTreeItemId\ \textcolor{keywordtype}{id},\ \textcolor{keyword}{const}\ wxPoint\&\ pt\ );}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00252}00252\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00253}00253\ \ \ \ \ \textcolor{keywordtype}{void}\ \ \mbox{\hyperlink{class_compare_tree_ctrl_a9447a9e2dd86f39fe63c790ebe9139d7}{SetComparePanel}}(\ \mbox{\hyperlink{class_compare_panel}{ComparePanel}}*\ comparePanel\ );}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00254}00254\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00255}00255\ \ \ \ \ \mbox{\hyperlink{class_compare_panel}{ComparePanel}}*\ \mbox{\hyperlink{class_compare_tree_ctrl_a6737fa28e9564e3c787fdc7f27fe31e4}{GetComparePanel}}(\ );}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00256}00256\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00257}00257\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00258}00258\ \ \ \ \ wxTreeItemId\ \ \mbox{\hyperlink{class_compare_tree_ctrl_ab4f75eef3cac3afdb28d4691ad59ee2e}{FindTargetEntryForNewEntry}}(\ wxTreeItemId\ \textcolor{keywordtype}{id},\ \mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176}{Catalog::DataTypes}}\ type,\ wxString\ searchVal\ );}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00259}00259\ \ \ \ \ wxTreeItemId\ \ \mbox{\hyperlink{class_compare_tree_ctrl_ab4f75eef3cac3afdb28d4691ad59ee2e}{FindTargetEntryForNewEntry}}(\ wxXmlNode*\ node,\ \mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176}{Catalog::DataTypes}}\ type\ );}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00260}00260\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00261}00261\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_compare_tree_ctrl_aa24aeae7ba992e0a671b9baf5dbfabbd}{AddMergeToEntryList}}(\ wxXmlNode*\ node\ );}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00262}00262\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00263}00263\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_compare_tree_ctrl_af2f96dd66083cbeb161f0a110661fb4a}{LoadMergeToCompareTree}}(\ wxXmlNode*\ mergeRoot\ );}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00264}00264\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00265}00265\ \ \ \ \ wxTreeItemId\ \mbox{\hyperlink{class_compare_tree_ctrl_a1c8a263425aa6d053e26aded0a8116fc}{FindForiegn}}(\ );}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00266}00266\ \ \ \ \ wxTreeItemId\ \mbox{\hyperlink{class_compare_tree_ctrl_af7b34b668b6bf812a43013b6e0719a23}{CopyForiegnChild}}(\ wxTreeItemId\ parent,\ wxXmlNode*\ child\ );}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00267}00267\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00268}00268\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00269}00269\ \ \ \ \ \mbox{\hyperlink{class_compare_panel}{ComparePanel}}*\ m\_comparePanel;}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00270}00270\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00271}00271\ \ \ \ \ \textcolor{comment}{//\ NB:\ due\ to\ an\ ugly\ wxMSW\ hack\ you\ \_must\_\ use\ wxDECLARE\_DYNAMIC\_CLASS(\ );}}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00272}00272\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ if\ you\ want\ your\ overloaded\ OnCompareItems(\ )\ to\ be\ called.}}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00273}00273\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ OTOH,\ if\ you\ don't\ want\ it\ you\ may\ omit\ the\ next\ line\ -\/\ this\ will}}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00274}00274\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ make\ default\ (\ alphabetical\ )\ sorting\ much\ faster\ under\ wxMSW.}}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00275}00275\ \ \ \ \ wxDECLARE\_DYNAMIC\_CLASS(\ \mbox{\hyperlink{class_compare_tree_ctrl_a10582d3851b7027c379e692e56aa0ec9}{CompareTreeCtrl}}\ );}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00276}00276\ \ \ \ \ wxDECLARE\_EVENT\_TABLE(\ );}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00277}00277\ \};}
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00278}00278\ }
+\DoxyCodeLine{\Hypertarget{_compare_tree_ctrl_8h_source_l00279}00279\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,110 @@
+\doxysection{XMLUtilities.\+h}
+\hypertarget{_x_m_l_utilities_8h_source}{}\label{_x_m_l_utilities_8h_source}\index{C:/Users/femon/Development/wx/cloneTest/StampTool/src/utils/XMLUtilities.h@{C:/Users/femon/Development/wx/cloneTest/StampTool/src/utils/XMLUtilities.h}}
+\mbox{\hyperlink{_x_m_l_utilities_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00025}00025\ \textcolor{preprocessor}{\#ifndef\ XMLIterator\_H}}
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00026}00026\ \textcolor{preprocessor}{\#define\ XMLIterator\_H}}
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00028}00028\ \textcolor{preprocessor}{\#include\ "{}wx/xml/xml.h"{}}}
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00029}00029\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00031}00031\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_catalog_defs_8h}{catalog/CatalogDefs.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00032}00032\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_design_defs_8h}{design/DesignDefs.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00034}00034\ \textcolor{keyword}{class\ }wxTextOutputStream;}
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00037}00037\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_utils}{Utils}}\ \{}
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00039}00039\ \ \ \ \ \textcolor{comment}{//\ Class\ for\ iterating\ an\ XML\ heirarchy}}
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00040}\mbox{\hyperlink{class_utils_1_1_x_m_l_iterator}{00040}}\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_utils_1_1_x_m_l_iterator_a6f7bf155a42d6cd59ade04d7b38f936d}{XMLIterator}}}
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00041}00041\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00043}00043\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00055}00055\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_x_m_l_iterator_a6f7bf155a42d6cd59ade04d7b38f936d}{XMLIterator}}(\ wxXmlNode*\ parent,\ \textcolor{keywordtype}{bool}\ decend\ =\ \textcolor{keyword}{true}\ );}
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00056}00056\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_x_m_l_iterator_a25526338a726ef4df593779aa3a85696}{\string~XMLIterator}}(\ );}
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00062}00062\ \ \ \ \ \ \ \ \ wxXmlNode*\ \mbox{\hyperlink{class_utils_1_1_x_m_l_iterator_ab6b45e0f32bac311fcfa45b208446849}{First}}(\ );}
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00068}00068\ \ \ \ \ \ \ \ \ wxXmlNode*\ \mbox{\hyperlink{class_utils_1_1_x_m_l_iterator_abcbe140a75831132c6ea9fd1a42b7809}{Next}}(\ );}
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00072}00072\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00073}00073\ \ \ \ \ \ \ \ \ wxXmlNode*\ m\_parent;\ \ \ \ \ \ \textcolor{comment}{//\ pointer\ to\ parent\ of\ current\ element}}
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00074}00074\ \ \ \ \ \ \ \ \ wxXmlNode*\ m\_currElement;\ \textcolor{comment}{//\ pointer\ to\ the\ current\ element}}
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00075}00075\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_x_m_l_iterator_a6f7bf155a42d6cd59ade04d7b38f936d}{XMLIterator}}*\ m\_iterator;\ \ \ \textcolor{comment}{//\ iterator\ for\ children\ of\ this\ element}}
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00076}00076\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_decend;\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ bool;\ true\ =\ >\ iterate\ children}}
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00077}00077\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_firstDone;\ \textcolor{comment}{//\ bool;\ true\ if\ First\ has\ been\ called;\ if\ not\ true\ Next}}
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00078}00078\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ just\ returns\ null}}
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00079}00079\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00081}\mbox{\hyperlink{namespace_utils_aff8ea290d3a6f7270c0a0e8fc2b58dba}{00081}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_utils_aff8ea290d3a6f7270c0a0e8fc2b58dba}{IDElement}}(\ wxXmlNode*\ ele\ );}
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00083}\mbox{\hyperlink{namespace_utils_af54f9796bccf5cbc9c9fcb89cd8e824c}{00083}}\ \ \ \ \ \textcolor{keyword}{typedef}\ std::vector<wxXmlNode*>\ \mbox{\hyperlink{namespace_utils_af54f9796bccf5cbc9c9fcb89cd8e824c}{wxXmlNodeArray}};}
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00085}00085\ \ \ \ \ wxXmlNode*\ \mbox{\hyperlink{namespace_utils_a156ddf8c893eba62f65ffa2a5860c766}{NewNode}}(\ wxXmlNode*\ parent,\ wxString\ name\ );}
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00086}00086\ }
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00087}00087\ \ \ \ \ wxXmlNode*\ \mbox{\hyperlink{namespace_utils_a156ddf8c893eba62f65ffa2a5860c766}{NewNode}}(\ wxXmlDocument*\ parent,\ wxString\ name\ );}
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00088}00088\ }
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00089}00089\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{namespace_utils_a19270795939c8167c1d8e467b84f2379}{DeleteAttribute}}(\ wxXmlNode*\ node,\ wxString\ attrName\ );}
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00090}00090\ }
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00091}00091\ \ \ \ \ wxXmlNode*\ \mbox{\hyperlink{namespace_utils_ac982aeec9bf06c61495032e66e41d30f}{FirstChildElement}}(\ wxXmlNode*\ node,\ wxString\ name\ );}
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00092}00092\ \ \ \ \ wxXmlNode*\ \mbox{\hyperlink{namespace_utils_a20b6fc56dbae2455f1b9ee08595ac918}{GetNext}}(\ wxXmlNode*\ node,\ wxString\ name\ );}
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00093}00093\ }
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00094}00094\ \ \ \ \ wxXmlAttribute*\ \mbox{\hyperlink{namespace_utils_a0cf7591f8dca3719de0ef110784f0824}{GetAttribute}}(\ wxXmlNode*\ node,\ wxString\ attrName\ );}
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00095}00095\ }
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00096}00096\ \ \ \ \ wxString\ \mbox{\hyperlink{namespace_utils_a4b9bc624ff61c4a618c12b911b48110c}{GetAttrStr}}(\ wxXmlNode*\ node,\ wxString\ attrName\ );}
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00097}00097\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{namespace_utils_aa046de85e45b0c643530d600a0d8b2e0}{GetAttrDbl}}(\ wxXmlNode*\ node,\ wxString\ attrName\ );}
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00098}00098\ }
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00099}00099\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_utils_acd4b52904d20e67e1b9570914c1c45a7}{SetAttrStr}}(\ wxXmlNode*\ node,\ wxString\ name,\ wxString\ val\ );}
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00100}00100\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_utils_ad5e2d842159071641ed8e04dd56b807d}{SetAttrDbl}}(\ wxXmlNode*\ node,\ wxString\ name,\ \textcolor{keywordtype}{double}\ val\ );}
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00101}00101\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_utils_a299c4c79d05b5c053a03bccc1a46e729}{XMLDump}}(\ wxXmlDocument*\ doc\ );}
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00102}00102\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_utils_a41d2f3984cc2355a4d7f4f87d862f65f}{XMLDumpNode}}(\ wxXmlNode*\ node,\ wxString\ level\ );}
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00103}00103\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_utils_ab55d9667828a6cd38c273648a06b5054}{CopyNode}}(\ wxXmlNode*\ src,\ wxXmlNode*\ dest\ );}
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00104}00104\ }
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00105}00105\ \ \ \ \ wxXmlNode*\ \mbox{\hyperlink{namespace_utils_a60f019bbfe264668e001a65e60c411db}{AddNewNode}}(\ wxXmlNode*\ parent,\ wxXmlNodeType\ type,\ \textcolor{keyword}{const}\ wxString\&\ name\ );}
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00106}00106\ }
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00107}00107\ \ \ \ \ wxXmlNode*\ \mbox{\hyperlink{namespace_utils_a7b2f6dc6534fc9deca77727d666c7afe}{FindFirstChildWithPropertyofValue}}(\ wxXmlNode*\ element,\ wxString\&\ property,\ wxString\&\ value\ );}
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00108}00108\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_utils_a572ed476a40be7cb31cdc0f52c0be012}{AddComment}}(\ wxXmlNode*\ node,\ wxString\ name,\ wxString\ content\ );}
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00109}00109\ }
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00110}00110\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_utils_a2f36e508a1382037cb5b8174c50b1b05}{Save}}(\ wxXmlDocument*\ doc,\ wxString\ filename\ );}
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00111}00111\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_utils_a520fb2bd5694d07857d8ceaadaba2636}{SaveChild}}(\ wxTextOutputStream*\ text,\ wxXmlNode*\ node,\ wxString\ level\ );}
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00112}00112\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_utils_a042420a85be23883c3e293d3185f6642}{SaveAttributes}}(\ wxTextOutputStream*\ text,\ wxXmlNode*\ node,\ wxString\ level\ );}
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00113}00113\ }
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00114}00114\ \ \ \ \ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4}{Design::FontUsageType}}\ \mbox{\hyperlink{namespace_utils_a4cc034f6f2b276279458fb5426bd9d67}{LoadFont}}(\ wxXmlNode*\ fontNode,\ wxString\&\ nativeString,\ wxString\&\ color\ );}
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00115}00115\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_utils_ab42e7bb3c92cba2f30cf6f4dbf5859ca}{SaveFont}}(\ wxXmlNode*\ parent,\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4}{Design::FontUsageType}}\ type,\ wxFont\ font,\ wxColour\ color\ );}
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00116}00116\ }
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00117}00117\ \ \ \ \ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespace_utils_ab14cb95d5f1743e3776caf7f3891e68a}{zIndex}};}
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00118}00118\ \ \ \ \ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespace_utils_a3dbd78bf71c5573b5f22b80de8304b2b}{frameIndex}};}
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00119}00119\ \ \ \ \ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespace_utils_ac6ea5372f70cc2a9bd55409e24ca93f5}{imageIndex}};}
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00120}00120\ }
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00121}00121\ }
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00122}00122\ \ \ \ \ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{namespace_utils_afea393f29a96e3327b04f718a3372917}{GetZIndex}}(\ \textcolor{keywordtype}{char}*\ str\ );}
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00123}00123\ }
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00124}00124\ }
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00125}00125\ \ \ \ \ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{namespace_utils_aedcb00f7c21ab0a2d6cef5dec7fc1b22}{GetImageName}}(\ \textcolor{keywordtype}{char}*\ str\ );}
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00126}00126\ }
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00127}00127\ }
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00128}00128\ \ \ \ \ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{namespace_utils_ae7ef76108d7d8193ba7f0edf2026bc32}{GetFrameName}}(\ \textcolor{keywordtype}{char}*\ str\ );}
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00129}00129\ }
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00130}00130\ \ \ \ \ wxString\ \mbox{\hyperlink{namespace_utils_a9ad1087c313abbc250a501bc57337d48}{GetTextStyleName}}(\ wxString\&\ str\ );}
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00131}00131\ }
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00132}00132\ \ \ \ \ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{namespace_utils_a4bd8564086b1c20198edd41cfffbfffe}{GetDrawName}}(\ \textcolor{keywordtype}{char}*\ str\ );}
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00133}00133\ }
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00134}00134\ }
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00135}00135\ \ \ \ \ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{namespace_utils_ae99e826e7a34c13a30e51549c024b978}{DoubleToMMString}}(\ \textcolor{keywordtype}{char}*\ str,\ \textcolor{keywordtype}{double}\ nbr\ );}
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00136}00136\ }
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00137}00137\ }
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00138}00138\ \ \ \ \ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{namespace_utils_a339aad8cb75a8ed1f4e912e969c22e3f}{IntToInchString}}(\ \textcolor{keywordtype}{char}*\ str,\ \textcolor{keywordtype}{int}\ nbr\ );}
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00139}00139\ }
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00140}00140\ \}}
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00141}00141\ }
+\DoxyCodeLine{\Hypertarget{_x_m_l_utilities_8h_source_l00142}00142\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

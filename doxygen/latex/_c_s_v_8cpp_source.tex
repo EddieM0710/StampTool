@@ -1,0 +1,329 @@
+\doxysection{CSV.\+cpp}
+\hypertarget{_c_s_v_8cpp_source}{}\label{_c_s_v_8cpp_source}\index{C:/Users/femon/Development/wx/cloneTest/StampTool/src/utils/CSV.cpp@{C:/Users/femon/Development/wx/cloneTest/StampTool/src/utils/CSV.cpp}}
+\mbox{\hyperlink{_c_s_v_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00027}00027\ \textcolor{preprocessor}{\#include\ "{}wx/wxprec.h"{}}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00029}00029\ \textcolor{preprocessor}{\#ifdef\ \_\_BORLANDC\_\_}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00030}00030\ \textcolor{preprocessor}{\#pragma\ hdrstop}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00031}00031\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00033}00033\ \textcolor{preprocessor}{\#ifndef\ WX\_PRECOMP}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00034}00034\ \textcolor{preprocessor}{\#include\ "{}wx/wx.h"{}}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00035}00035\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00037}00037\ \textcolor{preprocessor}{\#include\ <wx/arrimpl.cpp>}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00038}00038\ \textcolor{preprocessor}{\#include\ <wx/msgdlg.h>}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00039}00039\ \ \textcolor{comment}{//\#include\ "{}catalog/CatalogCode.h"{}}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00040}00040\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_c_s_v_8h}{utils/CSV.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00041}00041\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_settings_8h}{utils/Settings.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00042}00042\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_project_8h}{utils/Project.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00043}00043\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_defs_8h}{Defs.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00044}00044\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_entry_8h}{catalog/Entry.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00045}00045\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_catalog_code_8h}{catalog/CatalogCode.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00046}00046\ \textcolor{preprocessor}{\#include\ <wx/tokenzr.h>}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00047}00047\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_catalog_volume_8h}{catalog/CatalogVolume.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00048}00048\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_x_m_l_utilities_8h}{utils/XMLUtilities.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00049}00049\ \ \textcolor{comment}{//\#include\ "{}StampToolApp.h"{}}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00050}00050\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_stamp_tool_frame_8h}{gui/StampToolFrame.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00052}00052\ \textcolor{comment}{//wxDECLARE\_APP(\ StampToolApp\ );}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00054}00054\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_utils}{Utils}}\ \{}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00056}\mbox{\hyperlink{class_utils_1_1_c_s_v_data_a3514b15f3bc6683311b66b6dacf22d58}{00056}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_utils_1_1_c_s_v_data_a3514b15f3bc6683311b66b6dacf22d58}{CSVData::ReadDataFile}}(\ wxString\&\ filename\ )}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00057}00057\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00058}00058\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ status\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00059}00059\ \ \ \ \ \ \ \ \ m\_filename\ =\ filename;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00061}00061\ \ \ \ \ \ \ \ \ wxFileInputStream\ l\_file(\ filename\ );}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00063}00063\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ l\_file.IsOk(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00064}00064\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ wxTextInputStream\ text(\ l\_file\ );}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ process\ Header}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ wxString\ inLine\ =\ text.ReadLine(\ );}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ m\_lineCnt\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ find\ the\ line\ that\ begins\ with\ "{}Name"{}}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (\ !inLine.StartsWith(\ \textcolor{stringliteral}{"{}Name"{}}\ )\ \&\&\ !l\_file.Eof(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ inLine\ =\ text.ReadLine(\ );}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_lineCnt++;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ !l\_file.Eof(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ comma\ separated\ Variables\ on\ line;\ i,\ e,\ .csv\ file}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wxStringTokenizer\ tokenizer(\ inLine,\ \textcolor{stringliteral}{"{},"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wxString\ colStr;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (\ tokenizer.HasMoreTokens(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ colStr\ =\ tokenizer.GetNextToken(\ );}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wxString\ rest;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ colStr.StartsWith(\ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}\(\backslash\)"{}"{}}\ ),\ \&rest\ )\ )}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ colStr\ =\ rest;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ colStr.EndsWith(\ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}\(\backslash\)"{}"{}}\ ),\ \&rest\ )\ )}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00089}00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ colStr\ =\ rest;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_csvColName.push\_back(\ colStr\ );}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00091}00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00093}00093\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ figure\ out\ how\ to\ map\ the\ csv\ file\ data\ to\ the\ entry\ array}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_c_s_v_data_aa1523b5ab529b280bff66212d29c142a}{MakeColMap}}(\ );}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00096}00096\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ \mbox{\hyperlink{class_utils_1_1_c_s_v_data_a0bcda187ecd2008fb2af5646dcc3c6c1}{ReadTextInStream}}(\ l\_file,\ text\ )\ )}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ status\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00101}00101\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00102}00102\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ !status\ )}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00103}00103\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ wxString\ caption\ =\ \textcolor{stringliteral}{"{}CSV\ Load\ Error"{}};}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00105}00105\ \ \ \ \ \ \ \ \ \ \ \ \ wxString\ message\ =\ wxString::Format(\ \textcolor{stringliteral}{"{}Error\ tryng\ to\ load\ csv\ file\ \%s."{}},\ m\_filename\ );}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00106}00106\ \ \ \ \ \ \ \ \ \ \ \ \ wxMessageDialog*\ msg\ =\ \textcolor{keyword}{new}\ wxMessageDialog(\ \mbox{\hyperlink{_defs_8cpp_abba9f47d8c9470ec708c79fb2c55f961}{GetFrame}}(\ ),}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00107}00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ message,\ caption,\ wxOK\ |\ wxCENTRE\ |\ wxICON\_ERROR\ );}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00108}00108\ \ \ \ \ \ \ \ \ \ \ \ \ msg-\/>ShowModal(\ );}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00109}00109\ \ \ \ \ \ \ \ \ \ \ \ \ msg-\/>\string~wxMessageDialog(\ );}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00110}00110\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00111}00111\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ status;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00112}00112\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00113}00113\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00114}\mbox{\hyperlink{class_utils_1_1_c_s_v_data_a2f0da66f5d89595fcaca1922113c2a26}{00114}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_utils_1_1_c_s_v_data_a2f0da66f5d89595fcaca1922113c2a26}{CSVData::DoLoad}}(\ wxString\&\ filename,\ wxXmlNode*\ catalogVolume\ )}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00115}00115\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00116}00116\ \ \ \ \ \ \ \ \ m\_nodeData\ =\ catalogVolume;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00117}00117\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00118}00118\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_utils_1_1_c_s_v_data_a3514b15f3bc6683311b66b6dacf22d58}{ReadDataFile}}(\ filename\ );}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00119}00119\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00120}00120\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00121}00121\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00122}\mbox{\hyperlink{class_utils_1_1_c_s_v_data_a2d74b6d8570cd5f8da5c3a4e835dfab9}{00122}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_utils_1_1_c_s_v_data_a2d74b6d8570cd5f8da5c3a4e835dfab9}{CSVData::GetIDNbr}}(\ wxString\ catCodes,\ wxString\&\ \textcolor{keywordtype}{id}\ )}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00123}00123\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00124}00124\ \ \ \ \ \ \ \ \ wxStringTokenizer\ tokenizer(\ catCodes,\ \textcolor{stringliteral}{"{},"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00125}00125\ \ \ \ \ \ \ \ \ wxString\ codePrefix\ =\ \mbox{\hyperlink{_defs_8cpp_a21e576057406853f4fd5f371338b78b6}{GetProject}}(\ )-\/>\mbox{\hyperlink{class_utils_1_1_project_a34122f7a4080723d85ec8eecd1592d18}{GetProjectCatalogCode}}(\ );}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00126}00126\ \ \ \ \ \ \ \ \ wxString\ valStr;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00127}00127\ \ \ \ \ \ \ \ \ wxString\ rest;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00128}00128\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (\ tokenizer.HasMoreTokens(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00129}00129\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00130}00130\ \ \ \ \ \ \ \ \ \ \ \ \ valStr\ =\ tokenizer.GetNextToken(\ );}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00131}00131\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ valStr.StartsWith(\ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}\(\backslash\)"{}"{}}\ ),\ \&rest\ )\ )}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00132}00132\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ valStr\ =\ rest;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00133}00133\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ valStr.EndsWith(\ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}\(\backslash\)"{}"{}}\ ),\ \&rest\ )\ )}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00134}00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ valStr\ =\ rest;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00135}00135\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00136}00136\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ "{}Mi:US\ 1,\ Sn:US\ 1b,\ Yt:US\ 1,\ Sg:US\ 1,\ Un:US\ 1b"{}}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00137}00137\ \ \ \ \ \ \ \ \ \ \ \ \ valStr\ =\ valStr.Trim(\ );}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00138}00138\ \ \ \ \ \ \ \ \ \ \ \ \ valStr\ =\ valStr.Trim(\ \textcolor{keyword}{false}\ );}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00139}00139\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ len\ =\ codePrefix.Length(\ );}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00140}00140\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ len\ )}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00141}00141\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00142}00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ pos\ =\ valStr.Find(\ codePrefix\ );\textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .StartsWith(\ codePrefix,\ \&rest\ );}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00143}00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ pos\ !=\ wxNOT\_FOUND\ )}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00144}00144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00145}00145\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ valStr\ =\ valStr.substr(\ pos\ );}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00146}00146\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ valStr\ =\ valStr.Trim(\ );}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00147}00147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ valStr\ =\ valStr.Trim(\ \textcolor{keyword}{false}\ );}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00148}00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{id}\ =\ valStr;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00149}00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00150}00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00151}00151\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00152}00152\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00153}00153\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00154}00154\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00155}00155\ \ \ \ \ \ \ \ \ \textcolor{comment}{//couldn't\ find\ it;\ just\ get\ the\ first\ one.}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00156}00156\ \ \ \ \ \ \ \ \ wxStringTokenizer\ tokenizer2(\ catCodes,\ \textcolor{stringliteral}{"{},"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00157}00157\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ tokenizer2.HasMoreTokens(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00158}00158\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00159}00159\ \ \ \ \ \ \ \ \ \ \ \ \ valStr\ =\ tokenizer2.GetNextToken(\ );}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00160}00160\ \ \ \ \ \ \ \ \ \ \ \ \ valStr\ =\ valStr.Trim(\ );}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00161}00161\ \ \ \ \ \ \ \ \ \ \ \ \ valStr\ =\ valStr.Trim(\ \textcolor{keyword}{false}\ );}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00162}00162\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{id}\ =\ valStr;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00163}00163\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00164}00164\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00165}00165\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00166}00166\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00167}00167\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00168}\mbox{\hyperlink{class_utils_1_1_c_s_v_data_aa1523b5ab529b280bff66212d29c142a}{00168}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_utils_1_1_c_s_v_data_aa1523b5ab529b280bff66212d29c142a}{CSVData::MakeColMap}}(\ \textcolor{keywordtype}{void}\ )}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00169}00169\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00170}00170\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\ \textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ \mbox{\hyperlink{class_utils_1_1_c_s_v_data_a81a3be9fd30edcc335b569bd476f0096}{NbrColNames}}(\ )\ +\ 10;\ j++\ )}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00171}00171\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00172}00172\ \ \ \ \ \ \ \ \ \ \ \ \ m\_csvColMap.push\_back(\ (\ \mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176}{Catalog::DataTypes}}\ )\ -\/1\ );}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00173}00173\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00174}00174\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\ \textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ \mbox{\hyperlink{class_utils_1_1_c_s_v_data_a81a3be9fd30edcc335b569bd476f0096}{NbrColNames}}(\ );\ j++\ )}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00175}00175\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00176}00176\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\ \textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176a61ce03037e0635b621097ac2d4f37b03}{Catalog::DT\_NbrTypes}};\ i++\ )}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00177}00177\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00178}00178\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ !\mbox{\hyperlink{namespace_catalog_a6d6fd52830494c7cfd841a94ddfdd42c}{Catalog::DataTypeNames}}[\ i\ ].Cmp(\ \mbox{\hyperlink{class_utils_1_1_c_s_v_data_a04dc38da641efe09c938ff8555e5e493}{GetColName}}(\ j\ )\ )\ )}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00179}00179\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00180}00180\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_csvColMap.at(\ j\ )\ =\ (\ (\ \mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176}{Catalog::DataTypes}}\ )\ i\ );}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00181}00181\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00182}00182\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00183}00183\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00184}00184\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00185}00185\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00186}\mbox{\hyperlink{class_utils_1_1_c_s_v_data_aaed6881fdc84c59ea662d9af63dc6bee}{00186}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_utils_1_1_c_s_v_data_aaed6881fdc84c59ea662d9af63dc6bee}{CSVData::FixUpLine}}(\ wxString\&\ line,\ \textcolor{keywordtype}{int}\ lineNbr\ )}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00187}00187\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00188}00188\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ curr\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00189}00189\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ last\ =\ line.length(\ );}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00190}00190\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ firstQuote\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00191}00191\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ nextQuote\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00192}00192\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ comma\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00193}00193\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (\ curr\ <\ last\ )}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00194}00194\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00195}00195\ \ \ \ \ \ \ \ \ \ \ \ \ firstQuote\ =\ line.find(\ \textcolor{stringliteral}{"{}\(\backslash\)"{}"{}},\ curr\ );}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00196}00196\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ firstQuote\ <\ 0\ )}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00197}00197\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00198}00198\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00199}00199\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00200}00200\ \ \ \ \ \ \ \ \ \ \ \ \ nextQuote\ =\ line.find\_first\_of(\ \textcolor{stringliteral}{"{}\(\backslash\)"{}"{}},\ firstQuote\ +\ 1\ );}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00201}00201\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ nextQuote\ <\ 0\ )}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00202}00202\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00203}00203\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ unmatched\ parens}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00204}00204\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ this\ means\ the\ csv\ is\ messed\ up}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00205}00205\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wxString\ caption\ =\ \textcolor{stringliteral}{"{}CSV\ Format\ Error"{}};}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00206}00206\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wxString\ message;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00207}00207\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ message\ =\ message.Format(\ \textcolor{stringliteral}{"{}Format\ error\ in\ csv\ file\ \%s\ at\ line\ number\ \%d.\ \(\backslash\)n\(\backslash\)n\%s"{}},\ m\_filename,\ lineNbr,\ line\ );}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00208}00208\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wxMessageDialog*\ msg\ =\ \textcolor{keyword}{new}\ wxMessageDialog(\ \mbox{\hyperlink{_defs_8cpp_abba9f47d8c9470ec708c79fb2c55f961}{GetFrame}}(\ ),}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00209}00209\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ message,\ caption,\ wxOK\ |\ wxCENTRE\ |\ wxICON\_ERROR\ );}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00210}00210\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ msg-\/>ShowModal(\ );}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00211}00211\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ msg-\/>\string~wxMessageDialog(\ );}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00212}00212\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00213}00213\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00214}00214\ \ \ \ \ \ \ \ \ \ \ \ \ comma\ =\ line.find\_first\_of(\ \textcolor{stringliteral}{"{},"{}},\ firstQuote\ );}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00215}00215\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ check\_again\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00216}00216\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (\ check\_again\ )}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00217}00217\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00218}00218\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ (\ comma\ >\ firstQuote\ )\ \&\&\ (\ comma\ <\ nextQuote\ )\ )}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00219}00219\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00220}00220\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ line\ =\ line.replace(\ comma,\ 1,\ \textcolor{stringliteral}{"{}\{"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00221}00221\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ comma\ =\ line.find\_first\_of(\ \textcolor{stringliteral}{"{},"{}},\ firstQuote\ );}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00222}00222\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00223}00223\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00224}00224\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00225}00225\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ check\_again\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00226}00226\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00227}00227\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00228}00228\ \ \ \ \ \ \ \ \ \ \ \ \ curr\ =\ nextQuote\ +\ 1;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00229}00229\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00230}00230\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00231}00231\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00232}00232\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00233}\mbox{\hyperlink{class_utils_1_1_c_s_v_data_a0bcda187ecd2008fb2af5646dcc3c6c1}{00233}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_utils_1_1_c_s_v_data_a0bcda187ecd2008fb2af5646dcc3c6c1}{CSVData::ReadTextInStream}}(\ wxFileInputStream\&\ file,}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00234}00234\ \ \ \ \ \ \ \ \ wxTextInputStream\&\ text\ )}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00235}00235\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00236}00236\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ status\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00237}00237\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ valFound\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00238}00238\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ csvCol;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00239}00239\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ endOfData\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00240}00240\ \ \ \ \ \ \ \ \ wxXmlNode*\ docRoot\ =\ m\_nodeData;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00241}00241\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00242}00242\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ file.IsOk(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00243}00243\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00244}00244\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (\ !file.Eof(\ )\ \&\&\ !endOfData\ )}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00245}00245\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00246}00246\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ read\ a\ line\ and\ parse\ it}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00247}00247\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ wxString\ inLine\ =\ text.ReadLine\ (\ );}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00248}00248\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ !file.Eof(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00249}00249\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00250}00250\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ status\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00251}00251\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ read\ a\ line\ and\ parse\ it}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00252}00252\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wxString\ line\ =\ text.ReadLine(\ );}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00253}00253\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ line.length(\ )\ >\ 0\ )}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00254}00254\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00255}00255\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_lineCnt++;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00256}00256\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ !file.Eof(\ )\ \&\&\ \mbox{\hyperlink{class_utils_1_1_c_s_v_data_aaed6881fdc84c59ea662d9af63dc6bee}{FixUpLine}}(\ line,\ m\_lineCnt\ )\ )}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00257}00257\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00258}00258\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ comma\ separated\ Variables\ on\ line;\ i,\ e,\ .csv\ file}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00259}00259\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wxStringTokenizer\ tokenizer(\ line,\ \textcolor{stringliteral}{"{},"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00260}00260\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00261}00261\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wxXmlNode*\ entryElement\ =\ \mbox{\hyperlink{namespace_utils_a156ddf8c893eba62f65ffa2a5860c766}{NewNode}}(\ docRoot,\ \mbox{\hyperlink{namespace_catalog_af883688379268368070a0dd49b898a1f}{Catalog::CatalogBaseNames}}[\ \mbox{\hyperlink{namespace_catalog_a86f503ced35b06e6427477ddab27c6bea1ad93a4e0b2bc3a19a401ce027fb7d2c}{Catalog::NT\_Entry}}\ ]\ );}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00262}00262\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00263}00263\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_catalog_1_1_entry}{Catalog::Entry}}\ entryNode(\ entryElement\ );}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00264}00264\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ csvCol\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00265}00265\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ valFound\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00266}00266\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wxString\ valStr;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00267}00267\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wxString\ rest;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00268}00268\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (\ tokenizer.HasMoreTokens(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00269}00269\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00270}00270\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ watch\ out\ for\ commas\ within\ quotes}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00271}00271\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ valStr\ =\ tokenizer.GetNextToken(\ );}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00272}00272\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ valStr.StartsWith(\ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}\(\backslash\)"{}"{}}\ ),\ \&rest\ )\ )}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00273}00273\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ valStr\ =\ rest;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00274}00274\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ valStr.EndsWith(\ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}\(\backslash\)"{}"{}}\ ),\ \&rest\ )\ )}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00275}00275\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ valStr\ =\ rest;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00276}00276\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ valStr.Replace(\ \textcolor{stringliteral}{"{}\{"{}},\ \textcolor{stringliteral}{"{},"{}},\ \textcolor{keyword}{true}\ );}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00277}00277\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00278}00278\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176}{Catalog::DataTypes}}\ entryType\ =\ m\_csvColMap.at(\ csvCol\ );}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00279}00279\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00280}00280\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ entryType\ >=\ 0\ )}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00281}00281\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00282}00282\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_utils_acd4b52904d20e67e1b9570914c1c45a7}{Utils::SetAttrStr}}(\ entryElement,\ \mbox{\hyperlink{namespace_catalog_ad31b697e09026bea7e50c5f0da8ff29f}{Catalog::XMLDataNames}}[\ entryType\ ],\ valStr\ );}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00283}00283\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wxString\ \textcolor{keywordtype}{id}\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00284}00284\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ entryType\ ==\ \mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176a817af092e0ed172a75b6ac59659deef7}{Catalog::DT\_Catalog\_Codes}}\ )}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00285}00285\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00286}00286\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_catalog_1_1_catalog_code}{Catalog::CatalogCode}}\ catCodes(\ valStr\ );}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00287}00287\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wxString\ code\ =\ catCodes.\mbox{\hyperlink{class_catalog_1_1_catalog_code_a48b11c3d34906670b23194381025d159}{GetPreferredCatalogCode}}(\ \mbox{\hyperlink{_defs_8cpp_a21e576057406853f4fd5f371338b78b6}{GetProject}}(\ )-\/>GetProjectCatalogCode(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00288}00288\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00289}00289\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ wxString\ code\ =\ Catalog::GetPreferredCatalogCode(\ valStr,\ GetProject(\ )-\/>GetCatalogID(\ )\ );}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00290}00290\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00291}00291\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//entryNode.SetID(\ code\ );}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00292}00292\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ //entryNode-\/>ProcessCatalogCodes(\ valStr\ );}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00293}00293\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ (\ GetIDNbr(\ valStr,\ id\ )\ )}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00294}00294\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \{}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00295}00295\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ wxString\ codePrefix\ =\ GetProject(\ )-\/>GetCatCodePrefix(\ );}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00296}00296\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00297}00297\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ emtryno}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00298}00298\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ entryNode.SetID(\ id\ );}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00299}00299\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ id\ =\ entryNode.GetID(\ );}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00300}00300\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ if\ (\ id.IsEmpty(\ )\ )}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00301}00301\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \{}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00302}00302\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ std::cout\ <<\ "{}ID\_Nbr>"{}\ <<\ valStr\ <<\ "{}<\(\backslash\)n"{};}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00303}00303\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ int\ a\ =\ 0;}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00304}00304\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \}}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00305}00305\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \}}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00306}00306\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ else}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00307}00307\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \{}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00308}00308\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ entryNode.SetID(\ valStr\ );}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00309}00309\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \}}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00310}00310\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00311}00311\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ valFound\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00312}00312\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00313}00313\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00314}00314\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00315}00315\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00316}00316\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ csvCol++;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00317}00317\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00318}00318\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wxString\ \textcolor{keywordtype}{id}\ =\ entryNode.\mbox{\hyperlink{class_catalog_1_1_entry_a1a13c18f7faaf5d9f18bb3cd52c2be19}{GetID}}(\ );}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00319}00319\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{id}\ =\ \textcolor{keywordtype}{id}.Trim(\ );}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00320}00320\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{id}\ =\ \textcolor{keywordtype}{id}.Trim(\ \textcolor{keyword}{false}\ );}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00321}00321\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ \textcolor{keywordtype}{id}.IsEmpty(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00322}00322\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00323}00323\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}ID\_Nbr>"{}}\ <<\ valStr\ <<\ \textcolor{stringliteral}{"{}<\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00324}00324\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ a\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00325}00325\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00326}00326\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ valFound\ )\textcolor{comment}{//\&\&\ (\ entryNode-\/>GetID(\ ).Length(\ )\ >\ 0\ )\ )}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00327}00327\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00328}00328\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ docRoot-\/>AddChild(\ (\ wxXmlNode*\ )entryElement\ );}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00329}00329\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00330}00330\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00331}00331\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00332}00332\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ delete\ entryNode;}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00333}00333\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00334}00334\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00335}00335\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00336}00336\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00337}00337\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00338}00338\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ endOfData\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00339}00339\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00340}00340\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00341}00341\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00342}00342\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00343}00343\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ status;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00344}00344\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00345}00345\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_8cpp_source_l00346}00346\ \}}
+
+\end{DoxyCode}

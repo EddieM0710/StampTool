@@ -1,0 +1,146 @@
+\doxysection{C\+:/\+Users/femon/\+Development/wx/clone\+Test/\+Stamp\+Tool/src/gui/\+Album\+Tree\+Ctrl.h File Reference}
+\hypertarget{_album_tree_ctrl_8h}{}\label{_album_tree_ctrl_8h}\index{C:/Users/femon/Development/wx/cloneTest/StampTool/src/gui/AlbumTreeCtrl.h@{C:/Users/femon/Development/wx/cloneTest/StampTool/src/gui/AlbumTreeCtrl.h}}
+{\ttfamily \#include "{}design/\+Stamp.\+h"{}}\newline
+{\ttfamily \#include "{}design/\+Text\+Box.\+h"{}}\newline
+{\ttfamily \#include "{}design/\+Album\+Base.\+h"{}}\newline
+{\ttfamily \#include "{}design/\+Layout\+Base.\+h"{}}\newline
+{\ttfamily \#include "{}design/\+Design\+Defs.\+h"{}}\newline
+{\ttfamily \#include $<$wx/treectrl.\+h$>$}\newline
+{\ttfamily \#include $<$wx/imaglist.\+h$>$}\newline
+{\ttfamily \#include $<$wx/colour.\+h$>$}\newline
+{\ttfamily \#include "{}gui/\+Icon\+Defs.\+h"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_design_tree_item_data}{Design\+Tree\+Item\+Data}}
+\item 
+class \mbox{\hyperlink{class_album_tree_ctrl}{Album\+Tree\+Ctrl}}
+\begin{DoxyCompactList}\small\item\em Tree for displaying Album design. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespace_utils}{Utils}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \{ \newline
+\mbox{\hyperlink{_album_tree_ctrl_8h_ad37ebad9a02ed0c97ce8e6a8351328aaaa01b90708217a2d4003ae191647e5546}{Design\+Tree\+\_\+\+Quit}} = wx\+ID\+\_\+\+EXIT
+, \mbox{\hyperlink{_album_tree_ctrl_8h_ad37ebad9a02ed0c97ce8e6a8351328aaaaca92b76b266c9b6d382a0d8e1081d60}{Design\+Tree\+\_\+\+About}} = wx\+ID\+\_\+\+ABOUT
+, \mbox{\hyperlink{_album_tree_ctrl_8h_ad37ebad9a02ed0c97ce8e6a8351328aaa002acdd0338fe5ec0d58c64255cf0fc9}{Design\+Tree\+\_\+\+Add\+Page}}
+, \mbox{\hyperlink{_album_tree_ctrl_8h_ad37ebad9a02ed0c97ce8e6a8351328aaa9dd93bb7e93a843dcb352e97254770c0}{Design\+Tree\+\_\+\+Add\+Col}}
+, \newline
+\mbox{\hyperlink{_album_tree_ctrl_8h_ad37ebad9a02ed0c97ce8e6a8351328aaa8b17eaac85072c24e1ac768c8ed9d393}{Design\+Tree\+\_\+\+Add\+Row}}
+, \mbox{\hyperlink{_album_tree_ctrl_8h_ad37ebad9a02ed0c97ce8e6a8351328aaacd0613a0e51b90a4ba0a802922a24491}{Design\+Tree\+\_\+\+Add\+Stamp}}
+, \mbox{\hyperlink{_album_tree_ctrl_8h_ad37ebad9a02ed0c97ce8e6a8351328aaad9dfaae73b6330e3dfc039e175d44810}{Design\+Tree\+\_\+\+Add\+Title}}
+, \mbox{\hyperlink{_album_tree_ctrl_8h_ad37ebad9a02ed0c97ce8e6a8351328aaa54ddea4ed5faed1f1e7223938a4479bb}{Design\+Tree\+\_\+\+Add\+Text}}
+, \newline
+\mbox{\hyperlink{_album_tree_ctrl_8h_ad37ebad9a02ed0c97ce8e6a8351328aaa0e374d7077a60d8683f624785e089b7f}{Design\+Tree\+\_\+\+Delete\+Item}}
+, \mbox{\hyperlink{_album_tree_ctrl_8h_ad37ebad9a02ed0c97ce8e6a8351328aaa0df916237285e4f17de97727da9144ce}{Design\+Tree\+\_\+\+Edit\+Details}}
+, \mbox{\hyperlink{_album_tree_ctrl_8h_ad37ebad9a02ed0c97ce8e6a8351328aaa224bc6e69e3016ed04593daeb9ff466b}{Design\+Tree\+\_\+\+Before}}
+, \mbox{\hyperlink{_album_tree_ctrl_8h_ad37ebad9a02ed0c97ce8e6a8351328aaad3db2c41b3abf912367d32049b2552a0}{Design\+Tree\+\_\+\+After}}
+, \newline
+\mbox{\hyperlink{_album_tree_ctrl_8h_ad37ebad9a02ed0c97ce8e6a8351328aaa5801345995545fc98e2811416b0105d2}{Design\+Tree\+\_\+\+As\+Child}}
+, \mbox{\hyperlink{_album_tree_ctrl_8h_ad37ebad9a02ed0c97ce8e6a8351328aaa2e0c4ae661adcfb6eb21c8e80932022e}{Design\+Tree\+\_\+\+Cancel}}
+ \}
+\begin{DoxyCompactList}\small\item\em menu and control ids \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Eddie Monroe ( ) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2021-\/02-\/25
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright ( c ) 2021
+\end{DoxyCopyright}
+This file is part of Stamp\+Tool.
+
+Stamp\+Tool is free software\+: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or any later version.
+
+Stamp\+Tool is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with Stamp\+Tool. If not, see \href{https://www.gnu.org/licenses/}{\texttt{https\+://www.\+gnu.\+org/licenses/}}. 
+
+Definition in file \mbox{\hyperlink{_album_tree_ctrl_8h_source}{Album\+Tree\+Ctrl.\+h}}.
+
+
+
+\label{doc-enum-members}
+\Hypertarget{_album_tree_ctrl_8h_doc-enum-members}
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{_album_tree_ctrl_8h_ad37ebad9a02ed0c97ce8e6a8351328aa}\doxysubsubsection{\texorpdfstring{anonymous enum}{anonymous enum}}
+{\footnotesize\ttfamily \label{_album_tree_ctrl_8h_ad37ebad9a02ed0c97ce8e6a8351328aa} 
+anonymous enum}
+
+
+
+menu and control ids 
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DesignTree\_Quit@{DesignTree\_Quit}!AlbumTreeCtrl.h@{AlbumTreeCtrl.h}}\index{AlbumTreeCtrl.h@{AlbumTreeCtrl.h}!DesignTree\_Quit@{DesignTree\_Quit}}}\Hypertarget{_album_tree_ctrl_8h_ad37ebad9a02ed0c97ce8e6a8351328aaaa01b90708217a2d4003ae191647e5546}\label{_album_tree_ctrl_8h_ad37ebad9a02ed0c97ce8e6a8351328aaaa01b90708217a2d4003ae191647e5546} 
+Design\+Tree\+\_\+\+Quit&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DesignTree\_About@{DesignTree\_About}!AlbumTreeCtrl.h@{AlbumTreeCtrl.h}}\index{AlbumTreeCtrl.h@{AlbumTreeCtrl.h}!DesignTree\_About@{DesignTree\_About}}}\Hypertarget{_album_tree_ctrl_8h_ad37ebad9a02ed0c97ce8e6a8351328aaaaca92b76b266c9b6d382a0d8e1081d60}\label{_album_tree_ctrl_8h_ad37ebad9a02ed0c97ce8e6a8351328aaaaca92b76b266c9b6d382a0d8e1081d60} 
+Design\+Tree\+\_\+\+About&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DesignTree\_AddPage@{DesignTree\_AddPage}!AlbumTreeCtrl.h@{AlbumTreeCtrl.h}}\index{AlbumTreeCtrl.h@{AlbumTreeCtrl.h}!DesignTree\_AddPage@{DesignTree\_AddPage}}}\Hypertarget{_album_tree_ctrl_8h_ad37ebad9a02ed0c97ce8e6a8351328aaa002acdd0338fe5ec0d58c64255cf0fc9}\label{_album_tree_ctrl_8h_ad37ebad9a02ed0c97ce8e6a8351328aaa002acdd0338fe5ec0d58c64255cf0fc9} 
+Design\+Tree\+\_\+\+Add\+Page&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DesignTree\_AddCol@{DesignTree\_AddCol}!AlbumTreeCtrl.h@{AlbumTreeCtrl.h}}\index{AlbumTreeCtrl.h@{AlbumTreeCtrl.h}!DesignTree\_AddCol@{DesignTree\_AddCol}}}\Hypertarget{_album_tree_ctrl_8h_ad37ebad9a02ed0c97ce8e6a8351328aaa9dd93bb7e93a843dcb352e97254770c0}\label{_album_tree_ctrl_8h_ad37ebad9a02ed0c97ce8e6a8351328aaa9dd93bb7e93a843dcb352e97254770c0} 
+Design\+Tree\+\_\+\+Add\+Col&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DesignTree\_AddRow@{DesignTree\_AddRow}!AlbumTreeCtrl.h@{AlbumTreeCtrl.h}}\index{AlbumTreeCtrl.h@{AlbumTreeCtrl.h}!DesignTree\_AddRow@{DesignTree\_AddRow}}}\Hypertarget{_album_tree_ctrl_8h_ad37ebad9a02ed0c97ce8e6a8351328aaa8b17eaac85072c24e1ac768c8ed9d393}\label{_album_tree_ctrl_8h_ad37ebad9a02ed0c97ce8e6a8351328aaa8b17eaac85072c24e1ac768c8ed9d393} 
+Design\+Tree\+\_\+\+Add\+Row&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DesignTree\_AddStamp@{DesignTree\_AddStamp}!AlbumTreeCtrl.h@{AlbumTreeCtrl.h}}\index{AlbumTreeCtrl.h@{AlbumTreeCtrl.h}!DesignTree\_AddStamp@{DesignTree\_AddStamp}}}\Hypertarget{_album_tree_ctrl_8h_ad37ebad9a02ed0c97ce8e6a8351328aaacd0613a0e51b90a4ba0a802922a24491}\label{_album_tree_ctrl_8h_ad37ebad9a02ed0c97ce8e6a8351328aaacd0613a0e51b90a4ba0a802922a24491} 
+Design\+Tree\+\_\+\+Add\+Stamp&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DesignTree\_AddTitle@{DesignTree\_AddTitle}!AlbumTreeCtrl.h@{AlbumTreeCtrl.h}}\index{AlbumTreeCtrl.h@{AlbumTreeCtrl.h}!DesignTree\_AddTitle@{DesignTree\_AddTitle}}}\Hypertarget{_album_tree_ctrl_8h_ad37ebad9a02ed0c97ce8e6a8351328aaad9dfaae73b6330e3dfc039e175d44810}\label{_album_tree_ctrl_8h_ad37ebad9a02ed0c97ce8e6a8351328aaad9dfaae73b6330e3dfc039e175d44810} 
+Design\+Tree\+\_\+\+Add\+Title&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DesignTree\_AddText@{DesignTree\_AddText}!AlbumTreeCtrl.h@{AlbumTreeCtrl.h}}\index{AlbumTreeCtrl.h@{AlbumTreeCtrl.h}!DesignTree\_AddText@{DesignTree\_AddText}}}\Hypertarget{_album_tree_ctrl_8h_ad37ebad9a02ed0c97ce8e6a8351328aaa54ddea4ed5faed1f1e7223938a4479bb}\label{_album_tree_ctrl_8h_ad37ebad9a02ed0c97ce8e6a8351328aaa54ddea4ed5faed1f1e7223938a4479bb} 
+Design\+Tree\+\_\+\+Add\+Text&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DesignTree\_DeleteItem@{DesignTree\_DeleteItem}!AlbumTreeCtrl.h@{AlbumTreeCtrl.h}}\index{AlbumTreeCtrl.h@{AlbumTreeCtrl.h}!DesignTree\_DeleteItem@{DesignTree\_DeleteItem}}}\Hypertarget{_album_tree_ctrl_8h_ad37ebad9a02ed0c97ce8e6a8351328aaa0e374d7077a60d8683f624785e089b7f}\label{_album_tree_ctrl_8h_ad37ebad9a02ed0c97ce8e6a8351328aaa0e374d7077a60d8683f624785e089b7f} 
+Design\+Tree\+\_\+\+Delete\+Item&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DesignTree\_EditDetails@{DesignTree\_EditDetails}!AlbumTreeCtrl.h@{AlbumTreeCtrl.h}}\index{AlbumTreeCtrl.h@{AlbumTreeCtrl.h}!DesignTree\_EditDetails@{DesignTree\_EditDetails}}}\Hypertarget{_album_tree_ctrl_8h_ad37ebad9a02ed0c97ce8e6a8351328aaa0df916237285e4f17de97727da9144ce}\label{_album_tree_ctrl_8h_ad37ebad9a02ed0c97ce8e6a8351328aaa0df916237285e4f17de97727da9144ce} 
+Design\+Tree\+\_\+\+Edit\+Details&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DesignTree\_Before@{DesignTree\_Before}!AlbumTreeCtrl.h@{AlbumTreeCtrl.h}}\index{AlbumTreeCtrl.h@{AlbumTreeCtrl.h}!DesignTree\_Before@{DesignTree\_Before}}}\Hypertarget{_album_tree_ctrl_8h_ad37ebad9a02ed0c97ce8e6a8351328aaa224bc6e69e3016ed04593daeb9ff466b}\label{_album_tree_ctrl_8h_ad37ebad9a02ed0c97ce8e6a8351328aaa224bc6e69e3016ed04593daeb9ff466b} 
+Design\+Tree\+\_\+\+Before&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DesignTree\_After@{DesignTree\_After}!AlbumTreeCtrl.h@{AlbumTreeCtrl.h}}\index{AlbumTreeCtrl.h@{AlbumTreeCtrl.h}!DesignTree\_After@{DesignTree\_After}}}\Hypertarget{_album_tree_ctrl_8h_ad37ebad9a02ed0c97ce8e6a8351328aaad3db2c41b3abf912367d32049b2552a0}\label{_album_tree_ctrl_8h_ad37ebad9a02ed0c97ce8e6a8351328aaad3db2c41b3abf912367d32049b2552a0} 
+Design\+Tree\+\_\+\+After&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DesignTree\_AsChild@{DesignTree\_AsChild}!AlbumTreeCtrl.h@{AlbumTreeCtrl.h}}\index{AlbumTreeCtrl.h@{AlbumTreeCtrl.h}!DesignTree\_AsChild@{DesignTree\_AsChild}}}\Hypertarget{_album_tree_ctrl_8h_ad37ebad9a02ed0c97ce8e6a8351328aaa5801345995545fc98e2811416b0105d2}\label{_album_tree_ctrl_8h_ad37ebad9a02ed0c97ce8e6a8351328aaa5801345995545fc98e2811416b0105d2} 
+Design\+Tree\+\_\+\+As\+Child&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DesignTree\_Cancel@{DesignTree\_Cancel}!AlbumTreeCtrl.h@{AlbumTreeCtrl.h}}\index{AlbumTreeCtrl.h@{AlbumTreeCtrl.h}!DesignTree\_Cancel@{DesignTree\_Cancel}}}\Hypertarget{_album_tree_ctrl_8h_ad37ebad9a02ed0c97ce8e6a8351328aaa2e0c4ae661adcfb6eb21c8e80932022e}\label{_album_tree_ctrl_8h_ad37ebad9a02ed0c97ce8e6a8351328aaa2e0c4ae661adcfb6eb21c8e80932022e} 
+Design\+Tree\+\_\+\+Cancel&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{_album_tree_ctrl_8h_source_l00042}{42}} of file \mbox{\hyperlink{_album_tree_ctrl_8h_source}{Album\+Tree\+Ctrl.\+h}}.
+

@@ -1,0 +1,60 @@
+\doxysection{C\+:/\+Users/femon/\+Development/wx/clone\+Test/\+Stamp\+Tool/src/catalog/\+Catalog\+Defs.cpp File Reference}
+\hypertarget{_catalog_defs_8cpp}{}\label{_catalog_defs_8cpp}\index{C:/Users/femon/Development/wx/cloneTest/StampTool/src/catalog/CatalogDefs.cpp@{C:/Users/femon/Development/wx/cloneTest/StampTool/src/catalog/CatalogDefs.cpp}}
+{\ttfamily \#include "{}wx/wxprec.\+h"{}}\newline
+{\ttfamily \#include "{}wx/wx.\+h"{}}\newline
+{\ttfamily \#include "{}catalog/\+Catalog\+Defs.\+h"{}}\newline
+{\ttfamily \#include "{}utils/\+Project.\+h"{}}\newline
+{\ttfamily \#include "{}utils/\+Settings.\+h"{}}\newline
+{\ttfamily \#include "{}utils/\+XMLUtilities.\+h"{}}\newline
+{\ttfamily \#include "{}Defs.\+h"{}}\newline
+{\ttfamily \#include "{}catalog/\+Catalog\+Volume.\+h"{}}\newline
+{\ttfamily \#include "{}catalog/\+Entry.\+h"{}}\newline
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespace_catalog}{Catalog}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{namespace_catalog_a7f4b20a2d0b2cb7f022087bae25690aa}{Catalog\+::\+Add\+Entry}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}parent, wx\+Xml\+Node \texorpdfstring{$\ast$}{*}child, int level)
+\begin{DoxyCompactList}\small\item\em Find the place where the entry should go and adds it. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespace_catalog_a86f503ced35b06e6427477ddab27c6be}{Catalog\+Base\+Type}} \mbox{\hyperlink{namespace_catalog_a1b22674b71ab7beb168ad6749c6259f6}{Catalog\+::\+Find\+Catalog\+Base\+Type}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}element)
+\begin{DoxyCompactList}\small\item\em Get the catalog base type of thid node. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespace_catalog_a86f503ced35b06e6427477ddab27c6be}{Catalog\+Base\+Type}} \mbox{\hyperlink{namespace_catalog_ac61fb45aeb3ecf6d5020384a65e0d954}{Catalog\+::\+Find\+Catalog\+Base\+Type}} (wx\+String name)
+\begin{DoxyCompactList}\small\item\em Look thru all the Catalog\+Base\+Names to find "{}name"{} and return the corresponding \doxylink{namespace_catalog_a86f503ced35b06e6427477ddab27c6be}{Catalog\+Base\+Type} enum. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acd}{Emission\+Type}} \mbox{\hyperlink{namespace_catalog_a0589de4fdba9de7fb8b98e6c2e841ac7}{Catalog\+::\+Find\+Emission\+Type}} (wx\+String name)
+\begin{DoxyCompactList}\small\item\em loop through the Emission types and find one with the name name. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespace_catalog_a2ff17ae8cd4986617c22e54b7cf50f89}{Format\+Type}} \mbox{\hyperlink{namespace_catalog_ac95b0a0fffe4a02171bcba25cd24e656}{Catalog\+::\+Find\+Format\+Type}} (wx\+String name)
+\begin{DoxyCompactList}\small\item\em loop through the format types and find one with the name name. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespace_catalog_a7bc076b172809c869ab8fef63c49e8c3}{Inventory\+Status\+Type}} \mbox{\hyperlink{namespace_catalog_a80bb7b19f4c5981727e8da9b8cd36048}{Catalog\+::\+Find\+Status\+Type}} (wx\+String name)
+\begin{DoxyCompactList}\small\item\em loop through the inventory status and find one with the name name. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespace_catalog_a0485a11d0238530460d2064ee7acd39e}{Catalog\+::\+Is\+Catalog\+Base\+Type}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}ele, \mbox{\hyperlink{namespace_catalog_a86f503ced35b06e6427477ddab27c6be}{Catalog\+Base\+Type}} type)
+\begin{DoxyCompactList}\small\item\em is the specified wx\+Xml\+Node of specified type \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespace_catalog_a34595a26395456b9d09ba68847ab197b}{Catalog\+::\+Init\+Catalog\+Defs}} ()
+\begin{DoxyCompactList}\small\item\em Null right now. \end{DoxyCompactList}\item 
+wx\+Xml\+Node \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespace_catalog_a8e16e7b99b4e656c3728d3bfcdfde3a2}{Catalog\+::\+Insert\+Entry}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}sibling, wx\+Xml\+Node \texorpdfstring{$\ast$}{*}child, bool after=true)
+\begin{DoxyCompactList}\small\item\em Inserts a node as a sibling. \end{DoxyCompactList}\item 
+wx\+Xml\+Node \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespace_catalog_a88b0cb9ed74675357bffb114c5f494d6}{Catalog\+::\+Move\+Entry}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}new\+Parent, wx\+Xml\+Node \texorpdfstring{$\ast$}{*}child)
+\begin{DoxyCompactList}\small\item\em Moves a node to a new parent. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespace_catalog_ae95fbc61e745c765271377442397ad57}{Catalog\+::\+Sort\+Data}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}new\+Root, wx\+Xml\+Node \texorpdfstring{$\ast$}{*}parent)
+\begin{DoxyCompactList}\small\item\em Sorts the nodes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+wx\+String \mbox{\hyperlink{namespace_catalog_af883688379268368070a0dd49b898a1f}{Catalog\+::\+Catalog\+Base\+Names}} \mbox{[}\mbox{\hyperlink{namespace_catalog_a86f503ced35b06e6427477ddab27c6bea52e97887bc3fb371de0b23678a875c57}{NT\+\_\+\+Nbr\+Types}}\mbox{]}
+\begin{DoxyCompactList}\small\item\em Ascii string for each node string. \end{DoxyCompactList}\item 
+const wx\+String \mbox{\hyperlink{namespace_catalog_ae29e29deec7143df42dbc7cf5b8c0b98}{Catalog\+::\+Checked\+Status\+Strings}} \mbox{[}\mbox{\hyperlink{namespace_catalog_ae547094e129067e4932fdc46084369a8a7a5421ebe2a144a5554720acb658feff}{ST\+\_\+\+Nbr\+Checked\+Status\+Types}}\mbox{]} = \{ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}( "{}Checked"{} ), \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}( "{}Unchecked"{} ) \}
+\begin{DoxyCompactList}\small\item\em Strings used for Status\+Types enum. \end{DoxyCompactList}\item 
+const wx\+String \mbox{\hyperlink{namespace_catalog_a6d6fd52830494c7cfd841a94ddfdd42c}{Catalog\+::\+Data\+Type\+Names}} \mbox{[}\mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176a61ce03037e0635b621097ac2d4f37b03}{DT\+\_\+\+Nbr\+Types}}\mbox{]}
+\begin{DoxyCompactList}\small\item\em String name used for wx\+Xml\+Nodes. \end{DoxyCompactList}\item 
+const wx\+String \mbox{\hyperlink{namespace_catalog_ac37088bb839eb4eaac8489e1644b72f5}{Catalog\+::\+Emission\+Strings}} \mbox{[}\mbox{\hyperlink{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acda2d561f219b7813c539992726b518751c}{ET\+\_\+\+Nbr\+Types}}\mbox{]}
+\begin{DoxyCompactList}\small\item\em string representation of Emission types indexed by Emission Type \end{DoxyCompactList}\item 
+const wx\+String \mbox{\hyperlink{namespace_catalog_afaa9b4c5ca81b7e8ec3f7d2f4b3d7e8d}{Catalog\+::\+Format\+Strings}} \mbox{[}\mbox{\hyperlink{namespace_catalog_a2ff17ae8cd4986617c22e54b7cf50f89a7b37347e60dfcaea4ed88899173207fa}{FT\+\_\+\+Nbr\+Types}}\mbox{]}
+\begin{DoxyCompactList}\small\item\em Ascii strings used for Format\+Types enum. \end{DoxyCompactList}\item 
+const wx\+String \mbox{\hyperlink{namespace_catalog_abcd57760950ec98a13bee0678af3eb91}{Catalog\+::\+Inventory\+Status\+Strings}} \mbox{[}\mbox{\hyperlink{namespace_catalog_a7bc076b172809c869ab8fef63c49e8c3a75fc42a4f75f4994518abed41c2699fb}{ST\+\_\+\+Nbr\+Inventory\+Status\+Types}}\mbox{]} = \{ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}( "{}None"{} ), \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}( "{}Missing"{} ), \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}( "{}Ordered"{} ), \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}( "{}Own"{} ), \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}( "{}Own Variant"{} ), \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}( "{}Exclude"{} ) \}
+\item 
+const wx\+String \mbox{\hyperlink{namespace_catalog_a2d8ee03a725ac68d747c899544f77f3f}{Catalog\+::\+Item\+Data\+Names}} \mbox{[}\mbox{\hyperlink{namespace_catalog_aff34cc1fa92031a5cf463041a34ef3b2a2ed57e3723a4c82ab9de0042f5ea5198}{IDT\+\_\+\+Nbr\+Types}}\mbox{]} = \{ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}( "{}Collection"{} ), \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}( "{}Status"{} ), \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}( "{}Type"{} ), \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}( "{}Condition"{} ), \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}( "{}Value"{} ), \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}( "{}Remarks"{} ) \}
+\begin{DoxyCompactList}\small\item\em Ascii string for each Item\+Data\+Type enum. \end{DoxyCompactList}\item 
+const wx\+String \mbox{\hyperlink{namespace_catalog_ad31b697e09026bea7e50c5f0da8ff29f}{Catalog\+::\+XMLData\+Names}} \mbox{[}\mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176a61ce03037e0635b621097ac2d4f37b03}{DT\+\_\+\+Nbr\+Types}}\mbox{]}
+\begin{DoxyCompactList}\small\item\em Ascii string for each XMLData\+Type enum. These are the same as Data\+Type\+Names except they have no spaces in the string since they are used for XML element names. \end{DoxyCompactList}\end{DoxyCompactItemize}

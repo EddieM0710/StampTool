@@ -1,0 +1,506 @@
+\doxysection{Frame\+Defaults\+Panel.\+cpp}
+\hypertarget{_frame_defaults_panel_8cpp_source}{}\label{_frame_defaults_panel_8cpp_source}\index{C:/Users/femon/Development/wx/cloneTest/StampTool/src/gui/FrameDefaultsPanel.cpp@{C:/Users/femon/Development/wx/cloneTest/StampTool/src/gui/FrameDefaultsPanel.cpp}}
+\mbox{\hyperlink{_frame_defaults_panel_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00002}00002\ \textcolor{comment}{\ *\ @file\ \ FrameDefaultsPanel.cpp}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00003}00003\ \textcolor{comment}{\ *\ @author\ Eddie\ Monroe}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00004}00004\ \textcolor{comment}{\ *\ @brief}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00005}00005\ \textcolor{comment}{\ *\ @version\ 0.1}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00006}00006\ \textcolor{comment}{\ *\ @date\ 2022-\/04-\/29}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00007}00007\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00008}00008\ \textcolor{comment}{\ *\ @copyright\ Copyright\ (\ c\ )\ 2022}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00009}00009\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00010}00010\ \textcolor{comment}{\ *\ This\ file\ is\ part\ of\ StampTool.}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00011}00011\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00012}00012\ \textcolor{comment}{\ *\ StampTool\ is\ free\ software:\ you\ can\ redistribute\ it\ and/or\ modify\ it\ under\ the}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00013}00013\ \textcolor{comment}{\ *\ terms\ of\ the\ GNU\ General\ Public\ License\ as\ published\ by\ the\ Free\ Software\ Foundation,}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00014}00014\ \textcolor{comment}{\ *\ either\ version\ 3\ of\ the\ License,\ or\ any\ later\ version.}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00015}00015\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00016}00016\ \textcolor{comment}{\ *\ StampTool\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,\ but\ WITHOUT\ ANY}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00017}00017\ \textcolor{comment}{\ *\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of\ MERCHANTABILITY\ or\ FITNESS\ FOR\ A}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00018}00018\ \textcolor{comment}{\ *\ PARTICULAR\ PURPOSE.\ See\ the\ GNU\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00019}00019\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00020}00020\ \textcolor{comment}{\ *\ You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License\ along\ with}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00021}00021\ \textcolor{comment}{\ *\ StampTool.\ If\ not,\ see\ <https://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00022}00022\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00025}00025\ \textcolor{preprocessor}{\#include\ "{}wx/wxprec.h"{}}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00027}00027\ \textcolor{preprocessor}{\#ifdef\ \_\_BORLANDC\_\_}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00028}00028\ \textcolor{preprocessor}{\#pragma\ hdrstop}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00029}00029\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00031}00031\ \textcolor{preprocessor}{\#ifndef\ WX\_PRECOMP}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00032}00032\ \textcolor{preprocessor}{\#include\ "{}wx/wx.h"{}}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00033}00033\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00035}00035\ \textcolor{preprocessor}{\#include\ "{}wx/imaglist.h"{}}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00036}00036\ \textcolor{preprocessor}{\#include\ <wx/arrstr.h>}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00038}00038\ \textcolor{preprocessor}{\#include\ "{}wx/notebook.h"{}}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00040}00040\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_frame_defaults_panel_8h}{gui/FrameDefaultsPanel.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00041}00041\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_labeled_text_box_8h}{gui/LabeledTextBox.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00042}00042\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_font_picker_helper_8h}{gui/FontPickerHelper.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00043}00043\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_title_frame_8h}{design/TitleFrame.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00044}00044\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_page_8h}{design/Page.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00045}00045\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_album_8h}{design/Album.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00046}00046\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_design_defs_8h}{design/DesignDefs.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00047}00047\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_frame_defaults_8h}{design/FrameDefaults.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00048}00048\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_font_list_8h}{utils/FontList.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00049}00049\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_settings_8h}{utils/Settings.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00050}00050\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_defs_8h}{Defs.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00054}00054\ IMPLEMENT\_DYNAMIC\_CLASS(\ \mbox{\hyperlink{class_frame_defaults_panel}{FrameDefaultsPanel}},\ \mbox{\hyperlink{class_helper_panel}{HelperPanel}}\ )}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00057}00057\ BEGIN\_EVENT\_TABLE(\ \mbox{\hyperlink{class_frame_defaults_panel}{FrameDefaultsPanel}},\ \mbox{\hyperlink{class_helper_panel}{HelperPanel}}\ )}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00058}00058\ END\_EVENT\_TABLE(\ )}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00060}00060\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00062}\mbox{\hyperlink{class_frame_defaults_panel_ab9a0e572f93a8a6452f2578fa1a75cd9}{00062}}\ \mbox{\hyperlink{class_frame_defaults_panel_ab9a0e572f93a8a6452f2578fa1a75cd9}{FrameDefaultsPanel}}::\mbox{\hyperlink{class_frame_defaults_panel_ab9a0e572f93a8a6452f2578fa1a75cd9}{FrameDefaultsPanel}}(\ )}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00063}00063\ \{}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00064}00064\ \ \ \ \ \mbox{\hyperlink{class_frame_defaults_panel_ab39acd13365bce64f2c284f060cbc9af}{Init}}(\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00065}00065\ \}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00067}00067\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00069}\mbox{\hyperlink{class_frame_defaults_panel_aa43d23c1f840b3b106fe155c24dc032c}{00069}}\ \mbox{\hyperlink{class_frame_defaults_panel_ab9a0e572f93a8a6452f2578fa1a75cd9}{FrameDefaultsPanel::FrameDefaultsPanel}}(\ wxWindow*\ parent,\ wxWindowID\ \textcolor{keywordtype}{id},}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00070}00070\ \ \ \ \ \textcolor{keyword}{const}\ wxString\&\ caption,\ \textcolor{keyword}{const}\ wxPoint\&\ pos,\ \textcolor{keyword}{const}\ wxSize\&\ size,\ \textcolor{keywordtype}{long}\ style\ )}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00071}00071\ \{}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00072}00072\ \ \ \ \ \mbox{\hyperlink{class_frame_defaults_panel_ab39acd13365bce64f2c284f060cbc9af}{Init}}(\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00073}00073\ \ \ \ \ \mbox{\hyperlink{class_frame_defaults_panel_a510706fe796983b427a3569618101ebf}{Create}}(\ parent,\ \textcolor{keywordtype}{id},\ caption,\ pos,\ size,\ style\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00074}00074\ \ \ \ \ \textcolor{comment}{//\ SetMinClientSize(\ wxSize(\ 100,\ 100\ )\ );}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00075}00075\ \}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00077}00077\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00078}00078\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00079}\mbox{\hyperlink{class_frame_defaults_panel_a510706fe796983b427a3569618101ebf}{00079}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_frame_defaults_panel_a510706fe796983b427a3569618101ebf}{FrameDefaultsPanel::Create}}(\ wxWindow*\ parent,\ wxWindowID\ \textcolor{keywordtype}{id},}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00080}00080\ \ \ \ \ \textcolor{keyword}{const}\ wxString\&\ caption,\ \textcolor{keyword}{const}\ wxPoint\&\ pos,\ \textcolor{keyword}{const}\ wxSize\&\ size,\ \textcolor{keywordtype}{long}\ style\ )}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00081}00081\ \{}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00082}00082\ \ \ \ \ SetExtraStyle(\ wxWS\_EX\_VALIDATE\_RECURSIVELY\ |\ wxWS\_EX\_BLOCK\_EVENTS\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00083}00083\ \ \ \ \ wxPanel::Create(\ parent,\ \textcolor{keywordtype}{id},\ pos,\ size,\ style\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00085}00085\ \ \ \ \ \mbox{\hyperlink{class_frame_defaults_panel_a8e723457d3ac9f8024efba4085668015}{CreateControls}}(\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00086}00086\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ GetSizer(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00087}00087\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00088}00088\ \ \ \ \ \ \ \ \ GetSizer(\ )-\/>SetSizeHints(\ \textcolor{keyword}{this}\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00089}00089\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00090}00090\ \ \ \ \ Centre(\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00091}00091\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00092}00092\ \}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00093}00093\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00094}00094\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00095}00095\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00096}\mbox{\hyperlink{class_frame_defaults_panel_a901a87ee2cc043dfbf303fc5e85ffba1}{00096}}\ \mbox{\hyperlink{class_frame_defaults_panel_a901a87ee2cc043dfbf303fc5e85ffba1}{FrameDefaultsPanel::\string~FrameDefaultsPanel}}(\ )}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00097}00097\ \{}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00098}00098\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00099}00099\ \}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00100}00100\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00101}00101\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00102}00102\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00103}\mbox{\hyperlink{class_frame_defaults_panel_ab39acd13365bce64f2c284f060cbc9af}{00103}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_frame_defaults_panel_ab39acd13365bce64f2c284f060cbc9af}{FrameDefaultsPanel::Init}}(\ )}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00104}00104\ \{}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00105}00105\ \ \ \ \ m\_frameCheckbox\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00106}00106\ \}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00107}00107\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00108}00108\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00109}00109\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00110}\mbox{\hyperlink{class_frame_defaults_panel_a8e723457d3ac9f8024efba4085668015}{00110}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_frame_defaults_panel_a8e723457d3ac9f8024efba4085668015}{FrameDefaultsPanel::CreateControls}}(\ )}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00111}00111\ \{}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00112}00112\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00113}00113\ \ \ \ \ \mbox{\hyperlink{class_frame_defaults_panel_ab9a0e572f93a8a6452f2578fa1a75cd9}{FrameDefaultsPanel}}*\ thePanel\ =\ \textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00114}00114\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00115}00115\ \ \ \ \ wxBoxSizer*\ rowColHorizontalSizer\ =\ \textcolor{keyword}{new}\ wxBoxSizer(\ wxVERTICAL\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00116}00116\ \ \ \ \ thePanel-\/>SetSizer(\ rowColHorizontalSizer\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00117}00117\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00118}00118\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00119}00119\ \ \ \ \ \textcolor{keywordtype}{int}\ lastID\ =\ \mbox{\hyperlink{class_frame_defaults_panel_ac7a416391c92a3e4047669c650f885aba36bbf5adfee87392d66c62f4aa9573a7}{ID\_LastID}};}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00120}00120\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00121}00121\ \ \ \ \ wxNotebook*\ focusNotebook\ =\ \textcolor{keyword}{new}\ wxNotebook(\ thePanel,\ ++lastID,}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00122}00122\ \ \ \ \ \ \ \ \ wxDefaultPosition,\ wxDefaultSize,\ wxBK\_TOP\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00123}00123\ \ \ \ \ focusNotebook-\/>SetPadding(\ wxSize(\ 1,\ 1\ )\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00124}00124\ \ \ \ \ rowColHorizontalSizer-\/>Add(\ focusNotebook,\ 1,\ wxGROW\ |\ wxALL,\ 5\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00125}00125\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00126}00126\ \ \ \ \ wxPanel*\ commonPanel\ =\ \textcolor{keyword}{new}\ wxPanel(\ focusNotebook,\ ++lastID,\ wxDefaultPosition,}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00127}00127\ \ \ \ \ \ \ \ \ wxDefaultSize,\ wxTAB\_TRAVERSAL\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00128}00128\ \ \ \ \ commonPanel-\/>SetExtraStyle(\ wxWS\_EX\_VALIDATE\_RECURSIVELY\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00129}00129\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00130}00130\ \ \ \ \ wxBoxSizer*\ commonHorizontalSizer\ =\ \textcolor{keyword}{new}\ wxBoxSizer(\ wxHORIZONTAL\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00131}00131\ \ \ \ \ commonPanel-\/>SetSizer(\ commonHorizontalSizer\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00132}00132\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00133}00133\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00134}00134\ \ \ \ \ wxBoxSizer*\ leftCommonVerticalSizer\ =\ \textcolor{keyword}{new}\ wxBoxSizer(\ wxVERTICAL\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00135}00135\ \ \ \ \ commonHorizontalSizer-\/>Add(\ leftCommonVerticalSizer,\ 1,\ wxGROW\ |\ wxALL,\ 0\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00136}00136\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00137}00137\ \ \ \ \ wxBoxSizer*\ middleCommonVerticalSizer\ =\ \textcolor{keyword}{new}\ wxBoxSizer(\ wxVERTICAL\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00138}00138\ \ \ \ \ commonHorizontalSizer-\/>Add(\ middleCommonVerticalSizer,\ 1,\ wxGROW\ |\ wxALL,\ 0\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00139}00139\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00140}00140\ \ \ \ \ wxBoxSizer*\ rightCommonVerticalSizer\ =\ \textcolor{keyword}{new}\ wxBoxSizer(\ wxVERTICAL\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00141}00141\ \ \ \ \ commonHorizontalSizer-\/>Add(\ rightCommonVerticalSizer,\ 1,\ wxGROW\ |\ wxALL,\ 0\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00142}00142\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00143}00143\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00144}00144\ \ \ \ \ focusNotebook-\/>AddPage(\ commonPanel,\ \_(\ \textcolor{stringliteral}{"{}Basic"{}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00145}00145\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00146}00146\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00147}00147\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00148}00148\ \ \ \ \ wxPanel*\ advancedPanel\ =\ \textcolor{keyword}{new}\ wxPanel(\ focusNotebook,\ ++lastID,\ wxDefaultPosition,}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00149}00149\ \ \ \ \ \ \ \ \ wxDefaultSize,\ wxTAB\_TRAVERSAL\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00150}00150\ \ \ \ \ advancedPanel-\/>SetExtraStyle(\ wxWS\_EX\_VALIDATE\_RECURSIVELY\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00151}00151\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00152}00152\ \ \ \ \ wxBoxSizer*\ advancedHorizontalSizer\ =\ \textcolor{keyword}{new}\ wxBoxSizer(\ wxHORIZONTAL\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00153}00153\ \ \ \ \ advancedPanel-\/>SetSizer(\ advancedHorizontalSizer\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00154}00154\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00155}00155\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00156}00156\ \ \ \ \ wxBoxSizer*\ leftAdvancedVerticalSizer\ =\ \textcolor{keyword}{new}\ wxBoxSizer(\ wxVERTICAL\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00157}00157\ \ \ \ \ advancedHorizontalSizer-\/>Add(\ leftAdvancedVerticalSizer,\ 1,\ wxGROW\ |\ wxALL,\ 0\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00158}00158\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00159}00159\ \ \ \ \ wxBoxSizer*\ middleAdvancedVerticalSizer\ =\ \textcolor{keyword}{new}\ wxBoxSizer(\ wxVERTICAL\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00160}00160\ \ \ \ \ advancedHorizontalSizer-\/>Add(\ middleAdvancedVerticalSizer,\ 1,\ wxGROW\ |\ wxALL,\ 0\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00161}00161\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00162}00162\ \ \ \ \ wxBoxSizer*\ rightAdvancedVerticalSizer\ =\ \textcolor{keyword}{new}\ wxBoxSizer(\ wxVERTICAL\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00163}00163\ \ \ \ \ advancedHorizontalSizer-\/>Add(\ rightAdvancedVerticalSizer,\ 1,\ wxGROW\ |\ wxALL,\ 0\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00164}00164\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00165}00165\ \ \ \ \ focusNotebook-\/>AddPage(\ advancedPanel,\ \_(\ \textcolor{stringliteral}{"{}Special"{}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00166}00166\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00167}00167\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00168}00168\ \ \ \ \ m\_frameCheckbox\ =\ \mbox{\hyperlink{class_helper_panel_a1b4758d163544a7a2c73a37f8bd6d422}{SetupCheckBox}}(\ commonPanel,\ leftCommonVerticalSizer,\ lastID,}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00169}00169\ \ \ \ \ \ \ \ \ (\ \textcolor{stringliteral}{"{}Show\ Frame"{}}\ ),\ wxCommandEventHandler(\ \mbox{\hyperlink{class_frame_defaults_panel_a416d74c0377711902ad39ef424994186}{FrameDefaultsPanel::OnFrameCheckboxClick}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00170}00170\ \ \ \ \ m\_frameCheckbox-\/>SetValue(\ \textcolor{keyword}{false}\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00171}00171\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00172}00172\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00173}00173\ \ \ \ \ m\_titleHelper\ =\ \mbox{\hyperlink{class_helper_panel_a11bffa5d90019ee00eaff4edf86832a2}{SetupTitleHelper}}(\ commonPanel,\ leftCommonVerticalSizer,\ lastID,\ \mbox{\hyperlink{_helper_panel_8h_adb7b683547f25e49d23ff3731ddcb2c8}{HasSubTitle}},}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00174}00174\ \ \ \ \ \ \ \ \ wxCommandEventHandler(\ \mbox{\hyperlink{class_frame_defaults_panel_a4d7f3b9055b67bba621b462e2cff5483}{FrameDefaultsPanel::OnTitleCheckboxClick}}\ ),}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00175}00175\ \ \ \ \ \ \ \ \ wxCommandEventHandler(\ \mbox{\hyperlink{class_frame_defaults_panel_a053b54c7174707963440856fdc959d32}{FrameDefaultsPanel::OnSubTitleCheckboxClick}}\ ),}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00176}00176\ \ \ \ \ \ \ \ \ wxCommandEventHandler(\ \mbox{\hyperlink{class_frame_defaults_panel_a053b54c7174707963440856fdc959d32}{FrameDefaultsPanel::OnSubTitleCheckboxClick}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00177}00177\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00178}00178\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00179}00179\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00180}00180\ \ \ \ \ wxBoxSizer*\ memberSpacingVSizer;}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00181}00181\ \ \ \ \ wxStaticBox*\ memberSpacingStaticBox\ =\ \mbox{\hyperlink{class_helper_panel_a06667439fcca3f8a4b0fab10db82506e}{SetupBoxSizer}}(\ commonPanel,\ middleCommonVerticalSizer,}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00182}00182\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Member\ Position"{}},\ lastID,\ memberSpacingVSizer,\ wxHORIZONTAL\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00183}00183\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00184}00184\ \ \ \ \ m\_fixedSpacingCheckbox\ =\ \mbox{\hyperlink{class_helper_panel_a1b4758d163544a7a2c73a37f8bd6d422}{SetupCheckBox}}(\ memberSpacingStaticBox,\ memberSpacingVSizer,\ lastID,}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00185}00185\ \ \ \ \ \ \ \ \ (\ \textcolor{stringliteral}{"{}Fixed\ Spacing"{}}\ ),\ wxCommandEventHandler(\ \mbox{\hyperlink{class_frame_defaults_panel_a85ab1e8d30770a19bef5ac2b88cf46ec}{FrameDefaultsPanel::OnFixedClick}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00186}00186\ \ \ \ \ m\_fixedSpacingCheckbox-\/>SetToolTip(\ \_(\ \textcolor{stringliteral}{"{}Normally\ Calculated.\ Enable\ for\ Fixed\ Spacing."{}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00187}00187\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00188}00188\ \ \ \ \ m\_fixedSpaceSize\ =\ \textcolor{keyword}{new}\ wxTextCtrl(\ memberSpacingStaticBox,\ ++lastID,\ \_(\ \textcolor{stringliteral}{"{}4"{}}\ ),\ wxDefaultPosition,\ wxDefaultSize,\ 0\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00189}00189\ \ \ \ \ m\_fixedSpaceSize-\/>SetToolTip(\ \_(\ \textcolor{stringliteral}{"{}mm"{}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00190}00190\ \ \ \ \ m\_fixedSpaceSize-\/>Enable(\ \textcolor{keyword}{false}\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00191}00191\ \ \ \ \ memberSpacingVSizer-\/>Add(\ m\_fixedSpaceSize,\ 0,\ wxALIGN\_LEFT\ |\ wxALL,\ 5\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00192}00192\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00193}00193\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00194}00194\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00195}00195\ \ \ \ \ wxBoxSizer*\ alignmentModeVSizer;}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00196}00196\ \ \ \ \ wxStaticBox*\ alignmentModeBox\ =\ \mbox{\hyperlink{class_helper_panel_a06667439fcca3f8a4b0fab10db82506e}{SetupBoxSizer}}(\ commonPanel,\ rightCommonVerticalSizer,\ \textcolor{stringliteral}{"{}Stamp\ Member\ Alignment\ Mode"{}},\ lastID,\ alignmentModeVSizer,\ wxHORIZONTAL\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00197}00197\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00198}00198\ \ \ \ \ m\_alignTopButton\ =\ \mbox{\hyperlink{class_helper_panel_a7b5279a0f4b91c9f19fbd088edceada3}{SetupRadioButton}}(\ alignmentModeBox,\ alignmentModeVSizer,\ lastID,\ \_(\ \textcolor{stringliteral}{"{}Top"{}}\ ),\ \textcolor{keyword}{false},}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00199}00199\ \ \ \ \ \ \ \ \ wxCommandEventHandler(\ \mbox{\hyperlink{class_frame_defaults_panel_ad30ab05932bf32c81a66076196cd45db}{FrameDefaultsPanel::OnAlignmentModeButtonSelected}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00200}00200\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00201}00201\ \ \ \ \ m\_alignMiddleButton\ =\ \mbox{\hyperlink{class_helper_panel_a7b5279a0f4b91c9f19fbd088edceada3}{SetupRadioButton}}(\ alignmentModeBox,\ alignmentModeVSizer,\ lastID,\ \_(\ \textcolor{stringliteral}{"{}Middle"{}}\ ),\ \textcolor{keyword}{false},}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00202}00202\ \ \ \ \ \ \ \ \ wxCommandEventHandler(\ \mbox{\hyperlink{class_frame_defaults_panel_ad30ab05932bf32c81a66076196cd45db}{FrameDefaultsPanel::OnAlignmentModeButtonSelected}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00203}00203\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00204}00204\ \ \ \ \ m\_alignBottomButton\ =\ \mbox{\hyperlink{class_helper_panel_a7b5279a0f4b91c9f19fbd088edceada3}{SetupRadioButton}}(\ alignmentModeBox,\ alignmentModeVSizer,\ lastID,\ \_(\ \textcolor{stringliteral}{"{}Bottom"{}}\ ),\ \textcolor{keyword}{false},}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00205}00205\ \ \ \ \ \ \ \ \ wxCommandEventHandler(\ \mbox{\hyperlink{class_frame_defaults_panel_ad30ab05932bf32c81a66076196cd45db}{FrameDefaultsPanel::OnAlignmentModeButtonSelected}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00206}00206\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00207}00207\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00208}00208\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00209}00209\ \ \ \ \ wxBoxSizer*\ contentMarginBoxVSizer;}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00210}00210\ \ \ \ \ wxStaticBox*\ contentMarginBox\ =\ \mbox{\hyperlink{class_helper_panel_a06667439fcca3f8a4b0fab10db82506e}{SetupBoxSizer}}(\ advancedPanel,\ leftAdvancedVerticalSizer,}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00211}00211\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Content\ Margin"{}},\ lastID,\ contentMarginBoxVSizer,\ wxVERTICAL\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00212}00212\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00213}00213\ \ \ \ \ wxBoxSizer*\ contentMarginBoxHSizer\ =\ \textcolor{keyword}{new}\ wxBoxSizer(\ wxHORIZONTAL\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00214}00214\ \ \ \ \ contentMarginBoxVSizer-\/>Add(\ contentMarginBoxHSizer,\ 0,\ wxGROW\ |\ wxALL,\ 0\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00215}00215\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00216}00216\ \ \ \ \ \mbox{\hyperlink{class_helper_panel_ad1e7b95d260c42031c75899e0c68cd7c}{HorizontalSpacer}}(\ contentMarginBoxHSizer\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00217}00217\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00218}00218\ \ \ \ \ m\_topContentMargin\ =\ \mbox{\hyperlink{class_helper_panel_acdac2c77789965bc2e300f50c66f7f11}{SetupLabelText}}(\ contentMarginBox,\ contentMarginBoxHSizer,\ lastID,}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00219}00219\ \ \ \ \ \ \ \ \ \_(\ \textcolor{stringliteral}{"{}Top"{}}\ ),\ \textcolor{keyword}{false},\ wxCommandEventHandler(\ \mbox{\hyperlink{class_frame_defaults_panel_a51c0055961cfa4da3165b4f2ae54ddd3}{FrameDefaultsPanel::OnTopContentMargin}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00220}00220\ \ \ \ \ m\_topContentMargin-\/>SetToolTip(\ \_(\ \textcolor{stringliteral}{"{}Content\ top\ margin\ in\ mm."{}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00221}00221\ \ \ \ \ \mbox{\hyperlink{class_helper_panel_ad1e7b95d260c42031c75899e0c68cd7c}{HorizontalSpacer}}(\ contentMarginBoxHSizer\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00222}00222\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00223}00223\ \ \ \ \ m\_bottomContentMargin\ =\ \mbox{\hyperlink{class_helper_panel_acdac2c77789965bc2e300f50c66f7f11}{SetupLabelText}}(\ contentMarginBox,\ contentMarginBoxHSizer,\ lastID,}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00224}00224\ \ \ \ \ \ \ \ \ \_(\ \textcolor{stringliteral}{"{}Bottom"{}}\ ),\ \textcolor{keyword}{false},\ wxCommandEventHandler(\ \mbox{\hyperlink{class_frame_defaults_panel_a0b1a9dcb2bb6e1f930c44350050c8bc0}{FrameDefaultsPanel::OnBottomContentMargin}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00225}00225\ \ \ \ \ m\_bottomContentMargin-\/>SetToolTip(\ \_(\ \textcolor{stringliteral}{"{}Content\ bottom\ margin\ in\ mm."{}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00226}00226\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00227}00227\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00228}00228\ \ \ \ \ wxBoxSizer*\ itemBoxSizer110\ =\ \textcolor{keyword}{new}\ wxBoxSizer(\ wxHORIZONTAL\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00229}00229\ \ \ \ \ contentMarginBoxVSizer-\/>Add(\ itemBoxSizer110,\ 0,\ wxGROW\ |\ wxALL,\ 0\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00230}00230\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00231}00231\ \ \ \ \ \mbox{\hyperlink{class_helper_panel_ad1e7b95d260c42031c75899e0c68cd7c}{HorizontalSpacer}}(\ itemBoxSizer110\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00232}00232\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00233}00233\ \ \ \ \ m\_leftContentMargin\ =\ \mbox{\hyperlink{class_helper_panel_acdac2c77789965bc2e300f50c66f7f11}{SetupLabelText}}(\ contentMarginBox,\ itemBoxSizer110,\ lastID,}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00234}00234\ \ \ \ \ \ \ \ \ \_(\ \textcolor{stringliteral}{"{}Left"{}}\ ),\ \textcolor{keyword}{false},\ wxCommandEventHandler(\ \mbox{\hyperlink{class_frame_defaults_panel_aac603d3f76668ab22c77632dd3763358}{FrameDefaultsPanel::OnLeftContentMargin}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00235}00235\ \ \ \ \ m\_leftContentMargin-\/>SetToolTip(\ \_(\ \textcolor{stringliteral}{"{}Content\ left\ margin\ in\ mm."{}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00236}00236\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00237}00237\ \ \ \ \ \mbox{\hyperlink{class_helper_panel_ad1e7b95d260c42031c75899e0c68cd7c}{HorizontalSpacer}}(\ itemBoxSizer110\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00238}00238\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00239}00239\ \ \ \ \ m\_rightContentMargin\ =\ \mbox{\hyperlink{class_helper_panel_acdac2c77789965bc2e300f50c66f7f11}{SetupLabelText}}(\ contentMarginBox,\ itemBoxSizer110,\ lastID,}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00240}00240\ \ \ \ \ \ \ \ \ \_(\ \textcolor{stringliteral}{"{}Right"{}}\ ),\ \textcolor{keyword}{false},\ wxCommandEventHandler(\ \mbox{\hyperlink{class_frame_defaults_panel_a05ef0e53b8b53def83635f5f5885efb7}{FrameDefaultsPanel::OnRightContentMargin}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00241}00241\ \ \ \ \ m\_rightContentMargin-\/>SetToolTip(\ \_(\ \textcolor{stringliteral}{"{}Content\ right\ margin\ in\ mm."{}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00242}00242\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00243}00243\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00244}00244\ \}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00245}00245\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00246}00246\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00247}00247\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00248}\mbox{\hyperlink{class_frame_defaults_panel_a14593ad7e572f4e83ec5876db81866c3}{00248}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_frame_defaults_panel_a14593ad7e572f4e83ec5876db81866c3}{FrameDefaultsPanel::UpdateControls}}(\ )}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00249}00249\ \{}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00250}00250\ \ \ \ \ \mbox{\hyperlink{class_frame_defaults_panel_abbac653b96b0fb1bccdf41f6294c8978}{SetFixedSpacingSize}}(\ \mbox{\hyperlink{namespace_design_a342d9455df07585aa762c1be18724f90}{Design::AlbumFrameDefaults}}(\ )-\/>FixedSpacingStr(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00251}00251\ \ \ \ \ \mbox{\hyperlink{class_frame_defaults_panel_a177d4b151ce9df2cfb23dd1e81923672}{SetFixedSpacing}}(\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00252}00252\ \ \ \ \ \mbox{\hyperlink{class_frame_defaults_panel_a33a0867eb1ef559423e08844324a75cb}{SetTopContentMargin}}(\ \mbox{\hyperlink{namespace_design_a342d9455df07585aa762c1be18724f90}{Design::AlbumFrameDefaults}}(\ )-\/>TopContentMarginStr(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00253}00253\ \ \ \ \ \mbox{\hyperlink{class_frame_defaults_panel_aa7c35a8e4d8d871f99c7a39dd4d0c692}{SetBottomContentMargin}}(\ \mbox{\hyperlink{namespace_design_a342d9455df07585aa762c1be18724f90}{Design::AlbumFrameDefaults}}(\ )-\/>BottomContentMarginStr(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00254}00254\ \ \ \ \ \mbox{\hyperlink{class_frame_defaults_panel_ad446a492c8922bf7d8d0042a45d9b7be}{SetLeftContentMargin}}(\ \mbox{\hyperlink{namespace_design_a342d9455df07585aa762c1be18724f90}{Design::AlbumFrameDefaults}}(\ )-\/>LeftContentMarginStr(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00255}00255\ \ \ \ \ \mbox{\hyperlink{class_frame_defaults_panel_a5cf2b7bee76190a3a713aa13075425c7}{SetRightContentMargin}}(\ \mbox{\hyperlink{namespace_design_a342d9455df07585aa762c1be18724f90}{Design::AlbumFrameDefaults}}(\ )-\/>RightContentMarginStr(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00256}00256\ \ \ \ \ m\_titleHelper-\/>subTitleCheckbox-\/>SetValue(\ \mbox{\hyperlink{namespace_design_a342d9455df07585aa762c1be18724f90}{Design::AlbumFrameDefaults}}(\ )-\/>ShowSubTitle(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00257}00257\ \ \ \ \ m\_titleHelper-\/>titleCheckbox-\/>SetValue(\ \mbox{\hyperlink{namespace_design_a342d9455df07585aa762c1be18724f90}{Design::AlbumFrameDefaults}}(\ )-\/>ShowTitle(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00258}00258\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00259}00259\ \ \ \ \ \textcolor{comment}{//memberSpacing}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00260}00260\ \ \ \ \ \ \textcolor{comment}{//\ \ \ Stampalignment}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00261}00261\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00262}00262\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00263}00263\ \}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00264}00264\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00265}00265\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00266}00266\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00267}\mbox{\hyperlink{class_frame_defaults_panel_aa1fc7110b8b6e3b9be2986a2468b3531}{00267}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_frame_defaults_panel_aa1fc7110b8b6e3b9be2986a2468b3531}{FrameDefaultsPanel::SetupDialog}}(\ \mbox{\hyperlink{class_design_1_1_page}{Design::Page}}*\ page\ )}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00268}00268\ \{}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00269}00269\ \ \ \ \ \mbox{\hyperlink{class_frame_defaults_panel_a14593ad7e572f4e83ec5876db81866c3}{UpdateControls}}(\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00270}00270\ \};}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00271}00271\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00272}00272\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00273}00273\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00274}\mbox{\hyperlink{class_frame_defaults_panel_aa5b18d93fce310c086ff1201a83050e2}{00274}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_frame_defaults_panel_aa5b18d93fce310c086ff1201a83050e2}{FrameDefaultsPanel::ShowToolTips}}(\ )}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00275}00275\ \{}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00276}00276\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00277}00277\ \}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00278}00278\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00279}00279\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00280}00280\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00281}\mbox{\hyperlink{class_frame_defaults_panel_a053b54c7174707963440856fdc959d32}{00281}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_frame_defaults_panel_a053b54c7174707963440856fdc959d32}{FrameDefaultsPanel::OnSubTitleCheckboxClick}}(\ wxCommandEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00282}00282\ \{}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00283}00283\ \ \ \ \ \mbox{\hyperlink{namespace_design_a342d9455df07585aa762c1be18724f90}{Design::AlbumFrameDefaults}}(\ )-\/>\mbox{\hyperlink{class_design_1_1_frame_defaults_abc27b9b7196d8c28d964771834ec4bce}{ShowSubTitle}}(\ m\_titleHelper-\/>subTitleCheckbox-\/>GetValue(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00284}00284\ \ \ \ \ \mbox{\hyperlink{class_helper_panel_a106781fc496e192caeb765add7bd8a30}{UpdateSubTitleState}}(\ m\_titleHelper\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00285}00285\ \ \ \ \ \mbox{\hyperlink{class_frame_defaults_panel_a5b1e7490729879d7e6c74cd43bca48d0}{Update}}(\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00286}00286\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00287}00287\ \};}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00288}00288\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00289}00289\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00290}00290\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00291}\mbox{\hyperlink{class_frame_defaults_panel_a4d7f3b9055b67bba621b462e2cff5483}{00291}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_frame_defaults_panel_a4d7f3b9055b67bba621b462e2cff5483}{FrameDefaultsPanel::OnTitleCheckboxClick}}(\ wxCommandEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00292}00292\ \{}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00293}00293\ \ \ \ \ \mbox{\hyperlink{namespace_design_a342d9455df07585aa762c1be18724f90}{Design::AlbumFrameDefaults}}(\ )-\/>\mbox{\hyperlink{class_design_1_1_frame_defaults_aa533def3f53f88645d1471a7be31c144}{ShowTitle}}(\ m\_titleHelper-\/>titleCheckbox-\/>GetValue(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00294}00294\ \ \ \ \ \mbox{\hyperlink{class_helper_panel_a97f0816a8c7870a3ce034f07f58e16fa}{UpdateTitleState}}(\ m\_titleHelper\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00295}00295\ \ \ \ \ \mbox{\hyperlink{class_frame_defaults_panel_a5b1e7490729879d7e6c74cd43bca48d0}{Update}}(\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00296}00296\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00297}00297\ \}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00298}00298\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00299}00299\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00300}00300\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00301}\mbox{\hyperlink{class_frame_defaults_panel_a177d4b151ce9df2cfb23dd1e81923672}{00301}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_frame_defaults_panel_a177d4b151ce9df2cfb23dd1e81923672}{FrameDefaultsPanel::SetFixedSpacing}}(\ )}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00302}00302\ \{}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00303}00303\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ \mbox{\hyperlink{namespace_design_a342d9455df07585aa762c1be18724f90}{Design::AlbumFrameDefaults}}(\ )-\/>CalculateSpacing(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00304}00304\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00305}00305\ \ \ \ \ \ \ \ \ m\_fixedSpacingCheckbox-\/>SetValue(\ \textcolor{keyword}{false}\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00306}00306\ \ \ \ \ \ \ \ \ m\_fixedSpaceSize-\/>Enable(\ \textcolor{keyword}{false}\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00307}00307\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00308}00308\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00309}00309\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00310}00310\ \ \ \ \ \ \ \ \ m\_fixedSpacingCheckbox-\/>SetValue(\ \textcolor{keyword}{true}\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00311}00311\ \ \ \ \ \ \ \ \ m\_fixedSpaceSize-\/>Enable(\ \textcolor{keyword}{true}\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00312}00312\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00313}00313\ \}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00314}00314\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00315}00315\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00316}00316\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00317}00317\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00318}\mbox{\hyperlink{class_frame_defaults_panel_a416d74c0377711902ad39ef424994186}{00318}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_frame_defaults_panel_a416d74c0377711902ad39ef424994186}{FrameDefaultsPanel::OnFrameCheckboxClick}}(\ wxCommandEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00319}00319\ \{}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00320}00320\ \ \ \ \ \mbox{\hyperlink{namespace_design_a342d9455df07585aa762c1be18724f90}{Design::AlbumFrameDefaults}}(\ )-\/>\mbox{\hyperlink{class_design_1_1_frame_defaults_a3b0e64f74d0fba5daada9866d82f8a76}{ShowFrame}}(\ m\_frameCheckbox-\/>GetValue(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00321}00321\ \ \ \ \ \mbox{\hyperlink{class_frame_defaults_panel_a5b1e7490729879d7e6c74cd43bca48d0}{Update}}(\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00322}00322\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00323}00323\ \}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00324}00324\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00325}00325\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00326}00326\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00327}\mbox{\hyperlink{class_frame_defaults_panel_a51c0055961cfa4da3165b4f2ae54ddd3}{00327}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_frame_defaults_panel_a51c0055961cfa4da3165b4f2ae54ddd3}{FrameDefaultsPanel::OnTopContentMargin}}(\ wxCommandEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00328}00328\ \{}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00329}00329\ \ \ \ \ wxString\ valAlbum\ =\ \mbox{\hyperlink{namespace_design_a342d9455df07585aa762c1be18724f90}{Design::AlbumFrameDefaults}}(\ )-\/>\mbox{\hyperlink{class_design_1_1_frame_defaults_a0d9cd6b83073156555c8886c031b04b7}{TopContentMarginStr}}(\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00330}00330\ \ \ \ \ wxString\ valLocal\ =\ m\_topContentMargin-\/>GetValue(\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00331}00331\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ valAlbum.Cmp(\ valLocal\ )\ )}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00332}00332\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00333}00333\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_design_a342d9455df07585aa762c1be18724f90}{Design::AlbumFrameDefaults}}(\ )-\/>\mbox{\hyperlink{class_design_1_1_frame_defaults_a171fec56c8510e1fc1e1aa9f841f7111}{TopContentMargin}}(\ valLocal\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00334}00334\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00335}00335\ \ \ \ \ \mbox{\hyperlink{class_frame_defaults_panel_a5b1e7490729879d7e6c74cd43bca48d0}{Update}}(\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00336}00336\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00337}00337\ \}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00338}00338\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00339}00339\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00340}00340\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00341}\mbox{\hyperlink{class_frame_defaults_panel_a0b1a9dcb2bb6e1f930c44350050c8bc0}{00341}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_frame_defaults_panel_a0b1a9dcb2bb6e1f930c44350050c8bc0}{FrameDefaultsPanel::OnBottomContentMargin}}(\ wxCommandEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00342}00342\ \{}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00343}00343\ \ \ \ \ wxString\ valAlbum\ =\ \mbox{\hyperlink{namespace_design_a342d9455df07585aa762c1be18724f90}{Design::AlbumFrameDefaults}}(\ )-\/>\mbox{\hyperlink{class_design_1_1_frame_defaults_a5af5adc353166362b26c5929bfa58732}{BottomContentMarginStr}}(\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00344}00344\ \ \ \ \ wxString\ valLocal\ =\ m\_bottomContentMargin-\/>GetValue(\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00345}00345\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ valAlbum.Cmp(\ valLocal\ )\ )}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00346}00346\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00347}00347\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_design_a342d9455df07585aa762c1be18724f90}{Design::AlbumFrameDefaults}}(\ )-\/>\mbox{\hyperlink{class_design_1_1_frame_defaults_ae9b26067fa2d74fa09463ada6088a11d}{BottomContentMargin}}(\ valLocal\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00348}00348\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00349}00349\ \ \ \ \ \mbox{\hyperlink{class_frame_defaults_panel_a5b1e7490729879d7e6c74cd43bca48d0}{Update}}(\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00350}00350\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00351}00351\ \}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00352}00352\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00353}00353\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00354}00354\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00355}\mbox{\hyperlink{class_frame_defaults_panel_aac603d3f76668ab22c77632dd3763358}{00355}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_frame_defaults_panel_aac603d3f76668ab22c77632dd3763358}{FrameDefaultsPanel::OnLeftContentMargin}}(\ wxCommandEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00356}00356\ \{}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00357}00357\ \ \ \ \ wxString\ valAlbum\ =\ \mbox{\hyperlink{namespace_design_a342d9455df07585aa762c1be18724f90}{Design::AlbumFrameDefaults}}(\ )-\/>\mbox{\hyperlink{class_design_1_1_frame_defaults_ab3b5edd9c195c0a34ea4df0c6c1f1a5c}{LeftContentMarginStr}}(\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00358}00358\ \ \ \ \ wxString\ valLocal\ =\ m\_leftContentMargin-\/>GetValue(\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00359}00359\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ valAlbum.Cmp(\ valLocal\ )\ )}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00360}00360\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00361}00361\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_design_a342d9455df07585aa762c1be18724f90}{Design::AlbumFrameDefaults}}(\ )-\/>\mbox{\hyperlink{class_design_1_1_frame_defaults_a2b1e93cf9c66bd596cd518fd6724da6e}{LeftContentMargin}}(\ valLocal\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00362}00362\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00363}00363\ \ \ \ \ \mbox{\hyperlink{class_frame_defaults_panel_a5b1e7490729879d7e6c74cd43bca48d0}{Update}}(\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00364}00364\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00365}00365\ \}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00366}00366\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00367}00367\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00368}00368\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00369}\mbox{\hyperlink{class_frame_defaults_panel_a05ef0e53b8b53def83635f5f5885efb7}{00369}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_frame_defaults_panel_a05ef0e53b8b53def83635f5f5885efb7}{FrameDefaultsPanel::OnRightContentMargin}}(\ wxCommandEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00370}00370\ \{}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00371}00371\ \ \ \ \ wxString\ valAlbum\ =\ \mbox{\hyperlink{namespace_design_a342d9455df07585aa762c1be18724f90}{Design::AlbumFrameDefaults}}(\ )-\/>\mbox{\hyperlink{class_design_1_1_frame_defaults_a4633655142e8c3f512acbe785b9963ee}{RightContentMarginStr}}(\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00372}00372\ \ \ \ \ wxString\ valLocal\ =\ m\_rightContentMargin-\/>GetValue(\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00373}00373\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ valAlbum.Cmp(\ valLocal\ )\ )}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00374}00374\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00375}00375\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_design_a342d9455df07585aa762c1be18724f90}{Design::AlbumFrameDefaults}}(\ )-\/>\mbox{\hyperlink{class_design_1_1_frame_defaults_a121149597c4657bda08cf00737b0210f}{RightContentMargin}}(\ valLocal\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00376}00376\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00377}00377\ \ \ \ \ \mbox{\hyperlink{class_frame_defaults_panel_a5b1e7490729879d7e6c74cd43bca48d0}{Update}}(\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00378}00378\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00379}00379\ \}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00380}00380\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00381}00381\ \textcolor{comment}{//\ //-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00382}00382\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00383}00383\ \textcolor{comment}{//\ void\ FrameDefaultsPanel::SetFixedSpacing(\ bool\ val\ )}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00384}00384\ \textcolor{comment}{//\ \{}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00385}00385\ \textcolor{comment}{//\ \ \ \ \ m\_fixedSpacingCheckbox-\/>SetValue(\ val\ );}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00386}00386\ \textcolor{comment}{//\ \ \ \ \ if\ (\ val\ )}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00387}00387\ \textcolor{comment}{//\ \ \ \ \ \{}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00388}00388\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ m\_fixedSpaceSize-\/>Enable(\ false\ );}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00389}00389\ \textcolor{comment}{//\ \ \ \ \ \}}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00390}00390\ \textcolor{comment}{//\ \ \ \ \ else}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00391}00391\ \textcolor{comment}{//\ \ \ \ \ \{}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00392}00392\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ m\_fixedSpaceSize-\/>Enable(\ true\ );}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00393}00393\ \textcolor{comment}{//\ \ \ \ \ \}}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00394}00394\ \textcolor{comment}{//\ \};}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00395}00395\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00396}00396\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00397}00397\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00398}00398\ \textcolor{comment}{//\ void\ FrameDefaultsPanel::OnCalculatedClick(\ wxCommandEvent\&\ event\ )}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00399}00399\ \textcolor{comment}{//\ \{}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00400}00400\ \textcolor{comment}{//\ \ \ \ \ m\_fixedSpaceSize-\/>Enable(\ false\ );}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00401}00401\ \textcolor{comment}{//\ \ \ \ \ //\ \ \ \ m\_row-\/>SetFixedSpacing(\ true\ );}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00402}00402\ \textcolor{comment}{//\ \ \ \ \ event.Skip(\ );}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00403}00403\ \textcolor{comment}{//\ \}}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00404}00404\ \textcolor{comment}{//\ //-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00405}00405\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00406}00406\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00407}\mbox{\hyperlink{class_frame_defaults_panel_a85ab1e8d30770a19bef5ac2b88cf46ec}{00407}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_frame_defaults_panel_a85ab1e8d30770a19bef5ac2b88cf46ec}{FrameDefaultsPanel::OnFixedClick}}(\ wxCommandEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00408}00408\ \{}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00409}00409\ \ \ \ \ m\_fixedSpaceSize-\/>Enable(\ \textcolor{keyword}{true}\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00410}00410\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ m\_fixedSpacingCheckbox-\/>IsChecked(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00411}00411\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00412}00412\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_design_a342d9455df07585aa762c1be18724f90}{Design::AlbumFrameDefaults}}(\ )-\/>\mbox{\hyperlink{class_design_1_1_frame_defaults_ae4d632e6e53704a02ac7dc1db2123443}{CalculateSpacing}}(\ \textcolor{keyword}{false}\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00413}00413\ \ \ \ \ \ \ \ \ m\_fixedSpaceSize-\/>Enable(\ \textcolor{keyword}{true}\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00414}00414\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00415}00415\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00416}00416\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00417}00417\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00418}00418\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_design_a342d9455df07585aa762c1be18724f90}{Design::AlbumFrameDefaults}}(\ )-\/>\mbox{\hyperlink{class_design_1_1_frame_defaults_ae4d632e6e53704a02ac7dc1db2123443}{CalculateSpacing}}(\ \textcolor{keyword}{true}\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00419}00419\ \ \ \ \ \ \ \ \ m\_fixedSpaceSize-\/>Enable(\ \textcolor{keyword}{false}\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00420}00420\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00421}00421\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00422}00422\ \ \ \ \ \mbox{\hyperlink{class_frame_defaults_panel_a5b1e7490729879d7e6c74cd43bca48d0}{Update}}(\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00423}00423\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00424}00424\ \}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00425}00425\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00426}00426\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00427}00427\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00428}\mbox{\hyperlink{class_frame_defaults_panel_ae50d792bb620b63ec69d261c09676c87}{00428}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_frame_defaults_panel_ae50d792bb620b63ec69d261c09676c87}{FrameDefaultsPanel::SetAlignmentMode}}(\ )}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00429}00429\ \{}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00430}00430\ \ \ \ \ \mbox{\hyperlink{namespace_design_ab09b51b33b5ff322cce8f7d3e37caae5}{Design::AlignmentModeType}}\ mode\ =\ \mbox{\hyperlink{namespace_design_a342d9455df07585aa762c1be18724f90}{Design::AlbumFrameDefaults}}(\ )-\/>\mbox{\hyperlink{class_design_1_1_frame_defaults_ae2dabc6647ad0acd56397ba8581047ef}{GetAlignmentModeType}}(\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00431}00431\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ mode\ ==\ \mbox{\hyperlink{namespace_design_ab09b51b33b5ff322cce8f7d3e37caae5a4661e3346ece4dcec97f869c7894d887}{Design::AlignTop}}\ )}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00432}00432\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00433}00433\ \ \ \ \ \ \ \ \ m\_alignTopButton-\/>SetValue(\ \textcolor{keyword}{true}\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00434}00434\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00435}00435\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (\ mode\ ==\ \mbox{\hyperlink{namespace_design_ab09b51b33b5ff322cce8f7d3e37caae5a6cc31fd37386656b001d307857667c97}{Design::AlignMiddle}}\ )}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00436}00436\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00437}00437\ \ \ \ \ \ \ \ \ m\_alignMiddleButton-\/>SetValue(\ \textcolor{keyword}{true}\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00438}00438\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00439}00439\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{comment}{//\ if\ (\ mode\ ==\ Design::AlignBottom\ )}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00440}00440\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00441}00441\ \ \ \ \ \ \ \ \ m\_alignBottomButton-\/>SetValue(\ \textcolor{keyword}{true}\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00442}00442\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00443}00443\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00444}00444\ \}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00445}00445\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00446}00446\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00447}00447\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00448}\mbox{\hyperlink{class_frame_defaults_panel_ad30ab05932bf32c81a66076196cd45db}{00448}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_frame_defaults_panel_ad30ab05932bf32c81a66076196cd45db}{FrameDefaultsPanel::OnAlignmentModeButtonSelected}}(\ wxCommandEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00449}00449\ \{}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00450}00450\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ m\_alignTopButton-\/>GetValue(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00451}00451\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00452}00452\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_design_a342d9455df07585aa762c1be18724f90}{Design::AlbumFrameDefaults}}(\ )-\/>\mbox{\hyperlink{class_design_1_1_frame_defaults_a9ddb2f4a6caa4670bacdcfff945c5485}{SetAlignmentModeType}}(\ \mbox{\hyperlink{namespace_design_ab09b51b33b5ff322cce8f7d3e37caae5a4661e3346ece4dcec97f869c7894d887}{Design::AlignTop}}\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00453}00453\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00454}00454\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (\ m\_alignMiddleButton-\/>GetValue(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00455}00455\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00456}00456\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_design_a342d9455df07585aa762c1be18724f90}{Design::AlbumFrameDefaults}}(\ )-\/>\mbox{\hyperlink{class_design_1_1_frame_defaults_a9ddb2f4a6caa4670bacdcfff945c5485}{SetAlignmentModeType}}(\ \mbox{\hyperlink{namespace_design_ab09b51b33b5ff322cce8f7d3e37caae5a6cc31fd37386656b001d307857667c97}{Design::AlignMiddle}}\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00457}00457\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00458}00458\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (\ m\_alignBottomButton-\/>GetValue(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00459}00459\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00460}00460\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_design_a342d9455df07585aa762c1be18724f90}{Design::AlbumFrameDefaults}}(\ )-\/>\mbox{\hyperlink{class_design_1_1_frame_defaults_a9ddb2f4a6caa4670bacdcfff945c5485}{SetAlignmentModeType}}(\ \mbox{\hyperlink{namespace_design_ab09b51b33b5ff322cce8f7d3e37caae5aa05ce0f1e8dd0aeb71c26e58df814665}{Design::AlignBottom}}\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00461}00461\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00462}00462\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00463}00463\ \ \ \ \ \mbox{\hyperlink{class_frame_defaults_panel_a5b1e7490729879d7e6c74cd43bca48d0}{Update}}(\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00464}00464\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00465}00465\ \}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00466}00466\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00467}00467\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00468}00468\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00469}00469\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00470}\mbox{\hyperlink{class_frame_defaults_panel_a33a0867eb1ef559423e08844324a75cb}{00470}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_frame_defaults_panel_a33a0867eb1ef559423e08844324a75cb}{FrameDefaultsPanel::SetTopContentMargin}}(\ wxString\ topContentMargin\ )}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00471}00471\ \{}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00472}00472\ \ \ \ \ m\_topContentMargin-\/>ChangeValue(\ topContentMargin\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00473}00473\ \}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00474}00474\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00475}00475\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00476}00476\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00477}\mbox{\hyperlink{class_frame_defaults_panel_aa7c35a8e4d8d871f99c7a39dd4d0c692}{00477}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_frame_defaults_panel_aa7c35a8e4d8d871f99c7a39dd4d0c692}{FrameDefaultsPanel::SetBottomContentMargin}}(\ wxString\ bottomContentMargin\ )}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00478}00478\ \{}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00479}00479\ \ \ \ \ m\_bottomContentMargin-\/>ChangeValue(\ bottomContentMargin\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00480}00480\ \}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00481}00481\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00482}00482\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00483}00483\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00484}\mbox{\hyperlink{class_frame_defaults_panel_ad446a492c8922bf7d8d0042a45d9b7be}{00484}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_frame_defaults_panel_ad446a492c8922bf7d8d0042a45d9b7be}{FrameDefaultsPanel::SetLeftContentMargin}}(\ wxString\ leftContentMargin\ )}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00485}00485\ \{}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00486}00486\ \ \ \ \ m\_leftContentMargin-\/>ChangeValue(\ leftContentMargin\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00487}00487\ \}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00488}00488\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00489}00489\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00490}00490\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00491}\mbox{\hyperlink{class_frame_defaults_panel_a5cf2b7bee76190a3a713aa13075425c7}{00491}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_frame_defaults_panel_a5cf2b7bee76190a3a713aa13075425c7}{FrameDefaultsPanel::SetRightContentMargin}}(\ wxString\ rightPageMargin\ )}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00492}00492\ \{}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00493}00493\ \ \ \ \ m\_rightContentMargin-\/>ChangeValue(\ rightPageMargin\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00494}00494\ \}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00495}00495\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00496}00496\ }
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00497}\mbox{\hyperlink{class_frame_defaults_panel_a5b1e7490729879d7e6c74cd43bca48d0}{00497}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_frame_defaults_panel_a5b1e7490729879d7e6c74cd43bca48d0}{FrameDefaultsPanel::Update}}(\ )}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00498}00498\ \{}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00499}00499\ \ \ \ \ \mbox{\hyperlink{_defs_8cpp_a189005ab059b479306a5694321e570ac}{GetAlbumTreeCtrl}}(\ )-\/>\mbox{\hyperlink{class_album_tree_ctrl_a7ee5902522176923b7be1a0af85b8630}{Update}}(\ );}
+\DoxyCodeLine{\Hypertarget{_frame_defaults_panel_8cpp_source_l00500}00500\ \}}
+
+\end{DoxyCode}

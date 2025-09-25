@@ -1,0 +1,582 @@
+\doxysection{Design\+::Album Class Reference}
+\hypertarget{class_design_1_1_album}{}\label{class_design_1_1_album}\index{Design::Album@{Design::Album}}
+
+
+\doxylink{class_design_1_1_album}{Album} layout object; inherits from \doxylink{class_design_1_1_layout_base}{Layout\+Base}.  
+
+
+
+
+{\ttfamily \#include $<$Album.\+h$>$}
+
+Inheritance diagram for Design\+::Album\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_design_1_1_album}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_design_1_1_album_a40003ca137a725fe6325ada77479688b}{Album}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}node)
+\item 
+\mbox{\hyperlink{class_design_1_1_album_a6e281ab22f1607907ffc2d57fb86dd47}{\texorpdfstring{$\sim$}{\string~}\+Album}} ()
+\item 
+void \mbox{\hyperlink{class_design_1_1_album_aaa96d38bc56b9f7d3b3ef2fef9cccbb0}{Init\+Parameters}} ()
+\item 
+void \mbox{\hyperlink{class_design_1_1_album_aaf8b843923848eb0db6d64630ffd122a}{Set\+Hard\+Defaults}} ()
+\item 
+wx\+String \mbox{\hyperlink{class_design_1_1_album_a6235ade08a27e9e13898f1c78344900c}{Draw\+PDF}} ()
+\item 
+wx\+String \mbox{\hyperlink{class_design_1_1_album_aa0de4f1f413af36cbf2fbe205109ef9d}{Get\+Catalog}} ()
+\item 
+wx\+Colour \mbox{\hyperlink{class_design_1_1_album_a81cc1f8b2efad3a809ab933ca2baa9f8}{Get\+Color}} (\mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4}{Font\+Usage\+Type}} font\+Type)
+\item 
+wx\+String \mbox{\hyperlink{class_design_1_1_album_af775494ee153b133cfebf2a3fddcdaf5}{Get\+Doc\+Name}} ()
+\item 
+wx\+Font \mbox{\hyperlink{class_design_1_1_album_a6c2a059ffc714f5026984862e116ba8e}{Get\+Font}} (\mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4}{Font\+Usage\+Type}} font\+Type)
+\item 
+int \mbox{\hyperlink{class_design_1_1_album_a531da6f3f997e39665c09122d3f4d229}{Get\+Font\+Ndx}} (\mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4}{Font\+Usage\+Type}} font\+Type)
+\item 
+int \mbox{\hyperlink{class_design_1_1_album_a800b12610920c4ba7360bfc81240048c}{Get\+Font\+Ndx\+Preference}} (\mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4}{Font\+Usage\+Type}} font\+Type)
+\item 
+bool \mbox{\hyperlink{class_design_1_1_album_a8a60f3db96ecf900564d452eaf31b36a}{Is\+Default\+Font}} (\mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4}{Font\+Usage\+Type}} font\+Type, int ndx)
+\item 
+void \mbox{\hyperlink{class_design_1_1_album_a226ef66c444e8aab5afe43e6b1525e74}{Load\+Fonts}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}node)
+\item 
+void \mbox{\hyperlink{class_design_1_1_album_a7ff7f9833fc6c1b224ad369a6f2ea814}{Load\+Defaults}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}node)
+\item 
+void \mbox{\hyperlink{class_design_1_1_album_a5cbe7303e7534c88723a847780b24315}{Make\+Album}} ()
+\item 
+void \mbox{\hyperlink{class_design_1_1_album_a877e8d312931bc0252e09ae25612c7d4}{Make\+Default\+Font}} (\mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4}{Font\+Usage\+Type}} font\+Type)
+\item 
+void \mbox{\hyperlink{class_design_1_1_album_a9087407a98c415bc646de9e0a47f0b73}{Make\+PDFAlbum}} ()
+\item 
+void \mbox{\hyperlink{class_design_1_1_album_a2a02745965e84314effcbcf23591ebcf}{Save}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}xml\+Node)
+\item 
+void \mbox{\hyperlink{class_design_1_1_album_a6f71f557060c4fa70d747c4443f6ad50}{Save\+Defaults}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}parent)
+\item 
+void \mbox{\hyperlink{class_design_1_1_album_a4708ad1811ded91dcd5324cb51e07287}{Save\+Fonts}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}parent)
+\item 
+void \mbox{\hyperlink{class_design_1_1_album_aa7204e78807ad5d644e04b7766d77285}{Set\+Catalog}} (wx\+String str)
+\item 
+void \mbox{\hyperlink{class_design_1_1_album_a2b61e6431d4fc3428932511ec0148d9c}{Set\+Doc\+Name}} (wx\+String str)
+\item 
+void \mbox{\hyperlink{class_design_1_1_album_a3c637bec920627a2ffea6f83dbde03e2}{Set\+Font}} (\mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4}{Font\+Usage\+Type}} font\+Type, wx\+Font font, wx\+Colour color)
+\item 
+void \mbox{\hyperlink{class_design_1_1_album_a09f3ec195d3ebaba84447a3c1c5e5a16}{Set\+Font\+Ndx}} (\mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4}{Font\+Usage\+Type}} font\+Type, int ndx)
+\item 
+bool \mbox{\hyperlink{class_design_1_1_album_a98c2dbf326013374a661fe703305cefd}{Update\+Minimum\+Size}} ()
+\begin{DoxyCompactList}\small\item\em Update\+Minimum\+Size drills down to the lowest layout object with an actual size and begins calculating the min size of its parents as it progresses back up the heirarchy. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_design_1_1_album_a191f44768d88b2970393e23dea6574dd}{Update\+Positions}} ()
+\begin{DoxyCompactList}\small\item\em Does the layout for each child. Goes to the bottom of each child container object ( row, column, page ) and begin filling in position relative to the parent. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_design_1_1_album_afcd0f7587fb7525de9f3c34aac5bb206}{Update\+Sizes}} ()
+\item 
+\mbox{\hyperlink{namespace_design_a89f66276a25aed62bedc9fb9b5d35453}{Node\+Status}} \mbox{\hyperlink{class_design_1_1_album_a16b53adf8d3e0e36e3d39295743cd6fb}{Validate\+Node}} ()
+\item 
+\mbox{\hyperlink{class_design_1_1_page_defaults}{Page\+Defaults}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_design_1_1_album_aab582830a7794de1b4cb0bfb3313d9ed}{Album\+Page\+Defaults}} ()
+\item 
+\mbox{\hyperlink{class_design_1_1_frame_defaults}{Frame\+Defaults}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_design_1_1_album_a50679138665f8a77f5aab49fa525d423}{Album\+Frame\+Defaults}} ()
+\item 
+\mbox{\hyperlink{class_design_1_1_stamp_defaults}{Stamp\+Defaults}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_design_1_1_album_a9d35c8ab1e4a992410ceba2f0e3bd440}{Album\+Stamp\+Defaults}} ()
+\item 
+void \mbox{\hyperlink{class_design_1_1_album_adb6b8a11c2b877591260d94090d94a37}{Fixup\+Node}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_design_1_1_album_base}{Design\+::\+Album\+Base}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_design_1_1_album_base_a530465b8828abedac898bbd69e833487}{Album\+Base}} ()
+\item 
+\mbox{\hyperlink{class_design_1_1_album_base_a3016576760eafb6b3146e76f922e1918}{Album\+Base}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}ele)
+\item 
+\mbox{\hyperlink{class_design_1_1_album_base_a433e3ec1ccb0b888c8211e21c570597b}{\texorpdfstring{$\sim$}{\string~}\+Album\+Base}} ()
+\item 
+wx\+Array\+String \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_design_1_1_album_base_a8bda20daa3c938b69d404b97b12db49c}{Get\+Error\+Array}} ()
+\item 
+int \mbox{\hyperlink{class_design_1_1_album_base_ac2d47874f3c9a019f7adb8cea86bae1d}{Get\+Nbr\+Children}} ()
+\item 
+\mbox{\hyperlink{namespace_design_a89f66276a25aed62bedc9fb9b5d35453}{Node\+Status}} \mbox{\hyperlink{class_design_1_1_album_base_af9845cf93335b60ef21e659e3e774dc5}{Get\+Node\+Status}} ()
+\item 
+\mbox{\hyperlink{class_design_1_1_album_base}{Album\+Base}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_design_1_1_album_base_acd88e1be6258c5fe156f5b7488ae7872}{Get\+Parent}} ()
+\item 
+wx\+Tree\+Item\+Id \mbox{\hyperlink{class_design_1_1_album_base_a6ffebdbfe7c578390ab7a3463bd86117}{Get\+Tree\+Item\+Id}} ()
+\item 
+bool \mbox{\hyperlink{class_design_1_1_album_base_aba6c497c66c18265a72889dbe33e9e3c}{Has\+Children}} ()
+\item 
+bool \mbox{\hyperlink{class_design_1_1_album_base_afff9347fea3c19b4d04b8ab463a4f075}{Is\+Status\+OK}} ()
+\item 
+void \mbox{\hyperlink{class_design_1_1_album_base_a0add15e4630190b0273fbd7daec1f3bb}{Set\+Node\+Status}} (\mbox{\hyperlink{namespace_design_a89f66276a25aed62bedc9fb9b5d35453}{Node\+Status}} status)
+\item 
+void \mbox{\hyperlink{class_design_1_1_album_base_a09ea7099470ae62a3b28e3116b91b98f}{Set\+Tree\+Item\+Id}} (wx\+Tree\+Item\+Id id)
+\item 
+\mbox{\hyperlink{namespace_design_a89f66276a25aed62bedc9fb9b5d35453}{Node\+Status}} \mbox{\hyperlink{class_design_1_1_album_base_ac24a3f0735861b376ef954d712374afe}{Validate\+Children}} (\mbox{\hyperlink{class_design_1_1_album_base}{Album\+Base}} \texorpdfstring{$\ast$}{*}node)
+\item 
+double \mbox{\hyperlink{class_design_1_1_album_base_a03c3120af1bebbd4720ef2d2db496f9d}{Get\+Album\+Attribute\+Dbl}} (\mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364be}{Design\+::\+Album\+Attr\+Type}} type)
+\item 
+wx\+String \mbox{\hyperlink{class_design_1_1_album_base_aefb960e5aee2919e2764aea656bfede6}{Get\+Album\+Attribute\+Str}} (\mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364be}{Design\+::\+Album\+Attr\+Type}} type)
+\item 
+bool \mbox{\hyperlink{class_design_1_1_album_base_a2f9413b564d999d8f7a6e610cf6c08ad}{Get\+Album\+Attribute\+Bool}} (\mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364be}{Design\+::\+Album\+Attr\+Type}} type, bool def\+Val=false)
+\item 
+void \mbox{\hyperlink{class_design_1_1_album_base_a260fcb0ab052e4649640edb9a7f966e9}{Set\+Album\+Attribute\+Bool}} (\mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364be}{Design\+::\+Album\+Attr\+Type}} type, bool val)
+\item 
+void \mbox{\hyperlink{class_design_1_1_album_base_a6d924b1a4d369cefe2b965ece238f8cc}{Set\+Album\+Attribute\+Dbl}} (\mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364be}{Design\+::\+Album\+Attr\+Type}} type, double val)
+\item 
+void \mbox{\hyperlink{class_design_1_1_album_base_ac59ac03bf9b74c10a02e3baed9465954}{Set\+Album\+Attribute\+Str}} (\mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364be}{Design\+::\+Album\+Attr\+Type}} type, wx\+String val)
+\item 
+bool \mbox{\hyperlink{class_design_1_1_album_base_a44d500ac0d81626560d776ae9e2e9e1c}{Is\+Default\+Val}} (\mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364be}{Album\+Attr\+Type}} type)
+\item 
+bool \mbox{\hyperlink{class_design_1_1_album_base_ad1ca67ea800529f867c1764d3f1e09c0}{Is\+Default\+Val}} (\mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364be}{Album\+Attr\+Type}} type, wx\+String val)
+\item 
+\mbox{\hyperlink{class_design_1_1_defaults}{Defaults}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_design_1_1_album_base_a6a38d6d1ef8e78c5bc1610279088a021}{Get\+Defaults}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_design_1_1_x_m_l_base}{Design\+::\+XMLBase}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_design_1_1_x_m_l_base_afacfa5fbed1705ea3c7d740dfa8054a0}{XMLBase}} ()
+\item 
+\mbox{\hyperlink{class_design_1_1_x_m_l_base_a462f1f5dfe23cf45bdeb166e3a8138e5}{XMLBase}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}ele)
+\item 
+\mbox{\hyperlink{class_design_1_1_x_m_l_base_aa9839007403dd1cda4cbe35ea6ed1298}{\texorpdfstring{$\sim$}{\string~}\+XMLBase}} ()
+\item 
+\mbox{\hyperlink{class_design_1_1_attribute}{Attribute}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_design_1_1_x_m_l_base_a37bde917fa3f9fcdadbf97649e327381}{Attribute\+Item}} (int ndx)
+\item 
+void \mbox{\hyperlink{class_design_1_1_x_m_l_base_a98b25d070d903b4e96a64658376d1acd}{Delete\+Attribute}} (wx\+String name)
+\item 
+void \mbox{\hyperlink{class_design_1_1_x_m_l_base_a0ebf4b7915b33715389b8136b8ed606d}{Delete\+Attribute}} (\mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364be}{Album\+Attr\+Type}} type)
+\item 
+\mbox{\hyperlink{class_design_1_1_attribute}{Attribute}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_design_1_1_x_m_l_base_a7ae61554e074d752f7d0c8813ba21fa1}{Find\+Attr}} (wx\+String name)
+\item 
+wx\+String \mbox{\hyperlink{class_design_1_1_x_m_l_base_a70bbb4ae46c9f5dcca1aa0c4e7c80f3e}{Get\+Attr\+Str}} (wx\+String name)
+\item 
+wx\+String \mbox{\hyperlink{class_design_1_1_x_m_l_base_a0bbee0f1ed86d6f65e4bca2f1b55ff27}{Get\+Attr\+Str}} (\mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364be}{Album\+Attr\+Type}} type)
+\item 
+double \mbox{\hyperlink{class_design_1_1_x_m_l_base_ad99fb6ed75f8f26486ac5d55f38f10ed}{Get\+Attr\+Dbl}} (\mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364be}{Album\+Attr\+Type}} type, double def\+Val=0.\+0)
+\item 
+double \mbox{\hyperlink{class_design_1_1_x_m_l_base_a92a55ab145df1b33667110c4e7d2c8be}{Get\+Attr\+Dbl}} (wx\+String name, double def\+Val=0.\+0)
+\item 
+bool \mbox{\hyperlink{class_design_1_1_x_m_l_base_add9675b11893b9392956f45cc2c6f8b3}{Get\+Attr\+Bool}} (wx\+String name, bool def\+Val=false)
+\item 
+bool \mbox{\hyperlink{class_design_1_1_x_m_l_base_a9c1af26195c99343c2c84125eb1f555d}{Get\+Attr\+Bool}} (\mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364be}{Album\+Attr\+Type}} type, bool def\+Val=false)
+\item 
+int \mbox{\hyperlink{class_design_1_1_x_m_l_base_a02b8a030d63ab07527bdf777f855cbcc}{Get\+Line\+Number}} ()
+\item 
+int \mbox{\hyperlink{class_design_1_1_x_m_l_base_a9bc16e3525857b424e870fa8039172b5}{Get\+Nbr\+Attr}} ()
+\item 
+int \mbox{\hyperlink{class_design_1_1_x_m_l_base_a9b0f611f1cc6bffada926da3c4673097}{Get\+Nbr\+Children}} ()
+\item 
+\mbox{\hyperlink{namespace_design_a3b29aaf2cf27207bcb313e24b827f8b1}{Album\+Base\+Type}} \mbox{\hyperlink{class_design_1_1_x_m_l_base_a940850f6b4d0a4600b41e6be83c1803b}{Get\+Node\+Type}} ()
+\item 
+\mbox{\hyperlink{namespace_design_a89f66276a25aed62bedc9fb9b5d35453}{Node\+Status}} \mbox{\hyperlink{class_design_1_1_x_m_l_base_ab31744f9c81b849de4c8a82371beadbf}{Get\+Node\+Status}} ()
+\item 
+wx\+String \mbox{\hyperlink{class_design_1_1_x_m_l_base_a6735ca087e75f39623eb59f12da2ebb5}{Get\+Object\+Name}} ()
+\item 
+wx\+String \mbox{\hyperlink{class_design_1_1_x_m_l_base_a6b027d5f45d262f835313031e13bb196}{Get\+Object\+Text}} ()
+\item 
+wx\+String \mbox{\hyperlink{class_design_1_1_x_m_l_base_a25cdfa3b1ec13e96a381eb24f95201e6}{Get\+Text}} ()
+\item 
+bool \mbox{\hyperlink{class_design_1_1_x_m_l_base_a450b66a4f1566f43b32c81ef0bcf45dd}{Is\+Equal}} (\mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364be}{Album\+Attr\+Type}} type, wx\+String val)
+\item 
+bool \mbox{\hyperlink{class_design_1_1_x_m_l_base_a29e3cd05805a976c3286d1f7e99cc139}{Is\+Equal\+Dbl}} (\mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364be}{Album\+Attr\+Type}} type, double val)
+\item 
+bool \mbox{\hyperlink{class_design_1_1_x_m_l_base_a6e7061576df67a39ea471c96212d1520}{Is\+Node\+Type}} (\mbox{\hyperlink{namespace_design_a3b29aaf2cf27207bcb313e24b827f8b1}{Album\+Base\+Type}} type)
+\item 
+bool \mbox{\hyperlink{class_design_1_1_x_m_l_base_ab9a86d5933b9c9d82b8ca1670a714910}{Load\+Attributes}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}this\+Object)
+\item 
+void \mbox{\hyperlink{class_design_1_1_x_m_l_base_a518a9e39c69db48407de710e7a9549fc}{Set\+Attribute}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}xml\+Node, \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364be}{Album\+Attr\+Type}} type)
+\item 
+void \mbox{\hyperlink{class_design_1_1_x_m_l_base_a75812ea7e87f0bc2e8bc74ae60ae2eed}{Set\+Attr\+Str}} (wx\+String name, wx\+String val)
+\item 
+void \mbox{\hyperlink{class_design_1_1_x_m_l_base_afae136aefb2871cf78bfd5cbf6b20477}{Set\+Attr\+Str}} (\mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364be}{Album\+Attr\+Type}} type, wx\+String val)
+\item 
+void \mbox{\hyperlink{class_design_1_1_x_m_l_base_a1fca237eebb5a4f35c35490bcf58edea}{Set\+Attr\+Bool}} (wx\+String name, bool val)
+\item 
+void \mbox{\hyperlink{class_design_1_1_x_m_l_base_adac853d61447fe1e2d61d2ebdc054d76}{Set\+Attr\+Bool}} (\mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364be}{Album\+Attr\+Type}} type, bool val)
+\item 
+void \mbox{\hyperlink{class_design_1_1_x_m_l_base_a673243956065c65eaf56093c3b235867}{Set\+Attr\+Dbl}} (\mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364be}{Album\+Attr\+Type}} type, double val)
+\item 
+void \mbox{\hyperlink{class_design_1_1_x_m_l_base_ac3e1b1715d621feed20bf1529fa423c2}{Set\+Line\+Number}} (int nbr)
+\item 
+void \mbox{\hyperlink{class_design_1_1_x_m_l_base_ab608dc14ff352cd0710ba57a026f9d62}{Set\+Object\+Name}} (wx\+String name)
+\item 
+void \mbox{\hyperlink{class_design_1_1_x_m_l_base_aaccab0bca070b88eb0b19305050194b7}{Set\+Object\+Text}} (wx\+String text)
+\item 
+void \mbox{\hyperlink{class_design_1_1_x_m_l_base_ae9d5de0a91b77ce60ccfbe92ff86a7a4}{Set\+Node\+Type}} (\mbox{\hyperlink{namespace_design_a3b29aaf2cf27207bcb313e24b827f8b1}{Album\+Base\+Type}} type)
+\item 
+bool \mbox{\hyperlink{class_design_1_1_x_m_l_base_aa735c2d6fa7d3b9a84f34ef591218cf9}{Is\+Status\+OK}} ()
+\item 
+void \mbox{\hyperlink{class_design_1_1_x_m_l_base_adc0b64f4686960f9dd18e0e8ee7933bf}{Set\+Node\+Status}} (\mbox{\hyperlink{namespace_design_a89f66276a25aed62bedc9fb9b5d35453}{Node\+Status}} status)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_design_1_1_album_base}{Design\+::\+Album\+Base}}}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_design_1_1_album_base_a0a5a59b5d89f4ca24fca07a3a47282f3}{Set\+Defaults}} (\mbox{\hyperlink{class_design_1_1_defaults}{Defaults}} \texorpdfstring{$\ast$}{*}defaults)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_design_1_1_x_m_l_base}{Design\+::\+XMLBase}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespace_design_a8684e8801d2302786d022161ace0aa67}{Layout\+Attribute\+Array}} \mbox{\hyperlink{class_design_1_1_x_m_l_base_a1e5ef55cab8c287eea12d5afaaa9625d}{m\+\_\+attr\+Array}}
+\item 
+wx\+String \mbox{\hyperlink{class_design_1_1_x_m_l_base_ab71dd09cc074fc7b4dac7712078579fb}{m\+\_\+text}}
+\item 
+\mbox{\hyperlink{namespace_design_a89f66276a25aed62bedc9fb9b5d35453}{Node\+Status}} \mbox{\hyperlink{class_design_1_1_x_m_l_base_adafcec9e49f0759683f5fb8c09268414}{m\+\_\+node\+Valid}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{class_design_1_1_album}{Album} layout object; inherits from \doxylink{class_design_1_1_layout_base}{Layout\+Base}. 
+
+Definition at line \mbox{\hyperlink{_album_8h_source_l00045}{45}} of file \mbox{\hyperlink{_album_8h_source}{Album.\+h}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_design_1_1_album_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_design_1_1_album_a40003ca137a725fe6325ada77479688b}\index{Design::Album@{Design::Album}!Album@{Album}}
+\index{Album@{Album}!Design::Album@{Design::Album}}
+\doxysubsubsection{\texorpdfstring{Album()}{Album()}}
+{\footnotesize\ttfamily \label{class_design_1_1_album_a40003ca137a725fe6325ada77479688b} 
+Design\+::\+Album\+::\+Album (\begin{DoxyParamCaption}\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{node}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_8cpp_source_l00055}{55}} of file \mbox{\hyperlink{_album_8cpp_source}{Album.\+cpp}}.
+
+\Hypertarget{class_design_1_1_album_a6e281ab22f1607907ffc2d57fb86dd47}\index{Design::Album@{Design::Album}!````~Album@{\texorpdfstring{$\sim$}{\string~}Album}}
+\index{````~Album@{\texorpdfstring{$\sim$}{\string~}Album}!Design::Album@{Design::Album}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Album()}{\string~Album()}}
+{\footnotesize\ttfamily \label{class_design_1_1_album_a6e281ab22f1607907ffc2d57fb86dd47} 
+Design\+::\+Album\+::\texorpdfstring{$\sim$}{\string~}\+Album (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_album_8h_source_l00052}{52}} of file \mbox{\hyperlink{_album_8h_source}{Album.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_design_1_1_album_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_design_1_1_album_a50679138665f8a77f5aab49fa525d423}\index{Design::Album@{Design::Album}!AlbumFrameDefaults@{AlbumFrameDefaults}}
+\index{AlbumFrameDefaults@{AlbumFrameDefaults}!Design::Album@{Design::Album}}
+\doxysubsubsection{\texorpdfstring{AlbumFrameDefaults()}{AlbumFrameDefaults()}}
+{\footnotesize\ttfamily \label{class_design_1_1_album_a50679138665f8a77f5aab49fa525d423} 
+\mbox{\hyperlink{class_design_1_1_frame_defaults}{Frame\+Defaults}} \texorpdfstring{$\ast$}{*} Design\+::\+Album\+::\+Album\+Frame\+Defaults (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_album_8h_source_l00137}{137}} of file \mbox{\hyperlink{_album_8h_source}{Album.\+h}}.
+
+\Hypertarget{class_design_1_1_album_aab582830a7794de1b4cb0bfb3313d9ed}\index{Design::Album@{Design::Album}!AlbumPageDefaults@{AlbumPageDefaults}}
+\index{AlbumPageDefaults@{AlbumPageDefaults}!Design::Album@{Design::Album}}
+\doxysubsubsection{\texorpdfstring{AlbumPageDefaults()}{AlbumPageDefaults()}}
+{\footnotesize\ttfamily \label{class_design_1_1_album_aab582830a7794de1b4cb0bfb3313d9ed} 
+\mbox{\hyperlink{class_design_1_1_page_defaults}{Page\+Defaults}} \texorpdfstring{$\ast$}{*} Design\+::\+Album\+::\+Album\+Page\+Defaults (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_album_8h_source_l00133}{133}} of file \mbox{\hyperlink{_album_8h_source}{Album.\+h}}.
+
+\Hypertarget{class_design_1_1_album_a9d35c8ab1e4a992410ceba2f0e3bd440}\index{Design::Album@{Design::Album}!AlbumStampDefaults@{AlbumStampDefaults}}
+\index{AlbumStampDefaults@{AlbumStampDefaults}!Design::Album@{Design::Album}}
+\doxysubsubsection{\texorpdfstring{AlbumStampDefaults()}{AlbumStampDefaults()}}
+{\footnotesize\ttfamily \label{class_design_1_1_album_a9d35c8ab1e4a992410ceba2f0e3bd440} 
+\mbox{\hyperlink{class_design_1_1_stamp_defaults}{Stamp\+Defaults}} \texorpdfstring{$\ast$}{*} Design\+::\+Album\+::\+Album\+Stamp\+Defaults (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_album_8h_source_l00141}{141}} of file \mbox{\hyperlink{_album_8h_source}{Album.\+h}}.
+
+\Hypertarget{class_design_1_1_album_a6235ade08a27e9e13898f1c78344900c}\index{Design::Album@{Design::Album}!DrawPDF@{DrawPDF}}
+\index{DrawPDF@{DrawPDF}!Design::Album@{Design::Album}}
+\doxysubsubsection{\texorpdfstring{DrawPDF()}{DrawPDF()}}
+{\footnotesize\ttfamily \label{class_design_1_1_album_a6235ade08a27e9e13898f1c78344900c} 
+wx\+String Design\+::\+Album\+::\+Draw\+PDF (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_8cpp_source_l00070}{70}} of file \mbox{\hyperlink{_album_8cpp_source}{Album.\+cpp}}.
+
+\Hypertarget{class_design_1_1_album_adb6b8a11c2b877591260d94090d94a37}\index{Design::Album@{Design::Album}!FixupNode@{FixupNode}}
+\index{FixupNode@{FixupNode}!Design::Album@{Design::Album}}
+\doxysubsubsection{\texorpdfstring{FixupNode()}{FixupNode()}}
+{\footnotesize\ttfamily \label{class_design_1_1_album_adb6b8a11c2b877591260d94090d94a37} 
+void Design\+::\+Album\+::\+Fixup\+Node (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_8cpp_source_l00269}{269}} of file \mbox{\hyperlink{_album_8cpp_source}{Album.\+cpp}}.
+
+\Hypertarget{class_design_1_1_album_aa0de4f1f413af36cbf2fbe205109ef9d}\index{Design::Album@{Design::Album}!GetCatalog@{GetCatalog}}
+\index{GetCatalog@{GetCatalog}!Design::Album@{Design::Album}}
+\doxysubsubsection{\texorpdfstring{GetCatalog()}{GetCatalog()}}
+{\footnotesize\ttfamily \label{class_design_1_1_album_aa0de4f1f413af36cbf2fbe205109ef9d} 
+wx\+String Design\+::\+Album\+::\+Get\+Catalog (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_8cpp_source_l00150}{150}} of file \mbox{\hyperlink{_album_8cpp_source}{Album.\+cpp}}.
+
+\Hypertarget{class_design_1_1_album_a81cc1f8b2efad3a809ab933ca2baa9f8}\index{Design::Album@{Design::Album}!GetColor@{GetColor}}
+\index{GetColor@{GetColor}!Design::Album@{Design::Album}}
+\doxysubsubsection{\texorpdfstring{GetColor()}{GetColor()}}
+{\footnotesize\ttfamily \label{class_design_1_1_album_a81cc1f8b2efad3a809ab933ca2baa9f8} 
+wx\+Colour Design\+::\+Album\+::\+Get\+Color (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4}{Font\+Usage\+Type}}}]{font\+Type}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_8cpp_source_l00161}{161}} of file \mbox{\hyperlink{_album_8cpp_source}{Album.\+cpp}}.
+
+\Hypertarget{class_design_1_1_album_af775494ee153b133cfebf2a3fddcdaf5}\index{Design::Album@{Design::Album}!GetDocName@{GetDocName}}
+\index{GetDocName@{GetDocName}!Design::Album@{Design::Album}}
+\doxysubsubsection{\texorpdfstring{GetDocName()}{GetDocName()}}
+{\footnotesize\ttfamily \label{class_design_1_1_album_af775494ee153b133cfebf2a3fddcdaf5} 
+wx\+String Design\+::\+Album\+::\+Get\+Doc\+Name (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_8cpp_source_l00180}{180}} of file \mbox{\hyperlink{_album_8cpp_source}{Album.\+cpp}}.
+
+\Hypertarget{class_design_1_1_album_a6c2a059ffc714f5026984862e116ba8e}\index{Design::Album@{Design::Album}!GetFont@{GetFont}}
+\index{GetFont@{GetFont}!Design::Album@{Design::Album}}
+\doxysubsubsection{\texorpdfstring{GetFont()}{GetFont()}}
+{\footnotesize\ttfamily \label{class_design_1_1_album_a6c2a059ffc714f5026984862e116ba8e} 
+wx\+Font Design\+::\+Album\+::\+Get\+Font (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4}{Font\+Usage\+Type}}}]{font\+Type}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_8cpp_source_l00186}{186}} of file \mbox{\hyperlink{_album_8cpp_source}{Album.\+cpp}}.
+
+\Hypertarget{class_design_1_1_album_a531da6f3f997e39665c09122d3f4d229}\index{Design::Album@{Design::Album}!GetFontNdx@{GetFontNdx}}
+\index{GetFontNdx@{GetFontNdx}!Design::Album@{Design::Album}}
+\doxysubsubsection{\texorpdfstring{GetFontNdx()}{GetFontNdx()}}
+{\footnotesize\ttfamily \label{class_design_1_1_album_a531da6f3f997e39665c09122d3f4d229} 
+int Design\+::\+Album\+::\+Get\+Font\+Ndx (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4}{Font\+Usage\+Type}}}]{font\+Type}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_8cpp_source_l00193}{193}} of file \mbox{\hyperlink{_album_8cpp_source}{Album.\+cpp}}.
+
+\Hypertarget{class_design_1_1_album_a800b12610920c4ba7360bfc81240048c}\index{Design::Album@{Design::Album}!GetFontNdxPreference@{GetFontNdxPreference}}
+\index{GetFontNdxPreference@{GetFontNdxPreference}!Design::Album@{Design::Album}}
+\doxysubsubsection{\texorpdfstring{GetFontNdxPreference()}{GetFontNdxPreference()}}
+{\footnotesize\ttfamily \label{class_design_1_1_album_a800b12610920c4ba7360bfc81240048c} 
+int Design\+::\+Album\+::\+Get\+Font\+Ndx\+Preference (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4}{Font\+Usage\+Type}}}]{font\+Type}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_8cpp_source_l00208}{208}} of file \mbox{\hyperlink{_album_8cpp_source}{Album.\+cpp}}.
+
+\Hypertarget{class_design_1_1_album_aaa96d38bc56b9f7d3b3ef2fef9cccbb0}\index{Design::Album@{Design::Album}!InitParameters@{InitParameters}}
+\index{InitParameters@{InitParameters}!Design::Album@{Design::Album}}
+\doxysubsubsection{\texorpdfstring{InitParameters()}{InitParameters()}}
+{\footnotesize\ttfamily \label{class_design_1_1_album_aaa96d38bc56b9f7d3b3ef2fef9cccbb0} 
+void Design\+::\+Album\+::\+Init\+Parameters (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_8cpp_source_l00064}{64}} of file \mbox{\hyperlink{_album_8cpp_source}{Album.\+cpp}}.
+
+\Hypertarget{class_design_1_1_album_a8a60f3db96ecf900564d452eaf31b36a}\index{Design::Album@{Design::Album}!IsDefaultFont@{IsDefaultFont}}
+\index{IsDefaultFont@{IsDefaultFont}!Design::Album@{Design::Album}}
+\doxysubsubsection{\texorpdfstring{IsDefaultFont()}{IsDefaultFont()}}
+{\footnotesize\ttfamily \label{class_design_1_1_album_a8a60f3db96ecf900564d452eaf31b36a} 
+bool Design\+::\+Album\+::\+Is\+Default\+Font (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4}{Font\+Usage\+Type}}}]{font\+Type}{, }\item[{int}]{ndx}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_8cpp_source_l00215}{215}} of file \mbox{\hyperlink{_album_8cpp_source}{Album.\+cpp}}.
+
+\Hypertarget{class_design_1_1_album_a7ff7f9833fc6c1b224ad369a6f2ea814}\index{Design::Album@{Design::Album}!LoadDefaults@{LoadDefaults}}
+\index{LoadDefaults@{LoadDefaults}!Design::Album@{Design::Album}}
+\doxysubsubsection{\texorpdfstring{LoadDefaults()}{LoadDefaults()}}
+{\footnotesize\ttfamily \label{class_design_1_1_album_a7ff7f9833fc6c1b224ad369a6f2ea814} 
+void Design\+::\+Album\+::\+Load\+Defaults (\begin{DoxyParamCaption}\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{node}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_8cpp_source_l00449}{449}} of file \mbox{\hyperlink{_album_8cpp_source}{Album.\+cpp}}.
+
+\Hypertarget{class_design_1_1_album_a226ef66c444e8aab5afe43e6b1525e74}\index{Design::Album@{Design::Album}!LoadFonts@{LoadFonts}}
+\index{LoadFonts@{LoadFonts}!Design::Album@{Design::Album}}
+\doxysubsubsection{\texorpdfstring{LoadFonts()}{LoadFonts()}}
+{\footnotesize\ttfamily \label{class_design_1_1_album_a226ef66c444e8aab5afe43e6b1525e74} 
+void Design\+::\+Album\+::\+Load\+Fonts (\begin{DoxyParamCaption}\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{node}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_design_1_1_album_base_a134710ecf775fc9dca8139e7bca47e07}{Design\+::\+Album\+Base}}.
+
+
+
+Definition at line \mbox{\hyperlink{_album_8cpp_source_l00222}{222}} of file \mbox{\hyperlink{_album_8cpp_source}{Album.\+cpp}}.
+
+\Hypertarget{class_design_1_1_album_a5cbe7303e7534c88723a847780b24315}\index{Design::Album@{Design::Album}!MakeAlbum@{MakeAlbum}}
+\index{MakeAlbum@{MakeAlbum}!Design::Album@{Design::Album}}
+\doxysubsubsection{\texorpdfstring{MakeAlbum()}{MakeAlbum()}}
+{\footnotesize\ttfamily \label{class_design_1_1_album_a5cbe7303e7534c88723a847780b24315} 
+void Design\+::\+Album\+::\+Make\+Album (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_8cpp_source_l00508}{508}} of file \mbox{\hyperlink{_album_8cpp_source}{Album.\+cpp}}.
+
+\Hypertarget{class_design_1_1_album_a877e8d312931bc0252e09ae25612c7d4}\index{Design::Album@{Design::Album}!MakeDefaultFont@{MakeDefaultFont}}
+\index{MakeDefaultFont@{MakeDefaultFont}!Design::Album@{Design::Album}}
+\doxysubsubsection{\texorpdfstring{MakeDefaultFont()}{MakeDefaultFont()}}
+{\footnotesize\ttfamily \label{class_design_1_1_album_a877e8d312931bc0252e09ae25612c7d4} 
+void Design\+::\+Album\+::\+Make\+Default\+Font (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4}{Font\+Usage\+Type}}}]{font\+Type}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_8cpp_source_l00517}{517}} of file \mbox{\hyperlink{_album_8cpp_source}{Album.\+cpp}}.
+
+\Hypertarget{class_design_1_1_album_a9087407a98c415bc646de9e0a47f0b73}\index{Design::Album@{Design::Album}!MakePDFAlbum@{MakePDFAlbum}}
+\index{MakePDFAlbum@{MakePDFAlbum}!Design::Album@{Design::Album}}
+\doxysubsubsection{\texorpdfstring{MakePDFAlbum()}{MakePDFAlbum()}}
+{\footnotesize\ttfamily \label{class_design_1_1_album_a9087407a98c415bc646de9e0a47f0b73} 
+void Design\+::\+Album\+::\+Make\+PDFAlbum (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_8cpp_source_l00524}{524}} of file \mbox{\hyperlink{_album_8cpp_source}{Album.\+cpp}}.
+
+\Hypertarget{class_design_1_1_album_a2a02745965e84314effcbcf23591ebcf}\index{Design::Album@{Design::Album}!Save@{Save}}
+\index{Save@{Save}!Design::Album@{Design::Album}}
+\doxysubsubsection{\texorpdfstring{Save()}{Save()}}
+{\footnotesize\ttfamily \label{class_design_1_1_album_a2a02745965e84314effcbcf23591ebcf} 
+void Design\+::\+Album\+::\+Save (\begin{DoxyParamCaption}\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{xml\+Node}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_design_1_1_x_m_l_base_a73e73e902b705590fc89b822c19c188d}{Design\+::\+XMLBase}}.
+
+
+
+Definition at line \mbox{\hyperlink{_album_8cpp_source_l00532}{532}} of file \mbox{\hyperlink{_album_8cpp_source}{Album.\+cpp}}.
+
+\Hypertarget{class_design_1_1_album_a6f71f557060c4fa70d747c4443f6ad50}\index{Design::Album@{Design::Album}!SaveDefaults@{SaveDefaults}}
+\index{SaveDefaults@{SaveDefaults}!Design::Album@{Design::Album}}
+\doxysubsubsection{\texorpdfstring{SaveDefaults()}{SaveDefaults()}}
+{\footnotesize\ttfamily \label{class_design_1_1_album_a6f71f557060c4fa70d747c4443f6ad50} 
+void Design\+::\+Album\+::\+Save\+Defaults (\begin{DoxyParamCaption}\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{parent}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_8cpp_source_l00560}{560}} of file \mbox{\hyperlink{_album_8cpp_source}{Album.\+cpp}}.
+
+\Hypertarget{class_design_1_1_album_a4708ad1811ded91dcd5324cb51e07287}\index{Design::Album@{Design::Album}!SaveFonts@{SaveFonts}}
+\index{SaveFonts@{SaveFonts}!Design::Album@{Design::Album}}
+\doxysubsubsection{\texorpdfstring{SaveFonts()}{SaveFonts()}}
+{\footnotesize\ttfamily \label{class_design_1_1_album_a4708ad1811ded91dcd5324cb51e07287} 
+void Design\+::\+Album\+::\+Save\+Fonts (\begin{DoxyParamCaption}\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{parent}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_8cpp_source_l00590}{590}} of file \mbox{\hyperlink{_album_8cpp_source}{Album.\+cpp}}.
+
+\Hypertarget{class_design_1_1_album_aa7204e78807ad5d644e04b7766d77285}\index{Design::Album@{Design::Album}!SetCatalog@{SetCatalog}}
+\index{SetCatalog@{SetCatalog}!Design::Album@{Design::Album}}
+\doxysubsubsection{\texorpdfstring{SetCatalog()}{SetCatalog()}}
+{\footnotesize\ttfamily \label{class_design_1_1_album_aa7204e78807ad5d644e04b7766d77285} 
+void Design\+::\+Album\+::\+Set\+Catalog (\begin{DoxyParamCaption}\item[{wx\+String}]{str}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_8cpp_source_l00652}{652}} of file \mbox{\hyperlink{_album_8cpp_source}{Album.\+cpp}}.
+
+\Hypertarget{class_design_1_1_album_a2b61e6431d4fc3428932511ec0148d9c}\index{Design::Album@{Design::Album}!SetDocName@{SetDocName}}
+\index{SetDocName@{SetDocName}!Design::Album@{Design::Album}}
+\doxysubsubsection{\texorpdfstring{SetDocName()}{SetDocName()}}
+{\footnotesize\ttfamily \label{class_design_1_1_album_a2b61e6431d4fc3428932511ec0148d9c} 
+void Design\+::\+Album\+::\+Set\+Doc\+Name (\begin{DoxyParamCaption}\item[{wx\+String}]{str}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_8cpp_source_l00683}{683}} of file \mbox{\hyperlink{_album_8cpp_source}{Album.\+cpp}}.
+
+\Hypertarget{class_design_1_1_album_a3c637bec920627a2ffea6f83dbde03e2}\index{Design::Album@{Design::Album}!SetFont@{SetFont}}
+\index{SetFont@{SetFont}!Design::Album@{Design::Album}}
+\doxysubsubsection{\texorpdfstring{SetFont()}{SetFont()}}
+{\footnotesize\ttfamily \label{class_design_1_1_album_a3c637bec920627a2ffea6f83dbde03e2} 
+void Design\+::\+Album\+::\+Set\+Font (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4}{Font\+Usage\+Type}}}]{font\+Type}{, }\item[{wx\+Font}]{font}{, }\item[{wx\+Colour}]{color}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_8cpp_source_l00689}{689}} of file \mbox{\hyperlink{_album_8cpp_source}{Album.\+cpp}}.
+
+\Hypertarget{class_design_1_1_album_a09f3ec195d3ebaba84447a3c1c5e5a16}\index{Design::Album@{Design::Album}!SetFontNdx@{SetFontNdx}}
+\index{SetFontNdx@{SetFontNdx}!Design::Album@{Design::Album}}
+\doxysubsubsection{\texorpdfstring{SetFontNdx()}{SetFontNdx()}}
+{\footnotesize\ttfamily \label{class_design_1_1_album_a09f3ec195d3ebaba84447a3c1c5e5a16} 
+void Design\+::\+Album\+::\+Set\+Font\+Ndx (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4}{Font\+Usage\+Type}}}]{font\+Type}{, }\item[{int}]{ndx}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_8cpp_source_l00704}{704}} of file \mbox{\hyperlink{_album_8cpp_source}{Album.\+cpp}}.
+
+\Hypertarget{class_design_1_1_album_aaf8b843923848eb0db6d64630ffd122a}\index{Design::Album@{Design::Album}!SetHardDefaults@{SetHardDefaults}}
+\index{SetHardDefaults@{SetHardDefaults}!Design::Album@{Design::Album}}
+\doxysubsubsection{\texorpdfstring{SetHardDefaults()}{SetHardDefaults()}}
+{\footnotesize\ttfamily \label{class_design_1_1_album_aaf8b843923848eb0db6d64630ffd122a} 
+void Design\+::\+Album\+::\+Set\+Hard\+Defaults (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_design_1_1_album_a98c2dbf326013374a661fe703305cefd}\index{Design::Album@{Design::Album}!UpdateMinimumSize@{UpdateMinimumSize}}
+\index{UpdateMinimumSize@{UpdateMinimumSize}!Design::Album@{Design::Album}}
+\doxysubsubsection{\texorpdfstring{UpdateMinimumSize()}{UpdateMinimumSize()}}
+{\footnotesize\ttfamily \label{class_design_1_1_album_a98c2dbf326013374a661fe703305cefd} 
+bool Design\+::\+Album\+::\+Update\+Minimum\+Size (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Update\+Minimum\+Size drills down to the lowest layout object with an actual size and begins calculating the min size of its parents as it progresses back up the heirarchy. 
+
+
+
+Definition at line \mbox{\hyperlink{_album_8cpp_source_l00711}{711}} of file \mbox{\hyperlink{_album_8cpp_source}{Album.\+cpp}}.
+
+\Hypertarget{class_design_1_1_album_a191f44768d88b2970393e23dea6574dd}\index{Design::Album@{Design::Album}!UpdatePositions@{UpdatePositions}}
+\index{UpdatePositions@{UpdatePositions}!Design::Album@{Design::Album}}
+\doxysubsubsection{\texorpdfstring{UpdatePositions()}{UpdatePositions()}}
+{\footnotesize\ttfamily \label{class_design_1_1_album_a191f44768d88b2970393e23dea6574dd} 
+void Design\+::\+Album\+::\+Update\+Positions (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Does the layout for each child. Goes to the bottom of each child container object ( row, column, page ) and begin filling in position relative to the parent. 
+
+
+
+Definition at line \mbox{\hyperlink{_album_8cpp_source_l00743}{743}} of file \mbox{\hyperlink{_album_8cpp_source}{Album.\+cpp}}.
+
+\Hypertarget{class_design_1_1_album_afcd0f7587fb7525de9f3c34aac5bb206}\index{Design::Album@{Design::Album}!UpdateSizes@{UpdateSizes}}
+\index{UpdateSizes@{UpdateSizes}!Design::Album@{Design::Album}}
+\doxysubsubsection{\texorpdfstring{UpdateSizes()}{UpdateSizes()}}
+{\footnotesize\ttfamily \label{class_design_1_1_album_afcd0f7587fb7525de9f3c34aac5bb206} 
+void Design\+::\+Album\+::\+Update\+Sizes (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_8cpp_source_l00762}{762}} of file \mbox{\hyperlink{_album_8cpp_source}{Album.\+cpp}}.
+
+\Hypertarget{class_design_1_1_album_a16b53adf8d3e0e36e3d39295743cd6fb}\index{Design::Album@{Design::Album}!ValidateNode@{ValidateNode}}
+\index{ValidateNode@{ValidateNode}!Design::Album@{Design::Album}}
+\doxysubsubsection{\texorpdfstring{ValidateNode()}{ValidateNode()}}
+{\footnotesize\ttfamily \label{class_design_1_1_album_a16b53adf8d3e0e36e3d39295743cd6fb} 
+\mbox{\hyperlink{namespace_design_a89f66276a25aed62bedc9fb9b5d35453}{Node\+Status}} Design\+::\+Album\+::\+Validate\+Node (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_design_1_1_album_base_ab9c5a39a0dbff42d87b0759a6d442edd}{Design\+::\+Album\+Base}}.
+
+
+
+Definition at line \mbox{\hyperlink{_album_8cpp_source_l00782}{782}} of file \mbox{\hyperlink{_album_8cpp_source}{Album.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/femon/\+Development/wx/clone\+Test/\+Stamp\+Tool/src/design/\mbox{\hyperlink{_album_8h}{Album.\+h}}\item 
+C\+:/\+Users/femon/\+Development/wx/clone\+Test/\+Stamp\+Tool/src/design/\mbox{\hyperlink{_album_8cpp}{Album.\+cpp}}\end{DoxyCompactItemize}

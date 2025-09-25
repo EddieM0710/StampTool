@@ -1,0 +1,82 @@
+\doxysection{Volume\+List.\+h}
+\hypertarget{_volume_list_8h_source}{}\label{_volume_list_8h_source}\index{C:/Users/femon/Development/wx/cloneTest/StampTool/src/utils/VolumeList.h@{C:/Users/femon/Development/wx/cloneTest/StampTool/src/utils/VolumeList.h}}
+\mbox{\hyperlink{_volume_list_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_volume_list_8h_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{_volume_list_8h_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_volume_list_8h_source_l00025}00025\ \textcolor{preprocessor}{\#ifndef\ VolumeList\_H}}
+\DoxyCodeLine{\Hypertarget{_volume_list_8h_source_l00026}00026\ \textcolor{preprocessor}{\#define\ VolumeList\_H}}
+\DoxyCodeLine{\Hypertarget{_volume_list_8h_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_volume_list_8h_source_l00028}00028\ \textcolor{preprocessor}{\#include\ "{}wx/xml/xml.h"{}}}
+\DoxyCodeLine{\Hypertarget{_volume_list_8h_source_l00029}00029\ \textcolor{preprocessor}{\#include\ <wx/string.h>}}
+\DoxyCodeLine{\Hypertarget{_volume_list_8h_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{_volume_list_8h_source_l00031}00031\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_defs_8h}{Defs.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_volume_list_8h_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{_volume_list_8h_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_volume_list_8h_source_l00034}00034\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_volume_8h}{utils/Volume.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_volume_list_8h_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_volume_list_8h_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_volume_list_8h_source_l00037}00037\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_utils}{Utils}}\ \{}
+\DoxyCodeLine{\Hypertarget{_volume_list_8h_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{_volume_list_8h_source_l00039}00039\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_utils_1_1_volume}{Volume}};}
+\DoxyCodeLine{\Hypertarget{_volume_list_8h_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{_volume_list_8h_source_l00041}00041\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespace_utils_a507507aaf475afbf0a2a4ac2ed376d7e}{WayToSort}}(\ Utils::Volume*\ sect1,\ Utils::Volume*\ sect2\ );}
+\DoxyCodeLine{\Hypertarget{_volume_list_8h_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{_volume_list_8h_source_l00043}\mbox{\hyperlink{class_utils_1_1_volume_list}{00043}}\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_utils_1_1_volume_list_aafb3398328644baaf92c84388df8a577}{VolumeList}}}
+\DoxyCodeLine{\Hypertarget{_volume_list_8h_source_l00044}00044\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_volume_list_8h_source_l00045}00045\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_volume_list_8h_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{_volume_list_8h_source_l00047}\mbox{\hyperlink{class_utils_1_1_volume_list_aafb3398328644baaf92c84388df8a577}{00047}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_volume_list_aafb3398328644baaf92c84388df8a577}{VolumeList}}(\ )\ \{}
+\DoxyCodeLine{\Hypertarget{_volume_list_8h_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ m\_currVolume\ =\ (\ \mbox{\hyperlink{class_utils_1_1_volume}{Volume}}*\ )\ 0;}
+\DoxyCodeLine{\Hypertarget{_volume_list_8h_source_l00049}00049\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_volume_list_8h_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{_volume_list_8h_source_l00051}\mbox{\hyperlink{class_utils_1_1_volume_list_abf211ffa41d9b860867decf436ce5b94}{00051}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_volume_list_abf211ffa41d9b860867decf436ce5b94}{\string~VolumeList}}(\ )\ \{\ \};}
+\DoxyCodeLine{\Hypertarget{_volume_list_8h_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{_volume_list_8h_source_l00053}00053\ \ \ \ \ \ \ \ \ wxXmlNode*\ \mbox{\hyperlink{class_utils_1_1_volume_list_abd40ffe153b1b26986cc05f33aa83c4a}{AddChild}}(\ wxXmlNode*\ child\ );}
+\DoxyCodeLine{\Hypertarget{_volume_list_8h_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{_volume_list_8h_source_l00055}00055\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_utils_1_1_volume_list_af5b9b1b4662680053e1f34b8df78fd15}{Clear}}(\ );}
+\DoxyCodeLine{\Hypertarget{_volume_list_8h_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{_volume_list_8h_source_l00057}00057\ \ \ \ \ \ \ \ \ wxTreeItemId\ \mbox{\hyperlink{class_utils_1_1_volume_list_a4d068a2736e07ebaaf0bf54a4aa5a8ac}{FindMenuID}}(\ \textcolor{keywordtype}{int}\ \textcolor{keywordtype}{id}\ );}
+\DoxyCodeLine{\Hypertarget{_volume_list_8h_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{_volume_list_8h_source_l00059}00059\ \ \ \ \ \ \ \ \ MenuIDArray::iterator\ \mbox{\hyperlink{class_utils_1_1_volume_list_a66f87d684de7268a050b34c66d84952c}{FindMenuIDIterator}}(\ \textcolor{keywordtype}{int}\ \textcolor{keywordtype}{id}\ );}
+\DoxyCodeLine{\Hypertarget{_volume_list_8h_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{_volume_list_8h_source_l00061}00061\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_volume}{Utils::Volume}}*\ \mbox{\hyperlink{class_utils_1_1_volume_list_a943b0708393fc693c0fe7d59e27d9e96}{FindVolume}}(\ wxString\ str\ );}
+\DoxyCodeLine{\Hypertarget{_volume_list_8h_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{_volume_list_8h_source_l00063}00063\ \ \ \ \ \ \ \ \ VolumeArray::iterator\ \mbox{\hyperlink{class_utils_1_1_volume_list_a12c91cdf68c455c1d7c4d19471fe9e3e}{FindVolumeIterator}}(\ wxString\ str\ );}
+\DoxyCodeLine{\Hypertarget{_volume_list_8h_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{_volume_list_8h_source_l00065}\mbox{\hyperlink{class_utils_1_1_volume_list_a715cb1f378294d281c4a9c7c90a60eaf}{00065}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_utils_aeee3fa6f7393338c50e7f323fa993989}{Utils::VolumeArray}}*\ \mbox{\hyperlink{class_utils_1_1_volume_list_a715cb1f378294d281c4a9c7c90a60eaf}{GetArray}}(\ )\ \{}
+\DoxyCodeLine{\Hypertarget{_volume_list_8h_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \&m\_volumeArray;}
+\DoxyCodeLine{\Hypertarget{_volume_list_8h_source_l00067}00067\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_volume_list_8h_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{_volume_list_8h_source_l00069}00069\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_volume}{Utils::Volume}}*\ \mbox{\hyperlink{class_utils_1_1_volume_list_a8c45e00867a115cce68f8ef768d7ac38}{GetVolume}}(\ );}
+\DoxyCodeLine{\Hypertarget{_volume_list_8h_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{_volume_list_8h_source_l00071}00071\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_utils_1_1_volume_list_a3be25b5f8e4a75cf6a73b7d60986cb20}{Insert}}(\ \textcolor{keywordtype}{int}\ \textcolor{keywordtype}{id},\ wxTreeItemId\ treeId\ );}
+\DoxyCodeLine{\Hypertarget{_volume_list_8h_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{_volume_list_8h_source_l00073}00073\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_utils_1_1_volume_list_a3be25b5f8e4a75cf6a73b7d60986cb20}{Insert}}(\ wxString\ str,\ \mbox{\hyperlink{class_utils_1_1_volume}{Utils::Volume}}*\ vol\ );}
+\DoxyCodeLine{\Hypertarget{_volume_list_8h_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{_volume_list_8h_source_l00075}00075\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_utils_1_1_volume_list_ac6d9e736b10d8f6e0678421c89b39ec6}{MakeNameArray}}(\ wxArrayString\&\ array\ );}
+\DoxyCodeLine{\Hypertarget{_volume_list_8h_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{_volume_list_8h_source_l00077}\mbox{\hyperlink{class_utils_1_1_volume_list_ad46e91f261dfb4bd99bd0fc50e539d61}{00077}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_utils_1_1_volume}{Volume}}*\ \mbox{\hyperlink{class_utils_1_1_volume_list_ad46e91f261dfb4bd99bd0fc50e539d61}{NewVolumeInstance}}(\ wxString\ filename\ )\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_volume_list_8h_source_l00078}00078\ }
+\DoxyCodeLine{\Hypertarget{_volume_list_8h_source_l00079}00079\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_utils_1_1_volume_list_a76617541736b6fa96ef227e42292246b}{RemoveVolume}}(\ wxString\ name\ );}
+\DoxyCodeLine{\Hypertarget{_volume_list_8h_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{_volume_list_8h_source_l00081}00081\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_utils_1_1_volume_list_a76617541736b6fa96ef227e42292246b}{RemoveVolume}}(\ \mbox{\hyperlink{class_utils_1_1_volume}{Volume}}*\ vol\ );}
+\DoxyCodeLine{\Hypertarget{_volume_list_8h_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{_volume_list_8h_source_l00083}00083\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_utils_1_1_volume_list_a06d73bb39e9c6ebc5cf8cede367b5299}{SaveDirtyVolumes}}(\ );}
+\DoxyCodeLine{\Hypertarget{_volume_list_8h_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{_volume_list_8h_source_l00085}00085\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_utils_1_1_volume_list_acc5f386a0d13002f76d76cf9b630766f}{SaveVolumes}}(\ );}
+\DoxyCodeLine{\Hypertarget{_volume_list_8h_source_l00086}00086\ }
+\DoxyCodeLine{\Hypertarget{_volume_list_8h_source_l00087}00087\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ void\ Load(\ );}}
+\DoxyCodeLine{\Hypertarget{_volume_list_8h_source_l00088}00088\ }
+\DoxyCodeLine{\Hypertarget{_volume_list_8h_source_l00089}00089\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_utils_1_1_volume_list_a7d1ce6fb8df681f2debf9a7b3b2430b3}{SetCurrentVolume}}(\ \mbox{\hyperlink{class_utils_1_1_volume}{Volume}}*\ vol\ );}
+\DoxyCodeLine{\Hypertarget{_volume_list_8h_source_l00090}00090\ }
+\DoxyCodeLine{\Hypertarget{_volume_list_8h_source_l00091}00091\ }
+\DoxyCodeLine{\Hypertarget{_volume_list_8h_source_l00092}00092\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_volume_list_8h_source_l00093}00093\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_utils_a05d0f8acb5d51b4f51430c52175448e6}{MenuIDArray}}\ m\_menuIDArray;}
+\DoxyCodeLine{\Hypertarget{_volume_list_8h_source_l00094}00094\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_utils_aeee3fa6f7393338c50e7f323fa993989}{Utils::VolumeArray}}\ m\_volumeArray;}
+\DoxyCodeLine{\Hypertarget{_volume_list_8h_source_l00095}00095\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_volume}{Utils::Volume}}*\ m\_currVolume;}
+\DoxyCodeLine{\Hypertarget{_volume_list_8h_source_l00096}00096\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_volume_list_8h_source_l00097}00097\ \}}
+\DoxyCodeLine{\Hypertarget{_volume_list_8h_source_l00098}00098\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

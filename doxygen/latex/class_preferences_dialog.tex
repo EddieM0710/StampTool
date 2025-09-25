@@ -1,0 +1,741 @@
+\doxysection{Preferences\+Dialog Class Reference}
+\hypertarget{class_preferences_dialog}{}\label{class_preferences_dialog}\index{PreferencesDialog@{PreferencesDialog}}
+
+
+{\ttfamily \#include $<$Preferences\+Dialog.\+h$>$}
+
+Inheritance diagram for Preferences\+Dialog\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_preferences_dialog}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6}{Preferences\+Dialog\+Gui\+Defs}} \{ \newline
+\mbox{\hyperlink{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6a26f07514ae6f6f64d7f08ddb25a07dfe}{ID\+\_\+\+IMAGEDIRECTORTEXTBOX}} = ID\+\_\+\+PREFERENCESDIALOG + 1
+, \mbox{\hyperlink{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6ae6972beb1aff4e862a9fda6519c7ce91}{ID\+\_\+\+DIRPICKERBTN}}
+, \mbox{\hyperlink{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6abde22fc63464967dfc002d4619e72297}{ID\+\_\+\+COUNTRYTEXTBOX}}
+, \mbox{\hyperlink{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6ac59d11e8d4554c968aca8fa339b9c44d}{ID\+\_\+\+CATALOGTEXTBOX}}
+, \newline
+\mbox{\hyperlink{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6a384accd4e77bdf58506b0570b41c9b09}{ID\+\_\+\+OPENLASTCHECKBOX}}
+, \mbox{\hyperlink{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6a557ae3bce330d0a14adc35902ad9139a}{ID\+\_\+\+RECENTSIZETEXTCTRL}}
+, \mbox{\hyperlink{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6abb531d32ab1d2d3159b69599ac57b2f5}{ID\+\_\+\+NOTEBOOK}}
+, \mbox{\hyperlink{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6a7a51158331859512f1ebc814b64d6aa7}{ID\+\_\+\+NOTEBOOKDETAILSPANEL}}
+, \newline
+\mbox{\hyperlink{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6aa77bd96f35b596381eaf76737520abf6}{ID\+\_\+\+NOTEBOOKFONTSPANEL}}
+, \mbox{\hyperlink{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6ae2c5a2f9ab25fafa14d88a6cba6a6968}{ID\+\_\+\+NOTEBOOKCOLLECTIONPANEL}}
+, \mbox{\hyperlink{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6a6ec36d600e25d69693ba6c92f78af66c}{ID\+\_\+\+NBRFONTPICKER}}
+, \mbox{\hyperlink{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6ab3b535d085baebfe67c245fb84df4902}{ID\+\_\+\+NBRCOLORPICKER}}
+, \newline
+\mbox{\hyperlink{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6a93d0d44ed9208e0f8247e102a16e8924}{ID\+\_\+\+TITLEFONTPICKER}}
+, \mbox{\hyperlink{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6a4c2ed82f5518c15a7e1f8fc86303bf52}{ID\+\_\+\+TITLECOLORPICKER}}
+, \mbox{\hyperlink{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6aa084c618706feeb2b95c273f323e2871}{ID\+\_\+\+TEXTFONTPICKER}}
+, \mbox{\hyperlink{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6a50e37635851cefecb005bebfa6937f68}{ID\+\_\+\+TEXTCOLORPICKER}}
+, \newline
+\mbox{\hyperlink{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6aa58d3090ceb6943d1f010b0af3f8258e}{ID\+\_\+\+NAMEFONTPICKER}}
+, \mbox{\hyperlink{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6af94a9372521d69eec96d800e879903a1}{ID\+\_\+\+NAMECOLORPICKER}}
+, \mbox{\hyperlink{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6a0215b3e043652092954b77e5fc5ed107}{ID\+\_\+\+NBRDEFAULTFONTBUTTON}}
+, \mbox{\hyperlink{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6a50406c39ace3e2c070ad5e786139dac6}{ID\+\_\+\+TITLEDEFAULTFONTBUTTON}}
+, \newline
+\mbox{\hyperlink{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6ad12ce49e64c67e75827b4ff05804c5a3}{ID\+\_\+\+TEXTDEFAULTFONTBUTTON}}
+, \mbox{\hyperlink{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6ae7a97a18cef4df6bda8917db6aeeff4a}{ID\+\_\+\+NAMEDEFAULTFONTBUTTON}}
+, \mbox{\hyperlink{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6a15e48aee44f15f6cc77f931021e54acc}{ID\+\_\+\+COLLECTIONGRID}}
+, \mbox{\hyperlink{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6ab8bb36623c3a485979e04ee9391e1ce2}{ID\+\_\+\+Last\+ID}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_preferences_dialog_a1df27319c7ba9302b508adc546e3dd7a}{Preferences\+Dialog}} ()
+\item 
+\mbox{\hyperlink{class_preferences_dialog_a578e21cc180beca6803d98e205678c40}{Preferences\+Dialog}} (wx\+Window \texorpdfstring{$\ast$}{*}parent, wx\+Window\+ID id=\mbox{\hyperlink{_preferences_dialog_8h_add4de35c1eef916a6394f4123ff3a730}{SYMBOL\+\_\+\+Preferences\+Dialog\+\_\+\+IDNAME}}, const wx\+String \&caption=\mbox{\hyperlink{_preferences_dialog_8h_a969478da05200526a028a22627745d01}{SYMBOL\+\_\+\+Preferences\+Dialog\+\_\+\+TITLE}}, const wx\+Point \&pos=\mbox{\hyperlink{_preferences_dialog_8h_a0b2a530f7e898c382a9061e090a10d56}{SYMBOL\+\_\+\+Preferences\+Dialog\+\_\+\+POSITION}}, const wx\+Size \&size=\mbox{\hyperlink{_preferences_dialog_8h_a5f73dff8fe7ac3450dc97c269ed0b913}{SYMBOL\+\_\+\+Preferences\+Dialog\+\_\+\+SIZE}}, long style=\mbox{\hyperlink{_preferences_dialog_8h_a621d14750f544aa83cf7ee3fbc31a26b}{SYMBOL\+\_\+\+Preferences\+Dialog\+\_\+\+STYLE}})
+\item 
+bool \mbox{\hyperlink{class_preferences_dialog_acf25c714f71d15ba1ca885bffd67eff0}{Create}} (wx\+Window \texorpdfstring{$\ast$}{*}parent, wx\+Window\+ID id=\mbox{\hyperlink{_preferences_dialog_8h_add4de35c1eef916a6394f4123ff3a730}{SYMBOL\+\_\+\+Preferences\+Dialog\+\_\+\+IDNAME}}, const wx\+String \&caption=\mbox{\hyperlink{_preferences_dialog_8h_a969478da05200526a028a22627745d01}{SYMBOL\+\_\+\+Preferences\+Dialog\+\_\+\+TITLE}}, const wx\+Point \&pos=\mbox{\hyperlink{_preferences_dialog_8h_a0b2a530f7e898c382a9061e090a10d56}{SYMBOL\+\_\+\+Preferences\+Dialog\+\_\+\+POSITION}}, const wx\+Size \&size=\mbox{\hyperlink{_preferences_dialog_8h_a5f73dff8fe7ac3450dc97c269ed0b913}{SYMBOL\+\_\+\+Preferences\+Dialog\+\_\+\+SIZE}}, long style=\mbox{\hyperlink{_preferences_dialog_8h_a621d14750f544aa83cf7ee3fbc31a26b}{SYMBOL\+\_\+\+Preferences\+Dialog\+\_\+\+STYLE}})
+\item 
+\mbox{\hyperlink{class_preferences_dialog_a0e3927d4dbbc927879b4c4906e728f2d}{\texorpdfstring{$\sim$}{\string~}\+Preferences\+Dialog}} ()
+\item 
+void \mbox{\hyperlink{class_preferences_dialog_a8329ae9bfc630ce41437e058cbf010df}{Init}} ()
+\item 
+void \mbox{\hyperlink{class_preferences_dialog_a81b51476f8265dbc7dbda2bceb7eea69}{Create\+Controls}} ()
+\item 
+wx\+Panel \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_preferences_dialog_a100f1663e02659f3c94a30c6a2fcb2f0}{Create\+Notebook\+Details\+Panel}} (wx\+Window \texorpdfstring{$\ast$}{*}parent)
+\item 
+wx\+Panel \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_preferences_dialog_a9bc06e2320a0915817418b48132185e5}{Create\+Notebook\+Fonts\+Panel}} (wx\+Window \texorpdfstring{$\ast$}{*}parent)
+\item 
+wx\+Panel \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_preferences_dialog_a0870902e646618fef7ef4d6ac397ece9}{Create\+Collection\+Panel}} (wx\+Window \texorpdfstring{$\ast$}{*}parent)
+\item 
+void \mbox{\hyperlink{class_preferences_dialog_a4b7581430887263981fd2c009cb5ff87}{On\+Imagedirectortextbox\+Text\+Updated}} (wx\+Command\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_preferences_dialog_a7ef0da49290efe24c66cad406598cca3}{On\+Countrytextbox\+Text\+Updated}} (wx\+Command\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_preferences_dialog_a21c35b2c83a4acaf8c89010917aed944}{On\+Catalogtextbox\+Text\+Updated}} (wx\+Command\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_preferences_dialog_a65d9c888f659eedf15280d3469c1b898}{On\+Openlastcheckbox\+Click}} (wx\+Command\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_preferences_dialog_ada98879cb2028d526e70850df1ab0a1c}{On\+Notebook\+Page\+Changed}} (wx\+Notebook\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_preferences_dialog_a412164a7760487192d52231450684330}{On\+Recentsizetextctrl\+Text\+Updated}} (wx\+Command\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_preferences_dialog_a3cc0b51e0176401d28d8268e8215194c}{On\+Ok\+Click}} (wx\+Command\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_preferences_dialog_a3f8193e07706333cc64c3f4c401c82a4}{Browse\+For\+Dir}} (wx\+Command\+Event \&event)
+\item 
+bool \mbox{\hyperlink{class_preferences_dialog_a9edabd135b5c336ff3c7f49b52566e03}{Is\+Dirty}} ()
+\item 
+void \mbox{\hyperlink{class_preferences_dialog_a13a195aeb0affd55c6cb82290377ee8d}{Update\+Details}} ()
+\item 
+void \mbox{\hyperlink{class_preferences_dialog_a3b470d84eed0193a96b1a205517d6e61}{Init\+Details\+Panel}} ()
+\item 
+void \mbox{\hyperlink{class_preferences_dialog_a6d735c6336579417458b3a41db0fbaed}{Update\+Fonts}} ()
+\item 
+void \mbox{\hyperlink{class_preferences_dialog_ad9b4a091645e69447bd59f58c68f3a1a}{Update\+Collection\+List}} ()
+\item 
+void \mbox{\hyperlink{class_preferences_dialog_a89c69ffa44a231824cf182153c256578}{Init\+Collection\+Grid}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static bool \mbox{\hyperlink{class_preferences_dialog_a7a1afcf24018e26e117e9ed95e4ab27c}{Show\+Tool\+Tips}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+wx\+Notebook \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_preferences_dialog_a619c6628544d7108a0708b4d11c64faf}{m\+\_\+notebook}}
+\item 
+wx\+Panel \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_preferences_dialog_a4ca1587fdef76606f40e3f50ece19477}{m\+\_\+\+Details\+Panel}}
+\item 
+\mbox{\hyperlink{class_sort_order_panel}{Sort\+Order\+Panel}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_preferences_dialog_a8c201cb25185d7bfa27708c4cf13db80}{m\+\_\+\+Sort\+Order\+Panel}}
+\item 
+\mbox{\hyperlink{class_define_periods_panel}{Define\+Periods\+Panel}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_preferences_dialog_a2e306f73c50aab4d7786c7eb5548dc9b}{m\+\_\+\+Define\+Periods\+Panel}}
+\item 
+wx\+Panel \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_preferences_dialog_a60c4adbac75eb1a27039b32c5774cfec}{m\+\_\+\+Fonts\+Panel}}
+\item 
+wx\+Panel \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_preferences_dialog_a587387f9581f8623a9e3f7eace01d61b}{m\+\_\+\+Collection\+Panel}}
+\item 
+wx\+Text\+Ctrl \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_preferences_dialog_a6897093e2c9e6e623f358b741abff55b}{m\+\_\+image\+Directory}}
+\item 
+wx\+Text\+Ctrl \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_preferences_dialog_a390a30f65e661926d405b0d1a9a9f437}{m\+\_\+country}}
+\item 
+wx\+Text\+Ctrl \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_preferences_dialog_adf644f4982ad01e3c2bc62ff0b736e66}{m\+\_\+catalog}}
+\item 
+wx\+Check\+Box \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_preferences_dialog_a86eb118bc8544fd1ef96c4027406db64}{m\+\_\+load\+Last\+File\+At\+Start\+Up}}
+\item 
+wx\+Text\+Ctrl \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_preferences_dialog_a6965cb7a5b265fddb3c551d28ebc918b}{m\+\_\+recent\+List\+Size}}
+\item 
+wx\+Font\+Picker\+Ctrl \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_preferences_dialog_ac494b448dc176f076f14f6e842d70ddb}{m\+\_\+title\+Font\+Picker}}
+\item 
+wx\+Colour\+Picker\+Ctrl \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_preferences_dialog_abe1d8f79e8134a342cd83f284d15449c}{m\+\_\+title\+Color\+Picker}}
+\item 
+wx\+Font\+Picker\+Ctrl \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_preferences_dialog_af701ddbfce5e53178805dc8667a0897b}{m\+\_\+nbr\+Font\+Picker}}
+\item 
+wx\+Colour\+Picker\+Ctrl \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_preferences_dialog_a0b704ef5ce27505614d3d5397eb26bc8}{m\+\_\+nbr\+Color\+Picker}}
+\item 
+wx\+Font\+Picker\+Ctrl \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_preferences_dialog_a6c544a0852f5b8fc46f5ed51071f9d13}{m\+\_\+text\+Font\+Picker}}
+\item 
+wx\+Colour\+Picker\+Ctrl \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_preferences_dialog_a0364ebac99c9eccb03866e0c932f4740}{m\+\_\+text\+Color\+Picker}}
+\item 
+wx\+Font\+Picker\+Ctrl \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_preferences_dialog_ad97c5f8ee56cda1e2f598c5407a5bcd7}{m\+\_\+name\+Font\+Picker}}
+\item 
+wx\+Colour\+Picker\+Ctrl \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_preferences_dialog_a03f7b495bc623783cfbd3369758b284e}{m\+\_\+name\+Color\+Picker}}
+\item 
+wx\+Grid \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_preferences_dialog_a0951f86f2e65a189acc71eab6b7879f5}{m\+\_\+grid}}
+\begin{DoxyCompactList}\small\item\em wx\+Grid to display item entries \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_preferences_dialog_a4e8f5f6e02e3daf4759dbb90d53c74d6}{m\+\_\+dirty}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_preferences_dialog_8h_source_l00050}{50}} of file \mbox{\hyperlink{_preferences_dialog_8h_source}{Preferences\+Dialog.\+h}}.
+
+
+
+\label{doc-enum-members}
+\Hypertarget{class_preferences_dialog_doc-enum-members}
+\doxysubsection{Member Enumeration Documentation}
+\Hypertarget{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6}\index{PreferencesDialog@{PreferencesDialog}!PreferencesDialogGuiDefs@{PreferencesDialogGuiDefs}}
+\index{PreferencesDialogGuiDefs@{PreferencesDialogGuiDefs}!PreferencesDialog@{PreferencesDialog}}
+\doxysubsubsection{\texorpdfstring{PreferencesDialogGuiDefs}{PreferencesDialogGuiDefs}}
+{\footnotesize\ttfamily \label{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6} 
+enum \mbox{\hyperlink{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6}{Preferences\+Dialog\+::\+Preferences\+Dialog\+Gui\+Defs}}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_IMAGEDIRECTORTEXTBOX@{ID\_IMAGEDIRECTORTEXTBOX}!PreferencesDialog@{PreferencesDialog}}\index{PreferencesDialog@{PreferencesDialog}!ID\_IMAGEDIRECTORTEXTBOX@{ID\_IMAGEDIRECTORTEXTBOX}}}\Hypertarget{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6a26f07514ae6f6f64d7f08ddb25a07dfe}\label{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6a26f07514ae6f6f64d7f08ddb25a07dfe} 
+ID\+\_\+\+IMAGEDIRECTORTEXTBOX&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_DIRPICKERBTN@{ID\_DIRPICKERBTN}!PreferencesDialog@{PreferencesDialog}}\index{PreferencesDialog@{PreferencesDialog}!ID\_DIRPICKERBTN@{ID\_DIRPICKERBTN}}}\Hypertarget{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6ae6972beb1aff4e862a9fda6519c7ce91}\label{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6ae6972beb1aff4e862a9fda6519c7ce91} 
+ID\+\_\+\+DIRPICKERBTN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_COUNTRYTEXTBOX@{ID\_COUNTRYTEXTBOX}!PreferencesDialog@{PreferencesDialog}}\index{PreferencesDialog@{PreferencesDialog}!ID\_COUNTRYTEXTBOX@{ID\_COUNTRYTEXTBOX}}}\Hypertarget{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6abde22fc63464967dfc002d4619e72297}\label{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6abde22fc63464967dfc002d4619e72297} 
+ID\+\_\+\+COUNTRYTEXTBOX&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_CATALOGTEXTBOX@{ID\_CATALOGTEXTBOX}!PreferencesDialog@{PreferencesDialog}}\index{PreferencesDialog@{PreferencesDialog}!ID\_CATALOGTEXTBOX@{ID\_CATALOGTEXTBOX}}}\Hypertarget{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6ac59d11e8d4554c968aca8fa339b9c44d}\label{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6ac59d11e8d4554c968aca8fa339b9c44d} 
+ID\+\_\+\+CATALOGTEXTBOX&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_OPENLASTCHECKBOX@{ID\_OPENLASTCHECKBOX}!PreferencesDialog@{PreferencesDialog}}\index{PreferencesDialog@{PreferencesDialog}!ID\_OPENLASTCHECKBOX@{ID\_OPENLASTCHECKBOX}}}\Hypertarget{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6a384accd4e77bdf58506b0570b41c9b09}\label{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6a384accd4e77bdf58506b0570b41c9b09} 
+ID\+\_\+\+OPENLASTCHECKBOX&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_RECENTSIZETEXTCTRL@{ID\_RECENTSIZETEXTCTRL}!PreferencesDialog@{PreferencesDialog}}\index{PreferencesDialog@{PreferencesDialog}!ID\_RECENTSIZETEXTCTRL@{ID\_RECENTSIZETEXTCTRL}}}\Hypertarget{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6a557ae3bce330d0a14adc35902ad9139a}\label{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6a557ae3bce330d0a14adc35902ad9139a} 
+ID\+\_\+\+RECENTSIZETEXTCTRL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_NOTEBOOK@{ID\_NOTEBOOK}!PreferencesDialog@{PreferencesDialog}}\index{PreferencesDialog@{PreferencesDialog}!ID\_NOTEBOOK@{ID\_NOTEBOOK}}}\Hypertarget{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6abb531d32ab1d2d3159b69599ac57b2f5}\label{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6abb531d32ab1d2d3159b69599ac57b2f5} 
+ID\+\_\+\+NOTEBOOK&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_NOTEBOOKDETAILSPANEL@{ID\_NOTEBOOKDETAILSPANEL}!PreferencesDialog@{PreferencesDialog}}\index{PreferencesDialog@{PreferencesDialog}!ID\_NOTEBOOKDETAILSPANEL@{ID\_NOTEBOOKDETAILSPANEL}}}\Hypertarget{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6a7a51158331859512f1ebc814b64d6aa7}\label{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6a7a51158331859512f1ebc814b64d6aa7} 
+ID\+\_\+\+NOTEBOOKDETAILSPANEL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_NOTEBOOKFONTSPANEL@{ID\_NOTEBOOKFONTSPANEL}!PreferencesDialog@{PreferencesDialog}}\index{PreferencesDialog@{PreferencesDialog}!ID\_NOTEBOOKFONTSPANEL@{ID\_NOTEBOOKFONTSPANEL}}}\Hypertarget{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6aa77bd96f35b596381eaf76737520abf6}\label{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6aa77bd96f35b596381eaf76737520abf6} 
+ID\+\_\+\+NOTEBOOKFONTSPANEL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_NOTEBOOKCOLLECTIONPANEL@{ID\_NOTEBOOKCOLLECTIONPANEL}!PreferencesDialog@{PreferencesDialog}}\index{PreferencesDialog@{PreferencesDialog}!ID\_NOTEBOOKCOLLECTIONPANEL@{ID\_NOTEBOOKCOLLECTIONPANEL}}}\Hypertarget{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6ae2c5a2f9ab25fafa14d88a6cba6a6968}\label{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6ae2c5a2f9ab25fafa14d88a6cba6a6968} 
+ID\+\_\+\+NOTEBOOKCOLLECTIONPANEL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_NBRFONTPICKER@{ID\_NBRFONTPICKER}!PreferencesDialog@{PreferencesDialog}}\index{PreferencesDialog@{PreferencesDialog}!ID\_NBRFONTPICKER@{ID\_NBRFONTPICKER}}}\Hypertarget{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6a6ec36d600e25d69693ba6c92f78af66c}\label{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6a6ec36d600e25d69693ba6c92f78af66c} 
+ID\+\_\+\+NBRFONTPICKER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_NBRCOLORPICKER@{ID\_NBRCOLORPICKER}!PreferencesDialog@{PreferencesDialog}}\index{PreferencesDialog@{PreferencesDialog}!ID\_NBRCOLORPICKER@{ID\_NBRCOLORPICKER}}}\Hypertarget{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6ab3b535d085baebfe67c245fb84df4902}\label{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6ab3b535d085baebfe67c245fb84df4902} 
+ID\+\_\+\+NBRCOLORPICKER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_TITLEFONTPICKER@{ID\_TITLEFONTPICKER}!PreferencesDialog@{PreferencesDialog}}\index{PreferencesDialog@{PreferencesDialog}!ID\_TITLEFONTPICKER@{ID\_TITLEFONTPICKER}}}\Hypertarget{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6a93d0d44ed9208e0f8247e102a16e8924}\label{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6a93d0d44ed9208e0f8247e102a16e8924} 
+ID\+\_\+\+TITLEFONTPICKER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_TITLECOLORPICKER@{ID\_TITLECOLORPICKER}!PreferencesDialog@{PreferencesDialog}}\index{PreferencesDialog@{PreferencesDialog}!ID\_TITLECOLORPICKER@{ID\_TITLECOLORPICKER}}}\Hypertarget{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6a4c2ed82f5518c15a7e1f8fc86303bf52}\label{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6a4c2ed82f5518c15a7e1f8fc86303bf52} 
+ID\+\_\+\+TITLECOLORPICKER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_TEXTFONTPICKER@{ID\_TEXTFONTPICKER}!PreferencesDialog@{PreferencesDialog}}\index{PreferencesDialog@{PreferencesDialog}!ID\_TEXTFONTPICKER@{ID\_TEXTFONTPICKER}}}\Hypertarget{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6aa084c618706feeb2b95c273f323e2871}\label{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6aa084c618706feeb2b95c273f323e2871} 
+ID\+\_\+\+TEXTFONTPICKER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_TEXTCOLORPICKER@{ID\_TEXTCOLORPICKER}!PreferencesDialog@{PreferencesDialog}}\index{PreferencesDialog@{PreferencesDialog}!ID\_TEXTCOLORPICKER@{ID\_TEXTCOLORPICKER}}}\Hypertarget{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6a50e37635851cefecb005bebfa6937f68}\label{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6a50e37635851cefecb005bebfa6937f68} 
+ID\+\_\+\+TEXTCOLORPICKER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_NAMEFONTPICKER@{ID\_NAMEFONTPICKER}!PreferencesDialog@{PreferencesDialog}}\index{PreferencesDialog@{PreferencesDialog}!ID\_NAMEFONTPICKER@{ID\_NAMEFONTPICKER}}}\Hypertarget{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6aa58d3090ceb6943d1f010b0af3f8258e}\label{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6aa58d3090ceb6943d1f010b0af3f8258e} 
+ID\+\_\+\+NAMEFONTPICKER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_NAMECOLORPICKER@{ID\_NAMECOLORPICKER}!PreferencesDialog@{PreferencesDialog}}\index{PreferencesDialog@{PreferencesDialog}!ID\_NAMECOLORPICKER@{ID\_NAMECOLORPICKER}}}\Hypertarget{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6af94a9372521d69eec96d800e879903a1}\label{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6af94a9372521d69eec96d800e879903a1} 
+ID\+\_\+\+NAMECOLORPICKER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_NBRDEFAULTFONTBUTTON@{ID\_NBRDEFAULTFONTBUTTON}!PreferencesDialog@{PreferencesDialog}}\index{PreferencesDialog@{PreferencesDialog}!ID\_NBRDEFAULTFONTBUTTON@{ID\_NBRDEFAULTFONTBUTTON}}}\Hypertarget{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6a0215b3e043652092954b77e5fc5ed107}\label{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6a0215b3e043652092954b77e5fc5ed107} 
+ID\+\_\+\+NBRDEFAULTFONTBUTTON&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_TITLEDEFAULTFONTBUTTON@{ID\_TITLEDEFAULTFONTBUTTON}!PreferencesDialog@{PreferencesDialog}}\index{PreferencesDialog@{PreferencesDialog}!ID\_TITLEDEFAULTFONTBUTTON@{ID\_TITLEDEFAULTFONTBUTTON}}}\Hypertarget{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6a50406c39ace3e2c070ad5e786139dac6}\label{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6a50406c39ace3e2c070ad5e786139dac6} 
+ID\+\_\+\+TITLEDEFAULTFONTBUTTON&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_TEXTDEFAULTFONTBUTTON@{ID\_TEXTDEFAULTFONTBUTTON}!PreferencesDialog@{PreferencesDialog}}\index{PreferencesDialog@{PreferencesDialog}!ID\_TEXTDEFAULTFONTBUTTON@{ID\_TEXTDEFAULTFONTBUTTON}}}\Hypertarget{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6ad12ce49e64c67e75827b4ff05804c5a3}\label{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6ad12ce49e64c67e75827b4ff05804c5a3} 
+ID\+\_\+\+TEXTDEFAULTFONTBUTTON&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_NAMEDEFAULTFONTBUTTON@{ID\_NAMEDEFAULTFONTBUTTON}!PreferencesDialog@{PreferencesDialog}}\index{PreferencesDialog@{PreferencesDialog}!ID\_NAMEDEFAULTFONTBUTTON@{ID\_NAMEDEFAULTFONTBUTTON}}}\Hypertarget{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6ae7a97a18cef4df6bda8917db6aeeff4a}\label{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6ae7a97a18cef4df6bda8917db6aeeff4a} 
+ID\+\_\+\+NAMEDEFAULTFONTBUTTON&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_COLLECTIONGRID@{ID\_COLLECTIONGRID}!PreferencesDialog@{PreferencesDialog}}\index{PreferencesDialog@{PreferencesDialog}!ID\_COLLECTIONGRID@{ID\_COLLECTIONGRID}}}\Hypertarget{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6a15e48aee44f15f6cc77f931021e54acc}\label{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6a15e48aee44f15f6cc77f931021e54acc} 
+ID\+\_\+\+COLLECTIONGRID&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_LastID@{ID\_LastID}!PreferencesDialog@{PreferencesDialog}}\index{PreferencesDialog@{PreferencesDialog}!ID\_LastID@{ID\_LastID}}}\Hypertarget{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6ab8bb36623c3a485979e04ee9391e1ce2}\label{class_preferences_dialog_abe72f2539e01b122deaaa56786e7ade6ab8bb36623c3a485979e04ee9391e1ce2} 
+ID\+\_\+\+Last\+ID&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{_preferences_dialog_8h_source_l00056}{56}} of file \mbox{\hyperlink{_preferences_dialog_8h_source}{Preferences\+Dialog.\+h}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_preferences_dialog_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_preferences_dialog_a1df27319c7ba9302b508adc546e3dd7a}\index{PreferencesDialog@{PreferencesDialog}!PreferencesDialog@{PreferencesDialog}}
+\index{PreferencesDialog@{PreferencesDialog}!PreferencesDialog@{PreferencesDialog}}
+\doxysubsubsection{\texorpdfstring{PreferencesDialog()}{PreferencesDialog()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_preferences_dialog_a1df27319c7ba9302b508adc546e3dd7a} 
+Preferences\+Dialog\+::\+Preferences\+Dialog (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_preferences_dialog_8cpp_source_l00089}{89}} of file \mbox{\hyperlink{_preferences_dialog_8cpp_source}{Preferences\+Dialog.\+cpp}}.
+
+\Hypertarget{class_preferences_dialog_a578e21cc180beca6803d98e205678c40}\index{PreferencesDialog@{PreferencesDialog}!PreferencesDialog@{PreferencesDialog}}
+\index{PreferencesDialog@{PreferencesDialog}!PreferencesDialog@{PreferencesDialog}}
+\doxysubsubsection{\texorpdfstring{PreferencesDialog()}{PreferencesDialog()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_preferences_dialog_a578e21cc180beca6803d98e205678c40} 
+Preferences\+Dialog\+::\+Preferences\+Dialog (\begin{DoxyParamCaption}\item[{wx\+Window \texorpdfstring{$\ast$}{*}}]{parent}{, }\item[{wx\+Window\+ID}]{id}{ = {\ttfamily \mbox{\hyperlink{_preferences_dialog_8h_add4de35c1eef916a6394f4123ff3a730}{SYMBOL\+\_\+\+Preferences\+Dialog\+\_\+\+IDNAME}}}, }\item[{const wx\+String \&}]{caption}{ = {\ttfamily \mbox{\hyperlink{_preferences_dialog_8h_a969478da05200526a028a22627745d01}{SYMBOL\+\_\+\+Preferences\+Dialog\+\_\+\+TITLE}}}, }\item[{const wx\+Point \&}]{pos}{ = {\ttfamily \mbox{\hyperlink{_preferences_dialog_8h_a0b2a530f7e898c382a9061e090a10d56}{SYMBOL\+\_\+\+Preferences\+Dialog\+\_\+\+POSITION}}}, }\item[{const wx\+Size \&}]{size}{ = {\ttfamily \mbox{\hyperlink{_preferences_dialog_8h_a5f73dff8fe7ac3450dc97c269ed0b913}{SYMBOL\+\_\+\+Preferences\+Dialog\+\_\+\+SIZE}}}, }\item[{long}]{style}{ = {\ttfamily \mbox{\hyperlink{_preferences_dialog_8h_a621d14750f544aa83cf7ee3fbc31a26b}{SYMBOL\+\_\+\+Preferences\+Dialog\+\_\+\+STYLE}}}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_preferences_dialog_8cpp_source_l00094}{94}} of file \mbox{\hyperlink{_preferences_dialog_8cpp_source}{Preferences\+Dialog.\+cpp}}.
+
+\Hypertarget{class_preferences_dialog_a0e3927d4dbbc927879b4c4906e728f2d}\index{PreferencesDialog@{PreferencesDialog}!````~PreferencesDialog@{\texorpdfstring{$\sim$}{\string~}PreferencesDialog}}
+\index{````~PreferencesDialog@{\texorpdfstring{$\sim$}{\string~}PreferencesDialog}!PreferencesDialog@{PreferencesDialog}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}PreferencesDialog()}{\string~PreferencesDialog()}}
+{\footnotesize\ttfamily \label{class_preferences_dialog_a0e3927d4dbbc927879b4c4906e728f2d} 
+Preferences\+Dialog\+::\texorpdfstring{$\sim$}{\string~}\+Preferences\+Dialog (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_preferences_dialog_8cpp_source_l00138}{138}} of file \mbox{\hyperlink{_preferences_dialog_8cpp_source}{Preferences\+Dialog.\+cpp}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_preferences_dialog_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_preferences_dialog_a3f8193e07706333cc64c3f4c401c82a4}\index{PreferencesDialog@{PreferencesDialog}!BrowseForDir@{BrowseForDir}}
+\index{BrowseForDir@{BrowseForDir}!PreferencesDialog@{PreferencesDialog}}
+\doxysubsubsection{\texorpdfstring{BrowseForDir()}{BrowseForDir()}}
+{\footnotesize\ttfamily \label{class_preferences_dialog_a3f8193e07706333cc64c3f4c401c82a4} 
+void Preferences\+Dialog\+::\+Browse\+For\+Dir (\begin{DoxyParamCaption}\item[{wx\+Command\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_preferences_dialog_8cpp_source_l00448}{448}} of file \mbox{\hyperlink{_preferences_dialog_8cpp_source}{Preferences\+Dialog.\+cpp}}.
+
+\Hypertarget{class_preferences_dialog_acf25c714f71d15ba1ca885bffd67eff0}\index{PreferencesDialog@{PreferencesDialog}!Create@{Create}}
+\index{Create@{Create}!PreferencesDialog@{PreferencesDialog}}
+\doxysubsubsection{\texorpdfstring{Create()}{Create()}}
+{\footnotesize\ttfamily \label{class_preferences_dialog_acf25c714f71d15ba1ca885bffd67eff0} 
+bool Preferences\+Dialog\+::\+Create (\begin{DoxyParamCaption}\item[{wx\+Window \texorpdfstring{$\ast$}{*}}]{parent}{, }\item[{wx\+Window\+ID}]{id}{ = {\ttfamily \mbox{\hyperlink{_preferences_dialog_8h_add4de35c1eef916a6394f4123ff3a730}{SYMBOL\+\_\+\+Preferences\+Dialog\+\_\+\+IDNAME}}}, }\item[{const wx\+String \&}]{caption}{ = {\ttfamily \mbox{\hyperlink{_preferences_dialog_8h_a969478da05200526a028a22627745d01}{SYMBOL\+\_\+\+Preferences\+Dialog\+\_\+\+TITLE}}}, }\item[{const wx\+Point \&}]{pos}{ = {\ttfamily \mbox{\hyperlink{_preferences_dialog_8h_a0b2a530f7e898c382a9061e090a10d56}{SYMBOL\+\_\+\+Preferences\+Dialog\+\_\+\+POSITION}}}, }\item[{const wx\+Size \&}]{size}{ = {\ttfamily \mbox{\hyperlink{_preferences_dialog_8h_a5f73dff8fe7ac3450dc97c269ed0b913}{SYMBOL\+\_\+\+Preferences\+Dialog\+\_\+\+SIZE}}}, }\item[{long}]{style}{ = {\ttfamily \mbox{\hyperlink{_preferences_dialog_8h_a621d14750f544aa83cf7ee3fbc31a26b}{SYMBOL\+\_\+\+Preferences\+Dialog\+\_\+\+STYLE}}}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_preferences_dialog_8cpp_source_l00117}{117}} of file \mbox{\hyperlink{_preferences_dialog_8cpp_source}{Preferences\+Dialog.\+cpp}}.
+
+\Hypertarget{class_preferences_dialog_a0870902e646618fef7ef4d6ac397ece9}\index{PreferencesDialog@{PreferencesDialog}!CreateCollectionPanel@{CreateCollectionPanel}}
+\index{CreateCollectionPanel@{CreateCollectionPanel}!PreferencesDialog@{PreferencesDialog}}
+\doxysubsubsection{\texorpdfstring{CreateCollectionPanel()}{CreateCollectionPanel()}}
+{\footnotesize\ttfamily \label{class_preferences_dialog_a0870902e646618fef7ef4d6ac397ece9} 
+wx\+Panel \texorpdfstring{$\ast$}{*} Preferences\+Dialog\+::\+Create\+Collection\+Panel (\begin{DoxyParamCaption}\item[{wx\+Window \texorpdfstring{$\ast$}{*}}]{parent}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_preferences_dialog_8cpp_source_l00272}{272}} of file \mbox{\hyperlink{_preferences_dialog_8cpp_source}{Preferences\+Dialog.\+cpp}}.
+
+\Hypertarget{class_preferences_dialog_a81b51476f8265dbc7dbda2bceb7eea69}\index{PreferencesDialog@{PreferencesDialog}!CreateControls@{CreateControls}}
+\index{CreateControls@{CreateControls}!PreferencesDialog@{PreferencesDialog}}
+\doxysubsubsection{\texorpdfstring{CreateControls()}{CreateControls()}}
+{\footnotesize\ttfamily \label{class_preferences_dialog_a81b51476f8265dbc7dbda2bceb7eea69} 
+void Preferences\+Dialog\+::\+Create\+Controls (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_preferences_dialog_8cpp_source_l00309}{309}} of file \mbox{\hyperlink{_preferences_dialog_8cpp_source}{Preferences\+Dialog.\+cpp}}.
+
+\Hypertarget{class_preferences_dialog_a100f1663e02659f3c94a30c6a2fcb2f0}\index{PreferencesDialog@{PreferencesDialog}!CreateNotebookDetailsPanel@{CreateNotebookDetailsPanel}}
+\index{CreateNotebookDetailsPanel@{CreateNotebookDetailsPanel}!PreferencesDialog@{PreferencesDialog}}
+\doxysubsubsection{\texorpdfstring{CreateNotebookDetailsPanel()}{CreateNotebookDetailsPanel()}}
+{\footnotesize\ttfamily \label{class_preferences_dialog_a100f1663e02659f3c94a30c6a2fcb2f0} 
+wx\+Panel \texorpdfstring{$\ast$}{*} Preferences\+Dialog\+::\+Create\+Notebook\+Details\+Panel (\begin{DoxyParamCaption}\item[{wx\+Window \texorpdfstring{$\ast$}{*}}]{parent}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_preferences_dialog_8cpp_source_l00160}{160}} of file \mbox{\hyperlink{_preferences_dialog_8cpp_source}{Preferences\+Dialog.\+cpp}}.
+
+\Hypertarget{class_preferences_dialog_a9bc06e2320a0915817418b48132185e5}\index{PreferencesDialog@{PreferencesDialog}!CreateNotebookFontsPanel@{CreateNotebookFontsPanel}}
+\index{CreateNotebookFontsPanel@{CreateNotebookFontsPanel}!PreferencesDialog@{PreferencesDialog}}
+\doxysubsubsection{\texorpdfstring{CreateNotebookFontsPanel()}{CreateNotebookFontsPanel()}}
+{\footnotesize\ttfamily \label{class_preferences_dialog_a9bc06e2320a0915817418b48132185e5} 
+wx\+Panel \texorpdfstring{$\ast$}{*} Preferences\+Dialog\+::\+Create\+Notebook\+Fonts\+Panel (\begin{DoxyParamCaption}\item[{wx\+Window \texorpdfstring{$\ast$}{*}}]{parent}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_preferences_dialog_8cpp_source_l00222}{222}} of file \mbox{\hyperlink{_preferences_dialog_8cpp_source}{Preferences\+Dialog.\+cpp}}.
+
+\Hypertarget{class_preferences_dialog_a8329ae9bfc630ce41437e058cbf010df}\index{PreferencesDialog@{PreferencesDialog}!Init@{Init}}
+\index{Init@{Init}!PreferencesDialog@{PreferencesDialog}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily \label{class_preferences_dialog_a8329ae9bfc630ce41437e058cbf010df} 
+void Preferences\+Dialog\+::\+Init (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_preferences_dialog_8cpp_source_l00149}{149}} of file \mbox{\hyperlink{_preferences_dialog_8cpp_source}{Preferences\+Dialog.\+cpp}}.
+
+\Hypertarget{class_preferences_dialog_a89c69ffa44a231824cf182153c256578}\index{PreferencesDialog@{PreferencesDialog}!InitCollectionGrid@{InitCollectionGrid}}
+\index{InitCollectionGrid@{InitCollectionGrid}!PreferencesDialog@{PreferencesDialog}}
+\doxysubsubsection{\texorpdfstring{InitCollectionGrid()}{InitCollectionGrid()}}
+{\footnotesize\ttfamily \label{class_preferences_dialog_a89c69ffa44a231824cf182153c256578} 
+void Preferences\+Dialog\+::\+Init\+Collection\+Grid (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_preferences_dialog_8cpp_source_l00638}{638}} of file \mbox{\hyperlink{_preferences_dialog_8cpp_source}{Preferences\+Dialog.\+cpp}}.
+
+\Hypertarget{class_preferences_dialog_a3b470d84eed0193a96b1a205517d6e61}\index{PreferencesDialog@{PreferencesDialog}!InitDetailsPanel@{InitDetailsPanel}}
+\index{InitDetailsPanel@{InitDetailsPanel}!PreferencesDialog@{PreferencesDialog}}
+\doxysubsubsection{\texorpdfstring{InitDetailsPanel()}{InitDetailsPanel()}}
+{\footnotesize\ttfamily \label{class_preferences_dialog_a3b470d84eed0193a96b1a205517d6e61} 
+void Preferences\+Dialog\+::\+Init\+Details\+Panel (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_preferences_dialog_8cpp_source_l00101}{101}} of file \mbox{\hyperlink{_preferences_dialog_8cpp_source}{Preferences\+Dialog.\+cpp}}.
+
+\Hypertarget{class_preferences_dialog_a9edabd135b5c336ff3c7f49b52566e03}\index{PreferencesDialog@{PreferencesDialog}!IsDirty@{IsDirty}}
+\index{IsDirty@{IsDirty}!PreferencesDialog@{PreferencesDialog}}
+\doxysubsubsection{\texorpdfstring{IsDirty()}{IsDirty()}}
+{\footnotesize\ttfamily \label{class_preferences_dialog_a9edabd135b5c336ff3c7f49b52566e03} 
+bool Preferences\+Dialog\+::\+Is\+Dirty (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_preferences_dialog_8h_source_l00136}{136}} of file \mbox{\hyperlink{_preferences_dialog_8h_source}{Preferences\+Dialog.\+h}}.
+
+\Hypertarget{class_preferences_dialog_a21c35b2c83a4acaf8c89010917aed944}\index{PreferencesDialog@{PreferencesDialog}!OnCatalogtextboxTextUpdated@{OnCatalogtextboxTextUpdated}}
+\index{OnCatalogtextboxTextUpdated@{OnCatalogtextboxTextUpdated}!PreferencesDialog@{PreferencesDialog}}
+\doxysubsubsection{\texorpdfstring{OnCatalogtextboxTextUpdated()}{OnCatalogtextboxTextUpdated()}}
+{\footnotesize\ttfamily \label{class_preferences_dialog_a21c35b2c83a4acaf8c89010917aed944} 
+void Preferences\+Dialog\+::\+On\+Catalogtextbox\+Text\+Updated (\begin{DoxyParamCaption}\item[{wx\+Command\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_preferences_dialog_8cpp_source_l00469}{469}} of file \mbox{\hyperlink{_preferences_dialog_8cpp_source}{Preferences\+Dialog.\+cpp}}.
+
+\Hypertarget{class_preferences_dialog_a7ef0da49290efe24c66cad406598cca3}\index{PreferencesDialog@{PreferencesDialog}!OnCountrytextboxTextUpdated@{OnCountrytextboxTextUpdated}}
+\index{OnCountrytextboxTextUpdated@{OnCountrytextboxTextUpdated}!PreferencesDialog@{PreferencesDialog}}
+\doxysubsubsection{\texorpdfstring{OnCountrytextboxTextUpdated()}{OnCountrytextboxTextUpdated()}}
+{\footnotesize\ttfamily \label{class_preferences_dialog_a7ef0da49290efe24c66cad406598cca3} 
+void Preferences\+Dialog\+::\+On\+Countrytextbox\+Text\+Updated (\begin{DoxyParamCaption}\item[{wx\+Command\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_preferences_dialog_8cpp_source_l00439}{439}} of file \mbox{\hyperlink{_preferences_dialog_8cpp_source}{Preferences\+Dialog.\+cpp}}.
+
+\Hypertarget{class_preferences_dialog_a4b7581430887263981fd2c009cb5ff87}\index{PreferencesDialog@{PreferencesDialog}!OnImagedirectortextboxTextUpdated@{OnImagedirectortextboxTextUpdated}}
+\index{OnImagedirectortextboxTextUpdated@{OnImagedirectortextboxTextUpdated}!PreferencesDialog@{PreferencesDialog}}
+\doxysubsubsection{\texorpdfstring{OnImagedirectortextboxTextUpdated()}{OnImagedirectortextboxTextUpdated()}}
+{\footnotesize\ttfamily \label{class_preferences_dialog_a4b7581430887263981fd2c009cb5ff87} 
+void Preferences\+Dialog\+::\+On\+Imagedirectortextbox\+Text\+Updated (\begin{DoxyParamCaption}\item[{wx\+Command\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_preferences_dialog_8cpp_source_l00426}{426}} of file \mbox{\hyperlink{_preferences_dialog_8cpp_source}{Preferences\+Dialog.\+cpp}}.
+
+\Hypertarget{class_preferences_dialog_ada98879cb2028d526e70850df1ab0a1c}\index{PreferencesDialog@{PreferencesDialog}!OnNotebookPageChanged@{OnNotebookPageChanged}}
+\index{OnNotebookPageChanged@{OnNotebookPageChanged}!PreferencesDialog@{PreferencesDialog}}
+\doxysubsubsection{\texorpdfstring{OnNotebookPageChanged()}{OnNotebookPageChanged()}}
+{\footnotesize\ttfamily \label{class_preferences_dialog_ada98879cb2028d526e70850df1ab0a1c} 
+void Preferences\+Dialog\+::\+On\+Notebook\+Page\+Changed (\begin{DoxyParamCaption}\item[{wx\+Notebook\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_preferences_dialog_8cpp_source_l00373}{373}} of file \mbox{\hyperlink{_preferences_dialog_8cpp_source}{Preferences\+Dialog.\+cpp}}.
+
+\Hypertarget{class_preferences_dialog_a3cc0b51e0176401d28d8268e8215194c}\index{PreferencesDialog@{PreferencesDialog}!OnOkClick@{OnOkClick}}
+\index{OnOkClick@{OnOkClick}!PreferencesDialog@{PreferencesDialog}}
+\doxysubsubsection{\texorpdfstring{OnOkClick()}{OnOkClick()}}
+{\footnotesize\ttfamily \label{class_preferences_dialog_a3cc0b51e0176401d28d8268e8215194c} 
+void Preferences\+Dialog\+::\+On\+Ok\+Click (\begin{DoxyParamCaption}\item[{wx\+Command\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_preferences_dialog_8cpp_source_l00506}{506}} of file \mbox{\hyperlink{_preferences_dialog_8cpp_source}{Preferences\+Dialog.\+cpp}}.
+
+\Hypertarget{class_preferences_dialog_a65d9c888f659eedf15280d3469c1b898}\index{PreferencesDialog@{PreferencesDialog}!OnOpenlastcheckboxClick@{OnOpenlastcheckboxClick}}
+\index{OnOpenlastcheckboxClick@{OnOpenlastcheckboxClick}!PreferencesDialog@{PreferencesDialog}}
+\doxysubsubsection{\texorpdfstring{OnOpenlastcheckboxClick()}{OnOpenlastcheckboxClick()}}
+{\footnotesize\ttfamily \label{class_preferences_dialog_a65d9c888f659eedf15280d3469c1b898} 
+void Preferences\+Dialog\+::\+On\+Openlastcheckbox\+Click (\begin{DoxyParamCaption}\item[{wx\+Command\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_preferences_dialog_8cpp_source_l00483}{483}} of file \mbox{\hyperlink{_preferences_dialog_8cpp_source}{Preferences\+Dialog.\+cpp}}.
+
+\Hypertarget{class_preferences_dialog_a412164a7760487192d52231450684330}\index{PreferencesDialog@{PreferencesDialog}!OnRecentsizetextctrlTextUpdated@{OnRecentsizetextctrlTextUpdated}}
+\index{OnRecentsizetextctrlTextUpdated@{OnRecentsizetextctrlTextUpdated}!PreferencesDialog@{PreferencesDialog}}
+\doxysubsubsection{\texorpdfstring{OnRecentsizetextctrlTextUpdated()}{OnRecentsizetextctrlTextUpdated()}}
+{\footnotesize\ttfamily \label{class_preferences_dialog_a412164a7760487192d52231450684330} 
+void Preferences\+Dialog\+::\+On\+Recentsizetextctrl\+Text\+Updated (\begin{DoxyParamCaption}\item[{wx\+Command\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_preferences_dialog_8cpp_source_l00497}{497}} of file \mbox{\hyperlink{_preferences_dialog_8cpp_source}{Preferences\+Dialog.\+cpp}}.
+
+\Hypertarget{class_preferences_dialog_a7a1afcf24018e26e117e9ed95e4ab27c}\index{PreferencesDialog@{PreferencesDialog}!ShowToolTips@{ShowToolTips}}
+\index{ShowToolTips@{ShowToolTips}!PreferencesDialog@{PreferencesDialog}}
+\doxysubsubsection{\texorpdfstring{ShowToolTips()}{ShowToolTips()}}
+{\footnotesize\ttfamily \label{class_preferences_dialog_a7a1afcf24018e26e117e9ed95e4ab27c} 
+bool Preferences\+Dialog\+::\+Show\+Tool\+Tips (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{_preferences_dialog_8cpp_source_l00368}{368}} of file \mbox{\hyperlink{_preferences_dialog_8cpp_source}{Preferences\+Dialog.\+cpp}}.
+
+\Hypertarget{class_preferences_dialog_ad9b4a091645e69447bd59f58c68f3a1a}\index{PreferencesDialog@{PreferencesDialog}!UpdateCollectionList@{UpdateCollectionList}}
+\index{UpdateCollectionList@{UpdateCollectionList}!PreferencesDialog@{PreferencesDialog}}
+\doxysubsubsection{\texorpdfstring{UpdateCollectionList()}{UpdateCollectionList()}}
+{\footnotesize\ttfamily \label{class_preferences_dialog_ad9b4a091645e69447bd59f58c68f3a1a} 
+void Preferences\+Dialog\+::\+Update\+Collection\+List (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_preferences_dialog_8cpp_source_l00627}{627}} of file \mbox{\hyperlink{_preferences_dialog_8cpp_source}{Preferences\+Dialog.\+cpp}}.
+
+\Hypertarget{class_preferences_dialog_a13a195aeb0affd55c6cb82290377ee8d}\index{PreferencesDialog@{PreferencesDialog}!UpdateDetails@{UpdateDetails}}
+\index{UpdateDetails@{UpdateDetails}!PreferencesDialog@{PreferencesDialog}}
+\doxysubsubsection{\texorpdfstring{UpdateDetails()}{UpdateDetails()}}
+{\footnotesize\ttfamily \label{class_preferences_dialog_a13a195aeb0affd55c6cb82290377ee8d} 
+void Preferences\+Dialog\+::\+Update\+Details (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_preferences_dialog_8cpp_source_l00520}{520}} of file \mbox{\hyperlink{_preferences_dialog_8cpp_source}{Preferences\+Dialog.\+cpp}}.
+
+\Hypertarget{class_preferences_dialog_a6d735c6336579417458b3a41db0fbaed}\index{PreferencesDialog@{PreferencesDialog}!UpdateFonts@{UpdateFonts}}
+\index{UpdateFonts@{UpdateFonts}!PreferencesDialog@{PreferencesDialog}}
+\doxysubsubsection{\texorpdfstring{UpdateFonts()}{UpdateFonts()}}
+{\footnotesize\ttfamily \label{class_preferences_dialog_a6d735c6336579417458b3a41db0fbaed} 
+void Preferences\+Dialog\+::\+Update\+Fonts (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_preferences_dialog_8cpp_source_l00598}{598}} of file \mbox{\hyperlink{_preferences_dialog_8cpp_source}{Preferences\+Dialog.\+cpp}}.
+
+
+
+\label{doc-variable-members}
+\Hypertarget{class_preferences_dialog_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_preferences_dialog_adf644f4982ad01e3c2bc62ff0b736e66}\index{PreferencesDialog@{PreferencesDialog}!m\_catalog@{m\_catalog}}
+\index{m\_catalog@{m\_catalog}!PreferencesDialog@{PreferencesDialog}}
+\doxysubsubsection{\texorpdfstring{m\_catalog}{m\_catalog}}
+{\footnotesize\ttfamily \label{class_preferences_dialog_adf644f4982ad01e3c2bc62ff0b736e66} 
+wx\+Text\+Ctrl\texorpdfstring{$\ast$}{*} Preferences\+Dialog\+::m\+\_\+catalog}
+
+
+
+Definition at line \mbox{\hyperlink{_preferences_dialog_8h_source_l00164}{164}} of file \mbox{\hyperlink{_preferences_dialog_8h_source}{Preferences\+Dialog.\+h}}.
+
+\Hypertarget{class_preferences_dialog_a587387f9581f8623a9e3f7eace01d61b}\index{PreferencesDialog@{PreferencesDialog}!m\_CollectionPanel@{m\_CollectionPanel}}
+\index{m\_CollectionPanel@{m\_CollectionPanel}!PreferencesDialog@{PreferencesDialog}}
+\doxysubsubsection{\texorpdfstring{m\_CollectionPanel}{m\_CollectionPanel}}
+{\footnotesize\ttfamily \label{class_preferences_dialog_a587387f9581f8623a9e3f7eace01d61b} 
+wx\+Panel\texorpdfstring{$\ast$}{*} Preferences\+Dialog\+::m\+\_\+\+Collection\+Panel}
+
+
+
+Definition at line \mbox{\hyperlink{_preferences_dialog_8h_source_l00161}{161}} of file \mbox{\hyperlink{_preferences_dialog_8h_source}{Preferences\+Dialog.\+h}}.
+
+\Hypertarget{class_preferences_dialog_a390a30f65e661926d405b0d1a9a9f437}\index{PreferencesDialog@{PreferencesDialog}!m\_country@{m\_country}}
+\index{m\_country@{m\_country}!PreferencesDialog@{PreferencesDialog}}
+\doxysubsubsection{\texorpdfstring{m\_country}{m\_country}}
+{\footnotesize\ttfamily \label{class_preferences_dialog_a390a30f65e661926d405b0d1a9a9f437} 
+wx\+Text\+Ctrl\texorpdfstring{$\ast$}{*} Preferences\+Dialog\+::m\+\_\+country}
+
+
+
+Definition at line \mbox{\hyperlink{_preferences_dialog_8h_source_l00163}{163}} of file \mbox{\hyperlink{_preferences_dialog_8h_source}{Preferences\+Dialog.\+h}}.
+
+\Hypertarget{class_preferences_dialog_a2e306f73c50aab4d7786c7eb5548dc9b}\index{PreferencesDialog@{PreferencesDialog}!m\_DefinePeriodsPanel@{m\_DefinePeriodsPanel}}
+\index{m\_DefinePeriodsPanel@{m\_DefinePeriodsPanel}!PreferencesDialog@{PreferencesDialog}}
+\doxysubsubsection{\texorpdfstring{m\_DefinePeriodsPanel}{m\_DefinePeriodsPanel}}
+{\footnotesize\ttfamily \label{class_preferences_dialog_a2e306f73c50aab4d7786c7eb5548dc9b} 
+\mbox{\hyperlink{class_define_periods_panel}{Define\+Periods\+Panel}}\texorpdfstring{$\ast$}{*} Preferences\+Dialog\+::m\+\_\+\+Define\+Periods\+Panel}
+
+
+
+Definition at line \mbox{\hyperlink{_preferences_dialog_8h_source_l00159}{159}} of file \mbox{\hyperlink{_preferences_dialog_8h_source}{Preferences\+Dialog.\+h}}.
+
+\Hypertarget{class_preferences_dialog_a4ca1587fdef76606f40e3f50ece19477}\index{PreferencesDialog@{PreferencesDialog}!m\_DetailsPanel@{m\_DetailsPanel}}
+\index{m\_DetailsPanel@{m\_DetailsPanel}!PreferencesDialog@{PreferencesDialog}}
+\doxysubsubsection{\texorpdfstring{m\_DetailsPanel}{m\_DetailsPanel}}
+{\footnotesize\ttfamily \label{class_preferences_dialog_a4ca1587fdef76606f40e3f50ece19477} 
+wx\+Panel\texorpdfstring{$\ast$}{*} Preferences\+Dialog\+::m\+\_\+\+Details\+Panel}
+
+
+
+Definition at line \mbox{\hyperlink{_preferences_dialog_8h_source_l00157}{157}} of file \mbox{\hyperlink{_preferences_dialog_8h_source}{Preferences\+Dialog.\+h}}.
+
+\Hypertarget{class_preferences_dialog_a4e8f5f6e02e3daf4759dbb90d53c74d6}\index{PreferencesDialog@{PreferencesDialog}!m\_dirty@{m\_dirty}}
+\index{m\_dirty@{m\_dirty}!PreferencesDialog@{PreferencesDialog}}
+\doxysubsubsection{\texorpdfstring{m\_dirty}{m\_dirty}}
+{\footnotesize\ttfamily \label{class_preferences_dialog_a4e8f5f6e02e3daf4759dbb90d53c74d6} 
+bool Preferences\+Dialog\+::m\+\_\+dirty}
+
+
+
+Definition at line \mbox{\hyperlink{_preferences_dialog_8h_source_l00178}{178}} of file \mbox{\hyperlink{_preferences_dialog_8h_source}{Preferences\+Dialog.\+h}}.
+
+\Hypertarget{class_preferences_dialog_a60c4adbac75eb1a27039b32c5774cfec}\index{PreferencesDialog@{PreferencesDialog}!m\_FontsPanel@{m\_FontsPanel}}
+\index{m\_FontsPanel@{m\_FontsPanel}!PreferencesDialog@{PreferencesDialog}}
+\doxysubsubsection{\texorpdfstring{m\_FontsPanel}{m\_FontsPanel}}
+{\footnotesize\ttfamily \label{class_preferences_dialog_a60c4adbac75eb1a27039b32c5774cfec} 
+wx\+Panel\texorpdfstring{$\ast$}{*} Preferences\+Dialog\+::m\+\_\+\+Fonts\+Panel}
+
+
+
+Definition at line \mbox{\hyperlink{_preferences_dialog_8h_source_l00160}{160}} of file \mbox{\hyperlink{_preferences_dialog_8h_source}{Preferences\+Dialog.\+h}}.
+
+\Hypertarget{class_preferences_dialog_a0951f86f2e65a189acc71eab6b7879f5}\index{PreferencesDialog@{PreferencesDialog}!m\_grid@{m\_grid}}
+\index{m\_grid@{m\_grid}!PreferencesDialog@{PreferencesDialog}}
+\doxysubsubsection{\texorpdfstring{m\_grid}{m\_grid}}
+{\footnotesize\ttfamily \label{class_preferences_dialog_a0951f86f2e65a189acc71eab6b7879f5} 
+wx\+Grid\texorpdfstring{$\ast$}{*} Preferences\+Dialog\+::m\+\_\+grid}
+
+
+
+wx\+Grid to display item entries 
+
+
+
+Definition at line \mbox{\hyperlink{_preferences_dialog_8h_source_l00175}{175}} of file \mbox{\hyperlink{_preferences_dialog_8h_source}{Preferences\+Dialog.\+h}}.
+
+\Hypertarget{class_preferences_dialog_a6897093e2c9e6e623f358b741abff55b}\index{PreferencesDialog@{PreferencesDialog}!m\_imageDirectory@{m\_imageDirectory}}
+\index{m\_imageDirectory@{m\_imageDirectory}!PreferencesDialog@{PreferencesDialog}}
+\doxysubsubsection{\texorpdfstring{m\_imageDirectory}{m\_imageDirectory}}
+{\footnotesize\ttfamily \label{class_preferences_dialog_a6897093e2c9e6e623f358b741abff55b} 
+wx\+Text\+Ctrl\texorpdfstring{$\ast$}{*} Preferences\+Dialog\+::m\+\_\+image\+Directory}
+
+
+
+Definition at line \mbox{\hyperlink{_preferences_dialog_8h_source_l00162}{162}} of file \mbox{\hyperlink{_preferences_dialog_8h_source}{Preferences\+Dialog.\+h}}.
+
+\Hypertarget{class_preferences_dialog_a86eb118bc8544fd1ef96c4027406db64}\index{PreferencesDialog@{PreferencesDialog}!m\_loadLastFileAtStartUp@{m\_loadLastFileAtStartUp}}
+\index{m\_loadLastFileAtStartUp@{m\_loadLastFileAtStartUp}!PreferencesDialog@{PreferencesDialog}}
+\doxysubsubsection{\texorpdfstring{m\_loadLastFileAtStartUp}{m\_loadLastFileAtStartUp}}
+{\footnotesize\ttfamily \label{class_preferences_dialog_a86eb118bc8544fd1ef96c4027406db64} 
+wx\+Check\+Box\texorpdfstring{$\ast$}{*} Preferences\+Dialog\+::m\+\_\+load\+Last\+File\+At\+Start\+Up}
+
+
+
+Definition at line \mbox{\hyperlink{_preferences_dialog_8h_source_l00165}{165}} of file \mbox{\hyperlink{_preferences_dialog_8h_source}{Preferences\+Dialog.\+h}}.
+
+\Hypertarget{class_preferences_dialog_a03f7b495bc623783cfbd3369758b284e}\index{PreferencesDialog@{PreferencesDialog}!m\_nameColorPicker@{m\_nameColorPicker}}
+\index{m\_nameColorPicker@{m\_nameColorPicker}!PreferencesDialog@{PreferencesDialog}}
+\doxysubsubsection{\texorpdfstring{m\_nameColorPicker}{m\_nameColorPicker}}
+{\footnotesize\ttfamily \label{class_preferences_dialog_a03f7b495bc623783cfbd3369758b284e} 
+wx\+Colour\+Picker\+Ctrl\texorpdfstring{$\ast$}{*} Preferences\+Dialog\+::m\+\_\+name\+Color\+Picker}
+
+
+
+Definition at line \mbox{\hyperlink{_preferences_dialog_8h_source_l00174}{174}} of file \mbox{\hyperlink{_preferences_dialog_8h_source}{Preferences\+Dialog.\+h}}.
+
+\Hypertarget{class_preferences_dialog_ad97c5f8ee56cda1e2f598c5407a5bcd7}\index{PreferencesDialog@{PreferencesDialog}!m\_nameFontPicker@{m\_nameFontPicker}}
+\index{m\_nameFontPicker@{m\_nameFontPicker}!PreferencesDialog@{PreferencesDialog}}
+\doxysubsubsection{\texorpdfstring{m\_nameFontPicker}{m\_nameFontPicker}}
+{\footnotesize\ttfamily \label{class_preferences_dialog_ad97c5f8ee56cda1e2f598c5407a5bcd7} 
+wx\+Font\+Picker\+Ctrl\texorpdfstring{$\ast$}{*} Preferences\+Dialog\+::m\+\_\+name\+Font\+Picker}
+
+
+
+Definition at line \mbox{\hyperlink{_preferences_dialog_8h_source_l00173}{173}} of file \mbox{\hyperlink{_preferences_dialog_8h_source}{Preferences\+Dialog.\+h}}.
+
+\Hypertarget{class_preferences_dialog_a0b704ef5ce27505614d3d5397eb26bc8}\index{PreferencesDialog@{PreferencesDialog}!m\_nbrColorPicker@{m\_nbrColorPicker}}
+\index{m\_nbrColorPicker@{m\_nbrColorPicker}!PreferencesDialog@{PreferencesDialog}}
+\doxysubsubsection{\texorpdfstring{m\_nbrColorPicker}{m\_nbrColorPicker}}
+{\footnotesize\ttfamily \label{class_preferences_dialog_a0b704ef5ce27505614d3d5397eb26bc8} 
+wx\+Colour\+Picker\+Ctrl\texorpdfstring{$\ast$}{*} Preferences\+Dialog\+::m\+\_\+nbr\+Color\+Picker}
+
+
+
+Definition at line \mbox{\hyperlink{_preferences_dialog_8h_source_l00170}{170}} of file \mbox{\hyperlink{_preferences_dialog_8h_source}{Preferences\+Dialog.\+h}}.
+
+\Hypertarget{class_preferences_dialog_af701ddbfce5e53178805dc8667a0897b}\index{PreferencesDialog@{PreferencesDialog}!m\_nbrFontPicker@{m\_nbrFontPicker}}
+\index{m\_nbrFontPicker@{m\_nbrFontPicker}!PreferencesDialog@{PreferencesDialog}}
+\doxysubsubsection{\texorpdfstring{m\_nbrFontPicker}{m\_nbrFontPicker}}
+{\footnotesize\ttfamily \label{class_preferences_dialog_af701ddbfce5e53178805dc8667a0897b} 
+wx\+Font\+Picker\+Ctrl\texorpdfstring{$\ast$}{*} Preferences\+Dialog\+::m\+\_\+nbr\+Font\+Picker}
+
+
+
+Definition at line \mbox{\hyperlink{_preferences_dialog_8h_source_l00169}{169}} of file \mbox{\hyperlink{_preferences_dialog_8h_source}{Preferences\+Dialog.\+h}}.
+
+\Hypertarget{class_preferences_dialog_a619c6628544d7108a0708b4d11c64faf}\index{PreferencesDialog@{PreferencesDialog}!m\_notebook@{m\_notebook}}
+\index{m\_notebook@{m\_notebook}!PreferencesDialog@{PreferencesDialog}}
+\doxysubsubsection{\texorpdfstring{m\_notebook}{m\_notebook}}
+{\footnotesize\ttfamily \label{class_preferences_dialog_a619c6628544d7108a0708b4d11c64faf} 
+wx\+Notebook\texorpdfstring{$\ast$}{*} Preferences\+Dialog\+::m\+\_\+notebook}
+
+
+
+Definition at line \mbox{\hyperlink{_preferences_dialog_8h_source_l00156}{156}} of file \mbox{\hyperlink{_preferences_dialog_8h_source}{Preferences\+Dialog.\+h}}.
+
+\Hypertarget{class_preferences_dialog_a6965cb7a5b265fddb3c551d28ebc918b}\index{PreferencesDialog@{PreferencesDialog}!m\_recentListSize@{m\_recentListSize}}
+\index{m\_recentListSize@{m\_recentListSize}!PreferencesDialog@{PreferencesDialog}}
+\doxysubsubsection{\texorpdfstring{m\_recentListSize}{m\_recentListSize}}
+{\footnotesize\ttfamily \label{class_preferences_dialog_a6965cb7a5b265fddb3c551d28ebc918b} 
+wx\+Text\+Ctrl\texorpdfstring{$\ast$}{*} Preferences\+Dialog\+::m\+\_\+recent\+List\+Size}
+
+
+
+Definition at line \mbox{\hyperlink{_preferences_dialog_8h_source_l00166}{166}} of file \mbox{\hyperlink{_preferences_dialog_8h_source}{Preferences\+Dialog.\+h}}.
+
+\Hypertarget{class_preferences_dialog_a8c201cb25185d7bfa27708c4cf13db80}\index{PreferencesDialog@{PreferencesDialog}!m\_SortOrderPanel@{m\_SortOrderPanel}}
+\index{m\_SortOrderPanel@{m\_SortOrderPanel}!PreferencesDialog@{PreferencesDialog}}
+\doxysubsubsection{\texorpdfstring{m\_SortOrderPanel}{m\_SortOrderPanel}}
+{\footnotesize\ttfamily \label{class_preferences_dialog_a8c201cb25185d7bfa27708c4cf13db80} 
+\mbox{\hyperlink{class_sort_order_panel}{Sort\+Order\+Panel}}\texorpdfstring{$\ast$}{*} Preferences\+Dialog\+::m\+\_\+\+Sort\+Order\+Panel}
+
+
+
+Definition at line \mbox{\hyperlink{_preferences_dialog_8h_source_l00158}{158}} of file \mbox{\hyperlink{_preferences_dialog_8h_source}{Preferences\+Dialog.\+h}}.
+
+\Hypertarget{class_preferences_dialog_a0364ebac99c9eccb03866e0c932f4740}\index{PreferencesDialog@{PreferencesDialog}!m\_textColorPicker@{m\_textColorPicker}}
+\index{m\_textColorPicker@{m\_textColorPicker}!PreferencesDialog@{PreferencesDialog}}
+\doxysubsubsection{\texorpdfstring{m\_textColorPicker}{m\_textColorPicker}}
+{\footnotesize\ttfamily \label{class_preferences_dialog_a0364ebac99c9eccb03866e0c932f4740} 
+wx\+Colour\+Picker\+Ctrl\texorpdfstring{$\ast$}{*} Preferences\+Dialog\+::m\+\_\+text\+Color\+Picker}
+
+
+
+Definition at line \mbox{\hyperlink{_preferences_dialog_8h_source_l00172}{172}} of file \mbox{\hyperlink{_preferences_dialog_8h_source}{Preferences\+Dialog.\+h}}.
+
+\Hypertarget{class_preferences_dialog_a6c544a0852f5b8fc46f5ed51071f9d13}\index{PreferencesDialog@{PreferencesDialog}!m\_textFontPicker@{m\_textFontPicker}}
+\index{m\_textFontPicker@{m\_textFontPicker}!PreferencesDialog@{PreferencesDialog}}
+\doxysubsubsection{\texorpdfstring{m\_textFontPicker}{m\_textFontPicker}}
+{\footnotesize\ttfamily \label{class_preferences_dialog_a6c544a0852f5b8fc46f5ed51071f9d13} 
+wx\+Font\+Picker\+Ctrl\texorpdfstring{$\ast$}{*} Preferences\+Dialog\+::m\+\_\+text\+Font\+Picker}
+
+
+
+Definition at line \mbox{\hyperlink{_preferences_dialog_8h_source_l00171}{171}} of file \mbox{\hyperlink{_preferences_dialog_8h_source}{Preferences\+Dialog.\+h}}.
+
+\Hypertarget{class_preferences_dialog_abe1d8f79e8134a342cd83f284d15449c}\index{PreferencesDialog@{PreferencesDialog}!m\_titleColorPicker@{m\_titleColorPicker}}
+\index{m\_titleColorPicker@{m\_titleColorPicker}!PreferencesDialog@{PreferencesDialog}}
+\doxysubsubsection{\texorpdfstring{m\_titleColorPicker}{m\_titleColorPicker}}
+{\footnotesize\ttfamily \label{class_preferences_dialog_abe1d8f79e8134a342cd83f284d15449c} 
+wx\+Colour\+Picker\+Ctrl\texorpdfstring{$\ast$}{*} Preferences\+Dialog\+::m\+\_\+title\+Color\+Picker}
+
+
+
+Definition at line \mbox{\hyperlink{_preferences_dialog_8h_source_l00168}{168}} of file \mbox{\hyperlink{_preferences_dialog_8h_source}{Preferences\+Dialog.\+h}}.
+
+\Hypertarget{class_preferences_dialog_ac494b448dc176f076f14f6e842d70ddb}\index{PreferencesDialog@{PreferencesDialog}!m\_titleFontPicker@{m\_titleFontPicker}}
+\index{m\_titleFontPicker@{m\_titleFontPicker}!PreferencesDialog@{PreferencesDialog}}
+\doxysubsubsection{\texorpdfstring{m\_titleFontPicker}{m\_titleFontPicker}}
+{\footnotesize\ttfamily \label{class_preferences_dialog_ac494b448dc176f076f14f6e842d70ddb} 
+wx\+Font\+Picker\+Ctrl\texorpdfstring{$\ast$}{*} Preferences\+Dialog\+::m\+\_\+title\+Font\+Picker}
+
+
+
+Definition at line \mbox{\hyperlink{_preferences_dialog_8h_source_l00167}{167}} of file \mbox{\hyperlink{_preferences_dialog_8h_source}{Preferences\+Dialog.\+h}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/femon/\+Development/wx/clone\+Test/\+Stamp\+Tool/src/gui/\mbox{\hyperlink{_preferences_dialog_8h}{Preferences\+Dialog.\+h}}\item 
+C\+:/\+Users/femon/\+Development/wx/clone\+Test/\+Stamp\+Tool/src/gui/\mbox{\hyperlink{_preferences_dialog_8cpp}{Preferences\+Dialog.\+cpp}}\end{DoxyCompactItemize}

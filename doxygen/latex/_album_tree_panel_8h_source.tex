@@ -1,0 +1,108 @@
+\doxysection{Album\+Tree\+Panel.\+h}
+\hypertarget{_album_tree_panel_8h_source}{}\label{_album_tree_panel_8h_source}\index{C:/Users/femon/Development/wx/cloneTest/StampTool/src/gui/AlbumTreePanel.h@{C:/Users/femon/Development/wx/cloneTest/StampTool/src/gui/AlbumTreePanel.h}}
+\mbox{\hyperlink{_album_tree_panel_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00002}00002\ \textcolor{comment}{\ *\ @file\ AlbumTreePanel.h}}
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00003}00003\ \textcolor{comment}{\ *\ @author\ Eddie\ Monroe}}
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00004}00004\ \textcolor{comment}{\ *\ @brief}}
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00005}00005\ \textcolor{comment}{\ *\ @version\ 0.1}}
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00006}00006\ \textcolor{comment}{\ *\ @date\ 2022-\/01-\/22}}
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00007}00007\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00008}00008\ \textcolor{comment}{\ *\ @copyright\ Copyright\ (\ c\ )\ 2021}}
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00009}00009\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00010}00010\ \textcolor{comment}{\ *\ This\ file\ is\ part\ of\ StampTool.}}
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00011}00011\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00012}00012\ \textcolor{comment}{\ *\ StampTool\ is\ free\ software:\ you\ can\ redistribute\ it\ and/or\ modify\ it\ under\ the}}
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00013}00013\ \textcolor{comment}{\ *\ terms\ of\ the\ GNU\ General\ Public\ License\ as\ published\ by\ the\ Free\ Software\ Foundation,}}
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00014}00014\ \textcolor{comment}{\ *\ either\ version\ 3\ of\ the\ License,\ or\ any\ later\ version.}}
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00015}00015\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00016}00016\ \textcolor{comment}{\ *\ StampTool\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,\ but\ WITHOUT\ ANY}}
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00017}00017\ \textcolor{comment}{\ *\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of\ MERCHANTABILITY\ or\ FITNESS\ FOR\ A}}
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00018}00018\ \textcolor{comment}{\ *\ PARTICULAR\ PURPOSE.\ See\ the\ GNU\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00019}00019\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00020}00020\ \textcolor{comment}{\ *\ You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License\ along\ with}}
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00021}00021\ \textcolor{comment}{\ *\ StampTool.\ If\ not,\ see\ <https://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00022}00022\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00024}00024\ \textcolor{preprocessor}{\#ifndef\ \_ALBUMPANEL\_H\_}}
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00025}00025\ \textcolor{preprocessor}{\#define\ \_ALBUMPANEL\_H\_}}
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00028}00028\ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00029}00029\ \textcolor{comment}{\ \ *\ Includes}}
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00030}00030\ \textcolor{comment}{\ \ */}}
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00031}00031\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00032}00032\ \textcolor{preprocessor}{\#include\ "{}wx/treectrl.h"{}}}
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00033}00033\ \textcolor{preprocessor}{\#include\ "{}wx/notebook.h"{}}}
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00035}00035\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_defs_8h}{Defs.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00036}00036\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_gui_defs_8h}{gui/GuiDefs.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00038}00038\ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00039}00039\ \textcolor{comment}{\ \ \ *\ Forward\ declarations}}
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00040}00040\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00041}00041\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_album_tree_ctrl}{AlbumTreeCtrl}};}
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00042}00042\ \textcolor{keyword}{class\ }ReadAlbumEasyFile;}
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00043}00043\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_album_t_o_c_tree_ctrl}{AlbumTOCTreeCtrl}};}
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00044}00044\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00045}00045\ \textcolor{comment}{\ *\ Control\ identifiers}}
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00046}00046\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00048}\mbox{\hyperlink{_album_tree_panel_8h_a450ca4decdaf6825d9580e33fbffa9a0}{00048}}\ \textcolor{preprocessor}{\#define\ SYMBOL\_ALBUMDESIGNTREE\_STYLE\ wxTAB\_TRAVERSAL}}
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00049}\mbox{\hyperlink{_album_tree_panel_8h_a8bf9c4e0206afc1259ce0d9f0adbb459}{00049}}\ \textcolor{preprocessor}{\#define\ SYMBOL\_ALBUMDESIGNTREE\_TITLE\ \_(\ "{}AlbumPanel"{}\ )}}
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00050}\mbox{\hyperlink{_album_tree_panel_8h_ae97aa9865118f1695434780da4490d2c}{00050}}\ \textcolor{preprocessor}{\#define\ SYMBOL\_ALBUMDESIGNTREE\_IDNAME\ ID\_albumTreePanel}}
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00051}\mbox{\hyperlink{_album_tree_panel_8h_a07ed9c865cfb7916eb052d9328be6de9}{00051}}\ \textcolor{preprocessor}{\#define\ SYMBOL\_ALBUMDESIGNTREE\_SIZE\ wxSize(\ 400,\ 300\ )}}
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00052}\mbox{\hyperlink{_album_tree_panel_8h_a1a56611c7909c0f33689e6479714f906}{00052}}\ \textcolor{preprocessor}{\#define\ SYMBOL\_ALBUMDESIGNTREE\_POSITION\ wxDefaultPosition}}
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00054}00054\ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00055}00055\ \textcolor{comment}{\ \ *\ AlbumTreePanel\ class\ declaration}}
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00056}00056\ \textcolor{comment}{\ \ */}}
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00058}\mbox{\hyperlink{class_album_tree_panel}{00058}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_album_tree_panel_a4a477d1ce45724f5d943dc0c33732fa7}{AlbumTreePanel}}\ :\ \textcolor{keyword}{public}\ wxPanel}
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00059}00059\ \{}
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00060}00060\ \ \ DECLARE\_DYNAMIC\_CLASS(\ \mbox{\hyperlink{class_album_tree_panel_a4a477d1ce45724f5d943dc0c33732fa7}{AlbumTreePanel}}\ )}
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00061}00061\ \ \ DECLARE\_EVENT\_TABLE(\ )}
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00063}00063\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00067}00067\ \ \ \mbox{\hyperlink{class_album_tree_panel_a4a477d1ce45724f5d943dc0c33732fa7}{AlbumTreePanel}}(\ );}
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00076}00076\ \ \ \mbox{\hyperlink{class_album_tree_panel_a4a477d1ce45724f5d943dc0c33732fa7}{AlbumTreePanel}}(\ wxWindow*\ parent,\ wxWindowID\ \textcolor{keywordtype}{id}\ =\ \mbox{\hyperlink{_album_tree_panel_8h_ae97aa9865118f1695434780da4490d2c}{SYMBOL\_ALBUMDESIGNTREE\_IDNAME}},\ \textcolor{keyword}{const}\ wxPoint\&\ pos\ =\ \mbox{\hyperlink{_album_tree_panel_8h_a1a56611c7909c0f33689e6479714f906}{SYMBOL\_ALBUMDESIGNTREE\_POSITION}},\ \textcolor{keyword}{const}\ wxSize\&\ size\ =\ \mbox{\hyperlink{_album_tree_panel_8h_a07ed9c865cfb7916eb052d9328be6de9}{SYMBOL\_ALBUMDESIGNTREE\_SIZE}},\ \textcolor{keywordtype}{long}\ style\ =\ \mbox{\hyperlink{_album_tree_panel_8h_a450ca4decdaf6825d9580e33fbffa9a0}{SYMBOL\_ALBUMDESIGNTREE\_STYLE}}\ );}
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00080}00080\ \ \ \mbox{\hyperlink{class_album_tree_panel_a53ef2290fbf4ee6c2c62cd7d05a35c4b}{\string~AlbumTreePanel}}(\ );}
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00091}00091\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_album_tree_panel_a9a9ea8e723e887fa1dff77a2806dfbd0}{Create}}(\ wxWindow*\ parent,\ wxWindowID\ \textcolor{keywordtype}{id}\ =\ \mbox{\hyperlink{_album_tree_panel_8h_ae97aa9865118f1695434780da4490d2c}{SYMBOL\_ALBUMDESIGNTREE\_IDNAME}},\ \textcolor{keyword}{const}\ wxPoint\&\ pos\ =\ \mbox{\hyperlink{_album_tree_panel_8h_a1a56611c7909c0f33689e6479714f906}{SYMBOL\_ALBUMDESIGNTREE\_POSITION}},\ \textcolor{keyword}{const}\ wxSize\&\ size\ =\ \mbox{\hyperlink{_album_tree_panel_8h_a07ed9c865cfb7916eb052d9328be6de9}{SYMBOL\_ALBUMDESIGNTREE\_SIZE}},\ \textcolor{keywordtype}{long}\ style\ =\ \mbox{\hyperlink{_album_tree_panel_8h_a450ca4decdaf6825d9580e33fbffa9a0}{SYMBOL\_ALBUMDESIGNTREE\_STYLE}}\ );}
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00092}00092\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00095}00095\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_album_tree_panel_aa387b633b702b163802e18916c537d7b}{CreateControls}}(\ );}
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00096}00096\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00100}\mbox{\hyperlink{class_album_tree_panel_a0f0eb0d7bca11db6883af5e4b5c59b52}{00100}}\ \ \ \mbox{\hyperlink{class_album_tree_ctrl}{AlbumTreeCtrl}}*\ \mbox{\hyperlink{class_album_tree_panel_a0f0eb0d7bca11db6883af5e4b5c59b52}{GetAlbumTreeCtrl}}(\ )\ \{}
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00101}00101\ \ \ \ \ \textcolor{keywordflow}{return}\ m\_albumTreeCtrl;}
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00102}00102\ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00103}00103\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00106}00106\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_album_tree_panel_a275dce9321955171b1064107e6be989d}{Init}}(\ );}
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00107}00107\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00110}00110\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_album_tree_panel_a6aad6d58c33a978b9b60fd309b066e1d}{LoadAlbumLayout}}(\ );}
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00111}00111\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00116}00116\ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_album_tree_panel_a10539e0b665b435f72ace466c8169f8c}{ShowToolTips}}(\ );}
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00117}00117\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00118}00118\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_album_tree_panel_a407377ed8fe67ad04ef811b89b5036cd}{OnContextMenu}}(\ wxContextMenuEvent\&\ event\ );}
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00119}00119\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00120}\mbox{\hyperlink{class_album_tree_panel_a099bd6336192c7a4a044b7a7d268ca23}{00120}}\ \ \ wxTextCtrl*\ \mbox{\hyperlink{class_album_tree_panel_a099bd6336192c7a4a044b7a7d268ca23}{GetAlbumListCtrl}}(\ )\{}
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00121}00121\ \ \ \ \ \textcolor{keywordflow}{return}\ m\_albumListCtrl;}
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00122}00122\ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00123}00123\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00124}\mbox{\hyperlink{class_album_tree_panel_ab00f2567589bb87303a1a37e99e044ce}{00124}}\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_album_tree_panel_ab00f2567589bb87303a1a37e99e044ce}{SetNotebookPage}}(\ \textcolor{keywordtype}{int}\ i\ )\{}
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00125}00125\ \ \ \ \ m\_albumTreePanelNotebook-\/>SetSelection(\ i\ );}
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00126}00126\ \ \ \};;}
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00127}00127\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00128}00128\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00129}00129\ \ \ \mbox{\hyperlink{class_album_tree_ctrl}{AlbumTreeCtrl}}*\ m\_albumTreeCtrl;}
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00130}00130\ \ \ wxTextCtrl*\ m\_albumListCtrl;}
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00131}00131\ \ \ \mbox{\hyperlink{class_album_t_o_c_tree_ctrl}{AlbumTOCTreeCtrl}}*\ m\_tocTreeCtrl;}
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00132}00132\ \ \ wxNotebook*\ m\_albumTreePanelNotebook;}
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00133}00133\ \};}
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00134}00134\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_panel_8h_source_l00135}00135\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

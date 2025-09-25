@@ -1,0 +1,923 @@
+\doxysection{Settings.\+cpp}
+\hypertarget{_settings_8cpp_source}{}\label{_settings_8cpp_source}\index{C:/Users/femon/Development/wx/cloneTest/StampTool/src/utils/Settings.cpp@{C:/Users/femon/Development/wx/cloneTest/StampTool/src/utils/Settings.cpp}}
+\mbox{\hyperlink{_settings_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00025}00025\ \textcolor{preprocessor}{\#include\ "{}wx/wxprec.h"{}}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00027}00027\ \textcolor{preprocessor}{\#ifdef\ \_\_BORLANDC\_\_}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00028}00028\ \textcolor{preprocessor}{\#pragma\ hdrstop}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00029}00029\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00031}00031\ \textcolor{preprocessor}{\#ifndef\ WX\_PRECOMP}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00032}00032\ \textcolor{preprocessor}{\#include\ "{}wx/wx.h"{}}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00033}00033\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00035}00035\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00036}00036\ \textcolor{preprocessor}{\#include\ <wx/dir.h>}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00037}00037\ \textcolor{preprocessor}{\#include\ <wx/filefn.h>}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00038}00038\ \textcolor{preprocessor}{\#include\ <wx/filename.h>}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00039}00039\ \textcolor{preprocessor}{\#include\ <wx/utils.h>}\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00040}00040\ \textcolor{preprocessor}{\#include\ "{}wx/xml/xml.h"{}}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00041}00041\ \textcolor{preprocessor}{\#include\ <wx/utils.h>}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00042}00042\ \textcolor{preprocessor}{\#include\ <wx/stdpaths.h>}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00044}00044\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_defs_8h}{Defs.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00045}00045\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_settings_8h}{utils/Settings.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00047}00047\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_project_8h}{utils/Project.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00049}00049\ \ \textcolor{comment}{//\#include\ "{}StampToolApp.h"{}}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00050}00050\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_stamp_tool_frame_8h}{gui/StampToolFrame.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00051}00051\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_app_data_8h}{gui/AppData.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00052}00052\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_x_m_l_utilities_8h}{utils/XMLUtilities.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00053}00053\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_collection_list_8h}{collection/CollectionList.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00054}00054\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_font_list_8h}{utils/FontList.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00059}00059\ \textcolor{comment}{//wxDECLARE\_APP(\ StampToolApp\ );}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00062}00062\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_utils}{Utils}}\ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00064}\mbox{\hyperlink{namespace_utils_adea2fb711682fc2ee218935269d4b5e3}{00064}}\ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_settings}{Settings}}*\ \mbox{\hyperlink{namespace_utils_adea2fb711682fc2ee218935269d4b5e3}{NewSettingsInstance}}(\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00065}00065\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00066}00066\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_settings}{Settings}}*\ settings\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_utils_1_1_settings}{Settings}}(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00067}00067\ \ \ \ \ \ \ \ \ settings-\/>\mbox{\hyperlink{class_utils_1_1_settings_af1e2deee8665244e8e1bffc14ed0c15f}{InitSettings}}(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00068}00068\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ settings;}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00069}00069\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00071}\mbox{\hyperlink{class_utils_1_1_settings_a0a457812f22e45372a55eaea333bed0a}{00071}}\ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_settings_a0a457812f22e45372a55eaea333bed0a}{Settings::Settings}}(\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00072}00072\ \ \ \ \ \{\ \};}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00074}\mbox{\hyperlink{class_utils_1_1_settings_af1e2deee8665244e8e1bffc14ed0c15f}{00074}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_utils_1_1_settings_af1e2deee8665244e8e1bffc14ed0c15f}{Settings::InitSettings}}(\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00075}00075\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00076}00076\ \ \ \ \ \ \ \ \ m\_defaultSortOrder.Add(\ \mbox{\hyperlink{namespace_catalog_a86f503ced35b06e6427477ddab27c6beaa75c781927bce7a2853988c0b84b05d1}{Catalog::NT\_Year}}\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00077}00077\ \ \ \ \ \ \ \ \ m\_defaultSortOrder.Add(\ \mbox{\hyperlink{namespace_catalog_a86f503ced35b06e6427477ddab27c6bea2f0fc34bb506e6a1f18c8625f047125d}{Catalog::NT\_Emission}}\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00078}00078\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00079}00079\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_settings_a60712abfaa3ccaa64e563dfcbc9d5f52}{SetConfigurationDirectory}}(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00081}00081\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_settings_a9d8232cab960d9640b8368bfae4746da}{Load}}(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00083}00083\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00084}\mbox{\hyperlink{class_utils_1_1_settings_a60712abfaa3ccaa64e563dfcbc9d5f52}{00084}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_utils_1_1_settings_a60712abfaa3ccaa64e563dfcbc9d5f52}{Settings::SetConfigurationDirectory}}(\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00085}00085\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00086}00086\ \ \ \ \ \ \ \ \ wxStandardPaths\&\ stdPaths\ =\ wxStandardPaths::Get(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00087}00087\ \ \ \ \ \ \ \ \ stdPaths.SetFileLayout(\ wxStandardPaths::FileLayout\_XDG\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00088}00088\ \ \ \ \ \ \ \ \ stdPaths.UseAppInfo(\ wxStandardPaths::AppInfo\_AppName\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00089}00089\ \ \ \ \ \ \ \ \ wxString\ settingsDir\ =\ stdPaths.GetUserLocalDataDir(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00090}00090\ \ \ \ \ \ \ \ \ wxFileName*\ fileName\ =\ \textcolor{keyword}{new}\ wxFileName(\ settingsDir\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00091}00091\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ !fileName-\/>DirExists(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00092}00092\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ \ \ fileName-\/>Mkdir(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00094}00094\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00095}00095\ \ \ \ \ \ \ \ \ wxString\ str\ =\ fileName-\/>GetFullPath(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00096}00096\ \ \ \ \ \ \ \ \ m\_configurationDirectory\ =\ str.Trim(\ );\ m\_dirty\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00097}00097\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00098}00098\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00099}\mbox{\hyperlink{class_utils_1_1_settings_a81e12488b2b853b6576cbddc104bb798}{00099}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_utils_1_1_settings_a81e12488b2b853b6576cbddc104bb798}{Settings::SetAppDataDirectory}}(\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00100}00100\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00101}00101\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00102}00102\ \ \ \ \ \ \ \ \ wxStandardPaths\&\ stdPaths\ =\ wxStandardPaths::Get(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00103}00103\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00104}00104\ \ \ \ \ \ \ \ \ stdPaths.SetFileLayout(\ wxStandardPaths::FileLayout\_XDG\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00105}00105\ \ \ \ \ \ \ \ \ stdPaths.UseAppInfo(\ wxStandardPaths::AppInfo\_AppName\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00106}00106\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00107}00107\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00108}00108\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ wxString\ appDataDir\ =\ stdPaths.GetAppDocumentsDir(\ );}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00109}00109\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ wxString\ docsDir\ =\ stdPaths.GetDocumentsDir(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00110}00110\ \ \ \ \ \ \ \ \ wxString\ subdir(\ docsDir\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00111}00111\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00112}00112\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ stdPaths.UsesAppInfo(\ wxStandardPaths::AppInfo\_VendorName\ )\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00113}00113\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00114}00114\ \ \ \ \ \ \ \ \ \ \ \ \ subdir\ =\ \mbox{\hyperlink{class_utils_1_1_settings_ac2ed81ba26d837395468b49a4a81cf5b}{AppendPathComponent}}(\ subdir,\ wxTheApp-\/>GetVendorName(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00115}00115\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00116}00116\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00117}00117\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ stdPaths.UsesAppInfo(\ wxStandardPaths::AppInfo\_AppName\ )\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00118}00118\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00119}00119\ \ \ \ \ \ \ \ \ \ \ \ \ subdir\ =\ \mbox{\hyperlink{class_utils_1_1_settings_ac2ed81ba26d837395468b49a4a81cf5b}{AppendPathComponent}}(\ subdir,\ wxTheApp-\/>GetAppName(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00120}00120\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00121}00121\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00122}00122\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00123}00123\ \ \ \ \ \ \ \ \ wxString\ appDocsDir\ =\ subdir;}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00124}00124\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00125}00125\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00126}00126\ \ \ \ \ \ \ \ \ wxFileName*\ fileName\ =\ \textcolor{keyword}{new}\ wxFileName(\ appDocsDir,\ \textcolor{stringliteral}{"{}"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00127}00127\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ !fileName-\/>DirExists(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00128}00128\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00129}00129\ \ \ \ \ \ \ \ \ \ \ \ \ fileName-\/>Mkdir(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00130}00130\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00131}00131\ \ \ \ \ \ \ \ \ wxString\ str\ =\ fileName-\/>GetFullPath(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00132}00132\ \ \ \ \ \ \ \ \ m\_appDataDirectory\ =\ str.Trim(\ );\ m\_dirty\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00133}00133\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00134}00134\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00135}\mbox{\hyperlink{class_utils_1_1_settings_ac2ed81ba26d837395468b49a4a81cf5b}{00135}}\ \ \ \ \ wxString\ \mbox{\hyperlink{class_utils_1_1_settings_ac2ed81ba26d837395468b49a4a81cf5b}{Settings::AppendPathComponent}}(\ \textcolor{keyword}{const}\ wxString\&\ dir,\ \textcolor{keyword}{const}\ wxString\&\ component\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00136}00136\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00137}00137\ \ \ \ \ \ \ \ \ wxString\ subdir(\ dir\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00138}00138\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00139}00139\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ empty\ string\ indicates\ that\ an\ error\ has\ occurred,\ don't\ touch\ it\ then}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00140}00140\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ !subdir.empty(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00141}00141\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00142}00142\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ !component.empty(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00143}00143\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00144}00144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ wxChar\ ch\ =\ *(\ subdir.end(\ )\ -\/\ 1\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00145}00145\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ !wxFileName::IsPathSeparator(\ ch\ )\ \&\&\ ch\ !=\ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{charliteral}{'.'}\ )\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00146}00146\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ subdir\ +=\ wxFileName::GetPathSeparator(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00147}00147\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00148}00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ subdir\ +=\ component;}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00149}00149\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00150}00150\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00151}00151\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00152}00152\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ subdir;}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00153}00153\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00154}00154\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00155}00155\ \ \ \ \ \textcolor{comment}{//\ wxString\ Settings::AppendAppInfo(const\ wxString\&\ dir)\ const}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00156}00156\ \ \ \ \ \textcolor{comment}{//\ \{}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00157}00157\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ wxString\ subdir(dir);}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00158}00158\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00159}00159\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ if\ (\ UsesAppInfo(AppInfo\_VendorName)\ )}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00160}00160\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \{}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00161}00161\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ subdir\ =\ AppendPathComponent(subdir,\ wxTheApp-\/>GetVendorName());}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00162}00162\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \}}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00163}00163\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00164}00164\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ if\ (\ UsesAppInfo(AppInfo\_AppName)\ )}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00165}00165\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \{}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00166}00166\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ subdir\ =\ AppendPathComponent(subdir,\ wxTheApp-\/>GetAppName());}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00167}00167\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \}}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00168}00168\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00169}00169\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ return\ subdir;}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00170}00170\ \ \ \ \ \textcolor{comment}{//\ \}}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00171}00171\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00172}00172\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00173}00173\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00174}00174\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ void\ Settings::NewAppData(\ )}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00175}00175\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \{}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00176}00176\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00177}00177\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ wxDirDialog\ \ dirDialog(\ this,\ 12355,\ \_(\ "{}Select\ the\ Filename\ and\ Directory\ for\ the\ Application\ Data"{}\ )\ );}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00178}00178\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ wxGetCwd(\ );}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00179}00179\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ fileDialog.SetDefaultDirectory(\ wxGetCwd(\ )\ );}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00180}00180\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ fileDialog.SetDefaultFilename(\ \_(\ "{}"{}UndefinedName.spt"{}"{}\ )\ );}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00181}00181\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ fileDialog.SetWildCard(\ \_(\ "{}Stamp\ Tools\ Project\ files(*.spt)|*.spt"{}\ )\ );}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00182}00182\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00183}00183\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ if\ (\ fileDialog.ShowModal(\ )\ ==\ wxID\_CANCEL\ )}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00184}00184\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \{}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00185}00185\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ return;}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00186}00186\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \}}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00187}00187\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ wxString\ dir\ =\ fileDialog.GetDir(\ );}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00188}00188\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ wxSetWorkingDirectory(\ dir\ );}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00189}00189\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00190}00190\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ GetProject(\ )-\/>FileNewProject(\ fileDialog.GetFile(\ )\ );}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00191}00191\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \}}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00192}00192\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00193}00193\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00194}00194\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00195}00195\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00196}\mbox{\hyperlink{class_utils_1_1_settings_a60c816f60b9307a75cc063ef2826a8fc}{00196}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_utils_1_1_settings_a60c816f60b9307a75cc063ef2826a8fc}{Settings::SetDirty}}(\ \textcolor{keywordtype}{bool}\ state\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00197}00197\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00198}00198\ \ \ \ \ \ \ \ \ m\_dirty\ =\ state;}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00199}00199\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ m\_dirty\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00200}00200\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00201}00201\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_defs_8cpp_a5bc84fc875d3f55720a036ed44ce76d2}{GetAppData}}(\ )-\/>\mbox{\hyperlink{class_app_data_a7d8aae70ad3a93ee87942aac0da0d15c}{SetDirty}}(\ \textcolor{keyword}{true}\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00202}00202\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00203}00203\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00204}00204\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00205}00205\ \ \ \ \ \textcolor{comment}{//\ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00206}\mbox{\hyperlink{class_utils_1_1_settings_a382c8339a240e9e325240cd712c457db}{00206}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_utils_1_1_settings_a382c8339a240e9e325240cd712c457db}{Settings::GetNextSortClassification}}(\ \textcolor{keywordtype}{int}\ current\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00207}00207\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00208}00208\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\ \textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ m\_sortOrder.GetCount(\ );\ i++\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00209}00209\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00210}00210\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ j\ =\ m\_sortOrder.Item(\ i\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00211}00211\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ "{}\ \ \ "{}\ <<\ j\ <<\ "{}\ "{}\ <<\ Catalog::CatalogBaseNames[\ j\ ];}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00212}00212\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00213}00213\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ std::cout\ <<\ "{}\(\backslash\)n"{};}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00214}00214\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ std::cout\ <<\ "{}Looking\ for"{}\ <<\ current\ +\ 1\ <<\ "{}\ "{}\ <<\ Catalog::CatalogBaseNames[\ current\ +\ 1\ ];}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00215}00215\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00216}00216\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ current\ ==\ 0\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00217}00217\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00218}00218\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_sortOrder.Item(\ 0\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00219}00219\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00220}00220\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ find\ where\ the\ current\ sort\ classification\ is}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00221}00221\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\ \textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ m\_sortOrder.GetCount(\ );\ i++\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00222}00222\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00223}00223\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ item\ =\ m\_sortOrder.Item(\ i\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00224}00224\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ item\ ==\ current\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00225}00225\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00226}00226\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ and\ get\ the\ next\ one}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00227}00227\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ i++;}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00228}00228\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ i\ <\ m\_sortOrder.GetCount(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00229}00229\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00230}00230\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_sortOrder.Item(\ i\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00231}00231\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00232}00232\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00233}00233\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00234}00234\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ oops,\ that\ was\ the\ last\ one}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00235}00235\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{namespace_catalog_a86f503ced35b06e6427477ddab27c6beadb90cc0e0ea2b65b0004617ed289a99a}{Catalog::NT\_None}};}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00236}00236\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00237}00237\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00238}00238\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00239}00239\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ apparently\ no\ sorting\ is\ going\ on.}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00240}00240\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{namespace_catalog_a86f503ced35b06e6427477ddab27c6beadb90cc0e0ea2b65b0004617ed289a99a}{Catalog::NT\_None}};}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00241}00241\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00242}00242\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00243}\mbox{\hyperlink{class_utils_1_1_settings_aa20b46a3515b2054768dc7ed527131fd}{00243}}\ \ \ \ \ wxFont\ \mbox{\hyperlink{class_utils_1_1_settings_aa20b46a3515b2054768dc7ed527131fd}{Settings::GetNbrFont}}(\ )\ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00244}00244\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{_defs_8cpp_a580d17030a54e4a9a5493f5763d11e12}{GetFontList}}(\ )-\/>\mbox{\hyperlink{class_utils_1_1_font_list_a5e142b46cb46ed693164f35fa368fe9b}{GetFont}}(\ FontPreference[\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4a0d94aa6c52078cbb63ce531ed26140b2}{Design::AT\_NbrFontType}}\ ]\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00245}00245\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00246}\mbox{\hyperlink{class_utils_1_1_settings_a0ac5e58e6c68512c1bb98aaf134b3fb6}{00246}}\ \ \ \ \ wxColour\ \mbox{\hyperlink{class_utils_1_1_settings_a0ac5e58e6c68512c1bb98aaf134b3fb6}{Settings::GetNbrColor}}(\ )\ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00247}00247\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{_defs_8cpp_a580d17030a54e4a9a5493f5763d11e12}{GetFontList}}(\ )-\/>\mbox{\hyperlink{class_utils_1_1_font_list_ab7e4d2707d76c4edeb8ddb461dee8945}{GetColor}}(\ FontPreference[\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4a0d94aa6c52078cbb63ce531ed26140b2}{Design::AT\_NbrFontType}}\ ]\ );;}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00248}00248\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00249}00249\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00250}\mbox{\hyperlink{class_utils_1_1_settings_a77f03eace930decd476b4c97f61c9c1e}{00250}}\ \ \ \ \ wxFont\ \mbox{\hyperlink{class_utils_1_1_settings_a77f03eace930decd476b4c97f61c9c1e}{Settings::GetNameFont}}(\ )\ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00251}00251\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{_defs_8cpp_a580d17030a54e4a9a5493f5763d11e12}{GetFontList}}(\ )-\/>\mbox{\hyperlink{class_utils_1_1_font_list_a5e142b46cb46ed693164f35fa368fe9b}{GetFont}}(\ FontPreference[\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4a7a0c5cdeb48aceab9b0167ab84cbcb27}{Design::AT\_NameFontType}}\ ]\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00252}00252\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00253}\mbox{\hyperlink{class_utils_1_1_settings_aad600c8b2ad18532de98ded01bed3527}{00253}}\ \ \ \ \ wxColour\ \mbox{\hyperlink{class_utils_1_1_settings_aad600c8b2ad18532de98ded01bed3527}{Settings::GetNameColor}}(\ )\ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00254}00254\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{_defs_8cpp_a580d17030a54e4a9a5493f5763d11e12}{GetFontList}}(\ )-\/>\mbox{\hyperlink{class_utils_1_1_font_list_ab7e4d2707d76c4edeb8ddb461dee8945}{GetColor}}(\ FontPreference[\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4a7a0c5cdeb48aceab9b0167ab84cbcb27}{Design::AT\_NameFontType}}\ ]\ );;}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00255}00255\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00256}00256\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00257}\mbox{\hyperlink{class_utils_1_1_settings_a03c3286b20be792b16df67d4380ed997}{00257}}\ \ \ \ \ wxFont\ \mbox{\hyperlink{class_utils_1_1_settings_a03c3286b20be792b16df67d4380ed997}{Settings::GetTitleFont}}(\ )\ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00258}00258\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{_defs_8cpp_a580d17030a54e4a9a5493f5763d11e12}{GetFontList}}(\ )-\/>\mbox{\hyperlink{class_utils_1_1_font_list_a5e142b46cb46ed693164f35fa368fe9b}{GetFont}}(\ FontPreference[\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4a078f3978681292ecf0627258c1cd1d1d}{Design::AT\_TitleFontType}}\ ]\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00259}00259\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00260}\mbox{\hyperlink{class_utils_1_1_settings_aa4cbc20018146ab86a4aa41c04c6842e}{00260}}\ \ \ \ \ wxColour\ \mbox{\hyperlink{class_utils_1_1_settings_aa4cbc20018146ab86a4aa41c04c6842e}{Settings::GetTitleColor}}(\ )\ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00261}00261\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{_defs_8cpp_a580d17030a54e4a9a5493f5763d11e12}{GetFontList}}(\ )-\/>\mbox{\hyperlink{class_utils_1_1_font_list_ab7e4d2707d76c4edeb8ddb461dee8945}{GetColor}}(\ FontPreference[\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4a078f3978681292ecf0627258c1cd1d1d}{Design::AT\_TitleFontType}}\ ]\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00262}00262\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00263}00263\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00264}\mbox{\hyperlink{class_utils_1_1_settings_a891cac5ed40378693e1c704db798cf08}{00264}}\ \ \ \ \ wxFont\ \mbox{\hyperlink{class_utils_1_1_settings_a891cac5ed40378693e1c704db798cf08}{Settings::GetSubTitleFont}}(\ )\ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00265}00265\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{_defs_8cpp_a580d17030a54e4a9a5493f5763d11e12}{GetFontList}}(\ )-\/>\mbox{\hyperlink{class_utils_1_1_font_list_a5e142b46cb46ed693164f35fa368fe9b}{GetFont}}(\ FontPreference[\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4ad65be88ee94a9ab38dc6cde177c3ab68}{Design::AT\_SubTitleFontType}}\ ]\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00266}00266\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00267}\mbox{\hyperlink{class_utils_1_1_settings_a755c6d654bcb48da2161d56f45cf7da4}{00267}}\ \ \ \ \ wxColour\ \mbox{\hyperlink{class_utils_1_1_settings_a755c6d654bcb48da2161d56f45cf7da4}{Settings::GetSubTitleColor}}(\ )\ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00268}00268\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{_defs_8cpp_a580d17030a54e4a9a5493f5763d11e12}{GetFontList}}(\ )-\/>\mbox{\hyperlink{class_utils_1_1_font_list_ab7e4d2707d76c4edeb8ddb461dee8945}{GetColor}}(\ FontPreference[\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4a078f3978681292ecf0627258c1cd1d1d}{Design::AT\_TitleFontType}}\ ]\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00269}00269\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00270}00270\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00271}\mbox{\hyperlink{class_utils_1_1_settings_aa5a32ddf0e2649e75403374402c3e30b}{00271}}\ \ \ \ \ wxFont\ \mbox{\hyperlink{class_utils_1_1_settings_aa5a32ddf0e2649e75403374402c3e30b}{Settings::GetTextFont}}(\ )\ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00272}00272\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{_defs_8cpp_a580d17030a54e4a9a5493f5763d11e12}{GetFontList}}(\ )-\/>\mbox{\hyperlink{class_utils_1_1_font_list_a5e142b46cb46ed693164f35fa368fe9b}{GetFont}}(\ FontPreference[\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4ac5d3d82b86b9c364230172d74fd70095}{Design::AT\_TextFontType}}\ ]\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00273}00273\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00274}\mbox{\hyperlink{class_utils_1_1_settings_a8db20c3ab1f615003aa8b4f2e0717fee}{00274}}\ \ \ \ \ wxColour\ \mbox{\hyperlink{class_utils_1_1_settings_a8db20c3ab1f615003aa8b4f2e0717fee}{Settings::GetTextColor}}(\ )\ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00275}00275\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{_defs_8cpp_a580d17030a54e4a9a5493f5763d11e12}{GetFontList}}(\ )-\/>\mbox{\hyperlink{class_utils_1_1_font_list_ab7e4d2707d76c4edeb8ddb461dee8945}{GetColor}}(\ FontPreference[\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4ac5d3d82b86b9c364230172d74fd70095}{Design::AT\_TextFontType}}\ ]\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00276}00276\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00277}00277\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00278}00278\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00279}00279\ \ \ \ \ \textcolor{comment}{//\ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00280}\mbox{\hyperlink{class_utils_1_1_settings_a9c6b8c5747e38c3961da0da1281ae9e8}{00280}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_utils_1_1_settings_a9c6b8c5747e38c3961da0da1281ae9e8}{Settings::SetLastFile}}(\ wxString\ file\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00281}00281\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00282}00282\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_settings_afcf8a726f1c5fb4d69cc87caada9cdbf}{AddRecent}}(\ m\_lastFile\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00283}00283\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_stamp_tool_frame}{StampToolFrame}}*\ frame\ =\ \mbox{\hyperlink{_defs_8cpp_abba9f47d8c9470ec708c79fb2c55f961}{GetFrame}}(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00284}00284\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ frame\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00285}00285\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00286}00286\ \ \ \ \ \ \ \ \ \ \ \ \ frame-\/>\mbox{\hyperlink{class_stamp_tool_frame_aa061217633d2d0f93b8babc076ff4d9b}{SetupRecentMenu}}(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00287}00287\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00288}00288\ \ \ \ \ \ \ \ \ m\_lastFile\ =\ file;}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00289}00289\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_settings_a60c816f60b9307a75cc063ef2826a8fc}{SetDirty}}(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00290}00290\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00291}00291\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00292}\mbox{\hyperlink{class_utils_1_1_settings_a33761a885cf50b0e8a6d8f8edda9497c}{00292}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_utils_1_1_settings_a33761a885cf50b0e8a6d8f8edda9497c}{Settings::SetLastListFile}}(\ wxString\ file\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00293}00293\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00294}00294\ \ \ \ \ \ \ \ \ m\_lastListFile\ =\ file;}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00295}00295\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_settings_a60c816f60b9307a75cc063ef2826a8fc}{SetDirty}}(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00296}00296\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00297}00297\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00298}00298\ \ \ \ \ \textcolor{comment}{//\ }}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00299}\mbox{\hyperlink{class_utils_1_1_settings_afcf8a726f1c5fb4d69cc87caada9cdbf}{00299}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_utils_1_1_settings_afcf8a726f1c5fb4d69cc87caada9cdbf}{Settings::AddRecent}}(\ wxString\ filename\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00300}00300\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00301}00301\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ !filename.IsEmpty(\ )\ )\ \textcolor{comment}{//\ add\ an\ empty\ file}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00302}00302\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00303}00303\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ this\ is\ already\ in\ the\ list\ somewhere\ then\ delete\ it}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00304}00304\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ cnt1\ =\ m\_recentFiles.Count(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00305}00305\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\ \textcolor{keywordtype}{int}\ i\ =\ cnt1\ -\/\ 1;\ i\ >=\ 0;\ i-\/-\/\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00306}00306\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00307}00307\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wxString\ str\ =\ m\_recentFiles.Item(\ i\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00308}00308\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ !m\_recentFiles.Item(\ i\ ).Cmp(\ filename\ )\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00309}00309\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00310}00310\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_recentFiles.RemoveAt(\ i\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00311}00311\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00312}00312\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00313}00313\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00314}00314\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ index\ =\ m\_recentFiles.Index(\ filename\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00315}00315\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ index\ !=\ wxNOT\_FOUND\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00316}00316\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00317}00317\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_recentFiles.RemoveAt(\ index\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00318}00318\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00319}00319\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00320}00320\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00321}00321\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ a\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00322}00322\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00323}00323\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00324}00324\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ and\ add\ this\ to\ te\ beginning}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00325}00325\ \ \ \ \ \ \ \ \ \ \ \ \ m\_recentFiles.Insert(\ filename,\ 0\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00326}00326\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00327}00327\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ cnt\ =\ m\_recentFiles.Count(\ )\ -\/\ m\_nbrRecentPreference;}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00328}00328\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ cnt\ >\ 0\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00329}00329\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00330}00330\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_recentFiles.RemoveAt(\ m\_nbrRecentPreference\ -\/\ 1,\ cnt\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00331}00331\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00332}00332\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00333}00333\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00334}00334\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00335}00335\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00336}\mbox{\hyperlink{class_utils_1_1_settings_aa8033d8b0430b253332b0373fd2beb8d}{00336}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_utils_1_1_settings_aa8033d8b0430b253332b0373fd2beb8d}{Settings::Save}}(\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00337}00337\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00338}00338\ \ \ \ \ \ \ \ \ wxBusyCursor\ wait(\ wxHOURGLASS\_CURSOR\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00339}00339\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00340}00340\ \ \ \ \ \ \ \ \ wxFileName*\ filename\ =\ \textcolor{keyword}{new}\ wxFileName(\ \mbox{\hyperlink{class_utils_1_1_settings_a84ec0a99c271af4f1435facb5254acda}{GetConfigurationDirectory}}(\ ),\ \textcolor{stringliteral}{"{}Settings"{}},\ \textcolor{stringliteral}{"{}xml"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00341}00341\ \ \ \ \ \ \ \ \ wxString\ fullPath\ =\ filename-\/>GetFullPath(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00342}00342\ \ \ \ \ \ \ \ \ wxXmlDocument\ doc;}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00343}00343\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00344}00344\ \ \ \ \ \ \ \ \ wxXmlNode*\ settings\ =\ \mbox{\hyperlink{namespace_utils_a156ddf8c893eba62f65ffa2a5860c766}{NewNode}}(\ \&doc,\ \textcolor{stringliteral}{"{}Settings"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00345}00345\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00346}00346\ \ \ \ \ \ \ \ \ wxXmlNode*\ child\ =\ \mbox{\hyperlink{namespace_utils_a156ddf8c893eba62f65ffa2a5860c766}{NewNode}}(\ settings,\ \textcolor{stringliteral}{"{}AppDataDirectory"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00347}00347\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ child\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00348}00348\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00349}00349\ \ \ \ \ \ \ \ \ \ \ \ \ wxString\ appDataDir\ =\ child-\/>GetAttribute(\ \textcolor{stringliteral}{"{}Name"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00350}00350\ \ \ \ \ \ \ \ \ \ \ \ \ child-\/>AddAttribute(\ \textcolor{stringliteral}{"{}Name"{}},\ m\_appDataDirectory\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00351}00351\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00352}00352\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00353}00353\ \ \ \ \ \ \ \ \ child\ =\ \mbox{\hyperlink{namespace_utils_a156ddf8c893eba62f65ffa2a5860c766}{NewNode}}(\ settings,\ \textcolor{stringliteral}{"{}LastFile"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00354}00354\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ child\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00355}00355\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00356}00356\ \ \ \ \ \ \ \ \ \ \ \ \ child-\/>AddAttribute(\ \textcolor{stringliteral}{"{}LoadLastFileAtStartUp"{}},\ \mbox{\hyperlink{_defs_8h_ac069ffec99f21fb1e45e52d11ccff7a1}{Bool2String}}(\ \mbox{\hyperlink{class_utils_1_1_settings_ab83244c5d4bb3c1f97134f39a2613cc5}{GetLoadLastFileAtStartUp}}(\ )\ )\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00357}00357\ \ \ \ \ \ \ \ \ \ \ \ \ child\ =\ \mbox{\hyperlink{namespace_utils_a156ddf8c893eba62f65ffa2a5860c766}{NewNode}}(\ child,\ \textcolor{stringliteral}{"{}File"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00358}00358\ \ \ \ \ \ \ \ \ \ \ \ \ child-\/>AddAttribute(\ \textcolor{stringliteral}{"{}Name"{}},\ \mbox{\hyperlink{class_utils_1_1_settings_a61ab2d360b9016d85e93b6cbbd1741a9}{GetLastFile}}(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00359}00359\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00360}00360\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00361}00361\ \ \ \ \ \ \ \ \ child\ =\ \mbox{\hyperlink{namespace_utils_a156ddf8c893eba62f65ffa2a5860c766}{NewNode}}(\ settings,\ \textcolor{stringliteral}{"{}LastCollection"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00362}00362\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ child\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00363}00363\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00364}00364\ \ \ \ \ \ \ \ \ \ \ \ \ child-\/>AddAttribute(\ \textcolor{stringliteral}{"{}Name"{}},\ m\_lastCollection\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00365}00365\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00366}00366\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00367}00367\ \ \ \ \ \ \ \ \ child\ =\ \mbox{\hyperlink{namespace_utils_a156ddf8c893eba62f65ffa2a5860c766}{NewNode}}(\ settings,\ \textcolor{stringliteral}{"{}CollectionList"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00368}00368\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ child\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00369}00369\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00370}00370\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_defs_8cpp_a0697bb5076e0e3aac1d20bd9cf50d654}{GetCollectionList}}(\ )-\/>\mbox{\hyperlink{class_inventory_1_1_collection_list_af18206182eba954681d61a2ca1014457}{Save}}(\ child\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00371}00371\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00372}00372\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00373}00373\ \ \ \ \ \ \ \ \ wxXmlNode*\ fonts\ =\ \mbox{\hyperlink{namespace_utils_a156ddf8c893eba62f65ffa2a5860c766}{NewNode}}(\ settings,\ \textcolor{stringliteral}{"{}Fonts"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00374}00374\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ fonts\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00375}00375\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00376}00376\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_defs_8cpp_a580d17030a54e4a9a5493f5763d11e12}{GetFontList}}(\ )-\/>\mbox{\hyperlink{class_utils_1_1_font_list_a7bb99494cab04e43e161459a07bbb7ec}{SaveFont}}(\ fonts,\ FontPreference[\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4a0d94aa6c52078cbb63ce531ed26140b2}{Design::AT\_NbrFontType}}\ ],\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4a0d94aa6c52078cbb63ce531ed26140b2}{Design::AT\_NbrFontType}}\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00377}00377\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_defs_8cpp_a580d17030a54e4a9a5493f5763d11e12}{GetFontList}}(\ )-\/>\mbox{\hyperlink{class_utils_1_1_font_list_a7bb99494cab04e43e161459a07bbb7ec}{SaveFont}}(\ fonts,\ FontPreference[\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4a7a0c5cdeb48aceab9b0167ab84cbcb27}{Design::AT\_NameFontType}}\ ],\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4a7a0c5cdeb48aceab9b0167ab84cbcb27}{Design::AT\_NameFontType}}\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00378}00378\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_defs_8cpp_a580d17030a54e4a9a5493f5763d11e12}{GetFontList}}(\ )-\/>\mbox{\hyperlink{class_utils_1_1_font_list_a7bb99494cab04e43e161459a07bbb7ec}{SaveFont}}(\ fonts,\ FontPreference[\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4ac5d3d82b86b9c364230172d74fd70095}{Design::AT\_TextFontType}}\ ],\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4ac5d3d82b86b9c364230172d74fd70095}{Design::AT\_TextFontType}}\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00379}00379\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_defs_8cpp_a580d17030a54e4a9a5493f5763d11e12}{GetFontList}}(\ )-\/>\mbox{\hyperlink{class_utils_1_1_font_list_a7bb99494cab04e43e161459a07bbb7ec}{SaveFont}}(\ fonts,\ FontPreference[\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4a078f3978681292ecf0627258c1cd1d1d}{Design::AT\_TitleFontType}}\ ],\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4a078f3978681292ecf0627258c1cd1d1d}{Design::AT\_TitleFontType}}\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00380}00380\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_defs_8cpp_a580d17030a54e4a9a5493f5763d11e12}{GetFontList}}(\ )-\/>\mbox{\hyperlink{class_utils_1_1_font_list_a7bb99494cab04e43e161459a07bbb7ec}{SaveFont}}(\ fonts,\ FontPreference[\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4ad65be88ee94a9ab38dc6cde177c3ab68}{Design::AT\_SubTitleFontType}}\ ],\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4ad65be88ee94a9ab38dc6cde177c3ab68}{Design::AT\_SubTitleFontType}}\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00381}00381\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00382}00382\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00383}00383\ \ \ \ \ \ \ \ \ wxXmlNode*\ sortOrder\ =\ \mbox{\hyperlink{namespace_utils_a156ddf8c893eba62f65ffa2a5860c766}{NewNode}}(\ settings,\ \textcolor{stringliteral}{"{}SortOrder"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00384}00384\ \ \ \ \ \ \ \ \ wxArrayInt*\ sortOrderArray\ =\ \mbox{\hyperlink{class_utils_1_1_settings_ab21bdf884399638d407cedb778a2c285}{GetSortOrder}}(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00385}00385\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\ \textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ sortOrderArray-\/>Count(\ );\ i++\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00386}00386\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00387}00387\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ sortOrderArray-\/>Item(\ i\ )\ >=\ 0\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00388}00388\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00389}00389\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ child\ =\ \mbox{\hyperlink{namespace_utils_a156ddf8c893eba62f65ffa2a5860c766}{NewNode}}(\ sortOrder,\ \textcolor{stringliteral}{"{}Classification"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00390}00390\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ child-\/>AddAttribute(\ \textcolor{stringliteral}{"{}Name"{}},\ \mbox{\hyperlink{namespace_catalog_af883688379268368070a0dd49b898a1f}{Catalog::CatalogBaseNames}}[\ sortOrderArray-\/>Item(\ i\ )\ ]\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00391}00391\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00392}00392\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00393}00393\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00394}00394\ \ \ \ \ \ \ \ \ wxXmlNode*\ division\ =\ \mbox{\hyperlink{namespace_utils_a156ddf8c893eba62f65ffa2a5860c766}{NewNode}}(\ settings,\ \textcolor{stringliteral}{"{}PeriodDivision"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00395}00395\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ division\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00396}00396\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00397}00397\ \ \ \ \ \ \ \ \ \ \ \ \ division-\/>AddAttribute(\ \textcolor{stringliteral}{"{}LowerDivision"{}},\ \mbox{\hyperlink{class_utils_1_1_settings_abc8d95ea347ca35075320544e913cbf2}{GetLowerDivision}}(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00398}00398\ \ \ \ \ \ \ \ \ \ \ \ \ division-\/>AddAttribute(\ \textcolor{stringliteral}{"{}UpperDivision"{}},\ \mbox{\hyperlink{class_utils_1_1_settings_a30a92b01c3b9f4f7ff6d13a74c2e7ea3}{GetUpperDivision}}(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00399}00399\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00400}00400\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00401}00401\ \ \ \ \ \ \ \ \ wxXmlNode*\ periods\ =\ \mbox{\hyperlink{namespace_utils_a156ddf8c893eba62f65ffa2a5860c766}{NewNode}}(\ settings,\ \textcolor{stringliteral}{"{}Periods"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00402}00402\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ periods\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00403}00403\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00404}00404\ \ \ \ \ \ \ \ \ \ \ \ \ periods-\/>AddAttribute(\ \textcolor{stringliteral}{"{}LowerPeriod"{}},\ \mbox{\hyperlink{class_utils_1_1_settings_a597f8968baacfd4c386d4c860fe66c3f}{GetLowerPeriod}}(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00405}00405\ \ \ \ \ \ \ \ \ \ \ \ \ periods-\/>AddAttribute(\ \textcolor{stringliteral}{"{}MiddlePeriod"{}},\ \mbox{\hyperlink{class_utils_1_1_settings_ac58be690064f7ab431356504f27aa231}{GetMiddlePeriod}}(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00406}00406\ \ \ \ \ \ \ \ \ \ \ \ \ periods-\/>AddAttribute(\ \textcolor{stringliteral}{"{}UpperPeriod"{}},\ \mbox{\hyperlink{class_utils_1_1_settings_ae9ea40cfec9772eb1d5123fe95d366c1}{GetUpperPeriod}}(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00407}00407\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00408}00408\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00409}00409\ \ \ \ \ \ \ \ \ wxArrayString*\ recentArray\ =\ \mbox{\hyperlink{class_utils_1_1_settings_ac1d5c38b1853e58b950776699bb28d08}{GetRecentArray}}(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00410}00410\ \ \ \ \ \ \ \ \ wxXmlNode*\ recent\ =\ \mbox{\hyperlink{namespace_utils_a156ddf8c893eba62f65ffa2a5860c766}{NewNode}}(\ settings,\ \textcolor{stringliteral}{"{}RecentFileList"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00411}00411\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ recent\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00412}00412\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00413}00413\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ nbr\ =\ \mbox{\hyperlink{class_utils_1_1_settings_a968bcb77da62a79307069fe7ef4635fd}{GetNbrRecentPreference}}(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00414}00414\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ str[\ 20\ ];}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00415}00415\ \ \ \ \ \ \ \ \ \ \ \ \ sprintf(\ str,\ \textcolor{stringliteral}{"{}\%d"{}},\ nbr\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00416}00416\ \ \ \ \ \ \ \ \ \ \ \ \ recent-\/>AddAttribute(\ \textcolor{stringliteral}{"{}NbrRecentPreference"{}},\ str\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00417}00417\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00418}00418\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\ \textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ recentArray-\/>Count(\ );\ i++\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00419}00419\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00420}00420\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wxXmlNode*\ recentFile\ =\ \mbox{\hyperlink{namespace_utils_a156ddf8c893eba62f65ffa2a5860c766}{NewNode}}(\ recent,\ \textcolor{stringliteral}{"{}File"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00421}00421\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ recentFile-\/>AddAttribute(\ \textcolor{stringliteral}{"{}Name"{}},\ recentArray-\/>Item(\ i\ )\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00422}00422\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00423}00423\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00424}00424\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00425}00425\ \ \ \ \ \ \ \ \ wxXmlNode*\ idPref\ =\ \mbox{\hyperlink{namespace_utils_a156ddf8c893eba62f65ffa2a5860c766}{NewNode}}(\ settings,\ \textcolor{stringliteral}{"{}IDPreference"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00426}00426\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ recent\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00427}00427\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00428}00428\ \ \ \ \ \ \ \ \ \ \ \ \ idPref-\/>AddAttribute(\ \textcolor{stringliteral}{"{}CatalogID"{}},\ m\_catalogID\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00429}00429\ \ \ \ \ \ \ \ \ \ \ \ \ idPref-\/>AddAttribute(\ \textcolor{stringliteral}{"{}CountryID"{}},\ m\_countryID\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00430}00430\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00431}00431\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ file\ =\ fullPath.c\_str(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00432}00432\ \ \ \ \ \ \ \ \ doc.Save(\ file\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00433}00433\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Utils::Save(\ \ \&doc,\ file\ );}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00434}00434\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_settings_a60c816f60b9307a75cc063ef2826a8fc}{SetDirty}}(\ \textcolor{keyword}{false}\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00435}00435\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00436}00436\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00437}00437\ \ \ \ \ \textcolor{comment}{//\ }}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00438}\mbox{\hyperlink{class_utils_1_1_settings_a985aa342e1c3adb677881b55ee33bf4f}{00438}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_utils_1_1_settings_a985aa342e1c3adb677881b55ee33bf4f}{Settings::SetSettingValue}}(\ wxString\&\ setting,\ wxXmlNode*\ parent,\ wxString\ childName,\ wxString\ defaultVal\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00439}00439\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00440}00440\ \ \ \ \ \ \ \ \ wxXmlNode*\ childNode\ =\ \mbox{\hyperlink{namespace_utils_ac982aeec9bf06c61495032e66e41d30f}{FirstChildElement}}(\ parent,\ childName\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00441}00441\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ childNode\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00442}00442\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00443}00443\ \ \ \ \ \ \ \ \ \ \ \ \ setting\ =\ childNode-\/>GetNodeContent(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00444}00444\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ setting.IsEmpty(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00445}00445\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00446}00446\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_settings_a60c816f60b9307a75cc063ef2826a8fc}{SetDirty}}(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00447}00447\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ setting\ =\ defaultVal;}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00448}00448\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00449}00449\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00450}00450\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00451}00451\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00452}00452\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_settings_a60c816f60b9307a75cc063ef2826a8fc}{SetDirty}}(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00453}00453\ \ \ \ \ \ \ \ \ \ \ \ \ setting\ =\ defaultVal;}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00454}00454\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00455}00455\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00456}00456\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00457}00457\ \ \ \ \ \textcolor{comment}{//\ }}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00458}\mbox{\hyperlink{class_utils_1_1_settings_a1b0dc9575ef4b34eaba5973416ccd0f9}{00458}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_utils_1_1_settings_a1b0dc9575ef4b34eaba5973416ccd0f9}{Settings::SetDefaults}}(\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00459}00459\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00460}00460\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00461}00461\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ m\_sortOrder.Count(\ )\ <=\ 0\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00462}00462\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00463}00463\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_settings_a60c816f60b9307a75cc063ef2826a8fc}{SetDirty}}(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00464}00464\ \ \ \ \ \ \ \ \ \ \ \ \ m\_sortOrder.Add(\ \mbox{\hyperlink{namespace_catalog_a86f503ced35b06e6427477ddab27c6beaa75c781927bce7a2853988c0b84b05d1}{Catalog::NT\_Year}}\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00465}00465\ \ \ \ \ \ \ \ \ \ \ \ \ m\_sortOrder.Add(\ \mbox{\hyperlink{namespace_catalog_a86f503ced35b06e6427477ddab27c6bea2f0fc34bb506e6a1f18c8625f047125d}{Catalog::NT\_Emission}}\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00466}00466\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00467}00467\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ m\_lowerDivision.IsEmpty(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00468}00468\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00469}00469\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_settings_a60c816f60b9307a75cc063ef2826a8fc}{SetDirty}}(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00470}00470\ \ \ \ \ \ \ \ \ \ \ \ \ m\_lowerDivision\ =\ m\_defaultLowerDivision;}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00471}00471\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00472}00472\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ m\_upperDivision.IsEmpty(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00473}00473\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00474}00474\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_settings_a60c816f60b9307a75cc063ef2826a8fc}{SetDirty}}(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00475}00475\ \ \ \ \ \ \ \ \ \ \ \ \ m\_upperDivision\ =\ m\_defaultUpperDivision;}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00476}00476\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00477}00477\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ m\_lowerPeriod.IsEmpty(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00478}00478\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00479}00479\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_settings_a60c816f60b9307a75cc063ef2826a8fc}{SetDirty}}(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00480}00480\ \ \ \ \ \ \ \ \ \ \ \ \ m\_lowerPeriod\ =\ m\_defaultLowerPeriod;}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00481}00481\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00482}00482\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ m\_middlePeriod.IsEmpty(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00483}00483\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00484}00484\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_settings_a60c816f60b9307a75cc063ef2826a8fc}{SetDirty}}(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00485}00485\ \ \ \ \ \ \ \ \ \ \ \ \ m\_middlePeriod\ =\ m\_defaultMiddlePeriod;}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00486}00486\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00487}00487\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ m\_upperPeriod.IsEmpty(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00488}00488\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00489}00489\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_settings_a60c816f60b9307a75cc063ef2826a8fc}{SetDirty}}(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00490}00490\ \ \ \ \ \ \ \ \ \ \ \ \ m\_upperPeriod\ =\ m\_defaultUpperPeriod;}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00491}00491\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00492}00492\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ m\_countryID.IsEmpty(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00493}00493\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00494}00494\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_settings_a60c816f60b9307a75cc063ef2826a8fc}{SetDirty}}(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00495}00495\ \ \ \ \ \ \ \ \ \ \ \ \ m\_countryID\ =\ m\_defaultCountryID;}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00496}00496\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00497}00497\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ m\_catalogID.IsEmpty(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00498}00498\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00499}00499\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_settings_a60c816f60b9307a75cc063ef2826a8fc}{SetDirty}}(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00500}00500\ \ \ \ \ \ \ \ \ \ \ \ \ m\_catalogID\ =\ m\_defaultCatalogID;}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00501}00501\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00502}00502\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00503}00503\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ m\_nbrRecentPreference\ <=\ 0\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00504}00504\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00505}00505\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_settings_a60c816f60b9307a75cc063ef2826a8fc}{SetDirty}}(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00506}00506\ \ \ \ \ \ \ \ \ \ \ \ \ m\_nbrRecentPreference\ =\ m\_defaultNbrRecentPreference;}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00507}00507\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00508}00508\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00509}00509\ \ \ \ \ \ \ \ \ wxFont\ font(\ *wxNORMAL\_FONT\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00510}00510\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00511}00511\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_settings_a81e12488b2b853b6576cbddc104bb798}{SetAppDataDirectory}}(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00512}00512\ \ \ \ \ \ \ \ \ wxFileName\ lf(\ m\_appDataDirectory\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00513}00513\ \ \ \ \ \ \ \ \ wxSetWorkingDirectory(\ lf.GetPath(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00514}00514\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00515}00515\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00516}00516\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00517}\mbox{\hyperlink{class_utils_1_1_settings_a9d8232cab960d9640b8368bfae4746da}{00517}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_utils_1_1_settings_a9d8232cab960d9640b8368bfae4746da}{Settings::Load}}(\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00518}00518\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00519}00519\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Set\ Defaults}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00520}00520\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_settings_acbad955311bd35e3f3aad68ceabe3928}{SetLoadLastFileAtStartUp}}(\ \textcolor{keyword}{true}\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00521}00521\ \ \ \ \ \ \ \ \ \textcolor{comment}{//SetImageDirectory(\ "{}"{}\ );}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00522}00522\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_settings_a9444e09eb1e6b69708ff2bda9092adfb}{SetCatalogID}}(\ \textcolor{stringliteral}{"{}"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00523}00523\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_settings_a784e120d6ac9c529abd4b0147657b1e4}{SetCountryID}}(\ \textcolor{stringliteral}{"{}"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00524}00524\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00525}00525\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_settings_a1b0dc9575ef4b34eaba5973416ccd0f9}{SetDefaults}}(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00526}00526\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00527}00527\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_settings_a9c6b8c5747e38c3961da0da1281ae9e8}{SetLastFile}}(\ \textcolor{stringliteral}{"{}"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00528}00528\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_settings_a062cd8d0554cc98cddcf7d9608e70dc5}{SetNbrRecentPreference}}(\ 4\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00529}00529\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_settings_a796abbe8bf92b4dc9c05a2c84245f8f3}{SetCatalogVolumeEditable}}(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00530}00530\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_settings_af403ab4768d3a766ac8d5ef61ebdf5e9}{SetCatalogVolumeEditableDefault}}(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00531}00531\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00532}00532\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Now\ get\ the\ Settings}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00533}00533\ \ \ \ \ \ \ \ \ wxFileName*\ filename}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00534}00534\ \ \ \ \ \ \ \ \ \ \ \ \ =\ \textcolor{keyword}{new}\ wxFileName(\ \mbox{\hyperlink{class_utils_1_1_settings_a84ec0a99c271af4f1435facb5254acda}{GetConfigurationDirectory}}(\ ),\ \textcolor{stringliteral}{"{}Settings"{}},\ \textcolor{stringliteral}{"{}xml"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00535}00535\ \ \ \ \ \ \ \ \ wxString\ fullPath\ =\ filename-\/>GetFullPath(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00536}00536\ \ \ \ \ \ \ \ \ wxXmlDocument\ doc;}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00537}00537\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ ok\ =\ doc.Load(\ fullPath\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00538}00538\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00539}00539\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ !ok\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00540}00540\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00541}00541\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_settings_a81e12488b2b853b6576cbddc104bb798}{SetAppDataDirectory}}(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00542}00542\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00543}00543\ \ \ \ \ \ \ \ \ \ \ \ \ wxString\ appDir\ =\ \mbox{\hyperlink{class_utils_1_1_settings_a18329bfdbc189187fae7baf9245bd85f}{GetAppDataDirectory}}(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00544}00544\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00545}00545\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_settings_a60c816f60b9307a75cc063ef2826a8fc}{SetDirty}}(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00546}00546\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Loading\ the\ settings.xml\ file\ failed}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00547}00547\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Save\ defaults\ here\ and\ return}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00548}00548\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00549}00549\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_settings_aa8033d8b0430b253332b0373fd2beb8d}{Save}}(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00550}00550\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00551}00551\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00552}00552\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00553}00553\ \ \ \ \ \ \ \ \ wxString\ name\ =\ doc.GetRoot(\ )-\/>GetName(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00554}00554\ \ \ \ \ \ \ \ \ wxXmlNode*\ root\ =\ doc.GetRoot(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00555}00555\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00556}00556\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ start\ processing\ the\ XML\ file}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00557}00557\ \ \ \ \ \ \ \ \ name\ =\ root-\/>GetName(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00558}00558\ \ \ \ \ \ \ \ \ \textcolor{comment}{//wxXmlNode*\ child\ =\ root-\/>GetChildren(\ );;}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00559}00559\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00560}00560\ \ \ \ \ \ \ \ \ \textcolor{comment}{//while\ (\ child\ )}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00561}00561\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\{}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00562}00562\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//wxString\ name\ =\ child-\/>GetName(\ );}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00563}00563\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00564}00564\ \ \ \ \ \ \ \ \ wxXmlNode*\ child\ =\ \mbox{\hyperlink{namespace_utils_ac982aeec9bf06c61495032e66e41d30f}{FirstChildElement}}(\ root,\ \textcolor{stringliteral}{"{}SortOrder"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00565}00565\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ child\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00566}00566\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00567}00567\ \ \ \ \ \ \ \ \ \ \ \ \ wxArrayInt*\ sortOrderArray\ =\ \mbox{\hyperlink{class_utils_1_1_settings_ab21bdf884399638d407cedb778a2c285}{GetSortOrder}}(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00568}00568\ \ \ \ \ \ \ \ \ \ \ \ \ wxXmlNode*\ sortOrderChild\ =\ child-\/>GetChildren(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00569}00569\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (\ sortOrderChild\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00570}00570\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00571}00571\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wxString\ childName\ =\ sortOrderChild-\/>GetName(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00572}00572\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ !childName.Cmp(\ \textcolor{stringliteral}{"{}Classification"{}}\ )\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00573}00573\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00574}00574\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wxString\ sortOrderChild\ =\ child-\/>GetAttribute(\ \textcolor{stringliteral}{"{}Name"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00575}00575\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_catalog_a86f503ced35b06e6427477ddab27c6be}{Catalog::CatalogBaseType}}\ type\ =\ \mbox{\hyperlink{namespace_catalog_a1b22674b71ab7beb168ad6749c6259f6}{Catalog::FindCatalogBaseType}}(\ name\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00576}00576\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ type\ >\ -\/1\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00577}00577\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00578}00578\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sortOrderArray-\/>Add(\ type\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00579}00579\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00580}00580\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00581}00581\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sortOrderChild\ =\ sortOrderChild-\/>GetNext(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00582}00582\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00583}00583\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00584}00584\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00585}00585\ \ \ \ \ \ \ \ \ child\ =\ \mbox{\hyperlink{namespace_utils_ac982aeec9bf06c61495032e66e41d30f}{FirstChildElement}}(\ root,\ \textcolor{stringliteral}{"{}PeriodDivision"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00586}00586\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ child\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00587}00587\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//else\ if\ (\ !name.Cmp(\ "{}PeriodDivision"{}\ )\ )}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00588}00588\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00589}00589\ \ \ \ \ \ \ \ \ \ \ \ \ m\_lowerDivision\ =\ child-\/>GetAttribute(\ \textcolor{stringliteral}{"{}LowerDivision"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00590}00590\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ m\_lowerDivision.IsEmpty(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00591}00591\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00592}00592\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_lowerDivision\ =\ m\_defaultLowerDivision;}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00593}00593\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_settings_a60c816f60b9307a75cc063ef2826a8fc}{SetDirty}}(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00594}00594\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00595}00595\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00596}00596\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00597}00597\ \ \ \ \ \ \ \ \ \ \ \ \ m\_upperDivision\ =\ child-\/>GetAttribute(\ \textcolor{stringliteral}{"{}UpperDivision"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00598}00598\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ m\_upperDivision.IsEmpty(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00599}00599\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00600}00600\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_upperDivision\ =\ m\_defaultUpperDivision;}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00601}00601\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_settings_a60c816f60b9307a75cc063ef2826a8fc}{SetDirty}}(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00602}00602\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00603}00603\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00604}00604\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00605}00605\ \ \ \ \ \ \ \ \ child\ =\ \mbox{\hyperlink{namespace_utils_ac982aeec9bf06c61495032e66e41d30f}{FirstChildElement}}(\ root,\ \textcolor{stringliteral}{"{}Periods"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00606}00606\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ child\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00607}00607\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//else\ if\ (\ !name.Cmp(\ "{}Periods"{}\ )\ )}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00608}00608\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00609}00609\ \ \ \ \ \ \ \ \ \ \ \ \ m\_lowerPeriod\ =\ child-\/>GetAttribute(\ \textcolor{stringliteral}{"{}LowerPeriod"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00610}00610\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ m\_lowerPeriod.IsEmpty(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00611}00611\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00612}00612\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_lowerPeriod\ =\ m\_defaultLowerPeriod;}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00613}00613\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_settings_a60c816f60b9307a75cc063ef2826a8fc}{SetDirty}}(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00614}00614\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00615}00615\ \ \ \ \ \ \ \ \ \ \ \ \ m\_middlePeriod\ =\ child-\/>GetAttribute(\ \textcolor{stringliteral}{"{}MiddlePeriod"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00616}00616\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ m\_middlePeriod.IsEmpty(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00617}00617\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00618}00618\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_middlePeriod\ =\ m\_defaultMiddlePeriod;}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00619}00619\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_settings_a60c816f60b9307a75cc063ef2826a8fc}{SetDirty}}(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00620}00620\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00621}00621\ \ \ \ \ \ \ \ \ \ \ \ \ m\_upperPeriod\ =\ child-\/>GetAttribute(\ \textcolor{stringliteral}{"{}UpperPeriod"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00622}00622\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ m\_upperPeriod.IsEmpty(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00623}00623\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00624}00624\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_upperPeriod\ =\ m\_defaultUpperPeriod;}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00625}00625\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_settings_a60c816f60b9307a75cc063ef2826a8fc}{SetDirty}}(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00626}00626\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00627}00627\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00628}00628\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00629}00629\ \ \ \ \ \ \ \ \ child\ =\ \mbox{\hyperlink{namespace_utils_ac982aeec9bf06c61495032e66e41d30f}{FirstChildElement}}(\ root,\ \textcolor{stringliteral}{"{}AppDataDirectory"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00630}00630\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ child\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00631}00631\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00632}00632\ \ \ \ \ \ \ \ \ \ \ \ \ wxString\ appDataDir\ =\ child-\/>GetAttribute(\ \textcolor{stringliteral}{"{}Name"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00633}00633\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ appDataDir.IsEmpty(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00634}00634\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00635}00635\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_settings_a81e12488b2b853b6576cbddc104bb798}{SetAppDataDirectory}}(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00636}00636\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wxFileName\ lf(\ m\_appDataDirectory,\ \textcolor{stringliteral}{"{}"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00637}00637\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wxSetWorkingDirectory(\ lf.GetPath(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00638}00638\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_settings_a60c816f60b9307a75cc063ef2826a8fc}{SetDirty}}(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00639}00639\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00640}00640\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00641}00641\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00642}00642\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wxFileName\ lf(\ appDataDir\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00643}00643\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ lf.DirExists(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00644}00644\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00645}00645\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_appDataDirectory\ =\ appDataDir;}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00646}00646\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wxSetWorkingDirectory(\ lf.GetPath(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00647}00647\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00648}00648\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00649}00649\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00650}00650\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_settings_a81e12488b2b853b6576cbddc104bb798}{SetAppDataDirectory}}(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00651}00651\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wxFileName\ lf(\ m\_appDataDirectory\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00652}00652\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wxSetWorkingDirectory(\ lf.GetPath(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00653}00653\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00654}00654\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00655}00655\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00656}00656\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00657}00657\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00658}00658\ \ \ \ \ \ \ \ \ child\ =\ \mbox{\hyperlink{namespace_utils_ac982aeec9bf06c61495032e66e41d30f}{FirstChildElement}}(\ root,\ \textcolor{stringliteral}{"{}LastFile"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00659}00659\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ child\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00660}00660\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//else\ if\ (\ !name.Cmp(\ "{}LastFile"{}\ )\ )}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00661}00661\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00662}00662\ \ \ \ \ \ \ \ \ \ \ \ \ wxString\ loadLastFile\ =\ child-\/>GetAttribute(\ \textcolor{stringliteral}{"{}LoadLastFileAtStartUp"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00663}00663\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ isTrue\ =\ !loadLastFile.Cmp(\ \textcolor{stringliteral}{"{}true"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00664}00664\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_settings_acbad955311bd35e3f3aad68ceabe3928}{SetLoadLastFileAtStartUp}}(\ isTrue\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00665}00665\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00666}00666\ \ \ \ \ \ \ \ \ \ \ \ \ wxXmlNode*\ file\ =\ child-\/>GetChildren(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00667}00667\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ file\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00668}00668\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00669}00669\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wxString\ childName\ =\ file-\/>GetName(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00670}00670\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ !childName.Cmp(\ \textcolor{stringliteral}{"{}File"{}}\ )\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00671}00671\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00672}00672\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_lastFile\ =\ file-\/>GetAttribute(\ \textcolor{stringliteral}{"{}Name"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00673}00673\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ m\_lastFile.IsEmpty(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00674}00674\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00675}00675\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wxString\ dir\ =\ \mbox{\hyperlink{class_utils_1_1_settings_a18329bfdbc189187fae7baf9245bd85f}{GetAppDataDirectory}}(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00676}00676\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wxFileName\ lf(\ dir,\ \textcolor{stringliteral}{"{}"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00677}00677\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wxSetWorkingDirectory(\ lf.GetPath(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00678}00678\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00679}00679\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00680}00680\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00681}00681\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wxFileName\ lf(\ m\_lastFile\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00682}00682\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wxSetWorkingDirectory(\ lf.GetPath(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00683}00683\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00684}00684\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00685}00685\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00686}00686\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00687}00687\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00688}00688\ \ \ \ \ \ \ \ \ child\ =\ \mbox{\hyperlink{namespace_utils_ac982aeec9bf06c61495032e66e41d30f}{FirstChildElement}}(\ root,\ \textcolor{stringliteral}{"{}StampDataEdit"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00689}00689\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ child\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00690}00690\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//else\ if\ (\ !name.Cmp(\ "{}StampDataEdit"{}\ )\ )}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00691}00691\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00692}00692\ \ \ \ \ \ \ \ \ \ \ \ \ wxString\ defaultVal\ =\ child-\/>GetAttribute(\ \textcolor{stringliteral}{"{}Default"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00693}00693\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ isTrue\ =\ !defaultVal.Cmp(\ \textcolor{stringliteral}{"{}true"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00694}00694\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_settings_a796abbe8bf92b4dc9c05a2c84245f8f3}{SetCatalogVolumeEditable}}(\ isTrue\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00695}00695\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_settings_af403ab4768d3a766ac8d5ef61ebdf5e9}{SetCatalogVolumeEditableDefault}}(\ isTrue\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00696}00696\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00697}00697\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00698}00698\ \ \ \ \ \ \ \ \ child\ =\ \mbox{\hyperlink{namespace_utils_ac982aeec9bf06c61495032e66e41d30f}{FirstChildElement}}(\ root,\ \textcolor{stringliteral}{"{}IDPreference"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00699}00699\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ child\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00700}00700\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//else\ if\ (\ !name.Cmp(\ "{}IDPreference"{}\ )\ )}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00701}00701\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00702}00702\ \ \ \ \ \ \ \ \ \ \ \ \ m\_catalogID\ =\ child-\/>GetAttribute(\ \textcolor{stringliteral}{"{}CatalogID"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00703}00703\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ m\_catalogID.IsEmpty(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00704}00704\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00705}00705\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_catalogID\ =\ m\_defaultCatalogID;}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00706}00706\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00707}00707\ \ \ \ \ \ \ \ \ \ \ \ \ m\_countryID\ =\ child-\/>GetAttribute(\ \textcolor{stringliteral}{"{}CountryID"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00708}00708\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ m\_countryID.IsEmpty(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00709}00709\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00710}00710\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_countryID\ =\ m\_defaultCountryID;}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00711}00711\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00712}00712\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00713}00713\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00714}00714\ \ \ \ \ \ \ \ \ child\ =\ \mbox{\hyperlink{namespace_utils_ac982aeec9bf06c61495032e66e41d30f}{FirstChildElement}}(\ root,\ \textcolor{stringliteral}{"{}RecentFileList"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00715}00715\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ child\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00716}00716\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//else\ if\ (\ !name.Cmp(\ "{}RecentFileList"{}\ )\ )}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00717}00717\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00718}00718\ \ \ \ \ \ \ \ \ \ \ \ \ wxArrayString*\ recentArray\ =\ \mbox{\hyperlink{class_utils_1_1_settings_ac1d5c38b1853e58b950776699bb28d08}{GetRecentArray}}(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00719}00719\ \ \ \ \ \ \ \ \ \ \ \ \ recentArray-\/>Clear(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00720}00720\ \ \ \ \ \ \ \ \ \ \ \ \ wxString\ nbeRecentPref\ =\ child-\/>GetAttribute(\ \textcolor{stringliteral}{"{}NbrRecentPreference"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00721}00721\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{long}\ nbr;}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00722}00722\ \ \ \ \ \ \ \ \ \ \ \ \ nbeRecentPref.ToLong(\ \&nbr\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00723}00723\ \ \ \ \ \ \ \ \ \ \ \ \ m\_nbrRecentPreference\ =\ nbr;}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00724}00724\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00725}00725\ \ \ \ \ \ \ \ \ \ \ \ \ wxXmlNode*\ file\ =\ child-\/>GetChildren(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00726}00726\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (\ file\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00727}00727\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00728}00728\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wxString\ childName\ =\ file-\/>GetName(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00729}00729\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ !childName.Cmp(\ \textcolor{stringliteral}{"{}File"{}}\ )\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00730}00730\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00731}00731\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ name\ =\ file-\/>GetAttribute(\ \textcolor{stringliteral}{"{}Name"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00732}00732\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00733}00733\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ recentArray-\/>Add(\ name\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00734}00734\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00735}00735\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ file\ =\ file-\/>GetNext(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00736}00736\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00737}00737\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00738}00738\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00739}00739\ \ \ \ \ \ \ \ \ child\ =\ \mbox{\hyperlink{namespace_utils_ac982aeec9bf06c61495032e66e41d30f}{FirstChildElement}}(\ root,\ \textcolor{stringliteral}{"{}LastCollection"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00740}00740\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ child\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00741}00741\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//else\ if\ (\ !name.Cmp(\ "{}LastCollection"{}\ )\ )}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00742}00742\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00743}00743\ \ \ \ \ \ \ \ \ \ \ \ \ m\_lastCollection\ =\ child-\/>GetAttribute(\ \textcolor{stringliteral}{"{}Name"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00744}00744\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00745}00745\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00746}00746\ \ \ \ \ \ \ \ \ child\ =\ \mbox{\hyperlink{namespace_utils_ac982aeec9bf06c61495032e66e41d30f}{FirstChildElement}}(\ root,\ \textcolor{stringliteral}{"{}CollectionList"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00747}00747\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ child\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00748}00748\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//else\ if\ (\ !name.Cmp(\ "{}CollectionList"{}\ )\ )}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00749}00749\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00750}00750\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_defs_8cpp_a0697bb5076e0e3aac1d20bd9cf50d654}{GetCollectionList}}(\ )-\/>\mbox{\hyperlink{class_inventory_1_1_collection_list_a1ed485914cfe1b2856e6b429e7924f04}{Load}}(\ child\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00751}00751\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00752}00752\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00753}00753\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00754}00754\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_defs_8cpp_a0697bb5076e0e3aac1d20bd9cf50d654}{GetCollectionList}}(\ )-\/>\mbox{\hyperlink{class_inventory_1_1_collection_list_a2034ad51027be0fe49d74d0f7a090186}{SetDefaultCollection}}(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00755}00755\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00756}00756\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00757}00757\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_settings_ad521113ed6aa936eaf0a7a1f24efa3c6}{SetApplicationDefaults}}(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00758}00758\ \ \ \ \ \ \ \ \ child\ =\ \mbox{\hyperlink{namespace_utils_ac982aeec9bf06c61495032e66e41d30f}{FirstChildElement}}(\ root,\ \textcolor{stringliteral}{"{}Defaults"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00759}00759\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ child\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00760}00760\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00761}00761\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_settings_aed4208f6e3277534a7d509dfc7914da6}{LoadLayoutPreference}}(\ child\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00762}00762\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00763}00763\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00764}00764\ \ \ \ \ \ \ \ \ child\ =\ \mbox{\hyperlink{namespace_utils_ac982aeec9bf06c61495032e66e41d30f}{FirstChildElement}}(\ root,\ \textcolor{stringliteral}{"{}Fonts"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00765}00765\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ child\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00766}00766\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//else\ if\ (\ !name.Cmp(\ "{}Fonts"{}\ )\ )}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00767}00767\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00768}00768\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00769}00769\ \ \ \ \ \ \ \ \ \ \ \ \ FontPreference[\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4a0d94aa6c52078cbb63ce531ed26140b2}{Design::AT\_NbrFontType}}\ ]\ =\ \mbox{\hyperlink{_defs_8cpp_a580d17030a54e4a9a5493f5763d11e12}{GetFontList}}(\ )-\/>\mbox{\hyperlink{class_utils_1_1_font_list_ac42177adfdd0d028a29720f76da78ab5}{LoadFont}}(\ child,\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4a0d94aa6c52078cbb63ce531ed26140b2}{Design::AT\_NbrFontType}}\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00770}00770\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ FontPreference[\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4a0d94aa6c52078cbb63ce531ed26140b2}{Design::AT\_NbrFontType}}\ ]\ <\ 0\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00771}00771\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00772}00772\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ FontPreference[\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4a0d94aa6c52078cbb63ce531ed26140b2}{Design::AT\_NbrFontType}}\ ]\ =\ \mbox{\hyperlink{_defs_8cpp_a580d17030a54e4a9a5493f5763d11e12}{GetFontList}}(\ )-\/>\mbox{\hyperlink{class_utils_1_1_font_list_ac11bda01e3bac215d32817136f7fa308}{DefaultFont}}(\ \mbox{\hyperlink{namespace_design_aa4885175772a49d51fef791c56297455}{Design::DefaultPointSize}}[\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4a0d94aa6c52078cbb63ce531ed26140b2}{Design::AT\_NbrFontType}}\ ]\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00773}00773\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00774}00774\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00775}00775\ \ \ \ \ \ \ \ \ \ \ \ \ FontPreference[\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4a7a0c5cdeb48aceab9b0167ab84cbcb27}{Design::AT\_NameFontType}}\ ]\ =\ \mbox{\hyperlink{_defs_8cpp_a580d17030a54e4a9a5493f5763d11e12}{GetFontList}}(\ )-\/>\mbox{\hyperlink{class_utils_1_1_font_list_ac42177adfdd0d028a29720f76da78ab5}{LoadFont}}(\ child,\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4a7a0c5cdeb48aceab9b0167ab84cbcb27}{Design::AT\_NameFontType}}\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00776}00776\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ FontPreference[\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4a7a0c5cdeb48aceab9b0167ab84cbcb27}{Design::AT\_NameFontType}}\ ]\ <\ 0\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00777}00777\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00778}00778\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ FontPreference[\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4a7a0c5cdeb48aceab9b0167ab84cbcb27}{Design::AT\_NameFontType}}\ ]\ =\ \mbox{\hyperlink{_defs_8cpp_a580d17030a54e4a9a5493f5763d11e12}{GetFontList}}(\ )-\/>\mbox{\hyperlink{class_utils_1_1_font_list_ac11bda01e3bac215d32817136f7fa308}{DefaultFont}}(\ \mbox{\hyperlink{namespace_design_aa4885175772a49d51fef791c56297455}{Design::DefaultPointSize}}[\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4a7a0c5cdeb48aceab9b0167ab84cbcb27}{Design::AT\_NameFontType}}\ ]\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00779}00779\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00780}00780\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00781}00781\ \ \ \ \ \ \ \ \ \ \ \ \ FontPreference[\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4ac5d3d82b86b9c364230172d74fd70095}{Design::AT\_TextFontType}}\ ]\ =\ \mbox{\hyperlink{_defs_8cpp_a580d17030a54e4a9a5493f5763d11e12}{GetFontList}}(\ )-\/>\mbox{\hyperlink{class_utils_1_1_font_list_ac42177adfdd0d028a29720f76da78ab5}{LoadFont}}(\ child,\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4ac5d3d82b86b9c364230172d74fd70095}{Design::AT\_TextFontType}}\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00782}00782\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ FontPreference[\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4ac5d3d82b86b9c364230172d74fd70095}{Design::AT\_TextFontType}}\ ]\ <\ 0\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00783}00783\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00784}00784\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ FontPreference[\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4ac5d3d82b86b9c364230172d74fd70095}{Design::AT\_TextFontType}}\ ]\ =\ \mbox{\hyperlink{_defs_8cpp_a580d17030a54e4a9a5493f5763d11e12}{GetFontList}}(\ )-\/>\mbox{\hyperlink{class_utils_1_1_font_list_ac11bda01e3bac215d32817136f7fa308}{DefaultFont}}(\ \mbox{\hyperlink{namespace_design_aa4885175772a49d51fef791c56297455}{Design::DefaultPointSize}}[\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4ac5d3d82b86b9c364230172d74fd70095}{Design::AT\_TextFontType}}\ ]\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00785}00785\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00786}00786\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00787}00787\ \ \ \ \ \ \ \ \ \ \ \ \ FontPreference[\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4a078f3978681292ecf0627258c1cd1d1d}{Design::AT\_TitleFontType}}\ ]\ =\ \mbox{\hyperlink{_defs_8cpp_a580d17030a54e4a9a5493f5763d11e12}{GetFontList}}(\ )-\/>\mbox{\hyperlink{class_utils_1_1_font_list_ac42177adfdd0d028a29720f76da78ab5}{LoadFont}}(\ child,\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4a078f3978681292ecf0627258c1cd1d1d}{Design::AT\_TitleFontType}}\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00788}00788\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ FontPreference[\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4a078f3978681292ecf0627258c1cd1d1d}{Design::AT\_TitleFontType}}\ ]\ <\ 0\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00789}00789\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00790}00790\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ FontPreference[\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4a078f3978681292ecf0627258c1cd1d1d}{Design::AT\_TitleFontType}}\ ]\ =\ \mbox{\hyperlink{_defs_8cpp_a580d17030a54e4a9a5493f5763d11e12}{GetFontList}}(\ )-\/>\mbox{\hyperlink{class_utils_1_1_font_list_ac11bda01e3bac215d32817136f7fa308}{DefaultFont}}(\ \mbox{\hyperlink{namespace_design_aa4885175772a49d51fef791c56297455}{Design::DefaultPointSize}}[\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4a078f3978681292ecf0627258c1cd1d1d}{Design::AT\_TitleFontType}}\ ]\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00791}00791\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00792}00792\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00793}00793\ \ \ \ \ \ \ \ \ \ \ \ \ FontPreference[\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4ad65be88ee94a9ab38dc6cde177c3ab68}{Design::AT\_SubTitleFontType}}\ ]\ =\ \mbox{\hyperlink{_defs_8cpp_a580d17030a54e4a9a5493f5763d11e12}{GetFontList}}(\ )-\/>\mbox{\hyperlink{class_utils_1_1_font_list_ac42177adfdd0d028a29720f76da78ab5}{LoadFont}}(\ child,\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4ad65be88ee94a9ab38dc6cde177c3ab68}{Design::AT\_SubTitleFontType}}\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00794}00794\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ FontPreference[\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4ad65be88ee94a9ab38dc6cde177c3ab68}{Design::AT\_SubTitleFontType}}\ ]\ <\ 0\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00795}00795\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00796}00796\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ FontPreference[\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4ad65be88ee94a9ab38dc6cde177c3ab68}{Design::AT\_SubTitleFontType}}\ ]\ =\ \mbox{\hyperlink{_defs_8cpp_a580d17030a54e4a9a5493f5763d11e12}{GetFontList}}(\ )-\/>\mbox{\hyperlink{class_utils_1_1_font_list_ac11bda01e3bac215d32817136f7fa308}{DefaultFont}}(\ \mbox{\hyperlink{namespace_design_aa4885175772a49d51fef791c56297455}{Design::DefaultPointSize}}[\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4ad65be88ee94a9ab38dc6cde177c3ab68}{Design::AT\_SubTitleFontType}}\ ]\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00797}00797\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00798}00798\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00799}00799\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00800}00800\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00801}00801\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\ \textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4afc9adabdde0c80dd0c02b444f080316b}{Design::AT\_NbrFontUsageTypes}};\ i++\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00802}00802\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00803}00803\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_font}{Utils::Font}}*\ font\ =\ \mbox{\hyperlink{_defs_8cpp_a580d17030a54e4a9a5493f5763d11e12}{GetFontList}}(\ )-\/>\mbox{\hyperlink{class_utils_1_1_font_list_a3fbc8aae91bb732d0218bb663b887e0a}{GetMyFont}}(\ FontPreference[\ i\ ]\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00804}00804\ \ \ \ \ \ \ \ \ \ \ \ \ wxString\ fontStr\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00805}00805\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ font\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00806}00806\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00807}00807\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fontStr\ =\ font-\/>\mbox{\hyperlink{class_utils_1_1_font_a4365a06d7fcccced19655bc83e9d30a6}{GetNativeInfoStr}}(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00808}00808\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00809}00809\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00810}00810\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00811}00811\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00812}00812\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00813}\mbox{\hyperlink{class_utils_1_1_settings_ad521113ed6aa936eaf0a7a1f24efa3c6}{00813}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_utils_1_1_settings_ad521113ed6aa936eaf0a7a1f24efa3c6}{Settings::SetApplicationDefaults}}(\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00814}00814\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00815}00815\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00816}00816\ \ \ \ \ \ \ \ \ ApplicationLayoutDefault[\ \mbox{\hyperlink{namespace_design_a92be0fe63f397600d1b789ced14bb086adb09624beb91ce971f482fccf9708298}{Design::LT\_Page}}\ ][\ \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364beabb796594c42a415806bada98b3028b72}{Design::AT\_PageWidth}}\ ]\ =\ \mbox{\hyperlink{_defs_8h_aa8a059ba21415ec2a793686d18bca4ec}{Dbl2String}}(\ 208.25\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00817}00817\ \ \ \ \ \ \ \ \ ApplicationLayoutDefault[\ \mbox{\hyperlink{namespace_design_a92be0fe63f397600d1b789ced14bb086adb09624beb91ce971f482fccf9708298}{Design::LT\_Page}}\ ][\ \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364bead89af06f5043d8e45693de641912e307}{Design::AT\_PageHeight}}\ ]\ =\ \mbox{\hyperlink{_defs_8h_aa8a059ba21415ec2a793686d18bca4ec}{Dbl2String}}(\ 269.5\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00818}00818\ \ \ \ \ \ \ \ \ ApplicationLayoutDefault[\ \mbox{\hyperlink{namespace_design_a92be0fe63f397600d1b789ced14bb086adb09624beb91ce971f482fccf9708298}{Design::LT\_Page}}\ ][\ \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364beadd0318e8be32baf355e7376d56684b5b}{Design::AT\_TopPageMargin}}\ ]\ =\ \mbox{\hyperlink{_defs_8h_aa8a059ba21415ec2a793686d18bca4ec}{Dbl2String}}(\ 12.0\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00819}00819\ \ \ \ \ \ \ \ \ ApplicationLayoutDefault[\ \mbox{\hyperlink{namespace_design_a92be0fe63f397600d1b789ced14bb086adb09624beb91ce971f482fccf9708298}{Design::LT\_Page}}\ ][\ \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364bea40aa0770cf7af437038cd4efa3d92f53}{Design::AT\_BottomPageMargin}}\ ]\ =\ \mbox{\hyperlink{_defs_8h_aa8a059ba21415ec2a793686d18bca4ec}{Dbl2String}}(\ 12\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00820}00820\ \ \ \ \ \ \ \ \ ApplicationLayoutDefault[\ \mbox{\hyperlink{namespace_design_a92be0fe63f397600d1b789ced14bb086adb09624beb91ce971f482fccf9708298}{Design::LT\_Page}}\ ][\ \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364bea22018aa5a10796dc225d07f1ccc3684e}{Design::AT\_RightPageMargin}}\ ]\ =\ \mbox{\hyperlink{_defs_8h_aa8a059ba21415ec2a793686d18bca4ec}{Dbl2String}}(\ 12\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00821}00821\ \ \ \ \ \ \ \ \ ApplicationLayoutDefault[\ \mbox{\hyperlink{namespace_design_a92be0fe63f397600d1b789ced14bb086adb09624beb91ce971f482fccf9708298}{Design::LT\_Page}}\ ][\ \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364bea222aa699152eb49e69107cedac51368f}{Design::AT\_LeftPageMargin}}\ ]\ =\ \mbox{\hyperlink{_defs_8h_aa8a059ba21415ec2a793686d18bca4ec}{Dbl2String}}(\ 18\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00822}00822\ \ \ \ \ \ \ \ \ ApplicationLayoutDefault[\ \mbox{\hyperlink{namespace_design_a92be0fe63f397600d1b789ced14bb086adb09624beb91ce971f482fccf9708298}{Design::LT\_Page}}\ ][\ \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364bea6f877270d0dbebededf1fd7fd4230522}{Design::AT\_BorderFileName}}\ ]\ =\ \textcolor{stringliteral}{"{}big\_and\_little\_line.jpg"{}};}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00823}00823\ \ \ \ \ \ \ \ \ ApplicationLayoutDefault[\ \mbox{\hyperlink{namespace_design_a92be0fe63f397600d1b789ced14bb086adb09624beb91ce971f482fccf9708298}{Design::LT\_Page}}\ ][\ \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364bea494fff0141ceeedfbc910723b3d7cbb4}{Design::AT\_BorderSize}}\ ]\ =\ \mbox{\hyperlink{_defs_8h_aa8a059ba21415ec2a793686d18bca4ec}{Dbl2String}}(\ 4\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00824}00824\ \ \ \ \ \ \ \ \ ApplicationLayoutDefault[\ \mbox{\hyperlink{namespace_design_a92be0fe63f397600d1b789ced14bb086adb09624beb91ce971f482fccf9708298}{Design::LT\_Page}}\ ][\ \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364bea73821be7a5e016eabd61a780a7411a1b}{Design::AT\_ShowBorder}}\ ]\ =\ \textcolor{stringliteral}{"{}true"{}};}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00825}00825\ \ \ \ \ \ \ \ \ ApplicationLayoutDefault[\ \mbox{\hyperlink{namespace_design_a92be0fe63f397600d1b789ced14bb086adb09624beb91ce971f482fccf9708298}{Design::LT\_Page}}\ ][\ \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364bea92311a39fd2654ba38c9d6794824c9b9}{Design::AT\_ShowTitle}}\ ]\ =\ \textcolor{stringliteral}{"{}true"{}};}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00826}00826\ \ \ \ \ \ \ \ \ ApplicationLayoutDefault[\ \mbox{\hyperlink{namespace_design_a92be0fe63f397600d1b789ced14bb086adb09624beb91ce971f482fccf9708298}{Design::LT\_Page}}\ ][\ \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364beae21477e8c11721f44163b006275517d3}{Design::AT\_ShowSubTitle}}\ ]\ =\ \textcolor{stringliteral}{"{}true"{}};}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00827}00827\ \ \ \ \ \ \ \ \ ApplicationLayoutDefault[\ \mbox{\hyperlink{namespace_design_a92be0fe63f397600d1b789ced14bb086adb09624beb91ce971f482fccf9708298}{Design::LT\_Page}}\ ][\ \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364beada0ab0ff1188d33657f204260b185672}{Design::AT\_Orientation}}\ ]\ =\ \mbox{\hyperlink{namespace_design_a68f016e4c7c4fd45c002d095153930eb}{Design::OrientationStrings}}[\ \mbox{\hyperlink{namespace_design_aaba3ca6fc88c265cb60ab21adf766030acfa760081a6813aed7e315df8f9fe19e}{Design::AT\_Portrait}}\ ];}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00828}00828\ \ \ \ \ \ \ \ \ ApplicationLayoutDefault[\ \mbox{\hyperlink{namespace_design_a92be0fe63f397600d1b789ced14bb086adb09624beb91ce971f482fccf9708298}{Design::LT\_Page}}\ ][\ \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364bea07aecda077588283547f883a06ad6887}{Design::AT\_TopContentMargin}}\ ]\ =\ \mbox{\hyperlink{_defs_8h_aa8a059ba21415ec2a793686d18bca4ec}{Dbl2String}}(\ 2\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00829}00829\ \ \ \ \ \ \ \ \ ApplicationLayoutDefault[\ \mbox{\hyperlink{namespace_design_a92be0fe63f397600d1b789ced14bb086adb09624beb91ce971f482fccf9708298}{Design::LT\_Page}}\ ][\ \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364bea43d3e9e497da6fc3b8b0e41633d889e2}{Design::AT\_BottomContentMargin}}\ ]\ =\ \mbox{\hyperlink{_defs_8h_aa8a059ba21415ec2a793686d18bca4ec}{Dbl2String}}(\ 2\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00830}00830\ \ \ \ \ \ \ \ \ ApplicationLayoutDefault[\ \mbox{\hyperlink{namespace_design_a92be0fe63f397600d1b789ced14bb086adb09624beb91ce971f482fccf9708298}{Design::LT\_Page}}\ ][\ \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364bea8c6179674fda22faf00a4679233a73bd}{Design::AT\_LeftContentMargin}}\ ]\ =\ \mbox{\hyperlink{_defs_8h_aa8a059ba21415ec2a793686d18bca4ec}{Dbl2String}}(\ 2\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00831}00831\ \ \ \ \ \ \ \ \ ApplicationLayoutDefault[\ \mbox{\hyperlink{namespace_design_a92be0fe63f397600d1b789ced14bb086adb09624beb91ce971f482fccf9708298}{Design::LT\_Page}}\ ][\ \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364bea7803ba6479a16ac903a3528595cf5646}{Design::AT\_RightContentMargin}}\ ]\ =\ \mbox{\hyperlink{_defs_8h_aa8a059ba21415ec2a793686d18bca4ec}{Dbl2String}}(\ 2\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00832}00832\ \ \ \ \ \ \ \ \ ApplicationLayoutDefault[\ \mbox{\hyperlink{namespace_design_a92be0fe63f397600d1b789ced14bb086adb09624beb91ce971f482fccf9708298}{Design::LT\_Page}}\ ][\ \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364bea842e1f1529cebff189b6fe873a9cfc3a}{Design::AT\_OverSizePaper}}\ ]\ =\ \textcolor{stringliteral}{"{}false"{}};}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00833}00833\ \ \ \ \ \ \ \ \ ApplicationLayoutDefault[\ \mbox{\hyperlink{namespace_design_a92be0fe63f397600d1b789ced14bb086adb09624beb91ce971f482fccf9708298}{Design::LT\_Page}}\ ][\ \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364bea118ab3d739a2514d18c61566b4a84ca2}{Design::AT\_PaperHeight}}\ ]\ =\ \mbox{\hyperlink{_defs_8h_aa8a059ba21415ec2a793686d18bca4ec}{Dbl2String}}(\ 269.5\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00834}00834\ \ \ \ \ \ \ \ \ ApplicationLayoutDefault[\ \mbox{\hyperlink{namespace_design_a92be0fe63f397600d1b789ced14bb086adb09624beb91ce971f482fccf9708298}{Design::LT\_Page}}\ ][\ \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364bea7e31c49bc8699bbffdcd3ef8307cfea0}{Design::AT\_PaperWidth}}\ ]\ =\ \mbox{\hyperlink{_defs_8h_aa8a059ba21415ec2a793686d18bca4ec}{Dbl2String}}(\ 208.25\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00835}00835\ \ \ \ \ \ \ \ \ ApplicationLayoutDefault[\ \mbox{\hyperlink{namespace_design_a92be0fe63f397600d1b789ced14bb086a278b48628fc26ce97c447352b33480d7}{Design::LT\_Stamp}}\ ][\ \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364bea92311a39fd2654ba38c9d6794824c9b9}{Design::AT\_ShowTitle}}\ ]\ =\ \textcolor{stringliteral}{"{}true"{}};}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00836}00836\ \ \ \ \ \ \ \ \ ApplicationLayoutDefault[\ \mbox{\hyperlink{namespace_design_a92be0fe63f397600d1b789ced14bb086a278b48628fc26ce97c447352b33480d7}{Design::LT\_Stamp}}\ ][\ \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364beab0fe708aa6f2fb621dc4dd9bcc5c7f64}{Design::AT\_ShowCatNbr}}\ ]\ =\ \textcolor{stringliteral}{"{}true"{}};}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00837}00837\ \ \ \ \ \ \ \ \ ApplicationLayoutDefault[\ \mbox{\hyperlink{namespace_design_a92be0fe63f397600d1b789ced14bb086a278b48628fc26ce97c447352b33480d7}{Design::LT\_Stamp}}\ ][\ \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364bea1dfdbbb1b8749789c6047e31537d6eca}{Design::AT\_ShowImage}}\ ]\ =\ \textcolor{stringliteral}{"{}true"{}};}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00838}00838\ \ \ \ \ \ \ \ \ ApplicationLayoutDefault[\ \mbox{\hyperlink{namespace_design_a92be0fe63f397600d1b789ced14bb086a278b48628fc26ce97c447352b33480d7}{Design::LT\_Stamp}}\ ][\ \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364bea9744221757c1744ef47a9eb64ba632a7}{Design::AT\_GrayScaleImages}}\ ]\ =\ \textcolor{stringliteral}{"{}false"{}};}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00839}00839\ \ \ \ \ \ \ \ \ ApplicationLayoutDefault[\ \mbox{\hyperlink{namespace_design_a92be0fe63f397600d1b789ced14bb086a278b48628fc26ce97c447352b33480d7}{Design::LT\_Stamp}}\ ][\ \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364bea07aecda077588283547f883a06ad6887}{Design::AT\_TopContentMargin}}\ ]\ =\ \mbox{\hyperlink{_defs_8h_aa8a059ba21415ec2a793686d18bca4ec}{Dbl2String}}(\ 2\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00840}00840\ \ \ \ \ \ \ \ \ ApplicationLayoutDefault[\ \mbox{\hyperlink{namespace_design_a92be0fe63f397600d1b789ced14bb086a278b48628fc26ce97c447352b33480d7}{Design::LT\_Stamp}}\ ][\ \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364bea43d3e9e497da6fc3b8b0e41633d889e2}{Design::AT\_BottomContentMargin}}\ ]\ =\ \mbox{\hyperlink{_defs_8h_aa8a059ba21415ec2a793686d18bca4ec}{Dbl2String}}(\ 2\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00841}00841\ \ \ \ \ \ \ \ \ ApplicationLayoutDefault[\ \mbox{\hyperlink{namespace_design_a92be0fe63f397600d1b789ced14bb086a278b48628fc26ce97c447352b33480d7}{Design::LT\_Stamp}}\ ][\ \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364bea8c6179674fda22faf00a4679233a73bd}{Design::AT\_LeftContentMargin}}\ ]\ =\ \mbox{\hyperlink{_defs_8h_aa8a059ba21415ec2a793686d18bca4ec}{Dbl2String}}(\ 2\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00842}00842\ \ \ \ \ \ \ \ \ ApplicationLayoutDefault[\ \mbox{\hyperlink{namespace_design_a92be0fe63f397600d1b789ced14bb086a278b48628fc26ce97c447352b33480d7}{Design::LT\_Stamp}}\ ][\ \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364bea7803ba6479a16ac903a3528595cf5646}{Design::AT\_RightContentMargin}}\ ]\ =\ \mbox{\hyperlink{_defs_8h_aa8a059ba21415ec2a793686d18bca4ec}{Dbl2String}}(\ 2\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00843}00843\ \ \ \ \ \ \ \ \ ApplicationLayoutDefault[\ \mbox{\hyperlink{namespace_design_a92be0fe63f397600d1b789ced14bb086a278b48628fc26ce97c447352b33480d7}{Design::LT\_Stamp}}\ ][\ \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364beaaa4fcc13e0250a9706bce6c891fae3c3}{Design::AT\_SelvageHeight}}\ ]\ =\ \mbox{\hyperlink{_defs_8h_aa8a059ba21415ec2a793686d18bca4ec}{Dbl2String}}(\ 0\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00844}00844\ \ \ \ \ \ \ \ \ ApplicationLayoutDefault[\ \mbox{\hyperlink{namespace_design_a92be0fe63f397600d1b789ced14bb086a278b48628fc26ce97c447352b33480d7}{Design::LT\_Stamp}}\ ][\ \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364bea856740d2dfb16aefb3f05a1dab69a3e4}{Design::AT\_SelvageWidth}}\ ]\ =\ \mbox{\hyperlink{_defs_8h_aa8a059ba21415ec2a793686d18bca4ec}{Dbl2String}}(\ 0\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00845}00845\ \ \ \ \ \ \ \ \ ApplicationLayoutDefault[\ \mbox{\hyperlink{namespace_design_a92be0fe63f397600d1b789ced14bb086a278b48628fc26ce97c447352b33480d7}{Design::LT\_Stamp}}\ ][\ \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364bea35c0407ec2b66dd813e15be6b8c72e1c}{Design::AT\_MountAllowanceHeight}}\ ]\ =\ \mbox{\hyperlink{_defs_8h_aa8a059ba21415ec2a793686d18bca4ec}{Dbl2String}}(\ 6\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00846}00846\ \ \ \ \ \ \ \ \ ApplicationLayoutDefault[\ \mbox{\hyperlink{namespace_design_a92be0fe63f397600d1b789ced14bb086a278b48628fc26ce97c447352b33480d7}{Design::LT\_Stamp}}\ ][\ \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364bea58c612c20dd6af34c9b40d1f6b3fb69f}{Design::AT\_MountAllowanceWidth}}\ ]\ =\ \mbox{\hyperlink{_defs_8h_aa8a059ba21415ec2a793686d18bca4ec}{Dbl2String}}(\ 6\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00847}00847\ \ \ \ \ \ \ \ \ ApplicationLayoutDefault[\ \mbox{\hyperlink{namespace_design_a92be0fe63f397600d1b789ced14bb086a278b48628fc26ce97c447352b33480d7}{Design::LT\_Stamp}}\ ][\ \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364bead0a3480596a43899a280b791146a8f62}{Design::AT\_StampNamePosition}}\ ]\ =\ \mbox{\hyperlink{namespace_design_a04ebd7d62b02f5ae629ebdb6639b51b7}{Design::StampNamePositionStrings}}[\ \mbox{\hyperlink{namespace_design_a6d899bd1f7046bbf5a613e85bd83f0c3a05dc2c0acf0fc2e9960c0213c55f12dd}{Design::AT\_StampNamePositionTop}}\ ];}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00848}00848\ \ \ \ \ \ \ \ \ ApplicationLayoutDefault[\ \mbox{\hyperlink{namespace_design_a92be0fe63f397600d1b789ced14bb086a278b48628fc26ce97c447352b33480d7}{Design::LT\_Stamp}}\ ][\ \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364bea5e6229b9c55603c5129fd27ebf0352ba}{Design::AT\_StampMargin}}\ ]\ =\ \mbox{\hyperlink{_defs_8h_aa8a059ba21415ec2a793686d18bca4ec}{Dbl2String}}(\ 2\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00849}00849\ \ \ \ \ \ \ \ \ ApplicationLayoutDefault[\ \mbox{\hyperlink{namespace_design_a92be0fe63f397600d1b789ced14bb086a278b48628fc26ce97c447352b33480d7}{Design::LT\_Stamp}}\ ][\ \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364beae99180b5e74175f92627cc49eca2c742}{Design::AT\_Catalog}}\ ]\ =\ \textcolor{stringliteral}{"{}Mi"{}};}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00850}00850\ \ \ \ \ \ \ \ \ ApplicationLayoutDefault[\ \mbox{\hyperlink{namespace_design_a92be0fe63f397600d1b789ced14bb086aaff3a11bdb3874d55213feb4802ec3b5}{Design::LT\_Frame}}\ ][\ \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364bea92311a39fd2654ba38c9d6794824c9b9}{Design::AT\_ShowTitle}}\ ]\ =\ \textcolor{stringliteral}{"{}false"{}};}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00851}00851\ \ \ \ \ \ \ \ \ ApplicationLayoutDefault[\ \mbox{\hyperlink{namespace_design_a92be0fe63f397600d1b789ced14bb086aaff3a11bdb3874d55213feb4802ec3b5}{Design::LT\_Frame}}\ ][\ \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364beae21477e8c11721f44163b006275517d3}{Design::AT\_ShowSubTitle}}\ ]\ =\ \textcolor{stringliteral}{"{}false"{}};}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00852}00852\ \ \ \ \ \ \ \ \ ApplicationLayoutDefault[\ \mbox{\hyperlink{namespace_design_a92be0fe63f397600d1b789ced14bb086aaff3a11bdb3874d55213feb4802ec3b5}{Design::LT\_Frame}}\ ][\ \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364beac6cfb50e9e078cf6b6b7ea231ebaa964}{Design::AT\_ShowFrame}}\ ]\ =\ \textcolor{stringliteral}{"{}false"{}};}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00853}00853\ \ \ \ \ \ \ \ \ ApplicationLayoutDefault[\ \mbox{\hyperlink{namespace_design_a92be0fe63f397600d1b789ced14bb086aaff3a11bdb3874d55213feb4802ec3b5}{Design::LT\_Frame}}\ ][\ \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364bea07aecda077588283547f883a06ad6887}{Design::AT\_TopContentMargin}}\ ]\ =\ \mbox{\hyperlink{_defs_8h_aa8a059ba21415ec2a793686d18bca4ec}{Dbl2String}}(\ 2\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00854}00854\ \ \ \ \ \ \ \ \ ApplicationLayoutDefault[\ \mbox{\hyperlink{namespace_design_a92be0fe63f397600d1b789ced14bb086aaff3a11bdb3874d55213feb4802ec3b5}{Design::LT\_Frame}}\ ][\ \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364bea43d3e9e497da6fc3b8b0e41633d889e2}{Design::AT\_BottomContentMargin}}\ ]\ =\ \mbox{\hyperlink{_defs_8h_aa8a059ba21415ec2a793686d18bca4ec}{Dbl2String}}(\ 2\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00855}00855\ \ \ \ \ \ \ \ \ ApplicationLayoutDefault[\ \mbox{\hyperlink{namespace_design_a92be0fe63f397600d1b789ced14bb086aaff3a11bdb3874d55213feb4802ec3b5}{Design::LT\_Frame}}\ ][\ \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364bea8c6179674fda22faf00a4679233a73bd}{Design::AT\_LeftContentMargin}}\ ]\ =\ \mbox{\hyperlink{_defs_8h_aa8a059ba21415ec2a793686d18bca4ec}{Dbl2String}}(\ 2\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00856}00856\ \ \ \ \ \ \ \ \ ApplicationLayoutDefault[\ \mbox{\hyperlink{namespace_design_a92be0fe63f397600d1b789ced14bb086aaff3a11bdb3874d55213feb4802ec3b5}{Design::LT\_Frame}}\ ][\ \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364bea7803ba6479a16ac903a3528595cf5646}{Design::AT\_RightContentMargin}}\ ]\ =\ \mbox{\hyperlink{_defs_8h_aa8a059ba21415ec2a793686d18bca4ec}{Dbl2String}}(\ 2\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00857}00857\ \ \ \ \ \ \ \ \ ApplicationLayoutDefault[\ \mbox{\hyperlink{namespace_design_a92be0fe63f397600d1b789ced14bb086aaff3a11bdb3874d55213feb4802ec3b5}{Design::LT\_Frame}}\ ][\ \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364bea480605b3676dc491efc0091bf0cc5c28}{Design::AT\_CalculateSpacing}}\ ]\ =\ \textcolor{stringliteral}{"{}true"{}};}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00858}00858\ \ \ \ \ \ \ \ \ ApplicationLayoutDefault[\ \mbox{\hyperlink{namespace_design_a92be0fe63f397600d1b789ced14bb086aaff3a11bdb3874d55213feb4802ec3b5}{Design::LT\_Frame}}\ ][\ \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364bea7aabe6cc73d8a841eba2a0a06bae5082}{Design::AT\_FixedSpacingSize}}\ ]\ =\ \mbox{\hyperlink{_defs_8h_aa8a059ba21415ec2a793686d18bca4ec}{Dbl2String}}(\ 5\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00859}00859\ \ \ \ \ \ \ \ \ ApplicationLayoutDefault[\ \mbox{\hyperlink{namespace_design_a92be0fe63f397600d1b789ced14bb086aaff3a11bdb3874d55213feb4802ec3b5}{Design::LT\_Frame}}\ ][\ \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364beaefb5f5cfdfb8c5c02d32ec3596631d4f}{Design::AT\_StampAlignmentMode}}\ ]\ =\ \mbox{\hyperlink{namespace_design_a5531e44b6223563fc30a7774c9352d9a}{Design::StampAlignmentModeStrings}}[\ \mbox{\hyperlink{namespace_design_ab09b51b33b5ff322cce8f7d3e37caae5a4661e3346ece4dcec97f869c7894d887}{Design::AlignTop}}\ ];}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00860}00860\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\ \textcolor{keywordtype}{int}\ layout\ =\ \mbox{\hyperlink{namespace_design_a92be0fe63f397600d1b789ced14bb086adb09624beb91ce971f482fccf9708298}{Design::LT\_Page}};\ layout\ <\ \mbox{\hyperlink{namespace_design_a92be0fe63f397600d1b789ced14bb086ae492e38c751cc4624b48cfbe1078af88}{Design::NbrLayoutTypes}};\ layout++\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00861}00861\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00862}00862\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\ \textcolor{keywordtype}{int}\ attrType\ =\ \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364bea13d5598e62dba0d4b50b795c3cad504e}{Design::AT\_Name}};\ attrType\ <\ \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364bea02157829b81b081dff8fea17aed0ce71}{Design::AT\_NbrAttrTypes}};\ attrType++\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00863}00863\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00864}00864\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ApplicationLayoutPreference[\ layout\ ][\ attrType\ ]\ =\ ApplicationLayoutDefault[\ layout\ ][\ attrType\ ];}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00865}00865\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \mbox{\hyperlink{namespace_design_a22874362385d0bd60077262a6cbbf931}{Design::LayoutTypeStrings}}[\ layout\ ]\ <<\ \textcolor{stringliteral}{"{}\ "{}}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00866}00866\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \mbox{\hyperlink{namespace_design_aa688e51eed6c13e36e48175b175073ad}{Design::AttrNameStrings}}[\ attrType\ ]\ <<\ \textcolor{stringliteral}{"{}\ "{}}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00867}00867\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ ApplicationLayoutPreference[\ layout\ ][\ attrType\ ]\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00868}00868\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00869}00869\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00870}00870\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00871}00871\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00872}00872\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00873}\mbox{\hyperlink{class_utils_1_1_settings_aed4208f6e3277534a7d509dfc7914da6}{00873}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_utils_1_1_settings_aed4208f6e3277534a7d509dfc7914da6}{Settings::LoadLayoutPreference}}(\ wxXmlNode*\ node\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00874}00874\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00875}00875\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00876}00876\ \ \ \ \ \ \ \ \ wxXmlNode*\ defaults\ =\ \mbox{\hyperlink{namespace_utils_ac982aeec9bf06c61495032e66e41d30f}{Utils::FirstChildElement}}(\ node,\ \textcolor{stringliteral}{"{}Defaults"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00877}00877\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ defaults\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00878}00878\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00879}00879\ \ \ \ \ \ \ \ \ \ \ \ \ wxXmlNode*\ child\ =\ defaults-\/>GetChildren(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00880}00880\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (\ child\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00881}00881\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00882}00882\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wxString\ name\ =\ child-\/>GetName(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00883}00883\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ !name.Cmp(\ \textcolor{stringliteral}{"{}Default"{}}\ )\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00884}00884\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00885}00885\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wxString\ layoutType\ =\ child-\/>GetAttribute(\ \textcolor{stringliteral}{"{}LayoutType"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00886}00886\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ !layoutType.Cmp(\ \mbox{\hyperlink{namespace_design_a22874362385d0bd60077262a6cbbf931}{Design::LayoutTypeStrings}}[\ \mbox{\hyperlink{namespace_design_a92be0fe63f397600d1b789ced14bb086adb09624beb91ce971f482fccf9708298}{Design::LT\_Page}}\ ]\ )\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00887}00887\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00888}00888\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wxXmlAttribute*\ attr\ =\ child-\/>GetAttributes(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00889}00889\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (\ attr\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00890}00890\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00891}00891\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wxString\ attrName\ =\ attr-\/>GetName(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00892}00892\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wxString\ attrVal\ =\ attr-\/>GetValue(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00893}00893\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364be}{Design::AlbumAttrType}}\ attrType\ =\ \mbox{\hyperlink{namespace_design_afe7c9b03c8bdc34c825b312546065b83}{Design::FindAlbumAttrType}}(\ attrName\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00894}00894\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ attrType\ >=\ 0\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00895}00895\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00896}00896\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ApplicationLayoutPreference[\ \mbox{\hyperlink{namespace_design_a92be0fe63f397600d1b789ced14bb086adb09624beb91ce971f482fccf9708298}{Design::LT\_Page}}\ ][\ attrType\ ]\ =\ attrVal;}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00897}00897\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00898}00898\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00899}00899\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ attr\ =\ attr-\/>GetNext(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00900}00900\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00901}00901\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00902}00902\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \ \textcolor{keywordflow}{if}\ (\ !layoutType.Cmp(\ \mbox{\hyperlink{namespace_design_a22874362385d0bd60077262a6cbbf931}{Design::LayoutTypeStrings}}[\ \mbox{\hyperlink{namespace_design_a92be0fe63f397600d1b789ced14bb086a278b48628fc26ce97c447352b33480d7}{Design::LT\_Stamp}}\ ]\ )\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00903}00903\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00904}00904\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wxXmlAttribute*\ attr\ =\ child-\/>GetAttributes(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00905}00905\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (\ attr\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00906}00906\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00907}00907\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wxString\ attrName\ =\ attr-\/>GetName(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00908}00908\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wxString\ attrVal\ =\ attr-\/>GetValue(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00909}00909\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364be}{Design::AlbumAttrType}}\ attrType\ =\ \mbox{\hyperlink{namespace_design_afe7c9b03c8bdc34c825b312546065b83}{Design::FindAlbumAttrType}}(\ attrName\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00910}00910\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ attrType\ >=\ 0\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00911}00911\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00912}00912\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ApplicationLayoutPreference[\ \mbox{\hyperlink{namespace_design_a92be0fe63f397600d1b789ced14bb086a278b48628fc26ce97c447352b33480d7}{Design::LT\_Stamp}}\ ][\ attrType\ ]\ =\ attrVal;}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00913}00913\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00914}00914\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ attr\ =\ attr-\/>GetNext(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00915}00915\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00916}00916\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00917}00917\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \ \textcolor{keywordflow}{if}\ (\ !layoutType.Cmp(\ \mbox{\hyperlink{namespace_design_a22874362385d0bd60077262a6cbbf931}{Design::LayoutTypeStrings}}[\ \mbox{\hyperlink{namespace_design_a92be0fe63f397600d1b789ced14bb086aaff3a11bdb3874d55213feb4802ec3b5}{Design::LT\_Frame}}\ ]\ )\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00918}00918\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00919}00919\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wxXmlAttribute*\ attr\ =\ child-\/>GetAttributes(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00920}00920\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (\ attr\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00921}00921\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00922}00922\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wxString\ attrName\ =\ attr-\/>GetName(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00923}00923\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00924}00924\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wxString\ attrVal\ =\ attr-\/>GetValue(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00925}00925\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364be}{Design::AlbumAttrType}}\ attrType\ =\ \mbox{\hyperlink{namespace_design_afe7c9b03c8bdc34c825b312546065b83}{Design::FindAlbumAttrType}}(\ attrName\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00926}00926\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ attrType\ >=\ 0\ )}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00927}00927\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00928}00928\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ApplicationLayoutPreference[\ \mbox{\hyperlink{namespace_design_a92be0fe63f397600d1b789ced14bb086aaff3a11bdb3874d55213feb4802ec3b5}{Design::LT\_Frame}}\ ][\ attrType\ ]\ =\ attrVal;}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00929}00929\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00930}00930\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ attr\ =\ attr-\/>GetNext(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00931}00931\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00932}00932\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00933}00933\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00934}00934\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ child\ =\ child-\/>GetNext(\ );}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00935}00935\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00936}00936\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00937}00937\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00938}00938\ }
+\DoxyCodeLine{\Hypertarget{_settings_8cpp_source_l00939}00939\ \}}
+
+\end{DoxyCode}

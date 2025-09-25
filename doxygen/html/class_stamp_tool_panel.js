@@ -1,0 +1,36 @@
+var class_stamp_tool_panel =
+[
+    [ "StampToolPanelGuiDefs", "class_stamp_tool_panel.html#a81c28ad3ae6252a0e08982c660afaafe", [
+      [ "ID_CATALOGSPLITTERWINDOW", "class_stamp_tool_panel.html#a81c28ad3ae6252a0e08982c660afaafea5d3b8ce7d2ef02c64dc996270c95d3a5", null ],
+      [ "ID_CATALOGPAGE", "class_stamp_tool_panel.html#a81c28ad3ae6252a0e08982c660afaafeaf3977c7a0d7a41ab0c479ba1b278c020", null ],
+      [ "ID_STAMPTREECTRL", "class_stamp_tool_panel.html#a81c28ad3ae6252a0e08982c660afaafea261e29e000c45c8bb9c2058852a8d298", null ],
+      [ "ID_NOTEBOOK", "class_stamp_tool_panel.html#a81c28ad3ae6252a0e08982c660afaafea613ccd58152b0ab69ae4cbb2d04b1755", null ],
+      [ "ID_DESCRIPTIONPANELFOREIGN", "class_stamp_tool_panel.html#a81c28ad3ae6252a0e08982c660afaafeaa566d2318d10cbe711fc15bef9597a94", null ],
+      [ "ID_GALLERYSCROLLEDWINDOW", "class_stamp_tool_panel.html#a81c28ad3ae6252a0e08982c660afaafea9b102eb71e3ee333cf2ba43e7078c491", null ],
+      [ "ID_TITLETEXTCTRL", "class_stamp_tool_panel.html#a81c28ad3ae6252a0e08982c660afaafeac8dd653e34a6e8494468863c405c0757", null ],
+      [ "ID_STAMPTOOL", "class_stamp_tool_panel.html#a81c28ad3ae6252a0e08982c660afaafeac9c53837dc6590637bac7cada49c7109", null ],
+      [ "ID_ALBUMSPLITTERWINDOWFOREIGN", "class_stamp_tool_panel.html#a81c28ad3ae6252a0e08982c660afaafeacb0b45394657c6bdb2c44f932da7bfbe", null ],
+      [ "ID_GENERTELISTFOREIGN", "class_stamp_tool_panel.html#a81c28ad3ae6252a0e08982c660afaafea80e9338b81c178cbfcf5c4c2bfe93eda", null ],
+      [ "ID_IMAGEALLERYPANEL", "class_stamp_tool_panel.html#a81c28ad3ae6252a0e08982c660afaafea8d7b91e5c87b628524079ca81228fa42", null ],
+      [ "ID_IMAGEALLERYPANEL1", "class_stamp_tool_panel.html#a81c28ad3ae6252a0e08982c660afaafead1367c55e5295b9356fe9ae99d7aa7bf", null ],
+      [ "ID_DESIGNPAGE", "class_stamp_tool_panel.html#a81c28ad3ae6252a0e08982c660afaafead1152e2b2f1a0f41948757277aa0f436", null ],
+      [ "ID_DESIGNSPLITTERWINDOW", "class_stamp_tool_panel.html#a81c28ad3ae6252a0e08982c660afaafea29544e4f1d988df04830cfc57d7f26e4", null ]
+    ] ],
+    [ "StampToolPanel", "class_stamp_tool_panel.html#a2187f9e5f05708d0093115614122ed13", null ],
+    [ "StampToolPanel", "class_stamp_tool_panel.html#af030b7706f26fc08fe11929f59996544", null ],
+    [ "~StampToolPanel", "class_stamp_tool_panel.html#a63c9b486e4f4a1f113de6c5ebb708676", null ],
+    [ "Create", "class_stamp_tool_panel.html#aed9151435b0fd3df016259ea205902fb", null ],
+    [ "CreateControls", "class_stamp_tool_panel.html#a45ea9c32a2a9d5d066d546f1456714ba", null ],
+    [ "GetAlbumPanel", "class_stamp_tool_panel.html#ad7ba953208ca9ab457328626aa9dba96", null ],
+    [ "GetAlbumTreePanel", "class_stamp_tool_panel.html#aadd85f5dfb453ba1f9aff4728d7dc8f1", null ],
+    [ "GetCatalogPagePanel", "class_stamp_tool_panel.html#a6d6fa57fd8e78ed8f0c7ba325934c2c3", null ],
+    [ "GetGenerateListPanel", "class_stamp_tool_panel.html#a680cac5c9912ec81f5c151c7cdb89424", null ],
+    [ "GetPage", "class_stamp_tool_panel.html#a5c8b7831b726fd18d4c4bac1cddc701e", null ],
+    [ "Init", "class_stamp_tool_panel.html#af7e02b1fd32731be87a5719304e670e5", null ],
+    [ "OnNotebookPageChanged", "class_stamp_tool_panel.html#aeee3ac96ef84ef46d455bd9db78c3f72", null ],
+    [ "OnPDF", "class_stamp_tool_panel.html#a04865b7417ee985baee825c44225cdda", null ],
+    [ "OnTitleTextUpdated", "class_stamp_tool_panel.html#a4396ba5bf70d0164affdaab5b61ba6f1", null ],
+    [ "SetPage", "class_stamp_tool_panel.html#ac00c63906f199f8f59310c39676c78b6", null ],
+    [ "ShouldShowStates", "class_stamp_tool_panel.html#ab4c9718ae6119151f45170735950b46f", null ],
+    [ "UpdateStatus", "class_stamp_tool_panel.html#a967e7b6caef2d39dc5ac17d20bd537dc", null ]
+];

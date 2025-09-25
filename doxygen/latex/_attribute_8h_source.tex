@@ -1,0 +1,58 @@
+\doxysection{Attribute.\+h}
+\hypertarget{_attribute_8h_source}{}\label{_attribute_8h_source}\index{C:/Users/femon/Development/wx/cloneTest/StampTool/src/design/Attribute.h@{C:/Users/femon/Development/wx/cloneTest/StampTool/src/design/Attribute.h}}
+\mbox{\hyperlink{_attribute_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_attribute_8h_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{_attribute_8h_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_attribute_8h_source_l00025}00025\ \textcolor{preprocessor}{\#ifndef\ Attribute\_H}}
+\DoxyCodeLine{\Hypertarget{_attribute_8h_source_l00026}00026\ \textcolor{preprocessor}{\#define\ Attribute\_H}}
+\DoxyCodeLine{\Hypertarget{_attribute_8h_source_l00027}00027\ \textcolor{preprocessor}{\#include\ <cstring>}}
+\DoxyCodeLine{\Hypertarget{_attribute_8h_source_l00028}00028\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{\Hypertarget{_attribute_8h_source_l00029}00029\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{\Hypertarget{_attribute_8h_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{_attribute_8h_source_l00031}00031\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_design}{Design}}\ \{}
+\DoxyCodeLine{\Hypertarget{_attribute_8h_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{_attribute_8h_source_l00037}00037\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_design_1_1_attribute}{Attribute}}}
+\DoxyCodeLine{\Hypertarget{_attribute_8h_source_l00038}00038\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attribute_8h_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_attribute_8h_source_l00040}00040\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_attribute_8h_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{_attribute_8h_source_l00046}\mbox{\hyperlink{class_design_1_1_attribute_a00ebdd977a821990b178293fea6e5c3f}{00046}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_design_1_1_attribute_a00ebdd977a821990b178293fea6e5c3f}{Attribute}}(\ )\ \{\ \};}
+\DoxyCodeLine{\Hypertarget{_attribute_8h_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{_attribute_8h_source_l00054}\mbox{\hyperlink{class_design_1_1_attribute_ae9349862de42a2725ae295082610a434}{00054}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_design_1_1_attribute_ae9349862de42a2725ae295082610a434}{Attribute}}(\ \textcolor{keyword}{const}\ wxString\ name,\ \textcolor{keyword}{const}\ wxString\ value\ )\ \{}
+\DoxyCodeLine{\Hypertarget{_attribute_8h_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_design_1_1_attribute_a9c829c1769abd954288baa2eb0bb6df9}{SetName}}(\ name\ );}
+\DoxyCodeLine{\Hypertarget{_attribute_8h_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_design_1_1_attribute_aa343148204b0e734a868ef2610b21c21}{SetValue}}(\ value\ );}
+\DoxyCodeLine{\Hypertarget{_attribute_8h_source_l00057}00057\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_attribute_8h_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{_attribute_8h_source_l00061}\mbox{\hyperlink{class_design_1_1_attribute_ab83911720b87e157b7bb8e1b57730244}{00061}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_design_1_1_attribute_ab83911720b87e157b7bb8e1b57730244}{\string~Attribute}}(\ )\ \{}
+\DoxyCodeLine{\Hypertarget{_attribute_8h_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ delete\ m\_name;}}
+\DoxyCodeLine{\Hypertarget{_attribute_8h_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//delete\ m\_value;}}
+\DoxyCodeLine{\Hypertarget{_attribute_8h_source_l00064}00064\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_attribute_8h_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{_attribute_8h_source_l00071}\mbox{\hyperlink{class_design_1_1_attribute_aa152ec75ea7ebf41ba827fdd9e476273}{00071}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ wxString\ \mbox{\hyperlink{class_design_1_1_attribute_aa152ec75ea7ebf41ba827fdd9e476273}{GetName}}(\ )\ \{}
+\DoxyCodeLine{\Hypertarget{_attribute_8h_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_name;}
+\DoxyCodeLine{\Hypertarget{_attribute_8h_source_l00073}00073\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_attribute_8h_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{_attribute_8h_source_l00080}\mbox{\hyperlink{class_design_1_1_attribute_ae09ff3c7e3f9a479271c9461d2e08cb2}{00080}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ wxString\ \mbox{\hyperlink{class_design_1_1_attribute_ae09ff3c7e3f9a479271c9461d2e08cb2}{GetValue}}(\ )\ \{}
+\DoxyCodeLine{\Hypertarget{_attribute_8h_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_value;}
+\DoxyCodeLine{\Hypertarget{_attribute_8h_source_l00082}00082\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_attribute_8h_source_l00083}00083\ }
+\DoxyCodeLine{\Hypertarget{_attribute_8h_source_l00089}\mbox{\hyperlink{class_design_1_1_attribute_a36e2db2748880715b51a9253b54cd1ba}{00089}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_design_1_1_attribute_a36e2db2748880715b51a9253b54cd1ba}{SetName}}(\ \textcolor{keyword}{const}\ wxString\ name\ )\ \{}
+\DoxyCodeLine{\Hypertarget{_attribute_8h_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ \ \ m\_name\ =\ name;}
+\DoxyCodeLine{\Hypertarget{_attribute_8h_source_l00091}00091\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_attribute_8h_source_l00092}00092\ }
+\DoxyCodeLine{\Hypertarget{_attribute_8h_source_l00098}\mbox{\hyperlink{class_design_1_1_attribute_a1c5c20c32fb38f8c9631265323d2e5bf}{00098}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_design_1_1_attribute_a1c5c20c32fb38f8c9631265323d2e5bf}{SetValue}}(\ \textcolor{keyword}{const}\ wxString\ value\ )\ \{}
+\DoxyCodeLine{\Hypertarget{_attribute_8h_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ \ \ m\_value\ =\ value;}
+\DoxyCodeLine{\Hypertarget{_attribute_8h_source_l00100}00100\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_attribute_8h_source_l00101}00101\ }
+\DoxyCodeLine{\Hypertarget{_attribute_8h_source_l00102}00102\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_attribute_8h_source_l00103}00103\ \ \ \ \ \ \ \ \ wxString\ m\_name;}
+\DoxyCodeLine{\Hypertarget{_attribute_8h_source_l00104}00104\ \ \ \ \ \ \ \ \ wxString\ m\_value;}
+\DoxyCodeLine{\Hypertarget{_attribute_8h_source_l00105}00105\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_attribute_8h_source_l00106}00106\ }
+\DoxyCodeLine{\Hypertarget{_attribute_8h_source_l00107}00107\ \ \ \ \ \textcolor{keyword}{typedef}\ std::vector<Attribute*>\ \mbox{\hyperlink{namespace_design_a8684e8801d2302786d022161ace0aa67}{LayoutAttributeArray}};}
+\DoxyCodeLine{\Hypertarget{_attribute_8h_source_l00108}00108\ }
+\DoxyCodeLine{\Hypertarget{_attribute_8h_source_l00109}00109\ \}}
+\DoxyCodeLine{\Hypertarget{_attribute_8h_source_l00110}00110\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

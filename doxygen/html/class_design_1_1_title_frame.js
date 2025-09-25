@@ -1,0 +1,26 @@
+var class_design_1_1_title_frame =
+[
+    [ "TitleFrame", "class_design_1_1_title_frame.html#ad9eaae38a8d59f65a9aa30ddae67a606", null ],
+    [ "~TitleFrame", "class_design_1_1_title_frame.html#a55735b56585f67593243769efae05c97", null ],
+    [ "Draw", "class_design_1_1_title_frame.html#accb61e89a3630ed44e206a9a35587492", null ],
+    [ "DrawPDF", "class_design_1_1_title_frame.html#aa525af501711225b5141719384e7a1b0", null ],
+    [ "GetHeadingColor", "class_design_1_1_title_frame.html#ae44179734d31ac4d4131d1f017a3c3f8", null ],
+    [ "GetHeadingFont", "class_design_1_1_title_frame.html#adee57f1948f7ef35d8da601521d0428e", null ],
+    [ "GetHeadingFontNdx", "class_design_1_1_title_frame.html#a68b9982a9b1d8e2becf496fb502ed988", null ],
+    [ "GetHeadingFrame", "class_design_1_1_title_frame.html#ae175355cc0d0629b10b3f98cbc372a55", null ],
+    [ "GetHeadingString", "class_design_1_1_title_frame.html#af21add4d6a40f8279e17eb91f5e1674b", null ],
+    [ "GetShowHeading", "class_design_1_1_title_frame.html#aa6574c5ce84574e2c9e8ad1ff8d44a89", null ],
+    [ "GetShowSubHeading", "class_design_1_1_title_frame.html#a5d6f6f99534d45c8416cbeee0b7cecf2", null ],
+    [ "GetSubHeadingColor", "class_design_1_1_title_frame.html#aaa0b71726efdf8ce382cf6ebd6bea928", null ],
+    [ "GetSubHeadingFont", "class_design_1_1_title_frame.html#aa615a085460dc5539d4eb67ab9a5cf8e", null ],
+    [ "GetSubHeadingFontNdx", "class_design_1_1_title_frame.html#a4ce4e3048469097de2217c21fab0d447", null ],
+    [ "GetSubHeadingFrame", "class_design_1_1_title_frame.html#a7745d0319638f02dd406df828c0aa3cc", null ],
+    [ "GetSubHeadingString", "class_design_1_1_title_frame.html#ad91f10c62fc6e62540592c6d37e78a0f", null ],
+    [ "LoadFonts", "class_design_1_1_title_frame.html#a68450ff15acfc1181a2177c6659add66", null ],
+    [ "SaveFonts", "class_design_1_1_title_frame.html#af863a6a8773512c94b6687a603409325", null ],
+    [ "SetHeadingFont", "class_design_1_1_title_frame.html#a0e2e9b43fe8c30f8393973bcdc01c104", null ],
+    [ "SetHeadingString", "class_design_1_1_title_frame.html#a1c4f21baea865e289d5099687cbdb062", null ],
+    [ "SetSubHeadingFont", "class_design_1_1_title_frame.html#a350e631e5333a31897641eb74ddc7086", null ],
+    [ "SetSubHeadingString", "class_design_1_1_title_frame.html#a136de7b8d3fd8a5d72d7be50fe02db2b", null ],
+    [ "UpdateString", "class_design_1_1_title_frame.html#aa92edd3f343ac68f26db4c0643b883e4", null ]
+];

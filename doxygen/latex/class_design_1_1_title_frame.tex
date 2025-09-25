@@ -1,0 +1,359 @@
+\doxysection{Design\+::Title\+Frame Class Reference}
+\hypertarget{class_design_1_1_title_frame}{}\label{class_design_1_1_title_frame}\index{Design::TitleFrame@{Design::TitleFrame}}
+
+
+{\ttfamily \#include $<$Title\+Frame.\+h$>$}
+
+Inheritance diagram for Design\+::Title\+Frame\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_design_1_1_title_frame}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_design_1_1_title_frame_ad9eaae38a8d59f65a9aa30ddae67a606}{Title\+Frame}} (\mbox{\hyperlink{class_design_1_1_layout_base}{Layout\+Base}} \texorpdfstring{$\ast$}{*}parent)
+\item 
+\mbox{\hyperlink{class_design_1_1_title_frame_a55735b56585f67593243769efae05c97}{\texorpdfstring{$\sim$}{\string~}\+Title\+Frame}} ()
+\item 
+void \mbox{\hyperlink{class_design_1_1_title_frame_accb61e89a3630ed44e206a9a35587492}{Draw}} (wx\+DC \&dc, double x, double y)
+\item 
+void \mbox{\hyperlink{class_design_1_1_title_frame_aa525af501711225b5141719384e7a1b0}{Draw\+PDF}} (wx\+Pdf\+Document \texorpdfstring{$\ast$}{*}doc, double x, double y)
+\item 
+wx\+String \mbox{\hyperlink{class_design_1_1_title_frame_af21add4d6a40f8279e17eb91f5e1674b}{Get\+Heading\+String}} ()
+\item 
+wx\+String \mbox{\hyperlink{class_design_1_1_title_frame_ad91f10c62fc6e62540592c6d37e78a0f}{Get\+Sub\+Heading\+String}} ()
+\item 
+void \mbox{\hyperlink{class_design_1_1_title_frame_a1c4f21baea865e289d5099687cbdb062}{Set\+Heading\+String}} (wx\+String str)
+\item 
+void \mbox{\hyperlink{class_design_1_1_title_frame_a136de7b8d3fd8a5d72d7be50fe02db2b}{Set\+Sub\+Heading\+String}} (wx\+String str)
+\item 
+void \mbox{\hyperlink{class_design_1_1_title_frame_aa92edd3f343ac68f26db4c0643b883e4}{Update\+String}} (double title\+Width, double sub\+Title\+Width=0)
+\item 
+bool \mbox{\hyperlink{class_design_1_1_title_frame_aa6574c5ce84574e2c9e8ad1ff8d44a89}{Get\+Show\+Heading}} ()
+\item 
+bool \mbox{\hyperlink{class_design_1_1_title_frame_a5d6f6f99534d45c8416cbeee0b7cecf2}{Get\+Show\+Sub\+Heading}} ()
+\item 
+void \mbox{\hyperlink{class_design_1_1_title_frame_a68450ff15acfc1181a2177c6659add66}{Load\+Fonts}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}node)
+\item 
+void \mbox{\hyperlink{class_design_1_1_title_frame_af863a6a8773512c94b6687a603409325}{Save\+Fonts}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}parent)
+\item 
+wx\+Colour \mbox{\hyperlink{class_design_1_1_title_frame_ae44179734d31ac4d4131d1f017a3c3f8}{Get\+Heading\+Color}} ()
+\item 
+wx\+Colour \mbox{\hyperlink{class_design_1_1_title_frame_aaa0b71726efdf8ce382cf6ebd6bea928}{Get\+Sub\+Heading\+Color}} ()
+\item 
+void \mbox{\hyperlink{class_design_1_1_title_frame_a0e2e9b43fe8c30f8393973bcdc01c104}{Set\+Heading\+Font}} (wx\+Font new\+Font, wx\+Colour new\+Color)
+\item 
+void \mbox{\hyperlink{class_design_1_1_title_frame_a350e631e5333a31897641eb74ddc7086}{Set\+Sub\+Heading\+Font}} (wx\+Font new\+Font, wx\+Colour new\+Color)
+\item 
+wx\+Font \mbox{\hyperlink{class_design_1_1_title_frame_adee57f1948f7ef35d8da601521d0428e}{Get\+Heading\+Font}} ()
+\item 
+wx\+Font \mbox{\hyperlink{class_design_1_1_title_frame_aa615a085460dc5539d4eb67ab9a5cf8e}{Get\+Sub\+Heading\+Font}} ()
+\item 
+int \mbox{\hyperlink{class_design_1_1_title_frame_a68b9982a9b1d8e2becf496fb502ed988}{Get\+Heading\+Font\+Ndx}} ()
+\item 
+int \mbox{\hyperlink{class_design_1_1_title_frame_a4ce4e3048469097de2217c21fab0d447}{Get\+Sub\+Heading\+Font\+Ndx}} ()
+\item 
+\mbox{\hyperlink{class_design_1_1_label_frame}{Design\+::\+Label\+Frame}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_design_1_1_title_frame_ae175355cc0d0629b10b3f98cbc372a55}{Get\+Heading\+Frame}} ()
+\item 
+\mbox{\hyperlink{class_design_1_1_label_frame}{Design\+::\+Label\+Frame}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_design_1_1_title_frame_a7745d0319638f02dd406df828c0aa3cc}{Get\+Sub\+Heading\+Frame}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_design_1_1_frame}{Design\+::\+Frame}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_design_1_1_frame_a6527ab17d04fbbd19bec76d2379e6825}{Frame}} ()
+\item 
+\mbox{\hyperlink{class_design_1_1_frame_a718c307943773dec363abd164540dafc}{\texorpdfstring{$\sim$}{\string~}\+Frame}} ()
+\item 
+void \mbox{\hyperlink{class_design_1_1_frame_abcf566154114cd85448ab3aab7acb2ba}{Init}} (double x=0.\+0, double y=0.\+0, double w=0.\+0, double h=0.\+0, double mw=0.\+0, double mh=0.\+0)
+\item 
+void \mbox{\hyperlink{class_design_1_1_frame_aa2301e1691322be1e3786859f68e2ac4}{Draw}} (wx\+DC \&dc, double x, double y)
+\item 
+void \mbox{\hyperlink{class_design_1_1_frame_ac6b775f61fc3e38387469d4e1673edaf}{Draw\+PDF}} (wx\+Pdf\+Document \texorpdfstring{$\ast$}{*}doc, double x, double y)
+\item 
+double \mbox{\hyperlink{class_design_1_1_frame_ac939e0a8f4618cf4c8f8a29662d73ee8}{Get\+Height}} ()
+\item 
+double \mbox{\hyperlink{class_design_1_1_frame_a0970c4bc693ae4b91d95b8586f537bd7}{Get\+Min\+Height}} ()
+\item 
+double \mbox{\hyperlink{class_design_1_1_frame_a04189327b7b292a314ac985d3d1a3040}{Get\+Min\+Width}} ()
+\item 
+\mbox{\hyperlink{_defs_8h_a213dea8a5ce1d84736c963a5cbfde8e0}{Real\+Point}} \mbox{\hyperlink{class_design_1_1_frame_ab44c639d71fad3c17c40123a0826e47e}{Get\+Position}} ()
+\item 
+\mbox{\hyperlink{_defs_8h_acd8ac2c7f3e4026c03e6a45ba79cf0c3}{Real\+Size}} \mbox{\hyperlink{class_design_1_1_frame_a412c4a17aa20dc984e116de1e5c8d9f6}{Get\+Size}} ()
+\item 
+double \mbox{\hyperlink{class_design_1_1_frame_a8cc8c2529451a5c4299a03377bab645d}{Get\+XPos}} ()
+\item 
+double \mbox{\hyperlink{class_design_1_1_frame_a0d9ef580164efda718524545a87e2729}{Get\+YPos}} ()
+\item 
+double \mbox{\hyperlink{class_design_1_1_frame_a464e405ebcb8f977892aa4e665b8c84f}{Get\+Width}} ()
+\item 
+wx\+String \mbox{\hyperlink{class_design_1_1_frame_ace8bac218a5886d3d83f6dfbaf9ae0aa}{Report\+Layout}} (wx\+String prefix="{}"{})
+\item 
+void \mbox{\hyperlink{class_design_1_1_frame_a89e21bc96e7077eb89dc9fbf4bbab5cb}{Set\+Height}} (double val)
+\item 
+void \mbox{\hyperlink{class_design_1_1_frame_ad9b43fee17b4bbee5c1d3ea8ef129700}{Set\+Min\+Width}} (double val)
+\item 
+void \mbox{\hyperlink{class_design_1_1_frame_a70f724969cdc7acd726443748c601172}{Set\+Min\+Height}} (double val)
+\item 
+void \mbox{\hyperlink{class_design_1_1_frame_a0043c2bd41ebb610d754eab581811f86}{Set\+XPos}} (double val)
+\item 
+void \mbox{\hyperlink{class_design_1_1_frame_ab1fc082b61c5f97edcc8bee3f4a2498a}{Set\+YPos}} (double val)
+\item 
+void \mbox{\hyperlink{class_design_1_1_frame_ae9edcff7f14bc9263d17e53925a15ee0}{Set\+Width}} (double val)
+\item 
+wx\+Rect \mbox{\hyperlink{class_design_1_1_frame_ac813688671623581881d1e8164238830}{Get\+Rect}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_title_frame_8h_source_l00040}{40}} of file \mbox{\hyperlink{_title_frame_8h_source}{Title\+Frame.\+h}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_design_1_1_title_frame_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_design_1_1_title_frame_ad9eaae38a8d59f65a9aa30ddae67a606}\index{Design::TitleFrame@{Design::TitleFrame}!TitleFrame@{TitleFrame}}
+\index{TitleFrame@{TitleFrame}!Design::TitleFrame@{Design::TitleFrame}}
+\doxysubsubsection{\texorpdfstring{TitleFrame()}{TitleFrame()}}
+{\footnotesize\ttfamily \label{class_design_1_1_title_frame_ad9eaae38a8d59f65a9aa30ddae67a606} 
+Design\+::\+Title\+Frame\+::\+Title\+Frame (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_design_1_1_layout_base}{Layout\+Base}} \texorpdfstring{$\ast$}{*}}]{parent}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_title_frame_8cpp_source_l00035}{35}} of file \mbox{\hyperlink{_title_frame_8cpp_source}{Title\+Frame.\+cpp}}.
+
+\Hypertarget{class_design_1_1_title_frame_a55735b56585f67593243769efae05c97}\index{Design::TitleFrame@{Design::TitleFrame}!````~TitleFrame@{\texorpdfstring{$\sim$}{\string~}TitleFrame}}
+\index{````~TitleFrame@{\texorpdfstring{$\sim$}{\string~}TitleFrame}!Design::TitleFrame@{Design::TitleFrame}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}TitleFrame()}{\string~TitleFrame()}}
+{\footnotesize\ttfamily \label{class_design_1_1_title_frame_a55735b56585f67593243769efae05c97} 
+Design\+::\+Title\+Frame\+::\texorpdfstring{$\sim$}{\string~}\+Title\+Frame (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_title_frame_8cpp_source_l00042}{42}} of file \mbox{\hyperlink{_title_frame_8cpp_source}{Title\+Frame.\+cpp}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_design_1_1_title_frame_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_design_1_1_title_frame_accb61e89a3630ed44e206a9a35587492}\index{Design::TitleFrame@{Design::TitleFrame}!Draw@{Draw}}
+\index{Draw@{Draw}!Design::TitleFrame@{Design::TitleFrame}}
+\doxysubsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily \label{class_design_1_1_title_frame_accb61e89a3630ed44e206a9a35587492} 
+void Design\+::\+Title\+Frame\+::\+Draw (\begin{DoxyParamCaption}\item[{wx\+DC \&}]{dc}{, }\item[{double}]{x}{, }\item[{double}]{y}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_title_frame_8cpp_source_l00048}{48}} of file \mbox{\hyperlink{_title_frame_8cpp_source}{Title\+Frame.\+cpp}}.
+
+\Hypertarget{class_design_1_1_title_frame_aa525af501711225b5141719384e7a1b0}\index{Design::TitleFrame@{Design::TitleFrame}!DrawPDF@{DrawPDF}}
+\index{DrawPDF@{DrawPDF}!Design::TitleFrame@{Design::TitleFrame}}
+\doxysubsubsection{\texorpdfstring{DrawPDF()}{DrawPDF()}}
+{\footnotesize\ttfamily \label{class_design_1_1_title_frame_aa525af501711225b5141719384e7a1b0} 
+void Design\+::\+Title\+Frame\+::\+Draw\+PDF (\begin{DoxyParamCaption}\item[{wx\+Pdf\+Document \texorpdfstring{$\ast$}{*}}]{doc}{, }\item[{double}]{x}{, }\item[{double}]{y}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_title_frame_8cpp_source_l00057}{57}} of file \mbox{\hyperlink{_title_frame_8cpp_source}{Title\+Frame.\+cpp}}.
+
+\Hypertarget{class_design_1_1_title_frame_ae44179734d31ac4d4131d1f017a3c3f8}\index{Design::TitleFrame@{Design::TitleFrame}!GetHeadingColor@{GetHeadingColor}}
+\index{GetHeadingColor@{GetHeadingColor}!Design::TitleFrame@{Design::TitleFrame}}
+\doxysubsubsection{\texorpdfstring{GetHeadingColor()}{GetHeadingColor()}}
+{\footnotesize\ttfamily \label{class_design_1_1_title_frame_ae44179734d31ac4d4131d1f017a3c3f8} 
+wx\+Colour Design\+::\+Title\+Frame\+::\+Get\+Heading\+Color (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_title_frame_8h_source_l00069}{69}} of file \mbox{\hyperlink{_title_frame_8h_source}{Title\+Frame.\+h}}.
+
+\Hypertarget{class_design_1_1_title_frame_adee57f1948f7ef35d8da601521d0428e}\index{Design::TitleFrame@{Design::TitleFrame}!GetHeadingFont@{GetHeadingFont}}
+\index{GetHeadingFont@{GetHeadingFont}!Design::TitleFrame@{Design::TitleFrame}}
+\doxysubsubsection{\texorpdfstring{GetHeadingFont()}{GetHeadingFont()}}
+{\footnotesize\ttfamily \label{class_design_1_1_title_frame_adee57f1948f7ef35d8da601521d0428e} 
+wx\+Font Design\+::\+Title\+Frame\+::\+Get\+Heading\+Font (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_title_frame_8h_source_l00084}{84}} of file \mbox{\hyperlink{_title_frame_8h_source}{Title\+Frame.\+h}}.
+
+\Hypertarget{class_design_1_1_title_frame_a68b9982a9b1d8e2becf496fb502ed988}\index{Design::TitleFrame@{Design::TitleFrame}!GetHeadingFontNdx@{GetHeadingFontNdx}}
+\index{GetHeadingFontNdx@{GetHeadingFontNdx}!Design::TitleFrame@{Design::TitleFrame}}
+\doxysubsubsection{\texorpdfstring{GetHeadingFontNdx()}{GetHeadingFontNdx()}}
+{\footnotesize\ttfamily \label{class_design_1_1_title_frame_a68b9982a9b1d8e2becf496fb502ed988} 
+int Design\+::\+Title\+Frame\+::\+Get\+Heading\+Font\+Ndx (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_title_frame_8h_source_l00091}{91}} of file \mbox{\hyperlink{_title_frame_8h_source}{Title\+Frame.\+h}}.
+
+\Hypertarget{class_design_1_1_title_frame_ae175355cc0d0629b10b3f98cbc372a55}\index{Design::TitleFrame@{Design::TitleFrame}!GetHeadingFrame@{GetHeadingFrame}}
+\index{GetHeadingFrame@{GetHeadingFrame}!Design::TitleFrame@{Design::TitleFrame}}
+\doxysubsubsection{\texorpdfstring{GetHeadingFrame()}{GetHeadingFrame()}}
+{\footnotesize\ttfamily \label{class_design_1_1_title_frame_ae175355cc0d0629b10b3f98cbc372a55} 
+\mbox{\hyperlink{class_design_1_1_label_frame}{Design\+::\+Label\+Frame}} \texorpdfstring{$\ast$}{*} Design\+::\+Title\+Frame\+::\+Get\+Heading\+Frame (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_title_frame_8h_source_l00098}{98}} of file \mbox{\hyperlink{_title_frame_8h_source}{Title\+Frame.\+h}}.
+
+\Hypertarget{class_design_1_1_title_frame_af21add4d6a40f8279e17eb91f5e1674b}\index{Design::TitleFrame@{Design::TitleFrame}!GetHeadingString@{GetHeadingString}}
+\index{GetHeadingString@{GetHeadingString}!Design::TitleFrame@{Design::TitleFrame}}
+\doxysubsubsection{\texorpdfstring{GetHeadingString()}{GetHeadingString()}}
+{\footnotesize\ttfamily \label{class_design_1_1_title_frame_af21add4d6a40f8279e17eb91f5e1674b} 
+wx\+String Design\+::\+Title\+Frame\+::\+Get\+Heading\+String (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_title_frame_8cpp_source_l00090}{90}} of file \mbox{\hyperlink{_title_frame_8cpp_source}{Title\+Frame.\+cpp}}.
+
+\Hypertarget{class_design_1_1_title_frame_aa6574c5ce84574e2c9e8ad1ff8d44a89}\index{Design::TitleFrame@{Design::TitleFrame}!GetShowHeading@{GetShowHeading}}
+\index{GetShowHeading@{GetShowHeading}!Design::TitleFrame@{Design::TitleFrame}}
+\doxysubsubsection{\texorpdfstring{GetShowHeading()}{GetShowHeading()}}
+{\footnotesize\ttfamily \label{class_design_1_1_title_frame_aa6574c5ce84574e2c9e8ad1ff8d44a89} 
+bool Design\+::\+Title\+Frame\+::\+Get\+Show\+Heading (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_title_frame_8h_source_l00059}{59}} of file \mbox{\hyperlink{_title_frame_8h_source}{Title\+Frame.\+h}}.
+
+\Hypertarget{class_design_1_1_title_frame_a5d6f6f99534d45c8416cbeee0b7cecf2}\index{Design::TitleFrame@{Design::TitleFrame}!GetShowSubHeading@{GetShowSubHeading}}
+\index{GetShowSubHeading@{GetShowSubHeading}!Design::TitleFrame@{Design::TitleFrame}}
+\doxysubsubsection{\texorpdfstring{GetShowSubHeading()}{GetShowSubHeading()}}
+{\footnotesize\ttfamily \label{class_design_1_1_title_frame_a5d6f6f99534d45c8416cbeee0b7cecf2} 
+bool Design\+::\+Title\+Frame\+::\+Get\+Show\+Sub\+Heading (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_title_frame_8h_source_l00062}{62}} of file \mbox{\hyperlink{_title_frame_8h_source}{Title\+Frame.\+h}}.
+
+\Hypertarget{class_design_1_1_title_frame_aaa0b71726efdf8ce382cf6ebd6bea928}\index{Design::TitleFrame@{Design::TitleFrame}!GetSubHeadingColor@{GetSubHeadingColor}}
+\index{GetSubHeadingColor@{GetSubHeadingColor}!Design::TitleFrame@{Design::TitleFrame}}
+\doxysubsubsection{\texorpdfstring{GetSubHeadingColor()}{GetSubHeadingColor()}}
+{\footnotesize\ttfamily \label{class_design_1_1_title_frame_aaa0b71726efdf8ce382cf6ebd6bea928} 
+wx\+Colour Design\+::\+Title\+Frame\+::\+Get\+Sub\+Heading\+Color (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_title_frame_8h_source_l00072}{72}} of file \mbox{\hyperlink{_title_frame_8h_source}{Title\+Frame.\+h}}.
+
+\Hypertarget{class_design_1_1_title_frame_aa615a085460dc5539d4eb67ab9a5cf8e}\index{Design::TitleFrame@{Design::TitleFrame}!GetSubHeadingFont@{GetSubHeadingFont}}
+\index{GetSubHeadingFont@{GetSubHeadingFont}!Design::TitleFrame@{Design::TitleFrame}}
+\doxysubsubsection{\texorpdfstring{GetSubHeadingFont()}{GetSubHeadingFont()}}
+{\footnotesize\ttfamily \label{class_design_1_1_title_frame_aa615a085460dc5539d4eb67ab9a5cf8e} 
+wx\+Font Design\+::\+Title\+Frame\+::\+Get\+Sub\+Heading\+Font (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_title_frame_8h_source_l00087}{87}} of file \mbox{\hyperlink{_title_frame_8h_source}{Title\+Frame.\+h}}.
+
+\Hypertarget{class_design_1_1_title_frame_a4ce4e3048469097de2217c21fab0d447}\index{Design::TitleFrame@{Design::TitleFrame}!GetSubHeadingFontNdx@{GetSubHeadingFontNdx}}
+\index{GetSubHeadingFontNdx@{GetSubHeadingFontNdx}!Design::TitleFrame@{Design::TitleFrame}}
+\doxysubsubsection{\texorpdfstring{GetSubHeadingFontNdx()}{GetSubHeadingFontNdx()}}
+{\footnotesize\ttfamily \label{class_design_1_1_title_frame_a4ce4e3048469097de2217c21fab0d447} 
+int Design\+::\+Title\+Frame\+::\+Get\+Sub\+Heading\+Font\+Ndx (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_title_frame_8h_source_l00094}{94}} of file \mbox{\hyperlink{_title_frame_8h_source}{Title\+Frame.\+h}}.
+
+\Hypertarget{class_design_1_1_title_frame_a7745d0319638f02dd406df828c0aa3cc}\index{Design::TitleFrame@{Design::TitleFrame}!GetSubHeadingFrame@{GetSubHeadingFrame}}
+\index{GetSubHeadingFrame@{GetSubHeadingFrame}!Design::TitleFrame@{Design::TitleFrame}}
+\doxysubsubsection{\texorpdfstring{GetSubHeadingFrame()}{GetSubHeadingFrame()}}
+{\footnotesize\ttfamily \label{class_design_1_1_title_frame_a7745d0319638f02dd406df828c0aa3cc} 
+\mbox{\hyperlink{class_design_1_1_label_frame}{Design\+::\+Label\+Frame}} \texorpdfstring{$\ast$}{*} Design\+::\+Title\+Frame\+::\+Get\+Sub\+Heading\+Frame (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_title_frame_8h_source_l00101}{101}} of file \mbox{\hyperlink{_title_frame_8h_source}{Title\+Frame.\+h}}.
+
+\Hypertarget{class_design_1_1_title_frame_ad91f10c62fc6e62540592c6d37e78a0f}\index{Design::TitleFrame@{Design::TitleFrame}!GetSubHeadingString@{GetSubHeadingString}}
+\index{GetSubHeadingString@{GetSubHeadingString}!Design::TitleFrame@{Design::TitleFrame}}
+\doxysubsubsection{\texorpdfstring{GetSubHeadingString()}{GetSubHeadingString()}}
+{\footnotesize\ttfamily \label{class_design_1_1_title_frame_ad91f10c62fc6e62540592c6d37e78a0f} 
+wx\+String Design\+::\+Title\+Frame\+::\+Get\+Sub\+Heading\+String (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_title_frame_8cpp_source_l00095}{95}} of file \mbox{\hyperlink{_title_frame_8cpp_source}{Title\+Frame.\+cpp}}.
+
+\Hypertarget{class_design_1_1_title_frame_a68450ff15acfc1181a2177c6659add66}\index{Design::TitleFrame@{Design::TitleFrame}!LoadFonts@{LoadFonts}}
+\index{LoadFonts@{LoadFonts}!Design::TitleFrame@{Design::TitleFrame}}
+\doxysubsubsection{\texorpdfstring{LoadFonts()}{LoadFonts()}}
+{\footnotesize\ttfamily \label{class_design_1_1_title_frame_a68450ff15acfc1181a2177c6659add66} 
+void Design\+::\+Title\+Frame\+::\+Load\+Fonts (\begin{DoxyParamCaption}\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{node}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_title_frame_8cpp_source_l00066}{66}} of file \mbox{\hyperlink{_title_frame_8cpp_source}{Title\+Frame.\+cpp}}.
+
+\Hypertarget{class_design_1_1_title_frame_af863a6a8773512c94b6687a603409325}\index{Design::TitleFrame@{Design::TitleFrame}!SaveFonts@{SaveFonts}}
+\index{SaveFonts@{SaveFonts}!Design::TitleFrame@{Design::TitleFrame}}
+\doxysubsubsection{\texorpdfstring{SaveFonts()}{SaveFonts()}}
+{\footnotesize\ttfamily \label{class_design_1_1_title_frame_af863a6a8773512c94b6687a603409325} 
+void Design\+::\+Title\+Frame\+::\+Save\+Fonts (\begin{DoxyParamCaption}\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{parent}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_title_frame_8cpp_source_l00072}{72}} of file \mbox{\hyperlink{_title_frame_8cpp_source}{Title\+Frame.\+cpp}}.
+
+\Hypertarget{class_design_1_1_title_frame_a0e2e9b43fe8c30f8393973bcdc01c104}\index{Design::TitleFrame@{Design::TitleFrame}!SetHeadingFont@{SetHeadingFont}}
+\index{SetHeadingFont@{SetHeadingFont}!Design::TitleFrame@{Design::TitleFrame}}
+\doxysubsubsection{\texorpdfstring{SetHeadingFont()}{SetHeadingFont()}}
+{\footnotesize\ttfamily \label{class_design_1_1_title_frame_a0e2e9b43fe8c30f8393973bcdc01c104} 
+void Design\+::\+Title\+Frame\+::\+Set\+Heading\+Font (\begin{DoxyParamCaption}\item[{wx\+Font}]{new\+Font}{, }\item[{wx\+Colour}]{new\+Color}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_title_frame_8h_source_l00075}{75}} of file \mbox{\hyperlink{_title_frame_8h_source}{Title\+Frame.\+h}}.
+
+\Hypertarget{class_design_1_1_title_frame_a1c4f21baea865e289d5099687cbdb062}\index{Design::TitleFrame@{Design::TitleFrame}!SetHeadingString@{SetHeadingString}}
+\index{SetHeadingString@{SetHeadingString}!Design::TitleFrame@{Design::TitleFrame}}
+\doxysubsubsection{\texorpdfstring{SetHeadingString()}{SetHeadingString()}}
+{\footnotesize\ttfamily \label{class_design_1_1_title_frame_a1c4f21baea865e289d5099687cbdb062} 
+void Design\+::\+Title\+Frame\+::\+Set\+Heading\+String (\begin{DoxyParamCaption}\item[{wx\+String}]{str}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_title_frame_8cpp_source_l00101}{101}} of file \mbox{\hyperlink{_title_frame_8cpp_source}{Title\+Frame.\+cpp}}.
+
+\Hypertarget{class_design_1_1_title_frame_a350e631e5333a31897641eb74ddc7086}\index{Design::TitleFrame@{Design::TitleFrame}!SetSubHeadingFont@{SetSubHeadingFont}}
+\index{SetSubHeadingFont@{SetSubHeadingFont}!Design::TitleFrame@{Design::TitleFrame}}
+\doxysubsubsection{\texorpdfstring{SetSubHeadingFont()}{SetSubHeadingFont()}}
+{\footnotesize\ttfamily \label{class_design_1_1_title_frame_a350e631e5333a31897641eb74ddc7086} 
+void Design\+::\+Title\+Frame\+::\+Set\+Sub\+Heading\+Font (\begin{DoxyParamCaption}\item[{wx\+Font}]{new\+Font}{, }\item[{wx\+Colour}]{new\+Color}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_title_frame_8h_source_l00079}{79}} of file \mbox{\hyperlink{_title_frame_8h_source}{Title\+Frame.\+h}}.
+
+\Hypertarget{class_design_1_1_title_frame_a136de7b8d3fd8a5d72d7be50fe02db2b}\index{Design::TitleFrame@{Design::TitleFrame}!SetSubHeadingString@{SetSubHeadingString}}
+\index{SetSubHeadingString@{SetSubHeadingString}!Design::TitleFrame@{Design::TitleFrame}}
+\doxysubsubsection{\texorpdfstring{SetSubHeadingString()}{SetSubHeadingString()}}
+{\footnotesize\ttfamily \label{class_design_1_1_title_frame_a136de7b8d3fd8a5d72d7be50fe02db2b} 
+void Design\+::\+Title\+Frame\+::\+Set\+Sub\+Heading\+String (\begin{DoxyParamCaption}\item[{wx\+String}]{str}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_title_frame_8cpp_source_l00106}{106}} of file \mbox{\hyperlink{_title_frame_8cpp_source}{Title\+Frame.\+cpp}}.
+
+\Hypertarget{class_design_1_1_title_frame_aa92edd3f343ac68f26db4c0643b883e4}\index{Design::TitleFrame@{Design::TitleFrame}!UpdateString@{UpdateString}}
+\index{UpdateString@{UpdateString}!Design::TitleFrame@{Design::TitleFrame}}
+\doxysubsubsection{\texorpdfstring{UpdateString()}{UpdateString()}}
+{\footnotesize\ttfamily \label{class_design_1_1_title_frame_aa92edd3f343ac68f26db4c0643b883e4} 
+void Design\+::\+Title\+Frame\+::\+Update\+String (\begin{DoxyParamCaption}\item[{double}]{title\+Width}{, }\item[{double}]{sub\+Title\+Width}{ = {\ttfamily 0}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_title_frame_8cpp_source_l00111}{111}} of file \mbox{\hyperlink{_title_frame_8cpp_source}{Title\+Frame.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/femon/\+Development/wx/clone\+Test/\+Stamp\+Tool/src/design/\mbox{\hyperlink{_title_frame_8h}{Title\+Frame.\+h}}\item 
+C\+:/\+Users/femon/\+Development/wx/clone\+Test/\+Stamp\+Tool/src/design/\mbox{\hyperlink{_title_frame_8cpp}{Title\+Frame.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,266 @@
+\doxysection{Utils\+::Volume\+List Class Reference}
+\hypertarget{class_utils_1_1_volume_list}{}\label{class_utils_1_1_volume_list}\index{Utils::VolumeList@{Utils::VolumeList}}
+
+
+{\ttfamily \#include $<$Volume\+List.\+h$>$}
+
+Inheritance diagram for Utils\+::Volume\+List\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_utils_1_1_volume_list}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_utils_1_1_volume_list_aafb3398328644baaf92c84388df8a577}{Volume\+List}} ()
+\item 
+\mbox{\hyperlink{class_utils_1_1_volume_list_abf211ffa41d9b860867decf436ce5b94}{\texorpdfstring{$\sim$}{\string~}\+Volume\+List}} ()
+\item 
+wx\+Xml\+Node \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_utils_1_1_volume_list_abd40ffe153b1b26986cc05f33aa83c4a}{Add\+Child}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}child)
+\item 
+bool \mbox{\hyperlink{class_utils_1_1_volume_list_af5b9b1b4662680053e1f34b8df78fd15}{Clear}} ()
+\item 
+wx\+Tree\+Item\+Id \mbox{\hyperlink{class_utils_1_1_volume_list_a4d068a2736e07ebaaf0bf54a4aa5a8ac}{Find\+Menu\+ID}} (int id)
+\item 
+Menu\+IDArray\+::iterator \mbox{\hyperlink{class_utils_1_1_volume_list_a66f87d684de7268a050b34c66d84952c}{Find\+Menu\+IDIterator}} (int id)
+\item 
+\mbox{\hyperlink{class_utils_1_1_volume}{Utils\+::\+Volume}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_utils_1_1_volume_list_a943b0708393fc693c0fe7d59e27d9e96}{Find\+Volume}} (wx\+String str)
+\item 
+Volume\+Array\+::iterator \mbox{\hyperlink{class_utils_1_1_volume_list_a12c91cdf68c455c1d7c4d19471fe9e3e}{Find\+Volume\+Iterator}} (wx\+String str)
+\item 
+\mbox{\hyperlink{namespace_utils_aeee3fa6f7393338c50e7f323fa993989}{Utils\+::\+Volume\+Array}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_utils_1_1_volume_list_a715cb1f378294d281c4a9c7c90a60eaf}{Get\+Array}} ()
+\item 
+\mbox{\hyperlink{class_utils_1_1_volume}{Utils\+::\+Volume}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_utils_1_1_volume_list_a8c45e00867a115cce68f8ef768d7ac38}{Get\+Volume}} ()
+\item 
+void \mbox{\hyperlink{class_utils_1_1_volume_list_a3be25b5f8e4a75cf6a73b7d60986cb20}{Insert}} (int id, wx\+Tree\+Item\+Id tree\+Id)
+\item 
+void \mbox{\hyperlink{class_utils_1_1_volume_list_a99b5483956ded5de6622279aa4cbfa68}{Insert}} (wx\+String str, \mbox{\hyperlink{class_utils_1_1_volume}{Utils\+::\+Volume}} \texorpdfstring{$\ast$}{*}vol)
+\item 
+void \mbox{\hyperlink{class_utils_1_1_volume_list_ac6d9e736b10d8f6e0678421c89b39ec6}{Make\+Name\+Array}} (wx\+Array\+String \&array)
+\item 
+virtual \mbox{\hyperlink{class_utils_1_1_volume}{Volume}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_utils_1_1_volume_list_ad46e91f261dfb4bd99bd0fc50e539d61}{New\+Volume\+Instance}} (wx\+String filename)=0
+\item 
+void \mbox{\hyperlink{class_utils_1_1_volume_list_a76617541736b6fa96ef227e42292246b}{Remove\+Volume}} (wx\+String name)
+\item 
+void \mbox{\hyperlink{class_utils_1_1_volume_list_a41690d66a9027b11224b98f051fd3eed}{Remove\+Volume}} (\mbox{\hyperlink{class_utils_1_1_volume}{Volume}} \texorpdfstring{$\ast$}{*}vol)
+\item 
+void \mbox{\hyperlink{class_utils_1_1_volume_list_a06d73bb39e9c6ebc5cf8cede367b5299}{Save\+Dirty\+Volumes}} ()
+\item 
+void \mbox{\hyperlink{class_utils_1_1_volume_list_acc5f386a0d13002f76d76cf9b630766f}{Save\+Volumes}} ()
+\item 
+void \mbox{\hyperlink{class_utils_1_1_volume_list_a7d1ce6fb8df681f2debf9a7b3b2430b3}{Set\+Current\+Volume}} (\mbox{\hyperlink{class_utils_1_1_volume}{Volume}} \texorpdfstring{$\ast$}{*}vol)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_volume_list_8h_source_l00043}{43}} of file \mbox{\hyperlink{_volume_list_8h_source}{Volume\+List.\+h}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_utils_1_1_volume_list_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_utils_1_1_volume_list_aafb3398328644baaf92c84388df8a577}\index{Utils::VolumeList@{Utils::VolumeList}!VolumeList@{VolumeList}}
+\index{VolumeList@{VolumeList}!Utils::VolumeList@{Utils::VolumeList}}
+\doxysubsubsection{\texorpdfstring{VolumeList()}{VolumeList()}}
+{\footnotesize\ttfamily \label{class_utils_1_1_volume_list_aafb3398328644baaf92c84388df8a577} 
+Utils\+::\+Volume\+List\+::\+Volume\+List (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_volume_list_8h_source_l00047}{47}} of file \mbox{\hyperlink{_volume_list_8h_source}{Volume\+List.\+h}}.
+
+\Hypertarget{class_utils_1_1_volume_list_abf211ffa41d9b860867decf436ce5b94}\index{Utils::VolumeList@{Utils::VolumeList}!````~VolumeList@{\texorpdfstring{$\sim$}{\string~}VolumeList}}
+\index{````~VolumeList@{\texorpdfstring{$\sim$}{\string~}VolumeList}!Utils::VolumeList@{Utils::VolumeList}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}VolumeList()}{\string~VolumeList()}}
+{\footnotesize\ttfamily \label{class_utils_1_1_volume_list_abf211ffa41d9b860867decf436ce5b94} 
+Utils\+::\+Volume\+List\+::\texorpdfstring{$\sim$}{\string~}\+Volume\+List (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_volume_list_8h_source_l00051}{51}} of file \mbox{\hyperlink{_volume_list_8h_source}{Volume\+List.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_utils_1_1_volume_list_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_utils_1_1_volume_list_abd40ffe153b1b26986cc05f33aa83c4a}\index{Utils::VolumeList@{Utils::VolumeList}!AddChild@{AddChild}}
+\index{AddChild@{AddChild}!Utils::VolumeList@{Utils::VolumeList}}
+\doxysubsubsection{\texorpdfstring{AddChild()}{AddChild()}}
+{\footnotesize\ttfamily \label{class_utils_1_1_volume_list_abd40ffe153b1b26986cc05f33aa83c4a} 
+wx\+Xml\+Node \texorpdfstring{$\ast$}{*} Utils\+::\+Volume\+List\+::\+Add\+Child (\begin{DoxyParamCaption}\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{child}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_volume_list_8cpp_source_l00047}{47}} of file \mbox{\hyperlink{_volume_list_8cpp_source}{Volume\+List.\+cpp}}.
+
+\Hypertarget{class_utils_1_1_volume_list_af5b9b1b4662680053e1f34b8df78fd15}\index{Utils::VolumeList@{Utils::VolumeList}!Clear@{Clear}}
+\index{Clear@{Clear}!Utils::VolumeList@{Utils::VolumeList}}
+\doxysubsubsection{\texorpdfstring{Clear()}{Clear()}}
+{\footnotesize\ttfamily \label{class_utils_1_1_volume_list_af5b9b1b4662680053e1f34b8df78fd15} 
+bool Utils\+::\+Volume\+List\+::\+Clear (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_volume_list_8cpp_source_l00081}{81}} of file \mbox{\hyperlink{_volume_list_8cpp_source}{Volume\+List.\+cpp}}.
+
+\Hypertarget{class_utils_1_1_volume_list_a4d068a2736e07ebaaf0bf54a4aa5a8ac}\index{Utils::VolumeList@{Utils::VolumeList}!FindMenuID@{FindMenuID}}
+\index{FindMenuID@{FindMenuID}!Utils::VolumeList@{Utils::VolumeList}}
+\doxysubsubsection{\texorpdfstring{FindMenuID()}{FindMenuID()}}
+{\footnotesize\ttfamily \label{class_utils_1_1_volume_list_a4d068a2736e07ebaaf0bf54a4aa5a8ac} 
+wx\+Tree\+Item\+Id Utils\+::\+Volume\+List\+::\+Find\+Menu\+ID (\begin{DoxyParamCaption}\item[{int}]{id}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_volume_list_8cpp_source_l00091}{91}} of file \mbox{\hyperlink{_volume_list_8cpp_source}{Volume\+List.\+cpp}}.
+
+\Hypertarget{class_utils_1_1_volume_list_a66f87d684de7268a050b34c66d84952c}\index{Utils::VolumeList@{Utils::VolumeList}!FindMenuIDIterator@{FindMenuIDIterator}}
+\index{FindMenuIDIterator@{FindMenuIDIterator}!Utils::VolumeList@{Utils::VolumeList}}
+\doxysubsubsection{\texorpdfstring{FindMenuIDIterator()}{FindMenuIDIterator()}}
+{\footnotesize\ttfamily \label{class_utils_1_1_volume_list_a66f87d684de7268a050b34c66d84952c} 
+Menu\+IDArray\+::iterator Utils\+::\+Volume\+List\+::\+Find\+Menu\+IDIterator (\begin{DoxyParamCaption}\item[{int}]{id}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_volume_list_8cpp_source_l00102}{102}} of file \mbox{\hyperlink{_volume_list_8cpp_source}{Volume\+List.\+cpp}}.
+
+\Hypertarget{class_utils_1_1_volume_list_a943b0708393fc693c0fe7d59e27d9e96}\index{Utils::VolumeList@{Utils::VolumeList}!FindVolume@{FindVolume}}
+\index{FindVolume@{FindVolume}!Utils::VolumeList@{Utils::VolumeList}}
+\doxysubsubsection{\texorpdfstring{FindVolume()}{FindVolume()}}
+{\footnotesize\ttfamily \label{class_utils_1_1_volume_list_a943b0708393fc693c0fe7d59e27d9e96} 
+\mbox{\hyperlink{class_utils_1_1_volume}{Utils\+::\+Volume}} \texorpdfstring{$\ast$}{*} Utils\+::\+Volume\+List\+::\+Find\+Volume (\begin{DoxyParamCaption}\item[{wx\+String}]{str}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_volume_list_8cpp_source_l00120}{120}} of file \mbox{\hyperlink{_volume_list_8cpp_source}{Volume\+List.\+cpp}}.
+
+\Hypertarget{class_utils_1_1_volume_list_a12c91cdf68c455c1d7c4d19471fe9e3e}\index{Utils::VolumeList@{Utils::VolumeList}!FindVolumeIterator@{FindVolumeIterator}}
+\index{FindVolumeIterator@{FindVolumeIterator}!Utils::VolumeList@{Utils::VolumeList}}
+\doxysubsubsection{\texorpdfstring{FindVolumeIterator()}{FindVolumeIterator()}}
+{\footnotesize\ttfamily \label{class_utils_1_1_volume_list_a12c91cdf68c455c1d7c4d19471fe9e3e} 
+Volume\+Array\+::iterator Utils\+::\+Volume\+List\+::\+Find\+Volume\+Iterator (\begin{DoxyParamCaption}\item[{wx\+String}]{str}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_volume_list_8cpp_source_l00131}{131}} of file \mbox{\hyperlink{_volume_list_8cpp_source}{Volume\+List.\+cpp}}.
+
+\Hypertarget{class_utils_1_1_volume_list_a715cb1f378294d281c4a9c7c90a60eaf}\index{Utils::VolumeList@{Utils::VolumeList}!GetArray@{GetArray}}
+\index{GetArray@{GetArray}!Utils::VolumeList@{Utils::VolumeList}}
+\doxysubsubsection{\texorpdfstring{GetArray()}{GetArray()}}
+{\footnotesize\ttfamily \label{class_utils_1_1_volume_list_a715cb1f378294d281c4a9c7c90a60eaf} 
+\mbox{\hyperlink{namespace_utils_aeee3fa6f7393338c50e7f323fa993989}{Utils\+::\+Volume\+Array}} \texorpdfstring{$\ast$}{*} Utils\+::\+Volume\+List\+::\+Get\+Array (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_volume_list_8h_source_l00065}{65}} of file \mbox{\hyperlink{_volume_list_8h_source}{Volume\+List.\+h}}.
+
+\Hypertarget{class_utils_1_1_volume_list_a8c45e00867a115cce68f8ef768d7ac38}\index{Utils::VolumeList@{Utils::VolumeList}!GetVolume@{GetVolume}}
+\index{GetVolume@{GetVolume}!Utils::VolumeList@{Utils::VolumeList}}
+\doxysubsubsection{\texorpdfstring{GetVolume()}{GetVolume()}}
+{\footnotesize\ttfamily \label{class_utils_1_1_volume_list_a8c45e00867a115cce68f8ef768d7ac38} 
+\mbox{\hyperlink{class_utils_1_1_volume}{Utils\+::\+Volume}} \texorpdfstring{$\ast$}{*} Utils\+::\+Volume\+List\+::\+Get\+Volume (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_volume_list_8cpp_source_l00148}{148}} of file \mbox{\hyperlink{_volume_list_8cpp_source}{Volume\+List.\+cpp}}.
+
+\Hypertarget{class_utils_1_1_volume_list_a3be25b5f8e4a75cf6a73b7d60986cb20}\index{Utils::VolumeList@{Utils::VolumeList}!Insert@{Insert}}
+\index{Insert@{Insert}!Utils::VolumeList@{Utils::VolumeList}}
+\doxysubsubsection{\texorpdfstring{Insert()}{Insert()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_utils_1_1_volume_list_a3be25b5f8e4a75cf6a73b7d60986cb20} 
+void Utils\+::\+Volume\+List\+::\+Insert (\begin{DoxyParamCaption}\item[{int}]{id}{, }\item[{wx\+Tree\+Item\+Id}]{tree\+Id}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_volume_list_8cpp_source_l00161}{161}} of file \mbox{\hyperlink{_volume_list_8cpp_source}{Volume\+List.\+cpp}}.
+
+\Hypertarget{class_utils_1_1_volume_list_a99b5483956ded5de6622279aa4cbfa68}\index{Utils::VolumeList@{Utils::VolumeList}!Insert@{Insert}}
+\index{Insert@{Insert}!Utils::VolumeList@{Utils::VolumeList}}
+\doxysubsubsection{\texorpdfstring{Insert()}{Insert()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_utils_1_1_volume_list_a99b5483956ded5de6622279aa4cbfa68} 
+void Utils\+::\+Volume\+List\+::\+Insert (\begin{DoxyParamCaption}\item[{wx\+String}]{str}{, }\item[{\mbox{\hyperlink{class_utils_1_1_volume}{Utils\+::\+Volume}} \texorpdfstring{$\ast$}{*}}]{vol}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_volume_list_8cpp_source_l00166}{166}} of file \mbox{\hyperlink{_volume_list_8cpp_source}{Volume\+List.\+cpp}}.
+
+\Hypertarget{class_utils_1_1_volume_list_ac6d9e736b10d8f6e0678421c89b39ec6}\index{Utils::VolumeList@{Utils::VolumeList}!MakeNameArray@{MakeNameArray}}
+\index{MakeNameArray@{MakeNameArray}!Utils::VolumeList@{Utils::VolumeList}}
+\doxysubsubsection{\texorpdfstring{MakeNameArray()}{MakeNameArray()}}
+{\footnotesize\ttfamily \label{class_utils_1_1_volume_list_ac6d9e736b10d8f6e0678421c89b39ec6} 
+void Utils\+::\+Volume\+List\+::\+Make\+Name\+Array (\begin{DoxyParamCaption}\item[{wx\+Array\+String \&}]{array}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_volume_list_8cpp_source_l00171}{171}} of file \mbox{\hyperlink{_volume_list_8cpp_source}{Volume\+List.\+cpp}}.
+
+\Hypertarget{class_utils_1_1_volume_list_ad46e91f261dfb4bd99bd0fc50e539d61}\index{Utils::VolumeList@{Utils::VolumeList}!NewVolumeInstance@{NewVolumeInstance}}
+\index{NewVolumeInstance@{NewVolumeInstance}!Utils::VolumeList@{Utils::VolumeList}}
+\doxysubsubsection{\texorpdfstring{NewVolumeInstance()}{NewVolumeInstance()}}
+{\footnotesize\ttfamily \label{class_utils_1_1_volume_list_ad46e91f261dfb4bd99bd0fc50e539d61} 
+virtual \mbox{\hyperlink{class_utils_1_1_volume}{Volume}} \texorpdfstring{$\ast$}{*} Utils\+::\+Volume\+List\+::\+New\+Volume\+Instance (\begin{DoxyParamCaption}\item[{wx\+String}]{filename}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_catalog_1_1_catalog_list_a5026a8bdfd270d9816c6f210af8f2a34}{Catalog\+::\+Catalog\+List}}, and \mbox{\hyperlink{class_design_1_1_album_list_aca752cf1ad63ba0d8b6b4bbc240723ae}{Design\+::\+Album\+List}}.
+
+\Hypertarget{class_utils_1_1_volume_list_a41690d66a9027b11224b98f051fd3eed}\index{Utils::VolumeList@{Utils::VolumeList}!RemoveVolume@{RemoveVolume}}
+\index{RemoveVolume@{RemoveVolume}!Utils::VolumeList@{Utils::VolumeList}}
+\doxysubsubsection{\texorpdfstring{RemoveVolume()}{RemoveVolume()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_utils_1_1_volume_list_a41690d66a9027b11224b98f051fd3eed} 
+void Utils\+::\+Volume\+List\+::\+Remove\+Volume (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_utils_1_1_volume}{Volume}} \texorpdfstring{$\ast$}{*}}]{vol}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_volume_list_8cpp_source_l00191}{191}} of file \mbox{\hyperlink{_volume_list_8cpp_source}{Volume\+List.\+cpp}}.
+
+\Hypertarget{class_utils_1_1_volume_list_a76617541736b6fa96ef227e42292246b}\index{Utils::VolumeList@{Utils::VolumeList}!RemoveVolume@{RemoveVolume}}
+\index{RemoveVolume@{RemoveVolume}!Utils::VolumeList@{Utils::VolumeList}}
+\doxysubsubsection{\texorpdfstring{RemoveVolume()}{RemoveVolume()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_utils_1_1_volume_list_a76617541736b6fa96ef227e42292246b} 
+void Utils\+::\+Volume\+List\+::\+Remove\+Volume (\begin{DoxyParamCaption}\item[{wx\+String}]{name}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_volume_list_8cpp_source_l00185}{185}} of file \mbox{\hyperlink{_volume_list_8cpp_source}{Volume\+List.\+cpp}}.
+
+\Hypertarget{class_utils_1_1_volume_list_a06d73bb39e9c6ebc5cf8cede367b5299}\index{Utils::VolumeList@{Utils::VolumeList}!SaveDirtyVolumes@{SaveDirtyVolumes}}
+\index{SaveDirtyVolumes@{SaveDirtyVolumes}!Utils::VolumeList@{Utils::VolumeList}}
+\doxysubsubsection{\texorpdfstring{SaveDirtyVolumes()}{SaveDirtyVolumes()}}
+{\footnotesize\ttfamily \label{class_utils_1_1_volume_list_a06d73bb39e9c6ebc5cf8cede367b5299} 
+void Utils\+::\+Volume\+List\+::\+Save\+Dirty\+Volumes (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_volume_list_8cpp_source_l00197}{197}} of file \mbox{\hyperlink{_volume_list_8cpp_source}{Volume\+List.\+cpp}}.
+
+\Hypertarget{class_utils_1_1_volume_list_acc5f386a0d13002f76d76cf9b630766f}\index{Utils::VolumeList@{Utils::VolumeList}!SaveVolumes@{SaveVolumes}}
+\index{SaveVolumes@{SaveVolumes}!Utils::VolumeList@{Utils::VolumeList}}
+\doxysubsubsection{\texorpdfstring{SaveVolumes()}{SaveVolumes()}}
+{\footnotesize\ttfamily \label{class_utils_1_1_volume_list_acc5f386a0d13002f76d76cf9b630766f} 
+void Utils\+::\+Volume\+List\+::\+Save\+Volumes (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_volume_list_8cpp_source_l00213}{213}} of file \mbox{\hyperlink{_volume_list_8cpp_source}{Volume\+List.\+cpp}}.
+
+\Hypertarget{class_utils_1_1_volume_list_a7d1ce6fb8df681f2debf9a7b3b2430b3}\index{Utils::VolumeList@{Utils::VolumeList}!SetCurrentVolume@{SetCurrentVolume}}
+\index{SetCurrentVolume@{SetCurrentVolume}!Utils::VolumeList@{Utils::VolumeList}}
+\doxysubsubsection{\texorpdfstring{SetCurrentVolume()}{SetCurrentVolume()}}
+{\footnotesize\ttfamily \label{class_utils_1_1_volume_list_a7d1ce6fb8df681f2debf9a7b3b2430b3} 
+void Utils\+::\+Volume\+List\+::\+Set\+Current\+Volume (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_utils_1_1_volume}{Volume}} \texorpdfstring{$\ast$}{*}}]{vol}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_volume_list_8cpp_source_l00226}{226}} of file \mbox{\hyperlink{_volume_list_8cpp_source}{Volume\+List.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/femon/\+Development/wx/clone\+Test/\+Stamp\+Tool/src/utils/\mbox{\hyperlink{_volume_list_8h}{Volume\+List.\+h}}\item 
+C\+:/\+Users/femon/\+Development/wx/clone\+Test/\+Stamp\+Tool/src/utils/\mbox{\hyperlink{_volume_list_8cpp}{Volume\+List.\+cpp}}\end{DoxyCompactItemize}

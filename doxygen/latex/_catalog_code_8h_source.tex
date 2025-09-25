@@ -1,0 +1,55 @@
+\doxysection{Catalog\+Code.\+h}
+\hypertarget{_catalog_code_8h_source}{}\label{_catalog_code_8h_source}\index{C:/Users/femon/Development/wx/cloneTest/StampTool/src/catalog/CatalogCode.h@{C:/Users/femon/Development/wx/cloneTest/StampTool/src/catalog/CatalogCode.h}}
+\mbox{\hyperlink{_catalog_code_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_catalog_code_8h_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{_catalog_code_8h_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_catalog_code_8h_source_l00026}00026\ \textcolor{preprocessor}{\#ifndef\ CatalogCode\_h}}
+\DoxyCodeLine{\Hypertarget{_catalog_code_8h_source_l00027}00027\ \textcolor{preprocessor}{\#define\ CatalogCode\_h}}
+\DoxyCodeLine{\Hypertarget{_catalog_code_8h_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{_catalog_code_8h_source_l00029}00029\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_catalog_defs_8h}{catalog/CatalogDefs.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_catalog_code_8h_source_l00030}00030\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_catalog_base_8h}{catalog/CatalogBase.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_catalog_code_8h_source_l00031}00031\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_catalog_data_8h}{catalog/CatalogData.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_catalog_code_8h_source_l00032}00032\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_catalog_volume_8h}{catalog/CatalogVolume.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_catalog_code_8h_source_l00033}00033\ \ \textcolor{comment}{//\#include\ "{}utils/ImageRepository.h"{}}}
+\DoxyCodeLine{\Hypertarget{_catalog_code_8h_source_l00034}00034\ \textcolor{preprocessor}{\#include\ <wx/string.h>}}
+\DoxyCodeLine{\Hypertarget{_catalog_code_8h_source_l00035}00035\ \textcolor{preprocessor}{\#include\ <wx/arrstr.h>}}
+\DoxyCodeLine{\Hypertarget{_catalog_code_8h_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_catalog_code_8h_source_l00037}00037\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_catalog}{Catalog}}\ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_code_8h_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{_catalog_code_8h_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_catalog_code_8h_source_l00040}00040\ \ \ \ \ wxString\ \mbox{\hyperlink{namespace_catalog_ac4be765c58323ed4b6ffc182a17608af}{MakeImageName}}(\ wxString\ catCode\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_code_8h_source_l00041}00041\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_catalog_a830fee3ef4f92654baf6428d9c3b0f4d}{GetCodes}}(\ wxString\ catCodeStr,\ wxString\&\ catalog,\ wxString\&\ country,\ wxString\&\ code\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_code_8h_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{_catalog_code_8h_source_l00049}\mbox{\hyperlink{class_catalog_1_1_catalog_code}{00049}}\ \ \ \ \ \textcolor{keyword}{class\ }CatalogCode}
+\DoxyCodeLine{\Hypertarget{_catalog_code_8h_source_l00050}00050\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_code_8h_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{_catalog_code_8h_source_l00052}00052\ \ \ \ \ \ \ \ \ CatalogCode(\ )}
+\DoxyCodeLine{\Hypertarget{_catalog_code_8h_source_l00053}00053\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_code_8h_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{_catalog_code_8h_source_l00055}00055\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_catalog_code_8h_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{_catalog_code_8h_source_l00057}00057\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_catalog_code_8h_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{_catalog_code_8h_source_l00059}00059\ \ \ \ \ \ \ \ \ CatalogCode(\ wxString\ codeList\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_code_8h_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{_catalog_code_8h_source_l00061}\mbox{\hyperlink{class_catalog_1_1_catalog_code_a380c207d955f424df491aca0a8657c14}{00061}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_catalog_1_1_catalog_code_a380c207d955f424df491aca0a8657c14}{\string~CatalogCode}}(\ )\ \{\ \};}
+\DoxyCodeLine{\Hypertarget{_catalog_code_8h_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{_catalog_code_8h_source_l00063}00063\ \ \ \ \ \ \ \ \ wxString\ \mbox{\hyperlink{class_catalog_1_1_catalog_code_ab321f1544cfa3727164a8a3fc0bbcfb0}{FindImageName}}(\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_code_8h_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{_catalog_code_8h_source_l00065}\mbox{\hyperlink{class_catalog_1_1_catalog_code_adc0fa6df182b6671195d5493e5d569af}{00065}}\ \ \ \ \ \ \ \ \ wxArrayString\&\ \mbox{\hyperlink{class_catalog_1_1_catalog_code_adc0fa6df182b6671195d5493e5d569af}{GetCodes}}(\ )\{}
+\DoxyCodeLine{\Hypertarget{_catalog_code_8h_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_codes;}
+\DoxyCodeLine{\Hypertarget{_catalog_code_8h_source_l00067}00067\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_catalog_code_8h_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{_catalog_code_8h_source_l00069}00069\ \ \ \ \ \ \ \ \ wxString\ \mbox{\hyperlink{class_catalog_1_1_catalog_code_a48b11c3d34906670b23194381025d159}{GetPreferredCatalogCode}}(\ wxString\ cat\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_code_8h_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{_catalog_code_8h_source_l00071}00071\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_catalog_1_1_catalog_code_a87cfb33bde5064ae58a7e8473a538682}{IsCatalogCode}}(\ wxString\ catCode\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_code_8h_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{_catalog_code_8h_source_l00073}00073\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_catalog_code_8h_source_l00074}00074\ \ \ \ \ \ \ \ \ wxArrayString\ m\_codes;}
+\DoxyCodeLine{\Hypertarget{_catalog_code_8h_source_l00075}00075\ \ \ \ \ \ \ \ \ wxString\ m\_codeList;}
+\DoxyCodeLine{\Hypertarget{_catalog_code_8h_source_l00076}00076\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_catalog_code_8h_source_l00077}00077\ \}}
+\DoxyCodeLine{\Hypertarget{_catalog_code_8h_source_l00078}00078\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,1245 @@
+\doxysection{Design Namespace Reference}
+\hypertarget{namespace_design}{}\label{namespace_design}\index{Design@{Design}}
+
+
+\doxylink{_defs_8cpp_ab417854facaa35a9654d17c6585a2409}{wx\+DECLARE\+\_\+\+APP( Stamp\+Tool\+App )};  
+
+
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_design_1_1_album}{Album}}
+\begin{DoxyCompactList}\small\item\em \doxylink{class_design_1_1_album}{Album} layout object; inherits from \doxylink{class_design_1_1_layout_base}{Layout\+Base}. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_design_1_1_album_base}{Album\+Base}}
+\begin{DoxyCompactList}\small\item\em Base class for all layout objects. The layout objects are initialy loaded from the layout XML. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_design_1_1_album_data}{Album\+Data}}
+\item 
+class \mbox{\hyperlink{class_design_1_1_album_list}{Album\+List}}
+\item 
+class \mbox{\hyperlink{class_design_1_1_album_volume}{Album\+Volume}}
+\begin{DoxyCompactList}\small\item\em class that contains all the data for the \doxylink{class_design_1_1_album}{Album} design \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_design_1_1_attribute}{Attribute}}
+\begin{DoxyCompactList}\small\item\em Container for a Name/\+Value pair. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_design_1_1_column}{Column}}
+\begin{DoxyCompactList}\small\item\em \doxylink{class_design_1_1_column}{Column} layout object; Inherits from \doxylink{class_design_1_1_layout_base}{Layout\+Base}. The column can contain \doxylink{class_design_1_1_row}{Row} or \doxylink{class_design_1_1_stamp}{Stamp} objects. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_design_1_1_defaults}{Defaults}}
+\item 
+class \mbox{\hyperlink{class_design_1_1_frame}{Frame}}
+\item 
+class \mbox{\hyperlink{class_design_1_1_frame_defaults}{Frame\+Defaults}}
+\item 
+class \mbox{\hyperlink{class_design_1_1_label_frame}{Label\+Frame}}
+\item 
+class \mbox{\hyperlink{class_design_1_1_layout_base}{Layout\+Base}}
+\begin{DoxyCompactList}\small\item\em Base class for all layout objects. The layout objects are initialy loaded from the layout XML. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_design_1_1_page}{Page}}
+\item 
+class \mbox{\hyperlink{class_design_1_1_page_defaults}{Page\+Defaults}}
+\item 
+class \mbox{\hyperlink{class_design_1_1_row}{Row}}
+\begin{DoxyCompactList}\small\item\em \doxylink{class_design_1_1_row}{Row} layout object; Inherits from \doxylink{class_design_1_1_layout_base}{Layout\+Base}. The \doxylink{class_design_1_1_row}{Row} can contain \doxylink{class_design_1_1_column}{Column} or \doxylink{class_design_1_1_stamp}{Stamp} objects. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_design_1_1_stamp}{Stamp}}
+\begin{DoxyCompactList}\small\item\em \doxylink{class_design_1_1_stamp}{Stamp}. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_design_1_1_stamp_defaults}{Stamp\+Defaults}}
+\item 
+class \mbox{\hyperlink{class_design_1_1_text_box}{Text\+Box}}
+\begin{DoxyCompactList}\small\item\em \doxylink{class_design_1_1_text_box}{Text\+Box} layout object; Inherits from \doxylink{class_design_1_1_layout_base}{Layout\+Base}. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_design_1_1_title_frame}{Title\+Frame}}
+\item 
+class \mbox{\hyperlink{class_design_1_1_x_m_l_base}{XMLBase}}
+\begin{DoxyCompactList}\small\item\em Base class for all layout objects. The layout objects are initialy loaded from the layout XML. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{class_design_1_1_album_volume}{Album\+Volume}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{namespace_design_a6e23403e77fe19de984ed348ba39cb81}{Album\+Volume\+Array}}
+\item 
+typedef std\+::unordered\+\_\+map$<$ int, wx\+Tree\+Item\+Id $>$ \mbox{\hyperlink{namespace_design_a5fff364134fc2363f6bd3e30fae469bc}{Album\+Menu\+IDArray}}
+\item 
+typedef std\+::vector$<$ \mbox{\hyperlink{class_design_1_1_attribute}{Attribute}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{namespace_design_a8684e8801d2302786d022161ace0aa67}{Layout\+Attribute\+Array}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364be}{Album\+Attr\+Type}} \{ \newline
+\mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364bea13d5598e62dba0d4b50b795c3cad504e}{AT\+\_\+\+Name}} = 0
+, \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364beabb796594c42a415806bada98b3028b72}{AT\+\_\+\+Page\+Width}}
+, \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364bead89af06f5043d8e45693de641912e307}{AT\+\_\+\+Page\+Height}}
+, \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364beadd0318e8be32baf355e7376d56684b5b}{AT\+\_\+\+Top\+Page\+Margin}}
+, \newline
+\mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364bea40aa0770cf7af437038cd4efa3d92f53}{AT\+\_\+\+Bottom\+Page\+Margin}}
+, \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364bea22018aa5a10796dc225d07f1ccc3684e}{AT\+\_\+\+Right\+Page\+Margin}}
+, \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364bea222aa699152eb49e69107cedac51368f}{AT\+\_\+\+Left\+Page\+Margin}}
+, \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364bea6f877270d0dbebededf1fd7fd4230522}{AT\+\_\+\+Border\+File\+Name}}
+, \newline
+\mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364bea494fff0141ceeedfbc910723b3d7cbb4}{AT\+\_\+\+Border\+Size}}
+, \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364bea73821be7a5e016eabd61a780a7411a1b}{AT\+\_\+\+Show\+Border}}
+, \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364bea04e0d4626240b3ad1094f6f05354b794}{AT\+\_\+\+Height}}
+, \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364bea9f15d01259d1761bcc979e8eb39b4d35}{AT\+\_\+\+Width}}
+, \newline
+\mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364bea3171ef8952af44ebccbd66e1f5d3bcc9}{AT\+\_\+\+XPos}}
+, \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364beae7b72938f08344e6428d57c16a251051}{AT\+\_\+\+YPos}}
+, \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364bea01c93331ce45cc8071e48fa1530692af}{AT\+\_\+\+Min\+Height}}
+, \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364beab52cd7e0624be5735559c581e231ef91}{AT\+\_\+\+Min\+Width}}
+, \newline
+\mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364bea802ea81d8117c9c3cf63f288e1ae3c86}{AT\+\_\+\+Cat\+Nbr}}
+, \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364bea88c48b15e416a7a72bf486b9a8a90a9e}{AT\+\_\+\+Link}}
+, \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364bea92311a39fd2654ba38c9d6794824c9b9}{AT\+\_\+\+Show\+Title}}
+, \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364beae21477e8c11721f44163b006275517d3}{AT\+\_\+\+Show\+Sub\+Title}}
+, \newline
+\mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364beab0fe708aa6f2fb621dc4dd9bcc5c7f64}{AT\+\_\+\+Show\+Cat\+Nbr}}
+, \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364beac6cfb50e9e078cf6b6b7ea231ebaa964}{AT\+\_\+\+Show\+Frame}}
+, \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364bea1dfdbbb1b8749789c6047e31537d6eca}{AT\+\_\+\+Show\+Image}}
+, \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364beada0ab0ff1188d33657f204260b185672}{AT\+\_\+\+Orientation}}
+, \newline
+\mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364bea9744221757c1744ef47a9eb64ba632a7}{AT\+\_\+\+Gray\+Scale\+Images}}
+, \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364bea07aecda077588283547f883a06ad6887}{AT\+\_\+\+Top\+Content\+Margin}}
+, \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364bea43d3e9e497da6fc3b8b0e41633d889e2}{AT\+\_\+\+Bottom\+Content\+Margin}}
+, \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364bea8c6179674fda22faf00a4679233a73bd}{AT\+\_\+\+Left\+Content\+Margin}}
+, \newline
+\mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364bea7803ba6479a16ac903a3528595cf5646}{AT\+\_\+\+Right\+Content\+Margin}}
+, \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364bea3573b2b4d8e5f26e2986177b28d8b6f8}{AT\+\_\+\+Font\+Type}}
+, \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364beacc689e7697e80c07baa4338b9a3ce702}{AT\+\_\+\+Native\+Font\+String}}
+, \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364bea1922ddf63f7fc9160aa292058b29a701}{AT\+\_\+\+Font\+Color}}
+, \newline
+\mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364beab606292901f4a3b5cb394ff75a5ae602}{AT\+\_\+\+Image\+Name}}
+, \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364bea480605b3676dc491efc0091bf0cc5c28}{AT\+\_\+\+Calculate\+Spacing}}
+, \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364bea7aabe6cc73d8a841eba2a0a06bae5082}{AT\+\_\+\+Fixed\+Spacing\+Size}}
+, \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364bea842e1f1529cebff189b6fe873a9cfc3a}{AT\+\_\+\+Over\+Size\+Paper}}
+, \newline
+\mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364bea118ab3d739a2514d18c61566b4a84ca2}{AT\+\_\+\+Paper\+Height}}
+, \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364bea7e31c49bc8699bbffdcd3ef8307cfea0}{AT\+\_\+\+Paper\+Width}}
+, \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364beaaa4fcc13e0250a9706bce6c891fae3c3}{AT\+\_\+\+Selvage\+Height}}
+, \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364bea856740d2dfb16aefb3f05a1dab69a3e4}{AT\+\_\+\+Selvage\+Width}}
+, \newline
+\mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364bead38416266ccc1e62acca24bdd0a78506}{AT\+\_\+\+Sub\+Title}}
+, \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364bea35c0407ec2b66dd813e15be6b8c72e1c}{AT\+\_\+\+Mount\+Allowance\+Height}}
+, \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364bea58c612c20dd6af34c9b40d1f6b3fb69f}{AT\+\_\+\+Mount\+Allowance\+Width}}
+, \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364bead0a3480596a43899a280b791146a8f62}{AT\+\_\+\+Stamp\+Name\+Position}}
+, \newline
+\mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364beaefb5f5cfdfb8c5c02d32ec3596631d4f}{AT\+\_\+\+Stamp\+Alignment\+Mode}}
+, \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364bea5e6229b9c55603c5129fd27ebf0352ba}{AT\+\_\+\+Stamp\+Margin}}
+, \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364beac7788934565a46d32e5abe64095f54f6}{AT\+\_\+\+Collapse\+State}}
+, \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364beae99180b5e74175f92627cc49eca2c742}{AT\+\_\+\+Catalog}}
+, \newline
+\mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364bea8f4f4cf661951a3547db415c0357824d}{AT\+\_\+\+Catalog\+\_\+\+Codes}}
+, \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364bea5b253d38fc434b521ea8e3aadd9e3b0a}{AT\+\_\+\+Layout\+Type}}
+, \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364bea02157829b81b081dff8fea17aed0ce71}{AT\+\_\+\+Nbr\+Attr\+Types}}
+, \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364bead950f9c154ff51542f7814b23ae9568f}{AT\+\_\+\+NOTYPE}}
+ \}
+\item 
+enum \mbox{\hyperlink{namespace_design_aaba3ca6fc88c265cb60ab21adf766030}{Page\+Orientation}} \{ \mbox{\hyperlink{namespace_design_aaba3ca6fc88c265cb60ab21adf766030acfa760081a6813aed7e315df8f9fe19e}{AT\+\_\+\+Portrait}} = 0
+, \mbox{\hyperlink{namespace_design_aaba3ca6fc88c265cb60ab21adf766030ac6457bb12c18915fe99508594043bc4c}{AT\+\_\+\+Landscape}}
+ \}
+\item 
+enum \mbox{\hyperlink{namespace_design_a3b29aaf2cf27207bcb313e24b827f8b1}{Album\+Base\+Type}} \{ \newline
+\mbox{\hyperlink{namespace_design_a3b29aaf2cf27207bcb313e24b827f8b1a9c3ea6aa7d523ed6b3a6ad6a53b79fe2}{AT\+\_\+\+Album}} = 0
+, \mbox{\hyperlink{namespace_design_a3b29aaf2cf27207bcb313e24b827f8b1ab9a06cb5bed628c30c511ffffc85dd66}{AT\+\_\+\+Page}}
+, \mbox{\hyperlink{namespace_design_a3b29aaf2cf27207bcb313e24b827f8b1a6ce88639f78dc68bc6d57743a39db7e9}{AT\+\_\+\+Row}}
+, \mbox{\hyperlink{namespace_design_a3b29aaf2cf27207bcb313e24b827f8b1a757ba37de925ca5192ad6070c5ff0967}{AT\+\_\+\+Col}}
+, \newline
+\mbox{\hyperlink{namespace_design_a3b29aaf2cf27207bcb313e24b827f8b1ac110f6c26ca958d6000111d2a9ffd7ac}{AT\+\_\+\+Text}}
+, \mbox{\hyperlink{namespace_design_a3b29aaf2cf27207bcb313e24b827f8b1ab4939b40dfd65eef0f948c15318a22a3}{AT\+\_\+\+Title\+Page}}
+, \mbox{\hyperlink{namespace_design_a3b29aaf2cf27207bcb313e24b827f8b1a187d90edd8adfdf08a89731bf4476567}{AT\+\_\+\+Stamp}}
+, \mbox{\hyperlink{namespace_design_a3b29aaf2cf27207bcb313e24b827f8b1a23ef7db06690bd0ef7f38c68d3692e53}{AT\+\_\+\+Font}}
+, \newline
+\mbox{\hyperlink{namespace_design_a3b29aaf2cf27207bcb313e24b827f8b1a0a217a59fb24b8e1784f9d6db904aa57}{AT\+\_\+\+Nbr\+Album\+Types}}
+, \mbox{\hyperlink{namespace_design_a3b29aaf2cf27207bcb313e24b827f8b1a62f7301302fa4bf1b11f67e0703bf3d9}{AT\+\_\+\+None}} = 999
+ \}
+\item 
+enum \mbox{\hyperlink{namespace_design_a92be0fe63f397600d1b789ced14bb086}{Layout\+Type}} \{ \newline
+\mbox{\hyperlink{namespace_design_a92be0fe63f397600d1b789ced14bb086adb09624beb91ce971f482fccf9708298}{LT\+\_\+\+Page}} = 0
+, \mbox{\hyperlink{namespace_design_a92be0fe63f397600d1b789ced14bb086aaff3a11bdb3874d55213feb4802ec3b5}{LT\+\_\+\+Frame}}
+, \mbox{\hyperlink{namespace_design_a92be0fe63f397600d1b789ced14bb086a278b48628fc26ce97c447352b33480d7}{LT\+\_\+\+Stamp}}
+, \mbox{\hyperlink{namespace_design_a92be0fe63f397600d1b789ced14bb086abfb5c2a890525c837acd30db689be405}{LT\+\_\+\+Text}}
+, \newline
+\mbox{\hyperlink{namespace_design_a92be0fe63f397600d1b789ced14bb086ae492e38c751cc4624b48cfbe1078af88}{Nbr\+Layout\+Types}}
+ \}
+\item 
+enum \mbox{\hyperlink{namespace_design_a1d2ff31f0e950a8fa7397c3e71d2e5a1}{Page\+Type}} \{ \mbox{\hyperlink{namespace_design_a1d2ff31f0e950a8fa7397c3e71d2e5a1a2b30262ecc048e47f575d3c9a21735c5}{PT\+\_\+\+Row\+Page}} = AT\+\_\+\+Row
+, \mbox{\hyperlink{namespace_design_a1d2ff31f0e950a8fa7397c3e71d2e5a1a0beaaec981b37dcce29972b9885bcd76}{PT\+\_\+\+Column\+Page}} = AT\+\_\+\+Col
+, \mbox{\hyperlink{namespace_design_a1d2ff31f0e950a8fa7397c3e71d2e5a1a070d188fff1141975b0cf26ab6dd6a5d}{PT\+\_\+\+None}} = AT\+\_\+\+None
+ \}
+\item 
+enum \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4}{Font\+Usage\+Type}} \{ \newline
+\mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4a078f3978681292ecf0627258c1cd1d1d}{AT\+\_\+\+Title\+Font\+Type}}
+, \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4ad65be88ee94a9ab38dc6cde177c3ab68}{AT\+\_\+\+Sub\+Title\+Font\+Type}}
+, \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4a7a0c5cdeb48aceab9b0167ab84cbcb27}{AT\+\_\+\+Name\+Font\+Type}}
+, \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4ac5d3d82b86b9c364230172d74fd70095}{AT\+\_\+\+Text\+Font\+Type}}
+, \newline
+\mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4a0d94aa6c52078cbb63ce531ed26140b2}{AT\+\_\+\+Nbr\+Font\+Type}}
+, \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4afc9adabdde0c80dd0c02b444f080316b}{AT\+\_\+\+Nbr\+Font\+Usage\+Types}}
+ \}
+\item 
+enum \mbox{\hyperlink{namespace_design_a89f66276a25aed62bedc9fb9b5d35453}{Node\+Status}} \{ \mbox{\hyperlink{namespace_design_a89f66276a25aed62bedc9fb9b5d35453a017c6d80f47349eb438f3756fddb67c5}{AT\+\_\+\+OK}} = 0
+, \mbox{\hyperlink{namespace_design_a89f66276a25aed62bedc9fb9b5d35453a6be04f5496a5b90e3938fca1a30f2879}{AT\+\_\+\+WARNING}}
+, \mbox{\hyperlink{namespace_design_a89f66276a25aed62bedc9fb9b5d35453ae754faf14b715fdc6044e88977cebe76}{AT\+\_\+\+FATAL}}
+ \}
+\item 
+enum \mbox{\hyperlink{namespace_design_a50cde7727f2d80d10de313beb2179c8e}{Scale\+Client}} \{ \mbox{\hyperlink{namespace_design_a50cde7727f2d80d10de313beb2179c8eaeaf588f6d0182deba760f4000c9c4e48}{DD\+\_\+\+Display}}
+, \mbox{\hyperlink{namespace_design_a50cde7727f2d80d10de313beb2179c8eab578371d83e4e1b5e5dbc07e46b61746}{DD\+\_\+\+PDF}}
+ \}
+\item 
+enum \mbox{\hyperlink{namespace_design_a471629dc99bd57d5adedd3c7a1cb05a2}{Stamp\+Alignment}} \{ \newline
+\mbox{\hyperlink{namespace_design_a471629dc99bd57d5adedd3c7a1cb05a2a100d03d93b238b18f5138fec79ecfc81}{AT\+\_\+\+Align\+Top}}
+, \mbox{\hyperlink{namespace_design_a471629dc99bd57d5adedd3c7a1cb05a2a5920de2ef3eb804a11fecde0a7be1c1c}{AT\+\_\+\+Align\+Bottom}}
+, \mbox{\hyperlink{namespace_design_a471629dc99bd57d5adedd3c7a1cb05a2a0bf9cf0062162191d71a7436ea73e250}{AT\+\_\+\+Align\+Left}}
+, \mbox{\hyperlink{namespace_design_a471629dc99bd57d5adedd3c7a1cb05a2a73c47cdfc56612fc55d9ff5f01466814}{AT\+\_\+\+Align\+Right}}
+, \newline
+\mbox{\hyperlink{namespace_design_a471629dc99bd57d5adedd3c7a1cb05a2a7643b9c3d055fccc88c24a009d896aa5}{AT\+\_\+\+Center}}
+, \mbox{\hyperlink{namespace_design_a471629dc99bd57d5adedd3c7a1cb05a2a6b8e7ae309f8686632ad10320796c06c}{AT\+\_\+\+Align\+Default}}
+ \}
+\item 
+enum \mbox{\hyperlink{namespace_design_a6d899bd1f7046bbf5a613e85bd83f0c3}{Stamp\+Name\+Pos\+Type}} \{ \mbox{\hyperlink{namespace_design_a6d899bd1f7046bbf5a613e85bd83f0c3a05dc2c0acf0fc2e9960c0213c55f12dd}{AT\+\_\+\+Stamp\+Name\+Position\+Top}}
+, \mbox{\hyperlink{namespace_design_a6d899bd1f7046bbf5a613e85bd83f0c3a40f97d7d7d027b73c2d644cc44418649}{AT\+\_\+\+Stamp\+Name\+Position\+Bottom}}
+, \mbox{\hyperlink{namespace_design_a6d899bd1f7046bbf5a613e85bd83f0c3a92a58c55f4bd0c52796c34d87770fd1b}{AT\+\_\+\+Nbr\+Stamp\+Name\+Positions}}
+ \}
+\item 
+enum \mbox{\hyperlink{namespace_design_ab09b51b33b5ff322cce8f7d3e37caae5}{Alignment\+Mode\+Type}} \{ \mbox{\hyperlink{namespace_design_ab09b51b33b5ff322cce8f7d3e37caae5a4661e3346ece4dcec97f869c7894d887}{Align\+Top}} = 0
+, \mbox{\hyperlink{namespace_design_ab09b51b33b5ff322cce8f7d3e37caae5a6cc31fd37386656b001d307857667c97}{Align\+Middle}}
+, \mbox{\hyperlink{namespace_design_ab09b51b33b5ff322cce8f7d3e37caae5aa05ce0f1e8dd0aeb71c26e58df814665}{Align\+Bottom}}
+, \mbox{\hyperlink{namespace_design_ab09b51b33b5ff322cce8f7d3e37caae5a5755e19d0aa82633a9a05251f78c3e21}{Nbr\+Alignment\+Modes}}
+ \}
+\item 
+enum \mbox{\hyperlink{namespace_design_a7353efa232d45958ffd42229f3132b46}{Icon\+ID}} \{ \newline
+\mbox{\hyperlink{namespace_design_a7353efa232d45958ffd42229f3132b46a6fd72e609911170c7718faf70577bb24}{Icon\+\_\+\+Stamp}} = 0
+, \mbox{\hyperlink{namespace_design_a7353efa232d45958ffd42229f3132b46a629b003ba6db17ef84a735bfee33b627}{Icon\+\_\+\+Stamp\+Selected}}
+, \mbox{\hyperlink{namespace_design_a7353efa232d45958ffd42229f3132b46a614e8dd20d36b946e414639e927ac232}{Icon\+\_\+\+Stamp\+Block}}
+, \mbox{\hyperlink{namespace_design_a7353efa232d45958ffd42229f3132b46acfac990ba19fa4a72c4245a9001b1e73}{Icon\+\_\+\+Stamp\+Block\+Selected}}
+, \newline
+\mbox{\hyperlink{namespace_design_a7353efa232d45958ffd42229f3132b46a7b5ffdf8b5d2c6d9207c9ddefaaceb96}{Icon\+\_\+\+Stamp\+Mini\+Sheet}}
+, \mbox{\hyperlink{namespace_design_a7353efa232d45958ffd42229f3132b46a5708110f07bd6bbcad5fa7197eba0a9a}{Icon\+\_\+\+Stamp\+Mini\+Sheet\+Selected}}
+, \mbox{\hyperlink{namespace_design_a7353efa232d45958ffd42229f3132b46a877f314a8e0b55de43f107e675cde760}{Icon\+\_\+\+Stamp\+Souvenir\+Sheet}}
+, \mbox{\hyperlink{namespace_design_a7353efa232d45958ffd42229f3132b46a6307263ff0cbe19aac0404b226de243c}{Icon\+\_\+\+Stamp\+Souvenir\+Sheet\+Selected}}
+, \newline
+\mbox{\hyperlink{namespace_design_a7353efa232d45958ffd42229f3132b46afb6bb194c47b59afa749231f1bdad19d}{Icon\+\_\+\+Folder}}
+, \mbox{\hyperlink{namespace_design_a7353efa232d45958ffd42229f3132b46a0005a11095e3fa7a0303d2df76d9e7db}{Icon\+\_\+\+Menu}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{namespace_design_a6c96c682b1f9a379e61ba46908ea702b}{Way\+To\+Sort}} (\mbox{\hyperlink{class_design_1_1_album_volume}{Design\+::\+Album\+Volume}} \texorpdfstring{$\ast$}{*}sect1, \mbox{\hyperlink{class_design_1_1_album_volume}{Design\+::\+Album\+Volume}} \texorpdfstring{$\ast$}{*}sect2)
+\item 
+bool \mbox{\hyperlink{namespace_design_acda93570e5fda30e2608df376907778d}{Is\+Portrait}} (wx\+String orientation)
+\item 
+\mbox{\hyperlink{namespace_design_a6d899bd1f7046bbf5a613e85bd83f0c3}{Stamp\+Name\+Pos\+Type}} \mbox{\hyperlink{namespace_design_a2aaa34bc44a82f76f74d6e6f011945bf}{Find\+Stamp\+Location\+Type}} (wx\+String name)
+\item 
+\mbox{\hyperlink{namespace_design_ab09b51b33b5ff322cce8f7d3e37caae5}{Alignment\+Mode\+Type}} \mbox{\hyperlink{namespace_design_a7afd338be906fc3816e6721ec5c6817a}{Find\+Alignment\+Mode\+Type}} (wx\+String name)
+\item 
+\mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364be}{Album\+Attr\+Type}} \mbox{\hyperlink{namespace_design_afe7c9b03c8bdc34c825b312546065b83}{Find\+Album\+Attr\+Type}} (wx\+String name)
+\item 
+\mbox{\hyperlink{namespace_design_a3b29aaf2cf27207bcb313e24b827f8b1}{Album\+Base\+Type}} \mbox{\hyperlink{namespace_design_a06b00762b0ce370fb98fdd70ac7d9d3c}{Find\+Album\+Base\+Type}} (wx\+String name)
+\item 
+\mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4}{Font\+Usage\+Type}} \mbox{\hyperlink{namespace_design_a867f1223ccc1a10fdae9a28dd43466eb}{Find\+Font\+Usage\+Type}} (wx\+String name)
+\item 
+\mbox{\hyperlink{class_design_1_1_album}{Album}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespace_design_aaf913dbe97a6c57862a852f79cb54404}{Get\+Album}} (void)
+\item 
+\mbox{\hyperlink{class_design_1_1_page_defaults}{Page\+Defaults}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespace_design_aa4fea110dd291e5d5d0fd78ec9d6ff98}{Album\+Page\+Defaults}} ()
+\item 
+\mbox{\hyperlink{class_design_1_1_frame_defaults}{Frame\+Defaults}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespace_design_a342d9455df07585aa762c1be18724f90}{Album\+Frame\+Defaults}} ()
+\item 
+\mbox{\hyperlink{class_design_1_1_stamp_defaults}{Stamp\+Defaults}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespace_design_ac973715a5cfcda6fc6028a5286198e4b}{Album\+Stamp\+Defaults}} ()
+\item 
+\mbox{\hyperlink{class_design_1_1_album_volume}{Album\+Volume}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespace_design_a348ebdba188f193934c55b8f0ad00550}{Get\+Album\+Volume}} (void)
+\item 
+\mbox{\hyperlink{class_design_1_1_layout_base}{Layout\+Base}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespace_design_ade99086dccbbc5579bb9a0edbe0edfa5}{Get\+Selected\+Node\+Page}} ()
+\item 
+void \mbox{\hyperlink{namespace_design_a81cb9eeed8b200a49810c452f732dc56}{Init\+Design\+Defs}} (\mbox{\hyperlink{namespace_design_a50cde7727f2d80d10de313beb2179c8e}{Scale\+Client}} client=\mbox{\hyperlink{namespace_design_a50cde7727f2d80d10de313beb2179c8eaeaf588f6d0182deba760f4000c9c4e48}{DD\+\_\+\+Display}})
+\begin{DoxyCompactList}\small\item\em Performs the initial instantiantion of all the s\+Tart up data. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespace_design_a0f12cceacb248602141ce2d3dca6da6b}{Is\+Album\+Base\+Type\+Valid}} (\mbox{\hyperlink{namespace_design_a3b29aaf2cf27207bcb313e24b827f8b1}{Album\+Base\+Type}} type)
+\item 
+\mbox{\hyperlink{class_design_1_1_album_base}{Album\+Base}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespace_design_aac217f371ec56287a4504c98d9530b89}{Make\+Node}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}node)
+\item 
+void \mbox{\hyperlink{namespace_design_aa9ba98f193fb48eb64a8cc906699d3a6}{Draw\+Rotated}} (wx\+DC \&dc, double x, double y)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+wx\+Real\+Point \mbox{\hyperlink{namespace_design_a352c26b74797bf2adf2f67ff9b212e06}{PPMM}}
+\item 
+wx\+String \mbox{\hyperlink{namespace_design_aa688e51eed6c13e36e48175b175073ad}{Attr\+Name\+Strings}} \mbox{[}\mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364bea02157829b81b081dff8fea17aed0ce71}{AT\+\_\+\+Nbr\+Attr\+Types}}\mbox{]}
+\item 
+wx\+String \mbox{\hyperlink{namespace_design_a68f016e4c7c4fd45c002d095153930eb}{Orientation\+Strings}} \mbox{[}2\mbox{]} = \{ "{}Portrait"{}, "{}Landscape"{} \}
+\item 
+wx\+String \mbox{\hyperlink{namespace_design_a22874362385d0bd60077262a6cbbf931}{Layout\+Type\+Strings}} \mbox{[}\mbox{\hyperlink{namespace_design_a92be0fe63f397600d1b789ced14bb086ae492e38c751cc4624b48cfbe1078af88}{Nbr\+Layout\+Types}}\mbox{]} = \{ "{}Page"{}, "{}Frame"{}, "{}Stamp"{}, "{}Text"{} \}
+\item 
+wx\+String \mbox{\hyperlink{namespace_design_ab3742ad7971c04bd777b0fee90390d70}{Album\+Base\+Names}} \mbox{[}\mbox{\hyperlink{namespace_design_a3b29aaf2cf27207bcb313e24b827f8b1a0a217a59fb24b8e1784f9d6db904aa57}{AT\+\_\+\+Nbr\+Album\+Types}}\mbox{]}
+\item 
+int \mbox{\hyperlink{namespace_design_aa4885175772a49d51fef791c56297455}{Default\+Point\+Size}} \mbox{[}\mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4afc9adabdde0c80dd0c02b444f080316b}{AT\+\_\+\+Nbr\+Font\+Usage\+Types}}\mbox{]} = \{ 12, 10, 10, 10, 8 \}
+\item 
+wx\+String \mbox{\hyperlink{namespace_design_a5633022d39c0aebfb61c328332990d78}{Font\+Usage\+Type\+Strings}} \mbox{[}\mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4afc9adabdde0c80dd0c02b444f080316b}{AT\+\_\+\+Nbr\+Font\+Usage\+Types}}\mbox{]}
+\item 
+wx\+String \mbox{\hyperlink{namespace_design_a04ebd7d62b02f5ae629ebdb6639b51b7}{Stamp\+Name\+Position\+Strings}} \mbox{[}\mbox{\hyperlink{namespace_design_a6d899bd1f7046bbf5a613e85bd83f0c3a92a58c55f4bd0c52796c34d87770fd1b}{AT\+\_\+\+Nbr\+Stamp\+Name\+Positions}}\mbox{]}
+\item 
+wx\+String \mbox{\hyperlink{namespace_design_a5531e44b6223563fc30a7774c9352d9a}{Stamp\+Alignment\+Mode\+Strings}} \mbox{[}\mbox{\hyperlink{namespace_design_ab09b51b33b5ff322cce8f7d3e37caae5a5755e19d0aa82633a9a05251f78c3e21}{Nbr\+Alignment\+Modes}}\mbox{]}
+\item 
+const double \mbox{\hyperlink{namespace_design_aed670ca9e577e28fc8a996f3fb109e42}{Border\+Allowance\+Percent}} = .\+1
+\item 
+const double \mbox{\hyperlink{namespace_design_ae62cafcd995091376efd26ca44bdfb12}{Image\+Percent\+Of\+Actual}} = .\+75
+\item 
+\mbox{\hyperlink{namespace_design_a7353efa232d45958ffd42229f3132b46}{Design\+::\+Icon\+ID}} \mbox{\hyperlink{namespace_design_a4447a7e901e7f24d8eebe269e919c5ce}{Album\+Image\+Selection}} \mbox{[}\mbox{\hyperlink{namespace_design_a3b29aaf2cf27207bcb313e24b827f8b1a0a217a59fb24b8e1784f9d6db904aa57}{Design\+::\+AT\+\_\+\+Nbr\+Album\+Types}}\mbox{]}\mbox{[}\mbox{\hyperlink{namespace_catalog_ae547094e129067e4932fdc46084369a8a7a5421ebe2a144a5554720acb658feff}{Catalog\+::\+ST\+\_\+\+Nbr\+Checked\+Status\+Types}}\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{_defs_8cpp_ab417854facaa35a9654d17c6585a2409}{wx\+DECLARE\+\_\+\+APP( Stamp\+Tool\+App )}; 
+
+\label{doc-typedef-members}
+\Hypertarget{namespace_design_doc-typedef-members}
+\doxysubsection{Typedef Documentation}
+\Hypertarget{namespace_design_a5fff364134fc2363f6bd3e30fae469bc}\index{Design@{Design}!AlbumMenuIDArray@{AlbumMenuIDArray}}
+\index{AlbumMenuIDArray@{AlbumMenuIDArray}!Design@{Design}}
+\doxysubsubsection{\texorpdfstring{AlbumMenuIDArray}{AlbumMenuIDArray}}
+{\footnotesize\ttfamily \label{namespace_design_a5fff364134fc2363f6bd3e30fae469bc} 
+typedef std\+::unordered\+\_\+map$<$ int, wx\+Tree\+Item\+Id $>$ \mbox{\hyperlink{namespace_design_a5fff364134fc2363f6bd3e30fae469bc}{Design\+::\+Album\+Menu\+IDArray}}}
+
+
+
+Definition at line \mbox{\hyperlink{_album_volume_8h_source_l00104}{104}} of file \mbox{\hyperlink{_album_volume_8h_source}{Album\+Volume.\+h}}.
+
+\Hypertarget{namespace_design_a6e23403e77fe19de984ed348ba39cb81}\index{Design@{Design}!AlbumVolumeArray@{AlbumVolumeArray}}
+\index{AlbumVolumeArray@{AlbumVolumeArray}!Design@{Design}}
+\doxysubsubsection{\texorpdfstring{AlbumVolumeArray}{AlbumVolumeArray}}
+{\footnotesize\ttfamily \label{namespace_design_a6e23403e77fe19de984ed348ba39cb81} 
+typedef std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{class_design_1_1_album_volume}{Album\+Volume}}\texorpdfstring{$\ast$}{*}$>$ \mbox{\hyperlink{namespace_design_a6e23403e77fe19de984ed348ba39cb81}{Design\+::\+Album\+Volume\+Array}}}
+
+
+
+Definition at line \mbox{\hyperlink{_album_volume_8h_source_l00103}{103}} of file \mbox{\hyperlink{_album_volume_8h_source}{Album\+Volume.\+h}}.
+
+\Hypertarget{namespace_design_a8684e8801d2302786d022161ace0aa67}\index{Design@{Design}!LayoutAttributeArray@{LayoutAttributeArray}}
+\index{LayoutAttributeArray@{LayoutAttributeArray}!Design@{Design}}
+\doxysubsubsection{\texorpdfstring{LayoutAttributeArray}{LayoutAttributeArray}}
+{\footnotesize\ttfamily \label{namespace_design_a8684e8801d2302786d022161ace0aa67} 
+typedef std\+::vector$<$ \mbox{\hyperlink{class_design_1_1_attribute}{Attribute}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{namespace_design_a8684e8801d2302786d022161ace0aa67}{Design\+::\+Layout\+Attribute\+Array}}}
+
+
+
+Definition at line \mbox{\hyperlink{_attribute_01_07copy_011_08_8h_source_l00105}{105}} of file \mbox{\hyperlink{_attribute_01_07copy_011_08_8h_source}{Attribute (copy 1).\+h}}.
+
+
+
+\label{doc-enum-members}
+\Hypertarget{namespace_design_doc-enum-members}
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{namespace_design_abcf93567c4e83d3f42f363207b2364be}\index{Design@{Design}!AlbumAttrType@{AlbumAttrType}}
+\index{AlbumAttrType@{AlbumAttrType}!Design@{Design}}
+\doxysubsubsection{\texorpdfstring{AlbumAttrType}{AlbumAttrType}}
+{\footnotesize\ttfamily \label{namespace_design_abcf93567c4e83d3f42f363207b2364be} 
+enum \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364be}{Design\+::\+Album\+Attr\+Type}}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AT\_Name@{AT\_Name}!Design@{Design}}\index{Design@{Design}!AT\_Name@{AT\_Name}}}\Hypertarget{namespace_design_abcf93567c4e83d3f42f363207b2364bea13d5598e62dba0d4b50b795c3cad504e}\label{namespace_design_abcf93567c4e83d3f42f363207b2364bea13d5598e62dba0d4b50b795c3cad504e} 
+AT\+\_\+\+Name&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AT\_PageWidth@{AT\_PageWidth}!Design@{Design}}\index{Design@{Design}!AT\_PageWidth@{AT\_PageWidth}}}\Hypertarget{namespace_design_abcf93567c4e83d3f42f363207b2364beabb796594c42a415806bada98b3028b72}\label{namespace_design_abcf93567c4e83d3f42f363207b2364beabb796594c42a415806bada98b3028b72} 
+AT\+\_\+\+Page\+Width&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AT\_PageHeight@{AT\_PageHeight}!Design@{Design}}\index{Design@{Design}!AT\_PageHeight@{AT\_PageHeight}}}\Hypertarget{namespace_design_abcf93567c4e83d3f42f363207b2364bead89af06f5043d8e45693de641912e307}\label{namespace_design_abcf93567c4e83d3f42f363207b2364bead89af06f5043d8e45693de641912e307} 
+AT\+\_\+\+Page\+Height&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AT\_TopPageMargin@{AT\_TopPageMargin}!Design@{Design}}\index{Design@{Design}!AT\_TopPageMargin@{AT\_TopPageMargin}}}\Hypertarget{namespace_design_abcf93567c4e83d3f42f363207b2364beadd0318e8be32baf355e7376d56684b5b}\label{namespace_design_abcf93567c4e83d3f42f363207b2364beadd0318e8be32baf355e7376d56684b5b} 
+AT\+\_\+\+Top\+Page\+Margin&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AT\_BottomPageMargin@{AT\_BottomPageMargin}!Design@{Design}}\index{Design@{Design}!AT\_BottomPageMargin@{AT\_BottomPageMargin}}}\Hypertarget{namespace_design_abcf93567c4e83d3f42f363207b2364bea40aa0770cf7af437038cd4efa3d92f53}\label{namespace_design_abcf93567c4e83d3f42f363207b2364bea40aa0770cf7af437038cd4efa3d92f53} 
+AT\+\_\+\+Bottom\+Page\+Margin&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AT\_RightPageMargin@{AT\_RightPageMargin}!Design@{Design}}\index{Design@{Design}!AT\_RightPageMargin@{AT\_RightPageMargin}}}\Hypertarget{namespace_design_abcf93567c4e83d3f42f363207b2364bea22018aa5a10796dc225d07f1ccc3684e}\label{namespace_design_abcf93567c4e83d3f42f363207b2364bea22018aa5a10796dc225d07f1ccc3684e} 
+AT\+\_\+\+Right\+Page\+Margin&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AT\_LeftPageMargin@{AT\_LeftPageMargin}!Design@{Design}}\index{Design@{Design}!AT\_LeftPageMargin@{AT\_LeftPageMargin}}}\Hypertarget{namespace_design_abcf93567c4e83d3f42f363207b2364bea222aa699152eb49e69107cedac51368f}\label{namespace_design_abcf93567c4e83d3f42f363207b2364bea222aa699152eb49e69107cedac51368f} 
+AT\+\_\+\+Left\+Page\+Margin&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AT\_BorderFileName@{AT\_BorderFileName}!Design@{Design}}\index{Design@{Design}!AT\_BorderFileName@{AT\_BorderFileName}}}\Hypertarget{namespace_design_abcf93567c4e83d3f42f363207b2364bea6f877270d0dbebededf1fd7fd4230522}\label{namespace_design_abcf93567c4e83d3f42f363207b2364bea6f877270d0dbebededf1fd7fd4230522} 
+AT\+\_\+\+Border\+File\+Name&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AT\_BorderSize@{AT\_BorderSize}!Design@{Design}}\index{Design@{Design}!AT\_BorderSize@{AT\_BorderSize}}}\Hypertarget{namespace_design_abcf93567c4e83d3f42f363207b2364bea494fff0141ceeedfbc910723b3d7cbb4}\label{namespace_design_abcf93567c4e83d3f42f363207b2364bea494fff0141ceeedfbc910723b3d7cbb4} 
+AT\+\_\+\+Border\+Size&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AT\_ShowBorder@{AT\_ShowBorder}!Design@{Design}}\index{Design@{Design}!AT\_ShowBorder@{AT\_ShowBorder}}}\Hypertarget{namespace_design_abcf93567c4e83d3f42f363207b2364bea73821be7a5e016eabd61a780a7411a1b}\label{namespace_design_abcf93567c4e83d3f42f363207b2364bea73821be7a5e016eabd61a780a7411a1b} 
+AT\+\_\+\+Show\+Border&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AT\_Height@{AT\_Height}!Design@{Design}}\index{Design@{Design}!AT\_Height@{AT\_Height}}}\Hypertarget{namespace_design_abcf93567c4e83d3f42f363207b2364bea04e0d4626240b3ad1094f6f05354b794}\label{namespace_design_abcf93567c4e83d3f42f363207b2364bea04e0d4626240b3ad1094f6f05354b794} 
+AT\+\_\+\+Height&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AT\_Width@{AT\_Width}!Design@{Design}}\index{Design@{Design}!AT\_Width@{AT\_Width}}}\Hypertarget{namespace_design_abcf93567c4e83d3f42f363207b2364bea9f15d01259d1761bcc979e8eb39b4d35}\label{namespace_design_abcf93567c4e83d3f42f363207b2364bea9f15d01259d1761bcc979e8eb39b4d35} 
+AT\+\_\+\+Width&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AT\_XPos@{AT\_XPos}!Design@{Design}}\index{Design@{Design}!AT\_XPos@{AT\_XPos}}}\Hypertarget{namespace_design_abcf93567c4e83d3f42f363207b2364bea3171ef8952af44ebccbd66e1f5d3bcc9}\label{namespace_design_abcf93567c4e83d3f42f363207b2364bea3171ef8952af44ebccbd66e1f5d3bcc9} 
+AT\+\_\+\+XPos&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AT\_YPos@{AT\_YPos}!Design@{Design}}\index{Design@{Design}!AT\_YPos@{AT\_YPos}}}\Hypertarget{namespace_design_abcf93567c4e83d3f42f363207b2364beae7b72938f08344e6428d57c16a251051}\label{namespace_design_abcf93567c4e83d3f42f363207b2364beae7b72938f08344e6428d57c16a251051} 
+AT\+\_\+\+YPos&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AT\_MinHeight@{AT\_MinHeight}!Design@{Design}}\index{Design@{Design}!AT\_MinHeight@{AT\_MinHeight}}}\Hypertarget{namespace_design_abcf93567c4e83d3f42f363207b2364bea01c93331ce45cc8071e48fa1530692af}\label{namespace_design_abcf93567c4e83d3f42f363207b2364bea01c93331ce45cc8071e48fa1530692af} 
+AT\+\_\+\+Min\+Height&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AT\_MinWidth@{AT\_MinWidth}!Design@{Design}}\index{Design@{Design}!AT\_MinWidth@{AT\_MinWidth}}}\Hypertarget{namespace_design_abcf93567c4e83d3f42f363207b2364beab52cd7e0624be5735559c581e231ef91}\label{namespace_design_abcf93567c4e83d3f42f363207b2364beab52cd7e0624be5735559c581e231ef91} 
+AT\+\_\+\+Min\+Width&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AT\_CatNbr@{AT\_CatNbr}!Design@{Design}}\index{Design@{Design}!AT\_CatNbr@{AT\_CatNbr}}}\Hypertarget{namespace_design_abcf93567c4e83d3f42f363207b2364bea802ea81d8117c9c3cf63f288e1ae3c86}\label{namespace_design_abcf93567c4e83d3f42f363207b2364bea802ea81d8117c9c3cf63f288e1ae3c86} 
+AT\+\_\+\+Cat\+Nbr&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AT\_Link@{AT\_Link}!Design@{Design}}\index{Design@{Design}!AT\_Link@{AT\_Link}}}\Hypertarget{namespace_design_abcf93567c4e83d3f42f363207b2364bea88c48b15e416a7a72bf486b9a8a90a9e}\label{namespace_design_abcf93567c4e83d3f42f363207b2364bea88c48b15e416a7a72bf486b9a8a90a9e} 
+AT\+\_\+\+Link&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AT\_ShowTitle@{AT\_ShowTitle}!Design@{Design}}\index{Design@{Design}!AT\_ShowTitle@{AT\_ShowTitle}}}\Hypertarget{namespace_design_abcf93567c4e83d3f42f363207b2364bea92311a39fd2654ba38c9d6794824c9b9}\label{namespace_design_abcf93567c4e83d3f42f363207b2364bea92311a39fd2654ba38c9d6794824c9b9} 
+AT\+\_\+\+Show\+Title&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AT\_ShowSubTitle@{AT\_ShowSubTitle}!Design@{Design}}\index{Design@{Design}!AT\_ShowSubTitle@{AT\_ShowSubTitle}}}\Hypertarget{namespace_design_abcf93567c4e83d3f42f363207b2364beae21477e8c11721f44163b006275517d3}\label{namespace_design_abcf93567c4e83d3f42f363207b2364beae21477e8c11721f44163b006275517d3} 
+AT\+\_\+\+Show\+Sub\+Title&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AT\_ShowCatNbr@{AT\_ShowCatNbr}!Design@{Design}}\index{Design@{Design}!AT\_ShowCatNbr@{AT\_ShowCatNbr}}}\Hypertarget{namespace_design_abcf93567c4e83d3f42f363207b2364beab0fe708aa6f2fb621dc4dd9bcc5c7f64}\label{namespace_design_abcf93567c4e83d3f42f363207b2364beab0fe708aa6f2fb621dc4dd9bcc5c7f64} 
+AT\+\_\+\+Show\+Cat\+Nbr&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AT\_ShowFrame@{AT\_ShowFrame}!Design@{Design}}\index{Design@{Design}!AT\_ShowFrame@{AT\_ShowFrame}}}\Hypertarget{namespace_design_abcf93567c4e83d3f42f363207b2364beac6cfb50e9e078cf6b6b7ea231ebaa964}\label{namespace_design_abcf93567c4e83d3f42f363207b2364beac6cfb50e9e078cf6b6b7ea231ebaa964} 
+AT\+\_\+\+Show\+Frame&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AT\_ShowImage@{AT\_ShowImage}!Design@{Design}}\index{Design@{Design}!AT\_ShowImage@{AT\_ShowImage}}}\Hypertarget{namespace_design_abcf93567c4e83d3f42f363207b2364bea1dfdbbb1b8749789c6047e31537d6eca}\label{namespace_design_abcf93567c4e83d3f42f363207b2364bea1dfdbbb1b8749789c6047e31537d6eca} 
+AT\+\_\+\+Show\+Image&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AT\_Orientation@{AT\_Orientation}!Design@{Design}}\index{Design@{Design}!AT\_Orientation@{AT\_Orientation}}}\Hypertarget{namespace_design_abcf93567c4e83d3f42f363207b2364beada0ab0ff1188d33657f204260b185672}\label{namespace_design_abcf93567c4e83d3f42f363207b2364beada0ab0ff1188d33657f204260b185672} 
+AT\+\_\+\+Orientation&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AT\_GrayScaleImages@{AT\_GrayScaleImages}!Design@{Design}}\index{Design@{Design}!AT\_GrayScaleImages@{AT\_GrayScaleImages}}}\Hypertarget{namespace_design_abcf93567c4e83d3f42f363207b2364bea9744221757c1744ef47a9eb64ba632a7}\label{namespace_design_abcf93567c4e83d3f42f363207b2364bea9744221757c1744ef47a9eb64ba632a7} 
+AT\+\_\+\+Gray\+Scale\+Images&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AT\_TopContentMargin@{AT\_TopContentMargin}!Design@{Design}}\index{Design@{Design}!AT\_TopContentMargin@{AT\_TopContentMargin}}}\Hypertarget{namespace_design_abcf93567c4e83d3f42f363207b2364bea07aecda077588283547f883a06ad6887}\label{namespace_design_abcf93567c4e83d3f42f363207b2364bea07aecda077588283547f883a06ad6887} 
+AT\+\_\+\+Top\+Content\+Margin&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AT\_BottomContentMargin@{AT\_BottomContentMargin}!Design@{Design}}\index{Design@{Design}!AT\_BottomContentMargin@{AT\_BottomContentMargin}}}\Hypertarget{namespace_design_abcf93567c4e83d3f42f363207b2364bea43d3e9e497da6fc3b8b0e41633d889e2}\label{namespace_design_abcf93567c4e83d3f42f363207b2364bea43d3e9e497da6fc3b8b0e41633d889e2} 
+AT\+\_\+\+Bottom\+Content\+Margin&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AT\_LeftContentMargin@{AT\_LeftContentMargin}!Design@{Design}}\index{Design@{Design}!AT\_LeftContentMargin@{AT\_LeftContentMargin}}}\Hypertarget{namespace_design_abcf93567c4e83d3f42f363207b2364bea8c6179674fda22faf00a4679233a73bd}\label{namespace_design_abcf93567c4e83d3f42f363207b2364bea8c6179674fda22faf00a4679233a73bd} 
+AT\+\_\+\+Left\+Content\+Margin&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AT\_RightContentMargin@{AT\_RightContentMargin}!Design@{Design}}\index{Design@{Design}!AT\_RightContentMargin@{AT\_RightContentMargin}}}\Hypertarget{namespace_design_abcf93567c4e83d3f42f363207b2364bea7803ba6479a16ac903a3528595cf5646}\label{namespace_design_abcf93567c4e83d3f42f363207b2364bea7803ba6479a16ac903a3528595cf5646} 
+AT\+\_\+\+Right\+Content\+Margin&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AT\_FontType@{AT\_FontType}!Design@{Design}}\index{Design@{Design}!AT\_FontType@{AT\_FontType}}}\Hypertarget{namespace_design_abcf93567c4e83d3f42f363207b2364bea3573b2b4d8e5f26e2986177b28d8b6f8}\label{namespace_design_abcf93567c4e83d3f42f363207b2364bea3573b2b4d8e5f26e2986177b28d8b6f8} 
+AT\+\_\+\+Font\+Type&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AT\_NativeFontString@{AT\_NativeFontString}!Design@{Design}}\index{Design@{Design}!AT\_NativeFontString@{AT\_NativeFontString}}}\Hypertarget{namespace_design_abcf93567c4e83d3f42f363207b2364beacc689e7697e80c07baa4338b9a3ce702}\label{namespace_design_abcf93567c4e83d3f42f363207b2364beacc689e7697e80c07baa4338b9a3ce702} 
+AT\+\_\+\+Native\+Font\+String&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AT\_FontColor@{AT\_FontColor}!Design@{Design}}\index{Design@{Design}!AT\_FontColor@{AT\_FontColor}}}\Hypertarget{namespace_design_abcf93567c4e83d3f42f363207b2364bea1922ddf63f7fc9160aa292058b29a701}\label{namespace_design_abcf93567c4e83d3f42f363207b2364bea1922ddf63f7fc9160aa292058b29a701} 
+AT\+\_\+\+Font\+Color&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AT\_ImageName@{AT\_ImageName}!Design@{Design}}\index{Design@{Design}!AT\_ImageName@{AT\_ImageName}}}\Hypertarget{namespace_design_abcf93567c4e83d3f42f363207b2364beab606292901f4a3b5cb394ff75a5ae602}\label{namespace_design_abcf93567c4e83d3f42f363207b2364beab606292901f4a3b5cb394ff75a5ae602} 
+AT\+\_\+\+Image\+Name&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AT\_CalculateSpacing@{AT\_CalculateSpacing}!Design@{Design}}\index{Design@{Design}!AT\_CalculateSpacing@{AT\_CalculateSpacing}}}\Hypertarget{namespace_design_abcf93567c4e83d3f42f363207b2364bea480605b3676dc491efc0091bf0cc5c28}\label{namespace_design_abcf93567c4e83d3f42f363207b2364bea480605b3676dc491efc0091bf0cc5c28} 
+AT\+\_\+\+Calculate\+Spacing&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AT\_FixedSpacingSize@{AT\_FixedSpacingSize}!Design@{Design}}\index{Design@{Design}!AT\_FixedSpacingSize@{AT\_FixedSpacingSize}}}\Hypertarget{namespace_design_abcf93567c4e83d3f42f363207b2364bea7aabe6cc73d8a841eba2a0a06bae5082}\label{namespace_design_abcf93567c4e83d3f42f363207b2364bea7aabe6cc73d8a841eba2a0a06bae5082} 
+AT\+\_\+\+Fixed\+Spacing\+Size&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AT\_OverSizePaper@{AT\_OverSizePaper}!Design@{Design}}\index{Design@{Design}!AT\_OverSizePaper@{AT\_OverSizePaper}}}\Hypertarget{namespace_design_abcf93567c4e83d3f42f363207b2364bea842e1f1529cebff189b6fe873a9cfc3a}\label{namespace_design_abcf93567c4e83d3f42f363207b2364bea842e1f1529cebff189b6fe873a9cfc3a} 
+AT\+\_\+\+Over\+Size\+Paper&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AT\_PaperHeight@{AT\_PaperHeight}!Design@{Design}}\index{Design@{Design}!AT\_PaperHeight@{AT\_PaperHeight}}}\Hypertarget{namespace_design_abcf93567c4e83d3f42f363207b2364bea118ab3d739a2514d18c61566b4a84ca2}\label{namespace_design_abcf93567c4e83d3f42f363207b2364bea118ab3d739a2514d18c61566b4a84ca2} 
+AT\+\_\+\+Paper\+Height&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AT\_PaperWidth@{AT\_PaperWidth}!Design@{Design}}\index{Design@{Design}!AT\_PaperWidth@{AT\_PaperWidth}}}\Hypertarget{namespace_design_abcf93567c4e83d3f42f363207b2364bea7e31c49bc8699bbffdcd3ef8307cfea0}\label{namespace_design_abcf93567c4e83d3f42f363207b2364bea7e31c49bc8699bbffdcd3ef8307cfea0} 
+AT\+\_\+\+Paper\+Width&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AT\_SelvageHeight@{AT\_SelvageHeight}!Design@{Design}}\index{Design@{Design}!AT\_SelvageHeight@{AT\_SelvageHeight}}}\Hypertarget{namespace_design_abcf93567c4e83d3f42f363207b2364beaaa4fcc13e0250a9706bce6c891fae3c3}\label{namespace_design_abcf93567c4e83d3f42f363207b2364beaaa4fcc13e0250a9706bce6c891fae3c3} 
+AT\+\_\+\+Selvage\+Height&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AT\_SelvageWidth@{AT\_SelvageWidth}!Design@{Design}}\index{Design@{Design}!AT\_SelvageWidth@{AT\_SelvageWidth}}}\Hypertarget{namespace_design_abcf93567c4e83d3f42f363207b2364bea856740d2dfb16aefb3f05a1dab69a3e4}\label{namespace_design_abcf93567c4e83d3f42f363207b2364bea856740d2dfb16aefb3f05a1dab69a3e4} 
+AT\+\_\+\+Selvage\+Width&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AT\_SubTitle@{AT\_SubTitle}!Design@{Design}}\index{Design@{Design}!AT\_SubTitle@{AT\_SubTitle}}}\Hypertarget{namespace_design_abcf93567c4e83d3f42f363207b2364bead38416266ccc1e62acca24bdd0a78506}\label{namespace_design_abcf93567c4e83d3f42f363207b2364bead38416266ccc1e62acca24bdd0a78506} 
+AT\+\_\+\+Sub\+Title&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AT\_MountAllowanceHeight@{AT\_MountAllowanceHeight}!Design@{Design}}\index{Design@{Design}!AT\_MountAllowanceHeight@{AT\_MountAllowanceHeight}}}\Hypertarget{namespace_design_abcf93567c4e83d3f42f363207b2364bea35c0407ec2b66dd813e15be6b8c72e1c}\label{namespace_design_abcf93567c4e83d3f42f363207b2364bea35c0407ec2b66dd813e15be6b8c72e1c} 
+AT\+\_\+\+Mount\+Allowance\+Height&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AT\_MountAllowanceWidth@{AT\_MountAllowanceWidth}!Design@{Design}}\index{Design@{Design}!AT\_MountAllowanceWidth@{AT\_MountAllowanceWidth}}}\Hypertarget{namespace_design_abcf93567c4e83d3f42f363207b2364bea58c612c20dd6af34c9b40d1f6b3fb69f}\label{namespace_design_abcf93567c4e83d3f42f363207b2364bea58c612c20dd6af34c9b40d1f6b3fb69f} 
+AT\+\_\+\+Mount\+Allowance\+Width&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AT\_StampNamePosition@{AT\_StampNamePosition}!Design@{Design}}\index{Design@{Design}!AT\_StampNamePosition@{AT\_StampNamePosition}}}\Hypertarget{namespace_design_abcf93567c4e83d3f42f363207b2364bead0a3480596a43899a280b791146a8f62}\label{namespace_design_abcf93567c4e83d3f42f363207b2364bead0a3480596a43899a280b791146a8f62} 
+AT\+\_\+\+Stamp\+Name\+Position&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AT\_StampAlignmentMode@{AT\_StampAlignmentMode}!Design@{Design}}\index{Design@{Design}!AT\_StampAlignmentMode@{AT\_StampAlignmentMode}}}\Hypertarget{namespace_design_abcf93567c4e83d3f42f363207b2364beaefb5f5cfdfb8c5c02d32ec3596631d4f}\label{namespace_design_abcf93567c4e83d3f42f363207b2364beaefb5f5cfdfb8c5c02d32ec3596631d4f} 
+AT\+\_\+\+Stamp\+Alignment\+Mode&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AT\_StampMargin@{AT\_StampMargin}!Design@{Design}}\index{Design@{Design}!AT\_StampMargin@{AT\_StampMargin}}}\Hypertarget{namespace_design_abcf93567c4e83d3f42f363207b2364bea5e6229b9c55603c5129fd27ebf0352ba}\label{namespace_design_abcf93567c4e83d3f42f363207b2364bea5e6229b9c55603c5129fd27ebf0352ba} 
+AT\+\_\+\+Stamp\+Margin&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AT\_CollapseState@{AT\_CollapseState}!Design@{Design}}\index{Design@{Design}!AT\_CollapseState@{AT\_CollapseState}}}\Hypertarget{namespace_design_abcf93567c4e83d3f42f363207b2364beac7788934565a46d32e5abe64095f54f6}\label{namespace_design_abcf93567c4e83d3f42f363207b2364beac7788934565a46d32e5abe64095f54f6} 
+AT\+\_\+\+Collapse\+State&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AT\_Catalog@{AT\_Catalog}!Design@{Design}}\index{Design@{Design}!AT\_Catalog@{AT\_Catalog}}}\Hypertarget{namespace_design_abcf93567c4e83d3f42f363207b2364beae99180b5e74175f92627cc49eca2c742}\label{namespace_design_abcf93567c4e83d3f42f363207b2364beae99180b5e74175f92627cc49eca2c742} 
+AT\+\_\+\+Catalog&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AT\_Catalog\_Codes@{AT\_Catalog\_Codes}!Design@{Design}}\index{Design@{Design}!AT\_Catalog\_Codes@{AT\_Catalog\_Codes}}}\Hypertarget{namespace_design_abcf93567c4e83d3f42f363207b2364bea8f4f4cf661951a3547db415c0357824d}\label{namespace_design_abcf93567c4e83d3f42f363207b2364bea8f4f4cf661951a3547db415c0357824d} 
+AT\+\_\+\+Catalog\+\_\+\+Codes&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AT\_LayoutType@{AT\_LayoutType}!Design@{Design}}\index{Design@{Design}!AT\_LayoutType@{AT\_LayoutType}}}\Hypertarget{namespace_design_abcf93567c4e83d3f42f363207b2364bea5b253d38fc434b521ea8e3aadd9e3b0a}\label{namespace_design_abcf93567c4e83d3f42f363207b2364bea5b253d38fc434b521ea8e3aadd9e3b0a} 
+AT\+\_\+\+Layout\+Type&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AT\_NbrAttrTypes@{AT\_NbrAttrTypes}!Design@{Design}}\index{Design@{Design}!AT\_NbrAttrTypes@{AT\_NbrAttrTypes}}}\Hypertarget{namespace_design_abcf93567c4e83d3f42f363207b2364bea02157829b81b081dff8fea17aed0ce71}\label{namespace_design_abcf93567c4e83d3f42f363207b2364bea02157829b81b081dff8fea17aed0ce71} 
+AT\+\_\+\+Nbr\+Attr\+Types&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AT\_NOTYPE@{AT\_NOTYPE}!Design@{Design}}\index{Design@{Design}!AT\_NOTYPE@{AT\_NOTYPE}}}\Hypertarget{namespace_design_abcf93567c4e83d3f42f363207b2364bead950f9c154ff51542f7814b23ae9568f}\label{namespace_design_abcf93567c4e83d3f42f363207b2364bead950f9c154ff51542f7814b23ae9568f} 
+AT\+\_\+\+NOTYPE&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{_design_defs_8h_source_l00045}{45}} of file \mbox{\hyperlink{_design_defs_8h_source}{Design\+Defs.\+h}}.
+
+\Hypertarget{namespace_design_a3b29aaf2cf27207bcb313e24b827f8b1}\index{Design@{Design}!AlbumBaseType@{AlbumBaseType}}
+\index{AlbumBaseType@{AlbumBaseType}!Design@{Design}}
+\doxysubsubsection{\texorpdfstring{AlbumBaseType}{AlbumBaseType}}
+{\footnotesize\ttfamily \label{namespace_design_a3b29aaf2cf27207bcb313e24b827f8b1} 
+enum \mbox{\hyperlink{namespace_design_a3b29aaf2cf27207bcb313e24b827f8b1}{Design\+::\+Album\+Base\+Type}}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AT\_Album@{AT\_Album}!Design@{Design}}\index{Design@{Design}!AT\_Album@{AT\_Album}}}\Hypertarget{namespace_design_a3b29aaf2cf27207bcb313e24b827f8b1a9c3ea6aa7d523ed6b3a6ad6a53b79fe2}\label{namespace_design_a3b29aaf2cf27207bcb313e24b827f8b1a9c3ea6aa7d523ed6b3a6ad6a53b79fe2} 
+AT\+\_\+\+Album&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AT\_Page@{AT\_Page}!Design@{Design}}\index{Design@{Design}!AT\_Page@{AT\_Page}}}\Hypertarget{namespace_design_a3b29aaf2cf27207bcb313e24b827f8b1ab9a06cb5bed628c30c511ffffc85dd66}\label{namespace_design_a3b29aaf2cf27207bcb313e24b827f8b1ab9a06cb5bed628c30c511ffffc85dd66} 
+AT\+\_\+\+Page&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AT\_Row@{AT\_Row}!Design@{Design}}\index{Design@{Design}!AT\_Row@{AT\_Row}}}\Hypertarget{namespace_design_a3b29aaf2cf27207bcb313e24b827f8b1a6ce88639f78dc68bc6d57743a39db7e9}\label{namespace_design_a3b29aaf2cf27207bcb313e24b827f8b1a6ce88639f78dc68bc6d57743a39db7e9} 
+AT\+\_\+\+Row&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AT\_Col@{AT\_Col}!Design@{Design}}\index{Design@{Design}!AT\_Col@{AT\_Col}}}\Hypertarget{namespace_design_a3b29aaf2cf27207bcb313e24b827f8b1a757ba37de925ca5192ad6070c5ff0967}\label{namespace_design_a3b29aaf2cf27207bcb313e24b827f8b1a757ba37de925ca5192ad6070c5ff0967} 
+AT\+\_\+\+Col&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AT\_Text@{AT\_Text}!Design@{Design}}\index{Design@{Design}!AT\_Text@{AT\_Text}}}\Hypertarget{namespace_design_a3b29aaf2cf27207bcb313e24b827f8b1ac110f6c26ca958d6000111d2a9ffd7ac}\label{namespace_design_a3b29aaf2cf27207bcb313e24b827f8b1ac110f6c26ca958d6000111d2a9ffd7ac} 
+AT\+\_\+\+Text&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AT\_TitlePage@{AT\_TitlePage}!Design@{Design}}\index{Design@{Design}!AT\_TitlePage@{AT\_TitlePage}}}\Hypertarget{namespace_design_a3b29aaf2cf27207bcb313e24b827f8b1ab4939b40dfd65eef0f948c15318a22a3}\label{namespace_design_a3b29aaf2cf27207bcb313e24b827f8b1ab4939b40dfd65eef0f948c15318a22a3} 
+AT\+\_\+\+Title\+Page&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AT\_Stamp@{AT\_Stamp}!Design@{Design}}\index{Design@{Design}!AT\_Stamp@{AT\_Stamp}}}\Hypertarget{namespace_design_a3b29aaf2cf27207bcb313e24b827f8b1a187d90edd8adfdf08a89731bf4476567}\label{namespace_design_a3b29aaf2cf27207bcb313e24b827f8b1a187d90edd8adfdf08a89731bf4476567} 
+AT\+\_\+\+Stamp&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AT\_Font@{AT\_Font}!Design@{Design}}\index{Design@{Design}!AT\_Font@{AT\_Font}}}\Hypertarget{namespace_design_a3b29aaf2cf27207bcb313e24b827f8b1a23ef7db06690bd0ef7f38c68d3692e53}\label{namespace_design_a3b29aaf2cf27207bcb313e24b827f8b1a23ef7db06690bd0ef7f38c68d3692e53} 
+AT\+\_\+\+Font&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AT\_NbrAlbumTypes@{AT\_NbrAlbumTypes}!Design@{Design}}\index{Design@{Design}!AT\_NbrAlbumTypes@{AT\_NbrAlbumTypes}}}\Hypertarget{namespace_design_a3b29aaf2cf27207bcb313e24b827f8b1a0a217a59fb24b8e1784f9d6db904aa57}\label{namespace_design_a3b29aaf2cf27207bcb313e24b827f8b1a0a217a59fb24b8e1784f9d6db904aa57} 
+AT\+\_\+\+Nbr\+Album\+Types&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AT\_None@{AT\_None}!Design@{Design}}\index{Design@{Design}!AT\_None@{AT\_None}}}\Hypertarget{namespace_design_a3b29aaf2cf27207bcb313e24b827f8b1a62f7301302fa4bf1b11f67e0703bf3d9}\label{namespace_design_a3b29aaf2cf27207bcb313e24b827f8b1a62f7301302fa4bf1b11f67e0703bf3d9} 
+AT\+\_\+\+None&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{_design_defs_8h_source_l00111}{111}} of file \mbox{\hyperlink{_design_defs_8h_source}{Design\+Defs.\+h}}.
+
+\Hypertarget{namespace_design_ab09b51b33b5ff322cce8f7d3e37caae5}\index{Design@{Design}!AlignmentModeType@{AlignmentModeType}}
+\index{AlignmentModeType@{AlignmentModeType}!Design@{Design}}
+\doxysubsubsection{\texorpdfstring{AlignmentModeType}{AlignmentModeType}}
+{\footnotesize\ttfamily \label{namespace_design_ab09b51b33b5ff322cce8f7d3e37caae5} 
+enum \mbox{\hyperlink{namespace_design_ab09b51b33b5ff322cce8f7d3e37caae5}{Design\+::\+Alignment\+Mode\+Type}}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AlignTop@{AlignTop}!Design@{Design}}\index{Design@{Design}!AlignTop@{AlignTop}}}\Hypertarget{namespace_design_ab09b51b33b5ff322cce8f7d3e37caae5a4661e3346ece4dcec97f869c7894d887}\label{namespace_design_ab09b51b33b5ff322cce8f7d3e37caae5a4661e3346ece4dcec97f869c7894d887} 
+Align\+Top&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AlignMiddle@{AlignMiddle}!Design@{Design}}\index{Design@{Design}!AlignMiddle@{AlignMiddle}}}\Hypertarget{namespace_design_ab09b51b33b5ff322cce8f7d3e37caae5a6cc31fd37386656b001d307857667c97}\label{namespace_design_ab09b51b33b5ff322cce8f7d3e37caae5a6cc31fd37386656b001d307857667c97} 
+Align\+Middle&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AlignBottom@{AlignBottom}!Design@{Design}}\index{Design@{Design}!AlignBottom@{AlignBottom}}}\Hypertarget{namespace_design_ab09b51b33b5ff322cce8f7d3e37caae5aa05ce0f1e8dd0aeb71c26e58df814665}\label{namespace_design_ab09b51b33b5ff322cce8f7d3e37caae5aa05ce0f1e8dd0aeb71c26e58df814665} 
+Align\+Bottom&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NbrAlignmentModes@{NbrAlignmentModes}!Design@{Design}}\index{Design@{Design}!NbrAlignmentModes@{NbrAlignmentModes}}}\Hypertarget{namespace_design_ab09b51b33b5ff322cce8f7d3e37caae5a5755e19d0aa82633a9a05251f78c3e21}\label{namespace_design_ab09b51b33b5ff322cce8f7d3e37caae5a5755e19d0aa82633a9a05251f78c3e21} 
+Nbr\+Alignment\+Modes&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{_design_defs_8h_source_l00182}{182}} of file \mbox{\hyperlink{_design_defs_8h_source}{Design\+Defs.\+h}}.
+
+\Hypertarget{namespace_design_a78239901f30ef59569595a58364b35c4}\index{Design@{Design}!FontUsageType@{FontUsageType}}
+\index{FontUsageType@{FontUsageType}!Design@{Design}}
+\doxysubsubsection{\texorpdfstring{FontUsageType}{FontUsageType}}
+{\footnotesize\ttfamily \label{namespace_design_a78239901f30ef59569595a58364b35c4} 
+enum \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4}{Design\+::\+Font\+Usage\+Type}}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AT\_TitleFontType@{AT\_TitleFontType}!Design@{Design}}\index{Design@{Design}!AT\_TitleFontType@{AT\_TitleFontType}}}\Hypertarget{namespace_design_a78239901f30ef59569595a58364b35c4a078f3978681292ecf0627258c1cd1d1d}\label{namespace_design_a78239901f30ef59569595a58364b35c4a078f3978681292ecf0627258c1cd1d1d} 
+AT\+\_\+\+Title\+Font\+Type&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AT\_SubTitleFontType@{AT\_SubTitleFontType}!Design@{Design}}\index{Design@{Design}!AT\_SubTitleFontType@{AT\_SubTitleFontType}}}\Hypertarget{namespace_design_a78239901f30ef59569595a58364b35c4ad65be88ee94a9ab38dc6cde177c3ab68}\label{namespace_design_a78239901f30ef59569595a58364b35c4ad65be88ee94a9ab38dc6cde177c3ab68} 
+AT\+\_\+\+Sub\+Title\+Font\+Type&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AT\_NameFontType@{AT\_NameFontType}!Design@{Design}}\index{Design@{Design}!AT\_NameFontType@{AT\_NameFontType}}}\Hypertarget{namespace_design_a78239901f30ef59569595a58364b35c4a7a0c5cdeb48aceab9b0167ab84cbcb27}\label{namespace_design_a78239901f30ef59569595a58364b35c4a7a0c5cdeb48aceab9b0167ab84cbcb27} 
+AT\+\_\+\+Name\+Font\+Type&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AT\_TextFontType@{AT\_TextFontType}!Design@{Design}}\index{Design@{Design}!AT\_TextFontType@{AT\_TextFontType}}}\Hypertarget{namespace_design_a78239901f30ef59569595a58364b35c4ac5d3d82b86b9c364230172d74fd70095}\label{namespace_design_a78239901f30ef59569595a58364b35c4ac5d3d82b86b9c364230172d74fd70095} 
+AT\+\_\+\+Text\+Font\+Type&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AT\_NbrFontType@{AT\_NbrFontType}!Design@{Design}}\index{Design@{Design}!AT\_NbrFontType@{AT\_NbrFontType}}}\Hypertarget{namespace_design_a78239901f30ef59569595a58364b35c4a0d94aa6c52078cbb63ce531ed26140b2}\label{namespace_design_a78239901f30ef59569595a58364b35c4a0d94aa6c52078cbb63ce531ed26140b2} 
+AT\+\_\+\+Nbr\+Font\+Type&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AT\_NbrFontUsageTypes@{AT\_NbrFontUsageTypes}!Design@{Design}}\index{Design@{Design}!AT\_NbrFontUsageTypes@{AT\_NbrFontUsageTypes}}}\Hypertarget{namespace_design_a78239901f30ef59569595a58364b35c4afc9adabdde0c80dd0c02b444f080316b}\label{namespace_design_a78239901f30ef59569595a58364b35c4afc9adabdde0c80dd0c02b444f080316b} 
+AT\+\_\+\+Nbr\+Font\+Usage\+Types&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{_design_defs_8h_source_l00143}{143}} of file \mbox{\hyperlink{_design_defs_8h_source}{Design\+Defs.\+h}}.
+
+\Hypertarget{namespace_design_a7353efa232d45958ffd42229f3132b46}\index{Design@{Design}!IconID@{IconID}}
+\index{IconID@{IconID}!Design@{Design}}
+\doxysubsubsection{\texorpdfstring{IconID}{IconID}}
+{\footnotesize\ttfamily \label{namespace_design_a7353efa232d45958ffd42229f3132b46} 
+enum \mbox{\hyperlink{namespace_design_a7353efa232d45958ffd42229f3132b46}{Design\+::\+Icon\+ID}}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Icon\_Stamp@{Icon\_Stamp}!Design@{Design}}\index{Design@{Design}!Icon\_Stamp@{Icon\_Stamp}}}\Hypertarget{namespace_design_a7353efa232d45958ffd42229f3132b46a6fd72e609911170c7718faf70577bb24}\label{namespace_design_a7353efa232d45958ffd42229f3132b46a6fd72e609911170c7718faf70577bb24} 
+Icon\+\_\+\+Stamp&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Icon\_StampSelected@{Icon\_StampSelected}!Design@{Design}}\index{Design@{Design}!Icon\_StampSelected@{Icon\_StampSelected}}}\Hypertarget{namespace_design_a7353efa232d45958ffd42229f3132b46a629b003ba6db17ef84a735bfee33b627}\label{namespace_design_a7353efa232d45958ffd42229f3132b46a629b003ba6db17ef84a735bfee33b627} 
+Icon\+\_\+\+Stamp\+Selected&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Icon\_StampBlock@{Icon\_StampBlock}!Design@{Design}}\index{Design@{Design}!Icon\_StampBlock@{Icon\_StampBlock}}}\Hypertarget{namespace_design_a7353efa232d45958ffd42229f3132b46a614e8dd20d36b946e414639e927ac232}\label{namespace_design_a7353efa232d45958ffd42229f3132b46a614e8dd20d36b946e414639e927ac232} 
+Icon\+\_\+\+Stamp\+Block&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Icon\_StampBlockSelected@{Icon\_StampBlockSelected}!Design@{Design}}\index{Design@{Design}!Icon\_StampBlockSelected@{Icon\_StampBlockSelected}}}\Hypertarget{namespace_design_a7353efa232d45958ffd42229f3132b46acfac990ba19fa4a72c4245a9001b1e73}\label{namespace_design_a7353efa232d45958ffd42229f3132b46acfac990ba19fa4a72c4245a9001b1e73} 
+Icon\+\_\+\+Stamp\+Block\+Selected&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Icon\_StampMiniSheet@{Icon\_StampMiniSheet}!Design@{Design}}\index{Design@{Design}!Icon\_StampMiniSheet@{Icon\_StampMiniSheet}}}\Hypertarget{namespace_design_a7353efa232d45958ffd42229f3132b46a7b5ffdf8b5d2c6d9207c9ddefaaceb96}\label{namespace_design_a7353efa232d45958ffd42229f3132b46a7b5ffdf8b5d2c6d9207c9ddefaaceb96} 
+Icon\+\_\+\+Stamp\+Mini\+Sheet&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Icon\_StampMiniSheetSelected@{Icon\_StampMiniSheetSelected}!Design@{Design}}\index{Design@{Design}!Icon\_StampMiniSheetSelected@{Icon\_StampMiniSheetSelected}}}\Hypertarget{namespace_design_a7353efa232d45958ffd42229f3132b46a5708110f07bd6bbcad5fa7197eba0a9a}\label{namespace_design_a7353efa232d45958ffd42229f3132b46a5708110f07bd6bbcad5fa7197eba0a9a} 
+Icon\+\_\+\+Stamp\+Mini\+Sheet\+Selected&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Icon\_StampSouvenirSheet@{Icon\_StampSouvenirSheet}!Design@{Design}}\index{Design@{Design}!Icon\_StampSouvenirSheet@{Icon\_StampSouvenirSheet}}}\Hypertarget{namespace_design_a7353efa232d45958ffd42229f3132b46a877f314a8e0b55de43f107e675cde760}\label{namespace_design_a7353efa232d45958ffd42229f3132b46a877f314a8e0b55de43f107e675cde760} 
+Icon\+\_\+\+Stamp\+Souvenir\+Sheet&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Icon\_StampSouvenirSheetSelected@{Icon\_StampSouvenirSheetSelected}!Design@{Design}}\index{Design@{Design}!Icon\_StampSouvenirSheetSelected@{Icon\_StampSouvenirSheetSelected}}}\Hypertarget{namespace_design_a7353efa232d45958ffd42229f3132b46a6307263ff0cbe19aac0404b226de243c}\label{namespace_design_a7353efa232d45958ffd42229f3132b46a6307263ff0cbe19aac0404b226de243c} 
+Icon\+\_\+\+Stamp\+Souvenir\+Sheet\+Selected&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Icon\_Folder@{Icon\_Folder}!Design@{Design}}\index{Design@{Design}!Icon\_Folder@{Icon\_Folder}}}\Hypertarget{namespace_design_a7353efa232d45958ffd42229f3132b46afb6bb194c47b59afa749231f1bdad19d}\label{namespace_design_a7353efa232d45958ffd42229f3132b46afb6bb194c47b59afa749231f1bdad19d} 
+Icon\+\_\+\+Folder&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Icon\_Menu@{Icon\_Menu}!Design@{Design}}\index{Design@{Design}!Icon\_Menu@{Icon\_Menu}}}\Hypertarget{namespace_design_a7353efa232d45958ffd42229f3132b46a0005a11095e3fa7a0303d2df76d9e7db}\label{namespace_design_a7353efa232d45958ffd42229f3132b46a0005a11095e3fa7a0303d2df76d9e7db} 
+Icon\+\_\+\+Menu&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{_icon_defs_8h_source_l00069}{69}} of file \mbox{\hyperlink{_icon_defs_8h_source}{Icon\+Defs.\+h}}.
+
+\Hypertarget{namespace_design_a92be0fe63f397600d1b789ced14bb086}\index{Design@{Design}!LayoutType@{LayoutType}}
+\index{LayoutType@{LayoutType}!Design@{Design}}
+\doxysubsubsection{\texorpdfstring{LayoutType}{LayoutType}}
+{\footnotesize\ttfamily \label{namespace_design_a92be0fe63f397600d1b789ced14bb086} 
+enum \mbox{\hyperlink{namespace_design_a92be0fe63f397600d1b789ced14bb086}{Design\+::\+Layout\+Type}}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LT\_Page@{LT\_Page}!Design@{Design}}\index{Design@{Design}!LT\_Page@{LT\_Page}}}\Hypertarget{namespace_design_a92be0fe63f397600d1b789ced14bb086adb09624beb91ce971f482fccf9708298}\label{namespace_design_a92be0fe63f397600d1b789ced14bb086adb09624beb91ce971f482fccf9708298} 
+LT\+\_\+\+Page&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LT\_Frame@{LT\_Frame}!Design@{Design}}\index{Design@{Design}!LT\_Frame@{LT\_Frame}}}\Hypertarget{namespace_design_a92be0fe63f397600d1b789ced14bb086aaff3a11bdb3874d55213feb4802ec3b5}\label{namespace_design_a92be0fe63f397600d1b789ced14bb086aaff3a11bdb3874d55213feb4802ec3b5} 
+LT\+\_\+\+Frame&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LT\_Stamp@{LT\_Stamp}!Design@{Design}}\index{Design@{Design}!LT\_Stamp@{LT\_Stamp}}}\Hypertarget{namespace_design_a92be0fe63f397600d1b789ced14bb086a278b48628fc26ce97c447352b33480d7}\label{namespace_design_a92be0fe63f397600d1b789ced14bb086a278b48628fc26ce97c447352b33480d7} 
+LT\+\_\+\+Stamp&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LT\_Text@{LT\_Text}!Design@{Design}}\index{Design@{Design}!LT\_Text@{LT\_Text}}}\Hypertarget{namespace_design_a92be0fe63f397600d1b789ced14bb086abfb5c2a890525c837acd30db689be405}\label{namespace_design_a92be0fe63f397600d1b789ced14bb086abfb5c2a890525c837acd30db689be405} 
+LT\+\_\+\+Text&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NbrLayoutTypes@{NbrLayoutTypes}!Design@{Design}}\index{Design@{Design}!NbrLayoutTypes@{NbrLayoutTypes}}}\Hypertarget{namespace_design_a92be0fe63f397600d1b789ced14bb086ae492e38c751cc4624b48cfbe1078af88}\label{namespace_design_a92be0fe63f397600d1b789ced14bb086ae492e38c751cc4624b48cfbe1078af88} 
+Nbr\+Layout\+Types&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{_design_defs_8h_source_l00126}{126}} of file \mbox{\hyperlink{_design_defs_8h_source}{Design\+Defs.\+h}}.
+
+\Hypertarget{namespace_design_a89f66276a25aed62bedc9fb9b5d35453}\index{Design@{Design}!NodeStatus@{NodeStatus}}
+\index{NodeStatus@{NodeStatus}!Design@{Design}}
+\doxysubsubsection{\texorpdfstring{NodeStatus}{NodeStatus}}
+{\footnotesize\ttfamily \label{namespace_design_a89f66276a25aed62bedc9fb9b5d35453} 
+enum \mbox{\hyperlink{namespace_design_a89f66276a25aed62bedc9fb9b5d35453}{Design\+::\+Node\+Status}}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AT\_OK@{AT\_OK}!Design@{Design}}\index{Design@{Design}!AT\_OK@{AT\_OK}}}\Hypertarget{namespace_design_a89f66276a25aed62bedc9fb9b5d35453a017c6d80f47349eb438f3756fddb67c5}\label{namespace_design_a89f66276a25aed62bedc9fb9b5d35453a017c6d80f47349eb438f3756fddb67c5} 
+AT\+\_\+\+OK&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AT\_WARNING@{AT\_WARNING}!Design@{Design}}\index{Design@{Design}!AT\_WARNING@{AT\_WARNING}}}\Hypertarget{namespace_design_a89f66276a25aed62bedc9fb9b5d35453a6be04f5496a5b90e3938fca1a30f2879}\label{namespace_design_a89f66276a25aed62bedc9fb9b5d35453a6be04f5496a5b90e3938fca1a30f2879} 
+AT\+\_\+\+WARNING&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AT\_FATAL@{AT\_FATAL}!Design@{Design}}\index{Design@{Design}!AT\_FATAL@{AT\_FATAL}}}\Hypertarget{namespace_design_a89f66276a25aed62bedc9fb9b5d35453ae754faf14b715fdc6044e88977cebe76}\label{namespace_design_a89f66276a25aed62bedc9fb9b5d35453ae754faf14b715fdc6044e88977cebe76} 
+AT\+\_\+\+FATAL&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{_design_defs_8h_source_l00152}{152}} of file \mbox{\hyperlink{_design_defs_8h_source}{Design\+Defs.\+h}}.
+
+\Hypertarget{namespace_design_aaba3ca6fc88c265cb60ab21adf766030}\index{Design@{Design}!PageOrientation@{PageOrientation}}
+\index{PageOrientation@{PageOrientation}!Design@{Design}}
+\doxysubsubsection{\texorpdfstring{PageOrientation}{PageOrientation}}
+{\footnotesize\ttfamily \label{namespace_design_aaba3ca6fc88c265cb60ab21adf766030} 
+enum \mbox{\hyperlink{namespace_design_aaba3ca6fc88c265cb60ab21adf766030}{Design\+::\+Page\+Orientation}}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AT\_Portrait@{AT\_Portrait}!Design@{Design}}\index{Design@{Design}!AT\_Portrait@{AT\_Portrait}}}\Hypertarget{namespace_design_aaba3ca6fc88c265cb60ab21adf766030acfa760081a6813aed7e315df8f9fe19e}\label{namespace_design_aaba3ca6fc88c265cb60ab21adf766030acfa760081a6813aed7e315df8f9fe19e} 
+AT\+\_\+\+Portrait&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AT\_Landscape@{AT\_Landscape}!Design@{Design}}\index{Design@{Design}!AT\_Landscape@{AT\_Landscape}}}\Hypertarget{namespace_design_aaba3ca6fc88c265cb60ab21adf766030ac6457bb12c18915fe99508594043bc4c}\label{namespace_design_aaba3ca6fc88c265cb60ab21adf766030ac6457bb12c18915fe99508594043bc4c} 
+AT\+\_\+\+Landscape&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{_design_defs_8h_source_l00105}{105}} of file \mbox{\hyperlink{_design_defs_8h_source}{Design\+Defs.\+h}}.
+
+\Hypertarget{namespace_design_a1d2ff31f0e950a8fa7397c3e71d2e5a1}\index{Design@{Design}!PageType@{PageType}}
+\index{PageType@{PageType}!Design@{Design}}
+\doxysubsubsection{\texorpdfstring{PageType}{PageType}}
+{\footnotesize\ttfamily \label{namespace_design_a1d2ff31f0e950a8fa7397c3e71d2e5a1} 
+enum \mbox{\hyperlink{namespace_design_a1d2ff31f0e950a8fa7397c3e71d2e5a1}{Design\+::\+Page\+Type}}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PT\_RowPage@{PT\_RowPage}!Design@{Design}}\index{Design@{Design}!PT\_RowPage@{PT\_RowPage}}}\Hypertarget{namespace_design_a1d2ff31f0e950a8fa7397c3e71d2e5a1a2b30262ecc048e47f575d3c9a21735c5}\label{namespace_design_a1d2ff31f0e950a8fa7397c3e71d2e5a1a2b30262ecc048e47f575d3c9a21735c5} 
+PT\+\_\+\+Row\+Page&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PT\_ColumnPage@{PT\_ColumnPage}!Design@{Design}}\index{Design@{Design}!PT\_ColumnPage@{PT\_ColumnPage}}}\Hypertarget{namespace_design_a1d2ff31f0e950a8fa7397c3e71d2e5a1a0beaaec981b37dcce29972b9885bcd76}\label{namespace_design_a1d2ff31f0e950a8fa7397c3e71d2e5a1a0beaaec981b37dcce29972b9885bcd76} 
+PT\+\_\+\+Column\+Page&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PT\_None@{PT\_None}!Design@{Design}}\index{Design@{Design}!PT\_None@{PT\_None}}}\Hypertarget{namespace_design_a1d2ff31f0e950a8fa7397c3e71d2e5a1a070d188fff1141975b0cf26ab6dd6a5d}\label{namespace_design_a1d2ff31f0e950a8fa7397c3e71d2e5a1a070d188fff1141975b0cf26ab6dd6a5d} 
+PT\+\_\+\+None&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{_design_defs_8h_source_l00136}{136}} of file \mbox{\hyperlink{_design_defs_8h_source}{Design\+Defs.\+h}}.
+
+\Hypertarget{namespace_design_a50cde7727f2d80d10de313beb2179c8e}\index{Design@{Design}!ScaleClient@{ScaleClient}}
+\index{ScaleClient@{ScaleClient}!Design@{Design}}
+\doxysubsubsection{\texorpdfstring{ScaleClient}{ScaleClient}}
+{\footnotesize\ttfamily \label{namespace_design_a50cde7727f2d80d10de313beb2179c8e} 
+enum \mbox{\hyperlink{namespace_design_a50cde7727f2d80d10de313beb2179c8e}{Design\+::\+Scale\+Client}}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DD\_Display@{DD\_Display}!Design@{Design}}\index{Design@{Design}!DD\_Display@{DD\_Display}}}\Hypertarget{namespace_design_a50cde7727f2d80d10de313beb2179c8eaeaf588f6d0182deba760f4000c9c4e48}\label{namespace_design_a50cde7727f2d80d10de313beb2179c8eaeaf588f6d0182deba760f4000c9c4e48} 
+DD\+\_\+\+Display&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DD\_PDF@{DD\_PDF}!Design@{Design}}\index{Design@{Design}!DD\_PDF@{DD\_PDF}}}\Hypertarget{namespace_design_a50cde7727f2d80d10de313beb2179c8eab578371d83e4e1b5e5dbc07e46b61746}\label{namespace_design_a50cde7727f2d80d10de313beb2179c8eab578371d83e4e1b5e5dbc07e46b61746} 
+DD\+\_\+\+PDF&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{_design_defs_8h_source_l00159}{159}} of file \mbox{\hyperlink{_design_defs_8h_source}{Design\+Defs.\+h}}.
+
+\Hypertarget{namespace_design_a471629dc99bd57d5adedd3c7a1cb05a2}\index{Design@{Design}!StampAlignment@{StampAlignment}}
+\index{StampAlignment@{StampAlignment}!Design@{Design}}
+\doxysubsubsection{\texorpdfstring{StampAlignment}{StampAlignment}}
+{\footnotesize\ttfamily \label{namespace_design_a471629dc99bd57d5adedd3c7a1cb05a2} 
+enum \mbox{\hyperlink{namespace_design_a471629dc99bd57d5adedd3c7a1cb05a2}{Design\+::\+Stamp\+Alignment}}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AT\_AlignTop@{AT\_AlignTop}!Design@{Design}}\index{Design@{Design}!AT\_AlignTop@{AT\_AlignTop}}}\Hypertarget{namespace_design_a471629dc99bd57d5adedd3c7a1cb05a2a100d03d93b238b18f5138fec79ecfc81}\label{namespace_design_a471629dc99bd57d5adedd3c7a1cb05a2a100d03d93b238b18f5138fec79ecfc81} 
+AT\+\_\+\+Align\+Top&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AT\_AlignBottom@{AT\_AlignBottom}!Design@{Design}}\index{Design@{Design}!AT\_AlignBottom@{AT\_AlignBottom}}}\Hypertarget{namespace_design_a471629dc99bd57d5adedd3c7a1cb05a2a5920de2ef3eb804a11fecde0a7be1c1c}\label{namespace_design_a471629dc99bd57d5adedd3c7a1cb05a2a5920de2ef3eb804a11fecde0a7be1c1c} 
+AT\+\_\+\+Align\+Bottom&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AT\_AlignLeft@{AT\_AlignLeft}!Design@{Design}}\index{Design@{Design}!AT\_AlignLeft@{AT\_AlignLeft}}}\Hypertarget{namespace_design_a471629dc99bd57d5adedd3c7a1cb05a2a0bf9cf0062162191d71a7436ea73e250}\label{namespace_design_a471629dc99bd57d5adedd3c7a1cb05a2a0bf9cf0062162191d71a7436ea73e250} 
+AT\+\_\+\+Align\+Left&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AT\_AlignRight@{AT\_AlignRight}!Design@{Design}}\index{Design@{Design}!AT\_AlignRight@{AT\_AlignRight}}}\Hypertarget{namespace_design_a471629dc99bd57d5adedd3c7a1cb05a2a73c47cdfc56612fc55d9ff5f01466814}\label{namespace_design_a471629dc99bd57d5adedd3c7a1cb05a2a73c47cdfc56612fc55d9ff5f01466814} 
+AT\+\_\+\+Align\+Right&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AT\_Center@{AT\_Center}!Design@{Design}}\index{Design@{Design}!AT\_Center@{AT\_Center}}}\Hypertarget{namespace_design_a471629dc99bd57d5adedd3c7a1cb05a2a7643b9c3d055fccc88c24a009d896aa5}\label{namespace_design_a471629dc99bd57d5adedd3c7a1cb05a2a7643b9c3d055fccc88c24a009d896aa5} 
+AT\+\_\+\+Center&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AT\_AlignDefault@{AT\_AlignDefault}!Design@{Design}}\index{Design@{Design}!AT\_AlignDefault@{AT\_AlignDefault}}}\Hypertarget{namespace_design_a471629dc99bd57d5adedd3c7a1cb05a2a6b8e7ae309f8686632ad10320796c06c}\label{namespace_design_a471629dc99bd57d5adedd3c7a1cb05a2a6b8e7ae309f8686632ad10320796c06c} 
+AT\+\_\+\+Align\+Default&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{_design_defs_8h_source_l00165}{165}} of file \mbox{\hyperlink{_design_defs_8h_source}{Design\+Defs.\+h}}.
+
+\Hypertarget{namespace_design_a6d899bd1f7046bbf5a613e85bd83f0c3}\index{Design@{Design}!StampNamePosType@{StampNamePosType}}
+\index{StampNamePosType@{StampNamePosType}!Design@{Design}}
+\doxysubsubsection{\texorpdfstring{StampNamePosType}{StampNamePosType}}
+{\footnotesize\ttfamily \label{namespace_design_a6d899bd1f7046bbf5a613e85bd83f0c3} 
+enum \mbox{\hyperlink{namespace_design_a6d899bd1f7046bbf5a613e85bd83f0c3}{Design\+::\+Stamp\+Name\+Pos\+Type}}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AT\_StampNamePositionTop@{AT\_StampNamePositionTop}!Design@{Design}}\index{Design@{Design}!AT\_StampNamePositionTop@{AT\_StampNamePositionTop}}}\Hypertarget{namespace_design_a6d899bd1f7046bbf5a613e85bd83f0c3a05dc2c0acf0fc2e9960c0213c55f12dd}\label{namespace_design_a6d899bd1f7046bbf5a613e85bd83f0c3a05dc2c0acf0fc2e9960c0213c55f12dd} 
+AT\+\_\+\+Stamp\+Name\+Position\+Top&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AT\_StampNamePositionBottom@{AT\_StampNamePositionBottom}!Design@{Design}}\index{Design@{Design}!AT\_StampNamePositionBottom@{AT\_StampNamePositionBottom}}}\Hypertarget{namespace_design_a6d899bd1f7046bbf5a613e85bd83f0c3a40f97d7d7d027b73c2d644cc44418649}\label{namespace_design_a6d899bd1f7046bbf5a613e85bd83f0c3a40f97d7d7d027b73c2d644cc44418649} 
+AT\+\_\+\+Stamp\+Name\+Position\+Bottom&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AT\_NbrStampNamePositions@{AT\_NbrStampNamePositions}!Design@{Design}}\index{Design@{Design}!AT\_NbrStampNamePositions@{AT\_NbrStampNamePositions}}}\Hypertarget{namespace_design_a6d899bd1f7046bbf5a613e85bd83f0c3a92a58c55f4bd0c52796c34d87770fd1b}\label{namespace_design_a6d899bd1f7046bbf5a613e85bd83f0c3a92a58c55f4bd0c52796c34d87770fd1b} 
+AT\+\_\+\+Nbr\+Stamp\+Name\+Positions&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{_design_defs_8h_source_l00175}{175}} of file \mbox{\hyperlink{_design_defs_8h_source}{Design\+Defs.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{namespace_design_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{namespace_design_a342d9455df07585aa762c1be18724f90}\index{Design@{Design}!AlbumFrameDefaults@{AlbumFrameDefaults}}
+\index{AlbumFrameDefaults@{AlbumFrameDefaults}!Design@{Design}}
+\doxysubsubsection{\texorpdfstring{AlbumFrameDefaults()}{AlbumFrameDefaults()}}
+{\footnotesize\ttfamily \label{namespace_design_a342d9455df07585aa762c1be18724f90} 
+\mbox{\hyperlink{class_design_1_1_frame_defaults}{Frame\+Defaults}} \texorpdfstring{$\ast$}{*} Design\+::\+Album\+Frame\+Defaults (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_design_defs_8cpp_source_l00265}{265}} of file \mbox{\hyperlink{_design_defs_8cpp_source}{Design\+Defs.\+cpp}}.
+
+\Hypertarget{namespace_design_aa4fea110dd291e5d5d0fd78ec9d6ff98}\index{Design@{Design}!AlbumPageDefaults@{AlbumPageDefaults}}
+\index{AlbumPageDefaults@{AlbumPageDefaults}!Design@{Design}}
+\doxysubsubsection{\texorpdfstring{AlbumPageDefaults()}{AlbumPageDefaults()}}
+{\footnotesize\ttfamily \label{namespace_design_aa4fea110dd291e5d5d0fd78ec9d6ff98} 
+\mbox{\hyperlink{class_design_1_1_page_defaults}{Page\+Defaults}} \texorpdfstring{$\ast$}{*} Design\+::\+Album\+Page\+Defaults (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_design_defs_8cpp_source_l00259}{259}} of file \mbox{\hyperlink{_design_defs_8cpp_source}{Design\+Defs.\+cpp}}.
+
+\Hypertarget{namespace_design_ac973715a5cfcda6fc6028a5286198e4b}\index{Design@{Design}!AlbumStampDefaults@{AlbumStampDefaults}}
+\index{AlbumStampDefaults@{AlbumStampDefaults}!Design@{Design}}
+\doxysubsubsection{\texorpdfstring{AlbumStampDefaults()}{AlbumStampDefaults()}}
+{\footnotesize\ttfamily \label{namespace_design_ac973715a5cfcda6fc6028a5286198e4b} 
+\mbox{\hyperlink{class_design_1_1_stamp_defaults}{Stamp\+Defaults}} \texorpdfstring{$\ast$}{*} Design\+::\+Album\+Stamp\+Defaults (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_design_defs_8cpp_source_l00271}{271}} of file \mbox{\hyperlink{_design_defs_8cpp_source}{Design\+Defs.\+cpp}}.
+
+\Hypertarget{namespace_design_aa9ba98f193fb48eb64a8cc906699d3a6}\index{Design@{Design}!DrawRotated@{DrawRotated}}
+\index{DrawRotated@{DrawRotated}!Design@{Design}}
+\doxysubsubsection{\texorpdfstring{DrawRotated()}{DrawRotated()}}
+{\footnotesize\ttfamily \label{namespace_design_aa9ba98f193fb48eb64a8cc906699d3a6} 
+void Design\+::\+Draw\+Rotated (\begin{DoxyParamCaption}\item[{wx\+DC \&}]{dc}{, }\item[{double}]{x}{, }\item[{double}]{y}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_stamp_8cpp_source_l00109}{109}} of file \mbox{\hyperlink{_stamp_8cpp_source}{Stamp.\+cpp}}.
+
+\Hypertarget{namespace_design_afe7c9b03c8bdc34c825b312546065b83}\index{Design@{Design}!FindAlbumAttrType@{FindAlbumAttrType}}
+\index{FindAlbumAttrType@{FindAlbumAttrType}!Design@{Design}}
+\doxysubsubsection{\texorpdfstring{FindAlbumAttrType()}{FindAlbumAttrType()}}
+{\footnotesize\ttfamily \label{namespace_design_afe7c9b03c8bdc34c825b312546065b83} 
+\mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364be}{Album\+Attr\+Type}} Design\+::\+Find\+Album\+Attr\+Type (\begin{DoxyParamCaption}\item[{wx\+String}]{name}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_design_defs_8cpp_source_l00199}{199}} of file \mbox{\hyperlink{_design_defs_8cpp_source}{Design\+Defs.\+cpp}}.
+
+\Hypertarget{namespace_design_a06b00762b0ce370fb98fdd70ac7d9d3c}\index{Design@{Design}!FindAlbumBaseType@{FindAlbumBaseType}}
+\index{FindAlbumBaseType@{FindAlbumBaseType}!Design@{Design}}
+\doxysubsubsection{\texorpdfstring{FindAlbumBaseType()}{FindAlbumBaseType()}}
+{\footnotesize\ttfamily \label{namespace_design_a06b00762b0ce370fb98fdd70ac7d9d3c} 
+\mbox{\hyperlink{namespace_design_a3b29aaf2cf27207bcb313e24b827f8b1}{Album\+Base\+Type}} Design\+::\+Find\+Album\+Base\+Type (\begin{DoxyParamCaption}\item[{wx\+String}]{name}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_design_defs_8cpp_source_l00215}{215}} of file \mbox{\hyperlink{_design_defs_8cpp_source}{Design\+Defs.\+cpp}}.
+
+\Hypertarget{namespace_design_a7afd338be906fc3816e6721ec5c6817a}\index{Design@{Design}!FindAlignmentModeType@{FindAlignmentModeType}}
+\index{FindAlignmentModeType@{FindAlignmentModeType}!Design@{Design}}
+\doxysubsubsection{\texorpdfstring{FindAlignmentModeType()}{FindAlignmentModeType()}}
+{\footnotesize\ttfamily \label{namespace_design_a7afd338be906fc3816e6721ec5c6817a} 
+\mbox{\hyperlink{namespace_design_ab09b51b33b5ff322cce8f7d3e37caae5}{Alignment\+Mode\+Type}} Design\+::\+Find\+Alignment\+Mode\+Type (\begin{DoxyParamCaption}\item[{wx\+String}]{name}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_design_defs_8cpp_source_l00183}{183}} of file \mbox{\hyperlink{_design_defs_8cpp_source}{Design\+Defs.\+cpp}}.
+
+\Hypertarget{namespace_design_a867f1223ccc1a10fdae9a28dd43466eb}\index{Design@{Design}!FindFontUsageType@{FindFontUsageType}}
+\index{FindFontUsageType@{FindFontUsageType}!Design@{Design}}
+\doxysubsubsection{\texorpdfstring{FindFontUsageType()}{FindFontUsageType()}}
+{\footnotesize\ttfamily \label{namespace_design_a867f1223ccc1a10fdae9a28dd43466eb} 
+\mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4}{Font\+Usage\+Type}} Design\+::\+Find\+Font\+Usage\+Type (\begin{DoxyParamCaption}\item[{wx\+String}]{name}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_design_defs_8cpp_source_l00231}{231}} of file \mbox{\hyperlink{_design_defs_8cpp_source}{Design\+Defs.\+cpp}}.
+
+\Hypertarget{namespace_design_a2aaa34bc44a82f76f74d6e6f011945bf}\index{Design@{Design}!FindStampLocationType@{FindStampLocationType}}
+\index{FindStampLocationType@{FindStampLocationType}!Design@{Design}}
+\doxysubsubsection{\texorpdfstring{FindStampLocationType()}{FindStampLocationType()}}
+{\footnotesize\ttfamily \label{namespace_design_a2aaa34bc44a82f76f74d6e6f011945bf} 
+\mbox{\hyperlink{namespace_design_a6d899bd1f7046bbf5a613e85bd83f0c3}{Stamp\+Name\+Pos\+Type}} Design\+::\+Find\+Stamp\+Location\+Type (\begin{DoxyParamCaption}\item[{wx\+String}]{name}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_design_defs_8cpp_source_l00172}{172}} of file \mbox{\hyperlink{_design_defs_8cpp_source}{Design\+Defs.\+cpp}}.
+
+\Hypertarget{namespace_design_aaf913dbe97a6c57862a852f79cb54404}\index{Design@{Design}!GetAlbum@{GetAlbum}}
+\index{GetAlbum@{GetAlbum}!Design@{Design}}
+\doxysubsubsection{\texorpdfstring{GetAlbum()}{GetAlbum()}}
+{\footnotesize\ttfamily \label{namespace_design_aaf913dbe97a6c57862a852f79cb54404} 
+\mbox{\hyperlink{class_design_1_1_album}{Album}} \texorpdfstring{$\ast$}{*} Design\+::\+Get\+Album (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_design_defs_8cpp_source_l00247}{247}} of file \mbox{\hyperlink{_design_defs_8cpp_source}{Design\+Defs.\+cpp}}.
+
+\Hypertarget{namespace_design_a348ebdba188f193934c55b8f0ad00550}\index{Design@{Design}!GetAlbumVolume@{GetAlbumVolume}}
+\index{GetAlbumVolume@{GetAlbumVolume}!Design@{Design}}
+\doxysubsubsection{\texorpdfstring{GetAlbumVolume()}{GetAlbumVolume()}}
+{\footnotesize\ttfamily \label{namespace_design_a348ebdba188f193934c55b8f0ad00550} 
+\mbox{\hyperlink{class_design_1_1_album_volume}{Album\+Volume}} \texorpdfstring{$\ast$}{*} Design\+::\+Get\+Album\+Volume (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_design_defs_8cpp_source_l00277}{277}} of file \mbox{\hyperlink{_design_defs_8cpp_source}{Design\+Defs.\+cpp}}.
+
+\Hypertarget{namespace_design_ade99086dccbbc5579bb9a0edbe0edfa5}\index{Design@{Design}!GetSelectedNodePage@{GetSelectedNodePage}}
+\index{GetSelectedNodePage@{GetSelectedNodePage}!Design@{Design}}
+\doxysubsubsection{\texorpdfstring{GetSelectedNodePage()}{GetSelectedNodePage()}}
+{\footnotesize\ttfamily \label{namespace_design_ade99086dccbbc5579bb9a0edbe0edfa5} 
+\mbox{\hyperlink{class_design_1_1_layout_base}{Layout\+Base}} \texorpdfstring{$\ast$}{*} Design\+::\+Get\+Selected\+Node\+Page (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_design_defs_8cpp_source_l00289}{289}} of file \mbox{\hyperlink{_design_defs_8cpp_source}{Design\+Defs.\+cpp}}.
+
+\Hypertarget{namespace_design_a81cb9eeed8b200a49810c452f732dc56}\index{Design@{Design}!InitDesignDefs@{InitDesignDefs}}
+\index{InitDesignDefs@{InitDesignDefs}!Design@{Design}}
+\doxysubsubsection{\texorpdfstring{InitDesignDefs()}{InitDesignDefs()}}
+{\footnotesize\ttfamily \label{namespace_design_a81cb9eeed8b200a49810c452f732dc56} 
+void Design\+::\+Init\+Design\+Defs (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_design_a50cde7727f2d80d10de313beb2179c8e}{Scale\+Client}}}]{client}{}\end{DoxyParamCaption})}
+
+
+
+Performs the initial instantiantion of all the s\+Tart up data. 
+
+
+
+Definition at line \mbox{\hyperlink{_design_defs_8cpp_source_l00333}{333}} of file \mbox{\hyperlink{_design_defs_8cpp_source}{Design\+Defs.\+cpp}}.
+
+\Hypertarget{namespace_design_a0f12cceacb248602141ce2d3dca6da6b}\index{Design@{Design}!IsAlbumBaseTypeValid@{IsAlbumBaseTypeValid}}
+\index{IsAlbumBaseTypeValid@{IsAlbumBaseTypeValid}!Design@{Design}}
+\doxysubsubsection{\texorpdfstring{IsAlbumBaseTypeValid()}{IsAlbumBaseTypeValid()}}
+{\footnotesize\ttfamily \label{namespace_design_a0f12cceacb248602141ce2d3dca6da6b} 
+bool Design\+::\+Is\+Album\+Base\+Type\+Valid (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_design_a3b29aaf2cf27207bcb313e24b827f8b1}{Album\+Base\+Type}}}]{type}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_design_defs_8cpp_source_l00352}{352}} of file \mbox{\hyperlink{_design_defs_8cpp_source}{Design\+Defs.\+cpp}}.
+
+\Hypertarget{namespace_design_acda93570e5fda30e2608df376907778d}\index{Design@{Design}!IsPortrait@{IsPortrait}}
+\index{IsPortrait@{IsPortrait}!Design@{Design}}
+\doxysubsubsection{\texorpdfstring{IsPortrait()}{IsPortrait()}}
+{\footnotesize\ttfamily \label{namespace_design_acda93570e5fda30e2608df376907778d} 
+bool Design\+::\+Is\+Portrait (\begin{DoxyParamCaption}\item[{wx\+String}]{orientation}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_design_defs_8cpp_source_l00124}{124}} of file \mbox{\hyperlink{_design_defs_8cpp_source}{Design\+Defs.\+cpp}}.
+
+\Hypertarget{namespace_design_aac217f371ec56287a4504c98d9530b89}\index{Design@{Design}!MakeNode@{MakeNode}}
+\index{MakeNode@{MakeNode}!Design@{Design}}
+\doxysubsubsection{\texorpdfstring{MakeNode()}{MakeNode()}}
+{\footnotesize\ttfamily \label{namespace_design_aac217f371ec56287a4504c98d9530b89} 
+\mbox{\hyperlink{class_design_1_1_album_base}{Album\+Base}} \texorpdfstring{$\ast$}{*} Design\+::\+Make\+Node (\begin{DoxyParamCaption}\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{node}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_design_defs_8cpp_source_l00359}{359}} of file \mbox{\hyperlink{_design_defs_8cpp_source}{Design\+Defs.\+cpp}}.
+
+\Hypertarget{namespace_design_a6c96c682b1f9a379e61ba46908ea702b}\index{Design@{Design}!WayToSort@{WayToSort}}
+\index{WayToSort@{WayToSort}!Design@{Design}}
+\doxysubsubsection{\texorpdfstring{WayToSort()}{WayToSort()}}
+{\footnotesize\ttfamily \label{namespace_design_a6c96c682b1f9a379e61ba46908ea702b} 
+int Design\+::\+Way\+To\+Sort (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_design_1_1_album_volume}{Design\+::\+Album\+Volume}} \texorpdfstring{$\ast$}{*}}]{sect1}{, }\item[{\mbox{\hyperlink{class_design_1_1_album_volume}{Design\+::\+Album\+Volume}} \texorpdfstring{$\ast$}{*}}]{sect2}{}\end{DoxyParamCaption})}
+
+
+
+\label{doc-var-members}
+\Hypertarget{namespace_design_doc-var-members}
+\doxysubsection{Variable Documentation}
+\Hypertarget{namespace_design_ab3742ad7971c04bd777b0fee90390d70}\index{Design@{Design}!AlbumBaseNames@{AlbumBaseNames}}
+\index{AlbumBaseNames@{AlbumBaseNames}!Design@{Design}}
+\doxysubsubsection{\texorpdfstring{AlbumBaseNames}{AlbumBaseNames}}
+{\footnotesize\ttfamily \label{namespace_design_ab3742ad7971c04bd777b0fee90390d70} 
+wx\+String Design\+::\+Album\+Base\+Names}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Album"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Page"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Row"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Col"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}TextBox"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}TitlePage"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Stamp"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Font"{}}\ \}}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{_design_defs_8cpp_source_l00131}{131}} of file \mbox{\hyperlink{_design_defs_8cpp_source}{Design\+Defs.\+cpp}}.
+
+\Hypertarget{namespace_design_a4447a7e901e7f24d8eebe269e919c5ce}\index{Design@{Design}!AlbumImageSelection@{AlbumImageSelection}}
+\index{AlbumImageSelection@{AlbumImageSelection}!Design@{Design}}
+\doxysubsubsection{\texorpdfstring{AlbumImageSelection}{AlbumImageSelection}}
+{\footnotesize\ttfamily \label{namespace_design_a4447a7e901e7f24d8eebe269e919c5ce} 
+\mbox{\hyperlink{namespace_design_a7353efa232d45958ffd42229f3132b46}{Design\+::\+Icon\+ID}} Design\+::\+Album\+Image\+Selection}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \{}
+\DoxyCodeLine{\ \ \ \ \{\ \mbox{\hyperlink{namespace_design_a7353efa232d45958ffd42229f3132b46a6fd72e609911170c7718faf70577bb24}{Design::Icon\_Stamp}},\ \mbox{\hyperlink{namespace_design_a7353efa232d45958ffd42229f3132b46a629b003ba6db17ef84a735bfee33b627}{Design::Icon\_StampSelected}}\ \},\ }
+\DoxyCodeLine{\ \ \ \ \{\ \mbox{\hyperlink{namespace_design_a7353efa232d45958ffd42229f3132b46a6fd72e609911170c7718faf70577bb24}{Design::Icon\_Stamp}},\ \mbox{\hyperlink{namespace_design_a7353efa232d45958ffd42229f3132b46a629b003ba6db17ef84a735bfee33b627}{Design::Icon\_StampSelected}}\ \},\ }
+\DoxyCodeLine{\ \ \ \ \{\ \mbox{\hyperlink{namespace_design_a7353efa232d45958ffd42229f3132b46a614e8dd20d36b946e414639e927ac232}{Design::Icon\_StampBlock}},\ \mbox{\hyperlink{namespace_design_a7353efa232d45958ffd42229f3132b46acfac990ba19fa4a72c4245a9001b1e73}{Design::Icon\_StampBlockSelected}}\ \},\ }
+\DoxyCodeLine{\ \ \ \ \{\ \mbox{\hyperlink{namespace_design_a7353efa232d45958ffd42229f3132b46a7b5ffdf8b5d2c6d9207c9ddefaaceb96}{Design::Icon\_StampMiniSheet}},\ \mbox{\hyperlink{namespace_design_a7353efa232d45958ffd42229f3132b46a5708110f07bd6bbcad5fa7197eba0a9a}{Design::Icon\_StampMiniSheetSelected}}\ \},\ }
+\DoxyCodeLine{\ \ \ \ \{\ \mbox{\hyperlink{namespace_design_a7353efa232d45958ffd42229f3132b46a877f314a8e0b55de43f107e675cde760}{Design::Icon\_StampSouvenirSheet}},\ \mbox{\hyperlink{namespace_design_a7353efa232d45958ffd42229f3132b46a6307263ff0cbe19aac0404b226de243c}{Design::Icon\_StampSouvenirSheetSelected}}\ \},\ }
+\DoxyCodeLine{\ \ \ \ \{\ \mbox{\hyperlink{namespace_design_a7353efa232d45958ffd42229f3132b46a7b5ffdf8b5d2c6d9207c9ddefaaceb96}{Design::Icon\_StampMiniSheet}},\ \mbox{\hyperlink{namespace_design_a7353efa232d45958ffd42229f3132b46a5708110f07bd6bbcad5fa7197eba0a9a}{Design::Icon\_StampMiniSheetSelected}}\ \},\ }
+\DoxyCodeLine{\ \ \ \ \{\ \mbox{\hyperlink{namespace_design_a7353efa232d45958ffd42229f3132b46a7b5ffdf8b5d2c6d9207c9ddefaaceb96}{Design::Icon\_StampMiniSheet}},\ \mbox{\hyperlink{namespace_design_a7353efa232d45958ffd42229f3132b46a5708110f07bd6bbcad5fa7197eba0a9a}{Design::Icon\_StampMiniSheetSelected}}\ \}\ \}}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{_icon_defs_8cpp_source_l00049}{49}} of file \mbox{\hyperlink{_icon_defs_8cpp_source}{Icon\+Defs.\+cpp}}.
+
+\Hypertarget{namespace_design_aa688e51eed6c13e36e48175b175073ad}\index{Design@{Design}!AttrNameStrings@{AttrNameStrings}}
+\index{AttrNameStrings@{AttrNameStrings}!Design@{Design}}
+\doxysubsubsection{\texorpdfstring{AttrNameStrings}{AttrNameStrings}}
+{\footnotesize\ttfamily \label{namespace_design_aa688e51eed6c13e36e48175b175073ad} 
+wx\+String Design\+::\+Attr\+Name\+Strings}
+
+
+
+Definition at line \mbox{\hyperlink{_design_defs_8cpp_source_l00061}{61}} of file \mbox{\hyperlink{_design_defs_8cpp_source}{Design\+Defs.\+cpp}}.
+
+\Hypertarget{namespace_design_aed670ca9e577e28fc8a996f3fb109e42}\index{Design@{Design}!BorderAllowancePercent@{BorderAllowancePercent}}
+\index{BorderAllowancePercent@{BorderAllowancePercent}!Design@{Design}}
+\doxysubsubsection{\texorpdfstring{BorderAllowancePercent}{BorderAllowancePercent}}
+{\footnotesize\ttfamily \label{namespace_design_aed670ca9e577e28fc8a996f3fb109e42} 
+const double Design\+::\+Border\+Allowance\+Percent = .\+1}
+
+
+
+Definition at line \mbox{\hyperlink{_stamp_8cpp_source_l00053}{53}} of file \mbox{\hyperlink{_stamp_8cpp_source}{Stamp.\+cpp}}.
+
+\Hypertarget{namespace_design_aa4885175772a49d51fef791c56297455}\index{Design@{Design}!DefaultPointSize@{DefaultPointSize}}
+\index{DefaultPointSize@{DefaultPointSize}!Design@{Design}}
+\doxysubsubsection{\texorpdfstring{DefaultPointSize}{DefaultPointSize}}
+{\footnotesize\ttfamily \label{namespace_design_aa4885175772a49d51fef791c56297455} 
+int Design\+::\+Default\+Point\+Size = \{ 12, 10, 10, 10, 8 \}}
+
+
+
+Definition at line \mbox{\hyperlink{_design_defs_8cpp_source_l00143}{143}} of file \mbox{\hyperlink{_design_defs_8cpp_source}{Design\+Defs.\+cpp}}.
+
+\Hypertarget{namespace_design_a5633022d39c0aebfb61c328332990d78}\index{Design@{Design}!FontUsageTypeStrings@{FontUsageTypeStrings}}
+\index{FontUsageTypeStrings@{FontUsageTypeStrings}!Design@{Design}}
+\doxysubsubsection{\texorpdfstring{FontUsageTypeStrings}{FontUsageTypeStrings}}
+{\footnotesize\ttfamily \label{namespace_design_a5633022d39c0aebfb61c328332990d78} 
+wx\+String Design\+::\+Font\+Usage\+Type\+Strings}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Title"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}SubTitle"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Name"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Text"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}CatNbr"{}}}
+\DoxyCodeLine{\ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{_design_defs_8cpp_source_l00147}{147}} of file \mbox{\hyperlink{_design_defs_8cpp_source}{Design\+Defs.\+cpp}}.
+
+\Hypertarget{namespace_design_ae62cafcd995091376efd26ca44bdfb12}\index{Design@{Design}!ImagePercentOfActual@{ImagePercentOfActual}}
+\index{ImagePercentOfActual@{ImagePercentOfActual}!Design@{Design}}
+\doxysubsubsection{\texorpdfstring{ImagePercentOfActual}{ImagePercentOfActual}}
+{\footnotesize\ttfamily \label{namespace_design_ae62cafcd995091376efd26ca44bdfb12} 
+const double Design\+::\+Image\+Percent\+Of\+Actual = .\+75}
+
+
+
+Definition at line \mbox{\hyperlink{_stamp_8cpp_source_l00054}{54}} of file \mbox{\hyperlink{_stamp_8cpp_source}{Stamp.\+cpp}}.
+
+\Hypertarget{namespace_design_a22874362385d0bd60077262a6cbbf931}\index{Design@{Design}!LayoutTypeStrings@{LayoutTypeStrings}}
+\index{LayoutTypeStrings@{LayoutTypeStrings}!Design@{Design}}
+\doxysubsubsection{\texorpdfstring{LayoutTypeStrings}{LayoutTypeStrings}}
+{\footnotesize\ttfamily \label{namespace_design_a22874362385d0bd60077262a6cbbf931} 
+wx\+String Design\+::\+Layout\+Type\+Strings = \{ "{}Page"{}, "{}Frame"{}, "{}Stamp"{}, "{}Text"{} \}}
+
+
+
+Definition at line \mbox{\hyperlink{_design_defs_8cpp_source_l00120}{120}} of file \mbox{\hyperlink{_design_defs_8cpp_source}{Design\+Defs.\+cpp}}.
+
+\Hypertarget{namespace_design_a68f016e4c7c4fd45c002d095153930eb}\index{Design@{Design}!OrientationStrings@{OrientationStrings}}
+\index{OrientationStrings@{OrientationStrings}!Design@{Design}}
+\doxysubsubsection{\texorpdfstring{OrientationStrings}{OrientationStrings}}
+{\footnotesize\ttfamily \label{namespace_design_a68f016e4c7c4fd45c002d095153930eb} 
+wx\+String Design\+::\+Orientation\+Strings = \{ "{}Portrait"{}, "{}Landscape"{} \}}
+
+
+
+Definition at line \mbox{\hyperlink{_design_defs_8cpp_source_l00116}{116}} of file \mbox{\hyperlink{_design_defs_8cpp_source}{Design\+Defs.\+cpp}}.
+
+\Hypertarget{namespace_design_a352c26b74797bf2adf2f67ff9b212e06}\index{Design@{Design}!PPMM@{PPMM}}
+\index{PPMM@{PPMM}!Design@{Design}}
+\doxysubsubsection{\texorpdfstring{PPMM}{PPMM}}
+{\footnotesize\ttfamily \label{namespace_design_a352c26b74797bf2adf2f67ff9b212e06} 
+wx\+Real\+Point Design\+::\+PPMM}
+
+
+
+Definition at line \mbox{\hyperlink{_design_defs_8cpp_source_l00057}{57}} of file \mbox{\hyperlink{_design_defs_8cpp_source}{Design\+Defs.\+cpp}}.
+
+\Hypertarget{namespace_design_a5531e44b6223563fc30a7774c9352d9a}\index{Design@{Design}!StampAlignmentModeStrings@{StampAlignmentModeStrings}}
+\index{StampAlignmentModeStrings@{StampAlignmentModeStrings}!Design@{Design}}
+\doxysubsubsection{\texorpdfstring{StampAlignmentModeStrings}{StampAlignmentModeStrings}}
+{\footnotesize\ttfamily \label{namespace_design_a5531e44b6223563fc30a7774c9352d9a} 
+wx\+String Design\+::\+Stamp\+Alignment\+Mode\+Strings}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Top"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Middle"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Bottom"{}}}
+\DoxyCodeLine{\ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{_design_defs_8cpp_source_l00164}{164}} of file \mbox{\hyperlink{_design_defs_8cpp_source}{Design\+Defs.\+cpp}}.
+
+\Hypertarget{namespace_design_a04ebd7d62b02f5ae629ebdb6639b51b7}\index{Design@{Design}!StampNamePositionStrings@{StampNamePositionStrings}}
+\index{StampNamePositionStrings@{StampNamePositionStrings}!Design@{Design}}
+\doxysubsubsection{\texorpdfstring{StampNamePositionStrings}{StampNamePositionStrings}}
+{\footnotesize\ttfamily \label{namespace_design_a04ebd7d62b02f5ae629ebdb6639b51b7} 
+wx\+String Design\+::\+Stamp\+Name\+Position\+Strings}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Top"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Bottom"{}}}
+\DoxyCodeLine{\ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{_design_defs_8cpp_source_l00157}{157}} of file \mbox{\hyperlink{_design_defs_8cpp_source}{Design\+Defs.\+cpp}}.
+

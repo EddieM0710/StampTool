@@ -1,0 +1,930 @@
+\doxysection{Page\+Details\+Panel Class Reference}
+\hypertarget{class_page_details_panel}{}\label{class_page_details_panel}\index{PageDetailsPanel@{PageDetailsPanel}}
+
+
+{\ttfamily \#include $<$Page\+Details\+Panel.\+h$>$}
+
+Inheritance diagram for Page\+Details\+Panel\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_page_details_panel}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{class_page_details_panel_a03992312f8ef3643cd536760a70b4249}{Page\+Details\+Panel\+Gui\+Defs}} \{ \newline
+\mbox{\hyperlink{class_page_details_panel_a03992312f8ef3643cd536760a70b4249a44e04e129c212d74f973e898fd48f954}{ID\+\_\+\+NOTEBOOKPOSITIONPANEL}} = ID\+\_\+\+PAGEDETAILSDIALOG + 1
+, \mbox{\hyperlink{class_page_details_panel_a03992312f8ef3643cd536760a70b4249a41d7897f8b8eb8b38e868c835987cfa0}{ID\+\_\+\+PAGENAMELABELEDTEXTBOX}}
+, \mbox{\hyperlink{class_page_details_panel_a03992312f8ef3643cd536760a70b4249af0f78dcaa45b1650cfbcc7b0fc32c68d}{ID\+\_\+\+SHOWTITLECHECKBOX}}
+, \mbox{\hyperlink{class_page_details_panel_a03992312f8ef3643cd536760a70b4249a93dac7d86fb867c5fc6e0886f2870b46}{ID\+\_\+\+SHOWSUBTITLECHECKBOX}}
+, \newline
+\mbox{\hyperlink{class_page_details_panel_a03992312f8ef3643cd536760a70b4249ac9e866c9f5fb8e449e6e3ce6307acff5}{ID\+\_\+\+SHOWFRAMECHECKBOX}}
+, \mbox{\hyperlink{class_page_details_panel_a03992312f8ef3643cd536760a70b4249a0c9a51e2dd854b0134c6170644a4b124}{ID\+\_\+\+ORIENTATIONCHOICE}}
+, \mbox{\hyperlink{class_page_details_panel_a03992312f8ef3643cd536760a70b4249a16f70577a0ba28b482884a8065338d13}{ID\+\_\+\+DEFAULTBUTTON}}
+, \mbox{\hyperlink{class_page_details_panel_a03992312f8ef3643cd536760a70b4249a2113dec0a23033eb183f27ed8e413095}{ID\+\_\+\+ERRORLISTCTRL}}
+, \newline
+\mbox{\hyperlink{class_page_details_panel_a03992312f8ef3643cd536760a70b4249a5da2a56979e76232f73a56ba4dfde254}{ID\+\_\+\+NOTEBOOK}}
+, \mbox{\hyperlink{class_page_details_panel_a03992312f8ef3643cd536760a70b4249a4d30d07c29970ab067e793b49d6e2883}{ID\+\_\+\+DETAILSPANEL}}
+, \mbox{\hyperlink{class_page_details_panel_a03992312f8ef3643cd536760a70b4249a84421c2fdd73e21fb13460bc79e57b4c}{ID\+\_\+\+TITLEDEFAULTBUTTON}}
+, \mbox{\hyperlink{class_page_details_panel_a03992312f8ef3643cd536760a70b4249a91bd2370c7f1964d8baf0626076249a0}{ID\+\_\+\+LAYOUTPANEL}}
+, \newline
+\mbox{\hyperlink{class_page_details_panel_a03992312f8ef3643cd536760a70b4249a34191d1dde0d8217e7d55f4fc6d027b1}{ID\+\_\+\+LAYOUTTEXTCTRL}}
+, \mbox{\hyperlink{class_page_details_panel_a03992312f8ef3643cd536760a70b4249adc890f88bb67a9aea0ad299557fb50a8}{ID\+\_\+\+POSITIONTEXTCTRL}}
+, \mbox{\hyperlink{class_page_details_panel_a03992312f8ef3643cd536760a70b4249a34bdb518823efeb98c1dba44b4de01e2}{ID\+\_\+\+NOTEBOOKDETAILSPANEL}}
+, \mbox{\hyperlink{class_page_details_panel_a03992312f8ef3643cd536760a70b4249a08afd8d852b1ee0ea06fd468742f91a6}{ID\+\_\+\+Last\+ID}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_page_details_panel_a05b3a09cdb0b82eb6ff8279e39731b9f}{Page\+Details\+Panel}} ()
+\item 
+\mbox{\hyperlink{class_page_details_panel_a9962752d911af29b6c0b3f26fa619232}{Page\+Details\+Panel}} (wx\+Window \texorpdfstring{$\ast$}{*}parent, wx\+Window\+ID id=\mbox{\hyperlink{_page_details_panel_8h_aeebb44be00e007de5d8c1dc522f2d8ce}{SYMBOL\+\_\+\+PAGEDETAILSPANEL\+\_\+\+IDNAME}}, const wx\+String \&caption=\mbox{\hyperlink{_page_details_panel_8h_aeef062cb925434f164efcb9170cbfe11}{SYMBOL\+\_\+\+PAGEDETAILSPANEL\+\_\+\+TITLE}}, const wx\+Point \&pos=\mbox{\hyperlink{_page_details_panel_8h_a8348df188bf76b4739cad451d4d8e18d}{SYMBOL\+\_\+\+PAGEDETAILSPANEL\+\_\+\+POSITION}}, const wx\+Size \&size=\mbox{\hyperlink{_page_details_panel_8h_a75ad385aeadafe36db4d4af9913db40d}{SYMBOL\+\_\+\+PAGEDETAILSPANEL\+\_\+\+SIZE}}, long style=\mbox{\hyperlink{_page_details_panel_8h_a5eb73eec26647573ff9c0e1543fdbe01}{SYMBOL\+\_\+\+PAGEDETAILSPANEL\+\_\+\+STYLE}})
+\item 
+bool \mbox{\hyperlink{class_page_details_panel_ab8d84a11036371dfd406dde5514df82f}{Create}} (wx\+Window \texorpdfstring{$\ast$}{*}parent, wx\+Window\+ID id=\mbox{\hyperlink{_page_details_panel_8h_aeebb44be00e007de5d8c1dc522f2d8ce}{SYMBOL\+\_\+\+PAGEDETAILSPANEL\+\_\+\+IDNAME}}, const wx\+String \&caption=\mbox{\hyperlink{_page_details_panel_8h_aeef062cb925434f164efcb9170cbfe11}{SYMBOL\+\_\+\+PAGEDETAILSPANEL\+\_\+\+TITLE}}, const wx\+Point \&pos=\mbox{\hyperlink{_page_details_panel_8h_a8348df188bf76b4739cad451d4d8e18d}{SYMBOL\+\_\+\+PAGEDETAILSPANEL\+\_\+\+POSITION}}, const wx\+Size \&size=\mbox{\hyperlink{_page_details_panel_8h_a75ad385aeadafe36db4d4af9913db40d}{SYMBOL\+\_\+\+PAGEDETAILSPANEL\+\_\+\+SIZE}}, long style=\mbox{\hyperlink{_page_details_panel_8h_a5eb73eec26647573ff9c0e1543fdbe01}{SYMBOL\+\_\+\+PAGEDETAILSPANEL\+\_\+\+STYLE}})
+\item 
+\mbox{\hyperlink{class_page_details_panel_a0d56ec7669090db4c31498dd7e9f2c45}{\texorpdfstring{$\sim$}{\string~}\+Page\+Details\+Panel}} ()
+\item 
+void \mbox{\hyperlink{class_page_details_panel_afa8d2eacf761392ad148163af5d2102c}{Init}} ()
+\item 
+void \mbox{\hyperlink{class_page_details_panel_a0bb4ce049498fc19e39270cace73191b}{Create\+Controls}} ()
+\item 
+void \mbox{\hyperlink{class_page_details_panel_ab705b2ccb69e333b707de29cafaeadd4}{Update\+Controls}} ()
+\item 
+void \mbox{\hyperlink{class_page_details_panel_afa9aa8e202c8f7d5d5cc651a7ff0cf83}{Setup\+Dialog}} (\mbox{\hyperlink{class_design_1_1_page}{Design\+::\+Page}} \texorpdfstring{$\ast$}{*}page)
+\item 
+void \mbox{\hyperlink{class_page_details_panel_aae725f2b9dc2f2b9047abd02f08881d5}{On\+Ok\+Click}} (wx\+Command\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_page_details_panel_ab8a56b2fb67496c88fcbd0f6f4192cff}{Set\+Name\+Modified}} (bool state)
+\item 
+bool \mbox{\hyperlink{class_page_details_panel_aae8621e926603a3dfaf0edd8c5e953c0}{Is\+Name\+Modified}} ()
+\item 
+void \mbox{\hyperlink{class_page_details_panel_a993e4c8c794ab090375c0163a1f8b4a6}{Set\+Title}} (wx\+String name)
+\item 
+wx\+String \mbox{\hyperlink{class_page_details_panel_a09965e707da01fa2a30330188b47ef6b}{Get\+Title}} ()
+\item 
+void \mbox{\hyperlink{class_page_details_panel_ad97bc5b042707a65146d4d6a09b4e3e2}{Set\+Sub\+Title}} (wx\+String sub\+Title)
+\item 
+wx\+String \mbox{\hyperlink{class_page_details_panel_a085d1c27b380594f314a84659f3f7b1a}{Get\+Sub\+Title}} ()
+\item 
+void \mbox{\hyperlink{class_page_details_panel_aca6780301076829b1037fc708659371a}{Set\+Show\+Title}} (bool state=false)
+\item 
+void \mbox{\hyperlink{class_page_details_panel_acae19a19f5ef7797461c878605e412a4}{Set\+Show\+Sub\+Title}} (bool state=false)
+\item 
+void \mbox{\hyperlink{class_page_details_panel_a0b3edb273ad8a9bc33fa1a62d269a4d8}{Set\+Show\+Border}} (bool state)
+\item 
+void \mbox{\hyperlink{class_page_details_panel_a27c70aef44f44b265f1ed9cf9204c979}{Set\+Show}} (bool state=false)
+\item 
+void \mbox{\hyperlink{class_page_details_panel_aff602a955b65c9a51d17979bfbe259ff}{Set\+Title\+Color}} (wx\+Colour color)
+\item 
+void \mbox{\hyperlink{class_page_details_panel_ae95e3257f6628d97ba81f2bfe1a8633f}{Set\+Title\+Font}} (wx\+Font font)
+\item 
+void \mbox{\hyperlink{class_page_details_panel_aea95b4bfa8e747395d93b4c121c197ca}{Set\+Sub\+Title\+Color}} (wx\+Colour color)
+\item 
+void \mbox{\hyperlink{class_page_details_panel_a36aeb4e59eecdc6bb23c3a8423b59236}{Set\+Sub\+Title\+Font}} (wx\+Font font)
+\item 
+void \mbox{\hyperlink{class_page_details_panel_adf5632cc69eb99c5139bd8db1de14108}{Set\+Top\+Page\+Margin}} (wx\+String str)
+\item 
+void \mbox{\hyperlink{class_page_details_panel_aae79dd26c135158b05a04ef40742d08e}{Set\+Bottom\+Page\+Margin}} (wx\+String str)
+\item 
+void \mbox{\hyperlink{class_page_details_panel_af81bbb4cb7e4924fd1f0d80e163ba720}{Set\+Left\+Page\+Margin}} (wx\+String str)
+\item 
+void \mbox{\hyperlink{class_page_details_panel_a8cc3301f43a637d406fe4468f02ec559}{Set\+Right\+Page\+Margin}} (wx\+String str)
+\item 
+bool \mbox{\hyperlink{class_page_details_panel_a83c3c23e68ad14c4e17983c06ccc29d7}{Get\+Show\+Title}} ()
+\item 
+bool \mbox{\hyperlink{class_page_details_panel_a9f710b7e505e6d894f28edeb5f22c00c}{Get\+Show\+Sub\+Title}} ()
+\item 
+bool \mbox{\hyperlink{class_page_details_panel_aaec3aa5980b3a8cc6eb6c5878195f907}{Get\+Show}} ()
+\item 
+void \mbox{\hyperlink{class_page_details_panel_a6ab8aa4a4ece74462226223c3304ee7d}{On\+Orientationchoice\+Selected}} (wx\+Command\+Event \&event)
+\item 
+wx\+String \mbox{\hyperlink{class_page_details_panel_a44ecc84a6ceb474f7410c7ca5ed47ed3}{Get\+Orientation}} ()
+\item 
+void \mbox{\hyperlink{class_page_details_panel_a1a98674479c14f7a7077274ad48ce729}{Set\+Orientation}} (wx\+String sel)
+\item 
+void \mbox{\hyperlink{class_page_details_panel_aba19826290d18a099178bdf81707de4a}{On\+Sub\+Title\+Default\+Click}} (wx\+Command\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_page_details_panel_a440293010a0bba4d7b7371d7610a9469}{On\+Title\+Checkbox\+Click}} (wx\+Command\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_page_details_panel_abb456a95f884c91003b7c31cd3ee967e}{On\+Sub\+Title\+Checkbox\+Click}} (wx\+Command\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_page_details_panel_ab7ef1e8d931fb719432f206482512fd3}{On\+Title\+Default\+Click}} (wx\+Command\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_page_details_panel_a5e14a3da1c2a133c50d143e5cf784cac}{On\+Title\+Text\+Changed}} (wx\+Command\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_page_details_panel_a0f12d3e2a35ffdc2895044c748d63756}{On\+Sub\+Title\+Text\+Changed}} (wx\+Command\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_page_details_panel_a9244996a0c38d6033cc2d100a7e7169c}{On\+Title\+Font\+Picker}} (wx\+Font\+Picker\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_page_details_panel_a1dc6f6f145e264bdf5b4b8e7296c8253}{On\+Title\+Color\+Picker}} (wx\+Colour\+Picker\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_page_details_panel_a97df557fcf2e5e080226989256e89e49}{On\+Sub\+Title\+Font\+Picker}} (wx\+Font\+Picker\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_page_details_panel_a8e324f1e39ac4f36ee78e288696f0c7a}{On\+Sub\+Title\+Color\+Picker}} (wx\+Colour\+Picker\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_page_details_panel_a75e235742b4c9e7746abef3150e5929e}{On\+Top\+Page\+Margin}} (wx\+Command\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_page_details_panel_abced555123d5fd99a2f5449787e62d6c}{On\+Bottom\+Page\+Margin}} (wx\+Command\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_page_details_panel_a1ac6019886c68da56a8044401836d22a}{On\+Left\+Page\+Margin}} (wx\+Command\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_page_details_panel_a309cbabe8d7556ee1e289e1fc69dc782}{On\+Right\+Page\+Margin}} (wx\+Command\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_page_details_panel_a4d4187415d7a3b1cc99a8045c1c7a7d9}{On\+Top\+Content\+Margin}} (wx\+Command\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_page_details_panel_a184afa36a383914522ff25bdd3bd1f96}{On\+Bottom\+Content\+Margin}} (wx\+Command\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_page_details_panel_af1ee7f034c8fbe23ff0fb24dca62084c}{On\+Left\+Content\+Margin}} (wx\+Command\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_page_details_panel_a090b6bda53fac0b0b1c1af9c93df086c}{On\+Right\+Content\+Margin}} (wx\+Command\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_page_details_panel_a42b3cecbc99bb0c1ad9e062f2134d307}{On\+Show\+Border\+Check\+Box\+Click}} (wx\+Command\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_page_details_panel_a581de127b24b9f90dae21114739720db}{Set\+Top\+Content\+Margin}} (wx\+String content\+Margin)
+\item 
+void \mbox{\hyperlink{class_page_details_panel_acd7eb858abb9b89a9eaa73b2ae18aaa3}{Set\+Bottom\+Content\+Margin}} (wx\+String content\+Margin)
+\item 
+void \mbox{\hyperlink{class_page_details_panel_ae616c220099eddc10a63ad254e6a0981}{Set\+Left\+Content\+Margin}} (wx\+String content\+Margin)
+\item 
+void \mbox{\hyperlink{class_page_details_panel_a3cbc87919c3d5b9ac403ec699feab472}{Set\+Right\+Content\+Margin}} (wx\+String content\+Margin)
+\item 
+void \mbox{\hyperlink{class_page_details_panel_a76976cc8a222619f5eee5da7bdc479ac}{Set\+Status\+List}} ()
+\item 
+void \mbox{\hyperlink{class_page_details_panel_a89cc1bf7932ffb1054ba9cbbe5a12cbc}{On\+Border\+Size}} (wx\+Command\+Event \&event)
+\item 
+wx\+String \mbox{\hyperlink{class_page_details_panel_ac29affb2e4f63d85dee319d3b627ba68}{Get\+Border\+Size}} ()
+\item 
+void \mbox{\hyperlink{class_page_details_panel_a79efbfe53fdda5055f9c68798d60f465}{Set\+Border\+Size}} (wx\+String size)
+\item 
+void \mbox{\hyperlink{class_page_details_panel_a30786c49f90d85abcf9f8493a56590a1}{Update}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_helper_panel}{Helper\+Panel}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_helper_panel_a1a0380f0351c504df04ccd0924c72e18}{Helper\+Panel}} ()
+\item 
+\mbox{\hyperlink{class_helper_panel_a709e26a2b2b12b98c4b689b87cd4a169}{Helper\+Panel}} (wx\+Window \texorpdfstring{$\ast$}{*}parent, wx\+Window\+ID id=\mbox{\hyperlink{_helper_panel_8h_a43ef01d6303731cc166949270842b4d7}{SYMBOL\+\_\+\+HELPERPANEL\+\_\+\+IDNAME}}, const wx\+String \&caption=\mbox{\hyperlink{_helper_panel_8h_a275f45e4abf505d4c167b95b1782e8b2}{SYMBOL\+\_\+\+HELPERPANEL\+\_\+\+TITLE}}, const wx\+Point \&pos=\mbox{\hyperlink{_helper_panel_8h_ad0f2b83a41d1b39a2acbd31d28e7ffd3}{SYMBOL\+\_\+\+HELPERPANEL\+\_\+\+POSITION}}, const wx\+Size \&size=\mbox{\hyperlink{_helper_panel_8h_a5d91705fcb0aab6893c9748c1c23e631}{SYMBOL\+\_\+\+HELPERPANEL\+\_\+\+SIZE}}, long style=\mbox{\hyperlink{_helper_panel_8h_afb122ebc3d5dd65dfa6e31a66a09468a}{SYMBOL\+\_\+\+HELPERPANEL\+\_\+\+STYLE}})
+\item 
+\mbox{\hyperlink{class_helper_panel_aa1048ceba004a9d78dd3dfdfd7235d30}{\texorpdfstring{$\sim$}{\string~}\+Helper\+Panel}} ()
+\item 
+bool \mbox{\hyperlink{class_helper_panel_ac472c619263683e2623f52fefe4f5429}{Create}} (wx\+Window \texorpdfstring{$\ast$}{*}parent, wx\+Window\+ID id=\mbox{\hyperlink{_helper_panel_8h_a43ef01d6303731cc166949270842b4d7}{SYMBOL\+\_\+\+HELPERPANEL\+\_\+\+IDNAME}}, const wx\+String \&caption=\mbox{\hyperlink{_helper_panel_8h_a275f45e4abf505d4c167b95b1782e8b2}{SYMBOL\+\_\+\+HELPERPANEL\+\_\+\+TITLE}}, const wx\+Point \&pos=\mbox{\hyperlink{_helper_panel_8h_ad0f2b83a41d1b39a2acbd31d28e7ffd3}{SYMBOL\+\_\+\+HELPERPANEL\+\_\+\+POSITION}}, const wx\+Size \&size=\mbox{\hyperlink{_helper_panel_8h_a5d91705fcb0aab6893c9748c1c23e631}{SYMBOL\+\_\+\+HELPERPANEL\+\_\+\+SIZE}}, long style=\mbox{\hyperlink{_helper_panel_8h_afb122ebc3d5dd65dfa6e31a66a09468a}{SYMBOL\+\_\+\+HELPERPANEL\+\_\+\+STYLE}})
+\item 
+void \mbox{\hyperlink{class_helper_panel_affb4be8df264e76bb3a7d672c2ca79b1}{Create\+Controls}} ()
+\item 
+void \mbox{\hyperlink{class_helper_panel_a01583cec05afb087892fee8f5f660635}{Init}} ()
+\item 
+wx\+Static\+Box \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_helper_panel_a06667439fcca3f8a4b0fab10db82506e}{Setup\+Box\+Sizer}} (wx\+Window \texorpdfstring{$\ast$}{*}parent, wx\+Box\+Sizer \texorpdfstring{$\ast$}{*}in\+Sizer, wx\+String name, int \&last\+ID, wx\+Box\+Sizer \texorpdfstring{$\ast$}{*}\&box\+Sizer, wx\+Orientation orientation)
+\item 
+wx\+Check\+Box \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_helper_panel_a1b4758d163544a7a2c73a37f8bd6d422}{Setup\+Check\+Box}} (wx\+Window \texorpdfstring{$\ast$}{*}parent, wx\+Box\+Sizer \texorpdfstring{$\ast$}{*}sizer, int \&last\+ID, wx\+String label, wx\+Object\+Event\+Function event\+Handler)
+\item 
+wx\+Check\+List\+Box \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_helper_panel_a61eec7f5e1bd6d2bb0d9a12a6d31c91c}{Setup\+Check\+List\+Box}} (wx\+Window \texorpdfstring{$\ast$}{*}parent, wx\+Box\+Sizer \texorpdfstring{$\ast$}{*}in\+Sizer, int \&last\+ID, wx\+String label, wx\+Array\+String \&array, wx\+Object\+Event\+Function all\+Button\+Event\+Handler, wx\+Object\+Event\+Function clear\+Button\+Event\+Handler)
+\item 
+wx\+Choice \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_helper_panel_adeabf7f045a9b29dfe04ea9e25361682}{Setup\+Choice}} (wx\+Window \texorpdfstring{$\ast$}{*}parent, wx\+Box\+Sizer \texorpdfstring{$\ast$}{*}sizer, int \&last\+ID, wx\+String label, wx\+Array\+String choice\+Strings, wx\+Object\+Event\+Function event\+Handler)
+\item 
+\mbox{\hyperlink{class_font_picker}{Font\+Picker}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_helper_panel_ac79099a8adb61042c70b2aaa474b6491}{Setup\+Font\+Picker}} (wx\+Window \texorpdfstring{$\ast$}{*}parent, wx\+Box\+Sizer \texorpdfstring{$\ast$}{*}vertical\+Sizer, int \&last\+ID, wx\+String static\+Text, wx\+String button\+Text, wx\+Font\+Picker\+Ctrl \texorpdfstring{$\ast$}{*}\&font\+Ctrl, wx\+Colour\+Picker\+Ctrl \texorpdfstring{$\ast$}{*}\&color\+Ctrl, wx\+Object\+Event\+Function font\+Picker, wx\+Object\+Event\+Function color\+Picker, wx\+Object\+Event\+Function default\+Button\+Handler)
+\item 
+wx\+Text\+Ctrl \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_helper_panel_acdac2c77789965bc2e300f50c66f7f11}{Setup\+Label\+Text}} (wx\+Window \texorpdfstring{$\ast$}{*}parent, wx\+Box\+Sizer \texorpdfstring{$\ast$}{*}vertical\+Sizer, int \&last\+ID, wx\+String label, bool grow, wx\+Object\+Event\+Function event\+Handler)
+\item 
+wx\+Text\+Ctrl \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_helper_panel_a5df2fc90855ddcb14834784daa120249}{Setup\+Multiline\+Labeled\+Text}} (wx\+Window \texorpdfstring{$\ast$}{*}parent, wx\+Box\+Sizer \texorpdfstring{$\ast$}{*}in\+Sizer, int \&last\+ID, wx\+String label, bool grow, wx\+Object\+Event\+Function event\+Handler)
+\item 
+wx\+Radio\+Button \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_helper_panel_a7b5279a0f4b91c9f19fbd088edceada3}{Setup\+Radio\+Button}} (wx\+Window \texorpdfstring{$\ast$}{*}parent, wx\+Box\+Sizer \texorpdfstring{$\ast$}{*}sizer, int \&last\+ID, wx\+String label, bool init\+Value, wx\+Object\+Event\+Function event\+Handler)
+\item 
+\mbox{\hyperlink{struct_helper_panel_1_1_title_helper}{Title\+Helper}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_helper_panel_a11bffa5d90019ee00eaff4edf86832a2}{Setup\+Title\+Helper}} (wx\+Window \texorpdfstring{$\ast$}{*}parent, wx\+Box\+Sizer \texorpdfstring{$\ast$}{*}vertical\+Sizer, int \&id\+Last, int style=\mbox{\hyperlink{_helper_panel_8h_a5b55945efe6cc32320681102c8343296}{Default\+Title\+Helper\+Style}}, wx\+Object\+Event\+Function title\+Check\+Box\+Event\+Handler=(wx\+Event\+Function) 0, wx\+Object\+Event\+Function title\+Event\+Handler=(wx\+Event\+Function) 0, wx\+Object\+Event\+Function sub\+Title\+Check\+Box\+Eevent\+Handler=(wx\+Event\+Function) 0, wx\+Object\+Event\+Function sub\+Title\+Event\+Handler=(wx\+Event\+Function) 0)
+\item 
+void \mbox{\hyperlink{class_helper_panel_a106781fc496e192caeb765add7bd8a30}{Update\+Sub\+Title\+State}} (\mbox{\hyperlink{struct_helper_panel_1_1_title_helper}{Helper\+Panel\+::\+Title\+Helper}} \texorpdfstring{$\ast$}{*}title\+Helper)
+\item 
+void \mbox{\hyperlink{class_helper_panel_a97f0816a8c7870a3ce034f07f58e16fa}{Update\+Title\+State}} (\mbox{\hyperlink{struct_helper_panel_1_1_title_helper}{Helper\+Panel\+::\+Title\+Helper}} \texorpdfstring{$\ast$}{*}title\+Helper)
+\item 
+void \mbox{\hyperlink{class_helper_panel_aeb681ca7182038b57f0c604e06c86b19}{Set\+Sub\+Title\+Checkbox\+Value}} (\mbox{\hyperlink{struct_helper_panel_1_1_title_helper}{Helper\+Panel\+::\+Title\+Helper}} \texorpdfstring{$\ast$}{*}title\+Helper, bool state)
+\item 
+void \mbox{\hyperlink{class_helper_panel_a52772322bcf8d12a272fa8096da0e799}{Set\+Title\+Checkbox\+Value}} (\mbox{\hyperlink{struct_helper_panel_1_1_title_helper}{Helper\+Panel\+::\+Title\+Helper}} \texorpdfstring{$\ast$}{*}title\+Helper, bool state)
+\item 
+wx\+Static\+Box \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_helper_panel_a12058e5b1f127f47cef7d15b9f4d7039}{Setup\+Static\+Box}} (wx\+Window \texorpdfstring{$\ast$}{*}parent, wx\+Box\+Sizer \texorpdfstring{$\ast$}{*}in\+Sizer, wx\+Box\+Sizer \texorpdfstring{$\ast$}{*}out\+Box\+Sizer)
+\item 
+void \mbox{\hyperlink{class_helper_panel_ad1e7b95d260c42031c75899e0c68cd7c}{Horizontal\+Spacer}} (wx\+Box\+Sizer \texorpdfstring{$\ast$}{*}in\+Sizer)
+\item 
+void \mbox{\hyperlink{class_helper_panel_abb81bec04632873569caa34eff4ed4f0}{Vertical\+Spacer}} (wx\+Box\+Sizer \texorpdfstring{$\ast$}{*}in\+Sizer)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static bool \mbox{\hyperlink{class_page_details_panel_a8715b094307325cf8d13d9f762fda01f}{Show\+Tool\+Tips}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_page_details_panel_8h_source_l00064}{64}} of file \mbox{\hyperlink{_page_details_panel_8h_source}{Page\+Details\+Panel.\+h}}.
+
+
+
+\label{doc-enum-members}
+\Hypertarget{class_page_details_panel_doc-enum-members}
+\doxysubsection{Member Enumeration Documentation}
+\Hypertarget{class_page_details_panel_a03992312f8ef3643cd536760a70b4249}\index{PageDetailsPanel@{PageDetailsPanel}!PageDetailsPanelGuiDefs@{PageDetailsPanelGuiDefs}}
+\index{PageDetailsPanelGuiDefs@{PageDetailsPanelGuiDefs}!PageDetailsPanel@{PageDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{PageDetailsPanelGuiDefs}{PageDetailsPanelGuiDefs}}
+{\footnotesize\ttfamily \label{class_page_details_panel_a03992312f8ef3643cd536760a70b4249} 
+enum \mbox{\hyperlink{class_page_details_panel_a03992312f8ef3643cd536760a70b4249}{Page\+Details\+Panel\+::\+Page\+Details\+Panel\+Gui\+Defs}}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_NOTEBOOKPOSITIONPANEL@{ID\_NOTEBOOKPOSITIONPANEL}!PageDetailsPanel@{PageDetailsPanel}}\index{PageDetailsPanel@{PageDetailsPanel}!ID\_NOTEBOOKPOSITIONPANEL@{ID\_NOTEBOOKPOSITIONPANEL}}}\Hypertarget{class_page_details_panel_a03992312f8ef3643cd536760a70b4249a44e04e129c212d74f973e898fd48f954}\label{class_page_details_panel_a03992312f8ef3643cd536760a70b4249a44e04e129c212d74f973e898fd48f954} 
+ID\+\_\+\+NOTEBOOKPOSITIONPANEL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_PAGENAMELABELEDTEXTBOX@{ID\_PAGENAMELABELEDTEXTBOX}!PageDetailsPanel@{PageDetailsPanel}}\index{PageDetailsPanel@{PageDetailsPanel}!ID\_PAGENAMELABELEDTEXTBOX@{ID\_PAGENAMELABELEDTEXTBOX}}}\Hypertarget{class_page_details_panel_a03992312f8ef3643cd536760a70b4249a41d7897f8b8eb8b38e868c835987cfa0}\label{class_page_details_panel_a03992312f8ef3643cd536760a70b4249a41d7897f8b8eb8b38e868c835987cfa0} 
+ID\+\_\+\+PAGENAMELABELEDTEXTBOX&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_SHOWTITLECHECKBOX@{ID\_SHOWTITLECHECKBOX}!PageDetailsPanel@{PageDetailsPanel}}\index{PageDetailsPanel@{PageDetailsPanel}!ID\_SHOWTITLECHECKBOX@{ID\_SHOWTITLECHECKBOX}}}\Hypertarget{class_page_details_panel_a03992312f8ef3643cd536760a70b4249af0f78dcaa45b1650cfbcc7b0fc32c68d}\label{class_page_details_panel_a03992312f8ef3643cd536760a70b4249af0f78dcaa45b1650cfbcc7b0fc32c68d} 
+ID\+\_\+\+SHOWTITLECHECKBOX&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_SHOWSUBTITLECHECKBOX@{ID\_SHOWSUBTITLECHECKBOX}!PageDetailsPanel@{PageDetailsPanel}}\index{PageDetailsPanel@{PageDetailsPanel}!ID\_SHOWSUBTITLECHECKBOX@{ID\_SHOWSUBTITLECHECKBOX}}}\Hypertarget{class_page_details_panel_a03992312f8ef3643cd536760a70b4249a93dac7d86fb867c5fc6e0886f2870b46}\label{class_page_details_panel_a03992312f8ef3643cd536760a70b4249a93dac7d86fb867c5fc6e0886f2870b46} 
+ID\+\_\+\+SHOWSUBTITLECHECKBOX&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_SHOWFRAMECHECKBOX@{ID\_SHOWFRAMECHECKBOX}!PageDetailsPanel@{PageDetailsPanel}}\index{PageDetailsPanel@{PageDetailsPanel}!ID\_SHOWFRAMECHECKBOX@{ID\_SHOWFRAMECHECKBOX}}}\Hypertarget{class_page_details_panel_a03992312f8ef3643cd536760a70b4249ac9e866c9f5fb8e449e6e3ce6307acff5}\label{class_page_details_panel_a03992312f8ef3643cd536760a70b4249ac9e866c9f5fb8e449e6e3ce6307acff5} 
+ID\+\_\+\+SHOWFRAMECHECKBOX&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_ORIENTATIONCHOICE@{ID\_ORIENTATIONCHOICE}!PageDetailsPanel@{PageDetailsPanel}}\index{PageDetailsPanel@{PageDetailsPanel}!ID\_ORIENTATIONCHOICE@{ID\_ORIENTATIONCHOICE}}}\Hypertarget{class_page_details_panel_a03992312f8ef3643cd536760a70b4249a0c9a51e2dd854b0134c6170644a4b124}\label{class_page_details_panel_a03992312f8ef3643cd536760a70b4249a0c9a51e2dd854b0134c6170644a4b124} 
+ID\+\_\+\+ORIENTATIONCHOICE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_DEFAULTBUTTON@{ID\_DEFAULTBUTTON}!PageDetailsPanel@{PageDetailsPanel}}\index{PageDetailsPanel@{PageDetailsPanel}!ID\_DEFAULTBUTTON@{ID\_DEFAULTBUTTON}}}\Hypertarget{class_page_details_panel_a03992312f8ef3643cd536760a70b4249a16f70577a0ba28b482884a8065338d13}\label{class_page_details_panel_a03992312f8ef3643cd536760a70b4249a16f70577a0ba28b482884a8065338d13} 
+ID\+\_\+\+DEFAULTBUTTON&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_ERRORLISTCTRL@{ID\_ERRORLISTCTRL}!PageDetailsPanel@{PageDetailsPanel}}\index{PageDetailsPanel@{PageDetailsPanel}!ID\_ERRORLISTCTRL@{ID\_ERRORLISTCTRL}}}\Hypertarget{class_page_details_panel_a03992312f8ef3643cd536760a70b4249a2113dec0a23033eb183f27ed8e413095}\label{class_page_details_panel_a03992312f8ef3643cd536760a70b4249a2113dec0a23033eb183f27ed8e413095} 
+ID\+\_\+\+ERRORLISTCTRL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_NOTEBOOK@{ID\_NOTEBOOK}!PageDetailsPanel@{PageDetailsPanel}}\index{PageDetailsPanel@{PageDetailsPanel}!ID\_NOTEBOOK@{ID\_NOTEBOOK}}}\Hypertarget{class_page_details_panel_a03992312f8ef3643cd536760a70b4249a5da2a56979e76232f73a56ba4dfde254}\label{class_page_details_panel_a03992312f8ef3643cd536760a70b4249a5da2a56979e76232f73a56ba4dfde254} 
+ID\+\_\+\+NOTEBOOK&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_DETAILSPANEL@{ID\_DETAILSPANEL}!PageDetailsPanel@{PageDetailsPanel}}\index{PageDetailsPanel@{PageDetailsPanel}!ID\_DETAILSPANEL@{ID\_DETAILSPANEL}}}\Hypertarget{class_page_details_panel_a03992312f8ef3643cd536760a70b4249a4d30d07c29970ab067e793b49d6e2883}\label{class_page_details_panel_a03992312f8ef3643cd536760a70b4249a4d30d07c29970ab067e793b49d6e2883} 
+ID\+\_\+\+DETAILSPANEL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_TITLEDEFAULTBUTTON@{ID\_TITLEDEFAULTBUTTON}!PageDetailsPanel@{PageDetailsPanel}}\index{PageDetailsPanel@{PageDetailsPanel}!ID\_TITLEDEFAULTBUTTON@{ID\_TITLEDEFAULTBUTTON}}}\Hypertarget{class_page_details_panel_a03992312f8ef3643cd536760a70b4249a84421c2fdd73e21fb13460bc79e57b4c}\label{class_page_details_panel_a03992312f8ef3643cd536760a70b4249a84421c2fdd73e21fb13460bc79e57b4c} 
+ID\+\_\+\+TITLEDEFAULTBUTTON&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_LAYOUTPANEL@{ID\_LAYOUTPANEL}!PageDetailsPanel@{PageDetailsPanel}}\index{PageDetailsPanel@{PageDetailsPanel}!ID\_LAYOUTPANEL@{ID\_LAYOUTPANEL}}}\Hypertarget{class_page_details_panel_a03992312f8ef3643cd536760a70b4249a91bd2370c7f1964d8baf0626076249a0}\label{class_page_details_panel_a03992312f8ef3643cd536760a70b4249a91bd2370c7f1964d8baf0626076249a0} 
+ID\+\_\+\+LAYOUTPANEL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_LAYOUTTEXTCTRL@{ID\_LAYOUTTEXTCTRL}!PageDetailsPanel@{PageDetailsPanel}}\index{PageDetailsPanel@{PageDetailsPanel}!ID\_LAYOUTTEXTCTRL@{ID\_LAYOUTTEXTCTRL}}}\Hypertarget{class_page_details_panel_a03992312f8ef3643cd536760a70b4249a34191d1dde0d8217e7d55f4fc6d027b1}\label{class_page_details_panel_a03992312f8ef3643cd536760a70b4249a34191d1dde0d8217e7d55f4fc6d027b1} 
+ID\+\_\+\+LAYOUTTEXTCTRL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_POSITIONTEXTCTRL@{ID\_POSITIONTEXTCTRL}!PageDetailsPanel@{PageDetailsPanel}}\index{PageDetailsPanel@{PageDetailsPanel}!ID\_POSITIONTEXTCTRL@{ID\_POSITIONTEXTCTRL}}}\Hypertarget{class_page_details_panel_a03992312f8ef3643cd536760a70b4249adc890f88bb67a9aea0ad299557fb50a8}\label{class_page_details_panel_a03992312f8ef3643cd536760a70b4249adc890f88bb67a9aea0ad299557fb50a8} 
+ID\+\_\+\+POSITIONTEXTCTRL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_NOTEBOOKDETAILSPANEL@{ID\_NOTEBOOKDETAILSPANEL}!PageDetailsPanel@{PageDetailsPanel}}\index{PageDetailsPanel@{PageDetailsPanel}!ID\_NOTEBOOKDETAILSPANEL@{ID\_NOTEBOOKDETAILSPANEL}}}\Hypertarget{class_page_details_panel_a03992312f8ef3643cd536760a70b4249a34bdb518823efeb98c1dba44b4de01e2}\label{class_page_details_panel_a03992312f8ef3643cd536760a70b4249a34bdb518823efeb98c1dba44b4de01e2} 
+ID\+\_\+\+NOTEBOOKDETAILSPANEL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_LastID@{ID\_LastID}!PageDetailsPanel@{PageDetailsPanel}}\index{PageDetailsPanel@{PageDetailsPanel}!ID\_LastID@{ID\_LastID}}}\Hypertarget{class_page_details_panel_a03992312f8ef3643cd536760a70b4249a08afd8d852b1ee0ea06fd468742f91a6}\label{class_page_details_panel_a03992312f8ef3643cd536760a70b4249a08afd8d852b1ee0ea06fd468742f91a6} 
+ID\+\_\+\+Last\+ID&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{_page_details_panel_8h_source_l00074}{74}} of file \mbox{\hyperlink{_page_details_panel_8h_source}{Page\+Details\+Panel.\+h}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_page_details_panel_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_page_details_panel_a05b3a09cdb0b82eb6ff8279e39731b9f}\index{PageDetailsPanel@{PageDetailsPanel}!PageDetailsPanel@{PageDetailsPanel}}
+\index{PageDetailsPanel@{PageDetailsPanel}!PageDetailsPanel@{PageDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{PageDetailsPanel()}{PageDetailsPanel()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_page_details_panel_a05b3a09cdb0b82eb6ff8279e39731b9f} 
+Page\+Details\+Panel\+::\+Page\+Details\+Panel (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_page_details_panel_8cpp_source_l00073}{73}} of file \mbox{\hyperlink{_page_details_panel_8cpp_source}{Page\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_page_details_panel_a9962752d911af29b6c0b3f26fa619232}\index{PageDetailsPanel@{PageDetailsPanel}!PageDetailsPanel@{PageDetailsPanel}}
+\index{PageDetailsPanel@{PageDetailsPanel}!PageDetailsPanel@{PageDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{PageDetailsPanel()}{PageDetailsPanel()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_page_details_panel_a9962752d911af29b6c0b3f26fa619232} 
+Page\+Details\+Panel\+::\+Page\+Details\+Panel (\begin{DoxyParamCaption}\item[{wx\+Window \texorpdfstring{$\ast$}{*}}]{parent}{, }\item[{wx\+Window\+ID}]{id}{ = {\ttfamily \mbox{\hyperlink{_page_details_panel_8h_aeebb44be00e007de5d8c1dc522f2d8ce}{SYMBOL\+\_\+\+PAGEDETAILSPANEL\+\_\+\+IDNAME}}}, }\item[{const wx\+String \&}]{caption}{ = {\ttfamily \mbox{\hyperlink{_page_details_panel_8h_aeef062cb925434f164efcb9170cbfe11}{SYMBOL\+\_\+\+PAGEDETAILSPANEL\+\_\+\+TITLE}}}, }\item[{const wx\+Point \&}]{pos}{ = {\ttfamily \mbox{\hyperlink{_page_details_panel_8h_a8348df188bf76b4739cad451d4d8e18d}{SYMBOL\+\_\+\+PAGEDETAILSPANEL\+\_\+\+POSITION}}}, }\item[{const wx\+Size \&}]{size}{ = {\ttfamily \mbox{\hyperlink{_page_details_panel_8h_a75ad385aeadafe36db4d4af9913db40d}{SYMBOL\+\_\+\+PAGEDETAILSPANEL\+\_\+\+SIZE}}}, }\item[{long}]{style}{ = {\ttfamily \mbox{\hyperlink{_page_details_panel_8h_a5eb73eec26647573ff9c0e1543fdbe01}{SYMBOL\+\_\+\+PAGEDETAILSPANEL\+\_\+\+STYLE}}}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_page_details_panel_8cpp_source_l00078}{78}} of file \mbox{\hyperlink{_page_details_panel_8cpp_source}{Page\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_page_details_panel_a0d56ec7669090db4c31498dd7e9f2c45}\index{PageDetailsPanel@{PageDetailsPanel}!````~PageDetailsPanel@{\texorpdfstring{$\sim$}{\string~}PageDetailsPanel}}
+\index{````~PageDetailsPanel@{\texorpdfstring{$\sim$}{\string~}PageDetailsPanel}!PageDetailsPanel@{PageDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}PageDetailsPanel()}{\string~PageDetailsPanel()}}
+{\footnotesize\ttfamily \label{class_page_details_panel_a0d56ec7669090db4c31498dd7e9f2c45} 
+Page\+Details\+Panel\+::\texorpdfstring{$\sim$}{\string~}\+Page\+Details\+Panel (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_page_details_panel_8cpp_source_l00106}{106}} of file \mbox{\hyperlink{_page_details_panel_8cpp_source}{Page\+Details\+Panel.\+cpp}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_page_details_panel_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_page_details_panel_ab8d84a11036371dfd406dde5514df82f}\index{PageDetailsPanel@{PageDetailsPanel}!Create@{Create}}
+\index{Create@{Create}!PageDetailsPanel@{PageDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{Create()}{Create()}}
+{\footnotesize\ttfamily \label{class_page_details_panel_ab8d84a11036371dfd406dde5514df82f} 
+bool Page\+Details\+Panel\+::\+Create (\begin{DoxyParamCaption}\item[{wx\+Window \texorpdfstring{$\ast$}{*}}]{parent}{, }\item[{wx\+Window\+ID}]{id}{ = {\ttfamily \mbox{\hyperlink{_page_details_panel_8h_aeebb44be00e007de5d8c1dc522f2d8ce}{SYMBOL\+\_\+\+PAGEDETAILSPANEL\+\_\+\+IDNAME}}}, }\item[{const wx\+String \&}]{caption}{ = {\ttfamily \mbox{\hyperlink{_page_details_panel_8h_aeef062cb925434f164efcb9170cbfe11}{SYMBOL\+\_\+\+PAGEDETAILSPANEL\+\_\+\+TITLE}}}, }\item[{const wx\+Point \&}]{pos}{ = {\ttfamily \mbox{\hyperlink{_page_details_panel_8h_a8348df188bf76b4739cad451d4d8e18d}{SYMBOL\+\_\+\+PAGEDETAILSPANEL\+\_\+\+POSITION}}}, }\item[{const wx\+Size \&}]{size}{ = {\ttfamily \mbox{\hyperlink{_page_details_panel_8h_a75ad385aeadafe36db4d4af9913db40d}{SYMBOL\+\_\+\+PAGEDETAILSPANEL\+\_\+\+SIZE}}}, }\item[{long}]{style}{ = {\ttfamily \mbox{\hyperlink{_page_details_panel_8h_a5eb73eec26647573ff9c0e1543fdbe01}{SYMBOL\+\_\+\+PAGEDETAILSPANEL\+\_\+\+STYLE}}}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_page_details_panel_8cpp_source_l00091}{91}} of file \mbox{\hyperlink{_page_details_panel_8cpp_source}{Page\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_page_details_panel_a0bb4ce049498fc19e39270cace73191b}\index{PageDetailsPanel@{PageDetailsPanel}!CreateControls@{CreateControls}}
+\index{CreateControls@{CreateControls}!PageDetailsPanel@{PageDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{CreateControls()}{CreateControls()}}
+{\footnotesize\ttfamily \label{class_page_details_panel_a0bb4ce049498fc19e39270cace73191b} 
+void Page\+Details\+Panel\+::\+Create\+Controls (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_page_details_panel_8cpp_source_l00119}{119}} of file \mbox{\hyperlink{_page_details_panel_8cpp_source}{Page\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_page_details_panel_ac29affb2e4f63d85dee319d3b627ba68}\index{PageDetailsPanel@{PageDetailsPanel}!GetBorderSize@{GetBorderSize}}
+\index{GetBorderSize@{GetBorderSize}!PageDetailsPanel@{PageDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{GetBorderSize()}{GetBorderSize()}}
+{\footnotesize\ttfamily \label{class_page_details_panel_ac29affb2e4f63d85dee319d3b627ba68} 
+wx\+String Page\+Details\+Panel\+::\+Get\+Border\+Size (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_page_details_panel_8cpp_source_l00713}{713}} of file \mbox{\hyperlink{_page_details_panel_8cpp_source}{Page\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_page_details_panel_a44ecc84a6ceb474f7410c7ca5ed47ed3}\index{PageDetailsPanel@{PageDetailsPanel}!GetOrientation@{GetOrientation}}
+\index{GetOrientation@{GetOrientation}!PageDetailsPanel@{PageDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{GetOrientation()}{GetOrientation()}}
+{\footnotesize\ttfamily \label{class_page_details_panel_a44ecc84a6ceb474f7410c7ca5ed47ed3} 
+wx\+String Page\+Details\+Panel\+::\+Get\+Orientation (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_page_details_panel_8h_source_l00150}{150}} of file \mbox{\hyperlink{_page_details_panel_8h_source}{Page\+Details\+Panel.\+h}}.
+
+\Hypertarget{class_page_details_panel_aaec3aa5980b3a8cc6eb6c5878195f907}\index{PageDetailsPanel@{PageDetailsPanel}!GetShow@{GetShow}}
+\index{GetShow@{GetShow}!PageDetailsPanel@{PageDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{GetShow()}{GetShow()}}
+{\footnotesize\ttfamily \label{class_page_details_panel_aaec3aa5980b3a8cc6eb6c5878195f907} 
+bool Page\+Details\+Panel\+::\+Get\+Show (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_page_details_panel_8cpp_source_l00474}{474}} of file \mbox{\hyperlink{_page_details_panel_8cpp_source}{Page\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_page_details_panel_a9f710b7e505e6d894f28edeb5f22c00c}\index{PageDetailsPanel@{PageDetailsPanel}!GetShowSubTitle@{GetShowSubTitle}}
+\index{GetShowSubTitle@{GetShowSubTitle}!PageDetailsPanel@{PageDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{GetShowSubTitle()}{GetShowSubTitle()}}
+{\footnotesize\ttfamily \label{class_page_details_panel_a9f710b7e505e6d894f28edeb5f22c00c} 
+bool Page\+Details\+Panel\+::\+Get\+Show\+Sub\+Title (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_page_details_panel_8cpp_source_l00469}{469}} of file \mbox{\hyperlink{_page_details_panel_8cpp_source}{Page\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_page_details_panel_a83c3c23e68ad14c4e17983c06ccc29d7}\index{PageDetailsPanel@{PageDetailsPanel}!GetShowTitle@{GetShowTitle}}
+\index{GetShowTitle@{GetShowTitle}!PageDetailsPanel@{PageDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{GetShowTitle()}{GetShowTitle()}}
+{\footnotesize\ttfamily \label{class_page_details_panel_a83c3c23e68ad14c4e17983c06ccc29d7} 
+bool Page\+Details\+Panel\+::\+Get\+Show\+Title (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_page_details_panel_8cpp_source_l00465}{465}} of file \mbox{\hyperlink{_page_details_panel_8cpp_source}{Page\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_page_details_panel_a085d1c27b380594f314a84659f3f7b1a}\index{PageDetailsPanel@{PageDetailsPanel}!GetSubTitle@{GetSubTitle}}
+\index{GetSubTitle@{GetSubTitle}!PageDetailsPanel@{PageDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{GetSubTitle()}{GetSubTitle()}}
+{\footnotesize\ttfamily \label{class_page_details_panel_a085d1c27b380594f314a84659f3f7b1a} 
+wx\+String Page\+Details\+Panel\+::\+Get\+Sub\+Title (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_page_details_panel_8cpp_source_l00413}{413}} of file \mbox{\hyperlink{_page_details_panel_8cpp_source}{Page\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_page_details_panel_a09965e707da01fa2a30330188b47ef6b}\index{PageDetailsPanel@{PageDetailsPanel}!GetTitle@{GetTitle}}
+\index{GetTitle@{GetTitle}!PageDetailsPanel@{PageDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{GetTitle()}{GetTitle()}}
+{\footnotesize\ttfamily \label{class_page_details_panel_a09965e707da01fa2a30330188b47ef6b} 
+wx\+String Page\+Details\+Panel\+::\+Get\+Title (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_page_details_panel_8cpp_source_l00405}{405}} of file \mbox{\hyperlink{_page_details_panel_8cpp_source}{Page\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_page_details_panel_afa8d2eacf761392ad148163af5d2102c}\index{PageDetailsPanel@{PageDetailsPanel}!Init@{Init}}
+\index{Init@{Init}!PageDetailsPanel@{PageDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily \label{class_page_details_panel_afa8d2eacf761392ad148163af5d2102c} 
+void Page\+Details\+Panel\+::\+Init (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_page_details_panel_8cpp_source_l00113}{113}} of file \mbox{\hyperlink{_page_details_panel_8cpp_source}{Page\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_page_details_panel_aae8621e926603a3dfaf0edd8c5e953c0}\index{PageDetailsPanel@{PageDetailsPanel}!IsNameModified@{IsNameModified}}
+\index{IsNameModified@{IsNameModified}!PageDetailsPanel@{PageDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{IsNameModified()}{IsNameModified()}}
+{\footnotesize\ttfamily \label{class_page_details_panel_aae8621e926603a3dfaf0edd8c5e953c0} 
+bool Page\+Details\+Panel\+::\+Is\+Name\+Modified (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_page_details_panel_a89cc1bf7932ffb1054ba9cbbe5a12cbc}\index{PageDetailsPanel@{PageDetailsPanel}!OnBorderSize@{OnBorderSize}}
+\index{OnBorderSize@{OnBorderSize}!PageDetailsPanel@{PageDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{OnBorderSize()}{OnBorderSize()}}
+{\footnotesize\ttfamily \label{class_page_details_panel_a89cc1bf7932ffb1054ba9cbbe5a12cbc} 
+void Page\+Details\+Panel\+::\+On\+Border\+Size (\begin{DoxyParamCaption}\item[{wx\+Command\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_page_details_panel_8cpp_source_l00719}{719}} of file \mbox{\hyperlink{_page_details_panel_8cpp_source}{Page\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_page_details_panel_a184afa36a383914522ff25bdd3bd1f96}\index{PageDetailsPanel@{PageDetailsPanel}!OnBottomContentMargin@{OnBottomContentMargin}}
+\index{OnBottomContentMargin@{OnBottomContentMargin}!PageDetailsPanel@{PageDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{OnBottomContentMargin()}{OnBottomContentMargin()}}
+{\footnotesize\ttfamily \label{class_page_details_panel_a184afa36a383914522ff25bdd3bd1f96} 
+void Page\+Details\+Panel\+::\+On\+Bottom\+Content\+Margin (\begin{DoxyParamCaption}\item[{wx\+Command\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_page_details_panel_8cpp_source_l00674}{674}} of file \mbox{\hyperlink{_page_details_panel_8cpp_source}{Page\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_page_details_panel_abced555123d5fd99a2f5449787e62d6c}\index{PageDetailsPanel@{PageDetailsPanel}!OnBottomPageMargin@{OnBottomPageMargin}}
+\index{OnBottomPageMargin@{OnBottomPageMargin}!PageDetailsPanel@{PageDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{OnBottomPageMargin()}{OnBottomPageMargin()}}
+{\footnotesize\ttfamily \label{class_page_details_panel_abced555123d5fd99a2f5449787e62d6c} 
+void Page\+Details\+Panel\+::\+On\+Bottom\+Page\+Margin (\begin{DoxyParamCaption}\item[{wx\+Command\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_page_details_panel_8cpp_source_l00606}{606}} of file \mbox{\hyperlink{_page_details_panel_8cpp_source}{Page\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_page_details_panel_af1ee7f034c8fbe23ff0fb24dca62084c}\index{PageDetailsPanel@{PageDetailsPanel}!OnLeftContentMargin@{OnLeftContentMargin}}
+\index{OnLeftContentMargin@{OnLeftContentMargin}!PageDetailsPanel@{PageDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{OnLeftContentMargin()}{OnLeftContentMargin()}}
+{\footnotesize\ttfamily \label{class_page_details_panel_af1ee7f034c8fbe23ff0fb24dca62084c} 
+void Page\+Details\+Panel\+::\+On\+Left\+Content\+Margin (\begin{DoxyParamCaption}\item[{wx\+Command\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_page_details_panel_8cpp_source_l00684}{684}} of file \mbox{\hyperlink{_page_details_panel_8cpp_source}{Page\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_page_details_panel_a1ac6019886c68da56a8044401836d22a}\index{PageDetailsPanel@{PageDetailsPanel}!OnLeftPageMargin@{OnLeftPageMargin}}
+\index{OnLeftPageMargin@{OnLeftPageMargin}!PageDetailsPanel@{PageDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{OnLeftPageMargin()}{OnLeftPageMargin()}}
+{\footnotesize\ttfamily \label{class_page_details_panel_a1ac6019886c68da56a8044401836d22a} 
+void Page\+Details\+Panel\+::\+On\+Left\+Page\+Margin (\begin{DoxyParamCaption}\item[{wx\+Command\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_page_details_panel_8cpp_source_l00616}{616}} of file \mbox{\hyperlink{_page_details_panel_8cpp_source}{Page\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_page_details_panel_aae725f2b9dc2f2b9047abd02f08881d5}\index{PageDetailsPanel@{PageDetailsPanel}!OnOkClick@{OnOkClick}}
+\index{OnOkClick@{OnOkClick}!PageDetailsPanel@{PageDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{OnOkClick()}{OnOkClick()}}
+{\footnotesize\ttfamily \label{class_page_details_panel_aae725f2b9dc2f2b9047abd02f08881d5} 
+void Page\+Details\+Panel\+::\+On\+Ok\+Click (\begin{DoxyParamCaption}\item[{wx\+Command\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_page_details_panel_a6ab8aa4a4ece74462226223c3304ee7d}\index{PageDetailsPanel@{PageDetailsPanel}!OnOrientationchoiceSelected@{OnOrientationchoiceSelected}}
+\index{OnOrientationchoiceSelected@{OnOrientationchoiceSelected}!PageDetailsPanel@{PageDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{OnOrientationchoiceSelected()}{OnOrientationchoiceSelected()}}
+{\footnotesize\ttfamily \label{class_page_details_panel_a6ab8aa4a4ece74462226223c3304ee7d} 
+void Page\+Details\+Panel\+::\+On\+Orientationchoice\+Selected (\begin{DoxyParamCaption}\item[{wx\+Command\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_page_details_panel_8cpp_source_l00523}{523}} of file \mbox{\hyperlink{_page_details_panel_8cpp_source}{Page\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_page_details_panel_a090b6bda53fac0b0b1c1af9c93df086c}\index{PageDetailsPanel@{PageDetailsPanel}!OnRightContentMargin@{OnRightContentMargin}}
+\index{OnRightContentMargin@{OnRightContentMargin}!PageDetailsPanel@{PageDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{OnRightContentMargin()}{OnRightContentMargin()}}
+{\footnotesize\ttfamily \label{class_page_details_panel_a090b6bda53fac0b0b1c1af9c93df086c} 
+void Page\+Details\+Panel\+::\+On\+Right\+Content\+Margin (\begin{DoxyParamCaption}\item[{wx\+Command\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_page_details_panel_8cpp_source_l00694}{694}} of file \mbox{\hyperlink{_page_details_panel_8cpp_source}{Page\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_page_details_panel_a309cbabe8d7556ee1e289e1fc69dc782}\index{PageDetailsPanel@{PageDetailsPanel}!OnRightPageMargin@{OnRightPageMargin}}
+\index{OnRightPageMargin@{OnRightPageMargin}!PageDetailsPanel@{PageDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{OnRightPageMargin()}{OnRightPageMargin()}}
+{\footnotesize\ttfamily \label{class_page_details_panel_a309cbabe8d7556ee1e289e1fc69dc782} 
+void Page\+Details\+Panel\+::\+On\+Right\+Page\+Margin (\begin{DoxyParamCaption}\item[{wx\+Command\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_page_details_panel_8cpp_source_l00627}{627}} of file \mbox{\hyperlink{_page_details_panel_8cpp_source}{Page\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_page_details_panel_a42b3cecbc99bb0c1ad9e062f2134d307}\index{PageDetailsPanel@{PageDetailsPanel}!OnShowBorderCheckBoxClick@{OnShowBorderCheckBoxClick}}
+\index{OnShowBorderCheckBoxClick@{OnShowBorderCheckBoxClick}!PageDetailsPanel@{PageDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{OnShowBorderCheckBoxClick()}{OnShowBorderCheckBoxClick()}}
+{\footnotesize\ttfamily \label{class_page_details_panel_a42b3cecbc99bb0c1ad9e062f2134d307} 
+void Page\+Details\+Panel\+::\+On\+Show\+Border\+Check\+Box\+Click (\begin{DoxyParamCaption}\item[{wx\+Command\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_page_details_panel_8cpp_source_l00637}{637}} of file \mbox{\hyperlink{_page_details_panel_8cpp_source}{Page\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_page_details_panel_abb456a95f884c91003b7c31cd3ee967e}\index{PageDetailsPanel@{PageDetailsPanel}!OnSubTitleCheckboxClick@{OnSubTitleCheckboxClick}}
+\index{OnSubTitleCheckboxClick@{OnSubTitleCheckboxClick}!PageDetailsPanel@{PageDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{OnSubTitleCheckboxClick()}{OnSubTitleCheckboxClick()}}
+{\footnotesize\ttfamily \label{class_page_details_panel_abb456a95f884c91003b7c31cd3ee967e} 
+void Page\+Details\+Panel\+::\+On\+Sub\+Title\+Checkbox\+Click (\begin{DoxyParamCaption}\item[{wx\+Command\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_page_details_panel_8cpp_source_l00534}{534}} of file \mbox{\hyperlink{_page_details_panel_8cpp_source}{Page\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_page_details_panel_a8e324f1e39ac4f36ee78e288696f0c7a}\index{PageDetailsPanel@{PageDetailsPanel}!OnSubTitleColorPicker@{OnSubTitleColorPicker}}
+\index{OnSubTitleColorPicker@{OnSubTitleColorPicker}!PageDetailsPanel@{PageDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{OnSubTitleColorPicker()}{OnSubTitleColorPicker()}}
+{\footnotesize\ttfamily \label{class_page_details_panel_a8e324f1e39ac4f36ee78e288696f0c7a} 
+void Page\+Details\+Panel\+::\+On\+Sub\+Title\+Color\+Picker (\begin{DoxyParamCaption}\item[{wx\+Colour\+Picker\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_page_details_panel_8cpp_source_l00589}{589}} of file \mbox{\hyperlink{_page_details_panel_8cpp_source}{Page\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_page_details_panel_aba19826290d18a099178bdf81707de4a}\index{PageDetailsPanel@{PageDetailsPanel}!OnSubTitleDefaultClick@{OnSubTitleDefaultClick}}
+\index{OnSubTitleDefaultClick@{OnSubTitleDefaultClick}!PageDetailsPanel@{PageDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{OnSubTitleDefaultClick()}{OnSubTitleDefaultClick()}}
+{\footnotesize\ttfamily \label{class_page_details_panel_aba19826290d18a099178bdf81707de4a} 
+void Page\+Details\+Panel\+::\+On\+Sub\+Title\+Default\+Click (\begin{DoxyParamCaption}\item[{wx\+Command\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_page_details_panel_8cpp_source_l00541}{541}} of file \mbox{\hyperlink{_page_details_panel_8cpp_source}{Page\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_page_details_panel_a97df557fcf2e5e080226989256e89e49}\index{PageDetailsPanel@{PageDetailsPanel}!OnSubTitleFontPicker@{OnSubTitleFontPicker}}
+\index{OnSubTitleFontPicker@{OnSubTitleFontPicker}!PageDetailsPanel@{PageDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{OnSubTitleFontPicker()}{OnSubTitleFontPicker()}}
+{\footnotesize\ttfamily \label{class_page_details_panel_a97df557fcf2e5e080226989256e89e49} 
+void Page\+Details\+Panel\+::\+On\+Sub\+Title\+Font\+Picker (\begin{DoxyParamCaption}\item[{wx\+Font\+Picker\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_page_details_panel_8cpp_source_l00584}{584}} of file \mbox{\hyperlink{_page_details_panel_8cpp_source}{Page\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_page_details_panel_a0f12d3e2a35ffdc2895044c748d63756}\index{PageDetailsPanel@{PageDetailsPanel}!OnSubTitleTextChanged@{OnSubTitleTextChanged}}
+\index{OnSubTitleTextChanged@{OnSubTitleTextChanged}!PageDetailsPanel@{PageDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{OnSubTitleTextChanged()}{OnSubTitleTextChanged()}}
+{\footnotesize\ttfamily \label{class_page_details_panel_a0f12d3e2a35ffdc2895044c748d63756} 
+void Page\+Details\+Panel\+::\+On\+Sub\+Title\+Text\+Changed (\begin{DoxyParamCaption}\item[{wx\+Command\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_page_details_panel_8cpp_source_l00568}{568}} of file \mbox{\hyperlink{_page_details_panel_8cpp_source}{Page\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_page_details_panel_a440293010a0bba4d7b7371d7610a9469}\index{PageDetailsPanel@{PageDetailsPanel}!OnTitleCheckboxClick@{OnTitleCheckboxClick}}
+\index{OnTitleCheckboxClick@{OnTitleCheckboxClick}!PageDetailsPanel@{PageDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{OnTitleCheckboxClick()}{OnTitleCheckboxClick()}}
+{\footnotesize\ttfamily \label{class_page_details_panel_a440293010a0bba4d7b7371d7610a9469} 
+void Page\+Details\+Panel\+::\+On\+Title\+Checkbox\+Click (\begin{DoxyParamCaption}\item[{wx\+Command\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_page_details_panel_8cpp_source_l00556}{556}} of file \mbox{\hyperlink{_page_details_panel_8cpp_source}{Page\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_page_details_panel_a1dc6f6f145e264bdf5b4b8e7296c8253}\index{PageDetailsPanel@{PageDetailsPanel}!OnTitleColorPicker@{OnTitleColorPicker}}
+\index{OnTitleColorPicker@{OnTitleColorPicker}!PageDetailsPanel@{PageDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{OnTitleColorPicker()}{OnTitleColorPicker()}}
+{\footnotesize\ttfamily \label{class_page_details_panel_a1dc6f6f145e264bdf5b4b8e7296c8253} 
+void Page\+Details\+Panel\+::\+On\+Title\+Color\+Picker (\begin{DoxyParamCaption}\item[{wx\+Colour\+Picker\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_page_details_panel_8cpp_source_l00579}{579}} of file \mbox{\hyperlink{_page_details_panel_8cpp_source}{Page\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_page_details_panel_ab7ef1e8d931fb719432f206482512fd3}\index{PageDetailsPanel@{PageDetailsPanel}!OnTitleDefaultClick@{OnTitleDefaultClick}}
+\index{OnTitleDefaultClick@{OnTitleDefaultClick}!PageDetailsPanel@{PageDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{OnTitleDefaultClick()}{OnTitleDefaultClick()}}
+{\footnotesize\ttfamily \label{class_page_details_panel_ab7ef1e8d931fb719432f206482512fd3} 
+void Page\+Details\+Panel\+::\+On\+Title\+Default\+Click (\begin{DoxyParamCaption}\item[{wx\+Command\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_page_details_panel_8cpp_source_l00509}{509}} of file \mbox{\hyperlink{_page_details_panel_8cpp_source}{Page\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_page_details_panel_a9244996a0c38d6033cc2d100a7e7169c}\index{PageDetailsPanel@{PageDetailsPanel}!OnTitleFontPicker@{OnTitleFontPicker}}
+\index{OnTitleFontPicker@{OnTitleFontPicker}!PageDetailsPanel@{PageDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{OnTitleFontPicker()}{OnTitleFontPicker()}}
+{\footnotesize\ttfamily \label{class_page_details_panel_a9244996a0c38d6033cc2d100a7e7169c} 
+void Page\+Details\+Panel\+::\+On\+Title\+Font\+Picker (\begin{DoxyParamCaption}\item[{wx\+Font\+Picker\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_page_details_panel_8cpp_source_l00574}{574}} of file \mbox{\hyperlink{_page_details_panel_8cpp_source}{Page\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_page_details_panel_a5e14a3da1c2a133c50d143e5cf784cac}\index{PageDetailsPanel@{PageDetailsPanel}!OnTitleTextChanged@{OnTitleTextChanged}}
+\index{OnTitleTextChanged@{OnTitleTextChanged}!PageDetailsPanel@{PageDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{OnTitleTextChanged()}{OnTitleTextChanged()}}
+{\footnotesize\ttfamily \label{class_page_details_panel_a5e14a3da1c2a133c50d143e5cf784cac} 
+void Page\+Details\+Panel\+::\+On\+Title\+Text\+Changed (\begin{DoxyParamCaption}\item[{wx\+Command\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_page_details_panel_8cpp_source_l00563}{563}} of file \mbox{\hyperlink{_page_details_panel_8cpp_source}{Page\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_page_details_panel_a4d4187415d7a3b1cc99a8045c1c7a7d9}\index{PageDetailsPanel@{PageDetailsPanel}!OnTopContentMargin@{OnTopContentMargin}}
+\index{OnTopContentMargin@{OnTopContentMargin}!PageDetailsPanel@{PageDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{OnTopContentMargin()}{OnTopContentMargin()}}
+{\footnotesize\ttfamily \label{class_page_details_panel_a4d4187415d7a3b1cc99a8045c1c7a7d9} 
+void Page\+Details\+Panel\+::\+On\+Top\+Content\+Margin (\begin{DoxyParamCaption}\item[{wx\+Command\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_page_details_panel_8cpp_source_l00665}{665}} of file \mbox{\hyperlink{_page_details_panel_8cpp_source}{Page\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_page_details_panel_a75e235742b4c9e7746abef3150e5929e}\index{PageDetailsPanel@{PageDetailsPanel}!OnTopPageMargin@{OnTopPageMargin}}
+\index{OnTopPageMargin@{OnTopPageMargin}!PageDetailsPanel@{PageDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{OnTopPageMargin()}{OnTopPageMargin()}}
+{\footnotesize\ttfamily \label{class_page_details_panel_a75e235742b4c9e7746abef3150e5929e} 
+void Page\+Details\+Panel\+::\+On\+Top\+Page\+Margin (\begin{DoxyParamCaption}\item[{wx\+Command\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_page_details_panel_8cpp_source_l00596}{596}} of file \mbox{\hyperlink{_page_details_panel_8cpp_source}{Page\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_page_details_panel_a79efbfe53fdda5055f9c68798d60f465}\index{PageDetailsPanel@{PageDetailsPanel}!SetBorderSize@{SetBorderSize}}
+\index{SetBorderSize@{SetBorderSize}!PageDetailsPanel@{PageDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{SetBorderSize()}{SetBorderSize()}}
+{\footnotesize\ttfamily \label{class_page_details_panel_a79efbfe53fdda5055f9c68798d60f465} 
+void Page\+Details\+Panel\+::\+Set\+Border\+Size (\begin{DoxyParamCaption}\item[{wx\+String}]{size}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_page_details_panel_8cpp_source_l00706}{706}} of file \mbox{\hyperlink{_page_details_panel_8cpp_source}{Page\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_page_details_panel_acd7eb858abb9b89a9eaa73b2ae18aaa3}\index{PageDetailsPanel@{PageDetailsPanel}!SetBottomContentMargin@{SetBottomContentMargin}}
+\index{SetBottomContentMargin@{SetBottomContentMargin}!PageDetailsPanel@{PageDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{SetBottomContentMargin()}{SetBottomContentMargin()}}
+{\footnotesize\ttfamily \label{class_page_details_panel_acd7eb858abb9b89a9eaa73b2ae18aaa3} 
+void Page\+Details\+Panel\+::\+Set\+Bottom\+Content\+Margin (\begin{DoxyParamCaption}\item[{wx\+String}]{content\+Margin}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_page_details_panel_8cpp_source_l00489}{489}} of file \mbox{\hyperlink{_page_details_panel_8cpp_source}{Page\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_page_details_panel_aae79dd26c135158b05a04ef40742d08e}\index{PageDetailsPanel@{PageDetailsPanel}!SetBottomPageMargin@{SetBottomPageMargin}}
+\index{SetBottomPageMargin@{SetBottomPageMargin}!PageDetailsPanel@{PageDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{SetBottomPageMargin()}{SetBottomPageMargin()}}
+{\footnotesize\ttfamily \label{class_page_details_panel_aae79dd26c135158b05a04ef40742d08e} 
+void Page\+Details\+Panel\+::\+Set\+Bottom\+Page\+Margin (\begin{DoxyParamCaption}\item[{wx\+String}]{str}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_page_details_panel_8cpp_source_l00445}{445}} of file \mbox{\hyperlink{_page_details_panel_8cpp_source}{Page\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_page_details_panel_ae616c220099eddc10a63ad254e6a0981}\index{PageDetailsPanel@{PageDetailsPanel}!SetLeftContentMargin@{SetLeftContentMargin}}
+\index{SetLeftContentMargin@{SetLeftContentMargin}!PageDetailsPanel@{PageDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{SetLeftContentMargin()}{SetLeftContentMargin()}}
+{\footnotesize\ttfamily \label{class_page_details_panel_ae616c220099eddc10a63ad254e6a0981} 
+void Page\+Details\+Panel\+::\+Set\+Left\+Content\+Margin (\begin{DoxyParamCaption}\item[{wx\+String}]{content\+Margin}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_page_details_panel_8cpp_source_l00496}{496}} of file \mbox{\hyperlink{_page_details_panel_8cpp_source}{Page\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_page_details_panel_af81bbb4cb7e4924fd1f0d80e163ba720}\index{PageDetailsPanel@{PageDetailsPanel}!SetLeftPageMargin@{SetLeftPageMargin}}
+\index{SetLeftPageMargin@{SetLeftPageMargin}!PageDetailsPanel@{PageDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{SetLeftPageMargin()}{SetLeftPageMargin()}}
+{\footnotesize\ttfamily \label{class_page_details_panel_af81bbb4cb7e4924fd1f0d80e163ba720} 
+void Page\+Details\+Panel\+::\+Set\+Left\+Page\+Margin (\begin{DoxyParamCaption}\item[{wx\+String}]{str}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_page_details_panel_8cpp_source_l00449}{449}} of file \mbox{\hyperlink{_page_details_panel_8cpp_source}{Page\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_page_details_panel_ab8a56b2fb67496c88fcbd0f6f4192cff}\index{PageDetailsPanel@{PageDetailsPanel}!SetNameModified@{SetNameModified}}
+\index{SetNameModified@{SetNameModified}!PageDetailsPanel@{PageDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{SetNameModified()}{SetNameModified()}}
+{\footnotesize\ttfamily \label{class_page_details_panel_ab8a56b2fb67496c88fcbd0f6f4192cff} 
+void Page\+Details\+Panel\+::\+Set\+Name\+Modified (\begin{DoxyParamCaption}\item[{bool}]{state}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_page_details_panel_8cpp_source_l00418}{418}} of file \mbox{\hyperlink{_page_details_panel_8cpp_source}{Page\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_page_details_panel_a1a98674479c14f7a7077274ad48ce729}\index{PageDetailsPanel@{PageDetailsPanel}!SetOrientation@{SetOrientation}}
+\index{SetOrientation@{SetOrientation}!PageDetailsPanel@{PageDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{SetOrientation()}{SetOrientation()}}
+{\footnotesize\ttfamily \label{class_page_details_panel_a1a98674479c14f7a7077274ad48ce729} 
+void Page\+Details\+Panel\+::\+Set\+Orientation (\begin{DoxyParamCaption}\item[{wx\+String}]{sel}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_page_details_panel_8h_source_l00153}{153}} of file \mbox{\hyperlink{_page_details_panel_8h_source}{Page\+Details\+Panel.\+h}}.
+
+\Hypertarget{class_page_details_panel_a3cbc87919c3d5b9ac403ec699feab472}\index{PageDetailsPanel@{PageDetailsPanel}!SetRightContentMargin@{SetRightContentMargin}}
+\index{SetRightContentMargin@{SetRightContentMargin}!PageDetailsPanel@{PageDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{SetRightContentMargin()}{SetRightContentMargin()}}
+{\footnotesize\ttfamily \label{class_page_details_panel_a3cbc87919c3d5b9ac403ec699feab472} 
+void Page\+Details\+Panel\+::\+Set\+Right\+Content\+Margin (\begin{DoxyParamCaption}\item[{wx\+String}]{content\+Margin}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_page_details_panel_8cpp_source_l00503}{503}} of file \mbox{\hyperlink{_page_details_panel_8cpp_source}{Page\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_page_details_panel_a8cc3301f43a637d406fe4468f02ec559}\index{PageDetailsPanel@{PageDetailsPanel}!SetRightPageMargin@{SetRightPageMargin}}
+\index{SetRightPageMargin@{SetRightPageMargin}!PageDetailsPanel@{PageDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{SetRightPageMargin()}{SetRightPageMargin()}}
+{\footnotesize\ttfamily \label{class_page_details_panel_a8cc3301f43a637d406fe4468f02ec559} 
+void Page\+Details\+Panel\+::\+Set\+Right\+Page\+Margin (\begin{DoxyParamCaption}\item[{wx\+String}]{str}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_page_details_panel_8cpp_source_l00453}{453}} of file \mbox{\hyperlink{_page_details_panel_8cpp_source}{Page\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_page_details_panel_a27c70aef44f44b265f1ed9cf9204c979}\index{PageDetailsPanel@{PageDetailsPanel}!SetShow@{SetShow}}
+\index{SetShow@{SetShow}!PageDetailsPanel@{PageDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{SetShow()}{SetShow()}}
+{\footnotesize\ttfamily \label{class_page_details_panel_a27c70aef44f44b265f1ed9cf9204c979} 
+void Page\+Details\+Panel\+::\+Set\+Show (\begin{DoxyParamCaption}\item[{bool}]{state}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_page_details_panel_8cpp_source_l00460}{460}} of file \mbox{\hyperlink{_page_details_panel_8cpp_source}{Page\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_page_details_panel_a0b3edb273ad8a9bc33fa1a62d269a4d8}\index{PageDetailsPanel@{PageDetailsPanel}!SetShowBorder@{SetShowBorder}}
+\index{SetShowBorder@{SetShowBorder}!PageDetailsPanel@{PageDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{SetShowBorder()}{SetShowBorder()}}
+{\footnotesize\ttfamily \label{class_page_details_panel_a0b3edb273ad8a9bc33fa1a62d269a4d8} 
+void Page\+Details\+Panel\+::\+Set\+Show\+Border (\begin{DoxyParamCaption}\item[{bool}]{state}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_page_details_panel_8cpp_source_l00436}{436}} of file \mbox{\hyperlink{_page_details_panel_8cpp_source}{Page\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_page_details_panel_acae19a19f5ef7797461c878605e412a4}\index{PageDetailsPanel@{PageDetailsPanel}!SetShowSubTitle@{SetShowSubTitle}}
+\index{SetShowSubTitle@{SetShowSubTitle}!PageDetailsPanel@{PageDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{SetShowSubTitle()}{SetShowSubTitle()}}
+{\footnotesize\ttfamily \label{class_page_details_panel_acae19a19f5ef7797461c878605e412a4} 
+void Page\+Details\+Panel\+::\+Set\+Show\+Sub\+Title (\begin{DoxyParamCaption}\item[{bool}]{state}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_page_details_panel_8cpp_source_l00430}{430}} of file \mbox{\hyperlink{_page_details_panel_8cpp_source}{Page\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_page_details_panel_aca6780301076829b1037fc708659371a}\index{PageDetailsPanel@{PageDetailsPanel}!SetShowTitle@{SetShowTitle}}
+\index{SetShowTitle@{SetShowTitle}!PageDetailsPanel@{PageDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{SetShowTitle()}{SetShowTitle()}}
+{\footnotesize\ttfamily \label{class_page_details_panel_aca6780301076829b1037fc708659371a} 
+void Page\+Details\+Panel\+::\+Set\+Show\+Title (\begin{DoxyParamCaption}\item[{bool}]{state}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_page_details_panel_8cpp_source_l00424}{424}} of file \mbox{\hyperlink{_page_details_panel_8cpp_source}{Page\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_page_details_panel_a76976cc8a222619f5eee5da7bdc479ac}\index{PageDetailsPanel@{PageDetailsPanel}!SetStatusList@{SetStatusList}}
+\index{SetStatusList@{SetStatusList}!PageDetailsPanel@{PageDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{SetStatusList()}{SetStatusList()}}
+{\footnotesize\ttfamily \label{class_page_details_panel_a76976cc8a222619f5eee5da7bdc479ac} 
+void Page\+Details\+Panel\+::\+Set\+Status\+List (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_page_details_panel_8cpp_source_l00646}{646}} of file \mbox{\hyperlink{_page_details_panel_8cpp_source}{Page\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_page_details_panel_ad97bc5b042707a65146d4d6a09b4e3e2}\index{PageDetailsPanel@{PageDetailsPanel}!SetSubTitle@{SetSubTitle}}
+\index{SetSubTitle@{SetSubTitle}!PageDetailsPanel@{PageDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{SetSubTitle()}{SetSubTitle()}}
+{\footnotesize\ttfamily \label{class_page_details_panel_ad97bc5b042707a65146d4d6a09b4e3e2} 
+void Page\+Details\+Panel\+::\+Set\+Sub\+Title (\begin{DoxyParamCaption}\item[{wx\+String}]{sub\+Title}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_page_details_panel_8cpp_source_l00409}{409}} of file \mbox{\hyperlink{_page_details_panel_8cpp_source}{Page\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_page_details_panel_aea95b4bfa8e747395d93b4c121c197ca}\index{PageDetailsPanel@{PageDetailsPanel}!SetSubTitleColor@{SetSubTitleColor}}
+\index{SetSubTitleColor@{SetSubTitleColor}!PageDetailsPanel@{PageDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{SetSubTitleColor()}{SetSubTitleColor()}}
+{\footnotesize\ttfamily \label{class_page_details_panel_aea95b4bfa8e747395d93b4c121c197ca} 
+void Page\+Details\+Panel\+::\+Set\+Sub\+Title\+Color (\begin{DoxyParamCaption}\item[{wx\+Colour}]{color}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_page_details_panel_8cpp_source_l00395}{395}} of file \mbox{\hyperlink{_page_details_panel_8cpp_source}{Page\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_page_details_panel_a36aeb4e59eecdc6bb23c3a8423b59236}\index{PageDetailsPanel@{PageDetailsPanel}!SetSubTitleFont@{SetSubTitleFont}}
+\index{SetSubTitleFont@{SetSubTitleFont}!PageDetailsPanel@{PageDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{SetSubTitleFont()}{SetSubTitleFont()}}
+{\footnotesize\ttfamily \label{class_page_details_panel_a36aeb4e59eecdc6bb23c3a8423b59236} 
+void Page\+Details\+Panel\+::\+Set\+Sub\+Title\+Font (\begin{DoxyParamCaption}\item[{wx\+Font}]{font}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_page_details_panel_8cpp_source_l00386}{386}} of file \mbox{\hyperlink{_page_details_panel_8cpp_source}{Page\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_page_details_panel_a993e4c8c794ab090375c0163a1f8b4a6}\index{PageDetailsPanel@{PageDetailsPanel}!SetTitle@{SetTitle}}
+\index{SetTitle@{SetTitle}!PageDetailsPanel@{PageDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{SetTitle()}{SetTitle()}}
+{\footnotesize\ttfamily \label{class_page_details_panel_a993e4c8c794ab090375c0163a1f8b4a6} 
+void Page\+Details\+Panel\+::\+Set\+Title (\begin{DoxyParamCaption}\item[{wx\+String}]{name}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_page_details_panel_8cpp_source_l00400}{400}} of file \mbox{\hyperlink{_page_details_panel_8cpp_source}{Page\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_page_details_panel_aff602a955b65c9a51d17979bfbe259ff}\index{PageDetailsPanel@{PageDetailsPanel}!SetTitleColor@{SetTitleColor}}
+\index{SetTitleColor@{SetTitleColor}!PageDetailsPanel@{PageDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{SetTitleColor()}{SetTitleColor()}}
+{\footnotesize\ttfamily \label{class_page_details_panel_aff602a955b65c9a51d17979bfbe259ff} 
+void Page\+Details\+Panel\+::\+Set\+Title\+Color (\begin{DoxyParamCaption}\item[{wx\+Colour}]{color}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_page_details_panel_8cpp_source_l00380}{380}} of file \mbox{\hyperlink{_page_details_panel_8cpp_source}{Page\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_page_details_panel_ae95e3257f6628d97ba81f2bfe1a8633f}\index{PageDetailsPanel@{PageDetailsPanel}!SetTitleFont@{SetTitleFont}}
+\index{SetTitleFont@{SetTitleFont}!PageDetailsPanel@{PageDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{SetTitleFont()}{SetTitleFont()}}
+{\footnotesize\ttfamily \label{class_page_details_panel_ae95e3257f6628d97ba81f2bfe1a8633f} 
+void Page\+Details\+Panel\+::\+Set\+Title\+Font (\begin{DoxyParamCaption}\item[{wx\+Font}]{font}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_page_details_panel_8cpp_source_l00375}{375}} of file \mbox{\hyperlink{_page_details_panel_8cpp_source}{Page\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_page_details_panel_a581de127b24b9f90dae21114739720db}\index{PageDetailsPanel@{PageDetailsPanel}!SetTopContentMargin@{SetTopContentMargin}}
+\index{SetTopContentMargin@{SetTopContentMargin}!PageDetailsPanel@{PageDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{SetTopContentMargin()}{SetTopContentMargin()}}
+{\footnotesize\ttfamily \label{class_page_details_panel_a581de127b24b9f90dae21114739720db} 
+void Page\+Details\+Panel\+::\+Set\+Top\+Content\+Margin (\begin{DoxyParamCaption}\item[{wx\+String}]{content\+Margin}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_page_details_panel_8cpp_source_l00482}{482}} of file \mbox{\hyperlink{_page_details_panel_8cpp_source}{Page\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_page_details_panel_adf5632cc69eb99c5139bd8db1de14108}\index{PageDetailsPanel@{PageDetailsPanel}!SetTopPageMargin@{SetTopPageMargin}}
+\index{SetTopPageMargin@{SetTopPageMargin}!PageDetailsPanel@{PageDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{SetTopPageMargin()}{SetTopPageMargin()}}
+{\footnotesize\ttfamily \label{class_page_details_panel_adf5632cc69eb99c5139bd8db1de14108} 
+void Page\+Details\+Panel\+::\+Set\+Top\+Page\+Margin (\begin{DoxyParamCaption}\item[{wx\+String}]{str}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_page_details_panel_8cpp_source_l00441}{441}} of file \mbox{\hyperlink{_page_details_panel_8cpp_source}{Page\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_page_details_panel_afa9aa8e202c8f7d5d5cc651a7ff0cf83}\index{PageDetailsPanel@{PageDetailsPanel}!SetupDialog@{SetupDialog}}
+\index{SetupDialog@{SetupDialog}!PageDetailsPanel@{PageDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{SetupDialog()}{SetupDialog()}}
+{\footnotesize\ttfamily \label{class_page_details_panel_afa9aa8e202c8f7d5d5cc651a7ff0cf83} 
+void Page\+Details\+Panel\+::\+Setup\+Dialog (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_design_1_1_page}{Design\+::\+Page}} \texorpdfstring{$\ast$}{*}}]{page}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_page_details_panel_8cpp_source_l00351}{351}} of file \mbox{\hyperlink{_page_details_panel_8cpp_source}{Page\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_page_details_panel_a8715b094307325cf8d13d9f762fda01f}\index{PageDetailsPanel@{PageDetailsPanel}!ShowToolTips@{ShowToolTips}}
+\index{ShowToolTips@{ShowToolTips}!PageDetailsPanel@{PageDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{ShowToolTips()}{ShowToolTips()}}
+{\footnotesize\ttfamily \label{class_page_details_panel_a8715b094307325cf8d13d9f762fda01f} 
+bool Page\+Details\+Panel\+::\+Show\+Tool\+Tips (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{_page_details_panel_8cpp_source_l00368}{368}} of file \mbox{\hyperlink{_page_details_panel_8cpp_source}{Page\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_page_details_panel_a30786c49f90d85abcf9f8493a56590a1}\index{PageDetailsPanel@{PageDetailsPanel}!Update@{Update}}
+\index{Update@{Update}!PageDetailsPanel@{PageDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{class_page_details_panel_a30786c49f90d85abcf9f8493a56590a1} 
+void Page\+Details\+Panel\+::\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_page_details_panel_8cpp_source_l00657}{657}} of file \mbox{\hyperlink{_page_details_panel_8cpp_source}{Page\+Details\+Panel.\+cpp}}.
+
+\Hypertarget{class_page_details_panel_ab705b2ccb69e333b707de29cafaeadd4}\index{PageDetailsPanel@{PageDetailsPanel}!UpdateControls@{UpdateControls}}
+\index{UpdateControls@{UpdateControls}!PageDetailsPanel@{PageDetailsPanel}}
+\doxysubsubsection{\texorpdfstring{UpdateControls()}{UpdateControls()}}
+{\footnotesize\ttfamily \label{class_page_details_panel_ab705b2ccb69e333b707de29cafaeadd4} 
+void Page\+Details\+Panel\+::\+Update\+Controls (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_page_details_panel_8cpp_source_l00318}{318}} of file \mbox{\hyperlink{_page_details_panel_8cpp_source}{Page\+Details\+Panel.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/femon/\+Development/wx/clone\+Test/\+Stamp\+Tool/src/gui/\mbox{\hyperlink{_page_details_panel_8h}{Page\+Details\+Panel.\+h}}\item 
+C\+:/\+Users/femon/\+Development/wx/clone\+Test/\+Stamp\+Tool/src/gui/\mbox{\hyperlink{_page_details_panel_8cpp}{Page\+Details\+Panel.\+cpp}}\end{DoxyCompactItemize}

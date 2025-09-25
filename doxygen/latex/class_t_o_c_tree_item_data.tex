@@ -1,0 +1,242 @@
+\doxysection{TOCTree\+Item\+Data Class Reference}
+\hypertarget{class_t_o_c_tree_item_data}{}\label{class_t_o_c_tree_item_data}\index{TOCTreeItemData@{TOCTreeItemData}}
+
+
+{\ttfamily \#include $<$TOCTree\+Ctrl.\+h$>$}
+
+Inheritance diagram for TOCTree\+Item\+Data\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_t_o_c_tree_item_data}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_t_o_c_tree_item_data_af1d7b6aea470f2f380a9875d6af1e803}{TOCTree\+Item\+Data}} (\mbox{\hyperlink{namespace_utils_a8d9b4e3627512bacc09c31c52f3d08f1}{Utils\+::\+TOCBase\+Type}} type, bool collapse\+State=false, wx\+String name="{}"{}, const wx\+String desc="{}"{}, int menu\+ID=0, \mbox{\hyperlink{_t_o_c_tree_ctrl_8h_a8717254b25ba356bd682f98ceffdc4dd}{Volume\+Ptr}} vol=0)
+\item 
+\mbox{\hyperlink{class_t_o_c_tree_item_data_a2219bbf6029fa2caf566d29db0f8f59a}{TOCTree\+Item\+Data}} (\mbox{\hyperlink{class_t_o_c_tree_item_data}{TOCTree\+Item\+Data}} \&src)
+\item 
+void \mbox{\hyperlink{class_t_o_c_tree_item_data_ac6488198a67607a05279d8b15c27f2e0}{Copy}} (\mbox{\hyperlink{class_t_o_c_tree_item_data}{TOCTree\+Item\+Data}} \&lhs, \mbox{\hyperlink{class_t_o_c_tree_item_data}{TOCTree\+Item\+Data}} \&rhs)
+\item 
+\mbox{\hyperlink{class_t_o_c_tree_item_data_a4785f12b325ea3ea64dc10fddd0144c4}{\texorpdfstring{$\sim$}{\string~}\+TOCTree\+Item\+Data}} ()
+\item 
+int \mbox{\hyperlink{class_t_o_c_tree_item_data_a00abf1ca92fb1db491bfc368a1bee210}{Cmp}} (\mbox{\hyperlink{class_t_o_c_tree_item_data}{TOCTree\+Item\+Data}} \texorpdfstring{$\ast$}{*}item\+Data2)
+\item 
+bool \mbox{\hyperlink{class_t_o_c_tree_item_data_abe3fd9e9236e69fd4228f32ff2a2a260}{Is\+OK}} ()
+\item 
+wx\+String const \& \mbox{\hyperlink{class_t_o_c_tree_item_data_a0a84c7fb5d3080669ce17ac381d59dec}{Get\+Desc}} () const
+\item 
+\mbox{\hyperlink{_t_o_c_tree_ctrl_8h_a8717254b25ba356bd682f98ceffdc4dd}{Volume\+Ptr}} \mbox{\hyperlink{class_t_o_c_tree_item_data_a0ddaeeaf318079e3390b7a7dac2fe211}{Get\+Volume}} ()
+\item 
+\mbox{\hyperlink{namespace_utils_a8d9b4e3627512bacc09c31c52f3d08f1}{Utils\+::\+TOCBase\+Type}} \mbox{\hyperlink{class_t_o_c_tree_item_data_ad8ba4a2526389d24fda6bb074e0cc51f}{Get\+Type}} ()
+\item 
+void \mbox{\hyperlink{class_t_o_c_tree_item_data_acac0791a908baaf1f6e68d126ed5431a}{Set\+Type}} (\mbox{\hyperlink{namespace_utils_a8d9b4e3627512bacc09c31c52f3d08f1}{Utils\+::\+TOCBase\+Type}} type)
+\item 
+int \mbox{\hyperlink{class_t_o_c_tree_item_data_ab5d5e25dab3824f5700692cd584f5fa8}{Get\+Menu\+ID}} ()
+\item 
+void \mbox{\hyperlink{class_t_o_c_tree_item_data_ad221c988ddeec7ad362d4780ec78e62a}{Set\+Collapse\+State}} (bool state)
+\item 
+bool \mbox{\hyperlink{class_t_o_c_tree_item_data_acab8088d7cef2b4448c34b388fa62848}{Get\+Collapse\+State}} ()
+\item 
+void \mbox{\hyperlink{class_t_o_c_tree_item_data_aeae094521acc50723f3692561238dd1f}{Set\+Name}} (wx\+String name)
+\item 
+wx\+String \mbox{\hyperlink{class_t_o_c_tree_item_data_ab496fc4e01284fa423b9a10c0a778c61}{Get\+Name}} ()
+\item 
+double \mbox{\hyperlink{class_t_o_c_tree_item_data_a2ad05492dc1357242df64b61a5827981}{Get\+OK}} ()
+\item 
+\mbox{\hyperlink{class_t_o_c_tree_item_data}{TOCTree\+Item\+Data}} \& \mbox{\hyperlink{class_t_o_c_tree_item_data_a343488ad80902ac56d6cc68e80828e5d}{operator=}} (\mbox{\hyperlink{class_t_o_c_tree_item_data}{TOCTree\+Item\+Data}} \&other) noexcept
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_t_o_c_tree_ctrl_8h_source_l00048}{48}} of file \mbox{\hyperlink{_t_o_c_tree_ctrl_8h_source}{TOCTree\+Ctrl.\+h}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_t_o_c_tree_item_data_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_t_o_c_tree_item_data_af1d7b6aea470f2f380a9875d6af1e803}\index{TOCTreeItemData@{TOCTreeItemData}!TOCTreeItemData@{TOCTreeItemData}}
+\index{TOCTreeItemData@{TOCTreeItemData}!TOCTreeItemData@{TOCTreeItemData}}
+\doxysubsubsection{\texorpdfstring{TOCTreeItemData()}{TOCTreeItemData()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_t_o_c_tree_item_data_af1d7b6aea470f2f380a9875d6af1e803} 
+TOCTree\+Item\+Data\+::\+TOCTree\+Item\+Data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_utils_a8d9b4e3627512bacc09c31c52f3d08f1}{Utils\+::\+TOCBase\+Type}}}]{type}{, }\item[{bool}]{collapse\+State}{ = {\ttfamily false}, }\item[{wx\+String}]{name}{ = {\ttfamily "{}"{}}, }\item[{const wx\+String}]{desc}{ = {\ttfamily "{}"{}}, }\item[{int}]{menu\+ID}{ = {\ttfamily 0}, }\item[{\mbox{\hyperlink{_t_o_c_tree_ctrl_8h_a8717254b25ba356bd682f98ceffdc4dd}{Volume\+Ptr}}}]{vol}{ = {\ttfamily 0}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_t_o_c_tree_ctrl_8h_source_l00053}{53}} of file \mbox{\hyperlink{_t_o_c_tree_ctrl_8h_source}{TOCTree\+Ctrl.\+h}}.
+
+\Hypertarget{class_t_o_c_tree_item_data_a2219bbf6029fa2caf566d29db0f8f59a}\index{TOCTreeItemData@{TOCTreeItemData}!TOCTreeItemData@{TOCTreeItemData}}
+\index{TOCTreeItemData@{TOCTreeItemData}!TOCTreeItemData@{TOCTreeItemData}}
+\doxysubsubsection{\texorpdfstring{TOCTreeItemData()}{TOCTreeItemData()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_t_o_c_tree_item_data_a2219bbf6029fa2caf566d29db0f8f59a} 
+TOCTree\+Item\+Data\+::\+TOCTree\+Item\+Data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_t_o_c_tree_item_data}{TOCTree\+Item\+Data}} \&}]{src}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_t_o_c_tree_ctrl_8h_source_l00067}{67}} of file \mbox{\hyperlink{_t_o_c_tree_ctrl_8h_source}{TOCTree\+Ctrl.\+h}}.
+
+\Hypertarget{class_t_o_c_tree_item_data_a4785f12b325ea3ea64dc10fddd0144c4}\index{TOCTreeItemData@{TOCTreeItemData}!````~TOCTreeItemData@{\texorpdfstring{$\sim$}{\string~}TOCTreeItemData}}
+\index{````~TOCTreeItemData@{\texorpdfstring{$\sim$}{\string~}TOCTreeItemData}!TOCTreeItemData@{TOCTreeItemData}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}TOCTreeItemData()}{\string~TOCTreeItemData()}}
+{\footnotesize\ttfamily \label{class_t_o_c_tree_item_data_a4785f12b325ea3ea64dc10fddd0144c4} 
+TOCTree\+Item\+Data\+::\texorpdfstring{$\sim$}{\string~}\+TOCTree\+Item\+Data (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_t_o_c_tree_ctrl_8h_source_l00086}{86}} of file \mbox{\hyperlink{_t_o_c_tree_ctrl_8h_source}{TOCTree\+Ctrl.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_t_o_c_tree_item_data_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_t_o_c_tree_item_data_a00abf1ca92fb1db491bfc368a1bee210}\index{TOCTreeItemData@{TOCTreeItemData}!Cmp@{Cmp}}
+\index{Cmp@{Cmp}!TOCTreeItemData@{TOCTreeItemData}}
+\doxysubsubsection{\texorpdfstring{Cmp()}{Cmp()}}
+{\footnotesize\ttfamily \label{class_t_o_c_tree_item_data_a00abf1ca92fb1db491bfc368a1bee210} 
+int TOCTree\+Item\+Data\+::\+Cmp (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_t_o_c_tree_item_data}{TOCTree\+Item\+Data}} \texorpdfstring{$\ast$}{*}}]{item\+Data2}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_t_o_c_tree_ctrl_8cpp_source_l00077}{77}} of file \mbox{\hyperlink{_t_o_c_tree_ctrl_8cpp_source}{TOCTree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_t_o_c_tree_item_data_ac6488198a67607a05279d8b15c27f2e0}\index{TOCTreeItemData@{TOCTreeItemData}!Copy@{Copy}}
+\index{Copy@{Copy}!TOCTreeItemData@{TOCTreeItemData}}
+\doxysubsubsection{\texorpdfstring{Copy()}{Copy()}}
+{\footnotesize\ttfamily \label{class_t_o_c_tree_item_data_ac6488198a67607a05279d8b15c27f2e0} 
+void TOCTree\+Item\+Data\+::\+Copy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_t_o_c_tree_item_data}{TOCTree\+Item\+Data}} \&}]{lhs}{, }\item[{\mbox{\hyperlink{class_t_o_c_tree_item_data}{TOCTree\+Item\+Data}} \&}]{rhs}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_t_o_c_tree_ctrl_8h_source_l00073}{73}} of file \mbox{\hyperlink{_t_o_c_tree_ctrl_8h_source}{TOCTree\+Ctrl.\+h}}.
+
+\Hypertarget{class_t_o_c_tree_item_data_acab8088d7cef2b4448c34b388fa62848}\index{TOCTreeItemData@{TOCTreeItemData}!GetCollapseState@{GetCollapseState}}
+\index{GetCollapseState@{GetCollapseState}!TOCTreeItemData@{TOCTreeItemData}}
+\doxysubsubsection{\texorpdfstring{GetCollapseState()}{GetCollapseState()}}
+{\footnotesize\ttfamily \label{class_t_o_c_tree_item_data_acab8088d7cef2b4448c34b388fa62848} 
+bool TOCTree\+Item\+Data\+::\+Get\+Collapse\+State (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_t_o_c_tree_ctrl_8h_source_l00131}{131}} of file \mbox{\hyperlink{_t_o_c_tree_ctrl_8h_source}{TOCTree\+Ctrl.\+h}}.
+
+\Hypertarget{class_t_o_c_tree_item_data_a0a84c7fb5d3080669ce17ac381d59dec}\index{TOCTreeItemData@{TOCTreeItemData}!GetDesc@{GetDesc}}
+\index{GetDesc@{GetDesc}!TOCTreeItemData@{TOCTreeItemData}}
+\doxysubsubsection{\texorpdfstring{GetDesc()}{GetDesc()}}
+{\footnotesize\ttfamily \label{class_t_o_c_tree_item_data_a0a84c7fb5d3080669ce17ac381d59dec} 
+wx\+String const  \& TOCTree\+Item\+Data\+::\+Get\+Desc (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_t_o_c_tree_ctrl_8h_source_l00104}{104}} of file \mbox{\hyperlink{_t_o_c_tree_ctrl_8h_source}{TOCTree\+Ctrl.\+h}}.
+
+\Hypertarget{class_t_o_c_tree_item_data_ab5d5e25dab3824f5700692cd584f5fa8}\index{TOCTreeItemData@{TOCTreeItemData}!GetMenuID@{GetMenuID}}
+\index{GetMenuID@{GetMenuID}!TOCTreeItemData@{TOCTreeItemData}}
+\doxysubsubsection{\texorpdfstring{GetMenuID()}{GetMenuID()}}
+{\footnotesize\ttfamily \label{class_t_o_c_tree_item_data_ab5d5e25dab3824f5700692cd584f5fa8} 
+int TOCTree\+Item\+Data\+::\+Get\+Menu\+ID (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_t_o_c_tree_ctrl_8h_source_l00123}{123}} of file \mbox{\hyperlink{_t_o_c_tree_ctrl_8h_source}{TOCTree\+Ctrl.\+h}}.
+
+\Hypertarget{class_t_o_c_tree_item_data_ab496fc4e01284fa423b9a10c0a778c61}\index{TOCTreeItemData@{TOCTreeItemData}!GetName@{GetName}}
+\index{GetName@{GetName}!TOCTreeItemData@{TOCTreeItemData}}
+\doxysubsubsection{\texorpdfstring{GetName()}{GetName()}}
+{\footnotesize\ttfamily \label{class_t_o_c_tree_item_data_ab496fc4e01284fa423b9a10c0a778c61} 
+wx\+String TOCTree\+Item\+Data\+::\+Get\+Name (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_t_o_c_tree_ctrl_8h_source_l00139}{139}} of file \mbox{\hyperlink{_t_o_c_tree_ctrl_8h_source}{TOCTree\+Ctrl.\+h}}.
+
+\Hypertarget{class_t_o_c_tree_item_data_a2ad05492dc1357242df64b61a5827981}\index{TOCTreeItemData@{TOCTreeItemData}!GetOK@{GetOK}}
+\index{GetOK@{GetOK}!TOCTreeItemData@{TOCTreeItemData}}
+\doxysubsubsection{\texorpdfstring{GetOK()}{GetOK()}}
+{\footnotesize\ttfamily \label{class_t_o_c_tree_item_data_a2ad05492dc1357242df64b61a5827981} 
+double TOCTree\+Item\+Data\+::\+Get\+OK (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_t_o_c_tree_ctrl_8h_source_l00143}{143}} of file \mbox{\hyperlink{_t_o_c_tree_ctrl_8h_source}{TOCTree\+Ctrl.\+h}}.
+
+\Hypertarget{class_t_o_c_tree_item_data_ad8ba4a2526389d24fda6bb074e0cc51f}\index{TOCTreeItemData@{TOCTreeItemData}!GetType@{GetType}}
+\index{GetType@{GetType}!TOCTreeItemData@{TOCTreeItemData}}
+\doxysubsubsection{\texorpdfstring{GetType()}{GetType()}}
+{\footnotesize\ttfamily \label{class_t_o_c_tree_item_data_ad8ba4a2526389d24fda6bb074e0cc51f} 
+\mbox{\hyperlink{namespace_utils_a8d9b4e3627512bacc09c31c52f3d08f1}{Utils\+::\+TOCBase\+Type}} TOCTree\+Item\+Data\+::\+Get\+Type (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_t_o_c_tree_ctrl_8h_source_l00114}{114}} of file \mbox{\hyperlink{_t_o_c_tree_ctrl_8h_source}{TOCTree\+Ctrl.\+h}}.
+
+\Hypertarget{class_t_o_c_tree_item_data_a0ddaeeaf318079e3390b7a7dac2fe211}\index{TOCTreeItemData@{TOCTreeItemData}!GetVolume@{GetVolume}}
+\index{GetVolume@{GetVolume}!TOCTreeItemData@{TOCTreeItemData}}
+\doxysubsubsection{\texorpdfstring{GetVolume()}{GetVolume()}}
+{\footnotesize\ttfamily \label{class_t_o_c_tree_item_data_a0ddaeeaf318079e3390b7a7dac2fe211} 
+\mbox{\hyperlink{_t_o_c_tree_ctrl_8h_a8717254b25ba356bd682f98ceffdc4dd}{Volume\+Ptr}} TOCTree\+Item\+Data\+::\+Get\+Volume (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_t_o_c_tree_ctrl_8h_source_l00109}{109}} of file \mbox{\hyperlink{_t_o_c_tree_ctrl_8h_source}{TOCTree\+Ctrl.\+h}}.
+
+\Hypertarget{class_t_o_c_tree_item_data_abe3fd9e9236e69fd4228f32ff2a2a260}\index{TOCTreeItemData@{TOCTreeItemData}!IsOK@{IsOK}}
+\index{IsOK@{IsOK}!TOCTreeItemData@{TOCTreeItemData}}
+\doxysubsubsection{\texorpdfstring{IsOK()}{IsOK()}}
+{\footnotesize\ttfamily \label{class_t_o_c_tree_item_data_abe3fd9e9236e69fd4228f32ff2a2a260} 
+bool TOCTree\+Item\+Data\+::\+Is\+OK (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_t_o_c_tree_ctrl_8h_source_l00094}{94}} of file \mbox{\hyperlink{_t_o_c_tree_ctrl_8h_source}{TOCTree\+Ctrl.\+h}}.
+
+\Hypertarget{class_t_o_c_tree_item_data_a343488ad80902ac56d6cc68e80828e5d}\index{TOCTreeItemData@{TOCTreeItemData}!operator=@{operator=}}
+\index{operator=@{operator=}!TOCTreeItemData@{TOCTreeItemData}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \label{class_t_o_c_tree_item_data_a343488ad80902ac56d6cc68e80828e5d} 
+\mbox{\hyperlink{class_t_o_c_tree_item_data}{TOCTree\+Item\+Data}} \& TOCTree\+Item\+Data\+::operator= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_t_o_c_tree_item_data}{TOCTree\+Item\+Data}} \&}]{other}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Definition at line \mbox{\hyperlink{_t_o_c_tree_ctrl_8h_source_l00147}{147}} of file \mbox{\hyperlink{_t_o_c_tree_ctrl_8h_source}{TOCTree\+Ctrl.\+h}}.
+
+\Hypertarget{class_t_o_c_tree_item_data_ad221c988ddeec7ad362d4780ec78e62a}\index{TOCTreeItemData@{TOCTreeItemData}!SetCollapseState@{SetCollapseState}}
+\index{SetCollapseState@{SetCollapseState}!TOCTreeItemData@{TOCTreeItemData}}
+\doxysubsubsection{\texorpdfstring{SetCollapseState()}{SetCollapseState()}}
+{\footnotesize\ttfamily \label{class_t_o_c_tree_item_data_ad221c988ddeec7ad362d4780ec78e62a} 
+void TOCTree\+Item\+Data\+::\+Set\+Collapse\+State (\begin{DoxyParamCaption}\item[{bool}]{state}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_t_o_c_tree_ctrl_8h_source_l00127}{127}} of file \mbox{\hyperlink{_t_o_c_tree_ctrl_8h_source}{TOCTree\+Ctrl.\+h}}.
+
+\Hypertarget{class_t_o_c_tree_item_data_aeae094521acc50723f3692561238dd1f}\index{TOCTreeItemData@{TOCTreeItemData}!SetName@{SetName}}
+\index{SetName@{SetName}!TOCTreeItemData@{TOCTreeItemData}}
+\doxysubsubsection{\texorpdfstring{SetName()}{SetName()}}
+{\footnotesize\ttfamily \label{class_t_o_c_tree_item_data_aeae094521acc50723f3692561238dd1f} 
+void TOCTree\+Item\+Data\+::\+Set\+Name (\begin{DoxyParamCaption}\item[{wx\+String}]{name}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_t_o_c_tree_ctrl_8h_source_l00135}{135}} of file \mbox{\hyperlink{_t_o_c_tree_ctrl_8h_source}{TOCTree\+Ctrl.\+h}}.
+
+\Hypertarget{class_t_o_c_tree_item_data_acac0791a908baaf1f6e68d126ed5431a}\index{TOCTreeItemData@{TOCTreeItemData}!SetType@{SetType}}
+\index{SetType@{SetType}!TOCTreeItemData@{TOCTreeItemData}}
+\doxysubsubsection{\texorpdfstring{SetType()}{SetType()}}
+{\footnotesize\ttfamily \label{class_t_o_c_tree_item_data_acac0791a908baaf1f6e68d126ed5431a} 
+void TOCTree\+Item\+Data\+::\+Set\+Type (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_utils_a8d9b4e3627512bacc09c31c52f3d08f1}{Utils\+::\+TOCBase\+Type}}}]{type}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_t_o_c_tree_ctrl_8h_source_l00119}{119}} of file \mbox{\hyperlink{_t_o_c_tree_ctrl_8h_source}{TOCTree\+Ctrl.\+h}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/femon/\+Development/wx/clone\+Test/\+Stamp\+Tool/src/gui/\mbox{\hyperlink{_t_o_c_tree_ctrl_8h}{TOCTree\+Ctrl.\+h}}\item 
+C\+:/\+Users/femon/\+Development/wx/clone\+Test/\+Stamp\+Tool/src/gui/\mbox{\hyperlink{_t_o_c_tree_ctrl_8cpp}{TOCTree\+Ctrl.\+cpp}}\end{DoxyCompactItemize}

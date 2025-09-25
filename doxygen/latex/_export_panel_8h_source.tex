@@ -1,0 +1,129 @@
+\doxysection{Export\+Panel.\+h}
+\hypertarget{_export_panel_8h_source}{}\label{_export_panel_8h_source}\index{C:/Users/femon/Development/wx/cloneTest/StampTool/src/gui/ExportPanel.h@{C:/Users/femon/Development/wx/cloneTest/StampTool/src/gui/ExportPanel.h}}
+\mbox{\hyperlink{_export_panel_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00002}00002\ \textcolor{comment}{\ *\ @file\ ExportPanel.h}}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00003}00003\ \textcolor{comment}{\ *\ @author\ Eddie\ Monroe}}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00004}00004\ \textcolor{comment}{\ *\ @brief}}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00005}00005\ \textcolor{comment}{\ *\ @version\ 0.1}}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00006}00006\ \textcolor{comment}{\ *\ @date\ 2022-\/04-\/29}}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00007}00007\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00008}00008\ \textcolor{comment}{\ *\ @copyright\ Copyright\ (\ c\ )\ 2022}}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00009}00009\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00010}00010\ \textcolor{comment}{\ *\ This\ file\ is\ part\ of\ StampTool.}}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00011}00011\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00012}00012\ \textcolor{comment}{\ *\ StampTool\ is\ free\ software:\ you\ can\ redistribute\ it\ and/or\ modify\ it\ under\ the}}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00013}00013\ \textcolor{comment}{\ *\ terms\ of\ the\ GNU\ General\ Public\ License\ as\ published\ by\ the\ Free\ Software\ Foundation,}}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00014}00014\ \textcolor{comment}{\ *\ either\ version\ 3\ of\ the\ License,\ or\ any\ later\ version.}}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00015}00015\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00016}00016\ \textcolor{comment}{\ *\ StampTool\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,\ but\ WITHOUT\ ANY}}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00017}00017\ \textcolor{comment}{\ *\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of\ MERCHANTABILITY\ or\ FITNESS\ FOR\ A}}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00018}00018\ \textcolor{comment}{\ *\ PARTICULAR\ PURPOSE.\ See\ the\ GNU\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00019}00019\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00020}00020\ \textcolor{comment}{\ *\ You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License\ along\ with}}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00021}00021\ \textcolor{comment}{\ *\ StampTool.\ If\ not,\ see\ <https://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00022}00022\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00024}00024\ \textcolor{preprocessor}{\#ifndef\ \_ROWDETAILSPANEL\_H\_}}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00025}00025\ \textcolor{preprocessor}{\#define\ \_ROWDETAILSPANEL\_H\_}}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00027}00027\ \textcolor{preprocessor}{\#include\ "{}wx/listctrl.h"{}}}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00029}00029\ \textcolor{preprocessor}{\#include\ <wx/fontpicker.h>}}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00030}00030\ \textcolor{preprocessor}{\#include\ <wx/clrpicker.h>}}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00032}00032\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_album_tree_ctrl_8h}{gui/AlbumTreeCtrl.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00033}00033\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_gui_defs_8h}{gui/GuiDefs.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00034}00034\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_helper_panel_8h}{gui/HelperPanel.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00037}00037\ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00038}00038\ \textcolor{comment}{\ \ *\ Forward\ declarations}}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00039}00039\ \textcolor{comment}{\ \ */}}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00040}00040\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_labeled_text_box}{LabeledTextBox}};}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00041}00041\ \textcolor{keyword}{class\ }wxListCtrl;}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00042}00042\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_title_helper}{TitleHelper}};}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00043}00043\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_design}{Design}}\ \{}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00044}00044\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_design_1_1_row}{Row}};}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00045}00045\ \};}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00047}00047\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00048}00048\ \textcolor{comment}{\ *\ Control\ identifiers}}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00049}00049\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00053}\mbox{\hyperlink{_export_panel_8h_a2e639dc4459183c4e19859d1bb5c9415}{00053}}\ \textcolor{preprocessor}{\#define\ SYMBOL\_EXPORTPANEL\_STYLE\ wxCAPTION\ |\ wxRESIZE\_BORDER\ |\ wxSYSTEM\_MENU\ |\ wxCLOSE\_BOX\ |\ wxTAB\_TRAVERSAL}}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00054}\mbox{\hyperlink{_export_panel_8h_a54ff8c6d860a45b7c86994b72e862b3e}{00054}}\ \textcolor{preprocessor}{\#define\ SYMBOL\_EXPORTPANEL\_TITLE\ \_(\ "{}Export"{}\ )}}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00055}\mbox{\hyperlink{_export_panel_8h_a802f37b1c8b591b0fbf82127d38bcb77}{00055}}\ \textcolor{preprocessor}{\#define\ SYMBOL\_EXPORTPANEL\_IDNAME\ ID\_EXPORTPANEL}}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00056}\mbox{\hyperlink{_export_panel_8h_aeacc6bcf61c090e9619efb3d6c8c80ea}{00056}}\ \textcolor{preprocessor}{\#define\ SYMBOL\_EXPORTPANEL\_SIZE\ wxSize(\ -\/1,\ -\/1\ )}}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00057}\mbox{\hyperlink{_export_panel_8h_a05d80063f1792877fd57f406636ad4d8}{00057}}\ \textcolor{preprocessor}{\#define\ SYMBOL\_EXPORTPANEL\_POSITION\ wxDefaultPosition}}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00061}00061\ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00062}00062\ \textcolor{comment}{\ \ *\ ExportPanel\ class\ declaration}}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00063}00063\ \textcolor{comment}{\ \ */}}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00065}\mbox{\hyperlink{class_export_panel}{00065}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_export_panel_a8d0e4fab041c4da71102f0771854bb04}{ExportPanel}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_helper_panel_a1a0380f0351c504df04ccd0924c72e18}{HelperPanel}}}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00066}00066\ \{}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00067}00067\ \ \ \ \ DECLARE\_DYNAMIC\_CLASS(\ \mbox{\hyperlink{class_export_panel_a8d0e4fab041c4da71102f0771854bb04}{ExportPanel}}\ )}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00068}00068\ \ \ \ \ DECLARE\_EVENT\_TABLE(\ )}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00070}00070\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00071}\mbox{\hyperlink{class_export_panel_af90b36ea4c09b8a73b40ffd6382d8216}{00071}}\ \ \ \ \ \textcolor{keyword}{enum}\ \mbox{\hyperlink{class_export_panel_af90b36ea4c09b8a73b40ffd6382d8216}{ExportPanelGuiDefs}}\ \{}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00073}\mbox{\hyperlink{class_export_panel_af90b36ea4c09b8a73b40ffd6382d8216a460e182ffbeb0637c6746bd0e0f43bb5}{00073}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_export_panel_af90b36ea4c09b8a73b40ffd6382d8216a460e182ffbeb0637c6746bd0e0f43bb5}{ID\_NAMELABELEDTEXTBOX}}\ =\ \mbox{\hyperlink{_gui_defs_8h_a6329898a126babcdaa295242c115a11ead4b767f210369f0be6278ed31ef61685}{ID\_EXPORTPANEL}},}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00074}\mbox{\hyperlink{class_export_panel_af90b36ea4c09b8a73b40ffd6382d8216af9ad9561e3ce1b25ee08d3e3888d9e9d}{00074}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_export_panel_af90b36ea4c09b8a73b40ffd6382d8216af9ad9561e3ce1b25ee08d3e3888d9e9d}{ID\_EMISSIONALLBUTTON}},}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00075}\mbox{\hyperlink{class_export_panel_af90b36ea4c09b8a73b40ffd6382d8216a69263709e4d9780f888a48520a5f58ef}{00075}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_export_panel_af90b36ea4c09b8a73b40ffd6382d8216a69263709e4d9780f888a48520a5f58ef}{ID\_EMISSIONCLEARBUTTON}},}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00076}\mbox{\hyperlink{class_export_panel_af90b36ea4c09b8a73b40ffd6382d8216a7c3f35b751b8c4ca08478302b4632157}{00076}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_export_panel_af90b36ea4c09b8a73b40ffd6382d8216a7c3f35b751b8c4ca08478302b4632157}{ID\_LastID}}}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00077}00077\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00078}00078\ }
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00081}00081\ \ \ \ \ \mbox{\hyperlink{class_export_panel_a8d0e4fab041c4da71102f0771854bb04}{ExportPanel}}(\ );}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00082}00082\ \ \ \ \ \mbox{\hyperlink{class_export_panel_a8d0e4fab041c4da71102f0771854bb04}{ExportPanel}}(\ wxWindow*\ parent,\ wxWindowID\ \textcolor{keywordtype}{id}\ =\ \mbox{\hyperlink{_export_panel_8h_a802f37b1c8b591b0fbf82127d38bcb77}{SYMBOL\_EXPORTPANEL\_IDNAME}},\ \textcolor{keyword}{const}\ wxString\&\ caption\ =\ \mbox{\hyperlink{_export_panel_8h_a54ff8c6d860a45b7c86994b72e862b3e}{SYMBOL\_EXPORTPANEL\_TITLE}},\ \textcolor{keyword}{const}\ wxPoint\&\ pos\ =\ \mbox{\hyperlink{_export_panel_8h_a05d80063f1792877fd57f406636ad4d8}{SYMBOL\_EXPORTPANEL\_POSITION}},\ \textcolor{keyword}{const}\ wxSize\&\ size\ =\ \mbox{\hyperlink{_export_panel_8h_aeacc6bcf61c090e9619efb3d6c8c80ea}{SYMBOL\_EXPORTPANEL\_SIZE}},\ \textcolor{keywordtype}{long}\ style\ =\ \mbox{\hyperlink{_export_panel_8h_a2e639dc4459183c4e19859d1bb5c9415}{SYMBOL\_EXPORTPANEL\_STYLE}}\ );}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00083}00083\ }
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00084}00084\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_export_panel_a689692ac1fc281f1defdf1caa0342a60}{Create}}(\ wxWindow*\ parent,\ wxWindowID\ \textcolor{keywordtype}{id}\ =\ \mbox{\hyperlink{_export_panel_8h_a802f37b1c8b591b0fbf82127d38bcb77}{SYMBOL\_EXPORTPANEL\_IDNAME}},\ \textcolor{keyword}{const}\ wxString\&\ caption\ =\ \mbox{\hyperlink{_export_panel_8h_a54ff8c6d860a45b7c86994b72e862b3e}{SYMBOL\_EXPORTPANEL\_TITLE}},\ \textcolor{keyword}{const}\ wxPoint\&\ pos\ =\ \mbox{\hyperlink{_export_panel_8h_a05d80063f1792877fd57f406636ad4d8}{SYMBOL\_EXPORTPANEL\_POSITION}},\ \textcolor{keyword}{const}\ wxSize\&\ size\ =\ \mbox{\hyperlink{_export_panel_8h_aeacc6bcf61c090e9619efb3d6c8c80ea}{SYMBOL\_EXPORTPANEL\_SIZE}},\ \textcolor{keywordtype}{long}\ style\ =\ \mbox{\hyperlink{_export_panel_8h_a2e639dc4459183c4e19859d1bb5c9415}{SYMBOL\_EXPORTPANEL\_STYLE}}\ );}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00086}00086\ \ \ \ \ \mbox{\hyperlink{class_export_panel_ab197ab1f73bd5d52a56e96da2343a12b}{\string~ExportPanel}}(\ );}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00087}00087\ }
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00088}00088\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_export_panel_aa4a4ed8825a1ccda8223fcb44dd2482a}{Init}}(\ );}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00090}00090\ }
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00091}00091\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_export_panel_a62f44fdf5907d50dbfcda1e68da85e03}{CreateControls}}(\ );}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00092}00092\ }
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00093}00093\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_export_panel_a79445719998e2e0576691b2db7bbe04e}{OnCatalogAllButtonClick}}(\ wxCommandEvent\&\ event\ );}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00094}00094\ }
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00095}00095\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_export_panel_a147fc103a27c0d39090502fb4f2b97f4}{OnCatalogClearButtonClick}}(\ wxCommandEvent\&\ event\ );}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00096}00096\ }
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00097}00097\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_export_panel_af88f0262ba4f52d6222da60470269a55}{OnIncludeInventoryButtonClick}}(\ wxCommandEvent\&\ event\ );}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00098}00098\ }
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00099}00099\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_export_panel_a4a0718659ee7e17667fb3021cd95be0d}{OnEmissionAllButtonClick}}(\ wxCommandEvent\&\ event\ );}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00100}00100\ }
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00101}00101\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_export_panel_a4850f2e72ba8340a385ec362d6c0330e}{OnEmissionClearButtonClick}}(\ wxCommandEvent\&\ event\ );}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00102}00102\ }
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00103}00103\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_export_panel_a8afb7b4a8784af68944013b472123285}{UpdateControls}}(\ );}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00104}00104\ }
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00105}00105\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_export_panel_acedb9f6917517f0792636d8498dd7c28}{SetupDialog}}(\ \mbox{\hyperlink{class_design_1_1_row}{Design::Row}}*\ row\ );}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00106}00106\ }
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00107}00107\ \ \ \ \ \textcolor{comment}{//\ ExportPanel\ event\ handler\ declarations}}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00108}00108\ }
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00109}00109\ \ \ \ \ \textcolor{comment}{//\ \ \ wxID\_OK}}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00110}00110\ }
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00111}00111\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00112}00112\ }
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00113}00113\ \ \ \ \ wxCheckListBox*\ m\_emissionListCtrl;}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00114}00114\ \ \ \ \ wxArrayString\ m\_emissionListCtrlStrings;}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00115}00115\ }
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00116}00116\ \ \ \ \ wxCheckListBox*\ m\_catalogListCtrl;}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00117}00117\ \ \ \ \ wxArrayString\ m\_catalogListCtrlStrings;}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00118}00118\ }
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00119}00119\ \ \ \ \ wxCheckBox*\ m\_inventorycheckBox;}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00120}00120\ \};}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00121}00121\ }
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00122}00122\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_export_panel_8h_source_l00123}00123\ \textcolor{comment}{//\ \_EXPORTPANEL\_H\_}}
+
+\end{DoxyCode}

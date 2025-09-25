@@ -1,0 +1,103 @@
+\doxysection{C\+:/\+Users/femon/\+Development/wx/clone\+Test/\+Stamp\+Tool/src/utils/\+CSV.h File Reference}
+\hypertarget{_c_s_v_8h}{}\label{_c_s_v_8h}\index{C:/Users/femon/Development/wx/cloneTest/StampTool/src/utils/CSV.h@{C:/Users/femon/Development/wx/cloneTest/StampTool/src/utils/CSV.h}}
+
+
+This file contains the class that reads .csv files and loads them into an XML structure.  
+
+
+{\ttfamily \#include "{}catalog/\+Catalog\+Defs.\+h"{}}\newline
+{\ttfamily \#include "{}wx/xml/xml.\+h"{}}\newline
+{\ttfamily \#include $<$wx/filename.\+h$>$}\newline
+{\ttfamily \#include $<$wx/string.\+h$>$}\newline
+{\ttfamily \#include $<$wx/txtstrm.\+h$>$}\newline
+{\ttfamily \#include $<$wx/wfstream.\+h$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_utils_1_1_c_s_v_data}{Utils\+::\+CSVData}}
+\begin{DoxyCompactList}\small\item\em read/write .csv files. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespace_utils}{Utils}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_c_s_v_8h_ad19941886bdb416f5600a5f2cc111e81}{Max\+Nbr\+CSVCols}}~50
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef std\+::vector$<$ wx\+String $>$ \mbox{\hyperlink{_c_s_v_8h_a4bbce925a2ca9f426a77dbefeebe8388}{String\+Array}}
+\item 
+typedef std\+::vector$<$ \mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176}{Catalog\+::\+Data\+Types}} $>$ \mbox{\hyperlink{_c_s_v_8h_a6ff5938260f2d55fe34cf5a44100dfb2}{Data\+Types\+Array}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file contains the class that reads .csv files and loads them into an XML structure. 
+
+\begin{DoxyAuthor}{Author}
+Eddie Monroe ( ) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2021-\/02-\/25
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright ( c ) 2021
+\end{DoxyCopyright}
+This file is part of Stamp\+Tool.
+
+Stamp\+Tool is free software\+: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or any later version.
+
+Stamp\+Tool is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with Stamp\+Tool. If not, see \href{https://www.gnu.org/licenses/}{\texttt{https\+://www.\+gnu.\+org/licenses/}}. 
+
+Definition in file \mbox{\hyperlink{_c_s_v_8h_source}{CSV.\+h}}.
+
+
+
+\label{doc-define-members}
+\Hypertarget{_c_s_v_8h_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{_c_s_v_8h_ad19941886bdb416f5600a5f2cc111e81}\index{CSV.h@{CSV.h}!MaxNbrCSVCols@{MaxNbrCSVCols}}
+\index{MaxNbrCSVCols@{MaxNbrCSVCols}!CSV.h@{CSV.h}}
+\doxysubsubsection{\texorpdfstring{MaxNbrCSVCols}{MaxNbrCSVCols}}
+{\footnotesize\ttfamily \label{_c_s_v_8h_ad19941886bdb416f5600a5f2cc111e81} 
+\#define Max\+Nbr\+CSVCols~50}
+
+
+
+Definition at line \mbox{\hyperlink{_c_s_v_8h_source_l00047}{47}} of file \mbox{\hyperlink{_c_s_v_8h_source}{CSV.\+h}}.
+
+
+
+\label{doc-typedef-members}
+\Hypertarget{_c_s_v_8h_doc-typedef-members}
+\doxysubsection{Typedef Documentation}
+\Hypertarget{_c_s_v_8h_a6ff5938260f2d55fe34cf5a44100dfb2}\index{CSV.h@{CSV.h}!DataTypesArray@{DataTypesArray}}
+\index{DataTypesArray@{DataTypesArray}!CSV.h@{CSV.h}}
+\doxysubsubsection{\texorpdfstring{DataTypesArray}{DataTypesArray}}
+{\footnotesize\ttfamily \label{_c_s_v_8h_a6ff5938260f2d55fe34cf5a44100dfb2} 
+typedef std\+::vector$<$\mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176}{Catalog\+::\+Data\+Types}}$>$ \mbox{\hyperlink{_c_s_v_8h_a6ff5938260f2d55fe34cf5a44100dfb2}{Data\+Types\+Array}}}
+
+
+
+Definition at line \mbox{\hyperlink{_c_s_v_8h_source_l00042}{42}} of file \mbox{\hyperlink{_c_s_v_8h_source}{CSV.\+h}}.
+
+\Hypertarget{_c_s_v_8h_a4bbce925a2ca9f426a77dbefeebe8388}\index{CSV.h@{CSV.h}!StringArray@{StringArray}}
+\index{StringArray@{StringArray}!CSV.h@{CSV.h}}
+\doxysubsubsection{\texorpdfstring{StringArray}{StringArray}}
+{\footnotesize\ttfamily \label{_c_s_v_8h_a4bbce925a2ca9f426a77dbefeebe8388} 
+typedef std\+::vector$<$wx\+String$>$ \mbox{\hyperlink{_c_s_v_8h_a4bbce925a2ca9f426a77dbefeebe8388}{String\+Array}}}
+
+
+
+Definition at line \mbox{\hyperlink{_c_s_v_8h_source_l00041}{41}} of file \mbox{\hyperlink{_c_s_v_8h_source}{CSV.\+h}}.
+

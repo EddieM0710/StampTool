@@ -1,0 +1,589 @@
+\doxysection{Identification\+Panel.\+cpp}
+\hypertarget{_identification_panel_8cpp_source}{}\label{_identification_panel_8cpp_source}\index{C:/Users/femon/Development/wx/cloneTest/StampTool/src/gui/IdentificationPanel.cpp@{C:/Users/femon/Development/wx/cloneTest/StampTool/src/gui/IdentificationPanel.cpp}}
+\mbox{\hyperlink{_identification_panel_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00026}00026\ \textcolor{preprocessor}{\#include\ "{}wx/wxprec.h"{}}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00028}00028\ \textcolor{preprocessor}{\#ifdef\ \_\_BORLANDC\_\_}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00029}00029\ \textcolor{preprocessor}{\#pragma\ hdrstop}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00030}00030\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00032}00032\ \textcolor{preprocessor}{\#ifndef\ WX\_PRECOMP}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00033}00033\ \textcolor{preprocessor}{\#include\ "{}wx/wx.h"{}}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00034}00034\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00036}00036\ \textcolor{preprocessor}{\#include\ <wx/clipbrd.h>}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00038}00038\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_defs_8h}{Defs.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00039}00039\ \ \textcolor{comment}{//\#include\ "{}gui/LabeledTextBox.h"{}}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00040}00040\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_identification_panel_8h}{gui/IdentificationPanel.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00041}00041\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_catalog_tree_ctrl_8h}{gui/CatalogTreeCtrl.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00042}00042\ \ \textcolor{comment}{//\#include\ "{}gui/AppData.h"{}}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00043}00043\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_stamp_description_panel_8h}{gui/StampDescriptionPanel.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00044}00044\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_settings_8h}{utils/Settings.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00045}00045\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_catalog_data_8h}{catalog/CatalogData.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00046}00046\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_catalog_defs_8h}{catalog/CatalogDefs.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00047}00047\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_stamp_mount_8h}{catalog/StampMount.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00050}00050\ IMPLEMENT\_DYNAMIC\_CLASS(\ \mbox{\hyperlink{class_identification_panel}{IdentificationPanel}},\ \mbox{\hyperlink{class_helper_panel}{HelperPanel}}\ )}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00053}00053\ BEGIN\_EVENT\_TABLE(\ \mbox{\hyperlink{class_identification_panel}{IdentificationPanel}},\ \mbox{\hyperlink{class_helper_panel}{HelperPanel}}\ )}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00056}00056\ EVT\_CHOICE(\ ID\_EMISSIONCHOICE,\ \mbox{\hyperlink{class_identification_panel_a2d239209a3c085e3c82f5c72e7d49a3b}{IdentificationPanel::OnEmissionchoiceSelected}}\ )}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00057}00057\ EVT\_CHOICE(\ ID\_FORMATCHOICE,\ \mbox{\hyperlink{class_identification_panel_acef66a0eaf96a016a4e487c0a91710b3}{IdentificationPanel::OnFormatchoiceSelected}}\ )}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00058}00058\ EVT\_BUTTON(\ ID\_COLNECTBUTTON,\ \mbox{\hyperlink{class_identification_panel_a95458f75c6ca0b5dcfaed94bc4d8c7fb}{IdentificationPanel::OnColnectButtonClick}}\ )}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00059}00059\ EVT\_BUTTON(\ ID\_EBAYBUTTON,\ \mbox{\hyperlink{class_identification_panel_a4adda4b92b5511c779f9820e5fa7ad49}{IdentificationPanel::OneBayButtonClick}}\ )}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00060}00060\ EVT\_BUTTON(\ ID\_NPMBUTTON,\ \mbox{\hyperlink{class_identification_panel_ab4ca6ac126735a02845c524348eb4aba}{IdentificationPanel::OnNPMButtonClick}}\ )}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00061}00061\ EVT\_COMBOBOX(\ ID\_STAMPMOUNTTEXTBOX,\ \mbox{\hyperlink{class_identification_panel_aec54f64e6feb5ef08e67ade44d67c74c}{IdentificationPanel::OnComboboxSelected}}\ )}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00062}00062\ EVT\_TEXT(\ ID\_STAMPMOUNTTEXTBOX,\ \mbox{\hyperlink{class_identification_panel_a1927411dc25256037f81d485a26fef6e}{IdentificationPanel::OnComboboxUpdated}}\ )}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00064}00064\ END\_EVENT\_TABLE(\ )}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00066}\mbox{\hyperlink{class_identification_panel_a879e8bd6e590b81244689dbd852b88fd}{00066}}\ \mbox{\hyperlink{class_identification_panel_a879e8bd6e590b81244689dbd852b88fd}{IdentificationPanel}}::\mbox{\hyperlink{class_identification_panel_a879e8bd6e590b81244689dbd852b88fd}{IdentificationPanel}}(\ )}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00067}00067\ \{}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00068}00068\ \ \ \ \ \mbox{\hyperlink{class_identification_panel_ab6ba3731ad81ef338703674f598bd627}{Init}}(\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00069}00069\ \}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00071}\mbox{\hyperlink{class_identification_panel_a2d9ece3178f11f44e2f9837cc57cbf27}{00071}}\ \mbox{\hyperlink{class_identification_panel_a879e8bd6e590b81244689dbd852b88fd}{IdentificationPanel::IdentificationPanel}}(\ wxWindow*\ parent,\ wxWindowID\ \textcolor{keywordtype}{id},}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00072}00072\ \ \ \ \ \textcolor{keyword}{const}\ wxPoint\&\ pos,}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00073}00073\ \ \ \ \ \textcolor{keyword}{const}\ wxSize\&\ size,\ \textcolor{keywordtype}{long}\ style\ )}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00074}00074\ \{}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00075}00075\ \ \ \ \ \mbox{\hyperlink{class_identification_panel_ab6ba3731ad81ef338703674f598bd627}{Init}}(\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00076}00076\ \ \ \ \ \mbox{\hyperlink{class_identification_panel_a93180de38ba91eacf7288f7243e3bc89}{Create}}(\ parent,\ \textcolor{keywordtype}{id},\ pos,\ size,\ style\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00077}00077\ \}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00078}00078\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00080}\mbox{\hyperlink{class_identification_panel_a0408d1c604a49b717363d2ea28741cb7}{00080}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_identification_panel_a0408d1c604a49b717363d2ea28741cb7}{IdentificationPanel::Clear}}(\ )}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00081}00081\ \{}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00082}00082\ \ \ \ \ m\_name-\/>ChangeValue(\ \textcolor{stringliteral}{"{}"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00083}00083\ \ \ \ \ m\_emission-\/>SetSelection(\ 0\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00084}00084\ \ \ \ \ m\_format-\/>SetSelection(\ 0\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00085}00085\ \ \ \ \ m\_description-\/>ChangeValue(\ \textcolor{stringliteral}{"{}"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00086}00086\ \ \ \ \ m\_issueDate-\/>ChangeValue(\ \textcolor{stringliteral}{"{}"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00087}00087\ \ \ \ \ m\_series-\/>ChangeValue(\ \textcolor{stringliteral}{"{}"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00088}00088\ \ \ \ \ m\_themes-\/>ChangeValue(\ \textcolor{stringliteral}{"{}"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00089}00089\ \ \ \ \ m\_country-\/>ChangeValue(\ \textcolor{stringliteral}{"{}"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00090}00090\ \ \ \ \ m\_perforation-\/>ChangeValue(\ \textcolor{stringliteral}{"{}"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00091}00091\ \ \ \ \ m\_gum-\/>ChangeValue(\ \textcolor{stringliteral}{"{}"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00092}00092\ \ \ \ \ m\_printing-\/>ChangeValue(\ \textcolor{stringliteral}{"{}"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00093}00093\ \ \ \ \ m\_width-\/>ChangeValue(\ \textcolor{stringliteral}{"{}"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00094}00094\ \ \ \ \ m\_height-\/>ChangeValue(\ \textcolor{stringliteral}{"{}"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00095}00095\ \ \ \ \ m\_catCode-\/>ChangeValue(\ \textcolor{stringliteral}{"{}"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00096}00096\ \ \ \ \ mountComboBox-\/>SetSelection(\ 0\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00097}00097\ \ \ \ \ m\_link-\/>ChangeValue(\ \textcolor{stringliteral}{"{}"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00098}00098\ \ \ \ \ m\_imageName-\/>ChangeValue(\ \textcolor{stringliteral}{"{}"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00099}00099\ \}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00100}00100\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00101}00101\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00102}\mbox{\hyperlink{class_identification_panel_a93180de38ba91eacf7288f7243e3bc89}{00102}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_identification_panel_a93180de38ba91eacf7288f7243e3bc89}{IdentificationPanel::Create}}(\ wxWindow*\ parent,\ wxWindowID\ \textcolor{keywordtype}{id},}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00103}00103\ \ \ \ \ \textcolor{keyword}{const}\ wxPoint\&\ pos,\ \textcolor{keyword}{const}\ wxSize\&\ size,}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00104}00104\ \ \ \ \ \textcolor{keywordtype}{long}\ style\ )}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00105}00105\ \{}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00106}00106\ \ \ \ \ SetExtraStyle(\ wxWS\_EX\_VALIDATE\_RECURSIVELY\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00107}00107\ \ \ \ \ wxPanel::Create(\ parent,\ \textcolor{keywordtype}{id},\ pos,\ size,\ style\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00108}00108\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00109}00109\ \ \ \ \ \mbox{\hyperlink{class_identification_panel_a2a0908feafcfb85049524763510db40d}{CreateControls}}(\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00110}00110\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ GetSizer(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00111}00111\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00112}00112\ \ \ \ \ \ \ \ \ GetSizer(\ )-\/>SetSizeHints(\ \textcolor{keyword}{this}\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00113}00113\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00114}00114\ \ \ \ \ Centre(\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00115}00115\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00116}00116\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00117}00117\ \}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00118}00118\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00119}00119\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00120}\mbox{\hyperlink{class_identification_panel_a31d26dfa998ef0c230e41eae6bad02eb}{00120}}\ \mbox{\hyperlink{class_identification_panel_a31d26dfa998ef0c230e41eae6bad02eb}{IdentificationPanel::\string~IdentificationPanel}}(\ )}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00121}00121\ \{}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00122}00122\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00123}00123\ \}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00124}00124\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00125}00125\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00126}\mbox{\hyperlink{class_identification_panel_ab6ba3731ad81ef338703674f598bd627}{00126}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_identification_panel_ab6ba3731ad81ef338703674f598bd627}{IdentificationPanel::Init}}(\ )}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00127}00127\ \{}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00128}00128\ \ \ \ \ \textcolor{comment}{//\ m\_ID\ =\ NULL;}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00129}00129\ \ \ \ \ \ \textcolor{comment}{//m\_status\ =\ NULL;}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00130}00130\ \ \ \ \ m\_name\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00131}00131\ \ \ \ \ m\_width\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00132}00132\ \ \ \ \ m\_height\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00133}00133\ \ \ \ \ m\_emission\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00134}00134\ \ \ \ \ m\_format\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00135}00135\ \ \ \ \ m\_description\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00136}00136\ \ \ \ \ m\_issueDate\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00137}00137\ \ \ \ \ m\_series\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00138}00138\ \ \ \ \ m\_themes\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00139}00139\ \ \ \ \ m\_country\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00140}00140\ \ \ \ \ m\_perforation\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00141}00141\ \ \ \ \ m\_gum\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00142}00142\ \ \ \ \ m\_printing\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00143}00143\ \ \ \ \ m\_link\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00144}00144\ \ \ \ \ m\_catCode\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00145}00145\ \ \ \ \ m\_imageName\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00146}00146\ \ \ \ \ mountComboBox\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00147}00147\ \}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00148}00148\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00149}\mbox{\hyperlink{class_identification_panel_a2a0908feafcfb85049524763510db40d}{00149}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_identification_panel_a2a0908feafcfb85049524763510db40d}{IdentificationPanel::CreateControls}}(\ )}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00150}00150\ \{}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00151}00151\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00152}00152\ \ \ \ \ \mbox{\hyperlink{class_identification_panel_a879e8bd6e590b81244689dbd852b88fd}{IdentificationPanel}}*\ theMainPanel\ =\ \textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00153}00153\ \ \ \ \ \textcolor{keywordtype}{int}\ lastID\ =\ \mbox{\hyperlink{class_identification_panel_a5c5755085e6f790b139fd51ec25ebb40ac9f3ab2027eae41eacf0ff785bd3ce57}{ID\_IDLABELEDTEXTBOX}};}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00154}00154\ \ \ \ \ wxBoxSizer*\ topPanelVerticalSizer\ =\ \textcolor{keyword}{new}\ wxBoxSizer(\ wxVERTICAL\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00155}00155\ \ \ \ \ theMainPanel-\/>SetSizer(\ topPanelVerticalSizer\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00156}00156\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00157}00157\ \ \ \ \ wxScrolledWindow*\ thePanel\ =\ \textcolor{keyword}{new}\ wxScrolledWindow(\ theMainPanel,\ \mbox{\hyperlink{class_identification_panel_a5c5755085e6f790b139fd51ec25ebb40a0cb84938abc9fdb26c5a6f94b7d7d0c4}{ID\_SCROLLEDWINDOW2}},\ wxDefaultPosition,\ wxSize(\ 100,\ 100\ ),\ wxSUNKEN\_BORDER\ |\ wxHSCROLL\ |\ wxVSCROLL\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00158}00158\ \ \ \ \ thePanel-\/>SetScrollbars(\ 1,\ 1,\ 0,\ 0\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00159}00159\ \ \ \ \ topPanelVerticalSizer-\/>Add(\ thePanel,\ 1,\ wxGROW\ |\ wxALL,\ 0\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00160}00160\ \ \ \ \ wxBoxSizer*\ panelVerticalSizer\ =\ \textcolor{keyword}{new}\ wxBoxSizer(\ wxVERTICAL\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00161}00161\ \ \ \ \ thePanel-\/>SetSizer(\ panelVerticalSizer\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00162}00162\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00163}00163\ \ \ \ \ \textcolor{comment}{//\ wxBoxSizer*\ idHorizontalSizer\ =\ new\ wxBoxSizer(\ wxHORIZONTAL\ );}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00164}00164\ \ \ \ \ \textcolor{comment}{//\ catCodeVerticalSizer-\/>Add(\ idHorizontalSizer,\ 1,\ wxGROW\ |\ wxALL,\ 2\ );}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00165}00165\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00166}00166\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00167}00167\ \ \ \ \ \textcolor{comment}{//\ wxBoxSizer*\ itemBoxSizer1\ =\ new\ wxBoxSizer(\ wxHORIZONTAL\ );}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00168}00168\ \ \ \ \ \textcolor{comment}{//\ panelVerticalSizer-\/>Add(\ itemBoxSizer1,\ 0,\ wxGROW\ |\ wxALL,\ 2\ );}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00169}00169\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00170}00170\ \ \ \ \ \textcolor{comment}{//\ wxBoxSizer*\ catCodeVerticalSizer\ =\ new\ wxBoxSizer(\ wxVERTICAL\ );}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00171}00171\ \ \ \ \ \textcolor{comment}{//\ itemBoxSizer1-\/>Add(\ catCodeVerticalSizer,\ 1,\ wxGROW\ |\ wxALL,\ 2\ );}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00172}00172\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00173}00173\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00174}00174\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00175}00175\ \ \ \ \ \textcolor{comment}{//\ wxStaticText*\ m\_catcodeStatic\ =\ new\ wxStaticText(\ thePanel,\ wxID\_STATIC,\ \_(\ "{}CatalogCodes"{}\ ),\ wxDefaultPosition,\ wxDefaultSize,\ 0\ );}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00176}00176\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00177}00177\ \ \ \ \ \textcolor{comment}{//\ catCodeVerticalSizer-\/>Add(\ m\_catcodeStatic,\ 0,\ wxALIGN\_LEFT\ |\ wxALL,\ 0\ );}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00178}00178\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00179}00179\ \ \ \ \ \textcolor{comment}{//\ m\_catCode\ =\ new\ wxTextCtrl(\ thePanel,\ ++lastID,\ wxEmptyString,\ wxDefaultPosition,\ wxDefaultSize,\ wxTE\_MULTILINE\ );}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00180}00180\ \ \ \ \ \textcolor{comment}{//\ catCodeVerticalSizer-\/>Add(\ m\_catCode,\ 1,\ wxGROW\ |\ wxALL,\ 0\ );}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00181}00181\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00182}00182\ \ \ \ \ m\_catCode\ =\ \mbox{\hyperlink{class_helper_panel_a5df2fc90855ddcb14834784daa120249}{SetupMultilineLabeledText}}(\ thePanel,\ panelVerticalSizer,\ lastID,\ \textcolor{stringliteral}{"{}Catalog\ Codes"{}},\ \textcolor{keyword}{true},}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00183}00183\ \ \ \ \ \ \ \ \ wxCommandEventHandler(\ \mbox{\hyperlink{class_identification_panel_ac68eb7a0c668a42b9c64509d0780a8d7}{IdentificationPanel::OnCatalogCodesChanged}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00184}00184\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00185}00185\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00186}00186\ \ \ \ \ m\_name\ =\ \mbox{\hyperlink{class_helper_panel_acdac2c77789965bc2e300f50c66f7f11}{SetupLabelText}}(\ thePanel,\ panelVerticalSizer,\ ++lastID,\ \textcolor{stringliteral}{"{}Name"{}},\ \textcolor{keyword}{true},\ wxCommandEventHandler(\ \mbox{\hyperlink{class_identification_panel_aeb23635cc669215a5b155c8a53d283cf}{IdentificationPanel::OnNameUpdated}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00187}00187\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00188}00188\ \ \ \ \ \textcolor{comment}{//wxBoxSizer*\ emissionHorizontalSizer\ =\ new\ wxBoxSizer(\ wxHORIZONTAL\ );}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00189}00189\ \ \ \ \textcolor{comment}{//\ panelVerticalSizer-\/>Add(\ emissionHorizontalSizer,\ 0,\ wxALIGN\_LEFT\ |\ wxALL,\ 2\ );}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00190}00190\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00191}00191\ \ \ \ \ \textcolor{comment}{//\ wxStaticText*\ emissionStaticText\ =\ new\ wxStaticText(\ thePanel,\ wxID\_STATIC,\ \_(\ "{}Emission"{}\ ),\ wxDefaultPosition,\ wxDefaultSize,\ 0\ );}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00192}00192\ \ \ \ \ \textcolor{comment}{//\ emissionHorizontalSizer-\/>Add(\ emissionStaticText,\ 0,\ wxALIGN\_LEFT\ |\ wxALL,\ 0\ );}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00193}00193\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00194}00194\ \ \ \ \ wxArrayString\ m\_emissionStrings;}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00195}00195\ \ \ \ \ \textcolor{keywordflow}{for}\ (\ \textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \mbox{\hyperlink{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acda2d561f219b7813c539992726b518751c}{Catalog::ET\_NbrTypes}};\ i++\ )}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00196}00196\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00197}00197\ \ \ \ \ \ \ \ \ m\_emissionStrings.Add(\ \_(\ \mbox{\hyperlink{namespace_catalog_ac37088bb839eb4eaac8489e1644b72f5}{Catalog::EmissionStrings}}[\ i\ ]\ )\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00198}00198\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00199}00199\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00200}00200\ \ \ \ \ \textcolor{comment}{//\ \ m\_emission\ =\ new\ wxChoice(\ thePanel,\ ++lastID,\ wxDefaultPosition,\ wxDefaultSize,\ m\_emissionStrings,\ 0\ );}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00201}00201\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00202}00202\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00203}00203\ \ \ \ \ m\_emission\ =\ \mbox{\hyperlink{class_helper_panel_adeabf7f045a9b29dfe04ea9e25361682}{SetupChoice}}(\ thePanel,\ panelVerticalSizer,\ lastID,\ \_(\ \textcolor{stringliteral}{"{}Emission"{}}\ ),}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00204}00204\ \ \ \ \ \ \ \ \ m\_emissionStrings,\ wxCommandEventHandler(\ \mbox{\hyperlink{class_identification_panel_a2d239209a3c085e3c82f5c72e7d49a3b}{IdentificationPanel::OnEmissionchoiceSelected}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00205}00205\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00206}00206\ \ \ \ \ m\_emission-\/>SetStringSelection(\ \_(\ \textcolor{stringliteral}{"{}Unknown"{}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00207}00207\ \ \ \ \ \textcolor{comment}{//\ \ \ emissionHorizontalSizer-\/>Add(\ m\_emission,\ 1,\ wxGROW\ |\ wxALL,\ 1\ );}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00208}00208\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00209}00209\ \ \ \ \textcolor{comment}{//\ wxBoxSizer*\ formatHorizontalSizer\ =\ new\ wxBoxSizer(\ wxHORIZONTAL\ );}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00210}00210\ \ \ \ \textcolor{comment}{//\ panelVerticalSizer-\/>Add(\ formatHorizontalSizer,\ 0,\ wxALIGN\_LEFT\ |\ wxALL,\ 2\ );}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00211}00211\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00212}00212\ \ \ \ \ \textcolor{comment}{//\ wxStaticText*\ formatStaticText\ =\ new\ wxStaticText(\ thePanel,\ wxID\_STATIC,\ \_(\ "{}Format"{}\ ),\ wxDefaultPosition,\ wxDefaultSize,\ 0\ );}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00213}00213\ \ \ \ \ \ \textcolor{comment}{//formatHorizontalSizer-\/>Add(\ formatStaticText,\ 0,\ wxALIGN\_LEFT\ |\ wxALL,\ 0\ );}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00214}00214\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00215}00215\ \ \ \ \ wxArrayString\ m\_formatStrings;}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00216}00216\ \ \ \ \ \textcolor{keywordflow}{for}\ (\ \textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \mbox{\hyperlink{namespace_catalog_a2ff17ae8cd4986617c22e54b7cf50f89a7b37347e60dfcaea4ed88899173207fa}{Catalog::FT\_NbrTypes}};\ i++\ )}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00217}00217\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00218}00218\ \ \ \ \ \ \ \ \ m\_formatStrings.Add(\ \_(\ \mbox{\hyperlink{namespace_catalog_afaa9b4c5ca81b7e8ec3f7d2f4b3d7e8d}{Catalog::FormatStrings}}[\ i\ ]\ )\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00219}00219\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ m\_formatStrings.Add(\ \_(\ "{}Unknown"{}\ )\ );}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00220}00220\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ m\_formatStrings.Add(\ \_(\ "{}Stamp"{}\ )\ );}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00221}00221\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ m\_formatStrings.Add(\ \_(\ "{}Se-\/tenant"{}\ )\ );}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00222}00222\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ m\_formatStrings.Add(\ \_(\ "{}Mini\ Sheet"{}\ )\ );}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00223}00223\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ m\_formatStrings.Add(\ \_(\ "{}Souvenir\ Sheet"{}\ )\ );}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00224}00224\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ m\_formatStrings.Add(\ \_(\ "{}Booklet"{}\ )\ );}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00225}00225\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ m\_formatStrings.Add(\ \_(\ "{}Booklet\ Pane"{}\ )\ );}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00226}00226\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ m\_formatStrings.Add(\ \_(\ "{}Gutter\ Pair"{}\ )\ );}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00227}00227\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ m\_formatStrings.Add(\ \_(\ "{}Stamp\ with\ Attached\ Label"{}\ )\ );}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00228}00228\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ m\_formatStrings.Add(\ \_(\ "{}Tete-\/Beche"{}\ )\ );}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00229}00229\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00230}00230\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00231}00231\ \ \ \ \ \textcolor{comment}{//m\_format\ =\ new\ wxChoice(\ thePanel,\ ++lastID,\ wxDefaultPosition,\ wxDefaultSize,\ m\_formatStrings,\ 0\ );}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00232}00232\ \ \ \ \textcolor{comment}{//\ formatHorizontalSizer-\/>Add(\ m\_format,\ 1,\ wxGROW\ |\ wxALL,\ 1\ );}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00233}00233\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00234}00234\ \ \ \ \ m\_format\ =\ \mbox{\hyperlink{class_helper_panel_adeabf7f045a9b29dfe04ea9e25361682}{SetupChoice}}(\ thePanel,\ panelVerticalSizer,\ lastID,\ \_(\ \textcolor{stringliteral}{"{}Format"{}}\ ),}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00235}00235\ \ \ \ \ \ \ \ \ m\_formatStrings,\ wxCommandEventHandler(\ \mbox{\hyperlink{class_identification_panel_a2d239209a3c085e3c82f5c72e7d49a3b}{IdentificationPanel::OnEmissionchoiceSelected}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00236}00236\ \ \ \ \ m\_format-\/>SetStringSelection(\ \_(\ \textcolor{stringliteral}{"{}Unknown"{}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00237}00237\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00238}00238\ \ \ \ \ m\_issueDate\ =\ \mbox{\hyperlink{class_helper_panel_acdac2c77789965bc2e300f50c66f7f11}{SetupLabelText}}(\ thePanel,\ panelVerticalSizer,\ ++lastID,\ \textcolor{stringliteral}{"{}Issued\ On"{}},\ \textcolor{keyword}{true},\ wxCommandEventHandler(\ \mbox{\hyperlink{class_identification_panel_ac7ac6a08fbb71229056dbebaf40f4bf6}{IdentificationPanel::OnIssuedUpdated}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00239}00239\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00240}00240\ \ \ \ \ m\_series\ =\ \mbox{\hyperlink{class_helper_panel_acdac2c77789965bc2e300f50c66f7f11}{SetupLabelText}}(\ thePanel,\ panelVerticalSizer,\ ++lastID,\ \textcolor{stringliteral}{"{}Series"{}},\ \textcolor{keyword}{true},\ wxCommandEventHandler(\ \mbox{\hyperlink{class_identification_panel_a12da80bdc29a73afcae5840915931e36}{IdentificationPanel::OnSeriesUpdated}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00241}00241\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00242}00242\ \ \ \ \ m\_themes\ =\ \mbox{\hyperlink{class_helper_panel_acdac2c77789965bc2e300f50c66f7f11}{SetupLabelText}}(\ thePanel,\ panelVerticalSizer,\ ++lastID,\ \textcolor{stringliteral}{"{}Theme"{}},\ \textcolor{keyword}{true},\ wxCommandEventHandler(\ \mbox{\hyperlink{class_identification_panel_a33950973a37d96211c14fb27adb915e8}{IdentificationPanel::OnThemeUpdated}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00243}00243\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00244}00244\ \ \ \ \ m\_country\ =\ \mbox{\hyperlink{class_helper_panel_acdac2c77789965bc2e300f50c66f7f11}{SetupLabelText}}(\ thePanel,\ panelVerticalSizer,\ ++lastID,\ \textcolor{stringliteral}{"{}Country"{}},\ \textcolor{keyword}{true},\ wxCommandEventHandler(\ \mbox{\hyperlink{class_identification_panel_a673cba29d48313a7f9cbad523f86b4f0}{IdentificationPanel::OnCountryUpdated}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00245}00245\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00246}00246\ \ \ \ \ m\_perforation\ =\ \mbox{\hyperlink{class_helper_panel_acdac2c77789965bc2e300f50c66f7f11}{SetupLabelText}}(\ thePanel,\ panelVerticalSizer,\ ++lastID,\ \textcolor{stringliteral}{"{}Perforation"{}},\ \textcolor{keyword}{true},\ wxCommandEventHandler(\ \mbox{\hyperlink{class_identification_panel_a11ad1ced12ba05635f06c44121feb10d}{IdentificationPanel::OnPerforationUpdated}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00247}00247\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00248}00248\ \ \ \ \ m\_gum\ =\ \mbox{\hyperlink{class_helper_panel_acdac2c77789965bc2e300f50c66f7f11}{SetupLabelText}}(\ thePanel,\ panelVerticalSizer,\ ++lastID,\ \textcolor{stringliteral}{"{}Gum"{}},\ \textcolor{keyword}{true},\ wxCommandEventHandler(\ \mbox{\hyperlink{class_identification_panel_ac074d9667525f25f1b6fd62a3f573a35}{IdentificationPanel::OnGumUpdated}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00249}00249\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00250}00250\ \ \ \ \ m\_printing\ =\ \mbox{\hyperlink{class_helper_panel_acdac2c77789965bc2e300f50c66f7f11}{SetupLabelText}}(\ thePanel,\ panelVerticalSizer,\ ++lastID,\ \textcolor{stringliteral}{"{}Printing"{}},\ \textcolor{keyword}{true},\ wxCommandEventHandler(\ \mbox{\hyperlink{class_identification_panel_ac99cb8878c7f8c47fd2b9c96bbb7a360}{IdentificationPanel::OnPrintingUpdated}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00251}00251\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00252}00252\ \ \ \ \ wxBoxSizer*\ sizeHorizontalSizer;}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00253}00253\ \ \ \ \ wxStaticBox*\ sizeBox\ =\ \mbox{\hyperlink{class_helper_panel_a06667439fcca3f8a4b0fab10db82506e}{SetupBoxSizer}}(\ thePanel,\ panelVerticalSizer,\ \textcolor{stringliteral}{"{}Size"{}},\ lastID,\ sizeHorizontalSizer,\ wxHORIZONTAL\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00254}00254\ \ \ \ \ m\_width\ =\ \mbox{\hyperlink{class_helper_panel_acdac2c77789965bc2e300f50c66f7f11}{SetupLabelText}}(\ sizeBox,\ sizeHorizontalSizer,\ ++lastID,\ \textcolor{stringliteral}{"{}Width"{}},\ \textcolor{keyword}{false},\ wxCommandEventHandler(\ \mbox{\hyperlink{class_identification_panel_ab083ea4e29553e45c16d6714351c3354}{IdentificationPanel::OnWidthUpdated}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00255}00255\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00256}00256\ \ \ \ \ m\_height\ =\ \mbox{\hyperlink{class_helper_panel_acdac2c77789965bc2e300f50c66f7f11}{SetupLabelText}}(\ sizeBox,\ sizeHorizontalSizer,\ ++lastID,\ \textcolor{stringliteral}{"{}Height"{}},\ \textcolor{keyword}{false},\ wxCommandEventHandler(\ \mbox{\hyperlink{class_identification_panel_a7b682eb6a3754fd8bd3c364644c902f2}{IdentificationPanel::OnHeightUpdated}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00257}00257\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00258}00258\ \ \ \ \ m\_link\ =\ \mbox{\hyperlink{class_helper_panel_acdac2c77789965bc2e300f50c66f7f11}{SetupLabelText}}(\ thePanel,\ panelVerticalSizer,\ ++lastID,\ \textcolor{stringliteral}{"{}Link"{}},\ \textcolor{keyword}{true},\ wxCommandEventHandler(\ \mbox{\hyperlink{class_identification_panel_ad836a4492b1fa2cc0fcb7d05523e9077}{IdentificationPanel::OnLinkUpdated}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00259}00259\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00260}00260\ \ \ \ \ m\_description\ =\ \mbox{\hyperlink{class_helper_panel_acdac2c77789965bc2e300f50c66f7f11}{SetupLabelText}}(\ thePanel,\ panelVerticalSizer,\ ++lastID,\ \textcolor{stringliteral}{"{}Description"{}},\ \textcolor{keyword}{true},\ wxCommandEventHandler(\ \mbox{\hyperlink{class_identification_panel_a7ffbe6e2a231c264a0c9fcb69e4f6da4}{IdentificationPanel::OnDescriptionUpdated}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00261}00261\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00262}00262\ \ \ \ \ \textcolor{comment}{//\ wxBoxSizer*\ itemBoxSizer8\ =\ new\ wxBoxSizer(\ wxHORIZONTAL\ );}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00263}00263\ \ \ \ \textcolor{comment}{//\ \ panelVerticalSizer-\/>Add(\ itemBoxSizer8,\ 1,\ wxGROW\ |\ wxALL,\ 5\ );}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00264}00264\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00265}00265\ \ \ \ \ m\_imageName\ =\ \mbox{\hyperlink{class_helper_panel_acdac2c77789965bc2e300f50c66f7f11}{SetupLabelText}}(\ thePanel,\ panelVerticalSizer,\ ++lastID,\ \textcolor{stringliteral}{"{}Image\ Name"{}},\ \textcolor{keyword}{true},\ wxCommandEventHandler(\ \mbox{\hyperlink{class_identification_panel_aea75d0655fda3b799ef7c325959bac29}{IdentificationPanel::OnImageUpdated}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00266}00266\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00267}00267\ \ \ \ \ \textcolor{comment}{//\ \ \ m\_link-\/>SetLabel(\ Catalog::DataTypeNames[\ Catalog::DT\_Link\ ]\ );}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00268}00268\ \ \ \ \ \textcolor{comment}{//\ \ \ m\_imageName-\/>SetLabel(\ "{}Image\ Name"{}\ );}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00269}00269\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00270}00270\ \ \ \ \ wxBoxSizer*\ buttonHorizontalSizer\ =\ \textcolor{keyword}{new}\ wxBoxSizer(\ wxHORIZONTAL\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00271}00271\ \ \ \ \ panelVerticalSizer-\/>Add(\ buttonHorizontalSizer,\ 0,\ wxGROW\ |\ wxALL,\ 0\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00272}00272\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00273}00273\ \ \ \ \ \textcolor{comment}{//\ \ wxBoxSizer*\ MountHorizontalSizer\ =\ new\ wxBoxSizer(\ wxHORIZONTAL\ );}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00274}00274\ \ \ \ \ \textcolor{comment}{//\ \ panelVerticalSizer-\/>Add(\ MountHorizontalSizer,\ 0,\ wxGROW\ |\ wxALL,\ 0\ );}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00275}00275\ \ \ \textcolor{comment}{//\ wxBoxSizer*\ MountHorizontalSizer\ =\ new\ wxBoxSizer(\ wxHORIZONTAL\ );}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00276}00276\ \ \ \ \textcolor{comment}{//\ panelVerticalSizer-\/>Add(\ buttonHorizontalSizer,\ 0,\ wxGROW\ |\ wxALL,\ 0\ );}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00277}00277\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00278}00278\ \ \ \ \ wxStaticText*\ mountStaticText\ =\ \textcolor{keyword}{new}\ wxStaticText(\ thePanel,\ wxID\_STATIC,\ \mbox{\hyperlink{namespace_catalog_a6d6fd52830494c7cfd841a94ddfdd42c}{Catalog::DataTypeNames}}[\ \mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176a3b032fbf5609ce35d198462d63594bf0}{Catalog::DT\_StampMount}}\ ],}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00279}00279\ \ \ \ \ \ \ \ \ wxDefaultPosition,\ wxDefaultSize,\ 0\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00280}00280\ \ \ \ \ buttonHorizontalSizer-\/>Add(\ mountStaticText,\ 0,\ wxALIGN\_CENTER\_VERTICAL\ |\ wxALL,\ 0\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00281}00281\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00282}00282\ \ \ \ \ \textcolor{comment}{//\ wxBoxSizer*\ MountHorizontalSizer\ =\ new\ wxBoxSizer(\ wxHORIZONTAL\ );}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00283}00283\ \ \ \ \ \ \textcolor{comment}{//panelVerticalSizer-\/>Add(\ buttonHorizontalSizer,\ 0,\ wxGROW\ |\ wxALL,\ 0\ );}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00284}00284\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00285}00285\ \ \ \ \ wxArrayString\ itemComboBox3Strings;}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00286}00286\ \ \ \ \ \textcolor{keywordflow}{for}\ (\ \textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \mbox{\hyperlink{namespace_catalog_a333bffd3f1441393f22215255cd523ea}{Catalog::NbrStampMounts}};\ i++\ )}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00287}00287\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00288}00288\ \ \ \ \ \ \ \ \ itemComboBox3Strings.Add(\ \mbox{\hyperlink{namespace_catalog_af13229d3185ff083a02f4df72996ff7f}{Catalog::mounts}}[\ i\ ].name\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00289}00289\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00290}00290\ \ \ \ \ mountComboBox\ =\ \textcolor{keyword}{new}\ wxComboBox(\ thePanel,\ \mbox{\hyperlink{class_identification_panel_a5c5755085e6f790b139fd51ec25ebb40a170386ce452b0215d48c6c26163050fb}{ID\_STAMPMOUNTTEXTBOX}},\ wxEmptyString,}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00291}00291\ \ \ \ \ \ \ \ \ wxDefaultPosition,\ wxDefaultSize,\ itemComboBox3Strings,\ wxCB\_DROPDOWN\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00292}00292\ \ \ \ \ buttonHorizontalSizer-\/>Add(\ mountComboBox,\ 0,\ wxALIGN\_CENTER\_VERTICAL\ |\ wxALL,\ 5\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00293}00293\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00294}00294\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00295}00295\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00296}00296\ \ \ \ \ wxButton*\ itemButton10\ =\ \textcolor{keyword}{new}\ wxButton(\ thePanel,\ \mbox{\hyperlink{class_identification_panel_a5c5755085e6f790b139fd51ec25ebb40a33b6015c81b8a2e6d943c48246e5318e}{ID\_COLNECTBUTTON}},\ \_(\ \textcolor{stringliteral}{"{}Colnect"{}}\ ),}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00297}00297\ \ \ \ \ \ \ \ \ wxDefaultPosition,\ wxDefaultSize,\ wxBU\_EXACTFIT\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00298}00298\ \ \ \ \ buttonHorizontalSizer-\/>Add(\ itemButton10,\ 0,\ wxALIGN\_LEFT\ |\ wxALL,\ 5\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00299}00299\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00300}00300\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00301}00301\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00302}00302\ \ \ \ \ \textcolor{comment}{//\ m\_issueDate-\/>SetLabel(\ "{}Issue\ Date"{}\ );}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00303}00303\ \ \ \ \ \textcolor{comment}{//\ m\_emission-\/>SetLabel(\ "{}Emission"{}\ );}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00304}00304\ \ \ \ \ \textcolor{comment}{//\ m\_format-\/>SetLabel(\ "{}Format"{}\ );}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00305}00305\ \ \ \ \ \textcolor{comment}{//\ m\_themes-\/>SetLabel(\ "{}Themes"{}\ );}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00306}00306\ \ \ \ \ \textcolor{comment}{//\ //\ m\_ID-\/>SetLabel(\ "{}ID"{}\ );}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00307}00307\ \ \ \ \ \textcolor{comment}{//\ m\_name-\/>SetLabel(\ "{}Name"{}\ );}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00308}00308\ \ \ \ \ \textcolor{comment}{//\ m\_width-\/>SetLabel(\ "{}Width"{}\ );}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00309}00309\ \ \ \ \ \textcolor{comment}{//\ m\_height-\/>SetLabel(\ "{}Height"{}\ );}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00310}00310\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00311}00311\ \ \ \ \ \textcolor{comment}{//\ m\_series-\/>SetLabel(\ "{}Series"{}\ );}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00312}00312\ \ \ \ \ \textcolor{comment}{//\ //m\_status-\/>SetLabel(\ "{}Status"{}\ );}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00313}00313\ \ \ \ \ \textcolor{comment}{//\ m\_country-\/>SetLabel(\ "{}Country"{}\ );}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00314}00314\ \ \ \ \ \textcolor{comment}{//\ m\_perforation-\/>SetLabel(\ "{}Perforation"{}\ );}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00315}00315\ \ \ \ \ \textcolor{comment}{//\ m\_printing-\/>SetLabel(\ "{}Printing"{}\ );}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00316}00316\ \ \ \ \ \mbox{\hyperlink{class_identification_panel_a642d14360b681482788e492c7154abd0}{SetDataEditable}}(\ \mbox{\hyperlink{_defs_8cpp_a22c90d4148252ff1fbca6b40d3312b23}{GetSettings}}(\ )-\/>IsCatalogVolumeEditable(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00317}00317\ \ \ \ \ Layout(\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00318}00318\ \ \ \ \ Refresh(\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00319}00319\ \ \ \ \ FitInside(\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00320}00320\ \}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00321}00321\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00322}00322\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00323}00323\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00324}\mbox{\hyperlink{class_identification_panel_a107e1749e57b57ed97f98febca4f47c9}{00324}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_identification_panel_a107e1749e57b57ed97f98febca4f47c9}{IdentificationPanel::ShowToolTips}}(\ )}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00325}00325\ \{}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00326}00326\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00327}00327\ \}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00328}00328\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00329}00329\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00330}00330\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00331}\mbox{\hyperlink{class_identification_panel_a8ea7d593809678e578319d736954e5f2}{00331}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_identification_panel_a8ea7d593809678e578319d736954e5f2}{IdentificationPanel::UpdateStampValue}}(\ \mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176}{Catalog::DataTypes}}\ dt,\ wxTextCtrl*\ textBox\ )}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00332}00332\ \{}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00333}00333\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ textBox-\/>IsModified(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00334}00334\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00335}00335\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_catalog_1_1_entry}{Catalog::Entry}}\ stamp(\ \mbox{\hyperlink{_defs_8cpp_aca2d538bfb345a89bad68a1c9aa705ce}{GetCatalogData}}(\ )-\/>GetCurrentStamp(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00336}00336\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00337}00337\ \ \ \ \ \ \ \ \ wxString\ val\ =\ textBox-\/>GetValue(\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00338}00338\ \ \ \ \ \ \ \ \ stamp.\mbox{\hyperlink{class_catalog_1_1_entry_a8b305ac433fbfee790a2bec12acc08a1}{SetAttr}}(\ dt,\ val\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00339}00339\ \ \ \ \ \ \ \ \ textBox-\/>SetModified(\ \textcolor{keyword}{false}\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00340}00340\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00341}00341\ \}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00342}00342\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00343}\mbox{\hyperlink{class_identification_panel_ac7ac6a08fbb71229056dbebaf40f4bf6}{00343}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_identification_panel_ac7ac6a08fbb71229056dbebaf40f4bf6}{IdentificationPanel::OnIssuedUpdated}}(\ wxCommandEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00344}00344\ \{}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00345}00345\ \ \ \ \ \mbox{\hyperlink{class_identification_panel_a8ea7d593809678e578319d736954e5f2}{UpdateStampValue}}(\ \mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176ab4c33b641900010f37b6a8f4fc01f141}{Catalog::DT\_Issued\_on}},\ m\_issueDate\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00346}00346\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00347}00347\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00348}00348\ \}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00349}\mbox{\hyperlink{class_identification_panel_a12da80bdc29a73afcae5840915931e36}{00349}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_identification_panel_a12da80bdc29a73afcae5840915931e36}{IdentificationPanel::OnSeriesUpdated}}(\ wxCommandEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00350}00350\ \{}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00351}00351\ \ \ \ \ \mbox{\hyperlink{class_identification_panel_a8ea7d593809678e578319d736954e5f2}{UpdateStampValue}}(\ \mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176ac47d4b2fd73442a618c99b2cf7fc661b}{Catalog::DT\_Series}},\ m\_series\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00352}00352\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00353}00353\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00354}00354\ \}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00355}\mbox{\hyperlink{class_identification_panel_a33950973a37d96211c14fb27adb915e8}{00355}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_identification_panel_a33950973a37d96211c14fb27adb915e8}{IdentificationPanel::OnThemeUpdated}}(\ wxCommandEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00356}00356\ \{}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00357}00357\ \ \ \ \ \mbox{\hyperlink{class_identification_panel_a8ea7d593809678e578319d736954e5f2}{UpdateStampValue}}(\ \mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176a6cacf512ede6c15399dc8cce295dc85c}{Catalog::DT\_Themes}},\ m\_themes\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00358}00358\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00359}00359\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00360}00360\ \}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00361}\mbox{\hyperlink{class_identification_panel_a673cba29d48313a7f9cbad523f86b4f0}{00361}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_identification_panel_a673cba29d48313a7f9cbad523f86b4f0}{IdentificationPanel::OnCountryUpdated}}(\ wxCommandEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00362}00362\ \{}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00363}00363\ \ \ \ \ \mbox{\hyperlink{class_identification_panel_a8ea7d593809678e578319d736954e5f2}{UpdateStampValue}}(\ \mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176a0b719c5206e0b426a46d5e5bbfdba537}{Catalog::DT\_Country}},\ m\_country\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00364}00364\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00365}00365\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00366}00366\ \}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00367}\mbox{\hyperlink{class_identification_panel_a11ad1ced12ba05635f06c44121feb10d}{00367}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_identification_panel_a11ad1ced12ba05635f06c44121feb10d}{IdentificationPanel::OnPerforationUpdated}}(\ wxCommandEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00368}00368\ \{}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00369}00369\ \ \ \ \ \mbox{\hyperlink{class_identification_panel_a8ea7d593809678e578319d736954e5f2}{UpdateStampValue}}(\ \mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176aa5fb8e583f6b876e7d991014b5111ecb}{Catalog::DT\_Perforation}},\ m\_perforation\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00370}00370\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00371}00371\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00372}00372\ \}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00373}00373\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00374}\mbox{\hyperlink{class_identification_panel_ac074d9667525f25f1b6fd62a3f573a35}{00374}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_identification_panel_ac074d9667525f25f1b6fd62a3f573a35}{IdentificationPanel::OnGumUpdated}}(\ wxCommandEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00375}00375\ \{}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00376}00376\ \ \ \ \ \mbox{\hyperlink{class_identification_panel_a8ea7d593809678e578319d736954e5f2}{UpdateStampValue}}(\ \mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176a3493c5f5c884f7eeab86fd4ddcfe8bb8}{Catalog::DT\_Gum}},\ m\_gum\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00377}00377\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00378}00378\ \}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00379}00379\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00380}\mbox{\hyperlink{class_identification_panel_a7ffbe6e2a231c264a0c9fcb69e4f6da4}{00380}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_identification_panel_a7ffbe6e2a231c264a0c9fcb69e4f6da4}{IdentificationPanel::OnDescriptionUpdated}}(\ wxCommandEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00381}00381\ \{}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00382}00382\ \ \ \ \ \mbox{\hyperlink{class_identification_panel_a8ea7d593809678e578319d736954e5f2}{UpdateStampValue}}(\ \mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176a2c31bdda498459754e4c5ac91f37c1e0}{Catalog::DT\_Description}},\ m\_description\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00383}00383\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00384}00384\ \}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00385}\mbox{\hyperlink{class_identification_panel_ac99cb8878c7f8c47fd2b9c96bbb7a360}{00385}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_identification_panel_ac99cb8878c7f8c47fd2b9c96bbb7a360}{IdentificationPanel::OnPrintingUpdated}}(\ wxCommandEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00386}00386\ \{}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00387}00387\ \ \ \ \ \mbox{\hyperlink{class_identification_panel_a8ea7d593809678e578319d736954e5f2}{UpdateStampValue}}(\ \mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176a39b5fdbbd7bb9552123dccbcd7663491}{Catalog::DT\_Printing}},\ m\_printing\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00388}00388\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00389}00389\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00390}00390\ \}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00391}\mbox{\hyperlink{class_identification_panel_aeb23635cc669215a5b155c8a53d283cf}{00391}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_identification_panel_aeb23635cc669215a5b155c8a53d283cf}{IdentificationPanel::OnNameUpdated}}(\ wxCommandEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00392}00392\ \{}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00393}00393\ \ \ \ \ \mbox{\hyperlink{class_identification_panel_a8ea7d593809678e578319d736954e5f2}{UpdateStampValue}}(\ \mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176aabd36ff22239011f8c5ed2d79ef06653}{Catalog::DT\_Name}},\ m\_name\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00394}00394\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00395}00395\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00396}00396\ \}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00397}\mbox{\hyperlink{class_identification_panel_ab083ea4e29553e45c16d6714351c3354}{00397}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_identification_panel_ab083ea4e29553e45c16d6714351c3354}{IdentificationPanel::OnWidthUpdated}}(\ wxCommandEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00398}00398\ \{}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00399}00399\ \ \ \ \ \mbox{\hyperlink{class_identification_panel_a8ea7d593809678e578319d736954e5f2}{UpdateStampValue}}(\ \mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176a5f1550ef1b81edc16c46c2f26cde8885}{Catalog::DT\_Width}},\ m\_width\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00400}00400\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00401}00401\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00402}00402\ \}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00403}\mbox{\hyperlink{class_identification_panel_a7b682eb6a3754fd8bd3c364644c902f2}{00403}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_identification_panel_a7b682eb6a3754fd8bd3c364644c902f2}{IdentificationPanel::OnHeightUpdated}}(\ wxCommandEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00404}00404\ \{}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00405}00405\ \ \ \ \ \mbox{\hyperlink{class_identification_panel_a8ea7d593809678e578319d736954e5f2}{UpdateStampValue}}(\ \mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176ae34fe6e4b8d2e52203adf4e9106a9aac}{Catalog::DT\_Height}},\ m\_height\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00406}00406\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00407}00407\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00408}00408\ \}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00409}00409\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00410}\mbox{\hyperlink{class_identification_panel_ad836a4492b1fa2cc0fcb7d05523e9077}{00410}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_identification_panel_ad836a4492b1fa2cc0fcb7d05523e9077}{IdentificationPanel::OnLinkUpdated}}(\ wxCommandEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00411}00411\ \{}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00412}00412\ \ \ \ \ \mbox{\hyperlink{class_identification_panel_a8ea7d593809678e578319d736954e5f2}{UpdateStampValue}}(\ \mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176abc3b0759ec71eccc9f82490fb9f7d9f9}{Catalog::DT\_Link}},\ m\_link\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00413}00413\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00414}00414\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00415}00415\ \}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00416}00416\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00417}\mbox{\hyperlink{class_identification_panel_aea75d0655fda3b799ef7c325959bac29}{00417}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_identification_panel_aea75d0655fda3b799ef7c325959bac29}{IdentificationPanel::OnImageUpdated}}(\ wxCommandEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00418}00418\ \{}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00419}00419\ \ \ \ \ \mbox{\hyperlink{class_identification_panel_a8ea7d593809678e578319d736954e5f2}{UpdateStampValue}}(\ \mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176ab1b5b0ea423e1ecd12339144973ddc5f}{Catalog::DT\_ImageName}},\ m\_imageName\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00420}00420\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00421}00421\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00422}00422\ \}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00423}00423\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00424}\mbox{\hyperlink{class_identification_panel_a2d239209a3c085e3c82f5c72e7d49a3b}{00424}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_identification_panel_a2d239209a3c085e3c82f5c72e7d49a3b}{IdentificationPanel::OnEmissionchoiceSelected}}(\ wxCommandEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00425}00425\ \{}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00426}00426\ \ \ \ \ wxString\ strSel\ =\ m\_emission-\/>GetStringSelection(\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00427}00427\ \ \ \ \ \mbox{\hyperlink{class_catalog_1_1_entry}{Catalog::Entry}}\ stamp(\ \mbox{\hyperlink{_defs_8cpp_aca2d538bfb345a89bad68a1c9aa705ce}{GetCatalogData}}(\ )-\/>GetCurrentStamp(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00428}00428\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ stamp.\mbox{\hyperlink{class_catalog_1_1_entry_a26f3ce59021eafc38181f8244aae5d05}{IsOK}}(\ )\ )\ stamp.\mbox{\hyperlink{class_catalog_1_1_entry_a549843e2138e774772e33ae0779e2039}{SetEmission}}(\ strSel\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00429}00429\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00430}00430\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00431}00431\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00432}00432\ \}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00433}00433\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00434}00434\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00435}\mbox{\hyperlink{class_identification_panel_acef66a0eaf96a016a4e487c0a91710b3}{00435}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_identification_panel_acef66a0eaf96a016a4e487c0a91710b3}{IdentificationPanel::OnFormatchoiceSelected}}(\ wxCommandEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00436}00436\ \{}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00437}00437\ \ \ \ \ \textcolor{keywordtype}{int}\ sel\ =\ m\_format-\/>GetSelection(\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00438}00438\ \ \ \ \ wxString\ strSel\ =\ m\_format-\/>GetStringSelection(\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00439}00439\ \ \ \ \ \mbox{\hyperlink{class_catalog_1_1_entry}{Catalog::Entry}}\ stamp(\ \mbox{\hyperlink{_defs_8cpp_aca2d538bfb345a89bad68a1c9aa705ce}{GetCatalogData}}(\ )-\/>GetCurrentStamp(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00440}00440\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ stamp.\mbox{\hyperlink{class_catalog_1_1_entry_a26f3ce59021eafc38181f8244aae5d05}{IsOK}}(\ )\ )\ stamp.\mbox{\hyperlink{class_catalog_1_1_entry_a401d45d2d5b9875752330dd6679953f2}{SetFormat}}(\ strSel\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00441}00441\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00442}00442\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00443}00443\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00444}00444\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00445}00445\ \}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00446}00446\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00447}00447\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00448}\mbox{\hyperlink{class_identification_panel_a57981e4c3dd8e68730e1bc599f347b0c}{00448}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_identification_panel_a57981e4c3dd8e68730e1bc599f347b0c}{IdentificationPanel::SetChoice}}(\ wxChoice*\ ctrl,\ wxString\ str\ )}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00449}00449\ \{}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00450}00450\ \ \ \ \ \textcolor{keywordtype}{int}\ ndx\ =\ ctrl-\/>FindString(\ str\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00451}00451\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ ndx\ ==\ wxNOT\_FOUND\ )}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00452}00452\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00453}00453\ \ \ \ \ \ \ \ \ ndx\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00454}00454\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00455}00455\ \ \ \ \ ctrl-\/>SetSelection(\ ndx\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00456}00456\ \}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00457}00457\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00458}\mbox{\hyperlink{class_identification_panel_addd3708725d119f1737abd4a6f9cea76}{00458}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_identification_panel_a57981e4c3dd8e68730e1bc599f347b0c}{IdentificationPanel::SetChoice}}(\ wxChoice*\ ctrl,\ \textcolor{keywordtype}{int}\ ndx\ )}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00459}00459\ \{}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00460}00460\ \ \ \ \ ctrl-\/>SetSelection(\ ndx\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00461}00461\ \}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00462}00462\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00463}\mbox{\hyperlink{class_identification_panel_a5d78d70cf707ca374c2ca695ac3e7423}{00463}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_identification_panel_a5d78d70cf707ca374c2ca695ac3e7423}{IdentificationPanel::UpdatePanel}}(\ )}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00464}00464\ \{}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00465}00465\ \ \ \ \ \mbox{\hyperlink{class_catalog_1_1_entry}{Catalog::Entry}}\ stamp(\ \mbox{\hyperlink{_defs_8cpp_aca2d538bfb345a89bad68a1c9aa705ce}{GetCatalogData}}(\ )-\/>GetCurrentStamp(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00466}00466\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ stamp.\mbox{\hyperlink{class_catalog_1_1_entry_a26f3ce59021eafc38181f8244aae5d05}{IsOK}}(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00467}00467\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00468}00468\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00469}00469\ \ \ \ \ \ \ \ \ m\_name-\/>ChangeValue(\ stamp.\mbox{\hyperlink{class_catalog_1_1_entry_a306b6ac1e1d3d2303473fdaf3b7a2c1b}{GetName}}(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00470}00470\ \ \ \ \ \ \ \ \ m\_width-\/>ChangeValue(\ stamp.\mbox{\hyperlink{class_catalog_1_1_entry_a835a5ef5260df9ab588e3c82ef894873}{GetAttr}}(\ \mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176a5f1550ef1b81edc16c46c2f26cde8885}{Catalog::DT\_Width}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00471}00471\ \ \ \ \ \ \ \ \ m\_height-\/>ChangeValue(\ stamp.\mbox{\hyperlink{class_catalog_1_1_entry_a835a5ef5260df9ab588e3c82ef894873}{GetAttr}}(\ \mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176ae34fe6e4b8d2e52203adf4e9106a9aac}{Catalog::DT\_Height}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00472}00472\ \ \ \ \ \ \ \ \ m\_issueDate-\/>SetValue(\ stamp.\mbox{\hyperlink{class_catalog_1_1_entry_a835a5ef5260df9ab588e3c82ef894873}{GetAttr}}(\ \mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176ab4c33b641900010f37b6a8f4fc01f141}{Catalog::DT\_Issued\_on}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00473}00473\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_identification_panel_a57981e4c3dd8e68730e1bc599f347b0c}{SetChoice}}(\ m\_emission,\ stamp.\mbox{\hyperlink{class_catalog_1_1_entry_a19074b395fb9d8be8c6e1a3fd9719526}{GetEmission}}(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00474}00474\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_identification_panel_a57981e4c3dd8e68730e1bc599f347b0c}{SetChoice}}(\ m\_format,\ stamp.\mbox{\hyperlink{class_catalog_1_1_entry_a4dc11fe62e108d49bb62787a26b365ed}{GetFormat}}(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00475}00475\ \ \ \ \ \ \ \ \ m\_description-\/>ChangeValue(\ stamp.\mbox{\hyperlink{class_catalog_1_1_entry_a835a5ef5260df9ab588e3c82ef894873}{GetAttr}}(\ \mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176a2c31bdda498459754e4c5ac91f37c1e0}{Catalog::DT\_Description}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00476}00476\ \ \ \ \ \ \ \ \ m\_series-\/>ChangeValue(\ stamp.\mbox{\hyperlink{class_catalog_1_1_entry_a835a5ef5260df9ab588e3c82ef894873}{GetAttr}}(\ \mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176ac47d4b2fd73442a618c99b2cf7fc661b}{Catalog::DT\_Series}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00477}00477\ \ \ \ \ \ \ \ \ m\_themes-\/>ChangeValue(\ stamp.\mbox{\hyperlink{class_catalog_1_1_entry_a835a5ef5260df9ab588e3c82ef894873}{GetAttr}}(\ \mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176a6cacf512ede6c15399dc8cce295dc85c}{Catalog::DT\_Themes}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00478}00478\ \ \ \ \ \ \ \ \ m\_country-\/>ChangeValue(\ stamp.\mbox{\hyperlink{class_catalog_1_1_entry_a835a5ef5260df9ab588e3c82ef894873}{GetAttr}}(\ \mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176a0b719c5206e0b426a46d5e5bbfdba537}{Catalog::DT\_Country}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00479}00479\ \ \ \ \ \ \ \ \ m\_perforation-\/>ChangeValue(\ stamp.\mbox{\hyperlink{class_catalog_1_1_entry_a835a5ef5260df9ab588e3c82ef894873}{GetAttr}}(\ \mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176aa5fb8e583f6b876e7d991014b5111ecb}{Catalog::DT\_Perforation}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00480}00480\ \ \ \ \ \ \ \ \ m\_gum-\/>ChangeValue(\ stamp.\mbox{\hyperlink{class_catalog_1_1_entry_a835a5ef5260df9ab588e3c82ef894873}{GetAttr}}(\ \mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176a3493c5f5c884f7eeab86fd4ddcfe8bb8}{Catalog::DT\_Gum}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00481}00481\ \ \ \ \ \ \ \ \ m\_printing-\/>ChangeValue(\ stamp.\mbox{\hyperlink{class_catalog_1_1_entry_a835a5ef5260df9ab588e3c82ef894873}{GetAttr}}(\ \mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176a39b5fdbbd7bb9552123dccbcd7663491}{Catalog::DT\_Printing}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00482}00482\ \ \ \ \ \ \ \ \ \textcolor{comment}{//SetChoice(\ m\_status,\ stamp.GetInventoryStatus(\ )\ );}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00483}00483\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00484}00484\ \ \ \ \ \ \ \ \ m\_link-\/>SetValue(\ stamp.\mbox{\hyperlink{class_catalog_1_1_entry_a835a5ef5260df9ab588e3c82ef894873}{GetAttr}}(\ \mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176abc3b0759ec71eccc9f82490fb9f7d9f9}{Catalog::DT\_Link}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00485}00485\ \ \ \ \ \ \ \ \ m\_catCode-\/>SetValue(\ stamp.\mbox{\hyperlink{class_catalog_1_1_entry_a835a5ef5260df9ab588e3c82ef894873}{GetAttr}}(\ \mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176a817af092e0ed172a75b6ac59659deef7}{Catalog::DT\_Catalog\_Codes}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00486}00486\ \ \ \ \ \ \ \ \ wxString\ \textcolor{keywordtype}{id}\ =\ stamp.\mbox{\hyperlink{class_catalog_1_1_entry_a156ba39e7f7dc3cc16554c849a098363}{FindImageName}}(\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00487}00487\ \ \ \ \ \ \ \ \ m\_imageName-\/>SetValue(\ \textcolor{keywordtype}{id}\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00488}00488\ \ \ \ \ \ \ \ \ mountComboBox-\/>SetValue(\ stamp.\mbox{\hyperlink{class_catalog_1_1_entry_a835a5ef5260df9ab588e3c82ef894873}{GetAttr}}(\ \mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176a3b032fbf5609ce35d198462d63594bf0}{Catalog::DT\_StampMount}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00489}00489\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00490}00490\ \}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00491}00491\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00492}\mbox{\hyperlink{class_identification_panel_a642d14360b681482788e492c7154abd0}{00492}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_identification_panel_a642d14360b681482788e492c7154abd0}{IdentificationPanel::SetDataEditable}}(\ \textcolor{keywordtype}{bool}\ val\ )}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00493}00493\ \{}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00494}00494\ \ \ \ \ m\_issueDate-\/>SetEditable(\ val\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00495}00495\ \ \ \ \ m\_emission-\/>Enable(\ val\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00496}00496\ \ \ \ \ m\_format-\/>Enable(\ val\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00497}00497\ \ \ \ \ m\_description-\/>Enable(\ val\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00498}00498\ \ \ \ \ m\_themes-\/>SetEditable(\ val\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00499}00499\ \ \ \ \ \textcolor{comment}{//\ \ \ m\_ID-\/>SetEditable(\ val\ );}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00500}00500\ \ \ \ \ m\_name-\/>SetEditable(\ val\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00501}00501\ \ \ \ \ m\_width-\/>SetEditable(\ val\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00502}00502\ \ \ \ \ m\_height-\/>SetEditable(\ val\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00503}00503\ \ \ \ \ m\_series-\/>SetEditable(\ val\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00504}00504\ \ \ \ \ \textcolor{comment}{//\ m\_status-\/>Enable(\ val\ );}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00505}00505\ \ \ \ \ m\_country-\/>SetEditable(\ val\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00506}00506\ \ \ \ \ m\_perforation-\/>SetEditable(\ val\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00507}00507\ \ \ \ \ m\_gum-\/>SetEditable(\ val\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00508}00508\ \ \ \ \ m\_printing-\/>SetEditable(\ val\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00509}00509\ \ \ \ \ m\_link-\/>SetEditable(\ val\ );;}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00510}00510\ \ \ \ \ \textcolor{comment}{//\ \ \ m\_catCodes-\/>SetEditable(\ val\ );;}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00511}00511\ \ \ \ \ m\_imageName-\/>SetEditable(\ val\ );;}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00512}00512\ \ \ \ \ mountComboBox-\/>SetEditable(\ val\ );;}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00513}00513\ \}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00514}00514\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00515}00515\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00516}\mbox{\hyperlink{class_identification_panel_ac68eb7a0c668a42b9c64509d0780a8d7}{00516}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_identification_panel_ac68eb7a0c668a42b9c64509d0780a8d7}{IdentificationPanel::OnCatalogCodesChanged}}(\ wxCommandEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00517}00517\ \{\ \}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00518}00518\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00519}\mbox{\hyperlink{class_identification_panel_aec54f64e6feb5ef08e67ade44d67c74c}{00519}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_identification_panel_aec54f64e6feb5ef08e67ade44d67c74c}{IdentificationPanel::OnComboboxSelected}}(\ wxCommandEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00520}00520\ \{}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00521}00521\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00522}00522\ \}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00523}00523\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00524}\mbox{\hyperlink{class_identification_panel_a1927411dc25256037f81d485a26fef6e}{00524}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_identification_panel_a1927411dc25256037f81d485a26fef6e}{IdentificationPanel::OnComboboxUpdated}}(\ wxCommandEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00525}00525\ \{}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00526}00526\ \ \ \ \ \mbox{\hyperlink{class_catalog_1_1_entry}{Catalog::Entry}}\ stamp(\ \mbox{\hyperlink{_defs_8cpp_aca2d538bfb345a89bad68a1c9aa705ce}{GetCatalogData}}(\ )-\/>GetCurrentStamp(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00527}00527\ \ \ \ \ stamp.\mbox{\hyperlink{class_catalog_1_1_entry_a8b305ac433fbfee790a2bec12acc08a1}{SetAttr}}(\ \mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176a3b032fbf5609ce35d198462d63594bf0}{Catalog::DT\_StampMount}},\ mountComboBox-\/>GetStringSelection(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00528}00528\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00529}00529\ \}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00530}00530\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00531}00531\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00532}00532\ \textcolor{comment}{//\ void\ IdentificationPanel::OnStatuschoiceSelected(\ wxCommandEvent\&\ event\ )}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00533}00533\ \textcolor{comment}{//\ \{}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00534}00534\ \textcolor{comment}{//\ \ \ \ \ wxString\ strSel\ =\ m\_status-\/>GetStringSelection(\ );}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00535}00535\ \textcolor{comment}{//\ \ \ \ \ Catalog::Entry\ stamp(\ GetCatalogData(\ )-\/>GetCurrentStamp(\ )\ );}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00536}00536\ \textcolor{comment}{//\ \ \ \ \ if\ (\ stamp.IsOK(\ )\ )}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00537}00537\ \textcolor{comment}{//\ \ \ \ \ \{}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00538}00538\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ stamp.SetInventoryStatus(\ strSel\ );}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00539}00539\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ GetCatalogTreeCtrl(\ )-\/>SetInventoryStatusImage(\ );}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00540}00540\ \textcolor{comment}{//\ \ \ \ \ \}}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00541}00541\ \textcolor{comment}{//\ \ \ \ \ event.Skip(\ );}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00542}00542\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00543}00543\ \textcolor{comment}{//\ \}}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00544}00544\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00545}00545\ \textcolor{comment}{//\ void\ IdentificationPanel::UpdateStatus(\ )}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00546}00546\ \textcolor{comment}{//\ \{}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00547}00547\ \textcolor{comment}{//\ \ \ \ \ Catalog::Entry\ stamp(\ GetCatalogData(\ )-\/>GetCurrentStamp(\ )\ );}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00548}00548\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00549}00549\ \textcolor{comment}{//\ \ \ \ \ if\ (\ stamp.IsOK(\ )\ )}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00550}00550\ \textcolor{comment}{//\ \ \ \ \ \{}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00551}00551\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ SetChoice(\ m\_status,\ stamp.GetInventoryStatus(\ )\ );}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00552}00552\ \textcolor{comment}{//\ \ \ \ \ \}}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00553}00553\ \textcolor{comment}{//\ \}}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00554}00554\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00555}\mbox{\hyperlink{class_identification_panel_a95458f75c6ca0b5dcfaed94bc4d8c7fb}{00555}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_identification_panel_a95458f75c6ca0b5dcfaed94bc4d8c7fb}{IdentificationPanel::OnColnectButtonClick}}(\ wxCommandEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00556}00556\ \{}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00557}00557\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ wxTheClipboard-\/>Open(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00558}00558\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00559}00559\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ This\ data\ objects\ are\ held\ by\ the\ clipboard,\ }}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00560}00560\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ so\ do\ not\ delete\ them\ in\ the\ app.}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00561}00561\ \ \ \ \ \ \ \ \ wxString\ imageName\ =\ m\_imageName-\/>GetValue(\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00562}00562\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ pos\ =\ imageName.Find(\ \textcolor{stringliteral}{"{}.jpg"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00563}00563\ \ \ \ \ \ \ \ \ imageName\ =\ imageName.Mid(\ 0,\ pos\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00564}00564\ \ \ \ \ \ \ \ \ wxTheClipboard-\/>SetData(\ \textcolor{keyword}{new}\ wxTextDataObject(\ imageName\ )\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00565}00565\ \ \ \ \ \ \ \ \ wxTheClipboard-\/>Close(\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00566}00566\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00567}00567\ \ \ \ \ wxString\ link\ =\ m\_link-\/>GetValue(\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00568}00568\ \ \ \ \ \textcolor{comment}{//\ \ \ \ wxGetApp(\ ).GetFrame(\ )-\/>GetWebViewPage(\ )-\/>DoLoad(\ link\ );}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00569}00569\ \ \ \ \ wxString\ cmd\ =\ wxString::Format(\ \textcolor{stringliteral}{"{}/usr/bin/firefox\ -\/-\/new-\/tab\ \%s\ \&"{}},\ link\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00570}00570\ \ \ \ \ \textcolor{keywordtype}{int}\ a\ =\ system(\ cmd.c\_str(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00571}00571\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00572}00572\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00573}00573\ \}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00574}00574\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00575}00575\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00576}\mbox{\hyperlink{class_identification_panel_ab4ca6ac126735a02845c524348eb4aba}{00576}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_identification_panel_ab4ca6ac126735a02845c524348eb4aba}{IdentificationPanel::OnNPMButtonClick}}(\ wxCommandEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00577}00577\ \{}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00578}00578\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00579}00579\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00580}00580\ \}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00581}00581\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00582}00582\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00583}\mbox{\hyperlink{class_identification_panel_a4adda4b92b5511c779f9820e5fa7ad49}{00583}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_identification_panel_a4adda4b92b5511c779f9820e5fa7ad49}{IdentificationPanel::OneBayButtonClick}}(\ wxCommandEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00584}00584\ \{}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00585}00585\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00586}00586\ \ \ \ \ \textcolor{comment}{//\ Catalog::Entry\ stamp(\ GetCatalogData(\ )-\/>GetCurrentStamp(\ )\ );}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00587}00587\ \ \ \ \ \textcolor{comment}{//\ if\ (\ stamp.IsOK(\ )\ )}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00588}00588\ \ \ \ \ \textcolor{comment}{//\ \{}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00589}00589\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00590}00590\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ wxString\ str\ =\ "{}Postage\ Stamp\ "{}\ +}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00591}00591\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ stamp.GetAttr(\ Catalog::DT\_ID\_Nbr\ )\ +\ "{}\ +\ "{}\ +\ stamp.GetAttr(\ Catalog::DT\_Name\ );}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00592}00592\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ wxString\ space\ =\ "{}\ "{};}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00593}00593\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ wxString\ plus\ =\ "{}+"{};}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00594}00594\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ str.Replace(\ space,\ plus\ );}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00595}00595\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ wxString\ link\ =\ "{}https://www.ebay.com/sch/i.html?\_nkw="{}\ +\ str\ +\ "{}\&\_sop=15"{};}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00596}00596\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ //https://www.ebay.com/sch/i.html?\_from=R40\&\_nkw=garden\&\_sacat=260"{};}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00597}00597\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ wxString\ cmd\ =\ wxString::Format(\ "{}/usr/bin/firefox\ -\/-\/new-\/tab\ \%s"{},\ link\ );}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00598}00598\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ system(\ cmd.fn\_str(\ )\ );}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00599}00599\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ //\ "{}https://www.ebay.com/sch/i.html?\_from\ =\ R40\&\_nkw\ =\ us+stamps+\%s\&\_sacat\ =\ 261\&LH\_TitleDesc\ =\ 0\&\_osacat\ =\ 261\&\_odkw\ =\ us+stamps"{}}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00600}00600\ \ \ \ \ \textcolor{comment}{//\ https://www.ebay.com/sch/i.html?\_from=R40\&\_trksid=p2499334.m570.l1313\&\_nkw=Garden+Corsage\&\_sacat=260}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00601}00601\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00602}00602\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ event.Skip(\ );}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00603}00603\ }
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00604}00604\ \ \ \ \ \textcolor{comment}{//\ \}}}
+\DoxyCodeLine{\Hypertarget{_identification_panel_8cpp_source_l00605}00605\ \}}
+
+\end{DoxyCode}

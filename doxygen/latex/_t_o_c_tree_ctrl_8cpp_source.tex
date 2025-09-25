@@ -1,0 +1,811 @@
+\doxysection{TOCTree\+Ctrl.\+cpp}
+\hypertarget{_t_o_c_tree_ctrl_8cpp_source}{}\label{_t_o_c_tree_ctrl_8cpp_source}\index{C:/Users/femon/Development/wx/cloneTest/StampTool/src/gui/TOCTreeCtrl.cpp@{C:/Users/femon/Development/wx/cloneTest/StampTool/src/gui/TOCTreeCtrl.cpp}}
+\mbox{\hyperlink{_t_o_c_tree_ctrl_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00024}00024\ \textcolor{preprocessor}{\#include\ "{}wx/wxprec.h"{}}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00026}00026\ \textcolor{preprocessor}{\#ifdef\ \_\_BORLANDC\_\_}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00027}00027\ \textcolor{preprocessor}{\#pragma\ hdrstop}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00028}00028\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00030}00030\ \textcolor{preprocessor}{\#ifndef\ WX\_PRECOMP}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00031}00031\ \textcolor{preprocessor}{\#include\ "{}wx/log.h"{}}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00032}00032\ \textcolor{preprocessor}{\#include\ "{}wx/wx.h"{}}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00033}00033\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00035}00035\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00037}00037\ \textcolor{preprocessor}{\#include\ "{}wx/artprov.h"{}}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00038}00038\ \textcolor{preprocessor}{\#include\ "{}wx/image.h"{}}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00039}00039\ \textcolor{preprocessor}{\#include\ "{}wx/imaglist.h"{}}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00040}00040\ \textcolor{preprocessor}{\#include\ "{}wx/math.h"{}}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00041}00041\ \textcolor{preprocessor}{\#include\ "{}wx/menu.h"{}}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00042}00042\ \textcolor{preprocessor}{\#include\ "{}wx/renderer.h"{}}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00043}00043\ \textcolor{preprocessor}{\#include\ "{}wx/wupdlock.h"{}}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00044}00044\ \textcolor{preprocessor}{\#include\ <wx/clipbrd.h>}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00045}00045\ \textcolor{preprocessor}{\#include\ <wx/filename.h>}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00047}00047\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_defs_8h}{Defs.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00049}00049\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_project_8h}{utils/Project.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00050}00050\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_x_m_l_utilities_8h}{utils/XMLUtilities.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00051}00051\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_t_o_c_defs_8h}{toc/TOCDefs.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00053}00053\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_gui_defs_8h}{gui/GuiDefs.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00054}00054\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_stamp_tool_frame_8h}{gui/StampToolFrame.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00055}00055\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_stamp_tool_panel_8h}{gui/StampToolPanel.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00056}00056\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_t_o_c_tree_ctrl_8h}{gui/TOCTreeCtrl.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00058}\mbox{\hyperlink{_t_o_c_tree_ctrl_8cpp_a08168db0b02aa5c9de10b8d95b859261}{00058}}\ \mbox{\hyperlink{_t_o_c_tree_ctrl_8cpp_a08168db0b02aa5c9de10b8d95b859261}{wxIMPLEMENT\_CLASS}}(\ \mbox{\hyperlink{class_t_o_c_tree_ctrl}{TOCTreeCtrl}},\ wxTreeCtrl\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00060}\mbox{\hyperlink{_t_o_c_tree_ctrl_8cpp_afcb23d2e4c46501fba0e0bb45ff5f35a}{00060}}\ \mbox{\hyperlink{_t_o_c_tree_ctrl_8cpp_afcb23d2e4c46501fba0e0bb45ff5f35a}{wxBEGIN\_EVENT\_TABLE}}(\ \mbox{\hyperlink{class_t_o_c_tree_ctrl}{TOCTreeCtrl}},\ wxTreeCtrl\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00062}00062\ EVT\_TREE\_BEGIN\_DRAG(\ \mbox{\hyperlink{_gui_defs_8h_a6329898a126babcdaa295242c115a11ea75a2cc03c8f45e2cb9159dc1a5544394}{ID\_TOCTreeCtrl}},\ \mbox{\hyperlink{class_t_o_c_tree_ctrl_a186052b850047ec94372375674d03f5f}{TOCTreeCtrl::OnBeginDrag}}\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00063}00063\ EVT\_TREE\_END\_DRAG(\ \mbox{\hyperlink{_gui_defs_8h_a6329898a126babcdaa295242c115a11ea75a2cc03c8f45e2cb9159dc1a5544394}{ID\_TOCTreeCtrl}},\ \mbox{\hyperlink{class_t_o_c_tree_ctrl_a7972e07e666eca710e132bb3e2ee23be}{TOCTreeCtrl::OnEndDrag}}\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00064}00064\ EVT\_TREE\_ITEM\_MENU(\ \mbox{\hyperlink{_gui_defs_8h_a6329898a126babcdaa295242c115a11ea75a2cc03c8f45e2cb9159dc1a5544394}{ID\_TOCTreeCtrl}},\ \mbox{\hyperlink{class_t_o_c_tree_ctrl_accbbb356afa263be0d9e71a7602e8d13}{TOCTreeCtrl::OnItemMenu}}\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00065}00065\ EVT\_TREE\_ITEM\_COLLAPSED(\ \mbox{\hyperlink{_gui_defs_8h_a6329898a126babcdaa295242c115a11ea75a2cc03c8f45e2cb9159dc1a5544394}{ID\_TOCTreeCtrl}},\ \mbox{\hyperlink{class_t_o_c_tree_ctrl_ae4b99b1c790fdf7f67848ddd1a770a18}{TOCTreeCtrl::OnTreectrlItemCollapsed}}\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00066}00066\ EVT\_TREE\_ITEM\_EXPANDED(\ \mbox{\hyperlink{_gui_defs_8h_a6329898a126babcdaa295242c115a11ea75a2cc03c8f45e2cb9159dc1a5544394}{ID\_TOCTreeCtrl}},\ \mbox{\hyperlink{class_t_o_c_tree_ctrl_a2994b3da87f37cddafd5590803a4f2c1}{TOCTreeCtrl::OnTreectrlItemExpanded}}\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00067}00067\ wxEND\_EVENT\_TABLE(\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00070}00070\ int\ \mbox{\hyperlink{_t_o_c_tree_ctrl_8h_afc7acff91680c7a88ad31190bd21220c}{LastVolumeID}}\ =\ \mbox{\hyperlink{_gui_defs_8h_a6329898a126babcdaa295242c115a11eabde7913d27920d62447ef8555e0c3a13}{IDCatalogMenuID}};}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00071}\mbox{\hyperlink{_t_o_c_tree_ctrl_8cpp_a2e3750d067078abef12a30bf2b1abe03}{00071}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{_t_o_c_tree_ctrl_8cpp_a2e3750d067078abef12a30bf2b1abe03}{GetNextVolumeID}}(\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00072}00072\ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00073}00073\ \ \ \ \ \textcolor{keywordflow}{return}\ ++\mbox{\hyperlink{_t_o_c_tree_ctrl_8h_afc7acff91680c7a88ad31190bd21220c}{LastVolumeID}};}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00074}00074\ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00075}00075\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00077}\mbox{\hyperlink{class_t_o_c_tree_item_data_a00abf1ca92fb1db491bfc368a1bee210}{00077}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_t_o_c_tree_item_data_a00abf1ca92fb1db491bfc368a1bee210}{TOCTreeItemData::Cmp}}(\ \mbox{\hyperlink{class_t_o_c_tree_item_data_af1d7b6aea470f2f380a9875d6af1e803}{TOCTreeItemData}}*\ itemData2\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00078}00078\ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00080}00080\ \ \ \ \ \mbox{\hyperlink{namespace_utils_a8d9b4e3627512bacc09c31c52f3d08f1}{Utils::TOCBaseType}}\ type2\ =\ itemData2-\/>\mbox{\hyperlink{class_t_o_c_tree_item_data_ad8ba4a2526389d24fda6bb074e0cc51f}{GetType}}(\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00082}00082\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ m\_type\ !=\ type2\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00083}00083\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00084}00084\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;\textcolor{comment}{//(\ int\ )\ m\_type\ -\/\ (\ int\ )\ type2;}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00085}00085\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00086}00086\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00087}00087\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00088}00088\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ they\ are\ the\ same\ type}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00090}00090\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00091}00091\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00092}00092\ \};}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00093}00093\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00094}00094\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00095}00095\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00096}\mbox{\hyperlink{class_t_o_c_tree_ctrl_a62b2cc067ef0e845a9490ef9c419a266}{00096}}\ \mbox{\hyperlink{class_t_o_c_tree_ctrl_a2a67b124059677d18ef4fe06ab2a9e8a}{TOCTreeCtrl::TOCTreeCtrl}}(\ wxWindow*\ parent,\ \textcolor{keyword}{const}\ wxWindowID\ \textcolor{keywordtype}{id},}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00097}00097\ \ \ \ \ \textcolor{keyword}{const}\ wxPoint\&\ pos,\ \textcolor{keyword}{const}\ wxSize\&\ size,}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00098}00098\ \ \ \ \ \textcolor{keywordtype}{long}\ style\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00099}00099\ \ \ \ \ :\ wxTreeCtrl(\ parent,\ id,\ pos,\ size,\ style\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00100}00100\ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00101}00101\ \ \ \ \ m\_reverseSort\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00102}00102\ \ \ \ \ m\_contextMenu\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00103}00103\ \ \ \ \ \mbox{\hyperlink{class_t_o_c_tree_ctrl_ac48acb61efe14294bf7dbedb27bc1fa4}{CreateImageList}}(\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00104}00104\ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00105}00105\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00106}00106\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00107}00107\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00108}\mbox{\hyperlink{class_t_o_c_tree_ctrl_a5176ee88ad17dbe3d0a1b68aa5ae2672}{00108}}\ \mbox{\hyperlink{class_t_o_c_tree_item_data}{TOCTreeItemData}}*\ \mbox{\hyperlink{class_t_o_c_tree_ctrl_a5176ee88ad17dbe3d0a1b68aa5ae2672}{TOCTreeCtrl::CreateChildData}}(\ wxXmlNode*\ child,}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00109}00109\ \ \ \ \ wxString\&\ label,}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00110}00110\ \ \ \ \ \mbox{\hyperlink{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3a}{Catalog::IconID}}\&\ icon,}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00111}00111\ \ \ \ \ \mbox{\hyperlink{namespace_utils_a8d9b4e3627512bacc09c31c52f3d08f1}{Utils::TOCBaseType}}\&\ nodeType\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00112}00112\ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00113}00113\ \ \ \ \ \mbox{\hyperlink{_t_o_c_tree_ctrl_8h_a8717254b25ba356bd682f98ceffdc4dd}{VolumePtr}}\ volume\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00114}00114\ \ \ \ \ wxString\ name\ =\ child-\/>GetName(\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00115}00115\ \ \ \ \ \textcolor{keywordtype}{int}\ menuID\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00116}00116\ \ \ \ \ \textcolor{keywordtype}{bool}\ collapseState\ =\ \mbox{\hyperlink{_defs_8h_ada635b136198e73ae22591a2616acfae}{String2Bool}}(\ \mbox{\hyperlink{namespace_utils_a4b9bc624ff61c4a618c12b911b48110c}{Utils::GetAttrStr}}(\ child,\ \textcolor{stringliteral}{"{}CollapseState"{}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00117}00117\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00118}00118\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ !name.Cmp(\ \mbox{\hyperlink{namespace_utils_ab1eaa1d4e06e66103dffe43479fd9783}{Utils::TOCBaseNames}}[\ \mbox{\hyperlink{namespace_utils_a8d9b4e3627512bacc09c31c52f3d08f1aa9530bf77fb747353c488a793003a5aa}{Utils::TOC\_Volume}}\ ]\ )\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00119}00119\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00120}00120\ \ \ \ \ \ \ \ \ nodeType\ =\ \mbox{\hyperlink{namespace_utils_a8d9b4e3627512bacc09c31c52f3d08f1aa9530bf77fb747353c488a793003a5aa}{Utils::TOC\_Volume}};}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00121}00121\ \ \ \ \ \ \ \ \ name\ =\ \mbox{\hyperlink{namespace_utils_a4b9bc624ff61c4a618c12b911b48110c}{Utils::GetAttrStr}}(\ child,\ \textcolor{stringliteral}{"{}FileName"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00122}00122\ \ \ \ \ \ \ \ \ label\ =\ \mbox{\hyperlink{namespace_utils_a4b9bc624ff61c4a618c12b911b48110c}{Utils::GetAttrStr}}(\ child,\ \textcolor{stringliteral}{"{}VolumeName"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00123}00123\ \ \ \ \ \ \ \ \ volume\ =\ \mbox{\hyperlink{class_t_o_c_tree_ctrl_a8a0ed04f6b6abecc475a4482994f3675}{FindVolume}}(\ label\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00124}00124\ \ \ \ \ \ \ \ \ menuID\ =\ \mbox{\hyperlink{_t_o_c_tree_ctrl_8h_a2e3750d067078abef12a30bf2b1abe03}{GetNextVolumeID}}(\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00125}00125\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00126}00126\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00127}00127\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00128}00128\ \ \ \ \ \ \ \ \ nodeType\ =\ \mbox{\hyperlink{namespace_utils_a8d9b4e3627512bacc09c31c52f3d08f1a15a6b5d0467b0cafd670ed9aa1906cf5}{Utils::TOC\_Section}};}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00129}00129\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00130}00130\ \ \ \ \ \ \ \ \ \textcolor{comment}{//otherwise\ get\ the\ label}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00131}00131\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ wxXmlAttribute*\ attr\ =\ \mbox{\hyperlink{namespace_utils_a0cf7591f8dca3719de0ef110784f0824}{Utils::GetAttribute}}(\ child,\ \textcolor{stringliteral}{"{}Name"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00132}00132\ \ \ \ \ \ \ \ \ label\ =\ attr-\/>GetValue(\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00133}00133\ \ \ \ \ \ \ \ \ name\ =\ label;}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00134}00134\ \ \ \ \ \ \ \ \ icon\ =\ \mbox{\hyperlink{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aacdde910cf8edacfffcfd3f7ee576f78c}{Catalog::Icon\_Folder}};}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00135}00135\ \ \ \ \ \ \ \ \ menuID\ =\ \mbox{\hyperlink{_t_o_c_tree_ctrl_8h_a2e3750d067078abef12a30bf2b1abe03}{GetNextVolumeID}}(\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00136}00136\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00137}00137\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00138}00138\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_t_o_c_tree_item_data}{TOCTreeItemData}}(\ nodeType,\ collapseState,\ name,\ label,\ menuID,\ volume\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00139}00139\ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00140}00140\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00141}00141\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00142}00142\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00143}\mbox{\hyperlink{class_t_o_c_tree_ctrl_aefc88bd1dde6684c2f52173b4a543af4}{00143}}\ wxTreeItemId\ \mbox{\hyperlink{class_t_o_c_tree_ctrl_aefc88bd1dde6684c2f52173b4a543af4}{TOCTreeCtrl::AddChild}}(\ wxTreeItemId\ parent,\ wxXmlNode*\ child,\ wxMenu*\ menu\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00144}00144\ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00145}00145\ \ \ \ \ \mbox{\hyperlink{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3a}{Catalog::IconID}}\ icon;}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00146}00146\ \ \ \ \ wxString\ label;}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00147}00147\ \ \ \ \ wxMenu*\ subMenu;}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00148}00148\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00149}00149\ \ \ \ \ wxString\ nodeName\ =\ child-\/>GetName(\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00150}00150\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00151}00151\ \ \ \ \ \mbox{\hyperlink{namespace_utils_a8d9b4e3627512bacc09c31c52f3d08f1}{Utils::TOCBaseType}}\ nodeType\ =\ \mbox{\hyperlink{namespace_utils_a10e6f88e02d3b871666ca8fa943fee87}{Utils::FindTOCBaseType}}(\ nodeName\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00152}00152\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00153}00153\ \ \ \ \ \textcolor{comment}{//\ create\ the\ child\ data\ for\ the\ tree}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00154}00154\ \ \ \ \ \mbox{\hyperlink{class_t_o_c_tree_item_data}{TOCTreeItemData}}*\ itemData\ =\ \mbox{\hyperlink{class_t_o_c_tree_ctrl_a5176ee88ad17dbe3d0a1b68aa5ae2672}{CreateChildData}}(\ child,\ label,\ icon,\ nodeType\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00155}00155\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00156}00156\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ !itemData\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00157}00157\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00158}00158\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00159}00159\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00160}00160\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00161}00161\ \ \ \ \ \textcolor{comment}{//\ add\ it\ to\ the\ tree}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00162}00162\ \ \ \ \ wxTreeItemId\ childID\ =\ AppendItem(\ parent,\ label,\ icon,\ -\/1,\ itemData\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00163}00163\ \ \ \ \ m\_currVolumeID\ =\ childID;}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00164}00164\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00165}00165\ \ \ \ \ \textcolor{comment}{//\ build\ the\ TOC\ context\ menu}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00166}00166\ \ \ \ \ \textcolor{keywordtype}{int}\ \textcolor{keywordtype}{id}\ =\ itemData-\/>\mbox{\hyperlink{class_t_o_c_tree_item_data_ab5d5e25dab3824f5700692cd584f5fa8}{GetMenuID}}(\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00167}00167\ \ \ \ \ itemData-\/>\mbox{\hyperlink{class_t_o_c_tree_item_data_ad8ba4a2526389d24fda6bb074e0cc51f}{GetType}}(\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00168}00168\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ !nodeName.Cmp(\ \mbox{\hyperlink{namespace_utils_ab1eaa1d4e06e66103dffe43479fd9783}{Utils::TOCBaseNames}}[\ \mbox{\hyperlink{namespace_utils_a8d9b4e3627512bacc09c31c52f3d08f1aa9530bf77fb747353c488a793003a5aa}{Utils::TOC\_Volume}}\ ]\ )\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00169}00169\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00170}00170\ \ \ \ \ \ \ \ \ menu-\/>Append(\ \textcolor{keywordtype}{id},\ label\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00171}00171\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00172}00172\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (\ !nodeName.Cmp(\ \mbox{\hyperlink{namespace_utils_ab1eaa1d4e06e66103dffe43479fd9783}{Utils::TOCBaseNames}}[\ \mbox{\hyperlink{namespace_utils_a8d9b4e3627512bacc09c31c52f3d08f1a15a6b5d0467b0cafd670ed9aa1906cf5}{Utils::TOC\_Section}}\ ]\ )\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00173}00173\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00174}00174\ \ \ \ \ \ \ \ \ subMenu\ =\ \textcolor{keyword}{new}\ wxMenu(\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00175}00175\ \ \ \ \ \ \ \ \ menu-\/>Append(\ \textcolor{keywordtype}{id},\ label,\ subMenu\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00176}00176\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00177}00177\ \ \ \ \ \mbox{\hyperlink{class_t_o_c_tree_ctrl_a8bc992874dd75a5ab76de6b1f7d70c19}{LinkMenuItemToTreeItem}}(\ \textcolor{keywordtype}{id},\ childID\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00178}00178\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00179}00179\ \ \ \ \ \textcolor{comment}{//\ not\ a\ entry\ just\ add\ the\ appropriate\ image}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00180}00180\ \ \ \ \ SetItemImage(\ childID,\ \mbox{\hyperlink{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aacdde910cf8edacfffcfd3f7ee576f78c}{Catalog::Icon\_Folder}}\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00181}00181\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00182}00182\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00183}00183\ \ \ \ \ \textcolor{comment}{//\ now\ do\ it\ all\ again\ for\ this\ entrys\ children}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00184}00184\ \ \ \ \ wxXmlNode*\ grandChild\ =\ child-\/>GetChildren(\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00185}00185\ \ \ \ \ \textcolor{keywordflow}{while}\ (\ grandChild\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00186}00186\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00187}00187\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00188}00188\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ start\ adding\ child\ elements\ to\ it.}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00189}00189\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_t_o_c_tree_ctrl_aefc88bd1dde6684c2f52173b4a543af4}{AddChild}}(\ childID,\ grandChild,\ subMenu\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00190}00190\ \ \ \ \ \ \ \ \ grandChild\ =\ grandChild-\/>GetNext(\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00191}00191\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00192}00192\ \ \ \ \ \mbox{\hyperlink{class_t_o_c_tree_ctrl_aad151f372025fc4c154af61dd1054a53}{SetTreeItemCollapseState}}(\ childID\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00193}00193\ \ \ \ \ \textcolor{keywordflow}{return}\ childID;}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00194}00194\ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00195}00195\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00196}00196\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00197}00197\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00198}\mbox{\hyperlink{class_t_o_c_tree_ctrl_a5c29ac0da707b272a116193160c45958}{00198}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_t_o_c_tree_ctrl_a5c29ac0da707b272a116193160c45958}{TOCTreeCtrl::Clear}}(\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00199}00199\ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00200}00200\ \ \ \ \ \textcolor{comment}{//\ then\ clobber\ all\ the\ tree\ items}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00201}00201\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00202}00202\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ m\_contextMenu\ )\ \ \textcolor{keyword}{delete}\ m\_contextMenu;}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00203}00203\ \ \ \ \ m\_contextMenu\ =\ \textcolor{keyword}{new}\ wxMenu(\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00204}00204\ \ \ \ \ \mbox{\hyperlink{_t_o_c_tree_ctrl_8h_afc7acff91680c7a88ad31190bd21220c}{LastVolumeID}}\ =\ \mbox{\hyperlink{_gui_defs_8h_a6329898a126babcdaa295242c115a11eabde7913d27920d62447ef8555e0c3a13}{IDCatalogMenuID}};}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00205}00205\ \ \ \ \ DeleteAllItems(\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00206}00206\ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00207}00207\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00208}00208\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00209}00209\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00210}\mbox{\hyperlink{class_t_o_c_tree_ctrl_ac48acb61efe14294bf7dbedb27bc1fa4}{00210}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_t_o_c_tree_ctrl_ac48acb61efe14294bf7dbedb27bc1fa4}{TOCTreeCtrl::CreateImageList}}(\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00211}00211\ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00212}00212\ \ \ \ \ AssignImageList(\ \mbox{\hyperlink{_icon_defs_8cpp_a4aa78a7ce93d82f2f97e6f30c5d780f4}{CreateCatalogImageList}}(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00213}00213\ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00214}00214\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00215}00215\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00216}00216\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00217}\mbox{\hyperlink{class_t_o_c_tree_ctrl_a1ba8cf0b149f6c3a2db75a936ce64cfd}{00217}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_t_o_c_tree_ctrl_a1ba8cf0b149f6c3a2db75a936ce64cfd}{TOCTreeCtrl::DeleteEntry}}(\ wxTreeItemId\ \textcolor{keywordtype}{id}\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00218}00218\ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00219}00219\ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00220}00220\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00221}00221\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00222}00222\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00223}\mbox{\hyperlink{class_t_o_c_tree_ctrl_aba4abe197c40b3e451be9dc56be233cd}{00223}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_t_o_c_tree_ctrl_aba4abe197c40b3e451be9dc56be233cd}{TOCTreeCtrl::EnableState}}(\ wxTreeItemId\ \textcolor{keywordtype}{id}\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00224}00224\ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00225}00225\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ \textcolor{keywordtype}{id}.IsOk(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00226}00226\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00227}00227\ \ \ \ \ \ \ \ \ wxTreeItemIdValue\ cookie;}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00228}00228\ \ \ \ \ \ \ \ \ wxTreeItemId\ child\ =\ GetFirstChild(\ \textcolor{keywordtype}{id},\ cookie\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00229}00229\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (\ child.IsOk(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00230}00230\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00231}00231\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_t_o_c_tree_ctrl_aba4abe197c40b3e451be9dc56be233cd}{EnableState}}(\ child\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00232}00232\ \ \ \ \ \ \ \ \ \ \ \ \ child\ =\ GetNextChild(\ \textcolor{keywordtype}{id},\ cookie\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00233}00233\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00234}00234\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00235}00235\ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00236}00236\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00237}00237\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00238}00238\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00239}\mbox{\hyperlink{class_t_o_c_tree_ctrl_a045503525ad336d114c53b118c5714ae}{00239}}\ wxTreeItemId\ \mbox{\hyperlink{class_t_o_c_tree_ctrl_a045503525ad336d114c53b118c5714ae}{TOCTreeCtrl::FindFirstEntryChild}}(\ wxTreeItemId\ \textcolor{keywordtype}{id}\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00240}00240\ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00241}00241\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ \textcolor{keywordtype}{id}.IsOk(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00242}00242\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00243}00243\ \ \ \ \ \ \ \ \ wxTreeItemIdValue\ cookie;}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00244}00244\ \ \ \ \ \ \ \ \ wxTreeItemId\ child\ =\ GetFirstChild(\ \textcolor{keywordtype}{id},\ cookie\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00245}00245\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (\ child\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00246}00246\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00247}00247\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ \mbox{\hyperlink{class_t_o_c_tree_ctrl_a00d66aa18fdf61ba7cd7fd9600ae010a}{GetItemType}}(\ child\ )\ ==\ \mbox{\hyperlink{namespace_utils_a8d9b4e3627512bacc09c31c52f3d08f1aa9530bf77fb747353c488a793003a5aa}{Utils::TOC\_Volume}}\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00248}00248\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00249}00249\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ child;}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00250}00250\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00251}00251\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ HasChildren(\ child\ )\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00252}00252\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00253}00253\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wxTreeItemId\ \textcolor{keywordtype}{id}\ =\ \mbox{\hyperlink{class_t_o_c_tree_ctrl_a045503525ad336d114c53b118c5714ae}{FindFirstEntryChild}}(\ child\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00254}00254\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ \textcolor{keywordtype}{id}\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00255}00255\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00256}00256\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ id;}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00257}00257\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00258}00258\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00259}00259\ \ \ \ \ \ \ \ \ \ \ \ \ child\ =\ GetNextChild(\ \textcolor{keywordtype}{id},\ cookie\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00260}00260\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00261}00261\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00262}00262\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00263}00263\ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00264}00264\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00265}00265\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00266}00266\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00267}\mbox{\hyperlink{class_t_o_c_tree_ctrl_ab24bde233319936ef9a345880f99661e}{00267}}\ wxString\ \mbox{\hyperlink{class_t_o_c_tree_ctrl_ab24bde233319936ef9a345880f99661e}{TOCTreeCtrl::GetItemImageFullName}}(\ wxTreeItemId\ \textcolor{keywordtype}{id}\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00268}00268\ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00269}00269\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ \textcolor{keywordtype}{id}.IsOk(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00270}00270\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00271}00271\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_t_o_c_tree_item_data}{TOCTreeItemData}}*\ data\ =\ (\ \mbox{\hyperlink{class_t_o_c_tree_item_data}{TOCTreeItemData}}*\ )\ GetItemData(\ \textcolor{keywordtype}{id}\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00272}00272\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ data\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00273}00273\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00274}00274\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00275}00275\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00276}00276\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00277}00277\ \};}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00278}00278\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00279}00279\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00280}00280\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00281}\mbox{\hyperlink{class_t_o_c_tree_ctrl_a9c33568776a371fe1de8fca424b64f6b}{00281}}\ wxString\ \mbox{\hyperlink{class_t_o_c_tree_ctrl_a9c33568776a371fe1de8fca424b64f6b}{TOCTreeCtrl::GetItemDesc}}(\ wxTreeItemId\ \textcolor{keywordtype}{id}\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00282}00282\ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00283}00283\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ \textcolor{keywordtype}{id}.IsOk(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00284}00284\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00285}00285\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_t_o_c_tree_item_data}{TOCTreeItemData}}*\ data\ =\ (\ \mbox{\hyperlink{class_t_o_c_tree_item_data}{TOCTreeItemData}}*\ )\ GetItemData(\ \textcolor{keywordtype}{id}\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00286}00286\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ data\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00287}00287\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00288}00288\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ data-\/>\mbox{\hyperlink{class_t_o_c_tree_item_data_a0a84c7fb5d3080669ce17ac381d59dec}{GetDesc}}(\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00289}00289\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00290}00290\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00291}00291\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00292}00292\ \};}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00293}00293\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00294}00294\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00295}00295\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00296}\mbox{\hyperlink{class_t_o_c_tree_ctrl_a00d66aa18fdf61ba7cd7fd9600ae010a}{00296}}\ \mbox{\hyperlink{namespace_utils_a8d9b4e3627512bacc09c31c52f3d08f1}{Utils::TOCBaseType}}\ \ \mbox{\hyperlink{class_t_o_c_tree_ctrl_a00d66aa18fdf61ba7cd7fd9600ae010a}{TOCTreeCtrl::GetItemType}}(\ wxTreeItemId\ \textcolor{keywordtype}{id}\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00297}00297\ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00298}00298\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ \textcolor{keywordtype}{id}.IsOk(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00299}00299\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00300}00300\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_t_o_c_tree_item_data}{TOCTreeItemData}}*\ data\ =\ (\ \mbox{\hyperlink{class_t_o_c_tree_item_data}{TOCTreeItemData}}*\ )\ GetItemData(\ \textcolor{keywordtype}{id}\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00301}00301\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ data\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00302}00302\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00303}00303\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ data-\/>\mbox{\hyperlink{class_t_o_c_tree_item_data_ad8ba4a2526389d24fda6bb074e0cc51f}{GetType}}(\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00304}00304\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00305}00305\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00306}00306\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{namespace_utils_a8d9b4e3627512bacc09c31c52f3d08f1ab62f4fee638b060381c92b26d447994f}{Utils::TOCBaseType::TOC\_None}};;}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00307}00307\ \};}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00308}00308\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00309}00309\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00310}00310\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00311}00311\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00312}\mbox{\hyperlink{class_t_o_c_tree_ctrl_a5e0b80455ca145d4b50aa9e1e8a9e62d}{00312}}\ wxTreeItemId\ \ \mbox{\hyperlink{class_t_o_c_tree_ctrl_a5e0b80455ca145d4b50aa9e1e8a9e62d}{TOCTreeCtrl::InitTOCTree}}(\ wxXmlNode*\ TOCNode\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00313}00313\ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00314}00314\ \ \ \ \ \mbox{\hyperlink{class_t_o_c_tree_ctrl_a5c29ac0da707b272a116193160c45958}{Clear}}(\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00315}00315\ \ \ \ \ wxTreeItemId\ rootID\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00316}00316\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ TOCNode\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00317}00317\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00318}00318\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00319}00319\ \ \ \ \ \ \ \ \ wxString\ name\ =\ \mbox{\hyperlink{_defs_8cpp_a21e576057406853f4fd5f371338b78b6}{GetProject}}(\ )-\/>\mbox{\hyperlink{class_utils_1_1_project_abd8e69036c650714053d008bc1d02974}{GetProjectFilename}}(\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00320}00320\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Create\ the\ root\ item}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00321}00321\ \ \ \ \ \ \ \ \ wxString\ str\ =\ \mbox{\hyperlink{namespace_utils_a4b9bc624ff61c4a618c12b911b48110c}{Utils::GetAttrStr}}(\ TOCNode,\ \textcolor{stringliteral}{"{}CollapseState"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00322}00322\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ collapseState\ =\ \mbox{\hyperlink{_defs_8h_ada635b136198e73ae22591a2616acfae}{String2Bool}}(\ str\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00323}00323\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00324}00324\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_t_o_c_tree_item_data}{TOCTreeItemData}}*\ itemData\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_t_o_c_tree_item_data}{TOCTreeItemData}}(\ \mbox{\hyperlink{namespace_utils_a8d9b4e3627512bacc09c31c52f3d08f1aa9530bf77fb747353c488a793003a5aa}{Utils::TOC\_Volume}},}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00325}00325\ \ \ \ \ \ \ \ \ \ \ \ \ collapseState,\ \textcolor{stringliteral}{"{}TOC"{}},\ name\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00326}00326\ \ \ \ \ \ \ \ \ wxString\ rootName\ =\ \textcolor{stringliteral}{"{}TOC\ -\/\ "{}}\ +\ name;}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00327}00327\ \ \ \ \ \ \ \ \ rootID\ =\ AddRoot(\ rootName,\ \mbox{\hyperlink{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aacdde910cf8edacfffcfd3f7ee576f78c}{Catalog::Icon\_Folder}},\ 1,\ itemData\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00328}00328\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00329}00329\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00330}00330\ \ \ \ \ \textcolor{keywordflow}{return}\ rootID;}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00331}00331\ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00332}00332\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00333}00333\ \textcolor{comment}{//\ InsertChild\ adds\ wxXmlNode\ as\ a\ item\ in\ the\ tree\ like\ AddChild\ except\ it\ inserts\ it\ at\ \ }}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00334}00334\ \textcolor{comment}{//\ a\ particular\ place\ relative\ to\ its\ sibling.\ \ It\ is\ recursively\ called\ to}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00335}00335\ \textcolor{comment}{//\ create\ sort\ nodes\ as\ necessary\ to\ find\ the\ proper\ place\ for\ the\ child}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00336}\mbox{\hyperlink{class_t_o_c_tree_ctrl_afd335875c64df97da438932438927bc0}{00336}}\ wxTreeItemId\ \mbox{\hyperlink{class_t_o_c_tree_ctrl_afd335875c64df97da438932438927bc0}{TOCTreeCtrl::InsertChild}}(\ wxTreeItemId\ sibling,\ wxXmlNode*\ child,\ \textcolor{keywordtype}{bool}\ after\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00337}00337\ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00338}00338\ \ \ \ \ \mbox{\hyperlink{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3a}{Catalog::IconID}}\ icon;}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00339}00339\ \ \ \ \ wxString\ label;}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00340}00340\ \ \ \ \ \mbox{\hyperlink{namespace_utils_a8d9b4e3627512bacc09c31c52f3d08f1}{Utils::TOCBaseType}}\ nodeType;}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00341}00341\ \ \ \ \ \mbox{\hyperlink{class_t_o_c_tree_item_data}{TOCTreeItemData}}*\ itemData\ =\ \mbox{\hyperlink{class_t_o_c_tree_ctrl_a5176ee88ad17dbe3d0a1b68aa5ae2672}{CreateChildData}}(\ child,\ label,\ icon,\ nodeType\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00342}00342\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00343}00343\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ !itemData\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00344}00344\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00345}00345\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00346}00346\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00347}00347\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00348}00348\ \ \ \ \ wxTreeItemIdValue\ cookie;}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00349}00349\ \ \ \ \ wxTreeItemId\ parent\ =\ GetItemParent(\ sibling\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00350}00350\ \ \ \ \ wxTreeItemId\ \ childID;}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00351}00351\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ after\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00352}00352\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00353}00353\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ insert\ after\ sibling}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00354}00354\ \ \ \ \ \ \ \ \ childID\ =\ InsertItem(\ parent,\ sibling,\ label,\ icon,\ -\/1,\ itemData\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00355}00355\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00356}00356\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00357}00357\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00358}00358\ \ \ \ \ \ \ \ \ wxTreeItemId\ prevSibling\ =\ GetPrevSibling(\ sibling\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00359}00359\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ prevSibling.IsOk(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00360}00360\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00361}00361\ \ \ \ \ \ \ \ \ \ \ \ \ childID\ =\ InsertItem(\ parent,\ prevSibling,\ label,\ icon,\ -\/1,\ itemData\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00362}00362\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00363}00363\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00364}00364\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00365}00365\ \ \ \ \ \ \ \ \ \ \ \ \ childID\ =\ InsertItem(\ parent,\ 0,\ label,\ icon,\ -\/1,\ itemData\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00366}00366\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00367}00367\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00368}00368\ \ \ \ \ \textcolor{comment}{//\ not\ a\ entry\ just\ add\ the\ appropriate\ image}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00369}00369\ \ \ \ \ SetItemImage(\ childID,\ \mbox{\hyperlink{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aacdde910cf8edacfffcfd3f7ee576f78c}{Catalog::Icon\_Folder}}\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00370}00370\ \ \ \ \ SetItemState(\ childID,\ wxTREE\_ITEMSTATE\_NEXT\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00371}00371\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00372}00372\ \ \ \ \ \mbox{\hyperlink{class_t_o_c_tree_ctrl_aba4abe197c40b3e451be9dc56be233cd}{EnableState}}(\ childID\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00373}00373\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00374}00374\ \ \ \ \ \textcolor{comment}{//\ now\ do\ it\ all\ again\ for\ this\ entrys\ children}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00375}00375\ \ \ \ \ wxXmlNode*\ grandChild\ =\ child-\/>GetChildren(\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00376}00376\ \ \ \ \ \textcolor{keywordflow}{while}\ (\ grandChild\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00377}00377\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00378}00378\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00379}00379\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ start\ adding\ child\ elements\ to\ it.}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00380}00380\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_t_o_c_tree_ctrl_aefc88bd1dde6684c2f52173b4a543af4}{AddChild}}(\ childID,\ grandChild,\ 0\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00381}00381\ \ \ \ \ \ \ \ \ grandChild\ =\ grandChild-\/>GetNext(\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00382}00382\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00383}00383\ \ \ \ \ \textcolor{keywordflow}{return}\ childID;}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00384}00384\ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00385}00385\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00386}00386\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00387}00387\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00388}\mbox{\hyperlink{class_t_o_c_tree_ctrl_a4c6ceb0eb20a3de463855edab649e152}{00388}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_t_o_c_tree_ctrl_a4c6ceb0eb20a3de463855edab649e152}{TOCTreeCtrl::LoadTree}}(\ wxXmlNode*\ TOCNode,\ wxString\ str\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00389}00389\ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00390}00390\ \ \ \ \ wxTreeItemId\ rootID\ =\ \mbox{\hyperlink{class_t_o_c_tree_ctrl_a5e0b80455ca145d4b50aa9e1e8a9e62d}{InitTOCTree}}(\ TOCNode\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00391}00391\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00392}00392\ \ \ \ \ wxXmlNode*\ child\ =\ TOCNode-\/>GetChildren(\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00393}00393\ \ \ \ \ \textcolor{keywordflow}{while}\ (\ child\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00394}00394\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00395}00395\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ start\ adding\ child\ elements\ to\ it.}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00396}00396\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_t_o_c_tree_ctrl_aefc88bd1dde6684c2f52173b4a543af4}{AddChild}}(\ rootID,\ child,\ \mbox{\hyperlink{class_t_o_c_tree_ctrl_ac5b3f81cf69a5bc9be520ad511707407}{GetMenu}}(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00397}00397\ \ \ \ \ \ \ \ \ child\ =\ child-\/>GetNext(\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00398}00398\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00399}00399\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ SortTree(\ rootID\ );}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00400}00400\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00401}00401\ \ \ \ \ Expand(\ rootID\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00402}00402\ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00403}00403\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00404}00404\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00405}00405\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00406}00406\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00407}\mbox{\hyperlink{class_t_o_c_tree_ctrl_ad9575531f4e0dcbefcd41c5dc4a9eb7a}{00407}}\ wxXmlNode*\ \mbox{\hyperlink{class_t_o_c_tree_ctrl_ad9575531f4e0dcbefcd41c5dc4a9eb7a}{TOCTreeCtrl::MakeNode}}(\ wxTreeItemId\ treeID,\ wxXmlNode*\ parent\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00408}00408\ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00409}00409\ \ \ \ \ \mbox{\hyperlink{class_t_o_c_tree_item_data}{TOCTreeItemData}}*\ data\ =\ (\ \mbox{\hyperlink{class_t_o_c_tree_item_data}{TOCTreeItemData}}*\ )\ GetItemData(\ treeID\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00410}00410\ \ \ \ \ \mbox{\hyperlink{namespace_utils_a8d9b4e3627512bacc09c31c52f3d08f1}{Utils::TOCBaseType}}\ type\ =\ data-\/>\mbox{\hyperlink{class_t_o_c_tree_item_data_ad8ba4a2526389d24fda6bb074e0cc51f}{GetType}}(\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00411}00411\ \ \ \ \ wxXmlNode*\ node\ =\ \mbox{\hyperlink{namespace_utils_a156ddf8c893eba62f65ffa2a5860c766}{Utils::NewNode}}(\ parent,\ \mbox{\hyperlink{namespace_utils_ab1eaa1d4e06e66103dffe43479fd9783}{Utils::TOCBaseNames}}[\ type\ ]\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00412}00412\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ type\ ==\ \mbox{\hyperlink{namespace_utils_a8d9b4e3627512bacc09c31c52f3d08f1aa9530bf77fb747353c488a793003a5aa}{Utils::TOC\_Volume}}\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00413}00413\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00414}00414\ \ \ \ \ \ \ \ \ node-\/>AddAttribute(\ \textcolor{stringliteral}{"{}FileName"{}},\ data-\/>\mbox{\hyperlink{class_t_o_c_tree_item_data_ab496fc4e01284fa423b9a10c0a778c61}{GetName}}(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00415}00415\ \ \ \ \ \ \ \ \ node-\/>AddAttribute(\ \textcolor{stringliteral}{"{}CollapseState"{}},\ \mbox{\hyperlink{_defs_8h_ac069ffec99f21fb1e45e52d11ccff7a1}{Bool2String}}(\ data-\/>\mbox{\hyperlink{class_t_o_c_tree_item_data_acab8088d7cef2b4448c34b388fa62848}{GetCollapseState}}(\ )\ )\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00416}00416\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00417}00417\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (\ type\ ==\ \mbox{\hyperlink{namespace_utils_a8d9b4e3627512bacc09c31c52f3d08f1a15a6b5d0467b0cafd670ed9aa1906cf5}{Utils::TOC\_Section}}\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00418}00418\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00419}00419\ \ \ \ \ \ \ \ \ node-\/>AddAttribute(\ \textcolor{stringliteral}{"{}Name"{}},\ data-\/>\mbox{\hyperlink{class_t_o_c_tree_item_data_ab496fc4e01284fa423b9a10c0a778c61}{GetName}}(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00420}00420\ \ \ \ \ \ \ \ \ node-\/>AddAttribute(\ \textcolor{stringliteral}{"{}CollapseState"{}},\ \mbox{\hyperlink{_defs_8h_ac069ffec99f21fb1e45e52d11ccff7a1}{Bool2String}}(\ data-\/>\mbox{\hyperlink{class_t_o_c_tree_item_data_acab8088d7cef2b4448c34b388fa62848}{GetCollapseState}}(\ )\ )\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00421}00421\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00422}00422\ \ \ \ \ \textcolor{keywordflow}{return}\ node;}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00423}00423\ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00424}00424\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00425}00425\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00426}00426\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00427}\mbox{\hyperlink{class_t_o_c_tree_ctrl_ac79ade29d7d4781f1fc6d08bb7eeb299}{00427}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_t_o_c_tree_ctrl_ac79ade29d7d4781f1fc6d08bb7eeb299}{TOCTreeCtrl::MakeTree}}(\ wxTreeItemId\ parentID,\ wxXmlNode*\ parentNode\ )\{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00428}00428\ \ \ \ \ wxXmlNode*\ node\ =\ \mbox{\hyperlink{class_t_o_c_tree_ctrl_ad9575531f4e0dcbefcd41c5dc4a9eb7a}{MakeNode}}(\ parentID,\ parentNode\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00429}00429\ \ \ \ \ wxTreeItemIdValue\ cookie;}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00430}00430\ \ \ \ \ wxTreeItemId\ childID\ =\ GetFirstChild(\ parentID,\ cookie\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00431}00431\ \ \ \ \ \textcolor{keywordflow}{while}\ (\ childID.IsOk(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00432}00432\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00433}00433\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_t_o_c_tree_ctrl_ac79ade29d7d4781f1fc6d08bb7eeb299}{MakeTree}}(\ childID,\ node\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00434}00434\ \ \ \ \ \ \ \ \ childID\ =\ GetNextChild(\ parentID,\ cookie\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00435}00435\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00436}00436\ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00437}00437\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00438}00438\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00439}00439\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00440}\mbox{\hyperlink{class_t_o_c_tree_ctrl_a2a4356209c4117decfc9e67d96aabe78}{00440}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_t_o_c_tree_ctrl_ac79ade29d7d4781f1fc6d08bb7eeb299}{TOCTreeCtrl::MakeTree}}(\ wxXmlNode*\ parentNode\ )\{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00441}00441\ \ \ \ \ wxTreeItemId\ itemID\ =\ GetRootItem(\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00442}00442\ \ \ \ \ wxTreeItemIdValue\ cookie;}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00443}00443\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00444}00444\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ itemID.IsOk(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00445}00445\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00446}00446\ \ \ \ \ \ \ \ \ wxTreeItemId\ childID\ =\ GetFirstChild(\ itemID,\ cookie\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00447}00447\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ i\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00448}00448\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (\ childID.IsOk(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00449}00449\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00450}00450\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_t_o_c_tree_ctrl_ac79ade29d7d4781f1fc6d08bb7eeb299}{MakeTree}}(\ childID,\ parentNode\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00451}00451\ \ \ \ \ \ \ \ \ \ \ \ \ childID\ =\ GetNextChild(\ itemID,\ cookie\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00452}00452\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00453}00453\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00454}00454\ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00455}00455\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00456}00456\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00457}\mbox{\hyperlink{class_t_o_c_tree_ctrl_a6a817b01d836d549fd6e6b0cc8756d03}{00457}}\ wxTreeItemId\ \mbox{\hyperlink{class_t_o_c_tree_ctrl_a6a817b01d836d549fd6e6b0cc8756d03}{TOCTreeCtrl::MoveItemAsChild}}(\ wxTreeItemId\ srcID,\ wxTreeItemId\ parentID\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00458}00458\ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00459}00459\ \ \ \ \ wxTreeItemId\ newID;}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00460}00460\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ srcID.IsOk(\ )\ \&\&\ parentID.IsOk(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00461}00461\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00462}00462\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00463}00463\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_t_o_c_tree_item_data}{TOCTreeItemData}}*\ data\ =\ (\ \mbox{\hyperlink{class_t_o_c_tree_item_data}{TOCTreeItemData}}*\ )\ GetItemData(\ srcID\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00464}00464\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_t_o_c_tree_item_data}{TOCTreeItemData}}*\ newData\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_t_o_c_tree_item_data}{TOCTreeItemData}}(\ *data\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00465}00465\ \ \ \ \ \ \ \ \ newID\ =\ AppendItem(\ parentID,\ GetItemText(\ srcID\ ),\ GetItemImage(\ srcID\ ),\ -\/1,\ newData\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00466}00466\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ HasChildren(\ srcID\ )\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00467}00467\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00468}00468\ \ \ \ \ \ \ \ \ \ \ \ \ wxTreeItemIdValue\ \ \ \ \ \ \ cookie;}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00469}00469\ \ \ \ \ \ \ \ \ \ \ \ \ wxTreeItemId\ child\ =\ GetFirstChild(\ srcID,\ cookie\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00470}00470\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (\ child\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00471}00471\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00472}00472\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_t_o_c_tree_ctrl_a6a817b01d836d549fd6e6b0cc8756d03}{MoveItemAsChild}}(\ child,\ newID\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00473}00473\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ child\ =\ GetNextChild(\ srcID,\ cookie\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00474}00474\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00475}00475\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00476}00476\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00477}00477\ \ \ \ \ \textcolor{keywordflow}{return}\ newID;}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00478}00478\ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00479}00479\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00480}00480\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00481}00481\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00482}\mbox{\hyperlink{class_t_o_c_tree_ctrl_a218315144b14183982f2e221e5c72d34}{00482}}\ wxTreeItemId\ \mbox{\hyperlink{class_t_o_c_tree_ctrl_a218315144b14183982f2e221e5c72d34}{TOCTreeCtrl::MoveItem}}(\ wxTreeItemId\ srcID,\ wxTreeItemId\ destID,\ \textcolor{keywordtype}{bool}\ after\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00483}00483\ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00484}00484\ \ \ \ \ wxTreeItemId\ newID\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00485}00485\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ srcID.IsOk(\ )\ \&\&\ destID.IsOk(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00486}00486\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00487}00487\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00488}00488\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_t_o_c_tree_item_data}{TOCTreeItemData}}*\ data\ =\ (\ \mbox{\hyperlink{class_t_o_c_tree_item_data}{TOCTreeItemData}}*\ )\ GetItemData(\ srcID\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00489}00489\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_t_o_c_tree_item_data}{TOCTreeItemData}}*\ newData\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_t_o_c_tree_item_data}{TOCTreeItemData}}(\ *data\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00490}00490\ \ \ \ \ \ \ \ \ wxTreeItemId\ parent\ =\ GetItemParent(\ destID\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00491}00491\ \ \ \ \ \ \ \ \ \textcolor{comment}{//copy\ itemData}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00492}00492\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ after\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00493}00493\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00494}00494\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ insert\ after\ sibling}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00495}00495\ \ \ \ \ \ \ \ \ \ \ \ \ newID\ =\ InsertItem(\ parent,\ destID,\ GetItemText(\ srcID\ ),\ GetItemImage(\ srcID\ ),\ -\/1,\ newData\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00496}00496\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00497}00497\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00498}00498\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00499}00499\ \ \ \ \ \ \ \ \ \ \ \ \ wxTreeItemId\ prevSibling\ =\ GetPrevSibling(\ destID\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00500}00500\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ prevSibling.IsOk(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00501}00501\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00502}00502\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ newID\ =\ InsertItem(\ parent,\ prevSibling,\ GetItemText(\ srcID\ ),\ GetItemImage(\ srcID\ ),\ -\/1,\ newData\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00503}00503\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00504}00504\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00505}00505\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00506}00506\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ newID\ =\ InsertItem(\ parent,\ 0,\ GetItemText(\ srcID\ ),\ GetItemImage(\ srcID\ ),\ -\/1,\ newData\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00507}00507\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00508}00508\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00509}00509\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ HasChildren(\ srcID\ )\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00510}00510\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00511}00511\ \ \ \ \ \ \ \ \ \ \ \ \ wxTreeItemIdValue\ cookie;}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00512}00512\ \ \ \ \ \ \ \ \ \ \ \ \ wxTreeItemId\ child\ =\ GetFirstChild(\ srcID,\ cookie\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00513}00513\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (\ child\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00514}00514\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00515}00515\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_t_o_c_tree_ctrl_a6a817b01d836d549fd6e6b0cc8756d03}{MoveItemAsChild}}(\ srcID,\ newID\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00516}00516\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ child\ =\ GetNextChild(\ srcID,\ cookie\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00517}00517\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00518}00518\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00519}00519\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00520}00520\ \ \ \ \ \textcolor{keywordflow}{return}\ newID;}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00521}00521\ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00522}00522\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00523}00523\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00524}00524\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00525}\mbox{\hyperlink{class_t_o_c_tree_ctrl_a186052b850047ec94372375674d03f5f}{00525}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_t_o_c_tree_ctrl_a186052b850047ec94372375674d03f5f}{TOCTreeCtrl::OnBeginDrag}}(\ wxTreeEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00526}00526\ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00527}00527\ \ \ \ \ \textcolor{comment}{//\ need\ to\ explicitly\ allow\ drag}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00528}00528\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ event.GetItem(\ )\ !=\ GetRootItem(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00529}00529\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00530}00530\ \ \ \ \ \ \ \ \ m\_draggedItem\ =\ \textcolor{keyword}{event}.GetItem(\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00531}00531\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00532}00532\ \ \ \ \ \ \ \ \ wxPoint\ clientpt\ =\ \textcolor{keyword}{event}.GetPoint(\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00533}00533\ \ \ \ \ \ \ \ \ wxPoint\ screenpt\ =\ ClientToScreen(\ clientpt\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00534}00534\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00535}00535\ \ \ \ \ \ \ \ \ \textcolor{keyword}{event}.Allow(\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00536}00536\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00537}00537\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00538}00538\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00539}00539\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00540}00540\ \ \ \ \ \textcolor{comment}{//\ event.Skip(\ );}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00541}00541\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00542}00542\ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00543}00543\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00544}00544\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00545}00545\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00546}\mbox{\hyperlink{class_t_o_c_tree_ctrl_a7972e07e666eca710e132bb3e2ee23be}{00546}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_t_o_c_tree_ctrl_a7972e07e666eca710e132bb3e2ee23be}{TOCTreeCtrl::OnEndDrag}}(\ wxTreeEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00547}00547\ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00548}00548\ \ \ \ \ wxTreeItemId\ itemSrc\ =\ m\_draggedItem;}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00549}00549\ \ \ \ \ wxTreeItemId\ itemDst\ =\ \textcolor{keyword}{event}.GetItem(\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00550}00550\ \ \ \ \ m\_draggedItem\ =\ (\ wxTreeItemId\ )\ 0l;}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00551}00551\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00552}00552\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ itemSrc\ ==\ itemDst\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00553}00553\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00554}00554\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00555}00555\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00556}00556\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00557}00557\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ !itemDst.IsOk(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00558}00558\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00559}00559\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00560}00560\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00561}00561\ \ \ \ \ \mbox{\hyperlink{class_t_o_c_tree_ctrl_a3c7cfb1560d8264e7440486fa5189d2d}{ShowDropMenu}}(\ itemSrc,\ itemDst\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00562}00562\ \ \ \ \ \textcolor{comment}{//\ \ event.Skip(\ );}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00563}00563\ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00564}00564\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00565}00565\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00566}00566\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00567}\mbox{\hyperlink{class_t_o_c_tree_ctrl_aaeae57b5702751280f3a242383e311d4}{00567}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_t_o_c_tree_ctrl_aaeae57b5702751280f3a242383e311d4}{TOCTreeCtrl::OnCompareItems}}(\ \textcolor{keyword}{const}\ wxTreeItemId\&\ item1,}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00568}00568\ \ \ \ \ \textcolor{keyword}{const}\ wxTreeItemId\&\ item2\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00569}00569\ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00570}00570\ \ \ \ \ \mbox{\hyperlink{class_t_o_c_tree_item_data}{TOCTreeItemData}}*\ itemData1\ =\ (\ \mbox{\hyperlink{class_t_o_c_tree_item_data}{TOCTreeItemData}}*\ )\ 0;}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00571}00571\ \ \ \ \ \mbox{\hyperlink{class_t_o_c_tree_item_data}{TOCTreeItemData}}*\ itemData2\ =\ (\ \mbox{\hyperlink{class_t_o_c_tree_item_data}{TOCTreeItemData}}*\ )\ 0;}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00572}00572\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ item1.IsOk(\ )\ \&\&\ item2.IsOk(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00573}00573\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00574}00574\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}*\ ptr2\ =\ item2.GetID(\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00575}00575\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}*\ ptr1\ =\ item1.GetID(\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00576}00576\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ (\ ptr1\ <\ (\ \textcolor{keywordtype}{void}*\ )\ 0xFFFF\ )\ ||\ (\ ptr2\ <\ (\ \textcolor{keywordtype}{void}*\ )\ 0xFFFF\ )\ )\textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00577}00577\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ b1\ =\ item1.IsOk(\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00578}00578\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ b2\ =\ item2.IsOk(\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00579}00579\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00580}00580\ \ \ \ \ \ \ \ \ itemData1\ =\ (\ \mbox{\hyperlink{class_t_o_c_tree_item_data}{TOCTreeItemData}}*\ )\ GetItemData(\ item1\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00581}00581\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00582}00582\ \ \ \ \ \ \ \ \ itemData2\ =\ (\ \mbox{\hyperlink{class_t_o_c_tree_item_data}{TOCTreeItemData}}*\ )\ GetItemData(\ item2\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00583}00583\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00584}00584\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ itemData1-\/>\mbox{\hyperlink{class_t_o_c_tree_item_data_a00abf1ca92fb1db491bfc368a1bee210}{Cmp}}(\ itemData2\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00585}00585\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00586}00586\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00587}00587\ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00588}00588\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00589}00589\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00590}00590\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00591}\mbox{\hyperlink{class_t_o_c_tree_ctrl_accbbb356afa263be0d9e71a7602e8d13}{00591}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_t_o_c_tree_ctrl_accbbb356afa263be0d9e71a7602e8d13}{TOCTreeCtrl::OnItemMenu}}(\ wxTreeEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00592}00592\ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00593}00593\ \ \ \ \ wxTreeItemId\ itemId\ =\ \textcolor{keyword}{event}.GetItem(\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00594}00594\ \ \ \ \ wxCHECK\_RET(\ itemId.IsOk(\ ),\ \textcolor{stringliteral}{"{}should\ have\ a\ valid\ item"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00595}00595\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00596}00596\ \ \ \ \ wxPoint\ clientpt\ =\ \textcolor{keyword}{event}.GetPoint(\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00597}00597\ \ \ \ \ wxPoint\ screenpt\ =\ ClientToScreen(\ clientpt\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00598}00598\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00599}00599\ \ \ \ \ \mbox{\hyperlink{class_t_o_c_tree_ctrl_a2c620d26612e572a3b7ad33450c79ce7}{ShowMenu}}(\ itemId,\ clientpt\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00600}00600\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00601}00601\ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00602}00602\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00603}00603\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00604}00604\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00605}\mbox{\hyperlink{class_t_o_c_tree_ctrl_ae4b99b1c790fdf7f67848ddd1a770a18}{00605}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_t_o_c_tree_ctrl_ae4b99b1c790fdf7f67848ddd1a770a18}{TOCTreeCtrl::OnTreectrlItemCollapsed}}(\ wxTreeEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00606}00606\ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00607}00607\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00608}00608\ \ \ \ \ wxTreeItemId\ \textcolor{keywordtype}{id}\ =\ \textcolor{keyword}{event}.GetItem(\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00609}00609\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ !\textcolor{keywordtype}{id}.IsOk(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00610}00610\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00611}00611\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (\ 1\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00612}00612\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00613}00613\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00614}00614\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00615}00615\ \ \ \ \ \mbox{\hyperlink{class_t_o_c_tree_item_data}{TOCTreeItemData}}*\ data\ =\ (\ \mbox{\hyperlink{class_t_o_c_tree_item_data}{TOCTreeItemData}}*\ )\ GetItemData(\ \textcolor{keywordtype}{id}\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00616}00616\ \ \ \ \ data-\/>\mbox{\hyperlink{class_t_o_c_tree_item_data_ad221c988ddeec7ad362d4780ec78e62a}{SetCollapseState}}(\ \textcolor{keyword}{true}\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00617}00617\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00618}00618\ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00619}00619\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00620}00620\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00621}\mbox{\hyperlink{class_t_o_c_tree_ctrl_a2994b3da87f37cddafd5590803a4f2c1}{00621}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_t_o_c_tree_ctrl_a2994b3da87f37cddafd5590803a4f2c1}{TOCTreeCtrl::OnTreectrlItemExpanded}}(\ wxTreeEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00622}00622\ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00623}00623\ \ \ \ \ wxTreeItemId\ \textcolor{keywordtype}{id}\ =\ \textcolor{keyword}{event}.GetItem(\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00624}00624\ \ \ \ \ \mbox{\hyperlink{class_t_o_c_tree_item_data}{TOCTreeItemData}}*\ data\ =\ (\ \mbox{\hyperlink{class_t_o_c_tree_item_data}{TOCTreeItemData}}*\ )\ GetItemData(\ \textcolor{keywordtype}{id}\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00625}00625\ \ \ \ \ data-\/>\mbox{\hyperlink{class_t_o_c_tree_item_data_ad221c988ddeec7ad362d4780ec78e62a}{SetCollapseState}}(\ \textcolor{keyword}{false}\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00626}00626\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00627}00627\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00628}00628\ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00629}00629\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00630}00630\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00631}00631\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00632}\mbox{\hyperlink{class_t_o_c_tree_ctrl_a3c7cfb1560d8264e7440486fa5189d2d}{00632}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_t_o_c_tree_ctrl_a3c7cfb1560d8264e7440486fa5189d2d}{TOCTreeCtrl::ShowDropMenu}}(\ wxTreeItemId\ itemSrc,\ wxTreeItemId\ itemDst\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00633}00633\ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00634}00634\ \ \ \ \ wxString\ title;}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00635}00635\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ !itemSrc.IsOk(\ )\ ||\ !itemDst.IsOk(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00636}00636\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00637}00637\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00638}00638\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00639}00639\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00640}00640\ \ \ \ \ title\ <<\ \textcolor{stringliteral}{"{}Insert\ Item\ "{}}\ <<\ GetItemText(\ itemSrc\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00641}00641\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00642}00642\ \ \ \ \ wxMenu\ menu(\ title\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00643}00643\ \ \ \ \ wxString\ label\ =\ \textcolor{stringliteral}{"{}\ \ \ \ BEFORE\ "{}}\ +\ GetItemText(\ itemDst\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00644}00644\ \ \ \ \ menu.Append(\ \mbox{\hyperlink{class_t_o_c_tree_ctrl_ab6bf82cf1b68b44c5f395169d1c23a2da9ac47e08ea662d48feff1be69a302844}{CatalogListTree\_Before}},\ label\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00645}00645\ \ \ \ \ label\ =\ \textcolor{stringliteral}{"{}\ \ \ \ AFTER\ "{}}\ +\ GetItemText(\ itemDst\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00646}00646\ \ \ \ \ menu.Append(\ \mbox{\hyperlink{class_t_o_c_tree_ctrl_ab6bf82cf1b68b44c5f395169d1c23a2dabdedd1650aff6e9a7b49245b013433bf}{CatalogListTree\_After}},\ label\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00647}00647\ \ \ \ \ label\ =\ \textcolor{stringliteral}{"{}\ \ \ \ as\ CHILD\ of\ "{}}\ +\ GetItemText(\ itemDst\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00648}00648\ \ \ \ \ menu.Append(\ \mbox{\hyperlink{class_t_o_c_tree_ctrl_ab6bf82cf1b68b44c5f395169d1c23a2daaefd315a10374c34ab8b91c49eadcb5f}{CatalogListTree\_AsChild}},\ label\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00649}00649\ \ \ \ \ menu.Append(\ \mbox{\hyperlink{class_t_o_c_tree_ctrl_ab6bf82cf1b68b44c5f395169d1c23a2daa9d813b3b6439f1d2406ac628bf8a55f}{CatalogListTree\_Cancel}},\ \textcolor{stringliteral}{"{}Cancel\ Drag"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00650}00650\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00651}00651\ \ \ \ \ \textcolor{keywordflow}{switch}\ (\ GetPopupMenuSelectionFromUser(\ menu\ )\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00652}00652\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00653}00653\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{class_t_o_c_tree_ctrl_ab6bf82cf1b68b44c5f395169d1c23a2da9ac47e08ea662d48feff1be69a302844}{CatalogListTree\_Before}}:}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00654}00654\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00655}00655\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00656}00656\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ wxXmlNode*\ srcElement\ =\ GetItemNode(\ itemSrc\ );}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00657}00657\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ wxXmlNode*\ dstElement\ =\ GetItemNode(\ itemDst\ );}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00658}00658\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00659}00659\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ move\ the\ element}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00660}00660\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ this\ means\ making\ a\ copy\ and\ deleting\ the\ old\ one\ so\ old\ pointers\ are}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00661}00661\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ trash}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00662}00662\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ wxXmlNode*\ newElement\ =\ Catalog::InsertEntry(\ dstElement,\ srcElement,\ false\ );}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00663}00663\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00664}00664\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ now\ update\ the\ tree\ with\ the\ new\ one}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00665}00665\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//wxTreeItemId\ id\ =\ InsertChild(\ itemDst,\ newElement,\ false\ );}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00666}00666\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//wxTreeItemId\ id\ =\ InsertChild(\ itemDst,\ false\ );}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00667}00667\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00668}00668\ \ \ \ \ \ \ \ \ \ \ \ \ wxTreeItemId\ \textcolor{keywordtype}{id}\ =\ \mbox{\hyperlink{class_t_o_c_tree_ctrl_a218315144b14183982f2e221e5c72d34}{MoveItem}}(\ itemSrc,\ itemDst,\ \textcolor{keyword}{false}\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00669}00669\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//wxTreeItemId\ id\ =\ AddChild(\ itemDst,\ newElement\ );}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00670}00670\ \ \ \ \ \ \ \ \ \ \ \ \ SelectItem(\ itemDst\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00671}00671\ \ \ \ \ \ \ \ \ \ \ \ \ Delete(\ itemSrc\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00672}00672\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00673}00673\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00674}00674\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00675}00675\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{class_t_o_c_tree_ctrl_ab6bf82cf1b68b44c5f395169d1c23a2dabdedd1650aff6e9a7b49245b013433bf}{CatalogListTree\_After}}:}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00676}00676\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00677}00677\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00678}00678\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ wxXmlNode*\ srcElement\ =\ GetItemNode(\ itemSrc\ );}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00679}00679\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ wxXmlNode*\ dstElement\ =\ GetItemNode(\ itemDst\ );}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00680}00680\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00681}00681\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ move\ the\ element}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00682}00682\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ this\ means\ making\ a\ copy\ and\ deleting\ the\ old\ one\ so\ old\ pointers\ are}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00683}00683\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ trash}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00684}00684\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ wxXmlNode*\ newElement\ =\ Catalog::InsertEntry(\ dstElement,\ srcElement,\ true\ );}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00685}00685\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00686}00686\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ now\ update\ the\ tree\ with\ the\ new\ one}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00687}00687\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ wxTreeItemId\ id\ =\ InsertChild(\ itemDst,\ newElement,\ true\ );}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00688}00688\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//wxTreeItemId\ id\ =\ InsertChild(\ itemDst,\ true\ );}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00689}00689\ \ \ \ \ \ \ \ \ \ \ \ \ wxTreeItemId\ \textcolor{keywordtype}{id}\ =\ \mbox{\hyperlink{class_t_o_c_tree_ctrl_a218315144b14183982f2e221e5c72d34}{MoveItem}}(\ itemSrc,\ itemDst,\ \textcolor{keyword}{true}\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00690}00690\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//wxTreeItemId\ id\ =\ AddChild(\ itemDst,\ newElement\ );}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00691}00691\ \ \ \ \ \ \ \ \ \ \ \ \ SelectItem(\ itemDst\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00692}00692\ \ \ \ \ \ \ \ \ \ \ \ \ Delete(\ itemSrc\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00693}00693\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00694}00694\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00695}00695\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00696}00696\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{class_t_o_c_tree_ctrl_ab6bf82cf1b68b44c5f395169d1c23a2daaefd315a10374c34ab8b91c49eadcb5f}{CatalogListTree\_AsChild}}:}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00697}00697\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00698}00698\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00699}00699\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ wxXmlNode*\ srcElement\ =\ GetItemNode(\ itemSrc\ );}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00700}00700\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ wxXmlNode*\ dstElement\ =\ GetItemNode(\ itemDst\ );}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00701}00701\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00702}00702\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ move\ the\ element}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00703}00703\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ this\ means\ making\ a\ copy\ and\ deleting\ the\ old\ one\ so\ old\ pointers\ are}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00704}00704\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ trash}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00705}00705\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ wxXmlNode*\ newElement\ =\ Catalog::MoveEntry(\ dstElement,\ srcElement\ );}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00706}00706\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00707}00707\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ now\ update\ the\ tree\ with\ the\ new\ one}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00708}00708\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ wxTreeItemId\ newID;}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00709}00709\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ TOCTreeItemData*\ data\ =\ (\ TOCTreeItemData*\ )\ GetItemData(\ itemSrc\ );}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00710}00710\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ TOCTreeItemData*\ newData\ =\ new\ TOCTreeItemData(\ *data\ );}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00711}00711\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ newID\ =\ AppendItem(\ itemDst,\ GetItemText(\ itemSrc\ ),\ GetItemImage(\ itemSrc\ ),\ -\/1,\ newData\ );}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00712}00712\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_t_o_c_tree_ctrl_a6a817b01d836d549fd6e6b0cc8756d03}{MoveItemAsChild}}(\ itemSrc,\ itemDst\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00713}00713\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00714}00714\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ AppendItem(\ )}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00715}00715\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ wxTreeItemId\ id\ =\ AddChild(\ itemDst,\ newElement,\ 0\ );}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00716}00716\ \ \ \ \ \ \ \ \ \ \ \ \ SelectItem(\ itemDst\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00717}00717\ \ \ \ \ \ \ \ \ \ \ \ \ Delete(\ itemSrc\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00718}00718\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00719}00719\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00720}00720\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{class_t_o_c_tree_ctrl_ab6bf82cf1b68b44c5f395169d1c23a2daa9d813b3b6439f1d2406ac628bf8a55f}{CatalogListTree\_Cancel}}:}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00721}00721\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00722}00722\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00723}00723\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00724}00724\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00725}00725\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00726}00726\ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00727}00727\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00728}00728\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00729}00729\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00730}\mbox{\hyperlink{class_t_o_c_tree_ctrl_a2c620d26612e572a3b7ad33450c79ce7}{00730}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_t_o_c_tree_ctrl_a2c620d26612e572a3b7ad33450c79ce7}{TOCTreeCtrl::ShowMenu}}(\ wxTreeItemId\ \textcolor{keywordtype}{id},\ \textcolor{keyword}{const}\ wxPoint\&\ pt\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00731}00731\ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00732}00732\ \ \ \ \ wxString\ title;}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00733}00733\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00734}00734\ \ \ \ \ wxMenu\ menu;}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00735}00735\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ !\textcolor{keywordtype}{id}.IsOk(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00736}00736\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00737}00737\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00738}00738\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00739}00739\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00740}00740\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00741}00741\ \ \ \ \ \ \ \ \ \textcolor{comment}{//title\ =\ "{}Menu\ for\ no\ particular\ item"{};}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00742}00742\ \ \ \ \ \ \ \ \textcolor{comment}{//\ wxXmlNode*\ node\ =\ GetItemNode(\ id\ );}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00743}00743\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00744}00744\ \ \ \ \ \ \ \ \ menu.AppendSeparator(\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00745}00745\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00746}00746\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00747}00747\ \ \ \ \ \ \ \ \ menu.Append(\ \mbox{\hyperlink{class_t_o_c_tree_ctrl_ab6bf82cf1b68b44c5f395169d1c23a2daba466bd46d8b87c184c81208a095853a}{CatalogListTree\_ResortTree}},\ \textcolor{stringliteral}{"{}Re-\/Sort\ Tree"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00748}00748\ \ \ \ \ \ \ \ \ menu.Append(\ \mbox{\hyperlink{class_t_o_c_tree_ctrl_ab6bf82cf1b68b44c5f395169d1c23a2dafb600aa4f1434b97016944b45d520b49}{CatalogListTree\_EditDetails}},\ \textcolor{stringliteral}{"{}Edit\ Catalog\ Details"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00749}00749\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00750}00750\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00751}00751\ \ \ \ \ \textcolor{keywordflow}{switch}\ (\ GetPopupMenuSelectionFromUser(\ menu\ )\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00752}00752\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00753}00753\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00754}00754\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00755}00755\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{class_t_o_c_tree_ctrl_ab6bf82cf1b68b44c5f395169d1c23a2daba466bd46d8b87c184c81208a095853a}{CatalogListTree\_ResortTree}}:}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00756}00756\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00757}00757\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ ReSortTree(\ );}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00758}00758\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00759}00759\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00760}00760\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{class_t_o_c_tree_ctrl_ab6bf82cf1b68b44c5f395169d1c23a2dafb600aa4f1434b97016944b45d520b49}{CatalogListTree\_EditDetails}}:}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00761}00761\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00762}00762\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_t_o_c_tree_ctrl_a93eccba8fb3dd4dc617691e20eb7ca7f}{EditDetailsDialog}}(\ \textcolor{keyword}{this}\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00763}00763\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00764}00764\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00765}00765\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00766}00766\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{class_t_o_c_tree_ctrl_ab6bf82cf1b68b44c5f395169d1c23a2da058baac64932b66bbdcf53c8fb13c16b}{CatalogListTree\_Delete}}:}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00767}00767\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00768}00768\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_t_o_c_tree_ctrl_a1ba8cf0b149f6c3a2db75a936ce64cfd}{DeleteEntry}}(\ \textcolor{keywordtype}{id}\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00769}00769\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00770}00770\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00771}00771\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{class_t_o_c_tree_ctrl_ab6bf82cf1b68b44c5f395169d1c23a2dac757f040a90503feda29703580866fb0}{CatalogListTree\_Add}}:}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00772}00772\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00773}00773\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ AddEntry(\ id\ );}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00774}00774\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00775}00775\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00776}00776\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00777}00777\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Fall\ through.}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00778}00778\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00779}00779\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00780}00780\ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00781}00781\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00782}00782\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00783}00783\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00784}\mbox{\hyperlink{class_t_o_c_tree_ctrl_aab138bf94c44caa9cf1a0a4c13ff429d}{00784}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_t_o_c_tree_ctrl_aab138bf94c44caa9cf1a0a4c13ff429d}{TOCTreeCtrl::SetItemImageFullName}}(\ wxTreeItemId\ \textcolor{keywordtype}{id},\ wxString\ str\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00785}00785\ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00786}00786\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ \textcolor{keywordtype}{id}.IsOk(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00787}00787\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00788}00788\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_t_o_c_tree_item_data}{TOCTreeItemData}}*\ data\ =\ (\ \mbox{\hyperlink{class_t_o_c_tree_item_data}{TOCTreeItemData}}*\ )\ GetItemData(\ \textcolor{keywordtype}{id}\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00789}00789\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ data\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00790}00790\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00791}00791\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00792}00792\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00793}00793\ \};}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00794}00794\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00795}00795\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00796}00796\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00797}\mbox{\hyperlink{class_t_o_c_tree_ctrl_ad1a0f7b7f232ba5282c439c1deb83895}{00797}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_t_o_c_tree_ctrl_ad1a0f7b7f232ba5282c439c1deb83895}{TOCTreeCtrl::SetType}}(\ wxTreeItemId\ \textcolor{keywordtype}{id},\ \mbox{\hyperlink{namespace_utils_a8d9b4e3627512bacc09c31c52f3d08f1}{Utils::TOCBaseType}}\ type\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00798}00798\ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00799}00799\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ \textcolor{keywordtype}{id}.IsOk(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00800}00800\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00801}00801\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_t_o_c_tree_item_data}{TOCTreeItemData}}*\ data\ =\ (\ \mbox{\hyperlink{class_t_o_c_tree_item_data}{TOCTreeItemData}}*\ )\ GetItemData(\ \textcolor{keywordtype}{id}\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00802}00802\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ data\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00803}00803\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00804}00804\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ data-\/>\mbox{\hyperlink{class_t_o_c_tree_item_data_acac0791a908baaf1f6e68d126ed5431a}{SetType}}(\ type\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00805}00805\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00806}00806\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00807}00807\ \};}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00808}00808\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00809}00809\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00810}00810\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00811}\mbox{\hyperlink{class_t_o_c_tree_ctrl_aad151f372025fc4c154af61dd1054a53}{00811}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_t_o_c_tree_ctrl_aad151f372025fc4c154af61dd1054a53}{TOCTreeCtrl::SetTreeItemCollapseState}}(\ wxTreeItemId\ childID\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00812}00812\ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00813}00813\ \ \ \ \ \mbox{\hyperlink{class_t_o_c_tree_item_data}{TOCTreeItemData}}*\ data\ =\ (\ \mbox{\hyperlink{class_t_o_c_tree_item_data}{TOCTreeItemData}}*\ )\ GetItemData(\ childID\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00814}00814\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00815}00815\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ data-\/>\mbox{\hyperlink{class_t_o_c_tree_item_data_acab8088d7cef2b4448c34b388fa62848}{GetCollapseState}}(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00816}00816\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00817}00817\ \ \ \ \ \ \ \ \ Collapse(\ childID\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00818}00818\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00819}00819\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00820}00820\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00821}00821\ \ \ \ \ \ \ \ \ Expand(\ childID\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00822}00822\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00823}00823\ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00824}00824\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00825}00825\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_tree_ctrl_8cpp_source_l00826}00826\ }
+
+\end{DoxyCode}

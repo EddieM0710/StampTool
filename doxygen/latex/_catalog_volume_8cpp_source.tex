@@ -1,0 +1,470 @@
+\doxysection{Catalog\+Volume.\+cpp}
+\hypertarget{_catalog_volume_8cpp_source}{}\label{_catalog_volume_8cpp_source}\index{C:/Users/femon/Development/wx/cloneTest/StampTool/src/catalog/CatalogVolume.cpp@{C:/Users/femon/Development/wx/cloneTest/StampTool/src/catalog/CatalogVolume.cpp}}
+\mbox{\hyperlink{_catalog_volume_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00026}00026\ \textcolor{preprocessor}{\#include\ "{}wx/wxprec.h"{}}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00028}00028\ \textcolor{preprocessor}{\#ifdef\ \_\_BORLANDC\_\_}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00029}00029\ \textcolor{preprocessor}{\#pragma\ hdrstop}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00030}00030\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00032}00032\ \textcolor{preprocessor}{\#ifndef\ WX\_PRECOMP}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00033}00033\ \textcolor{preprocessor}{\#include\ "{}wx/wx.h"{}}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00034}00034\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00036}00036\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00037}00037\ \textcolor{preprocessor}{\#include\ <wx/filename.h>}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00038}00038\ \textcolor{preprocessor}{\#include\ <wx/filefn.h>}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00039}00039\ \textcolor{preprocessor}{\#include\ <wx/string.h>}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00040}00040\ \textcolor{preprocessor}{\#include\ "{}wx/xml/xml.h"{}}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00041}00041\ \textcolor{preprocessor}{\#include\ <wx/msgdlg.h>}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00043}00043\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_catalog_volume_8h}{catalog/CatalogVolume.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00045}00045\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_defs_8h}{Defs.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00047}00047\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_catalog_data_8h}{catalog/CatalogData.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00048}00048\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_catalog_defs_8h}{catalog/CatalogDefs.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00050}00050\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_stamp_mount_8h}{catalog/StampMount.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00051}00051\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_entry_8h}{catalog/Entry.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00052}00052\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_collection_list_8h}{collection/CollectionList.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00054}00054\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_c_s_v_8h}{utils/CSV.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00055}00055\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_settings_8h}{utils/Settings.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00056}00056\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_project_8h}{utils/Project.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00057}00057\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_x_m_l_utilities_8h}{utils/XMLUtilities.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00058}00058\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_app_data_8h}{gui/AppData.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00059}00059\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_catalog_details_dialog_8h}{catalog/CatalogDetailsDialog.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00060}00060\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_stamp_tool_frame_8h}{gui/StampToolFrame.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00061}00061\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_generate_list_8h}{gui/GenerateList.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00063}00063\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_catalog}{Catalog}}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00064}00064\ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00068}\mbox{\hyperlink{class_catalog_1_1_catalog_volume_ae7dc28320025ea9bcb4f5482fb19c98a}{00068}}\ \ \ \ \ \mbox{\hyperlink{class_catalog_1_1_catalog_volume_ae7dc28320025ea9bcb4f5482fb19c98a}{CatalogVolume::CatalogVolume}}(\ )\ :\ \mbox{\hyperlink{namespace_utils}{Utils}}::\mbox{\hyperlink{class_utils_1_1_volume_ace89ec3d14359d7b6f56694af065fb6f}{Volume}}(\ \textcolor{stringliteral}{"{}Catalog"{}}\ )}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00069}00069\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00071}00071\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00073}\mbox{\hyperlink{class_catalog_1_1_catalog_volume_a5d23497e9cdb0a800396ead35883dc51}{00073}}\ \ \ \ \ \mbox{\hyperlink{class_catalog_1_1_catalog_volume_a5d23497e9cdb0a800396ead35883dc51}{CatalogVolume::\string~CatalogVolume}}(\ )}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00074}00074\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00076}00076\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00078}\mbox{\hyperlink{class_catalog_1_1_catalog_volume_a7e3f5731a6e3935939bbed1fceae0933}{00078}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_1_1_catalog_volume_a7e3f5731a6e3935939bbed1fceae0933}{CatalogVolume::EditDetailsDialog}}(\ wxWindow*\ parent\ )}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00079}00079\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00080}00080\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_catalog_details_dialog}{CatalogDetailsDialog}}\ catalogDetailsDialog(\ parent,\ 12346,}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ \_(\ \textcolor{stringliteral}{"{}Catalog\ Import\ File\ Details"{}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00083}00083\ \ \ \ \ \ \ \ \ catalogDetailsDialog.\mbox{\hyperlink{class_catalog_details_dialog_a21f05eb36157a29ebc7d476b6522a2c8}{SetCatalogFilename}}(\ \mbox{\hyperlink{class_utils_1_1_volume_a994cf3673782c19916683bd99dd8ab9f}{GetFilename}}(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00084}00084\ \ \ \ \ \ \ \ \ catalogDetailsDialog.\mbox{\hyperlink{class_catalog_details_dialog_a75687baf7e667e3963e0f4bf076ed96d}{SetName}}(\ \mbox{\hyperlink{class_utils_1_1_volume_a0cec661d16ebe012428bf8072b8b31c6}{GetName}}(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00086}00086\ }
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00087}00087\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ catalogDetailsDialog.ShowModal(\ )\ ==\ wxID\_CANCEL\ )}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};\ \textcolor{comment}{//\ the\ user\ changed\ idea..}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00090}00090\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_volume_aec987ffbdb89cb78eead7dbec704488c}{SetName}}(\ catalogDetailsDialog.\mbox{\hyperlink{class_catalog_details_dialog_a798699a77be91cfcf2eea8cb0cff1181}{GetName}}(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00091}00091\ \ \ \ \ \ \ \ \ wxString\ cwd\ =\ wxGetCwd(\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00092}00092\ \ \ \ \ \ \ \ \ wxFileName\ volFile(\ catalogDetailsDialog.\mbox{\hyperlink{class_catalog_details_dialog_a145eb4d7efed7e637da4ec881cd4ce1c}{GetCatalogPath}}(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00093}00093\ \ \ \ \ \ \ \ \ volFile.MakeRelativeTo(\ cwd\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00094}00094\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_volume_a53defdd3c3056de2210bee9eafe9b0c9}{SetFilename}}(\ volFile.GetFullPath(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00095}00095\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00096}00096\ }
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00097}00097\ }
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00098}\mbox{\hyperlink{class_catalog_1_1_catalog_volume_a02a8508dae8d080515d04a36c6224846}{00098}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_catalog_1_1_catalog_volume_a02a8508dae8d080515d04a36c6224846}{CatalogVolume::FixupInventoryStatus}}(\ )}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00099}00099\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00100}00100\ }
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00101}00101\ \ \ \ \ \ \ \ \ wxXmlNode*\ root\ =\ \mbox{\hyperlink{class_utils_1_1_volume_a62c5abb1b11937ebd1dc1b7be4641606}{GetDoc}}(\ )-\/>GetRoot(\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00102}00102\ \ \ \ \ \ \ \ \ wxString\ nodeName\ =\ root-\/>GetName(\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00103}00103\ }
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00104}00104\ \ \ \ \ \ \ \ \ wxXmlNode*\ child\ =\ root;}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00105}00105\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (\ child\ )}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00106}00106\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00107}00107\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_catalog_1_1_catalog_volume_a02a8508dae8d080515d04a36c6224846}{FixupInventoryStatus}}(\ child,\ (\ \mbox{\hyperlink{namespace_catalog_a7bc076b172809c869ab8fef63c49e8c3}{InventoryStatusType}}\ )\ \mbox{\hyperlink{namespace_catalog_a7bc076b172809c869ab8fef63c49e8c3aa467c2eee2b803ead3f4134222a9b0d0}{ST\_Exclude}}\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00108}00108\ \ \ \ \ \ \ \ \ \ \ \ \ child\ =\ child-\/>GetNext(\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00109}00109\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00110}00110\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00111}00111\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00112}00112\ }
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00113}\mbox{\hyperlink{class_catalog_1_1_catalog_volume_abd5d91f222c9384cdaba138e638ee1fd}{00113}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_catalog_1_1_catalog_volume_a02a8508dae8d080515d04a36c6224846}{CatalogVolume::FixupInventoryStatus}}(\ wxXmlNode*\ parent,\ \mbox{\hyperlink{namespace_catalog_a7bc076b172809c869ab8fef63c49e8c3}{InventoryStatusType}}\ parentStatus\ )}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00114}00114\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00115}00115\ }
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00116}00116\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ (\ parentStatus\ >=\ ST\_None\ \&\&\ parentStatus\ <\ ST\_Exclude\ )}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00117}00117\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \{}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00118}00118\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ //make\ sure\ this\ status\ is\ in\ a\ specimen}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00119}00119\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ wxXmlNode*\ node\ =\ Utils::NewNode(\ parent,\ "{}Specimen"{}\ );}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00120}00120\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ wxString\ currCollection\ =\ GetCollectionList(\ )-\/>GetCurrentName(\ );}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00121}00121\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ Utils::SetAttrStr(\ node,\ ItemDataNames[\ IDT\_Collection\ ],\ currCollection\ );}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00122}00122\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ Utils::SetAttrStr(\ node,\ ItemDataNames[\ IDT\_InventoryStatus\ ],\ InventoryStatusStrings[\ parentStatus\ ]\ );}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00123}00123\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \}}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00124}00124\ }
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00125}00125\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ specimenFound\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00126}00126\ \ \ \ \ \ \ \ \ wxXmlNode*\ child\ =\ parent-\/>GetChildren(\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00127}00127\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (\ child\ )}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00128}00128\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00129}00129\ \ \ \ \ \ \ \ \ \ \ \ \ wxXmlNode*\ nextChild\ =\ child-\/>GetNext(\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00130}00130\ \ \ \ \ \ \ \ \ \ \ \ \ wxString\ nodeName\ =\ child-\/>GetName(\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00131}00131\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ for\ each\ entry}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00132}00132\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ !nodeName.Cmp(\ \textcolor{stringliteral}{"{}Entry"{}}\ )\ )}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00133}00133\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00134}00134\ }
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00135}00135\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_catalog_1_1_catalog_volume_a02a8508dae8d080515d04a36c6224846}{FixupInventoryStatus}}(\ child,\ parentStatus\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00136}00136\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ all\ inventory\ statuses\ should\ have\ been\ removed\ already}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00137}00137\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ ok\ =\ child-\/>DeleteAttribute(\ \mbox{\hyperlink{namespace_catalog_ad31b697e09026bea7e50c5f0da8ff29f}{XMLDataNames}}[\ \mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176ac266cf02767aa599eeb39d3682ab7f6e}{DT\_InventoryStatus}}\ ]\ );;}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00138}00138\ }
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00139}00139\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00140}00140\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \ \textcolor{keywordflow}{if}\ (\ !nodeName.Cmp(\ \textcolor{stringliteral}{"{}Specimen"{}}\ )\ )}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00141}00141\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00142}00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ we\ find\ a\ specimen\ we\ need\ to\ see\ if\ the\ parent\ has\ an\ inventory\ node}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00143}00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ it\ does\ not\ we\ need\ to\ create\ one}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00144}00144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ then\ we\ need\ to\ detach\ the\ specimen,\ rename\ it\ to\ item\ and\ add\ to\ the\ inventory.}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00145}00145\ }
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00146}00146\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wxXmlNode*\ inventoryNode\ =\ \mbox{\hyperlink{namespace_utils_ac982aeec9bf06c61495032e66e41d30f}{Utils::FirstChildElement}}(\ parent,\ \textcolor{stringliteral}{"{}Inventory"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00147}00147\ }
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00148}00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ !inventoryNode\ )}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00149}00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00150}00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ inventoryNode\ =\ \mbox{\hyperlink{namespace_utils_a156ddf8c893eba62f65ffa2a5860c766}{Utils::NewNode}}(\ parent,\ \textcolor{stringliteral}{"{}Inventory"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00151}00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00152}00152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ parent-\/>RemoveChild(\ child\ )\ )}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00153}00153\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00154}00154\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ child-\/>SetName(\ \textcolor{stringliteral}{"{}Item"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00155}00155\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ inventoryNode-\/>AddChild(\ child\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00156}00156\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00157}00157\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ use\ the\ status\ in\ the\ specimen\ in\ preference\ to\ the\ parent\ preference}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00158}00158\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wxString\ statusStr\ =\ child-\/>GetAttribute(\ \mbox{\hyperlink{namespace_catalog_a2d8ee03a725ac68d747c899544f77f3f}{ItemDataNames}}[\ \mbox{\hyperlink{namespace_catalog_aff34cc1fa92031a5cf463041a34ef3b2a29e0aa208fe3e54d9be8fee50ffeb972}{IDT\_InventoryStatus}}\ ],\ \textcolor{stringliteral}{"{}"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00159}00159\ }
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00160}00160\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_catalog_a7bc076b172809c869ab8fef63c49e8c3}{InventoryStatusType}}\ specimenStatus\ =\ (\ \mbox{\hyperlink{namespace_catalog_a7bc076b172809c869ab8fef63c49e8c3}{InventoryStatusType}}\ )\ \mbox{\hyperlink{namespace_catalog_a7bc076b172809c869ab8fef63c49e8c3aa467c2eee2b803ead3f4134222a9b0d0}{ST\_Exclude}};}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00161}00161\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ !statusStr.IsEmpty(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00162}00162\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00163}00163\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ specimenStatus\ =\ \mbox{\hyperlink{namespace_catalog_a80bb7b19f4c5981727e8da9b8cd36048}{FindStatusType}}(\ statusStr\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00164}00164\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00165}00165\ }
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00166}00166\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ specimenStatus\ >=\ \mbox{\hyperlink{namespace_catalog_a7bc076b172809c869ab8fef63c49e8c3a3c63635bcbda2767ba8e820680f02c50}{ST\_None}}\ \&\&\ specimenStatus\ <\ \mbox{\hyperlink{namespace_catalog_a7bc076b172809c869ab8fef63c49e8c3aa467c2eee2b803ead3f4134222a9b0d0}{ST\_Exclude}}\ )}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00167}00167\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00168}00168\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ parentStatus\ =\ specimenStatus;}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00169}00169\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00170}00170\ }
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00171}00171\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ specimenFound\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00172}00172\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wxString\ name\ =\ child-\/>GetAttribute(\ \textcolor{stringliteral}{"{}Collection"{}},\ \textcolor{stringliteral}{"{}"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00173}00173\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ this\ collection\ doesn't\ exist\ then\ add\ it.}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00174}00174\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ !name.IsEmpty(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00175}00175\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00176}00176\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ parentStatus\ >=\ \mbox{\hyperlink{namespace_catalog_a7bc076b172809c869ab8fef63c49e8c3a3c63635bcbda2767ba8e820680f02c50}{ST\_None}}\ \&\&\ parentStatus\ <\ \mbox{\hyperlink{namespace_catalog_a7bc076b172809c869ab8fef63c49e8c3aa467c2eee2b803ead3f4134222a9b0d0}{ST\_Exclude}}\ )}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00177}00177\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00178}00178\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ this\ name\ not\ in\ collection\ then\ add\ it}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00179}00179\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_inventory_1_1_collection}{Inventory::Collection}}*\ collection\ =\ \mbox{\hyperlink{_defs_8cpp_a0697bb5076e0e3aac1d20bd9cf50d654}{GetCollectionList}}(\ )-\/>\mbox{\hyperlink{class_inventory_1_1_collection_list_a25ff731f643d17f0127710274887260e}{FindCollection}}(\ name\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00180}00180\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ !collection\ )}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00181}00181\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00182}00182\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_defs_8cpp_a0697bb5076e0e3aac1d20bd9cf50d654}{GetCollectionList}}(\ )-\/>\mbox{\hyperlink{class_inventory_1_1_collection_list_a54f3c777ca9f62a00be665dd2f3a01d2}{AddCollection}}(\ name,\ \textcolor{stringliteral}{"{}"{}},\ \textcolor{stringliteral}{"{}"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00183}00183\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00184}00184\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_utils_acd4b52904d20e67e1b9570914c1c45a7}{Utils::SetAttrStr}}(\ child,\ \mbox{\hyperlink{namespace_catalog_a2d8ee03a725ac68d747c899544f77f3f}{ItemDataNames}}[\ \mbox{\hyperlink{namespace_catalog_aff34cc1fa92031a5cf463041a34ef3b2a29e0aa208fe3e54d9be8fee50ffeb972}{IDT\_InventoryStatus}}\ ],\ \mbox{\hyperlink{namespace_catalog_abcd57760950ec98a13bee0678af3eb91}{InventoryStatusStrings}}[\ parentStatus\ ]\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00185}00185\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00186}00186\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00187}00187\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00188}00188\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00189}00189\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ specimen\ has\ no\ collection}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00190}00190\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ parentStatus\ >=\ \mbox{\hyperlink{namespace_catalog_a7bc076b172809c869ab8fef63c49e8c3a3c63635bcbda2767ba8e820680f02c50}{ST\_None}}\ \&\&\ parentStatus\ <\ \mbox{\hyperlink{namespace_catalog_a7bc076b172809c869ab8fef63c49e8c3aa467c2eee2b803ead3f4134222a9b0d0}{ST\_Exclude}}\ )}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00191}00191\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00192}00192\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wxString\ currCollection\ =\ \mbox{\hyperlink{_defs_8cpp_a0697bb5076e0e3aac1d20bd9cf50d654}{GetCollectionList}}(\ )-\/>\mbox{\hyperlink{class_inventory_1_1_collection_list_ac079b25af1d7982730bafaf1274783f9}{GetCurrentName}}(\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00193}00193\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_utils_acd4b52904d20e67e1b9570914c1c45a7}{Utils::SetAttrStr}}(\ child,\ \mbox{\hyperlink{namespace_catalog_a2d8ee03a725ac68d747c899544f77f3f}{ItemDataNames}}[\ \mbox{\hyperlink{namespace_catalog_aff34cc1fa92031a5cf463041a34ef3b2a8154603ef3e931bfe2420ac7f1ad8dd2}{IDT\_Collection}}\ ],\ currCollection\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00194}00194\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_utils_acd4b52904d20e67e1b9570914c1c45a7}{Utils::SetAttrStr}}(\ child,\ \mbox{\hyperlink{namespace_catalog_a2d8ee03a725ac68d747c899544f77f3f}{ItemDataNames}}[\ \mbox{\hyperlink{namespace_catalog_aff34cc1fa92031a5cf463041a34ef3b2a29e0aa208fe3e54d9be8fee50ffeb972}{IDT\_InventoryStatus}}\ ],\ \mbox{\hyperlink{namespace_catalog_abcd57760950ec98a13bee0678af3eb91}{InventoryStatusStrings}}[\ parentStatus\ ]\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00195}00195\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00196}00196\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00197}00197\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00198}00198\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \ \textcolor{keywordflow}{if}\ (\ !nodeName.Cmp(\ \textcolor{stringliteral}{"{}Inventory"{}}\ )\ )}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00199}00199\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00200}00200\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//assume\ it\ is\ fixed}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00201}00201\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00202}00202\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \ \textcolor{keywordflow}{if}\ (\ !nodeName.Cmp(\ \textcolor{stringliteral}{"{}CatalogCode"{}}\ )\ )}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00203}00203\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00204}00204\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//clobber\ it...\ or\ just\ ignore\ it}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00205}00205\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ parent-\/>RemoveChild(\ child\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00206}00206\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00207}00207\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00208}00208\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00209}00209\ }
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00210}00210\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ for\ all\ other\ node\ types\ just\ decend\ and\ keep\ looking}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00211}00211\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_catalog_1_1_catalog_volume_a02a8508dae8d080515d04a36c6224846}{FixupInventoryStatus}}(\ child,\ (\ \mbox{\hyperlink{namespace_catalog_a7bc076b172809c869ab8fef63c49e8c3}{InventoryStatusType}}\ )\ -\/1\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00212}00212\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00213}00213\ \ \ \ \ \ \ \ \ \ \ \ \ child\ =\ nextChild;\ \textcolor{comment}{//child-\/>GetNext(\ );}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00214}00214\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00215}00215\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00216}00216\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00217}00217\ }
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00218}00218\ }
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00219}\mbox{\hyperlink{class_catalog_1_1_catalog_volume_acaee667519cb71dd17f766271784d9c0}{00219}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_catalog_1_1_catalog_volume_acaee667519cb71dd17f766271784d9c0}{CatalogVolume::LoadCSV}}(\ wxString\ filename,\ wxString\ newFilename\ )}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00220}00220\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00221}00221\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ !\mbox{\hyperlink{class_utils_1_1_volume_a62c5abb1b11937ebd1dc1b7be4641606}{GetDoc}}(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00222}00222\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00223}00223\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_volume_a21293e5b48a1a33b0d9318b24a9165c6}{NewDocument}}(\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00224}00224\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00225}00225\ }
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00226}00226\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_c_s_v_data}{Utils::CSVData}}*\ csv\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_utils_1_1_c_s_v_data}{Utils::CSVData}}(\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00227}00227\ \ \ \ \ \ \ \ \ wxXmlNode*\ docRoot\ =\ \mbox{\hyperlink{class_utils_1_1_volume_a62c5abb1b11937ebd1dc1b7be4641606}{GetDoc}}(\ )-\/>GetRoot(\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00228}00228\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ !docRoot\ )}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00229}00229\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00230}00230\ \ \ \ \ \ \ \ \ \ \ \ \ docRoot\ =\ \mbox{\hyperlink{namespace_utils_a156ddf8c893eba62f65ffa2a5860c766}{Utils::NewNode}}(\ \mbox{\hyperlink{class_utils_1_1_volume_a62c5abb1b11937ebd1dc1b7be4641606}{GetDoc}}(\ ),\ \mbox{\hyperlink{namespace_catalog_af883688379268368070a0dd49b898a1f}{CatalogBaseNames}}[\ \mbox{\hyperlink{namespace_catalog_a86f503ced35b06e6427477ddab27c6bead7b08b5e92816b98b1d75a84f21dc404}{NT\_Catalog}}\ ]\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00231}00231\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00232}00232\ \ \ \ \ \ \ \ \ wxFileName\ name(\ newFilename\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00233}00233\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_utils_acd4b52904d20e67e1b9570914c1c45a7}{Utils::SetAttrStr}}(\ docRoot,\ \textcolor{stringliteral}{"{}Name"{}},\ name.GetName(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00234}00234\ }
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00235}00235\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ status\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00236}00236\ \ \ \ \ \ \ \ \ status\ =\ csv-\/>\mbox{\hyperlink{class_utils_1_1_c_s_v_data_a2f0da66f5d89595fcaca1922113c2a26}{DoLoad}}(\ filename,\ \mbox{\hyperlink{class_utils_1_1_volume_a62c5abb1b11937ebd1dc1b7be4641606}{GetDoc}}(\ )-\/>GetRoot(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00237}00237\ }
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00238}00238\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_volume_a1ed6ba45fce0a8c6945e56b45dcfd63e}{SetDirty}}(\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00239}00239\ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ csv;}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00240}00240\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ status;}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00241}00241\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00242}00242\ }
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00243}00243\ }
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00244}\mbox{\hyperlink{class_catalog_1_1_catalog_volume_a16d29287f8eb0819edf653875ed85539}{00244}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_1_1_catalog_volume_a16d29287f8eb0819edf653875ed85539}{CatalogVolume::LoadDefaultDocument}}(\ wxString\ volName\ )}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00245}00245\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00246}00246\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ NewDocument\ sets\ the\ Volume\ m\_doc}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00247}00247\ \ \ \ \ \ \ \ \ wxXmlDocument*\ newDocument\ =\ \mbox{\hyperlink{class_utils_1_1_volume_a21293e5b48a1a33b0d9318b24a9165c6}{NewDocument}}(\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00248}00248\ \ \ \ \ \ \ \ \ wxXmlNode*\ root\ =\ newDocument-\/>GetRoot(\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00249}00249\ \ \ \ \ \ \ \ \ root-\/>AddAttribute(\ \textcolor{stringliteral}{"{}Name"{}},\ volName\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00250}00250\ }
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00251}00251\ }
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00252}00252\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00253}00253\ }
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00254}00254\ }
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00255}\mbox{\hyperlink{class_catalog_1_1_catalog_volume_a8afc290128279fd47685e63bab6168cd}{00255}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_1_1_catalog_volume_a3f04a30170d56e52e6384a0b81468648}{CatalogVolume::MakeParentList}}(\ \mbox{\hyperlink{namespace_catalog_a2ff17ae8cd4986617c22e54b7cf50f89}{Catalog::FormatType}}\ parentType,\ \mbox{\hyperlink{namespace_utils_af54f9796bccf5cbc9c9fcb89cd8e824c}{Utils::wxXmlNodeArray}}*\ parentList,\ wxXmlNode*\ node\ )}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00256}00256\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00257}00257\ }
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00258}00258\ \ \ \ \ \ \ \ \ wxXmlNode*\ child\ =\ node-\/>GetChildren(\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00259}00259\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (\ child\ )}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00260}00260\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00261}00261\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_catalog_1_1_entry}{Catalog::Entry}}\ parentEntry(\ child\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00262}00262\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ parentEntry.\mbox{\hyperlink{class_catalog_1_1_entry_a4dc11fe62e108d49bb62787a26b365ed}{GetFormat}}(\ )\ ==\ \mbox{\hyperlink{namespace_catalog_afaa9b4c5ca81b7e8ec3f7d2f4b3d7e8d}{Catalog::FormatStrings}}[\ parentType\ ]\ )}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00263}00263\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00264}00264\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ parentList-\/>push\_back(\ child\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00265}00265\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00266}00266\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_catalog_1_1_catalog_volume_a3f04a30170d56e52e6384a0b81468648}{MakeParentList}}(\ parentType,\ parentList,\ child\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00267}00267\ \ \ \ \ \ \ \ \ \ \ \ \ child\ =\ child-\/>GetNext(\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00268}00268\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00269}00269\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00270}00270\ }
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00271}00271\ }
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00273}\mbox{\hyperlink{class_catalog_1_1_catalog_volume_a3f04a30170d56e52e6384a0b81468648}{00273}}\ \ \ \ \ \mbox{\hyperlink{namespace_utils_af54f9796bccf5cbc9c9fcb89cd8e824c}{Utils::wxXmlNodeArray}}*\ \mbox{\hyperlink{class_catalog_1_1_catalog_volume_a3f04a30170d56e52e6384a0b81468648}{CatalogVolume::MakeParentList}}(\ \mbox{\hyperlink{namespace_catalog_a2ff17ae8cd4986617c22e54b7cf50f89}{Catalog::FormatType}}\ parentType\ )}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00274}00274\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00275}00275\ }
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00276}00276\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Catalog::Entry\ parentEntry;}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00277}00277\ \ \ \ \ \ \ \ \ wxXmlNode*\ node\ =\ \mbox{\hyperlink{class_utils_1_1_volume_a62c5abb1b11937ebd1dc1b7be4641606}{GetDoc}}(\ )-\/>GetRoot(\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00278}00278\ }
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00279}00279\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_utils_af54f9796bccf5cbc9c9fcb89cd8e824c}{Utils::wxXmlNodeArray}}*\ parentList\ =\ \textcolor{keyword}{new}\ \ \mbox{\hyperlink{namespace_utils_af54f9796bccf5cbc9c9fcb89cd8e824c}{Utils::wxXmlNodeArray}}(\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00280}00280\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_catalog_1_1_catalog_volume_a3f04a30170d56e52e6384a0b81468648}{MakeParentList}}(\ parentType,\ parentList,\ node\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00281}00281\ }
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00282}00282\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ parentList;}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00283}00283\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00284}00284\ }
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00285}00285\ }
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00286}00286\ \ \ \ \ \textcolor{comment}{//\ CatalogVolume*\ NewCatalogVolumeInstance(\ )}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00287}00287\ \ \ \ \ \textcolor{comment}{//\ \{}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00288}00288\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ return\ new\ CatalogVolume(\ );}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00289}00289\ \ \ \ \ \textcolor{comment}{//\ \}}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00290}00290\ }
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00291}00291\ \ \ \ \ \textcolor{comment}{//\ resort\ the\ tree\ with\ the\ new\ sort\ order\ data.}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00292}00292\ \ \ \ \ \textcolor{comment}{//\ Probably\ doint\ this\ because\ the\ sort\ order\ was\ changed.}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00293}\mbox{\hyperlink{class_catalog_1_1_catalog_volume_a556a4cbaacfad2cca150137b62d7644c}{00293}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_1_1_catalog_volume_a556a4cbaacfad2cca150137b62d7644c}{CatalogVolume::ReSortTree}}(\ )}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00294}00294\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00295}00295\ \ \ \ \ \ \ \ \ wxXmlDocument*\ newDoc\ =\ \textcolor{keyword}{new}\ wxXmlDocument(\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00296}00296\ \ \ \ \ \ \ \ \ wxXmlNode*\ newRoot\ =\ newDoc-\/>GetRoot(\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00297}00297\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ !newRoot\ )}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00298}00298\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00299}00299\ \ \ \ \ \ \ \ \ \ \ \ \ newRoot\ =\ \mbox{\hyperlink{namespace_utils_a156ddf8c893eba62f65ffa2a5860c766}{Utils::NewNode}}(\ newDoc,\ \mbox{\hyperlink{namespace_catalog_af883688379268368070a0dd49b898a1f}{Catalog::CatalogBaseNames}}[\ \mbox{\hyperlink{namespace_catalog_a86f503ced35b06e6427477ddab27c6bead7b08b5e92816b98b1d75a84f21dc404}{Catalog::NT\_Catalog}}\ ]\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00300}00300\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00301}00301\ }
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00302}00302\ \ \ \ \ \ \ \ \ wxXmlDocument*\ doc\ =\ \mbox{\hyperlink{class_utils_1_1_volume_a62c5abb1b11937ebd1dc1b7be4641606}{GetDoc}}(\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00303}00303\ \ \ \ \ \ \ \ \ wxXmlNode*\ root\ =\ doc-\/>GetRoot(\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00304}00304\ }
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00305}00305\ \ \ \ \ \ \ \ \ wxXmlAttribute*\ attr\ =\ \mbox{\hyperlink{namespace_utils_a0cf7591f8dca3719de0ef110784f0824}{Utils::GetAttribute}}(\ root,\ \mbox{\hyperlink{namespace_catalog_a6d6fd52830494c7cfd841a94ddfdd42c}{Catalog::DataTypeNames}}[\ \mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176aabd36ff22239011f8c5ed2d79ef06653}{Catalog::DT\_Name}}\ ]\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00306}00306\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ attr\ )}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00307}00307\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00308}00308\ \ \ \ \ \ \ \ \ \ \ \ \ wxString\ name\ =\ attr-\/>GetName(\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00309}00309\ \ \ \ \ \ \ \ \ \ \ \ \ wxString\ value\ =\ attr-\/>GetValue(\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00310}00310\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_utils_acd4b52904d20e67e1b9570914c1c45a7}{Utils::SetAttrStr}}(\ newRoot,\ name,\ value\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00311}00311\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00312}00312\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00313}00313\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00314}00314\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_utils_acd4b52904d20e67e1b9570914c1c45a7}{Utils::SetAttrStr}}(\ newRoot,\ \mbox{\hyperlink{namespace_catalog_a6d6fd52830494c7cfd841a94ddfdd42c}{Catalog::DataTypeNames}}[\ \mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176aabd36ff22239011f8c5ed2d79ef06653}{Catalog::DT\_Name}}\ ],\ \textcolor{stringliteral}{"{}"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00315}00315\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ Utils::SetAttrStr(\ newRoot,\ "{}Name"{},\ "{}"{}\ );}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00316}00316\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00317}00317\ }
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00318}00318\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_catalog_ae95fbc61e745c765271377442397ad57}{Catalog::SortData}}(\ newRoot,\ root\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00319}00319\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_volume_a2ebc41b2748921f74029539737263ce2}{ReplaceDocument}}(\ newDoc\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00320}00320\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00321}00321\ }
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00322}00322\ \ \ \ \ \textcolor{comment}{//\ this\ is\ an\ attempt\ to\ group\ the\ entrys;}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00323}00323\ \ \ \ \ \textcolor{comment}{//\ i.e.,\ an\ item\ of\ type\ entry\ can\ be\ a\ child\ of\ an\ item\ SeTenent\ type.}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00324}\mbox{\hyperlink{class_catalog_1_1_catalog_volume_ac80f979f4a279f3437bb7cde3636b236}{00324}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_1_1_catalog_volume_ac80f979f4a279f3437bb7cde3636b236}{CatalogVolume::ReGroupMultiples}}(\ )}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00325}00325\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00326}00326\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_catalog_1_1_catalog_volume_a8a249861d8d5a5d939a22b83d53693b6}{StructureCatalogVolume}}(\ \mbox{\hyperlink{namespace_catalog_a2ff17ae8cd4986617c22e54b7cf50f89aa7c453e371da6e604238e6378be09778}{Catalog::FT\_Se\_tenant}},\ \mbox{\hyperlink{namespace_catalog_a2ff17ae8cd4986617c22e54b7cf50f89ab613431e40eca8835e4c06744adf1063}{Catalog::FT\_Stamp}}\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00327}00327\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_catalog_1_1_catalog_volume_a8a249861d8d5a5d939a22b83d53693b6}{StructureCatalogVolume}}(\ \mbox{\hyperlink{namespace_catalog_a2ff17ae8cd4986617c22e54b7cf50f89af44786bc6f96d802ae6525ce9b92300e}{Catalog::FT\_Gutter\_Pair}},\ \mbox{\hyperlink{namespace_catalog_a2ff17ae8cd4986617c22e54b7cf50f89ab613431e40eca8835e4c06744adf1063}{Catalog::FT\_Stamp}}\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00328}00328\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_catalog_1_1_catalog_volume_a8a249861d8d5a5d939a22b83d53693b6}{StructureCatalogVolume}}(\ \mbox{\hyperlink{namespace_catalog_a2ff17ae8cd4986617c22e54b7cf50f89a62406704a892f2088b165a591dafa6c1}{Catalog::FT\_Booklet\_Pane}},\ \mbox{\hyperlink{namespace_catalog_a2ff17ae8cd4986617c22e54b7cf50f89ab613431e40eca8835e4c06744adf1063}{Catalog::FT\_Stamp}},\ \mbox{\hyperlink{namespace_catalog_a2ff17ae8cd4986617c22e54b7cf50f89aa7c453e371da6e604238e6378be09778}{Catalog::FT\_Se\_tenant}}\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00329}00329\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_catalog_1_1_catalog_volume_a8a249861d8d5a5d939a22b83d53693b6}{StructureCatalogVolume}}(\ \mbox{\hyperlink{namespace_catalog_a2ff17ae8cd4986617c22e54b7cf50f89ae0ac5660a759903581aff69a9ba5f507}{Catalog::FT\_Mini\_Sheet}},\ \mbox{\hyperlink{namespace_catalog_a2ff17ae8cd4986617c22e54b7cf50f89ab613431e40eca8835e4c06744adf1063}{Catalog::FT\_Stamp}},\ \mbox{\hyperlink{namespace_catalog_a2ff17ae8cd4986617c22e54b7cf50f89aa7c453e371da6e604238e6378be09778}{Catalog::FT\_Se\_tenant}}\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00330}00330\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_catalog_1_1_catalog_volume_a8a249861d8d5a5d939a22b83d53693b6}{StructureCatalogVolume}}(\ \mbox{\hyperlink{namespace_catalog_a2ff17ae8cd4986617c22e54b7cf50f89ac843859a02fa372744f3d51e883dac1d}{Catalog::FT\_Souvenir\_Sheet}},\ \mbox{\hyperlink{namespace_catalog_a2ff17ae8cd4986617c22e54b7cf50f89ab613431e40eca8835e4c06744adf1063}{Catalog::FT\_Stamp}},\ \mbox{\hyperlink{namespace_catalog_a2ff17ae8cd4986617c22e54b7cf50f89aa7c453e371da6e604238e6378be09778}{Catalog::FT\_Se\_tenant}}\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00331}00331\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_catalog_1_1_catalog_volume_a8a249861d8d5a5d939a22b83d53693b6}{StructureCatalogVolume}}(\ \mbox{\hyperlink{namespace_catalog_a2ff17ae8cd4986617c22e54b7cf50f89ae0ac5660a759903581aff69a9ba5f507}{Catalog::FT\_Mini\_Sheet}},\ \mbox{\hyperlink{namespace_catalog_a2ff17ae8cd4986617c22e54b7cf50f89ab613431e40eca8835e4c06744adf1063}{Catalog::FT\_Stamp}},\ \mbox{\hyperlink{namespace_catalog_a2ff17ae8cd4986617c22e54b7cf50f89aa7c453e371da6e604238e6378be09778}{Catalog::FT\_Se\_tenant}}\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00332}00332\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_catalog_1_1_catalog_volume_a8a249861d8d5a5d939a22b83d53693b6}{StructureCatalogVolume}}(\ \mbox{\hyperlink{namespace_catalog_a2ff17ae8cd4986617c22e54b7cf50f89a4c94f79bbbab2b6ea6e27247581a7458}{Catalog::FT\_Booklet}},\ \mbox{\hyperlink{namespace_catalog_a2ff17ae8cd4986617c22e54b7cf50f89ab613431e40eca8835e4c06744adf1063}{Catalog::FT\_Stamp}},\ \mbox{\hyperlink{namespace_catalog_a2ff17ae8cd4986617c22e54b7cf50f89a62406704a892f2088b165a591dafa6c1}{Catalog::FT\_Booklet\_Pane}}\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00333}00333\ }
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00334}00334\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00335}00335\ }
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00336}\mbox{\hyperlink{class_catalog_1_1_catalog_volume_a830a9488d2c567dd59d815649a438138}{00336}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_1_1_catalog_volume_a830a9488d2c567dd59d815649a438138}{CatalogVolume::Save}}(\ )}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00337}00337\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00338}00338\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_catalog_1_1_catalog_volume_a0246d90ed42140790d6d2dc72f82df2d}{SaveXML}}(\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00339}00339\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00340}00340\ }
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00341}\mbox{\hyperlink{class_catalog_1_1_catalog_volume_a0246d90ed42140790d6d2dc72f82df2d}{00341}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_1_1_catalog_volume_a0246d90ed42140790d6d2dc72f82df2d}{CatalogVolume::SaveXML}}(\ )}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00342}00342\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00343}00343\ \ \ \ \ \ \ \ \ wxString\ filename\ =\ \mbox{\hyperlink{class_utils_1_1_volume_a994cf3673782c19916683bd99dd8ab9f}{GetFilename}}(\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00344}00344\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ \mbox{\hyperlink{class_utils_1_1_volume_a62c5abb1b11937ebd1dc1b7be4641606}{GetDoc}}(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00345}00345\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00346}00346\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ wxFileExists(\ filename\ )\ )}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00347}00347\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00348}00348\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wxFileName\ bakFile(\ filename\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00349}00349\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ bakFile.SetExt(\ \textcolor{stringliteral}{"{}bak.cat"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00350}00350\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wxRenameFile(\ filename,\ bakFile.GetFullName(\ ),\ \textcolor{keyword}{true}\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00351}00351\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00352}00352\ }
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00353}00353\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_volume_a62c5abb1b11937ebd1dc1b7be4641606}{GetDoc}}(\ )-\/>Save(\ filename\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00354}00354\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_volume_a1ed6ba45fce0a8c6945e56b45dcfd63e}{SetDirty}}(\ \textcolor{keyword}{false}\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00355}00355\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00356}00356\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00357}00357\ }
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00358}00358\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00359}00359\ \ \ \ \ \textcolor{comment}{//\ this\ looks\ through\ the\ xml\ tree\ and\ makes\ related\ entries\ of\ childType\ a\ child\ of\ the\ parent\ type}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00360}\mbox{\hyperlink{class_catalog_1_1_catalog_volume_a8a249861d8d5a5d939a22b83d53693b6}{00360}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_1_1_catalog_volume_a8a249861d8d5a5d939a22b83d53693b6}{CatalogVolume::StructureCatalogVolume}}(\ \mbox{\hyperlink{namespace_catalog_a2ff17ae8cd4986617c22e54b7cf50f89}{Catalog::FormatType}}\ parentType,}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00361}00361\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_catalog_a2ff17ae8cd4986617c22e54b7cf50f89}{Catalog::FormatType}}\ childType,}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00362}00362\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_catalog_a2ff17ae8cd4986617c22e54b7cf50f89}{Catalog::FormatType}}\ secondChildType\ )}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00363}00363\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00364}00364\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Make\ a\ list\ of\ all\ nodes\ that\ are\ of\ parentType}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00365}00365\ \textcolor{comment}{//\ \ \ \ \ \ \ \ wxXmlNode*\ node\ =\ m\_stampDoc-\/>GetRoot(\ );}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00366}00366\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_utils_af54f9796bccf5cbc9c9fcb89cd8e824c}{Utils::wxXmlNodeArray}}*\ parentList\ =\ \mbox{\hyperlink{class_catalog_1_1_catalog_volume_a3f04a30170d56e52e6384a0b81468648}{MakeParentList}}(\ parentType\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00367}00367\ }
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00368}00368\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ now\ find\ all\ the\ entrys\ that\ go\ into\ each\ parent\ by\ comparing\ the\ issue\ date,\ series\ and\ face\ value}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00369}00369\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\ \textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ parentList-\/>size(\ );\ i++\ )}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00370}00370\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00371}00371\ \ \ \ \ \ \ \ \ \ \ \ \ wxXmlNode*\ parentNode\ =\ (\ wxXmlNode*\ )\ parentList-\/>at(\ i\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00372}00372\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_catalog_1_1_entry}{Catalog::Entry}}\ parentEntry(\ parentNode\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00373}00373\ \ \ \ \ \ \ \ \ \ \ \ \ wxString\ parentIssue\ =\ parentEntry.\mbox{\hyperlink{class_catalog_1_1_entry_adfeac3f5a3a0fcbe772f40da2219ad60}{GetIssuedDate}}(\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00374}00374\ \ \ \ \ \ \ \ \ \ \ \ \ wxString\ parentSeries\ =\ parentEntry.\mbox{\hyperlink{class_catalog_1_1_entry_acddf894f2273a7397bb97d8230ce9f16}{GetSeries}}(\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00375}00375\ \ \ \ \ \ \ \ \ \ \ \ \ wxString\ parentFace\ =\ parentEntry.\mbox{\hyperlink{class_catalog_1_1_entry_ad1179b7e960e5dbc17f84b9f2df9aa3b}{GetFaceValue}}(\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00376}00376\ \ \ \ \ \ \ \ \ \ \ \ \ wxString\ \textcolor{keywordtype}{id}\ =\ parentEntry.\mbox{\hyperlink{class_catalog_1_1_entry_a1a13c18f7faaf5d9f18bb3cd52c2be19}{GetID}}(\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00377}00377\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ !\textcolor{keywordtype}{id}.Cmp(\ \textcolor{stringliteral}{"{}Sn:US\ 4690a"{}}\ )\ )}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00378}00378\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00379}00379\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ a\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00380}00380\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00381}00381\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{long}\ nbrEntrys;}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00382}00382\ \ \ \ \ \ \ \ \ \ \ \ \ parentFace.ToLong(\ \&nbrEntrys\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00383}00383\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ nbrEntrys\ <=\ 0\ )}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00384}00384\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00385}00385\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ we\ can't\ figure\ out\ the\ face\ then\ assume\ a\ setenant\ is\ no\ bigger\ than\ 50\ entrys}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00386}00386\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ nbrEntrys\ =\ 50;}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00387}00387\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00388}00388\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{long}\ count\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00389}00389\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{long}\ searchRange\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00390}00390\ }
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00391}00391\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ we\ want\ to\ examine\ siblings\ of\ the\ parentNode}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00392}00392\ \ \ \ \ \ \ \ \ \ \ \ \ wxXmlNode*\ childNode\ =\ parentNode-\/>GetParent(\ )-\/>GetChildren(\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00393}00393\ }
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00394}00394\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (\ childNode\ \&\&\ (\ searchRange\ <\ 1005\ )\ \&\&\ (\ count\ <\ nbrEntrys\ )\ )}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00395}00395\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00396}00396\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_catalog_1_1_entry}{Catalog::Entry}}\ childEntry(\ childNode\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00397}00397\ }
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00398}00398\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ figure\ out\ what\ the\ next\ sibling\ is\ because\ we\ may\ move\ childNode}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00399}00399\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wxXmlNode*\ nextSibling\ =\ childNode-\/>GetNext(\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00400}00400\ }
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00401}00401\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ parentNode\ !=\ childNode\ )}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00402}00402\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00403}00403\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ only\ search\ a\ reasonable\ distance\ after\ the\ first\ one\ is\ found}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00404}00404\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ count\ >\ 1\ )}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00405}00405\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00406}00406\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ searchRange++;}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00407}00407\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00408}00408\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ only\ look\ at\ children\ of\ childType}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00409}00409\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wxString\ format\ =\ childEntry.\mbox{\hyperlink{class_catalog_1_1_entry_a4dc11fe62e108d49bb62787a26b365ed}{GetFormat}}(\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00410}00410\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ (\ format\ ==\ \mbox{\hyperlink{namespace_catalog_afaa9b4c5ca81b7e8ec3f7d2f4b3d7e8d}{Catalog::FormatStrings}}[\ childType\ ]\ )}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00411}00411\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ||\ (\ secondChildType}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00412}00412\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&\&\ (\ format\ ==\ \mbox{\hyperlink{namespace_catalog_afaa9b4c5ca81b7e8ec3f7d2f4b3d7e8d}{Catalog::FormatStrings}}[\ secondChildType\ ]\ )\ )\ )}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00413}00413\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00414}00414\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wxString\ issue\ =\ childEntry.\mbox{\hyperlink{class_catalog_1_1_entry_adfeac3f5a3a0fcbe772f40da2219ad60}{GetIssuedDate}}(\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00415}00415\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wxString\ series\ =\ childEntry.\mbox{\hyperlink{class_catalog_1_1_entry_acddf894f2273a7397bb97d8230ce9f16}{GetSeries}}(\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00416}00416\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ the\ issue\ date\ and\ the\ series\ match\ the\ parent\ assume}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00417}00417\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ that\ the\ childNode\ goes\ in\ the\ parent}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00418}00418\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ !issue.Cmp(\ parentIssue\ )}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00419}00419\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&\&\ !series.Cmp(\ parentSeries\ )\ )}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00420}00420\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00421}00421\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ count++;}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00422}00422\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wxXmlNode*\ currParent\ =\ childNode-\/>GetParent(\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00423}00423\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ currParent\ )}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00424}00424\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00425}00425\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ currParent-\/>RemoveChild(\ childNode\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00426}00426\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00427}00427\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//and\ add\ it\ to\ new\ place}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00428}00428\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ parentNode-\/>AddChild(\ childNode\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00429}00429\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00430}00430\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00431}00431\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00432}00432\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ childNode\ =\ nextSibling;}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00433}00433\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00434}00434\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00435}00435\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00436}00436\ }
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00437}00437\ }
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00438}\mbox{\hyperlink{namespace_catalog_a566b536eb28609acba2477444a0da5f5}{00438}}\ \ \ \ \ \mbox{\hyperlink{class_catalog_1_1_catalog_volume}{CatalogVolume}}*\ \mbox{\hyperlink{namespace_catalog_a566b536eb28609acba2477444a0da5f5}{NewCatalogVolume}}(\ )}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00439}00439\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00440}00440\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_catalog_1_1_catalog_volume}{CatalogVolume}}*\ catalogVolume\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_catalog_1_1_catalog_volume}{CatalogVolume}}(\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00441}00441\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ catalogVolume;}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00442}00442\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00443}00443\ }
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00444}00444\ }
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00445}00445\ }
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00446}\mbox{\hyperlink{class_catalog_1_1_catalog_volume_a7e5e56a31b3a7c288754b12502edfc28}{00446}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_catalog_1_1_catalog_volume_a7e5e56a31b3a7c288754b12502edfc28}{CatalogVolume::UpdateMount}}(\ )}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00447}00447\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00448}00448\ }
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00449}00449\ \ \ \ \ \ \ \ \ wxXmlNode*\ root\ =\ \mbox{\hyperlink{class_utils_1_1_volume_a62c5abb1b11937ebd1dc1b7be4641606}{GetDoc}}(\ )-\/>GetRoot(\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00450}00450\ \ \ \ \ \ \ \ \ wxString\ nodeName\ =\ root-\/>\mbox{\hyperlink{class_utils_1_1_volume_a0cec661d16ebe012428bf8072b8b31c6}{GetName}}(\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00451}00451\ }
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00452}00452\ \ \ \ \ \ \ \ \ wxXmlNode*\ child\ =\ root;}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00453}00453\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (\ child\ )}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00454}00454\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00455}00455\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_catalog_1_1_catalog_volume_a7e5e56a31b3a7c288754b12502edfc28}{UpdateMount}}(\ child\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00456}00456\ \ \ \ \ \ \ \ \ \ \ \ \ child\ =\ child-\/>GetNext(\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00457}00457\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00458}00458\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00459}00459\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00460}00460\ }
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00461}\mbox{\hyperlink{class_catalog_1_1_catalog_volume_aa5381a2dbde75077e53a8620afbf1646}{00461}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_catalog_1_1_catalog_volume_a7e5e56a31b3a7c288754b12502edfc28}{CatalogVolume::UpdateMount}}(\ wxXmlNode*\ parent\ )}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00462}00462\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00463}00463\ \ \ \ \ \ \ \ \ wxXmlNode*\ child\ =\ parent-\/>GetChildren(\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00464}00464\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (\ child\ )}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00465}00465\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00466}00466\ \ \ \ \ \ \ \ \ \ \ \ \ wxString\ nodeName\ =\ child-\/>GetName(\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00467}00467\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ !nodeName.Cmp(\ \textcolor{stringliteral}{"{}Entry"{}}\ )\ )}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00468}00468\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00469}00469\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wxString\ \textcolor{keywordtype}{id}\ =\ child-\/>GetAttribute(\ \textcolor{stringliteral}{"{}ID\_Nbr"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00470}00470\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wxString\ mountStr\ =\ \mbox{\hyperlink{_defs_8cpp_a6f796c8ca47e67201079daaeddb24770}{GetStampMountData}}(\ )-\/>\mbox{\hyperlink{class_catalog_1_1_stamp_mount_data_ac0c019ffe787ace4e93fa7bd1db75f9c}{Find}}(\ \textcolor{keywordtype}{id}\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00471}00471\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wxString\ status\ =\ child-\/>GetAttribute(\ \mbox{\hyperlink{namespace_catalog_ad31b697e09026bea7e50c5f0da8ff29f}{XMLDataNames}}[\ \mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176a3b032fbf5609ce35d198462d63594bf0}{DT\_StampMount}}\ ]\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00472}00472\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ status.IsEmpty(\ )\ \&\&\ !mountStr.IsEmpty(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00473}00473\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00474}00474\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_utils_acd4b52904d20e67e1b9570914c1c45a7}{Utils::SetAttrStr}}(\ child,\ \mbox{\hyperlink{namespace_catalog_ad31b697e09026bea7e50c5f0da8ff29f}{XMLDataNames}}[\ \mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176a3b032fbf5609ce35d198462d63594bf0}{DT\_StampMount}}\ ],\ mountStr\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00475}00475\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00476}00476\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00477}00477\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00478}00478\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00479}00479\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00480}00480\ }
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00481}00481\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_catalog_1_1_catalog_volume_a7e5e56a31b3a7c288754b12502edfc28}{UpdateMount}}(\ child\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00482}00482\ \ \ \ \ \ \ \ \ \ \ \ \ child\ =\ child-\/>GetNext(\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00483}00483\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00484}00484\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00485}00485\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00486}00486\ }
+\DoxyCodeLine{\Hypertarget{_catalog_volume_8cpp_source_l00487}00487\ \}}
+
+\end{DoxyCode}

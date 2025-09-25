@@ -1,0 +1,187 @@
+\doxysection{Collection\+List.\+cpp}
+\hypertarget{_collection_list_8cpp_source}{}\label{_collection_list_8cpp_source}\index{C:/Users/femon/Development/wx/cloneTest/StampTool/src/collection/CollectionList.cpp@{C:/Users/femon/Development/wx/cloneTest/StampTool/src/collection/CollectionList.cpp}}
+\mbox{\hyperlink{_collection_list_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ "{}wx/wxprec.h"{}}}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00005}00005\ \textcolor{preprocessor}{\#ifdef\ \_\_BORLANDC\_\_}}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00006}00006\ \textcolor{preprocessor}{\#pragma\ hdrstop}}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00007}00007\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00009}00009\ \textcolor{preprocessor}{\#ifndef\ WX\_PRECOMP}}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00010}00010\ \textcolor{preprocessor}{\#include\ "{}wx/wx.h"{}}}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00011}00011\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00013}00013\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_collection_list_8h}{collection/CollectionList.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00014}00014\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_collection_8h}{collection/Collection.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00016}00016\ \textcolor{comment}{//\#include\ "{}collection/CollectionData.h"{}}}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00017}00017\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_settings_8h}{utils/Settings.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00018}00018\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_defs_8h}{Defs.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00021}00021\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_inventory}{Inventory}}\ \{}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00023}00023\ \ \ \ \ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00025}\mbox{\hyperlink{class_inventory_1_1_collection_list_a1832bb5deccdd4eebd156d9e3737ed63}{00025}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_inventory_1_1_collection_list_a54f3c777ca9f62a00be665dd2f3a01d2}{CollectionList::AddCollection}}(\ wxString\ name,\ wxString\ description,\ wxString\ location\ )}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00026}00026\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00027}00027\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_inventory_1_1_collection}{Collection}}*\ item\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{_inventory_item_def_8h_a6340f057b575aa15e90061fcc1a2fe62}{Collection}}(\ name,\ description,\ location\ );}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00028}00028\ \ \ \ \ \ \ \ \ m\_list.push\_back(\ item\ );}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00029}00029\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_inventory_1_1_collection_list_afacb51959cd9bb5be63f6dc4524dd027}{BuildStrings}}(\ );}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00030}00030\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00032}00032\ \ \ \ \ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00034}\mbox{\hyperlink{class_inventory_1_1_collection_list_afacb51959cd9bb5be63f6dc4524dd027}{00034}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_inventory_1_1_collection_list_afacb51959cd9bb5be63f6dc4524dd027}{CollectionList::BuildStrings}}(\ )}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00035}00035\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00036}00036\ \ \ \ \ \ \ \ \ m\_nameArray.Clear(\ );}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00037}00037\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\ CollectionArray::iterator\ it\ =\ std::begin(\ m\_list\ );}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ it\ !=\ std::end(\ m\_list\ );}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ ++it\ )}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00040}00040\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_inventory_1_1_collection}{Collection}}*\ collection\ =\ (\ \mbox{\hyperlink{class_inventory_1_1_collection}{Inventory::Collection}}*\ )\ (\ *it\ );}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ m\_nameArray.Add(\ collection-\/>\mbox{\hyperlink{class_inventory_1_1_collection_a151095209fdeb63eae1dd07737bca1b1}{GetName}}(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00043}00043\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00044}00044\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00047}00047\ \ \ \ \ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00048}\mbox{\hyperlink{class_inventory_1_1_collection_list_ac06f3a6d7f29ccf083edf7d2e1f420da}{00048}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_inventory_1_1_collection_list_ac06f3a6d7f29ccf083edf7d2e1f420da}{CollectionList::Clear}}(\ )}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00049}00049\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00050}00050\ \ \ \ \ \ \ \ \ m\_currCollection\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00051}00051\ \ \ \ \ \ \ \ \ m\_nameArray.Clear(\ );}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00052}00052\ \ \ \ \ \ \ \ \ m\_list.clear(\ );;}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00053}00053\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00055}00055\ \ \ \ \ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00057}\mbox{\hyperlink{class_inventory_1_1_collection_list_aa862faeff92bdbf57d8fd828b711b980}{00057}}\ \ \ \ \ \mbox{\hyperlink{class_inventory_1_1_collection}{Collection}}*\ \mbox{\hyperlink{class_inventory_1_1_collection_list_aa862faeff92bdbf57d8fd828b711b980}{CollectionList::GetCollection}}(\ \textcolor{keywordtype}{int}\ ndx\ )\ \{}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00058}00058\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_list[\ ndx\ ];}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00059}00059\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00061}00061\ \ \ \ \ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00063}\mbox{\hyperlink{class_inventory_1_1_collection_list_a1ed485914cfe1b2856e6b429e7924f04}{00063}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_inventory_1_1_collection_list_a1ed485914cfe1b2856e6b429e7924f04}{CollectionList::Load}}(\ wxXmlNode*\ parent\ )}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00064}00064\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00065}00065\ \ \ \ \ \ \ \ \ wxXmlNode*\ child\ =\ parent-\/>GetChildren(\ );;}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00066}00066\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (\ child\ )}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00067}00067\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ wxString\ name\ =\ child-\/>GetName(\ );}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ !name.Cmp(\ \textcolor{stringliteral}{"{}Collection"{}}\ )\ )}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_inventory_1_1_collection}{Collection}}*\ collection\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{_inventory_item_def_8h_a6340f057b575aa15e90061fcc1a2fe62}{Collection}}(\ );}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ collection-\/>\mbox{\hyperlink{class_inventory_1_1_collection_a4cc572c883f58ed6e80c47613a3a96b9}{Load}}(\ child\ );}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_list.push\_back(\ collection\ );}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ child\ =\ child-\/>GetNext(\ );}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00076}00076\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00077}00077\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_inventory_1_1_collection_list_a2034ad51027be0fe49d74d0f7a090186}{SetDefaultCollection}}(\ );}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00078}00078\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_inventory_1_1_collection_list_afacb51959cd9bb5be63f6dc4524dd027}{BuildStrings}}(\ );}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00080}00080\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00082}00082\ \ \ \ \ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00083}00083\ }
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00084}\mbox{\hyperlink{class_inventory_1_1_collection_list_a2034ad51027be0fe49d74d0f7a090186}{00084}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_inventory_1_1_collection_list_a2034ad51027be0fe49d74d0f7a090186}{CollectionList::SetDefaultCollection}}(\ )}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00085}00085\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00086}00086\ \ \ \ \ \ \ \ \ wxString\ lastCollection\ =\ \mbox{\hyperlink{_defs_8cpp_a22c90d4148252ff1fbca6b40d3312b23}{GetSettings}}(\ )-\/>\mbox{\hyperlink{class_utils_1_1_settings_addc69c678b8613554fd1b6565a4f545e}{GetLastCollection}}(\ );}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00087}00087\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ lastCollection.IsEmpty(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00088}00088\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00089}00089\ \ \ \ \ \ \ \ \ \ \ \ \ lastCollection\ =\ \textcolor{stringliteral}{"{}Primary"{}};}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00090}00090\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00091}00091\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_inventory_1_1_collection}{Collection}}*\ collection\ =\ \mbox{\hyperlink{class_inventory_1_1_collection_list_a25ff731f643d17f0127710274887260e}{FindCollection}}(\ lastCollection\ );}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00092}00092\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ collection\ )}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00093}00093\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_inventory_1_1_collection_list_a040a7d38298656f95921afa9ba767f45}{SetCurrentCollection}}(\ lastCollection\ );}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00095}00095\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00096}00096\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00097}00097\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ m\_list.size(\ )\ >\ 0\ )}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ lastCollection\ =\ m\_list.at(\ 0\ )-\/>GetName(\ );}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00101}00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_inventory_1_1_collection_list_a040a7d38298656f95921afa9ba767f45}{SetCurrentCollection}}(\ lastCollection\ );}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00105}00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_inventory_1_1_collection}{Collection}}*\ collection\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{_inventory_item_def_8h_a6340f057b575aa15e90061fcc1a2fe62}{Collection}}(\ lastCollection,\ \textcolor{stringliteral}{"{}"{}},\ \textcolor{stringliteral}{"{}"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00106}00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_list.push\_back(\ collection\ );}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00107}00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_inventory_1_1_collection_list_a040a7d38298656f95921afa9ba767f45}{SetCurrentCollection}}(\ lastCollection\ );}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00108}00108\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00109}00109\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00110}00110\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00111}00111\ }
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00112}00112\ \ \ \ \ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00113}00113\ }
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00114}\mbox{\hyperlink{class_inventory_1_1_collection_list_a25ff731f643d17f0127710274887260e}{00114}}\ \ \ \ \ \mbox{\hyperlink{class_inventory_1_1_collection}{Inventory::Collection}}*\ \mbox{\hyperlink{class_inventory_1_1_collection_list_a25ff731f643d17f0127710274887260e}{CollectionList::FindCollection}}(\ wxString\ name\ )}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00115}00115\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00116}00116\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\ Inventory::CollectionArray::iterator\ it\ =\ std::begin(\ m\_list\ );}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00117}00117\ \ \ \ \ \ \ \ \ \ \ \ \ it\ !=\ std::end(\ m\_list\ );}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00118}00118\ \ \ \ \ \ \ \ \ \ \ \ \ ++it\ )}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00119}00119\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00120}00120\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_inventory_1_1_collection}{Inventory::Collection}}*\ collection\ =\ (\ \mbox{\hyperlink{class_inventory_1_1_collection}{Inventory::Collection}}*\ )\ (\ *it\ );}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00121}00121\ }
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00122}00122\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ !name.Cmp(\ collection-\/>\mbox{\hyperlink{class_inventory_1_1_collection_a151095209fdeb63eae1dd07737bca1b1}{GetName}}(\ )\ )\ )}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00123}00123\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00124}00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ collection;}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00125}00125\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00126}00126\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00127}00127\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \ (\ \mbox{\hyperlink{class_inventory_1_1_collection}{Inventory::Collection}}*\ )\ 0;}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00128}00128\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00129}00129\ }
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00130}00130\ \ \ \ \ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00131}00131\ }
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00132}\mbox{\hyperlink{class_inventory_1_1_collection_list_aa087946118c602e741b475ded3f09600}{00132}}\ \ \ \ \ wxArrayString\&\ \mbox{\hyperlink{class_inventory_1_1_collection_list_aa087946118c602e741b475ded3f09600}{CollectionList::GetNameStrings}}(\ )}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00133}00133\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00134}00134\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_nameArray;}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00135}00135\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00136}00136\ }
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00137}00137\ \ \ \ \ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00138}00138\ }
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00139}\mbox{\hyperlink{class_inventory_1_1_collection_list_aaecdb26d296a6fe8bbe07b740b943ef4}{00139}}\ \ \ \ \ \mbox{\hyperlink{class_inventory_1_1_collection}{Collection}}*\ \mbox{\hyperlink{class_inventory_1_1_collection_list_aaecdb26d296a6fe8bbe07b740b943ef4}{CollectionList::GetCurrentCollection}}(\ )\ \{}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00140}00140\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_inventory_1_1_collection_list_a25ff731f643d17f0127710274887260e}{FindCollection}}(\ m\_currCollection\ );}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00141}00141\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00142}00142\ }
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00143}00143\ \ \ \ \ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00144}00144\ }
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00145}\mbox{\hyperlink{class_inventory_1_1_collection_list_ac079b25af1d7982730bafaf1274783f9}{00145}}\ \ \ \ \ wxString\ \mbox{\hyperlink{class_inventory_1_1_collection_list_ac079b25af1d7982730bafaf1274783f9}{CollectionList::GetCurrentName}}(\ )\ \{}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00146}00146\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_currCollection;}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00147}00147\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00148}00148\ }
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00149}00149\ \ \ \ \ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00150}00150\ }
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00151}\mbox{\hyperlink{class_inventory_1_1_collection_list_af18206182eba954681d61a2ca1014457}{00151}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_inventory_1_1_collection_list_af18206182eba954681d61a2ca1014457}{CollectionList::Save}}(\ wxXmlNode*\ parent\ )}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00152}00152\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00153}00153\ }
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00154}00154\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\ Inventory::CollectionArray::iterator\ it\ =\ std::begin(\ m\_list\ );}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00155}00155\ \ \ \ \ \ \ \ \ \ \ \ \ it\ !=\ std::end(\ m\_list\ );}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00156}00156\ \ \ \ \ \ \ \ \ \ \ \ \ ++it\ )}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00157}00157\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00158}00158\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_inventory_1_1_collection}{Inventory::Collection}}*\ collection\ =\ (\ \mbox{\hyperlink{class_inventory_1_1_collection}{Inventory::Collection}}*\ )\ (\ *it\ );}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00159}00159\ \ \ \ \ \ \ \ \ \ \ \ \ wxXmlNode*\ child\ =\ \mbox{\hyperlink{namespace_utils_a156ddf8c893eba62f65ffa2a5860c766}{Utils::NewNode}}(\ parent,\ \textcolor{stringliteral}{"{}Collection"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00160}00160\ \ \ \ \ \ \ \ \ \ \ \ \ collection-\/>\mbox{\hyperlink{class_inventory_1_1_collection_a72ee53bdf75908c48eeb3c7a4fb914e8}{Save}}(\ child\ );}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00161}00161\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00162}00162\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00163}00163\ }
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00164}00164\ \ \ \ \ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00165}00165\ }
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00166}\mbox{\hyperlink{class_inventory_1_1_collection_list_a040a7d38298656f95921afa9ba767f45}{00166}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_inventory_1_1_collection_list_a040a7d38298656f95921afa9ba767f45}{CollectionList::SetCurrentCollection}}(\ wxString\ str\ )}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00167}00167\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00168}00168\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_inventory_1_1_collection}{Collection}}*\ collection\ =\ \mbox{\hyperlink{class_inventory_1_1_collection_list_a25ff731f643d17f0127710274887260e}{FindCollection}}(\ str\ );}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00169}00169\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ collection\ )}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00170}00170\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00171}00171\ \ \ \ \ \ \ \ \ \ \ \ \ wxString\ name\ =\ collection-\/>\mbox{\hyperlink{class_inventory_1_1_collection_a151095209fdeb63eae1dd07737bca1b1}{GetName}}(\ );}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00172}00172\ \ \ \ \ \ \ \ \ \ \ \ \ m\_currCollection\ =\ name;}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00173}00173\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_defs_8cpp_a22c90d4148252ff1fbca6b40d3312b23}{GetSettings}}(\ )-\/>\mbox{\hyperlink{class_utils_1_1_settings_ad9a53c142b8bc83d32187ffb29feead3}{SetLastCollection}}(\ m\_currCollection\ );}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00174}00174\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00175}00175\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00176}00176\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00177}00177\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00178}00178\ }
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00179}00179\ \ \ \ \ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00180}00180\ }
+\DoxyCodeLine{\Hypertarget{_collection_list_8cpp_source_l00181}00181\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,831 @@
+\doxysection{Album\+Tree\+Ctrl Class Reference}
+\hypertarget{class_album_tree_ctrl}{}\label{class_album_tree_ctrl}\index{AlbumTreeCtrl@{AlbumTreeCtrl}}
+
+
+Tree for displaying Album design.  
+
+
+
+
+{\ttfamily \#include $<$Album\+Tree\+Ctrl.\+h$>$}
+
+Inheritance diagram for Album\+Tree\+Ctrl\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_album_tree_ctrl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_album_tree_ctrl_a6187e02628513ac36ff444b3eb36633b}{Album\+Tree\+Ctrl}} ()
+\item 
+\mbox{\hyperlink{class_album_tree_ctrl_ad928664d8ee6198f7430d5bed2d21a78}{Album\+Tree\+Ctrl}} (wx\+Window \texorpdfstring{$\ast$}{*}parent, const wx\+Window\+ID id, const wx\+Point \&pos, const wx\+Size \&size, long style)
+\item 
+virtual \mbox{\hyperlink{class_album_tree_ctrl_adc9b262351f984ed3928dc42dd7f14e2}{\texorpdfstring{$\sim$}{\string~}\+Album\+Tree\+Ctrl}} (void)
+\item 
+wx\+Tree\+Item\+Id \mbox{\hyperlink{class_album_tree_ctrl_a96b5d0b4d417e8e3d75b5632e15b9f89}{Add\+Child}} (wx\+Tree\+Item\+Id parent, wx\+Xml\+Node \texorpdfstring{$\ast$}{*}child)
+\item 
+wx\+Tree\+Item\+Id \mbox{\hyperlink{class_album_tree_ctrl_a31d59cfeef2305987548f3624bb8e4d9}{Add\+Node}} (\mbox{\hyperlink{namespace_design_a3b29aaf2cf27207bcb313e24b827f8b1}{Design\+::\+Album\+Base\+Type}} node\+Type, wx\+Tree\+Item\+Id parent, wx\+Xml\+Node \texorpdfstring{$\ast$}{*}child)
+\item 
+void \mbox{\hyperlink{class_album_tree_ctrl_af3a04d5b19aff9f2248c220dbb8200b1}{Add\+Col\+Tree\+Item}} (wx\+Tree\+Item\+Id node)
+\item 
+void \mbox{\hyperlink{class_album_tree_ctrl_a3f6982fcc17558d7d8c3009c68837585}{Add\+Page\+Tree\+Item}} (wx\+Tree\+Item\+Id node)
+\item 
+void \mbox{\hyperlink{class_album_tree_ctrl_aa69e6719a7d4d354dc3bbdf912a2f70d}{Add\+Row\+Tree\+Item}} (wx\+Tree\+Item\+Id node)
+\item 
+wx\+Tree\+Item\+Id \mbox{\hyperlink{class_album_tree_ctrl_ad93fb7b043f409d33e41499b761922c7}{Add\+Stamp\+Node\+To\+Tree}} (wx\+Tree\+Item\+Id parent, wx\+Xml\+Node \texorpdfstring{$\ast$}{*}child)
+\item 
+\mbox{\hyperlink{class_design_1_1_stamp}{Design\+::\+Stamp}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_album_tree_ctrl_adb8149aa330278d7cf5758ca91d1445c}{Add\+Stamp\+Tree\+Item}} (wx\+Tree\+Item\+Id node, \mbox{\hyperlink{class_design_1_1_stamp}{Design\+::\+Stamp}} \texorpdfstring{$\ast$}{*}stamp)
+\item 
+\mbox{\hyperlink{class_design_1_1_text_box}{Design\+::\+Text\+Box}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_album_tree_ctrl_a8db13e05f9c34aeb3a14f6173fad3af4}{Add\+Text\+Tree\+Item}} (wx\+Tree\+Item\+Id parent\+ID, \mbox{\hyperlink{class_design_1_1_text_box}{Design\+::\+Text\+Box}} \texorpdfstring{$\ast$}{*}new\+Text)
+\item 
+\mbox{\hyperlink{class_utils_1_1_stamp_link}{Utils\+::\+Stamp\+Link}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_album_tree_ctrl_adacb9d083668dbb94f6de62deb53d33e}{Append\+Stamp}} (wx\+Tree\+Item\+Id id)
+\item 
+void \mbox{\hyperlink{class_album_tree_ctrl_a69fc60e6b03e004820706d7d22b18e1c}{Clear}} ()
+\item 
+void \mbox{\hyperlink{class_album_tree_ctrl_a05375e22125cbed9540ffb4fad0a7426}{Copy\+Item}} (wx\+Tree\+Item\+Id dst\+ID, wx\+Tree\+Item\+Id src\+ID)
+\item 
+void \mbox{\hyperlink{class_album_tree_ctrl_a279fa887be62c64fde2b28fa41d5e9b9}{Create\+Image\+List}} ()
+\item 
+\mbox{\hyperlink{class_design_1_1_stamp}{Design\+::\+Stamp}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_album_tree_ctrl_a0462d55e1927158cb7a4d139f3c213a8}{Create\+New\+Stamp}} (wx\+Tree\+Item\+Id cat\+Tree\+ID)
+\item 
+\mbox{\hyperlink{class_design_1_1_text_box}{Design\+::\+Text\+Box}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_album_tree_ctrl_ad835ad2428765e93a9ef1df14722487f}{Create\+New\+Text}} ()
+\item 
+void \mbox{\hyperlink{class_album_tree_ctrl_ad53289a909ab19bdb340c9a7cfcbf521}{Create\+State\+Image\+List}} ()
+\item 
+void \mbox{\hyperlink{class_album_tree_ctrl_a457cbfa5b08f48efb6f427b94e9b8e15}{Delete\+Item}} (wx\+Tree\+Item\+Id id)
+\item 
+wx\+Tree\+Item\+Id \mbox{\hyperlink{class_album_tree_ctrl_ad8352570eddc91f09e84bcb6a0c7c328}{Find\+Tree\+Item\+ID}} (\mbox{\hyperlink{class_design_1_1_album_base}{Design\+::\+Album\+Base}} \texorpdfstring{$\ast$}{*}node)
+\item 
+wx\+Tree\+Item\+Id \mbox{\hyperlink{class_album_tree_ctrl_a9073d134ea7fde416e017f01114d92f6}{Find\+Tree\+Item\+ID}} (\mbox{\hyperlink{class_design_1_1_album_base}{Design\+::\+Album\+Base}} \texorpdfstring{$\ast$}{*}node, wx\+Tree\+Item\+Id id)
+\item 
+wx\+Tree\+Item\+Id \mbox{\hyperlink{class_album_tree_ctrl_a23506bb4160b8ec713e4ddaeb628c347}{Find\+First\+Stamp\+Child}} (wx\+Tree\+Item\+Id id)
+\item 
+wx\+Tree\+Item\+Id \mbox{\hyperlink{class_album_tree_ctrl_a5db780fffdbb86530ccac30a4ff8bf01}{Get\+Current\+Tree\+ID}} ()
+\item 
+wx\+Tree\+Item\+Id \mbox{\hyperlink{class_album_tree_ctrl_a32bb828c83620b1aa09e8622fca87f2e}{Get\+Page\+Tree\+ID}} ()
+\item 
+\mbox{\hyperlink{namespace_design_a7353efa232d45958ffd42229f3132b46}{Design\+::\+Icon\+ID}} \mbox{\hyperlink{class_album_tree_ctrl_a5644db772b308c64cfc8b958f7d43a61}{Get\+Icon\+Id}} (\mbox{\hyperlink{class_design_1_1_stamp}{Design\+::\+Stamp}} \texorpdfstring{$\ast$}{*}stamp)
+\item 
+wx\+String \mbox{\hyperlink{class_album_tree_ctrl_a15e2c7e1e4cd77037143431eee7f5348}{Get\+Item\+Desc}} (wx\+Tree\+Item\+Id album\+ID)
+\item 
+wx\+String \mbox{\hyperlink{class_album_tree_ctrl_a6134b19cda8def3744ace8bc29036d4f}{Get\+Label}} (\mbox{\hyperlink{class_design_1_1_album_base}{Design\+::\+Album\+Base}} \texorpdfstring{$\ast$}{*}catalog\+Volume)
+\item 
+\mbox{\hyperlink{class_design_1_1_album_base}{Design\+::\+Album\+Base}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_album_tree_ctrl_ad657c53867cf75e855226cdd69be7eef}{Get\+Item\+Node}} (wx\+Tree\+Item\+Id album\+ID)
+\item 
+\mbox{\hyperlink{class_utils_1_1_stamp_link}{Utils\+::\+Stamp\+Link}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_album_tree_ctrl_a9e1bbed4e77f61304eb59d4416e7c229}{Get\+Item\+Stamp\+Link}} (wx\+Tree\+Item\+Id album\+ID)
+\item 
+\mbox{\hyperlink{namespace_design_a3b29aaf2cf27207bcb313e24b827f8b1}{Design\+::\+Album\+Base\+Type}} \mbox{\hyperlink{class_album_tree_ctrl_a039d23beba49e63b33760bde10792bf8}{Get\+Item\+Type}} (wx\+Tree\+Item\+Id album\+ID)
+\item 
+wx\+Tree\+Item\+Id \mbox{\hyperlink{class_album_tree_ctrl_af2edbb34beae69f9e572a5bf43b5b226}{Get\+Page}} (wx\+Tree\+Item\+Id id)
+\item 
+\mbox{\hyperlink{class_design_1_1_layout_base}{Design\+::\+Layout\+Base}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_album_tree_ctrl_a32beba117e11ac3f75deed0d19d4c802}{Get\+Selected\+Node}} ()
+\item 
+\mbox{\hyperlink{class_design_1_1_album_base}{Design\+::\+Album\+Base}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_album_tree_ctrl_a088ce9e9483f0a79a023ee75819f00be}{Get\+Stamp\+Node}} (wx\+Tree\+Item\+Id item\+ID)
+\item 
+bool \mbox{\hyperlink{class_album_tree_ctrl_a54e38000ed5679363bffd97a1cba2a2e}{Get\+Validate\+Status}} ()
+\item 
+int \mbox{\hyperlink{class_album_tree_ctrl_abc9b15357004fd616bbe785805595ddb}{Image\+Size}} (void) const
+\item 
+bool \mbox{\hyperlink{class_album_tree_ctrl_a60a4cb09543b56628e10f11d9fd0b044}{Is\+Element}} (wx\+Tree\+Item\+Id item, \mbox{\hyperlink{class_design_1_1_album_base}{Design\+::\+Album\+Base}} \texorpdfstring{$\ast$}{*}node)
+\item 
+void \mbox{\hyperlink{class_album_tree_ctrl_a659c2a54f69b22f84398a33b6423aa27}{Load\+Tree}} (void)
+\item 
+wx\+String \mbox{\hyperlink{class_album_tree_ctrl_ad53aba1f072a19ead0c6973b17fdc6cf}{Make\+Item\+Label}} (wx\+Tree\+Item\+Id id)
+\item 
+void \mbox{\hyperlink{class_album_tree_ctrl_a1c80b1167ad8f7e89bc3954c160aa808}{Move\+Item}} (wx\+Tree\+Item\+Id item\+Src, wx\+Tree\+Item\+Id item\+Dst)
+\item 
+void \mbox{\hyperlink{class_album_tree_ctrl_aa2ece562c024065f90e62dc76eb588d1}{Make\+Page}} (wx\+Tree\+Item\+Id id)
+\item 
+wx\+Array\+Ptr\+Void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_album_tree_ctrl_a1bd09a5d19ccc936b9338a45ddb2b9a1}{Make\+Parent\+List}} (\mbox{\hyperlink{class_design_1_1_layout_base}{Design\+::\+Layout\+Base}} \texorpdfstring{$\ast$}{*}catalog\+Volume, \mbox{\hyperlink{namespace_catalog_a2ff17ae8cd4986617c22e54b7cf50f89}{Catalog\+::\+Format\+Type}} parent\+Type)
+\item 
+void \mbox{\hyperlink{class_album_tree_ctrl_a931e30aac3a8d1a46de93bd9a4f33a69}{On\+Begin\+Drag}} (wx\+Tree\+Event \&event)
+\item 
+virtual int \mbox{\hyperlink{class_album_tree_ctrl_a15bddccd4fdeb1d4db292880fb3423ee}{On\+Compare\+Items}} (const wx\+Tree\+Item\+Id \&i1, const wx\+Tree\+Item\+Id \&i2) wx\+OVERRIDE
+\item 
+void \mbox{\hyperlink{class_album_tree_ctrl_a235e78a9fb1433e4955c99190b9cf051}{On\+End\+Drag}} (wx\+Tree\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_album_tree_ctrl_a6a5ffb5fd84639bf578e631c0574d637}{On\+Delete\+Item}} (wx\+Tree\+Item\+Id id)
+\item 
+void \mbox{\hyperlink{class_album_tree_ctrl_a3a37cd8294dec1c943a706836aca0398}{On\+Item\+Context\+Menu}} (wx\+Tree\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_album_tree_ctrl_a4941ec8c5f90b38e7d65646b0947a105}{On\+Item\+Menu}} (wx\+Tree\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_album_tree_ctrl_a627c3f02f473709eceec029bb6bc3f0f}{On\+Item\+RClick}} (wx\+Tree\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_album_tree_ctrl_a84359f47d6204e1265bc13d4d0d4329d}{On\+Item\+State\+Click}} (wx\+Tree\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_album_tree_ctrl_a1e2f90df90c6fbdebc86833af0de6a76}{On\+Sel\+Changed}} (wx\+Tree\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_album_tree_ctrl_a8e82a6f01703fbdfb5291d26848718b8}{On\+Treectrl\+Item\+Collapsed}} (wx\+Tree\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_album_tree_ctrl_acffae25994bb4b373e0e7ab564fc120c}{On\+Treectrl\+Item\+Expanded}} (wx\+Tree\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_album_tree_ctrl_a825808a07ce05000f697c978d0ed25e9}{Reset\+Validate\+Status}} ()
+\item 
+void \mbox{\hyperlink{class_album_tree_ctrl_ab247323f712ab8682da03fc8dae8b9c2}{Save}} ()
+\item 
+void \mbox{\hyperlink{class_album_tree_ctrl_afff8b84039870ae223740dfc9353dce1}{Save\+Node\+Data}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}parent, wx\+Tree\+Item\+Id tree\+Item\+Id)
+\item 
+void \mbox{\hyperlink{class_album_tree_ctrl_ac34ac205629c03183f1a74fb7f8c81d6}{Set\+Item\+Stamp\+Link}} (wx\+Tree\+Item\+Id album\+ID, \mbox{\hyperlink{class_utils_1_1_stamp_link}{Utils\+::\+Stamp\+Link}} \texorpdfstring{$\ast$}{*}link)
+\item 
+void \mbox{\hyperlink{class_album_tree_ctrl_ad421c4f1b0574a92414153ada7c0c68e}{Set\+Validate\+Status}} (bool status)
+\item 
+void \mbox{\hyperlink{class_album_tree_ctrl_a0028fb588542ce543d137d65ec5d7150}{Show\+Drop\+Menu}} (wx\+Tree\+Item\+Id item\+Src, wx\+Tree\+Item\+Id item\+Dst, bool as\+Child=false)
+\item 
+void \mbox{\hyperlink{class_album_tree_ctrl_a4c5fa556c3f0e18bef6a64ba0bd111c5}{Show\+Menu}} (wx\+Tree\+Item\+Id id, const wx\+Point \&pt)
+\item 
+void \mbox{\hyperlink{class_album_tree_ctrl_a7ee5902522176923b7be1a0af85b8630}{Update}} ()
+\item 
+void \mbox{\hyperlink{class_album_tree_ctrl_a9c995de7403dda3d77160475703a7274}{Update\+Item\+Page\+Layout}} (wx\+Tree\+Item\+Id id)
+\item 
+void \mbox{\hyperlink{class_album_tree_ctrl_ab38bff0157031c7d11454c6f6b8ed8ae}{Update\+Stamp\+List}} ()
+\item 
+void \mbox{\hyperlink{class_album_tree_ctrl_a6b7469f56025e73c5871d7622e00afdc}{Update\+Stamp\+List}} (wx\+Tree\+Item\+Id \&tree\+Item\+Id)
+\item 
+\mbox{\hyperlink{namespace_design_a89f66276a25aed62bedc9fb9b5d35453}{Design\+::\+Node\+Status}} \mbox{\hyperlink{class_album_tree_ctrl_a4898e216b324b9e7aaa4bf99cf1c3e9f}{Update\+Tree\+Item}} (wx\+Tree\+Item\+Id child\+ID, \mbox{\hyperlink{class_design_1_1_album_base}{Design\+::\+Album\+Base}} \texorpdfstring{$\ast$}{*}ele, \mbox{\hyperlink{namespace_design_a7353efa232d45958ffd42229f3132b46}{Design\+::\+Icon\+ID}} icon)
+\item 
+void \mbox{\hyperlink{class_album_tree_ctrl_a28e3f4a28688eded74a17879405ef339}{Validate}} (wx\+Tree\+Item\+Id id)
+\item 
+void \mbox{\hyperlink{class_album_tree_ctrl_a9bda2ef88eadca4a3dca8377090c7449}{Validate\+Tree}} ()
+\item 
+void \mbox{\hyperlink{class_album_tree_ctrl_a0d18a6408dc5897e9ebd17625cd54ef6}{Validate\+Link}} (wx\+Tree\+Item\+Id \&child\+Id, wx\+String alb\+IDNbr)
+\item 
+void \mbox{\hyperlink{class_album_tree_ctrl_ae5b6b7e821be38af656f2b8d26d9af36}{Update\+Album\+Stamp\+Entries}} (wx\+Tree\+Item\+Id tree\+ID)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Tree for displaying Album design. 
+
+Definition at line \mbox{\hyperlink{_album_tree_ctrl_8h_source_l00200}{200}} of file \mbox{\hyperlink{_album_tree_ctrl_8h_source}{Album\+Tree\+Ctrl.\+h}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_album_tree_ctrl_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_album_tree_ctrl_a6187e02628513ac36ff444b3eb36633b}\index{AlbumTreeCtrl@{AlbumTreeCtrl}!AlbumTreeCtrl@{AlbumTreeCtrl}}
+\index{AlbumTreeCtrl@{AlbumTreeCtrl}!AlbumTreeCtrl@{AlbumTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{AlbumTreeCtrl()}{AlbumTreeCtrl()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_album_tree_ctrl_a6187e02628513ac36ff444b3eb36633b} 
+Album\+Tree\+Ctrl\+::\+Album\+Tree\+Ctrl (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_album_tree_ctrl_8h_source_l00207}{207}} of file \mbox{\hyperlink{_album_tree_ctrl_8h_source}{Album\+Tree\+Ctrl.\+h}}.
+
+\Hypertarget{class_album_tree_ctrl_ad928664d8ee6198f7430d5bed2d21a78}\index{AlbumTreeCtrl@{AlbumTreeCtrl}!AlbumTreeCtrl@{AlbumTreeCtrl}}
+\index{AlbumTreeCtrl@{AlbumTreeCtrl}!AlbumTreeCtrl@{AlbumTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{AlbumTreeCtrl()}{AlbumTreeCtrl()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_album_tree_ctrl_ad928664d8ee6198f7430d5bed2d21a78} 
+Album\+Tree\+Ctrl\+::\+Album\+Tree\+Ctrl (\begin{DoxyParamCaption}\item[{wx\+Window \texorpdfstring{$\ast$}{*}}]{parent}{, }\item[{const wx\+Window\+ID}]{id}{, }\item[{const wx\+Point \&}]{pos}{, }\item[{const wx\+Size \&}]{size}{, }\item[{long}]{style}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_tree_ctrl_8cpp_source_l00101}{101}} of file \mbox{\hyperlink{_album_tree_ctrl_8cpp_source}{Album\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_album_tree_ctrl_adc9b262351f984ed3928dc42dd7f14e2}\index{AlbumTreeCtrl@{AlbumTreeCtrl}!````~AlbumTreeCtrl@{\texorpdfstring{$\sim$}{\string~}AlbumTreeCtrl}}
+\index{````~AlbumTreeCtrl@{\texorpdfstring{$\sim$}{\string~}AlbumTreeCtrl}!AlbumTreeCtrl@{AlbumTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}AlbumTreeCtrl()}{\string~AlbumTreeCtrl()}}
+{\footnotesize\ttfamily \label{class_album_tree_ctrl_adc9b262351f984ed3928dc42dd7f14e2} 
+virtual Album\+Tree\+Ctrl\+::\texorpdfstring{$\sim$}{\string~}\+Album\+Tree\+Ctrl (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Definition at line \mbox{\hyperlink{_album_tree_ctrl_8h_source_l00215}{215}} of file \mbox{\hyperlink{_album_tree_ctrl_8h_source}{Album\+Tree\+Ctrl.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_album_tree_ctrl_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_album_tree_ctrl_a96b5d0b4d417e8e3d75b5632e15b9f89}\index{AlbumTreeCtrl@{AlbumTreeCtrl}!AddChild@{AddChild}}
+\index{AddChild@{AddChild}!AlbumTreeCtrl@{AlbumTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{AddChild()}{AddChild()}}
+{\footnotesize\ttfamily \label{class_album_tree_ctrl_a96b5d0b4d417e8e3d75b5632e15b9f89} 
+wx\+Tree\+Item\+Id Album\+Tree\+Ctrl\+::\+Add\+Child (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{parent}{, }\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{child}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_tree_ctrl_8cpp_source_l00173}{173}} of file \mbox{\hyperlink{_album_tree_ctrl_8cpp_source}{Album\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_album_tree_ctrl_af3a04d5b19aff9f2248c220dbb8200b1}\index{AlbumTreeCtrl@{AlbumTreeCtrl}!AddColTreeItem@{AddColTreeItem}}
+\index{AddColTreeItem@{AddColTreeItem}!AlbumTreeCtrl@{AlbumTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{AddColTreeItem()}{AddColTreeItem()}}
+{\footnotesize\ttfamily \label{class_album_tree_ctrl_af3a04d5b19aff9f2248c220dbb8200b1} 
+void Album\+Tree\+Ctrl\+::\+Add\+Col\+Tree\+Item (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{node}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_tree_ctrl_8cpp_source_l00267}{267}} of file \mbox{\hyperlink{_album_tree_ctrl_8cpp_source}{Album\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_album_tree_ctrl_a31d59cfeef2305987548f3624bb8e4d9}\index{AlbumTreeCtrl@{AlbumTreeCtrl}!AddNode@{AddNode}}
+\index{AddNode@{AddNode}!AlbumTreeCtrl@{AlbumTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{AddNode()}{AddNode()}}
+{\footnotesize\ttfamily \label{class_album_tree_ctrl_a31d59cfeef2305987548f3624bb8e4d9} 
+wx\+Tree\+Item\+Id Album\+Tree\+Ctrl\+::\+Add\+Node (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_design_a3b29aaf2cf27207bcb313e24b827f8b1}{Design\+::\+Album\+Base\+Type}}}]{node\+Type}{, }\item[{wx\+Tree\+Item\+Id}]{parent}{, }\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{child}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_album_tree_ctrl_a3f6982fcc17558d7d8c3009c68837585}\index{AlbumTreeCtrl@{AlbumTreeCtrl}!AddPageTreeItem@{AddPageTreeItem}}
+\index{AddPageTreeItem@{AddPageTreeItem}!AlbumTreeCtrl@{AlbumTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{AddPageTreeItem()}{AddPageTreeItem()}}
+{\footnotesize\ttfamily \label{class_album_tree_ctrl_a3f6982fcc17558d7d8c3009c68837585} 
+void Album\+Tree\+Ctrl\+::\+Add\+Page\+Tree\+Item (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{node}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_tree_ctrl_8cpp_source_l00284}{284}} of file \mbox{\hyperlink{_album_tree_ctrl_8cpp_source}{Album\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_album_tree_ctrl_aa69e6719a7d4d354dc3bbdf912a2f70d}\index{AlbumTreeCtrl@{AlbumTreeCtrl}!AddRowTreeItem@{AddRowTreeItem}}
+\index{AddRowTreeItem@{AddRowTreeItem}!AlbumTreeCtrl@{AlbumTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{AddRowTreeItem()}{AddRowTreeItem()}}
+{\footnotesize\ttfamily \label{class_album_tree_ctrl_aa69e6719a7d4d354dc3bbdf912a2f70d} 
+void Album\+Tree\+Ctrl\+::\+Add\+Row\+Tree\+Item (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{node}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_tree_ctrl_8cpp_source_l00299}{299}} of file \mbox{\hyperlink{_album_tree_ctrl_8cpp_source}{Album\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_album_tree_ctrl_ad93fb7b043f409d33e41499b761922c7}\index{AlbumTreeCtrl@{AlbumTreeCtrl}!AddStampNodeToTree@{AddStampNodeToTree}}
+\index{AddStampNodeToTree@{AddStampNodeToTree}!AlbumTreeCtrl@{AlbumTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{AddStampNodeToTree()}{AddStampNodeToTree()}}
+{\footnotesize\ttfamily \label{class_album_tree_ctrl_ad93fb7b043f409d33e41499b761922c7} 
+wx\+Tree\+Item\+Id Album\+Tree\+Ctrl\+::\+Add\+Stamp\+Node\+To\+Tree (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{parent}{, }\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{child}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_album_tree_ctrl_adb8149aa330278d7cf5758ca91d1445c}\index{AlbumTreeCtrl@{AlbumTreeCtrl}!AddStampTreeItem@{AddStampTreeItem}}
+\index{AddStampTreeItem@{AddStampTreeItem}!AlbumTreeCtrl@{AlbumTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{AddStampTreeItem()}{AddStampTreeItem()}}
+{\footnotesize\ttfamily \label{class_album_tree_ctrl_adb8149aa330278d7cf5758ca91d1445c} 
+\mbox{\hyperlink{class_design_1_1_stamp}{Design\+::\+Stamp}} \texorpdfstring{$\ast$}{*} Album\+Tree\+Ctrl\+::\+Add\+Stamp\+Tree\+Item (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{node}{, }\item[{\mbox{\hyperlink{class_design_1_1_stamp}{Design\+::\+Stamp}} \texorpdfstring{$\ast$}{*}}]{stamp}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_tree_ctrl_8cpp_source_l00316}{316}} of file \mbox{\hyperlink{_album_tree_ctrl_8cpp_source}{Album\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_album_tree_ctrl_a8db13e05f9c34aeb3a14f6173fad3af4}\index{AlbumTreeCtrl@{AlbumTreeCtrl}!AddTextTreeItem@{AddTextTreeItem}}
+\index{AddTextTreeItem@{AddTextTreeItem}!AlbumTreeCtrl@{AlbumTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{AddTextTreeItem()}{AddTextTreeItem()}}
+{\footnotesize\ttfamily \label{class_album_tree_ctrl_a8db13e05f9c34aeb3a14f6173fad3af4} 
+\mbox{\hyperlink{class_design_1_1_text_box}{Design\+::\+Text\+Box}} \texorpdfstring{$\ast$}{*} Album\+Tree\+Ctrl\+::\+Add\+Text\+Tree\+Item (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{parent\+ID}{, }\item[{\mbox{\hyperlink{class_design_1_1_text_box}{Design\+::\+Text\+Box}} \texorpdfstring{$\ast$}{*}}]{new\+Text}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_tree_ctrl_8cpp_source_l00335}{335}} of file \mbox{\hyperlink{_album_tree_ctrl_8cpp_source}{Album\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_album_tree_ctrl_adacb9d083668dbb94f6de62deb53d33e}\index{AlbumTreeCtrl@{AlbumTreeCtrl}!AppendStamp@{AppendStamp}}
+\index{AppendStamp@{AppendStamp}!AlbumTreeCtrl@{AlbumTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{AppendStamp()}{AppendStamp()}}
+{\footnotesize\ttfamily \label{class_album_tree_ctrl_adacb9d083668dbb94f6de62deb53d33e} 
+\mbox{\hyperlink{class_utils_1_1_stamp_link}{Utils\+::\+Stamp\+Link}} \texorpdfstring{$\ast$}{*} Album\+Tree\+Ctrl\+::\+Append\+Stamp (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{id}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_tree_ctrl_8cpp_source_l00352}{352}} of file \mbox{\hyperlink{_album_tree_ctrl_8cpp_source}{Album\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_album_tree_ctrl_a69fc60e6b03e004820706d7d22b18e1c}\index{AlbumTreeCtrl@{AlbumTreeCtrl}!Clear@{Clear}}
+\index{Clear@{Clear}!AlbumTreeCtrl@{AlbumTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{Clear()}{Clear()}}
+{\footnotesize\ttfamily \label{class_album_tree_ctrl_a69fc60e6b03e004820706d7d22b18e1c} 
+void Album\+Tree\+Ctrl\+::\+Clear (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_tree_ctrl_8cpp_source_l00414}{414}} of file \mbox{\hyperlink{_album_tree_ctrl_8cpp_source}{Album\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_album_tree_ctrl_a05375e22125cbed9540ffb4fad0a7426}\index{AlbumTreeCtrl@{AlbumTreeCtrl}!CopyItem@{CopyItem}}
+\index{CopyItem@{CopyItem}!AlbumTreeCtrl@{AlbumTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{CopyItem()}{CopyItem()}}
+{\footnotesize\ttfamily \label{class_album_tree_ctrl_a05375e22125cbed9540ffb4fad0a7426} 
+void Album\+Tree\+Ctrl\+::\+Copy\+Item (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{dst\+ID}{, }\item[{wx\+Tree\+Item\+Id}]{src\+ID}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_tree_ctrl_8cpp_source_l00434}{434}} of file \mbox{\hyperlink{_album_tree_ctrl_8cpp_source}{Album\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_album_tree_ctrl_a279fa887be62c64fde2b28fa41d5e9b9}\index{AlbumTreeCtrl@{AlbumTreeCtrl}!CreateImageList@{CreateImageList}}
+\index{CreateImageList@{CreateImageList}!AlbumTreeCtrl@{AlbumTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{CreateImageList()}{CreateImageList()}}
+{\footnotesize\ttfamily \label{class_album_tree_ctrl_a279fa887be62c64fde2b28fa41d5e9b9} 
+void Album\+Tree\+Ctrl\+::\+Create\+Image\+List (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_tree_ctrl_8cpp_source_l00426}{426}} of file \mbox{\hyperlink{_album_tree_ctrl_8cpp_source}{Album\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_album_tree_ctrl_a0462d55e1927158cb7a4d139f3c213a8}\index{AlbumTreeCtrl@{AlbumTreeCtrl}!CreateNewStamp@{CreateNewStamp}}
+\index{CreateNewStamp@{CreateNewStamp}!AlbumTreeCtrl@{AlbumTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{CreateNewStamp()}{CreateNewStamp()}}
+{\footnotesize\ttfamily \label{class_album_tree_ctrl_a0462d55e1927158cb7a4d139f3c213a8} 
+\mbox{\hyperlink{class_design_1_1_stamp}{Design\+::\+Stamp}} \texorpdfstring{$\ast$}{*} Album\+Tree\+Ctrl\+::\+Create\+New\+Stamp (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{cat\+Tree\+ID}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_tree_ctrl_8cpp_source_l00483}{483}} of file \mbox{\hyperlink{_album_tree_ctrl_8cpp_source}{Album\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_album_tree_ctrl_ad835ad2428765e93a9ef1df14722487f}\index{AlbumTreeCtrl@{AlbumTreeCtrl}!CreateNewText@{CreateNewText}}
+\index{CreateNewText@{CreateNewText}!AlbumTreeCtrl@{AlbumTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{CreateNewText()}{CreateNewText()}}
+{\footnotesize\ttfamily \label{class_album_tree_ctrl_ad835ad2428765e93a9ef1df14722487f} 
+\mbox{\hyperlink{class_design_1_1_text_box}{Design\+::\+Text\+Box}} \texorpdfstring{$\ast$}{*} Album\+Tree\+Ctrl\+::\+Create\+New\+Text (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_tree_ctrl_8cpp_source_l00531}{531}} of file \mbox{\hyperlink{_album_tree_ctrl_8cpp_source}{Album\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_album_tree_ctrl_ad53289a909ab19bdb340c9a7cfcbf521}\index{AlbumTreeCtrl@{AlbumTreeCtrl}!CreateStateImageList@{CreateStateImageList}}
+\index{CreateStateImageList@{CreateStateImageList}!AlbumTreeCtrl@{AlbumTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{CreateStateImageList()}{CreateStateImageList()}}
+{\footnotesize\ttfamily \label{class_album_tree_ctrl_ad53289a909ab19bdb340c9a7cfcbf521} 
+void Album\+Tree\+Ctrl\+::\+Create\+State\+Image\+List (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_tree_ctrl_8cpp_source_l00524}{524}} of file \mbox{\hyperlink{_album_tree_ctrl_8cpp_source}{Album\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_album_tree_ctrl_a457cbfa5b08f48efb6f427b94e9b8e15}\index{AlbumTreeCtrl@{AlbumTreeCtrl}!DeleteItem@{DeleteItem}}
+\index{DeleteItem@{DeleteItem}!AlbumTreeCtrl@{AlbumTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{DeleteItem()}{DeleteItem()}}
+{\footnotesize\ttfamily \label{class_album_tree_ctrl_a457cbfa5b08f48efb6f427b94e9b8e15} 
+void Album\+Tree\+Ctrl\+::\+Delete\+Item (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{id}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_tree_ctrl_8cpp_source_l00540}{540}} of file \mbox{\hyperlink{_album_tree_ctrl_8cpp_source}{Album\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_album_tree_ctrl_a23506bb4160b8ec713e4ddaeb628c347}\index{AlbumTreeCtrl@{AlbumTreeCtrl}!FindFirstStampChild@{FindFirstStampChild}}
+\index{FindFirstStampChild@{FindFirstStampChild}!AlbumTreeCtrl@{AlbumTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{FindFirstStampChild()}{FindFirstStampChild()}}
+{\footnotesize\ttfamily \label{class_album_tree_ctrl_a23506bb4160b8ec713e4ddaeb628c347} 
+wx\+Tree\+Item\+Id Album\+Tree\+Ctrl\+::\+Find\+First\+Stamp\+Child (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{id}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_tree_ctrl_8cpp_source_l00573}{573}} of file \mbox{\hyperlink{_album_tree_ctrl_8cpp_source}{Album\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_album_tree_ctrl_ad8352570eddc91f09e84bcb6a0c7c328}\index{AlbumTreeCtrl@{AlbumTreeCtrl}!FindTreeItemID@{FindTreeItemID}}
+\index{FindTreeItemID@{FindTreeItemID}!AlbumTreeCtrl@{AlbumTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{FindTreeItemID()}{FindTreeItemID()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_album_tree_ctrl_ad8352570eddc91f09e84bcb6a0c7c328} 
+wx\+Tree\+Item\+Id Album\+Tree\+Ctrl\+::\+Find\+Tree\+Item\+ID (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_design_1_1_album_base}{Design\+::\+Album\+Base}} \texorpdfstring{$\ast$}{*}}]{node}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_tree_ctrl_8cpp_source_l00598}{598}} of file \mbox{\hyperlink{_album_tree_ctrl_8cpp_source}{Album\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_album_tree_ctrl_a9073d134ea7fde416e017f01114d92f6}\index{AlbumTreeCtrl@{AlbumTreeCtrl}!FindTreeItemID@{FindTreeItemID}}
+\index{FindTreeItemID@{FindTreeItemID}!AlbumTreeCtrl@{AlbumTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{FindTreeItemID()}{FindTreeItemID()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_album_tree_ctrl_a9073d134ea7fde416e017f01114d92f6} 
+wx\+Tree\+Item\+Id Album\+Tree\+Ctrl\+::\+Find\+Tree\+Item\+ID (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_design_1_1_album_base}{Design\+::\+Album\+Base}} \texorpdfstring{$\ast$}{*}}]{node}{, }\item[{wx\+Tree\+Item\+Id}]{id}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_tree_ctrl_8cpp_source_l00606}{606}} of file \mbox{\hyperlink{_album_tree_ctrl_8cpp_source}{Album\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_album_tree_ctrl_a5db780fffdbb86530ccac30a4ff8bf01}\index{AlbumTreeCtrl@{AlbumTreeCtrl}!GetCurrentTreeID@{GetCurrentTreeID}}
+\index{GetCurrentTreeID@{GetCurrentTreeID}!AlbumTreeCtrl@{AlbumTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{GetCurrentTreeID()}{GetCurrentTreeID()}}
+{\footnotesize\ttfamily \label{class_album_tree_ctrl_a5db780fffdbb86530ccac30a4ff8bf01} 
+wx\+Tree\+Item\+Id Album\+Tree\+Ctrl\+::\+Get\+Current\+Tree\+ID (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_album_tree_ctrl_8h_source_l00263}{263}} of file \mbox{\hyperlink{_album_tree_ctrl_8h_source}{Album\+Tree\+Ctrl.\+h}}.
+
+\Hypertarget{class_album_tree_ctrl_a5644db772b308c64cfc8b958f7d43a61}\index{AlbumTreeCtrl@{AlbumTreeCtrl}!GetIconId@{GetIconId}}
+\index{GetIconId@{GetIconId}!AlbumTreeCtrl@{AlbumTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{GetIconId()}{GetIconId()}}
+{\footnotesize\ttfamily \label{class_album_tree_ctrl_a5644db772b308c64cfc8b958f7d43a61} 
+\mbox{\hyperlink{namespace_design_a7353efa232d45958ffd42229f3132b46}{Design\+::\+Icon\+ID}} Album\+Tree\+Ctrl\+::\+Get\+Icon\+Id (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_design_1_1_stamp}{Design\+::\+Stamp}} \texorpdfstring{$\ast$}{*}}]{stamp}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_tree_ctrl_8cpp_source_l00670}{670}} of file \mbox{\hyperlink{_album_tree_ctrl_8cpp_source}{Album\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_album_tree_ctrl_a15e2c7e1e4cd77037143431eee7f5348}\index{AlbumTreeCtrl@{AlbumTreeCtrl}!GetItemDesc@{GetItemDesc}}
+\index{GetItemDesc@{GetItemDesc}!AlbumTreeCtrl@{AlbumTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{GetItemDesc()}{GetItemDesc()}}
+{\footnotesize\ttfamily \label{class_album_tree_ctrl_a15e2c7e1e4cd77037143431eee7f5348} 
+wx\+String Album\+Tree\+Ctrl\+::\+Get\+Item\+Desc (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{album\+ID}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_tree_ctrl_8cpp_source_l00700}{700}} of file \mbox{\hyperlink{_album_tree_ctrl_8cpp_source}{Album\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_album_tree_ctrl_ad657c53867cf75e855226cdd69be7eef}\index{AlbumTreeCtrl@{AlbumTreeCtrl}!GetItemNode@{GetItemNode}}
+\index{GetItemNode@{GetItemNode}!AlbumTreeCtrl@{AlbumTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{GetItemNode()}{GetItemNode()}}
+{\footnotesize\ttfamily \label{class_album_tree_ctrl_ad657c53867cf75e855226cdd69be7eef} 
+\mbox{\hyperlink{class_design_1_1_album_base}{Design\+::\+Album\+Base}} \texorpdfstring{$\ast$}{*} Album\+Tree\+Ctrl\+::\+Get\+Item\+Node (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{album\+ID}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_tree_ctrl_8cpp_source_l00685}{685}} of file \mbox{\hyperlink{_album_tree_ctrl_8cpp_source}{Album\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_album_tree_ctrl_a9e1bbed4e77f61304eb59d4416e7c229}\index{AlbumTreeCtrl@{AlbumTreeCtrl}!GetItemStampLink@{GetItemStampLink}}
+\index{GetItemStampLink@{GetItemStampLink}!AlbumTreeCtrl@{AlbumTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{GetItemStampLink()}{GetItemStampLink()}}
+{\footnotesize\ttfamily \label{class_album_tree_ctrl_a9e1bbed4e77f61304eb59d4416e7c229} 
+\mbox{\hyperlink{class_utils_1_1_stamp_link}{Utils\+::\+Stamp\+Link}} \texorpdfstring{$\ast$}{*} Album\+Tree\+Ctrl\+::\+Get\+Item\+Stamp\+Link (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{album\+ID}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_tree_ctrl_8cpp_source_l00731}{731}} of file \mbox{\hyperlink{_album_tree_ctrl_8cpp_source}{Album\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_album_tree_ctrl_a039d23beba49e63b33760bde10792bf8}\index{AlbumTreeCtrl@{AlbumTreeCtrl}!GetItemType@{GetItemType}}
+\index{GetItemType@{GetItemType}!AlbumTreeCtrl@{AlbumTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{GetItemType()}{GetItemType()}}
+{\footnotesize\ttfamily \label{class_album_tree_ctrl_a039d23beba49e63b33760bde10792bf8} 
+\mbox{\hyperlink{namespace_design_a3b29aaf2cf27207bcb313e24b827f8b1}{Design\+::\+Album\+Base\+Type}} Album\+Tree\+Ctrl\+::\+Get\+Item\+Type (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{album\+ID}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_tree_ctrl_8cpp_source_l00715}{715}} of file \mbox{\hyperlink{_album_tree_ctrl_8cpp_source}{Album\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_album_tree_ctrl_a6134b19cda8def3744ace8bc29036d4f}\index{AlbumTreeCtrl@{AlbumTreeCtrl}!GetLabel@{GetLabel}}
+\index{GetLabel@{GetLabel}!AlbumTreeCtrl@{AlbumTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{GetLabel()}{GetLabel()}}
+{\footnotesize\ttfamily \label{class_album_tree_ctrl_a6134b19cda8def3744ace8bc29036d4f} 
+wx\+String Album\+Tree\+Ctrl\+::\+Get\+Label (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_design_1_1_album_base}{Design\+::\+Album\+Base}} \texorpdfstring{$\ast$}{*}}]{catalog\+Volume}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_album_tree_ctrl_af2edbb34beae69f9e572a5bf43b5b226}\index{AlbumTreeCtrl@{AlbumTreeCtrl}!GetPage@{GetPage}}
+\index{GetPage@{GetPage}!AlbumTreeCtrl@{AlbumTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{GetPage()}{GetPage()}}
+{\footnotesize\ttfamily \label{class_album_tree_ctrl_af2edbb34beae69f9e572a5bf43b5b226} 
+wx\+Tree\+Item\+Id Album\+Tree\+Ctrl\+::\+Get\+Page (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{id}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_tree_ctrl_8cpp_source_l00643}{643}} of file \mbox{\hyperlink{_album_tree_ctrl_8cpp_source}{Album\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_album_tree_ctrl_a32bb828c83620b1aa09e8622fca87f2e}\index{AlbumTreeCtrl@{AlbumTreeCtrl}!GetPageTreeID@{GetPageTreeID}}
+\index{GetPageTreeID@{GetPageTreeID}!AlbumTreeCtrl@{AlbumTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{GetPageTreeID()}{GetPageTreeID()}}
+{\footnotesize\ttfamily \label{class_album_tree_ctrl_a32bb828c83620b1aa09e8622fca87f2e} 
+wx\+Tree\+Item\+Id Album\+Tree\+Ctrl\+::\+Get\+Page\+Tree\+ID (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_album_tree_ctrl_8h_source_l00267}{267}} of file \mbox{\hyperlink{_album_tree_ctrl_8h_source}{Album\+Tree\+Ctrl.\+h}}.
+
+\Hypertarget{class_album_tree_ctrl_a32beba117e11ac3f75deed0d19d4c802}\index{AlbumTreeCtrl@{AlbumTreeCtrl}!GetSelectedNode@{GetSelectedNode}}
+\index{GetSelectedNode@{GetSelectedNode}!AlbumTreeCtrl@{AlbumTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{GetSelectedNode()}{GetSelectedNode()}}
+{\footnotesize\ttfamily \label{class_album_tree_ctrl_a32beba117e11ac3f75deed0d19d4c802} 
+\mbox{\hyperlink{class_design_1_1_layout_base}{Design\+::\+Layout\+Base}} \texorpdfstring{$\ast$}{*} Album\+Tree\+Ctrl\+::\+Get\+Selected\+Node (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_tree_ctrl_8cpp_source_l00631}{631}} of file \mbox{\hyperlink{_album_tree_ctrl_8cpp_source}{Album\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_album_tree_ctrl_a088ce9e9483f0a79a023ee75819f00be}\index{AlbumTreeCtrl@{AlbumTreeCtrl}!GetStampNode@{GetStampNode}}
+\index{GetStampNode@{GetStampNode}!AlbumTreeCtrl@{AlbumTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{GetStampNode()}{GetStampNode()}}
+{\footnotesize\ttfamily \label{class_album_tree_ctrl_a088ce9e9483f0a79a023ee75819f00be} 
+\mbox{\hyperlink{class_design_1_1_album_base}{Design\+::\+Album\+Base}} \texorpdfstring{$\ast$}{*} Album\+Tree\+Ctrl\+::\+Get\+Stamp\+Node (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{item\+ID}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_album_tree_ctrl_a54e38000ed5679363bffd97a1cba2a2e}\index{AlbumTreeCtrl@{AlbumTreeCtrl}!GetValidateStatus@{GetValidateStatus}}
+\index{GetValidateStatus@{GetValidateStatus}!AlbumTreeCtrl@{AlbumTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{GetValidateStatus()}{GetValidateStatus()}}
+{\footnotesize\ttfamily \label{class_album_tree_ctrl_a54e38000ed5679363bffd97a1cba2a2e} 
+bool Album\+Tree\+Ctrl\+::\+Get\+Validate\+Status (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_tree_ctrl_8cpp_source_l00678}{678}} of file \mbox{\hyperlink{_album_tree_ctrl_8cpp_source}{Album\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_album_tree_ctrl_abc9b15357004fd616bbe785805595ddb}\index{AlbumTreeCtrl@{AlbumTreeCtrl}!ImageSize@{ImageSize}}
+\index{ImageSize@{ImageSize}!AlbumTreeCtrl@{AlbumTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{ImageSize()}{ImageSize()}}
+{\footnotesize\ttfamily \label{class_album_tree_ctrl_abc9b15357004fd616bbe785805595ddb} 
+int Album\+Tree\+Ctrl\+::\+Image\+Size (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_album_tree_ctrl_8h_source_l00292}{292}} of file \mbox{\hyperlink{_album_tree_ctrl_8h_source}{Album\+Tree\+Ctrl.\+h}}.
+
+\Hypertarget{class_album_tree_ctrl_a60a4cb09543b56628e10f11d9fd0b044}\index{AlbumTreeCtrl@{AlbumTreeCtrl}!IsElement@{IsElement}}
+\index{IsElement@{IsElement}!AlbumTreeCtrl@{AlbumTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{IsElement()}{IsElement()}}
+{\footnotesize\ttfamily \label{class_album_tree_ctrl_a60a4cb09543b56628e10f11d9fd0b044} 
+bool Album\+Tree\+Ctrl\+::\+Is\+Element (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{item}{, }\item[{\mbox{\hyperlink{class_design_1_1_album_base}{Design\+::\+Album\+Base}} \texorpdfstring{$\ast$}{*}}]{node}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_tree_ctrl_8cpp_source_l00742}{742}} of file \mbox{\hyperlink{_album_tree_ctrl_8cpp_source}{Album\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_album_tree_ctrl_a659c2a54f69b22f84398a33b6423aa27}\index{AlbumTreeCtrl@{AlbumTreeCtrl}!LoadTree@{LoadTree}}
+\index{LoadTree@{LoadTree}!AlbumTreeCtrl@{AlbumTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{LoadTree()}{LoadTree()}}
+{\footnotesize\ttfamily \label{class_album_tree_ctrl_a659c2a54f69b22f84398a33b6423aa27} 
+void Album\+Tree\+Ctrl\+::\+Load\+Tree (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_tree_ctrl_8cpp_source_l00754}{754}} of file \mbox{\hyperlink{_album_tree_ctrl_8cpp_source}{Album\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_album_tree_ctrl_ad53aba1f072a19ead0c6973b17fdc6cf}\index{AlbumTreeCtrl@{AlbumTreeCtrl}!MakeItemLabel@{MakeItemLabel}}
+\index{MakeItemLabel@{MakeItemLabel}!AlbumTreeCtrl@{AlbumTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{MakeItemLabel()}{MakeItemLabel()}}
+{\footnotesize\ttfamily \label{class_album_tree_ctrl_ad53aba1f072a19ead0c6973b17fdc6cf} 
+wx\+String Album\+Tree\+Ctrl\+::\+Make\+Item\+Label (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{id}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_tree_ctrl_8cpp_source_l00837}{837}} of file \mbox{\hyperlink{_album_tree_ctrl_8cpp_source}{Album\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_album_tree_ctrl_aa2ece562c024065f90e62dc76eb588d1}\index{AlbumTreeCtrl@{AlbumTreeCtrl}!MakePage@{MakePage}}
+\index{MakePage@{MakePage}!AlbumTreeCtrl@{AlbumTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{MakePage()}{MakePage()}}
+{\footnotesize\ttfamily \label{class_album_tree_ctrl_aa2ece562c024065f90e62dc76eb588d1} 
+void Album\+Tree\+Ctrl\+::\+Make\+Page (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{id}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_tree_ctrl_8cpp_source_l00793}{793}} of file \mbox{\hyperlink{_album_tree_ctrl_8cpp_source}{Album\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_album_tree_ctrl_a1bd09a5d19ccc936b9338a45ddb2b9a1}\index{AlbumTreeCtrl@{AlbumTreeCtrl}!MakeParentList@{MakeParentList}}
+\index{MakeParentList@{MakeParentList}!AlbumTreeCtrl@{AlbumTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{MakeParentList()}{MakeParentList()}}
+{\footnotesize\ttfamily \label{class_album_tree_ctrl_a1bd09a5d19ccc936b9338a45ddb2b9a1} 
+wx\+Array\+Ptr\+Void \texorpdfstring{$\ast$}{*} Album\+Tree\+Ctrl\+::\+Make\+Parent\+List (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_design_1_1_layout_base}{Design\+::\+Layout\+Base}} \texorpdfstring{$\ast$}{*}}]{catalog\+Volume}{, }\item[{\mbox{\hyperlink{namespace_catalog_a2ff17ae8cd4986617c22e54b7cf50f89}{Catalog\+::\+Format\+Type}}}]{parent\+Type}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_album_tree_ctrl_a1c80b1167ad8f7e89bc3954c160aa808}\index{AlbumTreeCtrl@{AlbumTreeCtrl}!MoveItem@{MoveItem}}
+\index{MoveItem@{MoveItem}!AlbumTreeCtrl@{AlbumTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{MoveItem()}{MoveItem()}}
+{\footnotesize\ttfamily \label{class_album_tree_ctrl_a1c80b1167ad8f7e89bc3954c160aa808} 
+void Album\+Tree\+Ctrl\+::\+Move\+Item (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{item\+Src}{, }\item[{wx\+Tree\+Item\+Id}]{item\+Dst}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_tree_ctrl_8cpp_source_l00803}{803}} of file \mbox{\hyperlink{_album_tree_ctrl_8cpp_source}{Album\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_album_tree_ctrl_a931e30aac3a8d1a46de93bd9a4f33a69}\index{AlbumTreeCtrl@{AlbumTreeCtrl}!OnBeginDrag@{OnBeginDrag}}
+\index{OnBeginDrag@{OnBeginDrag}!AlbumTreeCtrl@{AlbumTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{OnBeginDrag()}{OnBeginDrag()}}
+{\footnotesize\ttfamily \label{class_album_tree_ctrl_a931e30aac3a8d1a46de93bd9a4f33a69} 
+void Album\+Tree\+Ctrl\+::\+On\+Begin\+Drag (\begin{DoxyParamCaption}\item[{wx\+Tree\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_tree_ctrl_8cpp_source_l00873}{873}} of file \mbox{\hyperlink{_album_tree_ctrl_8cpp_source}{Album\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_album_tree_ctrl_a15bddccd4fdeb1d4db292880fb3423ee}\index{AlbumTreeCtrl@{AlbumTreeCtrl}!OnCompareItems@{OnCompareItems}}
+\index{OnCompareItems@{OnCompareItems}!AlbumTreeCtrl@{AlbumTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{OnCompareItems()}{OnCompareItems()}}
+{\footnotesize\ttfamily \label{class_album_tree_ctrl_a15bddccd4fdeb1d4db292880fb3423ee} 
+int Album\+Tree\+Ctrl\+::\+On\+Compare\+Items (\begin{DoxyParamCaption}\item[{const wx\+Tree\+Item\+Id \&}]{i1}{, }\item[{const wx\+Tree\+Item\+Id \&}]{i2}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Definition at line \mbox{\hyperlink{_album_tree_ctrl_8cpp_source_l01046}{1046}} of file \mbox{\hyperlink{_album_tree_ctrl_8cpp_source}{Album\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_album_tree_ctrl_a6a5ffb5fd84639bf578e631c0574d637}\index{AlbumTreeCtrl@{AlbumTreeCtrl}!OnDeleteItem@{OnDeleteItem}}
+\index{OnDeleteItem@{OnDeleteItem}!AlbumTreeCtrl@{AlbumTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{OnDeleteItem()}{OnDeleteItem()}}
+{\footnotesize\ttfamily \label{class_album_tree_ctrl_a6a5ffb5fd84639bf578e631c0574d637} 
+void Album\+Tree\+Ctrl\+::\+On\+Delete\+Item (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{id}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_tree_ctrl_8cpp_source_l00859}{859}} of file \mbox{\hyperlink{_album_tree_ctrl_8cpp_source}{Album\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_album_tree_ctrl_a235e78a9fb1433e4955c99190b9cf051}\index{AlbumTreeCtrl@{AlbumTreeCtrl}!OnEndDrag@{OnEndDrag}}
+\index{OnEndDrag@{OnEndDrag}!AlbumTreeCtrl@{AlbumTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{OnEndDrag()}{OnEndDrag()}}
+{\footnotesize\ttfamily \label{class_album_tree_ctrl_a235e78a9fb1433e4955c99190b9cf051} 
+void Album\+Tree\+Ctrl\+::\+On\+End\+Drag (\begin{DoxyParamCaption}\item[{wx\+Tree\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_tree_ctrl_8cpp_source_l00892}{892}} of file \mbox{\hyperlink{_album_tree_ctrl_8cpp_source}{Album\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_album_tree_ctrl_a3a37cd8294dec1c943a706836aca0398}\index{AlbumTreeCtrl@{AlbumTreeCtrl}!OnItemContextMenu@{OnItemContextMenu}}
+\index{OnItemContextMenu@{OnItemContextMenu}!AlbumTreeCtrl@{AlbumTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{OnItemContextMenu()}{OnItemContextMenu()}}
+{\footnotesize\ttfamily \label{class_album_tree_ctrl_a3a37cd8294dec1c943a706836aca0398} 
+void Album\+Tree\+Ctrl\+::\+On\+Item\+Context\+Menu (\begin{DoxyParamCaption}\item[{wx\+Tree\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_album_tree_ctrl_a4941ec8c5f90b38e7d65646b0947a105}\index{AlbumTreeCtrl@{AlbumTreeCtrl}!OnItemMenu@{OnItemMenu}}
+\index{OnItemMenu@{OnItemMenu}!AlbumTreeCtrl@{AlbumTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{OnItemMenu()}{OnItemMenu()}}
+{\footnotesize\ttfamily \label{class_album_tree_ctrl_a4941ec8c5f90b38e7d65646b0947a105} 
+void Album\+Tree\+Ctrl\+::\+On\+Item\+Menu (\begin{DoxyParamCaption}\item[{wx\+Tree\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_tree_ctrl_8cpp_source_l01033}{1033}} of file \mbox{\hyperlink{_album_tree_ctrl_8cpp_source}{Album\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_album_tree_ctrl_a627c3f02f473709eceec029bb6bc3f0f}\index{AlbumTreeCtrl@{AlbumTreeCtrl}!OnItemRClick@{OnItemRClick}}
+\index{OnItemRClick@{OnItemRClick}!AlbumTreeCtrl@{AlbumTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{OnItemRClick()}{OnItemRClick()}}
+{\footnotesize\ttfamily \label{class_album_tree_ctrl_a627c3f02f473709eceec029bb6bc3f0f} 
+void Album\+Tree\+Ctrl\+::\+On\+Item\+RClick (\begin{DoxyParamCaption}\item[{wx\+Tree\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_tree_ctrl_8cpp_source_l01082}{1082}} of file \mbox{\hyperlink{_album_tree_ctrl_8cpp_source}{Album\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_album_tree_ctrl_a84359f47d6204e1265bc13d4d0d4329d}\index{AlbumTreeCtrl@{AlbumTreeCtrl}!OnItemStateClick@{OnItemStateClick}}
+\index{OnItemStateClick@{OnItemStateClick}!AlbumTreeCtrl@{AlbumTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{OnItemStateClick()}{OnItemStateClick()}}
+{\footnotesize\ttfamily \label{class_album_tree_ctrl_a84359f47d6204e1265bc13d4d0d4329d} 
+void Album\+Tree\+Ctrl\+::\+On\+Item\+State\+Click (\begin{DoxyParamCaption}\item[{wx\+Tree\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_tree_ctrl_8cpp_source_l00989}{989}} of file \mbox{\hyperlink{_album_tree_ctrl_8cpp_source}{Album\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_album_tree_ctrl_a1e2f90df90c6fbdebc86833af0de6a76}\index{AlbumTreeCtrl@{AlbumTreeCtrl}!OnSelChanged@{OnSelChanged}}
+\index{OnSelChanged@{OnSelChanged}!AlbumTreeCtrl@{AlbumTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{OnSelChanged()}{OnSelChanged()}}
+{\footnotesize\ttfamily \label{class_album_tree_ctrl_a1e2f90df90c6fbdebc86833af0de6a76} 
+void Album\+Tree\+Ctrl\+::\+On\+Sel\+Changed (\begin{DoxyParamCaption}\item[{wx\+Tree\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_tree_ctrl_8cpp_source_l00999}{999}} of file \mbox{\hyperlink{_album_tree_ctrl_8cpp_source}{Album\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_album_tree_ctrl_a8e82a6f01703fbdfb5291d26848718b8}\index{AlbumTreeCtrl@{AlbumTreeCtrl}!OnTreectrlItemCollapsed@{OnTreectrlItemCollapsed}}
+\index{OnTreectrlItemCollapsed@{OnTreectrlItemCollapsed}!AlbumTreeCtrl@{AlbumTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{OnTreectrlItemCollapsed()}{OnTreectrlItemCollapsed()}}
+{\footnotesize\ttfamily \label{class_album_tree_ctrl_a8e82a6f01703fbdfb5291d26848718b8} 
+void Album\+Tree\+Ctrl\+::\+On\+Treectrl\+Item\+Collapsed (\begin{DoxyParamCaption}\item[{wx\+Tree\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_tree_ctrl_8cpp_source_l01665}{1665}} of file \mbox{\hyperlink{_album_tree_ctrl_8cpp_source}{Album\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_album_tree_ctrl_acffae25994bb4b373e0e7ab564fc120c}\index{AlbumTreeCtrl@{AlbumTreeCtrl}!OnTreectrlItemExpanded@{OnTreectrlItemExpanded}}
+\index{OnTreectrlItemExpanded@{OnTreectrlItemExpanded}!AlbumTreeCtrl@{AlbumTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{OnTreectrlItemExpanded()}{OnTreectrlItemExpanded()}}
+{\footnotesize\ttfamily \label{class_album_tree_ctrl_acffae25994bb4b373e0e7ab564fc120c} 
+void Album\+Tree\+Ctrl\+::\+On\+Treectrl\+Item\+Expanded (\begin{DoxyParamCaption}\item[{wx\+Tree\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_tree_ctrl_8cpp_source_l01673}{1673}} of file \mbox{\hyperlink{_album_tree_ctrl_8cpp_source}{Album\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_album_tree_ctrl_a825808a07ce05000f697c978d0ed25e9}\index{AlbumTreeCtrl@{AlbumTreeCtrl}!ResetValidateStatus@{ResetValidateStatus}}
+\index{ResetValidateStatus@{ResetValidateStatus}!AlbumTreeCtrl@{AlbumTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{ResetValidateStatus()}{ResetValidateStatus()}}
+{\footnotesize\ttfamily \label{class_album_tree_ctrl_a825808a07ce05000f697c978d0ed25e9} 
+void Album\+Tree\+Ctrl\+::\+Reset\+Validate\+Status (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_tree_ctrl_8cpp_source_l01075}{1075}} of file \mbox{\hyperlink{_album_tree_ctrl_8cpp_source}{Album\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_album_tree_ctrl_ab247323f712ab8682da03fc8dae8b9c2}\index{AlbumTreeCtrl@{AlbumTreeCtrl}!Save@{Save}}
+\index{Save@{Save}!AlbumTreeCtrl@{AlbumTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{Save()}{Save()}}
+{\footnotesize\ttfamily \label{class_album_tree_ctrl_ab247323f712ab8682da03fc8dae8b9c2} 
+void Album\+Tree\+Ctrl\+::\+Save (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_album_tree_ctrl_afff8b84039870ae223740dfc9353dce1}\index{AlbumTreeCtrl@{AlbumTreeCtrl}!SaveNodeData@{SaveNodeData}}
+\index{SaveNodeData@{SaveNodeData}!AlbumTreeCtrl@{AlbumTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{SaveNodeData()}{SaveNodeData()}}
+{\footnotesize\ttfamily \label{class_album_tree_ctrl_afff8b84039870ae223740dfc9353dce1} 
+void Album\+Tree\+Ctrl\+::\+Save\+Node\+Data (\begin{DoxyParamCaption}\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{parent}{, }\item[{wx\+Tree\+Item\+Id}]{tree\+Item\+Id}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_tree_ctrl_8cpp_source_l01092}{1092}} of file \mbox{\hyperlink{_album_tree_ctrl_8cpp_source}{Album\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_album_tree_ctrl_ac34ac205629c03183f1a74fb7f8c81d6}\index{AlbumTreeCtrl@{AlbumTreeCtrl}!SetItemStampLink@{SetItemStampLink}}
+\index{SetItemStampLink@{SetItemStampLink}!AlbumTreeCtrl@{AlbumTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{SetItemStampLink()}{SetItemStampLink()}}
+{\footnotesize\ttfamily \label{class_album_tree_ctrl_ac34ac205629c03183f1a74fb7f8c81d6} 
+void Album\+Tree\+Ctrl\+::\+Set\+Item\+Stamp\+Link (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{album\+ID}{, }\item[{\mbox{\hyperlink{class_utils_1_1_stamp_link}{Utils\+::\+Stamp\+Link}} \texorpdfstring{$\ast$}{*}}]{link}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_tree_ctrl_8cpp_source_l01172}{1172}} of file \mbox{\hyperlink{_album_tree_ctrl_8cpp_source}{Album\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_album_tree_ctrl_ad421c4f1b0574a92414153ada7c0c68e}\index{AlbumTreeCtrl@{AlbumTreeCtrl}!SetValidateStatus@{SetValidateStatus}}
+\index{SetValidateStatus@{SetValidateStatus}!AlbumTreeCtrl@{AlbumTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{SetValidateStatus()}{SetValidateStatus()}}
+{\footnotesize\ttfamily \label{class_album_tree_ctrl_ad421c4f1b0574a92414153ada7c0c68e} 
+void Album\+Tree\+Ctrl\+::\+Set\+Validate\+Status (\begin{DoxyParamCaption}\item[{bool}]{status}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_tree_ctrl_8cpp_source_l01186}{1186}} of file \mbox{\hyperlink{_album_tree_ctrl_8cpp_source}{Album\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_album_tree_ctrl_a0028fb588542ce543d137d65ec5d7150}\index{AlbumTreeCtrl@{AlbumTreeCtrl}!ShowDropMenu@{ShowDropMenu}}
+\index{ShowDropMenu@{ShowDropMenu}!AlbumTreeCtrl@{AlbumTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{ShowDropMenu()}{ShowDropMenu()}}
+{\footnotesize\ttfamily \label{class_album_tree_ctrl_a0028fb588542ce543d137d65ec5d7150} 
+void Album\+Tree\+Ctrl\+::\+Show\+Drop\+Menu (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{item\+Src}{, }\item[{wx\+Tree\+Item\+Id}]{item\+Dst}{, }\item[{bool}]{as\+Child}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_tree_ctrl_8cpp_source_l01111}{1111}} of file \mbox{\hyperlink{_album_tree_ctrl_8cpp_source}{Album\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_album_tree_ctrl_a4c5fa556c3f0e18bef6a64ba0bd111c5}\index{AlbumTreeCtrl@{AlbumTreeCtrl}!ShowMenu@{ShowMenu}}
+\index{ShowMenu@{ShowMenu}!AlbumTreeCtrl@{AlbumTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{ShowMenu()}{ShowMenu()}}
+{\footnotesize\ttfamily \label{class_album_tree_ctrl_a4c5fa556c3f0e18bef6a64ba0bd111c5} 
+void Album\+Tree\+Ctrl\+::\+Show\+Menu (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{id}{, }\item[{const wx\+Point \&}]{pt}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_tree_ctrl_8cpp_source_l01196}{1196}} of file \mbox{\hyperlink{_album_tree_ctrl_8cpp_source}{Album\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_album_tree_ctrl_a7ee5902522176923b7be1a0af85b8630}\index{AlbumTreeCtrl@{AlbumTreeCtrl}!Update@{Update}}
+\index{Update@{Update}!AlbumTreeCtrl@{AlbumTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{class_album_tree_ctrl_a7ee5902522176923b7be1a0af85b8630} 
+void Album\+Tree\+Ctrl\+::\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_tree_ctrl_8cpp_source_l01409}{1409}} of file \mbox{\hyperlink{_album_tree_ctrl_8cpp_source}{Album\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_album_tree_ctrl_ae5b6b7e821be38af656f2b8d26d9af36}\index{AlbumTreeCtrl@{AlbumTreeCtrl}!UpdateAlbumStampEntries@{UpdateAlbumStampEntries}}
+\index{UpdateAlbumStampEntries@{UpdateAlbumStampEntries}!AlbumTreeCtrl@{AlbumTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{UpdateAlbumStampEntries()}{UpdateAlbumStampEntries()}}
+{\footnotesize\ttfamily \label{class_album_tree_ctrl_ae5b6b7e821be38af656f2b8d26d9af36} 
+void Album\+Tree\+Ctrl\+::\+Update\+Album\+Stamp\+Entries (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{tree\+ID}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_tree_ctrl_8cpp_source_l00116}{116}} of file \mbox{\hyperlink{_album_tree_ctrl_8cpp_source}{Album\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_album_tree_ctrl_a9c995de7403dda3d77160475703a7274}\index{AlbumTreeCtrl@{AlbumTreeCtrl}!UpdateItemPageLayout@{UpdateItemPageLayout}}
+\index{UpdateItemPageLayout@{UpdateItemPageLayout}!AlbumTreeCtrl@{AlbumTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{UpdateItemPageLayout()}{UpdateItemPageLayout()}}
+{\footnotesize\ttfamily \label{class_album_tree_ctrl_a9c995de7403dda3d77160475703a7274} 
+void Album\+Tree\+Ctrl\+::\+Update\+Item\+Page\+Layout (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{id}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_tree_ctrl_8cpp_source_l01518}{1518}} of file \mbox{\hyperlink{_album_tree_ctrl_8cpp_source}{Album\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_album_tree_ctrl_ab38bff0157031c7d11454c6f6b8ed8ae}\index{AlbumTreeCtrl@{AlbumTreeCtrl}!UpdateStampList@{UpdateStampList}}
+\index{UpdateStampList@{UpdateStampList}!AlbumTreeCtrl@{AlbumTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{UpdateStampList()}{UpdateStampList()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_album_tree_ctrl_ab38bff0157031c7d11454c6f6b8ed8ae} 
+void Album\+Tree\+Ctrl\+::\+Update\+Stamp\+List (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_tree_ctrl_8cpp_source_l01527}{1527}} of file \mbox{\hyperlink{_album_tree_ctrl_8cpp_source}{Album\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_album_tree_ctrl_a6b7469f56025e73c5871d7622e00afdc}\index{AlbumTreeCtrl@{AlbumTreeCtrl}!UpdateStampList@{UpdateStampList}}
+\index{UpdateStampList@{UpdateStampList}!AlbumTreeCtrl@{AlbumTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{UpdateStampList()}{UpdateStampList()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_album_tree_ctrl_a6b7469f56025e73c5871d7622e00afdc} 
+void Album\+Tree\+Ctrl\+::\+Update\+Stamp\+List (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id \&}]{tree\+Item\+Id}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_tree_ctrl_8cpp_source_l01538}{1538}} of file \mbox{\hyperlink{_album_tree_ctrl_8cpp_source}{Album\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_album_tree_ctrl_a4898e216b324b9e7aaa4bf99cf1c3e9f}\index{AlbumTreeCtrl@{AlbumTreeCtrl}!UpdateTreeItem@{UpdateTreeItem}}
+\index{UpdateTreeItem@{UpdateTreeItem}!AlbumTreeCtrl@{AlbumTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{UpdateTreeItem()}{UpdateTreeItem()}}
+{\footnotesize\ttfamily \label{class_album_tree_ctrl_a4898e216b324b9e7aaa4bf99cf1c3e9f} 
+\mbox{\hyperlink{namespace_design_a89f66276a25aed62bedc9fb9b5d35453}{Design\+::\+Node\+Status}} Album\+Tree\+Ctrl\+::\+Update\+Tree\+Item (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{child\+ID}{, }\item[{\mbox{\hyperlink{class_design_1_1_album_base}{Design\+::\+Album\+Base}} \texorpdfstring{$\ast$}{*}}]{ele}{, }\item[{\mbox{\hyperlink{namespace_design_a7353efa232d45958ffd42229f3132b46}{Design\+::\+Icon\+ID}}}]{icon}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_tree_ctrl_8cpp_source_l01566}{1566}} of file \mbox{\hyperlink{_album_tree_ctrl_8cpp_source}{Album\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_album_tree_ctrl_a28e3f4a28688eded74a17879405ef339}\index{AlbumTreeCtrl@{AlbumTreeCtrl}!Validate@{Validate}}
+\index{Validate@{Validate}!AlbumTreeCtrl@{AlbumTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{Validate()}{Validate()}}
+{\footnotesize\ttfamily \label{class_album_tree_ctrl_a28e3f4a28688eded74a17879405ef339} 
+void Album\+Tree\+Ctrl\+::\+Validate (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{id}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_tree_ctrl_8cpp_source_l01587}{1587}} of file \mbox{\hyperlink{_album_tree_ctrl_8cpp_source}{Album\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_album_tree_ctrl_a0d18a6408dc5897e9ebd17625cd54ef6}\index{AlbumTreeCtrl@{AlbumTreeCtrl}!ValidateLink@{ValidateLink}}
+\index{ValidateLink@{ValidateLink}!AlbumTreeCtrl@{AlbumTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{ValidateLink()}{ValidateLink()}}
+{\footnotesize\ttfamily \label{class_album_tree_ctrl_a0d18a6408dc5897e9ebd17625cd54ef6} 
+void Album\+Tree\+Ctrl\+::\+Validate\+Link (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id \&}]{child\+Id}{, }\item[{wx\+String}]{alb\+IDNbr}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_tree_ctrl_8cpp_source_l01607}{1607}} of file \mbox{\hyperlink{_album_tree_ctrl_8cpp_source}{Album\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_album_tree_ctrl_a9bda2ef88eadca4a3dca8377090c7449}\index{AlbumTreeCtrl@{AlbumTreeCtrl}!ValidateTree@{ValidateTree}}
+\index{ValidateTree@{ValidateTree}!AlbumTreeCtrl@{AlbumTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{ValidateTree()}{ValidateTree()}}
+{\footnotesize\ttfamily \label{class_album_tree_ctrl_a9bda2ef88eadca4a3dca8377090c7449} 
+void Album\+Tree\+Ctrl\+::\+Validate\+Tree (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_tree_ctrl_8cpp_source_l01653}{1653}} of file \mbox{\hyperlink{_album_tree_ctrl_8cpp_source}{Album\+Tree\+Ctrl.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/femon/\+Development/wx/clone\+Test/\+Stamp\+Tool/src/gui/\mbox{\hyperlink{_album_tree_ctrl_8h}{Album\+Tree\+Ctrl.\+h}}\item 
+C\+:/\+Users/femon/\+Development/wx/clone\+Test/\+Stamp\+Tool/src/gui/\mbox{\hyperlink{_album_tree_ctrl_8cpp}{Album\+Tree\+Ctrl.\+cpp}}\end{DoxyCompactItemize}

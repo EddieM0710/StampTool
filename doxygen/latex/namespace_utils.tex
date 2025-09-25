@@ -1,0 +1,624 @@
+\doxysection{Utils Namespace Reference}
+\hypertarget{namespace_utils}{}\label{namespace_utils}\index{Utils@{Utils}}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_utils_1_1_c_s_v_data}{CSVData}}
+\begin{DoxyCompactList}\small\item\em read/write .csv files. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_utils_1_1_font}{Font}}
+\begin{DoxyCompactList}\small\item\em \doxylink{class_utils_1_1_font}{Font} layout object; In. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_utils_1_1_font_list}{Font\+List}}
+\item 
+class \mbox{\hyperlink{class_utils_1_1_project}{Project}}
+\item 
+class \mbox{\hyperlink{class_utils_1_1_settings}{Settings}}
+\begin{DoxyCompactList}\small\item\em \doxylink{class_utils_1_1_settings}{Settings} for the application. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_utils_1_1_stamp_link}{Stamp\+Link}}
+\item 
+class \mbox{\hyperlink{class_utils_1_1_stamp_list}{Stamp\+List}}
+\begin{DoxyCompactList}\small\item\em List of all the Stamp\+Links in the \doxylink{namespace_design}{Design} tree. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_utils_1_1_t_o_c_base}{TOCBase}}
+\begin{DoxyCompactList}\small\item\em Base class for all catalog objects. The catalog objects are initialy loaded from the catalog XML or from a csv file. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_utils_1_1_volume}{Volume}}
+\item 
+class \mbox{\hyperlink{class_utils_1_1_volume_list}{Volume\+List}}
+\item 
+class \mbox{\hyperlink{class_utils_1_1_x_m_l_iterator}{XMLIterator}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef std\+::unordered\+\_\+map$<$ int, \mbox{\hyperlink{class_utils_1_1_font}{Font}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{namespace_utils_afb0a672162c0ac84ca53571ff06bb7d2}{Font\+Map}}
+\item 
+typedef std\+::vector$<$ \mbox{\hyperlink{class_utils_1_1_stamp_link}{Stamp\+Link}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{namespace_utils_a9f704e8b1ba672fe4868fad97a17000e}{Stamp\+Link\+List}}
+\item 
+typedef std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{class_utils_1_1_volume}{Volume}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{namespace_utils_aeee3fa6f7393338c50e7f323fa993989}{Volume\+Array}}
+\item 
+typedef std\+::unordered\+\_\+map$<$ int, wx\+Tree\+Item\+Id $>$ \mbox{\hyperlink{namespace_utils_a05d0f8acb5d51b4f51430c52175448e6}{Menu\+IDArray}}
+\item 
+typedef std\+::vector$<$ wx\+Xml\+Node \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{namespace_utils_af54f9796bccf5cbc9c9fcb89cd8e824c}{wx\+Xml\+Node\+Array}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{namespace_utils_a8d9b4e3627512bacc09c31c52f3d08f1}{TOCBase\+Type}} \{ \mbox{\hyperlink{namespace_utils_a8d9b4e3627512bacc09c31c52f3d08f1a15a6b5d0467b0cafd670ed9aa1906cf5}{TOC\+\_\+\+Section}} = 0
+, \mbox{\hyperlink{namespace_utils_a8d9b4e3627512bacc09c31c52f3d08f1aa9530bf77fb747353c488a793003a5aa}{TOC\+\_\+\+Volume}}
+, \mbox{\hyperlink{namespace_utils_a8d9b4e3627512bacc09c31c52f3d08f1ab62f4fee638b060381c92b26d447994f}{TOC\+\_\+\+None}}
+, \mbox{\hyperlink{namespace_utils_a8d9b4e3627512bacc09c31c52f3d08f1abab247e1687d283665b7f94b405fe448}{TOC\+\_\+\+Nbr\+Types}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespace_utils_a8d9b4e3627512bacc09c31c52f3d08f1}{TOCBase\+Type}} \mbox{\hyperlink{namespace_utils_a10e6f88e02d3b871666ca8fa943fee87}{Find\+TOCBase\+Type}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}element)
+\item 
+\mbox{\hyperlink{namespace_utils_a8d9b4e3627512bacc09c31c52f3d08f1}{TOCBase\+Type}} \mbox{\hyperlink{namespace_utils_a63d0882852c3cea267451b2ecee27afe}{Find\+TOCBase\+Type}} (wx\+String name)
+\item 
+\mbox{\hyperlink{class_utils_1_1_settings}{Settings}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespace_utils_adea2fb711682fc2ee218935269d4b5e3}{New\+Settings\+Instance}} ()
+\item 
+int \mbox{\hyperlink{namespace_utils_a507507aaf475afbf0a2a4ac2ed376d7e}{Way\+To\+Sort}} (\mbox{\hyperlink{class_utils_1_1_volume}{Utils\+::\+Volume}} \texorpdfstring{$\ast$}{*}sect1, \mbox{\hyperlink{class_utils_1_1_volume}{Utils\+::\+Volume}} \texorpdfstring{$\ast$}{*}sect2)
+\item 
+wx\+Xml\+Node \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespace_utils_a20b6fc56dbae2455f1b9ee08595ac918}{Get\+Next}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}node, wx\+String name)
+\item 
+wx\+Xml\+Node \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespace_utils_a156ddf8c893eba62f65ffa2a5860c766}{New\+Node}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}parent, wx\+String name)
+\item 
+wx\+Xml\+Node \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespace_utils_a4f95c3cd5e19c237876cbadcfced8db0}{New\+Node}} (wx\+Xml\+Document \texorpdfstring{$\ast$}{*}doc, wx\+String name)
+\item 
+wx\+Xml\+Node \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespace_utils_ac982aeec9bf06c61495032e66e41d30f}{First\+Child\+Element}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}node, wx\+String name)
+\item 
+bool \mbox{\hyperlink{namespace_utils_a19270795939c8167c1d8e467b84f2379}{Delete\+Attribute}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}node, wx\+String attr\+Name)
+\item 
+wx\+Xml\+Attribute \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespace_utils_a0cf7591f8dca3719de0ef110784f0824}{Get\+Attribute}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}node, wx\+String attr\+Name)
+\item 
+wx\+String \mbox{\hyperlink{namespace_utils_a4b9bc624ff61c4a618c12b911b48110c}{Get\+Attr\+Str}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}node, wx\+String attr\+Name)
+\item 
+double \mbox{\hyperlink{namespace_utils_aa046de85e45b0c643530d600a0d8b2e0}{Get\+Attr\+Dbl}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}node, wx\+String attr\+Name)
+\item 
+void \mbox{\hyperlink{namespace_utils_acd4b52904d20e67e1b9570914c1c45a7}{Set\+Attr\+Str}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}node, wx\+String name, wx\+String val)
+\item 
+void \mbox{\hyperlink{namespace_utils_ab55d9667828a6cd38c273648a06b5054}{Copy\+Node}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}src, wx\+Xml\+Node \texorpdfstring{$\ast$}{*}dest)
+\item 
+void \mbox{\hyperlink{namespace_utils_ad5e2d842159071641ed8e04dd56b807d}{Set\+Attr\+Dbl}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}node, wx\+String name, double val)
+\item 
+void \mbox{\hyperlink{namespace_utils_a299c4c79d05b5c053a03bccc1a46e729}{XMLDump}} (wx\+Xml\+Document \texorpdfstring{$\ast$}{*}doc)
+\item 
+void \mbox{\hyperlink{namespace_utils_a41d2f3984cc2355a4d7f4f87d862f65f}{XMLDump\+Node}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}node, wx\+String level)
+\item 
+wx\+Xml\+Node \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespace_utils_a60f019bbfe264668e001a65e60c411db}{Add\+New\+Node}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}parent, wx\+Xml\+Node\+Type type, const wx\+String \&name)
+\item 
+wx\+Xml\+Node \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespace_utils_a7b2f6dc6534fc9deca77727d666c7afe}{Find\+First\+Child\+With\+Propertyof\+Value}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}element, wx\+String \&property, wx\+String \&value)
+\item 
+void \mbox{\hyperlink{namespace_utils_a572ed476a40be7cb31cdc0f52c0be012}{Add\+Comment}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}node, wx\+String name, wx\+String content)
+\item 
+void \mbox{\hyperlink{namespace_utils_a2f36e508a1382037cb5b8174c50b1b05}{Save}} (wx\+Xml\+Document \texorpdfstring{$\ast$}{*}doc, wx\+String filename)
+\item 
+void \mbox{\hyperlink{namespace_utils_a042420a85be23883c3e293d3185f6642}{Save\+Attributes}} (wx\+Text\+Output\+Stream \texorpdfstring{$\ast$}{*}text, wx\+Xml\+Node \texorpdfstring{$\ast$}{*}node, wx\+String level)
+\item 
+void \mbox{\hyperlink{namespace_utils_a520fb2bd5694d07857d8ceaadaba2636}{Save\+Child}} (wx\+Text\+Output\+Stream \texorpdfstring{$\ast$}{*}text, wx\+Xml\+Node \texorpdfstring{$\ast$}{*}node, wx\+String level)
+\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespace_utils_afea393f29a96e3327b04f718a3372917}{Get\+ZIndex}} (char \texorpdfstring{$\ast$}{*}str)
+\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespace_utils_aedcb00f7c21ab0a2d6cef5dec7fc1b22}{Get\+Image\+Name}} (char \texorpdfstring{$\ast$}{*}str)
+\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespace_utils_a4bd8564086b1c20198edd41cfffbfffe}{Get\+Draw\+Name}} (char \texorpdfstring{$\ast$}{*}str)
+\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespace_utils_ae7ef76108d7d8193ba7f0edf2026bc32}{Get\+Frame\+Name}} (char \texorpdfstring{$\ast$}{*}str)
+\item 
+wx\+String \mbox{\hyperlink{namespace_utils_a9ad1087c313abbc250a501bc57337d48}{Get\+Text\+Style\+Name}} (wx\+String \&str)
+\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespace_utils_ae99e826e7a34c13a30e51549c024b978}{Double\+To\+MMString}} (char \texorpdfstring{$\ast$}{*}str, double nbr)
+\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespace_utils_a339aad8cb75a8ed1f4e912e969c22e3f}{Int\+To\+Inch\+String}} (char \texorpdfstring{$\ast$}{*}str, int nbr)
+\item 
+void \mbox{\hyperlink{namespace_utils_ab42e7bb3c92cba2f30cf6f4dbf5859ca}{Save\+Font}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}parent, \mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4}{Design\+::\+Font\+Usage\+Type}} type, wx\+Font font, wx\+Colour color)
+\item 
+\mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4}{Design\+::\+Font\+Usage\+Type}} \mbox{\hyperlink{namespace_utils_a4cc034f6f2b276279458fb5426bd9d67}{Load\+Font}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}font\+Node, wx\+String \&native\+String, wx\+String \&color)
+\item 
+void \mbox{\hyperlink{namespace_utils_aff8ea290d3a6f7270c0a0e8fc2b58dba}{IDElement}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}ele)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const wx\+String \mbox{\hyperlink{namespace_utils_ab1eaa1d4e06e66103dffe43479fd9783}{TOCBase\+Names}} \mbox{[}\mbox{\hyperlink{namespace_utils_a8d9b4e3627512bacc09c31c52f3d08f1abab247e1687d283665b7f94b405fe448}{TOC\+\_\+\+Nbr\+Types}}\mbox{]}
+\item 
+int \mbox{\hyperlink{namespace_utils_a5f13546b1e3a9ca7943efdebcf3f5428}{Font\+Count}} = -\/1
+\item 
+int \mbox{\hyperlink{namespace_utils_ab14cb95d5f1743e3776caf7f3891e68a}{z\+Index}} = 0
+\item 
+int \mbox{\hyperlink{namespace_utils_a3dbd78bf71c5573b5f22b80de8304b2b}{frame\+Index}} = 0
+\item 
+int \mbox{\hyperlink{namespace_utils_ac6ea5372f70cc2a9bd55409e24ca93f5}{image\+Index}} = 0
+\item 
+int \mbox{\hyperlink{namespace_utils_a38088d53a7a4506df998a4ad6a79dc72}{Style\+Name\+Index}} = 0
+\end{DoxyCompactItemize}
+
+
+\label{doc-typedef-members}
+\Hypertarget{namespace_utils_doc-typedef-members}
+\doxysubsection{Typedef Documentation}
+\Hypertarget{namespace_utils_afb0a672162c0ac84ca53571ff06bb7d2}\index{Utils@{Utils}!FontMap@{FontMap}}
+\index{FontMap@{FontMap}!Utils@{Utils}}
+\doxysubsubsection{\texorpdfstring{FontMap}{FontMap}}
+{\footnotesize\ttfamily \label{namespace_utils_afb0a672162c0ac84ca53571ff06bb7d2} 
+typedef std\+::unordered\+\_\+map$<$ int, \mbox{\hyperlink{class_utils_1_1_font}{Font}}\texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{namespace_utils_afb0a672162c0ac84ca53571ff06bb7d2}{Utils\+::\+Font\+Map}}}
+
+
+
+Definition at line \mbox{\hyperlink{_font_8h_source_l00120}{120}} of file \mbox{\hyperlink{_font_8h_source}{Font.\+h}}.
+
+\Hypertarget{namespace_utils_a05d0f8acb5d51b4f51430c52175448e6}\index{Utils@{Utils}!MenuIDArray@{MenuIDArray}}
+\index{MenuIDArray@{MenuIDArray}!Utils@{Utils}}
+\doxysubsubsection{\texorpdfstring{MenuIDArray}{MenuIDArray}}
+{\footnotesize\ttfamily \label{namespace_utils_a05d0f8acb5d51b4f51430c52175448e6} 
+typedef std\+::unordered\+\_\+map$<$ int, wx\+Tree\+Item\+Id $>$ \mbox{\hyperlink{namespace_utils_a05d0f8acb5d51b4f51430c52175448e6}{Utils\+::\+Menu\+IDArray}}}
+
+
+
+Definition at line \mbox{\hyperlink{_volume_8h_source_l00045}{45}} of file \mbox{\hyperlink{_volume_8h_source}{Volume.\+h}}.
+
+\Hypertarget{namespace_utils_a9f704e8b1ba672fe4868fad97a17000e}\index{Utils@{Utils}!StampLinkList@{StampLinkList}}
+\index{StampLinkList@{StampLinkList}!Utils@{Utils}}
+\doxysubsubsection{\texorpdfstring{StampLinkList}{StampLinkList}}
+{\footnotesize\ttfamily \label{namespace_utils_a9f704e8b1ba672fe4868fad97a17000e} 
+typedef std\+::vector$<$\mbox{\hyperlink{class_utils_1_1_stamp_link}{Stamp\+Link}}\texorpdfstring{$\ast$}{*}$>$ \mbox{\hyperlink{namespace_utils_a9f704e8b1ba672fe4868fad97a17000e}{Utils\+::\+Stamp\+Link\+List}}}
+
+
+
+Definition at line \mbox{\hyperlink{_stamp_list_8h_source_l00141}{141}} of file \mbox{\hyperlink{_stamp_list_8h_source}{Stamp\+List.\+h}}.
+
+\Hypertarget{namespace_utils_aeee3fa6f7393338c50e7f323fa993989}\index{Utils@{Utils}!VolumeArray@{VolumeArray}}
+\index{VolumeArray@{VolumeArray}!Utils@{Utils}}
+\doxysubsubsection{\texorpdfstring{VolumeArray}{VolumeArray}}
+{\footnotesize\ttfamily \label{namespace_utils_aeee3fa6f7393338c50e7f323fa993989} 
+typedef std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{class_utils_1_1_volume}{Volume}}\texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{namespace_utils_aeee3fa6f7393338c50e7f323fa993989}{Utils\+::\+Volume\+Array}}}
+
+
+
+Definition at line \mbox{\hyperlink{_volume_8h_source_l00044}{44}} of file \mbox{\hyperlink{_volume_8h_source}{Volume.\+h}}.
+
+\Hypertarget{namespace_utils_af54f9796bccf5cbc9c9fcb89cd8e824c}\index{Utils@{Utils}!wxXmlNodeArray@{wxXmlNodeArray}}
+\index{wxXmlNodeArray@{wxXmlNodeArray}!Utils@{Utils}}
+\doxysubsubsection{\texorpdfstring{wxXmlNodeArray}{wxXmlNodeArray}}
+{\footnotesize\ttfamily \label{namespace_utils_af54f9796bccf5cbc9c9fcb89cd8e824c} 
+typedef std\+::vector$<$wx\+Xml\+Node\texorpdfstring{$\ast$}{*}$>$ \mbox{\hyperlink{namespace_utils_af54f9796bccf5cbc9c9fcb89cd8e824c}{Utils\+::wx\+Xml\+Node\+Array}}}
+
+
+
+Definition at line \mbox{\hyperlink{_x_m_l_utilities_8h_source_l00083}{83}} of file \mbox{\hyperlink{_x_m_l_utilities_8h_source}{XMLUtilities.\+h}}.
+
+
+
+\label{doc-enum-members}
+\Hypertarget{namespace_utils_doc-enum-members}
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{namespace_utils_a8d9b4e3627512bacc09c31c52f3d08f1}\index{Utils@{Utils}!TOCBaseType@{TOCBaseType}}
+\index{TOCBaseType@{TOCBaseType}!Utils@{Utils}}
+\doxysubsubsection{\texorpdfstring{TOCBaseType}{TOCBaseType}}
+{\footnotesize\ttfamily \label{namespace_utils_a8d9b4e3627512bacc09c31c52f3d08f1} 
+enum \mbox{\hyperlink{namespace_utils_a8d9b4e3627512bacc09c31c52f3d08f1}{Utils\+::\+TOCBase\+Type}}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TOC\_Section@{TOC\_Section}!Utils@{Utils}}\index{Utils@{Utils}!TOC\_Section@{TOC\_Section}}}\Hypertarget{namespace_utils_a8d9b4e3627512bacc09c31c52f3d08f1a15a6b5d0467b0cafd670ed9aa1906cf5}\label{namespace_utils_a8d9b4e3627512bacc09c31c52f3d08f1a15a6b5d0467b0cafd670ed9aa1906cf5} 
+TOC\+\_\+\+Section&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TOC\_Volume@{TOC\_Volume}!Utils@{Utils}}\index{Utils@{Utils}!TOC\_Volume@{TOC\_Volume}}}\Hypertarget{namespace_utils_a8d9b4e3627512bacc09c31c52f3d08f1aa9530bf77fb747353c488a793003a5aa}\label{namespace_utils_a8d9b4e3627512bacc09c31c52f3d08f1aa9530bf77fb747353c488a793003a5aa} 
+TOC\+\_\+\+Volume&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TOC\_None@{TOC\_None}!Utils@{Utils}}\index{Utils@{Utils}!TOC\_None@{TOC\_None}}}\Hypertarget{namespace_utils_a8d9b4e3627512bacc09c31c52f3d08f1ab62f4fee638b060381c92b26d447994f}\label{namespace_utils_a8d9b4e3627512bacc09c31c52f3d08f1ab62f4fee638b060381c92b26d447994f} 
+TOC\+\_\+\+None&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TOC\_NbrTypes@{TOC\_NbrTypes}!Utils@{Utils}}\index{Utils@{Utils}!TOC\_NbrTypes@{TOC\_NbrTypes}}}\Hypertarget{namespace_utils_a8d9b4e3627512bacc09c31c52f3d08f1abab247e1687d283665b7f94b405fe448}\label{namespace_utils_a8d9b4e3627512bacc09c31c52f3d08f1abab247e1687d283665b7f94b405fe448} 
+TOC\+\_\+\+Nbr\+Types&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{_t_o_c_defs_8h_source_l00032}{32}} of file \mbox{\hyperlink{_t_o_c_defs_8h_source}{TOCDefs.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{namespace_utils_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{namespace_utils_a572ed476a40be7cb31cdc0f52c0be012}\index{Utils@{Utils}!AddComment@{AddComment}}
+\index{AddComment@{AddComment}!Utils@{Utils}}
+\doxysubsubsection{\texorpdfstring{AddComment()}{AddComment()}}
+{\footnotesize\ttfamily \label{namespace_utils_a572ed476a40be7cb31cdc0f52c0be012} 
+void Utils\+::\+Add\+Comment (\begin{DoxyParamCaption}\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{node}{, }\item[{wx\+String}]{name}{, }\item[{wx\+String}]{content}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_x_m_l_utilities_8cpp_source_l00390}{390}} of file \mbox{\hyperlink{_x_m_l_utilities_8cpp_source}{XMLUtilities.\+cpp}}.
+
+\Hypertarget{namespace_utils_a60f019bbfe264668e001a65e60c411db}\index{Utils@{Utils}!AddNewNode@{AddNewNode}}
+\index{AddNewNode@{AddNewNode}!Utils@{Utils}}
+\doxysubsubsection{\texorpdfstring{AddNewNode()}{AddNewNode()}}
+{\footnotesize\ttfamily \label{namespace_utils_a60f019bbfe264668e001a65e60c411db} 
+wx\+Xml\+Node \texorpdfstring{$\ast$}{*} Utils\+::\+Add\+New\+Node (\begin{DoxyParamCaption}\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{parent}{, }\item[{wx\+Xml\+Node\+Type}]{type}{, }\item[{const wx\+String \&}]{name}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_x_m_l_utilities_8cpp_source_l00365}{365}} of file \mbox{\hyperlink{_x_m_l_utilities_8cpp_source}{XMLUtilities.\+cpp}}.
+
+\Hypertarget{namespace_utils_ab55d9667828a6cd38c273648a06b5054}\index{Utils@{Utils}!CopyNode@{CopyNode}}
+\index{CopyNode@{CopyNode}!Utils@{Utils}}
+\doxysubsubsection{\texorpdfstring{CopyNode()}{CopyNode()}}
+{\footnotesize\ttfamily \label{namespace_utils_ab55d9667828a6cd38c273648a06b5054} 
+void Utils\+::\+Copy\+Node (\begin{DoxyParamCaption}\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{src}{, }\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{dest}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_x_m_l_utilities_8cpp_source_l00282}{282}} of file \mbox{\hyperlink{_x_m_l_utilities_8cpp_source}{XMLUtilities.\+cpp}}.
+
+\Hypertarget{namespace_utils_a19270795939c8167c1d8e467b84f2379}\index{Utils@{Utils}!DeleteAttribute@{DeleteAttribute}}
+\index{DeleteAttribute@{DeleteAttribute}!Utils@{Utils}}
+\doxysubsubsection{\texorpdfstring{DeleteAttribute()}{DeleteAttribute()}}
+{\footnotesize\ttfamily \label{namespace_utils_a19270795939c8167c1d8e467b84f2379} 
+bool Utils\+::\+Delete\+Attribute (\begin{DoxyParamCaption}\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{node}{, }\item[{wx\+String}]{attr\+Name}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_x_m_l_utilities_8cpp_source_l00222}{222}} of file \mbox{\hyperlink{_x_m_l_utilities_8cpp_source}{XMLUtilities.\+cpp}}.
+
+\Hypertarget{namespace_utils_ae99e826e7a34c13a30e51549c024b978}\index{Utils@{Utils}!DoubleToMMString@{DoubleToMMString}}
+\index{DoubleToMMString@{DoubleToMMString}!Utils@{Utils}}
+\doxysubsubsection{\texorpdfstring{DoubleToMMString()}{DoubleToMMString()}}
+{\footnotesize\ttfamily \label{namespace_utils_ae99e826e7a34c13a30e51549c024b978} 
+char \texorpdfstring{$\ast$}{*} Utils\+::\+Double\+To\+MMString (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{str}{, }\item[{double}]{nbr}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_x_m_l_utilities_8cpp_source_l00504}{504}} of file \mbox{\hyperlink{_x_m_l_utilities_8cpp_source}{XMLUtilities.\+cpp}}.
+
+\Hypertarget{namespace_utils_a7b2f6dc6534fc9deca77727d666c7afe}\index{Utils@{Utils}!FindFirstChildWithPropertyofValue@{FindFirstChildWithPropertyofValue}}
+\index{FindFirstChildWithPropertyofValue@{FindFirstChildWithPropertyofValue}!Utils@{Utils}}
+\doxysubsubsection{\texorpdfstring{FindFirstChildWithPropertyofValue()}{FindFirstChildWithPropertyofValue()}}
+{\footnotesize\ttfamily \label{namespace_utils_a7b2f6dc6534fc9deca77727d666c7afe} 
+wx\+Xml\+Node \texorpdfstring{$\ast$}{*} Utils\+::\+Find\+First\+Child\+With\+Propertyof\+Value (\begin{DoxyParamCaption}\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{element}{, }\item[{wx\+String \&}]{property}{, }\item[{wx\+String \&}]{value}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_x_m_l_utilities_8cpp_source_l00372}{372}} of file \mbox{\hyperlink{_x_m_l_utilities_8cpp_source}{XMLUtilities.\+cpp}}.
+
+\Hypertarget{namespace_utils_a63d0882852c3cea267451b2ecee27afe}\index{Utils@{Utils}!FindTOCBaseType@{FindTOCBaseType}}
+\index{FindTOCBaseType@{FindTOCBaseType}!Utils@{Utils}}
+\doxysubsubsection{\texorpdfstring{FindTOCBaseType()}{FindTOCBaseType()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{namespace_utils_a63d0882852c3cea267451b2ecee27afe} 
+\mbox{\hyperlink{namespace_utils_a8d9b4e3627512bacc09c31c52f3d08f1}{TOCBase\+Type}} Utils\+::\+Find\+TOCBase\+Type (\begin{DoxyParamCaption}\item[{wx\+String}]{name}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_t_o_c_defs_8cpp_source_l00062}{62}} of file \mbox{\hyperlink{_t_o_c_defs_8cpp_source}{TOCDefs.\+cpp}}.
+
+\Hypertarget{namespace_utils_a10e6f88e02d3b871666ca8fa943fee87}\index{Utils@{Utils}!FindTOCBaseType@{FindTOCBaseType}}
+\index{FindTOCBaseType@{FindTOCBaseType}!Utils@{Utils}}
+\doxysubsubsection{\texorpdfstring{FindTOCBaseType()}{FindTOCBaseType()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{namespace_utils_a10e6f88e02d3b871666ca8fa943fee87} 
+\mbox{\hyperlink{namespace_utils_a8d9b4e3627512bacc09c31c52f3d08f1}{TOCBase\+Type}} Utils\+::\+Find\+TOCBase\+Type (\begin{DoxyParamCaption}\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{element}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_t_o_c_defs_8cpp_source_l00049}{49}} of file \mbox{\hyperlink{_t_o_c_defs_8cpp_source}{TOCDefs.\+cpp}}.
+
+\Hypertarget{namespace_utils_ac982aeec9bf06c61495032e66e41d30f}\index{Utils@{Utils}!FirstChildElement@{FirstChildElement}}
+\index{FirstChildElement@{FirstChildElement}!Utils@{Utils}}
+\doxysubsubsection{\texorpdfstring{FirstChildElement()}{FirstChildElement()}}
+{\footnotesize\ttfamily \label{namespace_utils_ac982aeec9bf06c61495032e66e41d30f} 
+wx\+Xml\+Node \texorpdfstring{$\ast$}{*} Utils\+::\+First\+Child\+Element (\begin{DoxyParamCaption}\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{node}{, }\item[{wx\+String}]{name}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_x_m_l_utilities_8cpp_source_l00207}{207}} of file \mbox{\hyperlink{_x_m_l_utilities_8cpp_source}{XMLUtilities.\+cpp}}.
+
+\Hypertarget{namespace_utils_aa046de85e45b0c643530d600a0d8b2e0}\index{Utils@{Utils}!GetAttrDbl@{GetAttrDbl}}
+\index{GetAttrDbl@{GetAttrDbl}!Utils@{Utils}}
+\doxysubsubsection{\texorpdfstring{GetAttrDbl()}{GetAttrDbl()}}
+{\footnotesize\ttfamily \label{namespace_utils_aa046de85e45b0c643530d600a0d8b2e0} 
+double Utils\+::\+Get\+Attr\+Dbl (\begin{DoxyParamCaption}\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{node}{, }\item[{wx\+String}]{attr\+Name}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_x_m_l_utilities_8cpp_source_l00252}{252}} of file \mbox{\hyperlink{_x_m_l_utilities_8cpp_source}{XMLUtilities.\+cpp}}.
+
+\Hypertarget{namespace_utils_a0cf7591f8dca3719de0ef110784f0824}\index{Utils@{Utils}!GetAttribute@{GetAttribute}}
+\index{GetAttribute@{GetAttribute}!Utils@{Utils}}
+\doxysubsubsection{\texorpdfstring{GetAttribute()}{GetAttribute()}}
+{\footnotesize\ttfamily \label{namespace_utils_a0cf7591f8dca3719de0ef110784f0824} 
+wx\+Xml\+Attribute \texorpdfstring{$\ast$}{*} Utils\+::\+Get\+Attribute (\begin{DoxyParamCaption}\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{node}{, }\item[{wx\+String}]{attr\+Name}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_x_m_l_utilities_8cpp_source_l00227}{227}} of file \mbox{\hyperlink{_x_m_l_utilities_8cpp_source}{XMLUtilities.\+cpp}}.
+
+\Hypertarget{namespace_utils_a4b9bc624ff61c4a618c12b911b48110c}\index{Utils@{Utils}!GetAttrStr@{GetAttrStr}}
+\index{GetAttrStr@{GetAttrStr}!Utils@{Utils}}
+\doxysubsubsection{\texorpdfstring{GetAttrStr()}{GetAttrStr()}}
+{\footnotesize\ttfamily \label{namespace_utils_a4b9bc624ff61c4a618c12b911b48110c} 
+wx\+String Utils\+::\+Get\+Attr\+Str (\begin{DoxyParamCaption}\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{node}{, }\item[{wx\+String}]{attr\+Name}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_x_m_l_utilities_8cpp_source_l00242}{242}} of file \mbox{\hyperlink{_x_m_l_utilities_8cpp_source}{XMLUtilities.\+cpp}}.
+
+\Hypertarget{namespace_utils_a4bd8564086b1c20198edd41cfffbfffe}\index{Utils@{Utils}!GetDrawName@{GetDrawName}}
+\index{GetDrawName@{GetDrawName}!Utils@{Utils}}
+\doxysubsubsection{\texorpdfstring{GetDrawName()}{GetDrawName()}}
+{\footnotesize\ttfamily \label{namespace_utils_a4bd8564086b1c20198edd41cfffbfffe} 
+char \texorpdfstring{$\ast$}{*} Utils\+::\+Get\+Draw\+Name (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{str}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_x_m_l_utilities_8cpp_source_l00485}{485}} of file \mbox{\hyperlink{_x_m_l_utilities_8cpp_source}{XMLUtilities.\+cpp}}.
+
+\Hypertarget{namespace_utils_ae7ef76108d7d8193ba7f0edf2026bc32}\index{Utils@{Utils}!GetFrameName@{GetFrameName}}
+\index{GetFrameName@{GetFrameName}!Utils@{Utils}}
+\doxysubsubsection{\texorpdfstring{GetFrameName()}{GetFrameName()}}
+{\footnotesize\ttfamily \label{namespace_utils_ae7ef76108d7d8193ba7f0edf2026bc32} 
+char \texorpdfstring{$\ast$}{*} Utils\+::\+Get\+Frame\+Name (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{str}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_x_m_l_utilities_8cpp_source_l00492}{492}} of file \mbox{\hyperlink{_x_m_l_utilities_8cpp_source}{XMLUtilities.\+cpp}}.
+
+\Hypertarget{namespace_utils_aedcb00f7c21ab0a2d6cef5dec7fc1b22}\index{Utils@{Utils}!GetImageName@{GetImageName}}
+\index{GetImageName@{GetImageName}!Utils@{Utils}}
+\doxysubsubsection{\texorpdfstring{GetImageName()}{GetImageName()}}
+{\footnotesize\ttfamily \label{namespace_utils_aedcb00f7c21ab0a2d6cef5dec7fc1b22} 
+char \texorpdfstring{$\ast$}{*} Utils\+::\+Get\+Image\+Name (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{str}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_x_m_l_utilities_8cpp_source_l00478}{478}} of file \mbox{\hyperlink{_x_m_l_utilities_8cpp_source}{XMLUtilities.\+cpp}}.
+
+\Hypertarget{namespace_utils_a20b6fc56dbae2455f1b9ee08595ac918}\index{Utils@{Utils}!GetNext@{GetNext}}
+\index{GetNext@{GetNext}!Utils@{Utils}}
+\doxysubsubsection{\texorpdfstring{GetNext()}{GetNext()}}
+{\footnotesize\ttfamily \label{namespace_utils_a20b6fc56dbae2455f1b9ee08595ac918} 
+wx\+Xml\+Node \texorpdfstring{$\ast$}{*} Utils\+::\+Get\+Next (\begin{DoxyParamCaption}\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{node}{, }\item[{wx\+String}]{name}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_x_m_l_utilities_8cpp_source_l00156}{156}} of file \mbox{\hyperlink{_x_m_l_utilities_8cpp_source}{XMLUtilities.\+cpp}}.
+
+\Hypertarget{namespace_utils_a9ad1087c313abbc250a501bc57337d48}\index{Utils@{Utils}!GetTextStyleName@{GetTextStyleName}}
+\index{GetTextStyleName@{GetTextStyleName}!Utils@{Utils}}
+\doxysubsubsection{\texorpdfstring{GetTextStyleName()}{GetTextStyleName()}}
+{\footnotesize\ttfamily \label{namespace_utils_a9ad1087c313abbc250a501bc57337d48} 
+wx\+String Utils\+::\+Get\+Text\+Style\+Name (\begin{DoxyParamCaption}\item[{wx\+String \&}]{str}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_x_m_l_utilities_8cpp_source_l00498}{498}} of file \mbox{\hyperlink{_x_m_l_utilities_8cpp_source}{XMLUtilities.\+cpp}}.
+
+\Hypertarget{namespace_utils_afea393f29a96e3327b04f718a3372917}\index{Utils@{Utils}!GetZIndex@{GetZIndex}}
+\index{GetZIndex@{GetZIndex}!Utils@{Utils}}
+\doxysubsubsection{\texorpdfstring{GetZIndex()}{GetZIndex()}}
+{\footnotesize\ttfamily \label{namespace_utils_afea393f29a96e3327b04f718a3372917} 
+char \texorpdfstring{$\ast$}{*} Utils\+::\+Get\+ZIndex (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{str}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_x_m_l_utilities_8cpp_source_l00471}{471}} of file \mbox{\hyperlink{_x_m_l_utilities_8cpp_source}{XMLUtilities.\+cpp}}.
+
+\Hypertarget{namespace_utils_aff8ea290d3a6f7270c0a0e8fc2b58dba}\index{Utils@{Utils}!IDElement@{IDElement}}
+\index{IDElement@{IDElement}!Utils@{Utils}}
+\doxysubsubsection{\texorpdfstring{IDElement()}{IDElement()}}
+{\footnotesize\ttfamily \label{namespace_utils_aff8ea290d3a6f7270c0a0e8fc2b58dba} 
+void Utils\+::\+IDElement (\begin{DoxyParamCaption}\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{ele}{}\end{DoxyParamCaption})}
+
+\Hypertarget{namespace_utils_a339aad8cb75a8ed1f4e912e969c22e3f}\index{Utils@{Utils}!IntToInchString@{IntToInchString}}
+\index{IntToInchString@{IntToInchString}!Utils@{Utils}}
+\doxysubsubsection{\texorpdfstring{IntToInchString()}{IntToInchString()}}
+{\footnotesize\ttfamily \label{namespace_utils_a339aad8cb75a8ed1f4e912e969c22e3f} 
+char \texorpdfstring{$\ast$}{*} Utils\+::\+Int\+To\+Inch\+String (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{str}{, }\item[{int}]{nbr}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_x_m_l_utilities_8cpp_source_l00510}{510}} of file \mbox{\hyperlink{_x_m_l_utilities_8cpp_source}{XMLUtilities.\+cpp}}.
+
+\Hypertarget{namespace_utils_a4cc034f6f2b276279458fb5426bd9d67}\index{Utils@{Utils}!LoadFont@{LoadFont}}
+\index{LoadFont@{LoadFont}!Utils@{Utils}}
+\doxysubsubsection{\texorpdfstring{LoadFont()}{LoadFont()}}
+{\footnotesize\ttfamily \label{namespace_utils_a4cc034f6f2b276279458fb5426bd9d67} 
+\mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4}{Design\+::\+Font\+Usage\+Type}} Utils\+::\+Load\+Font (\begin{DoxyParamCaption}\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{font\+Node}{, }\item[{wx\+String \&}]{native\+String}{, }\item[{wx\+String \&}]{color}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_x_m_l_utilities_8cpp_source_l00531}{531}} of file \mbox{\hyperlink{_x_m_l_utilities_8cpp_source}{XMLUtilities.\+cpp}}.
+
+\Hypertarget{namespace_utils_a4f95c3cd5e19c237876cbadcfced8db0}\index{Utils@{Utils}!NewNode@{NewNode}}
+\index{NewNode@{NewNode}!Utils@{Utils}}
+\doxysubsubsection{\texorpdfstring{NewNode()}{NewNode()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{namespace_utils_a4f95c3cd5e19c237876cbadcfced8db0} 
+wx\+Xml\+Node \texorpdfstring{$\ast$}{*} Utils\+::\+New\+Node (\begin{DoxyParamCaption}\item[{wx\+Xml\+Document \texorpdfstring{$\ast$}{*}}]{doc}{, }\item[{wx\+String}]{name}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_x_m_l_utilities_8cpp_source_l00184}{184}} of file \mbox{\hyperlink{_x_m_l_utilities_8cpp_source}{XMLUtilities.\+cpp}}.
+
+\Hypertarget{namespace_utils_a156ddf8c893eba62f65ffa2a5860c766}\index{Utils@{Utils}!NewNode@{NewNode}}
+\index{NewNode@{NewNode}!Utils@{Utils}}
+\doxysubsubsection{\texorpdfstring{NewNode()}{NewNode()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{namespace_utils_a156ddf8c893eba62f65ffa2a5860c766} 
+wx\+Xml\+Node \texorpdfstring{$\ast$}{*} Utils\+::\+New\+Node (\begin{DoxyParamCaption}\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{parent}{, }\item[{wx\+String}]{name}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_x_m_l_utilities_8cpp_source_l00172}{172}} of file \mbox{\hyperlink{_x_m_l_utilities_8cpp_source}{XMLUtilities.\+cpp}}.
+
+\Hypertarget{namespace_utils_adea2fb711682fc2ee218935269d4b5e3}\index{Utils@{Utils}!NewSettingsInstance@{NewSettingsInstance}}
+\index{NewSettingsInstance@{NewSettingsInstance}!Utils@{Utils}}
+\doxysubsubsection{\texorpdfstring{NewSettingsInstance()}{NewSettingsInstance()}}
+{\footnotesize\ttfamily \label{namespace_utils_adea2fb711682fc2ee218935269d4b5e3} 
+\mbox{\hyperlink{class_utils_1_1_settings}{Settings}} \texorpdfstring{$\ast$}{*} Utils\+::\+New\+Settings\+Instance (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_settings_8cpp_source_l00064}{64}} of file \mbox{\hyperlink{_settings_8cpp_source}{Settings.\+cpp}}.
+
+\Hypertarget{namespace_utils_a2f36e508a1382037cb5b8174c50b1b05}\index{Utils@{Utils}!Save@{Save}}
+\index{Save@{Save}!Utils@{Utils}}
+\doxysubsubsection{\texorpdfstring{Save()}{Save()}}
+{\footnotesize\ttfamily \label{namespace_utils_a2f36e508a1382037cb5b8174c50b1b05} 
+void Utils\+::\+Save (\begin{DoxyParamCaption}\item[{wx\+Xml\+Document \texorpdfstring{$\ast$}{*}}]{doc}{, }\item[{wx\+String}]{filename}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_x_m_l_utilities_8cpp_source_l00397}{397}} of file \mbox{\hyperlink{_x_m_l_utilities_8cpp_source}{XMLUtilities.\+cpp}}.
+
+\Hypertarget{namespace_utils_a042420a85be23883c3e293d3185f6642}\index{Utils@{Utils}!SaveAttributes@{SaveAttributes}}
+\index{SaveAttributes@{SaveAttributes}!Utils@{Utils}}
+\doxysubsubsection{\texorpdfstring{SaveAttributes()}{SaveAttributes()}}
+{\footnotesize\ttfamily \label{namespace_utils_a042420a85be23883c3e293d3185f6642} 
+void Utils\+::\+Save\+Attributes (\begin{DoxyParamCaption}\item[{wx\+Text\+Output\+Stream \texorpdfstring{$\ast$}{*}}]{text}{, }\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{node}{, }\item[{wx\+String}]{level}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_x_m_l_utilities_8cpp_source_l00414}{414}} of file \mbox{\hyperlink{_x_m_l_utilities_8cpp_source}{XMLUtilities.\+cpp}}.
+
+\Hypertarget{namespace_utils_a520fb2bd5694d07857d8ceaadaba2636}\index{Utils@{Utils}!SaveChild@{SaveChild}}
+\index{SaveChild@{SaveChild}!Utils@{Utils}}
+\doxysubsubsection{\texorpdfstring{SaveChild()}{SaveChild()}}
+{\footnotesize\ttfamily \label{namespace_utils_a520fb2bd5694d07857d8ceaadaba2636} 
+void Utils\+::\+Save\+Child (\begin{DoxyParamCaption}\item[{wx\+Text\+Output\+Stream \texorpdfstring{$\ast$}{*}}]{text}{, }\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{node}{, }\item[{wx\+String}]{level}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_x_m_l_utilities_8cpp_source_l00425}{425}} of file \mbox{\hyperlink{_x_m_l_utilities_8cpp_source}{XMLUtilities.\+cpp}}.
+
+\Hypertarget{namespace_utils_ab42e7bb3c92cba2f30cf6f4dbf5859ca}\index{Utils@{Utils}!SaveFont@{SaveFont}}
+\index{SaveFont@{SaveFont}!Utils@{Utils}}
+\doxysubsubsection{\texorpdfstring{SaveFont()}{SaveFont()}}
+{\footnotesize\ttfamily \label{namespace_utils_ab42e7bb3c92cba2f30cf6f4dbf5859ca} 
+void Utils\+::\+Save\+Font (\begin{DoxyParamCaption}\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{parent}{, }\item[{\mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4}{Design\+::\+Font\+Usage\+Type}}}]{type}{, }\item[{wx\+Font}]{font}{, }\item[{wx\+Colour}]{color}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_x_m_l_utilities_8cpp_source_l00516}{516}} of file \mbox{\hyperlink{_x_m_l_utilities_8cpp_source}{XMLUtilities.\+cpp}}.
+
+\Hypertarget{namespace_utils_ad5e2d842159071641ed8e04dd56b807d}\index{Utils@{Utils}!SetAttrDbl@{SetAttrDbl}}
+\index{SetAttrDbl@{SetAttrDbl}!Utils@{Utils}}
+\doxysubsubsection{\texorpdfstring{SetAttrDbl()}{SetAttrDbl()}}
+{\footnotesize\ttfamily \label{namespace_utils_ad5e2d842159071641ed8e04dd56b807d} 
+void Utils\+::\+Set\+Attr\+Dbl (\begin{DoxyParamCaption}\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{node}{, }\item[{wx\+String}]{name}{, }\item[{double}]{val}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_x_m_l_utilities_8cpp_source_l00310}{310}} of file \mbox{\hyperlink{_x_m_l_utilities_8cpp_source}{XMLUtilities.\+cpp}}.
+
+\Hypertarget{namespace_utils_acd4b52904d20e67e1b9570914c1c45a7}\index{Utils@{Utils}!SetAttrStr@{SetAttrStr}}
+\index{SetAttrStr@{SetAttrStr}!Utils@{Utils}}
+\doxysubsubsection{\texorpdfstring{SetAttrStr()}{SetAttrStr()}}
+{\footnotesize\ttfamily \label{namespace_utils_acd4b52904d20e67e1b9570914c1c45a7} 
+void Utils\+::\+Set\+Attr\+Str (\begin{DoxyParamCaption}\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{node}{, }\item[{wx\+String}]{name}{, }\item[{wx\+String}]{val}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_x_m_l_utilities_8cpp_source_l00263}{263}} of file \mbox{\hyperlink{_x_m_l_utilities_8cpp_source}{XMLUtilities.\+cpp}}.
+
+\Hypertarget{namespace_utils_a507507aaf475afbf0a2a4ac2ed376d7e}\index{Utils@{Utils}!WayToSort@{WayToSort}}
+\index{WayToSort@{WayToSort}!Utils@{Utils}}
+\doxysubsubsection{\texorpdfstring{WayToSort()}{WayToSort()}}
+{\footnotesize\ttfamily \label{namespace_utils_a507507aaf475afbf0a2a4ac2ed376d7e} 
+int Utils\+::\+Way\+To\+Sort (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_utils_1_1_volume}{Utils\+::\+Volume}} \texorpdfstring{$\ast$}{*}}]{sect1}{, }\item[{\mbox{\hyperlink{class_utils_1_1_volume}{Utils\+::\+Volume}} \texorpdfstring{$\ast$}{*}}]{sect2}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_volume_list_8cpp_source_l00230}{230}} of file \mbox{\hyperlink{_volume_list_8cpp_source}{Volume\+List.\+cpp}}.
+
+\Hypertarget{namespace_utils_a299c4c79d05b5c053a03bccc1a46e729}\index{Utils@{Utils}!XMLDump@{XMLDump}}
+\index{XMLDump@{XMLDump}!Utils@{Utils}}
+\doxysubsubsection{\texorpdfstring{XMLDump()}{XMLDump()}}
+{\footnotesize\ttfamily \label{namespace_utils_a299c4c79d05b5c053a03bccc1a46e729} 
+void Utils\+::\+XMLDump (\begin{DoxyParamCaption}\item[{wx\+Xml\+Document \texorpdfstring{$\ast$}{*}}]{doc}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_x_m_l_utilities_8cpp_source_l00326}{326}} of file \mbox{\hyperlink{_x_m_l_utilities_8cpp_source}{XMLUtilities.\+cpp}}.
+
+\Hypertarget{namespace_utils_a41d2f3984cc2355a4d7f4f87d862f65f}\index{Utils@{Utils}!XMLDumpNode@{XMLDumpNode}}
+\index{XMLDumpNode@{XMLDumpNode}!Utils@{Utils}}
+\doxysubsubsection{\texorpdfstring{XMLDumpNode()}{XMLDumpNode()}}
+{\footnotesize\ttfamily \label{namespace_utils_a41d2f3984cc2355a4d7f4f87d862f65f} 
+void Utils\+::\+XMLDump\+Node (\begin{DoxyParamCaption}\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{node}{, }\item[{wx\+String}]{level}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_x_m_l_utilities_8cpp_source_l00332}{332}} of file \mbox{\hyperlink{_x_m_l_utilities_8cpp_source}{XMLUtilities.\+cpp}}.
+
+
+
+\label{doc-var-members}
+\Hypertarget{namespace_utils_doc-var-members}
+\doxysubsection{Variable Documentation}
+\Hypertarget{namespace_utils_a5f13546b1e3a9ca7943efdebcf3f5428}\index{Utils@{Utils}!FontCount@{FontCount}}
+\index{FontCount@{FontCount}!Utils@{Utils}}
+\doxysubsubsection{\texorpdfstring{FontCount}{FontCount}}
+{\footnotesize\ttfamily \label{namespace_utils_a5f13546b1e3a9ca7943efdebcf3f5428} 
+int Utils\+::\+Font\+Count = -\/1}
+
+
+
+Definition at line \mbox{\hyperlink{_font_list_8cpp_source_l00046}{46}} of file \mbox{\hyperlink{_font_list_8cpp_source}{Font\+List.\+cpp}}.
+
+\Hypertarget{namespace_utils_a3dbd78bf71c5573b5f22b80de8304b2b}\index{Utils@{Utils}!frameIndex@{frameIndex}}
+\index{frameIndex@{frameIndex}!Utils@{Utils}}
+\doxysubsubsection{\texorpdfstring{frameIndex}{frameIndex}}
+{\footnotesize\ttfamily \label{namespace_utils_a3dbd78bf71c5573b5f22b80de8304b2b} 
+int Utils\+::frame\+Index = 0}
+
+
+
+Definition at line \mbox{\hyperlink{_x_m_l_utilities_8cpp_source_l00056}{56}} of file \mbox{\hyperlink{_x_m_l_utilities_8cpp_source}{XMLUtilities.\+cpp}}.
+
+\Hypertarget{namespace_utils_ac6ea5372f70cc2a9bd55409e24ca93f5}\index{Utils@{Utils}!imageIndex@{imageIndex}}
+\index{imageIndex@{imageIndex}!Utils@{Utils}}
+\doxysubsubsection{\texorpdfstring{imageIndex}{imageIndex}}
+{\footnotesize\ttfamily \label{namespace_utils_ac6ea5372f70cc2a9bd55409e24ca93f5} 
+int Utils\+::image\+Index = 0}
+
+
+
+Definition at line \mbox{\hyperlink{_x_m_l_utilities_8cpp_source_l00057}{57}} of file \mbox{\hyperlink{_x_m_l_utilities_8cpp_source}{XMLUtilities.\+cpp}}.
+
+\Hypertarget{namespace_utils_a38088d53a7a4506df998a4ad6a79dc72}\index{Utils@{Utils}!StyleNameIndex@{StyleNameIndex}}
+\index{StyleNameIndex@{StyleNameIndex}!Utils@{Utils}}
+\doxysubsubsection{\texorpdfstring{StyleNameIndex}{StyleNameIndex}}
+{\footnotesize\ttfamily \label{namespace_utils_a38088d53a7a4506df998a4ad6a79dc72} 
+int Utils\+::\+Style\+Name\+Index = 0}
+
+
+
+Definition at line \mbox{\hyperlink{_x_m_l_utilities_8cpp_source_l00058}{58}} of file \mbox{\hyperlink{_x_m_l_utilities_8cpp_source}{XMLUtilities.\+cpp}}.
+
+\Hypertarget{namespace_utils_ab1eaa1d4e06e66103dffe43479fd9783}\index{Utils@{Utils}!TOCBaseNames@{TOCBaseNames}}
+\index{TOCBaseNames@{TOCBaseNames}!Utils@{Utils}}
+\doxysubsubsection{\texorpdfstring{TOCBaseNames}{TOCBaseNames}}
+{\footnotesize\ttfamily \label{namespace_utils_ab1eaa1d4e06e66103dffe43479fd9783} 
+const wx\+String Utils\+::\+TOCBase\+Names}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Section"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Volume"{}},\ \textcolor{stringliteral}{"{}None"{}}\ \}}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{_t_o_c_defs_8cpp_source_l00045}{45}} of file \mbox{\hyperlink{_t_o_c_defs_8cpp_source}{TOCDefs.\+cpp}}.
+
+\Hypertarget{namespace_utils_ab14cb95d5f1743e3776caf7f3891e68a}\index{Utils@{Utils}!zIndex@{zIndex}}
+\index{zIndex@{zIndex}!Utils@{Utils}}
+\doxysubsubsection{\texorpdfstring{zIndex}{zIndex}}
+{\footnotesize\ttfamily \label{namespace_utils_ab14cb95d5f1743e3776caf7f3891e68a} 
+int Utils\+::z\+Index = 0}
+
+
+
+Definition at line \mbox{\hyperlink{_x_m_l_utilities_8cpp_source_l00055}{55}} of file \mbox{\hyperlink{_x_m_l_utilities_8cpp_source}{XMLUtilities.\+cpp}}.
+

@@ -1,0 +1,202 @@
+\doxysection{Catalog\+::Catalog\+Base Class Reference}
+\hypertarget{class_catalog_1_1_catalog_base}{}\label{class_catalog_1_1_catalog_base}\index{Catalog::CatalogBase@{Catalog::CatalogBase}}
+
+
+Base class for all catalog objects. The catalog objects are initialy loaded from the catalog XML or from a csv file.  
+
+
+
+
+{\ttfamily \#include $<$Catalog\+Base.\+h$>$}
+
+Inheritance diagram for Catalog\+::Catalog\+Base\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_catalog_1_1_catalog_base}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_catalog_1_1_catalog_base_a8b9ece6806489f6cd0bcd6aa39eb17a8}{Catalog\+Base}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}ele)
+\item 
+\mbox{\hyperlink{class_catalog_1_1_catalog_base_abac3dd13dc14aa6c47ebbdd78dd24e78}{\texorpdfstring{$\sim$}{\string~}\+Catalog\+Base}} ()
+\item 
+wx\+Xml\+Node \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_catalog_1_1_catalog_base_a20c800594b9f7d8e1a965252cfab3c93}{Get\+Cat\+XMLNode}} ()
+\item 
+wx\+Xml\+Node \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_catalog_1_1_catalog_base_a6c34ff464a7303a6525cc6248bba9266}{Get\+First\+Child}} ()
+\item 
+wx\+String \mbox{\hyperlink{class_catalog_1_1_catalog_base_ad4b7489a8a1f18eebf39f20946c5d9ce}{Get\+Node\+Attr\+Str}} (wx\+String name)
+\item 
+double \mbox{\hyperlink{class_catalog_1_1_catalog_base_a40c67de1b176d5aa45c20dee0d4ffc6e}{Get\+Node\+Attr\+Dbl}} (wx\+String name)
+\item 
+\mbox{\hyperlink{namespace_catalog_a86f503ced35b06e6427477ddab27c6be}{Catalog\+Base\+Type}} \mbox{\hyperlink{class_catalog_1_1_catalog_base_a04468447aa0091bc6030ae768bf4c256}{Get\+Node\+Type}} ()
+\item 
+virtual bool \mbox{\hyperlink{class_catalog_1_1_catalog_base_a40ba46a2ab0e54242fc9b65e3a85bc4a}{Is\+OK}} ()=0
+\item 
+void \mbox{\hyperlink{class_catalog_1_1_catalog_base_acfff9a14c74a6068f7c77f365687b16d}{Set\+Node\+Attr\+Str}} (wx\+String name, wx\+String val)
+\item 
+void \mbox{\hyperlink{class_catalog_1_1_catalog_base_a1fc4ebc318db1def6be9931d6257ff76}{Set\+Node\+Attr\+Dbl}} (wx\+String name, double val)
+\item 
+void \mbox{\hyperlink{class_catalog_1_1_catalog_base_af9b0c273a3d23cda1693bc20daef6ce2}{Set\+Node\+Type}} (\mbox{\hyperlink{namespace_catalog_a86f503ced35b06e6427477ddab27c6be}{Catalog\+Base\+Type}} type)
+\item 
+void \mbox{\hyperlink{class_catalog_1_1_catalog_base_ad9dd1219516a68d1123431ffcd8933fc}{Set\+XMLCat\+Node}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}node)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_catalog_1_1_catalog_base_a613406c607f4dcc6cdd3ffddd8c18523}{Catalog\+Base}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Base class for all catalog objects. The catalog objects are initialy loaded from the catalog XML or from a csv file. 
+
+Definition at line \mbox{\hyperlink{_catalog_base_8h_source_l00036}{36}} of file \mbox{\hyperlink{_catalog_base_8h_source}{Catalog\+Base.\+h}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_catalog_1_1_catalog_base_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_catalog_1_1_catalog_base_a613406c607f4dcc6cdd3ffddd8c18523}\index{Catalog::CatalogBase@{Catalog::CatalogBase}!CatalogBase@{CatalogBase}}
+\index{CatalogBase@{CatalogBase}!Catalog::CatalogBase@{Catalog::CatalogBase}}
+\doxysubsubsection{\texorpdfstring{CatalogBase()}{CatalogBase()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_catalog_base_a613406c607f4dcc6cdd3ffddd8c18523} 
+Catalog\+::\+Catalog\+Base\+::\+Catalog\+Base (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_base_8h_source_l00040}{40}} of file \mbox{\hyperlink{_catalog_base_8h_source}{Catalog\+Base.\+h}}.
+
+\Hypertarget{class_catalog_1_1_catalog_base_a8b9ece6806489f6cd0bcd6aa39eb17a8}\index{Catalog::CatalogBase@{Catalog::CatalogBase}!CatalogBase@{CatalogBase}}
+\index{CatalogBase@{CatalogBase}!Catalog::CatalogBase@{Catalog::CatalogBase}}
+\doxysubsubsection{\texorpdfstring{CatalogBase()}{CatalogBase()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_catalog_base_a8b9ece6806489f6cd0bcd6aa39eb17a8} 
+Catalog\+::\+Catalog\+Base\+::\+Catalog\+Base (\begin{DoxyParamCaption}\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{ele}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_base_8h_source_l00045}{45}} of file \mbox{\hyperlink{_catalog_base_8h_source}{Catalog\+Base.\+h}}.
+
+\Hypertarget{class_catalog_1_1_catalog_base_abac3dd13dc14aa6c47ebbdd78dd24e78}\index{Catalog::CatalogBase@{Catalog::CatalogBase}!````~CatalogBase@{\texorpdfstring{$\sim$}{\string~}CatalogBase}}
+\index{````~CatalogBase@{\texorpdfstring{$\sim$}{\string~}CatalogBase}!Catalog::CatalogBase@{Catalog::CatalogBase}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}CatalogBase()}{\string~CatalogBase()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_catalog_base_abac3dd13dc14aa6c47ebbdd78dd24e78} 
+Catalog\+::\+Catalog\+Base\+::\texorpdfstring{$\sim$}{\string~}\+Catalog\+Base (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_base_8h_source_l00049}{49}} of file \mbox{\hyperlink{_catalog_base_8h_source}{Catalog\+Base.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_catalog_1_1_catalog_base_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_catalog_1_1_catalog_base_a20c800594b9f7d8e1a965252cfab3c93}\index{Catalog::CatalogBase@{Catalog::CatalogBase}!GetCatXMLNode@{GetCatXMLNode}}
+\index{GetCatXMLNode@{GetCatXMLNode}!Catalog::CatalogBase@{Catalog::CatalogBase}}
+\doxysubsubsection{\texorpdfstring{GetCatXMLNode()}{GetCatXMLNode()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_catalog_base_a20c800594b9f7d8e1a965252cfab3c93} 
+wx\+Xml\+Node \texorpdfstring{$\ast$}{*} Catalog\+::\+Catalog\+Base\+::\+Get\+Cat\+XMLNode (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_base_8h_source_l00054}{54}} of file \mbox{\hyperlink{_catalog_base_8h_source}{Catalog\+Base.\+h}}.
+
+\Hypertarget{class_catalog_1_1_catalog_base_a6c34ff464a7303a6525cc6248bba9266}\index{Catalog::CatalogBase@{Catalog::CatalogBase}!GetFirstChild@{GetFirstChild}}
+\index{GetFirstChild@{GetFirstChild}!Catalog::CatalogBase@{Catalog::CatalogBase}}
+\doxysubsubsection{\texorpdfstring{GetFirstChild()}{GetFirstChild()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_catalog_base_a6c34ff464a7303a6525cc6248bba9266} 
+wx\+Xml\+Node \texorpdfstring{$\ast$}{*} Catalog\+::\+Catalog\+Base\+::\+Get\+First\+Child (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_base_8h_source_l00058}{58}} of file \mbox{\hyperlink{_catalog_base_8h_source}{Catalog\+Base.\+h}}.
+
+\Hypertarget{class_catalog_1_1_catalog_base_a40c67de1b176d5aa45c20dee0d4ffc6e}\index{Catalog::CatalogBase@{Catalog::CatalogBase}!GetNodeAttrDbl@{GetNodeAttrDbl}}
+\index{GetNodeAttrDbl@{GetNodeAttrDbl}!Catalog::CatalogBase@{Catalog::CatalogBase}}
+\doxysubsubsection{\texorpdfstring{GetNodeAttrDbl()}{GetNodeAttrDbl()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_catalog_base_a40c67de1b176d5aa45c20dee0d4ffc6e} 
+double Catalog\+::\+Catalog\+Base\+::\+Get\+Node\+Attr\+Dbl (\begin{DoxyParamCaption}\item[{wx\+String}]{name}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_base_8cpp_source_l00048}{48}} of file \mbox{\hyperlink{_catalog_base_8cpp_source}{Catalog\+Base.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_catalog_base_ad4b7489a8a1f18eebf39f20946c5d9ce}\index{Catalog::CatalogBase@{Catalog::CatalogBase}!GetNodeAttrStr@{GetNodeAttrStr}}
+\index{GetNodeAttrStr@{GetNodeAttrStr}!Catalog::CatalogBase@{Catalog::CatalogBase}}
+\doxysubsubsection{\texorpdfstring{GetNodeAttrStr()}{GetNodeAttrStr()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_catalog_base_ad4b7489a8a1f18eebf39f20946c5d9ce} 
+wx\+String Catalog\+::\+Catalog\+Base\+::\+Get\+Node\+Attr\+Str (\begin{DoxyParamCaption}\item[{wx\+String}]{name}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_base_8cpp_source_l00055}{55}} of file \mbox{\hyperlink{_catalog_base_8cpp_source}{Catalog\+Base.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_catalog_base_a04468447aa0091bc6030ae768bf4c256}\index{Catalog::CatalogBase@{Catalog::CatalogBase}!GetNodeType@{GetNodeType}}
+\index{GetNodeType@{GetNodeType}!Catalog::CatalogBase@{Catalog::CatalogBase}}
+\doxysubsubsection{\texorpdfstring{GetNodeType()}{GetNodeType()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_catalog_base_a04468447aa0091bc6030ae768bf4c256} 
+\mbox{\hyperlink{namespace_catalog_a86f503ced35b06e6427477ddab27c6be}{Catalog\+Base\+Type}} Catalog\+::\+Catalog\+Base\+::\+Get\+Node\+Type (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_base_8h_source_l00066}{66}} of file \mbox{\hyperlink{_catalog_base_8h_source}{Catalog\+Base.\+h}}.
+
+\Hypertarget{class_catalog_1_1_catalog_base_a40ba46a2ab0e54242fc9b65e3a85bc4a}\index{Catalog::CatalogBase@{Catalog::CatalogBase}!IsOK@{IsOK}}
+\index{IsOK@{IsOK}!Catalog::CatalogBase@{Catalog::CatalogBase}}
+\doxysubsubsection{\texorpdfstring{IsOK()}{IsOK()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_catalog_base_a40ba46a2ab0e54242fc9b65e3a85bc4a} 
+virtual bool Catalog\+::\+Catalog\+Base\+::\+Is\+OK (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_catalog_1_1_entry_a26f3ce59021eafc38181f8244aae5d05}{Catalog\+::\+Entry}}, and \mbox{\hyperlink{class_catalog_1_1_inventory_item_a178347dcad49f14386532bebb51fe329}{Catalog\+::\+Inventory\+Item}}.
+
+\Hypertarget{class_catalog_1_1_catalog_base_a1fc4ebc318db1def6be9931d6257ff76}\index{Catalog::CatalogBase@{Catalog::CatalogBase}!SetNodeAttrDbl@{SetNodeAttrDbl}}
+\index{SetNodeAttrDbl@{SetNodeAttrDbl}!Catalog::CatalogBase@{Catalog::CatalogBase}}
+\doxysubsubsection{\texorpdfstring{SetNodeAttrDbl()}{SetNodeAttrDbl()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_catalog_base_a1fc4ebc318db1def6be9931d6257ff76} 
+void Catalog\+::\+Catalog\+Base\+::\+Set\+Node\+Attr\+Dbl (\begin{DoxyParamCaption}\item[{wx\+String}]{name}{, }\item[{double}]{val}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_base_8cpp_source_l00063}{63}} of file \mbox{\hyperlink{_catalog_base_8cpp_source}{Catalog\+Base.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_catalog_base_acfff9a14c74a6068f7c77f365687b16d}\index{Catalog::CatalogBase@{Catalog::CatalogBase}!SetNodeAttrStr@{SetNodeAttrStr}}
+\index{SetNodeAttrStr@{SetNodeAttrStr}!Catalog::CatalogBase@{Catalog::CatalogBase}}
+\doxysubsubsection{\texorpdfstring{SetNodeAttrStr()}{SetNodeAttrStr()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_catalog_base_acfff9a14c74a6068f7c77f365687b16d} 
+void Catalog\+::\+Catalog\+Base\+::\+Set\+Node\+Attr\+Str (\begin{DoxyParamCaption}\item[{wx\+String}]{name}{, }\item[{wx\+String}]{val}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_base_8cpp_source_l00070}{70}} of file \mbox{\hyperlink{_catalog_base_8cpp_source}{Catalog\+Base.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_catalog_base_af9b0c273a3d23cda1693bc20daef6ce2}\index{Catalog::CatalogBase@{Catalog::CatalogBase}!SetNodeType@{SetNodeType}}
+\index{SetNodeType@{SetNodeType}!Catalog::CatalogBase@{Catalog::CatalogBase}}
+\doxysubsubsection{\texorpdfstring{SetNodeType()}{SetNodeType()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_catalog_base_af9b0c273a3d23cda1693bc20daef6ce2} 
+void Catalog\+::\+Catalog\+Base\+::\+Set\+Node\+Type (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_catalog_a86f503ced35b06e6427477ddab27c6be}{Catalog\+Base\+Type}}}]{type}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_base_8h_source_l00076}{76}} of file \mbox{\hyperlink{_catalog_base_8h_source}{Catalog\+Base.\+h}}.
+
+\Hypertarget{class_catalog_1_1_catalog_base_ad9dd1219516a68d1123431ffcd8933fc}\index{Catalog::CatalogBase@{Catalog::CatalogBase}!SetXMLCatNode@{SetXMLCatNode}}
+\index{SetXMLCatNode@{SetXMLCatNode}!Catalog::CatalogBase@{Catalog::CatalogBase}}
+\doxysubsubsection{\texorpdfstring{SetXMLCatNode()}{SetXMLCatNode()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_catalog_base_ad9dd1219516a68d1123431ffcd8933fc} 
+void Catalog\+::\+Catalog\+Base\+::\+Set\+XMLCat\+Node (\begin{DoxyParamCaption}\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{node}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_base_8h_source_l00080}{80}} of file \mbox{\hyperlink{_catalog_base_8h_source}{Catalog\+Base.\+h}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/femon/\+Development/wx/clone\+Test/\+Stamp\+Tool/src/catalog/\mbox{\hyperlink{_catalog_base_8h}{Catalog\+Base.\+h}}\item 
+C\+:/\+Users/femon/\+Development/wx/clone\+Test/\+Stamp\+Tool/src/catalog/\mbox{\hyperlink{_catalog_base_8cpp}{Catalog\+Base.\+cpp}}\end{DoxyCompactItemize}

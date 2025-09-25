@@ -1,0 +1,111 @@
+\doxysection{Font\+Picker\+Helper.\+h}
+\hypertarget{_font_picker_helper_8h_source}{}\label{_font_picker_helper_8h_source}\index{C:/Users/femon/Development/wx/cloneTest/StampTool/src/gui/FontPickerHelper.h@{C:/Users/femon/Development/wx/cloneTest/StampTool/src/gui/FontPickerHelper.h}}
+\mbox{\hyperlink{_font_picker_helper_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00002}00002\ \textcolor{comment}{\ *\ @file\ \ \ \ \ \ \ \ \ FontPickerHelper.h}}
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00003}00003\ \textcolor{comment}{\ *@brief}}
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00004}00004\ \textcolor{comment}{*\ @author\ \ \ \ \ \ Eddie\ Monroe}}
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00005}00005\ \textcolor{comment}{*\ Modified\ by:}}
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00006}00006\ \textcolor{comment}{*\ @author\ \ \ \ \ Mon\ 02\ Jan\ 2023\ 08:34:03\ CST}}
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00007}00007\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00008}00008\ \textcolor{comment}{*\ @copyright\ Copyright\ (\ c\ )\ 2024}}
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00009}00009\ \textcolor{comment}{\ *\ This\ file\ is\ part\ of\ StampTool.}}
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00010}00010\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00011}00011\ \textcolor{comment}{\ *\ StampTool\ is\ free\ software:\ you\ can\ redistribute\ it\ and/or\ modify\ it\ under\ the}}
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00012}00012\ \textcolor{comment}{\ *\ terms\ of\ the\ GNU\ General\ Public\ License\ as\ published\ by\ the\ Free\ Software\ Foundation,}}
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00013}00013\ \textcolor{comment}{\ *\ either\ version\ 3\ of\ the\ License,\ or\ any\ later\ version.}}
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00014}00014\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00015}00015\ \textcolor{comment}{\ *\ StampTool\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,\ but\ WITHOUT\ ANY}}
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00016}00016\ \textcolor{comment}{\ *\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of\ MERCHANTABILITY\ or\ FITNESS\ FOR\ A}}
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00017}00017\ \textcolor{comment}{\ *\ PARTICULAR\ PURPOSE.\ See\ the\ GNU\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00018}00018\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00019}00019\ \textcolor{comment}{\ *\ You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License\ along\ with}}
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00020}00020\ \textcolor{comment}{\ *\ StampTool.\ If\ not,\ see\ <https://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00021}00021\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00025}00025\ \textcolor{preprocessor}{\#ifndef\ \_FONTPICKERHELPER\_H\_}}
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00026}00026\ \textcolor{preprocessor}{\#define\ \_FONTPICKERHELPER\_H\_}}
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00028}00028\ \textcolor{preprocessor}{\#include\ <wx/fontpicker.h>}}
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00029}00029\ \textcolor{preprocessor}{\#include\ <wx/font.h>}}
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00030}00030\ \textcolor{preprocessor}{\#include\ <wx/clrpicker.h>}}
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00031}00031\ \textcolor{preprocessor}{\#include\ <wx/statbox.h>}}
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00033}00033\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_album_tree_ctrl_8h}{gui/AlbumTreeCtrl.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00034}00034\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_gui_defs_8h}{gui/GuiDefs.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00038}\mbox{\hyperlink{class_font_picker}{00038}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_font_picker_afe1fa65cd715dd74696e1b27ce0ce2ff}{FontPicker}}}
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00039}00039\ \{}
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00041}00041\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00044}\mbox{\hyperlink{class_font_picker_afe1fa65cd715dd74696e1b27ce0ce2ff}{00044}}\ \ \ \ \ \mbox{\hyperlink{class_font_picker_afe1fa65cd715dd74696e1b27ce0ce2ff}{FontPicker}}(\ wxWindow*\ parent,\ wxBoxSizer*\ inSizer,}
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00045}00045\ \ \ \ \ \ \ \ \ wxString\ staticText,\ wxString\ buttonText,\ \textcolor{keywordtype}{int}\&\ lastID,}
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00046}00046\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ wxFont\&\ font\ =\ wxNullFont,}
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00047}00047\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ wxColour\&\ color\ =\ *wxStockGDI::GetColour(\ wxStockGDI::COLOUR\_BLACK\ )\ )}
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00048}00048\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00050}00050\ \ \ \ \ \ \ \ \ m\_font\ =\ font;}
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00051}00051\ \ \ \ \ \ \ \ \ m\_color\ =\ color;}
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00053}00053\ \ \ \ \ \ \ \ \ wxStaticBox*\ itemStaticBoxSizerStatic\ =\ \textcolor{keyword}{new}\ wxStaticBox(\ parent,\ wxID\_ANY,\ staticText\ );}
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00054}00054\ \ \ \ \ \ \ \ \ wxStaticBoxSizer*\ itemStaticBoxSizer\ =\ \textcolor{keyword}{new}\ wxStaticBoxSizer(\ itemStaticBoxSizerStatic,\ wxHORIZONTAL\ );}
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00055}00055\ \ \ \ \ \ \ \ \ inSizer-\/>Add(\ itemStaticBoxSizer,\ 0,\ wxGROW\ |\ wxALL,\ 2\ );}
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00058}00058\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ itemStaticBoxSizer\ =\ new\ wxBoxSizer(\ wxHORIZONTAL\ );}}
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00059}00059\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ verticalSizer-\/>Add(\ m\_horizontalSizer,\ 0,\ wxGROW\ |\ wxALL,\ 5\ );}}
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00061}00061\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ wxStaticText*\ FontStatic\ =\ new\ wxStaticText(\ parent,\ ++lastID,\ staticText,\ wxDefaultPosition,\ wxDefaultSize,\ 0\ );}}
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//itemStaticBoxSizer-\/>Add(\ FontStatic,\ 0,\ wxALIGN\_CENTER\_VERTICAL\ |\ wxALL,\ 5\ );}}
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00064}00064\ \ \ \ \ \ \ \ \ m\_fontPicker\ =\ \textcolor{keyword}{new}\ wxFontPickerCtrl(\ parent,\ ++lastID,}
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ m\_font,\ wxDefaultPosition,}
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ wxDefaultSize,\ wxFNTP\_DEFAULT\_STYLE\ );}
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00067}00067\ \ \ \ \ \ \ \ \ itemStaticBoxSizer-\/>Add(\ m\_fontPicker,\ 1,\ wxGROW\ |\ wxALL,\ 5\ );}
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00069}00069\ \ \ \ \ \ \ \ \ m\_colorPicker\ =\ \textcolor{keyword}{new}\ wxColourPickerCtrl(\ parent,\ ++lastID,}
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ m\_color,\ wxDefaultPosition,}
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ wxSize(\ 40,\ -\/1\ ),\ wxCLRP\_DEFAULT\_STYLE\ );}
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00072}00072\ \ \ \ \ \ \ \ \ itemStaticBoxSizer-\/>Add(\ m\_colorPicker,\ 0,\ wxGROW\ |\ wxALL,\ 5\ );}
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00074}00074\ \ \ \ \ \ \ \ \ m\_defaultButton\ =\ \textcolor{keyword}{new}\ wxButton(\ parent,\ ++lastID,\ buttonText,\ wxDefaultPosition,\ wxDefaultSize,\ wxBU\_EXACTFIT\ );}
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00075}00075\ \ \ \ \ \ \ \ \ itemStaticBoxSizer-\/>Add(\ m\_defaultButton,\ 0,\ wxALIGN\_CENTER\_VERTICAL\ |\ wxALL,\ 5\ );}
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00077}00077\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ m\_horizontalSizer-\/>Add(\ 5,\ 5,\ 0,\ wxALIGN\_CENTER\_VERTICAL\ |\ wxALL,\ 5\ );}}
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00078}00078\ }
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00080}00080\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00085}\mbox{\hyperlink{class_font_picker_a14dea74c2121398cfb8cb224480213cd}{00085}}\ \ \ \ \ wxFontPickerCtrl*\ \mbox{\hyperlink{class_font_picker_a14dea74c2121398cfb8cb224480213cd}{GetFontPickerCtrl}}(\ )\ \{}
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00086}00086\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_fontPicker;}
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00087}00087\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00088}00088\ }
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00092}\mbox{\hyperlink{class_font_picker_a771ba5f56676c493ec070699d2fc59dd}{00092}}\ \ \ \ \ wxColourPickerCtrl*\ \mbox{\hyperlink{class_font_picker_a771ba5f56676c493ec070699d2fc59dd}{GetColourPickerCtrl}}(\ )\ \{}
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00093}00093\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_colorPicker;}
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00094}00094\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00095}00095\ }
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00099}\mbox{\hyperlink{class_font_picker_aa323939c1d8015af8c07d7fdcfed35ef}{00099}}\ \ \ \ \ wxButton*\ \mbox{\hyperlink{class_font_picker_aa323939c1d8015af8c07d7fdcfed35ef}{GetDefaultButton}}(\ )\ \{}
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00100}00100\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_defaultButton;}
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00101}00101\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00102}\mbox{\hyperlink{class_font_picker_a2b15c0e0c77124384a27c1726d4c05fc}{00102}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_font_picker_a2b15c0e0c77124384a27c1726d4c05fc}{ShowFontPicker}}(\ \textcolor{keywordtype}{bool}\ show\ =\ \textcolor{keyword}{true}\ )\ \{}
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00103}00103\ \ \ \ \ \ \ \ \ m\_horizontalSizer-\/>Show(\ show\ );}
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00104}00104\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00105}00105\ }
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00106}00106\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00107}00107\ }
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00108}00108\ \ \ \ \ wxFontPickerCtrl*\ m\_fontPicker;}
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00109}00109\ \ \ \ \ wxColourPickerCtrl*\ m\_colorPicker;}
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00110}00110\ \ \ \ \ wxButton*\ m\_defaultButton;}
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00111}00111\ \ \ \ \ wxBoxSizer*\ m\_horizontalSizer;}
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00112}00112\ \ \ \ \ wxFont\ m\_font;}
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00113}00113\ \ \ \ \ wxColour\ m\_color;}
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00114}00114\ }
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00115}00115\ \};}
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00116}00116\ }
+\DoxyCodeLine{\Hypertarget{_font_picker_helper_8h_source_l00117}00117\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

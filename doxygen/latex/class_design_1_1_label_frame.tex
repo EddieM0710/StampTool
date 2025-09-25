@@ -1,0 +1,267 @@
+\doxysection{Design\+::Label\+Frame Class Reference}
+\hypertarget{class_design_1_1_label_frame}{}\label{class_design_1_1_label_frame}\index{Design::LabelFrame@{Design::LabelFrame}}
+
+
+{\ttfamily \#include $<$Label\+Frame.\+h$>$}
+
+Inheritance diagram for Design\+::Label\+Frame\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_design_1_1_label_frame}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_design_1_1_label_frame_a859eb066cef048c53cb4d8b86b4682d1}{Label\+Frame}} (\mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4}{Design\+::\+Font\+Usage\+Type}} font\+Type)
+\item 
+\mbox{\hyperlink{class_design_1_1_label_frame_a500244bcfdf243a1b00b8eae64ecdefb}{\texorpdfstring{$\sim$}{\string~}\+Label\+Frame}} ()
+\item 
+void \mbox{\hyperlink{class_design_1_1_label_frame_a7b1798a55ff48850ed5c4b151d213d78}{Draw}} (wx\+DC \&dc, double x, double y)
+\item 
+void \mbox{\hyperlink{class_design_1_1_label_frame_a085f78aa0dbaafccd56462ea3ed2b45c}{Draw\+PDF}} (wx\+Pdf\+Document \texorpdfstring{$\ast$}{*}doc, double x, double y)
+\item 
+wx\+Colour \mbox{\hyperlink{class_design_1_1_label_frame_a09a30951d08ed0551ea0cfca800b3042}{Get\+Color}} ()
+\item 
+wx\+Font \mbox{\hyperlink{class_design_1_1_label_frame_a0c06c4b73ffb946d3a1fcc7fb041ef26}{Get\+Font}} ()
+\item 
+int \mbox{\hyperlink{class_design_1_1_label_frame_a2f1677b7df3101b329537b1475602650}{Get\+Font\+Ndx}} ()
+\item 
+wx\+String \mbox{\hyperlink{class_design_1_1_label_frame_a0d9484007c9f1769ea465744aea32efe}{Get\+String}} ()
+\item 
+\mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4}{Design\+::\+Font\+Usage\+Type}} \mbox{\hyperlink{class_design_1_1_label_frame_a98282c3f1133a645b7dcc2c74409a131}{Get\+String\+Type}} ()
+\item 
+void \mbox{\hyperlink{class_design_1_1_label_frame_aff32aa060658e6b83202a299f75e2a05}{Load\+Font}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}node)
+\item 
+void \mbox{\hyperlink{class_design_1_1_label_frame_a8544432fd4887c989a3cf4d28812012e}{Save\+Font}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}node)
+\begin{DoxyCompactList}\small\item\em resets the Font to the default Font \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_design_1_1_label_frame_a1ffcb29c24c9eb899c2f3dd89c8c83b9}{Set\+Font}} (wx\+Font new\+Font, wx\+Colour new\+Color)
+\item 
+void \mbox{\hyperlink{class_design_1_1_label_frame_aee5ca5fa1288010ae085a3308cc6eedf}{Set\+Font\+Ndx}} (int ndx)
+\item 
+void \mbox{\hyperlink{class_design_1_1_label_frame_aeac1c5f79e5e1398f66ca425d35f0dd2}{Set\+String}} (wx\+String str)
+\item 
+void \mbox{\hyperlink{class_design_1_1_label_frame_a6ba2bf8d1fa625cb41bd8184bdb0db8a}{Update\+String}} (double width)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_design_1_1_frame}{Design\+::\+Frame}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_design_1_1_frame_a6527ab17d04fbbd19bec76d2379e6825}{Frame}} ()
+\item 
+\mbox{\hyperlink{class_design_1_1_frame_a718c307943773dec363abd164540dafc}{\texorpdfstring{$\sim$}{\string~}\+Frame}} ()
+\item 
+void \mbox{\hyperlink{class_design_1_1_frame_abcf566154114cd85448ab3aab7acb2ba}{Init}} (double x=0.\+0, double y=0.\+0, double w=0.\+0, double h=0.\+0, double mw=0.\+0, double mh=0.\+0)
+\item 
+void \mbox{\hyperlink{class_design_1_1_frame_aa2301e1691322be1e3786859f68e2ac4}{Draw}} (wx\+DC \&dc, double x, double y)
+\item 
+void \mbox{\hyperlink{class_design_1_1_frame_ac6b775f61fc3e38387469d4e1673edaf}{Draw\+PDF}} (wx\+Pdf\+Document \texorpdfstring{$\ast$}{*}doc, double x, double y)
+\item 
+double \mbox{\hyperlink{class_design_1_1_frame_ac939e0a8f4618cf4c8f8a29662d73ee8}{Get\+Height}} ()
+\item 
+double \mbox{\hyperlink{class_design_1_1_frame_a0970c4bc693ae4b91d95b8586f537bd7}{Get\+Min\+Height}} ()
+\item 
+double \mbox{\hyperlink{class_design_1_1_frame_a04189327b7b292a314ac985d3d1a3040}{Get\+Min\+Width}} ()
+\item 
+\mbox{\hyperlink{_defs_8h_a213dea8a5ce1d84736c963a5cbfde8e0}{Real\+Point}} \mbox{\hyperlink{class_design_1_1_frame_ab44c639d71fad3c17c40123a0826e47e}{Get\+Position}} ()
+\item 
+\mbox{\hyperlink{_defs_8h_acd8ac2c7f3e4026c03e6a45ba79cf0c3}{Real\+Size}} \mbox{\hyperlink{class_design_1_1_frame_a412c4a17aa20dc984e116de1e5c8d9f6}{Get\+Size}} ()
+\item 
+double \mbox{\hyperlink{class_design_1_1_frame_a8cc8c2529451a5c4299a03377bab645d}{Get\+XPos}} ()
+\item 
+double \mbox{\hyperlink{class_design_1_1_frame_a0d9ef580164efda718524545a87e2729}{Get\+YPos}} ()
+\item 
+double \mbox{\hyperlink{class_design_1_1_frame_a464e405ebcb8f977892aa4e665b8c84f}{Get\+Width}} ()
+\item 
+wx\+String \mbox{\hyperlink{class_design_1_1_frame_ace8bac218a5886d3d83f6dfbaf9ae0aa}{Report\+Layout}} (wx\+String prefix="{}"{})
+\item 
+void \mbox{\hyperlink{class_design_1_1_frame_a89e21bc96e7077eb89dc9fbf4bbab5cb}{Set\+Height}} (double val)
+\item 
+void \mbox{\hyperlink{class_design_1_1_frame_ad9b43fee17b4bbee5c1d3ea8ef129700}{Set\+Min\+Width}} (double val)
+\item 
+void \mbox{\hyperlink{class_design_1_1_frame_a70f724969cdc7acd726443748c601172}{Set\+Min\+Height}} (double val)
+\item 
+void \mbox{\hyperlink{class_design_1_1_frame_a0043c2bd41ebb610d754eab581811f86}{Set\+XPos}} (double val)
+\item 
+void \mbox{\hyperlink{class_design_1_1_frame_ab1fc082b61c5f97edcc8bee3f4a2498a}{Set\+YPos}} (double val)
+\item 
+void \mbox{\hyperlink{class_design_1_1_frame_ae9edcff7f14bc9263d17e53925a15ee0}{Set\+Width}} (double val)
+\item 
+wx\+Rect \mbox{\hyperlink{class_design_1_1_frame_ac813688671623581881d1e8164238830}{Get\+Rect}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_label_frame_8h_source_l00044}{44}} of file \mbox{\hyperlink{_label_frame_8h_source}{Label\+Frame.\+h}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_design_1_1_label_frame_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_design_1_1_label_frame_a859eb066cef048c53cb4d8b86b4682d1}\index{Design::LabelFrame@{Design::LabelFrame}!LabelFrame@{LabelFrame}}
+\index{LabelFrame@{LabelFrame}!Design::LabelFrame@{Design::LabelFrame}}
+\doxysubsubsection{\texorpdfstring{LabelFrame()}{LabelFrame()}}
+{\footnotesize\ttfamily \label{class_design_1_1_label_frame_a859eb066cef048c53cb4d8b86b4682d1} 
+Design\+::\+Label\+Frame\+::\+Label\+Frame (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4}{Design\+::\+Font\+Usage\+Type}}}]{font\+Type}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_label_frame_8h_source_l00055}{55}} of file \mbox{\hyperlink{_label_frame_8h_source}{Label\+Frame.\+h}}.
+
+\Hypertarget{class_design_1_1_label_frame_a500244bcfdf243a1b00b8eae64ecdefb}\index{Design::LabelFrame@{Design::LabelFrame}!````~LabelFrame@{\texorpdfstring{$\sim$}{\string~}LabelFrame}}
+\index{````~LabelFrame@{\texorpdfstring{$\sim$}{\string~}LabelFrame}!Design::LabelFrame@{Design::LabelFrame}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}LabelFrame()}{\string~LabelFrame()}}
+{\footnotesize\ttfamily \label{class_design_1_1_label_frame_a500244bcfdf243a1b00b8eae64ecdefb} 
+Design\+::\+Label\+Frame\+::\texorpdfstring{$\sim$}{\string~}\+Label\+Frame (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_label_frame_8h_source_l00061}{61}} of file \mbox{\hyperlink{_label_frame_8h_source}{Label\+Frame.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_design_1_1_label_frame_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_design_1_1_label_frame_a7b1798a55ff48850ed5c4b151d213d78}\index{Design::LabelFrame@{Design::LabelFrame}!Draw@{Draw}}
+\index{Draw@{Draw}!Design::LabelFrame@{Design::LabelFrame}}
+\doxysubsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily \label{class_design_1_1_label_frame_a7b1798a55ff48850ed5c4b151d213d78} 
+void Design\+::\+Label\+Frame\+::\+Draw (\begin{DoxyParamCaption}\item[{wx\+DC \&}]{dc}{, }\item[{double}]{x}{, }\item[{double}]{y}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_label_frame_8cpp_source_l00082}{82}} of file \mbox{\hyperlink{_label_frame_8cpp_source}{Label\+Frame.\+cpp}}.
+
+\Hypertarget{class_design_1_1_label_frame_a085f78aa0dbaafccd56462ea3ed2b45c}\index{Design::LabelFrame@{Design::LabelFrame}!DrawPDF@{DrawPDF}}
+\index{DrawPDF@{DrawPDF}!Design::LabelFrame@{Design::LabelFrame}}
+\doxysubsubsection{\texorpdfstring{DrawPDF()}{DrawPDF()}}
+{\footnotesize\ttfamily \label{class_design_1_1_label_frame_a085f78aa0dbaafccd56462ea3ed2b45c} 
+void Design\+::\+Label\+Frame\+::\+Draw\+PDF (\begin{DoxyParamCaption}\item[{wx\+Pdf\+Document \texorpdfstring{$\ast$}{*}}]{doc}{, }\item[{double}]{x}{, }\item[{double}]{y}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_label_frame_8cpp_source_l00116}{116}} of file \mbox{\hyperlink{_label_frame_8cpp_source}{Label\+Frame.\+cpp}}.
+
+\Hypertarget{class_design_1_1_label_frame_a09a30951d08ed0551ea0cfca800b3042}\index{Design::LabelFrame@{Design::LabelFrame}!GetColor@{GetColor}}
+\index{GetColor@{GetColor}!Design::LabelFrame@{Design::LabelFrame}}
+\doxysubsubsection{\texorpdfstring{GetColor()}{GetColor()}}
+{\footnotesize\ttfamily \label{class_design_1_1_label_frame_a09a30951d08ed0551ea0cfca800b3042} 
+wx\+Colour Design\+::\+Label\+Frame\+::\+Get\+Color (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_label_frame_8cpp_source_l00037}{37}} of file \mbox{\hyperlink{_label_frame_8cpp_source}{Label\+Frame.\+cpp}}.
+
+\Hypertarget{class_design_1_1_label_frame_a0c06c4b73ffb946d3a1fcc7fb041ef26}\index{Design::LabelFrame@{Design::LabelFrame}!GetFont@{GetFont}}
+\index{GetFont@{GetFont}!Design::LabelFrame@{Design::LabelFrame}}
+\doxysubsubsection{\texorpdfstring{GetFont()}{GetFont()}}
+{\footnotesize\ttfamily \label{class_design_1_1_label_frame_a0c06c4b73ffb946d3a1fcc7fb041ef26} 
+wx\+Font Design\+::\+Label\+Frame\+::\+Get\+Font (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_label_frame_8cpp_source_l00052}{52}} of file \mbox{\hyperlink{_label_frame_8cpp_source}{Label\+Frame.\+cpp}}.
+
+\Hypertarget{class_design_1_1_label_frame_a2f1677b7df3101b329537b1475602650}\index{Design::LabelFrame@{Design::LabelFrame}!GetFontNdx@{GetFontNdx}}
+\index{GetFontNdx@{GetFontNdx}!Design::LabelFrame@{Design::LabelFrame}}
+\doxysubsubsection{\texorpdfstring{GetFontNdx()}{GetFontNdx()}}
+{\footnotesize\ttfamily \label{class_design_1_1_label_frame_a2f1677b7df3101b329537b1475602650} 
+int Design\+::\+Label\+Frame\+::\+Get\+Font\+Ndx (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_label_frame_8h_source_l00071}{71}} of file \mbox{\hyperlink{_label_frame_8h_source}{Label\+Frame.\+h}}.
+
+\Hypertarget{class_design_1_1_label_frame_a0d9484007c9f1769ea465744aea32efe}\index{Design::LabelFrame@{Design::LabelFrame}!GetString@{GetString}}
+\index{GetString@{GetString}!Design::LabelFrame@{Design::LabelFrame}}
+\doxysubsubsection{\texorpdfstring{GetString()}{GetString()}}
+{\footnotesize\ttfamily \label{class_design_1_1_label_frame_a0d9484007c9f1769ea465744aea32efe} 
+wx\+String Design\+::\+Label\+Frame\+::\+Get\+String (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_label_frame_8h_source_l00075}{75}} of file \mbox{\hyperlink{_label_frame_8h_source}{Label\+Frame.\+h}}.
+
+\Hypertarget{class_design_1_1_label_frame_a98282c3f1133a645b7dcc2c74409a131}\index{Design::LabelFrame@{Design::LabelFrame}!GetStringType@{GetStringType}}
+\index{GetStringType@{GetStringType}!Design::LabelFrame@{Design::LabelFrame}}
+\doxysubsubsection{\texorpdfstring{GetStringType()}{GetStringType()}}
+{\footnotesize\ttfamily \label{class_design_1_1_label_frame_a98282c3f1133a645b7dcc2c74409a131} 
+\mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4}{Design\+::\+Font\+Usage\+Type}} Design\+::\+Label\+Frame\+::\+Get\+String\+Type (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_label_frame_8h_source_l00079}{79}} of file \mbox{\hyperlink{_label_frame_8h_source}{Label\+Frame.\+h}}.
+
+\Hypertarget{class_design_1_1_label_frame_aff32aa060658e6b83202a299f75e2a05}\index{Design::LabelFrame@{Design::LabelFrame}!LoadFont@{LoadFont}}
+\index{LoadFont@{LoadFont}!Design::LabelFrame@{Design::LabelFrame}}
+\doxysubsubsection{\texorpdfstring{LoadFont()}{LoadFont()}}
+{\footnotesize\ttfamily \label{class_design_1_1_label_frame_aff32aa060658e6b83202a299f75e2a05} 
+void Design\+::\+Label\+Frame\+::\+Load\+Font (\begin{DoxyParamCaption}\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{node}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_label_frame_8cpp_source_l00142}{142}} of file \mbox{\hyperlink{_label_frame_8cpp_source}{Label\+Frame.\+cpp}}.
+
+\Hypertarget{class_design_1_1_label_frame_a8544432fd4887c989a3cf4d28812012e}\index{Design::LabelFrame@{Design::LabelFrame}!SaveFont@{SaveFont}}
+\index{SaveFont@{SaveFont}!Design::LabelFrame@{Design::LabelFrame}}
+\doxysubsubsection{\texorpdfstring{SaveFont()}{SaveFont()}}
+{\footnotesize\ttfamily \label{class_design_1_1_label_frame_a8544432fd4887c989a3cf4d28812012e} 
+void Design\+::\+Label\+Frame\+::\+Save\+Font (\begin{DoxyParamCaption}\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{node}{}\end{DoxyParamCaption})}
+
+
+
+resets the Font to the default Font 
+
+
+
+Definition at line \mbox{\hyperlink{_label_frame_8cpp_source_l00150}{150}} of file \mbox{\hyperlink{_label_frame_8cpp_source}{Label\+Frame.\+cpp}}.
+
+\Hypertarget{class_design_1_1_label_frame_a1ffcb29c24c9eb899c2f3dd89c8c83b9}\index{Design::LabelFrame@{Design::LabelFrame}!SetFont@{SetFont}}
+\index{SetFont@{SetFont}!Design::LabelFrame@{Design::LabelFrame}}
+\doxysubsubsection{\texorpdfstring{SetFont()}{SetFont()}}
+{\footnotesize\ttfamily \label{class_design_1_1_label_frame_a1ffcb29c24c9eb899c2f3dd89c8c83b9} 
+int Design\+::\+Label\+Frame\+::\+Set\+Font (\begin{DoxyParamCaption}\item[{wx\+Font}]{new\+Font}{, }\item[{wx\+Colour}]{new\+Color}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_label_frame_8cpp_source_l00163}{163}} of file \mbox{\hyperlink{_label_frame_8cpp_source}{Label\+Frame.\+cpp}}.
+
+\Hypertarget{class_design_1_1_label_frame_aee5ca5fa1288010ae085a3308cc6eedf}\index{Design::LabelFrame@{Design::LabelFrame}!SetFontNdx@{SetFontNdx}}
+\index{SetFontNdx@{SetFontNdx}!Design::LabelFrame@{Design::LabelFrame}}
+\doxysubsubsection{\texorpdfstring{SetFontNdx()}{SetFontNdx()}}
+{\footnotesize\ttfamily \label{class_design_1_1_label_frame_aee5ca5fa1288010ae085a3308cc6eedf} 
+void Design\+::\+Label\+Frame\+::\+Set\+Font\+Ndx (\begin{DoxyParamCaption}\item[{int}]{ndx}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_label_frame_8cpp_source_l00172}{172}} of file \mbox{\hyperlink{_label_frame_8cpp_source}{Label\+Frame.\+cpp}}.
+
+\Hypertarget{class_design_1_1_label_frame_aeac1c5f79e5e1398f66ca425d35f0dd2}\index{Design::LabelFrame@{Design::LabelFrame}!SetString@{SetString}}
+\index{SetString@{SetString}!Design::LabelFrame@{Design::LabelFrame}}
+\doxysubsubsection{\texorpdfstring{SetString()}{SetString()}}
+{\footnotesize\ttfamily \label{class_design_1_1_label_frame_aeac1c5f79e5e1398f66ca425d35f0dd2} 
+void Design\+::\+Label\+Frame\+::\+Set\+String (\begin{DoxyParamCaption}\item[{wx\+String}]{str}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_label_frame_8h_source_l00094}{94}} of file \mbox{\hyperlink{_label_frame_8h_source}{Label\+Frame.\+h}}.
+
+\Hypertarget{class_design_1_1_label_frame_a6ba2bf8d1fa625cb41bd8184bdb0db8a}\index{Design::LabelFrame@{Design::LabelFrame}!UpdateString@{UpdateString}}
+\index{UpdateString@{UpdateString}!Design::LabelFrame@{Design::LabelFrame}}
+\doxysubsubsection{\texorpdfstring{UpdateString()}{UpdateString()}}
+{\footnotesize\ttfamily \label{class_design_1_1_label_frame_a6ba2bf8d1fa625cb41bd8184bdb0db8a} 
+void Design\+::\+Label\+Frame\+::\+Update\+String (\begin{DoxyParamCaption}\item[{double}]{width}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_label_frame_8cpp_source_l00187}{187}} of file \mbox{\hyperlink{_label_frame_8cpp_source}{Label\+Frame.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/femon/\+Development/wx/clone\+Test/\+Stamp\+Tool/src/design/\mbox{\hyperlink{_label_frame_8h}{Label\+Frame.\+h}}\item 
+C\+:/\+Users/femon/\+Development/wx/clone\+Test/\+Stamp\+Tool/src/design/\mbox{\hyperlink{_label_frame_8cpp}{Label\+Frame.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,84 @@
+\doxysection{C\+:/\+Users/femon/\+Development/wx/clone\+Test/\+Stamp\+Tool/src/gui/\+TOCTree\+Ctrl.cpp File Reference}
+\hypertarget{_t_o_c_tree_ctrl_8cpp}{}\label{_t_o_c_tree_ctrl_8cpp}\index{C:/Users/femon/Development/wx/cloneTest/StampTool/src/gui/TOCTreeCtrl.cpp@{C:/Users/femon/Development/wx/cloneTest/StampTool/src/gui/TOCTreeCtrl.cpp}}
+{\ttfamily \#include "{}wx/wxprec.\+h"{}}\newline
+{\ttfamily \#include "{}wx/log.\+h"{}}\newline
+{\ttfamily \#include "{}wx/wx.\+h"{}}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include "{}wx/artprov.\+h"{}}\newline
+{\ttfamily \#include "{}wx/image.\+h"{}}\newline
+{\ttfamily \#include "{}wx/imaglist.\+h"{}}\newline
+{\ttfamily \#include "{}wx/math.\+h"{}}\newline
+{\ttfamily \#include "{}wx/menu.\+h"{}}\newline
+{\ttfamily \#include "{}wx/renderer.\+h"{}}\newline
+{\ttfamily \#include "{}wx/wupdlock.\+h"{}}\newline
+{\ttfamily \#include $<$wx/clipbrd.\+h$>$}\newline
+{\ttfamily \#include $<$wx/filename.\+h$>$}\newline
+{\ttfamily \#include "{}Defs.\+h"{}}\newline
+{\ttfamily \#include "{}utils/\+Project.\+h"{}}\newline
+{\ttfamily \#include "{}utils/\+XMLUtilities.\+h"{}}\newline
+{\ttfamily \#include "{}toc/\+TOCDefs.\+h"{}}\newline
+{\ttfamily \#include "{}gui/\+Gui\+Defs.\+h"{}}\newline
+{\ttfamily \#include "{}gui/\+Stamp\+Tool\+Frame.\+h"{}}\newline
+{\ttfamily \#include "{}gui/\+Stamp\+Tool\+Panel.\+h"{}}\newline
+{\ttfamily \#include "{}gui/\+TOCTree\+Ctrl.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_t_o_c_tree_ctrl_8cpp_a08168db0b02aa5c9de10b8d95b859261}{wx\+IMPLEMENT\+\_\+\+CLASS}} (\mbox{\hyperlink{class_t_o_c_tree_ctrl}{TOCTree\+Ctrl}}, wx\+Tree\+Ctrl)
+\item 
+\mbox{\hyperlink{_t_o_c_tree_ctrl_8cpp_afcb23d2e4c46501fba0e0bb45ff5f35a}{wx\+BEGIN\+\_\+\+EVENT\+\_\+\+TABLE}} (\mbox{\hyperlink{class_t_o_c_tree_ctrl}{TOCTree\+Ctrl}}, wx\+Tree\+Ctrl) wx\+END\+\_\+\+EVENT\+\_\+\+TABLE() int \mbox{\hyperlink{_t_o_c_tree_ctrl_8h_afc7acff91680c7a88ad31190bd21220c}{Last\+Volume\+ID}}
+\item 
+int \mbox{\hyperlink{_t_o_c_tree_ctrl_8cpp_a2e3750d067078abef12a30bf2b1abe03}{Get\+Next\+Volume\+ID}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Eddie Monroe ( ) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2021-\/02-\/25
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright ( c ) 2021
+\end{DoxyCopyright}
+This file is part of Stamp\+Tool.
+
+Stamp\+Tool is free software\+: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or any later version.
+
+Stamp\+Tool is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with Stamp\+Tool. If not, see \href{https://www.gnu.org/licenses/}{\texttt{https\+://www.\+gnu.\+org/licenses/}}. 
+
+Definition in file \mbox{\hyperlink{_t_o_c_tree_ctrl_8cpp_source}{TOCTree\+Ctrl.\+cpp}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{_t_o_c_tree_ctrl_8cpp_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{_t_o_c_tree_ctrl_8cpp_a2e3750d067078abef12a30bf2b1abe03}\index{TOCTreeCtrl.cpp@{TOCTreeCtrl.cpp}!GetNextVolumeID@{GetNextVolumeID}}
+\index{GetNextVolumeID@{GetNextVolumeID}!TOCTreeCtrl.cpp@{TOCTreeCtrl.cpp}}
+\doxysubsubsection{\texorpdfstring{GetNextVolumeID()}{GetNextVolumeID()}}
+{\footnotesize\ttfamily \label{_t_o_c_tree_ctrl_8cpp_a2e3750d067078abef12a30bf2b1abe03} 
+int Get\+Next\+Volume\+ID (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_t_o_c_tree_ctrl_8cpp_source_l00071}{71}} of file \mbox{\hyperlink{_t_o_c_tree_ctrl_8cpp_source}{TOCTree\+Ctrl.\+cpp}}.
+
+\Hypertarget{_t_o_c_tree_ctrl_8cpp_afcb23d2e4c46501fba0e0bb45ff5f35a}\index{TOCTreeCtrl.cpp@{TOCTreeCtrl.cpp}!wxBEGIN\_EVENT\_TABLE@{wxBEGIN\_EVENT\_TABLE}}
+\index{wxBEGIN\_EVENT\_TABLE@{wxBEGIN\_EVENT\_TABLE}!TOCTreeCtrl.cpp@{TOCTreeCtrl.cpp}}
+\doxysubsubsection{\texorpdfstring{wxBEGIN\_EVENT\_TABLE()}{wxBEGIN\_EVENT\_TABLE()}}
+{\footnotesize\ttfamily \label{_t_o_c_tree_ctrl_8cpp_afcb23d2e4c46501fba0e0bb45ff5f35a} 
+wx\+BEGIN\+\_\+\+EVENT\+\_\+\+TABLE (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_t_o_c_tree_ctrl}{TOCTree\+Ctrl}}}]{}{, }\item[{wx\+Tree\+Ctrl}]{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{_t_o_c_tree_ctrl_8cpp_a08168db0b02aa5c9de10b8d95b859261}\index{TOCTreeCtrl.cpp@{TOCTreeCtrl.cpp}!wxIMPLEMENT\_CLASS@{wxIMPLEMENT\_CLASS}}
+\index{wxIMPLEMENT\_CLASS@{wxIMPLEMENT\_CLASS}!TOCTreeCtrl.cpp@{TOCTreeCtrl.cpp}}
+\doxysubsubsection{\texorpdfstring{wxIMPLEMENT\_CLASS()}{wxIMPLEMENT\_CLASS()}}
+{\footnotesize\ttfamily \label{_t_o_c_tree_ctrl_8cpp_a08168db0b02aa5c9de10b8d95b859261} 
+wx\+IMPLEMENT\+\_\+\+CLASS (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_t_o_c_tree_ctrl}{TOCTree\+Ctrl}}}]{}{, }\item[{wx\+Tree\+Ctrl}]{}{}\end{DoxyParamCaption})}
+

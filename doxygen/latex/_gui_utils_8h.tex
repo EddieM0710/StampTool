@@ -1,0 +1,313 @@
+\doxysection{C\+:/\+Users/femon/\+Development/wx/clone\+Test/\+Stamp\+Tool/src/gui/\+Gui\+Utils.h File Reference}
+\hypertarget{_gui_utils_8h}{}\label{_gui_utils_8h}\index{C:/Users/femon/Development/wx/cloneTest/StampTool/src/gui/GuiUtils.h@{C:/Users/femon/Development/wx/cloneTest/StampTool/src/gui/GuiUtils.h}}
+{\ttfamily \#include $<$wx/pdfdocument.\+h$>$}\newline
+{\ttfamily \#include $<$wx/pdffont.\+h$>$}\newline
+{\ttfamily \#include "{}Defs.\+h"{}}\newline
+{\ttfamily \#include "{}gui/\+Gui\+Defs.\+h"{}}\newline
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{_gui_utils_8h_a66b06809b27f311da0c50fba212270ea}{Comparison\+Result\+Type}} \{ \mbox{\hyperlink{_gui_utils_8h_a66b06809b27f311da0c50fba212270eaaab1a852d02b7308af3acec0a5e47cbe0}{Compare\+Invalid}}
+, \mbox{\hyperlink{_gui_utils_8h_a66b06809b27f311da0c50fba212270eaa74d5805bc0e440bd47f5f18d797e2fc0}{Compare\+Equal}}
+, \mbox{\hyperlink{_gui_utils_8h_a66b06809b27f311da0c50fba212270eaaff1ea730dff3c027d8a76dac0007288b}{Compare\+Less}}
+, \mbox{\hyperlink{_gui_utils_8h_a66b06809b27f311da0c50fba212270eaa6da772161cf6c62141705d1b025ca2f1}{Compare\+Greater}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+wx\+Size \mbox{\hyperlink{_gui_utils_8h_a5f10a9cb5ce52b8cbede5962e5fcd63c}{Get\+PPMM}} (wx\+DC \&dc)
+\item 
+void \mbox{\hyperlink{_gui_utils_8h_a8cec9a648f31210adbc6e338e0be81f7}{Init\+Scale}} (wx\+Size size\+MM, wx\+Size size\+Client)
+\item 
+void \mbox{\hyperlink{_gui_utils_8h_afc52b40b57ae8370de5f2c5fc0cdba37}{draw\+Border}} (wx\+DC \&dc, double x, double y, double width, double height)
+\item 
+void \mbox{\hyperlink{_gui_utils_8h_aac893eec7cbdd9779d4ea2bcf55542f2}{Draw\+Rectangle}} (wx\+DC \&dc, double x, double y, double width, double height)
+\item 
+void \mbox{\hyperlink{_gui_utils_8h_a16fcfaace30d06a6f22d19cf0d739e8d}{Draw\+Rectangle\+PDF}} (wx\+Pdf\+Document \texorpdfstring{$\ast$}{*}doc, double x, double y, double width, double height)
+\item 
+wx\+Pen \mbox{\hyperlink{_gui_utils_8h_ac604028eeaa9b33410664f30bce83cb4}{DCLine\+Style}} (wx\+DC \&dc, wx\+Colour colour= \texorpdfstring{$\ast$}{*}wx\+BLACK, double width=-\/1, wx\+Pen\+Style style=wx\+PENSTYLE\+\_\+\+SOLID)
+\item 
+wx\+Pdf\+Line\+Style \mbox{\hyperlink{_gui_utils_8h_a380dcea1479d9d5d6f58459c4436ae73}{PDFLine\+Style}} (wx\+Pdf\+Document \texorpdfstring{$\ast$}{*}doc, wx\+Colour colour= \texorpdfstring{$\ast$}{*}wx\+BLACK, double width=-\/1, const wx\+Pdf\+Array\+Double \&dash=wx\+Pdf\+Array\+Double())
+\item 
+double \mbox{\hyperlink{_gui_utils_8h_a7ccabb8a51562aeba4b1fe80a104d982}{Get\+Height\+Chars}} (double pt)
+\item 
+double \mbox{\hyperlink{_gui_utils_8h_acd67d3534b5333f171a59fa7a245f429}{Get\+Multi\+Line\+Text\+Height}} (wx\+String text, wx\+Font \texorpdfstring{$\ast$}{*}font, double width)
+\item 
+void \mbox{\hyperlink{_gui_utils_8h_a993f3fc2a082fd5d19b41ba9fa9958ea}{Draw\+Text}} (wx\+DC \&dc, wx\+String \&str, wx\+Rect \&rect, bool draw)
+\item 
+void \mbox{\hyperlink{_gui_utils_8h_a5d4206ed019b9406975a35aa3a5ae198}{Draw\+Title}} (wx\+DC \&dc, wx\+String title, \mbox{\hyperlink{_defs_8h_a213dea8a5ce1d84736c963a5cbfde8e0}{Real\+Point}} pos, \mbox{\hyperlink{_defs_8h_acd8ac2c7f3e4026c03e6a45ba79cf0c3}{Real\+Size}} size)
+\item 
+void \mbox{\hyperlink{_gui_utils_8h_aadd4ec38a788a3bc88c9be5f06d7468e}{Draw\+Title\+PDF}} (wx\+Pdf\+Document \texorpdfstring{$\ast$}{*}doc, wx\+String title, \mbox{\hyperlink{_defs_8h_a213dea8a5ce1d84736c963a5cbfde8e0}{Real\+Point}} pos, \mbox{\hyperlink{_defs_8h_acd8ac2c7f3e4026c03e6a45ba79cf0c3}{Real\+Size}} size)
+\item 
+void \mbox{\hyperlink{_gui_utils_8h_a8479dc346fc7116ddb43bb12e069b84f}{Draw\+Label}} (wx\+DC \&dc, const wx\+String \&text, wx\+Real\+Point pos, \mbox{\hyperlink{_defs_8h_acd8ac2c7f3e4026c03e6a45ba79cf0c3}{Real\+Size}} size, int alignment=wx\+ALIGN\+\_\+\+CENTER, int index\+Accel=-\/1)
+\item 
+void \mbox{\hyperlink{_gui_utils_8h_af0d439788e398aeb5511d074486c08af}{Draw\+Label\+PDF}} (wx\+Pdf\+Document \texorpdfstring{$\ast$}{*}doc, const wx\+String \&text, \mbox{\hyperlink{_defs_8h_a213dea8a5ce1d84736c963a5cbfde8e0}{Real\+Point}} pos, \mbox{\hyperlink{_defs_8h_acd8ac2c7f3e4026c03e6a45ba79cf0c3}{Real\+Size}} size, int alignment=wx\+PDF\+\_\+\+ALIGN\+\_\+\+LEFT, int border=wx\+PDF\+\_\+\+BORDER\+\_\+\+NONE, bool fill=0)
+\item 
+void \mbox{\hyperlink{_gui_utils_8h_acfa2e6d550aaf806c86bf93c6941138c}{Draw\+Image\+PDF}} (wx\+Pdf\+Document \texorpdfstring{$\ast$}{*}doc, wx\+Image image, double x, double y, double w, double h)
+\item 
+void \mbox{\hyperlink{_gui_utils_8h_a7531052ff11e4e5a5fd56dad9cc2c25f}{Draw\+Image}} (wx\+DC \&dc, wx\+Image image, double x, double y, double w, double h)
+\item 
+wx\+Image \mbox{\hyperlink{_gui_utils_8h_a4930edb60ac7be279e2c248e81dcf8f2}{Get\+Image\+From\+Filename}} (wx\+String filename)
+\item 
+\mbox{\hyperlink{_gui_utils_8h_a66b06809b27f311da0c50fba212270ea}{Comparison\+Result\+Type}} \mbox{\hyperlink{_gui_utils_8h_a80e43fdb1d91b48ea9bda95b2d596091}{Compare\+Dates}} (wx\+String date1, wx\+String date2)
+\item 
+int \mbox{\hyperlink{_gui_utils_8h_a6c6fd5fdec556a5bd60c3cfbc4f66065}{Compare\+ID}} (wx\+String id1, wx\+String id2)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+wx\+Pdf\+Array\+Double \mbox{\hyperlink{_gui_utils_8h_ac8cfda6ba2bba574d3dc2a67f14c430a}{default\+Dash}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Eddie Monroe 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2022-\/03-\/23
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright ( c ) 2022
+\end{DoxyCopyright}
+This file is part of Stamp\+Tool.
+
+Stamp\+Tool is free software\+: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or any later version.
+
+Stamp\+Tool is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with Stamp\+Tool. If not, see \href{https://www.gnu.org/licenses/}{\texttt{https\+://www.\+gnu.\+org/licenses/}}. 
+
+Definition in file \mbox{\hyperlink{_gui_utils_8h_source}{Gui\+Utils.\+h}}.
+
+
+
+\label{doc-enum-members}
+\Hypertarget{_gui_utils_8h_doc-enum-members}
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{_gui_utils_8h_a66b06809b27f311da0c50fba212270ea}\index{GuiUtils.h@{GuiUtils.h}!ComparisonResultType@{ComparisonResultType}}
+\index{ComparisonResultType@{ComparisonResultType}!GuiUtils.h@{GuiUtils.h}}
+\doxysubsubsection{\texorpdfstring{ComparisonResultType}{ComparisonResultType}}
+{\footnotesize\ttfamily \label{_gui_utils_8h_a66b06809b27f311da0c50fba212270ea} 
+enum \mbox{\hyperlink{_gui_utils_8h_a66b06809b27f311da0c50fba212270ea}{Comparison\+Result\+Type}}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CompareInvalid@{CompareInvalid}!GuiUtils.h@{GuiUtils.h}}\index{GuiUtils.h@{GuiUtils.h}!CompareInvalid@{CompareInvalid}}}\Hypertarget{_gui_utils_8h_a66b06809b27f311da0c50fba212270eaaab1a852d02b7308af3acec0a5e47cbe0}\label{_gui_utils_8h_a66b06809b27f311da0c50fba212270eaaab1a852d02b7308af3acec0a5e47cbe0} 
+Compare\+Invalid&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CompareEqual@{CompareEqual}!GuiUtils.h@{GuiUtils.h}}\index{GuiUtils.h@{GuiUtils.h}!CompareEqual@{CompareEqual}}}\Hypertarget{_gui_utils_8h_a66b06809b27f311da0c50fba212270eaa74d5805bc0e440bd47f5f18d797e2fc0}\label{_gui_utils_8h_a66b06809b27f311da0c50fba212270eaa74d5805bc0e440bd47f5f18d797e2fc0} 
+Compare\+Equal&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CompareLess@{CompareLess}!GuiUtils.h@{GuiUtils.h}}\index{GuiUtils.h@{GuiUtils.h}!CompareLess@{CompareLess}}}\Hypertarget{_gui_utils_8h_a66b06809b27f311da0c50fba212270eaaff1ea730dff3c027d8a76dac0007288b}\label{_gui_utils_8h_a66b06809b27f311da0c50fba212270eaaff1ea730dff3c027d8a76dac0007288b} 
+Compare\+Less&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CompareGreater@{CompareGreater}!GuiUtils.h@{GuiUtils.h}}\index{GuiUtils.h@{GuiUtils.h}!CompareGreater@{CompareGreater}}}\Hypertarget{_gui_utils_8h_a66b06809b27f311da0c50fba212270eaa6da772161cf6c62141705d1b025ca2f1}\label{_gui_utils_8h_a66b06809b27f311da0c50fba212270eaa6da772161cf6c62141705d1b025ca2f1} 
+Compare\+Greater&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{_gui_utils_8h_source_l00036}{36}} of file \mbox{\hyperlink{_gui_utils_8h_source}{Gui\+Utils.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{_gui_utils_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{_gui_utils_8h_a80e43fdb1d91b48ea9bda95b2d596091}\index{GuiUtils.h@{GuiUtils.h}!CompareDates@{CompareDates}}
+\index{CompareDates@{CompareDates}!GuiUtils.h@{GuiUtils.h}}
+\doxysubsubsection{\texorpdfstring{CompareDates()}{CompareDates()}}
+{\footnotesize\ttfamily \label{_gui_utils_8h_a80e43fdb1d91b48ea9bda95b2d596091} 
+\mbox{\hyperlink{_gui_utils_8h_a66b06809b27f311da0c50fba212270ea}{Comparison\+Result\+Type}} Compare\+Dates (\begin{DoxyParamCaption}\item[{wx\+String}]{date1}{, }\item[{wx\+String}]{date2}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_gui_utils_8cpp_source_l00541}{541}} of file \mbox{\hyperlink{_gui_utils_8cpp_source}{Gui\+Utils.\+cpp}}.
+
+\Hypertarget{_gui_utils_8h_a6c6fd5fdec556a5bd60c3cfbc4f66065}\index{GuiUtils.h@{GuiUtils.h}!CompareID@{CompareID}}
+\index{CompareID@{CompareID}!GuiUtils.h@{GuiUtils.h}}
+\doxysubsubsection{\texorpdfstring{CompareID()}{CompareID()}}
+{\footnotesize\ttfamily \label{_gui_utils_8h_a6c6fd5fdec556a5bd60c3cfbc4f66065} 
+int Compare\+ID (\begin{DoxyParamCaption}\item[{wx\+String}]{id1}{, }\item[{wx\+String}]{id2}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_gui_utils_8cpp_source_l00476}{476}} of file \mbox{\hyperlink{_gui_utils_8cpp_source}{Gui\+Utils.\+cpp}}.
+
+\Hypertarget{_gui_utils_8h_ac604028eeaa9b33410664f30bce83cb4}\index{GuiUtils.h@{GuiUtils.h}!DCLineStyle@{DCLineStyle}}
+\index{DCLineStyle@{DCLineStyle}!GuiUtils.h@{GuiUtils.h}}
+\doxysubsubsection{\texorpdfstring{DCLineStyle()}{DCLineStyle()}}
+{\footnotesize\ttfamily \label{_gui_utils_8h_ac604028eeaa9b33410664f30bce83cb4} 
+wx\+Pen DCLine\+Style (\begin{DoxyParamCaption}\item[{wx\+DC \&}]{dc}{, }\item[{wx\+Colour}]{colour}{ = {\ttfamily \texorpdfstring{$\ast$}{*}wxBLACK}, }\item[{double}]{width}{ = {\ttfamily -\/1}, }\item[{wx\+Pen\+Style}]{style}{ = {\ttfamily wxPENSTYLE\+\_\+SOLID}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_gui_utils_8cpp_source_l00277}{277}} of file \mbox{\hyperlink{_gui_utils_8cpp_source}{Gui\+Utils.\+cpp}}.
+
+\Hypertarget{_gui_utils_8h_afc52b40b57ae8370de5f2c5fc0cdba37}\index{GuiUtils.h@{GuiUtils.h}!drawBorder@{drawBorder}}
+\index{drawBorder@{drawBorder}!GuiUtils.h@{GuiUtils.h}}
+\doxysubsubsection{\texorpdfstring{drawBorder()}{drawBorder()}}
+{\footnotesize\ttfamily \label{_gui_utils_8h_afc52b40b57ae8370de5f2c5fc0cdba37} 
+void draw\+Border (\begin{DoxyParamCaption}\item[{wx\+DC \&}]{dc}{, }\item[{double}]{x}{, }\item[{double}]{y}{, }\item[{double}]{width}{, }\item[{double}]{height}{}\end{DoxyParamCaption})}
+
+\Hypertarget{_gui_utils_8h_a7531052ff11e4e5a5fd56dad9cc2c25f}\index{GuiUtils.h@{GuiUtils.h}!DrawImage@{DrawImage}}
+\index{DrawImage@{DrawImage}!GuiUtils.h@{GuiUtils.h}}
+\doxysubsubsection{\texorpdfstring{DrawImage()}{DrawImage()}}
+{\footnotesize\ttfamily \label{_gui_utils_8h_a7531052ff11e4e5a5fd56dad9cc2c25f} 
+void Draw\+Image (\begin{DoxyParamCaption}\item[{wx\+DC \&}]{dc}{, }\item[{wx\+Image}]{image}{, }\item[{double}]{x}{, }\item[{double}]{y}{, }\item[{double}]{w}{, }\item[{double}]{h}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_gui_utils_8cpp_source_l00440}{440}} of file \mbox{\hyperlink{_gui_utils_8cpp_source}{Gui\+Utils.\+cpp}}.
+
+\Hypertarget{_gui_utils_8h_acfa2e6d550aaf806c86bf93c6941138c}\index{GuiUtils.h@{GuiUtils.h}!DrawImagePDF@{DrawImagePDF}}
+\index{DrawImagePDF@{DrawImagePDF}!GuiUtils.h@{GuiUtils.h}}
+\doxysubsubsection{\texorpdfstring{DrawImagePDF()}{DrawImagePDF()}}
+{\footnotesize\ttfamily \label{_gui_utils_8h_acfa2e6d550aaf806c86bf93c6941138c} 
+void Draw\+Image\+PDF (\begin{DoxyParamCaption}\item[{wx\+Pdf\+Document \texorpdfstring{$\ast$}{*}}]{doc}{, }\item[{wx\+Image}]{image}{, }\item[{double}]{x}{, }\item[{double}]{y}{, }\item[{double}]{w}{, }\item[{double}]{h}{}\end{DoxyParamCaption})}
+
+\Hypertarget{_gui_utils_8h_a8479dc346fc7116ddb43bb12e069b84f}\index{GuiUtils.h@{GuiUtils.h}!DrawLabel@{DrawLabel}}
+\index{DrawLabel@{DrawLabel}!GuiUtils.h@{GuiUtils.h}}
+\doxysubsubsection{\texorpdfstring{DrawLabel()}{DrawLabel()}}
+{\footnotesize\ttfamily \label{_gui_utils_8h_a8479dc346fc7116ddb43bb12e069b84f} 
+void Draw\+Label (\begin{DoxyParamCaption}\item[{wx\+DC \&}]{dc}{, }\item[{const wx\+String \&}]{text}{, }\item[{wx\+Real\+Point}]{pos}{, }\item[{\mbox{\hyperlink{_defs_8h_acd8ac2c7f3e4026c03e6a45ba79cf0c3}{Real\+Size}}}]{size}{, }\item[{int}]{alignment}{ = {\ttfamily wxALIGN\+\_\+CENTER}, }\item[{int}]{index\+Accel}{ = {\ttfamily -\/1}}\end{DoxyParamCaption})}
+
+\Hypertarget{_gui_utils_8h_af0d439788e398aeb5511d074486c08af}\index{GuiUtils.h@{GuiUtils.h}!DrawLabelPDF@{DrawLabelPDF}}
+\index{DrawLabelPDF@{DrawLabelPDF}!GuiUtils.h@{GuiUtils.h}}
+\doxysubsubsection{\texorpdfstring{DrawLabelPDF()}{DrawLabelPDF()}}
+{\footnotesize\ttfamily \label{_gui_utils_8h_af0d439788e398aeb5511d074486c08af} 
+void Draw\+Label\+PDF (\begin{DoxyParamCaption}\item[{wx\+Pdf\+Document \texorpdfstring{$\ast$}{*}}]{doc}{, }\item[{const wx\+String \&}]{text}{, }\item[{\mbox{\hyperlink{_defs_8h_a213dea8a5ce1d84736c963a5cbfde8e0}{Real\+Point}}}]{pos}{, }\item[{\mbox{\hyperlink{_defs_8h_acd8ac2c7f3e4026c03e6a45ba79cf0c3}{Real\+Size}}}]{size}{, }\item[{int}]{alignment}{ = {\ttfamily wxPDF\+\_\+ALIGN\+\_\+LEFT}, }\item[{int}]{border}{ = {\ttfamily wxPDF\+\_\+BORDER\+\_\+NONE}, }\item[{bool}]{fill}{ = {\ttfamily 0}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_gui_utils_8cpp_source_l00054}{54}} of file \mbox{\hyperlink{_gui_utils_8cpp_source}{Gui\+Utils.\+cpp}}.
+
+\Hypertarget{_gui_utils_8h_aac893eec7cbdd9779d4ea2bcf55542f2}\index{GuiUtils.h@{GuiUtils.h}!DrawRectangle@{DrawRectangle}}
+\index{DrawRectangle@{DrawRectangle}!GuiUtils.h@{GuiUtils.h}}
+\doxysubsubsection{\texorpdfstring{DrawRectangle()}{DrawRectangle()}}
+{\footnotesize\ttfamily \label{_gui_utils_8h_aac893eec7cbdd9779d4ea2bcf55542f2} 
+void Draw\+Rectangle (\begin{DoxyParamCaption}\item[{wx\+DC \&}]{dc}{, }\item[{double}]{x}{, }\item[{double}]{y}{, }\item[{double}]{width}{, }\item[{double}]{height}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_gui_utils_8cpp_source_l00311}{311}} of file \mbox{\hyperlink{_gui_utils_8cpp_source}{Gui\+Utils.\+cpp}}.
+
+\Hypertarget{_gui_utils_8h_a16fcfaace30d06a6f22d19cf0d739e8d}\index{GuiUtils.h@{GuiUtils.h}!DrawRectanglePDF@{DrawRectanglePDF}}
+\index{DrawRectanglePDF@{DrawRectanglePDF}!GuiUtils.h@{GuiUtils.h}}
+\doxysubsubsection{\texorpdfstring{DrawRectanglePDF()}{DrawRectanglePDF()}}
+{\footnotesize\ttfamily \label{_gui_utils_8h_a16fcfaace30d06a6f22d19cf0d739e8d} 
+void Draw\+Rectangle\+PDF (\begin{DoxyParamCaption}\item[{wx\+Pdf\+Document \texorpdfstring{$\ast$}{*}}]{doc}{, }\item[{double}]{x}{, }\item[{double}]{y}{, }\item[{double}]{width}{, }\item[{double}]{height}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_gui_utils_8cpp_source_l00303}{303}} of file \mbox{\hyperlink{_gui_utils_8cpp_source}{Gui\+Utils.\+cpp}}.
+
+\Hypertarget{_gui_utils_8h_a993f3fc2a082fd5d19b41ba9fa9958ea}\index{GuiUtils.h@{GuiUtils.h}!DrawText@{DrawText}}
+\index{DrawText@{DrawText}!GuiUtils.h@{GuiUtils.h}}
+\doxysubsubsection{\texorpdfstring{DrawText()}{DrawText()}}
+{\footnotesize\ttfamily \label{_gui_utils_8h_a993f3fc2a082fd5d19b41ba9fa9958ea} 
+void Draw\+Text (\begin{DoxyParamCaption}\item[{wx\+DC \&}]{dc}{, }\item[{wx\+String \&}]{str}{, }\item[{wx\+Rect \&}]{rect}{, }\item[{bool}]{draw}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_gui_utils_8cpp_source_l00069}{69}} of file \mbox{\hyperlink{_gui_utils_8cpp_source}{Gui\+Utils.\+cpp}}.
+
+\Hypertarget{_gui_utils_8h_a5d4206ed019b9406975a35aa3a5ae198}\index{GuiUtils.h@{GuiUtils.h}!DrawTitle@{DrawTitle}}
+\index{DrawTitle@{DrawTitle}!GuiUtils.h@{GuiUtils.h}}
+\doxysubsubsection{\texorpdfstring{DrawTitle()}{DrawTitle()}}
+{\footnotesize\ttfamily \label{_gui_utils_8h_a5d4206ed019b9406975a35aa3a5ae198} 
+void Draw\+Title (\begin{DoxyParamCaption}\item[{wx\+DC \&}]{dc}{, }\item[{wx\+String}]{title}{, }\item[{\mbox{\hyperlink{_defs_8h_a213dea8a5ce1d84736c963a5cbfde8e0}{Real\+Point}}}]{pos}{, }\item[{\mbox{\hyperlink{_defs_8h_acd8ac2c7f3e4026c03e6a45ba79cf0c3}{Real\+Size}}}]{size}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_gui_utils_8cpp_source_l00190}{190}} of file \mbox{\hyperlink{_gui_utils_8cpp_source}{Gui\+Utils.\+cpp}}.
+
+\Hypertarget{_gui_utils_8h_aadd4ec38a788a3bc88c9be5f06d7468e}\index{GuiUtils.h@{GuiUtils.h}!DrawTitlePDF@{DrawTitlePDF}}
+\index{DrawTitlePDF@{DrawTitlePDF}!GuiUtils.h@{GuiUtils.h}}
+\doxysubsubsection{\texorpdfstring{DrawTitlePDF()}{DrawTitlePDF()}}
+{\footnotesize\ttfamily \label{_gui_utils_8h_aadd4ec38a788a3bc88c9be5f06d7468e} 
+void Draw\+Title\+PDF (\begin{DoxyParamCaption}\item[{wx\+Pdf\+Document \texorpdfstring{$\ast$}{*}}]{doc}{, }\item[{wx\+String}]{title}{, }\item[{\mbox{\hyperlink{_defs_8h_a213dea8a5ce1d84736c963a5cbfde8e0}{Real\+Point}}}]{pos}{, }\item[{\mbox{\hyperlink{_defs_8h_acd8ac2c7f3e4026c03e6a45ba79cf0c3}{Real\+Size}}}]{size}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_gui_utils_8cpp_source_l00247}{247}} of file \mbox{\hyperlink{_gui_utils_8cpp_source}{Gui\+Utils.\+cpp}}.
+
+\Hypertarget{_gui_utils_8h_a7ccabb8a51562aeba4b1fe80a104d982}\index{GuiUtils.h@{GuiUtils.h}!GetHeightChars@{GetHeightChars}}
+\index{GetHeightChars@{GetHeightChars}!GuiUtils.h@{GuiUtils.h}}
+\doxysubsubsection{\texorpdfstring{GetHeightChars()}{GetHeightChars()}}
+{\footnotesize\ttfamily \label{_gui_utils_8h_a7ccabb8a51562aeba4b1fe80a104d982} 
+double Get\+Height\+Chars (\begin{DoxyParamCaption}\item[{double}]{pt}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_gui_utils_8cpp_source_l00212}{212}} of file \mbox{\hyperlink{_gui_utils_8cpp_source}{Gui\+Utils.\+cpp}}.
+
+\Hypertarget{_gui_utils_8h_a4930edb60ac7be279e2c248e81dcf8f2}\index{GuiUtils.h@{GuiUtils.h}!GetImageFromFilename@{GetImageFromFilename}}
+\index{GetImageFromFilename@{GetImageFromFilename}!GuiUtils.h@{GuiUtils.h}}
+\doxysubsubsection{\texorpdfstring{GetImageFromFilename()}{GetImageFromFilename()}}
+{\footnotesize\ttfamily \label{_gui_utils_8h_a4930edb60ac7be279e2c248e81dcf8f2} 
+wx\+Image Get\+Image\+From\+Filename (\begin{DoxyParamCaption}\item[{wx\+String}]{filename}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_gui_utils_8cpp_source_l00324}{324}} of file \mbox{\hyperlink{_gui_utils_8cpp_source}{Gui\+Utils.\+cpp}}.
+
+\Hypertarget{_gui_utils_8h_acd67d3534b5333f171a59fa7a245f429}\index{GuiUtils.h@{GuiUtils.h}!GetMultiLineTextHeight@{GetMultiLineTextHeight}}
+\index{GetMultiLineTextHeight@{GetMultiLineTextHeight}!GuiUtils.h@{GuiUtils.h}}
+\doxysubsubsection{\texorpdfstring{GetMultiLineTextHeight()}{GetMultiLineTextHeight()}}
+{\footnotesize\ttfamily \label{_gui_utils_8h_acd67d3534b5333f171a59fa7a245f429} 
+double Get\+Multi\+Line\+Text\+Height (\begin{DoxyParamCaption}\item[{wx\+String}]{text}{, }\item[{wx\+Font \texorpdfstring{$\ast$}{*}}]{font}{, }\item[{double}]{width}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_gui_utils_8cpp_source_l00233}{233}} of file \mbox{\hyperlink{_gui_utils_8cpp_source}{Gui\+Utils.\+cpp}}.
+
+\Hypertarget{_gui_utils_8h_a5f10a9cb5ce52b8cbede5962e5fcd63c}\index{GuiUtils.h@{GuiUtils.h}!GetPPMM@{GetPPMM}}
+\index{GetPPMM@{GetPPMM}!GuiUtils.h@{GuiUtils.h}}
+\doxysubsubsection{\texorpdfstring{GetPPMM()}{GetPPMM()}}
+{\footnotesize\ttfamily \label{_gui_utils_8h_a5f10a9cb5ce52b8cbede5962e5fcd63c} 
+wx\+Size Get\+PPMM (\begin{DoxyParamCaption}\item[{wx\+DC \&}]{dc}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_gui_utils_8cpp_source_l00048}{48}} of file \mbox{\hyperlink{_gui_utils_8cpp_source}{Gui\+Utils.\+cpp}}.
+
+\Hypertarget{_gui_utils_8h_a8cec9a648f31210adbc6e338e0be81f7}\index{GuiUtils.h@{GuiUtils.h}!InitScale@{InitScale}}
+\index{InitScale@{InitScale}!GuiUtils.h@{GuiUtils.h}}
+\doxysubsubsection{\texorpdfstring{InitScale()}{InitScale()}}
+{\footnotesize\ttfamily \label{_gui_utils_8h_a8cec9a648f31210adbc6e338e0be81f7} 
+void Init\+Scale (\begin{DoxyParamCaption}\item[{wx\+Size}]{size\+MM}{, }\item[{wx\+Size}]{size\+Client}{}\end{DoxyParamCaption})}
+
+\Hypertarget{_gui_utils_8h_a380dcea1479d9d5d6f58459c4436ae73}\index{GuiUtils.h@{GuiUtils.h}!PDFLineStyle@{PDFLineStyle}}
+\index{PDFLineStyle@{PDFLineStyle}!GuiUtils.h@{GuiUtils.h}}
+\doxysubsubsection{\texorpdfstring{PDFLineStyle()}{PDFLineStyle()}}
+{\footnotesize\ttfamily \label{_gui_utils_8h_a380dcea1479d9d5d6f58459c4436ae73} 
+wx\+Pdf\+Line\+Style PDFLine\+Style (\begin{DoxyParamCaption}\item[{wx\+Pdf\+Document \texorpdfstring{$\ast$}{*}}]{doc}{, }\item[{wx\+Colour}]{colour}{ = {\ttfamily \texorpdfstring{$\ast$}{*}wxBLACK}, }\item[{double}]{width}{ = {\ttfamily -\/1}, }\item[{const wx\+Pdf\+Array\+Double \&}]{dash}{ = {\ttfamily wxPdfArrayDouble()}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_gui_utils_8cpp_source_l00290}{290}} of file \mbox{\hyperlink{_gui_utils_8cpp_source}{Gui\+Utils.\+cpp}}.
+
+
+
+\label{doc-var-members}
+\Hypertarget{_gui_utils_8h_doc-var-members}
+\doxysubsection{Variable Documentation}
+\Hypertarget{_gui_utils_8h_ac8cfda6ba2bba574d3dc2a67f14c430a}\index{GuiUtils.h@{GuiUtils.h}!defaultDash@{defaultDash}}
+\index{defaultDash@{defaultDash}!GuiUtils.h@{GuiUtils.h}}
+\doxysubsubsection{\texorpdfstring{defaultDash}{defaultDash}}
+{\footnotesize\ttfamily \label{_gui_utils_8h_ac8cfda6ba2bba574d3dc2a67f14c430a} 
+wx\+Pdf\+Array\+Double default\+Dash\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{_gui_utils_8cpp_source_l00046}{46}} of file \mbox{\hyperlink{_gui_utils_8cpp_source}{Gui\+Utils.\+cpp}}.
+

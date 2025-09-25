@@ -1,0 +1,134 @@
+\doxysection{Generate\+List.\+h}
+\hypertarget{_generate_list_8h_source}{}\label{_generate_list_8h_source}\index{C:/Users/femon/Development/wx/cloneTest/StampTool/src/gui/GenerateList.h@{C:/Users/femon/Development/wx/cloneTest/StampTool/src/gui/GenerateList.h}}
+\mbox{\hyperlink{_generate_list_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00002}00002\ \textcolor{comment}{\ *\ @file\ \ \ \ \ \ \ \ \ GenerateList.h}}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00003}00003\ \textcolor{comment}{\ *@brief}}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00004}00004\ \textcolor{comment}{*\ @author\ \ \ \ \ \ Eddie\ Monroe}}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00005}00005\ \textcolor{comment}{*\ Modified\ by:}}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00006}00006\ \textcolor{comment}{*\ @author\ \ \ \ \ Thu\ 08\ Dec\ 2022\ 20:20:21\ CST}}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00007}00007\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00008}00008\ \textcolor{comment}{*\ @copyright\ Copyright\ (\ c\ )\ 2024}}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00009}00009\ \textcolor{comment}{\ *\ This\ file\ is\ part\ of\ StampTool.}}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00010}00010\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00011}00011\ \textcolor{comment}{\ *\ StampTool\ is\ free\ software:\ you\ can\ redistribute\ it\ and/or\ modify\ it\ under\ the}}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00012}00012\ \textcolor{comment}{\ *\ terms\ of\ the\ GNU\ General\ Public\ License\ as\ published\ by\ the\ Free\ Software\ Foundation,}}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00013}00013\ \textcolor{comment}{\ *\ either\ version\ 3\ of\ the\ License,\ or\ any\ later\ version.}}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00014}00014\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00015}00015\ \textcolor{comment}{\ *\ StampTool\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,\ but\ WITHOUT\ ANY}}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00016}00016\ \textcolor{comment}{\ *\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of\ MERCHANTABILITY\ or\ FITNESS\ FOR\ A}}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00017}00017\ \textcolor{comment}{\ *\ PARTICULAR\ PURPOSE.\ See\ the\ GNU\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00018}00018\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00019}00019\ \textcolor{comment}{\ *\ You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License\ along\ with}}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00020}00020\ \textcolor{comment}{\ *\ StampTool.\ If\ not,\ see\ <https://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00021}00021\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00024}00024\ \textcolor{preprocessor}{\#ifndef\ \_GENERATELIST\_H\_}}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00025}00025\ \textcolor{preprocessor}{\#define\ \_GENERATELIST\_H\_}}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00027}00027\ \textcolor{preprocessor}{\#include\ "{}wx/grid.h"{}}}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00029}00029\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_defs_8h}{Defs.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00030}00030\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_gui_defs_8h}{gui/GuiDefs.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00032}00032\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_entry_8h}{catalog/Entry.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00033}00033\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_x_m_l_utilities_8h}{utils/XMLUtilities.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00035}00035\ \textcolor{keyword}{class\ }wxGrid;}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00037}00037\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_generate_list_settings}{GenerateListSettings}};}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00039}\mbox{\hyperlink{_generate_list_8h_ac0b0b3c863a1d99e4133f769b9138af7}{00039}}\ \textcolor{preprocessor}{\#define\ SYMBOL\_GENERATELIST\_STYLE\ wxTAB\_TRAVERSAL}}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00040}\mbox{\hyperlink{_generate_list_8h_a57b3720680ce044b72e0dda731020b96}{00040}}\ \textcolor{preprocessor}{\#define\ SYMBOL\_GENERATELIST\_TITLE\ \_(\ "{}GenerateList"{}\ )}}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00041}\mbox{\hyperlink{_generate_list_8h_aa3bd0a963e9867d8950ca84c0c8db99e}{00041}}\ \textcolor{preprocessor}{\#define\ SYMBOL\_GENERATELIST\_IDNAME\ ID\_GENERATELIST}}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00042}\mbox{\hyperlink{_generate_list_8h_a89efd10edd914e773b2006835e3cf51d}{00042}}\ \textcolor{preprocessor}{\#define\ SYMBOL\_GENERATELIST\_SIZE\ wxSize(\ 400,\ 500\ )}}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00043}\mbox{\hyperlink{_generate_list_8h_af67d06a0e5aaef8c095e9c3e6b4f9d5e}{00043}}\ \textcolor{preprocessor}{\#define\ SYMBOL\_GENERATELIST\_POSITION\ wxDefaultPosition}}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00046}\mbox{\hyperlink{class_generate_list}{00046}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_generate_list_aceafbc642894da7fca46309f9909eeb3}{GenerateList}}\ :\ \textcolor{keyword}{public}\ wxPanel}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00047}00047\ \{}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00048}00048\ \ \ \ \ DECLARE\_DYNAMIC\_CLASS(\ \mbox{\hyperlink{class_generate_list_aceafbc642894da7fca46309f9909eeb3}{GenerateList}}\ )}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00049}00049\ \ \ \ \ DECLARE\_EVENT\_TABLE(\ )}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00051}00051\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00052}\mbox{\hyperlink{class_generate_list_a475573d26a7cc2811250e94e0a1f14c9}{00052}}\ \ \ \ \ \textcolor{keyword}{enum}\ \mbox{\hyperlink{class_generate_list_a475573d26a7cc2811250e94e0a1f14c9}{GenerateListGuiDefs}}}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00053}00053\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00054}\mbox{\hyperlink{class_generate_list_a475573d26a7cc2811250e94e0a1f14c9a7114f4f9109c8f1b738149807bbe1279}{00054}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_generate_list_a475573d26a7cc2811250e94e0a1f14c9a7114f4f9109c8f1b738149807bbe1279}{ID\_SETLISTPREFSBUTTON}}\ =\ \mbox{\hyperlink{_gui_defs_8h_a6329898a126babcdaa295242c115a11ea9fa2f1c30ef3a9fe4e82a0c1bd83187d}{ID\_GENERATELIST}}\ +\ 1,}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00055}\mbox{\hyperlink{class_generate_list_a475573d26a7cc2811250e94e0a1f14c9a07526bc921a31d38755a23ed6105b05d}{00055}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_generate_list_a475573d26a7cc2811250e94e0a1f14c9a07526bc921a31d38755a23ed6105b05d}{ID\_GRIDCTRL}},}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00056}\mbox{\hyperlink{class_generate_list_a475573d26a7cc2811250e94e0a1f14c9a9aa3f04bb8ebd7e2e97c7f050b436f52}{00056}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_generate_list_a475573d26a7cc2811250e94e0a1f14c9a9aa3f04bb8ebd7e2e97c7f050b436f52}{ID\_WRITEBUTTON}},}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00057}\mbox{\hyperlink{class_generate_list_a475573d26a7cc2811250e94e0a1f14c9ace762d49d7673fdd04697467fa491506}{00057}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_generate_list_a475573d26a7cc2811250e94e0a1f14c9ace762d49d7673fdd04697467fa491506}{ID\_FILENAMETEXTCTRL}},}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00058}00058\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00063}00063\ \ \ \ \ \mbox{\hyperlink{class_generate_list_aceafbc642894da7fca46309f9909eeb3}{GenerateList}}(\ );}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00072}00072\ \ \ \ \ \mbox{\hyperlink{class_generate_list_aceafbc642894da7fca46309f9909eeb3}{GenerateList}}(\ wxWindow*\ parent,\ wxWindowID\ \textcolor{keywordtype}{id}\ =\ \mbox{\hyperlink{_generate_list_8h_aa3bd0a963e9867d8950ca84c0c8db99e}{SYMBOL\_GENERATELIST\_IDNAME}},\ \textcolor{keyword}{const}\ wxPoint\&\ pos\ =\ \mbox{\hyperlink{_generate_list_8h_af67d06a0e5aaef8c095e9c3e6b4f9d5e}{SYMBOL\_GENERATELIST\_POSITION}},\ \textcolor{keyword}{const}\ wxSize\&\ size\ =\ \mbox{\hyperlink{_generate_list_8h_a89efd10edd914e773b2006835e3cf51d}{SYMBOL\_GENERATELIST\_SIZE}},\ \textcolor{keywordtype}{long}\ style\ =\ \mbox{\hyperlink{_generate_list_8h_ac0b0b3c863a1d99e4133f769b9138af7}{SYMBOL\_GENERATELIST\_STYLE}}\ );}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00076}00076\ \ \ \ \ \mbox{\hyperlink{class_generate_list_a945cf75625b051f970b77d22255b4a40}{\string~GenerateList}}(\ );}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00078}00078\ }
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00079}00079\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_generate_list_a5015735a9c60eccb6e73d5b490adba75}{AddEntry}}(\ \mbox{\hyperlink{class_catalog_1_1_entry}{Catalog::Entry}}*\ entry\ );}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00080}00080\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_generate_list_a76a0340008cf25f15846c2a0da115308}{ClearList}}(\ );}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00087}00087\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_generate_list_af74184690c0decf6dcaf9bc905200caa}{CheckEmission}}(\ \mbox{\hyperlink{class_catalog_1_1_entry}{Catalog::Entry}}*\ entry\ );}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00088}00088\ }
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00094}00094\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_generate_list_ac0aa2f58e7774bee71c396f856e630c6}{CheckFormat}}(\ \mbox{\hyperlink{class_catalog_1_1_entry}{Catalog::Entry}}*\ entry\ );}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00095}00095\ }
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00101}00101\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_generate_list_a8d0a66683752361b7c3031d9757d7ed2}{CheckStatus}}(\ \mbox{\hyperlink{class_catalog_1_1_entry}{Catalog::Entry}}*\ entry\ );}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00102}00102\ }
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00112}00112\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_generate_list_ae9ccce9854aaf9b4e479243544cc1f92}{Create}}(\ wxWindow*\ parent,\ wxWindowID\ \textcolor{keywordtype}{id}\ =\ \mbox{\hyperlink{_generate_list_8h_aa3bd0a963e9867d8950ca84c0c8db99e}{SYMBOL\_GENERATELIST\_IDNAME}},\ \textcolor{keyword}{const}\ wxPoint\&\ pos\ =\ \mbox{\hyperlink{_generate_list_8h_af67d06a0e5aaef8c095e9c3e6b4f9d5e}{SYMBOL\_GENERATELIST\_POSITION}},\ \textcolor{keyword}{const}\ wxSize\&\ size\ =\ \mbox{\hyperlink{_generate_list_8h_a89efd10edd914e773b2006835e3cf51d}{SYMBOL\_GENERATELIST\_SIZE}},\ \textcolor{keywordtype}{long}\ style\ =\ \mbox{\hyperlink{_generate_list_8h_ac0b0b3c863a1d99e4133f769b9138af7}{SYMBOL\_GENERATELIST\_STYLE}}\ );}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00113}00113\ }
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00116}00116\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_generate_list_ada2a7c3eab6cccdb6c073c25068aacc1}{CreateControls}}(\ );}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00117}00117\ }
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00120}00120\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_generate_list_a17fc90e80c582d2d95806ee892883e49}{DoListPrefs}}(\ );}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00121}00121\ }
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00127}00127\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_generate_list_ab9dd5abc66748bafedeba0b14423bc29}{GetStringLen}}(\ wxFont\&\ font,\ wxString\ text\ );}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00128}00128\ }
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00131}00131\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_generate_list_a77ba5a9d29118bb95fda26074b8bb33d}{Init}}(\ );}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00132}00132\ }
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00136}00136\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_generate_list_aa56b7fc8bfe8786c181784d4f7620c91}{OnFileNameTextUpdated}}(\ wxCommandEvent\&\ event\ );}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00137}00137\ }
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00141}00141\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_generate_list_a1593b7878a18e79c98d2dda88d5e9a61}{OnSetListPrefsButtonClick}}(\ wxCommandEvent\&\ event\ );}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00142}00142\ }
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00143}00143\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_generate_list_aa0c0ff9d5ccb3002e21b20b1521a2685}{OnCellLeftClick}}(\ wxGridEvent\&\ event\ );}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00144}00144\ }
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00145}00145\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_generate_list_aa49365f9e3020d63f2aefe8cff6e34ca}{OnLabelLeftClick}}(\ wxGridEvent\&\ event\ );}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00146}00146\ }
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00150}00150\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_generate_list_a3c98cd369741e9972aa4146c338f3b81}{OnWriteButtonClick}}(\ wxCommandEvent\&\ event\ );}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00151}00151\ }
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00152}00152\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_generate_list_ac3ee4cc4525871b658cc02c66e077de8}{SaveAs}}(\ );}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00153}00153\ }
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00158}00158\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_generate_list_a6928a2ab48e8cee344c76493780c47c1}{ShowRow}}(\ \mbox{\hyperlink{class_catalog_1_1_entry}{Catalog::Entry}}*\ entry,\ \textcolor{keywordtype}{int}\ row\ );}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00159}00159\ }
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00164}00164\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_generate_list_a7b88ee50b39bb22a7040d635484b4273}{ShowToolTips}}(\ );}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00165}00165\ }
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00168}00168\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_generate_list_ad82218f3de028e0fc3c0aef5485073b6}{UpdateGrid}}(\ );}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00169}00169\ }
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00174}00174\ }
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00175}00175\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_generate_list_a559537b302c31cf69c4702cb2b532d2c}{WriteEntries}}(\ wxXmlNode*\ parent,\ \textcolor{keywordtype}{int}\&\ row\ );}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00176}00176\ }
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00177}00177\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_generate_list_ad8f31aa3b44a2e40d47886a7847da246}{Save}}(\ wxString\ filename\ );}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00178}00178\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_generate_list_abb6b706df3345a9f257b968b963e41fc}{WriteList}}(\ wxXmlNode*\ parent,\ std::ofstream\&\ ostream\ );}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00179}\mbox{\hyperlink{class_generate_list_a2ff1f8c368c63f6c574f4a391a2b9a75}{00179}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_generate_list_a2ff1f8c368c63f6c574f4a391a2b9a75}{WriteListEntry}}(\ \mbox{\hyperlink{class_catalog_1_1_entry}{Catalog::Entry}}*\ entry,\ std::ofstream\&\ ostream\ );}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00180}\mbox{\hyperlink{class_generate_list_a9e0428971a5ffe1727e6868ae57448da}{00180}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_generate_list_a9e0428971a5ffe1727e6868ae57448da}{MakeListAttributeString}}(\ wxString\ in,\ wxString\&\ out,\ \textcolor{keywordtype}{int}\ fieldLength,\ wxString\&\ remainder\ );}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00181}00181\ }
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00182}00182\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00183}00183\ \ \ \ \ wxGrid*\ m\_gridCtrl;}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00184}00184\ \ \ \ \ wxButton*\ m\_writeButton;}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00185}00185\ \ \ \ \ wxTextCtrl*\ m\_filename;}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00186}00186\ }
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00187}00187\ \ \ \ \ \mbox{\hyperlink{class_generate_list_settings}{GenerateListSettings}}*\ m\_generateListSettings;}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00188}00188\ }
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00189}00189\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_checkedStatusItems;}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00190}00190\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_checkedFormatItems;}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00191}00191\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_checkedEmissionItems;}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00192}00192\ \ \ \ \ wxString\ m\_fromYear;}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00193}00193\ \ \ \ \ wxString\ m\_toYear;}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00194}00194\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_currRow;}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00195}00195\ \};}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00196}00196\ }
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00197}00197\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_generate_list_8h_source_l00198}00198\ }
+
+\end{DoxyCode}

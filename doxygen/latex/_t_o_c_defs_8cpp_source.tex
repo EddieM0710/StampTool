@@ -1,0 +1,61 @@
+\doxysection{TOCDefs.\+cpp}
+\hypertarget{_t_o_c_defs_8cpp_source}{}\label{_t_o_c_defs_8cpp_source}\index{C:/Users/femon/Development/wx/cloneTest/StampTool/src/toc/TOCDefs.cpp@{C:/Users/femon/Development/wx/cloneTest/StampTool/src/toc/TOCDefs.cpp}}
+\mbox{\hyperlink{_t_o_c_defs_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_t_o_c_defs_8cpp_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_defs_8cpp_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_defs_8cpp_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_defs_8cpp_source_l00026}00026\ \textcolor{preprocessor}{\#include\ "{}wx/wxprec.h"{}}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_defs_8cpp_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_defs_8cpp_source_l00028}00028\ \textcolor{preprocessor}{\#ifdef\ \_\_BORLANDC\_\_}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_defs_8cpp_source_l00029}00029\ \textcolor{preprocessor}{\#pragma\ hdrstop}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_defs_8cpp_source_l00030}00030\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_defs_8cpp_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_defs_8cpp_source_l00032}00032\ \textcolor{preprocessor}{\#ifdef\ \_\_BORLANDC\_\_}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_defs_8cpp_source_l00033}00033\ \textcolor{preprocessor}{\#pragma\ hdrstop}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_defs_8cpp_source_l00034}00034\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_defs_8cpp_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_defs_8cpp_source_l00036}00036\ \textcolor{preprocessor}{\#ifndef\ WX\_PRECOMP}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_defs_8cpp_source_l00037}00037\ \textcolor{preprocessor}{\#include\ "{}wx/wx.h"{}}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_defs_8cpp_source_l00038}00038\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_defs_8cpp_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_defs_8cpp_source_l00040}00040\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_t_o_c_defs_8h}{toc/TOCDefs.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_defs_8cpp_source_l00041}00041\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_x_m_l_utilities_8h}{utils/XMLUtilities.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_defs_8cpp_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_defs_8cpp_source_l00043}00043\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_utils}{Utils}}\ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_defs_8cpp_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_defs_8cpp_source_l00045}\mbox{\hyperlink{namespace_utils_ab1eaa1d4e06e66103dffe43479fd9783}{00045}}\ \ \ \ \ \textcolor{keyword}{const}\ wxString\ \mbox{\hyperlink{namespace_utils_ab1eaa1d4e06e66103dffe43479fd9783}{TOCBaseNames}}[\ \mbox{\hyperlink{namespace_utils_a8d9b4e3627512bacc09c31c52f3d08f1abab247e1687d283665b7f94b405fe448}{TOC\_NbrTypes}}\ ]\ =\ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_defs_8cpp_source_l00046}00046\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Section"{}},}
+\DoxyCodeLine{\Hypertarget{_t_o_c_defs_8cpp_source_l00047}00047\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Volume"{}},\ \textcolor{stringliteral}{"{}None"{}}\ \};}
+\DoxyCodeLine{\Hypertarget{_t_o_c_defs_8cpp_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_defs_8cpp_source_l00049}\mbox{\hyperlink{namespace_utils_a10e6f88e02d3b871666ca8fa943fee87}{00049}}\ \ \ \ \ \mbox{\hyperlink{namespace_utils_a8d9b4e3627512bacc09c31c52f3d08f1}{TOCBaseType}}\ \mbox{\hyperlink{namespace_utils_a10e6f88e02d3b871666ca8fa943fee87}{FindTOCBaseType}}(\ wxXmlNode*\ element\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_defs_8cpp_source_l00050}00050\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_defs_8cpp_source_l00051}00051\ \ \ \ \ \ \ \ \ wxString\ name\ =\ element-\/>GetName(\ );}
+\DoxyCodeLine{\Hypertarget{_t_o_c_defs_8cpp_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_defs_8cpp_source_l00053}00053\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\ \textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \mbox{\hyperlink{namespace_utils_a8d9b4e3627512bacc09c31c52f3d08f1abab247e1687d283665b7f94b405fe448}{TOC\_NbrTypes}};\ i++\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_defs_8cpp_source_l00054}00054\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_defs_8cpp_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ !name.Cmp(\ \mbox{\hyperlink{namespace_utils_ab1eaa1d4e06e66103dffe43479fd9783}{TOCBaseNames}}[\ i\ ]\ )\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_defs_8cpp_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_defs_8cpp_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\ \mbox{\hyperlink{namespace_utils_a8d9b4e3627512bacc09c31c52f3d08f1}{Utils::TOCBaseType}}\ )\ i;}
+\DoxyCodeLine{\Hypertarget{_t_o_c_defs_8cpp_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_defs_8cpp_source_l00059}00059\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_defs_8cpp_source_l00060}00060\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\ \mbox{\hyperlink{namespace_utils_a8d9b4e3627512bacc09c31c52f3d08f1}{Utils::TOCBaseType}}\ )\ -\/1;}
+\DoxyCodeLine{\Hypertarget{_t_o_c_defs_8cpp_source_l00061}00061\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_t_o_c_defs_8cpp_source_l00062}\mbox{\hyperlink{namespace_utils_a63d0882852c3cea267451b2ecee27afe}{00062}}\ \ \ \ \ \mbox{\hyperlink{namespace_utils_a8d9b4e3627512bacc09c31c52f3d08f1}{TOCBaseType}}\ \mbox{\hyperlink{namespace_utils_a10e6f88e02d3b871666ca8fa943fee87}{FindTOCBaseType}}(\ wxString\ name\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_defs_8cpp_source_l00063}00063\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_defs_8cpp_source_l00064}00064\ \ \ \ \ \ \ \ \ wxString\ baseName;}
+\DoxyCodeLine{\Hypertarget{_t_o_c_defs_8cpp_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_defs_8cpp_source_l00066}00066\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\ \textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \mbox{\hyperlink{namespace_utils_a8d9b4e3627512bacc09c31c52f3d08f1abab247e1687d283665b7f94b405fe448}{TOC\_NbrTypes}};\ i++\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_defs_8cpp_source_l00067}00067\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_defs_8cpp_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ baseName\ =\ \mbox{\hyperlink{namespace_utils_ab1eaa1d4e06e66103dffe43479fd9783}{TOCBaseNames}}[\ i\ ];}
+\DoxyCodeLine{\Hypertarget{_t_o_c_defs_8cpp_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ !name.Cmp(\ baseName\ )\ )}
+\DoxyCodeLine{\Hypertarget{_t_o_c_defs_8cpp_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_t_o_c_defs_8cpp_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\ \mbox{\hyperlink{namespace_utils_a8d9b4e3627512bacc09c31c52f3d08f1}{Utils::TOCBaseType}}\ )\ i;}
+\DoxyCodeLine{\Hypertarget{_t_o_c_defs_8cpp_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_defs_8cpp_source_l00073}00073\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_t_o_c_defs_8cpp_source_l00074}00074\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\ \mbox{\hyperlink{namespace_utils_a8d9b4e3627512bacc09c31c52f3d08f1}{Utils::TOCBaseType}}\ )\ -\/1;}
+\DoxyCodeLine{\Hypertarget{_t_o_c_defs_8cpp_source_l00075}00075\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_t_o_c_defs_8cpp_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{_t_o_c_defs_8cpp_source_l00077}00077\ \}}
+
+\end{DoxyCode}

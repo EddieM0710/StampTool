@@ -1,0 +1,90 @@
+\doxysection{Album\+Volume.\+h}
+\hypertarget{_album_volume_8h_source}{}\label{_album_volume_8h_source}\index{C:/Users/femon/Development/wx/cloneTest/StampTool/src/design/AlbumVolume.h@{C:/Users/femon/Development/wx/cloneTest/StampTool/src/design/AlbumVolume.h}}
+\mbox{\hyperlink{_album_volume_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00025}00025\ \textcolor{preprocessor}{\#ifndef\ AlbumVolume\_H}}
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00026}00026\ \textcolor{preprocessor}{\#define\ AlbumVolume\_H}}
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00028}00028\ \textcolor{preprocessor}{\#include\ "{}wx/xml/xml.h"{}}}
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00029}00029\ \textcolor{preprocessor}{\#include\ <wx/string.h>}}
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00030}00030\ \textcolor{preprocessor}{\#include\ <wx/treebase.h>}}
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00031}00031\ \textcolor{preprocessor}{\#include\ <wx/zipstrm.h>}}
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00032}00032\ \textcolor{preprocessor}{\#include\ <wx/arrstr.h>}}
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00033}00033\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00035}00035\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_defs_8h}{Defs.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00036}00036\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_design_defs_8h}{design/DesignDefs.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00038}00038\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_x_m_l_utilities_8h}{utils/XMLUtilities.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00039}00039\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_volume_8h}{utils/Volume.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00041}00041\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_album_tree_ctrl}{AlbumTreeCtrl}};}
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00042}00042\ \textcolor{comment}{//namespace\ Utils\ \{\ class\ ImageRepository;\ \};}}
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00044}00044\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_design}{Design}}\ \{}
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00046}00046\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_design_1_1_album}{Album}};}
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00047}00047\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_design_1_1_layout_base}{LayoutBase}};}
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00048}00048\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_design_1_1_album_base}{AlbumBase}};}
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00051}\mbox{\hyperlink{class_design_1_1_album_volume}{00051}}\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_design_1_1_album_volume_a37b02b6026b6bc14aed5c5b2d0e558e2}{AlbumVolume}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_utils_1_1_volume}{Utils::Volume}}}
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00052}00052\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00054}00054\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00056}00056\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_design_1_1_album_volume_a37b02b6026b6bc14aed5c5b2d0e558e2}{AlbumVolume}}(\ );}
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00058}00058\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_design_1_1_album_volume_ab4df3cd5868797152e8f08b51f6c9e37}{\string~AlbumVolume}}(\ );}
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00060}\mbox{\hyperlink{class_design_1_1_album_volume_ab13ead54dcb19d9a584f7a98c8c22e45}{00060}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_design_1_1_album}{Album}}*\ \mbox{\hyperlink{class_design_1_1_album_volume_ab13ead54dcb19d9a584f7a98c8c22e45}{GetAlbum}}(\ )\ \{}
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_album;}
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00062}00062\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00064}00064\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_design_1_1_album_base}{AlbumBase}}*\ \mbox{\hyperlink{class_design_1_1_album_volume_a0107c47e95f0bd0ad9215bfe0b0adc10}{GetPage}}(\ \mbox{\hyperlink{class_design_1_1_album_base}{AlbumBase}}*\ node\ );}
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00066}00066\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_design_1_1_album_volume}{AlbumVolume}}*\ \mbox{\hyperlink{class_design_1_1_album_volume_a0e8fa4cd86d36b9c6b6b946c195f59e8}{InitAlbumVolume}}(\ );}
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00068}00068\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_design_1_1_album_volume_a7a4cb22029b19a3a95b0a374ce08dc85}{LoadDefaultDocument}}(\ wxString\ volName\ );}
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00070}00070\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_design_1_1_album_volume_a6b36d5a2c58d5949f2c9bab0a347e066}{MakePage}}(\ \mbox{\hyperlink{class_design_1_1_layout_base}{Design::LayoutBase}}*\ node\ );}
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00072}00072\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_design_1_1_album_volume_a587aa8a96e4cb4bc4b6c4de71cf6c8cf}{SaveXML}}(\ );}
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00074}00074\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_design_1_1_album_volume_a2c7aea2298f3886db52e356e7ef24879}{Save}}(\ );}
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00076}00076\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_design_1_1_album_volume_ae1b0be4ad7e840a747f9b5134039dd73}{SaveDesignTree}}(\ );}
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00078}\mbox{\hyperlink{class_design_1_1_album_volume_a3164c36bec2f1fde1344c8704dab08bf}{00078}}\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_design_1_1_album_volume_a3164c36bec2f1fde1344c8704dab08bf}{SetAlbum}}(\ \mbox{\hyperlink{class_design_1_1_album}{Album}}*\ album\ )\ \{}
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ m\_album\ =\ album;}
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00080}00080\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00082}\mbox{\hyperlink{class_design_1_1_album_volume_a5a1f506bddc974cfc4c573312c32bb3d}{00082}}\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_design_1_1_album_volume_a5a1f506bddc974cfc4c573312c32bb3d}{SetAlbumName}}(\ wxString\ str\ )}
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00083}00083\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ wxXmlNode*\ root\ =\ \mbox{\hyperlink{class_utils_1_1_volume_a62c5abb1b11937ebd1dc1b7be4641606}{GetDoc}}(\ )-\/>GetRoot(\ );}
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ root\ )}
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_utils_acd4b52904d20e67e1b9570914c1c45a7}{Utils::SetAttrStr}}(\ root,\ \textcolor{stringliteral}{"{}Name"{}},\ str\ );}
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00089}00089\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00090}00090\ }
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00091}00091\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_design_1_1_album_volume_a9e60f690df6ea29cea8f9d9381acada3}{UpdateAlbum}}(\ );}
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00092}00092\ }
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00093}00093\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_design_1_1_album_volume_aeaf5a9d2ce908c50c09183ae6ba75921}{UpdatePage}}(\ \mbox{\hyperlink{class_design_1_1_album_base}{AlbumBase}}*\ node\ );}
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00094}00094\ }
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00095}00095\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_design_a89f66276a25aed62bedc9fb9b5d35453}{NodeStatus}}\ \mbox{\hyperlink{class_design_1_1_album_volume_a586a13733575a043813690fcc06adefc}{ValidatePage}}(\ \mbox{\hyperlink{class_design_1_1_album_base}{AlbumBase}}*\ node\ );}
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00096}00096\ }
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00097}00097\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00098}00098\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_design_1_1_album}{Album}}*\ m\_album;}
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00099}00099\ }
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00100}00100\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00101}00101\ }
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00102}00102\ }
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00103}\mbox{\hyperlink{namespace_design_a6e23403e77fe19de984ed348ba39cb81}{00103}}\ \ \ \ \ \textcolor{keyword}{typedef}\ std::unordered\_map<\ std::string,\ AlbumVolume*>\ \mbox{\hyperlink{namespace_design_a6e23403e77fe19de984ed348ba39cb81}{AlbumVolumeArray}};}
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00104}\mbox{\hyperlink{namespace_design_a5fff364134fc2363f6bd3e30fae469bc}{00104}}\ \ \ \ \ \textcolor{keyword}{typedef}\ std::unordered\_map<\ int,\ wxTreeItemId\ >\ \mbox{\hyperlink{namespace_design_a5fff364134fc2363f6bd3e30fae469bc}{AlbumMenuIDArray}};}
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00105}00105\ }
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00106}00106\ \}}
+\DoxyCodeLine{\Hypertarget{_album_volume_8h_source_l00107}00107\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

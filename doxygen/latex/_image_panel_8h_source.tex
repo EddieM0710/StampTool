@@ -1,0 +1,87 @@
+\doxysection{Image\+Panel.\+h}
+\hypertarget{_image_panel_8h_source}{}\label{_image_panel_8h_source}\index{C:/Users/femon/Development/wx/cloneTest/StampTool/src/gui/ImagePanel.h@{C:/Users/femon/Development/wx/cloneTest/StampTool/src/gui/ImagePanel.h}}
+\mbox{\hyperlink{_image_panel_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_image_panel_8h_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{_image_panel_8h_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_image_panel_8h_source_l00025}00025\ \textcolor{preprocessor}{\#ifndef\ \_IMAGEPANEL\_H\_}}
+\DoxyCodeLine{\Hypertarget{_image_panel_8h_source_l00026}00026\ \textcolor{preprocessor}{\#define\ \_IMAGEPANEL\_H\_}}
+\DoxyCodeLine{\Hypertarget{_image_panel_8h_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_image_panel_8h_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{_image_panel_8h_source_l00029}00029\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_gui_defs_8h}{gui/GuiDefs.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_image_panel_8h_source_l00030}00030\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_entry_8h}{catalog/Entry.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_image_panel_8h_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_image_panel_8h_source_l00032}00032\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_gui_defs_8h}{gui/GuiDefs.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_image_panel_8h_source_l00033}00033\ \ \textcolor{comment}{//\ \#include\ "{}wx/webrequest.h"{}}}
+\DoxyCodeLine{\Hypertarget{_image_panel_8h_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_image_panel_8h_source_l00035}00035\ \ \textcolor{comment}{//\ \#if\ !wxUSE\_WEBREQUEST}}
+\DoxyCodeLine{\Hypertarget{_image_panel_8h_source_l00036}00036\ \ \textcolor{comment}{//\ \#error\ "{}wxUSE\_WEBREQUEST\ must\ be\ 1\ for\ web\ access"{}}}
+\DoxyCodeLine{\Hypertarget{_image_panel_8h_source_l00037}00037\ \ \textcolor{comment}{//\ \#endif}}
+\DoxyCodeLine{\Hypertarget{_image_panel_8h_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{_image_panel_8h_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_image_panel_8h_source_l00040}\mbox{\hyperlink{_image_panel_8h_a0c97561d098d94e7934f29e45033ecdf}{00040}}\ \textcolor{preprocessor}{\#define\ SYMBOL\_IMAGEPANEL\_STYLE\ wxTAB\_TRAVERSAL}}
+\DoxyCodeLine{\Hypertarget{_image_panel_8h_source_l00041}\mbox{\hyperlink{_image_panel_8h_ada043d42f4e2037f88f4afb128b3627c}{00041}}\ \textcolor{preprocessor}{\#define\ SYMBOL\_IMAGEPANEL\_TITLE\ \_(\ "{}ImagePanel"{}\ )}}
+\DoxyCodeLine{\Hypertarget{_image_panel_8h_source_l00042}\mbox{\hyperlink{_image_panel_8h_a3d7a312fde0cb4b1d297b5bd7a8b1b01}{00042}}\ \textcolor{preprocessor}{\#define\ SYMBOL\_IMAGEPANEL\_IDNAME\ ID\_IMAGEPANEL}}
+\DoxyCodeLine{\Hypertarget{_image_panel_8h_source_l00043}\mbox{\hyperlink{_image_panel_8h_ab926ce699b55bb31e233c384dc783c21}{00043}}\ \textcolor{preprocessor}{\#define\ SYMBOL\_IMAGEPANEL\_SIZE\ wxSize(\ 400,\ 300\ )}}
+\DoxyCodeLine{\Hypertarget{_image_panel_8h_source_l00044}\mbox{\hyperlink{_image_panel_8h_a2803a5889eb6d19691ceda15c6143463}{00044}}\ \textcolor{preprocessor}{\#define\ SYMBOL\_IMAGEPANEL\_POSITION\ wxDefaultPosition}}
+\DoxyCodeLine{\Hypertarget{_image_panel_8h_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{_image_panel_8h_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{_image_panel_8h_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{_image_panel_8h_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{_image_panel_8h_source_l00053}\mbox{\hyperlink{class_image_panel}{00053}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_image_panel_ab4d594ff683bc75c273ff2b703e23e6a}{ImagePanel}}\ :\ \textcolor{keyword}{public}\ wxScrolledWindow}
+\DoxyCodeLine{\Hypertarget{_image_panel_8h_source_l00054}00054\ \{}
+\DoxyCodeLine{\Hypertarget{_image_panel_8h_source_l00055}00055\ \ \ \ \ DECLARE\_DYNAMIC\_CLASS(\ \mbox{\hyperlink{class_image_panel_ab4d594ff683bc75c273ff2b703e23e6a}{ImagePanel}}\ )}
+\DoxyCodeLine{\Hypertarget{_image_panel_8h_source_l00056}00056\ \ \ \ \ DECLARE\_EVENT\_TABLE(\ )}
+\DoxyCodeLine{\Hypertarget{_image_panel_8h_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{_image_panel_8h_source_l00058}00058\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_image_panel_8h_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{_image_panel_8h_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{_image_panel_8h_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{_image_panel_8h_source_l00067}00067\ \ \ \ \ \mbox{\hyperlink{class_image_panel_ab4d594ff683bc75c273ff2b703e23e6a}{ImagePanel}}(\ );}
+\DoxyCodeLine{\Hypertarget{_image_panel_8h_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{_image_panel_8h_source_l00069}00069\ \ \ \ \ \mbox{\hyperlink{class_image_panel_ab4d594ff683bc75c273ff2b703e23e6a}{ImagePanel}}(\ wxWindow*\ parent,\ wxWindowID\ \textcolor{keywordtype}{id}\ =\ \mbox{\hyperlink{_image_panel_8h_a3d7a312fde0cb4b1d297b5bd7a8b1b01}{SYMBOL\_IMAGEPANEL\_IDNAME}},}
+\DoxyCodeLine{\Hypertarget{_image_panel_8h_source_l00070}00070\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ wxPoint\&\ pos\ =\ \mbox{\hyperlink{_image_panel_8h_a2803a5889eb6d19691ceda15c6143463}{SYMBOL\_IMAGEPANEL\_POSITION}},}
+\DoxyCodeLine{\Hypertarget{_image_panel_8h_source_l00071}00071\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ wxSize\&\ size\ =\ \mbox{\hyperlink{_image_panel_8h_ab926ce699b55bb31e233c384dc783c21}{SYMBOL\_IMAGEPANEL\_SIZE}},}
+\DoxyCodeLine{\Hypertarget{_image_panel_8h_source_l00072}00072\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{long}\ style\ =\ \mbox{\hyperlink{_image_panel_8h_a0c97561d098d94e7934f29e45033ecdf}{SYMBOL\_IMAGEPANEL\_STYLE}}\ );}
+\DoxyCodeLine{\Hypertarget{_image_panel_8h_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{_image_panel_8h_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{_image_panel_8h_source_l00075}00075\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_image_panel_aba53abdfced8f37b1f6fb927d86c941e}{Create}}(\ wxWindow*\ parent,\ wxWindowID\ \textcolor{keywordtype}{id}\ =\ \mbox{\hyperlink{_image_panel_8h_a3d7a312fde0cb4b1d297b5bd7a8b1b01}{SYMBOL\_IMAGEPANEL\_IDNAME}},}
+\DoxyCodeLine{\Hypertarget{_image_panel_8h_source_l00076}00076\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ wxPoint\&\ pos\ =\ \mbox{\hyperlink{_image_panel_8h_a2803a5889eb6d19691ceda15c6143463}{SYMBOL\_IMAGEPANEL\_POSITION}},}
+\DoxyCodeLine{\Hypertarget{_image_panel_8h_source_l00077}00077\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ wxSize\&\ size\ =\ \mbox{\hyperlink{_image_panel_8h_ab926ce699b55bb31e233c384dc783c21}{SYMBOL\_IMAGEPANEL\_SIZE}},}
+\DoxyCodeLine{\Hypertarget{_image_panel_8h_source_l00078}00078\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{long}\ style\ =\ \mbox{\hyperlink{_image_panel_8h_a0c97561d098d94e7934f29e45033ecdf}{SYMBOL\_IMAGEPANEL\_STYLE}}\ );}
+\DoxyCodeLine{\Hypertarget{_image_panel_8h_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{_image_panel_8h_source_l00080}00080\ \ \ \ \ \mbox{\hyperlink{class_image_panel_ae434d3cd11d38fe291901f4fecb42776}{\string~ImagePanel}}(\ );}
+\DoxyCodeLine{\Hypertarget{_image_panel_8h_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{_image_panel_8h_source_l00082}00082\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_image_panel_a21c0b96eecba74ee3dbf1abfcb10654a}{Clear}}(\ );}
+\DoxyCodeLine{\Hypertarget{_image_panel_8h_source_l00083}00083\ }
+\DoxyCodeLine{\Hypertarget{_image_panel_8h_source_l00084}00084\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_image_panel_aed86cf082299d3dc666acc2e359f5635}{CreateControls}}(\ );}
+\DoxyCodeLine{\Hypertarget{_image_panel_8h_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{_image_panel_8h_source_l00086}00086\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_image_panel_acff68fdd33a28bc7fe45ab0f4c18f1d3}{Init}}(\ );}
+\DoxyCodeLine{\Hypertarget{_image_panel_8h_source_l00087}00087\ }
+\DoxyCodeLine{\Hypertarget{_image_panel_8h_source_l00088}00088\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_image_panel_a7902d81a1538455559cbf5a3407ce63d}{OnContextMenu}}(\ wxContextMenuEvent\&\ event\ );}
+\DoxyCodeLine{\Hypertarget{_image_panel_8h_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{_image_panel_8h_source_l00090}00090\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_image_panel_a8025d83ceea17f0830df0eff6d7f2f17}{OnPaint}}(\ wxPaintEvent\&\ event\ );}
+\DoxyCodeLine{\Hypertarget{_image_panel_8h_source_l00091}00091\ }
+\DoxyCodeLine{\Hypertarget{_image_panel_8h_source_l00092}00092\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_image_panel_a939392f01ee2d4f5883471d1fda3d234}{OnResize}}(\ wxCommandEvent\&\ WXUNUSED(\ event\ )\ );}
+\DoxyCodeLine{\Hypertarget{_image_panel_8h_source_l00093}00093\ }
+\DoxyCodeLine{\Hypertarget{_image_panel_8h_source_l00094}00094\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_image_panel_a1eea9ba3c757735251e1f6a60d06b455}{OnZoom}}(\ wxCommandEvent\&\ event\ );}
+\DoxyCodeLine{\Hypertarget{_image_panel_8h_source_l00095}00095\ }
+\DoxyCodeLine{\Hypertarget{_image_panel_8h_source_l00096}00096\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_image_panel_aa4e4181129fee31e0673aa127310d9da}{SetBitmap}}(\ wxString\ filename\ );}
+\DoxyCodeLine{\Hypertarget{_image_panel_8h_source_l00097}00097\ }
+\DoxyCodeLine{\Hypertarget{_image_panel_8h_source_l00098}00098\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_image_panel_a7d154f71b34f6e571ee4ddda6ee21f3f}{SetZoom}}(\ \textcolor{keywordtype}{double}\ zoom\ );}
+\DoxyCodeLine{\Hypertarget{_image_panel_8h_source_l00099}00099\ }
+\DoxyCodeLine{\Hypertarget{_image_panel_8h_source_l00100}00100\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_image_panel_acfaac60f6b0a6527b8fbe87bf4aae7d1}{ShowToolTips}}(\ );}
+\DoxyCodeLine{\Hypertarget{_image_panel_8h_source_l00101}00101\ }
+\DoxyCodeLine{\Hypertarget{_image_panel_8h_source_l00102}00102\ }
+\DoxyCodeLine{\Hypertarget{_image_panel_8h_source_l00103}00103\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_image_panel_8h_source_l00104}00104\ \ \ \ \ wxBitmap\ m\_bitmap;\ }
+\DoxyCodeLine{\Hypertarget{_image_panel_8h_source_l00105}00105\ \ \ \ \ \textcolor{keywordtype}{double}\ m\_zoom;\ }
+\DoxyCodeLine{\Hypertarget{_image_panel_8h_source_l00106}00106\ }
+\DoxyCodeLine{\Hypertarget{_image_panel_8h_source_l00107}00107\ \ \ \ \ wxBitmap\ m\_imageBitmap;}
+\DoxyCodeLine{\Hypertarget{_image_panel_8h_source_l00108}00108\ }
+\DoxyCodeLine{\Hypertarget{_image_panel_8h_source_l00109}00109\ \};}
+\DoxyCodeLine{\Hypertarget{_image_panel_8h_source_l00110}00110\ }
+\DoxyCodeLine{\Hypertarget{_image_panel_8h_source_l00111}00111\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_image_panel_8h_source_l00112}00112\ \textcolor{comment}{//\ \_IMAGEPANEL\_H\_}}
+
+\end{DoxyCode}

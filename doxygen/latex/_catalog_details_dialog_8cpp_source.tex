@@ -1,0 +1,205 @@
+\doxysection{Catalog\+Details\+Dialog.\+cpp}
+\hypertarget{_catalog_details_dialog_8cpp_source}{}\label{_catalog_details_dialog_8cpp_source}\index{C:/Users/femon/Development/wx/cloneTest/StampTool/src/catalog/CatalogDetailsDialog.cpp@{C:/Users/femon/Development/wx/cloneTest/StampTool/src/catalog/CatalogDetailsDialog.cpp}}
+\mbox{\hyperlink{_catalog_details_dialog_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00024}00024\ \textcolor{preprocessor}{\#include\ "{}wx/wxprec.h"{}}}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00026}00026\ \textcolor{preprocessor}{\#ifdef\ \_\_BORLANDC\_\_}}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00027}00027\ \textcolor{preprocessor}{\#pragma\ hdrstop}}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00028}00028\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00030}00030\ \textcolor{preprocessor}{\#ifndef\ WX\_PRECOMP}}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00031}00031\ \textcolor{preprocessor}{\#include\ "{}wx/wx.h"{}}}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00032}00032\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00034}00034\ \textcolor{preprocessor}{\#include\ "{}wx/filename.h"{}}}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00035}00035\ \textcolor{preprocessor}{\#include\ "{}wx/imaglist.h"{}}}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00037}00037\ \textcolor{preprocessor}{\#include\ "{}wx/notebook.h"{}}}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00039}00039\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_catalog_details_dialog_8h}{catalog/CatalogDetailsDialog.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00040}00040\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_labeled_text_box_8h}{gui/LabeledTextBox.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00041}00041\ \ \textcolor{comment}{//\#include\ "{}gui/AppData.h"{}\ }}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00042}00042\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_catalog_data_8h}{catalog/CatalogData.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00044}00044\ IMPLEMENT\_DYNAMIC\_CLASS(\ \mbox{\hyperlink{class_catalog_details_dialog}{CatalogDetailsDialog}},\ wxDialog\ )}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00046}00046\ BEGIN\_EVENT\_TABLE(\ \mbox{\hyperlink{class_catalog_details_dialog}{CatalogDetailsDialog}},\ wxDialog\ )}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00048}00048\ EVT\_BUTTON(\ wxID\_OK,\ \mbox{\hyperlink{class_catalog_details_dialog_adbad27c43c0515032c7067660ec32b0a}{CatalogDetailsDialog::OnOkClick}}\ )}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00049}00049\ EVT\_BUTTON(\ ID\_CATDIRBUTTON,\ \mbox{\hyperlink{class_catalog_details_dialog_a9cb8910961cc8369fee62d778070dab0}{CatalogDetailsDialog::OnCatDirClick}}\ )}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00050}00050\ \textcolor{comment}{//EVT\_BUTTON(\ ID\_IMAGEDIRBUTTON,\ CatalogDetailsDialog::OnImageDirClick\ )}}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00052}00052\ END\_EVENT\_TABLE(\ )}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00056}00056\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00060}\mbox{\hyperlink{class_catalog_details_dialog_a14f65ee74b5767010ee5e155cbeee71c}{00060}}\ \mbox{\hyperlink{class_catalog_details_dialog_a14f65ee74b5767010ee5e155cbeee71c}{CatalogDetailsDialog}}::\mbox{\hyperlink{class_catalog_details_dialog_a14f65ee74b5767010ee5e155cbeee71c}{CatalogDetailsDialog}}(\ )}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00061}00061\ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00062}00062\ \ \ \ \ \mbox{\hyperlink{class_catalog_details_dialog_a2eb4ccf9797834b6e105517548d38d0e}{Init}}(\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00063}00063\ \}}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00067}00067\ \textcolor{comment}{//\ \ @brief\ Construct\ a\ new\ Catalog\ Details\ Dialog::\ Catalog\ Details\ Dialog\ object}}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00075}\mbox{\hyperlink{class_catalog_details_dialog_af89ffdbb8b0cbb204d71fc03069ad0a7}{00075}}\ \mbox{\hyperlink{class_catalog_details_dialog_a14f65ee74b5767010ee5e155cbeee71c}{CatalogDetailsDialog::CatalogDetailsDialog}}(\ wxWindow*\ parent,\ wxWindowID\ \textcolor{keywordtype}{id},\ \textcolor{keyword}{const}\ wxString\&\ caption,\ \textcolor{keyword}{const}\ wxPoint\&\ pos,\ \textcolor{keyword}{const}\ wxSize\&\ size,\ \textcolor{keywordtype}{long}\ style\ )}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00076}00076\ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00077}00077\ \ \ \ \ \mbox{\hyperlink{class_catalog_details_dialog_a2eb4ccf9797834b6e105517548d38d0e}{Init}}(\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00078}00078\ \ \ \ \ \mbox{\hyperlink{class_catalog_details_dialog_ae14cdbee81adc23ac687da968d6f6a3a}{Create}}(\ parent,\ \textcolor{keywordtype}{id},\ caption,\ pos,\ wxSize(\ 800,\ 800\ ),\ style\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00079}00079\ \}}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00081}00081\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00083}\mbox{\hyperlink{class_catalog_details_dialog_a74a9f88b579b95f61a1b67de634f7e4f}{00083}}\ \mbox{\hyperlink{class_catalog_details_dialog_a74a9f88b579b95f61a1b67de634f7e4f}{CatalogDetailsDialog::\string~CatalogDetailsDialog}}(\ )}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00084}00084\ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00085}00085\ \ \ \ \ \textcolor{comment}{//\ CatalogDetailsDialog\ destruction}}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00086}00086\ \ \ \ \ \textcolor{comment}{//\ CatalogDetailsDialog\ destruction}}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00087}00087\ \}}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00088}00088\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00100}\mbox{\hyperlink{class_catalog_details_dialog_ae14cdbee81adc23ac687da968d6f6a3a}{00100}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_catalog_details_dialog_ae14cdbee81adc23ac687da968d6f6a3a}{CatalogDetailsDialog::Create}}(\ wxWindow*\ parent,\ wxWindowID\ \textcolor{keywordtype}{id},\ \textcolor{keyword}{const}\ wxString\&\ caption,\ \textcolor{keyword}{const}\ wxPoint\&\ pos,\ \textcolor{keyword}{const}\ wxSize\&\ size,\ \textcolor{keywordtype}{long}\ style\ )}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00101}00101\ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00102}00102\ \ \ \ \ \textcolor{comment}{//\ CatalogDetailsDialog\ creation}}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00103}00103\ \ \ \ \ SetExtraStyle(\ wxWS\_EX\_VALIDATE\_RECURSIVELY\ |\ wxWS\_EX\_BLOCK\_EVENTS\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00104}00104\ \ \ \ \ wxDialog::Create(\ parent,\ \textcolor{keywordtype}{id},\ caption,\ pos,\ size,\ style\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00105}00105\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00106}00106\ \ \ \ \ \mbox{\hyperlink{class_catalog_details_dialog_a99055bdf530b8fb2a583640fd7a121b6}{CreateControls}}(\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00107}00107\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ GetSizer(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00108}00108\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00109}00109\ \ \ \ \ \ \ \ \ GetSizer(\ )-\/>SetSizeHints(\ \textcolor{keyword}{this}\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00110}00110\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00111}00111\ \ \ \ \ Centre(\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00112}00112\ \ \ \ \ \textcolor{comment}{//\ CatalogDetailsDialog\ creation}}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00113}00113\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00114}00114\ \}}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00115}00115\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00116}00116\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00117}00117\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00118}\mbox{\hyperlink{class_catalog_details_dialog_a99055bdf530b8fb2a583640fd7a121b6}{00118}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_details_dialog_a99055bdf530b8fb2a583640fd7a121b6}{CatalogDetailsDialog::CreateControls}}(\ )}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00119}00119\ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00120}00120\ \ \ \ \ \textcolor{comment}{//\ \ \ std::cout\ <<\ "{}CatalogDetailsDialog"{}\ <<\ "{}\(\backslash\)n"{};}}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00121}00121\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00122}00122\ \ \ \ \ \mbox{\hyperlink{class_catalog_details_dialog_a14f65ee74b5767010ee5e155cbeee71c}{CatalogDetailsDialog}}*\ theDialog\ =\ \textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00123}00123\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00124}00124\ \ \ \ \ wxBoxSizer*\ theDialogVerticalSizer\ =\ \textcolor{keyword}{new}\ wxBoxSizer(\ wxVERTICAL\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00125}00125\ \ \ \ \ theDialog-\/>SetSizer(\ theDialogVerticalSizer\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00126}00126\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00127}00127\ \ \ \ \ \textcolor{comment}{//\ cat\ name}}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00128}00128\ \ \ \ \ wxBoxSizer*\ theCatNameHorizontalSizer\ =\ \textcolor{keyword}{new}\ wxBoxSizer(\ wxHORIZONTAL\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00129}00129\ \ \ \ \ theDialogVerticalSizer-\/>Add(\ theCatNameHorizontalSizer,\ 1,\ wxGROW\ |\ wxALL,\ 0\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00130}00130\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00131}00131\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00132}00132\ \ \ \ \ wxStaticText*\ itemStaticText1\ =\ \textcolor{keyword}{new}\ wxStaticText(\ theDialog,\ wxID\_STATIC,\ \_(\ \textcolor{stringliteral}{"{}Catalog\ Display\ Name"{}}\ ),\ wxDefaultPosition,\ wxDefaultSize,\ 0\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00133}00133\ \ \ \ \ theCatNameHorizontalSizer-\/>Add(\ itemStaticText1,\ 0,\ wxALIGN\_CENTER\_VERTICAL\ |\ wxALL,\ 5\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00134}00134\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00135}00135\ \ \ \ \ m\_name\ =\ \textcolor{keyword}{new}\ wxTextCtrl(\ theDialog,\ \mbox{\hyperlink{class_catalog_details_dialog_a29e4cbf4c534078f53c37a4e6bdb8406aa686c9aa1cf94bd38a280634f4242b92}{ID\_NAMELABELEDTEXTBOX}},\ wxEmptyString,\ wxDefaultPosition,\ wxSize(\ 400,\ -\/1\ ),\ 0\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00136}00136\ \ \ \ \ theCatNameHorizontalSizer-\/>Add(\ m\_name,\ 7,\ wxGROW\ |\ wxALL,\ 5\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00137}00137\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00138}00138\ \ \ \ \ \textcolor{comment}{//cat\ path}}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00139}00139\ \ \ \ \ wxBoxSizer*\ theCatPathHorizontalSizer\ =\ \textcolor{keyword}{new}\ wxBoxSizer(\ wxHORIZONTAL\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00140}00140\ \ \ \ \ theDialogVerticalSizer-\/>Add(\ theCatPathHorizontalSizer,\ 1,\ wxGROW\ |\ wxALL,\ 0\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00141}00141\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00142}00142\ \ \ \ \ m\_catPath\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_labeled_text_box}{LabeledTextBox}}(\ theDialog,\ \mbox{\hyperlink{class_catalog_details_dialog_a29e4cbf4c534078f53c37a4e6bdb8406a4fc65ea7139f3bb2754d1f67e55424f9}{ID\_IMAGEPATHTEXTBOX}},\ wxDefaultPosition,\ wxDefaultSize,\ wxNO\_BORDER\ |\ wxTAB\_TRAVERSAL\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00143}00143\ \ \ \ \ m\_catPath-\/>SetExtraStyle(\ wxWS\_EX\_VALIDATE\_RECURSIVELY\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00144}00144\ \ \ \ \ theCatPathHorizontalSizer-\/>Add(\ m\_catPath,\ 2,\ wxGROW\ |\ wxALL,\ 5\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00145}00145\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00146}00146\ \ \ \ \ wxBitmapButton*\ catDirButton\ =\ \textcolor{keyword}{new}\ wxBitmapButton(\ theDialog,\ \mbox{\hyperlink{class_catalog_details_dialog_a29e4cbf4c534078f53c37a4e6bdb8406a8a29a58f8ac8db225ac119bd44892e2e}{ID\_CATDIRBUTTON}},}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00147}00147\ \ \ \ \ \ \ \ \ wxBitmap(\ folder\_open\_xpm\ ),}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00148}00148\ \ \ \ \ \ \ \ \ wxDefaultPosition,\ wxDefaultSize,\ wxBU\_AUTODRAW\ |\ wxNO\_BORDER\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00149}00149\ \ \ \ \ theCatPathHorizontalSizer-\/>Add(\ catDirButton,\ 0,\ wxALIGN\_CENTER\_VERTICAL\ |\ wxALL,\ 5\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00150}00150\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00151}00151\ \ \ \ \ \textcolor{comment}{//\ image\ path}}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00152}00152\ \ \ \ \ wxBoxSizer*\ theImagePathHorizontalSizer\ =\ \textcolor{keyword}{new}\ wxBoxSizer(\ wxHORIZONTAL\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00153}00153\ \ \ \ \ theDialogVerticalSizer-\/>Add(\ theImagePathHorizontalSizer,\ 1,\ wxGROW\ |\ wxALL,\ 0\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00154}00154\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00155}00155\ \ \ \ \ \textcolor{comment}{//ctrl\ buttons}}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00156}00156\ \ \ \ \ wxBoxSizer*\ dialogCtrlButtonSizer\ =\ \textcolor{keyword}{new}\ wxBoxSizer(\ wxHORIZONTAL\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00157}00157\ \ \ \ \ theDialogVerticalSizer-\/>Add(\ dialogCtrlButtonSizer,\ 0,\ wxALIGN\_CENTER\_HORIZONTAL\ |\ wxALL,\ 0\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00158}00158\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00159}00159\ \ \ \ \ wxButton*\ cancelButton\ =\ \textcolor{keyword}{new}\ wxButton(\ theDialog,\ wxID\_CANCEL,\ \_(\ \textcolor{stringliteral}{"{}Cancel"{}}\ ),\ wxDefaultPosition,\ wxDefaultSize,\ 0\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00160}00160\ \ \ \ \ dialogCtrlButtonSizer-\/>Add(\ cancelButton,\ 0,\ wxALIGN\_CENTER\_VERTICAL\ |\ wxALL,\ 5\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00161}00161\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00162}00162\ \ \ \ \ wxButton*\ okButton\ =\ \textcolor{keyword}{new}\ wxButton(\ theDialog,\ wxID\_OK,\ \_(\ \textcolor{stringliteral}{"{}OK"{}}\ ),\ wxDefaultPosition,\ wxDefaultSize,\ 0\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00163}00163\ \ \ \ \ dialogCtrlButtonSizer-\/>Add(\ okButton,\ 0,\ wxALIGN\_CENTER\_VERTICAL\ |\ wxALL,\ 5\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00164}00164\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00165}00165\ \ \ \ \ m\_catPath-\/>SetLabel(\ \textcolor{stringliteral}{"{}Catalog\ Path"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00166}00166\ \}}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00167}00167\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00168}00168\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00169}\mbox{\hyperlink{class_catalog_details_dialog_a145eb4d7efed7e637da4ec881cd4ce1c}{00169}}\ wxString\ \mbox{\hyperlink{class_catalog_details_dialog_a145eb4d7efed7e637da4ec881cd4ce1c}{CatalogDetailsDialog::GetCatalogPath}}(\ )\ \{\ \textcolor{keywordflow}{return}\ m\_catPath-\/>GetValue(\ );\ \};}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00170}00170\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00171}00171\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00172}\mbox{\hyperlink{class_catalog_details_dialog_a798699a77be91cfcf2eea8cb0cff1181}{00172}}\ wxString\ \mbox{\hyperlink{class_catalog_details_dialog_a798699a77be91cfcf2eea8cb0cff1181}{CatalogDetailsDialog::GetName}}(\ )\ \{\ \textcolor{keywordflow}{return}\ m\_name-\/>GetValue(\ );\ \};}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00173}00173\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00174}00174\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00175}00175\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00176}00176\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00177}\mbox{\hyperlink{class_catalog_details_dialog_a2eb4ccf9797834b6e105517548d38d0e}{00177}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_details_dialog_a2eb4ccf9797834b6e105517548d38d0e}{CatalogDetailsDialog::Init}}(\ )}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00178}00178\ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00179}00179\ \ \ \ \ m\_name\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00180}00180\ \}}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00181}00181\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00182}00182\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00183}00183\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00184}\mbox{\hyperlink{class_catalog_details_dialog_adbad27c43c0515032c7067660ec32b0a}{00184}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_details_dialog_adbad27c43c0515032c7067660ec32b0a}{CatalogDetailsDialog::OnOkClick}}(\ wxCommandEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00185}00185\ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00186}00186\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00187}00187\ \}}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00188}00188\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00189}00189\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00190}00190\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00191}\mbox{\hyperlink{class_catalog_details_dialog_a9cb8910961cc8369fee62d778070dab0}{00191}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_details_dialog_a9cb8910961cc8369fee62d778070dab0}{CatalogDetailsDialog::OnCatDirClick}}(\ wxCommandEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00192}00192\ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00193}00193\ \ \ \ \ wxString\ catfile\ =\ m\_catPath-\/>GetValue(\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00194}00194\ \ \ \ \ wxFileName\ filename1(\ catfile\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00195}00195\ \ \ \ \ wxString\ path\ =\ filename1.GetPath(\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00196}00196\ \ \ \ \ wxString\ name\ =\ filename1.GetFullName(\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00197}00197\ \ \ \ \ wxFileDialog\ dirDialog(\ \textcolor{keyword}{this},\ \textcolor{stringliteral}{"{}Select\ the\ art\ directory"{}},\ path,\ name,}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00198}00198\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Catalog\ files\ (*.cat)|*.cat"{}},}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00199}00199\ \ \ \ \ \ \ \ \ wxFD\_SAVE\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00200}00200\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00201}00201\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ dirDialog.ShowModal(\ )\ ==\ wxID\_CANCEL\ )}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00202}00202\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00203}00203\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00204}00204\ \ \ \ \ wxString\ filename\ =\ dirDialog.GetPath(\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00205}00205\ \ \ \ \ m\_catPath-\/>SetValue(\ filename\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00206}00206\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00207}00207\ \}}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00208}00208\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00209}00209\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00210}00210\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00211}\mbox{\hyperlink{class_catalog_details_dialog_ad34b85ac7f9323a0da1458188644f2a6}{00211}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_catalog_details_dialog_ad34b85ac7f9323a0da1458188644f2a6}{CatalogDetailsDialog::IsNameModified}}(\ )\ \{\ \textcolor{keywordflow}{return}\ m\_name-\/>IsModified(\ );\ \};}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00212}00212\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00213}00213\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00214}\mbox{\hyperlink{class_catalog_details_dialog_a21f05eb36157a29ebc7d476b6522a2c8}{00214}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_details_dialog_a21f05eb36157a29ebc7d476b6522a2c8}{CatalogDetailsDialog::SetCatalogFilename}}(\ wxString\ filename\ )}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00215}00215\ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00216}00216\ \ \ \ \ m\_catPath-\/>SetValue(\ filename\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00217}00217\ \}}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00218}00218\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00219}00219\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00220}00220\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00221}\mbox{\hyperlink{class_catalog_details_dialog_a75687baf7e667e3963e0f4bf076ed96d}{00221}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_details_dialog_a75687baf7e667e3963e0f4bf076ed96d}{CatalogDetailsDialog::SetName}}(\ wxString\ str\ )}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00222}00222\ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00223}00223\ \ \ \ \ m\_name-\/>SetValue(\ str\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00224}00224\ \};}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00225}00225\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00226}00226\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00227}00227\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00228}\mbox{\hyperlink{class_catalog_details_dialog_a77b5ddebf575ff98b76fc2019b9e1f38}{00228}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_details_dialog_a77b5ddebf575ff98b76fc2019b9e1f38}{CatalogDetailsDialog::SetNameModified}}(\ \textcolor{keywordtype}{bool}\ state\ )\ \{\ m\_name-\/>SetModified(\ state\ );\ \};}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00229}00229\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00230}00230\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00231}00231\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00232}\mbox{\hyperlink{class_catalog_details_dialog_ad260f74a05c2e1a6b6a4fd69de0dcbec}{00232}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_details_dialog_ad260f74a05c2e1a6b6a4fd69de0dcbec}{CatalogDetailsDialog::SetDesignTreeID}}(\ wxTreeItemId\ \textcolor{keywordtype}{id}\ )\ \{\ \textcolor{keywordflow}{if}\ (\ \textcolor{keywordtype}{id}.IsOk(\ )\ )\ m\_designTreeID\ =\ id;\ \};}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00233}00233\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00234}00234\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00235}00235\ }
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00236}\mbox{\hyperlink{class_catalog_details_dialog_a61f7932ed0dd7e7e097dd1065d56b081}{00236}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_catalog_details_dialog_a61f7932ed0dd7e7e097dd1065d56b081}{CatalogDetailsDialog::ShowToolTips}}(\ )}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00237}00237\ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00238}00238\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_catalog_details_dialog_8cpp_source_l00239}00239\ \}}
+
+\end{DoxyCode}

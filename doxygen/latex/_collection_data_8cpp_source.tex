@@ -1,0 +1,55 @@
+\doxysection{Collection\+Data.\+cpp}
+\hypertarget{_collection_data_8cpp_source}{}\label{_collection_data_8cpp_source}\index{C:/Users/femon/Development/wx/cloneTest/StampTool/src/collection/CollectionData.cpp@{C:/Users/femon/Development/wx/cloneTest/StampTool/src/collection/CollectionData.cpp}}
+\mbox{\hyperlink{_collection_data_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_collection_data_8cpp_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{_collection_data_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_collection_data_8cpp_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_collection_data_8cpp_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_collection_data_8cpp_source_l00005}00005\ \textcolor{preprocessor}{\#include\ "{}wx/wxprec.h"{}}}
+\DoxyCodeLine{\Hypertarget{_collection_data_8cpp_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{_collection_data_8cpp_source_l00007}00007\ \textcolor{preprocessor}{\#ifdef\ \_\_BORLANDC\_\_}}
+\DoxyCodeLine{\Hypertarget{_collection_data_8cpp_source_l00008}00008\ \textcolor{preprocessor}{\#pragma\ hdrstop}}
+\DoxyCodeLine{\Hypertarget{_collection_data_8cpp_source_l00009}00009\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_collection_data_8cpp_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{_collection_data_8cpp_source_l00011}00011\ \textcolor{preprocessor}{\#ifndef\ WX\_PRECOMP}}
+\DoxyCodeLine{\Hypertarget{_collection_data_8cpp_source_l00012}00012\ \textcolor{preprocessor}{\#include\ "{}wx/wx.h"{}}}
+\DoxyCodeLine{\Hypertarget{_collection_data_8cpp_source_l00013}00013\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_collection_data_8cpp_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{_collection_data_8cpp_source_l00015}00015\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_collection_8h}{collection/Collection.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_collection_data_8cpp_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_collection_data_8cpp_source_l00017}00017\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_collection_data_8h}{collection/CollectionData.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_collection_data_8cpp_source_l00018}00018\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_collection_list_8h}{collection/CollectionList.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_collection_data_8cpp_source_l00019}00019\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_settings_8h}{utils/Settings.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_collection_data_8cpp_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{_collection_data_8cpp_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{_collection_data_8cpp_source_l00022}00022\ \textcolor{preprocessor}{\#include\ "{}wx/filename.h"{}}}
+\DoxyCodeLine{\Hypertarget{_collection_data_8cpp_source_l00023}00023\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_defs_8h}{Defs.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_collection_data_8cpp_source_l00024}00024\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_app_data_8h}{gui/AppData.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_collection_data_8cpp_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_collection_data_8cpp_source_l00026}00026\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_inventory}{Inventory}}\ \{}
+\DoxyCodeLine{\Hypertarget{_collection_data_8cpp_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_collection_data_8cpp_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{_collection_data_8cpp_source_l00029}\mbox{\hyperlink{class_inventory_1_1_collection_data_a6aa1ba766d126f1ce3594b16ec6afaa6}{00029}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_inventory_1_1_collection_data_a6aa1ba766d126f1ce3594b16ec6afaa6}{CollectionData::SetDirty}}(\ \textcolor{keywordtype}{bool}\ state\ )}
+\DoxyCodeLine{\Hypertarget{_collection_data_8cpp_source_l00030}00030\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_collection_data_8cpp_source_l00031}00031\ \ \ \ \ \ \ \ \ m\_dirty\ =\ state;}
+\DoxyCodeLine{\Hypertarget{_collection_data_8cpp_source_l00032}00032\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ m\_dirty\ )}
+\DoxyCodeLine{\Hypertarget{_collection_data_8cpp_source_l00033}00033\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_collection_data_8cpp_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_defs_8cpp_a5bc84fc875d3f55720a036ed44ce76d2}{GetAppData}}(\ )-\/>\mbox{\hyperlink{class_app_data_a7d8aae70ad3a93ee87942aac0da0d15c}{SetDirty}}(\ \textcolor{keyword}{true}\ );}
+\DoxyCodeLine{\Hypertarget{_collection_data_8cpp_source_l00035}00035\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_collection_data_8cpp_source_l00036}00036\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_collection_data_8cpp_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{_collection_data_8cpp_source_l00038}00038\ \ \ \ \ \textcolor{comment}{//\ int\ CollectionData::FindStringIndex(\ wxString\ str\ )}}
+\DoxyCodeLine{\Hypertarget{_collection_data_8cpp_source_l00039}00039\ \ \ \ \ \textcolor{comment}{//\ \{}}
+\DoxyCodeLine{\Hypertarget{_collection_data_8cpp_source_l00040}00040\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ for\ (\ int\ i\ =\ 0;\ i\ <\ m\_nameArray.Count(\ );\ i++\ )}}
+\DoxyCodeLine{\Hypertarget{_collection_data_8cpp_source_l00041}00041\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \{}}
+\DoxyCodeLine{\Hypertarget{_collection_data_8cpp_source_l00042}00042\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ if\ (\ !str.Cmp(\ m\_nameArray.Item(\ i\ )\ )\ )}}
+\DoxyCodeLine{\Hypertarget{_collection_data_8cpp_source_l00043}00043\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \{}}
+\DoxyCodeLine{\Hypertarget{_collection_data_8cpp_source_l00044}00044\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ return\ i;}}
+\DoxyCodeLine{\Hypertarget{_collection_data_8cpp_source_l00045}00045\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{\Hypertarget{_collection_data_8cpp_source_l00046}00046\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \}}}
+\DoxyCodeLine{\Hypertarget{_collection_data_8cpp_source_l00047}00047\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ return\ -\/1;}}
+\DoxyCodeLine{\Hypertarget{_collection_data_8cpp_source_l00048}00048\ \ \ \ \ \textcolor{comment}{//\ \}}}
+\DoxyCodeLine{\Hypertarget{_collection_data_8cpp_source_l00049}00049\ \}}
+
+\end{DoxyCode}

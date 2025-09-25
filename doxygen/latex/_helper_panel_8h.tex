@@ -1,0 +1,138 @@
+\doxysection{C\+:/\+Users/femon/\+Development/wx/clone\+Test/\+Stamp\+Tool/src/gui/\+Helper\+Panel.h File Reference}
+\hypertarget{_helper_panel_8h}{}\label{_helper_panel_8h}\index{C:/Users/femon/Development/wx/cloneTest/StampTool/src/gui/HelperPanel.h@{C:/Users/femon/Development/wx/cloneTest/StampTool/src/gui/HelperPanel.h}}
+{\ttfamily \#include "{}wx/listctrl.\+h"{}}\newline
+{\ttfamily \#include $<$wx/fontpicker.\+h$>$}\newline
+{\ttfamily \#include $<$wx/clrpicker.\+h$>$}\newline
+{\ttfamily \#include $<$wx/radiobut.\+h$>$}\newline
+{\ttfamily \#include $<$wx/checklst.\+h$>$}\newline
+{\ttfamily \#include "{}gui/\+Gui\+Defs.\+h"{}}\newline
+{\ttfamily \#include "{}gui/\+Album\+Tree\+Ctrl.\+h"{}}\newline
+{\ttfamily \#include "{}gui/\+Font\+Picker\+Helper.\+h"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_helper_panel}{Helper\+Panel}}
+\item 
+struct \mbox{\hyperlink{struct_helper_panel_1_1_title_helper}{Helper\+Panel\+::\+Title\+Helper}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespace_design}{Design}}
+\begin{DoxyCompactList}\small\item\em \doxylink{_defs_8cpp_ab417854facaa35a9654d17c6585a2409}{wx\+DECLARE\+\_\+\+APP( Stamp\+Tool\+App )}; \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_helper_panel_8h_a02660f5dfe71ba96053caf152b5ed858}{Has\+Text\+Ctrl}}~0x1
+\item 
+\#define \mbox{\hyperlink{_helper_panel_8h_adb7b683547f25e49d23ff3731ddcb2c8}{Has\+Sub\+Title}}~0x2
+\item 
+\#define \mbox{\hyperlink{_helper_panel_8h_abd50caa34a0b87b2b2ca2091117456d4}{No\+Hide\+Text\+Ctrl}}~0x4
+\item 
+\#define \mbox{\hyperlink{_helper_panel_8h_a5b55945efe6cc32320681102c8343296}{Default\+Title\+Helper\+Style}}~\mbox{\hyperlink{_helper_panel_8h_a02660f5dfe71ba96053caf152b5ed858}{Has\+Text\+Ctrl}} \texorpdfstring{$\vert$}{|} \mbox{\hyperlink{_helper_panel_8h_adb7b683547f25e49d23ff3731ddcb2c8}{Has\+Sub\+Title}}
+\item 
+\#define \mbox{\hyperlink{_helper_panel_8h_afb122ebc3d5dd65dfa6e31a66a09468a}{SYMBOL\+\_\+\+HELPERPANEL\+\_\+\+STYLE}}~wx\+CAPTION \texorpdfstring{$\vert$}{|} wx\+RESIZE\+\_\+\+BORDER \texorpdfstring{$\vert$}{|} wx\+SYSTEM\+\_\+\+MENU \texorpdfstring{$\vert$}{|} wx\+CLOSE\+\_\+\+BOX \texorpdfstring{$\vert$}{|} wx\+TAB\+\_\+\+TRAVERSAL
+\item 
+\#define \mbox{\hyperlink{_helper_panel_8h_a275f45e4abf505d4c167b95b1782e8b2}{SYMBOL\+\_\+\+HELPERPANEL\+\_\+\+TITLE}}~\+\_\+( "{}Helper\+Panel"{} )
+\item 
+\#define \mbox{\hyperlink{_helper_panel_8h_a43ef01d6303731cc166949270842b4d7}{SYMBOL\+\_\+\+HELPERPANEL\+\_\+\+IDNAME}}~\mbox{\hyperlink{_gui_defs_8h_a6329898a126babcdaa295242c115a11ea2c74250c43b03b948bed6a25563d81ea}{ID\+\_\+\+ALBUMDETAILSDIALOG}}
+\item 
+\#define \mbox{\hyperlink{_helper_panel_8h_a5d91705fcb0aab6893c9748c1c23e631}{SYMBOL\+\_\+\+HELPERPANEL\+\_\+\+SIZE}}~wx\+Default\+Size
+\item 
+\#define \mbox{\hyperlink{_helper_panel_8h_ad0f2b83a41d1b39a2acbd31d28e7ffd3}{SYMBOL\+\_\+\+HELPERPANEL\+\_\+\+POSITION}}~wx\+Default\+Position
+\end{DoxyCompactItemize}
+
+
+\label{doc-define-members}
+\Hypertarget{_helper_panel_8h_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{_helper_panel_8h_a5b55945efe6cc32320681102c8343296}\index{HelperPanel.h@{HelperPanel.h}!DefaultTitleHelperStyle@{DefaultTitleHelperStyle}}
+\index{DefaultTitleHelperStyle@{DefaultTitleHelperStyle}!HelperPanel.h@{HelperPanel.h}}
+\doxysubsubsection{\texorpdfstring{DefaultTitleHelperStyle}{DefaultTitleHelperStyle}}
+{\footnotesize\ttfamily \label{_helper_panel_8h_a5b55945efe6cc32320681102c8343296} 
+\#define Default\+Title\+Helper\+Style~\mbox{\hyperlink{_helper_panel_8h_a02660f5dfe71ba96053caf152b5ed858}{Has\+Text\+Ctrl}} \texorpdfstring{$\vert$}{|} \mbox{\hyperlink{_helper_panel_8h_adb7b683547f25e49d23ff3731ddcb2c8}{Has\+Sub\+Title}}}
+
+
+
+Definition at line \mbox{\hyperlink{_helper_panel_8h_source_l00046}{46}} of file \mbox{\hyperlink{_helper_panel_8h_source}{Helper\+Panel.\+h}}.
+
+\Hypertarget{_helper_panel_8h_adb7b683547f25e49d23ff3731ddcb2c8}\index{HelperPanel.h@{HelperPanel.h}!HasSubTitle@{HasSubTitle}}
+\index{HasSubTitle@{HasSubTitle}!HelperPanel.h@{HelperPanel.h}}
+\doxysubsubsection{\texorpdfstring{HasSubTitle}{HasSubTitle}}
+{\footnotesize\ttfamily \label{_helper_panel_8h_adb7b683547f25e49d23ff3731ddcb2c8} 
+\#define Has\+Sub\+Title~0x2}
+
+
+
+Definition at line \mbox{\hyperlink{_helper_panel_8h_source_l00044}{44}} of file \mbox{\hyperlink{_helper_panel_8h_source}{Helper\+Panel.\+h}}.
+
+\Hypertarget{_helper_panel_8h_a02660f5dfe71ba96053caf152b5ed858}\index{HelperPanel.h@{HelperPanel.h}!HasTextCtrl@{HasTextCtrl}}
+\index{HasTextCtrl@{HasTextCtrl}!HelperPanel.h@{HelperPanel.h}}
+\doxysubsubsection{\texorpdfstring{HasTextCtrl}{HasTextCtrl}}
+{\footnotesize\ttfamily \label{_helper_panel_8h_a02660f5dfe71ba96053caf152b5ed858} 
+\#define Has\+Text\+Ctrl~0x1}
+
+
+
+Definition at line \mbox{\hyperlink{_helper_panel_8h_source_l00043}{43}} of file \mbox{\hyperlink{_helper_panel_8h_source}{Helper\+Panel.\+h}}.
+
+\Hypertarget{_helper_panel_8h_abd50caa34a0b87b2b2ca2091117456d4}\index{HelperPanel.h@{HelperPanel.h}!NoHideTextCtrl@{NoHideTextCtrl}}
+\index{NoHideTextCtrl@{NoHideTextCtrl}!HelperPanel.h@{HelperPanel.h}}
+\doxysubsubsection{\texorpdfstring{NoHideTextCtrl}{NoHideTextCtrl}}
+{\footnotesize\ttfamily \label{_helper_panel_8h_abd50caa34a0b87b2b2ca2091117456d4} 
+\#define No\+Hide\+Text\+Ctrl~0x4}
+
+
+
+Definition at line \mbox{\hyperlink{_helper_panel_8h_source_l00045}{45}} of file \mbox{\hyperlink{_helper_panel_8h_source}{Helper\+Panel.\+h}}.
+
+\Hypertarget{_helper_panel_8h_a43ef01d6303731cc166949270842b4d7}\index{HelperPanel.h@{HelperPanel.h}!SYMBOL\_HELPERPANEL\_IDNAME@{SYMBOL\_HELPERPANEL\_IDNAME}}
+\index{SYMBOL\_HELPERPANEL\_IDNAME@{SYMBOL\_HELPERPANEL\_IDNAME}!HelperPanel.h@{HelperPanel.h}}
+\doxysubsubsection{\texorpdfstring{SYMBOL\_HELPERPANEL\_IDNAME}{SYMBOL\_HELPERPANEL\_IDNAME}}
+{\footnotesize\ttfamily \label{_helper_panel_8h_a43ef01d6303731cc166949270842b4d7} 
+\#define SYMBOL\+\_\+\+HELPERPANEL\+\_\+\+IDNAME~\mbox{\hyperlink{_gui_defs_8h_a6329898a126babcdaa295242c115a11ea2c74250c43b03b948bed6a25563d81ea}{ID\+\_\+\+ALBUMDETAILSDIALOG}}}
+
+
+
+Definition at line \mbox{\hyperlink{_helper_panel_8h_source_l00050}{50}} of file \mbox{\hyperlink{_helper_panel_8h_source}{Helper\+Panel.\+h}}.
+
+\Hypertarget{_helper_panel_8h_ad0f2b83a41d1b39a2acbd31d28e7ffd3}\index{HelperPanel.h@{HelperPanel.h}!SYMBOL\_HELPERPANEL\_POSITION@{SYMBOL\_HELPERPANEL\_POSITION}}
+\index{SYMBOL\_HELPERPANEL\_POSITION@{SYMBOL\_HELPERPANEL\_POSITION}!HelperPanel.h@{HelperPanel.h}}
+\doxysubsubsection{\texorpdfstring{SYMBOL\_HELPERPANEL\_POSITION}{SYMBOL\_HELPERPANEL\_POSITION}}
+{\footnotesize\ttfamily \label{_helper_panel_8h_ad0f2b83a41d1b39a2acbd31d28e7ffd3} 
+\#define SYMBOL\+\_\+\+HELPERPANEL\+\_\+\+POSITION~wx\+Default\+Position}
+
+
+
+Definition at line \mbox{\hyperlink{_helper_panel_8h_source_l00052}{52}} of file \mbox{\hyperlink{_helper_panel_8h_source}{Helper\+Panel.\+h}}.
+
+\Hypertarget{_helper_panel_8h_a5d91705fcb0aab6893c9748c1c23e631}\index{HelperPanel.h@{HelperPanel.h}!SYMBOL\_HELPERPANEL\_SIZE@{SYMBOL\_HELPERPANEL\_SIZE}}
+\index{SYMBOL\_HELPERPANEL\_SIZE@{SYMBOL\_HELPERPANEL\_SIZE}!HelperPanel.h@{HelperPanel.h}}
+\doxysubsubsection{\texorpdfstring{SYMBOL\_HELPERPANEL\_SIZE}{SYMBOL\_HELPERPANEL\_SIZE}}
+{\footnotesize\ttfamily \label{_helper_panel_8h_a5d91705fcb0aab6893c9748c1c23e631} 
+\#define SYMBOL\+\_\+\+HELPERPANEL\+\_\+\+SIZE~wx\+Default\+Size}
+
+
+
+Definition at line \mbox{\hyperlink{_helper_panel_8h_source_l00051}{51}} of file \mbox{\hyperlink{_helper_panel_8h_source}{Helper\+Panel.\+h}}.
+
+\Hypertarget{_helper_panel_8h_afb122ebc3d5dd65dfa6e31a66a09468a}\index{HelperPanel.h@{HelperPanel.h}!SYMBOL\_HELPERPANEL\_STYLE@{SYMBOL\_HELPERPANEL\_STYLE}}
+\index{SYMBOL\_HELPERPANEL\_STYLE@{SYMBOL\_HELPERPANEL\_STYLE}!HelperPanel.h@{HelperPanel.h}}
+\doxysubsubsection{\texorpdfstring{SYMBOL\_HELPERPANEL\_STYLE}{SYMBOL\_HELPERPANEL\_STYLE}}
+{\footnotesize\ttfamily \label{_helper_panel_8h_afb122ebc3d5dd65dfa6e31a66a09468a} 
+\#define SYMBOL\+\_\+\+HELPERPANEL\+\_\+\+STYLE~wx\+CAPTION \texorpdfstring{$\vert$}{|} wx\+RESIZE\+\_\+\+BORDER \texorpdfstring{$\vert$}{|} wx\+SYSTEM\+\_\+\+MENU \texorpdfstring{$\vert$}{|} wx\+CLOSE\+\_\+\+BOX \texorpdfstring{$\vert$}{|} wx\+TAB\+\_\+\+TRAVERSAL}
+
+
+
+Definition at line \mbox{\hyperlink{_helper_panel_8h_source_l00048}{48}} of file \mbox{\hyperlink{_helper_panel_8h_source}{Helper\+Panel.\+h}}.
+
+\Hypertarget{_helper_panel_8h_a275f45e4abf505d4c167b95b1782e8b2}\index{HelperPanel.h@{HelperPanel.h}!SYMBOL\_HELPERPANEL\_TITLE@{SYMBOL\_HELPERPANEL\_TITLE}}
+\index{SYMBOL\_HELPERPANEL\_TITLE@{SYMBOL\_HELPERPANEL\_TITLE}!HelperPanel.h@{HelperPanel.h}}
+\doxysubsubsection{\texorpdfstring{SYMBOL\_HELPERPANEL\_TITLE}{SYMBOL\_HELPERPANEL\_TITLE}}
+{\footnotesize\ttfamily \label{_helper_panel_8h_a275f45e4abf505d4c167b95b1782e8b2} 
+\#define SYMBOL\+\_\+\+HELPERPANEL\+\_\+\+TITLE~\+\_\+( "{}Helper\+Panel"{} )}
+
+
+
+Definition at line \mbox{\hyperlink{_helper_panel_8h_source_l00049}{49}} of file \mbox{\hyperlink{_helper_panel_8h_source}{Helper\+Panel.\+h}}.
+

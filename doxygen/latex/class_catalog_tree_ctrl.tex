@@ -1,0 +1,1071 @@
+\doxysection{Catalog\+Tree\+Ctrl Class Reference}
+\hypertarget{class_catalog_tree_ctrl}{}\label{class_catalog_tree_ctrl}\index{CatalogTreeCtrl@{CatalogTreeCtrl}}
+
+
+{\ttfamily \#include $<$Catalog\+Tree\+Ctrl.\+h$>$}
+
+Inheritance diagram for Catalog\+Tree\+Ctrl\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_catalog_tree_ctrl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \{ \newline
+\mbox{\hyperlink{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27ba5e11821e004a0c7816695caed6fa8a19}{Catalog\+List\+Tree\+\_\+\+Quit}} = wx\+ID\+\_\+\+EXIT
+, \mbox{\hyperlink{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27ba6f7eb1f000dfa4fbb51c298dea83a696}{Catalog\+List\+Tree\+\_\+\+About}} = wx\+ID\+\_\+\+ABOUT
+, \mbox{\hyperlink{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27bace278c4a3fa2f08cdea64f7e8b18e9be}{Catalog\+List\+Tree\+\_\+\+Sort}}
+, \mbox{\hyperlink{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27baccb900083f98a6a6fc4bbd1bcaa95b7c}{Catalog\+List\+Tree\+\_\+\+Structure\+Stamps}}
+, \newline
+\mbox{\hyperlink{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27ba0bd267fca677f3221fa317d4200b3906}{Catalog\+List\+Tree\+\_\+\+Resort\+Tree}}
+, \mbox{\hyperlink{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27ba04899682163957b4ee78049f11542b9e}{Catalog\+List\+Tree\+\_\+\+Edit\+Details}}
+, \mbox{\hyperlink{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27ba8770429ac8b9a89994c233906ebe93f8}{Catalog\+List\+Tree\+\_\+\+Delete}}
+, \mbox{\hyperlink{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27ba74b6fe86c208d935e7472cba67b16c4e}{Catalog\+List\+Tree\+\_\+\+Add}}
+, \newline
+\mbox{\hyperlink{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27ba3a6c22ec9b8c980f6a402d6604dae65a}{Catalog\+List\+Tree\+\_\+\+Colnect}}
+, \mbox{\hyperlink{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27ba581b00711580e1ed279b520705e797b2}{Catalog\+List\+Tree\+\_\+\+Before}}
+, \mbox{\hyperlink{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27baebb630ed6d620770c72c5497af96407c}{Catalog\+List\+Tree\+\_\+\+After}}
+, \mbox{\hyperlink{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27bad1a136ad79cfd6b25587f153cabe782e}{Catalog\+List\+Tree\+\_\+\+As\+Child}}
+, \newline
+\mbox{\hyperlink{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27ba6e3113054be6fe13d3c33e921950326d}{Catalog\+List\+Tree\+\_\+\+Cancel}}
+, \mbox{\hyperlink{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27ba5de85a4f664b7ad7e6fa65dc389edcf3}{Catalog\+List\+Tree\+\_\+\+Inventory}}
+, \mbox{\hyperlink{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27ba6146e56e2f61a034a2c74b21b9204c0d}{Catalog\+List\+Tree\+\_\+\+Inventory\+Status\+None}}
+, \mbox{\hyperlink{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27ba98c026ba6723edc38a18b12b626a9236}{Catalog\+List\+Tree\+\_\+\+Inventory\+Status\+Missing}}
+, \newline
+\mbox{\hyperlink{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27babce625c7edededae5244b013a3536624}{Catalog\+List\+Tree\+\_\+\+Inventory\+Status\+Ordered}}
+, \mbox{\hyperlink{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27baf829d238254250b0b3ee3e3f58253da1}{Catalog\+List\+Tree\+\_\+\+Inventory\+Status\+Own}}
+, \mbox{\hyperlink{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27ba8494126c0d3e2f69cd5af07a22ba26d9}{Catalog\+List\+Tree\+\_\+\+Inventory\+Status\+Own\+Variant}}
+, \mbox{\hyperlink{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27ba268ed615186a43498de6ac96ac9f4a8d}{Catalog\+List\+Tree\+\_\+\+Inventory\+Status\+Exclude}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_catalog_tree_ctrl_a9dd81b5c87b2562888c799744cd294c3}{Catalog\+Tree\+Ctrl}} ()
+\item 
+\mbox{\hyperlink{class_catalog_tree_ctrl_a125be012bbe8ebbe3ac0e0191eab3b1a}{Catalog\+Tree\+Ctrl}} (wx\+Window \texorpdfstring{$\ast$}{*}parent, const wx\+Window\+ID id, const wx\+Point \&pos, const wx\+Size \&size, long style)
+\item 
+virtual \mbox{\hyperlink{class_catalog_tree_ctrl_a6c4b3b0839aa095761f9903f83368f6c}{\texorpdfstring{$\sim$}{\string~}\+Catalog\+Tree\+Ctrl}} (void)
+\item 
+wx\+Tree\+Item\+Id \mbox{\hyperlink{class_catalog_tree_ctrl_aef497b5184136f82fc40c8b9fe9f7dbf}{Add\+Child}} (wx\+Tree\+Item\+Id parent, wx\+Xml\+Node \texorpdfstring{$\ast$}{*}child)
+\begin{DoxyCompactList}\small\item\em Add\+Child adds wx\+Xml\+Node as a item in the tree. It is recursively called to create sort nodes as necessary to find the proper place for the child. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_catalog_tree_ctrl_a80bbb4cb88f39bab84f8012c8e9f33f3}{Add\+Entry}} (wx\+Tree\+Item\+Id id)
+\item 
+\mbox{\hyperlink{class_utils_1_1_stamp_link}{Utils\+::\+Stamp\+Link}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_catalog_tree_ctrl_aa847e08b4522c357e3f6c5d168c23196}{Append\+Album\+Stamp}} (wx\+Tree\+Item\+Id item\+Id)
+\item 
+void \mbox{\hyperlink{class_catalog_tree_ctrl_a215201153ead907a1afbcaf49404db67}{Clear}} ()
+\item 
+\mbox{\hyperlink{_gui_utils_8h_a66b06809b27f311da0c50fba212270ea}{Comparison\+Result\+Type}} \mbox{\hyperlink{class_catalog_tree_ctrl_a4b3cbf3f6f63b12f45697d2b096429d3}{Compare\+Dates}} (wx\+String date1, wx\+String date2)
+\item 
+void \mbox{\hyperlink{class_catalog_tree_ctrl_af62f10ae8dccfad510f986ab0bb26b9c}{Count\+Entry\+Types}} ()
+\item 
+void \mbox{\hyperlink{class_catalog_tree_ctrl_a06425465b10707defc471f08a7a40126}{Count\+Entry\+Types}} (wx\+Tree\+Item\+Id parent, int \&count)
+\item 
+\mbox{\hyperlink{class_catalog_tree_item_data}{Catalog\+Tree\+Item\+Data}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_catalog_tree_ctrl_a75f544cbb9b69dd42d0a5841aacdb8ef}{Create\+Child\+Data}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}child, wx\+String \&label, \mbox{\hyperlink{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3a}{Catalog\+::\+Icon\+ID}} \&icon, \mbox{\hyperlink{namespace_catalog_a86f503ced35b06e6427477ddab27c6be}{Catalog\+::\+Catalog\+Base\+Type}} \&node\+Type)
+\item 
+void \mbox{\hyperlink{class_catalog_tree_ctrl_a3190164393f1fed858026e0687bbd4a0}{Create\+State\+Image\+List}} ()
+\item 
+void \mbox{\hyperlink{class_catalog_tree_ctrl_af82af5e1171d5374e26c4d5d0fd8ccdf}{Create\+Image\+List}} ()
+\item 
+void \mbox{\hyperlink{class_catalog_tree_ctrl_ae55f0202652147bd564ce7c4f97643d0}{Delete\+Album\+Stamp}} (wx\+Tree\+Item\+Id item\+Id)
+\begin{DoxyCompactList}\small\item\em Deletes the item from the stamp link list and sends a message to the design tree to remove it. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_catalog_tree_ctrl_a317fd1e235eeb73ef96c04f46156c953}{Delete\+Entry}} (wx\+Tree\+Item\+Id id)
+\item 
+void \mbox{\hyperlink{class_catalog_tree_ctrl_a8f7688de612bb22265d082208c2e369c}{Disable\+State}} (wx\+Tree\+Item\+Id id)
+\begin{DoxyCompactList}\small\item\em Disables the check box on all the tree items from item\+Id on down, so should start from root. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_catalog_tree_ctrl_af66f2551e871ee5eb67f58981d2e465c}{Do\+Sort\+Children}} (const wx\+Tree\+Item\+Id \&item, bool reverse=true)
+\item 
+void \mbox{\hyperlink{class_catalog_tree_ctrl_aef3f8a5b321c1d235e75ea3f914081f9}{Dump\+Tree}} ()
+\item 
+void \mbox{\hyperlink{class_catalog_tree_ctrl_ac5a12077b34e56d71458cef75be0f100}{Dump\+Tree}} (wx\+Tree\+Item\+Id id)
+\item 
+void \mbox{\hyperlink{class_catalog_tree_ctrl_a4b0a8933ccb400ce88b4373817226378}{Enable\+State}} (wx\+Tree\+Item\+Id id)
+\item 
+wx\+Tree\+Item\+Id \mbox{\hyperlink{class_catalog_tree_ctrl_a38051d717fae50f894f0c782ede22c40}{Find\+First\+Entry\+Child}} (wx\+Tree\+Item\+Id id)
+\item 
+wx\+Tree\+Item\+Id \mbox{\hyperlink{class_catalog_tree_ctrl_a7e6af207312f6dfff08fa5c0c063b1e8}{Find\+Tree\+Item\+ID}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}node)
+\item 
+wx\+Tree\+Item\+Id \mbox{\hyperlink{class_catalog_tree_ctrl_a3caf54cc41fc1efa6b2640ea6149b1ce}{Find\+Tree\+Item\+ID}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}node, wx\+Tree\+Item\+Id id)
+\item 
+\mbox{\hyperlink{class_utils_1_1_stamp_link}{Utils\+::\+Stamp\+Link}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_catalog_tree_ctrl_ab034d39ad145dd441eaaae13f306095c}{Find\+Stamp\+Link}} (wx\+Tree\+Item\+Id item\+Id)
+\item 
+wx\+Tree\+Item\+Id \mbox{\hyperlink{class_catalog_tree_ctrl_a40ab5bc28bcaf42591f1ef5a0d7f7626}{Find\+Tree\+Item\+ID}} (wx\+String stamp\+ID)
+\item 
+wx\+Tree\+Item\+Id \mbox{\hyperlink{class_catalog_tree_ctrl_a5c604d332bbc116a2f724ed83c90d7dc}{Find\+Tree\+Item\+ID}} (wx\+String stamp\+ID, wx\+Tree\+Item\+Id id)
+\item 
+wx\+String \mbox{\hyperlink{class_catalog_tree_ctrl_a88668a42c30324149a1abb67990ea5f9}{Get\+Attribute}} (wx\+Tree\+Item\+Id cat\+Tree\+ID, wx\+String name)
+\item 
+wx\+String \mbox{\hyperlink{class_catalog_tree_ctrl_a4cb8a7ccee1e231551978c815e233f27}{Get\+ID}} (wx\+Tree\+Item\+Id cat\+Tree\+ID)
+\item 
+wx\+String \mbox{\hyperlink{class_catalog_tree_ctrl_a34acfebddf170eab6cd286a923d1bcb6}{Get\+Image}} (wx\+Tree\+Item\+Id cat\+Tree\+ID)
+\item 
+wx\+String \mbox{\hyperlink{class_catalog_tree_ctrl_ae2441dc304fdf1b171d0ac017e14daf5}{Get\+Image\+Full\+Name}} (wx\+Tree\+Item\+Id cat\+Tree\+ID)
+\item 
+\mbox{\hyperlink{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3a}{Catalog\+::\+Icon\+ID}} \mbox{\hyperlink{class_catalog_tree_ctrl_a83c004d9f2f0075daf598bf41e6d0860}{Get\+Inventory\+Icon\+Id}} (\mbox{\hyperlink{class_catalog_1_1_entry}{Catalog\+::\+Entry}} \texorpdfstring{$\ast$}{*}stamp)
+\item 
+wx\+String \mbox{\hyperlink{class_catalog_tree_ctrl_a2a76ff84b0de3630433681f8fca1d8e6}{Get\+Item\+Desc}} (wx\+Tree\+Item\+Id id)
+\item 
+wx\+String \mbox{\hyperlink{class_catalog_tree_ctrl_a8cf87c8d161750aff79da98f2540f7b8}{Get\+Item\+Image\+Full\+Name}} (wx\+Tree\+Item\+Id id)
+\item 
+wx\+Xml\+Node \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_catalog_tree_ctrl_abd0b8b4b330bb677d93089698a5dbbd8}{Get\+Item\+Node}} (wx\+Tree\+Item\+Id id)
+\item 
+\mbox{\hyperlink{class_utils_1_1_stamp_link}{Utils\+::\+Stamp\+Link}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_catalog_tree_ctrl_aaf3aefd878b2ca4373392194049036a3}{Get\+Item\+Stamp\+Link}} (wx\+Tree\+Item\+Id id)
+\item 
+\mbox{\hyperlink{namespace_catalog_a86f503ced35b06e6427477ddab27c6be}{Catalog\+::\+Catalog\+Base\+Type}} \mbox{\hyperlink{class_catalog_tree_ctrl_a31c496aabe873f6da4b95400253c23ca}{Get\+Item\+Type}} (wx\+Tree\+Item\+Id id)
+\item 
+wx\+Xml\+Node \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_catalog_tree_ctrl_a008ed01c0135c53dc20746197dcda91b}{Get\+New\+Entry}} (wx\+Tree\+Item\+Id item\+Id)
+\item 
+int \mbox{\hyperlink{class_catalog_tree_ctrl_a090047b3738ceb2f19e2ecfc754f51ae}{Get\+Nbr\+Entry\+Types}} ()
+\item 
+wx\+Xml\+Node \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_catalog_tree_ctrl_afff4e1a21809a5c91fecc4ac25d7289f}{Get\+Selection\+Node}} ()
+\item 
+void \mbox{\hyperlink{class_catalog_tree_ctrl_af849aa26dfc5e9f8a77d42243815066b}{Go\+To\+Colnect}} (wx\+Tree\+Item\+Id id)
+\item 
+wx\+Tree\+Item\+Id \mbox{\hyperlink{class_catalog_tree_ctrl_a14027a3c06e243381fb3feb278db86a3}{Insert\+Child}} (wx\+Tree\+Item\+Id parent, wx\+Xml\+Node \texorpdfstring{$\ast$}{*}child, bool after=true)
+\item 
+bool \mbox{\hyperlink{class_catalog_tree_ctrl_ac2a4cd55be7827471548d0cd3a7dbc09}{Is\+Element}} (wx\+Tree\+Item\+Id item, wx\+String stamp\+ID)
+\item 
+bool \mbox{\hyperlink{class_catalog_tree_ctrl_a52d9c340096fb928597c0c4c8266c7d4}{Is\+Element}} (wx\+Tree\+Item\+Id item, wx\+Xml\+Node \texorpdfstring{$\ast$}{*}node)
+\item 
+bool \mbox{\hyperlink{class_catalog_tree_ctrl_ab6ce1d5ebf71b3e8db8e50953b399306}{Is\+Item\+Checked}} (wx\+Tree\+Item\+Id id)
+\item 
+void \mbox{\hyperlink{class_catalog_tree_ctrl_afa08d36c723c450c55d88b6351272af2}{Load\+Catalog\+Tree}} (void)
+\item 
+void \mbox{\hyperlink{class_catalog_tree_ctrl_af6e0706d7399581700135f9564a2f34f}{On\+Begin\+Drag}} (wx\+Tree\+Event \&event)
+\item 
+virtual int \mbox{\hyperlink{class_catalog_tree_ctrl_a51763361fa8f4d2f8f10985151f1a87d}{On\+Compare\+Items}} (const wx\+Tree\+Item\+Id \&i1, const wx\+Tree\+Item\+Id \&i2) wx\+OVERRIDE
+\item 
+void \mbox{\hyperlink{class_catalog_tree_ctrl_aa80119fbbae89c686dcc5ea08e2c54df}{On\+End\+Drag}} (wx\+Tree\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_catalog_tree_ctrl_a05f0ee1fa4902e46468039787ea4d647}{On\+Item\+Menu}} (wx\+Tree\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_catalog_tree_ctrl_afe289d9becabb6ac843ffe7dee53df2f}{On\+Item\+State\+Click}} (wx\+Tree\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_catalog_tree_ctrl_aa90143b55a3e5af6009106bb83021bfe}{On\+Sel\+Changed}} (wx\+Tree\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_catalog_tree_ctrl_a9611966da7c8ad1e53033c4857af3153}{On\+Treectrl\+Item\+Collapsed}} (wx\+Tree\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_catalog_tree_ctrl_aeae653ff3eb59526b951929064be6109}{On\+Treectrl\+Item\+Expanded}} (wx\+Tree\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_catalog_tree_ctrl_a96f029c4e9c02c805f6c9d3c8c2b1f63}{Print\+Tree\+Node\+Data}} (wx\+Tree\+Item\+Id id)
+\item 
+void \mbox{\hyperlink{class_catalog_tree_ctrl_a3f2dca08a2d900e0a0a207e642a308c2}{Remove\+Stamp\+Link}} (wx\+Tree\+Item\+Id item\+Id)
+\item 
+void \mbox{\hyperlink{class_catalog_tree_ctrl_a9a5198834999a1f0acb8e2ce1b61d6f5}{Re\+Sort\+Tree}} ()
+\begin{DoxyCompactList}\small\item\em Delete the tree and resort it with the new sort order data. Probably doing this because the sort order was changed. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_catalog_tree_ctrl_a3b6453e0cf609c3df20388bfb7a652de}{Set\+Attribute}} (wx\+Tree\+Item\+Id cat\+Tree\+ID, wx\+String name, wx\+String val)
+\item 
+void \mbox{\hyperlink{class_catalog_tree_ctrl_a49623c509f7947c4c1aaf795bb22c472}{Select\+Stamp}} (wx\+String id)
+\item 
+void \mbox{\hyperlink{class_catalog_tree_ctrl_a40e23c404883381e2c0adc44d9dade36}{Set\+Catalog\+Link}} (wx\+Tree\+Item\+Id cat\+Tree\+ID, \mbox{\hyperlink{class_utils_1_1_stamp_link}{Utils\+::\+Stamp\+Link}} \texorpdfstring{$\ast$}{*}link, wx\+String IDNbr)
+\item 
+void \mbox{\hyperlink{class_catalog_tree_ctrl_a5027c13849e0e6ab8cdaf34dfb865a55}{Set\+Tree\+Item\+Collapse\+State}} (wx\+Tree\+Item\+Id child\+ID)
+\item 
+void \mbox{\hyperlink{class_catalog_tree_ctrl_af8e46a82047cb76222efb1275919b5cc}{Set\+Inventory\+Status\+Image}} (void)
+\item 
+void \mbox{\hyperlink{class_catalog_tree_ctrl_a311b3bd360506a6d28fc70f91623fcc6}{Set\+Item\+Node}} (wx\+Tree\+Item\+Id id, wx\+Xml\+Node \texorpdfstring{$\ast$}{*}ele)
+\item 
+void \mbox{\hyperlink{class_catalog_tree_ctrl_ad366f23bee4e865742f00ddef9fe3338}{Set\+Item\+Checked}} (wx\+Tree\+Item\+Id id, bool state=true)
+\item 
+void \mbox{\hyperlink{class_catalog_tree_ctrl_a3772611e0dc9fbb33bf241324b9742dc}{Set\+Item\+Image\+Full\+Name}} (wx\+Tree\+Item\+Id id, wx\+String str)
+\item 
+void \mbox{\hyperlink{class_catalog_tree_ctrl_ac34dc05aceefa42fa08a7963f9a8c0cd}{Set\+Inventory\+Status}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}node, \mbox{\hyperlink{namespace_catalog_a7bc076b172809c869ab8fef63c49e8c3}{Catalog\+::\+Inventory\+Status\+Type}} new\+Type)
+\item 
+void \mbox{\hyperlink{class_catalog_tree_ctrl_af859c45117ffb5d45c5952d35666cd92}{Set\+Item\+Stamp\+Link}} (wx\+Tree\+Item\+Id id, \mbox{\hyperlink{class_utils_1_1_stamp_link}{Utils\+::\+Stamp\+Link}} \texorpdfstring{$\ast$}{*}link)
+\item 
+void \mbox{\hyperlink{class_catalog_tree_ctrl_a85312081bd8121d7dbd40cd1bd81f43f}{Set\+Next\+State}} (const wx\+Tree\+Item\+Id \&item\+ID)
+\begin{DoxyCompactList}\small\item\em Set the checkbox of the item to the next state. Saves the new state. Sends message to Album tree to update. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_catalog_tree_ctrl_a00ee85b05fec44c49d8cdbe2d010f0ae}{Set\+Selection}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}node)
+\item 
+void \mbox{\hyperlink{class_catalog_tree_ctrl_a7e9fb977b3bc39fe9fae88330256cc0e}{Set\+Type}} (wx\+Tree\+Item\+Id id, \mbox{\hyperlink{namespace_catalog_a86f503ced35b06e6427477ddab27c6be}{Catalog\+::\+Catalog\+Base\+Type}} type)
+\item 
+void \mbox{\hyperlink{class_catalog_tree_ctrl_a6be8972921052a7109e335b563e15d80}{Set\+States}} (bool enable)
+\item 
+void \mbox{\hyperlink{class_catalog_tree_ctrl_a898bebbb842fd069e0e15ba8c3e16704}{Show\+Drop\+Menu}} (wx\+Tree\+Item\+Id item\+Src, wx\+Tree\+Item\+Id item\+Dst)
+\item 
+void \mbox{\hyperlink{class_catalog_tree_ctrl_a264c656dc140eb8007eb373ce81f0be8}{Show\+Menu}} (wx\+Tree\+Item\+Id id, const wx\+Point \&pt)
+\item 
+void \mbox{\hyperlink{class_catalog_tree_ctrl_a8c55abac68c25c840178ef19965c825b}{Sort\+Tree}} (wx\+Tree\+Item\+Id parent)
+\begin{DoxyCompactList}\small\item\em Sort\+Tree decends through the tree and sorts the children of each item. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_catalog_tree_ctrl_a7b8234a45b246de40dc52036530f6509}{XMLDump\+Node}} (wx\+Tree\+Item\+Id item, wx\+String str)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_catalog_tree_ctrl_8h_source_l00128}{128}} of file \mbox{\hyperlink{_catalog_tree_ctrl_8h_source}{Catalog\+Tree\+Ctrl.\+h}}.
+
+
+
+\label{doc-enum-members}
+\Hypertarget{class_catalog_tree_ctrl_doc-enum-members}
+\doxysubsection{Member Enumeration Documentation}
+\Hypertarget{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27b}\doxysubsubsection{\texorpdfstring{anonymous enum}{anonymous enum}}
+{\footnotesize\ttfamily \label{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27b} 
+anonymous enum}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CatalogListTree\_Quit@{CatalogListTree\_Quit}!CatalogTreeCtrl@{CatalogTreeCtrl}}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!CatalogListTree\_Quit@{CatalogListTree\_Quit}}}\Hypertarget{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27ba5e11821e004a0c7816695caed6fa8a19}\label{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27ba5e11821e004a0c7816695caed6fa8a19} 
+Catalog\+List\+Tree\+\_\+\+Quit&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CatalogListTree\_About@{CatalogListTree\_About}!CatalogTreeCtrl@{CatalogTreeCtrl}}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!CatalogListTree\_About@{CatalogListTree\_About}}}\Hypertarget{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27ba6f7eb1f000dfa4fbb51c298dea83a696}\label{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27ba6f7eb1f000dfa4fbb51c298dea83a696} 
+Catalog\+List\+Tree\+\_\+\+About&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CatalogListTree\_Sort@{CatalogListTree\_Sort}!CatalogTreeCtrl@{CatalogTreeCtrl}}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!CatalogListTree\_Sort@{CatalogListTree\_Sort}}}\Hypertarget{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27bace278c4a3fa2f08cdea64f7e8b18e9be}\label{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27bace278c4a3fa2f08cdea64f7e8b18e9be} 
+Catalog\+List\+Tree\+\_\+\+Sort&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CatalogListTree\_StructureStamps@{CatalogListTree\_StructureStamps}!CatalogTreeCtrl@{CatalogTreeCtrl}}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!CatalogListTree\_StructureStamps@{CatalogListTree\_StructureStamps}}}\Hypertarget{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27baccb900083f98a6a6fc4bbd1bcaa95b7c}\label{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27baccb900083f98a6a6fc4bbd1bcaa95b7c} 
+Catalog\+List\+Tree\+\_\+\+Structure\+Stamps&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CatalogListTree\_ResortTree@{CatalogListTree\_ResortTree}!CatalogTreeCtrl@{CatalogTreeCtrl}}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!CatalogListTree\_ResortTree@{CatalogListTree\_ResortTree}}}\Hypertarget{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27ba0bd267fca677f3221fa317d4200b3906}\label{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27ba0bd267fca677f3221fa317d4200b3906} 
+Catalog\+List\+Tree\+\_\+\+Resort\+Tree&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CatalogListTree\_EditDetails@{CatalogListTree\_EditDetails}!CatalogTreeCtrl@{CatalogTreeCtrl}}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!CatalogListTree\_EditDetails@{CatalogListTree\_EditDetails}}}\Hypertarget{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27ba04899682163957b4ee78049f11542b9e}\label{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27ba04899682163957b4ee78049f11542b9e} 
+Catalog\+List\+Tree\+\_\+\+Edit\+Details&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CatalogListTree\_Delete@{CatalogListTree\_Delete}!CatalogTreeCtrl@{CatalogTreeCtrl}}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!CatalogListTree\_Delete@{CatalogListTree\_Delete}}}\Hypertarget{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27ba8770429ac8b9a89994c233906ebe93f8}\label{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27ba8770429ac8b9a89994c233906ebe93f8} 
+Catalog\+List\+Tree\+\_\+\+Delete&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CatalogListTree\_Add@{CatalogListTree\_Add}!CatalogTreeCtrl@{CatalogTreeCtrl}}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!CatalogListTree\_Add@{CatalogListTree\_Add}}}\Hypertarget{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27ba74b6fe86c208d935e7472cba67b16c4e}\label{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27ba74b6fe86c208d935e7472cba67b16c4e} 
+Catalog\+List\+Tree\+\_\+\+Add&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CatalogListTree\_Colnect@{CatalogListTree\_Colnect}!CatalogTreeCtrl@{CatalogTreeCtrl}}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!CatalogListTree\_Colnect@{CatalogListTree\_Colnect}}}\Hypertarget{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27ba3a6c22ec9b8c980f6a402d6604dae65a}\label{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27ba3a6c22ec9b8c980f6a402d6604dae65a} 
+Catalog\+List\+Tree\+\_\+\+Colnect&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CatalogListTree\_Before@{CatalogListTree\_Before}!CatalogTreeCtrl@{CatalogTreeCtrl}}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!CatalogListTree\_Before@{CatalogListTree\_Before}}}\Hypertarget{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27ba581b00711580e1ed279b520705e797b2}\label{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27ba581b00711580e1ed279b520705e797b2} 
+Catalog\+List\+Tree\+\_\+\+Before&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CatalogListTree\_After@{CatalogListTree\_After}!CatalogTreeCtrl@{CatalogTreeCtrl}}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!CatalogListTree\_After@{CatalogListTree\_After}}}\Hypertarget{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27baebb630ed6d620770c72c5497af96407c}\label{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27baebb630ed6d620770c72c5497af96407c} 
+Catalog\+List\+Tree\+\_\+\+After&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CatalogListTree\_AsChild@{CatalogListTree\_AsChild}!CatalogTreeCtrl@{CatalogTreeCtrl}}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!CatalogListTree\_AsChild@{CatalogListTree\_AsChild}}}\Hypertarget{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27bad1a136ad79cfd6b25587f153cabe782e}\label{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27bad1a136ad79cfd6b25587f153cabe782e} 
+Catalog\+List\+Tree\+\_\+\+As\+Child&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CatalogListTree\_Cancel@{CatalogListTree\_Cancel}!CatalogTreeCtrl@{CatalogTreeCtrl}}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!CatalogListTree\_Cancel@{CatalogListTree\_Cancel}}}\Hypertarget{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27ba6e3113054be6fe13d3c33e921950326d}\label{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27ba6e3113054be6fe13d3c33e921950326d} 
+Catalog\+List\+Tree\+\_\+\+Cancel&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CatalogListTree\_Inventory@{CatalogListTree\_Inventory}!CatalogTreeCtrl@{CatalogTreeCtrl}}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!CatalogListTree\_Inventory@{CatalogListTree\_Inventory}}}\Hypertarget{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27ba5de85a4f664b7ad7e6fa65dc389edcf3}\label{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27ba5de85a4f664b7ad7e6fa65dc389edcf3} 
+Catalog\+List\+Tree\+\_\+\+Inventory&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CatalogListTree\_InventoryStatusNone@{CatalogListTree\_InventoryStatusNone}!CatalogTreeCtrl@{CatalogTreeCtrl}}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!CatalogListTree\_InventoryStatusNone@{CatalogListTree\_InventoryStatusNone}}}\Hypertarget{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27ba6146e56e2f61a034a2c74b21b9204c0d}\label{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27ba6146e56e2f61a034a2c74b21b9204c0d} 
+Catalog\+List\+Tree\+\_\+\+Inventory\+Status\+None&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CatalogListTree\_InventoryStatusMissing@{CatalogListTree\_InventoryStatusMissing}!CatalogTreeCtrl@{CatalogTreeCtrl}}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!CatalogListTree\_InventoryStatusMissing@{CatalogListTree\_InventoryStatusMissing}}}\Hypertarget{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27ba98c026ba6723edc38a18b12b626a9236}\label{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27ba98c026ba6723edc38a18b12b626a9236} 
+Catalog\+List\+Tree\+\_\+\+Inventory\+Status\+Missing&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CatalogListTree\_InventoryStatusOrdered@{CatalogListTree\_InventoryStatusOrdered}!CatalogTreeCtrl@{CatalogTreeCtrl}}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!CatalogListTree\_InventoryStatusOrdered@{CatalogListTree\_InventoryStatusOrdered}}}\Hypertarget{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27babce625c7edededae5244b013a3536624}\label{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27babce625c7edededae5244b013a3536624} 
+Catalog\+List\+Tree\+\_\+\+Inventory\+Status\+Ordered&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CatalogListTree\_InventoryStatusOwn@{CatalogListTree\_InventoryStatusOwn}!CatalogTreeCtrl@{CatalogTreeCtrl}}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!CatalogListTree\_InventoryStatusOwn@{CatalogListTree\_InventoryStatusOwn}}}\Hypertarget{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27baf829d238254250b0b3ee3e3f58253da1}\label{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27baf829d238254250b0b3ee3e3f58253da1} 
+Catalog\+List\+Tree\+\_\+\+Inventory\+Status\+Own&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CatalogListTree\_InventoryStatusOwnVariant@{CatalogListTree\_InventoryStatusOwnVariant}!CatalogTreeCtrl@{CatalogTreeCtrl}}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!CatalogListTree\_InventoryStatusOwnVariant@{CatalogListTree\_InventoryStatusOwnVariant}}}\Hypertarget{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27ba8494126c0d3e2f69cd5af07a22ba26d9}\label{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27ba8494126c0d3e2f69cd5af07a22ba26d9} 
+Catalog\+List\+Tree\+\_\+\+Inventory\+Status\+Own\+Variant&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CatalogListTree\_InventoryStatusExclude@{CatalogListTree\_InventoryStatusExclude}!CatalogTreeCtrl@{CatalogTreeCtrl}}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!CatalogListTree\_InventoryStatusExclude@{CatalogListTree\_InventoryStatusExclude}}}\Hypertarget{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27ba268ed615186a43498de6ac96ac9f4a8d}\label{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27ba268ed615186a43498de6ac96ac9f4a8d} 
+Catalog\+List\+Tree\+\_\+\+Inventory\+Status\+Exclude&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{_catalog_tree_ctrl_8h_source_l00134}{134}} of file \mbox{\hyperlink{_catalog_tree_ctrl_8h_source}{Catalog\+Tree\+Ctrl.\+h}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_catalog_tree_ctrl_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_catalog_tree_ctrl_a9dd81b5c87b2562888c799744cd294c3}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!CatalogTreeCtrl@{CatalogTreeCtrl}}
+\index{CatalogTreeCtrl@{CatalogTreeCtrl}!CatalogTreeCtrl@{CatalogTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{CatalogTreeCtrl()}{CatalogTreeCtrl()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_catalog_tree_ctrl_a9dd81b5c87b2562888c799744cd294c3} 
+Catalog\+Tree\+Ctrl\+::\+Catalog\+Tree\+Ctrl (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_tree_ctrl_8h_source_l00160}{160}} of file \mbox{\hyperlink{_catalog_tree_ctrl_8h_source}{Catalog\+Tree\+Ctrl.\+h}}.
+
+\Hypertarget{class_catalog_tree_ctrl_a125be012bbe8ebbe3ac0e0191eab3b1a}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!CatalogTreeCtrl@{CatalogTreeCtrl}}
+\index{CatalogTreeCtrl@{CatalogTreeCtrl}!CatalogTreeCtrl@{CatalogTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{CatalogTreeCtrl()}{CatalogTreeCtrl()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_catalog_tree_ctrl_a125be012bbe8ebbe3ac0e0191eab3b1a} 
+Catalog\+Tree\+Ctrl\+::\+Catalog\+Tree\+Ctrl (\begin{DoxyParamCaption}\item[{wx\+Window \texorpdfstring{$\ast$}{*}}]{parent}{, }\item[{const wx\+Window\+ID}]{id}{, }\item[{const wx\+Point \&}]{pos}{, }\item[{const wx\+Size \&}]{size}{, }\item[{long}]{style}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source_l00138}{138}} of file \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source}{Catalog\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_catalog_tree_ctrl_a6c4b3b0839aa095761f9903f83368f6c}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!````~CatalogTreeCtrl@{\texorpdfstring{$\sim$}{\string~}CatalogTreeCtrl}}
+\index{````~CatalogTreeCtrl@{\texorpdfstring{$\sim$}{\string~}CatalogTreeCtrl}!CatalogTreeCtrl@{CatalogTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}CatalogTreeCtrl()}{\string~CatalogTreeCtrl()}}
+{\footnotesize\ttfamily \label{class_catalog_tree_ctrl_a6c4b3b0839aa095761f9903f83368f6c} 
+virtual Catalog\+Tree\+Ctrl\+::\texorpdfstring{$\sim$}{\string~}\+Catalog\+Tree\+Ctrl (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_tree_ctrl_8h_source_l00165}{165}} of file \mbox{\hyperlink{_catalog_tree_ctrl_8h_source}{Catalog\+Tree\+Ctrl.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_catalog_tree_ctrl_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_catalog_tree_ctrl_aef497b5184136f82fc40c8b9fe9f7dbf}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!AddChild@{AddChild}}
+\index{AddChild@{AddChild}!CatalogTreeCtrl@{CatalogTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{AddChild()}{AddChild()}}
+{\footnotesize\ttfamily \label{class_catalog_tree_ctrl_aef497b5184136f82fc40c8b9fe9f7dbf} 
+wx\+Tree\+Item\+Id Catalog\+Tree\+Ctrl\+::\+Add\+Child (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{parent}{, }\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{child}{}\end{DoxyParamCaption})}
+
+
+
+Add\+Child adds wx\+Xml\+Node as a item in the tree. It is recursively called to create sort nodes as necessary to find the proper place for the child. 
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source_l00151}{151}} of file \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source}{Catalog\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_catalog_tree_ctrl_a80bbb4cb88f39bab84f8012c8e9f33f3}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!AddEntry@{AddEntry}}
+\index{AddEntry@{AddEntry}!CatalogTreeCtrl@{CatalogTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{AddEntry()}{AddEntry()}}
+{\footnotesize\ttfamily \label{class_catalog_tree_ctrl_a80bbb4cb88f39bab84f8012c8e9f33f3} 
+void Catalog\+Tree\+Ctrl\+::\+Add\+Entry (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{id}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source_l00222}{222}} of file \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source}{Catalog\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_catalog_tree_ctrl_aa847e08b4522c357e3f6c5d168c23196}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!AppendAlbumStamp@{AppendAlbumStamp}}
+\index{AppendAlbumStamp@{AppendAlbumStamp}!CatalogTreeCtrl@{CatalogTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{AppendAlbumStamp()}{AppendAlbumStamp()}}
+{\footnotesize\ttfamily \label{class_catalog_tree_ctrl_aa847e08b4522c357e3f6c5d168c23196} 
+\mbox{\hyperlink{class_utils_1_1_stamp_link}{Utils\+::\+Stamp\+Link}} \texorpdfstring{$\ast$}{*} Catalog\+Tree\+Ctrl\+::\+Append\+Album\+Stamp (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{item\+Id}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source_l00247}{247}} of file \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source}{Catalog\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_catalog_tree_ctrl_a215201153ead907a1afbcaf49404db67}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!Clear@{Clear}}
+\index{Clear@{Clear}!CatalogTreeCtrl@{CatalogTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{Clear()}{Clear()}}
+{\footnotesize\ttfamily \label{class_catalog_tree_ctrl_a215201153ead907a1afbcaf49404db67} 
+void Catalog\+Tree\+Ctrl\+::\+Clear (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source_l00307}{307}} of file \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source}{Catalog\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_catalog_tree_ctrl_a4b3cbf3f6f63b12f45697d2b096429d3}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!CompareDates@{CompareDates}}
+\index{CompareDates@{CompareDates}!CatalogTreeCtrl@{CatalogTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{CompareDates()}{CompareDates()}}
+{\footnotesize\ttfamily \label{class_catalog_tree_ctrl_a4b3cbf3f6f63b12f45697d2b096429d3} 
+\mbox{\hyperlink{_gui_utils_8h_a66b06809b27f311da0c50fba212270ea}{Comparison\+Result\+Type}} Catalog\+Tree\+Ctrl\+::\+Compare\+Dates (\begin{DoxyParamCaption}\item[{wx\+String}]{date1}{, }\item[{wx\+String}]{date2}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_catalog_tree_ctrl_af62f10ae8dccfad510f986ab0bb26b9c}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!CountEntryTypes@{CountEntryTypes}}
+\index{CountEntryTypes@{CountEntryTypes}!CatalogTreeCtrl@{CatalogTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{CountEntryTypes()}{CountEntryTypes()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_catalog_tree_ctrl_af62f10ae8dccfad510f986ab0bb26b9c} 
+void Catalog\+Tree\+Ctrl\+::\+Count\+Entry\+Types (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source_l00918}{918}} of file \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source}{Catalog\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_catalog_tree_ctrl_a06425465b10707defc471f08a7a40126}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!CountEntryTypes@{CountEntryTypes}}
+\index{CountEntryTypes@{CountEntryTypes}!CatalogTreeCtrl@{CatalogTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{CountEntryTypes()}{CountEntryTypes()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_catalog_tree_ctrl_a06425465b10707defc471f08a7a40126} 
+void Catalog\+Tree\+Ctrl\+::\+Count\+Entry\+Types (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{parent}{, }\item[{int \&}]{count}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source_l00902}{902}} of file \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source}{Catalog\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_catalog_tree_ctrl_a75f544cbb9b69dd42d0a5841aacdb8ef}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!CreateChildData@{CreateChildData}}
+\index{CreateChildData@{CreateChildData}!CatalogTreeCtrl@{CatalogTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{CreateChildData()}{CreateChildData()}}
+{\footnotesize\ttfamily \label{class_catalog_tree_ctrl_a75f544cbb9b69dd42d0a5841aacdb8ef} 
+\mbox{\hyperlink{class_catalog_tree_item_data}{Catalog\+Tree\+Item\+Data}} \texorpdfstring{$\ast$}{*} Catalog\+Tree\+Ctrl\+::\+Create\+Child\+Data (\begin{DoxyParamCaption}\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{child}{, }\item[{wx\+String \&}]{label}{, }\item[{\mbox{\hyperlink{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3a}{Catalog\+::\+Icon\+ID}} \&}]{icon}{, }\item[{\mbox{\hyperlink{namespace_catalog_a86f503ced35b06e6427477ddab27c6be}{Catalog\+::\+Catalog\+Base\+Type}} \&}]{node\+Type}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source_l00260}{260}} of file \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source}{Catalog\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_catalog_tree_ctrl_af82af5e1171d5374e26c4d5d0fd8ccdf}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!CreateImageList@{CreateImageList}}
+\index{CreateImageList@{CreateImageList}!CatalogTreeCtrl@{CatalogTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{CreateImageList()}{CreateImageList()}}
+{\footnotesize\ttfamily \label{class_catalog_tree_ctrl_af82af5e1171d5374e26c4d5d0fd8ccdf} 
+void Catalog\+Tree\+Ctrl\+::\+Create\+Image\+List (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source_l00319}{319}} of file \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source}{Catalog\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_catalog_tree_ctrl_a3190164393f1fed858026e0687bbd4a0}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!CreateStateImageList@{CreateStateImageList}}
+\index{CreateStateImageList@{CreateStateImageList}!CatalogTreeCtrl@{CatalogTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{CreateStateImageList()}{CreateStateImageList()}}
+{\footnotesize\ttfamily \label{class_catalog_tree_ctrl_a3190164393f1fed858026e0687bbd4a0} 
+void Catalog\+Tree\+Ctrl\+::\+Create\+State\+Image\+List (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source_l00326}{326}} of file \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source}{Catalog\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_catalog_tree_ctrl_ae55f0202652147bd564ce7c4f97643d0}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!DeleteAlbumStamp@{DeleteAlbumStamp}}
+\index{DeleteAlbumStamp@{DeleteAlbumStamp}!CatalogTreeCtrl@{CatalogTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{DeleteAlbumStamp()}{DeleteAlbumStamp()}}
+{\footnotesize\ttfamily \label{class_catalog_tree_ctrl_ae55f0202652147bd564ce7c4f97643d0} 
+void Catalog\+Tree\+Ctrl\+::\+Delete\+Album\+Stamp (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{item\+Id}{}\end{DoxyParamCaption})}
+
+
+
+Deletes the item from the stamp link list and sends a message to the design tree to remove it. 
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source_l00333}{333}} of file \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source}{Catalog\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_catalog_tree_ctrl_a317fd1e235eeb73ef96c04f46156c953}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!DeleteEntry@{DeleteEntry}}
+\index{DeleteEntry@{DeleteEntry}!CatalogTreeCtrl@{CatalogTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{DeleteEntry()}{DeleteEntry()}}
+{\footnotesize\ttfamily \label{class_catalog_tree_ctrl_a317fd1e235eeb73ef96c04f46156c953} 
+void Catalog\+Tree\+Ctrl\+::\+Delete\+Entry (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{id}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source_l00345}{345}} of file \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source}{Catalog\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_catalog_tree_ctrl_a8f7688de612bb22265d082208c2e369c}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!DisableState@{DisableState}}
+\index{DisableState@{DisableState}!CatalogTreeCtrl@{CatalogTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{DisableState()}{DisableState()}}
+{\footnotesize\ttfamily \label{class_catalog_tree_ctrl_a8f7688de612bb22265d082208c2e369c} 
+void Catalog\+Tree\+Ctrl\+::\+Disable\+State (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{id}{}\end{DoxyParamCaption})}
+
+
+
+Disables the check box on all the tree items from item\+Id on down, so should start from root. 
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source_l00397}{397}} of file \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source}{Catalog\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_catalog_tree_ctrl_af66f2551e871ee5eb67f58981d2e465c}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!DoSortChildren@{DoSortChildren}}
+\index{DoSortChildren@{DoSortChildren}!CatalogTreeCtrl@{CatalogTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{DoSortChildren()}{DoSortChildren()}}
+{\footnotesize\ttfamily \label{class_catalog_tree_ctrl_af66f2551e871ee5eb67f58981d2e465c} 
+void Catalog\+Tree\+Ctrl\+::\+Do\+Sort\+Children (\begin{DoxyParamCaption}\item[{const wx\+Tree\+Item\+Id \&}]{item}{, }\item[{bool}]{reverse}{ = {\ttfamily true}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_tree_ctrl_8h_source_l00206}{206}} of file \mbox{\hyperlink{_catalog_tree_ctrl_8h_source}{Catalog\+Tree\+Ctrl.\+h}}.
+
+\Hypertarget{class_catalog_tree_ctrl_aef3f8a5b321c1d235e75ea3f914081f9}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!DumpTree@{DumpTree}}
+\index{DumpTree@{DumpTree}!CatalogTreeCtrl@{CatalogTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{DumpTree()}{DumpTree()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_catalog_tree_ctrl_aef3f8a5b321c1d235e75ea3f914081f9} 
+void Catalog\+Tree\+Ctrl\+::\+Dump\+Tree (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source_l00372}{372}} of file \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source}{Catalog\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_catalog_tree_ctrl_ac5a12077b34e56d71458cef75be0f100}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!DumpTree@{DumpTree}}
+\index{DumpTree@{DumpTree}!CatalogTreeCtrl@{CatalogTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{DumpTree()}{DumpTree()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_catalog_tree_ctrl_ac5a12077b34e56d71458cef75be0f100} 
+void Catalog\+Tree\+Ctrl\+::\+Dump\+Tree (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{id}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source_l00380}{380}} of file \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source}{Catalog\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_catalog_tree_ctrl_a4b0a8933ccb400ce88b4373817226378}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!EnableState@{EnableState}}
+\index{EnableState@{EnableState}!CatalogTreeCtrl@{CatalogTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{EnableState()}{EnableState()}}
+{\footnotesize\ttfamily \label{class_catalog_tree_ctrl_a4b0a8933ccb400ce88b4373817226378} 
+void Catalog\+Tree\+Ctrl\+::\+Enable\+State (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{id}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source_l00414}{414}} of file \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source}{Catalog\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_catalog_tree_ctrl_a38051d717fae50f894f0c782ede22c40}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!FindFirstEntryChild@{FindFirstEntryChild}}
+\index{FindFirstEntryChild@{FindFirstEntryChild}!CatalogTreeCtrl@{CatalogTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{FindFirstEntryChild()}{FindFirstEntryChild()}}
+{\footnotesize\ttfamily \label{class_catalog_tree_ctrl_a38051d717fae50f894f0c782ede22c40} 
+wx\+Tree\+Item\+Id Catalog\+Tree\+Ctrl\+::\+Find\+First\+Entry\+Child (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{id}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source_l00442}{442}} of file \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source}{Catalog\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_catalog_tree_ctrl_ab034d39ad145dd441eaaae13f306095c}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!FindStampLink@{FindStampLink}}
+\index{FindStampLink@{FindStampLink}!CatalogTreeCtrl@{CatalogTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{FindStampLink()}{FindStampLink()}}
+{\footnotesize\ttfamily \label{class_catalog_tree_ctrl_ab034d39ad145dd441eaaae13f306095c} 
+\mbox{\hyperlink{class_utils_1_1_stamp_link}{Utils\+::\+Stamp\+Link}} \texorpdfstring{$\ast$}{*} Catalog\+Tree\+Ctrl\+::\+Find\+Stamp\+Link (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{item\+Id}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source_l00547}{547}} of file \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source}{Catalog\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_catalog_tree_ctrl_a40ab5bc28bcaf42591f1ef5a0d7f7626}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!FindTreeItemID@{FindTreeItemID}}
+\index{FindTreeItemID@{FindTreeItemID}!CatalogTreeCtrl@{CatalogTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{FindTreeItemID()}{FindTreeItemID()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \label{class_catalog_tree_ctrl_a40ab5bc28bcaf42591f1ef5a0d7f7626} 
+wx\+Tree\+Item\+Id Catalog\+Tree\+Ctrl\+::\+Find\+Tree\+Item\+ID (\begin{DoxyParamCaption}\item[{wx\+String}]{stamp\+ID}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source_l00534}{534}} of file \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source}{Catalog\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_catalog_tree_ctrl_a5c604d332bbc116a2f724ed83c90d7dc}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!FindTreeItemID@{FindTreeItemID}}
+\index{FindTreeItemID@{FindTreeItemID}!CatalogTreeCtrl@{CatalogTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{FindTreeItemID()}{FindTreeItemID()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \label{class_catalog_tree_ctrl_a5c604d332bbc116a2f724ed83c90d7dc} 
+wx\+Tree\+Item\+Id Catalog\+Tree\+Ctrl\+::\+Find\+Tree\+Item\+ID (\begin{DoxyParamCaption}\item[{wx\+String}]{stamp\+ID}{, }\item[{wx\+Tree\+Item\+Id}]{id}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source_l00498}{498}} of file \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source}{Catalog\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_catalog_tree_ctrl_a7e6af207312f6dfff08fa5c0c063b1e8}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!FindTreeItemID@{FindTreeItemID}}
+\index{FindTreeItemID@{FindTreeItemID}!CatalogTreeCtrl@{CatalogTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{FindTreeItemID()}{FindTreeItemID()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \label{class_catalog_tree_ctrl_a7e6af207312f6dfff08fa5c0c063b1e8} 
+wx\+Tree\+Item\+Id Catalog\+Tree\+Ctrl\+::\+Find\+Tree\+Item\+ID (\begin{DoxyParamCaption}\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{node}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source_l00526}{526}} of file \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source}{Catalog\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_catalog_tree_ctrl_a3caf54cc41fc1efa6b2640ea6149b1ce}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!FindTreeItemID@{FindTreeItemID}}
+\index{FindTreeItemID@{FindTreeItemID}!CatalogTreeCtrl@{CatalogTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{FindTreeItemID()}{FindTreeItemID()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \label{class_catalog_tree_ctrl_a3caf54cc41fc1efa6b2640ea6149b1ce} 
+wx\+Tree\+Item\+Id Catalog\+Tree\+Ctrl\+::\+Find\+Tree\+Item\+ID (\begin{DoxyParamCaption}\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{node}{, }\item[{wx\+Tree\+Item\+Id}]{id}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source_l00470}{470}} of file \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source}{Catalog\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_catalog_tree_ctrl_a88668a42c30324149a1abb67990ea5f9}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!GetAttribute@{GetAttribute}}
+\index{GetAttribute@{GetAttribute}!CatalogTreeCtrl@{CatalogTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{GetAttribute()}{GetAttribute()}}
+{\footnotesize\ttfamily \label{class_catalog_tree_ctrl_a88668a42c30324149a1abb67990ea5f9} 
+wx\+String Catalog\+Tree\+Ctrl\+::\+Get\+Attribute (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{cat\+Tree\+ID}{, }\item[{wx\+String}]{name}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source_l00557}{557}} of file \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source}{Catalog\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_catalog_tree_ctrl_a4cb8a7ccee1e231551978c815e233f27}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!GetID@{GetID}}
+\index{GetID@{GetID}!CatalogTreeCtrl@{CatalogTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{GetID()}{GetID()}}
+{\footnotesize\ttfamily \label{class_catalog_tree_ctrl_a4cb8a7ccee1e231551978c815e233f27} 
+wx\+String Catalog\+Tree\+Ctrl\+::\+Get\+ID (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{cat\+Tree\+ID}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source_l00571}{571}} of file \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source}{Catalog\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_catalog_tree_ctrl_a34acfebddf170eab6cd286a923d1bcb6}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!GetImage@{GetImage}}
+\index{GetImage@{GetImage}!CatalogTreeCtrl@{CatalogTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{GetImage()}{GetImage()}}
+{\footnotesize\ttfamily \label{class_catalog_tree_ctrl_a34acfebddf170eab6cd286a923d1bcb6} 
+wx\+String Catalog\+Tree\+Ctrl\+::\+Get\+Image (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{cat\+Tree\+ID}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source_l00587}{587}} of file \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source}{Catalog\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_catalog_tree_ctrl_ae2441dc304fdf1b171d0ac017e14daf5}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!GetImageFullName@{GetImageFullName}}
+\index{GetImageFullName@{GetImageFullName}!CatalogTreeCtrl@{CatalogTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{GetImageFullName()}{GetImageFullName()}}
+{\footnotesize\ttfamily \label{class_catalog_tree_ctrl_ae2441dc304fdf1b171d0ac017e14daf5} 
+wx\+String Catalog\+Tree\+Ctrl\+::\+Get\+Image\+Full\+Name (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{cat\+Tree\+ID}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source_l00701}{701}} of file \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source}{Catalog\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_catalog_tree_ctrl_a83c004d9f2f0075daf598bf41e6d0860}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!GetInventoryIconId@{GetInventoryIconId}}
+\index{GetInventoryIconId@{GetInventoryIconId}!CatalogTreeCtrl@{CatalogTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{GetInventoryIconId()}{GetInventoryIconId()}}
+{\footnotesize\ttfamily \label{class_catalog_tree_ctrl_a83c004d9f2f0075daf598bf41e6d0860} 
+\mbox{\hyperlink{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3a}{Catalog\+::\+Icon\+ID}} Catalog\+Tree\+Ctrl\+::\+Get\+Inventory\+Icon\+Id (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_catalog_1_1_entry}{Catalog\+::\+Entry}} \texorpdfstring{$\ast$}{*}}]{stamp}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source_l00603}{603}} of file \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source}{Catalog\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_catalog_tree_ctrl_a2a76ff84b0de3630433681f8fca1d8e6}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!GetItemDesc@{GetItemDesc}}
+\index{GetItemDesc@{GetItemDesc}!CatalogTreeCtrl@{CatalogTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{GetItemDesc()}{GetItemDesc()}}
+{\footnotesize\ttfamily \label{class_catalog_tree_ctrl_a2a76ff84b0de3630433681f8fca1d8e6} 
+wx\+String Catalog\+Tree\+Ctrl\+::\+Get\+Item\+Desc (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{id}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source_l00612}{612}} of file \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source}{Catalog\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_catalog_tree_ctrl_a8cf87c8d161750aff79da98f2540f7b8}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!GetItemImageFullName@{GetItemImageFullName}}
+\index{GetItemImageFullName@{GetItemImageFullName}!CatalogTreeCtrl@{CatalogTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{GetItemImageFullName()}{GetItemImageFullName()}}
+{\footnotesize\ttfamily \label{class_catalog_tree_ctrl_a8cf87c8d161750aff79da98f2540f7b8} 
+wx\+String Catalog\+Tree\+Ctrl\+::\+Get\+Item\+Image\+Full\+Name (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{id}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source_l00627}{627}} of file \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source}{Catalog\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_catalog_tree_ctrl_abd0b8b4b330bb677d93089698a5dbbd8}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!GetItemNode@{GetItemNode}}
+\index{GetItemNode@{GetItemNode}!CatalogTreeCtrl@{CatalogTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{GetItemNode()}{GetItemNode()}}
+{\footnotesize\ttfamily \label{class_catalog_tree_ctrl_abd0b8b4b330bb677d93089698a5dbbd8} 
+wx\+Xml\+Node \texorpdfstring{$\ast$}{*} Catalog\+Tree\+Ctrl\+::\+Get\+Item\+Node (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{id}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source_l00642}{642}} of file \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source}{Catalog\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_catalog_tree_ctrl_aaf3aefd878b2ca4373392194049036a3}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!GetItemStampLink@{GetItemStampLink}}
+\index{GetItemStampLink@{GetItemStampLink}!CatalogTreeCtrl@{CatalogTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{GetItemStampLink()}{GetItemStampLink()}}
+{\footnotesize\ttfamily \label{class_catalog_tree_ctrl_aaf3aefd878b2ca4373392194049036a3} 
+\mbox{\hyperlink{class_utils_1_1_stamp_link}{Utils\+::\+Stamp\+Link}} \texorpdfstring{$\ast$}{*} Catalog\+Tree\+Ctrl\+::\+Get\+Item\+Stamp\+Link (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{id}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source_l00657}{657}} of file \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source}{Catalog\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_catalog_tree_ctrl_a31c496aabe873f6da4b95400253c23ca}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!GetItemType@{GetItemType}}
+\index{GetItemType@{GetItemType}!CatalogTreeCtrl@{CatalogTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{GetItemType()}{GetItemType()}}
+{\footnotesize\ttfamily \label{class_catalog_tree_ctrl_a31c496aabe873f6da4b95400253c23ca} 
+\mbox{\hyperlink{namespace_catalog_a86f503ced35b06e6427477ddab27c6be}{Catalog\+::\+Catalog\+Base\+Type}} Catalog\+Tree\+Ctrl\+::\+Get\+Item\+Type (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{id}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source_l00672}{672}} of file \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source}{Catalog\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_catalog_tree_ctrl_a090047b3738ceb2f19e2ecfc754f51ae}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!GetNbrEntryTypes@{GetNbrEntryTypes}}
+\index{GetNbrEntryTypes@{GetNbrEntryTypes}!CatalogTreeCtrl@{CatalogTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{GetNbrEntryTypes()}{GetNbrEntryTypes()}}
+{\footnotesize\ttfamily \label{class_catalog_tree_ctrl_a090047b3738ceb2f19e2ecfc754f51ae} 
+int Catalog\+Tree\+Ctrl\+::\+Get\+Nbr\+Entry\+Types (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_tree_ctrl_8h_source_l00253}{253}} of file \mbox{\hyperlink{_catalog_tree_ctrl_8h_source}{Catalog\+Tree\+Ctrl.\+h}}.
+
+\Hypertarget{class_catalog_tree_ctrl_a008ed01c0135c53dc20746197dcda91b}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!GetNewEntry@{GetNewEntry}}
+\index{GetNewEntry@{GetNewEntry}!CatalogTreeCtrl@{CatalogTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{GetNewEntry()}{GetNewEntry()}}
+{\footnotesize\ttfamily \label{class_catalog_tree_ctrl_a008ed01c0135c53dc20746197dcda91b} 
+wx\+Xml\+Node \texorpdfstring{$\ast$}{*} Catalog\+Tree\+Ctrl\+::\+Get\+New\+Entry (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{item\+Id}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source_l00686}{686}} of file \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source}{Catalog\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_catalog_tree_ctrl_afff4e1a21809a5c91fecc4ac25d7289f}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!GetSelectionNode@{GetSelectionNode}}
+\index{GetSelectionNode@{GetSelectionNode}!CatalogTreeCtrl@{CatalogTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{GetSelectionNode()}{GetSelectionNode()}}
+{\footnotesize\ttfamily \label{class_catalog_tree_ctrl_afff4e1a21809a5c91fecc4ac25d7289f} 
+wx\+Xml\+Node \texorpdfstring{$\ast$}{*} Catalog\+Tree\+Ctrl\+::\+Get\+Selection\+Node (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source_l00693}{693}} of file \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source}{Catalog\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_catalog_tree_ctrl_af849aa26dfc5e9f8a77d42243815066b}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!GoToColnect@{GoToColnect}}
+\index{GoToColnect@{GoToColnect}!CatalogTreeCtrl@{CatalogTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{GoToColnect()}{GoToColnect()}}
+{\footnotesize\ttfamily \label{class_catalog_tree_ctrl_af849aa26dfc5e9f8a77d42243815066b} 
+void Catalog\+Tree\+Ctrl\+::\+Go\+To\+Colnect (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{id}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source_l00720}{720}} of file \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source}{Catalog\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_catalog_tree_ctrl_a14027a3c06e243381fb3feb278db86a3}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!InsertChild@{InsertChild}}
+\index{InsertChild@{InsertChild}!CatalogTreeCtrl@{CatalogTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{InsertChild()}{InsertChild()}}
+{\footnotesize\ttfamily \label{class_catalog_tree_ctrl_a14027a3c06e243381fb3feb278db86a3} 
+wx\+Tree\+Item\+Id Catalog\+Tree\+Ctrl\+::\+Insert\+Child (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{parent}{, }\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{child}{, }\item[{bool}]{after}{ = {\ttfamily true}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source_l00755}{755}} of file \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source}{Catalog\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_catalog_tree_ctrl_ac2a4cd55be7827471548d0cd3a7dbc09}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!IsElement@{IsElement}}
+\index{IsElement@{IsElement}!CatalogTreeCtrl@{CatalogTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{IsElement()}{IsElement()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_catalog_tree_ctrl_ac2a4cd55be7827471548d0cd3a7dbc09} 
+bool Catalog\+Tree\+Ctrl\+::\+Is\+Element (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{item}{, }\item[{wx\+String}]{stamp\+ID}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source_l00857}{857}} of file \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source}{Catalog\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_catalog_tree_ctrl_a52d9c340096fb928597c0c4c8266c7d4}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!IsElement@{IsElement}}
+\index{IsElement@{IsElement}!CatalogTreeCtrl@{CatalogTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{IsElement()}{IsElement()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_catalog_tree_ctrl_a52d9c340096fb928597c0c4c8266c7d4} 
+bool Catalog\+Tree\+Ctrl\+::\+Is\+Element (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{item}{, }\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{node}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source_l00842}{842}} of file \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source}{Catalog\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_catalog_tree_ctrl_ab6ce1d5ebf71b3e8db8e50953b399306}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!IsItemChecked@{IsItemChecked}}
+\index{IsItemChecked@{IsItemChecked}!CatalogTreeCtrl@{CatalogTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{IsItemChecked()}{IsItemChecked()}}
+{\footnotesize\ttfamily \label{class_catalog_tree_ctrl_ab6ce1d5ebf71b3e8db8e50953b399306} 
+bool Catalog\+Tree\+Ctrl\+::\+Is\+Item\+Checked (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{id}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source_l00875}{875}} of file \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source}{Catalog\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_catalog_tree_ctrl_afa08d36c723c450c55d88b6351272af2}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!LoadCatalogTree@{LoadCatalogTree}}
+\index{LoadCatalogTree@{LoadCatalogTree}!CatalogTreeCtrl@{CatalogTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{LoadCatalogTree()}{LoadCatalogTree()}}
+{\footnotesize\ttfamily \label{class_catalog_tree_ctrl_afa08d36c723c450c55d88b6351272af2} 
+void Catalog\+Tree\+Ctrl\+::\+Load\+Catalog\+Tree (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source_l00925}{925}} of file \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source}{Catalog\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_catalog_tree_ctrl_af6e0706d7399581700135f9564a2f34f}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!OnBeginDrag@{OnBeginDrag}}
+\index{OnBeginDrag@{OnBeginDrag}!CatalogTreeCtrl@{CatalogTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{OnBeginDrag()}{OnBeginDrag()}}
+{\footnotesize\ttfamily \label{class_catalog_tree_ctrl_af6e0706d7399581700135f9564a2f34f} 
+void Catalog\+Tree\+Ctrl\+::\+On\+Begin\+Drag (\begin{DoxyParamCaption}\item[{wx\+Tree\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source_l00977}{977}} of file \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source}{Catalog\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_catalog_tree_ctrl_a51763361fa8f4d2f8f10985151f1a87d}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!OnCompareItems@{OnCompareItems}}
+\index{OnCompareItems@{OnCompareItems}!CatalogTreeCtrl@{CatalogTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{OnCompareItems()}{OnCompareItems()}}
+{\footnotesize\ttfamily \label{class_catalog_tree_ctrl_a51763361fa8f4d2f8f10985151f1a87d} 
+int Catalog\+Tree\+Ctrl\+::\+On\+Compare\+Items (\begin{DoxyParamCaption}\item[{const wx\+Tree\+Item\+Id \&}]{i1}{, }\item[{const wx\+Tree\+Item\+Id \&}]{i2}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source_l00998}{998}} of file \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source}{Catalog\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_catalog_tree_ctrl_aa80119fbbae89c686dcc5ea08e2c54df}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!OnEndDrag@{OnEndDrag}}
+\index{OnEndDrag@{OnEndDrag}!CatalogTreeCtrl@{CatalogTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{OnEndDrag()}{OnEndDrag()}}
+{\footnotesize\ttfamily \label{class_catalog_tree_ctrl_aa80119fbbae89c686dcc5ea08e2c54df} 
+void Catalog\+Tree\+Ctrl\+::\+On\+End\+Drag (\begin{DoxyParamCaption}\item[{wx\+Tree\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source_l01022}{1022}} of file \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source}{Catalog\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_catalog_tree_ctrl_a05f0ee1fa4902e46468039787ea4d647}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!OnItemMenu@{OnItemMenu}}
+\index{OnItemMenu@{OnItemMenu}!CatalogTreeCtrl@{CatalogTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{OnItemMenu()}{OnItemMenu()}}
+{\footnotesize\ttfamily \label{class_catalog_tree_ctrl_a05f0ee1fa4902e46468039787ea4d647} 
+void Catalog\+Tree\+Ctrl\+::\+On\+Item\+Menu (\begin{DoxyParamCaption}\item[{wx\+Tree\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source_l01043}{1043}} of file \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source}{Catalog\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_catalog_tree_ctrl_afe289d9becabb6ac843ffe7dee53df2f}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!OnItemStateClick@{OnItemStateClick}}
+\index{OnItemStateClick@{OnItemStateClick}!CatalogTreeCtrl@{CatalogTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{OnItemStateClick()}{OnItemStateClick()}}
+{\footnotesize\ttfamily \label{class_catalog_tree_ctrl_afe289d9becabb6ac843ffe7dee53df2f} 
+void Catalog\+Tree\+Ctrl\+::\+On\+Item\+State\+Click (\begin{DoxyParamCaption}\item[{wx\+Tree\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source_l01057}{1057}} of file \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source}{Catalog\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_catalog_tree_ctrl_aa90143b55a3e5af6009106bb83021bfe}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!OnSelChanged@{OnSelChanged}}
+\index{OnSelChanged@{OnSelChanged}!CatalogTreeCtrl@{CatalogTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{OnSelChanged()}{OnSelChanged()}}
+{\footnotesize\ttfamily \label{class_catalog_tree_ctrl_aa90143b55a3e5af6009106bb83021bfe} 
+void Catalog\+Tree\+Ctrl\+::\+On\+Sel\+Changed (\begin{DoxyParamCaption}\item[{wx\+Tree\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source_l01066}{1066}} of file \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source}{Catalog\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_catalog_tree_ctrl_a9611966da7c8ad1e53033c4857af3153}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!OnTreectrlItemCollapsed@{OnTreectrlItemCollapsed}}
+\index{OnTreectrlItemCollapsed@{OnTreectrlItemCollapsed}!CatalogTreeCtrl@{CatalogTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{OnTreectrlItemCollapsed()}{OnTreectrlItemCollapsed()}}
+{\footnotesize\ttfamily \label{class_catalog_tree_ctrl_a9611966da7c8ad1e53033c4857af3153} 
+void Catalog\+Tree\+Ctrl\+::\+On\+Treectrl\+Item\+Collapsed (\begin{DoxyParamCaption}\item[{wx\+Tree\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source_l01077}{1077}} of file \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source}{Catalog\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_catalog_tree_ctrl_aeae653ff3eb59526b951929064be6109}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!OnTreectrlItemExpanded@{OnTreectrlItemExpanded}}
+\index{OnTreectrlItemExpanded@{OnTreectrlItemExpanded}!CatalogTreeCtrl@{CatalogTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{OnTreectrlItemExpanded()}{OnTreectrlItemExpanded()}}
+{\footnotesize\ttfamily \label{class_catalog_tree_ctrl_aeae653ff3eb59526b951929064be6109} 
+void Catalog\+Tree\+Ctrl\+::\+On\+Treectrl\+Item\+Expanded (\begin{DoxyParamCaption}\item[{wx\+Tree\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source_l01095}{1095}} of file \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source}{Catalog\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_catalog_tree_ctrl_a96f029c4e9c02c805f6c9d3c8c2b1f63}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!PrintTreeNodeData@{PrintTreeNodeData}}
+\index{PrintTreeNodeData@{PrintTreeNodeData}!CatalogTreeCtrl@{CatalogTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{PrintTreeNodeData()}{PrintTreeNodeData()}}
+{\footnotesize\ttfamily \label{class_catalog_tree_ctrl_a96f029c4e9c02c805f6c9d3c8c2b1f63} 
+void Catalog\+Tree\+Ctrl\+::\+Print\+Tree\+Node\+Data (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{id}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source_l01114}{1114}} of file \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source}{Catalog\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_catalog_tree_ctrl_a3f2dca08a2d900e0a0a207e642a308c2}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!RemoveStampLink@{RemoveStampLink}}
+\index{RemoveStampLink@{RemoveStampLink}!CatalogTreeCtrl@{CatalogTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{RemoveStampLink()}{RemoveStampLink()}}
+{\footnotesize\ttfamily \label{class_catalog_tree_ctrl_a3f2dca08a2d900e0a0a207e642a308c2} 
+void Catalog\+Tree\+Ctrl\+::\+Remove\+Stamp\+Link (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{item\+Id}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source_l01107}{1107}} of file \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source}{Catalog\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_catalog_tree_ctrl_a9a5198834999a1f0acb8e2ce1b61d6f5}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!ReSortTree@{ReSortTree}}
+\index{ReSortTree@{ReSortTree}!CatalogTreeCtrl@{CatalogTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{ReSortTree()}{ReSortTree()}}
+{\footnotesize\ttfamily \label{class_catalog_tree_ctrl_a9a5198834999a1f0acb8e2ce1b61d6f5} 
+void Catalog\+Tree\+Ctrl\+::\+Re\+Sort\+Tree (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Delete the tree and resort it with the new sort order data. Probably doing this because the sort order was changed. 
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source_l01134}{1134}} of file \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source}{Catalog\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_catalog_tree_ctrl_a49623c509f7947c4c1aaf795bb22c472}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!SelectStamp@{SelectStamp}}
+\index{SelectStamp@{SelectStamp}!CatalogTreeCtrl@{CatalogTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{SelectStamp()}{SelectStamp()}}
+{\footnotesize\ttfamily \label{class_catalog_tree_ctrl_a49623c509f7947c4c1aaf795bb22c472} 
+void Catalog\+Tree\+Ctrl\+::\+Select\+Stamp (\begin{DoxyParamCaption}\item[{wx\+String}]{id}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source_l01146}{1146}} of file \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source}{Catalog\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_catalog_tree_ctrl_a3b6453e0cf609c3df20388bfb7a652de}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!SetAttribute@{SetAttribute}}
+\index{SetAttribute@{SetAttribute}!CatalogTreeCtrl@{CatalogTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{SetAttribute()}{SetAttribute()}}
+{\footnotesize\ttfamily \label{class_catalog_tree_ctrl_a3b6453e0cf609c3df20388bfb7a652de} 
+void Catalog\+Tree\+Ctrl\+::\+Set\+Attribute (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{cat\+Tree\+ID}{, }\item[{wx\+String}]{name}{, }\item[{wx\+String}]{val}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source_l01157}{1157}} of file \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source}{Catalog\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_catalog_tree_ctrl_a40e23c404883381e2c0adc44d9dade36}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!SetCatalogLink@{SetCatalogLink}}
+\index{SetCatalogLink@{SetCatalogLink}!CatalogTreeCtrl@{CatalogTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{SetCatalogLink()}{SetCatalogLink()}}
+{\footnotesize\ttfamily \label{class_catalog_tree_ctrl_a40e23c404883381e2c0adc44d9dade36} 
+void Catalog\+Tree\+Ctrl\+::\+Set\+Catalog\+Link (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{cat\+Tree\+ID}{, }\item[{\mbox{\hyperlink{class_utils_1_1_stamp_link}{Utils\+::\+Stamp\+Link}} \texorpdfstring{$\ast$}{*}}]{link}{, }\item[{wx\+String}]{IDNbr}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source_l01172}{1172}} of file \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source}{Catalog\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_catalog_tree_ctrl_ac34dc05aceefa42fa08a7963f9a8c0cd}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!SetInventoryStatus@{SetInventoryStatus}}
+\index{SetInventoryStatus@{SetInventoryStatus}!CatalogTreeCtrl@{CatalogTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{SetInventoryStatus()}{SetInventoryStatus()}}
+{\footnotesize\ttfamily \label{class_catalog_tree_ctrl_ac34dc05aceefa42fa08a7963f9a8c0cd} 
+void Catalog\+Tree\+Ctrl\+::\+Set\+Inventory\+Status (\begin{DoxyParamCaption}\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{node}{, }\item[{\mbox{\hyperlink{namespace_catalog_a7bc076b172809c869ab8fef63c49e8c3}{Catalog\+::\+Inventory\+Status\+Type}}}]{new\+Type}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source_l01202}{1202}} of file \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source}{Catalog\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_catalog_tree_ctrl_af8e46a82047cb76222efb1275919b5cc}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!SetInventoryStatusImage@{SetInventoryStatusImage}}
+\index{SetInventoryStatusImage@{SetInventoryStatusImage}!CatalogTreeCtrl@{CatalogTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{SetInventoryStatusImage()}{SetInventoryStatusImage()}}
+{\footnotesize\ttfamily \label{class_catalog_tree_ctrl_af8e46a82047cb76222efb1275919b5cc} 
+void Catalog\+Tree\+Ctrl\+::\+Set\+Inventory\+Status\+Image (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source_l01241}{1241}} of file \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source}{Catalog\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_catalog_tree_ctrl_ad366f23bee4e865742f00ddef9fe3338}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!SetItemChecked@{SetItemChecked}}
+\index{SetItemChecked@{SetItemChecked}!CatalogTreeCtrl@{CatalogTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{SetItemChecked()}{SetItemChecked()}}
+{\footnotesize\ttfamily \label{class_catalog_tree_ctrl_ad366f23bee4e865742f00ddef9fe3338} 
+void Catalog\+Tree\+Ctrl\+::\+Set\+Item\+Checked (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{id}{, }\item[{bool}]{state}{ = {\ttfamily true}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source_l01270}{1270}} of file \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source}{Catalog\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_catalog_tree_ctrl_a3772611e0dc9fbb33bf241324b9742dc}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!SetItemImageFullName@{SetItemImageFullName}}
+\index{SetItemImageFullName@{SetItemImageFullName}!CatalogTreeCtrl@{CatalogTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{SetItemImageFullName()}{SetItemImageFullName()}}
+{\footnotesize\ttfamily \label{class_catalog_tree_ctrl_a3772611e0dc9fbb33bf241324b9742dc} 
+void Catalog\+Tree\+Ctrl\+::\+Set\+Item\+Image\+Full\+Name (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{id}{, }\item[{wx\+String}]{str}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source_l01285}{1285}} of file \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source}{Catalog\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_catalog_tree_ctrl_a311b3bd360506a6d28fc70f91623fcc6}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!SetItemNode@{SetItemNode}}
+\index{SetItemNode@{SetItemNode}!CatalogTreeCtrl@{CatalogTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{SetItemNode()}{SetItemNode()}}
+{\footnotesize\ttfamily \label{class_catalog_tree_ctrl_a311b3bd360506a6d28fc70f91623fcc6} 
+void Catalog\+Tree\+Ctrl\+::\+Set\+Item\+Node (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{id}{, }\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{ele}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source_l01256}{1256}} of file \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source}{Catalog\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_catalog_tree_ctrl_af859c45117ffb5d45c5952d35666cd92}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!SetItemStampLink@{SetItemStampLink}}
+\index{SetItemStampLink@{SetItemStampLink}!CatalogTreeCtrl@{CatalogTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{SetItemStampLink()}{SetItemStampLink()}}
+{\footnotesize\ttfamily \label{class_catalog_tree_ctrl_af859c45117ffb5d45c5952d35666cd92} 
+void Catalog\+Tree\+Ctrl\+::\+Set\+Item\+Stamp\+Link (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{id}{, }\item[{\mbox{\hyperlink{class_utils_1_1_stamp_link}{Utils\+::\+Stamp\+Link}} \texorpdfstring{$\ast$}{*}}]{link}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source_l01299}{1299}} of file \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source}{Catalog\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_catalog_tree_ctrl_a85312081bd8121d7dbd40cd1bd81f43f}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!SetNextState@{SetNextState}}
+\index{SetNextState@{SetNextState}!CatalogTreeCtrl@{CatalogTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{SetNextState()}{SetNextState()}}
+{\footnotesize\ttfamily \label{class_catalog_tree_ctrl_a85312081bd8121d7dbd40cd1bd81f43f} 
+void Catalog\+Tree\+Ctrl\+::\+Set\+Next\+State (\begin{DoxyParamCaption}\item[{const wx\+Tree\+Item\+Id \&}]{item\+ID}{}\end{DoxyParamCaption})}
+
+
+
+Set the checkbox of the item to the next state. Saves the new state. Sends message to Album tree to update. 
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source_l01313}{1313}} of file \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source}{Catalog\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_catalog_tree_ctrl_a00ee85b05fec44c49d8cdbe2d010f0ae}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!SetSelection@{SetSelection}}
+\index{SetSelection@{SetSelection}!CatalogTreeCtrl@{CatalogTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{SetSelection()}{SetSelection()}}
+{\footnotesize\ttfamily \label{class_catalog_tree_ctrl_a00ee85b05fec44c49d8cdbe2d010f0ae} 
+void Catalog\+Tree\+Ctrl\+::\+Set\+Selection (\begin{DoxyParamCaption}\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{node}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source_l01339}{1339}} of file \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source}{Catalog\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_catalog_tree_ctrl_a6be8972921052a7109e335b563e15d80}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!SetStates@{SetStates}}
+\index{SetStates@{SetStates}!CatalogTreeCtrl@{CatalogTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{SetStates()}{SetStates()}}
+{\footnotesize\ttfamily \label{class_catalog_tree_ctrl_a6be8972921052a7109e335b563e15d80} 
+void Catalog\+Tree\+Ctrl\+::\+Set\+States (\begin{DoxyParamCaption}\item[{bool}]{enable}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source_l01349}{1349}} of file \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source}{Catalog\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_catalog_tree_ctrl_a5027c13849e0e6ab8cdaf34dfb865a55}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!SetTreeItemCollapseState@{SetTreeItemCollapseState}}
+\index{SetTreeItemCollapseState@{SetTreeItemCollapseState}!CatalogTreeCtrl@{CatalogTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{SetTreeItemCollapseState()}{SetTreeItemCollapseState()}}
+{\footnotesize\ttfamily \label{class_catalog_tree_ctrl_a5027c13849e0e6ab8cdaf34dfb865a55} 
+void Catalog\+Tree\+Ctrl\+::\+Set\+Tree\+Item\+Collapse\+State (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{child\+ID}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source_l01364}{1364}} of file \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source}{Catalog\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_catalog_tree_ctrl_a7e9fb977b3bc39fe9fae88330256cc0e}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!SetType@{SetType}}
+\index{SetType@{SetType}!CatalogTreeCtrl@{CatalogTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{SetType()}{SetType()}}
+{\footnotesize\ttfamily \label{class_catalog_tree_ctrl_a7e9fb977b3bc39fe9fae88330256cc0e} 
+void Catalog\+Tree\+Ctrl\+::\+Set\+Type (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{id}{, }\item[{\mbox{\hyperlink{namespace_catalog_a86f503ced35b06e6427477ddab27c6be}{Catalog\+::\+Catalog\+Base\+Type}}}]{type}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source_l01381}{1381}} of file \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source}{Catalog\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_catalog_tree_ctrl_a898bebbb842fd069e0e15ba8c3e16704}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!ShowDropMenu@{ShowDropMenu}}
+\index{ShowDropMenu@{ShowDropMenu}!CatalogTreeCtrl@{CatalogTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{ShowDropMenu()}{ShowDropMenu()}}
+{\footnotesize\ttfamily \label{class_catalog_tree_ctrl_a898bebbb842fd069e0e15ba8c3e16704} 
+void Catalog\+Tree\+Ctrl\+::\+Show\+Drop\+Menu (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{item\+Src}{, }\item[{wx\+Tree\+Item\+Id}]{item\+Dst}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source_l01395}{1395}} of file \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source}{Catalog\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_catalog_tree_ctrl_a264c656dc140eb8007eb373ce81f0be8}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!ShowMenu@{ShowMenu}}
+\index{ShowMenu@{ShowMenu}!CatalogTreeCtrl@{CatalogTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{ShowMenu()}{ShowMenu()}}
+{\footnotesize\ttfamily \label{class_catalog_tree_ctrl_a264c656dc140eb8007eb373ce81f0be8} 
+void Catalog\+Tree\+Ctrl\+::\+Show\+Menu (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{id}{, }\item[{const wx\+Point \&}]{pt}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source_l01481}{1481}} of file \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source}{Catalog\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_catalog_tree_ctrl_a8c55abac68c25c840178ef19965c825b}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!SortTree@{SortTree}}
+\index{SortTree@{SortTree}!CatalogTreeCtrl@{CatalogTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{SortTree()}{SortTree()}}
+{\footnotesize\ttfamily \label{class_catalog_tree_ctrl_a8c55abac68c25c840178ef19965c825b} 
+void Catalog\+Tree\+Ctrl\+::\+Sort\+Tree (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{parent}{}\end{DoxyParamCaption})}
+
+
+
+Sort\+Tree decends through the tree and sorts the children of each item. 
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source_l01625}{1625}} of file \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source}{Catalog\+Tree\+Ctrl.\+cpp}}.
+
+\Hypertarget{class_catalog_tree_ctrl_a7b8234a45b246de40dc52036530f6509}\index{CatalogTreeCtrl@{CatalogTreeCtrl}!XMLDumpNode@{XMLDumpNode}}
+\index{XMLDumpNode@{XMLDumpNode}!CatalogTreeCtrl@{CatalogTreeCtrl}}
+\doxysubsubsection{\texorpdfstring{XMLDumpNode()}{XMLDumpNode()}}
+{\footnotesize\ttfamily \label{class_catalog_tree_ctrl_a7b8234a45b246de40dc52036530f6509} 
+void Catalog\+Tree\+Ctrl\+::\+XMLDump\+Node (\begin{DoxyParamCaption}\item[{wx\+Tree\+Item\+Id}]{item}{, }\item[{wx\+String}]{str}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source_l01651}{1651}} of file \mbox{\hyperlink{_catalog_tree_ctrl_8cpp_source}{Catalog\+Tree\+Ctrl.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/femon/\+Development/wx/clone\+Test/\+Stamp\+Tool/src/gui/\mbox{\hyperlink{_catalog_tree_ctrl_8h}{Catalog\+Tree\+Ctrl.\+h}}\item 
+C\+:/\+Users/femon/\+Development/wx/clone\+Test/\+Stamp\+Tool/src/gui/\mbox{\hyperlink{_catalog_tree_ctrl_8cpp}{Catalog\+Tree\+Ctrl.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,124 @@
+\doxysection{C\+:/\+Users/femon/\+Development/wx/clone\+Test/\+Stamp\+Tool/src/gui/\+Inventory\+Panel.h File Reference}
+\hypertarget{_inventory_panel_8h}{}\label{_inventory_panel_8h}\index{C:/Users/femon/Development/wx/cloneTest/StampTool/src/gui/InventoryPanel.h@{C:/Users/femon/Development/wx/cloneTest/StampTool/src/gui/InventoryPanel.h}}
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include "{}wx/grid.\+h"{}}\newline
+{\ttfamily \#include $<$wx/dataview.\+h$>$}\newline
+{\ttfamily \#include $<$wx/dynarray.\+h$>$}\newline
+{\ttfamily \#include "{}catalog/\+Entry.\+h"{}}\newline
+{\ttfamily \#include "{}gui/\+Gui\+Defs.\+h"{}}\newline
+{\ttfamily \#include "{}gui/\+Helper\+Panel.\+h"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_inventory_panel}{Inventory\+Panel}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespace_inventory}{Inventory}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_inventory_panel_8h_a879d1676f4beb2599d95da9c07de654a}{SYMBOL\+\_\+\+INVENTORYPANEL\+\_\+\+STYLE}}~wx\+TAB\+\_\+\+TRAVERSAL
+\item 
+\#define \mbox{\hyperlink{_inventory_panel_8h_ac1e8d369af456da365760133535ef2c9}{SYMBOL\+\_\+\+INVENTORYPANEL\+\_\+\+TITLE}}~\+\_\+( "{}Inventory"{} )
+\item 
+\#define \mbox{\hyperlink{_inventory_panel_8h_a45d2366967b5a136b6f19b721b47efcc}{SYMBOL\+\_\+\+INVENTORYPANEL\+\_\+\+IDNAME}}~\mbox{\hyperlink{_gui_defs_8h_a6329898a126babcdaa295242c115a11ea3f8c3312a1e95381b529158250859c2a}{ID\+\_\+\+INVENTORYPANEL}}
+\item 
+\#define \mbox{\hyperlink{_inventory_panel_8h_ae2038710c3fc4950cbaceff6d83abf07}{SYMBOL\+\_\+\+INVENTORYPANEL\+\_\+\+SIZE}}~wx\+Size( 800, 200 )
+\item 
+\#define \mbox{\hyperlink{_inventory_panel_8h_a5ff23d1b2263e7722c902345e0aff115}{SYMBOL\+\_\+\+INVENTORYPANEL\+\_\+\+POSITION}}~wx\+Default\+Position
+\item 
+\#define \mbox{\hyperlink{_inventory_panel_8h_a170439dda6124d92d25d47fe2d2daeff}{ID\+\_\+\+INVENTORYLISTCTRL}}~\mbox{\hyperlink{_gui_defs_8h_a6329898a126babcdaa295242c115a11ea3f8c3312a1e95381b529158250859c2a}{ID\+\_\+\+INVENTORYPANEL}}+2
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Eddie Monroe ( ) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2021-\/02-\/25
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright ( c ) 2021
+\end{DoxyCopyright}
+This file is part of Stamp\+Tool.
+
+Stamp\+Tool is free software\+: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or any later version.
+
+Stamp\+Tool is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with Stamp\+Tool. If not, see \href{https://www.gnu.org/licenses/}{\texttt{https\+://www.\+gnu.\+org/licenses/}}. 
+
+Definition in file \mbox{\hyperlink{_inventory_panel_8h_source}{Inventory\+Panel.\+h}}.
+
+
+
+\label{doc-define-members}
+\Hypertarget{_inventory_panel_8h_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{_inventory_panel_8h_a170439dda6124d92d25d47fe2d2daeff}\index{InventoryPanel.h@{InventoryPanel.h}!ID\_INVENTORYLISTCTRL@{ID\_INVENTORYLISTCTRL}}
+\index{ID\_INVENTORYLISTCTRL@{ID\_INVENTORYLISTCTRL}!InventoryPanel.h@{InventoryPanel.h}}
+\doxysubsubsection{\texorpdfstring{ID\_INVENTORYLISTCTRL}{ID\_INVENTORYLISTCTRL}}
+{\footnotesize\ttfamily \label{_inventory_panel_8h_a170439dda6124d92d25d47fe2d2daeff} 
+\#define ID\+\_\+\+INVENTORYLISTCTRL~\mbox{\hyperlink{_gui_defs_8h_a6329898a126babcdaa295242c115a11ea3f8c3312a1e95381b529158250859c2a}{ID\+\_\+\+INVENTORYPANEL}}+2}
+
+
+
+Definition at line \mbox{\hyperlink{_inventory_panel_8h_source_l00055}{55}} of file \mbox{\hyperlink{_inventory_panel_8h_source}{Inventory\+Panel.\+h}}.
+
+\Hypertarget{_inventory_panel_8h_a45d2366967b5a136b6f19b721b47efcc}\index{InventoryPanel.h@{InventoryPanel.h}!SYMBOL\_INVENTORYPANEL\_IDNAME@{SYMBOL\_INVENTORYPANEL\_IDNAME}}
+\index{SYMBOL\_INVENTORYPANEL\_IDNAME@{SYMBOL\_INVENTORYPANEL\_IDNAME}!InventoryPanel.h@{InventoryPanel.h}}
+\doxysubsubsection{\texorpdfstring{SYMBOL\_INVENTORYPANEL\_IDNAME}{SYMBOL\_INVENTORYPANEL\_IDNAME}}
+{\footnotesize\ttfamily \label{_inventory_panel_8h_a45d2366967b5a136b6f19b721b47efcc} 
+\#define SYMBOL\+\_\+\+INVENTORYPANEL\+\_\+\+IDNAME~\mbox{\hyperlink{_gui_defs_8h_a6329898a126babcdaa295242c115a11ea3f8c3312a1e95381b529158250859c2a}{ID\+\_\+\+INVENTORYPANEL}}}
+
+
+
+Definition at line \mbox{\hyperlink{_inventory_panel_8h_source_l00050}{50}} of file \mbox{\hyperlink{_inventory_panel_8h_source}{Inventory\+Panel.\+h}}.
+
+\Hypertarget{_inventory_panel_8h_a5ff23d1b2263e7722c902345e0aff115}\index{InventoryPanel.h@{InventoryPanel.h}!SYMBOL\_INVENTORYPANEL\_POSITION@{SYMBOL\_INVENTORYPANEL\_POSITION}}
+\index{SYMBOL\_INVENTORYPANEL\_POSITION@{SYMBOL\_INVENTORYPANEL\_POSITION}!InventoryPanel.h@{InventoryPanel.h}}
+\doxysubsubsection{\texorpdfstring{SYMBOL\_INVENTORYPANEL\_POSITION}{SYMBOL\_INVENTORYPANEL\_POSITION}}
+{\footnotesize\ttfamily \label{_inventory_panel_8h_a5ff23d1b2263e7722c902345e0aff115} 
+\#define SYMBOL\+\_\+\+INVENTORYPANEL\+\_\+\+POSITION~wx\+Default\+Position}
+
+
+
+Definition at line \mbox{\hyperlink{_inventory_panel_8h_source_l00052}{52}} of file \mbox{\hyperlink{_inventory_panel_8h_source}{Inventory\+Panel.\+h}}.
+
+\Hypertarget{_inventory_panel_8h_ae2038710c3fc4950cbaceff6d83abf07}\index{InventoryPanel.h@{InventoryPanel.h}!SYMBOL\_INVENTORYPANEL\_SIZE@{SYMBOL\_INVENTORYPANEL\_SIZE}}
+\index{SYMBOL\_INVENTORYPANEL\_SIZE@{SYMBOL\_INVENTORYPANEL\_SIZE}!InventoryPanel.h@{InventoryPanel.h}}
+\doxysubsubsection{\texorpdfstring{SYMBOL\_INVENTORYPANEL\_SIZE}{SYMBOL\_INVENTORYPANEL\_SIZE}}
+{\footnotesize\ttfamily \label{_inventory_panel_8h_ae2038710c3fc4950cbaceff6d83abf07} 
+\#define SYMBOL\+\_\+\+INVENTORYPANEL\+\_\+\+SIZE~wx\+Size( 800, 200 )}
+
+
+
+Definition at line \mbox{\hyperlink{_inventory_panel_8h_source_l00051}{51}} of file \mbox{\hyperlink{_inventory_panel_8h_source}{Inventory\+Panel.\+h}}.
+
+\Hypertarget{_inventory_panel_8h_a879d1676f4beb2599d95da9c07de654a}\index{InventoryPanel.h@{InventoryPanel.h}!SYMBOL\_INVENTORYPANEL\_STYLE@{SYMBOL\_INVENTORYPANEL\_STYLE}}
+\index{SYMBOL\_INVENTORYPANEL\_STYLE@{SYMBOL\_INVENTORYPANEL\_STYLE}!InventoryPanel.h@{InventoryPanel.h}}
+\doxysubsubsection{\texorpdfstring{SYMBOL\_INVENTORYPANEL\_STYLE}{SYMBOL\_INVENTORYPANEL\_STYLE}}
+{\footnotesize\ttfamily \label{_inventory_panel_8h_a879d1676f4beb2599d95da9c07de654a} 
+\#define SYMBOL\+\_\+\+INVENTORYPANEL\+\_\+\+STYLE~wx\+TAB\+\_\+\+TRAVERSAL}
+
+
+
+Definition at line \mbox{\hyperlink{_inventory_panel_8h_source_l00048}{48}} of file \mbox{\hyperlink{_inventory_panel_8h_source}{Inventory\+Panel.\+h}}.
+
+\Hypertarget{_inventory_panel_8h_ac1e8d369af456da365760133535ef2c9}\index{InventoryPanel.h@{InventoryPanel.h}!SYMBOL\_INVENTORYPANEL\_TITLE@{SYMBOL\_INVENTORYPANEL\_TITLE}}
+\index{SYMBOL\_INVENTORYPANEL\_TITLE@{SYMBOL\_INVENTORYPANEL\_TITLE}!InventoryPanel.h@{InventoryPanel.h}}
+\doxysubsubsection{\texorpdfstring{SYMBOL\_INVENTORYPANEL\_TITLE}{SYMBOL\_INVENTORYPANEL\_TITLE}}
+{\footnotesize\ttfamily \label{_inventory_panel_8h_ac1e8d369af456da365760133535ef2c9} 
+\#define SYMBOL\+\_\+\+INVENTORYPANEL\+\_\+\+TITLE~\+\_\+( "{}Inventory"{} )}
+
+
+
+Definition at line \mbox{\hyperlink{_inventory_panel_8h_source_l00049}{49}} of file \mbox{\hyperlink{_inventory_panel_8h_source}{Inventory\+Panel.\+h}}.
+

@@ -1,0 +1,372 @@
+\doxysection{Sort\+Order\+Panel.\+cpp}
+\hypertarget{_sort_order_panel_8cpp_source}{}\label{_sort_order_panel_8cpp_source}\index{C:/Users/femon/Development/wx/cloneTest/StampTool/src/gui/SortOrderPanel.cpp@{C:/Users/femon/Development/wx/cloneTest/StampTool/src/gui/SortOrderPanel.cpp}}
+\mbox{\hyperlink{_sort_order_panel_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00027}00027\ \textcolor{preprocessor}{\#include\ "{}wx/wxprec.h"{}}}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00029}00029\ \textcolor{preprocessor}{\#ifdef\ \_\_BORLANDC\_\_}}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00030}00030\ \textcolor{preprocessor}{\#pragma\ hdrstop}}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00031}00031\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00033}00033\ \textcolor{preprocessor}{\#ifndef\ WX\_PRECOMP}}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00034}00034\ \textcolor{preprocessor}{\#include\ "{}wx/wx.h"{}}}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00035}00035\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00040}00040\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_defs_8h}{Defs.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00041}00041\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_settings_8h}{Settings.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00042}00042\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_sort_order_panel_8h}{gui/SortOrderPanel.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00043}00043\ \ \textcolor{comment}{//\#include\ "{}StampToolApp.h"{}}}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00044}00044\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_catalog_defs_8h}{catalog/CatalogDefs.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00049}00049\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00050}00050\ \textcolor{comment}{\ *\ SortOrderPanel\ type\ definition}}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00051}00051\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00053}00053\ IMPLEMENT\_DYNAMIC\_CLASS(\ \mbox{\hyperlink{class_sort_order_panel}{SortOrderPanel}},\ wxPanel\ )}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00054}00054\ ;\ \textcolor{comment}{//\ silly\ business;\ The\ above\ macro\ screws\ up\ the\ formatter}}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00056}00056\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00057}00057\ \textcolor{comment}{\ *\ SortOrderPanel\ event\ table\ definition}}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00058}00058\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00060}00060\ BEGIN\_EVENT\_TABLE(\ \mbox{\hyperlink{class_sort_order_panel}{SortOrderPanel}},\ wxPanel\ )}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00061}00061\ EVT\_CHOICE(\ ID\_CHOICE,\ \mbox{\hyperlink{class_sort_order_panel_ae5c98b489a32156d86fe32b1fe041e6b}{SortOrderPanel::OnChoiceSelected}}\ )}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00062}00062\ EVT\_CHOICE(\ ID\_CHOICE1,\ \mbox{\hyperlink{class_sort_order_panel_aa2785dfcc4071a872a3e81bb0ee88535}{SortOrderPanel::OnChoice1Selected}}\ )}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00063}00063\ EVT\_CHOICE(\ ID\_CHOICE2,\ \mbox{\hyperlink{class_sort_order_panel_a3fdd0ed31e0b1000f872aecd61eb2397}{SortOrderPanel::OnChoice2Selected}}\ )}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00064}00064\ EVT\_CHOICE(\ ID\_CHOICE3,\ \mbox{\hyperlink{class_sort_order_panel_a9538c1d64ad5a11513677393dd6c00d0}{SortOrderPanel::OnChoice3Selected}}\ )}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00065}00065\ EVT\_CHOICE(\ ID\_CHOICE4,\ \mbox{\hyperlink{class_sort_order_panel_af6621f557b16e770f67c092dd96edac0}{SortOrderPanel::OnChoice4Selected}}\ )}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00066}00066\ END\_EVENT\_TABLE(\ )}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00067}00067\ ;\ \ \textcolor{comment}{//\ silly\ business;\ The\ above\ macro\ screws\ up\ the\ formatter}}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00069}00069\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00070}00070\ \textcolor{comment}{\ *\ SortOrderPanel\ constructors}}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00071}00071\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00073}\mbox{\hyperlink{class_sort_order_panel_a0df20d1c5302855db67a1cab0dee27e5}{00073}}\ \mbox{\hyperlink{class_sort_order_panel_a0df20d1c5302855db67a1cab0dee27e5}{SortOrderPanel::SortOrderPanel}}(\ )}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00074}00074\ \{}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00075}00075\ \ \ \ \ \mbox{\hyperlink{class_sort_order_panel_a54b230c438f4ca1729de4c9df51ceea7}{Init}}(\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00076}00076\ \}}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00078}\mbox{\hyperlink{class_sort_order_panel_ac62e5159ea458246df43840edf958059}{00078}}\ \mbox{\hyperlink{class_sort_order_panel_a0df20d1c5302855db67a1cab0dee27e5}{SortOrderPanel::SortOrderPanel}}(\ wxWindow*\ parent,\ wxWindowID\ \textcolor{keywordtype}{id},}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00079}00079\ \ \ \ \ \textcolor{keyword}{const}\ wxPoint\&\ pos,}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00080}00080\ \ \ \ \ \textcolor{keyword}{const}\ wxSize\&\ size,\ \textcolor{keywordtype}{long}\ style\ )}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00081}00081\ \{}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00082}00082\ \ \ \ \ \mbox{\hyperlink{class_sort_order_panel_a54b230c438f4ca1729de4c9df51ceea7}{Init}}(\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00083}00083\ \ \ \ \ \mbox{\hyperlink{class_sort_order_panel_afed49774513423c289dc71e0d921f5ac}{Create}}(\ parent,\ \textcolor{keywordtype}{id},\ pos,\ size,\ style\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00084}00084\ \}}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00086}00086\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00087}00087\ \textcolor{comment}{\ *\ SortOrderPanel\ creator}}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00088}00088\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00090}\mbox{\hyperlink{class_sort_order_panel_afed49774513423c289dc71e0d921f5ac}{00090}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_sort_order_panel_afed49774513423c289dc71e0d921f5ac}{SortOrderPanel::Create}}(\ wxWindow*\ parent,\ wxWindowID\ \textcolor{keywordtype}{id},}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00091}00091\ \ \ \ \ \textcolor{keyword}{const}\ wxPoint\&\ pos,}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00092}00092\ \ \ \ \ \textcolor{keyword}{const}\ wxSize\&\ size,\ \textcolor{keywordtype}{long}\ style\ )}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00093}00093\ \{}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00094}00094\ \ \ \ \ SetExtraStyle(\ wxWS\_EX\_VALIDATE\_RECURSIVELY\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00095}00095\ \ \ \ \ wxPanel::Create(\ parent,\ \textcolor{keywordtype}{id},\ pos,\ size,\ style\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00096}00096\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00097}00097\ \ \ \ \ \mbox{\hyperlink{class_sort_order_panel_a4fadf70c1a1fcac3fcf450b91406dc15}{CreateControls}}(\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00098}00098\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ GetSizer(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00099}00099\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00100}00100\ \ \ \ \ \ \ \ \ GetSizer(\ )-\/>SetSizeHints(\ \textcolor{keyword}{this}\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00101}00101\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00102}00102\ \ \ \ \ Centre(\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00103}00103\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00104}00104\ \}}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00105}00105\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00106}00106\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00107}\mbox{\hyperlink{class_sort_order_panel_a12e10aa42500ee045356f0698507a473}{00107}}\ \mbox{\hyperlink{class_sort_order_panel_a12e10aa42500ee045356f0698507a473}{SortOrderPanel::\string~SortOrderPanel}}(\ )}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00108}00108\ \{}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00109}00109\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00110}00110\ \}}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00111}00111\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00112}00112\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00113}\mbox{\hyperlink{class_sort_order_panel_a54b230c438f4ca1729de4c9df51ceea7}{00113}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sort_order_panel_a54b230c438f4ca1729de4c9df51ceea7}{SortOrderPanel::Init}}(\ )}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00114}00114\ \{}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00115}00115\ \ \ \ \ \mbox{\hyperlink{class_sort_order_panel_a3595dbbaee5c7101367c0ee2e2c11ce1}{m\_firstSort}}\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00116}00116\ \ \ \ \ \mbox{\hyperlink{class_sort_order_panel_a76607fc0b611e525325c115a83f238ba}{m\_secondSort}}\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00117}00117\ \ \ \ \ \mbox{\hyperlink{class_sort_order_panel_a134d212f21985ac7b3be63bd0461c7d4}{m\_thirdSort}}\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00118}00118\ \ \ \ \ \mbox{\hyperlink{class_sort_order_panel_a8f2383ca11972f641d4e649b70f1ae0d}{m\_forthSort}}\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00119}00119\ \ \ \ \ \mbox{\hyperlink{class_sort_order_panel_adc996249e862ffc9a3c98775919015b8}{m\_fifthSort}}\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00120}00120\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00121}00121\ \ \ \ \ \mbox{\hyperlink{class_sort_order_panel_a7d672392cfa9d152ebef84f8f85c7408}{m\_dirty}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00122}00122\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00123}00123\ \ \ \ \ \mbox{\hyperlink{class_sort_order_panel_a62ef62b0539062352c9014a8bfa639b8}{m\_sortStrings}}.Add(\ \_(\ \textcolor{stringliteral}{"{}None"{}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00124}00124\ \ \ \ \ \mbox{\hyperlink{class_sort_order_panel_a62ef62b0539062352c9014a8bfa639b8}{m\_sortStrings}}.Add(\ \_(\ \textcolor{stringliteral}{"{}Country"{}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00125}00125\ \ \ \ \ \mbox{\hyperlink{class_sort_order_panel_a62ef62b0539062352c9014a8bfa639b8}{m\_sortStrings}}.Add(\ \_(\ \textcolor{stringliteral}{"{}Period"{}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00126}00126\ \ \ \ \ \mbox{\hyperlink{class_sort_order_panel_a62ef62b0539062352c9014a8bfa639b8}{m\_sortStrings}}.Add(\ \_(\ \textcolor{stringliteral}{"{}Decade"{}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00127}00127\ \ \ \ \ \mbox{\hyperlink{class_sort_order_panel_a62ef62b0539062352c9014a8bfa639b8}{m\_sortStrings}}.Add(\ \_(\ \textcolor{stringliteral}{"{}Year"{}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00128}00128\ \ \ \ \ \mbox{\hyperlink{class_sort_order_panel_a62ef62b0539062352c9014a8bfa639b8}{m\_sortStrings}}.Add(\ \_(\ \textcolor{stringliteral}{"{}Emission"{}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00129}00129\ \ \ \ \ \mbox{\hyperlink{class_sort_order_panel_a62ef62b0539062352c9014a8bfa639b8}{m\_sortStrings}}.Add(\ \_(\ \textcolor{stringliteral}{"{}Status"{}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00130}00130\ \ \ \ \ \mbox{\hyperlink{class_sort_order_panel_a62ef62b0539062352c9014a8bfa639b8}{m\_sortStrings}}.Add(\ \_(\ \textcolor{stringliteral}{"{}Condition"{}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00131}00131\ \}}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00132}00132\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00133}00133\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00134}\mbox{\hyperlink{class_sort_order_panel_a4fadf70c1a1fcac3fcf450b91406dc15}{00134}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sort_order_panel_a4fadf70c1a1fcac3fcf450b91406dc15}{SortOrderPanel::CreateControls}}(\ )}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00135}00135\ \{}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00136}00136\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00137}00137\ \ \ \ \ \mbox{\hyperlink{class_sort_order_panel_a0df20d1c5302855db67a1cab0dee27e5}{SortOrderPanel}}*\ itemDialog1\ =\ \textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00138}00138\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00139}00139\ \ \ \ \ wxBoxSizer*\ itemBoxSizer2\ =\ \textcolor{keyword}{new}\ wxBoxSizer(\ wxVERTICAL\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00140}00140\ \ \ \ \ itemDialog1-\/>SetSizer(\ itemBoxSizer2\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00141}00141\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00142}00142\ \ \ \ \ \textcolor{comment}{//wxTextCtrl*\ itemTextCtrl3\ =\ new\ wxTextCtrl(}}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00143}00143\ \ \ \ \ \ \textcolor{comment}{//\ \ \ itemDialog1,\ ID\_SORTORDERTEXTCTRL,}}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00144}00144\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00145}00145\ \ \ \ \ \ \ \textcolor{comment}{//\ \ wxDefaultPosition,\ wxDefaultSize,\ wxTE\_MULTILINE\ );}}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00146}00146\ \ \ \ \textcolor{comment}{//\ itemTextCtrl3-\/>Enable(\ false\ );}}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00147}00147\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00148}00148\ \ wxStaticText*\ itemTextCtrl30}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00149}00149\ \ \ \ \ =\ \textcolor{keyword}{new}\ wxStaticText(\ itemDialog1,\ wxID\_STATIC,\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00150}00150\ \ \ \ \ \ \ \ \ \ \ \ \ \_(\ \textcolor{stringliteral}{"{}Select\ the\ order\ of\ the\ levels\ of\ the\ tree."{}}\ ),}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00151}00151\ \ \ \ \ \ \ \ \ \ \ \ \ wxDefaultPosition,\ wxDefaultSize,\ 0\ );\ \ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00152}00152\ \ \ \ \ itemBoxSizer2-\/>Add(\ itemTextCtrl30,\ 0,\ wxALIGN\_CENTER\_HORIZONTAL\ |\ wxALL,\ 5\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00153}00153\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00154}00154\ \ wxStaticText*\ itemTextCtrl31}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00155}00155\ \ \ \ \ =\ \textcolor{keyword}{new}\ wxStaticText(\ itemDialog1,\ wxID\_STATIC,\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00156}00156\ \ \ \ \ \ \ \ \ \ \ \ \ \_(\ \textcolor{stringliteral}{"{}Selecting\ none\ will\ remove\ the\ level\ from\ view."{}}\ ),}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00157}00157\ \ \ \ \ \ \ \ \ \ \ \ \ wxDefaultPosition,\ wxDefaultSize,\ 0\ );\ \ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00158}00158\ \ \ \ \ itemBoxSizer2-\/>Add(\ itemTextCtrl31,\ 0,\ wxALIGN\_CENTER\_HORIZONTAL\ |\ wxALL,\ 1\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00159}00159\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00160}00160\ \ wxStaticText*\ itemTextCtrl32}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00161}00161\ \ \ \ \ =\ \textcolor{keyword}{new}\ wxStaticText(\ itemDialog1,\ wxID\_STATIC,\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00162}00162\ \ \ \ \ \ \ \ \ \ \ \ \ \_(\ \textcolor{stringliteral}{"{}Use\ the\ Item\ view\ dialog\ to\ determine\ what\ items\ will\ be\ displayed."{}}\ ),}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00163}00163\ \ \ \ \ \ \ \ \ \ \ \ \ wxDefaultPosition,\ wxDefaultSize,\ 0\ );\ \ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00164}00164\ \ \ \ \ itemBoxSizer2-\/>Add(\ itemTextCtrl32,\ 0,\ wxALIGN\_CENTER\_HORIZONTAL\ |\ wxALL,\ 1\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00165}00165\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00166}00166\ \ \ \ \ wxBoxSizer*\ itemBoxSizer4\ =\ \textcolor{keyword}{new}\ wxBoxSizer(\ wxHORIZONTAL\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00167}00167\ \ \ \ \ itemBoxSizer2-\/>Add(\ itemBoxSizer4,\ 0,\ wxALIGN\_CENTER\_HORIZONTAL\ |\ wxALL,\ 1\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00168}00168\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00169}00169\ \ \ \ \ wxStaticText*\ itemStaticText5}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00170}00170\ \ \ \ \ \ \ \ \ =\ \textcolor{keyword}{new}\ wxStaticText(\ itemDialog1,\ wxID\_STATIC,\ \_(\ \textcolor{stringliteral}{"{}First\ Sort"{}}\ ),}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00171}00171\ \ \ \ \ \ \ \ \ \ \ \ \ wxDefaultPosition,\ wxDefaultSize,\ 0\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00172}00172\ \ \ \ \ itemBoxSizer4-\/>Add(\ itemStaticText5,\ 0,\ wxALIGN\_CENTER\_VERTICAL\ |\ wxALL,}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00173}00173\ \ \ \ \ \ \ \ \ 5\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00174}00174\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00175}00175\ \ \ \ \ wxArrayString\ m\_firstSortStrings;}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00176}00176\ \ \ \ \ \mbox{\hyperlink{class_sort_order_panel_a3595dbbaee5c7101367c0ee2e2c11ce1}{m\_firstSort}}\ =\ \textcolor{keyword}{new}\ wxChoice(\ itemDialog1,\ \mbox{\hyperlink{class_sort_order_panel_a3e84a0e49d462722d5c19c901cee3c15a07f17d60d1034a0987fa4d1fffdda58f}{ID\_CHOICE}},\ wxDefaultPosition,}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00177}00177\ \ \ \ \ \ \ \ \ wxDefaultSize,\ m\_firstSortStrings,\ 0\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00178}00178\ \ \ \ \ \mbox{\hyperlink{class_sort_order_panel_a3595dbbaee5c7101367c0ee2e2c11ce1}{m\_firstSort}}-\/>SetName(\ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}sdfsddf"{}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00179}00179\ \ \ \ \ itemBoxSizer4-\/>Add(\ \mbox{\hyperlink{class_sort_order_panel_a3595dbbaee5c7101367c0ee2e2c11ce1}{m\_firstSort}},\ 0,\ wxALIGN\_CENTER\_VERTICAL\ |\ wxALL,\ 5\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00180}00180\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00181}00181\ \ \ \ \ wxBoxSizer*\ itemBoxSizer7\ =\ \textcolor{keyword}{new}\ wxBoxSizer(\ wxHORIZONTAL\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00182}00182\ \ \ \ \ itemBoxSizer2-\/>Add(\ itemBoxSizer7,\ 0,\ wxALIGN\_CENTER\_HORIZONTAL\ |\ wxALL,\ 5\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00183}00183\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00184}00184\ \ \ \ \ wxStaticText*\ itemStaticText8}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00185}00185\ \ \ \ \ \ \ \ \ =\ \textcolor{keyword}{new}\ wxStaticText(\ itemDialog1,\ wxID\_STATIC,\ \_(\ \textcolor{stringliteral}{"{}Second\ Sort"{}}\ ),}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00186}00186\ \ \ \ \ \ \ \ \ \ \ \ \ wxDefaultPosition,\ wxDefaultSize,\ 0\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00187}00187\ \ \ \ \ itemBoxSizer7-\/>Add(\ itemStaticText8,\ 0,\ wxALIGN\_CENTER\_VERTICAL\ |\ wxALL,}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00188}00188\ \ \ \ \ \ \ \ \ 5\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00189}00189\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00190}00190\ \ \ \ \ wxArrayString\ m\_secondSortStrings;}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00191}00191\ \ \ \ \ \mbox{\hyperlink{class_sort_order_panel_a76607fc0b611e525325c115a83f238ba}{m\_secondSort}}\ =\ \textcolor{keyword}{new}\ wxChoice(\ itemDialog1,\ \mbox{\hyperlink{class_sort_order_panel_a3e84a0e49d462722d5c19c901cee3c15ab6a9c34c49509b55b69acebd2131a11e}{ID\_CHOICE1}},\ wxDefaultPosition,}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00192}00192\ \ \ \ \ \ \ \ \ wxDefaultSize,\ m\_secondSortStrings,\ 0\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00193}00193\ \ \ \ \ itemBoxSizer7-\/>Add(\ \mbox{\hyperlink{class_sort_order_panel_a76607fc0b611e525325c115a83f238ba}{m\_secondSort}},\ 0,\ wxALIGN\_CENTER\_VERTICAL\ |\ wxALL,\ 5\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00194}00194\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00195}00195\ \ \ \ \ wxBoxSizer*\ itemBoxSizer10\ =\ \textcolor{keyword}{new}\ wxBoxSizer(\ wxHORIZONTAL\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00196}00196\ \ \ \ \ itemBoxSizer2-\/>Add(\ itemBoxSizer10,\ 0,\ wxALIGN\_CENTER\_HORIZONTAL\ |\ wxALL,\ 5\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00197}00197\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00198}00198\ \ \ \ \ wxStaticText*\ itemStaticText11}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00199}00199\ \ \ \ \ \ \ \ \ =\ \textcolor{keyword}{new}\ wxStaticText(\ itemDialog1,\ wxID\_STATIC,\ \_(\ \textcolor{stringliteral}{"{}Third\ Sort"{}}\ ),}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00200}00200\ \ \ \ \ \ \ \ \ \ \ \ \ wxDefaultPosition,\ wxDefaultSize,\ 0\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00201}00201\ \ \ \ \ itemBoxSizer10-\/>Add(\ itemStaticText11,\ 0,\ wxALIGN\_CENTER\_VERTICAL\ |\ wxALL,}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00202}00202\ \ \ \ \ \ \ \ \ 5\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00203}00203\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00204}00204\ \ \ \ \ wxArrayString\ m\_thirdSortStrings;}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00205}00205\ \ \ \ \ \mbox{\hyperlink{class_sort_order_panel_a134d212f21985ac7b3be63bd0461c7d4}{m\_thirdSort}}\ =\ \textcolor{keyword}{new}\ wxChoice(\ itemDialog1,\ \mbox{\hyperlink{class_sort_order_panel_a3e84a0e49d462722d5c19c901cee3c15a97fd740ca66a825347efb581eebbe643}{ID\_CHOICE2}},\ wxDefaultPosition,}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00206}00206\ \ \ \ \ \ \ \ \ wxDefaultSize,\ m\_thirdSortStrings,\ 0\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00207}00207\ \ \ \ \ itemBoxSizer10-\/>Add(\ \mbox{\hyperlink{class_sort_order_panel_a134d212f21985ac7b3be63bd0461c7d4}{m\_thirdSort}},\ 0,\ wxALIGN\_CENTER\_VERTICAL\ |\ wxALL,\ 5\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00208}00208\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00209}00209\ \ \ \ \ wxBoxSizer*\ itemBoxSizer13\ =\ \textcolor{keyword}{new}\ wxBoxSizer(\ wxHORIZONTAL\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00210}00210\ \ \ \ \ itemBoxSizer2-\/>Add(\ itemBoxSizer13,\ 0,\ wxALIGN\_CENTER\_HORIZONTAL\ |\ wxALL,\ 5\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00211}00211\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00212}00212\ \ \ \ \ wxStaticText*\ itemStaticText14}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00213}00213\ \ \ \ \ \ \ \ \ =\ \textcolor{keyword}{new}\ wxStaticText(\ itemDialog1,\ wxID\_STATIC,\ \_(\ \textcolor{stringliteral}{"{}Forth\ Sort"{}}\ ),}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00214}00214\ \ \ \ \ \ \ \ \ \ \ \ \ wxDefaultPosition,\ wxDefaultSize,\ 0\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00215}00215\ \ \ \ \ itemBoxSizer13-\/>Add(\ itemStaticText14,\ 0,\ wxALIGN\_CENTER\_VERTICAL\ |\ wxALL,}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00216}00216\ \ \ \ \ \ \ \ \ 5\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00217}00217\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00218}00218\ \ \ \ \ wxArrayString\ m\_forthSortStrings;}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00219}00219\ \ \ \ \ \mbox{\hyperlink{class_sort_order_panel_a8f2383ca11972f641d4e649b70f1ae0d}{m\_forthSort}}\ =\ \textcolor{keyword}{new}\ wxChoice(\ itemDialog1,\ \mbox{\hyperlink{class_sort_order_panel_a3e84a0e49d462722d5c19c901cee3c15a71de68cd23b5b7fdfd3b6026225cabe1}{ID\_CHOICE3}},\ wxDefaultPosition,}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00220}00220\ \ \ \ \ \ \ \ \ wxDefaultSize,\ m\_forthSortStrings,\ 0\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00221}00221\ \ \ \ \ itemBoxSizer13-\/>Add(\ \mbox{\hyperlink{class_sort_order_panel_a8f2383ca11972f641d4e649b70f1ae0d}{m\_forthSort}},\ 0,\ wxALIGN\_CENTER\_VERTICAL\ |\ wxALL,\ 5\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00222}00222\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00223}00223\ \ \ \ \ wxBoxSizer*\ itemBoxSizer16\ =\ \textcolor{keyword}{new}\ wxBoxSizer(\ wxHORIZONTAL\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00224}00224\ \ \ \ \ itemBoxSizer2-\/>Add(\ itemBoxSizer16,\ 0,\ wxALIGN\_CENTER\_HORIZONTAL\ |\ wxALL,\ 5\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00225}00225\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00226}00226\ \ \ \ \ wxStaticText*\ itemStaticText17}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00227}00227\ \ \ \ \ \ \ \ \ =\ \textcolor{keyword}{new}\ wxStaticText(\ itemDialog1,\ wxID\_STATIC,\ \_(\ \textcolor{stringliteral}{"{}Fifth\ Sort"{}}\ ),}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00228}00228\ \ \ \ \ \ \ \ \ \ \ \ \ wxDefaultPosition,\ wxDefaultSize,\ 0\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00229}00229\ \ \ \ \ itemBoxSizer16-\/>Add(\ itemStaticText17,\ 0,\ wxALIGN\_CENTER\_VERTICAL\ |\ wxALL,}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00230}00230\ \ \ \ \ \ \ \ \ 5\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00231}00231\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00232}00232\ \ \ \ \ wxArrayString\ m\_fifthSortStrings;}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00233}00233\ \ \ \ \ \mbox{\hyperlink{class_sort_order_panel_adc996249e862ffc9a3c98775919015b8}{m\_fifthSort}}\ =\ \textcolor{keyword}{new}\ wxChoice(\ itemDialog1,\ \mbox{\hyperlink{class_sort_order_panel_a3e84a0e49d462722d5c19c901cee3c15a3524e8364ab41a8d883b2644d06f7c31}{ID\_CHOICE4}},\ wxDefaultPosition,}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00234}00234\ \ \ \ \ \ \ \ \ wxDefaultSize,\ m\_fifthSortStrings,\ 0\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00235}00235\ \ \ \ \ itemBoxSizer16-\/>Add(\ \mbox{\hyperlink{class_sort_order_panel_adc996249e862ffc9a3c98775919015b8}{m\_fifthSort}},\ 0,\ wxALIGN\_CENTER\_VERTICAL\ |\ wxALL,\ 5\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00236}00236\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00237}00237\ \}}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00238}00238\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00239}\mbox{\hyperlink{class_sort_order_panel_a414403cefdb59c3998c8131f12008039}{00239}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sort_order_panel_a414403cefdb59c3998c8131f12008039}{SortOrderPanel::InitSortControls}}()}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00240}00240\ \{}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00241}00241\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00242}00242\ \ \ \ \ wxArrayInt*\ sortOrder\ =\ \mbox{\hyperlink{_defs_8cpp_a22c90d4148252ff1fbca6b40d3312b23}{GetSettings}}(\ )-\/>\mbox{\hyperlink{class_utils_1_1_settings_ab21bdf884399638d407cedb778a2c285}{GetSortOrder}}(\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00243}00243\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00244}00244\ \ \ \ \ \mbox{\hyperlink{class_sort_order_panel_a3595dbbaee5c7101367c0ee2e2c11ce1}{m\_firstSort}}-\/>Set(\ \mbox{\hyperlink{class_sort_order_panel_a62ef62b0539062352c9014a8bfa639b8}{m\_sortStrings}}\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00245}00245\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ sortOrder-\/>GetCount(\ )\ >\ 0\ )}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00246}00246\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00247}00247\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_sort_order_panel_a3595dbbaee5c7101367c0ee2e2c11ce1}{m\_firstSort}}-\/>SetSelection(\ sortOrder-\/>Item(\ 0\ )\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00248}00248\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00249}00249\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00250}00250\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00251}00251\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_sort_order_panel_a3595dbbaee5c7101367c0ee2e2c11ce1}{m\_firstSort}}-\/>SetSelection(\ 0\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00252}00252\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00253}00253\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00254}00254\ \ \ \ \ \mbox{\hyperlink{class_sort_order_panel_a76607fc0b611e525325c115a83f238ba}{m\_secondSort}}-\/>Set(\ \mbox{\hyperlink{class_sort_order_panel_a62ef62b0539062352c9014a8bfa639b8}{m\_sortStrings}}\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00255}00255\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ sortOrder-\/>GetCount(\ )\ >\ 1\ )}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00256}00256\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00257}00257\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_sort_order_panel_a76607fc0b611e525325c115a83f238ba}{m\_secondSort}}-\/>SetSelection(\ sortOrder-\/>Item(\ 1\ )\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00258}00258\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00259}00259\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00260}00260\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00261}00261\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_sort_order_panel_a76607fc0b611e525325c115a83f238ba}{m\_secondSort}}-\/>SetSelection(\ 0\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00262}00262\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00263}00263\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00264}00264\ \ \ \ \ \mbox{\hyperlink{class_sort_order_panel_a134d212f21985ac7b3be63bd0461c7d4}{m\_thirdSort}}-\/>Set(\ \mbox{\hyperlink{class_sort_order_panel_a62ef62b0539062352c9014a8bfa639b8}{m\_sortStrings}}\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00265}00265\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ sortOrder-\/>GetCount(\ )\ >\ 2\ )}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00266}00266\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00267}00267\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_sort_order_panel_a134d212f21985ac7b3be63bd0461c7d4}{m\_thirdSort}}-\/>SetSelection(\ 0\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00268}00268\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00269}00269\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00270}00270\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00271}00271\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_sort_order_panel_a134d212f21985ac7b3be63bd0461c7d4}{m\_thirdSort}}-\/>SetSelection(\ 0\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00272}00272\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00273}00273\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00274}00274\ \ \ \ \ \mbox{\hyperlink{class_sort_order_panel_a8f2383ca11972f641d4e649b70f1ae0d}{m\_forthSort}}-\/>Set(\ \mbox{\hyperlink{class_sort_order_panel_a62ef62b0539062352c9014a8bfa639b8}{m\_sortStrings}}\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00275}00275\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ sortOrder-\/>GetCount(\ )\ >\ 3\ )}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00276}00276\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00277}00277\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_sort_order_panel_a8f2383ca11972f641d4e649b70f1ae0d}{m\_forthSort}}-\/>SetSelection(\ sortOrder-\/>Item(\ 3\ )\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00278}00278\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00279}00279\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00280}00280\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00281}00281\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_sort_order_panel_a8f2383ca11972f641d4e649b70f1ae0d}{m\_forthSort}}-\/>SetSelection(\ 0\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00282}00282\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00283}00283\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00284}00284\ \ \ \ \ \mbox{\hyperlink{class_sort_order_panel_adc996249e862ffc9a3c98775919015b8}{m\_fifthSort}}-\/>Set(\ \mbox{\hyperlink{class_sort_order_panel_a62ef62b0539062352c9014a8bfa639b8}{m\_sortStrings}}\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00285}00285\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ sortOrder-\/>GetCount(\ )\ >\ 4\ )}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00286}00286\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00287}00287\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_sort_order_panel_adc996249e862ffc9a3c98775919015b8}{m\_fifthSort}}-\/>SetSelection(\ sortOrder-\/>Item(\ 4\ )\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00288}00288\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00289}00289\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00290}00290\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00291}00291\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_sort_order_panel_adc996249e862ffc9a3c98775919015b8}{m\_fifthSort}}-\/>SetSelection(\ 0\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00292}00292\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00293}00293\ \}}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00294}00294\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00295}\mbox{\hyperlink{class_sort_order_panel_a93c9f15988d9511a735196ea86fcb9dc}{00295}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_sort_order_panel_a93c9f15988d9511a735196ea86fcb9dc}{SortOrderPanel::ShowToolTips}}(\ )}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00296}00296\ \{}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00297}00297\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00298}00298\ \}}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00299}00299\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00300}00300\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00301}00301\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00302}00302\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00303}\mbox{\hyperlink{class_sort_order_panel_ae5c98b489a32156d86fe32b1fe041e6b}{00303}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sort_order_panel_ae5c98b489a32156d86fe32b1fe041e6b}{SortOrderPanel::OnChoiceSelected}}(\ wxCommandEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00304}00304\ \{}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00305}00305\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00306}00306\ \}}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00307}00307\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00308}00308\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00309}\mbox{\hyperlink{class_sort_order_panel_aa2785dfcc4071a872a3e81bb0ee88535}{00309}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sort_order_panel_aa2785dfcc4071a872a3e81bb0ee88535}{SortOrderPanel::OnChoice1Selected}}(\ wxCommandEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00310}00310\ \{}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00311}00311\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00312}00312\ \}}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00313}00313\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00314}\mbox{\hyperlink{class_sort_order_panel_a3fdd0ed31e0b1000f872aecd61eb2397}{00314}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sort_order_panel_a3fdd0ed31e0b1000f872aecd61eb2397}{SortOrderPanel::OnChoice2Selected}}(\ wxCommandEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00315}00315\ \{}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00316}00316\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00317}00317\ \}}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00318}00318\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00319}00319\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00320}\mbox{\hyperlink{class_sort_order_panel_a9538c1d64ad5a11513677393dd6c00d0}{00320}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sort_order_panel_a9538c1d64ad5a11513677393dd6c00d0}{SortOrderPanel::OnChoice3Selected}}(\ wxCommandEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00321}00321\ \{}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00322}00322\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00323}00323\ \}}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00324}00324\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00325}\mbox{\hyperlink{class_sort_order_panel_af6621f557b16e770f67c092dd96edac0}{00325}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sort_order_panel_af6621f557b16e770f67c092dd96edac0}{SortOrderPanel::OnChoice4Selected}}(\ wxCommandEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00326}00326\ \{}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00327}00327\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00328}00328\ \}}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00329}00329\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00330}\mbox{\hyperlink{class_sort_order_panel_ab28feea609ae603852b6018221d39200}{00330}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sort_order_panel_ab28feea609ae603852b6018221d39200}{SortOrderPanel::Update}}()}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00331}00331\ \{}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00332}00332\ \ \ \ \ wxArrayInt*\ sortOrder\ =\ \mbox{\hyperlink{_defs_8cpp_a22c90d4148252ff1fbca6b40d3312b23}{GetSettings}}(\ )-\/>\mbox{\hyperlink{class_utils_1_1_settings_ab21bdf884399638d407cedb778a2c285}{GetSortOrder}}(\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00333}00333\ }
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00334}00334\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ sortOrder-\/>Count(\ )\ >=\ 1\ \&\&\ sortOrder-\/>Item(\ 0\ )\ !=\ \mbox{\hyperlink{class_sort_order_panel_a3595dbbaee5c7101367c0ee2e2c11ce1}{m\_firstSort}}-\/>GetSelection(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00335}00335\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00336}00336\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ sel\ =\ \mbox{\hyperlink{class_sort_order_panel_a3595dbbaee5c7101367c0ee2e2c11ce1}{m\_firstSort}}-\/>GetSelection(\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00337}00337\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ sel\ ==\ 0\ )}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00338}00338\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00339}00339\ \ \ \ \ \ \ \ \ \ \ \ \ sel\ =\ \mbox{\hyperlink{namespace_catalog_a86f503ced35b06e6427477ddab27c6beadb90cc0e0ea2b65b0004617ed289a99a}{Catalog::NT\_None}};}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00340}00340\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00341}00341\ \ \ \ \ \ \ \ \ sortOrder-\/>Item(\ 0\ )\ =\ sel;}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00342}00342\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_defs_8cpp_a22c90d4148252ff1fbca6b40d3312b23}{GetSettings}}(\ )-\/>\mbox{\hyperlink{class_utils_1_1_settings_a60c816f60b9307a75cc063ef2826a8fc}{SetDirty}}(\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00343}00343\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00344}00344\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ sortOrder-\/>Count(\ )\ >=\ 2\ \&\&\ sortOrder-\/>Item(\ 1\ )\ !=\ \mbox{\hyperlink{class_sort_order_panel_a76607fc0b611e525325c115a83f238ba}{m\_secondSort}}-\/>GetSelection(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00345}00345\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00346}00346\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ sel\ =\ \mbox{\hyperlink{class_sort_order_panel_a76607fc0b611e525325c115a83f238ba}{m\_secondSort}}-\/>GetSelection(\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00347}00347\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ sel\ ==\ 0\ )}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00348}00348\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00349}00349\ \ \ \ \ \ \ \ \ \ \ \ \ sel\ =\ \mbox{\hyperlink{namespace_catalog_a86f503ced35b06e6427477ddab27c6beadb90cc0e0ea2b65b0004617ed289a99a}{Catalog::NT\_None}};}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00350}00350\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00351}00351\ \ \ \ \ \ \ \ \ sortOrder-\/>Item(\ 1\ )\ =\ sel;}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00352}00352\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_defs_8cpp_a22c90d4148252ff1fbca6b40d3312b23}{GetSettings}}(\ )-\/>\mbox{\hyperlink{class_utils_1_1_settings_a60c816f60b9307a75cc063ef2826a8fc}{SetDirty}}(\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00353}00353\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00354}00354\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ sortOrder-\/>Count(\ )\ >=\ 3\ \&\&\ sortOrder-\/>Item(\ 2\ )\ !=\ \mbox{\hyperlink{class_sort_order_panel_a134d212f21985ac7b3be63bd0461c7d4}{m\_thirdSort}}-\/>GetSelection(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00355}00355\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00356}00356\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ sel\ =\ \mbox{\hyperlink{class_sort_order_panel_a134d212f21985ac7b3be63bd0461c7d4}{m\_thirdSort}}-\/>GetSelection(\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00357}00357\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ sel\ ==\ 0\ )}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00358}00358\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00359}00359\ \ \ \ \ \ \ \ \ \ \ \ \ sel\ =\ \mbox{\hyperlink{namespace_catalog_a86f503ced35b06e6427477ddab27c6beadb90cc0e0ea2b65b0004617ed289a99a}{Catalog::NT\_None}};}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00360}00360\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00361}00361\ \ \ \ \ \ \ \ \ sortOrder-\/>Item(\ 2\ )\ =\ sel;}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00362}00362\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_defs_8cpp_a22c90d4148252ff1fbca6b40d3312b23}{GetSettings}}(\ )-\/>\mbox{\hyperlink{class_utils_1_1_settings_a60c816f60b9307a75cc063ef2826a8fc}{SetDirty}}(\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00363}00363\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00364}00364\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ sortOrder-\/>Count(\ )\ >=\ 4\ \&\&\ sortOrder-\/>Item(\ 3\ )\ !=\ \mbox{\hyperlink{class_sort_order_panel_a8f2383ca11972f641d4e649b70f1ae0d}{m\_forthSort}}-\/>GetSelection(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00365}00365\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00366}00366\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ sel\ =\ \mbox{\hyperlink{class_sort_order_panel_a8f2383ca11972f641d4e649b70f1ae0d}{m\_forthSort}}-\/>GetSelection(\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00367}00367\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ sel\ =\ 0\ )}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00368}00368\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00369}00369\ \ \ \ \ \ \ \ \ \ \ \ \ sel\ =\ \mbox{\hyperlink{namespace_catalog_a86f503ced35b06e6427477ddab27c6beadb90cc0e0ea2b65b0004617ed289a99a}{Catalog::NT\_None}};}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00370}00370\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00371}00371\ \ \ \ \ \ \ \ \ sortOrder-\/>Item(\ 3\ )\ =\ sel;}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00372}00372\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_defs_8cpp_a22c90d4148252ff1fbca6b40d3312b23}{GetSettings}}(\ )-\/>\mbox{\hyperlink{class_utils_1_1_settings_a60c816f60b9307a75cc063ef2826a8fc}{SetDirty}}(\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00373}00373\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00374}00374\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ sortOrder-\/>Count(\ )\ >=\ 5\ \&\&\ sortOrder-\/>Item(\ 4\ )\ !=\ \mbox{\hyperlink{class_sort_order_panel_adc996249e862ffc9a3c98775919015b8}{m\_fifthSort}}-\/>GetSelection(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00375}00375\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00376}00376\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ sel\ =\ \mbox{\hyperlink{class_sort_order_panel_adc996249e862ffc9a3c98775919015b8}{m\_fifthSort}}-\/>GetSelection(\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00377}00377\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ sel\ ==\ 0\ )}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00378}00378\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00379}00379\ \ \ \ \ \ \ \ \ \ \ \ \ sel\ =\ \mbox{\hyperlink{namespace_catalog_a86f503ced35b06e6427477ddab27c6beadb90cc0e0ea2b65b0004617ed289a99a}{Catalog::NT\_None}};}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00380}00380\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00381}00381\ \ \ \ \ \ \ \ \ sortOrder-\/>Item(\ 4\ )\ =\ sel;}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00382}00382\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_defs_8cpp_a22c90d4148252ff1fbca6b40d3312b23}{GetSettings}}(\ )-\/>\mbox{\hyperlink{class_utils_1_1_settings_a60c816f60b9307a75cc063ef2826a8fc}{SetDirty}}(\ );}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00383}00383\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00384}00384\ \}}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00385}\mbox{\hyperlink{class_sort_order_panel_a001fb894f0e7eef1ae7bb481136e7d5c}{00385}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sort_order_panel_a001fb894f0e7eef1ae7bb481136e7d5c}{SortOrderPanel::OnOkClick}}(\ )}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00386}00386\ \{}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00387}00387\ \mbox{\hyperlink{class_sort_order_panel_ab28feea609ae603852b6018221d39200}{Update}}();}
+\DoxyCodeLine{\Hypertarget{_sort_order_panel_8cpp_source_l00388}00388\ \}}
+
+\end{DoxyCode}

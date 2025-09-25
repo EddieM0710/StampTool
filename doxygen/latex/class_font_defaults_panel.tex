@@ -1,0 +1,722 @@
+\doxysection{Font\+Defaults\+Panel Class Reference}
+\hypertarget{class_font_defaults_panel}{}\label{class_font_defaults_panel}\index{FontDefaultsPanel@{FontDefaultsPanel}}
+
+
+{\ttfamily \#include $<$Font\+Defaults\+Panel.\+h$>$}
+
+Inheritance diagram for Font\+Defaults\+Panel\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_font_defaults_panel}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{class_font_defaults_panel_a4f474425e90f9d9a93dbe21605706e9a}{Font\+Defaults\+Panel\+Gui\+Defs}} \{ \newline
+\mbox{\hyperlink{class_font_defaults_panel_a4f474425e90f9d9a93dbe21605706e9aabad70f4ee6535f539c05a832d5ff1308}{ID\+\_\+\+NOTEBOOKPOSITIONPANEL}} = ID\+\_\+\+PAGEDEFAULTSDIALOG + 1
+, \mbox{\hyperlink{class_font_defaults_panel_a4f474425e90f9d9a93dbe21605706e9aa3354b2ece0eb71f529e65f63b9784214}{ID\+\_\+\+PAGENAMELABELEDTEXTBOX}}
+, \mbox{\hyperlink{class_font_defaults_panel_a4f474425e90f9d9a93dbe21605706e9aa6eceb71dff50424ba59a480674633f45}{ID\+\_\+\+SHOWTITLECHECKBOX}}
+, \mbox{\hyperlink{class_font_defaults_panel_a4f474425e90f9d9a93dbe21605706e9aa47973cba6c362598b4bd8c5af52725f8}{ID\+\_\+\+SHOWSUBTITLECHECKBOX}}
+, \newline
+\mbox{\hyperlink{class_font_defaults_panel_a4f474425e90f9d9a93dbe21605706e9aaf9279452a98f4985d4313ccef8c939ed}{ID\+\_\+\+SHOWFRAMECHECKBOX}}
+, \mbox{\hyperlink{class_font_defaults_panel_a4f474425e90f9d9a93dbe21605706e9aa741d9f956414bedec28dba1a071efafa}{ID\+\_\+\+ORIENTATIONCHOICE}}
+, \mbox{\hyperlink{class_font_defaults_panel_a4f474425e90f9d9a93dbe21605706e9aa4d5b63b82841cc76244e36129f719123}{ID\+\_\+\+DEFAULTBUTTON}}
+, \mbox{\hyperlink{class_font_defaults_panel_a4f474425e90f9d9a93dbe21605706e9aa51c3004795eda8f7d5d0a1d23fc7c578}{ID\+\_\+\+ERRORLISTCTRL}}
+, \newline
+\mbox{\hyperlink{class_font_defaults_panel_a4f474425e90f9d9a93dbe21605706e9aa156ef0f51946669efd7d708cb9a0210f}{ID\+\_\+\+NOTEBOOK}}
+, \mbox{\hyperlink{class_font_defaults_panel_a4f474425e90f9d9a93dbe21605706e9aae47a02400f10e532c62d939ad23cf998}{ID\+\_\+\+DETAILSPANEL}}
+, \mbox{\hyperlink{class_font_defaults_panel_a4f474425e90f9d9a93dbe21605706e9aa870db38a116acb19846636ab7f83b91c}{ID\+\_\+\+TITLEDEFAULTBUTTON}}
+, \mbox{\hyperlink{class_font_defaults_panel_a4f474425e90f9d9a93dbe21605706e9aa1ad750c6e09f51de21a5e57c972bc428}{ID\+\_\+\+LAYOUTPANEL}}
+, \newline
+\mbox{\hyperlink{class_font_defaults_panel_a4f474425e90f9d9a93dbe21605706e9aae5e90e37f29ef2f2e6f9a6befd8e465b}{ID\+\_\+\+LAYOUTTEXTCTRL}}
+, \mbox{\hyperlink{class_font_defaults_panel_a4f474425e90f9d9a93dbe21605706e9aa821abd7718d9a14e838f6ebca16f6518}{ID\+\_\+\+POSITIONTEXTCTRL}}
+, \mbox{\hyperlink{class_font_defaults_panel_a4f474425e90f9d9a93dbe21605706e9aa703d064ce37d45558c98e4f249a948c0}{ID\+\_\+\+NOTEBOOKDETAILSPANEL}}
+, \mbox{\hyperlink{class_font_defaults_panel_a4f474425e90f9d9a93dbe21605706e9aa25e838bb2b4738c5827131ccf26f4462}{ID\+\_\+\+Last\+ID}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_font_defaults_panel_afdfb2449770db1a39f7ae7398db5ea03}{Font\+Defaults\+Panel}} ()
+\item 
+\mbox{\hyperlink{class_font_defaults_panel_a41e707c8bd464a7ea1a8cfebe80ca02c}{Font\+Defaults\+Panel}} (wx\+Window \texorpdfstring{$\ast$}{*}parent, wx\+Window\+ID id=\mbox{\hyperlink{_font_defaults_panel_8h_acf1acf93aa5d2e793e629a41112c035f}{SYMBOL\+\_\+\+FONTPANEL\+\_\+\+IDNAME}}, const wx\+String \&caption=\mbox{\hyperlink{_font_defaults_panel_8h_a223a73d07bc7b4b00e8238c53e04d609}{SYMBOL\+\_\+\+FONTPANEL\+\_\+\+TITLE}}, const wx\+Point \&pos=\mbox{\hyperlink{_font_defaults_panel_8h_a82f17c7772421b092dc2f95d18fba2c8}{SYMBOL\+\_\+\+FONTPANEL\+\_\+\+POSITION}}, const wx\+Size \&size=\mbox{\hyperlink{_font_defaults_panel_8h_a0765eba76640478b8181011f43880a57}{SYMBOL\+\_\+\+FONTPANEL\+\_\+\+SIZE}}, long style=\mbox{\hyperlink{_font_defaults_panel_8h_ad4c53501e22a78fd1b26749f0a954147}{SYMBOL\+\_\+\+FONTPANEL\+\_\+\+STYLE}})
+\item 
+bool \mbox{\hyperlink{class_font_defaults_panel_a9aacd8afdf3c5c44fed126717b558574}{Create}} (wx\+Window \texorpdfstring{$\ast$}{*}parent, wx\+Window\+ID id=\mbox{\hyperlink{_font_defaults_panel_8h_acf1acf93aa5d2e793e629a41112c035f}{SYMBOL\+\_\+\+FONTPANEL\+\_\+\+IDNAME}}, const wx\+String \&caption=\mbox{\hyperlink{_font_defaults_panel_8h_a223a73d07bc7b4b00e8238c53e04d609}{SYMBOL\+\_\+\+FONTPANEL\+\_\+\+TITLE}}, const wx\+Point \&pos=\mbox{\hyperlink{_font_defaults_panel_8h_a82f17c7772421b092dc2f95d18fba2c8}{SYMBOL\+\_\+\+FONTPANEL\+\_\+\+POSITION}}, const wx\+Size \&size=\mbox{\hyperlink{_font_defaults_panel_8h_a0765eba76640478b8181011f43880a57}{SYMBOL\+\_\+\+FONTPANEL\+\_\+\+SIZE}}, long style=\mbox{\hyperlink{_font_defaults_panel_8h_ad4c53501e22a78fd1b26749f0a954147}{SYMBOL\+\_\+\+FONTPANEL\+\_\+\+STYLE}})
+\item 
+\mbox{\hyperlink{class_font_defaults_panel_a5ad151924667b7a91a0462c0d0a916f4}{\texorpdfstring{$\sim$}{\string~}\+Font\+Defaults\+Panel}} ()
+\item 
+void \mbox{\hyperlink{class_font_defaults_panel_add6de791d9cc5de70d22c1b9ca403763}{Init}} ()
+\item 
+void \mbox{\hyperlink{class_font_defaults_panel_a5da3b23bf59b9216355e56fa287d4188}{Create\+Controls}} ()
+\item 
+void \mbox{\hyperlink{class_font_defaults_panel_a251a564c40c1e842870b09021402d677}{Update\+Controls}} ()
+\item 
+void \mbox{\hyperlink{class_font_defaults_panel_a5043e3434bfa8d5b6d7459d8f2104955}{Setup\+Dialog}} (\mbox{\hyperlink{class_design_1_1_page}{Design\+::\+Page}} \texorpdfstring{$\ast$}{*}page)
+\item 
+wx\+Colour \mbox{\hyperlink{class_font_defaults_panel_aca68d93482e48fb0246e53d84fab94cb}{Get\+Text\+Color}} ()
+\item 
+wx\+Font \mbox{\hyperlink{class_font_defaults_panel_a35dc458d247c38fb6a670a24b608d3ac}{Get\+Text\+Font}} ()
+\item 
+wx\+Colour \mbox{\hyperlink{class_font_defaults_panel_a679e3b0c4b0d7465ef3051c26a8451c2}{Get\+Title\+Color}} ()
+\item 
+wx\+Colour \mbox{\hyperlink{class_font_defaults_panel_a3f54e32e49389e3bed14d7545e65d2c8}{Get\+Sub\+Title\+Color}} ()
+\item 
+wx\+Font \mbox{\hyperlink{class_font_defaults_panel_a9aa8286ae5aecad98e0ef23b13590d51}{Get\+Title\+Font}} ()
+\item 
+wx\+Font \mbox{\hyperlink{class_font_defaults_panel_ae712ba0f5bfe50fb70106f00926b36ce}{Get\+Sub\+Title\+Font}} ()
+\item 
+void \mbox{\hyperlink{class_font_defaults_panel_a06c6a5f07039d93432028ab9efbdfdfc}{On\+Sub\+Title\+Default\+Click}} (wx\+Command\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_font_defaults_panel_a92c5885335648ce2842892100389c019}{On\+Sub\+Title\+Color\+Picker}} (wx\+Colour\+Picker\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_font_defaults_panel_a230b22626f5488a6d021cd1b6bbf1a80}{On\+Sub\+Title\+Font\+Picker}} (wx\+Font\+Picker\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_font_defaults_panel_a51d631118d8b9a4185e29f4ea9f2e3d4}{On\+Text\+Default\+Click}} (wx\+Command\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_font_defaults_panel_afbb789f3f74f6eb45287265d229296e8}{Set\+Text\+Color}} (wx\+Colour color)
+\item 
+void \mbox{\hyperlink{class_font_defaults_panel_a2c86c7fc80a765bf1c1d2a8fd15732fe}{Set\+Text\+Font}} (wx\+Font font)
+\item 
+void \mbox{\hyperlink{class_font_defaults_panel_ace9e1034e0f9c006a81840cb3fbcbb39}{Set\+Title\+Color}} (wx\+Colour color)
+\item 
+void \mbox{\hyperlink{class_font_defaults_panel_a8fc980938694727d1458d47e45122264}{Set\+Sub\+Title\+Color}} (wx\+Colour color)
+\item 
+void \mbox{\hyperlink{class_font_defaults_panel_a0841c9fea578a86ef57aa260fa25a2a5}{Set\+Sub\+Title\+Font}} (wx\+Font font)
+\item 
+void \mbox{\hyperlink{class_font_defaults_panel_adec9934437ca48275fe3ea5acac6019d}{Set\+Title\+Font}} (wx\+Font font)
+\item 
+wx\+Colour \mbox{\hyperlink{class_font_defaults_panel_aa920f2b1d9805058eaff1a8f509da7cf}{Get\+Nbr\+Color}} ()
+\item 
+wx\+Font \mbox{\hyperlink{class_font_defaults_panel_aee317325c32136e20b34117938cd19f1}{Get\+Nbr\+Font}} ()
+\item 
+void \mbox{\hyperlink{class_font_defaults_panel_ab1cc80124dfd62841d840ddd59808187}{On\+Nbr\+Font\+Picker}} (wx\+Font\+Picker\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_font_defaults_panel_ad5e4cea59e4e0b7317c124e094822f67}{On\+Nbr\+Color\+Picker}} (wx\+Colour\+Picker\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_font_defaults_panel_a9e12a565a4337ba0954cf9d1ba73cd6d}{On\+Name\+Font\+Picker}} (wx\+Font\+Picker\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_font_defaults_panel_a588997111cbbcd7b554bcce92aa5e6ad}{On\+Name\+Color\+Picker}} (wx\+Colour\+Picker\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_font_defaults_panel_a80d86f4eb928abc6943f9e90471e25e2}{On\+Text\+Font\+Picker}} (wx\+Font\+Picker\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_font_defaults_panel_a29ec0e110d3743f5b964c019ad36802a}{On\+Text\+Color\+Picker}} (wx\+Colour\+Picker\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_font_defaults_panel_a23128a6be5d3be61b61255bd4c6cc2e3}{On\+Title\+Default\+Click}} (wx\+Command\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_font_defaults_panel_a0ea992d3524a720b20b4127302724a28}{On\+Title\+Font\+Picker}} (wx\+Font\+Picker\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_font_defaults_panel_aed30d058e725e43b2a771f6759879cc4}{On\+Title\+Color\+Picker}} (wx\+Colour\+Picker\+Event \&event)
+\item 
+wx\+Colour \mbox{\hyperlink{class_font_defaults_panel_a703307bc54ed35ed69118f794588dc9c}{Get\+Name\+Color}} ()
+\item 
+wx\+Font \mbox{\hyperlink{class_font_defaults_panel_a8a1acbebf6535b62adaf0f1ecbab2a49}{Get\+Name\+Font}} ()
+\item 
+void \mbox{\hyperlink{class_font_defaults_panel_a330936abb9c945af2950f633a3a60f25}{Set\+Name\+Color}} (wx\+Colour color)
+\item 
+void \mbox{\hyperlink{class_font_defaults_panel_a842d52a17e47d82dd4f11ac72579d655}{Set\+Name\+Font}} (wx\+Font font)
+\item 
+void \mbox{\hyperlink{class_font_defaults_panel_a10a155347892d196eb223055abe23150}{On\+Nbr\+Default\+Click}} (wx\+Command\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_font_defaults_panel_ab710d1ca1be86b28ef119f979a6b3a72}{On\+Name\+Default\+Click}} (wx\+Command\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_font_defaults_panel_a60d378b9225ce169071248e9f6f1c95f}{Set\+Nbr\+Color}} (wx\+Colour color)
+\item 
+void \mbox{\hyperlink{class_font_defaults_panel_aa780af8e4a69f0f18ec82dd819353a01}{Set\+Nbr\+Font}} (wx\+Font font)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_helper_panel}{Helper\+Panel}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_helper_panel_a1a0380f0351c504df04ccd0924c72e18}{Helper\+Panel}} ()
+\item 
+\mbox{\hyperlink{class_helper_panel_a709e26a2b2b12b98c4b689b87cd4a169}{Helper\+Panel}} (wx\+Window \texorpdfstring{$\ast$}{*}parent, wx\+Window\+ID id=\mbox{\hyperlink{_helper_panel_8h_a43ef01d6303731cc166949270842b4d7}{SYMBOL\+\_\+\+HELPERPANEL\+\_\+\+IDNAME}}, const wx\+String \&caption=\mbox{\hyperlink{_helper_panel_8h_a275f45e4abf505d4c167b95b1782e8b2}{SYMBOL\+\_\+\+HELPERPANEL\+\_\+\+TITLE}}, const wx\+Point \&pos=\mbox{\hyperlink{_helper_panel_8h_ad0f2b83a41d1b39a2acbd31d28e7ffd3}{SYMBOL\+\_\+\+HELPERPANEL\+\_\+\+POSITION}}, const wx\+Size \&size=\mbox{\hyperlink{_helper_panel_8h_a5d91705fcb0aab6893c9748c1c23e631}{SYMBOL\+\_\+\+HELPERPANEL\+\_\+\+SIZE}}, long style=\mbox{\hyperlink{_helper_panel_8h_afb122ebc3d5dd65dfa6e31a66a09468a}{SYMBOL\+\_\+\+HELPERPANEL\+\_\+\+STYLE}})
+\item 
+\mbox{\hyperlink{class_helper_panel_aa1048ceba004a9d78dd3dfdfd7235d30}{\texorpdfstring{$\sim$}{\string~}\+Helper\+Panel}} ()
+\item 
+bool \mbox{\hyperlink{class_helper_panel_ac472c619263683e2623f52fefe4f5429}{Create}} (wx\+Window \texorpdfstring{$\ast$}{*}parent, wx\+Window\+ID id=\mbox{\hyperlink{_helper_panel_8h_a43ef01d6303731cc166949270842b4d7}{SYMBOL\+\_\+\+HELPERPANEL\+\_\+\+IDNAME}}, const wx\+String \&caption=\mbox{\hyperlink{_helper_panel_8h_a275f45e4abf505d4c167b95b1782e8b2}{SYMBOL\+\_\+\+HELPERPANEL\+\_\+\+TITLE}}, const wx\+Point \&pos=\mbox{\hyperlink{_helper_panel_8h_ad0f2b83a41d1b39a2acbd31d28e7ffd3}{SYMBOL\+\_\+\+HELPERPANEL\+\_\+\+POSITION}}, const wx\+Size \&size=\mbox{\hyperlink{_helper_panel_8h_a5d91705fcb0aab6893c9748c1c23e631}{SYMBOL\+\_\+\+HELPERPANEL\+\_\+\+SIZE}}, long style=\mbox{\hyperlink{_helper_panel_8h_afb122ebc3d5dd65dfa6e31a66a09468a}{SYMBOL\+\_\+\+HELPERPANEL\+\_\+\+STYLE}})
+\item 
+void \mbox{\hyperlink{class_helper_panel_affb4be8df264e76bb3a7d672c2ca79b1}{Create\+Controls}} ()
+\item 
+void \mbox{\hyperlink{class_helper_panel_a01583cec05afb087892fee8f5f660635}{Init}} ()
+\item 
+wx\+Static\+Box \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_helper_panel_a06667439fcca3f8a4b0fab10db82506e}{Setup\+Box\+Sizer}} (wx\+Window \texorpdfstring{$\ast$}{*}parent, wx\+Box\+Sizer \texorpdfstring{$\ast$}{*}in\+Sizer, wx\+String name, int \&last\+ID, wx\+Box\+Sizer \texorpdfstring{$\ast$}{*}\&box\+Sizer, wx\+Orientation orientation)
+\item 
+wx\+Check\+Box \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_helper_panel_a1b4758d163544a7a2c73a37f8bd6d422}{Setup\+Check\+Box}} (wx\+Window \texorpdfstring{$\ast$}{*}parent, wx\+Box\+Sizer \texorpdfstring{$\ast$}{*}sizer, int \&last\+ID, wx\+String label, wx\+Object\+Event\+Function event\+Handler)
+\item 
+wx\+Check\+List\+Box \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_helper_panel_a61eec7f5e1bd6d2bb0d9a12a6d31c91c}{Setup\+Check\+List\+Box}} (wx\+Window \texorpdfstring{$\ast$}{*}parent, wx\+Box\+Sizer \texorpdfstring{$\ast$}{*}in\+Sizer, int \&last\+ID, wx\+String label, wx\+Array\+String \&array, wx\+Object\+Event\+Function all\+Button\+Event\+Handler, wx\+Object\+Event\+Function clear\+Button\+Event\+Handler)
+\item 
+wx\+Choice \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_helper_panel_adeabf7f045a9b29dfe04ea9e25361682}{Setup\+Choice}} (wx\+Window \texorpdfstring{$\ast$}{*}parent, wx\+Box\+Sizer \texorpdfstring{$\ast$}{*}sizer, int \&last\+ID, wx\+String label, wx\+Array\+String choice\+Strings, wx\+Object\+Event\+Function event\+Handler)
+\item 
+\mbox{\hyperlink{class_font_picker}{Font\+Picker}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_helper_panel_ac79099a8adb61042c70b2aaa474b6491}{Setup\+Font\+Picker}} (wx\+Window \texorpdfstring{$\ast$}{*}parent, wx\+Box\+Sizer \texorpdfstring{$\ast$}{*}vertical\+Sizer, int \&last\+ID, wx\+String static\+Text, wx\+String button\+Text, wx\+Font\+Picker\+Ctrl \texorpdfstring{$\ast$}{*}\&font\+Ctrl, wx\+Colour\+Picker\+Ctrl \texorpdfstring{$\ast$}{*}\&color\+Ctrl, wx\+Object\+Event\+Function font\+Picker, wx\+Object\+Event\+Function color\+Picker, wx\+Object\+Event\+Function default\+Button\+Handler)
+\item 
+wx\+Text\+Ctrl \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_helper_panel_acdac2c77789965bc2e300f50c66f7f11}{Setup\+Label\+Text}} (wx\+Window \texorpdfstring{$\ast$}{*}parent, wx\+Box\+Sizer \texorpdfstring{$\ast$}{*}vertical\+Sizer, int \&last\+ID, wx\+String label, bool grow, wx\+Object\+Event\+Function event\+Handler)
+\item 
+wx\+Text\+Ctrl \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_helper_panel_a5df2fc90855ddcb14834784daa120249}{Setup\+Multiline\+Labeled\+Text}} (wx\+Window \texorpdfstring{$\ast$}{*}parent, wx\+Box\+Sizer \texorpdfstring{$\ast$}{*}in\+Sizer, int \&last\+ID, wx\+String label, bool grow, wx\+Object\+Event\+Function event\+Handler)
+\item 
+wx\+Radio\+Button \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_helper_panel_a7b5279a0f4b91c9f19fbd088edceada3}{Setup\+Radio\+Button}} (wx\+Window \texorpdfstring{$\ast$}{*}parent, wx\+Box\+Sizer \texorpdfstring{$\ast$}{*}sizer, int \&last\+ID, wx\+String label, bool init\+Value, wx\+Object\+Event\+Function event\+Handler)
+\item 
+\mbox{\hyperlink{struct_helper_panel_1_1_title_helper}{Title\+Helper}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_helper_panel_a11bffa5d90019ee00eaff4edf86832a2}{Setup\+Title\+Helper}} (wx\+Window \texorpdfstring{$\ast$}{*}parent, wx\+Box\+Sizer \texorpdfstring{$\ast$}{*}vertical\+Sizer, int \&id\+Last, int style=\mbox{\hyperlink{_helper_panel_8h_a5b55945efe6cc32320681102c8343296}{Default\+Title\+Helper\+Style}}, wx\+Object\+Event\+Function title\+Check\+Box\+Event\+Handler=(wx\+Event\+Function) 0, wx\+Object\+Event\+Function title\+Event\+Handler=(wx\+Event\+Function) 0, wx\+Object\+Event\+Function sub\+Title\+Check\+Box\+Eevent\+Handler=(wx\+Event\+Function) 0, wx\+Object\+Event\+Function sub\+Title\+Event\+Handler=(wx\+Event\+Function) 0)
+\item 
+void \mbox{\hyperlink{class_helper_panel_a106781fc496e192caeb765add7bd8a30}{Update\+Sub\+Title\+State}} (\mbox{\hyperlink{struct_helper_panel_1_1_title_helper}{Helper\+Panel\+::\+Title\+Helper}} \texorpdfstring{$\ast$}{*}title\+Helper)
+\item 
+void \mbox{\hyperlink{class_helper_panel_a97f0816a8c7870a3ce034f07f58e16fa}{Update\+Title\+State}} (\mbox{\hyperlink{struct_helper_panel_1_1_title_helper}{Helper\+Panel\+::\+Title\+Helper}} \texorpdfstring{$\ast$}{*}title\+Helper)
+\item 
+void \mbox{\hyperlink{class_helper_panel_aeb681ca7182038b57f0c604e06c86b19}{Set\+Sub\+Title\+Checkbox\+Value}} (\mbox{\hyperlink{struct_helper_panel_1_1_title_helper}{Helper\+Panel\+::\+Title\+Helper}} \texorpdfstring{$\ast$}{*}title\+Helper, bool state)
+\item 
+void \mbox{\hyperlink{class_helper_panel_a52772322bcf8d12a272fa8096da0e799}{Set\+Title\+Checkbox\+Value}} (\mbox{\hyperlink{struct_helper_panel_1_1_title_helper}{Helper\+Panel\+::\+Title\+Helper}} \texorpdfstring{$\ast$}{*}title\+Helper, bool state)
+\item 
+wx\+Static\+Box \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_helper_panel_a12058e5b1f127f47cef7d15b9f4d7039}{Setup\+Static\+Box}} (wx\+Window \texorpdfstring{$\ast$}{*}parent, wx\+Box\+Sizer \texorpdfstring{$\ast$}{*}in\+Sizer, wx\+Box\+Sizer \texorpdfstring{$\ast$}{*}out\+Box\+Sizer)
+\item 
+void \mbox{\hyperlink{class_helper_panel_ad1e7b95d260c42031c75899e0c68cd7c}{Horizontal\+Spacer}} (wx\+Box\+Sizer \texorpdfstring{$\ast$}{*}in\+Sizer)
+\item 
+void \mbox{\hyperlink{class_helper_panel_abb81bec04632873569caa34eff4ed4f0}{Vertical\+Spacer}} (wx\+Box\+Sizer \texorpdfstring{$\ast$}{*}in\+Sizer)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static bool \mbox{\hyperlink{class_font_defaults_panel_ae38ac43cc6e791605d305dd183487457}{Show\+Tool\+Tips}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_font_defaults_panel_8h_source_l00055}{55}} of file \mbox{\hyperlink{_font_defaults_panel_8h_source}{Font\+Defaults\+Panel.\+h}}.
+
+
+
+\label{doc-enum-members}
+\Hypertarget{class_font_defaults_panel_doc-enum-members}
+\doxysubsection{Member Enumeration Documentation}
+\Hypertarget{class_font_defaults_panel_a4f474425e90f9d9a93dbe21605706e9a}\index{FontDefaultsPanel@{FontDefaultsPanel}!FontDefaultsPanelGuiDefs@{FontDefaultsPanelGuiDefs}}
+\index{FontDefaultsPanelGuiDefs@{FontDefaultsPanelGuiDefs}!FontDefaultsPanel@{FontDefaultsPanel}}
+\doxysubsubsection{\texorpdfstring{FontDefaultsPanelGuiDefs}{FontDefaultsPanelGuiDefs}}
+{\footnotesize\ttfamily \label{class_font_defaults_panel_a4f474425e90f9d9a93dbe21605706e9a} 
+enum \mbox{\hyperlink{class_font_defaults_panel_a4f474425e90f9d9a93dbe21605706e9a}{Font\+Defaults\+Panel\+::\+Font\+Defaults\+Panel\+Gui\+Defs}}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_NOTEBOOKPOSITIONPANEL@{ID\_NOTEBOOKPOSITIONPANEL}!FontDefaultsPanel@{FontDefaultsPanel}}\index{FontDefaultsPanel@{FontDefaultsPanel}!ID\_NOTEBOOKPOSITIONPANEL@{ID\_NOTEBOOKPOSITIONPANEL}}}\Hypertarget{class_font_defaults_panel_a4f474425e90f9d9a93dbe21605706e9aabad70f4ee6535f539c05a832d5ff1308}\label{class_font_defaults_panel_a4f474425e90f9d9a93dbe21605706e9aabad70f4ee6535f539c05a832d5ff1308} 
+ID\+\_\+\+NOTEBOOKPOSITIONPANEL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_PAGENAMELABELEDTEXTBOX@{ID\_PAGENAMELABELEDTEXTBOX}!FontDefaultsPanel@{FontDefaultsPanel}}\index{FontDefaultsPanel@{FontDefaultsPanel}!ID\_PAGENAMELABELEDTEXTBOX@{ID\_PAGENAMELABELEDTEXTBOX}}}\Hypertarget{class_font_defaults_panel_a4f474425e90f9d9a93dbe21605706e9aa3354b2ece0eb71f529e65f63b9784214}\label{class_font_defaults_panel_a4f474425e90f9d9a93dbe21605706e9aa3354b2ece0eb71f529e65f63b9784214} 
+ID\+\_\+\+PAGENAMELABELEDTEXTBOX&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_SHOWTITLECHECKBOX@{ID\_SHOWTITLECHECKBOX}!FontDefaultsPanel@{FontDefaultsPanel}}\index{FontDefaultsPanel@{FontDefaultsPanel}!ID\_SHOWTITLECHECKBOX@{ID\_SHOWTITLECHECKBOX}}}\Hypertarget{class_font_defaults_panel_a4f474425e90f9d9a93dbe21605706e9aa6eceb71dff50424ba59a480674633f45}\label{class_font_defaults_panel_a4f474425e90f9d9a93dbe21605706e9aa6eceb71dff50424ba59a480674633f45} 
+ID\+\_\+\+SHOWTITLECHECKBOX&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_SHOWSUBTITLECHECKBOX@{ID\_SHOWSUBTITLECHECKBOX}!FontDefaultsPanel@{FontDefaultsPanel}}\index{FontDefaultsPanel@{FontDefaultsPanel}!ID\_SHOWSUBTITLECHECKBOX@{ID\_SHOWSUBTITLECHECKBOX}}}\Hypertarget{class_font_defaults_panel_a4f474425e90f9d9a93dbe21605706e9aa47973cba6c362598b4bd8c5af52725f8}\label{class_font_defaults_panel_a4f474425e90f9d9a93dbe21605706e9aa47973cba6c362598b4bd8c5af52725f8} 
+ID\+\_\+\+SHOWSUBTITLECHECKBOX&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_SHOWFRAMECHECKBOX@{ID\_SHOWFRAMECHECKBOX}!FontDefaultsPanel@{FontDefaultsPanel}}\index{FontDefaultsPanel@{FontDefaultsPanel}!ID\_SHOWFRAMECHECKBOX@{ID\_SHOWFRAMECHECKBOX}}}\Hypertarget{class_font_defaults_panel_a4f474425e90f9d9a93dbe21605706e9aaf9279452a98f4985d4313ccef8c939ed}\label{class_font_defaults_panel_a4f474425e90f9d9a93dbe21605706e9aaf9279452a98f4985d4313ccef8c939ed} 
+ID\+\_\+\+SHOWFRAMECHECKBOX&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_ORIENTATIONCHOICE@{ID\_ORIENTATIONCHOICE}!FontDefaultsPanel@{FontDefaultsPanel}}\index{FontDefaultsPanel@{FontDefaultsPanel}!ID\_ORIENTATIONCHOICE@{ID\_ORIENTATIONCHOICE}}}\Hypertarget{class_font_defaults_panel_a4f474425e90f9d9a93dbe21605706e9aa741d9f956414bedec28dba1a071efafa}\label{class_font_defaults_panel_a4f474425e90f9d9a93dbe21605706e9aa741d9f956414bedec28dba1a071efafa} 
+ID\+\_\+\+ORIENTATIONCHOICE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_DEFAULTBUTTON@{ID\_DEFAULTBUTTON}!FontDefaultsPanel@{FontDefaultsPanel}}\index{FontDefaultsPanel@{FontDefaultsPanel}!ID\_DEFAULTBUTTON@{ID\_DEFAULTBUTTON}}}\Hypertarget{class_font_defaults_panel_a4f474425e90f9d9a93dbe21605706e9aa4d5b63b82841cc76244e36129f719123}\label{class_font_defaults_panel_a4f474425e90f9d9a93dbe21605706e9aa4d5b63b82841cc76244e36129f719123} 
+ID\+\_\+\+DEFAULTBUTTON&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_ERRORLISTCTRL@{ID\_ERRORLISTCTRL}!FontDefaultsPanel@{FontDefaultsPanel}}\index{FontDefaultsPanel@{FontDefaultsPanel}!ID\_ERRORLISTCTRL@{ID\_ERRORLISTCTRL}}}\Hypertarget{class_font_defaults_panel_a4f474425e90f9d9a93dbe21605706e9aa51c3004795eda8f7d5d0a1d23fc7c578}\label{class_font_defaults_panel_a4f474425e90f9d9a93dbe21605706e9aa51c3004795eda8f7d5d0a1d23fc7c578} 
+ID\+\_\+\+ERRORLISTCTRL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_NOTEBOOK@{ID\_NOTEBOOK}!FontDefaultsPanel@{FontDefaultsPanel}}\index{FontDefaultsPanel@{FontDefaultsPanel}!ID\_NOTEBOOK@{ID\_NOTEBOOK}}}\Hypertarget{class_font_defaults_panel_a4f474425e90f9d9a93dbe21605706e9aa156ef0f51946669efd7d708cb9a0210f}\label{class_font_defaults_panel_a4f474425e90f9d9a93dbe21605706e9aa156ef0f51946669efd7d708cb9a0210f} 
+ID\+\_\+\+NOTEBOOK&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_DETAILSPANEL@{ID\_DETAILSPANEL}!FontDefaultsPanel@{FontDefaultsPanel}}\index{FontDefaultsPanel@{FontDefaultsPanel}!ID\_DETAILSPANEL@{ID\_DETAILSPANEL}}}\Hypertarget{class_font_defaults_panel_a4f474425e90f9d9a93dbe21605706e9aae47a02400f10e532c62d939ad23cf998}\label{class_font_defaults_panel_a4f474425e90f9d9a93dbe21605706e9aae47a02400f10e532c62d939ad23cf998} 
+ID\+\_\+\+DETAILSPANEL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_TITLEDEFAULTBUTTON@{ID\_TITLEDEFAULTBUTTON}!FontDefaultsPanel@{FontDefaultsPanel}}\index{FontDefaultsPanel@{FontDefaultsPanel}!ID\_TITLEDEFAULTBUTTON@{ID\_TITLEDEFAULTBUTTON}}}\Hypertarget{class_font_defaults_panel_a4f474425e90f9d9a93dbe21605706e9aa870db38a116acb19846636ab7f83b91c}\label{class_font_defaults_panel_a4f474425e90f9d9a93dbe21605706e9aa870db38a116acb19846636ab7f83b91c} 
+ID\+\_\+\+TITLEDEFAULTBUTTON&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_LAYOUTPANEL@{ID\_LAYOUTPANEL}!FontDefaultsPanel@{FontDefaultsPanel}}\index{FontDefaultsPanel@{FontDefaultsPanel}!ID\_LAYOUTPANEL@{ID\_LAYOUTPANEL}}}\Hypertarget{class_font_defaults_panel_a4f474425e90f9d9a93dbe21605706e9aa1ad750c6e09f51de21a5e57c972bc428}\label{class_font_defaults_panel_a4f474425e90f9d9a93dbe21605706e9aa1ad750c6e09f51de21a5e57c972bc428} 
+ID\+\_\+\+LAYOUTPANEL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_LAYOUTTEXTCTRL@{ID\_LAYOUTTEXTCTRL}!FontDefaultsPanel@{FontDefaultsPanel}}\index{FontDefaultsPanel@{FontDefaultsPanel}!ID\_LAYOUTTEXTCTRL@{ID\_LAYOUTTEXTCTRL}}}\Hypertarget{class_font_defaults_panel_a4f474425e90f9d9a93dbe21605706e9aae5e90e37f29ef2f2e6f9a6befd8e465b}\label{class_font_defaults_panel_a4f474425e90f9d9a93dbe21605706e9aae5e90e37f29ef2f2e6f9a6befd8e465b} 
+ID\+\_\+\+LAYOUTTEXTCTRL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_POSITIONTEXTCTRL@{ID\_POSITIONTEXTCTRL}!FontDefaultsPanel@{FontDefaultsPanel}}\index{FontDefaultsPanel@{FontDefaultsPanel}!ID\_POSITIONTEXTCTRL@{ID\_POSITIONTEXTCTRL}}}\Hypertarget{class_font_defaults_panel_a4f474425e90f9d9a93dbe21605706e9aa821abd7718d9a14e838f6ebca16f6518}\label{class_font_defaults_panel_a4f474425e90f9d9a93dbe21605706e9aa821abd7718d9a14e838f6ebca16f6518} 
+ID\+\_\+\+POSITIONTEXTCTRL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_NOTEBOOKDETAILSPANEL@{ID\_NOTEBOOKDETAILSPANEL}!FontDefaultsPanel@{FontDefaultsPanel}}\index{FontDefaultsPanel@{FontDefaultsPanel}!ID\_NOTEBOOKDETAILSPANEL@{ID\_NOTEBOOKDETAILSPANEL}}}\Hypertarget{class_font_defaults_panel_a4f474425e90f9d9a93dbe21605706e9aa703d064ce37d45558c98e4f249a948c0}\label{class_font_defaults_panel_a4f474425e90f9d9a93dbe21605706e9aa703d064ce37d45558c98e4f249a948c0} 
+ID\+\_\+\+NOTEBOOKDETAILSPANEL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_LastID@{ID\_LastID}!FontDefaultsPanel@{FontDefaultsPanel}}\index{FontDefaultsPanel@{FontDefaultsPanel}!ID\_LastID@{ID\_LastID}}}\Hypertarget{class_font_defaults_panel_a4f474425e90f9d9a93dbe21605706e9aa25e838bb2b4738c5827131ccf26f4462}\label{class_font_defaults_panel_a4f474425e90f9d9a93dbe21605706e9aa25e838bb2b4738c5827131ccf26f4462} 
+ID\+\_\+\+Last\+ID&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{_font_defaults_panel_8h_source_l00063}{63}} of file \mbox{\hyperlink{_font_defaults_panel_8h_source}{Font\+Defaults\+Panel.\+h}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_font_defaults_panel_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_font_defaults_panel_afdfb2449770db1a39f7ae7398db5ea03}\index{FontDefaultsPanel@{FontDefaultsPanel}!FontDefaultsPanel@{FontDefaultsPanel}}
+\index{FontDefaultsPanel@{FontDefaultsPanel}!FontDefaultsPanel@{FontDefaultsPanel}}
+\doxysubsubsection{\texorpdfstring{FontDefaultsPanel()}{FontDefaultsPanel()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_font_defaults_panel_afdfb2449770db1a39f7ae7398db5ea03} 
+Font\+Defaults\+Panel\+::\+Font\+Defaults\+Panel (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_font_defaults_panel_8cpp_source_l00064}{64}} of file \mbox{\hyperlink{_font_defaults_panel_8cpp_source}{Font\+Defaults\+Panel.\+cpp}}.
+
+\Hypertarget{class_font_defaults_panel_a41e707c8bd464a7ea1a8cfebe80ca02c}\index{FontDefaultsPanel@{FontDefaultsPanel}!FontDefaultsPanel@{FontDefaultsPanel}}
+\index{FontDefaultsPanel@{FontDefaultsPanel}!FontDefaultsPanel@{FontDefaultsPanel}}
+\doxysubsubsection{\texorpdfstring{FontDefaultsPanel()}{FontDefaultsPanel()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_font_defaults_panel_a41e707c8bd464a7ea1a8cfebe80ca02c} 
+Font\+Defaults\+Panel\+::\+Font\+Defaults\+Panel (\begin{DoxyParamCaption}\item[{wx\+Window \texorpdfstring{$\ast$}{*}}]{parent}{, }\item[{wx\+Window\+ID}]{id}{ = {\ttfamily \mbox{\hyperlink{_font_defaults_panel_8h_acf1acf93aa5d2e793e629a41112c035f}{SYMBOL\+\_\+\+FONTPANEL\+\_\+\+IDNAME}}}, }\item[{const wx\+String \&}]{caption}{ = {\ttfamily \mbox{\hyperlink{_font_defaults_panel_8h_a223a73d07bc7b4b00e8238c53e04d609}{SYMBOL\+\_\+\+FONTPANEL\+\_\+\+TITLE}}}, }\item[{const wx\+Point \&}]{pos}{ = {\ttfamily \mbox{\hyperlink{_font_defaults_panel_8h_a82f17c7772421b092dc2f95d18fba2c8}{SYMBOL\+\_\+\+FONTPANEL\+\_\+\+POSITION}}}, }\item[{const wx\+Size \&}]{size}{ = {\ttfamily \mbox{\hyperlink{_font_defaults_panel_8h_a0765eba76640478b8181011f43880a57}{SYMBOL\+\_\+\+FONTPANEL\+\_\+\+SIZE}}}, }\item[{long}]{style}{ = {\ttfamily \mbox{\hyperlink{_font_defaults_panel_8h_ad4c53501e22a78fd1b26749f0a954147}{SYMBOL\+\_\+\+FONTPANEL\+\_\+\+STYLE}}}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_font_defaults_panel_8cpp_source_l00071}{71}} of file \mbox{\hyperlink{_font_defaults_panel_8cpp_source}{Font\+Defaults\+Panel.\+cpp}}.
+
+\Hypertarget{class_font_defaults_panel_a5ad151924667b7a91a0462c0d0a916f4}\index{FontDefaultsPanel@{FontDefaultsPanel}!````~FontDefaultsPanel@{\texorpdfstring{$\sim$}{\string~}FontDefaultsPanel}}
+\index{````~FontDefaultsPanel@{\texorpdfstring{$\sim$}{\string~}FontDefaultsPanel}!FontDefaultsPanel@{FontDefaultsPanel}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}FontDefaultsPanel()}{\string~FontDefaultsPanel()}}
+{\footnotesize\ttfamily \label{class_font_defaults_panel_a5ad151924667b7a91a0462c0d0a916f4} 
+Font\+Defaults\+Panel\+::\texorpdfstring{$\sim$}{\string~}\+Font\+Defaults\+Panel (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_font_defaults_panel_8cpp_source_l00097}{97}} of file \mbox{\hyperlink{_font_defaults_panel_8cpp_source}{Font\+Defaults\+Panel.\+cpp}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_font_defaults_panel_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_font_defaults_panel_a9aacd8afdf3c5c44fed126717b558574}\index{FontDefaultsPanel@{FontDefaultsPanel}!Create@{Create}}
+\index{Create@{Create}!FontDefaultsPanel@{FontDefaultsPanel}}
+\doxysubsubsection{\texorpdfstring{Create()}{Create()}}
+{\footnotesize\ttfamily \label{class_font_defaults_panel_a9aacd8afdf3c5c44fed126717b558574} 
+bool Font\+Defaults\+Panel\+::\+Create (\begin{DoxyParamCaption}\item[{wx\+Window \texorpdfstring{$\ast$}{*}}]{parent}{, }\item[{wx\+Window\+ID}]{id}{ = {\ttfamily \mbox{\hyperlink{_font_defaults_panel_8h_acf1acf93aa5d2e793e629a41112c035f}{SYMBOL\+\_\+\+FONTPANEL\+\_\+\+IDNAME}}}, }\item[{const wx\+String \&}]{caption}{ = {\ttfamily \mbox{\hyperlink{_font_defaults_panel_8h_a223a73d07bc7b4b00e8238c53e04d609}{SYMBOL\+\_\+\+FONTPANEL\+\_\+\+TITLE}}}, }\item[{const wx\+Point \&}]{pos}{ = {\ttfamily \mbox{\hyperlink{_font_defaults_panel_8h_a82f17c7772421b092dc2f95d18fba2c8}{SYMBOL\+\_\+\+FONTPANEL\+\_\+\+POSITION}}}, }\item[{const wx\+Size \&}]{size}{ = {\ttfamily \mbox{\hyperlink{_font_defaults_panel_8h_a0765eba76640478b8181011f43880a57}{SYMBOL\+\_\+\+FONTPANEL\+\_\+\+SIZE}}}, }\item[{long}]{style}{ = {\ttfamily \mbox{\hyperlink{_font_defaults_panel_8h_ad4c53501e22a78fd1b26749f0a954147}{SYMBOL\+\_\+\+FONTPANEL\+\_\+\+STYLE}}}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_font_defaults_panel_8cpp_source_l00080}{80}} of file \mbox{\hyperlink{_font_defaults_panel_8cpp_source}{Font\+Defaults\+Panel.\+cpp}}.
+
+\Hypertarget{class_font_defaults_panel_a5da3b23bf59b9216355e56fa287d4188}\index{FontDefaultsPanel@{FontDefaultsPanel}!CreateControls@{CreateControls}}
+\index{CreateControls@{CreateControls}!FontDefaultsPanel@{FontDefaultsPanel}}
+\doxysubsubsection{\texorpdfstring{CreateControls()}{CreateControls()}}
+{\footnotesize\ttfamily \label{class_font_defaults_panel_a5da3b23bf59b9216355e56fa287d4188} 
+void Font\+Defaults\+Panel\+::\+Create\+Controls (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_font_defaults_panel_8cpp_source_l00110}{110}} of file \mbox{\hyperlink{_font_defaults_panel_8cpp_source}{Font\+Defaults\+Panel.\+cpp}}.
+
+\Hypertarget{class_font_defaults_panel_a703307bc54ed35ed69118f794588dc9c}\index{FontDefaultsPanel@{FontDefaultsPanel}!GetNameColor@{GetNameColor}}
+\index{GetNameColor@{GetNameColor}!FontDefaultsPanel@{FontDefaultsPanel}}
+\doxysubsubsection{\texorpdfstring{GetNameColor()}{GetNameColor()}}
+{\footnotesize\ttfamily \label{class_font_defaults_panel_a703307bc54ed35ed69118f794588dc9c} 
+wx\+Colour Font\+Defaults\+Panel\+::\+Get\+Name\+Color (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_font_defaults_panel_8cpp_source_l00378}{378}} of file \mbox{\hyperlink{_font_defaults_panel_8cpp_source}{Font\+Defaults\+Panel.\+cpp}}.
+
+\Hypertarget{class_font_defaults_panel_a8a1acbebf6535b62adaf0f1ecbab2a49}\index{FontDefaultsPanel@{FontDefaultsPanel}!GetNameFont@{GetNameFont}}
+\index{GetNameFont@{GetNameFont}!FontDefaultsPanel@{FontDefaultsPanel}}
+\doxysubsubsection{\texorpdfstring{GetNameFont()}{GetNameFont()}}
+{\footnotesize\ttfamily \label{class_font_defaults_panel_a8a1acbebf6535b62adaf0f1ecbab2a49} 
+wx\+Font Font\+Defaults\+Panel\+::\+Get\+Name\+Font (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_font_defaults_panel_8cpp_source_l00372}{372}} of file \mbox{\hyperlink{_font_defaults_panel_8cpp_source}{Font\+Defaults\+Panel.\+cpp}}.
+
+\Hypertarget{class_font_defaults_panel_aa920f2b1d9805058eaff1a8f509da7cf}\index{FontDefaultsPanel@{FontDefaultsPanel}!GetNbrColor@{GetNbrColor}}
+\index{GetNbrColor@{GetNbrColor}!FontDefaultsPanel@{FontDefaultsPanel}}
+\doxysubsubsection{\texorpdfstring{GetNbrColor()}{GetNbrColor()}}
+{\footnotesize\ttfamily \label{class_font_defaults_panel_aa920f2b1d9805058eaff1a8f509da7cf} 
+wx\+Colour Font\+Defaults\+Panel\+::\+Get\+Nbr\+Color (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_font_defaults_panel_8cpp_source_l00384}{384}} of file \mbox{\hyperlink{_font_defaults_panel_8cpp_source}{Font\+Defaults\+Panel.\+cpp}}.
+
+\Hypertarget{class_font_defaults_panel_aee317325c32136e20b34117938cd19f1}\index{FontDefaultsPanel@{FontDefaultsPanel}!GetNbrFont@{GetNbrFont}}
+\index{GetNbrFont@{GetNbrFont}!FontDefaultsPanel@{FontDefaultsPanel}}
+\doxysubsubsection{\texorpdfstring{GetNbrFont()}{GetNbrFont()}}
+{\footnotesize\ttfamily \label{class_font_defaults_panel_aee317325c32136e20b34117938cd19f1} 
+wx\+Font Font\+Defaults\+Panel\+::\+Get\+Nbr\+Font (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_font_defaults_panel_8cpp_source_l00366}{366}} of file \mbox{\hyperlink{_font_defaults_panel_8cpp_source}{Font\+Defaults\+Panel.\+cpp}}.
+
+\Hypertarget{class_font_defaults_panel_a3f54e32e49389e3bed14d7545e65d2c8}\index{FontDefaultsPanel@{FontDefaultsPanel}!GetSubTitleColor@{GetSubTitleColor}}
+\index{GetSubTitleColor@{GetSubTitleColor}!FontDefaultsPanel@{FontDefaultsPanel}}
+\doxysubsubsection{\texorpdfstring{GetSubTitleColor()}{GetSubTitleColor()}}
+{\footnotesize\ttfamily \label{class_font_defaults_panel_a3f54e32e49389e3bed14d7545e65d2c8} 
+wx\+Colour Font\+Defaults\+Panel\+::\+Get\+Sub\+Title\+Color (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_font_defaults_panel_8cpp_source_l00171}{171}} of file \mbox{\hyperlink{_font_defaults_panel_8cpp_source}{Font\+Defaults\+Panel.\+cpp}}.
+
+\Hypertarget{class_font_defaults_panel_ae712ba0f5bfe50fb70106f00926b36ce}\index{FontDefaultsPanel@{FontDefaultsPanel}!GetSubTitleFont@{GetSubTitleFont}}
+\index{GetSubTitleFont@{GetSubTitleFont}!FontDefaultsPanel@{FontDefaultsPanel}}
+\doxysubsubsection{\texorpdfstring{GetSubTitleFont()}{GetSubTitleFont()}}
+{\footnotesize\ttfamily \label{class_font_defaults_panel_ae712ba0f5bfe50fb70106f00926b36ce} 
+wx\+Font Font\+Defaults\+Panel\+::\+Get\+Sub\+Title\+Font (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_font_defaults_panel_8cpp_source_l00165}{165}} of file \mbox{\hyperlink{_font_defaults_panel_8cpp_source}{Font\+Defaults\+Panel.\+cpp}}.
+
+\Hypertarget{class_font_defaults_panel_aca68d93482e48fb0246e53d84fab94cb}\index{FontDefaultsPanel@{FontDefaultsPanel}!GetTextColor@{GetTextColor}}
+\index{GetTextColor@{GetTextColor}!FontDefaultsPanel@{FontDefaultsPanel}}
+\doxysubsubsection{\texorpdfstring{GetTextColor()}{GetTextColor()}}
+{\footnotesize\ttfamily \label{class_font_defaults_panel_aca68d93482e48fb0246e53d84fab94cb} 
+wx\+Colour Font\+Defaults\+Panel\+::\+Get\+Text\+Color (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_font_defaults_panel_8cpp_source_l00177}{177}} of file \mbox{\hyperlink{_font_defaults_panel_8cpp_source}{Font\+Defaults\+Panel.\+cpp}}.
+
+\Hypertarget{class_font_defaults_panel_a35dc458d247c38fb6a670a24b608d3ac}\index{FontDefaultsPanel@{FontDefaultsPanel}!GetTextFont@{GetTextFont}}
+\index{GetTextFont@{GetTextFont}!FontDefaultsPanel@{FontDefaultsPanel}}
+\doxysubsubsection{\texorpdfstring{GetTextFont()}{GetTextFont()}}
+{\footnotesize\ttfamily \label{class_font_defaults_panel_a35dc458d247c38fb6a670a24b608d3ac} 
+wx\+Font Font\+Defaults\+Panel\+::\+Get\+Text\+Font (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_font_defaults_panel_8cpp_source_l00183}{183}} of file \mbox{\hyperlink{_font_defaults_panel_8cpp_source}{Font\+Defaults\+Panel.\+cpp}}.
+
+\Hypertarget{class_font_defaults_panel_a679e3b0c4b0d7465ef3051c26a8451c2}\index{FontDefaultsPanel@{FontDefaultsPanel}!GetTitleColor@{GetTitleColor}}
+\index{GetTitleColor@{GetTitleColor}!FontDefaultsPanel@{FontDefaultsPanel}}
+\doxysubsubsection{\texorpdfstring{GetTitleColor()}{GetTitleColor()}}
+{\footnotesize\ttfamily \label{class_font_defaults_panel_a679e3b0c4b0d7465ef3051c26a8451c2} 
+wx\+Colour Font\+Defaults\+Panel\+::\+Get\+Title\+Color (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_font_defaults_panel_8cpp_source_l00195}{195}} of file \mbox{\hyperlink{_font_defaults_panel_8cpp_source}{Font\+Defaults\+Panel.\+cpp}}.
+
+\Hypertarget{class_font_defaults_panel_a9aa8286ae5aecad98e0ef23b13590d51}\index{FontDefaultsPanel@{FontDefaultsPanel}!GetTitleFont@{GetTitleFont}}
+\index{GetTitleFont@{GetTitleFont}!FontDefaultsPanel@{FontDefaultsPanel}}
+\doxysubsubsection{\texorpdfstring{GetTitleFont()}{GetTitleFont()}}
+{\footnotesize\ttfamily \label{class_font_defaults_panel_a9aa8286ae5aecad98e0ef23b13590d51} 
+wx\+Font Font\+Defaults\+Panel\+::\+Get\+Title\+Font (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_font_defaults_panel_8cpp_source_l00189}{189}} of file \mbox{\hyperlink{_font_defaults_panel_8cpp_source}{Font\+Defaults\+Panel.\+cpp}}.
+
+\Hypertarget{class_font_defaults_panel_add6de791d9cc5de70d22c1b9ca403763}\index{FontDefaultsPanel@{FontDefaultsPanel}!Init@{Init}}
+\index{Init@{Init}!FontDefaultsPanel@{FontDefaultsPanel}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily \label{class_font_defaults_panel_add6de791d9cc5de70d22c1b9ca403763} 
+void Font\+Defaults\+Panel\+::\+Init (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_font_defaults_panel_8cpp_source_l00104}{104}} of file \mbox{\hyperlink{_font_defaults_panel_8cpp_source}{Font\+Defaults\+Panel.\+cpp}}.
+
+\Hypertarget{class_font_defaults_panel_a588997111cbbcd7b554bcce92aa5e6ad}\index{FontDefaultsPanel@{FontDefaultsPanel}!OnNameColorPicker@{OnNameColorPicker}}
+\index{OnNameColorPicker@{OnNameColorPicker}!FontDefaultsPanel@{FontDefaultsPanel}}
+\doxysubsubsection{\texorpdfstring{OnNameColorPicker()}{OnNameColorPicker()}}
+{\footnotesize\ttfamily \label{class_font_defaults_panel_a588997111cbbcd7b554bcce92aa5e6ad} 
+void Font\+Defaults\+Panel\+::\+On\+Name\+Color\+Picker (\begin{DoxyParamCaption}\item[{wx\+Colour\+Picker\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_font_defaults_panel_8cpp_source_l00441}{441}} of file \mbox{\hyperlink{_font_defaults_panel_8cpp_source}{Font\+Defaults\+Panel.\+cpp}}.
+
+\Hypertarget{class_font_defaults_panel_ab710d1ca1be86b28ef119f979a6b3a72}\index{FontDefaultsPanel@{FontDefaultsPanel}!OnNameDefaultClick@{OnNameDefaultClick}}
+\index{OnNameDefaultClick@{OnNameDefaultClick}!FontDefaultsPanel@{FontDefaultsPanel}}
+\doxysubsubsection{\texorpdfstring{OnNameDefaultClick()}{OnNameDefaultClick()}}
+{\footnotesize\ttfamily \label{class_font_defaults_panel_ab710d1ca1be86b28ef119f979a6b3a72} 
+void Font\+Defaults\+Panel\+::\+On\+Name\+Default\+Click (\begin{DoxyParamCaption}\item[{wx\+Command\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_font_defaults_panel_8cpp_source_l00417}{417}} of file \mbox{\hyperlink{_font_defaults_panel_8cpp_source}{Font\+Defaults\+Panel.\+cpp}}.
+
+\Hypertarget{class_font_defaults_panel_a9e12a565a4337ba0954cf9d1ba73cd6d}\index{FontDefaultsPanel@{FontDefaultsPanel}!OnNameFontPicker@{OnNameFontPicker}}
+\index{OnNameFontPicker@{OnNameFontPicker}!FontDefaultsPanel@{FontDefaultsPanel}}
+\doxysubsubsection{\texorpdfstring{OnNameFontPicker()}{OnNameFontPicker()}}
+{\footnotesize\ttfamily \label{class_font_defaults_panel_a9e12a565a4337ba0954cf9d1ba73cd6d} 
+void Font\+Defaults\+Panel\+::\+On\+Name\+Font\+Picker (\begin{DoxyParamCaption}\item[{wx\+Font\+Picker\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_font_defaults_panel_8cpp_source_l00457}{457}} of file \mbox{\hyperlink{_font_defaults_panel_8cpp_source}{Font\+Defaults\+Panel.\+cpp}}.
+
+\Hypertarget{class_font_defaults_panel_ad5e4cea59e4e0b7317c124e094822f67}\index{FontDefaultsPanel@{FontDefaultsPanel}!OnNbrColorPicker@{OnNbrColorPicker}}
+\index{OnNbrColorPicker@{OnNbrColorPicker}!FontDefaultsPanel@{FontDefaultsPanel}}
+\doxysubsubsection{\texorpdfstring{OnNbrColorPicker()}{OnNbrColorPicker()}}
+{\footnotesize\ttfamily \label{class_font_defaults_panel_ad5e4cea59e4e0b7317c124e094822f67} 
+void Font\+Defaults\+Panel\+::\+On\+Nbr\+Color\+Picker (\begin{DoxyParamCaption}\item[{wx\+Colour\+Picker\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_font_defaults_panel_8cpp_source_l00449}{449}} of file \mbox{\hyperlink{_font_defaults_panel_8cpp_source}{Font\+Defaults\+Panel.\+cpp}}.
+
+\Hypertarget{class_font_defaults_panel_a10a155347892d196eb223055abe23150}\index{FontDefaultsPanel@{FontDefaultsPanel}!OnNbrDefaultClick@{OnNbrDefaultClick}}
+\index{OnNbrDefaultClick@{OnNbrDefaultClick}!FontDefaultsPanel@{FontDefaultsPanel}}
+\doxysubsubsection{\texorpdfstring{OnNbrDefaultClick()}{OnNbrDefaultClick()}}
+{\footnotesize\ttfamily \label{class_font_defaults_panel_a10a155347892d196eb223055abe23150} 
+void Font\+Defaults\+Panel\+::\+On\+Nbr\+Default\+Click (\begin{DoxyParamCaption}\item[{wx\+Command\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_font_defaults_panel_8cpp_source_l00402}{402}} of file \mbox{\hyperlink{_font_defaults_panel_8cpp_source}{Font\+Defaults\+Panel.\+cpp}}.
+
+\Hypertarget{class_font_defaults_panel_ab1cc80124dfd62841d840ddd59808187}\index{FontDefaultsPanel@{FontDefaultsPanel}!OnNbrFontPicker@{OnNbrFontPicker}}
+\index{OnNbrFontPicker@{OnNbrFontPicker}!FontDefaultsPanel@{FontDefaultsPanel}}
+\doxysubsubsection{\texorpdfstring{OnNbrFontPicker()}{OnNbrFontPicker()}}
+{\footnotesize\ttfamily \label{class_font_defaults_panel_ab1cc80124dfd62841d840ddd59808187} 
+void Font\+Defaults\+Panel\+::\+On\+Nbr\+Font\+Picker (\begin{DoxyParamCaption}\item[{wx\+Font\+Picker\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_font_defaults_panel_8cpp_source_l00433}{433}} of file \mbox{\hyperlink{_font_defaults_panel_8cpp_source}{Font\+Defaults\+Panel.\+cpp}}.
+
+\Hypertarget{class_font_defaults_panel_a92c5885335648ce2842892100389c019}\index{FontDefaultsPanel@{FontDefaultsPanel}!OnSubTitleColorPicker@{OnSubTitleColorPicker}}
+\index{OnSubTitleColorPicker@{OnSubTitleColorPicker}!FontDefaultsPanel@{FontDefaultsPanel}}
+\doxysubsubsection{\texorpdfstring{OnSubTitleColorPicker()}{OnSubTitleColorPicker()}}
+{\footnotesize\ttfamily \label{class_font_defaults_panel_a92c5885335648ce2842892100389c019} 
+void Font\+Defaults\+Panel\+::\+On\+Sub\+Title\+Color\+Picker (\begin{DoxyParamCaption}\item[{wx\+Colour\+Picker\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_font_defaults_panel_8cpp_source_l00285}{285}} of file \mbox{\hyperlink{_font_defaults_panel_8cpp_source}{Font\+Defaults\+Panel.\+cpp}}.
+
+\Hypertarget{class_font_defaults_panel_a06c6a5f07039d93432028ab9efbdfdfc}\index{FontDefaultsPanel@{FontDefaultsPanel}!OnSubTitleDefaultClick@{OnSubTitleDefaultClick}}
+\index{OnSubTitleDefaultClick@{OnSubTitleDefaultClick}!FontDefaultsPanel@{FontDefaultsPanel}}
+\doxysubsubsection{\texorpdfstring{OnSubTitleDefaultClick()}{OnSubTitleDefaultClick()}}
+{\footnotesize\ttfamily \label{class_font_defaults_panel_a06c6a5f07039d93432028ab9efbdfdfc} 
+void Font\+Defaults\+Panel\+::\+On\+Sub\+Title\+Default\+Click (\begin{DoxyParamCaption}\item[{wx\+Command\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_font_defaults_panel_8cpp_source_l00248}{248}} of file \mbox{\hyperlink{_font_defaults_panel_8cpp_source}{Font\+Defaults\+Panel.\+cpp}}.
+
+\Hypertarget{class_font_defaults_panel_a230b22626f5488a6d021cd1b6bbf1a80}\index{FontDefaultsPanel@{FontDefaultsPanel}!OnSubTitleFontPicker@{OnSubTitleFontPicker}}
+\index{OnSubTitleFontPicker@{OnSubTitleFontPicker}!FontDefaultsPanel@{FontDefaultsPanel}}
+\doxysubsubsection{\texorpdfstring{OnSubTitleFontPicker()}{OnSubTitleFontPicker()}}
+{\footnotesize\ttfamily \label{class_font_defaults_panel_a230b22626f5488a6d021cd1b6bbf1a80} 
+void Font\+Defaults\+Panel\+::\+On\+Sub\+Title\+Font\+Picker (\begin{DoxyParamCaption}\item[{wx\+Font\+Picker\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_font_defaults_panel_8cpp_source_l00278}{278}} of file \mbox{\hyperlink{_font_defaults_panel_8cpp_source}{Font\+Defaults\+Panel.\+cpp}}.
+
+\Hypertarget{class_font_defaults_panel_a29ec0e110d3743f5b964c019ad36802a}\index{FontDefaultsPanel@{FontDefaultsPanel}!OnTextColorPicker@{OnTextColorPicker}}
+\index{OnTextColorPicker@{OnTextColorPicker}!FontDefaultsPanel@{FontDefaultsPanel}}
+\doxysubsubsection{\texorpdfstring{OnTextColorPicker()}{OnTextColorPicker()}}
+{\footnotesize\ttfamily \label{class_font_defaults_panel_a29ec0e110d3743f5b964c019ad36802a} 
+void Font\+Defaults\+Panel\+::\+On\+Text\+Color\+Picker (\begin{DoxyParamCaption}\item[{wx\+Colour\+Picker\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_font_defaults_panel_8cpp_source_l00300}{300}} of file \mbox{\hyperlink{_font_defaults_panel_8cpp_source}{Font\+Defaults\+Panel.\+cpp}}.
+
+\Hypertarget{class_font_defaults_panel_a51d631118d8b9a4185e29f4ea9f2e3d4}\index{FontDefaultsPanel@{FontDefaultsPanel}!OnTextDefaultClick@{OnTextDefaultClick}}
+\index{OnTextDefaultClick@{OnTextDefaultClick}!FontDefaultsPanel@{FontDefaultsPanel}}
+\doxysubsubsection{\texorpdfstring{OnTextDefaultClick()}{OnTextDefaultClick()}}
+{\footnotesize\ttfamily \label{class_font_defaults_panel_a51d631118d8b9a4185e29f4ea9f2e3d4} 
+void Font\+Defaults\+Panel\+::\+On\+Text\+Default\+Click (\begin{DoxyParamCaption}\item[{wx\+Command\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_font_defaults_panel_8cpp_source_l00308}{308}} of file \mbox{\hyperlink{_font_defaults_panel_8cpp_source}{Font\+Defaults\+Panel.\+cpp}}.
+
+\Hypertarget{class_font_defaults_panel_a80d86f4eb928abc6943f9e90471e25e2}\index{FontDefaultsPanel@{FontDefaultsPanel}!OnTextFontPicker@{OnTextFontPicker}}
+\index{OnTextFontPicker@{OnTextFontPicker}!FontDefaultsPanel@{FontDefaultsPanel}}
+\doxysubsubsection{\texorpdfstring{OnTextFontPicker()}{OnTextFontPicker()}}
+{\footnotesize\ttfamily \label{class_font_defaults_panel_a80d86f4eb928abc6943f9e90471e25e2} 
+void Font\+Defaults\+Panel\+::\+On\+Text\+Font\+Picker (\begin{DoxyParamCaption}\item[{wx\+Font\+Picker\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_font_defaults_panel_8cpp_source_l00292}{292}} of file \mbox{\hyperlink{_font_defaults_panel_8cpp_source}{Font\+Defaults\+Panel.\+cpp}}.
+
+\Hypertarget{class_font_defaults_panel_aed30d058e725e43b2a771f6759879cc4}\index{FontDefaultsPanel@{FontDefaultsPanel}!OnTitleColorPicker@{OnTitleColorPicker}}
+\index{OnTitleColorPicker@{OnTitleColorPicker}!FontDefaultsPanel@{FontDefaultsPanel}}
+\doxysubsubsection{\texorpdfstring{OnTitleColorPicker()}{OnTitleColorPicker()}}
+{\footnotesize\ttfamily \label{class_font_defaults_panel_aed30d058e725e43b2a771f6759879cc4} 
+void Font\+Defaults\+Panel\+::\+On\+Title\+Color\+Picker (\begin{DoxyParamCaption}\item[{wx\+Colour\+Picker\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_font_defaults_panel_8cpp_source_l00271}{271}} of file \mbox{\hyperlink{_font_defaults_panel_8cpp_source}{Font\+Defaults\+Panel.\+cpp}}.
+
+\Hypertarget{class_font_defaults_panel_a23128a6be5d3be61b61255bd4c6cc2e3}\index{FontDefaultsPanel@{FontDefaultsPanel}!OnTitleDefaultClick@{OnTitleDefaultClick}}
+\index{OnTitleDefaultClick@{OnTitleDefaultClick}!FontDefaultsPanel@{FontDefaultsPanel}}
+\doxysubsubsection{\texorpdfstring{OnTitleDefaultClick()}{OnTitleDefaultClick()}}
+{\footnotesize\ttfamily \label{class_font_defaults_panel_a23128a6be5d3be61b61255bd4c6cc2e3} 
+void Font\+Defaults\+Panel\+::\+On\+Title\+Default\+Click (\begin{DoxyParamCaption}\item[{wx\+Command\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_font_defaults_panel_8cpp_source_l00232}{232}} of file \mbox{\hyperlink{_font_defaults_panel_8cpp_source}{Font\+Defaults\+Panel.\+cpp}}.
+
+\Hypertarget{class_font_defaults_panel_a0ea992d3524a720b20b4127302724a28}\index{FontDefaultsPanel@{FontDefaultsPanel}!OnTitleFontPicker@{OnTitleFontPicker}}
+\index{OnTitleFontPicker@{OnTitleFontPicker}!FontDefaultsPanel@{FontDefaultsPanel}}
+\doxysubsubsection{\texorpdfstring{OnTitleFontPicker()}{OnTitleFontPicker()}}
+{\footnotesize\ttfamily \label{class_font_defaults_panel_a0ea992d3524a720b20b4127302724a28} 
+void Font\+Defaults\+Panel\+::\+On\+Title\+Font\+Picker (\begin{DoxyParamCaption}\item[{wx\+Font\+Picker\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_font_defaults_panel_8cpp_source_l00264}{264}} of file \mbox{\hyperlink{_font_defaults_panel_8cpp_source}{Font\+Defaults\+Panel.\+cpp}}.
+
+\Hypertarget{class_font_defaults_panel_a330936abb9c945af2950f633a3a60f25}\index{FontDefaultsPanel@{FontDefaultsPanel}!SetNameColor@{SetNameColor}}
+\index{SetNameColor@{SetNameColor}!FontDefaultsPanel@{FontDefaultsPanel}}
+\doxysubsubsection{\texorpdfstring{SetNameColor()}{SetNameColor()}}
+{\footnotesize\ttfamily \label{class_font_defaults_panel_a330936abb9c945af2950f633a3a60f25} 
+void Font\+Defaults\+Panel\+::\+Set\+Name\+Color (\begin{DoxyParamCaption}\item[{wx\+Colour}]{color}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_font_defaults_panel_8cpp_source_l00344}{344}} of file \mbox{\hyperlink{_font_defaults_panel_8cpp_source}{Font\+Defaults\+Panel.\+cpp}}.
+
+\Hypertarget{class_font_defaults_panel_a842d52a17e47d82dd4f11ac72579d655}\index{FontDefaultsPanel@{FontDefaultsPanel}!SetNameFont@{SetNameFont}}
+\index{SetNameFont@{SetNameFont}!FontDefaultsPanel@{FontDefaultsPanel}}
+\doxysubsubsection{\texorpdfstring{SetNameFont()}{SetNameFont()}}
+{\footnotesize\ttfamily \label{class_font_defaults_panel_a842d52a17e47d82dd4f11ac72579d655} 
+void Font\+Defaults\+Panel\+::\+Set\+Name\+Font (\begin{DoxyParamCaption}\item[{wx\+Font}]{font}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_font_defaults_panel_8cpp_source_l00334}{334}} of file \mbox{\hyperlink{_font_defaults_panel_8cpp_source}{Font\+Defaults\+Panel.\+cpp}}.
+
+\Hypertarget{class_font_defaults_panel_a60d378b9225ce169071248e9f6f1c95f}\index{FontDefaultsPanel@{FontDefaultsPanel}!SetNbrColor@{SetNbrColor}}
+\index{SetNbrColor@{SetNbrColor}!FontDefaultsPanel@{FontDefaultsPanel}}
+\doxysubsubsection{\texorpdfstring{SetNbrColor()}{SetNbrColor()}}
+{\footnotesize\ttfamily \label{class_font_defaults_panel_a60d378b9225ce169071248e9f6f1c95f} 
+void Font\+Defaults\+Panel\+::\+Set\+Nbr\+Color (\begin{DoxyParamCaption}\item[{wx\+Colour}]{color}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_font_defaults_panel_8cpp_source_l00396}{396}} of file \mbox{\hyperlink{_font_defaults_panel_8cpp_source}{Font\+Defaults\+Panel.\+cpp}}.
+
+\Hypertarget{class_font_defaults_panel_aa780af8e4a69f0f18ec82dd819353a01}\index{FontDefaultsPanel@{FontDefaultsPanel}!SetNbrFont@{SetNbrFont}}
+\index{SetNbrFont@{SetNbrFont}!FontDefaultsPanel@{FontDefaultsPanel}}
+\doxysubsubsection{\texorpdfstring{SetNbrFont()}{SetNbrFont()}}
+{\footnotesize\ttfamily \label{class_font_defaults_panel_aa780af8e4a69f0f18ec82dd819353a01} 
+void Font\+Defaults\+Panel\+::\+Set\+Nbr\+Font (\begin{DoxyParamCaption}\item[{wx\+Font}]{font}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_font_defaults_panel_8cpp_source_l00390}{390}} of file \mbox{\hyperlink{_font_defaults_panel_8cpp_source}{Font\+Defaults\+Panel.\+cpp}}.
+
+\Hypertarget{class_font_defaults_panel_a8fc980938694727d1458d47e45122264}\index{FontDefaultsPanel@{FontDefaultsPanel}!SetSubTitleColor@{SetSubTitleColor}}
+\index{SetSubTitleColor@{SetSubTitleColor}!FontDefaultsPanel@{FontDefaultsPanel}}
+\doxysubsubsection{\texorpdfstring{SetSubTitleColor()}{SetSubTitleColor()}}
+{\footnotesize\ttfamily \label{class_font_defaults_panel_a8fc980938694727d1458d47e45122264} 
+void Font\+Defaults\+Panel\+::\+Set\+Sub\+Title\+Color (\begin{DoxyParamCaption}\item[{wx\+Colour}]{color}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_font_defaults_panel_8cpp_source_l00360}{360}} of file \mbox{\hyperlink{_font_defaults_panel_8cpp_source}{Font\+Defaults\+Panel.\+cpp}}.
+
+\Hypertarget{class_font_defaults_panel_a0841c9fea578a86ef57aa260fa25a2a5}\index{FontDefaultsPanel@{FontDefaultsPanel}!SetSubTitleFont@{SetSubTitleFont}}
+\index{SetSubTitleFont@{SetSubTitleFont}!FontDefaultsPanel@{FontDefaultsPanel}}
+\doxysubsubsection{\texorpdfstring{SetSubTitleFont()}{SetSubTitleFont()}}
+{\footnotesize\ttfamily \label{class_font_defaults_panel_a0841c9fea578a86ef57aa260fa25a2a5} 
+void Font\+Defaults\+Panel\+::\+Set\+Sub\+Title\+Font (\begin{DoxyParamCaption}\item[{wx\+Font}]{font}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_font_defaults_panel_8cpp_source_l00338}{338}} of file \mbox{\hyperlink{_font_defaults_panel_8cpp_source}{Font\+Defaults\+Panel.\+cpp}}.
+
+\Hypertarget{class_font_defaults_panel_afbb789f3f74f6eb45287265d229296e8}\index{FontDefaultsPanel@{FontDefaultsPanel}!SetTextColor@{SetTextColor}}
+\index{SetTextColor@{SetTextColor}!FontDefaultsPanel@{FontDefaultsPanel}}
+\doxysubsubsection{\texorpdfstring{SetTextColor()}{SetTextColor()}}
+{\footnotesize\ttfamily \label{class_font_defaults_panel_afbb789f3f74f6eb45287265d229296e8} 
+void Font\+Defaults\+Panel\+::\+Set\+Text\+Color (\begin{DoxyParamCaption}\item[{wx\+Colour}]{color}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_font_defaults_panel_8cpp_source_l00350}{350}} of file \mbox{\hyperlink{_font_defaults_panel_8cpp_source}{Font\+Defaults\+Panel.\+cpp}}.
+
+\Hypertarget{class_font_defaults_panel_a2c86c7fc80a765bf1c1d2a8fd15732fe}\index{FontDefaultsPanel@{FontDefaultsPanel}!SetTextFont@{SetTextFont}}
+\index{SetTextFont@{SetTextFont}!FontDefaultsPanel@{FontDefaultsPanel}}
+\doxysubsubsection{\texorpdfstring{SetTextFont()}{SetTextFont()}}
+{\footnotesize\ttfamily \label{class_font_defaults_panel_a2c86c7fc80a765bf1c1d2a8fd15732fe} 
+void Font\+Defaults\+Panel\+::\+Set\+Text\+Font (\begin{DoxyParamCaption}\item[{wx\+Font}]{font}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_font_defaults_panel_8cpp_source_l00322}{322}} of file \mbox{\hyperlink{_font_defaults_panel_8cpp_source}{Font\+Defaults\+Panel.\+cpp}}.
+
+\Hypertarget{class_font_defaults_panel_ace9e1034e0f9c006a81840cb3fbcbb39}\index{FontDefaultsPanel@{FontDefaultsPanel}!SetTitleColor@{SetTitleColor}}
+\index{SetTitleColor@{SetTitleColor}!FontDefaultsPanel@{FontDefaultsPanel}}
+\doxysubsubsection{\texorpdfstring{SetTitleColor()}{SetTitleColor()}}
+{\footnotesize\ttfamily \label{class_font_defaults_panel_ace9e1034e0f9c006a81840cb3fbcbb39} 
+void Font\+Defaults\+Panel\+::\+Set\+Title\+Color (\begin{DoxyParamCaption}\item[{wx\+Colour}]{color}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_font_defaults_panel_8cpp_source_l00356}{356}} of file \mbox{\hyperlink{_font_defaults_panel_8cpp_source}{Font\+Defaults\+Panel.\+cpp}}.
+
+\Hypertarget{class_font_defaults_panel_adec9934437ca48275fe3ea5acac6019d}\index{FontDefaultsPanel@{FontDefaultsPanel}!SetTitleFont@{SetTitleFont}}
+\index{SetTitleFont@{SetTitleFont}!FontDefaultsPanel@{FontDefaultsPanel}}
+\doxysubsubsection{\texorpdfstring{SetTitleFont()}{SetTitleFont()}}
+{\footnotesize\ttfamily \label{class_font_defaults_panel_adec9934437ca48275fe3ea5acac6019d} 
+void Font\+Defaults\+Panel\+::\+Set\+Title\+Font (\begin{DoxyParamCaption}\item[{wx\+Font}]{font}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_font_defaults_panel_8cpp_source_l00328}{328}} of file \mbox{\hyperlink{_font_defaults_panel_8cpp_source}{Font\+Defaults\+Panel.\+cpp}}.
+
+\Hypertarget{class_font_defaults_panel_a5043e3434bfa8d5b6d7459d8f2104955}\index{FontDefaultsPanel@{FontDefaultsPanel}!SetupDialog@{SetupDialog}}
+\index{SetupDialog@{SetupDialog}!FontDefaultsPanel@{FontDefaultsPanel}}
+\doxysubsubsection{\texorpdfstring{SetupDialog()}{SetupDialog()}}
+{\footnotesize\ttfamily \label{class_font_defaults_panel_a5043e3434bfa8d5b6d7459d8f2104955} 
+void Font\+Defaults\+Panel\+::\+Setup\+Dialog (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_design_1_1_page}{Design\+::\+Page}} \texorpdfstring{$\ast$}{*}}]{page}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_font_defaults_panel_8cpp_source_l00218}{218}} of file \mbox{\hyperlink{_font_defaults_panel_8cpp_source}{Font\+Defaults\+Panel.\+cpp}}.
+
+\Hypertarget{class_font_defaults_panel_ae38ac43cc6e791605d305dd183487457}\index{FontDefaultsPanel@{FontDefaultsPanel}!ShowToolTips@{ShowToolTips}}
+\index{ShowToolTips@{ShowToolTips}!FontDefaultsPanel@{FontDefaultsPanel}}
+\doxysubsubsection{\texorpdfstring{ShowToolTips()}{ShowToolTips()}}
+{\footnotesize\ttfamily \label{class_font_defaults_panel_ae38ac43cc6e791605d305dd183487457} 
+bool Font\+Defaults\+Panel\+::\+Show\+Tool\+Tips (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{_font_defaults_panel_8cpp_source_l00225}{225}} of file \mbox{\hyperlink{_font_defaults_panel_8cpp_source}{Font\+Defaults\+Panel.\+cpp}}.
+
+\Hypertarget{class_font_defaults_panel_a251a564c40c1e842870b09021402d677}\index{FontDefaultsPanel@{FontDefaultsPanel}!UpdateControls@{UpdateControls}}
+\index{UpdateControls@{UpdateControls}!FontDefaultsPanel@{FontDefaultsPanel}}
+\doxysubsubsection{\texorpdfstring{UpdateControls()}{UpdateControls()}}
+{\footnotesize\ttfamily \label{class_font_defaults_panel_a251a564c40c1e842870b09021402d677} 
+void Font\+Defaults\+Panel\+::\+Update\+Controls (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_font_defaults_panel_8cpp_source_l00201}{201}} of file \mbox{\hyperlink{_font_defaults_panel_8cpp_source}{Font\+Defaults\+Panel.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/femon/\+Development/wx/clone\+Test/\+Stamp\+Tool/src/gui/\mbox{\hyperlink{_font_defaults_panel_8h}{Font\+Defaults\+Panel.\+h}}\item 
+C\+:/\+Users/femon/\+Development/wx/clone\+Test/\+Stamp\+Tool/src/gui/\mbox{\hyperlink{_font_defaults_panel_8cpp}{Font\+Defaults\+Panel.\+cpp}}\end{DoxyCompactItemize}

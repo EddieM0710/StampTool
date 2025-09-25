@@ -1,0 +1,27 @@
+var class_design_1_1_album_data =
+[
+    [ "AlbumData", "class_design_1_1_album_data.html#af25a3438e258ab3069129da0cf3fcacf", null ],
+    [ "~AlbumData", "class_design_1_1_album_data.html#ae8e85a1394363f447e26a918a77aa8f6", null ],
+    [ "Clear", "class_design_1_1_album_data.html#a9bb709810e9736e09ed115e33dcc84b3", null ],
+    [ "FileOpen", "class_design_1_1_album_data.html#a93085dc3ff7885f17741ebaa3a4dd579", null ],
+    [ "FileSave", "class_design_1_1_album_data.html#ab09076c4f9550f752f7830e701196676", null ],
+    [ "FileSaveAs", "class_design_1_1_album_data.html#af2f1b4459898f84665a483355c433000", null ],
+    [ "GetAlbumImagePanel", "class_design_1_1_album_data.html#a78173af4c783f5de7e52816e807a4e81", null ],
+    [ "GetAlbumList", "class_design_1_1_album_data.html#a9e57fca9950944ad4bc6417d9f03bf89", null ],
+    [ "GetAlbumPanel", "class_design_1_1_album_data.html#ab4fdd4e4e55d35665b49bb057b3b6bef", null ],
+    [ "GetAlbumTOCTreeCtrl", "class_design_1_1_album_data.html#a6be9e0afd55f82c8271feb585a47d87a", null ],
+    [ "GetAlbumTreeCtrl", "class_design_1_1_album_data.html#a482697c050bcaf4b33cd5b0d782998d8", null ],
+    [ "GetAlbumVolume", "class_design_1_1_album_data.html#a2d9860a0a63ee8edf1cc880eb1f8ab7f", null ],
+    [ "GetFontList", "class_design_1_1_album_data.html#abfbe3489ddb872538453d64ae6fe56c0", null ],
+    [ "InitAlbumData", "class_design_1_1_album_data.html#a1bb51a84ab01d1e530e8fef98d15a584", null ],
+    [ "LoadData", "class_design_1_1_album_data.html#a34e8e39146bd1727eb20e942d0f577fc", null ],
+    [ "LoadDesignTree", "class_design_1_1_album_data.html#a80cd60074cc741a1c3587f9ab188faca", null ],
+    [ "LoadDesignVolumeFiles", "class_design_1_1_album_data.html#a1f83e6280fc7bc2c3d38dc551bd3e243", null ],
+    [ "LoadNew", "class_design_1_1_album_data.html#ae23eab5ea44c4098d626b2c98de20e1d", null ],
+    [ "NewDesign", "class_design_1_1_album_data.html#a2c6cb332d6a7dcee406a33c1c8e21293", null ],
+    [ "OpenDesign", "class_design_1_1_album_data.html#a672f072ae37887ac78986d1009cb3f21", null ],
+    [ "SetAlbumImagePanel", "class_design_1_1_album_data.html#a13b520b3bc2ceac48fbcf9b81d26fef3", null ],
+    [ "SetAlbumPanel", "class_design_1_1_album_data.html#a64659d6adcb40e1b560943c17e38e70c", null ],
+    [ "SetAlbumTOCTreeCtrl", "class_design_1_1_album_data.html#a7b6f4775f2f5ee46d1f0bc5006bdf627", null ],
+    [ "SetAlbumTreeCtrl", "class_design_1_1_album_data.html#ac30a5b008b1f999f9b3a92795bbd0acd", null ]
+];

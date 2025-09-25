@@ -1,0 +1,286 @@
+\doxysection{Album\+Image\+Panel Class Reference}
+\hypertarget{class_album_image_panel}{}\label{class_album_image_panel}\index{AlbumImagePanel@{AlbumImagePanel}}
+
+
+This is the class that manages the image displayed on the \doxylink{class_stamp_description_panel}{Stamp\+Description\+Panel}.  
+
+
+
+
+{\ttfamily \#include $<$Album\+Image\+Panel.\+h$>$}
+
+Inheritance diagram for Album\+Image\+Panel\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_album_image_panel}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_album_image_panel_a665d67b523b67a78d9e4ba37b6e57cd2}{Album\+Image\+Panel}} ()
+\item 
+\mbox{\hyperlink{class_album_image_panel_a26dd521360d0fbc420692808d7fd1f9f}{Album\+Image\+Panel}} (wx\+Window \texorpdfstring{$\ast$}{*}parent, wx\+Window\+ID id=\mbox{\hyperlink{_album_image_panel_8h_a962717f32fb80d40615bb6cfb8f0e9eb}{SYMBOL\+\_\+\+ALBUMIMAGEPANEL\+\_\+\+IDNAME}}, const wx\+Point \&pos=\mbox{\hyperlink{_album_image_panel_8h_a102e3cd20fb3b145198d238d3799c590}{SYMBOL\+\_\+\+ALBUMIMAGEPANEL\+\_\+\+POSITION}}, const wx\+Size \&size=\mbox{\hyperlink{_album_image_panel_8h_a7925ea4fcfdedd0d2bdbd442d34b0e9d}{SYMBOL\+\_\+\+ALBUMIMAGEPANEL\+\_\+\+SIZE}}, long style=\mbox{\hyperlink{_album_image_panel_8h_a72f28a8ea89cf70576c8670abba7db7e}{SYMBOL\+\_\+\+ALBUMIMAGEPANEL\+\_\+\+STYLE}})
+\item 
+\mbox{\hyperlink{class_album_image_panel_a9f3d5edab3ede55ac8b352653bb54747}{\texorpdfstring{$\sim$}{\string~}\+Album\+Image\+Panel}} ()
+\item 
+void \mbox{\hyperlink{class_album_image_panel_a7597ec93a3f96c068ad5922e705b1efa}{Clear}} ()
+\item 
+bool \mbox{\hyperlink{class_album_image_panel_abdd3b882bffb54ca436e0418ab2a9e14}{Create}} (wx\+Window \texorpdfstring{$\ast$}{*}parent, wx\+Window\+ID id=\mbox{\hyperlink{_album_image_panel_8h_a962717f32fb80d40615bb6cfb8f0e9eb}{SYMBOL\+\_\+\+ALBUMIMAGEPANEL\+\_\+\+IDNAME}}, const wx\+Point \&pos=\mbox{\hyperlink{_album_image_panel_8h_a102e3cd20fb3b145198d238d3799c590}{SYMBOL\+\_\+\+ALBUMIMAGEPANEL\+\_\+\+POSITION}}, const wx\+Size \&size=\mbox{\hyperlink{_album_image_panel_8h_a7925ea4fcfdedd0d2bdbd442d34b0e9d}{SYMBOL\+\_\+\+ALBUMIMAGEPANEL\+\_\+\+SIZE}}, long style=\mbox{\hyperlink{_album_image_panel_8h_a72f28a8ea89cf70576c8670abba7db7e}{SYMBOL\+\_\+\+ALBUMIMAGEPANEL\+\_\+\+STYLE}})
+\item 
+void \mbox{\hyperlink{class_album_image_panel_af883debcbead6ffd558e7d4a9f40be0c}{Create\+Controls}} ()
+\item 
+void \mbox{\hyperlink{class_album_image_panel_a1254d5e3928e568e935baab17cca0b5c}{Draw}} (wx\+DC \&dc, \mbox{\hyperlink{class_design_1_1_layout_base}{Design\+::\+Layout\+Base}} \texorpdfstring{$\ast$}{*}node, wx\+Point pt)
+\item 
+wx\+Size \mbox{\hyperlink{class_album_image_panel_a8e640bbf979abda5c53727b7efc3c344}{Get\+Logical\+Text\+Extent}} (wx\+String text, wx\+Font font)
+\item 
+double \mbox{\hyperlink{class_album_image_panel_aafbffa1f452cada87fdcbf237dd65109}{Get\+User\+Scale}} ()
+\item 
+double \mbox{\hyperlink{class_album_image_panel_ad0d93fd979528bf2b2db723592ad3bb1}{Get\+Zoom}} ()
+\item 
+void \mbox{\hyperlink{class_album_image_panel_aff7b55d34f07862d1ba1c8ca21bd4160}{Init}} ()
+\item 
+wx\+Size \mbox{\hyperlink{class_album_image_panel_a01b968d6baa7ba6588c30d0889fe3251}{Make\+Multi\+Line}} (wx\+String \&text, wx\+Font font, double width)
+\item 
+void \mbox{\hyperlink{class_album_image_panel_a19cade398969ff67f11b5fa7a11c7997}{Paint\+PDF}} ()
+\item 
+void \mbox{\hyperlink{class_album_image_panel_a2dbe7a7ec1744fe7863d382a40b60a0e}{On\+Context\+Menu}} (wx\+Context\+Menu\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_album_image_panel_ae5d99bb03b991848285adbef91f0d340}{On\+Delete\+Item}} ()
+\item 
+void \mbox{\hyperlink{class_album_image_panel_a4c49a7bd736a8b482d15ae642635a905}{On\+Edit\+Details}} ()
+\item 
+void \mbox{\hyperlink{class_album_image_panel_afb9576355f3c9e74963bbdc32dea0185}{On\+Left\+Down}} (wx\+Mouse\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_album_image_panel_afde57621dac3d24050b695c62a95acbc}{On\+Paint}} (wx\+Paint\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_album_image_panel_aba48bf932a148ab465a4103fd8dd2c43}{On\+Resize}} (wx\+Command\+Event \&WXUNUSED(event))
+\item 
+void \mbox{\hyperlink{class_album_image_panel_ad1d33cdb6204b6f8af52c8b53241b61f}{Set\+Zoom}} (double zoom)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static bool \mbox{\hyperlink{class_album_image_panel_a390a819ffdc80b8e43d8f19a28031227}{Show\+Tool\+Tips}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This is the class that manages the image displayed on the \doxylink{class_stamp_description_panel}{Stamp\+Description\+Panel}. 
+
+Definition at line \mbox{\hyperlink{_album_image_panel_8h_source_l00048}{48}} of file \mbox{\hyperlink{_album_image_panel_8h_source}{Album\+Image\+Panel.\+h}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_album_image_panel_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_album_image_panel_a665d67b523b67a78d9e4ba37b6e57cd2}\index{AlbumImagePanel@{AlbumImagePanel}!AlbumImagePanel@{AlbumImagePanel}}
+\index{AlbumImagePanel@{AlbumImagePanel}!AlbumImagePanel@{AlbumImagePanel}}
+\doxysubsubsection{\texorpdfstring{AlbumImagePanel()}{AlbumImagePanel()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_album_image_panel_a665d67b523b67a78d9e4ba37b6e57cd2} 
+Album\+Image\+Panel\+::\+Album\+Image\+Panel (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_image_panel_8cpp_source_l00070}{70}} of file \mbox{\hyperlink{_album_image_panel_8cpp_source}{Album\+Image\+Panel.\+cpp}}.
+
+\Hypertarget{class_album_image_panel_a26dd521360d0fbc420692808d7fd1f9f}\index{AlbumImagePanel@{AlbumImagePanel}!AlbumImagePanel@{AlbumImagePanel}}
+\index{AlbumImagePanel@{AlbumImagePanel}!AlbumImagePanel@{AlbumImagePanel}}
+\doxysubsubsection{\texorpdfstring{AlbumImagePanel()}{AlbumImagePanel()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_album_image_panel_a26dd521360d0fbc420692808d7fd1f9f} 
+Album\+Image\+Panel\+::\+Album\+Image\+Panel (\begin{DoxyParamCaption}\item[{wx\+Window \texorpdfstring{$\ast$}{*}}]{parent}{, }\item[{wx\+Window\+ID}]{id}{ = {\ttfamily \mbox{\hyperlink{_album_image_panel_8h_a962717f32fb80d40615bb6cfb8f0e9eb}{SYMBOL\+\_\+\+ALBUMIMAGEPANEL\+\_\+\+IDNAME}}}, }\item[{const wx\+Point \&}]{pos}{ = {\ttfamily \mbox{\hyperlink{_album_image_panel_8h_a102e3cd20fb3b145198d238d3799c590}{SYMBOL\+\_\+\+ALBUMIMAGEPANEL\+\_\+\+POSITION}}}, }\item[{const wx\+Size \&}]{size}{ = {\ttfamily \mbox{\hyperlink{_album_image_panel_8h_a7925ea4fcfdedd0d2bdbd442d34b0e9d}{SYMBOL\+\_\+\+ALBUMIMAGEPANEL\+\_\+\+SIZE}}}, }\item[{long}]{style}{ = {\ttfamily \mbox{\hyperlink{_album_image_panel_8h_a72f28a8ea89cf70576c8670abba7db7e}{SYMBOL\+\_\+\+ALBUMIMAGEPANEL\+\_\+\+STYLE}}}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_image_panel_8cpp_source_l00077}{77}} of file \mbox{\hyperlink{_album_image_panel_8cpp_source}{Album\+Image\+Panel.\+cpp}}.
+
+\Hypertarget{class_album_image_panel_a9f3d5edab3ede55ac8b352653bb54747}\index{AlbumImagePanel@{AlbumImagePanel}!````~AlbumImagePanel@{\texorpdfstring{$\sim$}{\string~}AlbumImagePanel}}
+\index{````~AlbumImagePanel@{\texorpdfstring{$\sim$}{\string~}AlbumImagePanel}!AlbumImagePanel@{AlbumImagePanel}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}AlbumImagePanel()}{\string~AlbumImagePanel()}}
+{\footnotesize\ttfamily \label{class_album_image_panel_a9f3d5edab3ede55ac8b352653bb54747} 
+Album\+Image\+Panel\+::\texorpdfstring{$\sim$}{\string~}\+Album\+Image\+Panel (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_image_panel_8cpp_source_l00086}{86}} of file \mbox{\hyperlink{_album_image_panel_8cpp_source}{Album\+Image\+Panel.\+cpp}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_album_image_panel_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_album_image_panel_a7597ec93a3f96c068ad5922e705b1efa}\index{AlbumImagePanel@{AlbumImagePanel}!Clear@{Clear}}
+\index{Clear@{Clear}!AlbumImagePanel@{AlbumImagePanel}}
+\doxysubsubsection{\texorpdfstring{Clear()}{Clear()}}
+{\footnotesize\ttfamily \label{class_album_image_panel_a7597ec93a3f96c068ad5922e705b1efa} 
+void Album\+Image\+Panel\+::\+Clear (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_image_panel_8cpp_source_l00092}{92}} of file \mbox{\hyperlink{_album_image_panel_8cpp_source}{Album\+Image\+Panel.\+cpp}}.
+
+\Hypertarget{class_album_image_panel_abdd3b882bffb54ca436e0418ab2a9e14}\index{AlbumImagePanel@{AlbumImagePanel}!Create@{Create}}
+\index{Create@{Create}!AlbumImagePanel@{AlbumImagePanel}}
+\doxysubsubsection{\texorpdfstring{Create()}{Create()}}
+{\footnotesize\ttfamily \label{class_album_image_panel_abdd3b882bffb54ca436e0418ab2a9e14} 
+bool Album\+Image\+Panel\+::\+Create (\begin{DoxyParamCaption}\item[{wx\+Window \texorpdfstring{$\ast$}{*}}]{parent}{, }\item[{wx\+Window\+ID}]{id}{ = {\ttfamily \mbox{\hyperlink{_album_image_panel_8h_a962717f32fb80d40615bb6cfb8f0e9eb}{SYMBOL\+\_\+\+ALBUMIMAGEPANEL\+\_\+\+IDNAME}}}, }\item[{const wx\+Point \&}]{pos}{ = {\ttfamily \mbox{\hyperlink{_album_image_panel_8h_a102e3cd20fb3b145198d238d3799c590}{SYMBOL\+\_\+\+ALBUMIMAGEPANEL\+\_\+\+POSITION}}}, }\item[{const wx\+Size \&}]{size}{ = {\ttfamily \mbox{\hyperlink{_album_image_panel_8h_a7925ea4fcfdedd0d2bdbd442d34b0e9d}{SYMBOL\+\_\+\+ALBUMIMAGEPANEL\+\_\+\+SIZE}}}, }\item[{long}]{style}{ = {\ttfamily \mbox{\hyperlink{_album_image_panel_8h_a72f28a8ea89cf70576c8670abba7db7e}{SYMBOL\+\_\+\+ALBUMIMAGEPANEL\+\_\+\+STYLE}}}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_image_panel_8cpp_source_l00098}{98}} of file \mbox{\hyperlink{_album_image_panel_8cpp_source}{Album\+Image\+Panel.\+cpp}}.
+
+\Hypertarget{class_album_image_panel_af883debcbead6ffd558e7d4a9f40be0c}\index{AlbumImagePanel@{AlbumImagePanel}!CreateControls@{CreateControls}}
+\index{CreateControls@{CreateControls}!AlbumImagePanel@{AlbumImagePanel}}
+\doxysubsubsection{\texorpdfstring{CreateControls()}{CreateControls()}}
+{\footnotesize\ttfamily \label{class_album_image_panel_af883debcbead6ffd558e7d4a9f40be0c} 
+void Album\+Image\+Panel\+::\+Create\+Controls (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_image_panel_8cpp_source_l00113}{113}} of file \mbox{\hyperlink{_album_image_panel_8cpp_source}{Album\+Image\+Panel.\+cpp}}.
+
+\Hypertarget{class_album_image_panel_a1254d5e3928e568e935baab17cca0b5c}\index{AlbumImagePanel@{AlbumImagePanel}!Draw@{Draw}}
+\index{Draw@{Draw}!AlbumImagePanel@{AlbumImagePanel}}
+\doxysubsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily \label{class_album_image_panel_a1254d5e3928e568e935baab17cca0b5c} 
+void Album\+Image\+Panel\+::\+Draw (\begin{DoxyParamCaption}\item[{wx\+DC \&}]{dc}{, }\item[{\mbox{\hyperlink{class_design_1_1_layout_base}{Design\+::\+Layout\+Base}} \texorpdfstring{$\ast$}{*}}]{node}{, }\item[{wx\+Point}]{pt}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_album_image_panel_a8e640bbf979abda5c53727b7efc3c344}\index{AlbumImagePanel@{AlbumImagePanel}!GetLogicalTextExtent@{GetLogicalTextExtent}}
+\index{GetLogicalTextExtent@{GetLogicalTextExtent}!AlbumImagePanel@{AlbumImagePanel}}
+\doxysubsubsection{\texorpdfstring{GetLogicalTextExtent()}{GetLogicalTextExtent()}}
+{\footnotesize\ttfamily \label{class_album_image_panel_a8e640bbf979abda5c53727b7efc3c344} 
+wx\+Size Album\+Image\+Panel\+::\+Get\+Logical\+Text\+Extent (\begin{DoxyParamCaption}\item[{wx\+String}]{text}{, }\item[{wx\+Font}]{font}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_image_panel_8cpp_source_l00123}{123}} of file \mbox{\hyperlink{_album_image_panel_8cpp_source}{Album\+Image\+Panel.\+cpp}}.
+
+\Hypertarget{class_album_image_panel_aafbffa1f452cada87fdcbf237dd65109}\index{AlbumImagePanel@{AlbumImagePanel}!GetUserScale@{GetUserScale}}
+\index{GetUserScale@{GetUserScale}!AlbumImagePanel@{AlbumImagePanel}}
+\doxysubsubsection{\texorpdfstring{GetUserScale()}{GetUserScale()}}
+{\footnotesize\ttfamily \label{class_album_image_panel_aafbffa1f452cada87fdcbf237dd65109} 
+double Album\+Image\+Panel\+::\+Get\+User\+Scale (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_album_image_panel_8h_source_l00077}{77}} of file \mbox{\hyperlink{_album_image_panel_8h_source}{Album\+Image\+Panel.\+h}}.
+
+\Hypertarget{class_album_image_panel_ad0d93fd979528bf2b2db723592ad3bb1}\index{AlbumImagePanel@{AlbumImagePanel}!GetZoom@{GetZoom}}
+\index{GetZoom@{GetZoom}!AlbumImagePanel@{AlbumImagePanel}}
+\doxysubsubsection{\texorpdfstring{GetZoom()}{GetZoom()}}
+{\footnotesize\ttfamily \label{class_album_image_panel_ad0d93fd979528bf2b2db723592ad3bb1} 
+double Album\+Image\+Panel\+::\+Get\+Zoom (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_album_image_panel_8h_source_l00081}{81}} of file \mbox{\hyperlink{_album_image_panel_8h_source}{Album\+Image\+Panel.\+h}}.
+
+\Hypertarget{class_album_image_panel_aff7b55d34f07862d1ba1c8ca21bd4160}\index{AlbumImagePanel@{AlbumImagePanel}!Init@{Init}}
+\index{Init@{Init}!AlbumImagePanel@{AlbumImagePanel}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily \label{class_album_image_panel_aff7b55d34f07862d1ba1c8ca21bd4160} 
+void Album\+Image\+Panel\+::\+Init (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_image_panel_8cpp_source_l00137}{137}} of file \mbox{\hyperlink{_album_image_panel_8cpp_source}{Album\+Image\+Panel.\+cpp}}.
+
+\Hypertarget{class_album_image_panel_a01b968d6baa7ba6588c30d0889fe3251}\index{AlbumImagePanel@{AlbumImagePanel}!MakeMultiLine@{MakeMultiLine}}
+\index{MakeMultiLine@{MakeMultiLine}!AlbumImagePanel@{AlbumImagePanel}}
+\doxysubsubsection{\texorpdfstring{MakeMultiLine()}{MakeMultiLine()}}
+{\footnotesize\ttfamily \label{class_album_image_panel_a01b968d6baa7ba6588c30d0889fe3251} 
+wx\+Size Album\+Image\+Panel\+::\+Make\+Multi\+Line (\begin{DoxyParamCaption}\item[{wx\+String \&}]{text}{, }\item[{wx\+Font}]{font}{, }\item[{double}]{width}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_image_panel_8cpp_source_l00143}{143}} of file \mbox{\hyperlink{_album_image_panel_8cpp_source}{Album\+Image\+Panel.\+cpp}}.
+
+\Hypertarget{class_album_image_panel_a2dbe7a7ec1744fe7863d382a40b60a0e}\index{AlbumImagePanel@{AlbumImagePanel}!OnContextMenu@{OnContextMenu}}
+\index{OnContextMenu@{OnContextMenu}!AlbumImagePanel@{AlbumImagePanel}}
+\doxysubsubsection{\texorpdfstring{OnContextMenu()}{OnContextMenu()}}
+{\footnotesize\ttfamily \label{class_album_image_panel_a2dbe7a7ec1744fe7863d382a40b60a0e} 
+void Album\+Image\+Panel\+::\+On\+Context\+Menu (\begin{DoxyParamCaption}\item[{wx\+Context\+Menu\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_image_panel_8cpp_source_l00222}{222}} of file \mbox{\hyperlink{_album_image_panel_8cpp_source}{Album\+Image\+Panel.\+cpp}}.
+
+\Hypertarget{class_album_image_panel_ae5d99bb03b991848285adbef91f0d340}\index{AlbumImagePanel@{AlbumImagePanel}!OnDeleteItem@{OnDeleteItem}}
+\index{OnDeleteItem@{OnDeleteItem}!AlbumImagePanel@{AlbumImagePanel}}
+\doxysubsubsection{\texorpdfstring{OnDeleteItem()}{OnDeleteItem()}}
+{\footnotesize\ttfamily \label{class_album_image_panel_ae5d99bb03b991848285adbef91f0d340} 
+void Album\+Image\+Panel\+::\+On\+Delete\+Item (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_image_panel_8cpp_source_l00290}{290}} of file \mbox{\hyperlink{_album_image_panel_8cpp_source}{Album\+Image\+Panel.\+cpp}}.
+
+\Hypertarget{class_album_image_panel_a4c49a7bd736a8b482d15ae642635a905}\index{AlbumImagePanel@{AlbumImagePanel}!OnEditDetails@{OnEditDetails}}
+\index{OnEditDetails@{OnEditDetails}!AlbumImagePanel@{AlbumImagePanel}}
+\doxysubsubsection{\texorpdfstring{OnEditDetails()}{OnEditDetails()}}
+{\footnotesize\ttfamily \label{class_album_image_panel_a4c49a7bd736a8b482d15ae642635a905} 
+void Album\+Image\+Panel\+::\+On\+Edit\+Details (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_album_image_panel_afb9576355f3c9e74963bbdc32dea0185}\index{AlbumImagePanel@{AlbumImagePanel}!OnLeftDown@{OnLeftDown}}
+\index{OnLeftDown@{OnLeftDown}!AlbumImagePanel@{AlbumImagePanel}}
+\doxysubsubsection{\texorpdfstring{OnLeftDown()}{OnLeftDown()}}
+{\footnotesize\ttfamily \label{class_album_image_panel_afb9576355f3c9e74963bbdc32dea0185} 
+void Album\+Image\+Panel\+::\+On\+Left\+Down (\begin{DoxyParamCaption}\item[{wx\+Mouse\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_image_panel_8cpp_source_l00297}{297}} of file \mbox{\hyperlink{_album_image_panel_8cpp_source}{Album\+Image\+Panel.\+cpp}}.
+
+\Hypertarget{class_album_image_panel_afde57621dac3d24050b695c62a95acbc}\index{AlbumImagePanel@{AlbumImagePanel}!OnPaint@{OnPaint}}
+\index{OnPaint@{OnPaint}!AlbumImagePanel@{AlbumImagePanel}}
+\doxysubsubsection{\texorpdfstring{OnPaint()}{OnPaint()}}
+{\footnotesize\ttfamily \label{class_album_image_panel_afde57621dac3d24050b695c62a95acbc} 
+void Album\+Image\+Panel\+::\+On\+Paint (\begin{DoxyParamCaption}\item[{wx\+Paint\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_image_panel_8cpp_source_l00319}{319}} of file \mbox{\hyperlink{_album_image_panel_8cpp_source}{Album\+Image\+Panel.\+cpp}}.
+
+\Hypertarget{class_album_image_panel_aba48bf932a148ab465a4103fd8dd2c43}\index{AlbumImagePanel@{AlbumImagePanel}!OnResize@{OnResize}}
+\index{OnResize@{OnResize}!AlbumImagePanel@{AlbumImagePanel}}
+\doxysubsubsection{\texorpdfstring{OnResize()}{OnResize()}}
+{\footnotesize\ttfamily \label{class_album_image_panel_aba48bf932a148ab465a4103fd8dd2c43} 
+void Album\+Image\+Panel\+::\+On\+Resize (\begin{DoxyParamCaption}\item[{wx\+Command\+Event \&}]{WXUNUSED}{event}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_image_panel_8cpp_source_l00384}{384}} of file \mbox{\hyperlink{_album_image_panel_8cpp_source}{Album\+Image\+Panel.\+cpp}}.
+
+\Hypertarget{class_album_image_panel_a19cade398969ff67f11b5fa7a11c7997}\index{AlbumImagePanel@{AlbumImagePanel}!PaintPDF@{PaintPDF}}
+\index{PaintPDF@{PaintPDF}!AlbumImagePanel@{AlbumImagePanel}}
+\doxysubsubsection{\texorpdfstring{PaintPDF()}{PaintPDF()}}
+{\footnotesize\ttfamily \label{class_album_image_panel_a19cade398969ff67f11b5fa7a11c7997} 
+void Album\+Image\+Panel\+::\+Paint\+PDF (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_album_image_panel_ad1d33cdb6204b6f8af52c8b53241b61f}\index{AlbumImagePanel@{AlbumImagePanel}!SetZoom@{SetZoom}}
+\index{SetZoom@{SetZoom}!AlbumImagePanel@{AlbumImagePanel}}
+\doxysubsubsection{\texorpdfstring{SetZoom()}{SetZoom()}}
+{\footnotesize\ttfamily \label{class_album_image_panel_ad1d33cdb6204b6f8af52c8b53241b61f} 
+void Album\+Image\+Panel\+::\+Set\+Zoom (\begin{DoxyParamCaption}\item[{double}]{zoom}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_album_image_panel_8cpp_source_l00396}{396}} of file \mbox{\hyperlink{_album_image_panel_8cpp_source}{Album\+Image\+Panel.\+cpp}}.
+
+\Hypertarget{class_album_image_panel_a390a819ffdc80b8e43d8f19a28031227}\index{AlbumImagePanel@{AlbumImagePanel}!ShowToolTips@{ShowToolTips}}
+\index{ShowToolTips@{ShowToolTips}!AlbumImagePanel@{AlbumImagePanel}}
+\doxysubsubsection{\texorpdfstring{ShowToolTips()}{ShowToolTips()}}
+{\footnotesize\ttfamily \label{class_album_image_panel_a390a819ffdc80b8e43d8f19a28031227} 
+bool Album\+Image\+Panel\+::\+Show\+Tool\+Tips (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{_album_image_panel_8cpp_source_l00404}{404}} of file \mbox{\hyperlink{_album_image_panel_8cpp_source}{Album\+Image\+Panel.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/femon/\+Development/wx/clone\+Test/\+Stamp\+Tool/src/gui/\mbox{\hyperlink{_album_image_panel_8h}{Album\+Image\+Panel.\+h}}\item 
+C\+:/\+Users/femon/\+Development/wx/clone\+Test/\+Stamp\+Tool/src/gui/\mbox{\hyperlink{_album_image_panel_8cpp}{Album\+Image\+Panel.\+cpp}}\end{DoxyCompactItemize}

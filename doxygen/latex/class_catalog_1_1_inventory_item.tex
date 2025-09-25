@@ -1,0 +1,435 @@
+\doxysection{Catalog\+::Inventory\+Item Class Reference}
+\hypertarget{class_catalog_1_1_inventory_item}{}\label{class_catalog_1_1_inventory_item}\index{Catalog::InventoryItem@{Catalog::InventoryItem}}
+
+
+This is a wrapper of an wx\+Xml\+Node for safe/convenient getting/putting.  
+
+
+
+
+{\ttfamily \#include $<$Inventory\+Item.\+h$>$}
+
+Inheritance diagram for Catalog\+::Inventory\+Item\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_catalog_1_1_inventory_item}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_catalog_1_1_inventory_item_a915f681da7082fe95975a9cc84dd2375}{Inventory\+Item}} ()
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{class_catalog_1_1_inventory_item}{Inventory\+Item} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_catalog_1_1_inventory_item_ae1da20d135d373351fd1197ddbbef5e6}{Inventory\+Item}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}ele)
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{class_catalog_1_1_inventory_item}{Inventory\+Item} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_catalog_1_1_inventory_item_a7d5f2e313d3edc67ec7c35bfeab9fab2}{\texorpdfstring{$\sim$}{\string~}\+Inventory\+Item}} ()
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{class_catalog_1_1_inventory_item}{Inventory\+Item} object. \end{DoxyCompactList}\item 
+wx\+String \mbox{\hyperlink{class_catalog_1_1_inventory_item_aeaa5c1dee5dbbee6076eabe161aa4fa7}{Get\+Attr}} (\mbox{\hyperlink{namespace_catalog_aff34cc1fa92031a5cf463041a34ef3b2}{Item\+Data\+Types}} type)
+\begin{DoxyCompactList}\small\item\em Get the attribute value of type. \end{DoxyCompactList}\item 
+wx\+String \mbox{\hyperlink{class_catalog_1_1_inventory_item_a47140696c35d6f6fce73be35c3588aa6}{Get\+Condition}} ()
+\begin{DoxyCompactList}\small\item\em Get the IDT\+\_\+\+Condition Attribute. \end{DoxyCompactList}\item 
+wx\+Xml\+Node \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_catalog_1_1_inventory_item_a8cadcf956fac0ef7c472d58f1d2ad13c}{Get\+Data}} (wx\+Vector$<$ wx\+Variant $>$ \texorpdfstring{$\ast$}{*}data)
+\begin{DoxyCompactList}\small\item\em Fills the input vector with the \doxylink{class_catalog_1_1_inventory_item}{Inventory\+Item} values and returns the element pointer for convenience. \end{DoxyCompactList}\item 
+wx\+String \mbox{\hyperlink{class_catalog_1_1_inventory_item_ae9161b71204048e18ce4704482940a50}{Get\+Remarks}} ()
+\begin{DoxyCompactList}\small\item\em Get the IDT\+\_\+\+Remarks Attribute. \end{DoxyCompactList}\item 
+wx\+String \mbox{\hyperlink{class_catalog_1_1_inventory_item_acecd7321b8f202eb46bf8a3087c8d94f}{Get\+Type}} ()
+\begin{DoxyCompactList}\small\item\em Get the IDT\+\_\+\+Type Attribute. \end{DoxyCompactList}\item 
+wx\+String \mbox{\hyperlink{class_catalog_1_1_inventory_item_ab381d576125b77d8d0c60b42b33bc1a7}{Get\+Val}} (\mbox{\hyperlink{namespace_catalog_aff34cc1fa92031a5cf463041a34ef3b2}{Item\+Data\+Types}} type)
+\begin{DoxyCompactList}\small\item\em Convenience function. Same as Get\+Attr( type ) \end{DoxyCompactList}\item 
+wx\+String \mbox{\hyperlink{class_catalog_1_1_inventory_item_a0bad0f80ef22cec61bc5514de54995b2}{Get\+Value}} ()
+\begin{DoxyCompactList}\small\item\em Get the IDT\+\_\+\+Value Attribute. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_catalog_1_1_inventory_item_a178347dcad49f14386532bebb51fe329}{Is\+OK}} ()
+\begin{DoxyCompactList}\small\item\em Sanity check instance. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_catalog_1_1_inventory_item_a3e384870c980002b09382c4d0cbee3b3}{Set\+Attr}} (\mbox{\hyperlink{namespace_catalog_aff34cc1fa92031a5cf463041a34ef3b2}{Item\+Data\+Types}} type, wx\+String val)
+\begin{DoxyCompactList}\small\item\em Set the attribute value of type. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_catalog_1_1_inventory_item_aac4ef975475aacd4004d4ffc24a0f76a}{Set\+Condition}} (wx\+String val)
+\begin{DoxyCompactList}\small\item\em Set the IDT\+\_\+\+Condition Attribute. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_catalog_1_1_inventory_item_a016468d6aa166f5baf95398602620b5f}{Set\+Remarks}} (wx\+String val)
+\begin{DoxyCompactList}\small\item\em Set the IDT\+\_\+\+RemarksV Attribute. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_catalog_1_1_inventory_item_a09e39f3330adb888089d0603ccea8224}{Set\+Type}} (wx\+String val)
+\begin{DoxyCompactList}\small\item\em Set the IDT\+\_\+\+Type Attribute. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_catalog_1_1_inventory_item_a4d29929fbe821b50f46d3024042f8815}{Set\+Val}} (\mbox{\hyperlink{namespace_catalog_aff34cc1fa92031a5cf463041a34ef3b2}{Item\+Data\+Types}} type, wx\+String val)
+\begin{DoxyCompactList}\small\item\em Convenience function. Same as SGet\+Attr( type ) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_catalog_1_1_inventory_item_a22a1b70fe143e90dc769f9bcfab70e76}{Set\+Value}} (wx\+String val)
+\begin{DoxyCompactList}\small\item\em Set the IDT\+\_\+\+Value Attribute. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_catalog_1_1_catalog_base}{Catalog\+::\+Catalog\+Base}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_catalog_1_1_catalog_base_a8b9ece6806489f6cd0bcd6aa39eb17a8}{Catalog\+Base}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}ele)
+\item 
+\mbox{\hyperlink{class_catalog_1_1_catalog_base_abac3dd13dc14aa6c47ebbdd78dd24e78}{\texorpdfstring{$\sim$}{\string~}\+Catalog\+Base}} ()
+\item 
+wx\+Xml\+Node \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_catalog_1_1_catalog_base_a20c800594b9f7d8e1a965252cfab3c93}{Get\+Cat\+XMLNode}} ()
+\item 
+wx\+Xml\+Node \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_catalog_1_1_catalog_base_a6c34ff464a7303a6525cc6248bba9266}{Get\+First\+Child}} ()
+\item 
+wx\+String \mbox{\hyperlink{class_catalog_1_1_catalog_base_ad4b7489a8a1f18eebf39f20946c5d9ce}{Get\+Node\+Attr\+Str}} (wx\+String name)
+\item 
+double \mbox{\hyperlink{class_catalog_1_1_catalog_base_a40c67de1b176d5aa45c20dee0d4ffc6e}{Get\+Node\+Attr\+Dbl}} (wx\+String name)
+\item 
+\mbox{\hyperlink{namespace_catalog_a86f503ced35b06e6427477ddab27c6be}{Catalog\+Base\+Type}} \mbox{\hyperlink{class_catalog_1_1_catalog_base_a04468447aa0091bc6030ae768bf4c256}{Get\+Node\+Type}} ()
+\item 
+void \mbox{\hyperlink{class_catalog_1_1_catalog_base_acfff9a14c74a6068f7c77f365687b16d}{Set\+Node\+Attr\+Str}} (wx\+String name, wx\+String val)
+\item 
+void \mbox{\hyperlink{class_catalog_1_1_catalog_base_a1fc4ebc318db1def6be9931d6257ff76}{Set\+Node\+Attr\+Dbl}} (wx\+String name, double val)
+\item 
+void \mbox{\hyperlink{class_catalog_1_1_catalog_base_af9b0c273a3d23cda1693bc20daef6ce2}{Set\+Node\+Type}} (\mbox{\hyperlink{namespace_catalog_a86f503ced35b06e6427477ddab27c6be}{Catalog\+Base\+Type}} type)
+\item 
+void \mbox{\hyperlink{class_catalog_1_1_catalog_base_ad9dd1219516a68d1123431ffcd8933fc}{Set\+XMLCat\+Node}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}node)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_catalog_1_1_catalog_base}{Catalog\+::\+Catalog\+Base}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_catalog_1_1_catalog_base_a613406c607f4dcc6cdd3ffddd8c18523}{Catalog\+Base}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This is a wrapper of an wx\+Xml\+Node for safe/convenient getting/putting. 
+
+\begin{DoxySeeAlso}{See also}
+\doxylink{class_catalog_1_1_catalog_base}{Catalog\+Base}, Stamp, \doxylink{class_catalog_1_1_inventory_item}{Inventory\+Item} 
+\end{DoxySeeAlso}
+
+
+Definition at line \mbox{\hyperlink{_inventory_item_8h_source_l00046}{46}} of file \mbox{\hyperlink{_inventory_item_8h_source}{Inventory\+Item.\+h}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_catalog_1_1_inventory_item_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_catalog_1_1_inventory_item_a915f681da7082fe95975a9cc84dd2375}\index{Catalog::InventoryItem@{Catalog::InventoryItem}!InventoryItem@{InventoryItem}}
+\index{InventoryItem@{InventoryItem}!Catalog::InventoryItem@{Catalog::InventoryItem}}
+\doxysubsubsection{\texorpdfstring{InventoryItem()}{InventoryItem()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_inventory_item_a915f681da7082fe95975a9cc84dd2375} 
+Catalog\+::\+Inventory\+Item\+::\+Inventory\+Item (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct a new \doxylink{class_catalog_1_1_inventory_item}{Inventory\+Item} object. 
+
+
+
+Definition at line \mbox{\hyperlink{_inventory_item_8h_source_l00053}{53}} of file \mbox{\hyperlink{_inventory_item_8h_source}{Inventory\+Item.\+h}}.
+
+\Hypertarget{class_catalog_1_1_inventory_item_ae1da20d135d373351fd1197ddbbef5e6}\index{Catalog::InventoryItem@{Catalog::InventoryItem}!InventoryItem@{InventoryItem}}
+\index{InventoryItem@{InventoryItem}!Catalog::InventoryItem@{Catalog::InventoryItem}}
+\doxysubsubsection{\texorpdfstring{InventoryItem()}{InventoryItem()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_inventory_item_ae1da20d135d373351fd1197ddbbef5e6} 
+Catalog\+::\+Inventory\+Item\+::\+Inventory\+Item (\begin{DoxyParamCaption}\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{ele}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct a new \doxylink{class_catalog_1_1_inventory_item}{Inventory\+Item} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ele} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_inventory_item_8h_source_l00062}{62}} of file \mbox{\hyperlink{_inventory_item_8h_source}{Inventory\+Item.\+h}}.
+
+\Hypertarget{class_catalog_1_1_inventory_item_a7d5f2e313d3edc67ec7c35bfeab9fab2}\index{Catalog::InventoryItem@{Catalog::InventoryItem}!````~InventoryItem@{\texorpdfstring{$\sim$}{\string~}InventoryItem}}
+\index{````~InventoryItem@{\texorpdfstring{$\sim$}{\string~}InventoryItem}!Catalog::InventoryItem@{Catalog::InventoryItem}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}InventoryItem()}{\string~InventoryItem()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_inventory_item_a7d5f2e313d3edc67ec7c35bfeab9fab2} 
+Catalog\+::\+Inventory\+Item\+::\texorpdfstring{$\sim$}{\string~}\+Inventory\+Item (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Destroy the \doxylink{class_catalog_1_1_inventory_item}{Inventory\+Item} object. 
+
+
+
+Definition at line \mbox{\hyperlink{_inventory_item_8h_source_l00070}{70}} of file \mbox{\hyperlink{_inventory_item_8h_source}{Inventory\+Item.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_catalog_1_1_inventory_item_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_catalog_1_1_inventory_item_aeaa5c1dee5dbbee6076eabe161aa4fa7}\index{Catalog::InventoryItem@{Catalog::InventoryItem}!GetAttr@{GetAttr}}
+\index{GetAttr@{GetAttr}!Catalog::InventoryItem@{Catalog::InventoryItem}}
+\doxysubsubsection{\texorpdfstring{GetAttr()}{GetAttr()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_inventory_item_aeaa5c1dee5dbbee6076eabe161aa4fa7} 
+wx\+String Catalog\+::\+Inventory\+Item\+::\+Get\+Attr (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_catalog_aff34cc1fa92031a5cf463041a34ef3b2}{Item\+Data\+Types}}}]{type}{}\end{DoxyParamCaption})}
+
+
+
+Get the attribute value of type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+wx\+String 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_inventory_item_8cpp_source_l00042}{42}} of file \mbox{\hyperlink{_inventory_item_8cpp_source}{Inventory\+Item.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_inventory_item_a47140696c35d6f6fce73be35c3588aa6}\index{Catalog::InventoryItem@{Catalog::InventoryItem}!GetCondition@{GetCondition}}
+\index{GetCondition@{GetCondition}!Catalog::InventoryItem@{Catalog::InventoryItem}}
+\doxysubsubsection{\texorpdfstring{GetCondition()}{GetCondition()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_inventory_item_a47140696c35d6f6fce73be35c3588aa6} 
+wx\+String Catalog\+::\+Inventory\+Item\+::\+Get\+Condition (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the IDT\+\_\+\+Condition Attribute. 
+
+\begin{DoxyReturn}{Returns}
+wx\+String 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_inventory_item_8h_source_l00081}{81}} of file \mbox{\hyperlink{_inventory_item_8h_source}{Inventory\+Item.\+h}}.
+
+\Hypertarget{class_catalog_1_1_inventory_item_a8cadcf956fac0ef7c472d58f1d2ad13c}\index{Catalog::InventoryItem@{Catalog::InventoryItem}!GetData@{GetData}}
+\index{GetData@{GetData}!Catalog::InventoryItem@{Catalog::InventoryItem}}
+\doxysubsubsection{\texorpdfstring{GetData()}{GetData()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_inventory_item_a8cadcf956fac0ef7c472d58f1d2ad13c} 
+wx\+Xml\+Node \texorpdfstring{$\ast$}{*} Catalog\+::\+Inventory\+Item\+::\+Get\+Data (\begin{DoxyParamCaption}\item[{wx\+Vector$<$ wx\+Variant $>$ \texorpdfstring{$\ast$}{*}}]{data}{}\end{DoxyParamCaption})}
+
+
+
+Fills the input vector with the \doxylink{class_catalog_1_1_inventory_item}{Inventory\+Item} values and returns the element pointer for convenience. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+wx\+Xml\+Node\texorpdfstring{$\ast$}{*} 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_inventory_item_8cpp_source_l00055}{55}} of file \mbox{\hyperlink{_inventory_item_8cpp_source}{Inventory\+Item.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_inventory_item_ae9161b71204048e18ce4704482940a50}\index{Catalog::InventoryItem@{Catalog::InventoryItem}!GetRemarks@{GetRemarks}}
+\index{GetRemarks@{GetRemarks}!Catalog::InventoryItem@{Catalog::InventoryItem}}
+\doxysubsubsection{\texorpdfstring{GetRemarks()}{GetRemarks()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_inventory_item_ae9161b71204048e18ce4704482940a50} 
+wx\+String Catalog\+::\+Inventory\+Item\+::\+Get\+Remarks (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the IDT\+\_\+\+Remarks Attribute. 
+
+\begin{DoxyReturn}{Returns}
+wx\+String 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_inventory_item_8h_source_l00101}{101}} of file \mbox{\hyperlink{_inventory_item_8h_source}{Inventory\+Item.\+h}}.
+
+\Hypertarget{class_catalog_1_1_inventory_item_acecd7321b8f202eb46bf8a3087c8d94f}\index{Catalog::InventoryItem@{Catalog::InventoryItem}!GetType@{GetType}}
+\index{GetType@{GetType}!Catalog::InventoryItem@{Catalog::InventoryItem}}
+\doxysubsubsection{\texorpdfstring{GetType()}{GetType()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_inventory_item_acecd7321b8f202eb46bf8a3087c8d94f} 
+wx\+String Catalog\+::\+Inventory\+Item\+::\+Get\+Type (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the IDT\+\_\+\+Type Attribute. 
+
+\begin{DoxyReturn}{Returns}
+wx\+String 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_inventory_item_8h_source_l00108}{108}} of file \mbox{\hyperlink{_inventory_item_8h_source}{Inventory\+Item.\+h}}.
+
+\Hypertarget{class_catalog_1_1_inventory_item_ab381d576125b77d8d0c60b42b33bc1a7}\index{Catalog::InventoryItem@{Catalog::InventoryItem}!GetVal@{GetVal}}
+\index{GetVal@{GetVal}!Catalog::InventoryItem@{Catalog::InventoryItem}}
+\doxysubsubsection{\texorpdfstring{GetVal()}{GetVal()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_inventory_item_ab381d576125b77d8d0c60b42b33bc1a7} 
+wx\+String Catalog\+::\+Inventory\+Item\+::\+Get\+Val (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_catalog_aff34cc1fa92031a5cf463041a34ef3b2}{Item\+Data\+Types}}}]{type}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Convenience function. Same as Get\+Attr( type ) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+wx\+String 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_inventory_item_8h_source_l00116}{116}} of file \mbox{\hyperlink{_inventory_item_8h_source}{Inventory\+Item.\+h}}.
+
+\Hypertarget{class_catalog_1_1_inventory_item_a0bad0f80ef22cec61bc5514de54995b2}\index{Catalog::InventoryItem@{Catalog::InventoryItem}!GetValue@{GetValue}}
+\index{GetValue@{GetValue}!Catalog::InventoryItem@{Catalog::InventoryItem}}
+\doxysubsubsection{\texorpdfstring{GetValue()}{GetValue()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_inventory_item_a0bad0f80ef22cec61bc5514de54995b2} 
+wx\+String Catalog\+::\+Inventory\+Item\+::\+Get\+Value (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the IDT\+\_\+\+Value Attribute. 
+
+\begin{DoxyReturn}{Returns}
+wx\+String 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_inventory_item_8h_source_l00123}{123}} of file \mbox{\hyperlink{_inventory_item_8h_source}{Inventory\+Item.\+h}}.
+
+\Hypertarget{class_catalog_1_1_inventory_item_a178347dcad49f14386532bebb51fe329}\index{Catalog::InventoryItem@{Catalog::InventoryItem}!IsOK@{IsOK}}
+\index{IsOK@{IsOK}!Catalog::InventoryItem@{Catalog::InventoryItem}}
+\doxysubsubsection{\texorpdfstring{IsOK()}{IsOK()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_inventory_item_a178347dcad49f14386532bebb51fe329} 
+bool Catalog\+::\+Inventory\+Item\+::\+Is\+OK (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Sanity check instance. 
+
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_catalog_1_1_catalog_base_a40ba46a2ab0e54242fc9b65e3a85bc4a}{Catalog\+::\+Catalog\+Base}}.
+
+
+
+Definition at line \mbox{\hyperlink{_inventory_item_8cpp_source_l00065}{65}} of file \mbox{\hyperlink{_inventory_item_8cpp_source}{Inventory\+Item.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_inventory_item_a3e384870c980002b09382c4d0cbee3b3}\index{Catalog::InventoryItem@{Catalog::InventoryItem}!SetAttr@{SetAttr}}
+\index{SetAttr@{SetAttr}!Catalog::InventoryItem@{Catalog::InventoryItem}}
+\doxysubsubsection{\texorpdfstring{SetAttr()}{SetAttr()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_inventory_item_a3e384870c980002b09382c4d0cbee3b3} 
+void Catalog\+::\+Inventory\+Item\+::\+Set\+Attr (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_catalog_aff34cc1fa92031a5cf463041a34ef3b2}{Item\+Data\+Types}}}]{type}{, }\item[{wx\+String}]{val}{}\end{DoxyParamCaption})}
+
+
+
+Set the attribute value of type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & \\
+\hline
+{\em val} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_inventory_item_8cpp_source_l00077}{77}} of file \mbox{\hyperlink{_inventory_item_8cpp_source}{Inventory\+Item.\+cpp}}.
+
+\Hypertarget{class_catalog_1_1_inventory_item_aac4ef975475aacd4004d4ffc24a0f76a}\index{Catalog::InventoryItem@{Catalog::InventoryItem}!SetCondition@{SetCondition}}
+\index{SetCondition@{SetCondition}!Catalog::InventoryItem@{Catalog::InventoryItem}}
+\doxysubsubsection{\texorpdfstring{SetCondition()}{SetCondition()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_inventory_item_aac4ef975475aacd4004d4ffc24a0f76a} 
+void Catalog\+::\+Inventory\+Item\+::\+Set\+Condition (\begin{DoxyParamCaption}\item[{wx\+String}]{val}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set the IDT\+\_\+\+Condition Attribute. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em val} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_inventory_item_8h_source_l00142}{142}} of file \mbox{\hyperlink{_inventory_item_8h_source}{Inventory\+Item.\+h}}.
+
+\Hypertarget{class_catalog_1_1_inventory_item_a016468d6aa166f5baf95398602620b5f}\index{Catalog::InventoryItem@{Catalog::InventoryItem}!SetRemarks@{SetRemarks}}
+\index{SetRemarks@{SetRemarks}!Catalog::InventoryItem@{Catalog::InventoryItem}}
+\doxysubsubsection{\texorpdfstring{SetRemarks()}{SetRemarks()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_inventory_item_a016468d6aa166f5baf95398602620b5f} 
+void Catalog\+::\+Inventory\+Item\+::\+Set\+Remarks (\begin{DoxyParamCaption}\item[{wx\+String}]{val}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set the IDT\+\_\+\+RemarksV Attribute. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em val} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_inventory_item_8h_source_l00149}{149}} of file \mbox{\hyperlink{_inventory_item_8h_source}{Inventory\+Item.\+h}}.
+
+\Hypertarget{class_catalog_1_1_inventory_item_a09e39f3330adb888089d0603ccea8224}\index{Catalog::InventoryItem@{Catalog::InventoryItem}!SetType@{SetType}}
+\index{SetType@{SetType}!Catalog::InventoryItem@{Catalog::InventoryItem}}
+\doxysubsubsection{\texorpdfstring{SetType()}{SetType()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_inventory_item_a09e39f3330adb888089d0603ccea8224} 
+void Catalog\+::\+Inventory\+Item\+::\+Set\+Type (\begin{DoxyParamCaption}\item[{wx\+String}]{val}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set the IDT\+\_\+\+Type Attribute. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em val} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_inventory_item_8h_source_l00156}{156}} of file \mbox{\hyperlink{_inventory_item_8h_source}{Inventory\+Item.\+h}}.
+
+\Hypertarget{class_catalog_1_1_inventory_item_a4d29929fbe821b50f46d3024042f8815}\index{Catalog::InventoryItem@{Catalog::InventoryItem}!SetVal@{SetVal}}
+\index{SetVal@{SetVal}!Catalog::InventoryItem@{Catalog::InventoryItem}}
+\doxysubsubsection{\texorpdfstring{SetVal()}{SetVal()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_inventory_item_a4d29929fbe821b50f46d3024042f8815} 
+void Catalog\+::\+Inventory\+Item\+::\+Set\+Val (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_catalog_aff34cc1fa92031a5cf463041a34ef3b2}{Item\+Data\+Types}}}]{type}{, }\item[{wx\+String}]{val}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Convenience function. Same as SGet\+Attr( type ) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & \\
+\hline
+{\em val} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_inventory_item_8h_source_l00164}{164}} of file \mbox{\hyperlink{_inventory_item_8h_source}{Inventory\+Item.\+h}}.
+
+\Hypertarget{class_catalog_1_1_inventory_item_a22a1b70fe143e90dc769f9bcfab70e76}\index{Catalog::InventoryItem@{Catalog::InventoryItem}!SetValue@{SetValue}}
+\index{SetValue@{SetValue}!Catalog::InventoryItem@{Catalog::InventoryItem}}
+\doxysubsubsection{\texorpdfstring{SetValue()}{SetValue()}}
+{\footnotesize\ttfamily \label{class_catalog_1_1_inventory_item_a22a1b70fe143e90dc769f9bcfab70e76} 
+void Catalog\+::\+Inventory\+Item\+::\+Set\+Value (\begin{DoxyParamCaption}\item[{wx\+String}]{val}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set the IDT\+\_\+\+Value Attribute. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em val} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_inventory_item_8h_source_l00171}{171}} of file \mbox{\hyperlink{_inventory_item_8h_source}{Inventory\+Item.\+h}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/femon/\+Development/wx/clone\+Test/\+Stamp\+Tool/src/catalog/\mbox{\hyperlink{_inventory_item_8h}{Inventory\+Item.\+h}}\item 
+C\+:/\+Users/femon/\+Development/wx/clone\+Test/\+Stamp\+Tool/src/catalog/\mbox{\hyperlink{_inventory_item_8cpp}{Inventory\+Item.\+cpp}}\end{DoxyCompactItemize}

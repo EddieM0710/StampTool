@@ -1,0 +1,1777 @@
+\doxysection{Catalog Namespace Reference}
+\hypertarget{namespace_catalog}{}\label{namespace_catalog}\index{Catalog@{Catalog}}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_catalog_1_1_catalog_base}{Catalog\+Base}}
+\begin{DoxyCompactList}\small\item\em Base class for all catalog objects. The catalog objects are initialy loaded from the catalog XML or from a csv file. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_catalog_1_1_catalog_code}{Catalog\+Code}}
+\begin{DoxyCompactList}\small\item\em This is a wrapper of an wx\+Xml\+Node for safe/convenient getting/putting. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_catalog_1_1_catalog_data}{Catalog\+Data}}
+\begin{DoxyCompactList}\small\item\em Links the \doxylink{namespace_catalog}{Catalog} data and \doxylink{namespace_catalog}{Catalog} gui. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_catalog_1_1_catalog_list}{Catalog\+List}}
+\begin{DoxyCompactList}\small\item\em The array that contains all the catalogs. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_catalog_1_1_catalog_volume}{Catalog\+Volume}}
+\item 
+class \mbox{\hyperlink{class_catalog_1_1_entry}{Entry}}
+\begin{DoxyCompactList}\small\item\em This is a wrapper of an wx\+Xml\+Node for safe/convenient getting/putting. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_catalog_1_1_inventory_item}{Inventory\+Item}}
+\begin{DoxyCompactList}\small\item\em This is a wrapper of an wx\+Xml\+Node for safe/convenient getting/putting. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_catalog_1_1_merge_data}{Merge\+Data}}
+\item 
+class \mbox{\hyperlink{class_catalog_1_1_merge_list}{Merge\+List}}
+\item 
+class \mbox{\hyperlink{class_catalog_1_1_mount_c_s_v_data}{Mount\+CSVData}}
+\begin{DoxyCompactList}\small\item\em read/write .csv files. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_catalog_1_1_mounts}{Mounts}}
+\item 
+class \mbox{\hyperlink{class_catalog_1_1_stamp_mount_data}{Stamp\+Mount\+Data}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{class_catalog_1_1_catalog_volume}{Catalog\+Volume}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{namespace_catalog_a4db7f58e0f4f92c71248358dfca24374}{Catalog\+Volume\+Array}}
+\item 
+typedef std\+::unordered\+\_\+map$<$ int, wx\+Tree\+Item\+Id $>$ \mbox{\hyperlink{namespace_catalog_ae8e3d7ef3e510584897ca6e0dd640ef5}{Catalog\+Menu\+IDArray}}
+\item 
+typedef std\+::vector$<$ \mbox{\hyperlink{class_catalog_1_1_merge_data}{Merge\+Data}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{namespace_catalog_a7df5a387600744730d6a9eabcedf2f29}{Merge\+Entry\+List}}
+\item 
+typedef std\+::vector$<$ wx\+String $>$ \mbox{\hyperlink{namespace_catalog_a2acb9f30e1584df2271f07d6353ac6d0}{String\+Array}}
+\item 
+typedef std\+::vector$<$ \mbox{\hyperlink{namespace_catalog_a1aa1ed4c009bdbfbaaa8ca652f987fef}{Mount\+Data\+Types}} $>$ \mbox{\hyperlink{namespace_catalog_a27a261514d5794e3ad90a79e74649501}{Data\+Types\+Array}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{namespace_catalog_a86f503ced35b06e6427477ddab27c6be}{Catalog\+Base\+Type}} \{ \newline
+\mbox{\hyperlink{namespace_catalog_a86f503ced35b06e6427477ddab27c6bead7b08b5e92816b98b1d75a84f21dc404}{NT\+\_\+\+Catalog}} = 0
+, \mbox{\hyperlink{namespace_catalog_a86f503ced35b06e6427477ddab27c6bea8f42457ae8329fb69434b5f074d5d968}{NT\+\_\+\+Country}}
+, \mbox{\hyperlink{namespace_catalog_a86f503ced35b06e6427477ddab27c6beaa362b38edea34b53c25885e58f4f8488}{NT\+\_\+\+Period}}
+, \mbox{\hyperlink{namespace_catalog_a86f503ced35b06e6427477ddab27c6bea9921e120b36ecdefeb35ab42762bf0cf}{NT\+\_\+\+Decade}}
+, \newline
+\mbox{\hyperlink{namespace_catalog_a86f503ced35b06e6427477ddab27c6beaa75c781927bce7a2853988c0b84b05d1}{NT\+\_\+\+Year}}
+, \mbox{\hyperlink{namespace_catalog_a86f503ced35b06e6427477ddab27c6bea2f0fc34bb506e6a1f18c8625f047125d}{NT\+\_\+\+Emission}}
+, \mbox{\hyperlink{namespace_catalog_a86f503ced35b06e6427477ddab27c6bea911ab701edf52a3313f0c3667b00a5d2}{NT\+\_\+\+Status}}
+, \mbox{\hyperlink{namespace_catalog_a86f503ced35b06e6427477ddab27c6bea20458fe158665ebfede2da33c471f6b0}{NT\+\_\+\+Condition}}
+, \newline
+\mbox{\hyperlink{namespace_catalog_a86f503ced35b06e6427477ddab27c6bea1ad93a4e0b2bc3a19a401ce027fb7d2c}{NT\+\_\+\+Entry}}
+, \mbox{\hyperlink{namespace_catalog_a86f503ced35b06e6427477ddab27c6bea87e3a3d935187422810ee75792d359f5}{NT\+\_\+\+Inventory}}
+, \mbox{\hyperlink{namespace_catalog_a86f503ced35b06e6427477ddab27c6beae51b23e55cb21a0ee281b9c9806c094e}{NT\+\_\+\+Item}}
+, \mbox{\hyperlink{namespace_catalog_a86f503ced35b06e6427477ddab27c6beadb90cc0e0ea2b65b0004617ed289a99a}{NT\+\_\+\+None}}
+, \newline
+\mbox{\hyperlink{namespace_catalog_a86f503ced35b06e6427477ddab27c6bea52e97887bc3fb371de0b23678a875c57}{NT\+\_\+\+Nbr\+Types}}
+, \mbox{\hyperlink{namespace_catalog_a86f503ced35b06e6427477ddab27c6beae2d8765d55bbe654565744527a91607c}{NT\+\_\+\+Foriegn}}
+ \}
+\begin{DoxyCompactList}\small\item\em Enum defining Entry node types. One of NT\+\_\+\+Catalog = 0, NT\+\_\+\+Country, NT\+\_\+\+Period, NT\+\_\+\+Decade, NT\+\_\+\+Year, NT\+\_\+\+Emission, NT\+\_\+\+Status, NT\+\_\+\+Condition, NT\+\_\+\+Entry, NT\+\_\+\+Inventory, NT\+\_\+\+Item, NT\+\_\+\+None. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{namespace_catalog_ae547094e129067e4932fdc46084369a8}{Checked\+Status\+Type}} \{ \mbox{\hyperlink{namespace_catalog_ae547094e129067e4932fdc46084369a8a20278471af50b7cd121ec36b0885c366}{ST\+\_\+\+Unchecked}} = 0
+, \mbox{\hyperlink{namespace_catalog_ae547094e129067e4932fdc46084369a8aad0844dc3150a6f449975245f97b8c01}{ST\+\_\+\+Checked}}
+, \mbox{\hyperlink{namespace_catalog_ae547094e129067e4932fdc46084369a8a7a5421ebe2a144a5554720acb658feff}{ST\+\_\+\+Nbr\+Checked\+Status\+Types}}
+ \}
+\begin{DoxyCompactList}\small\item\em ST\+\_\+\+Unchecked , ST\+\_\+\+Checked,, ST\+\_\+\+Nbr\+Checked\+Status\+Types. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176}{Data\+Types}} \{ \newline
+\mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176aabd36ff22239011f8c5ed2d79ef06653}{DT\+\_\+\+Name}} = 0
+, \mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176a0b719c5206e0b426a46d5e5bbfdba537}{DT\+\_\+\+Country}}
+, \mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176ac47d4b2fd73442a618c99b2cf7fc661b}{DT\+\_\+\+Series}}
+, \mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176a817af092e0ed172a75b6ac59659deef7}{DT\+\_\+\+Catalog\+\_\+\+Codes}}
+, \newline
+\mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176ab4c33b641900010f37b6a8f4fc01f141}{DT\+\_\+\+Issued\+\_\+on}}
+, \mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176aba755a06832e67bd7dabd5e8a4071ad2}{DT\+\_\+\+Expiry\+\_\+date}}
+, \mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176a5f1550ef1b81edc16c46c2f26cde8885}{DT\+\_\+\+Width}}
+, \mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176ae34fe6e4b8d2e52203adf4e9106a9aac}{DT\+\_\+\+Height}}
+, \newline
+\mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176acb7d6689880e0d58e18d337c80c675d3}{DT\+\_\+\+Paper}}
+, \mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176a9edbc149389df70894ca0324365aa2e7}{DT\+\_\+\+Watermark}}
+, \mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176a6e3086a8dfbc54f2152f2f4ba8e70ab4}{DT\+\_\+\+Emission}}
+, \mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176aba7c938c6a6ac9f8a9e23d7cb892192a}{DT\+\_\+\+Format}}
+, \newline
+\mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176aa5fb8e583f6b876e7d991014b5111ecb}{DT\+\_\+\+Perforation}}
+, \mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176a39b5fdbbd7bb9552123dccbcd7663491}{DT\+\_\+\+Printing}}
+, \mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176a3493c5f5c884f7eeab86fd4ddcfe8bb8}{DT\+\_\+\+Gum}}
+, \mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176a79f8e077ccfaaae4475269dc2ac149fb}{DT\+\_\+\+Currency}}
+, \newline
+\mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176adf2f3b6781ae28e39cf9c33bc14045b6}{DT\+\_\+\+Face\+Value}}
+, \mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176a241a54ad478b570d4cd86ba3dd645afc}{DT\+\_\+\+Print\+\_\+run}}
+, \mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176a7e6ac084f827fa1b21a4647345c035fd}{DT\+\_\+\+Variant}}
+, \mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176aba38c876bc0492d4e7ae525336bf879a}{DT\+\_\+\+Score}}
+, \newline
+\mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176ae1b69bba8c4d742ff8fc1ea0fb05b5b2}{DT\+\_\+\+Accuracy}}
+, \mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176afe87a47bd37e17f8c55f3a62d0c53280}{DT\+\_\+\+Colors}}
+, \mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176a6cacf512ede6c15399dc8cce295dc85c}{DT\+\_\+\+Themes}}
+, \mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176a2c31bdda498459754e4c5ac91f37c1e0}{DT\+\_\+\+Description}}
+, \newline
+\mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176abc3b0759ec71eccc9f82490fb9f7d9f9}{DT\+\_\+\+Link}}
+, \mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176ac266cf02767aa599eeb39d3682ab7f6e}{DT\+\_\+\+Inventory\+Status}}
+, \mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176a3b032fbf5609ce35d198462d63594bf0}{DT\+\_\+\+Stamp\+Mount}}
+, \mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176a433af4777ab0807a223314476201c81a}{DT\+\_\+\+Back\+Ground}}
+, \newline
+\mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176ac949b88113dd4bc3e8d2c1d953775a9a}{DT\+\_\+\+Collapse\+State}}
+, \mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176ab1b5b0ea423e1ecd12339144973ddc5f}{DT\+\_\+\+Image\+Name}}
+, \mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176a61ce03037e0635b621097ac2d4f37b03}{DT\+\_\+\+Nbr\+Types}}
+ \}
+\begin{DoxyCompactList}\small\item\em Enum defining data types; i.\+e., fields in a entry. One of DT\+\_\+\+Name, DT\+\_\+\+Country, DT\+\_\+\+Series, DT\+\_\+\+Catalog\+\_\+\+Codes, DT\+\_\+\+Issued\+\_\+on, DT\+\_\+\+Expiry\+\_\+date, DT\+\_\+\+Width, DT\+\_\+\+Height, DT\+\_\+\+Paper, DT\+\_\+\+Watermark, DT\+\_\+\+Emission, DT\+\_\+\+Format, DT\+\_\+\+Perforation, DT\+\_\+\+Printing, DT\+\_\+\+Gum, DT\+\_\+\+Currency, DT\+\_\+\+Face\+Value, DT\+\_\+\+Print\+\_\+run, DT\+\_\+\+Variant, DT\+\_\+\+Score, DT\+\_\+\+Accuracy, DT\+\_\+\+Colors, DT\+\_\+\+Themes, DT\+\_\+\+Description, DT\+\_\+\+Link, DT\+\_\+\+Inventory\+Status, DT\+\_\+\+Stamp\+Mount, DT\+\_\+\+Back\+Ground,. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acd}{Emission\+Type}} \{ \newline
+\mbox{\hyperlink{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acda1ea963c3732b95e24d9b4cfe59eac5e7}{ET\+\_\+\+Unknown}} = 0
+, \mbox{\hyperlink{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acdae8609b3b7175c2bc282c2474d98ac551}{ET\+\_\+\+Commemorative}}
+, \mbox{\hyperlink{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acda019c0dcf109b9886a86625d627cfc07a}{ET\+\_\+\+Definitive}}
+, \mbox{\hyperlink{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acda88a123573f515b4b855d48e299b7701d}{ET\+\_\+\+Hunting\+Permit}}
+, \newline
+\mbox{\hyperlink{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acda3bf00b8da05bb451340dd55fb29a8fb9}{ET\+\_\+\+Revenue}}
+, \mbox{\hyperlink{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acda7a8002df073d26f4359b4e4b3e43f08d}{ET\+\_\+\+Air\+Post}}
+, \mbox{\hyperlink{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acda58054ad1938fe17f6a02439821d631b2}{ET\+\_\+\+Air\+Post\+Official}}
+, \mbox{\hyperlink{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acdaa0490d72a675ce975bd1fe2551a75d46}{ET\+\_\+\+Air\+Post\+Semi\+Postal}}
+, \newline
+\mbox{\hyperlink{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acda1c322f217ea4d26cd2b6c2b16a0cfc0f}{ET\+\_\+\+ATMlabels}}
+, \mbox{\hyperlink{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acda48cc95044be7330ba97fb7bf83f27acb}{ET\+\_\+\+Cinderella}}
+, \mbox{\hyperlink{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acda0780f8e8819e03aff8b22667ecf441f8}{ET\+\_\+\+Illegal}}
+, \mbox{\hyperlink{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acda025369bf2a66dbeadb79ae26c1f15f34}{ET\+\_\+\+Insured\+Letter}}
+, \newline
+\mbox{\hyperlink{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acda6f40d1b034b24c7511eb47333412589e}{ET\+\_\+\+Military}}
+, \mbox{\hyperlink{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acda20e7aabf0227d2a91d517e83022cf21e}{ET\+\_\+\+Newspaper}}
+, \mbox{\hyperlink{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acda545368c248f33e67fd84f70ddb25b933}{ET\+\_\+\+Official}}
+, \mbox{\hyperlink{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acda3d1e42f87618317c01ba5b4b0de8a921}{ET\+\_\+\+Parcel\+Post}}
+, \newline
+\mbox{\hyperlink{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acda180a017abec664d783ef735101c4a99c}{ET\+\_\+\+Personal\+Delivery}}
+, \mbox{\hyperlink{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acda2a002f68ac82e836f64764d1cdf72181}{ET\+\_\+\+Personalized}}
+, \mbox{\hyperlink{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acdaf0c9f5e836d2313f25441e851890b872}{ET\+\_\+\+Postage\+Due}}
+, \mbox{\hyperlink{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acdac727fc96436459155cf5837b1f45b491}{ET\+\_\+\+Postal\+Tax}}
+, \newline
+\mbox{\hyperlink{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acdafe8a5e55f6d72f2349d8f88019047874}{ET\+\_\+\+Precancelled}}
+, \mbox{\hyperlink{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acda25ab5295fa52fbf5c4ab11019799eabf}{ET\+\_\+\+Private}}
+, \mbox{\hyperlink{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acdaa59eab426ea1e375b4cb90c9f774aca8}{ET\+\_\+\+Regional}}
+, \mbox{\hyperlink{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acdad35886f9bb8c5625384d58a68baceb61}{ET\+\_\+\+Registration}}
+, \newline
+\mbox{\hyperlink{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acda8fd68992dd785ba6c73fc52c21d688cc}{ET\+\_\+\+Semi\+Postal}}
+, \mbox{\hyperlink{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acda9aee231e8fab6301ed03d4ea5463a81a}{ET\+\_\+\+War\+Tax}}
+, \mbox{\hyperlink{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acda2d561f219b7813c539992726b518751c}{ET\+\_\+\+Nbr\+Types}}
+ \}
+\begin{DoxyCompactList}\small\item\em enum for the stamp emission. One of\+: ET\+\_\+\+Unknown = 0, ET\+\_\+\+Commemorative, ET\+\_\+\+Definitive, ET\+\_\+\+Hunting\+Permit, ET\+\_\+\+Revenue, ET\+\_\+\+Air\+Post, ET\+\_\+\+Air\+Post\+Official, ET\+\_\+\+Air\+Post\+Semi\+Postal, ET\+\_\+\+ATMlabels, ET\+\_\+\+Cinderella, ET\+\_\+\+Illegal, ET\+\_\+\+Insured\+Letter, ET\+\_\+\+Military, ET\+\_\+\+Newspaper, ET\+\_\+\+Official, ET\+\_\+\+Parcel\+Post, ET\+\_\+\+Personal\+Delivery, ET\+\_\+\+Personalized, ET\+\_\+\+Postage\+Due, ET\+\_\+\+Postal\+Tax, ET\+\_\+\+Precancelled, ET\+\_\+\+Private, ET\+\_\+\+Regional, ET\+\_\+\+Registration, ET\+\_\+\+Semi\+Postal, ET\+\_\+\+War\+Tax \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{namespace_catalog_a2ff17ae8cd4986617c22e54b7cf50f89}{Format\+Type}} \{ \newline
+\mbox{\hyperlink{namespace_catalog_a2ff17ae8cd4986617c22e54b7cf50f89acbdb3c807d4fcf9746935b23009e6d14}{FT\+\_\+\+Format\+Unknown}} = 0
+, \mbox{\hyperlink{namespace_catalog_a2ff17ae8cd4986617c22e54b7cf50f89ab613431e40eca8835e4c06744adf1063}{FT\+\_\+\+Stamp}}
+, \mbox{\hyperlink{namespace_catalog_a2ff17ae8cd4986617c22e54b7cf50f89aa7c453e371da6e604238e6378be09778}{FT\+\_\+\+Se\+\_\+tenant}}
+, \mbox{\hyperlink{namespace_catalog_a2ff17ae8cd4986617c22e54b7cf50f89ae0ac5660a759903581aff69a9ba5f507}{FT\+\_\+\+Mini\+\_\+\+Sheet}}
+, \newline
+\mbox{\hyperlink{namespace_catalog_a2ff17ae8cd4986617c22e54b7cf50f89ac843859a02fa372744f3d51e883dac1d}{FT\+\_\+\+Souvenir\+\_\+\+Sheet}}
+, \mbox{\hyperlink{namespace_catalog_a2ff17ae8cd4986617c22e54b7cf50f89a4c94f79bbbab2b6ea6e27247581a7458}{FT\+\_\+\+Booklet}}
+, \mbox{\hyperlink{namespace_catalog_a2ff17ae8cd4986617c22e54b7cf50f89a62406704a892f2088b165a591dafa6c1}{FT\+\_\+\+Booklet\+\_\+\+Pane}}
+, \mbox{\hyperlink{namespace_catalog_a2ff17ae8cd4986617c22e54b7cf50f89af44786bc6f96d802ae6525ce9b92300e}{FT\+\_\+\+Gutter\+\_\+\+Pair}}
+, \newline
+\mbox{\hyperlink{namespace_catalog_a2ff17ae8cd4986617c22e54b7cf50f89a2ef327db8291fb7d9a70ace2be9f6292}{FT\+\_\+\+Stamp\+\_\+with\+\_\+\+Attached\+\_\+\+Label}}
+, \mbox{\hyperlink{namespace_catalog_a2ff17ae8cd4986617c22e54b7cf50f89a76e5c2891d8c034b3ba85025d0e9fd82}{FT\+\_\+\+Tete\+\_\+\+Beche}}
+, \mbox{\hyperlink{namespace_catalog_a2ff17ae8cd4986617c22e54b7cf50f89a58c3e134177350afe2ea382d50cb3286}{FT\+\_\+\+Full\+\_\+\+Pane}}
+, \mbox{\hyperlink{namespace_catalog_a2ff17ae8cd4986617c22e54b7cf50f89a7b37347e60dfcaea4ed88899173207fa}{FT\+\_\+\+Nbr\+Types}}
+ \}
+\begin{DoxyCompactList}\small\item\em Enum defining the format of a entry. One of\+: FT\+\_\+\+Format\+Unknown = 0, FT\+\_\+\+Stamp, FT\+\_\+\+Se\+\_\+tenant, FT\+\_\+\+Mini\+\_\+\+Sheet, FT\+\_\+\+Souvenir\+\_\+\+Sheet, FT\+\_\+\+Booklet, FT\+\_\+\+Booklet\+\_\+\+Pane, FT\+\_\+\+Gutter\+\_\+\+Pair, FT\+\_\+\+Stamp\+\_\+with\+\_\+\+Attached\+\_\+\+Label, FT\+\_\+\+Tete\+\_\+\+Beche,. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{namespace_catalog_a7bc076b172809c869ab8fef63c49e8c3}{Inventory\+Status\+Type}} \{ \newline
+\mbox{\hyperlink{namespace_catalog_a7bc076b172809c869ab8fef63c49e8c3a3c63635bcbda2767ba8e820680f02c50}{ST\+\_\+\+None}} = 0
+, \mbox{\hyperlink{namespace_catalog_a7bc076b172809c869ab8fef63c49e8c3a27ff945e1932884c906961b16546992f}{ST\+\_\+\+Missing}}
+, \mbox{\hyperlink{namespace_catalog_a7bc076b172809c869ab8fef63c49e8c3a8ef029b74317a6ca0273efd7995f2331}{ST\+\_\+\+Ordered}}
+, \mbox{\hyperlink{namespace_catalog_a7bc076b172809c869ab8fef63c49e8c3afb30b7a8974945b07f0c7f2df3ae0249}{ST\+\_\+\+Own}}
+, \newline
+\mbox{\hyperlink{namespace_catalog_a7bc076b172809c869ab8fef63c49e8c3ad8ca0058ea1019f801e0c3f3d645efc7}{ST\+\_\+\+Own\+Variant}}
+, \mbox{\hyperlink{namespace_catalog_a7bc076b172809c869ab8fef63c49e8c3aa467c2eee2b803ead3f4134222a9b0d0}{ST\+\_\+\+Exclude}}
+, \mbox{\hyperlink{namespace_catalog_a7bc076b172809c869ab8fef63c49e8c3a75fc42a4f75f4994518abed41c2699fb}{ST\+\_\+\+Nbr\+Inventory\+Status\+Types}}
+ \}
+\item 
+enum \mbox{\hyperlink{namespace_catalog_aff34cc1fa92031a5cf463041a34ef3b2}{Item\+Data\+Types}} \{ \newline
+\mbox{\hyperlink{namespace_catalog_aff34cc1fa92031a5cf463041a34ef3b2a8154603ef3e931bfe2420ac7f1ad8dd2}{IDT\+\_\+\+Collection}}
+, \mbox{\hyperlink{namespace_catalog_aff34cc1fa92031a5cf463041a34ef3b2a29e0aa208fe3e54d9be8fee50ffeb972}{IDT\+\_\+\+Inventory\+Status}}
+, \mbox{\hyperlink{namespace_catalog_aff34cc1fa92031a5cf463041a34ef3b2a4313a19c63b4abfbd861b0c8c52dddae}{IDT\+\_\+\+Type}}
+, \mbox{\hyperlink{namespace_catalog_aff34cc1fa92031a5cf463041a34ef3b2a9696cb9d9ae35a1e1d771328949a989a}{IDT\+\_\+\+Condition}}
+, \newline
+\mbox{\hyperlink{namespace_catalog_aff34cc1fa92031a5cf463041a34ef3b2a66cf5b84769fa8b481f0e910f0e27361}{IDT\+\_\+\+Value}}
+, \mbox{\hyperlink{namespace_catalog_aff34cc1fa92031a5cf463041a34ef3b2af12c410d29bbd066cad42615eb4046a9}{IDT\+\_\+\+Remarks}}
+, \mbox{\hyperlink{namespace_catalog_aff34cc1fa92031a5cf463041a34ef3b2a2ed57e3723a4c82ab9de0042f5ea5198}{IDT\+\_\+\+Nbr\+Types}}
+ \}
+\begin{DoxyCompactList}\small\item\em Enum defining item data types;. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{namespace_catalog_aa3cbcd4e21ffb2387b5f8956f82fe32c}{Merge\+Overwrite\+Query}} \{ \mbox{\hyperlink{namespace_catalog_aa3cbcd4e21ffb2387b5f8956f82fe32cad5b0e290800aeae00409b33bf9d2e446}{MO\+\_\+\+Cancel}} = 0
+, \mbox{\hyperlink{namespace_catalog_aa3cbcd4e21ffb2387b5f8956f82fe32ca86981e8db6213a8c35e1945efa8dcad4}{MO\+\_\+\+Merge}}
+, \mbox{\hyperlink{namespace_catalog_aa3cbcd4e21ffb2387b5f8956f82fe32ca9406657db8ef1ff76a3a3758f7c4e6df}{MO\+\_\+\+Overwrite}}
+, \mbox{\hyperlink{namespace_catalog_aa3cbcd4e21ffb2387b5f8956f82fe32ca0dc212f7664a49b1ddd07f25c184d7f8}{MO\+\_\+\+Nbr\+Types}}
+ \}
+\begin{DoxyCompactList}\small\item\em Enum for specifying file load process.\+One of\+: MO\+\_\+\+Cancel = 0, MO\+\_\+\+Merge, MO\+\_\+\+Overwrite,. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{namespace_catalog_a5ccc6ae7677459cb9b1484679eeb5221}{Merge\+Procedure}} \{ \newline
+\mbox{\hyperlink{namespace_catalog_a5ccc6ae7677459cb9b1484679eeb5221ac7fd9fa27c9af59fc53df68eb4da2cde}{MP\+\_\+\+Add\+Missing}} = 0
+, \mbox{\hyperlink{namespace_catalog_a5ccc6ae7677459cb9b1484679eeb5221a19ab3071fca0b86a5a32fa608ef53411}{MP\+\_\+\+Add\+Missing\+Entries\+And\+Fields}}
+, \mbox{\hyperlink{namespace_catalog_a5ccc6ae7677459cb9b1484679eeb5221afb18778391967a970d1552ab62844116}{MP\+\_\+\+Add\+Missing\+And\+Overwrite}}
+, \mbox{\hyperlink{namespace_catalog_a5ccc6ae7677459cb9b1484679eeb5221a9bbf837b911c3e74e03474e40feda28d}{MP\+\_\+\+Add\+Missing\+And\+Query}}
+, \newline
+\mbox{\hyperlink{namespace_catalog_a5ccc6ae7677459cb9b1484679eeb5221a0e3c943fa60ee7b52c3bab92d3e4fd7e}{MP\+\_\+\+Query\+All}}
+, \mbox{\hyperlink{namespace_catalog_a5ccc6ae7677459cb9b1484679eeb5221a7533f40051047502f5a901672137e486}{MP\+\_\+\+Nbr\+Types}}
+ \}
+\begin{DoxyCompactList}\small\item\em Enum specifying merge process. Oe of\+: MP\+\_\+\+Add\+Missing = 0, MP\+\_\+\+Add\+Missing\+Entries\+And\+Fields, MP\+\_\+\+Add\+Missing\+And\+Overwrite, MP\+\_\+\+Add\+Missing\+And\+Query, MP\+\_\+\+Query\+All,. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{namespace_catalog_acc984c8947c3bf1d2e6f54cb6c8c0f5b}{Period\+Type}} \{ \mbox{\hyperlink{namespace_catalog_acc984c8947c3bf1d2e6f54cb6c8c0f5ba641ed198c1717596442b038c3018e51c}{PT\+\_\+\+Antique}}
+, \mbox{\hyperlink{namespace_catalog_acc984c8947c3bf1d2e6f54cb6c8c0f5baeef993ce5657728d4d2fc9633a5866e9}{PT\+\_\+\+Classical}}
+, \mbox{\hyperlink{namespace_catalog_acc984c8947c3bf1d2e6f54cb6c8c0f5ba76bda2f7ab842851a18572f68e079b68}{PT\+\_\+\+Modern}}
+, \mbox{\hyperlink{namespace_catalog_acc984c8947c3bf1d2e6f54cb6c8c0f5ba0ebd6dd922c99dfccd2200dadac33802}{PT\+\_\+\+Nbr\+Types}}
+ \}
+\begin{DoxyCompactList}\small\item\em Enum defining periods --. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{namespace_catalog_a10de14517a76cdd4e6b2bc1342142b07}{Merge\+Status}} \{ \newline
+\mbox{\hyperlink{namespace_catalog_a10de14517a76cdd4e6b2bc1342142b07a7b501e2ade61fa6db152f73cb1279a11}{MS\+\_\+\+None}} = 0
+, \mbox{\hyperlink{namespace_catalog_a10de14517a76cdd4e6b2bc1342142b07aaa1e49c05431e127067e37b453efd028}{MS\+\_\+\+Target\+Missing}}
+, \mbox{\hyperlink{namespace_catalog_a10de14517a76cdd4e6b2bc1342142b07a002f0b4930917c35e8cf9e5004405417}{MS\+\_\+\+Merge\+Missing}}
+, \mbox{\hyperlink{namespace_catalog_a10de14517a76cdd4e6b2bc1342142b07a1a1d51974d5aa6e920f6071054792fcc}{MS\+\_\+\+Same}}
+, \newline
+\mbox{\hyperlink{namespace_catalog_a10de14517a76cdd4e6b2bc1342142b07ab058c89308699e76835fad4ace23202f}{MS\+\_\+\+Different}}
+, \mbox{\hyperlink{namespace_catalog_a10de14517a76cdd4e6b2bc1342142b07a21dbd9257f1daae7663a25bca6e1e74e}{MS\+\_\+\+Undefined}}
+ \}
+\item 
+enum \mbox{\hyperlink{namespace_catalog_a1aa1ed4c009bdbfbaaa8ca652f987fef}{Mount\+Data\+Types}} \{ \newline
+\mbox{\hyperlink{namespace_catalog_a1aa1ed4c009bdbfbaaa8ca652f987fefa77ee154607830674e613528ae9a51b4c}{MT\+\_\+\+Year}} = 0
+, \mbox{\hyperlink{namespace_catalog_a1aa1ed4c009bdbfbaaa8ca652f987fefaed5fff075a287a5f2dcb4938556c8989}{MT\+\_\+\+ID}}
+, \mbox{\hyperlink{namespace_catalog_a1aa1ed4c009bdbfbaaa8ca652f987fefaef04b6a4d575c1cec9cf4158b186243b}{MT\+\_\+\+Name}}
+, \mbox{\hyperlink{namespace_catalog_a1aa1ed4c009bdbfbaaa8ca652f987fefa3bfb552147111a968a7973b91dff29b7}{MT\+\_\+\+Single\+Mount}}
+, \newline
+\mbox{\hyperlink{namespace_catalog_a1aa1ed4c009bdbfbaaa8ca652f987fefab840ad181af800a73a096e5c18f1b2db}{MT\+\_\+\+Multiple\+Mount}}
+, \mbox{\hyperlink{namespace_catalog_a1aa1ed4c009bdbfbaaa8ca652f987fefa3471199423370fccdd2c5d5ec4b1b3f5}{MT\+\_\+\+Block\+Mount}}
+, \mbox{\hyperlink{namespace_catalog_a1aa1ed4c009bdbfbaaa8ca652f987fefa7787231d3f029352f5a7999552565712}{MT\+\_\+\+Sheet\+Mount}}
+, \mbox{\hyperlink{namespace_catalog_a1aa1ed4c009bdbfbaaa8ca652f987fefacea5f1df446b7f1dcc78833083280e73}{MT\+\_\+\+Nbr\+Datatypes}}
+ \}
+\item 
+enum \mbox{\hyperlink{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3a}{Icon\+ID}} \{ \newline
+\mbox{\hyperlink{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aa0d21de3af16e32e1be60b9b772446eab}{Icon\+\_\+\+Stamp\+Unknown}} = 0
+, \mbox{\hyperlink{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aa5e0de48a2a668aec7db1d42888417f6b}{Icon\+\_\+\+Stamp}} = Icon\+\_\+\+Stamp\+Unknown
+, \mbox{\hyperlink{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aab7e5df03d7e4d8d55eb105fbd6416b76}{Icon\+\_\+\+Stamp\+Missing}}
+, \mbox{\hyperlink{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aa8ca463f0957e4d5f46e16487d67dc605}{Icon\+\_\+\+Stamp\+Selected}} = Icon\+\_\+\+Stamp\+Missing
+, \newline
+\mbox{\hyperlink{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aa4a59f5e411b4b97a1dede189a6416506}{Icon\+\_\+\+Stamp\+Ordered}}
+, \mbox{\hyperlink{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aaa6bed36fd2a114b8746714ae4b576b8c}{Icon\+\_\+\+Stamp\+Own}}
+, \mbox{\hyperlink{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aacd1e93a25b4e31c29f13cea3d3e6d560}{Icon\+\_\+\+Stamp\+Own\+Variant}}
+, \mbox{\hyperlink{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aa7673e47404b0bb7a7329b5e01c0a484b}{Icon\+\_\+\+Stamp\+Exclude}}
+, \newline
+\mbox{\hyperlink{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aaba7e9da6a0733327036be2db483aceb6}{Icon\+\_\+\+Stamp\+Unknown\+Block}}
+, \mbox{\hyperlink{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aa5545ec762bf6dfb4f18d01cda93c467b}{Icon\+\_\+\+Stamp\+Block}} = Icon\+\_\+\+Stamp\+Unknown\+Block
+, \mbox{\hyperlink{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aa52c223ca918fe0b28a8f22e48bc286c0}{Icon\+\_\+\+Stamp\+Missing\+Block}}
+, \mbox{\hyperlink{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aa52348ede60be49bcfc8d07d006d5a745}{Icon\+\_\+\+Stamp\+Block\+Selected}} = Icon\+\_\+\+Stamp\+Missing\+Block
+, \newline
+\mbox{\hyperlink{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aa08e7ba6eb1630fc9628981a8d5491fd8}{Icon\+\_\+\+Stamp\+Ordered\+Block}}
+, \mbox{\hyperlink{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aa91b02b3325d586381b9b2efa1dfbc8db}{Icon\+\_\+\+Stamp\+Own\+Block}}
+, \mbox{\hyperlink{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aaba86c3a069fbd432148309aa42b9044b}{Icon\+\_\+\+Stamp\+Own\+Variant\+Block}}
+, \mbox{\hyperlink{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aa146c08d0220be0b01ee2ac2e52bcb557}{Icon\+\_\+\+Stamp\+Exclude\+Block}}
+, \newline
+\mbox{\hyperlink{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aabf837c07a3c3b5f8f0db7fd5b9f952e3}{Icon\+\_\+\+Stamp\+Unknown\+Mini\+Sheet}}
+, \mbox{\hyperlink{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aaebb97c63db2f46c6bf30cb505891fb1f}{Icon\+\_\+\+Stamp\+Mini\+Sheet}} = Icon\+\_\+\+Stamp\+Unknown\+Mini\+Sheet
+, \mbox{\hyperlink{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aa52936aabd46419b4376959525b8bb31c}{Icon\+\_\+\+Stamp\+Missing\+Mini\+Sheet}}
+, \mbox{\hyperlink{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aa869740b108749cae197e09b8cdbc973e}{Icon\+\_\+\+Stamp\+Mini\+Sheet\+Selected}} = Icon\+\_\+\+Stamp\+Missing\+Mini\+Sheet
+, \newline
+\mbox{\hyperlink{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aa4d6d1098756561121a10d41cce2e072d}{Icon\+\_\+\+Stamp\+Ordered\+Mini\+Sheet}}
+, \mbox{\hyperlink{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aa5b845064a1984ec9f6acfd0a58471297}{Icon\+\_\+\+Stamp\+Own\+Mini\+Sheet}}
+, \mbox{\hyperlink{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aabc06b5d7fb9568ffa4ca96bf7bcbd872}{Icon\+\_\+\+Stamp\+Own\+Variant\+Mini\+Sheet}}
+, \mbox{\hyperlink{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aa45b204ff0e6e3307c5db2fa4b8705dd1}{Icon\+\_\+\+Stamp\+Exclude\+Mini\+Sheet}}
+, \newline
+\mbox{\hyperlink{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aaa1f5c643290a4a334c2a0992554174cd}{Icon\+\_\+\+Stamp\+Unknown\+Souvenir\+Sheet}}
+, \mbox{\hyperlink{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aa2eb831a594940791557cd71e0038ed43}{Icon\+\_\+\+Stamp\+Souvenir\+Sheet}} = Icon\+\_\+\+Stamp\+Unknown\+Souvenir\+Sheet
+, \mbox{\hyperlink{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aafb5fd124ba0c8c4d6cfbf866a137f978}{Icon\+\_\+\+Stamp\+Missing\+Souvenir\+Sheet}}
+, \mbox{\hyperlink{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aaf416b05d2a9869e899114c9fa72cfcc2}{Icon\+\_\+\+Stamp\+Souvenir\+Sheet\+Selected}} = Icon\+\_\+\+Stamp\+Missing\+Souvenir\+Sheet
+, \newline
+\mbox{\hyperlink{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aa3ca531c12f799e1be9f9eeb793565608}{Icon\+\_\+\+Stamp\+Ordered\+Souvenir\+Sheet}}
+, \mbox{\hyperlink{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aa3565ad90788fa2e3db246e337154c89a}{Icon\+\_\+\+Stamp\+Own\+Souvenir\+Sheet}}
+, \mbox{\hyperlink{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aa4c3f512c81591765c0d6a52bf5f36ce0}{Icon\+\_\+\+Stamp\+Own\+Variant\+Souvenir\+Sheet}}
+, \mbox{\hyperlink{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aa96e30100796a991a08cb9b9e38e94140}{Icon\+\_\+\+Stamp\+Exclude\+Souvenir\+Sheet}}
+, \newline
+\mbox{\hyperlink{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aacdde910cf8edacfffcfd3f7ee576f78c}{Icon\+\_\+\+Folder}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{namespace_catalog_a830fee3ef4f92654baf6428d9c3b0f4d}{Get\+Codes}} (wx\+String cat\+Code\+Str, wx\+String \&catalog, wx\+String \&country, wx\+String \&code)
+\item 
+wx\+String \mbox{\hyperlink{namespace_catalog_ac4be765c58323ed4b6ffc182a17608af}{Make\+Image\+Name}} (wx\+String cat\+Code)
+\item 
+void \mbox{\hyperlink{namespace_catalog_a7f4b20a2d0b2cb7f022087bae25690aa}{Add\+Entry}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}parent, wx\+Xml\+Node \texorpdfstring{$\ast$}{*}child, int level)
+\begin{DoxyCompactList}\small\item\em Find the place where the entry should go and adds it. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespace_catalog_a86f503ced35b06e6427477ddab27c6be}{Catalog\+Base\+Type}} \mbox{\hyperlink{namespace_catalog_a1b22674b71ab7beb168ad6749c6259f6}{Find\+Catalog\+Base\+Type}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}element)
+\begin{DoxyCompactList}\small\item\em Get the catalog base type of thid node. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespace_catalog_a86f503ced35b06e6427477ddab27c6be}{Catalog\+Base\+Type}} \mbox{\hyperlink{namespace_catalog_ac61fb45aeb3ecf6d5020384a65e0d954}{Find\+Catalog\+Base\+Type}} (wx\+String name)
+\begin{DoxyCompactList}\small\item\em Look thru all the Catalog\+Base\+Names to find "{}name"{} and return the corresponding \doxylink{namespace_catalog_a86f503ced35b06e6427477ddab27c6be}{Catalog\+Base\+Type} enum. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acd}{Emission\+Type}} \mbox{\hyperlink{namespace_catalog_a0589de4fdba9de7fb8b98e6c2e841ac7}{Find\+Emission\+Type}} (wx\+String name)
+\begin{DoxyCompactList}\small\item\em loop through the Emission types and find one with the name name. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespace_catalog_a2ff17ae8cd4986617c22e54b7cf50f89}{Format\+Type}} \mbox{\hyperlink{namespace_catalog_ac95b0a0fffe4a02171bcba25cd24e656}{Find\+Format\+Type}} (wx\+String name)
+\begin{DoxyCompactList}\small\item\em loop through the format types and find one with the name name. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespace_catalog_a7bc076b172809c869ab8fef63c49e8c3}{Inventory\+Status\+Type}} \mbox{\hyperlink{namespace_catalog_a80bb7b19f4c5981727e8da9b8cd36048}{Find\+Status\+Type}} (wx\+String name)
+\begin{DoxyCompactList}\small\item\em loop through the inventory status and find one with the name name. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespace_catalog_a0485a11d0238530460d2064ee7acd39e}{Is\+Catalog\+Base\+Type}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}ele, \mbox{\hyperlink{namespace_catalog_a86f503ced35b06e6427477ddab27c6be}{Catalog\+Base\+Type}} type)
+\begin{DoxyCompactList}\small\item\em is the specified wx\+Xml\+Node of specified type \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespace_catalog_a34595a26395456b9d09ba68847ab197b}{Init\+Catalog\+Defs}} ()
+\begin{DoxyCompactList}\small\item\em Null right now. \end{DoxyCompactList}\item 
+wx\+Xml\+Node \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespace_catalog_a8e16e7b99b4e656c3728d3bfcdfde3a2}{Insert\+Entry}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}sibling, wx\+Xml\+Node \texorpdfstring{$\ast$}{*}child, bool after=true)
+\begin{DoxyCompactList}\small\item\em Inserts a node as a sibling. \end{DoxyCompactList}\item 
+wx\+Xml\+Node \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespace_catalog_a88b0cb9ed74675357bffb114c5f494d6}{Move\+Entry}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}new\+Parent, wx\+Xml\+Node \texorpdfstring{$\ast$}{*}child)
+\begin{DoxyCompactList}\small\item\em Moves a node to a new parent. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespace_catalog_ae95fbc61e745c765271377442397ad57}{Sort\+Data}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}new\+Root, wx\+Xml\+Node \texorpdfstring{$\ast$}{*}parent)
+\begin{DoxyCompactList}\small\item\em Sorts the nodes. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{namespace_catalog_a711822c082ba687c5281f96d8861b935}{Way\+To\+Sort}} (\mbox{\hyperlink{class_catalog_1_1_catalog_volume}{Catalog\+::\+Catalog\+Volume}} \texorpdfstring{$\ast$}{*}sect1, \mbox{\hyperlink{class_catalog_1_1_catalog_volume}{Catalog\+::\+Catalog\+Volume}} \texorpdfstring{$\ast$}{*}sect2)
+\item 
+\mbox{\hyperlink{class_catalog_1_1_catalog_volume}{Catalog\+Volume}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespace_catalog_a566b536eb28609acba2477444a0da5f5}{New\+Catalog\+Volume}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+wx\+String \mbox{\hyperlink{namespace_catalog_af883688379268368070a0dd49b898a1f}{Catalog\+Base\+Names}} \mbox{[}\mbox{\hyperlink{namespace_catalog_a86f503ced35b06e6427477ddab27c6bea52e97887bc3fb371de0b23678a875c57}{NT\+\_\+\+Nbr\+Types}}\mbox{]}
+\begin{DoxyCompactList}\small\item\em Ascii string for each node string. \end{DoxyCompactList}\item 
+const wx\+String \mbox{\hyperlink{namespace_catalog_ae29e29deec7143df42dbc7cf5b8c0b98}{Checked\+Status\+Strings}} \mbox{[}\mbox{\hyperlink{namespace_catalog_ae547094e129067e4932fdc46084369a8a7a5421ebe2a144a5554720acb658feff}{ST\+\_\+\+Nbr\+Checked\+Status\+Types}}\mbox{]} = \{ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}( "{}Checked"{} ), \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}( "{}Unchecked"{} ) \}
+\begin{DoxyCompactList}\small\item\em Strings used for Status\+Types enum. \end{DoxyCompactList}\item 
+const wx\+String \mbox{\hyperlink{namespace_catalog_a6d6fd52830494c7cfd841a94ddfdd42c}{Data\+Type\+Names}} \mbox{[}\mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176a61ce03037e0635b621097ac2d4f37b03}{DT\+\_\+\+Nbr\+Types}}\mbox{]}
+\begin{DoxyCompactList}\small\item\em String name used for wx\+Xml\+Nodes. \end{DoxyCompactList}\item 
+const wx\+String \mbox{\hyperlink{namespace_catalog_ac37088bb839eb4eaac8489e1644b72f5}{Emission\+Strings}} \mbox{[}\mbox{\hyperlink{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acda2d561f219b7813c539992726b518751c}{ET\+\_\+\+Nbr\+Types}}\mbox{]}
+\begin{DoxyCompactList}\small\item\em string representation of Emission types indexed by Emission Type \end{DoxyCompactList}\item 
+const wx\+String \mbox{\hyperlink{namespace_catalog_afaa9b4c5ca81b7e8ec3f7d2f4b3d7e8d}{Format\+Strings}} \mbox{[}\mbox{\hyperlink{namespace_catalog_a2ff17ae8cd4986617c22e54b7cf50f89a7b37347e60dfcaea4ed88899173207fa}{FT\+\_\+\+Nbr\+Types}}\mbox{]}
+\begin{DoxyCompactList}\small\item\em Ascii strings used for Format\+Types enum. \end{DoxyCompactList}\item 
+const wx\+String \mbox{\hyperlink{namespace_catalog_abcd57760950ec98a13bee0678af3eb91}{Inventory\+Status\+Strings}} \mbox{[}\mbox{\hyperlink{namespace_catalog_a7bc076b172809c869ab8fef63c49e8c3a75fc42a4f75f4994518abed41c2699fb}{ST\+\_\+\+Nbr\+Inventory\+Status\+Types}}\mbox{]} = \{ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}( "{}None"{} ), \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}( "{}Missing"{} ), \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}( "{}Ordered"{} ), \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}( "{}Own"{} ), \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}( "{}Own Variant"{} ), \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}( "{}Exclude"{} ) \}
+\item 
+const wx\+String \mbox{\hyperlink{namespace_catalog_a2d8ee03a725ac68d747c899544f77f3f}{Item\+Data\+Names}} \mbox{[}\mbox{\hyperlink{namespace_catalog_aff34cc1fa92031a5cf463041a34ef3b2a2ed57e3723a4c82ab9de0042f5ea5198}{IDT\+\_\+\+Nbr\+Types}}\mbox{]} = \{ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}( "{}Collection"{} ), \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}( "{}Status"{} ), \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}( "{}Type"{} ), \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}( "{}Condition"{} ), \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}( "{}Value"{} ), \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}( "{}Remarks"{} ) \}
+\begin{DoxyCompactList}\small\item\em Ascii string for each Item\+Data\+Type enum. \end{DoxyCompactList}\item 
+const wx\+String \mbox{\hyperlink{namespace_catalog_ad31b697e09026bea7e50c5f0da8ff29f}{XMLData\+Names}} \mbox{[}\mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176a61ce03037e0635b621097ac2d4f37b03}{DT\+\_\+\+Nbr\+Types}}\mbox{]}
+\begin{DoxyCompactList}\small\item\em Ascii string for each XMLData\+Type enum. These are the same as Data\+Type\+Names except they have no spaces in the string since they are used for XML element names. \end{DoxyCompactList}\item 
+wx\+String \mbox{\hyperlink{namespace_catalog_acb0a181c5a138a4187b868a280b60ee1}{Mount\+Data\+Type\+Names}} \mbox{[}\mbox{\hyperlink{namespace_catalog_a1aa1ed4c009bdbfbaaa8ca652f987fefacea5f1df446b7f1dcc78833083280e73}{MT\+\_\+\+Nbr\+Datatypes}}\mbox{]}
+\item 
+\mbox{\hyperlink{struct_catalog_1_1_mounts}{Mounts}} \mbox{\hyperlink{namespace_catalog_af13229d3185ff083a02f4df72996ff7f}{mounts}} \mbox{[}\mbox{\hyperlink{namespace_catalog_a333bffd3f1441393f22215255cd523ea}{Nbr\+Stamp\+Mounts}}\mbox{]}
+\item 
+const int \mbox{\hyperlink{namespace_catalog_a333bffd3f1441393f22215255cd523ea}{Nbr\+Stamp\+Mounts}} = 100
+\item 
+\mbox{\hyperlink{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3a}{Catalog\+::\+Icon\+ID}} \mbox{\hyperlink{namespace_catalog_a4ce32da0d45cfa7ba82945b48e0e003a}{Catalog\+Image\+Selection}} \mbox{[}\mbox{\hyperlink{namespace_catalog_a2ff17ae8cd4986617c22e54b7cf50f89a7b37347e60dfcaea4ed88899173207fa}{Catalog\+::\+FT\+\_\+\+Nbr\+Types}}\mbox{]}\mbox{[}\mbox{\hyperlink{namespace_catalog_a7bc076b172809c869ab8fef63c49e8c3a75fc42a4f75f4994518abed41c2699fb}{Catalog\+::\+ST\+\_\+\+Nbr\+Inventory\+Status\+Types}}\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\label{doc-typedef-members}
+\Hypertarget{namespace_catalog_doc-typedef-members}
+\doxysubsection{Typedef Documentation}
+\Hypertarget{namespace_catalog_ae8e3d7ef3e510584897ca6e0dd640ef5}\index{Catalog@{Catalog}!CatalogMenuIDArray@{CatalogMenuIDArray}}
+\index{CatalogMenuIDArray@{CatalogMenuIDArray}!Catalog@{Catalog}}
+\doxysubsubsection{\texorpdfstring{CatalogMenuIDArray}{CatalogMenuIDArray}}
+{\footnotesize\ttfamily \label{namespace_catalog_ae8e3d7ef3e510584897ca6e0dd640ef5} 
+typedef std\+::unordered\+\_\+map$<$ int, wx\+Tree\+Item\+Id $>$ \mbox{\hyperlink{namespace_catalog_ae8e3d7ef3e510584897ca6e0dd640ef5}{Catalog\+::\+Catalog\+Menu\+IDArray}}}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_volume_8h_source_l00046}{46}} of file \mbox{\hyperlink{_catalog_volume_8h_source}{Catalog\+Volume.\+h}}.
+
+\Hypertarget{namespace_catalog_a4db7f58e0f4f92c71248358dfca24374}\index{Catalog@{Catalog}!CatalogVolumeArray@{CatalogVolumeArray}}
+\index{CatalogVolumeArray@{CatalogVolumeArray}!Catalog@{Catalog}}
+\doxysubsubsection{\texorpdfstring{CatalogVolumeArray}{CatalogVolumeArray}}
+{\footnotesize\ttfamily \label{namespace_catalog_a4db7f58e0f4f92c71248358dfca24374} 
+typedef std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{class_catalog_1_1_catalog_volume}{Catalog\+Volume}}\texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{namespace_catalog_a4db7f58e0f4f92c71248358dfca24374}{Catalog\+::\+Catalog\+Volume\+Array}}}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_volume_8h_source_l00045}{45}} of file \mbox{\hyperlink{_catalog_volume_8h_source}{Catalog\+Volume.\+h}}.
+
+\Hypertarget{namespace_catalog_a27a261514d5794e3ad90a79e74649501}\index{Catalog@{Catalog}!DataTypesArray@{DataTypesArray}}
+\index{DataTypesArray@{DataTypesArray}!Catalog@{Catalog}}
+\doxysubsubsection{\texorpdfstring{DataTypesArray}{DataTypesArray}}
+{\footnotesize\ttfamily \label{namespace_catalog_a27a261514d5794e3ad90a79e74649501} 
+typedef std\+::vector$<$\mbox{\hyperlink{namespace_catalog_a1aa1ed4c009bdbfbaaa8ca652f987fef}{Mount\+Data\+Types}}$>$ \mbox{\hyperlink{namespace_catalog_a27a261514d5794e3ad90a79e74649501}{Catalog\+::\+Data\+Types\+Array}}}
+
+
+
+Definition at line \mbox{\hyperlink{_mount_c_s_v_8h_source_l00057}{57}} of file \mbox{\hyperlink{_mount_c_s_v_8h_source}{Mount\+CSV.\+h}}.
+
+\Hypertarget{namespace_catalog_a7df5a387600744730d6a9eabcedf2f29}\index{Catalog@{Catalog}!MergeEntryList@{MergeEntryList}}
+\index{MergeEntryList@{MergeEntryList}!Catalog@{Catalog}}
+\doxysubsubsection{\texorpdfstring{MergeEntryList}{MergeEntryList}}
+{\footnotesize\ttfamily \label{namespace_catalog_a7df5a387600744730d6a9eabcedf2f29} 
+typedef std\+::vector$<$\mbox{\hyperlink{class_catalog_1_1_merge_data}{Merge\+Data}}\texorpdfstring{$\ast$}{*}$>$ \mbox{\hyperlink{namespace_catalog_a7df5a387600744730d6a9eabcedf2f29}{Catalog\+::\+Merge\+Entry\+List}}}
+
+
+
+Definition at line \mbox{\hyperlink{_merge_list_8h_source_l00092}{92}} of file \mbox{\hyperlink{_merge_list_8h_source}{Merge\+List.\+h}}.
+
+\Hypertarget{namespace_catalog_a2acb9f30e1584df2271f07d6353ac6d0}\index{Catalog@{Catalog}!StringArray@{StringArray}}
+\index{StringArray@{StringArray}!Catalog@{Catalog}}
+\doxysubsubsection{\texorpdfstring{StringArray}{StringArray}}
+{\footnotesize\ttfamily \label{namespace_catalog_a2acb9f30e1584df2271f07d6353ac6d0} 
+typedef std\+::vector$<$wx\+String$>$ \mbox{\hyperlink{namespace_catalog_a2acb9f30e1584df2271f07d6353ac6d0}{Catalog\+::\+String\+Array}}}
+
+
+
+Definition at line \mbox{\hyperlink{_mount_c_s_v_8h_source_l00056}{56}} of file \mbox{\hyperlink{_mount_c_s_v_8h_source}{Mount\+CSV.\+h}}.
+
+
+
+\label{doc-enum-members}
+\Hypertarget{namespace_catalog_doc-enum-members}
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{namespace_catalog_a86f503ced35b06e6427477ddab27c6be}\index{Catalog@{Catalog}!CatalogBaseType@{CatalogBaseType}}
+\index{CatalogBaseType@{CatalogBaseType}!Catalog@{Catalog}}
+\doxysubsubsection{\texorpdfstring{CatalogBaseType}{CatalogBaseType}}
+{\footnotesize\ttfamily \label{namespace_catalog_a86f503ced35b06e6427477ddab27c6be} 
+enum \mbox{\hyperlink{namespace_catalog_a86f503ced35b06e6427477ddab27c6be}{Catalog\+::\+Catalog\+Base\+Type}}}
+
+
+
+Enum defining \doxylink{class_catalog_1_1_entry}{Entry} node types. One of NT\+\_\+\+Catalog = 0, NT\+\_\+\+Country, NT\+\_\+\+Period, NT\+\_\+\+Decade, NT\+\_\+\+Year, NT\+\_\+\+Emission, NT\+\_\+\+Status, NT\+\_\+\+Condition, NT\+\_\+\+Entry, NT\+\_\+\+Inventory, NT\+\_\+\+Item, NT\+\_\+\+None. 
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NT\_Catalog@{NT\_Catalog}!Catalog@{Catalog}}\index{Catalog@{Catalog}!NT\_Catalog@{NT\_Catalog}}}\Hypertarget{namespace_catalog_a86f503ced35b06e6427477ddab27c6bead7b08b5e92816b98b1d75a84f21dc404}\label{namespace_catalog_a86f503ced35b06e6427477ddab27c6bead7b08b5e92816b98b1d75a84f21dc404} 
+NT\+\_\+\+Catalog&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NT\_Country@{NT\_Country}!Catalog@{Catalog}}\index{Catalog@{Catalog}!NT\_Country@{NT\_Country}}}\Hypertarget{namespace_catalog_a86f503ced35b06e6427477ddab27c6bea8f42457ae8329fb69434b5f074d5d968}\label{namespace_catalog_a86f503ced35b06e6427477ddab27c6bea8f42457ae8329fb69434b5f074d5d968} 
+NT\+\_\+\+Country&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NT\_Period@{NT\_Period}!Catalog@{Catalog}}\index{Catalog@{Catalog}!NT\_Period@{NT\_Period}}}\Hypertarget{namespace_catalog_a86f503ced35b06e6427477ddab27c6beaa362b38edea34b53c25885e58f4f8488}\label{namespace_catalog_a86f503ced35b06e6427477ddab27c6beaa362b38edea34b53c25885e58f4f8488} 
+NT\+\_\+\+Period&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NT\_Decade@{NT\_Decade}!Catalog@{Catalog}}\index{Catalog@{Catalog}!NT\_Decade@{NT\_Decade}}}\Hypertarget{namespace_catalog_a86f503ced35b06e6427477ddab27c6bea9921e120b36ecdefeb35ab42762bf0cf}\label{namespace_catalog_a86f503ced35b06e6427477ddab27c6bea9921e120b36ecdefeb35ab42762bf0cf} 
+NT\+\_\+\+Decade&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NT\_Year@{NT\_Year}!Catalog@{Catalog}}\index{Catalog@{Catalog}!NT\_Year@{NT\_Year}}}\Hypertarget{namespace_catalog_a86f503ced35b06e6427477ddab27c6beaa75c781927bce7a2853988c0b84b05d1}\label{namespace_catalog_a86f503ced35b06e6427477ddab27c6beaa75c781927bce7a2853988c0b84b05d1} 
+NT\+\_\+\+Year&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NT\_Emission@{NT\_Emission}!Catalog@{Catalog}}\index{Catalog@{Catalog}!NT\_Emission@{NT\_Emission}}}\Hypertarget{namespace_catalog_a86f503ced35b06e6427477ddab27c6bea2f0fc34bb506e6a1f18c8625f047125d}\label{namespace_catalog_a86f503ced35b06e6427477ddab27c6bea2f0fc34bb506e6a1f18c8625f047125d} 
+NT\+\_\+\+Emission&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NT\_Status@{NT\_Status}!Catalog@{Catalog}}\index{Catalog@{Catalog}!NT\_Status@{NT\_Status}}}\Hypertarget{namespace_catalog_a86f503ced35b06e6427477ddab27c6bea911ab701edf52a3313f0c3667b00a5d2}\label{namespace_catalog_a86f503ced35b06e6427477ddab27c6bea911ab701edf52a3313f0c3667b00a5d2} 
+NT\+\_\+\+Status&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NT\_Condition@{NT\_Condition}!Catalog@{Catalog}}\index{Catalog@{Catalog}!NT\_Condition@{NT\_Condition}}}\Hypertarget{namespace_catalog_a86f503ced35b06e6427477ddab27c6bea20458fe158665ebfede2da33c471f6b0}\label{namespace_catalog_a86f503ced35b06e6427477ddab27c6bea20458fe158665ebfede2da33c471f6b0} 
+NT\+\_\+\+Condition&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NT\_Entry@{NT\_Entry}!Catalog@{Catalog}}\index{Catalog@{Catalog}!NT\_Entry@{NT\_Entry}}}\Hypertarget{namespace_catalog_a86f503ced35b06e6427477ddab27c6bea1ad93a4e0b2bc3a19a401ce027fb7d2c}\label{namespace_catalog_a86f503ced35b06e6427477ddab27c6bea1ad93a4e0b2bc3a19a401ce027fb7d2c} 
+NT\+\_\+\+Entry&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NT\_Inventory@{NT\_Inventory}!Catalog@{Catalog}}\index{Catalog@{Catalog}!NT\_Inventory@{NT\_Inventory}}}\Hypertarget{namespace_catalog_a86f503ced35b06e6427477ddab27c6bea87e3a3d935187422810ee75792d359f5}\label{namespace_catalog_a86f503ced35b06e6427477ddab27c6bea87e3a3d935187422810ee75792d359f5} 
+NT\+\_\+\+Inventory&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NT\_Item@{NT\_Item}!Catalog@{Catalog}}\index{Catalog@{Catalog}!NT\_Item@{NT\_Item}}}\Hypertarget{namespace_catalog_a86f503ced35b06e6427477ddab27c6beae51b23e55cb21a0ee281b9c9806c094e}\label{namespace_catalog_a86f503ced35b06e6427477ddab27c6beae51b23e55cb21a0ee281b9c9806c094e} 
+NT\+\_\+\+Item&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NT\_None@{NT\_None}!Catalog@{Catalog}}\index{Catalog@{Catalog}!NT\_None@{NT\_None}}}\Hypertarget{namespace_catalog_a86f503ced35b06e6427477ddab27c6beadb90cc0e0ea2b65b0004617ed289a99a}\label{namespace_catalog_a86f503ced35b06e6427477ddab27c6beadb90cc0e0ea2b65b0004617ed289a99a} 
+NT\+\_\+\+None&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NT\_NbrTypes@{NT\_NbrTypes}!Catalog@{Catalog}}\index{Catalog@{Catalog}!NT\_NbrTypes@{NT\_NbrTypes}}}\Hypertarget{namespace_catalog_a86f503ced35b06e6427477ddab27c6bea52e97887bc3fb371de0b23678a875c57}\label{namespace_catalog_a86f503ced35b06e6427477ddab27c6bea52e97887bc3fb371de0b23678a875c57} 
+NT\+\_\+\+Nbr\+Types&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NT\_Foriegn@{NT\_Foriegn}!Catalog@{Catalog}}\index{Catalog@{Catalog}!NT\_Foriegn@{NT\_Foriegn}}}\Hypertarget{namespace_catalog_a86f503ced35b06e6427477ddab27c6beae2d8765d55bbe654565744527a91607c}\label{namespace_catalog_a86f503ced35b06e6427477ddab27c6beae2d8765d55bbe654565744527a91607c} 
+NT\+\_\+\+Foriegn&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{_catalog_defs_8h_source_l00043}{43}} of file \mbox{\hyperlink{_catalog_defs_8h_source}{Catalog\+Defs.\+h}}.
+
+\Hypertarget{namespace_catalog_ae547094e129067e4932fdc46084369a8}\index{Catalog@{Catalog}!CheckedStatusType@{CheckedStatusType}}
+\index{CheckedStatusType@{CheckedStatusType}!Catalog@{Catalog}}
+\doxysubsubsection{\texorpdfstring{CheckedStatusType}{CheckedStatusType}}
+{\footnotesize\ttfamily \label{namespace_catalog_ae547094e129067e4932fdc46084369a8} 
+enum \mbox{\hyperlink{namespace_catalog_ae547094e129067e4932fdc46084369a8}{Catalog\+::\+Checked\+Status\+Type}}}
+
+
+
+ST\+\_\+\+Unchecked , ST\+\_\+\+Checked,, ST\+\_\+\+Nbr\+Checked\+Status\+Types. 
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ST\_Unchecked@{ST\_Unchecked}!Catalog@{Catalog}}\index{Catalog@{Catalog}!ST\_Unchecked@{ST\_Unchecked}}}\Hypertarget{namespace_catalog_ae547094e129067e4932fdc46084369a8a20278471af50b7cd121ec36b0885c366}\label{namespace_catalog_ae547094e129067e4932fdc46084369a8a20278471af50b7cd121ec36b0885c366} 
+ST\+\_\+\+Unchecked&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ST\_Checked@{ST\_Checked}!Catalog@{Catalog}}\index{Catalog@{Catalog}!ST\_Checked@{ST\_Checked}}}\Hypertarget{namespace_catalog_ae547094e129067e4932fdc46084369a8aad0844dc3150a6f449975245f97b8c01}\label{namespace_catalog_ae547094e129067e4932fdc46084369a8aad0844dc3150a6f449975245f97b8c01} 
+ST\+\_\+\+Checked&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ST\_NbrCheckedStatusTypes@{ST\_NbrCheckedStatusTypes}!Catalog@{Catalog}}\index{Catalog@{Catalog}!ST\_NbrCheckedStatusTypes@{ST\_NbrCheckedStatusTypes}}}\Hypertarget{namespace_catalog_ae547094e129067e4932fdc46084369a8a7a5421ebe2a144a5554720acb658feff}\label{namespace_catalog_ae547094e129067e4932fdc46084369a8a7a5421ebe2a144a5554720acb658feff} 
+ST\+\_\+\+Nbr\+Checked\+Status\+Types&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{_catalog_defs_8h_source_l00064}{64}} of file \mbox{\hyperlink{_catalog_defs_8h_source}{Catalog\+Defs.\+h}}.
+
+\Hypertarget{namespace_catalog_a693d0d946df17df0cf8e223d475c3176}\index{Catalog@{Catalog}!DataTypes@{DataTypes}}
+\index{DataTypes@{DataTypes}!Catalog@{Catalog}}
+\doxysubsubsection{\texorpdfstring{DataTypes}{DataTypes}}
+{\footnotesize\ttfamily \label{namespace_catalog_a693d0d946df17df0cf8e223d475c3176} 
+enum \mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176}{Catalog\+::\+Data\+Types}}}
+
+
+
+Enum defining data types; i.\+e., fields in a entry. One of DT\+\_\+\+Name, DT\+\_\+\+Country, DT\+\_\+\+Series, DT\+\_\+\+Catalog\+\_\+\+Codes, DT\+\_\+\+Issued\+\_\+on, DT\+\_\+\+Expiry\+\_\+date, DT\+\_\+\+Width, DT\+\_\+\+Height, DT\+\_\+\+Paper, DT\+\_\+\+Watermark, DT\+\_\+\+Emission, DT\+\_\+\+Format, DT\+\_\+\+Perforation, DT\+\_\+\+Printing, DT\+\_\+\+Gum, DT\+\_\+\+Currency, DT\+\_\+\+Face\+Value, DT\+\_\+\+Print\+\_\+run, DT\+\_\+\+Variant, DT\+\_\+\+Score, DT\+\_\+\+Accuracy, DT\+\_\+\+Colors, DT\+\_\+\+Themes, DT\+\_\+\+Description, DT\+\_\+\+Link, DT\+\_\+\+Inventory\+Status, DT\+\_\+\+Stamp\+Mount, DT\+\_\+\+Back\+Ground,. 
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DT\_Name@{DT\_Name}!Catalog@{Catalog}}\index{Catalog@{Catalog}!DT\_Name@{DT\_Name}}}\Hypertarget{namespace_catalog_a693d0d946df17df0cf8e223d475c3176aabd36ff22239011f8c5ed2d79ef06653}\label{namespace_catalog_a693d0d946df17df0cf8e223d475c3176aabd36ff22239011f8c5ed2d79ef06653} 
+DT\+\_\+\+Name&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DT\_Country@{DT\_Country}!Catalog@{Catalog}}\index{Catalog@{Catalog}!DT\_Country@{DT\_Country}}}\Hypertarget{namespace_catalog_a693d0d946df17df0cf8e223d475c3176a0b719c5206e0b426a46d5e5bbfdba537}\label{namespace_catalog_a693d0d946df17df0cf8e223d475c3176a0b719c5206e0b426a46d5e5bbfdba537} 
+DT\+\_\+\+Country&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DT\_Series@{DT\_Series}!Catalog@{Catalog}}\index{Catalog@{Catalog}!DT\_Series@{DT\_Series}}}\Hypertarget{namespace_catalog_a693d0d946df17df0cf8e223d475c3176ac47d4b2fd73442a618c99b2cf7fc661b}\label{namespace_catalog_a693d0d946df17df0cf8e223d475c3176ac47d4b2fd73442a618c99b2cf7fc661b} 
+DT\+\_\+\+Series&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DT\_Catalog\_Codes@{DT\_Catalog\_Codes}!Catalog@{Catalog}}\index{Catalog@{Catalog}!DT\_Catalog\_Codes@{DT\_Catalog\_Codes}}}\Hypertarget{namespace_catalog_a693d0d946df17df0cf8e223d475c3176a817af092e0ed172a75b6ac59659deef7}\label{namespace_catalog_a693d0d946df17df0cf8e223d475c3176a817af092e0ed172a75b6ac59659deef7} 
+DT\+\_\+\+Catalog\+\_\+\+Codes&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DT\_Issued\_on@{DT\_Issued\_on}!Catalog@{Catalog}}\index{Catalog@{Catalog}!DT\_Issued\_on@{DT\_Issued\_on}}}\Hypertarget{namespace_catalog_a693d0d946df17df0cf8e223d475c3176ab4c33b641900010f37b6a8f4fc01f141}\label{namespace_catalog_a693d0d946df17df0cf8e223d475c3176ab4c33b641900010f37b6a8f4fc01f141} 
+DT\+\_\+\+Issued\+\_\+on&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DT\_Expiry\_date@{DT\_Expiry\_date}!Catalog@{Catalog}}\index{Catalog@{Catalog}!DT\_Expiry\_date@{DT\_Expiry\_date}}}\Hypertarget{namespace_catalog_a693d0d946df17df0cf8e223d475c3176aba755a06832e67bd7dabd5e8a4071ad2}\label{namespace_catalog_a693d0d946df17df0cf8e223d475c3176aba755a06832e67bd7dabd5e8a4071ad2} 
+DT\+\_\+\+Expiry\+\_\+date&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DT\_Width@{DT\_Width}!Catalog@{Catalog}}\index{Catalog@{Catalog}!DT\_Width@{DT\_Width}}}\Hypertarget{namespace_catalog_a693d0d946df17df0cf8e223d475c3176a5f1550ef1b81edc16c46c2f26cde8885}\label{namespace_catalog_a693d0d946df17df0cf8e223d475c3176a5f1550ef1b81edc16c46c2f26cde8885} 
+DT\+\_\+\+Width&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DT\_Height@{DT\_Height}!Catalog@{Catalog}}\index{Catalog@{Catalog}!DT\_Height@{DT\_Height}}}\Hypertarget{namespace_catalog_a693d0d946df17df0cf8e223d475c3176ae34fe6e4b8d2e52203adf4e9106a9aac}\label{namespace_catalog_a693d0d946df17df0cf8e223d475c3176ae34fe6e4b8d2e52203adf4e9106a9aac} 
+DT\+\_\+\+Height&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DT\_Paper@{DT\_Paper}!Catalog@{Catalog}}\index{Catalog@{Catalog}!DT\_Paper@{DT\_Paper}}}\Hypertarget{namespace_catalog_a693d0d946df17df0cf8e223d475c3176acb7d6689880e0d58e18d337c80c675d3}\label{namespace_catalog_a693d0d946df17df0cf8e223d475c3176acb7d6689880e0d58e18d337c80c675d3} 
+DT\+\_\+\+Paper&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DT\_Watermark@{DT\_Watermark}!Catalog@{Catalog}}\index{Catalog@{Catalog}!DT\_Watermark@{DT\_Watermark}}}\Hypertarget{namespace_catalog_a693d0d946df17df0cf8e223d475c3176a9edbc149389df70894ca0324365aa2e7}\label{namespace_catalog_a693d0d946df17df0cf8e223d475c3176a9edbc149389df70894ca0324365aa2e7} 
+DT\+\_\+\+Watermark&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DT\_Emission@{DT\_Emission}!Catalog@{Catalog}}\index{Catalog@{Catalog}!DT\_Emission@{DT\_Emission}}}\Hypertarget{namespace_catalog_a693d0d946df17df0cf8e223d475c3176a6e3086a8dfbc54f2152f2f4ba8e70ab4}\label{namespace_catalog_a693d0d946df17df0cf8e223d475c3176a6e3086a8dfbc54f2152f2f4ba8e70ab4} 
+DT\+\_\+\+Emission&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DT\_Format@{DT\_Format}!Catalog@{Catalog}}\index{Catalog@{Catalog}!DT\_Format@{DT\_Format}}}\Hypertarget{namespace_catalog_a693d0d946df17df0cf8e223d475c3176aba7c938c6a6ac9f8a9e23d7cb892192a}\label{namespace_catalog_a693d0d946df17df0cf8e223d475c3176aba7c938c6a6ac9f8a9e23d7cb892192a} 
+DT\+\_\+\+Format&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DT\_Perforation@{DT\_Perforation}!Catalog@{Catalog}}\index{Catalog@{Catalog}!DT\_Perforation@{DT\_Perforation}}}\Hypertarget{namespace_catalog_a693d0d946df17df0cf8e223d475c3176aa5fb8e583f6b876e7d991014b5111ecb}\label{namespace_catalog_a693d0d946df17df0cf8e223d475c3176aa5fb8e583f6b876e7d991014b5111ecb} 
+DT\+\_\+\+Perforation&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DT\_Printing@{DT\_Printing}!Catalog@{Catalog}}\index{Catalog@{Catalog}!DT\_Printing@{DT\_Printing}}}\Hypertarget{namespace_catalog_a693d0d946df17df0cf8e223d475c3176a39b5fdbbd7bb9552123dccbcd7663491}\label{namespace_catalog_a693d0d946df17df0cf8e223d475c3176a39b5fdbbd7bb9552123dccbcd7663491} 
+DT\+\_\+\+Printing&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DT\_Gum@{DT\_Gum}!Catalog@{Catalog}}\index{Catalog@{Catalog}!DT\_Gum@{DT\_Gum}}}\Hypertarget{namespace_catalog_a693d0d946df17df0cf8e223d475c3176a3493c5f5c884f7eeab86fd4ddcfe8bb8}\label{namespace_catalog_a693d0d946df17df0cf8e223d475c3176a3493c5f5c884f7eeab86fd4ddcfe8bb8} 
+DT\+\_\+\+Gum&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DT\_Currency@{DT\_Currency}!Catalog@{Catalog}}\index{Catalog@{Catalog}!DT\_Currency@{DT\_Currency}}}\Hypertarget{namespace_catalog_a693d0d946df17df0cf8e223d475c3176a79f8e077ccfaaae4475269dc2ac149fb}\label{namespace_catalog_a693d0d946df17df0cf8e223d475c3176a79f8e077ccfaaae4475269dc2ac149fb} 
+DT\+\_\+\+Currency&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DT\_FaceValue@{DT\_FaceValue}!Catalog@{Catalog}}\index{Catalog@{Catalog}!DT\_FaceValue@{DT\_FaceValue}}}\Hypertarget{namespace_catalog_a693d0d946df17df0cf8e223d475c3176adf2f3b6781ae28e39cf9c33bc14045b6}\label{namespace_catalog_a693d0d946df17df0cf8e223d475c3176adf2f3b6781ae28e39cf9c33bc14045b6} 
+DT\+\_\+\+Face\+Value&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DT\_Print\_run@{DT\_Print\_run}!Catalog@{Catalog}}\index{Catalog@{Catalog}!DT\_Print\_run@{DT\_Print\_run}}}\Hypertarget{namespace_catalog_a693d0d946df17df0cf8e223d475c3176a241a54ad478b570d4cd86ba3dd645afc}\label{namespace_catalog_a693d0d946df17df0cf8e223d475c3176a241a54ad478b570d4cd86ba3dd645afc} 
+DT\+\_\+\+Print\+\_\+run&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DT\_Variant@{DT\_Variant}!Catalog@{Catalog}}\index{Catalog@{Catalog}!DT\_Variant@{DT\_Variant}}}\Hypertarget{namespace_catalog_a693d0d946df17df0cf8e223d475c3176a7e6ac084f827fa1b21a4647345c035fd}\label{namespace_catalog_a693d0d946df17df0cf8e223d475c3176a7e6ac084f827fa1b21a4647345c035fd} 
+DT\+\_\+\+Variant&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DT\_Score@{DT\_Score}!Catalog@{Catalog}}\index{Catalog@{Catalog}!DT\_Score@{DT\_Score}}}\Hypertarget{namespace_catalog_a693d0d946df17df0cf8e223d475c3176aba38c876bc0492d4e7ae525336bf879a}\label{namespace_catalog_a693d0d946df17df0cf8e223d475c3176aba38c876bc0492d4e7ae525336bf879a} 
+DT\+\_\+\+Score&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DT\_Accuracy@{DT\_Accuracy}!Catalog@{Catalog}}\index{Catalog@{Catalog}!DT\_Accuracy@{DT\_Accuracy}}}\Hypertarget{namespace_catalog_a693d0d946df17df0cf8e223d475c3176ae1b69bba8c4d742ff8fc1ea0fb05b5b2}\label{namespace_catalog_a693d0d946df17df0cf8e223d475c3176ae1b69bba8c4d742ff8fc1ea0fb05b5b2} 
+DT\+\_\+\+Accuracy&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DT\_Colors@{DT\_Colors}!Catalog@{Catalog}}\index{Catalog@{Catalog}!DT\_Colors@{DT\_Colors}}}\Hypertarget{namespace_catalog_a693d0d946df17df0cf8e223d475c3176afe87a47bd37e17f8c55f3a62d0c53280}\label{namespace_catalog_a693d0d946df17df0cf8e223d475c3176afe87a47bd37e17f8c55f3a62d0c53280} 
+DT\+\_\+\+Colors&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DT\_Themes@{DT\_Themes}!Catalog@{Catalog}}\index{Catalog@{Catalog}!DT\_Themes@{DT\_Themes}}}\Hypertarget{namespace_catalog_a693d0d946df17df0cf8e223d475c3176a6cacf512ede6c15399dc8cce295dc85c}\label{namespace_catalog_a693d0d946df17df0cf8e223d475c3176a6cacf512ede6c15399dc8cce295dc85c} 
+DT\+\_\+\+Themes&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DT\_Description@{DT\_Description}!Catalog@{Catalog}}\index{Catalog@{Catalog}!DT\_Description@{DT\_Description}}}\Hypertarget{namespace_catalog_a693d0d946df17df0cf8e223d475c3176a2c31bdda498459754e4c5ac91f37c1e0}\label{namespace_catalog_a693d0d946df17df0cf8e223d475c3176a2c31bdda498459754e4c5ac91f37c1e0} 
+DT\+\_\+\+Description&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DT\_Link@{DT\_Link}!Catalog@{Catalog}}\index{Catalog@{Catalog}!DT\_Link@{DT\_Link}}}\Hypertarget{namespace_catalog_a693d0d946df17df0cf8e223d475c3176abc3b0759ec71eccc9f82490fb9f7d9f9}\label{namespace_catalog_a693d0d946df17df0cf8e223d475c3176abc3b0759ec71eccc9f82490fb9f7d9f9} 
+DT\+\_\+\+Link&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DT\_InventoryStatus@{DT\_InventoryStatus}!Catalog@{Catalog}}\index{Catalog@{Catalog}!DT\_InventoryStatus@{DT\_InventoryStatus}}}\Hypertarget{namespace_catalog_a693d0d946df17df0cf8e223d475c3176ac266cf02767aa599eeb39d3682ab7f6e}\label{namespace_catalog_a693d0d946df17df0cf8e223d475c3176ac266cf02767aa599eeb39d3682ab7f6e} 
+DT\+\_\+\+Inventory\+Status&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DT\_StampMount@{DT\_StampMount}!Catalog@{Catalog}}\index{Catalog@{Catalog}!DT\_StampMount@{DT\_StampMount}}}\Hypertarget{namespace_catalog_a693d0d946df17df0cf8e223d475c3176a3b032fbf5609ce35d198462d63594bf0}\label{namespace_catalog_a693d0d946df17df0cf8e223d475c3176a3b032fbf5609ce35d198462d63594bf0} 
+DT\+\_\+\+Stamp\+Mount&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DT\_BackGround@{DT\_BackGround}!Catalog@{Catalog}}\index{Catalog@{Catalog}!DT\_BackGround@{DT\_BackGround}}}\Hypertarget{namespace_catalog_a693d0d946df17df0cf8e223d475c3176a433af4777ab0807a223314476201c81a}\label{namespace_catalog_a693d0d946df17df0cf8e223d475c3176a433af4777ab0807a223314476201c81a} 
+DT\+\_\+\+Back\+Ground&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DT\_CollapseState@{DT\_CollapseState}!Catalog@{Catalog}}\index{Catalog@{Catalog}!DT\_CollapseState@{DT\_CollapseState}}}\Hypertarget{namespace_catalog_a693d0d946df17df0cf8e223d475c3176ac949b88113dd4bc3e8d2c1d953775a9a}\label{namespace_catalog_a693d0d946df17df0cf8e223d475c3176ac949b88113dd4bc3e8d2c1d953775a9a} 
+DT\+\_\+\+Collapse\+State&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DT\_ImageName@{DT\_ImageName}!Catalog@{Catalog}}\index{Catalog@{Catalog}!DT\_ImageName@{DT\_ImageName}}}\Hypertarget{namespace_catalog_a693d0d946df17df0cf8e223d475c3176ab1b5b0ea423e1ecd12339144973ddc5f}\label{namespace_catalog_a693d0d946df17df0cf8e223d475c3176ab1b5b0ea423e1ecd12339144973ddc5f} 
+DT\+\_\+\+Image\+Name&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DT\_NbrTypes@{DT\_NbrTypes}!Catalog@{Catalog}}\index{Catalog@{Catalog}!DT\_NbrTypes@{DT\_NbrTypes}}}\Hypertarget{namespace_catalog_a693d0d946df17df0cf8e223d475c3176a61ce03037e0635b621097ac2d4f37b03}\label{namespace_catalog_a693d0d946df17df0cf8e223d475c3176a61ce03037e0635b621097ac2d4f37b03} 
+DT\+\_\+\+Nbr\+Types&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{_catalog_defs_8h_source_l00079}{79}} of file \mbox{\hyperlink{_catalog_defs_8h_source}{Catalog\+Defs.\+h}}.
+
+\Hypertarget{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acd}\index{Catalog@{Catalog}!EmissionType@{EmissionType}}
+\index{EmissionType@{EmissionType}!Catalog@{Catalog}}
+\doxysubsubsection{\texorpdfstring{EmissionType}{EmissionType}}
+{\footnotesize\ttfamily \label{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acd} 
+enum \mbox{\hyperlink{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acd}{Catalog\+::\+Emission\+Type}}}
+
+
+
+enum for the stamp emission. One of\+: ET\+\_\+\+Unknown = 0, ET\+\_\+\+Commemorative, ET\+\_\+\+Definitive, ET\+\_\+\+Hunting\+Permit, ET\+\_\+\+Revenue, ET\+\_\+\+Air\+Post, ET\+\_\+\+Air\+Post\+Official, ET\+\_\+\+Air\+Post\+Semi\+Postal, ET\+\_\+\+ATMlabels, ET\+\_\+\+Cinderella, ET\+\_\+\+Illegal, ET\+\_\+\+Insured\+Letter, ET\+\_\+\+Military, ET\+\_\+\+Newspaper, ET\+\_\+\+Official, ET\+\_\+\+Parcel\+Post, ET\+\_\+\+Personal\+Delivery, ET\+\_\+\+Personalized, ET\+\_\+\+Postage\+Due, ET\+\_\+\+Postal\+Tax, ET\+\_\+\+Precancelled, ET\+\_\+\+Private, ET\+\_\+\+Regional, ET\+\_\+\+Registration, ET\+\_\+\+Semi\+Postal, ET\+\_\+\+War\+Tax 
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ET\_Unknown@{ET\_Unknown}!Catalog@{Catalog}}\index{Catalog@{Catalog}!ET\_Unknown@{ET\_Unknown}}}\Hypertarget{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acda1ea963c3732b95e24d9b4cfe59eac5e7}\label{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acda1ea963c3732b95e24d9b4cfe59eac5e7} 
+ET\+\_\+\+Unknown&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ET\_Commemorative@{ET\_Commemorative}!Catalog@{Catalog}}\index{Catalog@{Catalog}!ET\_Commemorative@{ET\_Commemorative}}}\Hypertarget{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acdae8609b3b7175c2bc282c2474d98ac551}\label{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acdae8609b3b7175c2bc282c2474d98ac551} 
+ET\+\_\+\+Commemorative&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ET\_Definitive@{ET\_Definitive}!Catalog@{Catalog}}\index{Catalog@{Catalog}!ET\_Definitive@{ET\_Definitive}}}\Hypertarget{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acda019c0dcf109b9886a86625d627cfc07a}\label{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acda019c0dcf109b9886a86625d627cfc07a} 
+ET\+\_\+\+Definitive&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ET\_HuntingPermit@{ET\_HuntingPermit}!Catalog@{Catalog}}\index{Catalog@{Catalog}!ET\_HuntingPermit@{ET\_HuntingPermit}}}\Hypertarget{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acda88a123573f515b4b855d48e299b7701d}\label{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acda88a123573f515b4b855d48e299b7701d} 
+ET\+\_\+\+Hunting\+Permit&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ET\_Revenue@{ET\_Revenue}!Catalog@{Catalog}}\index{Catalog@{Catalog}!ET\_Revenue@{ET\_Revenue}}}\Hypertarget{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acda3bf00b8da05bb451340dd55fb29a8fb9}\label{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acda3bf00b8da05bb451340dd55fb29a8fb9} 
+ET\+\_\+\+Revenue&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ET\_AirPost@{ET\_AirPost}!Catalog@{Catalog}}\index{Catalog@{Catalog}!ET\_AirPost@{ET\_AirPost}}}\Hypertarget{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acda7a8002df073d26f4359b4e4b3e43f08d}\label{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acda7a8002df073d26f4359b4e4b3e43f08d} 
+ET\+\_\+\+Air\+Post&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ET\_AirPostOfficial@{ET\_AirPostOfficial}!Catalog@{Catalog}}\index{Catalog@{Catalog}!ET\_AirPostOfficial@{ET\_AirPostOfficial}}}\Hypertarget{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acda58054ad1938fe17f6a02439821d631b2}\label{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acda58054ad1938fe17f6a02439821d631b2} 
+ET\+\_\+\+Air\+Post\+Official&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ET\_AirPostSemiPostal@{ET\_AirPostSemiPostal}!Catalog@{Catalog}}\index{Catalog@{Catalog}!ET\_AirPostSemiPostal@{ET\_AirPostSemiPostal}}}\Hypertarget{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acdaa0490d72a675ce975bd1fe2551a75d46}\label{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acdaa0490d72a675ce975bd1fe2551a75d46} 
+ET\+\_\+\+Air\+Post\+Semi\+Postal&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ET\_ATMlabels@{ET\_ATMlabels}!Catalog@{Catalog}}\index{Catalog@{Catalog}!ET\_ATMlabels@{ET\_ATMlabels}}}\Hypertarget{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acda1c322f217ea4d26cd2b6c2b16a0cfc0f}\label{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acda1c322f217ea4d26cd2b6c2b16a0cfc0f} 
+ET\+\_\+\+ATMlabels&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ET\_Cinderella@{ET\_Cinderella}!Catalog@{Catalog}}\index{Catalog@{Catalog}!ET\_Cinderella@{ET\_Cinderella}}}\Hypertarget{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acda48cc95044be7330ba97fb7bf83f27acb}\label{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acda48cc95044be7330ba97fb7bf83f27acb} 
+ET\+\_\+\+Cinderella&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ET\_Illegal@{ET\_Illegal}!Catalog@{Catalog}}\index{Catalog@{Catalog}!ET\_Illegal@{ET\_Illegal}}}\Hypertarget{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acda0780f8e8819e03aff8b22667ecf441f8}\label{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acda0780f8e8819e03aff8b22667ecf441f8} 
+ET\+\_\+\+Illegal&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ET\_InsuredLetter@{ET\_InsuredLetter}!Catalog@{Catalog}}\index{Catalog@{Catalog}!ET\_InsuredLetter@{ET\_InsuredLetter}}}\Hypertarget{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acda025369bf2a66dbeadb79ae26c1f15f34}\label{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acda025369bf2a66dbeadb79ae26c1f15f34} 
+ET\+\_\+\+Insured\+Letter&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ET\_Military@{ET\_Military}!Catalog@{Catalog}}\index{Catalog@{Catalog}!ET\_Military@{ET\_Military}}}\Hypertarget{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acda6f40d1b034b24c7511eb47333412589e}\label{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acda6f40d1b034b24c7511eb47333412589e} 
+ET\+\_\+\+Military&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ET\_Newspaper@{ET\_Newspaper}!Catalog@{Catalog}}\index{Catalog@{Catalog}!ET\_Newspaper@{ET\_Newspaper}}}\Hypertarget{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acda20e7aabf0227d2a91d517e83022cf21e}\label{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acda20e7aabf0227d2a91d517e83022cf21e} 
+ET\+\_\+\+Newspaper&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ET\_Official@{ET\_Official}!Catalog@{Catalog}}\index{Catalog@{Catalog}!ET\_Official@{ET\_Official}}}\Hypertarget{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acda545368c248f33e67fd84f70ddb25b933}\label{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acda545368c248f33e67fd84f70ddb25b933} 
+ET\+\_\+\+Official&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ET\_ParcelPost@{ET\_ParcelPost}!Catalog@{Catalog}}\index{Catalog@{Catalog}!ET\_ParcelPost@{ET\_ParcelPost}}}\Hypertarget{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acda3d1e42f87618317c01ba5b4b0de8a921}\label{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acda3d1e42f87618317c01ba5b4b0de8a921} 
+ET\+\_\+\+Parcel\+Post&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ET\_PersonalDelivery@{ET\_PersonalDelivery}!Catalog@{Catalog}}\index{Catalog@{Catalog}!ET\_PersonalDelivery@{ET\_PersonalDelivery}}}\Hypertarget{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acda180a017abec664d783ef735101c4a99c}\label{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acda180a017abec664d783ef735101c4a99c} 
+ET\+\_\+\+Personal\+Delivery&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ET\_Personalized@{ET\_Personalized}!Catalog@{Catalog}}\index{Catalog@{Catalog}!ET\_Personalized@{ET\_Personalized}}}\Hypertarget{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acda2a002f68ac82e836f64764d1cdf72181}\label{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acda2a002f68ac82e836f64764d1cdf72181} 
+ET\+\_\+\+Personalized&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ET\_PostageDue@{ET\_PostageDue}!Catalog@{Catalog}}\index{Catalog@{Catalog}!ET\_PostageDue@{ET\_PostageDue}}}\Hypertarget{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acdaf0c9f5e836d2313f25441e851890b872}\label{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acdaf0c9f5e836d2313f25441e851890b872} 
+ET\+\_\+\+Postage\+Due&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ET\_PostalTax@{ET\_PostalTax}!Catalog@{Catalog}}\index{Catalog@{Catalog}!ET\_PostalTax@{ET\_PostalTax}}}\Hypertarget{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acdac727fc96436459155cf5837b1f45b491}\label{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acdac727fc96436459155cf5837b1f45b491} 
+ET\+\_\+\+Postal\+Tax&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ET\_Precancelled@{ET\_Precancelled}!Catalog@{Catalog}}\index{Catalog@{Catalog}!ET\_Precancelled@{ET\_Precancelled}}}\Hypertarget{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acdafe8a5e55f6d72f2349d8f88019047874}\label{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acdafe8a5e55f6d72f2349d8f88019047874} 
+ET\+\_\+\+Precancelled&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ET\_Private@{ET\_Private}!Catalog@{Catalog}}\index{Catalog@{Catalog}!ET\_Private@{ET\_Private}}}\Hypertarget{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acda25ab5295fa52fbf5c4ab11019799eabf}\label{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acda25ab5295fa52fbf5c4ab11019799eabf} 
+ET\+\_\+\+Private&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ET\_Regional@{ET\_Regional}!Catalog@{Catalog}}\index{Catalog@{Catalog}!ET\_Regional@{ET\_Regional}}}\Hypertarget{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acdaa59eab426ea1e375b4cb90c9f774aca8}\label{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acdaa59eab426ea1e375b4cb90c9f774aca8} 
+ET\+\_\+\+Regional&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ET\_Registration@{ET\_Registration}!Catalog@{Catalog}}\index{Catalog@{Catalog}!ET\_Registration@{ET\_Registration}}}\Hypertarget{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acdad35886f9bb8c5625384d58a68baceb61}\label{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acdad35886f9bb8c5625384d58a68baceb61} 
+ET\+\_\+\+Registration&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ET\_SemiPostal@{ET\_SemiPostal}!Catalog@{Catalog}}\index{Catalog@{Catalog}!ET\_SemiPostal@{ET\_SemiPostal}}}\Hypertarget{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acda8fd68992dd785ba6c73fc52c21d688cc}\label{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acda8fd68992dd785ba6c73fc52c21d688cc} 
+ET\+\_\+\+Semi\+Postal&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ET\_WarTax@{ET\_WarTax}!Catalog@{Catalog}}\index{Catalog@{Catalog}!ET\_WarTax@{ET\_WarTax}}}\Hypertarget{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acda9aee231e8fab6301ed03d4ea5463a81a}\label{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acda9aee231e8fab6301ed03d4ea5463a81a} 
+ET\+\_\+\+War\+Tax&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ET\_NbrTypes@{ET\_NbrTypes}!Catalog@{Catalog}}\index{Catalog@{Catalog}!ET\_NbrTypes@{ET\_NbrTypes}}}\Hypertarget{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acda2d561f219b7813c539992726b518751c}\label{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acda2d561f219b7813c539992726b518751c} 
+ET\+\_\+\+Nbr\+Types&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{_catalog_defs_8h_source_l00121}{121}} of file \mbox{\hyperlink{_catalog_defs_8h_source}{Catalog\+Defs.\+h}}.
+
+\Hypertarget{namespace_catalog_a2ff17ae8cd4986617c22e54b7cf50f89}\index{Catalog@{Catalog}!FormatType@{FormatType}}
+\index{FormatType@{FormatType}!Catalog@{Catalog}}
+\doxysubsubsection{\texorpdfstring{FormatType}{FormatType}}
+{\footnotesize\ttfamily \label{namespace_catalog_a2ff17ae8cd4986617c22e54b7cf50f89} 
+enum \mbox{\hyperlink{namespace_catalog_a2ff17ae8cd4986617c22e54b7cf50f89}{Catalog\+::\+Format\+Type}}}
+
+
+
+Enum defining the format of a entry. One of\+: FT\+\_\+\+Format\+Unknown = 0, FT\+\_\+\+Stamp, FT\+\_\+\+Se\+\_\+tenant, FT\+\_\+\+Mini\+\_\+\+Sheet, FT\+\_\+\+Souvenir\+\_\+\+Sheet, FT\+\_\+\+Booklet, FT\+\_\+\+Booklet\+\_\+\+Pane, FT\+\_\+\+Gutter\+\_\+\+Pair, FT\+\_\+\+Stamp\+\_\+with\+\_\+\+Attached\+\_\+\+Label, FT\+\_\+\+Tete\+\_\+\+Beche,. 
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FT\_FormatUnknown@{FT\_FormatUnknown}!Catalog@{Catalog}}\index{Catalog@{Catalog}!FT\_FormatUnknown@{FT\_FormatUnknown}}}\Hypertarget{namespace_catalog_a2ff17ae8cd4986617c22e54b7cf50f89acbdb3c807d4fcf9746935b23009e6d14}\label{namespace_catalog_a2ff17ae8cd4986617c22e54b7cf50f89acbdb3c807d4fcf9746935b23009e6d14} 
+FT\+\_\+\+Format\+Unknown&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FT\_Stamp@{FT\_Stamp}!Catalog@{Catalog}}\index{Catalog@{Catalog}!FT\_Stamp@{FT\_Stamp}}}\Hypertarget{namespace_catalog_a2ff17ae8cd4986617c22e54b7cf50f89ab613431e40eca8835e4c06744adf1063}\label{namespace_catalog_a2ff17ae8cd4986617c22e54b7cf50f89ab613431e40eca8835e4c06744adf1063} 
+FT\+\_\+\+Stamp&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FT\_Se\_tenant@{FT\_Se\_tenant}!Catalog@{Catalog}}\index{Catalog@{Catalog}!FT\_Se\_tenant@{FT\_Se\_tenant}}}\Hypertarget{namespace_catalog_a2ff17ae8cd4986617c22e54b7cf50f89aa7c453e371da6e604238e6378be09778}\label{namespace_catalog_a2ff17ae8cd4986617c22e54b7cf50f89aa7c453e371da6e604238e6378be09778} 
+FT\+\_\+\+Se\+\_\+tenant&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FT\_Mini\_Sheet@{FT\_Mini\_Sheet}!Catalog@{Catalog}}\index{Catalog@{Catalog}!FT\_Mini\_Sheet@{FT\_Mini\_Sheet}}}\Hypertarget{namespace_catalog_a2ff17ae8cd4986617c22e54b7cf50f89ae0ac5660a759903581aff69a9ba5f507}\label{namespace_catalog_a2ff17ae8cd4986617c22e54b7cf50f89ae0ac5660a759903581aff69a9ba5f507} 
+FT\+\_\+\+Mini\+\_\+\+Sheet&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FT\_Souvenir\_Sheet@{FT\_Souvenir\_Sheet}!Catalog@{Catalog}}\index{Catalog@{Catalog}!FT\_Souvenir\_Sheet@{FT\_Souvenir\_Sheet}}}\Hypertarget{namespace_catalog_a2ff17ae8cd4986617c22e54b7cf50f89ac843859a02fa372744f3d51e883dac1d}\label{namespace_catalog_a2ff17ae8cd4986617c22e54b7cf50f89ac843859a02fa372744f3d51e883dac1d} 
+FT\+\_\+\+Souvenir\+\_\+\+Sheet&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FT\_Booklet@{FT\_Booklet}!Catalog@{Catalog}}\index{Catalog@{Catalog}!FT\_Booklet@{FT\_Booklet}}}\Hypertarget{namespace_catalog_a2ff17ae8cd4986617c22e54b7cf50f89a4c94f79bbbab2b6ea6e27247581a7458}\label{namespace_catalog_a2ff17ae8cd4986617c22e54b7cf50f89a4c94f79bbbab2b6ea6e27247581a7458} 
+FT\+\_\+\+Booklet&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FT\_Booklet\_Pane@{FT\_Booklet\_Pane}!Catalog@{Catalog}}\index{Catalog@{Catalog}!FT\_Booklet\_Pane@{FT\_Booklet\_Pane}}}\Hypertarget{namespace_catalog_a2ff17ae8cd4986617c22e54b7cf50f89a62406704a892f2088b165a591dafa6c1}\label{namespace_catalog_a2ff17ae8cd4986617c22e54b7cf50f89a62406704a892f2088b165a591dafa6c1} 
+FT\+\_\+\+Booklet\+\_\+\+Pane&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FT\_Gutter\_Pair@{FT\_Gutter\_Pair}!Catalog@{Catalog}}\index{Catalog@{Catalog}!FT\_Gutter\_Pair@{FT\_Gutter\_Pair}}}\Hypertarget{namespace_catalog_a2ff17ae8cd4986617c22e54b7cf50f89af44786bc6f96d802ae6525ce9b92300e}\label{namespace_catalog_a2ff17ae8cd4986617c22e54b7cf50f89af44786bc6f96d802ae6525ce9b92300e} 
+FT\+\_\+\+Gutter\+\_\+\+Pair&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FT\_Stamp\_with\_Attached\_Label@{FT\_Stamp\_with\_Attached\_Label}!Catalog@{Catalog}}\index{Catalog@{Catalog}!FT\_Stamp\_with\_Attached\_Label@{FT\_Stamp\_with\_Attached\_Label}}}\Hypertarget{namespace_catalog_a2ff17ae8cd4986617c22e54b7cf50f89a2ef327db8291fb7d9a70ace2be9f6292}\label{namespace_catalog_a2ff17ae8cd4986617c22e54b7cf50f89a2ef327db8291fb7d9a70ace2be9f6292} 
+FT\+\_\+\+Stamp\+\_\+with\+\_\+\+Attached\+\_\+\+Label&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FT\_Tete\_Beche@{FT\_Tete\_Beche}!Catalog@{Catalog}}\index{Catalog@{Catalog}!FT\_Tete\_Beche@{FT\_Tete\_Beche}}}\Hypertarget{namespace_catalog_a2ff17ae8cd4986617c22e54b7cf50f89a76e5c2891d8c034b3ba85025d0e9fd82}\label{namespace_catalog_a2ff17ae8cd4986617c22e54b7cf50f89a76e5c2891d8c034b3ba85025d0e9fd82} 
+FT\+\_\+\+Tete\+\_\+\+Beche&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FT\_Full\_Pane@{FT\_Full\_Pane}!Catalog@{Catalog}}\index{Catalog@{Catalog}!FT\_Full\_Pane@{FT\_Full\_Pane}}}\Hypertarget{namespace_catalog_a2ff17ae8cd4986617c22e54b7cf50f89a58c3e134177350afe2ea382d50cb3286}\label{namespace_catalog_a2ff17ae8cd4986617c22e54b7cf50f89a58c3e134177350afe2ea382d50cb3286} 
+FT\+\_\+\+Full\+\_\+\+Pane&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FT\_NbrTypes@{FT\_NbrTypes}!Catalog@{Catalog}}\index{Catalog@{Catalog}!FT\_NbrTypes@{FT\_NbrTypes}}}\Hypertarget{namespace_catalog_a2ff17ae8cd4986617c22e54b7cf50f89a7b37347e60dfcaea4ed88899173207fa}\label{namespace_catalog_a2ff17ae8cd4986617c22e54b7cf50f89a7b37347e60dfcaea4ed88899173207fa} 
+FT\+\_\+\+Nbr\+Types&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{_catalog_defs_8h_source_l00156}{156}} of file \mbox{\hyperlink{_catalog_defs_8h_source}{Catalog\+Defs.\+h}}.
+
+\Hypertarget{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3a}\index{Catalog@{Catalog}!IconID@{IconID}}
+\index{IconID@{IconID}!Catalog@{Catalog}}
+\doxysubsubsection{\texorpdfstring{IconID}{IconID}}
+{\footnotesize\ttfamily \label{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3a} 
+enum \mbox{\hyperlink{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3a}{Catalog\+::\+Icon\+ID}}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Icon\_StampUnknown@{Icon\_StampUnknown}!Catalog@{Catalog}}\index{Catalog@{Catalog}!Icon\_StampUnknown@{Icon\_StampUnknown}}}\Hypertarget{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aa0d21de3af16e32e1be60b9b772446eab}\label{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aa0d21de3af16e32e1be60b9b772446eab} 
+Icon\+\_\+\+Stamp\+Unknown&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Icon\_Stamp@{Icon\_Stamp}!Catalog@{Catalog}}\index{Catalog@{Catalog}!Icon\_Stamp@{Icon\_Stamp}}}\Hypertarget{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aa5e0de48a2a668aec7db1d42888417f6b}\label{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aa5e0de48a2a668aec7db1d42888417f6b} 
+Icon\+\_\+\+Stamp&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Icon\_StampMissing@{Icon\_StampMissing}!Catalog@{Catalog}}\index{Catalog@{Catalog}!Icon\_StampMissing@{Icon\_StampMissing}}}\Hypertarget{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aab7e5df03d7e4d8d55eb105fbd6416b76}\label{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aab7e5df03d7e4d8d55eb105fbd6416b76} 
+Icon\+\_\+\+Stamp\+Missing&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Icon\_StampSelected@{Icon\_StampSelected}!Catalog@{Catalog}}\index{Catalog@{Catalog}!Icon\_StampSelected@{Icon\_StampSelected}}}\Hypertarget{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aa8ca463f0957e4d5f46e16487d67dc605}\label{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aa8ca463f0957e4d5f46e16487d67dc605} 
+Icon\+\_\+\+Stamp\+Selected&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Icon\_StampOrdered@{Icon\_StampOrdered}!Catalog@{Catalog}}\index{Catalog@{Catalog}!Icon\_StampOrdered@{Icon\_StampOrdered}}}\Hypertarget{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aa4a59f5e411b4b97a1dede189a6416506}\label{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aa4a59f5e411b4b97a1dede189a6416506} 
+Icon\+\_\+\+Stamp\+Ordered&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Icon\_StampOwn@{Icon\_StampOwn}!Catalog@{Catalog}}\index{Catalog@{Catalog}!Icon\_StampOwn@{Icon\_StampOwn}}}\Hypertarget{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aaa6bed36fd2a114b8746714ae4b576b8c}\label{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aaa6bed36fd2a114b8746714ae4b576b8c} 
+Icon\+\_\+\+Stamp\+Own&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Icon\_StampOwnVariant@{Icon\_StampOwnVariant}!Catalog@{Catalog}}\index{Catalog@{Catalog}!Icon\_StampOwnVariant@{Icon\_StampOwnVariant}}}\Hypertarget{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aacd1e93a25b4e31c29f13cea3d3e6d560}\label{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aacd1e93a25b4e31c29f13cea3d3e6d560} 
+Icon\+\_\+\+Stamp\+Own\+Variant&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Icon\_StampExclude@{Icon\_StampExclude}!Catalog@{Catalog}}\index{Catalog@{Catalog}!Icon\_StampExclude@{Icon\_StampExclude}}}\Hypertarget{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aa7673e47404b0bb7a7329b5e01c0a484b}\label{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aa7673e47404b0bb7a7329b5e01c0a484b} 
+Icon\+\_\+\+Stamp\+Exclude&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Icon\_StampUnknownBlock@{Icon\_StampUnknownBlock}!Catalog@{Catalog}}\index{Catalog@{Catalog}!Icon\_StampUnknownBlock@{Icon\_StampUnknownBlock}}}\Hypertarget{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aaba7e9da6a0733327036be2db483aceb6}\label{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aaba7e9da6a0733327036be2db483aceb6} 
+Icon\+\_\+\+Stamp\+Unknown\+Block&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Icon\_StampBlock@{Icon\_StampBlock}!Catalog@{Catalog}}\index{Catalog@{Catalog}!Icon\_StampBlock@{Icon\_StampBlock}}}\Hypertarget{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aa5545ec762bf6dfb4f18d01cda93c467b}\label{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aa5545ec762bf6dfb4f18d01cda93c467b} 
+Icon\+\_\+\+Stamp\+Block&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Icon\_StampMissingBlock@{Icon\_StampMissingBlock}!Catalog@{Catalog}}\index{Catalog@{Catalog}!Icon\_StampMissingBlock@{Icon\_StampMissingBlock}}}\Hypertarget{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aa52c223ca918fe0b28a8f22e48bc286c0}\label{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aa52c223ca918fe0b28a8f22e48bc286c0} 
+Icon\+\_\+\+Stamp\+Missing\+Block&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Icon\_StampBlockSelected@{Icon\_StampBlockSelected}!Catalog@{Catalog}}\index{Catalog@{Catalog}!Icon\_StampBlockSelected@{Icon\_StampBlockSelected}}}\Hypertarget{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aa52348ede60be49bcfc8d07d006d5a745}\label{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aa52348ede60be49bcfc8d07d006d5a745} 
+Icon\+\_\+\+Stamp\+Block\+Selected&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Icon\_StampOrderedBlock@{Icon\_StampOrderedBlock}!Catalog@{Catalog}}\index{Catalog@{Catalog}!Icon\_StampOrderedBlock@{Icon\_StampOrderedBlock}}}\Hypertarget{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aa08e7ba6eb1630fc9628981a8d5491fd8}\label{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aa08e7ba6eb1630fc9628981a8d5491fd8} 
+Icon\+\_\+\+Stamp\+Ordered\+Block&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Icon\_StampOwnBlock@{Icon\_StampOwnBlock}!Catalog@{Catalog}}\index{Catalog@{Catalog}!Icon\_StampOwnBlock@{Icon\_StampOwnBlock}}}\Hypertarget{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aa91b02b3325d586381b9b2efa1dfbc8db}\label{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aa91b02b3325d586381b9b2efa1dfbc8db} 
+Icon\+\_\+\+Stamp\+Own\+Block&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Icon\_StampOwnVariantBlock@{Icon\_StampOwnVariantBlock}!Catalog@{Catalog}}\index{Catalog@{Catalog}!Icon\_StampOwnVariantBlock@{Icon\_StampOwnVariantBlock}}}\Hypertarget{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aaba86c3a069fbd432148309aa42b9044b}\label{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aaba86c3a069fbd432148309aa42b9044b} 
+Icon\+\_\+\+Stamp\+Own\+Variant\+Block&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Icon\_StampExcludeBlock@{Icon\_StampExcludeBlock}!Catalog@{Catalog}}\index{Catalog@{Catalog}!Icon\_StampExcludeBlock@{Icon\_StampExcludeBlock}}}\Hypertarget{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aa146c08d0220be0b01ee2ac2e52bcb557}\label{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aa146c08d0220be0b01ee2ac2e52bcb557} 
+Icon\+\_\+\+Stamp\+Exclude\+Block&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Icon\_StampUnknownMiniSheet@{Icon\_StampUnknownMiniSheet}!Catalog@{Catalog}}\index{Catalog@{Catalog}!Icon\_StampUnknownMiniSheet@{Icon\_StampUnknownMiniSheet}}}\Hypertarget{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aabf837c07a3c3b5f8f0db7fd5b9f952e3}\label{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aabf837c07a3c3b5f8f0db7fd5b9f952e3} 
+Icon\+\_\+\+Stamp\+Unknown\+Mini\+Sheet&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Icon\_StampMiniSheet@{Icon\_StampMiniSheet}!Catalog@{Catalog}}\index{Catalog@{Catalog}!Icon\_StampMiniSheet@{Icon\_StampMiniSheet}}}\Hypertarget{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aaebb97c63db2f46c6bf30cb505891fb1f}\label{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aaebb97c63db2f46c6bf30cb505891fb1f} 
+Icon\+\_\+\+Stamp\+Mini\+Sheet&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Icon\_StampMissingMiniSheet@{Icon\_StampMissingMiniSheet}!Catalog@{Catalog}}\index{Catalog@{Catalog}!Icon\_StampMissingMiniSheet@{Icon\_StampMissingMiniSheet}}}\Hypertarget{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aa52936aabd46419b4376959525b8bb31c}\label{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aa52936aabd46419b4376959525b8bb31c} 
+Icon\+\_\+\+Stamp\+Missing\+Mini\+Sheet&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Icon\_StampMiniSheetSelected@{Icon\_StampMiniSheetSelected}!Catalog@{Catalog}}\index{Catalog@{Catalog}!Icon\_StampMiniSheetSelected@{Icon\_StampMiniSheetSelected}}}\Hypertarget{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aa869740b108749cae197e09b8cdbc973e}\label{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aa869740b108749cae197e09b8cdbc973e} 
+Icon\+\_\+\+Stamp\+Mini\+Sheet\+Selected&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Icon\_StampOrderedMiniSheet@{Icon\_StampOrderedMiniSheet}!Catalog@{Catalog}}\index{Catalog@{Catalog}!Icon\_StampOrderedMiniSheet@{Icon\_StampOrderedMiniSheet}}}\Hypertarget{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aa4d6d1098756561121a10d41cce2e072d}\label{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aa4d6d1098756561121a10d41cce2e072d} 
+Icon\+\_\+\+Stamp\+Ordered\+Mini\+Sheet&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Icon\_StampOwnMiniSheet@{Icon\_StampOwnMiniSheet}!Catalog@{Catalog}}\index{Catalog@{Catalog}!Icon\_StampOwnMiniSheet@{Icon\_StampOwnMiniSheet}}}\Hypertarget{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aa5b845064a1984ec9f6acfd0a58471297}\label{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aa5b845064a1984ec9f6acfd0a58471297} 
+Icon\+\_\+\+Stamp\+Own\+Mini\+Sheet&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Icon\_StampOwnVariantMiniSheet@{Icon\_StampOwnVariantMiniSheet}!Catalog@{Catalog}}\index{Catalog@{Catalog}!Icon\_StampOwnVariantMiniSheet@{Icon\_StampOwnVariantMiniSheet}}}\Hypertarget{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aabc06b5d7fb9568ffa4ca96bf7bcbd872}\label{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aabc06b5d7fb9568ffa4ca96bf7bcbd872} 
+Icon\+\_\+\+Stamp\+Own\+Variant\+Mini\+Sheet&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Icon\_StampExcludeMiniSheet@{Icon\_StampExcludeMiniSheet}!Catalog@{Catalog}}\index{Catalog@{Catalog}!Icon\_StampExcludeMiniSheet@{Icon\_StampExcludeMiniSheet}}}\Hypertarget{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aa45b204ff0e6e3307c5db2fa4b8705dd1}\label{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aa45b204ff0e6e3307c5db2fa4b8705dd1} 
+Icon\+\_\+\+Stamp\+Exclude\+Mini\+Sheet&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Icon\_StampUnknownSouvenirSheet@{Icon\_StampUnknownSouvenirSheet}!Catalog@{Catalog}}\index{Catalog@{Catalog}!Icon\_StampUnknownSouvenirSheet@{Icon\_StampUnknownSouvenirSheet}}}\Hypertarget{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aaa1f5c643290a4a334c2a0992554174cd}\label{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aaa1f5c643290a4a334c2a0992554174cd} 
+Icon\+\_\+\+Stamp\+Unknown\+Souvenir\+Sheet&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Icon\_StampSouvenirSheet@{Icon\_StampSouvenirSheet}!Catalog@{Catalog}}\index{Catalog@{Catalog}!Icon\_StampSouvenirSheet@{Icon\_StampSouvenirSheet}}}\Hypertarget{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aa2eb831a594940791557cd71e0038ed43}\label{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aa2eb831a594940791557cd71e0038ed43} 
+Icon\+\_\+\+Stamp\+Souvenir\+Sheet&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Icon\_StampMissingSouvenirSheet@{Icon\_StampMissingSouvenirSheet}!Catalog@{Catalog}}\index{Catalog@{Catalog}!Icon\_StampMissingSouvenirSheet@{Icon\_StampMissingSouvenirSheet}}}\Hypertarget{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aafb5fd124ba0c8c4d6cfbf866a137f978}\label{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aafb5fd124ba0c8c4d6cfbf866a137f978} 
+Icon\+\_\+\+Stamp\+Missing\+Souvenir\+Sheet&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Icon\_StampSouvenirSheetSelected@{Icon\_StampSouvenirSheetSelected}!Catalog@{Catalog}}\index{Catalog@{Catalog}!Icon\_StampSouvenirSheetSelected@{Icon\_StampSouvenirSheetSelected}}}\Hypertarget{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aaf416b05d2a9869e899114c9fa72cfcc2}\label{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aaf416b05d2a9869e899114c9fa72cfcc2} 
+Icon\+\_\+\+Stamp\+Souvenir\+Sheet\+Selected&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Icon\_StampOrderedSouvenirSheet@{Icon\_StampOrderedSouvenirSheet}!Catalog@{Catalog}}\index{Catalog@{Catalog}!Icon\_StampOrderedSouvenirSheet@{Icon\_StampOrderedSouvenirSheet}}}\Hypertarget{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aa3ca531c12f799e1be9f9eeb793565608}\label{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aa3ca531c12f799e1be9f9eeb793565608} 
+Icon\+\_\+\+Stamp\+Ordered\+Souvenir\+Sheet&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Icon\_StampOwnSouvenirSheet@{Icon\_StampOwnSouvenirSheet}!Catalog@{Catalog}}\index{Catalog@{Catalog}!Icon\_StampOwnSouvenirSheet@{Icon\_StampOwnSouvenirSheet}}}\Hypertarget{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aa3565ad90788fa2e3db246e337154c89a}\label{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aa3565ad90788fa2e3db246e337154c89a} 
+Icon\+\_\+\+Stamp\+Own\+Souvenir\+Sheet&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Icon\_StampOwnVariantSouvenirSheet@{Icon\_StampOwnVariantSouvenirSheet}!Catalog@{Catalog}}\index{Catalog@{Catalog}!Icon\_StampOwnVariantSouvenirSheet@{Icon\_StampOwnVariantSouvenirSheet}}}\Hypertarget{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aa4c3f512c81591765c0d6a52bf5f36ce0}\label{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aa4c3f512c81591765c0d6a52bf5f36ce0} 
+Icon\+\_\+\+Stamp\+Own\+Variant\+Souvenir\+Sheet&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Icon\_StampExcludeSouvenirSheet@{Icon\_StampExcludeSouvenirSheet}!Catalog@{Catalog}}\index{Catalog@{Catalog}!Icon\_StampExcludeSouvenirSheet@{Icon\_StampExcludeSouvenirSheet}}}\Hypertarget{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aa96e30100796a991a08cb9b9e38e94140}\label{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aa96e30100796a991a08cb9b9e38e94140} 
+Icon\+\_\+\+Stamp\+Exclude\+Souvenir\+Sheet&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Icon\_Folder@{Icon\_Folder}!Catalog@{Catalog}}\index{Catalog@{Catalog}!Icon\_Folder@{Icon\_Folder}}}\Hypertarget{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aacdde910cf8edacfffcfd3f7ee576f78c}\label{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3aacdde910cf8edacfffcfd3f7ee576f78c} 
+Icon\+\_\+\+Folder&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{_icon_defs_8h_source_l00092}{92}} of file \mbox{\hyperlink{_icon_defs_8h_source}{Icon\+Defs.\+h}}.
+
+\Hypertarget{namespace_catalog_a7bc076b172809c869ab8fef63c49e8c3}\index{Catalog@{Catalog}!InventoryStatusType@{InventoryStatusType}}
+\index{InventoryStatusType@{InventoryStatusType}!Catalog@{Catalog}}
+\doxysubsubsection{\texorpdfstring{InventoryStatusType}{InventoryStatusType}}
+{\footnotesize\ttfamily \label{namespace_catalog_a7bc076b172809c869ab8fef63c49e8c3} 
+enum \mbox{\hyperlink{namespace_catalog_a7bc076b172809c869ab8fef63c49e8c3}{Catalog\+::\+Inventory\+Status\+Type}}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ST\_None@{ST\_None}!Catalog@{Catalog}}\index{Catalog@{Catalog}!ST\_None@{ST\_None}}}\Hypertarget{namespace_catalog_a7bc076b172809c869ab8fef63c49e8c3a3c63635bcbda2767ba8e820680f02c50}\label{namespace_catalog_a7bc076b172809c869ab8fef63c49e8c3a3c63635bcbda2767ba8e820680f02c50} 
+ST\+\_\+\+None&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ST\_Missing@{ST\_Missing}!Catalog@{Catalog}}\index{Catalog@{Catalog}!ST\_Missing@{ST\_Missing}}}\Hypertarget{namespace_catalog_a7bc076b172809c869ab8fef63c49e8c3a27ff945e1932884c906961b16546992f}\label{namespace_catalog_a7bc076b172809c869ab8fef63c49e8c3a27ff945e1932884c906961b16546992f} 
+ST\+\_\+\+Missing&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ST\_Ordered@{ST\_Ordered}!Catalog@{Catalog}}\index{Catalog@{Catalog}!ST\_Ordered@{ST\_Ordered}}}\Hypertarget{namespace_catalog_a7bc076b172809c869ab8fef63c49e8c3a8ef029b74317a6ca0273efd7995f2331}\label{namespace_catalog_a7bc076b172809c869ab8fef63c49e8c3a8ef029b74317a6ca0273efd7995f2331} 
+ST\+\_\+\+Ordered&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ST\_Own@{ST\_Own}!Catalog@{Catalog}}\index{Catalog@{Catalog}!ST\_Own@{ST\_Own}}}\Hypertarget{namespace_catalog_a7bc076b172809c869ab8fef63c49e8c3afb30b7a8974945b07f0c7f2df3ae0249}\label{namespace_catalog_a7bc076b172809c869ab8fef63c49e8c3afb30b7a8974945b07f0c7f2df3ae0249} 
+ST\+\_\+\+Own&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ST\_OwnVariant@{ST\_OwnVariant}!Catalog@{Catalog}}\index{Catalog@{Catalog}!ST\_OwnVariant@{ST\_OwnVariant}}}\Hypertarget{namespace_catalog_a7bc076b172809c869ab8fef63c49e8c3ad8ca0058ea1019f801e0c3f3d645efc7}\label{namespace_catalog_a7bc076b172809c869ab8fef63c49e8c3ad8ca0058ea1019f801e0c3f3d645efc7} 
+ST\+\_\+\+Own\+Variant&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ST\_Exclude@{ST\_Exclude}!Catalog@{Catalog}}\index{Catalog@{Catalog}!ST\_Exclude@{ST\_Exclude}}}\Hypertarget{namespace_catalog_a7bc076b172809c869ab8fef63c49e8c3aa467c2eee2b803ead3f4134222a9b0d0}\label{namespace_catalog_a7bc076b172809c869ab8fef63c49e8c3aa467c2eee2b803ead3f4134222a9b0d0} 
+ST\+\_\+\+Exclude&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ST\_NbrInventoryStatusTypes@{ST\_NbrInventoryStatusTypes}!Catalog@{Catalog}}\index{Catalog@{Catalog}!ST\_NbrInventoryStatusTypes@{ST\_NbrInventoryStatusTypes}}}\Hypertarget{namespace_catalog_a7bc076b172809c869ab8fef63c49e8c3a75fc42a4f75f4994518abed41c2699fb}\label{namespace_catalog_a7bc076b172809c869ab8fef63c49e8c3a75fc42a4f75f4994518abed41c2699fb} 
+ST\+\_\+\+Nbr\+Inventory\+Status\+Types&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{_catalog_defs_8h_source_l00175}{175}} of file \mbox{\hyperlink{_catalog_defs_8h_source}{Catalog\+Defs.\+h}}.
+
+\Hypertarget{namespace_catalog_aff34cc1fa92031a5cf463041a34ef3b2}\index{Catalog@{Catalog}!ItemDataTypes@{ItemDataTypes}}
+\index{ItemDataTypes@{ItemDataTypes}!Catalog@{Catalog}}
+\doxysubsubsection{\texorpdfstring{ItemDataTypes}{ItemDataTypes}}
+{\footnotesize\ttfamily \label{namespace_catalog_aff34cc1fa92031a5cf463041a34ef3b2} 
+enum \mbox{\hyperlink{namespace_catalog_aff34cc1fa92031a5cf463041a34ef3b2}{Catalog\+::\+Item\+Data\+Types}}}
+
+
+
+Enum defining item data types;. 
+
+This represents data kept for actual physical stamps in the collection. One of IDT\+\_\+\+Collection, IDT\+\_\+\+Inventory\+Status, IDT\+\_\+\+Type, IDT\+\_\+\+Condition, IDT\+\_\+\+Value, IDT\+\_\+\+Remarks \begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{IDT\_Collection@{IDT\_Collection}!Catalog@{Catalog}}\index{Catalog@{Catalog}!IDT\_Collection@{IDT\_Collection}}}\Hypertarget{namespace_catalog_aff34cc1fa92031a5cf463041a34ef3b2a8154603ef3e931bfe2420ac7f1ad8dd2}\label{namespace_catalog_aff34cc1fa92031a5cf463041a34ef3b2a8154603ef3e931bfe2420ac7f1ad8dd2} 
+IDT\+\_\+\+Collection&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{IDT\_InventoryStatus@{IDT\_InventoryStatus}!Catalog@{Catalog}}\index{Catalog@{Catalog}!IDT\_InventoryStatus@{IDT\_InventoryStatus}}}\Hypertarget{namespace_catalog_aff34cc1fa92031a5cf463041a34ef3b2a29e0aa208fe3e54d9be8fee50ffeb972}\label{namespace_catalog_aff34cc1fa92031a5cf463041a34ef3b2a29e0aa208fe3e54d9be8fee50ffeb972} 
+IDT\+\_\+\+Inventory\+Status&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{IDT\_Type@{IDT\_Type}!Catalog@{Catalog}}\index{Catalog@{Catalog}!IDT\_Type@{IDT\_Type}}}\Hypertarget{namespace_catalog_aff34cc1fa92031a5cf463041a34ef3b2a4313a19c63b4abfbd861b0c8c52dddae}\label{namespace_catalog_aff34cc1fa92031a5cf463041a34ef3b2a4313a19c63b4abfbd861b0c8c52dddae} 
+IDT\+\_\+\+Type&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{IDT\_Condition@{IDT\_Condition}!Catalog@{Catalog}}\index{Catalog@{Catalog}!IDT\_Condition@{IDT\_Condition}}}\Hypertarget{namespace_catalog_aff34cc1fa92031a5cf463041a34ef3b2a9696cb9d9ae35a1e1d771328949a989a}\label{namespace_catalog_aff34cc1fa92031a5cf463041a34ef3b2a9696cb9d9ae35a1e1d771328949a989a} 
+IDT\+\_\+\+Condition&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{IDT\_Value@{IDT\_Value}!Catalog@{Catalog}}\index{Catalog@{Catalog}!IDT\_Value@{IDT\_Value}}}\Hypertarget{namespace_catalog_aff34cc1fa92031a5cf463041a34ef3b2a66cf5b84769fa8b481f0e910f0e27361}\label{namespace_catalog_aff34cc1fa92031a5cf463041a34ef3b2a66cf5b84769fa8b481f0e910f0e27361} 
+IDT\+\_\+\+Value&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{IDT\_Remarks@{IDT\_Remarks}!Catalog@{Catalog}}\index{Catalog@{Catalog}!IDT\_Remarks@{IDT\_Remarks}}}\Hypertarget{namespace_catalog_aff34cc1fa92031a5cf463041a34ef3b2af12c410d29bbd066cad42615eb4046a9}\label{namespace_catalog_aff34cc1fa92031a5cf463041a34ef3b2af12c410d29bbd066cad42615eb4046a9} 
+IDT\+\_\+\+Remarks&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{IDT\_NbrTypes@{IDT\_NbrTypes}!Catalog@{Catalog}}\index{Catalog@{Catalog}!IDT\_NbrTypes@{IDT\_NbrTypes}}}\Hypertarget{namespace_catalog_aff34cc1fa92031a5cf463041a34ef3b2a2ed57e3723a4c82ab9de0042f5ea5198}\label{namespace_catalog_aff34cc1fa92031a5cf463041a34ef3b2a2ed57e3723a4c82ab9de0042f5ea5198} 
+IDT\+\_\+\+Nbr\+Types&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{_catalog_defs_8h_source_l00191}{191}} of file \mbox{\hyperlink{_catalog_defs_8h_source}{Catalog\+Defs.\+h}}.
+
+\Hypertarget{namespace_catalog_aa3cbcd4e21ffb2387b5f8956f82fe32c}\index{Catalog@{Catalog}!MergeOverwriteQuery@{MergeOverwriteQuery}}
+\index{MergeOverwriteQuery@{MergeOverwriteQuery}!Catalog@{Catalog}}
+\doxysubsubsection{\texorpdfstring{MergeOverwriteQuery}{MergeOverwriteQuery}}
+{\footnotesize\ttfamily \label{namespace_catalog_aa3cbcd4e21ffb2387b5f8956f82fe32c} 
+enum \mbox{\hyperlink{namespace_catalog_aa3cbcd4e21ffb2387b5f8956f82fe32c}{Catalog\+::\+Merge\+Overwrite\+Query}}}
+
+
+
+Enum for specifying file load process.\+One of\+: MO\+\_\+\+Cancel = 0, MO\+\_\+\+Merge, MO\+\_\+\+Overwrite,. 
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MO\_Cancel@{MO\_Cancel}!Catalog@{Catalog}}\index{Catalog@{Catalog}!MO\_Cancel@{MO\_Cancel}}}\Hypertarget{namespace_catalog_aa3cbcd4e21ffb2387b5f8956f82fe32cad5b0e290800aeae00409b33bf9d2e446}\label{namespace_catalog_aa3cbcd4e21ffb2387b5f8956f82fe32cad5b0e290800aeae00409b33bf9d2e446} 
+MO\+\_\+\+Cancel&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MO\_Merge@{MO\_Merge}!Catalog@{Catalog}}\index{Catalog@{Catalog}!MO\_Merge@{MO\_Merge}}}\Hypertarget{namespace_catalog_aa3cbcd4e21ffb2387b5f8956f82fe32ca86981e8db6213a8c35e1945efa8dcad4}\label{namespace_catalog_aa3cbcd4e21ffb2387b5f8956f82fe32ca86981e8db6213a8c35e1945efa8dcad4} 
+MO\+\_\+\+Merge&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MO\_Overwrite@{MO\_Overwrite}!Catalog@{Catalog}}\index{Catalog@{Catalog}!MO\_Overwrite@{MO\_Overwrite}}}\Hypertarget{namespace_catalog_aa3cbcd4e21ffb2387b5f8956f82fe32ca9406657db8ef1ff76a3a3758f7c4e6df}\label{namespace_catalog_aa3cbcd4e21ffb2387b5f8956f82fe32ca9406657db8ef1ff76a3a3758f7c4e6df} 
+MO\+\_\+\+Overwrite&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MO\_NbrTypes@{MO\_NbrTypes}!Catalog@{Catalog}}\index{Catalog@{Catalog}!MO\_NbrTypes@{MO\_NbrTypes}}}\Hypertarget{namespace_catalog_aa3cbcd4e21ffb2387b5f8956f82fe32ca0dc212f7664a49b1ddd07f25c184d7f8}\label{namespace_catalog_aa3cbcd4e21ffb2387b5f8956f82fe32ca0dc212f7664a49b1ddd07f25c184d7f8} 
+MO\+\_\+\+Nbr\+Types&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{_catalog_defs_8h_source_l00205}{205}} of file \mbox{\hyperlink{_catalog_defs_8h_source}{Catalog\+Defs.\+h}}.
+
+\Hypertarget{namespace_catalog_a5ccc6ae7677459cb9b1484679eeb5221}\index{Catalog@{Catalog}!MergeProcedure@{MergeProcedure}}
+\index{MergeProcedure@{MergeProcedure}!Catalog@{Catalog}}
+\doxysubsubsection{\texorpdfstring{MergeProcedure}{MergeProcedure}}
+{\footnotesize\ttfamily \label{namespace_catalog_a5ccc6ae7677459cb9b1484679eeb5221} 
+enum \mbox{\hyperlink{namespace_catalog_a5ccc6ae7677459cb9b1484679eeb5221}{Catalog\+::\+Merge\+Procedure}}}
+
+
+
+Enum specifying merge process. Oe of\+: MP\+\_\+\+Add\+Missing = 0, MP\+\_\+\+Add\+Missing\+Entries\+And\+Fields, MP\+\_\+\+Add\+Missing\+And\+Overwrite, MP\+\_\+\+Add\+Missing\+And\+Query, MP\+\_\+\+Query\+All,. 
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MP\_AddMissing@{MP\_AddMissing}!Catalog@{Catalog}}\index{Catalog@{Catalog}!MP\_AddMissing@{MP\_AddMissing}}}\Hypertarget{namespace_catalog_a5ccc6ae7677459cb9b1484679eeb5221ac7fd9fa27c9af59fc53df68eb4da2cde}\label{namespace_catalog_a5ccc6ae7677459cb9b1484679eeb5221ac7fd9fa27c9af59fc53df68eb4da2cde} 
+MP\+\_\+\+Add\+Missing&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MP\_AddMissingEntriesAndFields@{MP\_AddMissingEntriesAndFields}!Catalog@{Catalog}}\index{Catalog@{Catalog}!MP\_AddMissingEntriesAndFields@{MP\_AddMissingEntriesAndFields}}}\Hypertarget{namespace_catalog_a5ccc6ae7677459cb9b1484679eeb5221a19ab3071fca0b86a5a32fa608ef53411}\label{namespace_catalog_a5ccc6ae7677459cb9b1484679eeb5221a19ab3071fca0b86a5a32fa608ef53411} 
+MP\+\_\+\+Add\+Missing\+Entries\+And\+Fields&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MP\_AddMissingAndOverwrite@{MP\_AddMissingAndOverwrite}!Catalog@{Catalog}}\index{Catalog@{Catalog}!MP\_AddMissingAndOverwrite@{MP\_AddMissingAndOverwrite}}}\Hypertarget{namespace_catalog_a5ccc6ae7677459cb9b1484679eeb5221afb18778391967a970d1552ab62844116}\label{namespace_catalog_a5ccc6ae7677459cb9b1484679eeb5221afb18778391967a970d1552ab62844116} 
+MP\+\_\+\+Add\+Missing\+And\+Overwrite&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MP\_AddMissingAndQuery@{MP\_AddMissingAndQuery}!Catalog@{Catalog}}\index{Catalog@{Catalog}!MP\_AddMissingAndQuery@{MP\_AddMissingAndQuery}}}\Hypertarget{namespace_catalog_a5ccc6ae7677459cb9b1484679eeb5221a9bbf837b911c3e74e03474e40feda28d}\label{namespace_catalog_a5ccc6ae7677459cb9b1484679eeb5221a9bbf837b911c3e74e03474e40feda28d} 
+MP\+\_\+\+Add\+Missing\+And\+Query&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MP\_QueryAll@{MP\_QueryAll}!Catalog@{Catalog}}\index{Catalog@{Catalog}!MP\_QueryAll@{MP\_QueryAll}}}\Hypertarget{namespace_catalog_a5ccc6ae7677459cb9b1484679eeb5221a0e3c943fa60ee7b52c3bab92d3e4fd7e}\label{namespace_catalog_a5ccc6ae7677459cb9b1484679eeb5221a0e3c943fa60ee7b52c3bab92d3e4fd7e} 
+MP\+\_\+\+Query\+All&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MP\_NbrTypes@{MP\_NbrTypes}!Catalog@{Catalog}}\index{Catalog@{Catalog}!MP\_NbrTypes@{MP\_NbrTypes}}}\Hypertarget{namespace_catalog_a5ccc6ae7677459cb9b1484679eeb5221a7533f40051047502f5a901672137e486}\label{namespace_catalog_a5ccc6ae7677459cb9b1484679eeb5221a7533f40051047502f5a901672137e486} 
+MP\+\_\+\+Nbr\+Types&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{_catalog_defs_8h_source_l00217}{217}} of file \mbox{\hyperlink{_catalog_defs_8h_source}{Catalog\+Defs.\+h}}.
+
+\Hypertarget{namespace_catalog_a10de14517a76cdd4e6b2bc1342142b07}\index{Catalog@{Catalog}!MergeStatus@{MergeStatus}}
+\index{MergeStatus@{MergeStatus}!Catalog@{Catalog}}
+\doxysubsubsection{\texorpdfstring{MergeStatus}{MergeStatus}}
+{\footnotesize\ttfamily \label{namespace_catalog_a10de14517a76cdd4e6b2bc1342142b07} 
+enum \mbox{\hyperlink{namespace_catalog_a10de14517a76cdd4e6b2bc1342142b07}{Catalog\+::\+Merge\+Status}}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MS\_None@{MS\_None}!Catalog@{Catalog}}\index{Catalog@{Catalog}!MS\_None@{MS\_None}}}\Hypertarget{namespace_catalog_a10de14517a76cdd4e6b2bc1342142b07a7b501e2ade61fa6db152f73cb1279a11}\label{namespace_catalog_a10de14517a76cdd4e6b2bc1342142b07a7b501e2ade61fa6db152f73cb1279a11} 
+MS\+\_\+\+None&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MS\_TargetMissing@{MS\_TargetMissing}!Catalog@{Catalog}}\index{Catalog@{Catalog}!MS\_TargetMissing@{MS\_TargetMissing}}}\Hypertarget{namespace_catalog_a10de14517a76cdd4e6b2bc1342142b07aaa1e49c05431e127067e37b453efd028}\label{namespace_catalog_a10de14517a76cdd4e6b2bc1342142b07aaa1e49c05431e127067e37b453efd028} 
+MS\+\_\+\+Target\+Missing&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MS\_MergeMissing@{MS\_MergeMissing}!Catalog@{Catalog}}\index{Catalog@{Catalog}!MS\_MergeMissing@{MS\_MergeMissing}}}\Hypertarget{namespace_catalog_a10de14517a76cdd4e6b2bc1342142b07a002f0b4930917c35e8cf9e5004405417}\label{namespace_catalog_a10de14517a76cdd4e6b2bc1342142b07a002f0b4930917c35e8cf9e5004405417} 
+MS\+\_\+\+Merge\+Missing&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MS\_Same@{MS\_Same}!Catalog@{Catalog}}\index{Catalog@{Catalog}!MS\_Same@{MS\_Same}}}\Hypertarget{namespace_catalog_a10de14517a76cdd4e6b2bc1342142b07a1a1d51974d5aa6e920f6071054792fcc}\label{namespace_catalog_a10de14517a76cdd4e6b2bc1342142b07a1a1d51974d5aa6e920f6071054792fcc} 
+MS\+\_\+\+Same&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MS\_Different@{MS\_Different}!Catalog@{Catalog}}\index{Catalog@{Catalog}!MS\_Different@{MS\_Different}}}\Hypertarget{namespace_catalog_a10de14517a76cdd4e6b2bc1342142b07ab058c89308699e76835fad4ace23202f}\label{namespace_catalog_a10de14517a76cdd4e6b2bc1342142b07ab058c89308699e76835fad4ace23202f} 
+MS\+\_\+\+Different&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MS\_Undefined@{MS\_Undefined}!Catalog@{Catalog}}\index{Catalog@{Catalog}!MS\_Undefined@{MS\_Undefined}}}\Hypertarget{namespace_catalog_a10de14517a76cdd4e6b2bc1342142b07a21dbd9257f1daae7663a25bca6e1e74e}\label{namespace_catalog_a10de14517a76cdd4e6b2bc1342142b07a21dbd9257f1daae7663a25bca6e1e74e} 
+MS\+\_\+\+Undefined&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{_merge_list_8h_source_l00040}{40}} of file \mbox{\hyperlink{_merge_list_8h_source}{Merge\+List.\+h}}.
+
+\Hypertarget{namespace_catalog_a1aa1ed4c009bdbfbaaa8ca652f987fef}\index{Catalog@{Catalog}!MountDataTypes@{MountDataTypes}}
+\index{MountDataTypes@{MountDataTypes}!Catalog@{Catalog}}
+\doxysubsubsection{\texorpdfstring{MountDataTypes}{MountDataTypes}}
+{\footnotesize\ttfamily \label{namespace_catalog_a1aa1ed4c009bdbfbaaa8ca652f987fef} 
+enum \mbox{\hyperlink{namespace_catalog_a1aa1ed4c009bdbfbaaa8ca652f987fef}{Catalog\+::\+Mount\+Data\+Types}}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MT\_Year@{MT\_Year}!Catalog@{Catalog}}\index{Catalog@{Catalog}!MT\_Year@{MT\_Year}}}\Hypertarget{namespace_catalog_a1aa1ed4c009bdbfbaaa8ca652f987fefa77ee154607830674e613528ae9a51b4c}\label{namespace_catalog_a1aa1ed4c009bdbfbaaa8ca652f987fefa77ee154607830674e613528ae9a51b4c} 
+MT\+\_\+\+Year&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MT\_ID@{MT\_ID}!Catalog@{Catalog}}\index{Catalog@{Catalog}!MT\_ID@{MT\_ID}}}\Hypertarget{namespace_catalog_a1aa1ed4c009bdbfbaaa8ca652f987fefaed5fff075a287a5f2dcb4938556c8989}\label{namespace_catalog_a1aa1ed4c009bdbfbaaa8ca652f987fefaed5fff075a287a5f2dcb4938556c8989} 
+MT\+\_\+\+ID&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MT\_Name@{MT\_Name}!Catalog@{Catalog}}\index{Catalog@{Catalog}!MT\_Name@{MT\_Name}}}\Hypertarget{namespace_catalog_a1aa1ed4c009bdbfbaaa8ca652f987fefaef04b6a4d575c1cec9cf4158b186243b}\label{namespace_catalog_a1aa1ed4c009bdbfbaaa8ca652f987fefaef04b6a4d575c1cec9cf4158b186243b} 
+MT\+\_\+\+Name&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MT\_SingleMount@{MT\_SingleMount}!Catalog@{Catalog}}\index{Catalog@{Catalog}!MT\_SingleMount@{MT\_SingleMount}}}\Hypertarget{namespace_catalog_a1aa1ed4c009bdbfbaaa8ca652f987fefa3bfb552147111a968a7973b91dff29b7}\label{namespace_catalog_a1aa1ed4c009bdbfbaaa8ca652f987fefa3bfb552147111a968a7973b91dff29b7} 
+MT\+\_\+\+Single\+Mount&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MT\_MultipleMount@{MT\_MultipleMount}!Catalog@{Catalog}}\index{Catalog@{Catalog}!MT\_MultipleMount@{MT\_MultipleMount}}}\Hypertarget{namespace_catalog_a1aa1ed4c009bdbfbaaa8ca652f987fefab840ad181af800a73a096e5c18f1b2db}\label{namespace_catalog_a1aa1ed4c009bdbfbaaa8ca652f987fefab840ad181af800a73a096e5c18f1b2db} 
+MT\+\_\+\+Multiple\+Mount&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MT\_BlockMount@{MT\_BlockMount}!Catalog@{Catalog}}\index{Catalog@{Catalog}!MT\_BlockMount@{MT\_BlockMount}}}\Hypertarget{namespace_catalog_a1aa1ed4c009bdbfbaaa8ca652f987fefa3471199423370fccdd2c5d5ec4b1b3f5}\label{namespace_catalog_a1aa1ed4c009bdbfbaaa8ca652f987fefa3471199423370fccdd2c5d5ec4b1b3f5} 
+MT\+\_\+\+Block\+Mount&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MT\_SheetMount@{MT\_SheetMount}!Catalog@{Catalog}}\index{Catalog@{Catalog}!MT\_SheetMount@{MT\_SheetMount}}}\Hypertarget{namespace_catalog_a1aa1ed4c009bdbfbaaa8ca652f987fefa7787231d3f029352f5a7999552565712}\label{namespace_catalog_a1aa1ed4c009bdbfbaaa8ca652f987fefa7787231d3f029352f5a7999552565712} 
+MT\+\_\+\+Sheet\+Mount&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MT\_NbrDatatypes@{MT\_NbrDatatypes}!Catalog@{Catalog}}\index{Catalog@{Catalog}!MT\_NbrDatatypes@{MT\_NbrDatatypes}}}\Hypertarget{namespace_catalog_a1aa1ed4c009bdbfbaaa8ca652f987fefacea5f1df446b7f1dcc78833083280e73}\label{namespace_catalog_a1aa1ed4c009bdbfbaaa8ca652f987fefacea5f1df446b7f1dcc78833083280e73} 
+MT\+\_\+\+Nbr\+Datatypes&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{_mount_c_s_v_8h_source_l00043}{43}} of file \mbox{\hyperlink{_mount_c_s_v_8h_source}{Mount\+CSV.\+h}}.
+
+\Hypertarget{namespace_catalog_acc984c8947c3bf1d2e6f54cb6c8c0f5b}\index{Catalog@{Catalog}!PeriodType@{PeriodType}}
+\index{PeriodType@{PeriodType}!Catalog@{Catalog}}
+\doxysubsubsection{\texorpdfstring{PeriodType}{PeriodType}}
+{\footnotesize\ttfamily \label{namespace_catalog_acc984c8947c3bf1d2e6f54cb6c8c0f5b} 
+enum \mbox{\hyperlink{namespace_catalog_acc984c8947c3bf1d2e6f54cb6c8c0f5b}{Catalog\+::\+Period\+Type}}}
+
+
+
+Enum defining periods --. 
+
+PT\+\_\+\+Antique, PT\+\_\+\+Classical, PT\+\_\+\+Modern, \begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PT\_Antique@{PT\_Antique}!Catalog@{Catalog}}\index{Catalog@{Catalog}!PT\_Antique@{PT\_Antique}}}\Hypertarget{namespace_catalog_acc984c8947c3bf1d2e6f54cb6c8c0f5ba641ed198c1717596442b038c3018e51c}\label{namespace_catalog_acc984c8947c3bf1d2e6f54cb6c8c0f5ba641ed198c1717596442b038c3018e51c} 
+PT\+\_\+\+Antique&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PT\_Classical@{PT\_Classical}!Catalog@{Catalog}}\index{Catalog@{Catalog}!PT\_Classical@{PT\_Classical}}}\Hypertarget{namespace_catalog_acc984c8947c3bf1d2e6f54cb6c8c0f5baeef993ce5657728d4d2fc9633a5866e9}\label{namespace_catalog_acc984c8947c3bf1d2e6f54cb6c8c0f5baeef993ce5657728d4d2fc9633a5866e9} 
+PT\+\_\+\+Classical&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PT\_Modern@{PT\_Modern}!Catalog@{Catalog}}\index{Catalog@{Catalog}!PT\_Modern@{PT\_Modern}}}\Hypertarget{namespace_catalog_acc984c8947c3bf1d2e6f54cb6c8c0f5ba76bda2f7ab842851a18572f68e079b68}\label{namespace_catalog_acc984c8947c3bf1d2e6f54cb6c8c0f5ba76bda2f7ab842851a18572f68e079b68} 
+PT\+\_\+\+Modern&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PT\_NbrTypes@{PT\_NbrTypes}!Catalog@{Catalog}}\index{Catalog@{Catalog}!PT\_NbrTypes@{PT\_NbrTypes}}}\Hypertarget{namespace_catalog_acc984c8947c3bf1d2e6f54cb6c8c0f5ba0ebd6dd922c99dfccd2200dadac33802}\label{namespace_catalog_acc984c8947c3bf1d2e6f54cb6c8c0f5ba0ebd6dd922c99dfccd2200dadac33802} 
+PT\+\_\+\+Nbr\+Types&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{_catalog_defs_8h_source_l00230}{230}} of file \mbox{\hyperlink{_catalog_defs_8h_source}{Catalog\+Defs.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{namespace_catalog_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{namespace_catalog_a7f4b20a2d0b2cb7f022087bae25690aa}\index{Catalog@{Catalog}!AddEntry@{AddEntry}}
+\index{AddEntry@{AddEntry}!Catalog@{Catalog}}
+\doxysubsubsection{\texorpdfstring{AddEntry()}{AddEntry()}}
+{\footnotesize\ttfamily \label{namespace_catalog_a7f4b20a2d0b2cb7f022087bae25690aa} 
+void Catalog\+::\+Add\+Entry (\begin{DoxyParamCaption}\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{parent}{, }\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{child}{, }\item[{int}]{level}{}\end{DoxyParamCaption})}
+
+
+
+Find the place where the entry should go and adds it. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent} & \\
+\hline
+{\em child} & \\
+\hline
+{\em level} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_catalog_defs_8cpp_source_l00159}{159}} of file \mbox{\hyperlink{_catalog_defs_8cpp_source}{Catalog\+Defs.\+cpp}}.
+
+\Hypertarget{namespace_catalog_ac61fb45aeb3ecf6d5020384a65e0d954}\index{Catalog@{Catalog}!FindCatalogBaseType@{FindCatalogBaseType}}
+\index{FindCatalogBaseType@{FindCatalogBaseType}!Catalog@{Catalog}}
+\doxysubsubsection{\texorpdfstring{FindCatalogBaseType()}{FindCatalogBaseType()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{namespace_catalog_ac61fb45aeb3ecf6d5020384a65e0d954} 
+\mbox{\hyperlink{namespace_catalog_a86f503ced35b06e6427477ddab27c6be}{Catalog\+Base\+Type}} Catalog\+::\+Find\+Catalog\+Base\+Type (\begin{DoxyParamCaption}\item[{wx\+String}]{name}{}\end{DoxyParamCaption})}
+
+
+
+Look thru all the Catalog\+Base\+Names to find "{}name"{} and return the corresponding \doxylink{namespace_catalog_a86f503ced35b06e6427477ddab27c6be}{Catalog\+Base\+Type} enum. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & \+: name of the node to find the Type of \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\{ Catalog\+Base\+Type\texorpdfstring{$\vert$}{|} \+: enum or -\/1 if not found. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_catalog_defs_8cpp_source_l00262}{262}} of file \mbox{\hyperlink{_catalog_defs_8cpp_source}{Catalog\+Defs.\+cpp}}.
+
+\Hypertarget{namespace_catalog_a1b22674b71ab7beb168ad6749c6259f6}\index{Catalog@{Catalog}!FindCatalogBaseType@{FindCatalogBaseType}}
+\index{FindCatalogBaseType@{FindCatalogBaseType}!Catalog@{Catalog}}
+\doxysubsubsection{\texorpdfstring{FindCatalogBaseType()}{FindCatalogBaseType()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{namespace_catalog_a1b22674b71ab7beb168ad6749c6259f6} 
+\mbox{\hyperlink{namespace_catalog_a86f503ced35b06e6427477ddab27c6be}{Catalog\+Base\+Type}} Catalog\+::\+Find\+Catalog\+Base\+Type (\begin{DoxyParamCaption}\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{element}{}\end{DoxyParamCaption})}
+
+
+
+Get the catalog base type of thid node. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em element} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{namespace_catalog_a86f503ced35b06e6427477ddab27c6be}{Catalog\+Base\+Type} 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_catalog_defs_8cpp_source_l00247}{247}} of file \mbox{\hyperlink{_catalog_defs_8cpp_source}{Catalog\+Defs.\+cpp}}.
+
+\Hypertarget{namespace_catalog_a0589de4fdba9de7fb8b98e6c2e841ac7}\index{Catalog@{Catalog}!FindEmissionType@{FindEmissionType}}
+\index{FindEmissionType@{FindEmissionType}!Catalog@{Catalog}}
+\doxysubsubsection{\texorpdfstring{FindEmissionType()}{FindEmissionType()}}
+{\footnotesize\ttfamily \label{namespace_catalog_a0589de4fdba9de7fb8b98e6c2e841ac7} 
+\mbox{\hyperlink{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acd}{Emission\+Type}} Catalog\+::\+Find\+Emission\+Type (\begin{DoxyParamCaption}\item[{wx\+String}]{name}{}\end{DoxyParamCaption})}
+
+
+
+loop through the Emission types and find one with the name name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{namespace_catalog_ae69ffa156d474f75f5e94ab1cecc3acd}{Emission\+Type} 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_catalog_defs_8cpp_source_l00277}{277}} of file \mbox{\hyperlink{_catalog_defs_8cpp_source}{Catalog\+Defs.\+cpp}}.
+
+\Hypertarget{namespace_catalog_ac95b0a0fffe4a02171bcba25cd24e656}\index{Catalog@{Catalog}!FindFormatType@{FindFormatType}}
+\index{FindFormatType@{FindFormatType}!Catalog@{Catalog}}
+\doxysubsubsection{\texorpdfstring{FindFormatType()}{FindFormatType()}}
+{\footnotesize\ttfamily \label{namespace_catalog_ac95b0a0fffe4a02171bcba25cd24e656} 
+\mbox{\hyperlink{namespace_catalog_a2ff17ae8cd4986617c22e54b7cf50f89}{Format\+Type}} Catalog\+::\+Find\+Format\+Type (\begin{DoxyParamCaption}\item[{wx\+String}]{name}{}\end{DoxyParamCaption})}
+
+
+
+loop through the format types and find one with the name name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{namespace_catalog_a2ff17ae8cd4986617c22e54b7cf50f89}{Format\+Type} 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_catalog_defs_8cpp_source_l00291}{291}} of file \mbox{\hyperlink{_catalog_defs_8cpp_source}{Catalog\+Defs.\+cpp}}.
+
+\Hypertarget{namespace_catalog_a80bb7b19f4c5981727e8da9b8cd36048}\index{Catalog@{Catalog}!FindStatusType@{FindStatusType}}
+\index{FindStatusType@{FindStatusType}!Catalog@{Catalog}}
+\doxysubsubsection{\texorpdfstring{FindStatusType()}{FindStatusType()}}
+{\footnotesize\ttfamily \label{namespace_catalog_a80bb7b19f4c5981727e8da9b8cd36048} 
+\mbox{\hyperlink{namespace_catalog_a7bc076b172809c869ab8fef63c49e8c3}{Inventory\+Status\+Type}} Catalog\+::\+Find\+Status\+Type (\begin{DoxyParamCaption}\item[{wx\+String}]{name}{}\end{DoxyParamCaption})}
+
+
+
+loop through the inventory status and find one with the name name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{namespace_catalog_a7bc076b172809c869ab8fef63c49e8c3}{Inventory\+Status\+Type} 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_catalog_defs_8cpp_source_l00306}{306}} of file \mbox{\hyperlink{_catalog_defs_8cpp_source}{Catalog\+Defs.\+cpp}}.
+
+\Hypertarget{namespace_catalog_a830fee3ef4f92654baf6428d9c3b0f4d}\index{Catalog@{Catalog}!GetCodes@{GetCodes}}
+\index{GetCodes@{GetCodes}!Catalog@{Catalog}}
+\doxysubsubsection{\texorpdfstring{GetCodes()}{GetCodes()}}
+{\footnotesize\ttfamily \label{namespace_catalog_a830fee3ef4f92654baf6428d9c3b0f4d} 
+void Catalog\+::\+Get\+Codes (\begin{DoxyParamCaption}\item[{wx\+String}]{cat\+Code\+Str}{, }\item[{wx\+String \&}]{catalog}{, }\item[{wx\+String \&}]{country}{, }\item[{wx\+String \&}]{code}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_code_8cpp_source_l00078}{78}} of file \mbox{\hyperlink{_catalog_code_8cpp_source}{Catalog\+Code.\+cpp}}.
+
+\Hypertarget{namespace_catalog_a34595a26395456b9d09ba68847ab197b}\index{Catalog@{Catalog}!InitCatalogDefs@{InitCatalogDefs}}
+\index{InitCatalogDefs@{InitCatalogDefs}!Catalog@{Catalog}}
+\doxysubsubsection{\texorpdfstring{InitCatalogDefs()}{InitCatalogDefs()}}
+{\footnotesize\ttfamily \label{namespace_catalog_a34595a26395456b9d09ba68847ab197b} 
+void Catalog\+::\+Init\+Catalog\+Defs (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Null right now. 
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_defs_8cpp_source_l00332}{332}} of file \mbox{\hyperlink{_catalog_defs_8cpp_source}{Catalog\+Defs.\+cpp}}.
+
+\Hypertarget{namespace_catalog_a8e16e7b99b4e656c3728d3bfcdfde3a2}\index{Catalog@{Catalog}!InsertEntry@{InsertEntry}}
+\index{InsertEntry@{InsertEntry}!Catalog@{Catalog}}
+\doxysubsubsection{\texorpdfstring{InsertEntry()}{InsertEntry()}}
+{\footnotesize\ttfamily \label{namespace_catalog_a8e16e7b99b4e656c3728d3bfcdfde3a2} 
+wx\+Xml\+Node \texorpdfstring{$\ast$}{*} Catalog\+::\+Insert\+Entry (\begin{DoxyParamCaption}\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{sibling}{, }\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{child}{, }\item[{bool}]{after}{ = {\ttfamily true}}\end{DoxyParamCaption})}
+
+
+
+Inserts a node as a sibling. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sibling} & \\
+\hline
+{\em child} & \\
+\hline
+{\em after} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+wx\+Xml\+Node\texorpdfstring{$\ast$}{*} 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_catalog_defs_8cpp_source_l00339}{339}} of file \mbox{\hyperlink{_catalog_defs_8cpp_source}{Catalog\+Defs.\+cpp}}.
+
+\Hypertarget{namespace_catalog_a0485a11d0238530460d2064ee7acd39e}\index{Catalog@{Catalog}!IsCatalogBaseType@{IsCatalogBaseType}}
+\index{IsCatalogBaseType@{IsCatalogBaseType}!Catalog@{Catalog}}
+\doxysubsubsection{\texorpdfstring{IsCatalogBaseType()}{IsCatalogBaseType()}}
+{\footnotesize\ttfamily \label{namespace_catalog_a0485a11d0238530460d2064ee7acd39e} 
+bool Catalog\+::\+Is\+Catalog\+Base\+Type (\begin{DoxyParamCaption}\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{ele}{, }\item[{\mbox{\hyperlink{namespace_catalog_a86f503ced35b06e6427477ddab27c6be}{Catalog\+Base\+Type}}}]{type}{}\end{DoxyParamCaption})}
+
+
+
+is the specified wx\+Xml\+Node of specified type 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ele} & element of interest \\
+\hline
+{\em type} & element type \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if a match 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_catalog_defs_8cpp_source_l00327}{327}} of file \mbox{\hyperlink{_catalog_defs_8cpp_source}{Catalog\+Defs.\+cpp}}.
+
+\Hypertarget{namespace_catalog_ac4be765c58323ed4b6ffc182a17608af}\index{Catalog@{Catalog}!MakeImageName@{MakeImageName}}
+\index{MakeImageName@{MakeImageName}!Catalog@{Catalog}}
+\doxysubsubsection{\texorpdfstring{MakeImageName()}{MakeImageName()}}
+{\footnotesize\ttfamily \label{namespace_catalog_ac4be765c58323ed4b6ffc182a17608af} 
+wx\+String Catalog\+::\+Make\+Image\+Name (\begin{DoxyParamCaption}\item[{wx\+String}]{cat\+Code}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_code_8cpp_source_l00149}{149}} of file \mbox{\hyperlink{_catalog_code_8cpp_source}{Catalog\+Code.\+cpp}}.
+
+\Hypertarget{namespace_catalog_a88b0cb9ed74675357bffb114c5f494d6}\index{Catalog@{Catalog}!MoveEntry@{MoveEntry}}
+\index{MoveEntry@{MoveEntry}!Catalog@{Catalog}}
+\doxysubsubsection{\texorpdfstring{MoveEntry()}{MoveEntry()}}
+{\footnotesize\ttfamily \label{namespace_catalog_a88b0cb9ed74675357bffb114c5f494d6} 
+wx\+Xml\+Node \texorpdfstring{$\ast$}{*} Catalog\+::\+Move\+Entry (\begin{DoxyParamCaption}\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{new\+Parent}{, }\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{child}{}\end{DoxyParamCaption})}
+
+
+
+Moves a node to a new parent. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Parent} & \\
+\hline
+{\em child} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+wx\+Xml\+Node\texorpdfstring{$\ast$}{*} 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_catalog_defs_8cpp_source_l00372}{372}} of file \mbox{\hyperlink{_catalog_defs_8cpp_source}{Catalog\+Defs.\+cpp}}.
+
+\Hypertarget{namespace_catalog_a566b536eb28609acba2477444a0da5f5}\index{Catalog@{Catalog}!NewCatalogVolume@{NewCatalogVolume}}
+\index{NewCatalogVolume@{NewCatalogVolume}!Catalog@{Catalog}}
+\doxysubsubsection{\texorpdfstring{NewCatalogVolume()}{NewCatalogVolume()}}
+{\footnotesize\ttfamily \label{namespace_catalog_a566b536eb28609acba2477444a0da5f5} 
+\mbox{\hyperlink{class_catalog_1_1_catalog_volume}{Catalog\+Volume}} \texorpdfstring{$\ast$}{*} Catalog\+::\+New\+Catalog\+Volume (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_volume_8cpp_source_l00438}{438}} of file \mbox{\hyperlink{_catalog_volume_8cpp_source}{Catalog\+Volume.\+cpp}}.
+
+\Hypertarget{namespace_catalog_ae95fbc61e745c765271377442397ad57}\index{Catalog@{Catalog}!SortData@{SortData}}
+\index{SortData@{SortData}!Catalog@{Catalog}}
+\doxysubsubsection{\texorpdfstring{SortData()}{SortData()}}
+{\footnotesize\ttfamily \label{namespace_catalog_ae95fbc61e745c765271377442397ad57} 
+void Catalog\+::\+Sort\+Data (\begin{DoxyParamCaption}\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{new\+Root}{, }\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{parent}{}\end{DoxyParamCaption})}
+
+
+
+Sorts the nodes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Root} & \\
+\hline
+{\em parent} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_catalog_defs_8cpp_source_l00401}{401}} of file \mbox{\hyperlink{_catalog_defs_8cpp_source}{Catalog\+Defs.\+cpp}}.
+
+\Hypertarget{namespace_catalog_a711822c082ba687c5281f96d8861b935}\index{Catalog@{Catalog}!WayToSort@{WayToSort}}
+\index{WayToSort@{WayToSort}!Catalog@{Catalog}}
+\doxysubsubsection{\texorpdfstring{WayToSort()}{WayToSort()}}
+{\footnotesize\ttfamily \label{namespace_catalog_a711822c082ba687c5281f96d8861b935} 
+int Catalog\+::\+Way\+To\+Sort (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_catalog_1_1_catalog_volume}{Catalog\+::\+Catalog\+Volume}} \texorpdfstring{$\ast$}{*}}]{sect1}{, }\item[{\mbox{\hyperlink{class_catalog_1_1_catalog_volume}{Catalog\+::\+Catalog\+Volume}} \texorpdfstring{$\ast$}{*}}]{sect2}{}\end{DoxyParamCaption})}
+
+
+
+\label{doc-var-members}
+\Hypertarget{namespace_catalog_doc-var-members}
+\doxysubsection{Variable Documentation}
+\Hypertarget{namespace_catalog_af883688379268368070a0dd49b898a1f}\index{Catalog@{Catalog}!CatalogBaseNames@{CatalogBaseNames}}
+\index{CatalogBaseNames@{CatalogBaseNames}!Catalog@{Catalog}}
+\doxysubsubsection{\texorpdfstring{CatalogBaseNames}{CatalogBaseNames}}
+{\footnotesize\ttfamily \label{namespace_catalog_af883688379268368070a0dd49b898a1f} 
+wx\+String Catalog\+::\+Catalog\+Base\+Names}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Catalog"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Country"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Period"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Decade"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Year"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Emission"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Status"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Condition"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Entry"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Inventory"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Item"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}None"{}}\ \}}
+
+\end{DoxyCode}
+
+
+Ascii string for each node string. 
+
+\begin{DoxyNote}{Note}
+This is the name used for the tree node; not the wx\+Xml\+Node node. 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{_catalog_defs_8cpp_source_l00051}{51}} of file \mbox{\hyperlink{_catalog_defs_8cpp_source}{Catalog\+Defs.\+cpp}}.
+
+\Hypertarget{namespace_catalog_a4ce32da0d45cfa7ba82945b48e0e003a}\index{Catalog@{Catalog}!CatalogImageSelection@{CatalogImageSelection}}
+\index{CatalogImageSelection@{CatalogImageSelection}!Catalog@{Catalog}}
+\doxysubsubsection{\texorpdfstring{CatalogImageSelection}{CatalogImageSelection}}
+{\footnotesize\ttfamily \label{namespace_catalog_a4ce32da0d45cfa7ba82945b48e0e003a} 
+\mbox{\hyperlink{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3a}{Catalog\+::\+Icon\+ID}} Catalog\+::\+Catalog\+Image\+Selection}
+
+
+
+Definition at line \mbox{\hyperlink{_icon_defs_8cpp_source_l00075}{75}} of file \mbox{\hyperlink{_icon_defs_8cpp_source}{Icon\+Defs.\+cpp}}.
+
+\Hypertarget{namespace_catalog_ae29e29deec7143df42dbc7cf5b8c0b98}\index{Catalog@{Catalog}!CheckedStatusStrings@{CheckedStatusStrings}}
+\index{CheckedStatusStrings@{CheckedStatusStrings}!Catalog@{Catalog}}
+\doxysubsubsection{\texorpdfstring{CheckedStatusStrings}{CheckedStatusStrings}}
+{\footnotesize\ttfamily \label{namespace_catalog_ae29e29deec7143df42dbc7cf5b8c0b98} 
+const wx\+String Catalog\+::\+Checked\+Status\+Strings = \{ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}( "{}Checked"{} ), \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}( "{}Unchecked"{} ) \}}
+
+
+
+Strings used for Status\+Types enum. 
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_defs_8cpp_source_l00068}{68}} of file \mbox{\hyperlink{_catalog_defs_8cpp_source}{Catalog\+Defs.\+cpp}}.
+
+\Hypertarget{namespace_catalog_a6d6fd52830494c7cfd841a94ddfdd42c}\index{Catalog@{Catalog}!DataTypeNames@{DataTypeNames}}
+\index{DataTypeNames@{DataTypeNames}!Catalog@{Catalog}}
+\doxysubsubsection{\texorpdfstring{DataTypeNames}{DataTypeNames}}
+{\footnotesize\ttfamily \label{namespace_catalog_a6d6fd52830494c7cfd841a94ddfdd42c} 
+const wx\+String Catalog\+::\+Data\+Type\+Names}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Name"{}}\ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Country"{}}\ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Series"{}}\ ),\ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Catalog\ Codes"{}}\ ),\ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Issued\ on"{}}\ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Expiry\ date"{}}\ ),\ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Width"{}}\ ),\ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Height"{}}\ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Paper"{}}\ ),\ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Watermark"{}}\ ),\ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Emission"{}}\ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Format"{}}\ ),\ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Perforation"{}}\ ),\ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Printing"{}}\ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Gum"{}}\ ),\ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Currency"{}}\ ),\ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}FaceValue"{}}\ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Print\ run"{}}\ ),\ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Variant"{}}\ ),\ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Score"{}}\ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Accuracy"{}}\ ),\ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Colors"{}}\ ),\ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Themes"{}}\ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Description"{}}\ ),\ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Link"{}}\ ),\ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Inventory"{}}\ ),\ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}StampMount"{}}\ ),\ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Background"{}}\ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Collapse\ State"{}}\ ),\ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}ImageName"{}}\ )}
+\DoxyCodeLine{\ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+String name used for wx\+Xml\+Nodes. 
+
+Ascii string for each Data\+Type enum. 
+
+Definition at line \mbox{\hyperlink{_catalog_defs_8cpp_source_l00078}{78}} of file \mbox{\hyperlink{_catalog_defs_8cpp_source}{Catalog\+Defs.\+cpp}}.
+
+\Hypertarget{namespace_catalog_ac37088bb839eb4eaac8489e1644b72f5}\index{Catalog@{Catalog}!EmissionStrings@{EmissionStrings}}
+\index{EmissionStrings@{EmissionStrings}!Catalog@{Catalog}}
+\doxysubsubsection{\texorpdfstring{EmissionStrings}{EmissionStrings}}
+{\footnotesize\ttfamily \label{namespace_catalog_ac37088bb839eb4eaac8489e1644b72f5} 
+const wx\+String Catalog\+::\+Emission\+Strings}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \{\ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Unknown"{}}\ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Commemorative"{}}\ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Definitive"{}}\ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Hunting\ Permit"{}}\ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Revenue"{}}\ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Air\ Post"{}}\ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Air\ Post\ Official"{}}\ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Air\ Post\ Semi-\/Postal"{}}\ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}ATM\ labels"{}}\ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Cinderella"{}}\ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Illegal"{}}\ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Insured\ Letter"{}}\ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Military"{}}\ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Newspaper"{}}\ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Official"{}}\ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Parcel\ Post"{}}\ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Personal\ Delivery"{}}\ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Personalized"{}}\ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Postage\ Due"{}}\ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Postal\ Tax"{}}\ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Precancelled"{}}\ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Private"{}}\ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Regional"{}}\ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Registration"{}}\ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Semi-\/Postal"{}}\ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}War\ Tax"{}}\ )\ \}}
+
+\end{DoxyCode}
+
+
+string representation of Emission types indexed by Emission Type 
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_defs_8cpp_source_l00093}{93}} of file \mbox{\hyperlink{_catalog_defs_8cpp_source}{Catalog\+Defs.\+cpp}}.
+
+\Hypertarget{namespace_catalog_afaa9b4c5ca81b7e8ec3f7d2f4b3d7e8d}\index{Catalog@{Catalog}!FormatStrings@{FormatStrings}}
+\index{FormatStrings@{FormatStrings}!Catalog@{Catalog}}
+\doxysubsubsection{\texorpdfstring{FormatStrings}{FormatStrings}}
+{\footnotesize\ttfamily \label{namespace_catalog_afaa9b4c5ca81b7e8ec3f7d2f4b3d7e8d} 
+const wx\+String Catalog\+::\+Format\+Strings}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \{\ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Unknown"{}}\ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Stamp"{}}\ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Se-\/tenant"{}}\ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Mini\ Sheet"{}}\ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Souvenir\ Sheet"{}}\ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Booklet"{}}\ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Booklet\ Pane"{}}\ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Gutter\ Pair"{}}\ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Entry\ with\ Attached\ Label"{}}\ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Tete-\/Beche"{}}\ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Full\ Pane"{}}\ )\ \}}
+
+\end{DoxyCode}
+
+
+Ascii strings used for Format\+Types enum. 
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_defs_8cpp_source_l00121}{121}} of file \mbox{\hyperlink{_catalog_defs_8cpp_source}{Catalog\+Defs.\+cpp}}.
+
+\Hypertarget{namespace_catalog_abcd57760950ec98a13bee0678af3eb91}\index{Catalog@{Catalog}!InventoryStatusStrings@{InventoryStatusStrings}}
+\index{InventoryStatusStrings@{InventoryStatusStrings}!Catalog@{Catalog}}
+\doxysubsubsection{\texorpdfstring{InventoryStatusStrings}{InventoryStatusStrings}}
+{\footnotesize\ttfamily \label{namespace_catalog_abcd57760950ec98a13bee0678af3eb91} 
+const wx\+String Catalog\+::\+Inventory\+Status\+Strings = \{ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}( "{}None"{} ), \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}( "{}Missing"{} ), \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}( "{}Ordered"{} ), \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}( "{}Own"{} ), \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}( "{}Own Variant"{} ), \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}( "{}Exclude"{} ) \}}
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_defs_8cpp_source_l00134}{134}} of file \mbox{\hyperlink{_catalog_defs_8cpp_source}{Catalog\+Defs.\+cpp}}.
+
+\Hypertarget{namespace_catalog_a2d8ee03a725ac68d747c899544f77f3f}\index{Catalog@{Catalog}!ItemDataNames@{ItemDataNames}}
+\index{ItemDataNames@{ItemDataNames}!Catalog@{Catalog}}
+\doxysubsubsection{\texorpdfstring{ItemDataNames}{ItemDataNames}}
+{\footnotesize\ttfamily \label{namespace_catalog_a2d8ee03a725ac68d747c899544f77f3f} 
+const wx\+String Catalog\+::\+Item\+Data\+Names = \{ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}( "{}Collection"{} ), \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}( "{}Status"{} ), \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}( "{}Type"{} ), \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}( "{}Condition"{} ), \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}( "{}Value"{} ), \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}( "{}Remarks"{} ) \}}
+
+
+
+Ascii string for each Item\+Data\+Type enum. 
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_defs_8cpp_source_l00138}{138}} of file \mbox{\hyperlink{_catalog_defs_8cpp_source}{Catalog\+Defs.\+cpp}}.
+
+\Hypertarget{namespace_catalog_acb0a181c5a138a4187b868a280b60ee1}\index{Catalog@{Catalog}!MountDataTypeNames@{MountDataTypeNames}}
+\index{MountDataTypeNames@{MountDataTypeNames}!Catalog@{Catalog}}
+\doxysubsubsection{\texorpdfstring{MountDataTypeNames}{MountDataTypeNames}}
+{\footnotesize\ttfamily \label{namespace_catalog_acb0a181c5a138a4187b868a280b60ee1} 
+wx\+String Catalog\+::\+Mount\+Data\+Type\+Names}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=}
+\DoxyCodeLine{\ \ \ \ \{\ \textcolor{stringliteral}{"{}Year"{}},\ \textcolor{stringliteral}{"{}ItemID"{}},\ \textcolor{stringliteral}{"{}Description"{}},\ \textcolor{stringliteral}{"{}SinglesSize"{}},\ \textcolor{stringliteral}{"{}MultiplesSize"{}},\ \textcolor{stringliteral}{"{}PlateBlockSize"{}},\ \textcolor{stringliteral}{"{}SheetSize"{}}\ \}}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{_mount_c_s_v_8cpp_source_l00052}{52}} of file \mbox{\hyperlink{_mount_c_s_v_8cpp_source}{Mount\+CSV.\+cpp}}.
+
+\Hypertarget{namespace_catalog_af13229d3185ff083a02f4df72996ff7f}\index{Catalog@{Catalog}!mounts@{mounts}}
+\index{mounts@{mounts}!Catalog@{Catalog}}
+\doxysubsubsection{\texorpdfstring{mounts}{mounts}}
+{\footnotesize\ttfamily \label{namespace_catalog_af13229d3185ff083a02f4df72996ff7f} 
+\mbox{\hyperlink{struct_catalog_1_1_mounts}{Mounts}} Catalog\+::mounts}
+
+
+
+Definition at line \mbox{\hyperlink{_stamp_mount_8cpp_source_l00021}{21}} of file \mbox{\hyperlink{_stamp_mount_8cpp_source}{Stamp\+Mount.\+cpp}}.
+
+\Hypertarget{namespace_catalog_a333bffd3f1441393f22215255cd523ea}\index{Catalog@{Catalog}!NbrStampMounts@{NbrStampMounts}}
+\index{NbrStampMounts@{NbrStampMounts}!Catalog@{Catalog}}
+\doxysubsubsection{\texorpdfstring{NbrStampMounts}{NbrStampMounts}}
+{\footnotesize\ttfamily \label{namespace_catalog_a333bffd3f1441393f22215255cd523ea} 
+const int Catalog\+::\+Nbr\+Stamp\+Mounts = 100}
+
+
+
+Definition at line \mbox{\hyperlink{_stamp_mount_8h_source_l00018}{18}} of file \mbox{\hyperlink{_stamp_mount_8h_source}{Stamp\+Mount.\+h}}.
+
+\Hypertarget{namespace_catalog_ad31b697e09026bea7e50c5f0da8ff29f}\index{Catalog@{Catalog}!XMLDataNames@{XMLDataNames}}
+\index{XMLDataNames@{XMLDataNames}!Catalog@{Catalog}}
+\doxysubsubsection{\texorpdfstring{XMLDataNames}{XMLDataNames}}
+{\footnotesize\ttfamily \label{namespace_catalog_ad31b697e09026bea7e50c5f0da8ff29f} 
+const wx\+String Catalog\+::\+XMLData\+Names}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Name"{}}\ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Country"{}}\ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Series"{}}\ ),\ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Catalog\_Codes"{}}\ ),\ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Issued\_on"{}}\ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Expiry\_date"{}}\ ),\ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Width"{}}\ ),\ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Height"{}}\ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Paper"{}}\ ),\ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Watermark"{}}\ ),\ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Emission"{}}\ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Format"{}}\ ),\ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Perforation"{}}\ ),\ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Printing"{}}\ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Gum"{}}\ ),\ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Currency"{}}\ ),\ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}FaceValue"{}}\ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Print\_run"{}}\ ),\ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Variant"{}}\ ),\ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Score"{}}\ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Accuracy"{}}\ ),\ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Colors"{}}\ ),\ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Themes"{}}\ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Description"{}}\ ),\ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Link"{}}\ ),\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}InventoryStatus"{}}\ ),\ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}StampMount"{}}\ ),\ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}Background"{}}\ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}CollapseState"{}}\ ),\ \mbox{\hyperlink{_inventory_item_def_8h_a34bf2018421b02a16184f4a7095527c2}{wxT}}(\ \textcolor{stringliteral}{"{}ImageName"{}}\ )}
+\DoxyCodeLine{\ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+Ascii string for each XMLData\+Type enum. These are the same as Data\+Type\+Names except they have no spaces in the string since they are used for XML element names. 
+
+
+
+Definition at line \mbox{\hyperlink{_catalog_defs_8cpp_source_l00142}{142}} of file \mbox{\hyperlink{_catalog_defs_8cpp_source}{Catalog\+Defs.\+cpp}}.
+

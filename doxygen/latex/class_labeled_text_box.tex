@@ -1,0 +1,346 @@
+\doxysection{Labeled\+Text\+Box Class Reference}
+\hypertarget{class_labeled_text_box}{}\label{class_labeled_text_box}\index{LabeledTextBox@{LabeledTextBox}}
+
+
+{\ttfamily \#include $<$Labeled\+Text\+Box.\+h$>$}
+
+Inheritance diagram for Labeled\+Text\+Box\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_labeled_text_box}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{class_labeled_text_box_a8992697ab0cb0346f08e3a6bd0adae98}{Labeled\+Text\+Box\+Gui\+Defs}} \{ \mbox{\hyperlink{class_labeled_text_box_a8992697ab0cb0346f08e3a6bd0adae98a6546cac9efe58b202aaa365e51928bcb}{ID\+\_\+\+LABELEDTEXTBOX\+\_\+\+TEXTCTRL}} = ID\+\_\+\+LABELEDTEXTBOX + 1
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_labeled_text_box_ae76bf25d94cbf153303bf9231953241d}{Labeled\+Text\+Box}} ()
+\begin{DoxyCompactList}\small\item\em Default Constructor a new \doxylink{class_labeled_text_box}{Labeled\+Text\+Box} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_labeled_text_box_a134dc3cde771387a6b55f81e1d0551f6}{Labeled\+Text\+Box}} (wx\+Window \texorpdfstring{$\ast$}{*}parent, wx\+Window\+ID id=\mbox{\hyperlink{_labeled_text_box_8h_a2ea491ea99ad4f455ac2268c239d4f1a}{SYMBOL\+\_\+\+LABELEDTEXTBOX\+\_\+\+IDNAME}}, const wx\+Point \&pos=\mbox{\hyperlink{_labeled_text_box_8h_a9952e30cdb7a74d58bee3450e89e3b9e}{SYMBOL\+\_\+\+LABELEDTEXTBOX\+\_\+\+POSITION}}, const wx\+Size \&size=\mbox{\hyperlink{_labeled_text_box_8h_a1c6f8d6fb99875a030338d0a4997170b}{SYMBOL\+\_\+\+LABELEDTEXTBOX\+\_\+\+SIZE}}, long style=\mbox{\hyperlink{_labeled_text_box_8h_a7f9bb312d5bc741f01ff3c33e125fa49}{SYMBOL\+\_\+\+LABELEDTEXTBOX\+\_\+\+STYLE}})
+\item 
+bool \mbox{\hyperlink{class_labeled_text_box_a07c7893c2a14b6b384f6965775fcac58}{Create}} (wx\+Window \texorpdfstring{$\ast$}{*}parent, wx\+Window\+ID id=\mbox{\hyperlink{_labeled_text_box_8h_a2ea491ea99ad4f455ac2268c239d4f1a}{SYMBOL\+\_\+\+LABELEDTEXTBOX\+\_\+\+IDNAME}}, const wx\+Point \&pos=\mbox{\hyperlink{_labeled_text_box_8h_a9952e30cdb7a74d58bee3450e89e3b9e}{SYMBOL\+\_\+\+LABELEDTEXTBOX\+\_\+\+POSITION}}, const wx\+Size \&size=\mbox{\hyperlink{_labeled_text_box_8h_a1c6f8d6fb99875a030338d0a4997170b}{SYMBOL\+\_\+\+LABELEDTEXTBOX\+\_\+\+SIZE}}, long style=\mbox{\hyperlink{_labeled_text_box_8h_a7f9bb312d5bc741f01ff3c33e125fa49}{SYMBOL\+\_\+\+LABELEDTEXTBOX\+\_\+\+STYLE}})
+\begin{DoxyCompactList}\small\item\em Used for two-\/step panel construction. Use with default constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_labeled_text_box_a54e685aa81565d69329275826c0b989a}{\texorpdfstring{$\sim$}{\string~}\+Labeled\+Text\+Box}} ()
+\begin{DoxyCompactList}\small\item\em Destroy the Labeled Text Box object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_labeled_text_box_a1ca984604ebbaf9200b32932ab0095df}{Init}} ()
+\begin{DoxyCompactList}\small\item\em Initialises member variables. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_labeled_text_box_aa65a8dcc26cbfceab01b386713292d28}{Create\+Controls}} ()
+\begin{DoxyCompactList}\small\item\em Creates the controls and sizers. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_labeled_text_box_acf0ed4fec28203b69cb4686aecf885a6}{On\+Textctrl\+Text\+Updated}} (wx\+Command\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_labeled_text_box_acb3248b298b3f57eabf3e1cfc4e78d49}{Setup}} (wx\+String label, wx\+String value)
+\begin{DoxyCompactList}\small\item\em Set the Stamp object. \end{DoxyCompactList}\item 
+wx\+String \mbox{\hyperlink{class_labeled_text_box_ad09713e47f47ecee2c869dd8dffd498c}{Get\+Value}} ()
+\begin{DoxyCompactList}\small\item\em Get the value in the ctrl. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_labeled_text_box_ad85f146352ac2d2d08681289a73fa66e}{Set\+Value}} (wx\+String value)
+\begin{DoxyCompactList}\small\item\em Set the Width object. \end{DoxyCompactList}\item 
+wx\+Window\+ID \mbox{\hyperlink{class_labeled_text_box_a41eb27390b7454703d8e3237d707a88c}{Get\+Id}} ()
+\item 
+void \mbox{\hyperlink{class_labeled_text_box_a0e7231f88956884fc1275fc4ab044bcf}{Change\+Value}} (wx\+String value)
+\item 
+bool \mbox{\hyperlink{class_labeled_text_box_a8857fbdbe7ae9975a6e80920675c989c}{Is\+Modified}} ()
+\item 
+void \mbox{\hyperlink{class_labeled_text_box_a3cc5ba62f08672fd92f15b124d7b49f8}{Set\+Modified}} (bool state=true)
+\item 
+void \mbox{\hyperlink{class_labeled_text_box_ad679b1fd72a54b7345b2b9ae144af8ce}{Set\+Label}} (wx\+String label)
+\item 
+void \mbox{\hyperlink{class_labeled_text_box_af235b6ce7eeb4e81580a3031b02cbd05}{Set\+Editable}} (bool value)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static bool \mbox{\hyperlink{class_labeled_text_box_a1756e032d26695650c46caf6025a959d}{Show\+Tool\+Tips}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_labeled_text_box_8h_source_l00061}{61}} of file \mbox{\hyperlink{_labeled_text_box_8h_source}{Labeled\+Text\+Box.\+h}}.
+
+
+
+\label{doc-enum-members}
+\Hypertarget{class_labeled_text_box_doc-enum-members}
+\doxysubsection{Member Enumeration Documentation}
+\Hypertarget{class_labeled_text_box_a8992697ab0cb0346f08e3a6bd0adae98}\index{LabeledTextBox@{LabeledTextBox}!LabeledTextBoxGuiDefs@{LabeledTextBoxGuiDefs}}
+\index{LabeledTextBoxGuiDefs@{LabeledTextBoxGuiDefs}!LabeledTextBox@{LabeledTextBox}}
+\doxysubsubsection{\texorpdfstring{LabeledTextBoxGuiDefs}{LabeledTextBoxGuiDefs}}
+{\footnotesize\ttfamily \label{class_labeled_text_box_a8992697ab0cb0346f08e3a6bd0adae98} 
+enum \mbox{\hyperlink{class_labeled_text_box_a8992697ab0cb0346f08e3a6bd0adae98}{Labeled\+Text\+Box\+::\+Labeled\+Text\+Box\+Gui\+Defs}}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_LABELEDTEXTBOX\_TEXTCTRL@{ID\_LABELEDTEXTBOX\_TEXTCTRL}!LabeledTextBox@{LabeledTextBox}}\index{LabeledTextBox@{LabeledTextBox}!ID\_LABELEDTEXTBOX\_TEXTCTRL@{ID\_LABELEDTEXTBOX\_TEXTCTRL}}}\Hypertarget{class_labeled_text_box_a8992697ab0cb0346f08e3a6bd0adae98a6546cac9efe58b202aaa365e51928bcb}\label{class_labeled_text_box_a8992697ab0cb0346f08e3a6bd0adae98a6546cac9efe58b202aaa365e51928bcb} 
+ID\+\_\+\+LABELEDTEXTBOX\+\_\+\+TEXTCTRL&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{_labeled_text_box_8h_source_l00067}{67}} of file \mbox{\hyperlink{_labeled_text_box_8h_source}{Labeled\+Text\+Box.\+h}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_labeled_text_box_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_labeled_text_box_ae76bf25d94cbf153303bf9231953241d}\index{LabeledTextBox@{LabeledTextBox}!LabeledTextBox@{LabeledTextBox}}
+\index{LabeledTextBox@{LabeledTextBox}!LabeledTextBox@{LabeledTextBox}}
+\doxysubsubsection{\texorpdfstring{LabeledTextBox()}{LabeledTextBox()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_labeled_text_box_ae76bf25d94cbf153303bf9231953241d} 
+Labeled\+Text\+Box\+::\+Labeled\+Text\+Box (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Default Constructor a new \doxylink{class_labeled_text_box}{Labeled\+Text\+Box} object. 
+
+Must be used in conjunction with Create. 
+
+Definition at line \mbox{\hyperlink{_labeled_text_box_8cpp_source_l00065}{65}} of file \mbox{\hyperlink{_labeled_text_box_8cpp_source}{Labeled\+Text\+Box.\+cpp}}.
+
+\Hypertarget{class_labeled_text_box_a134dc3cde771387a6b55f81e1d0551f6}\index{LabeledTextBox@{LabeledTextBox}!LabeledTextBox@{LabeledTextBox}}
+\index{LabeledTextBox@{LabeledTextBox}!LabeledTextBox@{LabeledTextBox}}
+\doxysubsubsection{\texorpdfstring{LabeledTextBox()}{LabeledTextBox()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_labeled_text_box_a134dc3cde771387a6b55f81e1d0551f6} 
+Labeled\+Text\+Box\+::\+Labeled\+Text\+Box (\begin{DoxyParamCaption}\item[{wx\+Window \texorpdfstring{$\ast$}{*}}]{parent}{, }\item[{wx\+Window\+ID}]{id}{ = {\ttfamily \mbox{\hyperlink{_labeled_text_box_8h_a2ea491ea99ad4f455ac2268c239d4f1a}{SYMBOL\+\_\+\+LABELEDTEXTBOX\+\_\+\+IDNAME}}}, }\item[{const wx\+Point \&}]{pos}{ = {\ttfamily \mbox{\hyperlink{_labeled_text_box_8h_a9952e30cdb7a74d58bee3450e89e3b9e}{SYMBOL\+\_\+\+LABELEDTEXTBOX\+\_\+\+POSITION}}}, }\item[{const wx\+Size \&}]{size}{ = {\ttfamily \mbox{\hyperlink{_labeled_text_box_8h_a1c6f8d6fb99875a030338d0a4997170b}{SYMBOL\+\_\+\+LABELEDTEXTBOX\+\_\+\+SIZE}}}, }\item[{long}]{style}{ = {\ttfamily \mbox{\hyperlink{_labeled_text_box_8h_a7f9bb312d5bc741f01ff3c33e125fa49}{SYMBOL\+\_\+\+LABELEDTEXTBOX\+\_\+\+STYLE}}}}\end{DoxyParamCaption})}
+
+typedefze The panel size. The value wx\+Default\+Size indicates a default size, chosen by either the windowing system or wx\+Widgets, depending on platform. 
+\begin{DoxyParams}{Parameters}
+{\em style} & The window style. \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+wx\+Panel. 
+\end{DoxySeeAlso}
+
+
+Definition at line \mbox{\hyperlink{_labeled_text_box_8cpp_source_l00075}{75}} of file \mbox{\hyperlink{_labeled_text_box_8cpp_source}{Labeled\+Text\+Box.\+cpp}}.
+
+\Hypertarget{class_labeled_text_box_a54e685aa81565d69329275826c0b989a}\index{LabeledTextBox@{LabeledTextBox}!````~LabeledTextBox@{\texorpdfstring{$\sim$}{\string~}LabeledTextBox}}
+\index{````~LabeledTextBox@{\texorpdfstring{$\sim$}{\string~}LabeledTextBox}!LabeledTextBox@{LabeledTextBox}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}LabeledTextBox()}{\string~LabeledTextBox()}}
+{\footnotesize\ttfamily \label{class_labeled_text_box_a54e685aa81565d69329275826c0b989a} 
+Labeled\+Text\+Box\+::\texorpdfstring{$\sim$}{\string~}\+Labeled\+Text\+Box (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Destroy the Labeled Text Box object. 
+
+
+
+Definition at line \mbox{\hyperlink{_labeled_text_box_8cpp_source_l00127}{127}} of file \mbox{\hyperlink{_labeled_text_box_8cpp_source}{Labeled\+Text\+Box.\+cpp}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_labeled_text_box_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_labeled_text_box_a0e7231f88956884fc1275fc4ab044bcf}\index{LabeledTextBox@{LabeledTextBox}!ChangeValue@{ChangeValue}}
+\index{ChangeValue@{ChangeValue}!LabeledTextBox@{LabeledTextBox}}
+\doxysubsubsection{\texorpdfstring{ChangeValue()}{ChangeValue()}}
+{\footnotesize\ttfamily \label{class_labeled_text_box_a0e7231f88956884fc1275fc4ab044bcf} 
+void Labeled\+Text\+Box\+::\+Change\+Value (\begin{DoxyParamCaption}\item[{wx\+String}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_labeled_text_box_8h_source_l00179}{179}} of file \mbox{\hyperlink{_labeled_text_box_8h_source}{Labeled\+Text\+Box.\+h}}.
+
+\Hypertarget{class_labeled_text_box_a07c7893c2a14b6b384f6965775fcac58}\index{LabeledTextBox@{LabeledTextBox}!Create@{Create}}
+\index{Create@{Create}!LabeledTextBox@{LabeledTextBox}}
+\doxysubsubsection{\texorpdfstring{Create()}{Create()}}
+{\footnotesize\ttfamily \label{class_labeled_text_box_a07c7893c2a14b6b384f6965775fcac58} 
+bool Labeled\+Text\+Box\+::\+Create (\begin{DoxyParamCaption}\item[{wx\+Window \texorpdfstring{$\ast$}{*}}]{parent}{, }\item[{wx\+Window\+ID}]{id}{ = {\ttfamily \mbox{\hyperlink{_labeled_text_box_8h_a2ea491ea99ad4f455ac2268c239d4f1a}{SYMBOL\+\_\+\+LABELEDTEXTBOX\+\_\+\+IDNAME}}}, }\item[{const wx\+Point \&}]{pos}{ = {\ttfamily \mbox{\hyperlink{_labeled_text_box_8h_a9952e30cdb7a74d58bee3450e89e3b9e}{SYMBOL\+\_\+\+LABELEDTEXTBOX\+\_\+\+POSITION}}}, }\item[{const wx\+Size \&}]{size}{ = {\ttfamily \mbox{\hyperlink{_labeled_text_box_8h_a1c6f8d6fb99875a030338d0a4997170b}{SYMBOL\+\_\+\+LABELEDTEXTBOX\+\_\+\+SIZE}}}, }\item[{long}]{style}{ = {\ttfamily \mbox{\hyperlink{_labeled_text_box_8h_a7f9bb312d5bc741f01ff3c33e125fa49}{SYMBOL\+\_\+\+LABELEDTEXTBOX\+\_\+\+STYLE}}}}\end{DoxyParamCaption})}
+
+
+
+Used for two-\/step panel construction. Use with default constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent} & The parent window. \\
+\hline
+{\em id} & An identifier for the panel. wx\+ID\+\_\+\+ANY is taken to mean a default. \\
+\hline
+{\em pos} & The panel position. The value wx\+Default\+Position indicates a default position, chosen by either the windowing system or wx\+Widgets, depending on platform. \\
+\hline
+{\em size} & The panel size. The value wx\+Default\+Size indicates a default size, chosen by either the windowing system or wx\+Widgets, depending on platform. \\
+\hline
+{\em style} & The window style. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_labeled_text_box_8cpp_source_l00104}{104}} of file \mbox{\hyperlink{_labeled_text_box_8cpp_source}{Labeled\+Text\+Box.\+cpp}}.
+
+\Hypertarget{class_labeled_text_box_aa65a8dcc26cbfceab01b386713292d28}\index{LabeledTextBox@{LabeledTextBox}!CreateControls@{CreateControls}}
+\index{CreateControls@{CreateControls}!LabeledTextBox@{LabeledTextBox}}
+\doxysubsubsection{\texorpdfstring{CreateControls()}{CreateControls()}}
+{\footnotesize\ttfamily \label{class_labeled_text_box_aa65a8dcc26cbfceab01b386713292d28} 
+void Labeled\+Text\+Box\+::\+Create\+Controls (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Creates the controls and sizers. 
+
+
+
+Definition at line \mbox{\hyperlink{_labeled_text_box_8cpp_source_l00151}{151}} of file \mbox{\hyperlink{_labeled_text_box_8cpp_source}{Labeled\+Text\+Box.\+cpp}}.
+
+\Hypertarget{class_labeled_text_box_a41eb27390b7454703d8e3237d707a88c}\index{LabeledTextBox@{LabeledTextBox}!GetId@{GetId}}
+\index{GetId@{GetId}!LabeledTextBox@{LabeledTextBox}}
+\doxysubsubsection{\texorpdfstring{GetId()}{GetId()}}
+{\footnotesize\ttfamily \label{class_labeled_text_box_a41eb27390b7454703d8e3237d707a88c} 
+wx\+Window\+ID Labeled\+Text\+Box\+::\+Get\+Id (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_labeled_text_box_8h_source_l00175}{175}} of file \mbox{\hyperlink{_labeled_text_box_8h_source}{Labeled\+Text\+Box.\+h}}.
+
+\Hypertarget{class_labeled_text_box_ad09713e47f47ecee2c869dd8dffd498c}\index{LabeledTextBox@{LabeledTextBox}!GetValue@{GetValue}}
+\index{GetValue@{GetValue}!LabeledTextBox@{LabeledTextBox}}
+\doxysubsubsection{\texorpdfstring{GetValue()}{GetValue()}}
+{\footnotesize\ttfamily \label{class_labeled_text_box_ad09713e47f47ecee2c869dd8dffd498c} 
+wx\+String Labeled\+Text\+Box\+::\+Get\+Value (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Get the value in the ctrl. 
+
+\begin{DoxyReturn}{Returns}
+wx\+String
+\end{DoxyReturn}
+\doxylink{class_labeled_text_box_ad09713e47f47ecee2c869dd8dffd498c}{Get\+Value( )} 
+
+Definition at line \mbox{\hyperlink{_labeled_text_box_8cpp_source_l00217}{217}} of file \mbox{\hyperlink{_labeled_text_box_8cpp_source}{Labeled\+Text\+Box.\+cpp}}.
+
+\Hypertarget{class_labeled_text_box_a1ca984604ebbaf9200b32932ab0095df}\index{LabeledTextBox@{LabeledTextBox}!Init@{Init}}
+\index{Init@{Init}!LabeledTextBox@{LabeledTextBox}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily \label{class_labeled_text_box_a1ca984604ebbaf9200b32932ab0095df} 
+void Labeled\+Text\+Box\+::\+Init (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Initialises member variables. 
+
+
+
+Definition at line \mbox{\hyperlink{_labeled_text_box_8cpp_source_l00138}{138}} of file \mbox{\hyperlink{_labeled_text_box_8cpp_source}{Labeled\+Text\+Box.\+cpp}}.
+
+\Hypertarget{class_labeled_text_box_a8857fbdbe7ae9975a6e80920675c989c}\index{LabeledTextBox@{LabeledTextBox}!IsModified@{IsModified}}
+\index{IsModified@{IsModified}!LabeledTextBox@{LabeledTextBox}}
+\doxysubsubsection{\texorpdfstring{IsModified()}{IsModified()}}
+{\footnotesize\ttfamily \label{class_labeled_text_box_a8857fbdbe7ae9975a6e80920675c989c} 
+bool Labeled\+Text\+Box\+::\+Is\+Modified (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_labeled_text_box_8h_source_l00184}{184}} of file \mbox{\hyperlink{_labeled_text_box_8h_source}{Labeled\+Text\+Box.\+h}}.
+
+\Hypertarget{class_labeled_text_box_acf0ed4fec28203b69cb4686aecf885a6}\index{LabeledTextBox@{LabeledTextBox}!OnTextctrlTextUpdated@{OnTextctrlTextUpdated}}
+\index{OnTextctrlTextUpdated@{OnTextctrlTextUpdated}!LabeledTextBox@{LabeledTextBox}}
+\doxysubsubsection{\texorpdfstring{OnTextctrlTextUpdated()}{OnTextctrlTextUpdated()}}
+{\footnotesize\ttfamily \label{class_labeled_text_box_acf0ed4fec28203b69cb4686aecf885a6} 
+void Labeled\+Text\+Box\+::\+On\+Textctrl\+Text\+Updated (\begin{DoxyParamCaption}\item[{wx\+Command\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_labeled_text_box_8cpp_source_l00228}{228}} of file \mbox{\hyperlink{_labeled_text_box_8cpp_source}{Labeled\+Text\+Box.\+cpp}}.
+
+\Hypertarget{class_labeled_text_box_af235b6ce7eeb4e81580a3031b02cbd05}\index{LabeledTextBox@{LabeledTextBox}!SetEditable@{SetEditable}}
+\index{SetEditable@{SetEditable}!LabeledTextBox@{LabeledTextBox}}
+\doxysubsubsection{\texorpdfstring{SetEditable()}{SetEditable()}}
+{\footnotesize\ttfamily \label{class_labeled_text_box_af235b6ce7eeb4e81580a3031b02cbd05} 
+void Labeled\+Text\+Box\+::\+Set\+Editable (\begin{DoxyParamCaption}\item[{bool}]{value}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_labeled_text_box_8cpp_source_l00195}{195}} of file \mbox{\hyperlink{_labeled_text_box_8cpp_source}{Labeled\+Text\+Box.\+cpp}}.
+
+\Hypertarget{class_labeled_text_box_ad679b1fd72a54b7345b2b9ae144af8ce}\index{LabeledTextBox@{LabeledTextBox}!SetLabel@{SetLabel}}
+\index{SetLabel@{SetLabel}!LabeledTextBox@{LabeledTextBox}}
+\doxysubsubsection{\texorpdfstring{SetLabel()}{SetLabel()}}
+{\footnotesize\ttfamily \label{class_labeled_text_box_ad679b1fd72a54b7345b2b9ae144af8ce} 
+void Labeled\+Text\+Box\+::\+Set\+Label (\begin{DoxyParamCaption}\item[{wx\+String}]{label}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_labeled_text_box_8h_source_l00190}{190}} of file \mbox{\hyperlink{_labeled_text_box_8h_source}{Labeled\+Text\+Box.\+h}}.
+
+\Hypertarget{class_labeled_text_box_a3cc5ba62f08672fd92f15b124d7b49f8}\index{LabeledTextBox@{LabeledTextBox}!SetModified@{SetModified}}
+\index{SetModified@{SetModified}!LabeledTextBox@{LabeledTextBox}}
+\doxysubsubsection{\texorpdfstring{SetModified()}{SetModified()}}
+{\footnotesize\ttfamily \label{class_labeled_text_box_a3cc5ba62f08672fd92f15b124d7b49f8} 
+void Labeled\+Text\+Box\+::\+Set\+Modified (\begin{DoxyParamCaption}\item[{bool}]{state}{ = {\ttfamily true}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_labeled_text_box_8h_source_l00187}{187}} of file \mbox{\hyperlink{_labeled_text_box_8h_source}{Labeled\+Text\+Box.\+h}}.
+
+\Hypertarget{class_labeled_text_box_acb3248b298b3f57eabf3e1cfc4e78d49}\index{LabeledTextBox@{LabeledTextBox}!Setup@{Setup}}
+\index{Setup@{Setup}!LabeledTextBox@{LabeledTextBox}}
+\doxysubsubsection{\texorpdfstring{Setup()}{Setup()}}
+{\footnotesize\ttfamily \label{class_labeled_text_box_acb3248b298b3f57eabf3e1cfc4e78d49} 
+void Labeled\+Text\+Box\+::\+Setup (\begin{DoxyParamCaption}\item[{wx\+String}]{label}{, }\item[{wx\+String}]{value}{}\end{DoxyParamCaption})}
+
+
+
+Set the Stamp object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em stamp} & \\
+\hline
+{\em type} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_labeled_text_box_8cpp_source_l00205}{205}} of file \mbox{\hyperlink{_labeled_text_box_8cpp_source}{Labeled\+Text\+Box.\+cpp}}.
+
+\Hypertarget{class_labeled_text_box_ad85f146352ac2d2d08681289a73fa66e}\index{LabeledTextBox@{LabeledTextBox}!SetValue@{SetValue}}
+\index{SetValue@{SetValue}!LabeledTextBox@{LabeledTextBox}}
+\doxysubsubsection{\texorpdfstring{SetValue()}{SetValue()}}
+{\footnotesize\ttfamily \label{class_labeled_text_box_ad85f146352ac2d2d08681289a73fa66e} 
+void Labeled\+Text\+Box\+::\+Set\+Value (\begin{DoxyParamCaption}\item[{wx\+String}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set the Width object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em width} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_labeled_text_box_8h_source_l00168}{168}} of file \mbox{\hyperlink{_labeled_text_box_8h_source}{Labeled\+Text\+Box.\+h}}.
+
+\Hypertarget{class_labeled_text_box_a1756e032d26695650c46caf6025a959d}\index{LabeledTextBox@{LabeledTextBox}!ShowToolTips@{ShowToolTips}}
+\index{ShowToolTips@{ShowToolTips}!LabeledTextBox@{LabeledTextBox}}
+\doxysubsubsection{\texorpdfstring{ShowToolTips()}{ShowToolTips()}}
+{\footnotesize\ttfamily \label{class_labeled_text_box_a1756e032d26695650c46caf6025a959d} 
+bool Labeled\+Text\+Box\+::\+Show\+Tool\+Tips (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_labeled_text_box_8cpp_source_l00189}{189}} of file \mbox{\hyperlink{_labeled_text_box_8cpp_source}{Labeled\+Text\+Box.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/femon/\+Development/wx/clone\+Test/\+Stamp\+Tool/src/gui/\mbox{\hyperlink{_labeled_text_box_8h}{Labeled\+Text\+Box.\+h}}\item 
+C\+:/\+Users/femon/\+Development/wx/clone\+Test/\+Stamp\+Tool/src/gui/\mbox{\hyperlink{_labeled_text_box_8cpp}{Labeled\+Text\+Box.\+cpp}}\end{DoxyCompactItemize}

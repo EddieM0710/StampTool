@@ -1,0 +1,28 @@
+var class_design_1_1_album_base =
+[
+    [ "AlbumBase", "class_design_1_1_album_base.html#a530465b8828abedac898bbd69e833487", null ],
+    [ "AlbumBase", "class_design_1_1_album_base.html#a3016576760eafb6b3146e76f922e1918", null ],
+    [ "~AlbumBase", "class_design_1_1_album_base.html#a433e3ec1ccb0b888c8211e21c570597b", null ],
+    [ "GetAlbumAttributeBool", "class_design_1_1_album_base.html#a2f9413b564d999d8f7a6e610cf6c08ad", null ],
+    [ "GetAlbumAttributeDbl", "class_design_1_1_album_base.html#a03c3120af1bebbd4720ef2d2db496f9d", null ],
+    [ "GetAlbumAttributeStr", "class_design_1_1_album_base.html#aefb960e5aee2919e2764aea656bfede6", null ],
+    [ "GetDefaults", "class_design_1_1_album_base.html#a6a38d6d1ef8e78c5bc1610279088a021", null ],
+    [ "GetErrorArray", "class_design_1_1_album_base.html#a8bda20daa3c938b69d404b97b12db49c", null ],
+    [ "GetNbrChildren", "class_design_1_1_album_base.html#ac2d47874f3c9a019f7adb8cea86bae1d", null ],
+    [ "GetNodeStatus", "class_design_1_1_album_base.html#af9845cf93335b60ef21e659e3e774dc5", null ],
+    [ "GetParent", "class_design_1_1_album_base.html#acd88e1be6258c5fe156f5b7488ae7872", null ],
+    [ "GetTreeItemId", "class_design_1_1_album_base.html#a6ffebdbfe7c578390ab7a3463bd86117", null ],
+    [ "HasChildren", "class_design_1_1_album_base.html#aba6c497c66c18265a72889dbe33e9e3c", null ],
+    [ "IsDefaultVal", "class_design_1_1_album_base.html#a44d500ac0d81626560d776ae9e2e9e1c", null ],
+    [ "IsDefaultVal", "class_design_1_1_album_base.html#ad1ca67ea800529f867c1764d3f1e09c0", null ],
+    [ "IsStatusOK", "class_design_1_1_album_base.html#afff9347fea3c19b4d04b8ab463a4f075", null ],
+    [ "LoadFonts", "class_design_1_1_album_base.html#a134710ecf775fc9dca8139e7bca47e07", null ],
+    [ "SetAlbumAttributeBool", "class_design_1_1_album_base.html#a260fcb0ab052e4649640edb9a7f966e9", null ],
+    [ "SetAlbumAttributeDbl", "class_design_1_1_album_base.html#a6d924b1a4d369cefe2b965ece238f8cc", null ],
+    [ "SetAlbumAttributeStr", "class_design_1_1_album_base.html#ac59ac03bf9b74c10a02e3baed9465954", null ],
+    [ "SetDefaults", "class_design_1_1_album_base.html#a0a5a59b5d89f4ca24fca07a3a47282f3", null ],
+    [ "SetNodeStatus", "class_design_1_1_album_base.html#a0add15e4630190b0273fbd7daec1f3bb", null ],
+    [ "SetTreeItemId", "class_design_1_1_album_base.html#a09ea7099470ae62a3b28e3116b91b98f", null ],
+    [ "ValidateChildren", "class_design_1_1_album_base.html#ac24a3f0735861b376ef954d712374afe", null ],
+    [ "ValidateNode", "class_design_1_1_album_base.html#ab9c5a39a0dbff42d87b0759a6d442edd", null ]
+];

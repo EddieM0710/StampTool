@@ -1,0 +1,327 @@
+\doxysection{Album\+Tree\+Ctrl.\+h}
+\hypertarget{_album_tree_ctrl_8h_source}{}\label{_album_tree_ctrl_8h_source}\index{C:/Users/femon/Development/wx/cloneTest/StampTool/src/gui/AlbumTreeCtrl.h@{C:/Users/femon/Development/wx/cloneTest/StampTool/src/gui/AlbumTreeCtrl.h}}
+\mbox{\hyperlink{_album_tree_ctrl_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00025}00025\ \textcolor{preprocessor}{\#ifndef\ AlbumTreeCtrl\_H}}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00026}00026\ \textcolor{preprocessor}{\#define\ AlbumTreeCtrl\_H}}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00028}00028\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_stamp_8h}{design/Stamp.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00029}00029\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_text_box_8h}{design/TextBox.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00030}00030\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_album_base_8h}{design/AlbumBase.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00031}00031\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_layout_base_8h}{design/LayoutBase.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00032}00032\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_design_defs_8h}{design/DesignDefs.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00033}00033\ \textcolor{preprocessor}{\#include\ <wx/treectrl.h>}}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00034}00034\ \textcolor{preprocessor}{\#include\ <wx/imaglist.h>}}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00035}00035\ \textcolor{preprocessor}{\#include\ <wx/colour.h>}}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00036}00036\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_icon_defs_8h}{gui/IconDefs.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00042}00042\ \textcolor{keyword}{enum}}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00043}00043\ \{}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00044}\mbox{\hyperlink{_album_tree_ctrl_8h_ad37ebad9a02ed0c97ce8e6a8351328aaaa01b90708217a2d4003ae191647e5546}{00044}}\ \ \ \ \ \mbox{\hyperlink{_album_tree_ctrl_8h_ad37ebad9a02ed0c97ce8e6a8351328aaaa01b90708217a2d4003ae191647e5546}{DesignTree\_Quit}}\ =\ wxID\_EXIT,}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00045}\mbox{\hyperlink{_album_tree_ctrl_8h_ad37ebad9a02ed0c97ce8e6a8351328aaaaca92b76b266c9b6d382a0d8e1081d60}{00045}}\ \ \ \ \ \mbox{\hyperlink{_album_tree_ctrl_8h_ad37ebad9a02ed0c97ce8e6a8351328aaaaca92b76b266c9b6d382a0d8e1081d60}{DesignTree\_About}}\ =\ wxID\_ABOUT,}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00046}\mbox{\hyperlink{_album_tree_ctrl_8h_ad37ebad9a02ed0c97ce8e6a8351328aaa002acdd0338fe5ec0d58c64255cf0fc9}{00046}}\ \ \ \ \ \mbox{\hyperlink{_album_tree_ctrl_8h_ad37ebad9a02ed0c97ce8e6a8351328aaa002acdd0338fe5ec0d58c64255cf0fc9}{DesignTree\_AddPage}},}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00047}\mbox{\hyperlink{_album_tree_ctrl_8h_ad37ebad9a02ed0c97ce8e6a8351328aaa9dd93bb7e93a843dcb352e97254770c0}{00047}}\ \ \ \ \ \mbox{\hyperlink{_album_tree_ctrl_8h_ad37ebad9a02ed0c97ce8e6a8351328aaa9dd93bb7e93a843dcb352e97254770c0}{DesignTree\_AddCol}},}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00048}\mbox{\hyperlink{_album_tree_ctrl_8h_ad37ebad9a02ed0c97ce8e6a8351328aaa8b17eaac85072c24e1ac768c8ed9d393}{00048}}\ \ \ \ \ \mbox{\hyperlink{_album_tree_ctrl_8h_ad37ebad9a02ed0c97ce8e6a8351328aaa8b17eaac85072c24e1ac768c8ed9d393}{DesignTree\_AddRow}},}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00049}\mbox{\hyperlink{_album_tree_ctrl_8h_ad37ebad9a02ed0c97ce8e6a8351328aaacd0613a0e51b90a4ba0a802922a24491}{00049}}\ \ \ \ \ \mbox{\hyperlink{_album_tree_ctrl_8h_ad37ebad9a02ed0c97ce8e6a8351328aaacd0613a0e51b90a4ba0a802922a24491}{DesignTree\_AddStamp}},}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00050}\mbox{\hyperlink{_album_tree_ctrl_8h_ad37ebad9a02ed0c97ce8e6a8351328aaad9dfaae73b6330e3dfc039e175d44810}{00050}}\ \ \ \ \ \mbox{\hyperlink{_album_tree_ctrl_8h_ad37ebad9a02ed0c97ce8e6a8351328aaad9dfaae73b6330e3dfc039e175d44810}{DesignTree\_AddTitle}},}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00051}\mbox{\hyperlink{_album_tree_ctrl_8h_ad37ebad9a02ed0c97ce8e6a8351328aaa54ddea4ed5faed1f1e7223938a4479bb}{00051}}\ \ \ \ \ \mbox{\hyperlink{_album_tree_ctrl_8h_ad37ebad9a02ed0c97ce8e6a8351328aaa54ddea4ed5faed1f1e7223938a4479bb}{DesignTree\_AddText}},}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00052}\mbox{\hyperlink{_album_tree_ctrl_8h_ad37ebad9a02ed0c97ce8e6a8351328aaa0e374d7077a60d8683f624785e089b7f}{00052}}\ \ \ \ \ \mbox{\hyperlink{_album_tree_ctrl_8h_ad37ebad9a02ed0c97ce8e6a8351328aaa0e374d7077a60d8683f624785e089b7f}{DesignTree\_DeleteItem}},}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00053}\mbox{\hyperlink{_album_tree_ctrl_8h_ad37ebad9a02ed0c97ce8e6a8351328aaa0df916237285e4f17de97727da9144ce}{00053}}\ \ \ \ \ \mbox{\hyperlink{_album_tree_ctrl_8h_ad37ebad9a02ed0c97ce8e6a8351328aaa0df916237285e4f17de97727da9144ce}{DesignTree\_EditDetails}},}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00054}\mbox{\hyperlink{_album_tree_ctrl_8h_ad37ebad9a02ed0c97ce8e6a8351328aaa224bc6e69e3016ed04593daeb9ff466b}{00054}}\ \ \ \ \ \mbox{\hyperlink{_album_tree_ctrl_8h_ad37ebad9a02ed0c97ce8e6a8351328aaa224bc6e69e3016ed04593daeb9ff466b}{DesignTree\_Before}},}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00055}\mbox{\hyperlink{_album_tree_ctrl_8h_ad37ebad9a02ed0c97ce8e6a8351328aaad3db2c41b3abf912367d32049b2552a0}{00055}}\ \ \ \ \ \mbox{\hyperlink{_album_tree_ctrl_8h_ad37ebad9a02ed0c97ce8e6a8351328aaad3db2c41b3abf912367d32049b2552a0}{DesignTree\_After}},}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00056}\mbox{\hyperlink{_album_tree_ctrl_8h_ad37ebad9a02ed0c97ce8e6a8351328aaa5801345995545fc98e2811416b0105d2}{00056}}\ \ \ \ \ \mbox{\hyperlink{_album_tree_ctrl_8h_ad37ebad9a02ed0c97ce8e6a8351328aaa5801345995545fc98e2811416b0105d2}{DesignTree\_AsChild}},}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00057}\mbox{\hyperlink{_album_tree_ctrl_8h_ad37ebad9a02ed0c97ce8e6a8351328aaa2e0c4ae661adcfb6eb21c8e80932022e}{00057}}\ \ \ \ \ \mbox{\hyperlink{_album_tree_ctrl_8h_ad37ebad9a02ed0c97ce8e6a8351328aaa2e0c4ae661adcfb6eb21c8e80932022e}{DesignTree\_Cancel}}}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00058}00058\ \};}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00060}00060\ \textcolor{keyword}{class\ }Stamp;}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00061}00061\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_utils}{Utils}}\ \{}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00062}00062\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_utils_1_1_stamp_link}{StampLink}};}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00063}00063\ \};}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00070}\mbox{\hyperlink{class_design_tree_item_data}{00070}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_design_tree_item_data_ae770f99c73a4c1c34ca45a43329779af}{DesignTreeItemData}}\ :\ \textcolor{keyword}{public}\ wxTreeItemData}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00071}00071\ \{}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00072}00072\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00080}\mbox{\hyperlink{class_design_tree_item_data_ae770f99c73a4c1c34ca45a43329779af}{00080}}\ \ \ \ \ \mbox{\hyperlink{class_design_tree_item_data_ae770f99c73a4c1c34ca45a43329779af}{DesignTreeItemData}}(\ \mbox{\hyperlink{namespace_design_a3b29aaf2cf27207bcb313e24b827f8b1}{Design::AlbumBaseType}}\ type,\ \textcolor{keyword}{const}\ wxString\ desc,}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00081}00081\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_design_1_1_album_base}{Design::AlbumBase}}*\ ele\ =\ 0,\ \mbox{\hyperlink{class_utils_1_1_stamp_link}{Utils::StampLink}}*\ stampLink\ =\ 0\ )}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00082}00082\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00083}00083\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00084}00084\ \ \ \ \ \ \ \ \ m\_type\ =\ type;}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00085}00085\ \ \ \ \ \ \ \ \ m\_desc\ =\ desc;}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00086}00086\ \ \ \ \ \ \ \ \ m\_element\ =\ ele;}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00087}00087\ \ \ \ \ \ \ \ \ m\_stampLink\ =\ stampLink;}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00088}00088\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00093}\mbox{\hyperlink{class_design_tree_item_data_aa8dbdcb0d5e049ec7ba0bfe51edebb14}{00093}}\ \ \ \ \ \mbox{\hyperlink{class_design_tree_item_data_aa8dbdcb0d5e049ec7ba0bfe51edebb14}{DesignTreeItemData}}(\ \mbox{\hyperlink{class_design_tree_item_data_ae770f99c73a4c1c34ca45a43329779af}{DesignTreeItemData}}\&\ data\ )}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00094}00094\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00095}00095\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00096}00096\ \ \ \ \ \ \ \ \ m\_type\ =\ data.\mbox{\hyperlink{class_design_tree_item_data_a85cffac38cea9bcd82ecae98a8a3faae}{GetType}}(\ );}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00097}00097\ \ \ \ \ \ \ \ \ m\_desc\ =\ data.\mbox{\hyperlink{class_design_tree_item_data_a942654c994e473372dfb4465e0d1ea73}{GetDesc}}(\ );}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00098}00098\ \ \ \ \ \ \ \ \ m\_element\ =\ data.\mbox{\hyperlink{class_design_tree_item_data_ae9c555f9436027f548ee350912ee5c59}{GetNodeElement}}(\ );}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00099}00099\ \ \ \ \ \ \ \ \ m\_stampLink\ =\ data.\mbox{\hyperlink{class_design_tree_item_data_a023c8e165883e691911dc24745f0b78c}{GetStampLink}}(\ );}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00100}00100\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00101}00101\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00104}\mbox{\hyperlink{class_design_tree_item_data_a73d24ec8b78c2b524cce42a9f1aeeb7c}{00104}}\ \ \ \ \ \mbox{\hyperlink{class_design_tree_item_data_a73d24ec8b78c2b524cce42a9f1aeeb7c}{\string~DesignTreeItemData}}(\ )}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00105}00105\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00106}00106\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00107}00107\ \ \ \ \ \ \ \ \ m\_type\ =\ \mbox{\hyperlink{namespace_design_a3b29aaf2cf27207bcb313e24b827f8b1a62f7301302fa4bf1b11f67e0703bf3d9}{Design::AT\_None}};}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00108}00108\ \ \ \ \ \ \ \ \ m\_desc\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00109}00109\ \ \ \ \ \ \ \ \ m\_element\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00110}00110\ \ \ \ \ \ \ \ \ m\_stampLink\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00111}00111\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00112}00112\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00116}\mbox{\hyperlink{class_design_tree_item_data_a942654c994e473372dfb4465e0d1ea73}{00116}}\ \ \ \ \ wxString\ \mbox{\hyperlink{class_design_tree_item_data_a942654c994e473372dfb4465e0d1ea73}{GetDesc}}(\ )\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00117}00117\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_desc;}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00118}00118\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00119}00119\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00123}\mbox{\hyperlink{class_design_tree_item_data_ae9c555f9436027f548ee350912ee5c59}{00123}}\ \ \ \ \ \mbox{\hyperlink{class_design_1_1_album_base}{Design::AlbumBase}}*\ \mbox{\hyperlink{class_design_tree_item_data_ae9c555f9436027f548ee350912ee5c59}{GetNodeElement}}(\ \textcolor{keywordtype}{void}\ )\ \{}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00124}00124\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_element;}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00125}00125\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00126}00126\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00127}00127\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00131}\mbox{\hyperlink{class_design_tree_item_data_a85cffac38cea9bcd82ecae98a8a3faae}{00131}}\ \ \ \ \ \mbox{\hyperlink{namespace_design_a3b29aaf2cf27207bcb313e24b827f8b1}{Design::AlbumBaseType}}\ \mbox{\hyperlink{class_design_tree_item_data_a85cffac38cea9bcd82ecae98a8a3faae}{GetType}}(\ )\ \{}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00132}00132\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00133}00133\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_type;}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00134}00134\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00135}00135\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00139}\mbox{\hyperlink{class_design_tree_item_data_a023c8e165883e691911dc24745f0b78c}{00139}}\ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_stamp_link}{Utils::StampLink}}*\ \mbox{\hyperlink{class_design_tree_item_data_a023c8e165883e691911dc24745f0b78c}{GetStampLink}}(\ )\ \{}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00140}00140\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00141}00141\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_stampLink;}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00142}00142\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00143}00143\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00148}00148\ \ \ \ \ \textcolor{comment}{//\ bool\ IsOk(\ )}}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00149}00149\ \ \ \ \ \textcolor{comment}{//\ \{}}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00150}00150\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ if\ (\ m\_ok\ ==\ 0x12345\ )return\ true;}}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00151}00151\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ return\ false;}}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00152}00152\ \ \ \ \ \textcolor{comment}{//\ \}}}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00153}00153\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00157}\mbox{\hyperlink{class_design_tree_item_data_a09faf5eb6c32b0b7acab862b2b2d1ec1}{00157}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_design_tree_item_data_a09faf5eb6c32b0b7acab862b2b2d1ec1}{SetDesc}}(\ wxString\ desc\ )\ \{}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00158}00158\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00159}00159\ \ \ \ \ \ \ \ \ m\_desc\ =\ desc;}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00160}00160\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00161}00161\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00165}\mbox{\hyperlink{class_design_tree_item_data_a5d63e14de2a3f0d83a779b4715af6e20}{00165}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_design_tree_item_data_a5d63e14de2a3f0d83a779b4715af6e20}{SetNodeElement}}(\ \mbox{\hyperlink{class_design_1_1_album_base}{Design::AlbumBase}}*\ ele\ )\ \{}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00166}00166\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00167}00167\ \ \ \ \ \ \ \ \ m\_element\ =\ ele;}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00168}00168\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00169}00169\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00173}00173\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_design_tree_item_data_a084204538bb339b5fb531f6c7fef9edb}{SetStampLink}}(\ \mbox{\hyperlink{class_utils_1_1_stamp_link}{Utils::StampLink}}*\ link\ );}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00174}00174\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00175}00175\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00179}\mbox{\hyperlink{class_design_tree_item_data_ab92c0076bb42ad09131943f8ca15616d}{00179}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_design_tree_item_data_ab92c0076bb42ad09131943f8ca15616d}{SetType}}(\ \mbox{\hyperlink{namespace_design_a3b29aaf2cf27207bcb313e24b827f8b1}{Design::AlbumBaseType}}\ type\ )\ \{}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00180}00180\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00181}00181\ \ \ \ \ \ \ \ \ m\_type\ =\ type;}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00182}00182\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00183}00183\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00184}00184\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00185}00185\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00186}00186\ \ \ \ \ \mbox{\hyperlink{class_design_1_1_album_base}{Design::AlbumBase}}*\ m\_element;}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00187}00187\ \ \ \ \ wxString\ m\_desc;}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00188}00188\ \ \ \ \ \mbox{\hyperlink{namespace_design_a3b29aaf2cf27207bcb313e24b827f8b1}{Design::AlbumBaseType}}\ m\_type;}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00189}00189\ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_stamp_link}{Utils::StampLink}}*\ m\_stampLink;}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00190}00190\ \};}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00191}00191\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00192}00192\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00193}00193\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00194}00194\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00195}00195\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00200}\mbox{\hyperlink{class_album_tree_ctrl}{00200}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_album_tree_ctrl_a6187e02628513ac36ff444b3eb36633b}{AlbumTreeCtrl}}\ :\ \textcolor{keyword}{public}\ wxTreeCtrl}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00201}00201\ \{}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00202}00202\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00203}00203\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00204}00204\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00205}00205\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00206}00206\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00207}\mbox{\hyperlink{class_album_tree_ctrl_a6187e02628513ac36ff444b3eb36633b}{00207}}\ \ \ \ \ \mbox{\hyperlink{class_album_tree_ctrl_a6187e02628513ac36ff444b3eb36633b}{AlbumTreeCtrl}}(\ )\ \{}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00208}00208\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00209}00209\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00210}00210\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00211}00211\ \ \ \ \ \mbox{\hyperlink{class_album_tree_ctrl_a6187e02628513ac36ff444b3eb36633b}{AlbumTreeCtrl}}(\ wxWindow*\ parent,\ \textcolor{keyword}{const}\ wxWindowID\ \textcolor{keywordtype}{id},\ \textcolor{keyword}{const}\ wxPoint\&\ pos,}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00212}00212\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ wxSize\&\ size,\ \textcolor{keywordtype}{long}\ style\ );}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00213}00213\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00214}00214\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00215}\mbox{\hyperlink{class_album_tree_ctrl_adc9b262351f984ed3928dc42dd7f14e2}{00215}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_album_tree_ctrl_adc9b262351f984ed3928dc42dd7f14e2}{\string~AlbumTreeCtrl}}(\ \textcolor{keywordtype}{void}\ )\ \{}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00216}00216\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00217}00217\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00218}00218\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00219}00219\ \ \ \ \ \textcolor{comment}{//\ bool\ IsOk(\ )}}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00220}00220\ \ \ \ \ \textcolor{comment}{//\ \{}}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00221}00221\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ if\ (\ m\_OK\ ==\ 0x12345\ )return\ true;}}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00222}00222\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ return\ false;}}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00223}00223\ \ \ \ \ \textcolor{comment}{//\ \}}}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00224}00224\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00225}00225\ \ \ \ \ wxTreeItemId\ \mbox{\hyperlink{class_album_tree_ctrl_a96b5d0b4d417e8e3d75b5632e15b9f89}{AddChild}}(\ wxTreeItemId\ parent,\ wxXmlNode*\ child\ );}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00226}00226\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00227}\mbox{\hyperlink{class_album_tree_ctrl_a31d59cfeef2305987548f3624bb8e4d9}{00227}}\ \ \ \ \ wxTreeItemId\ \mbox{\hyperlink{class_album_tree_ctrl_a31d59cfeef2305987548f3624bb8e4d9}{AddNode}}(\ \mbox{\hyperlink{namespace_design_a3b29aaf2cf27207bcb313e24b827f8b1}{Design::AlbumBaseType}}\ nodeType,\ wxTreeItemId\ parent,\ wxXmlNode*\ child\ );}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00228}00228\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00229}00229\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_album_tree_ctrl_af3a04d5b19aff9f2248c220dbb8200b1}{AddColTreeItem}}(\ wxTreeItemId\ node\ );}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00230}00230\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00231}00231\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_album_tree_ctrl_a3f6982fcc17558d7d8c3009c68837585}{AddPageTreeItem}}(\ wxTreeItemId\ node\ );}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00232}00232\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00233}00233\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_album_tree_ctrl_aa69e6719a7d4d354dc3bbdf912a2f70d}{AddRowTreeItem}}(\ wxTreeItemId\ node\ );}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00234}00234\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00235}\mbox{\hyperlink{class_album_tree_ctrl_ad93fb7b043f409d33e41499b761922c7}{00235}}\ \ \ \ \ wxTreeItemId\ \mbox{\hyperlink{class_album_tree_ctrl_ad93fb7b043f409d33e41499b761922c7}{AddStampNodeToTree}}(\ wxTreeItemId\ parent,\ wxXmlNode*\ child\ );}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00236}00236\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00237}00237\ \ \ \ \ \mbox{\hyperlink{class_design_1_1_stamp}{Design::Stamp}}*\ \mbox{\hyperlink{class_album_tree_ctrl_adb8149aa330278d7cf5758ca91d1445c}{AddStampTreeItem}}(\ wxTreeItemId\ node,\ \mbox{\hyperlink{class_design_1_1_stamp}{Design::Stamp}}*\ stamp\ );}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00238}00238\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00239}00239\ \ \ \ \ \mbox{\hyperlink{class_design_1_1_text_box}{Design::TextBox}}*\ \mbox{\hyperlink{class_album_tree_ctrl_a8db13e05f9c34aeb3a14f6173fad3af4}{AddTextTreeItem}}(\ wxTreeItemId\ parentID,\ \mbox{\hyperlink{class_design_1_1_text_box}{Design::TextBox}}*\ newText\ );}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00240}00240\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00241}00241\ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_stamp_link}{Utils::StampLink}}*\ \mbox{\hyperlink{class_album_tree_ctrl_adacb9d083668dbb94f6de62deb53d33e}{AppendStamp}}(\ wxTreeItemId\ \textcolor{keywordtype}{id}\ );}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00242}00242\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00243}00243\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_album_tree_ctrl_a69fc60e6b03e004820706d7d22b18e1c}{Clear}}(\ );}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00244}00244\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00245}00245\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_album_tree_ctrl_a05375e22125cbed9540ffb4fad0a7426}{CopyItem}}(\ wxTreeItemId\ dstID,\ wxTreeItemId\ srcID\ );}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00246}00246\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00247}00247\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_album_tree_ctrl_a279fa887be62c64fde2b28fa41d5e9b9}{CreateImageList}}(\ );}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00248}00248\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00249}00249\ \ \ \ \ \mbox{\hyperlink{class_design_1_1_stamp}{Design::Stamp}}*\ \mbox{\hyperlink{class_album_tree_ctrl_a0462d55e1927158cb7a4d139f3c213a8}{CreateNewStamp}}(\ wxTreeItemId\ catTreeID\ );}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00250}00250\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00251}00251\ \ \ \ \ \mbox{\hyperlink{class_design_1_1_text_box}{Design::TextBox}}*\ \mbox{\hyperlink{class_album_tree_ctrl_ad835ad2428765e93a9ef1df14722487f}{CreateNewText}}(\ );}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00252}00252\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00253}00253\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_album_tree_ctrl_ad53289a909ab19bdb340c9a7cfcbf521}{CreateStateImageList}}(\ );}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00254}00254\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00255}00255\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_album_tree_ctrl_a457cbfa5b08f48efb6f427b94e9b8e15}{DeleteItem}}(\ wxTreeItemId\ \textcolor{keywordtype}{id}\ );}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00256}00256\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00257}00257\ \ \ \ \ wxTreeItemId\ \mbox{\hyperlink{class_album_tree_ctrl_ad8352570eddc91f09e84bcb6a0c7c328}{FindTreeItemID}}(\ \mbox{\hyperlink{class_design_1_1_album_base}{Design::AlbumBase}}*\ node\ );}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00258}00258\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00259}00259\ \ \ \ \ wxTreeItemId\ \mbox{\hyperlink{class_album_tree_ctrl_ad8352570eddc91f09e84bcb6a0c7c328}{FindTreeItemID}}(\ \mbox{\hyperlink{class_design_1_1_album_base}{Design::AlbumBase}}*\ node,\ wxTreeItemId\ \textcolor{keywordtype}{id}\ );}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00260}00260\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00261}00261\ \ \ \ \ wxTreeItemId\ \mbox{\hyperlink{class_album_tree_ctrl_a23506bb4160b8ec713e4ddaeb628c347}{FindFirstStampChild}}(\ wxTreeItemId\ \textcolor{keywordtype}{id}\ );}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00262}00262\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00263}\mbox{\hyperlink{class_album_tree_ctrl_a5db780fffdbb86530ccac30a4ff8bf01}{00263}}\ \ \ \ \ wxTreeItemId\ \mbox{\hyperlink{class_album_tree_ctrl_a5db780fffdbb86530ccac30a4ff8bf01}{GetCurrentTreeID}}(\ )\ \{}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00264}00264\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_currentTreeID;}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00265}00265\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00266}00266\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00267}\mbox{\hyperlink{class_album_tree_ctrl_a32bb828c83620b1aa09e8622fca87f2e}{00267}}\ \ \ \ \ wxTreeItemId\ \mbox{\hyperlink{class_album_tree_ctrl_a32bb828c83620b1aa09e8622fca87f2e}{GetPageTreeID}}(\ )\ \{}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00268}00268\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_currPageID;}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00269}00269\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00270}00270\ \ \ \ \ \mbox{\hyperlink{namespace_design_a7353efa232d45958ffd42229f3132b46}{Design::IconID}}\ \mbox{\hyperlink{class_album_tree_ctrl_a5644db772b308c64cfc8b958f7d43a61}{GetIconId}}(\ \mbox{\hyperlink{class_design_1_1_stamp}{Design::Stamp}}*\ stamp\ );}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00271}00271\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00272}00272\ \ \ \ \ \textcolor{comment}{//wxString\ GetImageFullPath(\ wxTreeItemId\ catTreeID\ );}}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00273}00273\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00274}00274\ \ \ \ \ wxString\ \mbox{\hyperlink{class_album_tree_ctrl_a15e2c7e1e4cd77037143431eee7f5348}{GetItemDesc}}(\ wxTreeItemId\ albumID\ );}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00275}00275\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00276}\mbox{\hyperlink{class_album_tree_ctrl_a6134b19cda8def3744ace8bc29036d4f}{00276}}\ \ \ \ \ wxString\ \mbox{\hyperlink{class_album_tree_ctrl_a6134b19cda8def3744ace8bc29036d4f}{GetLabel}}(\ \mbox{\hyperlink{class_design_1_1_album_base}{Design::AlbumBase}}*\ catalogVolume\ );}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00277}00277\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00278}00278\ \ \ \ \ \mbox{\hyperlink{class_design_1_1_album_base}{Design::AlbumBase}}*\ \mbox{\hyperlink{class_album_tree_ctrl_ad657c53867cf75e855226cdd69be7eef}{GetItemNode}}(\ wxTreeItemId\ albumID\ );}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00279}00279\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00280}00280\ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_stamp_link}{Utils::StampLink}}*\ \mbox{\hyperlink{class_album_tree_ctrl_a9e1bbed4e77f61304eb59d4416e7c229}{GetItemStampLink}}(\ wxTreeItemId\ albumID\ );}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00281}00281\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00282}00282\ \ \ \ \ \mbox{\hyperlink{namespace_design_a3b29aaf2cf27207bcb313e24b827f8b1}{Design::AlbumBaseType}}\ \mbox{\hyperlink{class_album_tree_ctrl_a039d23beba49e63b33760bde10792bf8}{GetItemType}}(\ wxTreeItemId\ albumID\ );}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00283}00283\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00284}00284\ \ \ \ \ wxTreeItemId\ \mbox{\hyperlink{class_album_tree_ctrl_af2edbb34beae69f9e572a5bf43b5b226}{GetPage}}(\ wxTreeItemId\ \textcolor{keywordtype}{id}\ );}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00285}00285\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00286}00286\ \ \ \ \ \mbox{\hyperlink{class_design_1_1_layout_base}{Design::LayoutBase}}*\ \mbox{\hyperlink{class_album_tree_ctrl_a32beba117e11ac3f75deed0d19d4c802}{GetSelectedNode}}(\ );}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00287}00287\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00288}\mbox{\hyperlink{class_album_tree_ctrl_a088ce9e9483f0a79a023ee75819f00be}{00288}}\ \ \ \ \ \mbox{\hyperlink{class_design_1_1_album_base}{Design::AlbumBase}}*\ \mbox{\hyperlink{class_album_tree_ctrl_a088ce9e9483f0a79a023ee75819f00be}{GetStampNode}}(\ wxTreeItemId\ itemID\ );}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00289}00289\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00290}00290\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_album_tree_ctrl_a54e38000ed5679363bffd97a1cba2a2e}{GetValidateStatus}}(\ );}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00291}00291\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00292}\mbox{\hyperlink{class_album_tree_ctrl_abc9b15357004fd616bbe785805595ddb}{00292}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_album_tree_ctrl_abc9b15357004fd616bbe785805595ddb}{ImageSize}}(\ \textcolor{keywordtype}{void}\ )\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00293}00293\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_imageSize;}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00294}00294\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00295}00295\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00296}00296\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_album_tree_ctrl_a60a4cb09543b56628e10f11d9fd0b044}{IsElement}}(\ wxTreeItemId\ item,\ \mbox{\hyperlink{class_design_1_1_album_base}{Design::AlbumBase}}*\ node\ );}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00297}00297\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00298}00298\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_album_tree_ctrl_a659c2a54f69b22f84398a33b6423aa27}{LoadTree}}(\ \textcolor{keywordtype}{void}\ );}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00299}00299\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00300}00300\ \ \ \ \ wxString\ \mbox{\hyperlink{class_album_tree_ctrl_ad53aba1f072a19ead0c6973b17fdc6cf}{MakeItemLabel}}(\ wxTreeItemId\ \textcolor{keywordtype}{id}\ );}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00301}00301\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00302}00302\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_album_tree_ctrl_a1c80b1167ad8f7e89bc3954c160aa808}{MoveItem}}(\ wxTreeItemId\ itemSrc,\ wxTreeItemId\ itemDst\ );}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00303}00303\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00304}00304\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_album_tree_ctrl_aa2ece562c024065f90e62dc76eb588d1}{MakePage}}(\ wxTreeItemId\ \textcolor{keywordtype}{id}\ );}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00305}00305\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00306}\mbox{\hyperlink{class_album_tree_ctrl_a1bd09a5d19ccc936b9338a45ddb2b9a1}{00306}}\ \ \ \ \ wxArrayPtrVoid*\ \mbox{\hyperlink{class_album_tree_ctrl_a1bd09a5d19ccc936b9338a45ddb2b9a1}{MakeParentList}}(\ \mbox{\hyperlink{class_design_1_1_layout_base}{Design::LayoutBase}}*\ catalogVolume,}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00307}00307\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_catalog_a2ff17ae8cd4986617c22e54b7cf50f89}{Catalog::FormatType}}\ parentType\ );}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00308}00308\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00309}00309\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_album_tree_ctrl_a931e30aac3a8d1a46de93bd9a4f33a69}{OnBeginDrag}}(\ wxTreeEvent\&\ event\ );}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00310}00310\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00311}00311\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_album_tree_ctrl_a15bddccd4fdeb1d4db292880fb3423ee}{OnCompareItems}}(\ \textcolor{keyword}{const}\ wxTreeItemId\&\ i1,\ \textcolor{keyword}{const}\ wxTreeItemId\&\ i2\ )\ wxOVERRIDE;}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00312}00312\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00313}00313\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_album_tree_ctrl_a235e78a9fb1433e4955c99190b9cf051}{OnEndDrag}}(\ wxTreeEvent\&\ event\ );}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00314}00314\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00315}00315\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_album_tree_ctrl_a6a5ffb5fd84639bf578e631c0574d637}{OnDeleteItem}}(\ wxTreeItemId\ \textcolor{keywordtype}{id}\ );}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00316}00316\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00317}\mbox{\hyperlink{class_album_tree_ctrl_a3a37cd8294dec1c943a706836aca0398}{00317}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_album_tree_ctrl_a3a37cd8294dec1c943a706836aca0398}{OnItemContextMenu}}(\ wxTreeEvent\&\ event\ );}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00318}00318\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00319}00319\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_album_tree_ctrl_a4941ec8c5f90b38e7d65646b0947a105}{OnItemMenu}}(\ wxTreeEvent\&\ event\ );}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00320}00320\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00321}00321\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_album_tree_ctrl_a627c3f02f473709eceec029bb6bc3f0f}{OnItemRClick}}(\ wxTreeEvent\&\ event\ );}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00322}00322\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00323}00323\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_album_tree_ctrl_a84359f47d6204e1265bc13d4d0d4329d}{OnItemStateClick}}(\ wxTreeEvent\&\ event\ );}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00324}00324\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00325}00325\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_album_tree_ctrl_a1e2f90df90c6fbdebc86833af0de6a76}{OnSelChanged}}(\ wxTreeEvent\&\ event\ );}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00326}00326\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00327}00327\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_album_tree_ctrl_a8e82a6f01703fbdfb5291d26848718b8}{OnTreectrlItemCollapsed}}(\ wxTreeEvent\&\ event\ );}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00328}00328\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00329}00329\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_album_tree_ctrl_acffae25994bb4b373e0e7ab564fc120c}{OnTreectrlItemExpanded}}(\ wxTreeEvent\&\ event\ );}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00330}00330\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00331}00331\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_album_tree_ctrl_a825808a07ce05000f697c978d0ed25e9}{ResetValidateStatus}}(\ );}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00332}00332\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00333}\mbox{\hyperlink{class_album_tree_ctrl_ab247323f712ab8682da03fc8dae8b9c2}{00333}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_album_tree_ctrl_ab247323f712ab8682da03fc8dae8b9c2}{Save}}(\ );}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00334}00334\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00335}00335\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_album_tree_ctrl_afff8b84039870ae223740dfc9353dce1}{SaveNodeData}}(\ wxXmlNode*\ parent,\ wxTreeItemId\ treeItemId\ );}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00336}00336\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00337}00337\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_album_tree_ctrl_ac34ac205629c03183f1a74fb7f8c81d6}{SetItemStampLink}}(\ wxTreeItemId\ albumID,\ \mbox{\hyperlink{class_utils_1_1_stamp_link}{Utils::StampLink}}*\ link\ );}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00338}00338\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00339}00339\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_album_tree_ctrl_ad421c4f1b0574a92414153ada7c0c68e}{SetValidateStatus}}(\ \textcolor{keywordtype}{bool}\ status\ );}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00340}00340\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00341}00341\ \ \ \ \ \textcolor{comment}{//\ void\ ShowAlbumDetails(\ wxTreeItemId\ treeID,\ Design::AlbumBase*\ node\ );}}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00342}00342\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00343}00343\ \ \ \ \ \textcolor{comment}{//\ void\ ShowPageDetails(\ wxTreeItemId\ treeID,\ Design::AlbumBase*\ node\ );}}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00344}00344\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00345}00345\ \ \ \ \ \textcolor{comment}{//\ void\ ShowColDetails(\ wxTreeItemId\ id,\ Design::AlbumBase*\ node\ );}}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00346}00346\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00347}00347\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_album_tree_ctrl_a0028fb588542ce543d137d65ec5d7150}{ShowDropMenu}}(\ wxTreeItemId\ itemSrc,\ wxTreeItemId\ itemDst,\ \textcolor{keywordtype}{bool}\ asChild\ =\ \textcolor{keyword}{false}\ );}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00348}00348\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00349}00349\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_album_tree_ctrl_a4c5fa556c3f0e18bef6a64ba0bd111c5}{ShowMenu}}(\ wxTreeItemId\ \textcolor{keywordtype}{id},\ \textcolor{keyword}{const}\ wxPoint\&\ pt\ );}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00350}00350\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00351}00351\ \ \ \ \ \textcolor{comment}{//\ void\ ShowStampDetails(\ wxTreeItemId\ id\ );}}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00352}00352\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00353}00353\ \ \ \ \ \textcolor{comment}{//\ void\ ShowRowDetails(\ wxTreeItemId\ id,\ Design::AlbumBase*\ node\ );}}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00354}00354\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_album_tree_ctrl_a7ee5902522176923b7be1a0af85b8630}{Update}}(\ );}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00355}00355\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00356}00356\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_album_tree_ctrl_a9c995de7403dda3d77160475703a7274}{UpdateItemPageLayout}}(\ wxTreeItemId\ \textcolor{keywordtype}{id}\ );}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00357}00357\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00358}00358\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_album_tree_ctrl_ab38bff0157031c7d11454c6f6b8ed8ae}{UpdateStampList}}(\ );}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00359}00359\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00360}00360\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_album_tree_ctrl_ab38bff0157031c7d11454c6f6b8ed8ae}{UpdateStampList}}(\ wxTreeItemId\&\ treeItemId\ );}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00361}00361\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00362}00362\ \ \ \ \ \mbox{\hyperlink{namespace_design_a89f66276a25aed62bedc9fb9b5d35453}{Design::NodeStatus}}\ \mbox{\hyperlink{class_album_tree_ctrl_a4898e216b324b9e7aaa4bf99cf1c3e9f}{UpdateTreeItem}}(\ wxTreeItemId\ childID,\ \mbox{\hyperlink{class_design_1_1_album_base}{Design::AlbumBase}}*\ ele,\ \mbox{\hyperlink{namespace_design_a7353efa232d45958ffd42229f3132b46}{Design::IconID}}\ icon\ );}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00363}00363\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00364}00364\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_album_tree_ctrl_a28e3f4a28688eded74a17879405ef339}{Validate}}(\ wxTreeItemId\ \textcolor{keywordtype}{id}\ );}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00365}00365\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00366}00366\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_album_tree_ctrl_a9bda2ef88eadca4a3dca8377090c7449}{ValidateTree}}(\ );}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00367}00367\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00368}00368\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_album_tree_ctrl_a0d18a6408dc5897e9ebd17625cd54ef6}{ValidateLink}}(\ wxTreeItemId\&\ childId,\ wxString\ albIDNbr\ );}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00369}00369\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00370}00370\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_album_tree_ctrl_ae5b6b7e821be38af656f2b8d26d9af36}{UpdateAlbumStampEntries}}(\ wxTreeItemId\ treeID\ );}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00371}00371\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00372}00372\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00373}00373\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ m\_OK;}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00374}00374\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00375}00375\ \ \ \ \ \textcolor{keywordtype}{void}\ LogEvent(\ \textcolor{keyword}{const}\ wxString\&\ name,\ \textcolor{keyword}{const}\ wxTreeEvent\&\ event\ );}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00376}00376\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00377}00377\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_imageSize;\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ current\ size\ of\ images}}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00378}00378\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_reverseSort;\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ flag\ for\ OnCompareItems}}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00379}00379\ \ \ \ \ wxTreeItemId\ m\_draggedItem;\ \textcolor{comment}{//\ item\ being\ dragged\ right\ now}}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00380}00380\ \ \ \ \ wxColour\ m\_defaultBackgroundColour;}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00381}00381\ \ \ \ \ wxTreeItemId\ m\_currPageID;}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00382}00382\ \ \ \ \ \textcolor{keywordtype}{bool}\ ValidateStatus;}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00383}00383\ \ \ \ \ wxTreeItemId\ m\_currentTreeID;}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00384}00384\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00385}00385\ \ \ \ \ \textcolor{comment}{//\ NB:\ due\ to\ an\ ugly\ wxMSW\ hack\ you\ \_must\_\ use\ wxDECLARE\_DYNAMIC\_CLASS(\ );}}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00386}00386\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ if\ you\ want\ your\ overloaded\ OnCompareItems(\ )\ to\ be\ called.}}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00387}00387\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ OTOH,\ if\ you\ don't\ want\ it\ you\ may\ omit\ the\ next\ line\ -\/\ this\ will}}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00388}00388\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ make\ default\ (\ alphabetical\ )\ sorting\ much\ faster\ under\ wxMSW.}}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00389}00389\ \ \ \ \ wxDECLARE\_DYNAMIC\_CLASS(\ \mbox{\hyperlink{class_album_tree_ctrl_a6187e02628513ac36ff444b3eb36633b}{AlbumTreeCtrl}}\ );}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00390}00390\ \ \ \ \ wxDECLARE\_EVENT\_TABLE(\ );}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00391}00391\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00392}00392\ \};}
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00393}00393\ }
+\DoxyCodeLine{\Hypertarget{_album_tree_ctrl_8h_source_l00394}00394\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

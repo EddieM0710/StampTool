@@ -1,0 +1,97 @@
+\doxysection{Gui\+Utils.\+h}
+\hypertarget{_gui_utils_8h_source}{}\label{_gui_utils_8h_source}\index{C:/Users/femon/Development/wx/cloneTest/StampTool/src/gui/GuiUtils.h@{C:/Users/femon/Development/wx/cloneTest/StampTool/src/gui/GuiUtils.h}}
+\mbox{\hyperlink{_gui_utils_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00024}00024\ \textcolor{preprocessor}{\#ifndef\ GUIUTILS\_H\_}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00025}00025\ \textcolor{preprocessor}{\#define\ GUIUTILS\_H\_}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00027}00027\ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00028}00028\ \textcolor{comment}{\ \ *\ Includes}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00029}00029\ \textcolor{comment}{\ \ */}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00030}00030\ \textcolor{preprocessor}{\#include\ <wx/pdfdocument.h>}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00031}00031\ \textcolor{preprocessor}{\#include\ <wx/pdffont.h>}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00033}00033\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_defs_8h}{Defs.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00034}00034\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_gui_defs_8h}{gui/GuiDefs.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00036}\mbox{\hyperlink{_gui_utils_8h_a66b06809b27f311da0c50fba212270ea}{00036}}\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00037}\mbox{\hyperlink{_gui_utils_8h_a66b06809b27f311da0c50fba212270eaaab1a852d02b7308af3acec0a5e47cbe0}{00037}}\ \ \ \ \ \mbox{\hyperlink{_gui_utils_8h_a66b06809b27f311da0c50fba212270eaaab1a852d02b7308af3acec0a5e47cbe0}{CompareInvalid}},}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00038}\mbox{\hyperlink{_gui_utils_8h_a66b06809b27f311da0c50fba212270eaa74d5805bc0e440bd47f5f18d797e2fc0}{00038}}\ \ \ \ \ \mbox{\hyperlink{_gui_utils_8h_a66b06809b27f311da0c50fba212270eaa74d5805bc0e440bd47f5f18d797e2fc0}{CompareEqual}},}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00039}\mbox{\hyperlink{_gui_utils_8h_a66b06809b27f311da0c50fba212270eaaff1ea730dff3c027d8a76dac0007288b}{00039}}\ \ \ \ \ \mbox{\hyperlink{_gui_utils_8h_a66b06809b27f311da0c50fba212270eaaff1ea730dff3c027d8a76dac0007288b}{CompareLess}},}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00040}\mbox{\hyperlink{_gui_utils_8h_a66b06809b27f311da0c50fba212270eaa6da772161cf6c62141705d1b025ca2f1}{00040}}\ \ \ \ \ \mbox{\hyperlink{_gui_utils_8h_a66b06809b27f311da0c50fba212270eaa6da772161cf6c62141705d1b025ca2f1}{CompareGreater}}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00041}00041\ \}\mbox{\hyperlink{_gui_utils_8h_a66b06809b27f311da0c50fba212270ea}{ComparisonResultType}};}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00043}00043\ \textcolor{keyword}{extern}\ wxPdfArrayDouble\ \mbox{\hyperlink{_gui_utils_8cpp_ac8cfda6ba2bba574d3dc2a67f14c430a}{defaultDash}};}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00045}00045\ wxSize\ \mbox{\hyperlink{_gui_utils_8h_a5f10a9cb5ce52b8cbede5962e5fcd63c}{GetPPMM}}(\ wxDC\&\ dc\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00046}00046\ \textcolor{comment}{//\ extern\ double\ ScaleX;}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00047}00047\ \textcolor{comment}{//\ extern\ double\ ScaleY;}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00048}00048\ \textcolor{comment}{//\ extern\ RealPoint\ ScalePoint;}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00050}\mbox{\hyperlink{_gui_utils_8h_a8cec9a648f31210adbc6e338e0be81f7}{00050}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_gui_utils_8h_a8cec9a648f31210adbc6e338e0be81f7}{InitScale}}(\ wxSize\ sizeMM,\ wxSize\ sizeClient\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00052}\mbox{\hyperlink{_gui_utils_8h_afc52b40b57ae8370de5f2c5fc0cdba37}{00052}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_gui_utils_8h_afc52b40b57ae8370de5f2c5fc0cdba37}{drawBorder}}(\ wxDC\&\ dc,}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00053}00053\ \ \ \ \ \textcolor{keywordtype}{double}\ x,\ \textcolor{keywordtype}{double}\ y,}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00054}00054\ \ \ \ \ \textcolor{keywordtype}{double}\ width,\ \textcolor{keywordtype}{double}\ height\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00056}00056\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_gui_utils_8h_aac893eec7cbdd9779d4ea2bcf55542f2}{DrawRectangle}}(\ wxDC\&\ dc,}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00057}00057\ \ \ \ \ \textcolor{keywordtype}{double}\ x,\ \textcolor{keywordtype}{double}\ y,}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00058}00058\ \ \ \ \ \textcolor{keywordtype}{double}\ width,\ \textcolor{keywordtype}{double}\ height\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00060}00060\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_gui_utils_8h_a16fcfaace30d06a6f22d19cf0d739e8d}{DrawRectanglePDF}}(\ wxPdfDocument*\ doc,}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00061}00061\ \ \ \ \ \textcolor{keywordtype}{double}\ x,\ \textcolor{keywordtype}{double}\ y,}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00062}00062\ \ \ \ \ \textcolor{keywordtype}{double}\ width,\ \textcolor{keywordtype}{double}\ height\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00064}00064\ \textcolor{comment}{//\ get\ pen\ current\ style\ to\ return;\ sets\ parameters;\ returns\ unchanged\ current\ pen\ so\ original\ can\ be\ reset}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00065}00065\ wxPen\ \mbox{\hyperlink{_gui_utils_8h_ac604028eeaa9b33410664f30bce83cb4}{DCLineStyle}}(\ wxDC\&\ dc,\ wxColour\ colour\ =\ *wxBLACK,\ \textcolor{keywordtype}{double}\ \ width\ =\ -\/1,\ wxPenStyle\ style\ =\ wxPENSTYLE\_SOLID\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00067}00067\ \textcolor{comment}{//\ get\ current\ line\ style\ to\ return;\ sets\ parameters;\ returns\ unchanged\ current\ line\ style\ so\ original\ can\ be\ reset}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00068}00068\ wxPdfLineStyle\ \mbox{\hyperlink{_gui_utils_8h_a380dcea1479d9d5d6f58459c4436ae73}{PDFLineStyle}}(\ wxPdfDocument*\ doc,\ wxColour\ colour\ =\ *wxBLACK,\ \textcolor{keywordtype}{double}\ \ width\ =\ -\/1,\ \textcolor{keyword}{const}\ wxPdfArrayDouble\&\ dash\ =\ wxPdfArrayDouble(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00070}00070\ \textcolor{comment}{//\ wxSize\ LogicalToDeviceRel(\ wxDC\&\ dc,}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00071}00071\ \textcolor{comment}{//\ \ \ \ \ double\ x,\ double\ y\ );}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00073}00073\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{_gui_utils_8h_a7ccabb8a51562aeba4b1fe80a104d982}{GetHeightChars}}(\ \textcolor{keywordtype}{double}\ pt\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00075}00075\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{_gui_utils_8h_acd67d3534b5333f171a59fa7a245f429}{GetMultiLineTextHeight}}(\ wxString\ text,\ wxFont*\ font,\ \textcolor{keywordtype}{double}\ width\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00077}00077\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_gui_utils_8h_a993f3fc2a082fd5d19b41ba9fa9958ea}{DrawText}}(\ wxDC\&\ dc,\ wxString\&\ str,\ wxRect\&\ rect,\ \textcolor{keywordtype}{bool}\ draw\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00078}00078\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00079}00079\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_gui_utils_8h_a5d4206ed019b9406975a35aa3a5ae198}{DrawTitle}}(\ wxDC\&\ dc,\ wxString\ title,}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00080}00080\ \ \ \ \ \mbox{\hyperlink{_defs_8h_a213dea8a5ce1d84736c963a5cbfde8e0}{RealPoint}}\ pos,}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00081}00081\ \ \ \ \ \mbox{\hyperlink{_defs_8h_acd8ac2c7f3e4026c03e6a45ba79cf0c3}{RealSize}}\ size\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00083}00083\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_gui_utils_8h_aadd4ec38a788a3bc88c9be5f06d7468e}{DrawTitlePDF}}(\ wxPdfDocument*\ doc,\ wxString\ title,}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00084}00084\ \ \ \ \ \mbox{\hyperlink{_defs_8h_a213dea8a5ce1d84736c963a5cbfde8e0}{RealPoint}}\ pos,}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00085}00085\ \ \ \ \ \mbox{\hyperlink{_defs_8h_acd8ac2c7f3e4026c03e6a45ba79cf0c3}{RealSize}}\ size\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00086}00086\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00087}\mbox{\hyperlink{_gui_utils_8h_a8479dc346fc7116ddb43bb12e069b84f}{00087}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_gui_utils_8h_a8479dc346fc7116ddb43bb12e069b84f}{DrawLabel}}(\ wxDC\&\ dc,\ \textcolor{keyword}{const}\ wxString\&\ text,}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00088}00088\ \ \ \ \ wxRealPoint\ pos,}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00089}00089\ \ \ \ \ \mbox{\hyperlink{_defs_8h_acd8ac2c7f3e4026c03e6a45ba79cf0c3}{RealSize}}\ size,}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00090}00090\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ alignment\ =\ wxALIGN\_CENTER,}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00091}00091\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ indexAccel\ =\ -\/1\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00092}00092\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00093}00093\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_gui_utils_8h_af0d439788e398aeb5511d074486c08af}{DrawLabelPDF}}(\ wxPdfDocument*\ doc,\ \textcolor{keyword}{const}\ wxString\&\ text,}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00094}00094\ \ \ \ \ \mbox{\hyperlink{_defs_8h_a213dea8a5ce1d84736c963a5cbfde8e0}{RealPoint}}\ pos,}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00095}00095\ \ \ \ \ \mbox{\hyperlink{_defs_8h_acd8ac2c7f3e4026c03e6a45ba79cf0c3}{RealSize}}\ size,}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00096}00096\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ alignment\ =\ wxPDF\_ALIGN\_LEFT,\ \textcolor{comment}{//\ wxPDF\_ALIGN\_LEFT\ wxPdfAlignment}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00097}00097\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ border\ =\ wxPDF\_BORDER\_NONE,}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00098}00098\ \ \ \ \ \textcolor{keywordtype}{bool}\ fill\ =\ 0\ );\ \textcolor{comment}{//0=>no\ Fill\ default\ \ \ 1=>Fill}}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00099}00099\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00100}\mbox{\hyperlink{_gui_utils_8h_acfa2e6d550aaf806c86bf93c6941138c}{00100}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_gui_utils_8h_acfa2e6d550aaf806c86bf93c6941138c}{DrawImagePDF}}(\ wxPdfDocument*\ doc,\ wxImage\ image,}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00101}00101\ \ \ \ \ \textcolor{keywordtype}{double}\ x,\ \textcolor{keywordtype}{double}\ y,}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00102}00102\ \ \ \ \ \textcolor{keywordtype}{double}\ w,\ \textcolor{keywordtype}{double}\ h\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00103}00103\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00104}00104\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_gui_utils_8h_a7531052ff11e4e5a5fd56dad9cc2c25f}{DrawImage}}(\ wxDC\&\ dc,\ wxImage\ image,}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00105}00105\ \ \ \ \ \textcolor{keywordtype}{double}\ x,\ \textcolor{keywordtype}{double}\ y,}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00106}00106\ \ \ \ \ \textcolor{keywordtype}{double}\ w,\ \textcolor{keywordtype}{double}\ h\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00107}00107\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00108}00108\ wxImage\ \mbox{\hyperlink{_gui_utils_8h_a4930edb60ac7be279e2c248e81dcf8f2}{GetImageFromFilename}}(\ wxString\ filename\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00110}00110\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00111}00111\ \mbox{\hyperlink{_gui_utils_8h_a66b06809b27f311da0c50fba212270ea}{ComparisonResultType}}\ \mbox{\hyperlink{_gui_utils_8h_a80e43fdb1d91b48ea9bda95b2d596091}{CompareDates}}(\ wxString\ date1,\ wxString\ date2\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00112}00112\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{_gui_utils_8h_a6c6fd5fdec556a5bd60c3cfbc4f66065}{CompareID}}(\ wxString\ id1,\ wxString\ id2\ );}
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00113}00113\ }
+\DoxyCodeLine{\Hypertarget{_gui_utils_8h_source_l00114}00114\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

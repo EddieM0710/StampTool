@@ -1,0 +1,95 @@
+\doxysection{Utils\+::XMLIterator Class Reference}
+\hypertarget{class_utils_1_1_x_m_l_iterator}{}\label{class_utils_1_1_x_m_l_iterator}\index{Utils::XMLIterator@{Utils::XMLIterator}}
+
+
+{\ttfamily \#include $<$XMLUtilities.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_utils_1_1_x_m_l_iterator_a6f7bf155a42d6cd59ade04d7b38f936d}{XMLIterator}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}parent, bool decend=true)
+\item 
+\mbox{\hyperlink{class_utils_1_1_x_m_l_iterator_a25526338a726ef4df593779aa3a85696}{\texorpdfstring{$\sim$}{\string~}\+XMLIterator}} ()
+\item 
+wx\+Xml\+Node \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_utils_1_1_x_m_l_iterator_ab6b45e0f32bac311fcfa45b208446849}{First}} ()
+\item 
+wx\+Xml\+Node \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_utils_1_1_x_m_l_iterator_abcbe140a75831132c6ea9fd1a42b7809}{Next}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_x_m_l_utilities_8h_source_l00040}{40}} of file \mbox{\hyperlink{_x_m_l_utilities_8h_source}{XMLUtilities.\+h}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_utils_1_1_x_m_l_iterator_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_utils_1_1_x_m_l_iterator_a6f7bf155a42d6cd59ade04d7b38f936d}\index{Utils::XMLIterator@{Utils::XMLIterator}!XMLIterator@{XMLIterator}}
+\index{XMLIterator@{XMLIterator}!Utils::XMLIterator@{Utils::XMLIterator}}
+\doxysubsubsection{\texorpdfstring{XMLIterator()}{XMLIterator()}}
+{\footnotesize\ttfamily \label{class_utils_1_1_x_m_l_iterator_a6f7bf155a42d6cd59ade04d7b38f936d} 
+Utils\+::\+XMLIterator\+::\+XMLIterator (\begin{DoxyParamCaption}\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{parent}{, }\item[{bool}]{decend}{ = {\ttfamily true}}\end{DoxyParamCaption})}
+
+\doxylink{class_utils_1_1_x_m_l_iterator}{XMLIterator} -\/ constructor for iterating an XML heirarchy
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent} & \+: is the xml element whose children will be iterated. \\
+\hline
+{\em decend} & \+: false will iterate only the first level childeren. -\/ true ( default ) will iterate heirarchy \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_x_m_l_utilities_8cpp_source_l00062}{62}} of file \mbox{\hyperlink{_x_m_l_utilities_8cpp_source}{XMLUtilities.\+cpp}}.
+
+\Hypertarget{class_utils_1_1_x_m_l_iterator_a25526338a726ef4df593779aa3a85696}\index{Utils::XMLIterator@{Utils::XMLIterator}!````~XMLIterator@{\texorpdfstring{$\sim$}{\string~}XMLIterator}}
+\index{````~XMLIterator@{\texorpdfstring{$\sim$}{\string~}XMLIterator}!Utils::XMLIterator@{Utils::XMLIterator}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}XMLIterator()}{\string~XMLIterator()}}
+{\footnotesize\ttfamily \label{class_utils_1_1_x_m_l_iterator_a25526338a726ef4df593779aa3a85696} 
+Utils\+::\+XMLIterator\+::\texorpdfstring{$\sim$}{\string~}\+XMLIterator (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_x_m_l_utilities_8cpp_source_l00071}{71}} of file \mbox{\hyperlink{_x_m_l_utilities_8cpp_source}{XMLUtilities.\+cpp}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_utils_1_1_x_m_l_iterator_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_utils_1_1_x_m_l_iterator_ab6b45e0f32bac311fcfa45b208446849}\index{Utils::XMLIterator@{Utils::XMLIterator}!First@{First}}
+\index{First@{First}!Utils::XMLIterator@{Utils::XMLIterator}}
+\doxysubsubsection{\texorpdfstring{First()}{First()}}
+{\footnotesize\ttfamily \label{class_utils_1_1_x_m_l_iterator_ab6b45e0f32bac311fcfa45b208446849} 
+wx\+Xml\+Node \texorpdfstring{$\ast$}{*} Utils\+::\+XMLIterator\+::\+First (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+Returns the first child or Null \begin{DoxyReturn}{Returns}
+\{ wx\+Xml\+Node\texorpdfstring{$\ast$}{*}\} \+: 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_x_m_l_utilities_8cpp_source_l00074}{74}} of file \mbox{\hyperlink{_x_m_l_utilities_8cpp_source}{XMLUtilities.\+cpp}}.
+
+\Hypertarget{class_utils_1_1_x_m_l_iterator_abcbe140a75831132c6ea9fd1a42b7809}\index{Utils::XMLIterator@{Utils::XMLIterator}!Next@{Next}}
+\index{Next@{Next}!Utils::XMLIterator@{Utils::XMLIterator}}
+\doxysubsubsection{\texorpdfstring{Next()}{Next()}}
+{\footnotesize\ttfamily \label{class_utils_1_1_x_m_l_iterator_abcbe140a75831132c6ea9fd1a42b7809} 
+wx\+Xml\+Node \texorpdfstring{$\ast$}{*} Utils\+::\+XMLIterator\+::\+Next (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+Successively returns the next child or Null if finished. \begin{DoxyReturn}{Returns}
+\{ wx\+Xml\+Node\texorpdfstring{$\ast$}{*}\} \+: 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_x_m_l_utilities_8cpp_source_l00107}{107}} of file \mbox{\hyperlink{_x_m_l_utilities_8cpp_source}{XMLUtilities.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/femon/\+Development/wx/clone\+Test/\+Stamp\+Tool/src/utils/\mbox{\hyperlink{_x_m_l_utilities_8h}{XMLUtilities.\+h}}\item 
+C\+:/\+Users/femon/\+Development/wx/clone\+Test/\+Stamp\+Tool/src/utils/\mbox{\hyperlink{_x_m_l_utilities_8cpp}{XMLUtilities.\+cpp}}\end{DoxyCompactItemize}

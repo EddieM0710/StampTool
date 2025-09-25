@@ -1,0 +1,72 @@
+\doxysection{Album\+List.\+cpp}
+\hypertarget{_album_list_8cpp_source}{}\label{_album_list_8cpp_source}\index{C:/Users/femon/Development/wx/cloneTest/StampTool/src/design/AlbumList.cpp@{C:/Users/femon/Development/wx/cloneTest/StampTool/src/design/AlbumList.cpp}}
+\mbox{\hyperlink{_album_list_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_album_list_8cpp_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{_album_list_8cpp_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_album_list_8cpp_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_album_list_8cpp_source_l00026}00026\ \textcolor{preprocessor}{\#include\ "{}wx/wxprec.h"{}}}
+\DoxyCodeLine{\Hypertarget{_album_list_8cpp_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_album_list_8cpp_source_l00028}00028\ \textcolor{preprocessor}{\#ifdef\ \_\_BORLANDC\_\_}}
+\DoxyCodeLine{\Hypertarget{_album_list_8cpp_source_l00029}00029\ \textcolor{preprocessor}{\#pragma\ hdrstop}}
+\DoxyCodeLine{\Hypertarget{_album_list_8cpp_source_l00030}00030\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_album_list_8cpp_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_album_list_8cpp_source_l00032}00032\ \textcolor{preprocessor}{\#ifndef\ WX\_PRECOMP}}
+\DoxyCodeLine{\Hypertarget{_album_list_8cpp_source_l00033}00033\ \textcolor{preprocessor}{\#include\ "{}wx/wx.h"{}}}
+\DoxyCodeLine{\Hypertarget{_album_list_8cpp_source_l00034}00034\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_album_list_8cpp_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_album_list_8cpp_source_l00036}00036\ \textcolor{preprocessor}{\#include\ <wx/filename.h>}}
+\DoxyCodeLine{\Hypertarget{_album_list_8cpp_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{_album_list_8cpp_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{_album_list_8cpp_source_l00039}00039\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_album_list_8h}{design/AlbumList.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_album_list_8cpp_source_l00040}00040\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_album_data_8h}{design/AlbumData.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_album_list_8cpp_source_l00041}00041\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_album_panel_8h}{gui/AlbumPanel.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_album_list_8cpp_source_l00042}00042\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_project_8h}{utils/Project.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_album_list_8cpp_source_l00043}00043\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_stamp_tool_frame_8h}{gui/StampToolFrame.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_album_list_8cpp_source_l00044}00044\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_album_t_o_c_tree_ctrl_8h}{gui/AlbumTOCTreeCtrl.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_album_list_8cpp_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{_album_list_8cpp_source_l00046}00046\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_defs_8h}{Defs.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_album_list_8cpp_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{_album_list_8cpp_source_l00048}00048\ \ \textcolor{comment}{//\#include\ "{}StampToolApp.h"{}}}
+\DoxyCodeLine{\Hypertarget{_album_list_8cpp_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{_album_list_8cpp_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{_album_list_8cpp_source_l00052}00052\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_design}{Design}}\ \{}
+\DoxyCodeLine{\Hypertarget{_album_list_8cpp_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{_album_list_8cpp_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{_album_list_8cpp_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{_album_list_8cpp_source_l00056}\mbox{\hyperlink{class_design_1_1_album_list_aca752cf1ad63ba0d8b6b4bbc240723ae}{00056}}\ \ \ \ \ \mbox{\hyperlink{class_design_1_1_album_volume}{Design::AlbumVolume}}*\ \mbox{\hyperlink{class_design_1_1_album_list_aca752cf1ad63ba0d8b6b4bbc240723ae}{AlbumList::NewVolumeInstance}}(\ wxString\ filename\ )}
+\DoxyCodeLine{\Hypertarget{_album_list_8cpp_source_l00057}00057\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_album_list_8cpp_source_l00058}00058\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_design_1_1_album_volume}{Design::AlbumVolume}}*\ albumVolume\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_design_1_1_album_volume}{Design::AlbumVolume}}(\ );}
+\DoxyCodeLine{\Hypertarget{_album_list_8cpp_source_l00059}00059\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_volume_list_a7d1ce6fb8df681f2debf9a7b3b2430b3}{SetCurrentVolume}}(\ albumVolume\ );}
+\DoxyCodeLine{\Hypertarget{_album_list_8cpp_source_l00060}00060\ \ \ \ \ \ \ \ \ albumVolume-\/>\mbox{\hyperlink{class_utils_1_1_volume_a53defdd3c3056de2210bee9eafe9b0c9}{SetFilename}}(\ filename\ );}
+\DoxyCodeLine{\Hypertarget{_album_list_8cpp_source_l00061}00061\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ albumVolume;}
+\DoxyCodeLine{\Hypertarget{_album_list_8cpp_source_l00062}00062\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_album_list_8cpp_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{_album_list_8cpp_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{_album_list_8cpp_source_l00065}\mbox{\hyperlink{class_design_1_1_album_list_a70c01dde6e0ee6d04e5c0ec63546be3c}{00065}}\ \ \ \ \ \mbox{\hyperlink{class_design_1_1_album_volume}{Design::AlbumVolume}}*\ \mbox{\hyperlink{class_design_1_1_album_list_a70c01dde6e0ee6d04e5c0ec63546be3c}{AlbumList::AddNewVolume}}(\ wxString\ filename\ )}
+\DoxyCodeLine{\Hypertarget{_album_list_8cpp_source_l00066}00066\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_album_list_8cpp_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{_album_list_8cpp_source_l00068}00068\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ make\ the\ volume}}
+\DoxyCodeLine{\Hypertarget{_album_list_8cpp_source_l00069}00069\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_design_1_1_album_volume}{Design::AlbumVolume}}*\ vol\ =\ \mbox{\hyperlink{class_design_1_1_album_list_aca752cf1ad63ba0d8b6b4bbc240723ae}{NewVolumeInstance}}(\ filename\ );}
+\DoxyCodeLine{\Hypertarget{_album_list_8cpp_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{_album_list_8cpp_source_l00071}00071\ \ \ \ \ \ \ \ \ wxFileName\ albumFile(\ filename\ );}
+\DoxyCodeLine{\Hypertarget{_album_list_8cpp_source_l00072}00072\ \ \ \ \ \ \ \ \ wxString\ volName\ =\ albumFile.GetName(\ );}
+\DoxyCodeLine{\Hypertarget{_album_list_8cpp_source_l00073}00073\ \ \ \ \ \ \ \ \ vol-\/>\mbox{\hyperlink{class_design_1_1_album_volume_a7a4cb22029b19a3a95b0a374ce08dc85}{LoadDefaultDocument}}(\ volName\ );}
+\DoxyCodeLine{\Hypertarget{_album_list_8cpp_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{_album_list_8cpp_source_l00075}00075\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Add\ it\ to\ the\ ProjectList}}
+\DoxyCodeLine{\Hypertarget{_album_list_8cpp_source_l00076}00076\ \ \ \ \ \ \ \ \ wxXmlNode*\ newNode\ =\ \mbox{\hyperlink{_defs_8cpp_a21e576057406853f4fd5f371338b78b6}{GetProject}}(\ )-\/>\mbox{\hyperlink{class_utils_1_1_project_a5e341a5db91b78d930cb3f4a646accbb}{AddNewAlbumVolume}}(\ filename,\ volName\ );}
+\DoxyCodeLine{\Hypertarget{_album_list_8cpp_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{_album_list_8cpp_source_l00078}00078\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Add\ it\ to\ the\ catalog\ List}}
+\DoxyCodeLine{\Hypertarget{_album_list_8cpp_source_l00079}00079\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_volume_list_a3be25b5f8e4a75cf6a73b7d60986cb20}{Insert}}(\ volName,\ vol\ );}
+\DoxyCodeLine{\Hypertarget{_album_list_8cpp_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{_album_list_8cpp_source_l00081}00081\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Add\ it\ to\ the\ tree}}
+\DoxyCodeLine{\Hypertarget{_album_list_8cpp_source_l00082}00082\ \ \ \ \ \ \ \ \ wxTreeItemId\ treeRootID\ =\ \mbox{\hyperlink{_defs_8cpp_a1a15279c76bd57053a0c6e7fcc65426e}{GetAlbumTOCTreeCtrl}}(\ )-\/>GetRootItem(\ );}
+\DoxyCodeLine{\Hypertarget{_album_list_8cpp_source_l00083}00083\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_defs_8cpp_a1a15279c76bd57053a0c6e7fcc65426e}{GetAlbumTOCTreeCtrl}}(\ )-\/>\mbox{\hyperlink{class_t_o_c_tree_ctrl_aefc88bd1dde6684c2f52173b4a543af4}{AddChild}}(\ treeRootID,\ newNode,\ \mbox{\hyperlink{_defs_8cpp_a1a15279c76bd57053a0c6e7fcc65426e}{GetAlbumTOCTreeCtrl}}(\ )-\/>GetMenu(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_album_list_8cpp_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{_album_list_8cpp_source_l00085}00085\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ vol;}
+\DoxyCodeLine{\Hypertarget{_album_list_8cpp_source_l00086}00086\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_album_list_8cpp_source_l00087}00087\ }
+\DoxyCodeLine{\Hypertarget{_album_list_8cpp_source_l00088}00088\ }
+\DoxyCodeLine{\Hypertarget{_album_list_8cpp_source_l00089}00089\ \}}
+
+\end{DoxyCode}

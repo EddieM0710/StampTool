@@ -1,0 +1,85 @@
+\doxysection{Mount\+CSV.\+h}
+\hypertarget{_mount_c_s_v_8h_source}{}\label{_mount_c_s_v_8h_source}\index{C:/Users/femon/Development/wx/cloneTest/StampTool/src/catalog/MountCSV.h@{C:/Users/femon/Development/wx/cloneTest/StampTool/src/catalog/MountCSV.h}}
+\mbox{\hyperlink{_mount_c_s_v_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_mount_c_s_v_8h_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{_mount_c_s_v_8h_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_mount_c_s_v_8h_source_l00026}00026\ \textcolor{preprocessor}{\#ifndef\ MountCSV\_H}}
+\DoxyCodeLine{\Hypertarget{_mount_c_s_v_8h_source_l00027}00027\ \textcolor{preprocessor}{\#define\ MountCSV\_H}}
+\DoxyCodeLine{\Hypertarget{_mount_c_s_v_8h_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{_mount_c_s_v_8h_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{_mount_c_s_v_8h_source_l00030}00030\ \textcolor{preprocessor}{\#include\ "{}wx/xml/xml.h"{}}}
+\DoxyCodeLine{\Hypertarget{_mount_c_s_v_8h_source_l00031}00031\ \ \textcolor{comment}{//\#include\ <wx/dynarray.h>}}
+\DoxyCodeLine{\Hypertarget{_mount_c_s_v_8h_source_l00032}00032\ \textcolor{preprocessor}{\#include\ <wx/filename.h>}}
+\DoxyCodeLine{\Hypertarget{_mount_c_s_v_8h_source_l00033}00033\ \textcolor{preprocessor}{\#include\ <wx/string.h>}}
+\DoxyCodeLine{\Hypertarget{_mount_c_s_v_8h_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_mount_c_s_v_8h_source_l00035}00035\ \textcolor{preprocessor}{\#include\ <wx/txtstrm.h>}}
+\DoxyCodeLine{\Hypertarget{_mount_c_s_v_8h_source_l00036}00036\ \textcolor{preprocessor}{\#include\ <wx/wfstream.h>}}
+\DoxyCodeLine{\Hypertarget{_mount_c_s_v_8h_source_l00037}00037\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{\Hypertarget{_mount_c_s_v_8h_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{_mount_c_s_v_8h_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_mount_c_s_v_8h_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{_mount_c_s_v_8h_source_l00041}00041\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_catalog}{Catalog}}\ \{}
+\DoxyCodeLine{\Hypertarget{_mount_c_s_v_8h_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{_mount_c_s_v_8h_source_l00043}\mbox{\hyperlink{namespace_catalog_a1aa1ed4c009bdbfbaaa8ca652f987fef}{00043}}\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{\Hypertarget{_mount_c_s_v_8h_source_l00044}\mbox{\hyperlink{namespace_catalog_a1aa1ed4c009bdbfbaaa8ca652f987fefa77ee154607830674e613528ae9a51b4c}{00044}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_catalog_a1aa1ed4c009bdbfbaaa8ca652f987fefa77ee154607830674e613528ae9a51b4c}{MT\_Year}}\ =\ 0,}
+\DoxyCodeLine{\Hypertarget{_mount_c_s_v_8h_source_l00045}\mbox{\hyperlink{namespace_catalog_a1aa1ed4c009bdbfbaaa8ca652f987fefaed5fff075a287a5f2dcb4938556c8989}{00045}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_catalog_a1aa1ed4c009bdbfbaaa8ca652f987fefaed5fff075a287a5f2dcb4938556c8989}{MT\_ID}},}
+\DoxyCodeLine{\Hypertarget{_mount_c_s_v_8h_source_l00046}\mbox{\hyperlink{namespace_catalog_a1aa1ed4c009bdbfbaaa8ca652f987fefaef04b6a4d575c1cec9cf4158b186243b}{00046}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_catalog_a1aa1ed4c009bdbfbaaa8ca652f987fefaef04b6a4d575c1cec9cf4158b186243b}{MT\_Name}},}
+\DoxyCodeLine{\Hypertarget{_mount_c_s_v_8h_source_l00047}\mbox{\hyperlink{namespace_catalog_a1aa1ed4c009bdbfbaaa8ca652f987fefa3bfb552147111a968a7973b91dff29b7}{00047}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_catalog_a1aa1ed4c009bdbfbaaa8ca652f987fefa3bfb552147111a968a7973b91dff29b7}{MT\_SingleMount}},}
+\DoxyCodeLine{\Hypertarget{_mount_c_s_v_8h_source_l00048}\mbox{\hyperlink{namespace_catalog_a1aa1ed4c009bdbfbaaa8ca652f987fefab840ad181af800a73a096e5c18f1b2db}{00048}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_catalog_a1aa1ed4c009bdbfbaaa8ca652f987fefab840ad181af800a73a096e5c18f1b2db}{MT\_MultipleMount}},}
+\DoxyCodeLine{\Hypertarget{_mount_c_s_v_8h_source_l00049}\mbox{\hyperlink{namespace_catalog_a1aa1ed4c009bdbfbaaa8ca652f987fefa3471199423370fccdd2c5d5ec4b1b3f5}{00049}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_catalog_a1aa1ed4c009bdbfbaaa8ca652f987fefa3471199423370fccdd2c5d5ec4b1b3f5}{MT\_BlockMount}},}
+\DoxyCodeLine{\Hypertarget{_mount_c_s_v_8h_source_l00050}\mbox{\hyperlink{namespace_catalog_a1aa1ed4c009bdbfbaaa8ca652f987fefa7787231d3f029352f5a7999552565712}{00050}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_catalog_a1aa1ed4c009bdbfbaaa8ca652f987fefa7787231d3f029352f5a7999552565712}{MT\_SheetMount}},}
+\DoxyCodeLine{\Hypertarget{_mount_c_s_v_8h_source_l00051}\mbox{\hyperlink{namespace_catalog_a1aa1ed4c009bdbfbaaa8ca652f987fefacea5f1df446b7f1dcc78833083280e73}{00051}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_catalog_a1aa1ed4c009bdbfbaaa8ca652f987fefacea5f1df446b7f1dcc78833083280e73}{MT\_NbrDatatypes}}}
+\DoxyCodeLine{\Hypertarget{_mount_c_s_v_8h_source_l00052}00052\ \ \ \ \ \}\mbox{\hyperlink{namespace_catalog_a1aa1ed4c009bdbfbaaa8ca652f987fef}{MountDataTypes}};}
+\DoxyCodeLine{\Hypertarget{_mount_c_s_v_8h_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{_mount_c_s_v_8h_source_l00054}00054\ \ \ \ \ \textcolor{keyword}{extern}\ wxString\ \mbox{\hyperlink{namespace_catalog_acb0a181c5a138a4187b868a280b60ee1}{MountDataTypeNames}}[\ \mbox{\hyperlink{namespace_catalog_a1aa1ed4c009bdbfbaaa8ca652f987fefacea5f1df446b7f1dcc78833083280e73}{MT\_NbrDatatypes}}\ ];}
+\DoxyCodeLine{\Hypertarget{_mount_c_s_v_8h_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{_mount_c_s_v_8h_source_l00056}\mbox{\hyperlink{namespace_catalog_a2acb9f30e1584df2271f07d6353ac6d0}{00056}}\ \ \ \ \ \textcolor{keyword}{typedef}\ std::vector<wxString>\ \mbox{\hyperlink{namespace_catalog_a2acb9f30e1584df2271f07d6353ac6d0}{StringArray}};}
+\DoxyCodeLine{\Hypertarget{_mount_c_s_v_8h_source_l00057}\mbox{\hyperlink{namespace_catalog_a27a261514d5794e3ad90a79e74649501}{00057}}\ \ \ \ \ \textcolor{keyword}{typedef}\ std::vector<MountDataTypes>\ \mbox{\hyperlink{namespace_catalog_a27a261514d5794e3ad90a79e74649501}{DataTypesArray}};}
+\DoxyCodeLine{\Hypertarget{_mount_c_s_v_8h_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{_mount_c_s_v_8h_source_l00059}\mbox{\hyperlink{_mount_c_s_v_8h_ad19941886bdb416f5600a5f2cc111e81}{00059}}\ \textcolor{preprocessor}{\#define\ MaxNbrCSVCols\ 50}}
+\DoxyCodeLine{\Hypertarget{_mount_c_s_v_8h_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{_mount_c_s_v_8h_source_l00065}\mbox{\hyperlink{class_catalog_1_1_mount_c_s_v_data}{00065}}\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_catalog_1_1_mount_c_s_v_data_af7662eec86c6a604d7985a92fd9e288a}{MountCSVData}}}
+\DoxyCodeLine{\Hypertarget{_mount_c_s_v_8h_source_l00066}00066\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_mount_c_s_v_8h_source_l00067}00067\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_mount_c_s_v_8h_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{_mount_c_s_v_8h_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{_mount_c_s_v_8h_source_l00074}\mbox{\hyperlink{class_catalog_1_1_mount_c_s_v_data_af7662eec86c6a604d7985a92fd9e288a}{00074}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_catalog_1_1_mount_c_s_v_data_af7662eec86c6a604d7985a92fd9e288a}{MountCSVData}}(\ \textcolor{keywordtype}{void}\ )\ \{\ \};}
+\DoxyCodeLine{\Hypertarget{_mount_c_s_v_8h_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{_mount_c_s_v_8h_source_l00080}\mbox{\hyperlink{class_catalog_1_1_mount_c_s_v_data_acd1122773a60d74683a922168e4685a5}{00080}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_catalog_1_1_mount_c_s_v_data_acd1122773a60d74683a922168e4685a5}{\string~MountCSVData}}(\ \textcolor{keywordtype}{void}\ )\ \{\ \};}
+\DoxyCodeLine{\Hypertarget{_mount_c_s_v_8h_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{_mount_c_s_v_8h_source_l00087}\mbox{\hyperlink{class_catalog_1_1_mount_c_s_v_data_a8a556434d29ec524e75797a4d8196586}{00087}}\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_catalog_1_1_mount_c_s_v_data_a8a556434d29ec524e75797a4d8196586}{NbrColNames}}(\ \textcolor{keywordtype}{void}\ )\ \{\ \textcolor{keywordflow}{return}\ m\_csvColName.size(\ );\ \};}
+\DoxyCodeLine{\Hypertarget{_mount_c_s_v_8h_source_l00088}00088\ }
+\DoxyCodeLine{\Hypertarget{_mount_c_s_v_8h_source_l00095}\mbox{\hyperlink{class_catalog_1_1_mount_c_s_v_data_ab8e3c284b94e77775071e8cbae23d3e7}{00095}}\ \ \ \ \ \ \ \ \ wxString\ \mbox{\hyperlink{class_catalog_1_1_mount_c_s_v_data_ab8e3c284b94e77775071e8cbae23d3e7}{GetColName}}(\ \textcolor{keywordtype}{int}\ col\ )\ \{\ \textcolor{keywordflow}{return}\ m\_csvColName.at(\ col\ );\ \};}
+\DoxyCodeLine{\Hypertarget{_mount_c_s_v_8h_source_l00096}00096\ }
+\DoxyCodeLine{\Hypertarget{_mount_c_s_v_8h_source_l00103}\mbox{\hyperlink{class_catalog_1_1_mount_c_s_v_data_a04a275dc1cb0a6cc132c2bfb0044dded}{00103}}\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_1_1_mount_c_s_v_data_a04a275dc1cb0a6cc132c2bfb0044dded}{SetColName}}(\ wxString\ name\ )\ \{\ \textcolor{keywordflow}{return}\ m\_csvColName.push\_back(\ name\ );\ \};}
+\DoxyCodeLine{\Hypertarget{_mount_c_s_v_8h_source_l00104}00104\ }
+\DoxyCodeLine{\Hypertarget{_mount_c_s_v_8h_source_l00111}00111\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_catalog_1_1_mount_c_s_v_data_a10b56e7f41df0fe239bab113b138e961}{ReadDataFile}}(\ wxString\&\ filename\ );}
+\DoxyCodeLine{\Hypertarget{_mount_c_s_v_8h_source_l00112}00112\ }
+\DoxyCodeLine{\Hypertarget{_mount_c_s_v_8h_source_l00121}00121\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_catalog_1_1_mount_c_s_v_data_afbc80b825fa9f3612dbc7bd680407139}{FixUpLine}}(\ wxString\&\ line,\ \textcolor{keywordtype}{int}\ lineNbr\ );}
+\DoxyCodeLine{\Hypertarget{_mount_c_s_v_8h_source_l00122}00122\ }
+\DoxyCodeLine{\Hypertarget{_mount_c_s_v_8h_source_l00136}00136\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_catalog_1_1_mount_c_s_v_data_a6b01e95d85dd45329c8a81ec0cdca02b}{ReadTextInStream}}(\ wxFileInputStream\&\ file,\ wxTextInputStream\&\ text\ );}
+\DoxyCodeLine{\Hypertarget{_mount_c_s_v_8h_source_l00137}00137\ }
+\DoxyCodeLine{\Hypertarget{_mount_c_s_v_8h_source_l00144}00144\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//int\ FindCol(\ wxString\&\ colName\ )\ \{\ m\_csvColName.Index(\ colName\ );\ \};}}
+\DoxyCodeLine{\Hypertarget{_mount_c_s_v_8h_source_l00145}00145\ }
+\DoxyCodeLine{\Hypertarget{_mount_c_s_v_8h_source_l00150}00150\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_1_1_mount_c_s_v_data_a5e3e947b3faa08d7a25084236db03b0c}{MakeColMap}}(\ \textcolor{keywordtype}{void}\ );}
+\DoxyCodeLine{\Hypertarget{_mount_c_s_v_8h_source_l00151}00151\ }
+\DoxyCodeLine{\Hypertarget{_mount_c_s_v_8h_source_l00163}00163\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_catalog_1_1_mount_c_s_v_data_a396b774ddded803f4628ca422ecaea5d}{GetIDNbr}}(\ wxString\ catCodes,\ wxString\&\ \textcolor{keywordtype}{id}\ );}
+\DoxyCodeLine{\Hypertarget{_mount_c_s_v_8h_source_l00164}00164\ }
+\DoxyCodeLine{\Hypertarget{_mount_c_s_v_8h_source_l00165}00165\ }
+\DoxyCodeLine{\Hypertarget{_mount_c_s_v_8h_source_l00172}00172\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_catalog_1_1_mount_c_s_v_data_aaedee99ac30e1d4501b90cf7d6510c71}{DoLoad}}(\ wxString\&\ filename,\ wxXmlNode*\ nodeData\ );}
+\DoxyCodeLine{\Hypertarget{_mount_c_s_v_8h_source_l00173}00173\ }
+\DoxyCodeLine{\Hypertarget{_mount_c_s_v_8h_source_l00174}00174\ }
+\DoxyCodeLine{\Hypertarget{_mount_c_s_v_8h_source_l00175}00175\ }
+\DoxyCodeLine{\Hypertarget{_mount_c_s_v_8h_source_l00176}00176\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_mount_c_s_v_8h_source_l00177}00177\ \ \ \ \ \ \ \ \ wxString\ m\_filename;}
+\DoxyCodeLine{\Hypertarget{_mount_c_s_v_8h_source_l00178}00178\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_catalog_a2acb9f30e1584df2271f07d6353ac6d0}{StringArray}}\ m\_csvColName;}
+\DoxyCodeLine{\Hypertarget{_mount_c_s_v_8h_source_l00179}00179\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_catalog_a27a261514d5794e3ad90a79e74649501}{DataTypesArray}}\ m\_csvColMap;}
+\DoxyCodeLine{\Hypertarget{_mount_c_s_v_8h_source_l00180}00180\ \ \ \ \ \ \ \ \ wxXmlNode*\ m\_nodeData;}
+\DoxyCodeLine{\Hypertarget{_mount_c_s_v_8h_source_l00181}00181\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ m\_lineCnt;}
+\DoxyCodeLine{\Hypertarget{_mount_c_s_v_8h_source_l00182}00182\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_mount_c_s_v_8h_source_l00183}00183\ }
+\DoxyCodeLine{\Hypertarget{_mount_c_s_v_8h_source_l00184}00184\ \}}
+\DoxyCodeLine{\Hypertarget{_mount_c_s_v_8h_source_l00185}00185\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

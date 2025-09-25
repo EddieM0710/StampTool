@@ -1,0 +1,225 @@
+\doxysection{Comp\+Entry.\+cpp}
+\hypertarget{_comp_entry_8cpp_source}{}\label{_comp_entry_8cpp_source}\index{C:/Users/femon/Development/wx/cloneTest/StampTool/src/gui/CompEntry.cpp@{C:/Users/femon/Development/wx/cloneTest/StampTool/src/gui/CompEntry.cpp}}
+\mbox{\hyperlink{_comp_entry_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00002}00002\ \textcolor{comment}{\ *\ @file\ src/gui/CompEntry.cpp}}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00003}00003\ \textcolor{comment}{\ *\ @author\ Eddie\ Monroe}}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00004}00004\ \textcolor{comment}{\ *\ @brief}}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00005}00005\ \textcolor{comment}{\ *\ @version\ 0.1}}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00006}00006\ \textcolor{comment}{\ *\ @date\ 2022-\/01-\/19}}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00007}00007\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00008}00008\ \textcolor{comment}{\ *\ @copyright\ Copyright\ (\ c\ )\ 2022}}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00009}00009\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00010}00010\ \textcolor{comment}{\ *\ This\ file\ is\ part\ of\ StampTool.}}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00011}00011\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00012}00012\ \textcolor{comment}{\ *\ StampTool\ is\ free\ software:\ you\ can\ redistribute\ it\ and/or\ modify\ it\ under\ the}}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00013}00013\ \textcolor{comment}{\ *\ terms\ of\ the\ GNU\ General\ Public\ License\ as\ published\ by\ the\ Free\ Software\ Foundation,}}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00014}00014\ \textcolor{comment}{\ *\ either\ version\ 3\ of\ the\ License,\ or\ any\ later\ version.}}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00015}00015\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00016}00016\ \textcolor{comment}{\ *\ StampTool\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,\ but\ WITHOUT\ ANY}}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00017}00017\ \textcolor{comment}{\ *\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of\ MERCHANTABILITY\ or\ FITNESS\ FOR\ A}}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00018}00018\ \textcolor{comment}{\ *\ PARTICULAR\ PURPOSE.\ See\ the\ GNU\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00019}00019\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00020}00020\ \textcolor{comment}{\ *\ You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License\ along\ with}}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00021}00021\ \textcolor{comment}{\ *\ StampTool.\ If\ not,\ see\ <https://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00022}00022\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00025}00025\ \textcolor{preprocessor}{\#include\ "{}wx/wxprec.h"{}}}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00027}00027\ \textcolor{preprocessor}{\#ifdef\ \_\_BORLANDC\_\_}}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00028}00028\ \textcolor{preprocessor}{\#pragma\ hdrstop}}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00029}00029\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00031}00031\ \textcolor{preprocessor}{\#ifndef\ WX\_PRECOMP}}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00032}00032\ \textcolor{preprocessor}{\#include\ "{}wx/wx.h"{}}}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00033}00033\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00035}00035\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_comp_entry_8h}{CompEntry.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00036}00036\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_merge_list_8h}{catalog/MergeList.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00038}00038\ \textcolor{preprocessor}{\#include\ "{}art/back.xpm"{}}}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00039}00039\ \textcolor{preprocessor}{\#include\ "{}art/redo.xpm"{}}}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00041}00041\ IMPLEMENT\_DYNAMIC\_CLASS(\ \mbox{\hyperlink{class_comp_entry}{CompEntry}},\ wxPanel\ )}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00043}00043\ BEGIN\_EVENT\_TABLE(\ \mbox{\hyperlink{class_comp_entry}{CompEntry}},\ wxPanel\ )}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00045}00045\ EVT\_TEXT(\ \mbox{\hyperlink{_comp_entry_8h_a7865ac6c9f45352f1d2b3e749085aa12}{ID\_TARGETENTRY}},\ \mbox{\hyperlink{class_comp_entry_a5ee652f3af7595198c2952351e02f643}{CompEntry::OnTargetEntryTextUpdated}}\ )}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00046}00046\ EVT\_BUTTON(\ \mbox{\hyperlink{_comp_entry_8h_a113c5db268add66651ecf3963cb973c7}{ID\_COPYATTRIBUTE}},\ \mbox{\hyperlink{class_comp_entry_a7d6f0da437ccf5db6003d3cb140b4ee4}{CompEntry::OnCopyAttributeClick}}\ )}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00047}00047\ EVT\_BUTTON(\ \mbox{\hyperlink{_comp_entry_8h_a33f2d0106e94a51501ab9bd1f782abcd}{ID\_UNDOATTRIBCOPY}},\ \mbox{\hyperlink{class_comp_entry_a83fcc03307e2c913e507ef876ee9744e}{CompEntry::OnUndoAttribCopyClick}}\ )}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00048}00048\ EVT\_TEXT(\ \mbox{\hyperlink{_comp_entry_8h_ac04f4bf9a21f275785a6794be5a2d88d}{ID\_MERGEENTRY}},\ \mbox{\hyperlink{class_comp_entry_aa441f96ede68cb14ccf37df4334795db}{CompEntry::OnMergeEntryTextUpdated}}\ )}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00050}00050\ END\_EVENT\_TABLE(\ )}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00052}\mbox{\hyperlink{class_comp_entry_a47afcc9387feb0febb8aa036806b1371}{00052}}\ \mbox{\hyperlink{class_comp_entry_a47afcc9387feb0febb8aa036806b1371}{CompEntry}}::\mbox{\hyperlink{class_comp_entry_a47afcc9387feb0febb8aa036806b1371}{CompEntry}}(\ )}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00053}00053\ \{}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00054}00054\ \ \ \ \ \mbox{\hyperlink{class_comp_entry_a2d71ab4c19e0bacb1af358bb0a25b5ba}{Init}}(\ );}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00055}00055\ \}}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00057}\mbox{\hyperlink{class_comp_entry_a656387787dad635cf73c95fc25df53c4}{00057}}\ \mbox{\hyperlink{class_comp_entry_a47afcc9387feb0febb8aa036806b1371}{CompEntry::CompEntry}}(\ wxWindow*\ parent,\ wxWindowID\ \textcolor{keywordtype}{id},\ \textcolor{keyword}{const}\ wxPoint\&\ pos,\ \textcolor{keyword}{const}\ wxSize\&\ size,\ \textcolor{keywordtype}{long}\ style\ )}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00058}00058\ \{}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00059}00059\ \ \ \ \ \mbox{\hyperlink{class_comp_entry_a2d71ab4c19e0bacb1af358bb0a25b5ba}{Init}}(\ );}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00060}00060\ \ \ \ \ \mbox{\hyperlink{class_comp_entry_a09af1e1aab0cc52985a64dbbbcea3c67}{Create}}(\ parent,\ \textcolor{keywordtype}{id},\ pos,\ size,\ style\ );}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00061}00061\ \}}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00064}\mbox{\hyperlink{class_comp_entry_a09af1e1aab0cc52985a64dbbbcea3c67}{00064}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_comp_entry_a09af1e1aab0cc52985a64dbbbcea3c67}{CompEntry::Create}}(\ wxWindow*\ parent,\ wxWindowID\ \textcolor{keywordtype}{id},\ \textcolor{keyword}{const}\ wxPoint\&\ pos,\ \textcolor{keyword}{const}\ wxSize\&\ size,\ \textcolor{keywordtype}{long}\ style\ )}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00065}00065\ \{}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00066}00066\ \ \ \ \ SetExtraStyle(\ wxWS\_EX\_VALIDATE\_RECURSIVELY\ );}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00067}00067\ \ \ \ \ wxPanel::Create(\ parent,\ \textcolor{keywordtype}{id},\ pos,\ size,\ style\ );}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00069}00069\ \ \ \ \ \mbox{\hyperlink{class_comp_entry_a5aaa86025cc9140a05b69f3c40691293}{CreateControls}}(\ );}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00070}00070\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ GetSizer(\ )\ )}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00071}00071\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00072}00072\ \ \ \ \ \ \ \ \ GetSizer(\ )-\/>SetSizeHints(\ \textcolor{keyword}{this}\ );}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00073}00073\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00074}00074\ \ \ \ \ Centre(\ );}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00075}00075\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00076}00076\ \}}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00078}00078\ }
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00079}\mbox{\hyperlink{class_comp_entry_adfa732b8f1710c662111cc28f6b364b5}{00079}}\ \mbox{\hyperlink{class_comp_entry_adfa732b8f1710c662111cc28f6b364b5}{CompEntry::\string~CompEntry}}(\ )}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00080}00080\ \{}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00082}00082\ \}}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00083}00083\ }
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00084}\mbox{\hyperlink{class_comp_entry_a2d71ab4c19e0bacb1af358bb0a25b5ba}{00084}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_comp_entry_a2d71ab4c19e0bacb1af358bb0a25b5ba}{CompEntry::Init}}(\ )}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00085}00085\ \{}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00086}00086\ \ \ \ \ \mbox{\hyperlink{class_comp_entry_a340e8aba9e589665df61c6b814a9c702}{m\_typeName}}\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00087}00087\ \ \ \ \ \mbox{\hyperlink{class_comp_entry_a906bb318cbef12ecaa2724ad917139f8}{m\_targetVal}}\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00088}00088\ \ \ \ \ \mbox{\hyperlink{class_comp_entry_a78a0f8c048101904c54f35b3e46d67e8}{m\_merge}}\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00089}00089\ \ \ \ \ \mbox{\hyperlink{class_comp_entry_ab0b6f84ecccdcd220ba340137757da42}{m\_undo}}\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00090}00090\ \ \ \ \ \mbox{\hyperlink{class_comp_entry_aa9284c7645058331113fc802e48d4d8c}{m\_mergeVal}}\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00091}00091\ \}}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00092}00092\ }
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00093}00093\ }
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00094}\mbox{\hyperlink{class_comp_entry_a5aaa86025cc9140a05b69f3c40691293}{00094}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_comp_entry_a5aaa86025cc9140a05b69f3c40691293}{CompEntry::CreateControls}}(\ )}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00095}00095\ \{}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00096}00096\ }
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00097}00097\ \ \ \ \ \mbox{\hyperlink{class_comp_entry_a47afcc9387feb0febb8aa036806b1371}{CompEntry}}*\ itemPanel1\ =\ \textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00098}00098\ }
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00099}00099\ \ \ \ \ wxBoxSizer*\ itemBoxSizer2\ =\ \textcolor{keyword}{new}\ wxBoxSizer(\ wxVERTICAL\ );}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00100}00100\ \ \ \ \ itemPanel1-\/>SetSizer(\ itemBoxSizer2\ );}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00101}00101\ }
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00102}00102\ \ \ \ \ wxBoxSizer*\ itemBoxSizer1\ =\ \textcolor{keyword}{new}\ wxBoxSizer(\ wxHORIZONTAL\ );}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00103}00103\ \ \ \ \ itemBoxSizer2-\/>Add(\ itemBoxSizer1,\ 1,\ wxGROW\ |\ wxALL,\ 0\ );}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00104}00104\ }
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00105}00105\ \ \ \ \ \mbox{\hyperlink{class_comp_entry_a340e8aba9e589665df61c6b814a9c702}{m\_typeName}}\ =\ \textcolor{keyword}{new}\ wxStaticText(\ itemPanel1,\ wxID\_STATIC,\ \_(\ \textcolor{stringliteral}{"{}Static\ text"{}}\ ),\ wxDefaultPosition,\ wxSize(\ 150,\ -\/1\ ),\ wxALIGN\_RIGHT\ );}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00106}00106\ \ \ \ \ itemBoxSizer1-\/>Add(\ \mbox{\hyperlink{class_comp_entry_a340e8aba9e589665df61c6b814a9c702}{m\_typeName}},\ 0,\ wxALIGN\_CENTER\_VERTICAL\ |\ wxLEFT,\ 2\ );}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00107}00107\ }
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00108}00108\ \ \ \ \ \mbox{\hyperlink{class_comp_entry_a906bb318cbef12ecaa2724ad917139f8}{m\_targetVal}}\ =\ \textcolor{keyword}{new}\ wxTextCtrl(\ itemPanel1,\ \mbox{\hyperlink{_comp_entry_8h_a7865ac6c9f45352f1d2b3e749085aa12}{ID\_TARGETENTRY}},\ wxEmptyString,\ wxDefaultPosition,\ wxDefaultSize,\ 2\ );}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00109}00109\ \ \ \ \ itemBoxSizer1-\/>Add(\ \mbox{\hyperlink{class_comp_entry_a906bb318cbef12ecaa2724ad917139f8}{m\_targetVal}},\ 6,\ wxGROW\ |\ wxALL,\ 2\ );}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00110}00110\ }
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00111}00111\ \ \ \ \ \mbox{\hyperlink{class_comp_entry_a78a0f8c048101904c54f35b3e46d67e8}{m\_merge}}\ =\ \textcolor{keyword}{new}\ wxBitmapButton(\ itemPanel1,\ \mbox{\hyperlink{_comp_entry_8h_a113c5db268add66651ecf3963cb973c7}{ID\_COPYATTRIBUTE}},\ wxBitmap(\ back\_xpm\ ),\ wxDefaultPosition,\ wxDefaultSize,\ wxBU\_AUTODRAW\ |\ wxNO\_BORDER\ );}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00112}00112\ \ \ \ \ itemBoxSizer1-\/>Add(\ \mbox{\hyperlink{class_comp_entry_a78a0f8c048101904c54f35b3e46d67e8}{m\_merge}},\ 1,\ wxALIGN\_CENTER\_VERTICAL\ |\ wxALL,\ 0\ );}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00113}00113\ }
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00114}00114\ \ \ \ \ \mbox{\hyperlink{class_comp_entry_ab0b6f84ecccdcd220ba340137757da42}{m\_undo}}\ =\ \textcolor{keyword}{new}\ wxBitmapButton(\ itemPanel1,\ \mbox{\hyperlink{_comp_entry_8h_a33f2d0106e94a51501ab9bd1f782abcd}{ID\_UNDOATTRIBCOPY}},\ wxBitmap(\ redo\_xpm\ ),\ wxDefaultPosition,\ wxDefaultSize,\ wxBU\_AUTODRAW\ );}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00115}00115\ \ \ \ \ itemBoxSizer1-\/>Add(\ \mbox{\hyperlink{class_comp_entry_ab0b6f84ecccdcd220ba340137757da42}{m\_undo}},\ 0,\ wxALIGN\_CENTER\_VERTICAL\ |\ wxALL,\ 0\ );}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00116}00116\ }
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00117}00117\ \ \ \ \ \mbox{\hyperlink{class_comp_entry_aa9284c7645058331113fc802e48d4d8c}{m\_mergeVal}}\ =\ \textcolor{keyword}{new}\ wxTextCtrl(\ itemPanel1,\ \mbox{\hyperlink{_comp_entry_8h_ac04f4bf9a21f275785a6794be5a2d88d}{ID\_MERGEENTRY}},\ wxEmptyString,\ wxDefaultPosition,\ wxDefaultSize,\ 2\ );}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00118}00118\ \ \ \ \ itemBoxSizer1-\/>Add(\ \mbox{\hyperlink{class_comp_entry_aa9284c7645058331113fc802e48d4d8c}{m\_mergeVal}},\ 6,\ wxGROW\ |\ wxALL,\ 2\ );}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00119}00119\ }
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00120}00120\ \}}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00121}00121\ }
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00122}00122\ }
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00123}00123\ }
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00124}\mbox{\hyperlink{class_comp_entry_a64baf9d390cf9176a606a2a0f507c1c3}{00124}}\ \textcolor{keywordtype}{void}\ \ \mbox{\hyperlink{class_comp_entry_a64baf9d390cf9176a606a2a0f507c1c3}{CompEntry::SetBackground}}(\ )}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00125}00125\ \{}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00126}00126\ \ \ \ \ wxColour\ colour;}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00127}00127\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ \mbox{\hyperlink{class_comp_entry_acf34a4c2f4854c404e0cbc27a89e1194}{m\_comparePanel}}-\/>CompareEnabled(\ (\ \textcolor{keywordtype}{int}\ )\ \mbox{\hyperlink{class_comp_entry_a2c1167d6c6a08f247f13d25b9c10f737}{m\_type}}\ )\ \&\&}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00128}00128\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_comp_entry_a906bb318cbef12ecaa2724ad917139f8}{m\_targetVal}}-\/>GetValue(\ ).Cmp(\ \mbox{\hyperlink{class_comp_entry_aa9284c7645058331113fc802e48d4d8c}{m\_mergeVal}}-\/>GetValue(\ )\ )\ )}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00129}00129\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00130}00130\ \ \ \ \ \ \ \ \ colour\ =\ *wxYELLOW;}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00131}00131\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00132}00132\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00133}00133\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00134}00134\ \ \ \ \ \ \ \ \ colour\ =\ *wxWHITE;}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00135}00135\ }
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00136}00136\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00137}00137\ }
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00138}00138\ \ \ \ \ \mbox{\hyperlink{class_comp_entry_a906bb318cbef12ecaa2724ad917139f8}{m\_targetVal}}-\/>SetBackgroundColour(\ colour\ );}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00139}00139\ \ \ \ \ \mbox{\hyperlink{class_comp_entry_aa9284c7645058331113fc802e48d4d8c}{m\_mergeVal}}-\/>SetBackgroundColour(\ colour\ );}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00140}00140\ \};}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00141}00141\ }
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00142}00142\ }
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00143}00143\ }
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00144}00144\ }
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00145}\mbox{\hyperlink{class_comp_entry_a5ee652f3af7595198c2952351e02f643}{00145}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_comp_entry_a5ee652f3af7595198c2952351e02f643}{CompEntry::OnTargetEntryTextUpdated}}(\ wxCommandEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00146}00146\ \{}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00147}00147\ \ \ \ \ \mbox{\hyperlink{class_comp_entry_ac5aaa4f0937a6d2b4f2d37c139b8f82e}{m\_targetFileEntry}}-\/>SetAttr(\ \mbox{\hyperlink{class_comp_entry_a2c1167d6c6a08f247f13d25b9c10f737}{m\_type}},\ \mbox{\hyperlink{class_comp_entry_a906bb318cbef12ecaa2724ad917139f8}{m\_targetVal}}-\/>GetValue(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00148}00148\ \ \ \ \ \mbox{\hyperlink{class_comp_entry_a64baf9d390cf9176a606a2a0f507c1c3}{SetBackground}}(\ );}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00149}00149\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00150}00150\ \}}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00151}00151\ }
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00152}\mbox{\hyperlink{class_comp_entry_a3198ef260990f2c2831ae0d4ff87c5d5}{00152}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_comp_entry_a3198ef260990f2c2831ae0d4ff87c5d5}{CompEntry::CopyAttribute}}(\ )}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00153}00153\ \{}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00154}00154\ \ \ \ \ \mbox{\hyperlink{class_comp_entry_a906bb318cbef12ecaa2724ad917139f8}{m\_targetVal}}-\/>ChangeValue(\ \mbox{\hyperlink{class_comp_entry_aa9284c7645058331113fc802e48d4d8c}{m\_mergeVal}}-\/>GetValue(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00155}00155\ \ \ \ \ \mbox{\hyperlink{class_comp_entry_ac5aaa4f0937a6d2b4f2d37c139b8f82e}{m\_targetFileEntry}}-\/>SetAttr(\ \mbox{\hyperlink{class_comp_entry_a2c1167d6c6a08f247f13d25b9c10f737}{m\_type}},\ \mbox{\hyperlink{class_comp_entry_aa9284c7645058331113fc802e48d4d8c}{m\_mergeVal}}-\/>GetValue(\ )\ );}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00156}00156\ \ \ \ \ \mbox{\hyperlink{class_comp_entry_a64baf9d390cf9176a606a2a0f507c1c3}{SetBackground}}(\ );}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00157}00157\ \}}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00158}00158\ }
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00159}\mbox{\hyperlink{class_comp_entry_a7d6f0da437ccf5db6003d3cb140b4ee4}{00159}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_comp_entry_a7d6f0da437ccf5db6003d3cb140b4ee4}{CompEntry::OnCopyAttributeClick}}(\ wxCommandEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00160}00160\ \{}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00161}00161\ \ \ \ \ \mbox{\hyperlink{class_comp_entry_a3198ef260990f2c2831ae0d4ff87c5d5}{CopyAttribute}}(\ );}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00162}00162\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00163}00163\ \}}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00164}00164\ }
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00165}00165\ }
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00166}\mbox{\hyperlink{class_comp_entry_affa1e6c0609a83c8b698f9710a807595}{00166}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_comp_entry_affa1e6c0609a83c8b698f9710a807595}{CompEntry::UndoAttribCopy}}(\ )}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00167}00167\ \{}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00168}00168\ \ \ \ \ \mbox{\hyperlink{class_comp_entry_a906bb318cbef12ecaa2724ad917139f8}{m\_targetVal}}-\/>ChangeValue(\ \mbox{\hyperlink{class_comp_entry_a64f10413a8178ee48d3ceefe894cdc92}{m\_undoVal}}\ );}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00169}00169\ \ \ \ \ \mbox{\hyperlink{class_comp_entry_ac5aaa4f0937a6d2b4f2d37c139b8f82e}{m\_targetFileEntry}}-\/>SetAttr(\ \mbox{\hyperlink{class_comp_entry_a2c1167d6c6a08f247f13d25b9c10f737}{m\_type}},\ \mbox{\hyperlink{class_comp_entry_a64f10413a8178ee48d3ceefe894cdc92}{m\_undoVal}}\ );}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00170}00170\ \ \ \ \ \mbox{\hyperlink{class_comp_entry_a64baf9d390cf9176a606a2a0f507c1c3}{SetBackground}}(\ );}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00171}00171\ }
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00172}00172\ \}}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00173}00173\ }
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00174}\mbox{\hyperlink{class_comp_entry_a83fcc03307e2c913e507ef876ee9744e}{00174}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_comp_entry_a83fcc03307e2c913e507ef876ee9744e}{CompEntry::OnUndoAttribCopyClick}}(\ wxCommandEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00175}00175\ \{}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00176}00176\ \ \ \ \ \mbox{\hyperlink{class_comp_entry_affa1e6c0609a83c8b698f9710a807595}{UndoAttribCopy}}(\ );}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00177}00177\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00178}00178\ \}}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00179}00179\ }
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00180}00180\ }
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00181}00181\ }
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00182}\mbox{\hyperlink{class_comp_entry_aa441f96ede68cb14ccf37df4334795db}{00182}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_comp_entry_aa441f96ede68cb14ccf37df4334795db}{CompEntry::OnMergeEntryTextUpdated}}(\ wxCommandEvent\&\ event\ )}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00183}00183\ \{}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00184}00184\ \ \ \ \ \textcolor{keyword}{event}.Skip(\ );}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00185}00185\ \}}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00186}00186\ }
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00187}\mbox{\hyperlink{class_comp_entry_a3defd7545c0b997ee73d9546b685b0b5}{00187}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_comp_entry_a3defd7545c0b997ee73d9546b685b0b5}{CompEntry::Update}}(\ \mbox{\hyperlink{class_catalog_1_1_merge_data}{Catalog::MergeData}}*\ mergeEntry,\ \mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176}{Catalog::DataTypes}}\ type\ )}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00188}00188\ \{}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00189}00189\ \ \ \ \ \mbox{\hyperlink{class_comp_entry_a2c1167d6c6a08f247f13d25b9c10f737}{m\_type}}\ =\ type;}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00190}00190\ \ \ \ \ \mbox{\hyperlink{class_comp_entry_ac5aaa4f0937a6d2b4f2d37c139b8f82e}{m\_targetFileEntry}}\ =\ mergeEntry-\/>\mbox{\hyperlink{class_catalog_1_1_merge_data_a5006942fd0afd7a662038508905464ff}{GetTargetEntry}}(\ );}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00191}00191\ \ \ \ \ \mbox{\hyperlink{class_comp_entry_a92a378ced8fc57194a773a4abab21d57}{m\_mergeFileEntry}}\ =\ mergeEntry-\/>\mbox{\hyperlink{class_catalog_1_1_merge_data_a30a762b5df501bf7843f0721a2b2b692}{GetMergeEntry}}(\ );}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00192}00192\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ \mbox{\hyperlink{class_comp_entry_ac5aaa4f0937a6d2b4f2d37c139b8f82e}{m\_targetFileEntry}}\ )}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00193}00193\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00194}00194\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_comp_entry_aadf253c3f5d25c05a772a3de033f5147}{SetTargetValue}}(\ \mbox{\hyperlink{class_comp_entry_ac5aaa4f0937a6d2b4f2d37c139b8f82e}{m\_targetFileEntry}}-\/>GetAttr(\ \mbox{\hyperlink{class_comp_entry_a2c1167d6c6a08f247f13d25b9c10f737}{m\_type}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00195}00195\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_comp_entry_a78a0f8c048101904c54f35b3e46d67e8}{m\_merge}}-\/>Enable(\ );}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00196}00196\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_comp_entry_ab0b6f84ecccdcd220ba340137757da42}{m\_undo}}-\/>Enable(\ );}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00197}00197\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00198}00198\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00199}00199\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00200}00200\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_comp_entry_aadf253c3f5d25c05a772a3de033f5147}{SetTargetValue}}(\ \textcolor{stringliteral}{"{}"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00201}00201\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_comp_entry_a78a0f8c048101904c54f35b3e46d67e8}{m\_merge}}-\/>Disable(\ );}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00202}00202\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_comp_entry_ab0b6f84ecccdcd220ba340137757da42}{m\_undo}}-\/>Disable(\ );}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00203}00203\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00204}00204\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ \mbox{\hyperlink{class_comp_entry_a92a378ced8fc57194a773a4abab21d57}{m\_mergeFileEntry}}\ )}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00205}00205\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00206}00206\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_comp_entry_a120169b450dcdea615c29ee0f9ad93d2}{SetMergeValue}}(\ \mbox{\hyperlink{class_comp_entry_a92a378ced8fc57194a773a4abab21d57}{m\_mergeFileEntry}}-\/>GetAttr(\ \mbox{\hyperlink{class_comp_entry_a2c1167d6c6a08f247f13d25b9c10f737}{m\_type}}\ )\ );}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00207}00207\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_comp_entry_a78a0f8c048101904c54f35b3e46d67e8}{m\_merge}}-\/>Enable(\ );}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00208}00208\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_comp_entry_ab0b6f84ecccdcd220ba340137757da42}{m\_undo}}-\/>Enable(\ );}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00209}00209\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00210}00210\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00211}00211\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00212}00212\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_comp_entry_a120169b450dcdea615c29ee0f9ad93d2}{SetMergeValue}}(\ \textcolor{stringliteral}{"{}"{}}\ );}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00213}00213\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_comp_entry_a78a0f8c048101904c54f35b3e46d67e8}{m\_merge}}-\/>Disable(\ );}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00214}00214\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_comp_entry_ab0b6f84ecccdcd220ba340137757da42}{m\_undo}}-\/>Disable(\ );}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00215}00215\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00216}00216\ }
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00217}00217\ \ \ \ \ \mbox{\hyperlink{class_comp_entry_a64baf9d390cf9176a606a2a0f507c1c3}{SetBackground}}(\ );}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00218}00218\ \}}
+\DoxyCodeLine{\Hypertarget{_comp_entry_8cpp_source_l00219}00219\ }
+
+\end{DoxyCode}

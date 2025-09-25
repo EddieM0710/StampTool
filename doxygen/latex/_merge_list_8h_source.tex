@@ -1,0 +1,123 @@
+\doxysection{Merge\+List.\+h}
+\hypertarget{_merge_list_8h_source}{}\label{_merge_list_8h_source}\index{C:/Users/femon/Development/wx/cloneTest/StampTool/src/catalog/MergeList.h@{C:/Users/femon/Development/wx/cloneTest/StampTool/src/catalog/MergeList.h}}
+\mbox{\hyperlink{_merge_list_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00025}00025\ \textcolor{preprocessor}{\#ifndef\ MergeList\_H}}
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00026}00026\ \textcolor{preprocessor}{\#define\ MergeList\_H}}
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00028}00028\ \textcolor{preprocessor}{\#include\ "{}wx/xml/xml.h"{}}}
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00029}00029\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00031}00031\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_catalog_defs_8h}{catalog/CatalogDefs.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00032}00032\ \textcolor{comment}{//\#include\ "{}catalog/Stamp.h"{}}}
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00033}00033\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_entry_8h}{catalog/Entry.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00034}00034\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_catalog_volume_8h}{catalog/CatalogVolume.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00036}00036\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_compare_panel}{ComparePanel}};}
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00038}00038\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_catalog}{Catalog}}}
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00039}00039\ \{}
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00040}\mbox{\hyperlink{namespace_catalog_a10de14517a76cdd4e6b2bc1342142b07}{00040}}\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00041}\mbox{\hyperlink{namespace_catalog_a10de14517a76cdd4e6b2bc1342142b07a7b501e2ade61fa6db152f73cb1279a11}{00041}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_catalog_a10de14517a76cdd4e6b2bc1342142b07a7b501e2ade61fa6db152f73cb1279a11}{MS\_None}}\ =\ 0,}
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00042}\mbox{\hyperlink{namespace_catalog_a10de14517a76cdd4e6b2bc1342142b07aaa1e49c05431e127067e37b453efd028}{00042}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_catalog_a10de14517a76cdd4e6b2bc1342142b07aaa1e49c05431e127067e37b453efd028}{MS\_TargetMissing}},}
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00043}\mbox{\hyperlink{namespace_catalog_a10de14517a76cdd4e6b2bc1342142b07a002f0b4930917c35e8cf9e5004405417}{00043}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_catalog_a10de14517a76cdd4e6b2bc1342142b07a002f0b4930917c35e8cf9e5004405417}{MS\_MergeMissing}},}
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00044}\mbox{\hyperlink{namespace_catalog_a10de14517a76cdd4e6b2bc1342142b07a1a1d51974d5aa6e920f6071054792fcc}{00044}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_catalog_a10de14517a76cdd4e6b2bc1342142b07a1a1d51974d5aa6e920f6071054792fcc}{MS\_Same}},}
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00045}\mbox{\hyperlink{namespace_catalog_a10de14517a76cdd4e6b2bc1342142b07ab058c89308699e76835fad4ace23202f}{00045}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_catalog_a10de14517a76cdd4e6b2bc1342142b07ab058c89308699e76835fad4ace23202f}{MS\_Different}},}
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00046}\mbox{\hyperlink{namespace_catalog_a10de14517a76cdd4e6b2bc1342142b07a21dbd9257f1daae7663a25bca6e1e74e}{00046}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_catalog_a10de14517a76cdd4e6b2bc1342142b07a21dbd9257f1daae7663a25bca6e1e74e}{MS\_Undefined}}}
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00047}00047\ \ \ \ \ \}\ \mbox{\hyperlink{namespace_catalog_a10de14517a76cdd4e6b2bc1342142b07}{MergeStatus}};}
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00049}\mbox{\hyperlink{class_catalog_1_1_merge_data}{00049}}\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_catalog_1_1_merge_data_a4c65052fc742b2d38a8dd5eefa69f22f}{MergeData}}}
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00050}00050\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00051}00051\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00053}00053\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_catalog_1_1_merge_data_a4c65052fc742b2d38a8dd5eefa69f22f}{MergeData}}(\ \mbox{\hyperlink{class_compare_panel}{ComparePanel}}*\ parent\ );}
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00055}00055\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_catalog_1_1_merge_data_a4c65052fc742b2d38a8dd5eefa69f22f}{MergeData}}(\ wxXmlNode*\ targetEntry,\ wxXmlNode*\ mergeEntry\ );}
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00057}00057\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_catalog_1_1_merge_data_af1a01cf6dd3e50e7fb0147290c0829b1}{\string~MergeData}}(\ );}
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00059}00059\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_1_1_merge_data_a734f47454bc68c150b6f49969e85ed53}{SetTargetEntry}}(\ wxXmlNode*\ targetEntry\ );}
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00061}00061\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_1_1_merge_data_ac900c6ae66d8a181328c3f0b3ec0b0f4}{SetMergeEntry}}(\ wxXmlNode*\ mergeEntry\ );}
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00063}00063\ \ \ \ \ \ \ \ \ wxColour\ \mbox{\hyperlink{class_catalog_1_1_merge_data_a6538e0cbd710f645d8abc34d239f86a2}{GetColour}}(\ );}
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00065}00065\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_catalog_1_1_merge_data_a9ea87f2203c4bca9afc287ce311fbc7e}{cmp}}(\ \mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176}{DataTypes}}\ type\ );}
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00067}00067\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_catalog_a10de14517a76cdd4e6b2bc1342142b07}{MergeStatus}}\ \mbox{\hyperlink{class_catalog_1_1_merge_data_a9245dd8d3927c52ae9a566d2127d4861}{GetStatus}}(\ );}
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00069}00069\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_catalog_a10de14517a76cdd4e6b2bc1342142b07}{MergeStatus}}\ \mbox{\hyperlink{class_catalog_1_1_merge_data_a4cf8c2417d208f34bca4e3548e746908}{SetStatus}}(\ );}
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00071}00071\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_catalog_1_1_entry}{Entry}}*\ \mbox{\hyperlink{class_catalog_1_1_merge_data_a5006942fd0afd7a662038508905464ff}{GetTargetEntry}}(\ );}
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00073}00073\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_catalog_1_1_entry}{Entry}}*\ \mbox{\hyperlink{class_catalog_1_1_merge_data_a30a762b5df501bf7843f0721a2b2b692}{GetMergeEntry}}(\ );}
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00075}00075\ \ \ \ \ \ \ \ \ wxString\ \mbox{\hyperlink{class_catalog_1_1_merge_data_a5de1f766e26b49ef5a3ba41d17d9eda8}{GetTargetAttribute}}(\ \mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176}{DataTypes}}\ type\ );}
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00077}00077\ \ \ \ \ \ \ \ \ wxString\ \mbox{\hyperlink{class_catalog_1_1_merge_data_ad4543288f998ee70299fd9550d8aee83}{GetMergeAttribute}}(\ \mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176}{DataTypes}}\ type\ );}
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00078}00078\ }
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00079}00079\ \ \ \ \ \ \ \ \ wxString\ \mbox{\hyperlink{class_catalog_1_1_merge_data_a2cca4c46f1577857fb3b5631394f075f}{GetName}}(\ );;}
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00081}00081\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00082}00082\ \ \ \ \ \ \ \ \ wxString\ m\_name;}
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00083}00083\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_catalog_a10de14517a76cdd4e6b2bc1342142b07}{MergeStatus}}\ \ m\_status;}
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00084}00084\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_catalog_1_1_entry}{Entry}}*\ m\_targetEntry;}
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00085}00085\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_catalog_1_1_entry}{Entry}}*\ m\_mergeEntry;}
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00086}00086\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_compare_panel}{ComparePanel}}*\ m\_comparePanel;}
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00087}00087\ }
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00088}00088\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00090}00090\ }
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00091}00091\ }
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00092}\mbox{\hyperlink{namespace_catalog_a7df5a387600744730d6a9eabcedf2f29}{00092}}\ \ \ \ \ \textcolor{keyword}{typedef}\ std::vector<MergeData*>\ \mbox{\hyperlink{namespace_catalog_a7df5a387600744730d6a9eabcedf2f29}{MergeEntryList}};}
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00093}00093\ }
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00094}00094\ }
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00095}00095\ }
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00096}\mbox{\hyperlink{class_catalog_1_1_merge_list}{00096}}\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_catalog_1_1_merge_list_a38aeff1f9be9707b2abf3c178eb1c3b4}{MergeList}}}
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00097}00097\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00098}00098\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00099}00099\ }
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00100}00100\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_catalog_1_1_merge_list_a38aeff1f9be9707b2abf3c178eb1c3b4}{MergeList}}(\ \mbox{\hyperlink{class_compare_panel}{ComparePanel}}*\ parent\ );}
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00101}00101\ }
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00102}00102\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_catalog_1_1_merge_list_a822545c0796ae8568f411d79fe11d325}{\string~MergeList}}(\ );}
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00103}00103\ }
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00104}00104\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_1_1_merge_list_a0cad0269ff7011af8e5a05232776fdff}{SetTargetRoot}}(\ wxXmlNode*\ targetRoot\ );}
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00105}00105\ }
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00106}00106\ \ \ \ \ \ \ \ \ wxXmlNode*\ \mbox{\hyperlink{class_catalog_1_1_merge_list_aa646fecbd08dc47afe41627a35f55411}{GetTargetRoot}}(\ );}
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00107}00107\ }
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00108}00108\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_1_1_merge_list_abc1aa77934dda0dff3a8860cb8a3a85b}{SetMergeRoot}}(\ wxXmlNode*\ mergeRoot\ );}
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00109}00109\ }
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00110}00110\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_1_1_merge_list_a2d74cf64e39e97c0e5d0bd18b5f5b7bb}{LoadEntryList}}(\ wxXmlNode*\ node\ );}
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00111}00111\ }
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00112}00112\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_1_1_merge_list_a2d74cf64e39e97c0e5d0bd18b5f5b7bb}{LoadEntryList}}(\ );}
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00113}00113\ }
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00114}00114\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_1_1_merge_list_a840f38c29bb7d271164b124342c1d630}{AddMergeEntryList}}(\ wxXmlNode*\ node\ );}
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00115}00115\ }
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00116}00116\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_catalog_1_1_merge_data}{MergeData}}*\ \mbox{\hyperlink{class_catalog_1_1_merge_list_af23315eab932203b3a1c3f8f45308f6f}{FindTargetEntryForNewEntry}}(\ \mbox{\hyperlink{class_catalog_1_1_entry}{Entry}}*\ entry,\ \mbox{\hyperlink{namespace_catalog_a693d0d946df17df0cf8e223d475c3176}{DataTypes}}\ type\ );}
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00117}00117\ }
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00118}00118\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_1_1_merge_list_afa2300f0d9ac873fc33b256bc99fa000}{AddMergeToEntryList}}(\ wxXmlNode*\ node\ );}
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00119}00119\ }
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00120}00120\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_1_1_merge_list_afa2300f0d9ac873fc33b256bc99fa000}{AddMergeToEntryList}}(\ );}
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00121}00121\ }
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00122}00122\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_catalog_a7df5a387600744730d6a9eabcedf2f29}{MergeEntryList}}*\ \mbox{\hyperlink{class_catalog_1_1_merge_list_a135d2d385bee75362b23db5d753fecd7}{GetMergeList}}(\ );}
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00123}00123\ }
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00124}00124\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \ \mbox{\hyperlink{class_catalog_1_1_merge_list_a7ade5af5b567bb581d13f8f5dfec2b0d}{SetComparePanel}}(\ \mbox{\hyperlink{class_compare_panel}{ComparePanel}}*\ comparePanel\ );}
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00125}00125\ }
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00126}00126\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_1_1_merge_list_a39a0c6e432ccafa8a1d7c2b7b31f14fb}{SetStatus}}(\ );}
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00127}00127\ }
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00128}00128\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_catalog_a10de14517a76cdd4e6b2bc1342142b07}{MergeStatus}}\ \ \mbox{\hyperlink{class_catalog_1_1_merge_list_a04fcb9be13d8c0220463a6d57c71b7e2}{GetStatus}}(\ \textcolor{keywordtype}{int}\ i\ );}
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00129}00129\ }
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00130}00130\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_1_1_merge_list_af2cb329df34510d636b15059464519aa}{Clear}}(\ );}
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00131}00131\ }
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00132}00132\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00133}00133\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_compare_panel}{ComparePanel}}*\ m\_comparePanel;}
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00134}00134\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_catalog_a7df5a387600744730d6a9eabcedf2f29}{MergeEntryList}}\ m\_mergeList;}
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00135}00135\ \ \ \ \ \ \ \ \ wxXmlNode*\ m\_targetRoot;}
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00136}00136\ \ \ \ \ \ \ \ \ wxXmlNode*\ m\_mergeRoot;}
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00137}00137\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00138}00138\ \}}
+\DoxyCodeLine{\Hypertarget{_merge_list_8h_source_l00139}00139\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

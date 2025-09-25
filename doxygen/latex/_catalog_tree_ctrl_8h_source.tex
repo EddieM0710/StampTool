@@ -1,0 +1,329 @@
+\doxysection{Catalog\+Tree\+Ctrl.\+h}
+\hypertarget{_catalog_tree_ctrl_8h_source}{}\label{_catalog_tree_ctrl_8h_source}\index{C:/Users/femon/Development/wx/cloneTest/StampTool/src/gui/CatalogTreeCtrl.h@{C:/Users/femon/Development/wx/cloneTest/StampTool/src/gui/CatalogTreeCtrl.h}}
+\mbox{\hyperlink{_catalog_tree_ctrl_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00023}00023\ \textcolor{preprocessor}{\#ifndef\ CatalogTreeCtrl\_H}}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00024}00024\ \textcolor{preprocessor}{\#define\ CatalogTreeCtrl\_H}}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00026}00026\ \textcolor{preprocessor}{\#include\ <wx/treectrl.h>}}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00027}00027\ \textcolor{preprocessor}{\#include\ <wx/imaglist.h>}}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00028}00028\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_icon_defs_8h}{gui/IconDefs.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00029}00029\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_gui_utils_8h}{gui/GuiUtils.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00030}00030\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_entry_8h}{catalog/Entry.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00031}00031\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_album_base_8h}{design/AlbumBase.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00034}00034\ \textcolor{keyword}{class\ }Stamp;}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00036}00036\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_utils}{Utils}}\ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00037}00037\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_utils_1_1_stamp_link}{StampLink}};}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00038}00038\ \}}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00041}00041\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00042}\mbox{\hyperlink{class_catalog_tree_item_data}{00042}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_catalog_tree_item_data_a8480c5f30def38d279c97a18cc44f4f4}{CatalogTreeItemData}}\ :\ \textcolor{keyword}{public}\ wxTreeItemData}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00043}00043\ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00044}00044\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00046}00046\ \ \ \ \ \mbox{\hyperlink{class_catalog_tree_item_data_a8480c5f30def38d279c97a18cc44f4f4}{CatalogTreeItemData}}(\ \mbox{\hyperlink{namespace_catalog_a86f503ced35b06e6427477ddab27c6be}{Catalog::CatalogBaseType}}\ type,\ \textcolor{keyword}{const}\ wxString\ desc,\ wxXmlNode*\ ele\ =\ 0\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00048}\mbox{\hyperlink{class_catalog_tree_item_data_ad8480887e9d70612fca5e9280164f85c}{00048}}\ \ \ \ \ \mbox{\hyperlink{class_catalog_tree_item_data_ad8480887e9d70612fca5e9280164f85c}{\string~CatalogTreeItemData}}(\ )}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00049}00049\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00050}00050\ \ \ \ \ \ \ \ \ m\_ok\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00051}00051\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00053}\mbox{\hyperlink{class_catalog_tree_item_data_a2c96a10f35628c511b60c781ec0a0687}{00053}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_catalog_tree_item_data_a2c96a10f35628c511b60c781ec0a0687}{Cmp}}(\ \mbox{\hyperlink{class_catalog_tree_item_data_a8480c5f30def38d279c97a18cc44f4f4}{CatalogTreeItemData}}*\ itemData2\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00055}\mbox{\hyperlink{class_catalog_tree_item_data_a60b2e3efcd5d8ded239347b2401b051d}{00055}}\ \ \ \ \ wxString\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{class_catalog_tree_item_data_a60b2e3efcd5d8ded239347b2401b051d}{GetDesc}}(\ )\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00056}00056\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_desc;}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00057}00057\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00059}\mbox{\hyperlink{class_catalog_tree_item_data_af775e93968f84c354c57efb26e950183}{00059}}\ \ \ \ \ wxString\ \mbox{\hyperlink{class_catalog_tree_item_data_af775e93968f84c354c57efb26e950183}{GetImageFullName}}(\ )\ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00060}00060\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_imageFullPath;}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00061}00061\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00063}\mbox{\hyperlink{class_catalog_tree_item_data_a43875b1003185cfe12e6500d9e1cc4bb}{00063}}\ \ \ \ \ wxXmlNode*\ \mbox{\hyperlink{class_catalog_tree_item_data_a43875b1003185cfe12e6500d9e1cc4bb}{GetNodeElement}}(\ \textcolor{keywordtype}{void}\ )\ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00064}00064\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_element;}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00065}00065\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00068}\mbox{\hyperlink{class_catalog_tree_item_data_abef648bfe7f5bd0cb53b3849846cb054}{00068}}\ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_stamp_link}{Utils::StampLink}}*\ \mbox{\hyperlink{class_catalog_tree_item_data_abef648bfe7f5bd0cb53b3849846cb054}{GetStampLink}}(\ )\ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00069}00069\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_stampLink;}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00070}00070\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00073}\mbox{\hyperlink{class_catalog_tree_item_data_aabee86c27ed439553238b05cbaf07ab3}{00073}}\ \ \ \ \ \mbox{\hyperlink{namespace_catalog_a86f503ced35b06e6427477ddab27c6be}{Catalog::CatalogBaseType}}\ \mbox{\hyperlink{class_catalog_tree_item_data_aabee86c27ed439553238b05cbaf07ab3}{GetType}}(\ )\ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00074}00074\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_type;}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00075}00075\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00077}\mbox{\hyperlink{class_catalog_tree_item_data_a61471dc6642cd088ebffc4a82dd1d77f}{00077}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_catalog_tree_item_data_a61471dc6642cd088ebffc4a82dd1d77f}{IsChecked}}(\ )\ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00078}00078\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_isChecked;}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00079}00079\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00081}\mbox{\hyperlink{class_catalog_tree_item_data_af3a3373b4d640cf972db6d0fe7756d1f}{00081}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_catalog_tree_item_data_af3a3373b4d640cf972db6d0fe7756d1f}{IsOK}}(\ )}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00082}00082\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00083}00083\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ m\_ok\ ==\ 12345\ )}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00084}00084\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00086}00086\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00087}00087\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00088}00088\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00090}00090\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00091}\mbox{\hyperlink{class_catalog_tree_item_data_a120f6d6243525efbab7cb9f3da231b06}{00091}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_tree_item_data_a120f6d6243525efbab7cb9f3da231b06}{SetCatNode}}(\ wxXmlNode*\ ele\ )\ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00092}00092\ \ \ \ \ \ \ \ \ m\_element\ =\ ele;}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00093}00093\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00094}00094\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00095}00095\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00096}\mbox{\hyperlink{class_catalog_tree_item_data_ac4324349975ec85e3ffbb206afc9cb77}{00096}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_tree_item_data_ac4324349975ec85e3ffbb206afc9cb77}{SetType}}(\ \mbox{\hyperlink{namespace_catalog_a86f503ced35b06e6427477ddab27c6be}{Catalog::CatalogBaseType}}\ type\ )\ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00097}00097\ \ \ \ \ \ \ \ \ m\_type\ =\ type;}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00098}00098\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00099}00099\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00100}\mbox{\hyperlink{class_catalog_tree_item_data_a5a69a6feb59bd7e46632ced4f8fe286f}{00100}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_tree_item_data_a5a69a6feb59bd7e46632ced4f8fe286f}{SetStampLink}}(\ \mbox{\hyperlink{class_utils_1_1_stamp_link}{Utils::StampLink}}*\ link\ )\ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00101}00101\ \ \ \ \ \ \ \ \ m\_stampLink\ =\ link;}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00102}00102\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00103}00103\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00104}00104\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00105}\mbox{\hyperlink{class_catalog_tree_item_data_ad8f40f95d075beeec096c6b098f5a2a3}{00105}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_tree_item_data_ad8f40f95d075beeec096c6b098f5a2a3}{SetImageFullName}}(\ wxString\ str\ )\ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00106}00106\ \ \ \ \ \ \ \ \ m\_imageFullPath\ =\ str;}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00107}00107\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00108}00108\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00109}00109\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00110}\mbox{\hyperlink{class_catalog_tree_item_data_a252927c53b8e8746693de68871cfa9a9}{00110}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_tree_item_data_a252927c53b8e8746693de68871cfa9a9}{SetChecked}}(\ \textcolor{keywordtype}{bool}\ state\ =\ \textcolor{keyword}{true}\ )}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00111}00111\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00112}00112\ \ \ \ \ \ \ \ \ m\_isChecked\ =\ state;}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00113}00113\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00114}00114\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00115}00115\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00116}00116\ \ \ \ \ \textcolor{keywordtype}{double}\ m\_ok;}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00117}00117\ \ \ \ \ wxXmlNode*\ m\_element;}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00118}00118\ \ \ \ \ wxString\ m\_desc;}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00119}00119\ \ \ \ \ \mbox{\hyperlink{namespace_catalog_a86f503ced35b06e6427477ddab27c6be}{Catalog::CatalogBaseType}}\ m\_type;}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00120}00120\ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_stamp_link}{Utils::StampLink}}*\ m\_stampLink;}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00121}00121\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_isChecked;}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00122}00122\ \ \ \ \ wxString\ m\_imageFullPath;}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00123}00123\ \};}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00124}00124\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00125}00125\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00126}00126\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00127}00127\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00128}\mbox{\hyperlink{class_catalog_tree_ctrl}{00128}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_catalog_tree_ctrl_a9dd81b5c87b2562888c799744cd294c3}{CatalogTreeCtrl}}\ :\ \textcolor{keyword}{public}\ wxTreeCtrl}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00129}00129\ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00130}00130\ \ \ \ \ \textcolor{comment}{//\ \ \ \ DECLARE\_DYNAMIC\_CLASS(\ CatalogTreeCtrl\ )}}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00131}00131\ \ \ \ \ \textcolor{comment}{//\ \ \ \ DECLARE\_EVENT\_TABLE(\ )}}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00132}00132\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00133}00133\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00134}00134\ \ \ \ \ \textcolor{keyword}{enum}}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00135}00135\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00136}\mbox{\hyperlink{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27ba5e11821e004a0c7816695caed6fa8a19}{00136}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27ba5e11821e004a0c7816695caed6fa8a19}{CatalogListTree\_Quit}}\ =\ wxID\_EXIT,}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00137}\mbox{\hyperlink{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27ba6f7eb1f000dfa4fbb51c298dea83a696}{00137}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27ba6f7eb1f000dfa4fbb51c298dea83a696}{CatalogListTree\_About}}\ =\ wxID\_ABOUT,}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00138}\mbox{\hyperlink{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27bace278c4a3fa2f08cdea64f7e8b18e9be}{00138}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27bace278c4a3fa2f08cdea64f7e8b18e9be}{CatalogListTree\_Sort}},}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00139}\mbox{\hyperlink{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27baccb900083f98a6a6fc4bbd1bcaa95b7c}{00139}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27baccb900083f98a6a6fc4bbd1bcaa95b7c}{CatalogListTree\_StructureStamps}},}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00140}\mbox{\hyperlink{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27ba0bd267fca677f3221fa317d4200b3906}{00140}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27ba0bd267fca677f3221fa317d4200b3906}{CatalogListTree\_ResortTree}},}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00141}\mbox{\hyperlink{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27ba04899682163957b4ee78049f11542b9e}{00141}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27ba04899682163957b4ee78049f11542b9e}{CatalogListTree\_EditDetails}},}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00142}\mbox{\hyperlink{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27ba8770429ac8b9a89994c233906ebe93f8}{00142}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27ba8770429ac8b9a89994c233906ebe93f8}{CatalogListTree\_Delete}},}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00143}\mbox{\hyperlink{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27ba74b6fe86c208d935e7472cba67b16c4e}{00143}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27ba74b6fe86c208d935e7472cba67b16c4e}{CatalogListTree\_Add}},}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00144}\mbox{\hyperlink{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27ba3a6c22ec9b8c980f6a402d6604dae65a}{00144}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27ba3a6c22ec9b8c980f6a402d6604dae65a}{CatalogListTree\_Colnect}},}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00145}\mbox{\hyperlink{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27ba581b00711580e1ed279b520705e797b2}{00145}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27ba581b00711580e1ed279b520705e797b2}{CatalogListTree\_Before}},}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00146}\mbox{\hyperlink{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27baebb630ed6d620770c72c5497af96407c}{00146}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27baebb630ed6d620770c72c5497af96407c}{CatalogListTree\_After}},}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00147}\mbox{\hyperlink{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27bad1a136ad79cfd6b25587f153cabe782e}{00147}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27bad1a136ad79cfd6b25587f153cabe782e}{CatalogListTree\_AsChild}},}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00148}\mbox{\hyperlink{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27ba6e3113054be6fe13d3c33e921950326d}{00148}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27ba6e3113054be6fe13d3c33e921950326d}{CatalogListTree\_Cancel}},}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00149}\mbox{\hyperlink{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27ba5de85a4f664b7ad7e6fa65dc389edcf3}{00149}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27ba5de85a4f664b7ad7e6fa65dc389edcf3}{CatalogListTree\_Inventory}},}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00150}\mbox{\hyperlink{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27ba6146e56e2f61a034a2c74b21b9204c0d}{00150}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27ba6146e56e2f61a034a2c74b21b9204c0d}{CatalogListTree\_InventoryStatusNone}},}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00151}\mbox{\hyperlink{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27ba98c026ba6723edc38a18b12b626a9236}{00151}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27ba98c026ba6723edc38a18b12b626a9236}{CatalogListTree\_InventoryStatusMissing}},}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00152}\mbox{\hyperlink{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27babce625c7edededae5244b013a3536624}{00152}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27babce625c7edededae5244b013a3536624}{CatalogListTree\_InventoryStatusOrdered}},}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00153}\mbox{\hyperlink{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27baf829d238254250b0b3ee3e3f58253da1}{00153}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27baf829d238254250b0b3ee3e3f58253da1}{CatalogListTree\_InventoryStatusOwn}},}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00154}\mbox{\hyperlink{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27ba8494126c0d3e2f69cd5af07a22ba26d9}{00154}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27ba8494126c0d3e2f69cd5af07a22ba26d9}{CatalogListTree\_InventoryStatusOwnVariant}},}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00155}\mbox{\hyperlink{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27ba268ed615186a43498de6ac96ac9f4a8d}{00155}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_catalog_tree_ctrl_acf78bbb4b1b2503f7a9843f895a4f27ba268ed615186a43498de6ac96ac9f4a8d}{CatalogListTree\_InventoryStatusExclude}}}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00156}00156\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00157}00157\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00158}00158\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00159}00159\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00160}\mbox{\hyperlink{class_catalog_tree_ctrl_a9dd81b5c87b2562888c799744cd294c3}{00160}}\ \ \ \ \ \mbox{\hyperlink{class_catalog_tree_ctrl_a9dd81b5c87b2562888c799744cd294c3}{CatalogTreeCtrl}}(\ )\ \{\ \}}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00161}00161\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00162}00162\ \ \ \ \ \mbox{\hyperlink{class_catalog_tree_ctrl_a9dd81b5c87b2562888c799744cd294c3}{CatalogTreeCtrl}}(\ wxWindow*\ parent,\ \textcolor{keyword}{const}\ wxWindowID\ \textcolor{keywordtype}{id},\ \textcolor{keyword}{const}\ wxPoint\&\ pos,}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00163}00163\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ wxSize\&\ size,\ \textcolor{keywordtype}{long}\ style\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00164}00164\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00165}\mbox{\hyperlink{class_catalog_tree_ctrl_a6c4b3b0839aa095761f9903f83368f6c}{00165}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_catalog_tree_ctrl_a6c4b3b0839aa095761f9903f83368f6c}{\string~CatalogTreeCtrl}}(\ \textcolor{keywordtype}{void}\ )\ \{\ \}}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00166}00166\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00169}00169\ \ \ \ \ wxTreeItemId\ \mbox{\hyperlink{class_catalog_tree_ctrl_aef497b5184136f82fc40c8b9fe9f7dbf}{AddChild}}(\ wxTreeItemId\ parent,\ wxXmlNode*\ child\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00170}00170\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00171}00171\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00172}00172\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_tree_ctrl_a80bbb4cb88f39bab84f8012c8e9f33f3}{AddEntry}}(\ wxTreeItemId\ \textcolor{keywordtype}{id}\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00173}00173\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00174}00174\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00175}00175\ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_stamp_link}{Utils::StampLink}}*\ \mbox{\hyperlink{class_catalog_tree_ctrl_aa847e08b4522c357e3f6c5d168c23196}{AppendAlbumStamp}}(\ wxTreeItemId\ itemId\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00176}00176\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00177}00177\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_tree_ctrl_a215201153ead907a1afbcaf49404db67}{Clear}}(\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00178}00178\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00179}\mbox{\hyperlink{class_catalog_tree_ctrl_a4b3cbf3f6f63b12f45697d2b096429d3}{00179}}\ \ \ \ \ \mbox{\hyperlink{_gui_utils_8h_a66b06809b27f311da0c50fba212270ea}{ComparisonResultType}}\ \mbox{\hyperlink{class_catalog_tree_ctrl_a4b3cbf3f6f63b12f45697d2b096429d3}{CompareDates}}(\ wxString\ date1,\ wxString\ date2\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00180}00180\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00181}00181\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_tree_ctrl_af62f10ae8dccfad510f986ab0bb26b9c}{CountEntryTypes}}(\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00182}00182\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00183}00183\ \ \ \ \ \textcolor{keywordtype}{void}\ \ \mbox{\hyperlink{class_catalog_tree_ctrl_af62f10ae8dccfad510f986ab0bb26b9c}{CountEntryTypes}}(\ wxTreeItemId\ parent,\ \textcolor{keywordtype}{int}\&\ count\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00184}00184\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00185}00185\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00186}00186\ \ \ \ \ \mbox{\hyperlink{class_catalog_tree_item_data}{CatalogTreeItemData}}*\ \mbox{\hyperlink{class_catalog_tree_ctrl_a75f544cbb9b69dd42d0a5841aacdb8ef}{CreateChildData}}(\ wxXmlNode*\ child,}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00187}00187\ \ \ \ \ \ \ \ \ wxString\&\ label,}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00188}00188\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3a}{Catalog::IconID}}\&\ icon,}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00189}00189\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_catalog_a86f503ced35b06e6427477ddab27c6be}{Catalog::CatalogBaseType}}\&\ nodeType\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00190}00190\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00191}00191\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_tree_ctrl_a3190164393f1fed858026e0687bbd4a0}{CreateStateImageList}}(\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00192}00192\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00193}00193\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_tree_ctrl_af82af5e1171d5374e26c4d5d0fd8ccdf}{CreateImageList}}(\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00194}00194\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00197}00197\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_tree_ctrl_ae55f0202652147bd564ce7c4f97643d0}{DeleteAlbumStamp}}(\ wxTreeItemId\ itemId\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00198}00198\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00199}00199\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00200}00200\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_tree_ctrl_a317fd1e235eeb73ef96c04f46156c953}{DeleteEntry}}(\ wxTreeItemId\ \textcolor{keywordtype}{id}\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00201}00201\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00204}00204\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_tree_ctrl_a8f7688de612bb22265d082208c2e369c}{DisableState}}(\ wxTreeItemId\ \textcolor{keywordtype}{id}\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00205}00205\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00206}\mbox{\hyperlink{class_catalog_tree_ctrl_af66f2551e871ee5eb67f58981d2e465c}{00206}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_tree_ctrl_af66f2551e871ee5eb67f58981d2e465c}{DoSortChildren}}(\ \textcolor{keyword}{const}\ wxTreeItemId\&\ item,\ \textcolor{keywordtype}{bool}\ reverse\ =\ \textcolor{keyword}{true}\ )}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00207}00207\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00208}00208\ \ \ \ \ \ \ \ \ m\_reverseSort\ =\ reverse;}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00209}00209\ \ \ \ \ \ \ \ \ wxTreeCtrl::SortChildren(\ item\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00210}00210\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00211}00211\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00212}00212\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00213}00213\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_tree_ctrl_aef3f8a5b321c1d235e75ea3f914081f9}{DumpTree}}(\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00214}00214\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00215}00215\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_tree_ctrl_aef3f8a5b321c1d235e75ea3f914081f9}{DumpTree}}(\ wxTreeItemId\ \textcolor{keywordtype}{id}\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00216}00216\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00217}00217\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_tree_ctrl_a4b0a8933ccb400ce88b4373817226378}{EnableState}}(\ wxTreeItemId\ \textcolor{keywordtype}{id}\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00218}00218\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00219}00219\ \ \ \ \ wxTreeItemId\ \mbox{\hyperlink{class_catalog_tree_ctrl_a38051d717fae50f894f0c782ede22c40}{FindFirstEntryChild}}(\ wxTreeItemId\ \textcolor{keywordtype}{id}\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00220}00220\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00221}00221\ \ \ \ \ wxTreeItemId\ \mbox{\hyperlink{class_catalog_tree_ctrl_a7e6af207312f6dfff08fa5c0c063b1e8}{FindTreeItemID}}(\ wxXmlNode*\ node\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00222}00222\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00223}00223\ \ \ \ \ wxTreeItemId\ \mbox{\hyperlink{class_catalog_tree_ctrl_a7e6af207312f6dfff08fa5c0c063b1e8}{FindTreeItemID}}(\ wxXmlNode*\ node,\ wxTreeItemId\ \textcolor{keywordtype}{id}\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00224}00224\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00225}00225\ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_stamp_link}{Utils::StampLink}}*\ \mbox{\hyperlink{class_catalog_tree_ctrl_ab034d39ad145dd441eaaae13f306095c}{FindStampLink}}(\ wxTreeItemId\ itemId\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00226}00226\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00227}00227\ \ \ \ \ wxTreeItemId\ \mbox{\hyperlink{class_catalog_tree_ctrl_a7e6af207312f6dfff08fa5c0c063b1e8}{FindTreeItemID}}(\ wxString\ stampID\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00228}00228\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00229}00229\ \ \ \ \ wxTreeItemId\ \mbox{\hyperlink{class_catalog_tree_ctrl_a7e6af207312f6dfff08fa5c0c063b1e8}{FindTreeItemID}}(\ wxString\ stampID,\ wxTreeItemId\ \textcolor{keywordtype}{id}\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00230}00230\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00231}00231\ \ \ \ \ wxString\ \mbox{\hyperlink{class_catalog_tree_ctrl_a88668a42c30324149a1abb67990ea5f9}{GetAttribute}}(\ wxTreeItemId\ catTreeID,\ wxString\ name\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00232}00232\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00233}00233\ \ \ \ \ wxString\ \mbox{\hyperlink{class_catalog_tree_ctrl_a4cb8a7ccee1e231551978c815e233f27}{GetID}}(\ wxTreeItemId\ catTreeID\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00234}00234\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00235}00235\ \ \ \ \ wxString\ \mbox{\hyperlink{class_catalog_tree_ctrl_a34acfebddf170eab6cd286a923d1bcb6}{GetImage}}(\ wxTreeItemId\ catTreeID\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00236}00236\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00237}00237\ \ \ \ \ wxString\ \mbox{\hyperlink{class_catalog_tree_ctrl_ae2441dc304fdf1b171d0ac017e14daf5}{GetImageFullName}}(\ wxTreeItemId\ catTreeID\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00238}00238\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00239}00239\ \ \ \ \ \mbox{\hyperlink{namespace_catalog_ade561ba8f4f227e26f313164c44e8c3a}{Catalog::IconID}}\ \mbox{\hyperlink{class_catalog_tree_ctrl_a83c004d9f2f0075daf598bf41e6d0860}{GetInventoryIconId}}(\ \mbox{\hyperlink{class_catalog_1_1_entry}{Catalog::Entry}}*\ stamp\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00240}00240\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00241}00241\ \ \ \ \ wxString\ \mbox{\hyperlink{class_catalog_tree_ctrl_a2a76ff84b0de3630433681f8fca1d8e6}{GetItemDesc}}(\ wxTreeItemId\ \textcolor{keywordtype}{id}\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00242}00242\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00243}00243\ \ \ \ \ wxString\ \mbox{\hyperlink{class_catalog_tree_ctrl_a8cf87c8d161750aff79da98f2540f7b8}{GetItemImageFullName}}(\ wxTreeItemId\ \textcolor{keywordtype}{id}\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00244}00244\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00245}00245\ \ \ \ \ wxXmlNode*\ \mbox{\hyperlink{class_catalog_tree_ctrl_abd0b8b4b330bb677d93089698a5dbbd8}{GetItemNode}}(\ wxTreeItemId\ \textcolor{keywordtype}{id}\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00246}00246\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00247}00247\ \ \ \ \ \mbox{\hyperlink{class_utils_1_1_stamp_link}{Utils::StampLink}}*\ \mbox{\hyperlink{class_catalog_tree_ctrl_aaf3aefd878b2ca4373392194049036a3}{GetItemStampLink}}(\ wxTreeItemId\ \textcolor{keywordtype}{id}\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00248}00248\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00249}00249\ \ \ \ \ \mbox{\hyperlink{namespace_catalog_a86f503ced35b06e6427477ddab27c6be}{Catalog::CatalogBaseType}}\ \mbox{\hyperlink{class_catalog_tree_ctrl_a31c496aabe873f6da4b95400253c23ca}{GetItemType}}(\ wxTreeItemId\ \textcolor{keywordtype}{id}\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00250}00250\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00251}00251\ \ \ \ \ wxXmlNode*\ \mbox{\hyperlink{class_catalog_tree_ctrl_a008ed01c0135c53dc20746197dcda91b}{GetNewEntry}}(\ wxTreeItemId\ itemId\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00252}00252\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00253}\mbox{\hyperlink{class_catalog_tree_ctrl_a090047b3738ceb2f19e2ecfc754f51ae}{00253}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_catalog_tree_ctrl_a090047b3738ceb2f19e2ecfc754f51ae}{GetNbrEntryTypes}}(\ )\{}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00254}00254\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_nbrEntryTypes;}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00255}00255\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00256}00256\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00257}00257\ \ \ \ \ wxXmlNode*\ \mbox{\hyperlink{class_catalog_tree_ctrl_afff4e1a21809a5c91fecc4ac25d7289f}{GetSelectionNode}}(\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00258}00258\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00259}00259\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_tree_ctrl_af849aa26dfc5e9f8a77d42243815066b}{GoToColnect}}(\ wxTreeItemId\ \textcolor{keywordtype}{id}\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00260}00260\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00261}00261\ \ \ \ \ wxTreeItemId\ \mbox{\hyperlink{class_catalog_tree_ctrl_a14027a3c06e243381fb3feb278db86a3}{InsertChild}}(\ wxTreeItemId\ parent,\ wxXmlNode*\ child,\ \textcolor{keywordtype}{bool}\ after\ =\ \textcolor{keyword}{true}\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00262}00262\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00263}00263\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_catalog_tree_ctrl_ac2a4cd55be7827471548d0cd3a7dbc09}{IsElement}}(\ wxTreeItemId\ item,\ wxString\ stampID\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00264}00264\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00265}00265\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_catalog_tree_ctrl_ac2a4cd55be7827471548d0cd3a7dbc09}{IsElement}}(\ wxTreeItemId\ item,\ wxXmlNode*\ node\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00266}00266\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00267}00267\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_catalog_tree_ctrl_ab6ce1d5ebf71b3e8db8e50953b399306}{IsItemChecked}}(\ wxTreeItemId\ \textcolor{keywordtype}{id}\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00268}00268\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00269}00269\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_tree_ctrl_afa08d36c723c450c55d88b6351272af2}{LoadCatalogTree}}(\ \textcolor{keywordtype}{void}\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00270}00270\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00271}00271\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_tree_ctrl_af6e0706d7399581700135f9564a2f34f}{OnBeginDrag}}(\ wxTreeEvent\&\ event\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00272}00272\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00273}00273\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_catalog_tree_ctrl_a51763361fa8f4d2f8f10985151f1a87d}{OnCompareItems}}(\ \textcolor{keyword}{const}\ wxTreeItemId\&\ i1,\ \textcolor{keyword}{const}\ wxTreeItemId\&\ i2\ )\ wxOVERRIDE;}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00274}00274\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00275}00275\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_tree_ctrl_aa80119fbbae89c686dcc5ea08e2c54df}{OnEndDrag}}(\ wxTreeEvent\&\ event\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00276}00276\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00277}00277\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_tree_ctrl_a05f0ee1fa4902e46468039787ea4d647}{OnItemMenu}}(\ wxTreeEvent\&\ event\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00278}00278\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00279}00279\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_tree_ctrl_afe289d9becabb6ac843ffe7dee53df2f}{OnItemStateClick}}(\ wxTreeEvent\&\ event\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00280}00280\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00281}00281\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_tree_ctrl_aa90143b55a3e5af6009106bb83021bfe}{OnSelChanged}}(\ wxTreeEvent\&\ event\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00282}00282\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00283}00283\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_tree_ctrl_a9611966da7c8ad1e53033c4857af3153}{OnTreectrlItemCollapsed}}(\ wxTreeEvent\&\ event\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00284}00284\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00285}00285\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_tree_ctrl_aeae653ff3eb59526b951929064be6109}{OnTreectrlItemExpanded}}(\ wxTreeEvent\&\ event\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00286}00286\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00287}00287\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_tree_ctrl_a96f029c4e9c02c805f6c9d3c8c2b1f63}{PrintTreeNodeData}}(\ wxTreeItemId\ \textcolor{keywordtype}{id}\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00288}00288\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00289}00289\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_tree_ctrl_a3f2dca08a2d900e0a0a207e642a308c2}{RemoveStampLink}}(\ wxTreeItemId\ itemId\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00290}00290\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00293}00293\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_tree_ctrl_a9a5198834999a1f0acb8e2ce1b61d6f5}{ReSortTree}}(\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00294}00294\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00295}00295\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_tree_ctrl_a3b6453e0cf609c3df20388bfb7a652de}{SetAttribute}}(\ wxTreeItemId\ catTreeID,\ wxString\ name,\ wxString\ val\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00296}00296\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00297}00297\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_tree_ctrl_a49623c509f7947c4c1aaf795bb22c472}{SelectStamp}}(\ wxString\ \textcolor{keywordtype}{id}\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00298}00298\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00299}00299\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_tree_ctrl_a40e23c404883381e2c0adc44d9dade36}{SetCatalogLink}}(\ wxTreeItemId\ catTreeID,\ \mbox{\hyperlink{class_utils_1_1_stamp_link}{Utils::StampLink}}*\ link,\ wxString\ IDNbr\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00300}00300\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00301}00301\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_tree_ctrl_a5027c13849e0e6ab8cdaf34dfb865a55}{SetTreeItemCollapseState}}(\ wxTreeItemId\ childID\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00302}00302\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00303}00303\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_tree_ctrl_af8e46a82047cb76222efb1275919b5cc}{SetInventoryStatusImage}}(\ \textcolor{keywordtype}{void}\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00304}00304\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00305}00305\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_tree_ctrl_a311b3bd360506a6d28fc70f91623fcc6}{SetItemNode}}(\ wxTreeItemId\ \textcolor{keywordtype}{id},\ wxXmlNode*\ ele\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00306}00306\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00307}00307\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_tree_ctrl_ad366f23bee4e865742f00ddef9fe3338}{SetItemChecked}}(\ wxTreeItemId\ \textcolor{keywordtype}{id},\ \textcolor{keywordtype}{bool}\ state\ =\ \textcolor{keyword}{true}\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00308}00308\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00309}00309\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_tree_ctrl_a3772611e0dc9fbb33bf241324b9742dc}{SetItemImageFullName}}(\ wxTreeItemId\ \textcolor{keywordtype}{id},\ wxString\ str\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00310}00310\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00311}00311\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_tree_ctrl_ac34dc05aceefa42fa08a7963f9a8c0cd}{SetInventoryStatus}}(\ wxXmlNode*\ node,\ \mbox{\hyperlink{namespace_catalog_a7bc076b172809c869ab8fef63c49e8c3}{Catalog::InventoryStatusType}}\ newType\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00312}00312\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00313}00313\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_tree_ctrl_af859c45117ffb5d45c5952d35666cd92}{SetItemStampLink}}(\ wxTreeItemId\ \textcolor{keywordtype}{id},\ \mbox{\hyperlink{class_utils_1_1_stamp_link}{Utils::StampLink}}*\ link\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00314}00314\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00317}00317\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_tree_ctrl_a85312081bd8121d7dbd40cd1bd81f43f}{SetNextState}}(\ \textcolor{keyword}{const}\ wxTreeItemId\&\ itemID\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00318}00318\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00319}00319\ \ \ \ \ \textcolor{comment}{//Find\ th\ node\ and\ select\ it}}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00320}00320\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_tree_ctrl_a00ee85b05fec44c49d8cdbe2d010f0ae}{SetSelection}}(\ wxXmlNode*\ node\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00321}00321\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00322}00322\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_tree_ctrl_a7e9fb977b3bc39fe9fae88330256cc0e}{SetType}}(\ wxTreeItemId\ \textcolor{keywordtype}{id},\ \mbox{\hyperlink{namespace_catalog_a86f503ced35b06e6427477ddab27c6be}{Catalog::CatalogBaseType}}\ type\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00323}00323\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00324}00324\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_tree_ctrl_a6be8972921052a7109e335b563e15d80}{SetStates}}(\ \textcolor{keywordtype}{bool}\ enable\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00325}00325\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00326}00326\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_tree_ctrl_a898bebbb842fd069e0e15ba8c3e16704}{ShowDropMenu}}(\ wxTreeItemId\ itemSrc,\ wxTreeItemId\ itemDst\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00327}00327\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00328}00328\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_tree_ctrl_a264c656dc140eb8007eb373ce81f0be8}{ShowMenu}}(\ wxTreeItemId\ \textcolor{keywordtype}{id},\ \textcolor{keyword}{const}\ wxPoint\&\ pt\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00329}00329\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00331}00331\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_tree_ctrl_a8c55abac68c25c840178ef19965c825b}{SortTree}}(\ wxTreeItemId\ parent\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00332}00332\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00333}00333\ \ \ \ \ \textcolor{comment}{//void\ UpdateStamp(\ Stamp*\ newStamp,\ wxTreeItemId\ catTreeID\ );}}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00334}00334\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00335}00335\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_catalog_tree_ctrl_a7b8234a45b246de40dc52036530f6509}{XMLDumpNode}}(\ wxTreeItemId\ item,\ wxString\ str\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00336}00336\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00337}00337\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00338}00338\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00339}00339\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nbrEntryTypes;}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00340}00340\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00341}00341\ \ \ \ \ \textcolor{keywordtype}{void}\ LogEvent(\ \textcolor{keyword}{const}\ wxString\&\ name,\ \textcolor{keyword}{const}\ wxTreeEvent\&\ event\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00342}00342\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00343}00343\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_reverseSort;\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ flag\ for\ OnCompareItems}}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00344}00344\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00345}00345\ \ \ \ \ wxTreeItemId\ m\_draggedItem;\ \textcolor{comment}{//\ item\ being\ dragged\ right\ now}}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00346}00346\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00347}00347\ \ \ \ \ \textcolor{comment}{//\ NB:\ due\ to\ an\ ugly\ wxMSW\ hack\ you\ \_must\_\ use\ wxDECLARE\_DYNAMIC\_CLASS(\ );}}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00348}00348\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ if\ you\ want\ your\ overloaded\ OnCompareItems(\ )\ to\ be\ called.}}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00349}00349\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ OTOH,\ if\ you\ don't\ want\ it\ you\ may\ omit\ the\ next\ line\ -\/\ this\ will}}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00350}00350\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ make\ default\ (\ alphabetical\ )\ sorting\ much\ faster\ under\ wxMSW.}}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00351}00351\ \ \ \ \ wxDECLARE\_DYNAMIC\_CLASS(\ \mbox{\hyperlink{class_catalog_tree_ctrl}{CatalogTreeCtrl}}\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00352}00352\ \ \ \ \ wxDECLARE\_EVENT\_TABLE(\ );}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00353}00353\ \};}
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00354}00354\ }
+\DoxyCodeLine{\Hypertarget{_catalog_tree_ctrl_8h_source_l00355}00355\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

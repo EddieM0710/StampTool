@@ -1,0 +1,773 @@
+\doxysection{Design\+::Layout\+Base Class Reference}
+\hypertarget{class_design_1_1_layout_base}{}\label{class_design_1_1_layout_base}\index{Design::LayoutBase@{Design::LayoutBase}}
+
+
+Base class for all layout objects. The layout objects are initialy loaded from the layout XML.  
+
+
+
+
+{\ttfamily \#include $<$Layout\+Base.\+h$>$}
+
+Inheritance diagram for Design\+::Layout\+Base\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.419847cm]{class_design_1_1_layout_base}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_design_1_1_layout_base_adddf7ae069e594074aa6f994a22399de}{Layout\+Base}} ()
+\begin{DoxyCompactList}\small\item\em Unused; Construct a new \doxylink{class_design_1_1_album}{Album} \doxylink{namespace_design}{Design} Object object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_design_1_1_layout_base_abc3219149b8663cc05ac1f6f534e39d6}{Layout\+Base}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}node)
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{class_design_1_1_album}{Album} \doxylink{namespace_design}{Design} Object. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_design_1_1_layout_base_a36bd5175bece42fa44a50b5a679edb8c}{Draw\+PDF}} (wx\+Pdf\+Document \texorpdfstring{$\ast$}{*}doc, double x, double y)=0
+\item 
+virtual void \mbox{\hyperlink{class_design_1_1_layout_base_a20d73603f11f19874e7e83120b20deaf}{Draw}} (wx\+DC \&dc, double x, double y)=0
+\item 
+\mbox{\hyperlink{class_design_1_1_layout_base}{Layout\+Base}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_design_1_1_layout_base_a148be94f2ce2d6f788df8d460de41ea6}{Find\+Object\+By\+Pos}} (double x, double y, wx\+String indent="{}"{})
+\item 
+double \mbox{\hyperlink{class_design_1_1_layout_base_a66ea228b56d1eee6b3fae2e5d6edd0ed}{Get\+Height}} ()
+\item 
+double \mbox{\hyperlink{class_design_1_1_layout_base_acb8bac499775367682fd94c87ff53cee}{Get\+Min\+Height}} ()
+\item 
+double \mbox{\hyperlink{class_design_1_1_layout_base_a901284ea411f43d005d3ac56e3ed45a4}{Get\+Min\+Width}} ()
+\item 
+bool \mbox{\hyperlink{class_design_1_1_layout_base_a3f3871eb2ea9509a4c4087a81c11a417}{Get\+Show\+Frame}} ()
+\item 
+bool \mbox{\hyperlink{class_design_1_1_layout_base_a8db27326e985a3f3bc06dc1f7ae4037d}{Get\+Show\+Nbr}} ()
+\item 
+virtual bool \mbox{\hyperlink{class_design_1_1_layout_base_a5cbb096ad312a59acc2eeb1dd706d2b3}{Get\+Show\+Title}} ()=0
+\item 
+virtual bool \mbox{\hyperlink{class_design_1_1_layout_base_ad21088afa87a0fd2171054a9440e8c54}{Get\+Show\+Sub\+Title}} ()=0
+\item 
+wx\+String \mbox{\hyperlink{class_design_1_1_layout_base_abec56e92506f8648c4c74534660f6b40}{Get\+String}} (\mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4}{Design\+::\+Font\+Usage\+Type}} font\+Type)
+\item 
+double \mbox{\hyperlink{class_design_1_1_layout_base_af53ae9e513ac9d2064b1b5a629c8527f}{Get\+XPos}} ()
+\item 
+double \mbox{\hyperlink{class_design_1_1_layout_base_a0706e52e9229916c821c3b9ed5035f6f}{Get\+YPos}} ()
+\item 
+double \mbox{\hyperlink{class_design_1_1_layout_base_a67012db6f38020ab818e75eded35fe5a}{Get\+Width}} ()
+\item 
+void \mbox{\hyperlink{class_design_1_1_layout_base_a34f913a886645413bfaab91c4e1b5bac}{Report\+Layout\+Error}} (wx\+String funct, wx\+String err, bool fatal=true)
+\item 
+bool \mbox{\hyperlink{class_design_1_1_layout_base_a1b6d91d1658cd5c09d17955720676d88}{Is\+In\+Client}} (double x, double y, wx\+String indent="{}"{})
+\item 
+virtual void \mbox{\hyperlink{class_design_1_1_layout_base_aa9d12b31a18fc16c0d619c59dcaf014a}{Load\+Fonts}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}node)=0
+\item 
+void \mbox{\hyperlink{class_design_1_1_layout_base_a82bd13de0d1cb3c011604958faeae93a}{Report\+Layout\+Frame}} (wx\+String indent="{}"{})
+\item 
+void \mbox{\hyperlink{class_design_1_1_layout_base_a6460bfe37cf7fe3a4ecbb029697ea1a8}{Set\+Client\+Dimensions}} (wx\+DC \&dc, double x, double y, double width=0.\+0, double height=0.\+0, double min\+Width=0.\+0, double min\+Height=0.\+0)
+\item 
+void \mbox{\hyperlink{class_design_1_1_layout_base_a1f10d8e6b948b0e0bb31b27ffa4ff78f}{Set\+Height}} (double val)
+\item 
+void \mbox{\hyperlink{class_design_1_1_layout_base_a51f6b48a08c5fe04ed4649724158f1c8}{Set\+Min\+Height}} (double val)
+\item 
+void \mbox{\hyperlink{class_design_1_1_layout_base_a2905e8d55c4d63bcbac51bb08adc8c3f}{Set\+Min\+Width}} (double val)
+\item 
+void \mbox{\hyperlink{class_design_1_1_layout_base_a077b22eab7a3508229319e2be0fd2f54}{Set\+Show\+Frame}} (bool val)
+\item 
+void \mbox{\hyperlink{class_design_1_1_layout_base_a1aa7fd6d632cd988afb32eb9f6d7d505}{Set\+Show\+Nbr}} (bool val)
+\item 
+virtual void \mbox{\hyperlink{class_design_1_1_layout_base_a5c0be7aa1d46a3f2849e690e018e2349}{Set\+Show\+Title}} (bool val)=0
+\item 
+virtual void \mbox{\hyperlink{class_design_1_1_layout_base_afdb1536a748e7df12d9dc7275e9cf53c}{Set\+Show\+Sub\+Title}} (bool val)=0
+\item 
+void \mbox{\hyperlink{class_design_1_1_layout_base_a70f1b259310bd3649043c18a3316b5d7}{Set\+Top\+Content\+Margin}} (double val)
+\item 
+void \mbox{\hyperlink{class_design_1_1_layout_base_a8439a66676704be93bdbece62959cb42}{Set\+Bottom\+Content\+Margin}} (double val)
+\item 
+void \mbox{\hyperlink{class_design_1_1_layout_base_a92a2532b8d711abe8ac4b95dd1cdc4fc}{Set\+Right\+Content\+Margin}} (double val)
+\item 
+void \mbox{\hyperlink{class_design_1_1_layout_base_af78667c6c66e7f8f6035a607c8f2e990}{Set\+Left\+Content\+Margin}} (double val)
+\item 
+double \mbox{\hyperlink{class_design_1_1_layout_base_a79099f919601725075c14d8b8e5a23d3}{Get\+Top\+Content\+Margin}} ()
+\item 
+double \mbox{\hyperlink{class_design_1_1_layout_base_a5bdda242953db855e7a6f8a603b38c25}{Get\+Bottom\+Content\+Margin}} ()
+\item 
+double \mbox{\hyperlink{class_design_1_1_layout_base_a229dcda4b658b5c3846ded59a0181576}{Get\+Right\+Content\+Margin}} ()
+\item 
+double \mbox{\hyperlink{class_design_1_1_layout_base_a90a48bfba29e63e9a9235a285eb34dfd}{Get\+Left\+Content\+Margin}} ()
+\item 
+void \mbox{\hyperlink{class_design_1_1_layout_base_af9028007780cc538a90f95387cd85e7f}{Set\+YPos}} (double val)
+\item 
+void \mbox{\hyperlink{class_design_1_1_layout_base_a2c466b4cdedbfcdb27b44db5693581d9}{Set\+Width}} (double val)
+\item 
+void \mbox{\hyperlink{class_design_1_1_layout_base_a26d9ed99bae7066f5f1d21db8cdcefe0}{Set\+XPos}} (double val)
+\item 
+virtual void \mbox{\hyperlink{class_design_1_1_layout_base_a45288d00309837f8e29b37d3eb929501}{Update\+Positions}} ()=0
+\begin{DoxyCompactList}\small\item\em Calculate the column layout based on child parameters. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{class_design_1_1_layout_base_a7fe2fe30d3d1f18f30535b1994079581}{Update\+Minimum\+Size}} ()=0
+\begin{DoxyCompactList}\small\item\em Update\+Minimum\+Size Calculates the minimum Height and width of the object. It drills down to the lowest layout object with an actual size and begins calculating the min size of its parents as it progresses back up the heirarchy. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_design_1_1_layout_base_ab916a0576a8599c33437695be9721fd5}{Update\+Sizes}} ()=0
+\item 
+void \mbox{\hyperlink{class_design_1_1_layout_base_a9c78b1ebb8225e0d200e29ea355d1b75}{Update\+String}} (\mbox{\hyperlink{class_design_1_1_label_frame}{Design\+::\+Label\+Frame}} \texorpdfstring{$\ast$}{*}frame, double width)
+\item 
+void \mbox{\hyperlink{class_design_1_1_layout_base_afc101f524a6a783724bff4f15f18f0f2}{Validate\+Child\+Type}} (int \&nbr\+Rows, int \&nbr\+Cols, int \&nbr\+Leaf)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_design_1_1_album_base}{Design\+::\+Album\+Base}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_design_1_1_album_base_a530465b8828abedac898bbd69e833487}{Album\+Base}} ()
+\item 
+\mbox{\hyperlink{class_design_1_1_album_base_a3016576760eafb6b3146e76f922e1918}{Album\+Base}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}ele)
+\item 
+\mbox{\hyperlink{class_design_1_1_album_base_a433e3ec1ccb0b888c8211e21c570597b}{\texorpdfstring{$\sim$}{\string~}\+Album\+Base}} ()
+\item 
+wx\+Array\+String \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_design_1_1_album_base_a8bda20daa3c938b69d404b97b12db49c}{Get\+Error\+Array}} ()
+\item 
+int \mbox{\hyperlink{class_design_1_1_album_base_ac2d47874f3c9a019f7adb8cea86bae1d}{Get\+Nbr\+Children}} ()
+\item 
+\mbox{\hyperlink{namespace_design_a89f66276a25aed62bedc9fb9b5d35453}{Node\+Status}} \mbox{\hyperlink{class_design_1_1_album_base_af9845cf93335b60ef21e659e3e774dc5}{Get\+Node\+Status}} ()
+\item 
+\mbox{\hyperlink{class_design_1_1_album_base}{Album\+Base}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_design_1_1_album_base_acd88e1be6258c5fe156f5b7488ae7872}{Get\+Parent}} ()
+\item 
+wx\+Tree\+Item\+Id \mbox{\hyperlink{class_design_1_1_album_base_a6ffebdbfe7c578390ab7a3463bd86117}{Get\+Tree\+Item\+Id}} ()
+\item 
+bool \mbox{\hyperlink{class_design_1_1_album_base_aba6c497c66c18265a72889dbe33e9e3c}{Has\+Children}} ()
+\item 
+bool \mbox{\hyperlink{class_design_1_1_album_base_afff9347fea3c19b4d04b8ab463a4f075}{Is\+Status\+OK}} ()
+\item 
+void \mbox{\hyperlink{class_design_1_1_album_base_a0add15e4630190b0273fbd7daec1f3bb}{Set\+Node\+Status}} (\mbox{\hyperlink{namespace_design_a89f66276a25aed62bedc9fb9b5d35453}{Node\+Status}} status)
+\item 
+void \mbox{\hyperlink{class_design_1_1_album_base_a09ea7099470ae62a3b28e3116b91b98f}{Set\+Tree\+Item\+Id}} (wx\+Tree\+Item\+Id id)
+\item 
+\mbox{\hyperlink{namespace_design_a89f66276a25aed62bedc9fb9b5d35453}{Node\+Status}} \mbox{\hyperlink{class_design_1_1_album_base_ac24a3f0735861b376ef954d712374afe}{Validate\+Children}} (\mbox{\hyperlink{class_design_1_1_album_base}{Album\+Base}} \texorpdfstring{$\ast$}{*}node)
+\item 
+virtual \mbox{\hyperlink{namespace_design_a89f66276a25aed62bedc9fb9b5d35453}{Node\+Status}} \mbox{\hyperlink{class_design_1_1_album_base_ab9c5a39a0dbff42d87b0759a6d442edd}{Validate\+Node}} ()=0
+\item 
+double \mbox{\hyperlink{class_design_1_1_album_base_a03c3120af1bebbd4720ef2d2db496f9d}{Get\+Album\+Attribute\+Dbl}} (\mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364be}{Design\+::\+Album\+Attr\+Type}} type)
+\item 
+wx\+String \mbox{\hyperlink{class_design_1_1_album_base_aefb960e5aee2919e2764aea656bfede6}{Get\+Album\+Attribute\+Str}} (\mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364be}{Design\+::\+Album\+Attr\+Type}} type)
+\item 
+bool \mbox{\hyperlink{class_design_1_1_album_base_a2f9413b564d999d8f7a6e610cf6c08ad}{Get\+Album\+Attribute\+Bool}} (\mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364be}{Design\+::\+Album\+Attr\+Type}} type, bool def\+Val=false)
+\item 
+void \mbox{\hyperlink{class_design_1_1_album_base_a260fcb0ab052e4649640edb9a7f966e9}{Set\+Album\+Attribute\+Bool}} (\mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364be}{Design\+::\+Album\+Attr\+Type}} type, bool val)
+\item 
+void \mbox{\hyperlink{class_design_1_1_album_base_a6d924b1a4d369cefe2b965ece238f8cc}{Set\+Album\+Attribute\+Dbl}} (\mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364be}{Design\+::\+Album\+Attr\+Type}} type, double val)
+\item 
+void \mbox{\hyperlink{class_design_1_1_album_base_ac59ac03bf9b74c10a02e3baed9465954}{Set\+Album\+Attribute\+Str}} (\mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364be}{Design\+::\+Album\+Attr\+Type}} type, wx\+String val)
+\item 
+bool \mbox{\hyperlink{class_design_1_1_album_base_a44d500ac0d81626560d776ae9e2e9e1c}{Is\+Default\+Val}} (\mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364be}{Album\+Attr\+Type}} type)
+\item 
+bool \mbox{\hyperlink{class_design_1_1_album_base_ad1ca67ea800529f867c1764d3f1e09c0}{Is\+Default\+Val}} (\mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364be}{Album\+Attr\+Type}} type, wx\+String val)
+\item 
+\mbox{\hyperlink{class_design_1_1_defaults}{Defaults}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_design_1_1_album_base_a6a38d6d1ef8e78c5bc1610279088a021}{Get\+Defaults}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_design_1_1_x_m_l_base}{Design\+::\+XMLBase}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_design_1_1_x_m_l_base_afacfa5fbed1705ea3c7d740dfa8054a0}{XMLBase}} ()
+\item 
+\mbox{\hyperlink{class_design_1_1_x_m_l_base_a462f1f5dfe23cf45bdeb166e3a8138e5}{XMLBase}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}ele)
+\item 
+\mbox{\hyperlink{class_design_1_1_x_m_l_base_aa9839007403dd1cda4cbe35ea6ed1298}{\texorpdfstring{$\sim$}{\string~}\+XMLBase}} ()
+\item 
+\mbox{\hyperlink{class_design_1_1_attribute}{Attribute}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_design_1_1_x_m_l_base_a37bde917fa3f9fcdadbf97649e327381}{Attribute\+Item}} (int ndx)
+\item 
+void \mbox{\hyperlink{class_design_1_1_x_m_l_base_a98b25d070d903b4e96a64658376d1acd}{Delete\+Attribute}} (wx\+String name)
+\item 
+void \mbox{\hyperlink{class_design_1_1_x_m_l_base_a0ebf4b7915b33715389b8136b8ed606d}{Delete\+Attribute}} (\mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364be}{Album\+Attr\+Type}} type)
+\item 
+\mbox{\hyperlink{class_design_1_1_attribute}{Attribute}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_design_1_1_x_m_l_base_a7ae61554e074d752f7d0c8813ba21fa1}{Find\+Attr}} (wx\+String name)
+\item 
+wx\+String \mbox{\hyperlink{class_design_1_1_x_m_l_base_a70bbb4ae46c9f5dcca1aa0c4e7c80f3e}{Get\+Attr\+Str}} (wx\+String name)
+\item 
+wx\+String \mbox{\hyperlink{class_design_1_1_x_m_l_base_a0bbee0f1ed86d6f65e4bca2f1b55ff27}{Get\+Attr\+Str}} (\mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364be}{Album\+Attr\+Type}} type)
+\item 
+double \mbox{\hyperlink{class_design_1_1_x_m_l_base_ad99fb6ed75f8f26486ac5d55f38f10ed}{Get\+Attr\+Dbl}} (\mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364be}{Album\+Attr\+Type}} type, double def\+Val=0.\+0)
+\item 
+double \mbox{\hyperlink{class_design_1_1_x_m_l_base_a92a55ab145df1b33667110c4e7d2c8be}{Get\+Attr\+Dbl}} (wx\+String name, double def\+Val=0.\+0)
+\item 
+bool \mbox{\hyperlink{class_design_1_1_x_m_l_base_add9675b11893b9392956f45cc2c6f8b3}{Get\+Attr\+Bool}} (wx\+String name, bool def\+Val=false)
+\item 
+bool \mbox{\hyperlink{class_design_1_1_x_m_l_base_a9c1af26195c99343c2c84125eb1f555d}{Get\+Attr\+Bool}} (\mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364be}{Album\+Attr\+Type}} type, bool def\+Val=false)
+\item 
+int \mbox{\hyperlink{class_design_1_1_x_m_l_base_a02b8a030d63ab07527bdf777f855cbcc}{Get\+Line\+Number}} ()
+\item 
+int \mbox{\hyperlink{class_design_1_1_x_m_l_base_a9bc16e3525857b424e870fa8039172b5}{Get\+Nbr\+Attr}} ()
+\item 
+int \mbox{\hyperlink{class_design_1_1_x_m_l_base_a9b0f611f1cc6bffada926da3c4673097}{Get\+Nbr\+Children}} ()
+\item 
+\mbox{\hyperlink{namespace_design_a3b29aaf2cf27207bcb313e24b827f8b1}{Album\+Base\+Type}} \mbox{\hyperlink{class_design_1_1_x_m_l_base_a940850f6b4d0a4600b41e6be83c1803b}{Get\+Node\+Type}} ()
+\item 
+\mbox{\hyperlink{namespace_design_a89f66276a25aed62bedc9fb9b5d35453}{Node\+Status}} \mbox{\hyperlink{class_design_1_1_x_m_l_base_ab31744f9c81b849de4c8a82371beadbf}{Get\+Node\+Status}} ()
+\item 
+wx\+String \mbox{\hyperlink{class_design_1_1_x_m_l_base_a6735ca087e75f39623eb59f12da2ebb5}{Get\+Object\+Name}} ()
+\item 
+wx\+String \mbox{\hyperlink{class_design_1_1_x_m_l_base_a6b027d5f45d262f835313031e13bb196}{Get\+Object\+Text}} ()
+\item 
+wx\+String \mbox{\hyperlink{class_design_1_1_x_m_l_base_a25cdfa3b1ec13e96a381eb24f95201e6}{Get\+Text}} ()
+\item 
+bool \mbox{\hyperlink{class_design_1_1_x_m_l_base_a450b66a4f1566f43b32c81ef0bcf45dd}{Is\+Equal}} (\mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364be}{Album\+Attr\+Type}} type, wx\+String val)
+\item 
+bool \mbox{\hyperlink{class_design_1_1_x_m_l_base_a29e3cd05805a976c3286d1f7e99cc139}{Is\+Equal\+Dbl}} (\mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364be}{Album\+Attr\+Type}} type, double val)
+\item 
+bool \mbox{\hyperlink{class_design_1_1_x_m_l_base_a6e7061576df67a39ea471c96212d1520}{Is\+Node\+Type}} (\mbox{\hyperlink{namespace_design_a3b29aaf2cf27207bcb313e24b827f8b1}{Album\+Base\+Type}} type)
+\item 
+bool \mbox{\hyperlink{class_design_1_1_x_m_l_base_ab9a86d5933b9c9d82b8ca1670a714910}{Load\+Attributes}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}this\+Object)
+\item 
+virtual void \mbox{\hyperlink{class_design_1_1_x_m_l_base_a73e73e902b705590fc89b822c19c188d}{Save}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}xml\+Node)=0
+\item 
+void \mbox{\hyperlink{class_design_1_1_x_m_l_base_a518a9e39c69db48407de710e7a9549fc}{Set\+Attribute}} (wx\+Xml\+Node \texorpdfstring{$\ast$}{*}xml\+Node, \mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364be}{Album\+Attr\+Type}} type)
+\item 
+void \mbox{\hyperlink{class_design_1_1_x_m_l_base_a75812ea7e87f0bc2e8bc74ae60ae2eed}{Set\+Attr\+Str}} (wx\+String name, wx\+String val)
+\item 
+void \mbox{\hyperlink{class_design_1_1_x_m_l_base_afae136aefb2871cf78bfd5cbf6b20477}{Set\+Attr\+Str}} (\mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364be}{Album\+Attr\+Type}} type, wx\+String val)
+\item 
+void \mbox{\hyperlink{class_design_1_1_x_m_l_base_a1fca237eebb5a4f35c35490bcf58edea}{Set\+Attr\+Bool}} (wx\+String name, bool val)
+\item 
+void \mbox{\hyperlink{class_design_1_1_x_m_l_base_adac853d61447fe1e2d61d2ebdc054d76}{Set\+Attr\+Bool}} (\mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364be}{Album\+Attr\+Type}} type, bool val)
+\item 
+void \mbox{\hyperlink{class_design_1_1_x_m_l_base_a673243956065c65eaf56093c3b235867}{Set\+Attr\+Dbl}} (\mbox{\hyperlink{namespace_design_abcf93567c4e83d3f42f363207b2364be}{Album\+Attr\+Type}} type, double val)
+\item 
+void \mbox{\hyperlink{class_design_1_1_x_m_l_base_ac3e1b1715d621feed20bf1529fa423c2}{Set\+Line\+Number}} (int nbr)
+\item 
+void \mbox{\hyperlink{class_design_1_1_x_m_l_base_ab608dc14ff352cd0710ba57a026f9d62}{Set\+Object\+Name}} (wx\+String name)
+\item 
+void \mbox{\hyperlink{class_design_1_1_x_m_l_base_aaccab0bca070b88eb0b19305050194b7}{Set\+Object\+Text}} (wx\+String text)
+\item 
+void \mbox{\hyperlink{class_design_1_1_x_m_l_base_ae9d5de0a91b77ce60ccfbe92ff86a7a4}{Set\+Node\+Type}} (\mbox{\hyperlink{namespace_design_a3b29aaf2cf27207bcb313e24b827f8b1}{Album\+Base\+Type}} type)
+\item 
+bool \mbox{\hyperlink{class_design_1_1_x_m_l_base_aa735c2d6fa7d3b9a84f34ef591218cf9}{Is\+Status\+OK}} ()
+\item 
+void \mbox{\hyperlink{class_design_1_1_x_m_l_base_adc0b64f4686960f9dd18e0e8ee7933bf}{Set\+Node\+Status}} (\mbox{\hyperlink{namespace_design_a89f66276a25aed62bedc9fb9b5d35453}{Node\+Status}} status)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_design_1_1_frame}{Frame}} \mbox{\hyperlink{class_design_1_1_layout_base_aea2742a595c2fd43ec144e5702e51aaa}{m\+\_\+frame}}
+\item 
+\mbox{\hyperlink{class_design_1_1_frame}{Frame}} \mbox{\hyperlink{class_design_1_1_layout_base_a0be6420a923abf3ebcc9ade6ad9896d1}{m\+\_\+client\+Dimensions}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_design_1_1_x_m_l_base}{Design\+::\+XMLBase}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespace_design_a8684e8801d2302786d022161ace0aa67}{Layout\+Attribute\+Array}} \mbox{\hyperlink{class_design_1_1_x_m_l_base_a1e5ef55cab8c287eea12d5afaaa9625d}{m\+\_\+attr\+Array}}
+\item 
+wx\+String \mbox{\hyperlink{class_design_1_1_x_m_l_base_ab71dd09cc074fc7b4dac7712078579fb}{m\+\_\+text}}
+\item 
+\mbox{\hyperlink{namespace_design_a89f66276a25aed62bedc9fb9b5d35453}{Node\+Status}} \mbox{\hyperlink{class_design_1_1_x_m_l_base_adafcec9e49f0759683f5fb8c09268414}{m\+\_\+node\+Valid}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_design_1_1_album_base}{Design\+::\+Album\+Base}}}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_design_1_1_album_base_a0a5a59b5d89f4ca24fca07a3a47282f3}{Set\+Defaults}} (\mbox{\hyperlink{class_design_1_1_defaults}{Defaults}} \texorpdfstring{$\ast$}{*}defaults)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Base class for all layout objects. The layout objects are initialy loaded from the layout XML. 
+
+Definition at line \mbox{\hyperlink{_layout_base_8h_source_l00055}{55}} of file \mbox{\hyperlink{_layout_base_8h_source}{Layout\+Base.\+h}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_design_1_1_layout_base_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_design_1_1_layout_base_adddf7ae069e594074aa6f994a22399de}\index{Design::LayoutBase@{Design::LayoutBase}!LayoutBase@{LayoutBase}}
+\index{LayoutBase@{LayoutBase}!Design::LayoutBase@{Design::LayoutBase}}
+\doxysubsubsection{\texorpdfstring{LayoutBase()}{LayoutBase()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_design_1_1_layout_base_adddf7ae069e594074aa6f994a22399de} 
+Design\+::\+Layout\+Base\+::\+Layout\+Base (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Unused; Construct a new \doxylink{class_design_1_1_album}{Album} \doxylink{namespace_design}{Design} Object object. 
+
+
+
+Definition at line \mbox{\hyperlink{_layout_base_8cpp_source_l00044}{44}} of file \mbox{\hyperlink{_layout_base_8cpp_source}{Layout\+Base.\+cpp}}.
+
+\Hypertarget{class_design_1_1_layout_base_abc3219149b8663cc05ac1f6f534e39d6}\index{Design::LayoutBase@{Design::LayoutBase}!LayoutBase@{LayoutBase}}
+\index{LayoutBase@{LayoutBase}!Design::LayoutBase@{Design::LayoutBase}}
+\doxysubsubsection{\texorpdfstring{LayoutBase()}{LayoutBase()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_design_1_1_layout_base_abc3219149b8663cc05ac1f6f534e39d6} 
+Design\+::\+Layout\+Base\+::\+Layout\+Base (\begin{DoxyParamCaption}\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{node}{}\end{DoxyParamCaption})}
+
+
+
+Construct a new \doxylink{class_design_1_1_album}{Album} \doxylink{namespace_design}{Design} Object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_layout_base_8cpp_source_l00051}{51}} of file \mbox{\hyperlink{_layout_base_8cpp_source}{Layout\+Base.\+cpp}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_design_1_1_layout_base_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_design_1_1_layout_base_a20d73603f11f19874e7e83120b20deaf}\index{Design::LayoutBase@{Design::LayoutBase}!Draw@{Draw}}
+\index{Draw@{Draw}!Design::LayoutBase@{Design::LayoutBase}}
+\doxysubsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily \label{class_design_1_1_layout_base_a20d73603f11f19874e7e83120b20deaf} 
+virtual void Design\+::\+Layout\+Base\+::\+Draw (\begin{DoxyParamCaption}\item[{wx\+DC \&}]{dc}{, }\item[{double}]{x}{, }\item[{double}]{y}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_design_1_1_column_a71bb8a78ae8ecbbaaef18b5c02857686}{Design\+::\+Column}}, \mbox{\hyperlink{class_design_1_1_page_addb78f17705a8b4793182abe2adc9f46}{Design\+::\+Page}}, \mbox{\hyperlink{class_design_1_1_row_a0cc230ada2ee0069e6401d93a499cc0f}{Design\+::\+Row}}, \mbox{\hyperlink{class_design_1_1_stamp_a8ec9152732ac891e34b825bcaffb42fe}{Design\+::\+Stamp}}, and \mbox{\hyperlink{class_design_1_1_text_box_a2b92f7e43b0396b82f39bfc7850f3bb2}{Design\+::\+Text\+Box}}.
+
+\Hypertarget{class_design_1_1_layout_base_a36bd5175bece42fa44a50b5a679edb8c}\index{Design::LayoutBase@{Design::LayoutBase}!DrawPDF@{DrawPDF}}
+\index{DrawPDF@{DrawPDF}!Design::LayoutBase@{Design::LayoutBase}}
+\doxysubsubsection{\texorpdfstring{DrawPDF()}{DrawPDF()}}
+{\footnotesize\ttfamily \label{class_design_1_1_layout_base_a36bd5175bece42fa44a50b5a679edb8c} 
+virtual void Design\+::\+Layout\+Base\+::\+Draw\+PDF (\begin{DoxyParamCaption}\item[{wx\+Pdf\+Document \texorpdfstring{$\ast$}{*}}]{doc}{, }\item[{double}]{x}{, }\item[{double}]{y}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_design_1_1_column_adf6eb22d50fbe13705df1d1f57aacc29}{Design\+::\+Column}}, \mbox{\hyperlink{class_design_1_1_page_af23de661f48650717218c2b3e5180fa4}{Design\+::\+Page}}, \mbox{\hyperlink{class_design_1_1_row_aecba91ae28972c028d82a32880520ecf}{Design\+::\+Row}}, \mbox{\hyperlink{class_design_1_1_stamp_ae643be52887cc989a728be8d755c3797}{Design\+::\+Stamp}}, and \mbox{\hyperlink{class_design_1_1_text_box_a7de4a2ea5422aeb0c0721843ebdffad9}{Design\+::\+Text\+Box}}.
+
+\Hypertarget{class_design_1_1_layout_base_a148be94f2ce2d6f788df8d460de41ea6}\index{Design::LayoutBase@{Design::LayoutBase}!FindObjectByPos@{FindObjectByPos}}
+\index{FindObjectByPos@{FindObjectByPos}!Design::LayoutBase@{Design::LayoutBase}}
+\doxysubsubsection{\texorpdfstring{FindObjectByPos()}{FindObjectByPos()}}
+{\footnotesize\ttfamily \label{class_design_1_1_layout_base_a148be94f2ce2d6f788df8d460de41ea6} 
+\mbox{\hyperlink{class_design_1_1_layout_base}{Layout\+Base}} \texorpdfstring{$\ast$}{*} Design\+::\+Layout\+Base\+::\+Find\+Object\+By\+Pos (\begin{DoxyParamCaption}\item[{double}]{x}{, }\item[{double}]{y}{, }\item[{wx\+String}]{indent}{ = {\ttfamily "{}"{}}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_layout_base_8cpp_source_l00060}{60}} of file \mbox{\hyperlink{_layout_base_8cpp_source}{Layout\+Base.\+cpp}}.
+
+\Hypertarget{class_design_1_1_layout_base_a5bdda242953db855e7a6f8a603b38c25}\index{Design::LayoutBase@{Design::LayoutBase}!GetBottomContentMargin@{GetBottomContentMargin}}
+\index{GetBottomContentMargin@{GetBottomContentMargin}!Design::LayoutBase@{Design::LayoutBase}}
+\doxysubsubsection{\texorpdfstring{GetBottomContentMargin()}{GetBottomContentMargin()}}
+{\footnotesize\ttfamily \label{class_design_1_1_layout_base_a5bdda242953db855e7a6f8a603b38c25} 
+double Design\+::\+Layout\+Base\+::\+Get\+Bottom\+Content\+Margin (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_layout_base_8h_source_l00260}{260}} of file \mbox{\hyperlink{_layout_base_8h_source}{Layout\+Base.\+h}}.
+
+\Hypertarget{class_design_1_1_layout_base_a66ea228b56d1eee6b3fae2e5d6edd0ed}\index{Design::LayoutBase@{Design::LayoutBase}!GetHeight@{GetHeight}}
+\index{GetHeight@{GetHeight}!Design::LayoutBase@{Design::LayoutBase}}
+\doxysubsubsection{\texorpdfstring{GetHeight()}{GetHeight()}}
+{\footnotesize\ttfamily \label{class_design_1_1_layout_base_a66ea228b56d1eee6b3fae2e5d6edd0ed} 
+double Design\+::\+Layout\+Base\+::\+Get\+Height (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_layout_base_8h_source_l00081}{81}} of file \mbox{\hyperlink{_layout_base_8h_source}{Layout\+Base.\+h}}.
+
+\Hypertarget{class_design_1_1_layout_base_a90a48bfba29e63e9a9235a285eb34dfd}\index{Design::LayoutBase@{Design::LayoutBase}!GetLeftContentMargin@{GetLeftContentMargin}}
+\index{GetLeftContentMargin@{GetLeftContentMargin}!Design::LayoutBase@{Design::LayoutBase}}
+\doxysubsubsection{\texorpdfstring{GetLeftContentMargin()}{GetLeftContentMargin()}}
+{\footnotesize\ttfamily \label{class_design_1_1_layout_base_a90a48bfba29e63e9a9235a285eb34dfd} 
+double Design\+::\+Layout\+Base\+::\+Get\+Left\+Content\+Margin (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_layout_base_8h_source_l00268}{268}} of file \mbox{\hyperlink{_layout_base_8h_source}{Layout\+Base.\+h}}.
+
+\Hypertarget{class_design_1_1_layout_base_acb8bac499775367682fd94c87ff53cee}\index{Design::LayoutBase@{Design::LayoutBase}!GetMinHeight@{GetMinHeight}}
+\index{GetMinHeight@{GetMinHeight}!Design::LayoutBase@{Design::LayoutBase}}
+\doxysubsubsection{\texorpdfstring{GetMinHeight()}{GetMinHeight()}}
+{\footnotesize\ttfamily \label{class_design_1_1_layout_base_acb8bac499775367682fd94c87ff53cee} 
+double Design\+::\+Layout\+Base\+::\+Get\+Min\+Height (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_layout_base_8h_source_l00085}{85}} of file \mbox{\hyperlink{_layout_base_8h_source}{Layout\+Base.\+h}}.
+
+\Hypertarget{class_design_1_1_layout_base_a901284ea411f43d005d3ac56e3ed45a4}\index{Design::LayoutBase@{Design::LayoutBase}!GetMinWidth@{GetMinWidth}}
+\index{GetMinWidth@{GetMinWidth}!Design::LayoutBase@{Design::LayoutBase}}
+\doxysubsubsection{\texorpdfstring{GetMinWidth()}{GetMinWidth()}}
+{\footnotesize\ttfamily \label{class_design_1_1_layout_base_a901284ea411f43d005d3ac56e3ed45a4} 
+double Design\+::\+Layout\+Base\+::\+Get\+Min\+Width (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_layout_base_8h_source_l00089}{89}} of file \mbox{\hyperlink{_layout_base_8h_source}{Layout\+Base.\+h}}.
+
+\Hypertarget{class_design_1_1_layout_base_a229dcda4b658b5c3846ded59a0181576}\index{Design::LayoutBase@{Design::LayoutBase}!GetRightContentMargin@{GetRightContentMargin}}
+\index{GetRightContentMargin@{GetRightContentMargin}!Design::LayoutBase@{Design::LayoutBase}}
+\doxysubsubsection{\texorpdfstring{GetRightContentMargin()}{GetRightContentMargin()}}
+{\footnotesize\ttfamily \label{class_design_1_1_layout_base_a229dcda4b658b5c3846ded59a0181576} 
+double Design\+::\+Layout\+Base\+::\+Get\+Right\+Content\+Margin (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_layout_base_8h_source_l00264}{264}} of file \mbox{\hyperlink{_layout_base_8h_source}{Layout\+Base.\+h}}.
+
+\Hypertarget{class_design_1_1_layout_base_a3f3871eb2ea9509a4c4087a81c11a417}\index{Design::LayoutBase@{Design::LayoutBase}!GetShowFrame@{GetShowFrame}}
+\index{GetShowFrame@{GetShowFrame}!Design::LayoutBase@{Design::LayoutBase}}
+\doxysubsubsection{\texorpdfstring{GetShowFrame()}{GetShowFrame()}}
+{\footnotesize\ttfamily \label{class_design_1_1_layout_base_a3f3871eb2ea9509a4c4087a81c11a417} 
+bool Design\+::\+Layout\+Base\+::\+Get\+Show\+Frame (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_layout_base_8h_source_l00093}{93}} of file \mbox{\hyperlink{_layout_base_8h_source}{Layout\+Base.\+h}}.
+
+\Hypertarget{class_design_1_1_layout_base_a8db27326e985a3f3bc06dc1f7ae4037d}\index{Design::LayoutBase@{Design::LayoutBase}!GetShowNbr@{GetShowNbr}}
+\index{GetShowNbr@{GetShowNbr}!Design::LayoutBase@{Design::LayoutBase}}
+\doxysubsubsection{\texorpdfstring{GetShowNbr()}{GetShowNbr()}}
+{\footnotesize\ttfamily \label{class_design_1_1_layout_base_a8db27326e985a3f3bc06dc1f7ae4037d} 
+bool Design\+::\+Layout\+Base\+::\+Get\+Show\+Nbr (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_design_1_1_layout_base_ad21088afa87a0fd2171054a9440e8c54}\index{Design::LayoutBase@{Design::LayoutBase}!GetShowSubTitle@{GetShowSubTitle}}
+\index{GetShowSubTitle@{GetShowSubTitle}!Design::LayoutBase@{Design::LayoutBase}}
+\doxysubsubsection{\texorpdfstring{GetShowSubTitle()}{GetShowSubTitle()}}
+{\footnotesize\ttfamily \label{class_design_1_1_layout_base_ad21088afa87a0fd2171054a9440e8c54} 
+virtual bool Design\+::\+Layout\+Base\+::\+Get\+Show\+Sub\+Title (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_design_1_1_column_acabb8d77a2ad6c9106ea3b46f59a880a}{Design\+::\+Column}}, \mbox{\hyperlink{class_design_1_1_page_a80fae551ec2b2c355bc18ff0c152fc44}{Design\+::\+Page}}, \mbox{\hyperlink{class_design_1_1_row_ab6beeab8bb6def0a1cbb6659a02a10c6}{Design\+::\+Row}}, \mbox{\hyperlink{class_design_1_1_stamp_a0e266b9a40347655d38c93d551a23906}{Design\+::\+Stamp}}, and \mbox{\hyperlink{class_design_1_1_text_box_ab402a66bc31a11d7a440066732854e8c}{Design\+::\+Text\+Box}}.
+
+\Hypertarget{class_design_1_1_layout_base_a5cbb096ad312a59acc2eeb1dd706d2b3}\index{Design::LayoutBase@{Design::LayoutBase}!GetShowTitle@{GetShowTitle}}
+\index{GetShowTitle@{GetShowTitle}!Design::LayoutBase@{Design::LayoutBase}}
+\doxysubsubsection{\texorpdfstring{GetShowTitle()}{GetShowTitle()}}
+{\footnotesize\ttfamily \label{class_design_1_1_layout_base_a5cbb096ad312a59acc2eeb1dd706d2b3} 
+virtual bool Design\+::\+Layout\+Base\+::\+Get\+Show\+Title (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_design_1_1_column_a8cf07804190938344c7ac8e4e4a00f62}{Design\+::\+Column}}, \mbox{\hyperlink{class_design_1_1_page_a4fee3a606e7d1669f1d5908e2b204f78}{Design\+::\+Page}}, \mbox{\hyperlink{class_design_1_1_row_addd7a59f88b1206b0ca558af532e240d}{Design\+::\+Row}}, \mbox{\hyperlink{class_design_1_1_stamp_a1bacf0f9713ff93de678ec90ceb08e59}{Design\+::\+Stamp}}, and \mbox{\hyperlink{class_design_1_1_text_box_ad52ee0879d7a7917e5adf2625348f870}{Design\+::\+Text\+Box}}.
+
+\Hypertarget{class_design_1_1_layout_base_abec56e92506f8648c4c74534660f6b40}\index{Design::LayoutBase@{Design::LayoutBase}!GetString@{GetString}}
+\index{GetString@{GetString}!Design::LayoutBase@{Design::LayoutBase}}
+\doxysubsubsection{\texorpdfstring{GetString()}{GetString()}}
+{\footnotesize\ttfamily \label{class_design_1_1_layout_base_abec56e92506f8648c4c74534660f6b40} 
+wx\+String Design\+::\+Layout\+Base\+::\+Get\+String (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_design_a78239901f30ef59569595a58364b35c4}{Design\+::\+Font\+Usage\+Type}}}]{font\+Type}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_layout_base_8h_source_l00106}{106}} of file \mbox{\hyperlink{_layout_base_8h_source}{Layout\+Base.\+h}}.
+
+\Hypertarget{class_design_1_1_layout_base_a79099f919601725075c14d8b8e5a23d3}\index{Design::LayoutBase@{Design::LayoutBase}!GetTopContentMargin@{GetTopContentMargin}}
+\index{GetTopContentMargin@{GetTopContentMargin}!Design::LayoutBase@{Design::LayoutBase}}
+\doxysubsubsection{\texorpdfstring{GetTopContentMargin()}{GetTopContentMargin()}}
+{\footnotesize\ttfamily \label{class_design_1_1_layout_base_a79099f919601725075c14d8b8e5a23d3} 
+double Design\+::\+Layout\+Base\+::\+Get\+Top\+Content\+Margin (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_layout_base_8h_source_l00256}{256}} of file \mbox{\hyperlink{_layout_base_8h_source}{Layout\+Base.\+h}}.
+
+\Hypertarget{class_design_1_1_layout_base_a67012db6f38020ab818e75eded35fe5a}\index{Design::LayoutBase@{Design::LayoutBase}!GetWidth@{GetWidth}}
+\index{GetWidth@{GetWidth}!Design::LayoutBase@{Design::LayoutBase}}
+\doxysubsubsection{\texorpdfstring{GetWidth()}{GetWidth()}}
+{\footnotesize\ttfamily \label{class_design_1_1_layout_base_a67012db6f38020ab818e75eded35fe5a} 
+double Design\+::\+Layout\+Base\+::\+Get\+Width (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_layout_base_8h_source_l00176}{176}} of file \mbox{\hyperlink{_layout_base_8h_source}{Layout\+Base.\+h}}.
+
+\Hypertarget{class_design_1_1_layout_base_af53ae9e513ac9d2064b1b5a629c8527f}\index{Design::LayoutBase@{Design::LayoutBase}!GetXPos@{GetXPos}}
+\index{GetXPos@{GetXPos}!Design::LayoutBase@{Design::LayoutBase}}
+\doxysubsubsection{\texorpdfstring{GetXPos()}{GetXPos()}}
+{\footnotesize\ttfamily \label{class_design_1_1_layout_base_af53ae9e513ac9d2064b1b5a629c8527f} 
+double Design\+::\+Layout\+Base\+::\+Get\+XPos (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_layout_base_8h_source_l00158}{158}} of file \mbox{\hyperlink{_layout_base_8h_source}{Layout\+Base.\+h}}.
+
+\Hypertarget{class_design_1_1_layout_base_a0706e52e9229916c821c3b9ed5035f6f}\index{Design::LayoutBase@{Design::LayoutBase}!GetYPos@{GetYPos}}
+\index{GetYPos@{GetYPos}!Design::LayoutBase@{Design::LayoutBase}}
+\doxysubsubsection{\texorpdfstring{GetYPos()}{GetYPos()}}
+{\footnotesize\ttfamily \label{class_design_1_1_layout_base_a0706e52e9229916c821c3b9ed5035f6f} 
+double Design\+::\+Layout\+Base\+::\+Get\+YPos (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_layout_base_8h_source_l00167}{167}} of file \mbox{\hyperlink{_layout_base_8h_source}{Layout\+Base.\+h}}.
+
+\Hypertarget{class_design_1_1_layout_base_a1b6d91d1658cd5c09d17955720676d88}\index{Design::LayoutBase@{Design::LayoutBase}!IsInClient@{IsInClient}}
+\index{IsInClient@{IsInClient}!Design::LayoutBase@{Design::LayoutBase}}
+\doxysubsubsection{\texorpdfstring{IsInClient()}{IsInClient()}}
+{\footnotesize\ttfamily \label{class_design_1_1_layout_base_a1b6d91d1658cd5c09d17955720676d88} 
+bool Design\+::\+Layout\+Base\+::\+Is\+In\+Client (\begin{DoxyParamCaption}\item[{double}]{x}{, }\item[{double}]{y}{, }\item[{wx\+String}]{indent}{ = {\ttfamily "{}"{}}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_layout_base_8cpp_source_l00102}{102}} of file \mbox{\hyperlink{_layout_base_8cpp_source}{Layout\+Base.\+cpp}}.
+
+\Hypertarget{class_design_1_1_layout_base_aa9d12b31a18fc16c0d619c59dcaf014a}\index{Design::LayoutBase@{Design::LayoutBase}!LoadFonts@{LoadFonts}}
+\index{LoadFonts@{LoadFonts}!Design::LayoutBase@{Design::LayoutBase}}
+\doxysubsubsection{\texorpdfstring{LoadFonts()}{LoadFonts()}}
+{\footnotesize\ttfamily \label{class_design_1_1_layout_base_aa9d12b31a18fc16c0d619c59dcaf014a} 
+virtual void Design\+::\+Layout\+Base\+::\+Load\+Fonts (\begin{DoxyParamCaption}\item[{wx\+Xml\+Node \texorpdfstring{$\ast$}{*}}]{node}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_design_1_1_album_base_a134710ecf775fc9dca8139e7bca47e07}{Design\+::\+Album\+Base}}.
+
+
+
+Implemented in \mbox{\hyperlink{class_design_1_1_column_a8978fe21fdc5199a1d4cd7f3fd5f167a}{Design\+::\+Column}}, \mbox{\hyperlink{class_design_1_1_page_a4e3f728de227d647d82eb8768158e0aa}{Design\+::\+Page}}, \mbox{\hyperlink{class_design_1_1_row_a4aa360b111ac13ba88eaead49c32231a}{Design\+::\+Row}}, \mbox{\hyperlink{class_design_1_1_stamp_abddcb7a3e4f2e0b3f430d158d3b3c7da}{Design\+::\+Stamp}}, and \mbox{\hyperlink{class_design_1_1_text_box_a7c8c7e5f9048b75e6a2931fca0f4001d}{Design\+::\+Text\+Box}}.
+
+\Hypertarget{class_design_1_1_layout_base_a34f913a886645413bfaab91c4e1b5bac}\index{Design::LayoutBase@{Design::LayoutBase}!ReportLayoutError@{ReportLayoutError}}
+\index{ReportLayoutError@{ReportLayoutError}!Design::LayoutBase@{Design::LayoutBase}}
+\doxysubsubsection{\texorpdfstring{ReportLayoutError()}{ReportLayoutError()}}
+{\footnotesize\ttfamily \label{class_design_1_1_layout_base_a34f913a886645413bfaab91c4e1b5bac} 
+void Design\+::\+Layout\+Base\+::\+Report\+Layout\+Error (\begin{DoxyParamCaption}\item[{wx\+String}]{funct}{, }\item[{wx\+String}]{err}{, }\item[{bool}]{fatal}{ = {\ttfamily true}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_layout_base_8cpp_source_l00145}{145}} of file \mbox{\hyperlink{_layout_base_8cpp_source}{Layout\+Base.\+cpp}}.
+
+\Hypertarget{class_design_1_1_layout_base_a82bd13de0d1cb3c011604958faeae93a}\index{Design::LayoutBase@{Design::LayoutBase}!ReportLayoutFrame@{ReportLayoutFrame}}
+\index{ReportLayoutFrame@{ReportLayoutFrame}!Design::LayoutBase@{Design::LayoutBase}}
+\doxysubsubsection{\texorpdfstring{ReportLayoutFrame()}{ReportLayoutFrame()}}
+{\footnotesize\ttfamily \label{class_design_1_1_layout_base_a82bd13de0d1cb3c011604958faeae93a} 
+void Design\+::\+Layout\+Base\+::\+Report\+Layout\+Frame (\begin{DoxyParamCaption}\item[{wx\+String}]{indent}{ = {\ttfamily "{}"{}}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_layout_base_8cpp_source_l00134}{134}} of file \mbox{\hyperlink{_layout_base_8cpp_source}{Layout\+Base.\+cpp}}.
+
+\Hypertarget{class_design_1_1_layout_base_a8439a66676704be93bdbece62959cb42}\index{Design::LayoutBase@{Design::LayoutBase}!SetBottomContentMargin@{SetBottomContentMargin}}
+\index{SetBottomContentMargin@{SetBottomContentMargin}!Design::LayoutBase@{Design::LayoutBase}}
+\doxysubsubsection{\texorpdfstring{SetBottomContentMargin()}{SetBottomContentMargin()}}
+{\footnotesize\ttfamily \label{class_design_1_1_layout_base_a8439a66676704be93bdbece62959cb42} 
+void Design\+::\+Layout\+Base\+::\+Set\+Bottom\+Content\+Margin (\begin{DoxyParamCaption}\item[{double}]{val}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_layout_base_8h_source_l00244}{244}} of file \mbox{\hyperlink{_layout_base_8h_source}{Layout\+Base.\+h}}.
+
+\Hypertarget{class_design_1_1_layout_base_a6460bfe37cf7fe3a4ecbb029697ea1a8}\index{Design::LayoutBase@{Design::LayoutBase}!SetClientDimensions@{SetClientDimensions}}
+\index{SetClientDimensions@{SetClientDimensions}!Design::LayoutBase@{Design::LayoutBase}}
+\doxysubsubsection{\texorpdfstring{SetClientDimensions()}{SetClientDimensions()}}
+{\footnotesize\ttfamily \label{class_design_1_1_layout_base_a6460bfe37cf7fe3a4ecbb029697ea1a8} 
+void Design\+::\+Layout\+Base\+::\+Set\+Client\+Dimensions (\begin{DoxyParamCaption}\item[{wx\+DC \&}]{dc}{, }\item[{double}]{x}{, }\item[{double}]{y}{, }\item[{double}]{width}{ = {\ttfamily 0.0}, }\item[{double}]{height}{ = {\ttfamily 0.0}, }\item[{double}]{min\+Width}{ = {\ttfamily 0.0}, }\item[{double}]{min\+Height}{ = {\ttfamily 0.0}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_layout_base_8cpp_source_l00154}{154}} of file \mbox{\hyperlink{_layout_base_8cpp_source}{Layout\+Base.\+cpp}}.
+
+\Hypertarget{class_design_1_1_layout_base_a1f10d8e6b948b0e0bb31b27ffa4ff78f}\index{Design::LayoutBase@{Design::LayoutBase}!SetHeight@{SetHeight}}
+\index{SetHeight@{SetHeight}!Design::LayoutBase@{Design::LayoutBase}}
+\doxysubsubsection{\texorpdfstring{SetHeight()}{SetHeight()}}
+{\footnotesize\ttfamily \label{class_design_1_1_layout_base_a1f10d8e6b948b0e0bb31b27ffa4ff78f} 
+void Design\+::\+Layout\+Base\+::\+Set\+Height (\begin{DoxyParamCaption}\item[{double}]{val}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_layout_base_8h_source_l00202}{202}} of file \mbox{\hyperlink{_layout_base_8h_source}{Layout\+Base.\+h}}.
+
+\Hypertarget{class_design_1_1_layout_base_af78667c6c66e7f8f6035a607c8f2e990}\index{Design::LayoutBase@{Design::LayoutBase}!SetLeftContentMargin@{SetLeftContentMargin}}
+\index{SetLeftContentMargin@{SetLeftContentMargin}!Design::LayoutBase@{Design::LayoutBase}}
+\doxysubsubsection{\texorpdfstring{SetLeftContentMargin()}{SetLeftContentMargin()}}
+{\footnotesize\ttfamily \label{class_design_1_1_layout_base_af78667c6c66e7f8f6035a607c8f2e990} 
+void Design\+::\+Layout\+Base\+::\+Set\+Left\+Content\+Margin (\begin{DoxyParamCaption}\item[{double}]{val}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_layout_base_8h_source_l00252}{252}} of file \mbox{\hyperlink{_layout_base_8h_source}{Layout\+Base.\+h}}.
+
+\Hypertarget{class_design_1_1_layout_base_a51f6b48a08c5fe04ed4649724158f1c8}\index{Design::LayoutBase@{Design::LayoutBase}!SetMinHeight@{SetMinHeight}}
+\index{SetMinHeight@{SetMinHeight}!Design::LayoutBase@{Design::LayoutBase}}
+\doxysubsubsection{\texorpdfstring{SetMinHeight()}{SetMinHeight()}}
+{\footnotesize\ttfamily \label{class_design_1_1_layout_base_a51f6b48a08c5fe04ed4649724158f1c8} 
+void Design\+::\+Layout\+Base\+::\+Set\+Min\+Height (\begin{DoxyParamCaption}\item[{double}]{val}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_layout_base_8h_source_l00211}{211}} of file \mbox{\hyperlink{_layout_base_8h_source}{Layout\+Base.\+h}}.
+
+\Hypertarget{class_design_1_1_layout_base_a2905e8d55c4d63bcbac51bb08adc8c3f}\index{Design::LayoutBase@{Design::LayoutBase}!SetMinWidth@{SetMinWidth}}
+\index{SetMinWidth@{SetMinWidth}!Design::LayoutBase@{Design::LayoutBase}}
+\doxysubsubsection{\texorpdfstring{SetMinWidth()}{SetMinWidth()}}
+{\footnotesize\ttfamily \label{class_design_1_1_layout_base_a2905e8d55c4d63bcbac51bb08adc8c3f} 
+void Design\+::\+Layout\+Base\+::\+Set\+Min\+Width (\begin{DoxyParamCaption}\item[{double}]{val}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_layout_base_8h_source_l00220}{220}} of file \mbox{\hyperlink{_layout_base_8h_source}{Layout\+Base.\+h}}.
+
+\Hypertarget{class_design_1_1_layout_base_a92a2532b8d711abe8ac4b95dd1cdc4fc}\index{Design::LayoutBase@{Design::LayoutBase}!SetRightContentMargin@{SetRightContentMargin}}
+\index{SetRightContentMargin@{SetRightContentMargin}!Design::LayoutBase@{Design::LayoutBase}}
+\doxysubsubsection{\texorpdfstring{SetRightContentMargin()}{SetRightContentMargin()}}
+{\footnotesize\ttfamily \label{class_design_1_1_layout_base_a92a2532b8d711abe8ac4b95dd1cdc4fc} 
+void Design\+::\+Layout\+Base\+::\+Set\+Right\+Content\+Margin (\begin{DoxyParamCaption}\item[{double}]{val}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_layout_base_8h_source_l00248}{248}} of file \mbox{\hyperlink{_layout_base_8h_source}{Layout\+Base.\+h}}.
+
+\Hypertarget{class_design_1_1_layout_base_a077b22eab7a3508229319e2be0fd2f54}\index{Design::LayoutBase@{Design::LayoutBase}!SetShowFrame@{SetShowFrame}}
+\index{SetShowFrame@{SetShowFrame}!Design::LayoutBase@{Design::LayoutBase}}
+\doxysubsubsection{\texorpdfstring{SetShowFrame()}{SetShowFrame()}}
+{\footnotesize\ttfamily \label{class_design_1_1_layout_base_a077b22eab7a3508229319e2be0fd2f54} 
+void Design\+::\+Layout\+Base\+::\+Set\+Show\+Frame (\begin{DoxyParamCaption}\item[{bool}]{val}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_layout_base_8h_source_l00224}{224}} of file \mbox{\hyperlink{_layout_base_8h_source}{Layout\+Base.\+h}}.
+
+\Hypertarget{class_design_1_1_layout_base_a1aa7fd6d632cd988afb32eb9f6d7d505}\index{Design::LayoutBase@{Design::LayoutBase}!SetShowNbr@{SetShowNbr}}
+\index{SetShowNbr@{SetShowNbr}!Design::LayoutBase@{Design::LayoutBase}}
+\doxysubsubsection{\texorpdfstring{SetShowNbr()}{SetShowNbr()}}
+{\footnotesize\ttfamily \label{class_design_1_1_layout_base_a1aa7fd6d632cd988afb32eb9f6d7d505} 
+void Design\+::\+Layout\+Base\+::\+Set\+Show\+Nbr (\begin{DoxyParamCaption}\item[{bool}]{val}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_design_1_1_layout_base_afdb1536a748e7df12d9dc7275e9cf53c}\index{Design::LayoutBase@{Design::LayoutBase}!SetShowSubTitle@{SetShowSubTitle}}
+\index{SetShowSubTitle@{SetShowSubTitle}!Design::LayoutBase@{Design::LayoutBase}}
+\doxysubsubsection{\texorpdfstring{SetShowSubTitle()}{SetShowSubTitle()}}
+{\footnotesize\ttfamily \label{class_design_1_1_layout_base_afdb1536a748e7df12d9dc7275e9cf53c} 
+virtual void Design\+::\+Layout\+Base\+::\+Set\+Show\+Sub\+Title (\begin{DoxyParamCaption}\item[{bool}]{val}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_design_1_1_column_a84bebd3f967c4324d8b2ff9d57810675}{Design\+::\+Column}}, \mbox{\hyperlink{class_design_1_1_page_af9aba058b5ff6549875394cb99954088}{Design\+::\+Page}}, \mbox{\hyperlink{class_design_1_1_row_ab514b48ad780d66ac528203e6fb89699}{Design\+::\+Row}}, \mbox{\hyperlink{class_design_1_1_stamp_a16f242de40010e149009846866aa144d}{Design\+::\+Stamp}}, and \mbox{\hyperlink{class_design_1_1_text_box_ac0fdf928811ac5d1a392d4987e13e611}{Design\+::\+Text\+Box}}.
+
+\Hypertarget{class_design_1_1_layout_base_a5c0be7aa1d46a3f2849e690e018e2349}\index{Design::LayoutBase@{Design::LayoutBase}!SetShowTitle@{SetShowTitle}}
+\index{SetShowTitle@{SetShowTitle}!Design::LayoutBase@{Design::LayoutBase}}
+\doxysubsubsection{\texorpdfstring{SetShowTitle()}{SetShowTitle()}}
+{\footnotesize\ttfamily \label{class_design_1_1_layout_base_a5c0be7aa1d46a3f2849e690e018e2349} 
+virtual void Design\+::\+Layout\+Base\+::\+Set\+Show\+Title (\begin{DoxyParamCaption}\item[{bool}]{val}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_design_1_1_column_a164e8d9e09db7744de527bc035fc170b}{Design\+::\+Column}}, \mbox{\hyperlink{class_design_1_1_page_a7f066866c283811fe52b8bc4b17b6838}{Design\+::\+Page}}, \mbox{\hyperlink{class_design_1_1_row_aae0832dfaf4804a058b6d31f292ef3af}{Design\+::\+Row}}, \mbox{\hyperlink{class_design_1_1_stamp_a8bb5049d27281d99c1f8f2ddf5567955}{Design\+::\+Stamp}}, and \mbox{\hyperlink{class_design_1_1_text_box_a4d4cda73409332dde40074802fe8b1d2}{Design\+::\+Text\+Box}}.
+
+\Hypertarget{class_design_1_1_layout_base_a70f1b259310bd3649043c18a3316b5d7}\index{Design::LayoutBase@{Design::LayoutBase}!SetTopContentMargin@{SetTopContentMargin}}
+\index{SetTopContentMargin@{SetTopContentMargin}!Design::LayoutBase@{Design::LayoutBase}}
+\doxysubsubsection{\texorpdfstring{SetTopContentMargin()}{SetTopContentMargin()}}
+{\footnotesize\ttfamily \label{class_design_1_1_layout_base_a70f1b259310bd3649043c18a3316b5d7} 
+void Design\+::\+Layout\+Base\+::\+Set\+Top\+Content\+Margin (\begin{DoxyParamCaption}\item[{double}]{val}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_layout_base_8h_source_l00240}{240}} of file \mbox{\hyperlink{_layout_base_8h_source}{Layout\+Base.\+h}}.
+
+\Hypertarget{class_design_1_1_layout_base_a2c466b4cdedbfcdb27b44db5693581d9}\index{Design::LayoutBase@{Design::LayoutBase}!SetWidth@{SetWidth}}
+\index{SetWidth@{SetWidth}!Design::LayoutBase@{Design::LayoutBase}}
+\doxysubsubsection{\texorpdfstring{SetWidth()}{SetWidth()}}
+{\footnotesize\ttfamily \label{class_design_1_1_layout_base_a2c466b4cdedbfcdb27b44db5693581d9} 
+void Design\+::\+Layout\+Base\+::\+Set\+Width (\begin{DoxyParamCaption}\item[{double}]{val}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_layout_base_8h_source_l00288}{288}} of file \mbox{\hyperlink{_layout_base_8h_source}{Layout\+Base.\+h}}.
+
+\Hypertarget{class_design_1_1_layout_base_a26d9ed99bae7066f5f1d21db8cdcefe0}\index{Design::LayoutBase@{Design::LayoutBase}!SetXPos@{SetXPos}}
+\index{SetXPos@{SetXPos}!Design::LayoutBase@{Design::LayoutBase}}
+\doxysubsubsection{\texorpdfstring{SetXPos()}{SetXPos()}}
+{\footnotesize\ttfamily \label{class_design_1_1_layout_base_a26d9ed99bae7066f5f1d21db8cdcefe0} 
+void Design\+::\+Layout\+Base\+::\+Set\+XPos (\begin{DoxyParamCaption}\item[{double}]{val}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_layout_base_8h_source_l00297}{297}} of file \mbox{\hyperlink{_layout_base_8h_source}{Layout\+Base.\+h}}.
+
+\Hypertarget{class_design_1_1_layout_base_af9028007780cc538a90f95387cd85e7f}\index{Design::LayoutBase@{Design::LayoutBase}!SetYPos@{SetYPos}}
+\index{SetYPos@{SetYPos}!Design::LayoutBase@{Design::LayoutBase}}
+\doxysubsubsection{\texorpdfstring{SetYPos()}{SetYPos()}}
+{\footnotesize\ttfamily \label{class_design_1_1_layout_base_af9028007780cc538a90f95387cd85e7f} 
+void Design\+::\+Layout\+Base\+::\+Set\+YPos (\begin{DoxyParamCaption}\item[{double}]{val}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_layout_base_8h_source_l00279}{279}} of file \mbox{\hyperlink{_layout_base_8h_source}{Layout\+Base.\+h}}.
+
+\Hypertarget{class_design_1_1_layout_base_a7fe2fe30d3d1f18f30535b1994079581}\index{Design::LayoutBase@{Design::LayoutBase}!UpdateMinimumSize@{UpdateMinimumSize}}
+\index{UpdateMinimumSize@{UpdateMinimumSize}!Design::LayoutBase@{Design::LayoutBase}}
+\doxysubsubsection{\texorpdfstring{UpdateMinimumSize()}{UpdateMinimumSize()}}
+{\footnotesize\ttfamily \label{class_design_1_1_layout_base_a7fe2fe30d3d1f18f30535b1994079581} 
+virtual bool Design\+::\+Layout\+Base\+::\+Update\+Minimum\+Size (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Update\+Minimum\+Size Calculates the minimum Height and width of the object. It drills down to the lowest layout object with an actual size and begins calculating the min size of its parents as it progresses back up the heirarchy. 
+
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_design_1_1_column_a8e6b8ba05bd1a18067c035e91d5ba9e3}{Design\+::\+Column}}, \mbox{\hyperlink{class_design_1_1_page_a56717512729270b8d50802c97ee0f862}{Design\+::\+Page}}, \mbox{\hyperlink{class_design_1_1_row_aa5ff9a33f80ca720b197739140d4522c}{Design\+::\+Row}}, \mbox{\hyperlink{class_design_1_1_stamp_af7194f827f29a0e7bc16197978eeb930}{Design\+::\+Stamp}}, and \mbox{\hyperlink{class_design_1_1_text_box_a8b22eac5a9f975e5376d0db26fcad1b0}{Design\+::\+Text\+Box}}.
+
+\Hypertarget{class_design_1_1_layout_base_a45288d00309837f8e29b37d3eb929501}\index{Design::LayoutBase@{Design::LayoutBase}!UpdatePositions@{UpdatePositions}}
+\index{UpdatePositions@{UpdatePositions}!Design::LayoutBase@{Design::LayoutBase}}
+\doxysubsubsection{\texorpdfstring{UpdatePositions()}{UpdatePositions()}}
+{\footnotesize\ttfamily \label{class_design_1_1_layout_base_a45288d00309837f8e29b37d3eb929501} 
+virtual void Design\+::\+Layout\+Base\+::\+Update\+Positions (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Calculate the column layout based on child parameters. 
+
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_design_1_1_column_a9c705e3c58190a28ddf65189685a621b}{Design\+::\+Column}}, \mbox{\hyperlink{class_design_1_1_page_ab3ee3e2efe88fc360ef32ca400529b7f}{Design\+::\+Page}}, \mbox{\hyperlink{class_design_1_1_row_a0b9455bc4311605ce69554a9bedb05d8}{Design\+::\+Row}}, \mbox{\hyperlink{class_design_1_1_stamp_a204f16a5a60e379dc2aa4fa2e9480ebb}{Design\+::\+Stamp}}, and \mbox{\hyperlink{class_design_1_1_text_box_a5323349438de511d38fa288103eb69c1}{Design\+::\+Text\+Box}}.
+
+\Hypertarget{class_design_1_1_layout_base_ab916a0576a8599c33437695be9721fd5}\index{Design::LayoutBase@{Design::LayoutBase}!UpdateSizes@{UpdateSizes}}
+\index{UpdateSizes@{UpdateSizes}!Design::LayoutBase@{Design::LayoutBase}}
+\doxysubsubsection{\texorpdfstring{UpdateSizes()}{UpdateSizes()}}
+{\footnotesize\ttfamily \label{class_design_1_1_layout_base_ab916a0576a8599c33437695be9721fd5} 
+virtual void Design\+::\+Layout\+Base\+::\+Update\+Sizes (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_design_1_1_column_a9e7de9dcf2f17c4b1f8e9e456aaaa5ff}{Design\+::\+Column}}, \mbox{\hyperlink{class_design_1_1_page_a94daf8f2ba8663ca16acec6ff9c2a6f5}{Design\+::\+Page}}, \mbox{\hyperlink{class_design_1_1_row_ac83960f078d0f3e8db4e336ba9176a13}{Design\+::\+Row}}, \mbox{\hyperlink{class_design_1_1_stamp_abc12a951c0467c11cce6219a3f4f9ea1}{Design\+::\+Stamp}}, and \mbox{\hyperlink{class_design_1_1_text_box_ae00fe0322c485136fd130efe1759b94a}{Design\+::\+Text\+Box}}.
+
+\Hypertarget{class_design_1_1_layout_base_a9c78b1ebb8225e0d200e29ea355d1b75}\index{Design::LayoutBase@{Design::LayoutBase}!UpdateString@{UpdateString}}
+\index{UpdateString@{UpdateString}!Design::LayoutBase@{Design::LayoutBase}}
+\doxysubsubsection{\texorpdfstring{UpdateString()}{UpdateString()}}
+{\footnotesize\ttfamily \label{class_design_1_1_layout_base_a9c78b1ebb8225e0d200e29ea355d1b75} 
+void Design\+::\+Layout\+Base\+::\+Update\+String (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_design_1_1_label_frame}{Design\+::\+Label\+Frame}} \texorpdfstring{$\ast$}{*}}]{frame}{, }\item[{double}]{width}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_layout_base_8cpp_source_l00218}{218}} of file \mbox{\hyperlink{_layout_base_8cpp_source}{Layout\+Base.\+cpp}}.
+
+\Hypertarget{class_design_1_1_layout_base_afc101f524a6a783724bff4f15f18f0f2}\index{Design::LayoutBase@{Design::LayoutBase}!ValidateChildType@{ValidateChildType}}
+\index{ValidateChildType@{ValidateChildType}!Design::LayoutBase@{Design::LayoutBase}}
+\doxysubsubsection{\texorpdfstring{ValidateChildType()}{ValidateChildType()}}
+{\footnotesize\ttfamily \label{class_design_1_1_layout_base_afc101f524a6a783724bff4f15f18f0f2} 
+void Design\+::\+Layout\+Base\+::\+Validate\+Child\+Type (\begin{DoxyParamCaption}\item[{int \&}]{nbr\+Rows}{, }\item[{int \&}]{nbr\+Cols}{, }\item[{int \&}]{nbr\+Leaf}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_layout_base_8cpp_source_l00170}{170}} of file \mbox{\hyperlink{_layout_base_8cpp_source}{Layout\+Base.\+cpp}}.
+
+
+
+\label{doc-variable-members}
+\Hypertarget{class_design_1_1_layout_base_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_design_1_1_layout_base_a0be6420a923abf3ebcc9ade6ad9896d1}\index{Design::LayoutBase@{Design::LayoutBase}!m\_clientDimensions@{m\_clientDimensions}}
+\index{m\_clientDimensions@{m\_clientDimensions}!Design::LayoutBase@{Design::LayoutBase}}
+\doxysubsubsection{\texorpdfstring{m\_clientDimensions}{m\_clientDimensions}}
+{\footnotesize\ttfamily \label{class_design_1_1_layout_base_a0be6420a923abf3ebcc9ade6ad9896d1} 
+\mbox{\hyperlink{class_design_1_1_frame}{Frame}} Design\+::\+Layout\+Base\+::m\+\_\+client\+Dimensions\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_layout_base_8h_source_l00328}{328}} of file \mbox{\hyperlink{_layout_base_8h_source}{Layout\+Base.\+h}}.
+
+\Hypertarget{class_design_1_1_layout_base_aea2742a595c2fd43ec144e5702e51aaa}\index{Design::LayoutBase@{Design::LayoutBase}!m\_frame@{m\_frame}}
+\index{m\_frame@{m\_frame}!Design::LayoutBase@{Design::LayoutBase}}
+\doxysubsubsection{\texorpdfstring{m\_frame}{m\_frame}}
+{\footnotesize\ttfamily \label{class_design_1_1_layout_base_aea2742a595c2fd43ec144e5702e51aaa} 
+\mbox{\hyperlink{class_design_1_1_frame}{Frame}} Design\+::\+Layout\+Base\+::m\+\_\+frame\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_layout_base_8h_source_l00327}{327}} of file \mbox{\hyperlink{_layout_base_8h_source}{Layout\+Base.\+h}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/femon/\+Development/wx/clone\+Test/\+Stamp\+Tool/src/design/\mbox{\hyperlink{_layout_base_8h}{Layout\+Base.\+h}}\item 
+C\+:/\+Users/femon/\+Development/wx/clone\+Test/\+Stamp\+Tool/src/design/\mbox{\hyperlink{_layout_base_8cpp}{Layout\+Base.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,35 @@
+var class_generate_list =
+[
+    [ "GenerateListGuiDefs", "class_generate_list.html#a475573d26a7cc2811250e94e0a1f14c9", [
+      [ "ID_SETLISTPREFSBUTTON", "class_generate_list.html#a475573d26a7cc2811250e94e0a1f14c9a7114f4f9109c8f1b738149807bbe1279", null ],
+      [ "ID_GRIDCTRL", "class_generate_list.html#a475573d26a7cc2811250e94e0a1f14c9a07526bc921a31d38755a23ed6105b05d", null ],
+      [ "ID_WRITEBUTTON", "class_generate_list.html#a475573d26a7cc2811250e94e0a1f14c9a9aa3f04bb8ebd7e2e97c7f050b436f52", null ],
+      [ "ID_FILENAMETEXTCTRL", "class_generate_list.html#a475573d26a7cc2811250e94e0a1f14c9ace762d49d7673fdd04697467fa491506", null ]
+    ] ],
+    [ "GenerateList", "class_generate_list.html#aceafbc642894da7fca46309f9909eeb3", null ],
+    [ "GenerateList", "class_generate_list.html#a3fffaf84d4ea0d2cfe151fed19450720", null ],
+    [ "~GenerateList", "class_generate_list.html#a945cf75625b051f970b77d22255b4a40", null ],
+    [ "AddEntry", "class_generate_list.html#a5015735a9c60eccb6e73d5b490adba75", null ],
+    [ "CheckEmission", "class_generate_list.html#af74184690c0decf6dcaf9bc905200caa", null ],
+    [ "CheckFormat", "class_generate_list.html#ac0aa2f58e7774bee71c396f856e630c6", null ],
+    [ "CheckStatus", "class_generate_list.html#a8d0a66683752361b7c3031d9757d7ed2", null ],
+    [ "ClearList", "class_generate_list.html#a76a0340008cf25f15846c2a0da115308", null ],
+    [ "Create", "class_generate_list.html#ae9ccce9854aaf9b4e479243544cc1f92", null ],
+    [ "CreateControls", "class_generate_list.html#ada2a7c3eab6cccdb6c073c25068aacc1", null ],
+    [ "DoListPrefs", "class_generate_list.html#a17fc90e80c582d2d95806ee892883e49", null ],
+    [ "GetStringLen", "class_generate_list.html#ab9dd5abc66748bafedeba0b14423bc29", null ],
+    [ "Init", "class_generate_list.html#a77ba5a9d29118bb95fda26074b8bb33d", null ],
+    [ "MakeListAttributeString", "class_generate_list.html#a9e0428971a5ffe1727e6868ae57448da", null ],
+    [ "OnCellLeftClick", "class_generate_list.html#aa0c0ff9d5ccb3002e21b20b1521a2685", null ],
+    [ "OnFileNameTextUpdated", "class_generate_list.html#aa56b7fc8bfe8786c181784d4f7620c91", null ],
+    [ "OnLabelLeftClick", "class_generate_list.html#aa49365f9e3020d63f2aefe8cff6e34ca", null ],
+    [ "OnSetListPrefsButtonClick", "class_generate_list.html#a1593b7878a18e79c98d2dda88d5e9a61", null ],
+    [ "OnWriteButtonClick", "class_generate_list.html#a3c98cd369741e9972aa4146c338f3b81", null ],
+    [ "Save", "class_generate_list.html#ad8f31aa3b44a2e40d47886a7847da246", null ],
+    [ "SaveAs", "class_generate_list.html#ac3ee4cc4525871b658cc02c66e077de8", null ],
+    [ "ShowRow", "class_generate_list.html#a6928a2ab48e8cee344c76493780c47c1", null ],
+    [ "UpdateGrid", "class_generate_list.html#ad82218f3de028e0fc3c0aef5485073b6", null ],
+    [ "WriteEntries", "class_generate_list.html#a559537b302c31cf69c4702cb2b532d2c", null ],
+    [ "WriteList", "class_generate_list.html#abb6b706df3345a9f257b968b963e41fc", null ],
+    [ "WriteListEntry", "class_generate_list.html#a2ff1f8c368c63f6c574f4a391a2b9a75", null ]
+];

@@ -1,0 +1,331 @@
+\doxysection{C\+:/\+Users/femon/\+Development/wx/clone\+Test/\+Stamp\+Tool/src/gui/\+Compare\+Panel.h File Reference}
+\hypertarget{_compare_panel_8h}{}\label{_compare_panel_8h}\index{C:/Users/femon/Development/wx/cloneTest/StampTool/src/gui/ComparePanel.h@{C:/Users/femon/Development/wx/cloneTest/StampTool/src/gui/ComparePanel.h}}
+{\ttfamily \#include "{}wx/listctrl.\+h"{}}\newline
+{\ttfamily \#include "{}wx/splitter.\+h"{}}\newline
+{\ttfamily \#include "{}catalog/\+Catalog\+Defs.\+h"{}}\newline
+{\ttfamily \#include "{}catalog/\+Merge\+List.\+h"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_compare_panel}{Compare\+Panel}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_compare_panel_8h_aee680ae84fff6924df22048c1ce50784}{ID\+\_\+\+COMPAREPANEL}}~10000
+\item 
+\#define \mbox{\hyperlink{_compare_panel_8h_a37a3a1a19a3b833d0d20bc9fc2e81ebc}{ID\+\_\+\+TARGETFILE}}~10001
+\item 
+\#define \mbox{\hyperlink{_compare_panel_8h_ab9da8c4a5c41d833bec1bafe0ed2f1ff}{ID\+\_\+\+MERGEFILE}}~10002
+\item 
+\#define \mbox{\hyperlink{_compare_panel_8h_a33d1df634ae661c18d69fcb8f5d92e25}{ID\+\_\+\+NEXTENTRY}}~10003
+\item 
+\#define \mbox{\hyperlink{_compare_panel_8h_afcfde8635d53bd3cfe573acdb50684be}{ID\+\_\+\+PREVENTRY}}~10004
+\item 
+\#define \mbox{\hyperlink{_compare_panel_8h_a7d9d5308bbcc92d74cddc3a4f6139ce7}{ID\+\_\+\+SHOWDIFFSONLY}}~10005
+\item 
+\#define \mbox{\hyperlink{_compare_panel_8h_a6da12bcd583a484f5e6f4b32e4197aa0}{ID\+\_\+\+SHOWALL}}~10006
+\item 
+\#define \mbox{\hyperlink{_compare_panel_8h_a91fc6e645dca905491ee1184db3953f7}{ID\+\_\+\+COPYALL}}~10009
+\item 
+\#define \mbox{\hyperlink{_compare_panel_8h_aa816230a75ed97f6ccbd857dcfda4f17}{ID\+\_\+\+UNDOCOPYALL}}~10008
+\item 
+\#define \mbox{\hyperlink{_compare_panel_8h_a7eaf7d80e43c200e3f2760abfd491a5e}{ID\+\_\+\+SCROLLEDWINDOW}}~10010
+\item 
+\#define \mbox{\hyperlink{_compare_panel_8h_a9c0af15f2eb63e9bfe32ce4e534dabc9}{ID\+\_\+\+TARGETFILEPICKER}}~10015
+\item 
+\#define \mbox{\hyperlink{_compare_panel_8h_af5a38f5396c74654326385d8ac46b525}{ID\+\_\+\+MERGEFILEPICKER}}~10017
+\item 
+\#define \mbox{\hyperlink{_compare_panel_8h_acd94d58bc813ce732b3cd1f48dd84ae1}{ID\+\_\+\+LISTCTRL}}~10018
+\item 
+\#define \mbox{\hyperlink{_compare_panel_8h_ae4dd21ab0ccef5a2fa560ad759b93902}{ID\+\_\+\+SPLITTERWINDOW}}~10019
+\item 
+\#define \mbox{\hyperlink{_compare_panel_8h_aa6aae7534c30fcfeb614692f6e9c01dd}{ID\+\_\+\+SCROLLEDWINDOW2}}~10020
+\item 
+\#define \mbox{\hyperlink{_compare_panel_8h_af1fa24a9a4b87024dfe447531d355b47}{ID\+\_\+\+PANEL}}~10021
+\item 
+\#define \mbox{\hyperlink{_compare_panel_8h_a21b4a182b288a7629a6fe3118d522b94}{wx\+ID\+\_\+\+UPDATETAEGET}}~10022
+\item 
+\#define \mbox{\hyperlink{_compare_panel_8h_a42c3e234eafc080290723993070e532a}{wx\+ID\+\_\+\+UPDATEMERGE}}~10023
+\item 
+\#define \mbox{\hyperlink{_compare_panel_8h_a784f2f32dfc3d91a060a2a7c91fc22d6}{ID\+\_\+\+DEEPRADIOBUTTON}}~10024
+\item 
+\#define \mbox{\hyperlink{_compare_panel_8h_ae9d56a32b72b0961a3c82f0e1ceb2aa9}{ID\+\_\+\+SELECTEDRADIOBUTTON}}~10025
+\item 
+\#define \mbox{\hyperlink{_compare_panel_8h_a4caa1de6266cbc10c08cde5bfedd2ae1}{ID\+\_\+\+CHECKLISTBOX}}~10026
+\item 
+\#define \mbox{\hyperlink{_compare_panel_8h_a53bf3bb9bb8c3af952cb4e37812de903}{SYMBOL\+\_\+\+COMPAREPANEL\+\_\+\+STYLE}}~wx\+CAPTION \texorpdfstring{$\vert$}{|} wx\+RESIZE\+\_\+\+BORDER \texorpdfstring{$\vert$}{|} wx\+SYSTEM\+\_\+\+MENU \texorpdfstring{$\vert$}{|} wx\+CLOSE\+\_\+\+BOX \texorpdfstring{$\vert$}{|} wx\+TAB\+\_\+\+TRAVERSAL
+\item 
+\#define \mbox{\hyperlink{_compare_panel_8h_a9a46e22339af85e7c300393d3dcc75d1}{SYMBOL\+\_\+\+COMPAREPANEL\+\_\+\+TITLE}}~\+\_\+("{}Compare\+Panel"{})
+\item 
+\#define \mbox{\hyperlink{_compare_panel_8h_a50a11059622cded71e603c4143bd7c04}{SYMBOL\+\_\+\+COMPAREPANEL\+\_\+\+IDNAME}}~\mbox{\hyperlink{_compare_panel_8h_aee680ae84fff6924df22048c1ce50784}{ID\+\_\+\+COMPAREPANEL}}
+\item 
+\#define \mbox{\hyperlink{_compare_panel_8h_acb35a163cbfa8ec723e55bcb9c60b322}{SYMBOL\+\_\+\+COMPAREPANEL\+\_\+\+SIZE}}~wx\+Size(900, 800)
+\item 
+\#define \mbox{\hyperlink{_compare_panel_8h_aa6c3e898cd15acfad270f55033b4be43}{SYMBOL\+\_\+\+COMPAREPANEL\+\_\+\+POSITION}}~wx\+Default\+Position
+\end{DoxyCompactItemize}
+
+
+\label{doc-define-members}
+\Hypertarget{_compare_panel_8h_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{_compare_panel_8h_a4caa1de6266cbc10c08cde5bfedd2ae1}\index{ComparePanel.h@{ComparePanel.h}!ID\_CHECKLISTBOX@{ID\_CHECKLISTBOX}}
+\index{ID\_CHECKLISTBOX@{ID\_CHECKLISTBOX}!ComparePanel.h@{ComparePanel.h}}
+\doxysubsubsection{\texorpdfstring{ID\_CHECKLISTBOX}{ID\_CHECKLISTBOX}}
+{\footnotesize\ttfamily \label{_compare_panel_8h_a4caa1de6266cbc10c08cde5bfedd2ae1} 
+\#define ID\+\_\+\+CHECKLISTBOX~10026}
+
+
+
+Definition at line \mbox{\hyperlink{_compare_panel_8h_source_l00055}{55}} of file \mbox{\hyperlink{_compare_panel_8h_source}{Compare\+Panel.\+h}}.
+
+\Hypertarget{_compare_panel_8h_aee680ae84fff6924df22048c1ce50784}\index{ComparePanel.h@{ComparePanel.h}!ID\_COMPAREPANEL@{ID\_COMPAREPANEL}}
+\index{ID\_COMPAREPANEL@{ID\_COMPAREPANEL}!ComparePanel.h@{ComparePanel.h}}
+\doxysubsubsection{\texorpdfstring{ID\_COMPAREPANEL}{ID\_COMPAREPANEL}}
+{\footnotesize\ttfamily \label{_compare_panel_8h_aee680ae84fff6924df22048c1ce50784} 
+\#define ID\+\_\+\+COMPAREPANEL~10000}
+
+
+
+Definition at line \mbox{\hyperlink{_compare_panel_8h_source_l00035}{35}} of file \mbox{\hyperlink{_compare_panel_8h_source}{Compare\+Panel.\+h}}.
+
+\Hypertarget{_compare_panel_8h_a91fc6e645dca905491ee1184db3953f7}\index{ComparePanel.h@{ComparePanel.h}!ID\_COPYALL@{ID\_COPYALL}}
+\index{ID\_COPYALL@{ID\_COPYALL}!ComparePanel.h@{ComparePanel.h}}
+\doxysubsubsection{\texorpdfstring{ID\_COPYALL}{ID\_COPYALL}}
+{\footnotesize\ttfamily \label{_compare_panel_8h_a91fc6e645dca905491ee1184db3953f7} 
+\#define ID\+\_\+\+COPYALL~10009}
+
+
+
+Definition at line \mbox{\hyperlink{_compare_panel_8h_source_l00042}{42}} of file \mbox{\hyperlink{_compare_panel_8h_source}{Compare\+Panel.\+h}}.
+
+\Hypertarget{_compare_panel_8h_a784f2f32dfc3d91a060a2a7c91fc22d6}\index{ComparePanel.h@{ComparePanel.h}!ID\_DEEPRADIOBUTTON@{ID\_DEEPRADIOBUTTON}}
+\index{ID\_DEEPRADIOBUTTON@{ID\_DEEPRADIOBUTTON}!ComparePanel.h@{ComparePanel.h}}
+\doxysubsubsection{\texorpdfstring{ID\_DEEPRADIOBUTTON}{ID\_DEEPRADIOBUTTON}}
+{\footnotesize\ttfamily \label{_compare_panel_8h_a784f2f32dfc3d91a060a2a7c91fc22d6} 
+\#define ID\+\_\+\+DEEPRADIOBUTTON~10024}
+
+
+
+Definition at line \mbox{\hyperlink{_compare_panel_8h_source_l00053}{53}} of file \mbox{\hyperlink{_compare_panel_8h_source}{Compare\+Panel.\+h}}.
+
+\Hypertarget{_compare_panel_8h_acd94d58bc813ce732b3cd1f48dd84ae1}\index{ComparePanel.h@{ComparePanel.h}!ID\_LISTCTRL@{ID\_LISTCTRL}}
+\index{ID\_LISTCTRL@{ID\_LISTCTRL}!ComparePanel.h@{ComparePanel.h}}
+\doxysubsubsection{\texorpdfstring{ID\_LISTCTRL}{ID\_LISTCTRL}}
+{\footnotesize\ttfamily \label{_compare_panel_8h_acd94d58bc813ce732b3cd1f48dd84ae1} 
+\#define ID\+\_\+\+LISTCTRL~10018}
+
+
+
+Definition at line \mbox{\hyperlink{_compare_panel_8h_source_l00047}{47}} of file \mbox{\hyperlink{_compare_panel_8h_source}{Compare\+Panel.\+h}}.
+
+\Hypertarget{_compare_panel_8h_ab9da8c4a5c41d833bec1bafe0ed2f1ff}\index{ComparePanel.h@{ComparePanel.h}!ID\_MERGEFILE@{ID\_MERGEFILE}}
+\index{ID\_MERGEFILE@{ID\_MERGEFILE}!ComparePanel.h@{ComparePanel.h}}
+\doxysubsubsection{\texorpdfstring{ID\_MERGEFILE}{ID\_MERGEFILE}}
+{\footnotesize\ttfamily \label{_compare_panel_8h_ab9da8c4a5c41d833bec1bafe0ed2f1ff} 
+\#define ID\+\_\+\+MERGEFILE~10002}
+
+
+
+Definition at line \mbox{\hyperlink{_compare_panel_8h_source_l00037}{37}} of file \mbox{\hyperlink{_compare_panel_8h_source}{Compare\+Panel.\+h}}.
+
+\Hypertarget{_compare_panel_8h_af5a38f5396c74654326385d8ac46b525}\index{ComparePanel.h@{ComparePanel.h}!ID\_MERGEFILEPICKER@{ID\_MERGEFILEPICKER}}
+\index{ID\_MERGEFILEPICKER@{ID\_MERGEFILEPICKER}!ComparePanel.h@{ComparePanel.h}}
+\doxysubsubsection{\texorpdfstring{ID\_MERGEFILEPICKER}{ID\_MERGEFILEPICKER}}
+{\footnotesize\ttfamily \label{_compare_panel_8h_af5a38f5396c74654326385d8ac46b525} 
+\#define ID\+\_\+\+MERGEFILEPICKER~10017}
+
+
+
+Definition at line \mbox{\hyperlink{_compare_panel_8h_source_l00046}{46}} of file \mbox{\hyperlink{_compare_panel_8h_source}{Compare\+Panel.\+h}}.
+
+\Hypertarget{_compare_panel_8h_a33d1df634ae661c18d69fcb8f5d92e25}\index{ComparePanel.h@{ComparePanel.h}!ID\_NEXTENTRY@{ID\_NEXTENTRY}}
+\index{ID\_NEXTENTRY@{ID\_NEXTENTRY}!ComparePanel.h@{ComparePanel.h}}
+\doxysubsubsection{\texorpdfstring{ID\_NEXTENTRY}{ID\_NEXTENTRY}}
+{\footnotesize\ttfamily \label{_compare_panel_8h_a33d1df634ae661c18d69fcb8f5d92e25} 
+\#define ID\+\_\+\+NEXTENTRY~10003}
+
+
+
+Definition at line \mbox{\hyperlink{_compare_panel_8h_source_l00038}{38}} of file \mbox{\hyperlink{_compare_panel_8h_source}{Compare\+Panel.\+h}}.
+
+\Hypertarget{_compare_panel_8h_af1fa24a9a4b87024dfe447531d355b47}\index{ComparePanel.h@{ComparePanel.h}!ID\_PANEL@{ID\_PANEL}}
+\index{ID\_PANEL@{ID\_PANEL}!ComparePanel.h@{ComparePanel.h}}
+\doxysubsubsection{\texorpdfstring{ID\_PANEL}{ID\_PANEL}}
+{\footnotesize\ttfamily \label{_compare_panel_8h_af1fa24a9a4b87024dfe447531d355b47} 
+\#define ID\+\_\+\+PANEL~10021}
+
+
+
+Definition at line \mbox{\hyperlink{_compare_panel_8h_source_l00050}{50}} of file \mbox{\hyperlink{_compare_panel_8h_source}{Compare\+Panel.\+h}}.
+
+\Hypertarget{_compare_panel_8h_afcfde8635d53bd3cfe573acdb50684be}\index{ComparePanel.h@{ComparePanel.h}!ID\_PREVENTRY@{ID\_PREVENTRY}}
+\index{ID\_PREVENTRY@{ID\_PREVENTRY}!ComparePanel.h@{ComparePanel.h}}
+\doxysubsubsection{\texorpdfstring{ID\_PREVENTRY}{ID\_PREVENTRY}}
+{\footnotesize\ttfamily \label{_compare_panel_8h_afcfde8635d53bd3cfe573acdb50684be} 
+\#define ID\+\_\+\+PREVENTRY~10004}
+
+
+
+Definition at line \mbox{\hyperlink{_compare_panel_8h_source_l00039}{39}} of file \mbox{\hyperlink{_compare_panel_8h_source}{Compare\+Panel.\+h}}.
+
+\Hypertarget{_compare_panel_8h_a7eaf7d80e43c200e3f2760abfd491a5e}\index{ComparePanel.h@{ComparePanel.h}!ID\_SCROLLEDWINDOW@{ID\_SCROLLEDWINDOW}}
+\index{ID\_SCROLLEDWINDOW@{ID\_SCROLLEDWINDOW}!ComparePanel.h@{ComparePanel.h}}
+\doxysubsubsection{\texorpdfstring{ID\_SCROLLEDWINDOW}{ID\_SCROLLEDWINDOW}}
+{\footnotesize\ttfamily \label{_compare_panel_8h_a7eaf7d80e43c200e3f2760abfd491a5e} 
+\#define ID\+\_\+\+SCROLLEDWINDOW~10010}
+
+
+
+Definition at line \mbox{\hyperlink{_compare_panel_8h_source_l00044}{44}} of file \mbox{\hyperlink{_compare_panel_8h_source}{Compare\+Panel.\+h}}.
+
+\Hypertarget{_compare_panel_8h_aa6aae7534c30fcfeb614692f6e9c01dd}\index{ComparePanel.h@{ComparePanel.h}!ID\_SCROLLEDWINDOW2@{ID\_SCROLLEDWINDOW2}}
+\index{ID\_SCROLLEDWINDOW2@{ID\_SCROLLEDWINDOW2}!ComparePanel.h@{ComparePanel.h}}
+\doxysubsubsection{\texorpdfstring{ID\_SCROLLEDWINDOW2}{ID\_SCROLLEDWINDOW2}}
+{\footnotesize\ttfamily \label{_compare_panel_8h_aa6aae7534c30fcfeb614692f6e9c01dd} 
+\#define ID\+\_\+\+SCROLLEDWINDOW2~10020}
+
+
+
+Definition at line \mbox{\hyperlink{_compare_panel_8h_source_l00049}{49}} of file \mbox{\hyperlink{_compare_panel_8h_source}{Compare\+Panel.\+h}}.
+
+\Hypertarget{_compare_panel_8h_ae9d56a32b72b0961a3c82f0e1ceb2aa9}\index{ComparePanel.h@{ComparePanel.h}!ID\_SELECTEDRADIOBUTTON@{ID\_SELECTEDRADIOBUTTON}}
+\index{ID\_SELECTEDRADIOBUTTON@{ID\_SELECTEDRADIOBUTTON}!ComparePanel.h@{ComparePanel.h}}
+\doxysubsubsection{\texorpdfstring{ID\_SELECTEDRADIOBUTTON}{ID\_SELECTEDRADIOBUTTON}}
+{\footnotesize\ttfamily \label{_compare_panel_8h_ae9d56a32b72b0961a3c82f0e1ceb2aa9} 
+\#define ID\+\_\+\+SELECTEDRADIOBUTTON~10025}
+
+
+
+Definition at line \mbox{\hyperlink{_compare_panel_8h_source_l00054}{54}} of file \mbox{\hyperlink{_compare_panel_8h_source}{Compare\+Panel.\+h}}.
+
+\Hypertarget{_compare_panel_8h_a6da12bcd583a484f5e6f4b32e4197aa0}\index{ComparePanel.h@{ComparePanel.h}!ID\_SHOWALL@{ID\_SHOWALL}}
+\index{ID\_SHOWALL@{ID\_SHOWALL}!ComparePanel.h@{ComparePanel.h}}
+\doxysubsubsection{\texorpdfstring{ID\_SHOWALL}{ID\_SHOWALL}}
+{\footnotesize\ttfamily \label{_compare_panel_8h_a6da12bcd583a484f5e6f4b32e4197aa0} 
+\#define ID\+\_\+\+SHOWALL~10006}
+
+
+
+Definition at line \mbox{\hyperlink{_compare_panel_8h_source_l00041}{41}} of file \mbox{\hyperlink{_compare_panel_8h_source}{Compare\+Panel.\+h}}.
+
+\Hypertarget{_compare_panel_8h_a7d9d5308bbcc92d74cddc3a4f6139ce7}\index{ComparePanel.h@{ComparePanel.h}!ID\_SHOWDIFFSONLY@{ID\_SHOWDIFFSONLY}}
+\index{ID\_SHOWDIFFSONLY@{ID\_SHOWDIFFSONLY}!ComparePanel.h@{ComparePanel.h}}
+\doxysubsubsection{\texorpdfstring{ID\_SHOWDIFFSONLY}{ID\_SHOWDIFFSONLY}}
+{\footnotesize\ttfamily \label{_compare_panel_8h_a7d9d5308bbcc92d74cddc3a4f6139ce7} 
+\#define ID\+\_\+\+SHOWDIFFSONLY~10005}
+
+
+
+Definition at line \mbox{\hyperlink{_compare_panel_8h_source_l00040}{40}} of file \mbox{\hyperlink{_compare_panel_8h_source}{Compare\+Panel.\+h}}.
+
+\Hypertarget{_compare_panel_8h_ae4dd21ab0ccef5a2fa560ad759b93902}\index{ComparePanel.h@{ComparePanel.h}!ID\_SPLITTERWINDOW@{ID\_SPLITTERWINDOW}}
+\index{ID\_SPLITTERWINDOW@{ID\_SPLITTERWINDOW}!ComparePanel.h@{ComparePanel.h}}
+\doxysubsubsection{\texorpdfstring{ID\_SPLITTERWINDOW}{ID\_SPLITTERWINDOW}}
+{\footnotesize\ttfamily \label{_compare_panel_8h_ae4dd21ab0ccef5a2fa560ad759b93902} 
+\#define ID\+\_\+\+SPLITTERWINDOW~10019}
+
+
+
+Definition at line \mbox{\hyperlink{_compare_panel_8h_source_l00048}{48}} of file \mbox{\hyperlink{_compare_panel_8h_source}{Compare\+Panel.\+h}}.
+
+\Hypertarget{_compare_panel_8h_a37a3a1a19a3b833d0d20bc9fc2e81ebc}\index{ComparePanel.h@{ComparePanel.h}!ID\_TARGETFILE@{ID\_TARGETFILE}}
+\index{ID\_TARGETFILE@{ID\_TARGETFILE}!ComparePanel.h@{ComparePanel.h}}
+\doxysubsubsection{\texorpdfstring{ID\_TARGETFILE}{ID\_TARGETFILE}}
+{\footnotesize\ttfamily \label{_compare_panel_8h_a37a3a1a19a3b833d0d20bc9fc2e81ebc} 
+\#define ID\+\_\+\+TARGETFILE~10001}
+
+
+
+Definition at line \mbox{\hyperlink{_compare_panel_8h_source_l00036}{36}} of file \mbox{\hyperlink{_compare_panel_8h_source}{Compare\+Panel.\+h}}.
+
+\Hypertarget{_compare_panel_8h_a9c0af15f2eb63e9bfe32ce4e534dabc9}\index{ComparePanel.h@{ComparePanel.h}!ID\_TARGETFILEPICKER@{ID\_TARGETFILEPICKER}}
+\index{ID\_TARGETFILEPICKER@{ID\_TARGETFILEPICKER}!ComparePanel.h@{ComparePanel.h}}
+\doxysubsubsection{\texorpdfstring{ID\_TARGETFILEPICKER}{ID\_TARGETFILEPICKER}}
+{\footnotesize\ttfamily \label{_compare_panel_8h_a9c0af15f2eb63e9bfe32ce4e534dabc9} 
+\#define ID\+\_\+\+TARGETFILEPICKER~10015}
+
+
+
+Definition at line \mbox{\hyperlink{_compare_panel_8h_source_l00045}{45}} of file \mbox{\hyperlink{_compare_panel_8h_source}{Compare\+Panel.\+h}}.
+
+\Hypertarget{_compare_panel_8h_aa816230a75ed97f6ccbd857dcfda4f17}\index{ComparePanel.h@{ComparePanel.h}!ID\_UNDOCOPYALL@{ID\_UNDOCOPYALL}}
+\index{ID\_UNDOCOPYALL@{ID\_UNDOCOPYALL}!ComparePanel.h@{ComparePanel.h}}
+\doxysubsubsection{\texorpdfstring{ID\_UNDOCOPYALL}{ID\_UNDOCOPYALL}}
+{\footnotesize\ttfamily \label{_compare_panel_8h_aa816230a75ed97f6ccbd857dcfda4f17} 
+\#define ID\+\_\+\+UNDOCOPYALL~10008}
+
+
+
+Definition at line \mbox{\hyperlink{_compare_panel_8h_source_l00043}{43}} of file \mbox{\hyperlink{_compare_panel_8h_source}{Compare\+Panel.\+h}}.
+
+\Hypertarget{_compare_panel_8h_a50a11059622cded71e603c4143bd7c04}\index{ComparePanel.h@{ComparePanel.h}!SYMBOL\_COMPAREPANEL\_IDNAME@{SYMBOL\_COMPAREPANEL\_IDNAME}}
+\index{SYMBOL\_COMPAREPANEL\_IDNAME@{SYMBOL\_COMPAREPANEL\_IDNAME}!ComparePanel.h@{ComparePanel.h}}
+\doxysubsubsection{\texorpdfstring{SYMBOL\_COMPAREPANEL\_IDNAME}{SYMBOL\_COMPAREPANEL\_IDNAME}}
+{\footnotesize\ttfamily \label{_compare_panel_8h_a50a11059622cded71e603c4143bd7c04} 
+\#define SYMBOL\+\_\+\+COMPAREPANEL\+\_\+\+IDNAME~\mbox{\hyperlink{_compare_panel_8h_aee680ae84fff6924df22048c1ce50784}{ID\+\_\+\+COMPAREPANEL}}}
+
+
+
+Definition at line \mbox{\hyperlink{_compare_panel_8h_source_l00058}{58}} of file \mbox{\hyperlink{_compare_panel_8h_source}{Compare\+Panel.\+h}}.
+
+\Hypertarget{_compare_panel_8h_aa6c3e898cd15acfad270f55033b4be43}\index{ComparePanel.h@{ComparePanel.h}!SYMBOL\_COMPAREPANEL\_POSITION@{SYMBOL\_COMPAREPANEL\_POSITION}}
+\index{SYMBOL\_COMPAREPANEL\_POSITION@{SYMBOL\_COMPAREPANEL\_POSITION}!ComparePanel.h@{ComparePanel.h}}
+\doxysubsubsection{\texorpdfstring{SYMBOL\_COMPAREPANEL\_POSITION}{SYMBOL\_COMPAREPANEL\_POSITION}}
+{\footnotesize\ttfamily \label{_compare_panel_8h_aa6c3e898cd15acfad270f55033b4be43} 
+\#define SYMBOL\+\_\+\+COMPAREPANEL\+\_\+\+POSITION~wx\+Default\+Position}
+
+
+
+Definition at line \mbox{\hyperlink{_compare_panel_8h_source_l00060}{60}} of file \mbox{\hyperlink{_compare_panel_8h_source}{Compare\+Panel.\+h}}.
+
+\Hypertarget{_compare_panel_8h_acb35a163cbfa8ec723e55bcb9c60b322}\index{ComparePanel.h@{ComparePanel.h}!SYMBOL\_COMPAREPANEL\_SIZE@{SYMBOL\_COMPAREPANEL\_SIZE}}
+\index{SYMBOL\_COMPAREPANEL\_SIZE@{SYMBOL\_COMPAREPANEL\_SIZE}!ComparePanel.h@{ComparePanel.h}}
+\doxysubsubsection{\texorpdfstring{SYMBOL\_COMPAREPANEL\_SIZE}{SYMBOL\_COMPAREPANEL\_SIZE}}
+{\footnotesize\ttfamily \label{_compare_panel_8h_acb35a163cbfa8ec723e55bcb9c60b322} 
+\#define SYMBOL\+\_\+\+COMPAREPANEL\+\_\+\+SIZE~wx\+Size(900, 800)}
+
+
+
+Definition at line \mbox{\hyperlink{_compare_panel_8h_source_l00059}{59}} of file \mbox{\hyperlink{_compare_panel_8h_source}{Compare\+Panel.\+h}}.
+
+\Hypertarget{_compare_panel_8h_a53bf3bb9bb8c3af952cb4e37812de903}\index{ComparePanel.h@{ComparePanel.h}!SYMBOL\_COMPAREPANEL\_STYLE@{SYMBOL\_COMPAREPANEL\_STYLE}}
+\index{SYMBOL\_COMPAREPANEL\_STYLE@{SYMBOL\_COMPAREPANEL\_STYLE}!ComparePanel.h@{ComparePanel.h}}
+\doxysubsubsection{\texorpdfstring{SYMBOL\_COMPAREPANEL\_STYLE}{SYMBOL\_COMPAREPANEL\_STYLE}}
+{\footnotesize\ttfamily \label{_compare_panel_8h_a53bf3bb9bb8c3af952cb4e37812de903} 
+\#define SYMBOL\+\_\+\+COMPAREPANEL\+\_\+\+STYLE~wx\+CAPTION \texorpdfstring{$\vert$}{|} wx\+RESIZE\+\_\+\+BORDER \texorpdfstring{$\vert$}{|} wx\+SYSTEM\+\_\+\+MENU \texorpdfstring{$\vert$}{|} wx\+CLOSE\+\_\+\+BOX \texorpdfstring{$\vert$}{|} wx\+TAB\+\_\+\+TRAVERSAL}
+
+
+
+Definition at line \mbox{\hyperlink{_compare_panel_8h_source_l00056}{56}} of file \mbox{\hyperlink{_compare_panel_8h_source}{Compare\+Panel.\+h}}.
+
+\Hypertarget{_compare_panel_8h_a9a46e22339af85e7c300393d3dcc75d1}\index{ComparePanel.h@{ComparePanel.h}!SYMBOL\_COMPAREPANEL\_TITLE@{SYMBOL\_COMPAREPANEL\_TITLE}}
+\index{SYMBOL\_COMPAREPANEL\_TITLE@{SYMBOL\_COMPAREPANEL\_TITLE}!ComparePanel.h@{ComparePanel.h}}
+\doxysubsubsection{\texorpdfstring{SYMBOL\_COMPAREPANEL\_TITLE}{SYMBOL\_COMPAREPANEL\_TITLE}}
+{\footnotesize\ttfamily \label{_compare_panel_8h_a9a46e22339af85e7c300393d3dcc75d1} 
+\#define SYMBOL\+\_\+\+COMPAREPANEL\+\_\+\+TITLE~\+\_\+("{}Compare\+Panel"{})}
+
+
+
+Definition at line \mbox{\hyperlink{_compare_panel_8h_source_l00057}{57}} of file \mbox{\hyperlink{_compare_panel_8h_source}{Compare\+Panel.\+h}}.
+
+\Hypertarget{_compare_panel_8h_a42c3e234eafc080290723993070e532a}\index{ComparePanel.h@{ComparePanel.h}!wxID\_UPDATEMERGE@{wxID\_UPDATEMERGE}}
+\index{wxID\_UPDATEMERGE@{wxID\_UPDATEMERGE}!ComparePanel.h@{ComparePanel.h}}
+\doxysubsubsection{\texorpdfstring{wxID\_UPDATEMERGE}{wxID\_UPDATEMERGE}}
+{\footnotesize\ttfamily \label{_compare_panel_8h_a42c3e234eafc080290723993070e532a} 
+\#define wx\+ID\+\_\+\+UPDATEMERGE~10023}
+
+
+
+Definition at line \mbox{\hyperlink{_compare_panel_8h_source_l00052}{52}} of file \mbox{\hyperlink{_compare_panel_8h_source}{Compare\+Panel.\+h}}.
+
+\Hypertarget{_compare_panel_8h_a21b4a182b288a7629a6fe3118d522b94}\index{ComparePanel.h@{ComparePanel.h}!wxID\_UPDATETAEGET@{wxID\_UPDATETAEGET}}
+\index{wxID\_UPDATETAEGET@{wxID\_UPDATETAEGET}!ComparePanel.h@{ComparePanel.h}}
+\doxysubsubsection{\texorpdfstring{wxID\_UPDATETAEGET}{wxID\_UPDATETAEGET}}
+{\footnotesize\ttfamily \label{_compare_panel_8h_a21b4a182b288a7629a6fe3118d522b94} 
+\#define wx\+ID\+\_\+\+UPDATETAEGET~10022}
+
+
+
+Definition at line \mbox{\hyperlink{_compare_panel_8h_source_l00051}{51}} of file \mbox{\hyperlink{_compare_panel_8h_source}{Compare\+Panel.\+h}}.
+

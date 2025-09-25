@@ -1,0 +1,48 @@
+\doxysection{Stamp\+Tool\+App.\+h}
+\hypertarget{_stamp_tool_app_8h_source}{}\label{_stamp_tool_app_8h_source}\index{C:/Users/femon/Development/wx/cloneTest/StampTool/src/StampToolApp.h@{C:/Users/femon/Development/wx/cloneTest/StampTool/src/StampToolApp.h}}
+\mbox{\hyperlink{_stamp_tool_app_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_app_8h_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_app_8h_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_app_8h_source_l00025}00025\ \textcolor{preprocessor}{\#ifndef\ \_STAMPTOOLAPP\_H\_}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_app_8h_source_l00026}00026\ \textcolor{preprocessor}{\#define\ \_STAMPTOOLAPP\_H\_}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_app_8h_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_app_8h_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_app_8h_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_app_8h_source_l00043}00043\ \textcolor{preprocessor}{\#include\ "{}wx/image.h"{}}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_app_8h_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_app_8h_source_l00045}00045\ \textcolor{comment}{//\#include\ "{}gui/StampToolFrame.h"{}}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_app_8h_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_app_8h_source_l00047}00047\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_app_data}{AppData}};}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_app_8h_source_l00048}00048\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_stamp_tool_frame}{StampToolFrame}};}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_app_8h_source_l00054}\mbox{\hyperlink{class_stamp_tool_app}{00054}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_stamp_tool_app_af0fe4dd5973de76b88cc9ebdc126aa61}{StampToolApp}}\ :\ \textcolor{keyword}{public}\ wxApp\ \{}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_app_8h_source_l00055}00055\ \ \ \ \ DECLARE\_CLASS(\ \mbox{\hyperlink{class_stamp_tool_app_af0fe4dd5973de76b88cc9ebdc126aa61}{StampToolApp}}\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_app_8h_source_l00056}00056\ \ \ \ \ \ \ \ \ DECLARE\_EVENT\_TABLE(\ )}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_app_8h_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_app_8h_source_l00058}00058\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_app_8h_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_app_8h_source_l00060}00060\ \ \ \ \ \textcolor{comment}{//\ Constructor}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_app_8h_source_l00061}00061\ \ \ \ \ \mbox{\hyperlink{class_stamp_tool_app_af0fe4dd5973de76b88cc9ebdc126aa61}{StampToolApp}}(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_app_8h_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_app_8h_source_l00067}00067\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_stamp_tool_app_aca3808aba8a9870284d68c28d3f71b46}{Init}}(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_app_8h_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_app_8h_source_l00069}00069\ \ \ \ \ \textcolor{comment}{//\ Initialises\ the\ application}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_app_8h_source_l00070}00070\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_stamp_tool_app_a812f605f6d217b5ccb7e9bd7e64a4cc9}{OnInit}}(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_app_8h_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_app_8h_source_l00075}00075\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_stamp_tool_app_a08509e424ba5418983dd992a89f6269d}{OnExit}}(\ );}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_app_8h_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_app_8h_source_l00077}\mbox{\hyperlink{class_stamp_tool_app_aa61e0b567b43824e95844a88902537f7}{00077}}\ \ \ \ \ \mbox{\hyperlink{class_stamp_tool_frame}{StampToolFrame}}*\ \mbox{\hyperlink{class_stamp_tool_app_aa61e0b567b43824e95844a88902537f7}{GetFrame}}(\ )\ \{\ \textcolor{keywordflow}{return}\ m\_frame;\ \};}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_app_8h_source_l00078}\mbox{\hyperlink{class_stamp_tool_app_aa8b7564f816e9e3fa9b7a70d319eed2e}{00078}}\ \ \ \ \ \mbox{\hyperlink{class_app_data}{AppData}}*\ \mbox{\hyperlink{class_stamp_tool_app_aa8b7564f816e9e3fa9b7a70d319eed2e}{GetAppData}}(\ )\ \{\ \textcolor{keywordflow}{return}\ m\_AppData;\ \};}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_app_8h_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_app_8h_source_l00080}00080\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_app_8h_source_l00081}00081\ \ \ \ \ \mbox{\hyperlink{class_stamp_tool_frame}{StampToolFrame}}*\ m\_frame;}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_app_8h_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_app_8h_source_l00083}00083\ \ \ \ \ \textcolor{comment}{//\ application\ data\ }}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_app_8h_source_l00084}00084\ \ \ \ \ \mbox{\hyperlink{class_app_data}{AppData}}*\ m\_AppData;}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_app_8h_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_app_8h_source_l00086}00086\ \};}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_app_8h_source_l00087}00087\ }
+\DoxyCodeLine{\Hypertarget{_stamp_tool_app_8h_source_l00088}00088\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_stamp_tool_app_8h_source_l00089}00089\ }
+
+\end{DoxyCode}

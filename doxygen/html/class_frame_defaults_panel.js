@@ -1,0 +1,36 @@
+var class_frame_defaults_panel =
+[
+    [ "FrameDefaultsPanelGuiDefs", "class_frame_defaults_panel.html#ac7a416391c92a3e4047669c650f885ab", [
+      [ "ID_NOTEBOOKPOSITIONPANEL", "class_frame_defaults_panel.html#ac7a416391c92a3e4047669c650f885abaf7b29c5dd6535087dd5ccc4680852d25", null ],
+      [ "ID_LastID", "class_frame_defaults_panel.html#ac7a416391c92a3e4047669c650f885aba36bbf5adfee87392d66c62f4aa9573a7", null ]
+    ] ],
+    [ "FrameDefaultsPanel", "class_frame_defaults_panel.html#ab9a0e572f93a8a6452f2578fa1a75cd9", null ],
+    [ "FrameDefaultsPanel", "class_frame_defaults_panel.html#aa43d23c1f840b3b106fe155c24dc032c", null ],
+    [ "~FrameDefaultsPanel", "class_frame_defaults_panel.html#a901a87ee2cc043dfbf303fc5e85ffba1", null ],
+    [ "Create", "class_frame_defaults_panel.html#a510706fe796983b427a3569618101ebf", null ],
+    [ "CreateControls", "class_frame_defaults_panel.html#a8e723457d3ac9f8024efba4085668015", null ],
+    [ "GetFixedSpacingSize", "class_frame_defaults_panel.html#a448e6a7a93056024187eec970c6e1514", null ],
+    [ "Init", "class_frame_defaults_panel.html#ab39acd13365bce64f2c284f060cbc9af", null ],
+    [ "OnAlignmentButtonSelected", "class_frame_defaults_panel.html#a9b51703037ff115748eb04fe10ae003f", null ],
+    [ "OnAlignmentModeButtonSelected", "class_frame_defaults_panel.html#ad30ab05932bf32c81a66076196cd45db", null ],
+    [ "OnBottomContentMargin", "class_frame_defaults_panel.html#a0b1a9dcb2bb6e1f930c44350050c8bc0", null ],
+    [ "OnCalculatedClick", "class_frame_defaults_panel.html#a4aeba8be24728c9309ba33638f9200c0", null ],
+    [ "OnFixedClick", "class_frame_defaults_panel.html#a85ab1e8d30770a19bef5ac2b88cf46ec", null ],
+    [ "OnFrameCheckboxClick", "class_frame_defaults_panel.html#a416d74c0377711902ad39ef424994186", null ],
+    [ "OnLeftContentMargin", "class_frame_defaults_panel.html#aac603d3f76668ab22c77632dd3763358", null ],
+    [ "OnNameLocationButtonSelected", "class_frame_defaults_panel.html#a99ba8e0809ee1ec6ed456bb7eee0cc4e", null ],
+    [ "OnRightContentMargin", "class_frame_defaults_panel.html#a05ef0e53b8b53def83635f5f5885efb7", null ],
+    [ "OnSubTitleCheckboxClick", "class_frame_defaults_panel.html#a053b54c7174707963440856fdc959d32", null ],
+    [ "OnTitleCheckboxClick", "class_frame_defaults_panel.html#a4d7f3b9055b67bba621b462e2cff5483", null ],
+    [ "OnTopContentMargin", "class_frame_defaults_panel.html#a51c0055961cfa4da3165b4f2ae54ddd3", null ],
+    [ "SetAlignmentMode", "class_frame_defaults_panel.html#ae50d792bb620b63ec69d261c09676c87", null ],
+    [ "SetBottomContentMargin", "class_frame_defaults_panel.html#aa7c35a8e4d8d871f99c7a39dd4d0c692", null ],
+    [ "SetFixedSpacing", "class_frame_defaults_panel.html#a177d4b151ce9df2cfb23dd1e81923672", null ],
+    [ "SetFixedSpacingSize", "class_frame_defaults_panel.html#abbac653b96b0fb1bccdf41f6294c8978", null ],
+    [ "SetLeftContentMargin", "class_frame_defaults_panel.html#ad446a492c8922bf7d8d0042a45d9b7be", null ],
+    [ "SetRightContentMargin", "class_frame_defaults_panel.html#a5cf2b7bee76190a3a713aa13075425c7", null ],
+    [ "SetTopContentMargin", "class_frame_defaults_panel.html#a33a0867eb1ef559423e08844324a75cb", null ],
+    [ "SetupDialog", "class_frame_defaults_panel.html#aa1fc7110b8b6e3b9be2986a2468b3531", null ],
+    [ "Update", "class_frame_defaults_panel.html#a5b1e7490729879d7e6c74cd43bca48d0", null ],
+    [ "UpdateControls", "class_frame_defaults_panel.html#a14593ad7e572f4e83ec5876db81866c3", null ]
+];

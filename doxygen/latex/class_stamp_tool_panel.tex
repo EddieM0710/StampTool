@@ -1,0 +1,370 @@
+\doxysection{Stamp\+Tool\+Panel Class Reference}
+\hypertarget{class_stamp_tool_panel}{}\label{class_stamp_tool_panel}\index{StampToolPanel@{StampToolPanel}}
+
+
+\doxylink{class_stamp_tool_panel}{Stamp\+Tool\+Panel} is the main window class for the application, It contains wx\+Notebook with the the \doxylink{class_stamp_description_panel}{Stamp\+Description\+Panel} and \doxylink{class_album_panel}{Album\+Panel} as pages. \doxylink{class_stamp_tool_panel}{Stamp\+Tool\+Panel} inherits from wx\+Panel.  
+
+
+
+
+{\ttfamily \#include $<$Stamp\+Tool\+Panel.\+h$>$}
+
+Inheritance diagram for Stamp\+Tool\+Panel\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_stamp_tool_panel}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{class_stamp_tool_panel_a81c28ad3ae6252a0e08982c660afaafe}{Stamp\+Tool\+Panel\+Gui\+Defs}} \{ \newline
+\mbox{\hyperlink{class_stamp_tool_panel_a81c28ad3ae6252a0e08982c660afaafea5d3b8ce7d2ef02c64dc996270c95d3a5}{ID\+\_\+\+CATALOGSPLITTERWINDOW}} = ID\+\_\+\+STAMPTOOLPANEL + 1
+, \mbox{\hyperlink{class_stamp_tool_panel_a81c28ad3ae6252a0e08982c660afaafeaf3977c7a0d7a41ab0c479ba1b278c020}{ID\+\_\+\+CATALOGPAGE}}
+, \mbox{\hyperlink{class_stamp_tool_panel_a81c28ad3ae6252a0e08982c660afaafea261e29e000c45c8bb9c2058852a8d298}{ID\+\_\+\+STAMPTREECTRL}}
+, \mbox{\hyperlink{class_stamp_tool_panel_a81c28ad3ae6252a0e08982c660afaafea613ccd58152b0ab69ae4cbb2d04b1755}{ID\+\_\+\+NOTEBOOK}}
+, \newline
+\mbox{\hyperlink{class_stamp_tool_panel_a81c28ad3ae6252a0e08982c660afaafeaa566d2318d10cbe711fc15bef9597a94}{ID\+\_\+\+DESCRIPTIONPANELFOREIGN}}
+, \mbox{\hyperlink{class_stamp_tool_panel_a81c28ad3ae6252a0e08982c660afaafea9b102eb71e3ee333cf2ba43e7078c491}{ID\+\_\+\+GALLERYSCROLLEDWINDOW}}
+, \mbox{\hyperlink{class_stamp_tool_panel_a81c28ad3ae6252a0e08982c660afaafeac8dd653e34a6e8494468863c405c0757}{ID\+\_\+\+TITLETEXTCTRL}}
+, \mbox{\hyperlink{class_stamp_tool_panel_a81c28ad3ae6252a0e08982c660afaafeac9c53837dc6590637bac7cada49c7109}{ID\+\_\+\+STAMPTOOL}}
+, \newline
+\mbox{\hyperlink{class_stamp_tool_panel_a81c28ad3ae6252a0e08982c660afaafeacb0b45394657c6bdb2c44f932da7bfbe}{ID\+\_\+\+ALBUMSPLITTERWINDOWFOREIGN}}
+, \mbox{\hyperlink{class_stamp_tool_panel_a81c28ad3ae6252a0e08982c660afaafea80e9338b81c178cbfcf5c4c2bfe93eda}{ID\+\_\+\+GENERTELISTFOREIGN}}
+, \mbox{\hyperlink{class_stamp_tool_panel_a81c28ad3ae6252a0e08982c660afaafea8d7b91e5c87b628524079ca81228fa42}{ID\+\_\+\+IMAGEALLERYPANEL}}
+, \mbox{\hyperlink{class_stamp_tool_panel_a81c28ad3ae6252a0e08982c660afaafead1367c55e5295b9356fe9ae99d7aa7bf}{ID\+\_\+\+IMAGEALLERYPANEL1}}
+, \newline
+\mbox{\hyperlink{class_stamp_tool_panel_a81c28ad3ae6252a0e08982c660afaafead1152e2b2f1a0f41948757277aa0f436}{ID\+\_\+\+DESIGNPAGE}}
+, \mbox{\hyperlink{class_stamp_tool_panel_a81c28ad3ae6252a0e08982c660afaafea29544e4f1d988df04830cfc57d7f26e4}{ID\+\_\+\+DESIGNSPLITTERWINDOW}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_stamp_tool_panel_a2187f9e5f05708d0093115614122ed13}{Stamp\+Tool\+Panel}} ()
+\item 
+\mbox{\hyperlink{class_stamp_tool_panel_af030b7706f26fc08fe11929f59996544}{Stamp\+Tool\+Panel}} (wx\+Window \texorpdfstring{$\ast$}{*}parent, wx\+Window\+ID id=\mbox{\hyperlink{_gui_defs_8h_a6329898a126babcdaa295242c115a11ea85566d4ee2cad3409427782e64efbff0}{ID\+\_\+\+STAMPTOOLPANEL}}, const wx\+Point \&pos=\mbox{\hyperlink{_stamp_tool_panel_8h_a25edcde3ae4bcbd0093cb17cb54ec39d}{SYMBOL\+\_\+\+STAMPTOOLPANEL\+\_\+\+POSITION}}, const wx\+Size \&size=\mbox{\hyperlink{_stamp_tool_panel_8h_a39aee1c032edf2b154e29c84448c8b68}{SYMBOL\+\_\+\+STAMPTOOLPANEL\+\_\+\+SIZE}}, long style=\mbox{\hyperlink{_stamp_tool_panel_8h_a3dc1107f471a64800ac7ac27b9366865}{SYMBOL\+\_\+\+STAMPTOOLPANEL\+\_\+\+STYLE}})
+\item 
+bool \mbox{\hyperlink{class_stamp_tool_panel_aed9151435b0fd3df016259ea205902fb}{Create}} (wx\+Window \texorpdfstring{$\ast$}{*}parent, wx\+Window\+ID id=\mbox{\hyperlink{_gui_defs_8h_a6329898a126babcdaa295242c115a11ea85566d4ee2cad3409427782e64efbff0}{ID\+\_\+\+STAMPTOOLPANEL}}, const wx\+Point \&pos=\mbox{\hyperlink{_stamp_tool_panel_8h_a25edcde3ae4bcbd0093cb17cb54ec39d}{SYMBOL\+\_\+\+STAMPTOOLPANEL\+\_\+\+POSITION}}, const wx\+Size \&size=\mbox{\hyperlink{_stamp_tool_panel_8h_a39aee1c032edf2b154e29c84448c8b68}{SYMBOL\+\_\+\+STAMPTOOLPANEL\+\_\+\+SIZE}}, long style=\mbox{\hyperlink{_stamp_tool_panel_8h_a3dc1107f471a64800ac7ac27b9366865}{SYMBOL\+\_\+\+STAMPTOOLPANEL\+\_\+\+STYLE}})
+\item 
+\mbox{\hyperlink{class_stamp_tool_panel_a63c9b486e4f4a1f113de6c5ebb708676}{\texorpdfstring{$\sim$}{\string~}\+Stamp\+Tool\+Panel}} ()
+\item 
+void \mbox{\hyperlink{class_stamp_tool_panel_a45ea9c32a2a9d5d066d546f1456714ba}{Create\+Controls}} ()
+\item 
+\mbox{\hyperlink{class_album_panel}{Album\+Panel}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_stamp_tool_panel_ad7ba953208ca9ab457328626aa9dba96}{Get\+Album\+Panel}} ()
+\item 
+\mbox{\hyperlink{class_album_tree_panel}{Album\+Tree\+Panel}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_stamp_tool_panel_aadd85f5dfb453ba1f9aff4728d7dc8f1}{Get\+Album\+Tree\+Panel}} ()
+\item 
+\mbox{\hyperlink{class_catalog_panel}{Catalog\+Panel}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_stamp_tool_panel_a6d6fa57fd8e78ed8f0c7ba325934c2c3}{Get\+Catalog\+Page\+Panel}} ()
+\item 
+\mbox{\hyperlink{class_generate_list}{Generate\+List}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_stamp_tool_panel_a680cac5c9912ec81f5c151c7cdb89424}{Get\+Generate\+List\+Panel}} ()
+\item 
+wx\+Window \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_stamp_tool_panel_a5c8b7831b726fd18d4c4bac1cddc701e}{Get\+Page}} ()
+\item 
+void \mbox{\hyperlink{class_stamp_tool_panel_af7e02b1fd32731be87a5719304e670e5}{Init}} ()
+\item 
+bool \mbox{\hyperlink{class_stamp_tool_panel_ab4c9718ae6119151f45170735950b46f}{Should\+Show\+States}} ()
+\item 
+void \mbox{\hyperlink{class_stamp_tool_panel_aeee3ac96ef84ef46d455bd9db78c3f72}{On\+Notebook\+Page\+Changed}} (wx\+Notebook\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_stamp_tool_panel_a04865b7417ee985baee825c44225cdda}{On\+PDF}} (wx\+String filename)
+\item 
+void \mbox{\hyperlink{class_stamp_tool_panel_a4396ba5bf70d0164affdaab5b61ba6f1}{On\+Title\+Text\+Updated}} (wx\+Command\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_stamp_tool_panel_ac00c63906f199f8f59310c39676c78b6}{Set\+Page}} (int page)
+\item 
+void \mbox{\hyperlink{class_stamp_tool_panel_a967e7b6caef2d39dc5ac17d20bd537dc}{Update\+Status}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static bool \mbox{\hyperlink{class_stamp_tool_panel_a7258e79176e19682144c2c10d4948caf}{Show\+Tool\+Tips}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{class_stamp_tool_panel}{Stamp\+Tool\+Panel} is the main window class for the application, It contains wx\+Notebook with the the \doxylink{class_stamp_description_panel}{Stamp\+Description\+Panel} and \doxylink{class_album_panel}{Album\+Panel} as pages. \doxylink{class_stamp_tool_panel}{Stamp\+Tool\+Panel} inherits from wx\+Panel. 
+
+Definition at line \mbox{\hyperlink{_stamp_tool_panel_8h_source_l00057}{57}} of file \mbox{\hyperlink{_stamp_tool_panel_8h_source}{Stamp\+Tool\+Panel.\+h}}.
+
+
+
+\label{doc-enum-members}
+\Hypertarget{class_stamp_tool_panel_doc-enum-members}
+\doxysubsection{Member Enumeration Documentation}
+\Hypertarget{class_stamp_tool_panel_a81c28ad3ae6252a0e08982c660afaafe}\index{StampToolPanel@{StampToolPanel}!StampToolPanelGuiDefs@{StampToolPanelGuiDefs}}
+\index{StampToolPanelGuiDefs@{StampToolPanelGuiDefs}!StampToolPanel@{StampToolPanel}}
+\doxysubsubsection{\texorpdfstring{StampToolPanelGuiDefs}{StampToolPanelGuiDefs}}
+{\footnotesize\ttfamily \label{class_stamp_tool_panel_a81c28ad3ae6252a0e08982c660afaafe} 
+enum \mbox{\hyperlink{class_stamp_tool_panel_a81c28ad3ae6252a0e08982c660afaafe}{Stamp\+Tool\+Panel\+::\+Stamp\+Tool\+Panel\+Gui\+Defs}}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_CATALOGSPLITTERWINDOW@{ID\_CATALOGSPLITTERWINDOW}!StampToolPanel@{StampToolPanel}}\index{StampToolPanel@{StampToolPanel}!ID\_CATALOGSPLITTERWINDOW@{ID\_CATALOGSPLITTERWINDOW}}}\Hypertarget{class_stamp_tool_panel_a81c28ad3ae6252a0e08982c660afaafea5d3b8ce7d2ef02c64dc996270c95d3a5}\label{class_stamp_tool_panel_a81c28ad3ae6252a0e08982c660afaafea5d3b8ce7d2ef02c64dc996270c95d3a5} 
+ID\+\_\+\+CATALOGSPLITTERWINDOW&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_CATALOGPAGE@{ID\_CATALOGPAGE}!StampToolPanel@{StampToolPanel}}\index{StampToolPanel@{StampToolPanel}!ID\_CATALOGPAGE@{ID\_CATALOGPAGE}}}\Hypertarget{class_stamp_tool_panel_a81c28ad3ae6252a0e08982c660afaafeaf3977c7a0d7a41ab0c479ba1b278c020}\label{class_stamp_tool_panel_a81c28ad3ae6252a0e08982c660afaafeaf3977c7a0d7a41ab0c479ba1b278c020} 
+ID\+\_\+\+CATALOGPAGE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_STAMPTREECTRL@{ID\_STAMPTREECTRL}!StampToolPanel@{StampToolPanel}}\index{StampToolPanel@{StampToolPanel}!ID\_STAMPTREECTRL@{ID\_STAMPTREECTRL}}}\Hypertarget{class_stamp_tool_panel_a81c28ad3ae6252a0e08982c660afaafea261e29e000c45c8bb9c2058852a8d298}\label{class_stamp_tool_panel_a81c28ad3ae6252a0e08982c660afaafea261e29e000c45c8bb9c2058852a8d298} 
+ID\+\_\+\+STAMPTREECTRL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_NOTEBOOK@{ID\_NOTEBOOK}!StampToolPanel@{StampToolPanel}}\index{StampToolPanel@{StampToolPanel}!ID\_NOTEBOOK@{ID\_NOTEBOOK}}}\Hypertarget{class_stamp_tool_panel_a81c28ad3ae6252a0e08982c660afaafea613ccd58152b0ab69ae4cbb2d04b1755}\label{class_stamp_tool_panel_a81c28ad3ae6252a0e08982c660afaafea613ccd58152b0ab69ae4cbb2d04b1755} 
+ID\+\_\+\+NOTEBOOK&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_DESCRIPTIONPANELFOREIGN@{ID\_DESCRIPTIONPANELFOREIGN}!StampToolPanel@{StampToolPanel}}\index{StampToolPanel@{StampToolPanel}!ID\_DESCRIPTIONPANELFOREIGN@{ID\_DESCRIPTIONPANELFOREIGN}}}\Hypertarget{class_stamp_tool_panel_a81c28ad3ae6252a0e08982c660afaafeaa566d2318d10cbe711fc15bef9597a94}\label{class_stamp_tool_panel_a81c28ad3ae6252a0e08982c660afaafeaa566d2318d10cbe711fc15bef9597a94} 
+ID\+\_\+\+DESCRIPTIONPANELFOREIGN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_GALLERYSCROLLEDWINDOW@{ID\_GALLERYSCROLLEDWINDOW}!StampToolPanel@{StampToolPanel}}\index{StampToolPanel@{StampToolPanel}!ID\_GALLERYSCROLLEDWINDOW@{ID\_GALLERYSCROLLEDWINDOW}}}\Hypertarget{class_stamp_tool_panel_a81c28ad3ae6252a0e08982c660afaafea9b102eb71e3ee333cf2ba43e7078c491}\label{class_stamp_tool_panel_a81c28ad3ae6252a0e08982c660afaafea9b102eb71e3ee333cf2ba43e7078c491} 
+ID\+\_\+\+GALLERYSCROLLEDWINDOW&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_TITLETEXTCTRL@{ID\_TITLETEXTCTRL}!StampToolPanel@{StampToolPanel}}\index{StampToolPanel@{StampToolPanel}!ID\_TITLETEXTCTRL@{ID\_TITLETEXTCTRL}}}\Hypertarget{class_stamp_tool_panel_a81c28ad3ae6252a0e08982c660afaafeac8dd653e34a6e8494468863c405c0757}\label{class_stamp_tool_panel_a81c28ad3ae6252a0e08982c660afaafeac8dd653e34a6e8494468863c405c0757} 
+ID\+\_\+\+TITLETEXTCTRL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_STAMPTOOL@{ID\_STAMPTOOL}!StampToolPanel@{StampToolPanel}}\index{StampToolPanel@{StampToolPanel}!ID\_STAMPTOOL@{ID\_STAMPTOOL}}}\Hypertarget{class_stamp_tool_panel_a81c28ad3ae6252a0e08982c660afaafeac9c53837dc6590637bac7cada49c7109}\label{class_stamp_tool_panel_a81c28ad3ae6252a0e08982c660afaafeac9c53837dc6590637bac7cada49c7109} 
+ID\+\_\+\+STAMPTOOL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_ALBUMSPLITTERWINDOWFOREIGN@{ID\_ALBUMSPLITTERWINDOWFOREIGN}!StampToolPanel@{StampToolPanel}}\index{StampToolPanel@{StampToolPanel}!ID\_ALBUMSPLITTERWINDOWFOREIGN@{ID\_ALBUMSPLITTERWINDOWFOREIGN}}}\Hypertarget{class_stamp_tool_panel_a81c28ad3ae6252a0e08982c660afaafeacb0b45394657c6bdb2c44f932da7bfbe}\label{class_stamp_tool_panel_a81c28ad3ae6252a0e08982c660afaafeacb0b45394657c6bdb2c44f932da7bfbe} 
+ID\+\_\+\+ALBUMSPLITTERWINDOWFOREIGN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_GENERTELISTFOREIGN@{ID\_GENERTELISTFOREIGN}!StampToolPanel@{StampToolPanel}}\index{StampToolPanel@{StampToolPanel}!ID\_GENERTELISTFOREIGN@{ID\_GENERTELISTFOREIGN}}}\Hypertarget{class_stamp_tool_panel_a81c28ad3ae6252a0e08982c660afaafea80e9338b81c178cbfcf5c4c2bfe93eda}\label{class_stamp_tool_panel_a81c28ad3ae6252a0e08982c660afaafea80e9338b81c178cbfcf5c4c2bfe93eda} 
+ID\+\_\+\+GENERTELISTFOREIGN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_IMAGEALLERYPANEL@{ID\_IMAGEALLERYPANEL}!StampToolPanel@{StampToolPanel}}\index{StampToolPanel@{StampToolPanel}!ID\_IMAGEALLERYPANEL@{ID\_IMAGEALLERYPANEL}}}\Hypertarget{class_stamp_tool_panel_a81c28ad3ae6252a0e08982c660afaafea8d7b91e5c87b628524079ca81228fa42}\label{class_stamp_tool_panel_a81c28ad3ae6252a0e08982c660afaafea8d7b91e5c87b628524079ca81228fa42} 
+ID\+\_\+\+IMAGEALLERYPANEL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_IMAGEALLERYPANEL1@{ID\_IMAGEALLERYPANEL1}!StampToolPanel@{StampToolPanel}}\index{StampToolPanel@{StampToolPanel}!ID\_IMAGEALLERYPANEL1@{ID\_IMAGEALLERYPANEL1}}}\Hypertarget{class_stamp_tool_panel_a81c28ad3ae6252a0e08982c660afaafead1367c55e5295b9356fe9ae99d7aa7bf}\label{class_stamp_tool_panel_a81c28ad3ae6252a0e08982c660afaafead1367c55e5295b9356fe9ae99d7aa7bf} 
+ID\+\_\+\+IMAGEALLERYPANEL1&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_DESIGNPAGE@{ID\_DESIGNPAGE}!StampToolPanel@{StampToolPanel}}\index{StampToolPanel@{StampToolPanel}!ID\_DESIGNPAGE@{ID\_DESIGNPAGE}}}\Hypertarget{class_stamp_tool_panel_a81c28ad3ae6252a0e08982c660afaafead1152e2b2f1a0f41948757277aa0f436}\label{class_stamp_tool_panel_a81c28ad3ae6252a0e08982c660afaafead1152e2b2f1a0f41948757277aa0f436} 
+ID\+\_\+\+DESIGNPAGE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ID\_DESIGNSPLITTERWINDOW@{ID\_DESIGNSPLITTERWINDOW}!StampToolPanel@{StampToolPanel}}\index{StampToolPanel@{StampToolPanel}!ID\_DESIGNSPLITTERWINDOW@{ID\_DESIGNSPLITTERWINDOW}}}\Hypertarget{class_stamp_tool_panel_a81c28ad3ae6252a0e08982c660afaafea29544e4f1d988df04830cfc57d7f26e4}\label{class_stamp_tool_panel_a81c28ad3ae6252a0e08982c660afaafea29544e4f1d988df04830cfc57d7f26e4} 
+ID\+\_\+\+DESIGNSPLITTERWINDOW&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{_stamp_tool_panel_8h_source_l00064}{64}} of file \mbox{\hyperlink{_stamp_tool_panel_8h_source}{Stamp\+Tool\+Panel.\+h}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_stamp_tool_panel_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_stamp_tool_panel_a2187f9e5f05708d0093115614122ed13}\index{StampToolPanel@{StampToolPanel}!StampToolPanel@{StampToolPanel}}
+\index{StampToolPanel@{StampToolPanel}!StampToolPanel@{StampToolPanel}}
+\doxysubsubsection{\texorpdfstring{StampToolPanel()}{StampToolPanel()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_stamp_tool_panel_a2187f9e5f05708d0093115614122ed13} 
+Stamp\+Tool\+Panel\+::\+Stamp\+Tool\+Panel (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\DoxyHorRuler{0}
+ 
+
+Definition at line \mbox{\hyperlink{_stamp_tool_panel_8cpp_source_l00066}{66}} of file \mbox{\hyperlink{_stamp_tool_panel_8cpp_source}{Stamp\+Tool\+Panel.\+cpp}}.
+
+\Hypertarget{class_stamp_tool_panel_af030b7706f26fc08fe11929f59996544}\index{StampToolPanel@{StampToolPanel}!StampToolPanel@{StampToolPanel}}
+\index{StampToolPanel@{StampToolPanel}!StampToolPanel@{StampToolPanel}}
+\doxysubsubsection{\texorpdfstring{StampToolPanel()}{StampToolPanel()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_stamp_tool_panel_af030b7706f26fc08fe11929f59996544} 
+Stamp\+Tool\+Panel\+::\+Stamp\+Tool\+Panel (\begin{DoxyParamCaption}\item[{wx\+Window \texorpdfstring{$\ast$}{*}}]{parent}{, }\item[{wx\+Window\+ID}]{id}{ = {\ttfamily \mbox{\hyperlink{_gui_defs_8h_a6329898a126babcdaa295242c115a11ea85566d4ee2cad3409427782e64efbff0}{ID\+\_\+\+STAMPTOOLPANEL}}}, }\item[{const wx\+Point \&}]{pos}{ = {\ttfamily \mbox{\hyperlink{_stamp_tool_panel_8h_a25edcde3ae4bcbd0093cb17cb54ec39d}{SYMBOL\+\_\+\+STAMPTOOLPANEL\+\_\+\+POSITION}}}, }\item[{const wx\+Size \&}]{size}{ = {\ttfamily \mbox{\hyperlink{_stamp_tool_panel_8h_a39aee1c032edf2b154e29c84448c8b68}{SYMBOL\+\_\+\+STAMPTOOLPANEL\+\_\+\+SIZE}}}, }\item[{long}]{style}{ = {\ttfamily \mbox{\hyperlink{_stamp_tool_panel_8h_a3dc1107f471a64800ac7ac27b9366865}{SYMBOL\+\_\+\+STAMPTOOLPANEL\+\_\+\+STYLE}}}}\end{DoxyParamCaption})}
+
+\DoxyHorRuler{0}
+ 
+
+Definition at line \mbox{\hyperlink{_stamp_tool_panel_8cpp_source_l00073}{73}} of file \mbox{\hyperlink{_stamp_tool_panel_8cpp_source}{Stamp\+Tool\+Panel.\+cpp}}.
+
+\Hypertarget{class_stamp_tool_panel_a63c9b486e4f4a1f113de6c5ebb708676}\index{StampToolPanel@{StampToolPanel}!````~StampToolPanel@{\texorpdfstring{$\sim$}{\string~}StampToolPanel}}
+\index{````~StampToolPanel@{\texorpdfstring{$\sim$}{\string~}StampToolPanel}!StampToolPanel@{StampToolPanel}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}StampToolPanel()}{\string~StampToolPanel()}}
+{\footnotesize\ttfamily \label{class_stamp_tool_panel_a63c9b486e4f4a1f113de6c5ebb708676} 
+Stamp\+Tool\+Panel\+::\texorpdfstring{$\sim$}{\string~}\+Stamp\+Tool\+Panel (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\DoxyHorRuler{0}
+ 
+
+Definition at line \mbox{\hyperlink{_stamp_tool_panel_8cpp_source_l00083}{83}} of file \mbox{\hyperlink{_stamp_tool_panel_8cpp_source}{Stamp\+Tool\+Panel.\+cpp}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_stamp_tool_panel_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_stamp_tool_panel_aed9151435b0fd3df016259ea205902fb}\index{StampToolPanel@{StampToolPanel}!Create@{Create}}
+\index{Create@{Create}!StampToolPanel@{StampToolPanel}}
+\doxysubsubsection{\texorpdfstring{Create()}{Create()}}
+{\footnotesize\ttfamily \label{class_stamp_tool_panel_aed9151435b0fd3df016259ea205902fb} 
+bool Stamp\+Tool\+Panel\+::\+Create (\begin{DoxyParamCaption}\item[{wx\+Window \texorpdfstring{$\ast$}{*}}]{parent}{, }\item[{wx\+Window\+ID}]{id}{ = {\ttfamily \mbox{\hyperlink{_gui_defs_8h_a6329898a126babcdaa295242c115a11ea85566d4ee2cad3409427782e64efbff0}{ID\+\_\+\+STAMPTOOLPANEL}}}, }\item[{const wx\+Point \&}]{pos}{ = {\ttfamily \mbox{\hyperlink{_stamp_tool_panel_8h_a25edcde3ae4bcbd0093cb17cb54ec39d}{SYMBOL\+\_\+\+STAMPTOOLPANEL\+\_\+\+POSITION}}}, }\item[{const wx\+Size \&}]{size}{ = {\ttfamily \mbox{\hyperlink{_stamp_tool_panel_8h_a39aee1c032edf2b154e29c84448c8b68}{SYMBOL\+\_\+\+STAMPTOOLPANEL\+\_\+\+SIZE}}}, }\item[{long}]{style}{ = {\ttfamily \mbox{\hyperlink{_stamp_tool_panel_8h_a3dc1107f471a64800ac7ac27b9366865}{SYMBOL\+\_\+\+STAMPTOOLPANEL\+\_\+\+STYLE}}}}\end{DoxyParamCaption})}
+
+\DoxyHorRuler{0}
+ 
+
+Definition at line \mbox{\hyperlink{_stamp_tool_panel_8cpp_source_l00090}{90}} of file \mbox{\hyperlink{_stamp_tool_panel_8cpp_source}{Stamp\+Tool\+Panel.\+cpp}}.
+
+\Hypertarget{class_stamp_tool_panel_a45ea9c32a2a9d5d066d546f1456714ba}\index{StampToolPanel@{StampToolPanel}!CreateControls@{CreateControls}}
+\index{CreateControls@{CreateControls}!StampToolPanel@{StampToolPanel}}
+\doxysubsubsection{\texorpdfstring{CreateControls()}{CreateControls()}}
+{\footnotesize\ttfamily \label{class_stamp_tool_panel_a45ea9c32a2a9d5d066d546f1456714ba} 
+void Stamp\+Tool\+Panel\+::\+Create\+Controls (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\DoxyHorRuler{0}
+ 
+
+Definition at line \mbox{\hyperlink{_stamp_tool_panel_8cpp_source_l00105}{105}} of file \mbox{\hyperlink{_stamp_tool_panel_8cpp_source}{Stamp\+Tool\+Panel.\+cpp}}.
+
+\Hypertarget{class_stamp_tool_panel_ad7ba953208ca9ab457328626aa9dba96}\index{StampToolPanel@{StampToolPanel}!GetAlbumPanel@{GetAlbumPanel}}
+\index{GetAlbumPanel@{GetAlbumPanel}!StampToolPanel@{StampToolPanel}}
+\doxysubsubsection{\texorpdfstring{GetAlbumPanel()}{GetAlbumPanel()}}
+{\footnotesize\ttfamily \label{class_stamp_tool_panel_ad7ba953208ca9ab457328626aa9dba96} 
+\mbox{\hyperlink{class_album_panel}{Album\+Panel}} \texorpdfstring{$\ast$}{*} Stamp\+Tool\+Panel\+::\+Get\+Album\+Panel (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_stamp_tool_panel_8h_source_l00100}{100}} of file \mbox{\hyperlink{_stamp_tool_panel_8h_source}{Stamp\+Tool\+Panel.\+h}}.
+
+\Hypertarget{class_stamp_tool_panel_aadd85f5dfb453ba1f9aff4728d7dc8f1}\index{StampToolPanel@{StampToolPanel}!GetAlbumTreePanel@{GetAlbumTreePanel}}
+\index{GetAlbumTreePanel@{GetAlbumTreePanel}!StampToolPanel@{StampToolPanel}}
+\doxysubsubsection{\texorpdfstring{GetAlbumTreePanel()}{GetAlbumTreePanel()}}
+{\footnotesize\ttfamily \label{class_stamp_tool_panel_aadd85f5dfb453ba1f9aff4728d7dc8f1} 
+\mbox{\hyperlink{class_album_tree_panel}{Album\+Tree\+Panel}} \texorpdfstring{$\ast$}{*} Stamp\+Tool\+Panel\+::\+Get\+Album\+Tree\+Panel (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_stamp_tool_panel_8h_source_l00104}{104}} of file \mbox{\hyperlink{_stamp_tool_panel_8h_source}{Stamp\+Tool\+Panel.\+h}}.
+
+\Hypertarget{class_stamp_tool_panel_a6d6fa57fd8e78ed8f0c7ba325934c2c3}\index{StampToolPanel@{StampToolPanel}!GetCatalogPagePanel@{GetCatalogPagePanel}}
+\index{GetCatalogPagePanel@{GetCatalogPagePanel}!StampToolPanel@{StampToolPanel}}
+\doxysubsubsection{\texorpdfstring{GetCatalogPagePanel()}{GetCatalogPagePanel()}}
+{\footnotesize\ttfamily \label{class_stamp_tool_panel_a6d6fa57fd8e78ed8f0c7ba325934c2c3} 
+\mbox{\hyperlink{class_catalog_panel}{Catalog\+Panel}} \texorpdfstring{$\ast$}{*} Stamp\+Tool\+Panel\+::\+Get\+Catalog\+Page\+Panel (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_stamp_tool_panel_8h_source_l00108}{108}} of file \mbox{\hyperlink{_stamp_tool_panel_8h_source}{Stamp\+Tool\+Panel.\+h}}.
+
+\Hypertarget{class_stamp_tool_panel_a680cac5c9912ec81f5c151c7cdb89424}\index{StampToolPanel@{StampToolPanel}!GetGenerateListPanel@{GetGenerateListPanel}}
+\index{GetGenerateListPanel@{GetGenerateListPanel}!StampToolPanel@{StampToolPanel}}
+\doxysubsubsection{\texorpdfstring{GetGenerateListPanel()}{GetGenerateListPanel()}}
+{\footnotesize\ttfamily \label{class_stamp_tool_panel_a680cac5c9912ec81f5c151c7cdb89424} 
+\mbox{\hyperlink{class_generate_list}{Generate\+List}} \texorpdfstring{$\ast$}{*} Stamp\+Tool\+Panel\+::\+Get\+Generate\+List\+Panel (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_stamp_tool_panel_8h_source_l00112}{112}} of file \mbox{\hyperlink{_stamp_tool_panel_8h_source}{Stamp\+Tool\+Panel.\+h}}.
+
+\Hypertarget{class_stamp_tool_panel_a5c8b7831b726fd18d4c4bac1cddc701e}\index{StampToolPanel@{StampToolPanel}!GetPage@{GetPage}}
+\index{GetPage@{GetPage}!StampToolPanel@{StampToolPanel}}
+\doxysubsubsection{\texorpdfstring{GetPage()}{GetPage()}}
+{\footnotesize\ttfamily \label{class_stamp_tool_panel_a5c8b7831b726fd18d4c4bac1cddc701e} 
+wx\+Window \texorpdfstring{$\ast$}{*} Stamp\+Tool\+Panel\+::\+Get\+Page (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_stamp_tool_panel_8h_source_l00116}{116}} of file \mbox{\hyperlink{_stamp_tool_panel_8h_source}{Stamp\+Tool\+Panel.\+h}}.
+
+\Hypertarget{class_stamp_tool_panel_af7e02b1fd32731be87a5719304e670e5}\index{StampToolPanel@{StampToolPanel}!Init@{Init}}
+\index{Init@{Init}!StampToolPanel@{StampToolPanel}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily \label{class_stamp_tool_panel_af7e02b1fd32731be87a5719304e670e5} 
+void Stamp\+Tool\+Panel\+::\+Init (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\DoxyHorRuler{0}
+ 
+
+Definition at line \mbox{\hyperlink{_stamp_tool_panel_8cpp_source_l00165}{165}} of file \mbox{\hyperlink{_stamp_tool_panel_8cpp_source}{Stamp\+Tool\+Panel.\+cpp}}.
+
+\Hypertarget{class_stamp_tool_panel_aeee3ac96ef84ef46d455bd9db78c3f72}\index{StampToolPanel@{StampToolPanel}!OnNotebookPageChanged@{OnNotebookPageChanged}}
+\index{OnNotebookPageChanged@{OnNotebookPageChanged}!StampToolPanel@{StampToolPanel}}
+\doxysubsubsection{\texorpdfstring{OnNotebookPageChanged()}{OnNotebookPageChanged()}}
+{\footnotesize\ttfamily \label{class_stamp_tool_panel_aeee3ac96ef84ef46d455bd9db78c3f72} 
+void Stamp\+Tool\+Panel\+::\+On\+Notebook\+Page\+Changed (\begin{DoxyParamCaption}\item[{wx\+Notebook\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+\DoxyHorRuler{0}
+ 
+
+Definition at line \mbox{\hyperlink{_stamp_tool_panel_8cpp_source_l00188}{188}} of file \mbox{\hyperlink{_stamp_tool_panel_8cpp_source}{Stamp\+Tool\+Panel.\+cpp}}.
+
+\Hypertarget{class_stamp_tool_panel_a04865b7417ee985baee825c44225cdda}\index{StampToolPanel@{StampToolPanel}!OnPDF@{OnPDF}}
+\index{OnPDF@{OnPDF}!StampToolPanel@{StampToolPanel}}
+\doxysubsubsection{\texorpdfstring{OnPDF()}{OnPDF()}}
+{\footnotesize\ttfamily \label{class_stamp_tool_panel_a04865b7417ee985baee825c44225cdda} 
+void Stamp\+Tool\+Panel\+::\+On\+PDF (\begin{DoxyParamCaption}\item[{wx\+String}]{filename}{}\end{DoxyParamCaption})}
+
+\DoxyHorRuler{0}
+ 
+
+Definition at line \mbox{\hyperlink{_stamp_tool_panel_8cpp_source_l00259}{259}} of file \mbox{\hyperlink{_stamp_tool_panel_8cpp_source}{Stamp\+Tool\+Panel.\+cpp}}.
+
+\Hypertarget{class_stamp_tool_panel_a4396ba5bf70d0164affdaab5b61ba6f1}\index{StampToolPanel@{StampToolPanel}!OnTitleTextUpdated@{OnTitleTextUpdated}}
+\index{OnTitleTextUpdated@{OnTitleTextUpdated}!StampToolPanel@{StampToolPanel}}
+\doxysubsubsection{\texorpdfstring{OnTitleTextUpdated()}{OnTitleTextUpdated()}}
+{\footnotesize\ttfamily \label{class_stamp_tool_panel_a4396ba5bf70d0164affdaab5b61ba6f1} 
+void Stamp\+Tool\+Panel\+::\+On\+Title\+Text\+Updated (\begin{DoxyParamCaption}\item[{wx\+Command\+Event \&}]{event}{}\end{DoxyParamCaption})}
+
+\DoxyHorRuler{0}
+ 
+
+Definition at line \mbox{\hyperlink{_stamp_tool_panel_8cpp_source_l00283}{283}} of file \mbox{\hyperlink{_stamp_tool_panel_8cpp_source}{Stamp\+Tool\+Panel.\+cpp}}.
+
+\Hypertarget{class_stamp_tool_panel_ac00c63906f199f8f59310c39676c78b6}\index{StampToolPanel@{StampToolPanel}!SetPage@{SetPage}}
+\index{SetPage@{SetPage}!StampToolPanel@{StampToolPanel}}
+\doxysubsubsection{\texorpdfstring{SetPage()}{SetPage()}}
+{\footnotesize\ttfamily \label{class_stamp_tool_panel_ac00c63906f199f8f59310c39676c78b6} 
+void Stamp\+Tool\+Panel\+::\+Set\+Page (\begin{DoxyParamCaption}\item[{int}]{page}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_stamp_tool_panel_8h_source_l00133}{133}} of file \mbox{\hyperlink{_stamp_tool_panel_8h_source}{Stamp\+Tool\+Panel.\+h}}.
+
+\Hypertarget{class_stamp_tool_panel_ab4c9718ae6119151f45170735950b46f}\index{StampToolPanel@{StampToolPanel}!ShouldShowStates@{ShouldShowStates}}
+\index{ShouldShowStates@{ShouldShowStates}!StampToolPanel@{StampToolPanel}}
+\doxysubsubsection{\texorpdfstring{ShouldShowStates()}{ShouldShowStates()}}
+{\footnotesize\ttfamily \label{class_stamp_tool_panel_ab4c9718ae6119151f45170735950b46f} 
+bool Stamp\+Tool\+Panel\+::\+Should\+Show\+States (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\DoxyHorRuler{0}
+ 
+
+Definition at line \mbox{\hyperlink{_stamp_tool_panel_8cpp_source_l00176}{176}} of file \mbox{\hyperlink{_stamp_tool_panel_8cpp_source}{Stamp\+Tool\+Panel.\+cpp}}.
+
+\Hypertarget{class_stamp_tool_panel_a7258e79176e19682144c2c10d4948caf}\index{StampToolPanel@{StampToolPanel}!ShowToolTips@{ShowToolTips}}
+\index{ShowToolTips@{ShowToolTips}!StampToolPanel@{StampToolPanel}}
+\doxysubsubsection{\texorpdfstring{ShowToolTips()}{ShowToolTips()}}
+{\footnotesize\ttfamily \label{class_stamp_tool_panel_a7258e79176e19682144c2c10d4948caf} 
+bool Stamp\+Tool\+Panel\+::\+Show\+Tool\+Tips (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\DoxyHorRuler{0}
+ 
+
+Definition at line \mbox{\hyperlink{_stamp_tool_panel_8cpp_source_l00290}{290}} of file \mbox{\hyperlink{_stamp_tool_panel_8cpp_source}{Stamp\+Tool\+Panel.\+cpp}}.
+
+\Hypertarget{class_stamp_tool_panel_a967e7b6caef2d39dc5ac17d20bd537dc}\index{StampToolPanel@{StampToolPanel}!UpdateStatus@{UpdateStatus}}
+\index{UpdateStatus@{UpdateStatus}!StampToolPanel@{StampToolPanel}}
+\doxysubsubsection{\texorpdfstring{UpdateStatus()}{UpdateStatus()}}
+{\footnotesize\ttfamily \label{class_stamp_tool_panel_a967e7b6caef2d39dc5ac17d20bd537dc} 
+void Stamp\+Tool\+Panel\+::\+Update\+Status (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\DoxyHorRuler{0}
+ 
+
+Definition at line \mbox{\hyperlink{_stamp_tool_panel_8cpp_source_l00297}{297}} of file \mbox{\hyperlink{_stamp_tool_panel_8cpp_source}{Stamp\+Tool\+Panel.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/femon/\+Development/wx/clone\+Test/\+Stamp\+Tool/src/gui/\mbox{\hyperlink{_stamp_tool_panel_8h}{Stamp\+Tool\+Panel.\+h}}\item 
+C\+:/\+Users/femon/\+Development/wx/clone\+Test/\+Stamp\+Tool/src/gui/\mbox{\hyperlink{_stamp_tool_panel_8cpp}{Stamp\+Tool\+Panel.\+cpp}}\end{DoxyCompactItemize}

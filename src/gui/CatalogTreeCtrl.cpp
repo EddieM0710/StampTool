@@ -739,9 +739,10 @@ void CatalogTreeCtrl::GoToColnect( wxTreeItemId id )
                 wxTheClipboard->Close( );
             }
 
-            wxString link = entry.GetLink( );
-            wxString cmd = wxString::Format( "/usr/bin/firefox --new-tab %s", link );
-            int a = system( cmd.c_str( ) );
+            wxString link = entry.GetLink(  );
+            wxLaunchDefaultBrowser( link );
+            //wxString cmd = wxString::Format( "/usr/bin/firefox --new-tab %s", link );
+            //int a = system( cmd.c_str( ) );
         }
 
     }

@@ -101,7 +101,7 @@ namespace Design {
         Album* album = new Album( root );
         SetAlbum( album );
         wxXmlNode* pageNode = new wxXmlNode( wxXML_ELEMENT_NODE, AlbumBaseNames[ AT_Page ] );
-        Page* page = ( Page* )new Page( pageNode );
+//        Page* page = ( Page* )new Page( pageNode );
     }
 
 

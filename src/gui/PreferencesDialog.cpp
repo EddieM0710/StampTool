@@ -101,8 +101,8 @@ PreferencesDialog::PreferencesDialog( wxWindow* parent, wxWindowID id, const wxS
 void PreferencesDialog::InitDetailsPanel( )
 {
     m_imageDirectory->SetValue( GetProject( )->GetImageDirectory( ) );
-    m_country->SetValue( GetProject( )->GetProjectCatalogCode( ) );
-    m_catalog->SetValue( GetProject( )->GetProjectCountryID( ) );
+    m_catalog->SetValue( GetProject( )->GetProjectCatalogCode( ) );
+    m_country->SetValue( GetProject( )->GetProjectCountryID( ) );
     m_loadLastFileAtStartUp->SetValue( GetSettings( )->GetLoadLastFileAtStartUp( ) );
     wxString str = wxString::Format( "%i", GetSettings( )->GetNbrRecentPreference( ) );
     m_recentListSize->SetValue( str );

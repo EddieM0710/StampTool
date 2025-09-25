@@ -216,7 +216,7 @@ namespace Catalog
     }
 
 
-    bool CatalogVolume::LoadCSV( wxString filename )
+    bool CatalogVolume::LoadCSV( wxString filename, wxString newFilename )
     {
         if ( !GetDoc( ) )
         {
@@ -229,7 +229,7 @@ namespace Catalog
         {
             docRoot = Utils::NewNode( GetDoc( ), CatalogBaseNames[ NT_Catalog ] );
         }
-        wxFileName name( filename );
+        wxFileName name( newFilename );
         Utils::SetAttrStr( docRoot, "Name", name.GetName( ) );
 
         bool status = false;

@@ -243,7 +243,7 @@ namespace Utils {
         const wxString m_defaultConfigurationDirectory = "";
         const wxString m_defaultImageDirectory = "";
         const wxString m_defaultCountryID = "GB";
-        const wxString m_defaultCatalogID = "SG";
+        const wxString m_defaultCatalogID = "Sg";
         wxArrayInt m_defaultSortOrder;
         const wxString m_defaultLowerDivision = "1950";
         const wxString m_defaultUpperDivision = "2000";

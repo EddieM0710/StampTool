@@ -44,9 +44,11 @@ namespace Design {
     {
         SetNodeType( AT_Page );
         SetObjectName( AlbumBaseNames[ GetNodeType( ) ] );
-        SetDefaults( GetAlbumVolume( )->GetAlbum( )->AlbumPageDefaults( ) );
-
-        m_titleFrame = new TitleFrame( this );
+        if (GetAlbumVolume())
+        {
+            SetDefaults(GetAlbumVolume()->GetAlbum()->AlbumPageDefaults());
+        }
+        m_titleFrame = new TitleFrame(this);
         m_titleFrame->SetHeadingString( GetAttrStr( AT_Name ) );
         m_titleFrame->SetSubHeadingString( GetAttrStr( AT_SubTitle ) );
         m_pageType = Design::PT_None;

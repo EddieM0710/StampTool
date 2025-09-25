@@ -66,14 +66,86 @@ add_library(project_pdfdoc INTERFACE)
 target_link_libraries(project_pdfdoc INTERFACE wxpdfdoc::wxpdfdoc)
 
 add_subdirectory (src)
+# Add install() Rules
+# --- Install the app ----------------------------------------------------------
+# 1) Always install the executable into bin/
+install(TARGETS StampTool RUNTIME DESTINATION bin)
 
-#Add install() Rules
-install(TARGETS StampTool DESTINATION bin)
-#install(DIRECTORY assets/ DESTINATION share/stamptool/assets) # if you use any resources
+# 2) Optional app assets (only if the folder exists)
+if(EXISTS "${CMAKE_SOURCE_DIR}/assets")
+  # trailing slash => copy CONTENTS of assets/ into bin/assets
+  install(DIRECTORY "${CMAKE_SOURCE_DIR}/assets/" DESTINATION "bin/assets")
+endif()
 
-# Add CPack for Packaging
+# --- Bundle runtime DLLs using BundleUtilities (works with MinGW/WinLibs) ----
+# Use a script at INSTALL time so the EXE already exists in the staged tree
+install(CODE [[
+  # App inside the staging prefix that CPack creates
+  set(_app "${CMAKE_INSTALL_PREFIX}/bin/StampTool.exe")
+  if(NOT EXISTS "${_app}")
+    message(FATAL_ERROR "App not found: ${_app}")
+  endif()
+
+  # Where to look for your runtime DLLs (edit paths if yours differ)
+  if("${CMAKE_INSTALL_CONFIG_NAME}" STREQUAL "Debug")
+    set(_dirs
+      "C:/mingw64/bin"
+      "C:/mingw64/local-wx-debug/bin"
+      "C:/mingw64/local-wx-debug/lib/gcc_x64_dll"
+      "C:/mingw64/local-wxpdfdoc-debug/bin"
+      "C:/mingw64/local-wxpdfdoc-debug/lib/gcc_x64_dll"
+      "C:/mingw64/local-3rdparty-debug/bin"    # woff2/brotli/zint
+    )
+  else()
+    set(_dirs
+      "C:/mingw64/bin"
+      "C:/mingw64/local-wx-release/bin"
+      "C:/mingw64/local-wx-release/lib/gcc_x64_dll"
+      "C:/mingw64/local-wxpdfdoc-release/bin"
+      "C:/mingw64/local-wxpdfdoc-release/lib/gcc_x64_dll"
+      "C:/mingw64/local-3rdparty-release/bin"
+    )
+  endif()
+
+  # Ask CMake to resolve runtime deps for the EXE from those folders
+  file(GET_RUNTIME_DEPENDENCIES
+    RESOLVED_DEPENDENCIES_VAR   _resolved
+    UNRESOLVED_DEPENDENCIES_VAR _unresolved
+    EXECUTABLES "${_app}"
+    DIRECTORIES ${_dirs}
+    # Don’t ever pull in Windows system DLLs:
+    PRE_EXCLUDE_REGEXES  "api-ms-.*" "ext-ms-.*"
+    POST_EXCLUDE_REGEXES ".*[Ss]ystem32/.*" ".*[Ss]ysWOW64/.*"
+  )
+
+  # Copy resolved DLLs next to the EXE in the staged install
+  foreach(dll IN LISTS _resolved)
+    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE FILE FILES "${dll}")
+  endforeach()
+
+  if(_unresolved)
+    message(WARNING "Unresolved runtime deps: ${_unresolved}")
+  endif()
+]])
+
+# --- CPack (ZIP + NSIS installer) --------------------------------------------
 include(InstallRequiredSystemLibraries)
-set(CPACK_GENERATOR "TGZ;DEB")
-set(CPACK_PACKAGE_NAME "StampTool")
-set(CPACK_PACKAGE_VERSION "1.0")
+
+set(CPACK_PACKAGE_NAME        "StampTool")
+set(CPACK_PACKAGE_VENDOR      "StampTool Project")
+set(CPACK_PACKAGE_VERSION     "${PROJECT_VERSION}")
+set(CPACK_PACKAGE_FILE_NAME   "${CPACK_PACKAGE_NAME}-${CPACK_PACKAGE_VERSION}-${CMAKE_SYSTEM_NAME}-${CMAKE_SYSTEM_PROCESSOR}")
+
+# Build both a portable ZIP and an NSIS installer .exe
+set(CPACK_GENERATOR "ZIP;NSIS")
+set(CPACK_NSIS_DISPLAY_NAME "StampTool")
+set(CPACK_NSIS_INSTALL_ROOT "$PROGRAMFILES64")
+set(CPACK_NSIS_ENABLE_UNINSTALL_BEFORE_INSTALL ON)
+set(CPACK_CREATE_DESKTOP_LINKS StampTool)
+# Optional:
+# set(CPACK_PACKAGE_EXECUTABLES "StampTool" "StampTool")
+# set(CPACK_RESOURCE_FILE_LICENSE  "${CMAKE_SOURCE_DIR}/LICENSE.txt")
+# set(CPACK_NSIS_MUI_ICON          "${CMAKE_SOURCE_DIR}/assets/app.ico")
+# set(CPACK_NSIS_MUI_UNIICON       "${CMAKE_SOURCE_DIR}/assets/app.ico")
+
 include(CPack)

@@ -84,7 +84,7 @@ namespace Catalog {
 
         //void Load( );
 
-        bool LoadCSV( wxString filename );
+        bool LoadCSV( wxString filename, wxString newFilename );
 
         Utils::wxXmlNodeArray* MakeParentList( Catalog::FormatType parentType );
 

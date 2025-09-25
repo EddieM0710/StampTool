@@ -110,10 +110,11 @@ namespace Catalog {
             // Make a new volume
             wxString newFile = catFile.GetFullPath( );
             Catalog::CatalogVolume* catalogVolume = NewVolumeInstance( newFile );
-            bool readStatus = catalogVolume->LoadCSV( csvFile.GetFullPath( ) );
+            bool readStatus = catalogVolume->LoadCSV( csvFile.GetFullPath( ), newFile );
             if ( readStatus )
             {
                 // Add it to the ProjectList
+                volName = catFile.GetName( );
                 wxXmlNode* newNode = GetProject( )->AddNewCatalogVolume( newFile, volName );
 
 

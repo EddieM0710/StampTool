@@ -175,9 +175,18 @@ void CatalogPanel::CreateControls( )
     m_tocTreeCtrl = new CatalogTOCTreeCtrl( m_catalogPanelNotebook, ID_CatalogTOCTreeCtrl, wxDefaultPosition, wxDefaultSize, wxTR_HAS_BUTTONS | wxTR_FULL_ROW_HIGHLIGHT | wxTR_SINGLE | wxSUNKEN_BORDER | wxTR_DEFAULT_STYLE );
     m_catalogPanelNotebook->AddPage( m_tocTreeCtrl, _( "TOC" ) );
 
+    m_catalogPanel = CreateCatalogPanel( m_catalogPanelNotebook);
+    m_catalogPanelNotebook->AddPage( m_catalogPanel, _( "Catalog" ) );
 
+    m_searchSizer->Show( false );
+    m_catPanelSizer->Layout( );
+}
 
-    wxPanel* catalogPanel = new wxPanel( m_catalogPanelNotebook, 12345, wxDefaultPosition, wxDefaultSize, wxNO_BORDER );
+//--------------
+
+wxPanel* CatalogPanel::CreateCatalogPanel( wxWindow *parent )
+{
+    wxPanel* catalogPanel = new wxPanel( parent, 12345, wxDefaultPosition, wxDefaultSize, wxNO_BORDER );
     wxBoxSizer* catPanelSizer = new wxBoxSizer( wxVERTICAL );
     catalogPanel->SetSizer( catPanelSizer );
 
@@ -201,17 +210,8 @@ void CatalogPanel::CreateControls( )
     m_catalogTreeCtrl = new CatalogTreeCtrl( catalogPanel, ID_CATALOGTREECTRL, wxDefaultPosition, wxDefaultSize, wxTR_HAS_BUTTONS | wxTR_FULL_ROW_HIGHLIGHT | wxTR_SINGLE | wxSUNKEN_BORDER | wxTR_DEFAULT_STYLE );
     catPanelSizer->Add( m_catalogTreeCtrl, 1, wxGROW | wxALL, 0 );
     m_catalogTreeCtrl->SetToolTip( _( "Page layout height in mm." ) );
-
-    m_catalogPanelNotebook->AddPage( catalogPanel, _( "Catalog" ) );
-
-
-    m_searchSizer->Show( false );
-    m_catPanelSizer->Layout( );
+    return catalogPanel;
 }
-
-//--------------
-
-
 void CatalogPanel::DoMergeCatalog( )
 {
     ComparePanel comparePanel( this, ID_PREFERENCESDIALOG,
@@ -430,11 +430,9 @@ void CatalogPanel::NewCatalogDialog( )
         return;
     }
 
-    FileCreateDialog fileDialog( this, 12355, _( "Select the Filename and Directory for the Design file." ) );
-    wxGetCwd( );
-    fileDialog.SetDefaultDirectory( wxGetCwd( ) );
-    fileDialog.SetDefaultFilename( _( "unnamed.cat" ) );
-    fileDialog.SetWildCard( _( "Design files(*.cat)|*.cat" ) );
+    wxFileDialog fileDialog( this, "Create Catalog file", wxGetCwd( ), _( "unnamed.cat" ),
+        "Catalog files (*.cat)|*.cat",
+        wxFD_SAVE );
 
     if ( fileDialog.ShowModal( ) == wxID_CANCEL )
     {
@@ -442,10 +440,12 @@ void CatalogPanel::NewCatalogDialog( )
     }
 
     wxString cwd = wxGetCwd( );
-    wxFileName catFile( fileDialog.GetPath( ) );
-    catFile.MakeRelativeTo( cwd );
 
-    vol = GetCatalogData( )->GetCatalogList( )->AddNewVolume( catFile.GetFullPath( ) );
+    wxString filePath = fileDialog.GetPath( );
+    wxFileName catFile( filePath );
+    catFile.MakeRelativeTo( cwd );
+    wxString catFilePath = catFile.GetFullPath( );
+    vol = GetCatalogData( )->GetCatalogList( )->AddNewVolume( catFilePath );
 
     GetCatalogTreeCtrl( )->LoadCatalogTree( );
 
@@ -674,12 +674,21 @@ void CatalogPanel::OpenCatalog( )
 
 void CatalogPanel::RemoveVolume( )
 {
-    // wxArrayString array = GetCatalogData( )->GetVolumeNameStrings( );
-    // RemoveVolumeDialog  dialog( ( wxWindow* ) this,
-    //     "Remove Catalog Volume From Project",
-    //     "Select Volume to remove:",
-    //     array );
-    // dialog.ShowModal( );
+    wxArrayString array;// = GetCatalogData( )->GetVolumeNameStrings( );
+    GetCatalogData( )->GetCatalogList()->MakeNameArray(array);
+    RemoveVolumeDialog  dialog( ( wxWindow* ) this,
+        "Remove Catalog Volume From Project",
+        "Select Volume to remove:",
+        array );
+
+    if ( dialog.ShowModal( ) == wxID_CANCEL )
+        return;
+    wxString volSelected = dialog.GetSelectedString();
+    bool deleteFile = dialog.GetRemoveStatus();
+    GetCatalogData( )->GetCatalogList()->RemoveVolume( volSelected, deleteFile );
+    m_tocTreeCtrl->Clear( );
+    m_tocTreeCtrl->LoadTree();
+    GetProject()->Save();
 
 }
 

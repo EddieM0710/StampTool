@@ -32,7 +32,10 @@
 
 
 namespace Design {
-
+    /**
+     * @brief The class for managing the Stamp defaults
+     * 
+     */
     class StampDefaults : public Defaults
     {
 

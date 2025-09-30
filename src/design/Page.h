@@ -36,10 +36,12 @@ namespace Design {
 
     class TitleFrame;
 
-    // Encapsulates the parameters of the page
+  /**
+   * @brief Encapsulates the parameters of the page
+   * 
+   */
     class Page : public LayoutBase
     {
-
 
     public:
 

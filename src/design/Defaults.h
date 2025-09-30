@@ -30,7 +30,10 @@
 
 
 namespace Design {
-
+    /**
+     * @brief The class for managing the xml defaults
+     * 
+     */
     class Defaults : public XMLBase
     {
     public:

@@ -334,7 +334,7 @@ void NewStampDialog::UpdateStamp( )
     // if ( m_country->IsModified( ) )
     // {
     //     //        m_stamp->SetDirty( );
-    //     //        m_stamp->SetCountryID( m_country->GetValue( ) );
+    //     //        m_stamp->SetCountryCode( m_country->GetValue( ) );
     // }
 
 }

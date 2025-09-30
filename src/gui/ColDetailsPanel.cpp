@@ -97,34 +97,132 @@ void ColDetailsPanel::CreateControls( )
 
     ColDetailsPanel* theDialog = this;
 
+    int lastID = ID_LastID;
+
     m_dialogVerticalSizer = new wxBoxSizer( wxVERTICAL );
     theDialog->SetSizer( m_dialogVerticalSizer );
 
+    wxNotebook* focusNotebook = new wxNotebook( theDialog, ++lastID,
+        wxDefaultPosition, wxDefaultSize, wxBK_TOP );
+    focusNotebook->SetPadding( wxSize( 1, 1 ) );
+    m_dialogVerticalSizer->Add( focusNotebook, 1, wxGROW | wxALL, 5 );
 
+    // Status {Panel
+    wxPanel* statusListPanel = new wxPanel( focusNotebook, ++lastID, wxDefaultPosition,
+        wxDefaultSize, wxTAB_TRAVERSAL );
+    statusListPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
+    
+    wxBoxSizer* statusListSizer = new wxBoxSizer( wxHORIZONTAL );
+    statusListPanel->SetSizer( statusListSizer );
+
+    //>>error list ctrls
+    wxBoxSizer* errorListSizer = new wxBoxSizer( wxVERTICAL );
+    statusListSizer->Add( errorListSizer, 2, wxGROW | wxALL, 5 );
+
+    wxArrayString m_statusListStrings;
+    m_statusList = new wxListBox( statusListPanel, ID_LISTCTRL, wxDefaultPosition, wxDefaultSize, m_statusListStrings, wxLB_SINGLE );
+    errorListSizer->Add( m_statusList, 2, wxGROW | wxALL, 5 );
+    //<<error list ctrls
+
+    focusNotebook->AddPage( statusListPanel, _( "Status" ) );
+
+
+    //Details Panel
+    wxPanel* detailsPanel = new wxPanel( focusNotebook, ++lastID, wxDefaultPosition,
+        wxDefaultSize, wxTAB_TRAVERSAL );
+    detailsPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
+    
+    wxBoxSizer* detailsVSizer = new wxBoxSizer( wxVERTICAL );
+    detailsPanel->SetSizer( detailsVSizer );
+ 
     // //>> first row ctrls
     wxBoxSizer* firstRowHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
-    m_dialogVerticalSizer->Add( firstRowHorizontalSizer, 0, wxGROW | wxALL, 0 );
+    detailsVSizer->Add( firstRowHorizontalSizer, 0, wxGROW | wxALL, 10 );
+
+    // first column
+    wxBoxSizer* firstVerticalSizer = new wxBoxSizer( wxVERTICAL );
+    firstRowHorizontalSizer->Add( firstVerticalSizer, 0, wxGROW | wxALL, 10 );
+
+    wxStaticBox* memberPositionStaticBox = new wxStaticBox( detailsPanel, wxID_ANY, _( "Member Position" ) );
+    wxStaticBoxSizer* memberPositionStaticBoxSizer = new wxStaticBoxSizer( memberPositionStaticBox, wxHORIZONTAL );
+    firstVerticalSizer->Add( memberPositionStaticBoxSizer, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 5 );
+
+    m_positionCalculated = new wxRadioButton( memberPositionStaticBoxSizer->GetStaticBox( ), ID_CALCULATEDRADIOBUTTON, _( "Calculated" ), wxDefaultPosition, wxDefaultSize, 0 );
+    m_positionCalculated->SetValue( true );
+    m_positionCalculated->SetToolTip( _( "Evenly Distributed" ) );
+    memberPositionStaticBoxSizer->Add( m_positionCalculated, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+
+    memberPositionStaticBoxSizer->Add( 5, 5, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
 
-    int lastID = ID_LastID;
+    m_positionFixed = new wxRadioButton( memberPositionStaticBoxSizer->GetStaticBox( ), ID_FIXEDRADIOBUTTON, _( "Fixed" ), wxDefaultPosition, wxDefaultSize, 0 );
+    m_positionFixed->SetValue( false );
+    memberPositionStaticBoxSizer->Add( m_positionFixed, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
-    m_frameCheckbox = SetupCheckBox( theDialog, firstRowHorizontalSizer, lastID,
-        ( "Show Frame" ), wxCommandEventHandler( ColDetailsPanel::OnFrameCheckboxClick ) );
-    m_frameCheckbox->SetValue( false );
-
-    // m_frameCheckbox = new wxCheckBox( theDialog, ID_FRAMECHECKBOX, _( "Show Frame" ), wxDefaultPosition, wxDefaultSize, 0 );
-    // m_frameCheckbox->SetValue( false );
-    // m_dialogVerticalSizer->Add( m_frameCheckbox, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 5 );
-    // //>> first row ctrls
+    m_positionFixedSize = new wxTextCtrl( memberPositionStaticBoxSizer->GetStaticBox( ), ID_FIXEDSIZETEXTCTRL, _( "4" ), wxDefaultPosition, wxDefaultSize, 0 );
+    m_positionFixedSize->SetToolTip( _( "mm" ) );
+    m_positionFixedSize->Enable( false );
+    memberPositionStaticBoxSizer->Add( m_positionFixedSize, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
 
-    m_titleHelper = SetupTitleHelper( theDialog, m_dialogVerticalSizer, lastID, DefaultTitleHelperStyle,
+
+    wxBoxSizer* contentMarginBoxVSizer;
+    wxStaticBox* contentMarginBox = SetupBoxSizer( detailsPanel, firstVerticalSizer,
+        "Content Margin", lastID, contentMarginBoxVSizer, wxVERTICAL );
+
+    wxBoxSizer* itemBoxSizer17 = new wxBoxSizer( wxHORIZONTAL );
+    contentMarginBoxVSizer->Add( itemBoxSizer17, 0, wxGROW | wxALL, 0 );
+
+    HorizontalSpacer( itemBoxSizer17 );
+
+    m_topContentMargin = SetupLabelText( contentMarginBox, itemBoxSizer17, lastID,
+        _( "Top" ), false, wxCommandEventHandler( ColDetailsPanel::OnTopContentMargin ) );
+    m_topContentMargin->SetToolTip( _( "Content top margin in mm." ) );
+    HorizontalSpacer( itemBoxSizer17 );
+
+    m_bottomContentMargin = SetupLabelText( contentMarginBox, itemBoxSizer17, lastID,
+        _( "Bottom" ), false, wxCommandEventHandler( ColDetailsPanel::OnBottomContentMargin ) );
+    m_bottomContentMargin->SetToolTip( _( "Content bottom margin in mm." ) );
+
+
+    wxBoxSizer* itemBoxSizer110 = new wxBoxSizer( wxHORIZONTAL );
+    contentMarginBoxVSizer->Add( itemBoxSizer110, 0, wxGROW | wxALL, 0 );
+
+    HorizontalSpacer( itemBoxSizer110 );
+
+    m_leftContentMargin = SetupLabelText( contentMarginBox, itemBoxSizer110, lastID,
+        _( "Left" ), false, wxCommandEventHandler( ColDetailsPanel::OnLeftContentMargin ) );
+    m_leftContentMargin->SetToolTip( _( "Content left margin in mm." ) );
+
+    HorizontalSpacer( itemBoxSizer110 );
+
+    m_rightContentMargin = SetupLabelText( contentMarginBox, itemBoxSizer110, lastID,
+        _( "Right" ), false, wxCommandEventHandler( ColDetailsPanel::OnRightContentMargin ) );
+    m_topContentMargin->SetToolTip( _( "Content right margin in mm." ) );
+
+
+
+  // Title box  
+    wxBoxSizer* titleVerticalSizer = new wxBoxSizer( wxVERTICAL );
+    firstRowHorizontalSizer->Add( titleVerticalSizer, 0, wxGROW | wxALL, 0 );
+
+    m_titleHelper = SetupTitleHelper( detailsPanel, titleVerticalSizer, lastID, DefaultTitleHelperStyle,
         wxCommandEventHandler( ColDetailsPanel::OnTitleCheckboxClick ),
         wxCommandEventHandler( ColDetailsPanel::OnTitleTextChanged ),
         wxCommandEventHandler( ColDetailsPanel::OnSubTitleCheckboxClick ),
         wxCommandEventHandler( ColDetailsPanel::OnSubTitleTextChanged ) );
 
-    SetupFontPicker( theDialog, m_dialogVerticalSizer, lastID,
+    //m_frameCheckbox
+    m_frameCheckbox = SetupCheckBox( detailsPanel, titleVerticalSizer, lastID,
+        ( "Show Frame" ), wxCommandEventHandler( ColDetailsPanel::OnFrameCheckboxClick ) );
+    m_frameCheckbox->SetValue( false );
+
+
+    wxBoxSizer* fontVerticalSizer = new wxBoxSizer( wxVERTICAL );
+    firstRowHorizontalSizer->Add( fontVerticalSizer, 0, wxGROW | wxALL, 0 );
+
+
+    SetupFontPicker( detailsPanel, fontVerticalSizer, lastID,
         _( "Title" ), _( "Default" ),
         m_titleFontPicker, m_titleColorPicker,
         wxFontPickerEventHandler( ColDetailsPanel::OnTitleFontPicker ),
@@ -132,7 +230,7 @@ void ColDetailsPanel::CreateControls( )
         wxCommandEventHandler( ColDetailsPanel::OnTitleDefaultClick ) );
 
 
-    FontPicker* titleFontPicker = SetupFontPicker( theDialog, m_dialogVerticalSizer, lastID,
+    FontPicker* titleFontPicker = SetupFontPicker( detailsPanel, fontVerticalSizer, lastID,
         _( "SubTitle" ), _( "Default" ),
         m_subTitleFontPicker, m_subTitleColorPicker,
         wxFontPickerEventHandler( ColDetailsPanel::OnSubTitleFontPicker ),
@@ -140,7 +238,7 @@ void ColDetailsPanel::CreateControls( )
         wxCommandEventHandler( ColDetailsPanel::OnSubTitleDefaultClick ) );
 
 
-    // m_titleHelper = new TitleHelper( theDialog, m_dialogVerticalSizer, lastID, HasLabels );
+    // m_titleHelper = new TitleHelper( detailsPanel, fontVerticalSizer, lastID, HasLabels );
     // m_titleLabel = m_titleHelper->GetTitleLabel( );
     // m_subTitleLabel = m_titleHelper->GetSubTitleLabel( );
     // m_titleCheckbox = m_titleHelper->GetTitleCheckbox( );
@@ -174,71 +272,64 @@ void ColDetailsPanel::CreateControls( )
     //@@@
 
 
-    wxStaticBox* memberPositionStaticBox = new wxStaticBox( theDialog, wxID_ANY, _( "Member Position" ) );
-    wxStaticBoxSizer* memberPositionStaticBoxSizer = new wxStaticBoxSizer( memberPositionStaticBox, wxHORIZONTAL );
-    m_dialogVerticalSizer->Add( memberPositionStaticBoxSizer, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 5 );
+    // wxStaticBox* memberPositionStaticBox = new wxStaticBox( detailsPanel, wxID_ANY, _( "Member Position" ) );
+    // wxStaticBoxSizer* memberPositionStaticBoxSizer = new wxStaticBoxSizer( memberPositionStaticBox, wxHORIZONTAL );
+    // detailsVSizer->Add( memberPositionStaticBoxSizer, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 5 );
 
-    m_positionCalculated = new wxRadioButton( memberPositionStaticBoxSizer->GetStaticBox( ), ID_CALCULATEDRADIOBUTTON, _( "Calculated" ), wxDefaultPosition, wxDefaultSize, 0 );
-    m_positionCalculated->SetValue( true );
-    m_positionCalculated->SetToolTip( _( "Evenly Distributed" ) );
-    memberPositionStaticBoxSizer->Add( m_positionCalculated, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+    // m_positionCalculated = new wxRadioButton( memberPositionStaticBoxSizer->GetStaticBox( ), ID_CALCULATEDRADIOBUTTON, _( "Calculated" ), wxDefaultPosition, wxDefaultSize, 0 );
+    // m_positionCalculated->SetValue( true );
+    // m_positionCalculated->SetToolTip( _( "Evenly Distributed" ) );
+    // memberPositionStaticBoxSizer->Add( m_positionCalculated, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
-    memberPositionStaticBoxSizer->Add( 5, 5, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+    // memberPositionStaticBoxSizer->Add( 5, 5, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
 
-    m_positionFixed = new wxRadioButton( memberPositionStaticBoxSizer->GetStaticBox( ), ID_FIXEDRADIOBUTTON, _( "Fixed" ), wxDefaultPosition, wxDefaultSize, 0 );
-    m_positionFixed->SetValue( false );
-    memberPositionStaticBoxSizer->Add( m_positionFixed, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+    // m_positionFixed = new wxRadioButton( memberPositionStaticBoxSizer->GetStaticBox( ), ID_FIXEDRADIOBUTTON, _( "Fixed" ), wxDefaultPosition, wxDefaultSize, 0 );
+    // m_positionFixed->SetValue( false );
+    // memberPositionStaticBoxSizer->Add( m_positionFixed, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
-    m_positionFixedSize = new wxTextCtrl( memberPositionStaticBoxSizer->GetStaticBox( ), ID_FIXEDSIZETEXTCTRL, _( "4" ), wxDefaultPosition, wxDefaultSize, 0 );
-    m_positionFixedSize->SetToolTip( _( "mm" ) );
-    m_positionFixedSize->Enable( false );
-    memberPositionStaticBoxSizer->Add( m_positionFixedSize, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
-
-    //>>error list ctrls
-    wxBoxSizer* errorListSizer = new wxBoxSizer( wxHORIZONTAL );
-    m_dialogVerticalSizer->Add( errorListSizer, 2, wxGROW | wxALL, 5 );
-
-    wxArrayString m_statusListStrings;
-    m_statusList = new wxListBox( theDialog, ID_LISTCTRL, wxDefaultPosition, wxDefaultSize, m_statusListStrings, wxLB_SINGLE );
-    errorListSizer->Add( m_statusList, 2, wxGROW | wxALL, 5 );
-    //<<error list ctrls
+    // m_positionFixedSize = new wxTextCtrl( memberPositionStaticBoxSizer->GetStaticBox( ), ID_FIXEDSIZETEXTCTRL, _( "4" ), wxDefaultPosition, wxDefaultSize, 0 );
+    // m_positionFixedSize->SetToolTip( _( "mm" ) );
+    // m_positionFixedSize->Enable( false );
+    // memberPositionStaticBoxSizer->Add( m_positionFixedSize, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
 
 
-    wxBoxSizer* contentMarginBoxVSizer;
-    wxStaticBox* contentMarginBox = SetupBoxSizer( theDialog, m_dialogVerticalSizer,
-        "Content Margin", lastID, contentMarginBoxVSizer, wxVERTICAL );
+    // wxBoxSizer* contentMarginBoxVSizer;
+    // wxStaticBox* contentMarginBox = SetupBoxSizer( detailsPanel, detailsVSizer,
+    //     "Content Margin", lastID, contentMarginBoxVSizer, wxVERTICAL );
 
-    wxBoxSizer* itemBoxSizer17 = new wxBoxSizer( wxHORIZONTAL );
-    contentMarginBoxVSizer->Add( itemBoxSizer17, 0, wxGROW | wxALL, 0 );
+    // wxBoxSizer* itemBoxSizer17 = new wxBoxSizer( wxHORIZONTAL );
+    // contentMarginBoxVSizer->Add( itemBoxSizer17, 0, wxGROW | wxALL, 0 );
 
-    HorizontalSpacer( itemBoxSizer17 );
+    // HorizontalSpacer( itemBoxSizer17 );
 
-    m_topContentMargin = SetupLabelText( contentMarginBox, itemBoxSizer17, lastID,
-        _( "Top" ), false, wxCommandEventHandler( ColDetailsPanel::OnTopContentMargin ) );
-    m_topContentMargin->SetToolTip( _( "Content top margin in mm." ) );
-    HorizontalSpacer( itemBoxSizer17 );
+    // m_topContentMargin = SetupLabelText( contentMarginBox, itemBoxSizer17, lastID,
+    //     _( "Top" ), false, wxCommandEventHandler( ColDetailsPanel::OnTopContentMargin ) );
+    // m_topContentMargin->SetToolTip( _( "Content top margin in mm." ) );
+    // HorizontalSpacer( itemBoxSizer17 );
 
-    m_bottomContentMargin = SetupLabelText( contentMarginBox, itemBoxSizer17, lastID,
-        _( "Bottom" ), false, wxCommandEventHandler( ColDetailsPanel::OnBottomContentMargin ) );
-    m_bottomContentMargin->SetToolTip( _( "Content bottom margin in mm." ) );
+    // m_bottomContentMargin = SetupLabelText( contentMarginBox, itemBoxSizer17, lastID,
+    //     _( "Bottom" ), false, wxCommandEventHandler( ColDetailsPanel::OnBottomContentMargin ) );
+    // m_bottomContentMargin->SetToolTip( _( "Content bottom margin in mm." ) );
 
 
-    wxBoxSizer* itemBoxSizer110 = new wxBoxSizer( wxHORIZONTAL );
-    contentMarginBoxVSizer->Add( itemBoxSizer110, 0, wxGROW | wxALL, 0 );
+    // wxBoxSizer* itemBoxSizer110 = new wxBoxSizer( wxHORIZONTAL );
+    // contentMarginBoxVSizer->Add( itemBoxSizer110, 0, wxGROW | wxALL, 0 );
 
-    HorizontalSpacer( itemBoxSizer110 );
+    // HorizontalSpacer( itemBoxSizer110 );
 
-    m_leftContentMargin = SetupLabelText( contentMarginBox, itemBoxSizer110, lastID,
-        _( "Left" ), false, wxCommandEventHandler( ColDetailsPanel::OnLeftContentMargin ) );
-    m_leftContentMargin->SetToolTip( _( "Content left margin in mm." ) );
+    // m_leftContentMargin = SetupLabelText( contentMarginBox, itemBoxSizer110, lastID,
+    //     _( "Left" ), false, wxCommandEventHandler( ColDetailsPanel::OnLeftContentMargin ) );
+    // m_leftContentMargin->SetToolTip( _( "Content left margin in mm." ) );
 
-    HorizontalSpacer( itemBoxSizer110 );
+    // HorizontalSpacer( itemBoxSizer110 );
 
-    m_rightContentMargin = SetupLabelText( contentMarginBox, itemBoxSizer110, lastID,
-        _( "Right" ), false, wxCommandEventHandler( ColDetailsPanel::OnRightContentMargin ) );
-    m_topContentMargin->SetToolTip( _( "Content right margin in mm." ) );
+    // m_rightContentMargin = SetupLabelText( contentMarginBox, itemBoxSizer110, lastID,
+    //     _( "Right" ), false, wxCommandEventHandler( ColDetailsPanel::OnRightContentMargin ) );
+    // m_topContentMargin->SetToolTip( _( "Content right margin in mm." ) );
+
+    focusNotebook->AddPage( detailsPanel, _( "Details" ) );
 
 }
 

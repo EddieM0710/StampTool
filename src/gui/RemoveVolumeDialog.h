@@ -37,10 +37,19 @@ public:
     void CreateControls( );
 
     static bool ShowToolTips( );
-
+    bool GetRemoveStatus ()
+    {
+        return m_deleteRadioButton->GetValue();
+    }
+    wxString GetSelectedString ()
+    {
+        int sel = m_listComboBox->GetSelection();
+        return m_listComboBox->GetString( sel );
+    }
     wxString m_dialogInstructionText;
     wxString m_dialogTitle;
     wxArrayString m_listComboBoxStrings;
+    wxComboBox* m_listComboBox;
     wxRadioButton* m_removeRadioButton;
     wxRadioButton* m_deleteRadioButton;
 };

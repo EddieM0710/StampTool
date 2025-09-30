@@ -36,7 +36,8 @@ namespace Design {
 
     /**
      * @brief Base class for all layout objects. The layout objects are
-     * initialy loaded from the layout XML.
+     * initialy loaded from the layout XML. Objects inheriting from AlbumBase 
+     * include Album, Page, Row, Column, TextBox and Stamp.
      *
      */
     class AlbumBase : public XMLBase

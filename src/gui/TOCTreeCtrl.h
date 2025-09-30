@@ -44,7 +44,10 @@ typedef void* VolumePtr;
 extern int LastVolumeID;
 
 int GetNextVolumeID( );
-
+/**
+ * @brief ItemData for the TOCTreeCtrl
+ * 
+ */
 class TOCTreeItemData : public wxTreeItemData
 {
 public:
@@ -170,7 +173,10 @@ private:
     Utils::TOCBaseType m_type;
 
 };
-
+/**
+ * @brief Base class for tree control tailored to manage a Table of Contents wxTreeCtrl 
+ * 
+ */
 /**
  * @brief Class to manage a wxTreeCtrl for Stamp
  *

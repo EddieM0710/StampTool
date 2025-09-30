@@ -144,8 +144,6 @@ void AlbumDetailsPanel::CreateControls( )
 
     Connect( m_name->GetId( ), wxEVT_TEXT, wxCommandEventHandler( AlbumDetailsPanel::OnNameClick ) );
 
-
-
     notebook->AddPage( m_albumSettingsPanel, _( "Album Settings" ) );
 
 

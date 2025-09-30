@@ -47,7 +47,10 @@ namespace Design {
     class LayoutBase;
     class AlbumBase;
 
-    /// @brief class that contains all the data for the Album design
+    /**
+     * @brief Contains the filename and xml data location of the Album Volume
+     *
+     */
     class AlbumVolume : public Utils::Volume
     {
 

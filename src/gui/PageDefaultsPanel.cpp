@@ -113,6 +113,7 @@ void PageDefaultsPanel::CreateControls( )
     focusNotebook->SetPadding( wxSize( 1, 1 ) );
     detailsHorizontalSizer->Add( focusNotebook, 1, wxGROW | wxALL, 5 );
 
+    
     wxPanel* commonPanel = new wxPanel( focusNotebook, ++lastID, wxDefaultPosition,
         wxDefaultSize, wxTAB_TRAVERSAL );
     commonPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
@@ -124,8 +125,8 @@ void PageDefaultsPanel::CreateControls( )
     wxBoxSizer* leftCommonVerticalSizer = new wxBoxSizer( wxVERTICAL );
     commonHorizontalSizer->Add( leftCommonVerticalSizer, 1, wxGROW | wxALL, 0 );
 
-    wxBoxSizer* middleCommonVerticalSizer = new wxBoxSizer( wxVERTICAL );
-    commonHorizontalSizer->Add( middleCommonVerticalSizer, 1, wxGROW | wxALL, 0 );
+    // wxBoxSizer* middleCommonVerticalSizer = new wxBoxSizer( wxVERTICAL );
+    // commonHorizontalSizer->Add( middleCommonVerticalSizer, 1, wxGROW | wxALL, 0 );
 
     wxBoxSizer* rightCommonVerticalSizer = new wxBoxSizer( wxVERTICAL );
     commonHorizontalSizer->Add( rightCommonVerticalSizer, 1, wxGROW | wxALL, 0 );
@@ -146,15 +147,13 @@ void PageDefaultsPanel::CreateControls( )
     wxBoxSizer* leftAdvancedVerticalSizer = new wxBoxSizer( wxVERTICAL );
     advancedHorizontalSizer->Add( leftAdvancedVerticalSizer, 1, wxGROW | wxALL, 0 );
 
-    wxBoxSizer* middleAdvancedVerticalSizer = new wxBoxSizer( wxVERTICAL );
-    advancedHorizontalSizer->Add( middleAdvancedVerticalSizer, 1, wxGROW | wxALL, 0 );
+    // wxBoxSizer* middleAdvancedVerticalSizer = new wxBoxSizer( wxVERTICAL );
+    // advancedHorizontalSizer->Add( middleAdvancedVerticalSizer, 1, wxGROW | wxALL, 0 );
 
     wxBoxSizer* rightAdvancedVerticalSizer = new wxBoxSizer( wxVERTICAL );
     advancedHorizontalSizer->Add( rightAdvancedVerticalSizer, 1, wxGROW | wxALL, 0 );
 
     focusNotebook->AddPage( advancedPanel, _( "Special" ) );
-
-
 
 
     wxBoxSizer* oversizePaperSizer;
@@ -182,7 +181,7 @@ void PageDefaultsPanel::CreateControls( )
 
 
     wxBoxSizer* pageHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
-    middleCommonVerticalSizer->Add( pageHorizontalSizer, 0, wxGROW | wxALL, 0 );
+    rightCommonVerticalSizer->Add( pageHorizontalSizer, 0, wxGROW | wxALL, 0 );
 
 
     wxBoxSizer* pageBoxVSizer;

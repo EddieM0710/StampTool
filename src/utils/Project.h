@@ -33,8 +33,10 @@
 
 namespace Utils {
 
-    // Project* NewProjectInstance( );
-
+    /**
+     * @brief Global Project Settings
+     *
+     */
     class Project
     {
     public:
@@ -74,6 +76,10 @@ namespace Utils {
             return m_catalogListNode;
         };
 
+   void RemoveCatalogVolume( wxString filename );
+         
+  
+
         //     wxString GetDesignFilename( );
 
    //     void SetDesignFilename( wxString albumFilename );;
@@ -96,8 +102,8 @@ namespace Utils {
             return m_projectCatalogCode;
         };
 
-        wxString GetProjectCountryID( ) {
-            return m_projectCountryID;
+        wxString GetProjectCountryCode( ) {
+            return m_projectCountryCode;
         };
         wxString GetImageDirectory( );
 
@@ -137,7 +143,7 @@ namespace Utils {
 
         void SetImageDirectory( wxString imagePath );
 
-        void SetProjectCountryID( wxString str );
+        void SetProjectCountryCode( wxString str );
 
         void SetProjectCatalogCode( wxString str );
 
@@ -154,7 +160,7 @@ namespace Utils {
         wxString m_designFilename;
         wxString m_imageDirectory;
         //wxString m_catalogFilename;
-        wxString m_projectCountryID;
+        wxString m_projectCountryCode;
         wxString m_projectCatalogCode;
 
         //Mount::StampMount* m_stampMount;

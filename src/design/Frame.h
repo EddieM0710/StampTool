@@ -33,7 +33,10 @@
 
 
 namespace Design {
-
+    /**
+     * @brief A class for managing parameters of a generic frame and drawing the object.
+     * 
+     */
     class Frame
     {
 

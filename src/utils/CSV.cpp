@@ -286,7 +286,7 @@ namespace Utils {
                                         Catalog::CatalogCode catCodes( valStr );
                                         wxString code = catCodes.GetPreferredCatalogCode( GetProject( )->GetProjectCatalogCode( ) );
 
-                                        //  wxString code = Catalog::GetPreferredCatalogCode( valStr, GetProject( )->GetCatalogID( ) );
+                                        //  wxString code = Catalog::GetPreferredCatalogCode( valStr, GetProject( )->GetCatalogCode( ) );
 
                                           //entryNode.SetID( code );
                                           // //entryNode->ProcessCatalogCodes( valStr );

@@ -37,6 +37,10 @@
 namespace Design
 {
 
+    /**
+     * @brief Title frame layout object; Inherits from LayoutBase.
+     * 
+     */
     class TitleFrame : public Frame
     {
     public:

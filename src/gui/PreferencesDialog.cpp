@@ -102,7 +102,7 @@ void PreferencesDialog::InitDetailsPanel( )
 {
     m_imageDirectory->SetValue( GetProject( )->GetImageDirectory( ) );
     m_catalog->SetValue( GetProject( )->GetProjectCatalogCode( ) );
-    m_country->SetValue( GetProject( )->GetProjectCountryID( ) );
+    m_country->SetValue( GetProject( )->GetProjectCountryCode( ) );
     m_loadLastFileAtStartUp->SetValue( GetSettings( )->GetLoadLastFileAtStartUp( ) );
     wxString str = wxString::Format( "%i", GetSettings( )->GetNbrRecentPreference( ) );
     m_recentListSize->SetValue( str );
@@ -425,7 +425,7 @@ void PreferencesDialog::OnNotebookPageChanged( wxNotebookEvent& event )
 
 void PreferencesDialog::OnImagedirectortextboxTextUpdated( wxCommandEvent& event )
 {
-
+    m_imageDirectory->SetModified( true );
     m_dirty = true;
     event.Skip( );
 
@@ -505,6 +505,7 @@ void PreferencesDialog::OnRecentsizetextctrlTextUpdated( wxCommandEvent& event )
 
 void PreferencesDialog::OnOkClick( wxCommandEvent& event )
 {
+    UpdateDetails();
     UpdateFonts( );
     m_DefinePeriodsPanel->OnOkClick( );
     m_SortOrderPanel->OnOkClick( );
@@ -520,37 +521,22 @@ void PreferencesDialog::OnOkClick( wxCommandEvent& event )
 void PreferencesDialog::UpdateDetails()
 {
 
-    if ( m_imageDirectory->IsModified( ) )
-    {
+
         GetSettings( )->SetDirty( );
         GetProject( )->SetImageDirectory( m_imageDirectory->GetValue( ) );
         m_imageDirectory->SetModified( false );
-    }
 
-    if ( m_country->IsModified( ) )
-    {
         GetSettings( )->SetDirty( );
-        GetSettings( )->SetCountryID( m_country->GetValue( ) );
+        GetProject( )->SetProjectCountryCode( m_country->GetValue( ) );
         m_country->SetModified( false );
-    }
 
-
-    if ( m_catalog->IsModified( ) )
-    {
         GetSettings( )->SetDirty( );
-        GetSettings( )->SetCatalogID( m_catalog->GetValue( ) );
+        GetProject( )->SetProjectCatalogCode( m_catalog->GetValue( ) );
         m_catalog->SetModified( false );
-    }
 
-    if ( m_loadLastFileAtStartUp->GetValue( ) != GetSettings( )->GetLoadLastFileAtStartUp( ) )
-    {
         GetSettings( )->SetDirty( );
         GetSettings( )->SetLoadLastFileAtStartUp( m_loadLastFileAtStartUp->GetValue( ) );
-    }
 
-
-    if ( m_recentListSize->IsModified( ) )
-    {
         GetSettings( )->SetDirty( );
         long val;
         if ( m_recentListSize->GetValue( ).ToLong( &val ) )
@@ -562,7 +548,7 @@ void PreferencesDialog::UpdateDetails()
             GetSettings( )->SetNbrRecentPreference( 1 );
         }
         m_recentListSize->SetModified( false );
-    }
+
 
 }
 

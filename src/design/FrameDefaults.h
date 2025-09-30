@@ -31,7 +31,10 @@
 
 
 namespace Design {
-
+    /**
+     * @brief The class for managing the frame defaults
+     * 
+     */
     class FrameDefaults : public Defaults
     {
 

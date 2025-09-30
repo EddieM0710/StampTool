@@ -34,7 +34,8 @@ namespace Design {
 
     class TitleFrame;
     /**
-     * @brief Row layout object; Inherits from LayoutBase.  The Row can contain Column or Stamp objects.
+     * @brief Row layout object; Inherits from LayoutBase.  
+     * The Row can contain Column or Stamp objects.
      *
      */
     class Row : public LayoutBase

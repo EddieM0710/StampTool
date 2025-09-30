@@ -43,8 +43,10 @@ namespace Catalog {
 
     int WayToSort( Catalog::CatalogVolume* sect1, Catalog::CatalogVolume* sect2 );
 
-    ///  @brief The array that contains all the catalogs
-    ///  
+    /**
+     * @brief The array that contains all the Catalog Volumes
+     *
+     */
     class CatalogList : public Utils::VolumeList
     {
 

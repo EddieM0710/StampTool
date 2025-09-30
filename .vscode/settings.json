@@ -40,6 +40,10 @@
   "system_error": "cpp",
   "tuple": "cpp",
   "text_encoding": "cpp",
-  "*.xpm": "cpp"
+  "*.xpm": "cpp",
+  "xlocale": "cpp",
+  "typeinfo": "cpp",
+  "numbers": "cpp",
+  "random": "cpp"
 }
 }

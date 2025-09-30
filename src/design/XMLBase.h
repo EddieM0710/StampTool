@@ -44,7 +44,7 @@ namespace Design {
 
         /**
          * @brief Base class for all layout objects. The layout objects are
-         * initialy loaded from the layout XML.
+         * initialy loaded from the layout XML and their data is saved as xml data.
          *
          */
     class XMLBase

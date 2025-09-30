@@ -45,8 +45,10 @@ namespace Catalog {
     typedef std::unordered_map< std::string, CatalogVolume*  > CatalogVolumeArray;
     typedef std::unordered_map< int, wxTreeItemId > CatalogMenuIDArray;
 
-    //CatalogVolume* NewCatalogVolumeInstance( );
-
+    /**
+     * @brief Contains the filename and xml data location of the Catalog Volume
+     *
+     */
     class CatalogVolume : public Utils::Volume
     {
     public:

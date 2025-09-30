@@ -69,9 +69,12 @@ namespace Design {
 #define SYMBOL_ALBUMDETAILSPANEL_POSITION wxDefaultPosition
 
 
-
-/// @brief
-/// 
+/**
+ * @brief A panel within the Album View panel. It is a Notebook that has 
+ * Album Settings, FontDefaultsPanel, PageDefaultsPanel, 
+ * FrameDefaultsPanel (for Row/Col Defaults) and StampDefaultsPanel.
+ * 
+ */
 class AlbumDetailsPanel : public HelperPanel
 {
     DECLARE_DYNAMIC_CLASS( AlbumDetailsPanel )

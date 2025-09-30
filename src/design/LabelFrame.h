@@ -38,7 +38,7 @@ namespace Design {
 
 
     /**
-     * @brief
+     * @brief The Frame specialized as a label frame
      *
      */
     class LabelFrame : public Frame

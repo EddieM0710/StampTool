@@ -88,9 +88,10 @@ namespace Utils {
         stdPaths.UseAppInfo( wxStandardPaths::AppInfo_AppName );
         wxString settingsDir = stdPaths.GetUserLocalDataDir( );
         wxFileName* fileName = new wxFileName( settingsDir );
-        if ( !fileName->DirExists( ) )
+
+        if ( !fileName->DirExists( settingsDir ) )
         {
-            fileName->Mkdir( );
+            fileName->Mkdir( settingsDir );
         }
         wxString str = fileName->GetFullPath( );
         m_configurationDirectory = str.Trim( ); m_dirty = true;
@@ -124,7 +125,7 @@ namespace Utils {
 
 
         wxFileName* fileName = new wxFileName( appDocsDir, "" );
-        if ( !fileName->DirExists( ) )
+        if ( !fileName->DirExists( appDocsDir ) )
         {
             fileName->Mkdir( );
         }
@@ -275,7 +276,20 @@ namespace Utils {
         return GetFontList( )->GetColor( FontPreference[ Design::AT_TextFontType ] );
     };
 
-
+        wxString Settings::GetCatCodePrefix()
+        {
+            ;
+            wxString str = "";
+            if (!GetProject()->GetProjectCountryCode().IsEmpty() && !GetProject()->GetProjectCatalogCode().IsEmpty())
+            {
+                str = GetProject()->GetProjectCountryCode() + ":" + GetProject()->GetProjectCatalogCode();
+            }
+            else
+            {
+                str = m_defaultCatalogCode + ":" + m_defaultCountryCode;
+            }
+            return str;
+        };
     //    
     void Settings::SetLastFile( wxString file )
     {
@@ -425,8 +439,8 @@ namespace Utils {
         wxXmlNode* idPref = NewNode( settings, "IDPreference" );
         if ( recent )
         {
-            idPref->AddAttribute( "CatalogID", m_catalogID );
-            idPref->AddAttribute( "CountryID", m_countryID );
+            idPref->AddAttribute( "CatalogCode", GetProject()->GetProjectCatalogCode() );
+            idPref->AddAttribute( "CountryCode", GetProject()->GetProjectCountryCode() );
         }
         const char* file = fullPath.c_str( );
         doc.Save( file );
@@ -489,15 +503,15 @@ namespace Utils {
             SetDirty( );
             m_upperPeriod = m_defaultUpperPeriod;
         }
-        if ( m_countryID.IsEmpty( ) )
+        if ( GetProject()->GetProjectCountryCode().IsEmpty( ) )
         {
             SetDirty( );
-            m_countryID = m_defaultCountryID;
+            GetProject()->SetProjectCountryCode( m_defaultCountryCode );
         }
-        if ( m_catalogID.IsEmpty( ) )
+        if ( GetProject()->GetProjectCatalogCode().IsEmpty( ) )
         {
             SetDirty( );
-            m_catalogID = m_defaultCatalogID;
+            GetProject()->SetProjectCatalogCode( m_defaultCatalogCode );
         }
 
         if ( m_nbrRecentPreference <= 0 )
@@ -519,8 +533,8 @@ namespace Utils {
         //Set Defaults
         SetLoadLastFileAtStartUp( true );
         //SetImageDirectory( "" );
-        SetCatalogID( "" );
-        SetCountryID( "" );
+        GetProject()->SetProjectCountryCode( "" );
+        GetProject()->SetProjectCatalogCode( "" );
 
         SetDefaults( );
 
@@ -640,7 +654,7 @@ namespace Utils {
             else
             {
                 wxFileName lf( appDataDir );
-                if ( lf.DirExists( ) )
+                if ( lf.DirExists( appDataDir ) )
                 {
                     m_appDataDirectory = appDataDir;
                     wxSetWorkingDirectory( lf.GetPath( ) );
@@ -699,15 +713,24 @@ namespace Utils {
         if ( child )
             //else if ( !name.Cmp( "IDPreference" ) )
         {
-            m_catalogID = child->GetAttribute( "CatalogID" );
-            if ( m_catalogID.IsEmpty( ) )
+            wxString catalogCode = child->GetAttribute( "CatalogCode" );
+            if ( catalogCode.IsEmpty( ) )
             {
-                m_catalogID = m_defaultCatalogID;
+                GetProject()->SetProjectCatalogCode( m_defaultCatalogCode );
             }
-            m_countryID = child->GetAttribute( "CountryID" );
-            if ( m_countryID.IsEmpty( ) )
+            else 
             {
-                m_countryID = m_defaultCountryID;
+                GetProject()->SetProjectCatalogCode( catalogCode );
+
+            }
+            wxString CountryCode = child->GetAttribute( "CountryCode" );
+            if ( CountryCode.IsEmpty( ) )
+            {
+                GetProject()->SetProjectCountryCode( m_defaultCountryCode );
+            }
+            else
+            {
+                GetProject()->SetProjectCountryCode( m_defaultCountryCode );
             }
         }
 

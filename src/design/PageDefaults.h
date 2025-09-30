@@ -31,13 +31,14 @@
 
 
 namespace Design {
-
+    /**
+     * @brief The class for managing the Page defaults
+     * 
+     */
     class PageDefaults : public Defaults
     {
 
     public:
-
-
 
         PageDefaults( );
 

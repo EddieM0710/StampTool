@@ -39,7 +39,8 @@
 #include "utils/VolumeList.h"
 #include "utils/XMLUtilities.h"
 #include "toc/TOCDefs.h"
-
+#include "utils/Project.h"
+#include "utils/XMLUtilities.h"
 
 namespace Utils {
 
@@ -182,16 +183,23 @@ namespace Utils {
         }
     };
 
-    void VolumeList::RemoveVolume( wxString name )
+    void VolumeList::RemoveVolume( wxString name, bool deletefile )
     {
         VolumeArray::iterator itr = FindVolumeIterator( name );
+        Utils::Volume* vol = itr->second;
+        wxString filename = vol->GetFilename();
+        
+        // clobber the xml reference to th catalog from the project xml
+        GetProject()->RemoveCatalogVolume( filename );
+
+        // remove it from the volume array
         m_volumeArray.erase( itr );
     }
 
-    void VolumeList::RemoveVolume( Volume* vol )
+    void VolumeList::RemoveVolume( Volume* vol, bool deletefile  )
     {
         wxString name = vol->GetName( );
-        RemoveVolume( name );
+        RemoveVolume( name, deletefile  );
     }
 
     void VolumeList::SaveDirtyVolumes( )

@@ -178,7 +178,7 @@ void FrameDefaultsPanel::CreateControls( )
 
 
     wxBoxSizer* memberSpacingVSizer;
-    wxStaticBox* memberSpacingStaticBox = SetupBoxSizer( commonPanel, middleCommonVerticalSizer,
+    wxStaticBox* memberSpacingStaticBox = SetupBoxSizer( commonPanel, leftCommonVerticalSizer,
         "Member Position", lastID, memberSpacingVSizer, wxHORIZONTAL );
 
     m_fixedSpacingCheckbox = SetupCheckBox( memberSpacingStaticBox, memberSpacingVSizer, lastID,

@@ -43,7 +43,10 @@ namespace Utils {
 
     typedef std::unordered_map< std::string, Volume*  > VolumeArray;
     typedef std::unordered_map< int, wxTreeItemId > MenuIDArray;
-
+    /**
+     * @brief Contains the filename and xml data location of the Volume
+     *
+     */
     class Volume
     {
     public:

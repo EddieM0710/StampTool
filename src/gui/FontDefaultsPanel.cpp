@@ -118,8 +118,8 @@ void FontDefaultsPanel::CreateControls( )
     wxBoxSizer* leftColumnVerticalSizer = new wxBoxSizer( wxVERTICAL );
     detailsHorizontalSizer->Add( leftColumnVerticalSizer, 1, wxGROW | wxALL, 0 );
 
-    wxBoxSizer* middleColumnVerticalSizer = new wxBoxSizer( wxVERTICAL );
-    detailsHorizontalSizer->Add( middleColumnVerticalSizer, 1, wxGROW | wxALL, 0 );
+   // wxBoxSizer* middleColumnVerticalSizer = new wxBoxSizer( wxVERTICAL );
+   // detailsHorizontalSizer->Add( middleColumnVerticalSizer, 1, wxGROW | wxALL, 0 );
 
     wxBoxSizer* rightColumnVerticalSizer = new wxBoxSizer( wxVERTICAL );
     detailsHorizontalSizer->Add( rightColumnVerticalSizer, 1, wxGROW | wxALL, 0 );
@@ -138,21 +138,21 @@ void FontDefaultsPanel::CreateControls( )
         wxColourPickerEventHandler( FontDefaultsPanel::OnSubTitleColorPicker ),
         wxCommandEventHandler( FontDefaultsPanel::OnSubTitleDefaultClick ) );
 
-    SetupFontPicker( thePanel, middleColumnVerticalSizer, lastID,
+    SetupFontPicker( thePanel, rightColumnVerticalSizer, lastID,
         _( "Text Font" ), _( "Default" ),
         m_textFontPicker, m_textColorPicker,
         wxFontPickerEventHandler( FontDefaultsPanel::OnTextFontPicker ),
         wxColourPickerEventHandler( FontDefaultsPanel::OnTextColorPicker ),
         wxCommandEventHandler( FontDefaultsPanel::OnTextDefaultClick ) );
 
-    SetupFontPicker( thePanel, middleColumnVerticalSizer, lastID,
+    SetupFontPicker( thePanel, rightColumnVerticalSizer, lastID,
         _( "Default Catalog Nbr Font" ), _( "Default" ),
         m_nbrFontPicker, m_nbrColorPicker,
         wxFontPickerEventHandler( FontDefaultsPanel::OnNbrFontPicker ),
         wxColourPickerEventHandler( FontDefaultsPanel::OnNbrColorPicker ),
         wxCommandEventHandler( FontDefaultsPanel::OnNbrDefaultClick ) );
 
-    SetupFontPicker( thePanel, rightColumnVerticalSizer, lastID,
+    SetupFontPicker( thePanel, leftColumnVerticalSizer, lastID,
         _( "Default Name Font" ), _( "Default" ),
         m_nameFontPicker, m_nameColorPicker,
         wxFontPickerEventHandler( FontDefaultsPanel::OnNameFontPicker ),

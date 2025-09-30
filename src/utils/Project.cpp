@@ -73,8 +73,8 @@ namespace Utils {
     Project::Project( )
     {
         m_ProjectDoc = ( wxXmlDocument* ) 0;
-        m_projectCountryID = GetSettings( )->GetCountryID( );
-        m_projectCatalogCode = GetSettings( )->GetCatalogID( );
+        m_projectCountryCode = GetSettings( )->GetDefaultCountryCode();
+        m_projectCatalogCode = GetSettings( )->GetDefaultCatalogCode( );
 
         m_projectFilename = "";
 
@@ -105,11 +105,20 @@ namespace Utils {
         newNode->AddAttribute( "CollapseState", "False" );
         newNode->AddAttribute( "VolumeName", volName );
         return newNode;
+    } 
+
+    void Project::RemoveCatalogVolume( wxString filename )
+    {
+        wxXmlNode* node = GetCatalogListNode();
+        wxString property = "FileName";
+        wxXmlNode* child = Utils::FindFirstChildWithPropertyofValue( node, property, filename );
+        wxXmlNode* parent = child->GetParent();
+        parent->RemoveChild(child);
     }
 
-    //-------
+        //-------
 
-    void Project::CloseProject( )
+        void Project::CloseProject()
     {
         if ( m_ProjectDoc )  m_ProjectDoc->~wxXmlDocument( );
         m_catalogListNode = 0;
@@ -398,7 +407,7 @@ namespace Utils {
             }
             else if ( !name.Cmp( "Country" ) )
             {
-                m_projectCountryID = val;
+                m_projectCountryCode = val;
             }
             else if ( !name.Cmp( "CatalogCode" ) )
             {
@@ -412,8 +421,8 @@ namespace Utils {
     // Make a new default project
     void  Project::MakeNewProject( wxString fileName )
     {
-        m_projectCountryID = GetSettings( )->GetCountryID( );
-        m_projectCatalogCode = GetSettings( )->GetCatalogID( );
+        m_projectCountryCode = GetSettings( )->GetDefaultCountryCode( );
+        m_projectCatalogCode = GetSettings( )->GetDefaultCatalogCode( );
 
         m_imageDirectory = wxGetCwd( );
         m_projectFilename = fileName;
@@ -439,8 +448,8 @@ namespace Utils {
 
         wxXmlNode* root = new wxXmlNode( wxXML_ELEMENT_NODE, "Project" );
         newDoc->SetRoot( root );
-        root->AddAttribute( "Country", GetSettings( )->GetCountryID( ) );
-        root->AddAttribute( "CatalogCode", GetSettings( )->GetCatalogID( ) );
+        root->AddAttribute( "Country", GetProject( )->GetProjectCountryCode( ) );
+        root->AddAttribute( "CatalogCode", GetProject( )->GetProjectCatalogCode( ) );
         root->AddAttribute( "ImagePath", wxGetCwd( ) );
 
         wxXmlNode* albumListNode = NewNode( root, "AlbumList" );
@@ -487,7 +496,7 @@ namespace Utils {
         wxXmlNode* root = newDoc->GetRoot( );
 
         // set curr vals
-        SetAttrStr( root, "Country", GetProjectCountryID( ) );
+        SetAttrStr( root, "Country", GetProjectCountryCode( ) );
         SetAttrStr( root, "CatalogCode", GetProjectCatalogCode( ) );
         SetAttrStr( root, "ImagePath", m_imageDirectory );
 
@@ -519,10 +528,10 @@ namespace Utils {
 
     //-------
 
-    void Project::SetProjectCountryID( wxString str ) {
-        if ( str.Cmp( m_projectCountryID ) )
+    void Project::SetProjectCountryCode( wxString str ) {
+        if ( str.Cmp( m_projectCountryCode ) )
         {
-            m_projectCountryID = str;
+            m_projectCountryCode = str;
             m_dirty = true;
         }
     };

@@ -42,7 +42,10 @@ namespace Design {
 
     int WayToSort( Design::AlbumVolume* sect1, Design::AlbumVolume* sect2 );
 
-    class AlbumList : public Utils::VolumeList
+    /**
+     * @brief The array that contains all the Album Volumes
+     *
+     */    class AlbumList : public Utils::VolumeList
     {
 
     public:

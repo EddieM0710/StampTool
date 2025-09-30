@@ -88,9 +88,8 @@ void RemoveVolumeDialog::CreateControls( )
     wxBoxSizer* listHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
     mainVerticalSizer->Add( listHorizontalSizer, 0, wxGROW | wxALL, 5 );
 
-
-    wxComboBox* listComboBox = new wxComboBox( theDialog, ID_COMBOBOX, wxEmptyString, wxDefaultPosition, wxDefaultSize, m_listComboBoxStrings, wxCB_DROPDOWN );
-    listHorizontalSizer->Add( listComboBox, 1, wxGROW | wxALL, 0 );
+    m_listComboBox = new wxComboBox( theDialog, ID_COMBOBOX, wxEmptyString, wxDefaultPosition, wxDefaultSize, m_listComboBoxStrings, wxCB_DROPDOWN );
+    listHorizontalSizer->Add( m_listComboBox, 1, wxGROW | wxALL, 0 );
 
     wxBoxSizer* radioButtonHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
     mainVerticalSizer->Add( radioButtonHorizontalSizer, 0, wxGROW | wxALL, 5 );

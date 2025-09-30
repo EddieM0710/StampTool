@@ -39,7 +39,8 @@ namespace Design {
 
 
     /**
-     * @brief Album layout object; inherits from LayoutBase.
+     * @brief Album layout object; inherits from AlbumBase 
+     * which inherits from LayoutBase.
      *
      */
     class Album : public AlbumBase

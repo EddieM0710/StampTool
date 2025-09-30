@@ -36,20 +36,37 @@
 
 namespace Utils {
 
+    /// @brief 
     class Volume;
 
+    /// @brief 
+    /// @param sect1 
+    /// @param sect2 
+    /// @return 
     int WayToSort( Utils::Volume* sect1, Utils::Volume* sect2 );
 
+    /// @brief 
     class VolumeList
     {
     public:
 
+
+        /**
+         * @brief 
+         * 
+         */
         VolumeList( ) {
             m_currVolume = ( Volume* ) 0;
         };
 
         ~VolumeList( ) { };
 
+        /**
+         * @brief 
+         * 
+         * @param child 
+         * @return wxXmlNode* 
+         */
         wxXmlNode* AddChild( wxXmlNode* child );
 
         bool Clear( );
@@ -76,9 +93,9 @@ namespace Utils {
 
         virtual Volume* NewVolumeInstance( wxString filename ) = 0;
 
-        void RemoveVolume( wxString name );
+        void RemoveVolume( wxString name, bool deletefile = false );
 
-        void RemoveVolume( Volume* vol );
+        void RemoveVolume( Volume* vol, bool deletefile = false );
 
         void SaveDirtyVolumes( );
 

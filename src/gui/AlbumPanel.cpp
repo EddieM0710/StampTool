@@ -526,11 +526,9 @@ void AlbumPanel::NewDesign( )
     {
         return;
     }
-    FileCreateDialog fileDialog( this, 12355, _( "Select the Filename and Directory for the Design file." ) );
-    wxGetCwd( );
-    fileDialog.SetDefaultDirectory( wxGetCwd( ) );
-    fileDialog.SetDefaultFilename( _( "unnamed.alb" ) );
-    fileDialog.SetWildCard( _( "Album Design files(*.alb)|*.alb" ) );
+    wxFileDialog fileDialog( this, "Create Album file", wxGetCwd( ), _( "unnamed.alb" ),
+        "Album Design files(*.alb)|*.alb",
+        wxFD_SAVE );
 
     if ( fileDialog.ShowModal( ) == wxID_CANCEL )
     {

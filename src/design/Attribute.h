@@ -104,6 +104,10 @@ namespace Design {
         wxString m_value;
     };
 
+    /**
+     * @brief Array of Name/Value pairs
+     * 
+     */
     typedef std::vector<Attribute*> LayoutAttributeArray;
 
 }

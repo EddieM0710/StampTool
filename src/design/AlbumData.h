@@ -42,7 +42,11 @@ class AlbumImagePanel;
 
 
 namespace Design {
-    // Links to all the data and controls needed for Album design
+
+    /**
+     * @brief Links to all the data and controls needed for Album design
+     *
+     */    
     class AlbumData
     {
     public:

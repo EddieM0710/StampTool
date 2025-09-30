@@ -90,6 +90,8 @@ public:
 
     void CreateControls( );
 
+    wxPanel* CreateCatalogPanel( wxWindow *parent );
+
     void DoCSVImport( );
 
     void DoMergeCatalog( );
@@ -179,6 +181,7 @@ private:
     wxSpinButton* m_spinButton;
     //wxChoice* m_collectionListCtrl;
     CatalogTreeCtrl* m_catalogTreeCtrl;
+    wxPanel* m_catalogPanel;
     CatalogTOCTreeCtrl* m_tocTreeCtrl;
     wxTreeItemId m_draggedItem;
     wxBoxSizer* m_searchSizer;

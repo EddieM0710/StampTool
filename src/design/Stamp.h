@@ -48,13 +48,13 @@ namespace Design {
     /// @brief  Stamp
     ///
     /// Stamp layout object; Inherits from LayoutBase.
-    /// the Object is built up of several subframes objects. The outer object is the LayoutBase frame.
+    /// The Object is built up of several subframes objects. The outer object is the LayoutBase frame.
     /// Inside the LayoutBase frame is the m_borderFrame, which has the visible frame
     /// for the layout, and the title text.
     /// The m_actualStampFrame is not visible contains the actual parameters of the physical stamp.
     /// The m_stampImageFrame and the m_nbrFrame is embedded in the m_borderFrame and is the image of the object.
     /// The LayoutBase for this object contains the frame parameters for the stamp Album object.
-    ///  These parameters are all in MM.
+    /// These parameters are all in MM.
     class Stamp : public LayoutBase
     {
     public:

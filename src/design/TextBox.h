@@ -46,7 +46,7 @@ namespace Design {
      * @class TextBox
      *
      * @brief TextBox layout object; Inherits from LayoutBase.
-     *
+     * The TextBox has an outer frame and an inner title frame and text frame 
      *
      */
     class TextBox : public LayoutBase

@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -240,30 +240,30 @@ wxPanel* PreferencesDialog::CreateNotebookFontsPanel( wxWindow* parent )
 
     int lastID = ID_LastID;
 
-    FontPicker* catNbrFontPickerHelper = new FontPicker(
-        fontsPanel, fontsVerticalSizer,
-        _( "Default Stamp Nbr Font" ), _( "Default" ), lastID,
+    FontPicker* catNbrFontPickerHelper = new FontPicker( 
+        fontsPanel, fontsVerticalSizer, 
+        _( "Default Stamp Nbr Font" ), _( "Default" ), lastID, 
         catNbrFont, catNbrColor );
     m_nbrFontPicker = catNbrFontPickerHelper->GetFontPickerCtrl( );
     m_nbrColorPicker = catNbrFontPickerHelper->GetColourPickerCtrl( );
 
-    FontPicker* titleFontPickerHelper = new FontPicker(
-        fontsPanel, fontsVerticalSizer,
-        _( "Default Title Font" ), _( "Default" ), lastID,
+    FontPicker* titleFontPickerHelper = new FontPicker( 
+        fontsPanel, fontsVerticalSizer, 
+        _( "Default Title Font" ), _( "Default" ), lastID, 
         titleFont, titleColor );
     m_titleFontPicker = titleFontPickerHelper->GetFontPickerCtrl( );
     m_titleColorPicker = titleFontPickerHelper->GetColourPickerCtrl( );
 
-    FontPicker* textFontPickerHelper = new FontPicker(
-        fontsPanel, fontsVerticalSizer,
-        _( "Default Text Font" ), _( "Default" ), lastID,
+    FontPicker* textFontPickerHelper = new FontPicker( 
+        fontsPanel, fontsVerticalSizer, 
+        _( "Default Text Font" ), _( "Default" ), lastID, 
         textFont, textColor );
     m_textFontPicker = textFontPickerHelper->GetFontPickerCtrl( );
     m_textColorPicker = textFontPickerHelper->GetColourPickerCtrl( );
 
-    FontPicker* nameFontPickerHelper = new FontPicker(
-        fontsPanel, fontsVerticalSizer,
-        _( "Default Stamp Name Font" ), _( "Default" ), lastID,
+    FontPicker* nameFontPickerHelper = new FontPicker( 
+        fontsPanel, fontsVerticalSizer, 
+        _( "Default Stamp Name Font" ), _( "Default" ), lastID, 
         textFont, textColor );
     m_nameFontPicker = nameFontPickerHelper->GetFontPickerCtrl( );
     m_nameColorPicker = nameFontPickerHelper->GetColourPickerCtrl( );
@@ -278,7 +278,7 @@ wxPanel* PreferencesDialog::CreateCollectionPanel( wxWindow* parent )
     wxBoxSizer* collectionVerticalSizer = new wxBoxSizer( wxVERTICAL );
     preferencesCollectionPanel->SetSizer( collectionVerticalSizer );
 
-    m_grid = new wxGrid( preferencesCollectionPanel, ID_COLLECTIONGRID, wxDefaultPosition, wxSize( 100, 100 ),
+    m_grid = new wxGrid( preferencesCollectionPanel, ID_COLLECTIONGRID, wxDefaultPosition, wxSize( 100, 100 ), 
         wxHSCROLL | wxVSCROLL );
     m_grid->SetDefaultColSize( 100 );
     m_grid->SetDefaultRowSize( 25 );
@@ -327,13 +327,13 @@ void PreferencesDialog::CreateControls( )
     m_notebook->AddPage( m_DetailsPanel, _( "Details" ) );
 
     m_SortOrderPanel =
-        new SortOrderPanel( m_notebook, ID_SORTORDERPANEL, wxDefaultPosition,
+        new SortOrderPanel( m_notebook, ID_SORTORDERPANEL, wxDefaultPosition, 
             wxSize( 100, 100 ), wxSIMPLE_BORDER );
     m_notebook->AddPage( m_SortOrderPanel, _( "Sort Order" ) );
 
 
     m_DefinePeriodsPanel =
-        new DefinePeriodsPanel( m_notebook, ID_DEFINEPERIODSPANEL, wxDefaultPosition,
+        new DefinePeriodsPanel( m_notebook, ID_DEFINEPERIODSPANEL, wxDefaultPosition, 
             wxSize( 100, 100 ), wxSIMPLE_BORDER );
     m_notebook->AddPage( m_DefinePeriodsPanel, _( "Define Periods" ) );
 
@@ -359,7 +359,7 @@ void PreferencesDialog::CreateControls( )
 
     // PreferencesDialog content construction
 
-    m_SortOrderPanel->InitSortControls();
+    m_SortOrderPanel->InitSortControls( );
 }
 
 
@@ -373,50 +373,50 @@ bool PreferencesDialog::ShowToolTips( )
 void PreferencesDialog::OnNotebookPageChanged( wxNotebookEvent& event )
 {
     int newPageNdx = m_notebook->GetSelection( );
-    int oldPageNdx = event.GetOldSelection();
+    int oldPageNdx = event.GetOldSelection( );
     wxWindow* newPage = m_notebook->GetPage( newPageNdx );
      wxWindow* oldPage = m_notebook->GetPage( oldPageNdx );
-     if (oldPage == m_DetailsPanel)
+     if ( oldPage == m_DetailsPanel )
      {
-         UpdateDetails();
+         UpdateDetails( );
      }
-     else if (oldPage == m_SortOrderPanel)
+     else if ( oldPage == m_SortOrderPanel )
      {
-         m_SortOrderPanel->Update();
+         m_SortOrderPanel->Update( );
      }
-     else if (oldPage == m_DefinePeriodsPanel)
+     else if ( oldPage == m_DefinePeriodsPanel )
      {
-         m_DefinePeriodsPanel->Update();
+         m_DefinePeriodsPanel->Update( );
      }
-     else if (oldPage == m_FontsPanel)
+     else if ( oldPage == m_FontsPanel )
      {
    
-         UpdateFonts();
+         UpdateFonts( );
      }
-     else if (oldPage == m_CollectionPanel)
+     else if ( oldPage == m_CollectionPanel )
      {
-         UpdateCollectionList();
+         UpdateCollectionList( );
      }
 
-    //  if (newPage == m_DetailsPanel)
+    //  if ( newPage == m_DetailsPanel )
     //  {
-    //     InitDetailsPanel();
+    //     InitDetailsPanel( );
     //  }
-    //  else if (newPage == m_SortOrderPanel)
+    //  else if ( newPage == m_SortOrderPanel )
     //  {
     //      m_SortOrderPanel->InitSortControls( );
     //  }
-    //  else if (newPage == m_DefinePeriodsPanel)
+    //  else if ( newPage == m_DefinePeriodsPanel )
     //  {
     //      m_DefinePeriodsPanel->InitControls( );
     //  }
-    //  else if (newPage == m_FontsPanel)
+    //  else if ( newPage == m_FontsPanel )
     //  {
-    //      InitFonts();
+    //      InitFonts( );
     //  }
-    //  else if (newPage == m_CollectionPanel)
+    //  else if ( newPage == m_CollectionPanel )
     //  {
-    //     InitCollectionGrid();
+    //     InitCollectionGrid( );
     //  }
 }
 /*
@@ -447,13 +447,13 @@ void PreferencesDialog::OnCountrytextboxTextUpdated( wxCommandEvent& event )
 
 void PreferencesDialog::BrowseForDir( wxCommandEvent& event )
 {
-    wxString value = m_imageDirectory->GetValue();
-    wxDirDialog dlg( this,
-                    "Select the Art directory:",
-                    value,
-                    0);
+    wxString value = m_imageDirectory->GetValue( );
+    wxDirDialog dlg( this, 
+                    "Select the Art directory:", 
+                    value, 
+                    0 );
 
-    if ( dlg.ShowModal() == wxID_OK )
+    if ( dlg.ShowModal( ) == wxID_OK )
     {
         m_imageDirectory->SetValue( dlg.GetPath( ) );
         m_imageDirectory->SetModified( true );
@@ -505,7 +505,7 @@ void PreferencesDialog::OnRecentsizetextctrlTextUpdated( wxCommandEvent& event )
 
 void PreferencesDialog::OnOkClick( wxCommandEvent& event )
 {
-    UpdateDetails();
+    UpdateDetails( );
     UpdateFonts( );
     m_DefinePeriodsPanel->OnOkClick( );
     m_SortOrderPanel->OnOkClick( );
@@ -518,7 +518,7 @@ void PreferencesDialog::OnOkClick( wxCommandEvent& event )
 
 }
 
-void PreferencesDialog::UpdateDetails()
+void PreferencesDialog::UpdateDetails( )
 {
 
 
@@ -552,7 +552,7 @@ void PreferencesDialog::UpdateDetails()
 
 }
 
-// void PreferencesDialog::UpdateFonts()
+// void PreferencesDialog::UpdateFonts( )
 // {
 
 //     wxFont titleFont = m_titleFontPicker->GetSelectedFont( );
@@ -610,22 +610,22 @@ void PreferencesDialog::UpdateFonts( )
         GetSettings( )->Save( );
 }
 
-void PreferencesDialog::UpdateCollectionList()
+void PreferencesDialog::UpdateCollectionList( )
 {
     int cnt = m_grid->GetNumberRows( );
     Inventory::CollectionList *collectionList = GetCollectionList( );
-    collectionList->Clear();
+    collectionList->Clear( );
      for ( int i = 0; i < cnt; i++ )
     {
-     collectionList->AddCollection(  m_grid->GetCellValue( i, 0 ), m_grid->GetCellValue( i, 1),  m_grid->GetCellValue( i, 2) );
+     collectionList->AddCollection( m_grid->GetCellValue( i, 0 ), m_grid->GetCellValue( i, 1 ),  m_grid->GetCellValue( i, 2 ) );
     }
 }
 
-void PreferencesDialog::InitCollectionGrid()
+void PreferencesDialog::InitCollectionGrid( )
 {
     int cnt = m_grid->GetNumberRows( );
     int nbrcollections = GetCollectionList( )->GetNameArray( ).Count( );
-    m_grid->DeleteRows(0, nbrcollections);
+    m_grid->DeleteRows( 0, nbrcollections );
     for ( int i = 0; i < nbrcollections; i++ )
     {
         m_grid->InsertRows( cnt, 1 );

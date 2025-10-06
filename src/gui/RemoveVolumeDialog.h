@@ -9,9 +9,9 @@
 #define ID_RADIOBUTTON 10002
 #define ID_RADIOBUTTON1 10003
 #define SYMBOL_REMOVEVOLUMEDIALOG_STYLE wxCAPTION|wxRESIZE_BORDER|wxSYSTEM_MENU|wxCLOSE_BOX|wxTAB_TRAVERSAL
-#define SYMBOL_REMOVEVOLUMEDIALOG_TITLE _("Remove Volume From Project")
+#define SYMBOL_REMOVEVOLUMEDIALOG_TITLE _( "Remove Volume From Project" )
 #define SYMBOL_REMOVEVOLUMEDIALOG_IDNAME ID_RemoveVolume
-#define SYMBOL_REMOVEVOLUMEDIALOG_SIZE wxSize(400, 300)
+#define SYMBOL_REMOVEVOLUMEDIALOG_SIZE wxSize( 400, 300 )
 #define SYMBOL_REMOVEVOLUMEDIALOG_POSITION wxDefaultPosition
 
 class RemoveVolumeDialog : public wxDialog
@@ -21,9 +21,9 @@ class RemoveVolumeDialog : public wxDialog
 
 public:
     RemoveVolumeDialog( );
-    RemoveVolumeDialog( wxWindow* parent,
-        wxString caption,
-        wxString dialogInstructionText,
+    RemoveVolumeDialog( wxWindow* parent, 
+        wxString caption, 
+        wxString dialogInstructionText, 
         wxArrayString listComboBoxStrings );
 
     RemoveVolumeDialog( wxWindow* parent, wxWindowID id = SYMBOL_REMOVEVOLUMEDIALOG_IDNAME, const wxString& caption = SYMBOL_REMOVEVOLUMEDIALOG_TITLE, const wxPoint& pos = SYMBOL_REMOVEVOLUMEDIALOG_POSITION, const wxSize& size = SYMBOL_REMOVEVOLUMEDIALOG_SIZE, long style = SYMBOL_REMOVEVOLUMEDIALOG_STYLE );
@@ -37,13 +37,13 @@ public:
     void CreateControls( );
 
     static bool ShowToolTips( );
-    bool GetRemoveStatus ()
+    bool GetRemoveStatus ( )
     {
-        return m_deleteRadioButton->GetValue();
+        return m_deleteRadioButton->GetValue( );
     }
-    wxString GetSelectedString ()
+    wxString GetSelectedString ( )
     {
-        int sel = m_listComboBox->GetSelection();
+        int sel = m_listComboBox->GetSelection( );
         return m_listComboBox->GetString( sel );
     }
     wxString m_dialogInstructionText;

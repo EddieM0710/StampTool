@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -81,8 +81,8 @@ StampDescriptionPanel::StampDescriptionPanel( void ) {
 
 
 
-StampDescriptionPanel::StampDescriptionPanel( wxWindow* parent, wxWindowID id,
-    const wxPoint& pos, const wxSize& size,
+StampDescriptionPanel::StampDescriptionPanel( wxWindow* parent, wxWindowID id, 
+    const wxPoint& pos, const wxSize& size, 
     long style )
 {
     Init( );
@@ -92,8 +92,8 @@ StampDescriptionPanel::StampDescriptionPanel( wxWindow* parent, wxWindowID id,
 //-------
 
 
-bool StampDescriptionPanel::Create( wxWindow* parent, wxWindowID id,
-    const wxPoint& pos, const wxSize& size,
+bool StampDescriptionPanel::Create( wxWindow* parent, wxWindowID id, 
+    const wxPoint& pos, const wxSize& size, 
     long style )
 {
     // StampDescriptionPanel creation
@@ -154,8 +154,8 @@ void StampDescriptionPanel::CreateControls( void )
     wxBoxSizer* topHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
     topVerticalSizer->Add( topHorizontalSizer, 1, wxGROW | wxALL, 0 );
 
-    wxSplitterWindow* horizontalSplitterWindow = new wxSplitterWindow(
-        thisPanel, ID_HORIZONTALLITTERWINDOW, wxDefaultPosition,
+    wxSplitterWindow* horizontalSplitterWindow = new wxSplitterWindow( 
+        thisPanel, ID_HORIZONTALLITTERWINDOW, wxDefaultPosition, 
         wxDefaultSize, wxSP_3DBORDER | wxSP_3DSASH | wxNO_BORDER );
     horizontalSplitterWindow->SetSashPosition( 200 );
     horizontalSplitterWindow->SetMinimumPaneSize( 50 );
@@ -172,8 +172,8 @@ void StampDescriptionPanel::CreateControls( void )
 
     stampAndImageVerticalSizer->Add( stampAndImageHorizontalSizer, 1, wxGROW | wxALL, 0 );
 
-    wxSplitterWindow* stampAndImageVerticalSplitterWindow = new wxSplitterWindow(
-        stampAndImagePanel, ID_DESCRIPTIONSPLITTERWINDOW, wxDefaultPosition,
+    wxSplitterWindow* stampAndImageVerticalSplitterWindow = new wxSplitterWindow( 
+        stampAndImagePanel, ID_DESCRIPTIONSPLITTERWINDOW, wxDefaultPosition, 
         wxDefaultSize, wxSP_3DBORDER | wxSP_3DSASH | wxNO_BORDER );
     stampAndImageVerticalSplitterWindow->SetSashPosition( 100 );
     stampAndImageVerticalSplitterWindow->SetMinimumPaneSize( 100 );
@@ -186,9 +186,9 @@ void StampDescriptionPanel::CreateControls( void )
     vSizer->Add( hSizer, 1, wxGROW | wxALL, 0 );
 
 
-    m_identificationPanel = new IdentificationPanel(
-        stampAndImageVerticalSplitterWindow,
-        ID_IDENTIFICATIONPANELFORIEGN, wxDefaultPosition,
+    m_identificationPanel = new IdentificationPanel( 
+        stampAndImageVerticalSplitterWindow, 
+        ID_IDENTIFICATIONPANELFORIEGN, wxDefaultPosition, 
         wxDefaultSize, 0 );
     hSizer->Add( m_identificationPanel, 1, wxGROW | wxALL, 0 );
 
@@ -199,8 +199,8 @@ void StampDescriptionPanel::CreateControls( void )
 
     //   identificationPanelVerticalSizer->Add( identificationPanelHorizontalSizer, 1, wxALIGN_CENTER_HORIZONTAL | wxALL, 5 );
 
-    wxPanel* StampImagePanel = new wxPanel( stampAndImageVerticalSplitterWindow,
-        ID_STAMPDESCRIPTIONPANEL, wxDefaultPosition,
+    wxPanel* StampImagePanel = new wxPanel( stampAndImageVerticalSplitterWindow, 
+        ID_STAMPDESCRIPTIONPANEL, wxDefaultPosition, 
         wxDefaultSize, wxTAB_TRAVERSAL );
     StampImagePanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
 
@@ -210,16 +210,16 @@ void StampDescriptionPanel::CreateControls( void )
     wxBoxSizer* stampImageHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
     stampImageVerticalSizer->Add( stampImageHorizontalSizer, 0, wxGROW | wxALL, 0 );
 
-    wxStaticText* zoomStaticText = new wxStaticText(
+    wxStaticText* zoomStaticText = new wxStaticText( 
         StampImagePanel, wxID_STATIC, _( "Zoom" ), wxDefaultPosition, wxDefaultSize, 0 );
     stampImageHorizontalSizer->Add( zoomStaticText, 0, wxALIGN_CENTER_VERTICAL | wxALL, 0 );
 
     m_zoomSlider =
-        new wxSlider( StampImagePanel, ID_ZOOMSLIDER, 100, 25, 300, wxDefaultPosition,
+        new wxSlider( StampImagePanel, ID_ZOOMSLIDER, 100, 25, 300, wxDefaultPosition, 
             wxDefaultSize, wxSL_HORIZONTAL );
     stampImageHorizontalSizer->Add( m_zoomSlider, 1, wxGROW | wxALL, 0 );
 
-    m_stampImage = new ImagePanel( StampImagePanel, ID_STAMPIMAGEPANEL, wxDefaultPosition,
+    m_stampImage = new ImagePanel( StampImagePanel, ID_STAMPIMAGEPANEL, wxDefaultPosition, 
         wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
     m_stampImage->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
     stampImageVerticalSizer->Add( m_stampImage, 1, wxGROW | wxALL, 0 );
@@ -227,7 +227,7 @@ void StampDescriptionPanel::CreateControls( void )
     stampAndImageVerticalSplitterWindow->SplitVertically( m_identificationPanel, StampImagePanel, 200 );
     stampAndImageVerticalSizer->Add( stampAndImageVerticalSplitterWindow, 1, wxGROW | wxALL, 0 );
 
-    m_inventoryPanel = new InventoryPanel( horizontalSplitterWindow, ID_INVENTORYPANEL, wxDefaultPosition,
+    m_inventoryPanel = new InventoryPanel( horizontalSplitterWindow, ID_INVENTORYPANEL, wxDefaultPosition, 
         wxDefaultSize, wxSIMPLE_BORDER );
 
     horizontalSplitterWindow->SplitHorizontally( stampAndImagePanel, m_inventoryPanel, 500 );
@@ -236,7 +236,7 @@ void StampDescriptionPanel::CreateControls( void )
 
     // // display a random image until one is selected
     wxString filename;
-    // if (  GetCatalogVolume( ) )
+    // if ( GetCatalogVolume( ) )
     // { 
     //     filename = GetSettings( )->GetImageDirectory( );
     //     filename.Append( "/4503.jpg" );

@@ -9,7 +9,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -41,9 +41,9 @@ class FontPicker
 public:
 
 
-    FontPicker( wxWindow* parent, wxBoxSizer* inSizer,
-        wxString staticText, wxString buttonText, int& lastID,
-        const wxFont& font = wxNullFont,
+    FontPicker( wxWindow* parent, wxBoxSizer* inSizer, 
+        wxString staticText, wxString buttonText, int& lastID, 
+        const wxFont& font = wxNullFont, 
         const wxColour& color = *wxStockGDI::GetColour( wxStockGDI::COLOUR_BLACK ) )
     {
 
@@ -61,13 +61,13 @@ public:
         // wxStaticText* FontStatic = new wxStaticText( parent, ++lastID, staticText, wxDefaultPosition, wxDefaultSize, 0 );
          //itemStaticBoxSizer->Add( FontStatic, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
-        m_fontPicker = new wxFontPickerCtrl( parent, ++lastID,
-            m_font, wxDefaultPosition,
+        m_fontPicker = new wxFontPickerCtrl( parent, ++lastID, 
+            m_font, wxDefaultPosition, 
             wxDefaultSize, wxFNTP_DEFAULT_STYLE );
         itemStaticBoxSizer->Add( m_fontPicker, 1, wxGROW | wxALL, 5 );
 
-        m_colorPicker = new wxColourPickerCtrl( parent, ++lastID,
-            m_color, wxDefaultPosition,
+        m_colorPicker = new wxColourPickerCtrl( parent, ++lastID, 
+            m_color, wxDefaultPosition, 
             wxSize( 40, -1 ), wxCLRP_DEFAULT_STYLE );
         itemStaticBoxSizer->Add( m_colorPicker, 0, wxGROW | wxALL, 5 );
 

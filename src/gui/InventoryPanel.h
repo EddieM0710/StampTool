@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -63,33 +63,33 @@ class InventoryPanel : public HelperPanel
 public:
     enum InventoryPanelGuiDefs
     {
-        ID_INVENTORYGRID = ID_INVENTORYPANEL + 1,
-        ID_COLLECTIONALLBUTTON,
-        ID_COLLECTIONCLEARBUTTON,
-        ID_COLLECTIONLISTBOX,
-        ID_COLLECTIONCHOICE,
-        ID_AddItem,
-        ID_DeleteItem,
-        ID_MoveItemUp,
-        ID_MoveItemDown,
-        ID_MoveItemTop,
-        ID_MoveItemBottom,
-        ID_Move,
+        ID_INVENTORYGRID = ID_INVENTORYPANEL + 1, 
+        ID_COLLECTIONALLBUTTON, 
+        ID_COLLECTIONCLEARBUTTON, 
+        ID_COLLECTIONLISTBOX, 
+        ID_COLLECTIONCHOICE, 
+        ID_AddItem, 
+        ID_DeleteItem, 
+        ID_MoveItemUp, 
+        ID_MoveItemDown, 
+        ID_MoveItemTop, 
+        ID_MoveItemBottom, 
+        ID_Move, 
         ID_Last
     };
 
     InventoryPanel( );
 
-    InventoryPanel( wxWindow* parent,
-        wxWindowID id = SYMBOL_INVENTORYPANEL_IDNAME,
-        const wxPoint& pos = SYMBOL_INVENTORYPANEL_POSITION,
-        const wxSize& size = SYMBOL_INVENTORYPANEL_SIZE,
+    InventoryPanel( wxWindow* parent, 
+        wxWindowID id = SYMBOL_INVENTORYPANEL_IDNAME, 
+        const wxPoint& pos = SYMBOL_INVENTORYPANEL_POSITION, 
+        const wxSize& size = SYMBOL_INVENTORYPANEL_SIZE, 
         long style = SYMBOL_INVENTORYPANEL_STYLE );
 
 
-    bool Create( wxWindow* parent, wxWindowID id = SYMBOL_INVENTORYPANEL_IDNAME,
-        const wxPoint& pos = SYMBOL_INVENTORYPANEL_POSITION,
-        const wxSize& size = SYMBOL_INVENTORYPANEL_SIZE,
+    bool Create( wxWindow* parent, wxWindowID id = SYMBOL_INVENTORYPANEL_IDNAME, 
+        const wxPoint& pos = SYMBOL_INVENTORYPANEL_POSITION, 
+        const wxSize& size = SYMBOL_INVENTORYPANEL_SIZE, 
         long style = SYMBOL_INVENTORYPANEL_STYLE );
 
     ~InventoryPanel( );

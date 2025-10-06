@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -46,6 +46,7 @@
 #include "Defs.h"
 
 #include "utils/Project.h"
+#include "utils/Image.h"
 #include "utils/XMLUtilities.h"
 
  //#include "StampToolApp.h"
@@ -114,7 +115,7 @@ int CompareTreeItemData::Cmp( CompareTreeItemData* itemData2 )
 
 //------------
 
-CompareTreeItemData::CompareTreeItemData( wxWindow* parent, Catalog::CatalogBaseType type, const wxString desc,
+CompareTreeItemData::CompareTreeItemData( wxWindow* parent, Catalog::CatalogBaseType type, const wxString desc, 
     wxXmlNode* ele, wxXmlNode* mergeNode )
 {
     m_type = type;
@@ -146,8 +147,8 @@ CompareTreeItemData::CompareTreeItemData( wxWindow* parent, Catalog::CatalogBase
 
 //------------
 
-CompareTreeCtrl::CompareTreeCtrl( wxWindow* parent, const wxWindowID id,
-    const wxPoint& pos, const wxSize& size,
+CompareTreeCtrl::CompareTreeCtrl( wxWindow* parent, const wxWindowID id, 
+    const wxPoint& pos, const wxSize& size, 
     long style )
     : wxTreeCtrl( parent, id, pos, size, style )
 {
@@ -178,12 +179,12 @@ ComparePanel* CompareTreeCtrl::GetComparePanel( )
 // //------------
 //  wxTreeItemIcon GetIcon( Catalog::MergeStatus status )
 //  {
-//        if (  status == MS_Undefined )
+//        if ( status == MS_Undefined )
 //        wxTreeItemIcon
-//                if (  MS_Same = 0,
-//                if (  MS_Different,
-//                if (  MS_TargetMissing,
-//                if (  MS_MergeMissing)
+//                if ( MS_Same = 0, 
+//                if ( MS_Different, 
+//                if ( MS_TargetMissing, 
+//                if ( MS_MergeMissing )
 //  }
 
 Catalog::IconID CompareTreeCtrl::GetIconId( Catalog::Entry* entry, Catalog::MergeStatus status )
@@ -269,9 +270,9 @@ void CompareTreeCtrl::AddEntry( wxTreeItemId id )
 
 //--------------
 
-CompareTreeItemData* CompareTreeCtrl::CreateChildData( wxXmlNode* targetNode, wxXmlNode* mergeNode,
-    wxString& label,
-    Catalog::IconID& icon,
+CompareTreeItemData* CompareTreeCtrl::CreateChildData( wxXmlNode* targetNode, wxXmlNode* mergeNode, 
+    wxString& label, 
+    Catalog::IconID& icon, 
     Catalog::CatalogBaseType& nodeType )
 {
     wxXmlNode* node = targetNode;
@@ -486,7 +487,7 @@ wxString CompareTreeCtrl::GetID( wxTreeItemId catTreeID )
 
 //--------------
 
-wxString CompareTreeCtrl::GetImage( wxTreeItemId catTreeID )
+wxString CompareTreeCtrl::GetImageName( wxTreeItemId catTreeID )
 {
     if ( !catTreeID.IsOk( ) ) return "";
     wxXmlNode* node = GetItemNode( catTreeID );
@@ -584,8 +585,8 @@ wxString CompareTreeCtrl::GetImageFullName( wxTreeItemId catTreeID )
         wxString imageName = GetItemImageFullName( catTreeID );
         if ( imageName.IsEmpty( ) )
         {
-            wxString id = GetImage( catTreeID );
-            wxString imageName = GetProject( )->GetImageFullPath( id );
+            wxString id = GetImageName( catTreeID );
+            wxString imageName = Utils::GetImageFullPath( id );
             SetItemImageFullName( catTreeID, id );
         }
         return imageName;
@@ -668,7 +669,7 @@ wxTreeItemId CompareTreeCtrl::InsertChild( wxTreeItemId sibling, wxXmlNode* chil
         //set the icon for the appropriate state
 
         // Catalog::MergeStatus status = entry->SetStatus( );
-        // Catalog::Entry* catEntry = new Catalog::Entry(child);
+        // Catalog::Entry* catEntry = new Catalog::Entry( child );
         SetItemImage( childID, Catalog::Icon_Stamp );
 
     }
@@ -768,7 +769,7 @@ wxTreeItemId  CompareTreeCtrl::FindTargetEntryForNewEntry( wxXmlNode* node, Cata
 
 //--------------
 
-wxTreeItemId  CompareTreeCtrl::FindTargetEntryForNewEntry(
+wxTreeItemId  CompareTreeCtrl::FindTargetEntryForNewEntry( 
     wxTreeItemId id, Catalog::DataTypes type, wxString searchVal )
 {
     if ( id.IsOk( ) )
@@ -952,7 +953,7 @@ void CompareTreeCtrl::LoadMergeToCompareTree( wxXmlNode* mergeRoot )
 };
 //--------------
 
-int CompareTreeCtrl::OnCompareItems( const wxTreeItemId& item1,
+int CompareTreeCtrl::OnCompareItems( const wxTreeItemId& item1, 
     const wxTreeItemId& item2 )
 {
     CompareTreeItemData* itemData1 = ( CompareTreeItemData* ) 0;
@@ -1005,7 +1006,6 @@ wxTreeItemId CompareTreeCtrl::FindNextEntryItem( wxTreeItemId itemId )
     {
         if ( IsEntryNode( next ) )
         {
-            std::cout << "next" << GetDesc( next ) << "\n";
             return next;
         }
         next = FindNextItem( next );
@@ -1022,7 +1022,6 @@ wxTreeItemId CompareTreeCtrl::FindPrevEntryItem( wxTreeItemId itemId )
         lastOK = prev;
         if ( IsEntryNode( prev ) )
         {
-            std::cout << "prev" << GetDesc( prev ) << "\n";
             return prev;
         }
         prev = FindPrevItem( prev );
@@ -1037,14 +1036,12 @@ wxTreeItemId CompareTreeCtrl::FindPrevItem( wxTreeItemId itemId )
     wxTreeItemId prev = GetPrevSibling( itemId );
     if ( prev.IsOk( ) )
     {
-        std::cout << "prev" << GetDesc( prev ) << "\n";
         return prev;
     }
 
     wxTreeItemId parent = GetItemParent( itemId );
     if ( parent.IsOk( ) )
     {
-        std::cout << "parent" << GetDesc( parent ) << "\n";
         return parent;
     }
     return parent;
@@ -1061,7 +1058,6 @@ wxTreeItemId CompareTreeCtrl::FindNextItem( wxTreeItemId itemId )
     wxTreeItemId next = GetFirstChild( itemId, cookie );
     if ( next.IsOk( ) )
     {
-        std::cout << "next" << GetDesc( next ) << "\n";
         return next;
     }
 

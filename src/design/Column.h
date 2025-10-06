@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -28,7 +28,6 @@
 #include <wx/pdfdocument.h>
 
 #include "design/LayoutBase.h"
-#include "utils/DebugString.h"
 
 namespace Design {
 
@@ -146,8 +145,6 @@ namespace Design {
         //     void SetDefaultStampNamePositionType( StampNamePosType loc );
 
     private:
-        // bool m_showTitle;
-        DebugString m_debugString;
         TitleFrame* m_titleFrame;
 
     };

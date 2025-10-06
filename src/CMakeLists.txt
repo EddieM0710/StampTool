@@ -7,6 +7,7 @@ add_subdirectory (toc)
 add_subdirectory (catalog)
 add_subdirectory (design)
 add_subdirectory (gui)
+add_subdirectory (imagefetch)
 
 
 include_directories(  ${StampTool_Source_Directory} )
@@ -18,7 +19,8 @@ add_executable(StampTool
   $<TARGET_OBJECTS:CatalogFiles>
   $<TARGET_OBJECTS:DesignFiles>
   $<TARGET_OBJECTS:CollectionFiles> 
-  $<TARGET_OBJECTS:TOCFiles>
+  $<TARGET_OBJECTS:TOCFiles>  
+  $<TARGET_OBJECTS:ImageFetchFiles>
      StampToolApp.cpp 
      Defs.cpp)
      

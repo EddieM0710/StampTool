@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -272,8 +272,8 @@ namespace Design {
 
     void Row::ReportLayout( )
     {
-        std::cout << "Layout for Row " << "\n ";
-        ReportLayoutFrame( );
+        // std::cout << "Layout for Row " << "\n ";
+        // ReportLayoutFrame( );
     };
 
     //----------------
@@ -395,13 +395,11 @@ namespace Design {
             if ( child->IsNodeType( AT_Stamp ) )
             {
                 Stamp* stamp = ( Stamp* ) child;
-                //std::cout << stamp->GetNameFrame( )->GetString( ) << " max:" << maxTitleHeight << "  found:" << stamp->GetNameFrame( )->GetHeight( );
 
                 if ( stamp->GetNameFrame( )->GetHeight( ) > maxTitleHeight )
                 {
                     maxTitleHeight = stamp->GetNameFrame( )->GetHeight( );
                 }
-                //std::cout << "  new max:" << maxTitleHeight << "\n";
 
                 if ( stamp->GetBorderFrame( )->GetHeight( ) > maxFrameHeight )
                 {
@@ -449,7 +447,7 @@ namespace Design {
             //find the extra space to go on each end
             //it is the amount from the width of items - the minwidth - amount of total space between items  
             //then divide the remaining by 2 to go on each end
-            xPos = (
+            xPos = ( 
                 GetWidth( ) // width of object
                 - GetLeftContentMargin( ) //less left content
                 - GetRightContentMargin( ) //less right content
@@ -491,11 +489,11 @@ namespace Design {
 
                 if ( maxTitleHeight < stamp->GetNameFrame( )->GetHeight( ) )
                 {
-                    std::cout << "Error in Row::UpdatePosition  "
-                        << stamp->GetNameFrame( )->GetString( ) << " "
-                        << "  maxTitleHeight" << maxTitleHeight
-                        << "  Height " << stamp->GetNameFrame( )->GetHeight( )
-                        << "\n";
+                    // std::cout << "Error in Row::UpdatePosition  "
+                    //     << stamp->GetNameFrame( )->GetString( ) << " "
+                    //     << "  maxTitleHeight" << maxTitleHeight
+                    //     << "  Height " << stamp->GetNameFrame( )->GetHeight( )
+                    //     << "\n";
                     while ( 0 )
                     {
                     };
@@ -613,7 +611,6 @@ namespace Design {
                 wxString str;
                 str = wxString::Format( "Terminal leaf node must define the height. height:>>%7.2f<< \n", GetHeight( ) );
                 GetErrorArray( )->Add( str );
-                m_debugString.Append( str );
                 status = AT_FATAL;
             }
             if ( GetWidth( ) <= 0.0 )
@@ -621,7 +618,6 @@ namespace Design {
                 wxString str;
                 str = wxString::Format( "Terminal leaf node must define the height. width:>>%7.2f<< \n", GetWidth( ) );
                 GetErrorArray( )->Add( str );
-                m_debugString.Append( str );
                 status = AT_FATAL;
             }
         }
@@ -632,17 +628,14 @@ namespace Design {
             if ( status == AT_FATAL )
             {
                 GetAlbumTreeCtrl( )->SetItemBackgroundColour( id, *wxRED );
-                std::cout << GetAlbumTreeCtrl( )->GetItemText( id ) << " Fatal\n";
             }
             else if ( status == AT_WARNING )
             {
                 GetAlbumTreeCtrl( )->SetItemBackgroundColour( id, *wxYELLOW );
-                std::cout << GetAlbumTreeCtrl( )->GetItemText( id ) << " Warning\n";
             }
             else
             {
                 GetAlbumTreeCtrl( )->SetItemBackgroundColour( id, *wxWHITE );
-                //std::cout << GetAlbumTreeCtrl( )->GetItemText( id ) << " OK\n";
             }
         }
         return status;

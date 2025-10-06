@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -36,7 +36,7 @@
 
 enum
 {
-    AlbumImagePanel_DeleteItem,
+    AlbumImagePanel_DeleteItem, 
     AlbumImagePanel_EditDetails
 };
 
@@ -54,18 +54,18 @@ public:
 
     AlbumImagePanel( );
 
-    AlbumImagePanel( wxWindow* parent, wxWindowID id = SYMBOL_ALBUMIMAGEPANEL_IDNAME,
-        const wxPoint& pos = SYMBOL_ALBUMIMAGEPANEL_POSITION,
-        const wxSize& size = SYMBOL_ALBUMIMAGEPANEL_SIZE,
+    AlbumImagePanel( wxWindow* parent, wxWindowID id = SYMBOL_ALBUMIMAGEPANEL_IDNAME, 
+        const wxPoint& pos = SYMBOL_ALBUMIMAGEPANEL_POSITION, 
+        const wxSize& size = SYMBOL_ALBUMIMAGEPANEL_SIZE, 
         long style = SYMBOL_ALBUMIMAGEPANEL_STYLE );
 
     ~AlbumImagePanel( );
 
     void Clear( );
 
-    bool Create( wxWindow* parent, wxWindowID id = SYMBOL_ALBUMIMAGEPANEL_IDNAME,
-        const wxPoint& pos = SYMBOL_ALBUMIMAGEPANEL_POSITION,
-        const wxSize& size = SYMBOL_ALBUMIMAGEPANEL_SIZE,
+    bool Create( wxWindow* parent, wxWindowID id = SYMBOL_ALBUMIMAGEPANEL_IDNAME, 
+        const wxPoint& pos = SYMBOL_ALBUMIMAGEPANEL_POSITION, 
+        const wxSize& size = SYMBOL_ALBUMIMAGEPANEL_SIZE, 
         long style = SYMBOL_ALBUMIMAGEPANEL_STYLE );
 
     void CreateControls( );
@@ -99,7 +99,7 @@ public:
 
     void OnPaint( wxPaintEvent& event );
 
-    void OnResize( wxCommandEvent& WXUNUSED( event ) );
+    //void OnResize( wxCommandEvent& WXUNUSED( event ) );
 
     void SetZoom( double zoom );
 

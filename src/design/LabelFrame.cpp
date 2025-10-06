@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -55,19 +55,16 @@ namespace Design {
         int ndx = m_FontNdx;
         if ( GetFontList( )->IsValidFontNdx( ndx ) )
         {
-            std::cout << "LabelFrame::GetFont from this. " << m_string << "  usage:" << usage << " ndx:" << ndx << " " << GetFontList( )->GetMyFont( ndx )->GetNativeInfoStr( ) << "\n";
 
             return GetFontList( )->GetFont( ndx );
         }
         else
         {
             ndx = GetAlbum( )->GetFontNdx( m_fontType );
-            std::cout << "LabelFrame::GetFont from album. usage:" << usage
-                << " ndx:" << ndx << " " << "\n";
             Utils::Font* defaultFont = GetFontList( )->GetMyFont( ndx );
             if ( defaultFont != 0 )
             {
-                std::cout << GetFontList( )->GetMyFont( ndx )->GetNativeInfoStr( ) << "\n";
+                //std::cout << GetFontList( )->GetMyFont( ndx )->GetNativeInfoStr( ) << "\n";
             }
             else
             {

@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -230,7 +230,7 @@ namespace Design {
             m_attrArray.push_back( attribute );
             attr = attr->GetNext( );
         }
-        std::cout;
+        //std::cout;
         return true;
     }
 

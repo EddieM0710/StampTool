@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -133,25 +133,25 @@ class CatalogTreeCtrl : public wxTreeCtrl
 public:
     enum
     {
-        CatalogListTree_Quit = wxID_EXIT,
-        CatalogListTree_About = wxID_ABOUT,
-        CatalogListTree_Sort,
-        CatalogListTree_StructureStamps,
-        CatalogListTree_ResortTree,
-        CatalogListTree_EditDetails,
-        CatalogListTree_Delete,
-        CatalogListTree_Add,
-        CatalogListTree_Colnect,
-        CatalogListTree_Before,
-        CatalogListTree_After,
-        CatalogListTree_AsChild,
-        CatalogListTree_Cancel,
-        CatalogListTree_Inventory,
-        CatalogListTree_InventoryStatusNone,
-        CatalogListTree_InventoryStatusMissing,
-        CatalogListTree_InventoryStatusOrdered,
-        CatalogListTree_InventoryStatusOwn,
-        CatalogListTree_InventoryStatusOwnVariant,
+        CatalogListTree_Quit = wxID_EXIT, 
+        CatalogListTree_About = wxID_ABOUT, 
+        CatalogListTree_Sort, 
+        CatalogListTree_StructureStamps, 
+        CatalogListTree_ResortTree, 
+        CatalogListTree_EditDetails, 
+        CatalogListTree_Delete, 
+        CatalogListTree_Add, 
+        CatalogListTree_Colnect, 
+        CatalogListTree_Before, 
+        CatalogListTree_After, 
+        CatalogListTree_AsChild, 
+        CatalogListTree_Cancel, 
+        CatalogListTree_Inventory, 
+        CatalogListTree_InventoryStatusNone, 
+        CatalogListTree_InventoryStatusMissing, 
+        CatalogListTree_InventoryStatusOrdered, 
+        CatalogListTree_InventoryStatusOwn, 
+        CatalogListTree_InventoryStatusOwnVariant, 
         CatalogListTree_InventoryStatusExclude
     };
 
@@ -159,7 +159,7 @@ public:
 
     CatalogTreeCtrl( ) { }
 
-    CatalogTreeCtrl( wxWindow* parent, const wxWindowID id, const wxPoint& pos,
+    CatalogTreeCtrl( wxWindow* parent, const wxWindowID id, const wxPoint& pos, 
         const wxSize& size, long style );
 
     virtual ~CatalogTreeCtrl( void ) { }
@@ -183,9 +183,9 @@ public:
     void  CountEntryTypes( wxTreeItemId parent, int& count );
 
 
-    CatalogTreeItemData* CreateChildData( wxXmlNode* child,
-        wxString& label,
-        Catalog::IconID& icon,
+    CatalogTreeItemData* CreateChildData( wxXmlNode* child, 
+        wxString& label, 
+        Catalog::IconID& icon, 
         Catalog::CatalogBaseType& nodeType );
 
     void CreateStateImageList( );
@@ -232,7 +232,7 @@ public:
 
     wxString GetID( wxTreeItemId catTreeID );
 
-    wxString GetImage( wxTreeItemId catTreeID );
+    wxString GetImageName( wxTreeItemId catTreeID );
 
     wxString GetImageFullName( wxTreeItemId catTreeID );
 

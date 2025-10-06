@@ -9,7 +9,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -48,7 +48,7 @@ public:
     ///  @brief create static, font picker color picker and default button t=ctrls
     ///  
 
-    TitleHelper( wxWindow* parent, wxBoxSizer* verticalSizer,
+    TitleHelper( wxWindow* parent, wxBoxSizer* verticalSizer, 
         int& idLast, int style = 0 )
     {
         m_style = style;
@@ -75,8 +75,8 @@ public:
             m_verticalSizer->Add( m_titleLabel, 0, wxGROW | wxALL, 5 );
         }
         m_titleFontPickerHelper = new FontPicker(
-            parent, m_verticalSizer,
-            _( "Title Font" ), _( "Default" ), ++idLast,
+            parent, m_verticalSizer, 
+            _( "Title Font" ), _( "Default" ), ++idLast, 
             *wxNORMAL_FONT, *wxBLACK );
 
         if ( m_style & HasLabels )
@@ -86,8 +86,8 @@ public:
             m_verticalSizer->Add( m_subTitleLabel, 0, wxGROW | wxALL, 5 );
         }
         m_subTitleFontPickerHelper = new FontPicker(
-            parent, m_verticalSizer,
-            _( "SubTitle Font" ), _( "Default" ), ++idLast,
+            parent, m_verticalSizer, 
+            _( "SubTitle Font" ), _( "Default" ), ++idLast, 
             *wxNORMAL_FONT, *wxBLACK );
 
     }

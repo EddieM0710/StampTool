@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -66,22 +66,22 @@ class StampDescriptionPanel : public wxPanel
 public:
 
     enum StampDescriptionPanelGuiDefs {
-        ID_HORIZONTALLITTERWINDOW = ID_STAMPDESCRIPTIONPANEL + 1,
-        ID_DESCRIPTIONSPLITTERWINDOW,
-        ID_IDENTIFICATIONPANELFORIEGN,
-        ID_HORIZONTALPLITTERWINDOW,
-        ID_ZOOMSLIDER,
-        ID_STAMPIMAGEPANEL,
-        ID_DESCRIPTIONLNOTEBOOK,
-        ID_INVENTORYFOREIGN,
-        ID_CATALOGCODEFOREIGN,
-        ID_CHARACTERISTICSWINDOW,
-        ID_MISCELLANEOUSDATAFORIEGN,
-        ID_DESCRIPTIONSCROLLEDWINDOW,
-        ID_DESCRIPTIONTEXTCTRL,
-        ID_BACKGROUNDPANEL1,
-        ID_BKGNDSCROLLEDWINDOW,
-        ID_BKGNDTEXTCTRL,
+        ID_HORIZONTALLITTERWINDOW = ID_STAMPDESCRIPTIONPANEL + 1, 
+        ID_DESCRIPTIONSPLITTERWINDOW, 
+        ID_IDENTIFICATIONPANELFORIEGN, 
+        ID_HORIZONTALPLITTERWINDOW, 
+        ID_ZOOMSLIDER, 
+        ID_STAMPIMAGEPANEL, 
+        ID_DESCRIPTIONLNOTEBOOK, 
+        ID_INVENTORYFOREIGN, 
+        ID_CATALOGCODEFOREIGN, 
+        ID_CHARACTERISTICSWINDOW, 
+        ID_MISCELLANEOUSDATAFORIEGN, 
+        ID_DESCRIPTIONSCROLLEDWINDOW, 
+        ID_DESCRIPTIONTEXTCTRL, 
+        ID_BACKGROUNDPANEL1, 
+        ID_BKGNDSCROLLEDWINDOW, 
+        ID_BKGNDTEXTCTRL, 
         ID_NOTEBOOPANEL
     };
 
@@ -94,17 +94,17 @@ public:
      */
     StampDescriptionPanel( void );
 
-    StampDescriptionPanel( wxWindow* parent,
-        wxWindowID id = SYMBOL_DESCRIPTIONPANEL_IDNAME,
-        const wxPoint& pos = SYMBOL_DESCRIPTIONPANEL_POSITION,
-        const wxSize& size = SYMBOL_DESCRIPTIONPANEL_SIZE,
+    StampDescriptionPanel( wxWindow* parent, 
+        wxWindowID id = SYMBOL_DESCRIPTIONPANEL_IDNAME, 
+        const wxPoint& pos = SYMBOL_DESCRIPTIONPANEL_POSITION, 
+        const wxSize& size = SYMBOL_DESCRIPTIONPANEL_SIZE, 
         long style = SYMBOL_DESCRIPTIONPANEL_STYLE );
 
 
-    bool Create( wxWindow* parent,
-        wxWindowID id = SYMBOL_DESCRIPTIONPANEL_IDNAME,
-        const wxPoint& pos = SYMBOL_DESCRIPTIONPANEL_POSITION,
-        const wxSize& size = SYMBOL_DESCRIPTIONPANEL_SIZE,
+    bool Create( wxWindow* parent, 
+        wxWindowID id = SYMBOL_DESCRIPTIONPANEL_IDNAME, 
+        const wxPoint& pos = SYMBOL_DESCRIPTIONPANEL_POSITION, 
+        const wxSize& size = SYMBOL_DESCRIPTIONPANEL_SIZE, 
         long style = SYMBOL_DESCRIPTIONPANEL_STYLE );
 
 

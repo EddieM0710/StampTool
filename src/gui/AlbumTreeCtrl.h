@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -41,19 +41,19 @@
   */
 enum
 {
-    DesignTree_Quit = wxID_EXIT,
-    DesignTree_About = wxID_ABOUT,
-    DesignTree_AddPage,
-    DesignTree_AddCol,
-    DesignTree_AddRow,
-    DesignTree_AddStamp,
-    DesignTree_AddTitle,
-    DesignTree_AddText,
-    DesignTree_DeleteItem,
-    DesignTree_EditDetails,
-    DesignTree_Before,
-    DesignTree_After,
-    DesignTree_AsChild,
+    DesignTree_Quit = wxID_EXIT, 
+    DesignTree_About = wxID_ABOUT, 
+    DesignTree_AddPage, 
+    DesignTree_AddCol, 
+    DesignTree_AddRow, 
+    DesignTree_AddStamp, 
+    DesignTree_AddTitle, 
+    DesignTree_AddText, 
+    DesignTree_DeleteItem, 
+    DesignTree_EditDetails, 
+    DesignTree_Before, 
+    DesignTree_After, 
+    DesignTree_AsChild, 
     DesignTree_Cancel
 };
 
@@ -77,7 +77,7 @@ public:
     ///  @param desc 
     ///  @param ele 
     ///  @param stampLink 
-    DesignTreeItemData( Design::AlbumBaseType type, const wxString desc,
+    DesignTreeItemData( Design::AlbumBaseType type, const wxString desc, 
         Design::AlbumBase* ele = 0, Utils::StampLink* stampLink = 0 )
     {
 
@@ -208,7 +208,7 @@ public:
 
     }
 
-    AlbumTreeCtrl( wxWindow* parent, const wxWindowID id, const wxPoint& pos,
+    AlbumTreeCtrl( wxWindow* parent, const wxWindowID id, const wxPoint& pos, 
         const wxSize& size, long style );
 
 
@@ -303,7 +303,7 @@ public:
 
     void MakePage( wxTreeItemId id );
 
-    wxArrayPtrVoid* MakeParentList( Design::LayoutBase* catalogVolume,
+    wxArrayPtrVoid* MakeParentList( Design::LayoutBase* catalogVolume, 
         Catalog::FormatType parentType );
 
     void OnBeginDrag( wxTreeEvent& event );

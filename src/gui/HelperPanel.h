@@ -84,43 +84,43 @@ public:
 
     void Init( );
 
-    wxStaticBox* SetupBoxSizer( wxWindow* parent, wxBoxSizer* inSizer, wxString name,
+    wxStaticBox* SetupBoxSizer( wxWindow* parent, wxBoxSizer* inSizer, wxString name, 
         int& lastID, wxBoxSizer*& boxSizer, wxOrientation orientation );
 
-    wxCheckBox* SetupCheckBox( wxWindow* parent, wxBoxSizer* sizer,
+    wxCheckBox* SetupCheckBox( wxWindow* parent, wxBoxSizer* sizer, 
         int& lastID, wxString label, wxObjectEventFunction  eventHandler );
 
-    wxCheckListBox* SetupCheckListBox( wxWindow* parent, wxBoxSizer* inSizer, int& lastID,
-        wxString label, wxArrayString& array,
-        wxObjectEventFunction  allButtonEventHandler,
+    wxCheckListBox* SetupCheckListBox( wxWindow* parent, wxBoxSizer* inSizer, int& lastID, 
+        wxString label, wxArrayString& array, 
+        wxObjectEventFunction  allButtonEventHandler, 
         wxObjectEventFunction  clearButtonEventHandler );
 
-    wxChoice* SetupChoice( wxWindow* parent, wxBoxSizer* sizer,
-        int& lastID, wxString label,
+    wxChoice* SetupChoice( wxWindow* parent, wxBoxSizer* sizer, 
+        int& lastID, wxString label, 
         wxArrayString choiceStrings, wxObjectEventFunction  eventHandler );
 
-    FontPicker* SetupFontPicker( wxWindow* parent, wxBoxSizer* verticalSizer, int& lastID,
-        wxString staticText, wxString buttonText,
-        wxFontPickerCtrl*& fontCtrl,
-        wxColourPickerCtrl*& colorCtrl,
-        wxObjectEventFunction  fontPicker,
-        wxObjectEventFunction  colorPicker,
+    FontPicker* SetupFontPicker( wxWindow* parent, wxBoxSizer* verticalSizer, int& lastID, 
+        wxString staticText, wxString buttonText, 
+        wxFontPickerCtrl*& fontCtrl, 
+        wxColourPickerCtrl*& colorCtrl, 
+        wxObjectEventFunction  fontPicker, 
+        wxObjectEventFunction  colorPicker, 
         wxObjectEventFunction  defaultButtonHandler );
 
-    wxTextCtrl* SetupLabelText( wxWindow* parent, wxBoxSizer* verticalSizer,
+    wxTextCtrl* SetupLabelText( wxWindow* parent, wxBoxSizer* verticalSizer, 
         int& lastID, wxString label, bool grow, wxObjectEventFunction  eventHandler );
 
-    wxTextCtrl* SetupMultilineLabeledText( wxWindow* parent, wxBoxSizer* inSizer, int& lastID, wxString label, bool grow,
+    wxTextCtrl* SetupMultilineLabeledText( wxWindow* parent, wxBoxSizer* inSizer, int& lastID, wxString label, bool grow, 
         wxObjectEventFunction  eventHandler );
 
-    wxRadioButton* SetupRadioButton( wxWindow* parent, wxBoxSizer* sizer, int& lastID,
+    wxRadioButton* SetupRadioButton( wxWindow* parent, wxBoxSizer* sizer, int& lastID, 
         wxString label, bool initValue, wxObjectEventFunction  eventHandler );
 
-    TitleHelper* SetupTitleHelper( wxWindow* parent, wxBoxSizer* verticalSizer, int& idLast,
-        int style = DefaultTitleHelperStyle,
-        wxObjectEventFunction  titleCheckBoxEventHandler = ( wxEventFunction ) 0,
-        wxObjectEventFunction  titleEventHandler = ( wxEventFunction ) 0,
-        wxObjectEventFunction  subTitleCheckBoxEeventHandler = ( wxEventFunction ) 0,
+    TitleHelper* SetupTitleHelper( wxWindow* parent, wxBoxSizer* verticalSizer, int& idLast, 
+        int style = DefaultTitleHelperStyle, 
+        wxObjectEventFunction  titleCheckBoxEventHandler = ( wxEventFunction ) 0, 
+        wxObjectEventFunction  titleEventHandler = ( wxEventFunction ) 0, 
+        wxObjectEventFunction  subTitleCheckBoxEeventHandler = ( wxEventFunction ) 0, 
         wxObjectEventFunction  subTitleEventHandler = ( wxEventFunction ) 0 );
 
     void UpdateSubTitleState( HelperPanel::TitleHelper* titleHelper );

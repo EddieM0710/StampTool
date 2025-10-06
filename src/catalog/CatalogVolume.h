@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -58,57 +58,58 @@ namespace Catalog {
 
         ~CatalogVolume( );
 
-        // bool operator>( CatalogVolume* rhs )
-        // {
-        //     if ( GetName( ).Cmp( rhs->GetName( ) ) > 0 )
-        //     {
-        //         return true;
-        //     }
-        //     return false;
-        // }
-
-        // bool operator<( CatalogVolume* rhs )
-        // {
-        //     if ( GetName( ).Cmp( rhs->GetName( ) ) > 0 )
-        //     {
-        //         return false;
-        //     }
-        //     return true;
-        // }
-
-
-
         void EditDetailsDialog( wxWindow* parent );
 
         bool FixupInventoryStatus( wxXmlNode* parent, InventoryStatusType status );
 
         bool FixupInventoryStatus( );
 
-        //void Load( );
-
         bool LoadCSV( wxString filename, wxString newFilename );
 
+        /**
+         * @brief  this makes a list of the children entry elements that can have childrem
+         */
         Utils::wxXmlNodeArray* MakeParentList( Catalog::FormatType parentType );
 
         void MakeParentList( Catalog::FormatType parentType, Utils::wxXmlNodeArray* parentList, wxXmlNode* node );
 
         void NewCatalog( );
 
+        /**
+         * @brief  This is an attempt to group the entrys;  
+         * i.e., an item of type entry can be a child of an item SeTenent type.
+         * 
+         */
         void ReGroupMultiples( );
 
+        /**
+         * @brief resort the tree with the new sort order data. Probably doing this because the sort order was changed.
+         * 
+         */
         void ReSortTree( );
 
         void Save( );
 
         void SaveXML( );
 
-
-
-        /// this looks through the xml tree and makes related entries of childType a child of the parent type
-        void StructureCatalogVolume( Catalog::FormatType parentType,
-            Catalog::FormatType childType,
+        /**
+         * @brief this looks through the xml tree and makes related entries of childType a child of the parent type
+         * 
+         * @param parentType 
+         * @param childType 
+         * @param secondChildType 
+         */
+        void StructureCatalogVolume( Catalog::FormatType parentType, 
+            Catalog::FormatType childType, 
             Catalog::FormatType secondChildType = Catalog::FT_FormatUnknown );
 
+        /**
+         * @brief 
+         * 
+         * @param parent 
+         * @return true 
+         * @return false 
+         */
         bool UpdateMount( wxXmlNode* parent );
 
         bool UpdateMount( );
@@ -119,8 +120,6 @@ namespace Catalog {
     private:
 
     };
-
-    //CatalogVolume* NewCatalogVolume( );
 
 }
 #endif

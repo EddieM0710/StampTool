@@ -11,7 +11,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -49,86 +49,78 @@
 namespace Catalog {
 
     wxString CatalogBaseNames[ NT_NbrTypes ] = {
-        "Catalog",
-        "Country",
-        "Period",
-        "Decade",
-        "Year",
-        "Emission",
-        "Status",
-        "Condition",
-        "Entry",
-        "Inventory",
-        "Item",
+        "Catalog", 
+        "Country", 
+        "Period", 
+        "Decade", 
+        "Year", 
+        "Emission", 
+        "Status", 
+        "Condition", 
+        "Entry", 
+        "Inventory", 
+        "Item", 
         "None" };
 
-    // const wxString CatalogCodeNames[ CC_NbrTypes ]
-    //     = { wxT( "ID" ), wxT( "Country" ), wxT( "Catalog" ) };
+
 
     const wxString CheckedStatusStrings[ ST_NbrCheckedStatusTypes ]
         = { wxT( "Checked" ), wxT( "Unchecked" ) };
 
-    // /**
-    //  * @brief String name used for wxXmlNodes.
-    //  *
-    //  */
-    // const wxString ClassificationNames[ CT_NbrTypes ] = { wxT( "Name" ),
-    // wxT( "PreferredCatalog" ), wxT( "ImageDirectory" ) };
-
     const wxString DataTypeNames[ DT_NbrTypes ] = {
-        wxT( "Name" ),
-        wxT( "Country" ),
-        wxT( "Series" ), wxT( "Catalog Codes" ), wxT( "Issued on" ),
-        wxT( "Expiry date" ), wxT( "Width" ), wxT( "Height" ),
-        wxT( "Paper" ), wxT( "Watermark" ), wxT( "Emission" ),
-        wxT( "Format" ), wxT( "Perforation" ), wxT( "Printing" ),
-        wxT( "Gum" ), wxT( "Currency" ), wxT( "FaceValue" ),
-        wxT( "Print run" ), wxT( "Variant" ), wxT( "Score" ),
-        wxT( "Accuracy" ), wxT( "Colors" ), wxT( "Themes" ),
+        wxT( "Name" ), 
+        wxT( "Country" ), 
+        wxT( "Series" ), wxT( "Catalog Codes" ), wxT( "Issued on" ), 
+        wxT( "Expiry date" ), wxT( "Width" ), wxT( "Height" ), 
+        wxT( "Paper" ), wxT( "Watermark" ), wxT( "Emission" ), 
+        wxT( "Format" ), wxT( "Perforation" ), wxT( "Printing" ), 
+        wxT( "Gum" ), wxT( "Currency" ), wxT( "FaceValue" ), 
+        wxT( "Print run" ), wxT( "Variant" ), wxT( "Score" ), 
+        wxT( "Accuracy" ), wxT( "Colors" ), wxT( "Themes" ), 
         wxT( "Description" ), wxT( "Link" ),       //   wxT( "Checked" ), 
-        wxT( "Inventory" ), wxT( "StampMount" ), wxT( "Background" ),
+        wxT( "Inventory" ), wxT( "StampMount" ), wxT( "Background" ), 
         wxT( "Collapse State" ), wxT( "ImageName" )
     };
 
     const wxString EmissionStrings[ ET_NbrTypes ]
-        = { wxT( "Unknown" ),
-        wxT( "Commemorative" ),
-        wxT( "Definitive" ),
-        wxT( "Hunting Permit" ),
-        wxT( "Revenue" ),
-        wxT( "Air Post" ),
-        wxT( "Air Post Official" ),
-        wxT( "Air Post Semi-Postal" ),
-        wxT( "ATM labels" ),
-        wxT( "Cinderella" ),
-        wxT( "Illegal" ),
-        wxT( "Insured Letter" ),
-        wxT( "Military" ),
-        wxT( "Newspaper" ),
-        wxT( "Official" ),
-        wxT( "Parcel Post" ),
-        wxT( "Personal Delivery" ),
-        wxT( "Personalized" ),
-        wxT( "Postage Due" ),
-        wxT( "Postal Tax" ),
-        wxT( "Precancelled" ),
-        wxT( "Private" ),
-        wxT( "Regional" ),
-        wxT( "Registration" ),
-        wxT( "Semi-Postal" ),
+        = { wxT( "Unknown" ), 
+        wxT( "Commemorative" ), 
+        wxT( "Definitive" ), 
+        wxT( "Hunting Permit" ), 
+        wxT( "Revenue" ), 
+        wxT( "Air Post" ), 
+        wxT( "Air Post Official" ), 
+        wxT( "Air Post Semi-Postal" ), 
+        wxT( "ATM labels" ), 
+        wxT( "Cinderella" ), 
+        wxT( "Illegal" ), 
+        wxT( "Insured Letter" ), 
+        wxT( "Military" ), 
+        wxT( "Newspaper" ), 
+        wxT( "Official" ), 
+        wxT( "Parcel Post" ), 
+        wxT( "Personal Delivery" ), 
+        wxT( "Personalized" ), 
+        wxT( "Postage Due" ), 
+        wxT( "Postal Tax" ), 
+        wxT( "Precancelled" ), 
+        wxT( "Private" ), 
+        wxT( "Regional" ), 
+        wxT( "Registration" ), 
+        wxT( "Semi-Postal" ), 
         wxT( "War Tax" ) };
 
     const wxString FormatStrings[ FT_NbrTypes ]
-        = { wxT( "Unknown" ),
-        wxT( "Stamp" ),
-        wxT( "Se-tenant" ),
-        wxT( "Mini Sheet" ),
-        wxT( "Souvenir Sheet" ),
-        wxT( "Booklet" ),
-        wxT( "Booklet Pane" ),
-        wxT( "Gutter Pair" ),
-        wxT( "Entry with Attached Label" ),
-        wxT( "Tete-Beche" ),
+        = { wxT( "Unknown" ), 
+        wxT( "Stamp" ), 
+        wxT( "Se-tenant" ), 
+        wxT( "Mini Sheet" ), 
+        wxT( "Souvenir Sheet" ), 
+        wxT( "Booklet" ), 
+        wxT( "Booklet Pane" ), 
+        wxT( "Gutter Pair" ), 
+        wxT( "Entry with Attached Label" ), 
+        wxT( "Tete-Beche" ), 
         wxT( "Full Pane" ) };
 
     const wxString InventoryStatusStrings[ ST_NbrInventoryStatusTypes ]
@@ -140,17 +132,17 @@ namespace Catalog {
 
 
     const wxString XMLDataNames[ DT_NbrTypes ] = {
-        wxT( "Name" ),
-        wxT( "Country" ),
-        wxT( "Series" ), wxT( "Catalog_Codes" ), wxT( "Issued_on" ),
-        wxT( "Expiry_date" ), wxT( "Width" ), wxT( "Height" ),
-        wxT( "Paper" ), wxT( "Watermark" ), wxT( "Emission" ),
-        wxT( "Format" ), wxT( "Perforation" ), wxT( "Printing" ),
-        wxT( "Gum" ), wxT( "Currency" ), wxT( "FaceValue" ),
-        wxT( "Print_run" ), wxT( "Variant" ), wxT( "Score" ),
-        wxT( "Accuracy" ), wxT( "Colors" ), wxT( "Themes" ),
+        wxT( "Name" ), 
+        wxT( "Country" ), 
+        wxT( "Series" ), wxT( "Catalog_Codes" ), wxT( "Issued_on" ), 
+        wxT( "Expiry_date" ), wxT( "Width" ), wxT( "Height" ), 
+        wxT( "Paper" ), wxT( "Watermark" ), wxT( "Emission" ), 
+        wxT( "Format" ), wxT( "Perforation" ), wxT( "Printing" ), 
+        wxT( "Gum" ), wxT( "Currency" ), wxT( "FaceValue" ), 
+        wxT( "Print_run" ), wxT( "Variant" ), wxT( "Score" ), 
+        wxT( "Accuracy" ), wxT( "Colors" ), wxT( "Themes" ), 
         wxT( "Description" ), wxT( "Link" ),        //  wxT( "CheckedStatus" ), 
-        wxT( "InventoryStatus" ), wxT( "StampMount" ), wxT( "Background" ),
+        wxT( "InventoryStatus" ), wxT( "StampMount" ), wxT( "Background" ), 
         wxT( "CollapseState" ), wxT( "ImageName" )
     };
 
@@ -163,7 +155,6 @@ namespace Catalog {
         wxString childName = child->GetName( );
         wxString parentName = parent->GetName( );
         CatalogBaseType parentType = FindCatalogBaseType( parentName );
-        std::cout << "parent " << parentName << " type " << parentType << "   child " << childName << "\n";
         if ( level > 6 )
         {
             std::cout << "Infinite loop\n";
@@ -174,15 +165,8 @@ namespace Catalog {
             Catalog::Entry entry( child );
             Catalog::CatalogBaseType sortType =
                 ( Catalog::CatalogBaseType ) GetSettings( )->GetNextSortClassification( ( int ) parentType );
-            std::cout << "parent next sortType" << CatalogBaseNames[ sortType ] << "\n";
             if ( ( sortType < NT_Catalog ) || ( sortType >= NT_Entry ) )
             {
-                // wxString id = entry.GetID( );
-                // long a;
-                // int pos;
-                // pos = id.find( ' ' );
-                // id = id.substr( pos );
-                // id.ToLong( &a );
 
                 // if the sort type is not one of the classification node types
                 // then add it here. All entrys and their children get added here.
@@ -193,7 +177,7 @@ namespace Catalog {
             {
                 wxString nodeName = CatalogBaseNames[ sortType ];
                 wxString name = entry.GetClassificationName( &entry, sortType );
-                const char* nodeNameStr = nodeName.c_str();
+                const char* nodeNameStr = nodeName.c_str( );
 
                 wxXmlNode* nextNode = Utils::FirstChildElement( parent, nodeNameStr );
                 while ( nextNode )
@@ -236,8 +220,7 @@ namespace Catalog {
 
                     nextNode->SetParent( parent );
                 }
-                std::cout << "nextNode " << nextNode->GetName( ) <<
-                    Utils::GetAttrStr( nextNode, "Name" ) << "\n";
+                Utils::GetAttrStr( nextNode, "Name" ) << "\n";
                 AddEntry( nextNode, child, level );
                 return;
             }

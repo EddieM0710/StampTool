@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -143,8 +143,8 @@ void CatalogDetailsDialog::CreateControls( )
     m_catPath->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
     theCatPathHorizontalSizer->Add( m_catPath, 2, wxGROW | wxALL, 5 );
 
-    wxBitmapButton* catDirButton = new wxBitmapButton( theDialog, ID_CATDIRBUTTON,
-        wxBitmap( folder_open_xpm ),
+    wxBitmapButton* catDirButton = new wxBitmapButton( theDialog, ID_CATDIRBUTTON, 
+        wxBitmap( folder_open_xpm ), 
         wxDefaultPosition, wxDefaultSize, wxBU_AUTODRAW | wxNO_BORDER );
     theCatPathHorizontalSizer->Add( catDirButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
@@ -194,8 +194,8 @@ void CatalogDetailsDialog::OnCatDirClick( wxCommandEvent& event )
     wxFileName filename1( catfile );
     wxString path = filename1.GetPath( );
     wxString name = filename1.GetFullName( );
-    wxFileDialog dirDialog( this, "Select the art directory", path, name,
-        "Catalog files (*.cat)|*.cat",
+    wxFileDialog dirDialog( this, "Select the art directory", path, name, 
+        "Catalog files ( *.cat)|*.cat", 
         wxFD_SAVE );
 
     if ( dirDialog.ShowModal( ) == wxID_CANCEL )

@@ -20,9 +20,9 @@ BEGIN_EVENT_TABLE( RemoveVolumeDialog, wxDialog )
 END_EVENT_TABLE( )
 
 
-RemoveVolumeDialog::RemoveVolumeDialog( wxWindow* parent,
-    wxString caption,
-    wxString dialogInstructionText,
+RemoveVolumeDialog::RemoveVolumeDialog( wxWindow* parent, 
+    wxString caption, 
+    wxString dialogInstructionText, 
     wxArrayString listComboBoxStrings )
 {
     m_listComboBoxStrings = listComboBoxStrings;

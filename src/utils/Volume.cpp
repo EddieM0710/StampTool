@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -73,12 +73,12 @@ namespace Utils
         if ( IsDirty( ) )
         {
             // query whether to save first 
-            wxMessageDialog* dlg = new wxMessageDialog(
-                parent,
+            wxMessageDialog* dlg = new wxMessageDialog( 
+                parent, 
                 wxT( "The current data has been changed but not saved. \n"\
                     "Select \"OK\" to close the file losing the changes.\n"\
-                    "Or select \"Cancel\" to quit file open process.\n" ),
-                wxT( "2 ! Unsaved modifications.\n" ),
+                    "Or select \"Cancel\" to quit file open process.\n" ), 
+                wxT( "2 ! Unsaved modifications.\n" ), 
                 wxOK | wxCANCEL | wxCENTER );
             int rsp = dlg->ShowModal( );
             if ( rsp == wxID_CANCEL )
@@ -142,9 +142,9 @@ namespace Utils
             if ( !stream.IsOk( ) )
             {
                 wxString txt = wxString::Format( "%s Stream Create Failed.\n\n", m_filename );
-                wxMessageDialog* dlg = new wxMessageDialog(
-                    GetFrame( ), txt,
-                    wxT( " Warning! Stream Create Failed.\n" ),
+                wxMessageDialog* dlg = new wxMessageDialog( 
+                    GetFrame( ), txt, 
+                    wxT( " Warning! Stream Create Failed.\n" ), 
                     wxOK | wxCANCEL | wxCENTER );
                 int rsp = dlg->ShowModal( );
                 return;
@@ -154,9 +154,9 @@ namespace Utils
             {
                 int err = stream.GetLastError( );
                 wxString txt = wxString::Format( "\n%s Stream  Failed. Error: %d\n\n.", m_filename, err );
-                wxMessageDialog* dlg = new wxMessageDialog(
-                    GetFrame( ), txt,
-                    wxT( " Warning! Stream Load Failed.\n" ),
+                wxMessageDialog* dlg = new wxMessageDialog( 
+                    GetFrame( ), txt, 
+                    wxT( " Warning! Stream Load Failed.\n" ), 
                     wxOK | wxCANCEL | wxCENTER );
                 int rsp = dlg->ShowModal( );
                 return;

@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -76,8 +76,8 @@ void StampToolApp::Init( )
 
 bool StampToolApp::OnInit( )
 {
-    m_frame = (StampToolFrame*)0;
-    m_AppData = (AppData*)0 ;
+    m_frame = ( StampToolFrame* )0;
+    m_AppData = ( AppData* )0 ;
 
     // Remove the comment markers above and below this block
     // to make permanent changes to the code.

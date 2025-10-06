@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -153,18 +153,18 @@ namespace Utils {
         return subdir;
     }
 
-    // wxString Settings::AppendAppInfo(const wxString& dir) const
+    // wxString Settings::AppendAppInfo( const wxString& dir ) const
     // {
-    //     wxString subdir(dir);
+    //     wxString subdir( dir );
 
-    //     if ( UsesAppInfo(AppInfo_VendorName) )
+    //     if ( UsesAppInfo( AppInfo_VendorName ) )
     //     {
-    //         subdir = AppendPathComponent(subdir, wxTheApp->GetVendorName());
+    //         subdir = AppendPathComponent( subdir, wxTheApp->GetVendorName( ) );
     //     }
 
-    //     if ( UsesAppInfo(AppInfo_AppName) )
+    //     if ( UsesAppInfo( AppInfo_AppName ) )
     //     {
-    //         subdir = AppendPathComponent(subdir, wxTheApp->GetAppName());
+    //         subdir = AppendPathComponent( subdir, wxTheApp->GetAppName( ) );
     //     }
 
     //     return subdir;
@@ -179,7 +179,7 @@ namespace Utils {
         //     wxGetCwd( );
         //     fileDialog.SetDefaultDirectory( wxGetCwd( ) );
         //     fileDialog.SetDefaultFilename( _( ""UndefinedName.spt"" ) );
-        //     fileDialog.SetWildCard( _( "Stamp Tools Project files(*.spt)|*.spt" ) );
+        //     fileDialog.SetWildCard( _( "Stamp Tools Project files( *.spt )|*.spt" ) );
 
         //     if ( fileDialog.ShowModal( ) == wxID_CANCEL )
         //     {
@@ -209,11 +209,8 @@ namespace Utils {
         for ( int i = 0; i < m_sortOrder.GetCount( ); i++ )
         {
             int j = m_sortOrder.Item( i );
-            //            std::cout << "   " << j << " " << Catalog::CatalogBaseNames[ j ];
-        }
-        //        std::cout << "\n";
-        //        std::cout << "Looking for" << current + 1 << " " << Catalog::CatalogBaseNames[ current + 1 ];
-
+          }
+ 
         if ( current == 0 )
         {
             return m_sortOrder.Item( 0 );
@@ -276,13 +273,13 @@ namespace Utils {
         return GetFontList( )->GetColor( FontPreference[ Design::AT_TextFontType ] );
     };
 
-        wxString Settings::GetCatCodePrefix()
+        wxString Settings::GetCatCodePrefix( )
         {
             ;
             wxString str = "";
-            if (!GetProject()->GetProjectCountryCode().IsEmpty() && !GetProject()->GetProjectCatalogCode().IsEmpty())
+            if ( !GetProject( )->GetProjectCountryCode( ).IsEmpty( ) && !GetProject( )->GetProjectCatalogCode( ).IsEmpty( ) )
             {
-                str = GetProject()->GetProjectCountryCode() + ":" + GetProject()->GetProjectCatalogCode();
+                str = GetProject( )->GetProjectCountryCode( ) + ":" + GetProject( )->GetProjectCatalogCode( );
             }
             else
             {
@@ -439,12 +436,12 @@ namespace Utils {
         wxXmlNode* idPref = NewNode( settings, "IDPreference" );
         if ( recent )
         {
-            idPref->AddAttribute( "CatalogCode", GetProject()->GetProjectCatalogCode() );
-            idPref->AddAttribute( "CountryCode", GetProject()->GetProjectCountryCode() );
+            idPref->AddAttribute( "CatalogCode", GetProject( )->GetProjectCatalogCode( ) );
+            idPref->AddAttribute( "CountryCode", GetProject( )->GetProjectCountryCode( ) );
         }
         const char* file = fullPath.c_str( );
         doc.Save( file );
-        // Utils::Save(  &doc, file );
+        // Utils::Save( &doc, file );
         SetDirty( false );
     }
 
@@ -503,15 +500,15 @@ namespace Utils {
             SetDirty( );
             m_upperPeriod = m_defaultUpperPeriod;
         }
-        if ( GetProject()->GetProjectCountryCode().IsEmpty( ) )
+        if ( GetProject( )->GetProjectCountryCode( ).IsEmpty( ) )
         {
             SetDirty( );
-            GetProject()->SetProjectCountryCode( m_defaultCountryCode );
+            GetProject( )->SetProjectCountryCode( m_defaultCountryCode );
         }
-        if ( GetProject()->GetProjectCatalogCode().IsEmpty( ) )
+        if ( GetProject( )->GetProjectCatalogCode( ).IsEmpty( ) )
         {
             SetDirty( );
-            GetProject()->SetProjectCatalogCode( m_defaultCatalogCode );
+            GetProject( )->SetProjectCatalogCode( m_defaultCatalogCode );
         }
 
         if ( m_nbrRecentPreference <= 0 )
@@ -533,8 +530,8 @@ namespace Utils {
         //Set Defaults
         SetLoadLastFileAtStartUp( true );
         //SetImageDirectory( "" );
-        GetProject()->SetProjectCountryCode( "" );
-        GetProject()->SetProjectCatalogCode( "" );
+        GetProject( )->SetProjectCountryCode( "" );
+        GetProject( )->SetProjectCatalogCode( "" );
 
         SetDefaults( );
 
@@ -716,21 +713,21 @@ namespace Utils {
             wxString catalogCode = child->GetAttribute( "CatalogCode" );
             if ( catalogCode.IsEmpty( ) )
             {
-                GetProject()->SetProjectCatalogCode( m_defaultCatalogCode );
+                GetProject( )->SetProjectCatalogCode( m_defaultCatalogCode );
             }
             else 
             {
-                GetProject()->SetProjectCatalogCode( catalogCode );
+                GetProject( )->SetProjectCatalogCode( catalogCode );
 
             }
             wxString CountryCode = child->GetAttribute( "CountryCode" );
             if ( CountryCode.IsEmpty( ) )
             {
-                GetProject()->SetProjectCountryCode( m_defaultCountryCode );
+                GetProject( )->SetProjectCountryCode( m_defaultCountryCode );
             }
             else
             {
-                GetProject()->SetProjectCountryCode( m_defaultCountryCode );
+                GetProject( )->SetProjectCountryCode( m_defaultCountryCode );
             }
         }
 
@@ -885,9 +882,6 @@ namespace Utils {
             for ( int attrType = Design::AT_Name; attrType < Design::AT_NbrAttrTypes; attrType++ )
             {
                 ApplicationLayoutPreference[ layout ][ attrType ] = ApplicationLayoutDefault[ layout ][ attrType ];
-                std::cout << Design::LayoutTypeStrings[ layout ] << " "
-                    << Design::AttrNameStrings[ attrType ] << " "
-                    << ApplicationLayoutPreference[ layout ][ attrType ] << "\n";
             }
         }
 

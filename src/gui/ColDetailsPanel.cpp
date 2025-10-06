@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -102,13 +102,13 @@ void ColDetailsPanel::CreateControls( )
     m_dialogVerticalSizer = new wxBoxSizer( wxVERTICAL );
     theDialog->SetSizer( m_dialogVerticalSizer );
 
-    wxNotebook* focusNotebook = new wxNotebook( theDialog, ++lastID,
+    wxNotebook* focusNotebook = new wxNotebook( theDialog, ++lastID, 
         wxDefaultPosition, wxDefaultSize, wxBK_TOP );
     focusNotebook->SetPadding( wxSize( 1, 1 ) );
     m_dialogVerticalSizer->Add( focusNotebook, 1, wxGROW | wxALL, 5 );
 
     // Status {Panel
-    wxPanel* statusListPanel = new wxPanel( focusNotebook, ++lastID, wxDefaultPosition,
+    wxPanel* statusListPanel = new wxPanel( focusNotebook, ++lastID, wxDefaultPosition, 
         wxDefaultSize, wxTAB_TRAVERSAL );
     statusListPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
     
@@ -128,7 +128,7 @@ void ColDetailsPanel::CreateControls( )
 
 
     //Details Panel
-    wxPanel* detailsPanel = new wxPanel( focusNotebook, ++lastID, wxDefaultPosition,
+    wxPanel* detailsPanel = new wxPanel( focusNotebook, ++lastID, wxDefaultPosition, 
         wxDefaultSize, wxTAB_TRAVERSAL );
     detailsPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
     
@@ -167,7 +167,7 @@ void ColDetailsPanel::CreateControls( )
 
 
     wxBoxSizer* contentMarginBoxVSizer;
-    wxStaticBox* contentMarginBox = SetupBoxSizer( detailsPanel, firstVerticalSizer,
+    wxStaticBox* contentMarginBox = SetupBoxSizer( detailsPanel, firstVerticalSizer, 
         "Content Margin", lastID, contentMarginBoxVSizer, wxVERTICAL );
 
     wxBoxSizer* itemBoxSizer17 = new wxBoxSizer( wxHORIZONTAL );
@@ -175,12 +175,12 @@ void ColDetailsPanel::CreateControls( )
 
     HorizontalSpacer( itemBoxSizer17 );
 
-    m_topContentMargin = SetupLabelText( contentMarginBox, itemBoxSizer17, lastID,
+    m_topContentMargin = SetupLabelText( contentMarginBox, itemBoxSizer17, lastID, 
         _( "Top" ), false, wxCommandEventHandler( ColDetailsPanel::OnTopContentMargin ) );
     m_topContentMargin->SetToolTip( _( "Content top margin in mm." ) );
     HorizontalSpacer( itemBoxSizer17 );
 
-    m_bottomContentMargin = SetupLabelText( contentMarginBox, itemBoxSizer17, lastID,
+    m_bottomContentMargin = SetupLabelText( contentMarginBox, itemBoxSizer17, lastID, 
         _( "Bottom" ), false, wxCommandEventHandler( ColDetailsPanel::OnBottomContentMargin ) );
     m_bottomContentMargin->SetToolTip( _( "Content bottom margin in mm." ) );
 
@@ -190,13 +190,13 @@ void ColDetailsPanel::CreateControls( )
 
     HorizontalSpacer( itemBoxSizer110 );
 
-    m_leftContentMargin = SetupLabelText( contentMarginBox, itemBoxSizer110, lastID,
+    m_leftContentMargin = SetupLabelText( contentMarginBox, itemBoxSizer110, lastID, 
         _( "Left" ), false, wxCommandEventHandler( ColDetailsPanel::OnLeftContentMargin ) );
     m_leftContentMargin->SetToolTip( _( "Content left margin in mm." ) );
 
     HorizontalSpacer( itemBoxSizer110 );
 
-    m_rightContentMargin = SetupLabelText( contentMarginBox, itemBoxSizer110, lastID,
+    m_rightContentMargin = SetupLabelText( contentMarginBox, itemBoxSizer110, lastID, 
         _( "Right" ), false, wxCommandEventHandler( ColDetailsPanel::OnRightContentMargin ) );
     m_topContentMargin->SetToolTip( _( "Content right margin in mm." ) );
 
@@ -206,14 +206,14 @@ void ColDetailsPanel::CreateControls( )
     wxBoxSizer* titleVerticalSizer = new wxBoxSizer( wxVERTICAL );
     firstRowHorizontalSizer->Add( titleVerticalSizer, 0, wxGROW | wxALL, 0 );
 
-    m_titleHelper = SetupTitleHelper( detailsPanel, titleVerticalSizer, lastID, DefaultTitleHelperStyle,
-        wxCommandEventHandler( ColDetailsPanel::OnTitleCheckboxClick ),
-        wxCommandEventHandler( ColDetailsPanel::OnTitleTextChanged ),
-        wxCommandEventHandler( ColDetailsPanel::OnSubTitleCheckboxClick ),
+    m_titleHelper = SetupTitleHelper( detailsPanel, titleVerticalSizer, lastID, DefaultTitleHelperStyle, 
+        wxCommandEventHandler( ColDetailsPanel::OnTitleCheckboxClick ), 
+        wxCommandEventHandler( ColDetailsPanel::OnTitleTextChanged ), 
+        wxCommandEventHandler( ColDetailsPanel::OnSubTitleCheckboxClick ), 
         wxCommandEventHandler( ColDetailsPanel::OnSubTitleTextChanged ) );
 
     //m_frameCheckbox
-    m_frameCheckbox = SetupCheckBox( detailsPanel, titleVerticalSizer, lastID,
+    m_frameCheckbox = SetupCheckBox( detailsPanel, titleVerticalSizer, lastID, 
         ( "Show Frame" ), wxCommandEventHandler( ColDetailsPanel::OnFrameCheckboxClick ) );
     m_frameCheckbox->SetValue( false );
 
@@ -222,19 +222,19 @@ void ColDetailsPanel::CreateControls( )
     firstRowHorizontalSizer->Add( fontVerticalSizer, 0, wxGROW | wxALL, 0 );
 
 
-    SetupFontPicker( detailsPanel, fontVerticalSizer, lastID,
-        _( "Title" ), _( "Default" ),
-        m_titleFontPicker, m_titleColorPicker,
-        wxFontPickerEventHandler( ColDetailsPanel::OnTitleFontPicker ),
-        wxColourPickerEventHandler( ColDetailsPanel::OnTitleColorPicker ),
+    SetupFontPicker( detailsPanel, fontVerticalSizer, lastID, 
+        _( "Title" ), _( "Default" ), 
+        m_titleFontPicker, m_titleColorPicker, 
+        wxFontPickerEventHandler( ColDetailsPanel::OnTitleFontPicker ), 
+        wxColourPickerEventHandler( ColDetailsPanel::OnTitleColorPicker ), 
         wxCommandEventHandler( ColDetailsPanel::OnTitleDefaultClick ) );
 
 
-    FontPicker* titleFontPicker = SetupFontPicker( detailsPanel, fontVerticalSizer, lastID,
-        _( "SubTitle" ), _( "Default" ),
-        m_subTitleFontPicker, m_subTitleColorPicker,
-        wxFontPickerEventHandler( ColDetailsPanel::OnSubTitleFontPicker ),
-        wxColourPickerEventHandler( ColDetailsPanel::OnSubTitleColorPicker ),
+    FontPicker* titleFontPicker = SetupFontPicker( detailsPanel, fontVerticalSizer, lastID, 
+        _( "SubTitle" ), _( "Default" ), 
+        m_subTitleFontPicker, m_subTitleColorPicker, 
+        wxFontPickerEventHandler( ColDetailsPanel::OnSubTitleFontPicker ), 
+        wxColourPickerEventHandler( ColDetailsPanel::OnSubTitleColorPicker ), 
         wxCommandEventHandler( ColDetailsPanel::OnSubTitleDefaultClick ) );
 
 
@@ -254,20 +254,20 @@ void ColDetailsPanel::CreateControls( )
     // m_subTitleFontPicker = m_titleHelper->GetSubTitleFontPickerCtrl( );
     // m_subTitleColorPicker = m_titleHelper->GetSubTitleColourPickerCtrl( );
 
-    // Connect( m_titleHelper->GetSubTitleDefaultButton( )->GetId( ),
-    //     wxEVT_BUTTON,
+    // Connect( m_titleHelper->GetSubTitleDefaultButton( )->GetId( ), 
+    //     wxEVT_BUTTON, 
     //     wxCommandEventHandler( ColDetailsPanel::OnNameDefaultClick ) );
 
-    // Connect( m_titleHelper->GetSubTitleDefaultButton( )->GetId( ),
-    //     wxEVT_BUTTON,
+    // Connect( m_titleHelper->GetSubTitleDefaultButton( )->GetId( ), 
+    //     wxEVT_BUTTON, 
     //     wxCommandEventHandler( ColDetailsPanel::OnSubTitleDefaultClick ) );
 
-    // Connect( m_titleHelper->GetTitleCheckbox( )->GetId( ),
-    //     wxEVT_CHECKBOX,
+    // Connect( m_titleHelper->GetTitleCheckbox( )->GetId( ), 
+    //     wxEVT_CHECKBOX, 
     //     wxCommandEventHandler( ColDetailsPanel::OnNameCheckboxClick ) );
 
-    // Connect( m_titleHelper->GetSubTitleCheckbox( )->GetId( ),
-    //     wxEVT_CHECKBOX,
+    // Connect( m_titleHelper->GetSubTitleCheckbox( )->GetId( ), 
+    //     wxEVT_CHECKBOX, 
     //     wxCommandEventHandler( ColDetailsPanel::OnSubTitleCheckboxClick ) );
     //@@@
 
@@ -296,7 +296,7 @@ void ColDetailsPanel::CreateControls( )
 
 
     // wxBoxSizer* contentMarginBoxVSizer;
-    // wxStaticBox* contentMarginBox = SetupBoxSizer( detailsPanel, detailsVSizer,
+    // wxStaticBox* contentMarginBox = SetupBoxSizer( detailsPanel, detailsVSizer, 
     //     "Content Margin", lastID, contentMarginBoxVSizer, wxVERTICAL );
 
     // wxBoxSizer* itemBoxSizer17 = new wxBoxSizer( wxHORIZONTAL );
@@ -304,12 +304,12 @@ void ColDetailsPanel::CreateControls( )
 
     // HorizontalSpacer( itemBoxSizer17 );
 
-    // m_topContentMargin = SetupLabelText( contentMarginBox, itemBoxSizer17, lastID,
+    // m_topContentMargin = SetupLabelText( contentMarginBox, itemBoxSizer17, lastID, 
     //     _( "Top" ), false, wxCommandEventHandler( ColDetailsPanel::OnTopContentMargin ) );
     // m_topContentMargin->SetToolTip( _( "Content top margin in mm." ) );
     // HorizontalSpacer( itemBoxSizer17 );
 
-    // m_bottomContentMargin = SetupLabelText( contentMarginBox, itemBoxSizer17, lastID,
+    // m_bottomContentMargin = SetupLabelText( contentMarginBox, itemBoxSizer17, lastID, 
     //     _( "Bottom" ), false, wxCommandEventHandler( ColDetailsPanel::OnBottomContentMargin ) );
     // m_bottomContentMargin->SetToolTip( _( "Content bottom margin in mm." ) );
 
@@ -319,13 +319,13 @@ void ColDetailsPanel::CreateControls( )
 
     // HorizontalSpacer( itemBoxSizer110 );
 
-    // m_leftContentMargin = SetupLabelText( contentMarginBox, itemBoxSizer110, lastID,
+    // m_leftContentMargin = SetupLabelText( contentMarginBox, itemBoxSizer110, lastID, 
     //     _( "Left" ), false, wxCommandEventHandler( ColDetailsPanel::OnLeftContentMargin ) );
     // m_leftContentMargin->SetToolTip( _( "Content left margin in mm." ) );
 
     // HorizontalSpacer( itemBoxSizer110 );
 
-    // m_rightContentMargin = SetupLabelText( contentMarginBox, itemBoxSizer110, lastID,
+    // m_rightContentMargin = SetupLabelText( contentMarginBox, itemBoxSizer110, lastID, 
     //     _( "Right" ), false, wxCommandEventHandler( ColDetailsPanel::OnRightContentMargin ) );
     // m_topContentMargin->SetToolTip( _( "Content right margin in mm." ) );
 
@@ -528,28 +528,28 @@ void ColDetailsPanel::OnTitleFontPicker( wxFontPickerEvent& event )
 {
     m_col->GetTitleFrame( )->SetHeadingFont( m_titleFontPicker->GetSelectedFont( ), m_titleColorPicker->GetColour( ) );
 
-    m_col->GetTitleFrame( )->SetHeadingFont(
-        m_titleFontPicker->GetSelectedFont( ),
+    m_col->GetTitleFrame( )->SetHeadingFont( 
+        m_titleFontPicker->GetSelectedFont( ), 
         m_titleColorPicker->GetColour( ) );
 
 }
 void ColDetailsPanel::OnTitleColorPicker( wxColourPickerEvent& event )
 {
-    m_col->GetTitleFrame( )->SetHeadingFont(
-        m_titleFontPicker->GetSelectedFont( ),
+    m_col->GetTitleFrame( )->SetHeadingFont( 
+        m_titleFontPicker->GetSelectedFont( ), 
         m_titleColorPicker->GetColour( ) );
 }
 
 void ColDetailsPanel::OnSubTitleFontPicker( wxFontPickerEvent& event )
 {
-    m_col->GetTitleFrame( )->SetSubHeadingFont(
-        m_subTitleFontPicker->GetSelectedFont( ),
+    m_col->GetTitleFrame( )->SetSubHeadingFont( 
+        m_subTitleFontPicker->GetSelectedFont( ), 
         m_subTitleColorPicker->GetColour( ) );
 }
 void ColDetailsPanel::OnSubTitleColorPicker( wxColourPickerEvent& event )
 {
-    m_col->GetTitleFrame( )->SetSubHeadingFont(
-        m_subTitleFontPicker->GetSelectedFont( ),
+    m_col->GetTitleFrame( )->SetSubHeadingFont( 
+        m_subTitleFontPicker->GetSelectedFont( ), 
         m_subTitleColorPicker->GetColour( ) );
 
 }

@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -29,16 +29,14 @@
 
 #include "design/LayoutBase.h"
 #include "design/Album.h"
-#include "utils/DebugString.h"
-
 
 namespace Design {
 
 
     // typedef enum {
-    //     AT_InvalidImage = 0,
-    //     AT_InvalidHeight,
-    //     AT_InvalidWidth,
+    //     AT_InvalidImage = 0, 
+    //     AT_InvalidHeight, 
+    //     AT_InvalidWidth, 
     //     AT_NbrStampErrorTypes
     // }StampErrorType;
 
@@ -66,11 +64,11 @@ namespace Design {
         ~Stamp( ) { };
 
 
-        // ( AT_GrayScaleImages,
-        //     ( AT_TopContentMargin,
-        //         ( AT_BottomContentMargin,
-        //             ( AT_LeftContentMargin,
-        //                 ( AT_RightContentMargin,
+        // ( AT_GrayScaleImages, 
+        //     ( AT_TopContentMargin, 
+        //         ( AT_BottomContentMargin, 
+        //             ( AT_LeftContentMargin, 
+        //                 ( AT_RightContentMargin, 
 
 
 
@@ -103,8 +101,6 @@ namespace Design {
         wxString GetCatalogCodes( );
 
         StampNamePosType  GetDefaultStampNamePosition( );
-
-        wxImage GetImage( );
 
         double GetMountAllowanceHeight( ){
             return GetAlbumAttributeDbl( Design::AT_MountAllowanceHeight );
@@ -191,6 +187,8 @@ namespace Design {
         double GetActualStampWidth( );
 
         wxString GetActualStampWidthStr( );
+    
+        wxString GetStampColnectLink( );
 
         wxString GetStampNamePosition( );
 
@@ -288,6 +286,8 @@ namespace Design {
 
         void SetActualStampWidth( wxString str );
 
+        void SetStampColnectLink( wxString str );
+
         wxString MakeDisplayNbr( );
 
         void SetStampNamePosition( StampNamePosType loc );
@@ -330,7 +330,7 @@ namespace Design {
 
         wxString m_imageFilename;
         wxImage m_image;
-        // DebugString m_debugString;
+        wxString m_colnectLink;
     };
 }
 #endif

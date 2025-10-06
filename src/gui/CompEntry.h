@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -35,9 +35,9 @@
 #define ID_UNDOATTRIBCOPY 10001
 #define ID_MERGEENTRY 10016
 #define SYMBOL_COMPENTRY_STYLE wxTAB_TRAVERSAL
-#define SYMBOL_COMPENTRY_TITLE _("CompEntry")
+#define SYMBOL_COMPENTRY_TITLE _( "CompEntry" )
 #define SYMBOL_COMPENTRY_IDNAME ID_COMPENTRY
-#define SYMBOL_COMPENTRY_SIZE wxSize(600, 300)
+#define SYMBOL_COMPENTRY_SIZE wxSize( 600, 300 )
 #define SYMBOL_COMPENTRY_POSITION wxDefaultPosition
 
 class MergeEntry;

@@ -10,7 +10,7 @@
  * This file is part of Sta@mpTool.
  *
  * Sta@mpTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * Sta@mpTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -28,15 +28,14 @@
 #include <wx/pdfdocument.h>
 
 #include "design/LayoutBase.h"
-#include "utils/DebugString.h"
 
 
 namespace Design {
 
 
     // typedef enum {
-    //     AT_InvalidHeight = 0,
-    //     AT_InvalidWidth,
+    //     AT_InvalidHeight = 0, 
+    //     AT_InvalidWidth, 
     //     AT_NbrTextErrorTypes
     // }TextErrorType;
 
@@ -203,7 +202,6 @@ namespace Design {
         Frame m_textBoxFrame;
         //wxSize m_titleTextExtent;
         bool m_showTitle;
-        DebugString m_debugString;
         LabelFrame* m_titleFrame;
         LabelFrame* m_textFrame;
 

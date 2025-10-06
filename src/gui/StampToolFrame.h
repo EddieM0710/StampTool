@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -51,37 +51,37 @@ namespace {
 
 
 enum {
-    ID_TEXTSERCHMENUITEM = ID_STAMPTOOLFRAME,
-    ID_SORTORDER,
-    ID_ITEMVIEW,
-    ID_DEFINEPERIOD,
-    ID_RECENT,
-    ID_RECENTMENU,
-    ID_PREFERENCES,
-    ID_MERGE,
-    ID_PROJECTDETAILS,
-    ID_CSVIMPORT,
-    ID_CLOSEPROJECT,
-    ID_OPENPROJECT,
-    ID_OPENDESIGN,
-    ID_OPENCATALOG,
-    ID_REMOVECATALOG,
-    ID_REMOVEDESIGN,
-    ID_SAVEPROJECT,
-    ID_SAVEDESIGN,
-    ID_SAVECATALOG,
-    ID_SAVEASPROJECT,
-    ID_SAVEASDESIGN,
-    ID_SAVEASCATALOG,
-    ID_NEWPROJECT,
-    ID_NEWDESIGN,
-    ID_NEWCATALOG,
-    ID_OPENCOLLECTION,
-    ID_ADDCOLLECTION,
-    ID_CATALOGMENU,
-    ID_GENERATEPDF,
-    ID_OPENPDF,
-    ID_DESIGNMENU,
+    ID_TEXTSERCHMENUITEM = ID_STAMPTOOLFRAME, 
+    ID_SORTORDER, 
+    ID_ITEMVIEW, 
+    ID_DEFINEPERIOD, 
+    ID_RECENT, 
+    ID_RECENTMENU, 
+    ID_PREFERENCES, 
+    ID_MERGE, 
+    ID_PROJECTDETAILS, 
+    ID_CSVIMPORT, 
+    ID_CLOSEPROJECT, 
+    ID_OPENPROJECT, 
+    ID_OPENDESIGN, 
+    ID_OPENCATALOG, 
+    ID_REMOVECATALOG, 
+    ID_REMOVEDESIGN, 
+    ID_SAVEPROJECT, 
+    ID_SAVEDESIGN, 
+    ID_SAVECATALOG, 
+    ID_SAVEASPROJECT, 
+    ID_SAVEASDESIGN, 
+    ID_SAVEASCATALOG, 
+    ID_NEWPROJECT, 
+    ID_NEWDESIGN, 
+    ID_NEWCATALOG, 
+    ID_OPENCOLLECTION, 
+    ID_ADDCOLLECTION, 
+    ID_CATALOGMENU, 
+    ID_GENERATEPDF, 
+    ID_OPENPDF, 
+    ID_DESIGNMENU, 
     ID_STAMPTOOLPANELFOREIGN = ID_STAMPTOOLPANEL
 };
 
@@ -109,11 +109,11 @@ public:
 
     StampToolFrame( );
 
-    StampToolFrame( wxWindow* parent,
-        wxWindowID id = SYMBOL_STAMPTOOLFRAME_IDNAME,
-        const wxString& caption = SYMBOL_STAMPTOOLFRAME_TITLE,
-        const wxPoint& pos = SYMBOL_STAMPTOOLFRAME_POSITION,
-        const wxSize& size = SYMBOL_STAMPTOOLFRAME_SIZE,
+    StampToolFrame( wxWindow* parent, 
+        wxWindowID id = SYMBOL_STAMPTOOLFRAME_IDNAME, 
+        const wxString& caption = SYMBOL_STAMPTOOLFRAME_TITLE, 
+        const wxPoint& pos = SYMBOL_STAMPTOOLFRAME_POSITION, 
+        const wxSize& size = SYMBOL_STAMPTOOLFRAME_SIZE, 
         long style = SYMBOL_STAMPTOOLFRAME_STYLE );
 
 
@@ -121,11 +121,11 @@ public:
 
     void CloseProject( );
 
-    bool Create( wxWindow* parent,
-        wxWindowID id = SYMBOL_STAMPTOOLFRAME_IDNAME,
-        const wxString& caption = SYMBOL_STAMPTOOLFRAME_TITLE,
-        const wxPoint& pos = SYMBOL_STAMPTOOLFRAME_POSITION,
-        const wxSize& size = SYMBOL_STAMPTOOLFRAME_SIZE,
+    bool Create( wxWindow* parent, 
+        wxWindowID id = SYMBOL_STAMPTOOLFRAME_IDNAME, 
+        const wxString& caption = SYMBOL_STAMPTOOLFRAME_TITLE, 
+        const wxPoint& pos = SYMBOL_STAMPTOOLFRAME_POSITION, 
+        const wxSize& size = SYMBOL_STAMPTOOLFRAME_SIZE, 
         long style = SYMBOL_STAMPTOOLFRAME_STYLE );
 
     void CreateControls( );

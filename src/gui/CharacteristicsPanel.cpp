@@ -10,7 +10,7 @@
   * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -53,8 +53,8 @@ CharacteristicsPanel::CharacteristicsPanel( ) {
     Init( );
 }
 
-CharacteristicsPanel::CharacteristicsPanel( wxWindow* parent, wxWindowID id,
-    const wxPoint& pos,
+CharacteristicsPanel::CharacteristicsPanel( wxWindow* parent, wxWindowID id, 
+    const wxPoint& pos, 
     const wxSize& size, long style )
 {
     Init( );
@@ -69,8 +69,8 @@ CharacteristicsPanel::~CharacteristicsPanel( void )
 
 //--------------
 
-bool CharacteristicsPanel::Create( wxWindow* parent, wxWindowID id,
-    const wxPoint& pos, const wxSize& size,
+bool CharacteristicsPanel::Create( wxWindow* parent, wxWindowID id, 
+    const wxPoint& pos, const wxSize& size, 
     long style )
 {
     SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );

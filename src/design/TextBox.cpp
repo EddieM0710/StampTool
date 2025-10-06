@@ -10,7 +10,7 @@
  * This file is part of Sta@mpTool.
  *
  * Sta@mpTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * Sta@mpTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -203,8 +203,8 @@ namespace Design {
     void TextBox::ReportLayout( )
     {
 
-        std::cout << "Layout for TextBox :";
-        ReportLayoutFrame( );
+        //std::cout << "Layout for TextBox :";
+        //ReportLayoutFrame( );
     };
 
     //--------------

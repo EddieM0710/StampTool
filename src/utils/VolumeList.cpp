@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -187,10 +187,10 @@ namespace Utils {
     {
         VolumeArray::iterator itr = FindVolumeIterator( name );
         Utils::Volume* vol = itr->second;
-        wxString filename = vol->GetFilename();
+        wxString filename = vol->GetFilename( );
         
         // clobber the xml reference to th catalog from the project xml
-        GetProject()->RemoveCatalogVolume( filename );
+        GetProject( )->RemoveCatalogVolume( filename );
 
         // remove it from the volume array
         m_volumeArray.erase( itr );

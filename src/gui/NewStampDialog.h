@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -62,15 +62,15 @@ class NewStampDialog : public wxDialog
 public:
     enum NewStampDialogGuiDefs
     {
-        ID_IDLABELEDTEXTBOX = ID_NEWSTAMPDIALOG + 1,
-        ID_NAMELABELEDTEXTBOX,
-        ID_EMISSIONCHOICE,
-        ID_FORMATCHOICE,
-        ID_ISSUEDTEXTBOX,
-        ID_COUNTRYTEXTBOX,
-        ID_CATALOGTEXTBOX,
-        ID_CATNBRTEXTBOX,
-        ID_WIDTHTEXTBOX,
+        ID_IDLABELEDTEXTBOX = ID_NEWSTAMPDIALOG + 1, 
+        ID_NAMELABELEDTEXTBOX, 
+        ID_EMISSIONCHOICE, 
+        ID_FORMATCHOICE, 
+        ID_ISSUEDTEXTBOX, 
+        ID_COUNTRYTEXTBOX, 
+        ID_CATALOGTEXTBOX, 
+        ID_CATNBRTEXTBOX, 
+        ID_WIDTHTEXTBOX, 
         ID_HEIGHTTEXTBOX
     };
 

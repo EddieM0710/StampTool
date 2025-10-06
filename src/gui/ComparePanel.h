@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -54,9 +54,9 @@
 #define ID_SELECTEDRADIOBUTTON 10025
 #define ID_CHECKLISTBOX 10026
 #define SYMBOL_COMPAREPANEL_STYLE wxCAPTION | wxRESIZE_BORDER | wxSYSTEM_MENU | wxCLOSE_BOX | wxTAB_TRAVERSAL
-#define SYMBOL_COMPAREPANEL_TITLE _("ComparePanel")
+#define SYMBOL_COMPAREPANEL_TITLE _( "ComparePanel" )
 #define SYMBOL_COMPAREPANEL_IDNAME ID_COMPAREPANEL
-#define SYMBOL_COMPAREPANEL_SIZE wxSize(900, 800)
+#define SYMBOL_COMPAREPANEL_SIZE wxSize( 900, 800 )
 #define SYMBOL_COMPAREPANEL_POSITION wxDefaultPosition
 
 class CompEntry;
@@ -69,18 +69,18 @@ class ComparePanel : public wxDialog
 
 public:
     ComparePanel( );
-    ComparePanel( wxWindow* parent,
-        wxWindowID id = SYMBOL_COMPAREPANEL_IDNAME,
-        const wxString& caption = SYMBOL_COMPAREPANEL_TITLE,
-        const wxPoint& pos = SYMBOL_COMPAREPANEL_POSITION,
-        const wxSize& size = SYMBOL_COMPAREPANEL_SIZE,
+    ComparePanel( wxWindow* parent, 
+        wxWindowID id = SYMBOL_COMPAREPANEL_IDNAME, 
+        const wxString& caption = SYMBOL_COMPAREPANEL_TITLE, 
+        const wxPoint& pos = SYMBOL_COMPAREPANEL_POSITION, 
+        const wxSize& size = SYMBOL_COMPAREPANEL_SIZE, 
         long style = SYMBOL_COMPAREPANEL_STYLE );
 
-    bool Create( wxWindow* parent,
-        wxWindowID id = SYMBOL_COMPAREPANEL_IDNAME,
-        const wxString& caption = SYMBOL_COMPAREPANEL_TITLE,
-        const wxPoint& pos = SYMBOL_COMPAREPANEL_POSITION,
-        const wxSize& size = SYMBOL_COMPAREPANEL_SIZE,
+    bool Create( wxWindow* parent, 
+        wxWindowID id = SYMBOL_COMPAREPANEL_IDNAME, 
+        const wxString& caption = SYMBOL_COMPAREPANEL_TITLE, 
+        const wxPoint& pos = SYMBOL_COMPAREPANEL_POSITION, 
+        const wxSize& size = SYMBOL_COMPAREPANEL_SIZE, 
         long style = SYMBOL_COMPAREPANEL_STYLE );
 
     ~ComparePanel( );

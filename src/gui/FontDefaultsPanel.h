@@ -9,7 +9,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -62,30 +62,30 @@ public:
 
     enum FontDefaultsPanelGuiDefs {
         //#define  10000
-        ID_NOTEBOOKPOSITIONPANEL = ID_PAGEDEFAULTSDIALOG + 1,
-        ID_PAGENAMELABELEDTEXTBOX,
-        ID_SHOWTITLECHECKBOX,
-        ID_SHOWSUBTITLECHECKBOX,
-        ID_SHOWFRAMECHECKBOX,
-        ID_ORIENTATIONCHOICE,
-        ID_DEFAULTBUTTON,
-        ID_ERRORLISTCTRL,
-        ID_NOTEBOOK,
-        ID_DETAILSPANEL,
-        ID_TITLEDEFAULTBUTTON,
-        ID_LAYOUTPANEL,
-        ID_LAYOUTTEXTCTRL,
-        ID_POSITIONTEXTCTRL,
-        ID_NOTEBOOKDETAILSPANEL,
+        ID_NOTEBOOKPOSITIONPANEL = ID_PAGEDEFAULTSDIALOG + 1, 
+        ID_PAGENAMELABELEDTEXTBOX, 
+        ID_SHOWTITLECHECKBOX, 
+        ID_SHOWSUBTITLECHECKBOX, 
+        ID_SHOWFRAMECHECKBOX, 
+        ID_ORIENTATIONCHOICE, 
+        ID_DEFAULTBUTTON, 
+        ID_ERRORLISTCTRL, 
+        ID_NOTEBOOK, 
+        ID_DETAILSPANEL, 
+        ID_TITLEDEFAULTBUTTON, 
+        ID_LAYOUTPANEL, 
+        ID_LAYOUTTEXTCTRL, 
+        ID_POSITIONTEXTCTRL, 
+        ID_NOTEBOOKDETAILSPANEL, 
         ID_LastID
     };
 
 
     FontDefaultsPanel( );
-    FontDefaultsPanel( wxWindow* parent, wxWindowID id = SYMBOL_FONTPANEL_IDNAME,
-        const wxString& caption = SYMBOL_FONTPANEL_TITLE,
-        const wxPoint& pos = SYMBOL_FONTPANEL_POSITION,
-        const wxSize& size = SYMBOL_FONTPANEL_SIZE,
+    FontDefaultsPanel( wxWindow* parent, wxWindowID id = SYMBOL_FONTPANEL_IDNAME, 
+        const wxString& caption = SYMBOL_FONTPANEL_TITLE, 
+        const wxPoint& pos = SYMBOL_FONTPANEL_POSITION, 
+        const wxSize& size = SYMBOL_FONTPANEL_SIZE, 
         long style = SYMBOL_FONTPANEL_STYLE );
 
     bool Create( wxWindow* parent, wxWindowID id = SYMBOL_FONTPANEL_IDNAME, const wxString& caption = SYMBOL_FONTPANEL_TITLE, const wxPoint& pos = SYMBOL_FONTPANEL_POSITION, const wxSize& size = SYMBOL_FONTPANEL_SIZE, long style = SYMBOL_FONTPANEL_STYLE );

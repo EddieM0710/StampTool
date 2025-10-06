@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -73,51 +73,51 @@ namespace Catalog
 
 
   Catalog::IconID CatalogImageSelection[ Catalog::FT_NbrTypes ][ Catalog::ST_NbrInventoryStatusTypes ] = {
-    { Catalog::Icon_StampUnknown, Catalog::Icon_StampMissing, Catalog::Icon_StampOrdered, Catalog::Icon_StampOwn,
+    { Catalog::Icon_StampUnknown, Catalog::Icon_StampMissing, Catalog::Icon_StampOrdered, Catalog::Icon_StampOwn, 
     Catalog::Icon_StampOwnVariant, Catalog::Icon_StampExclude }, //   FT_FormatUnknown = 0, 
 
-    { Catalog::Icon_StampUnknown, Catalog::Icon_StampMissing, Catalog::Icon_StampOrdered, Catalog::Icon_StampOwn,
+    { Catalog::Icon_StampUnknown, Catalog::Icon_StampMissing, Catalog::Icon_StampOrdered, Catalog::Icon_StampOwn, 
     Catalog::Icon_StampOwnVariant, Catalog::Icon_StampExclude }, //   FT_Stamp, 
 
-    { Catalog::Icon_StampUnknownBlock, Catalog::Icon_StampMissingBlock, Catalog::Icon_StampOrderedBlock,
-    Catalog::Icon_StampOwnBlock, Catalog::Icon_StampOwnVariantBlock,
+    { Catalog::Icon_StampUnknownBlock, Catalog::Icon_StampMissingBlock, Catalog::Icon_StampOrderedBlock, 
+    Catalog::Icon_StampOwnBlock, Catalog::Icon_StampOwnVariantBlock, 
     Catalog::Icon_StampExcludeBlock }, //   FT_Se_tenant, 
 
-    { Catalog::Icon_StampUnknownMiniSheet, Catalog::Icon_StampMissingMiniSheet,
-    Catalog::Icon_StampOrderedMiniSheet, Catalog::Icon_StampOwnMiniSheet,
-    Catalog::Icon_StampOwnVariantMiniSheet,
+    { Catalog::Icon_StampUnknownMiniSheet, Catalog::Icon_StampMissingMiniSheet, 
+    Catalog::Icon_StampOrderedMiniSheet, Catalog::Icon_StampOwnMiniSheet, 
+    Catalog::Icon_StampOwnVariantMiniSheet, 
     Catalog::Icon_StampExcludeMiniSheet }, //   FT_Mini_Sheet, 
 
-    { Catalog::Icon_StampUnknownSouvenirSheet, Catalog::Icon_StampMissingSouvenirSheet,
-    Catalog::Icon_StampOrderedSouvenirSheet, Catalog::Icon_StampOwnSouvenirSheet,
-    Catalog::Icon_StampOwnVariantSouvenirSheet,
+    { Catalog::Icon_StampUnknownSouvenirSheet, Catalog::Icon_StampMissingSouvenirSheet, 
+    Catalog::Icon_StampOrderedSouvenirSheet, Catalog::Icon_StampOwnSouvenirSheet, 
+    Catalog::Icon_StampOwnVariantSouvenirSheet, 
     Catalog::Icon_StampExcludeSouvenirSheet }, //   FT_Souvenir_Sheet, 
 
-    { Catalog::Icon_StampUnknownMiniSheet, Catalog::Icon_StampMissingMiniSheet,
-    Catalog::Icon_StampOrderedMiniSheet, Catalog::Icon_StampOwnMiniSheet,
-    Catalog::Icon_StampOwnVariantMiniSheet,
+    { Catalog::Icon_StampUnknownMiniSheet, Catalog::Icon_StampMissingMiniSheet, 
+    Catalog::Icon_StampOrderedMiniSheet, Catalog::Icon_StampOwnMiniSheet, 
+    Catalog::Icon_StampOwnVariantMiniSheet, 
     Catalog::Icon_StampExcludeMiniSheet }, //   FT_Booklet, 
 
-    { Catalog::Icon_StampUnknownMiniSheet, Catalog::Icon_StampMissingMiniSheet,
-    Catalog::Icon_StampOrderedMiniSheet, Catalog::Icon_StampOwnMiniSheet,
-    Catalog::Icon_StampOwnVariantMiniSheet,
+    { Catalog::Icon_StampUnknownMiniSheet, Catalog::Icon_StampMissingMiniSheet, 
+    Catalog::Icon_StampOrderedMiniSheet, Catalog::Icon_StampOwnMiniSheet, 
+    Catalog::Icon_StampOwnVariantMiniSheet, 
     Catalog::Icon_StampExcludeMiniSheet }, //   FT_Booklet_Pane, 
 
-    { Catalog::Icon_StampUnknownBlock, Catalog::Icon_StampMissingBlock, Catalog::Icon_StampOrderedBlock,
-    Catalog::Icon_StampOwnBlock, Catalog::Icon_StampOwnVariantBlock,
+    { Catalog::Icon_StampUnknownBlock, Catalog::Icon_StampMissingBlock, Catalog::Icon_StampOrderedBlock, 
+    Catalog::Icon_StampOwnBlock, Catalog::Icon_StampOwnVariantBlock, 
     Catalog::Icon_StampExcludeBlock }, //   FT_Gutter_Pair, 
 
-    { Catalog::Icon_StampUnknownSouvenirSheet, Catalog::Icon_StampMissingSouvenirSheet,
-    Catalog::Icon_StampOrderedSouvenirSheet, Catalog::Icon_StampOwnSouvenirSheet,
-    Catalog::Icon_StampOwnVariantSouvenirSheet,
+    { Catalog::Icon_StampUnknownSouvenirSheet, Catalog::Icon_StampMissingSouvenirSheet, 
+    Catalog::Icon_StampOrderedSouvenirSheet, Catalog::Icon_StampOwnSouvenirSheet, 
+    Catalog::Icon_StampOwnVariantSouvenirSheet, 
     Catalog::Icon_StampExcludeSouvenirSheet }, //    FT_Stamp_with_Attached_Label, 
 
-    { Catalog::Icon_StampUnknownBlock, Catalog::Icon_StampMissingBlock, Catalog::Icon_StampOrderedBlock,
-    Catalog::Icon_StampOwnBlock, Catalog::Icon_StampOwnVariantBlock,
-    Catalog::Icon_StampExcludeBlock },//   FT_Tete_Beche, 
+    { Catalog::Icon_StampUnknownBlock, Catalog::Icon_StampMissingBlock, Catalog::Icon_StampOrderedBlock, 
+    Catalog::Icon_StampOwnBlock, Catalog::Icon_StampOwnVariantBlock, 
+    Catalog::Icon_StampExcludeBlock }, //   FT_Tete_Beche, 
 
-    { Catalog::Icon_StampUnknownBlock, Catalog::Icon_StampMissingBlock, Catalog::Icon_StampOrderedBlock,
-    Catalog::Icon_StampOwnBlock, Catalog::Icon_StampOwnVariantBlock,
+    { Catalog::Icon_StampUnknownBlock, Catalog::Icon_StampMissingBlock, Catalog::Icon_StampOrderedBlock, 
+    Catalog::Icon_StampOwnBlock, Catalog::Icon_StampOwnVariantBlock, 
     Catalog::Icon_StampExcludeBlock } // FT_Full_Pane
   };
 };

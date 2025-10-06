@@ -9,7 +9,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -45,17 +45,17 @@ class GenerateListSettings : public wxDialog
 public:
     enum GenerateListSettingsGuiDefs
     {
-        ID_STATUSALLBUTTON = ID_GENERATELISTSETTINGS + 1,
-        IDSTATUSCLEARBUTTON,
-        ID_CHECKLISTBOX,
-        ID_EMISSIONALLBUTTON,
-        ID_EMISSIONCLEARBUTTON,
-        ID_CHECKLISTBOX1,
-        ID_FORMATALLBUTTON,
-        ID_FORMATCLEARBUTTON,
-        ID_CHECKLISTBOX2,
-        ID_FROMYEARTEXTCTRL,
-        ID_TOYEARTEXTCTRL,
+        ID_STATUSALLBUTTON = ID_GENERATELISTSETTINGS + 1, 
+        IDSTATUSCLEARBUTTON, 
+        ID_CHECKLISTBOX, 
+        ID_EMISSIONALLBUTTON, 
+        ID_EMISSIONCLEARBUTTON, 
+        ID_CHECKLISTBOX1, 
+        ID_FORMATALLBUTTON, 
+        ID_FORMATCLEARBUTTON, 
+        ID_CHECKLISTBOX2, 
+        ID_FROMYEARTEXTCTRL, 
+        ID_TOYEARTEXTCTRL, 
         ID_CLEARYEARRANGEBUTTON
     };
 

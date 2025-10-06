@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -116,7 +116,6 @@ bool CatalogPanel::Create( wxWindow* parent, wxWindowID id, const wxPoint& pos, 
 
 void CatalogPanel::CreateControls( )
 {
-    //   std::cout << "CatalogPanel" << "\n";
 
     CatalogPanel* itemPanel1 = this;
 
@@ -175,7 +174,7 @@ void CatalogPanel::CreateControls( )
     m_tocTreeCtrl = new CatalogTOCTreeCtrl( m_catalogPanelNotebook, ID_CatalogTOCTreeCtrl, wxDefaultPosition, wxDefaultSize, wxTR_HAS_BUTTONS | wxTR_FULL_ROW_HIGHLIGHT | wxTR_SINGLE | wxSUNKEN_BORDER | wxTR_DEFAULT_STYLE );
     m_catalogPanelNotebook->AddPage( m_tocTreeCtrl, _( "TOC" ) );
 
-    m_catalogPanel = CreateCatalogPanel( m_catalogPanelNotebook);
+    m_catalogPanel = CreateCatalogPanel( m_catalogPanelNotebook );
     m_catalogPanelNotebook->AddPage( m_catalogPanel, _( "Catalog" ) );
 
     m_searchSizer->Show( false );
@@ -214,7 +213,7 @@ wxPanel* CatalogPanel::CreateCatalogPanel( wxWindow *parent )
 }
 void CatalogPanel::DoMergeCatalog( )
 {
-    ComparePanel comparePanel( this, ID_PREFERENCESDIALOG,
+    ComparePanel comparePanel( this, ID_PREFERENCESDIALOG, 
         _( "Merge Catalogs" ) );
 
     if ( comparePanel.ShowModal( ) == wxID_CANCEL )
@@ -231,10 +230,10 @@ void CatalogPanel::DoCSVImport( )
         return;
     }
 
-    wxFileDialog openFileDialog(
-        this, _( "Open Colnect CSV file" ),
-        "", "",
-        "CSV files (*.csv)|*.csv", wxFD_OPEN | wxFD_FILE_MUST_EXIST );
+    wxFileDialog openFileDialog( 
+        this, _( "Open Colnect CSV file" ), 
+        "", "", 
+        "CSV files ( *.csv )|*.csv", wxFD_OPEN | wxFD_FILE_MUST_EXIST );
     if ( openFileDialog.ShowModal( ) == wxID_CANCEL )
     {
         return; // the user changed idea...
@@ -266,7 +265,6 @@ wxTreeItemId CatalogPanel::GetNext( wxTreeItemId& currID )
         //the next entry is good
         TOCTreeItemData* data = ( TOCTreeItemData* ) m_tocTreeCtrl->GetItemData( nextID );
         wxString name = m_tocTreeCtrl->GetItemText( nextID );
-        //std::cout << name << "\n";
         if ( data->GetType( ) == Utils::TOC_Volume )
         {
             // and it is a volume entry
@@ -297,14 +295,12 @@ wxTreeItemId CatalogPanel::GetNextFirstChild( wxTreeItemId& currID )
         return 0;
     }
     wxString name = m_tocTreeCtrl->GetItemText( parentID );
-    //std::cout << name << "\n\n";
 
 
     wxTreeItemId nextID = m_tocTreeCtrl->GetNextSibling( parentID );
     if ( nextID.IsOk( ) )
     {
         wxString name = m_tocTreeCtrl->GetItemText( nextID );
-        //std::cout << name << "\n";
 
 
         wxTreeItemIdValue cookie;
@@ -312,7 +308,6 @@ wxTreeItemId CatalogPanel::GetNextFirstChild( wxTreeItemId& currID )
         if ( nextID.IsOk( ) )
         {
             wxString name = m_tocTreeCtrl->GetItemText( nextID );
-            //std::cout << name << "\n";
             TOCTreeItemData* data = ( TOCTreeItemData* ) m_tocTreeCtrl->GetItemData( nextID );
 
             if ( data->GetType( ) == Utils::TOC_Volume )
@@ -346,7 +341,6 @@ wxTreeItemId CatalogPanel::GetPrev( wxTreeItemId& currID )
         //the next entry is good
         TOCTreeItemData* data = ( TOCTreeItemData* ) m_tocTreeCtrl->GetItemData( nextID );
         wxString name = m_tocTreeCtrl->GetItemText( nextID );
-        //std::cout << name << "\n";
         if ( data->GetType( ) == Utils::TOC_Volume )
         {
             // and it is a volume entry
@@ -377,20 +371,17 @@ wxTreeItemId CatalogPanel::GetPrevLastChild( wxTreeItemId& currID )
         return 0;
     }
     wxString name = m_tocTreeCtrl->GetItemText( parentID );
-    //std::cout << name << "\n\n";
 
 
     wxTreeItemId nextID = m_tocTreeCtrl->GetPrevSibling( parentID );
     if ( nextID.IsOk( ) )
     {
         wxString name = m_tocTreeCtrl->GetItemText( nextID );
-        // std::cout << name << "\n";
 
         nextID = m_tocTreeCtrl->GetLastChild( nextID );
         if ( nextID.IsOk( ) )
         {
             wxString name = m_tocTreeCtrl->GetItemText( nextID );
-            //std::cout << name << "\n";
             TOCTreeItemData* data = ( TOCTreeItemData* ) m_tocTreeCtrl->GetItemData( nextID );
 
             if ( data->GetType( ) == Utils::TOC_Volume )
@@ -400,7 +391,6 @@ wxTreeItemId CatalogPanel::GetPrevLastChild( wxTreeItemId& currID )
             else
             {
                 nextID = m_tocTreeCtrl->GetLastChild( nextID );
-                //nextID = GetNext( nextID );
                 return nextID;
             }
         }
@@ -430,8 +420,8 @@ void CatalogPanel::NewCatalogDialog( )
         return;
     }
 
-    wxFileDialog fileDialog( this, "Create Catalog file", wxGetCwd( ), _( "unnamed.cat" ),
-        "Catalog files (*.cat)|*.cat",
+    wxFileDialog fileDialog( this, "Create Catalog file", wxGetCwd( ), _( "unnamed.cat" ), 
+        "Catalog files ( *.cat )|*.cat", 
         wxFD_SAVE );
 
     if ( fileDialog.ShowModal( ) == wxID_CANCEL )
@@ -654,11 +644,11 @@ void CatalogPanel::OpenCatalog( )
             //     }
             // };
 
-    wxFileDialog openFileDialog(
-        this, _( "Open Catalog XML file" ),
-        wxGetCwd( ),
-        _( "unnamed.cat" ),
-        "Catalog XML files(*.cat)|*.cat", wxFD_OPEN | wxFD_FILE_MUST_EXIST );
+    wxFileDialog openFileDialog( 
+        this, _( "Open Catalog XML file" ), 
+        wxGetCwd( ), 
+        _( "unnamed.cat" ), 
+        "Catalog XML files( *.cat )|*.cat", wxFD_OPEN | wxFD_FILE_MUST_EXIST );
     if ( openFileDialog.ShowModal( ) == wxID_CANCEL )
     {
         return; // the user changed idea...
@@ -675,20 +665,20 @@ void CatalogPanel::OpenCatalog( )
 void CatalogPanel::RemoveVolume( )
 {
     wxArrayString array;// = GetCatalogData( )->GetVolumeNameStrings( );
-    GetCatalogData( )->GetCatalogList()->MakeNameArray(array);
-    RemoveVolumeDialog  dialog( ( wxWindow* ) this,
-        "Remove Catalog Volume From Project",
-        "Select Volume to remove:",
+    GetCatalogData( )->GetCatalogList( )->MakeNameArray( array );
+    RemoveVolumeDialog  dialog( ( wxWindow* ) this, 
+        "Remove Catalog Volume From Project", 
+        "Select Volume to remove:", 
         array );
 
     if ( dialog.ShowModal( ) == wxID_CANCEL )
         return;
-    wxString volSelected = dialog.GetSelectedString();
-    bool deleteFile = dialog.GetRemoveStatus();
-    GetCatalogData( )->GetCatalogList()->RemoveVolume( volSelected, deleteFile );
+    wxString volSelected = dialog.GetSelectedString( );
+    bool deleteFile = dialog.GetRemoveStatus( );
+    GetCatalogData( )->GetCatalogList( )->RemoveVolume( volSelected, deleteFile );
     m_tocTreeCtrl->Clear( );
-    m_tocTreeCtrl->LoadTree();
-    GetProject()->Save();
+    m_tocTreeCtrl->LoadTree( );
+    GetProject( )->Save( );
 
 }
 
@@ -704,7 +694,7 @@ void CatalogPanel::SaveAsCatalog( )
     //     wxFileDialog saveFileDialog( 
     //         this, _( "Stamp List XML file" ), 
     //         lastFile.GetPath( ), lastFile.GetFullName( ), 
-    //         "XML files (*.cat)|*.cat", wxFD_SAVE | wxFD_OVERWRITE_PROMPT );
+    //         "XML files ( *.cat )|*.cat", wxFD_SAVE | wxFD_OVERWRITE_PROMPT );
     //     if ( saveFileDialog.ShowModal( ) == wxID_CANCEL )
     //         return;
 
@@ -775,7 +765,7 @@ void CatalogPanel::SetVolumeListCtrl( )
 {
     wxTreeItemId treeId = GetCatalogTOCTreeCtrl( )->GetSelection( );
     //TestFix
-    if ( treeId.IsOk() )
+    if ( treeId.IsOk( ) )
     {
     //EndTestFix
         // TOCTreeItemData* data = ( TOCTreeItemData* ) m_tocTreeCtrl->GetItemData( treeId );

@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -67,7 +67,7 @@ StampDefaultsPanel::StampDefaultsPanel( )
 
 //---------
 
-StampDefaultsPanel::StampDefaultsPanel( wxWindow* parent, wxWindowID id,
+StampDefaultsPanel::StampDefaultsPanel( wxWindow* parent, wxWindowID id, 
     const wxString& caption, const wxPoint& pos, const wxSize& size, long style )
 {
     Init( );
@@ -76,7 +76,7 @@ StampDefaultsPanel::StampDefaultsPanel( wxWindow* parent, wxWindowID id,
 
 //---------
 
-bool StampDefaultsPanel::Create( wxWindow* parent, wxWindowID id,
+bool StampDefaultsPanel::Create( wxWindow* parent, wxWindowID id, 
     const wxString& caption, const wxPoint& pos, const wxSize& size, long style )
 {
     SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY | wxWS_EX_BLOCK_EVENTS );
@@ -116,12 +116,12 @@ void StampDefaultsPanel::CreateControls( )
 
     int lastID = ID_LastID;
 
-    wxNotebook* focusNotebook = new wxNotebook( stampDefaultsPanel, ++lastID,
+    wxNotebook* focusNotebook = new wxNotebook( stampDefaultsPanel, ++lastID, 
         wxDefaultPosition, wxDefaultSize, wxBK_TOP );
     focusNotebook->SetPadding( wxSize( 1, 1 ) );
     stampHorizontalSizer->Add( focusNotebook, 1, wxGROW | wxALL, 5 );
 
-    wxPanel* commonPanel = new wxPanel( focusNotebook, ++lastID, wxDefaultPosition,
+    wxPanel* commonPanel = new wxPanel( focusNotebook, ++lastID, wxDefaultPosition, 
         wxDefaultSize, wxTAB_TRAVERSAL );
     commonPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
 
@@ -143,7 +143,7 @@ void StampDefaultsPanel::CreateControls( )
 
 
 
-    wxPanel* advancedPanel = new wxPanel( focusNotebook, ++lastID, wxDefaultPosition,
+    wxPanel* advancedPanel = new wxPanel( focusNotebook, ++lastID, wxDefaultPosition, 
         wxDefaultSize, wxTAB_TRAVERSAL );
     advancedPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
 
@@ -164,37 +164,37 @@ void StampDefaultsPanel::CreateControls( )
 
 
 
-    m_stampTitleCheckbox = SetupCheckBox( commonPanel, leftCommonVerticalSizer, ++lastID,
+    m_stampTitleCheckbox = SetupCheckBox( commonPanel, leftCommonVerticalSizer, ++lastID, 
         _( "Show Stamp Name" ), wxCommandEventHandler( StampDefaultsPanel::OnShowName ) );
 
-    m_nbrCheckbox = SetupCheckBox( commonPanel, leftCommonVerticalSizer, ++lastID,
+    m_nbrCheckbox = SetupCheckBox( commonPanel, leftCommonVerticalSizer, ++lastID, 
         _( "Show Catalog Nbr" ), wxCommandEventHandler( StampDefaultsPanel::OnShowNbr ) );
 
-    m_ImagesCheckbox = SetupCheckBox( commonPanel, leftCommonVerticalSizer, ++lastID,
+    m_ImagesCheckbox = SetupCheckBox( commonPanel, leftCommonVerticalSizer, ++lastID, 
         _( "Show Images" ), wxCommandEventHandler( StampDefaultsPanel::OnShowImages ) );
 
-    m_grayScaleImagesCheckbox = SetupCheckBox( commonPanel, leftCommonVerticalSizer, ++lastID,
+    m_grayScaleImagesCheckbox = SetupCheckBox( commonPanel, leftCommonVerticalSizer, ++lastID, 
         _( "Show Grayscale Images" ), wxCommandEventHandler( StampDefaultsPanel::OnGrayscale ) );
 
-    m_catalog = SetupLabelText( commonPanel, rightCommonVerticalSizer, lastID,
+    m_catalog = SetupLabelText( commonPanel, rightCommonVerticalSizer, lastID, 
         _( "Catalog Code" ), true, wxCommandEventHandler( StampDefaultsPanel::OnCatalogCode ) );
 
 
 
     wxBoxSizer* locationSizer;
-    wxStaticBox* locationBox = SetupBoxSizer( commonPanel, middleCommonVerticalSizer,
+    wxStaticBox* locationBox = SetupBoxSizer( commonPanel, middleCommonVerticalSizer, 
         "Stamp Name Location", lastID, locationSizer, wxHORIZONTAL );
 
-    m_topButton = SetupRadioButton( locationBox, locationSizer, lastID, _( "Top" ), true,
+    m_topButton = SetupRadioButton( locationBox, locationSizer, lastID, _( "Top" ), true, 
         wxCommandEventHandler( StampDefaultsPanel::OnNameLocationButtonSelected ) );
     m_topButton->SetToolTip( _( "Name above Stamp." ) );
 
-    m_bottomButton = SetupRadioButton( locationBox, locationSizer, lastID, _( "Bottom" ), false,
+    m_bottomButton = SetupRadioButton( locationBox, locationSizer, lastID, _( "Bottom" ), false, 
         wxCommandEventHandler( StampDefaultsPanel::OnNameLocationButtonSelected ) );
     m_bottomButton->SetToolTip( _( "Name below Stamp." ) );
 
     m_StampMargin =
-        SetupLabelText( advancedPanel, middleAdvancedVerticalSizer, lastID, "Stamp Internal Margin", false,
+        SetupLabelText( advancedPanel, middleAdvancedVerticalSizer, lastID, "Stamp Internal Margin", false, 
             wxCommandEventHandler( StampDefaultsPanel::OnStampMargin ) );
 
 
@@ -219,7 +219,7 @@ void StampDefaultsPanel::CreateControls( )
 
 
     wxBoxSizer* contentMarginBoxVSizer;
-    wxStaticBox* contentMarginBox = SetupBoxSizer( advancedPanel, rightAdvancedVerticalSizer,
+    wxStaticBox* contentMarginBox = SetupBoxSizer( advancedPanel, rightAdvancedVerticalSizer, 
         "Content Margin", lastID, contentMarginBoxVSizer, wxVERTICAL );
 
     wxBoxSizer* contentMarginBoxHSizer = new wxBoxSizer( wxHORIZONTAL );
@@ -227,12 +227,12 @@ void StampDefaultsPanel::CreateControls( )
 
     HorizontalSpacer( contentMarginBoxHSizer );
 
-    m_topContentMargin = SetupLabelText( contentMarginBox, contentMarginBoxHSizer, lastID,
+    m_topContentMargin = SetupLabelText( contentMarginBox, contentMarginBoxHSizer, lastID, 
         _( "Top" ), false, wxCommandEventHandler( StampDefaultsPanel::OnTopContentMargin ) );
     m_topContentMargin->SetToolTip( _( "Content top margin in mm." ) );
     HorizontalSpacer( contentMarginBoxHSizer );
 
-    m_bottomContentMargin = SetupLabelText( contentMarginBox, contentMarginBoxHSizer, lastID,
+    m_bottomContentMargin = SetupLabelText( contentMarginBox, contentMarginBoxHSizer, lastID, 
         _( "Bottom" ), false, wxCommandEventHandler( StampDefaultsPanel::OnBottomContentMargin ) );
     m_bottomContentMargin->SetToolTip( _( "Content bottom margin in mm." ) );
 
@@ -242,13 +242,13 @@ void StampDefaultsPanel::CreateControls( )
 
     HorizontalSpacer( itemBoxSizer110 );
 
-    m_leftContentMargin = SetupLabelText( contentMarginBox, itemBoxSizer110, lastID,
+    m_leftContentMargin = SetupLabelText( contentMarginBox, itemBoxSizer110, lastID, 
         _( "Left" ), false, wxCommandEventHandler( StampDefaultsPanel::OnLeftContentMargin ) );
     m_leftContentMargin->SetToolTip( _( "Content left margin in mm." ) );
 
     HorizontalSpacer( itemBoxSizer110 );
 
-    m_rightContentMargin = SetupLabelText( contentMarginBox, itemBoxSizer110, lastID,
+    m_rightContentMargin = SetupLabelText( contentMarginBox, itemBoxSizer110, lastID, 
         _( "Right" ), false, wxCommandEventHandler( StampDefaultsPanel::OnRightContentMargin ) );
     m_rightContentMargin->SetToolTip( _( "Content right margin in mm." ) );
 }

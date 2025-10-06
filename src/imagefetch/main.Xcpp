@@ -1,0 +1,38 @@
+// main.cpp
+#include <wx/wx.h>
+#include <wx/webrequest.h>
+#include <wx/filesys.h>
+#include "utils.h"
+
+// Fixed per your choice:
+static const wxString kAppId = "MYID1234";   // your app id
+static const wxString kLang  = "en";
+static const wxString kCat   = "stamps";
+
+// Minimal app harness (console or GUI)
+class MyApp : public wxApp
+{
+public:
+    bool OnInit() override {
+        if (argc < 3) {
+            wxPrintf("Usage: %s <ITEM_ID> <OUTPUT_PATH> [--thumb]\n", argv[0]);
+            return false;
+        }
+        unsigned long long id = 0;
+        wxString(argv[1]).ToULongLong(&id);
+        wxString outPath = argv[2];
+        bool full = !(argc >= 4 && wxString(argv[3]) == "--thumb");
+
+        wxString secret = wxGetenv("COLNECT_APP_SECRET");
+        if (secret.empty()) { wxPrintf("Set COLNECT_APP_SECRET env var.\n"); return false; }
+
+        m_client = new ColnectWxClient();
+        m_client->FetchAndDownload(id, outPath, secret, full);
+        return true;
+    }
+    int OnExit() override { delete m_client; return 0; }
+private:
+    ColnectWxClient* m_client{nullptr};
+};
+
+wxIMPLEMENT_APP(MyApp);

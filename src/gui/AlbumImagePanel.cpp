@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -74,7 +74,7 @@ AlbumImagePanel::AlbumImagePanel( )
 
 //--------------
 
-AlbumImagePanel::AlbumImagePanel( wxWindow* parent, wxWindowID id, const wxPoint& pos,
+AlbumImagePanel::AlbumImagePanel( wxWindow* parent, wxWindowID id, const wxPoint& pos, 
     const wxSize& size, long style )
 {
     Init( );
@@ -95,7 +95,7 @@ void AlbumImagePanel::Clear( )
 
 //--------------
 
-bool AlbumImagePanel::Create( wxWindow* parent, wxWindowID id, const wxPoint& pos,
+bool AlbumImagePanel::Create( wxWindow* parent, wxWindowID id, const wxPoint& pos, 
     const wxSize& size, long style )
 {
     // AlbumImagePanel creation
@@ -223,9 +223,6 @@ void AlbumImagePanel::OnContextMenu( wxContextMenuEvent& event )
 {
     wxPoint screenpt = event.GetPosition( );
     wxPoint clientpt = ScreenToClient( screenpt );
-    std::cout << "OnContextMenu screenpt(" << screenpt.x << "," << screenpt.y << ")\n";
-
-    std::cout << "OnContextMenu clientpt(" << clientpt.x << "," << clientpt.y << ")\n";
 
     Design::LayoutBase* pageNode = Design::GetSelectedNodePage( );
 
@@ -381,15 +378,15 @@ void AlbumImagePanel::OnPaint( wxPaintEvent& event )
 
 //--------------
 
-void AlbumImagePanel::OnResize( wxCommandEvent& WXUNUSED( event ) )
-{
-    wxImage img( m_bitmap.ConvertToImage( ) );
+// void AlbumImagePanel::OnResize( wxCommandEvent& WXUNUSED( event ) )
+// {
+//     wxImage img( m_bitmap.ConvertToImage( ) );
 
-    const wxSize size = GetClientSize( );
+//     const wxSize size = GetClientSize( );
 
-    img.Rescale( size.x, size.y, wxIMAGE_QUALITY_HIGH );
-    m_bitmap = wxBitmap( img );
-}
+//     img.Rescale( size.x, size.y, wxIMAGE_QUALITY_HIGH );
+//     m_bitmap = wxBitmap( img );
+// }
 
 //--------------
 

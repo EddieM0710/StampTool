@@ -9,7 +9,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -157,12 +157,12 @@ void FileCreateDialog::OnOKClick( wxCommandEvent& event )
     wxFileName sptFile( m_path );
     if ( sptFile.Exists( ) )
     {
-        wxMessageDialog* dlg = new wxMessageDialog(
-            this,
+        wxMessageDialog* dlg = new wxMessageDialog( 
+            this, 
             wxT( "The selected file exists. \n"\
                 "Select \"OK\" to overwrite the existing file losing the contents.\n"\
-                "Or select \"Cancel\" to choose another name.\n" ),
-            wxT( " Warning! File Exists.\n" ),
+                "Or select \"Cancel\" to choose another name.\n" ), 
+            wxT( " Warning! File Exists.\n" ), 
             wxOK | wxCANCEL | wxCENTER );
         int rsp = dlg->ShowModal( );
         if ( rsp == wxID_CANCEL )

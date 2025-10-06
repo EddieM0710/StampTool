@@ -12,7 +12,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -39,6 +39,7 @@
 #include "Defs.h"
 #include "Settings.h"
 #include "utils/Project.h"
+#include "utils/Image.h"
 #include "catalog/CatalogCode.h"
 #include <wx/datetime.h>
 #include <wx/strconv.h>
@@ -107,21 +108,21 @@ namespace Catalog {
 
     wxString CatalogCode::FindImageName( )
     {
-        wxString preferredName = MakeImageName( GetPreferredCatalogCode( GetProject( )->GetProjectCatalogCode( ) ) );
-        wxString  str = GetProject( )->GetImageFullPath( preferredName );
+        wxString preferredName = Utils::MakeImageName( GetPreferredCatalogCode( GetProject( )->GetProjectCatalogCode( ) ) );
+        wxString  str = Utils::GetImageFullPath( preferredName );
 
-        if ( GetProject( )->ImageExists( str ) )
+        if ( Utils::ImageExists( str ) )
         {
             return preferredName;
         }
         // preferred dosent exist so keep lookng ;
         for ( size_t k = 0; k < m_codes.GetCount( ); k++ )
         {
-            wxString filename = MakeImageName( m_codes[ k ] );
+            wxString filename = Utils::MakeImageName( m_codes[ k ] );
 
-            wxString str = GetProject( )->GetImageFullPath( filename );
+            wxString str = Utils::GetImageFullPath( filename );
 
-            if ( GetProject( )->ImageExists( str ) )
+            if ( Utils::ImageExists( str ) )
             {
                 return filename;
             }
@@ -146,14 +147,4 @@ namespace Catalog {
 
     //--------------
 
-    wxString MakeImageName( wxString catCode )
-    {
-        catCode.Trim( true );
-        catCode.Trim( false );
-
-        catCode.Replace( ":", "_" );
-        catCode.Replace( " ", "_" );
-        catCode.Append( ".jpg" );
-        return catCode;
-    }
 }

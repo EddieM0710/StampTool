@@ -9,7 +9,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -227,7 +227,7 @@ bool GenerateList::CheckEmission( Catalog::Entry* entry )
 
 void GenerateList::DoListPrefs( )
 {
-    GenerateListSettings* settings = new GenerateListSettings( this, 12349,
+    GenerateListSettings* settings = new GenerateListSettings( this, 12349, 
         _( "Edit Report Settings" ) );
 
     settings->SetCheckedStatusItems( m_checkedStatusItems );
@@ -341,10 +341,10 @@ void GenerateList::SaveAs( )
 {
     wxFileName lastFile( GetSettings( )->GetLastListFile( ) );
     lastFile.SetExt( "txt" );
-    wxFileDialog saveFileDialog(
-        this, _( "Save List to text file" ),
-        lastFile.GetPath( ), lastFile.GetFullName( ),
-        "List files(*.txt)|*.txt", wxFD_SAVE | wxFD_OVERWRITE_PROMPT );
+    wxFileDialog saveFileDialog( 
+        this, _( "Save List to text file" ), 
+        lastFile.GetPath( ), lastFile.GetFullName( ), 
+        "List files( *.txt )|*.txt", wxFD_SAVE | wxFD_OVERWRITE_PROMPT );
     if ( saveFileDialog.ShowModal( ) == wxID_CANCEL )
         return;
 
@@ -361,7 +361,7 @@ void GenerateList::Save( wxString filename )
 {
     bool status = false;
 
-    std::ofstream ostream( filename.char_str(), std::ios::out );
+    std::ofstream ostream( filename.char_str( ), std::ios::out );
     if ( !ostream.fail( ) )
     {
         Catalog::CatalogVolume* catalogVolume = GetCatalogVolume( );

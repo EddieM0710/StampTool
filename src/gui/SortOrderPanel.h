@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -44,11 +44,11 @@ class SortOrderPanel : public wxPanel
 public:
     enum SortOrderPanelGuiDefs
     {
-        ID_SORTORDERTEXTCTRL = ID_SORTORDERPANEL + 1,
-        ID_CHOICE,
-        ID_CHOICE1,
-        ID_CHOICE2,
-        ID_CHOICE3,
+        ID_SORTORDERTEXTCTRL = ID_SORTORDERPANEL + 1, 
+        ID_CHOICE, 
+        ID_CHOICE1, 
+        ID_CHOICE2, 
+        ID_CHOICE3, 
         ID_CHOICE4
     };
 
@@ -71,10 +71,10 @@ public:
      * @param  style	The window style.
      * @see wxPanel.
      */
-    SortOrderPanel( wxWindow* parent,
-        wxWindowID id = SYMBOL_SORTORDERPANEL_IDNAME,
-        const wxPoint& pos = SYMBOL_SORTORDERPANEL_POSITION,
-        const wxSize& size = SYMBOL_SORTORDERPANEL_SIZE,
+    SortOrderPanel( wxWindow* parent, 
+        wxWindowID id = SYMBOL_SORTORDERPANEL_IDNAME, 
+        const wxPoint& pos = SYMBOL_SORTORDERPANEL_POSITION, 
+        const wxSize& size = SYMBOL_SORTORDERPANEL_SIZE, 
         long style = SYMBOL_SORTORDERPANEL_STYLE );
 
     /**
@@ -89,10 +89,10 @@ public:
      * @return bool
      *
      */
-    bool Create( wxWindow* parent,
-        wxWindowID id = SYMBOL_SORTORDERPANEL_IDNAME,
-        const wxPoint& pos = SYMBOL_SORTORDERPANEL_POSITION,
-        const wxSize& size = SYMBOL_SORTORDERPANEL_SIZE,
+    bool Create( wxWindow* parent, 
+        wxWindowID id = SYMBOL_SORTORDERPANEL_IDNAME, 
+        const wxPoint& pos = SYMBOL_SORTORDERPANEL_POSITION, 
+        const wxSize& size = SYMBOL_SORTORDERPANEL_SIZE, 
         long style = SYMBOL_SORTORDERPANEL_STYLE );
 
 
@@ -123,8 +123,8 @@ public:
 
     void OnOkClick( );
 
-    void Update();
-    void InitSortControls();
+    void Update( );
+    void InitSortControls( );
 
     static bool ShowToolTips( );
     bool IsDirty( ) { return m_dirty; };

@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -129,18 +129,18 @@ void ExportPanel::CreateControls( )
 
     int lastID = ID_LastID;
 
-    m_emissionListCtrl = SetupCheckListBox( thePanel, horizontalSizer, lastID,
-        "Emission", m_emissionListCtrlStrings,
-        wxCommandEventHandler( ExportPanel::OnEmissionAllButtonClick ),
+    m_emissionListCtrl = SetupCheckListBox( thePanel, horizontalSizer, lastID, 
+        "Emission", m_emissionListCtrlStrings, 
+        wxCommandEventHandler( ExportPanel::OnEmissionAllButtonClick ), 
         wxCommandEventHandler( ExportPanel::OnEmissionClearButtonClick ) );
 
-    m_catalogListCtrl = SetupCheckListBox( thePanel, horizontalSizer, lastID,
-        "Catalogs", m_catalogListCtrlStrings,
-        wxCommandEventHandler( ExportPanel::OnCatalogAllButtonClick ),
+    m_catalogListCtrl = SetupCheckListBox( thePanel, horizontalSizer, lastID, 
+        "Catalogs", m_catalogListCtrlStrings, 
+        wxCommandEventHandler( ExportPanel::OnCatalogAllButtonClick ), 
         wxCommandEventHandler( ExportPanel::OnCatalogClearButtonClick ) );
 
-    m_inventorycheckBox = SetupCheckBox( thePanel, verticalSizer,
-        lastID, "Include Inventory",
+    m_inventorycheckBox = SetupCheckBox( thePanel, verticalSizer, 
+        lastID, "Include Inventory", 
         wxCommandEventHandler( ExportPanel::OnIncludeInventoryButtonClick ) );
 
 

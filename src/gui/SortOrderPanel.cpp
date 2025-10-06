@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -75,8 +75,8 @@ SortOrderPanel::SortOrderPanel( )
     Init( );
 }
 
-SortOrderPanel::SortOrderPanel( wxWindow* parent, wxWindowID id,
-    const wxPoint& pos,
+SortOrderPanel::SortOrderPanel( wxWindow* parent, wxWindowID id, 
+    const wxPoint& pos, 
     const wxSize& size, long style )
 {
     Init( );
@@ -87,8 +87,8 @@ SortOrderPanel::SortOrderPanel( wxWindow* parent, wxWindowID id,
  * SortOrderPanel creator
  */
 
-bool SortOrderPanel::Create( wxWindow* parent, wxWindowID id,
-    const wxPoint& pos,
+bool SortOrderPanel::Create( wxWindow* parent, wxWindowID id, 
+    const wxPoint& pos, 
     const wxSize& size, long style )
 {
     SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
@@ -139,27 +139,27 @@ void SortOrderPanel::CreateControls( )
     wxBoxSizer* itemBoxSizer2 = new wxBoxSizer( wxVERTICAL );
     itemDialog1->SetSizer( itemBoxSizer2 );
 
-    //wxTextCtrl* itemTextCtrl3 = new wxTextCtrl(
-     //   itemDialog1, ID_SORTORDERTEXTCTRL,
+    //wxTextCtrl* itemTextCtrl3 = new wxTextCtrl( 
+     //   itemDialog1, ID_SORTORDERTEXTCTRL, 
         
       //  wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE );
    // itemTextCtrl3->Enable( false );
 
  wxStaticText* itemTextCtrl30
     = new wxStaticText( itemDialog1, wxID_STATIC, 
-            _( "Select the order of the levels of the tree." ),
+            _( "Select the order of the levels of the tree." ), 
             wxDefaultPosition, wxDefaultSize, 0 );  
     itemBoxSizer2->Add( itemTextCtrl30, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 5 );
 
  wxStaticText* itemTextCtrl31
     = new wxStaticText( itemDialog1, wxID_STATIC, 
-            _( "Selecting none will remove the level from view." ),
+            _( "Selecting none will remove the level from view." ), 
             wxDefaultPosition, wxDefaultSize, 0 );  
     itemBoxSizer2->Add( itemTextCtrl31, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 1 );
 
  wxStaticText* itemTextCtrl32
     = new wxStaticText( itemDialog1, wxID_STATIC, 
-            _( "Use the Item view dialog to determine what items will be displayed." ),
+            _( "Use the Item view dialog to determine what items will be displayed." ), 
             wxDefaultPosition, wxDefaultSize, 0 );  
     itemBoxSizer2->Add( itemTextCtrl32, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 1 );
 
@@ -167,13 +167,13 @@ void SortOrderPanel::CreateControls( )
     itemBoxSizer2->Add( itemBoxSizer4, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 1 );
 
     wxStaticText* itemStaticText5
-        = new wxStaticText( itemDialog1, wxID_STATIC, _( "First Sort" ),
+        = new wxStaticText( itemDialog1, wxID_STATIC, _( "First Sort" ), 
             wxDefaultPosition, wxDefaultSize, 0 );
-    itemBoxSizer4->Add( itemStaticText5, 0, wxALIGN_CENTER_VERTICAL | wxALL,
+    itemBoxSizer4->Add( itemStaticText5, 0, wxALIGN_CENTER_VERTICAL | wxALL, 
         5 );
 
     wxArrayString m_firstSortStrings;
-    m_firstSort = new wxChoice( itemDialog1, ID_CHOICE, wxDefaultPosition,
+    m_firstSort = new wxChoice( itemDialog1, ID_CHOICE, wxDefaultPosition, 
         wxDefaultSize, m_firstSortStrings, 0 );
     m_firstSort->SetName( wxT( "sdfsddf" ) );
     itemBoxSizer4->Add( m_firstSort, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
@@ -182,13 +182,13 @@ void SortOrderPanel::CreateControls( )
     itemBoxSizer2->Add( itemBoxSizer7, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 5 );
 
     wxStaticText* itemStaticText8
-        = new wxStaticText( itemDialog1, wxID_STATIC, _( "Second Sort" ),
+        = new wxStaticText( itemDialog1, wxID_STATIC, _( "Second Sort" ), 
             wxDefaultPosition, wxDefaultSize, 0 );
-    itemBoxSizer7->Add( itemStaticText8, 0, wxALIGN_CENTER_VERTICAL | wxALL,
+    itemBoxSizer7->Add( itemStaticText8, 0, wxALIGN_CENTER_VERTICAL | wxALL, 
         5 );
 
     wxArrayString m_secondSortStrings;
-    m_secondSort = new wxChoice( itemDialog1, ID_CHOICE1, wxDefaultPosition,
+    m_secondSort = new wxChoice( itemDialog1, ID_CHOICE1, wxDefaultPosition, 
         wxDefaultSize, m_secondSortStrings, 0 );
     itemBoxSizer7->Add( m_secondSort, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
@@ -196,13 +196,13 @@ void SortOrderPanel::CreateControls( )
     itemBoxSizer2->Add( itemBoxSizer10, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 5 );
 
     wxStaticText* itemStaticText11
-        = new wxStaticText( itemDialog1, wxID_STATIC, _( "Third Sort" ),
+        = new wxStaticText( itemDialog1, wxID_STATIC, _( "Third Sort" ), 
             wxDefaultPosition, wxDefaultSize, 0 );
-    itemBoxSizer10->Add( itemStaticText11, 0, wxALIGN_CENTER_VERTICAL | wxALL,
+    itemBoxSizer10->Add( itemStaticText11, 0, wxALIGN_CENTER_VERTICAL | wxALL, 
         5 );
 
     wxArrayString m_thirdSortStrings;
-    m_thirdSort = new wxChoice( itemDialog1, ID_CHOICE2, wxDefaultPosition,
+    m_thirdSort = new wxChoice( itemDialog1, ID_CHOICE2, wxDefaultPosition, 
         wxDefaultSize, m_thirdSortStrings, 0 );
     itemBoxSizer10->Add( m_thirdSort, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
@@ -210,13 +210,13 @@ void SortOrderPanel::CreateControls( )
     itemBoxSizer2->Add( itemBoxSizer13, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 5 );
 
     wxStaticText* itemStaticText14
-        = new wxStaticText( itemDialog1, wxID_STATIC, _( "Forth Sort" ),
+        = new wxStaticText( itemDialog1, wxID_STATIC, _( "Forth Sort" ), 
             wxDefaultPosition, wxDefaultSize, 0 );
-    itemBoxSizer13->Add( itemStaticText14, 0, wxALIGN_CENTER_VERTICAL | wxALL,
+    itemBoxSizer13->Add( itemStaticText14, 0, wxALIGN_CENTER_VERTICAL | wxALL, 
         5 );
 
     wxArrayString m_forthSortStrings;
-    m_forthSort = new wxChoice( itemDialog1, ID_CHOICE3, wxDefaultPosition,
+    m_forthSort = new wxChoice( itemDialog1, ID_CHOICE3, wxDefaultPosition, 
         wxDefaultSize, m_forthSortStrings, 0 );
     itemBoxSizer13->Add( m_forthSort, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
@@ -224,19 +224,19 @@ void SortOrderPanel::CreateControls( )
     itemBoxSizer2->Add( itemBoxSizer16, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 5 );
 
     wxStaticText* itemStaticText17
-        = new wxStaticText( itemDialog1, wxID_STATIC, _( "Fifth Sort" ),
+        = new wxStaticText( itemDialog1, wxID_STATIC, _( "Fifth Sort" ), 
             wxDefaultPosition, wxDefaultSize, 0 );
-    itemBoxSizer16->Add( itemStaticText17, 0, wxALIGN_CENTER_VERTICAL | wxALL,
+    itemBoxSizer16->Add( itemStaticText17, 0, wxALIGN_CENTER_VERTICAL | wxALL, 
         5 );
 
     wxArrayString m_fifthSortStrings;
-    m_fifthSort = new wxChoice( itemDialog1, ID_CHOICE4, wxDefaultPosition,
+    m_fifthSort = new wxChoice( itemDialog1, ID_CHOICE4, wxDefaultPosition, 
         wxDefaultSize, m_fifthSortStrings, 0 );
     itemBoxSizer16->Add( m_fifthSort, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
 }
 
-void SortOrderPanel::InitSortControls()
+void SortOrderPanel::InitSortControls( )
 {
 
     wxArrayInt* sortOrder = GetSettings( )->GetSortOrder( );
@@ -327,7 +327,7 @@ void SortOrderPanel::OnChoice4Selected( wxCommandEvent& event )
     event.Skip( );
 }
 
-void SortOrderPanel::Update()
+void SortOrderPanel::Update( )
 {
     wxArrayInt* sortOrder = GetSettings( )->GetSortOrder( );
 
@@ -384,5 +384,5 @@ void SortOrderPanel::Update()
 }
 void SortOrderPanel::OnOkClick( )
 {
-Update();
+Update( );
 }

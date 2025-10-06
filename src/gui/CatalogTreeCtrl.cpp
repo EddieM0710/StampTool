@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -48,6 +48,7 @@
 
 #include "utils/StampList.h"
 #include "utils/Project.h"
+#include "utils/Image.h"
 #include "utils/XMLUtilities.h"
 
  //#include "StampToolApp.h"
@@ -63,7 +64,7 @@
 #include "gui/CatalogTOCTreeCtrl.h"
 #include "gui/AlbumTreeCtrl.h"
 #include "gui/NewStampDialog.h"
-#include "gui/ImageGalleryPanel.h"
+//#include "gui/ImageGalleryPanel.h"
 
 //wxDECLARE_APP( StampToolApp );
 
@@ -118,7 +119,7 @@ int CatalogTreeItemData::Cmp( CatalogTreeItemData* itemData2 )
 
 //------------
 
-CatalogTreeItemData::CatalogTreeItemData( Catalog::CatalogBaseType type, const wxString desc,
+CatalogTreeItemData::CatalogTreeItemData( Catalog::CatalogBaseType type, const wxString desc, 
     wxXmlNode* ele )
 {
     m_type = type;
@@ -135,8 +136,8 @@ CatalogTreeItemData::CatalogTreeItemData( Catalog::CatalogBaseType type, const w
 
 //------------
 
-CatalogTreeCtrl::CatalogTreeCtrl( wxWindow* parent, const wxWindowID id,
-    const wxPoint& pos, const wxSize& size,
+CatalogTreeCtrl::CatalogTreeCtrl( wxWindow* parent, const wxWindowID id, 
+    const wxPoint& pos, const wxSize& size, 
     long style )
     : wxTreeCtrl( parent, id, pos, size, style )
 {
@@ -257,9 +258,9 @@ Utils::StampLink* CatalogTreeCtrl::AppendAlbumStamp( wxTreeItemId itemId )
 
 //--------------
 
-CatalogTreeItemData* CatalogTreeCtrl::CreateChildData( wxXmlNode* child,
-    wxString& label,
-    Catalog::IconID& icon,
+CatalogTreeItemData* CatalogTreeCtrl::CreateChildData( wxXmlNode* child, 
+    wxString& label, 
+    Catalog::IconID& icon, 
     Catalog::CatalogBaseType& nodeType )
 {
     wxString name = child->GetName( );
@@ -348,9 +349,9 @@ void CatalogTreeCtrl::DeleteEntry( wxTreeItemId id )
     if ( GetItemType( id ) == Catalog::NT_Entry )
     {
         wxString txt = wxString::Format( "Delete Entry %s?\n\n", GetItemText( id ) );
-        wxMessageDialog* dlg = new wxMessageDialog(
-            GetFrame( ), txt,
-            wxT( " Warning! Entry will be deleted.\ No undo available.n" ),
+        wxMessageDialog* dlg = new wxMessageDialog( 
+            GetFrame( ), txt, 
+            wxT( " Warning! Entry will be deleted.\ No undo available.n" ), 
             wxOK | wxCANCEL | wxCENTER );
         int rsp = dlg->ShowModal( );
         if ( rsp == wxOK )
@@ -584,7 +585,7 @@ wxString CatalogTreeCtrl::GetID( wxTreeItemId catTreeID )
 
 //--------------
 
-wxString CatalogTreeCtrl::GetImage( wxTreeItemId catTreeID )
+wxString CatalogTreeCtrl::GetImageName( wxTreeItemId catTreeID )
 {
     if ( !catTreeID.IsOk( ) ) return "";
     wxXmlNode* node = GetItemNode( catTreeID );
@@ -706,8 +707,8 @@ wxString CatalogTreeCtrl::GetImageFullName( wxTreeItemId catTreeID )
         wxString imageName = GetItemImageFullName( catTreeID );
         if ( imageName.IsEmpty( ) )
         {
-            wxString id = GetImage( catTreeID );
-            wxString imageName = GetProject( )->GetImageFullPath( id );
+            wxString id = GetImageName( catTreeID );
+            wxString imageName = Utils::GetImageFullPath( id );
             SetItemImageFullName( catTreeID, id );
         }
         return imageName;
@@ -739,7 +740,7 @@ void CatalogTreeCtrl::GoToColnect( wxTreeItemId id )
                 wxTheClipboard->Close( );
             }
 
-            wxString link = entry.GetLink(  );
+            wxString link = entry.GetLink( );
             wxLaunchDefaultBrowser( link );
             //wxString cmd = wxString::Format( "/usr/bin/firefox --new-tab %s", link );
             //int a = system( cmd.c_str( ) );
@@ -995,7 +996,7 @@ void CatalogTreeCtrl::OnBeginDrag( wxTreeEvent& event )
 
 //--------------
 
-int CatalogTreeCtrl::OnCompareItems( const wxTreeItemId& item1,
+int CatalogTreeCtrl::OnCompareItems( const wxTreeItemId& item1, 
     const wxTreeItemId& item2 )
 {
     CatalogTreeItemData* itemData1 = ( CatalogTreeItemData* ) 0;
@@ -1219,8 +1220,8 @@ void CatalogTreeCtrl::SetInventoryStatus( wxXmlNode* node, Catalog::InventorySta
         // else
         // {
             // make the item the new type
-        Utils::SetAttrStr( item,
-            Catalog::ItemDataNames[ Catalog::IDT_InventoryStatus ],
+        Utils::SetAttrStr( item, 
+            Catalog::ItemDataNames[ Catalog::IDT_InventoryStatus ], 
             Catalog::InventoryStatusStrings[ newType ] );
         // }
     }
@@ -1624,13 +1625,11 @@ void CatalogTreeCtrl::ShowMenu( wxTreeItemId id, const wxPoint& pt )
 
 void CatalogTreeCtrl::SortTree( wxTreeItemId parent )
 {
-    // std::cout << GetItemText( parent ) << "\n";
     // decend into the tree and sort its children
     wxTreeItemIdValue cookie;
     wxTreeItemId childItem = GetFirstChild( parent, cookie );
     while ( childItem.IsOk( ) )
     {
-        // std::cout << "child:" << GetItemText( childItem ) << "\n";
 
         if ( GetChildrenCount( childItem, false ) >= 1 )
         {
@@ -1641,7 +1640,6 @@ void CatalogTreeCtrl::SortTree( wxTreeItemId parent )
     }
     if ( HasChildren( parent ) )
     {
-        //std::cout << "parent:" << GetItemText( parent ) << "\n";
         SortChildren( parent );
     }
 }

@@ -10,7 +10,7 @@
 *This file is part of StampTool.
 *
 *StampTool is free software : you can redistribute it and /or modify it under the
-* terms of the GNU General Public License as published by the Free Software Foundation,
+* terms of the GNU General Public License as published by the Free Software Foundation, 
 * either version 3 of the License, or any later version.
 *
 *StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -38,11 +38,11 @@ class ComparePanel;
 namespace Catalog
 {
     typedef enum {
-        MS_None = 0,
-        MS_TargetMissing,
-        MS_MergeMissing,
-        MS_Same,
-        MS_Different,
+        MS_None = 0, 
+        MS_TargetMissing, 
+        MS_MergeMissing, 
+        MS_Same, 
+        MS_Different, 
         MS_Undefined
     } MergeStatus;
 

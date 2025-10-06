@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -70,9 +70,9 @@ class ExportPanel : public HelperPanel
 public:
     enum ExportPanelGuiDefs {
 
-        ID_NAMELABELEDTEXTBOX = ID_EXPORTPANEL,
-        ID_EMISSIONALLBUTTON,
-        ID_EMISSIONCLEARBUTTON,
+        ID_NAMELABELEDTEXTBOX = ID_EXPORTPANEL, 
+        ID_EMISSIONALLBUTTON, 
+        ID_EMISSIONCLEARBUTTON, 
         ID_LastID
     };
 

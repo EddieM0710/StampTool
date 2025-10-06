@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -240,8 +240,8 @@ namespace Utils {
     int FontList::LoadFont( wxXmlNode* parent, Design::FontUsageType type )
     {
         int fontNdx;
-        wxXmlNode* fontNode = FindFirstChildWithPropertyofValue( parent,
-            Design::AttrNameStrings[ Design::AT_FontType ],
+        wxXmlNode* fontNode = FindFirstChildWithPropertyofValue( parent, 
+            Design::AttrNameStrings[ Design::AT_FontType ], 
             Design::FontUsageTypeStrings[ type ] );
         wxString nativeString;
         if ( fontNode )
@@ -254,21 +254,17 @@ namespace Utils {
             {
                 fontNdx = AddNewFont( font, color );
 
-                // std::cout << " FontList::LoadFont " << Design::FontUsageTypeStrings[ type ]
-                //     << " " << fontNdx << "  " << nativeString << "\n";
                 return fontNdx;
             }
         }
         else
         {
-            // std::cout << " FontList::LoadFont  " << Design::FontUsageTypeStrings[ type ]
-            //     << "  not " << nativeString << "\n";
+
         }
 
         fontNdx = -1;
         GetSettings( )->GetFontNdxPreference( type );
-        // std::cout << " FontList::LoadFont(default) " << Design::FontUsageTypeStrings[ type ]
-        //     << " " << fontNdx << "\n";
+
         return fontNdx;
     }
 

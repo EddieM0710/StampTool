@@ -11,7 +11,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -49,8 +49,11 @@
 //wxDECLARE_APP( StampToolApp );
 
 namespace Catalog {
+
     wxString MountDataTypeNames[ MT_NbrDatatypes ] =
     { "Year", "ItemID", "Description", "SinglesSize", "MultiplesSize", "PlateBlockSize", "SheetSize" };
+
+    //-------
 
     bool MountCSVData::ReadDataFile( wxString& filename )
     {
@@ -75,7 +78,7 @@ namespace Catalog {
             if ( !l_file.Eof( ) )
             {
                 // comma separated Variables on line; i, e, .csv file
-                wxStringTokenizer tokenizer( inLine, "," );
+                wxStringTokenizer tokenizer( inLine, ", " );
 
                 wxString colStr;
                 while ( tokenizer.HasMoreTokens( ) )
@@ -100,10 +103,12 @@ namespace Catalog {
         }
         if ( !status )
         {
-            std::cout << "CSV Load Error Mount";
+           // std::cout << "CSV Load Error Mount";
         }
         return status;
     };
+
+    //-------
 
     bool MountCSVData::DoLoad( wxString& filename, wxXmlNode* catalogVolume )
     {
@@ -113,9 +118,11 @@ namespace Catalog {
     };
 
 
+    //-------
+
     bool MountCSVData::GetIDNbr( wxString catCodes, wxString& id )
     {
-        // wxStringTokenizer tokenizer( catCodes, "," );
+        // wxStringTokenizer tokenizer( catCodes, ", " );
         // wxString codePrefix = GetProject( )->GetCatCodePrefix( );
         // wxString valStr;
         // wxString rest;
@@ -147,7 +154,7 @@ namespace Catalog {
         // }
 
         // //couldn't find it; just get the first one.
-        // wxStringTokenizer tokenizer2( catCodes, "," );
+        // wxStringTokenizer tokenizer2( catCodes, ", " );
         // if ( tokenizer2.HasMoreTokens( ) )
         // {
         //     valStr = tokenizer2.GetNextToken( );
@@ -158,6 +165,8 @@ namespace Catalog {
         // }
         return false;
     }
+
+    //-------
 
     void MountCSVData::MakeColMap( void )
     {
@@ -177,6 +186,9 @@ namespace Catalog {
             }
         }
     }
+    
+    //-------
+
     bool MountCSVData::FixUpLine( wxString& line, int lineNbr )
     {
         int curr = 0;
@@ -201,14 +213,14 @@ namespace Catalog {
 
                 return false;
             }
-            comma = line.find_first_of( ",", firstQuote );
+            comma = line.find_first_of( ", ", firstQuote );
             bool check_again = true;
             while ( check_again )
             {
                 if ( ( comma > firstQuote ) && ( comma < nextQuote ) )
                 {
                     line = line.replace( comma, 1, "{" );
-                    comma = line.find_first_of( ",", firstQuote );
+                    comma = line.find_first_of( ", ", firstQuote );
                 }
                 else
                 {
@@ -220,7 +232,9 @@ namespace Catalog {
         return true;
     };
 
-    bool MountCSVData::ReadTextInStream( wxFileInputStream& file,
+    //-------
+
+    bool MountCSVData::ReadTextInStream( wxFileInputStream& file, 
         wxTextInputStream& text )
     {
         bool status = false;
@@ -246,7 +260,7 @@ namespace Catalog {
                         if ( !file.Eof( ) && FixUpLine( line, m_lineCnt ) )
                         {
                             // comma separated Variables on line; i, e, .csv file
-                            wxStringTokenizer tokenizer( line, "," );
+                            wxStringTokenizer tokenizer( line, ", " );
 
                             wxXmlNode* entryElement = Utils::NewNode( docRoot, "Item" );
 
@@ -262,7 +276,7 @@ namespace Catalog {
                                     valStr = rest;
                                 if ( valStr.EndsWith( wxT( "\"" ), &rest ) )
                                     valStr = rest;
-                                valStr.Replace( "{", ",", true );
+                                valStr.Replace( "{", ", ", true );
 
                                 MountDataTypes entryType = m_csvColMap.at( csvCol );
 

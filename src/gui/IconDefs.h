@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -68,15 +68,15 @@
 namespace Design {
     typedef enum
     {
-        Icon_Stamp = 0,
-        Icon_StampSelected,
-        Icon_StampBlock,
-        Icon_StampBlockSelected,
-        Icon_StampMiniSheet,
-        Icon_StampMiniSheetSelected,
-        Icon_StampSouvenirSheet,
-        Icon_StampSouvenirSheetSelected,
-        Icon_Folder,
+        Icon_Stamp = 0, 
+        Icon_StampSelected, 
+        Icon_StampBlock, 
+        Icon_StampBlockSelected, 
+        Icon_StampMiniSheet, 
+        Icon_StampMiniSheetSelected, 
+        Icon_StampSouvenirSheet, 
+        Icon_StampSouvenirSheetSelected, 
+        Icon_Folder, 
         Icon_Menu
     } IconID;
     /*
@@ -91,38 +91,38 @@ namespace Catalog
 {
     typedef enum
     {
-        Icon_StampUnknown = 0,
-        Icon_Stamp = Icon_StampUnknown,
-        Icon_StampMissing,
-        Icon_StampSelected = Icon_StampMissing,
-        Icon_StampOrdered,
-        Icon_StampOwn,
-        Icon_StampOwnVariant,
-        Icon_StampExclude,
-        Icon_StampUnknownBlock,
-        Icon_StampBlock = Icon_StampUnknownBlock,
-        Icon_StampMissingBlock,
-        Icon_StampBlockSelected = Icon_StampMissingBlock,
-        Icon_StampOrderedBlock,
-        Icon_StampOwnBlock,
-        Icon_StampOwnVariantBlock,
-        Icon_StampExcludeBlock,
-        Icon_StampUnknownMiniSheet,
-        Icon_StampMiniSheet = Icon_StampUnknownMiniSheet,
-        Icon_StampMissingMiniSheet,
-        Icon_StampMiniSheetSelected = Icon_StampMissingMiniSheet,
-        Icon_StampOrderedMiniSheet,
-        Icon_StampOwnMiniSheet,
-        Icon_StampOwnVariantMiniSheet,
-        Icon_StampExcludeMiniSheet,
-        Icon_StampUnknownSouvenirSheet,
-        Icon_StampSouvenirSheet = Icon_StampUnknownSouvenirSheet,
-        Icon_StampMissingSouvenirSheet,
-        Icon_StampSouvenirSheetSelected = Icon_StampMissingSouvenirSheet,
-        Icon_StampOrderedSouvenirSheet,
-        Icon_StampOwnSouvenirSheet,
-        Icon_StampOwnVariantSouvenirSheet,
-        Icon_StampExcludeSouvenirSheet,
+        Icon_StampUnknown = 0, 
+        Icon_Stamp = Icon_StampUnknown, 
+        Icon_StampMissing, 
+        Icon_StampSelected = Icon_StampMissing, 
+        Icon_StampOrdered, 
+        Icon_StampOwn, 
+        Icon_StampOwnVariant, 
+        Icon_StampExclude, 
+        Icon_StampUnknownBlock, 
+        Icon_StampBlock = Icon_StampUnknownBlock, 
+        Icon_StampMissingBlock, 
+        Icon_StampBlockSelected = Icon_StampMissingBlock, 
+        Icon_StampOrderedBlock, 
+        Icon_StampOwnBlock, 
+        Icon_StampOwnVariantBlock, 
+        Icon_StampExcludeBlock, 
+        Icon_StampUnknownMiniSheet, 
+        Icon_StampMiniSheet = Icon_StampUnknownMiniSheet, 
+        Icon_StampMissingMiniSheet, 
+        Icon_StampMiniSheetSelected = Icon_StampMissingMiniSheet, 
+        Icon_StampOrderedMiniSheet, 
+        Icon_StampOwnMiniSheet, 
+        Icon_StampOwnVariantMiniSheet, 
+        Icon_StampExcludeMiniSheet, 
+        Icon_StampUnknownSouvenirSheet, 
+        Icon_StampSouvenirSheet = Icon_StampUnknownSouvenirSheet, 
+        Icon_StampMissingSouvenirSheet, 
+        Icon_StampSouvenirSheetSelected = Icon_StampMissingSouvenirSheet, 
+        Icon_StampOrderedSouvenirSheet, 
+        Icon_StampOwnSouvenirSheet, 
+        Icon_StampOwnVariantSouvenirSheet, 
+        Icon_StampExcludeSouvenirSheet, 
         Icon_Folder
     } IconID;
     /*

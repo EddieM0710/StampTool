@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -53,7 +53,7 @@ class TOCTreeItemData : public wxTreeItemData
 public:
 
 
-    TOCTreeItemData( Utils::TOCBaseType type, bool collapseState = false, wxString name = "",
+    TOCTreeItemData( Utils::TOCBaseType type, bool collapseState = false, wxString name = "", 
         const wxString desc = "", int menuID = 0, VolumePtr vol = 0 )
     {
         m_type = type;
@@ -189,16 +189,16 @@ class TOCTreeCtrl : public wxTreeCtrl
 public:
     enum
     {
-        CatalogListTree_Quit = wxID_EXIT,
-        CatalogListTree_About = wxID_ABOUT,
-        CatalogListTree_ResortTree,
-        CatalogListTree_EditDetails,
-        CatalogListTree_Delete,
-        CatalogListTree_Add,
-        CatalogListTree_Before,
-        CatalogListTree_After,
-        CatalogListTree_AsChild,
-        CatalogListTree_Cancel,
+        CatalogListTree_Quit = wxID_EXIT, 
+        CatalogListTree_About = wxID_ABOUT, 
+        CatalogListTree_ResortTree, 
+        CatalogListTree_EditDetails, 
+        CatalogListTree_Delete, 
+        CatalogListTree_Add, 
+        CatalogListTree_Before, 
+        CatalogListTree_After, 
+        CatalogListTree_AsChild, 
+        CatalogListTree_Cancel, 
 
     };
 
@@ -206,7 +206,7 @@ public:
 
     TOCTreeCtrl( ) { }
 
-    TOCTreeCtrl( wxWindow* parent, const wxWindowID id, const wxPoint& pos,
+    TOCTreeCtrl( wxWindow* parent, const wxWindowID id, const wxPoint& pos, 
         const wxSize& size, long style );
 
     virtual ~TOCTreeCtrl( void ) { }
@@ -220,9 +220,9 @@ public:
 
     void Clear( );
 
-    TOCTreeItemData* CreateChildData( wxXmlNode* child,
-        wxString& label,
-        Catalog::IconID& icon,
+    TOCTreeItemData* CreateChildData( wxXmlNode* child, 
+        wxString& label, 
+        Catalog::IconID& icon, 
         Utils::TOCBaseType& nodeType );
 
     void CreateImageList( );
@@ -246,10 +246,6 @@ public:
     wxTreeItemId GetCurrentTreeID( ){
         return m_currVolumeID;
     };
-
-    // wxString GetID( wxTreeItemId catTreeID );
-
-     //wxString GetImage( wxTreeItemId catTreeID );
 
 
     wxMenu* GetMenu( ) {

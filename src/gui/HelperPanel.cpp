@@ -9,7 +9,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -90,19 +90,19 @@ bool HelperPanel::Create( wxWindow* parent, wxWindowID id, const wxString& capti
 
 //--------------
 
-FontPicker* HelperPanel::SetupFontPicker(
-    wxWindow* parent, wxBoxSizer* verticalSizer, int& lastID,
-    wxString staticText, wxString buttonText,
-    wxFontPickerCtrl*& fontCtrl,
-    wxColourPickerCtrl*& colorCtrl,
-    wxObjectEventFunction  fontPickerHandler,
-    wxObjectEventFunction  colorPickerHandler,
+FontPicker* HelperPanel::SetupFontPicker( 
+    wxWindow* parent, wxBoxSizer* verticalSizer, int& lastID, 
+    wxString staticText, wxString buttonText, 
+    wxFontPickerCtrl*& fontCtrl, 
+    wxColourPickerCtrl*& colorCtrl, 
+    wxObjectEventFunction  fontPickerHandler, 
+    wxObjectEventFunction  colorPickerHandler, 
     wxObjectEventFunction  defaultButtonHandler )
 {
-    FontPicker* fontPickerHelper = new FontPicker(
-        parent, verticalSizer,
-        staticText,
-        buttonText, ++lastID,
+    FontPicker* fontPickerHelper = new FontPicker( 
+        parent, verticalSizer, 
+        staticText, 
+        buttonText, ++lastID, 
         *wxNORMAL_FONT, *wxBLACK );
     fontCtrl = fontPickerHelper->GetFontPickerCtrl( );
     colorCtrl = fontPickerHelper->GetColourPickerCtrl( );
@@ -126,14 +126,14 @@ wxStaticBox* HelperPanel::SetupBoxSizer( wxWindow* parent, wxBoxSizer* inSizer, 
 
 //--------------
 
-wxTextCtrl* HelperPanel::SetupLabelText( wxWindow* parent, wxBoxSizer* inSizer, int& lastID, wxString label, bool grow,
+wxTextCtrl* HelperPanel::SetupLabelText( wxWindow* parent, wxBoxSizer* inSizer, int& lastID, wxString label, bool grow, 
     wxObjectEventFunction  eventHandler )
 {
     wxStaticBox* itemStaticBoxSizerStatic = new wxStaticBox( parent, wxID_ANY, label );
     wxStaticBoxSizer* itemStaticBoxSizer = new wxStaticBoxSizer( itemStaticBoxSizerStatic, wxVERTICAL );
     inSizer->Add( itemStaticBoxSizer, 0, wxGROW | wxALL, 2 );
 
-    wxTextCtrl* itemTextCtrl = new wxTextCtrl( itemStaticBoxSizer->GetStaticBox( ), ++lastID,
+    wxTextCtrl* itemTextCtrl = new wxTextCtrl( itemStaticBoxSizer->GetStaticBox( ), ++lastID, 
         wxEmptyString, wxDefaultPosition, wxDefaultSize, wxNO_BORDER );
     itemStaticBoxSizer->Add( itemTextCtrl, 0, wxGROW | wxALL, 2 );
 
@@ -144,14 +144,14 @@ wxTextCtrl* HelperPanel::SetupLabelText( wxWindow* parent, wxBoxSizer* inSizer, 
 
 //--------------
 
-wxTextCtrl* HelperPanel::SetupMultilineLabeledText( wxWindow* parent, wxBoxSizer* inSizer, int& lastID, wxString label, bool grow,
+wxTextCtrl* HelperPanel::SetupMultilineLabeledText( wxWindow* parent, wxBoxSizer* inSizer, int& lastID, wxString label, bool grow, 
     wxObjectEventFunction  eventHandler )
 {
     wxStaticBox* itemStaticBoxSizerStatic = new wxStaticBox( parent, wxID_ANY, label );
     wxStaticBoxSizer* itemStaticBoxSizer = new wxStaticBoxSizer( itemStaticBoxSizerStatic, wxHORIZONTAL );
     inSizer->Add( itemStaticBoxSizer, 0, wxGROW | wxALL, 2 );
 
-    wxTextCtrl* itemTextCtrl = new wxTextCtrl( itemStaticBoxSizer->GetStaticBox( ), ++lastID,
+    wxTextCtrl* itemTextCtrl = new wxTextCtrl( itemStaticBoxSizer->GetStaticBox( ), ++lastID, 
         wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE | wxNO_BORDER );
     itemStaticBoxSizer->Add( itemTextCtrl, 1, wxALL, 0 );
 
@@ -187,7 +187,7 @@ wxCheckBox* HelperPanel::SetupCheckBox( wxWindow* parent, wxBoxSizer* sizer, int
 
 //--------------
 
-wxChoice* HelperPanel::SetupChoice( wxWindow* parent, wxBoxSizer* sizer, int& lastID, wxString label,
+wxChoice* HelperPanel::SetupChoice( wxWindow* parent, wxBoxSizer* sizer, int& lastID, wxString label, 
     wxArrayString choiceStrings, wxObjectEventFunction  eventHandler )
 {
     wxStaticBox* itemStaticBoxSizerStatic = new wxStaticBox( parent, wxID_ANY, label );
@@ -205,11 +205,11 @@ wxChoice* HelperPanel::SetupChoice( wxWindow* parent, wxBoxSizer* sizer, int& la
 
 //--------------
 
-HelperPanel::TitleHelper* HelperPanel::SetupTitleHelper( wxWindow* parent, wxBoxSizer* inSizer, int& idLast,
-    int style,
-    wxObjectEventFunction titleCheckBoxEventHandler,
-    wxObjectEventFunction titleEventHandler,
-    wxObjectEventFunction subTitleCheckBoxEeventHandler,
+HelperPanel::TitleHelper* HelperPanel::SetupTitleHelper( wxWindow* parent, wxBoxSizer* inSizer, int& idLast, 
+    int style, 
+    wxObjectEventFunction titleCheckBoxEventHandler, 
+    wxObjectEventFunction titleEventHandler, 
+    wxObjectEventFunction subTitleCheckBoxEeventHandler, 
     wxObjectEventFunction subTitleEventHandler )
 {
     TitleHelper* titleHelper = new TitleHelper;
@@ -363,9 +363,9 @@ void HelperPanel::VerticalSpacer( wxBoxSizer* inSizer )
 //--------------
 
 
-wxCheckListBox* HelperPanel::SetupCheckListBox( wxWindow* parent, wxBoxSizer* inSizer, int& lastID,
-    wxString label, wxArrayString& array,
-    wxObjectEventFunction  allButtonEventHandler,
+wxCheckListBox* HelperPanel::SetupCheckListBox( wxWindow* parent, wxBoxSizer* inSizer, int& lastID, 
+    wxString label, wxArrayString& array, 
+    wxObjectEventFunction  allButtonEventHandler, 
     wxObjectEventFunction  clearButtonEventHandler )
 {
     wxStaticBox* itemStaticBoxSizerStatic = new wxStaticBox( parent, wxID_ANY, label );

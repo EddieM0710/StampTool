@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -36,6 +36,7 @@
 #include "gui/GuiUtils.h"
 #include "design/DesignDefs.h"
 #include "utils/Project.h"
+#include "utils/Image.h"
 #include "gui/AlbumImagePanel.h"
 #include "art/NotFound.xpm"
 #include "art/fleur_di_lis3.xpm"
@@ -51,11 +52,11 @@ wxSize GetPPMM( wxDC& dc )
 }
 //----------------
 
-void DrawLabelPDF( wxPdfDocument* doc, const wxString& text,
-    RealPoint pos,
-    RealSize size,
-    int   	alignment,
-    int  	border,
+void DrawLabelPDF( wxPdfDocument* doc, const wxString& text, 
+    RealPoint pos, 
+    RealSize size, 
+    int   	alignment, 
+    int  	border, 
     bool fill )
 {
     doc->SetXY( pos.x, pos.y );
@@ -76,7 +77,7 @@ void DrawText( wxDC& dc, wxString& str, wxRect& rect, bool draw ) {
     // rect.y = dc.LogicalToDeviceY( rect.y );
     // rect.width = dc.LogicalToDeviceXRel( rect.width );;
     // rect.height = dc.LogicalToDeviceXRel( rect.height );;
-    wxCoord x = rect.x,
+    wxCoord x = rect.x, 
         y = rect.y;
 
     // zeroing height, in which the new height of the whole will be returned
@@ -100,7 +101,7 @@ void DrawText( wxDC& dc, wxString& str, wxRect& rect, bool draw ) {
 
             if ( ( width += w ) > rect.width )
             {
-                // if larger, paint lines (text without the last word)
+                // if larger, paint lines ( text without the last word )
                 if ( draw )
                     dc.DrawText( line, x, y );
 
@@ -148,9 +149,9 @@ void DrawText( wxDC& dc, wxString& str, wxRect& rect, bool draw ) {
 
             line << words[ k ];
 
-        } // end for()
+        } // end for( )
 
-        // If there is something left (smaller than the line - the remnant) then namluj
+        // If there is something left ( smaller than the line - the remnant ) then namluj
         if ( line != "" )
         {
             if ( draw )
@@ -160,23 +161,23 @@ void DrawText( wxDC& dc, wxString& str, wxRect& rect, bool draw ) {
             rect.height += h;
         }
 
-    } // end for()
+    } // end for( )
 }
 
 //----------------
 
-void DrawLabel( wxDC& dc, const wxString& text,
-    RealPoint pos,
-    RealSize size,
-    int  	alignment,
+void DrawLabel( wxDC& dc, const wxString& text, 
+    RealPoint pos, 
+    RealSize size, 
+    int  	alignment, 
     int  	indexAccel )
 {
     // dc.GetMultiLineTextExtent( )
 
-         // GetMultiLineTextExtent( const wxString & string,
-         //     wxCoord * width,
-         //     wxCoord * height,
-         //     wxCoord * heightLine = ( wxCoord* ) __null,
+         // GetMultiLineTextExtent( const wxString & string, 
+         //     wxCoord * width, 
+         //     wxCoord * height, 
+         //     wxCoord * heightLine = ( wxCoord* ) __null, 
          //     const wxFont * font = ( const wxFont* )
          //     dc.DrawRectangle( wxRect( pos.x, pos.y, size.x, size.y ) );
     wxSize scale = GetPPMM( dc );
@@ -321,37 +322,39 @@ void DrawRectangle( wxDC& dc, double x, double y, double width, double height )
 
 //----------------
 
-wxImage GetImageFromFilename( wxString filename )
-{
+// wxImage GetImageFromFilename( wxString filename )
+// {
 
-    wxFileName fn;
-    wxImage image;
-    bool fileOK = false;
-    wxString  str = GetProject( )->GetImageFullPath( filename );
+//     wxFileName fn;
+//     wxImage image;
+//     bool fileOK = false;
+//     wxString  str = Utils::GetImageFullPath( filename );
 
-    fn.Assign( str );
-    //wxString fullpath = fn.GetFullPath( );
-    wxFileName fn3 = fn;
-    //fn3.MakeAbsolute( );
-    wxString str1 = fn3.GetFullPath( );
-    if ( fn.FileExists( ) )
-    {
-        if ( image.CanRead( str ) )
-        {
-            fileOK = true;
-        }
-    }
-    if ( fileOK )
-    {
-        image = wxImage( filename );
-    }
-    else
-    {
-        image = wxImage( fleur_di_lis );
-    }
+//     fn.Assign( str );
+//     //wxString fullpath = fn.GetFullPath( );
+//     wxFileName fn3 = fn;
+//     //fn3.MakeAbsolute( );
+//     wxString str1 = fn3.GetFullPath( );
+//     if ( fn.FileExists( ) )
+//     {
+//         if ( image.CanRead( str ) )
+//         {
+//             fileOK = true;
+//         }
+//     }
+//     if ( fileOK )
+//     {
+//         std::cout << "GetImageFromFilename " << filename << " found\n";
+//         image = wxImage( filename );
+//     }
+//     else
+//     {
+//         std::cout << "GetImageFromFilename " << filename << " not found\n";
+//         image = wxImage( fleur_di_lis );
+//     }
 
-    return image;
-}
+//     return image;
+// }
 
 //----------------
 

@@ -11,7 +11,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -41,13 +41,13 @@
 namespace Catalog {
 
     typedef enum {
-        MT_Year = 0,
-        MT_ID,
-        MT_Name,
-        MT_SingleMount,
-        MT_MultipleMount,
-        MT_BlockMount,
-        MT_SheetMount,
+        MT_Year = 0, 
+        MT_ID, 
+        MT_Name, 
+        MT_SingleMount, 
+        MT_MultipleMount, 
+        MT_BlockMount, 
+        MT_SheetMount, 
         MT_NbrDatatypes
     }MountDataTypes;
 

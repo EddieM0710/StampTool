@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -54,29 +54,29 @@ class ColDetailsPanel : public HelperPanel
 public:
 
     enum ColDetailsPanelGuiDefs {
-        ID_NAMELABELEDTEXTBOX = ID_COLDETAILSDIALOG + 1,
-        ID_COLTITLECHECKBOX,
-        ID_COLSUBTITLECHECKBOX,
-        ID_FRAMECHECKBOX,
-        ID_LISTCTRL,
-        //  ID_COLNOTEBOOK,
-        ID_COLNAMEPANEL,
-        ID_COLDEFAULTFONTBUTTON,
-        ID_COLLAYOUTPANEL,
-        ID_COLLAYOUTTEXTCTRL,
-        //    ID_NOTEBOOKPOSITIONPANEL,
-    //ID_POSITIONTEXTCTRL,
-           // ID_NOTEBOOK,
-           // ID_NOTEBOOKDETAILSPANEL,
-        ID_DEFAULTFONTBUTTON,
-        ID_DEFAULTRADIOBUTTON,
-        ID_TOPRADIOBUTTON,
-        ID_BOTTOMRADIOBUTTON,
-        //ID_LEFTRADIOBUTTON,
-        //ID_RIGHTRADIOBUTTON,
-        ID_CALCULATEDRADIOBUTTON,
-        ID_FIXEDRADIOBUTTON,
-        ID_FIXEDSIZETEXTCTRL,
+        ID_NAMELABELEDTEXTBOX = ID_COLDETAILSDIALOG + 1, 
+        ID_COLTITLECHECKBOX, 
+        ID_COLSUBTITLECHECKBOX, 
+        ID_FRAMECHECKBOX, 
+        ID_LISTCTRL, 
+        //  ID_COLNOTEBOOK, 
+        ID_COLNAMEPANEL, 
+        ID_COLDEFAULTFONTBUTTON, 
+        ID_COLLAYOUTPANEL, 
+        ID_COLLAYOUTTEXTCTRL, 
+        //    ID_NOTEBOOKPOSITIONPANEL, 
+    //ID_POSITIONTEXTCTRL, 
+           // ID_NOTEBOOK, 
+           // ID_NOTEBOOKDETAILSPANEL, 
+        ID_DEFAULTFONTBUTTON, 
+        ID_DEFAULTRADIOBUTTON, 
+        ID_TOPRADIOBUTTON, 
+        ID_BOTTOMRADIOBUTTON, 
+        //ID_LEFTRADIOBUTTON, 
+        //ID_RIGHTRADIOBUTTON, 
+        ID_CALCULATEDRADIOBUTTON, 
+        ID_FIXEDRADIOBUTTON, 
+        ID_FIXEDSIZETEXTCTRL, 
         ID_LastID
     };
 

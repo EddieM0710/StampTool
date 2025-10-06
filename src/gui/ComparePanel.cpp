@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -65,11 +65,11 @@ ComparePanel::ComparePanel( )
     Init( );
 }
 
-ComparePanel::ComparePanel( wxWindow* parent,
-    wxWindowID id,
-    const wxString& caption,
-    const wxPoint& pos,
-    const wxSize& size,
+ComparePanel::ComparePanel( wxWindow* parent, 
+    wxWindowID id, 
+    const wxString& caption, 
+    const wxPoint& pos, 
+    const wxSize& size, 
     long style )
 {
     Init( );
@@ -78,11 +78,11 @@ ComparePanel::ComparePanel( wxWindow* parent,
 
 
 
-bool ComparePanel::Create( wxWindow* parent,
-    wxWindowID id,
-    const wxString& caption,
-    const wxPoint& pos,
-    const wxSize& size,
+bool ComparePanel::Create( wxWindow* parent, 
+    wxWindowID id, 
+    const wxString& caption, 
+    const wxPoint& pos, 
+    const wxSize& size, 
     long style )
 {
 
@@ -163,8 +163,8 @@ void ComparePanel::CreateControls( )
 
     GetCatalogData( )->GetCatalogList( )->MakeNameArray( m_catalogListCtrlStrings );
 
-    m_targetFile = new wxChoice( targetFileSizer->GetStaticBox( ), ID_TARGETFILE,
-        wxDefaultPosition, wxDefaultSize,
+    m_targetFile = new wxChoice( targetFileSizer->GetStaticBox( ), ID_TARGETFILE, 
+        wxDefaultPosition, wxDefaultSize, 
         m_catalogListCtrlStrings );
     m_targetFile->SetSelection( 0 );
     Connect( ID_TARGETFILE, wxEVT_CHOICE, wxCommandEventHandler( ComparePanel::OnTargetFileTextUpdated ) );
@@ -181,8 +181,8 @@ void ComparePanel::CreateControls( )
     fileHorizontalSizer->Add( mergeFileSizer, 1, wxGROW | wxLEFT, 5 );
 
 
-    m_mergeFile = new wxChoice( mergeFileSizer->GetStaticBox( ), ID_MERGEFILE,
-        wxDefaultPosition, wxDefaultSize,
+    m_mergeFile = new wxChoice( mergeFileSizer->GetStaticBox( ), ID_MERGEFILE, 
+        wxDefaultPosition, wxDefaultSize, 
         m_catalogListCtrlStrings );
     m_mergeFile->SetSelection( 0 );
     Connect( ID_MERGEFILE, wxEVT_CHOICE, wxCommandEventHandler( ComparePanel::OnMergeFileTextUpdated ) );
@@ -208,7 +208,7 @@ void ComparePanel::CreateControls( )
     entryListScrolledWindow->SetSizer( entryListVerticalSizer );
 
 
-    //wxListCtrl* itemListCtrl4 = new wxListCtrl( itemScrolledWindow2, ID_LISTCTRL, wxDefaultPosition, wxSize(100, 100), wxLC_REPORT );
+    //wxListCtrl* itemListCtrl4 = new wxListCtrl( itemScrolledWindow2, ID_LISTCTRL, wxDefaultPosition, wxSize( 100, 100 ), wxLC_REPORT );
 
     // m_listBox = new wxListView( entryListScrolledWindow, ID_LISTCTRL, wxDefaultPosition, wxDefaultSize, wxLC_REPORT | wxLC_SINGLE_SEL );
     // entryListVerticalSizer->Add( m_listBox, 1, wxGROW | wxALL, 5 );
@@ -599,7 +599,7 @@ void ComparePanel::OnListCtrlSelected( wxListEvent& event )
 {
     // wxListItem item = event.GetItem( );
     // Catalog::MergeData* mergeEntry = ( Catalog::MergeData* ) item.GetData( );
-    // UpdateCompEntryTable(  mergeEntry  );
+    // UpdateCompEntryTable( mergeEntry  );
 }
 
 void ComparePanel::UpdateCompEntryTable( Catalog::MergeData* mergeEntry )

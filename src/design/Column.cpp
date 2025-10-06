@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -392,7 +392,6 @@ namespace Design {
                 wxString str;
                 str.Format( "Terminal leaf node must define the height. height:>>%7.2f<< \n", GetHeight( ) );
                 GetErrorArray( )->Add( str );
-                m_debugString.Append( str );
                 status = AT_FATAL;
             }
             if ( GetWidth( ) <= 0.0 )
@@ -400,8 +399,6 @@ namespace Design {
                 wxString str;
                 str.Format( "Terminal leaf node must define the width. width:>>%7.2f<< \n", GetWidth( ) );
                 GetErrorArray( )->Add( str );
-                m_debugString.Append( str );
-                //                std::cout << "Terminal leaf node must define the width.\n";
                 status = AT_FATAL;
             }
         }
@@ -422,7 +419,6 @@ namespace Design {
             else
             {
                 GetAlbumTreeCtrl( )->SetItemBackgroundColour( id, *wxWHITE );
-                //std::cout << GetAlbumTreeCtrl( )->GetItemText( id ) << " OK\n";
             }
         }
         return status;

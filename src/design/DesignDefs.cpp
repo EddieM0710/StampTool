@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -59,55 +59,55 @@ namespace Design {
     //----------------
 
     wxString AttrNameStrings[ AT_NbrAttrTypes ] = {
-        "Name",
-        "PageWidth",
-        "PageHeight",
-        "TopPageMargin",
-        "BottomPageMargin",
-        "RightPageMargin",
-        "LeftPageMargin",
-        "BorderFileName",
-        "BorderSize",
-        "ShowBorder",
-        "Height",
-        "Width",
-        "XPos",
-        "YPos",
-        "MinHeight",
-        "MinWidth",
-        "CatNbr",
-        "Link",
-        "ShowTitle",
-        "ShowSubTitle",
-        "ShowCatNbr",
-        "ShowFrame",
-        "ShowImage",
-        "Orientation",
-        "GrayScaleImages",
-        "TopContentMargin",
-        "BottomContentMargin",
-        "LeftContentMargin",
-        "RightContentMargin",
-        "FontType",
-        "NativeFontString",
-        "Color",
-        "ImageName",
-        "CalculateSpacing",
-        "FixedSpacingSize",
-        "OversizePaper",
-        "PaperHeight",
-        "PaperWidth",
-        "SelvageHeight",
-        "SelvageWidth",
-        "SubTitle",
-        "MountAllowanceHeight",
-        "MountAllowanceWidth",
-        "StampNamePosition",
-        "StampAlignmentMode",
-        "StampMargin",
-        "CollapseState",
-        "Catalog",
-        "CatalogCodes",
+        "Name", 
+        "PageWidth", 
+        "PageHeight", 
+        "TopPageMargin", 
+        "BottomPageMargin", 
+        "RightPageMargin", 
+        "LeftPageMargin", 
+        "BorderFileName", 
+        "BorderSize", 
+        "ShowBorder", 
+        "Height", 
+        "Width", 
+        "XPos", 
+        "YPos", 
+        "MinHeight", 
+        "MinWidth", 
+        "CatNbr", 
+        "Link", 
+        "ShowTitle", 
+        "ShowSubTitle", 
+        "ShowCatNbr", 
+        "ShowFrame", 
+        "ShowImage", 
+        "Orientation", 
+        "GrayScaleImages", 
+        "TopContentMargin", 
+        "BottomContentMargin", 
+        "LeftContentMargin", 
+        "RightContentMargin", 
+        "FontType", 
+        "NativeFontString", 
+        "Color", 
+        "ImageName", 
+        "CalculateSpacing", 
+        "FixedSpacingSize", 
+        "OversizePaper", 
+        "PaperHeight", 
+        "PaperWidth", 
+        "SelvageHeight", 
+        "SelvageWidth", 
+        "SubTitle", 
+        "MountAllowanceHeight", 
+        "MountAllowanceWidth", 
+        "StampNamePosition", 
+        "StampAlignmentMode", 
+        "StampMargin", 
+        "CollapseState", 
+        "Catalog", 
+        "CatalogCodes", 
         "LayoutType"
     };
 
@@ -129,13 +129,13 @@ namespace Design {
     //----------------
 
     wxString AlbumBaseNames[ AT_NbrAlbumTypes ] = {
-        "Album",
-        "Page",
-        "Row",
-        "Col",
-        "TextBox",
-        "TitlePage",
-        "Stamp",
+        "Album", 
+        "Page", 
+        "Row", 
+        "Col", 
+        "TextBox", 
+        "TitlePage", 
+        "Stamp", 
         "Font" };
 
     //----------------
@@ -145,25 +145,25 @@ namespace Design {
     //----------------
 
     wxString FontUsageTypeStrings[ AT_NbrFontUsageTypes ] = {
-        "Title",
-        "SubTitle",
-        "Name",
-        "Text",
+        "Title", 
+        "SubTitle", 
+        "Name", 
+        "Text", 
         "CatNbr"
     };
 
     //----------------
 
     wxString StampNamePositionStrings[ AT_NbrStampNamePositions ] = {
-        "Top",
+        "Top", 
         "Bottom"
     };
 
     //----------------
 
     wxString StampAlignmentModeStrings[ NbrAlignmentModes ] = {
-        "Top",
-        "Middle",
+        "Top", 
+        "Middle", 
         "Bottom"
     };
 
@@ -338,7 +338,7 @@ namespace Design {
             PPMM.x = 1;
             PPMM.y = 1;
         }
-        else //if ( client == DD_Display)
+        else //if ( client == DD_Display )
         {
 
             wxSize ppi = wxGetDisplayPPI( );

@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -54,20 +54,20 @@ class CatalogPanel : public wxPanel
 public:
 
     enum CatalogPanelGuiDefs {
-        ID_CATALOGVOLUMEPANEL = ID_CATALOGPANEL + 1,
-        ID_TEXTCTRL,
-        ID_TREECTRL,
-        ID_NEXTBUTTON,
-        ID_CHECKLISTBOX,
-        ID_SEARCHSTRINGTEXTCTRL,
-        ID_TOGGLEBUTTON,
-        ID_COLLECTIONCHOICE,
-        ID_VOLUMECHOICE,
-        ID_MANAGEBUTTON,
-        ID_CSVIMPORTCATALOG,
-        ID_NEWCATALOG,
-        ID_OPENCATALOG,
-        ID_REMOVECATALOG,
+        ID_CATALOGVOLUMEPANEL = ID_CATALOGPANEL + 1, 
+        ID_TEXTCTRL, 
+        ID_TREECTRL, 
+        ID_NEXTBUTTON, 
+        ID_CHECKLISTBOX, 
+        ID_SEARCHSTRINGTEXTCTRL, 
+        ID_TOGGLEBUTTON, 
+        ID_COLLECTIONCHOICE, 
+        ID_VOLUMECHOICE, 
+        ID_MANAGEBUTTON, 
+        ID_CSVIMPORTCATALOG, 
+        ID_NEWCATALOG, 
+        ID_OPENCATALOG, 
+        ID_REMOVECATALOG, 
         ID_SPINBUTTON
     };
 
@@ -75,10 +75,10 @@ public:
     CatalogPanel( );
 
 
-    CatalogPanel( wxWindow* parent,
-        wxWindowID id = SYMBOL_CATALOGVOLUMEPANEL_IDNAME,
-        const wxPoint& pos = SYMBOL_CATALOGVOLUMEPANEL_POSITION,
-        const wxSize& size = SYMBOL_CATALOGVOLUMEPANEL_SIZE,
+    CatalogPanel( wxWindow* parent, 
+        wxWindowID id = SYMBOL_CATALOGVOLUMEPANEL_IDNAME, 
+        const wxPoint& pos = SYMBOL_CATALOGVOLUMEPANEL_POSITION, 
+        const wxSize& size = SYMBOL_CATALOGVOLUMEPANEL_SIZE, 
         long style = SYMBOL_CATALOGVOLUMEPANEL_STYLE );
 
 

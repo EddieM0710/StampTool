@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -30,7 +30,6 @@
 
 #include "design/LayoutBase.h"
 #include "design/Album.h"
-#include "utils/DebugString.h"
 
 namespace Design {
 
@@ -277,7 +276,6 @@ namespace Design {
         Frame m_contentFrame;
 
 
-        DebugString m_debugString;
         TitleFrame* m_titleFrame;
         //        PageOrientation m_orientation;
     };

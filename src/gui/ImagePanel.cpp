@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -47,6 +47,7 @@
 #include "art/NotFound.xpm"
 #include "catalog/CatalogVolume.h"
 #include "utils/Project.h"
+#include "utils/Image.h"
 
 #include "wx/wfstream.h"
 #include <wx/datstrm.h>
@@ -76,7 +77,7 @@ ImagePanel::ImagePanel( )
 
 //-------
 
-ImagePanel::ImagePanel( wxWindow* parent, wxWindowID id, const wxPoint& pos,
+ImagePanel::ImagePanel( wxWindow* parent, wxWindowID id, const wxPoint& pos, 
     const wxSize& size, long style )
 {
     Init( );
@@ -85,7 +86,7 @@ ImagePanel::ImagePanel( wxWindow* parent, wxWindowID id, const wxPoint& pos,
 
 //----------------
 
-bool ImagePanel::Create( wxWindow* parent, wxWindowID id, const wxPoint& pos,
+bool ImagePanel::Create( wxWindow* parent, wxWindowID id, const wxPoint& pos, 
     const wxSize& size, long style )
 {
     // ImagePanel creation
@@ -137,29 +138,18 @@ bool ImagePanel::ShowToolTips( )
 
 void ImagePanel::SetBitmap( wxString filename )
 {
-    wxImage image;
-    if ( filename.IsEmpty( ) )
+     wxImage image;
+     if ( filename.IsEmpty( ) )
     {
         image = wxImage( NotFound );
     }
-    else
+    else 
     {
-        //wxFileName fn( filename );
-        wxString str = GetProject( )->GetImageFullPath( filename );
-
-        if ( !GetProject( )->ImageExists( str ) )
-        {
-            image = wxImage( NotFound );
-        }
-        else
-        {
-            image = wxImage( str );
-
-            if ( !image.IsOk( ) )
-            {
-                image = wxImage( NotFound );
-            }
-        }
+        Catalog::Entry stamp( GetCatalogData( )->GetCurrentStamp( ) );
+wxString link = stamp.GetLink( );
+            int pos = link.find_last_of( "//" );
+            wxString item = link.Mid( pos+1 );
+                    Utils::GetImage( filename, image, item );
     }
 
     m_bitmap = image;
@@ -237,7 +227,7 @@ void ImagePanel::OnPaint( wxPaintEvent& event )
     dc.SetUserScale( scale * m_zoom, scale * m_zoom );
     // GetAlbumImagePanel( )->Refresh( );
 
-    dc.DrawBitmap( m_bitmap, 0, 0,
+    dc.DrawBitmap( m_bitmap, 0, 0, 
         // dc.DeviceToLogicalX( ( size.x - m_zoom*scale *
         // m_bitmap.GetWidth( ) ) / 2 ), dc.DeviceToLogicalY( ( size.y -
         // m_zoom*scale * m_bitmap.GetHeight( ) ) / 2 ), 

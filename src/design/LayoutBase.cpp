@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -62,10 +62,6 @@ namespace Design {
         indent += "    ";
         Design::AlbumBaseType type = GetNodeType( );
         wxString name = Design::AlbumBaseNames[ type ];
-        std::cout << indent << name
-            << " pnt(" << x << "," << y << ") "
-            << " pos(" << m_clientDimensions.GetXPos( ) << "," << m_clientDimensions.GetYPos( ) << ") "
-            << " size(" << m_clientDimensions.GetWidth( ) << "," << m_clientDimensions.GetHeight( ) << ")  \n";
         if ( IsInClient( x, y, indent ) )
         {
             wxTreeItemId thisID = GetTreeItemId( );
@@ -82,18 +78,16 @@ namespace Design {
                 if ( foundChild )
                 {
                     Design::AlbumBaseType type = foundChild->GetNodeType( );
-                    std::cout << indent << "foundChild " << child->GetText( ) << " \n";
-
+ 
                     return foundChild;
                 }
                 // }
                 childID = GetAlbumTreeCtrl( )->GetNextChild( thisID, cookie );
             }
 
-            std::cout << indent << "Success \n";
             return this;
         }
-        std::cout << indent << "fail \n";
+
         return ( LayoutBase* ) 0;
     }
 
@@ -117,13 +111,13 @@ namespace Design {
             }
             else
             {
-                std::cout << indent << name << " Failed y" << y << " min:" << miny << " max:" << maxy << "\n";
+                //std::cout << indent << name << " Failed y" << y << " min:" << miny << " max:" << maxy << "\n";
                 //  std::cout << indent << name << " Failed x" << x << " min:" << minx << " max:" << maxx << "\n";
             }
         }
         else
         {
-            std::cout << indent << name << " Failed x" << x << " min:" << minx << " max:" << maxx << "\n";
+           // std::cout << indent << name << " Failed x" << x << " min:" << minx << " max:" << maxx << "\n";
             // std::cout << indent << name << " Failed y" << y << " min:" << miny << " max:" << maxy << "\n";
         }
         return false;
@@ -134,9 +128,9 @@ namespace Design {
     void LayoutBase::ReportLayoutFrame( wxString indent )
     {
         m_frame.ReportLayout( indent );
-        // wxString str = wxString::Format( "%sTitle Size: width:%7.2f  height:%7.2f \n",
+        // wxString str = wxString::Format( "%sTitle Size: width:%7.2f  height:%7.2f \n", 
         //     indent, m_titleFrame->GetWidth( ), m_titleFrame->GetHeight( ) );
-        std::cout << "\n" << indent << "Client Dimensions ";
+       // std::cout << "\n" << indent << "Client Dimensions ";
         m_clientDimensions.ReportLayout( indent );
     };
 

@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -34,6 +34,7 @@
 #include "gui/AlbumTreeCtrl.h"
 #include "gui/GuiUtils.h"
 #include "utils/Project.h"
+#include "utils/Image.h"
 
 
 namespace Design {
@@ -44,11 +45,11 @@ namespace Design {
     {
         SetNodeType( AT_Page );
         SetObjectName( AlbumBaseNames[ GetNodeType( ) ] );
-        if (GetAlbumVolume())
+        if ( GetAlbumVolume( ) )
         {
-            SetDefaults(GetAlbumVolume()->GetAlbum()->AlbumPageDefaults());
+            SetDefaults( GetAlbumVolume( )->GetAlbum( )->AlbumPageDefaults( ) );
         }
-        m_titleFrame = new TitleFrame(this);
+        m_titleFrame = new TitleFrame( this );
         m_titleFrame->SetHeadingString( GetAttrStr( AT_Name ) );
         m_titleFrame->SetSubHeadingString( GetAttrStr( AT_SubTitle ) );
         m_pageType = Design::PT_None;
@@ -194,12 +195,14 @@ namespace Design {
         {
             wxString borderName = GetBorderFileName( );
 
-            wxImage image = GetProject( )->GetImage( borderName );
+            wxImage image; 
+            Utils::GetImage( borderName, image );
+
             wxFont font = dc.GetFont( );
 
-            DrawImage( dc, image,
-                xPos, yPos,
-                GetWidth( ),
+            DrawImage( dc, image, 
+                xPos, yPos, 
+                GetWidth( ), 
                 GetHeight( ) );
         }
         double leftPadding = 0;
@@ -238,9 +241,10 @@ namespace Design {
 
         if ( GetShowBorder( ) )
         {
-            wxImage image = GetProject( )->GetImage( borderName );
-            doc->Image( borderName, image, xPos, yPos,
-                GetWidth( ),
+            wxImage image;
+            Utils::GetImage( borderName, image );
+            doc->Image( borderName, image, xPos, yPos, 
+                GetWidth( ), 
                 GetHeight( ) );
         }
 
@@ -336,17 +340,17 @@ namespace Design {
 
     void Page::ReportLayout( )
     {
-        std::cout << "Layout for Page " << "\nPage ";
-        //ReportLayout( );
-        std::cout << "\nBase ";
-        ReportLayoutFrame( );
+    //     std::cout << "Layout for Page " << "\nPage ";
+    //     //ReportLayout( );
+    //     std::cout << "\nBase ";
+    //     ReportLayoutFrame( );
 
-        wxString str = wxString::Format( "Border Size:%7.2f\n ", GetBorderSize( ) );
-        std::cout << str;
-        str = wxString::Format( "Top PageMargin:%7.2f  Bottom PageMargin:%7.2f\n  Right PageMargin:%7.2f  c PageMargin:%7.2f\n",
-            GetTopPageMargin( ), GetBottomPageMargin( ), GetRightPageMargin( ), GetLeftPageMargin( ) );
-        std::cout << str;
-    };
+    //     wxString str = wxString::Format( "Border Size:%7.2f\n ", GetBorderSize( ) );
+    //     std::cout << str;
+    //     str = wxString::Format( "Top PageMargin:%7.2f  Bottom PageMargin:%7.2f\n  Right PageMargin:%7.2f  c PageMargin:%7.2f\n", 
+    //         GetTopPageMargin( ), GetBottomPageMargin( ), GetRightPageMargin( ), GetLeftPageMargin( ) );
+    //     std::cout << str;
+     };
 
     //----------------
 
@@ -688,7 +692,7 @@ namespace Design {
             if ( GetHeight( ) <= 0.0 )
             {
                 wxString str;
-                str = wxString::Format( "Terminal leaf node must define the height. height:>>%7.2f<< \n",
+                str = wxString::Format( "Terminal leaf node must define the height. height:>>%7.2f<< \n", 
                     GetHeight( ) );
                 GetErrorArray( )->Add( str );
                 status = AT_FATAL;
@@ -697,7 +701,7 @@ namespace Design {
             if ( GetWidth( ) <= 0.0 )
             {
                 wxString str;
-                str = wxString::Format( "Terminal leaf node must define the width. width:>>%7.2f<< \n",
+                str = wxString::Format( "Terminal leaf node must define the width. width:>>%7.2f<< \n", 
                     GetWidth( ) );
                 GetErrorArray( )->Add( str );
                 status = AT_FATAL;
@@ -706,7 +710,7 @@ namespace Design {
         if ( GetWidth( ) < GetMinWidth( ) )
         {
             wxString str;
-            str = wxString::Format( "Children too big for page. width:%7.2f  min width:%7.2f\n",
+            str = wxString::Format( "Children too big for page. width:%7.2f  min width:%7.2f\n", 
                 GetWidth( ), GetMinWidth( ) );
             GetErrorArray( )->Add( str );
             status = AT_WARNING;
@@ -716,7 +720,7 @@ namespace Design {
         if ( GetHeight( ) < GetMinHeight( ) )
         {
             wxString str;
-            str = wxString::Format( "Children too big for page. height:%7.2f  min height:%7.2f\n",
+            str = wxString::Format( "Children too big for page. height:%7.2f  min height:%7.2f\n", 
                 GetHeight( ), GetMinHeight( ) );
             GetErrorArray( )->Add( str );
             status = AT_WARNING;
@@ -729,12 +733,12 @@ namespace Design {
             if ( status == AT_FATAL )
             {
                 GetAlbumTreeCtrl( )->SetItemBackgroundColour( id, *wxRED );
-                std::cout << GetAlbumTreeCtrl( )->GetItemText( id ) << " Fatal\n";
+                //std::cout << GetAlbumTreeCtrl( )->GetItemText( id ) << " Fatal\n";
             }
             else if ( status == AT_WARNING )
             {
                 GetAlbumTreeCtrl( )->SetItemBackgroundColour( id, *wxYELLOW );
-                std::cout << GetAlbumTreeCtrl( )->GetItemText( id ) << " Warning\n";
+                //std::cout << GetAlbumTreeCtrl( )->GetItemText( id ) << " Warning\n";
             }
             else
             {

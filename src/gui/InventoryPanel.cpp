@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -70,8 +70,8 @@ InventoryPanel::InventoryPanel( ) {
 
 //-------
 
-InventoryPanel::InventoryPanel( wxWindow* parent, wxWindowID id,
-    const wxPoint& pos, const wxSize& size,
+InventoryPanel::InventoryPanel( wxWindow* parent, wxWindowID id, 
+    const wxPoint& pos, const wxSize& size, 
     long style )
 {
     Init( );
@@ -80,7 +80,7 @@ InventoryPanel::InventoryPanel( wxWindow* parent, wxWindowID id,
 
 //-------
 
-bool InventoryPanel::Create( wxWindow* parent, wxWindowID id, const wxPoint& pos,
+bool InventoryPanel::Create( wxWindow* parent, wxWindowID id, const wxPoint& pos, 
     const wxSize& size, long style )
 {
     // InventoryPanel creation
@@ -159,7 +159,7 @@ void InventoryPanel::CreateControls( )
 
     int lastID = ID_Last;
 
-    m_collectionListCtrl = SetupChoice( itemPanel, leftSizer, lastID, _( "Collection" ),
+    m_collectionListCtrl = SetupChoice( itemPanel, leftSizer, lastID, _( "Collection" ), 
         GetCollectionList( )->GetNameArray( ), wxCommandEventHandler( InventoryPanel::OnCollectionChanged ) );
 
     m_collectionListCtrl->SetStringSelection( _( "Unknown" ) );
@@ -174,7 +174,7 @@ void InventoryPanel::CreateControls( )
     wxBoxSizer* itemBoxSizer2 = new wxBoxSizer( wxVERTICAL );
     inventoryHorizontalSizer->Add( itemBoxSizer2, 3, wxGROW | wxALL, 5 );
 
-    m_grid = new wxGrid( itemPanel, ID_INVENTORYGRID, wxDefaultPosition, wxSize( 300, 100 ),
+    m_grid = new wxGrid( itemPanel, ID_INVENTORYGRID, wxDefaultPosition, wxSize( 300, 100 ), 
         wxHSCROLL | wxVSCROLL );
     m_grid->SetDefaultColSize( 100 );
     m_grid->SetDefaultRowSize( 25 );
@@ -197,7 +197,7 @@ void InventoryPanel::CreateControls( )
     attr->SetEditor( new wxGridCellChoiceEditor( 5, choices, true ) );
     m_grid->SetColAttr( Catalog::IDT_Type - 1, attr );
 
-    wxString choices2[ 5 ] = { wxT( "VF" ), wxT( "F" ), wxT( "VG" ), wxT( "G" ),
+    wxString choices2[ 5 ] = { wxT( "VF" ), wxT( "F" ), wxT( "VG" ), wxT( "G" ), 
         wxT( "P" ) }; // Make table strings
     attr = new wxGridCellAttr( );
     attr->SetEditor( new wxGridCellChoiceEditor( 5, choices2, true ) );
@@ -518,7 +518,7 @@ void InventoryPanel::UpdateInventoryGrid( )
 
                             // if ( excludeStr.Cmp( currStatus ) )
                             // {
-                            // entryNode->RemoveChild(ele);
+                            // entryNode->RemoveChild( ele );
                             // }
                             // else
                             // {

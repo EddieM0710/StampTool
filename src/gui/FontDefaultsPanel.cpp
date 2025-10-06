@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -68,7 +68,7 @@ FontDefaultsPanel::FontDefaultsPanel( )
 
 //--------------
 
-FontDefaultsPanel::FontDefaultsPanel( wxWindow* parent, wxWindowID id,
+FontDefaultsPanel::FontDefaultsPanel( wxWindow* parent, wxWindowID id, 
     const wxString& caption, const wxPoint& pos, const wxSize& size, long style )
 {
     Init( );
@@ -77,7 +77,7 @@ FontDefaultsPanel::FontDefaultsPanel( wxWindow* parent, wxWindowID id,
 
 //--------------
 
-bool FontDefaultsPanel::Create( wxWindow* parent, wxWindowID id,
+bool FontDefaultsPanel::Create( wxWindow* parent, wxWindowID id, 
     const wxString& caption, const wxPoint& pos, const wxSize& size, long style )
 {
     SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY | wxWS_EX_BLOCK_EVENTS );
@@ -124,39 +124,39 @@ void FontDefaultsPanel::CreateControls( )
     wxBoxSizer* rightColumnVerticalSizer = new wxBoxSizer( wxVERTICAL );
     detailsHorizontalSizer->Add( rightColumnVerticalSizer, 1, wxGROW | wxALL, 0 );
 
-    SetupFontPicker( thePanel, leftColumnVerticalSizer, lastID,
-        _( "Title Font" ), _( "Default" ),
-        m_titleFontPicker, m_titleColorPicker,
-        wxFontPickerEventHandler( FontDefaultsPanel::OnTitleFontPicker ),
-        wxColourPickerEventHandler( FontDefaultsPanel::OnTitleColorPicker ),
+    SetupFontPicker( thePanel, leftColumnVerticalSizer, lastID, 
+        _( "Title Font" ), _( "Default" ), 
+        m_titleFontPicker, m_titleColorPicker, 
+        wxFontPickerEventHandler( FontDefaultsPanel::OnTitleFontPicker ), 
+        wxColourPickerEventHandler( FontDefaultsPanel::OnTitleColorPicker ), 
         wxCommandEventHandler( FontDefaultsPanel::OnTitleDefaultClick ) );
 
-    SetupFontPicker( thePanel, leftColumnVerticalSizer, lastID,
-        _( "SubTitle Font" ), _( "Default" ),
-        m_subTitleFontPicker, m_subTitleColorPicker,
-        wxFontPickerEventHandler( FontDefaultsPanel::OnSubTitleFontPicker ),
-        wxColourPickerEventHandler( FontDefaultsPanel::OnSubTitleColorPicker ),
+    SetupFontPicker( thePanel, leftColumnVerticalSizer, lastID, 
+        _( "SubTitle Font" ), _( "Default" ), 
+        m_subTitleFontPicker, m_subTitleColorPicker, 
+        wxFontPickerEventHandler( FontDefaultsPanel::OnSubTitleFontPicker ), 
+        wxColourPickerEventHandler( FontDefaultsPanel::OnSubTitleColorPicker ), 
         wxCommandEventHandler( FontDefaultsPanel::OnSubTitleDefaultClick ) );
 
-    SetupFontPicker( thePanel, rightColumnVerticalSizer, lastID,
-        _( "Text Font" ), _( "Default" ),
-        m_textFontPicker, m_textColorPicker,
-        wxFontPickerEventHandler( FontDefaultsPanel::OnTextFontPicker ),
-        wxColourPickerEventHandler( FontDefaultsPanel::OnTextColorPicker ),
+    SetupFontPicker( thePanel, rightColumnVerticalSizer, lastID, 
+        _( "Text Font" ), _( "Default" ), 
+        m_textFontPicker, m_textColorPicker, 
+        wxFontPickerEventHandler( FontDefaultsPanel::OnTextFontPicker ), 
+        wxColourPickerEventHandler( FontDefaultsPanel::OnTextColorPicker ), 
         wxCommandEventHandler( FontDefaultsPanel::OnTextDefaultClick ) );
 
-    SetupFontPicker( thePanel, rightColumnVerticalSizer, lastID,
-        _( "Default Catalog Nbr Font" ), _( "Default" ),
-        m_nbrFontPicker, m_nbrColorPicker,
-        wxFontPickerEventHandler( FontDefaultsPanel::OnNbrFontPicker ),
-        wxColourPickerEventHandler( FontDefaultsPanel::OnNbrColorPicker ),
+    SetupFontPicker( thePanel, rightColumnVerticalSizer, lastID, 
+        _( "Default Catalog Nbr Font" ), _( "Default" ), 
+        m_nbrFontPicker, m_nbrColorPicker, 
+        wxFontPickerEventHandler( FontDefaultsPanel::OnNbrFontPicker ), 
+        wxColourPickerEventHandler( FontDefaultsPanel::OnNbrColorPicker ), 
         wxCommandEventHandler( FontDefaultsPanel::OnNbrDefaultClick ) );
 
-    SetupFontPicker( thePanel, leftColumnVerticalSizer, lastID,
-        _( "Default Name Font" ), _( "Default" ),
-        m_nameFontPicker, m_nameColorPicker,
-        wxFontPickerEventHandler( FontDefaultsPanel::OnNameFontPicker ),
-        wxColourPickerEventHandler( FontDefaultsPanel::OnNameColorPicker ),
+    SetupFontPicker( thePanel, leftColumnVerticalSizer, lastID, 
+        _( "Default Name Font" ), _( "Default" ), 
+        m_nameFontPicker, m_nameColorPicker, 
+        wxFontPickerEventHandler( FontDefaultsPanel::OnNameFontPicker ), 
+        wxColourPickerEventHandler( FontDefaultsPanel::OnNameColorPicker ), 
         wxCommandEventHandler( FontDefaultsPanel::OnNameDefaultClick ) );
 }
 

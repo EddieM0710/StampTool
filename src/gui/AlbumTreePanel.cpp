@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -92,7 +92,6 @@ bool AlbumTreePanel::Create( wxWindow* parent, wxWindowID id, const wxPoint& pos
 
 void AlbumTreePanel::CreateControls( )
 {
-    //    std::cout << "AlbumTreePanel" << "\n";
     AlbumTreePanel* itemPanel1 = this;
 
     // wxBoxSizer* topHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
@@ -106,7 +105,7 @@ void AlbumTreePanel::CreateControls( )
     topVerticalSizer->Add( nameHorizontalSizer, 0, wxGROW | wxALL, 5 );
 
 
-    wxStaticText* albumListStatic = new wxStaticText(
+    wxStaticText* albumListStatic = new wxStaticText( 
         itemPanel1, wxID_STATIC, _( "Album List" ), wxDefaultPosition, wxDefaultSize, 0 );
     nameHorizontalSizer->Add( albumListStatic, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
     int ID_LISTCHOICE = 1234;

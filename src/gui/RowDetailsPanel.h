@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -56,29 +56,29 @@ class RowDetailsPanel : public HelperPanel
 public:
     enum RowDetailsPanelGuiDefs {
 
-        ID_NAMELABELEDTEXTBOX = ID_ROWDETAILSDIALOG,
-        ID_ROWTITLECHECKBOX,
-        ID_ROWSUBTITLECHECKBOX,
-        ID_FRAMECHECKBOX,
-        ID_LISTCTRL,
-        ID_DEFAULTFONTBUTTON,
-        ID_ROWNAMEPANEL,
-        ID_ROWLAYOUTPANEL,
-        ID_ROWLAYOUTTEXTCTRL,
-        ID_ROWNOTEBOOK,
-        ID_NOTEBOOK,
-        ID_NOTEBOOKPOSITIONPANEL,
-        ID_NOTEBOOKDETAILSPANEL,
-        ID_POSITIONTEXTCTRL,
-        ID_TITLELOCATION,
-        ID_DEFAULTRADIOBUTTON,
-        ID_TOPRADIOBUTTON,
-        ID_BOTTOMRADIOBUTTON,
-        ID_LEFTRADIOBUTTON,
-        ID_RIGHTRADIOBUTTON,
-        ID_CALCULATEDRADIOBUTTON,
-        ID_FIXEDRADIOBUTTON,
-        ID_FIXEDSIZETEXTCTRL,
+        ID_NAMELABELEDTEXTBOX = ID_ROWDETAILSDIALOG, 
+        ID_ROWTITLECHECKBOX, 
+        ID_ROWSUBTITLECHECKBOX, 
+        ID_FRAMECHECKBOX, 
+        ID_LISTCTRL, 
+        ID_DEFAULTFONTBUTTON, 
+        ID_ROWNAMEPANEL, 
+        ID_ROWLAYOUTPANEL, 
+        ID_ROWLAYOUTTEXTCTRL, 
+        ID_ROWNOTEBOOK, 
+        ID_NOTEBOOK, 
+        ID_NOTEBOOKPOSITIONPANEL, 
+        ID_NOTEBOOKDETAILSPANEL, 
+        ID_POSITIONTEXTCTRL, 
+        ID_TITLELOCATION, 
+        ID_DEFAULTRADIOBUTTON, 
+        ID_TOPRADIOBUTTON, 
+        ID_BOTTOMRADIOBUTTON, 
+        ID_LEFTRADIOBUTTON, 
+        ID_RIGHTRADIOBUTTON, 
+        ID_CALCULATEDRADIOBUTTON, 
+        ID_FIXEDRADIOBUTTON, 
+        ID_FIXEDSIZETEXTCTRL, 
         ID_LastID
     };
 

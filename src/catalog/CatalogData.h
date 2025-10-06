@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -45,7 +45,7 @@ class StampDescriptionPanel;
 class CatalogPanel;
 class InventoryPanel;
 class GenerateList;
-class ImageGalleryPanel;
+//class ImageGalleryPanel;
 
 
 namespace Catalog
@@ -107,10 +107,6 @@ namespace Catalog
 
         wxXmlDocument* LoadMountCSV( );
 
-        // void LoadNew( wxString catFile );
-
-        //CatalogVolume* NewCatalogVolume( wxString filename );
-
         void SetCollection( wxString newCollection );
 
         void SetCatalogTreeCtrl( CatalogTreeCtrl* treeCtrl ) {
@@ -129,20 +125,9 @@ namespace Catalog
             m_generateListPanel = generateListPanel;
         };
 
-        void SetImageGalleryPanel( ImageGalleryPanel* imageGalleryPanel ) {
-            m_imageGalleryPanel = imageGalleryPanel;
-        };
-
-        ImageGalleryPanel* GetImageGalleryPanel( ) {
-            return m_imageGalleryPanel;
-        };
-
-
         void SetCatalogPanel( CatalogPanel* catalogPanel ) {
             m_catalogPanel = catalogPanel;
         };
-
-        // void SetCollectionListSelection( );
 
         void SetCurrentStamp( wxXmlNode* xmlNode );
 
@@ -156,7 +141,6 @@ namespace Catalog
         CatalogTOCTreeCtrl* m_catalogTocTreeCtrl;
         StampDescriptionPanel* m_stampDescriptionPanel;
         GenerateList* m_generateListPanel;
-        ImageGalleryPanel* m_imageGalleryPanel;
         CatalogPanel* m_catalogPanel;
     };
 }

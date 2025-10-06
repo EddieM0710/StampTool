@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -93,8 +93,8 @@ int TOCTreeItemData::Cmp( TOCTreeItemData* itemData2 )
 
 //--------------
 
-TOCTreeCtrl::TOCTreeCtrl( wxWindow* parent, const wxWindowID id,
-    const wxPoint& pos, const wxSize& size,
+TOCTreeCtrl::TOCTreeCtrl( wxWindow* parent, const wxWindowID id, 
+    const wxPoint& pos, const wxSize& size, 
     long style )
     : wxTreeCtrl( parent, id, pos, size, style )
 {
@@ -105,9 +105,9 @@ TOCTreeCtrl::TOCTreeCtrl( wxWindow* parent, const wxWindowID id,
 
 //--------------
 
-TOCTreeItemData* TOCTreeCtrl::CreateChildData( wxXmlNode* child,
-    wxString& label,
-    Catalog::IconID& icon,
+TOCTreeItemData* TOCTreeCtrl::CreateChildData( wxXmlNode* child, 
+    wxString& label, 
+    Catalog::IconID& icon, 
     Utils::TOCBaseType& nodeType )
 {
     VolumePtr volume = 0;
@@ -321,7 +321,7 @@ wxTreeItemId  TOCTreeCtrl::InitTOCTree( wxXmlNode* TOCNode )
         wxString str = Utils::GetAttrStr( TOCNode, "CollapseState" );
         bool collapseState = String2Bool( str );
 
-        TOCTreeItemData* itemData = new TOCTreeItemData( Utils::TOC_Volume,
+        TOCTreeItemData* itemData = new TOCTreeItemData( Utils::TOC_Volume, 
             collapseState, "TOC", name );
         wxString rootName = "TOC - " + name;
         rootID = AddRoot( rootName, Catalog::Icon_Folder, 1, itemData );
@@ -564,7 +564,7 @@ void TOCTreeCtrl::OnEndDrag( wxTreeEvent& event )
 
 //--------------
 
-int TOCTreeCtrl::OnCompareItems( const wxTreeItemId& item1,
+int TOCTreeCtrl::OnCompareItems( const wxTreeItemId& item1, 
     const wxTreeItemId& item2 )
 {
     TOCTreeItemData* itemData1 = ( TOCTreeItemData* ) 0;

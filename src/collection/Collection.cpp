@@ -14,6 +14,8 @@
 
 namespace Inventory {
 
+    //-------
+
     void Collection::Save( wxXmlNode* xmlNode )
     {
         Utils::SetAttrStr( xmlNode, "Name", m_name );
@@ -21,6 +23,8 @@ namespace Inventory {
         Utils::SetAttrStr( xmlNode, "Location", m_location );
 
     }
+
+    //-------
 
     void Collection::Load( wxXmlNode* xmlNode )
     {

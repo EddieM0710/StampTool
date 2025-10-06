@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -98,8 +98,8 @@ void DesignTreeItemData::SetStampLink( Utils::StampLink* link ) {
 
 //----------------
 
-AlbumTreeCtrl::AlbumTreeCtrl( wxWindow* parent, const wxWindowID id,
-    const wxPoint& pos, const wxSize& size,
+AlbumTreeCtrl::AlbumTreeCtrl( wxWindow* parent, const wxWindowID id, 
+    const wxPoint& pos, const wxSize& size, 
     long style )
     : wxTreeCtrl( parent, id, pos, size, style )
 
@@ -148,6 +148,12 @@ void AlbumTreeCtrl::UpdateAlbumStampEntries( wxTreeItemId treeID )
                         wxString title = albumStamp->GetAttrStr( Design::AT_Name );
                         label += " - " + title;
                         SetItemText( treeID, label );
+                        wxString colnectLink = albumStamp->GetStampColnectLink( );
+                        if ( colnectLink.IsEmpty( ) )
+                        {
+                            wxString catColnectLink = catStamp.GetLink( );
+                            albumStamp->SetStampColnectLink( catColnectLink );
+                        }
                     }
                 }
             }
@@ -235,6 +241,23 @@ wxTreeItemId AlbumTreeCtrl::AddChild( wxTreeItemId parent, wxXmlNode* child )
                     Utils::StampLink* link = stampList->AddStamp( nodeId );
                     link->SetDesignTreeID( childID );
                     SetItemStampLink( childID, link );
+                    node->GetAttrStr( Design::AT_Link );
+                    Design::Stamp* stampNode = ( Design::Stamp* )node;
+                    wxString colnectLink = stampNode->GetStampColnectLink( );
+                    if ( colnectLink.IsEmpty( ) )
+                    {
+                        wxTreeItemId catTreeID = link->GetCatTreeID( );
+                        if ( catTreeID.IsOk( ) )
+                        {
+                            wxXmlNode* catTreeNode = GetCatalogTreeCtrl( )->GetItemNode( catTreeID );
+                            if ( catTreeNode )
+                            {
+                                Catalog::Entry catStamp( catTreeNode );
+                                wxString catLink = catStamp.GetLink( );
+                                stampNode->SetStampColnectLink( catLink );
+                            }
+                        }
+                    }
                 }
                 //set the icon for the appropriate state
                 SetItemImage( childID, icon );
@@ -445,18 +468,18 @@ void AlbumTreeCtrl::CopyItem( wxTreeItemId dstID, wxTreeItemId srcID )
     if ( srcType == destType )
     {
         wxTreeItemId parent = GetItemParent( dstID );
-        id = InsertItem( parent, dstID,
-            GetItemText( srcID ),
-            GetItemImage( srcID ),
-            -1,
+        id = InsertItem( parent, dstID, 
+            GetItemText( srcID ), 
+            GetItemImage( srcID ), 
+            -1, 
             itemData );
     }
     else
     {
-        id = AppendItem( dstID,
-            GetItemText( srcID ),
-            GetItemImage( srcID ),
-            -1,
+        id = AppendItem( dstID, 
+            GetItemText( srcID ), 
+            GetItemImage( srcID ), 
+            -1, 
             itemData );
     }
     wxTreeItemIdValue cookie;
@@ -493,9 +516,14 @@ Design::Stamp* AlbumTreeCtrl::CreateNewStamp( wxTreeItemId catTreeID )
         //create a stamp with the catalog data
 
         newStamp->SetAttrStr( Design::AT_CatNbr, stamp.GetID( ) );
-        newStamp->SetAttrStr( Design::AT_Name, stamp.GetName( ) );
+        wxString strtmp = stamp.GetName( );
+        newStamp->SetAttrStr( Design::AT_Name, strtmp );
         newStamp->SetActualStampHeight( stamp.GetHeight( ) );
         newStamp->SetActualStampWidth( stamp.GetWidth( ) );
+       
+        wxString strtmp1 = stamp.GetLink( );
+        newStamp->SetStampColnectLink( strtmp1 );
+        std::cout << "AlbumTreeCtrl::CreateNewStamp "<< strtmp << " "<< strtmp1 <<"\n";
         newStamp->SetStampImageFilename( stamp.FindImageName( ) );
         newStamp->SetShowTitle( newStamp->GetShowTitle( ) );
         newStamp->SetShowNbr( newStamp->GetShowNbr( ) );
@@ -858,8 +886,8 @@ wxString AlbumTreeCtrl::MakeItemLabel( wxTreeItemId id )
 
 void AlbumTreeCtrl::OnDeleteItem( wxTreeItemId currID )
 {
-    wxMessageDialog* dialog = new wxMessageDialog( this,
-        "Are you sure you want to delete this item? This and all child Items will be deleted. There is no UnDo.", " Delete Item.",
+    wxMessageDialog* dialog = new wxMessageDialog( this, 
+        "Are you sure you want to delete this item? This and all child Items will be deleted. There is no UnDo.", " Delete Item.", 
         wxYES_NO | wxCENTRE );
     int ret = dialog->ShowModal( );
     if ( ret == wxID_YES )
@@ -1022,7 +1050,7 @@ void AlbumTreeCtrl::OnSelChanged( wxTreeEvent& event )
     }
     else
     {
-        std::cout << "AlbumTreeCtrl::OnSelChanged invalid pageId" << std::endl;
+       // std::cout << "AlbumTreeCtrl::OnSelChanged invalid pageId" << std::endl;
     }
 
     event.Skip( );
@@ -1043,7 +1071,7 @@ void AlbumTreeCtrl::OnItemMenu( wxTreeEvent& event )
 
 //--------------
 
-int AlbumTreeCtrl::OnCompareItems( const wxTreeItemId& item1,
+int AlbumTreeCtrl::OnCompareItems( const wxTreeItemId& item1, 
     const wxTreeItemId& item2 )
 {
     Design::AlbumBaseType type1 = GetItemType( item1 );
@@ -1378,7 +1406,7 @@ void AlbumTreeCtrl::ShowMenu( wxTreeItemId id, const wxPoint& pt )
 // void AlbumTreeCtrl::ShowStampDetails( wxTreeItemId treeID )
 //     {
 //     m_currentTreeID = treeID;
-//     StampDetailsDialog stampDetailsDialog( this, 12345,
+//     StampDetailsDialog stampDetailsDialog( this, 12345, 
 //         _( "View Edit Stamp Details" ) );
 
 //     stampDetailsDialog.SetupDialog( treeID );
@@ -1425,7 +1453,7 @@ void AlbumTreeCtrl::Update( )
 // void AlbumTreeCtrl::ShowPageDetails( wxTreeItemId treeID, Design::AlbumBase* node )
 //     {
 
-//     PageDetailsDialog pageDetailsDialog( this, 12345,
+//     PageDetailsDialog pageDetailsDialog( this, 12345, 
 //         _( "View/Edit Page Details" ) );
 
 //     pageDetailsDialog.SetupDialog( treeID );
@@ -1456,7 +1484,7 @@ void AlbumTreeCtrl::Update( )
 // void AlbumTreeCtrl::ShowRowDetails( wxTreeItemId treeID, Design::AlbumBase* node )
 //     {
 
-//     RowDetailsDialog rowDetailsDialog( this, 12345,
+//     RowDetailsDialog rowDetailsDialog( this, 12345, 
 //         _( "View/Edit Row Details" ) );
 
 //     rowDetailsDialog.SetupDialog( treeID );
@@ -1473,7 +1501,7 @@ void AlbumTreeCtrl::Update( )
 //             }
 
 //         GetAlbumVolume( )->UpdatePage( row );
-//         //row->UpdateLayout();
+//         //row->UpdateLayout( );
 
 //         Design::NodeStatus status = row->ValidateNode( );
 //         SetItemBackgroundColour( row->GetTreeItemId( ), ItemBackgroundColour[ status ] );
@@ -1488,7 +1516,7 @@ void AlbumTreeCtrl::Update( )
 // void AlbumTreeCtrl::ShowColDetails( wxTreeItemId treeID, Design::AlbumBase* node )
 //     {
 
-//     ColDetailsDialog colDetailsDialog( this, 12345,
+//     ColDetailsDialog colDetailsDialog( this, 12345, 
 //         _( "View/Edit Col Details" ) );
 
 //     colDetailsDialog.SetupDialog( treeID );

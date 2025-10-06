@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -51,28 +51,28 @@ class IdentificationPanel : public HelperPanel
 public:
     enum IdentificationPanelGuiDefs
     {
-        ID_IDLABELEDTEXTBOX = ID_IDENTIFICATIONPANEL + 1,
-        ID_STATUSCHOICE,
-        ID_NAMELABELEDTEXTBOX,
-        ID_EMISSIONCHOICE,
-        ID_FORMATCHOICE,
-        ID_ISSUEDTEXTBOX,
-        ID_SERIESTEXTBOX,
-        ID_THEMETEXTBOX,
-        ID_THEMETEXTBOXUP,
-        ID_COUNTRYTEXTBOX,
-        ID_PEFORATIONTEXTBOX,
-        ID_PRINTINGTEXTBOX,
-        ID_WIDTHLABELEDTEXTBOX,
-        ID_HEIGHTLABELEDTEXTBOX,
-        ID_LINKTEXTBOX,
-        ID_COLNECTBUTTON,
-        ID_SITETBUTTON,
-        ID_EBAYBUTTON,
-        ID_NPMBUTTON,
-        ID_CATCODETEXTBOX,
-        ID_STAMPMOUNTTEXTBOX,
-        ID_IMAGENAMETEXTBOX,
+        ID_IDLABELEDTEXTBOX = ID_IDENTIFICATIONPANEL + 1, 
+        ID_STATUSCHOICE, 
+        ID_NAMELABELEDTEXTBOX, 
+        ID_EMISSIONCHOICE, 
+        ID_FORMATCHOICE, 
+        ID_ISSUEDTEXTBOX, 
+        ID_SERIESTEXTBOX, 
+        ID_THEMETEXTBOX, 
+        ID_THEMETEXTBOXUP, 
+        ID_COUNTRYTEXTBOX, 
+        ID_PEFORATIONTEXTBOX, 
+        ID_PRINTINGTEXTBOX, 
+        ID_WIDTHLABELEDTEXTBOX, 
+        ID_HEIGHTLABELEDTEXTBOX, 
+        ID_LINKTEXTBOX, 
+        ID_COLNECTBUTTON, 
+        ID_SITETBUTTON, 
+        ID_EBAYBUTTON, 
+        ID_NPMBUTTON, 
+        ID_CATCODETEXTBOX, 
+        ID_STAMPMOUNTTEXTBOX, 
+        ID_IMAGENAMETEXTBOX, 
         ID_SCROLLEDWINDOW2
     };
 
@@ -82,19 +82,19 @@ public:
     IdentificationPanel( );
 
 
-    IdentificationPanel( wxWindow* parent,
-        wxWindowID id = SYMBOL_IDENTIFICATIONPANEL_IDNAME,
-        const wxPoint& pos = SYMBOL_IDENTIFICATIONPANEL_POSITION,
-        const wxSize& size = SYMBOL_IDENTIFICATIONPANEL_SIZE,
+    IdentificationPanel( wxWindow* parent, 
+        wxWindowID id = SYMBOL_IDENTIFICATIONPANEL_IDNAME, 
+        const wxPoint& pos = SYMBOL_IDENTIFICATIONPANEL_POSITION, 
+        const wxSize& size = SYMBOL_IDENTIFICATIONPANEL_SIZE, 
         long style = SYMBOL_IDENTIFICATIONPANEL_STYLE );
 
 
     void Clear( );
 
-    bool Create( wxWindow* parent,
-        wxWindowID id = SYMBOL_IDENTIFICATIONPANEL_IDNAME,
-        const wxPoint& pos = SYMBOL_IDENTIFICATIONPANEL_POSITION,
-        const wxSize& size = SYMBOL_IDENTIFICATIONPANEL_SIZE,
+    bool Create( wxWindow* parent, 
+        wxWindowID id = SYMBOL_IDENTIFICATIONPANEL_IDNAME, 
+        const wxPoint& pos = SYMBOL_IDENTIFICATIONPANEL_POSITION, 
+        const wxSize& size = SYMBOL_IDENTIFICATIONPANEL_SIZE, 
         long style = SYMBOL_IDENTIFICATIONPANEL_STYLE );
 
     ~IdentificationPanel( );

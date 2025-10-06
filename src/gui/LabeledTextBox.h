@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -83,16 +83,16 @@ class LabeledTextBox : public wxPanel
          * @param  style	The window style.
          * @see wxPanel.
          */
-        LabeledTextBox( wxWindow* parent,
-            wxWindowID id = SYMBOL_LABELEDTEXTBOX_IDNAME,
-            const wxPoint& pos = SYMBOL_LABELEDTEXTBOX_POSITION,
-            const wxSize& size = SYMBOL_LABELEDTEXTBOX_SIZE,
+        LabeledTextBox( wxWindow* parent, 
+            wxWindowID id = SYMBOL_LABELEDTEXTBOX_IDNAME, 
+            const wxPoint& pos = SYMBOL_LABELEDTEXTBOX_POSITION, 
+            const wxSize& size = SYMBOL_LABELEDTEXTBOX_SIZE, 
             long style = SYMBOL_LABELEDTEXTBOX_STYLE );
-        // LabeledTextBox( wxWindow* parent,
-        //             wxWindowID id = SYMBOL_LABELEDTEXTBOX_IDNAME,
-        //             const wxPoint& pos = SYMBOL_LABELEDTEXTBOX_POSITION,
-        //             const wxSize& size = SYMBOL_LABELEDTEXTBOX_SIZE,
-        //             long style = SYMBOL_LABELEDTEXTBOX_STYLE,
+        // LabeledTextBox( wxWindow* parent, 
+        //             wxWindowID id = SYMBOL_LABELEDTEXTBOX_IDNAME, 
+        //             const wxPoint& pos = SYMBOL_LABELEDTEXTBOX_POSITION, 
+        //             const wxSize& size = SYMBOL_LABELEDTEXTBOX_SIZE, 
+        //             long style = SYMBOL_LABELEDTEXTBOX_STYLE, 
         //             CallBack parentCallback = 0 );
         /**
          * @brief  Used for two-step panel construction.
@@ -106,9 +106,9 @@ class LabeledTextBox : public wxPanel
          * @return bool
          *
          */
-        bool Create( wxWindow* parent, wxWindowID id = SYMBOL_LABELEDTEXTBOX_IDNAME,
-            const wxPoint& pos = SYMBOL_LABELEDTEXTBOX_POSITION,
-            const wxSize& size = SYMBOL_LABELEDTEXTBOX_SIZE,
+        bool Create( wxWindow* parent, wxWindowID id = SYMBOL_LABELEDTEXTBOX_IDNAME, 
+            const wxPoint& pos = SYMBOL_LABELEDTEXTBOX_POSITION, 
+            const wxSize& size = SYMBOL_LABELEDTEXTBOX_SIZE, 
             long style = SYMBOL_LABELEDTEXTBOX_STYLE );
 
 

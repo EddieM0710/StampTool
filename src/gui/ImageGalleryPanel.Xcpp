@@ -181,11 +181,14 @@ void ImageGalleryPanel::SetBitmap( wxDC& dc, wxString filename, int& row, int& c
 
             if ( !image.IsOk( ) )
             {
+            std::cout << "ImageGalleryPanel::SetBitmap " << str << "  not found\n";
+
                 return;
                 //image = wxImage( NotFound );
             }
         }
     }
+        std::cout << "ImageGalleryPanel::SetBitmap " << filename << " found\n";
 
     // m_bitmap = image;
     m_zoom = .9;
@@ -309,7 +312,6 @@ void ImageGalleryPanel::DrawStamp( wxDC& dc, wxTreeItemId child, int& row, int& 
 {
     CatalogTreeItemData* data = ( CatalogTreeItemData* ) GetCatalogData( )->GetCatalogTreeCtrl( )->GetItemData( child );
     Catalog::CatalogBaseType type = data->GetType( );
-    // std::cout << Catalog::CatalogBaseNames[ type ] << " \n";
     if ( type == Catalog::NT_Entry )
     {
         wxXmlNode* node = data->GetNodeElement( );

@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -70,8 +70,8 @@ StampToolPanel::StampToolPanel( )
 
 ///-------
 
-StampToolPanel::StampToolPanel( wxWindow* parent, wxWindowID id,
-    const wxPoint& pos, const wxSize& size,
+StampToolPanel::StampToolPanel( wxWindow* parent, wxWindowID id, 
+    const wxPoint& pos, const wxSize& size, 
     long style )
 {
     Init( );
@@ -87,8 +87,8 @@ StampToolPanel::~StampToolPanel( )
 
 ///-------
 
-bool StampToolPanel::Create( wxWindow* parent, wxWindowID id,
-    const wxPoint& pos, const wxSize& size,
+bool StampToolPanel::Create( wxWindow* parent, wxWindowID id, 
+    const wxPoint& pos, const wxSize& size, 
     long style )
 {
     SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
@@ -104,7 +104,6 @@ bool StampToolPanel::Create( wxWindow* parent, wxWindowID id,
 
 void StampToolPanel::CreateControls( )
 {
-    //   std::cout << "StampToolPanel" << "\n";
     StampToolPanel* stampToolPanel = this;
 
     wxBoxSizer* panelVerticalBoxSizer = new wxBoxSizer( wxVERTICAL );
@@ -113,13 +112,13 @@ void StampToolPanel::CreateControls( )
     wxBoxSizer* panelHorizontalBoxSizer = new wxBoxSizer( wxHORIZONTAL );
     panelVerticalBoxSizer->Add( panelHorizontalBoxSizer, 1, wxGROW | wxALL, 0 );
 
-    m_stampToolSplitter = new wxSplitterWindow( stampToolPanel,
-        ID_CATALOGSPLITTERWINDOW, wxDefaultPosition, wxDefaultSize,
+    m_stampToolSplitter = new wxSplitterWindow( stampToolPanel, 
+        ID_CATALOGSPLITTERWINDOW, wxDefaultPosition, wxDefaultSize, 
         wxSP_3DBORDER | wxSP_3DSASH | wxNO_BORDER );
     m_stampToolSplitter->SetMinimumPaneSize( 20 );
     panelHorizontalBoxSizer->Add( m_stampToolSplitter, 1, wxGROW | wxALL, 0 );
 
-    m_catalogPanel = new CatalogPanel( m_stampToolSplitter, ID_CATALOGPAGE,
+    m_catalogPanel = new CatalogPanel( m_stampToolSplitter, ID_CATALOGPAGE, 
         wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
 
     GetCatalogData( )->SetCatalogPanel( m_catalogPanel );
@@ -128,28 +127,28 @@ void StampToolPanel::CreateControls( )
 
     GetCatalogData( )->SetCatalogTOCTreeCtrl( m_catalogPanel->GetTOCTree( ) );
 
-    m_notebook = new wxNotebook( m_stampToolSplitter,
-        ID_NOTEBOOK, wxDefaultPosition,
+    m_notebook = new wxNotebook( m_stampToolSplitter, 
+        ID_NOTEBOOK, wxDefaultPosition, 
         wxDefaultSize, wxBK_TOP );
 
     m_stampToolSplitter->SplitVertically( m_catalogPanel, m_notebook, 500 );
 
-    m_stampDescriptionPanel = new StampDescriptionPanel( m_notebook,
-        ID_DESCRIPTIONPANELFOREIGN, wxDefaultPosition,
+    m_stampDescriptionPanel = new StampDescriptionPanel( m_notebook, 
+        ID_DESCRIPTIONPANELFOREIGN, wxDefaultPosition, 
         wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
     m_stampDescriptionPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
 
     m_notebook->AddPage( m_stampDescriptionPanel, _( "  Stamp View  " ) );
 
-    m_albumAlbumPanel = new AlbumPanel( m_notebook,
-        ID_ALBUMSPLITTERWINDOWFOREIGN, wxDefaultPosition,
+    m_albumAlbumPanel = new AlbumPanel( m_notebook, 
+        ID_ALBUMSPLITTERWINDOWFOREIGN, wxDefaultPosition, 
         wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
     m_albumAlbumPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
 
     m_notebook->AddPage( m_albumAlbumPanel, _( "  Album View  " ) );
 
-    m_generateListPanel = new GenerateList( m_notebook,
-        ID_GENERTELISTFOREIGN, wxDefaultPosition,
+    m_generateListPanel = new GenerateList( m_notebook, 
+        ID_GENERTELISTFOREIGN, wxDefaultPosition, 
         wxDefaultSize, wxSUNKEN_BORDER | wxTAB_TRAVERSAL );
 
     m_notebook->AddPage( m_generateListPanel, _( "  List  " ) );
@@ -162,7 +161,7 @@ void StampToolPanel::CreateControls( )
 
 ///-------
 
-void StampToolPanel::Init()
+void StampToolPanel::Init( )
 {
     m_stampDescriptionPanel = NULL;
     m_generateListPanel = NULL;
@@ -194,21 +193,21 @@ void StampToolPanel::OnNotebookPageChanged( wxNotebookEvent& event )
    // TESTFIX
     if ( page == m_stampDescriptionPanel )
     {  
-        m_stampDescriptionPanel->Show();
-        m_generateListPanel->Hide();
-        m_albumAlbumPanel->Hide();
+        m_stampDescriptionPanel->Show( );
+        m_generateListPanel->Hide( );
+        m_albumAlbumPanel->Hide( );
     }
     else if ( page == m_generateListPanel )
     {  
-        m_stampDescriptionPanel->Hide();
-        m_generateListPanel->Show();
-        m_albumAlbumPanel->Hide();
+        m_stampDescriptionPanel->Hide( );
+        m_generateListPanel->Show( );
+        m_albumAlbumPanel->Hide( );
     }
     else if ( page == m_albumAlbumPanel )
     {  
-        m_stampDescriptionPanel->Hide();
-        m_generateListPanel->Hide();
-        m_albumAlbumPanel->Show();
+        m_stampDescriptionPanel->Hide( );
+        m_generateListPanel->Hide( );
+        m_albumAlbumPanel->Show( );
     }
         // ENDTESTFIX
 
@@ -250,7 +249,7 @@ void StampToolPanel::OnNotebookPageChanged( wxNotebookEvent& event )
             GetCatalogTreeCtrl( )->SelectStamp( catCode );
         }
     }
-    Layout();
+    Layout( );
     event.Skip( );
 }
 

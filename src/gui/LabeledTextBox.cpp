@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -72,8 +72,8 @@ LabeledTextBox::LabeledTextBox( )
  * LabeledTextBox constructors
  *
  */
-LabeledTextBox::LabeledTextBox( wxWindow* parent, wxWindowID id,
-    const wxPoint& pos, const wxSize& size,
+LabeledTextBox::LabeledTextBox( wxWindow* parent, wxWindowID id, 
+    const wxPoint& pos, const wxSize& size, 
     long style )
 {
     m_parent = parent;
@@ -82,8 +82,8 @@ LabeledTextBox::LabeledTextBox( wxWindow* parent, wxWindowID id,
     Create( parent, wxID_ANY, pos, size, style );
 }
 
-// LabeledTextBox::LabeledTextBox( wxWindow* parent, wxWindowID id,
-//     const wxPoint& pos, const wxSize& size,
+// LabeledTextBox::LabeledTextBox( wxWindow* parent, wxWindowID id, 
+//     const wxPoint& pos, const wxSize& size, 
 //     long style, CallBack parentCallback
 // )
 //     {
@@ -101,8 +101,8 @@ LabeledTextBox::LabeledTextBox( wxWindow* parent, wxWindowID id,
  *  LabledTextBox creator
  *
  */
-bool LabeledTextBox::Create( wxWindow* parent, wxWindowID id,
-    const wxPoint& pos, const wxSize& size,
+bool LabeledTextBox::Create( wxWindow* parent, wxWindowID id, 
+    const wxPoint& pos, const wxSize& size, 
     long style )
 {
     // LabeledTextBox creation
@@ -157,12 +157,12 @@ void LabeledTextBox::CreateControls( )
     wxBoxSizer* itemBoxSizer1 = new wxBoxSizer( wxHORIZONTAL );
     itemPanel1->SetSizer( itemBoxSizer1 );
 
-    m_label = new wxStaticText( itemPanel1, wxID_STATIC, _( "Static text" ),
+    m_label = new wxStaticText( itemPanel1, wxID_STATIC, _( "Static text" ), 
         wxDefaultPosition );
 
     itemBoxSizer1->Add( m_label, 0, wxALIGN_CENTER_VERTICAL | wxLEFT, 0 );
 
-    m_value = new wxTextCtrl( itemPanel1, m_id, wxEmptyString,
+    m_value = new wxTextCtrl( itemPanel1, m_id, wxEmptyString, 
         wxDefaultPosition );
 
     m_value->SetEditable( true );
@@ -172,12 +172,12 @@ void LabeledTextBox::CreateControls( )
     Connect( m_id, wxEVT_TEXT, wxCommandEventHandler( LabeledTextBox::OnTextctrlTextUpdated ) );
     //Connect( m_id, wxEVT_TEXT, m_func );
 
-    // inline void wxEvtHandler::Connect(
+    // inline void wxEvtHandler::Connect( 
     //     int winid, 
     //     wxEventType eventType, 
     //     wxObjectEventFunction func, 
-    //     wxObject *userData = (wxObject *)__null, 
-    //     wxEvtHandler *eventSink = (wxEvtHandler *)__null)
+    //     wxObject *userData = ( wxObject * )__null, 
+    //     wxEvtHandler *eventSink = ( wxEvtHandler * )__null )
 }
 
 

@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -33,6 +33,7 @@
 
 #include "utils/XMLUtilities.h"
 #include "utils/Project.h"
+#include "utils/Image.h"
 #include "utils/Settings.h"
 #include "gui/AlbumTreeCtrl.h"
 #include "gui/AlbumImagePanel.h"
@@ -136,13 +137,13 @@ namespace Design {
 
             wxImage image;
             wxString imageName = GetStampImageFilename( );
-            wxString str = GetProject( )->GetImageFullPath( imageName );
-            if ( GetProject( )->ImageExists( str ) )
-            {
-                image = wxImage( str, wxBITMAP_TYPE_JPEG );
-            }
+            wxString link = GetStampColnectLink( );
+            std::cout << " Stamp::Draw " << imageName <<"  >"<< link << "<\n";
+            int pos = link.find_last_of( "//" );
+            wxString item = link.Mid( pos+1 );
+            bool fileOK = Utils::GetImage( imageName, image, item );
 
-            if ( image.IsOk( ) )
+            if ( image.IsOk( ) && fileOK )
             {
                 //Draw the stamp image
                 if ( AlbumStampDefaults( )->GrayScaleImages( ) )
@@ -150,8 +151,8 @@ namespace Design {
                     image = image.ConvertToGreyscale( );
                 }
 
-                DrawImage( dc, image,
-                    xImagePos, yImagePos,
+                DrawImage( dc, image, 
+                    xImagePos, yImagePos, 
                     m_stampImageFrame.GetWidth( ), m_stampImageFrame.GetHeight( ) );
             }
             else
@@ -198,8 +199,9 @@ namespace Design {
 
         wxString filename = GetStampImageFilename( );
 
-        wxImage image = GetProject( )->GetImage( filename );
-        if ( image.IsOk( ) )
+        wxImage image;
+        bool fileOK = Utils::GetImage( filename, image );
+        if ( image.IsOk( ) && fileOK )
         {
             //Draw the stamp image
             if ( AlbumStampDefaults( )->GrayScaleImages( ) )
@@ -248,27 +250,6 @@ namespace Design {
 
     //--------------
 
-    wxImage Stamp::GetImage( )
-    {
-        if ( m_image.IsOk( ) )
-        {
-            return m_image;
-        }
-        else
-        {
-
-            wxString imageName = GetStampImageFilename( );
-            wxString str = GetProject( )->GetImageFullPath( imageName );
-            if ( GetProject( )->ImageExists( str ) )
-            {
-                m_image = wxImage( str );
-            }
-            return m_image;
-        }
-    }
-
-    //--------------
-
     LabelFrame* Stamp::GetNameFrame( ) {
         return m_nameFrame;
     };
@@ -286,7 +267,7 @@ namespace Design {
     };
 
     //--------------
-
+ 
     wxString  Stamp::GetNbrString( ) {
         return GetAttrStr( AT_CatNbr );
     };
@@ -340,6 +321,11 @@ namespace Design {
     wxString Stamp::GetActualStampWidthStr( )
     {
         return GetAttrStr( Design::AT_Width );
+    };
+
+    wxString Stamp::GetStampColnectLink( )
+    {
+        return GetAttrStr( Design::AT_Link );
     };
 
     //--------------
@@ -453,7 +439,7 @@ namespace Design {
     {
         if ( !m_image.IsOk( ) )
         {
-            GetImage( );
+            bool fileOK = Utils::GetImage( m_imageFilename, m_image );
         }
         wxImage image = m_image;
         wxSize size = m_image.GetSize( );
@@ -472,12 +458,12 @@ namespace Design {
     {
         wxString id = GetAttrStr( AT_CatNbr );
 
-        std::cout << "Layout for Stamp ID " << id << "\nOuter ";
-        ReportLayoutFrame( );
-        std::cout << "\nInner ";
-        m_actualStampFrame.ReportLayout( );
-        std::cout << "\nImage ";
-        m_stampImageFrame.ReportLayout( );
+        // std::cout << "Layout for Stamp ID " << id << "\nOuter ";
+        // ReportLayoutFrame( );
+        // std::cout << "\nInner ";
+        // m_actualStampFrame.ReportLayout( );
+        // std::cout << "\nImage ";
+        // m_stampImageFrame.ReportLayout( );
     };
 
     //--------------
@@ -619,10 +605,15 @@ namespace Design {
     {
         SetAttrStr( AT_ImageName, filename );
         m_imageFilename = filename;
-        m_image = GetImageFromFilename( filename );
+        Utils::GetImage( filename, m_image );
     }
 
     //--------------
+    void Stamp::SetStampColnectLink( wxString str )
+    {
+        SetAttrStr( AT_Link, str );
+        m_colnectLink = str;   
+    }
 
     void Stamp::SetActualStampWidth( double val )
     {
@@ -760,11 +751,12 @@ namespace Design {
     {
         NodeStatus status = AT_OK;
         wxString filename = GetStampImageFilename( );
-        wxString str;// = GetProject( )->GetImageFullPath( filename );
-        wxImage image = GetProject( )->GetImage( filename );
-        if ( !image.IsOk( ) )
+        wxString str;
+        wxImage image;
+        bool fileOK = Utils::GetImage( filename, image );
+        if ( !image.IsOk( ) && fileOK )
         {
-            std::cout << "\nInvalid Stamp Image. " << filename << "\n";
+            std::cout << "Stamp::ValidateNode " << filename << "\nInvalid Stamp Image. \n";
             str = wxString::Format( "Invalid Stamp Image.\n" );
             GetErrorArray( )->Add( str );
             //SetError( AT_InvalidImage, AT_WARNING );
@@ -792,17 +784,14 @@ namespace Design {
             if ( status == AT_FATAL )
             {
                 GetAlbumTreeCtrl( )->SetItemBackgroundColour( id, *wxRED );
-                std::cout << GetAlbumTreeCtrl( )->GetItemText( id ) << " Fatal\n";
             }
             else if ( status == AT_WARNING )
             {
                 GetAlbumTreeCtrl( )->SetItemBackgroundColour( id, *wxYELLOW );
-                std::cout << GetAlbumTreeCtrl( )->GetItemText( id ) << " Warning\n";
             }
             else
             {
                 GetAlbumTreeCtrl( )->SetItemBackgroundColour( id, *wxWHITE );
-                //std::cout << GetAlbumTreeCtrl( )->GetItemText( id ) << " OK\n";
             }
         }
         return status;

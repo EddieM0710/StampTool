@@ -9,9 +9,9 @@
 #define ID_RADIOBUTTON 10002
 #define ID_RADIOBUTTON1 10003
 #define SYMBOL_EXPORTDIALOG_STYLE wxCAPTION|wxRESIZE_BORDER|wxSYSTEM_MENU|wxCLOSE_BOX|wxTAB_TRAVERSAL
-#define SYMBOL_EXPORTDIALOG_TITLE _("Remove Volume From Project")
+#define SYMBOL_EXPORTDIALOG_TITLE _( "Remove Volume From Project" )
 #define SYMBOL_EXPORTDIALOG_IDNAME ID_EXPORTDIALOG
-#define SYMBOL_EXPORTDIALOG_SIZE wxSize(400, 300)
+#define SYMBOL_EXPORTDIALOG_SIZE wxSize( 400, 300 )
 #define SYMBOL_EXPORTDIALOG_POSITION wxDefaultPosition
 
 class ExportDialog : public wxDialog
@@ -21,9 +21,9 @@ class ExportDialog : public wxDialog
 
 public:
     ExportDialog( );
-    ExportDialog( wxWindow* parent,
-        wxString caption,
-        wxString dialogInstructionText,
+    ExportDialog( wxWindow* parent, 
+        wxString caption, 
+        wxString dialogInstructionText, 
         wxArrayString listComboBoxStrings );
 
     ExportDialog( wxWindow* parent, wxWindowID id = SYMBOL_EXPORTDIALOG_IDNAME, const wxString& caption = SYMBOL_EXPORTDIALOG_TITLE, const wxPoint& pos = SYMBOL_EXPORTDIALOG_POSITION, const wxSize& size = SYMBOL_EXPORTDIALOG_SIZE, long style = SYMBOL_EXPORTDIALOG_STYLE );

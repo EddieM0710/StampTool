@@ -8,7 +8,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -84,16 +84,13 @@ namespace Utils {
 
    //     void SetDesignFilename( wxString albumFilename );;
 
-        wxImage GetImage( wxString filename );
-
+ 
         wxString GetOutputFilename( );
 
         wxString GetProjectFilename( ) {
             return m_projectFilename;
         };
 
-
-        wxString GetImageFullPath( wxString imageName );
 
         //wxString GetCatalogFilename( );
         //void SetCatalogFilename( wxString catalogFilename );
@@ -106,8 +103,6 @@ namespace Utils {
             return m_projectCountryCode;
         };
         wxString GetImageDirectory( );
-
-        bool ImageExists( wxString imageName );
 
         void InitProject( );
 

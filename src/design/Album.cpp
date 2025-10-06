@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -121,9 +121,9 @@ namespace Design {
             {
                 int offset = 0;
                 // ( GetAlbumAttributeDbl( AT_PaperWidth ) - GetAlbumAttributeDbl( AT_PageHeight ) ) / 2;
-                std::cout << "PAPER " << paperWidth << "  " << paperHeight << "\n";
-                std::cout << "PAGE " << pageWidth << "  " << pageHeight << "\n";
-                std::cout << "Offset " << offset << "\n";
+                // << "PAPER " << paperWidth << "  " << paperHeight << "\n";
+                //std::cout << "PAGE " << pageWidth << "  " << pageHeight << "\n";
+                //std::cout << "Offset " << offset << "\n";
                 doc->AddPage( wxPORTRAIT, paperWidth, paperHeight );
                 //doc->Rotate( -90, 20 + GetAlbumAttributeDbl( AT_PageWidth ) / 2, 4 + GetAlbumAttributeDbl( AT_PageHeight ) / 2 );
                 doc->Rotate( 90, ( pageHeight / 2 ) + 0, ( pageWidth / 2 ) + 18 );
@@ -137,9 +137,9 @@ namespace Design {
         doc->SaveAsFile( fullPath );
 
         wxString txt = wxString::Format( "Generated %s.\n\n", fullPath );
-        wxMessageDialog* dlg = new wxMessageDialog(
-            ( wxWindow* ) GetFrame( ), txt,
-            wxT( "Pdf Generated" ),
+        wxMessageDialog* dlg = new wxMessageDialog( 
+            ( wxWindow* ) GetFrame( ), txt, 
+            wxT( "Pdf Generated" ), 
             wxOK | wxCENTER );
         int rsp = dlg->ShowModal( );
         return docName;

@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -47,7 +47,6 @@ namespace Catalog
         m_catalogTreeCtrl->Clear( );
         m_catalogTocTreeCtrl->Clear( );
         m_stampDescriptionPanel->Clear( );
-        //m_generateListPanel->Clear;
 
         m_catalogPanel->Clear( );
 
@@ -56,27 +55,8 @@ namespace Catalog
     void CatalogData::FileOpen( wxString filename )
     {
         GetCatalogList( )->NewCatalogVolume( filename );
-        // GetCatalogList( )->BuildVolumeNameStrings( );
-        // UpdateCatalogVolumeStrings( );
-        // LoadCatalogTree( );
+
     }
-    // void CatalogData::FindStamp( )
-    // {
-    //     m_catalogList.GetArray( );
-
-    //     Utils::VolumeArray* array = m_catalogList.GetArray( );
-
-    //     Utils::VolumeArray::iterator it = array->begin( );
-
-    //     // Iterate through the map and print the elements
-    //     while ( it != array->end( ) )
-    //     {
-    //         Utils::Volume* volume = ( Utils::Volume* ) ( it->second );
-    //         volume->Find( );
-    //         ++it;
-    //     }
-    // };
-
 
     void CatalogData::FileSave( )
     {
@@ -94,28 +74,6 @@ namespace Catalog
         return res;
     }
 
-    // void CatalogData::LoadNew( wxString catFile )
-    // {
-
-    //     Catalog::CatalogVolume* volume = GetCatalogList( )->AddNewVolume( catFile );
-
-    //     LoadCatalogTree( );
-    //     volume->SetDirty( false );
-
-    // }
-
-    // Catalog::CatalogVolume* CatalogData::NewCatalogVolume( wxString filename )
-    // {
-    //     CatalogVolume* vol = new CatalogVolume( );
-    //     vol->SetFilename( filename );
-    //     vol->Load( );
-
-    //     wxString volName = vol->GetName( );
-    //     Catalog::CatalogList* list = GetCatalogData( )->GetCatalogList( );
-    //     list->SetCurrentVolume( vol );
-    //     return vol;
-    // }
-
     // Update the Inventory Panel and reload the catalog tree 
     // to reflect new collection
     void CatalogData::SetCollection( wxString newCollection )
@@ -124,7 +82,7 @@ namespace Catalog
 
         if ( newCollection.Cmp( currCol->GetName( ) ) )
         {
-            //the Catalog tree will need to be rebuilt (i.e., the ID's will change) so save the selected node
+            //the Catalog tree will need to be rebuilt ( i.e., the ID's will change) so save the selected node
             wxXmlNode* ele = GetCatalogTreeCtrl( )->GetSelectionNode( );
 
             //set the new selection
@@ -135,9 +93,7 @@ namespace Catalog
 
             // find the node in the new tree
             GetCatalogTreeCtrl( )->SetSelection( ele );
-
         }
-
     }
 
     void CatalogData::SetCurrentStamp( wxXmlNode* xmlNode )

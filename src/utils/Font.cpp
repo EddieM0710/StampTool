@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -170,11 +170,11 @@ namespace Utils {
         wxXmlNode* child = Utils::NewNode( parent, Design::AlbumBaseNames[ Design::AT_Font ] );
         if ( child )
         {
-            child->AddAttribute( Design::AttrNameStrings[ Design::AT_FontType ],
+            child->AddAttribute( Design::AttrNameStrings[ Design::AT_FontType ], 
                 Design::FontUsageTypeStrings[ type ] );
-            child->AddAttribute( Design::AttrNameStrings[ Design::AT_NativeFontString ],
+            child->AddAttribute( Design::AttrNameStrings[ Design::AT_NativeFontString ], 
                 m_font.GetNativeFontInfoDesc( ) );
-            child->AddAttribute( Design::AttrNameStrings[ Design::AT_FontColor ],
+            child->AddAttribute( Design::AttrNameStrings[ Design::AT_FontColor ], 
                 m_color.GetAsString( ) );
         }
     }

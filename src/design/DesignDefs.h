@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -44,91 +44,91 @@ namespace Design {
 
     typedef enum
     {
-        AT_Name = 0,
-        AT_PageWidth,
-        AT_PageHeight,
-        AT_TopPageMargin,
-        AT_BottomPageMargin,
-        AT_RightPageMargin,
-        AT_LeftPageMargin,
-        AT_BorderFileName,
-        AT_BorderSize,
-        AT_ShowBorder,
-        AT_Height,
-        AT_Width,
-        AT_XPos,
-        AT_YPos,
-        AT_MinHeight,
-        AT_MinWidth,
-        AT_CatNbr,
-        AT_Link,
-        AT_ShowTitle,
-        AT_ShowSubTitle,
-        AT_ShowCatNbr,
-        AT_ShowFrame,
-        AT_ShowImage,
-        AT_Orientation,
-        AT_GrayScaleImages,
-        AT_TopContentMargin,
-        AT_BottomContentMargin,
-        AT_LeftContentMargin,
-        AT_RightContentMargin,
-        AT_FontType,
+        AT_Name = 0, 
+        AT_PageWidth, 
+        AT_PageHeight, 
+        AT_TopPageMargin, 
+        AT_BottomPageMargin, 
+        AT_RightPageMargin, 
+        AT_LeftPageMargin, 
+        AT_BorderFileName, 
+        AT_BorderSize, 
+        AT_ShowBorder, 
+        AT_Height, 
+        AT_Width, 
+        AT_XPos, 
+        AT_YPos, 
+        AT_MinHeight, 
+        AT_MinWidth, 
+        AT_CatNbr, 
+        AT_Link, 
+        AT_ShowTitle, 
+        AT_ShowSubTitle, 
+        AT_ShowCatNbr, 
+        AT_ShowFrame, 
+        AT_ShowImage, 
+        AT_Orientation, 
+        AT_GrayScaleImages, 
+        AT_TopContentMargin, 
+        AT_BottomContentMargin, 
+        AT_LeftContentMargin, 
+        AT_RightContentMargin, 
+        AT_FontType, 
         //        AT_FontName, 
         //        AT_FontFamily, 
-        AT_NativeFontString,
+        AT_NativeFontString, 
         //        AT_FontSize, 
         //        AT_FontWeight, 
-        AT_FontColor,
+        AT_FontColor, 
         //        AT_FontStyle, 
-        AT_ImageName,
-        AT_CalculateSpacing,
-        AT_FixedSpacingSize,
-        AT_OverSizePaper,
-        AT_PaperHeight,
-        AT_PaperWidth,
-        AT_SelvageHeight,
-        AT_SelvageWidth,
-        AT_SubTitle,
-        AT_MountAllowanceHeight,
-        AT_MountAllowanceWidth,
-        AT_StampNamePosition,
-        AT_StampAlignmentMode,
-        AT_StampMargin,
-        AT_CollapseState,
-        AT_Catalog,
-        AT_Catalog_Codes,
-        AT_LayoutType,
-        AT_NbrAttrTypes,
+        AT_ImageName, 
+        AT_CalculateSpacing, 
+        AT_FixedSpacingSize, 
+        AT_OverSizePaper, 
+        AT_PaperHeight, 
+        AT_PaperWidth, 
+        AT_SelvageHeight, 
+        AT_SelvageWidth, 
+        AT_SubTitle, 
+        AT_MountAllowanceHeight, 
+        AT_MountAllowanceWidth, 
+        AT_StampNamePosition, 
+        AT_StampAlignmentMode, 
+        AT_StampMargin, 
+        AT_CollapseState, 
+        AT_Catalog, 
+        AT_Catalog_Codes, 
+        AT_LayoutType, 
+        AT_NbrAttrTypes, 
         AT_NOTYPE
     } AlbumAttrType;
     typedef enum
     {
-        AT_Portrait = 0,
+        AT_Portrait = 0, 
         AT_Landscape
     } PageOrientation;
 
     typedef enum
     {
-        AT_Album = 0,
-        AT_Page,
-        AT_Row,
-        AT_Col,
-        AT_Text,
-        //@@@        AT_Title,
-        AT_TitlePage,
-        AT_Stamp,
-        AT_Font,
-        AT_NbrAlbumTypes,
+        AT_Album = 0, 
+        AT_Page, 
+        AT_Row, 
+        AT_Col, 
+        AT_Text, 
+        //@@@        AT_Title, 
+        AT_TitlePage, 
+        AT_Stamp, 
+        AT_Font, 
+        AT_NbrAlbumTypes, 
         AT_None = 999
     } AlbumBaseType;
 
     typedef enum
     {
-        LT_Page = 0,
-        LT_Frame,
-        LT_Stamp,
-        LT_Text,
+        LT_Page = 0, 
+        LT_Frame, 
+        LT_Stamp, 
+        LT_Text, 
         NbrLayoutTypes
     } LayoutType;
 
@@ -141,49 +141,49 @@ namespace Design {
     } PageType;
 
     typedef enum {
-        AT_TitleFontType,
-        AT_SubTitleFontType,
-        AT_NameFontType,
-        AT_TextFontType,
-        AT_NbrFontType,
+        AT_TitleFontType, 
+        AT_SubTitleFontType, 
+        AT_NameFontType, 
+        AT_TextFontType, 
+        AT_NbrFontType, 
         AT_NbrFontUsageTypes
     } FontUsageType;
 
     typedef enum
     {
-        AT_OK = 0,
-        AT_WARNING,
+        AT_OK = 0, 
+        AT_WARNING, 
         AT_FATAL
     } NodeStatus;
 
     typedef enum
     {
-        DD_Display,
+        DD_Display, 
         DD_PDF
     } ScaleClient;
 
     typedef enum
     {
-        AT_AlignTop,
-        AT_AlignBottom,
-        AT_AlignLeft,
-        AT_AlignRight,
-        AT_Center,
+        AT_AlignTop, 
+        AT_AlignBottom, 
+        AT_AlignLeft, 
+        AT_AlignRight, 
+        AT_Center, 
         AT_AlignDefault
     } StampAlignment;
 
     typedef enum
     {
-        AT_StampNamePositionTop,
-        AT_StampNamePositionBottom,
+        AT_StampNamePositionTop, 
+        AT_StampNamePositionBottom, 
         AT_NbrStampNamePositions
     } StampNamePosType;
 
     typedef enum {
-        AlignTop = 0,
-        AlignMiddle,
-        AlignBottom,
-        //        AlignDefault,
+        AlignTop = 0, 
+        AlignMiddle, 
+        AlignBottom, 
+        //        AlignDefault, 
         NbrAlignmentModes
     } AlignmentModeType;
 

@@ -11,7 +11,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -50,6 +50,15 @@ namespace Utils {
      * @brief read/write .csv files.
      *
      */
+/**
+ * CSVData
+ *  - ReadDataFile: opens a CSV, reads header, builds column map, then loads rows.
+ *  - FixUpLine: kept for compatibility (now a no-op that validates emptiness).
+ *  - ReadTextInStream: iterates through data lines and appends entry nodes.
+ *  - MakeColMap: maps header columns to Catalog::DataTypes indices.
+ *  - GetIDNbr: extracts an ID from a composite "catalog codes" field.
+ */
+
     class CSVData
     {
     public:
@@ -91,7 +100,7 @@ namespace Utils {
         void SetColName( wxString name ) { return m_csvColName.push_back( name ); };
 
         /**
-         * @brief Opens the file for read and does appropriate initializations
+         * @brief ReadDataFile: opens a CSV, reads header, builds column map, then loads rows.
          *
          * @param  filename ; full path to the file to be read
          * @return true ; true on successful open
@@ -111,15 +120,11 @@ namespace Utils {
         /**
          * @brief Read the csv file line by line.
          *
-         * @details This saves the read data into an XML tree structure.
-         * the text input stream is what is read but some status
-         * checking needs to be done and passing in the fil stream
-         * was the quick easy way to handle it.
+         * @details iterates through data lines and appends entry nodes.
          *
          * @param  file   file stream for the input file
          * @param  text   Text Stream for the input file
          * @return true   if the file was succesfully read otherwise false.
-
          */
         bool ReadTextInStream( wxFileInputStream& file, wxTextInputStream& text );
 
@@ -132,7 +137,7 @@ namespace Utils {
          //int FindCol( wxString& colName ) { m_csvColName.Index( colName ); };
 
          /**
-          * @brief Create a map of csv col names to DataTypes ( Defs.h )
+          * @brief maps header columns to Catalog::DataTypes ( Defs.h ) indices
           *
           */
         void MakeColMap( void );

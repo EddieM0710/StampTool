@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -66,7 +66,7 @@ FrameDefaultsPanel::FrameDefaultsPanel( )
 
 //----------
 
-FrameDefaultsPanel::FrameDefaultsPanel( wxWindow* parent, wxWindowID id,
+FrameDefaultsPanel::FrameDefaultsPanel( wxWindow* parent, wxWindowID id, 
     const wxString& caption, const wxPoint& pos, const wxSize& size, long style )
 {
     Init( );
@@ -76,7 +76,7 @@ FrameDefaultsPanel::FrameDefaultsPanel( wxWindow* parent, wxWindowID id,
 
 //----------
 
-bool FrameDefaultsPanel::Create( wxWindow* parent, wxWindowID id,
+bool FrameDefaultsPanel::Create( wxWindow* parent, wxWindowID id, 
     const wxString& caption, const wxPoint& pos, const wxSize& size, long style )
 {
     SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY | wxWS_EX_BLOCK_EVENTS );
@@ -118,12 +118,12 @@ void FrameDefaultsPanel::CreateControls( )
 
     int lastID = ID_LastID;
 
-    wxNotebook* focusNotebook = new wxNotebook( thePanel, ++lastID,
+    wxNotebook* focusNotebook = new wxNotebook( thePanel, ++lastID, 
         wxDefaultPosition, wxDefaultSize, wxBK_TOP );
     focusNotebook->SetPadding( wxSize( 1, 1 ) );
     rowColHorizontalSizer->Add( focusNotebook, 1, wxGROW | wxALL, 5 );
 
-    wxPanel* commonPanel = new wxPanel( focusNotebook, ++lastID, wxDefaultPosition,
+    wxPanel* commonPanel = new wxPanel( focusNotebook, ++lastID, wxDefaultPosition, 
         wxDefaultSize, wxTAB_TRAVERSAL );
     commonPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
 
@@ -145,7 +145,7 @@ void FrameDefaultsPanel::CreateControls( )
 
 
 
-    wxPanel* advancedPanel = new wxPanel( focusNotebook, ++lastID, wxDefaultPosition,
+    wxPanel* advancedPanel = new wxPanel( focusNotebook, ++lastID, wxDefaultPosition, 
         wxDefaultSize, wxTAB_TRAVERSAL );
     advancedPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
 
@@ -165,23 +165,23 @@ void FrameDefaultsPanel::CreateControls( )
     focusNotebook->AddPage( advancedPanel, _( "Special" ) );
 
 
-    m_frameCheckbox = SetupCheckBox( commonPanel, leftCommonVerticalSizer, lastID,
+    m_frameCheckbox = SetupCheckBox( commonPanel, leftCommonVerticalSizer, lastID, 
         ( "Show Frame" ), wxCommandEventHandler( FrameDefaultsPanel::OnFrameCheckboxClick ) );
     m_frameCheckbox->SetValue( false );
 
 
-    m_titleHelper = SetupTitleHelper( commonPanel, leftCommonVerticalSizer, lastID, HasSubTitle,
-        wxCommandEventHandler( FrameDefaultsPanel::OnTitleCheckboxClick ),
-        wxCommandEventHandler( FrameDefaultsPanel::OnSubTitleCheckboxClick ),
+    m_titleHelper = SetupTitleHelper( commonPanel, leftCommonVerticalSizer, lastID, HasSubTitle, 
+        wxCommandEventHandler( FrameDefaultsPanel::OnTitleCheckboxClick ), 
+        wxCommandEventHandler( FrameDefaultsPanel::OnSubTitleCheckboxClick ), 
         wxCommandEventHandler( FrameDefaultsPanel::OnSubTitleCheckboxClick ) );
 
 
 
     wxBoxSizer* memberSpacingVSizer;
-    wxStaticBox* memberSpacingStaticBox = SetupBoxSizer( commonPanel, leftCommonVerticalSizer,
+    wxStaticBox* memberSpacingStaticBox = SetupBoxSizer( commonPanel, leftCommonVerticalSizer, 
         "Member Position", lastID, memberSpacingVSizer, wxHORIZONTAL );
 
-    m_fixedSpacingCheckbox = SetupCheckBox( memberSpacingStaticBox, memberSpacingVSizer, lastID,
+    m_fixedSpacingCheckbox = SetupCheckBox( memberSpacingStaticBox, memberSpacingVSizer, lastID, 
         ( "Fixed Spacing" ), wxCommandEventHandler( FrameDefaultsPanel::OnFixedClick ) );
     m_fixedSpacingCheckbox->SetToolTip( _( "Normally Calculated. Enable for Fixed Spacing." ) );
 
@@ -195,19 +195,19 @@ void FrameDefaultsPanel::CreateControls( )
     wxBoxSizer* alignmentModeVSizer;
     wxStaticBox* alignmentModeBox = SetupBoxSizer( commonPanel, rightCommonVerticalSizer, "Stamp Member Alignment Mode", lastID, alignmentModeVSizer, wxHORIZONTAL );
 
-    m_alignTopButton = SetupRadioButton( alignmentModeBox, alignmentModeVSizer, lastID, _( "Top" ), false,
+    m_alignTopButton = SetupRadioButton( alignmentModeBox, alignmentModeVSizer, lastID, _( "Top" ), false, 
         wxCommandEventHandler( FrameDefaultsPanel::OnAlignmentModeButtonSelected ) );
 
-    m_alignMiddleButton = SetupRadioButton( alignmentModeBox, alignmentModeVSizer, lastID, _( "Middle" ), false,
+    m_alignMiddleButton = SetupRadioButton( alignmentModeBox, alignmentModeVSizer, lastID, _( "Middle" ), false, 
         wxCommandEventHandler( FrameDefaultsPanel::OnAlignmentModeButtonSelected ) );
 
-    m_alignBottomButton = SetupRadioButton( alignmentModeBox, alignmentModeVSizer, lastID, _( "Bottom" ), false,
+    m_alignBottomButton = SetupRadioButton( alignmentModeBox, alignmentModeVSizer, lastID, _( "Bottom" ), false, 
         wxCommandEventHandler( FrameDefaultsPanel::OnAlignmentModeButtonSelected ) );
 
 
 
     wxBoxSizer* contentMarginBoxVSizer;
-    wxStaticBox* contentMarginBox = SetupBoxSizer( advancedPanel, leftAdvancedVerticalSizer,
+    wxStaticBox* contentMarginBox = SetupBoxSizer( advancedPanel, leftAdvancedVerticalSizer, 
         "Content Margin", lastID, contentMarginBoxVSizer, wxVERTICAL );
 
     wxBoxSizer* contentMarginBoxHSizer = new wxBoxSizer( wxHORIZONTAL );
@@ -215,12 +215,12 @@ void FrameDefaultsPanel::CreateControls( )
 
     HorizontalSpacer( contentMarginBoxHSizer );
 
-    m_topContentMargin = SetupLabelText( contentMarginBox, contentMarginBoxHSizer, lastID,
+    m_topContentMargin = SetupLabelText( contentMarginBox, contentMarginBoxHSizer, lastID, 
         _( "Top" ), false, wxCommandEventHandler( FrameDefaultsPanel::OnTopContentMargin ) );
     m_topContentMargin->SetToolTip( _( "Content top margin in mm." ) );
     HorizontalSpacer( contentMarginBoxHSizer );
 
-    m_bottomContentMargin = SetupLabelText( contentMarginBox, contentMarginBoxHSizer, lastID,
+    m_bottomContentMargin = SetupLabelText( contentMarginBox, contentMarginBoxHSizer, lastID, 
         _( "Bottom" ), false, wxCommandEventHandler( FrameDefaultsPanel::OnBottomContentMargin ) );
     m_bottomContentMargin->SetToolTip( _( "Content bottom margin in mm." ) );
 
@@ -230,13 +230,13 @@ void FrameDefaultsPanel::CreateControls( )
 
     HorizontalSpacer( itemBoxSizer110 );
 
-    m_leftContentMargin = SetupLabelText( contentMarginBox, itemBoxSizer110, lastID,
+    m_leftContentMargin = SetupLabelText( contentMarginBox, itemBoxSizer110, lastID, 
         _( "Left" ), false, wxCommandEventHandler( FrameDefaultsPanel::OnLeftContentMargin ) );
     m_leftContentMargin->SetToolTip( _( "Content left margin in mm." ) );
 
     HorizontalSpacer( itemBoxSizer110 );
 
-    m_rightContentMargin = SetupLabelText( contentMarginBox, itemBoxSizer110, lastID,
+    m_rightContentMargin = SetupLabelText( contentMarginBox, itemBoxSizer110, lastID, 
         _( "Right" ), false, wxCommandEventHandler( FrameDefaultsPanel::OnRightContentMargin ) );
     m_rightContentMargin->SetToolTip( _( "Content right margin in mm." ) );
 

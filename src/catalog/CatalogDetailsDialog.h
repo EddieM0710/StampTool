@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -47,16 +47,16 @@ public:
 
     enum CatalogDetailsDialogGuiDefs
     {
-        ID_NAMELABELEDTEXTBOX = ID_CATALOGDETAILSDIALOG + 1,
-        ID_IMAGEPATHTEXTBOX,
-        ID_VOLUMETITLECHECKBOX,
-        ID_FRAMECHECKBOX,
-        ID_DEFAULTFONTBUTTON,
-        ID_VOLUMENAMEPANEL,
-        ID_VOLUMELAYOUTPANEL,
-        ID_VOLUMELAYOUTTEXTCTRL,
-        ID_VOLUMENOTEBOOK,
-        ID_CATDIRBUTTON,
+        ID_NAMELABELEDTEXTBOX = ID_CATALOGDETAILSDIALOG + 1, 
+        ID_IMAGEPATHTEXTBOX, 
+        ID_VOLUMETITLECHECKBOX, 
+        ID_FRAMECHECKBOX, 
+        ID_DEFAULTFONTBUTTON, 
+        ID_VOLUMENAMEPANEL, 
+        ID_VOLUMELAYOUTPANEL, 
+        ID_VOLUMELAYOUTTEXTCTRL, 
+        ID_VOLUMENOTEBOOK, 
+        ID_CATDIRBUTTON, 
         ID_IMAGEDIRBUTTON
     };
 
@@ -75,7 +75,7 @@ public:
 
     wxString GetName( );
 
-    wxString GetImagePath( );
+   //wxString GetImagePath( );
 
     void Init( );
 

@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -390,8 +390,8 @@ void NewStampDialog::SetStamp( Catalog::Entry* stamp )
         m_issueDate->SetValue( m_stamp->GetAttr( Catalog::DT_Issued_on ) );
         SetChoice( m_emission, m_stamp->GetEmission( ) );
         SetChoice( m_format, m_stamp->GetFormat( ) );
-        //        m_series->SetValue( m_stamp->GetAttr(  Catalog::DT_Series ) );
-        //        m_themes->SetValue( m_stamp->GetAttr(  Catalog::DT_Themes ) );
+        //        m_series->SetValue( m_stamp->GetAttr( Catalog::DT_Series ) );
+        //        m_themes->SetValue( m_stamp->GetAttr( Catalog::DT_Themes ) );
         m_country->SetValue( m_stamp->GetAttr( Catalog::DT_Country ) );
         //        SetChoice( m_status, m_stamp->GetInventoryStatus( ) );
     }

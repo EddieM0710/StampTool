@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -68,21 +68,21 @@ class AlbumPanel : public wxPanel
 public:
     enum AlbumAlbumPanelGuiDefs
     {
-        ID_SECONDARYSPLITTERWINDOW = ID_ALBUMAlbumPanel * 1,
-        ID_SCROLLEDWINDOW,
-        ID_AECMDTREECTRL,
-        ID_PANEL,
-        ID_ALBUMALBUMIMAGEPANEL,
-        ID_ALBUMZOOMSLIDER,
-        ID_LISTCHOICE,
-        ID_MANAGEBUTTON,
-        ID_NEWDESIGN,
-        ID_OPENDESIGN,
-        ID_REMOVEDESIGN,
-        ID_GENERATEPDF,
-        ID_DETAILSSCROLLEDWINDOW,
-        ID_HORIZONTALALBUMSPLITTERWINDOW1,
-        ID_ALBUMLAYOUTPANEL,
+        ID_SECONDARYSPLITTERWINDOW = ID_ALBUMAlbumPanel * 1, 
+        ID_SCROLLEDWINDOW, 
+        ID_AECMDTREECTRL, 
+        ID_PANEL, 
+        ID_ALBUMALBUMIMAGEPANEL, 
+        ID_ALBUMZOOMSLIDER, 
+        ID_LISTCHOICE, 
+        ID_MANAGEBUTTON, 
+        ID_NEWDESIGN, 
+        ID_OPENDESIGN, 
+        ID_REMOVEDESIGN, 
+        ID_GENERATEPDF, 
+        ID_DETAILSSCROLLEDWINDOW, 
+        ID_HORIZONTALALBUMSPLITTERWINDOW1, 
+        ID_ALBUMLAYOUTPANEL, 
         ID_LastID
     };
 

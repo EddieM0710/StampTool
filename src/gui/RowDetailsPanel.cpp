@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -97,12 +97,12 @@ void RowDetailsPanel::CreateControls( )
 
     int lastID = ID_LastID;
 
-    wxNotebook* focusNotebook = new wxNotebook( theDialog, ++lastID,
+    wxNotebook* focusNotebook = new wxNotebook( theDialog, ++lastID, 
         wxDefaultPosition, wxDefaultSize, wxBK_TOP );
     focusNotebook->SetPadding( wxSize( 1, 1 ) );
     detailsHorizontalSizer->Add( focusNotebook, 1, wxGROW | wxALL, 5 );
 
-    wxPanel* commonPanel = new wxPanel( focusNotebook, ++lastID, wxDefaultPosition,
+    wxPanel* commonPanel = new wxPanel( focusNotebook, ++lastID, wxDefaultPosition, 
         wxDefaultSize, wxTAB_TRAVERSAL );
     commonPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
 
@@ -124,7 +124,7 @@ void RowDetailsPanel::CreateControls( )
 
 
 
-    wxPanel* advancedPanel = new wxPanel( focusNotebook, ++lastID, wxDefaultPosition,
+    wxPanel* advancedPanel = new wxPanel( focusNotebook, ++lastID, wxDefaultPosition, 
         wxDefaultSize, wxTAB_TRAVERSAL );
     advancedPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
 
@@ -144,44 +144,44 @@ void RowDetailsPanel::CreateControls( )
     focusNotebook->AddPage( advancedPanel, _( "Special" ) );
 
 
-    m_frameCheckbox = SetupCheckBox( commonPanel, leftCommonVerticalSizer, lastID,
+    m_frameCheckbox = SetupCheckBox( commonPanel, leftCommonVerticalSizer, lastID, 
         ( "Show Frame" ), wxCommandEventHandler( RowDetailsPanel::OnFrameCheckboxClick ) );
     m_frameCheckbox->SetValue( false );
 
 
-    m_titleHelper = SetupTitleHelper( commonPanel, leftCommonVerticalSizer, lastID, DefaultTitleHelperStyle,
-        wxCommandEventHandler( RowDetailsPanel::OnTitleCheckboxClick ),
-        wxCommandEventHandler( RowDetailsPanel::OnTitleTextChanged ),
-        wxCommandEventHandler( RowDetailsPanel::OnSubTitleCheckboxClick ),
+    m_titleHelper = SetupTitleHelper( commonPanel, leftCommonVerticalSizer, lastID, DefaultTitleHelperStyle, 
+        wxCommandEventHandler( RowDetailsPanel::OnTitleCheckboxClick ), 
+        wxCommandEventHandler( RowDetailsPanel::OnTitleTextChanged ), 
+        wxCommandEventHandler( RowDetailsPanel::OnSubTitleCheckboxClick ), 
         wxCommandEventHandler( RowDetailsPanel::OnSubTitleTextChanged ) );
 
 
-    SetupFontPicker( advancedPanel, leftAdvancedVerticalSizer, lastID,
-        _( "Title Font" ), _( "Default" ),
-        m_titleFontPicker, m_titleColorPicker,
-        wxFontPickerEventHandler( RowDetailsPanel::OnTitleFontPicker ),
-        wxColourPickerEventHandler( RowDetailsPanel::OnTitleColorPicker ),
+    SetupFontPicker( advancedPanel, leftAdvancedVerticalSizer, lastID, 
+        _( "Title Font" ), _( "Default" ), 
+        m_titleFontPicker, m_titleColorPicker, 
+        wxFontPickerEventHandler( RowDetailsPanel::OnTitleFontPicker ), 
+        wxColourPickerEventHandler( RowDetailsPanel::OnTitleColorPicker ), 
         wxCommandEventHandler( RowDetailsPanel::OnTitleDefaultClick ) );
 
 
-    SetupFontPicker( advancedPanel, leftAdvancedVerticalSizer, lastID,
-        _( "SubTitle Font" ), _( "Default" ),
-        m_subTitleFontPicker, m_subTitleColorPicker,
-        wxFontPickerEventHandler( RowDetailsPanel::OnSubTitleFontPicker ),
-        wxColourPickerEventHandler( RowDetailsPanel::OnSubTitleColorPicker ),
+    SetupFontPicker( advancedPanel, leftAdvancedVerticalSizer, lastID, 
+        _( "SubTitle Font" ), _( "Default" ), 
+        m_subTitleFontPicker, m_subTitleColorPicker, 
+        wxFontPickerEventHandler( RowDetailsPanel::OnSubTitleFontPicker ), 
+        wxColourPickerEventHandler( RowDetailsPanel::OnSubTitleColorPicker ), 
         wxCommandEventHandler( RowDetailsPanel::OnSubTitleDefaultClick ) );
 
 
     wxBoxSizer* alignmentModeVSizer;
     wxStaticBox* alignmentModeBox = SetupBoxSizer( commonPanel, middleCommonVerticalSizer, "Member Stamp Alignment Mode", lastID, alignmentModeVSizer, wxHORIZONTAL );
 
-    m_alignTopButton = SetupRadioButton( alignmentModeBox, alignmentModeVSizer, lastID, _( "Top" ), false,
+    m_alignTopButton = SetupRadioButton( alignmentModeBox, alignmentModeVSizer, lastID, _( "Top" ), false, 
         wxCommandEventHandler( RowDetailsPanel::OnAlignmentModeButtonSelected ) );
 
-    m_alignMiddleButton = SetupRadioButton( alignmentModeBox, alignmentModeVSizer, lastID, _( "Middle" ), false,
+    m_alignMiddleButton = SetupRadioButton( alignmentModeBox, alignmentModeVSizer, lastID, _( "Middle" ), false, 
         wxCommandEventHandler( RowDetailsPanel::OnAlignmentModeButtonSelected ) );
 
-    m_alignBottomButton = SetupRadioButton( alignmentModeBox, alignmentModeVSizer, lastID, _( "Bottom" ), false,
+    m_alignBottomButton = SetupRadioButton( alignmentModeBox, alignmentModeVSizer, lastID, _( "Bottom" ), false, 
         wxCommandEventHandler( RowDetailsPanel::OnAlignmentModeButtonSelected ) );
 
 
@@ -189,13 +189,13 @@ void RowDetailsPanel::CreateControls( )
     wxBoxSizer* memberPositionVSizer;
     wxStaticBox* memberPositionStaticBox = SetupBoxSizer( commonPanel, middleCommonVerticalSizer, "Member Position", lastID, memberPositionVSizer, wxHORIZONTAL );
 
-    m_positionCalculated = SetupRadioButton( memberPositionStaticBox, memberPositionVSizer, lastID, _( "Calculated" ), true,
+    m_positionCalculated = SetupRadioButton( memberPositionStaticBox, memberPositionVSizer, lastID, _( "Calculated" ), true, 
         wxCommandEventHandler( RowDetailsPanel::OnCalculatedClick ) );
     m_positionCalculated->SetToolTip( _( "Calculate based on available space." ) );
 
     HorizontalSpacer( memberPositionVSizer );
 
-    m_positionFixed = SetupRadioButton( memberPositionStaticBox, memberPositionVSizer, lastID, _( "Fixed" ), false,
+    m_positionFixed = SetupRadioButton( memberPositionStaticBox, memberPositionVSizer, lastID, _( "Fixed" ), false, 
         wxCommandEventHandler( RowDetailsPanel::OnFixedClick ) );
     m_positionCalculated->SetToolTip( _( "Evenly Distributed" ) );
 
@@ -215,7 +215,7 @@ void RowDetailsPanel::CreateControls( )
 
 
     wxBoxSizer* contentMarginBoxVSizer;
-    wxStaticBox* contentMarginBox = SetupBoxSizer( advancedPanel, rightAdvancedVerticalSizer,
+    wxStaticBox* contentMarginBox = SetupBoxSizer( advancedPanel, rightAdvancedVerticalSizer, 
         "Content Margin", lastID, contentMarginBoxVSizer, wxVERTICAL );
 
     wxBoxSizer* itemBoxSizer17 = new wxBoxSizer( wxHORIZONTAL );
@@ -223,12 +223,12 @@ void RowDetailsPanel::CreateControls( )
 
     HorizontalSpacer( itemBoxSizer17 );
 
-    m_topContentMargin = SetupLabelText( contentMarginBox, itemBoxSizer17, lastID,
+    m_topContentMargin = SetupLabelText( contentMarginBox, itemBoxSizer17, lastID, 
         _( "Top" ), false, wxCommandEventHandler( RowDetailsPanel::OnTopContentMargin ) );
     m_topContentMargin->SetToolTip( _( "Content top margin in mm." ) );
     HorizontalSpacer( itemBoxSizer17 );
 
-    m_bottomContentMargin = SetupLabelText( contentMarginBox, itemBoxSizer17, lastID,
+    m_bottomContentMargin = SetupLabelText( contentMarginBox, itemBoxSizer17, lastID, 
         _( "Bottom" ), false, wxCommandEventHandler( RowDetailsPanel::OnBottomContentMargin ) );
     m_bottomContentMargin->SetToolTip( _( "Content bottom margin in mm." ) );
 
@@ -238,13 +238,13 @@ void RowDetailsPanel::CreateControls( )
 
     HorizontalSpacer( itemBoxSizer110 );
 
-    m_leftContentMargin = SetupLabelText( contentMarginBox, itemBoxSizer110, lastID,
+    m_leftContentMargin = SetupLabelText( contentMarginBox, itemBoxSizer110, lastID, 
         _( "Left" ), false, wxCommandEventHandler( RowDetailsPanel::OnLeftContentMargin ) );
     m_leftContentMargin->SetToolTip( _( "Content left margin in mm." ) );
 
     HorizontalSpacer( itemBoxSizer110 );
 
-    m_rightContentMargin = SetupLabelText( contentMarginBox, itemBoxSizer110, lastID,
+    m_rightContentMargin = SetupLabelText( contentMarginBox, itemBoxSizer110, lastID, 
         _( "Right" ), false, wxCommandEventHandler( RowDetailsPanel::OnRightContentMargin ) );
     m_topContentMargin->SetToolTip( _( "Content right margin in mm." ) );
 

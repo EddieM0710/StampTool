@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -45,6 +45,7 @@
 #include "Defs.h"
 #include "Settings.h"
 #include "utils/Project.h"
+#include "utils/Image.h"
 #include "catalog/Entry.h"
 #include "catalog/CatalogCode.h"
 
@@ -151,11 +152,11 @@ namespace Catalog {
         if ( inventoryNode )
         {
             wxXmlNode* newNode = Utils::NewNode( inventoryNode, CatalogBaseNames[ NT_Item ] );
-            Utils::SetAttrStr( newNode,
-                Catalog::ItemDataNames[ Catalog::IDT_Collection ],
+            Utils::SetAttrStr( newNode, 
+                Catalog::ItemDataNames[ Catalog::IDT_Collection ], 
                 collection );
-            Utils::SetAttrStr( newNode,
-                Catalog::ItemDataNames[ Catalog::IDT_InventoryStatus ],
+            Utils::SetAttrStr( newNode, 
+                Catalog::ItemDataNames[ Catalog::IDT_InventoryStatus ], 
                 Catalog::InventoryStatusStrings[ type ] );
             return newNode;
         }
@@ -214,6 +215,9 @@ namespace Catalog {
             if ( attr )
             {
                 wxString str = attr->GetValue( );
+                wxString name = attr->GetName( );
+                if ( !name.compare( "Link" ) )
+                std::cout << "Entry::GetAttr  "<< attr->GetName( ) << " >"<< attr->GetValue( ) << "< >"<< str << "<\n";
                 return str;
             }
         }
@@ -412,7 +416,21 @@ namespace Catalog {
         }
         return ( wxXmlNode* ) 0;
     }
-
+    wxString Entry::GetItemID( )
+        {
+            wxString link = GetLink( );
+            if ( link.IsEmpty( ) ) 
+            {    
+                return "";
+            }
+            int pos = link.find_last_of( "//" );
+            wxString item = link.Mid( pos+1 );
+            if ( item.IsEmpty( ) )
+            {
+                return "";
+            }
+            return item;
+        }
     //-------
 
     wxString Entry::GetMount( ) {
@@ -548,17 +566,17 @@ namespace Catalog {
         label.Append( " - " );
         label.Append( name );
         bool nameEmpty = name.IsEmpty( );
-        wxString str = GetProject( )->GetImageFullPath( imageName );
-        bool imageMissing = !GetProject( )->ImageExists( str );
+        wxString str = Utils::GetImageFullPath( imageName );
+        bool imageMissing = !Utils::ImageExists( str );
         wxString sizeMissing = "";
         if ( height.IsEmpty( ) || width.IsEmpty( ) || imageMissing || nameEmpty )
         {
-            sizeMissing = " (";
+            sizeMissing = " ( ";
             if ( name.IsEmpty( ) ) sizeMissing += "N";
             if ( imageMissing ) sizeMissing += "I";
             if ( height.IsEmpty( ) ) sizeMissing += "H";
             if ( width.IsEmpty( ) ) sizeMissing += "W";
-            sizeMissing += ")";
+            sizeMissing += " )";
         }
 
         label.Append( sizeMissing );
@@ -595,8 +613,8 @@ namespace Catalog {
         }
         return ( wxXmlNode* ) 0;
     }
+    
     //-------
-
     wxString Entry::GetPreferredCode( )
     {
         wxString catCodeStr = GetCatalogCodes( );

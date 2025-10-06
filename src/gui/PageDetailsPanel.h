@@ -9,7 +9,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -73,21 +73,21 @@ public:
     */
     enum PageDetailsPanelGuiDefs {
         //#define  10000
-        ID_NOTEBOOKPOSITIONPANEL = ID_PAGEDETAILSDIALOG + 1,
-        ID_PAGENAMELABELEDTEXTBOX,
-        ID_SHOWTITLECHECKBOX,
-        ID_SHOWSUBTITLECHECKBOX,
-        ID_SHOWFRAMECHECKBOX,
-        ID_ORIENTATIONCHOICE,
-        ID_DEFAULTBUTTON,
-        ID_ERRORLISTCTRL,
-        ID_NOTEBOOK,
-        ID_DETAILSPANEL,
-        ID_TITLEDEFAULTBUTTON,
-        ID_LAYOUTPANEL,
-        ID_LAYOUTTEXTCTRL,
-        ID_POSITIONTEXTCTRL,
-        ID_NOTEBOOKDETAILSPANEL,
+        ID_NOTEBOOKPOSITIONPANEL = ID_PAGEDETAILSDIALOG + 1, 
+        ID_PAGENAMELABELEDTEXTBOX, 
+        ID_SHOWTITLECHECKBOX, 
+        ID_SHOWSUBTITLECHECKBOX, 
+        ID_SHOWFRAMECHECKBOX, 
+        ID_ORIENTATIONCHOICE, 
+        ID_DEFAULTBUTTON, 
+        ID_ERRORLISTCTRL, 
+        ID_NOTEBOOK, 
+        ID_DETAILSPANEL, 
+        ID_TITLEDEFAULTBUTTON, 
+        ID_LAYOUTPANEL, 
+        ID_LAYOUTTEXTCTRL, 
+        ID_POSITIONTEXTCTRL, 
+        ID_NOTEBOOKDETAILSPANEL, 
         ID_LastID
     };
 
@@ -95,9 +95,9 @@ public:
 
 
     PageDetailsPanel( );
-    PageDetailsPanel( wxWindow* parent, wxWindowID id = SYMBOL_PAGEDETAILSPANEL_IDNAME,
-        const wxString& caption = SYMBOL_PAGEDETAILSPANEL_TITLE,
-        const wxPoint& pos = SYMBOL_PAGEDETAILSPANEL_POSITION,
+    PageDetailsPanel( wxWindow* parent, wxWindowID id = SYMBOL_PAGEDETAILSPANEL_IDNAME, 
+        const wxString& caption = SYMBOL_PAGEDETAILSPANEL_TITLE, 
+        const wxPoint& pos = SYMBOL_PAGEDETAILSPANEL_POSITION, 
         const wxSize& size = SYMBOL_PAGEDETAILSPANEL_SIZE, long style = SYMBOL_PAGEDETAILSPANEL_STYLE );
 
 

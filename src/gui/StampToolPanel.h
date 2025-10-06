@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -40,7 +40,7 @@ class wxNotebook;
 class wxFlexGridSizer;
 class StampDescriptionPanel;
 class GenerateList;
-class ImageGalleryPanel;
+//class ImageGalleryPanel;
 
 
 #define SYMBOL_STAMPTOOLPANEL_STYLE wxTAB_TRAVERSAL
@@ -50,7 +50,7 @@ class ImageGalleryPanel;
 
 
 /**
- * @brief StampToolPanel is the main window class for the application,
+ * @brief StampToolPanel is the main window class for the application, 
  * It contains wxNotebook with the the StampDescriptionPanel and AlbumPanel as pages.
  * StampToolPanel inherits from wxPanel.
  */
@@ -63,34 +63,34 @@ public:
 
     enum StampToolPanelGuiDefs
     {
-        ID_CATALOGSPLITTERWINDOW = ID_STAMPTOOLPANEL + 1,
-        ID_CATALOGPAGE,
-        ID_STAMPTREECTRL,
-        ID_NOTEBOOK,
-        ID_DESCRIPTIONPANELFOREIGN,
-        ID_GALLERYSCROLLEDWINDOW,
-        ID_TITLETEXTCTRL,
-        ID_STAMPTOOL,
-        ID_ALBUMSPLITTERWINDOWFOREIGN,
-        ID_GENERTELISTFOREIGN,
-        ID_IMAGEALLERYPANEL,
-        ID_IMAGEALLERYPANEL1,
-        ID_DESIGNPAGE,
+        ID_CATALOGSPLITTERWINDOW = ID_STAMPTOOLPANEL + 1, 
+        ID_CATALOGPAGE, 
+        ID_STAMPTREECTRL, 
+        ID_NOTEBOOK, 
+        ID_DESCRIPTIONPANELFOREIGN, 
+        ID_GALLERYSCROLLEDWINDOW, 
+        ID_TITLETEXTCTRL, 
+        ID_STAMPTOOL, 
+        ID_ALBUMSPLITTERWINDOWFOREIGN, 
+        ID_GENERTELISTFOREIGN, 
+        ID_IMAGEALLERYPANEL, 
+        ID_IMAGEALLERYPANEL1, 
+        ID_DESIGNPAGE, 
         ID_DESIGNSPLITTERWINDOW
     };
 
     StampToolPanel( );
 
-    StampToolPanel( wxWindow* parent,
-        wxWindowID id = ID_STAMPTOOLPANEL,
-        const wxPoint& pos = SYMBOL_STAMPTOOLPANEL_POSITION,
-        const wxSize& size = SYMBOL_STAMPTOOLPANEL_SIZE,
+    StampToolPanel( wxWindow* parent, 
+        wxWindowID id = ID_STAMPTOOLPANEL, 
+        const wxPoint& pos = SYMBOL_STAMPTOOLPANEL_POSITION, 
+        const wxSize& size = SYMBOL_STAMPTOOLPANEL_SIZE, 
         long style = SYMBOL_STAMPTOOLPANEL_STYLE );
 
-    bool Create( wxWindow* parent,
-        wxWindowID id = ID_STAMPTOOLPANEL,
-        const wxPoint& pos = SYMBOL_STAMPTOOLPANEL_POSITION,
-        const wxSize& size = SYMBOL_STAMPTOOLPANEL_SIZE,
+    bool Create( wxWindow* parent, 
+        wxWindowID id = ID_STAMPTOOLPANEL, 
+        const wxPoint& pos = SYMBOL_STAMPTOOLPANEL_POSITION, 
+        const wxSize& size = SYMBOL_STAMPTOOLPANEL_SIZE, 
         long style = SYMBOL_STAMPTOOLPANEL_STYLE );
 
     ~StampToolPanel( );
@@ -150,7 +150,7 @@ private:
     AlbumPanel* m_albumAlbumPanel;
     StampDescriptionPanel* m_stampDescriptionPanel;
     GenerateList* m_generateListPanel;
-    ImageGalleryPanel* m_imageGalleryPanel;
+//    ImageGalleryPanel* m_imageGalleryPanel;
     //    WebViewPanel* m_webViewPanel;
 };
 

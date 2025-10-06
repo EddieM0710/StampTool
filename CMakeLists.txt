@@ -30,6 +30,7 @@ set( StampTool_GuiFiles_Source_Directory "${src_Directory}/gui" )
 set( StampTool_UtilsFiles_Source_Directory "${src_Directory}/utils" )
 set( StampTool_CollectionFiles_Source_Directory "${src_Directory}/collection" )
 set( StampTool_TOCFiles_Source_Directory "${src_Directory}/toc" )
+set( StampTool_IMAGEFETCHFiles_Source_Directory "${src_Directory}/imagefetch" )
 
 set( WXPDF_FONTPATH "C:/mingw64/local-wx-debug-winlibs/lib/fonts" )
 
@@ -42,7 +43,8 @@ set(CMAKE_EXE_LINKER_FLAGS_DEBUG    "" CACHE STRING "" FORCE)
 set(CMAKE_SHARED_LINKER_FLAGS_DEBUG "" CACHE STRING "" FORCE)
 
 set(CMAKE_FIND_PACKAGE_PREFER_CONFIG ON)
-find_package(wxWidgets CONFIG REQUIRED COMPONENTS base core xml)
+find_package(wxWidgets CONFIG 
+REQUIRED COMPONENTS base core xml net )
 find_package(wxpdfdoc CONFIG REQUIRED)
 
 get_target_property(_wx_core_incs wx::core INTERFACE_INCLUDE_DIRECTORIES)
@@ -58,9 +60,10 @@ target_include_directories(stamp_includes INTERFACE
   ${StampTool_CatalogFiles_Source_Directory}
   ${StampTool_TOCFiles_Source_Directory}
   ${StampTool_CollectionFiles_Source_Directory}
+  ${StampTool_ImageFetchFiles_Source_Directory}
 )
 add_library(project_wx INTERFACE)
-target_link_libraries(project_wx INTERFACE wx::base wx::core wx::xml)
+target_link_libraries(project_wx INTERFACE wx::base wx::core wx::xml wx::net bcrypt)
 
 add_library(project_pdfdoc INTERFACE)
 target_link_libraries(project_pdfdoc INTERFACE wxpdfdoc::wxpdfdoc)

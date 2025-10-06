@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -68,8 +68,8 @@ IdentificationPanel::IdentificationPanel( )
     Init( );
 }
 
-IdentificationPanel::IdentificationPanel( wxWindow* parent, wxWindowID id,
-    const wxPoint& pos,
+IdentificationPanel::IdentificationPanel( wxWindow* parent, wxWindowID id, 
+    const wxPoint& pos, 
     const wxSize& size, long style )
 {
     Init( );
@@ -99,8 +99,8 @@ void IdentificationPanel::Clear( )
 }
 
 
-bool IdentificationPanel::Create( wxWindow* parent, wxWindowID id,
-    const wxPoint& pos, const wxSize& size,
+bool IdentificationPanel::Create( wxWindow* parent, wxWindowID id, 
+    const wxPoint& pos, const wxSize& size, 
     long style )
 {
     SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
@@ -179,7 +179,7 @@ void IdentificationPanel::CreateControls( )
     // m_catCode = new wxTextCtrl( thePanel, ++lastID, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE );
     // catCodeVerticalSizer->Add( m_catCode, 1, wxGROW | wxALL, 0 );
 
-    m_catCode = SetupMultilineLabeledText( thePanel, panelVerticalSizer, lastID, "Catalog Codes", true,
+    m_catCode = SetupMultilineLabeledText( thePanel, panelVerticalSizer, lastID, "Catalog Codes", true, 
         wxCommandEventHandler( IdentificationPanel::OnCatalogCodesChanged ) );
 
 
@@ -200,7 +200,7 @@ void IdentificationPanel::CreateControls( )
     //  m_emission = new wxChoice( thePanel, ++lastID, wxDefaultPosition, wxDefaultSize, m_emissionStrings, 0 );
 
 
-    m_emission = SetupChoice( thePanel, panelVerticalSizer, lastID, _( "Emission" ),
+    m_emission = SetupChoice( thePanel, panelVerticalSizer, lastID, _( "Emission" ), 
         m_emissionStrings, wxCommandEventHandler( IdentificationPanel::OnEmissionchoiceSelected ) );
 
     m_emission->SetStringSelection( _( "Unknown" ) );
@@ -231,7 +231,7 @@ void IdentificationPanel::CreateControls( )
     //m_format = new wxChoice( thePanel, ++lastID, wxDefaultPosition, wxDefaultSize, m_formatStrings, 0 );
    // formatHorizontalSizer->Add( m_format, 1, wxGROW | wxALL, 1 );
 
-    m_format = SetupChoice( thePanel, panelVerticalSizer, lastID, _( "Format" ),
+    m_format = SetupChoice( thePanel, panelVerticalSizer, lastID, _( "Format" ), 
         m_formatStrings, wxCommandEventHandler( IdentificationPanel::OnEmissionchoiceSelected ) );
     m_format->SetStringSelection( _( "Unknown" ) );
 
@@ -275,7 +275,7 @@ void IdentificationPanel::CreateControls( )
   // wxBoxSizer* MountHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
    // panelVerticalSizer->Add( buttonHorizontalSizer, 0, wxGROW | wxALL, 0 );
 
-    wxStaticText* mountStaticText = new wxStaticText( thePanel, wxID_STATIC, Catalog::DataTypeNames[ Catalog::DT_StampMount ],
+    wxStaticText* mountStaticText = new wxStaticText( thePanel, wxID_STATIC, Catalog::DataTypeNames[ Catalog::DT_StampMount ], 
         wxDefaultPosition, wxDefaultSize, 0 );
     buttonHorizontalSizer->Add( mountStaticText, 0, wxALIGN_CENTER_VERTICAL | wxALL, 0 );
 
@@ -287,13 +287,13 @@ void IdentificationPanel::CreateControls( )
     {
         itemComboBox3Strings.Add( Catalog::mounts[ i ].name );
     }
-    mountComboBox = new wxComboBox( thePanel, ID_STAMPMOUNTTEXTBOX, wxEmptyString,
+    mountComboBox = new wxComboBox( thePanel, ID_STAMPMOUNTTEXTBOX, wxEmptyString, 
         wxDefaultPosition, wxDefaultSize, itemComboBox3Strings, wxCB_DROPDOWN );
     buttonHorizontalSizer->Add( mountComboBox, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
 
 
-    wxButton* itemButton10 = new wxButton( thePanel, ID_COLNECTBUTTON, _( "Colnect" ),
+    wxButton* itemButton10 = new wxButton( thePanel, ID_COLNECTBUTTON, _( "Colnect" ), 
         wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT );
     buttonHorizontalSizer->Add( itemButton10, 0, wxALIGN_LEFT | wxALL, 5 );
 

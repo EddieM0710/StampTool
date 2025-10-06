@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -55,40 +55,40 @@ class PreferencesDialog : public wxDialog
 public:
     enum PreferencesDialogGuiDefs
     {
-        ID_IMAGEDIRECTORTEXTBOX = ID_PREFERENCESDIALOG + 1,
-        ID_DIRPICKERBTN,
-        ID_COUNTRYTEXTBOX,
-        ID_CATALOGTEXTBOX,
-        ID_OPENLASTCHECKBOX,
-        ID_RECENTSIZETEXTCTRL,
-        ID_NOTEBOOK,
-        ID_NOTEBOOKDETAILSPANEL,
-        ID_NOTEBOOKFONTSPANEL,
-        ID_NOTEBOOKCOLLECTIONPANEL,
-        ID_NBRFONTPICKER,
-        ID_NBRCOLORPICKER,
-        ID_TITLEFONTPICKER,
-        ID_TITLECOLORPICKER,
-        ID_TEXTFONTPICKER,
-        ID_TEXTCOLORPICKER,
-        ID_NAMEFONTPICKER,
-        ID_NAMECOLORPICKER,
-        ID_NBRDEFAULTFONTBUTTON,
-        ID_TITLEDEFAULTFONTBUTTON,
-        ID_TEXTDEFAULTFONTBUTTON,
-        ID_NAMEDEFAULTFONTBUTTON,
-        ID_COLLECTIONGRID,
+        ID_IMAGEDIRECTORTEXTBOX = ID_PREFERENCESDIALOG + 1, 
+        ID_DIRPICKERBTN, 
+        ID_COUNTRYTEXTBOX, 
+        ID_CATALOGTEXTBOX, 
+        ID_OPENLASTCHECKBOX, 
+        ID_RECENTSIZETEXTCTRL, 
+        ID_NOTEBOOK, 
+        ID_NOTEBOOKDETAILSPANEL, 
+        ID_NOTEBOOKFONTSPANEL, 
+        ID_NOTEBOOKCOLLECTIONPANEL, 
+        ID_NBRFONTPICKER, 
+        ID_NBRCOLORPICKER, 
+        ID_TITLEFONTPICKER, 
+        ID_TITLECOLORPICKER, 
+        ID_TEXTFONTPICKER, 
+        ID_TEXTCOLORPICKER, 
+        ID_NAMEFONTPICKER, 
+        ID_NAMECOLORPICKER, 
+        ID_NBRDEFAULTFONTBUTTON, 
+        ID_TITLEDEFAULTFONTBUTTON, 
+        ID_TEXTDEFAULTFONTBUTTON, 
+        ID_NAMEDEFAULTFONTBUTTON, 
+        ID_COLLECTIONGRID, 
         ID_LastID
     };
 
 
 
     PreferencesDialog( );
-    PreferencesDialog( wxWindow* parent,
-        wxWindowID id = SYMBOL_PreferencesDialog_IDNAME,
-        const wxString& caption = SYMBOL_PreferencesDialog_TITLE,
-        const wxPoint& pos = SYMBOL_PreferencesDialog_POSITION,
-        const wxSize& size = SYMBOL_PreferencesDialog_SIZE,
+    PreferencesDialog( wxWindow* parent, 
+        wxWindowID id = SYMBOL_PreferencesDialog_IDNAME, 
+        const wxString& caption = SYMBOL_PreferencesDialog_TITLE, 
+        const wxPoint& pos = SYMBOL_PreferencesDialog_POSITION, 
+        const wxSize& size = SYMBOL_PreferencesDialog_SIZE, 
         long style = SYMBOL_PreferencesDialog_STYLE );
 
 
@@ -137,17 +137,17 @@ public:
         return m_dirty;
     };
 
-    void UpdateDetails();
+    void UpdateDetails( );
 
     void InitDetailsPanel( );
 
-    void UpdateFonts();
+    void UpdateFonts( );
 
    // void UpdateFonts( );
 
-    void UpdateCollectionList();
+    void UpdateCollectionList( );
 
-    void InitCollectionGrid();
+    void InitCollectionGrid( );
 
 
 

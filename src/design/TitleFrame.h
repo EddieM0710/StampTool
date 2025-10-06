@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -77,11 +77,9 @@ namespace Design
             return m_subHeadingFrame->GetColor( );
         };
         void SetHeadingFont( wxFont newFont, wxColour newColor ) {
-            //std::cout << "TitleFrame::SetHeadingFont " << newFont.GetNativeFontInfoDesc( ) << "\n";
             m_headingFrame->SetFont( newFont, newColor );
         };
         void SetSubHeadingFont( wxFont newFont, wxColour newColor ) {
-            //std::cout << "TitleFrame::SetSubHeadingFont " << newFont.GetNativeFontInfoDesc( ) << "\n";
             m_subHeadingFrame->SetFont( newFont, newColor );
         };
 

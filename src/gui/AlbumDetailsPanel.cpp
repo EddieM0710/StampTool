@@ -9,7 +9,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -117,11 +117,11 @@ void AlbumDetailsPanel::CreateControls( )
     wxBoxSizer* notebookHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
     theDialogVerticalSizer->Add( notebookHorizontalSizer, 1, wxGROW | wxALL, 0 );
 
-    wxNotebook* notebook = new wxNotebook( theDialog, ++lastID,
+    wxNotebook* notebook = new wxNotebook( theDialog, ++lastID, 
         wxDefaultPosition, wxDefaultSize, wxBK_DEFAULT );
     notebookHorizontalSizer->Add( notebook, 1, wxGROW | wxALL, 0 );
 
-    wxPanel* m_albumSettingsPanel = new wxPanel( notebook, ++lastID, wxDefaultPosition,
+    wxPanel* m_albumSettingsPanel = new wxPanel( notebook, ++lastID, wxDefaultPosition, 
         wxDefaultSize, wxTAB_TRAVERSAL );
     m_albumSettingsPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
 
@@ -131,14 +131,14 @@ void AlbumDetailsPanel::CreateControls( )
     wxBoxSizer* detailsHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
     detailsVerticalSizer->Add( detailsHorizontalSizer, 1, wxGROW | wxALL, 5 );
 
-    // m_name = SetupLabelText( m_albumSettingsPanel, detailsVerticalSizer, ++lastID,
+    // m_name = SetupLabelText( m_albumSettingsPanel, detailsVerticalSizer, ++lastID, 
      //    _( "Name" ), true, wxCommandEventHandler( AlbumDetailsPanel::OnNameClick ) );
 
     wxStaticBox* itemStaticBoxSizerStatic = new wxStaticBox( m_albumSettingsPanel, wxID_ANY, _( "Name" ) );
     wxStaticBoxSizer* itemStaticBoxSizer = new wxStaticBoxSizer( itemStaticBoxSizerStatic, wxHORIZONTAL );
     detailsHorizontalSizer->Add( itemStaticBoxSizer, 1, wxGROW | wxALL, 2 );
 
-    m_name = new wxTextCtrl( itemStaticBoxSizer->GetStaticBox( ), ++lastID,
+    m_name = new wxTextCtrl( itemStaticBoxSizer->GetStaticBox( ), ++lastID, 
         wxEmptyString, wxDefaultPosition, wxDefaultSize, wxNO_BORDER );
     itemStaticBoxSizer->Add( m_name, 1, wxGROW | wxALL, 2 );
 
@@ -147,24 +147,24 @@ void AlbumDetailsPanel::CreateControls( )
     notebook->AddPage( m_albumSettingsPanel, _( "Album Settings" ) );
 
 
-    m_fontDetailsPanel = new FontDefaultsPanel( notebook, ++lastID, "",
+    m_fontDetailsPanel = new FontDefaultsPanel( notebook, ++lastID, "", 
         wxDefaultPosition, wxDefaultSize, wxNO_BORDER | wxTAB_TRAVERSAL );
     m_fontDetailsPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
     notebook->AddPage( m_fontDetailsPanel, _( "Font Defaults" ) );
 
 
-    m_pageDetailsPanel = new PageDefaultsPanel( notebook, ++lastID, "",
+    m_pageDetailsPanel = new PageDefaultsPanel( notebook, ++lastID, "", 
         wxDefaultPosition, wxDefaultSize, wxNO_BORDER | wxTAB_TRAVERSAL );
     m_pageDetailsPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
     notebook->AddPage( m_pageDetailsPanel, _( "Page Defaults" ) );
 
 
-    m_frameDetailsPanel = new FrameDefaultsPanel( notebook, ++lastID, "",
+    m_frameDetailsPanel = new FrameDefaultsPanel( notebook, ++lastID, "", 
         wxDefaultPosition, wxDefaultSize, wxNO_BORDER | wxTAB_TRAVERSAL );
     m_frameDetailsPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
     notebook->AddPage( m_frameDetailsPanel, _( "Row/Col Defaults" ) );
 
-    m_stampDetailsPanel = new StampDefaultsPanel( notebook, ++lastID, "",
+    m_stampDetailsPanel = new StampDefaultsPanel( notebook, ++lastID, "", 
         wxDefaultPosition, wxDefaultSize, wxNO_BORDER | wxTAB_TRAVERSAL );
     m_stampDetailsPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
     notebook->AddPage( m_stampDetailsPanel, _( "Stamp Defaults" ) );
@@ -172,7 +172,7 @@ void AlbumDetailsPanel::CreateControls( )
     Layout( );
 
     m_name->SetToolTip( "Name of Album" );
-    // m_paperHeight->SetToolTip( "Height of paper in printer (in mm)" );
+    // m_paperHeight->SetToolTip( "Height of paper in printer ( in mm )" );
 }
 
 //--------------

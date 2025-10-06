@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -47,7 +47,7 @@ namespace Design {
 #define SYMBOL_STAMPDETAILSPANEL_STYLE wxCAPTION | wxRESIZE_BORDER | wxSYSTEM_MENU | wxCLOSE_BOX | wxTAB_TRAVERSAL
 #define SYMBOL_STAMPDETAILSPANEL_TITLE _( "StampDetailsPanel" )
 #define SYMBOL_STAMPDETAILSPANEL_IDNAME ID_STAMPDETAILSDIALOG
-#define SYMBOL_STAMPDETAILSPANEL_SIZE wxSize( -1, -1)
+#define SYMBOL_STAMPDETAILSPANEL_SIZE wxSize( -1, -1 )
 #define SYMBOL_STAMPDETAILSPANEL_POSITION wxDefaultPosition
 
 
@@ -61,28 +61,28 @@ class StampDetailsPanel : public HelperPanel
 public:
 
     enum StampDetailsDialogGuiDefs {
-        ID_IDLABELTEXTBOX = ID_STAMPDETAILSDIALOG,
-        // ID_CATCODETEXTBOX,
-        // ID_NAMELABELEDTEXTBOX1,
-        // ID_HEIGHTLABELEDTEXTBOX,
-        // ID_WIDTHLABELEDTEXTBOX,
-        // ID_SELVAGEHEIGHTLABELEDTEXTBOX,
-        // ID_SELVAGEWIDTHLABELEDTEXTBOX,
-        // ID_MOUNTHEIGHTLABELEDTEXTBOX,
-        // ID_MOUNTWIDTHLABELEDTEXTBOX,
-        // ID_REFRESHBUTTON,
-        // ID_VALIDATEBUTTON,
-        // ID_LISTCTRL,
-        // ID_CATNBRCHECKBOX,
-        // ID_IMAGEPATHLABELEDTEXTBOX,
-        // ID_STAMPNAMEPANEL,
-        // ID_STAMPLAYOUTPANEL,
-        // ID_STAMPLAYOUTTEXTCTRL,
-        // ID_DEFAULTRADIOBUTTON,
-        // ID_TOPRADIOBUTTON,
-        // ID_BOTTOMRADIOBUTTON,
-        // ID_LEFTRADIOBUTTON,
-        // ID_RIGHTRADIOBUTTON,
+        ID_IDLABELTEXTBOX = ID_STAMPDETAILSDIALOG, 
+        // ID_CATCODETEXTBOX, 
+        // ID_NAMELABELEDTEXTBOX1, 
+        // ID_HEIGHTLABELEDTEXTBOX, 
+        // ID_WIDTHLABELEDTEXTBOX, 
+        // ID_SELVAGEHEIGHTLABELEDTEXTBOX, 
+        // ID_SELVAGEWIDTHLABELEDTEXTBOX, 
+        // ID_MOUNTHEIGHTLABELEDTEXTBOX, 
+        // ID_MOUNTWIDTHLABELEDTEXTBOX, 
+        // ID_REFRESHBUTTON, 
+        // ID_VALIDATEBUTTON, 
+        // ID_LISTCTRL, 
+        // ID_CATNBRCHECKBOX, 
+        // ID_IMAGEPATHLABELEDTEXTBOX, 
+        // ID_STAMPNAMEPANEL, 
+        // ID_STAMPLAYOUTPANEL, 
+        // ID_STAMPLAYOUTTEXTCTRL, 
+        // ID_DEFAULTRADIOBUTTON, 
+        // ID_TOPRADIOBUTTON, 
+        // ID_BOTTOMRADIOBUTTON, 
+        // ID_LEFTRADIOBUTTON, 
+        // ID_RIGHTRADIOBUTTON, 
         ID_LastID
     };
 

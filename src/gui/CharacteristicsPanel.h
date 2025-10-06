@@ -12,7 +12,7 @@
   * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -54,18 +54,18 @@ class CharacteristicsPanel : public wxPanel
 public:
 
     enum CharacteristicsPanelGuiDefs {
-        ID_FACETEXTBOX = ID_CHARACTERISTICSPANEL + 1,
-        ID_CURRENCYTEXTBOX,
-        ID_HEIGHTEXTBOX,
-        ID_WIDTHTEXTBOX,
-        ID_PERFORATIONTEXTBOX,
-        ID_WATERMARKEXTBOX,
-        ID_GUMTEXTBOX,
-        ID_VARIANTTEXTBOX,
-        ID_COLORSTEXTBOX,
-        ID_PAPERTEXTBOX,
-        ID_PRINTINGTEXTBOX,
-        ID_PRINTRUNTEXTBOX,
+        ID_FACETEXTBOX = ID_CHARACTERISTICSPANEL + 1, 
+        ID_CURRENCYTEXTBOX, 
+        ID_HEIGHTEXTBOX, 
+        ID_WIDTHTEXTBOX, 
+        ID_PERFORATIONTEXTBOX, 
+        ID_WATERMARKEXTBOX, 
+        ID_GUMTEXTBOX, 
+        ID_VARIANTTEXTBOX, 
+        ID_COLORSTEXTBOX, 
+        ID_PAPERTEXTBOX, 
+        ID_PRINTINGTEXTBOX, 
+        ID_PRINTRUNTEXTBOX, 
         ID_EXPIRYDATEEXTBOX
     };
 
@@ -85,11 +85,11 @@ public:
      * @param  style	The window style.
      * @see wxPanel.
      */
-    CharacteristicsPanel( wxWindow* parent,
-        wxWindowID id = SYMBOL_CHARACTERISTICSPANEL_IDNAME,
+    CharacteristicsPanel( wxWindow* parent, 
+        wxWindowID id = SYMBOL_CHARACTERISTICSPANEL_IDNAME, 
         const wxPoint& pos
-        = SYMBOL_CHARACTERISTICSPANEL_POSITION,
-        const wxSize& size = SYMBOL_CHARACTERISTICSPANEL_SIZE,
+        = SYMBOL_CHARACTERISTICSPANEL_POSITION, 
+        const wxSize& size = SYMBOL_CHARACTERISTICSPANEL_SIZE, 
         long style = SYMBOL_CHARACTERISTICSPANEL_STYLE );
 
     /**
@@ -110,10 +110,10 @@ public:
      * @return bool
      *
      */
-    bool Create( wxWindow* parent,
-        wxWindowID id = SYMBOL_CHARACTERISTICSPANEL_IDNAME,
-        const wxPoint& pos = SYMBOL_CHARACTERISTICSPANEL_POSITION,
-        const wxSize& size = SYMBOL_CHARACTERISTICSPANEL_SIZE,
+    bool Create( wxWindow* parent, 
+        wxWindowID id = SYMBOL_CHARACTERISTICSPANEL_IDNAME, 
+        const wxPoint& pos = SYMBOL_CHARACTERISTICSPANEL_POSITION, 
+        const wxSize& size = SYMBOL_CHARACTERISTICSPANEL_SIZE, 
         long style = SYMBOL_CHARACTERISTICSPANEL_STYLE );
 
     /// @brief Creates the controls and sizers

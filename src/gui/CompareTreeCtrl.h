@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -129,8 +129,8 @@ class CompareTreeCtrl : public wxTreeCtrl
 public:
     enum
     {
-        CatalogListTree_Quit = wxID_EXIT,
-        CatalogListTree_About = wxID_ABOUT,
+        CatalogListTree_Quit = wxID_EXIT, 
+        CatalogListTree_About = wxID_ABOUT, 
         CatalogListTree_Colnect
 
     };
@@ -139,7 +139,7 @@ public:
 
     CompareTreeCtrl( ) { }
 
-    CompareTreeCtrl( wxWindow* parent, const wxWindowID id, const wxPoint& pos,
+    CompareTreeCtrl( wxWindow* parent, const wxWindowID id, const wxPoint& pos, 
         const wxSize& size, long style );
 
     virtual ~CompareTreeCtrl( void ) { }
@@ -156,9 +156,9 @@ public:
 
     ComparisonResultType CompareDates( wxString date1, wxString date2 );
 
-    CompareTreeItemData* CreateChildData( wxXmlNode* targetNode, wxXmlNode* mergeNode,
-        wxString& label,
-        Catalog::IconID& icon,
+    CompareTreeItemData* CreateChildData( wxXmlNode* targetNode, wxXmlNode* mergeNode, 
+        wxString& label, 
+        Catalog::IconID& icon, 
         Catalog::CatalogBaseType& nodeType );
 
     void CreateStateImageList( );
@@ -180,7 +180,7 @@ public:
 
     wxString GetID( wxTreeItemId catTreeID );
 
-    wxString GetImage( wxTreeItemId catTreeID );
+    wxString GetImageName( wxTreeItemId catTreeID );
 
     wxString GetImageFullName( wxTreeItemId catTreeID );
 

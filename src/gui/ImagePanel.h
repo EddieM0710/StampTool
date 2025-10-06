@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -66,15 +66,15 @@ public:
      */
     ImagePanel( );
 
-    ImagePanel( wxWindow* parent, wxWindowID id = SYMBOL_IMAGEPANEL_IDNAME,
-        const wxPoint& pos = SYMBOL_IMAGEPANEL_POSITION,
-        const wxSize& size = SYMBOL_IMAGEPANEL_SIZE,
+    ImagePanel( wxWindow* parent, wxWindowID id = SYMBOL_IMAGEPANEL_IDNAME, 
+        const wxPoint& pos = SYMBOL_IMAGEPANEL_POSITION, 
+        const wxSize& size = SYMBOL_IMAGEPANEL_SIZE, 
         long style = SYMBOL_IMAGEPANEL_STYLE );
 
 
-    bool Create( wxWindow* parent, wxWindowID id = SYMBOL_IMAGEPANEL_IDNAME,
-        const wxPoint& pos = SYMBOL_IMAGEPANEL_POSITION,
-        const wxSize& size = SYMBOL_IMAGEPANEL_SIZE,
+    bool Create( wxWindow* parent, wxWindowID id = SYMBOL_IMAGEPANEL_IDNAME, 
+        const wxPoint& pos = SYMBOL_IMAGEPANEL_POSITION, 
+        const wxSize& size = SYMBOL_IMAGEPANEL_SIZE, 
         long style = SYMBOL_IMAGEPANEL_STYLE );
 
     ~ImagePanel( );

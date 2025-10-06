@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -73,7 +73,7 @@ namespace Utils {
     Project::Project( )
     {
         m_ProjectDoc = ( wxXmlDocument* ) 0;
-        m_projectCountryCode = GetSettings( )->GetDefaultCountryCode();
+        m_projectCountryCode = GetSettings( )->GetDefaultCountryCode( );
         m_projectCatalogCode = GetSettings( )->GetDefaultCatalogCode( );
 
         m_projectFilename = "";
@@ -109,16 +109,16 @@ namespace Utils {
 
     void Project::RemoveCatalogVolume( wxString filename )
     {
-        wxXmlNode* node = GetCatalogListNode();
+        wxXmlNode* node = GetCatalogListNode( );
         wxString property = "FileName";
         wxXmlNode* child = Utils::FindFirstChildWithPropertyofValue( node, property, filename );
-        wxXmlNode* parent = child->GetParent();
-        parent->RemoveChild(child);
+        wxXmlNode* parent = child->GetParent( );
+        parent->RemoveChild( child );
     }
 
         //-------
 
-        void Project::CloseProject()
+        void Project::CloseProject( )
     {
         if ( m_ProjectDoc )  m_ProjectDoc->~wxXmlDocument( );
         m_catalogListNode = 0;
@@ -135,12 +135,12 @@ namespace Utils {
         if ( IsDirty( ) )
         {
             // query whether to save first 
-            wxMessageDialog* dlg = new wxMessageDialog(
-                parent,
+            wxMessageDialog* dlg = new wxMessageDialog( 
+                parent, 
                 wxT( "The current data has been changed but not saved. \n"\
                     "Select \"OK\" to close the file losing the changes.\n"\
-                    "Or select \"Cancel\" to quit file open process.\n" ),
-                wxT( "2 ! Unsaved modifications.\n" ),
+                    "Or select \"Cancel\" to quit file open process.\n" ), 
+                wxT( "2 ! Unsaved modifications.\n" ), 
                 wxOK | wxCANCEL | wxCENTER );
             int rsp = dlg->ShowModal( );
             if ( rsp == wxID_CANCEL )
@@ -222,63 +222,6 @@ namespace Utils {
 
     //-------
 
-    wxString Project::GetImageFullPath( wxString imageName )
-    {
-        wxString projectPath = GetImageDirectory( );
-        projectPath += "/" + imageName;
-        wxFileName file( projectPath );
-        wxString str = file.GetFullPath( );
-        file.MakeAbsolute( );
-        str = file.GetFullPath( );
-        return str;
-    }
-
-    //-------
-
-    wxImage Project::GetImage( wxString filename )
-    {
-        wxImage image;
-        if ( filename.IsEmpty( ) )
-        {
-            image = wxNullImage;
-        }
-        else
-        {
-            wxString str = GetImageFullPath( filename );
-
-            if ( !ImageExists( str ) )
-            {
-                image = wxNullImage; ;
-            }
-            else
-            {
-                image = wxImage( str );
-
-                if ( !image.IsOk( ) )
-                {
-                    image = wxNullImage; ;
-                }
-            }
-        }
-        return image;
-    }
-
-    //-------
-
-    bool Project::ImageExists( wxString imageName )
-    {
-        wxImage image;
-
-        if ( wxFileExists( imageName ) )
-        {
-            if ( image.CanRead( imageName ) )
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-
     //-------
 
     void Project::InitProject( )
@@ -331,7 +274,7 @@ namespace Utils {
         {
             return false;
         }
-        //return Load(stream, encoding, flags);
+        //return Load( stream, encoding, flags );
 
 
         if ( !m_ProjectDoc->Load( stream ) )
@@ -344,8 +287,7 @@ namespace Utils {
         wxString name = projectRoot->GetName( );
         if ( name.Cmp( "Project" ) )
         {
-            // std::cout << "Initial node must be <Project>" << "\n";
-            // std::cout << "Found \"" << name << "\" instead.\n";
+
             return false;
         }
         LoadAttributes( projectRoot );
@@ -583,7 +525,7 @@ namespace Utils {
 
     void Project::SetProjectFilename( wxString name )
     {
-        if ( name.IsEmpty() )
+        if ( name.IsEmpty( ) )
         {
             m_projectFilename = "UndefinedName.spt";  
         }

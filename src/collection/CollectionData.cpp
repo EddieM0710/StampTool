@@ -26,6 +26,8 @@
 namespace Inventory {
 
 
+    //-------
+
     void CollectionData::SetDirty( bool state )
     {
         m_dirty = state;
@@ -34,6 +36,8 @@ namespace Inventory {
             GetAppData( )->SetDirty( true );
         }
     }
+
+    //-------
 
     // int CollectionData::FindStringIndex( wxString str )
     // {

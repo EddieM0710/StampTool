@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -75,7 +75,7 @@ PageDetailsPanel::PageDetailsPanel( )
     Init( );
 }
 
-PageDetailsPanel::PageDetailsPanel( wxWindow* parent, wxWindowID id,
+PageDetailsPanel::PageDetailsPanel( wxWindow* parent, wxWindowID id, 
     const wxString& caption, const wxPoint& pos, const wxSize& size, long style )
 {
     Init( );
@@ -88,7 +88,7 @@ PageDetailsPanel::PageDetailsPanel( wxWindow* parent, wxWindowID id,
  * PageDetailsPanel creator
  */
 
-bool PageDetailsPanel::Create( wxWindow* parent, wxWindowID id,
+bool PageDetailsPanel::Create( wxWindow* parent, wxWindowID id, 
     const wxString& caption, const wxPoint& pos, const wxSize& size, long style )
 {
     SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY | wxWS_EX_BLOCK_EVENTS );
@@ -128,12 +128,12 @@ void PageDetailsPanel::CreateControls( )
 
     int lastID = ID_LastID;
 
-    wxNotebook* focusNotebook = new wxNotebook( theDialog, ++lastID,
+    wxNotebook* focusNotebook = new wxNotebook( theDialog, ++lastID, 
         wxDefaultPosition, wxDefaultSize, wxBK_TOP );
     focusNotebook->SetPadding( wxSize( 1, 1 ) );
     detailsHorizontalSizer->Add( focusNotebook, 1, wxGROW | wxALL, 5 );
 
-    wxPanel* commonPanel = new wxPanel( focusNotebook, ++lastID, wxDefaultPosition,
+    wxPanel* commonPanel = new wxPanel( focusNotebook, ++lastID, wxDefaultPosition, 
         wxDefaultSize, wxTAB_TRAVERSAL );
     commonPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
 
@@ -155,7 +155,7 @@ void PageDetailsPanel::CreateControls( )
 
 
 
-    wxPanel* advancedPanel = new wxPanel( focusNotebook, ++lastID, wxDefaultPosition,
+    wxPanel* advancedPanel = new wxPanel( focusNotebook, ++lastID, wxDefaultPosition, 
         wxDefaultSize, wxTAB_TRAVERSAL );
     advancedPanel->SetExtraStyle( wxWS_EX_VALIDATE_RECURSIVELY );
 
@@ -176,37 +176,37 @@ void PageDetailsPanel::CreateControls( )
 
 
 
-    m_titleHelper = SetupTitleHelper( commonPanel, leftCommonVerticalSizer, lastID, DefaultTitleHelperStyle,
-        wxCommandEventHandler( PageDetailsPanel::OnTitleCheckboxClick ),
-        wxCommandEventHandler( PageDetailsPanel::OnTitleTextChanged ),
-        wxCommandEventHandler( PageDetailsPanel::OnSubTitleCheckboxClick ),
+    m_titleHelper = SetupTitleHelper( commonPanel, leftCommonVerticalSizer, lastID, DefaultTitleHelperStyle, 
+        wxCommandEventHandler( PageDetailsPanel::OnTitleCheckboxClick ), 
+        wxCommandEventHandler( PageDetailsPanel::OnTitleTextChanged ), 
+        wxCommandEventHandler( PageDetailsPanel::OnSubTitleCheckboxClick ), 
         wxCommandEventHandler( PageDetailsPanel::OnSubTitleTextChanged ) );
 
-    SetupFontPicker( advancedPanel, leftAdvancedVerticalSizer, lastID,
-        _( "Title" ), _( "Default" ),
-        m_titleFontPicker, m_titleColorPicker,
-        wxFontPickerEventHandler( PageDetailsPanel::OnTitleFontPicker ),
-        wxColourPickerEventHandler( PageDetailsPanel::OnTitleColorPicker ),
+    SetupFontPicker( advancedPanel, leftAdvancedVerticalSizer, lastID, 
+        _( "Title" ), _( "Default" ), 
+        m_titleFontPicker, m_titleColorPicker, 
+        wxFontPickerEventHandler( PageDetailsPanel::OnTitleFontPicker ), 
+        wxColourPickerEventHandler( PageDetailsPanel::OnTitleColorPicker ), 
         wxCommandEventHandler( PageDetailsPanel::OnTitleDefaultClick ) );
 
 
-    SetupFontPicker( advancedPanel, leftAdvancedVerticalSizer, lastID,
-        _( "SubTitle" ), _( "Default" ),
-        m_subTitleFontPicker, m_subTitleColorPicker,
-        wxFontPickerEventHandler( PageDetailsPanel::OnSubTitleFontPicker ),
-        wxColourPickerEventHandler( PageDetailsPanel::OnSubTitleColorPicker ),
+    SetupFontPicker( advancedPanel, leftAdvancedVerticalSizer, lastID, 
+        _( "SubTitle" ), _( "Default" ), 
+        m_subTitleFontPicker, m_subTitleColorPicker, 
+        wxFontPickerEventHandler( PageDetailsPanel::OnSubTitleFontPicker ), 
+        wxColourPickerEventHandler( PageDetailsPanel::OnSubTitleColorPicker ), 
         wxCommandEventHandler( PageDetailsPanel::OnSubTitleDefaultClick ) );
 
 
     wxArrayString m_orientationChoiceStrings( 2, Design::OrientationStrings );
-    m_orientationChoice = SetupChoice( commonPanel, middleCommonVerticalSizer, ++lastID,
-        _( "Orientation:" ), m_orientationChoiceStrings,
+    m_orientationChoice = SetupChoice( commonPanel, middleCommonVerticalSizer, ++lastID, 
+        _( "Orientation:" ), m_orientationChoiceStrings, 
         wxCommandEventHandler( PageDetailsPanel::OnOrientationchoiceSelected ) );
     m_orientationChoice->SetSelection( Design::AT_Portrait );
 
 
     wxBoxSizer* marginBoxVSizer;
-    wxStaticBox* marginBox = SetupBoxSizer( advancedPanel, middleAdvancedVerticalSizer,
+    wxStaticBox* marginBox = SetupBoxSizer( advancedPanel, middleAdvancedVerticalSizer, 
         "Page Margin", lastID, marginBoxVSizer, wxVERTICAL );
 
     wxBoxSizer* itemBoxSizer7 = new wxBoxSizer( wxHORIZONTAL );
@@ -214,12 +214,12 @@ void PageDetailsPanel::CreateControls( )
 
     HorizontalSpacer( itemBoxSizer7 );
 
-    m_topPageMargin = SetupLabelText( marginBox, itemBoxSizer7, lastID,
+    m_topPageMargin = SetupLabelText( marginBox, itemBoxSizer7, lastID, 
         _( "Top" ), false, wxCommandEventHandler( PageDetailsPanel::OnTopPageMargin ) );
     m_topPageMargin->SetToolTip( _( "Page top margin in mm." ) );
     HorizontalSpacer( itemBoxSizer7 );
 
-    m_bottomPageMargin = SetupLabelText( marginBox, itemBoxSizer7, lastID,
+    m_bottomPageMargin = SetupLabelText( marginBox, itemBoxSizer7, lastID, 
         _( "Bottom" ), false, wxCommandEventHandler( PageDetailsPanel::OnBottomPageMargin ) );
     m_bottomPageMargin->SetToolTip( _( "Page bottom margin in mm." ) );
 
@@ -229,34 +229,34 @@ void PageDetailsPanel::CreateControls( )
 
     HorizontalSpacer( itemBoxSizer10 );
 
-    m_leftPageMargin = SetupLabelText( marginBox, itemBoxSizer10, lastID,
+    m_leftPageMargin = SetupLabelText( marginBox, itemBoxSizer10, lastID, 
         _( "Left" ), false, wxCommandEventHandler( PageDetailsPanel::OnLeftPageMargin ) );
     m_leftPageMargin->SetToolTip( _( "Page left margin in mm." ) );
 
     HorizontalSpacer( itemBoxSizer10 );
 
-    m_rightPageMargin = SetupLabelText( marginBox, itemBoxSizer10, lastID,
+    m_rightPageMargin = SetupLabelText( marginBox, itemBoxSizer10, lastID, 
         _( "Right" ), false, wxCommandEventHandler( PageDetailsPanel::OnRightPageMargin ) );
     m_rightPageMargin->SetToolTip( _( "Page right margin in mm." ) );
 
 
     wxBoxSizer* borderboxVSizer;
-    wxStaticBox* borderBox = SetupBoxSizer( advancedPanel, middleAdvancedVerticalSizer,
+    wxStaticBox* borderBox = SetupBoxSizer( advancedPanel, middleAdvancedVerticalSizer, 
         "Border", lastID, borderboxVSizer, wxVERTICAL );
 
     wxBoxSizer* itemBorderBoxSizer = new wxBoxSizer( wxHORIZONTAL );
     borderboxVSizer->Add( itemBorderBoxSizer, 0, wxGROW | wxALL, 0 );
 
-    m_showBorder = SetupCheckBox( borderBox, itemBorderBoxSizer, ++lastID,
+    m_showBorder = SetupCheckBox( borderBox, itemBorderBoxSizer, ++lastID, 
         _( "Show Border" ), wxCommandEventHandler( PageDetailsPanel::OnShowBorderCheckBoxClick ) );
     m_showBorder->SetToolTip( _( "Show the page border." ) );
 
-    m_borderSize = SetupLabelText( borderBox, itemBorderBoxSizer, lastID,
+    m_borderSize = SetupLabelText( borderBox, itemBorderBoxSizer, lastID, 
         _( "Size" ), false, wxCommandEventHandler( PageDetailsPanel::OnBorderSize ) );
     m_borderSize->SetToolTip( _( "width of the border to be added to the margin for layout in mm." ) );
 
 
-    // wxStaticText* orientationStatic = new wxStaticText(
+    // wxStaticText* orientationStatic = new wxStaticText( 
     //     theDialog, wxID_STATIC, _( "Orientation:" ), wxDefaultPosition, wxDefaultSize, 0 );
     // firstRowHorizontalSizer->Add( orientationStatic, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
@@ -278,7 +278,7 @@ void PageDetailsPanel::CreateControls( )
 
 
     wxBoxSizer* contentMarginBoxVSizer;
-    wxStaticBox* contentMarginBox = SetupBoxSizer( advancedPanel, rightAdvancedVerticalSizer,
+    wxStaticBox* contentMarginBox = SetupBoxSizer( advancedPanel, rightAdvancedVerticalSizer, 
         "Content Margin", lastID, contentMarginBoxVSizer, wxVERTICAL );
 
     wxBoxSizer* itemBoxSizer17 = new wxBoxSizer( wxHORIZONTAL );
@@ -286,12 +286,12 @@ void PageDetailsPanel::CreateControls( )
 
     HorizontalSpacer( itemBoxSizer17 );
 
-    m_topContentMargin = SetupLabelText( contentMarginBox, itemBoxSizer17, lastID,
+    m_topContentMargin = SetupLabelText( contentMarginBox, itemBoxSizer17, lastID, 
         _( "Top" ), false, wxCommandEventHandler( PageDetailsPanel::OnTopContentMargin ) );
     m_topContentMargin->SetToolTip( _( "Content top margin in mm." ) );
     HorizontalSpacer( itemBoxSizer17 );
 
-    m_bottomContentMargin = SetupLabelText( contentMarginBox, itemBoxSizer17, lastID,
+    m_bottomContentMargin = SetupLabelText( contentMarginBox, itemBoxSizer17, lastID, 
         _( "Bottom" ), false, wxCommandEventHandler( PageDetailsPanel::OnBottomContentMargin ) );
     m_bottomContentMargin->SetToolTip( _( "Content bottom margin in mm." ) );
 
@@ -301,13 +301,13 @@ void PageDetailsPanel::CreateControls( )
 
     HorizontalSpacer( itemBoxSizer110 );
 
-    m_leftContentMargin = SetupLabelText( contentMarginBox, itemBoxSizer110, lastID,
+    m_leftContentMargin = SetupLabelText( contentMarginBox, itemBoxSizer110, lastID, 
         _( "Left" ), false, wxCommandEventHandler( PageDetailsPanel::OnLeftContentMargin ) );
     m_leftContentMargin->SetToolTip( _( "Content left margin in mm." ) );
 
     HorizontalSpacer( itemBoxSizer110 );
 
-    m_rightContentMargin = SetupLabelText( contentMarginBox, itemBoxSizer110, lastID,
+    m_rightContentMargin = SetupLabelText( contentMarginBox, itemBoxSizer110, lastID, 
         _( "Right" ), false, wxCommandEventHandler( PageDetailsPanel::OnRightContentMargin ) );
     m_topContentMargin->SetToolTip( _( "Content right margin in mm." ) );
 
@@ -387,7 +387,6 @@ void PageDetailsPanel::SetSubTitleFont( wxFont font )
 {
     if ( !font.IsOk( ) )
     {
-        std::cout << "Font invalid\n";
     }
     m_subTitleFontPicker->SetSelectedFont( font );
 }
@@ -514,7 +513,6 @@ void PageDetailsPanel::OnTitleDefaultClick( wxCommandEvent& event )
     wxColour color = fontList->GetColor( ndx );
     m_titleFontPicker->SetSelectedFont( font );
     m_titleColorPicker->SetColour( color );
-    //std::cout << "PageDetailsPanel::OnTitleDefaultClick " << font.GetNativeFontInfoDesc( ) << "\n";
     m_page->GetTitleFrame( )->SetHeadingFont( font, color );
     event.Skip( );
 }
@@ -546,7 +544,6 @@ void PageDetailsPanel::OnSubTitleDefaultClick( wxCommandEvent& event )
     wxColour color = fontList->GetColor( ndx );
     m_subTitleFontPicker->SetSelectedFont( font );
     m_subTitleColorPicker->SetColour( color );
-    //std::cout << "PageDetailsPanel::OnSubTitleDefaultClick " << font.GetNativeFontInfoDesc( ) << "\n";
     m_page->GetTitleFrame( )->SetSubHeadingFont( font, color );
 
     event.Skip( );

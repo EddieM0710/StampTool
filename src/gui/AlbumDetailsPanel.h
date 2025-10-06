@@ -9,7 +9,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -19,23 +19,7 @@
  * You should have received a copy of the GNU General Public License along with
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  */
- //
- // @copyright Copyright ( c ) 2022 
- // 
- // This file is part of StampTool.
- //
- // StampTool is free software: you can redistribute it and/or modify it under the 
- // terms of the GNU General Public License as published by the Free Software Foundation, 
- // either version 3 of the License, or any later version.
- //
- // StampTool is distributed in the hope that it will be useful, but WITHOUT ANY 
- // WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
- // PARTICULAR PURPOSE. See the GNU General Public License for more details.
- //
- // You should have received a copy of the GNU General Public License along with 
- // StampTool. If not, see <https://www.gnu.org/licenses/>.
- ///////////////////////////////////////
-
+ 
 #ifndef _ALBUMDETAILSPANEL_H_
 #define _ALBUMDETAILSPANEL_H_
 
@@ -65,14 +49,14 @@ namespace Design {
 #define SYMBOL_ALBUMDETAILSPANEL_STYLE wxCAPTION | wxRESIZE_BORDER | wxSYSTEM_MENU | wxCLOSE_BOX | wxTAB_TRAVERSAL
 #define SYMBOL_ALBUMDETAILSPANEL_TITLE _( "AlbumDetailsPanel" )
 #define SYMBOL_ALBUMDETAILSPANEL_IDNAME ID_ALBUMDETAILSDIALOG
-#define SYMBOL_ALBUMDETAILSPANEL_SIZE wxSize( -1, -1)
+#define SYMBOL_ALBUMDETAILSPANEL_SIZE wxSize( -1, -1 )
 #define SYMBOL_ALBUMDETAILSPANEL_POSITION wxDefaultPosition
 
 
 /**
  * @brief A panel within the Album View panel. It is a Notebook that has 
  * Album Settings, FontDefaultsPanel, PageDefaultsPanel, 
- * FrameDefaultsPanel (for Row/Col Defaults) and StampDefaultsPanel.
+ * FrameDefaultsPanel ( for Row/Col Defaults ) and StampDefaultsPanel.
  * 
  */
 class AlbumDetailsPanel : public HelperPanel

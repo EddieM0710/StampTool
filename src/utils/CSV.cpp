@@ -11,7 +11,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -76,7 +76,7 @@ namespace Utils {
             if ( !l_file.Eof( ) )
             {
                 // comma separated Variables on line; i, e, .csv file
-                wxStringTokenizer tokenizer( inLine, "," );
+                wxStringTokenizer tokenizer( inLine, ", " );
 
                 wxString colStr;
                 while ( tokenizer.HasMoreTokens( ) )
@@ -103,7 +103,7 @@ namespace Utils {
         {
             wxString caption = "CSV Load Error";
             wxString message = wxString::Format( "Error tryng to load csv file %s.", m_filename );
-            wxMessageDialog* msg = new wxMessageDialog( GetFrame( ),
+            wxMessageDialog* msg = new wxMessageDialog( GetFrame( ), 
                 message, caption, wxOK | wxCENTRE | wxICON_ERROR );
             msg->ShowModal( );
             msg->~wxMessageDialog( );
@@ -121,7 +121,7 @@ namespace Utils {
 
     bool CSVData::GetIDNbr( wxString catCodes, wxString& id )
     {
-        wxStringTokenizer tokenizer( catCodes, "," );
+        wxStringTokenizer tokenizer( catCodes, ", " );
         wxString codePrefix = GetProject( )->GetProjectCatalogCode( );
         wxString valStr;
         wxString rest;
@@ -153,7 +153,7 @@ namespace Utils {
         }
 
         //couldn't find it; just get the first one.
-        wxStringTokenizer tokenizer2( catCodes, "," );
+        wxStringTokenizer tokenizer2( catCodes, ", " );
         if ( tokenizer2.HasMoreTokens( ) )
         {
             valStr = tokenizer2.GetNextToken( );
@@ -205,20 +205,20 @@ namespace Utils {
                 wxString caption = "CSV Format Error";
                 wxString message;
                 message = message.Format( "Format error in csv file %s at line number %d. \n\n%s", m_filename, lineNbr, line );
-                wxMessageDialog* msg = new wxMessageDialog( GetFrame( ),
+                wxMessageDialog* msg = new wxMessageDialog( GetFrame( ), 
                     message, caption, wxOK | wxCENTRE | wxICON_ERROR );
                 msg->ShowModal( );
                 msg->~wxMessageDialog( );
                 return false;
             }
-            comma = line.find_first_of( ",", firstQuote );
+            comma = line.find_first_of( ", ", firstQuote );
             bool check_again = true;
             while ( check_again )
             {
                 if ( ( comma > firstQuote ) && ( comma < nextQuote ) )
                 {
                     line = line.replace( comma, 1, "{" );
-                    comma = line.find_first_of( ",", firstQuote );
+                    comma = line.find_first_of( ", ", firstQuote );
                 }
                 else
                 {
@@ -230,7 +230,7 @@ namespace Utils {
         return true;
     };
 
-    bool CSVData::ReadTextInStream( wxFileInputStream& file,
+    bool CSVData::ReadTextInStream( wxFileInputStream& file, 
         wxTextInputStream& text )
     {
         bool status = false;
@@ -256,7 +256,7 @@ namespace Utils {
                         if ( !file.Eof( ) && FixUpLine( line, m_lineCnt ) )
                         {
                             // comma separated Variables on line; i, e, .csv file
-                            wxStringTokenizer tokenizer( line, "," );
+                            wxStringTokenizer tokenizer( line, ", " );
 
                             wxXmlNode* entryElement = NewNode( docRoot, Catalog::CatalogBaseNames[ Catalog::NT_Entry ] );
 
@@ -273,7 +273,7 @@ namespace Utils {
                                     valStr = rest;
                                 if ( valStr.EndsWith( wxT( "\"" ), &rest ) )
                                     valStr = rest;
-                                valStr.Replace( "{", ",", true );
+                                valStr.Replace( "{", ", ", true );
 
                                 Catalog::DataTypes entryType = m_csvColMap.at( csvCol );
 

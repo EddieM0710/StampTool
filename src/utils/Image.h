@@ -1,17 +1,14 @@
-/**
- * @file DebugString.h
- * @author Eddie Monroe ( )
+/*
+ * @file Image.h
+ * @author Eddie Monroe
  * @brief
- *
  * @version 0.1
- * @date 2021-02-25
- *
- * @copyright Copyright ( c ) 2021
+ * @date 2022-08-01
  *
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -22,26 +19,24 @@
  * StampTool. If not, see <https://www.gnu.org/licenses/>.
  *
  */
+#ifndef Image_h
+#define Image_h
 
-#ifndef DebugString_H
-#define DebugString_H
+#include "wx/string.h"
+#include "wx/image.h"
+#include <wx/xml/xml.h>
+#include "Project.h"
 
-#include <wx/string.h>
 
-class DebugString
-{
-public:
+namespace Utils {
 
-    
-    DebugString( ) { m_maxSize = 2000; };
-    DebugString( int size ) { m_maxSize = size; };
-    ~DebugString( ) {};
-    void Append( wxString str );
+        wxString GetImageFullPath( wxString imageName );
+ 
+        bool GetImage( wxString filename, wxImage &image, wxString ColnectItemNbr = "" );
 
-    
-private:
-    wxString m_str;
-    int m_maxSize;
-};
+        wxString MakeImageName( wxString catCode );
+
+        bool ImageExists( wxString imageName );
+}
 
 #endif

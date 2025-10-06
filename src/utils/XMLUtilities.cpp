@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -57,7 +57,7 @@ namespace Utils {
     int imageIndex = 0;
     int StyleNameIndex = 0;
 
-
+//****************** 
 
     XMLIterator::XMLIterator( wxXmlNode* parent, bool decend )
     {
@@ -68,8 +68,12 @@ namespace Utils {
         m_firstDone = false;
     }
 
+//****************** 
+
     XMLIterator::~XMLIterator( )
     { }
+
+//****************** 
 
     wxXmlNode* XMLIterator::First( )
     {
@@ -104,6 +108,9 @@ namespace Utils {
             return retElement;
         }
     }
+
+//******************   
+
     wxXmlNode* XMLIterator::Next( )
     {
         if ( !m_firstDone )
@@ -151,7 +158,7 @@ namespace Utils {
         }
     }
 
-
+//****************** 
 
     wxXmlNode* GetNext( wxXmlNode* node, wxString name )
     {
@@ -167,7 +174,7 @@ namespace Utils {
         return ( wxXmlNode* ) 0;
     }
 
-
+//****************** 
 
     wxXmlNode* NewNode( wxXmlNode* parent, wxString name )
     {
@@ -181,28 +188,16 @@ namespace Utils {
 
     }
 
+//****************** 
+
     wxXmlNode* NewNode( wxXmlDocument* doc, wxString name )
     {
         wxXmlNode* root = new wxXmlNode( NULL, wxXML_ELEMENT_NODE, name );
         doc->SetRoot( root );
         return root;
-
-
     }
-    // wxXmlNode* FirstChildElement( wxXmlNode* node, wxString name )
-    // { 
-    //     wxXmlNode* child = node->GetChildren( );
-    //     while ( child )
-    //     { 
-    //         if ( !child->GetName( ).Cmp( name ) )
-    //         { 
-    //             return child;
-    //         }
-    //         child = child->GetNext( );
-    //     }
-
-    //     return ( wxXmlNode* )0;  
-    // }
+    
+//****************** 
 
     wxXmlNode* FirstChildElement( wxXmlNode* node, wxString name )
     {
@@ -218,6 +213,8 @@ namespace Utils {
         }
         return ( wxXmlNode* ) 0;
     }
+
+//****************** 
 
     bool DeleteAttribute( wxXmlNode* node, wxString attrName )
     {
@@ -286,7 +283,7 @@ namespace Utils {
         {
             wxString name = attr->GetName( );
             wxString val = attr->GetValue( );
-            std::cout << "   \"" << name << "\"=\"" << val << "\"\n";
+           // std::cout << "   \"" << name << "\"=\"" << val << "\"\n";
             dest->AddAttribute( name, val );
             attr = attr->GetNext( );
         }
@@ -297,7 +294,7 @@ namespace Utils {
         while ( child )
         {
             wxString name = child->GetName( );
-            std::cout << name << "\n";
+           // std::cout << name << "\n";
             wxXmlNode* clone = NewNode( dest, child->GetName( ) );
             CopyNode( child, clone );
             child = child->GetNext( );
@@ -312,23 +309,13 @@ namespace Utils {
         SetAttrStr( node, name, Dbl2String( val ) );
     }
 
-
-    // void SetAttrStr( wxXmlNode* node, wxString name, wxString value )
-    // { 
-    //     if ( node->HasAttribute( name ) )
-    //     { 
-    //         node->DeleteAttribute( name );
-    //     }
-    //     node->SetAttrStr( name, value );
-    // }
-
-
     void XMLDump( wxXmlDocument* doc )
     {
         wxXmlNode* node = doc->GetRoot( );
         wxString level = "";
         XMLDumpNode( node, level );
     }
+
     void XMLDumpNode( wxXmlNode* node, wxString level )
     {
         level += "  ";
@@ -518,11 +505,11 @@ namespace Utils {
         wxXmlNode* child = NewNode( parent, Design::AlbumBaseNames[ Design::AT_Font ] );
         if ( child )
         {
-            child->AddAttribute( Design::AttrNameStrings[ Design::AT_FontType ],
+            child->AddAttribute( Design::AttrNameStrings[ Design::AT_FontType ], 
                 Design::FontUsageTypeStrings[ type ] );
-            child->AddAttribute( Design::AttrNameStrings[ Design::AT_NativeFontString ],
+            child->AddAttribute( Design::AttrNameStrings[ Design::AT_NativeFontString ], 
                 font.GetNativeFontInfoDesc( ) );
-            child->AddAttribute( Design::AttrNameStrings[ Design::AT_FontColor ],
+            child->AddAttribute( Design::AttrNameStrings[ Design::AT_FontColor ], 
                 color.GetAsString( ) );
             font.GetNativeFontInfoDesc( ) << "  " << color.GetAsString( ) << "\n";
         }

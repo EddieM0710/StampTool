@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -63,21 +63,20 @@
 namespace Catalog
 {
 
-
-
+//--------------
     CatalogVolume::CatalogVolume( ) : Utils::Volume( "Catalog" )
     {
-
     }
 
+//--------------
     CatalogVolume::~CatalogVolume( )
     {
-
     }
 
+//--------------
     void CatalogVolume::EditDetailsDialog( wxWindow* parent )
     {
-        CatalogDetailsDialog catalogDetailsDialog( parent, 12346,
+        CatalogDetailsDialog catalogDetailsDialog( parent, 12346, 
             _( "Catalog Import File Details" ) );
 
         catalogDetailsDialog.SetCatalogFilename( GetFilename( ) );
@@ -95,9 +94,9 @@ namespace Catalog
     }
 
 
+//--------------
     bool CatalogVolume::FixupInventoryStatus( )
     {
-
         wxXmlNode* root = GetDoc( )->GetRoot( );
         wxString nodeName = root->GetName( );
 
@@ -110,17 +109,9 @@ namespace Catalog
         return true;
     }
 
+//--------------
     bool CatalogVolume::FixupInventoryStatus( wxXmlNode* parent, InventoryStatusType parentStatus )
     {
-
-        // if ( parentStatus >= ST_None && parentStatus < ST_Exclude )
-        // {
-        //     //make sure this status is in a specimen
-        //     wxXmlNode* node = Utils::NewNode( parent, "Specimen" );
-        //     wxString currCollection = GetCollectionList( )->GetCurrentName( );
-        //     Utils::SetAttrStr( node, ItemDataNames[ IDT_Collection ], currCollection );
-        //     Utils::SetAttrStr( node, ItemDataNames[ IDT_InventoryStatus ], InventoryStatusStrings[ parentStatus ] );
-        // }
 
         bool specimenFound = false;
         wxXmlNode* child = parent->GetChildren( );
@@ -216,6 +207,7 @@ namespace Catalog
     }
 
 
+//--------------
     bool CatalogVolume::LoadCSV( wxString filename, wxString newFilename )
     {
         if ( !GetDoc( ) )
@@ -241,20 +233,19 @@ namespace Catalog
     }
 
 
+//--------------
     void CatalogVolume::LoadDefaultDocument( wxString volName )
     {
         // NewDocument sets the Volume m_doc
         wxXmlDocument* newDocument = NewDocument( );
         wxXmlNode* root = newDocument->GetRoot( );
         root->AddAttribute( "Name", volName );
-
-
     }
 
 
+//--------------
     void CatalogVolume::MakeParentList( Catalog::FormatType parentType, Utils::wxXmlNodeArray* parentList, wxXmlNode* node )
     {
-
         wxXmlNode* child = node->GetChildren( );
         while ( child )
         {
@@ -269,6 +260,7 @@ namespace Catalog
     }
 
 
+//--------------
     /// this makes a list of the children entry elements that can have childrem
     Utils::wxXmlNodeArray* CatalogVolume::MakeParentList( Catalog::FormatType parentType )
     {
@@ -283,13 +275,7 @@ namespace Catalog
     }
 
 
-    // CatalogVolume* NewCatalogVolumeInstance( )
-    // {
-    //     return new CatalogVolume( );
-    // }
-
-    // resort the tree with the new sort order data.
-    // Probably doint this because the sort order was changed.
+//--------------
     void CatalogVolume::ReSortTree( )
     {
         wxXmlDocument* newDoc = new wxXmlDocument( );
@@ -319,8 +305,7 @@ namespace Catalog
         ReplaceDocument( newDoc );
     }
 
-    // this is an attempt to group the entrys;
-    // i.e., an item of type entry can be a child of an item SeTenent type.
+//--------------
     void CatalogVolume::ReGroupMultiples( )
     {
         StructureCatalogVolume( Catalog::FT_Se_tenant, Catalog::FT_Stamp );
@@ -330,9 +315,9 @@ namespace Catalog
         StructureCatalogVolume( Catalog::FT_Souvenir_Sheet, Catalog::FT_Stamp, Catalog::FT_Se_tenant );
         StructureCatalogVolume( Catalog::FT_Mini_Sheet, Catalog::FT_Stamp, Catalog::FT_Se_tenant );
         StructureCatalogVolume( Catalog::FT_Booklet, Catalog::FT_Stamp, Catalog::FT_Booklet_Pane );
-
     }
 
+//--------------
     void CatalogVolume::Save( )
     {
         SaveXML( );
@@ -355,10 +340,10 @@ namespace Catalog
         }
     }
 
-    //
-    // this looks through the xml tree and makes related entries of childType a child of the parent type
-    void CatalogVolume::StructureCatalogVolume( Catalog::FormatType parentType,
-        Catalog::FormatType childType,
+
+//-------------- 
+    void CatalogVolume::StructureCatalogVolume( Catalog::FormatType parentType, 
+        Catalog::FormatType childType, 
         Catalog::FormatType secondChildType )
     {
         // Make a list of all nodes that are of parentType
@@ -435,6 +420,7 @@ namespace Catalog
     }
 
 
+//-------------- 
     CatalogVolume* NewCatalogVolume( )
     {
         CatalogVolume* catalogVolume = new CatalogVolume( );
@@ -443,6 +429,7 @@ namespace Catalog
 
 
 
+//-------------- 
     bool CatalogVolume::UpdateMount( )
     {
 
@@ -458,6 +445,7 @@ namespace Catalog
         return true;
     }
 
+//-------------- 
     bool CatalogVolume::UpdateMount( wxXmlNode* parent )
     {
         wxXmlNode* child = parent->GetChildren( );

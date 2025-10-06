@@ -10,7 +10,7 @@
  * This file is part of StampTool.
  *
  * StampTool is free software: you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software Foundation,
+ * terms of the GNU General Public License as published by the Free Software Foundation, 
  * either version 3 of the License, or any later version.
  *
  * StampTool is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -47,6 +47,7 @@
 namespace Catalog {
 
 
+//--------------
     Catalog::CatalogVolume* CatalogList::NewVolumeInstance( wxString filename )
     {
         Catalog::CatalogVolume* catalogVolume = new Catalog::CatalogVolume( );
@@ -55,6 +56,7 @@ namespace Catalog {
         return catalogVolume;
     }
 
+//--------------
     Catalog::CatalogVolume* CatalogList::AddNewVolume( wxString filename )
     {
         // make the volume
@@ -95,11 +97,11 @@ namespace Catalog {
             catalogFile.SetExt( "cat" );
 
             // Get then name to save as
-            wxFileDialog openFileDialog(
-                GetFrame( ), _( "Select directory and file to save the new cat file to." ),
-                wxGetCwd( ),
-                catalogFile.GetFullName( ),
-                "Catalog XML files(*.cat)|*.cat", wxFD_SAVE | wxFD_OVERWRITE_PROMPT );
+            wxFileDialog openFileDialog( 
+                GetFrame( ), _( "Select directory and file to save the new cat file to." ), 
+                wxGetCwd( ), 
+                catalogFile.GetFullName( ), 
+                "Catalog XML files( *.cat)|*.cat", wxFD_SAVE | wxFD_OVERWRITE_PROMPT );
             if ( openFileDialog.ShowModal( ) == wxID_CANCEL )
             {
                 return  false; // the user changed idea...
@@ -132,6 +134,7 @@ namespace Catalog {
     }
 
 
+//--------------
     Catalog::CatalogVolume* CatalogList::NewCatalogVolume( wxString filename )
     {
         CatalogVolume* vol = new CatalogVolume( );

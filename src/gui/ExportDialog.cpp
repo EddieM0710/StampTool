@@ -20,9 +20,9 @@ BEGIN_EVENT_TABLE( ExportDialog, wxDialog )
 END_EVENT_TABLE( )
 
 
-ExportDialog::ExportDialog( wxWindow* parent,
-    wxString caption,
-    wxString dialogInstructionText,
+ExportDialog::ExportDialog( wxWindow* parent, 
+    wxString caption, 
+    wxString dialogInstructionText, 
     wxArrayString listComboBoxStrings )
 {
 

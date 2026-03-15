@@ -215,9 +215,9 @@ namespace Catalog {
             if ( attr )
             {
                 wxString str = attr->GetValue( );
-                wxString name = attr->GetName( );
-                if ( !name.compare( "Link" ) )
-                std::cout << "Entry::GetAttr  "<< attr->GetName( ) << " >"<< attr->GetValue( ) << "< >"<< str << "<\n";
+                //wxString name = attr->GetName( );
+                //if ( !name.compare( "Link" ) )
+                //std::cout << "Entry::GetAttr  "<< attr->GetName( ) << " >"<< attr->GetValue( ) << "< >"<< str << "<\n";
                 return str;
             }
         }

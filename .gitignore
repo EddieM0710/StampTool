@@ -2,7 +2,7 @@ build/
 build-Debug/
 build-Release/
 projects/
-sample/Vatican
+sample/
 doc/
 src/wxpdfdoc-main
 .gitignore

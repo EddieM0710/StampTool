@@ -87,7 +87,7 @@ namespace Catalog
             return; // the user changed idea..
 
         SetName( catalogDetailsDialog.GetName( ) );
-        wxString cwd = wxGetCwd( );
+        wxString cwd = GetProject()->GetProjectDirectory( );
         wxFileName volFile( catalogDetailsDialog.GetCatalogPath( ) );
         volFile.MakeRelativeTo( cwd );
         SetFilename( volFile.GetFullPath( ) );
@@ -332,7 +332,7 @@ namespace Catalog
             {
                 wxFileName bakFile( filename );
                 bakFile.SetExt( "bak.cat" );
-                wxRenameFile( filename, bakFile.GetFullName( ), true );
+                wxRenameFile( filename, bakFile.GetFullPath( ), true );
             }
 
             GetDoc( )->Save( filename );

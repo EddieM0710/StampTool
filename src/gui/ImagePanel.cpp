@@ -146,10 +146,10 @@ void ImagePanel::SetBitmap( wxString filename )
     else 
     {
         Catalog::Entry stamp( GetCatalogData( )->GetCurrentStamp( ) );
-wxString link = stamp.GetLink( );
-            int pos = link.find_last_of( "//" );
-            wxString item = link.Mid( pos+1 );
-                    Utils::GetImage( filename, image, item );
+        wxString link = stamp.GetLink( );
+        int pos = link.find_last_of( "//" );
+        wxString item = link.Mid( pos+1 );
+        Utils::GetImage( image, filename, item );
     }
 
     m_bitmap = image;

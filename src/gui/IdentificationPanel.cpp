@@ -185,11 +185,10 @@ void IdentificationPanel::CreateControls( )
 
     m_name = SetupLabelText( thePanel, panelVerticalSizer, ++lastID, "Name", true, wxCommandEventHandler( IdentificationPanel::OnNameUpdated ) );
 
-    //wxBoxSizer* emissionHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
-   // panelVerticalSizer->Add( emissionHorizontalSizer, 0, wxALIGN_LEFT | wxALL, 2 );
-
-    // wxStaticText* emissionStaticText = new wxStaticText( thePanel, wxID_STATIC, _( "Emission" ), wxDefaultPosition, wxDefaultSize, 0 );
-    // emissionHorizontalSizer->Add( emissionStaticText, 0, wxALIGN_LEFT | wxALL, 0 );
+ 
+    wxBoxSizer* emissionHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
+    panelVerticalSizer->Add( emissionHorizontalSizer, 0, wxALIGN_LEFT | wxALL, 2 );
+   
 
     wxArrayString m_emissionStrings;
     for ( int i = 0; i < Catalog::ET_NbrTypes; i++ )
@@ -197,21 +196,11 @@ void IdentificationPanel::CreateControls( )
         m_emissionStrings.Add( _( Catalog::EmissionStrings[ i ] ) );
     }
 
-    //  m_emission = new wxChoice( thePanel, ++lastID, wxDefaultPosition, wxDefaultSize, m_emissionStrings, 0 );
-
-
-    m_emission = SetupChoice( thePanel, panelVerticalSizer, lastID, _( "Emission" ), 
+    m_emission = SetupChoice( thePanel, emissionHorizontalSizer, lastID, _( "Emission" ), 
         m_emissionStrings, wxCommandEventHandler( IdentificationPanel::OnEmissionchoiceSelected ) );
 
     m_emission->SetStringSelection( _( "Unknown" ) );
-    //   emissionHorizontalSizer->Add( m_emission, 1, wxGROW | wxALL, 1 );
-
-   // wxBoxSizer* formatHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
-   // panelVerticalSizer->Add( formatHorizontalSizer, 0, wxALIGN_LEFT | wxALL, 2 );
-
-    // wxStaticText* formatStaticText = new wxStaticText( thePanel, wxID_STATIC, _( "Format" ), wxDefaultPosition, wxDefaultSize, 0 );
-     //formatHorizontalSizer->Add( formatStaticText, 0, wxALIGN_LEFT | wxALL, 0 );
-
+ 
     wxArrayString m_formatStrings;
     for ( int i = 0; i < Catalog::FT_NbrTypes; i++ )
     {
@@ -228,14 +217,17 @@ void IdentificationPanel::CreateControls( )
         // m_formatStrings.Add( _( "Tete-Beche" ) );
     }
 
-    //m_format = new wxChoice( thePanel, ++lastID, wxDefaultPosition, wxDefaultSize, m_formatStrings, 0 );
-   // formatHorizontalSizer->Add( m_format, 1, wxGROW | wxALL, 1 );
 
-    m_format = SetupChoice( thePanel, panelVerticalSizer, lastID, _( "Format" ), 
+    m_format = SetupChoice( thePanel, emissionHorizontalSizer, lastID, _( "Format" ), 
         m_formatStrings, wxCommandEventHandler( IdentificationPanel::OnEmissionchoiceSelected ) );
     m_format->SetStringSelection( _( "Unknown" ) );
 
-    m_issueDate = SetupLabelText( thePanel, panelVerticalSizer, ++lastID, "Issued On", true, wxCommandEventHandler( IdentificationPanel::OnIssuedUpdated ) );
+    wxBoxSizer* printIssueHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
+    panelVerticalSizer->Add( printIssueHorizontalSizer, 0, wxALIGN_LEFT | wxALL, 2 );
+
+    m_issueDate = SetupLabelText( thePanel, printIssueHorizontalSizer, ++lastID, "Issued On", true, wxCommandEventHandler( IdentificationPanel::OnIssuedUpdated ) );
+
+    m_printing = SetupLabelText( thePanel, printIssueHorizontalSizer, ++lastID, "Printing", true, wxCommandEventHandler( IdentificationPanel::OnPrintingUpdated ) );
 
     m_series = SetupLabelText( thePanel, panelVerticalSizer, ++lastID, "Series", true, wxCommandEventHandler( IdentificationPanel::OnSeriesUpdated ) );
 
@@ -243,12 +235,15 @@ void IdentificationPanel::CreateControls( )
 
     m_country = SetupLabelText( thePanel, panelVerticalSizer, ++lastID, "Country", true, wxCommandEventHandler( IdentificationPanel::OnCountryUpdated ) );
 
-    m_perforation = SetupLabelText( thePanel, panelVerticalSizer, ++lastID, "Perforation", true, wxCommandEventHandler( IdentificationPanel::OnPerforationUpdated ) );
 
-    m_gum = SetupLabelText( thePanel, panelVerticalSizer, ++lastID, "Gum", true, wxCommandEventHandler( IdentificationPanel::OnGumUpdated ) );
+    wxBoxSizer* gumPerfHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
+    panelVerticalSizer->Add( gumPerfHorizontalSizer, 0, wxALIGN_LEFT | wxALL, 2 );
+   
+    m_perforation = SetupLabelText( thePanel, gumPerfHorizontalSizer, ++lastID, "Perforation", true, wxCommandEventHandler( IdentificationPanel::OnPerforationUpdated ) );
 
-    m_printing = SetupLabelText( thePanel, panelVerticalSizer, ++lastID, "Printing", true, wxCommandEventHandler( IdentificationPanel::OnPrintingUpdated ) );
+    m_gum = SetupLabelText( thePanel, gumPerfHorizontalSizer, ++lastID, "Gum", true, wxCommandEventHandler( IdentificationPanel::OnGumUpdated ) );
 
+    
     wxBoxSizer* sizeHorizontalSizer;
     wxStaticBox* sizeBox = SetupBoxSizer( thePanel, panelVerticalSizer, "Size", lastID, sizeHorizontalSizer, wxHORIZONTAL );
     m_width = SetupLabelText( sizeBox, sizeHorizontalSizer, ++lastID, "Width", false, wxCommandEventHandler( IdentificationPanel::OnWidthUpdated ) );

@@ -78,7 +78,7 @@ namespace Catalog {
             if ( !l_file.Eof( ) )
             {
                 // comma separated Variables on line; i, e, .csv file
-                wxStringTokenizer tokenizer( inLine, ", " );
+                wxStringTokenizer tokenizer( inLine, "," );
 
                 wxString colStr;
                 while ( tokenizer.HasMoreTokens( ) )
@@ -122,7 +122,7 @@ namespace Catalog {
 
     bool MountCSVData::GetIDNbr( wxString catCodes, wxString& id )
     {
-        // wxStringTokenizer tokenizer( catCodes, ", " );
+        // wxStringTokenizer tokenizer( catCodes, "," );
         // wxString codePrefix = GetProject( )->GetCatCodePrefix( );
         // wxString valStr;
         // wxString rest;
@@ -154,7 +154,7 @@ namespace Catalog {
         // }
 
         // //couldn't find it; just get the first one.
-        // wxStringTokenizer tokenizer2( catCodes, ", " );
+        // wxStringTokenizer tokenizer2( catCodes, "," );
         // if ( tokenizer2.HasMoreTokens( ) )
         // {
         //     valStr = tokenizer2.GetNextToken( );
@@ -213,14 +213,14 @@ namespace Catalog {
 
                 return false;
             }
-            comma = line.find_first_of( ", ", firstQuote );
+            comma = line.find_first_of( ",", firstQuote );
             bool check_again = true;
             while ( check_again )
             {
                 if ( ( comma > firstQuote ) && ( comma < nextQuote ) )
                 {
                     line = line.replace( comma, 1, "{" );
-                    comma = line.find_first_of( ", ", firstQuote );
+                    comma = line.find_first_of( ",", firstQuote );
                 }
                 else
                 {
@@ -260,7 +260,7 @@ namespace Catalog {
                         if ( !file.Eof( ) && FixUpLine( line, m_lineCnt ) )
                         {
                             // comma separated Variables on line; i, e, .csv file
-                            wxStringTokenizer tokenizer( line, ", " );
+                            wxStringTokenizer tokenizer( line, "," );
 
                             wxXmlNode* entryElement = Utils::NewNode( docRoot, "Item" );
 

@@ -196,7 +196,7 @@ namespace Design {
             wxString borderName = GetBorderFileName( );
 
             wxImage image; 
-            Utils::GetImage( borderName, image );
+            Utils::GetAppImage( image,  borderName );
 
             wxFont font = dc.GetFont( );
 
@@ -242,7 +242,7 @@ namespace Design {
         if ( GetShowBorder( ) )
         {
             wxImage image;
-            Utils::GetImage( borderName, image );
+            Utils::GetAppImage( image, borderName );
             doc->Image( borderName, image, xPos, yPos, 
                 GetWidth( ), 
                 GetHeight( ) );

@@ -419,8 +419,8 @@ void CatalogPanel::NewCatalogDialog( )
     {
         return;
     }
-
-    wxFileDialog fileDialog( this, "Create Catalog file", wxGetCwd( ), _( "unnamed.cat" ), 
+    wxString cwd = GetProject()->GetProjectDirectory( );
+    wxFileDialog fileDialog( this, "Create Catalog file", cwd, _( "unnamed.cat" ), 
         "Catalog files ( *.cat )|*.cat", 
         wxFD_SAVE );
 
@@ -429,7 +429,7 @@ void CatalogPanel::NewCatalogDialog( )
         return;
     }
 
-    wxString cwd = wxGetCwd( );
+    
 
     wxString filePath = fileDialog.GetPath( );
     wxFileName catFile( filePath );
@@ -643,10 +643,10 @@ void CatalogPanel::OpenCatalog( )
             //         return;
             //     }
             // };
-
+    wxString path = GetProject()->GetProjectDirectory( );
     wxFileDialog openFileDialog( 
         this, _( "Open Catalog XML file" ), 
-        wxGetCwd( ), 
+        path, 
         _( "unnamed.cat" ), 
         "Catalog XML files( *.cat )|*.cat", wxFD_OPEN | wxFD_FILE_MUST_EXIST );
     if ( openFileDialog.ShowModal( ) == wxID_CANCEL )
@@ -654,9 +654,9 @@ void CatalogPanel::OpenCatalog( )
         return; // the user changed idea...
     }
 
-    wxString cwd = wxGetCwd( );
+
     wxFileName catFile( openFileDialog.GetPath( ) );
-    catFile.MakeRelativeTo( cwd );
+    catFile.MakeRelativeTo( path );
     GetCatalogData( )->FileOpen( catFile.GetFullPath( ) );
 }
 

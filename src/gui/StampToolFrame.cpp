@@ -405,8 +405,8 @@ void StampToolFrame::NewProject( )
     GetFrame( )->CloseProject( );
 
     FileCreateDialog fileDialog( this, 12355, _( "Select the Filename and Directory for the Project file." ) );
-    wxGetCwd( );
-    fileDialog.SetDefaultDirectory( wxGetCwd( ) );
+    wxString path = GetProject()->GetProjectDirectory( );;
+    fileDialog.SetDefaultDirectory( path );
     fileDialog.SetDefaultFilename( _( "UndefinedName.spt" ) );
     fileDialog.SetWildCard( _( "Stamp Tools Project files(*.spt )|*.spt" ) );
 
@@ -414,8 +414,8 @@ void StampToolFrame::NewProject( )
     {
         return;
     }
-    wxString dir = fileDialog.GetDir( );
-    wxSetWorkingDirectory( dir );
+  
+    GetProject( )->SetProjectFilename( fileDialog.GetDir( ) );
 
     GetProject( )->FileNewProject( fileDialog.GetFile( ) );
 }

@@ -68,13 +68,15 @@ IMPLEMENT_DYNAMIC_CLASS( PreferencesDialog, wxDialog )
     BEGIN_EVENT_TABLE( PreferencesDialog, wxDialog )
 
     // PreferencesDialog event table entries
-    EVT_TEXT( ID_IMAGEDIRECTORTEXTBOX, PreferencesDialog::OnImagedirectortextboxTextUpdated )
+    EVT_TEXT( ID_IMAGEDIRECTORYTEXTBOX, PreferencesDialog::OnImageDirectorytextboxTextUpdated )
+    EVT_TEXT( ID_APPDATADIRECTORYTEXTBOX, PreferencesDialog::OnAppDataDirectorytextboxTextUpdated )
     EVT_TEXT( ID_COUNTRYTEXTBOX, PreferencesDialog::OnCountrytextboxTextUpdated )
     EVT_TEXT( ID_CATALOGTEXTBOX, PreferencesDialog::OnCatalogtextboxTextUpdated )
     EVT_CHECKBOX( ID_OPENLASTCHECKBOX, PreferencesDialog::OnOpenlastcheckboxClick )
     EVT_TEXT( ID_RECENTSIZETEXTCTRL, PreferencesDialog::OnRecentsizetextctrlTextUpdated )
     EVT_BUTTON( wxID_OK, PreferencesDialog::OnOkClick )
-    EVT_BUTTON( ID_DIRPICKERBTN, PreferencesDialog::BrowseForDir )
+    EVT_BUTTON( ID_DIRPICKERBTN, PreferencesDialog::BrowseForImageDir )
+    EVT_BUTTON( ID_APPDIRPICKERBTN, PreferencesDialog::BrowseForAppDataDir )
 EVT_NOTEBOOK_PAGE_CHANGED( ID_NOTEBOOK, PreferencesDialog::OnNotebookPageChanged )
     
    // PreferencesDialog event table entries
@@ -100,7 +102,8 @@ PreferencesDialog::PreferencesDialog( wxWindow* parent, wxWindowID id, const wxS
 
 void PreferencesDialog::InitDetailsPanel( )
 {
-    m_imageDirectory->SetValue( GetProject( )->GetImageDirectory( ) );
+    m_imageDirectory->SetValue( GetSettings( )->GetImageDirectory( ) );
+    m_dataDirectory->SetValue( GetSettings( )->GetDataDirectory( ) );
     m_catalog->SetValue( GetProject( )->GetProjectCatalogCode( ) );
     m_country->SetValue( GetProject( )->GetProjectCountryCode( ) );
     m_loadLastFileAtStartUp->SetValue( GetSettings( )->GetLoadLastFileAtStartUp( ) );
@@ -150,6 +153,7 @@ void PreferencesDialog::Init( )
 {
     // PreferencesDialog member initialisation
     m_imageDirectory = NULL;
+    m_dataDirectory = NULL;
     m_country = NULL;
     m_catalog = NULL;
     m_loadLastFileAtStartUp = NULL;
@@ -172,17 +176,24 @@ wxPanel* PreferencesDialog::CreateNotebookDetailsPanel( wxWindow* parent )
     wxStaticText* itemStaticText1 = new wxStaticText( preferencesDetailsPanel, wxID_STATIC, _( "Image Directory" ), wxDefaultPosition, wxDefaultSize, 0 );
     imageHorizontalSizer->Add( itemStaticText1, 1, wxALIGN_CENTER_VERTICAL | wxLEFT | wxTOP | wxBOTTOM, 5 );
 
-    m_imageDirectory = new wxTextCtrl( preferencesDetailsPanel, ID_IMAGEDIRECTORTEXTBOX, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+    m_imageDirectory = new wxTextCtrl( preferencesDetailsPanel, ID_IMAGEDIRECTORYTEXTBOX, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
     imageHorizontalSizer->Add( m_imageDirectory, 3, wxGROW | wxALL, 5 );
 
-    wxButton* browseButton = new wxButton( preferencesDetailsPanel, ID_DIRPICKERBTN, _( "Browse" ), wxDefaultPosition, wxDefaultSize, 0 );
-    imageHorizontalSizer->Add( browseButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
+    wxButton* browseImageButton = new wxButton( preferencesDetailsPanel, ID_DIRPICKERBTN, _( "Browse Image Directory" ), wxDefaultPosition, wxDefaultSize, 0 );
+    imageHorizontalSizer->Add( browseImageButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
-    // wxBoxSizer* itemBoxSizer5 = new wxBoxSizer( wxHORIZONTAL );
-    // theDialogVerticalSizer->Add( itemBoxSizer5, 1, wxGROW | wxALL, 5 );
 
-    // wxStaticText* itemStaticText3 = new wxStaticText( preferencesDetailsPanel, wxID_STATIC, _( "Working Directory" ), wxDefaultPosition, wxDefaultSize, 0 );
-    // itemBoxSizer5->Add( itemStaticText3, 0, wxALIGN_CENTER_VERTICAL | wxLEFT | wxTOP | wxBOTTOM, 5 );
+    wxBoxSizer* appDataHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
+    detailsVerticalSizer->Add( appDataHorizontalSizer, 0, wxGROW | wxALL, 5 );
+
+    wxStaticText* itemStaticText7 = new wxStaticText( preferencesDetailsPanel, wxID_STATIC, _( "Projects Directory" ), wxDefaultPosition, wxDefaultSize, 0 );
+    appDataHorizontalSizer->Add( itemStaticText7, 1, wxALIGN_CENTER_VERTICAL | wxLEFT | wxTOP | wxBOTTOM, 5 );
+
+    m_dataDirectory = new wxTextCtrl( preferencesDetailsPanel, ID_APPDATADIRECTORYTEXTBOX, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+    appDataHorizontalSizer->Add( m_dataDirectory, 3, wxGROW | wxALL, 5 );
+
+    wxButton* browseAppDataButton = new wxButton( preferencesDetailsPanel, ID_APPDIRPICKERBTN, _( "Browse Projects Directory" ), wxDefaultPosition, wxDefaultSize, 0 );
+    appDataHorizontalSizer->Add( browseAppDataButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5 );
 
     wxBoxSizer* codePrefHorizontalSizer = new wxBoxSizer( wxHORIZONTAL );
     detailsVerticalSizer->Add( codePrefHorizontalSizer, 0, wxGROW | wxALL, 5 );
@@ -423,7 +434,7 @@ void PreferencesDialog::OnNotebookPageChanged( wxNotebookEvent& event )
  *   ID_IMAGEDIRECTORTEXTBOX
  */
 
-void PreferencesDialog::OnImagedirectortextboxTextUpdated( wxCommandEvent& event )
+void PreferencesDialog::OnImageDirectorytextboxTextUpdated( wxCommandEvent& event )
 {
     m_imageDirectory->SetModified( true );
     m_dirty = true;
@@ -431,6 +442,13 @@ void PreferencesDialog::OnImagedirectortextboxTextUpdated( wxCommandEvent& event
 
 }
 
+void PreferencesDialog::OnAppDataDirectorytextboxTextUpdated( wxCommandEvent& event )
+{
+    m_dataDirectory->SetModified( true );
+    m_dirty = true;
+    event.Skip( );
+
+}
 
 /*
  *   ID_COUNTRYTEXTBOX
@@ -445,7 +463,7 @@ void PreferencesDialog::OnCountrytextboxTextUpdated( wxCommandEvent& event )
 
 }
 
-void PreferencesDialog::BrowseForDir( wxCommandEvent& event )
+void PreferencesDialog::BrowseForImageDir( wxCommandEvent& event )
 {
     wxString value = m_imageDirectory->GetValue( );
     wxDirDialog dlg( this, 
@@ -457,6 +475,23 @@ void PreferencesDialog::BrowseForDir( wxCommandEvent& event )
     {
         m_imageDirectory->SetValue( dlg.GetPath( ) );
         m_imageDirectory->SetModified( true );
+    }
+
+    event.Skip( );
+}
+
+void PreferencesDialog::BrowseForAppDataDir( wxCommandEvent& event )
+{
+    wxString value = m_dataDirectory->GetValue( );
+    wxDirDialog dlg( this, 
+                    "Select the Application Data directory:", 
+                    value, 
+                    0 );
+
+    if ( dlg.ShowModal( ) == wxID_OK )
+    {
+        m_dataDirectory->SetValue( dlg.GetPath( ) );
+        m_dataDirectory->SetModified( true );
     }
 
     event.Skip( );
@@ -523,8 +558,11 @@ void PreferencesDialog::UpdateDetails( )
 
 
         GetSettings( )->SetDirty( );
-        GetProject( )->SetImageDirectory( m_imageDirectory->GetValue( ) );
+        GetSettings( )->SetImageDirectory( m_imageDirectory->GetValue( ) );
         m_imageDirectory->SetModified( false );
+
+        GetSettings( )->SetDataDirectory( m_dataDirectory->GetValue( ) );
+        m_dataDirectory->SetModified( false );
 
         GetSettings( )->SetDirty( );
         GetProject( )->SetProjectCountryCode( m_country->GetValue( ) );

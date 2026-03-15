@@ -44,6 +44,7 @@
 
 
 #include "utils/Volume.h"
+#include "utils/Project.h"
 
 #include "Defs.h"
 
@@ -137,7 +138,11 @@ namespace Utils
             {
                 m_doc = NewDocument( );
             }
-            wxString cwd = wxGetCwd( );
+            wxString cwd = GetProject()->GetProjectDirectory( );
+
+            wxFileName xmlFilename( m_filename );
+            xmlFilename.MakeAbsolute( cwd );
+            m_filename = xmlFilename.GetFullPath( );
             wxFileInputStream stream( m_filename );
             if ( !stream.IsOk( ) )
             {

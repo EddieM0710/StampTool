@@ -50,15 +50,14 @@ namespace Utils
         ~Settings( ) {};
 
         void InitSettings( );
-        void NewAppData( );
+        //void NewAppData( );
+
         wxString GetConfigurationDirectory( )
         {
             return m_configurationDirectory;
         };
-        wxString GetAppDataDirectory( )
-        {
-            return m_appDataDirectory;
-        };
+
+
 
         // wxString GetImageDirectory( ) { return m_imageDirectory; };
         // test        wxString GetCatalogCode( ) {
@@ -130,16 +129,10 @@ namespace Utils
         };
 
         void SetConfigurationDirectory( );
-        void SetAppDataDirectory( );
+       // void SetApplicationDirectory( wxString val );
+
         wxString AppendPathComponent( const wxString &dir, const wxString &component );
 
-        // void SetImageDirectory( wxString val ) { m_imageDirectory = val.Trim( );m_dirty = true; };
-        // test        void SetCatalogCode( wxString val ) {
-        // test            m_CatalogCode = val.Trim( ); m_dirty = true;
-        // test        };
-        // test        void SetCountryCode( wxString val ) {
-        // test            m_CountryCode = val.Trim( ); m_dirty = true;
-        // test          };
         void SetLastCollection( wxString str )
         {
             m_lastCollection = str;
@@ -174,7 +167,7 @@ namespace Utils
         };
         void SetUpperPeriod( wxString val )
         {
-            m_upperPeriod = m_configurationDirectory.Trim( );
+            m_upperPeriod = val.Trim( );
             m_dirty = true;
         };
 
@@ -238,6 +231,16 @@ namespace Utils
         {
             m_catalogVolumeEditableDefault = val;
         };
+    
+        void SetDefaultDirectory( );
+    
+        void SetImageDirectory(wxString imagePath);
+        void SetDataDirectory(wxString dataPath);
+
+        wxString GetImageDirectory();
+
+        wxString GetDataDirectory();
+
         wxString GetDefaultCountryCode( ) { return m_defaultCountryCode;}
         wxString GetDefaultCatalogCode( ) { return  m_defaultCatalogCode;}
 
@@ -248,7 +251,9 @@ namespace Utils
         wxString m_CollectionFile;
         wxString m_lastCollection;
         wxString m_configurationDirectory;
-        wxString m_appDataDirectory;
+        wxString m_imageDirectory;        
+        wxString m_dataDirectory;
+
         // wxStandardPaths& stdPaths;
 
         // test        wxString m_imageDirectoryl
@@ -270,8 +275,8 @@ namespace Utils
         const bool m_defaultloadLastFileAtStartUp = true;
         const wxString m_defaultConfigurationDirectory = "";
         const wxString m_defaultImageDirectory = "";
-        const wxString m_defaultCountryCode = "GB";
-        const wxString m_defaultCatalogCode = "Sg";
+        const wxString m_defaultCountryCode = "LU";
+        const wxString m_defaultCatalogCode = "Mi";
         wxArrayInt m_defaultSortOrder;
         const wxString m_defaultLowerDivision = "1950";
         const wxString m_defaultUpperDivision = "2000";

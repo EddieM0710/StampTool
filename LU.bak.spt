@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Project Country="LU" CatalogCode="Mi" >
+  <AlbumList>
+    <Volume FileName="albums\LU2022.alb" CollapseState="false"/>
+  </AlbumList>
+  <CatalogList>
+    <Volume FileName="catalogs\Luxembourg_2022.cat" CollapseState="false"/>
+    <Volume FileName="catalogs\Luxembourg_2023.cat" CollapseState="false"/>
+  </CatalogList>
+</Project>

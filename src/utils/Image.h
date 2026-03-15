@@ -31,8 +31,10 @@
 namespace Utils {
 
         wxString GetImageFullPath( wxString imageName );
+
+        bool GetAppImage( wxImage &image, wxString filename );
  
-        bool GetImage( wxString filename, wxImage &image, wxString ColnectItemNbr = "" );
+        bool GetImage( wxImage &image, wxString filename, wxString ColnectItemNbr = "" );
 
         wxString MakeImageName( wxString catCode );
 

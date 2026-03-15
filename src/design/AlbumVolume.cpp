@@ -137,7 +137,7 @@ namespace Design {
             {
                 wxFileName bakFile( filename );
                 bakFile.SetExt( "bak.alb" );
-                wxRenameFile( filename, bakFile.GetFullName( ), true );
+                wxRenameFile( filename, bakFile.GetFullPath( ), true );
             }
             SaveDesignTree( );
             GetDoc( )->Save( filename );

@@ -625,61 +625,29 @@ void ComparePanel::UpdateCompEntryTable( Catalog::MergeData* mergeEntry )
 }
 
 
-/*
- * wxEVT_COMMAND_RADIOBUTTON_SELECTED event handler for ID_DEEPRADIOBUTTON
- */
-
 void ComparePanel::OnDeepRadioButton( wxCommandEvent& event )
 {
-    ////@begin wxEVT_COMMAND_RADIOBUTTON_SELECTED event handler for ID_DEEPRADIOBUTTON in ComparePanel2.
-        // Before editing this code, remove the block markers.
     event.Skip( );
-    ////@end wxEVT_COMMAND_RADIOBUTTON_SELECTED event handler for ID_DEEPRADIOBUTTON in ComparePanel2. 
 }
 
 
-/*
- * wxEVT_COMMAND_RADIOBUTTON_SELECTED event handler for ID_SELECTEDRADIOBUTTON
- */
 
 void ComparePanel::OnSelectedRadioButton( wxCommandEvent& event )
 {
-    ////@begin wxEVT_COMMAND_RADIOBUTTON_SELECTED event handler for ID_SELECTEDRADIOBUTTON in ComparePanel2.
-        // Before editing this code, remove the block markers.
     event.Skip( );
-    ////@end wxEVT_COMMAND_RADIOBUTTON_SELECTED event handler for ID_SELECTEDRADIOBUTTON in ComparePanel2. 
 }
 
-
-/*
- * wxEVT_COMMAND_LISTBOX_DOUBLECLICKED event handler for ID_CHECKLISTBOX
- */
 
 void ComparePanel::OnChecklistboxDoubleClicked( wxCommandEvent& event )
 {
-    ////@begin wxEVT_COMMAND_LISTBOX_DOUBLECLICKED event handler for ID_CHECKLISTBOX in ComparePanel2.
-        // Before editing this code, remove the block markers.
     event.Skip( );
-    ////@end wxEVT_COMMAND_LISTBOX_DOUBLECLICKED event handler for ID_CHECKLISTBOX in ComparePanel2. 
 }
 
-
-/*
- * wxEVT_COMMAND_LISTBOX_SELECTED event handler for ID_CHECKLISTBOX
- */
 
 void ComparePanel::OnChecklistboxSelected( wxCommandEvent& event )
 {
-    ////@begin wxEVT_COMMAND_LISTBOX_SELECTED event handler for ID_CHECKLISTBOX in ComparePanel2.
-        // Before editing this code, remove the block markers.
     event.Skip( );
-    ////@end wxEVT_COMMAND_LISTBOX_SELECTED event handler for ID_CHECKLISTBOX in ComparePanel2. 
 }
-
-
-/*
- * wxEVT_COMMAND_CHECKLISTBOX_TOGGLED event handler for ID_CHECKLISTBOX
- */
 
 wxArrayInt ComparePanel::GetCheckedItems( )
 {
@@ -704,8 +672,5 @@ void ComparePanel::OnCheckListBoxToggled( wxCommandEvent& event )
 
     unsigned int nbr = m_CompareCheckBox->GetCheckedItems( m_checkedItems );
     SetBackground( );
-    ////@begin wxEVT_COMMAND_CHECKLISTBOX_TOGGLED event handler for ID_CHECKLISTBOX in ComparePanel2.
-        // Before editing this code, remove the block markers.
     event.Skip( );
-    ////@end wxEVT_COMMAND_CHECKLISTBOX_TOGGLED event handler for ID_CHECKLISTBOX in ComparePanel2. 
 }

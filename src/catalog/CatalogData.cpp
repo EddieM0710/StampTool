@@ -98,9 +98,12 @@ namespace Catalog
 
     void CatalogData::SetCurrentStamp( wxXmlNode* xmlNode )
     {
-        m_stamp = xmlNode;
-        GetDescriptionPanel( )->UpdatePanel( );
-        //GetDescriptionPanel( )->Show( );
+        if ( xmlNode )
+        {
+            m_stamp = xmlNode;
+            GetDescriptionPanel( )->UpdatePanel( );
+            //GetDescriptionPanel( )->Show( );
+        }
     };
 
     void CatalogData::UpdateCatalogPanels( )

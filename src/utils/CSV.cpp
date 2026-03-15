@@ -53,6 +53,9 @@
 
 namespace Utils {
 
+    /// @brief 
+    /// @param filename 
+    /// @return 
     bool CSVData::ReadDataFile( wxString& filename )
     {
         bool status = false;
@@ -76,7 +79,7 @@ namespace Utils {
             if ( !l_file.Eof( ) )
             {
                 // comma separated Variables on line; i, e, .csv file
-                wxStringTokenizer tokenizer( inLine, ", " );
+                wxStringTokenizer tokenizer( inLine, "," );
 
                 wxString colStr;
                 while ( tokenizer.HasMoreTokens( ) )
@@ -118,10 +121,15 @@ namespace Utils {
         return ReadDataFile( filename );
     };
 
-
+     /**
+      * @brief Loads a CSV file and populates the provided catalog volume XML node.
+      * @param filename The path to the CSV file to load.
+      * @param catalogVolume Pointer to the XML node representing the catalog volume to populate.
+      * @return True if the CSV file was successfully loaded and processed, false otherwise.
+      */
     bool CSVData::GetIDNbr( wxString catCodes, wxString& id )
     {
-        wxStringTokenizer tokenizer( catCodes, ", " );
+        wxStringTokenizer tokenizer( catCodes, "," );
         wxString codePrefix = GetProject( )->GetProjectCatalogCode( );
         wxString valStr;
         wxString rest;
@@ -153,7 +161,7 @@ namespace Utils {
         }
 
         //couldn't find it; just get the first one.
-        wxStringTokenizer tokenizer2( catCodes, ", " );
+        wxStringTokenizer tokenizer2( catCodes, "," );
         if ( tokenizer2.HasMoreTokens( ) )
         {
             valStr = tokenizer2.GetNextToken( );
@@ -183,6 +191,13 @@ namespace Utils {
             }
         }
     }
+    //The FixUpLine method replaces commas inside quoted 
+    // fields with {, but later in ReadTextInStream,  
+    // { is replaced with , . This can introduce extra 
+    // spaces and may not properly handle edge cases with 
+    // nested quotes or escaped quotes. Consider using a 
+    // robust CSV parsing library or improving the logic 
+    // to handle all CSV edge cases.
     bool CSVData::FixUpLine( wxString& line, int lineNbr )
     {
         int curr = 0;
@@ -211,14 +226,14 @@ namespace Utils {
                 msg->~wxMessageDialog( );
                 return false;
             }
-            comma = line.find_first_of( ", ", firstQuote );
+            comma = line.find_first_of( ",", firstQuote );
             bool check_again = true;
             while ( check_again )
             {
                 if ( ( comma > firstQuote ) && ( comma < nextQuote ) )
                 {
                     line = line.replace( comma, 1, "{" );
-                    comma = line.find_first_of( ", ", firstQuote );
+                    comma = line.find_first_of( ",", firstQuote );
                 }
                 else
                 {
@@ -256,7 +271,7 @@ namespace Utils {
                         if ( !file.Eof( ) && FixUpLine( line, m_lineCnt ) )
                         {
                             // comma separated Variables on line; i, e, .csv file
-                            wxStringTokenizer tokenizer( line, ", " );
+                            wxStringTokenizer tokenizer( line, "," );
 
                             wxXmlNode* entryElement = NewNode( docRoot, Catalog::CatalogBaseNames[ Catalog::NT_Entry ] );
 

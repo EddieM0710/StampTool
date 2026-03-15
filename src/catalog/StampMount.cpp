@@ -14,6 +14,8 @@
 #include "catalog/StampMount.h"
 #include "catalog/MountCSV.h"
 #include "utils/XMLUtilities.h"
+#include "Defs.h"
+#include "utils/Project.h"
 namespace Catalog {
 
     //-------
@@ -444,7 +446,7 @@ namespace Catalog {
             m_mountDoc = new wxXmlDocument( );
         }
 
-        wxString cwd = wxGetCwd( );
+        wxString cwd = GetProject()->GetProjectDirectory( );;
         //ok = m_stampDoc->Load( filename );
         if ( wxFileExists( "US_StampMounts.xml" ) )
         {

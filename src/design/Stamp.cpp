@@ -141,7 +141,7 @@ namespace Design {
             std::cout << " Stamp::Draw " << imageName <<"  >"<< link << "<\n";
             int pos = link.find_last_of( "//" );
             wxString item = link.Mid( pos+1 );
-            bool fileOK = Utils::GetImage( imageName, image, item );
+            bool fileOK = Utils::GetImage( image, imageName, item );
 
             if ( image.IsOk( ) && fileOK )
             {
@@ -198,9 +198,11 @@ namespace Design {
         double yImagePos = yInnerPos + m_stampImageFrame.GetYPos( );
 
         wxString filename = GetStampImageFilename( );
-
+        wxString link = GetStampColnectLink( );
+        int pos = link.find_last_of( "//" );
+        wxString item = link.Mid( pos+1 );
         wxImage image;
-        bool fileOK = Utils::GetImage( filename, image );
+        bool fileOK = Utils::GetImage( image, filename, item );
         if ( image.IsOk( ) && fileOK )
         {
             //Draw the stamp image
@@ -439,7 +441,7 @@ namespace Design {
     {
         if ( !m_image.IsOk( ) )
         {
-            bool fileOK = Utils::GetImage( m_imageFilename, m_image );
+            bool fileOK = Utils::GetImage( m_image, m_imageFilename );
         }
         wxImage image = m_image;
         wxSize size = m_image.GetSize( );
@@ -605,7 +607,10 @@ namespace Design {
     {
         SetAttrStr( AT_ImageName, filename );
         m_imageFilename = filename;
-        Utils::GetImage( filename, m_image );
+        wxString link = GetStampColnectLink( );
+        int pos = link.find_last_of( "//" );
+        wxString item = link.Mid( pos+1 );
+        Utils::GetImage(  m_image, filename, item );
     }
 
     //--------------
@@ -753,7 +758,7 @@ namespace Design {
         wxString filename = GetStampImageFilename( );
         wxString str;
         wxImage image;
-        bool fileOK = Utils::GetImage( filename, image );
+        bool fileOK = Utils::GetImage( image, filename );
         if ( !image.IsOk( ) && fileOK )
         {
             std::cout << "Stamp::ValidateNode " << filename << "\nInvalid Stamp Image. \n";

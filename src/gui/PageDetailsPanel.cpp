@@ -504,6 +504,8 @@ void PageDetailsPanel::SetRightContentMargin( wxString rightPageMargin )
     m_rightContentMargin->ChangeValue( rightPageMargin );
 }
 
+//--------------
+
 
 void PageDetailsPanel::OnTitleDefaultClick( wxCommandEvent& event )
 {
@@ -518,16 +520,17 @@ void PageDetailsPanel::OnTitleDefaultClick( wxCommandEvent& event )
 }
 
 
+//--------------
+
 void PageDetailsPanel::OnOrientationchoiceSelected( wxCommandEvent& event )
 {
     m_page->Orientation( Design::OrientationStrings[ m_orientationChoice->GetSelection( ) ] );
-    ////@begin wxEVT_COMMAND_CHOICE_SELECTED event handler for ID_ORIENTATIONCHOICE in PageDetailsPanel.
-        // Before editing this code, remove the block markers.
     event.Skip( );
-    ////@end wxEVT_COMMAND_CHOICE_SELECTED event handler for ID_ORIENTATIONCHOICE in PageDetailsPanel. 
 }
 
 
+
+//--------------
 
 void PageDetailsPanel::OnSubTitleCheckboxClick( wxCommandEvent& event )
 {
@@ -535,6 +538,8 @@ void PageDetailsPanel::OnSubTitleCheckboxClick( wxCommandEvent& event )
     UpdateSubTitleState( m_titleHelper );
 };
 
+
+//--------------
 
 void PageDetailsPanel::OnSubTitleDefaultClick( wxCommandEvent& event )
 {
@@ -550,6 +555,8 @@ void PageDetailsPanel::OnSubTitleDefaultClick( wxCommandEvent& event )
 }
 
 
+//--------------
+
 void PageDetailsPanel::OnTitleCheckboxClick( wxCommandEvent& event )
 {
     m_page->SetShowTitle( m_titleHelper->titleCheckbox->GetValue( ) );
@@ -557,31 +564,44 @@ void PageDetailsPanel::OnTitleCheckboxClick( wxCommandEvent& event )
     GetAlbumTreeCtrl( )->GetCurrentTreeID( );
 }
 
+//--------------
+
 void PageDetailsPanel::OnTitleTextChanged( wxCommandEvent& event )
 {
     wxString title = m_titleHelper->titleLabel->GetValue( );
     m_page->SetTitleString( title );
 }
+
+//--------------
+
 void PageDetailsPanel::OnSubTitleTextChanged( wxCommandEvent& event )
 {
     wxString subTitle = m_titleHelper->subTitleLabel->GetValue( );
     m_page->SetSubTitleString( subTitle );
 }
 
+//--------------
+
 void PageDetailsPanel::OnTitleFontPicker( wxFontPickerEvent& event )
 {
     m_page->GetTitleFrame( )->SetHeadingFont( m_titleFontPicker->GetSelectedFont( ), m_titleColorPicker->GetColour( ) );
 }
+
+//--------------
 
 void PageDetailsPanel::OnTitleColorPicker( wxColourPickerEvent& event )
 {
     m_page->GetTitleFrame( )->SetHeadingFont( m_titleFontPicker->GetSelectedFont( ), m_titleColorPicker->GetColour( ) );
 }
 
+//--------------
+
 void PageDetailsPanel::OnSubTitleFontPicker( wxFontPickerEvent& event )
 {
     m_page->GetTitleFrame( )->SetSubHeadingFont( m_subTitleFontPicker->GetSelectedFont( ), m_subTitleColorPicker->GetColour( ) );
 }
+
+//--------------
 
 void PageDetailsPanel::OnSubTitleColorPicker( wxColourPickerEvent& event )
 {
@@ -695,8 +715,6 @@ void PageDetailsPanel::OnRightContentMargin( wxCommandEvent& event )
     Update( );
     event.Skip( );
 }
-
-//--------------
 
 //--------------
 

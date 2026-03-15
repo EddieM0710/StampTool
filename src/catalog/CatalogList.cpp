@@ -88,10 +88,10 @@ namespace Catalog {
         if ( !ext.CmpNoCase( "csv" ) )
         {
 
-            wxString cwd = wxGetCwd( );
+            wxString prjDir = GetProject()->GetProjectDirectory( );
             wxFileName catalogFile;// = csvFile;
-            catalogFile.SetPath( cwd );
-
+            catalogFile.SetPath( prjDir );
+            catalogFile.AppendDir("catalogs");
             wxString volName = csvFile.GetName( );
             catalogFile.SetName( volName );
             catalogFile.SetExt( "cat" );
@@ -99,7 +99,7 @@ namespace Catalog {
             // Get then name to save as
             wxFileDialog openFileDialog( 
                 GetFrame( ), _( "Select directory and file to save the new cat file to." ), 
-                wxGetCwd( ), 
+                catalogFile.GetPath( ), 
                 catalogFile.GetFullName( ), 
                 "Catalog XML files( *.cat)|*.cat", wxFD_SAVE | wxFD_OVERWRITE_PROMPT );
             if ( openFileDialog.ShowModal( ) == wxID_CANCEL )
@@ -107,7 +107,7 @@ namespace Catalog {
                 return  false; // the user changed idea...
             }
             wxFileName catFile( openFileDialog.GetPath( ) );
-            catFile.MakeRelativeTo( cwd );
+            catFile.MakeRelativeTo( catalogFile.GetPath( ) );
 
             // Make a new volume
             wxString newFile = catFile.GetFullPath( );

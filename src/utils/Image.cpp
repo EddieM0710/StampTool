@@ -37,9 +37,12 @@
 #include "wx/wx.h"
 #endif
 
+#include <bitset>
+#include <sstream>
 #include <iostream>
 #include <vector>
 #include <wx/filename.h>
+#include <wx/string.h>
 #include <wx/filefn.h> 
 #include <wx/wfstream.h>
 
@@ -48,24 +51,72 @@
 #include "art/NotFound.xpm"
 #include "Defs.h"
 #include "utils/Settings.h"
-#include "imagefetch/ColnectWxClient.h"
+#include "ImageFetcher.h"
 
 namespace Utils {
+  wxString GetCountryCode( wxString imageName )
+  {
+    wxString ch(  "_" );
+    wxString str = imageName.AfterFirst( ch[0] );
+    return str.BeforeFirst( ch[0] );
+  }
  
     wxString GetImageFullPath( wxString imageName )
     {
-        wxString projectPath = GetProject( )->GetImageDirectory( );
-        projectPath += "/" + imageName;
+        wxString projectPath = GetSettings( )->GetImageDirectory( );
+        wxString countryCode = GetCountryCode( imageName );
+        projectPath += "\\" + countryCode + "\\" + imageName;
         wxFileName file( projectPath );
         wxString str = file.GetFullPath( );
         file.MakeAbsolute( );
         str = file.GetFullPath( );
         return str;
     }
+  //-------
+
+    bool GetAppImage( wxImage &image, wxString filename )
+    {
+        bool fileOK = false;
+
+        wxString projectPath = GetSettings( )->GetImageDirectory( );
+        wxString name = projectPath + "\\" + filename;
+
+        if ( filename.IsEmpty( ) || name.IsEmpty( ) )
+        {
+            //file missing
+            image = wxNullImage;
+            fileOK = false;
+        }
+        else
+        {
+            if ( ImageExists( name ) )
+            {
+                //file exists
+                image = wxImage( name );
+                if ( image.IsOk( ) )
+                {
+                    //file can be read
+                    fileOK = true;   
+                }
+                else 
+                {
+                    //file cannot be read
+                    image = wxNullImage; ;
+                    fileOK = false;    
+                }           
+            }
+            else //image does not exist
+            {
+                 image = wxImage( NotFound );
+                fileOK = false;    
+            }
+        }
+        return fileOK;
+    }
 
     //-------
 
-    bool GetImage( wxString filename, wxImage &image, wxString ColnectItemNbr )
+    bool GetImage( wxImage &image, wxString filename, wxString ColnectItemNbr )
     {
         bool fileOK = false;
         bool reload = false;
@@ -104,7 +155,7 @@ namespace Utils {
         }
         if ( reload && !ColnectItemNbr.IsEmpty( ) )
         {
-            ColnectWxClient* client = new ColnectWxClient( );
+            ImageFetcher* client = GetProject( )->GetImageFetcher( );
 
             std::cout << "Utils::GetImage download " << fullPath << " " << ColnectItemNbr <<"\n";
             client->FetchAndDownload( ColnectItemNbr, 

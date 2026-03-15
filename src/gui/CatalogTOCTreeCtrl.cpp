@@ -195,10 +195,8 @@ void CatalogTOCTreeCtrl::OnRightDClick( wxMouseEvent& event )
         GetCatalogTreeCtrl( )->LoadCatalogTree( );
     }
 
-    ////@begin wxEVT_RIGHT_DCLICK event handler for ID_TREECTRL in SplitterTest.
-        // Before editing this code, remove the block markers.
     event.Skip( );
-    ////@end wxEVT_RIGHT_DCLICK event handler for ID_TREECTRL in SplitterTest. 
+
 }
 
 //--------------

@@ -55,8 +55,10 @@ class PreferencesDialog : public wxDialog
 public:
     enum PreferencesDialogGuiDefs
     {
-        ID_IMAGEDIRECTORTEXTBOX = ID_PREFERENCESDIALOG + 1, 
+        ID_IMAGEDIRECTORYTEXTBOX = ID_PREFERENCESDIALOG + 1, 
+        ID_APPDATADIRECTORYTEXTBOX, 
         ID_DIRPICKERBTN, 
+        ID_APPDIRPICKERBTN,
         ID_COUNTRYTEXTBOX, 
         ID_CATALOGTEXTBOX, 
         ID_OPENLASTCHECKBOX, 
@@ -110,7 +112,8 @@ public:
     // PreferencesDialog event handler declarations
 
         //   ID_IMAGEDIRECTORTEXTBOX
-    void OnImagedirectortextboxTextUpdated( wxCommandEvent& event );
+    void OnImageDirectorytextboxTextUpdated( wxCommandEvent& event );
+    void OnAppDataDirectorytextboxTextUpdated( wxCommandEvent& event );
 
     //   ID_COUNTRYTEXTBOX
     void OnCountrytextboxTextUpdated( wxCommandEvent& event );
@@ -129,7 +132,9 @@ public:
     // PreferencesDialog event handler declarations
     void OnOkClick( wxCommandEvent& event );
 
-    void BrowseForDir( wxCommandEvent& event );
+    void BrowseForImageDir( wxCommandEvent& event );
+
+    void BrowseForAppDataDir( wxCommandEvent& event );
 
     static bool ShowToolTips( );
 
@@ -160,6 +165,7 @@ public:
     wxPanel* m_FontsPanel;
     wxPanel* m_CollectionPanel;
     wxTextCtrl* m_imageDirectory;
+    wxTextCtrl* m_dataDirectory;
     wxTextCtrl* m_country;
     wxTextCtrl* m_catalog;
     wxCheckBox* m_loadLastFileAtStartUp;

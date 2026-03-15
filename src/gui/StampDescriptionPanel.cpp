@@ -34,6 +34,7 @@
 #endif
 
 #include "wx/imaglist.h"
+#include <wx/event.h>
 
  //#include "CatalogCodePanel.h"
 #include "catalog/CatalogData.h"
@@ -42,9 +43,11 @@
 #include "StampDescriptionPanel.h"
 #include "IdentificationPanel.h"
 #include "ImagePanel.h"
+#include "ImageFetcher.h"
 #include "InventoryPanel.h"
  //#include "MiscellaneousDataPanel.h"
 #include "Settings.h"
+#include "utils/Project.h"
 #include "Stamp.h"
 #include "AppData.h"
 #include "CatalogVolume.h"
@@ -233,7 +236,9 @@ void StampDescriptionPanel::CreateControls( void )
     horizontalSplitterWindow->SplitHorizontally( stampAndImagePanel, m_inventoryPanel, 500 );
     topHorizontalSizer->Add( horizontalSplitterWindow, 1, wxGROW | wxALL, 0 );
 
-
+    GetProject()->GetImageFetcher()->SetImageFetchEventHandler(this);
+    Bind(wxEVT_IMAGE_DOWNLOADED,
+     &OnDownloadRequestComplete, this);
     // // display a random image until one is selected
     wxString filename;
     // if ( GetCatalogVolume( ) )
@@ -262,6 +267,23 @@ void StampDescriptionPanel::OnSplitterwindowSashPosChanged( wxSplitterEvent& eve
 void StampDescriptionPanel::OnBkgndtextctrlMaxLen( wxCommandEvent& event )
 {
     event.Skip( );
+}
+
+//-------
+void StampDescriptionPanel::OnDownloadRequestComplete(wxCommandEvent& event)
+{
+    wxString path = event.GetString();
+    int stampId   = event.GetInt();
+    int status = event.GetId();
+
+    std::cout << "Download complete for stamp id " << stampId << ", path: " << path << std::endl;
+    if ( status )        
+    {
+    // Reload the image from 'path' and refresh the control
+        Catalog::Entry stamp( GetCatalogData( )->GetCurrentStamp( ) );
+        wxString imageFile = stamp.FindImageName( );
+        m_stampImage->SetBitmap( imageFile );
+    }
 }
 
 //-------

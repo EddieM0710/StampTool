@@ -41,6 +41,7 @@
 #include <vector>
 #include <wx/filename.h>
 #include <wx/filefn.h> 
+#include <wx/stdpaths.h>
 #include <wx/wfstream.h>
 
 #include "utils/Project.h"
@@ -81,8 +82,7 @@ namespace Utils {
         m_catalogListNode = 0;
         m_albumListNode = 0;
 
-        m_imageDirectory = wxGetCwd( );
-        m_projectFilename = "UndefinedName.spt";
+        m_imageFetcher = new ImageFetcher();
     }
 
     //-------
@@ -125,8 +125,7 @@ namespace Utils {
         m_albumListNode = 0;
         m_projectFilename = "";
         m_outputFilename = "";;
-        m_designFilename = "";;
-        m_imageDirectory = "";;
+
     }
 
     //-------
@@ -167,7 +166,7 @@ namespace Utils {
         //clear dialog tree
         GetAlbumTreeCtrl( )->Clear( );
 
-        wxString lastFile = wxGetCwd( );
+        wxString lastFile = GetProject()->GetProjectDirectory( );;
         lastFile += "/" + sptName;
         GetSettings( )->SetLastFile( lastFile );
 
@@ -182,7 +181,7 @@ namespace Utils {
         SetProjectFilename( filename );
         wxFileName sptFile( filename );
         wxString path = sptFile.GetPath( );
-        wxSetWorkingDirectory( sptFile.GetPath( ) );
+        SetProjectDirectory( sptFile.GetPath( ) );
         GetSettings( )->SetLastFile( filename );
         LoadProjectXML( );
         LoadData( );
@@ -213,14 +212,6 @@ namespace Utils {
     //     return m_designFilename;
     // };
 
-    //-------
-
-    wxString Project::GetImageDirectory( )
-    {
-        return m_imageDirectory;
-    };
-
-    //-------
 
     //-------
 
@@ -265,9 +256,7 @@ namespace Utils {
             return false;
         }
 
-        wxString cwd = projFile.GetPath( );
-        wxSetWorkingDirectory( cwd );
-
+        SetProjectDirectory( projFile.GetPath( ));
         m_ProjectDoc = new wxXmlDocument( );
         wxFileInputStream stream( m_projectFilename );
         if ( !stream.IsOk( ) )
@@ -279,7 +268,7 @@ namespace Utils {
 
         if ( !m_ProjectDoc->Load( stream ) )
         {
-            ReportError( "Project::Load", "error loading Prokect xml file.", true );
+            ReportError( "Project::Load", "error loading Project xml file.", true );
             return false;
         }
 
@@ -342,12 +331,7 @@ namespace Utils {
             wxString name = attr->GetName( );
             wxString val = attr->GetValue( );
 
-            if ( !name.Cmp( "ImagePath" ) )
-            {
-                m_imageDirectory = MakeFileAbsolute( val );
-                SetImageDirectory( m_imageDirectory );
-            }
-            else if ( !name.Cmp( "Country" ) )
+            if ( !name.Cmp( "Country" ) )
             {
                 m_projectCountryCode = val;
             }
@@ -366,7 +350,6 @@ namespace Utils {
         m_projectCountryCode = GetSettings( )->GetDefaultCountryCode( );
         m_projectCatalogCode = GetSettings( )->GetDefaultCatalogCode( );
 
-        m_imageDirectory = wxGetCwd( );
         m_projectFilename = fileName;
 
         m_ProjectDoc = MakeDefaultProjectDocument( );
@@ -392,7 +375,8 @@ namespace Utils {
         newDoc->SetRoot( root );
         root->AddAttribute( "Country", GetProject( )->GetProjectCountryCode( ) );
         root->AddAttribute( "CatalogCode", GetProject( )->GetProjectCatalogCode( ) );
-        root->AddAttribute( "ImagePath", wxGetCwd( ) );
+        root->AddAttribute( "ImagePath", GetSettings( )->GetImageDirectory( ) );
+        root->AddAttribute( "DataPath", GetSettings( )->GetDataDirectory( ) );
 
         wxXmlNode* albumListNode = NewNode( root, "AlbumList" );
 
@@ -440,7 +424,7 @@ namespace Utils {
         // set curr vals
         SetAttrStr( root, "Country", GetProjectCountryCode( ) );
         SetAttrStr( root, "CatalogCode", GetProjectCatalogCode( ) );
-        SetAttrStr( root, "ImagePath", m_imageDirectory );
+        //SetAttrStr( root, "ImagePath", m_imageDirectory );
 
         wxXmlNode* albumListNode = FirstChildElement( root, "AlbumList" );
 
@@ -501,16 +485,6 @@ namespace Utils {
         }
     }
 
-    //-------
-
-    void Project::SetImageDirectory( wxString imagePath )
-    {
-        if ( imagePath.Cmp( m_imageDirectory ) )
-        {
-            m_imageDirectory = imagePath;
-            m_dirty = true;
-        }
-    };
 
     //-------
 

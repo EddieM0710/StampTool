@@ -15,6 +15,7 @@
 
   // Make the CMake “Debug” button inject DLL paths + fix source mapping
 "cmake.debugConfig": {
+
   "stopAtEntry": false,
   "miDebuggerPath": "C:/mingw64/bin/gdb.exe",
   "miDebuggerArgs": "-readnow",                     // load symbols up front
@@ -118,6 +119,7 @@
   "*.xcpp": "cpp",
   "chrono": "cpp",
   "filesystem": "cpp",
-  "xtree": "cpp"
+  "xtree": "cpp",
+  "bitset": "cpp"
 }
 }

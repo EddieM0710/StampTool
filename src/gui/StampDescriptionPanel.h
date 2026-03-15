@@ -34,6 +34,7 @@
 #include "Defs.h"
 #include "catalog/Entry.h"
 #include "gui/GuiDefs.h"
+#include "ImageFetcher.h"
 
  //class CatalogCodePanel;
 class CharacteristicsPanel;
@@ -126,6 +127,8 @@ public:
     void OnBkGndTextUpdated( wxCommandEvent& event );
 
     void OnBkgndtextctrlMaxLen( wxCommandEvent& event );
+
+    void OnDownloadRequestComplete(wxCommandEvent& event);
 
     void OnLeaveWindow( wxMouseEvent& event );
 

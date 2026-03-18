@@ -4,7 +4,7 @@
 </p>
 <p>The intention is that this App will be completely free. The input data is not propritary, the output is .pdf file  which can be read and printed, and the development environment tools and libraries are open source.
 
-<p>Be aware that this code is STILL under active development. However, I have reached a point that I have start usiing it. From this point I will only commit working changes to the repository. Be aware though there are still a lot of bugs and some functionality has not been implemented. There is no documentation.
+<p>Be aware that this code is STILL under active development. However, I have reached a point that I have started usiing it. From this point I will only commit working changes to the repository. Be aware though there are still a lot of bugs and some functionality has not been implemented. There is no documentation.
 <p>
 it would be difficult to use right now, however, the structure diagrams in the doxygen files help. I will add some initial discription of how the design fits together in the near future. I will be documenting the build process and environment as soon as possible. If you are a seasoned C++ programmer and are still interested in helping just let me know.
 

@@ -34,7 +34,7 @@
 #include "Defs.h"
 #include "catalog/Entry.h"
 #include "gui/GuiDefs.h"
-#include "ImageFetcher.h"
+//#include "CAPI_Interface.h"
 
  //class CatalogCodePanel;
 class CharacteristicsPanel;

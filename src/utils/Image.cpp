@@ -51,7 +51,7 @@
 #include "art/NotFound.xpm"
 #include "Defs.h"
 #include "utils/Settings.h"
-#include "ImageFetcher.h"
+#include "CAPI_Interface.h"
 
 namespace Utils {
   wxString GetCountryCode( wxString imageName )
@@ -155,7 +155,7 @@ namespace Utils {
         }
         if ( reload && !ColnectItemNbr.IsEmpty( ) )
         {
-            ImageFetcher* client = GetProject( )->GetImageFetcher( );
+            CAPI_Interface* client = GetProject( )->GetCAPI_Interface( );
 
             std::cout << "Utils::GetImage download " << fullPath << " " << ColnectItemNbr <<"\n";
             client->FetchAndDownload( ColnectItemNbr, 

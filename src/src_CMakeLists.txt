@@ -28,9 +28,9 @@ add_executable(StampTool
      
 target_link_options(StampTool PRIVATE "$<$<CONFIG:Debug>:-mconsole>")
 
-if(TARGET ImageFetchFiles)
-    target_link_libraries(StampTool PRIVATE ImageFetchFiles)
-    target_compile_definitions(StampTool PRIVATE HAVE_IMAGEFETCH)
+if(TARGET CAPI_InterfaceFiles)
+    target_link_libraries(StampTool PRIVATE CAPI_InterfaceFiles)
+    target_compile_definitions(StampTool PRIVATE HAVE_CAPI_Interface)
 endif()
 
 target_link_libraries(StampTool PRIVATE 
@@ -38,7 +38,7 @@ target_link_libraries(StampTool PRIVATE
      project_wx 
      stamp_includes 
      project_pdfdoc
-     project_ImageFetch
+     project_CAPI_Interface
      )
 
 # target_link_options(StampTool PRIVATE "-Wl,--start-group")

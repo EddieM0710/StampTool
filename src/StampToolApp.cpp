@@ -107,7 +107,6 @@ bool StampToolApp::OnInit( )
 
     m_frame = new StampToolFrame( NULL );
 
-
     //  m_frame->SetupRecentMenu( );    
     m_frame->InitLoad( );
     m_AppData->SetCaption( );

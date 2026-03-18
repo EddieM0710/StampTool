@@ -25,7 +25,7 @@
 #include "wx/string.h"
 #include <wx/xml/xml.h>
 #include "gui/StampToolFrame.h"
-#include "ImageFetcher.h"
+#include "CAPI_Interface.h"
 
 ////#include "gui/AppData.h"
 
@@ -81,9 +81,9 @@ namespace Utils
             return m_catalogListNode;
         };
 
-        ImageFetcher *GetImageFetcher()
+        CAPI_Interface *GetCAPI_Interface()
         {
-            return m_imageFetcher;
+            return m_CAPI_Interface;
         };
             
 
@@ -175,7 +175,7 @@ namespace Utils
         wxString m_projectCountryCode;
         wxString m_projectCatalogCode;
 
-        ImageFetcher *m_imageFetcher;
+        CAPI_Interface *m_CAPI_Interface;
 
         // Mount::StampMount* m_stampMount;
         // Mount::StampMount* m_stampMount;

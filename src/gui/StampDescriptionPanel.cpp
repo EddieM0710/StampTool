@@ -43,7 +43,7 @@
 #include "StampDescriptionPanel.h"
 #include "IdentificationPanel.h"
 #include "ImagePanel.h"
-#include "ImageFetcher.h"
+#include "CAPI_Interface.h"
 #include "InventoryPanel.h"
  //#include "MiscellaneousDataPanel.h"
 #include "Settings.h"
@@ -51,7 +51,7 @@
 #include "Stamp.h"
 #include "AppData.h"
 #include "CatalogVolume.h"
-
+#include "CAPI_Event.h"
  /*
   * StampDescriptionPanel type definition
   */
@@ -73,6 +73,8 @@ EVT_TEXT_MAXLEN( ID_BKGNDTEXTCTRL, StampDescriptionPanel::OnBkgndtextctrlMaxLen 
 //EVT_SPLITTER_SASH_POS_CHANGED( ID_HORIZONTALLITTERWINDOW, StampDescriptionPanel::OnSplitterwindowSashPosChanged )
 
 END_EVENT_TABLE( )
+
+//wxDEFINE_EVENT(wxEVT_IMAGE_DOWNLOADED, wxCommandEvent);
 
 //-------
 
@@ -236,9 +238,8 @@ void StampDescriptionPanel::CreateControls( void )
     horizontalSplitterWindow->SplitHorizontally( stampAndImagePanel, m_inventoryPanel, 500 );
     topHorizontalSizer->Add( horizontalSplitterWindow, 1, wxGROW | wxALL, 0 );
 
-    GetProject()->GetImageFetcher()->SetImageFetchEventHandler(this);
-    Bind(wxEVT_IMAGE_DOWNLOADED,
-     &OnDownloadRequestComplete, this);
+    GetProject()->GetCAPI_Interface()->SetImageEventHandler(this);
+    Bind(wxEVT_IMAGE_DOWNLOADED,  &OnDownloadRequestComplete, this);
     // // display a random image until one is selected
     wxString filename;
     // if ( GetCatalogVolume( ) )

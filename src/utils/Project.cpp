@@ -82,7 +82,7 @@ namespace Utils {
         m_catalogListNode = 0;
         m_albumListNode = 0;
 
-        m_imageFetcher = new ImageFetcher();
+        m_CAPI_Interface = new CAPI_Interface();
     }
 
     //-------

@@ -4,6 +4,8 @@ build-Release/
 projects/
 sample/
 doc/
+local-install/
+dist/_CPack_Packages/
 src/wxpdfdoc-main
 .gitignore
 .vscode/tasks.json

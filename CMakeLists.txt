@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.22 )
 
 #set the project name
-project( StampTool VERSION 1.0 LANGUAGES CXX)
+project( StampTool VERSION 0.8 LANGUAGES CXX)
 
 # Print out the CMake version in use
 message(STATUS "Configuring with CMake version ${CMAKE_VERSION}")
@@ -50,13 +50,13 @@ get_target_property(_wx_core_incs wx::core INTERFACE_INCLUDE_DIRECTORIES)
 message(STATUS "---wx::core include dirs = ${_wx_core_incs}")
 
 
-find_package(ImageFetch CONFIG QUIET)
-if(NOT ImageFetch_FOUND)
+find_package(CAPI_Interface CONFIG QUIET)
+if(NOT CAPI_Interface_FOUND)
     # Build it from source in this repo
-    message(STATUS "******ImageFetch not found; building from source")
+    message(STATUS "******CAPI_Interface not found; building from source")
 #    add_subdirectory(image-fetch)
 else()
-    message(STATUS  "******Using pre-built ImageFetch library")
+    message(STATUS  "******Using pre-built CAPI_Interface library")
 endif()
 
 # centralize project include dirs 
@@ -76,14 +76,14 @@ target_link_libraries(project_wx INTERFACE wx::base wx::core wx::xml wx::net bcr
 add_library(project_pdfdoc INTERFACE)
 target_link_libraries(project_pdfdoc INTERFACE wxpdfdoc::wxpdfdoc)
 
-add_library(project_ImageFetch INTERFACE)
-target_link_libraries(project_ImageFetch INTERFACE ImageFetch::ImageFetch)
+add_library(project_CAPI_Interface INTERFACE)
+target_link_libraries(project_CAPI_Interface INTERFACE CAPI_Interface::CAPI_Interface)
 
-if(ImageFetch_FOUND)
-  get_target_property(_if_includes ImageFetch::ImageFetch INTERFACE_INCLUDE_DIRECTORIES)
-  message(STATUS "ImageFetch INTERFACE_INCLUDE_DIRECTORIES = ${_if_includes}")
+if(CAPI_Interface_FOUND)
+  get_target_property(_if_includes CAPI_Interface::CAPI_Interface INTERFACE_INCLUDE_DIRECTORIES)
+  message(STATUS "CAPI_Interface INTERFACE_INCLUDE_DIRECTORIES = ${_if_includes}")
 
-  target_link_libraries(stamp_includes INTERFACE project_ImageFetch)
+  target_link_libraries(stamp_includes INTERFACE project_CAPI_Interface)
 
 endif()
 
@@ -118,7 +118,9 @@ set(CPACK_PACKAGE_VENDOR      "StampTool Project")
 set(CPACK_PACKAGE_VERSION     "${PROJECT_VERSION}")
 set(CPACK_PACKAGE_FILE_NAME
     "${CPACK_PACKAGE_NAME}-${CPACK_PACKAGE_VERSION}-${CMAKE_SYSTEM_NAME}-${CMAKE_SYSTEM_PROCESSOR}")
+set(CPACK_PACKAGE_DIRECTORY "${PROJECT_SOURCE_DIR}/dist")
 
+set(CPACK_PACKAGE_EXECUTABLES "StampTool" "StampTool")
 set(CPACK_GENERATOR "ZIP;NSIS")
 set(CPACK_NSIS_DISPLAY_NAME "StampTool")
 set(CPACK_NSIS_INSTALL_ROOT "$PROGRAMFILES64")
